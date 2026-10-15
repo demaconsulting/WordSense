@@ -49,6 +49,18 @@ public static class Program
                     return RunImport(options, output);
                 case "derive-senses":
                     return RunDerive(options, output);
+                case "audit-export":
+                    return RunAuditExport(options, output);
+                case "audit-adjudicate":
+                    return RunAuditAdjudicate(options, output);
+                case "audit-merge":
+                    return RunAuditMerge(options, output);
+                case "audit-report":
+                    return RunAuditReport(options, output);
+                case "apply-relabel":
+                    return RunApplyRelabel(options, output);
+                case "validate-pos":
+                    return RunValidatePos(options, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'.");
                     return 1;
@@ -147,6 +159,57 @@ public static class Program
             output.WriteLine($"senses/{name}: {rows.Count} senses");
         }
 
+        return 0;
+    }
+
+    private static int RunAuditExport(Dictionary<string, string> options, TextWriter output)
+    {
+        var size = options.TryGetValue("size", out var value) ? int.Parse(value, System.Globalization.CultureInfo.InvariantCulture) : 200;
+        var (rows, chunks) = PosAudit.Export(Require(options, "corpus"), Require(options, "work"), size);
+        output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
+        return 0;
+    }
+
+    private static int RunAuditAdjudicate(Dictionary<string, string> options, TextWriter output)
+    {
+        var size = options.TryGetValue("size", out var value) ? int.Parse(value, System.Globalization.CultureInfo.InvariantCulture) : 120;
+        var (adjudicate, probe) = PosAudit.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), size, 0.05);
+        output.WriteLine($"{adjudicate} rows need adjudication; {probe} auto-accepted rows are probed blind.");
+        return 0;
+    }
+
+    private static int RunAuditMerge(Dictionary<string, string> options, TextWriter output)
+    {
+        var results = PosAudit.Merge(Require(options, "corpus"), Require(options, "work"));
+        PosAudit.WriteResults(Require(options, "output"), results);
+        output.WriteLine($"Merged {results.Count} rows ({results.Count(r => r.Resolution == "agree")} agree, {results.Count(r => r.Resolution == "adjudicated")} adjudicated, {results.Count(r => r.Resolution == PosAudit.Undecided)} undecided).");
+        return 0;
+    }
+
+    private static int RunAuditReport(Dictionary<string, string> options, TextWriter output)
+    {
+        var text = PosAuditReport.Render(PosAudit.ReadResults(Require(options, "audit")), options.GetValueOrDefault("notes"));
+        File.WriteAllText(Require(options, "output"), text, new UTF8Encoding(false));
+        output.WriteLine("Wrote the audit report.");
+        return 0;
+    }
+
+    private static int RunApplyRelabel(Dictionary<string, string> options, TextWriter output)
+    {
+        output.WriteLine(Relabeler.Apply(Require(options, "corpus")));
+        return 0;
+    }
+
+    private static int RunValidatePos(Dictionary<string, string> options, TextWriter output)
+    {
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(Require(options, "corpus"), "senses"));
+        var errors = PosRules.Validate(inventory);
+        if (errors.Count > 0)
+        {
+            throw new InvalidDataException(string.Join(Environment.NewLine, errors));
+        }
+
+        output.WriteLine($"{inventory.Rows.Count()} senses have exactly one part of speech.");
         return 0;
     }
 

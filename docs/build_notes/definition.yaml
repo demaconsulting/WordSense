@@ -6,6 +6,7 @@ input-files:
   - docs/build_notes/title.txt
   - docs/build_notes/introduction.md
   - docs/build_notes/model-provenance.md
+  - docs/build_notes/pos-audit.md
   - docs/build_notes/generated/build_notes.md
   - docs/build_notes/generated/versions.md
 template: template.html
