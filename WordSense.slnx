@@ -4,5 +4,9 @@
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/DemaConsulting.WordSense.Tests/DemaConsulting.WordSense.Tests.csproj" />
+    <Project Path="test/WordSense.Builder.Tests/WordSense.Builder.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/WordSense.Builder/WordSense.Builder.csproj" />
   </Folder>
 </Solution>
