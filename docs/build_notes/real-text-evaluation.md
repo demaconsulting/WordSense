@@ -1,7 +1,8 @@
 # Real-Text Evaluation
 
 All figures on this page come from one run of the builder command `real-eval` on the committed corpus and the
-committed embedded table (format v3, 349 lemmas, 718 senses):
+committed embedded table (format v3, 352 lemmas, 726 senses; the three lemmas `conjunct`, `overhead` and `uptown`
+were added after the first version of this page, see `gap-lemmas-decisions.md`):
 
 ```text
 dotnet run --project tools/WordSense.Builder -c Release -- real-eval --corpus corpus --model model --report report.md
@@ -23,13 +24,16 @@ training and are not mixed into the holdout.
 
 | Set | Rows | Best sense | Group | Answered | Answered accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Real text, seed and restored lemmas (`eval-seed.tsv`) | 689 | 92.16 % | 93.03 % | 86.07 % | 95.95 % |
+| Real text, seed and restored lemmas (`eval-seed.tsv`) | 689 | 92.16 % | 93.03 % | 85.92 % | 95.95 % |
 | LLM-written holdout, same lemmas | 1,268 | 97.63 % | 97.63 % | 94.95 % | 98.26 % |
-| Real restored-sense holdout (`real-restore.tsv`, origin `real`) | 219 | 87.67 % | 90.87 % | 73.06 % | 96.88 % |
+| Real restored-sense and gap-lemma holdout (`real-restore.tsv`) | 297 | 86.20 % | 90.24 % | 72.05 % | 96.26 % |
 | LLM-written holdout, restored lemmas | 181 | 97.24 % | 97.24 % | 90.06 % | 98.77 % |
 
-The restored-sense holdout file `corpus/holdout/real-restore.tsv` has 225 rows; 219 of them are real sentences and 6
-are reinstated project-written ones. All 219 real rows are scored. Before the forms table listed the inflected
+The holdout file `corpus/holdout/real-restore.tsv` has 303 rows: the 225 rows of the restored senses (219 real
+sentences and 6 reinstated project-written ones) and 78 real rows of the gap lemmas `conjunct`, `overhead` and
+`uptown` (Phase 3a). All 297 real rows are scored. The restored senses alone scored 219 rows at 87.67 % best sense
+before the gap lemmas were added; the gap lemmas lower the pooled figure (they are mostly Wikipedia sentences, see the
+source table). Before the forms table listed the inflected
 targets (`bowed`, `bowing`, `led`, `tore`, `torn`, and similar), 39 of them were skipped because the classifier
 reported no lemma; the earlier run therefore scored 180 rows (85.00 % best sense, 67.78 % answered). Adding the
 missing forms raised the scored rows to 219, the best sense to 87.67 % and the answered share to 73.06 %. The 689
@@ -41,14 +45,14 @@ evaluation rows are unchanged (none were skipped). The guard test
 | Set and source | Rows | Best sense | Group | Answered | Answered accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Eval / Project Gutenberg (public domain) | 336 | 91.37 % | 91.67 % | 83.93 % | 95.74 % |
-| Eval / Tatoeba CC BY 2.0 FR | 326 | 92.64 % | 94.17 % | 87.42 % | 96.14 % |
+| Eval / Tatoeba CC BY 2.0 FR | 326 | 92.64 % | 94.17 % | 87.12 % | 96.13 % |
 | Eval / Tatoeba CC0 | 22 | 95.45 % | 95.45 % | 100.00 % | 95.45 % |
 | Eval / UD EWT (CC BY-SA 4.0) | 5 | 100.00 % | 100.00 % | 80.00 % | 100.00 % |
-| Restored holdout / Project Gutenberg | 83 | 87.95 % | 90.36 % | 74.70 % | 96.77 % |
-| Restored holdout / Tatoeba CC BY 2.0 FR | 85 | 88.24 % | 94.12 % | 71.76 % | 96.72 % |
-| Restored holdout / Tatoeba CC0 | 8 | 87.50 % | 87.50 % | 50.00 % | 100.00 % |
-| Restored holdout / UD EWT | 2 | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
-| Restored holdout / Wikipedia (CC BY-SA 4.0) | 41 | 85.37 % | 85.37 % | 75.61 % | 96.77 % |
+| Restored and gap holdout / Project Gutenberg | 92 | 88.04 % | 91.30 % | 73.91 % | 97.06 % |
+| Restored and gap holdout / Tatoeba CC BY 2.0 FR | 92 | 88.04 % | 94.57 % | 70.65 % | 96.92 % |
+| Restored and gap holdout / Tatoeba CC0 | 9 | 88.89 % | 88.89 % | 55.56 % | 100.00 % |
+| Restored and gap holdout / UD EWT | 2 | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| Restored and gap holdout / Wikipedia (CC BY-SA 4.0) | 102 | 82.35 % | 85.29 % | 72.55 % | 94.59 % |
 
 ## Per Lemma and Sense
 
@@ -67,7 +71,9 @@ Everything else on the evaluation set is 90 % or better, and many senses are at 
 `contract`, `convict`, `permit`, `project`, `survey`, `use`, `wind`, `wound`). On the restored-sense holdout the
 weakest cells are `bow` bend-noun 71.43 % (7), `upsetting` noun 60.00 % (5), `close` adv 66.67 % (9),
 `upsetting` adj 70.00 % (10), `closer` adj 70.00 % (10) and `rows` argument 50.00 % (2); `orient`, `content` verb and
-`live` adv are 100 %. The full per-sense tables and the
+`live` adv are 100 %. The gap lemmas (Phase 3a) score `overhead` adj 50.00 % (10; 70.00 % at group level, the
+adjective is mistaken for the adverb), `overhead` adv and noun 100 %, `uptown` noun 70.00 % (10), adj and adv 80.00 %
+(10 each) and `conjunct` adj 100 % (10), noun 75.00 % (8). The full per-sense tables and the
 error lists are produced by `real-eval`.
 
 ## Real Text Against the LLM-Written Holdout

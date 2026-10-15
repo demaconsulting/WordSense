@@ -141,10 +141,10 @@ Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException`
 # Accuracy and Performance
 
 Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
-numbers per lemma. On the 6,010 held-out rows the best sense is correct 96.36 % of the time (96.47 % at the
-sense-group level), and 98.53 % of the answered rows are correct (90.77 % answered). For noun versus verb (5,383
-held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.12 % of the time, and
-99.15 % of the answered rows are correct (91.90 % answered). On real text (public-domain and openly licensed
+numbers per lemma. On the 6,088 held-out rows the best sense is correct 96.17 % of the time (96.37 % at the
+sense-group level), and 98.49 % of the answered rows are correct (90.49 % answered). For noun versus verb (5,411
+held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.04 % of the time, and
+99.15 % of the answered rows are correct (91.74 % answered). On real text (public-domain and openly licensed
 sentences that were judged blind and never used for training) the best sense is correct 92.16 % of the time
 (95.95 % of the answered rows, 86.07 % answered) on 689 sentences, against 97.63 % on the project-written
 held-out sentences of the same lemmas. The lemmas `bow`,

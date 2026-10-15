@@ -55,15 +55,15 @@ below); an unlisted form would count as unanswered.
 
 Holdout rows whose gold sense has exactly one of the `noun` and `verb` tags (rows with both or neither are
 skipped) are classified with the tag query; the answered accuracy must be at least 97 % with at least 85 %
-coverage over more than 350 rows (the build report measures 99.15 % at 91.90 % over
-the 5,383 rows of the whole holdout; the test evaluates every fifth row).
+coverage over more than 350 rows (the build report measures 99.15 % at 91.74 % over
+the 5,411 rows of the whole holdout; the test evaluates every fifth row).
 
 ### WordSense_Classifier_Holdout_MeetsGroupGate
 
 The holdout is classified (every fifth row, as in the accuracy gate) and a result counts as correct when the
 predicted sense's `Group` equals the gold sense's group; the answered accuracy must be at least 96 % with at
 least 85 % coverage over more than 400 rows (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share
-groups, so this gate can exceed the sense-level gate; the build report measures 96.47 % against 96.36 % over
+groups, so this gate can exceed the sense-level gate; the build report measures 96.37 % against 96.17 % over
 the whole holdout).
 
 ### WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
