@@ -1,0 +1,78 @@
+The record was broken twice last year.
+They will record the album in June.
+Please don't refuse the offer; it's the best refuse-free deal.
+Café owners in Zürich naïvely said "résumé" is spelled with accents.
+I can't believe it's already 2024-05-17 — time flies!
+He paid $1,299.99 for the used car (a bargain).
+The quick brown fox jumps over the lazy dog.
+UPPER lower MiXeD case words should normalize.
+Don't   split   on   multiple    spaces.
+Tabs	and	newlines
+are whitespace too.
+Hyphenated-words, under_scores, and dot.separated.names.
+Emoji 😀 appear in text 🎉 and should be handled.
+中文字符应该被分开 as separate tokens.
+日本語のテキストも同様です。
+한국어 텍스트도 있습니다.
+Привет, мир! Это тест.
+Ελληνικά κείμενο για δοκιμή.
+The über-cool naïve café's façade is déjà vu.
+Is this a question? Yes! It is... maybe.
+Numbers like 3.14159, 1e10, and 0x1F appear.
+URLs such as https://example.com/path?query=1 are split on punctuation.
+Email: someone@example.org should tokenize.
+Unbelievably, the antidisestablishmentarianism debate continued.
+Tokenization of rare words like floccinaucinihilipilification works.
+She said, "I'll be there at 5 o'clock," and left.
+Wait... what? No way!!!
+A
+I
+It
+(Parenthetical remarks) [brackets] {braces} <angles>.
+Quotes: 'single' "double" ‘curly’ “curly”.
+Dashes - hyphen – en — em.
+Mixed 123abc and abc123 tokens.
+The temperature fell to −5°C overnight.
+Ligatures like ﬁ and ﬂ are normalized by compatibility forms.
+Zero​width spaces and non‑breaking hyphens occur.
+Ａｂｃ full-width letters appear in some texts.
+The Ångström unit is named after Anders Ångström.
+İstanbul is a large city.
+Straße and Fuß are German words.
+He lives in a small town; he'd rather live there.
+Wind the clock before the wind picks up.
+The bass drum and the bass fish are different.
+They desert the desert at dawn.
+Close the door; the store is close by.
+We object to that object being moved.
+The project manager will project growth next year.
+Tears ran down her face as she tear the paper.
+Content with the content of the book.
+A minute amount, a minute ago.
+She wound the bandage around the wound.
+The lead singer follows the lead pipe.
+Present the present to the guest.
+Read the book you read yesterday.
+Row the boat in the front row.
+Take a bow; tie the bow.
+Subject the subject to a test.
+Invalid claims make the invalid unwell.
+The convict was convict of the crime.
+Transport the goods; the transport left early.
+The survey will survey the land.
+Console yourself at the console.
+Produce fresh produce daily.
+Separate the separate parts.
+Use of the use case.
+Permit the permit to expire.
+Refuse to take the refuse out.
+Insult the person, an insult.
+Increase the increase in sales.
+Conduct a meeting with good conduct.
+Contract the disease; sign the contract.
+Rebel against the rebel leader.
+Compress the file with a cold compress.
+Absent students were absent from class.
+Abstract thinking and an abstract painting.
+Abuse of power is a form of abuse.
+A very long sentence that keeps going and going with many many words so that the tokenizer has to produce a considerable number of tokens, including some unusual ones like quokka, zeitgeist, and pneumonoultramicroscopicsilicovolcanoconiosis, to check that long inputs behave.
