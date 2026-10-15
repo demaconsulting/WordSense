@@ -1,11 +1,11 @@
 ---
-title: Template DotNet Library Code Quality Report
+title: WordSense Code Quality Report
 subtitle: Code Quality Analysis Report
 author: DEMA Consulting
-description: Code Quality Analysis Report for Template DotNet Library
+description: Code Quality Analysis Report for WordSense
 lang: en-US
 keywords:
-  - Template DotNet Library
+  - WordSense
   - Code Quality
   - Analysis
   - .NET

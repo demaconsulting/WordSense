@@ -25,7 +25,7 @@ needs-review:
 # and an index.json before enforcement (--enforce flag) can be enabled in the pipeline.
 evidence-source:
   type: url
-  location: https://raw.githubusercontent.com/demaconsulting/TemplateDotNetLibrary/reviews/index.json
+  location: https://raw.githubusercontent.com/demaconsulting/WordSense/reviews/index.json
 
 # Global context shown to every reviewer for orientation (not fingerprinted).
 context:
@@ -45,7 +45,7 @@ reviews:
 
   # Decomposition Review (only one per repository)
   - id: Decomposition
-    title: Review that TemplateDotNetLibrary Decomposition Addresses the Stated Purpose
+    title: Review that WordSense Decomposition Addresses the Stated Purpose
     context:
       - "README.md"
       - "docs/user_guide/**/*.md"
@@ -54,65 +54,65 @@ reviews:
       - "docs/design/introduction.md"                               # design introduction
       - "docs/sysml2/**/*.sysml"                                    # SysML2 model (authoritative structure)
 
-  # TemplateDotNetLibrary-Architecture Review (one per system)
-  - id: TemplateDotNetLibrary-Architecture
-    title: Review that TemplateDotNetLibrary Architecture Satisfies Requirements
+  # WordSense-Architecture Review (one per system)
+  - id: WordSense-Architecture
+    title: Review that WordSense Architecture Satisfies Requirements
     context:
       - "README.md"
       - "docs/user_guide/**/*.md"
     paths:
-      - "docs/reqstream/template-dot-net-library.yaml"                      # system requirements
+      - "docs/reqstream/word-sense.yaml"                      # system requirements
       - "docs/design/introduction.md"                                           # design introduction
-      - "docs/design/template-dot-net-library.md"                               # system design
+      - "docs/design/word-sense.md"                               # system design
       - "docs/verification/introduction.md"                                    # verification introduction
-      - "docs/verification/template-dot-net-library.md"                        # system verification
-      - "test/DemaConsulting.TemplateDotNetLibrary.Tests/TemplateDotNetLibraryTests.cs"  # integration tests
+      - "docs/verification/word-sense.md"                        # system verification
+      - "test/DemaConsulting.WordSense.Tests/WordSenseTests.cs"  # integration tests
 
-  # TemplateDotNetLibrary-Design Review (one per system)
-  - id: TemplateDotNetLibrary-Design
-    title: Review that TemplateDotNetLibrary Design is Consistent and Complete
+  # WordSense-Design Review (one per system)
+  - id: WordSense-Design
+    title: Review that WordSense Design is Consistent and Complete
     context:
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/template-dot-net-library/platform-requirements.yaml"  # platform requirements
+      - "docs/reqstream/word-sense/platform-requirements.yaml"  # platform requirements
       - "docs/design/introduction.md"                                       # design introduction
-      - "docs/design/template-dot-net-library.md"                           # system design
-      - "docs/design/template-dot-net-library/**/*.md"                      # all system design documents
+      - "docs/design/word-sense.md"                           # system design
+      - "docs/design/word-sense/**/*.md"                      # all system design documents
       - "docs/design/ots.md"                                                # OTS overview
 
-  # TemplateDotNetLibrary-Verification Review (one per system)
-  - id: TemplateDotNetLibrary-Verification
-    title: Review that TemplateDotNetLibrary Verification is Consistent and Complete
+  # WordSense-Verification Review (one per system)
+  - id: WordSense-Verification
+    title: Review that WordSense Verification is Consistent and Complete
     context:
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/reqstream/word-sense.yaml"
     paths:
       - "docs/verification/introduction.md"                                 # verification introduction
-      - "docs/verification/template-dot-net-library.md"                     # system verification
-      - "docs/verification/template-dot-net-library/**/*.md"               # all verification documents
+      - "docs/verification/word-sense.md"                     # system verification
+      - "docs/verification/word-sense/**/*.md"               # all verification documents
       - "docs/verification/ots.md"                                          # OTS overview
 
-  # TemplateDotNetLibrary-AllRequirements Review (one per system)
-  - id: TemplateDotNetLibrary-AllRequirements
-    title: Review that All TemplateDotNetLibrary Requirements are Complete
+  # WordSense-AllRequirements Review (one per system)
+  - id: WordSense-AllRequirements
+    title: Review that All WordSense Requirements are Complete
     context:
-      - "docs/design/template-dot-net-library.md"
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
     paths:
       - "requirements.yaml"                                                 # root requirements file
       - "docs/reqstream/**/*.yaml"                                          # all requirements files
 
-  # TemplateDotNetLibrary-Demo Review (one per unit)
-  - id: TemplateDotNetLibrary-Demo
-    title: Review that TemplateDotNetLibrary Demo Implementation is Correct
+  # WordSense-Demo Review (one per unit)
+  - id: WordSense-Demo
+    title: Review that WordSense Demo Implementation is Correct
     context:
-      - "docs/design/template-dot-net-library.md"
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/template-dot-net-library/demo.yaml"                 # unit requirements
-      - "docs/design/template-dot-net-library/demo.md"                     # unit design
-      - "docs/verification/template-dot-net-library/demo.md"               # unit verification
-      - "src/DemaConsulting.TemplateDotNetLibrary/Demo.cs"                  # unit source
-      - "test/DemaConsulting.TemplateDotNetLibrary.Tests/DemoTests.cs"      # unit tests
+      - "docs/reqstream/word-sense/demo.yaml"                 # unit requirements
+      - "docs/design/word-sense/demo.md"                     # unit design
+      - "docs/verification/word-sense/demo.md"               # unit verification
+      - "src/DemaConsulting.WordSense/Demo.cs"                  # unit source
+      - "test/DemaConsulting.WordSense.Tests/DemoTests.cs"      # unit tests
 
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark

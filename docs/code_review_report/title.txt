@@ -1,11 +1,11 @@
 ---
-title: Template DotNet Library Review Report
-subtitle: File Review Report for the Template DotNet Library
+title: WordSense Review Report
+subtitle: File Review Report for the WordSense
 author: DEMA Consulting
-description: File Review Report for the Template DotNet Library
+description: File Review Report for the WordSense
 lang: en-US
 keywords:
-  - Template DotNet Library
+  - WordSense
   - Review Report
   - File Reviews
   - .NET

@@ -1,12 +1,12 @@
 # System Design
 
-This document provides the system-level design for the Template DotNet Library.
+This document provides the system-level design for the WordSense.
 
-![Template DotNet Library Structure](TemplateDotNetLibraryView.svg)
+![WordSense Structure](WordSenseView.svg)
 
 ## Architecture
 
-The Template DotNet Library is a minimal .NET library template demonstrating DEMA Consulting
+The WordSense is a minimal .NET library template demonstrating DEMA Consulting
 best practices. The system consists of:
 
 - **Demo Unit**: Simple greeting functionality demonstrating library patterns
@@ -37,7 +37,7 @@ The system exposes the following public API to external consumers:
 
 ## Dependencies
 
-The Template DotNet Library has zero runtime NuGet dependencies — it is implemented exclusively
+The WordSense has zero runtime NuGet dependencies — it is implemented exclusively
 against the .NET Base Class Library. The following OTS items are used for building and verifying
 this system (not consumed at runtime); see _OTS Integration Design_ (`docs/design/ots.md`) and
 each item's dedicated design document for details:
@@ -56,7 +56,7 @@ each item's dedicated design document for details:
 
 ## Risk Control Measures
 
-N/A - Template DotNet Library is a demonstration template with no safety-critical functionality
+N/A - WordSense is a demonstration template with no safety-critical functionality
 requiring risk control measures (IEC 62304 §5.3.3).
 
 ## Data Flow

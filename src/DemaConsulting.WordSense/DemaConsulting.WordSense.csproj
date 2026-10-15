@@ -7,20 +7,20 @@
     <Nullable>enable</Nullable>
 
     <!-- NuGet Package Configuration -->
-    <PackageId>TemplateDotNetLibrary</PackageId>
+    <PackageId>DemaConsulting.WordSense</PackageId>
     <Version>0.0.0</Version>
     <Authors>DEMA Consulting</Authors>
     <Company>DEMA Consulting</Company>
-    <Description>Template project for DEMA Consulting DotNet Libraries</Description>
+    <Description>WordSense library for DEMA Consulting</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/demaconsulting/TemplateDotNetLibrary</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/demaconsulting/TemplateDotNetLibrary</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/demaconsulting/WordSense</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/demaconsulting/WordSense</RepositoryUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>Icon.png</PackageIcon>
-    <PackageTags>template;dotnet-library</PackageTags>
+    <PackageTags>wordsense;dotnet-library</PackageTags>
     <Copyright>Copyright DEMA Consulting</Copyright>
-    <Title>Template DotNet Library</Title>
-    <Product>TemplateDotNetLibrary</Product>
+    <Title>WordSense</Title>
+    <Product>WordSense</Product>
 
     <!-- Symbol Package Configuration -->
     <IncludeSymbols>true</IncludeSymbols>
@@ -71,7 +71,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <InternalsVisibleTo Include="DemaConsulting.TemplateDotNetLibrary.Tests" />
+    <InternalsVisibleTo Include="DemaConsulting.WordSense.Tests" />
   </ItemGroup>
 
   <ItemGroup>

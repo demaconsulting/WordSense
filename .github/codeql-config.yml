@@ -1,4 +1,4 @@
 ---
-# CodeQL configuration for Template DotNet Library
+# CodeQL configuration for WordSense
 
-name: "Template DotNet Library CodeQL Config"
+name: "WordSense CodeQL Config"

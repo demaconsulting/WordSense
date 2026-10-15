@@ -1,11 +1,11 @@
 ---
-title: Template DotNet Library Requirements
-subtitle: Requirements Specification for the Template DotNet Library
+title: WordSense Requirements
+subtitle: Requirements Specification for the WordSense
 author: DEMA Consulting
-description: Requirements Specification for the Template DotNet Library
+description: Requirements Specification for the WordSense
 lang: en-US
 keywords:
-  - Template DotNet Library
+  - WordSense
   - Requirements
   - Specification
   - .NET

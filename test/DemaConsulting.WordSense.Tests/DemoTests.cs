@@ -1,6 +1,6 @@
-using TemplateDotNetLibrary;
+using WordSense;
 
-namespace DemaConsulting.TemplateDotNetLibrary.Tests;
+namespace DemaConsulting.WordSense.Tests;
 
 /// <summary>
 ///     Unit tests for the Demo class.
