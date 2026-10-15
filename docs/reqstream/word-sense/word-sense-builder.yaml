@@ -24,10 +24,15 @@ sections:
           - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
 
       - id: WordSense-Builder-Importer
-        title: The builder shall import only complete, valid sentence batches and shall be idempotent.
+        title: The builder shall import valid sentence batches, dropping only offending rows and excluding thin lemmas, and
+          shall be idempotent.
         tags: [unit]
         justification: |
           Partial or invalid batches must never enter the corpus.
         tests:
           - WordSenseBuilder_BatchImporter_ImportsValidatesAndIsIdempotent
+          - WordSenseBuilder_BatchImporter_MissingLemmaIsWarning
+          - WordSenseBuilder_BatchImporter_DropsFewBadRows
+          - WordSenseBuilder_BatchImporter_RejectsBatchWithManyBadRows
+          - WordSenseBuilder_BatchImporter_ExcludesThinLemmas
           - WordSenseBuilder_Program_Run_ReportsErrors

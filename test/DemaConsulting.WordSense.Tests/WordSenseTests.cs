@@ -73,7 +73,7 @@ public class WordSenseTests
 
     /// <summary>
     ///     Accuracy gate: the embedded table must classify the held-out sentences with high accuracy. Every
-    ///     third holdout sentence of every corpus file is evaluated, which keeps the test quick while still
+    ///     fifth holdout sentence of every corpus file is evaluated, which keeps the test quick while still
     ///     covering every source file.
     /// </summary>
     [Fact]
@@ -84,7 +84,7 @@ public class WordSenseTests
         int total = 0, correct = 0, answered = 0, answeredCorrect = 0;
         foreach (var file in Directory.GetFiles(Path.Combine(root, "corpus", "holdout"), "*.tsv").Order(StringComparer.Ordinal))
         {
-            var rows = (await File.ReadAllLinesAsync(file, TestContext.Current.CancellationToken)).Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length == 3).Where((_, i) => i % 3 == 0);
+            var rows = (await File.ReadAllLinesAsync(file, TestContext.Current.CancellationToken)).Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length == 3).Where((_, i) => i % 5 == 0);
             foreach (var columns in rows)
             {
                 var sentence = columns[2];

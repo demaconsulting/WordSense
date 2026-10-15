@@ -15,6 +15,9 @@ table.
   runs agree exactly.
 - **WordSenseBuilder_BatchImporter_ImportsValidatesAndIsIdempotent**: imported, invalid and missing
   batches; a second import changes nothing.
+- **WordSenseBuilder_BatchImporter_MissingLemmaIsWarning**, **..._DropsFewBadRows**,
+  **..._RejectsBatchWithManyBadRows**, **..._ExcludesThinLemmas**: lemma-level absence is a warning, few
+  bad rows are dropped, many reject the batch, and thin lemmas are excluded.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
 
 ## Requirements Coverage

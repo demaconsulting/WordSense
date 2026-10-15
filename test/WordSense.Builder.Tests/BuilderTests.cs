@@ -136,6 +136,94 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     A specified lemma without sentences is a warning, not a batch failure.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BatchImporter_MissingLemmaIsWarning()
+    {
+        var corpus = PrepareCorpus();
+        Write("source/batches/batch1.tsv", "lemma\tlabels\nbank\tmoney,river\nrare\tnoun,verb\n");
+        Write("source/anchors/batch1.tsv", Anchors("bank"));
+        Write("source/holdout/batch1.tsv", "bank\tmoney\tHold {bank} one.\nbank\triver\tHold {bank} two.\n");
+
+        var result = Assert.Single(BatchImporter.Import(Path.Combine(_root, "source"), corpus, 1));
+        Assert.Equal("Imported", result.Status);
+        Assert.Contains(result.Notes!, n => n.StartsWith("WARNING", StringComparison.Ordinal) && n.Contains("rare", StringComparison.Ordinal));
+        Assert.Equal(8, File.ReadAllLines(Path.Combine(corpus, "anchors", "speech-batch1.tsv")).Length);
+    }
+
+    /// <summary>
+    ///     Row-level errors drop only the offending rows when they are few.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BatchImporter_DropsFewBadRows()
+    {
+        var corpus = PrepareCorpus();
+        Write("source/batches/batch1.tsv", "lemma\tlabels\nbank\tmoney,river\n");
+        var anchors = new StringBuilder(Anchors("bank"));
+        for (var i = 0; i < 100; i++)
+        {
+            anchors.Append("bank\tmoney\tFiller {bank} ").Append(i).Append(".\n");
+        }
+
+        // Two bad rows in 100+ rows: a disallowed label and a malformed line
+        anchors.Append("bank\tfinance\tBad {bank} label.\n").Append("bank\tmoney\tNo target.\n");
+        Write("source/anchors/batch1.tsv", anchors.ToString());
+        Write("source/holdout/batch1.tsv", "bank\tmoney\tFiller {bank} 1.\nbank\tmoney\tFresh {bank} one.\nnovel\tmoney\tOdd {novel} one.\n");
+
+        var result = Assert.Single(BatchImporter.Import(Path.Combine(_root, "source"), corpus, 1));
+        Assert.Equal("Imported", result.Status);
+        Assert.Equal(4, result.Notes!.Count(n => n.StartsWith("dropped", StringComparison.Ordinal)));
+        var holdout = File.ReadAllText(Path.Combine(corpus, "holdout", "speech-batch1.tsv"));
+        Assert.Contains("Fresh {bank} one.", holdout, StringComparison.Ordinal);
+        Assert.DoesNotContain("Filler", holdout, StringComparison.Ordinal);
+        Assert.DoesNotContain("novel", holdout, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Too many row errors reject the whole batch.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BatchImporter_RejectsBatchWithManyBadRows()
+    {
+        var corpus = PrepareCorpus();
+        Write("source/anchors/batch1.tsv", Anchors("bank") + "bank\tmoney\tBroken.\n");
+        Write("source/holdout/batch1.tsv", "bank\tmoney\tHold {bank} one.\n");
+
+        var result = Assert.Single(BatchImporter.Import(Path.Combine(_root, "source"), corpus, 1));
+        Assert.Equal("Invalid", result.Status);
+        Assert.False(File.Exists(Path.Combine(corpus, "anchors", "speech-batch1.tsv")));
+    }
+
+    /// <summary>
+    ///     Lemmas with fewer than two senses or fewer than four anchors for a sense are excluded; so are holdout-only lemmas.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BatchImporter_ExcludesThinLemmas()
+    {
+        var corpus = PrepareCorpus();
+        Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nbank\tbank\tmoney,river\nthin\tthin\tmoney,river\nmono\tmono\tmoney\nhold\thold\tmoney,river\n");
+        var anchors = new StringBuilder(Anchors("bank"));
+        for (var i = 0; i < 3; i++)
+        {
+            anchors.Append("thin\tmoney\tThin {thin} m").Append(i).Append(".\nthin\triver\tThin {thin} r").Append(i).Append(".\n");
+            anchors.Append("mono\tmoney\tMono {mono} m").Append(i).Append(".\n");
+        }
+
+        Write("source/anchors/batch1.tsv", anchors.ToString());
+        Write("source/holdout/batch1.tsv", "bank\tmoney\tHold {bank} one.\nthin\tmoney\tHold {thin} one.\nhold\tmoney\tHold {hold} one.\n");
+
+        var result = Assert.Single(BatchImporter.Import(Path.Combine(_root, "source"), corpus, 1));
+        Assert.Equal("Imported", result.Status);
+        Assert.Equal(3, result.Notes!.Count(n => n.StartsWith("EXCLUDED", StringComparison.Ordinal)));
+        var text = File.ReadAllText(Path.Combine(corpus, "anchors", "speech-batch1.tsv")) + File.ReadAllText(Path.Combine(corpus, "holdout", "speech-batch1.tsv"));
+        Assert.DoesNotContain("thin", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("mono", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("{hold}", text, StringComparison.Ordinal);
+        Assert.Contains("{bank}", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The command line reports usage and data errors with exit code 1.
     /// </summary>
     /// <param name="args">The arguments.</param>
@@ -151,6 +239,26 @@ public sealed class BuilderTests : IDisposable
         using var error = new StringWriter();
         Assert.Equal(1, Program.Run(args, output, error));
         Assert.NotEmpty(error.ToString());
+    }
+
+    private string PrepareCorpus()
+    {
+        Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nbank\tbank\tmoney,river\nnovel\tnovel\tmoney\nhold\thold\tmoney,river\n");
+        Directory.CreateDirectory(Path.Combine(_root, "corpus", "anchors"));
+        Directory.CreateDirectory(Path.Combine(_root, "corpus", "holdout"));
+        return Path.Combine(_root, "corpus");
+    }
+
+    private static string Anchors(string lemma)
+    {
+        var text = new StringBuilder();
+        for (var i = 0; i < 4; i++)
+        {
+            text.Append(lemma).Append("\tmoney\tMoney {").Append(lemma).Append("} ").Append(i).Append(".\n");
+            text.Append(lemma).Append("\triver\tRiver {").Append(lemma).Append("} ").Append(i).Append(".\n");
+        }
+
+        return text.ToString();
     }
 
     private string Write(string relative, string content)

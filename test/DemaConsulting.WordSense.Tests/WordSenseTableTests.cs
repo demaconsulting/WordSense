@@ -171,17 +171,18 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     The embedded table loads and lists the seed lemmas.
+    ///     The embedded table loads and lists the seed and batch lemmas, and every form resolves to a lemma with a classifier.
     /// </summary>
     [Fact]
     public void WordSenseTable_LoadEmbedded_ContainsSeedLemmas()
     {
         var table = WordSenseTable.LoadEmbedded();
 
-        Assert.True(table.Lemmas.Count >= 34);
+        Assert.True(table.Lemmas.Count >= 349);
         Assert.True(table.TryGetLemma("record", out var record));
         Assert.Equal(["noun", "verb"], record.Senses);
         Assert.Equal("record", table.Forms["records"]);
         Assert.Equal(384, table.Dimension);
+        Assert.All(table.Forms.Values, lemma => Assert.True(table.TryGetLemma(lemma, out _), lemma));
     }
 }

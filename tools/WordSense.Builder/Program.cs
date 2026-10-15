@@ -139,6 +139,10 @@ public static class Program
         foreach (var result in results)
         {
             output.WriteLine($"batch{result.Batch}: {result.Status} ({result.Detail})");
+            foreach (var note in result.Notes ?? [])
+            {
+                output.WriteLine("  " + note);
+            }
         }
 
         return results.Any(r => r.Status == "Invalid") ? 1 : 0;

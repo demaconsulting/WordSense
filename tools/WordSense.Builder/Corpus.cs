@@ -64,8 +64,20 @@ internal static class Corpus
     /// <exception cref="InvalidDataException">Thrown when a row is malformed.</exception>
     public static List<CorpusRow> ReadSentences(string path)
     {
+        var (rows, errors) = ReadSentencesLenient(path);
+        return errors.Count > 0 ? throw new InvalidDataException(errors[0]) : rows;
+    }
+
+    /// <summary>
+    ///     Reads one sentence file, keeping well-formed rows and describing the malformed ones.
+    /// </summary>
+    /// <param name="path">The file path.</param>
+    /// <returns>The well-formed rows and one message per malformed row.</returns>
+    public static (List<CorpusRow> Rows, List<string> Errors) ReadSentencesLenient(string path)
+    {
         var name = Path.GetFileName(path);
         var rows = new List<CorpusRow>();
+        var errors = new List<string>();
         var number = 0;
         foreach (var raw in File.ReadAllLines(path, new UTF8Encoding(false)))
         {
@@ -79,26 +91,29 @@ internal static class Corpus
             var columns = line.Split('\t');
             if (columns.Length != 3)
             {
-                throw new InvalidDataException($"{name}:{number}: expected 3 tab-separated columns but found {columns.Length}.");
+                errors.Add($"{name}:{number}: expected 3 tab-separated columns but found {columns.Length}.");
+                continue;
             }
 
             var (lemma, sense, sentence) = (columns[0].Trim(), columns[1].Trim(), columns[2].Trim());
             if (lemma.Length == 0 || sense.Length == 0 || !string.Equals(lemma, lemma.ToLowerInvariant(), StringComparison.Ordinal))
             {
-                throw new InvalidDataException($"{name}:{number}: lemma must be lower-case and sense must be non-empty.");
+                errors.Add($"{name}:{number}: lemma must be lower-case and sense must be non-empty.");
+                continue;
             }
 
             var open = sentence.IndexOf('{', StringComparison.Ordinal);
             var close = sentence.IndexOf('}', StringComparison.Ordinal);
             if (open < 0 || close != sentence.LastIndexOf('}') || open != sentence.LastIndexOf('{') || close < open + 2)
             {
-                throw new InvalidDataException($"{name}:{number}: the sentence must contain exactly one non-empty {{target}} pair.");
+                errors.Add($"{name}:{number}: the sentence must contain exactly one non-empty {{target}} pair.");
+                continue;
             }
 
             rows.Add(new CorpusRow(lemma, sense, sentence, name));
         }
 
-        return rows;
+        return (rows, errors);
     }
 
     /// <summary>

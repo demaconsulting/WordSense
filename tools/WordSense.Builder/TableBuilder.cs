@@ -174,6 +174,7 @@ internal static class TableBuilder
     {
         var byLemma = models.ToDictionary(m => m.Lemma, StringComparer.Ordinal);
         var result = new SortedDictionary<string, string>(StringComparer.Ordinal);
+        var untrained = new Dictionary<(string Lemma, string Label), string>();
         foreach (var (form, lemma, labels) in forms)
         {
             if (!byLemma.TryGetValue(lemma, out var model))
@@ -188,8 +189,15 @@ internal static class TableBuilder
 
             foreach (var label in labels.Where(l => !model.Senses.Contains(l, StringComparer.Ordinal)))
             {
-                warnings.Add($"Form '{form}' of '{lemma}' lists sense '{label}', which the lemma was not trained on.");
+                untrained.TryGetValue((lemma, label), out var listed);
+                untrained[(lemma, label)] = listed is null ? form : listed + ", " + form;
             }
+        }
+
+        // One warning per lemma and label keeps the report readable
+        foreach (var ((lemma, label), formList) in untrained.OrderBy(u => u.Key.Lemma, StringComparer.Ordinal).ThenBy(u => u.Key.Label, StringComparer.Ordinal))
+        {
+            warnings.Add($"Forms of '{lemma}' list sense '{label}', which the lemma was not trained on (forms: {formList}).");
         }
 
         // Every classified lemma must also resolve as itself
