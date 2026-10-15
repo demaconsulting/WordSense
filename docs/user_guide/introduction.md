@@ -141,8 +141,10 @@ Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException`
 # Accuracy and Performance
 
 Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
-numbers per lemma. On the 5,957 held-out rows the senses are 98.46 % correct when answered (91.57 % answered). For
-noun versus verb on lemmas that have both, 98.95 % of the answered rows are correct (92.29 % answered).
+numbers per lemma. On the 5,785 held-out rows the best sense is correct 96.73 % of the time, and 98.59 % of the
+answered rows are correct (91.70 % answered). For noun versus verb (5,227 held-out rows whose correct sense is
+exactly one of the two), the best tag is correct 97.21 % of the time, and 99.11 % of the answered rows are correct
+(92.14 % answered).
 A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
 threads on a development workstation; run the `Benchmark` test category to measure your hardware).
 

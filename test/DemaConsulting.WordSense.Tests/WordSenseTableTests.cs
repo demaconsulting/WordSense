@@ -73,7 +73,7 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A version 1 or version 2 table (no groups) is rejected.
+    ///     A table older than version 3 (versions 1 and 2 have no sense groups) is rejected.
     /// </summary>
     /// <param name="version">The old version number written into the header.</param>
     [Theory]

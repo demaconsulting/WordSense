@@ -15,8 +15,9 @@ whether "record" is a noun or a verb, or whether "bass" is a fish or an instrume
 
 ## Features
 
-- **Contextual sense decisions**: per-word senses with tags (noun, verb, ...), a confidence margin and tag-level
-  queries such as noun versus verb, for a curated set of homographs
+- **Contextual sense decisions**: per-word senses with a coarser `Group`, true part-of-speech tags (noun, verb, ...),
+  a confidence margin and tag-level queries such as noun versus verb, for a curated set of homographs (embedded
+  table format v3)
 - **Abstention**: returns no sense instead of guessing when the evidence is weak
 - **Single package**: one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
   Microsoft.ML.OnnxRuntime

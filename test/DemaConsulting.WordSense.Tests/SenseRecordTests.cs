@@ -100,7 +100,7 @@ public class SenseRecordTests
 
     private static readonly WordSense[] Mixed =
     [
-        Sense("bow", "bend", "noun", "verb"),
+        Sense("bow", "knot", "noun"),
         Sense("bow", "weapon", "noun"),
         Sense("bow", "stoop", "verb"),
         Sense("bow", "color", "adj"),
@@ -119,12 +119,12 @@ public class SenseRecordTests
     }
 
     /// <summary>
-    ///     A sense that carries several queried tags counts for each, so it ties them and the first tag wins.
+    ///     Two queried tags with equal best scores tie, so a positive threshold abstains and the first tag wins at zero.
     /// </summary>
     [Fact]
-    public void TagScorer_Classify_SenseWithBothTags_TiesAndIsBelowAnyPositiveThreshold()
+    public void TagScorer_Classify_EqualTagScores_TiesAndIsBelowAnyPositiveThreshold()
     {
-        float[] scores = [5f, 1f, 1f, 0f];
+        float[] scores = [0f, 3f, 3f, 0f];
 
         Assert.Null(TagScorer.Classify(Mixed, scores, NounVerb, 0.1));
         Assert.Equal("noun", TagScorer.Classify(Mixed, scores, NounVerb, 0));
