@@ -22,6 +22,8 @@ python tools/real-text/harvest.py stats --targets tools/real-text/targets.tsv
 python tools/real-text/harvest.py eval-sample --corpus corpus --lemmas lemmas.txt --out audit-work/real/candidates-eval.tsv
 ```
 
-Then use the builder commands `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge` and `real-import`
+The target lists are `targets.tsv`, `targets2.tsv` and `targets3.tsv` (restoration) and `targets4.tsv` (the 13 gap
+lemmas of Phase 3a; only `conjunct`, `overhead` and `uptown` reached the thresholds, see
+`docs/build_notes/gap-lemmas-decisions.md`). the builder commands `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge` and `real-import`
 (or `real-eval-import`) to judge the candidates blind and write the corpus and its provenance. See the design of the
 WordSenseBuilder unit.
