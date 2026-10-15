@@ -1,0 +1,40 @@
+lemma	sense	tags	group	from	definition	status
+bow	bend-noun	noun	bend	bend:noun	an act of bending the body forward or the head down, as a greeting, thanks, respect or at the end of a performance, or the front of a ship (bow rhymes with cow)	new
+bow	bend-verb	verb	bend	bend:verb	to bend the body forward or the head down in greeting, respect or thanks; to yield or submit (bow to pressure)	new
+bow	weapon	noun		weapon:noun	a curved weapon for shooting arrows, or a similar curved or knotted object (bow rhymes with go): a violin bow, a ribbon bow, a bow tie	new
+lead	metal	noun		metal:noun	the soft heavy grey metal (pronounced led): lead pipes, lead paint, lead poisoning, a pencil lead	new
+lead	guide-noun	noun	guide	guide:noun	a position in front, a clue or tip, a leash, or the main part: take the lead, a good lead, a lead role, the lead singer	new
+lead	guide-verb	verb	guide	guide:verb	to guide, go in front of, command or cause (lead, leads, led, leading): led the way, lead to trouble, led by example	new
+tear	drop	noun		drop:noun	a drop of salty liquid from the eye (pronounced like ear): tears ran down her cheeks	new
+tear	rip-noun	noun	rip	rip:noun	a hole or split made by tearing (pronounced like air): a tear in the paper, a tear in his coat	new
+tear	rip-verb	verb	rip	rip:verb	to pull apart by force, or to rush (tear, tears, tore, torn, tearing): tore the letter, torn jeans, tear down a wall	new
+closer	noun	noun		noun:noun	one that closes or finishes: a door closer, the closer of the game, a baseball closer	new
+closer	adj	adj|comparative	nearer	verb:adj	comparative adjective of close: nearer in space, time or relationship: a closer look, closer friends, the closer of the two	new
+closer	adv	adv|comparative	nearer	verb:adv	comparative adverb of close: to or at a nearer position: come closer, stand closer to the fire, moved closer	new
+close	adj	adj		-	adjective: near, intimate or careful: a close friend, a close call, close attention	existing
+close	verb	verb		-	to shut or end: close the door, the shop closes at six	existing
+close	adv	adv		adj:adv	adverb: near, closely or tightly: stay close, stood close to the wall, held her close, close behind	new
+content	adj	adj		-	satisfied, happy with what one has: content with the result	existing
+content	noun	noun		-	what is contained, or subject matter: the content of the box, contents	existing
+content	verb	verb		adj:verb	to satisfy or make content, often reflexive: she contented herself with a short walk, content yourself with this	new
+present	noun	noun		-	a gift, or the present time: a birthday present, the past and the present	existing
+present	verb	verb		-	to give, show or introduce: present an award, present the findings	existing
+present	adj	adj		noun:adj	adjective: being in a place or existing now: all members were present, the present situation, those present	new
+live	adj	adj		-	adjective (pronounced like hive): alive, broadcast as it happens, or carrying electricity: a live broadcast, a live wire, live animals	existing
+live	verb	verb		-	to be alive or to reside (pronounced like give): live in London, live a long life	existing
+live	adv	adv		adj:adv	adverb (pronounced like hive): as it happens, in a live performance: broadcast live, played live, streamed live	new
+rows	argument	noun		-	noun: noisy quarrels (rows of the argument kind, pronounced like cows)	existing
+rows	line	noun		-	noun: lines of things side by side: rows of seats, rows of houses	existing
+rows	paddle	verb		line:verb,argument:verb	verb: propels a boat with oars (he rows the boat, she rows across the lake, pronounced like goes)	new
+row	argument	noun		-	noun: a noisy quarrel	existing
+row	line	noun		-	noun: a line of things side by side: a row of seats	existing
+row	paddle	verb		argument:verb	verb: to propel a boat with oars: row the boat, row across the lake	existing
+upsetting	adj	adj		-	adjective: causing distress or sadness: an upsetting experience, upsetting news	new
+upsetting	noun	noun		-	noun (nominal gerund after the): the act of overturning or disturbing: the upsetting of the plan, the upsetting of the boat	new
+upsetting	verb	verb		verb:verb	verb (present participle or gerund of upset, with an object): overturning, disturbing or distressing: upsetting the apple cart, is upsetting her	new
+polish	noun	noun		-	noun: a substance or action that makes a surface shiny, or refinement: shoe polish, a coat of polish	existing
+polish	verb	verb		-	verb: to make shiny by rubbing, or to refine: polish the silver, polish your speech	existing
+polish	adj	adj	nationality	-	adjective (capitalized Polish used as a modifier): of Poland, its people or language: Polish sausage, a Polish film	new
+polish	language	noun	nationality	-	noun (capitalized Polish): the Polish language or a Polish person: she speaks fluent Polish, the Polish voted	new
+orient	noun	noun		-	noun (the Orient): the countries of East Asia, old-fashioned	existing
+orient	verb	verb		-	verb: to align, direct or familiarize: orient the map, orients herself, oriented toward	existing

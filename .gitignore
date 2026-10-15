@@ -109,3 +109,6 @@ AGENT_REPORT_*.md
 .agent-logs/
 
 audit-work/
+
+# Raw downloaded texts of the real-text harvest tool (only extracted sentences are committed)
+tools/real-text/cache/

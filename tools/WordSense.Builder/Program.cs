@@ -60,6 +60,32 @@ public static class Program
                     return RunApplyRelabel(options, output);
                 case "validate-pos":
                     return RunValidatePos(options, output);
+                case "real-gap":
+                    output.Write(RealPlan.Gap(Require(options, "corpus")));
+                    return 0;
+                case "real-judge-export":
+                    return RunRealJudgeExport(options, output);
+                case "real-judge-adjudicate":
+                    output.WriteLine($"{RealJudge.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), options.TryGetValue("size", out var size) ? int.Parse(size, System.Globalization.CultureInfo.InvariantCulture) : 60)} rows need adjudication.");
+                    return 0;
+                case "real-judge-merge":
+                    return RunRealJudgeMerge(options, output);
+                case "real-import":
+                    output.Write(RealImport.Import(Require(options, "corpus"), ReadCandidateFiles(Require(options, "candidates")), RealJudge.ReadJudgements(Require(options, "audit").Split(','))));
+                    return 0;
+                case "real-eval-import":
+                    output.Write(RealEval.ImportEval(
+                        Require(options, "corpus"),
+                        ReadCandidateFiles(Require(options, "candidates")),
+                        RealJudge.ReadJudgements(Require(options, "audit").Split(',')),
+                        int.Parse(options.GetValueOrDefault("per-sense", "12"), System.Globalization.CultureInfo.InvariantCulture)));
+                    return 0;
+                case "real-eval":
+                    File.WriteAllText(Require(options, "report"), RealEval.RunAsync(Require(options, "corpus"), Require(options, "model"), CancellationToken.None).GetAwaiter().GetResult(), new UTF8Encoding(false));
+                    output.WriteLine("Wrote the real-text evaluation.");
+                    return 0;
+                case "validate-provenance":
+                    return RunValidateProvenance(options, output, error);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'.");
                     return 1;
@@ -183,6 +209,44 @@ public static class Program
     {
         output.WriteLine(Relabeler.Apply(Require(options, "corpus")));
         return 0;
+    }
+
+    private static List<Candidate> ReadCandidateFiles(string list) => list.Split(',').SelectMany(RealJudge.ReadCandidates).ToList();
+
+    private static int RunRealJudgeExport(Dictionary<string, string> options, TextWriter output)
+    {
+        var corpus = Require(options, "corpus");
+        var candidates = options.ContainsKey("candidates") ? ReadCandidateFiles(options["candidates"]) : [];
+        if (options.GetValueOrDefault("undecided", "false") == "true")
+        {
+            var (_, undecided, _) = RealPlan.ReadPool(corpus, RealPlan.ReadPlan(corpus));
+            candidates.AddRange(undecided.Select(r => new Candidate(PosAudit.RowId(r.Lemma, r.Sentence), r.Lemma, r.Sentence, "llm-corpus", "MIT (project-authored)", "dropped-rows.tsv", "-", "project (LLM-written)", r.Split)));
+        }
+
+        var size = int.Parse(options.GetValueOrDefault("size", "100"), System.Globalization.CultureInfo.InvariantCulture);
+        var (rows, chunks) = RealJudge.Export(corpus, candidates, Require(options, "work"), size);
+        output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
+        return 0;
+    }
+
+    private static int RunRealJudgeMerge(Dictionary<string, string> options, TextWriter output)
+    {
+        var results = RealJudge.Merge(Require(options, "corpus"), Require(options, "work"));
+        RealJudge.WriteJudgements(Require(options, "output"), results);
+        output.WriteLine($"Merged {results.Count} rows ({results.Count(r => r.Resolution == "agree")} agree, {results.Count(r => r.Resolution == "adjudicated")} adjudicated, {results.Count(r => r.Resolution == "undecided")} undecided, {results.Count(r => r.Final == RealJudge.None)} none).");
+        return 0;
+    }
+
+    private static int RunValidateProvenance(Dictionary<string, string> options, TextWriter output, TextWriter error)
+    {
+        var errors = RealImport.Validate(Require(options, "corpus"));
+        foreach (var message in errors)
+        {
+            error.WriteLine(message);
+        }
+
+        output.WriteLine(errors.Count == 0 ? "The provenance sidecar is complete and valid." : $"{errors.Count} provenance problems.");
+        return errors.Count == 0 ? 0 : 1;
     }
 
     private static int RunValidatePos(Dictionary<string, string> options, TextWriter output)

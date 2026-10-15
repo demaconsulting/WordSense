@@ -1,0 +1,21 @@
+lemma	hint	pattern	flags	ctx	cap
+bow	any	bow|bows|bowed|bowing	i		30
+bow	bend	bow|bows|bowed|bowing	i	\b(?:bowed|bowing|bows)\b|\b(?:took|take|a|his|her|deep|low|slight|polite|gave|made|with a|and) bow\b|\bbow(?: to| down| before| her| his| and)\b	50
+lead	any	lead|leads|led|leading	i		20
+lead	guide-noun	lead|leads	i	\b(?:the|a|his|her|their|take|took|taken|taking|follow|followed|following|poor|strong|new|good|police) leads?\b|\blead (?:role|singer|actor|actress|guitar|story|character|vocalist)\b	50
+lead	guide-verb	lead|leads|led|leading	i	\b(?:to lead|will lead|would lead|can lead|could lead|may lead|leads to|led to|leads the|led the|led by|led him|led her|led them)\b	30
+tear	any	tear|tears|tore|torn|tearing	i		20
+tear	rip-noun	tear|tears	i	\b(?:a|the|big|small|huge|large|long) tears? (?:in|on|across)\b|\btears? in (?:the|her|his|my|your|a)\b	40
+tear	rip-verb	tear|tears|tore|torn|tearing	i	\b(?:to tear|will tear|tore|torn|tearing|tears (?:up|down|apart|off|the|a))\b	30
+closer	any	closer|closers	i		30
+closer	noun	closer|closers	i	\b(?:door closers?|the closer|a closer|closer of|closers|baseball|bullpen|save)\b	30
+closer	adv	closer	i	\b(?:come|came|move|moved|stand|stood|step|stepped|get|got|draw|drew|lean|leaned|bring|brought|sit|sat|look|looked|walk|walked|crept|pulled|pull|moving|coming|getting|drawing)\b.{0,25}\bcloser\b	35
+closer	adj	closer	i	\b(?:closer (?:look|examination|inspection|attention|ties|friends|relationship|friend)|much closer|is closer|are closer|was closer|were closer|even closer|a closer|the closer)\b	35
+close	adv	close	i	\b(?:stay|stayed|stand|stood|stands|hold|held|keep|kept|follow|followed|watch|watched|sit|sat|live|lived|lie|lay|come|came|get|got|draw|drew|look|looked|pressed|press|walk|walked)\s+(?:too |very |so |quite |pretty |really |right )?close\b|\bclose\s+(?:to|by|behind|together|at hand|beside|up)\b	50
+content	verb	content|contents|contented|contenting	i	\bcontent(?:s|ed|ing)? (?:myself|himself|herself|themselves|ourselves|yourself|yourselves|itself|oneself)\b|\bto content (?:me|him|her|them|us|you)\b|\bcontent(?:s|ed)? (?:me|him|her|them|us|you) with\b	50
+present	adj	present	i	\b(?:the present (?:time|day|moment|situation|state|king|case|government|owner|age|company|world)|(?:all|those|everyone|everybody|were|was|are|is|been|being|not|who were|who was) present)\b	40
+live	adv	live	i	\b(?:broadcast|broadcasts|broadcasted|televised|aired|air|perform|performed|performing|play|played|playing|stream|streamed|streaming|shown|show|recorded|sing|sang|sings|appear|appeared|go|going|went|watch|watched)\s+live\b|\blive\s+(?:on|from)\s+(?:air|tv|television|stage|radio|camera|the radio)\b	60
+rows	paddle	rows	i		90
+upsetting	any	upsetting	i		60
+polish	adj	Polish			60
+orient	any	orient|orients|oriented|orienting|Orient	i		60

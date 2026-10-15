@@ -1,0 +1,23 @@
+lemma	sense	tags	group
+bow	bend-noun	noun	bend
+bow	bend-verb	verb	bend
+bow	weapon	noun	
+lead	metal	noun	
+lead	guide-noun	noun	guide
+lead	guide-verb	verb	guide
+tear	drop	noun	
+tear	rip-noun	noun	rip
+tear	rip-verb	verb	rip
+closer	noun	noun	
+closer	adj	adj|comparative	nearer
+closer	adv	adv|comparative	nearer
+close	adv	adv	
+content	verb	verb	
+present	adj	adj	
+live	adv	adv	
+rows	paddle	verb	
+upsetting	adj	adj	
+upsetting	noun	noun	
+upsetting	verb	verb	
+polish	adj	adj	nationality
+polish	language	noun	nationality
