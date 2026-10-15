@@ -178,6 +178,7 @@ reviews:
       - "docs/design/word-sense/sense-record.md"
       - "docs/verification/word-sense/sense-record.md"
       - "src/DemaConsulting.WordSense/WordSense.cs"
+      - "src/DemaConsulting.WordSense/WordSenseToken.cs"
       - "src/DemaConsulting.WordSense/SenseDefinition.cs"
       - "src/DemaConsulting.WordSense/TagScorer.cs"
       - "src/DemaConsulting.WordSense/TextSplitter.cs"

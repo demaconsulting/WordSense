@@ -49,6 +49,9 @@ sections:
         tests:
           - WordSenseTable_Score_Binary_UsesActivationSign
           - WordSenseTable_Score_OneVersusRest_PicksBestRow
+          - WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation
+          - WordSenseTable_Scores_OneVersusRest_ReturnsPerRowActivation
+          - WordSenseTable_Scores_LengthMismatch_Throws
 
       - id: WordSense-Table-Embedded
         title: >-

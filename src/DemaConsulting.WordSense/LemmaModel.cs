@@ -21,8 +21,8 @@ public enum LemmaModelKind
 ///     The trained linear classifier for one ambiguous lemma.
 /// </summary>
 /// <remarks>
-///     Instances are immutable after construction and thread-safe. The sense labels are kept in
-///     ordinal-sorted order, which is also the order of the weight rows.
+///     Instances are immutable after construction and thread-safe. The order in which the senses are
+///     supplied defines the order of the weight rows; sense labels must be unique.
 /// </remarks>
 public sealed class LemmaModel
 {
@@ -30,7 +30,7 @@ public sealed class LemmaModel
     ///     Initializes a new instance of the <see cref="LemmaModel"/> class.
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="senses">The sense definitions (label and tags), at least two, in ordinal order of label.</param>
+    /// <param name="senses">The sense definitions (label and tags), at least two; their order defines the weight-row order.</param>
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major, <c>rows × dimension</c> values.</param>
     /// <param name="bias">One bias per weight row.</param>
@@ -97,7 +97,7 @@ public sealed class LemmaModel
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the senses, one shared record each, in ordinal order of label (the order of the weight rows).
+    ///     Gets the senses, one shared record each, in the supplied order (which defines the order of the weight rows).
     /// </summary>
     public IReadOnlyList<WordSense> Senses { get; }
 

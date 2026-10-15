@@ -74,7 +74,7 @@ fails with the list of missing forms, which are then added to `corpus/forms/spee
 ### WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
 
 Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, `adv` and only the qualifiers
-`past`, `present`, `comparative`, `superlative` besides.
+`past`, `present`, `comparative`, `superlative`, `participle` besides.
 
 ### WordSense_Benchmark_ClassifyLatency
 

@@ -99,7 +99,7 @@ Configure a mirror with environment variables:
 | `WORDSENSE_MIRROR_URL`          | Absolute http(s) base URL of the mirror                                  |
 | `WORDSENSE_MIRROR_USER`         | Basic authentication user (with the password)                            |
 | `WORDSENSE_MIRROR_PASSWORD`     | Basic authentication password                                            |
-| `WORDSENSE_MIRROR_BEARER_TOKEN` | Bearer token sent instead of user and password (https or loopback only)  |
+| `WORDSENSE_MIRROR_BEARER_TOKEN` | Mirror credential: Bearer token (instead of user and password)           |
 
 or in code, which takes precedence:
 

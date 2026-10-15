@@ -36,7 +36,7 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   senses that the anchors use:
   an anchor label that is not in the inventory, or an inventory sense without anchors, is a validation
   error. `PosRules` fails the build when a sense has no or more than one true part of speech (`noun`, `verb`,
-  `adj`, `adv`; qualifiers `past`, `present`, `comparative`, `superlative` allowed). Labels of
+  `adj`, `adv`; qualifiers `past`, `present`, `comparative`, `superlative`, `participle` allowed). Labels of
   `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
   an error, and forms of untrained lemmas are ignored. Every braced target word of the anchor, holdout and
   real-text files must be listed in the forms file (or be a trained lemma) and map to the lemma of its row, because
@@ -59,8 +59,10 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   sense fits); `RealImport` keeps the sentences whose agreed sense matches the target, splits anchors and holdout
   by work or contributor where possible and writes `corpus/{anchors,holdout}/real-restore.tsv`,
   `corpus/senses/real-restore.tsv` and the provenance sidecar `corpus/provenance/*.tsv`. `validate-provenance`
-  (`RealImport.Validate`) requires a provenance row (hash id, source, allowed licence, URL, contributor or work,
-  origin `real`, `authored` or `llm-corpus`) for every real sentence, at most 35 words and no Gutenberg text.
+  (`RealImport.Validate`) checks that every restored and real-text sentence has a provenance row that matches its
+  lemma, sense and split; that the licence and origin (`real`, `authored` or `llm-corpus`) are from the allowed
+  lists; that a CC BY 2.0 FR row names a contributor, a `web-excerpt` row has a URL, and a Gutenberg row has a
+  `pg` key and the Public domain licence; and that no sentence has more than 35 words or mentions Gutenberg.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level

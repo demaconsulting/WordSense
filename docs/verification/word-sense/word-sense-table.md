@@ -18,6 +18,10 @@ the bytes systematically. The embedded table is checked for its lemma count, tag
   `WordSenseTableFormatException` or loads into a table that serializes; no other exception occurs.
 - **WordSenseTable_Score_Binary_UsesActivationSign**, **WordSenseTable_Score_OneVersusRest_PicksBestRow**:
   scoring.
+- **WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation**,
+  **WordSenseTable_Scores_OneVersusRest_ReturnsPerRowActivation**,
+  **WordSenseTable_Scores_LengthMismatch_Throws**: the public per-sense `Scores` output for binary and
+  one-versus-rest models, and rejection of a wrong feature or scores length.
 - **WordSenseTable_Read_SensesWithSameTag_ShareTagInstance**, **WordSenseTable_Read_OldVersion_Throws**,
   **WordSenseTable_RoundTrip_PreservesGroups**,
   **WordSenseTable_LemmaModel_BadSenseDefinitions_Throw**: tagged senses are shared, old format and bad

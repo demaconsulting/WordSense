@@ -218,6 +218,47 @@ public class WordSenseTableTests
     }
 
     /// <summary>
+    ///     A binary model's per-sense scores are {-a, +a} for activation a.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation()
+    {
+        var model = CreateSmallTable().Lemmas[0];
+        var scores = new float[2];
+
+        model.Scores([1f, 0f, 0f], scores);
+
+        Assert.Equal(-1.25f, scores[0]);
+        Assert.Equal(1.25f, scores[1]);
+    }
+
+    /// <summary>
+    ///     A one-versus-rest model's per-sense scores are each row's activation.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Scores_OneVersusRest_ReturnsPerRowActivation()
+    {
+        var model = CreateSmallTable().Lemmas[1];
+        var scores = new float[3];
+
+        model.Scores([0f, 1f, 0f], scores);
+
+        Assert.Equal([0f, 1.1f, -0.1f], scores);
+    }
+
+    /// <summary>
+    ///     A feature or scores span of the wrong length is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Scores_LengthMismatch_Throws()
+    {
+        var model = CreateSmallTable().Lemmas[0];
+
+        Assert.Throws<ArgumentException>(() => model.Scores(new float[2], new float[2]));
+        Assert.Throws<ArgumentException>(() => model.Scores(new float[3], new float[3]));
+    }
+
+    /// <summary>
     ///     Invalid models are rejected at construction.
     /// </summary>
     [Fact]

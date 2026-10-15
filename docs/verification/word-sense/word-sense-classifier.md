@@ -2,7 +2,8 @@
 
 ## Verification Approach
 
-Tests in `WordSenseClassifierTests.cs` use a fake `IWordSenseEncoder` that returns deterministic
+Tests in `WordSenseClassifierTests.cs` (except `WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory`,
+which lives in `WordSenseTests.cs`) use a fake `IWordSenseEncoder` that returns deterministic
 hidden states and a small in-memory table, so behavior is verified without the model.
 
 ## Test Scenarios
