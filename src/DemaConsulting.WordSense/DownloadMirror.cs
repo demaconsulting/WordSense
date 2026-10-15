@@ -21,8 +21,9 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     <see cref="Credentials"/> (HTTP Basic) and <see cref="BearerToken"/> are mutually exclusive and are
-///     sent preemptively only to requests within the mirror's own base location, so a redirect to another
-///     host never receives them. Because they are sent without a challenge, they are rejected for plain
+///     sent preemptively only to requests whose scheme, host and port equal the mirror's own base location,
+///     so a redirect to another origin never receives them (see
+///     <see cref="WordSenseModelDownloaderOptions.HttpClient"/> for caller-supplied clients). Because they are sent without a challenge, they are rejected for plain
 ///     <c>http</c> mirrors unless the host is a loopback address. The base URI must be absolute, use
 ///     <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
 ///     </para>

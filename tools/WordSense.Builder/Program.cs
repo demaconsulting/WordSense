@@ -66,7 +66,7 @@ public static class Program
                 case "real-judge-export":
                     return RunRealJudgeExport(options, output);
                 case "real-judge-adjudicate":
-                    output.WriteLine($"{RealJudge.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), options.TryGetValue("size", out var size) ? int.Parse(size, System.Globalization.CultureInfo.InvariantCulture) : 60)} rows need adjudication.");
+                    output.WriteLine($"{RealJudge.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), IntOption(options, "size", 60))} rows need adjudication.");
                     return 0;
                 case "real-judge-merge":
                     return RunRealJudgeMerge(options, output);
@@ -74,11 +74,12 @@ public static class Program
                     output.Write(RealImport.Import(Require(options, "corpus"), ReadCandidateFiles(Require(options, "candidates")), RealJudge.ReadJudgements(Require(options, "audit").Split(','))));
                     return 0;
                 case "real-eval-import":
+                    var perSense = IntOption(options, "per-sense", 12);
                     output.Write(RealEval.ImportEval(
                         Require(options, "corpus"),
                         ReadCandidateFiles(Require(options, "candidates")),
                         RealJudge.ReadJudgements(Require(options, "audit").Split(',')),
-                        int.Parse(options.GetValueOrDefault("per-sense", "12"), System.Globalization.CultureInfo.InvariantCulture)));
+                        perSense));
                     return 0;
                 case "real-eval":
                     File.WriteAllText(Require(options, "report"), RealEval.RunAsync(Require(options, "corpus"), Require(options, "model"), CancellationToken.None).GetAwaiter().GetResult(), new UTF8Encoding(false));
@@ -131,6 +132,26 @@ public static class Program
     }
 
     /// <summary>
+    ///     Reads an optional integer option, rejecting a malformed value with a clear message.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <param name="name">The option name.</param>
+    /// <param name="defaultValue">The value used when the option is absent.</param>
+    /// <returns>The parsed value or the default.</returns>
+    /// <exception cref="ArgumentException">Thrown when the value is not a valid integer.</exception>
+    private static int IntOption(Dictionary<string, string> options, string name, int defaultValue)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return defaultValue;
+        }
+
+        return int.TryParse(text, System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out var value)
+            ? value
+            : throw new ArgumentException($"Option --{name} must be an integer but was '{text}'.");
+    }
+
+    /// <summary>
     ///     Trains and writes the table.
     /// </summary>
     /// <param name="options">The parsed options.</param>
@@ -175,7 +196,7 @@ public static class Program
 
     private static int RunAuditExport(Dictionary<string, string> options, TextWriter output)
     {
-        var size = options.TryGetValue("size", out var value) ? int.Parse(value, System.Globalization.CultureInfo.InvariantCulture) : 200;
+        var size = IntOption(options, "size", 200);
         var (rows, chunks) = PosAudit.Export(Require(options, "corpus"), Require(options, "work"), size);
         output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
         return 0;
@@ -183,7 +204,7 @@ public static class Program
 
     private static int RunAuditAdjudicate(Dictionary<string, string> options, TextWriter output)
     {
-        var size = options.TryGetValue("size", out var value) ? int.Parse(value, System.Globalization.CultureInfo.InvariantCulture) : 120;
+        var size = IntOption(options, "size", 120);
         var (adjudicate, probe) = PosAudit.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), size, 0.05);
         output.WriteLine($"{adjudicate} rows need adjudication; {probe} auto-accepted rows are probed blind.");
         return 0;
@@ -223,7 +244,7 @@ public static class Program
             candidates.AddRange(undecided.Select(r => new Candidate(PosAudit.RowId(r.Lemma, r.Sentence), r.Lemma, r.Sentence, "llm-corpus", "MIT (project-authored)", "dropped-rows.tsv", "-", "project (LLM-written)", r.Split)));
         }
 
-        var size = int.Parse(options.GetValueOrDefault("size", "100"), System.Globalization.CultureInfo.InvariantCulture);
+        var size = IntOption(options, "size", 100);
         var (rows, chunks) = RealJudge.Export(corpus, candidates, Require(options, "work"), size);
         output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
         return 0;
@@ -270,7 +291,7 @@ public static class Program
     /// <returns>The exit code: 1 when any batch is invalid.</returns>
     private static int RunImport(Dictionary<string, string> options, TextWriter output)
     {
-        var max = options.TryGetValue("max", out var value) ? int.Parse(value, System.Globalization.CultureInfo.InvariantCulture) : 8;
+        var max = IntOption(options, "max", 8);
         var results = BatchImporter.Import(Require(options, "source"), Require(options, "corpus"), max);
         foreach (var result in results)
         {

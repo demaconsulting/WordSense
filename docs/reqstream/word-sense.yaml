@@ -114,6 +114,7 @@ sections:
           - WordSense-Downloader-Present
           - WordSense-Downloader-Cancel
           - WordSense-Downloader-Progress
+          - WordSense-Downloader-Options
         tests:
           - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
           - WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs

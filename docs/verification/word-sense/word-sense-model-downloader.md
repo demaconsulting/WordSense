@@ -19,6 +19,12 @@ test uses the network. Request logs show the order of attempts and the headers r
 - **..._MirrorFromEnvironment_IsUsedFirst**, **..._ProgrammaticMirror_BeatsEnvironment**,
   **..._InvalidEnvironment_ThrowsBeforeRequests**.
 - **..._BearerToken_SentOnlyToMirror**, **..._BasicCredentials_SentToMirror**.
+- **..._MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere**: a mirror that 302s to a second local
+  server (with the private client and with a caller client that does not auto-redirect) leaves that
+  server with no Authorization header; **..._MirrorRedirectsWithinOrigin_KeepsCredentials** keeps
+  them on a same-origin redirect; **..._RedirectLoop_FallsThrough** abandons a redirect loop.
+- **..._InvalidRequestTimeout_ThrowsBeforeRequests** (zero, negative, oversized),
+  **..._InfiniteRequestTimeout_Succeeds**, **..._ProgressThrows_PropagatesWithoutFallThrough**.
 - **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**,
   **..._FromDirectory_ChecksEveryFile**, **..._DefaultStoreRoot_IsPerUser**.
 - **..._CallerCancels_ThrowsOperationCanceled**, **..._Progress_IsReported**.
@@ -28,4 +34,4 @@ test uses the network. Request logs show the order of attempts and the headers r
 ## Requirements Coverage
 
 `WordSense-Downloader-Order`, `-Fallthrough`, `-Integrity`, `-AllFail`, `-Present`, `-Cancel`,
-`-Progress`, `-MirrorConfig` and `-Credentials`.
+`-Progress`, `-MirrorConfig`, `-Credentials` and `-Options`.

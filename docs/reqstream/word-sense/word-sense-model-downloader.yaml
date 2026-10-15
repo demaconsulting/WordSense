@@ -84,3 +84,19 @@ sections:
         tests:
           - WordSenseModelDownloader_EnsureModel_BearerToken_SentOnlyToMirror
           - WordSenseModelDownloader_EnsureModel_BasicCredentials_SentToMirror
+          - WordSenseModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere
+          - WordSenseModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials
+          - WordSenseModelDownloader_EnsureModel_RedirectLoop_FallsThrough
+
+      - id: WordSense-Downloader-Options
+        title: >-
+          The downloader shall reject an invalid request timeout before any request and shall let
+          exceptions from the progress receiver propagate.
+        tags: [unit]
+        justification: |
+          A zero or negative timeout can never work and must fail clearly; a failing progress receiver is
+          a caller bug, not a source failure, so it must not silently trigger fall-through.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_InvalidRequestTimeout_ThrowsBeforeRequests
+          - WordSenseModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds
+          - WordSenseModelDownloader_EnsureModel_ProgressThrows_PropagatesWithoutFallThrough

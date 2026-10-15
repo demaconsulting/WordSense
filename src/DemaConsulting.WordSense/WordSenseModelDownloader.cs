@@ -1,3 +1,4 @@
+using System.Net;
 using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
@@ -22,12 +23,30 @@ public static class WordSenseModelDownloader
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>The verified model location.</returns>
     /// <exception cref="WordSenseModelDownloadException">Thrown when a file could not be obtained from any source.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown when <see cref="WordSenseModelDownloaderOptions.RequestTimeout"/> is zero or negative and is not
+    ///     <see cref="Timeout.InfiniteTimeSpan"/>, or exceeds the maximum the platform timer supports.
+    /// </exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <remarks>
+    ///     An exception thrown by the <see cref="WordSenseModelDownloaderOptions.Progress"/> callback is not a
+    ///     source failure: it propagates to the caller and the remaining sources are not tried.
+    /// </remarks>
     public static async Task<WordSenseModelLocation> EnsureModelAsync(
         WordSenseModelDownloaderOptions? options = null,
         CancellationToken cancellationToken = default)
     {
         options ??= new WordSenseModelDownloaderOptions();
+
+        // CancelAfter rejects these values; fail up front with a clear message instead of a late, obscure error
+        var requestTimeout = options.RequestTimeout;
+        if (requestTimeout != Timeout.InfiniteTimeSpan && (requestTimeout <= TimeSpan.Zero || requestTimeout.TotalMilliseconds > uint.MaxValue - 1))
+        {
+            throw new ArgumentOutOfRangeException(
+                nameof(options),
+                requestTimeout,
+                "RequestTimeout must be positive (or Timeout.InfiniteTimeSpan) and no longer than about 49 days.");
+        }
 
         // An explicit mirror beats the environment; an invalid environment configuration fails fast
         var mirror = options.Mirror ?? DownloadMirror.FromEnvironment(options.GetEnvironmentVariable ?? Environment.GetEnvironmentVariable);
@@ -36,8 +55,10 @@ public static class WordSenseModelDownloader
         var directory = Path.Combine(Path.GetFullPath(root), WordSenseModelCatalog.DirectoryName);
         Directory.CreateDirectory(directory);
 
+        // The private client never follows redirects itself so that FetchAsync can decide per hop whether
+        // credentials may be attached; a caller-supplied client keeps whatever redirect policy it has
         var ownsClient = options.HttpClient is null;
-        var client = options.HttpClient ?? new HttpClient();
+        var client = options.HttpClient ?? new HttpClient(new SocketsHttpHandler { AllowAutoRedirect = false });
         try
         {
             foreach (var file in WordSenseModelCatalog.Files)
@@ -190,24 +211,7 @@ public static class WordSenseModelDownloader
         string temp,
         CancellationToken cancellationToken)
     {
-        using var request = new HttpRequestMessage(HttpMethod.Get, uri);
-
-        // Credentials go only to the mirror's own location, never to the public sources
-        if (auth is not null)
-        {
-            if (auth.BearerToken is not null)
-            {
-                request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", auth.BearerToken);
-            }
-            else if (auth.Credentials is not null)
-            {
-                var raw = Encoding.UTF8.GetBytes($"{auth.Credentials.UserName}:{auth.Credentials.Password}");
-                request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(raw));
-            }
-        }
-
-        using var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
-            .ConfigureAwait(false);
+        using var response = await SendFollowingRedirectsAsync(client, uri, auth, cancellationToken).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
 
         var total = response.Content.Headers.ContentLength;
@@ -228,6 +232,78 @@ public static class WordSenseModelDownloader
 
         await output.FlushAsync(cancellationToken).ConfigureAwait(false);
         return Convert.ToHexString(hash.GetHashAndReset()).ToLowerInvariant();
+    }
+
+    /// <summary>
+    ///     Sends a GET request, following redirects manually so credentials are attached per hop.
+    /// </summary>
+    /// <remarks>
+    ///     Credentials are attached only to a hop whose scheme, host and port equal those of the mirror's base
+    ///     location, so a redirect to another host, port or a downgraded scheme is requested anonymously.
+    ///     When the client follows redirects itself (a caller-supplied client with automatic redirects) this
+    ///     method sees only the final response and the client's own policy applies; the default
+    ///     <see cref="HttpClient"/> handler removes the Authorization header when it is redirected.
+    /// </remarks>
+    /// <param name="client">The HTTP client.</param>
+    /// <param name="uri">The first request URI.</param>
+    /// <param name="auth">The mirror whose credentials apply, or null for an anonymous request.</param>
+    /// <param name="cancellationToken">A token that cancels the request.</param>
+    /// <returns>The final response, which the caller must dispose.</returns>
+    private static async Task<HttpResponseMessage> SendFollowingRedirectsAsync(
+        HttpClient client,
+        Uri uri,
+        DownloadMirror? auth,
+        CancellationToken cancellationToken)
+    {
+        const int maxRedirects = 10;
+        var current = uri;
+        for (var hop = 0; hop <= maxRedirects; hop++)
+        {
+            using var request = new HttpRequestMessage(HttpMethod.Get, current);
+            if (auth is not null && IsSameOrigin(auth.BaseUri, current))
+            {
+                if (auth.BearerToken is not null)
+                {
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", auth.BearerToken);
+                }
+                else if (auth.Credentials is not null)
+                {
+                    var raw = Encoding.UTF8.GetBytes($"{auth.Credentials.UserName}:{auth.Credentials.Password}");
+                    request.Headers.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(raw));
+                }
+            }
+
+            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken)
+                .ConfigureAwait(false);
+            var location = response.Headers.Location;
+            if (location is null || response.StatusCode is not (HttpStatusCode.Moved or HttpStatusCode.Redirect or HttpStatusCode.RedirectMethod
+                or HttpStatusCode.TemporaryRedirect or HttpStatusCode.PermanentRedirect))
+            {
+                return response;
+            }
+
+            response.Dispose();
+            current = location.IsAbsoluteUri ? location : new Uri(current, location);
+            if (current.Scheme != Uri.UriSchemeHttp && current.Scheme != Uri.UriSchemeHttps)
+            {
+                throw new HttpRequestException("A redirect to a non-http(s) location was refused.");
+            }
+        }
+
+        throw new HttpRequestException($"Too many redirects requesting '{uri.GetLeftPart(UriPartial.Path)}'.");
+    }
+
+    /// <summary>
+    ///     Determines whether two URIs share scheme, host and port.
+    /// </summary>
+    /// <param name="a">The first URI.</param>
+    /// <param name="b">The second URI.</param>
+    /// <returns>True when the origins are equal.</returns>
+    private static bool IsSameOrigin(Uri a, Uri b)
+    {
+        return string.Equals(a.Scheme, b.Scheme, StringComparison.OrdinalIgnoreCase) &&
+               string.Equals(a.Host, b.Host, StringComparison.OrdinalIgnoreCase) &&
+               a.Port == b.Port;
     }
 
     /// <summary>

@@ -35,6 +35,8 @@ table.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
   braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
+- **WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption**: a non-numeric `--size`,
+  `--max` or `--per-sense` returns exit code 1 with a message naming the option.
 
 ## Requirements Coverage
 

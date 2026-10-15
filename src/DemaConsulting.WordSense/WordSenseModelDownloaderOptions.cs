@@ -117,15 +117,31 @@ public sealed class WordSenseModelDownloaderOptions
     /// <summary>
     ///     Gets the HTTP client to use; null creates and disposes a private one.
     /// </summary>
+    /// <remarks>
+    ///     The private client does not follow redirects automatically; the downloader follows them itself
+    ///     (up to 10 hops) and attaches mirror credentials only to hops with the mirror's own scheme, host
+    ///     and port. A caller-supplied client keeps its own redirect policy: if it follows redirects
+    ///     automatically, the downloader cannot observe the hops, and credential handling on redirect is that
+    ///     client's responsibility (the default .NET handler drops the Authorization header on redirect).
+    ///     Configure such a client with automatic redirects disabled to get the per-hop guarantee.
+    /// </remarks>
     public HttpClient? HttpClient { get; init; }
 
     /// <summary>
     ///     Gets the maximum time a single source attempt for a single file may take.
     /// </summary>
+    /// <remarks>
+    ///     Must be positive or <see cref="Timeout.InfiniteTimeSpan"/>; <see cref="WordSenseModelDownloader.EnsureModelAsync"/>
+    ///     throws <see cref="ArgumentOutOfRangeException"/> for any other value.
+    /// </remarks>
     public TimeSpan RequestTimeout { get; init; } = TimeSpan.FromMinutes(5);
 
     /// <summary>
     ///     Gets the receiver of download progress reports, or null.
     /// </summary>
+    /// <remarks>
+    ///     An exception thrown by the receiver is not treated as a source failure: it propagates out of
+    ///     <see cref="WordSenseModelDownloader.EnsureModelAsync"/> and the remaining sources are not tried.
+    /// </remarks>
     public IProgress<WordSenseModelDownloadProgress>? Progress { get; init; }
 }

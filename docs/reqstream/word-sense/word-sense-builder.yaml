@@ -38,6 +38,7 @@ sections:
           - WordSenseBuilder_BatchImporter_RejectsBatchWithManyBadRows
           - WordSenseBuilder_BatchImporter_ExcludesThinLemmas
           - WordSenseBuilder_Program_Run_ReportsErrors
+          - WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption
 
       - id: WordSense-Builder-Inventory
         title: >-

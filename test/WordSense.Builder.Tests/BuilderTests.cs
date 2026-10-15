@@ -585,6 +585,33 @@ public sealed class BuilderTests : IDisposable
         Assert.NotEmpty(error.ToString());
     }
 
+    /// <summary>
+    ///     A non-numeric integer option is reported as a usage error naming the option, not as a crash.
+    /// </summary>
+    /// <param name="option">The option name.</param>
+    /// <param name="command">The command and its required options.</param>
+    [Theory]
+    [InlineData("max", "import-batches", "--source", "s", "--corpus", "c")]
+    [InlineData("size", "audit-export", "--corpus", "c", "--work", "w")]
+    [InlineData("size", "audit-adjudicate", "--corpus", "c", "--work", "w")]
+    [InlineData("size", "real-judge-export", "--corpus", "c", "--work", "w")]
+    [InlineData("size", "real-judge-adjudicate", "--corpus", "c", "--work", "w")]
+    [InlineData("per-sense", "real-eval-import", "--corpus", "c", "--candidates", "x", "--audit", "a")]
+    public void WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption(string option, params string[] command)
+    {
+        // Arrange: a command line whose integer option is not a number
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+        string[] args = [.. command, "--" + option, "abc"];
+
+        // Act
+        var code = Program.Run(args, output, error);
+
+        // Assert: exit code 1 and a message naming the option
+        Assert.Equal(1, code);
+        Assert.Contains($"--{option} must be an integer", error.ToString(), StringComparison.Ordinal);
+    }
+
     private string PrepareCorpus()
     {
         Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nbank\tbank\tnoun,verb\nnovel\tnovel\tnoun\nhold\thold\tnoun,verb\n");

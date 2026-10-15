@@ -25,8 +25,12 @@ list in order (mirror from options or environment; Hugging Face if the file allo
 set; GitHub LFS) and try each: download to a unique `.part` file under a per-attempt timeout, verify
 SHA-256, then atomically move into place. Request failures, timeouts, digest mismatches and I/O errors
 are recorded and the next source is tried; cancellation by the caller propagates. If all sources fail,
-`WordSenseModelDownloadException` is thrown with every failure. Authentication headers are attached
-only to mirror requests.
+`WordSenseModelDownloadException` is thrown with every failure. `RequestTimeout` is validated first
+(positive or infinite, else `ArgumentOutOfRangeException`) and an exception from the progress receiver
+propagates instead of falling through. Redirects are followed manually (at most 10 hops, http(s) only)
+by the private client, which has automatic redirects disabled; authentication headers are attached per
+hop and only when the hop has the mirror's scheme, host and port, so no credential reaches another
+origin. A caller-supplied client keeps its own redirect policy.
 
 ## Hugging Face finding
 

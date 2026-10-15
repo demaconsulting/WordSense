@@ -349,6 +349,171 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
         Assert.EndsWith(Path.Combine("DemaConsulting", "WordSense", "models"), WordSenseModelLocation.DefaultStoreRoot(), StringComparison.Ordinal);
     }
 
+    /// <summary>
+    ///     A mirror that redirects to another origin never causes credentials to reach that origin.
+    /// </summary>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task WordSenseModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere(bool callerClient)
+    {
+        // Arrange: a second server that serves the files, and a mirror that redirects every request to it
+        using var other = new LocalServer(ServeReal);
+        using var mirrorServer = new LocalServer(context =>
+        {
+            context.Response.StatusCode = 302;
+            context.Response.Headers["Location"] = new Uri(other.BaseUri, "/elsewhere/" + FileOf(context)).AbsoluteUri;
+            return Task.CompletedTask;
+        });
+        using var handler = new SocketsHttpHandler { AllowAutoRedirect = false };
+        using var client = new HttpClient(handler);
+        var options = new WordSenseModelDownloaderOptions
+        {
+            Mirror = MirrorOn(mirrorServer, "tok-123"),
+            HuggingFaceBaseUri = null,
+            GitHubLfsBaseUri = null,
+            StoreRoot = _store,
+            HttpClient = callerClient ? client : null,
+        };
+
+        // Act
+        await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
+
+        // Assert: the mirror saw the token, the redirect target saw none but served the files
+        Assert.All(mirrorServer.Requests, r => Assert.NotNull(r.Authorization));
+        Assert.Equal(2, other.Requests.Count);
+        Assert.All(other.Requests, r => Assert.Null(r.Authorization));
+    }
+
+    /// <summary>
+    ///     A redirect within the mirror's own origin keeps the credentials.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials()
+    {
+        // Arrange: /mirror/... redirects to /moved/... on the same server
+        using var server = new LocalServer(context =>
+        {
+            if (context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal))
+            {
+                context.Response.StatusCode = 307;
+                context.Response.Headers["Location"] = "/moved/" + FileOf(context);
+                return Task.CompletedTask;
+            }
+
+            return ServeReal(context);
+        });
+
+        // Act
+        await WordSenseModelDownloader.EnsureModelAsync(Options(server, MirrorOn(server, "tok-123")), TestContext.Current.CancellationToken);
+
+        // Assert: both hops carried the token
+        Assert.Equal(4, server.Requests.Count);
+        Assert.All(server.Requests, r => Assert.NotNull(r.Authorization));
+    }
+
+    /// <summary>
+    ///     A redirect loop is abandoned and the next source is used.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_RedirectLoop_FallsThrough()
+    {
+        // Arrange: the mirror redirects to itself forever
+        using var server = new LocalServer(context =>
+        {
+            if (context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal))
+            {
+                context.Response.StatusCode = 302;
+                context.Response.Headers["Location"] = context.Request.Url.AbsolutePath;
+                return Task.CompletedTask;
+            }
+
+            return ServeReal(context);
+        });
+
+        // Act
+        var location = await WordSenseModelDownloader.EnsureModelAsync(Options(server, MirrorOn(server)), TestContext.Current.CancellationToken);
+
+        // Assert: the files still arrive, from a later source
+        Assert.True(File.Exists(location.ModelPath));
+        Assert.Contains("/lfs/main/model/model_int8.onnx", Paths(server));
+    }
+
+    /// <summary>
+    ///     A zero, negative or oversized request timeout is rejected before any request is made.
+    /// </summary>
+    /// <param name="milliseconds">The timeout in milliseconds.</param>
+    [Theory]
+    [InlineData(0)]
+    [InlineData(-5000)]
+    [InlineData(-2)]
+    [InlineData(long.MaxValue / 20000)]
+    public async Task WordSenseModelDownloader_EnsureModel_InvalidRequestTimeout_ThrowsBeforeRequests(long milliseconds)
+    {
+        // Arrange
+        using var server = new LocalServer(ServeReal);
+        var options = new WordSenseModelDownloaderOptions
+        {
+            Mirror = MirrorOn(server),
+            StoreRoot = _store,
+            RequestTimeout = TimeSpan.FromMilliseconds(milliseconds),
+        };
+
+        // Act / Assert
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken));
+        Assert.Empty(server.Requests);
+    }
+
+    /// <summary>
+    ///     An infinite request timeout is accepted.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds()
+    {
+        // Arrange
+        using var server = new LocalServer(ServeReal);
+        var options = new WordSenseModelDownloaderOptions
+        {
+            Mirror = MirrorOn(server),
+            StoreRoot = _store,
+            RequestTimeout = Timeout.InfiniteTimeSpan,
+        };
+
+        // Act
+        var location = await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
+
+        // Assert
+        Assert.True(File.Exists(location.ModelPath));
+    }
+
+    /// <summary>
+    ///     An exception from the progress callback propagates and no further source is tried.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_ProgressThrows_PropagatesWithoutFallThrough()
+    {
+        // Arrange
+        using var server = new LocalServer(ServeReal);
+        var options = new WordSenseModelDownloaderOptions
+        {
+            Mirror = MirrorOn(server),
+            StoreRoot = _store,
+            Progress = new ThrowingProgress(),
+        };
+
+        // Act / Assert
+        await Assert.ThrowsAsync<InvalidOperationException>(
+            () => WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken));
+        Assert.All(Paths(server), p => Assert.StartsWith("/mirror/", p, StringComparison.Ordinal));
+        Assert.Empty(Directory.GetFiles(Path.Combine(_store, WordSenseModelCatalog.DirectoryName), "*.part"));
+    }
+
+    private sealed class ThrowingProgress : IProgress<WordSenseModelDownloadProgress>
+    {
+        public void Report(WordSenseModelDownloadProgress value) => throw new InvalidOperationException("progress receiver failed");
+    }
+
     private sealed class SynchronousProgress(List<WordSenseModelDownloadProgress> reports) : IProgress<WordSenseModelDownloadProgress>
     {
         public void Report(WordSenseModelDownloadProgress value)
