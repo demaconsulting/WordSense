@@ -14,6 +14,10 @@ needs-review:
   - "docs/verification/**/*.md"  # Verification documentation files
   - "docs/user_guide/**/*.md"    # User guide documentation
   - "docs/sysml2/**/*.sysml"     # SysML2 architecture model
+  - "tools/real-text/**"          # Real-text harvest tooling
+  - "corpus/provenance/**"        # Provenance of the real sentences
+  - "corpus/realtext/**"          # Real-text evaluation sentences
+  - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
   - "!node_modules/**"           # Exclude npm dependencies
@@ -223,6 +227,10 @@ reviews:
       - "!tools/WordSense.Builder/**/obj/**"
       - "!tools/WordSense.Builder/**/bin/**"
       - "test/WordSense.Builder.Tests/BuilderTests.cs"
+      - "tools/real-text/**"
+      - "!tools/real-text/cache/**"
+      - "corpus/provenance/**"
+      - "corpus/realtext/**"
 
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark
