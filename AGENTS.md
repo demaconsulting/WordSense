@@ -1,23 +1,22 @@
 # Project Overview
 
-> **Downstream customization required**: Replace the `TODO` values below with
-> values specific to the target repository. These values are the canonical source
-> for project-wide template placeholders used throughout the repository.
-
-- **project-name**: TODO — repository/project name (e.g., `ReqStream`)
-- **organization**: TODO — organization name for document authorship (e.g., `DEMA Consulting`)
-- **project-tagline**: TODO — document subtitle; 4–8 words, noun phrase, no period
-  (e.g., `Requirements traceability for .NET projects`)
-- **description**: TODO — full project description, may be multiple sentences
-- **languages**: TODO — programming languages used (e.g., `C#`, `C++`)
-- **technologies**: TODO — key technologies and frameworks (e.g., `.NET`, `CMake`)
+- **project-name**: WordSense
+- **organization**: DEMA Consulting
+- **project-tagline**: Offline word-sense disambiguation for .NET
+- **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
+  ambiguous English words in context, offline. It combines a managed WordPiece tokenizer, an int8 ONNX
+  MiniLM sentence encoder, and a per-lemma linear classifier table embedded in the assembly.
+- **languages**: C#, Python (one-off tokenizer fixture generator only)
+- **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure
 
-> **Downstream customization required**: Replace `{project}` and
-> `{test-project}` with the actual source and test project folder names.
-
 ```text
+├── corpus/                     (training anchors, holdout sentences, form maps)
+├── model/                      (ONNX encoder and vocabulary; ONNX file stored in Git LFS)
+├── tools/
+│   ├── WordSense.Builder/      (non-shipped table builder and corpus importer)
+│   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/
 │   ├── code_quality/
@@ -31,9 +30,10 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   └── {project}/
+│   └── DemaConsulting.WordSense/
 └── test/
-    └── {test-project}/
+    ├── DemaConsulting.WordSense.Tests/
+    └── WordSense.Builder.Tests/
 ```
 
 # Language and Spelling (ALL Agents)
