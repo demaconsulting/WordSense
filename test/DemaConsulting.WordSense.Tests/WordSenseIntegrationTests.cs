@@ -181,7 +181,7 @@ public class WordSenseIntegrationTests
         }
 
         samples.Sort();
-        TestContext.Current.SendDiagnosticMessage($"classify latency, {threads} thread(s): median {samples[50]:0.0} ms, p95 {samples[94]:0.0} ms");
+        TestContext.Current.TestOutputHelper?.WriteLine($"classify latency, {threads} thread(s): median {samples[50]:0.0} ms, p95 {samples[94]:0.0} ms");
         Assert.True(samples[50] < 2000);
     }
 }
