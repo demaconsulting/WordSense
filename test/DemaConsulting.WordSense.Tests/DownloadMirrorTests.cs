@@ -81,10 +81,10 @@ public class DownloadMirrorTests
     public void DownloadMirror_ToString_RedactsSecrets()
     {
         var mirror = new DownloadMirror(new Uri("https://mirror.example/m"), new NetworkCredential("user", "hunter2"));
-        var token = new DownloadMirror(new Uri("https://mirror.example/m"), null, "s3cret-token");
+        var token = new DownloadMirror(new Uri("https://mirror.example/m"), null, "secret-token");
 
         Assert.DoesNotContain("hunter2", mirror.ToString(), StringComparison.Ordinal);
-        Assert.DoesNotContain("s3cret-token", token.ToString(), StringComparison.Ordinal);
+        Assert.DoesNotContain("secret-token", token.ToString(), StringComparison.Ordinal);
     }
 
     /// <summary>

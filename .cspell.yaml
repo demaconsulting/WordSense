@@ -35,6 +35,20 @@ words:
   - weasyprint
   - netstandard
   - yamlfix
+  - onnx
+  - huggingface
+  - nonspacing
+  - onnxruntime
+  - wordsense
+  - wsns
+  - subword
+  - softplus
+  - featurize
+  - finalizer
+  - unregularized
+  - disjointness
+  - redownloaded
+  - unpadded
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:
@@ -50,3 +64,7 @@ ignorePaths:
   - "**/bin/**"
   - "**/obj/**"
   - package-lock.json
+  - model/**
+  - corpus/**
+  - tools/tokenizer-fixture/**
+  - test/**/Fixtures/**

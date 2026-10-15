@@ -1,0 +1,46 @@
+---
+# WordSenseTable unit requirements
+
+sections:
+  - title: WordSenseTable Requirements
+    requirements:
+      - id: WordSense-Table-Format
+        title: The table shall serialize to and read from a deterministic binary format without loss.
+        tags: [unit]
+        justification: |
+          The table is embedded in the assembly; identical bytes for identical content make the
+          build reproducible and reviewable.
+        tests:
+          - WordSenseTable_RoundTrip_PreservesAllValues
+          - WordSenseTable_ToArray_CalledTwice_ReturnsIdenticalBytes
+          - WordSenseTable_Write_Stream_MatchesToArray
+          - WordSenseTable_Constructor_InconsistentInput_Throws
+          - WordSenseTable_LemmaModel_BadShapes_Throw
+
+      - id: WordSense-Table-Integrity
+        title: The table reader shall reject truncated, corrupted or foreign data.
+        tags: [unit]
+        justification: |
+          A damaged table would produce wrong senses silently; a trailing SHA-256 digest and
+          structural checks detect any change.
+        tests:
+          - WordSenseTable_Read_TruncatedAtEveryLength_Throws
+          - WordSenseTable_Read_AnyByteFlipped_Throws
+          - WordSenseTable_Read_Garbage_Throws
+
+      - id: WordSense-Table-Score
+        title: The table shall score a feature vector per lemma and return the best sense and its margin.
+        tags: [unit]
+        justification: |
+          The margin drives abstention; binary lemmas and one-versus-rest lemmas must both be handled.
+        tests:
+          - WordSenseTable_Score_Binary_UsesActivationSign
+          - WordSenseTable_Score_OneVersusRest_PicksBestRow
+
+      - id: WordSense-Table-Embedded
+        title: The assembly shall contain an embedded table covering the seed lemmas.
+        tags: [unit]
+        justification: |
+          The library must work out of the box without an external table file.
+        tests:
+          - WordSenseTable_LoadEmbedded_ContainsSeedLemmas

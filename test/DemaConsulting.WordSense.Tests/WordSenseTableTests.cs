@@ -19,7 +19,10 @@ public class WordSenseTableTests
             [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0.1f, -0.1f], 0.5f, 3);
         var forms = new Dictionary<string, string>
         {
-            ["bat"] = "bat", ["bats"] = "bat", ["lead"] = "lead", ["led"] = "lead",
+            ["bat"] = "bat",
+            ["bats"] = "bat",
+            ["lead"] = "lead",
+            ["led"] = "lead",
         };
         return new WordSenseTable("all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [binary, multi], forms);
     }

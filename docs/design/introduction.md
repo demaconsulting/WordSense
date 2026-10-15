@@ -1,7 +1,7 @@
 # Introduction
 
 This document provides the detailed design for the WordSense, a .NET library
-demonstrating best practices for DEMA Consulting DotNet Libraries.
+that classifies the sense of ambiguous English words in context.
 
 ## Purpose
 
@@ -24,8 +24,16 @@ This document is intended for:
 This document covers the detailed design of the WordSense system and its constituent
 software items, specifically:
 
-- **WordSense (System)** — The complete .NET library template system
-- **Demo (Unit)** — Demonstration greeting class providing example functionality
+- **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
+- **WordPieceTokenizer (Unit)** — BERT uncased word-piece tokenizer
+- **WordSenseTable (Unit)** — embedded binary classifier table
+- **OnnxWordSenseEncoder (Unit)** — ONNX Runtime encoder
+- **WordSenseClassifier (Unit)** — public classification entry point
+- **DownloadMirror (Unit)** — user mirror configuration
+- **WordSenseModelDownloader (Unit)** — ordered, verified model download
+- **WordSenseBuilder (Unit)** — non-shipped table builder tool
+
+The OnnxRuntime OTS runtime dependency is also covered.
 
 The following OTS items are also covered:
 
@@ -60,10 +68,9 @@ diagram or the prose below.
 
 ![Software Structure](SoftwareStructureView.svg)
 
-This template demonstrates a minimal system structure with no subsystems — it contains only the
-`Demo` unit directly under the system level. In more complex implementations, subsystems would
-organize related units and provide architectural boundaries with well-defined interfaces and
-responsibilities.
+WordSense has no subsystems; its units sit directly under the system. There is one shipped assembly,
+`DemaConsulting.WordSense`, so tokenizer, table, encoder, classifier and model management share a
+package and the only runtime dependency is ONNX Runtime.
 
 ## Folder Layout
 
@@ -72,12 +79,18 @@ and descriptions as follows:
 
 ```text
 src/DemaConsulting.WordSense/
-└── Demo.cs                     — Demonstration greeting class implementing template functionality
+├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
+├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs — table unit
+├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
+├── WordSenseClassifier.cs, FeatureExtractor.cs    — classifier unit
+├── DownloadMirror.cs                              — mirror unit
+├── WordSenseModelDownloader*.cs, ...ModelCatalog.cs — downloader unit
+└── Resources/wordsense-table.bin                  — embedded table
+
+tools/WordSense.Builder/                           — builder unit (not shipped)
 ```
 
-This flat folder structure reflects the single-unit nature of this template system. As the system
-grows with additional subsystems and units, the folder structure will expand to mirror the
-software architecture with subsystem-specific folders containing their respective units.
+The folder structure is flat because the system has no subsystems.
 
 ## Document Conventions
 

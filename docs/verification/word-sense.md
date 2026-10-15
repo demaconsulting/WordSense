@@ -1,93 +1,52 @@
 # System Verification Design
 
-This document describes the system-level verification strategy for the WordSense.
+This document describes the system-level verification strategy for WordSense.
 
 ## Verification Approach
 
-The WordSense system is verified through system-level integration tests that
-exercise the library as a whole from the perspective of a consumer. Tests instantiate the library
-using its public API and assert on observable outputs, without relying on knowledge of internal
-implementation details. No mocking or stubbing is required at the system level — the entire
-integrated system is exercised as it would be used by a real caller.
-
-System tests reside in `WordSenseTests.cs` within the
-`DemaConsulting.WordSense.Tests` project.
+The system is verified by integration tests in `WordSenseTests.cs` that run the real int8 model and
+the embedded table through the public API. Unit-level behavior is verified in the unit documents with
+substitutes (a fake encoder and a local HTTP server).
 
 ## Test Environment
 
-- **Framework**: xUnit v3 running under the .NET SDK
-- **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline
-- **Dependencies**: No external services, databases, or network access required
-- **Isolation**: Each test method constructs its own `Demo` instance; no shared state between tests
+- **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
+- **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
+- **Dependencies**: the Git LFS model files under `model/`; no network access. Tests that need the
+  model are skipped, not failed, when the LFS content is absent.
+- **Isolation**: each test creates its own classifier; no shared state.
 
 ## External Interface Simulation
 
-The system has no external interfaces requiring simulation. It is a pure in-process .NET library
-with no I/O, network calls, or platform services. System tests call the public API directly
-with controlled inputs and verify returned values and thrown exceptions.
+Downloads are verified against a loopback `HttpListener` (see the model downloader verification);
+no test reaches a public host.
 
 ## System-Level Test Scenarios
 
-### Integration: Provides Expected Functionality
+### WordSense_Classifier_EndToEnd_ClassifiesRecord
 
-**Test**: `WordSense_SystemIntegration_DefaultConstruction_ReturnsExpectedGreeting`
+A classifier built on the real model classifies "The record was broken last year, so they will record
+the new album." and must return noun for the first and verb for the second "record".
 
-Exercises end-to-end system behavior: constructs a `Demo` instance using the default constructor
-and calls `DemoMethod` with a valid name. Asserts that the system produces the expected greeting
-string `"Hello, System!"`, confirming that all components integrate correctly under default
-configuration.
+### WordSense_EmbeddedTable_MatchesPinnedModel
 
-### Customization: Handles Configuration Properly
+The embedded table's model digest, the pinned digests and the committed `SHA256SUMS` agree with the
+files in `model/`; a stale table fails.
 
-**Test**: `WordSense_SystemCustomization_CustomPrefix_ReturnsExpectedGreeting`
+### WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
 
-Verifies that the system correctly propagates a custom prefix supplied at construction time.
-Constructs a `Demo` instance with prefix `"Welcome"`, calls `DemoMethod` with a valid name, and
-asserts the result is `"Welcome, Integration!"`. Confirms that the configuration path through all
-integrated components functions as expected.
+Creating a classifier from a directory without the model files fails.
 
-### Validation: DemoMethod Null Input Throws ArgumentNullException
+### WordSense_Classifier_Holdout_MeetsAccuracyGate
 
-**Test**: `WordSense_SystemValidation_DemoMethodNullInput_ThrowsArgumentNullException`
+Every third held-out sentence of every corpus file is classified; the answered accuracy must be at
+least 96 % with at least 85 % coverage over more than 400 sentences.
 
-Verifies that the system rejects a `null` argument to `DemoMethod` with `ArgumentNullException`.
-Constructs a `Demo` instance with the default constructor and passes `null` to `DemoMethod`.
-Confirms that the system boundary enforces the null-rejection contract.
+### WordSense_Benchmark_ClassifyLatency
 
-### Validation: DemoMethod Empty Input Throws ArgumentException
-
-**Test**: `WordSense_SystemValidation_DemoMethodEmptyInput_ThrowsArgumentException`
-
-Verifies that the system rejects an empty-string argument to `DemoMethod` with `ArgumentException`.
-Constructs a `Demo` instance with the default constructor and passes `string.Empty` to `DemoMethod`.
-Confirms that the system boundary enforces the empty-string rejection contract.
-
-### Validation: Constructor Null Prefix Throws ArgumentNullException
-
-**Test**: `WordSense_SystemValidation_ConstructorNullPrefix_ThrowsArgumentNullException`
-
-Verifies that the system rejects a `null` prefix argument at construction time with
-`ArgumentNullException`. Attempts to construct a `Demo` instance with `null` as the prefix.
-Confirms that the system boundary prevents invalid configuration from being established.
-
-### Validation: Constructor Empty Prefix Throws ArgumentException
-
-**Test**: `WordSense_SystemValidation_ConstructorEmptyPrefix_ThrowsArgumentException`
-
-Verifies that the system rejects an empty-string prefix argument at construction time with
-`ArgumentException`. Attempts to construct a `Demo` instance with `string.Empty` as the prefix.
-Confirms that the system boundary prevents empty-string configuration from being established.
-
-### Integration: Exposes Configured Prefix
-
-**Test**: `WordSense_SystemIntegration_CustomPrefix_ExposesPrefix`
-
-Verifies that the `Prefix` property exposes the prefix supplied at construction time. Constructs
-a `Demo` instance with a custom prefix and reads the `Prefix` property. Confirms the system's
-public API correctly surfaces the configured prefix to callers.
+Classifies a two-target sentence 100 times with one and four threads and reports the median and 95th
+percentile latency; the median must stay below two seconds (the typical value is a few milliseconds).
 
 ## Acceptance Criteria
 
-A system-level test run passes when all seven scenarios above pass without error or exception beyond
-those explicitly asserted. Any unexpected exception, wrong exception type, or wrong return value
-constitutes a failure.
+All scenarios pass on every platform and target framework of the CI matrix.

@@ -7,106 +7,138 @@
 sections:
   - title: Library API
     requirements:
-      - id: WordSense-Lib-Greeting
-        title: The library shall generate a greeting string when given a name.
+      - id: WordSense-Lib-Classify
+        title: The library shall classify the sense of known ambiguous words in free text and tile the whole input.
         tags: [system]
         justification: |
-          Provides a simple demonstration of library functionality following
-          .NET library best practices for DEMA Consulting libraries.
+          This is the purpose of the library: given a text, callers learn which sense each
+          homograph (for example "record" as noun or verb) carries, while the returned tokens
+          still reproduce the input exactly so callers can map results back to the text.
         children:
-          - WordSense-Demo-Greeting
+          - WordSense-Classifier-Tiles
+          - WordSense-Classifier-Senses
+          - WordSense-Classifier-LongText
+          - WordSense-Classifier-Lifetime
         tests:
-          - WordSense_SystemIntegration_DefaultConstruction_ReturnsExpectedGreeting
-          - WordSense_SystemCustomization_CustomPrefix_ReturnsExpectedGreeting
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
-      - id: WordSense-Lib-GreetingFormat
-        title: The library shall return a greeting string in the format "{prefix}, {name}!".
+      - id: WordSense-Lib-Accuracy
+        title: The library shall meet a held-out accuracy gate on the labeled corpus with the pinned model.
         tags: [system]
         justification: |
-          The format is the core observable contract of the library: callers depend on this
-          specific structure in documentation examples and integration code.
+          Classification quality is the measurable promise of the library. The gate evaluates
+          sentences that are never used for training, so a regression in the table, tokenizer or
+          model shows up as a failing test.
         children:
-          - WordSense-Demo-Greeting
+          - WordSense-Builder-Corpus
+          - WordSense-Builder-Trainer
+          - WordSense-Builder-Importer
+          - WordSense-Tokenizer-Parity
         tests:
-          - WordSense_SystemIntegration_DefaultConstruction_ReturnsExpectedGreeting
-          - WordSense_SystemCustomization_CustomPrefix_ReturnsExpectedGreeting
+          - WordSense_Classifier_Holdout_MeetsAccuracyGate
 
-      - id: WordSense-Lib-DefaultPrefix
-        title: The library shall use "Hello" as the default greeting prefix.
+      - id: WordSense-Lib-Abstain
+        title: The library shall abstain instead of guessing when the decision margin of a word is too small.
         tags: [system]
         justification: |
-          Callers constructing the library without a prefix argument need a predictable default
-          greeting to rely on in documentation and examples.
+          Callers prefer no answer to a wrong answer for ambiguous contexts; a per-lemma margin
+          threshold lets the library trade coverage for precision.
         children:
-          - WordSense-Demo-DefaultPrefix
+          - WordSense-Classifier-Abstain
+          - WordSense-Table-Score
         tests:
-          - WordSense_SystemIntegration_DefaultConstruction_ReturnsExpectedGreeting
+          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
-      - id: WordSense-Lib-CustomPrefix
-        title: The library shall support a customizable greeting prefix.
+      - id: WordSense-Lib-Embedded
+        title: The library shall embed the trained classifier table and verify that it matches the pinned model.
         tags: [system]
         justification: |
-          Consumers may need to produce greetings with a prefix other than the
-          default, so the library must allow the prefix to be specified at
-          construction time.
+          Embedding the table makes the library self-contained apart from the model file, and the
+          pinned model digest in the table prevents using a table with a model it was not trained for.
         children:
-          - WordSense-Demo-AcceptCustomPrefix
-          - WordSense-Demo-Prefix
+          - WordSense-Table-Format
+          - WordSense-Table-Integrity
+          - WordSense-Table-Embedded
+          - WordSense-Classifier-Validation
         tests:
-          - WordSense_SystemCustomization_CustomPrefix_ReturnsExpectedGreeting
+          - WordSense_EmbeddedTable_MatchesPinnedModel
 
-      - id: WordSense-Lib-Prefix
-        title: The library shall expose the configured greeting prefix via a read-only property.
+      - id: WordSense-Lib-Encoder
+        title: The library shall compute contextual embeddings of tokenized text with ONNX Runtime.
         tags: [system]
         justification: |
-          Callers may need to inspect the prefix configured at construction time without
-          re-specifying it or relying on the greeting output format to infer it.
+          The embeddings of the surrounding sentence are the evidence for the sense decision; the
+          encoder wraps ONNX Runtime so the rest of the library depends only on a small interface.
         children:
-          - WordSense-Demo-Prefix
+          - WordSense-Encoder-Encode
+          - WordSense-Encoder-Validation
+          - WordSense-Tokenizer-Window
+          - WordSense-Tokenizer-Spans
+          - WordSense-OTS-OnnxRuntime-Inference
         tests:
-          - WordSense_SystemIntegration_CustomPrefix_ExposesPrefix
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
-      - id: WordSense-Lib-ValidationNull-DemoMethod
-        title: The library shall reject a null name argument to DemoMethod with ArgumentNullException.
+      - id: WordSense-Lib-ModelDownload
+        title: The library shall obtain missing model files from ordered sources (mirror, Hugging Face, GitHub LFS).
         tags: [system]
         justification: |
-          Passing null to DemoMethod is a programming error. Throwing ArgumentNullException
-          immediately surfaces the mistake to callers and prevents obscure failures deeper in
-          the call stack.
+          Users in restricted networks need to supply their own mirror, while everyone else gets
+          the files from public hosting. Falling through the list keeps the library working when
+          one host is blocked or unavailable.
         children:
-          - WordSense-Demo-ValidationNull-DemoMethod
+          - WordSense-Downloader-Order
+          - WordSense-Downloader-Fallthrough
+          - WordSense-Downloader-AllFail
+          - WordSense-Downloader-Present
+          - WordSense-Downloader-Cancel
+          - WordSense-Downloader-Progress
         tests:
-          - WordSense_SystemValidation_DemoMethodNullInput_ThrowsArgumentNullException
+          - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+          - WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs
 
-      - id: WordSense-Lib-ValidationNull-Constructor
-        title: The library shall reject a null prefix argument to the constructor with ArgumentNullException.
+      - id: WordSense-Lib-Mirror
+        title: The library shall support a user download mirror set by environment variables or options.
         tags: [system]
         justification: |
-          Passing null to the constructor is a programming error. Throwing ArgumentNullException
-          immediately surfaces the mistake and prevents invalid instances from being created.
+          Enterprises and offline users host the model on their own server; the same configuration
+          model as the sibling Speech library keeps the experience consistent.
         children:
-          - WordSense-Demo-ValidationNull-Constructor
+          - WordSense-Mirror-Validation
+          - WordSense-Mirror-Environment
+          - WordSense-Mirror-Redaction
+          - WordSense-Downloader-MirrorConfig
+          - WordSense-Downloader-Credentials
         tests:
-          - WordSense_SystemValidation_ConstructorNullPrefix_ThrowsArgumentNullException
+          - WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
+          - WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
 
-      - id: WordSense-Lib-ValidationEmpty-DemoMethod
-        title: The library shall reject an empty-string name argument to DemoMethod with ArgumentException.
+      - id: WordSense-Lib-Integrity
+        title: The library shall verify the SHA-256 digest of every model file against pinned values.
         tags: [system]
         justification: |
-          Passing an empty string to DemoMethod is a programming error. Throwing ArgumentException
-          immediately surfaces the mistake and prevents malformed output such as "Hello, !".
+          A model file that does not match the pinned digest could silently change results or carry
+          malicious content; every source is therefore treated as untrusted until verified.
         children:
-          - WordSense-Demo-ValidationEmpty-DemoMethod
+          - WordSense-Downloader-Integrity
         tests:
-          - WordSense_SystemValidation_DemoMethodEmptyInput_ThrowsArgumentException
+          - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
 
-      - id: WordSense-Lib-ValidationEmpty-Constructor
-        title: The library shall reject an empty-string prefix argument to the constructor with ArgumentException.
+      - id: WordSense-Lib-Performance
+        title: The library shall classify a typical sentence in a few milliseconds on a developer workstation.
         tags: [system]
         justification: |
-          Passing an empty string to the constructor is a programming error. Throwing ArgumentException
-          immediately surfaces the mistake and prevents malformed output such as ", World!".
-        children:
-          - WordSense-Demo-ValidationEmpty-Constructor
+          Interactive callers need classification latency that does not block a user interface;
+          the benchmark records the median and 95th percentile latency for one and four threads.
         tests:
-          - WordSense_SystemValidation_ConstructorEmptyPrefix_ThrowsArgumentException
+          - WordSense_Benchmark_ClassifyLatency
+
+      - id: WordSense-Lib-Reproducible
+        title: The table builder shall produce the same table from the same corpus and model.
+        tags: [system]
+        justification: |
+          A reproducible, deterministic build lets reviewers verify that the embedded table was
+          trained from the committed corpus.
+        children:
+          - WordSense-Builder-Trainer
+        tests:
+          - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic

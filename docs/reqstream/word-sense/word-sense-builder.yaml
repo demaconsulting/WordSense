@@ -1,0 +1,33 @@
+---
+# WordSenseBuilder (build-time tool) unit requirements
+
+sections:
+  - title: WordSenseBuilder Requirements
+    requirements:
+      - id: WordSense-Builder-Corpus
+        title: The builder shall validate corpus format and the disjointness of training and evaluation data.
+        tags: [unit]
+        justification: |
+          Leaked or malformed sentences invalidate the accuracy measurement.
+        tests:
+          - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
+          - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
+          - WordSenseBuilder_Corpus_DirectoryAndDisjointness
+          - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
+
+      - id: WordSense-Builder-Trainer
+        title: The builder shall train classifiers deterministically.
+        tags: [unit]
+        justification: |
+          The embedded table must be reproducible from the committed corpus.
+        tests:
+          - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+
+      - id: WordSense-Builder-Importer
+        title: The builder shall import only complete, valid sentence batches and shall be idempotent.
+        tags: [unit]
+        justification: |
+          Partial or invalid batches must never enter the corpus.
+        tests:
+          - WordSenseBuilder_BatchImporter_ImportsValidatesAndIsIdempotent
+          - WordSenseBuilder_Program_Run_ReportsErrors

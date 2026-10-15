@@ -1,0 +1,21 @@
+---
+# OnnxWordSenseEncoder unit requirements
+
+sections:
+  - title: OnnxWordSenseEncoder Requirements
+    requirements:
+      - id: WordSense-Encoder-Encode
+        title: The encoder shall return one hidden-state vector per input id, deterministically.
+        tags: [unit]
+        justification: |
+          The classifier needs per-token hidden states and the digest to verify the table.
+        tests:
+          - OnnxWordSenseEncoder_EncodeAsync_ValidIds_ReturnsHiddenStates
+
+      - id: WordSense-Encoder-Validation
+        title: The encoder shall reject invalid arguments, cancelled calls and use after disposal.
+        tags: [unit]
+        justification: |
+          Misuse must fail fast with a documented exception.
+        tests:
+          - OnnxWordSenseEncoder_EncodeAsync_InvalidUse_Throws

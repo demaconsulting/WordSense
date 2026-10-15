@@ -49,8 +49,8 @@ against a known-good model fixture as part of its built-in self-test suite.
 
 #### SysML2Tools_SoftwareStructureViewSvg
 
-**Scenario**: The build-docs CI job runs `dotnet sysml2tools render` against the real WordSense model, then FileAssert checks the resulting file at
-`docs/design/generated/SoftwareStructureView.svg`.
+**Scenario**: The build-docs CI job runs `dotnet sysml2tools render` against the real WordSense model, then
+FileAssert checks the resulting file at `docs/design/generated/SoftwareStructureView.svg`.
 
 **Expected**: Exactly one file exists at that path, and it is well-formed XML with a root element
 named `svg`.
@@ -59,8 +59,8 @@ named `svg`.
 
 #### SysML2Tools_WordSenseViewSvg
 
-**Scenario**: The build-docs CI job runs `dotnet sysml2tools render` against the real WordSense model, then FileAssert checks the resulting file at
-`docs/design/generated/WordSenseView.svg`.
+**Scenario**: The build-docs CI job runs `dotnet sysml2tools render` against the real WordSense model, then
+FileAssert checks the resulting file at `docs/design/generated/WordSenseView.svg`.
 
 **Expected**: Exactly one file exists at that path, and it is well-formed XML with a root element
 named `svg`.

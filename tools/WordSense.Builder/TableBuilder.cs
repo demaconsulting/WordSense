@@ -411,7 +411,7 @@ internal static class TableBuilder
         {
             var h = seed ^ (value * 0x9E3779B1u);
             h ^= h >> 16;
-            h *= 0x85EBCA6Bu;
+            h *= 0x85EB_CA6Bu;
             h ^= h >> 13;
             h *= 0xC2B2AE35u;
             h ^= h >> 16;

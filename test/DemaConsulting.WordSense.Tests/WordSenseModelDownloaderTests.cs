@@ -142,13 +142,13 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     public async Task WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst()
     {
         using var server = new LocalServer(ServeReal);
-        var url = new Uri(server.BaseUri, "/envmirror").ToString();
+        var url = new Uri(server.BaseUri, "/base-from-environment").ToString();
 
         await WordSenseModelDownloader.EnsureModelAsync(
             Options(server, null, name => name == DownloadMirror.UrlEnvironmentVariable ? url : null),
             TestContext.Current.CancellationToken);
 
-        Assert.All(Paths(server), p => Assert.StartsWith("/envmirror/all-MiniLM-L6-v2/", p, StringComparison.Ordinal));
+        Assert.All(Paths(server), p => Assert.StartsWith("/base-from-environment/all-MiniLM-L6-v2/", p, StringComparison.Ordinal));
     }
 
     /// <summary>
@@ -158,7 +158,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     public async Task WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment()
     {
         using var server = new LocalServer(ServeReal);
-        var url = new Uri(server.BaseUri, "/envmirror").ToString();
+        var url = new Uri(server.BaseUri, "/base-from-environment").ToString();
 
         await WordSenseModelDownloader.EnsureModelAsync(
             Options(server, MirrorOn(server), name => name == DownloadMirror.UrlEnvironmentVariable ? url : null),
@@ -221,7 +221,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         await WordSenseModelDownloader.EnsureModelAsync(Options(server, mirror), TestContext.Current.CancellationToken);
 
-        Assert.All(server.Requests, r => Assert.Equal("Basic dXNlcjpwdw==", r.Authorization));
+        Assert.All(server.Requests, r => Assert.Equal("Basic " + Convert.ToBase64String("user:pw"u8.ToArray()), r.Authorization));
     }
 
     /// <summary>
@@ -265,7 +265,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
         {
             if (context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal))
             {
-                await Task.Delay(TimeSpan.FromSeconds(10));
+                await Task.Delay(TimeSpan.FromSeconds(30));
                 return;
             }
 
@@ -277,7 +277,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
             HuggingFaceBaseUri = new Uri(server.BaseUri, "/hf"),
             GitHubLfsBaseUri = new Uri(server.BaseUri, "/lfs"),
             StoreRoot = _store,
-            RequestTimeout = TimeSpan.FromSeconds(2),
+            RequestTimeout = TimeSpan.FromSeconds(6),
         };
 
         var location = await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
@@ -294,7 +294,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(async context =>
         {
-            await Task.Delay(TimeSpan.FromSeconds(10));
+            await Task.Delay(TimeSpan.FromSeconds(30));
             await ServeReal(context);
         });
         using var cts = new CancellationTokenSource(TimeSpan.FromMilliseconds(300));

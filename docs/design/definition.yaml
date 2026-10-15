@@ -6,9 +6,16 @@ input-files:
   - docs/design/title.txt
   - docs/design/introduction.md
   - docs/design/word-sense.md
-  - docs/design/word-sense/demo.md
+  - docs/design/word-sense/word-piece-tokenizer.md
+  - docs/design/word-sense/word-sense-table.md
+  - docs/design/word-sense/onnx-word-sense-encoder.md
+  - docs/design/word-sense/word-sense-classifier.md
+  - docs/design/word-sense/download-mirror.md
+  - docs/design/word-sense/word-sense-model-downloader.md
+  - docs/design/word-sense/word-sense-builder.md
   - docs/design/ots.md
   - docs/design/ots/buildmark.md
+  - docs/design/ots/onnxruntime.md
   - docs/design/ots/fileassert.md
   - docs/design/ots/pandoc.md
   - docs/design/ots/reqstream.md

@@ -1,7 +1,7 @@
 # Model Provenance
 
 This note records where the WordSense encoder model and tokenizer vocabulary come from, how they are verified, and
-the licence terms that apply to them.
+the license terms that apply to them.
 
 ## Files
 
@@ -34,8 +34,8 @@ Downloads are tried in this order, each verified against the pinned SHA-256 befo
 2. Hugging Face (`vocab.txt` only).
 3. GitHub Git LFS media endpoint for this repository.
 
-## Licence
+## License
 
 The base model is licensed under the Apache License 2.0. The quantized derivative and the vocabulary are
-redistributed under the same licence, with attribution to the sentence-transformers project and the original
+redistributed under the same license, with attribution to the sentence-transformers project and the original
 MiniLM authors.

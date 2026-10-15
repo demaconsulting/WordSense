@@ -1,0 +1,17 @@
+# OnnxWordSenseEncoder Verification
+
+## Verification Approach
+
+Tests in `OnnxWordSenseEncoderTests.cs` use the real model from the `model/` directory (skipped when
+the Git LFS content is absent).
+
+## Test Scenarios
+
+- **OnnxWordSenseEncoder_EncodeAsync_ValidIds_ReturnsHiddenStates**: three ids give `3 × 384` values,
+  identical on repetition; the digest is the pinned one.
+- **OnnxWordSenseEncoder_EncodeAsync_InvalidUse_Throws**: empty and null input, a cancelled token, use
+  after disposal, a missing file and an invalid thread count.
+
+## Requirements Coverage
+
+`WordSense-Encoder-Encode` and `WordSense-Encoder-Validation`.

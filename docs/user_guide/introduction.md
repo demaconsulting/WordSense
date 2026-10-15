@@ -2,176 +2,118 @@
 
 ## Purpose
 
-This document is the user guide for the WordSense, a demonstration project that
-showcases best practices for DEMA Consulting DotNet Libraries.
+This document is the user guide for WordSense, a .NET library that classifies the sense of ambiguous
+English words in context.
 
 ## Scope
 
 This user guide covers:
 
-- Installation of the library
-- Basic usage and examples
+- Installation and first use
+- Model download, mirrors and offline use
 - API reference
-
-# Continuous Compliance
-
-This template follows the
-[Continuous Compliance](https://github.com/demaconsulting/ContinuousCompliance) methodology, which ensures
-compliance evidence is generated automatically on every CI run.
-
-## Key Practices
-
-- **Requirements Traceability**: Every requirement is linked to passing tests, and a trace matrix is
-  auto-generated on each release
-- **Linting Enforcement**: markdownlint, cspell, and yamllint are enforced before any build proceeds
-- **Automated Audit Documentation**: Each release ships with generated requirements, justifications,
-  trace matrix, and quality reports
-- **CodeQL and SonarCloud**: Security and quality analysis runs on every build
+- Accuracy, abstention and performance notes
 
 # Installation
-
-Install the library using the .NET CLI:
 
 ```bash
 dotnet add package DemaConsulting.WordSense
 ```
+
+The package targets net8.0, net9.0 and net10.0 and depends only on Microsoft.ML.OnnxRuntime.
 
 # Usage
 
 ## Basic Usage
 
 ```csharp
-using WordSense;
+using DemaConsulting.WordSense;
 
-var demo = new Demo();
-var result = demo.DemoMethod("World");
-Console.WriteLine(result); // Output: Hello, World!
-```
-
-## API Reference
-
-### Demo
-
-The `Demo` class provides demonstration functionality for the template library.
-
-#### Constants
-
-##### DefaultPrefix
-
-```csharp
-public const string DefaultPrefix = "Hello";
-```
-
-The greeting prefix used when no custom prefix is specified.
-
-#### Constructors
-
-##### Demo()
-
-```csharp
-public Demo()
-```
-
-Initializes a new instance of the `Demo` class with the default prefix "Hello".
-
-##### Demo(string prefix)
-
-```csharp
-public Demo(string prefix)
-```
-
-Initializes a new instance of the `Demo` class with a custom prefix.
-
-**Parameters:**
-
-- `prefix` (string): The prefix to use in greetings. Must not be null or empty.
-
-**Exceptions:**
-
-- `ArgumentNullException`: Thrown when `prefix` is null.
-- `ArgumentException`: Thrown when `prefix` is an empty string.
-
-#### Properties
-
-##### Prefix
-
-```csharp
-public string Prefix { get; }
-```
-
-Gets the greeting prefix used by this instance.
-
-#### Methods
-
-##### DemoMethod
-
-```csharp
-public string DemoMethod(string name)
-```
-
-Returns a greeting message for the specified name.
-
-**Parameters:**
-
-- `name` (string): The name to greet. Must not be null or empty.
-
-**Returns:**
-
-A string containing the greeting message in the format "{prefix}, {name}!".
-
-**Exceptions:**
-
-- `ArgumentNullException`: Thrown when `name` is null.
-- `ArgumentException`: Thrown when `name` is an empty string.
-
-**Example:**
-
-```csharp
-var demo = new Demo();
-var greeting = demo.DemoMethod("World");
-// greeting = "Hello, World!"
-```
-
-# Examples
-
-## Example 1: Basic Greeting
-
-```csharp
-using WordSense;
-
-var demo = new Demo();
-var result = demo.DemoMethod("Alice");
-Console.WriteLine(result);
-// Output: Hello, Alice!
-```
-
-## Example 2: Custom Prefix
-
-```csharp
-using WordSense;
-
-var demo = new Demo("Hi");
-var result = demo.DemoMethod("Alice");
-Console.WriteLine(result);
-// Output: Hi, Alice!
-```
-
-## Example 3: Error Handling
-
-```csharp
-using WordSense;
-
-var demo = new Demo();
-try
+using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions());
+var tokens = await classifier.ClassifyAsync("The record was broken, so they will record the new album.");
+foreach (var token in tokens.Where(t => t.Sense is not null))
 {
-    var result = demo.DemoMethod(null);
-}
-catch (ArgumentNullException ex)
-{
-    Console.WriteLine("Name cannot be null");
+    Console.WriteLine($"{token.Text}: {token.Sense!.Label} (margin {token.Sense.Margin:0.00})");
 }
 ```
+
+The tokens tile the input: concatenating `Token.Text` reproduces the text exactly, so results can be mapped back
+to the original string. Words that are not known, and words for which the evidence is weak, have no `Sense`.
+
+## Classifying one word
+
+```csharp
+var result = await classifier.ClassifyAsync(text, targetStart, targetLength);
+// null when the span is not a known word or the classifier abstains
+```
+
+## Model files and mirrors
+
+`WordSenseClassifier.CreateAsync` needs two files: `model_int8.onnx` (23 MB) and `vocab.txt`. If
+`WordSenseClassifierOptions.ModelDirectory` is set, the files there are verified and used. Otherwise they are
+stored in a per-user directory (`LocalApplicationData/DemaConsulting/WordSense/models/...`) and downloaded when
+missing, from these sources in order:
+
+1. **Your mirror**, when configured: `{mirror}/all-MiniLM-L6-v2/{file}`
+2. **Hugging Face**, for files that are identical to the upstream files (only `vocab.txt`)
+3. **GitHub LFS**: `https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{file}`
+
+Every file must match its pinned SHA-256 digest; on a request failure, timeout, block or digest mismatch the next
+source is tried. If all fail, `WordSenseModelDownloadException.Failures` lists each attempt.
+
+Configure a mirror with environment variables:
+
+| Variable                        | Meaning                                       |
+|---------------------------------|-----------------------------------------------|
+| `WORDSENSE_MIRROR_URL`          | Absolute http(s) base URL of the mirror       |
+| `WORDSENSE_MIRROR_USER`         | Basic authentication user (with the password) |
+| `WORDSENSE_MIRROR_PASSWORD`     | Basic authentication password                 |
+| `WORDSENSE_MIRROR_BEARER_TOKEN` | Bearer token (instead of user and password)   |
+
+or in code, which takes precedence:
+
+```csharp
+var options = new WordSenseClassifierOptions
+{
+    Downloader = new WordSenseModelDownloaderOptions
+    {
+        Mirror = new DownloadMirror(new Uri("https://models.example.com/wordsense"), bearerToken: token),
+    },
+};
+```
+
+Credentials require https (except for loopback hosts) and are sent only to the mirror.
+
+## Tuning
+
+- `AbstainMarginScale`: multiplies every lemma's abstention threshold (above 1 abstains more often).
+- `IntraOpThreads`: ONNX Runtime threads (0 selects the default).
+- `MaxSequenceLength`: model window; longer texts are classified with a window around each target.
+
+# API Reference
+
+| Type                                        | Purpose                                                        |
+|---------------------------------------------|----------------------------------------------------------------|
+| `IWordSenseClassifier`                      | `ClassifyAsync(text)` and `ClassifyAsync(text, start, length)` |
+| `WordSenseClassifier`                       | Implementation; `CreateAsync`, `KnownLemmas`, `GetSenseLabels` |
+| `WordSenseClassifierOptions`                | Model directory, downloader, threads, window, abstention       |
+| `WordSenseToken`, `WordSenseResult`         | Result types: tile text and optional sense                     |
+| `WordSenseModelDownloader`                  | `EnsureModelAsync`: verify or download the model files         |
+| `WordSenseModelDownloaderOptions`           | Mirror, base URIs, store root, timeout, progress               |
+| `DownloadMirror`                            | Mirror base URL and credentials; `FromEnvironment`             |
+| `IWordSenseEncoder`, `OnnxWordSenseEncoder` | Encoder abstraction and ONNX Runtime encoder                   |
+| `WordSenseTable`                            | The embedded classifier table (`LoadEmbedded`)                 |
+
+Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException` (table and model differ) and
+`WordSenseTableFormatException` (damaged table).
+
+# Accuracy and Performance
+
+Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
+numbers per lemma. A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
+threads on a development workstation; run the `Benchmark` test category to measure your hardware).
 
 # References
 
 - [REF-1] Continuous Compliance Methodology (<https://github.com/demaconsulting/ContinuousCompliance>)
+- [REF-2] sentence-transformers/all-MiniLM-L6-v2 (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>)

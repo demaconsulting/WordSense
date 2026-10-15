@@ -1,0 +1,62 @@
+---
+# WordSenseClassifier unit requirements
+
+sections:
+  - title: WordSenseClassifier Requirements
+    requirements:
+      - id: WordSense-Classifier-Tiles
+        title: The classifier shall return tokens that tile the input text exactly.
+        tags: [unit]
+        justification: |
+          Callers rebuild or annotate the text from the tokens; no character may be lost or duplicated.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+          - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
+
+      - id: WordSense-Classifier-Senses
+        title: The classifier shall assign senses only to known lemmas and their inflected forms.
+        tags: [unit]
+        justification: |
+          Unknown words carry no sense, and a single encoder pass per text keeps latency low.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly
+          - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
+          - WordSenseClassifier_ClassifyAsync_Span_ResolvesForms
+          - WordSenseClassifier_ClassifyAsync_Span_EdgeCases
+          - WordSenseClassifier_KnownLemmas_And_SenseLabels_AreExposed
+
+      - id: WordSense-Classifier-Abstain
+        title: The classifier shall return no sense when the margin is below the per-lemma threshold.
+        tags: [unit]
+        justification: |
+          Abstaining is better than a low-confidence guess.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
+
+      - id: WordSense-Classifier-LongText
+        title: The classifier shall classify texts longer than the model limit using a window around each target.
+        tags: [unit]
+        justification: |
+          Real documents are longer than the model input limit.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget
+
+      - id: WordSense-Classifier-Validation
+        title: The classifier shall reject invalid arguments and a table that does not match the encoder model.
+        tags: [unit]
+        justification: |
+          A mismatched table and model silently produce wrong senses.
+        tests:
+          - WordSenseClassifier_Constructor_InvalidArguments_Throw
+          - WordSenseClassifier_Constructor_ModelMismatch_Throws
+          - WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
+
+      - id: WordSense-Classifier-Lifetime
+        title: The classifier shall support cancellation, concurrent use and disposal of an owned encoder.
+        tags: [unit]
+        justification: |
+          Services call the classifier from many threads and need to cancel long requests.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_Cancelled_Throws
+          - WordSenseClassifier_ClassifyAsync_Concurrent_IsConsistent
+          - WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed

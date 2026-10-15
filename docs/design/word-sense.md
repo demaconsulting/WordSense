@@ -1,113 +1,114 @@
 # System Design
 
-This document provides the system-level design for the WordSense.
+This document provides the system-level design for WordSense.
 
 ![WordSense Structure](WordSenseView.svg)
 
 ## Architecture
 
-The WordSense is a minimal .NET library template demonstrating DEMA Consulting
-best practices. The system consists of:
+WordSense is a .NET library that decides which sense an ambiguous English word carries in a given
+text. It ships as one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
+Microsoft.ML.OnnxRuntime. The system consists of these units, all in one assembly:
 
-- **Demo Unit**: Simple greeting functionality demonstrating library patterns
+- **WordPieceTokenizer**: BERT uncased word-piece tokenizer with character offsets
+- **WordSenseTable**: embedded binary table of per-lemma linear classifiers, word forms and abstention margins
+- **OnnxWordSenseEncoder**: ONNX Runtime wrapper around the int8 `all-MiniLM-L6-v2` model
+- **WordSenseClassifier**: public entry point that combines the three units above
+- **DownloadMirror**: validated user mirror configuration
+- **WordSenseModelDownloader**: ordered, verified model download (mirror, Hugging Face, GitHub LFS)
+- **WordSenseBuilder**: non-shipped tool (`tools/WordSense.Builder`) that trains the table from the corpus
 
-There are no subsystems and no relationships between software items beyond the system exposing
-the `Demo` unit directly through its public API; see _Demo Unit Design_ for the unit's internal
-collaboration (none — `Demo` is a self-contained leaf class).
+There are no subsystems. The classifier collaborates with the tokenizer, encoder and table; the
+downloader uses the mirror configuration and the model catalog. The builder reuses the tokenizer,
+encoder, table and feature extraction so that training and inference share one code path.
 
 ## External Interfaces
 
-The system exposes the following public API to external consumers:
+| Interface                          | Direction | Format                     | Constraints                    |
+|------------------------------------|-----------|----------------------------|--------------------------------|
+| `CreateAsync(options)`             | In        | Async factory              | Model available                |
+| `ClassifyAsync(text)`              | In/Out    | `string` to list of tokens | Tokens tile the input          |
+| `ClassifyAsync(text, span)`        | In/Out    | Span to `WordSenseResult?` | `null` if unknown or abstained |
+| `EnsureModelAsync(options)`        | In/Out    | Async call                 | SHA-256 verified               |
+| `DownloadMirror`, `Options.Mirror` | In        | Record / options           | Absolute http(s) URL           |
+| `WORDSENSE_MIRROR_*`               | In        | Environment                | Used if no option mirror       |
+| `IWordSenseEncoder`                | In        | Interface                  | Test substitutable             |
 
-- **Demo()**: Default constructor; initializes the instance with the default prefix `"Hello"`
-- **Demo(string prefix)**: Custom-prefix constructor; initializes the instance with the specified
-  prefix. Throws `ArgumentNullException` if `prefix` is null; throws `ArgumentException` if
-  `prefix` is an empty string.
-- **Demo.Prefix**: Read-only property that returns the greeting prefix configured at construction
-- **Demo.DemoMethod(string name)**: Returns a greeting string in the format `{prefix}, {name}!`.
-  Throws `ArgumentNullException` if `name` is null; throws `ArgumentException` if `name` is an
-  empty string.
+### Download sources and order
 
-| Interface                      | Direction        | Format                        | Constraints                  |
-|--------------------------------|------------------|-------------------------------|------------------------------|
-| `Demo()`                       | Inbound          | Constructor call              | None; always succeeds        |
-| `Demo(string prefix)`          | Inbound          | Constructor call              | `prefix` non-null, non-empty |
-| `Demo.Prefix`                  | Outbound         | `string` property read        | None; always succeeds        |
-| `Demo.DemoMethod(string name)` | Inbound/Outbound | Method call / `string` return | `name` non-null, non-empty   |
+`WordSenseModelDownloader` obtains each missing or invalid model file from the first source that
+delivers bytes with the pinned SHA-256 digest:
+
+1. **User mirror** when configured: `{mirrorBase}/all-MiniLM-L6-v2/{file}`. The programmatic
+   `WordSenseModelDownloaderOptions.Mirror` wins over the environment variables.
+2. **Hugging Face** `https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/{file}`,
+   only for files whose pinned digest is the upstream file. The int8 ONNX model is quantized locally and
+   is **not** the upstream `model_qint8_*.onnx` (the upstream file has a different size and digest), so
+   only `vocab.txt` is requested from Hugging Face.
+3. **GitHub LFS** `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/{file}`
+   for every file.
+
+A failed request, timeout, block or digest mismatch moves on to the next source; credentials are sent
+only to the mirror. If every source fails, `WordSenseModelDownloadException` lists each attempt.
 
 ## Dependencies
 
-The WordSense has zero runtime NuGet dependencies — it is implemented exclusively
-against the .NET Base Class Library. The following OTS items are used for building and verifying
-this system (not consumed at runtime); see _OTS Integration Design_ (`docs/design/ots.md`) and
-each item's dedicated design document for details:
+The runtime dependency is Microsoft.ML.OnnxRuntime 1.28.0 (see _OTS Integration Design_ and the
+_ONNX Runtime_ design). The model file `model_int8.onnx` is not part of the package; it is
+downloaded on first use, or supplied through `WordSenseClassifierOptions.ModelDirectory`. The
+following OTS items are used for building and verifying this system (not consumed at runtime):
 
-- **BuildMark** — generates build-notes documentation; see _BuildMark Design_
-- **FileAssert** — validates generated documents against acceptance criteria; see
-  _FileAssert Design_
-- **Pandoc** — converts Markdown documentation to HTML; see _Pandoc Design_
-- **ReqStream** — enforces requirements-to-test traceability; see _ReqStream Design_
-- **ReviewMark** — enforces file review coverage and currency; see _ReviewMark Design_
-- **SarifMark** — converts CodeQL SARIF results to markdown; see _SarifMark Design_
-- **SonarMark** — generates SonarCloud quality reports; see _SonarMark Design_
-- **VersionMark** — captures and publishes tool-version information; see _VersionMark Design_
-- **WeasyPrint** — converts HTML documentation to PDF; see _WeasyPrint Design_
-- **xUnit** — executes unit and integration tests; see _xUnit Design_
+- **BuildMark**, **FileAssert**, **Pandoc**, **ReqStream**, **ReviewMark**, **SarifMark**,
+  **SonarMark**, **SysML2Tools**, **VersionMark**, **WeasyPrint** and **xUnit**; see each item's
+  design document.
 
 ## Risk Control Measures
 
-N/A - WordSense is a demonstration template with no safety-critical functionality
-requiring risk control measures (IEC 62304 §5.3.3).
+N/A - WordSense is a text-analysis library with no safety-critical functionality requiring risk
+control measures (IEC 62304 §5.3.3). Model integrity is protected by pinned SHA-256 digests and by
+the table's trailing digest.
 
 ## Data Flow
 
-**Construction path:**
+**Creation path:**
 
-1. **Input**: Constructor parameter `prefix` (optional; defaults to `"Hello"` when using `Demo()`)
-2. **Validation**: `Demo(string prefix)` rejects null with `ArgumentNullException`; rejects empty
-   string with `ArgumentException`
-3. **Storage**: Valid prefix stored for use in subsequent greeting calls
+1. `CreateAsync` resolves the model directory: `ModelDirectory` if set, otherwise
+   `WordSenseModelDownloader.EnsureModelAsync` (verifies existing files, downloads the rest).
+2. The vocabulary is loaded into the tokenizer, the ONNX session is created, and the embedded table
+   is loaded; the table's model digest must equal the encoder's digest.
 
-**Method-call path:**
+**Classification path:**
 
-1. **Input**: Method parameter `name` (required, non-empty string)
-2. **Validation**: `DemoMethod` rejects null with `ArgumentNullException`; rejects empty string
-   with `ArgumentException`
-3. **Processing**: Simple string formatting combining stored prefix and supplied name
-4. **Output**: Formatted greeting string in the format `{prefix}, {name}!`
+1. The text is split into tiles (word, whitespace run or single character).
+2. Words that are known forms of a lemma become targets; if there are none, no inference is done.
+3. The tokenizer produces word pieces with offsets; the encoder runs once for the sentence (a window
+   around each target for long texts).
+4. For each target the hidden states of its word pieces are pooled, centered with the table mean and
+   normalized; the lemma's linear model yields the best sense and margin; a margin below the lemma's
+   abstention threshold yields no sense.
 
 ## Design Constraints
 
-- **Simplicity**: Minimal functionality to serve as template
-- **Compliance**: All functionality must be traceable to requirements
-- **Quality**: Zero warnings, full test coverage, complete documentation
-- **Portability**: Compatible across supported .NET platforms
+- **Determinism**: same text and model give the same result; the table is built reproducibly.
+- **Integrity**: no model file is used unless its SHA-256 matches the pinned digest.
+- **Portability**: the assembly targets net8.0, net9.0 and net10.0; native code comes only from
+  ONNX Runtime.
+- **Quality**: zero warnings, requirements traceable to tests.
 
 ### Platform Support
 
-The library targets the following frameworks, enabling broad compatibility across modern .NET
-runtimes and legacy environments:
+| Target Framework | Runtime / Environment |
+|------------------|-----------------------|
+| `net8.0`         | .NET 8 LTS            |
+| `net9.0`         | .NET 9                |
+| `net10.0`        | .NET 10               |
 
-| Target Framework   | Runtime / Environment                             |
-|--------------------|---------------------------------------------------|
-| `netstandard2.0`   | .NET Standard 2.0 (implemented by .NET FX 4.8.1+) |
-| `net8.0`           | .NET 8 LTS                                        |
-| `net9.0`           | .NET 9                                            |
-| `net10.0`          | .NET 10                                           |
-
-The library is supported on the following operating systems:
-
-- **Windows** — primary developer and CI platform
-- **Linux** — CI/CD and containerized environments
-- **macOS** — developer workstations using Apple platforms
-
-Portability is achieved by restricting the implementation exclusively to Base Class Library (BCL)
-APIs available across all target frameworks. No platform-specific native interop, OS-specific
-APIs, or framework-version-specific features are used.
+The library is supported on Windows, Linux and macOS.
 
 ### Integration Patterns
 
-- **NuGet Packaging**: Standard .NET library packaging and distribution
-- **CI/CD Integration**: Automated build, test, and quality validation
-- **Requirements Traceability**: All features linked to passing tests
-- **Review Management**: Systematic file review using ReviewMark patterns
+- **NuGet Packaging**: one package, `DemaConsulting.WordSense`.
+- **Git LFS**: the model files in `model/` are stored with Git LFS and served through the GitHub
+  media endpoint.
+- **CI/CD Integration**: automated build, test and quality validation.
+- **Review Management**: file review with ReviewMark review-sets.

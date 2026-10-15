@@ -1,0 +1,86 @@
+---
+# WordSenseModelDownloader unit requirements
+
+sections:
+  - title: WordSenseModelDownloader Requirements
+    requirements:
+      - id: WordSense-Downloader-Order
+        title: The downloader shall try the mirror first, then Hugging Face for files that allow it, then GitHub LFS.
+        tags: [unit]
+        justification: |
+          A user-provided mirror must take precedence, and public hosts are the fallback.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror
+          - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+          - WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs
+
+      - id: WordSense-Downloader-Fallthrough
+        title: The downloader shall fall through to the next source on a failed request, a timeout or a digest mismatch.
+        tags: [unit]
+        justification: |
+          A blocked or tampered source must not stop the download when another source works.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_Timeout_FallsThrough
+          - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+
+      - id: WordSense-Downloader-Integrity
+        title: The downloader shall verify the SHA-256 digest of each download and of each existing file.
+        tags: [unit]
+        justification: |
+          Only verified content may end up in the model store.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+          - WordSenseModelDownloader_EnsureModel_CorruptExistingFile_IsRedownloaded
+          - WordSenseModelDownloader_FromDirectory_ChecksEveryFile
+
+      - id: WordSense-Downloader-AllFail
+        title: The downloader shall report every failed attempt when all sources fail.
+        tags: [unit]
+        justification: |
+          Users need the full list of failures to diagnose network or mirror problems.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_AllSourcesFail_ThrowsWithEveryAttempt
+
+      - id: WordSense-Downloader-Present
+        title: The downloader shall make no request for files that are already present and valid.
+        tags: [unit]
+        justification: |
+          Repeated start-ups must work offline and quickly.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_AlreadyPresent_MakesNoRequests
+          - WordSenseModelDownloader_DefaultStoreRoot_IsPerUser
+
+      - id: WordSense-Downloader-Cancel
+        title: The downloader shall stop and propagate cancellation requested by the caller.
+        tags: [unit]
+        justification: |
+          Cancellation is not a source failure and must not trigger fall-through.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_CallerCancels_ThrowsOperationCanceled
+
+      - id: WordSense-Downloader-Progress
+        title: The downloader shall report download progress.
+        tags: [unit]
+        justification: |
+          The model is 23 MB; applications show progress to their users.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_Progress_IsReported
+
+      - id: WordSense-Downloader-MirrorConfig
+        title: The downloader shall prefer a programmatic mirror and reject an invalid environment mirror.
+        tags: [unit]
+        justification: |
+          Explicit configuration wins over ambient configuration, and bad configuration fails early.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
+          - WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
+          - WordSenseModelDownloader_EnsureModel_InvalidEnvironment_ThrowsBeforeRequests
+
+      - id: WordSense-Downloader-Credentials
+        title: The downloader shall send mirror credentials only to the mirror.
+        tags: [unit]
+        justification: |
+          Public hosts must never receive the user's credentials.
+        tests:
+          - WordSenseModelDownloader_EnsureModel_BearerToken_SentOnlyToMirror
+          - WordSenseModelDownloader_EnsureModel_BasicCredentials_SentToMirror

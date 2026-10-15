@@ -9,28 +9,24 @@
 [![Security][badge-security]][link-security]
 [![NuGet][badge-nuget]][link-nuget]
 
-WordSense is a DEMA Consulting .NET library, built following best practices for reusable .NET libraries.
+WordSense is a .NET library that tells which sense an ambiguous English word carries in context, for example
+whether "record" is a noun or a verb, or whether "bass" is a fish or an instrument. It combines the int8-quantized
+`all-MiniLM-L6-v2` encoder, run with ONNX Runtime, with a compact classifier table embedded in the assembly.
 
 ## Features
 
-WordSense provides:
-
-- **Simple Library Structure**: Demo class with example methods
-- **Multi-Platform Support**: Builds and runs on Windows, Linux, and macOS
-- **Multi-Runtime Support**: Targets .NET Standard 2.0, .NET 8, 9, and 10
-- **xUnit v3**: Modern unit testing with xUnit framework version 3
-- **Comprehensive CI/CD**: GitHub Actions workflows with quality checks and builds
-- **Linting Enforcement**: markdownlint, cspell, and yamllint enforced on every CI run
-- **Continuous Compliance**: Compliance evidence generated automatically on every CI run, following
-  the [Continuous Compliance][link-continuous-compliance] methodology
-- **SonarCloud Integration**: Quality gate and security analysis on every build
-- **Documentation Generation**: Automated build notes, user guide, code quality reports,
-  requirements, justifications, and trace matrix
-- **Requirements Traceability**: Requirements linked to passing tests with auto-generated trace matrix
+- **Contextual sense decisions**: per-word sense labels with a confidence margin, for a curated set of homographs
+- **Abstention**: returns no sense instead of guessing when the evidence is weak
+- **Single package**: one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
+  Microsoft.ML.OnnxRuntime
+- **Verified model files**: the model is downloaded on first use from a user mirror, Hugging Face or GitHub LFS, in
+  that order, and every file is verified against a pinned SHA-256 digest
+- **Fast**: a few milliseconds per sentence on a developer workstation
+- **Multi-Platform and Multi-Runtime**: Windows, Linux and macOS; .NET 8, 9 and 10
+- **Continuous Compliance**: compliance evidence generated on every CI run, following the
+  [Continuous Compliance][link-continuous-compliance] methodology
 
 ## Installation
-
-Install the library using the .NET CLI:
 
 ```bash
 dotnet add package DemaConsulting.WordSense
@@ -39,22 +35,26 @@ dotnet add package DemaConsulting.WordSense
 ## Usage
 
 ```csharp
-using WordSense;
+using DemaConsulting.WordSense;
 
-var demo = new Demo();
-var result = demo.DemoMethod("World"); // result = "Hello, World!"
+using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions());
+var tokens = await classifier.ClassifyAsync("They will record the record.");
+foreach (var token in tokens.Where(t => t.Sense is not null))
+{
+    Console.WriteLine($"{token.Text}: {token.Sense!.Label}"); // record: verb, record: noun
+}
 ```
+
+The first call downloads the 23 MB model into a per-user store. Set `WORDSENSE_MIRROR_URL` (and optionally
+`WORDSENSE_MIRROR_USER`/`WORDSENSE_MIRROR_PASSWORD` or `WORDSENSE_MIRROR_BEARER_TOKEN`) to use your own mirror. See
+the user guide for details.
 
 ## Documentation
 
-Generated documentation includes:
-
-- **Build Notes**: Release information and changes
-- **User Guide**: Comprehensive usage documentation
-- **Code Quality Report**: CodeQL and SonarCloud analysis results
-- **Requirements**: Functional and non-functional requirements
-- **Requirements Justifications**: Detailed requirement rationale
-- **Trace Matrix**: Requirements to test traceability
+- **User Guide**: usage, configuration and API reference
+- **Design, Verification and Requirements**: generated from `docs/`
+- **Trace Matrix**: requirements to test traceability
+- **Model provenance**: `docs/build_notes/model-provenance.md`
 
 ## Contributing
 
@@ -63,7 +63,8 @@ standards, and the pull request process.
 
 ## License
 
-Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details.
+Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
+`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License.
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 

@@ -1,7 +1,7 @@
 # Introduction
 
 This document provides the verification design for the WordSense, a .NET library
-demonstrating best practices for DEMA Consulting DotNet Libraries.
+that classifies the sense of ambiguous English words in context.
 
 ## Purpose
 
@@ -23,8 +23,11 @@ This document is intended for:
 This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
-- **WordSense (System)** — The complete .NET library template system
-- **Demo (Unit)** — Demonstration greeting class providing example functionality
+- **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
+- **WordPieceTokenizer**, **WordSenseTable**, **OnnxWordSenseEncoder**, **WordSenseClassifier**,
+  **DownloadMirror**, **WordSenseModelDownloader** (Units) and **WordSenseBuilder** (non-shipped tool unit)
+
+The OnnxRuntime OTS runtime dependency is also covered.
 
 The following OTS items are also covered:
 
