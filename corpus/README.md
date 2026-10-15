@@ -42,8 +42,9 @@ anchor/holdout overlap are dropped and reported; a batch with more than 5 % such
 fewer than two anchor senses or fewer than four anchors for a represented sense, and a lemma with holdout but no
 anchors, is excluded. `speech-batchN.tsv` files are copied unchanged apart from the dropped rows.
 
-Not imported (no anchors, so no classifier): conjunct, cumulate, depute, domesticate, illegitimate, outcaste,
-overhead, overman, overstudies, overstudy, overwater, unstick, uptown. Lemmas of batches 1-8 without holdout
+Not imported (real text too thin, see `docs/build_notes/gap-lemmas-decisions.md`): cumulate, depute, domesticate,
+illegitimate, outcaste, overman, overstudies, overstudy, overwater, unstick. The gap lemmas conjunct, overhead and
+uptown are stored in the `real-restore.tsv` files (real sentences only). Lemmas of batches 1-8 without holdout
 sentences are trained but not evaluated (30 lemmas).
 
 ## Sense Inventory
