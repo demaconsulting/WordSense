@@ -6,9 +6,10 @@ These are the exact encoder files that the embedded word-sense table
 | File | Purpose | Storage |
 | ---- | ------- | ------- |
 | `model_int8.onnx` | ONNX encoder, int8 dynamically quantized (output `last_hidden_state`, 384 dimensions) | Git LFS |
-| `vocab.txt` | BERT uncased WordPiece vocabulary (30,522 entries) | Git |
-| `tokenizer.json` | Reference tokenizer definition (used only to generate the tokenizer parity fixture) | Git |
-| `SHA256SUMS` | Pinned SHA-256 digests of the three files above | Git |
+| `vocab.txt` | BERT uncased WordPiece vocabulary (30,522 entries) | Git LFS |
+| `tokenizer.json` | Reference tokenizer definition (used only to generate the tokenizer parity fixture) | Git LFS |
+| `SHA256SUMS` | Pinned SHA-256 digests of the three files above (of the real content, not the LFS pointers) | Git |
+| `README.md` | This file | Git |
 
 ## Provenance
 
@@ -21,6 +22,9 @@ These are the exact encoder files that the embedded word-sense table
   (the upstream `model_qint8_avx512.onnx` is about 24.1 MB while this file is 22,972,370 bytes), so the Hugging Face
   source is never used for it. See `docs/build_notes/model-provenance.md`.
 - `vocab.txt` is the standard BERT uncased vocabulary shipped with the base model.
+
+All downloadable assets (every file except this README and `SHA256SUMS`) are Git LFS objects, served from
+`https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/{file}`.
 
 ## Integrity
 

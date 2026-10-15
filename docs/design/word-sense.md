@@ -108,7 +108,7 @@ The library is supported on Windows, Linux and macOS.
 ### Integration Patterns
 
 - **NuGet Packaging**: one package, `DemaConsulting.WordSense`.
-- **Git LFS**: the model files in `model/` are stored with Git LFS and served through the GitHub
+- **Git LFS**: every model file in `model/` (except its README and SHA256SUMS) is stored with Git LFS and served through the GitHub
   media endpoint.
 - **CI/CD Integration**: automated build, test and quality validation.
 - **Review Management**: file review with ReviewMark review-sets.

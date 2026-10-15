@@ -6,6 +6,8 @@
 *.bat text eol=crlf
 *.cmd text eol=crlf
 
-# Model binaries are stored in Git LFS.
-model/*.onnx filter=lfs diff=lfs merge=lfs -text
-model/vocab.txt filter=lfs diff=lfs merge=lfs -text
+# Downloadable model assets are stored in Git LFS (one media URL pattern serves every file).
+model/** filter=lfs diff=lfs merge=lfs -text
+# Documentation and checksums stay as plain text so they remain readable on GitHub.
+model/README.md text eol=lf -filter -diff -merge
+model/SHA256SUMS text eol=lf -filter -diff -merge

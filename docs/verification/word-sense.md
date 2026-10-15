@@ -12,8 +12,8 @@ substitutes (a fake encoder and a local HTTP server).
 
 - **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
 - **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
-- **Dependencies**: the Git LFS model files under `model/`; no network access. Tests that need the
-  model are skipped, not failed, when the LFS content is absent.
+- **Dependencies**: the Git LFS model files (including `tokenizer.json`) under `model/`; no network access. Tests that
+  need the model are skipped, not failed, when the LFS content is absent.
 - **Isolation**: each test creates its own classifier; no shared state.
 
 ## External Interface Simulation

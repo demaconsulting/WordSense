@@ -13,7 +13,7 @@
 
 ```text
 ├── corpus/                     (training anchors, holdout sentences, form maps)
-├── model/                      (ONNX encoder and vocabulary; ONNX file stored in Git LFS)
+├── model/                      (ONNX encoder, vocabulary and tokenizer; all stored in Git LFS)
 ├── tools/
 │   ├── WordSense.Builder/      (non-shipped table builder and corpus importer)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
