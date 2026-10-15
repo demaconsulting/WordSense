@@ -10,10 +10,12 @@
 # - PROPOSE only genuine technical terms/names as needed
 
 version: "0.2"
-language: en
+language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - tatoeba
+  - realtext
   - Relabeler
   - retag
   - retags
@@ -75,5 +77,6 @@ ignorePaths:
   - package-lock.json
   - model/**
   - corpus/**
+  - tools/real-text/cache/**
   - tools/tokenizer-fixture/**
   - test/**/Fixtures/**

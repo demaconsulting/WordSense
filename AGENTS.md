@@ -6,7 +6,7 @@
 - **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
   ambiguous English words in context, offline. It combines a managed WordPiece tokenizer, an int8 ONNX
   MiniLM sentence encoder, and a per-lemma linear classifier table embedded in the assembly.
-- **languages**: C#, Python (one-off tokenizer fixture generator only)
+- **languages**: C#, Python (one-off tokenizer fixture generator and the real-text harvest tool `tools/real-text`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure

@@ -1,6 +1,6 @@
 package WordSense {
     part def WordSenseBuilder {
-        doc /* Non-shipped build-time tool that trains the classifier table from the labeled corpus, imports sentence batches and runs the part-of-speech audit and relabeling. */
+        doc /* Non-shipped build-time tool that trains the classifier table from the labeled corpus, imports sentence batches, runs the part-of-speech audit and relabeling, and restores and evaluates senses with real, provenance-tracked sentences. */
 
         comment sourceRef /* Source: tools/WordSense.Builder/Program.cs */
         comment testRef /* Test: test/WordSense.Builder.Tests/BuilderTests.cs */

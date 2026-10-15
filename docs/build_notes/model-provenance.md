@@ -44,3 +44,20 @@ the tokenizer parity fixture and is fetched with `git lfs pull`.
 The base model is licensed under the Apache License 2.0. The quantized derivative and the vocabulary are
 redistributed under the same license, with attribution to the sentence-transformers project and the original
 MiniLM authors.
+
+## Training Corpus Licences
+
+The sentence corpus under `corpus/` is not shipped in the NuGet package; only the derived classifier vectors are.
+Every real sentence has a row in `corpus/provenance/*.tsv` (hash id, source, licence, URL, contributor or work,
+origin `real`, `authored` or `llm-corpus`). Accepted sources:
+
+- Public domain: Project Gutenberg works of US public-domain titles (header and licence block stripped).
+- CC0: the Tatoeba CC0 subset.
+- Open licences with attribution recorded: Tatoeba sentences under CC BY 2.0 FR (contributor recorded),
+  Wikipedia example sentences (CC BY-SA 4.0, article URL recorded) and Universal Dependencies English EWT
+  sentences (CC BY-SA 4.0). These are isolated single sentences used as labeled examples.
+- Single web excerpts (`web-excerpt`) are allowed only as a last resort; none were used.
+
+Project-written sentences carry `MIT (project-authored)`. Bulk scraping of a copyrighted site, continuous text of
+more than one sentence, and paywalled or terms-prohibited sources are not used. Raw downloads are kept in a
+git-ignored cache and are never committed.

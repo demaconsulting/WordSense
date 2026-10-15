@@ -65,3 +65,15 @@ sections:
           - WordSenseBuilder_BatchImporter_WritesDerivedInventory
           - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
           - WordSenseBuilder_TagEvaluator_CountsRowsPerRule
+
+      - id: WordSense-Builder-Provenance
+        title: >-
+          The builder shall require a provenance row with an allowed licence for every real sentence it
+          imports, and shall resolve sense judgements by two blind judges and an adjudicator.
+        tags: [unit]
+        justification: |
+          Real sentences carry licences and attribution duties; the corpus must record where each came from,
+          and only sentences whose sense two judges agree on may become labeled data.
+        tests:
+          - WordSenseBuilder_RealJudge_Resolve_FollowsTheRules
+          - WordSenseBuilder_RealImport_Validate_RequiresProvenance

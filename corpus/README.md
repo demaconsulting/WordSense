@@ -51,6 +51,17 @@ Tag rule: tags are true parts of speech (`noun`, `verb`, `adj`, `adv`) plus qual
 `comparative`, `superlative`); a sense has exactly one part of speech. A tag never stands in for a pronunciation or
 meaning. The build fails on violations (`PosRules`). The earlier `derive-senses` rules are retired.
 
+## Real Sentences and Provenance
+
+`anchors/real-restore.tsv`, `holdout/real-restore.tsv` and `senses/real-restore.tsv` restore the senses that were
+excluded for lack of sentences (`bow`, `lead`, `tear`, `closer`, `upsetting`, `polish`, `orient` and others) with
+real sentences. Each real sentence has a row in `provenance/*.tsv` (`id` = first 12 hex of SHA-256 of
+`lemma|sentence`, `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor`, `origin`).
+Allowed licences: `CC0 1.0`, `Public domain`, `CC BY 2.0 FR`, `CC BY-SA 4.0`, `MIT (project-authored)` and, as a last
+resort, `web-excerpt`. `realtext/eval-seed.tsv` holds real sentences for evaluation only (never trained on). The
+builder command `validate-provenance` checks the sidecar. The corpus is not shipped in the NuGet package.
+`tools/real-text/README.md` describes the repeatable harvest.
+
 ## Part-of-Speech Audit
 
 `audit/pos-audit.tsv` holds the blind two-judge audit of every anchor and holdout sentence (judge C for

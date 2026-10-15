@@ -5,7 +5,9 @@
 `tools/WordSense.Builder` is a non-shipped console tool with these commands:
 `build --model DIR --corpus DIR --output FILE [--report FILE]`,
 `import-batches --source DIR --corpus DIR [--max N]`, the audit commands (`audit-export`, `audit-adjudicate`,
-`audit-merge`, `audit-report`, `validate-pos`) and `apply-relabel`.
+`audit-merge`, `audit-report`, `validate-pos`), `apply-relabel` and the real-text commands (`real-gap`,
+`real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-eval-import`, `real-eval`,
+`validate-provenance`).
 
 ## Data Model
 
@@ -44,6 +46,19 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   (`Relabeler`) applies it once: undecided and noise rows are dropped, a uniformly wrongly tagged sense is retagged,
   a mixed sense is split per part of speech when each part has at least 14 anchors and 8 holdout rows (else
   its rows are dropped and the sense excluded). Decisions and dropped rows are written under `corpus/audit/`.
+- Real-text restoration: senses that `apply-relabel` had excluded for lack of sentences are restored from real
+  text. `tools/real-text/harvest.py` (Python standard library; raw downloads in the git-ignored
+  `tools/real-text/cache/`) extracts candidate sentences of at most 35 words from Tatoeba (CC0 or CC BY 2.0 FR with
+  contributor), allow-listed public-domain Project Gutenberg works (header and footer stripped), open-licensed
+  Wikipedia and UD sentences (licence and URL recorded) and, as a last resort, single web excerpts. `RealJudge`
+  runs the blind two-judge sense judgement against a per-lemma sense menu (judge C for disagreement; `none` when no
+  sense fits); `RealImport` keeps the sentences whose agreed sense matches the target, splits anchors and holdout
+  by work or contributor where possible and writes `corpus/{anchors,holdout}/real-restore.tsv`,
+  `corpus/senses/real-restore.tsv` and the provenance sidecar `corpus/provenance/*.tsv`. `validate-provenance`
+  (`RealImport.Validate`) requires a provenance row (hash id, source, allowed licence, URL, contributor or work,
+  origin `real`, `authored` or `llm-corpus`) for every real sentence, at most 35 words and no Gutenberg text.
+- `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
+  `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level
   accuracy on the holdout: noun versus verb (best
   tag, answered accuracy, coverage; rows of lemmas with both tags and per gold tag; mixed and untagged rows

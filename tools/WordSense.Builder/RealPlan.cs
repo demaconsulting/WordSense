@@ -146,7 +146,7 @@ internal static class RealPlan
     }
 
     /// <summary>
-    ///     Renders the gap report: per planned sense the rows that exist, the reinstatable project-authored rows and the
+    ///     Renders the gap report: per planned sense the rows that exist, the project-authored rows that can be reinstated and the
     ///     number of real rows still needed.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>

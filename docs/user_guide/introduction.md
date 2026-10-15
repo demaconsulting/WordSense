@@ -141,10 +141,14 @@ Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException`
 # Accuracy and Performance
 
 Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
-numbers per lemma. On the 5,785 held-out rows the best sense is correct 96.73 % of the time, and 98.59 % of the
-answered rows are correct (91.70 % answered). For noun versus verb (5,227 held-out rows whose correct sense is
-exactly one of the two), the best tag is correct 97.21 % of the time, and 99.11 % of the answered rows are correct
-(92.14 % answered).
+numbers per lemma. On the 6,010 held-out rows the best sense is correct 96.36 % of the time (96.47 % at the
+sense-group level), and 98.53 % of the answered rows are correct (90.77 % answered). For noun versus verb (5,383
+held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.12 % of the time, and
+99.15 % of the answered rows are correct (91.90 % answered). On real text (public-domain and openly licensed
+sentences that were judged blind and never used for training) the best sense is correct 94.92 % of the time
+on 551 sentences, against 97.74 % on the project-written held-out sentences of the same lemmas. The lemmas `bow`,
+`lead`, `tear`, `closer`, `upsetting`, `polish` and `orient` are supported with split senses (for example `bow`
+bend-noun and bend-verb share the group `bend`).
 A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
 threads on a development workstation; run the `Benchmark` test category to measure your hardware).
 

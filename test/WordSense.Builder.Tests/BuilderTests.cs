@@ -605,6 +605,39 @@ public sealed class BuilderTests : IDisposable
         return text.ToString();
     }
 
+    /// <summary>
+    ///     The sense judges auto-accept confident agreement, adjudicate otherwise, and leave low confidence undecided.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealJudge_Resolve_FollowsTheRules()
+    {
+        var a = new SenseAnswer("x", "bend-noun", "H", string.Empty);
+        var b = new SenseAnswer("x", "bend-noun", "M", string.Empty);
+        var other = new SenseAnswer("x", "weapon", "H", string.Empty);
+        var low = new SenseAnswer("x", "weapon", "L", "unsure");
+        Assert.Equal(("bend-noun", "agree"), RealJudge.Resolve(a, b, null));
+        Assert.Equal(("weapon", "adjudicated"), RealJudge.Resolve(a, other, other));
+        Assert.Equal(("undecided", "undecided"), RealJudge.Resolve(a, other, low));
+        Assert.Equal(1, RealImport.LicenceRank("CC BY 2.0 FR"));
+        Assert.Equal(0, RealImport.LicenceRank("CC0 1.0"));
+        Assert.Equal(2, RealImport.LicenceRank("web-excerpt"));
+    }
+
+    /// <summary>
+    ///     The provenance gate flags a real sentence without a provenance row and accepts a complete sidecar.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealImport_Validate_RequiresProvenance()
+    {
+        Write("corpus/anchors/real-restore.tsv", "bow\tbend-noun\tHe made a low {bow}.\n");
+        Assert.Contains(RealImport.Validate(Path.Combine(_root, "corpus")), e => e.Contains("no provenance", StringComparison.Ordinal));
+        var id = PosAudit.RowId("bow", "He made a low {bow}.");
+        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin");
+        var row = string.Join('\t', id, "bow", "bend-noun", "anchors", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/en/sentences/show/1", "someone", "real");
+        Write("corpus/provenance/real-restore.tsv", header + "\n" + row + "\n");
+        Assert.Empty(RealImport.Validate(Path.Combine(_root, "corpus")));
+    }
+
     private string Write(string relative, string content)
     {
         var path = Path.Combine(_root, relative);

@@ -30,10 +30,13 @@ table.
   **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
   **WordSenseBuilder_TagEvaluator_CountsRowsPerRule**: inventory derivation, validation in both directions and
   tag-level counting.
+- **WordSenseBuilder_RealJudge_Resolve_FollowsTheRules**, **WordSenseBuilder_RealImport_Validate_RequiresProvenance**:
+  sense judging resolution, licence ranking, and the provenance gate (missing row flagged, complete sidecar accepted).
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
   braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
 
 ## Requirements Coverage
 
-`WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer` and `WordSense-Builder-Inventory`.
+`WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
+`WordSense-Builder-Inventory` and `WordSense-Builder-Provenance`.

@@ -64,7 +64,9 @@ standards, and the pull request process.
 ## License
 
 Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
-`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License.
+`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License. The training
+corpus (not shipped in the NuGet package, only the derived vectors) contains openly licensed sentences recorded with
+their source and licence in `corpus/provenance/`.
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 
