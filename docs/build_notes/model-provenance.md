@@ -34,7 +34,7 @@ Downloads are tried in this order, each verified against the pinned SHA-256 befo
 2. Hugging Face (`vocab.txt` only).
 3. GitHub Git LFS media endpoint for this repository (`media.githubusercontent.com`).
 
-All three files above are Git LFS objects, so one URL pattern (`/media/demaconsulting/WordSense/{ref}/model/{file}`)
+All three files above are Git LFS objects, so one URL pattern (`/media/<owner>/WordSense/{ref}/model/{file}`)
 serves each of them. The SHA-256 values in the table are of the real content, not of the LFS pointer files. The
 runtime downloader fetches only `model_int8.onnx` and `vocab.txt`; `tokenizer.json` is needed only to regenerate
 the tokenizer parity fixture and is fetched with `git lfs pull`.

@@ -10,7 +10,8 @@ returns a `WordSenseModelLocation`. `WordSenseModelCatalog` pins the file names 
 - Store: `{LocalApplicationData}/DemaConsulting/WordSense/models/all-MiniLM-L6-v2-int8-{sha8}` (or
   `StoreRoot`).
 - Files: `model_int8.onnx` (22,972,370 bytes) and `vocab.txt`, each with a pinned digest and a flag
-  telling whether Hugging Face may serve it. `tokenizer.json` is pinned for documentation only (it is not downloaded at runtime).
+  telling whether Hugging Face may serve it.
+  `tokenizer.json` is pinned for documentation only (it is not downloaded at runtime).
   Every file under `model/` is a Git LFS object; the GitHub source uses the media endpoint and the digests are of
   the real content, never of the LFS pointer.
 - `WordSenseModelDownloaderOptions`: `Mirror`, `GetEnvironmentVariable`, `HuggingFaceBaseUri`,
