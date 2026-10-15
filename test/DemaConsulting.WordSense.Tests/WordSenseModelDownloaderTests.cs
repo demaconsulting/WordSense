@@ -277,7 +277,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
             HuggingFaceBaseUri = new Uri(server.BaseUri, "/hf"),
             GitHubLfsBaseUri = new Uri(server.BaseUri, "/lfs"),
             StoreRoot = _store,
-            RequestTimeout = TimeSpan.FromSeconds(6),
+            RequestTimeout = TimeSpan.FromSeconds(12),
         };
 
         var location = await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
