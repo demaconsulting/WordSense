@@ -17,6 +17,17 @@ sections:
           - WordSenseTable_Constructor_InconsistentInput_Throws
           - WordSenseTable_LemmaModel_BadShapes_Throw
 
+      - id: WordSense-Table-Senses
+        title: The table shall store a tagged definition per sense and expose one shared immutable record per sense.
+        tags: [unit]
+        justification: |
+          Tags describe what a sense is; storing them with the senses keeps one source of truth and lets
+          callers compare senses by reference.
+        tests:
+          - WordSenseTable_Read_SensesWithSameTag_ShareTagInstance
+          - WordSenseTable_Read_Version1_Throws
+          - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
+
       - id: WordSense-Table-Integrity
         title: The table reader shall reject truncated, corrupted or foreign data.
         tags: [unit]

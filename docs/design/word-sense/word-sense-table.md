@@ -10,11 +10,15 @@ and a dictionary from lower-case word form to lemma. It is stored as an embedded
 ## Data Model
 
 Binary layout, little-endian: magic `WSNS`, format version, model id, model SHA-256, dimension, mean
-vector, lemma count, per lemma (name, kind, sense labels, weights, biases, abstention margin), form
+vector, tag dictionary, lemma count, per lemma (name, kind, per sense a label and ascending tag
+indexes, weights, biases, abstention margin), form
 count, forms, and a trailing SHA-256 digest of all preceding bytes.
 
 `LemmaModel` kinds: binary (one weight row, two senses, margin `2|s|`) and one-versus-rest (one row
 per sense, margin between the best and the second-best score).
+
+Format version 2 adds the tag dictionary and per-sense tags; version 1 tables are rejected. Each sense becomes
+one shared `WordSense` record when the table is read, and tag sets are interned across senses.
 
 ## Methods
 

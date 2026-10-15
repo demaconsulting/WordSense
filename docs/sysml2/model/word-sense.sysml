@@ -16,6 +16,7 @@ package WordSense {
 
         part wordPieceTokenizer : WordPieceTokenizer;
         part wordSenseTable : WordSenseTable;
+        part senseRecord : SenseRecord;
         part onnxWordSenseEncoder : OnnxWordSenseEncoder;
         part wordSenseClassifier : WordSenseClassifier;
         part downloadMirror : DownloadMirror;

@@ -18,8 +18,16 @@ table.
 - **WordSenseBuilder_BatchImporter_MissingLemmaIsWarning**, **..._DropsFewBadRows**,
   **..._RejectsBatchWithManyBadRows**, **..._ExcludesThinLemmas**: lemma-level absence is a warning, few
   bad rows are dropped, many reject the batch, and thin lemmas are excluded.
+- **WordSenseBuilder_BatchImporter_WritesDerivedInventory**, **..._UnmappedLabel_IsInvalid**,
+  **WordSenseBuilder_SenseTagDerivation_Derive_AppliesRules**, **..._UnmappedLabel_ThrowsAndDeriveFilesIsDeterministic**,
+  **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
+  **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
+  **WordSenseBuilder_TagEvaluator_CountsRowsPerRule**: inventory derivation, validation in both directions and
+  tag-level counting.
+- **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
+  braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
 
 ## Requirements Coverage
 
-`WordSense-Builder-Corpus`, `WordSense-Builder-Trainer` and `WordSense-Builder-Importer`.
+`WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer` and `WordSense-Builder-Inventory`.

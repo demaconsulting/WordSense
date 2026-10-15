@@ -1,0 +1,49 @@
+---
+# SenseRecord unit requirements
+
+sections:
+  - title: SenseRecord Requirements
+    requirements:
+      - id: WordSense-Sense-Record
+        title: The library shall represent each sense as one sealed immutable record with a frozen tag set.
+        tags: [unit]
+        justification: |
+          Callers compare, store and share senses across threads; tags must not change after creation.
+        tests:
+          - WordSense_HasTag_ReportsMembership
+          - WordSense_Tags_AreImmutable
+          - WordSense_LemmaModel_SharesOneRecordPerSense
+
+      - id: WordSense-Sense-Tags
+        title: The library shall accept only well-formed tags and bound the tag length.
+        tags: [unit]
+        justification: |
+          Tags are matched as plain strings, so a simple syntax avoids lookalike or empty tags.
+        tests:
+          - SenseDefinition_IsValidTag_ChecksSyntax
+          - SenseDefinition_IsValidTag_LengthLimit
+
+      - id: WordSense-Sense-TagScoring
+        title: The library shall score tags from sense scores so that the best sense carrying a tag represents it.
+        tags: [unit]
+        justification: |
+          Tag-level answers are derived from sense scores with one rule so they are consistent with
+          sense-level answers.
+        tests:
+          - TagScorer_Classify_BestScoringTagWins
+          - TagScorer_Classify_SenseWithBothTags_TiesAndIsBelowAnyPositiveThreshold
+          - TagScorer_Classify_SensesOfSameTag_DoNotReduceMargin
+          - TagScorer_Classify_BelowThreshold_Abstains
+          - TagScorer_Classify_OtherWins_ReturnsNull
+          - TagScorer_Classify_OtherAsRunnerUp_LimitsMargin
+          - TagScorer_Classify_AbsentTag_ReturnsNull_SinglePresentTag_Answers
+          - TagScorer_IsTag_AnswersBoolOrNull
+
+      - id: WordSense-Sense-Words
+        title: The library shall split text into word and non-word segments that tile the text.
+        tags: [unit]
+        justification: |
+          Callers of the text overload map results back onto the original text.
+        tests:
+          - TextSplitter_SplitSegments_TileTheText
+          - TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets

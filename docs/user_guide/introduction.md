@@ -30,22 +30,51 @@ The package targets net8.0, net9.0 and net10.0 and depends only on Microsoft.ML.
 using DemaConsulting.WordSense;
 
 using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions());
-var tokens = await classifier.ClassifyAsync("The record was broken, so they will record the new album.");
-foreach (var token in tokens.Where(t => t.Sense is not null))
+string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album"];
+WordSense?[] senses = await classifier.ClassifyAsync(words);
+for (var i = 0; i < words.Length; i++)
 {
-    Console.WriteLine($"{token.Text}: {token.Sense!.Label} (margin {token.Sense.Margin:0.00})");
+    if (senses[i] is { } sense)
+    {
+        Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags)}]");
+    }
 }
 ```
 
-The tokens tile the input: concatenating `Token.Text` reproduces the text exactly, so results can be mapped back
-to the original string. Words that are not known, and words for which the evidence is weak, have no `Sense`.
+The result is parallel to the input: element `i` is the `WordSense` of `words[i]`, or `null`. `null` means the word is
+not a known ambiguous word, or the classifier abstained because the evidence was weak. A `WordSense` is an immutable
+record with `Lemma`, `Sense`, `Tags` (a frozen set such as `noun`, `verb`, `past`) and `HasTag(tag)`; the same
+instance is returned for the same (lemma, sense).
 
-## Classifying one word
+## Text input
 
 ```csharp
-var result = await classifier.ClassifyAsync(text, targetStart, targetLength);
-// null when the span is not a known word or the classifier abstains
+IReadOnlyList<WordSenseToken> tokens = await classifier.ClassifyAsync("They will record the record.");
 ```
+
+The tokens tile the input: concatenating `Text` reproduces the string exactly, so results map back onto it. Words,
+runs of whitespace and single punctuation characters are separate tokens; `Sense` is set only for answered words.
+
+## Confidence details
+
+```csharp
+WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);
+// Sense, Margin (best minus runner-up), RunnerUp, RunnerUpMargin, Abstained
+```
+
+The detail is also returned for words the classifier abstained from (`Abstained` is true), so callers can apply
+their own policy.
+
+## Tag queries
+
+```csharp
+string?[] pos = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // "noun", "verb" or null
+bool?[] isVerb = await classifier.IsTagAsync(words, "verb");               // true, false or null
+```
+
+A tag is scored by the best sense that carries it, so senses that agree on the tag do not weaken each other. The
+result is `null` when the word is unknown, when none of the tags exists on the lemma (a tag is never guessed),
+or when the evidence is too weak.
 
 ## Model files and mirrors
 
@@ -92,17 +121,17 @@ Credentials require https (except for loopback hosts) and are sent only to the m
 
 # API Reference
 
-| Type                                        | Purpose                                                        |
-|---------------------------------------------|----------------------------------------------------------------|
-| `IWordSenseClassifier`                      | `ClassifyAsync(text)` and `ClassifyAsync(text, start, length)` |
-| `WordSenseClassifier`                       | Implementation; `CreateAsync`, `KnownLemmas`, `GetSenseLabels` |
-| `WordSenseClassifierOptions`                | Model directory, downloader, threads, window, abstention       |
-| `WordSenseToken`, `WordSenseResult`         | Result types: tile text and optional sense                     |
-| `WordSenseModelDownloader`                  | `EnsureModelAsync`: verify or download the model files         |
-| `WordSenseModelDownloaderOptions`           | Mirror, base URIs, store root, timeout, progress               |
-| `DownloadMirror`                            | Mirror base URL and credentials; `FromEnvironment`             |
-| `IWordSenseEncoder`, `OnnxWordSenseEncoder` | Encoder abstraction and ONNX Runtime encoder                   |
-| `WordSenseTable`                            | The embedded classifier table (`LoadEmbedded`)                 |
+| Type                                             | Purpose                                                   |
+|--------------------------------------------------|-----------------------------------------------------------|
+| `IWordSenseClassifier`                           | Word and text `ClassifyAsync`, detail and tag queries     |
+| `WordSenseClassifier`                            | Implementation; `CreateAsync`, `KnownLemmas`, `GetSenses` |
+| `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention  |
+| `WordSense`, `WordSenseDetail`, `WordSenseToken` | Immutable sense with tags, detail, text tile              |
+| `WordSenseModelDownloader`                       | `EnsureModelAsync`: verify or download the model files    |
+| `WordSenseModelDownloaderOptions`                | Mirror, base URIs, store root, timeout, progress          |
+| `DownloadMirror`                                 | Mirror base URL and credentials; `FromEnvironment`        |
+| `IWordSenseEncoder`, `OnnxWordSenseEncoder`      | Encoder abstraction and ONNX Runtime encoder              |
+| `WordSenseTable`                                 | The embedded classifier table (`LoadEmbedded`)            |
 
 Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException` (table and model differ) and
 `WordSenseTableFormatException` (damaged table).
@@ -110,7 +139,9 @@ Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException`
 # Accuracy and Performance
 
 Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
-numbers per lemma. A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
+numbers per lemma. On the 5,957 held-out rows the senses are 98.46 % correct when answered (91.57 % answered). For
+noun versus verb on lemmas that have both, 98.95 % of the answered rows are correct (92.29 % answered).
+A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
 threads on a development workstation; run the `Benchmark` test category to measure your hardware).
 
 # References

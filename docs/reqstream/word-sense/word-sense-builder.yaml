@@ -14,6 +14,7 @@ sections:
           - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
           - WordSenseBuilder_Corpus_DirectoryAndDisjointness
           - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
+          - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
 
       - id: WordSense-Builder-Trainer
         title: The builder shall train classifiers deterministically.
@@ -37,3 +38,22 @@ sections:
           - WordSenseBuilder_BatchImporter_RejectsBatchWithManyBadRows
           - WordSenseBuilder_BatchImporter_ExcludesThinLemmas
           - WordSenseBuilder_Program_Run_ReportsErrors
+
+      - id: WordSense-Builder-Inventory
+        title: >-
+          The builder shall require every anchor label to be a sense in the sense inventory and every inventory
+          sense to have anchors, derive inventory tags deterministically, and report tag-level accuracy.
+        tags: [unit]
+        justification: |
+          The inventory is the source of the tags shipped in the table; a mismatch with the anchors would
+          ship senses that cannot be predicted or labels without tags.
+        tests:
+          - WordSenseBuilder_SenseTagDerivation_Derive_AppliesRules
+          - WordSenseBuilder_SenseTagDerivation_UnmappedLabel_ThrowsAndDeriveFilesIsDeterministic
+          - WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows
+          - WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips
+          - WordSenseBuilder_SenseInventory_Validate_ChecksBothDirections
+          - WordSenseBuilder_SenseInventory_Validate_ConsistentCorpus_Passes
+          - WordSenseBuilder_BatchImporter_WritesDerivedInventory
+          - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
+          - WordSenseBuilder_TagEvaluator_CountsRowsPerRule

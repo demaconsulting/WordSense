@@ -19,8 +19,26 @@ sections:
           - WordSense-Classifier-Senses
           - WordSense-Classifier-LongText
           - WordSense-Classifier-Lifetime
+          - WordSense-Classifier-Detail
+          - WordSense-Sense-Words
         tests:
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
+
+      - id: WordSense-Lib-Tags
+        title: The library shall describe every sense with tags and answer tag-level queries such as noun versus verb.
+        tags: [system]
+        justification: |
+          Callers that need only a coarse property (for example noun versus verb) should not depend on
+          the fine sense labels of each lemma, and the coarse answer must be at least as reliable.
+        children:
+          - WordSense-Sense-Record
+          - WordSense-Sense-Tags
+          - WordSense-Sense-TagScoring
+          - WordSense-Classifier-Tags
+          - WordSense-Table-Senses
+          - WordSense-Builder-Inventory
+        tests:
+          - WordSense_Classifier_Holdout_MeetsNounVerbTagGate
 
       - id: WordSense-Lib-Accuracy
         title: The library shall meet a held-out accuracy gate on the labeled corpus with the pinned model.

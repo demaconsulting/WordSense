@@ -10,8 +10,12 @@ hidden states and a small in-memory table, so behavior is verified without the m
 - **WordSenseClassifier_ClassifyAsync_Text_TokensTileInput**: concatenated tokens equal the input.
 - **WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode**: no encoder call without targets.
 - **WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly**,
-  **..._Span_ResolvesForms**, **..._Span_EdgeCases**, **..._ManyTargets_EncodesOnce**,
-  **WordSenseClassifier_KnownLemmas_And_SenseLabels_AreExposed**: lemma resolution and single pass.
+  **..._Words_ResolvesForms**, **..._Words_EdgeCases**, **..._ManyTargets_EncodesOnce**,
+  **WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed**: lemma resolution and single pass.
+- **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**, **..._LowMargin_IsFlaggedAbstained**:
+  detail margins and the abstained flag.
+- **WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull**, **WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull**,
+  **WordSenseClassifier_TagQueries_InvalidArguments_Throw**: tag queries.
 - **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention.
 - **WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget**: windowing.
 - **WordSenseClassifier_Constructor_InvalidArguments_Throw**, **..._ModelMismatch_Throws**,
@@ -21,4 +25,4 @@ hidden states and a small in-memory table, so behavior is verified without the m
 
 ## Requirements Coverage
 
-`WordSense-Classifier-Tiles`, `-Senses`, `-Abstain`, `-LongText`, `-Validation` and `-Lifetime`.
+`WordSense-Classifier-Tiles`, `-Senses`, `-Detail`, `-Tags`, `-Abstain`, `-LongText`, `-Validation` and `-Lifetime`.

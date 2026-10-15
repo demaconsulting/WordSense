@@ -21,9 +21,9 @@ sections:
         tests:
           - WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly
           - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
-          - WordSenseClassifier_ClassifyAsync_Span_ResolvesForms
-          - WordSenseClassifier_ClassifyAsync_Span_EdgeCases
-          - WordSenseClassifier_KnownLemmas_And_SenseLabels_AreExposed
+          - WordSenseClassifier_ClassifyAsync_Words_ResolvesForms
+          - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
+          - WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed
 
       - id: WordSense-Classifier-Abstain
         title: The classifier shall return no sense when the margin is below the per-lemma threshold.
@@ -32,6 +32,29 @@ sections:
           Abstaining is better than a low-confidence guess.
         tests:
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
+
+      - id: WordSense-Classifier-Detail
+        title: The classifier shall report, on request, the best sense, the runner-up sense and their margins.
+        tags: [unit]
+        justification: |
+          Callers that apply their own confidence policy need the evidence behind a decision, including
+          decisions the classifier abstained from.
+        tests:
+          - WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp
+          - WordSenseClassifier_ClassifyDetailAsync_LowMargin_IsFlaggedAbstained
+
+      - id: WordSense-Classifier-Tags
+        title: >-
+          The classifier shall answer tag-level queries, scoring a tag by the best sense that carries it,
+          and return no answer when the tag is absent or the tag-level margin is too small.
+        tags: [unit]
+        justification: |
+          Callers often need only a coarse property such as noun versus verb; senses that agree on the
+          tag must not weaken each other, and an absent tag must never be guessed.
+        tests:
+          - WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull
+          - WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull
+          - WordSenseClassifier_TagQueries_InvalidArguments_Throw
 
       - id: WordSense-Classifier-LongText
         title: The classifier shall classify texts longer than the model limit using a window around each target.

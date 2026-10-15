@@ -42,6 +42,11 @@ Creating a classifier from a directory without the model files fails.
 Every third held-out sentence of every corpus file is classified; the answered accuracy must be at
 least 96 % with at least 85 % coverage over more than 400 sentences.
 
+### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
+
+Holdout rows of lemmas that have both a noun and a verb sense are classified with the tag query; the answered
+accuracy must be at least 97 % with at least 85 % coverage (measured: 98.95 % at 92.29 % over 4,763 rows).
+
 ### WordSense_Benchmark_ClassifyLatency
 
 Classifies a two-target sentence 100 times with one and four threads and reports the median and 95th

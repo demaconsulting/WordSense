@@ -11,6 +11,7 @@ includes:
   - docs/reqstream/word-sense.yaml
   - docs/reqstream/word-sense/word-piece-tokenizer.yaml
   - docs/reqstream/word-sense/word-sense-table.yaml
+  - docs/reqstream/word-sense/sense-record.yaml
   - docs/reqstream/word-sense/onnx-word-sense-encoder.yaml
   - docs/reqstream/word-sense/word-sense-classifier.yaml
   - docs/reqstream/word-sense/download-mirror.yaml

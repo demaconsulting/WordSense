@@ -15,8 +15,11 @@ the bytes systematically. The embedded table is checked for its seed lemmas.
   **WordSenseTable_Read_Garbage_Throws**: integrity checks.
 - **WordSenseTable_Score_Binary_UsesActivationSign**, **WordSenseTable_Score_OneVersusRest_PicksBestRow**:
   scoring.
+- **WordSenseTable_Read_SensesWithSameTag_ShareTagInstance**, **..._Version1_Throws**,
+  **WordSenseTable_LemmaModel_BadSenseDefinitions_Throw**: tagged senses are shared, old format and bad
+  definitions are rejected.
 - **WordSenseTable_LoadEmbedded_ContainsSeedLemmas**: the embedded resource loads.
 
 ## Requirements Coverage
 
-`WordSense-Table-Format`, `WordSense-Table-Integrity`, `WordSense-Table-Score`, `WordSense-Table-Embedded`.
+`WordSense-Table-Format`, `WordSense-Table-Senses`, `WordSense-Table-Integrity`, `WordSense-Table-Score`, `WordSense-Table-Embedded`.

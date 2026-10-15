@@ -15,7 +15,8 @@ whether "record" is a noun or a verb, or whether "bass" is a fish or an instrume
 
 ## Features
 
-- **Contextual sense decisions**: per-word sense labels with a confidence margin, for a curated set of homographs
+- **Contextual sense decisions**: per-word senses with tags (noun, verb, ...), a confidence margin and tag-level
+  queries such as noun versus verb, for a curated set of homographs
 - **Abstention**: returns no sense instead of guessing when the evidence is weak
 - **Single package**: one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
   Microsoft.ML.OnnxRuntime
@@ -38,11 +39,9 @@ dotnet add package DemaConsulting.WordSense
 using DemaConsulting.WordSense;
 
 using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions());
-var tokens = await classifier.ClassifyAsync("They will record the record.");
-foreach (var token in tokens.Where(t => t.Sense is not null))
-{
-    Console.WriteLine($"{token.Text}: {token.Sense!.Label}"); // record: verb, record: noun
-}
+string[] words = ["They", "will", "record", "the", "record"];
+WordSense?[] senses = await classifier.ClassifyAsync(words); // parallel to words; null = unknown or unsure
+string?[] tags = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // verb, noun for the two records
 ```
 
 The first call downloads the 23 MB model into a per-user store. Set `WORDSENSE_MIRROR_URL` (and optionally

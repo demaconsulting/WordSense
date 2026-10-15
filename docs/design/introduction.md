@@ -27,6 +27,7 @@ software items, specifically:
 - **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
 - **WordPieceTokenizer (Unit)** — BERT uncased word-piece tokenizer
 - **WordSenseTable (Unit)** — embedded binary classifier table
+- **SenseRecord (Unit)** — immutable tagged sense records and tag scoring
 - **OnnxWordSenseEncoder (Unit)** — ONNX Runtime encoder
 - **WordSenseClassifier (Unit)** — public classification entry point
 - **DownloadMirror (Unit)** — user mirror configuration
@@ -81,6 +82,7 @@ and descriptions as follows:
 src/DemaConsulting.WordSense/
 ├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
 ├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs — table unit
+├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs, WordSenseToken.cs — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
 ├── WordSenseClassifier.cs, FeatureExtractor.cs    — classifier unit
 ├── DownloadMirror.cs                              — mirror unit

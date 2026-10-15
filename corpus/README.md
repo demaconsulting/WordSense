@@ -24,10 +24,8 @@ builder's `import-batches` command. A file under `anchors/` has a matching file 
 
 `forms/speech.tsv` has the header `form`, `lemma`, `labels` (tab-separated). `labels` is the comma-separated list of
 senses that the form can take, for example `abstracts -> abstract : noun,verb`. The builder keeps only the
-form-to-lemma mapping for lemmas that have a trained classifier, and warns when a form label is not a sense that the
-lemma was trained on. A classifier is trained on the senses its anchors represent only; a label that the forms
-file allows but the anchors never use (for example `wound` as a noun, or `bow` as noun/verb while the anchors use
-`weapon`/`bend`) is never predicted, and the build report warns once per lemma and label.
+form-to-lemma mapping for lemmas that have a trained classifier. Every label must be a sense of the trained lemma
+(from the inventory); a label without a sense is a build error.
 
 ## Batch Import Rules
 
@@ -40,6 +38,17 @@ anchors, is excluded. `speech-batchN.tsv` files are copied unchanged apart from 
 Not imported (no anchors, so no classifier): conjunct, cumulate, depute, domesticate, illegitimate, outcaste,
 overhead, overman, overstudies, overstudy, overwater, unstick, uptown. Lemmas of batches 1-8 without holdout
 sentences are trained but not evaluated (30 lemmas).
+
+## Sense Inventory
+
+`senses/*.tsv` has the header `lemma`, `sense`, `tags` (tab-separated); `tags` is a `|`-separated,
+ordinal-sorted list. The
+inventory must list exactly the senses used by the anchors: an anchor label missing from the inventory, or an inventory
+sense without anchors, fails the build. `dotnet run --project tools/WordSense.Builder -- derive-senses --corpus corpus`
+regenerates the files from the anchor labels with fixed rules: `noun`, `verb`, `adj`, `adv` map to themselves;
+`past` to `past|verb`; `present` to `present|verb`; `argument`, `line`, `metal`, `music`, `fish`,
+`drop`, `injury`, `weapon` to `noun`; `paddle` to `verb`; `guide`, `bend`, `rip` to `noun|verb`. The override
+`used|verb` -> `past|verb` applies. An unmapped label is an error.
 
 ## Label Reconciliation
 

@@ -18,7 +18,8 @@ longer than 100 characters, or with no match, become `[UNK]`.
 - `WordPieceTokenizer(IEnumerable<string>)` / `FromFile(path)`: build from a vocabulary.
 - `Tokenize(text)`: returns the tokens with offsets mapped back to the original text, including
   surrogate pairs and characters that normalization changes in length.
-- `TokenizedText.FindTokens(start, end)`: index range of the tokens overlapping a character span.
+- `TokenizeWords(words)`: tokenizes each word separately and returns the pieces with the piece range of
+  every word; the text offsets are those of the words joined by single spaces.
 - `TokenizedText.BuildWindow(max, first, end)`: model input ids framed by `[CLS]` and `[SEP]` that fit
   `max` ids and keep the target tokens inside; returns the target range within the window.
 

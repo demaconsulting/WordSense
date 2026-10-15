@@ -3,7 +3,8 @@
 ## Overview
 
 `tools/WordSense.Builder` is a non-shipped console tool with two commands:
-`build --model DIR --corpus DIR --output FILE [--report FILE]` and
+`build --model DIR --corpus DIR --output FILE [--report FILE]`,
+`derive-senses --corpus DIR` and
 `import-batches --source DIR --corpus DIR [--max N]`.
 
 ## Data Model
@@ -29,9 +30,20 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   are dropped the batch is `Invalid` and nothing is imported. A lemma left with fewer than two senses,
   or fewer than four anchors for a represented sense, or with holdout rows but no anchors, is excluded
   from both sets and listed. Sentences are never created or edited. Importing is idempotent.
-- A lemma classifier is trained on the senses its anchors represent only. A label that the forms file
-  allows but the anchors never use (for example `wound{noun}`, or `bow` listed as noun/verb while the
-  anchors use weapon/bend) is not a class; the build report warns once per lemma and label.
+- A lemma classifier is trained on the senses its anchors represent only. The sense inventory
+  (`corpus/senses/*.tsv`: `lemma`, `sense`, `tags`) must list exactly the senses that the anchors use:
+  an anchor label that is not in the inventory, or an inventory sense without anchors, is a validation
+  error. Labels of `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
+  an error, and forms of untrained lemmas are ignored.
+- `derive-senses --corpus DIR` writes the inventory from the anchor labels with fixed rules
+  (`SenseTagDerivation`): `noun`, `verb`, `adj` and `adv` map to themselves, `past` to `past|verb`,
+  `present` to `present|verb`, noun-like labels (`argument`, `line`, `metal`, `music`, `fish`, `drop`,
+  `injury`, `weapon`) to `noun`, `paddle` to `verb`, `guide`, `bend` and `rip` to `noun|verb`; `used|verb`
+  is overridden to `past|verb`. An unmapped label is an error, so the batch importer marks such a batch
+  `Invalid`. The importer writes the derived inventory for imported batches.
+- After the sense evaluation the report lists tag-level accuracy on the holdout: noun versus verb (best
+  tag, answered accuracy, coverage; rows of lemmas with both tags and per gold tag; mixed and untagged rows
+  are excluded and counted) and has-tag accuracy per tag.
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a
   lemma that exists in the table; forms of lemmas without a classifier are omitted.
 

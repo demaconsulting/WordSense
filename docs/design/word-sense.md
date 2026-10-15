@@ -13,7 +13,8 @@ Microsoft.ML.OnnxRuntime. The system consists of these units, all in one assembl
 - **WordPieceTokenizer**: BERT uncased word-piece tokenizer with character offsets
 - **WordSenseTable**: embedded binary table of per-lemma linear classifiers, word forms and abstention margins
 - **OnnxWordSenseEncoder**: ONNX Runtime wrapper around the int8 `all-MiniLM-L6-v2` model
-- **WordSenseClassifier**: public entry point that combines the three units above
+- **SenseRecord**: immutable tagged sense records (WordSense), tag scoring and text segmentation
+- **WordSenseClassifier**: public entry point that combines the units above
 - **DownloadMirror**: validated user mirror configuration
 - **WordSenseModelDownloader**: ordered, verified model download (mirror, Hugging Face, GitHub LFS)
 - **WordSenseBuilder**: non-shipped tool (`tools/WordSense.Builder`) that trains the table from the corpus
@@ -24,15 +25,17 @@ encoder, table and feature extraction so that training and inference share one c
 
 ## External Interfaces
 
-| Interface                          | Direction | Format                     | Constraints                    |
-|------------------------------------|-----------|----------------------------|--------------------------------|
-| `CreateAsync(options)`             | In        | Async factory              | Model available                |
-| `ClassifyAsync(text)`              | In/Out    | `string` to list of tokens | Tokens tile the input          |
-| `ClassifyAsync(text, span)`        | In/Out    | Span to `WordSenseResult?` | `null` if unknown or abstained |
-| `EnsureModelAsync(options)`        | In/Out    | Async call                 | SHA-256 verified               |
-| `DownloadMirror`, `Options.Mirror` | In        | Record / options           | Absolute http(s) URL           |
-| `WORDSENSE_MIRROR_*`               | In        | Environment                | Used if no option mirror       |
-| `IWordSenseEncoder`                | In        | Interface                  | Test substitutable             |
+| Interface                          | Direction | Format                               | Constraints                |
+|------------------------------------|-----------|--------------------------------------|----------------------------|
+| `CreateAsync(options)`             | In        | Async factory                        | Model available            |
+| `ClassifyAsync(words)`             | In/Out    | Words to `WordSense?[]`              | Parallel to input          |
+| `ClassifyDetailAsync(words)`       | In/Out    | Words to `WordSenseDetail?[]`        | Margins, runner-up         |
+| `ClassifyTagAsync`, `IsTagAsync`   | In/Out    | Words, tags to `string?[]`/`bool?[]` | `null` if absent or unsure |
+| `ClassifyAsync(text)`              | In/Out    | `string` to list of tokens           | Tokens tile the input      |
+| `EnsureModelAsync(options)`        | In/Out    | Async call                           | SHA-256 verified           |
+| `DownloadMirror`, `Options.Mirror` | In        | Record / options                     | Absolute http(s) URL       |
+| `WORDSENSE_MIRROR_*`               | In        | Environment                          | Used if no option mirror   |
+| `IWordSenseEncoder`                | In        | Interface                            | Test substitutable         |
 
 ### Download sources and order
 

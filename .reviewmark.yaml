@@ -158,10 +158,26 @@ reviews:
       - "docs/verification/word-sense/word-sense-classifier.md"
       - "src/DemaConsulting.WordSense/WordSenseClassifier.cs"
       - "src/DemaConsulting.WordSense/WordSenseClassifierOptions.cs"
-      - "src/DemaConsulting.WordSense/WordSenseResult.cs"
+      - "src/DemaConsulting.WordSense/WordSenseToken.cs"
       - "src/DemaConsulting.WordSense/FeatureExtractor.cs"
       - "src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseClassifierTests.cs"
+
+  # WordSense-SenseRecord Review (one per unit)
+  - id: WordSense-SenseRecord
+    title: Review that WordSense SenseRecord Implementation is Correct
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/sense-record.yaml"
+      - "docs/design/word-sense/sense-record.md"
+      - "docs/verification/word-sense/sense-record.md"
+      - "src/DemaConsulting.WordSense/WordSense.cs"
+      - "src/DemaConsulting.WordSense/SenseDefinition.cs"
+      - "src/DemaConsulting.WordSense/TagScorer.cs"
+      - "src/DemaConsulting.WordSense/TextSplitter.cs"
+      - "test/DemaConsulting.WordSense.Tests/SenseRecordTests.cs"
 
   # WordSense-DownloadMirror Review (one per unit)
   - id: WordSense-DownloadMirror

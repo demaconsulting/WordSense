@@ -16,12 +16,13 @@ sections:
           - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
 
       - id: WordSense-Tokenizer-Spans
-        title: The tokenizer shall map a character span of the text to the word pieces that overlap it.
+        title: The tokenizer shall tokenize a list of words and return the range of word pieces belonging to each word.
         tags: [unit]
         justification: |
           The classifier pools the hidden states of the word pieces of a target word.
         tests:
-          - WordPieceTokenizer_FindTokens_Span_ReturnsOverlappingTokens
+          - WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord
+          - WordPieceTokenizer_TokenizeWords_NoWords_ReturnsNoTokens
 
       - id: WordSense-Tokenizer-Window
         title: The tokenizer shall build a model input window that fits the maximum length and holds the target.

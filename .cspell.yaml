@@ -39,6 +39,8 @@ words:
   - huggingface
   - nonspacing
   - onnxruntime
+  - ordinally
+  - tagless
   - wordsense
   - wsns
   - subword
