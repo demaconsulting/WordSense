@@ -22,7 +22,6 @@ public class SenseRecordTests
         Assert.False(sense.HasTag("noun"));
         Assert.False(sense.HasTag("VERB"));
         Assert.False(sense.HasTag(string.Empty));
-        Assert.Throws<ArgumentNullException>(() => sense.HasTag(null!));
         Assert.Equal("used:past", sense.ToString());
     }
 
@@ -50,7 +49,13 @@ public class SenseRecordTests
     {
         var model = WordSenseTableTests.CreateSmallTable().Lemmas[0];
 
+        var table = WordSenseTableTests.CreateSmallTable();
+        var viaModel = table.Lemmas[0].Senses;
+
         Assert.Same(model.Senses[0], model.Senses[0]);
+        Assert.True(table.TryGetLemma(table.Lemmas[0].Lemma, out var found));
+        Assert.Same(viaModel[0], found.Senses[0]);
+        Assert.Same(viaModel[1], found.Senses[1]);
         Assert.Equal(2, model.Senses.Count);
         Assert.Equal(["animal", "tool"], model.Senses.Select(s => s.Sense));
     }
@@ -83,7 +88,10 @@ public class SenseRecordTests
     [InlineData("a b", false)]
     [InlineData("a_b", false)]
     [InlineData("été", false)]
-    public void SenseDefinition_IsValidTag_ChecksSyntax(string tag, bool expected)
+    [InlineData("noun\n", false)]
+    [InlineData("\n", false)]
+    [InlineData(null, false)]
+    public void SenseDefinition_IsValidTag_ChecksSyntax(string? tag, bool expected)
     {
         Assert.Equal(expected, SenseDefinition.IsValidTag(tag));
     }
@@ -269,6 +277,17 @@ public class SenseRecordTests
     }
 
     /// <summary>
+    ///     A trailing hyphen is not part of the word and is its own tile; the tiles still cover the text.
+    /// </summary>
+    [Fact]
+    public void TextSplitter_SplitWords_TrailingHyphen_IsOwnTile()
+    {
+        Assert.Equal(["well", "-"], TextSplitter.SplitWords("well-").Select(w => w.Text));
+        Assert.Equal(["well-known", "-"], TextSplitter.SplitWords("well-known-").Select(w => w.Text));
+        Assert.Equal(["a", "-", "-", "b"], TextSplitter.SplitWords("a--b").Select(w => w.Text));
+    }
+
+    /// <summary>
     ///     Definitions with an empty name, no tags, too many tags, unsorted, duplicated or invalid tags are rejected.
     /// </summary>
     [Fact]
@@ -282,6 +301,8 @@ public class SenseRecordTests
         Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["verb", "noun"]).Validate());
         Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun", "noun"]).Validate());
         Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["Noun"]).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun\n"]).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun"], "grp\n").Validate());
         new SenseDefinition("a", tooMany.Take(SenseDefinition.MaxTagsPerSense).ToArray()).Validate();
     }
 

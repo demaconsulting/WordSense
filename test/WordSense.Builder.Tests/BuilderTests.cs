@@ -806,4 +806,170 @@ public sealed class BuilderTests : IDisposable
         File.WriteAllText(path, content, new UTF8Encoding(false));
         return path;
     }
+
+    private const string BowSentence = "He took a {bow} from the rack.";
+
+    private string PrepareRealCorpus(bool withDecisions = true)
+    {
+        var corpus = Path.Combine(_root, "corpus");
+        Directory.CreateDirectory(Path.Combine(corpus, "anchors"));
+        Directory.CreateDirectory(Path.Combine(corpus, "holdout"));
+        Write("corpus/audit/restore-plan.tsv", "lemma\tsense\ttags\tgroup\tfrom\tdefinition\tstatus\nbow\tbend-noun\tnoun\t\told:noun\ta bend\texisting\n");
+        var droppedId = PosAudit.RowId("bow", BowSentence);
+        var audit = new string[17];
+        Array.Fill(audit, "-");
+        (audit[0], audit[1], audit[2], audit[3], audit[13], audit[14], audit[16]) = (droppedId, "bow", "old", "anchors", "noun", "-", "agree");
+        Write("corpus/audit/pos-audit.tsv", "header\n" + string.Join('\t', audit) + "\n");
+        Write("corpus/audit/dropped-rows.tsv", "header\n" + string.Join('\t', droppedId, "bow", "old", "anchors", "x", BowSentence) + "\n");
+        if (withDecisions)
+        {
+            Write("corpus/audit/relabel-decisions.tsv", "header\n" + string.Join('\t', "bow", "old", "-", "-", "drop", "-", "-", "-", "note") + "\n");
+        }
+
+        SenseInventory.WriteFile(Path.Combine(corpus, "senses", "base.tsv"), [new InventoryRow("bow", "bend-noun", ["noun"], "base.tsv")]);
+        return corpus;
+    }
+
+    private static (List<Candidate> Candidates, Dictionary<string, SenseJudgement> Judgements) RealCandidates(int count)
+    {
+        var candidates = new List<Candidate>();
+        var judgements = new Dictionary<string, SenseJudgement>(StringComparer.Ordinal);
+        for (var i = 0; i < count; i++)
+        {
+            var sentence = $"A low {{bow}} number {i} came.";
+            var id = PosAudit.RowId("bow", sentence);
+            candidates.Add(new Candidate(id, "bow", sentence, "tatoeba-cc0", "CC0 1.0", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "https://tatoeba.org/" + i, "person" + i));
+            judgements[id] = new SenseJudgement(id, "bow", "bend-noun", "H", "bend-noun", "H", "-", "-", "bend-noun", "agree");
+        }
+
+        return (candidates, judgements);
+    }
+
+    /// <summary>
+    ///     Importing real sentences gives every written sentence a provenance row and the result validates.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates()
+    {
+        var corpus = PrepareRealCorpus();
+        var (candidates, judgements) = RealCandidates(3);
+
+        var report = RealImport.Import(corpus, candidates, judgements);
+
+        Assert.NotEmpty(report);
+        var written = File.ReadAllLines(Path.Combine(corpus, "anchors", "real-restore.tsv")).Concat(File.ReadAllLines(Path.Combine(corpus, "holdout", "real-restore.tsv")))
+            .Where(l => l.Length > 0).ToList();
+        var provenance = RealImport.ReadProvenance(Path.Combine(corpus, "provenance", "real-restore.tsv"));
+        Assert.Equal(4, written.Count);
+        Assert.Equal(written.Count, provenance.Count);
+        Assert.Contains(provenance, p => p.Origin == "llm-corpus");
+        Assert.Equal(3, provenance.Count(p => p.Origin == "real"));
+        Assert.Empty(RealImport.Validate(corpus));
+        Assert.Contains("restore", File.ReadAllText(Path.Combine(corpus, "audit", "relabel-decisions.tsv")), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A missing relabel-decisions file fails the import before any output is written.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing()
+    {
+        var corpus = PrepareRealCorpus(withDecisions: false);
+        var (candidates, judgements) = RealCandidates(3);
+
+        Assert.ThrowsAny<IOException>(() => RealImport.Import(corpus, candidates, judgements));
+
+        Assert.False(File.Exists(Path.Combine(corpus, "anchors", "real-restore.tsv")));
+        Assert.False(File.Exists(Path.Combine(corpus, "provenance", "real-restore.tsv")));
+    }
+
+    /// <summary>
+    ///     The judge answer parser rejects every kind of malformed answer.
+    /// </summary>
+    /// <param name="content">The answer file content.</param>
+    /// <param name="expected">The expected message fragment.</param>
+    [Theory]
+    [InlineData("id1\tbend-noun\n", "expected 'id")]
+    [InlineData("zzz\tbend-noun\tH\n", "unexpected id")]
+    [InlineData("id1\tbogus\tH\n", "is not a sense")]
+    [InlineData("id1\tbend-noun\tX\n", "confidence must")]
+    [InlineData("id1\tbend-noun\tL\n", "confidence must")]
+    [InlineData("id1\tnone\tH\n", "confidence must")]
+    [InlineData("id1\tbend-noun\tH\nid1\tbend-noun\tH\n", "duplicate id")]
+    [InlineData("", "not answered")]
+    public void WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers(string content, string expected)
+    {
+        var path = Write("work/a-001.out.tsv", content);
+        var menu = new Dictionary<string, HashSet<string>> { ["bow"] = ["bend-noun", "weapon"] };
+
+        var ex = Assert.Throws<InvalidDataException>(() => RealJudge.ParseAnswers(
+            path, ["id1"], menu, new Dictionary<string, string> { ["id1"] = "bow" }));
+
+        Assert.Contains(expected, ex.Message, StringComparison.Ordinal);
+    }
+
+    private string PrepareJudgeWork(string workName, bool withC)
+    {
+        var corpus = PrepareRealCorpus();
+        var rows = $"id1\tbow\t{BowSentence}\n";
+        Write($"{workName}/rows.tsv", rows);
+        foreach (var judge in new[] { "a", "b" })
+        {
+            Write($"{workName}/{judge}-001.tsv", $"#menu\tbow\tbend-noun\tnoun\ta bend\t\n{rows}");
+        }
+
+        Write($"{workName}/a-001.out.tsv", "id1\tbend-noun\tH\n");
+        Write($"{workName}/b-001.out.tsv", "id1\tbend-noun\tL\tunsure\n");
+        if (withC)
+        {
+            Write($"{workName}/c-001.tsv", rows);
+            Write($"{workName}/c-001.out.tsv", "id1\tbend-noun\tH\n");
+        }
+
+        return corpus;
+    }
+
+    /// <summary>
+    ///     The merge fails when a row needs adjudication but has no judge C answer.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws()
+    {
+        var corpus = PrepareJudgeWork("work", withC: false);
+
+        var ex = Assert.Throws<InvalidDataException>(() => RealJudge.Merge(corpus, Path.Combine(_root, "work")));
+
+        Assert.Contains("judge C", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The merge resolves an adjudicated row, also when the work path itself contains ".out".
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut()
+    {
+        var corpus = PrepareJudgeWork("work.out", withC: true);
+
+        var result = Assert.Single(RealJudge.Merge(corpus, Path.Combine(_root, "work.out")));
+
+        Assert.Equal(("bend-noun", "adjudicated"), (result.Final, result.Resolution));
+    }
+
+    /// <summary>
+    ///     Rows with too few columns in the judge files and the dropped rows are reported as data errors.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors()
+    {
+        var corpus = PrepareJudgeWork("work", withC: false);
+        Write("work/rows.tsv", "id1\tbow\n");
+        Assert.Contains("rows.tsv:1", Assert.Throws<InvalidDataException>(() => RealJudge.Merge(corpus, Path.Combine(_root, "work"))).Message, StringComparison.Ordinal);
+
+        Write("work/rows.tsv", $"id1\tbow\t{BowSentence}\n");
+        Write("work/a-001.tsv", "id1\tbow\n");
+        Assert.Contains("a-001.tsv:1", Assert.Throws<InvalidDataException>(() => RealJudge.Merge(corpus, Path.Combine(_root, "work"))).Message, StringComparison.Ordinal);
+
+        Write("corpus/audit/dropped-rows.tsv", "header\nid\tbow\told\n");
+        Assert.Contains("dropped-rows.tsv", Assert.Throws<InvalidDataException>(() => RealPlan.ReadPool(corpus, RealPlan.ReadPlan(corpus))).Message, StringComparison.Ordinal);
+    }
 }

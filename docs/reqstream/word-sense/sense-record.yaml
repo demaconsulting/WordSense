@@ -5,7 +5,9 @@ sections:
   - title: SenseRecord Requirements
     requirements:
       - id: WordSense-Sense-Record
-        title: The library shall represent each sense as one sealed immutable record with a frozen tag set.
+        title: >-
+          The library shall represent each sense as one sealed immutable type with a frozen tag set and
+          reference identity.
         tags: [unit]
         justification: |
           Callers compare, store and share senses across threads; tags must not change after creation.

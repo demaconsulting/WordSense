@@ -23,7 +23,8 @@ fills one score per sense (`{-a, +a}` for a binary model with activation `a`); `
 the best sense and the margin.
 
 Format version 3 adds a per-sense group string (empty = the sense label) after the tag indexes; version 1
-and 2 tables are rejected. Each sense becomes one shared `WordSense` record when the table is read, and
+and 2 tables are rejected. Each sense becomes one shared `WordSense` record when its `LemmaModel` is
+constructed (so for a read table during `Read`, and for a built table in the builder), and
 the records of equal tags share the table's tag strings.
 
 ## Methods
@@ -31,7 +32,8 @@ the records of equal tags share the table's tag strings.
 - `LoadEmbedded()`, `Read(bytes)`: parse and validate; any truncation, bad magic, bad version,
   inconsistent count or digest mismatch raises `WordSenseTableFormatException`.
 - `ToArray()`, `Write(stream)`: deterministic serialization.
-- `TryGetLemma`, `LemmaModel.Score(feature)`: best sense index and margin.
+- `TryGetLemma(lemma, out model)`: true with the model for a known lemma, false for an unknown one;
+  throws `ArgumentNullException` for a null lemma. `LemmaModel.Score(feature)`: best sense index and margin.
 
 ## Error Handling
 
@@ -47,6 +49,8 @@ the records of equal tags share the table's tag strings.
   structure: tags valid, sorted and unique, sense tag indexes in range and ascending, every dictionary
   tag used, known model kinds, valid form-to-lemma indexes without duplicates, and no trailing data.
   Constructor validation failures raised while reading are reported as `WordSenseTableFormatException`.
+- The read caps are enforced only by `Read`: the constructors and `Write` do not apply them, so a table
+  built in memory can exceed a cap and be written, but `Read` will then reject it.
 
 ## Interactions
 

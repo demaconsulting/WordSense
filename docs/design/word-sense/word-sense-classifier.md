@@ -10,7 +10,8 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
 - `WordSense`: sealed immutable class, one instance per (lemma, sense) created when the table is
   loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
 - `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly struct.
-- `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload.
+- `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload (the type
+  belongs to the SenseRecord unit; see there).
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
   `IntraOpThreads`, `AbstainMarginScale`.
 
@@ -19,7 +20,8 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
 - `CreateAsync(options, ct)`: resolves the model directory (given, or downloaded and verified),
   verifies the files, creates tokenizer, encoder and table, and takes ownership of the encoder.
 - Constructor: rejects null arguments and a table whose model digest or dimension differs from the
-  encoder's (`WordSenseModelMismatchException`).
+  encoder's (`WordSenseModelMismatchException`). The overload that takes a `vocabularyPath` builds the tokenizer
+  from that vocabulary file instead of a supplied tokenizer.
 - `ClassifyAsync(IReadOnlyList<string> words, ct)`: primary API. Returns an array parallel to the input
   with the `WordSense` of each known word, and `null` for unknown words and for abstentions. Words are
   resolved to a lemma (lower-case, curly apostrophe normalized, trailing `'s` removed). The words are

@@ -36,6 +36,18 @@ table.
   **WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences**: a disallowed licence, invalid origin,
   CC BY row without contributor, Gutenberg row without a pg key or Public domain licence, a sentence over 35 words,
   and a sentence mentioning Gutenberg are each rejected; a 35-word sentence is accepted.
+- **WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates**: importing real sentences into a
+  synthetic corpus writes a provenance row for every written sentence (real and project-authored) and the result
+  passes `RealImport.Validate`.
+- **WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing**: a missing `relabel-decisions.tsv` fails the
+  import before any output file is written.
+- **WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers**: a short row, unexpected or duplicate id,
+  unknown sense, bad confidence, a missing note for `L` or `none`, and unanswered ids are each rejected.
+- **WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws**,
+  **WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut**: a row needing adjudication without a
+  judge C answer fails the merge; with one it is adjudicated, also when the work directory name contains `.out`.
+- **WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors**: rows with too few columns in `rows.tsv`, the judge
+  input files and `dropped-rows.tsv` raise an error naming the file and line.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
   and tag-level accuracy sections.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the

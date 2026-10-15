@@ -60,6 +60,22 @@ public class WordSenseTableTests
     }
 
     /// <summary>
+    ///     Writing a string longer than the format allows throws, and an unknown or null lemma is handled.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_WriteAndTryGetLemma_EdgeCases()
+    {
+        var small = CreateSmallTable();
+        var longId = new WordSenseTable(new string('m', 70_000), Sha, 3, [0.1f, 0.2f, 0.3f], small.Lemmas, small.Forms);
+
+        Assert.Throws<InvalidOperationException>(() => longId.ToArray());
+        Assert.False(small.TryGetLemma("unknown", out _));
+        Assert.True(small.TryGetLemma("bat", out var bat));
+        Assert.Equal("bat", bat.Lemma);
+        Assert.Throws<ArgumentNullException>(() => small.TryGetLemma(null!, out _));
+    }
+
+    /// <summary>
     ///     Tags are interned: senses with the same tag share the tag string.
     /// </summary>
     [Fact]

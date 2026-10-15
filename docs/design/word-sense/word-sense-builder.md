@@ -53,8 +53,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
 - Real-text restoration: senses that `apply-relabel` had excluded for lack of sentences are restored from real
   text. `tools/real-text/harvest.py` (Python standard library; raw downloads in the git-ignored
   `tools/real-text/cache/`) extracts candidate sentences of at most 35 words from Tatoeba (CC0 or CC BY 2.0 FR with
-  contributor), allow-listed public-domain Project Gutenberg works (header and footer stripped), open-licensed
-  Wikipedia and UD sentences (licence and URL recorded) and, as a last resort, single web excerpts. `RealJudge`
+  contributor), allow-listed public-domain Project Gutenberg works (header and footer stripped) and open-licensed
+  Wikipedia and UD sentences (licence and URL recorded); the few single web excerpts that serve as a last resort
+  are entered by hand (see `tools/real-text/README.md`). `RealJudge`
   runs the blind two-judge sense judgement against a per-lemma sense menu (judge C for disagreement; `none` when no
   sense fits); `RealImport` keeps the sentences whose agreed sense matches the target, splits anchors and holdout
   by work or contributor where possible and writes `corpus/{anchors,holdout}/real-restore.tsv`,
@@ -63,6 +64,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   lemma, sense and split; that the licence and origin (`real`, `authored` or `llm-corpus`) are from the allowed
   lists; that a CC BY 2.0 FR row names a contributor, a `web-excerpt` row has a URL, and a Gutenberg row has a
   `pg` key and the Public domain licence; and that no sentence has more than 35 words or mentions Gutenberg.
+  `RealImport.Import` reads `relabel-decisions.tsv` before writing any output, so a missing file leaves the corpus
+  unchanged, and it marks every `drop` or `exclude` decision of a plan lemma as `restore` (not only the senses that
+  actually received sentences); the plan defines the restored lemmas.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level
@@ -71,6 +75,26 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   are excluded and counted) and has-tag accuracy per tag.
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a
   lemma that exists in the table; forms of lemmas without a classifier are omitted.
+
+## Error Handling
+
+- `Program.Run` returns 0 on success and 1 on a usage or data error; it never lets such an error escape. Usage
+  errors (no command, unknown command, a missing or malformed option, a non-numeric integer option) and data
+  errors (`InvalidDataException`, `ArgumentException`, `IOException` including a missing file, and
+  `UnauthorizedAccessException`) are written to the error writer as `Error: <message>`.
+- `import-batches` reports row- and lemma-level problems per batch and only exits 1 when a batch is `Invalid` or
+  missing; an invalid batch imports nothing.
+- `validate-provenance` writes one line per problem to the error writer and exits 1 when there is any problem,
+  otherwise 0.
+- Readers of tab-separated files (`rows.tsv`, judge input and answer files, `dropped-rows.tsv`, the restore plan,
+  provenance files) reject a row with the wrong number of columns with an `InvalidDataException` that names the
+  file and line.
+
+## Key Methods and Callers
+
+`Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `PosAudit`, `Relabeler`, `RealPlan`,
+`RealJudge`, `RealImport` or `RealEval`. It is called by `Main` and by the builder tests; the tool is run by hand
+and by the corpus maintenance workflow, never by the library or the CI build.
 
 ## Interactions
 

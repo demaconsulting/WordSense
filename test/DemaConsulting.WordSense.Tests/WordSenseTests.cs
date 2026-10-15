@@ -79,7 +79,7 @@ public class WordSenseTests
     }
 
     /// <summary>
-    ///     Creating a classifier from a damaged model directory fails verification.
+    ///     Creating a classifier from an empty model directory fails verification.
     /// </summary>
     [Fact]
     public async Task WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory()

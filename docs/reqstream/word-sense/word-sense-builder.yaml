@@ -81,3 +81,9 @@ sections:
           - WordSenseBuilder_RealImport_Validate_RequiresProvenance
           - WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows
           - WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences
+          - WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates
+          - WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing
+          - WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers
+          - WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws
+          - WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut
+          - WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors

@@ -25,10 +25,10 @@ public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> 
     ///     starting with a letter, at most <see cref="MaxTagLength"/> characters.
     /// </summary>
     /// <param name="tag">The candidate tag.</param>
-    /// <returns>True when valid.</returns>
-    public static bool IsValidTag(string tag)
+    /// <returns>True when valid; false for null, empty or malformed strings (including a trailing newline).</returns>
+    public static bool IsValidTag(string? tag)
     {
-        return tag.Length is > 0 and <= MaxTagLength && TagPattern().IsMatch(tag);
+        return tag is { Length: > 0 and <= MaxTagLength } && TagPattern().IsMatch(tag);
     }
 
     /// <summary>
@@ -56,6 +56,6 @@ public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> 
         }
     }
 
-    [GeneratedRegex("^[a-z][a-z0-9-]*$", RegexOptions.CultureInvariant)]
+    [GeneratedRegex("^[a-z][a-z0-9-]*\\z", RegexOptions.CultureInvariant)]
     private static partial Regex TagPattern();
 }

@@ -16,6 +16,7 @@ sections:
           - WordSenseTable_Write_Stream_MatchesToArray
           - WordSenseTable_Constructor_InconsistentInput_Throws
           - WordSenseTable_LemmaModel_BadShapes_Throw
+          - WordSenseTable_WriteAndTryGetLemma_EdgeCases
 
       - id: WordSense-Table-Senses
         title: The table shall store a tagged definition per sense and expose one shared immutable record per sense.

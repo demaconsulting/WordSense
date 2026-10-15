@@ -96,7 +96,7 @@ public static class Program
                     return 1;
             }
         }
-        catch (Exception ex) when (ex is InvalidDataException or ArgumentException or IOException or FileNotFoundException)
+        catch (Exception ex) when (ex is InvalidDataException or ArgumentException or IOException or UnauthorizedAccessException)
         {
             error.WriteLine("Error: " + ex.Message);
             return 1;

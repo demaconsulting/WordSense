@@ -28,6 +28,8 @@ the bytes systematically. The embedded table is checked for its lemma count, tag
   definitions are rejected.
 - **WordSenseTable_LoadEmbedded_ContainsSeedLemmas**: the embedded resource loads with at least 344
   lemmas, every sense tagged, dimension 384, and every form resolving to a lemma with a model.
+- **WordSenseTable_WriteAndTryGetLemma_EdgeCases**: writing a string over 65,535 bytes throws
+  `InvalidOperationException`; `TryGetLemma` is false for an unknown lemma and throws for null.
 
 ## Requirements Coverage
 

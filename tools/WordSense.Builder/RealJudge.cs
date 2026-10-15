@@ -8,7 +8,7 @@ namespace WordSense.Builder;
 /// <param name="Id">The row id (first 12 hex characters of SHA-256 over <c>lemma|sentence</c>).</param>
 /// <param name="Lemma">The lemma.</param>
 /// <param name="Sentence">The braced sentence.</param>
-/// <param name="Source">The source: <c>tatoeba-cc0</c>, <c>tatoeba-by</c>, <c>gutenberg</c>, <c>web-excerpt</c>, <c>authored</c> or <c>llm-corpus</c>.</param>
+/// <param name="Source">The source: <c>tatoeba-cc0</c>, <c>tatoeba-by</c>, <c>ud-ewt</c>, <c>wikipedia</c>, <c>gutenberg</c>, <c>web-excerpt</c>, <c>authored</c> or <c>llm-corpus</c>.</param>
 /// <param name="Licence">The licence.</param>
 /// <param name="SourceKey">The source key (sentence id, book id and paragraph, or page).</param>
 /// <param name="Url">The URL of the source.</param>
@@ -316,8 +316,7 @@ internal static class RealJudge
         var c = new Dictionary<string, SenseAnswer>(StringComparer.Ordinal);
         foreach (var file in Directory.GetFiles(work, "c-*.out.tsv").OrderBy(f => f, StringComparer.Ordinal))
         {
-            var ids = File.ReadAllLines(file.Replace(".out", string.Empty, StringComparison.Ordinal), new UTF8Encoding(false))
-                .Where(l => !l.StartsWith('#') && l.Length > 0).Select(l => l.Split('\t')[0]).ToList();
+            var ids = ReadInputIds(InputPathOf(file));
             foreach (var (id, answer) in ParseAnswers(file, ids, menu, lemmaOf))
             {
                 c[id] = answer;
@@ -384,8 +383,25 @@ internal static class RealJudge
 
     private static (List<(string Id, string Lemma, string Sentence)> Rows, Dictionary<string, HashSet<string>> Menu, Dictionary<string, string> LemmaOf) ReadRows(string corpus, string work)
     {
-        var rows = File.ReadAllLines(Path.Combine(work, "rows.tsv"), new UTF8Encoding(false)).Where(l => l.Length > 0)
-            .Select(l => l.Split('\t')).Select(c => (c[0], c[1], c[2])).ToList();
+        var rows = new List<(string, string, string)>();
+        var number = 0;
+        foreach (var line in File.ReadAllLines(Path.Combine(work, "rows.tsv"), new UTF8Encoding(false)))
+        {
+            number++;
+            if (line.Length == 0)
+            {
+                continue;
+            }
+
+            var c = line.TrimEnd('\r').Split('\t');
+            if (c.Length != 3)
+            {
+                throw new InvalidDataException($"rows.tsv:{number}: expected 3 columns but found {c.Length}.");
+            }
+
+            rows.Add((c[0], c[1], c[2]));
+        }
+
         var menus = BuildMenus(corpus, rows.Select(r => r.Item2).Distinct(StringComparer.Ordinal).ToList());
         var menu = menus.ToDictionary(m => m.Key, m => m.Value.Select(l => l.Split('\t')[2]).ToHashSet(StringComparer.Ordinal), StringComparer.Ordinal);
         return (rows, menu, rows.ToDictionary(r => r.Item1, r => r.Item2, StringComparer.Ordinal));
@@ -401,8 +417,7 @@ internal static class RealJudge
         var answers = new Dictionary<string, SenseAnswer>(StringComparer.Ordinal);
         foreach (var file in Directory.GetFiles(work, judge + "-*.out.tsv").OrderBy(f => f, StringComparer.Ordinal))
         {
-            var input = file.Replace(".out", string.Empty, StringComparison.Ordinal);
-            var ids = File.ReadAllLines(input, new UTF8Encoding(false)).Where(l => l.Length > 0 && !l.StartsWith('#')).Select(l => l.Split('\t')[0]).ToList();
+            var ids = ReadInputIds(InputPathOf(file));
             foreach (var (id, answer) in ParseAnswers(file, ids, menu, lemmaOf))
             {
                 answers[id] = answer;
@@ -411,5 +426,31 @@ internal static class RealJudge
 
         var missing = rows.Where(r => !answers.ContainsKey(r.Id)).ToList();
         return missing.Count > 0 ? throw new InvalidDataException($"Judge {judge}: {missing.Count} rows have no answer, first '{missing[0].Id}'.") : answers;
+    }
+
+    private static string InputPathOf(string outputFile) => outputFile[..^".out.tsv".Length] + ".tsv";
+
+    private static List<string> ReadInputIds(string input)
+    {
+        var ids = new List<string>();
+        var number = 0;
+        foreach (var line in File.ReadAllLines(input, new UTF8Encoding(false)))
+        {
+            number++;
+            if (line.Length == 0 || line.StartsWith('#'))
+            {
+                continue;
+            }
+
+            var c = line.TrimEnd('\r').Split('\t');
+            if (c.Length < 3)
+            {
+                throw new InvalidDataException($"{Path.GetFileName(input)}:{number}: expected at least 3 columns but found {c.Length}.");
+            }
+
+            ids.Add(c[0]);
+        }
+
+        return ids;
     }
 }

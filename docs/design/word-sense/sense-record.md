@@ -13,14 +13,19 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   to the sense label; senses split from one mixed-part-of-speech sense share a group). Tags are true parts
   of speech plus qualifiers; a sense has one part of speech. `HasTag(tag)` tests membership ordinally and
   throws `ArgumentNullException` for a null tag. One instance exists per (lemma, sense), created when the
-  table is loaded, so callers compare senses by reference.
+  owning `LemmaModel` is constructed, so callers compare senses by reference.
 - `SenseDefinition`: a record with the sense label (`Name`), its tags (1 to `MaxTagsPerSense` = 16,
   ascending ordinal, no duplicates) and an optional `Group` (null means the sense label) as stored in the
   table. `IsValidTag(tag)` accepts a tag that starts with a lower-case ASCII letter, followed by
-  lower-case letters, digits or `-`, at most `MaxTagLength` = 32 characters; a group follows the same
+  lower-case letters, digits or `-`, at most `MaxTagLength` = 32 characters, with nothing after the last
+  character (a trailing newline is rejected); null and empty strings are not valid. A group follows the same
   syntax. `Validate()` throws `ArgumentException` for an empty name, no tags or more than 16, an invalid,
   unsorted or duplicated tag, or an invalid group.
-- `WordSenseToken(Start, Length, Text, Sense)`: a tile of an input text.
+- `WordSenseToken(Start, Length, Text, Sense)`: a tile of an input text, owned by this unit and returned by the
+  classifier's raw-string overload. `Sense` is `null` when the tile is not a known ambiguous word, or when the
+  classifier abstained because its confidence was too low. Invariant: the tokens returned for a text tile it
+  exactly; the tiles are in order with no gaps or overlaps, so concatenating every `Text` reproduces the input.
+  The tiles come from `TextSplitter.SplitSegments`.
 
 ## Methods
 

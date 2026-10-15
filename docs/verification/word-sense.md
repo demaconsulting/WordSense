@@ -12,7 +12,7 @@ substitutes (a fake encoder and a local HTTP server).
 
 - **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
 - **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
-- **Dependencies**: the Git LFS model files (including `tokenizer.json`) under `model/`; no network access. Tests that
+- **Dependencies**: the Git LFS model files `model_int8.onnx` and `vocab.txt` under `model/`; no network access. Tests that
   need the model are skipped, not failed, when the LFS content is absent.
 - **Isolation**: each test creates its own classifier; no shared state.
 
@@ -42,7 +42,7 @@ files in `model/`; a stale table fails.
 
 ### WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
 
-Creating a classifier from a directory without the model files fails.
+Creating a classifier from an empty directory (no model files) fails verification.
 
 ### WordSense_Classifier_Holdout_MeetsAccuracyGate
 
@@ -54,15 +54,17 @@ below); an unlisted form would count as unanswered.
 ### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
 
 Holdout rows whose gold sense has exactly one of the `noun` and `verb` tags (rows with both or neither are
-skipped) are classified with the tag query; the answered
-accuracy must be at least 97 % with at least 85 % coverage (the build report measures 99.15 % at 91.90 % over
+skipped) are classified with the tag query; the answered accuracy must be at least 97 % with at least 85 %
+coverage over more than 350 rows (the build report measures 99.15 % at 91.90 % over
 the 5,383 rows of the whole holdout; the test evaluates every fifth row).
 
 ### WordSense_Classifier_Holdout_MeetsGroupGate
 
-The holdout is classified and a result counts as correct when the predicted sense's `Group` equals the gold
-sense's group (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share groups, so this gate can exceed the
-sense-level gate; the build report measures 96.47 % against 96.36 % over the whole holdout).
+The holdout is classified (every fifth row, as in the accuracy gate) and a result counts as correct when the
+predicted sense's `Group` equals the gold sense's group; the answered accuracy must be at least 96 % with at
+least 85 % coverage over more than 400 rows (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share
+groups, so this gate can exceed the sense-level gate; the build report measures 96.47 % against 96.36 % over
+the whole holdout).
 
 ### WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
 
@@ -90,16 +92,16 @@ a requirement is satisfied only by a passing result from its own platform or fra
 
 ## Requirements Coverage
 
-| Requirement                | Verified by                                                          |
-|----------------------------|----------------------------------------------------------------------|
-| WordSense-Lib-Classify     | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                      |
-| WordSense-Lib-Tags         | Holdout_MeetsNounVerbTagGate, Holdout_MeetsGroupGate                 |
-| WordSense-Lib-Accuracy     | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma       |
-| WordSense-Lib-Embedded     | EmbeddedTable_MatchesPinnedModel                                     |
-| WordSense-Lib-Encoder      | EndToEnd_ClassifiesRecord                                            |
-| WordSense-Lib-Performance  | Benchmark_ClassifyLatency                                            |
-| WordSense-Lib-Reproducible | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)   |
-| WordSense-Platform-* (six) | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support) |
+| Requirement                | Verified by                                                                        |
+|----------------------------|------------------------------------------------------------------------------------|
+| WordSense-Lib-Classify     | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                    |
+| WordSense-Lib-Tags         | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech  |
+| WordSense-Lib-Accuracy     | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                     |
+| WordSense-Lib-Embedded     | EmbeddedTable_MatchesPinnedModel                                                   |
+| WordSense-Lib-Encoder      | EndToEnd_ClassifiesRecord                                                          |
+| WordSense-Lib-Performance  | Benchmark_ClassifyLatency                                                          |
+| WordSense-Lib-Reproducible | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                 |
+| WordSense-Platform-* (six) | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)               |
 
 The remaining library requirements (abstention, download, mirror, integrity) are verified by the unit-level
 scenarios of the classifier, downloader and mirror documents.

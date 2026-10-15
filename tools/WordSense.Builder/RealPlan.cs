@@ -120,8 +120,18 @@ internal static class RealPlan
         var (mapped, undecided, unmapped) = (new List<PoolRow>(), new List<PoolRow>(), new List<PoolRow>());
         foreach (var line in File.ReadAllLines(Path.Combine(corpus, "audit", "dropped-rows.tsv"), new UTF8Encoding(false)).Skip(1))
         {
+            if (line.Length == 0)
+            {
+                continue;
+            }
+
             var c = line.TrimEnd('\r').Split('\t');
-            if (c.Length < 6 || !lemmas.Contains(c[1]))
+            if (c.Length < 6)
+            {
+                throw new InvalidDataException($"dropped-rows.tsv: expected at least 6 columns but found {c.Length} in '{line}'.");
+            }
+
+            if (!lemmas.Contains(c[1]))
             {
                 continue;
             }

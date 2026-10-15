@@ -81,6 +81,8 @@ internal static class RealImport
         var existingH = RealPlan.ReadExisting(corpus, "holdout", lemmas);
         var (mapped, undecided, _) = RealPlan.ReadPool(corpus, plan);
 
+        // Read the decisions before anything is written, so that a missing file leaves the corpus untouched
+        var decisions = ReadDecisions(corpus);
         // Project-authored rows that come back: the mapped ones and the undecided ones that the sense judges settled
         var authored = mapped.ToList();
         foreach (var row in undecided)
@@ -170,7 +172,7 @@ internal static class RealImport
         var newSenses = plan.Where(p => p.IsNew && added.Contains((p.Lemma, p.Sense)))
             .Select(p => new InventoryRow(p.Lemma, p.Sense, p.Tags, "real-restore.tsv", p.Group));
         SenseInventory.WriteFile(Path.Combine(corpus, "senses", "real-restore.tsv"), newSenses);
-        UpdateDecisions(corpus, lemmas);
+        UpdateDecisions(corpus, lemmas, decisions);
         report.AppendLine($"anchors {rowsA.Count} (real {rowsA.Count(r => r.Real is not null)}), holdout {rowsH.Count} (real {rowsH.Count(r => r.Real is not null)}), new senses {added.Count}.");
         return report.ToString();
     }
@@ -384,10 +386,15 @@ internal static class RealImport
         File.WriteAllText(path, text.ToString(), new UTF8Encoding(false));
     }
 
-    private static void UpdateDecisions(string corpus, ISet<string> lemmas)
+    private static List<string> ReadDecisions(string corpus)
     {
         var path = Path.Combine(corpus, "audit", "relabel-decisions.tsv");
-        var lines = File.ReadAllLines(path, new UTF8Encoding(false)).Select(l => l.TrimEnd('\r')).ToList();
+        return File.ReadAllLines(path, new UTF8Encoding(false)).Select(l => l.TrimEnd('\r')).ToList();
+    }
+
+    private static void UpdateDecisions(string corpus, ISet<string> lemmas, List<string> lines)
+    {
+        var path = Path.Combine(corpus, "audit", "relabel-decisions.tsv");
         for (var i = 1; i < lines.Count; i++)
         {
             var c = lines[i].Split('\t');
