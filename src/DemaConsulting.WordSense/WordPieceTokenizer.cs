@@ -126,6 +126,42 @@ internal sealed class WordPieceTokenizer
     }
 
     /// <summary>
+    ///     Tokenizes a list of words, remembering which tokens belong to each word.
+    /// </summary>
+    /// <remarks>
+    ///     The result equals tokenizing the words joined by single spaces: BERT pre-tokenization splits on
+    ///     whitespace, so each word is tokenized independently. A word that yields no tokens (for example
+    ///     control characters only) gets an empty token range.
+    /// </remarks>
+    /// <param name="words">The words; none may be null.</param>
+    /// <returns>The tokens with a token range per word.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list or a word is null.</exception>
+    public TokenizedText TokenizeWords(IReadOnlyList<string> words)
+    {
+        ArgumentNullException.ThrowIfNull(words);
+
+        var ids = new List<int>();
+        var starts = new List<int>();
+        var ends = new List<int>();
+        var wordFirst = new int[words.Count];
+        var wordEnd = new int[words.Count];
+        var offset = 0;
+        for (var w = 0; w < words.Count; w++)
+        {
+            ArgumentNullException.ThrowIfNull(words[w]);
+            var tokens = Tokenize(words[w]);
+            wordFirst[w] = ids.Count;
+            ids.AddRange(tokens.Ids);
+            starts.AddRange(tokens.Starts.Select(s => s + offset));
+            ends.AddRange(tokens.Ends.Select(e => e + offset));
+            wordEnd[w] = ids.Count;
+            offset += words[w].Length + 1;
+        }
+
+        return new TokenizedText(ids.ToArray(), starts.ToArray(), ends.ToArray(), wordFirst, wordEnd);
+    }
+
+    /// <summary>
     ///     Looks up a required special token.
     /// </summary>
     /// <param name="token">The token text.</param>

@@ -48,8 +48,34 @@ public class WordSenseTests
             TestContext.Current.CancellationToken);
 
         var senses = tokens.Where(t => t.Sense is not null).Select(t => t.Sense!).ToList();
-        Assert.Equal(["noun", "verb"], senses.Where(s => s.Lemma == "record").Select(s => s.Label));
+        Assert.Equal(["noun", "verb"], senses.Where(s => s.Lemma == "record").Select(s => s.Sense));
         Assert.Contains("record", classifier.KnownLemmas);
+    }
+
+    /// <summary>
+    ///     End to end: the word-list API gives parallel senses, tags and details.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_EndToEnd_WordListApi()
+    {
+        using var classifier = await CreateClassifierAsync();
+        string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "it"];
+        var token = TestContext.Current.CancellationToken;
+
+        var senses = await classifier.ClassifyAsync(words, token);
+        var tags = await classifier.ClassifyTagAsync(words, ["noun", "verb"], token);
+        var isVerb = await classifier.IsTagAsync(words, "verb", token);
+        var details = await classifier.ClassifyDetailAsync(words, token);
+
+        Assert.Equal(words.Length, senses.Length);
+        Assert.Equal("noun", senses[1]!.Sense);
+        Assert.Equal("verb", senses[7]!.Sense);
+        Assert.Equal("noun", tags[1]);
+        Assert.Equal("verb", tags[7]);
+        Assert.False(isVerb[1]);
+        Assert.True(isVerb[7]);
+        Assert.Null(senses[0]);
+        Assert.Same(senses[1], details[1]!.Value.Sense);
     }
 
     /// <summary>
@@ -72,6 +98,53 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     Reads every fifth holdout row as the words of its sentence, the index of the target word, and the gold lemma and sense.
+    /// </summary>
+    /// <returns>The sampled rows.</returns>
+    private static async Task<List<(string[] Words, int Target, string Lemma, string Sense)>> ReadHoldoutSampleAsync()
+    {
+        var root = ModelAssets.RequireRepositoryRoot();
+        var result = new List<(string[], int, string, string)>();
+        foreach (var file in Directory.GetFiles(Path.Combine(root, "corpus", "holdout"), "*.tsv").Order(StringComparer.Ordinal))
+        {
+            var lines = await File.ReadAllLinesAsync(file, TestContext.Current.CancellationToken);
+            var rows = lines.Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length == 3).Where((_, i) => i % 5 == 0);
+            foreach (var columns in rows)
+            {
+                var words = new List<string>();
+                var target = -1;
+                foreach (var word in columns[2].Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                {
+                    var open = word.IndexOf('{', StringComparison.Ordinal);
+                    if (open < 0)
+                    {
+                        words.Add(word);
+                        continue;
+                    }
+
+                    // A target inside a compound word is split into prefix, target and suffix
+                    var close = word.IndexOf('}', StringComparison.Ordinal);
+                    if (open > 0)
+                    {
+                        words.Add(word[..open]);
+                    }
+
+                    target = words.Count;
+                    words.Add(word.Substring(open + 1, close - open - 1));
+                    if (close < word.Length - 1)
+                    {
+                        words.Add(word[(close + 1)..]);
+                    }
+                }
+
+                result.Add((words.ToArray(), target, columns[0], columns[1]));
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
     ///     Accuracy gate: the embedded table must classify the held-out sentences with high accuracy. Every
     ///     fifth holdout sentence of every corpus file is evaluated, which keeps the test quick while still
     ///     covering every source file.
@@ -79,36 +152,59 @@ public class WordSenseTests
     [Fact]
     public async Task WordSense_Classifier_Holdout_MeetsAccuracyGate()
     {
-        var root = ModelAssets.RequireRepositoryRoot();
         using var classifier = await CreateClassifierAsync();
-        int total = 0, correct = 0, answered = 0, answeredCorrect = 0;
-        foreach (var file in Directory.GetFiles(Path.Combine(root, "corpus", "holdout"), "*.tsv").Order(StringComparer.Ordinal))
+        var total = 0;
+        var answered = 0;
+        var answeredCorrect = 0;
+        foreach (var (words, target, _, sense) in await ReadHoldoutSampleAsync())
         {
-            var rows = (await File.ReadAllLinesAsync(file, TestContext.Current.CancellationToken)).Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length == 3).Where((_, i) => i % 5 == 0);
-            foreach (var columns in rows)
+            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target];
+
+            total++;
+            if (result is not null)
             {
-                var sentence = columns[2];
-                var start = sentence.IndexOf('{', StringComparison.Ordinal);
-                var end = sentence.IndexOf('}', StringComparison.Ordinal);
-                var text = sentence.Replace("{", string.Empty, StringComparison.Ordinal).Replace("}", string.Empty, StringComparison.Ordinal);
-
-                var result = await classifier.ClassifyAsync(text, start, end - start - 1, TestContext.Current.CancellationToken);
-
-                total++;
-                if (result is not null)
-                {
-                    answered++;
-                    var right = result.Label == columns[1];
-                    correct += right ? 1 : 0;
-                    answeredCorrect += right ? 1 : 0;
-                }
+                answered++;
+                answeredCorrect += result.Sense == sense ? 1 : 0;
             }
         }
 
         Assert.True(total > 400, "The holdout sample is unexpectedly small.");
         Assert.True((double)answeredCorrect / answered >= 0.96, $"Accuracy on answered sentences was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
         Assert.True((double)answered / total >= 0.85, $"Coverage was {(double)answered / total:P2}.");
-        Assert.True(correct == answeredCorrect);
+    }
+
+    /// <summary>
+    ///     Tag-level accuracy gate: telling noun from verb must be at least as accurate as telling the senses apart.
+    ///     Rows whose gold sense carries both or neither tag are skipped.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_Holdout_MeetsNounVerbTagGate()
+    {
+        using var classifier = await CreateClassifierAsync();
+        var total = 0;
+        var answered = 0;
+        var answeredCorrect = 0;
+        foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
+        {
+            var gold = classifier.GetSenses(lemma).Single(s => s.Sense == sense);
+            if (gold.HasTag("noun") == gold.HasTag("verb"))
+            {
+                continue;
+            }
+
+            var tag = (await classifier.ClassifyTagAsync(words, ["noun", "verb"], TestContext.Current.CancellationToken))[target];
+
+            total++;
+            if (tag is not null)
+            {
+                answered++;
+                answeredCorrect += gold.HasTag(tag) ? 1 : 0;
+            }
+        }
+
+        Assert.True(total > 350, "The noun/verb holdout sample is unexpectedly small.");
+        Assert.True((double)answeredCorrect / answered >= 0.97, $"Tag accuracy on answered words was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
+        Assert.True((double)answered / total >= 0.85, $"Tag coverage was {(double)answered / total:P2}.");
     }
 
     /// <summary>

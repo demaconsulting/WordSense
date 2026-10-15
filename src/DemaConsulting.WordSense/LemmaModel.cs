@@ -30,7 +30,7 @@ public sealed class LemmaModel
     ///     Initializes a new instance of the <see cref="LemmaModel"/> class.
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="senses">The sense labels, at least two.</param>
+    /// <param name="senses">The sense definitions (label and tags), at least two, in ordinal order of label.</param>
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major, <c>rows × dimension</c> values.</param>
     /// <param name="bias">One bias per weight row.</param>
@@ -39,7 +39,7 @@ public sealed class LemmaModel
     /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent or a value is not finite.</exception>
     public LemmaModel(
         string lemma,
-        IReadOnlyList<string> senses,
+        IReadOnlyList<SenseDefinition> senses,
         LemmaModelKind kind,
         float[] weights,
         float[] bias,
@@ -68,8 +68,22 @@ public sealed class LemmaModel
             throw new ArgumentException("Model values must be finite.", nameof(weights));
         }
 
+        // Every sense needs valid tags, and labels must be unique
+        foreach (var definition in senses)
+        {
+            ArgumentNullException.ThrowIfNull(definition);
+            definition.Validate();
+        }
+
+        if (senses.Select(s => s.Name).Distinct(StringComparer.Ordinal).Count() != senses.Count)
+        {
+            throw new ArgumentException("Sense labels must be unique.", nameof(senses));
+        }
+
         Lemma = lemma;
-        Senses = senses.ToArray();
+
+        // Exactly one shared record per (lemma, sense), created here
+        Senses = senses.Select(s => new WordSense(lemma, s.Name, s.Tags)).ToArray();
         Kind = kind;
         Weights = weights;
         Bias = bias;
@@ -83,9 +97,9 @@ public sealed class LemmaModel
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the sense labels in ordinal-sorted order.
+    ///     Gets the senses, one shared record each, in ordinal order of label (the order of the weight rows).
     /// </summary>
-    public IReadOnlyList<string> Senses { get; }
+    public IReadOnlyList<WordSense> Senses { get; }
 
     /// <summary>
     ///     Gets how scores derive from the weight rows.
@@ -111,6 +125,38 @@ public sealed class LemmaModel
     ///     Gets the feature dimension.
     /// </summary>
     public int Dimension { get; }
+
+    /// <summary>
+    ///     Computes the score of every sense for a normalized feature vector.
+    /// </summary>
+    /// <remarks>
+    ///     A one-versus-rest model yields each row's activation; a binary model with activation
+    ///     <c>a</c> yields <c>{-a, +a}</c>. The margin of <see cref="Score"/> is the difference between
+    ///     the two highest of these scores.
+    /// </remarks>
+    /// <param name="feature">The centered, L2-normalized feature vector of length <see cref="Dimension"/>.</param>
+    /// <param name="scores">Receives one score per sense; its length must equal the sense count.</param>
+    /// <exception cref="ArgumentException">Thrown when a length does not match.</exception>
+    public void Scores(ReadOnlySpan<float> feature, Span<float> scores)
+    {
+        if (feature.Length != Dimension || scores.Length != Senses.Count)
+        {
+            throw new ArgumentException("Feature or score length does not match the model.", nameof(feature));
+        }
+
+        if (Kind == LemmaModelKind.Binary)
+        {
+            var activation = VectorMath.Dot(Weights, feature) + Bias[0];
+            scores[0] = -activation;
+            scores[1] = activation;
+            return;
+        }
+
+        for (var row = 0; row < Senses.Count; row++)
+        {
+            scores[row] = VectorMath.Dot(Weights.AsSpan(row * Dimension, Dimension), feature) + Bias[row];
+        }
+    }
 
     /// <summary>
     ///     Scores a normalized feature vector against every sense.

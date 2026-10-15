@@ -36,6 +36,7 @@ internal static class TableBuilder
     /// <param name="anchors">Training sentences.</param>
     /// <param name="holdout">Evaluation sentences; never used for training or margin selection.</param>
     /// <param name="forms">The form to lemma rows.</param>
+    /// <param name="inventory">The sense inventory; it must agree with the anchors, holdout and forms.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The table and the report.</returns>
     /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
@@ -45,11 +46,14 @@ internal static class TableBuilder
         IReadOnlyList<CorpusRow> anchors,
         IReadOnlyList<CorpusRow> holdout,
         IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms,
+        SenseInventory inventory,
         TableBuilderOptions options)
     {
         ArgumentNullException.ThrowIfNull(encoder);
         ArgumentNullException.ThrowIfNull(tokenizer);
+        ArgumentNullException.ThrowIfNull(inventory);
         Corpus.EnsureDisjoint(anchors, holdout);
+        inventory.Validate(anchors, holdout, forms);
         var warnings = new List<string>();
 
         // Featurize: pooled vectors first, because the anchor mean must be known before centering
@@ -79,11 +83,11 @@ internal static class TableBuilder
         }
 
         // Train every lemma; results land in fixed slots so the outcome is order independent
-        var trained = new (string[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index)[lemmas.Count];
+        var trained = new (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index)[lemmas.Count];
         Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
         {
             var index = lemmas[k].Select(t => t.i).ToArray();
-            trained[k] = TrainLemma(lemmas[k].Key, index, anchors, anchorFeatures, options);
+            trained[k] = TrainLemma(lemmas[k].Key, index, anchors, anchorFeatures, inventory, options);
         });
 
         var fallbackMargins = trained.Where(t => t.Cv).Select(t => t.Margin).OrderBy(m => m).ToList();
@@ -92,6 +96,7 @@ internal static class TableBuilder
         var models = new List<LemmaModel>();
         var reports = new List<LemmaReport>();
         var bySource = new Dictionary<string, GroupStats>(StringComparer.Ordinal);
+        var tagEvaluator = new TagEvaluator();
         for (var k = 0; k < lemmas.Count; k++)
         {
             var t = trained[k];
@@ -111,7 +116,10 @@ internal static class TableBuilder
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
                 var (best, rowMargin) = model.Score(holdoutFeatures[i]);
-                var right = string.Equals(t.Senses[best], row.Sense, StringComparison.Ordinal);
+                var right = string.Equals(t.Senses[best].Name, row.Sense, StringComparison.Ordinal);
+                var scores = new float[t.Senses.Length];
+                model.Scores(holdoutFeatures[i], scores);
+                tagEvaluator.Add(row.Source, model, scores, Array.FindIndex(t.Senses, s => s.Name == row.Sense), margin);
                 var isAnswered = rowMargin >= margin;
                 total++;
                 correct += right ? 1 : 0;
@@ -124,12 +132,12 @@ internal static class TableBuilder
 
             var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min());
             reports.Add(report);
-            AddWarnings(report, t.Senses, holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
+            AddWarnings(report, t.Senses.Select(s => s.Name).ToArray(), holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }
 
         var table = new WordSenseTable(
-            WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, models, BuildForms(forms, models, warnings));
-        return new BuildResult(table, new BuildReport(reports, bySource, warnings, ReportTargetAccuracy));
+            WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, models, BuildForms(forms, models));
+        return new BuildResult(table, new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, tagEvaluator.ToReport()));
     }
 
     /// <summary>
@@ -167,37 +175,21 @@ internal static class TableBuilder
     /// </summary>
     /// <param name="forms">The form rows.</param>
     /// <param name="models">The trained lemma models.</param>
-    /// <param name="warnings">The list receiving warnings.</param>
     /// <returns>The sorted form to lemma map.</returns>
     private static SortedDictionary<string, string> BuildForms(
-        IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms, List<LemmaModel> models, List<string> warnings)
+        IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms, List<LemmaModel> models)
     {
         var byLemma = models.ToDictionary(m => m.Lemma, StringComparer.Ordinal);
         var result = new SortedDictionary<string, string>(StringComparer.Ordinal);
-        var untrained = new Dictionary<(string Lemma, string Label), string>();
-        foreach (var (form, lemma, labels) in forms)
+        foreach (var (form, lemma, _) in forms)
         {
-            if (!byLemma.TryGetValue(lemma, out var model))
+            if (!byLemma.ContainsKey(lemma))
             {
                 continue;
             }
 
-            if (!result.TryAdd(form, lemma) && result[form] != lemma)
-            {
-                warnings.Add($"Form '{form}' maps to both '{result[form]}' and '{lemma}'; keeping the first.");
-            }
-
-            foreach (var label in labels.Where(l => !model.Senses.Contains(l, StringComparer.Ordinal)))
-            {
-                untrained.TryGetValue((lemma, label), out var listed);
-                untrained[(lemma, label)] = listed is null ? form : listed + ", " + form;
-            }
-        }
-
-        // One warning per lemma and label keeps the report readable
-        foreach (var ((lemma, label), formList) in untrained.OrderBy(u => u.Key.Lemma, StringComparer.Ordinal).ThenBy(u => u.Key.Label, StringComparer.Ordinal))
-        {
-            warnings.Add($"Forms of '{lemma}' list sense '{label}', which the lemma was not trained on (forms: {formList}).");
+            // A form listed for two lemmas keeps the first; the corpus is expected to avoid this
+            result.TryAdd(form, lemma);
         }
 
         // Every classified lemma must also resolve as itself
@@ -223,9 +215,9 @@ internal static class TableBuilder
         Parallel.For(0, rows.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, i =>
         {
             var row = rows[i];
-            var tokens = tokenizer.Tokenize(row.PlainText);
-            var (start, end) = row.TargetSpan;
-            var (first, last) = tokens.FindTokens(start, end);
+            var tokens = tokenizer.TokenizeWords(row.Words);
+            var first = tokens.WordFirst[row.TargetWordIndex];
+            var last = tokens.WordEnd[row.TargetWordIndex];
             var window = tokens.BuildWindow(tokenizer.ClsId, tokenizer.SepId, options.MaxSequenceLength, first, last);
             var hidden = encoder.EncodeAsync(window.InputIds, CancellationToken.None).AsTask().GetAwaiter().GetResult();
             result[i] = FeatureExtractor.Pool(hidden, encoder.HiddenSize, window.TargetFirst, window.TargetEnd)
@@ -260,18 +252,20 @@ internal static class TableBuilder
     /// <param name="index">Indices of the lemma's anchor rows.</param>
     /// <param name="anchors">All anchor rows.</param>
     /// <param name="features">Features of all anchor rows.</param>
+    /// <param name="inventory">The sense inventory.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The trained parameters.</returns>
-    private static (string[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index) TrainLemma(
-        string lemma, int[] index, IReadOnlyList<CorpusRow> anchors, float[][] features, TableBuilderOptions options)
+    private static (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index) TrainLemma(
+        string lemma, int[] index, IReadOnlyList<CorpusRow> anchors, float[][] features, SenseInventory inventory, TableBuilderOptions options)
     {
-        var senses = index.Select(i => anchors[i].Sense).Distinct(StringComparer.Ordinal).OrderBy(s => s, StringComparer.Ordinal).ToArray();
+        var senses = inventory.DefinitionsOf(lemma);
+        var names = senses.Select(s => s.Name).ToArray();
         if (senses.Length < 2)
         {
             throw new InvalidDataException($"Lemma '{lemma}' needs anchor sentences for at least two senses.");
         }
 
-        var labels = index.Select(i => Array.BinarySearch(senses, anchors[i].Sense, StringComparer.Ordinal)).ToArray();
+        var labels = index.Select(i => Array.BinarySearch(names, anchors[i].Sense, StringComparer.Ordinal)).ToArray();
         var x = index.Select(i => features[i]).ToArray();
         var kind = senses.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
         var (weights, bias) = Fit(x, labels, senses.Length, kind, options.C);
@@ -330,11 +324,11 @@ internal static class TableBuilder
     /// <param name="lemma">The lemma, which seeds the fold assignment.</param>
     /// <param name="x">The features.</param>
     /// <param name="labels">The sense index of each feature.</param>
-    /// <param name="senses">The sense labels.</param>
+    /// <param name="senses">The sense definitions.</param>
     /// <param name="kind">Binary or one-versus-rest.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The abstain margin.</returns>
-    private static float ChooseMargin(string lemma, float[][] x, int[] labels, string[] senses, LemmaModelKind kind, TableBuilderOptions options)
+    private static float ChooseMargin(string lemma, float[][] x, int[] labels, SenseDefinition[] senses, LemmaModelKind kind, TableBuilderOptions options)
     {
         var folds = Math.Min(options.Folds, labels.GroupBy(l => l).Min(g => g.Count()));
         var assignment = AssignFolds(lemma, labels, folds);

@@ -17,6 +17,8 @@ internal sealed record BatchResult(int Batch, string Status, string Detail, IRea
 /// <remarks>
 ///     A batch is a pair of files, <c>anchors/batchN.tsv</c> and <c>holdout/batchN.tsv</c>, plus an
 ///     optional specification <c>batches/batchN.tsv</c> (<c>lemma</c> and comma-separated <c>labels</c>).
+///     The import also writes the batch's sense inventory <c>senses/speech-batchN.tsv</c>, with tags derived
+///     by <see cref="SenseTagDerivation"/>; a label without a derivation rule makes the batch invalid.
 ///     Lemma-level absence (a specified lemma without sentences) is a warning: the lemma is left out.
 ///     Row-level errors (bad format, unknown lemma, disallowed label, duplicate sentence, anchor/holdout
 ///     overlap) drop only the offending rows, provided they are few (at most <see cref="MaxDroppedShare"/>
@@ -105,8 +107,11 @@ internal static class BatchImporter
             holdout = holdout.Where(r => !excluded.Contains(r.Lemma)).ToList();
             Corpus.EnsureDisjoint(anchors, holdout);
 
+            // Derive the inventory first so an unmapped label rejects the batch before anything is written
+            var inventory = SenseTagDerivation.DeriveFiles(anchors);
             WriteRows(anchorTarget, anchors);
             WriteRows(holdoutTarget, holdout);
+            SenseInventory.WriteFile(Path.Combine(corpus, "senses", target), inventory.Values.SelectMany(v => v));
             var lemmaCount = anchors.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).Count();
             return new BatchResult(batch, "Imported", $"{anchors.Count} anchors, {holdout.Count} holdout, {lemmaCount} lemmas, {dropped} rows dropped, {excluded.Count} lemmas excluded", notes);
         }

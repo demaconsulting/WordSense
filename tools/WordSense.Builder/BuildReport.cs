@@ -49,11 +49,13 @@ internal sealed record GroupStats(int Total, int Correct, int Answered, int Answ
 /// <param name="BySource">Overall counts per holdout file.</param>
 /// <param name="Warnings">Quality warnings.</param>
 /// <param name="TargetAccuracy">The accuracy a lemma is expected to reach.</param>
+/// <param name="Tags">The tag-level evaluation.</param>
 internal sealed record BuildReport(
     IReadOnlyList<LemmaReport> Lemmas,
     IReadOnlyDictionary<string, GroupStats> BySource,
     IReadOnlyList<string> Warnings,
-    double TargetAccuracy)
+    double TargetAccuracy,
+    TagReport Tags)
 {
     /// <summary>
     ///     Gets the overall counts over every holdout sentence.
@@ -83,6 +85,8 @@ internal sealed record BuildReport(
         }
 
         text.AppendLine();
+        RenderTags(text, inv);
+        text.AppendLine();
         text.AppendLine("Per lemma (anchors, holdout, accuracy, abstain accuracy, coverage, margin):");
         foreach (var l in Lemmas)
         {
@@ -98,6 +102,45 @@ internal sealed record BuildReport(
         }
 
         return text.ToString();
+    }
+
+    /// <summary>
+    ///     Renders the tag-level section.
+    /// </summary>
+    /// <param name="text">The report text.</param>
+    /// <param name="inv">The invariant culture.</param>
+    private void RenderTags(StringBuilder text, CultureInfo inv)
+    {
+        text.AppendLine("Tag level, noun versus verb (queried tags: noun, verb; rows whose gold sense has exactly one of them):");
+        text.AppendLine(inv, $"  Overall:    {Line(Tags.Overall)}");
+        text.AppendLine(inv, $"  Lemmas with both a noun and a verb sense: {Line(Tags.BothSenses)}");
+        foreach (var (tag, stats) in Tags.ByGoldTag.OrderBy(s => s.Key, StringComparer.Ordinal))
+        {
+            text.AppendLine(inv, $"  Gold {tag}: {Line(stats)}");
+        }
+
+        foreach (var (source, stats) in Tags.BySource.OrderBy(s => s.Key, StringComparer.Ordinal))
+        {
+            text.AppendLine(inv, $"  {source}: {Line(stats)}");
+        }
+
+        text.AppendLine(inv, $"  Excluded: {Tags.MixedRows} rows with a mixed noun|verb gold sense, {Tags.OtherRows} rows with neither tag.");
+        text.AppendLine(inv, $"  Lemmas with a mixed noun|verb sense: {string.Join(", ", Tags.MixedLemmas)}");
+        text.AppendLine("Tag level, has-tag per tag (every holdout row of a lemma that has the tag; expected true when the gold sense carries it):");
+        foreach (var (tag, stats) in Tags.PerTag.OrderBy(s => s.Key, StringComparer.Ordinal))
+        {
+            text.AppendLine(inv, $"  {tag}: {Line(stats)}");
+        }
+    }
+
+    /// <summary>
+    ///     Formats the counts of one tag-level group.
+    /// </summary>
+    /// <param name="s">The counts.</param>
+    /// <returns>The text.</returns>
+    private static string Line(TagStats s)
+    {
+        return $"{Pct(s.Correct, s.Evaluated)} best-tag accuracy over {s.Evaluated}; abstain {Pct(s.AnsweredCorrect, s.Answered)} at {Pct(s.Answered, s.Evaluated)} coverage; other wins {s.OtherWins}";
     }
 
     /// <summary>

@@ -70,18 +70,34 @@ public class WordPieceTokenizerTests
     }
 
     /// <summary>
-    ///     A target span selects exactly the tokens that overlap it.
+    ///     Words are tokenized independently and report their piece ranges, with the same pieces as the joined text.
     /// </summary>
     [Fact]
-    public void WordPieceTokenizer_FindTokens_Span_ReturnsOverlappingTokens()
+    public void WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord()
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
-        var tokens = tokenizer.Tokenize("the records");
 
-        var (first, end) = tokens.FindTokens(4, 11);
+        var words = tokenizer.TokenizeWords(["the", "records", "", "zzz."]);
+        var joined = tokenizer.Tokenize("the records  zzz.");
 
-        Assert.Equal((1, 3), (first, end));
-        Assert.Equal((0, 0), tokens.FindTokens(50, 60));
+        Assert.Equal(joined.Ids, words.Ids);
+        Assert.Equal([0, 1, 3, 3], words.WordFirst);
+        Assert.Equal([1, 3, 3, 5], words.WordEnd);
+        Assert.Equal((4, 11), (words.Starts[1], words.Ends[2]));
+    }
+
+    /// <summary>
+    ///     No words give no tokens.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_TokenizeWords_NoWords_ReturnsNoTokens()
+    {
+        var tokenizer = new WordPieceTokenizer(SmallVocabulary);
+
+        var result = tokenizer.TokenizeWords([]);
+
+        Assert.Equal(0, result.Count);
+        Assert.Empty(result.WordFirst);
     }
 
     /// <summary>

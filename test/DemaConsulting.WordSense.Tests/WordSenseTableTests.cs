@@ -8,14 +8,22 @@ public class WordSenseTableTests
     private const string Sha = "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1";
 
     /// <summary>
+    ///     Creates a sense definition.
+    /// </summary>
+    /// <param name="name">The sense name.</param>
+    /// <param name="tags">The sorted tags.</param>
+    /// <returns>The definition.</returns>
+    internal static SenseDefinition Def(string name, params string[] tags) => new(name, tags);
+
+    /// <summary>
     ///     Builds a small table with a binary and a one-versus-rest lemma.
     /// </summary>
     /// <returns>The table.</returns>
     internal static WordSenseTable CreateSmallTable()
     {
-        var binary = new LemmaModel("bat", ["animal", "tool"], LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
+        var binary = new LemmaModel("bat", [Def("animal", "noun"), Def("tool", "noun", "verb")], LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
         var multi = new LemmaModel(
-            "lead", ["metal", "verb", "wire"], LemmaModelKind.OneVersusRest,
+            "lead", [Def("metal", "noun"), Def("verb", "verb"), Def("wire", "noun")], LemmaModelKind.OneVersusRest,
             [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0.1f, -0.1f], 0.5f, 3);
         var forms = new Dictionary<string, string>
         {
@@ -46,7 +54,38 @@ public class WordSenseTableTests
         Assert.Equal(original.Lemmas[1].Weights, copy.Lemmas[1].Weights);
         Assert.Equal(LemmaModelKind.Binary, copy.Lemmas[0].Kind);
         Assert.Equal(0.75f, copy.Lemmas[0].AbstainMargin);
-        Assert.Equal(["metal", "verb", "wire"], copy.Lemmas[1].Senses);
+        Assert.Equal(["metal", "verb", "wire"], copy.Lemmas[1].Senses.Select(s => s.Sense));
+        Assert.Equal(["noun", "verb"], copy.Lemmas[0].Senses[1].Tags.Order());
+        Assert.Equal(["noun"], copy.Lemmas[1].Senses[2].Tags);
+    }
+
+    /// <summary>
+    ///     Tags are interned: senses with the same tag share the tag string.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_SensesWithSameTag_ShareTagInstance()
+    {
+        var copy = WordSenseTable.Read(CreateSmallTable().ToArray());
+
+        var a = copy.Lemmas[1].Senses[0].Tags.Single();
+        var b = copy.Lemmas[1].Senses[2].Tags.Single();
+        Assert.Same(a, b);
+    }
+
+    /// <summary>
+    ///     A version 1 table (no tags) is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_Version1_Throws()
+    {
+        var bytes = CreateSmallTable().ToArray();
+        var body = bytes[..^32];
+        Assert.Equal(2, body[4]);
+        body[4] = 1;
+        var v1 = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(v1));
+        Assert.Contains("version", ex.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
@@ -164,10 +203,55 @@ public class WordSenseTableTests
     [Fact]
     public void WordSenseTable_LemmaModel_BadShapes_Throw()
     {
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", ["x"], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", ["x", "y"], LemmaModelKind.Binary, [1f, 2f], [0f], 0f, 1));
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", ["x", "y"], LemmaModelKind.Binary, [float.NaN], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun")], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun"), Def("y", "verb")], LemmaModelKind.Binary, [1f, 2f], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun"), Def("y", "verb")], LemmaModelKind.Binary, [float.NaN], [0f], 0f, 1));
         Assert.Throws<ArgumentException>(() => CreateSmallTable().Lemmas[0].Score([1f]));
+    }
+
+    /// <summary>
+    ///     Invalid sense definitions are rejected at construction.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_LemmaModel_BadSenseDefinitions_Throw()
+    {
+        LemmaModel Make(params SenseDefinition[] senses) =>
+            new("a", senses, LemmaModelKind.Binary, [1f], [0f], 0f, 1);
+
+        Assert.Throws<ArgumentException>(() => Make(Def("x", "noun"), Def("x", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x"), Def("y", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x", "verb", "noun"), Def("y", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x", "noun", "noun"), Def("y", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x", "Noun"), Def("y", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x", new string('a', 33)), Def("y", "verb")));
+        Assert.Throws<ArgumentException>(() => Make(Def("x", Enumerable.Range(0, 17).Select(i => $"t{i:00}").ToArray()), Def("y", "verb")));
+    }
+
+    /// <summary>
+    ///     A corrupted body with a valid checksum is rejected with a format exception, never anything else.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_MutatedBodyWithValidChecksum_ThrowsFormatExceptionOrLoads()
+    {
+        var bytes = CreateSmallTable().ToArray();
+        var rejected = 0;
+
+        for (var i = 0; i < bytes.Length - 32; i++)
+        {
+            var body = bytes[..^32];
+            body[i] ^= 0xFF;
+            var signed = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
+            try
+            {
+                WordSenseTable.Read(signed);
+            }
+            catch (WordSenseTableFormatException)
+            {
+                rejected++;
+            }
+        }
+
+        Assert.True(rejected > 0);
     }
 
     /// <summary>
@@ -180,7 +264,9 @@ public class WordSenseTableTests
 
         Assert.True(table.Lemmas.Count >= 349);
         Assert.True(table.TryGetLemma("record", out var record));
-        Assert.Equal(["noun", "verb"], record.Senses);
+        Assert.Equal(["noun", "verb"], record.Senses.Select(s => s.Sense));
+        Assert.Equal(["noun"], record.Senses[0].Tags);
+        Assert.All(table.Lemmas.SelectMany(l => l.Senses), s => Assert.NotEmpty(s.Tags));
         Assert.Equal("record", table.Forms["records"]);
         Assert.Equal(384, table.Dimension);
         Assert.All(table.Forms.Values, lemma => Assert.True(table.TryGetLemma(lemma, out _), lemma));

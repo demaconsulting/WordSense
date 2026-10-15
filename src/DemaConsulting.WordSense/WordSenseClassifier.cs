@@ -1,10 +1,13 @@
-using System.Globalization;
-
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Classifies the sense of ambiguous words in free text.
+///     Classifies the sense of ambiguous words in context.
 /// </summary>
+/// <remarks>
+///     The primary input is a list of words that the caller has already tokenized; every result array
+///     is parallel to that list. Results are null for words that have no classifier and for answers
+///     withheld because the confidence is too low.
+/// </remarks>
 public interface IWordSenseClassifier : IDisposable
 {
     /// <summary>
@@ -13,14 +16,29 @@ public interface IWordSenseClassifier : IDisposable
     IReadOnlyList<string> KnownLemmas { get; }
 
     /// <summary>
-    ///     Gets the sense labels of a lemma.
+    ///     Gets the senses of a lemma.
     /// </summary>
     /// <param name="lemma">The lemma, for example <c>record</c>.</param>
-    /// <returns>The sense labels, or an empty list when the lemma is unknown.</returns>
-    IReadOnlyList<string> GetSenseLabels(string lemma);
+    /// <returns>The shared sense records, or an empty list when the lemma is unknown.</returns>
+    IReadOnlyList<WordSense> GetSenses(string lemma);
 
     /// <summary>
-    ///     Splits a text into tokens and attaches a sense to every known ambiguous word.
+    ///     Classifies every word of a tokenized sentence or text.
+    /// </summary>
+    /// <param name="words">
+    ///     The words in order, including punctuation tokens. They are read as one running text in which
+    ///     the words are separated by single spaces.
+    /// </param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>
+    ///     An array parallel to <paramref name="words"/>: the sense of each word, or null when the word is
+    ///     not a known ambiguous word or the classifier abstained.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
+    Task<WordSense?[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Splits a raw text into tokens and attaches a sense to every known ambiguous word.
     /// </summary>
     /// <param name="text">The text to classify.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
@@ -28,22 +46,59 @@ public interface IWordSenseClassifier : IDisposable
     Task<IReadOnlyList<WordSenseToken>> ClassifyAsync(string text, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Classifies the single word at a given span of a text.
+    ///     Classifies every word and reports the confidence figures behind each decision.
     /// </summary>
-    /// <param name="text">The text that provides the context.</param>
-    /// <param name="targetStart">Inclusive UTF-16 start of the word.</param>
-    /// <param name="targetLength">UTF-16 length of the word.</param>
+    /// <param name="words">The words in order.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>The sense, or null when the word is unknown or the classifier abstained.</returns>
-    Task<WordSenseResult?> ClassifyAsync(string text, int targetStart, int targetLength, CancellationToken cancellationToken = default);
+    /// <returns>
+    ///     An array parallel to <paramref name="words"/>: the detail of each word that has a classifier
+    ///     (also when it abstained, see <see cref="WordSenseDetail.Abstained"/>), or null for other words.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
+    Task<WordSenseDetail?[]> ClassifyDetailAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Classifies every word at the level of tags: which of the given tags describes the word.
+    /// </summary>
+    /// <remarks>
+    ///     The score of a tag is the best score among the senses that carry it. The tag with the highest
+    ///     score wins. The result is null when the lemma has no sense carrying any queried tag, when the
+    ///     best sense carries none of them, or when the winner's margin over the runner-up tag (or over
+    ///     the senses carrying none of the tags) is below the lemma's abstain threshold.
+    /// </remarks>
+    /// <param name="words">The words in order.</param>
+    /// <param name="tags">The tags to choose between; at least one, none null or empty.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>An array parallel to <paramref name="words"/>: the winning tag, or null.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="tags"/> is empty or contains an empty tag.</exception>
+    Task<string?[]> ClassifyTagAsync(
+        IReadOnlyList<string> words,
+        IReadOnlyCollection<string> tags,
+        CancellationToken cancellationToken = default);
+
+    /// <summary>
+    ///     Classifies every word as having or not having a tag.
+    /// </summary>
+    /// <param name="words">The words in order.</param>
+    /// <param name="tag">The tag.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>
+    ///     An array parallel to <paramref name="words"/>: true when the word has the tag, false when it
+    ///     does not, null when the lemma has no sense with the tag, the word is unknown, or the
+    ///     classifier abstained.
+    /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="tag"/> is empty.</exception>
+    Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
 ///     Classifies the sense of ambiguous words using a BERT-style encoder and an embedded linear table.
 /// </summary>
 /// <remarks>
-///     The sentence is encoded once and every known word in it is classified from the same hidden
-///     states. Texts longer than the maximum sequence length are classified from a window centered on
+///     The words are encoded once and every known word in them is classified from the same hidden
+///     states. Inputs longer than the maximum sequence length are classified from a window centered on
 ///     each target. The instance is thread-safe when its encoder is.
 /// </remarks>
 public sealed class WordSenseClassifier : IWordSenseClassifier
@@ -149,10 +204,26 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <inheritdoc />
-    public IReadOnlyList<string> GetSenseLabels(string lemma)
+    public IReadOnlyList<WordSense> GetSenses(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
         return _table.TryGetLemma(lemma, out var model) ? model.Senses : [];
+    }
+
+    /// <inheritdoc />
+    public async Task<WordSense?[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
+    {
+        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
+        var result = new WordSense?[words.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            if (scored[i] is { } s && s.Margin >= Threshold(s.Model))
+            {
+                result[i] = s.Model.Senses[s.Best];
+            }
+        }
+
+        return result;
     }
 
     /// <inheritdoc />
@@ -160,64 +231,92 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     {
         ArgumentNullException.ThrowIfNull(text);
 
-        // Split into tiles and find the words that have a classifier
-        var segments = SplitSegments(text);
-        var targets = new List<(int Segment, LemmaModel Model)>();
-        for (var i = 0; i < segments.Count; i++)
-        {
-            if (segments[i].IsWord && TryResolve(text.Substring(segments[i].Start, segments[i].Length), out var model))
-            {
-                targets.Add((i, model));
-            }
-        }
-
-        var senses = new WordSenseResult?[segments.Count];
-        if (targets.Count > 0)
-        {
-            var tokens = _tokenizer.Tokenize(text);
-            var whole = tokens.Count + 2 <= _maxLength ? await EncodeWholeAsync(tokens, cancellationToken).ConfigureAwait(false) : null;
-            foreach (var (segment, model) in targets)
-            {
-                var span = segments[segment];
-                senses[segment] = await ClassifyTargetAsync(tokens, whole, model, span.Start, span.Start + span.Length, cancellationToken)
-                    .ConfigureAwait(false);
-            }
-        }
+        // Words are the non-whitespace tiles; whitespace tiles never carry a sense
+        var segments = TextSplitter.SplitSegments(text);
+        var wordSegments = segments.Where(s => !s.IsSpace).ToList();
+        var senses = await ClassifyAsync(wordSegments.Select(s => text.Substring(s.Start, s.Length)).ToArray(), cancellationToken)
+            .ConfigureAwait(false);
 
         var result = new List<WordSenseToken>(segments.Count);
-        for (var i = 0; i < segments.Count; i++)
+        var next = 0;
+        foreach (var segment in segments)
         {
-            result.Add(new WordSenseToken(segments[i].Start, segments[i].Length, text.Substring(segments[i].Start, segments[i].Length), senses[i]));
+            var sense = segment.IsSpace ? null : senses[next++];
+            result.Add(new WordSenseToken(segment.Start, segment.Length, text.Substring(segment.Start, segment.Length), sense));
         }
 
         return result;
     }
 
     /// <inheritdoc />
-    public async Task<WordSenseResult?> ClassifyAsync(
-        string text,
-        int targetStart,
-        int targetLength,
+    public async Task<WordSenseDetail?[]> ClassifyDetailAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
+    {
+        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
+        var result = new WordSenseDetail?[words.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            if (scored[i] is { } s)
+            {
+                result[i] = BuildDetail(s);
+            }
+        }
+
+        return result;
+    }
+
+    /// <inheritdoc />
+    public async Task<string?[]> ClassifyTagAsync(
+        IReadOnlyList<string> words,
+        IReadOnlyCollection<string> tags,
         CancellationToken cancellationToken = default)
     {
-        ArgumentNullException.ThrowIfNull(text);
-        ArgumentOutOfRangeException.ThrowIfNegative(targetStart);
-        ArgumentOutOfRangeException.ThrowIfNegative(targetLength);
-        if (targetStart > text.Length - targetLength)
+        ArgumentNullException.ThrowIfNull(words);
+        ArgumentNullException.ThrowIfNull(tags);
+        foreach (var item in tags)
         {
-            throw new ArgumentOutOfRangeException(nameof(targetLength), "The target span lies outside the text.");
+            ArgumentNullException.ThrowIfNull(item);
         }
 
-        if (targetLength == 0 || !TryResolve(text.Substring(targetStart, targetLength), out var model))
+        var query = tags.Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray();
+        if (query.Length == 0 || query.Any(t => t.Length == 0))
         {
-            cancellationToken.ThrowIfCancellationRequested();
-            return null;
+            throw new ArgumentException("At least one tag is required and no tag may be empty.", nameof(tags));
         }
 
-        var tokens = _tokenizer.Tokenize(text);
-        var whole = tokens.Count + 2 <= _maxLength ? await EncodeWholeAsync(tokens, cancellationToken).ConfigureAwait(false) : null;
-        return await ClassifyTargetAsync(tokens, whole, model, targetStart, targetStart + targetLength, cancellationToken)
-            .ConfigureAwait(false);
+        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
+        var result = new string?[words.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            if (scored[i] is { } s)
+            {
+                result[i] = TagScorer.Classify(s.Model.Senses, s.Scores, query, Threshold(s.Model));
+            }
+        }
+
+        return result;
+    }
+
+    /// <inheritdoc />
+    public async Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default)
+    {
+        ArgumentNullException.ThrowIfNull(words);
+        ArgumentNullException.ThrowIfNull(tag);
+        if (tag.Length == 0)
+        {
+            throw new ArgumentException("The tag must not be empty.", nameof(tag));
+        }
+
+        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
+        var result = new bool?[words.Count];
+        for (var i = 0; i < result.Length; i++)
+        {
+            if (scored[i] is { } s)
+            {
+                result[i] = TagScorer.IsTag(s.Model.Senses, s.Scores, tag, Threshold(s.Model));
+            }
+        }
+
+        return result;
     }
 
     /// <inheritdoc />
@@ -227,6 +326,58 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         {
             _encoder.Dispose();
         }
+    }
+
+    /// <summary>
+    ///     The scores of one word that has a classifier.
+    /// </summary>
+    /// <param name="Model">The lemma model.</param>
+    /// <param name="Scores">The score of every sense.</param>
+    /// <param name="Best">The index of the best sense.</param>
+    /// <param name="Margin">The margin between the best and the second-best score.</param>
+    private sealed record Scored(LemmaModel Model, float[] Scores, int Best, float Margin);
+
+    /// <summary>
+    ///     Gets the margin below which a lemma gives no answer.
+    /// </summary>
+    /// <param name="model">The lemma model.</param>
+    /// <returns>The scaled abstain margin.</returns>
+    private double Threshold(LemmaModel model) => model.AbstainMargin * _abstainScale;
+
+    /// <summary>
+    ///     Builds the detail of one scored word.
+    /// </summary>
+    /// <param name="scored">The scored word.</param>
+    /// <returns>The detail.</returns>
+    private WordSenseDetail BuildDetail(Scored scored)
+    {
+        // Rank the senses after the best one: the runner-up and then the third-best
+        var scores = scored.Scores;
+        var runner = -1;
+        for (var i = 0; i < scores.Length; i++)
+        {
+            if (i != scored.Best && (runner < 0 || scores[i] > scores[runner]))
+            {
+                runner = i;
+            }
+        }
+
+        var third = -1;
+        for (var i = 0; i < scores.Length; i++)
+        {
+            if (i != scored.Best && i != runner && (third < 0 || scores[i] > scores[third]))
+            {
+                third = i;
+            }
+        }
+
+        var runnerMargin = third < 0 ? 0.0 : (double)scores[runner] - scores[third];
+        return new WordSenseDetail(
+            scored.Model.Senses[scored.Best],
+            scored.Margin,
+            scored.Model.Senses[runner],
+            runnerMargin,
+            scored.Margin < Threshold(scored.Model));
     }
 
     /// <summary>
@@ -256,11 +407,58 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <summary>
-    ///     Encodes the whole text in one window.
+    ///     Scores every word that has a classifier.
     /// </summary>
-    /// <param name="tokens">The tokenized text.</param>
+    /// <param name="words">The words.</param>
     /// <param name="cancellationToken">A token that cancels the call.</param>
-    /// <returns>The hidden states of the whole text, including the special tokens.</returns>
+    /// <returns>An array parallel to the words; null where a word has no classifier or no tokens.</returns>
+    private async Task<Scored?[]> ScoreAsync(IReadOnlyList<string> words, CancellationToken cancellationToken)
+    {
+        ArgumentNullException.ThrowIfNull(words);
+        foreach (var word in words)
+        {
+            ArgumentNullException.ThrowIfNull(word);
+        }
+
+        cancellationToken.ThrowIfCancellationRequested();
+        var result = new Scored?[words.Count];
+        var models = new LemmaModel?[words.Count];
+        var any = false;
+        for (var i = 0; i < words.Count; i++)
+        {
+            if (TryResolve(words[i], out var model))
+            {
+                models[i] = model;
+                any = true;
+            }
+        }
+
+        if (!any)
+        {
+            return result;
+        }
+
+        var tokens = _tokenizer.TokenizeWords(words);
+        var whole = tokens.Count + 2 <= _maxLength ? await EncodeWholeAsync(tokens, cancellationToken).ConfigureAwait(false) : null;
+        for (var i = 0; i < words.Count; i++)
+        {
+            if (models[i] is { } model)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                result[i] = await ScoreTargetAsync(tokens, whole, model, tokens.WordFirst[i], tokens.WordEnd[i], cancellationToken)
+                    .ConfigureAwait(false);
+            }
+        }
+
+        return result;
+    }
+
+    /// <summary>
+    ///     Encodes the whole input in one window.
+    /// </summary>
+    /// <param name="tokens">The tokenized words.</param>
+    /// <param name="cancellationToken">A token that cancels the call.</param>
+    /// <returns>The hidden states of the whole input, including the special tokens.</returns>
     private async Task<float[]> EncodeWholeAsync(TokenizedText tokens, CancellationToken cancellationToken)
     {
         var (ids, _, _) = tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0);
@@ -268,24 +466,23 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <summary>
-    ///     Classifies one target span.
+    ///     Scores one target word.
     /// </summary>
-    /// <param name="tokens">The tokenized text.</param>
-    /// <param name="whole">Hidden states of the whole text when it fits one window, otherwise null.</param>
+    /// <param name="tokens">The tokenized words.</param>
+    /// <param name="whole">Hidden states of the whole input when it fits one window, otherwise null.</param>
     /// <param name="model">The lemma model.</param>
-    /// <param name="start">Inclusive start of the target.</param>
-    /// <param name="end">Exclusive end of the target.</param>
+    /// <param name="first">First token of the target.</param>
+    /// <param name="last">Exclusive end token of the target.</param>
     /// <param name="cancellationToken">A token that cancels the call.</param>
-    /// <returns>The sense, or null when the classifier abstains.</returns>
-    private async Task<WordSenseResult?> ClassifyTargetAsync(
+    /// <returns>The scores, or null when the word has no tokens or no feature.</returns>
+    private async Task<Scored?> ScoreTargetAsync(
         TokenizedText tokens,
         float[]? whole,
         LemmaModel model,
-        int start,
-        int end,
+        int first,
+        int last,
         CancellationToken cancellationToken)
     {
-        var (first, last) = tokens.FindTokens(start, end);
         if (last <= first)
         {
             return null;
@@ -315,99 +512,8 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         }
 
         var (best, margin) = model.Score(feature);
-        if (margin < model.AbstainMargin * _abstainScale)
-        {
-            return null;
-        }
-
-        return new WordSenseResult(model.Lemma, model.Senses[best], margin);
-    }
-
-    /// <summary>
-    ///     A tile of the text.
-    /// </summary>
-    /// <param name="Start">Inclusive start offset.</param>
-    /// <param name="Length">Length in UTF-16 units.</param>
-    /// <param name="IsWord">Whether the tile is a word.</param>
-    private readonly record struct Segment(int Start, int Length, bool IsWord);
-
-    /// <summary>
-    ///     Splits a text into words, whitespace runs and single other characters.
-    /// </summary>
-    /// <param name="text">The text.</param>
-    /// <returns>Tiles covering the text exactly.</returns>
-    private static List<Segment> SplitSegments(string text)
-    {
-        var segments = new List<Segment>();
-        var i = 0;
-        while (i < text.Length)
-        {
-            var start = i;
-            if (IsWordChar(text, i))
-            {
-                i += CharLength(text, i);
-                while (i < text.Length)
-                {
-                    if (IsWordChar(text, i))
-                    {
-                        i += CharLength(text, i);
-                    }
-                    else if ((text[i] is '\'' or '\u2019' or '-') && i + 1 < text.Length && IsWordChar(text, i + 1))
-                    {
-                        i++;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
-                segments.Add(new Segment(start, i - start, true));
-            }
-            else if (char.IsWhiteSpace(text[i]))
-            {
-                while (i < text.Length && char.IsWhiteSpace(text[i]))
-                {
-                    i++;
-                }
-
-                segments.Add(new Segment(start, i - start, false));
-            }
-            else
-            {
-                i += CharLength(text, i);
-                segments.Add(new Segment(start, i - start, false));
-            }
-        }
-
-        return segments;
-    }
-
-    /// <summary>
-    ///     Determines whether the character at an index is a letter or digit.
-    /// </summary>
-    /// <param name="text">The text.</param>
-    /// <param name="index">The index.</param>
-    /// <returns>True for letters, digits and combining marks.</returns>
-    private static bool IsWordChar(string text, int index)
-    {
-        if (char.IsLetterOrDigit(text, index))
-        {
-            return true;
-        }
-
-        var category = CharUnicodeInfo.GetUnicodeCategory(text, index);
-        return category is UnicodeCategory.NonSpacingMark or UnicodeCategory.SpacingCombiningMark;
-    }
-
-    /// <summary>
-    ///     Gets the UTF-16 length of the character at an index, keeping surrogate pairs together.
-    /// </summary>
-    /// <param name="text">The text.</param>
-    /// <param name="index">The index.</param>
-    /// <returns>1 or 2.</returns>
-    private static int CharLength(string text, int index)
-    {
-        return char.IsHighSurrogate(text[index]) && index + 1 < text.Length && char.IsLowSurrogate(text[index + 1]) ? 2 : 1;
+        var scores = new float[model.Senses.Count];
+        model.Scores(feature, scores);
+        return new Scored(model, scores, best, margin);
     }
 }

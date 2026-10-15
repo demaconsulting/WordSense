@@ -20,11 +20,36 @@ internal sealed class TokenizedText
     /// <param name="starts">Inclusive UTF-16 start offset of each token in the original text.</param>
     /// <param name="ends">Exclusive UTF-16 end offset of each token in the original text.</param>
     public TokenizedText(int[] ids, int[] starts, int[] ends)
+        : this(ids, starts, ends, [], [])
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="TokenizedText"/> class for a tokenized word list.
+    /// </summary>
+    /// <param name="ids">Vocabulary ids of every WordPiece token, in word order.</param>
+    /// <param name="starts">Inclusive offset of each token in the words joined by single spaces.</param>
+    /// <param name="ends">Exclusive offset of each token in the words joined by single spaces.</param>
+    /// <param name="wordFirst">The first token index of each word.</param>
+    /// <param name="wordEnd">The exclusive end token index of each word; equal to the first for a word without tokens.</param>
+    public TokenizedText(int[] ids, int[] starts, int[] ends, int[] wordFirst, int[] wordEnd)
     {
         Ids = ids;
         Starts = starts;
         Ends = ends;
+        WordFirst = wordFirst;
+        WordEnd = wordEnd;
     }
+
+    /// <summary>
+    ///     Gets the first token index of each word; empty unless produced by <c>TokenizeWords</c>.
+    /// </summary>
+    public int[] WordFirst { get; }
+
+    /// <summary>
+    ///     Gets the exclusive end token index of each word; empty unless produced by <c>TokenizeWords</c>.
+    /// </summary>
+    public int[] WordEnd { get; }
 
     /// <summary>
     ///     Gets the vocabulary id of every token, excluding special tokens.
@@ -45,38 +70,6 @@ internal sealed class TokenizedText
     ///     Gets the number of tokens, excluding special tokens.
     /// </summary>
     public int Count => Ids.Length;
-
-    /// <summary>
-    ///     Finds the half-open token range that overlaps a span of the original text.
-    /// </summary>
-    /// <remarks>
-    ///     A token overlaps the span when it is non-empty, starts before the span ends, and ends after
-    ///     the span starts. This is the same rule the training pipeline uses, so inference features are
-    ///     computed from the same tokens that training saw.
-    /// </remarks>
-    /// <param name="start">Inclusive start of the span in the original text.</param>
-    /// <param name="end">Exclusive end of the span in the original text.</param>
-    /// <returns>The first overlapping token index and the exclusive end index; equal values when none overlap.</returns>
-    public (int First, int End) FindTokens(int start, int end)
-    {
-        // Scan linearly: texts are sentences, so the token count is small
-        var first = -1;
-        var last = -1;
-        for (var i = 0; i < Count; i++)
-        {
-            if (Ends[i] > Starts[i] && Starts[i] < end && Ends[i] > start)
-            {
-                if (first < 0)
-                {
-                    first = i;
-                }
-
-                last = i;
-            }
-        }
-
-        return first < 0 ? (0, 0) : (first, last + 1);
-    }
 
     /// <summary>
     ///     Builds the encoder input for a window of tokens that contains a target token range.

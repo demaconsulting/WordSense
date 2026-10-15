@@ -21,7 +21,14 @@ public class WordSenseClassifierTests
 
     private static WordSenseTable CreateTable(float margin)
     {
-        var model = new LemmaModel("bat", ["animal", "tool"], LemmaModelKind.Binary, [1f, 0f, 0f], [0f], margin, 3);
+        var model = new LemmaModel(
+            "bat",
+            [new SenseDefinition("animal", ["noun"]), new SenseDefinition("tool", ["verb"])],
+            LemmaModelKind.Binary,
+            [1f, 0f, 0f],
+            [0f],
+            margin,
+            3);
         var forms = new Dictionary<string, string> { ["bat"] = "bat", ["bats"] = "bat" };
         return new WordSenseTable("all-MiniLM-L6-v2", TableSha, 3, [0f, 0f, 0f], [model], forms);
     }
@@ -62,10 +69,10 @@ public class WordSenseClassifierTests
 
         var senses = tokens.Where(t => t.Sense is not null).ToList();
         Assert.Equal(2, senses.Count);
-        Assert.Equal("tool", senses[0].Sense!.Label);
-        Assert.Equal("animal", senses[1].Sense!.Label);
+        Assert.Equal("tool", senses[0].Sense!.Sense);
+        Assert.Equal("animal", senses[1].Sense!.Sense);
         Assert.Equal("bat", senses[0].Sense!.Lemma);
-        Assert.True(senses[0].Sense!.Margin >= 0.75);
+        Assert.Same(senses[0].Sense, classifier.GetSenses("bat")[1]);
         Assert.Equal("bat", senses[0].Text);
     }
 
@@ -102,35 +109,38 @@ public class WordSenseClassifierTests
     ///     Case, inflected forms, possessives and curly apostrophes resolve to the lemma.
     /// </summary>
     [Theory]
-    [InlineData("the BAT", 4, 3)]
-    [InlineData("the bats", 4, 4)]
-    [InlineData("the bat's", 4, 5)]
-    [InlineData("the bat\u2019s", 4, 5)]
-    public async Task WordSenseClassifier_ClassifyAsync_Span_ResolvesForms(string text, int start, int length)
+    [InlineData("BAT")]
+    [InlineData("bats")]
+    [InlineData("bat's")]
+    [InlineData("bat\u2019s")]
+    public async Task WordSenseClassifier_ClassifyAsync_Words_ResolvesForms(string word)
     {
         using var classifier = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 0 });
 
-        var result = await classifier.ClassifyAsync(text, start, length, TestContext.Current.CancellationToken);
+        var result = await classifier.ClassifyAsync(["the", word], TestContext.Current.CancellationToken);
 
-        Assert.NotNull(result);
-        Assert.Equal("bat", result.Lemma);
-        Assert.Equal("tool", result.Label);
+        Assert.Equal(2, result.Length);
+        Assert.Null(result[0]);
+        Assert.NotNull(result[1]);
+        Assert.Equal("bat", result[1]!.Lemma);
+        Assert.Equal("tool", result[1]!.Sense);
     }
 
     /// <summary>
-    ///     Unknown words, empty spans and spans outside the text are handled.
+    ///     The result is parallel to the input; unknown words give null and invalid input throws.
     /// </summary>
     [Fact]
-    public async Task WordSenseClassifier_ClassifyAsync_Span_EdgeCases()
+    public async Task WordSenseClassifier_ClassifyAsync_Words_EdgeCases()
     {
         using var classifier = Create();
         var token = TestContext.Current.CancellationToken;
 
-        Assert.Null(await classifier.ClassifyAsync("the flies", 4, 5, token));
-        Assert.Null(await classifier.ClassifyAsync("the bat", 4, 0, token));
-        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => classifier.ClassifyAsync("the bat", 5, 9, token));
-        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(() => classifier.ClassifyAsync("the bat", -1, 2, token));
-        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.ClassifyAsync(null!, token));
+        Assert.Empty(await classifier.ClassifyAsync(Array.Empty<string>(), token));
+        Assert.Equal([null, null], await classifier.ClassifyAsync(["the", "flies"], token));
+        Assert.Null((await classifier.ClassifyAsync([""], token))[0]);
+        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.ClassifyAsync((IReadOnlyList<string>)null!, token));
+        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.ClassifyAsync(new string[] { "a", null! }, token));
+        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.ClassifyAsync((string)null!, token));
     }
 
     /// <summary>
@@ -141,9 +151,10 @@ public class WordSenseClassifierTests
     {
         using var strict = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 10 });
         using var never = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 0 });
+        var words = new[] { "the", "bat" };
 
-        Assert.Null(await strict.ClassifyAsync("the bat", 4, 3, TestContext.Current.CancellationToken));
-        Assert.NotNull(await never.ClassifyAsync("the bat", 4, 3, TestContext.Current.CancellationToken));
+        Assert.Null((await strict.ClassifyAsync(words, TestContext.Current.CancellationToken))[1]);
+        Assert.NotNull((await never.ClassifyAsync(words, TestContext.Current.CancellationToken))[1]);
     }
 
     /// <summary>
@@ -158,7 +169,7 @@ public class WordSenseClassifierTests
 
         var tokens = await classifier.ClassifyAsync(text, TestContext.Current.CancellationToken);
 
-        Assert.Equal("tool", Assert.Single(tokens, t => t.Sense is not null).Sense!.Label);
+        Assert.Equal("tool", Assert.Single(tokens, t => t.Sense is not null).Sense!.Sense);
         Assert.All(encoder.Lengths, length => Assert.True(length <= 8));
     }
 
@@ -207,26 +218,113 @@ public class WordSenseClassifierTests
     {
         using var classifier = Create();
 
-        var tasks = Enumerable.Range(0, 64).Select(i => classifier.ClassifyAsync(i % 2 == 0 ? "the bat" : "a bat", 4 - (i % 2 * 2), 3, TestContext.Current.CancellationToken)).ToArray();
+        var tasks = Enumerable.Range(0, 64).Select(i => classifier.ClassifyAsync(i % 2 == 0 ? new[] { "the", "bat" } : new[] { "a", "bat" }, TestContext.Current.CancellationToken)).ToArray();
         var results = await Task.WhenAll(tasks);
 
         for (var i = 0; i < results.Length; i++)
         {
-            Assert.Equal(i % 2 == 0 ? "tool" : "animal", results[i]!.Label);
+            Assert.Equal(i % 2 == 0 ? "tool" : "animal", results[i][1]!.Sense);
         }
     }
 
     /// <summary>
-    ///     Known lemmas and labels are exposed.
+    ///     Known lemmas and senses are exposed as shared records.
     /// </summary>
     [Fact]
-    public void WordSenseClassifier_KnownLemmas_And_SenseLabels_AreExposed()
+    public void WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed()
     {
         using var classifier = Create();
 
         Assert.Equal(["bat"], classifier.KnownLemmas);
-        Assert.Equal(["animal", "tool"], classifier.GetSenseLabels("bat"));
-        Assert.Empty(classifier.GetSenseLabels("zzz"));
+        Assert.Equal(["animal", "tool"], classifier.GetSenses("bat").Select(s => s.Sense));
+        Assert.Same(classifier.GetSenses("bat")[0], classifier.GetSenses("bat")[0]);
+        Assert.Equal(["verb"], classifier.GetSenses("bat")[1].Tags);
+        Assert.Empty(classifier.GetSenses("zzz"));
+    }
+
+    /// <summary>
+    ///     The detail reports the best sense, its margin and the runner-up.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp()
+    {
+        using var classifier = Create();
+
+        var details = await classifier.ClassifyDetailAsync(["the", "bat", "a", "bat"], TestContext.Current.CancellationToken);
+
+        Assert.Null(details[0]);
+        var first = details[1]!.Value;
+        Assert.Equal("tool", first.Sense.Sense);
+        Assert.Equal("animal", first.RunnerUp.Sense);
+        Assert.Equal(Math.Sqrt(2), first.Margin, 4);
+        Assert.Equal(0.0, first.RunnerUpMargin);
+        Assert.False(first.Abstained);
+        Assert.Equal("animal", details[3]!.Value.Sense.Sense);
+    }
+
+    /// <summary>
+    ///     The detail is still given for an abstained word, flagged as abstained.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyDetailAsync_LowMargin_IsFlaggedAbstained()
+    {
+        using var classifier = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 10 });
+
+        var details = await classifier.ClassifyDetailAsync(["the", "bat"], TestContext.Current.CancellationToken);
+
+        Assert.True(details[1]!.Value.Abstained);
+        Assert.Equal("tool", details[1]!.Value.Sense.Sense);
+    }
+
+    /// <summary>
+    ///     A tag query answers with the best matching tag, or null when the tag is absent or abstained.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull()
+    {
+        using var classifier = Create();
+        var token = TestContext.Current.CancellationToken;
+        string[] words = ["the", "bat", "a", "bat", "flies"];
+
+        var result = await classifier.ClassifyTagAsync(words, ["noun", "verb"], token);
+        var absent = await classifier.ClassifyTagAsync(words, ["adj"], token);
+        using var strict = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 10 });
+        var abstained = await strict.ClassifyTagAsync(words, ["noun", "verb"], token);
+
+        Assert.Equal([null, "verb", null, "noun", null], result);
+        Assert.All(absent, t => Assert.Null(t));
+        Assert.All(abstained, t => Assert.Null(t));
+    }
+
+    /// <summary>
+    ///     A has-tag query is true or false, and null when absent or abstained.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull()
+    {
+        using var classifier = Create();
+        var token = TestContext.Current.CancellationToken;
+        string[] words = ["the", "bat", "a", "bat", "flies"];
+
+        Assert.Equal([null, true, null, false, null], await classifier.IsTagAsync(words, "verb", token));
+        Assert.Equal([null, false, null, true, null], await classifier.IsTagAsync(words, "noun", token));
+        Assert.All(await classifier.IsTagAsync(words, "adj", token), t => Assert.Null(t));
+    }
+
+    /// <summary>
+    ///     Invalid tag queries are rejected.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_TagQueries_InvalidArguments_Throw()
+    {
+        using var classifier = Create();
+        var token = TestContext.Current.CancellationToken;
+
+        await Assert.ThrowsAsync<ArgumentException>(() => classifier.ClassifyTagAsync(["bat"], Array.Empty<string>(), token));
+        await Assert.ThrowsAsync<ArgumentException>(() => classifier.ClassifyTagAsync(["bat"], [""], token));
+        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.ClassifyTagAsync(["bat"], null!, token));
+        await Assert.ThrowsAsync<ArgumentException>(() => classifier.IsTagAsync(["bat"], "", token));
+        await Assert.ThrowsAsync<ArgumentNullException>(() => classifier.IsTagAsync(["bat"], null!, token));
     }
 
     /// <summary>

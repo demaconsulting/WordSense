@@ -1,4 +1,5 @@
 using System.Text;
+using DemaConsulting.WordSense;
 
 namespace WordSense.Builder;
 
@@ -9,26 +10,9 @@ namespace WordSense.Builder;
 /// <param name="Sense">The sense label.</param>
 /// <param name="Sentence">The sentence with the target word wrapped in one pair of braces.</param>
 /// <param name="Source">The name of the file the row came from, used to group reports.</param>
-internal sealed record CorpusRow(string Lemma, string Sense, string Sentence, string Source)
-{
-    /// <summary>
-    ///     Gets the sentence with the braces removed.
-    /// </summary>
-    public string PlainText => Sentence.Replace("{", string.Empty, StringComparison.Ordinal).Replace("}", string.Empty, StringComparison.Ordinal);
-
-    /// <summary>
-    ///     Gets the UTF-16 span of the target word within <see cref="PlainText"/>.
-    /// </summary>
-    public (int Start, int End) TargetSpan
-    {
-        get
-        {
-            var open = Sentence.IndexOf('{', StringComparison.Ordinal);
-            var close = Sentence.IndexOf('}', StringComparison.Ordinal);
-            return (open, close - 1);
-        }
-    }
-}
+/// <param name="Words">The words of the sentence (braces removed), as the shared text splitter produces them.</param>
+/// <param name="TargetWordIndex">The index in <paramref name="Words"/> of the braced target word.</param>
+internal sealed record CorpusRow(string Lemma, string Sense, string Sentence, string Source, IReadOnlyList<string> Words, int TargetWordIndex);
 
 /// <summary>
 ///     Reads and validates the corpus files.
@@ -110,7 +94,36 @@ internal static class Corpus
                 continue;
             }
 
-            rows.Add(new CorpusRow(lemma, sense, sentence, name));
+            // The braces mark one word of the shared word split; a target inside a hyphenated or possessive word
+            // splits that word at the braces, which BERT pre-tokenization does anyway (hyphens and apostrophes are punctuation)
+            var plain = sentence.Replace("{", string.Empty, StringComparison.Ordinal).Replace("}", string.Empty, StringComparison.Ordinal);
+            var words = TextSplitter.SplitWords(plain);
+            var end = close - 1;
+            var containing = words.FindIndex(w => w.Start <= open && end <= w.Start + w.Length);
+            if (containing < 0)
+            {
+                errors.Add($"{name}:{number}: the braced target must lie within one word.");
+                continue;
+            }
+
+            var word = words[containing];
+            var pieces = new List<string>();
+            if (open > word.Start)
+            {
+                pieces.Add(plain[word.Start..open]);
+            }
+
+            var targetIndex = containing + pieces.Count;
+            pieces.Add(plain[open..end]);
+            if (end < word.Start + word.Length)
+            {
+                pieces.Add(plain[end..(word.Start + word.Length)]);
+            }
+
+            var texts = words.Select(w => w.Text).ToList();
+            texts.RemoveAt(containing);
+            texts.InsertRange(containing, pieces);
+            rows.Add(new CorpusRow(lemma, sense, sentence, name, texts, targetIndex));
         }
 
         return (rows, errors);
