@@ -39,18 +39,29 @@ Creating a classifier from a directory without the model files fails.
 
 ### WordSense_Classifier_Holdout_MeetsAccuracyGate
 
-Every third held-out sentence of every corpus file is classified; the answered accuracy must be at
-least 96 % with at least 85 % coverage over more than 400 sentences.
+Every fifth held-out sentence of every corpus file is classified; the answered accuracy must be at
+least 96 % with at least 85 % coverage over more than 400 sentences. Rows whose target is an inflected form are
+classified through the forms table, so every such form must be listed there (see the forms completeness scenario
+below); an unlisted form would count as unanswered.
 
 ### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
 
 Holdout rows of lemmas that have both a noun and a verb sense are classified with the tag query; the answered
-accuracy must be at least 97 % with at least 85 % coverage (measured: 99.11 % at 92.14 % over 5,227 rows).
+accuracy must be at least 97 % with at least 85 % coverage (the build report measures 99.15 % at 91.90 % over
+the 5,383 rows of the whole holdout; the test evaluates every fifth row).
 
 ### WordSense_Classifier_Holdout_MeetsGroupGate
 
 The holdout is classified and a result counts as correct when the predicted sense's `Group` equals the gold
-sense's group (no senses share a group at present, so it equals the sense-level gate).
+sense's group (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share groups, so this gate can exceed the
+sense-level gate; the build report measures 96.47 % against 96.36 % over the whole holdout).
+
+### WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
+
+Every braced target word of every anchor, holdout and real-text row (lowercased, curly apostrophe normalized, with
+the possessive fallback of the classifier) must resolve through the embedded forms table to the lemma of its row.
+The only exception is the plural `rows` of the lemma `row`, because `rows` is itself a trained lemma. The test
+fails with the list of missing forms, which are then added to `corpus/forms/speech.tsv` and the table rebuilt.
 
 ### WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
 

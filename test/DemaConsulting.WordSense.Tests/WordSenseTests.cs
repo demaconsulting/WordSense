@@ -219,6 +219,59 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     Forms completeness: every braced target word of every anchor, holdout and real-text row must resolve
+    ///     through the embedded forms table (with the possessive fallback of the classifier) to the lemma of its row.
+    ///     The single documented exception is the plural <c>rows</c>, which is itself a trained lemma and therefore
+    ///     cannot also map to the lemma <c>row</c>.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma()
+    {
+        var root = ModelAssets.RequireRepositoryRoot();
+        var table = WordSenseTable.LoadEmbedded();
+        var failures = new SortedSet<string>(StringComparer.Ordinal);
+        var checkedRows = 0;
+        foreach (var directory in new[] { "anchors", "holdout", "realtext" })
+        {
+            foreach (var file in Directory.GetFiles(Path.Combine(root, "corpus", directory), "*.tsv"))
+            {
+                var lines = await File.ReadAllLinesAsync(file, TestContext.Current.CancellationToken);
+                foreach (var columns in lines.Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length >= 3))
+                {
+                    var open = columns[2].IndexOf('{', StringComparison.Ordinal);
+                    var close = columns[2].IndexOf('}', StringComparison.Ordinal);
+                    if (open < 0 || close < open)
+                    {
+                        continue;
+                    }
+
+                    var target = columns[2].Substring(open + 1, close - open - 1).ToLowerInvariant().Replace('\u2019', '\'');
+                    var lemma = columns[0];
+                    checkedRows++;
+                    if (lemma == "row" && target == "rows")
+                    {
+                        continue;
+                    }
+
+                    var resolved = table.Forms.TryGetValue(target, out var found) && found == lemma;
+                    if (!resolved && target.EndsWith("'s", StringComparison.Ordinal))
+                    {
+                        resolved = table.Forms.TryGetValue(target[..^2], out found) && found == lemma;
+                    }
+
+                    if (!resolved)
+                    {
+                        failures.Add($"{target}->{lemma}");
+                    }
+                }
+            }
+        }
+
+        Assert.True(checkedRows > 10000, "The corpus is unexpectedly small.");
+        Assert.True(failures.Count == 0, $"Targets missing from corpus/forms/speech.tsv: {string.Join(", ", failures)}.");
+    }
+
+    /// <summary>
     ///     Tag-level accuracy gate: telling noun from verb must be at least as accurate as telling the senses apart.
     ///     Rows whose gold sense carries both or neither tag are skipped.
     /// </summary>

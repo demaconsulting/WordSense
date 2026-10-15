@@ -24,16 +24,17 @@ training and are not mixed into the holdout.
 | Set | Rows | Best sense | Group | Answered | Answered accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Real text, seed and restored lemmas (`eval-seed.tsv`) | 689 | 92.16 % | 93.03 % | 86.07 % | 95.95 % |
-| LLM-written holdout, same lemmas | 1,246 | 97.59 % | 97.59 % | 94.94 % | 98.22 % |
-| Real restored-sense holdout (`real-restore.tsv`, origin `real`) | 180 | 85.00 % | 88.89 % | 67.78 % | 95.90 % |
-| LLM-written holdout, restored lemmas | 176 | 97.16 % | 97.16 % | 90.34 % | 98.74 % |
+| LLM-written holdout, same lemmas | 1,268 | 97.63 % | 97.63 % | 94.95 % | 98.26 % |
+| Real restored-sense holdout (`real-restore.tsv`, origin `real`) | 219 | 87.67 % | 90.87 % | 73.06 % | 96.88 % |
+| LLM-written holdout, restored lemmas | 181 | 97.24 % | 97.24 % | 90.06 % | 98.77 % |
 
 The restored-sense holdout file `corpus/holdout/real-restore.tsv` has 225 rows; 219 of them are real sentences and 6
-are reinstated project-written ones. Only 180 of the 219 real rows are scored: the other 39 have an inflected target
-word (`bowed`, `bowing`, `led`, `tore`, `torn`, and similar) that the shipped forms table does not map to the lemma,
-so the classifier reports no lemma for them and the evaluation skips them. For example `bow` bend-verb, whose ten
-holdout rows are all `bowed` or `bowing`, has no scored rows. The same skip applies to the 689 evaluation rows only
-where such a form occurs; none were skipped there.
+are reinstated project-written ones. All 219 real rows are scored. Before the forms table listed the inflected
+targets (`bowed`, `bowing`, `led`, `tore`, `torn`, and similar), 39 of them were skipped because the classifier
+reported no lemma; the earlier run therefore scored 180 rows (85.00 % best sense, 67.78 % answered). Adding the
+missing forms raised the scored rows to 219, the best sense to 87.67 % and the answered share to 73.06 %. The 689
+evaluation rows are unchanged (none were skipped). The guard test
+`WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma` keeps every corpus target resolvable.
 
 ## By Source
 
@@ -43,9 +44,9 @@ where such a form occurs; none were skipped there.
 | Eval / Tatoeba CC BY 2.0 FR | 326 | 92.64 % | 94.17 % | 87.42 % | 96.14 % |
 | Eval / Tatoeba CC0 | 22 | 95.45 % | 95.45 % | 100.00 % | 95.45 % |
 | Eval / UD EWT (CC BY-SA 4.0) | 5 | 100.00 % | 100.00 % | 80.00 % | 100.00 % |
-| Restored holdout / Project Gutenberg | 58 | 82.76 % | 86.21 % | 65.52 % | 94.74 % |
-| Restored holdout / Tatoeba CC BY 2.0 FR | 73 | 86.30 % | 93.15 % | 67.12 % | 95.92 % |
-| Restored holdout / Tatoeba CC0 | 6 | 83.33 % | 83.33 % | 33.33 % | 100.00 % |
+| Restored holdout / Project Gutenberg | 83 | 87.95 % | 90.36 % | 74.70 % | 96.77 % |
+| Restored holdout / Tatoeba CC BY 2.0 FR | 85 | 88.24 % | 94.12 % | 71.76 % | 96.72 % |
+| Restored holdout / Tatoeba CC0 | 8 | 87.50 % | 87.50 % | 50.00 % | 100.00 % |
 | Restored holdout / UD EWT | 2 | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
 | Restored holdout / Wikipedia (CC BY-SA 4.0) | 41 | 85.37 % | 85.37 % | 75.61 % | 96.77 % |
 
@@ -64,15 +65,16 @@ Lowest best-sense accuracy on the 689 evaluation rows (rows in parentheses):
 
 Everything else on the evaluation set is 90 % or better, and many senses are at 100 % (for example `conduct` noun,
 `contract`, `convict`, `permit`, `project`, `survey`, `use`, `wind`, `wound`). On the restored-sense holdout the
-weakest cells are `bow` bend-noun 60.00 % (5), `upsetting` noun 60.00 % (5), `close` adv 66.67 % (9) and
-`upsetting` adj 70.00 % (10); `orient`, `content` verb and `live` adv are 100 %. The full per-sense tables and the
+weakest cells are `bow` bend-noun 71.43 % (7), `upsetting` noun 60.00 % (5), `close` adv 66.67 % (9),
+`upsetting` adj 70.00 % (10), `closer` adj 70.00 % (10) and `rows` argument 50.00 % (2); `orient`, `content` verb and
+`live` adv are 100 %. The full per-sense tables and the
 error lists are produced by `real-eval`.
 
 ## Real Text Against the LLM-Written Holdout
 
-On the same 39 lemmas real text scores 5.4 points lower on best sense (92.16 % against 97.59 %) and answers 8.9
-points less often (86.07 % against 94.94 %), but when the classifier does answer it is almost as accurate (95.95 %
-against 98.22 %). The restored lemmas show the same pattern more strongly (85.00 % against 97.16 % best sense).
+On the same 39 lemmas real text scores 5.5 points lower on best sense (92.16 % against 97.63 %) and answers 8.9
+points less often (86.07 % against 94.95 %), but when the classifier does answer it is almost as accurate (95.95 %
+against 98.26 %). The restored lemmas show the same pattern more strongly (87.67 % against 97.24 % best sense).
 Reasons for the difference:
 
 - The restored lemmas (`bow`, `close`, `closer`, `lead`, `tear`, `polish`, `present`, `upsetting`) are included here.

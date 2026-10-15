@@ -57,6 +57,7 @@ sections:
           - WordSense-Tokenizer-Parity
         tests:
           - WordSense_Classifier_Holdout_MeetsAccuracyGate
+          - WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
 
       - id: WordSense-Lib-Abstain
         title: The library shall abstain instead of guessing when the decision margin of a word is too small.

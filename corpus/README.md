@@ -27,6 +27,13 @@ senses that the form can take, for example `abstracts -> abstract : noun,verb`. 
 form-to-lemma mapping for lemmas that have a trained classifier. Every label must be a sense of the trained lemma
 (from the inventory); a label without a sense is a build error.
 
+Completeness rule: every braced target word in `anchors/`, `holdout/` and `realtext/` must appear in this file (or be
+a trained lemma itself) and map to the lemma of its row, otherwise the classifier cannot find the lemma and the row
+is skipped or unanswered in the evaluations. The guard test
+`WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma` checks it. The one documented exception is the plural
+`rows` of the lemma `row`, since `rows` is a trained lemma of its own. After editing this file, rebuild the
+embedded table.
+
 ## Batch Import Rules
 
 `import-batches` treats a specified lemma without sentences as a warning (no classifier, or trained but not

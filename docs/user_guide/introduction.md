@@ -146,7 +146,7 @@ sense-group level), and 98.53 % of the answered rows are correct (90.77 % answer
 held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.12 % of the time, and
 99.15 % of the answered rows are correct (91.90 % answered). On real text (public-domain and openly licensed
 sentences that were judged blind and never used for training) the best sense is correct 92.16 % of the time
-(95.95 % of the answered rows, 86.07 % answered) on 689 sentences, against 97.59 % on the project-written
+(95.95 % of the answered rows, 86.07 % answered) on 689 sentences, against 97.63 % on the project-written
 held-out sentences of the same lemmas. The lemmas `bow`,
 `lead`, `tear`, `closer`, `upsetting`, `polish` and `orient` are supported with split senses (for example `bow`
 bend-noun and bend-verb share the group `bend`).

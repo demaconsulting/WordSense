@@ -38,7 +38,11 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   error. `PosRules` fails the build when a sense has no or more than one true part of speech (`noun`, `verb`,
   `adj`, `adv`; qualifiers `past`, `present`, `comparative`, `superlative` allowed). Labels of
   `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
-  an error, and forms of untrained lemmas are ignored.
+  an error, and forms of untrained lemmas are ignored. Every braced target word of the anchor, holdout and
+  real-text files must be listed in the forms file (or be a trained lemma) and map to the lemma of its row, because
+  the embedded form map is the only way the classifier finds a lemma; the test
+  `WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma` enforces this. The only exception is the plural
+  `rows` of the lemma `row`: `rows` is itself a trained lemma, so it cannot also map to `row`.
 - `BatchImporter.DeriveInventory` accepts only part-of-speech labels (`noun`, `verb`, `adj`, `adv`; tags = label);
   any other label marks the batch `Invalid`. The `derive-senses` command is retired.
 - `audit-export`, `audit-adjudicate`, `audit-merge`, `audit-report` and `validate-pos` run the blind
