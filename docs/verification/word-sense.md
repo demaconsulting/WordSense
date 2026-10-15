@@ -45,7 +45,17 @@ least 96 % with at least 85 % coverage over more than 400 sentences.
 ### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
 
 Holdout rows of lemmas that have both a noun and a verb sense are classified with the tag query; the answered
-accuracy must be at least 97 % with at least 85 % coverage (measured: 98.95 % at 92.29 % over 4,763 rows).
+accuracy must be at least 97 % with at least 85 % coverage (measured: 99.11 % at 92.14 % over 5,227 rows).
+
+### WordSense_Classifier_Holdout_MeetsGroupGate
+
+The holdout is classified and a result counts as correct when the predicted sense's `Group` equals the gold
+sense's group (no senses share a group at present, so it equals the sense-level gate).
+
+### WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
+
+Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, `adv` and only the qualifiers
+`past`, `present`, `comparative`, `superlative` besides.
 
 ### WordSense_Benchmark_ClassifyLatency
 

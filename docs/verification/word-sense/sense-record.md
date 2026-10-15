@@ -10,6 +10,7 @@ hand-built inputs; no model is needed.
 - **WordSense_HasTag_ReportsMembership**, **WordSense_Tags_AreImmutable**,
   **WordSense_LemmaModel_SharesOneRecordPerSense**: record behavior.
 - **SenseDefinition_IsValidTag_ChecksSyntax**, **SenseDefinition_IsValidTag_LengthLimit**: tag syntax.
+- **WordSense_Group_DefaultsToSenseAndValidates**: the group defaults to the sense label and is validated.
 - **TagScorer_Classify_BestScoringTagWins**, **..._SenseWithBothTags_TiesAndIsBelowAnyPositiveThreshold**,
   **..._SensesOfSameTag_DoNotReduceMargin**, **..._BelowThreshold_Abstains**, **..._OtherWins_ReturnsNull**,
   **..._OtherAsRunnerUp_LimitsMargin**, **..._AbsentTag_ReturnsNull_SinglePresentTag_Answers**,

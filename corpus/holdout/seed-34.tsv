@@ -6,7 +6,6 @@ record	noun	The band's debut {record} sold only two hundred copies at first.
 record	noun	Fans lined up outside the shop to buy the vinyl {record}.
 record	noun	Off the {record}, the senator admitted he had doubts.
 record	noun	Each database {record} must have a unique identifier.
-record	noun	Revenue hit a {record} high in the third quarter.
 record	noun	The court {records} show that the deed was filed in 1987.
 record	noun	Why is there no {record} of her ever having worked here?
 record	noun	Employment {records} must be kept for at least seven years under federal law.
@@ -41,24 +40,15 @@ record	verb	Please {record} your answers in the boxes provided.
 record	verb	The label wants the quartet to {record} next spring.
 present	noun	She wrapped the {present} in blue paper and tied it with twine.
 present	noun	For the {present}, we will keep prices unchanged.
-present	noun	Every member {present} voted in favor of the amendment.
 present	noun	Santa left a {present} for each child.
 present	noun	Stop worrying about the future and enjoy the {present}.
 present	noun	The birthday {presents} piled up on the kitchen table.
-present	noun	Were you {present} at the meeting when the decision was made?
-present	noun	At the {present} time, no further information is available.
-present	noun	Carbon dioxide is {present} in small amounts in the atmosphere.
 present	noun	What did you get her as a wedding {present}?
-present	noun	The {present} tense describes habitual actions in English.
-present	noun	Only two witnesses were {present} in the courtroom.
 present	noun	The novel moves between the past and the {present} in alternating chapters.
 present	noun	A thoughtful {present} doesn't have to be expensive.
-present	noun	Anyone {present} at the scene is asked to contact detectives.
 present	noun	Up to the {present}, the team has lost no home games.
 present	noun	He opened his {presents} one by one, saving the biggest for last.
-present	noun	All the directors were {present} at the annual vote.
 present	noun	Holiday {presents} can be returned within ninety days with a receipt.
-present	noun	The traces of arsenic {present} in the sample were tiny.
 present	verb	She will {present} the findings at Thursday's conference.
 present	verb	The mayor will {present} the award to the winning team.
 present	verb	Please {present} your ticket at the door.
@@ -824,7 +814,6 @@ content	adj	He was never {content} with second place.
 content	adj	After dinner, the children were {content} to play quietly.
 content	adj	Make sure you stay {content} with what you have.
 content	adj	The baby, finally fed, was happy and {content}.
-content	adj	We'll have to {content} ourselves with a draw.
 content	adj	Are you {content} to leave things as they are?
 content	adj	They lived a {content} life in a small village.
 content	adj	Nobody was {content} with the new schedule.
@@ -833,7 +822,6 @@ content	adj	For now, I'm {content} to wait.
 content	adj	The old farmer, quite {content} with his lot, rarely traveled.
 content	adj	Why can't you just be {content}?
 content	adj	I could be {content} with a quiet life by the sea.
-content	adj	She will {content} herself with watching from the sidelines.
 content	adj	The audience left less than {content}.
 content	adj	Few workers are {content} with a freeze on pay.
 content	adj	The dog lay {content} at his feet.
@@ -899,19 +887,16 @@ live	verb	Do you think people can {live} on Mars someday?
 live	verb	They moved so they could {live} nearer to the sea.
 live	verb	He {lives}, as far as I know, with his aunt.
 live	verb	Frogs {live} in the pond behind the school.
-live	adj	The concert will be broadcast {live} tonight.
 live	adj	Don't touch that {live} wire.
 live	adj	We have a {live} band on Saturdays.
 live	adj	Handle {live} ammunition with extreme care.
 live	adj	The network airs {live} coverage of the parade.
-live	adj	Fish are sold {live} at the market.
 live	adj	She prefers {live} music to studio albums.
 live	adj	A {live} audience of five hundred cheered.
 live	adj	Two {live} rounds were found in the drawer.
 live	adj	The tank holds {live} lobsters.
 live	adj	The show goes {live} at nine.
 live	adj	A {live} grenade was discovered in the field.
-live	adj	Watch the game {live} on the app.
 live	adj	Keep away from {live} electrical cables.
 live	adj	The theater offers {live} performances every night.
 live	adj	The {live} version of the song is better.
@@ -941,20 +926,15 @@ close	verb	Please {close} and lock the gate after you.
 close	adj	The two brothers are very {close}.
 close	adj	The race was too {close} to call.
 close	adj	That was a {close} call.
-close	adj	Stay {close} to me in the crowd.
 close	adj	The restaurant is {close} to the station.
 close	adj	The election was a {close} contest.
-close	adj	Don't stand so {close} to the edge.
 close	adj	She kept a {close} watch on the oven.
 close	adj	We're a {close} family.
 close	adj	Take a {close} look at the second photo.
-close	adj	He sat {close} to the fire to get warm.
-close	adj	The cat crept {close} to the bird.
 close	adj	A {close} friend lent us the money.
 close	adj	It's a {close} fit; the sofa barely goes through the door.
 close	adj	Police are keeping {close} tabs on the suspect.
 close	adj	The air was hot and {close} in the little attic.
-close	adj	The shot landed {close} to the pin.
 close	adj	The two candidates are running a {close} race.
 close	adj	Pay {close} attention to the instructions.
 close	adj	Their offices are {close} enough to walk.
@@ -998,7 +978,6 @@ separate	adj	We took {separate} cars to the airport.
 separate	adj	The company has {separate} divisions in Asia and Europe.
 separate	adj	Whites should be washed in a {separate} load.
 invalid	noun	The {invalid} spent his days in a wheelchair by the window.
-invalid	noun	She nursed her {invalid} mother for ten years.
 invalid	noun	The sanatorium cared for {invalids} from across the country.
 invalid	noun	Victorian novels are full of frail {invalids} on sofas.
 invalid	noun	He treated her like an {invalid} after the surgery.
@@ -1036,45 +1015,6 @@ invalid	adj	If the address is {invalid}, the email will bounce.
 invalid	adj	The entire experiment was rendered {invalid} by the contamination.
 invalid	adj	Ballots with stray marks are considered {invalid}.
 invalid	adj	The card was declined as {invalid}.
-lead	guide	She will {lead} the team into the finals.
-lead	guide	Follow me; I'll {lead} the way.
-lead	guide	The Tigers took the {lead} in the ninth inning.
-lead	guide	Which candidate will {lead} the party?
-lead	guide	A good manager can {lead} by example.
-lead	guide	The detective followed every {lead} in the case.
-lead	guide	Roads {lead} to the village from three directions.
-lead	guide	He {leads} a double life.
-lead	guide	Smoking can {lead} to serious health problems.
-lead	guide	The guide will {lead} us through the cave.
-lead	guide	The Giants hold a three-game {lead} in the division.
-lead	guide	Does this path {lead} to the lake?
-lead	guide	Who is going to {lead} the meeting?
-lead	guide	Teachers {lead} children through the morning routine.
-lead	guide	The tip gave police a strong {lead}.
-lead	guide	She {leads} the choir, I believe, every Sunday.
-lead	guide	Their early {lead} evaporated in the second half.
-lead	guide	A trail of crumbs would {lead} him home.
-lead	metal	The pipes were made of {lead}.
-lead	metal	{Lead} paint was banned in homes in 1978.
-lead	metal	Fishing weights are often made from {lead}.
-lead	metal	Tests found high levels of {lead} in the drinking water.
-lead	metal	{Lead} is a heavy, soft metal.
-lead	metal	The roof was covered with sheets of {lead}.
-lead	metal	Children exposed to {lead} may suffer developmental delays.
-lead	metal	Radiation shields are lined with {lead}.
-lead	metal	Hunters are switching from {lead} shot to steel.
-lead	metal	Alchemists tried to turn {lead} into gold.
-lead	metal	The stained glass is held together by strips of {lead}.
-lead	metal	The soil near the old smelter was contaminated with {lead}.
-lead	metal	A {lead} apron protects patients during X-rays.
-lead	metal	The {lead} level in the paint was far above the legal limit.
-lead	metal	Car batteries contain {lead} and sulfuric acid.
-lead	metal	The statue was cast from {lead} and tin.
-lead	metal	Mining for {lead} began here in Roman times.
-lead	metal	Gasoline once contained {lead} to boost performance.
-lead	metal	Pipes made of {lead} were common in old plumbing.
-lead	metal	A heavy {lead} weight pulled the line to the bottom.
-lead	metal	Elements such as tin and {lead} are in the same group.
 wind	noun	A strong {wind} knocked down several trees.
 wind	noun	Sailors hoped for a favorable {wind}.
 wind	noun	Gusts of {wind} reached sixty miles an hour.
@@ -1114,44 +1054,6 @@ wind	verb	Kids love to {wind} the toy until it jumps.
 wind	verb	The stream will {wind} lazily through the meadow.
 wind	verb	He had to {wind} the handle forty times.
 wind	verb	The tour will {wind} through the old town.
-tear	drop	{Tears} streamed down the boy's face.
-tear	drop	The sad ending brought {tears} to my eyes.
-tear	drop	She burst into {tears} when she heard the news.
-tear	drop	Eyes fill with {tears} when you chop onions.
-tear	drop	A {tear} glistened on the old man's lashes.
-tear	drop	Grief left her with no {tears} left to cry.
-tear	drop	The baby's {tears} dried as soon as he was picked up.
-tear	drop	He fought back {tears} at the funeral.
-tear	drop	Happy {tears} flowed at the reunion.
-tear	drop	A silent {tear} fell onto the letter.
-tear	drop	She dabbed her {tears} with a napkin.
-tear	drop	The crowd was in {tears} when the song ended.
-tear	drop	Her voice cracked and a {tear} escaped.
-tear	drop	Crocodile {tears} fooled nobody.
-tear	drop	Salty {tears} blurred his vision.
-tear	drop	The movie left half the theater in {tears}.
-tear	drop	Not a {tear} was shed at the sale.
-tear	drop	The soldier brushed away a {tear}.
-tear	rip	There's a {tear} in my jacket.
-tear	rip	Fabric can {tear} if pulled too hard.
-tear	rip	She had to {tear} open the package.
-tear	rip	The storm could {tear} the tent from its stakes.
-tear	rip	A small {tear} in the sail slowed the boat.
-tear	rip	Athletes can {tear} a ligament in a bad fall.
-tear	rip	He found a {tear} in the lining of his coat.
-tear	rip	Don't {tear} the page out of the library book.
-tear	rip	Floodwaters will {tear} the old bridge apart.
-tear	rip	The cat likes to {tear} at the curtains.
-tear	rip	Patch the {tear} before it gets bigger.
-tear	rip	Dogs {tear} through a pillow in seconds.
-tear	rip	The surgeon repaired the {tear} in his rotator cuff.
-tear	rip	I think you'll {tear} the seam if you bend that far.
-tear	rip	Heavy trucks {tear} up the road surface.
-tear	rip	A long {tear} ran down the poster.
-tear	rip	Scissors work better than trying to {tear} the fabric.
-tear	rip	A sharp edge can {tear} the plastic.
-tear	rip	The cartilage {tears} easily under pressure.
-tear	rip	She would {tear} the letter to shreds.
 wound	injury	The {wound} healed slowly.
 wound	injury	He pressed a towel against the {wound}.
 wound	injury	The nurse cleaned the deep {wound}.
@@ -1189,45 +1091,6 @@ wound	past	The stream {wound} between mossy rocks.
 wound	past	The tour guide {wound} her way through the crowd.
 wound	past	He {wound} the toy and set it on the floor.
 wound	past	Smoke {wound} upward from the chimney.
-bow	weapon	He drew the {bow} and let the arrow fly.
-bow	weapon	The violinist raised her {bow}.
-bow	weapon	Hunters favor a compound {bow}.
-bow	weapon	The gift was topped with a gold {bow}.
-bow	weapon	He rosined the {bow} before the concert.
-bow	weapon	Robin Hood was a master of the {bow}.
-bow	weapon	A bright ribbon {bow} adorned the package.
-bow	weapon	The cellist's {bow} slid across the strings.
-bow	weapon	Olympic archers shoot a recurve {bow}.
-bow	weapon	She wore a black velvet {bow} at her collar.
-bow	weapon	The museum displays ancient {bows} and quivers.
-bow	weapon	He wore a {bow} tie to the wedding.
-bow	weapon	A hair {bow} came untied.
-bow	weapon	String the {bow} before you shoot.
-bow	weapon	The archer's {bow} snapped with a sharp crack.
-bow	weapon	Horsehair stretches along the length of the {bow}.
-bow	weapon	The little girl's dress had a big satin {bow}.
-bow	weapon	She tied her shoelaces in a double {bow}.
-bow	weapon	Hunters have taken deer with a {bow} for centuries.
-bow	bend	The actors will {bow} at the end of the show.
-bow	bend	Students {bow} to their teacher in the dojo.
-bow	bend	The waves crashed over the {bow} of the ship.
-bow	bend	He had to {bow} to pressure from the board.
-bow	bend	She made a deep {bow} to the audience.
-bow	bend	Branches {bow} under heavy snow.
-bow	bend	At the front of the boat, the {bow} sliced through the swell.
-bow	bend	Visitors {bow} on entering the temple.
-bow	bend	The knight gave a stiff {bow} to the queen.
-bow	bend	Please {bow} your heads in silence.
-bow	bend	The pianist stood and took a {bow}.
-bow	bend	The sailor stood at the {bow}, scanning for rocks.
-bow	bend	The old oak will {bow} before the storm.
-bow	bend	The champion would never {bow} to an opponent.
-bow	bend	The ship's {bow} was damaged in the collision.
-bow	bend	Dancers {bow} to one another before the first step.
-bow	bend	The captain, after a pause, gave a slight {bow}.
-bow	bend	We will not {bow} to threats.
-bow	bend	A low {bow} is customary in this culture.
-bow	bend	Rough seas lifted the {bow} high out of the water.
 row	argument	The couple had a loud {row} over money.
 row	argument	A {row} broke out in parliament.
 row	argument	The neighbors had another {row} last night.
@@ -1239,13 +1102,11 @@ row	argument	A public {row} between the two directors made headlines.
 row	argument	We never have a {row} about chores.
 row	argument	The brothers had a stand-up {row} at the wedding.
 row	argument	A bitter {row} erupted between the club and its coach.
-row	argument	They {row} constantly about politics.
 row	argument	The {row} left a lasting rift in the family.
 row	argument	After a furious {row}, she left for good.
 row	argument	Britain's tabloids covered the royal {row} for weeks.
 row	argument	The two senators' {row} spilled onto television.
 row	argument	There was a heated {row} at the meeting about the rent.
-row	argument	They always {row} over who gets the remote.
 row	argument	A {row} over the bill ended the dinner.
 row	argument	Their {row} was over almost nothing.
 row	line	They sat in the front {row} at the concert.
@@ -1331,13 +1192,11 @@ read	past	I {read} that article yesterday.
 read	past	She {read} the whole book in one night.
 read	past	He {read} the letter twice before replying.
 read	past	Last week we {read} about the flood.
-read	past	They {read} the terms aloud.
 read	past	When I was young, I {read} everything I could find.
 read	past	Yesterday he {read} the report and sent comments.
 read	past	She {read} to the children every evening that summer.
 read	past	The judge {read} the verdict aloud.
 read	past	We {read} that poem in class last spring.
-read	past	I {read} somewhere that honey never spoils.
 read	past	He {read} the label carefully, then put the jar back.
 read	past	Mom {read} us a story before bed last night.
 read	past	After the announcement, she {read} the email again.

@@ -18,7 +18,7 @@ internal sealed record BatchResult(int Batch, string Status, string Detail, IRea
 ///     A batch is a pair of files, <c>anchors/batchN.tsv</c> and <c>holdout/batchN.tsv</c>, plus an
 ///     optional specification <c>batches/batchN.tsv</c> (<c>lemma</c> and comma-separated <c>labels</c>).
 ///     The import also writes the batch's sense inventory <c>senses/speech-batchN.tsv</c>, with tags derived
-///     by <see cref="SenseTagDerivation"/>; a label without a derivation rule makes the batch invalid.
+///     with part-of-speech tags (the label); a label that is not a part of speech makes the batch invalid.
 ///     Lemma-level absence (a specified lemma without sentences) is a warning: the lemma is left out.
 ///     Row-level errors (bad format, unknown lemma, disallowed label, duplicate sentence, anchor/holdout
 ///     overlap) drop only the offending rows, provided they are few (at most <see cref="MaxDroppedShare"/>
@@ -108,7 +108,7 @@ internal static class BatchImporter
             Corpus.EnsureDisjoint(anchors, holdout);
 
             // Derive the inventory first so an unmapped label rejects the batch before anything is written
-            var inventory = SenseTagDerivation.DeriveFiles(anchors);
+            var inventory = DeriveInventory(anchors);
             WriteRows(anchorTarget, anchors);
             WriteRows(holdoutTarget, holdout);
             SenseInventory.WriteFile(Path.Combine(corpus, "senses", target), inventory.Values.SelectMany(v => v));
@@ -119,6 +119,41 @@ internal static class BatchImporter
         {
             return new BatchResult(batch, "Invalid", ex.Message);
         }
+    }
+
+    /// <summary>
+    ///     Derives the inventory rows of a batch from its anchors. Only part-of-speech labels
+    ///     (noun, verb, adj, adv) can be imported; any other sense needs an authored inventory entry.
+    /// </summary>
+    /// <param name="anchors">The anchor rows of the batch.</param>
+    /// <returns>The inventory rows by source file name.</returns>
+    /// <exception cref="InvalidDataException">Thrown for a label that is not a part of speech.</exception>
+    private static SortedDictionary<string, List<InventoryRow>> DeriveInventory(IEnumerable<CorpusRow> anchors)
+    {
+        var files = new SortedDictionary<string, List<InventoryRow>>(StringComparer.Ordinal);
+        var emitted = new HashSet<(string, string)>();
+        foreach (var row in anchors.Where(r => emitted.Add((r.Lemma, r.Sense))))
+        {
+            if (!PosRules.PartsOfSpeech.Contains(row.Sense))
+            {
+                throw new InvalidDataException(
+                    $"Sense label '{row.Sense}' (lemma '{row.Lemma}') is not a part of speech; add the sense to the sense inventory by hand with true part-of-speech tags.");
+            }
+
+            if (!files.TryGetValue(row.Source, out var list))
+            {
+                files[row.Source] = list = [];
+            }
+
+            list.Add(new InventoryRow(row.Lemma, row.Sense, [row.Sense], row.Source));
+        }
+
+        foreach (var list in files.Values)
+        {
+            list.Sort((a, b) => a.Lemma == b.Lemma ? string.CompareOrdinal(a.Sense, b.Sense) : string.CompareOrdinal(a.Lemma, b.Lemma));
+        }
+
+        return files;
     }
 
     /// <summary>

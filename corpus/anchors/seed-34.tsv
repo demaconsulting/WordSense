@@ -7,7 +7,6 @@ record	noun	The team broke the school {record} last Saturday.
 record	noun	That {record} is scratched and skips in the middle.
 record	noun	A written {record} of the meeting was sent to everyone.
 record	noun	Her medical {record} lists two allergies.
-record	noun	{Record} sales rose sharply during the holiday season.
 record	noun	He holds the world {record} in the high jump.
 record	noun	The company kept {records} in a locked cabinet in the basement.
 record	noun	For the {record}, I never agreed to that plan.
@@ -31,21 +30,13 @@ present	noun	The {present} is all we really have, so enjoy it.
 present	noun	He gave his mother a lovely {present} for her birthday.
 present	noun	Birthday {presents} covered the whole kitchen table.
 present	noun	At {present}, the shop is shut for repairs.
-present	noun	{Present} and future needs must both be considered by the board.
 present	noun	This {present} from my aunt is the best one I got.
 present	noun	In the {present}, most people carry a phone everywhere.
 present	noun	The children opened their {presents} on the morning of the holiday.
 present	noun	A thoughtful {present} does not need to be expensive.
 present	noun	Up to the {present}, sales have been slow this year.
 present	noun	Every guest brought a small {present} for the new baby.
-present	noun	The verb is in the {present} tense in that sentence.
 present	noun	She hid the {present} in the closet until Friday.
-present	noun	Is every student {present} in class this morning?
-present	noun	The {present} owner plans to sell the house next year.
-present	noun	Everyone {present} at the meeting voted in favor.
-present	noun	Several doctors were {present} when the patient woke up.
-present	noun	Mold was {present} in the walls of the old cellar.
-present	noun	The teacher noted who was absent and who was {present}.
 present	verb	I will {present} my findings to the committee tomorrow.
 present	verb	She is going to {present} the award to the winner.
 present	verb	The mayor will {present} a plaque to the retiring teacher.
@@ -588,7 +579,6 @@ content	adj	She sat with a {content} smile on her face.
 content	adj	The farmer felt {content} after a good harvest.
 content	adj	Are you {content} with the new arrangement?
 content	adj	He was too {content} to ask for anything more.
-content	adj	You should {content} yourself with what you have.
 content	adj	The children stayed {content} all afternoon.
 content	adj	She tried to be {content} despite the rain.
 content	adj	The old man was {content} to sit and watch the birds.
@@ -666,7 +656,6 @@ close	adj	The two houses are {close} to each other.
 close	adj	She is a {close} friend of my sister.
 close	adj	That was a {close} call on the highway.
 close	adj	The race was very {close} at the finish.
-close	adj	Stand {close} to the fire and stay warm.
 close	adj	The store is too {close} to the school.
 close	adj	They share a {close} bond that lasts a lifetime.
 close	adj	The room felt hot and {close} in the summer.
@@ -675,7 +664,6 @@ close	adj	The score was {close} all night.
 close	adj	The hotel is {close} to the beach.
 close	adj	A {close} look shows tiny cracks in the wall.
 close	adj	We are very {close} to finishing the puzzle.
-close	adj	Come {close} so I can whisper a secret.
 separate	verb	Please {separate} the white clothes from the colors.
 separate	verb	The teacher will {separate} the noisy students.
 separate	verb	Oil and water will {separate} in the glass.
@@ -732,34 +720,6 @@ invalid	adj	The test result was {invalid} because of a mistake.
 invalid	adj	An {invalid} card number stopped the payment.
 invalid	adj	The deal is {invalid} without a signature.
 invalid	adj	The scientist found the data {invalid}.
-lead	guide	She will {lead} the team to victory.
-lead	guide	Please {lead} us to the exit.
-lead	guide	The dog pulled hard on its {lead}.
-lead	guide	Our team took the {lead} in the second half.
-lead	guide	Can you {lead} the group through the forest?
-lead	guide	He {leads} the choir with a gentle hand.
-lead	guide	{Lead} the horses to the stable.
-lead	guide	Do not {lead} her on if you do not care.
-lead	guide	The detective followed a promising {lead}.
-lead	guide	This road will {lead} you to the lake.
-lead	guide	She plays the {lead} in the school play.
-lead	guide	Did the guide {lead} you through the cave?
-lead	guide	Keep your dog on a {lead} in the park.
-lead	guide	The runner built a big {lead} in the last mile.
-lead	metal	Old pipes were made of {lead}.
-lead	metal	{Lead} is a heavy, soft, gray metal.
-lead	metal	The paint contained {lead}, which is a poison.
-lead	metal	The fishing line had a small {lead} weight.
-lead	metal	A sheet of {lead} blocks X-rays.
-lead	metal	The bullets were made of {lead}.
-lead	metal	Doctors tested the child for {lead} in the blood.
-lead	metal	The roof was covered with {lead} to stop leaks.
-lead	metal	Scientists found {lead} in the old water supply.
-lead	metal	The element {lead} has the symbol Pb.
-lead	metal	He melted the {lead} in a small iron pot.
-lead	metal	A {lead} apron protects the patient during scans.
-lead	metal	Batteries in old cars contain {lead}.
-lead	metal	The windows were set in thin strips of {lead}.
 wind	noun	A strong {wind} knocked down the fence.
 wind	noun	The {wind} howled around the cabin all night.
 wind	noun	She felt the cool {wind} on her face.
@@ -788,34 +748,6 @@ wind	verb	Vines {wind} around the old oak.
 wind	verb	Please {wind} up the window of the car.
 wind	verb	The snake will {wind} itself around the branch.
 wind	verb	Let us {wind} up the meeting before noon.
-tear	drop	A single {tear} rolled down her cheek.
-tear	drop	He wiped a {tear} from his eye.
-tear	drop	She burst into {tears} at the good news.
-tear	drop	The sad movie brought {tears} to my eyes.
-tear	drop	A {tear} fell onto the letter.
-tear	drop	The onions made my eyes fill with {tears}.
-tear	drop	He tried not to shed a {tear} at the farewell.
-tear	drop	{Tears} of joy filled the room.
-tear	drop	The child's face was wet with {tears}.
-tear	drop	Her voice broke and a {tear} slid down.
-tear	drop	The soldier's {tear} fell on the old photograph.
-tear	drop	She laughed until the {tears} came.
-tear	drop	A bright {tear} gleamed in his eye.
-tear	drop	They said goodbye with a {tear} and a hug.
-tear	rip	Be careful not to {tear} the paper.
-tear	rip	There is a small {tear} in my jacket.
-tear	rip	He will {tear} the old wallpaper off the wall.
-tear	rip	Did the dog {tear} your sleeve?
-tear	rip	She found a {tear} in the curtain.
-tear	rip	Do not {tear} this page out of the book.
-tear	rip	{Tear} carefully along the dotted line.
-tear	rip	Sharp thorns can {tear} your sleeves.
-tear	rip	A long {tear} ran down the sail.
-tear	rip	A hard storm may {tear} the roof off the shed.
-tear	rip	The kitten likes to {tear} the cardboard box.
-tear	rip	He {tears} open every package at once.
-tear	rip	Can you mend this {tear} in my dress?
-tear	rip	Heavy rain could {tear} the old tent.
 wound	injury	The nurse cleaned the deep {wound} on his arm.
 wound	injury	A bullet {wound} kept the soldier in the hospital.
 wound	injury	The {wound} healed slowly over several weeks.
@@ -844,34 +776,6 @@ wound	past	The boy {wound} the toy until it hummed.
 wound	past	They {wound} their way through the narrow streets.
 wound	past	She {wound} her hair into a tight bun.
 wound	past	The nurse {wound} the gauze around his hand.
-bow	weapon	The archer drew the {bow} and took aim.
-bow	weapon	She tied a red {bow} in her hair.
-bow	weapon	He rubbed the {bow} with resin before the concert.
-bow	weapon	A wooden {bow} hung on the cabin wall.
-bow	weapon	The gift had a big gold {bow} on top.
-bow	weapon	The violinist lifted her {bow} and began to play.
-bow	weapon	Hunters carried a {bow} and arrows long ago.
-bow	weapon	The little girl wore a pink {bow} on her dress.
-bow	weapon	He strung the {bow} carefully before the contest.
-bow	weapon	Robin Hood carried a long {bow} in the forest.
-bow	weapon	{Bows} and arrows were on sale at the sports shop.
-bow	weapon	She made a neat {bow} with the ribbon.
-bow	weapon	The cellist broke a string with a sharp stroke of the {bow}.
-bow	weapon	A good {bow} needs a steady hand and a keen eye.
-bow	bend	The actors will {bow} at the end of the play.
-bow	bend	Please {bow} your head during the prayer.
-bow	bend	The waves splashed over the {bow} of the ship.
-bow	bend	She {bows} politely when she meets her teacher.
-bow	bend	He had to {bow} to enter the low doorway.
-bow	bend	Do not {bow} to anyone who treats you badly.
-bow	bend	The {bow} of the boat cut through the water.
-bow	bend	The dancers {bow} to the crowd.
-bow	bend	Sailors stood at the {bow} and watched for ice.
-bow	bend	Did the knight {bow} before the queen?
-bow	bend	{Bow} to your partner before the dance begins.
-bow	bend	The old tree will {bow} under the weight of the snow.
-bow	bend	The singer took a deep {bow} after the song.
-bow	bend	The captain stood at the {bow} in the cold morning mist.
 row	argument	The neighbors had a loud {row} over the fence.
 row	argument	I had a terrible {row} with my brother last night.
 row	argument	The {row} between the two parties lasted for weeks.

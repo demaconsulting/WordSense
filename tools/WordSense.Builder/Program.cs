@@ -9,7 +9,8 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     Commands: <c>build --model DIR --corpus DIR --output FILE [--report FILE]</c> trains and writes the
 ///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
-///     <c>derive-senses --corpus DIR</c> writes the sense inventory derived from the anchors.
+///     <c>validate-pos --corpus DIR</c> checks that every sense has exactly one part of speech; the
+///     <c>audit-*</c> commands and <c>apply-relabel</c> drive the part-of-speech audit and relabel.
 /// </remarks>
 public static class Program
 {
@@ -47,8 +48,6 @@ public static class Program
                     return RunBuild(options, output);
                 case "import-batches":
                     return RunImport(options, output);
-                case "derive-senses":
-                    return RunDerive(options, output);
                 case "audit-export":
                     return RunAuditExport(options, output);
                 case "audit-adjudicate":
@@ -119,6 +118,12 @@ public static class Program
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var posErrors = PosRules.Validate(inventory);
+        if (posErrors.Count > 0)
+        {
+            throw new InvalidDataException(string.Join(Environment.NewLine, posErrors));
+        }
+
         output.WriteLine($"Corpus: {anchors.Count} anchors, {holdout.Count} holdout sentences, {inventory.Rows.Count()} senses of {inventory.LemmaCount} lemmas.");
 
         var threads = Math.Max(1, Environment.ProcessorCount / 2);
@@ -137,26 +142,6 @@ public static class Program
         if (options.TryGetValue("report", out var reportPath))
         {
             File.WriteAllText(reportPath, report, new UTF8Encoding(false));
-        }
-
-        return 0;
-    }
-
-    /// <summary>
-    ///     Writes the derived sense inventory files, one per anchor file (a one-off bootstrap command).
-    /// </summary>
-    /// <param name="options">The parsed options.</param>
-    /// <param name="output">The output writer.</param>
-    /// <returns>The exit code.</returns>
-    private static int RunDerive(Dictionary<string, string> options, TextWriter output)
-    {
-        var corpus = Require(options, "corpus");
-        var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
-        var files = SenseTagDerivation.DeriveFiles(anchors);
-        foreach (var (name, rows) in files)
-        {
-            SenseInventory.WriteFile(Path.Combine(corpus, "senses", name), rows);
-            output.WriteLine($"senses/{name}: {rows.Count} senses");
         }
 
         return 0;

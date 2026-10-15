@@ -12,7 +12,9 @@ C is final only when it is confident and matches A or B; otherwise the row is `u
 used as evidence. A blind probe of about 5 % of the accepted rows re-checks the agreement. The judge
 prompt is frozen in `corpus/audit/judge-prompt.md`. The model was not used.
 
-Pilot (chunks 008, 057, 082) and full run: judges A and B agreed on the part of speech for 15,827 of 15,864 rows (99.77 %). 15,785 rows were accepted directly, 79 went to judge C (15 resolved, 64 undecided). The blind probe re-judged 790 accepted rows (every 20th) and disagreed on 0.
+Pilot (chunks 008, 057, 082) and full run: judges A and B agreed on the part of speech for 15,827 of 15,864
+rows (99.77 %). 15,785 rows were accepted directly, 79 went to judge C (15 resolved, 64 undecided). The blind
+probe re-judged 790 accepted rows (every 20th) and disagreed on 0.
 
 ## Results
 

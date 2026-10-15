@@ -72,7 +72,6 @@ inside	adv	The children ran {inside} when it began to rain.
 inside	adv	Please come {inside} and warm up by the fire.
 inside	adv	It was freezing, so we stayed {inside} all day.
 inside	adv	The dog barked until someone let him {inside}.
-inside	adv	Is anyone still {inside} the building?
 inside	adv	He peeked {inside} but saw nothing unusual.
 inside	adv	{Inside}, the house was warm and smelled of bread.
 inside	adv	She stepped {inside} and shut the heavy door.
@@ -418,20 +417,20 @@ isolate	verb	Quickly {isolate} the infected computers from the network.
 isolate	verb	Sanctions will {isolate} the regime economically.
 isolate	verb	Chemists {isolate} the pure compound by distillation.
 isolate	verb	The software lets you {isolate} a single sound track.
-jagged	noun	The hikers climbed over {jagged} rocks along the ridge.
-jagged	noun	A {jagged} piece of glass lay on the floor.
-jagged	noun	The cliff's edge was too {jagged} to walk on safely.
-jagged	noun	Her voice cut the silence with a {jagged} edge.
-jagged	noun	{Jagged} peaks rose against the evening sky.
-jagged	noun	The saw left a {jagged} line across the board.
-jagged	noun	He had a {jagged} scar running down his arm.
-jagged	noun	The torn paper was very {jagged} along the top.
-jagged	noun	A {jagged} bolt of lightning lit up the field.
-jagged	noun	The graph's {jagged} line showed wild swings in prices.
-jagged	noun	The coastline looks {jagged} from the air.
-jagged	noun	She cut her hand on the {jagged} lid of the can.
-jagged	noun	The monster had {jagged} teeth and yellow eyes.
-jagged	noun	The mountains seemed {jagged} and cold in the moonlight.
+jagged	adj	The hikers climbed over {jagged} rocks along the ridge.
+jagged	adj	A {jagged} piece of glass lay on the floor.
+jagged	adj	The cliff's edge was too {jagged} to walk on safely.
+jagged	adj	Her voice cut the silence with a {jagged} edge.
+jagged	adj	{Jagged} peaks rose against the evening sky.
+jagged	adj	The saw left a {jagged} line across the board.
+jagged	adj	He had a {jagged} scar running down his arm.
+jagged	adj	The torn paper was very {jagged} along the top.
+jagged	adj	A {jagged} bolt of lightning lit up the field.
+jagged	adj	The graph's {jagged} line showed wild swings in prices.
+jagged	adj	The coastline looks {jagged} from the air.
+jagged	adj	She cut her hand on the {jagged} lid of the can.
+jagged	adj	The monster had {jagged} teeth and yellow eyes.
+jagged	adj	The mountains seemed {jagged} and cold in the moonlight.
 jagged	verb	The winger {jagged} left and slipped past the defender.
 jagged	verb	The road {jagged} sharply to the east before the bridge.
 jagged	verb	She {jagged} her fishing line to set the hook.
@@ -502,20 +501,20 @@ learned	verb	By noon, the whole town had {learned} the secret.
 learned	verb	I {learned} about volcanoes in science class today.
 learned	verb	He {learned} the hard way that ice is slippery.
 learned	verb	She {learned} to cook like that from her grandmother.
-legitimate	noun	The court only protects the {legitimate} claims of honest buyers.
-legitimate	noun	She was the {legitimate} heir to the throne.
-legitimate	noun	That is a {legitimate} concern for any parent.
-legitimate	noun	The company has a {legitimate} business model.
-legitimate	noun	He asked a perfectly {legitimate} question.
-legitimate	noun	Is this website {legitimate} or a scam?
-legitimate	noun	Voters judged the election to be {legitimate}.
-legitimate	noun	{Legitimate} complaints will be answered within a week.
-legitimate	noun	She had a {legitimate} reason for being late.
-legitimate	noun	The offer seemed too good to be {legitimate}.
-legitimate	noun	A {legitimate} dispute arose over the contract.
-legitimate	noun	They are the only {legitimate} dealers in the region.
-legitimate	noun	The theater is a {legitimate} stage, not a movie house.
-legitimate	noun	His {legitimate} authority was never in doubt.
+legitimate	adj	The court only protects the {legitimate} claims of honest buyers.
+legitimate	adj	She was the {legitimate} heir to the throne.
+legitimate	adj	That is a {legitimate} concern for any parent.
+legitimate	adj	The company has a {legitimate} business model.
+legitimate	adj	He asked a perfectly {legitimate} question.
+legitimate	adj	Is this website {legitimate} or a scam?
+legitimate	adj	Voters judged the election to be {legitimate}.
+legitimate	adj	{Legitimate} complaints will be answered within a week.
+legitimate	adj	She had a {legitimate} reason for being late.
+legitimate	adj	The offer seemed too good to be {legitimate}.
+legitimate	adj	A {legitimate} dispute arose over the contract.
+legitimate	adj	They are the only {legitimate} dealers in the region.
+legitimate	adj	The theater is a {legitimate} stage, not a movie house.
+legitimate	adj	His {legitimate} authority was never in doubt.
 legitimate	verb	A court ruling can {legitimate} the new government.
 legitimate	verb	Critics say the vote will only {legitimate} the regime.
 legitimate	verb	Nothing can {legitimate} such cruelty.
@@ -1084,7 +1083,6 @@ obverse	noun	The {obverse} of the bill is green.
 obverse	noun	Defeat is the {obverse} of victory.
 obverse	noun	She studied the {obverse} of the stamp under glass.
 obverse	noun	The {obverse} carries the maker's signature.
-obverse	noun	Collectors prize this coin's {obverse} design.
 obverse	noun	Failure is the {obverse} of ambition.
 obverse	noun	The {obverse} of that argument is just as sound.
 obverse	noun	The {obverse} depicts a lighthouse.
@@ -1133,7 +1131,6 @@ opiate	noun	A mild {opiate} helped him sleep through the night.
 opiate	noun	The clinic treats {opiate} addiction.
 opiate	noun	Nationalism served as an {opiate} for the crowd.
 opiate	verb	The old physician would {opiate} patients to ease their suffering.
-opiate	verb	Poets once {opiate} their senses with poppy tea.
 opiate	verb	The tincture will {opiate} the pain away.
 opiate	verb	They {opiate} the horses before the long trip.
 opiate	verb	Heavy smoke seemed to {opiate} the whole room.

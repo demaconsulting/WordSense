@@ -284,40 +284,179 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     Part-of-speech labels, descriptive labels and the lemma override derive the documented tags.
+    ///     Only part-of-speech labels can be imported; a descriptive label makes the batch invalid.
     /// </summary>
-    [Theory]
-    [InlineData("bank", "noun", "noun")]
-    [InlineData("bank", "adv", "adv")]
-    [InlineData("read", "past", "past|verb")]
-    [InlineData("read", "present", "present|verb")]
-    [InlineData("bass", "fish", "noun")]
-    [InlineData("row", "paddle", "verb")]
-    [InlineData("bow", "bend", "noun|verb")]
-    [InlineData("lead", "guide", "noun|verb")]
-    [InlineData("tear", "rip", "noun|verb")]
-    [InlineData("used", "verb", "past|verb")]
-    [InlineData("use", "verb", "verb")]
-    public void WordSenseBuilder_SenseTagDerivation_Derive_AppliesRules(string lemma, string sense, string expected)
+    [Fact]
+    public void WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged()
     {
-        Assert.Equal(expected, string.Join('|', SenseTagDerivation.Derive(lemma, sense)));
+        var corpus = PrepareCorpus();
+        Write("source/batches/batch1.tsv", "lemma\tlabels\nbank\tnoun,verb\n");
+        Write("source/anchors/batch1.tsv", Anchors("bank"));
+        Write("source/holdout/batch1.tsv", "bank\tnoun\tHold {bank} one.\n");
+
+        var result = Assert.Single(BatchImporter.Import(Path.Combine(_root, "source"), corpus, 1));
+
+        Assert.Equal("Imported", result.Status);
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        Assert.Equal(["noun"], inventory.DefinitionsOf("bank")[0].Tags);
+        Assert.Equal(["verb"], inventory.DefinitionsOf("bank")[1].Tags);
     }
 
     /// <summary>
-    ///     A label without a rule is an error, and derivation from the same anchors is deterministic.
+    ///     The part-of-speech rule needs exactly one part of speech and allows only tense and degree extras.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_SenseTagDerivation_UnmappedLabel_ThrowsAndDeriveFilesIsDeterministic()
+    public void WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags()
     {
-        Assert.Throws<InvalidDataException>(() => SenseTagDerivation.Derive("bank", "money"));
+        var inventory = new SenseInventory(
+        [
+            new InventoryRow("a", "noun", ["noun"], "s.tsv"),
+            new InventoryRow("a", "past", ["past", "verb"], "s.tsv"),
+            new InventoryRow("a", "adj", ["adj", "comparative"], "s.tsv"),
+            new InventoryRow("b", "bend", ["noun", "verb"], "s.tsv"),
+            new InventoryRow("b", "music", ["music"], "s.tsv"),
+        ]);
 
-        var rows = new[] { Row("bank", "verb", "A {bank}.", "b.tsv"), Row("bank", "noun", "B {bank}.", "a.tsv"), Row("bank", "noun", "C {bank}.", "a.tsv") };
-        var first = SenseTagDerivation.DeriveFiles(rows);
-        var second = SenseTagDerivation.DeriveFiles(rows.Reverse());
+        var errors = PosRules.Validate(inventory);
 
-        Assert.Equal(["a.tsv", "b.tsv"], first.Keys);
-        Assert.Single(first["a.tsv"]);
-        Assert.Equal(first.Keys, second.Keys);
+        Assert.Equal(3, errors.Count);
+        Assert.Contains(errors, e => e.Contains("'b/bend' must have exactly one part of speech", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("'b/music' must have exactly one part of speech", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("non part-of-speech tags: music", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     The validate-pos command succeeds for an honest inventory and fails for a stand-in tag.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Program_ValidatePos_ReportsViolations()
+    {
+        SenseInventory.WriteFile(Path.Combine(_root, "good", "senses", "a.tsv"), [new InventoryRow("bank", "noun", ["noun"], "a.tsv")]);
+        SenseInventory.WriteFile(Path.Combine(_root, "bad", "senses", "a.tsv"), [new InventoryRow("bass", "music", ["music"], "a.tsv")]);
+
+        Assert.Equal(0, Program.Run(["validate-pos", "--corpus", Path.Combine(_root, "good")], new StringWriter(), new StringWriter()));
+        var error = new StringWriter();
+        Assert.Equal(1, Program.Run(["validate-pos", "--corpus", Path.Combine(_root, "bad")], new StringWriter(), error));
+        Assert.Contains("bass/music", error.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The group column is optional: it round-trips, defaults to empty and a three-column file still reads.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional()
+    {
+        SenseInventory.WriteFile(
+            Path.Combine(_root, "grp", "x.tsv"),
+            [new InventoryRow("bow", "bend-noun", ["noun"], "x.tsv", "bend"), new InventoryRow("bow", "bend-verb", ["verb"], "x.tsv", "bend"), new InventoryRow("bow", "weapon", ["noun"], "x.tsv")]);
+        Write("grp/old.tsv", "lemma\tsense\ttags\nbank\tnoun\tnoun\nbank\tverb\tverb\n");
+
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(_root, "grp"));
+
+        Assert.Equal("bend", inventory.DefinitionsOf("bow")[0].Group);
+        Assert.Equal("bend", inventory.DefinitionsOf("bow")[1].Group);
+        Assert.Null(inventory.DefinitionsOf("bow")[2].Group);
+        Assert.Null(inventory.DefinitionsOf("bank")[0].Group);
+        Assert.StartsWith("lemma\tsense\ttags\tgroup\n", File.ReadAllText(Path.Combine(_root, "grp", "x.tsv")), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     An invalid group is rejected with the file and line.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_InvalidGroup_IsRejected()
+    {
+        Write("bad-group/a.tsv", "lemma\tsense\ttags\tgroup\nbank\tnoun\tnoun\tBad Group\n");
+
+        var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(Path.Combine(_root, "bad-group")));
+
+        Assert.Contains("a.tsv:2", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("group", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The audit resolves rows: agreement is accepted, a low-confidence or disagreeing row needs the third judge, and a low-confidence third judge leaves it undecided.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PosAudit_Resolve_FollowsTheRules()
+    {
+        var noun = new JudgeAnswer("x", "noun", "singular", "H", string.Empty);
+        var nounLow = new JudgeAnswer("x", "noun", "singular", "L", "unsure");
+        var verb = new JudgeAnswer("x", "verb", "base", "H", string.Empty);
+        var other = new JudgeAnswer("x", "other", "none", "H", "proper noun");
+
+        Assert.Equal("agree", PosAudit.Resolve(noun, noun, null).Resolution);
+        Assert.True(PosAudit.AutoAccept(noun, noun));
+        Assert.False(PosAudit.AutoAccept(noun, nounLow));
+        Assert.False(PosAudit.AutoAccept(other, other));
+        Assert.Equal(("verb", "adjudicated"), (PosAudit.Resolve(noun, verb, verb).Pos, PosAudit.Resolve(noun, verb, verb).Resolution));
+        Assert.Equal(PosAudit.Undecided, PosAudit.Resolve(noun, verb, other).Resolution);
+        Assert.Equal(PosAudit.Undecided, PosAudit.Resolve(noun, nounLow, new JudgeAnswer("x", "noun", "singular", "L", "still unsure")).Resolution);
+    }
+
+    /// <summary>
+    ///     The row id is stable and depends on the lemma and the sentence.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PosAudit_RowId_IsStable()
+    {
+        Assert.Equal(PosAudit.RowId("bank", "A {bank}."), PosAudit.RowId("bank", "A {bank}."));
+        Assert.NotEqual(PosAudit.RowId("bank", "A {bank}."), PosAudit.RowId("bank", "B {bank}."));
+        Assert.Equal(12, PosAudit.RowId("bank", "A {bank}.").Length);
+    }
+
+    /// <summary>
+    ///     The relabel retags a uniformly mis-tagged sense, drops noise and undecided rows, excludes senses and lemmas that fall below the floors,
+    ///     rewrites the forms and refuses to run twice.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes()
+    {
+        var corpus = Path.Combine(_root, "rel");
+        var audit = new StringBuilder("id\tlemma\tsense\tsplit\ta_pos\ta_form\ta_conf\tb_pos\tb_form\tb_conf\tc_pos\tc_form\tc_conf\tfinal_pos\tfinal_form\tfinal_conf\tresolution\n");
+        var anchors = new StringBuilder();
+        var holdout = new StringBuilder();
+        void Add(string lemma, string sense, string kind, int n, string pos, string resolution = "agree")
+        {
+            for (var i = 0; i < n; i++)
+            {
+                var sentence = $"Sentence {lemma} {sense} {kind} {pos} {i} with {{{lemma}}}.";
+                audit.Append(string.Join('\t', PosAudit.RowId(lemma, sentence), lemma, sense, kind, pos, "x", "H", pos, "x", "H", "-", "-", "-", pos, "x", "H", resolution)).Append('\n');
+                (kind == "anchors" ? anchors : holdout).Append(lemma).Append('\t').Append(sense).Append('\t').Append(sentence).Append('\n');
+            }
+        }
+
+        Add("clever", "noun", "anchors", 14, "adj");
+        Add("clever", "verb", "anchors", 14, "verb");
+        Add("fine", "adj", "anchors", 14, "adj");
+        Add("fine", "adj", "anchors", 1, "noun");
+        Add("fine", "verb", "anchors", 14, "verb");
+        Add("fine", "verb", "holdout", 1, "verb", PosAudit.Undecided);
+        Add("bow", "bend", "anchors", 5, "noun");
+        Add("bow", "bend", "anchors", 9, "verb");
+        Add("bow", "weapon", "anchors", 14, "noun");
+        Write("rel/audit/pos-audit.tsv", audit.ToString());
+        Write("rel/anchors/a.tsv", anchors.ToString());
+        Write("rel/holdout/a.tsv", holdout.ToString());
+        Write("rel/senses/a.tsv", "lemma\tsense\ttags\nbow\tbend\tnoun|verb\nbow\tweapon\tnoun\nclever\tnoun\tnoun\nclever\tverb\tverb\nfine\tadj\tadj\nfine\tverb\tverb\n");
+        Write("rel/forms/speech.tsv", "form\tlemma\tlabels\nbows\tbow\tbend,weapon\nclever\tclever\tnoun,verb\n");
+
+        var summary = Relabeler.Apply(corpus);
+
+        Assert.Contains("Relabeled 14 rows", summary, StringComparison.Ordinal);
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        Assert.Equal(["adj", "verb"], inventory.DefinitionsOf("clever").Select(d => d.Name));
+        Assert.Equal(["adj"], inventory.DefinitionsOf("clever")[0].Tags);
+        Assert.False(inventory.ContainsLemma("bow"));
+        Assert.Equal(28, File.ReadAllLines(Path.Combine(corpus, "anchors", "a.tsv")).Count(l => l.StartsWith("fine\t", StringComparison.Ordinal)));
+        var forms = File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv"));
+        Assert.Contains("clever\tclever\tadj,verb", forms, StringComparison.Ordinal);
+        Assert.DoesNotContain("bows", forms, StringComparison.Ordinal);
+        var decisions = File.ReadAllText(Path.Combine(corpus, "audit", "relabel-decisions.tsv"));
+        Assert.Contains("clever\tnoun\tadj", decisions, StringComparison.Ordinal);
+        Assert.Contains("bow\tbend\t-", decisions, StringComparison.Ordinal);
+        Assert.Contains("noise: noun", File.ReadAllText(Path.Combine(corpus, "audit", "dropped-rows.tsv")), StringComparison.Ordinal);
+        Assert.Throws<InvalidDataException>(() => Relabeler.Apply(corpus));
     }
 
     /// <summary>
@@ -336,7 +475,7 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("sorted", ex.Message, StringComparison.Ordinal);
         Assert.Contains("lower-case words", ex.Message, StringComparison.Ordinal);
         Assert.Contains("lemma must be lower-case", ex.Message, StringComparison.Ordinal);
-        Assert.Contains("3 tab-separated columns", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("3 or 4 tab-separated columns", ex.Message, StringComparison.Ordinal);
         Assert.Contains("b.tsv:1", ex.Message, StringComparison.Ordinal);
     }
 

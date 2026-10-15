@@ -14,6 +14,12 @@ language: en
 
 # Project-specific technical terms and tool names
 words:
+  - Relabeler
+  - retag
+  - retags
+  - retagged
+  - pastpart
+  - presentpart
   - buildmark
   - DEMA
   - Dema
@@ -54,6 +60,7 @@ words:
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:
+  - "**/audit-work/**"
   - "**/.git/**"
   - "**/node_modules/**"
   - "**/.venv/**"

@@ -7,7 +7,8 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <param name="Name">The sense label, unique within the lemma.</param>
 /// <param name="Tags">The tags: at least one, lower-case, sorted ordinally and without duplicates.</param>
-public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> Tags)
+/// <param name="Group">The group the sense belongs to, or null for a group of its own (named like the sense).</param>
+public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> Tags, string? Group = null)
 {
     /// <summary>
     ///     The longest tag, in characters.
@@ -47,6 +48,11 @@ public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> 
             {
                 throw new ArgumentException($"Sense '{Name}' has an invalid, unsorted or duplicated tag.");
             }
+        }
+
+        if (Group is not null && !IsValidTag(Group))
+        {
+            throw new ArgumentException($"Sense '{Name}' has an invalid group; use lower-case letters, digits and hyphens.");
         }
     }
 

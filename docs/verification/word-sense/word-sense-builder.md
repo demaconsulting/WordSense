@@ -18,8 +18,14 @@ table.
 - **WordSenseBuilder_BatchImporter_MissingLemmaIsWarning**, **..._DropsFewBadRows**,
   **..._RejectsBatchWithManyBadRows**, **..._ExcludesThinLemmas**: lemma-level absence is a warning, few
   bad rows are dropped, many reject the batch, and thin lemmas are excluded.
-- **WordSenseBuilder_BatchImporter_WritesDerivedInventory**, **..._UnmappedLabel_IsInvalid**,
-  **WordSenseBuilder_SenseTagDerivation_Derive_AppliesRules**, **..._UnmappedLabel_ThrowsAndDeriveFilesIsDeterministic**,
+- **WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged**, **..._WritesDerivedInventory**,
+  **..._UnmappedLabel_IsInvalid**,
+  **WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags**,
+  **WordSenseBuilder_Program_ValidatePos_ReportsViolations**,
+  **WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional**, **..._InvalidGroup_IsRejected**,
+  **WordSenseBuilder_PosAudit_Resolve_FollowsTheRules**, **..._RowId_IsStable**,
+  **WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes**: part-of-speech tags only, group column,
+  audit resolution and relabeling.
   **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
   **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
   **WordSenseBuilder_TagEvaluator_CountsRowsPerRule**: inventory derivation, validation in both directions and

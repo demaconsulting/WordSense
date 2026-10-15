@@ -8,8 +8,10 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
 
 ## Data Model
 
-- `WordSense`: sealed record with `Lemma`, `Sense` and `Tags` (a frozen, interned
-  `IReadOnlySet<string>`). `HasTag(tag)` tests membership. One instance exists per (lemma, sense), created
+- `WordSense`: sealed record with `Lemma`, `Sense`, `Tags` (a frozen, interned
+  `IReadOnlySet<string>`) and `Group` (never null; defaults to the sense label; senses split from one
+  mixed-part-of-speech sense share a group). Tags are true parts of speech plus qualifiers; a sense has one
+  part of speech. `HasTag(tag)` tests membership. One instance exists per (lemma, sense), created
   when the table is loaded, so callers may compare by reference or by value.
 - `SenseDefinition`: a sense label with its tags (1 to 16, ascending, no duplicates) as stored in the table. A
   tag starts with a lower-case ASCII letter, followed by lower-case letters, digits or `-`, at most 32

@@ -41,14 +41,22 @@ sentences are trained but not evaluated (30 lemmas).
 
 ## Sense Inventory
 
-`senses/*.tsv` has the header `lemma`, `sense`, `tags` (tab-separated); `tags` is a `|`-separated,
-ordinal-sorted list. The
-inventory must list exactly the senses used by the anchors: an anchor label missing from the inventory, or an inventory
-sense without anchors, fails the build. `dotnet run --project tools/WordSense.Builder -- derive-senses --corpus corpus`
-regenerates the files from the anchor labels with fixed rules: `noun`, `verb`, `adj`, `adv` map to themselves;
-`past` to `past|verb`; `present` to `present|verb`; `argument`, `line`, `metal`, `music`, `fish`,
-`drop`, `injury`, `weapon` to `noun`; `paddle` to `verb`; `guide`, `bend`, `rip` to `noun|verb`. The override
-`used|verb` -> `past|verb` applies. An unmapped label is an error.
+`senses/*.tsv` has the header `lemma`, `sense`, `tags`, `group` (tab-separated; a legacy 3-column file is still
+read). `tags` is a `|`-separated, ordinal-sorted list. The optional `group` (default: the sense id) names the
+coarser group a split sense belongs to, exposed as `WordSense.Group`. The inventory must list exactly the senses
+used by the anchors: an anchor label missing from the inventory, or an inventory sense without anchors, fails the
+build.
+
+Tag rule: tags are true parts of speech (`noun`, `verb`, `adj`, `adv`) plus qualifiers (`past`, `present`,
+`comparative`, `superlative`); a sense has exactly one part of speech. A tag never stands in for a pronunciation or
+meaning. The build fails on violations (`PosRules`). The earlier `derive-senses` rules are retired.
+
+## Part-of-Speech Audit
+
+`audit/pos-audit.tsv` holds the blind two-judge audit of every anchor and holdout sentence (judge C for
+disagreements); `audit/judge-prompt.md` is the judge prompt. `apply-relabel` applied the audit once: it retagged,
+split or dropped rows and excluded senses, recording the decisions in `audit/relabel-decisions.tsv` and the dropped
+rows in `audit/dropped-rows.tsv`. See `docs/build_notes/pos-audit.md`.
 
 ## Label Reconciliation
 

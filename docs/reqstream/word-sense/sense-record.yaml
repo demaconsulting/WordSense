@@ -22,6 +22,7 @@ sections:
         tests:
           - SenseDefinition_IsValidTag_ChecksSyntax
           - SenseDefinition_IsValidTag_LengthLimit
+          - WordSense_Group_DefaultsToSenseAndValidates
 
       - id: WordSense-Sense-TagScoring
         title: The library shall score tags from sense scores so that the best sense carrying a tag represents it.

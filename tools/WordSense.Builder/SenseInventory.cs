@@ -10,20 +10,23 @@ namespace WordSense.Builder;
 /// <param name="Sense">The sense label.</param>
 /// <param name="Tags">The tags, sorted ordinally.</param>
 /// <param name="Source">The file name of the row, for messages and grouping.</param>
-internal sealed record InventoryRow(string Lemma, string Sense, IReadOnlyList<string> Tags, string Source);
+/// <param name="Group">The optional group; null or empty means the sense is its own group.</param>
+internal sealed record InventoryRow(string Lemma, string Sense, IReadOnlyList<string> Tags, string Source, string? Group = null);
 
 /// <summary>
 ///     The sense inventory: every sense of every trained lemma with its tags.
 /// </summary>
 /// <remarks>
 ///     The inventory is the authority on which senses exist and what they mean. It lives in
-///     <c>corpus/senses/*.tsv</c> (header <c>lemma</c>, <c>sense</c>, <c>tags</c>; tags separated by a
-///     pipe). The corpus must agree with it in both directions: every sense that has anchor sentences
+///     <c>corpus/senses/*.tsv</c> (header <c>lemma</c>, <c>sense</c>, <c>tags</c>, <c>group</c>; tags separated by a
+///     pipe; the group is optional and defaults to the sense label). The corpus must agree with it in both directions: every sense that has anchor sentences
 ///     needs an entry and every entry needs at least one anchor sentence.
 /// </remarks>
 internal sealed class SenseInventory
 {
-    private const string Header = "lemma\tsense\ttags";
+    private const string Header = "lemma\tsense\ttags\tgroup";
+
+    private const string LegacyHeader = "lemma\tsense\ttags";
 
     private readonly Dictionary<(string Lemma, string Sense), InventoryRow> _rows;
 
@@ -70,7 +73,7 @@ internal sealed class SenseInventory
     public SenseDefinition[] DefinitionsOf(string lemma)
     {
         return _rows.Values.Where(r => r.Lemma == lemma).OrderBy(r => r.Sense, StringComparer.Ordinal)
-            .Select(r => new SenseDefinition(r.Sense, r.Tags)).ToArray();
+            .Select(r => new SenseDefinition(r.Sense, r.Tags, string.IsNullOrEmpty(r.Group) ? null : r.Group)).ToArray();
     }
 
     /// <summary>
@@ -159,7 +162,8 @@ internal sealed class SenseInventory
         text.Append(Header).Append('\n');
         foreach (var row in rows)
         {
-            text.Append(row.Lemma).Append('\t').Append(row.Sense).Append('\t').Append(string.Join('|', row.Tags)).Append('\n');
+            text.Append(row.Lemma).Append('\t').Append(row.Sense).Append('\t').Append(string.Join('|', row.Tags))
+                .Append('\t').Append(row.Group ?? string.Empty).Append('\n');
         }
 
         File.WriteAllText(path, text.ToString(), new UTF8Encoding(false));
@@ -176,9 +180,10 @@ internal sealed class SenseInventory
     {
         var name = Path.GetFileName(path);
         var lines = File.ReadAllLines(path, new UTF8Encoding(false));
-        if (lines.Length == 0 || lines[0].TrimEnd('\r') != Header)
+        var header = lines.Length == 0 ? string.Empty : lines[0].TrimEnd('\r');
+        if (header != Header && header != LegacyHeader)
         {
-            errors.Add($"senses/{name}:1: the header must be 'lemma<TAB>sense<TAB>tags'.");
+            errors.Add($"senses/{name}:1: the header must be 'lemma<TAB>sense<TAB>tags<TAB>group'.");
             return;
         }
 
@@ -192,18 +197,23 @@ internal sealed class SenseInventory
 
             var number = i + 1;
             var columns = line.Split('\t');
-            if (columns.Length != 3)
+            if (columns.Length is not (3 or 4))
             {
-                errors.Add($"senses/{name}:{number}: expected 3 tab-separated columns but found {columns.Length}.");
+                errors.Add($"senses/{name}:{number}: expected 3 or 4 tab-separated columns but found {columns.Length}.");
                 continue;
             }
 
             var lemma = columns[0].Trim();
             var sense = columns[1].Trim();
             var tags = columns[2].Trim().Split('|');
+            var group = columns.Length == 4 ? columns[3].Trim() : string.Empty;
             if (lemma.Length == 0 || sense.Length == 0 || lemma != lemma.ToLowerInvariant())
             {
                 errors.Add($"senses/{name}:{number}: lemma must be lower-case and sense must be non-empty.");
+            }
+            else if (group.Length > 0 && !SenseDefinition.IsValidTag(group))
+            {
+                errors.Add($"senses/{name}:{number}: group must be empty or lower-case letters, digits and hyphens starting with a letter.");
             }
             else if (tags.Any(t => !SenseDefinition.IsValidTag(t)) || tags.Length > SenseDefinition.MaxTagsPerSense)
             {
@@ -219,101 +229,8 @@ internal sealed class SenseInventory
             }
             else
             {
-                rows.Add(new InventoryRow(lemma, sense, tags, name));
+                rows.Add(new InventoryRow(lemma, sense, tags, name, group.Length == 0 ? null : group));
             }
         }
-    }
-}
-
-/// <summary>
-///     Derives the tags of a sense from its label; the documented rules of the inventory.
-/// </summary>
-/// <remarks>
-///     Part-of-speech labels map to the same tag; <c>past</c> and <c>present</c> are verb forms and map
-///     to <c>past|verb</c> and <c>present|verb</c>. Descriptive labels use an explicit table; a label
-///     missing from it is an error so a new meaning is never tagged by accident. Two lemma-specific
-///     overrides apply where the label alone would mislead.
-/// </remarks>
-internal static class SenseTagDerivation
-{
-    private static readonly Dictionary<string, string[]> Rules = new(StringComparer.Ordinal)
-    {
-        ["noun"] = ["noun"],
-        ["verb"] = ["verb"],
-        ["adj"] = ["adj"],
-        ["adv"] = ["adv"],
-        ["past"] = ["past", "verb"],
-        ["present"] = ["present", "verb"],
-        ["argument"] = ["noun"],
-        ["line"] = ["noun"],
-        ["metal"] = ["noun"],
-        ["music"] = ["noun"],
-        ["fish"] = ["noun"],
-        ["drop"] = ["noun"],
-        ["injury"] = ["noun"],
-        ["weapon"] = ["noun"],
-        ["paddle"] = ["verb"],
-
-        // Mixed senses: the anchors contain both nouns and verbs
-        ["guide"] = ["noun", "verb"],
-        ["bend"] = ["noun", "verb"],
-        ["rip"] = ["noun", "verb"],
-    };
-
-    private static readonly Dictionary<(string Lemma, string Sense), string[]> Overrides = new()
-    {
-        // "used" with a plain verb label is the simple past tense ("She used the hammer")
-        [("used", "verb")] = ["past", "verb"],
-    };
-
-    /// <summary>
-    ///     Gets the tags of a sense.
-    /// </summary>
-    /// <param name="lemma">The lemma.</param>
-    /// <param name="sense">The sense label.</param>
-    /// <returns>The tags, sorted ordinally.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the label has no derivation rule.</exception>
-    public static string[] Derive(string lemma, string sense)
-    {
-        if (Overrides.TryGetValue((lemma, sense), out var tags) || Rules.TryGetValue(sense, out tags))
-        {
-            return tags;
-        }
-
-        throw new InvalidDataException(
-            $"Sense label '{sense}' (lemma '{lemma}') has no tag derivation rule; add it to the sense inventory rules.");
-    }
-
-    /// <summary>
-    ///     Derives inventory files from anchor rows, one file per anchor file.
-    /// </summary>
-    /// <param name="anchors">The anchor rows, in file order.</param>
-    /// <returns>The inventory rows per anchor file name.</returns>
-    /// <exception cref="InvalidDataException">Thrown when a label has no rule.</exception>
-    public static SortedDictionary<string, List<InventoryRow>> DeriveFiles(IEnumerable<CorpusRow> anchors)
-    {
-        var files = new SortedDictionary<string, List<InventoryRow>>(StringComparer.Ordinal);
-        var emitted = new HashSet<(string, string)>();
-        foreach (var row in anchors)
-        {
-            if (!emitted.Add((row.Lemma, row.Sense)))
-            {
-                continue;
-            }
-
-            if (!files.TryGetValue(row.Source, out var list))
-            {
-                files[row.Source] = list = [];
-            }
-
-            list.Add(new InventoryRow(row.Lemma, row.Sense, Derive(row.Lemma, row.Sense), row.Source));
-        }
-
-        foreach (var list in files.Values)
-        {
-            list.Sort((a, b) => a.Lemma == b.Lemma ? string.CompareOrdinal(a.Sense, b.Sense) : string.CompareOrdinal(a.Lemma, b.Lemma));
-        }
-
-        return files;
     }
 }

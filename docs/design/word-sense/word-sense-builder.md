@@ -2,10 +2,10 @@
 
 ## Overview
 
-`tools/WordSense.Builder` is a non-shipped console tool with two commands:
+`tools/WordSense.Builder` is a non-shipped console tool with these commands:
 `build --model DIR --corpus DIR --output FILE [--report FILE]`,
-`derive-senses --corpus DIR` and
-`import-batches --source DIR --corpus DIR [--max N]`.
+`import-batches --source DIR --corpus DIR [--max N]`, the audit commands (`audit-export`, `audit-adjudicate`,
+`audit-merge`, `audit-report`, `validate-pos`) and `apply-relabel`.
 
 ## Data Model
 
@@ -30,18 +30,22 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   are dropped the batch is `Invalid` and nothing is imported. A lemma left with fewer than two senses,
   or fewer than four anchors for a represented sense, or with holdout rows but no anchors, is excluded
   from both sets and listed. Sentences are never created or edited. Importing is idempotent.
-- A lemma classifier is trained on the senses its anchors represent only. The sense inventory
-  (`corpus/senses/*.tsv`: `lemma`, `sense`, `tags`) must list exactly the senses that the anchors use:
+- Sense inventory (`corpus/senses/*.tsv`: `lemma`, `sense`, `tags`, optional `group`) must list exactly the
+  senses that the anchors use:
   an anchor label that is not in the inventory, or an inventory sense without anchors, is a validation
-  error. Labels of `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
+  error. `PosRules` fails the build when a sense has no or more than one true part of speech (`noun`, `verb`,
+  `adj`, `adv`; qualifiers `past`, `present`, `comparative`, `superlative` allowed). Labels of
+  `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
   an error, and forms of untrained lemmas are ignored.
-- `derive-senses --corpus DIR` writes the inventory from the anchor labels with fixed rules
-  (`SenseTagDerivation`): `noun`, `verb`, `adj` and `adv` map to themselves, `past` to `past|verb`,
-  `present` to `present|verb`, noun-like labels (`argument`, `line`, `metal`, `music`, `fish`, `drop`,
-  `injury`, `weapon`) to `noun`, `paddle` to `verb`, `guide`, `bend` and `rip` to `noun|verb`; `used|verb`
-  is overridden to `past|verb`. An unmapped label is an error, so the batch importer marks such a batch
-  `Invalid`. The importer writes the derived inventory for imported batches.
-- After the sense evaluation the report lists tag-level accuracy on the holdout: noun versus verb (best
+- `BatchImporter.DeriveInventory` accepts only part-of-speech labels (`noun`, `verb`, `adj`, `adv`; tags = label);
+  any other label marks the batch `Invalid`. The `derive-senses` command is retired.
+- `audit-export`, `audit-adjudicate`, `audit-merge`, `audit-report` and `validate-pos` run the blind
+  two-judge part-of-speech audit (judge C for disagreements; `PosAudit`, `PosAuditReport`); `apply-relabel`
+  (`Relabeler`) applies it once: undecided and noise rows are dropped, a uniformly wrongly tagged sense is retagged,
+  a mixed sense is split per part of speech when each part has at least 14 anchors and 8 holdout rows (else
+  its rows are dropped and the sense excluded). Decisions and dropped rows are written under `corpus/audit/`.
+- After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level
+  accuracy on the holdout: noun versus verb (best
   tag, answered accuracy, coverage; rows of lemmas with both tags and per gold tag; mixed and untagged rows
   are excluded and counted) and has-tag accuracy per tag.
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a

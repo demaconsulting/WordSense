@@ -17,7 +17,8 @@ count, forms, and a trailing SHA-256 digest of all preceding bytes.
 `LemmaModel` kinds: binary (one weight row, two senses, margin `2|s|`) and one-versus-rest (one row
 per sense, margin between the best and the second-best score).
 
-Format version 2 adds the tag dictionary and per-sense tags; version 1 tables are rejected. Each sense becomes
+Format version 3 adds a per-sense group string (empty = the sense label) after the tag indexes; version 1 and 2
+tables are rejected. Each sense becomes
 one shared `WordSense` record when the table is read, and tag sets are interned across senses.
 
 ## Methods

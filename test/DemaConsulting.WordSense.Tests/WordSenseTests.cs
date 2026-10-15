@@ -174,6 +174,51 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     Group-level accuracy gate: a prediction counts as right when the predicted sense belongs to the group of the gold sense.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_Holdout_MeetsGroupGate()
+    {
+        using var classifier = await CreateClassifierAsync();
+        var total = 0;
+        var answered = 0;
+        var answeredCorrect = 0;
+        foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
+        {
+            var gold = classifier.GetSenses(lemma).Single(s => s.Sense == sense);
+            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target];
+
+            total++;
+            if (result is not null)
+            {
+                answered++;
+                answeredCorrect += result.Group == gold.Group ? 1 : 0;
+            }
+        }
+
+        Assert.True(total > 400, "The holdout sample is unexpectedly small.");
+        Assert.True((double)answeredCorrect / answered >= 0.96, $"Group accuracy on answered sentences was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
+        Assert.True((double)answered / total >= 0.85, $"Group coverage was {(double)answered / total:P2}.");
+    }
+
+    /// <summary>
+    ///     Part-of-speech honesty: every sense of the embedded table has exactly one part of speech and no stand-in tags.
+    /// </summary>
+    [Fact]
+    public void WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech()
+    {
+        string[] partsOfSpeech = ["adj", "adv", "noun", "verb"];
+        string[] qualifiers = ["comparative", "participle", "past", "present", "superlative"];
+        var table = WordSenseTable.LoadEmbedded();
+
+        foreach (var sense in table.Lemmas.SelectMany(l => l.Senses))
+        {
+            Assert.True(sense.Tags.Count(partsOfSpeech.Contains) == 1, $"{sense} must have exactly one part of speech but has [{string.Join(", ", sense.Tags)}].");
+            Assert.True(sense.Tags.All(t => partsOfSpeech.Contains(t) || qualifiers.Contains(t)), $"{sense} has a tag that is not a part of speech or a tense/degree qualifier.");
+        }
+    }
+
+    /// <summary>
     ///     Tag-level accuracy gate: telling noun from verb must be at least as accurate as telling the senses apart.
     ///     Rows whose gold sense carries both or neither tag are skipped.
     /// </summary>

@@ -42,14 +42,22 @@ sections:
       - id: WordSense-Builder-Inventory
         title: >-
           The builder shall require every anchor label to be a sense in the sense inventory and every inventory
-          sense to have anchors, derive inventory tags deterministically, and report tag-level accuracy.
+          sense to have anchors, accept only part-of-speech labels when deriving tags for imported batches, require
+          every sense to have exactly one true part of speech, and report sense, group and tag-level accuracy.
         tags: [unit]
         justification: |
           The inventory is the source of the tags shipped in the table; a mismatch with the anchors would
-          ship senses that cannot be predicted or labels without tags.
+          ship senses that cannot be predicted or labels without tags, and a tag that stands in for a
+          pronunciation or meaning would make tag-level answers untrue.
         tests:
-          - WordSenseBuilder_SenseTagDerivation_Derive_AppliesRules
-          - WordSenseBuilder_SenseTagDerivation_UnmappedLabel_ThrowsAndDeriveFilesIsDeterministic
+          - WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags
+          - WordSenseBuilder_Program_ValidatePos_ReportsViolations
+          - WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional
+          - WordSenseBuilder_SenseInventory_InvalidGroup_IsRejected
+          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged
+          - WordSenseBuilder_PosAudit_Resolve_FollowsTheRules
+          - WordSenseBuilder_PosAudit_RowId_IsStable
+          - WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes
           - WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows
           - WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips
           - WordSenseBuilder_SenseInventory_Validate_ChecksBothDirections

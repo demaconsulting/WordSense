@@ -112,14 +112,16 @@ internal static class TableBuilder
             }
 
             // Score the holdout and group it by source file
-            int correct = 0, answered = 0, answeredCorrect = 0, total = 0;
+            int correct = 0, answered = 0, answeredCorrect = 0, total = 0, groupCorrect = 0;
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
                 var (best, rowMargin) = model.Score(holdoutFeatures[i]);
                 var right = string.Equals(t.Senses[best].Name, row.Sense, StringComparison.Ordinal);
+                var goldIndex = Array.FindIndex(t.Senses, s => s.Name == row.Sense);
+                groupCorrect += string.Equals(model.Senses[best].Group, model.Senses[goldIndex].Group, StringComparison.Ordinal) ? 1 : 0;
                 var scores = new float[t.Senses.Length];
                 model.Scores(holdoutFeatures[i], scores);
-                tagEvaluator.Add(row.Source, model, scores, Array.FindIndex(t.Senses, s => s.Name == row.Sense), margin);
+                tagEvaluator.Add(row.Source, model, scores, goldIndex, margin);
                 var isAnswered = rowMargin >= margin;
                 total++;
                 correct += right ? 1 : 0;
@@ -130,7 +132,7 @@ internal static class TableBuilder
                     old.Total + 1, old.Correct + (right ? 1 : 0), old.Answered + (isAnswered ? 1 : 0), old.AnsweredCorrect + (isAnswered && right ? 1 : 0));
             }
 
-            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min());
+            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), groupCorrect);
             reports.Add(report);
             AddWarnings(report, t.Senses.Select(s => s.Name).ToArray(), holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }

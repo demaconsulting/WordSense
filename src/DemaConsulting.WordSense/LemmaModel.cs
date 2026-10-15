@@ -83,7 +83,7 @@ public sealed class LemmaModel
         Lemma = lemma;
 
         // Exactly one shared record per (lemma, sense), created here
-        Senses = senses.Select(s => new WordSense(lemma, s.Name, s.Tags)).ToArray();
+        Senses = senses.Select(s => new WordSense(lemma, s.Name, s.Tags, s.Group)).ToArray();
         Kind = kind;
         Weights = weights;
         Bias = bias;

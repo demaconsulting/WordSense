@@ -16,6 +16,7 @@ namespace WordSense.Builder;
 /// <param name="Margin">The abstain margin of the lemma.</param>
 /// <param name="DefaultMargin">Whether the margin is the global default rather than cross-validated.</param>
 /// <param name="MinAnchorsPerSense">The smallest number of training sentences of any sense.</param>
+/// <param name="GroupCorrect">Holdout sentences whose best sense belongs to the group of the gold sense.</param>
 internal sealed record LemmaReport(
     string Lemma,
     int AnchorCount,
@@ -25,7 +26,8 @@ internal sealed record LemmaReport(
     int AnsweredCorrect,
     float Margin,
     bool DefaultMargin,
-    int MinAnchorsPerSense)
+    int MinAnchorsPerSense,
+    int GroupCorrect)
 {
     /// <summary>
     ///     Gets the accuracy of the best sense over every holdout sentence.
@@ -76,6 +78,7 @@ internal sealed record BuildReport(
         var text = new StringBuilder();
         var overall = Overall;
         text.AppendLine(inv, $"Overall holdout: {Pct(overall.Correct, overall.Total)} best-sense accuracy over {overall.Total} sentences");
+        text.AppendLine(inv, $"Group level: {Pct(Lemmas.Sum(l => l.GroupCorrect), overall.Total)} best-group accuracy over {overall.Total} sentences (a prediction is right when the predicted sense is in the group of the gold sense)");
         text.AppendLine(inv, $"With abstention: {Pct(overall.AnsweredCorrect, overall.Answered)} accuracy at {Pct(overall.Answered, overall.Total)} coverage");
         text.AppendLine();
         text.AppendLine("Per holdout file:");

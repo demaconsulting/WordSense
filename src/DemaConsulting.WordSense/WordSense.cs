@@ -19,11 +19,13 @@ public sealed class WordSense
     /// <param name="lemma">The lemma.</param>
     /// <param name="sense">The sense label.</param>
     /// <param name="tags">The tags; already validated.</param>
-    internal WordSense(string lemma, string sense, IEnumerable<string> tags)
+    /// <param name="group">The group name, or null for a group of its own (the sense label).</param>
+    internal WordSense(string lemma, string sense, IEnumerable<string> tags, string? group = null)
     {
         Lemma = lemma;
         Sense = sense;
         Tags = tags.ToFrozenSet(StringComparer.Ordinal);
+        Group = string.IsNullOrEmpty(group) ? sense : group;
     }
 
     /// <summary>
@@ -36,6 +38,12 @@ public sealed class WordSense
     /// </summary>
     public string Sense { get; }
 
+    /// <summary>
+    ///     Gets the group of the sense: senses that share a meaning but differ in part of speech share a group
+    ///     (for example <c>bend-noun</c> and <c>bend-verb</c> in group <c>bend</c>). It is the sense label
+    ///     when the sense has no explicit group, and is never null or empty.
+    /// </summary>
+    public string Group { get; }
     /// <summary>
     ///     Gets the tags of the sense; a frozen, ordinal set that is never empty.
     /// </summary>

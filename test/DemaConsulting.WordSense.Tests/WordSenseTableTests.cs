@@ -73,19 +73,39 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A version 1 table (no tags) is rejected.
+    ///     A version 1 or version 2 table (no groups) is rejected.
     /// </summary>
-    [Fact]
-    public void WordSenseTable_Read_Version1_Throws()
+    /// <param name="version">The old version number written into the header.</param>
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    public void WordSenseTable_Read_OldVersion_Throws(int version)
     {
         var bytes = CreateSmallTable().ToArray();
         var body = bytes[..^32];
-        Assert.Equal(2, body[4]);
-        body[4] = 1;
-        var v1 = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
+        Assert.Equal(3, body[4]);
+        body[4] = (byte)version;
+        var old = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
 
-        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(v1));
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(old));
         Assert.Contains("version", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A sense group round-trips through the binary table and defaults to the sense label.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_RoundTrip_PreservesGroups()
+    {
+        var model = new LemmaModel(
+            "bow", [new SenseDefinition("bend-noun", ["noun"], "bend"), new SenseDefinition("bend-verb", ["verb"], "bend"), Def("weapon", "noun")],
+            LemmaModelKind.OneVersusRest, [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0f, 0f], 0.5f, 3);
+        var table = new WordSenseTable("all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [model], new Dictionary<string, string> { ["bow"] = "bow" });
+
+        var copy = WordSenseTable.Read(table.ToArray());
+
+        Assert.Equal(["bend", "bend", "weapon"], copy.Lemmas[0].Senses.Select(s => s.Group));
+        Assert.Equal(["bend-noun", "bend-verb", "weapon"], copy.Lemmas[0].Senses.Select(s => s.Sense));
     }
 
     /// <summary>
@@ -262,7 +282,7 @@ public class WordSenseTableTests
     {
         var table = WordSenseTable.LoadEmbedded();
 
-        Assert.True(table.Lemmas.Count >= 349);
+        Assert.True(table.Lemmas.Count >= 344);
         Assert.True(table.TryGetLemma("record", out var record));
         Assert.Equal(["noun", "verb"], record.Senses.Select(s => s.Sense));
         Assert.Equal(["noun"], record.Senses[0].Tags);

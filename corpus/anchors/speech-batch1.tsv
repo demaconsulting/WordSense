@@ -1,7 +1,6 @@
 absent	adj	The {absent} student missed the quiz on Friday.
 absent	adj	Tom was {absent} from work for three days last week.
 absent	adj	Her father seemed {absent} even when he sat at the dinner table.
-absent	adj	{Absent} a clear majority, the committee postponed the vote.
 absent	adj	An {absent} treasurer left the books in chaos.
 absent	adj	The teacher marked every {absent} child on the attendance sheet.
 absent	adj	He gave her an {absent} smile and kept staring out the window.
@@ -286,7 +285,6 @@ aggregate	noun	Road builders spread crushed {aggregate} on the base.
 aggregate	noun	The {aggregate} of all scores determines the winner.
 aggregate	noun	The mass is an {aggregate} of tiny crystals.
 aggregate	noun	Sand is a common fine {aggregate}.
-aggregate	noun	Their {aggregate} earnings exceeded a billion dollars.
 aggregate	noun	{Aggregate} of the two matches decided the tie.
 aggregate	noun	The data is shown as an {aggregate} by region.
 aggregate	noun	Coarse {aggregate} gives the mix its strength.
@@ -390,19 +388,19 @@ animate	verb	Nothing seems to {animate} him these days.
 animate	verb	The CSS rule will {animate} the button on hover.
 animate	verb	Spirit and humor {animate} her paintings.
 animate	verb	Why do they {animate} the logo in the intro?
-appropriate	noun	The {appropriate} measure was chosen from among the options.
-appropriate	noun	Choose the {appropriate} tool for the job.
-appropriate	noun	Please call the {appropriate} office for details.
-appropriate	noun	It is not the {appropriate} time to discuss it.
-appropriate	noun	He wore {appropriate} clothing for the cold.
-appropriate	noun	The speech was entirely {appropriate} for the occasion.
-appropriate	noun	Is this film {appropriate} for children?
-appropriate	noun	A more {appropriate} response would be an apology.
-appropriate	noun	Taking {appropriate} action is the manager's job.
-appropriate	noun	The comment was hardly {appropriate} at a funeral.
-appropriate	noun	Find an {appropriate} name for the new puppy.
-appropriate	noun	Use {appropriate} language in the classroom.
-appropriate	noun	The gift seemed perfectly {appropriate} for the occasion.
+appropriate	adj	The {appropriate} measure was chosen from among the options.
+appropriate	adj	Choose the {appropriate} tool for the job.
+appropriate	adj	Please call the {appropriate} office for details.
+appropriate	adj	It is not the {appropriate} time to discuss it.
+appropriate	adj	He wore {appropriate} clothing for the cold.
+appropriate	adj	The speech was entirely {appropriate} for the occasion.
+appropriate	adj	Is this film {appropriate} for children?
+appropriate	adj	A more {appropriate} response would be an apology.
+appropriate	adj	Taking {appropriate} action is the manager's job.
+appropriate	adj	The comment was hardly {appropriate} at a funeral.
+appropriate	adj	Find an {appropriate} name for the new puppy.
+appropriate	adj	Use {appropriate} language in the classroom.
+appropriate	adj	The gift seemed perfectly {appropriate} for the occasion.
 appropriate	verb	Congress will {appropriate} funds for the new bridge.
 appropriate	verb	Thieves tried to {appropriate} the artist's designs.
 appropriate	verb	The state may {appropriate} private land for a highway.
@@ -417,20 +415,20 @@ appropriate	verb	The legislature may {appropriate} money for schools.
 appropriate	verb	Some designers {appropriate} folk patterns without permission.
 appropriate	verb	The dictator tried to {appropriate} the company's assets.
 appropriate	verb	They quietly {appropriate} public land for private use.
-approximate	noun	The estimate she gave us was only {approximate}.
-approximate	noun	These are {approximate} figures, not exact counts.
-approximate	noun	Give me an {approximate} time of arrival.
-approximate	noun	The {approximate} cost is about two thousand dollars.
-approximate	noun	Her {approximate} height is five foot nine.
-approximate	noun	An {approximate} value will do for now.
-approximate	noun	The map shows the {approximate} location of the cave.
-approximate	noun	Is the weight exact or merely {approximate}?
-approximate	noun	The {approximate} age of the tree is two hundred years.
-approximate	noun	We need an {approximate} head count before lunch.
-approximate	noun	The recipe lists {approximate} baking times.
-approximate	noun	The {approximate} date is sometime in June.
-approximate	noun	These {approximate} results suffice for planning.
-approximate	noun	Only an {approximate} answer is possible.
+approximate	adj	The estimate she gave us was only {approximate}.
+approximate	adj	These are {approximate} figures, not exact counts.
+approximate	adj	Give me an {approximate} time of arrival.
+approximate	adj	The {approximate} cost is about two thousand dollars.
+approximate	adj	Her {approximate} height is five foot nine.
+approximate	adj	An {approximate} value will do for now.
+approximate	adj	The map shows the {approximate} location of the cave.
+approximate	adj	Is the weight exact or merely {approximate}?
+approximate	adj	The {approximate} age of the tree is two hundred years.
+approximate	adj	We need an {approximate} head count before lunch.
+approximate	adj	The recipe lists {approximate} baking times.
+approximate	adj	The {approximate} date is sometime in June.
+approximate	adj	These {approximate} results suffice for planning.
+approximate	adj	Only an {approximate} answer is possible.
 approximate	verb	The model will {approximate} the curve with straight lines.
 approximate	verb	We can {approximate} the area using a grid.
 approximate	verb	The robot's voice tries to {approximate} a human tone.
@@ -455,7 +453,6 @@ arithmetic	adj	The processor includes an {arithmetic} logic unit.
 arithmetic	adj	Such {arithmetic} progressions appear in many puzzles.
 arithmetic	adj	The {arithmetic} rules apply to all integers.
 arithmetic	adj	Is this {arithmetic} calculation on the board correct?
-arithmetic	adj	The test covered {arithmetic} skills for third graders.
 arithmetic	adj	An {arithmetic} overflow crashed the program.
 arithmetic	adj	The {arithmetic} geometry of the problem was elegant.
 arithmetic	adj	Use {arithmetic} shifts to divide by powers of two.
@@ -487,20 +484,20 @@ arsenic	noun	Limits on {arsenic} in drinking water are strict.
 arsenic	noun	He suspected the cook had used {arsenic}.
 arsenic	noun	Doctors once prescribed {arsenic} for skin conditions.
 arsenic	noun	Traces of {arsenic} were detected in the hair sample.
-articulate	noun	She is an {articulate} speaker who never loses her audience.
-articulate	noun	The {articulate} young lawyer impressed the jury.
-articulate	noun	He was surprisingly {articulate} for a ten-year-old.
-articulate	noun	Her {articulate} defense of the plan won over the skeptics.
-articulate	noun	An {articulate} critic can explain exactly why a film fails.
-articulate	noun	The senator is clear, calm, and highly {articulate}.
-articulate	noun	Few teenagers are as {articulate} as she is.
-articulate	noun	{Articulate} and witty, the host kept the show lively.
-articulate	noun	The {articulate} spokesman answered every hard question.
-articulate	noun	Being {articulate} helps in job interviews.
-articulate	noun	His {articulate} reply left the room silent.
-articulate	noun	The report is concise, well organized, and {articulate}.
-articulate	noun	They hired an {articulate} guide who spoke three languages.
-articulate	noun	How {articulate} was the witness under pressure?
+articulate	adj	She is an {articulate} speaker who never loses her audience.
+articulate	adj	The {articulate} young lawyer impressed the jury.
+articulate	adj	He was surprisingly {articulate} for a ten-year-old.
+articulate	adj	Her {articulate} defense of the plan won over the skeptics.
+articulate	adj	An {articulate} critic can explain exactly why a film fails.
+articulate	adj	The senator is clear, calm, and highly {articulate}.
+articulate	adj	Few teenagers are as {articulate} as she is.
+articulate	adj	{Articulate} and witty, the host kept the show lively.
+articulate	adj	The {articulate} spokesman answered every hard question.
+articulate	adj	Being {articulate} helps in job interviews.
+articulate	adj	His {articulate} reply left the room silent.
+articulate	adj	The report is concise, well organized, and {articulate}.
+articulate	adj	They hired an {articulate} guide who spoke three languages.
+articulate	adj	How {articulate} was the witness under pressure?
 articulate	verb	Can you {articulate} your concerns more clearly?
 articulate	verb	She struggled to {articulate} what she felt.
 articulate	verb	Good leaders {articulate} a clear vision for the team.
@@ -562,7 +559,6 @@ associate	noun	She works as a law firm {associate}.
 associate	noun	The police arrested the gang's known {associates}.
 associate	noun	A business {associate} of my father introduced us.
 associate	noun	The sales {associate} helped me find the right size.
-associate	noun	He became an {associate} professor in the spring.
 associate	noun	The partners promoted three junior {associates} this year.
 associate	noun	Her former {associate} refused to comment.
 associate	noun	Every {associate} must wear a name badge.
@@ -865,34 +861,6 @@ cleanly	adv	The diver entered the water {cleanly}.
 cleanly	adv	The data separates {cleanly} into two groups.
 cleanly	adv	The wound healed {cleanly} within days.
 cleanly	adv	The batter hit the pitch {cleanly} over the fence.
-closer	noun	The team's {closer} struck out the side.
-closer	noun	He signed as the new {closer} for the Yankees.
-closer	noun	The {closer} walked in from the bullpen in the ninth.
-closer	noun	She is the best {closer} on our sales team.
-closer	noun	A reliable {closer} saves games for the team.
-closer	noun	The door {closer} keeps the gate from slamming.
-closer	noun	The hotshot {closer} blew the save.
-closer	noun	The {closer} finished the deal before lunch.
-closer	noun	Their {closer} has thirty saves this season.
-closer	noun	The song's {closer} is a quiet piano piece.
-closer	noun	Every sales floor needs a strong {closer}.
-closer	noun	The manager brought in his {closer} early.
-closer	noun	A new {closer} joined the bullpen at the deadline.
-closer	noun	The album's {closer} runs nearly ten minutes.
-closer	verb	Come {closer} so I can hear you.
-closer	verb	The shore is getting {closer} every minute.
-closer	verb	We live much {closer} to the school now.
-closer	verb	A {closer} look revealed a tiny crack.
-closer	verb	The deadline grows {closer} each day.
-closer	verb	Move a little {closer} to the fire.
-closer	verb	He sat {closer} to the stage for a better view.
-closer	verb	The two sisters are {closer} than ever.
-closer	verb	Is the store {closer} than the mall?
-closer	verb	Take a {closer} look at the evidence.
-closer	verb	Step {closer}, and I'll show you the trick.
-closer	verb	The storm is moving {closer} to the coast.
-closer	verb	Our seats were no {closer} than row twenty.
-closer	verb	The soldiers crept {closer} to the camp.
 collocate	noun	"Heavy" is a common {collocate} of "rain".
 collocate	noun	The strongest {collocate} of "strong" is "tea".
 collocate	noun	Corpus tools list each {collocate} by frequency.
@@ -1168,11 +1136,10 @@ arsenic	adj	The textbook contrasts {arsenic} and arsenous acids.
 arsenic	adj	The {arsenic} state is more oxidized than the arsenous one.
 arsenic	adj	An {arsenic} salt of this kind is called an arsenate.
 arsenic	adj	The {arsenic} form of the acid is a colorless crystal.
-arsenic	adj	The fluid was an {arsenic} solution of unknown strength.
 arsenic	adj	Is this acid {arsenic} or arsenous?
 arsenic	adj	The older chemistry text describes {arsenic} acid in detail.
 arsenic	adj	The {arsenic} radical combines with oxygen readily.
-appropriate	noun	It is not the {appropriate} moment for jokes.
+appropriate	adj	It is not the {appropriate} moment for jokes.
 arsenic	adj	The {arsenic} and arsenous forms differ in their oxidation state.
 arsenic	adj	Students learned that {arsenic} acid contains five-valent arsenic.
 arsenic	adj	The reaction produced an {arsenic} compound with a higher oxygen content.

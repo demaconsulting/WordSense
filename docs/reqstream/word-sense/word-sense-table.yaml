@@ -25,7 +25,8 @@ sections:
           callers compare senses by reference.
         tests:
           - WordSenseTable_Read_SensesWithSameTag_ShareTagInstance
-          - WordSenseTable_Read_Version1_Throws
+          - WordSenseTable_Read_OldVersion_Throws
+          - WordSenseTable_RoundTrip_PreservesGroups
           - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
 
       - id: WordSense-Table-Integrity

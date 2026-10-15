@@ -56,6 +56,20 @@ public class SenseRecordTests
     }
 
     /// <summary>
+    ///     The group defaults to the sense label and an explicit group is kept; an invalid group is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSense_Group_DefaultsToSenseAndValidates()
+    {
+        Assert.Equal("weapon", new WordSense("bow", "weapon", ["noun"]).Group);
+        Assert.Equal("weapon", new WordSense("bow", "weapon", ["noun"], string.Empty).Group);
+        Assert.Equal("bend", new WordSense("bow", "bend-verb", ["verb"], "bend").Group);
+        new SenseDefinition("bend-verb", ["verb"], "bend").Validate();
+        new SenseDefinition("weapon", ["noun"]).Validate();
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("bend-verb", ["verb"], "Bend Group").Validate());
+    }
+
+    /// <summary>
     ///     Tag syntax is lower-case letters, digits and hyphens, starting with a letter.
     /// </summary>
     [Theory]

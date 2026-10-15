@@ -39,6 +39,8 @@ sections:
           - WordSense-Builder-Inventory
         tests:
           - WordSense_Classifier_Holdout_MeetsNounVerbTagGate
+          - WordSense_Classifier_Holdout_MeetsGroupGate
+          - WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
 
       - id: WordSense-Lib-Accuracy
         title: The library shall meet a held-out accuracy gate on the labeled corpus with the pinned model.

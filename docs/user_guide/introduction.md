@@ -43,8 +43,10 @@ for (var i = 0; i < words.Length; i++)
 
 The result is parallel to the input: element `i` is the `WordSense` of `words[i]`, or `null`. `null` means the word is
 not a known ambiguous word, or the classifier abstained because the evidence was weak. A `WordSense` is an immutable
-record with `Lemma`, `Sense`, `Tags` (a frozen set such as `noun`, `verb`, `past`) and `HasTag(tag)`; the same
-instance is returned for the same (lemma, sense).
+record with `Lemma`, `Sense`, `Group`, `Tags` (a frozen set of true parts of speech and qualifiers such as `noun`,
+`verb`, `adj`, `adv`, `past`) and `HasTag(tag)`; `Group` is the coarser group of the sense (the sense label unless
+senses are grouped, so a consumer that does not care about a split reads `Group`); the same
+instance is returned for the same (lemma, sense). A sense has exactly one part of speech.
 
 ## Text input
 
