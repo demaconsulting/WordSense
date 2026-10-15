@@ -50,7 +50,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     The mirror is asked first and, when it serves valid files, nothing else is contacted.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_MirrorServes_UsesOnlyMirror()
+    public async Task WordSenseModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror()
     {
         using var server = new LocalServer(ServeReal);
 
@@ -67,7 +67,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     publish in this form, falls to the GitHub LFS endpoint without ever asking Hugging Face.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_MirrorFails_FallsThroughInOrder()
+    public async Task WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder()
     {
         using var server = new LocalServer(context => context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal)
             ? LocalServer.SendAsync(context, 503, "down")
@@ -89,7 +89,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     Without a mirror, Hugging Face is tried first for files it can supply and LFS is the fallback.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_NoMirror_HuggingFaceThenLfs()
+    public async Task WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs()
     {
         using var server = new LocalServer(context => context.Request.Url!.AbsolutePath.StartsWith("/hf", StringComparison.Ordinal)
             ? LocalServer.SendAsync(context, 404, "no")
@@ -104,7 +104,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A source that serves wrong bytes is rejected, nothing is kept, and the next source is used.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad()
+    public async Task WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad()
     {
         using var server = new LocalServer(context => context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal)
             ? LocalServer.SendAsync(context, 200, "this is not the model")
@@ -121,7 +121,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     When every source fails, the exception lists each attempt and no partial file remains.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_AllSourcesFail_ThrowsWithEveryAttempt()
+    public async Task WordSenseModelDownloader_EnsureModel_AllSourcesFail_ThrowsWithEveryAttempt()
     {
         using var server = new LocalServer(context => LocalServer.SendAsync(context, 500, "broken"));
 
@@ -139,7 +139,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     An environment-configured mirror is asked first.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_MirrorFromEnvironment_IsUsedFirst()
+    public async Task WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst()
     {
         using var server = new LocalServer(ServeReal);
         var url = new Uri(server.BaseUri, "/envmirror").ToString();
@@ -155,7 +155,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A programmatic mirror wins over the environment.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_ProgrammaticMirror_BeatsEnvironment()
+    public async Task WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment()
     {
         using var server = new LocalServer(ServeReal);
         var url = new Uri(server.BaseUri, "/envmirror").ToString();
@@ -171,7 +171,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A bad environment configuration fails before any request.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_InvalidEnvironment_ThrowsBeforeRequests()
+    public async Task WordSenseModelDownloader_EnsureModel_InvalidEnvironment_ThrowsBeforeRequests()
     {
         using var server = new LocalServer(ServeReal);
 
@@ -187,7 +187,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     The bearer token goes to the mirror and never to the public sources.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_BearerToken_SentOnlyToMirror()
+    public async Task WordSenseModelDownloader_EnsureModel_BearerToken_SentOnlyToMirror()
     {
         using var server = new LocalServer(context => context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal)
             ? LocalServer.SendAsync(context, 500, "fail")
@@ -214,7 +214,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     Basic credentials are sent preemptively to the mirror.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_BasicCredentials_SentToMirror()
+    public async Task WordSenseModelDownloader_EnsureModel_BasicCredentials_SentToMirror()
     {
         using var server = new LocalServer(ServeReal);
         var mirror = new DownloadMirror(new Uri(server.BaseUri, "/mirror"), new NetworkCredential("user", "pw"));
@@ -228,7 +228,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     Valid files already in the store are reused without any request.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_AlreadyPresent_MakesNoRequests()
+    public async Task WordSenseModelDownloader_EnsureModel_AlreadyPresent_MakesNoRequests()
     {
         using var server = new LocalServer(ServeReal);
         await WordSenseModelDownloader.EnsureModelAsync(Options(server), TestContext.Current.CancellationToken);
@@ -243,7 +243,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A corrupt file in the store is replaced.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_CorruptExistingFile_IsRedownloaded()
+    public async Task WordSenseModelDownloader_EnsureModel_CorruptExistingFile_IsRedownloaded()
     {
         using var server = new LocalServer(ServeReal);
         var directory = Path.Combine(_store, WordSenseModelCatalog.DirectoryName);
@@ -259,7 +259,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A source that is too slow is abandoned and the next one is tried.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_Timeout_FallsThrough()
+    public async Task WordSenseModelDownloader_EnsureModel_Timeout_FallsThrough()
     {
         using var server = new LocalServer(async context =>
         {
@@ -290,7 +290,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     Cancelling the caller's token cancels the operation instead of falling through.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_CallerCancels_ThrowsOperationCanceled()
+    public async Task WordSenseModelDownloader_EnsureModel_CallerCancels_ThrowsOperationCanceled()
     {
         using var server = new LocalServer(async context =>
         {
@@ -307,7 +307,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     Progress is reported with the source and file names.
     /// </summary>
     [Fact]
-    public async Task EnsureModel_Progress_IsReported()
+    public async Task WordSenseModelDownloader_EnsureModel_Progress_IsReported()
     {
         using var server = new LocalServer(ServeReal);
         var reports = new List<WordSenseModelDownloadProgress>();
@@ -327,7 +327,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     A verified directory is accepted; missing or altered files are rejected.
     /// </summary>
     [Fact]
-    public void FromDirectory_ChecksEveryFile()
+    public void WordSenseModelDownloader_FromDirectory_ChecksEveryFile()
     {
         var good = WordSenseModelLocation.FromDirectory(ModelAssets.RequireModelDirectory());
         Assert.EndsWith("vocab.txt", good.VocabularyPath, StringComparison.Ordinal);
@@ -344,7 +344,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     ///     The default store lives beneath the user's local application data.
     /// </summary>
     [Fact]
-    public void DefaultStoreRoot_IsPerUser()
+    public void WordSenseModelDownloader_DefaultStoreRoot_IsPerUser()
     {
         Assert.EndsWith(Path.Combine("DemaConsulting", "WordSense", "models"), WordSenseModelLocation.DefaultStoreRoot(), StringComparison.Ordinal);
     }

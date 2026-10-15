@@ -34,7 +34,7 @@ public class WordSenseClassifierTests
     [InlineData("the bat flies.")]
     [InlineData("  The BAT   flies!!  A bat's wing\t\nends — here 😀 now.  ")]
     [InlineData("don't well-known x1 café")]
-    public async Task ClassifyAsync_Text_TokensTileInput(string text)
+    public async Task WordSenseClassifier_ClassifyAsync_Text_TokensTileInput(string text)
     {
         using var classifier = Create();
 
@@ -54,7 +54,7 @@ public class WordSenseClassifierTests
     ///     The sense depends on context and is attached only to the known word.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly()
+    public async Task WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly()
     {
         using var classifier = Create();
 
@@ -73,7 +73,7 @@ public class WordSenseClassifierTests
     ///     A sentence is encoded once, however many known words it has.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_ManyTargets_EncodesOnce()
+    public async Task WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce()
     {
         var encoder = new FakeEncoder();
         using var classifier = Create(encoder);
@@ -87,7 +87,7 @@ public class WordSenseClassifierTests
     ///     Text without known words is not encoded at all.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_NoKnownWords_DoesNotEncode()
+    public async Task WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode()
     {
         var encoder = new FakeEncoder();
         using var classifier = Create(encoder);
@@ -106,7 +106,7 @@ public class WordSenseClassifierTests
     [InlineData("the bats", 4, 4)]
     [InlineData("the bat's", 4, 5)]
     [InlineData("the bat\u2019s", 4, 5)]
-    public async Task ClassifyAsync_Span_ResolvesForms(string text, int start, int length)
+    public async Task WordSenseClassifier_ClassifyAsync_Span_ResolvesForms(string text, int start, int length)
     {
         using var classifier = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 0 });
 
@@ -121,7 +121,7 @@ public class WordSenseClassifierTests
     ///     Unknown words, empty spans and spans outside the text are handled.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_Span_EdgeCases()
+    public async Task WordSenseClassifier_ClassifyAsync_Span_EdgeCases()
     {
         using var classifier = Create();
         var token = TestContext.Current.CancellationToken;
@@ -137,7 +137,7 @@ public class WordSenseClassifierTests
     ///     A low-confidence classification yields no sense.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_LowMargin_Abstains()
+    public async Task WordSenseClassifier_ClassifyAsync_LowMargin_Abstains()
     {
         using var strict = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 10 });
         using var never = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 0 });
@@ -150,7 +150,7 @@ public class WordSenseClassifierTests
     ///     Long text is classified from a window around each target, with the same answer.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_LongText_UsesWindowPerTarget()
+    public async Task WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget()
     {
         var encoder = new FakeEncoder();
         using var classifier = Create(encoder, new WordSenseClassifierOptions { MaxSequenceLength = 8 });
@@ -166,7 +166,7 @@ public class WordSenseClassifierTests
     ///     A table trained with another model is rejected.
     /// </summary>
     [Fact]
-    public void Constructor_ModelMismatch_Throws()
+    public void WordSenseClassifier_Constructor_ModelMismatch_Throws()
     {
         var other = new FakeEncoder { Sha = new string('0', 64) };
 
@@ -178,7 +178,7 @@ public class WordSenseClassifierTests
     ///     Invalid constructor arguments and options are rejected.
     /// </summary>
     [Fact]
-    public void Constructor_InvalidArguments_Throw()
+    public void WordSenseClassifier_Constructor_InvalidArguments_Throw()
     {
         Assert.Throws<ArgumentOutOfRangeException>(() => Create(options: new WordSenseClassifierOptions { MaxSequenceLength = 4 }));
         Assert.Throws<ArgumentOutOfRangeException>(() => Create(options: new WordSenseClassifierOptions { MaxSequenceLength = 1000 }));
@@ -190,7 +190,7 @@ public class WordSenseClassifierTests
     ///     Cancellation reaches the encoder.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_Cancelled_Throws()
+    public async Task WordSenseClassifier_ClassifyAsync_Cancelled_Throws()
     {
         using var classifier = Create();
         using var cts = new CancellationTokenSource();
@@ -203,7 +203,7 @@ public class WordSenseClassifierTests
     ///     Many concurrent calls give consistent answers.
     /// </summary>
     [Fact]
-    public async Task ClassifyAsync_Concurrent_IsConsistent()
+    public async Task WordSenseClassifier_ClassifyAsync_Concurrent_IsConsistent()
     {
         using var classifier = Create();
 
@@ -220,7 +220,7 @@ public class WordSenseClassifierTests
     ///     Known lemmas and labels are exposed.
     /// </summary>
     [Fact]
-    public void KnownLemmas_And_SenseLabels_AreExposed()
+    public void WordSenseClassifier_KnownLemmas_And_SenseLabels_AreExposed()
     {
         using var classifier = Create();
 
@@ -233,7 +233,7 @@ public class WordSenseClassifierTests
     ///     Disposing disposes the encoder only when the classifier owns it.
     /// </summary>
     [Fact]
-    public void Dispose_OwnedEncoder_IsDisposed()
+    public void WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed()
     {
         var owned = new FakeEncoder();
         var borrowed = new FakeEncoder();

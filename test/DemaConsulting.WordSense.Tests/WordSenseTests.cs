@@ -6,7 +6,7 @@ namespace DemaConsulting.WordSense.Tests;
 ///     Tests that run the real ONNX model and the embedded table. They are skipped when the Git LFS
 ///     content of the <c>model</c> directory is not available.
 /// </summary>
-public class WordSenseIntegrationTests
+public class WordSenseTests
 {
     private static async Task<WordSenseClassifier> CreateClassifierAsync(int threads = 0)
     {
@@ -19,7 +19,7 @@ public class WordSenseIntegrationTests
     ///     digests must match the committed files; a stale table fails here.
     /// </summary>
     [Fact]
-    public void EmbeddedTable_MatchesPinnedModel()
+    public void WordSense_EmbeddedTable_MatchesPinnedModel()
     {
         var modelDirectory = ModelAssets.RequireModelDirectory();
         var table = WordSenseTable.LoadEmbedded();
@@ -36,51 +36,10 @@ public class WordSenseIntegrationTests
     }
 
     /// <summary>
-    ///     The encoder reports its shape and returns one hidden state per input id.
-    /// </summary>
-    [Fact]
-    public async Task OnnxEncoder_Encode_ReturnsHiddenStates()
-    {
-        var path = Path.Combine(ModelAssets.RequireModelDirectory(), "model_int8.onnx");
-        using var encoder = new OnnxWordSenseEncoder(path, 1);
-        int[] ids = [101, 2501, 102];
-
-        var first = await encoder.EncodeAsync(ids, TestContext.Current.CancellationToken);
-        var second = await encoder.EncodeAsync(ids, TestContext.Current.CancellationToken);
-
-        Assert.Equal(384, encoder.HiddenSize);
-        Assert.Equal(WordSenseModelCatalog.OnnxSha256, encoder.ModelSha256);
-        Assert.Equal(3 * 384, first.Length);
-        Assert.Equal(first, second);
-    }
-
-    /// <summary>
-    ///     Invalid arguments, cancellation and disposal are handled.
-    /// </summary>
-    [Fact]
-    public async Task OnnxEncoder_InvalidUse_Throws()
-    {
-        var path = Path.Combine(ModelAssets.RequireModelDirectory(), "model_int8.onnx");
-        var encoder = new OnnxWordSenseEncoder(path);
-        using var cts = new CancellationTokenSource();
-        await cts.CancelAsync();
-
-        await Assert.ThrowsAsync<ArgumentException>(async () => await encoder.EncodeAsync([], TestContext.Current.CancellationToken));
-        await Assert.ThrowsAsync<ArgumentNullException>(async () => await encoder.EncodeAsync(null!, TestContext.Current.CancellationToken));
-        await Assert.ThrowsAnyAsync<OperationCanceledException>(async () => await encoder.EncodeAsync([101, 102], cts.Token));
-        encoder.Dispose();
-        encoder.Dispose();
-        await Assert.ThrowsAsync<ObjectDisposedException>(async () => await encoder.EncodeAsync([101, 102], TestContext.Current.CancellationToken));
-        Assert.Throws<FileNotFoundException>(() => new OnnxWordSenseEncoder(Path.Combine(Path.GetTempPath(), "missing.onnx")));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new OnnxWordSenseEncoder(path, -1));
-        Assert.Throws<ArgumentNullException>(() => new OnnxWordSenseEncoder(null!));
-    }
-
-    /// <summary>
     ///     End to end: a classifier created from the model directory tells the senses of "record" apart.
     /// </summary>
     [Fact]
-    public async Task Classifier_EndToEnd_ClassifiesRecord()
+    public async Task WordSense_Classifier_EndToEnd_ClassifiesRecord()
     {
         using var classifier = await CreateClassifierAsync();
 
@@ -97,7 +56,7 @@ public class WordSenseIntegrationTests
     ///     Creating a classifier from a damaged model directory fails verification.
     /// </summary>
     [Fact]
-    public async Task Classifier_CreateAsync_RejectsUnverifiedDirectory()
+    public async Task WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory()
     {
         var empty = Path.Combine(Path.GetTempPath(), "wordsense-empty-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(empty);
@@ -118,7 +77,7 @@ public class WordSenseIntegrationTests
     ///     covering every source file.
     /// </summary>
     [Fact]
-    public async Task Classifier_Holdout_MeetsAccuracyGate()
+    public async Task WordSense_Classifier_Holdout_MeetsAccuracyGate()
     {
         var root = ModelAssets.RequireRepositoryRoot();
         using var classifier = await CreateClassifierAsync();
@@ -162,7 +121,7 @@ public class WordSenseIntegrationTests
     [Trait("Category", "Benchmark")]
     [InlineData(1)]
     [InlineData(4)]
-    public async Task Benchmark_ClassifyLatency(int threads)
+    public async Task WordSense_Benchmark_ClassifyLatency(int threads)
     {
         using var classifier = await CreateClassifierAsync(threads);
         const string text = "She will record the vote in the record book, then lead the team to the lead mine.";

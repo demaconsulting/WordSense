@@ -27,7 +27,7 @@ public sealed class BuilderTests : IDisposable
     ///     A well-formed row is parsed with its span and plain text.
     /// </summary>
     [Fact]
-    public void Corpus_ReadSentences_ParsesRow()
+    public void WordSenseBuilder_Corpus_ReadSentences_ParsesRow()
     {
         var path = Write("a.tsv", "bank\tmoney\tShe went to the {bank} today.\n");
         var rows = Corpus.ReadSentences(path);
@@ -47,7 +47,7 @@ public sealed class BuilderTests : IDisposable
     [InlineData("bank\tmoney\tNo target here.")]
     [InlineData("bank\tmoney\tTwo {bank} {bank}.")]
     [InlineData("bank\tmoney\tEmpty {} pair.")]
-    public void Corpus_ReadSentences_RejectsMalformedRow(string line)
+    public void WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow(string line)
     {
         var path = Write("bad.tsv", line + "\n");
         Assert.Throws<InvalidDataException>(() => Corpus.ReadSentences(path));
@@ -57,7 +57,7 @@ public sealed class BuilderTests : IDisposable
     ///     A missing directory yields no rows, and duplicates across sets are detected.
     /// </summary>
     [Fact]
-    public void Corpus_DirectoryAndDisjointness()
+    public void WordSenseBuilder_Corpus_DirectoryAndDisjointness()
     {
         Assert.Empty(Corpus.ReadDirectory(Path.Combine(_root, "none")));
         var a = new CorpusRow("bank", "money", "A {bank}.", "a.tsv");
@@ -70,7 +70,7 @@ public sealed class BuilderTests : IDisposable
     ///     The forms file is read with its header skipped.
     /// </summary>
     [Fact]
-    public void Corpus_ReadForms_ParsesLabels()
+    public void WordSenseBuilder_Corpus_ReadForms_ParsesLabels()
     {
         var path = Write("forms.tsv", "form\tlemma\tlabels\nBanks\tbank\tmoney,river\nbank\tbank\n");
         var forms = Corpus.ReadForms(path);
@@ -84,7 +84,7 @@ public sealed class BuilderTests : IDisposable
     ///     The trainer separates linearly separable data and is deterministic.
     /// </summary>
     [Fact]
-    public void LogisticTrainer_SeparatesAndIsDeterministic()
+    public void WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic()
     {
         var features = new List<float[]>();
         var labels = new List<bool>();
@@ -112,7 +112,7 @@ public sealed class BuilderTests : IDisposable
     ///     Batches are imported once, reported as missing or invalid when they are not ready, and are idempotent.
     /// </summary>
     [Fact]
-    public void BatchImporter_ImportsValidatesAndIsIdempotent()
+    public void WordSenseBuilder_BatchImporter_ImportsValidatesAndIsIdempotent()
     {
         var source = Path.Combine(_root, "source");
         var corpus = Path.Combine(_root, "corpus");
@@ -145,7 +145,7 @@ public sealed class BuilderTests : IDisposable
     [InlineData("build", "--model")]
     [InlineData("build", "--corpus", "x")]
     [InlineData("import-batches", "--source", "missing-dir", "--corpus", "missing-dir")]
-    public void Program_Run_ReportsErrors(params string[] args)
+    public void WordSenseBuilder_Program_Run_ReportsErrors(params string[] args)
     {
         using var output = new StringWriter();
         using var error = new StringWriter();

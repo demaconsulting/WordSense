@@ -28,7 +28,7 @@ public class WordSenseTableTests
     ///     Writing and reading a table reproduces every value.
     /// </summary>
     [Fact]
-    public void RoundTrip_PreservesAllValues()
+    public void WordSenseTable_RoundTrip_PreservesAllValues()
     {
         var original = CreateSmallTable();
 
@@ -50,7 +50,7 @@ public class WordSenseTableTests
     ///     Output is byte-for-byte deterministic.
     /// </summary>
     [Fact]
-    public void ToArray_CalledTwice_ReturnsIdenticalBytes()
+    public void WordSenseTable_ToArray_CalledTwice_ReturnsIdenticalBytes()
     {
         Assert.Equal(CreateSmallTable().ToArray(), CreateSmallTable().ToArray());
     }
@@ -59,7 +59,7 @@ public class WordSenseTableTests
     ///     Writing to a stream matches <see cref="WordSenseTable.ToArray"/>.
     /// </summary>
     [Fact]
-    public void Write_Stream_MatchesToArray()
+    public void WordSenseTable_Write_Stream_MatchesToArray()
     {
         var table = CreateSmallTable();
         using var stream = new MemoryStream();
@@ -73,7 +73,7 @@ public class WordSenseTableTests
     ///     Every proper prefix of a valid table is rejected with a format exception.
     /// </summary>
     [Fact]
-    public void Read_TruncatedAtEveryLength_Throws()
+    public void WordSenseTable_Read_TruncatedAtEveryLength_Throws()
     {
         var bytes = CreateSmallTable().ToArray();
 
@@ -88,7 +88,7 @@ public class WordSenseTableTests
     ///     Flipping any single byte is detected.
     /// </summary>
     [Fact]
-    public void Read_AnyByteFlipped_Throws()
+    public void WordSenseTable_Read_AnyByteFlipped_Throws()
     {
         var bytes = CreateSmallTable().ToArray();
 
@@ -104,7 +104,7 @@ public class WordSenseTableTests
     ///     Garbage and oversized declared counts are rejected without large allocations.
     /// </summary>
     [Fact]
-    public void Read_Garbage_Throws()
+    public void WordSenseTable_Read_Garbage_Throws()
     {
         Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(new byte[64]));
         Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(Enumerable.Repeat((byte)0xFF, 4096).ToArray()));
@@ -114,7 +114,7 @@ public class WordSenseTableTests
     ///     Lemmas must be sorted and forms must refer to a known lemma.
     /// </summary>
     [Fact]
-    public void Constructor_InconsistentInput_Throws()
+    public void WordSenseTable_Constructor_InconsistentInput_Throws()
     {
         var table = CreateSmallTable();
         var lemmas = table.Lemmas.Reverse().ToArray();
@@ -129,7 +129,7 @@ public class WordSenseTableTests
     ///     A binary model scores {-s, +s}; the margin is twice the activation.
     /// </summary>
     [Fact]
-    public void Score_Binary_UsesActivationSign()
+    public void WordSenseTable_Score_Binary_UsesActivationSign()
     {
         var model = CreateSmallTable().Lemmas[0];
 
@@ -145,7 +145,7 @@ public class WordSenseTableTests
     ///     A one-versus-rest model picks the highest row and reports the gap to the runner-up.
     /// </summary>
     [Fact]
-    public void Score_OneVersusRest_PicksBestRow()
+    public void WordSenseTable_Score_OneVersusRest_PicksBestRow()
     {
         var model = CreateSmallTable().Lemmas[1];
 
@@ -159,7 +159,7 @@ public class WordSenseTableTests
     ///     Invalid models are rejected at construction.
     /// </summary>
     [Fact]
-    public void LemmaModel_BadShapes_Throw()
+    public void WordSenseTable_LemmaModel_BadShapes_Throw()
     {
         Assert.Throws<ArgumentException>(() => new LemmaModel("a", ["x"], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
         Assert.Throws<ArgumentException>(() => new LemmaModel("a", ["x", "y"], LemmaModelKind.Binary, [1f, 2f], [0f], 0f, 1));
@@ -171,7 +171,7 @@ public class WordSenseTableTests
     ///     The embedded table loads and lists the seed lemmas.
     /// </summary>
     [Fact]
-    public void LoadEmbedded_ContainsSeedLemmas()
+    public void WordSenseTable_LoadEmbedded_ContainsSeedLemmas()
     {
         var table = WordSenseTable.LoadEmbedded();
 

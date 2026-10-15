@@ -14,7 +14,7 @@ public class WordPieceTokenizerTests
     ///     The tokenizer must reproduce the reference ids and UTF-16 offsets for every fixture sentence.
     /// </summary>
     [Fact]
-    public void Tokenize_Fixture_MatchesReferenceTokenizer()
+    public void WordPieceTokenizer_Tokenize_Fixture_MatchesReferenceTokenizer()
     {
         var modelDirectory = ModelAssets.RequireModelDirectory();
         var tokenizer = WordPieceTokenizer.FromFile(Path.Combine(modelDirectory, "vocab.txt"));
@@ -47,7 +47,7 @@ public class WordPieceTokenizerTests
     ///     Words are split into the longest matching pieces and unknown words map to the unknown id.
     /// </summary>
     [Fact]
-    public void Tokenize_SmallVocabulary_SplitsIntoWordPieces()
+    public void WordPieceTokenizer_Tokenize_SmallVocabulary_SplitsIntoWordPieces()
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
 
@@ -62,7 +62,7 @@ public class WordPieceTokenizerTests
     ///     Empty text produces no tokens.
     /// </summary>
     [Fact]
-    public void Tokenize_EmptyText_ReturnsNoTokens()
+    public void WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens()
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
 
@@ -73,7 +73,7 @@ public class WordPieceTokenizerTests
     ///     A target span selects exactly the tokens that overlap it.
     /// </summary>
     [Fact]
-    public void FindTokens_Span_ReturnsOverlappingTokens()
+    public void WordPieceTokenizer_FindTokens_Span_ReturnsOverlappingTokens()
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
         var tokens = tokenizer.Tokenize("the records");
@@ -88,7 +88,7 @@ public class WordPieceTokenizerTests
     ///     A text that fits is returned whole, with special tokens around it.
     /// </summary>
     [Fact]
-    public void BuildWindow_ShortText_ContainsWholeText()
+    public void WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText()
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
         var tokens = tokenizer.Tokenize("the record");
@@ -106,7 +106,7 @@ public class WordPieceTokenizerTests
     [InlineData(0, 1, 0)]
     [InlineData(10, 11, 7)]
     [InlineData(19, 20, 12)]
-    public void BuildWindow_LongText_KeepsTargetInsideWindow(int targetFirst, int targetEnd, int expectedStart)
+    public void WordPieceTokenizer_BuildWindow_LongText_KeepsTargetInsideWindow(int targetFirst, int targetEnd, int expectedStart)
     {
         var tokenizer = new WordPieceTokenizer(SmallVocabulary);
         var tokens = new TokenizedText(
