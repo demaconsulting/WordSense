@@ -51,7 +51,6 @@ present	noun	Carbon dioxide is {present} in small amounts in the atmosphere.
 present	noun	What did you get her as a wedding {present}?
 present	noun	The {present} tense describes habitual actions in English.
 present	noun	Only two witnesses were {present} in the courtroom.
-present	noun	Mold was {present} in the walls of the old cellar.
 present	noun	The novel moves between the past and the {present} in alternating chapters.
 present	noun	A thoughtful {present} doesn't have to be expensive.
 present	noun	Anyone {present} at the scene is asked to contact detectives.
@@ -382,7 +381,6 @@ increase	noun	A gradual {increase} in volume signals the chorus.
 increase	noun	Wage {increases} lagged behind inflation.
 increase	noun	Is a further {increase} likely?
 increase	verb	Prices {increase} every spring.
-increase	verb	Exercise can {increase} your energy levels.
 increase	verb	The company plans to {increase} production.
 increase	verb	Temperatures will {increase} this weekend.
 increase	verb	We must {increase} security at the airport.
@@ -421,7 +419,6 @@ permit	noun	The special event {permit} costs forty dollars.
 permit	noun	The council tightened rules on liquor {permits}.
 permit	noun	Each {permit} is numbered and logged.
 permit	noun	Drivers with a resident {permit} may park here overnight.
-permit	verb	The rules do not {permit} pets in the building.
 permit	verb	If the weather will {permit}, we'll hold the picnic outside.
 permit	verb	The law doesn't {permit} anyone under sixteen to drive.
 permit	verb	The board, after much deliberation, voted to {permit} it.
@@ -501,7 +498,6 @@ rebel	noun	{Rebels} said they had shot down the helicopter.
 rebel	noun	The fashion world loves a {rebel} with a story.
 rebel	noun	The old {rebel} finally made peace with his brother.
 rebel	noun	Hundreds of {rebels} surrendered their weapons.
-rebel	verb	Teenagers often {rebel} against their parents.
 rebel	verb	Soldiers who {rebel} face harsh punishment.
 rebel	verb	The colonies would {rebel} against the crown.
 rebel	verb	Why do you always {rebel} when someone gives you advice?
@@ -609,7 +605,6 @@ compress	noun	Hot {compresses} can ease muscle stiffness.
 compress	noun	She held an ice {compress} to her swollen eye.
 compress	noun	The doctor recommended an herbal {compress} for the rash.
 compress	noun	A chamomile {compress} soothes tired eyes.
-compress	noun	Change the {compress} every few hours.
 compress	noun	Cold {compresses} reduce swelling after dental surgery.
 compress	noun	He pressed a wet {compress} against the burn.
 compress	noun	Make a {compress} by folding gauze into a thick pad.
@@ -664,7 +659,6 @@ console	noun	Cheap {consoles} were bundled with the controllers.
 console	noun	Administrators log into the server {console} remotely.
 console	verb	She tried to {console} the crying child.
 console	verb	Friends gathered to {console} the widow.
-console	verb	Nothing could {console} him after the loss.
 console	verb	I didn't know how to {console} her.
 console	verb	He tried in vain to {console} his sister.
 console	verb	A warm hug can {console} a person more than words.
@@ -925,7 +919,6 @@ live	adj	Bring {live} bait; the fish won't touch anything else.
 live	adj	A {live} feed from the camera appeared on screen.
 live	adj	Cut only the {live} branches and leave the dead ones.
 live	adj	The interview was {live}, so nobody could edit it.
-close	verb	Please {close} the door behind you.
 close	verb	The bank will {close} at five.
 close	verb	{Close} your eyes and count to ten.
 close	verb	The shop is forced to {close} for the winter.
@@ -968,7 +961,6 @@ close	adj	Their offices are {close} enough to walk.
 separate	verb	Please {separate} the eggs, keeping the yolks.
 separate	verb	A fence will {separate} the two properties.
 separate	verb	It's hard to {separate} fact from fiction online.
-separate	verb	The couple decided to {separate} after ten years.
 separate	verb	Pour it through a sieve to {separate} the solids from the liquid.
 separate	verb	Only a thin wall will {separate} the bedrooms.
 separate	verb	The referee had to {separate} the two players.
@@ -1024,7 +1016,6 @@ invalid	noun	The doctor said the {invalid} should rest.
 invalid	noun	Caring for a bedridden {invalid} takes patience.
 invalid	noun	The village's only {invalid} was visited each week by the priest.
 invalid	noun	The {invalid}, pale and thin, sipped broth.
-invalid	noun	He was an {invalid} for most of his adult life.
 invalid	adj	Your password is {invalid}.
 invalid	adj	The ticket was ruled {invalid} because it had expired.
 invalid	adj	An {invalid} argument can still have a true conclusion.
@@ -1047,13 +1038,11 @@ invalid	adj	Ballots with stray marks are considered {invalid}.
 invalid	adj	The card was declined as {invalid}.
 lead	guide	She will {lead} the team into the finals.
 lead	guide	Follow me; I'll {lead} the way.
-lead	guide	Keep your dog on a {lead} in the park.
 lead	guide	The Tigers took the {lead} in the ninth inning.
 lead	guide	Which candidate will {lead} the party?
 lead	guide	A good manager can {lead} by example.
 lead	guide	The detective followed every {lead} in the case.
 lead	guide	Roads {lead} to the village from three directions.
-lead	guide	She plays the {lead} in the school play.
 lead	guide	He {leads} a double life.
 lead	guide	Smoking can {lead} to serious health problems.
 lead	guide	The guide will {lead} us through the cave.
@@ -1062,7 +1051,6 @@ lead	guide	Does this path {lead} to the lake?
 lead	guide	Who is going to {lead} the meeting?
 lead	guide	Teachers {lead} children through the morning routine.
 lead	guide	The tip gave police a strong {lead}.
-lead	guide	The dog pulled hard on its {lead}.
 lead	guide	She {leads} the choir, I believe, every Sunday.
 lead	guide	Their early {lead} evaporated in the second half.
 lead	guide	A trail of crumbs would {lead} him home.
@@ -1088,7 +1076,6 @@ lead	metal	Pipes made of {lead} were common in old plumbing.
 lead	metal	A heavy {lead} weight pulled the line to the bottom.
 lead	metal	Elements such as tin and {lead} are in the same group.
 wind	noun	A strong {wind} knocked down several trees.
-wind	noun	The {wind} died down by evening.
 wind	noun	Sailors hoped for a favorable {wind}.
 wind	noun	Gusts of {wind} reached sixty miles an hour.
 wind	noun	The {wind} howled through the cracks in the cabin.
@@ -1127,8 +1114,6 @@ wind	verb	Kids love to {wind} the toy until it jumps.
 wind	verb	The stream will {wind} lazily through the meadow.
 wind	verb	He had to {wind} the handle forty times.
 wind	verb	The tour will {wind} through the old town.
-tear	drop	A single {tear} rolled down her cheek.
-tear	drop	He wiped a {tear} from his eye.
 tear	drop	{Tears} streamed down the boy's face.
 tear	drop	The sad ending brought {tears} to my eyes.
 tear	drop	She burst into {tears} when she heard the news.
@@ -1147,7 +1132,6 @@ tear	drop	Salty {tears} blurred his vision.
 tear	drop	The movie left half the theater in {tears}.
 tear	drop	Not a {tear} was shed at the sale.
 tear	drop	The soldier brushed away a {tear}.
-tear	rip	Be careful not to {tear} the paper.
 tear	rip	There's a {tear} in my jacket.
 tear	rip	Fabric can {tear} if pulled too hard.
 tear	rip	She had to {tear} open the package.
@@ -1177,7 +1161,6 @@ wound	injury	She has an old war {wound} that still aches.
 wound	injury	The {wound} became infected.
 wound	injury	Soldiers treated the {wounds} on the battlefield.
 wound	injury	Losing in overtime just added salt to the {wound}.
-wound	injury	The doctor stitched the {wound} shut.
 wound	injury	His words reopened an old emotional {wound}.
 wound	injury	Bandage the {wound} to keep it clean.
 wound	injury	Superficial {wounds} bleed a lot but are rarely serious.
@@ -1193,7 +1176,6 @@ wound	past	The road {wound} through the hills.
 wound	past	He {wound} the clock before bed.
 wound	past	The river {wound} lazily past the village.
 wound	past	She {wound} the yarn into a neat ball.
-wound	past	The path {wound} up the mountain.
 wound	past	He carefully {wound} the bandage around her hand.
 wound	past	The old man {wound} his watch every morning.
 wound	past	The vine {wound} its way up the trellis.
@@ -1204,12 +1186,10 @@ wound	past	The trail {wound}, mile after mile, through pines.
 wound	past	Grandma {wound} the music box, and it began to play.
 wound	past	The thread {wound} around the spindle.
 wound	past	The stream {wound} between mossy rocks.
-wound	past	The snake {wound} itself around the branch.
 wound	past	The tour guide {wound} her way through the crowd.
 wound	past	He {wound} the toy and set it on the floor.
 wound	past	Smoke {wound} upward from the chimney.
 bow	weapon	He drew the {bow} and let the arrow fly.
-bow	weapon	She tied a red {bow} in her hair.
 bow	weapon	The violinist raised her {bow}.
 bow	weapon	Hunters favor a compound {bow}.
 bow	weapon	The gift was topped with a gold {bow}.
@@ -1327,7 +1307,6 @@ bass	fish	The {bass} season opens on Saturday.
 bass	fish	A giant {bass} leaped from the water.
 bass	fish	Bake the {bass} whole with herbs.
 bass	fish	Fly fishermen cast for {bass} at dusk.
-bass	fish	Largemouth {bass} hide near fallen logs.
 bass	music	The {bass} was so loud the windows shook.
 bass	music	He plays {bass} in a jazz trio.
 bass	music	Turn up the {bass} on the speakers.
