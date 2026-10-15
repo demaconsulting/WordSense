@@ -54,6 +54,19 @@ delivers bytes with the pinned SHA-256 digest:
 A failed request, timeout, block or digest mismatch moves on to the next source; credentials are sent
 only to the mirror. If every source fails, `WordSenseModelDownloadException` lists each attempt.
 
+## Error Handling
+
+- `WordSenseModelDownloadException`: `EnsureModelAsync` (and `CreateAsync` without a `ModelDirectory`) throws it
+  when every download source failed for a missing or invalid model file; the message lists each attempt.
+- `WordSenseModelMismatchException`: creating a classifier throws it when the table's model SHA-256 or embedding
+  dimension differs from the encoder's, so a table is never used with a model it was not trained for.
+- `WordSenseTableFormatException`: loading the embedded table throws it when the table is missing, truncated,
+  corrupted (checksum mismatch) or otherwise malformed.
+- `FileNotFoundException` and `InvalidDataException`: a supplied `ModelDirectory` throws the former when a model
+  file is missing and the latter when a file does not match its pinned SHA-256; no download is attempted.
+- Invalid arguments (for example empty tags or an invalid mirror URL) throw `ArgumentException` or its
+  derived types. Words that are not known or are below the abstention margin are not errors; they yield `null`.
+
 ## Dependencies
 
 The runtime dependency is Microsoft.ML.OnnxRuntime 1.28.0 (see _OTS Integration Design_ and the
@@ -93,6 +106,7 @@ the table's trailing digest.
 ## Design Constraints
 
 - **Determinism**: same text and model give the same result; the table is built reproducibly.
+- **Concurrency**: the classifier is thread-safe when its encoder is; the table and tokenizer are immutable.
 - **Integrity**: no model file is used unless its SHA-256 matches the pinned digest.
 - **Portability**: the assembly targets net8.0, net9.0 and net10.0; native code comes only from
   ONNX Runtime.

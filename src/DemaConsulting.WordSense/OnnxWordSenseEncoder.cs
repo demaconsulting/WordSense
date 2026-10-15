@@ -44,8 +44,17 @@ public sealed class OnnxWordSenseEncoder : IWordSenseEncoder
         }
 
         _session = new InferenceSession(modelPath, options);
-        _outputName = _session.OutputMetadata.Keys.First();
-        HiddenSize = _session.OutputMetadata[_outputName].Dimensions[^1];
+        try
+        {
+            _outputName = _session.OutputMetadata.Keys.First();
+            HiddenSize = _session.OutputMetadata[_outputName].Dimensions[^1];
+        }
+        catch
+        {
+            // Do not leak the native session when the model shape cannot be determined
+            _session.Dispose();
+            throw;
+        }
     }
 
     /// <inheritdoc />

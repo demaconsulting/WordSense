@@ -13,7 +13,7 @@ sections:
             justification: |
               DemaConsulting.WeasyPrintTool converts HTML documents to PDF as part of the
               documentation build pipeline. FileAssert validates that each generated PDF file
-              exists, has a non-trivial size, contains at least one page, and includes expected
+              exists, has the expected metadata, contains at least one page, and includes expected
               document content in the rendered text. Passing FileAssert assertions for each
               document type proves WeasyPrint executed correctly and produced meaningful output.
             tags: [ots]

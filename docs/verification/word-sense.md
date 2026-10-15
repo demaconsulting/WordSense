@@ -28,6 +28,13 @@ no test reaches a public host.
 A classifier built on the real model classifies "The record was broken last year, so they will record
 the new album." and must return noun for the first and verb for the second "record".
 
+### WordSense_Classifier_EndToEnd_WordListApi
+
+A classifier classifies the word list "The", "record", "was", "broken", "so", "they", "will", "record", "it"
+with the sense, tag, `IsTag` and detail queries. Every result array is parallel to the input; the first
+"record" is noun and the second is verb (tag `noun`/`verb`, `IsTag(verb)` false/true), the non-ambiguous word
+"The" yields `null`, and the detail query returns the same sense instance as the sense query.
+
 ### WordSense_EmbeddedTable_MatchesPinnedModel
 
 The embedded table's model digest, the pinned digests and the committed `SHA256SUMS` agree with the
@@ -46,7 +53,8 @@ below); an unlisted form would count as unanswered.
 
 ### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
 
-Holdout rows of lemmas that have both a noun and a verb sense are classified with the tag query; the answered
+Holdout rows whose gold sense has exactly one of the `noun` and `verb` tags (rows with both or neither are
+skipped) are classified with the tag query; the answered
 accuracy must be at least 97 % with at least 85 % coverage (the build report measures 99.15 % at 91.90 % over
 the 5,383 rows of the whole holdout; the test evaluates every fifth row).
 
@@ -72,6 +80,29 @@ Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, 
 
 Classifies a two-target sentence 100 times with one and four threads and reports the median and 95th
 percentile latency; the median must stay below two seconds (the typical value is a few milliseconds).
+
+### Platform Support
+
+`WordSense_Classifier_EndToEnd_ClassifiesRecord` is run on each CI operating system (Windows, Linux, macOS) and
+under each target framework (net8.0, net9.0, net10.0). The six `WordSense-Platform-*` requirements are each
+linked to this test with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`), so
+a requirement is satisfied only by a passing result from its own platform or framework.
+
+## Requirements Coverage
+
+| Requirement                | Verified by                                                          |
+|----------------------------|----------------------------------------------------------------------|
+| WordSense-Lib-Classify     | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                      |
+| WordSense-Lib-Tags         | Holdout_MeetsNounVerbTagGate, Holdout_MeetsGroupGate                 |
+| WordSense-Lib-Accuracy     | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma       |
+| WordSense-Lib-Embedded     | EmbeddedTable_MatchesPinnedModel                                     |
+| WordSense-Lib-Encoder      | EndToEnd_ClassifiesRecord                                            |
+| WordSense-Lib-Performance  | Benchmark_ClassifyLatency                                            |
+| WordSense-Lib-Reproducible | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)   |
+| WordSense-Platform-* (six) | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support) |
+
+The remaining library requirements (abstention, download, mirror, integrity) are verified by the unit-level
+scenarios of the classifier, downloader and mirror documents.
 
 ## Acceptance Criteria
 

@@ -44,6 +44,7 @@ public sealed class WordSense
     ///     when the sense has no explicit group, and is never null or empty.
     /// </summary>
     public string Group { get; }
+
     /// <summary>
     ///     Gets the tags of the sense; a frozen, ordinal set that is never empty.
     /// </summary>

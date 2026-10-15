@@ -1,4 +1,6 @@
 using System.Text;
+using IWordSenseEncoder = DemaConsulting.WordSense.IWordSenseEncoder;
+using WordPieceTokenizer = DemaConsulting.WordSense.WordPieceTokenizer;
 
 namespace WordSense.Builder.Tests;
 
@@ -663,6 +665,138 @@ public sealed class BuilderTests : IDisposable
         var row = string.Join('\t', id, "bow", "bend-noun", "anchors", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/en/sentences/show/1", "someone", "real");
         Write("corpus/provenance/real-restore.tsv", header + "\n" + row + "\n");
         Assert.Empty(RealImport.Validate(Path.Combine(_root, "corpus")));
+    }
+
+    /// <summary>
+    ///     The provenance gate rejects rows with a disallowed licence or origin and rows that lack required attribution.
+    /// </summary>
+    [Theory]
+    [InlineData("GPL-3.0", "real", "tatoeba-cc0", "1", "someone", "https://tatoeba.org/1", "licence 'GPL-3.0' is not allowed")]
+    [InlineData("CC0 1.0", "invented", "tatoeba-cc0", "1", "someone", "https://tatoeba.org/1", "origin 'invented' is not real")]
+    [InlineData("CC BY 2.0 FR", "real", "tatoeba-ccby", "1", "-", "https://tatoeba.org/1", "a CC BY row needs a contributor")]
+    [InlineData("CC BY 2.0 FR", "real", "tatoeba-ccby", "1", "unknown", "https://tatoeba.org/1", "a CC BY row needs a contributor")]
+    [InlineData("Public domain", "real", "gutenberg", "1342", "someone", "https://gutenberg.org/1342", "a Gutenberg row needs a pgN key")]
+    [InlineData("CC0 1.0", "real", "gutenberg", "pg1342", "someone", "https://gutenberg.org/1342", "a Gutenberg row needs a pgN key")]
+    [InlineData("web-excerpt", "real", "web", "1", "someone", "-", "a web excerpt needs its URL")]
+    public void WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows(
+        string licence, string origin, string source, string key, string contributor, string url, string expected)
+    {
+        const string sentence = "He made a low {bow}.";
+        Write("corpus/anchors/real-restore.tsv", $"bow\tbend-noun\t{sentence}\n");
+        var id = PosAudit.RowId("bow", sentence);
+        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin");
+        var row = string.Join('\t', id, "bow", "bend-noun", "anchors", source, licence, key, url, contributor, origin);
+        Write("corpus/provenance/real-restore.tsv", header + "\n" + row + "\n");
+
+        var errors = RealImport.Validate(Path.Combine(_root, "corpus"));
+
+        Assert.Contains(errors, e => e.Contains(expected, StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A sentence of more than 35 words and a sentence that mentions Gutenberg are rejected.
+    /// </summary>
+    [Theory]
+    [InlineData(36, "words", "has more than 35 words")]
+    [InlineData(35, "words", "")]
+    [InlineData(5, "Gutenberg", "mentions Gutenberg")]
+    public void WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences(int wordCount, string filler, string expected)
+    {
+        var sentence = filler == "words"
+            ? "{bow} " + string.Join(' ', Enumerable.Repeat("word", wordCount - 1)) + "."
+            : "A {bow} from Project Gutenberg " + string.Join(' ', Enumerable.Repeat("word", wordCount - 5)) + ".";
+        Write("corpus/anchors/real-restore.tsv", $"bow\tbend-noun\t{sentence}\n");
+        var id = PosAudit.RowId("bow", sentence);
+        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin");
+        var row = string.Join('\t', id, "bow", "bend-noun", "anchors", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/1", "someone", "real");
+        Write("corpus/provenance/real-restore.tsv", header + "\n" + row + "\n");
+
+        var errors = RealImport.Validate(Path.Combine(_root, "corpus"));
+
+        if (expected.Length == 0)
+        {
+            Assert.Empty(errors);
+        }
+        else
+        {
+            Assert.Contains(errors, e => e.Contains(expected, StringComparison.Ordinal));
+        }
+    }
+
+    /// <summary>
+    ///     A small build reports the best-group accuracy and the tag-level sections.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections()
+    {
+        // Arrange: a tiny corpus of two senses and a deterministic fake encoder
+        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "bank", "the", "money", "river", "deep", "rich", "wide", "tall", "high", "low", "old", "new", "."];
+        string[] fillers = ["deep", "rich", "wide", "tall", "high", "low"];
+        var anchors = new List<CorpusRow>();
+        foreach (var filler in fillers)
+        {
+            anchors.Add(Row("bank", "noun", $"the {{bank}} money {filler}.", "a.tsv"));
+            anchors.Add(Row("bank", "verb", $"the {{bank}} river {filler}.", "a.tsv"));
+        }
+
+        var holdout = new[]
+        {
+            Row("bank", "noun", "the {bank} money old.", "h.tsv"),
+            Row("bank", "verb", "the {bank} river new.", "h.tsv"),
+        };
+        var inventory = new SenseInventory([new InventoryRow("bank", "noun", ["noun"], "s.tsv"), new InventoryRow("bank", "verb", ["verb"], "s.tsv")]);
+        var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bank", "bank", ["noun", "verb"]) };
+        using var encoder = new FakeEncoder();
+
+        // Act
+        var result = TableBuilder.Build(
+            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+        var text = result.Report.Render();
+
+        // Assert: the table and both accuracy sections
+        Assert.Single(result.Table.Lemmas);
+        Assert.Equal(2, result.Report.Overall.Total);
+        Assert.Contains("Group level:", text, StringComparison.Ordinal);
+        Assert.Contains("best-group accuracy", text, StringComparison.Ordinal);
+        Assert.Contains("Tag level, noun versus verb", text, StringComparison.Ordinal);
+        Assert.Contains("Tag level, has-tag per tag", text, StringComparison.Ordinal);
+        Assert.Contains("  noun: ", text, StringComparison.Ordinal);
+        Assert.Contains("  verb: ", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A deterministic encoder whose hidden states depend on the token id and on the whole sequence.
+    /// </summary>
+    private sealed class FakeEncoder : IWordSenseEncoder
+    {
+        private const int Size = 8;
+
+        /// <inheritdoc />
+        public string ModelSha256 { get; } = new('a', 64);
+
+        /// <inheritdoc />
+        public int HiddenSize => Size;
+
+        /// <inheritdoc />
+        public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
+        {
+            var context = inputIds.Sum();
+            var hidden = new float[inputIds.Length * Size];
+            for (var p = 0; p < inputIds.Length; p++)
+            {
+                for (var d = 0; d < Size; d++)
+                {
+                    hidden[(p * Size) + d] = (float)(Math.Sin(inputIds[p] * (d + 1)) + (3 * Math.Cos(context * (d + 1))));
+                }
+            }
+
+            return ValueTask.FromResult(hidden);
+        }
+
+        /// <inheritdoc />
+        public void Dispose()
+        {
+        }
     }
 
     private string Write(string relative, string content)

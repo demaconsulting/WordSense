@@ -10,7 +10,7 @@ generates.
 ### Features Used
 
 - HTML-to-PDF conversion for Build Notes, Code Quality, Review Plan, Review Report, Design,
-  Verification, and User Guide documents
+  Verification, User Guide, Requirements, and Trace Matrix documents
 - PDF page-count and content rendering suitable for FileAssert validation of rendered text
 
 ### Integration Pattern

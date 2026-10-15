@@ -238,4 +238,59 @@ public class SenseRecordTests
         Assert.DoesNotContain(words, w => string.IsNullOrWhiteSpace(w.Text));
         Assert.Equal(0, words[0].Start);
     }
+
+    /// <summary>
+    ///     Internal apostrophes, hyphens and digits stay inside one word; typographic apostrophes, combining
+    ///     marks and surrogate pairs are handled.
+    /// </summary>
+    [Theory]
+    [InlineData("don't")]
+    [InlineData("don\u2019t")]
+    [InlineData("well-known")]
+    [InlineData("x1")]
+    [InlineData("cafe\u0301")]
+    [InlineData("\U0001D400bc")]
+    public void TextSplitter_SplitWords_InternalPunctuationAndMarks_StayOneWord(string text)
+    {
+        var words = TextSplitter.SplitWords(text);
+
+        var word = Assert.Single(words);
+        Assert.Equal(text, word.Text);
+    }
+
+    /// <summary>
+    ///     A symbol outside the basic plane is one tile and a trailing apostrophe is not part of the word.
+    /// </summary>
+    [Fact]
+    public void TextSplitter_SplitWords_SurrogatePairAndTrailingApostrophe_AreSeparateTiles()
+    {
+        Assert.Equal(["a", "\U0001F600", "b"], TextSplitter.SplitWords("a \U0001F600 b").Select(w => w.Text));
+        Assert.Equal(["dogs", "'"], TextSplitter.SplitWords("dogs'").Select(w => w.Text));
+    }
+
+    /// <summary>
+    ///     Definitions with an empty name, no tags, too many tags, unsorted, duplicated or invalid tags are rejected.
+    /// </summary>
+    [Fact]
+    public void SenseDefinition_Validate_InvalidDefinitions_Throw()
+    {
+        var tooMany = Enumerable.Range(0, SenseDefinition.MaxTagsPerSense + 1).Select(i => $"t{i:D2}").ToArray();
+
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(string.Empty, ["noun"]).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", []).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", tooMany).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["verb", "noun"]).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun", "noun"]).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["Noun"]).Validate());
+        new SenseDefinition("a", tooMany.Take(SenseDefinition.MaxTagsPerSense).ToArray()).Validate();
+    }
+
+    /// <summary>
+    ///     A null tag is rejected by <see cref="WordSense.HasTag"/>.
+    /// </summary>
+    [Fact]
+    public void WordSense_HasTag_NullTag_ThrowsArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => new WordSense("bow", "weapon", ["noun"]).HasTag(null!));
+    }
 }

@@ -135,4 +135,68 @@ public class WordPieceTokenizerTests
         Assert.Equal(100 + targetFirst, ids[first]);
         Assert.Equal(first + 1, end);
     }
+
+    /// <summary>
+    ///     A target that is longer than the window capacity is clipped to the window.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_BuildWindow_TargetLongerThanCapacity_ClipsTargetToWindow()
+    {
+        var tokenizer = new WordPieceTokenizer(SmallVocabulary);
+        var tokens = new TokenizedText(
+            Enumerable.Range(100, 20).ToArray(), Enumerable.Range(0, 20).ToArray(), Enumerable.Range(1, 20).ToArray());
+
+        var (ids, first, end) = tokens.BuildWindow(tokenizer.ClsId, tokenizer.SepId, 10, 2, 18);
+
+        Assert.Equal(10, ids.Length);
+        Assert.Equal(tokenizer.ClsId, ids[0]);
+        Assert.Equal(tokenizer.SepId, ids[^1]);
+        Assert.Equal((1, 9), (first, end));
+        Assert.Equal(102, ids[1]);
+    }
+
+    /// <summary>
+    ///     Null arguments are rejected.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_NullArguments_ThrowArgumentNullException()
+    {
+        var tokenizer = new WordPieceTokenizer(SmallVocabulary);
+
+        Assert.Throws<ArgumentNullException>(() => new WordPieceTokenizer(null!));
+        Assert.Throws<ArgumentNullException>(() => tokenizer.Tokenize(null!));
+        Assert.Throws<ArgumentNullException>(() => tokenizer.TokenizeWords(null!));
+        Assert.Throws<ArgumentNullException>(() => tokenizer.TokenizeWords(["the", null!]));
+    }
+
+    /// <summary>
+    ///     A vocabulary lacking a required special token is rejected.
+    /// </summary>
+    [Theory]
+    [InlineData("[UNK]")]
+    [InlineData("[CLS]")]
+    [InlineData("[SEP]")]
+    public void WordPieceTokenizer_VocabularyMissingSpecialToken_ThrowsArgumentException(string missing)
+    {
+        var vocabulary = SmallVocabulary.Where(t => t != missing).ToArray();
+
+        Assert.Throws<ArgumentException>(() => new WordPieceTokenizer(vocabulary));
+    }
+
+    /// <summary>
+    ///     Lone surrogates and control characters carry no content and are dropped.
+    /// </summary>
+    [Theory]
+    [InlineData("th\uD800e")]
+    [InlineData("th\uDC00e")]
+    [InlineData("th\u0001e")]
+    [InlineData("t\u0000h\u0007e")]
+    public void WordPieceTokenizer_Tokenize_LoneSurrogatesAndControlCharacters_AreDropped(string text)
+    {
+        var tokenizer = new WordPieceTokenizer(SmallVocabulary);
+
+        var result = tokenizer.Tokenize(text);
+
+        Assert.Equal([4], result.Ids);
+    }
 }

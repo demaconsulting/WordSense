@@ -19,3 +19,4 @@ sections:
           Misuse must fail fast with a documented exception.
         tests:
           - OnnxWordSenseEncoder_EncodeAsync_InvalidUse_Throws
+          - OnnxWordSenseEncoder_Constructor_InvalidModelFile_Throws

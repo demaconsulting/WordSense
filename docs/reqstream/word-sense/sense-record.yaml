@@ -11,6 +11,7 @@ sections:
           Callers compare, store and share senses across threads; tags must not change after creation.
         tests:
           - WordSense_HasTag_ReportsMembership
+          - WordSense_HasTag_NullTag_ThrowsArgumentNullException
           - WordSense_Tags_AreImmutable
           - WordSense_LemmaModel_SharesOneRecordPerSense
 
@@ -22,6 +23,7 @@ sections:
         tests:
           - SenseDefinition_IsValidTag_ChecksSyntax
           - SenseDefinition_IsValidTag_LengthLimit
+          - SenseDefinition_Validate_InvalidDefinitions_Throw
           - WordSense_Group_DefaultsToSenseAndValidates
 
       - id: WordSense-Sense-TagScoring
@@ -32,7 +34,7 @@ sections:
           sense-level answers.
         tests:
           - TagScorer_Classify_BestScoringTagWins
-          - TagScorer_Classify_SenseWithBothTags_TiesAndIsBelowAnyPositiveThreshold
+          - TagScorer_Classify_EqualTagScores_TiesAndIsBelowAnyPositiveThreshold
           - TagScorer_Classify_SensesOfSameTag_DoNotReduceMargin
           - TagScorer_Classify_BelowThreshold_Abstains
           - TagScorer_Classify_OtherWins_ReturnsNull
@@ -48,3 +50,5 @@ sections:
         tests:
           - TextSplitter_SplitSegments_TileTheText
           - TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets
+          - TextSplitter_SplitWords_InternalPunctuationAndMarks_StayOneWord
+          - TextSplitter_SplitWords_SurrogatePairAndTrailingApostrophe_AreSeparateTiles

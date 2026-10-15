@@ -25,8 +25,11 @@ test uses the network. Request logs show the order of attempts and the headers r
   them on a same-origin redirect; **..._RedirectLoop_FallsThrough** abandons a redirect loop.
 - **..._InvalidRequestTimeout_ThrowsBeforeRequests** (zero, negative, oversized),
   **..._InfiniteRequestTimeout_Succeeds**, **..._ProgressThrows_PropagatesWithoutFallThrough**.
-- **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**,
-  **..._FromDirectory_ChecksEveryFile**, **..._DefaultStoreRoot_IsPerUser**.
+- **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**.
+- **WordSenseModelDownloader_FromDirectory_ChecksEveryFile**: a directory with a missing or altered
+  file is rejected (`WordSense-Downloader-Location`).
+- **WordSenseModelDownloader_DefaultStoreRoot_IsPerUser**: the default store is beneath the user's
+  local application data (`WordSense-Downloader-StoreRoot`).
 - **..._CallerCancels_ThrowsOperationCanceled**, **..._Progress_IsReported**.
 
 (All names are prefixed with `WordSenseModelDownloader_EnsureModel_` or `WordSenseModelDownloader_`.)
@@ -34,4 +37,4 @@ test uses the network. Request logs show the order of attempts and the headers r
 ## Requirements Coverage
 
 `WordSense-Downloader-Order`, `-Fallthrough`, `-Integrity`, `-AllFail`, `-Present`, `-Cancel`,
-`-Progress`, `-MirrorConfig`, `-Credentials` and `-Options`.
+`-Progress`, `-MirrorConfig`, `-Credentials`, `-Options`, `-Location` and `-StoreRoot`.

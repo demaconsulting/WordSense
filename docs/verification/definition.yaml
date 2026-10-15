@@ -7,6 +7,7 @@ input-files:
   - docs/verification/introduction.md
   - docs/verification/word-sense.md
   - docs/verification/word-sense/word-piece-tokenizer.md
+  - docs/verification/word-sense/sense-record.md
   - docs/verification/word-sense/word-sense-table.md
   - docs/verification/word-sense/onnx-word-sense-encoder.md
   - docs/verification/word-sense/word-sense-classifier.md

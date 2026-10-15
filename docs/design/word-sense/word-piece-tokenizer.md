@@ -20,8 +20,21 @@ longer than 100 characters, or with no match, become `[UNK]`.
   surrogate pairs and characters that normalization changes in length.
 - `TokenizeWords(words)`: tokenizes each word separately and returns the pieces with the piece range of
   every word; the text offsets are those of the words joined by single spaces.
-- `TokenizedText.BuildWindow(max, first, end)`: model input ids framed by `[CLS]` and `[SEP]` that fit
-  `max` ids and keep the target tokens inside; returns the target range within the window.
+- `UnknownId`, `ClsId`, `SepId`: the vocabulary ids of `[UNK]`, `[CLS]` and `[SEP]`.
+- `TokenizedText.BuildWindow(clsId, sepId, maxLength, targetFirst, targetEnd)`: model input ids framed
+  by `[CLS]` and `[SEP]` that fit `maxLength` ids and keep the target tokens inside; returns the ids and
+  the target range within the window, clipped to the window when the target is longer than its capacity.
+  `maxLength` must be at least 8; the unit does not check this because the only caller,
+  `WordSenseClassifier`, validates `MaxSequenceLength` (8 to 512) before building a window, and a
+  smaller value is a programming error.
+
+## Error Handling
+
+- `ArgumentNullException` for a null vocabulary, text, word list, or word in the list.
+- `ArgumentException` when the vocabulary lacks `[UNK]`, `[CLS]` or `[SEP]`.
+- `IOException` (or a derived exception) from `FromFile` when the vocabulary file cannot be read.
+- Lone surrogates, NUL, U+FFFD and control characters carry no content and are dropped; they never
+  raise an exception.
 
 ## Interactions
 

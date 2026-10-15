@@ -15,6 +15,14 @@ vocabularies. No mocking is needed.
 - **WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord**, **..._NoWords_ReturnsNoTokens**: piece range per word.
 - **WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText**: short input is framed by CLS/SEP.
 - **WordPieceTokenizer_BuildWindow_LongText_KeepsTargetInsideWindow**: long input is windowed.
+- **WordPieceTokenizer_BuildWindow_TargetLongerThanCapacity_ClipsTargetToWindow**: a target longer
+  than the window capacity is clipped to the window.
+- **WordPieceTokenizer_NullArguments_ThrowArgumentNullException**: null vocabulary, text, word list
+  and word are rejected.
+- **WordPieceTokenizer_VocabularyMissingSpecialToken_ThrowsArgumentException**: a vocabulary without
+  `[UNK]`, `[CLS]` or `[SEP]` is rejected.
+- **WordPieceTokenizer_Tokenize_LoneSurrogatesAndControlCharacters_AreDropped**: lone surrogates and
+  control characters are dropped.
 
 ## Requirements Coverage
 

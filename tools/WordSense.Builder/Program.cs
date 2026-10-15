@@ -37,7 +37,11 @@ public static class Program
         {
             if (args.Length == 0)
             {
-                error.WriteLine("Usage: WordSense.Builder build|import-batches [options]");
+                error.WriteLine(
+                    "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
+                    "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
+                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, " +
+                    "real-eval-import, real-eval, validate-provenance.");
                 return 1;
             }
 

@@ -66,6 +66,7 @@ sections:
           - WordSenseBuilder_BatchImporter_WritesDerivedInventory
           - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
           - WordSenseBuilder_TagEvaluator_CountsRowsPerRule
+          - WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections
 
       - id: WordSense-Builder-Provenance
         title: >-
@@ -78,3 +79,5 @@ sections:
         tests:
           - WordSenseBuilder_RealJudge_Resolve_FollowsTheRules
           - WordSenseBuilder_RealImport_Validate_RequiresProvenance
+          - WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows
+          - WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences

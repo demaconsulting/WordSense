@@ -65,10 +65,13 @@ sections:
           - WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget
 
       - id: WordSense-Classifier-Validation
-        title: The classifier shall reject invalid arguments and a table that does not match the encoder model.
+        title: >-
+          The classifier shall reject invalid arguments, a table that does not match the encoder model,
+          and a user-supplied model directory whose files do not match the pinned model digests.
         tags: [unit]
         justification: |
-          A mismatched table and model silently produce wrong senses.
+          A mismatched table and model silently produce wrong senses, and an unverified model directory
+          could supply a different model than the table was trained with.
         tests:
           - WordSenseClassifier_Constructor_InvalidArguments_Throw
           - WordSenseClassifier_Constructor_ModelMismatch_Throws

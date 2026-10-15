@@ -32,6 +32,21 @@ by the private client, which has automatic redirects disabled; authentication he
 hop and only when the hop has the mirror's scheme, host and port, so no credential reaches another
 origin. A caller-supplied client keeps its own redirect policy.
 
+## Public Types
+
+- `WordSenseModelLocation(Directory, ModelPath, VocabularyPath)`: a sealed record naming a verified
+  model set. `FromDirectory(directory)` checks every pinned file in the directory and returns the
+  location with full paths. It throws `ArgumentNullException` for a null directory,
+  `FileNotFoundException` when a file is missing and `InvalidDataException` when a file's SHA-256 differs
+  from the pinned digest. `DefaultStoreRoot()` returns
+  `{LocalApplicationData}/DemaConsulting/WordSense/models`, falling back to `AppContext.BaseDirectory`
+  as the base when the platform reports no local application data folder.
+- `WordSenseModelDownloadProgress(FileName, Source, BytesTransferred, TotalBytes)`: a record reported
+  through `IProgress` while a file downloads; `TotalBytes` is null when the source does not report a
+  length.
+- `WordSenseModelDownloadException`: raised when every source fails for a file; `Failures` lists one
+  entry per failed attempt, in the order tried (source name and cause).
+
 ## Hugging Face finding
 
 The committed `model_int8.onnx` was produced by local dynamic quantization (22,972,370 bytes,

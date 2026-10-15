@@ -255,6 +255,7 @@ public class WordSenseTableTests
     {
         var bytes = CreateSmallTable().ToArray();
         var rejected = 0;
+        var accepted = 0;
 
         for (var i = 0; i < bytes.Length - 32; i++)
         {
@@ -263,7 +264,11 @@ public class WordSenseTableTests
             var signed = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
             try
             {
-                WordSenseTable.Read(signed);
+                var loaded = WordSenseTable.Read(signed);
+
+                // A mutation that only changes a numeric value may load; the result must still be usable
+                Assert.NotEmpty(loaded.ToArray());
+                accepted++;
             }
             catch (WordSenseTableFormatException)
             {
@@ -272,6 +277,8 @@ public class WordSenseTableTests
         }
 
         Assert.True(rejected > 0);
+        Assert.True(accepted > 0);
+        Assert.Equal(bytes.Length - 32, rejected + accepted);
     }
 
     /// <summary>

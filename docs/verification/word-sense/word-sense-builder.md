@@ -32,6 +32,12 @@ table.
   tag-level counting.
 - **WordSenseBuilder_RealJudge_Resolve_FollowsTheRules**, **WordSenseBuilder_RealImport_Validate_RequiresProvenance**:
   sense judging resolution, licence ranking, and the provenance gate (missing row flagged, complete sidecar accepted).
+- **WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows**,
+  **WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences**: a disallowed licence, invalid origin,
+  CC BY row without contributor, Gutenberg row without a pg key or Public domain licence, a sentence over 35 words,
+  and a sentence mentioning Gutenberg are each rejected; a 35-word sentence is accepted.
+- **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
+  and tag-level accuracy sections.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
   braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.

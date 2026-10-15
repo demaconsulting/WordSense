@@ -39,6 +39,7 @@ sections:
           - WordSenseTable_Read_TruncatedAtEveryLength_Throws
           - WordSenseTable_Read_AnyByteFlipped_Throws
           - WordSenseTable_Read_Garbage_Throws
+          - WordSenseTable_Read_MutatedBodyWithValidChecksum_ThrowsFormatExceptionOrLoads
 
       - id: WordSense-Table-Score
         title: The table shall score a feature vector per lemma and return the best sense and its margin.
@@ -50,7 +51,9 @@ sections:
           - WordSenseTable_Score_OneVersusRest_PicksBestRow
 
       - id: WordSense-Table-Embedded
-        title: The assembly shall contain an embedded table covering the seed lemmas.
+        title: >-
+          The assembly shall contain an embedded table that loads, covers at least 344 lemmas with
+          tagged senses, and maps every word form to a lemma that has a model.
         tags: [unit]
         justification: |
           The library must work out of the box without an external table file.

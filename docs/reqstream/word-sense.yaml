@@ -23,6 +23,7 @@ sections:
           - WordSense-Sense-Words
         tests:
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
+          - WordSense_Classifier_EndToEnd_WordListApi
 
       - id: WordSense-Lib-Tags
         title: The library shall describe every sense with tags and answer tag-level queries such as noun versus verb.
@@ -44,7 +45,9 @@ sections:
           - WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
 
       - id: WordSense-Lib-Accuracy
-        title: The library shall meet a held-out accuracy gate on the labeled corpus with the pinned model.
+        title: >-
+          The library shall be at least 96% accurate on the sentences it answers, while answering at least
+          85% of the held-out sentences of the labeled corpus, with the pinned model.
         tags: [system]
         justification: |
           Classification quality is the measurable promise of the library. The gate evaluates
@@ -60,7 +63,9 @@ sections:
           - WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
 
       - id: WordSense-Lib-Abstain
-        title: The library shall abstain instead of guessing when the decision margin of a word is too small.
+        title: >-
+          The library shall abstain instead of guessing when the decision margin of a word is below the
+          abstention threshold stored in the classifier table for its lemma.
         tags: [system]
         justification: |
           Callers prefer no answer to a wrong answer for ambiguous contexts; a per-lemma margin
@@ -115,6 +120,8 @@ sections:
           - WordSense-Downloader-Cancel
           - WordSense-Downloader-Progress
           - WordSense-Downloader-Options
+          - WordSense-Downloader-Location
+          - WordSense-Downloader-StoreRoot
         tests:
           - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
           - WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs
@@ -147,11 +154,14 @@ sections:
           - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
 
       - id: WordSense-Lib-Performance
-        title: The library shall classify a typical sentence in a few milliseconds on a developer workstation.
+        title: >-
+          The library shall classify a typical sentence with a median latency below two seconds, with one
+          and with four threads.
         tags: [system]
         justification: |
           Interactive callers need classification latency that does not block a user interface;
-          the benchmark records the median and 95th percentile latency for one and four threads.
+          the benchmark enforces the median bound and records the 95th percentile latency for one
+          and four threads. The typical latency is a few milliseconds.
         tests:
           - WordSense_Benchmark_ClassifyLatency
 

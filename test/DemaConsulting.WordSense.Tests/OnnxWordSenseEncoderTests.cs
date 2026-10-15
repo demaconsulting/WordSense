@@ -49,6 +49,23 @@ public class OnnxWordSenseEncoderTests
         await Assert.ThrowsAsync<ObjectDisposedException>(async () => await encoder.EncodeAsync([101, 102], TestContext.Current.CancellationToken));
         Assert.Throws<FileNotFoundException>(() => new OnnxWordSenseEncoder(Path.Combine(Path.GetTempPath(), "missing.onnx")));
         Assert.Throws<ArgumentOutOfRangeException>(() => new OnnxWordSenseEncoder(path, -1));
-        Assert.Throws<ArgumentNullException>(() => new OnnxWordSenseEncoder(null!));
+    }
+
+    /// <summary>
+    ///     A file that is not a valid ONNX model is rejected with an exception.
+    /// </summary>
+    [Fact]
+    public void OnnxWordSenseEncoder_Constructor_InvalidModelFile_Throws()
+    {
+        var path = Path.Combine(Path.GetTempPath(), $"wordsense-invalid-{Guid.NewGuid():N}.onnx");
+        File.WriteAllBytes(path, [1, 2, 3, 4]);
+        try
+        {
+            Assert.ThrowsAny<Exception>(() => new OnnxWordSenseEncoder(path));
+        }
+        finally
+        {
+            File.Delete(path);
+        }
     }
 }

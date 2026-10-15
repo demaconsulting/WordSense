@@ -7,8 +7,8 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
 
 ## Data Model
 
-- `WordSense(Lemma, Sense, Tags)`: sealed immutable record, one instance per (lemma, sense) created
-  when the table is loaded; see the SenseRecord unit.
+- `WordSense`: sealed immutable class, one instance per (lemma, sense) created when the table is
+  loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
 - `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly struct.
 - `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload.
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
@@ -40,7 +40,23 @@ Texts longer than `MaxSequenceLength` use a window around each target instead of
 Features are the mean of the target word pieces' hidden states minus the table mean, normalized
 (`FeatureExtractor`, shared with the builder).
 
+## Error Handling
+
+- Null arguments (encoder, table, tokenizer, options, words, a word, text, lemma, tags, a tag) raise
+  `ArgumentNullException`; an empty tag list or an empty tag raises `ArgumentException`.
+- `MaxSequenceLength` outside 8 to 512 and a negative `AbstainMarginScale` raise
+  `ArgumentOutOfRangeException` from the constructor. A scale of 0 never abstains.
+- A table whose model digest or dimension differs from the encoder's raises
+  `WordSenseModelMismatchException`.
+- A user-supplied `ModelDirectory` is verified against the pinned digests before use; a missing,
+  altered or incomplete file raises an exception from `WordSenseModelLocation.FromDirectory`.
+  If creating the encoder or classifier fails after the encoder was opened, the encoder is disposed.
+- After `Dispose`, a classifier that owns its encoder throws `ObjectDisposedException` from the
+  encoder on the next classification; a classifier built over a borrowed encoder leaves it open.
+- A cancelled token raises `OperationCanceledException` before encoding starts and between targets.
+
 ## Interactions
 
 Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder` and `WordSenseModelDownloader`. The
-classifier is thread-safe: the table and tokenizer are immutable and the session is shared.
+classifier is thread-safe when its encoder is: the table and tokenizer are immutable and the session is
+shared.
