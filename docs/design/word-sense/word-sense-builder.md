@@ -86,9 +86,11 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   missing; an invalid batch imports nothing.
 - `validate-provenance` writes one line per problem to the error writer and exits 1 when there is any problem,
   otherwise 0.
-- Readers of tab-separated files (`rows.tsv`, judge input and answer files, `dropped-rows.tsv`, the restore plan,
-  provenance files) reject a row with the wrong number of columns with an `InvalidDataException` that names the
-  file and line.
+- Readers of tab-separated files (`rows.tsv`, judge input and answer files, `dropped-rows.tsv`, the candidate and
+  judgement files, `relabel-decisions.tsv`, the restore plan, provenance files) reject a row with an unacceptable
+  number of columns with an `InvalidDataException` that names the file and line. The accepted ranges are: judge
+  answers 3 or 4 columns, judge input at least 3, `dropped-rows.tsv` at least 6, candidates exactly 9, judgements
+  exactly 10 and `relabel-decisions.tsv` exactly 9.
 
 ## Key Methods and Callers
 

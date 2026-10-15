@@ -118,17 +118,18 @@ internal static class RealPlan
         var lemmas = plan.Select(p => p.Lemma).ToHashSet(StringComparer.Ordinal);
         var audit = PosAudit.ReadResults(Path.Combine(corpus, "audit", "pos-audit.tsv")).ToDictionary(a => a.Id, a => a.FinalPos, StringComparer.Ordinal);
         var (mapped, undecided, unmapped) = (new List<PoolRow>(), new List<PoolRow>(), new List<PoolRow>());
-        foreach (var line in File.ReadAllLines(Path.Combine(corpus, "audit", "dropped-rows.tsv"), new UTF8Encoding(false)).Skip(1))
+        var lines = File.ReadAllLines(Path.Combine(corpus, "audit", "dropped-rows.tsv"), new UTF8Encoding(false));
+        for (var i = 1; i < lines.Length; i++)
         {
-            if (line.Length == 0)
+            if (lines[i].Length == 0)
             {
                 continue;
             }
 
-            var c = line.TrimEnd('\r').Split('\t');
+            var c = lines[i].TrimEnd('\r').Split('\t');
             if (c.Length < 6)
             {
-                throw new InvalidDataException($"dropped-rows.tsv: expected at least 6 columns but found {c.Length} in '{line}'.");
+                throw new InvalidDataException($"dropped-rows.tsv:{i + 1}: expected at least 6 columns but found {c.Length}.");
             }
 
             if (!lemmas.Contains(c[1]))

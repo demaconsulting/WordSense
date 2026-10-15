@@ -47,7 +47,9 @@ table.
   **WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut**: a row needing adjudication without a
   judge C answer fails the merge; with one it is adjudicated, also when the work directory name contains `.out`.
 - **WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors**: rows with too few columns in `rows.tsv`, the judge
-  input files and `dropped-rows.tsv` raise an error naming the file and line.
+  input files, `dropped-rows.tsv` and the candidates file raise an error naming the file and line.
+- **WordSenseBuilder_RealImport_Import_MalformedDecisionsRow_Throws**: a `relabel-decisions.tsv` row without exactly 9
+  columns fails the import with an error naming the file and line, and nothing is written.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
   and tag-level accuracy sections.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the

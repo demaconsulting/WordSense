@@ -69,12 +69,13 @@ internal static class RealJudge
     public static List<Candidate> ReadCandidates(string path)
     {
         var result = new List<Candidate>();
-        foreach (var line in File.ReadAllLines(path, new UTF8Encoding(false)).Skip(1))
+        var lines = File.ReadAllLines(path, new UTF8Encoding(false));
+        for (var i = 1; i < lines.Length; i++)
         {
-            var c = line.TrimEnd('\r').Split('\t');
+            var c = lines[i].TrimEnd('\r').Split('\t');
             if (c.Length != 9)
             {
-                throw new InvalidDataException($"{Path.GetFileName(path)}: expected 9 columns in '{line}'.");
+                throw new InvalidDataException($"{Path.GetFileName(path)}:{i + 1}: expected 9 columns but found {c.Length}.");
             }
 
             result.Add(new Candidate(c[0], c[1], c[3], c[4], c[5], c[6], c[7], c[8]));
@@ -366,12 +367,13 @@ internal static class RealJudge
         var result = new Dictionary<string, SenseJudgement>(StringComparer.Ordinal);
         foreach (var path in paths)
         {
-            foreach (var line in File.ReadAllLines(path, new UTF8Encoding(false)).Skip(1))
+            var lines = File.ReadAllLines(path, new UTF8Encoding(false));
+            for (var i = 1; i < lines.Length; i++)
             {
-                var c = line.TrimEnd('\r').Split('\t');
+                var c = lines[i].TrimEnd('\r').Split('\t');
                 if (c.Length != 10)
                 {
-                    throw new InvalidDataException($"{Path.GetFileName(path)}: expected 10 columns in '{line}'.");
+                    throw new InvalidDataException($"{Path.GetFileName(path)}:{i + 1}: expected 10 columns but found {c.Length}.");
                 }
 
                 result[c[0]] = new SenseJudgement(c[0], c[1], c[2], c[3], c[4], c[5], c[6], c[7], c[8], c[9]);

@@ -389,7 +389,17 @@ internal static class RealImport
     private static List<string> ReadDecisions(string corpus)
     {
         var path = Path.Combine(corpus, "audit", "relabel-decisions.tsv");
-        return File.ReadAllLines(path, new UTF8Encoding(false)).Select(l => l.TrimEnd('\r')).ToList();
+        var lines = File.ReadAllLines(path, new UTF8Encoding(false)).Select(l => l.TrimEnd('\r')).ToList();
+        for (var i = 1; i < lines.Count; i++)
+        {
+            var count = lines[i].Split('\t').Length;
+            if (lines[i].Length > 0 && count != 9)
+            {
+                throw new InvalidDataException($"relabel-decisions.tsv:{i + 1}: expected 9 columns but found {count}.");
+            }
+        }
+
+        return lines;
     }
 
     private static void UpdateDecisions(string corpus, ISet<string> lemmas, List<string> lines)

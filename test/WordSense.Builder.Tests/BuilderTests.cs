@@ -970,6 +970,25 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("a-001.tsv:1", Assert.Throws<InvalidDataException>(() => RealJudge.Merge(corpus, Path.Combine(_root, "work"))).Message, StringComparison.Ordinal);
 
         Write("corpus/audit/dropped-rows.tsv", "header\nid\tbow\told\n");
-        Assert.Contains("dropped-rows.tsv", Assert.Throws<InvalidDataException>(() => RealPlan.ReadPool(corpus, RealPlan.ReadPlan(corpus))).Message, StringComparison.Ordinal);
+        Assert.Contains("dropped-rows.tsv:2", Assert.Throws<InvalidDataException>(() => RealPlan.ReadPool(corpus, RealPlan.ReadPlan(corpus))).Message, StringComparison.Ordinal);
+
+        var candidates = Write("candidates.tsv", "header\nid\tbow\n");
+        Assert.Contains("candidates.tsv:2", Assert.Throws<InvalidDataException>(() => RealJudge.ReadCandidates(candidates)).Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A relabel-decisions row with the wrong number of columns fails the import, naming file and line, before any output.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealImport_Import_MalformedDecisionsRow_Throws()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/relabel-decisions.tsv", "header\nbow\told\tdrop\n");
+        var (candidates, judgements) = RealCandidates(3);
+
+        var ex = Assert.Throws<InvalidDataException>(() => RealImport.Import(corpus, candidates, judgements));
+
+        Assert.Contains("relabel-decisions.tsv:2", ex.Message, StringComparison.Ordinal);
+        Assert.False(File.Exists(Path.Combine(corpus, "anchors", "real-restore.tsv")));
     }
 }
