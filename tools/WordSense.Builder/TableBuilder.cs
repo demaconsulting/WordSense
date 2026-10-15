@@ -235,7 +235,7 @@ internal static class TableBuilder
     /// <param name="mean">The anchor mean.</param>
     /// <param name="rows">The rows, for error messages.</param>
     /// <returns>The features.</returns>
-    private static float[][] Center(double[][] pooled, float[] mean, IReadOnlyList<CorpusRow> rows)
+    internal static float[][] Center(double[][] pooled, float[] mean, IReadOnlyList<CorpusRow> rows)
     {
         var features = new float[pooled.Length][];
         for (var i = 0; i < pooled.Length; i++)
@@ -257,7 +257,7 @@ internal static class TableBuilder
     /// <param name="inventory">The sense inventory.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The trained parameters.</returns>
-    private static (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index) TrainLemma(
+    internal static (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index) TrainLemma(
         string lemma, int[] index, IReadOnlyList<CorpusRow> anchors, float[][] features, SenseInventory inventory, TableBuilderOptions options)
     {
         var senses = inventory.DefinitionsOf(lemma);
@@ -298,7 +298,7 @@ internal static class TableBuilder
     /// <param name="kind">Binary or one-versus-rest.</param>
     /// <param name="c">The inverse regularization strength.</param>
     /// <returns>Row-major weights and one bias per row.</returns>
-    private static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, LemmaModelKind kind, double c)
+    internal static (float[] Weights, float[] Bias) Fit(float[][] x, int[] labels, int senseCount, LemmaModelKind kind, double c)
     {
         var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
         var dim = x[0].Length;

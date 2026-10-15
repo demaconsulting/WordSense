@@ -58,7 +58,24 @@ table.
 - **WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption**: a non-numeric `--size`,
   `--max` or `--per-sense` returns exit code 1 with a message naming the option.
 
+- **WordSenseBuilder_LearningCurve_StableHash_IsFixed**, **..._Draw_CapsPerSenseAndIsRepeatable**: the subset seed
+  hash has a fixed value, and a draw takes at most the available anchors per sense and repeats exactly.
+- **WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical**,
+  **..._Run_SeparatesRealAndHoldoutSets**, **..._Run_RejectsNoSubsets**: a stub encoder and a synthetic corpus give
+  capped counts, separate holdout and real rows, and byte-identical files on a repeat run.
+- **WordSenseBuilder_LearningCurve_EstimatePlateau_ExtrapolatesAndFlagsPlateau**: slope, gain at twice the anchors and
+  the plateau flag.
+- **WordSenseBuilder_ErrorDiagnosis_Nearest_IsHighestDotProduct**, **..._Classify_FollowsThresholds**,
+  **..._Run_ClassifiesEachErrorAndIsByteIdentical**: nearest-anchor similarity, the threshold rules, one fixture row
+  per class (coverage-gap, overlap, ambiguous) and repeatable output.
+- **WordSenseBuilder_WeakLemmas_Recommend_MapsDominantClass**, **..._Rank_OrdersWeakLemmasByScore**,
+  **..._RunAndWrite_RanksFromFilesAndRendersStableReport**: the recommendation per dominant class, ranking and a
+  stable report from the written files.
+- **WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance**: corpus, provenance origin and real-eval
+  rows are loaded into the three sets.
+
 ## Requirements Coverage
 
 `WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
-`WordSense-Builder-Inventory` and `WordSense-Builder-Provenance`.
+`WordSense-Builder-Inventory`, `WordSense-Builder-Provenance`, `WordSense-Builder-LearningCurve`,
+`WordSense-Builder-ErrorDiagnosis` and `WordSense-Builder-WeakLemmas`.

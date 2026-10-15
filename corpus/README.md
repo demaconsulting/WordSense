@@ -69,6 +69,11 @@ resort, `web-excerpt`. `realtext/eval-seed.tsv` holds real sentences for evaluat
 builder command `validate-provenance` checks the sidecar. The corpus is not shipped in the NuGet package.
 `tools/real-text/README.md` describes the repeatable harvest.
 
+## Analysis Output
+
+`audit/analysis/` holds the output of `learning-curve`, `error-diagnosis` and `weak-lemmas` (accuracy against anchors
+per sense, the diagnosed errors and the ranked weak lemmas); see `docs/build_notes/learning-curve-and-diagnosis.md`.
+
 ## Part-of-Speech Audit
 
 `audit/pos-audit.tsv` holds the blind two-judge audit of every anchor and holdout sentence (judge C for

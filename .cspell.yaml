@@ -15,6 +15,9 @@ language: en,en-GB
 # Project-specific technical terms and tool names
 words:
   - tatoeba
+  - featurized
+  - overcall
+  - EBCA
   - ccby
   - realtext
   - Relabeler

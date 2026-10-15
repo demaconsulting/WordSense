@@ -579,6 +579,10 @@ public sealed class BuilderTests : IDisposable
     [InlineData("build", "--model")]
     [InlineData("build", "--corpus", "x")]
     [InlineData("import-batches", "--source", "missing-dir", "--corpus", "missing-dir")]
+    [InlineData("learning-curve", "--corpus", "x")]
+    [InlineData("error-diagnosis", "--corpus", "x", "--model", "m")]
+    [InlineData("weak-lemmas")]
+    [InlineData("weak-lemmas", "--analysis", "missing-analysis-dir")]
     public void WordSenseBuilder_Program_Run_ReportsErrors(params string[] args)
     {
         using var output = new StringWriter();
@@ -599,6 +603,8 @@ public sealed class BuilderTests : IDisposable
     [InlineData("size", "real-judge-export", "--corpus", "c", "--work", "w")]
     [InlineData("size", "real-judge-adjudicate", "--corpus", "c", "--work", "w")]
     [InlineData("per-sense", "real-eval-import", "--corpus", "c", "--candidates", "x", "--audit", "a")]
+    [InlineData("subsets", "learning-curve", "--corpus", "c", "--model", "m", "--out", "o")]
+    [InlineData("seed", "learning-curve", "--corpus", "c", "--model", "m", "--out", "o")]
     public void WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption(string option, params string[] command)
     {
         // Arrange: a command line whose integer option is not a number
@@ -990,5 +996,351 @@ public sealed class BuilderTests : IDisposable
 
         Assert.Contains("relabel-decisions.tsv:2", ex.Message, StringComparison.Ordinal);
         Assert.False(File.Exists(Path.Combine(corpus, "anchors", "real-restore.tsv")));
+    }
+
+    private const string GapSentence = "gap {bank} row.";
+    private const string OverlapSentence = "overlap {bank} row.";
+    private const string AmbiguousSentence = "ambiguous {bank} row.";
+
+    private static double[] Polar(double degrees)
+    {
+        var radians = degrees * Math.PI / 180.0;
+        return [Math.Cos(radians), Math.Sin(radians)];
+    }
+
+    /// <summary>
+    ///     Builds analysis data from handcrafted two-dimensional vectors: the senses a and b lie 15 degrees apart and
+    ///     the sense c lies opposite. The holdout holds correct rows plus one row of each error class, the overlap
+    ///     row marked as real text, and the real evaluation set holds one correct row.
+    /// </summary>
+    private AnalysisData SyntheticAnalysis()
+    {
+        var vectors = new Dictionary<string, double[]>(StringComparer.Ordinal);
+        var anchors = new List<CorpusRow>();
+        var angles = new Dictionary<string, double> { ["a"] = 0, ["b"] = 15, ["c"] = 180 };
+        foreach (var (sense, angle) in angles)
+        {
+            for (var i = 0; i < 8; i++)
+            {
+                var sentence = $"{sense} {{bank}} anchor {i}.";
+                vectors[sentence] = Polar(angle + ((i - 3.5) * 0.8));
+                anchors.Add(Row("bank", sense, sentence, "a.tsv"));
+            }
+        }
+
+        var holdout = new List<CorpusRow>();
+        foreach (var (sense, angle) in angles)
+        {
+            var sentence = $"{sense} {{bank}} holdout.";
+            vectors[sentence] = Polar(angle + 0.2);
+            holdout.Add(Row("bank", sense, sentence, "h.tsv"));
+        }
+
+        (string Sentence, string Sense, double Angle)[] errors = [(GapSentence, "a", 90), (OverlapSentence, "b", 0), (AmbiguousSentence, "c", 0)];
+        foreach (var (sentence, sense, angle) in errors)
+        {
+            vectors[sentence] = Polar(angle);
+            holdout.Add(Row("bank", sense, sentence, "h.tsv"));
+        }
+
+        vectors["eval {bank} row."] = Polar(0.1);
+        var realEval = new List<CorpusRow> { Row("bank", "a", "eval {bank} row.", "eval-seed.tsv") };
+        var origins = new Dictionary<string, string> { [PosAudit.RowId("bank", OverlapSentence)] = "real" };
+        var inventory = new SenseInventory(angles.Keys.Select(s => new InventoryRow("bank", s, ["noun"], "s.tsv")));
+        return AnalysisData.Create(
+            rows => rows.Select(r => vectors[r.Sentence]).ToArray(), anchors, holdout, realEval, origins, inventory, new TableBuilderOptions(Parallelism: 1), null);
+    }
+
+    /// <summary>
+    ///     The subset hash is a fixed FNV-1a value, not the randomized string hash code.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_StableHash_IsFixed()
+    {
+        Assert.Equal(2682200765u, LearningCurve.StableHash("bank", 2, 0));
+        Assert.NotEqual(LearningCurve.StableHash("bank", 2, 0), LearningCurve.StableHash("bank", 2, 1));
+        Assert.NotEqual(LearningCurve.StableHash("bank", 2, 0), LearningCurve.StableHash("bank", 4, 0));
+    }
+
+    /// <summary>
+    ///     A subset has at most k anchors per sense, uses all anchors of a smaller sense, repeats for the same seed
+    ///     and differs for another seed.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_Draw_CapsPerSenseAndIsRepeatable()
+    {
+        int[][] bySense = [[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [10, 11, 12]];
+
+        var first = LearningCurve.Draw(bySense, "bank", 4, 0, 1);
+        var repeat = LearningCurve.Draw(bySense, "bank", 4, 0, 1);
+        var other = Enumerable.Range(2, 30).Select(seed => LearningCurve.Draw(bySense, "bank", 4, 0, seed)).ToList();
+
+        Assert.Equal(first, repeat);
+        Assert.Equal(4, first.Count(i => i < 10));
+        Assert.Equal([10, 11, 12], first.Where(i => i >= 10));
+        Assert.Equal(first.Where(i => i < 10).Order(), first.Where(i => i < 10));
+        Assert.Contains(other, subset => !subset.SequenceEqual(first));
+        Assert.Equal(13, LearningCurve.Draw(bySense, "bank", 14, 0, 1).Length);
+    }
+
+    /// <summary>
+    ///     The learning curve evaluates every anchor count, uses all anchors when k exceeds them and produces
+    ///     byte-identical files on a repeat run.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical()
+    {
+        // Arrange and act: two complete runs from freshly built data
+        var first = Path.Combine(_root, "run1");
+        var second = Path.Combine(_root, "run2");
+        Assert.Equal(1, LearningCurve.RunAndWrite(SyntheticAnalysis(), first, 3, 7));
+        LearningCurve.RunAndWrite(SyntheticAnalysis(), second, 3, 7);
+
+        // Assert: identical bytes
+        foreach (var name in new[] { AnalysisFiles.Curve, AnalysisFiles.CurveSummary, AnalysisFiles.Plateau })
+        {
+            Assert.Equal(File.ReadAllBytes(Path.Combine(first, name)), File.ReadAllBytes(Path.Combine(second, name)));
+        }
+
+        // Assert: k = 10 and 14 exceed the 8 anchors per sense, so they equal the full set with one subset
+        var rows = File.ReadAllLines(Path.Combine(first, AnalysisFiles.Curve)).Skip(1).Select(l => l.Split('\t')).Where(c => c[1] == "holdout").ToList();
+        Assert.Equal(["2", "4", "7", "10", "14", "all"], rows.Select(c => c[2]));
+        Assert.Equal("3", rows[0][4]);
+        Assert.Equal("1", rows[4][4]);
+        Assert.Equal(rows[5][3], rows[4][3]);
+        Assert.Equal("8.0000", rows[5][3]);
+        Assert.Equal("6", rows[5][5]);
+        Assert.Equal(rows[5][6], rows[4][6]);
+        Assert.StartsWith("lemma\tset\tk\t", File.ReadAllText(Path.Combine(first, AnalysisFiles.Curve)), StringComparison.Ordinal);
+        Assert.DoesNotContain('\r', File.ReadAllText(Path.Combine(first, AnalysisFiles.Curve)));
+    }
+
+    /// <summary>
+    ///     A subset count below one is a usage error.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_Run_RejectsNoSubsets()
+    {
+        Assert.Throws<ArgumentException>(() => LearningCurve.Run(SyntheticAnalysis(), 0, 1));
+    }
+
+    /// <summary>
+    ///     The real set holds the holdout rows whose provenance origin is real, separate from the real evaluation set.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_Run_SeparatesRealAndHoldoutSets()
+    {
+        var points = LearningCurve.Run(SyntheticAnalysis(), 2, 1);
+
+        var all = points.Where(p => p.K == LearningCurve.All).ToDictionary(p => p.Set, p => p.N);
+        Assert.Equal(6, all[AnalysisFiles.SetHoldout]);
+        Assert.Equal(1, all[AnalysisFiles.SetReal]);
+        Assert.Equal(1, all[AnalysisFiles.SetRealEval]);
+    }
+
+    /// <summary>
+    ///     The plateau estimate uses the last two points that are far enough apart and limits the gain.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LearningCurve_EstimatePlateau_ExtrapolatesAndFlagsPlateau()
+    {
+        var rising = LearningCurve.EstimatePlateau("x", "holdout", [(2, 0.6), (4, 0.7), (7, 0.8), (10, 0.9), (14, 0.92), (16, 0.93)]);
+        var flat = LearningCurve.EstimatePlateau("x", "holdout", [(10, 0.95), (14, 0.951)]);
+        var close = LearningCurve.EstimatePlateau("x", "holdout", [(14, 0.9), (15, 0.95)]);
+
+        Assert.Equal("no", rising.Plateaued);
+        Assert.Equal(10, rising.AnchorsPrevious);
+        Assert.Equal(0.005, rising.Slope, 6);
+        Assert.Equal(0.07, rising.Gain2x, 6);
+        Assert.Equal("yes", flat.Plateaued);
+        Assert.Equal(0.001 / 4 * 14, flat.Gain2x, 6);
+        Assert.Equal("n/a", close.Plateaued);
+        Assert.Equal(0, close.Gain2x);
+    }
+
+    /// <summary>
+    ///     The nearest anchor is the highest cosine similarity of normalized vectors.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ErrorDiagnosis_Nearest_IsHighestDotProduct()
+    {
+        float[] feature = [1f, 0f];
+        float[][] anchors = [[0.6f, 0.8f], [0f, 1f], [-1f, 0f]];
+
+        Assert.Equal(0.6, ErrorDiagnosis.Nearest(feature, anchors, [0, 1]), 5);
+        Assert.Equal(-1.0, ErrorDiagnosis.Nearest(feature, anchors, [2]), 5);
+        Assert.Equal(-1.0, ErrorDiagnosis.Nearest(feature, anchors, []));
+    }
+
+    /// <summary>
+    ///     Each class follows from the similarities: far from every anchor, both close with the other sense as near,
+    ///     and everything else.
+    /// </summary>
+    /// <param name="same">The similarity to the nearest anchor of the labeled sense.</param>
+    /// <param name="other">The similarity to the nearest anchor of another sense.</param>
+    /// <param name="expected">The expected class.</param>
+    [Theory]
+    [InlineData(0.50, 0.60, ErrorDiagnosis.CoverageGap)]
+    [InlineData(0.80, 0.78, ErrorDiagnosis.Overlap)]
+    [InlineData(0.80, 0.90, ErrorDiagnosis.Overlap)]
+    [InlineData(0.90, 0.80, ErrorDiagnosis.Ambiguous)]
+    [InlineData(0.50, 0.90, ErrorDiagnosis.Ambiguous)]
+    [InlineData(0.90, 0.50, ErrorDiagnosis.Ambiguous)]
+    public void WordSenseBuilder_ErrorDiagnosis_Classify_FollowsThresholds(double same, double other, string expected)
+    {
+        Assert.Equal(expected, ErrorDiagnosis.Classify(same, other));
+    }
+
+    /// <summary>
+    ///     Misclassified and abstained rows are diagnosed with their class, correct answered rows are not listed, and
+    ///     the output is byte-identical on a repeat run.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_ErrorDiagnosis_Run_ClassifiesEachErrorAndIsByteIdentical()
+    {
+        // Act
+        var result = ErrorDiagnosis.RunAndWrite(SyntheticAnalysis(), Path.Combine(_root, "d1"));
+        ErrorDiagnosis.RunAndWrite(SyntheticAnalysis(), Path.Combine(_root, "d2"));
+
+        // Assert: one diagnosed row per error class, each with its sentence
+        var gap = Assert.Single(result.Rows, r => r.Sentence == GapSentence);
+        var overlap = Assert.Single(result.Rows, r => r.Sentence == OverlapSentence);
+        var ambiguous = Assert.Single(result.Rows, r => r.Sentence == AmbiguousSentence);
+        Assert.Equal(ErrorDiagnosis.CoverageGap, gap.Class);
+        Assert.Equal(ErrorDiagnosis.Overlap, overlap.Class);
+        Assert.Equal(ErrorDiagnosis.Ambiguous, ambiguous.Class);
+        Assert.Equal("a", overlap.Predicted);
+        Assert.Equal("a", ambiguous.Predicted);
+        Assert.True(overlap.Answered);
+        Assert.DoesNotContain(result.Rows, r => r.Sentence.Contains("holdout", StringComparison.Ordinal));
+
+        // Assert: an abstained row counts as an error, and the counts split by set
+        var holdout = Assert.Single(result.Lemmas, c => c.Set == AnalysisFiles.SetHoldout);
+        Assert.Equal((6, 3, 1, 1, 1), (holdout.N, holdout.Errors, holdout.CoverageGap, holdout.Overlap, holdout.Ambiguous));
+        var real = Assert.Single(result.Lemmas, c => c.Set == AnalysisFiles.SetReal);
+        Assert.Equal((1, 1, 0, 1, 0), (real.N, real.Errors, real.CoverageGap, real.Overlap, real.Ambiguous));
+        var eval = Assert.Single(result.Lemmas, c => c.Set == AnalysisFiles.SetRealEval);
+        Assert.Equal((1, 0), (eval.N, eval.Errors));
+        Assert.Equal("overlap", result.Rows.Single(r => r.Sentence == OverlapSentence).Class);
+        Assert.Equal("real", overlap.Origin);
+
+        // Assert: byte-identical files
+        foreach (var name in new[] { AnalysisFiles.Errors, AnalysisFiles.ErrorLemmas, AnalysisFiles.ErrorSummary })
+        {
+            Assert.Equal(File.ReadAllBytes(Path.Combine(_root, "d1", name)), File.ReadAllBytes(Path.Combine(_root, "d2", name)));
+        }
+
+        Assert.Contains(result.Statistics, s => s.Class == ErrorDiagnosis.Correct && s.Count == 4);
+    }
+
+    /// <summary>
+    ///     The recommendation follows the dominant error class and the expected gain follows its documented rule.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeakLemmas_Recommend_MapsDominantClass()
+    {
+        var gap = WeakLemmas.Recommend(20, 6, 2, 1, "no", 0.10);
+        var gapLimited = WeakLemmas.Recommend(20, 6, 2, 1, "yes", 0.01);
+        var overlapRising = WeakLemmas.Recommend(20, 1, 4, 1, "no", 0.10);
+        var overlapPlateaued = WeakLemmas.Recommend(20, 1, 4, 1, "yes", 0.0);
+        var labels = WeakLemmas.Recommend(20, 0, 1, 3, "no", 0.10);
+        var tie = WeakLemmas.Recommend(20, 2, 2, 2, "no", 0.10);
+
+        Assert.Equal((WeakLemmas.MoreSentences, 0.1), (gap.Recommendation, Math.Round(gap.ExpectedGain, 6)));
+        Assert.Equal(0.01, gapLimited.ExpectedGain, 6);
+        Assert.Equal((WeakLemmas.ConsumerRule, 0.2), (overlapRising.Recommendation, Math.Round(overlapRising.ExpectedGain, 6)));
+        Assert.Equal(WeakLemmas.StrongerEncoder, overlapPlateaued.Recommendation);
+        Assert.Equal((WeakLemmas.FixLabels, 0.15), (labels.Recommendation, Math.Round(labels.ExpectedGain, 6)));
+        Assert.Equal(WeakLemmas.MoreSentences, tie.Recommendation);
+    }
+
+    /// <summary>
+    ///     Only weak lemmas are ranked, weakest first, and the ranking is repeatable.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeakLemmas_Rank_OrdersWeakLemmasByScore()
+    {
+        LemmaErrorCounts[] counts =
+        [
+            new("good", "holdout", 20, 20, 0, 0, 0, 0, 0),
+            new("mid", "holdout", 20, 18, 1, 2, 2, 0, 0),
+            new("worst", "holdout", 20, 12, 4, 8, 1, 6, 1),
+            new("worst", "real", 5, 2, 2, 3, 0, 3, 0),
+            new("fragile", "holdout", 20, 20, 0, 0, 0, 0, 0),
+            new("fragile", "real-eval", 10, 7, 0, 3, 0, 0, 3),
+        ];
+        PlateauRow[] plateaus = [new("worst", "holdout", 14, 10, 0.6, 0.6, 0, 0, "yes"), new("mid", "holdout", 14, 10, 0.9, 0.8, 0.0025, 0.04, "no")];
+
+        var ranked = WeakLemmas.Rank(counts, plateaus);
+
+        Assert.Equal(["worst", "fragile", "mid"], ranked.Select(w => w.Lemma));
+        Assert.Equal([1, 2, 3], ranked.Select(w => w.Rank));
+        Assert.Equal(WeakLemmas.StrongerEncoder, ranked[0].Recommendation);
+        Assert.Equal(WeakLemmas.FixLabels, ranked[1].Recommendation);
+        Assert.Equal(WeakLemmas.MoreSentences, ranked[2].Recommendation);
+        Assert.Equal(0.1, ranked[1].ExpectedGain, 6);
+        Assert.Equal(0.04, ranked[2].ExpectedGain, 6);
+        Assert.Equal(0.6, ranked[0].HoldoutAccuracy, 6);
+        Assert.Equal(5, ranked[0].RealN);
+        Assert.Equal(WeakLemmas.Render(ranked), WeakLemmas.Render(WeakLemmas.Rank(counts, plateaus)));
+    }
+
+    /// <summary>
+    ///     The three commands run in sequence on an analysis directory and the report is byte-identical on a repeat.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeakLemmas_RunAndWrite_RanksFromFilesAndRendersStableReport()
+    {
+        // Arrange: the files of the other two commands
+        var directory = Path.Combine(_root, "analysis");
+        LearningCurve.RunAndWrite(SyntheticAnalysis(), directory, 2, 3);
+        ErrorDiagnosis.RunAndWrite(SyntheticAnalysis(), directory);
+
+        // Act
+        var ranked = WeakLemmas.RunAndWrite(directory);
+        var report = WeakLemmas.RenderReport(directory);
+        var again = WeakLemmas.RenderReport(directory);
+
+        // Assert
+        var weak = Assert.Single(ranked);
+        Assert.Equal("bank", weak.Lemma);
+        Assert.Equal(report, again);
+        Assert.StartsWith("rank\tlemma\t", File.ReadAllText(Path.Combine(directory, AnalysisFiles.Weak)), StringComparison.Ordinal);
+        Assert.StartsWith("# Learning Curve and Error Diagnosis", report, StringComparison.Ordinal);
+        Assert.Contains("## Conclusions", report, StringComparison.Ordinal);
+        Assert.Contains("bank", report, StringComparison.Ordinal);
+        Assert.DoesNotContain(_root, report, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     Loading the corpus from files encodes it with the encoder and reads origins from the provenance sidecar.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance()
+    {
+        // Arrange: a tiny corpus on disk, one holdout row marked real
+        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "bank", "the", "money", "river", "deep", "rich", "wide", "tall", "high", "low", "old", "new", "."];
+        string[] fillers = ["deep", "rich", "wide", "tall", "high", "low"];
+        var corpus = PrepareCorpus();
+        Write("corpus/anchors/a.tsv", string.Concat(fillers.Select(f => $"bank\tnoun\tthe {{bank}} money {f}.\nbank\tverb\tthe {{bank}} river {f}.\n")));
+        Directory.CreateDirectory(Path.Combine(corpus, "senses"));
+        Directory.CreateDirectory(Path.Combine(corpus, "provenance"));
+        Write("corpus/holdout/a.tsv", "bank\tnoun\tthe {bank} money old.\nbank\tverb\tthe {bank} river new.\n");
+        Write("corpus/realtext/eval-seed.tsv", "bank\tnoun\tthe {bank} money tall high.\nbank\tother\tthe {bank} river low.\n");
+        SenseInventory.WriteFile(Path.Combine(corpus, "senses", "base.tsv"), [new InventoryRow("bank", "noun", ["noun"], "base.tsv"), new InventoryRow("bank", "verb", ["verb"], "base.tsv")]);
+        RealImport.WriteProvenance(
+            Path.Combine(corpus, "provenance", "p.tsv"),
+            [new ProvenanceRow(PosAudit.RowId("bank", "the {bank} money old."), "bank", "noun", "holdout", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/1", "x", "real")]);
+        using var encoder = new FakeEncoder();
+
+        // Act
+        var data = AnalysisData.Load(encoder, new WordPieceTokenizer(vocabulary), corpus, null, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+        var filtered = AnalysisData.Load(encoder, new WordPieceTokenizer(vocabulary), corpus, new HashSet<string> { "other" }, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+
+        // Assert: the unknown eval sense is skipped; origins come from the sidecar, eval rows default to real
+        var lemma = Assert.Single(data.Lemmas);
+        Assert.Equal(3, lemma.Eval.Count);
+        Assert.Equal(["real", "llm-corpus", "real"], lemma.Eval.Select(e => e.Origin));
+        Assert.Empty(filtered.Lemmas);
     }
 }

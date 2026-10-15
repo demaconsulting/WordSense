@@ -57,6 +57,9 @@ sections:
           - WordSense-Builder-Corpus
           - WordSense-Builder-Trainer
           - WordSense-Builder-Importer
+          - WordSense-Builder-LearningCurve
+          - WordSense-Builder-ErrorDiagnosis
+          - WordSense-Builder-WeakLemmas
           - WordSense-Tokenizer-Parity
         tests:
           - WordSense_Classifier_Holdout_MeetsAccuracyGate

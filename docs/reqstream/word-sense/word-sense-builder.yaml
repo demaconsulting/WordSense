@@ -87,3 +87,46 @@ sections:
           - WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws
           - WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut
           - WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors
+
+      - id: WordSense-Builder-LearningCurve
+        title: >-
+          The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered
+          accuracy against the number of anchors per sense on the holdout and real-text rows, with a plateau
+          estimate, and the report shall be identical on repeat runs.
+        tags: [unit]
+        justification: |
+          Maintainers need to know whether more anchor sentences still help; a repeatable report makes
+          the figures auditable.
+        tests:
+          - WordSenseBuilder_LearningCurve_StableHash_IsFixed
+          - WordSenseBuilder_LearningCurve_Draw_CapsPerSenseAndIsRepeatable
+          - WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical
+          - WordSenseBuilder_LearningCurve_Run_RejectsNoSubsets
+          - WordSenseBuilder_LearningCurve_Run_SeparatesRealAndHoldoutSets
+          - WordSenseBuilder_LearningCurve_EstimatePlateau_ExtrapolatesAndFlagsPlateau
+          - WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance
+
+      - id: WordSense-Builder-ErrorDiagnosis
+        title: >-
+          The builder shall classify every misclassified or abstained evaluation sentence as a coverage gap, an
+          overlap or an ambiguous (label-noise suspect) case from its similarity to the nearest anchors.
+        tags: [unit]
+        justification: |
+          Different error causes need different remedies; the class tells maintainers whether to add sentences,
+          change the encoder or consumer rules, or fix labels.
+        tests:
+          - WordSenseBuilder_ErrorDiagnosis_Nearest_IsHighestDotProduct
+          - WordSenseBuilder_ErrorDiagnosis_Classify_FollowsThresholds
+          - WordSenseBuilder_ErrorDiagnosis_Run_ClassifiesEachErrorAndIsByteIdentical
+
+      - id: WordSense-Builder-WeakLemmas
+        title: >-
+          The builder shall rank weak lemmas from the diagnosis and learning curve and give each a recommendation
+          (more-sentences, consumer-rule, stronger-encoder or fix-labels) with an expected gain.
+        tags: [unit]
+        justification: |
+          A ranked, explained list directs corpus work to where it pays off most.
+        tests:
+          - WordSenseBuilder_WeakLemmas_Recommend_MapsDominantClass
+          - WordSenseBuilder_WeakLemmas_Rank_OrdersWeakLemmasByScore
+          - WordSenseBuilder_WeakLemmas_RunAndWrite_RanksFromFilesAndRendersStableReport

@@ -41,7 +41,7 @@ public static class Program
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
                     "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, " +
-                    "real-eval-import, real-eval, validate-provenance.");
+                    "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas.");
                 return 1;
             }
 
@@ -91,6 +91,12 @@ public static class Program
                     return 0;
                 case "validate-provenance":
                     return RunValidateProvenance(options, output, error);
+                case "learning-curve":
+                    return RunLearningCurve(options, output);
+                case "error-diagnosis":
+                    return RunErrorDiagnosis(options, output);
+                case "weak-lemmas":
+                    return RunWeakLemmas(options, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'.");
                     return 1;
@@ -195,6 +201,54 @@ public static class Program
             File.WriteAllText(reportPath, report, new UTF8Encoding(false));
         }
 
+        return 0;
+    }
+
+    /// <summary>
+    ///     Loads the corpus and encodes every sentence for the analysis commands.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <returns>The featurized corpus.</returns>
+    private static AnalysisData LoadAnalysis(Dictionary<string, string> options)
+    {
+        var corpus = Require(options, "corpus");
+        var location = WordSenseModelLocation.FromDirectory(Require(options, "model"));
+        var filter = options.TryGetValue("lemmas", out var list)
+            ? list.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet(StringComparer.Ordinal)
+            : null;
+        using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
+        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
+        return AnalysisData.Load(encoder, tokenizer, corpus, filter, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
+    }
+
+    private static int RunLearningCurve(Dictionary<string, string> options, TextWriter output)
+    {
+        var subsets = IntOption(options, "subsets", LearningCurve.DefaultSubsets);
+        var seed = IntOption(options, "seed", LearningCurve.DefaultSeed);
+        var outDirectory = Require(options, "out");
+        var lemmas = LearningCurve.RunAndWrite(LoadAnalysis(options), outDirectory, subsets, seed);
+        output.WriteLine($"Wrote the learning curves of {lemmas} lemmas to {outDirectory}.");
+        return 0;
+    }
+
+    private static int RunErrorDiagnosis(Dictionary<string, string> options, TextWriter output)
+    {
+        var outDirectory = Require(options, "out");
+        var result = ErrorDiagnosis.RunAndWrite(LoadAnalysis(options), outDirectory);
+        output.WriteLine($"Wrote the diagnosis of {result.Rows.Count} errors to {outDirectory}.");
+        return 0;
+    }
+
+    private static int RunWeakLemmas(Dictionary<string, string> options, TextWriter output)
+    {
+        var directory = Require(options, "analysis");
+        var ranked = WeakLemmas.RunAndWrite(directory);
+        if (options.TryGetValue("report", out var reportPath))
+        {
+            File.WriteAllText(reportPath, WeakLemmas.RenderReport(directory), new UTF8Encoding(false));
+        }
+
+        output.WriteLine($"Ranked {ranked.Count} weak lemmas in {directory}.");
         return 0;
     }
 

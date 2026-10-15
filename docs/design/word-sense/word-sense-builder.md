@@ -7,7 +7,9 @@
 `import-batches --source DIR --corpus DIR [--max N]`, the audit commands (`audit-export`, `audit-adjudicate`,
 `audit-merge`, `audit-report`, `validate-pos`), `apply-relabel` and the real-text commands (`real-gap`,
 `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-eval-import`, `real-eval`,
-`validate-provenance`).
+`validate-provenance`) and the analysis commands (`learning-curve --corpus DIR --model DIR --out DIR [--subsets N]
+[--seed N] [--lemmas a,b]`, `error-diagnosis --corpus DIR --model DIR --out DIR [--lemmas a,b]` and
+`weak-lemmas --analysis DIR [--report FILE]`).
 
 ## Data Model
 
@@ -76,6 +78,35 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a
   lemma that exists in the table; forms of lemmas without a classifier are omitted.
 
+### Analysis Commands
+
+The analysis commands (`LearningCurve`, `ErrorDiagnosis`, `WeakLemmas`, loading through `AnalysisData`) write
+tab-separated files and a markdown report under `corpus/audit/analysis/`. They encode every sentence once with the
+real model (as `build` does), center the features with the mean of all anchors and normalize them, so a dot product
+is a cosine similarity. Three evaluation sets are used: `holdout`, `real` (holdout rows whose provenance origin is
+`real`) and `real-eval` (`corpus/realtext/eval-seed.tsv`). Rows of a lemma without anchors or with an unknown sense
+are skipped.
+
+- `learning-curve` trains each lemma on k = 2, 4, 7, 10, 14 anchors per sense (capped at what a sense has) and on all
+  anchors, using `TableBuilder.Fit` with the same settings as `build`. Each k uses several subsets (default 5). A
+  subset is a partial Fisher-Yates draw per sense driven by a SplitMix32 generator seeded from the FNV-1a hash of the
+  UTF-8 bytes of lemma, k and subset index, combined with `--seed`; `string.GetHashCode` is never used, so the
+  output is byte-identical on repeat runs. The abstain margin is the one chosen for the full anchor set. Per lemma and
+  set it reports best-sense accuracy (mean, min, max over subsets), the answered rate and the answered accuracy; the
+  summary aggregates macro (mean of lemmas) and micro (pooled rows). The plateau estimate is the slope of accuracy per
+  added anchor per sense between the last point and the latest earlier point at least 3 anchors per sense away,
+  extrapolated linearly to twice the anchors and limited to the remaining error; a slope below 0.002 per anchor is
+  plateaued.
+- `error-diagnosis` examines each misclassified or abstained row. `s_same` and `s_other` are the cosine similarities
+  to the nearest anchor of the labeled sense and of any other sense of the lemma. The row is a `coverage-gap` when
+  both are below `FarSimilarity` (0.77, about the 10th percentile of `s_same` over correct rows); an `overlap` when both
+  reach it and `s_other` is at least `s_same` minus `OverlapBand` (0.05); otherwise `ambiguous` (label-noise suspect).
+- `weak-lemmas` reads those files without a model. A lemma is weak when holdout accuracy is below 95 % or, with at
+  least 3 real rows, real accuracy is below 90 %. Lemmas are ranked by the mean of the holdout and real error rates.
+  The recommendation follows the dominant class (ties: gap, overlap, ambiguous): `more-sentences`;
+  `stronger-encoder` for overlaps on a plateaued curve, otherwise `consumer-rule`; `fix-labels`. The expected gain is
+  the learning-curve gain at twice the anchors limited by the gap share, or the class share (an upper bound).
+
 ## Error Handling
 
 - `Program.Run` returns 0 on success and 1 on a usage or data error; it never lets such an error escape. Usage
@@ -84,6 +115,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   `UnauthorizedAccessException`) are written to the error writer as `Error: <message>`.
 - `import-batches` reports row- and lemma-level problems per batch and only exits 1 when a batch is `Invalid` or
   missing; an invalid batch imports nothing.
+- The analysis commands need their inputs: a missing corpus, model or analysis file is an `IOException` and exits 1; a
+  `--subsets` below 1 is an `ArgumentException`. `KeyNotFoundException` and `IndexOutOfRangeException` are deliberately
+  not caught, so an internal inconsistency is not hidden.
 - `validate-provenance` writes one line per problem to the error writer and exits 1 when there is any problem,
   otherwise 0.
 - Readers of tab-separated files (`rows.tsv`, judge input and answer files, `dropped-rows.tsv`, the candidate and
@@ -95,8 +129,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
 ## Key Methods and Callers
 
 `Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `PosAudit`, `Relabeler`, `RealPlan`,
-`RealJudge`, `RealImport` or `RealEval`. It is called by `Main` and by the builder tests; the tool is run by hand
-and by the corpus maintenance workflow, never by the library or the CI build.
+`RealJudge`, `RealImport`, `RealEval`, `LearningCurve`, `ErrorDiagnosis` or `WeakLemmas`. It is called by `Main`
+and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by the library or
+the CI build.
 
 ## Interactions
 

@@ -150,6 +150,8 @@ sentences that were judged blind and never used for training) the best sense is 
 held-out sentences of the same lemmas. The lemmas `bow`,
 `lead`, `tear`, `closer`, `upsetting`, `polish` and `orient` are supported with split senses (for example `bow`
 bend-noun and bend-verb share the group `bend`).
+The build notes also report how accuracy grows with the number of anchor sentences per sense, and which lemmas are
+weakest and why (coverage gaps, overlapping senses or suspect labels); see "Learning Curve and Error Diagnosis".
 A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four
 threads on a development workstation; run the `Benchmark` test category to measure your hardware).
 
