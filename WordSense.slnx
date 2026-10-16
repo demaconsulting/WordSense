@@ -1,9 +1,11 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/DemaConsulting.WordSense/DemaConsulting.WordSense.csproj" />
+    <Project Path="src/DemaConsulting.WordSense.MiniLM/DemaConsulting.WordSense.MiniLM.csproj" />
   </Folder>
   <Folder Name="/test/">
     <Project Path="test/DemaConsulting.WordSense.Tests/DemaConsulting.WordSense.Tests.csproj" />
+    <Project Path="test/DemaConsulting.WordSense.MiniLM.Tests/DemaConsulting.WordSense.MiniLM.Tests.csproj" />
     <Project Path="test/WordSense.Builder.Tests/WordSense.Builder.Tests.csproj" />
   </Folder>
   <Folder Name="/tools/">

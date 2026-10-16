@@ -1,4 +1,4 @@
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     Reports the progress of a model download.

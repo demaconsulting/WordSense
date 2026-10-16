@@ -1,4 +1,4 @@
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     The result of tokenizing a text: WordPiece ids together with the span of original text each

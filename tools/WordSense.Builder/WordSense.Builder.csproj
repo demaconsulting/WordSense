@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\DemaConsulting.WordSense\DemaConsulting.WordSense.csproj" />
+    <ProjectReference Include="..\..\src\DemaConsulting.WordSense.MiniLM\DemaConsulting.WordSense.MiniLM.csproj" />
   </ItemGroup>
 
 </Project>

@@ -174,10 +174,16 @@ internal sealed record BuildReport(
 }
 
 /// <summary>
-///     The built table and its report.
+///     The built tables and the report.
 /// </summary>
-/// <param name="Table">The table.</param>
+/// <param name="Table">The lexicon table.</param>
+/// <param name="Weights">The weights table trained for the model and the lexicon table.</param>
 /// <param name="Report">The report.</param>
 /// <param name="DictionaryWords">The number of dictionary words in the table.</param>
 /// <param name="ShadowedWords">The number of dictionary words dropped because a trained lemma or a form spells them.</param>
-internal sealed record BuildResult(WordSenseTable Table, BuildReport Report, int DictionaryWords = 0, int ShadowedWords = 0);
+internal sealed record BuildResult(
+    WordSenseTable Table,
+    WordSenseWeightsTable Weights,
+    BuildReport Report,
+    int DictionaryWords = 0,
+    int ShadowedWords = 0);

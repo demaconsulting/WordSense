@@ -95,21 +95,18 @@ internal sealed class AnalysisData
     /// <summary>
     ///     Reads the corpus, encodes every sentence once and prepares the per-lemma data.
     /// </summary>
-    /// <param name="encoder">The encoder.</param>
-    /// <param name="tokenizer">The tokenizer that matches the encoder.</param>
+    /// <param name="model">The model.</param>
     /// <param name="corpus">The corpus directory.</param>
     /// <param name="lemmaFilter">The lemmas to analyze, or <see langword="null"/> for all.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The prepared data.</returns>
     public static AnalysisData Load(
-        IWordSenseEncoder encoder,
-        WordPieceTokenizer tokenizer,
+        IWordSenseModel model,
         string corpus,
         IReadOnlySet<string>? lemmaFilter,
         TableBuilderOptions options)
     {
-        ArgumentNullException.ThrowIfNull(encoder);
-        ArgumentNullException.ThrowIfNull(tokenizer);
+        ArgumentNullException.ThrowIfNull(model);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var evalPath = Path.Combine(corpus, RealEval.EvalFile);
@@ -128,7 +125,7 @@ internal sealed class AnalysisData
             }
         }
 
-        return Create(rows => TableBuilder.Pool(encoder, tokenizer, rows, options), anchors, holdout, realEval, origins, inventory, options, lemmaFilter);
+        return Create(rows => TableBuilder.Pool(model, rows, options), anchors, holdout, realEval, origins, inventory, options, lemmaFilter);
     }
 
     /// <summary>

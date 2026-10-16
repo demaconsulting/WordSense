@@ -1,7 +1,7 @@
 using System.Net;
 using System.Text;
 
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     Describes a user-supplied HTTP(S) mirror that is tried before any public download source, plus
@@ -12,8 +12,8 @@ namespace DemaConsulting.WordSense;
 ///     Some environments block public download hosts. A mirror lets such an environment serve the model
 ///     files from an internal location. Files are requested at
 ///     <c>{BaseUri}/{model-id}/{file-name}</c> where the model id is the literal folder name
-///     <c>all-MiniLM-L6-v2</c> and the files are <c>model_int8.onnx</c> and <c>vocab.txt</c> (for example
-///     <c>https://mirror.example/models/all-MiniLM-L6-v2/vocab.txt</c>); only the base is replaced, the
+///     <c>all-MiniLM-L6-v2-int8</c> and the files are <c>model_int8.onnx</c> and <c>vocab.txt</c> (for example
+///     <c>https://mirror.example/models/all-MiniLM-L6-v2-int8/vocab.txt</c>); only the base is replaced, the
 ///     relative layout stays fixed. Each file must match its pinned SHA-256; a mirror copy that does not
 ///     match is discarded and the mirror is skipped for that file, so the next source (Hugging Face, then
 ///     GitHub) is tried. The mirror can be configured programmatically through
@@ -39,11 +39,11 @@ namespace DemaConsulting.WordSense;
 ///     // Or read WORDSENSE_MIRROR_URL (and optional credentials) from the environment; null when unset
 ///     DownloadMirror? fromEnvironment = DownloadMirror.FromEnvironment(Environment.GetEnvironmentVariable);
 ///
-///     var options = new WordSenseClassifierOptions
+///     var options = new MiniLMWordSenseOptions
 ///     {
 ///         Downloader = new WordSenseModelDownloaderOptions { Mirror = mirror },
 ///     };
-///     using var classifier = await WordSenseClassifier.CreateAsync(options);
+///     using var classifier = await MiniLMWordSense.CreateClassifierAsync(options);
 ///     </code>
 /// </example>
 public sealed record DownloadMirror

@@ -349,8 +349,7 @@ internal static class LexiconEvaluation
         var heldMap = held.ToDictionary(h => h.Word, h => h.Mask, StringComparer.Ordinal);
 
         // A copy without rules, so that an absent word can be attributed to the single rule that derives it
-        var exact = new WordSenseTable(
-            table.ModelId, table.ModelSha256, table.Dimension, table.Mean.ToArray(), table.Lemmas.ToList(), table.Forms, LemmaMorphologyRules.None);
+        var exact = new WordSenseTable(table.Lemmas.ToList(), table.Forms, LemmaMorphologyRules.None);
         LemmaMorphologyRules[] ruleOrder = [LemmaMorphologyRules.Plural, LemmaMorphologyRules.PastTense, LemmaMorphologyRules.Adverb];
         foreach (var rule in ruleOrder)
         {
@@ -358,7 +357,7 @@ internal static class LexiconEvaluation
         }
 
         // Every class that the table answers directly (a dictionary word with exactly one part of speech) is enabled
-        foreach (var lemma in table.Lemmas.Where(l => l.Weights is null))
+        foreach (var lemma in table.Lemmas.Where(l => !l.IsContextual))
         {
             var parts = lemma.Senses.Select(s => s.Pos).Distinct().ToArray();
             if (parts.Length == 1)
@@ -381,9 +380,9 @@ internal static class LexiconEvaluation
                 }
 
                 // What the real classifier would do with the word
-                if (table.TryResolve(token.Form, true, out var real) && (real.Entry.Weights is not null || WordSenseClassifier.CaseAllowed(words, i)))
+                if (table.TryResolve(token.Form, true, out var real) && (real.Entry.IsContextual || WordSenseClassifier.CaseAllowed(words, i)))
                 {
-                    needsEncoder |= real.Entry.Weights is not null;
+                    needsEncoder |= real.Entry.IsContextual;
                 }
 
                 Score(result, exact, ruleOrder, heldMap, words, i, token);
@@ -441,7 +440,7 @@ internal static class LexiconEvaluation
             }
         }
 
-        if (resolution.Entry.Weights is not null)
+        if (resolution.Entry.IsContextual)
         {
             Count(result, "trained lemma (context)");
             return;

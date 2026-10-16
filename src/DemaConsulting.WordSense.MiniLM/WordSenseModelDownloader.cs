@@ -3,7 +3,7 @@ using System.Net.Http.Headers;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     Obtains the encoder model files, verifying each against its pinned SHA-256.
@@ -25,8 +25,8 @@ namespace DemaConsulting.WordSense;
 ///     };
 ///
 ///     WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync(options);
-///     using var classifier = await WordSenseClassifier.CreateAsync(
-///         new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+///     using var classifier = await MiniLMWordSense.CreateClassifierAsync(
+///         new MiniLMWordSenseOptions { ModelDirectory = location.Directory });
 ///     </code>
 /// </example>
 public static class WordSenseModelDownloader
@@ -168,7 +168,7 @@ public static class WordSenseModelDownloader
         {
             sources.Add((
                 "github-lfs",
-                Combine(options.GitHubLfsBaseUri, Uri.EscapeDataString(options.GitHubLfsRef), "model", escaped),
+                Combine(options.GitHubLfsBaseUri, Uri.EscapeDataString(options.GitHubLfsRef), "model", Uri.EscapeDataString(WordSenseModelCatalog.ModelId), escaped),
                 null));
         }
 

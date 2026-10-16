@@ -1,4 +1,4 @@
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     The location of a verified set of model files on disk.
@@ -25,9 +25,9 @@ public sealed record WordSenseModelLocation(string Directory, string ModelPath, 
     /// <example>
     ///     <code>
     ///     // The directory holds model_int8.onnx and vocab.txt, for example copied from another machine
-    ///     WordSenseModelLocation location = WordSenseModelLocation.FromDirectory("/models/all-MiniLM-L6-v2");
-    ///     using var classifier = await WordSenseClassifier.CreateAsync(
-    ///         new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+    ///     WordSenseModelLocation location = WordSenseModelLocation.FromDirectory("/models/all-MiniLM-L6-v2-int8");
+    ///     using var classifier = await MiniLMWordSense.CreateClassifierAsync(
+    ///         new MiniLMWordSenseOptions { ModelDirectory = location.Directory });
     ///     </code>
     /// </example>
     public static WordSenseModelLocation FromDirectory(string directory)

@@ -1,21 +1,21 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Advanced: one lemma of the table, with its senses and, when the table has a trained classifier for it, the
-///     <see cref="SenseWeights"/> that choose between them.
+///     Advanced: one lemma of the table, with its senses and whether it needs context to choose between them.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     An entry with one sense and no weights is a dictionary word; an entry with several senses and no weights is a
-///     dictionary word that needs context nobody can supply (only its candidates are known); an entry with weights
-///     is a lemma the classifier can disambiguate. Applications normally use <see cref="IWordSenseClassifier"/>.
+///     An entry with one sense that needs no context is a dictionary word; an entry with several senses that needs no
+///     context is a dictionary word whose candidates are known but which nobody can resolve (only its candidates are
+///     known); a context entry (<see cref="IsContextual"/>) is a lemma that an encoder model's
+///     <see cref="WordSenseWeightsTable"/> can disambiguate. Applications normally use <see cref="IWordSenseClassifier"/>.
 ///     </para>
 ///     <para>
 ///     The senses must agree: a (part of speech, meaning) pair is unique; either all or none carry a meaning; a lemma
 ///     with meanings has at least two distinct ones; a meaning has one respelling and distinct meanings have distinct
-///     respellings. An entry without weights carries no meanings. Weights need at least two senses, and as many as
-///     <see cref="SenseWeights.SenseCount"/>. The order in which the senses are supplied defines the order of the
-///     weight rows. Instances are immutable and thread-safe.
+///     respellings. A dictionary entry carries no meanings. A context entry needs at least two senses. The order in
+///     which the senses are supplied defines the order of the weight rows of every model. Instances are immutable
+///     and thread-safe.
 ///     </para>
 /// </remarks>
 public sealed class LemmaEntry
@@ -25,13 +25,13 @@ public sealed class LemmaEntry
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
     /// <param name="senses">The sense definitions, at least one; their order defines the weight-row order.</param>
-    /// <param name="weights">The trained classifier, or null for a dictionary lemma.</param>
+    /// <param name="isContextual">True for a lemma that needs context; false for a dictionary lemma.</param>
     /// <exception cref="ArgumentNullException">
     ///     Thrown when <paramref name="lemma"/> or <paramref name="senses"/> is null, or an element of
     ///     <paramref name="senses"/> is null.
     /// </exception>
-    /// <exception cref="ArgumentException">Thrown when the senses are inconsistent or do not match the weights.</exception>
-    public LemmaEntry(string lemma, IReadOnlyList<SenseDefinition> senses, SenseWeights? weights = null)
+    /// <exception cref="ArgumentException">Thrown when the senses are inconsistent.</exception>
+    public LemmaEntry(string lemma, IReadOnlyList<SenseDefinition> senses, bool isContextual = false)
     {
         ArgumentNullException.ThrowIfNull(lemma);
         ArgumentNullException.ThrowIfNull(senses);
@@ -50,21 +50,21 @@ public sealed class LemmaEntry
 
         ValidateSet(senses);
 
-        if (weights is null)
+        if (!isContextual)
         {
             if (senses.Any(s => s.Meaning is not null))
             {
-                throw new ArgumentException("A lemma without weights cannot carry meanings.", nameof(senses));
+                throw new ArgumentException("A dictionary lemma cannot carry meanings.", nameof(senses));
             }
         }
-        else if (senses.Count < 2 || senses.Count != weights.SenseCount)
+        else if (senses.Count < 2)
         {
-            throw new ArgumentException("The weights do not match the number of senses.", nameof(weights));
+            throw new ArgumentException("A lemma that needs context has at least two senses.", nameof(senses));
         }
 
         Lemma = lemma;
         Senses = senses.ToArray();
-        Weights = weights;
+        IsContextual = isContextual;
 
         // One shared answer per sense, created once
         Candidates = Senses
@@ -154,7 +154,8 @@ public sealed class LemmaEntry
     public bool IsHeteronym => Senses[0].Meaning is not null;
 
     /// <summary>
-    ///     Gets the trained classifier of the lemma, or null for a dictionary lemma that has none.
+    ///     Gets a value indicating whether the lemma needs context to choose between its senses, so that an encoder
+    ///     model can classify it. False for a dictionary lemma.
     /// </summary>
-    public SenseWeights? Weights { get; }
+    public bool IsContextual { get; }
 }

@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
 
 namespace WordSense.Builder;
 
@@ -70,15 +71,17 @@ internal static class RealEval
     ///     Measures the embedded table on the real sentences and on the project-authored holdout of the same lemmas.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
-    /// <param name="modelDirectory">The verified model directory.</param>
+    /// <param name="model">The encoder model.</param>
+    /// <param name="weights">The embedded weights trained for the model.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>The Markdown report.</returns>
-    public static async Task<string> RunAsync(string corpus, string modelDirectory, CancellationToken cancellationToken)
+    public static async Task<string> RunAsync(string corpus, IWordSenseModel model, WordSenseWeightsTable weights, CancellationToken cancellationToken)
     {
-        using var classifier = await WordSenseClassifier.CreateAsync(
-            new WordSenseClassifierOptions { ModelDirectory = modelDirectory, AbstainMarginScale = 0 }, cancellationToken).ConfigureAwait(false);
+        var table = new Embedded(WordSenseTable.LoadEmbedded(), weights);
+
+        // The classifier runs with a zero abstain scale so that the best sense is always reported
+        using var classifier = new WordSenseClassifier(table.Table, model, weights, new WordSenseClassifierOptions { AbstainMarginScale = 0 });
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var table = WordSenseTable.LoadEmbedded();
         var provenance = new Dictionary<string, ProvenanceRow>(StringComparer.Ordinal);
         foreach (var file in Directory.GetFiles(Path.Combine(corpus, "provenance"), "*.tsv"))
         {
@@ -127,7 +130,7 @@ internal static class RealEval
     private static async Task<List<Scored>> ScoreAsync(
         WordSenseClassifier classifier,
         SenseInventory inventory,
-        WordSenseTable table,
+        Embedded table,
         IReadOnlyList<CorpusRow> rows,
         Dictionary<string, ProvenanceRow> provenance,
         CancellationToken token)
@@ -137,7 +140,7 @@ internal static class RealEval
         {
             var senses = inventory.RowsOf(row.Lemma);
             var gold = senses.FirstOrDefault(s => s.Label == row.Sense);
-            if (gold is null || !table.TryGetLemma(row.Lemma, out var model))
+            if (gold is null || !table.Table.TryGetLemma(row.Lemma, out var model) || !table.Weights.TryGet(row.Lemma, out var senseWeights))
             {
                 continue;
             }
@@ -150,10 +153,16 @@ internal static class RealEval
                 continue;
             }
 
-            var predicted = senses.First(s => s.Pos == best.PartOfSpeech && s.Meaning == best.Pronunciation?.Meaning);
+            // An answer that names no sense of this lemma's inventory (for example from a different lemma) is not scored
+            var predicted = senses.FirstOrDefault(s => s.Pos == best.PartOfSpeech && s.Meaning == best.Pronunciation?.Meaning);
+            if (predicted is null)
+            {
+                continue;
+            }
+
             var source = provenance.TryGetValue(PosAudit.RowId(row.Lemma, row.Sentence), out var p) ? p.Source : "llm-corpus";
             var meaningCorrect = model.IsHeteronym ? predicted.Meaning == gold.Meaning : predicted.Label == gold.Label;
-            result.Add(new Scored(row.Lemma, row.Sense, predicted.Label, source, predicted.Label == row.Sense, meaningCorrect, details.Margin >= model.Weights!.AbstainMargin, row.Sentence));
+            result.Add(new Scored(row.Lemma, row.Sense, predicted.Label, source, predicted.Label == row.Sense, meaningCorrect, details.Margin >= senseWeights.AbstainMargin, row.Sentence));
         }
 
         return result;
@@ -213,6 +222,8 @@ internal static class RealEval
         var answered = rows.Where(r => r.Answered).ToList();
         return $"| {name} | {rows.Count} | {Pct(rows.Count(r => r.Correct), rows.Count)} | {Pct(rows.Count(r => r.GroupCorrect), rows.Count)} | {Pct(answered.Count, rows.Count)} | {Pct(answered.Count(r => r.Correct), answered.Count)} |";
     }
+
+    private sealed record Embedded(WordSenseTable Table, WordSenseWeightsTable Weights);
 
     private sealed record Scored(string Lemma, string Gold, string Predicted, string Source, bool Correct, bool GroupCorrect, bool Answered, string Sentence);
 }

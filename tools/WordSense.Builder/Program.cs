@@ -1,5 +1,6 @@
 using System.Text;
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
 
 namespace WordSense.Builder;
 
@@ -7,8 +8,10 @@ namespace WordSense.Builder;
 ///     Entry point of the build-time tool that trains the embedded classifier table.
 /// </summary>
 /// <remarks>
-///     Commands: <c>build --model DIR --corpus DIR --output FILE [--report FILE]</c> trains and writes the
-///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
+///     Commands: <c>build --model DIR [--model-id ID] --corpus DIR --output FILE --weights FILE [--report FILE]</c>
+///     trains the weights of the model <c>DIR/ID</c> and writes the lexicon table and the weights table;
+///     the analysis commands also take <c>--model DIR [--model-id ID]</c>;
+///     <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
 ///     <c>validate-pos --corpus DIR</c> checks the part-of-speech and pronunciation rules of every lemma;
 ///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide;
 ///     <c>import-moby --input FILE [--corrections FILE] [--classes FILE] [--output FILE]</c> derives the dictionary
@@ -95,7 +98,14 @@ public static class Program
                         perSense));
                     return 0;
                 case "real-eval":
-                    File.WriteAllText(Require(options, "report"), RealEval.RunAsync(Require(options, "corpus"), Require(options, "model"), CancellationToken.None).GetAwaiter().GetResult(), new UTF8Encoding(false));
+                    using (var evalModel = OpenModel(options))
+                    {
+                        File.WriteAllText(
+                            Require(options, "report"),
+                            RealEval.RunAsync(Require(options, "corpus"), evalModel, MiniLMWordSense.LoadWeights(), CancellationToken.None).GetAwaiter().GetResult(),
+                            new UTF8Encoding(false));
+                    }
+
                     output.WriteLine("Wrote the real-text evaluation.");
                     return 0;
                 case "validate-provenance":
@@ -282,12 +292,12 @@ public static class Program
     private static int RunBuild(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
-        var modelDirectory = Require(options, "model");
         var outputPath = Require(options, "output");
+        var weightsPath = Require(options, "weights");
 
         // The dictionary settings are checked first, so that a usage error is reported before any heavy work
         var (words, rules) = ReadLexiconSettings(options, corpus);
-        var location = WordSenseModelLocation.FromDirectory(modelDirectory);
+        using var model = OpenModel(options);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
@@ -301,25 +311,48 @@ public static class Program
         output.WriteLine($"Corpus: {anchors.Count} anchors, {holdout.Count} holdout sentences, {inventory.Rows.Count()} senses of {inventory.LemmaCount} lemmas.");
 
         var threads = Math.Max(1, Environment.ProcessorCount / 2);
-        using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
-        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
-        var result = TableBuilder.Build(encoder, tokenizer, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: threads), words, rules);
+        var result = TableBuilder.Build(model, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: threads), words, rules);
 
         var table = result.Table.ToArray();
+        var weights = result.Weights.ToArray();
         var path = Path.GetFullPath(outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, table);
+        var fullWeightsPath = Path.GetFullPath(weightsPath);
+        Directory.CreateDirectory(Path.GetDirectoryName(fullWeightsPath)!);
+        File.WriteAllBytes(fullWeightsPath, weights);
 
         var report = result.Report.Render();
         output.Write(report);
         output.WriteLine($"Dictionary: {result.DictionaryWords} words embedded, {result.ShadowedWords} dropped because a trained lemma or form spells them; morphology rules: {rules}.");
-        output.WriteLine($"Wrote {table.Length} bytes for {result.Table.ContextLemmas.Count} trained lemmas and {result.DictionaryWords} dictionary words to {path}.");
+        output.WriteLine($"Wrote {table.Length} bytes for {result.Table.ContextLemmas.Count} context lemmas and {result.DictionaryWords} dictionary words to {path} (lexicon SHA-256 {result.Table.Sha256}).");
+        output.WriteLine($"Wrote {weights.Length} bytes of weights for model {result.Weights.ModelId} (model SHA-256 {result.Weights.ModelSha256}) to {fullWeightsPath}.");
         if (options.TryGetValue("report", out var reportPath))
         {
             File.WriteAllText(reportPath, report, new UTF8Encoding(false));
         }
 
         return 0;
+    }
+
+    /// <summary>
+    ///     Opens the encoder model named by <c>--model-id</c> (default <c>all-MiniLM-L6-v2-int8</c>) in the folder
+    ///     <c>{--model}/{model-id}</c>. Only models that have a package can be opened.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <returns>The model, which the caller disposes.</returns>
+    /// <exception cref="ArgumentException">Thrown when the model id is not a known model.</exception>
+    internal static MiniLMWordSenseModel OpenModel(Dictionary<string, string> options)
+    {
+        var root = Require(options, "model");
+        var id = options.GetValueOrDefault("model-id", MiniLMWordSense.ModelId);
+        if (!string.Equals(id, MiniLMWordSense.ModelId, StringComparison.Ordinal))
+        {
+            throw new ArgumentException($"Unknown model id '{id}'; the known model is '{MiniLMWordSense.ModelId}'.");
+        }
+
+        var location = WordSenseModelLocation.FromDirectory(Path.Combine(root, id));
+        return new MiniLMWordSenseModel(location.ModelPath, location.VocabularyPath, 256, 1);
     }
 
     /// <summary>
@@ -330,13 +363,11 @@ public static class Program
     private static AnalysisData LoadAnalysis(Dictionary<string, string> options)
     {
         var corpus = Require(options, "corpus");
-        var location = WordSenseModelLocation.FromDirectory(Require(options, "model"));
         var filter = options.TryGetValue("lemmas", out var list)
             ? list.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet(StringComparer.Ordinal)
             : null;
-        using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
-        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
-        return AnalysisData.Load(encoder, tokenizer, corpus, filter, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
+        using var model = OpenModel(options);
+        return AnalysisData.Load(model, corpus, filter, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
     }
 
     private static int RunLearningCurve(Dictionary<string, string> options, TextWriter output)
@@ -400,21 +431,18 @@ public static class Program
     private static int RunNounVerbGate(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
-        var modelDirectory = Require(options, "model");
         var apply = BoolOption(options, "apply");
         var defaults = new GatePolicy();
         var policy = new GatePolicy(
             DoubleOption(options, "min-best", defaults.MinBestSense, 0, 1),
             DoubleOption(options, "min-sense", defaults.MinSenseAnswered, 0, 1),
             DoubleOption(options, "min-coverage", defaults.MinCoverage, 0, 1));
-        var location = WordSenseModelLocation.FromDirectory(modelDirectory);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
-        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
-        var result = TableBuilder.Build(encoder, tokenizer, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
+        using var model = OpenModel(options);
+        var result = TableBuilder.Build(model, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
         var results = NounVerbGate.Evaluate(result.Report.Lemmas, NounVerbGate.ReadScope(corpus), policy);
         var failed = results.Where(r => !r.Passed).ToList();
         output.WriteLine($"Noun/verb lemmas: {results.Count}; passed {results.Count - failed.Count}; failed {failed.Count}.");

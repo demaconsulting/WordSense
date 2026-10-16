@@ -54,8 +54,7 @@ internal static class TableBuilder
     /// <summary>
     ///     Builds a table from corpus rows.
     /// </summary>
-    /// <param name="encoder">The encoder used to featurize sentences.</param>
-    /// <param name="tokenizer">The tokenizer that matches the encoder.</param>
+    /// <param name="model">The model used to featurize sentences.</param>
     /// <param name="anchors">Training sentences.</param>
     /// <param name="holdout">Evaluation sentences; never used for training or margin selection.</param>
     /// <param name="forms">The form to lemma rows.</param>
@@ -63,11 +62,10 @@ internal static class TableBuilder
     /// <param name="options">The builder settings.</param>
     /// <param name="lexicon">The dictionary words, in ordinal order, or null for none.</param>
     /// <param name="morphology">The morphology rules the table enables.</param>
-    /// <returns>The table and the report.</returns>
+    /// <returns>The lexicon table, the weights table for the model, and the report.</returns>
     /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
     public static BuildResult Build(
-        IWordSenseEncoder encoder,
-        WordPieceTokenizer tokenizer,
+        IWordSenseModel model,
         IReadOnlyList<CorpusRow> anchors,
         IReadOnlyList<CorpusRow> holdout,
         IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms,
@@ -76,17 +74,16 @@ internal static class TableBuilder
         IReadOnlyList<(string Word, byte Mask)>? lexicon = null,
         LemmaMorphologyRules morphology = LemmaMorphologyRules.Default)
     {
-        ArgumentNullException.ThrowIfNull(encoder);
-        ArgumentNullException.ThrowIfNull(tokenizer);
+        ArgumentNullException.ThrowIfNull(model);
         ArgumentNullException.ThrowIfNull(inventory);
         Corpus.EnsureDisjoint(anchors, holdout);
         inventory.Validate(anchors, holdout, forms);
         var warnings = new List<string>();
 
         // Featurize: pooled vectors first, because the anchor mean must be known before centering
-        var anchorPooled = Pool(encoder, tokenizer, anchors, options);
-        var holdoutPooled = Pool(encoder, tokenizer, holdout, options);
-        var dim = encoder.HiddenSize;
+        var anchorPooled = Pool(model, anchors, options);
+        var holdoutPooled = Pool(model, holdout, options);
+        var dim = model.HiddenSize;
         var mean = new float[dim];
         foreach (var pooled in anchorPooled)
         {
@@ -122,6 +119,7 @@ internal static class TableBuilder
         var fallback = fallbackMargins.Count == 0 ? 0f : fallbackMargins[fallbackMargins.Count / 2];
 
         var models = new List<LemmaEntry>();
+        var weightsByLemma = new SortedDictionary<string, SenseWeights>(StringComparer.Ordinal);
         var reports = new List<LemmaReport>();
         var bySource = new Dictionary<string, GroupStats>(StringComparer.Ordinal);
         var accuracyEvaluator = new AccuracyEvaluator();
@@ -130,8 +128,10 @@ internal static class TableBuilder
             var t = trained[k];
             var lemma = lemmas[k].Key;
             var margin = t.Cv ? t.Margin : fallback;
-            var model = new LemmaEntry(lemma, t.Senses, new SenseWeights(t.Kind, t.Weights, t.Bias, margin, dim));
-            models.Add(model);
+            var entry = new LemmaEntry(lemma, t.Senses, true);
+            var senseWeights = new SenseWeights(t.Kind, t.Weights, t.Bias, margin, dim);
+            models.Add(entry);
+            weightsByLemma[lemma] = senseWeights;
 
             var counts = new int[t.Senses.Length];
             foreach (var label in t.Labels)
@@ -145,18 +145,18 @@ internal static class TableBuilder
             var bySense = new SortedDictionary<string, int[]>(StringComparer.Ordinal);
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
-                var (best, rowMargin) = model.Weights!.Score(holdoutFeatures[i]);
+                var (best, rowMargin) = senseWeights.Score(holdoutFeatures[i]);
                 var right = string.Equals(t.Names[best], row.Sense, StringComparison.Ordinal);
                 var goldIndex = Array.FindIndex(t.Names, s => s == row.Sense);
                 var isAnswered = rowMargin >= margin;
 
                 // The meaning level equals the sense level for a lemma that is not a heteronym
-                var meaningRight = model.IsHeteronym
-                    ? string.Equals(model.Senses[best].Meaning, model.Senses[goldIndex].Meaning, StringComparison.Ordinal)
+                var meaningRight = entry.IsHeteronym
+                    ? string.Equals(entry.Senses[best].Meaning, entry.Senses[goldIndex].Meaning, StringComparison.Ordinal)
                     : right;
                 meaningCorrect += meaningRight ? 1 : 0;
-                accuracyEvaluator.Add(row.Source, model, best, goldIndex, isAnswered);
-                lemmaAccuracy.Add(row.Source, model, best, goldIndex, isAnswered);
+                accuracyEvaluator.Add(row.Source, entry, best, goldIndex, isAnswered);
+                lemmaAccuracy.Add(row.Source, entry, best, goldIndex, isAnswered);
                 if (!bySense.TryGetValue(row.Sense, out var senseCounts))
                 {
                     bySense[row.Sense] = senseCounts = new int[4];
@@ -179,7 +179,7 @@ internal static class TableBuilder
             var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), meaningCorrect,
                 bySense.Select(p => new SenseStats(p.Key, p.Value[0], p.Value[1], p.Value[2], p.Value[3])).ToList(),
                 lemmaReport.Pos,
-                model.IsHeteronym ? lemmaReport.Pronunciation : null);
+                entry.IsHeteronym ? lemmaReport.Pronunciation : null);
             reports.Add(report);
             AddWarnings(report, t.Names, holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }
@@ -187,10 +187,11 @@ internal static class TableBuilder
         // The trained lemmas take precedence over the dictionary: a word that a trained lemma or a form spells is dropped
         var formMap = BuildForms(forms, models);
         var merge = LexiconSource.Merge(models, formMap, lexicon ?? []);
-        var table = new WordSenseTable(
-            WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, merge.Entries, formMap, morphology);
+        var table = new WordSenseTable(merge.Entries, formMap, morphology);
+        var weightsTable = new WordSenseWeightsTable(model.ModelId, model.ModelSha256, table.Sha256, dim, mean, weightsByLemma);
         return new BuildResult(
             table,
+            weightsTable,
             new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, accuracyEvaluator.ToReport()),
             merge.Entries.Count - models.Count,
             merge.Shadowed);
@@ -261,23 +262,18 @@ internal static class TableBuilder
     /// <summary>
     ///     Encodes every row and pools the hidden states of its target word.
     /// </summary>
-    /// <param name="encoder">The encoder.</param>
-    /// <param name="tokenizer">The tokenizer.</param>
+    /// <param name="model">The model.</param>
     /// <param name="rows">The rows.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>One pooled vector per row, in row order.</returns>
-    internal static double[][] Pool(IWordSenseEncoder encoder, WordPieceTokenizer tokenizer, IReadOnlyList<CorpusRow> rows, TableBuilderOptions options)
+    internal static double[][] Pool(IWordSenseModel model, IReadOnlyList<CorpusRow> rows, TableBuilderOptions options)
     {
         var result = new double[rows.Count][];
         Parallel.For(0, rows.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, i =>
         {
             var row = rows[i];
-            var tokens = tokenizer.TokenizeWords(row.Words);
-            var first = tokens.WordFirst[row.TargetWordIndex];
-            var last = tokens.WordEnd[row.TargetWordIndex];
-            var window = tokens.BuildWindow(tokenizer.ClsId, tokenizer.SepId, options.MaxSequenceLength, first, last);
-            var hidden = encoder.EncodeAsync(window.InputIds, CancellationToken.None).AsTask().GetAwaiter().GetResult();
-            result[i] = FeatureExtractor.Pool(hidden, encoder.HiddenSize, window.TargetFirst, window.TargetEnd)
+            var pooled = model.EncodeAsync(row.Words, [row.TargetWordIndex], CancellationToken.None).AsTask().GetAwaiter().GetResult();
+            result[i] = pooled[0]
                 ?? throw new InvalidDataException($"{row.Source}: the target word has no tokens: {row.Sentence}");
         });
         return result;

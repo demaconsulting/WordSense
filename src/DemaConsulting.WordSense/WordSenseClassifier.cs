@@ -19,7 +19,7 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="WordDetails.Lemma"/> the base form.
 ///     A <em>heteronym</em> is a lemma with at least two distinct meanings that are pronounced differently; only for a
 ///     heteronym is <see cref="WordDetails.Pronunciation"/> set. Create an instance with
-///     <see cref="WordSenseClassifier.CreateAsync"/>.
+///     <see cref="WordSenseClassifier.Create"/> (lexicon only) or a model package's factory.
 ///     </para>
 ///     <para>
 ///     <b>One flow.</b> Each word is resolved to an entry. An entry with exactly one candidate is a
@@ -54,11 +54,9 @@ namespace DemaConsulting.WordSense;
 ///     <b>Running text and context.</b> The list overload reads the whole list as <em>one running text</em> in which
 ///     the words are joined by single spaces. Several sentences in one list are therefore one text, not separate
 ///     inputs: they are encoded together and each sentence provides context for the words of the others. To classify
-///     independent sentences, make one call per sentence. The same holds for the string overload. The encoder reads at most
-///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> tokens (default 256, including two special tokens;
-///     one word can be several word pieces). A text that fits is encoded once; a longer one is truncated per target:
-///     each known word is classified from a window of that many tokens centered on it (clamped to the text bounds), and
-///     text outside the window is ignored.
+///     independent sentences, make one call per sentence. The same holds for the string overload. How much text the
+///     model reads at once is a property of the model: the MiniLM package reads at most 256 tokens by default and
+///     classifies a longer text per target from a window centered on it, so text outside the window is ignored.
 ///     </para>
 ///     <para>
 ///     <b>One target word.</b> To classify one word of one sentence, pass the sentence and take the entry of the target.
@@ -72,8 +70,8 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     <b>Thread safety and disposal.</b> One classifier may be shared by many threads and tasks, and its methods may
 ///     be called concurrently. Dispose it once, after all calls have finished; disposing while a call is in flight is
-///     not supported. After <see cref="IDisposable.Dispose"/> of a classifier from
-///     <see cref="WordSenseClassifier.CreateAsync"/> (which owns its encoder), a call that has to run the encoder (any text
+///     not supported. After <see cref="IDisposable.Dispose"/> of a classifier that owns its model (one from a model
+///     package's factory), a call that has to run the model (any text
 ///     containing a word that needs context) throws <see cref="ObjectDisposedException"/>; a call whose words need none can still
 ///     return normally, and <see cref="ContextLemmas"/> and <see cref="GetCandidates"/> keep working. Disposing twice is
 ///     harmless.
@@ -95,7 +93,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record"];
 ///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
@@ -108,7 +106,7 @@ namespace DemaConsulting.WordSense;
 ///     </code>
 ///     To classify one target word of one sentence, use the string overload and pick the token at the target's offset:
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///
 ///     const string sentence = "They went to the race.";
 ///     var start = sentence.IndexOf("race", StringComparison.Ordinal);
@@ -125,7 +123,7 @@ public interface IWordSenseClassifier : IDisposable
     /// </summary>
     /// <example>
     ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     using var classifier = WordSenseClassifier.Create();
     ///     bool canClassify = classifier.ContextLemmas.Contains("record");
     ///     </code>
     /// </example>
@@ -141,7 +139,7 @@ public interface IWordSenseClassifier : IDisposable
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <example>
     ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     using var classifier = WordSenseClassifier.Create();
     ///     foreach (var candidate in classifier.GetCandidates("lead"))
     ///     {
     ///         Console.WriteLine($"{candidate.PartOfSpeech} {candidate.Pronunciation?.Meaning}");
@@ -168,7 +166,7 @@ public interface IWordSenseClassifier : IDisposable
     /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     using var classifier = WordSenseClassifier.Create();
     ///     string[] words = ["The", "record", "was", "broken"];
     ///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
     ///     if (analyses[1].Details is { } details)
@@ -190,7 +188,7 @@ public interface IWordSenseClassifier : IDisposable
     /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     using var classifier = WordSenseClassifier.Create();
     ///     var tokens = await classifier.ClassifyAsync("They will record the record.");
     ///     foreach (var token in tokens.Where(t => t.Analysis.Details is not null))
     ///     {
@@ -214,7 +212,7 @@ public interface IWordSenseClassifier : IDisposable
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///     const string text = "They will record the record.";
 ///     var tokens = await classifier.ClassifyAsync(text);
 ///
@@ -233,126 +231,99 @@ public interface IWordSenseClassifier : IDisposable
 public sealed record WordSenseToken(int Start, int Length, string Text, WordAnalysis Analysis);
 
 /// <summary>
-///     Classifies ambiguous words using a BERT-style encoder and an embedded linear table.
+///     Classifies ambiguous words using a model abstraction and an embedded lexicon, or from the lexicon alone.
 /// </summary>
 /// <remarks>
 ///     The words are resolved first; they are encoded once, and only when at least one needs context, and then every
-///     such word is classified from the same hidden
-///     states. Inputs longer than the maximum sequence length are classified from a window centered on
-///     each target. The instance is thread-safe for concurrent classification calls when its encoder is;
-///     the encoder of an instance from <see cref="CreateAsync"/> is an <see cref="OnnxWordSenseEncoder"/>, which is.
-///     Instances created by <see cref="CreateAsync"/> own their ONNX session, so dispose them (for example with
-///     <c>using</c>) after every call has finished; later calls that need the encoder throw
+///     such word is classified from the same pooled vectors. Without a model (<see cref="Create"/>) the lexicon
+///     answers alone. The instance is thread-safe for concurrent classification calls when its model is.
+///     A classifier that owns its model (for example one from the MiniLM package's factory) must be disposed (for
+///     example with <c>using</c>) after every call has finished; later calls that need the model throw
 ///     <see cref="ObjectDisposedException"/>. Create one classifier and share it rather than creating one per request.
 ///     The classification methods, and how words are matched to lemmas, are described on
 ///     <see cref="IWordSenseClassifier"/>.
 /// </remarks>
 /// <example>
-///     Create the classifier once, then classify as many texts as needed. With no options the model is
-///     downloaded on first use, verified, and cached in the per-user store.
+///     Create the classifier once, then classify as many texts as needed. This one needs no model and no network.
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///     var tokens = await classifier.ClassifyAsync("Please record the record.");
 ///     Console.WriteLine(string.Join(" ", tokens.Select(t => t.Analysis.Details?.PartOfSpeech.ToString() ?? t.Text)));
 ///     </code>
 /// </example>
 public sealed class WordSenseClassifier : IWordSenseClassifier
 {
-    private readonly IWordSenseEncoder _encoder;
+    private readonly IWordSenseModel? _model;
+    private readonly WordSenseWeightsTable? _weights;
     private readonly WordSenseTable _table;
-    private readonly WordPieceTokenizer _tokenizer;
-    private readonly int _maxLength;
     private readonly double _abstainScale;
-    private readonly bool _ownsEncoder;
+    private readonly bool _ownsModel;
     private readonly bool _useLexicon;
     private readonly string[] _lemmas;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="WordSenseClassifier"/> class from its parts. Advanced: most
-    ///     applications use <see cref="CreateAsync"/> instead.
+    ///     applications use <see cref="Create"/> or a model package's factory instead.
     /// </summary>
-    /// <param name="encoder">The encoder; it is not disposed by this classifier.</param>
-    /// <param name="table">The classifier table.</param>
-    /// <param name="vocabularyPath">The path of the vocabulary file that matches the encoder.</param>
+    /// <param name="table">The lexicon table.</param>
+    /// <param name="model">The encoder model, or null to answer from the lexicon alone.</param>
+    /// <param name="weights">
+    ///     The weights table trained for <paramref name="model"/> and <paramref name="table"/>; null exactly when
+    ///     <paramref name="model"/> is null.
+    /// </param>
     /// <param name="options">Classifier options, or null for defaults.</param>
-    /// <remarks>
-    ///     The vocabulary file is read first, so a problem with it is reported before the other arguments
-    ///     are checked.
-    /// </remarks>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when <paramref name="encoder"/>, <paramref name="table"/> or <paramref name="vocabularyPath"/> is null.
+    /// <param name="ownsModel">Whether disposing this classifier disposes the model.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="table"/> is null.</exception>
+    /// <exception cref="ArgumentException">
+    ///     Thrown when only one of <paramref name="model"/> and <paramref name="weights"/> is supplied.
     /// </exception>
     /// <exception cref="ArgumentOutOfRangeException">
-    ///     Thrown when <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> is outside 8 to 512, or
-    ///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> is negative or NaN.
+    ///     Thrown when <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> is negative or NaN.
     /// </exception>
-    /// <exception cref="ArgumentException">
-    ///     Thrown when <paramref name="vocabularyPath"/> is empty or the vocabulary lacks a required special token.
-    /// </exception>
-    /// <exception cref="FileNotFoundException">Thrown when the vocabulary file does not exist.</exception>
-    /// <exception cref="IOException">Thrown when the vocabulary file cannot be read.</exception>
     /// <exception cref="WordSenseModelMismatchException">
-    ///     Thrown when the table was trained with a different model (SHA-256 or dimension) than the encoder.
+    ///     Thrown when the weights were trained with a different model than <paramref name="model"/> (identifier,
+    ///     SHA-256 or dimension), or for a different lexicon table, or do not cover the table's context lemmas.
     /// </exception>
     public WordSenseClassifier(
-        IWordSenseEncoder encoder,
         WordSenseTable table,
-        string vocabularyPath,
-        WordSenseClassifierOptions? options = null)
-        : this(encoder, table, WordPieceTokenizer.FromFile(vocabularyPath), options, false)
+        IWordSenseModel? model = null,
+        WordSenseWeightsTable? weights = null,
+        WordSenseClassifierOptions? options = null,
+        bool ownsModel = false)
     {
-    }
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="WordSenseClassifier"/> class.
-    /// </summary>
-    /// <param name="encoder">The encoder.</param>
-    /// <param name="table">The classifier table.</param>
-    /// <param name="tokenizer">The tokenizer.</param>
-    /// <param name="options">Classifier options, or null for defaults.</param>
-    /// <param name="ownsEncoder">Whether disposing this classifier disposes the encoder.</param>
-    internal WordSenseClassifier(
-        IWordSenseEncoder encoder,
-        WordSenseTable table,
-        WordPieceTokenizer tokenizer,
-        WordSenseClassifierOptions? options,
-        bool ownsEncoder)
-    {
-        ArgumentNullException.ThrowIfNull(encoder);
         ArgumentNullException.ThrowIfNull(table);
-        ArgumentNullException.ThrowIfNull(tokenizer);
         options ??= new WordSenseClassifierOptions();
         ValidateOptions(options);
-
-        // A table is only meaningful for the exact model it was trained with
-        if (!string.Equals(table.ModelSha256, encoder.ModelSha256, StringComparison.OrdinalIgnoreCase) ||
-            table.Dimension != encoder.HiddenSize)
+        if ((model is null) != (weights is null))
         {
-            throw new WordSenseModelMismatchException(
-                "The classifier table was trained with a different encoder model than the one supplied.");
+            throw new ArgumentException("A model and its weights table must be supplied together or not at all.", nameof(weights));
         }
 
-        _encoder = encoder;
+        // Weights are only meaningful for the exact model and lexicon table they were trained with
+        if (model is not null && weights is not null)
+        {
+            model.EnsureWeightsMatch(weights);
+            weights.EnsureMatches(table);
+        }
+
+        _model = model;
+        _weights = weights;
         _table = table;
-        _tokenizer = tokenizer;
-        _maxLength = options.MaxSequenceLength;
         _abstainScale = options.AbstainMarginScale;
-        _ownsEncoder = ownsEncoder;
+        _ownsModel = ownsModel && model is not null;
         _useLexicon = options.UseLexicon;
-        _lemmas = table.ContextLemmas.Select(l => l.Lemma).OrderBy(l => l, StringComparer.Ordinal).ToArray();
+        _lemmas = model is null ? [] : table.ContextLemmas.Select(l => l.Lemma).OrderBy(l => l, StringComparer.Ordinal).ToArray();
     }
 
     /// <inheritdoc />
     public IReadOnlyList<string> ContextLemmas => _lemmas;
 
     /// <summary>
-    ///     Validates the range of the options that do not depend on the model.
+    ///     Validates the range of the options.
     /// </summary>
     /// <param name="options">The options.</param>
     private static void ValidateOptions(WordSenseClassifierOptions options)
     {
-        ArgumentOutOfRangeException.ThrowIfLessThan(options.MaxSequenceLength, 8);
-        ArgumentOutOfRangeException.ThrowIfGreaterThan(options.MaxSequenceLength, 512);
         if (double.IsNaN(options.AbstainMarginScale))
         {
             throw new ArgumentOutOfRangeException(nameof(options), "AbstainMarginScale must not be NaN.");
@@ -362,82 +333,37 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <summary>
-    ///     Creates a classifier from the embedded table, obtaining and verifying the model first.
+    ///     Creates a classifier that answers from the embedded lexicon alone: it needs no encoder model, no model files
+    ///     and no network access, and it loads no ONNX Runtime.
     /// </summary>
     /// <param name="options">The options, or null for defaults.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <remarks>
-    ///     When <see cref="WordSenseClassifierOptions.ModelDirectory"/> is set the files in it are verified
-    ///     and no network access happens; otherwise <see cref="WordSenseModelDownloader.EnsureModelAsync"/> obtains
-    ///     them (see that method for its additional exceptions, such as <see cref="ArgumentException"/> for an
-    ///     invalid <c>WORDSENSE_MIRROR_*</c> environment configuration; <see cref="WordSenseClassifierOptions.Downloader"/>
-    ///     describes the download settings). The embedded table is loaded with <see cref="WordSenseTable.LoadEmbedded"/>.
-    ///     The options are validated first: an invalid
-    ///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/>, <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>
-    ///     or <see cref="WordSenseClassifierOptions.IntraOpThreads"/> is reported before anything is downloaded or
-    ///     verified. <c>AbstainMarginScale</c> is rejected when negative or NaN; positive infinity is accepted. The
-    ///     first call without a <c>ModelDirectory</c> downloads about 23 MB (the 22.97 MB <c>model_int8.onnx</c> and a
-    ///     232 KB <c>vocab.txt</c>) into the per-user store; later calls reuse the verified files with no network access.
+    ///     A word with one part of speech is answered from the lexicon (<see cref="AnswerBasis.Dictionary"/>); a word
+    ///     with several abstains and lists its candidates. To choose between the senses of a word from its sentence,
+    ///     add a model package, for example <c>MiniLMWordSense.CreateClassifierAsync</c> of the
+    ///     <c>DemaConsulting.WordSense.MiniLM</c> package. The classifier owns nothing that needs disposing, but it is
+    ///     <see cref="IDisposable"/> like every classifier.
     /// </remarks>
-    /// <returns>A classifier that owns its encoder and must be disposed.</returns>
-    /// <exception cref="WordSenseModelDownloadException">Thrown when the model could not be downloaded.</exception>
-    /// <exception cref="WordSenseModelMismatchException">Thrown when the embedded table does not match the model.</exception>
-    /// <exception cref="WordSenseTableFormatException">Thrown when the embedded table is missing or malformed.</exception>
-    /// <exception cref="FileNotFoundException">Thrown when a file of the model directory is missing.</exception>
-    /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match the pinned value.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">
-    ///     Thrown when <c>MaxSequenceLength</c> is outside 8 to 512, <c>AbstainMarginScale</c> is negative or NaN,
-    ///     <c>IntraOpThreads</c> is negative, or the downloader's <c>RequestTimeout</c> is invalid.
-    /// </exception>
-    /// <exception cref="ArgumentException">
-    ///     Thrown when the <c>WORDSENSE_MIRROR_*</c> environment configuration is invalid, or a directory or store path is not a valid path.
-    /// </exception>
-    /// <exception cref="IOException">Thrown when the store directory cannot be created or a model file cannot be read.</exception>
-    /// <exception cref="UnauthorizedAccessException">Thrown when the store directory or a model file cannot be accessed.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <returns>A lexicon-only classifier.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <c>AbstainMarginScale</c> is negative or NaN.</exception>
+    /// <exception cref="WordSenseTableFormatException">Thrown when the embedded lexicon table is missing or malformed.</exception>
     /// <example>
     ///     <code>
-    ///     // Default: download on first use, verify, and cache
-    ///     using var online = await WordSenseClassifier.CreateAsync();
-    ///
-    ///     // Offline: use a directory that already holds model_int8.onnx and vocab.txt
-    ///     var options = new WordSenseClassifierOptions { ModelDirectory = "/models/all-MiniLM-L6-v2" };
-    ///     using var offline = await WordSenseClassifier.CreateAsync(options);
+    ///     using var classifier = WordSenseClassifier.Create();
+    ///     var tokens = await classifier.ClassifyAsync("Please record the cat.");
+    ///     Console.WriteLine(string.Join(" ", tokens.Select(t => t.Analysis.Details?.PartOfSpeech.ToString() ?? t.Text)));
     ///     </code>
     /// </example>
-    public static async Task<WordSenseClassifier> CreateAsync(
-        WordSenseClassifierOptions? options = null,
-        CancellationToken cancellationToken = default)
+    public static WordSenseClassifier Create(WordSenseClassifierOptions? options = null)
     {
-        options ??= new WordSenseClassifierOptions();
-
-        // Reject invalid option values before any download or file verification happens
-        ValidateOptions(options);
-        ArgumentOutOfRangeException.ThrowIfNegative(options.IntraOpThreads);
-
-        var location = options.ModelDirectory is not null
-            ? WordSenseModelLocation.FromDirectory(options.ModelDirectory)
-            : await WordSenseModelDownloader.EnsureModelAsync(options.Downloader, cancellationToken).ConfigureAwait(false);
-
-        var table = WordSenseTable.LoadEmbedded();
-        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
-        var encoder = new OnnxWordSenseEncoder(location.ModelPath, options.IntraOpThreads);
-        try
-        {
-            return new WordSenseClassifier(encoder, table, tokenizer, options, true);
-        }
-        catch
-        {
-            encoder.Dispose();
-            throw;
-        }
+        return new WordSenseClassifier(WordSenseTable.LoadEmbedded(), null, null, options);
     }
 
     /// <inheritdoc />
     public IReadOnlyList<WordDetails> GetCandidates(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
-        if (!_table.TryGetLemma(lemma, out var entry) || (entry.Weights is null && !_useLexicon))
+        if (!_table.TryGetLemma(lemma, out var entry) || (!entry.IsContextual && !_useLexicon))
         {
             return [];
         }
@@ -497,33 +423,34 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <summary>
-    ///     Releases the encoder when this classifier owns it (an instance from <see cref="CreateAsync"/>); otherwise
+    ///     Releases the model when this classifier owns it; otherwise
     ///     it does nothing. Calling it more than once is harmless. Dispose only after every classification call has
-    ///     finished; afterwards calls that need the encoder throw <see cref="ObjectDisposedException"/>.
+    ///     finished; afterwards calls that need the model throw <see cref="ObjectDisposedException"/>.
     /// </summary>
     public void Dispose()
     {
-        if (_ownsEncoder)
+        if (_ownsModel)
         {
-            _encoder.Dispose();
+            _model!.Dispose();
         }
     }
 
     /// <summary>
     ///     The scores of one word that has a classifier.
     /// </summary>
-    /// <param name="Model">The lemma entry, which has weights.</param>
+    /// <param name="Model">The lemma entry, which needs context.</param>
+    /// <param name="Weights">The classifier of the lemma.</param>
     /// <param name="Scores">The score of every sense.</param>
     /// <param name="Best">The index of the best sense.</param>
     /// <param name="Margin">The margin between the best and the second-best score.</param>
-    private sealed record Scored(LemmaEntry Model, float[] Scores, int Best, float Margin);
+    private sealed record Scored(LemmaEntry Model, SenseWeights Weights, float[] Scores, int Best, float Margin);
 
     /// <summary>
     ///     Gets the margin below which a lemma gives no answer.
     /// </summary>
-    /// <param name="model">The lemma entry, which has weights.</param>
+    /// <param name="weights">The classifier of the lemma.</param>
     /// <returns>The scaled abstain margin.</returns>
-    private double Threshold(LemmaEntry model) => model.Weights!.AbstainMargin * _abstainScale;
+    private double Threshold(SenseWeights weights) => weights.AbstainMargin * _abstainScale;
 
     /// <summary>
     ///     Builds the analysis of a word that is not known.
@@ -549,9 +476,15 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
             return new WordAnalysis(word, sense, 0.0, false, null, 0.0, AnswerBasis.Dictionary, [sense]);
         }
 
-        if (entry.Weights is not null)
+        if (entry.IsContextual)
         {
-            // A word the encoder could not score stays unknown
+            // Without a model nobody can score the senses, so the word abstains with its candidates
+            if (_model is null)
+            {
+                return new WordAnalysis(word, null, 0.0, true, null, 0.0, AnswerBasis.Dictionary, entry.Candidates);
+            }
+
+            // A word the model could not score stays unknown
             return scored is null ? Unknown(word) : Analyze(word, scored);
         }
 
@@ -589,7 +522,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         }
 
         var runnerMargin = third < 0 ? 0.0 : (double)scores[runner] - scores[third];
-        var abstained = AbstainRule.Abstains(scored.Margin, Threshold(scored.Model));
+        var abstained = AbstainRule.Abstains(scored.Margin, Threshold(scored.Weights));
         var candidates = scored.Model.Candidates;
         return new WordAnalysis(
             word,
@@ -616,8 +549,8 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
             return null;
         }
 
-        // Only dictionary entries are subject to the case policy; trained lemmas match in any case
-        if (resolution.Entry.Weights is null && !CaseAllowed(words, index))
+        // Only dictionary entries are subject to the case policy; context lemmas match in any case
+        if (!resolution.Entry.IsContextual && !CaseAllowed(words, index))
         {
             return null;
         }
@@ -659,100 +592,47 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         CancellationToken cancellationToken)
     {
         var result = new Scored?[words.Count];
-        var models = new LemmaEntry?[words.Count];
-        var any = false;
-        for (var i = 0; i < words.Count; i++)
-        {
-            if (resolutions[i] is { IsNarrowed: false, Entry.Weights: not null } resolution)
-            {
-                models[i] = resolution.Entry;
-                any = true;
-            }
-        }
-
-        // Dictionary, unknown and candidates-only words never reach the tokenizer or the encoder
-        if (!any)
+        if (_model is null || _weights is null)
         {
             return result;
         }
 
-        var tokens = _tokenizer.TokenizeWords(words);
-        var whole = tokens.Count + 2 <= _maxLength ? await EncodeWholeAsync(tokens, cancellationToken).ConfigureAwait(false) : null;
+        var targets = new List<int>();
         for (var i = 0; i < words.Count; i++)
         {
-            if (models[i] is { } model)
+            if (resolutions[i] is { IsNarrowed: false, Entry.IsContextual: true })
             {
-                cancellationToken.ThrowIfCancellationRequested();
-                result[i] = await ScoreTargetAsync(tokens, whole, model, tokens.WordFirst[i], tokens.WordEnd[i], cancellationToken)
-                    .ConfigureAwait(false);
+                targets.Add(i);
             }
         }
 
+        // Dictionary, unknown and candidates-only words never reach the model
+        if (targets.Count == 0)
+        {
+            return result;
+        }
+
+        var pooled = await _model.EncodeAsync(words, targets, cancellationToken).ConfigureAwait(false);
+        for (var t = 0; t < targets.Count; t++)
+        {
+            var entry = resolutions[targets[t]]!.Value.Entry;
+            if (pooled[t] is not { } vector || !_weights.TryGet(entry.Lemma, out var weights))
+            {
+                continue;
+            }
+
+            var feature = FeatureExtractor.Center(vector, _weights.Mean);
+            if (feature is null)
+            {
+                continue;
+            }
+
+            var (best, margin) = weights.Score(feature);
+            var scores = new float[entry.Senses.Count];
+            weights.Scores(feature, scores);
+            result[targets[t]] = new Scored(entry, weights, scores, best, margin);
+        }
+
         return result;
-    }
-
-    /// <summary>
-    ///     Encodes the whole input in one window.
-    /// </summary>
-    /// <param name="tokens">The tokenized words.</param>
-    /// <param name="cancellationToken">A token that cancels the call.</param>
-    /// <returns>The hidden states of the whole input, including the special tokens.</returns>
-    private async Task<float[]> EncodeWholeAsync(TokenizedText tokens, CancellationToken cancellationToken)
-    {
-        var (ids, _, _) = tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, 0, 0);
-        return await _encoder.EncodeAsync(ids, cancellationToken).ConfigureAwait(false);
-    }
-
-    /// <summary>
-    ///     Scores one target word.
-    /// </summary>
-    /// <param name="tokens">The tokenized words.</param>
-    /// <param name="whole">Hidden states of the whole input when it fits one window, otherwise null.</param>
-    /// <param name="model">The lemma entry, which has weights.</param>
-    /// <param name="first">First token of the target.</param>
-    /// <param name="last">Exclusive end token of the target.</param>
-    /// <param name="cancellationToken">A token that cancels the call.</param>
-    /// <returns>The scores, or null when the word has no tokens or no feature.</returns>
-    private async Task<Scored?> ScoreTargetAsync(
-        TokenizedText tokens,
-        float[]? whole,
-        LemmaEntry model,
-        int first,
-        int last,
-        CancellationToken cancellationToken)
-    {
-        if (last <= first)
-        {
-            return null;
-        }
-
-        float[] hidden;
-        int rowFirst;
-        int rowEnd;
-        if (whole is not null)
-        {
-            hidden = whole;
-            rowFirst = first + 1;
-            rowEnd = last + 1;
-        }
-        else
-        {
-            var window = tokens.BuildWindow(_tokenizer.ClsId, _tokenizer.SepId, _maxLength, first, last);
-            hidden = await _encoder.EncodeAsync(window.InputIds, cancellationToken).ConfigureAwait(false);
-            rowFirst = window.TargetFirst;
-            rowEnd = window.TargetEnd;
-        }
-
-        var feature = FeatureExtractor.Extract(hidden, _table.Dimension, rowFirst, rowEnd, _table.Mean);
-        if (feature is null)
-        {
-            return null;
-        }
-
-        var weights = model.Weights!;
-        var (best, margin) = weights.Score(feature);
-        var scores = new float[model.Senses.Count];
-        weights.Scores(feature, scores);
-        return new Scored(model, scores, best, margin);
     }
 }

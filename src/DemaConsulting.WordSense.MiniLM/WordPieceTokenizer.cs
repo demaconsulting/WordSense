@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     A managed implementation of the BERT uncased WordPiece tokenizer used by the MiniLM encoder.

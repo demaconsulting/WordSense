@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
 
-namespace DemaConsulting.WordSense;
+namespace DemaConsulting.WordSense.MiniLM;
 
 /// <summary>
 ///     One file of the encoder model, with the SHA-256 digest every copy must match.
@@ -23,9 +23,10 @@ internal sealed record ModelFile(string Name, string Sha256, bool HuggingFace);
 internal static class WordSenseModelCatalog
 {
     /// <summary>
-    ///     The identifier of the model, used as the folder name beneath a mirror base and in the table.
+    ///     The identifier of the model, used as the folder name of the model everywhere: beneath <c>model/</c>, beneath a
+    ///     mirror base, beneath the store root, and in its weights table.
     /// </summary>
-    public const string ModelId = "all-MiniLM-L6-v2";
+    public const string ModelId = "all-MiniLM-L6-v2-int8";
 
     /// <summary>
     ///     The name of the ONNX encoder file.
@@ -60,7 +61,7 @@ internal static class WordSenseModelCatalog
     /// <summary>
     ///     Gets the folder name used for this model beneath the store root.
     /// </summary>
-    public static string DirectoryName => $"{ModelId}-int8-{OnnxSha256[..8]}";
+    public static string DirectoryName => ModelId;
 
     /// <summary>
     ///     Computes the lower-case hexadecimal SHA-256 of a file.
