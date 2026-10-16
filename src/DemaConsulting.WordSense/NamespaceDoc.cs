@@ -1,8 +1,8 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Offline word-sense disambiguation for English: decides which sense (for example noun or verb, or
-///     one of several pronunciations) an ambiguous word has in its sentence.
+///     Offline word-sense disambiguation for English: decides which part of speech (and, for a heteronym, which
+///     pronunciation) an ambiguous word has in its sentence.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -34,9 +34,11 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Start with <see cref="WordSenseClassifier.CreateAsync"/> and the <see cref="IWordSenseClassifier"/> it returns.
-///     Create one classifier, share it between threads, and dispose it when done. The answers are
-///     <see cref="WordSense"/> values (lemma, sense, group and tags), <see cref="WordSenseDetail"/> values (with the
-///     confidence margin) and <see cref="WordSenseToken"/> values (for raw text). Configure the classifier with
+///     Create one classifier, share it between threads, and dispose it when done. There is one classification
+///     method with two overloads and one result type, <see cref="WordAnalysis"/>: the word as given, its
+///     <see cref="WordDetails"/> (lemma, <see cref="PartOfSpeech"/> and, for a heteronym, a
+///     <see cref="Pronunciation"/>), the confidence margin, the runner-up and whether the classifier abstained. For
+///     raw text the analyses come as <see cref="WordSenseToken"/> values. Configure the classifier with
 ///     <see cref="WordSenseClassifierOptions"/> and the model download with
 ///     <see cref="WordSenseModelDownloaderOptions"/>, <see cref="DownloadMirror"/> and
 ///     <see cref="WordSenseModelDownloader"/>.
@@ -49,41 +51,25 @@ namespace DemaConsulting.WordSense;
 ///     encoders and tests; an application that only classifies words never needs them.
 ///     </para>
 ///     <para>
-///     Groups and pronunciation: this library has no pronunciation data. A sense's <see cref="WordSense.Group"/> is
-///     the library's only equivalence mechanism: senses of one lemma that share a group share a pronunciation, so a
-///     consumer that only needs the pronunciation does not need to tell them apart. A consumer such as a speech
-///     synthesizer keeps its own pronunciations keyed by (<see cref="WordSense.Lemma"/>, <see cref="WordSense.Group"/>). See
-///     <see cref="WordSense"/> for the full explanation. The supported lemmas, senses, tags and groups are listed in
-///     the user guide appendix "Appendix: Supported Senses and Tags"
-///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md; the appendix is
-///     not part of this package, so a consumer without network access enumerates the catalog at run time) and
-///     can be discovered at run time with <see cref="IWordSenseClassifier.KnownLemmas"/> and
-///     <see cref="IWordSenseClassifier.GetSenses"/>.
+///     Parts of speech and pronunciation: <see cref="PartOfSpeech"/> defines all eight classic parts of speech, but the
+///     shipped table only produces <see cref="PartOfSpeech.Noun"/>, <see cref="PartOfSpeech.Verb"/>,
+///     <see cref="PartOfSpeech.Adjective"/> and <see cref="PartOfSpeech.Adverb"/>. A lemma whose senses have at least
+///     two distinct pronunciation meanings is a heteronym, and only then is <see cref="WordDetails.Pronunciation"/>
+///     set; its <see cref="Pronunciation.Meaning"/> is a short identifier such as <c>guide</c> or <c>metal</c>.
+///     A <see cref="Pronunciation.Respelling"/> may be present. Supported lemmas can be discovered at run time with
+///     <see cref="IWordSenseClassifier.KnownLemmas"/> and <see cref="IWordSenseClassifier.GetCandidates"/>; the full
+///     list is the user guide appendix
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md).
 ///     </para>
 ///     <para>
-///     Tag and sense catalog: every sense has exactly one part-of-speech tag (<c>noun</c>, <c>verb</c>, <c>adj</c> or
-///     <c>adv</c>) and may carry qualifier tags (<c>past</c> and <c>present</c> in the shipped inventory;
-///     <c>comparative</c>, <c>participle</c> and <c>superlative</c> are valid but unused). The inventory is a set of
-///     heteronyms such as <c>lead</c> (senses <c>guide-noun</c>, <c>guide-verb</c> and <c>metal</c>, groups
-///     <c>guide</c> and <c>metal</c>) and <c>read</c> (senses <c>past</c> and <c>present</c>), plus several hundred
-///     common words that are both a noun and a verb. Use <see cref="IWordSenseClassifier.ClassifyAsync(System.Collections.Generic.IReadOnlyList{string},System.Threading.CancellationToken)"/>
-///     when the sense or group matters, and <see cref="IWordSenseClassifier.ClassifyTagAsync"/> or
-///     <see cref="IWordSenseClassifier.IsTagAsync"/> for a coarse question such as noun versus verb.
+///     Classifying one word: pass the whole sentence and read the entry of the target word. A word is matched to its
+///     lemma through known forms (inflections): <see cref="WordAnalysis.Word"/> is the input and
+///     <see cref="WordDetails.Lemma"/> the base form. <see cref="WordAnalysis.Details"/> is null when the word is not
+///     known or when the classifier abstained because the evidence was weak (<see cref="WordAnalysis.Abstained"/>). A
+///     consumer that needs an answer for every word must supply its own fallback; the library never guesses.
 ///     </para>
 ///     <para>
-///     Classifying one word: pass the whole sentence and read the entry of the target word. With the string overload,
-///     pick the <see cref="WordSenseToken"/> whose start offset is the target's; with the list overload, tokenize so
-///     that every word and every punctuation mark is its own element (<c>"race"</c> and <c>"."</c>, never
-///     <c>"race."</c>) and read the entry at the target's index. A result is null when the word is not an ambiguous
-///     word the library knows or when the classifier abstained because the evidence was weak. An empty list of words
-///     gives an empty array for every classification method, and the string overload gives an empty list for empty
-///     text. An empty <c>tags</c> collection is an error. A tag that no sense of a word's lemma carries (for example a
-///     misspelled one) gives null for that word, never an exception. A consumer that
-///     needs an answer for every word must supply its own fallback for null (for example the most common
-///     sense of the word, or its own default pronunciation); the library never guesses.
-///     </para>
-///     <para>
-///     Tokenization and context window: the list overloads read the whole list as one running text with the words
+///     Tokenization and context window: the list overload reads the whole list as one running text with the words
 ///     joined by single spaces, so several sentences in one list provide context for each other; classify independent
 ///     sentences with one call each. The string overload splits the text into words, whitespace and single punctuation
 ///     characters for you. The encoder reads at most <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> word
@@ -99,43 +85,34 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 /// </remarks>
 /// <example>
-///     Quickstart: classify a tokenized sentence and read the sense of the ambiguous word.
+///     Quickstart: classify a tokenized sentence and read the part of speech of the ambiguous word.
 ///     <code>
 ///     using var classifier = await WordSenseClassifier.CreateAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense?[] senses = await classifier.ClassifyAsync(words);
+///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
-///         // null: not an ambiguous word, or the classifier abstained
-///         Console.WriteLine($"{words[i]}: {senses[i]?.Sense ?? "-"}");
+///         // Details is null: not an ambiguous word, or the classifier abstained
+///         Console.WriteLine($"{words[i]}: {analyses[i].Details?.PartOfSpeech.ToString() ?? "-"}");
 ///     }
 ///     </code>
-///     Classifying one target word of one sentence with the string overload:
+///     Choosing a pronunciation by meaning (the consumer keeps its own pronunciation table):
 ///     <code>
 ///     using var classifier = await WordSenseClassifier.CreateAsync();
 ///
-///     const string sentence = "They went to the race.";
-///     var start = sentence.IndexOf("race", StringComparison.Ordinal);
-///     var tokens = await classifier.ClassifyAsync(sentence);
-///     WordSense? sense = tokens.Single(t => t.Start == start).Sense;
-///     Console.WriteLine(sense?.Sense ?? "-");
-///     </code>
-///     Choosing a pronunciation by group (the library holds no pronunciation data; the table is the consumer's own):
-///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
-///
-///     var pronunciations = new Dictionary&lt;(string Lemma, string Group), string&gt;
+///     var pronunciations = new Dictionary&lt;(string Lemma, string Meaning), string&gt;
 ///     {
 ///         [("lead", "guide")] = "leed",
 ///         [("lead", "metal")] = "led",
 ///     };
 ///
 ///     string[] words = ["The", "pipe", "is", "made", "of", "lead", "."];
-///     WordSense?[] senses = await classifier.ClassifyAsync(words);
-///     WordSense? lead = senses[Array.IndexOf(words, "lead")];
-///     if (lead is not null &amp;&amp; pronunciations.TryGetValue((lead.Lemma, lead.Group), out var phonemes))
+///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
+///     WordDetails? lead = analyses[Array.IndexOf(words, "lead")].Details;
+///     if (lead?.Pronunciation is { } pronunciation &amp;&amp;
+///         pronunciations.TryGetValue((lead.Lemma, pronunciation.Meaning), out var phonemes))
 ///     {
 ///         Console.WriteLine(phonemes);
 ///     }

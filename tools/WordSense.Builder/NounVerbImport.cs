@@ -655,7 +655,7 @@ internal static partial class NounVerbImport
             anchors.Select(r => r.Provenance with { Split = "anchors" }).Concat(holdout.Select(r => r.Provenance with { Split = "holdout" })));
         SenseInventory.WriteFile(
             Path.Combine(corpus, "senses", ownFile),
-            trained.OrderBy(l => l, StringComparer.Ordinal).SelectMany(l => new[] { SenseNoun, SenseVerb }.Select(s => new InventoryRow(l, s, [s], ownFile))));
+            trained.OrderBy(l => l, StringComparer.Ordinal).SelectMany(l => new[] { SenseNoun, SenseVerb }.Select(s => new InventoryRow(l, s, InventoryRow.PosOfTag(s)!.Value, null, null, ownFile))));
 
         // The forms of the owned lemmas replace their rows; the labels are the defaults of the kind plus every sense seen on the form
         var targets = anchors.Concat(holdout).GroupBy(r => (r.Row.Lemma, Form: r.Row.Words[r.Row.TargetWordIndex].ToLowerInvariant()))

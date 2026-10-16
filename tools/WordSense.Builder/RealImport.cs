@@ -170,7 +170,7 @@ internal static class RealImport
 
         WriteProvenance(Path.Combine(corpus, "provenance", "real-restore.tsv"), provenance);
         var newSenses = plan.Where(p => p.IsNew && added.Contains((p.Lemma, p.Sense)))
-            .Select(p => new InventoryRow(p.Lemma, p.Sense, p.Tags, "real-restore.tsv", p.Group));
+            .Select(p => InventoryRow.FromPlan(p.Lemma, p.Sense, p.Tags, p.Group, "real-restore.tsv"));
         SenseInventory.WriteFile(Path.Combine(corpus, "senses", "real-restore.tsv"), newSenses);
         UpdateDecisions(corpus, lemmas, decisions);
         report.AppendLine($"anchors {rowsA.Count} (real {rowsA.Count(r => r.Real is not null)}), holdout {rowsH.Count} (real {rowsH.Count(r => r.Real is not null)}), new senses {added.Count}.");

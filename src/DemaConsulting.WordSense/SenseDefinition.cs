@@ -3,71 +3,76 @@ using System.Text.RegularExpressions;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The definition of one sense of a lemma: its name, its tags and its group. Advanced: used to build
-///     classifier tables; an application that only classifies words reads <see cref="WordSense"/> instead.
+///     The definition of one sense of a lemma: its part of speech and, for a heteronym, its pronunciation meaning
+///     and respelling. Advanced: used to build classifier tables; an application that only classifies words reads
+///     <see cref="WordDetails"/> instead.
 /// </summary>
 /// <remarks>
-///     The name becomes <see cref="WordSense.Sense"/> on the results. The group, when given, and every tag
-///     are validated with <see cref="IsValidTag"/> (lower-case letters, digits and hyphens, starting with a
-///     letter, at most <see cref="MaxTagLength"/> characters). The name itself is only required to be
-///     non-empty and unique within the lemma; it is not held to the tag syntax. The group is the equivalence
-///     class of senses that share a pronunciation (see <see cref="WordSense.Group"/>); the library carries no
-///     pronunciation data itself.
+///     A lemma is a heteronym when its senses have at least two distinct meanings; then every sense carries a
+///     meaning. The meaning is a short identifier (lower-case letters, digits and hyphens, starting with a letter, at
+///     most <see cref="MaxMeaningLength"/> characters) and the optional respelling uses letters, hyphens and
+///     apostrophes (at most <see cref="MaxRespellingLength"/> characters). A respelling needs a meaning.
 /// </remarks>
-/// <param name="Name">The sense name (exposed as <see cref="WordSense.Sense"/>), unique within the lemma.</param>
-/// <param name="Tags">The tags: at least one, lower-case, sorted ordinally and without duplicates.</param>
-/// <param name="Group">
-///     The group (pronunciation equivalence class) the sense belongs to, or null for a group of its own (named like
-///     the sense).
-/// </param>
-public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> Tags, string? Group = null)
+/// <param name="Pos">The part of speech.</param>
+/// <param name="Meaning">The pronunciation meaning, or null for a lemma that is not a heteronym.</param>
+/// <param name="Respelling">The respelling of the pronunciation, or null when none is authored.</param>
+public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning = null, string? Respelling = null)
 {
     /// <summary>
-    ///     The longest tag, in characters.
+    ///     The longest meaning identifier, in characters.
     /// </summary>
-    public const int MaxTagLength = 32;
+    public const int MaxMeaningLength = 32;
 
     /// <summary>
-    ///     The most tags a single sense may carry.
+    ///     The longest respelling, in characters.
     /// </summary>
-    public const int MaxTagsPerSense = 16;
+    public const int MaxRespellingLength = 32;
 
     /// <summary>
-    ///     Determines whether a string is a valid tag: lower-case letters, digits and hyphens,
-    ///     starting with a letter, at most <see cref="MaxTagLength"/> characters.
+    ///     Determines whether a string is a valid meaning identifier.
     /// </summary>
-    /// <param name="tag">The candidate tag.</param>
-    /// <returns>True when valid; false for null, empty or malformed strings (including a trailing newline).</returns>
-    public static bool IsValidTag(string? tag)
+    /// <param name="meaning">The candidate.</param>
+    /// <returns>True when it uses lower-case letters, digits and hyphens, starts with a letter and is not too long.</returns>
+    internal static bool IsValidMeaning(string? meaning)
     {
-        return tag is { Length: > 0 and <= MaxTagLength } && TagPattern().IsMatch(tag);
+        return meaning is { Length: > 0 and <= MaxMeaningLength } && MeaningPattern().IsMatch(meaning);
     }
 
     /// <summary>
-    ///     Validates the definition.
+    ///     Determines whether a string is a valid respelling.
     /// </summary>
-    /// <exception cref="ArgumentException">Thrown when the name is empty, or the tags or the group are invalid, unsorted or duplicated.</exception>
+    /// <param name="respelling">The candidate.</param>
+    /// <returns>True when it uses only letters, hyphens and apostrophes and is not too long.</returns>
+    internal static bool IsValidRespelling(string? respelling)
+    {
+        return respelling is { Length: > 0 and <= MaxRespellingLength } && RespellingPattern().IsMatch(respelling);
+    }
+
+    /// <summary>
+    ///     Validates the definition on its own.
+    /// </summary>
+    /// <exception cref="ArgumentException">Thrown when the part of speech or meaning is invalid or the respelling has no meaning.</exception>
     internal void Validate()
     {
-        if (string.IsNullOrEmpty(Name) || Tags is null || Tags.Count is 0 or > MaxTagsPerSense)
+        if (!Enum.IsDefined(Pos))
         {
-            throw new ArgumentException($"A sense needs a name and between 1 and {MaxTagsPerSense} tags.");
+            throw new ArgumentException("A sense has an undefined part of speech.");
         }
 
-        for (var i = 0; i < Tags.Count; i++)
+        if (Meaning is not null && !IsValidMeaning(Meaning))
         {
-            if (!IsValidTag(Tags[i]) || (i > 0 && string.CompareOrdinal(Tags[i - 1], Tags[i]) >= 0))
-            {
-                throw new ArgumentException($"Sense '{Name}' has an invalid, unsorted or duplicated tag.");
-            }
+            throw new ArgumentException($"Meaning '{Meaning}' is invalid; use lower-case letters, digits and hyphens.");
         }
 
-        if (Group is not null && !IsValidTag(Group))
+        if (Respelling is not null && (Meaning is null || !IsValidRespelling(Respelling)))
         {
-            throw new ArgumentException($"Sense '{Name}' has an invalid group; use lower-case letters, digits and hyphens.");
+            throw new ArgumentException("A respelling needs a meaning and may only use letters, hyphens and apostrophes.");
         }
     }
 
     [GeneratedRegex("^[a-z][a-z0-9-]*\\z", RegexOptions.CultureInvariant)]
-    private static partial Regex TagPattern();
+    private static partial Regex MeaningPattern();
+
+    [GeneratedRegex("^[A-Za-z'-]+\\z", RegexOptions.CultureInvariant)]
+    private static partial Regex RespellingPattern();
 }

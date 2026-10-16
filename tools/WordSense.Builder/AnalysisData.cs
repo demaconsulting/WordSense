@@ -39,7 +39,8 @@ internal sealed record EvalRow(string Set, string Origin, CorpusRow Row, float[]
 ///     The anchors, evaluation rows and abstain margin of one lemma, as the analysis commands need them.
 /// </summary>
 /// <param name="Lemma">The lemma.</param>
-/// <param name="Senses">The senses of the lemma in ordinal order.</param>
+/// <param name="Senses">The senses of the lemma in ordinal order of label.</param>
+/// <param name="Names">The sense labels, parallel to the senses.</param>
 /// <param name="Kind">Binary or one-versus-rest.</param>
 /// <param name="Margin">The abstain margin chosen for the full anchor set, as the table build chooses it.</param>
 /// <param name="AnchorFeatures">The centered and normalized anchor features.</param>
@@ -48,6 +49,7 @@ internal sealed record EvalRow(string Set, string Origin, CorpusRow Row, float[]
 internal sealed record LemmaAnalysis(
     string Lemma,
     SenseDefinition[] Senses,
+    string[] Names,
     LemmaModelKind Kind,
     float Margin,
     float[][] AnchorFeatures,
@@ -184,7 +186,7 @@ internal sealed class AnalysisData
         var lemmas = anchors.Select((row, i) => (row, i)).Where(t => Selected(t.row.Lemma))
             .GroupBy(t => t.row.Lemma, StringComparer.Ordinal).OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
         var evalByLemma = evalSource.Select((t, i) => (t, i)).ToLookup(x => x.t.Row.Lemma, StringComparer.Ordinal);
-        var trained = new (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index)[lemmas.Count];
+        var trained = new TrainedLemma[lemmas.Count];
         Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
         {
             trained[k] = TableBuilder.TrainLemma(lemmas[k].Key, lemmas[k].Select(t => t.i).ToArray(), anchors, anchorFeatures, inventory, options);
@@ -204,8 +206,8 @@ internal sealed class AnalysisData
                 origins.GetValueOrDefault(PosAudit.RowId(x.t.Row.Lemma, x.t.Row.Sentence), x.t.Set == AnalysisFiles.SetRealEval ? "real" : "llm-corpus"),
                 x.t.Row,
                 evalFeatures[x.i],
-                Array.BinarySearch(t.Senses.Select(s => s.Name).ToArray(), x.t.Row.Sense, StringComparer.Ordinal))).ToList();
-            result.Add(new LemmaAnalysis(lemma, t.Senses, t.Kind, t.Cv ? t.Margin : fallback, index.Select(i => anchorFeatures[i]).ToArray(), t.Labels, eval));
+                Array.BinarySearch(t.Names, x.t.Row.Sense, StringComparer.Ordinal))).ToList();
+            result.Add(new LemmaAnalysis(lemma, t.Senses, t.Names, t.Kind, t.Cv ? t.Margin : fallback, index.Select(i => anchorFeatures[i]).ToArray(), t.Labels, eval));
         }
 
         return new AnalysisData(result, options.C);

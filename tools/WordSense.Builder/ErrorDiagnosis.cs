@@ -203,7 +203,7 @@ internal static class ErrorDiagnosis
             similarities.Add((errorClass, same, other));
             if (error)
             {
-                rows.Add(new DiagnosedRow(lemma.Lemma, row.Set, row.Origin, row.Row.Sense, lemma.Senses[best].Name, answered, same, other, errorClass, row.Row.Sentence));
+                rows.Add(new DiagnosedRow(lemma.Lemma, row.Set, row.Origin, row.Row.Sense, lemma.Names[best], answered, same, other, errorClass, row.Row.Sentence));
             }
 
             foreach (var set in row.Memberships)

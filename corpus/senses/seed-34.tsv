@@ -1,64 +1,64 @@
-lemma	sense	tags	group
-bass	fish	noun	
-bass	music	noun	
-close	adj	adj	
-close	verb	verb	
-compress	noun	noun	
-compress	verb	verb	
-conduct	noun	noun	
-conduct	verb	verb	
-console	noun	noun	
-console	verb	verb	
-content	adj	adj	
-content	noun	noun	
-contract	noun	noun	
-contract	verb	verb	
-convict	noun	noun	
-convict	verb	verb	
-desert	noun	noun	
-desert	verb	verb	
-increase	noun	noun	
-increase	verb	verb	
-insult	noun	noun	
-insult	verb	verb	
-invalid	adj	adj	
-invalid	noun	noun	
-live	adj	adj	
-live	verb	verb	
-minute	adj	adj	
-minute	noun	noun	
-object	noun	noun	
-object	verb	verb	
-permit	noun	noun	
-permit	verb	verb	
-present	noun	noun	
-present	verb	verb	
-produce	noun	noun	
-produce	verb	verb	
-project	noun	noun	
-project	verb	verb	
-read	past	past|verb	
-read	present	present|verb	
-rebel	noun	noun	
-rebel	verb	verb	
-record	noun	noun	
-record	verb	verb	
-refuse	noun	noun	
-refuse	verb	verb	
-row	argument	noun	
-row	line	noun	
-row	paddle	verb	
-separate	adj	adj	
-separate	verb	verb	
-subject	noun	noun	
-subject	verb	verb	
-survey	noun	noun	
-survey	verb	verb	
-transport	noun	noun	
-transport	verb	verb	
-use	noun	noun	
-use	verb	verb	
-wind	noun	noun	
-wind	verb	verb	
-wound	injury	noun	
-wound	past	past|verb	
+lemma	label	pos	meaning	respelling
+bass	fish	noun	fish	
+bass	music	noun	music	
+close	adj	adjective	adjective	
+close	verb	verb	verb	
+compress	noun	noun	noun	
+compress	verb	verb	verb	
+conduct	noun	noun	noun	
+conduct	verb	verb	verb	
+console	noun	noun	noun	
+console	verb	verb	verb	
+content	adj	adjective	adjective	
+content	noun	noun	noun	
+contract	noun	noun	noun	
+contract	verb	verb	verb	
+convict	noun	noun	noun	
+convict	verb	verb	verb	
+desert	noun	noun	noun	
+desert	verb	verb	verb	
+increase	noun	noun	noun	
+increase	verb	verb	verb	
+insult	noun	noun	noun	
+insult	verb	verb	verb	
+invalid	adj	adjective	adjective	
+invalid	noun	noun	noun	
+live	adj	adjective	adjective	
+live	verb	verb	verb	
+minute	adj	adjective	adjective	
+minute	noun	noun	noun	
+object	noun	noun	noun	
+object	verb	verb	verb	
+permit	noun	noun	noun	
+permit	verb	verb	verb	
+present	noun	noun	noun	
+present	verb	verb	verb	
+produce	noun	noun	noun	
+produce	verb	verb	verb	
+project	noun	noun	noun	
+project	verb	verb	verb	
+read	past	verb	past	
+read	present	verb	present	
+rebel	noun	noun	noun	
+rebel	verb	verb	verb	
+record	noun	noun	noun	
+record	verb	verb	verb	
+refuse	noun	noun	noun	
+refuse	verb	verb	verb	
+row	argument	noun	argument	
+row	line	noun	line	
+row	paddle	verb	paddle	
+separate	adj	adjective	adjective	
+separate	verb	verb	verb	
+subject	noun	noun	noun	
+subject	verb	verb	verb	
+survey	noun	noun	noun	
+survey	verb	verb	verb	
+transport	noun	noun	noun	
+transport	verb	verb	verb	
+use	noun	noun	noun	
+use	verb	verb	verb	
+wind	noun	noun	noun	
+wind	verb	verb	verb	
+wound	injury	noun	injury	
+wound	past	verb	past	

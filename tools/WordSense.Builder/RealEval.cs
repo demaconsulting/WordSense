@@ -75,7 +75,10 @@ internal static class RealEval
     /// <returns>The Markdown report.</returns>
     public static async Task<string> RunAsync(string corpus, string modelDirectory, CancellationToken cancellationToken)
     {
-        using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = modelDirectory }, cancellationToken).ConfigureAwait(false);
+        using var classifier = await WordSenseClassifier.CreateAsync(
+            new WordSenseClassifierOptions { ModelDirectory = modelDirectory, AbstainMarginScale = 0 }, cancellationToken).ConfigureAwait(false);
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var table = WordSenseTable.LoadEmbedded();
         var provenance = new Dictionary<string, ProvenanceRow>(StringComparer.Ordinal);
         foreach (var file in Directory.GetFiles(Path.Combine(corpus, "provenance"), "*.tsv"))
         {
@@ -104,15 +107,15 @@ internal static class RealEval
 
         var scored = new Dictionary<string, List<Scored>>(StringComparer.Ordinal)
         {
-            ["real-eval"] = await ScoreAsync(classifier, realEval, provenance, cancellationToken).ConfigureAwait(false),
-            ["llm-holdout-same-lemmas"] = await ScoreAsync(classifier, llmSeed, provenance, cancellationToken).ConfigureAwait(false),
-            ["real-restored"] = await ScoreAsync(classifier, realRestored, provenance, cancellationToken).ConfigureAwait(false),
-            ["llm-holdout-restored-lemmas"] = await ScoreAsync(classifier, llmRestoredLemmas, provenance, cancellationToken).ConfigureAwait(false)
+            ["real-eval"] = await ScoreAsync(classifier, inventory, table, realEval, provenance, cancellationToken).ConfigureAwait(false),
+            ["llm-holdout-same-lemmas"] = await ScoreAsync(classifier, inventory, table, llmSeed, provenance, cancellationToken).ConfigureAwait(false),
+            ["real-restored"] = await ScoreAsync(classifier, inventory, table, realRestored, provenance, cancellationToken).ConfigureAwait(false),
+            ["llm-holdout-restored-lemmas"] = await ScoreAsync(classifier, inventory, table, llmRestoredLemmas, provenance, cancellationToken).ConfigureAwait(false)
         };
         if (gapHoldout.Count > 0)
         {
-            scored["real-gap"] = await ScoreAsync(classifier, gapHoldout, provenance, cancellationToken).ConfigureAwait(false);
-            scored["llm-holdout-gap-lemmas"] = await ScoreAsync(classifier, llmGapLemmas, provenance, cancellationToken).ConfigureAwait(false);
+            scored["real-gap"] = await ScoreAsync(classifier, inventory, table, gapHoldout, provenance, cancellationToken).ConfigureAwait(false);
+            scored["llm-holdout-gap-lemmas"] = await ScoreAsync(classifier, inventory, table, llmGapLemmas, provenance, cancellationToken).ConfigureAwait(false);
         }
 
         return Render(scored);
@@ -121,27 +124,36 @@ internal static class RealEval
     private static string Origin(Dictionary<string, ProvenanceRow> provenance, CorpusRow row) =>
         provenance.TryGetValue(PosAudit.RowId(row.Lemma, row.Sentence), out var p) ? p.Origin : "llm-corpus";
 
-    private static async Task<List<Scored>> ScoreAsync(WordSenseClassifier classifier, IReadOnlyList<CorpusRow> rows, Dictionary<string, ProvenanceRow> provenance, CancellationToken token)
+    private static async Task<List<Scored>> ScoreAsync(
+        WordSenseClassifier classifier,
+        SenseInventory inventory,
+        WordSenseTable table,
+        IReadOnlyList<CorpusRow> rows,
+        Dictionary<string, ProvenanceRow> provenance,
+        CancellationToken token)
     {
         var result = new List<Scored>();
         foreach (var row in rows)
         {
-            var senses = classifier.GetSenses(row.Lemma);
-            var gold = senses.FirstOrDefault(s => s.Sense == row.Sense);
-            if (gold is null)
+            var senses = inventory.RowsOf(row.Lemma);
+            var gold = senses.FirstOrDefault(s => s.Label == row.Sense);
+            if (gold is null || !table.TryGetLemma(row.Lemma, out var model))
             {
                 continue;
             }
 
-            var detail = (await classifier.ClassifyDetailAsync(row.Words, token).ConfigureAwait(false))[row.TargetWordIndex];
-            if (detail is null)
+            // The classifier runs with a zero abstain scale so that the best sense is always reported;
+            // the abstention of the shipped threshold is applied here from the margin
+            var details = (await classifier.ClassifyAsync(row.Words, token).ConfigureAwait(false))[row.TargetWordIndex];
+            if (details.Details is not { } best)
             {
                 continue;
             }
 
-            var predicted = detail.Value.Sense;
+            var predicted = senses.First(s => s.Pos == best.PartOfSpeech && s.Meaning == best.Pronunciation?.Meaning);
             var source = provenance.TryGetValue(PosAudit.RowId(row.Lemma, row.Sentence), out var p) ? p.Source : "llm-corpus";
-            result.Add(new Scored(row.Lemma, row.Sense, predicted.Sense, source, predicted.Sense == row.Sense, predicted.Group == gold.Group, !detail.Value.Abstained, row.Sentence));
+            var meaningCorrect = model.IsHeteronym ? predicted.Meaning == gold.Meaning : predicted.Label == gold.Label;
+            result.Add(new Scored(row.Lemma, row.Sense, predicted.Label, source, predicted.Label == row.Sense, meaningCorrect, details.Margin >= model.AbstainMargin, row.Sentence));
         }
 
         return result;
@@ -152,7 +164,7 @@ internal static class RealEval
         var inv = CultureInfo.InvariantCulture;
         var text = new StringBuilder();
         text.AppendLine("## Summary").AppendLine();
-        text.AppendLine("| Set | Rows | Best sense | Group | Answered | Answered accuracy |");
+        text.AppendLine("| Set | Rows | Best sense | Meaning | Answered | Answered accuracy |");
         text.AppendLine("| --- | ---: | ---: | ---: | ---: | ---: |");
         foreach (var (name, rows) in scored)
         {
@@ -160,7 +172,7 @@ internal static class RealEval
         }
 
         text.AppendLine().AppendLine("## By Source").AppendLine();
-        text.AppendLine("| Set and source | Rows | Best sense | Group | Answered | Answered accuracy |");
+        text.AppendLine("| Set and source | Rows | Best sense | Meaning | Answered | Answered accuracy |");
         text.AppendLine("| --- | ---: | ---: | ---: | ---: | ---: |");
         foreach (var (name, rows) in scored.Where(s => s.Key.StartsWith("real", StringComparison.Ordinal)))
         {
@@ -173,7 +185,7 @@ internal static class RealEval
         foreach (var (name, rows) in scored.Where(s => s.Key.StartsWith("real", StringComparison.Ordinal)))
         {
             text.AppendLine().AppendLine($"## Per Sense ({name})").AppendLine();
-            text.AppendLine("| Lemma | Sense | Rows | Best sense | Group | Answered | Answered accuracy |");
+            text.AppendLine("| Lemma | Sense | Rows | Best sense | Meaning | Answered | Answered accuracy |");
             text.AppendLine("| --- | --- | ---: | ---: | ---: | ---: | ---: |");
             foreach (var group in rows.GroupBy(r => (r.Lemma, r.Gold)).OrderBy(g => g.Key.Lemma, StringComparer.Ordinal).ThenBy(g => g.Key.Gold, StringComparer.Ordinal))
             {

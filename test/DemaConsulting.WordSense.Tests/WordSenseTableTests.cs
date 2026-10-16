@@ -10,10 +10,11 @@ public class WordSenseTableTests
     /// <summary>
     ///     Creates a sense definition.
     /// </summary>
-    /// <param name="name">The sense name.</param>
-    /// <param name="tags">The sorted tags.</param>
+    /// <param name="pos">The part of speech.</param>
+    /// <param name="meaning">The pronunciation meaning, if any.</param>
+    /// <param name="respelling">The respelling, if any.</param>
     /// <returns>The definition.</returns>
-    internal static SenseDefinition Def(string name, params string[] tags) => new(name, tags);
+    internal static SenseDefinition Def(PartOfSpeech pos, string? meaning = null, string? respelling = null) => new(pos, meaning, respelling);
 
     /// <summary>
     ///     Builds a small table with a binary and a one-versus-rest lemma.
@@ -21,9 +22,11 @@ public class WordSenseTableTests
     /// <returns>The table.</returns>
     internal static WordSenseTable CreateSmallTable()
     {
-        var binary = new LemmaModel("bat", [Def("animal", "noun"), Def("tool", "noun", "verb")], LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
+        var binary = new LemmaModel(
+            "bat", [Def(PartOfSpeech.Noun, "animal", "bat"), Def(PartOfSpeech.Verb, "tool")],
+            LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
         var multi = new LemmaModel(
-            "lead", [Def("metal", "noun"), Def("verb", "verb"), Def("wire", "noun")], LemmaModelKind.OneVersusRest,
+            "lead", [Def(PartOfSpeech.Noun, "metal"), Def(PartOfSpeech.Verb, "guide"), Def(PartOfSpeech.Noun, "wire")], LemmaModelKind.OneVersusRest,
             [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0.1f, -0.1f], 0.5f, 3);
         var forms = new Dictionary<string, string>
         {
@@ -54,9 +57,11 @@ public class WordSenseTableTests
         Assert.Equal(original.Lemmas[1].Weights, copy.Lemmas[1].Weights);
         Assert.Equal(LemmaModelKind.Binary, copy.Lemmas[0].Kind);
         Assert.Equal(0.75f, copy.Lemmas[0].AbstainMargin);
-        Assert.Equal(["metal", "verb", "wire"], copy.Lemmas[1].Senses.Select(s => s.Sense));
-        Assert.Equal(["noun", "verb"], copy.Lemmas[0].Senses[1].Tags.Order());
-        Assert.Equal(["noun"], copy.Lemmas[1].Senses[2].Tags);
+        Assert.Equal(["metal", "guide", "wire"], copy.Lemmas[1].Senses.Select(s => s.Meaning));
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Noun], copy.Lemmas[1].Senses.Select(s => s.Pos));
+        Assert.Equal(original.Lemmas[0].Senses, copy.Lemmas[0].Senses);
+        Assert.Equal(new Pronunciation("animal", "bat"), copy.Lemmas[0].Candidates[0].Pronunciation);
+        Assert.Null(copy.Lemmas[0].Candidates[1].Pronunciation!.Respelling);
     }
 
     /// <summary>
@@ -76,30 +81,18 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     Tags are interned: senses with the same tag share the tag string.
-    /// </summary>
-    [Fact]
-    public void WordSenseTable_Read_SensesWithSameTag_ShareTagInstance()
-    {
-        var copy = WordSenseTable.Read(CreateSmallTable().ToArray());
-
-        var a = copy.Lemmas[1].Senses[0].Tags.Single();
-        var b = copy.Lemmas[1].Senses[2].Tags.Single();
-        Assert.Same(a, b);
-    }
-
-    /// <summary>
-    ///     A table older than version 3 (versions 1 and 2 have no sense groups) is rejected.
+    ///     A table older than version 4 (versions 1 to 3 describe senses with names and tags) is rejected.
     /// </summary>
     /// <param name="version">The old version number written into the header.</param>
     [Theory]
     [InlineData(1)]
     [InlineData(2)]
+    [InlineData(3)]
     public void WordSenseTable_Read_OldVersion_Throws(int version)
     {
         var bytes = CreateSmallTable().ToArray();
         var body = bytes[..^32];
-        Assert.Equal(3, body[4]);
+        Assert.Equal(4, body[4]);
         body[4] = (byte)version;
         var old = body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
 
@@ -108,20 +101,28 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A sense group round-trips through the binary table and defaults to the sense label.
+    ///     A pronunciation round-trips through the binary table, with and without a respelling, and a lemma that is
+    ///     not a heteronym round-trips without one.
     /// </summary>
     [Fact]
-    public void WordSenseTable_RoundTrip_PreservesGroups()
+    public void WordSenseTable_RoundTrip_PreservesPronunciations()
     {
         var model = new LemmaModel(
-            "bow", [new SenseDefinition("bend-noun", ["noun"], "bend"), new SenseDefinition("bend-verb", ["verb"], "bend"), Def("weapon", "noun")],
+            "bow", [Def(PartOfSpeech.Noun, "bend", "bou"), Def(PartOfSpeech.Verb, "bend", "bou"), Def(PartOfSpeech.Noun, "weapon", "boh")],
             LemmaModelKind.OneVersusRest, [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0f, 0f], 0.5f, 3);
-        var table = new WordSenseTable("all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [model], new Dictionary<string, string> { ["bow"] = "bow" });
+        var plain = new LemmaModel(
+            "run", [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb)], LemmaModelKind.Binary, [1f, 0f, 0f], [0f], 0.5f, 3);
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [model, plain],
+            new Dictionary<string, string> { ["bow"] = "bow", ["run"] = "run" });
 
         var copy = WordSenseTable.Read(table.ToArray());
 
-        Assert.Equal(["bend", "bend", "weapon"], copy.Lemmas[0].Senses.Select(s => s.Group));
-        Assert.Equal(["bend-noun", "bend-verb", "weapon"], copy.Lemmas[0].Senses.Select(s => s.Sense));
+        Assert.Equal(["bend", "bend", "weapon"], copy.Lemmas[0].Candidates.Select(c => c.Pronunciation!.Meaning));
+        Assert.Equal(["bou", "bou", "boh"], copy.Lemmas[0].Candidates.Select(c => c.Pronunciation!.Respelling));
+        Assert.True(copy.Lemmas[0].IsHeteronym);
+        Assert.False(copy.Lemmas[1].IsHeteronym);
+        Assert.All(copy.Lemmas[1].Candidates, c => Assert.Null(c.Pronunciation));
     }
 
     /// <summary>
@@ -280,14 +281,14 @@ public class WordSenseTableTests
     [Fact]
     public void WordSenseTable_LemmaModel_BadShapes_Throw()
     {
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun")], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun"), Def("y", "verb")], LemmaModelKind.Binary, [1f, 2f], [0f], 0f, 1));
-        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def("x", "noun"), Def("y", "verb")], LemmaModelKind.Binary, [float.NaN], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def(PartOfSpeech.Noun)], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb)], LemmaModelKind.Binary, [1f, 2f], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb)], LemmaModelKind.Binary, [float.NaN], [0f], 0f, 1));
         Assert.Throws<ArgumentException>(() => CreateSmallTable().Lemmas[0].Score([1f]));
     }
 
     /// <summary>
-    ///     Invalid sense definitions are rejected at construction.
+    ///     Invalid sense definitions and inconsistent sense sets are rejected at construction.
     /// </summary>
     [Fact]
     public void WordSenseTable_LemmaModel_BadSenseDefinitions_Throw()
@@ -295,13 +296,16 @@ public class WordSenseTableTests
         LemmaModel Make(params SenseDefinition[] senses) =>
             new("a", senses, LemmaModelKind.Binary, [1f], [0f], 0f, 1);
 
-        Assert.Throws<ArgumentException>(() => Make(Def("x", "noun"), Def("x", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x"), Def("y", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x", "verb", "noun"), Def("y", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x", "noun", "noun"), Def("y", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x", "Noun"), Def("y", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x", new string('a', 33)), Def("y", "verb")));
-        Assert.Throws<ArgumentException>(() => Make(Def("x", Enumerable.Range(0, 17).Select(i => $"t{i:00}").ToArray()), Def("y", "verb")));
+        // Mixed meanings, duplicate pairs, a single meaning, a bad meaning, an undefined part of speech and bad respellings
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, "x"), Def(PartOfSpeech.Verb)));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun), Def(PartOfSpeech.Noun)));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, "x"), Def(PartOfSpeech.Verb, "x")));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, "X"), Def(PartOfSpeech.Verb, "y")));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, new string('a', 33)), Def(PartOfSpeech.Verb, "y")));
+        Assert.Throws<ArgumentException>(() => Make(Def((PartOfSpeech)99), Def(PartOfSpeech.Verb)));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, "x", "a b"), Def(PartOfSpeech.Verb, "y")));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun, "x", "same"), Def(PartOfSpeech.Verb, "y", "same")));
+        Assert.Throws<ArgumentException>(() => Make(Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb) with { Respelling = "x" }));
     }
 
     /// <summary>
@@ -348,9 +352,10 @@ public class WordSenseTableTests
 
         Assert.True(table.Lemmas.Count >= 344);
         Assert.True(table.TryGetLemma("record", out var record));
-        Assert.Equal(["noun", "verb"], record.Senses.Select(s => s.Sense));
-        Assert.Equal(["noun"], record.Senses[0].Tags);
-        Assert.All(table.Lemmas.SelectMany(l => l.Senses), s => Assert.NotEmpty(s.Tags));
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], record.Senses.Select(s => s.Pos));
+        Assert.Equal(["noun", "verb"], record.Senses.Select(s => s.Meaning));
+        Assert.True(table.TryGetLemma("read", out var read));
+        Assert.Contains(read.Senses, s => s.Meaning == "past" && s.Pos == PartOfSpeech.Verb);
         Assert.Equal("record", table.Forms["records"]);
         Assert.Equal(384, table.Dimension);
         Assert.All(table.Forms.Values, lemma => Assert.True(table.TryGetLemma(lemma, out _), lemma));
@@ -418,20 +423,6 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A correctly signed table that declares more tags than allowed is rejected.
-    /// </summary>
-    [Fact]
-    public void WordSenseTable_Read_ResignedTagCountAboveCap_Throws()
-    {
-        // The tag count follows the dimension and the mean
-        const int tagCountOffset = 8 + 2 + 16 + 32 + 4 + (3 * 4);
-        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[tagCountOffset] = 0x01; b[tagCountOffset + 1] = 0x01; return b; });
-
-        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
-        Assert.Contains("tag dictionary", ex.Message, StringComparison.OrdinalIgnoreCase);
-    }
-
-    /// <summary>
     ///     A correctly signed table with an unknown model kind is rejected.
     /// </summary>
     [Fact]
@@ -445,36 +436,10 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A correctly signed table whose tag dictionary is unsorted or duplicated is rejected.
+    ///     The offset of the lemma count in the single-lemma body: header, model id, digest, dimension and mean
+    ///     precede it.
     /// </summary>
-    /// <param name="duplicate">True to duplicate the first tag, false to swap the two tags.</param>
-    [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws(bool duplicate)
-    {
-        // Two tags follow the count: "noun" then "verb", each a u16 length and four bytes
-        const int firstTag = 8 + 2 + 16 + 32 + 4 + (3 * 4) + 2 + 2;
-        var bytes = Resign(CreateSingleLemmaBytes(), b =>
-        {
-            var noun = b[firstTag..(firstTag + 4)];
-            var verb = b[(firstTag + 6)..(firstTag + 10)];
-            Assert.Equal("noun", System.Text.Encoding.UTF8.GetString(noun));
-            Assert.Equal("verb", System.Text.Encoding.UTF8.GetString(verb));
-            (duplicate ? noun : verb).CopyTo(b, firstTag);
-            noun.CopyTo(b, firstTag + 6);
-            return b;
-        });
-
-        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
-        Assert.Contains("tag dictionary", ex.Message, StringComparison.OrdinalIgnoreCase);
-    }
-
-    /// <summary>
-    ///     The offset of the lemma count in the single-lemma body: header, model id, digest, dimension, mean and
-    ///     the two-tag dictionary precede it.
-    /// </summary>
-    private const int LemmaCountOffset = 8 + 2 + 16 + 32 + 4 + (3 * 4) + 2 + 12;
+    private const int LemmaCountOffset = 8 + 2 + 16 + 32 + 4 + (3 * 4);
 
     /// <summary>
     ///     The offset of the sense count of the only lemma (after the lemma count and the string "bat").
@@ -482,9 +447,9 @@ public class WordSenseTableTests
     private const int SenseCountOffset = LemmaCountOffset + 4 + 2 + 3;
 
     /// <summary>
-    ///     The offset of the tag count of the first sense (after the sense count and the name "animal").
+    ///     The offset of the part-of-speech byte of the first sense.
     /// </summary>
-    private const int FirstSenseTagCountOffset = SenseCountOffset + 2 + 2 + 6;
+    private const int FirstSensePosOffset = SenseCountOffset + 2;
 
     /// <summary>
     ///     A correctly signed table that declares a lemma count above the cap is rejected.
@@ -539,38 +504,33 @@ public class WordSenseTableTests
     }
 
     /// <summary>
-    ///     A correctly signed table whose sense declares no tags or more than 16 tags is rejected.
+    ///     A correctly signed table whose sense has an undefined part of speech is rejected.
     /// </summary>
-    /// <param name="tagCount">The declared tag count of the first sense.</param>
-    [Theory]
-    [InlineData(0)]
-    [InlineData(17)]
-    public void WordSenseTable_Read_ResignedSenseTagCountOutOfRange_Throws(int tagCount)
+    [Fact]
+    public void WordSenseTable_Read_ResignedUndefinedPos_Throws()
     {
-        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[FirstSenseTagCountOffset] = (byte)tagCount; return b; });
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[FirstSensePosOffset] = 99; return b; });
 
         var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
-        Assert.Contains("tag count", ex.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("part of speech", ex.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
-    ///     A correctly signed table whose sense has a malformed group string is rejected.
+    ///     A correctly signed table whose sense has a malformed meaning string is rejected.
     /// </summary>
     [Fact]
-    public void WordSenseTable_Read_ResignedInvalidGroup_Throws()
+    public void WordSenseTable_Read_ResignedInvalidMeaning_Throws()
     {
-        // The first sense has one tag index (u16) and then an empty group string (u16 length 0); replace the
-        // empty group with the one-character group "X", which is not a valid group
-        const int groupOffset = FirstSenseTagCountOffset + 1 + 2;
+        // The first meaning is "animal" (u16 length then six bytes); upper-case its first letter
+        const int meaningOffset = FirstSensePosOffset + 1 + 2;
         var bytes = Resign(CreateSingleLemmaBytes(), b =>
         {
-            Assert.Equal(0, b[groupOffset]);
-            Assert.Equal(0, b[groupOffset + 1]);
-            return [.. b[..groupOffset], 1, 0, (byte)'X', .. b[(groupOffset + 2)..]];
+            Assert.Equal((byte)'a', b[meaningOffset]);
+            b[meaningOffset] = (byte)'A';
+            return b;
         });
 
-        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
-        Assert.Contains("group", ex.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
     }
 
     /// <summary>
@@ -685,13 +645,13 @@ public class WordSenseTableTests
     [Fact]
     public void WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw()
     {
-        SenseDefinition[] senses = [Def("x", "noun"), Def("y", "verb")];
+        SenseDefinition[] senses = [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb)];
 
         Assert.Throws<ArgumentNullException>(() => new LemmaModel(null!, senses, LemmaModelKind.Binary, [1f], [0f], 0f, 1));
         Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", null!, LemmaModelKind.Binary, [1f], [0f], 0f, 1));
         Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, null!, [0f], 0f, 1));
         Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], null!, 0f, 1));
-        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", [Def("x", "noun"), null!], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", [Def(PartOfSpeech.Noun), null!], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
         Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [float.NaN], 0f, 1));
         Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [0f], float.NaN, 1));
         Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [0f], float.PositiveInfinity, 1));
@@ -704,7 +664,7 @@ public class WordSenseTableTests
     [Fact]
     public void WordSenseTable_LemmaModel_UndefinedKind_Throws()
     {
-        SenseDefinition[] senses = [Def("x", "noun"), Def("y", "verb")];
+        SenseDefinition[] senses = [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb)];
 
         Assert.Throws<ArgumentOutOfRangeException>(() => new LemmaModel("a", senses, (LemmaModelKind)0, [1f], [0f], 0f, 1));
         Assert.Throws<ArgumentOutOfRangeException>(() => new LemmaModel("a", senses, (LemmaModelKind)9, [1f], [0f], 0f, 1));
@@ -723,7 +683,7 @@ public class WordSenseTableTests
         var bias = new[] { 0.5f, -0.25f, 0.125f };
         var feature = Enumerable.Range(0, dimension).Select(i => (float)Math.Cos(i * 1.3)).ToArray();
         var model = new LemmaModel(
-            "odd", [Def("a", "noun"), Def("b", "verb"), Def("c", "adj")], LemmaModelKind.OneVersusRest, weights, bias, 0f, dimension);
+            "odd", [Def(PartOfSpeech.Noun), Def(PartOfSpeech.Verb), Def(PartOfSpeech.Adjective)], LemmaModelKind.OneVersusRest, weights, bias, 0f, dimension);
         var scores = new float[3];
 
         model.Scores(feature, scores);

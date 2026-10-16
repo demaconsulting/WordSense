@@ -1,78 +1,78 @@
-lemma	sense	tags	group
-saturate	noun	noun	
-saturate	verb	verb	
-segment	noun	noun	
-segment	verb	verb	
-segregate	noun	noun	
-segregate	verb	verb	
-seriate	adj	adj	
-seriate	verb	verb	
-situate	adj	adj	
-situate	verb	verb	
-sophisticate	noun	noun	
-sophisticate	verb	verb	
-sow	noun	noun	
-sow	verb	verb	
-sublease	noun	noun	
-sublease	verb	verb	
-subordinate	noun	noun	
-subordinate	verb	verb	
-supplement	noun	noun	
-supplement	verb	verb	
-suspect	noun	noun	
-suspect	verb	verb	
-syndicate	noun	noun	
-syndicate	verb	verb	
-torment	noun	noun	
-torment	verb	verb	
-transform	noun	noun	
-transform	verb	verb	
-transplant	noun	noun	
-transplant	verb	verb	
-trifurcate	adj	adj	
-trifurcate	verb	verb	
-triplicate	noun	noun	
-triplicate	verb	verb	
-underbid	noun	noun	
-underbid	verb	verb	
-undercharge	noun	noun	
-undercharge	verb	verb	
-undercount	noun	noun	
-undercount	verb	verb	
-undercut	noun	noun	
-undercut	verb	verb	
-underestimate	noun	noun	
-underestimate	verb	verb	
-underground	adj	adj	
-underground	adv	adv	
-underlay	noun	noun	
-underlay	verb	verb	
-underset	noun	noun	
-underset	verb	verb	
-undershoot	noun	noun	
-undershoot	verb	verb	
-underspend	noun	noun	
-underspend	verb	verb	
-undertaking	noun	noun	
-undertaking	verb	verb	
-underuse	noun	noun	
-underuse	verb	verb	
-undulate	adj	adj	
-undulate	verb	verb	
-unlearned	adj	adj	
-unlearned	verb	verb	
-unpeople	noun	noun	
-unpeople	verb	verb	
-uphill	adj	adj	
-uphill	adv	adv	
-uplift	noun	noun	
-uplift	verb	verb	
-upset	adj	adj	
-upset	noun	noun	
-upset	verb	verb	
-upturn	noun	noun	
-upturn	verb	verb	
-used	past	past|verb	
-used	verb	past|verb	
-warehouse	noun	noun	
-warehouse	verb	verb	
+lemma	label	pos	meaning	respelling
+saturate	noun	noun	noun	
+saturate	verb	verb	verb	
+segment	noun	noun	noun	
+segment	verb	verb	verb	
+segregate	noun	noun	noun	
+segregate	verb	verb	verb	
+seriate	adj	adjective	adjective	
+seriate	verb	verb	verb	
+situate	adj	adjective	adjective	
+situate	verb	verb	verb	
+sophisticate	noun	noun	noun	
+sophisticate	verb	verb	verb	
+sow	noun	noun	noun	
+sow	verb	verb	verb	
+sublease	noun	noun	noun	
+sublease	verb	verb	verb	
+subordinate	noun	noun	noun	
+subordinate	verb	verb	verb	
+supplement	noun	noun	noun	
+supplement	verb	verb	verb	
+suspect	noun	noun	noun	
+suspect	verb	verb	verb	
+syndicate	noun	noun	noun	
+syndicate	verb	verb	verb	
+torment	noun	noun	noun	
+torment	verb	verb	verb	
+transform	noun	noun	noun	
+transform	verb	verb	verb	
+transplant	noun	noun	noun	
+transplant	verb	verb	verb	
+trifurcate	adj	adjective	adjective	
+trifurcate	verb	verb	verb	
+triplicate	noun	noun	noun	
+triplicate	verb	verb	verb	
+underbid	noun	noun	noun	
+underbid	verb	verb	verb	
+undercharge	noun	noun	noun	
+undercharge	verb	verb	verb	
+undercount	noun	noun	noun	
+undercount	verb	verb	verb	
+undercut	noun	noun	noun	
+undercut	verb	verb	verb	
+underestimate	noun	noun	noun	
+underestimate	verb	verb	verb	
+underground	adj	adjective	adjective	
+underground	adv	adverb	adverb	
+underlay	noun	noun	noun	
+underlay	verb	verb	verb	
+underset	noun	noun	noun	
+underset	verb	verb	verb	
+undershoot	noun	noun	noun	
+undershoot	verb	verb	verb	
+underspend	noun	noun	noun	
+underspend	verb	verb	verb	
+undertaking	noun	noun	noun	
+undertaking	verb	verb	verb	
+underuse	noun	noun	noun	
+underuse	verb	verb	verb	
+undulate	adj	adjective	adjective	
+undulate	verb	verb	verb	
+unlearned	adj	adjective	adjective	
+unlearned	verb	verb	verb	
+unpeople	noun	noun	noun	
+unpeople	verb	verb	verb	
+uphill	adj	adjective	adjective	
+uphill	adv	adverb	adverb	
+uplift	noun	noun	noun	
+uplift	verb	verb	verb	
+upset	adj	adjective	adjective	
+upset	noun	noun	noun	
+upset	verb	verb	verb	
+upturn	noun	noun	noun	
+upturn	verb	verb	verb	
+used	past	verb	past	
+used	verb	verb	habit	
+warehouse	noun	noun	noun	
+warehouse	verb	verb	verb	

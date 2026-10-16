@@ -9,9 +9,8 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     Commands: <c>build --model DIR --corpus DIR --output FILE [--report FILE]</c> trains and writes the
 ///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
-///     <c>validate-pos --corpus DIR</c> checks that every sense has exactly one part of speech;
-///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide; the
-///     <c>audit-*</c> commands and <c>apply-relabel</c> drive the part-of-speech audit and relabel. The remaining
+///     <c>validate-pos --corpus DIR</c> checks the part-of-speech and pronunciation rules of every lemma;
+///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide. The remaining
 ///     commands (<c>real-gap</c>, <c>real-judge-export</c>, <c>real-judge-adjudicate</c>, <c>real-judge-merge</c>,
 ///     <c>real-import</c>, <c>real-gap-import</c>, <c>real-authored-import</c>, <c>nounverb-import</c>,
 ///     <c>nounverb-gate</c>, <c>real-eval-import</c>, <c>real-eval</c>, <c>validate-provenance</c>,
@@ -45,7 +44,7 @@ public static class Program
             {
                 error.WriteLine(
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
-                    "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
+                    "validate-pos, " +
                     "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, nounverb-import, nounverb-gate, " +
                     "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix.");
                 return 1;
@@ -58,16 +57,6 @@ public static class Program
                     return RunBuild(options, output);
                 case "import-batches":
                     return RunImport(options, output);
-                case "audit-export":
-                    return RunAuditExport(options, output);
-                case "audit-adjudicate":
-                    return RunAuditAdjudicate(options, output);
-                case "audit-merge":
-                    return RunAuditMerge(options, output);
-                case "audit-report":
-                    return RunAuditReport(options, output);
-                case "apply-relabel":
-                    return RunApplyRelabel(options, output);
                 case "validate-pos":
                     return RunValidatePos(options, output);
                 case "real-gap":
@@ -193,7 +182,7 @@ public static class Program
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var posErrors = PosRules.Validate(inventory);
+        var posErrors = inventory.ValidateRules();
         if (posErrors.Count > 0)
         {
             throw new InvalidDataException(string.Join(Environment.NewLine, posErrors));
@@ -275,44 +264,6 @@ public static class Program
         }
 
         output.WriteLine($"Ranked {ranked.Count} weak lemmas in {directory}.");
-        return 0;
-    }
-
-    private static int RunAuditExport(Dictionary<string, string> options, TextWriter output)
-    {
-        var size = IntOption(options, "size", 200);
-        var (rows, chunks) = PosAudit.Export(Require(options, "corpus"), Require(options, "work"), size);
-        output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
-        return 0;
-    }
-
-    private static int RunAuditAdjudicate(Dictionary<string, string> options, TextWriter output)
-    {
-        var size = IntOption(options, "size", 120);
-        var (adjudicate, probe) = PosAudit.PrepareAdjudication(Require(options, "corpus"), Require(options, "work"), size, 0.05);
-        output.WriteLine($"{adjudicate} rows need adjudication; {probe} auto-accepted rows are probed blind.");
-        return 0;
-    }
-
-    private static int RunAuditMerge(Dictionary<string, string> options, TextWriter output)
-    {
-        var results = PosAudit.Merge(Require(options, "corpus"), Require(options, "work"));
-        PosAudit.WriteResults(Require(options, "output"), results);
-        output.WriteLine($"Merged {results.Count} rows ({results.Count(r => r.Resolution == "agree")} agree, {results.Count(r => r.Resolution == "adjudicated")} adjudicated, {results.Count(r => r.Resolution == PosAudit.Undecided)} undecided).");
-        return 0;
-    }
-
-    private static int RunAuditReport(Dictionary<string, string> options, TextWriter output)
-    {
-        var text = PosAuditReport.Render(PosAudit.ReadResults(Require(options, "audit")), options.GetValueOrDefault("notes"));
-        File.WriteAllText(Require(options, "output"), text, new UTF8Encoding(false));
-        output.WriteLine("Wrote the audit report.");
-        return 0;
-    }
-
-    private static int RunApplyRelabel(Dictionary<string, string> options, TextWriter output)
-    {
-        output.WriteLine(Relabeler.Apply(Require(options, "corpus")));
         return 0;
     }
 
@@ -457,13 +408,13 @@ public static class Program
     private static int RunValidatePos(Dictionary<string, string> options, TextWriter output)
     {
         var inventory = SenseInventory.ReadDirectory(Path.Combine(Require(options, "corpus"), "senses"));
-        var errors = PosRules.Validate(inventory);
+        var errors = inventory.ValidateRules();
         if (errors.Count > 0)
         {
             throw new InvalidDataException(string.Join(Environment.NewLine, errors));
         }
 
-        output.WriteLine($"{inventory.Rows.Count()} senses have exactly one part of speech.");
+        output.WriteLine($"{inventory.Rows.Count()} senses of {inventory.LemmaCount} lemmas satisfy the part-of-speech and pronunciation rules.");
         return 0;
     }
 

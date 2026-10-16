@@ -1,83 +1,83 @@
-lemma	sense	tags	group
-inlay	noun	noun	
-inlay	verb	verb	
-insert	noun	noun	
-insert	verb	verb	
-inside	adj	adj	
-inside	adv	adv	
-intercept	noun	noun	
-intercept	verb	verb	
-interchange	noun	noun	
-interchange	verb	verb	
-interdict	noun	noun	
-interdict	verb	verb	
-intergrade	noun	noun	
-intergrade	verb	verb	
-interlay	noun	noun	
-interlay	verb	verb	
-interlock	noun	noun	
-interlock	verb	verb	
-interspace	noun	noun	
-interspace	verb	verb	
-intimate	noun	noun	
-intimate	verb	verb	
-intrigue	noun	noun	
-intrigue	verb	verb	
-invert	noun	noun	
-invert	verb	verb	
-invite	noun	noun	
-invite	verb	verb	
-isolate	noun	noun	
-isolate	verb	verb	
-jagged	adj	adj	
-jagged	verb	verb	
-laminate	noun	noun	
-laminate	verb	verb	
-learned	adj	adj	
-learned	verb	verb	
-legitimate	adj	adj	
-legitimate	verb	verb	
-lunged	adj	adj	
-lunged	verb	verb	
-marginate	adj	adj	
-marginate	verb	verb	
-mediate	adj	adj	
-mediate	verb	verb	
-merchandise	noun	noun	
-merchandise	verb	verb	
-misconduct	noun	noun	
-misconduct	verb	verb	
-miscount	noun	noun	
-miscount	verb	verb	
-misfire	noun	noun	
-misfire	verb	verb	
-mishit	noun	noun	
-mishit	verb	verb	
-mismatch	noun	noun	
-mismatch	verb	verb	
-misplay	noun	noun	
-misplay	verb	verb	
-misprint	noun	noun	
-misprint	verb	verb	
-misuse	noun	noun	
-misuse	verb	verb	
-moderate	noun	noun	
-moderate	verb	verb	
-moped	noun	noun	
-moped	verb	verb	
-mouth	noun	noun	
-mouth	verb	verb	
-nearby	adj	adj	
-nearby	adv	adv	
-nominate	adj	adj	
-nominate	verb	verb	
-nucleate	adj	adj	
-nucleate	verb	verb	
-obligate	adj	adj	
-obligate	verb	verb	
-obverse	adj	adj	
-obverse	noun	noun	
-offset	noun	noun	
-offset	verb	verb	
-opiate	noun	noun	
-opiate	verb	verb	
+lemma	label	pos	meaning	respelling
+inlay	noun	noun	noun	
+inlay	verb	verb	verb	
+insert	noun	noun	noun	
+insert	verb	verb	verb	
+inside	adj	adjective	adjective	
+inside	adv	adverb	adverb	
+intercept	noun	noun	noun	
+intercept	verb	verb	verb	
+interchange	noun	noun	noun	
+interchange	verb	verb	verb	
+interdict	noun	noun	noun	
+interdict	verb	verb	verb	
+intergrade	noun	noun	noun	
+intergrade	verb	verb	verb	
+interlay	noun	noun	noun	
+interlay	verb	verb	verb	
+interlock	noun	noun	noun	
+interlock	verb	verb	verb	
+interspace	noun	noun	noun	
+interspace	verb	verb	verb	
+intimate	noun	noun	noun	
+intimate	verb	verb	verb	
+intrigue	noun	noun	noun	
+intrigue	verb	verb	verb	
+invert	noun	noun	noun	
+invert	verb	verb	verb	
+invite	noun	noun	noun	
+invite	verb	verb	verb	
+isolate	noun	noun	noun	
+isolate	verb	verb	verb	
+jagged	adj	adjective	adjective	
+jagged	verb	verb	verb	
+laminate	noun	noun	noun	
+laminate	verb	verb	verb	
+learned	adj	adjective	adjective	
+learned	verb	verb	verb	
+legitimate	adj	adjective	adjective	
+legitimate	verb	verb	verb	
+lunged	adj	adjective	adjective	
+lunged	verb	verb	verb	
+marginate	adj	adjective	adjective	
+marginate	verb	verb	verb	
+mediate	adj	adjective	adjective	
+mediate	verb	verb	verb	
+merchandise	noun	noun	noun	
+merchandise	verb	verb	verb	
+misconduct	noun	noun	noun	
+misconduct	verb	verb	verb	
+miscount	noun	noun	noun	
+miscount	verb	verb	verb	
+misfire	noun	noun	noun	
+misfire	verb	verb	verb	
+mishit	noun	noun	noun	
+mishit	verb	verb	verb	
+mismatch	noun	noun	noun	
+mismatch	verb	verb	verb	
+misplay	noun	noun	noun	
+misplay	verb	verb	verb	
+misprint	noun	noun	noun	
+misprint	verb	verb	verb	
+misuse	noun	noun	noun	
+misuse	verb	verb	verb	
+moderate	noun	noun	noun	
+moderate	verb	verb	verb	
+moped	noun	noun	noun	
+moped	verb	verb	verb	
+mouth	noun	noun	noun	
+mouth	verb	verb	verb	
+nearby	adj	adjective	adjective	
+nearby	adv	adverb	adverb	
+nominate	adj	adjective	adjective	
+nominate	verb	verb	verb	
+nucleate	adj	adjective	adjective	
+nucleate	verb	verb	verb	
+obligate	adj	adjective	adjective	
+obligate	verb	verb	verb	
+obverse	adj	adjective	adjective	
+obverse	noun	noun	noun	
+offset	noun	noun	noun	
+offset	verb	verb	verb	
+opiate	noun	noun	noun	
+opiate	verb	verb	verb	

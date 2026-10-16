@@ -20,6 +20,29 @@ internal sealed record TableBuilderOptions(
     int Parallelism = 4);
 
 /// <summary>
+///     The trained parameters of one lemma.
+/// </summary>
+/// <param name="Senses">The sense definitions in ordinal order of label.</param>
+/// <param name="Names">The sense labels, parallel to the definitions.</param>
+/// <param name="Kind">Binary or one-versus-rest.</param>
+/// <param name="Weights">The weight rows.</param>
+/// <param name="Bias">One bias per row.</param>
+/// <param name="Margin">The cross-validated abstain margin (meaningful only when <paramref name="Cv"/>).</param>
+/// <param name="Cv">Whether the margin was cross-validated.</param>
+/// <param name="Labels">The sense index of each anchor.</param>
+/// <param name="Index">The indices of the lemma's anchor rows.</param>
+internal sealed record TrainedLemma(
+    SenseDefinition[] Senses,
+    string[] Names,
+    LemmaModelKind Kind,
+    float[] Weights,
+    float[] Bias,
+    float Margin,
+    bool Cv,
+    int[] Labels,
+    int[] Index);
+
+/// <summary>
 ///     Trains the per-lemma classifiers and assembles the embedded table.
 /// </summary>
 internal static class TableBuilder
@@ -83,7 +106,7 @@ internal static class TableBuilder
         }
 
         // Train every lemma; results land in fixed slots so the outcome is order independent
-        var trained = new (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index)[lemmas.Count];
+        var trained = new TrainedLemma[lemmas.Count];
         Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
         {
             var index = lemmas[k].Select(t => t.i).ToArray();
@@ -96,7 +119,7 @@ internal static class TableBuilder
         var models = new List<LemmaModel>();
         var reports = new List<LemmaReport>();
         var bySource = new Dictionary<string, GroupStats>(StringComparer.Ordinal);
-        var tagEvaluator = new TagEvaluator();
+        var accuracyEvaluator = new AccuracyEvaluator();
         for (var k = 0; k < lemmas.Count; k++)
         {
             var t = trained[k];
@@ -112,20 +135,23 @@ internal static class TableBuilder
             }
 
             // Score the holdout and group it by source file
-            int correct = 0, answered = 0, answeredCorrect = 0, total = 0, groupCorrect = 0;
-            var lemmaTags = new TagEvaluator();
+            int correct = 0, answered = 0, answeredCorrect = 0, total = 0, meaningCorrect = 0;
+            var lemmaAccuracy = new AccuracyEvaluator();
             var bySense = new SortedDictionary<string, int[]>(StringComparer.Ordinal);
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
                 var (best, rowMargin) = model.Score(holdoutFeatures[i]);
-                var right = string.Equals(t.Senses[best].Name, row.Sense, StringComparison.Ordinal);
-                var goldIndex = Array.FindIndex(t.Senses, s => s.Name == row.Sense);
-                groupCorrect += string.Equals(model.Senses[best].Group, model.Senses[goldIndex].Group, StringComparison.Ordinal) ? 1 : 0;
-                var scores = new float[t.Senses.Length];
-                model.Scores(holdoutFeatures[i], scores);
-                tagEvaluator.Add(row.Source, model, scores, goldIndex, margin);
-                lemmaTags.Add(row.Source, model, scores, goldIndex, margin);
+                var right = string.Equals(t.Names[best], row.Sense, StringComparison.Ordinal);
+                var goldIndex = Array.FindIndex(t.Names, s => s == row.Sense);
                 var isAnswered = rowMargin >= margin;
+
+                // The meaning level equals the sense level for a lemma that is not a heteronym
+                var meaningRight = model.IsHeteronym
+                    ? string.Equals(model.Senses[best].Meaning, model.Senses[goldIndex].Meaning, StringComparison.Ordinal)
+                    : right;
+                meaningCorrect += meaningRight ? 1 : 0;
+                accuracyEvaluator.Add(row.Source, model, best, goldIndex, isAnswered);
+                lemmaAccuracy.Add(row.Source, model, best, goldIndex, isAnswered);
                 if (!bySense.TryGetValue(row.Sense, out var senseCounts))
                 {
                     bySense[row.Sense] = senseCounts = new int[4];
@@ -144,16 +170,18 @@ internal static class TableBuilder
                     old.Total + 1, old.Correct + (right ? 1 : 0), old.Answered + (isAnswered ? 1 : 0), old.AnsweredCorrect + (isAnswered && right ? 1 : 0));
             }
 
-            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), groupCorrect,
+            var lemmaReport = lemmaAccuracy.ToReport();
+            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), meaningCorrect,
                 bySense.Select(p => new SenseStats(p.Key, p.Value[0], p.Value[1], p.Value[2], p.Value[3])).ToList(),
-                lemmaTags.ToReport().Overall);
+                lemmaReport.Pos,
+                model.IsHeteronym ? lemmaReport.Pronunciation : null);
             reports.Add(report);
-            AddWarnings(report, t.Senses.Select(s => s.Name).ToArray(), holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
+            AddWarnings(report, t.Names, holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }
 
         var table = new WordSenseTable(
             WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, models, BuildForms(forms, models));
-        return new BuildResult(table, new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, tagEvaluator.ToReport()));
+        return new BuildResult(table, new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, accuracyEvaluator.ToReport()));
     }
 
     /// <summary>
@@ -271,11 +299,11 @@ internal static class TableBuilder
     /// <param name="inventory">The sense inventory.</param>
     /// <param name="options">The builder settings.</param>
     /// <returns>The trained parameters.</returns>
-    internal static (SenseDefinition[] Senses, LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int[] Labels, int[] Index) TrainLemma(
+    internal static TrainedLemma TrainLemma(
         string lemma, int[] index, IReadOnlyList<CorpusRow> anchors, float[][] features, SenseInventory inventory, TableBuilderOptions options)
     {
         var senses = inventory.DefinitionsOf(lemma);
-        var names = senses.Select(s => s.Name).ToArray();
+        var names = inventory.LabelsOf(lemma);
         if (senses.Length < 2)
         {
             throw new InvalidDataException($"Lemma '{lemma}' needs anchor sentences for at least two senses.");
@@ -300,7 +328,7 @@ internal static class TableBuilder
             margin = ChooseMargin(lemma, x, labels, senses, kind, options);
         }
 
-        return (senses, kind, weights, bias, margin, cv, labels, index);
+        return new TrainedLemma(senses, names, kind, weights, bias, margin, cv, labels, index);
     }
 
     /// <summary>

@@ -154,7 +154,7 @@ internal static class RealAuthored
 
         // A sense is declared once: only the planned senses that no other file declares are written here
         var declared = plan.Where(p => !inventory.Contains(p.Lemma, p.Sense) && authoredAnchorSenses.Contains((p.Lemma, p.Sense)))
-            .Select(p => new InventoryRow(p.Lemma, p.Sense, p.Tags, ownFile, p.Group)).ToList();
+            .Select(p => InventoryRow.FromPlan(p.Lemma, p.Sense, p.Tags, p.Group, ownFile)).ToList();
         var sensesPath = Path.Combine(corpus, "senses", ownFile);
         if (declared.Count > 0)
         {

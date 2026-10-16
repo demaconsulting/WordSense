@@ -47,13 +47,14 @@ public class WordSenseTests
             "The record was broken last year, so they will record the new album.",
             TestContext.Current.CancellationToken);
 
-        var senses = tokens.Where(t => t.Sense is not null).Select(t => t.Sense!).ToList();
-        Assert.Equal(["noun", "verb"], senses.Where(s => s.Lemma == "record").Select(s => s.Sense));
+        var details = tokens.Where(t => t.Analysis.Details is not null).Select(t => t.Analysis.Details!).ToList();
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], details.Where(d => d.Lemma == "record").Select(d => d.PartOfSpeech));
+        Assert.Equal(["noun", "verb"], details.Where(d => d.Lemma == "record").Select(d => d.Pronunciation!.Meaning));
         Assert.Contains("record", classifier.KnownLemmas);
     }
 
     /// <summary>
-    ///     End to end: the word-list API gives parallel senses, tags and details.
+    ///     End to end: the word-list API gives a full parallel result for every word.
     /// </summary>
     [Fact]
     public async Task WordSense_Classifier_EndToEnd_WordListApi()
@@ -62,20 +63,18 @@ public class WordSenseTests
         string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "it"];
         var token = TestContext.Current.CancellationToken;
 
-        var senses = await classifier.ClassifyAsync(words, token);
-        var tags = await classifier.ClassifyTagAsync(words, ["noun", "verb"], token);
-        var isVerb = await classifier.IsTagAsync(words, "verb", token);
-        var details = await classifier.ClassifyDetailAsync(words, token);
+        var analyses = await classifier.ClassifyAsync(words, token);
 
-        Assert.Equal(words.Length, senses.Length);
-        Assert.Equal("noun", senses[1]!.Sense);
-        Assert.Equal("verb", senses[7]!.Sense);
-        Assert.Equal("noun", tags[1]);
-        Assert.Equal("verb", tags[7]);
-        Assert.False(isVerb[1]);
-        Assert.True(isVerb[7]);
-        Assert.Null(senses[0]);
-        Assert.Same(senses[1], details[1]!.Value.Sense);
+        Assert.Equal(words.Length, analyses.Length);
+        Assert.Equal(words, analyses.Select(a => a.Word));
+        Assert.Equal(PartOfSpeech.Noun, analyses[1].Details!.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, analyses[7].Details!.PartOfSpeech);
+        Assert.Equal("record", analyses[1].Details!.Lemma);
+        Assert.Null(analyses[0].Details);
+        Assert.False(analyses[0].Abstained);
+        Assert.True(analyses[1].Margin > 0);
+        Assert.NotNull(analyses[1].RunnerUp);
+        Assert.Contains(analyses[1].Details, classifier.GetCandidates("record"));
     }
 
     /// <summary>
@@ -199,15 +198,16 @@ public class WordSenseTests
         var total = 0;
         var answered = 0;
         var answeredCorrect = 0;
-        foreach (var (words, target, _, sense) in await ReadHoldoutSampleAsync())
+        foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
         {
-            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target];
+            var gold = Gold[(lemma, sense)];
+            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target].Details;
 
             total++;
             if (result is not null)
             {
                 answered++;
-                answeredCorrect += result.Sense == sense ? 1 : 0;
+                answeredCorrect += result.PartOfSpeech == gold.Pos && result.Pronunciation?.Meaning == gold.Meaning ? 1 : 0;
             }
         }
 
@@ -217,10 +217,10 @@ public class WordSenseTests
     }
 
     /// <summary>
-    ///     Group-level accuracy gate: a prediction counts as right when the predicted sense belongs to the group of the gold sense.
+    ///     Pronunciation accuracy gate: for heteronyms, the predicted meaning must be the meaning of the gold sense.
     /// </summary>
     [Fact]
-    public async Task WordSense_Classifier_Holdout_MeetsGroupGate()
+    public async Task WordSense_Classifier_Holdout_MeetsPronunciationGate()
     {
         using var classifier = await CreateClassifierAsync();
         var total = 0;
@@ -228,37 +228,98 @@ public class WordSenseTests
         var answeredCorrect = 0;
         foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
         {
-            var gold = classifier.GetSenses(lemma).Single(s => s.Sense == sense);
-            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target];
+            var gold = Gold[(lemma, sense)];
+            if (gold.Meaning is null)
+            {
+                continue;
+            }
+
+            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target].Details;
 
             total++;
             if (result is not null)
             {
                 answered++;
-                answeredCorrect += result.Group == gold.Group ? 1 : 0;
+                answeredCorrect += result.Pronunciation!.Meaning == gold.Meaning ? 1 : 0;
+            }
+        }
+
+        Assert.True(total > 200, "The heteronym holdout sample is unexpectedly small.");
+        Assert.True((double)answeredCorrect / answered >= 0.96, $"Pronunciation accuracy on answered sentences was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
+        Assert.True((double)answered / total >= 0.85, $"Pronunciation coverage was {(double)answered / total:P2}.");
+    }
+
+    /// <summary>
+    ///     Part-of-speech accuracy gate: the predicted part of speech must be that of the gold sense.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_Holdout_MeetsPartOfSpeechGate()
+    {
+        using var classifier = await CreateClassifierAsync();
+        var total = 0;
+        var answered = 0;
+        var answeredCorrect = 0;
+        foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
+        {
+            var gold = Gold[(lemma, sense)];
+            var result = (await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken))[target].Details;
+
+            total++;
+            if (result is not null)
+            {
+                answered++;
+                answeredCorrect += result.PartOfSpeech == gold.Pos ? 1 : 0;
             }
         }
 
         Assert.True(total > 400, "The holdout sample is unexpectedly small.");
-        Assert.True((double)answeredCorrect / answered >= 0.96, $"Group accuracy on answered sentences was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
-        Assert.True((double)answered / total >= 0.85, $"Group coverage was {(double)answered / total:P2}.");
+        Assert.True((double)answeredCorrect / answered >= 0.97, $"Part-of-speech accuracy on answered words was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
+        Assert.True((double)answered / total >= 0.85, $"Part-of-speech coverage was {(double)answered / total:P2}.");
     }
 
     /// <summary>
-    ///     Part-of-speech honesty: every sense of the embedded table has exactly one part of speech and no stand-in tags.
+    ///     Honesty of the shipped table: every lemma has a part of speech from the four shipped classes, a lemma is a
+    ///     heteronym exactly when its senses have at least two distinct meanings, and every candidate is exposed.
     /// </summary>
     [Fact]
-    public void WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech()
+    public void WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent()
     {
-        string[] partsOfSpeech = ["adj", "adv", "noun", "verb"];
-        string[] qualifiers = ["comparative", "participle", "past", "present", "superlative"];
+        PartOfSpeech[] shipped = [PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Adjective, PartOfSpeech.Adverb];
         var table = WordSenseTable.LoadEmbedded();
 
-        foreach (var sense in table.Lemmas.SelectMany(l => l.Senses))
+        foreach (var lemma in table.Lemmas)
         {
-            Assert.True(sense.Tags.Count(partsOfSpeech.Contains) == 1, $"{sense} must have exactly one part of speech but has [{string.Join(", ", sense.Tags)}].");
-            Assert.True(sense.Tags.All(t => partsOfSpeech.Contains(t) || qualifiers.Contains(t)), $"{sense} has a tag that is not a part of speech or a tense/degree qualifier.");
+            Assert.All(lemma.Senses, s => Assert.Contains(s.Pos, shipped));
+            var meanings = lemma.Senses.Select(s => s.Meaning).Distinct().Count();
+            Assert.Equal(lemma.IsHeteronym, meanings >= 2);
+            Assert.All(lemma.Candidates, c => Assert.Equal(lemma.IsHeteronym, c.Pronunciation is not null));
         }
+    }
+
+    /// <summary>
+    ///     The gold part of speech and meaning of every sense label of the corpus.
+    /// </summary>
+    private static readonly Lazy<Dictionary<(string, string), (PartOfSpeech, string?)>> GoldMap = new(ReadGold);
+
+    private static Dictionary<(string Lemma, string Label), (PartOfSpeech Pos, string? Meaning)> Gold => GoldMap.Value;
+
+    /// <summary>
+    ///     Reads the sense inventory of the corpus.
+    /// </summary>
+    /// <returns>The inventory by lemma and label.</returns>
+    private static Dictionary<(string, string), (PartOfSpeech, string?)> ReadGold()
+    {
+        var root = ModelAssets.RequireRepositoryRoot();
+        var result = new Dictionary<(string, string), (PartOfSpeech, string?)>();
+        foreach (var file in Directory.GetFiles(Path.Combine(root, "corpus", "senses"), "*.tsv"))
+        {
+            foreach (var c in File.ReadAllLines(file).Skip(1).Select(l => l.TrimEnd('\r').Split('\t')).Where(c => c.Length >= 4))
+            {
+                result[(c[0], c[1])] = (Enum.Parse<PartOfSpeech>(c[2], true), c[3].Length == 0 ? null : c[3]);
+            }
+        }
+
+        return result;
     }
 
     /// <summary>
@@ -312,40 +373,6 @@ public class WordSenseTests
 
         Assert.True(checkedRows > 10000, "The corpus is unexpectedly small.");
         Assert.True(failures.Count == 0, $"Targets missing from corpus/forms/speech.tsv: {string.Join(", ", failures)}.");
-    }
-
-    /// <summary>
-    ///     Tag-level accuracy gate: telling noun from verb must be at least as accurate as telling the senses apart.
-    ///     Rows whose gold sense carries both or neither tag are skipped.
-    /// </summary>
-    [Fact]
-    public async Task WordSense_Classifier_Holdout_MeetsNounVerbTagGate()
-    {
-        using var classifier = await CreateClassifierAsync();
-        var total = 0;
-        var answered = 0;
-        var answeredCorrect = 0;
-        foreach (var (words, target, lemma, sense) in await ReadHoldoutSampleAsync())
-        {
-            var gold = classifier.GetSenses(lemma).Single(s => s.Sense == sense);
-            if (gold.HasTag("noun") == gold.HasTag("verb"))
-            {
-                continue;
-            }
-
-            var tag = (await classifier.ClassifyTagAsync(words, ["noun", "verb"], TestContext.Current.CancellationToken))[target];
-
-            total++;
-            if (tag is not null)
-            {
-                answered++;
-                answeredCorrect += gold.HasTag(tag) ? 1 : 0;
-            }
-        }
-
-        Assert.True(total > 350, "The noun/verb holdout sample is unexpectedly small.");
-        Assert.True((double)answeredCorrect / answered >= 0.97, $"Tag accuracy on answered words was {(double)answeredCorrect / answered:P2} ({answeredCorrect}/{answered}).");
-        Assert.True((double)answered / total >= 0.85, $"Tag coverage was {(double)answered / total:P2}.");
     }
 
     /// <summary>

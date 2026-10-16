@@ -72,12 +72,12 @@ using var classifier = await WordSenseClassifier.CreateAsync(
 
 string[] words = ["I", "read", "that", "the", "lead", "singer", "will", "bow", "and", "a", "tear", "will",
     "fall", "when", "she", "presents", "the", "present"];
-WordSense?[] senses = await classifier.ClassifyAsync(words); // parallel to words; null = unknown or unsure
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // parallel to words; Details is null = unknown or unsure
 
 for (var i = 0; i < words.Length; i++)
 {
-    Console.WriteLine(senses[i] is { } s
-        ? $"{words[i],-8} lemma={s.Lemma} sense={s.Sense} group={s.Group} tags={string.Join(",", s.Tags.Order())}"
+    Console.WriteLine(analyses[i].Details is { } d
+        ? $"{words[i],-8} lemma={d.Lemma} pos={d.PartOfSpeech} pronunciation={d.Pronunciation?.Meaning ?? "-"}"
         : $"{words[i],-8} -");
 }
 ```
@@ -87,61 +87,55 @@ The output, as produced by the committed model:
 <!-- output:classify -->
 ```text
 I        -
-read     lemma=read sense=past group=past tags=past,verb
+read     lemma=read pos=Verb pronunciation=past
 that     -
 the      -
-lead     lemma=lead sense=guide-noun group=guide tags=noun
+lead     lemma=lead pos=Noun pronunciation=guide
 singer   -
 will     -
-bow      lemma=bow sense=bend-verb group=bend tags=verb
+bow      lemma=bow pos=Verb pronunciation=bend
 and      -
 a        -
-tear     lemma=tear sense=drop group=drop tags=noun
+tear     lemma=tear pos=Noun pronunciation=drop
 will     -
 fall     -
 when     -
 she      -
-presents lemma=present sense=verb group=verb tags=verb
+presents lemma=present pos=Verb pronunciation=verb
 the      -
-present  lemma=present sense=noun group=noun tags=noun
+present  lemma=present pos=Noun pronunciation=noun
 ```
 
 Here `lead` (guiding), `tear` (a drop) and `present` (a gift) are nouns, while `bow` (to bend) and `presents` are
-verbs. `read` is the past tense (tags `past` and `verb`). `read`, `lead`, `bow`, `tear` and `present` are heteronyms
-whose sense depends on the context. Each answer carries the `lemma`, the `sense`, the `group` (senses of a lemma in
-one group share a pronunciation; the library has no pronunciation data) and the `tags`
-(a part of speech plus optional qualifiers); the [senses appendix](docs/user_guide/appendix-senses.md) lists every
-supported lemma with its senses and tags.
+verbs. `read` is the past tense. `read`, `lead`, `bow`, `tear` and `present` are heteronyms whose pronunciation
+depends on the context. Each answer carries the `lemma`, the `pos` (part of speech) and, for heteronyms, the
+pronunciation meaning; the [senses appendix](docs/user_guide/appendix-senses.md) lists every supported lemma.
 
-To ask only a tag-level question (noun versus verb) and to see the confidence behind each decision, reusing the
-classifier from above:
+To see the confidence behind each decision, reusing the classifier from above:
 
 <!-- sample:tags -->
 ```csharp
 string[] words = ["They", "will", "record", "the", "record"];
-string?[] pos = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // "noun", "verb" or null
-bool?[] isVerb = await classifier.IsTagAsync(words, "verb");                // true, false or null
-WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);   // also for abstained words
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // the full result for every word
 
 for (var i = 0; i < words.Length; i++)
 {
-    var detail = details[i] is { } d ? $"sense={d.Sense.Sense} margin={d.Margin:F2} abstained={d.Abstained}" : "-";
-    Console.WriteLine($"{words[i],-8} pos={pos[i] ?? "-"} isVerb={isVerb[i]?.ToString() ?? "-"} {detail}");
+    var a = analyses[i];
+    Console.WriteLine($"{words[i],-8} best={a.Details?.PartOfSpeech.ToString() ?? "-"} margin={a.Margin:F2} abstained={a.Abstained} runner-up={a.RunnerUp?.PartOfSpeech.ToString() ?? "-"}");
 }
 ```
 
 <!-- output:tags -->
 ```text
-They     pos=- isVerb=- -
-will     pos=- isVerb=- -
-record   pos=verb isVerb=True sense=verb margin=5.99 abstained=False
-the      pos=- isVerb=- -
-record   pos=noun isVerb=False sense=noun margin=7.16 abstained=False
+They     best=- margin=0.00 abstained=False runner-up=-
+will     best=- margin=0.00 abstained=False runner-up=-
+record   best=Verb margin=5.99 abstained=False runner-up=Noun
+the      best=- margin=0.00 abstained=False runner-up=-
+record   best=Noun margin=7.16 abstained=False runner-up=Verb
 ```
 
-`ClassifyTagAsync` and `IsTagAsync` score a tag by the best sense that carries it. `Margin` is the score of the best
-sense minus the runner-up; the classifier abstains when it is below the threshold of the lemma. A raw string can be
-passed to `ClassifyAsync(string)` instead of a word list.
+`Margin` is the score of the best sense minus the runner-up; the classifier abstains when it is below the threshold
+of the lemma. A raw string can be passed to `ClassifyAsync(string)` instead of a word list.
 
 ## Accuracy and Limitations
 

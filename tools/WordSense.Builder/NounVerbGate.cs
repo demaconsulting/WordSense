@@ -116,7 +116,7 @@ internal static class NounVerbGate
                 failures.Add($"coverage {Pct(coverage)} below {Pct(policy.MinCoverage)}");
             }
 
-            var tag = l.Tag is { Evaluated: > 0 } t ? (double)t.Correct / t.Evaluated : 0;
+            var tag = l.Pos is { Evaluated: > 0 } t ? (double)t.Correct / t.Evaluated : 0;
             results.Add(new GateResult(
                 l.Lemma,
                 l.AnchorCount,

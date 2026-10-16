@@ -77,7 +77,7 @@ public sealed class WordSenseClassifierOptions
     /// <remarks>
     ///     Must not be negative or NaN; <see cref="WordSenseClassifier.CreateAsync"/> rejects such values. The
     ///     effective threshold of a lemma is <c>LemmaModel.AbstainMargin * AbstainMarginScale</c>; a decision whose
-    ///     margin (see <see cref="WordSenseDetail.Margin"/>) is below it is withheld. For example a scale of 0.5 halves
+    ///     margin (see <see cref="WordAnalysis.Margin"/>) is below it is withheld. For example a scale of 0.5 halves
     ///     every lemma's threshold, so more answers are given and more of them may be wrong.
     /// </remarks>
     public double AbstainMarginScale { get; init; } = 1.0;

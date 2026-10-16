@@ -110,7 +110,7 @@ internal static class RealJudge
         var menus = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var lemma in lemmas.OrderBy(l => l, StringComparer.Ordinal))
         {
-            string Tags(string sense) => string.Join('|', inventory.DefinitionsOf(lemma).First(d => d.Name == sense).Tags);
+            string Tags(string sense) => inventory.RowsOf(lemma).First(d => d.Label == sense).Pos.ToString().ToLowerInvariant();
             List<(string Sense, string Tags, string Definition)> senses;
             if (gap.Any(g => g.Lemma == lemma))
             {
@@ -122,7 +122,7 @@ internal static class RealJudge
             }
             else
             {
-                senses = inventory.DefinitionsOf(lemma).Select(d => (d.Name, string.Join('|', d.Tags), string.Empty)).ToList();
+                senses = inventory.RowsOf(lemma).Select(d => (d.Label, d.Pos.ToString().ToLowerInvariant(), string.Empty)).ToList();
             }
             var lines = new List<string>();
             foreach (var (sense, tags, definition) in senses)

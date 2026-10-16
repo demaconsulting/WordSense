@@ -48,12 +48,12 @@ internal sealed class ReadmeSample
 
         string[] words = ["I", "read", "that", "the", "lead", "singer", "will", "bow", "and", "a", "tear", "will",
             "fall", "when", "she", "presents", "the", "present"];
-        WordSense?[] senses = await classifier.ClassifyAsync(words); // parallel to words; null = unknown or unsure
+        WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // parallel to words; Details is null = unknown or unsure
 
         for (var i = 0; i < words.Length; i++)
         {
-            Console.WriteLine(senses[i] is { } s
-                ? $"{words[i],-8} lemma={s.Lemma} sense={s.Sense} group={s.Group} tags={string.Join(",", s.Tags.Order())}"
+            Console.WriteLine(analyses[i].Details is { } d
+                ? $"{words[i],-8} lemma={d.Lemma} pos={d.PartOfSpeech} pronunciation={d.Pronunciation?.Meaning ?? "-"}"
                 : $"{words[i],-8} -");
         }
 
@@ -69,14 +69,12 @@ internal sealed class ReadmeSample
     {
         // <sample:tags>
         string[] words = ["They", "will", "record", "the", "record"];
-        string?[] pos = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // "noun", "verb" or null
-        bool?[] isVerb = await classifier.IsTagAsync(words, "verb");                // true, false or null
-        WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);   // also for abstained words
+        WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // the full result for every word
 
         for (var i = 0; i < words.Length; i++)
         {
-            var detail = details[i] is { } d ? $"sense={d.Sense.Sense} margin={d.Margin:F2} abstained={d.Abstained}" : "-";
-            Console.WriteLine($"{words[i],-8} pos={pos[i] ?? "-"} isVerb={isVerb[i]?.ToString() ?? "-"} {detail}");
+            var a = analyses[i];
+            Console.WriteLine($"{words[i],-8} best={a.Details?.PartOfSpeech.ToString() ?? "-"} margin={a.Margin:F2} abstained={a.Abstained} runner-up={a.RunnerUp?.PartOfSpeech.ToString() ?? "-"}");
         }
 
         // </sample:tags>

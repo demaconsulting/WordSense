@@ -1,83 +1,83 @@
-lemma	sense	tags	group
-absent	adj	adj	
-absent	verb	verb	
-abstract	adj	adj	
-abstract	verb	verb	
-abuse	noun	noun	
-abuse	verb	verb	
-addict	noun	noun	
-addict	verb	verb	
-adulterate	adj	adj	
-adulterate	verb	verb	
-advocate	noun	noun	
-advocate	verb	verb	
-affect	noun	noun	
-affect	verb	verb	
-affiliate	noun	noun	
-affiliate	verb	verb	
-affix	noun	noun	
-affix	verb	verb	
-agglomerate	noun	noun	
-agglomerate	verb	verb	
-aggregate	noun	noun	
-aggregate	verb	verb	
-alternate	noun	noun	
-alternate	verb	verb	
-analyses	noun	noun	
-analyses	verb	verb	
-animate	adj	adj	
-animate	verb	verb	
-appropriate	adj	adj	
-appropriate	verb	verb	
-approximate	adj	adj	
-approximate	verb	verb	
-arithmetic	adj	adj	
-arithmetic	noun	noun	
-arsenic	adj	adj	
-arsenic	noun	noun	
-articulate	adj	adj	
-articulate	verb	verb	
-aspirate	adj	adj	
-aspirate	noun	noun	
-aspirate	verb	verb	
-associate	noun	noun	
-associate	verb	verb	
-attenuate	adj	adj	
-attenuate	verb	verb	
-attribute	noun	noun	
-attribute	verb	verb	
-augment	noun	noun	
-augment	verb	verb	
-axes	noun	noun	
-axes	verb	verb	
-bifurcate	adj	adj	
-bifurcate	verb	verb	
-bombard	noun	noun	
-bombard	verb	verb	
-buffet	noun	noun	
-buffet	verb	verb	
-carbonate	noun	noun	
-carbonate	verb	verb	
-certificate	noun	noun	
-certificate	verb	verb	
-cleanly	adj	adj	
-cleanly	adv	adv	
-collocate	noun	noun	
-collocate	verb	verb	
-combine	noun	noun	
-combine	verb	verb	
-commune	noun	noun	
-commune	verb	verb	
-compact	adj	adj	
-compact	noun	noun	
-compact	verb	verb	
-complement	noun	noun	
-complement	verb	verb	
-compliment	noun	noun	
-compliment	verb	verb	
-compound	noun	noun	
-compound	verb	verb	
-concert	noun	noun	
-concert	verb	verb	
-confederate	noun	noun	
-confederate	verb	verb	
+lemma	label	pos	meaning	respelling
+absent	adj	adjective	adjective	
+absent	verb	verb	verb	
+abstract	adj	adjective	adjective	
+abstract	verb	verb	verb	
+abuse	noun	noun	noun	
+abuse	verb	verb	verb	
+addict	noun	noun	noun	
+addict	verb	verb	verb	
+adulterate	adj	adjective	adjective	
+adulterate	verb	verb	verb	
+advocate	noun	noun	noun	
+advocate	verb	verb	verb	
+affect	noun	noun	noun	
+affect	verb	verb	verb	
+affiliate	noun	noun	noun	
+affiliate	verb	verb	verb	
+affix	noun	noun	noun	
+affix	verb	verb	verb	
+agglomerate	noun	noun	noun	
+agglomerate	verb	verb	verb	
+aggregate	noun	noun	noun	
+aggregate	verb	verb	verb	
+alternate	noun	noun	noun	
+alternate	verb	verb	verb	
+analyses	noun	noun	noun	
+analyses	verb	verb	verb	
+animate	adj	adjective	adjective	
+animate	verb	verb	verb	
+appropriate	adj	adjective	adjective	
+appropriate	verb	verb	verb	
+approximate	adj	adjective	adjective	
+approximate	verb	verb	verb	
+arithmetic	adj	adjective	adjective	
+arithmetic	noun	noun	noun	
+arsenic	adj	adjective	adjective	
+arsenic	noun	noun	noun	
+articulate	adj	adjective	adjective	
+articulate	verb	verb	verb	
+aspirate	adj	adjective	adjective	
+aspirate	noun	noun	noun	
+aspirate	verb	verb	verb	
+associate	noun	noun	noun	
+associate	verb	verb	verb	
+attenuate	adj	adjective	adjective	
+attenuate	verb	verb	verb	
+attribute	noun	noun	noun	
+attribute	verb	verb	verb	
+augment	noun	noun	noun	
+augment	verb	verb	verb	
+axes	noun	noun	noun	
+axes	verb	verb	verb	
+bifurcate	adj	adjective	adjective	
+bifurcate	verb	verb	verb	
+bombard	noun	noun	noun	
+bombard	verb	verb	verb	
+buffet	noun	noun	noun	
+buffet	verb	verb	verb	
+carbonate	noun	noun	noun	
+carbonate	verb	verb	verb	
+certificate	noun	noun	noun	
+certificate	verb	verb	verb	
+cleanly	adj	adjective	adjective	
+cleanly	adv	adverb	adverb	
+collocate	noun	noun	noun	
+collocate	verb	verb	verb	
+combine	noun	noun	noun	
+combine	verb	verb	verb	
+commune	noun	noun	noun	
+commune	verb	verb	verb	
+compact	adj	adjective	adjective	
+compact	noun	noun	noun	
+compact	verb	verb	verb	
+complement	noun	noun	noun	
+complement	verb	verb	verb	
+compliment	noun	noun	noun	
+compliment	verb	verb	verb	
+compound	noun	noun	noun	
+compound	verb	verb	verb	
+concert	noun	noun	noun	
+concert	verb	verb	verb	
+confederate	noun	noun	noun	
+confederate	verb	verb	verb	

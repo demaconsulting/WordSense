@@ -11,11 +11,10 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Binary layout (little-endian): magic <c>WSNS</c>, u16 version, u16 flags, model id string,
-///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], the tag dictionary (u16 tag count,
-///     tag strings in ordinal order), u32 lemma count, lemmas in ordinal order (string lemma, u16 sense
-///     count, per sense: string name, u8 tag count, u16 tag indexes in ascending order, string group (empty
-///     when the group is the name); then u8 kind,
+///     Binary layout (little-endian): magic <c>WSNS</c>, u16 version (4), u16 flags, model id string,
+///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], u32 lemma count, lemmas in ordinal order (string lemma,
+///     u16 sense count, per sense: u8 part of speech, string meaning (empty when none), string respelling (empty when
+///     none); then u8 kind,
 ///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms in ordinal order (string form, u32 lemma index), and a trailing
 ///     32-byte SHA-256 of everything before it. Strings are a u16 byte length followed by UTF-8.
 ///     </para>
@@ -42,7 +41,7 @@ namespace DemaConsulting.WordSense;
 ///     {
 ///         foreach (var sense in model.Senses)
 ///         {
-///             Console.WriteLine($"{sense.Sense}: {string.Join(",", sense.Tags.Order())}");
+///             Console.WriteLine($"{sense.Pos}: {sense.Meaning ?? "-"}");
 ///         }
 ///     }
 ///
@@ -60,7 +59,7 @@ public sealed class WordSenseTable
     /// <summary>
     ///     The only serialization version this library reads and writes.
     /// </summary>
-    private const ushort CurrentVersion = 3;
+    private const ushort CurrentVersion = 4;
 
     /// <summary>
     ///     The length of a SHA-256 digest in bytes.
@@ -86,11 +85,6 @@ public sealed class WordSenseTable
     ///     The largest sense count per lemma accepted from a file.
     /// </summary>
     private const int MaxSenses = 64;
-
-    /// <summary>
-    ///     The largest number of distinct tags accepted from a file.
-    /// </summary>
-    private const int MaxTags = 256;
 
     /// <summary>
     ///     The manifest resource name of the table embedded in this assembly.
@@ -250,8 +244,8 @@ public sealed class WordSenseTable
     /// <returns>The parsed table.</returns>
     /// <remarks>
     ///     To bound memory the reader rejects, whatever the checksum says: a dimension above 4,096; more than
-    ///     100,000 lemmas; more than 2,000,000 forms; fewer than 2 or more than 64 senses in a lemma; more
-    ///     than 256 distinct tags; more than 16 tags (or none) on a sense. Strings are limited to 65,535
+    ///     100,000 lemmas; more than 2,000,000 forms; fewer than 2 or more than 64 senses in a lemma; an undefined
+    ///     part of speech; and sense sets that are inconsistent (see <see cref="LemmaModel"/>). Strings are limited to 65,535
     ///     UTF-8 bytes by their length prefix.
     /// </remarks>
     /// <exception cref="WordSenseTableFormatException">
@@ -276,8 +270,8 @@ public sealed class WordSenseTable
     /// <returns>The serialized bytes, including the trailing digest.</returns>
     /// <exception cref="InvalidOperationException">Thrown when a string is too long to encode.</exception>
     /// <exception cref="OverflowException">
-    ///     Thrown when a count does not fit its field in the format, for example more than 65,535 distinct tags
-    ///     or more than 65,535 senses in one lemma. The writer does not apply the limits that <see cref="Read"/>
+    ///     Thrown when a count does not fit its field in the format, for example more than 65,535 senses in one
+    ///     lemma. The writer does not apply the limits that <see cref="Read"/>
     ///     enforces, so a table that is written successfully can still be rejected when read back.
     /// </exception>
     public byte[] ToArray()
@@ -310,15 +304,6 @@ public sealed class WordSenseTable
         WriteU32(buffer, Dimension);
         WriteFloats(buffer, Mean);
 
-        // The tag dictionary holds every distinct tag once, in ordinal order
-        var tags = Lemmas.SelectMany(l => l.Senses).SelectMany(s => s.Tags).Distinct(StringComparer.Ordinal)
-            .OrderBy(t => t, StringComparer.Ordinal).ToList();
-        WriteU16(buffer, tags.Count);
-        foreach (var tag in tags)
-        {
-            WriteString(buffer, tag);
-        }
-
         WriteU32(buffer, Lemmas.Count);
         foreach (var lemma in Lemmas)
         {
@@ -326,15 +311,9 @@ public sealed class WordSenseTable
             WriteU16(buffer, lemma.Senses.Count);
             foreach (var sense in lemma.Senses)
             {
-                WriteString(buffer, sense.Sense);
-                buffer.WriteByte(checked((byte)sense.Tags.Count));
-                foreach (var index in sense.Tags.Select(t => tags.BinarySearch(t, StringComparer.Ordinal)).Order())
-                {
-                    WriteU16(buffer, index);
-                }
-
-                // The group is written empty when it equals the sense name (the default)
-                WriteString(buffer, sense.Group == sense.Sense ? string.Empty : sense.Group);
+                buffer.WriteByte((byte)sense.Pos);
+                WriteString(buffer, sense.Meaning ?? string.Empty);
+                WriteString(buffer, sense.Respelling ?? string.Empty);
             }
 
             buffer.WriteByte((byte)lemma.Kind);
@@ -395,23 +374,6 @@ public sealed class WordSenseTable
         var dimension = reader.ReadCount(MaxDimension, 1);
         var mean = reader.ReadFloats(dimension);
 
-        var tagCount = reader.ReadU16();
-        if (tagCount > MaxTags)
-        {
-            throw new WordSenseTableFormatException("The tag dictionary is too large.");
-        }
-
-        var tags = new string[tagCount];
-        for (var i = 0; i < tagCount; i++)
-        {
-            tags[i] = reader.ReadString();
-            if (!SenseDefinition.IsValidTag(tags[i]) || (i > 0 && string.CompareOrdinal(tags[i - 1], tags[i]) >= 0))
-            {
-                throw new WordSenseTableFormatException("The tag dictionary has an invalid, unsorted or duplicated tag.");
-            }
-        }
-
-        var tagUsed = new bool[tagCount];
         var lemmaCount = reader.ReadCount(MaxLemmas, 0);
         var lemmas = new List<LemmaModel>(lemmaCount);
         for (var i = 0; i < lemmaCount; i++)
@@ -426,7 +388,7 @@ public sealed class WordSenseTable
             var senses = new SenseDefinition[senseCount];
             for (var s = 0; s < senseCount; s++)
             {
-                senses[s] = ReadSense(ref reader, tags, tagUsed);
+                senses[s] = ReadSense(ref reader);
             }
 
             var kind = (LemmaModelKind)reader.ReadByte();
@@ -440,11 +402,6 @@ public sealed class WordSenseTable
             var bias = reader.ReadFloats(rows);
             var margin = reader.ReadFloats(1)[0];
             lemmas.Add(new LemmaModel(lemma, senses, kind, weights, bias, margin, dimension));
-        }
-
-        if (tagUsed.Contains(false))
-        {
-            throw new WordSenseTableFormatException("The tag dictionary contains a tag that no sense uses.");
         }
 
         var formCount = reader.ReadCount(MaxForms, 0);
@@ -468,43 +425,21 @@ public sealed class WordSenseTable
     }
 
     /// <summary>
-    ///     Reads one sense definition: its name and its tag indexes.
+    ///     Reads one sense definition: its part of speech, meaning and respelling.
     /// </summary>
     /// <param name="reader">The table reader.</param>
-    /// <param name="tags">The tag dictionary.</param>
-    /// <param name="tagUsed">Receives which dictionary tags are used.</param>
     /// <returns>The sense definition.</returns>
-    private static SenseDefinition ReadSense(ref TableReader reader, string[] tags, bool[] tagUsed)
+    private static SenseDefinition ReadSense(ref TableReader reader)
     {
-        var name = reader.ReadString();
-        var count = reader.ReadByte();
-        if (count is 0 or > SenseDefinition.MaxTagsPerSense)
+        var pos = reader.ReadByte();
+        if (!Enum.IsDefined((PartOfSpeech)pos))
         {
-            throw new WordSenseTableFormatException("A sense has an invalid tag count.");
+            throw new WordSenseTableFormatException("A sense has an undefined part of speech.");
         }
 
-        var senseTags = new string[count];
-        var previous = -1;
-        for (var i = 0; i < count; i++)
-        {
-            int index = reader.ReadU16();
-            if (index >= tags.Length || index <= previous)
-            {
-                throw new WordSenseTableFormatException("A sense has a tag index that is out of range, unsorted or duplicated.");
-            }
-
-            previous = index;
-            tagUsed[index] = true;
-            senseTags[i] = tags[index];
-        }
-
-        var group = reader.ReadString();
-        if (group.Length > 0 && !SenseDefinition.IsValidTag(group))
-        {
-            throw new WordSenseTableFormatException("A sense has an invalid group.");
-        }
-
-        return new SenseDefinition(name, senseTags, group.Length == 0 ? null : group);
+        var meaning = reader.ReadString();
+        var respelling = reader.ReadString();
+        return new SenseDefinition((PartOfSpeech)pos, meaning.Length == 0 ? null : meaning, respelling.Length == 0 ? null : respelling);
     }
 
     /// <summary>

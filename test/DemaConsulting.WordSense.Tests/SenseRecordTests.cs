@@ -1,87 +1,107 @@
 namespace DemaConsulting.WordSense.Tests;
 
 /// <summary>
-///     Tests for <see cref="WordSense"/>, <see cref="SenseDefinition"/>, tag scoring and text splitting.
+///     Tests for <see cref="SenseDefinition"/>, <see cref="LemmaModel"/> sense sets, the result records, the abstain
+///     rule and text splitting.
 /// </summary>
 public class SenseRecordTests
 {
-    private static WordSense Sense(string lemma, string name, params string[] tags) => new(lemma, name, tags);
-
-    /// <summary>
-    ///     The record exposes lemma, sense and tags and answers tag membership ordinally.
-    /// </summary>
-    [Fact]
-    public void WordSense_HasTag_ReportsMembership()
+    private static LemmaModel Model(params SenseDefinition[] senses)
     {
-        var sense = Sense("used", "past", "past", "verb");
-
-        Assert.Equal("used", sense.Lemma);
-        Assert.Equal("past", sense.Sense);
-        Assert.Equal(["past", "verb"], sense.Tags.Order(StringComparer.Ordinal));
-        Assert.True(sense.HasTag("verb"));
-        Assert.False(sense.HasTag("noun"));
-        Assert.False(sense.HasTag("VERB"));
-        Assert.False(sense.HasTag(string.Empty));
-        Assert.Equal("used:past", sense.ToString());
+        var kind = senses.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
+        var rows = kind == LemmaModelKind.Binary ? 1 : senses.Length;
+        return new LemmaModel("bow", senses, kind, new float[rows * 3], new float[rows], 0.5f, 3);
     }
 
     /// <summary>
-    ///     The tag set cannot be modified by a caller.
+    ///     A model exposes one shared answer per sense: lemma, part of speech and pronunciation.
     /// </summary>
     [Fact]
-    public void WordSense_Tags_AreImmutable()
+    public void LemmaModel_Candidates_MapSensesToDetails()
     {
-        var source = new List<string> { "noun" };
-        var sense = new WordSense("a", "b", source);
+        var model = Model(
+            new SenseDefinition(PartOfSpeech.Noun, "weapon", "boh"),
+            new SenseDefinition(PartOfSpeech.Verb, "bend", "bow"));
 
-        source.Add("verb");
-
-        Assert.False(sense.HasTag("verb"));
-        Assert.Throws<NotSupportedException>(() => ((ISet<string>)sense.Tags).Add("verb"));
-        Assert.False(sense.HasTag("verb"));
+        Assert.True(model.IsHeteronym);
+        Assert.Same(model.Candidates, model.Candidates);
+        Assert.Equal(new WordDetails("bow", PartOfSpeech.Noun, new Pronunciation("weapon", "boh")), model.Candidates[0]);
+        Assert.Equal(new WordDetails("bow", PartOfSpeech.Verb, new Pronunciation("bend", "bow")), model.Candidates[1]);
     }
 
     /// <summary>
-    ///     A model creates exactly one shared record per sense.
+    ///     A lemma whose senses have no meanings is not a heteronym and has no pronunciation.
     /// </summary>
     [Fact]
-    public void WordSense_LemmaModel_SharesOneRecordPerSense()
+    public void LemmaModel_NonHeteronym_HasNoPronunciation()
     {
-        var model = new LemmaModel(
-            "bat", [new SenseDefinition("animal", ["noun"]), new SenseDefinition("tool", ["noun", "verb"])],
-            LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
-        var table = new WordSenseTable(
-            "all-MiniLM-L6-v2", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 3,
-            [0.1f, 0.2f, 0.3f], [model], new Dictionary<string, string> { ["bat"] = "bat" });
-        var first = model.Senses;
-        var second = model.Senses;
+        var model = Model(new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Verb));
 
-        Assert.Same(first[0], second[0]);
-        Assert.Same(first[1], second[1]);
-        Assert.True(table.TryGetLemma(model.Lemma, out var found));
-        Assert.Same(model, found);
-        Assert.Same(first[0], found.Senses[0]);
-        Assert.Same(first[1], found.Senses[1]);
-        Assert.Equal(2, model.Senses.Count);
-        Assert.Equal(["animal", "tool"], model.Senses.Select(s => s.Sense));
+        Assert.False(model.IsHeteronym);
+        Assert.All(model.Candidates, c => Assert.Null(c.Pronunciation));
     }
 
     /// <summary>
-    ///     The group defaults to the sense label and an explicit group is kept; an invalid group is rejected.
+    ///     A respelling is optional and stays null when it is not authored.
     /// </summary>
     [Fact]
-    public void WordSense_Group_DefaultsToSenseAndValidates()
+    public void LemmaModel_MissingRespelling_IsNull()
     {
-        Assert.Equal("weapon", new WordSense("bow", "weapon", ["noun"]).Group);
-        Assert.Equal("weapon", new WordSense("bow", "weapon", ["noun"], string.Empty).Group);
-        Assert.Equal("bend", new WordSense("bow", "bend-verb", ["verb"], "bend").Group);
-        new SenseDefinition("bend-verb", ["verb"], "bend").Validate();
-        new SenseDefinition("weapon", ["noun"]).Validate();
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("bend-verb", ["verb"], "Bend Group").Validate());
+        var model = Model(new SenseDefinition(PartOfSpeech.Noun, "weapon"), new SenseDefinition(PartOfSpeech.Verb, "bend"));
+
+        Assert.Null(model.Candidates[0].Pronunciation!.Respelling);
+        Assert.Equal("weapon", model.Candidates[0].Pronunciation!.Meaning);
     }
 
     /// <summary>
-    ///     Tag syntax is lower-case letters, digits and hyphens, starting with a letter.
+    ///     Senses of one meaning may differ in part of speech, and the same pair twice is rejected.
+    /// </summary>
+    [Fact]
+    public void LemmaModel_SenseSet_Rules()
+    {
+        var ok = Model(
+            new SenseDefinition(PartOfSpeech.Noun, "guide"),
+            new SenseDefinition(PartOfSpeech.Verb, "guide"),
+            new SenseDefinition(PartOfSpeech.Noun, "metal"));
+        Assert.True(ok.IsHeteronym);
+
+        // Meanings must be given for all or none of the senses
+        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Verb)));
+
+        // The part of speech and meaning pair is unique
+        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Noun, "a")));
+        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Noun)));
+
+        // A heteronym needs two distinct meanings
+        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Verb, "a")));
+
+        // One respelling per meaning, and distinct meanings sound different
+        Assert.Throws<ArgumentException>(() => Model(
+            new SenseDefinition(PartOfSpeech.Noun, "a", "ay"),
+            new SenseDefinition(PartOfSpeech.Verb, "a", "ee"),
+            new SenseDefinition(PartOfSpeech.Adjective, "b", "bee")));
+        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a", "same"), new SenseDefinition(PartOfSpeech.Verb, "b", "same")));
+    }
+
+    /// <summary>
+    ///     Definitions with an undefined part of speech, an invalid meaning or a respelling without a meaning are rejected.
+    /// </summary>
+    [Fact]
+    public void SenseDefinition_Validate_InvalidDefinitions_Throw()
+    {
+        new SenseDefinition(PartOfSpeech.Noun).Validate();
+        new SenseDefinition(PartOfSpeech.Noun, "weapon", "boh").Validate();
+        Assert.Throws<ArgumentException>(() => new SenseDefinition((PartOfSpeech)99).Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "Weapon").Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "").Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a\n").Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, null, "boh").Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "b o").Validate());
+        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "").Validate());
+    }
+
+    /// <summary>
+    ///     Meaning identifiers are lower-case letters, digits and hyphens, starting with a letter.
     /// </summary>
     [Theory]
     [InlineData("noun", true)]
@@ -93,139 +113,57 @@ public class SenseRecordTests
     [InlineData("-a", false)]
     [InlineData("a b", false)]
     [InlineData("a_b", false)]
-    [InlineData("été", false)]
     [InlineData("noun\n", false)]
-    [InlineData("\n", false)]
     [InlineData(null, false)]
-    public void SenseDefinition_IsValidTag_ChecksSyntax(string? tag, bool expected)
+    public void SenseDefinition_IsValidMeaning_ChecksSyntax(string? meaning, bool expected)
     {
-        Assert.Equal(expected, SenseDefinition.IsValidTag(tag));
+        Assert.Equal(expected, SenseDefinition.IsValidMeaning(meaning));
     }
 
     /// <summary>
-    ///     Tags longer than the limit are invalid.
+    ///     Respellings are letters, hyphens and apostrophes, and both texts have a length limit.
     /// </summary>
     [Fact]
-    public void SenseDefinition_IsValidTag_LengthLimit()
+    public void SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength()
     {
-        Assert.True(SenseDefinition.IsValidTag(new string('a', SenseDefinition.MaxTagLength)));
-        Assert.False(SenseDefinition.IsValidTag(new string('a', SenseDefinition.MaxTagLength + 1)));
-    }
-
-    private static readonly WordSense[] Mixed =
-    [
-        Sense("bow", "knot", "noun"),
-        Sense("bow", "weapon", "noun"),
-        Sense("bow", "stoop", "verb"),
-        Sense("bow", "color", "adj"),
-    ];
-
-    private static readonly string[] NounVerb = ["noun", "verb"];
-
-    /// <summary>
-    ///     The tag with the best sense score wins.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Classify_BestScoringTagWins()
-    {
-        Assert.Equal("noun", TagScorer.Classify(Mixed, [0f, 3f, 1f, 0f], NounVerb, 0.5));
-        Assert.Equal("verb", TagScorer.Classify(Mixed, [0f, 1f, 3f, 0f], NounVerb, 0.5));
+        Assert.True(SenseDefinition.IsValidRespelling("ree-KORD"));
+        Assert.True(SenseDefinition.IsValidRespelling("don't"));
+        Assert.False(SenseDefinition.IsValidRespelling("a1"));
+        Assert.False(SenseDefinition.IsValidRespelling("a b"));
+        Assert.False(SenseDefinition.IsValidRespelling(null));
+        Assert.True(SenseDefinition.IsValidRespelling(new string('a', SenseDefinition.MaxRespellingLength)));
+        Assert.False(SenseDefinition.IsValidRespelling(new string('a', SenseDefinition.MaxRespellingLength + 1)));
+        Assert.True(SenseDefinition.IsValidMeaning(new string('a', SenseDefinition.MaxMeaningLength)));
+        Assert.False(SenseDefinition.IsValidMeaning(new string('a', SenseDefinition.MaxMeaningLength + 1)));
     }
 
     /// <summary>
-    ///     Two queried tags with equal best scores tie, so a positive threshold abstains and the first tag wins at zero.
+    ///     The result records compare by value and the analysis of a word keeps its input exactly.
     /// </summary>
     [Fact]
-    public void TagScorer_Classify_EqualTagScores_TiesAndIsBelowAnyPositiveThreshold()
+    public void ResultRecords_HaveValueEquality()
     {
-        float[] scores = [0f, 3f, 3f, 0f];
+        var details = new WordDetails("record", PartOfSpeech.Verb, new Pronunciation("verb", null));
+        var analysis = new WordAnalysis("Records", details, 1.5, false, null, 0.0);
 
-        Assert.Null(TagScorer.Classify(Mixed, scores, NounVerb, 0.1));
-        Assert.Equal("noun", TagScorer.Classify(Mixed, scores, NounVerb, 0));
+        Assert.Equal(new WordDetails("record", PartOfSpeech.Verb, new Pronunciation("verb", null)), details);
+        Assert.Equal(analysis, analysis with { });
+        Assert.Equal("Records", analysis.Word);
+        Assert.Equal(new WordSenseToken(0, 7, "Records", analysis), new WordSenseToken(0, 7, "Records", analysis));
+        Assert.Equal(8, Enum.GetValues<PartOfSpeech>().Length);
     }
 
     /// <summary>
-    ///     The margin is taken between tag scores, not between senses: two senses of the same tag do not compete.
+    ///     A NaN margin or a NaN threshold abstains, and a margin at the threshold answers.
     /// </summary>
     [Fact]
-    public void TagScorer_Classify_SensesOfSameTag_DoNotReduceMargin()
+    public void AbstainRule_Abstains_NaNMarginOrThreshold_Abstains()
     {
-        WordSense[] senses = [Sense("x", "a", "noun"), Sense("x", "b", "noun"), Sense("x", "c", "verb")];
-
-        Assert.Equal("noun", TagScorer.Classify(senses, [2.0f, 1.9f, 0f], NounVerb, 1.5));
-    }
-
-    /// <summary>
-    ///     A margin below the threshold abstains at tag level, and one at the threshold does not.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Classify_BelowThreshold_Abstains()
-    {
-        WordSense[] senses = [Sense("x", "a", "noun"), Sense("x", "b", "verb")];
-
-        Assert.Null(TagScorer.Classify(senses, [1.0f, 0.6f], NounVerb, 0.5));
-        Assert.Equal("noun", TagScorer.Classify(senses, [1.0f, 0.5f], NounVerb, 0.5));
-    }
-
-    /// <summary>
-    ///     When a sense with none of the queried tags scores best, the answer is null.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Classify_OtherWins_ReturnsNull()
-    {
-        Assert.Null(TagScorer.Classify(Mixed, [0f, 1f, 0f, 9f], NounVerb, 0));
-    }
-
-    /// <summary>
-    ///     The other group counts as the runner-up of a queried tag.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Classify_OtherAsRunnerUp_LimitsMargin()
-    {
-        WordSense[] senses = [Sense("x", "a", "noun"), Sense("x", "b", "adj")];
-
-        Assert.Null(TagScorer.Classify(senses, [1.0f, 0.8f], NounVerb, 0.5));
-        Assert.Equal("noun", TagScorer.Classify(senses, [1.0f, 0.2f], NounVerb, 0.5));
-        Assert.Equal("noun", TagScorer.Classify(senses, [1.0f, 1.0f], NounVerb, 0));
-    }
-
-    /// <summary>
-    ///     A tag that no sense of the lemma carries gives null, and a single present tag has an infinite margin.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Classify_AbsentTag_ReturnsNull_SinglePresentTag_Answers()
-    {
-        WordSense[] adjectives = [Sense("x", "a", "adj"), Sense("x", "b", "adv")];
-        WordSense[] nounsOnly = [Sense("x", "a", "noun"), Sense("x", "b", "noun")];
-
-        Assert.Null(TagScorer.Classify(adjectives, [1f, 0f], NounVerb, 0));
-        Assert.Equal("noun", TagScorer.Classify(nounsOnly, [1f, 1f], NounVerb, 100));
-    }
-
-    /// <summary>
-    ///     A has-tag query is true when the tag group wins, false when other wins, null when absent or unsure.
-    /// </summary>
-    [Fact]
-    public void TagScorer_IsTag_AnswersBoolOrNull()
-    {
-        Assert.True(TagScorer.IsTag(Mixed, [0f, 3f, 0f, 0f], "noun", 0.5));
-        Assert.False(TagScorer.IsTag(Mixed, [0f, 0f, 0f, 3f], "noun", 0.5));
-        Assert.Null(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1.2f], "noun", 0.5));
-        Assert.Null(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1f], "adv", 0));
-        Assert.True(TagScorer.IsTag([Sense("x", "a", "noun"), Sense("x", "b", "noun")], [0f, 1f], "noun", 100));
-        Assert.True(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1f], "noun", 0));
-    }
-
-    /// <summary>
-    ///     A NaN margin or a NaN threshold abstains.
-    /// </summary>
-    [Fact]
-    public void TagScorer_Abstains_NaNMarginOrThreshold_Abstains()
-    {
-        Assert.True(TagScorer.Abstains(double.NaN, 0.5));
-        Assert.True(TagScorer.Abstains(0.5, double.NaN));
-        Assert.True(TagScorer.Abstains(double.NaN, double.NaN));
-        Assert.False(TagScorer.Abstains(0.5, 0.5));
+        Assert.True(AbstainRule.Abstains(double.NaN, 0.5));
+        Assert.True(AbstainRule.Abstains(0.5, double.NaN));
+        Assert.True(AbstainRule.Abstains(double.NaN, double.NaN));
+        Assert.True(AbstainRule.Abstains(0.4, 0.5));
+        Assert.False(AbstainRule.Abstains(0.5, 0.5));
     }
 
     /// <summary>
@@ -304,33 +242,5 @@ public class SenseRecordTests
         Assert.Equal(["well", "-"], TextSplitter.SplitWords("well-").Select(w => w.Text));
         Assert.Equal(["well-known", "-"], TextSplitter.SplitWords("well-known-").Select(w => w.Text));
         Assert.Equal(["a", "-", "-", "b"], TextSplitter.SplitWords("a--b").Select(w => w.Text));
-    }
-
-    /// <summary>
-    ///     Definitions with an empty name, no tags, too many tags, unsorted, duplicated or invalid tags are rejected.
-    /// </summary>
-    [Fact]
-    public void SenseDefinition_Validate_InvalidDefinitions_Throw()
-    {
-        var tooMany = Enumerable.Range(0, SenseDefinition.MaxTagsPerSense + 1).Select(i => $"t{i:D2}").ToArray();
-
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(string.Empty, ["noun"]).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", []).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", tooMany).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["verb", "noun"]).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun", "noun"]).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["Noun"]).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun\n"]).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun"], "grp\n").Validate());
-        new SenseDefinition("a", tooMany.Take(SenseDefinition.MaxTagsPerSense).ToArray()).Validate();
-    }
-
-    /// <summary>
-    ///     A null tag is rejected by <see cref="WordSense.HasTag"/>.
-    /// </summary>
-    [Fact]
-    public void WordSense_HasTag_NullTag_ThrowsArgumentNullException()
-    {
-        Assert.Throws<ArgumentNullException>(() => new WordSense("bow", "weapon", ["noun"]).HasTag(null!));
     }
 }

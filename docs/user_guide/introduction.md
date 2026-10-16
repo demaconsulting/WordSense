@@ -53,13 +53,13 @@ The package id is `DemaConsulting.WordSense` and the package depends only on Mic
 using var classifier = await WordSenseClassifier.CreateAsync();
 
 string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album"];
-WordSense?[] senses = await classifier.ClassifyAsync(words);
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
 for (var i = 0; i < words.Length; i++)
 {
-    if (senses[i] is { } sense)
+    if (analyses[i].Details is { } details)
     {
-        Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags.Order())}]");
+        Console.WriteLine($"{words[i]}: {details.PartOfSpeech} {details.Pronunciation?.Meaning}");
     }
 }
 ```
@@ -95,7 +95,7 @@ IReadOnlyList<WordSenseToken> tokens = await classifier.ClassifyAsync("They will
 
 foreach (var token in tokens)
 {
-    Console.WriteLine($"{token.Start,3} {token.Text,-8} {token.Sense?.ToString() ?? "-"}");
+    Console.WriteLine($"{token.Start,3} {token.Text,-8} {token.Analysis.Details?.PartOfSpeech.ToString() ?? "-"}");
 }
 ```
 
@@ -108,12 +108,12 @@ and `Length` are UTF-16 offsets). Words, runs of whitespace and single punctuati
 <!-- sample:detail -->
 ```csharp
 string[] words = ["They", "will", "record", "the", "record"];
-WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
-foreach (var detail in details.OfType<WordSenseDetail>())
+foreach (var analysis in analyses.Where(a => a.RunnerUp is not null))
 {
     Console.WriteLine(
-        $"{detail.Sense} margin={detail.Margin:F2} runner-up={detail.RunnerUp} abstained={detail.Abstained}");
+        $"{analysis.Word} margin={analysis.Margin:F2} runner-up={analysis.RunnerUp} abstained={analysis.Abstained}");
 }
 ```
 
@@ -127,12 +127,11 @@ policy; it is `null` only for words that have no classifier.
 <!-- sample:tags -->
 ```csharp
 string[] words = ["They", "will", "record", "the", "record"];
-string?[] pos = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // "noun", "verb" or null
-bool?[] isVerb = await classifier.IsTagAsync(words, "verb");                // true, false or null
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
 for (var i = 0; i < words.Length; i++)
 {
-    Console.WriteLine($"{words[i]}: pos={pos[i] ?? "-"} isVerb={isVerb[i]?.ToString() ?? "-"}");
+    Console.WriteLine($"{words[i]}: pos={analyses[i].Details?.PartOfSpeech.ToString() ?? "-"}");
 }
 ```
 
@@ -146,10 +145,9 @@ when the margin is below the abstention threshold of the lemma.
 ```csharp
 Console.WriteLine($"{classifier.KnownLemmas.Count} lemmas");
 
-foreach (var sense in classifier.GetSenses("record"))
+foreach (var candidate in classifier.GetCandidates("record"))
 {
-    var tags = string.Join(",", sense.Tags.Order());
-    Console.WriteLine($"{sense.Lemma}: {sense.Sense} (group {sense.Group}) tags={tags}");
+    Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech} pronunciation={candidate.Pronunciation?.Meaning}");
 }
 ```
 

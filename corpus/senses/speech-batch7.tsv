@@ -1,83 +1,83 @@
-lemma	sense	tags	group
-rehash	noun	noun	
-rehash	verb	verb	
-reheat	noun	noun	
-reheat	verb	verb	
-reincarnate	adj	adj	
-reincarnate	verb	verb	
-reject	noun	noun	
-reject	verb	verb	
-relapse	noun	noun	
-relapse	verb	verb	
-relaunch	noun	noun	
-relaunch	verb	verb	
-relay	noun	noun	
-relay	verb	verb	
-relet	noun	noun	
-relet	verb	verb	
-remake	noun	noun	
-remake	verb	verb	
-remit	noun	noun	
-remit	verb	verb	
-remold	noun	noun	
-remold	verb	verb	
-remould	noun	noun	
-remould	verb	verb	
-remount	noun	noun	
-remount	verb	verb	
-renunciate	noun	noun	
-renunciate	verb	verb	
-replay	noun	noun	
-replay	verb	verb	
-replicate	noun	noun	
-replicate	verb	verb	
-repost	noun	noun	
-repost	verb	verb	
-reprint	noun	noun	
-reprint	verb	verb	
-reread	past	past|verb	
-reread	present	present|verb	
-rerelease	noun	noun	
-rerelease	verb	verb	
-rerun	noun	noun	
-rerun	verb	verb	
-reshuffle	noun	noun	
-reshuffle	verb	verb	
-resit	noun	noun	
-resit	verb	verb	
-respawn	noun	noun	
-respawn	verb	verb	
-respray	noun	noun	
-respray	verb	verb	
-restart	noun	noun	
-restart	verb	verb	
-restyle	noun	noun	
-restyle	verb	verb	
-resume	noun	noun	
-resume	verb	verb	
-retake	noun	noun	
-retake	verb	verb	
-retard	noun	noun	
-retard	verb	verb	
-retest	noun	noun	
-retest	verb	verb	
-rethink	noun	noun	
-rethink	verb	verb	
-reticulate	adj	adj	
-reticulate	verb	verb	
-retread	noun	noun	
-retread	verb	verb	
-reuse	noun	noun	
-reuse	verb	verb	
-revamp	noun	noun	
-revamp	verb	verb	
-revert	noun	noun	
-revert	verb	verb	
-rewatch	noun	noun	
-rewatch	verb	verb	
-rewind	noun	noun	
-rewind	verb	verb	
-rewrite	noun	noun	
-rewrite	verb	verb	
-rows	argument	noun	
-rows	line	noun	
+lemma	label	pos	meaning	respelling
+rehash	noun	noun	noun	
+rehash	verb	verb	verb	
+reheat	noun	noun	noun	
+reheat	verb	verb	verb	
+reincarnate	adj	adjective	adjective	
+reincarnate	verb	verb	verb	
+reject	noun	noun	noun	
+reject	verb	verb	verb	
+relapse	noun	noun	noun	
+relapse	verb	verb	verb	
+relaunch	noun	noun	noun	
+relaunch	verb	verb	verb	
+relay	noun	noun	noun	
+relay	verb	verb	verb	
+relet	noun	noun	noun	
+relet	verb	verb	verb	
+remake	noun	noun	noun	
+remake	verb	verb	verb	
+remit	noun	noun	noun	
+remit	verb	verb	verb	
+remold	noun	noun	noun	
+remold	verb	verb	verb	
+remould	noun	noun	noun	
+remould	verb	verb	verb	
+remount	noun	noun	noun	
+remount	verb	verb	verb	
+renunciate	noun	noun	noun	
+renunciate	verb	verb	verb	
+replay	noun	noun	noun	
+replay	verb	verb	verb	
+replicate	noun	noun	noun	
+replicate	verb	verb	verb	
+repost	noun	noun	noun	
+repost	verb	verb	verb	
+reprint	noun	noun	noun	
+reprint	verb	verb	verb	
+reread	past	verb	past	
+reread	present	verb	present	
+rerelease	noun	noun	noun	
+rerelease	verb	verb	verb	
+rerun	noun	noun	noun	
+rerun	verb	verb	verb	
+reshuffle	noun	noun	noun	
+reshuffle	verb	verb	verb	
+resit	noun	noun	noun	
+resit	verb	verb	verb	
+respawn	noun	noun	noun	
+respawn	verb	verb	verb	
+respray	noun	noun	noun	
+respray	verb	verb	verb	
+restart	noun	noun	noun	
+restart	verb	verb	verb	
+restyle	noun	noun	noun	
+restyle	verb	verb	verb	
+resume	noun	noun	noun	
+resume	verb	verb	verb	
+retake	noun	noun	noun	
+retake	verb	verb	verb	
+retard	noun	noun	noun	
+retard	verb	verb	verb	
+retest	noun	noun	noun	
+retest	verb	verb	verb	
+rethink	noun	noun	noun	
+rethink	verb	verb	verb	
+reticulate	adj	adjective	adjective	
+reticulate	verb	verb	verb	
+retread	noun	noun	noun	
+retread	verb	verb	verb	
+reuse	noun	noun	noun	
+reuse	verb	verb	verb	
+revamp	noun	noun	noun	
+revamp	verb	verb	verb	
+revert	noun	noun	noun	
+revert	verb	verb	verb	
+rewatch	noun	noun	noun	
+rewatch	verb	verb	verb	
+rewind	noun	noun	noun	
+rewind	verb	verb	verb	
+rewrite	noun	noun	noun	
+rewrite	verb	verb	verb	
+rows	argument	noun	argument	
+rows	line	noun	line	

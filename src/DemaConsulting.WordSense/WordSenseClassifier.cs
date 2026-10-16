@@ -1,50 +1,44 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Classifies the sense of ambiguous words in context.
+///     Classifies ambiguous words in context: which lemma, part of speech and (for a heteronym) pronunciation a word has.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The primary input is a list of words that the caller has already tokenized; every result array
-///     is parallel to that list. Results are null for words that have no classifier and for answers
-///     withheld because the confidence is too low.
+///     The primary input is a list of words that the caller has already tokenized; the result array is parallel to
+///     that list. Every call returns a full <see cref="WordAnalysis"/> for every word: the best answer, the runner-up and
+///     the confidence figures. There are no options, flags or overloads that select how much detail is returned.
 ///     </para>
 ///     <para>
-///     Terminology: a <em>lemma</em> is the base form of an ambiguous word (for example <c>record</c>); a
-///     <em>sense</em> is one meaning of a lemma (<see cref="WordSense"/>); a <em>group</em> is the equivalence class of
-///     senses of one lemma that share a pronunciation (the library holds no pronunciation data; the group is the
-///     only equivalence mechanism, and a consumer maps (lemma, group) to its own pronunciation; see
-///     <see cref="WordSense"/>); a <em>tag</em> is a lower-case property of a sense such as
-///     <c>noun</c> or <c>verb</c>. Each sense gets a score; the <em>margin</em> is the best score minus the
-///     runner-up's score, and the classifier <em>abstains</em> (returns null) when the margin is below the
+///     Terminology: a <em>lemma</em> is the dictionary base form of a word (for example <c>record</c> for
+///     <c>records</c>); a <em>word</em> is the input as written; a <em>candidate</em> (<see cref="WordDetails"/>) is one
+///     possible answer for a lemma: a part of speech and, for a heteronym, a pronunciation. Words are matched to their
+///     lemma through the table's known forms (inflections), so <c>records</c> and <c>recorded</c> resolve to
+///     <c>record</c>; <see cref="WordAnalysis.Word"/> is the input and <see cref="WordDetails.Lemma"/> the base form.
+///     A <em>heteronym</em> is a lemma with at least two distinct meanings that are pronounced differently; only for a
+///     heteronym is <see cref="WordDetails.Pronunciation"/> set. Each candidate gets a score; the <em>margin</em> is the
+///     best score minus the runner-up's score, and the classifier <em>abstains</em> when the margin is below the
 ///     lemma's abstain threshold. Create an instance with <see cref="WordSenseClassifier.CreateAsync"/>.
 ///     </para>
 ///     <para>
-///     <b>Catalog.</b> The tags are the part-of-speech tags <c>noun</c>, <c>verb</c>, <c>adj</c> and <c>adv</c> and the
-///     qualifier tags <c>past</c>, <c>present</c>, <c>comparative</c>, <c>participle</c> (valid, but no shipped sense
-///     carries it) and <c>superlative</c> (likewise unused). Every lemma that was trained as a noun/verb lemma has senses
-///     tagged <c>noun</c> and <c>verb</c>. Discover what is supported with <see cref="KnownLemmas"/> and
-///     <see cref="GetSenses"/>: for <c>lead</c>, <c>GetSenses("lead")</c> returns <c>guide-noun</c> (tags <c>noun</c>,
-///     group <c>guide</c>), <c>guide-verb</c> (<c>verb</c>, group <c>guide</c>) and <c>metal</c> (<c>noun</c>, group
-///     <c>metal</c>). The complete list of lemmas, senses, tags, groups and recognized forms is the user guide appendix
-///     <c>https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md</c> ("Appendix: Supported Senses and Tags").
+///     <b>Catalog.</b> The shipped table answers the parts of speech <see cref="PartOfSpeech.Noun"/>,
+///     <see cref="PartOfSpeech.Verb"/>, <see cref="PartOfSpeech.Adjective"/> and <see cref="PartOfSpeech.Adverb"/>. Discover
+///     what is supported with <see cref="KnownLemmas"/> and <see cref="GetCandidates"/>: for <c>lead</c> the candidates are
+///     a noun and a verb with the meaning <c>guide</c> and a noun with the meaning <c>metal</c>. The complete list is the
+///     user guide appendix
+///     <c>https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md</c>.
 ///     </para>
 ///     <para>
-///     <b>Sense or tag?</b> Use <see cref="ClassifyAsync(IReadOnlyList{string}, CancellationToken)"/> (or
-///     <see cref="ClassifyDetailAsync"/>) when the meaning or group matters, for example to choose a pronunciation of
-///     <c>lead</c>: the <c>guide-noun</c> and <c>metal</c> senses are both nouns, so only the sense or its group tells
-///     them apart. Use <see cref="ClassifyTagAsync"/> or <see cref="IsTagAsync"/> for a coarse question such as
-///     noun versus verb: they compare tags, so they stay confident when a lemma is split into several senses of the
-///     same part of speech. <see cref="IsTagAsync"/> answers null, not false, when the lemma has no sense with the
-///     tag at all (for example <c>recreate</c> has only verb senses, so <c>IsTagAsync</c> for <c>noun</c> is null);
-///     false means the lemma has the tag but another reading won.
+///     <b>Results.</b> A word that is not known (no classifier for it, or it yields no tokens) has
+///     <see cref="WordAnalysis.Details"/> null and <see cref="WordAnalysis.Abstained"/> false. A known word whose margin is
+///     below the threshold abstains: <see cref="WordAnalysis.Details"/> is null, <see cref="WordAnalysis.Abstained"/> is true
+///     and <see cref="WordAnalysis.Margin"/> and <see cref="WordAnalysis.RunnerUp"/> are still set.
 ///     </para>
 ///     <para>
-///     <b>Running text and context.</b> The list overloads read the whole list as <em>one running text</em> in which
+///     <b>Running text and context.</b> The list overload reads the whole list as <em>one running text</em> in which
 ///     the words are joined by single spaces. Several sentences in one list are therefore one text, not separate
-///     inputs: they are encoded together and each sentence provides context for the words of the others, and the list
-///     is not split at sentence boundaries. To classify independent sentences, make one call per sentence. The same
-///     holds for the string overload. The encoder reads at most
+///     inputs: they are encoded together and each sentence provides context for the words of the others. To classify
+///     independent sentences, make one call per sentence. The same holds for the string overload. The encoder reads at most
 ///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> tokens (default 256, including two special tokens;
 ///     one word can be several word pieces). A text that fits is encoded once; a longer one is truncated per target:
 ///     each known word is classified from a window of that many tokens centered on it (clamped to the text bounds), and
@@ -54,48 +48,39 @@ namespace DemaConsulting.WordSense;
 ///     <b>One target word.</b> To classify one word of one sentence, pass the sentence and take the entry of the target.
 ///     With the string overload, find the target's token by its offset. With the list overload, you must tokenize
 ///     yourself so that every word, and every punctuation mark, is its own element: the lookup is by the whole
-///     element, so <c>"race."</c> is not a known word (it yields null) and must be passed as <c>"race"</c> and
-///     <c>"."</c>. The string overload does this for you: it splits a text into words (letters and digits, with an
-///     inner apostrophe or hyphen kept inside the word, so <c>don't</c> and <c>well-known</c> are one word) and into
-///     whitespace and single punctuation characters. Other words of the sentence that are known ambiguous words are
-///     classified as well, at no extra encoder call when the whole text fits one
-///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> window (a longer text is encoded per target word).
+///     element, so <c>"race."</c> is not a known word and must be passed as <c>"race"</c> and <c>"."</c>. The string
+///     overload does this for you: it splits a text into words (letters and digits, with an inner apostrophe or hyphen
+///     kept inside the word, so <c>don't</c> and <c>well-known</c> are one word) and into whitespace and single
+///     punctuation characters.
 ///     </para>
 ///     <para>
 ///     <b>Thread safety and disposal.</b> One classifier may be shared by many threads and tasks, and its methods may
 ///     be called concurrently. Dispose it once, after all calls have finished; disposing while a call is in flight is
 ///     not supported. After <see cref="IDisposable.Dispose"/> of a classifier from
-///     <see cref="WordSenseClassifier.CreateAsync"/> (which owns its encoder), a call that has to run the encoder (any text containing a
-///     known ambiguous word) throws <see cref="ObjectDisposedException"/>; a call whose words contain none can still
-///     return normally, and <see cref="KnownLemmas"/> and <see cref="GetSenses"/> keep working. Disposing twice is
+///     <see cref="WordSenseClassifier.CreateAsync"/> (which owns its encoder), a call that has to run the encoder (any text
+///     containing a known word) throws <see cref="ObjectDisposedException"/>; a call whose words contain none can still
+///     return normally, and <see cref="KnownLemmas"/> and <see cref="GetCandidates"/> keep working. Disposing twice is
 ///     harmless.
-///     </para>
-///     <para>
-///     A sense has one name: <see cref="WordSense.Sense"/> on a result is the same string as
-///     <see cref="SenseDefinition.Name"/> on the definition it was built from.
 ///     </para>
 ///     <para>
 ///     Each word is matched against the table's known surface forms after lower-casing it (invariant
 ///     culture) and replacing the typographic apostrophe (U+2019) with <c>'</c>, so case does not matter and
-///     inflected forms listed in the table (for example a plural or past tense) resolve to their lemma. A
-///     possessive <c>'s</c> is also accepted: when the word is not itself a known form, <c>'s</c> is removed
-///     and the rest is looked up (so <c>record's</c> resolves like <c>record</c>).
+///     inflected forms listed in the table resolve to their lemma. A possessive <c>'s</c> is also accepted: when the word
+///     is not itself a known form, <c>'s</c> is removed and the rest is looked up (so <c>record's</c> resolves like
+///     <c>record</c>).
 ///     </para>
 /// </remarks>
 /// <example>
-///     Pick the method that matches the question being asked: <c>ClassifyAsync</c> for the sense,
-///     <c>ClassifyTagAsync</c> or <c>IsTagAsync</c> for a part-of-speech style answer, and
-///     <c>ClassifyDetailAsync</c> when the confidence matters.
 ///     <code>
 ///     using var classifier = await WordSenseClassifier.CreateAsync();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record"];
-///     WordSense?[] senses = await classifier.ClassifyAsync(words);
+///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 ///
-///     for (var i = 0; i &lt; words.Length; i++)
+///     foreach (var analysis in analyses)
 ///     {
-///         // null: not an ambiguous word, or the classifier abstained
-///         Console.WriteLine($"{words[i]}: {senses[i]?.Sense ?? "-"}");
+///         // Details is null: not an ambiguous word, or the classifier abstained
+///         Console.WriteLine($"{analysis.Word}: {analysis.Details?.PartOfSpeech.ToString() ?? "-"}");
 ///     }
 ///     </code>
 ///     To classify one target word of one sentence, use the string overload and pick the token at the target's offset:
@@ -105,25 +90,15 @@ namespace DemaConsulting.WordSense;
 ///     const string sentence = "They went to the race.";
 ///     var start = sentence.IndexOf("race", StringComparison.Ordinal);
 ///     var tokens = await classifier.ClassifyAsync(sentence);
-///     WordSense? sense = tokens.Single(t => t.Start == start).Sense;
-///     // null when the word is not an ambiguous word or the classifier abstained
-///     Console.WriteLine(sense?.Sense ?? "-");
-///     </code>
-///     With the list overload, tokenize so that punctuation is separate (<c>"race"</c> and <c>"."</c>, not
-///     <c>"race."</c>), then read the entry at the target's index:
-///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
-///
-///     string[] words = ["They", "went", "to", "the", "race", "."];
-///     WordSense?[] senses = await classifier.ClassifyAsync(words);
-///     WordSense? sense = senses[Array.IndexOf(words, "race")];
+///     WordDetails? details = tokens.Single(t => t.Start == start).Analysis.Details;
+///     Console.WriteLine(details?.PartOfSpeech.ToString() ?? "-");
 ///     </code>
 /// </example>
 public interface IWordSenseClassifier : IDisposable
 {
     /// <summary>
     ///     Gets the lemmas this classifier can disambiguate, in ordinal order. Use it to discover what is supported;
-    ///     the senses of a lemma come from <see cref="GetSenses"/>.
+    ///     the possible answers for a lemma come from <see cref="GetCandidates"/>.
     /// </summary>
     /// <example>
     ///     <code>
@@ -134,35 +109,34 @@ public interface IWordSenseClassifier : IDisposable
     IReadOnlyList<string> KnownLemmas { get; }
 
     /// <summary>
-    ///     Gets the senses of a lemma. For <c>lead</c> these are <c>guide-noun</c>, <c>guide-verb</c> and <c>metal</c>.
+    ///     Gets every possible answer for a lemma: each (part of speech, pronunciation) it can have.
     /// </summary>
     /// <param name="lemma">The lemma, lower-case, for example <c>record</c>; an inflected form such as <c>records</c> is not a lemma.</param>
-    /// <returns>The shared sense records, or an empty list when the lemma is unknown.</returns>
+    /// <returns>The candidates, or an empty list when the lemma is unknown.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     foreach (var sense in classifier.GetSenses("record"))
+    ///     foreach (var candidate in classifier.GetCandidates("lead"))
     ///     {
-    ///         Console.WriteLine($"{sense.Sense} group={sense.Group} tags={string.Join(",", sense.Tags.Order())}");
+    ///         Console.WriteLine($"{candidate.PartOfSpeech} {candidate.Pronunciation?.Meaning}");
     ///     }
     ///     </code>
     /// </example>
-    IReadOnlyList<WordSense> GetSenses(string lemma);
+    IReadOnlyList<WordDetails> GetCandidates(string lemma);
 
     /// <summary>
     ///     Classifies every word of a tokenized sentence or text.
     /// </summary>
     /// <param name="words">
     ///     The words in order, including punctuation tokens, each as its own element (<c>"race"</c> then
-    ///     <c>"."</c>, never <c>"race."</c>, which is not a known word and yields null). They are read as one running
+    ///     <c>"."</c>, never <c>"race."</c>, which is not a known word). They are read as one running
     ///     text in which the words are separated by single spaces, so several sentences in one list share context.
     /// </param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>
-    ///     An array parallel to <paramref name="words"/>: the sense of each word, or null when the word is
-    ///     not a known ambiguous word, the word yields no tokens or features (for example an empty or
-    ///     whitespace-only string), or the classifier abstained.
+    ///     A non-null array parallel to <paramref name="words"/>; see <see cref="WordAnalysis"/> for the unknown,
+    ///     answered and abstained cases.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
@@ -171,17 +145,17 @@ public interface IWordSenseClassifier : IDisposable
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
     ///     string[] words = ["The", "record", "was", "broken"];
-    ///     WordSense?[] senses = await classifier.ClassifyAsync(words);
-    ///     if (senses[1] is { } sense)
+    ///     WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
+    ///     if (analyses[1].Details is { } details)
     ///     {
-    ///         Console.WriteLine($"{sense.Lemma}: {sense.Sense} tags={string.Join(",", sense.Tags.Order())}");
+    ///         Console.WriteLine($"{details.Lemma}: {details.PartOfSpeech}, margin {analyses[1].Margin:F2}");
     ///     }
     ///     </code>
     /// </example>
-    Task<WordSense?[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
+    Task<WordAnalysis[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Splits a raw text into tokens and attaches a sense to every known ambiguous word.
+    ///     Splits a raw text into tokens and attaches an analysis to every one.
     /// </summary>
     /// <param name="text">The text to classify.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
@@ -193,124 +167,24 @@ public interface IWordSenseClassifier : IDisposable
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
     ///     var tokens = await classifier.ClassifyAsync("They will record the record.");
-    ///     foreach (var token in tokens.Where(t => t.Sense is not null))
+    ///     foreach (var token in tokens.Where(t => t.Analysis.Details is not null))
     ///     {
-    ///         Console.WriteLine($"{token.Start}: {token.Text} is {token.Sense}");
+    ///         Console.WriteLine($"{token.Start}: {token.Text} is {token.Analysis.Details!.PartOfSpeech}");
     ///     }
     ///     </code>
     /// </example>
     Task<IReadOnlyList<WordSenseToken>> ClassifyAsync(string text, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    ///     Classifies every word and reports the confidence figures behind each decision.
-    /// </summary>
-    /// <param name="words">The words in order.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>
-    ///     An array parallel to <paramref name="words"/>: the detail of each word that has a classifier
-    ///     (also when it abstained, see <see cref="WordSenseDetail.Abstained"/>), or null for other words,
-    ///     including a known word that yields no tokens or features.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
-    /// <example>
-    ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     string[] words = ["They", "will", "record", "the", "record"];
-    ///     WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);
-    ///     foreach (var detail in details.OfType&lt;WordSenseDetail&gt;())
-    ///     {
-    ///         Console.WriteLine($"{detail.Sense} margin={detail.Margin:F2} abstained={detail.Abstained}");
-    ///     }
-    ///     </code>
-    /// </example>
-    Task<WordSenseDetail?[]> ClassifyDetailAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    ///     Classifies every word at the level of tags: which of the given tags describes the word.
-    /// </summary>
-    /// <remarks>
-    ///     The score of a tag is the best score among the senses that carry it. The tag with the highest
-    ///     score wins. The result is null when the lemma has no sense carrying any queried tag, when the
-    ///     best sense carries none of them, or when the winner's margin over the runner-up tag (or over
-    ///     the senses carrying none of the tags) is below the lemma's abstain threshold. That threshold is the same
-    ///     one the sense-level methods use, including <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>.
-    ///     Tags are matched exactly (ordinal, so <c>noun</c> and <c>Noun</c> are different); duplicate tags are
-    ///     ignored; a tag that no sense of the lemma carries (for example a misspelled one) never wins and simply
-    ///     does not take part, so the other queried tags still compete.
-    /// </remarks>
-    /// <param name="words">The words in order.</param>
-    /// <param name="tags">The tags to choose between; at least one, none null or empty.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>An array parallel to <paramref name="words"/>: the winning tag, or null.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="tags"/> is empty or contains an empty tag.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
-    /// <example>
-    ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     string[] words = ["They", "will", "record", "the", "record"];
-    ///     string?[] partOfSpeech = await classifier.ClassifyTagAsync(words, ["noun", "verb"]);
-    ///     // Each entry is "noun", "verb", or null (unknown word or the classifier abstained)
-    ///     </code>
-    /// </example>
-    Task<string?[]> ClassifyTagAsync(
-        IReadOnlyList<string> words,
-        IReadOnlyCollection<string> tags,
-        CancellationToken cancellationToken = default);
-
-    /// <summary>
-    ///     Classifies every word as having or not having a tag.
-    /// </summary>
-    /// <remarks>
-    ///     The tag is matched exactly (ordinal, case-sensitive). The abstain threshold is the same as for the
-    ///     sense-level methods, including <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>. The margin
-    ///     compared with it is the best score of the senses that carry the tag minus the best score of the senses
-    ///     that do not (the answer is true when the first is the larger); when every sense of the lemma carries the tag
-    ///     the answer is true without any threshold. To tell an abstention from an unknown word, use
-    ///     <see cref="ClassifyDetailAsync"/>, which returns null for unknown words (and gives a detail with
-    ///     <see cref="WordSenseDetail.Abstained"/> set for abstentions).
-    /// </remarks>
-    /// <param name="words">The words in order.</param>
-    /// <param name="tag">The tag.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>
-    ///     An array parallel to <paramref name="words"/>: true when the word has the tag, false when it
-    ///     does not, null when the lemma has no sense with the tag, the word is unknown, or the
-    ///     classifier abstained.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when <paramref name="tag"/> is empty.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
-    /// <example>
-    ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     string[] words = ["They", "will", "record", "the", "record"];
-    ///     bool?[] isVerb = await classifier.IsTagAsync(words, "verb");
-    ///     // true for a verb use, false for another use, null when unknown or abstained
-    ///     </code>
-    ///     The result is null, not false, for a word whose lemma has no sense with the tag: <c>recreate</c> has only
-    ///     verb senses, so asking for <c>noun</c> gives null:
-    ///     <code>
-    ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     bool?[] isNoun = await classifier.IsTagAsync(["They", "recreate", "it"], "noun");
-    ///     // isNoun[1] is null
-    ///     </code>
-    /// </example>
-    Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
-///     A segment of a raw text, with the sense of the word when one was determined.
+///     A segment of a raw text, with its analysis.
 /// </summary>
 /// <remarks>
 ///     A sequence of tokens returned for a text tiles it exactly: concatenating every
 ///     <see cref="Text"/> reproduces the input, with no gaps or overlaps. Segments are words (letters
 ///     and digits, with internal apostrophes and hyphens), runs of whitespace, or single other
-///     characters such as punctuation.
+///     characters such as punctuation. For whitespace, punctuation and unknown words
+///     <see cref="WordAnalysis.Details"/> is null and <see cref="WordAnalysis.Abstained"/> is false.
 /// </remarks>
 /// <example>
 ///     <code>
@@ -320,99 +194,20 @@ public interface IWordSenseClassifier : IDisposable
 ///
 ///     // The tokens tile the text, so the original can be rebuilt and offsets index into it
 ///     bool tiles = string.Concat(tokens.Select(t => t.Text)) == text;
-///     foreach (var token in tokens.Where(t => t.Sense is not null))
+///     foreach (var token in tokens.Where(t => t.Analysis.Details is not null))
 ///     {
-///         Console.WriteLine($"{text.Substring(token.Start, token.Length)} -> {token.Sense}");
+///         Console.WriteLine($"{text.Substring(token.Start, token.Length)} -> {token.Analysis.Details!.PartOfSpeech}");
 ///     }
 ///     </code>
 /// </example>
 /// <param name="Start">Inclusive UTF-16 start offset of the segment in the input text.</param>
 /// <param name="Length">Length of the segment in UTF-16 code units.</param>
 /// <param name="Text">The segment text.</param>
-/// <param name="Sense">
-///     The sense of the word, or <see langword="null"/> when the segment is not a known ambiguous word or
-///     the classifier abstained because its confidence was too low.
-/// </param>
-public sealed record WordSenseToken(int Start, int Length, string Text, WordSense? Sense);
+/// <param name="Analysis">The analysis of the segment; its <see cref="WordAnalysis.Word"/> equals <paramref name="Text"/>.</param>
+public sealed record WordSenseToken(int Start, int Length, string Text, WordAnalysis Analysis);
 
 /// <summary>
-///     The best sense of a word together with the confidence figures behind the decision.
-/// </summary>
-/// <remarks>
-///     Returned by <see cref="IWordSenseClassifier.ClassifyDetailAsync"/>, which reports a detail even when
-///     the classifier abstained, so a caller can apply its own threshold to <see cref="Margin"/>. The classifier
-///     does not expose the threshold it applied; the effective threshold of a lemma is
-///     <see cref="LemmaModel.AbstainMargin"/> multiplied by
-///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>, and the models are public through
-///     <see cref="WordSenseTable.LoadEmbedded"/>. Otherwise use <see cref="Abstained"/>.
-///     <para>
-///     Reading the margin: it is a score difference, not a probability, and each lemma has its own scale. As a rough
-///     guide, answers for <c>record</c> that are clearly right have margins of about 5 to 7
-///     (for example 5.99 for the verb and 7.16 for the noun); a margin near 0 means the two best senses are almost tied, and a margin
-///     below the lemma's effective threshold is reported as <see cref="Abstained"/>. The effective threshold is
-///     <c>LemmaModel.AbstainMargin * AbstainMarginScale</c> (see the example), so doubling the scale doubles
-///     the margin an answer needs. Which sense was chosen is <see cref="Sense"/>, whose
-///     <see cref="WordSense.Group"/> tells a consumer which pronunciation class it is in.
-///     </para>
-/// </remarks>
-/// <example>
-///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
-///     WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(["They", "will", "record", "it"]);
-///
-///     if (details[2] is { } detail)
-///     {
-///         Console.WriteLine($"{detail.Sense} margin={detail.Margin:F2} runner-up={detail.RunnerUp}");
-///         if (detail.Abstained)
-///         {
-///             Console.WriteLine("The classifier is not confident enough to answer.");
-///         }
-///     }
-///     </code>
-///     Apply your own threshold: here an answer is accepted only when its margin is at least twice the lemma's
-///     abstain margin, that is as if <c>AbstainMarginScale</c> were 2.
-///     <code>
-///     var table = WordSenseTable.LoadEmbedded();
-///     using var classifier = await WordSenseClassifier.CreateAsync();
-///     WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(["They", "will", "record", "it"]);
-///
-///     if (details[2] is { } detail &amp;&amp; table.TryGetLemma(detail.Sense.Lemma, out var model))
-///     {
-///         double threshold = model.AbstainMargin * 2.0;
-///         Console.WriteLine(detail.Margin >= threshold ? "accepted" : "rejected");
-///     }
-///     </code>
-/// </example>
-/// <param name="Sense">
-///     The best sense; always set for a word that has a classifier. It is populated even when
-///     <paramref name="Abstained"/> is true, whereas <see cref="IWordSenseClassifier.ClassifyAsync(IReadOnlyList{string}, CancellationToken)"/>
-///     returns null for such a word.
-/// </param>
-/// <param name="Margin">
-///     The score of the best sense minus the score of the runner-up. A score is the linear activation of a
-///     sense (feature vector times the sense's weights plus bias; for a two-sense lemma the scores are
-///     <c>-a</c> and <c>+a</c>), so higher is better but the scale is not a probability. The margin is the
-///     value compared with the lemma's abstain threshold (<see cref="LemmaModel.AbstainMargin"/> times
-///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>); it is comparable only within one lemma,
-///     because each lemma has its own threshold. The classifier does not expose the threshold itself; use
-///     <see cref="Abstained"/> unless you compute the threshold from the embedded table.
-/// </param>
-/// <param name="RunnerUp">
-///     The second-best sense; never null, because every lemma has at least two senses.
-/// </param>
-/// <param name="RunnerUpMargin">
-///     The score of the runner-up minus the score of the third-best sense; 0 when the lemma has only two senses.
-/// </param>
-/// <param name="Abstained">True when <paramref name="Margin"/> is below the lemma's (scaled) abstain threshold.</param>
-public readonly record struct WordSenseDetail(
-    WordSense Sense,
-    double Margin,
-    WordSense RunnerUp,
-    double RunnerUpMargin,
-    bool Abstained);
-
-/// <summary>
-///     Classifies the sense of ambiguous words using a BERT-style encoder and an embedded linear table.
+///     Classifies ambiguous words using a BERT-style encoder and an embedded linear table.
 /// </summary>
 /// <remarks>
 ///     The words are encoded once and every known word in them is classified from the same hidden
@@ -431,7 +226,7 @@ public readonly record struct WordSenseDetail(
 ///     <code>
 ///     using var classifier = await WordSenseClassifier.CreateAsync();
 ///     var tokens = await classifier.ClassifyAsync("Please record the record.");
-///     Console.WriteLine(string.Join(" ", tokens.Select(t => t.Sense?.ToString() ?? t.Text)));
+///     Console.WriteLine(string.Join(" ", tokens.Select(t => t.Analysis.Details?.PartOfSpeech.ToString() ?? t.Text)));
 ///     </code>
 /// </example>
 public sealed class WordSenseClassifier : IWordSenseClassifier
@@ -610,23 +405,20 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     }
 
     /// <inheritdoc />
-    public IReadOnlyList<WordSense> GetSenses(string lemma)
+    public IReadOnlyList<WordDetails> GetCandidates(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
-        return _table.TryGetLemma(lemma, out var model) ? model.Senses : [];
+        return _table.TryGetLemma(lemma, out var model) ? model.Candidates : [];
     }
 
     /// <inheritdoc />
-    public async Task<WordSense?[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
+    public async Task<WordAnalysis[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
     {
         var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
-        var result = new WordSense?[words.Count];
+        var result = new WordAnalysis[words.Count];
         for (var i = 0; i < result.Length; i++)
         {
-            if (scored[i] is { } s && !TagScorer.Abstains(s.Margin, Threshold(s.Model)))
-            {
-                result[i] = s.Model.Senses[s.Best];
-            }
+            result[i] = scored[i] is { } s ? Analyze(words[i], s) : Unknown(words[i]);
         }
 
         return result;
@@ -637,89 +429,19 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     {
         ArgumentNullException.ThrowIfNull(text);
 
-        // Words are the non-whitespace tiles; whitespace tiles never carry a sense
+        // Words are the non-whitespace tiles; whitespace tiles never carry an answer
         var segments = TextSplitter.SplitSegments(text);
         var wordSegments = segments.Where(s => !s.IsSpace).ToList();
-        var senses = await ClassifyAsync(wordSegments.Select(s => text.Substring(s.Start, s.Length)).ToArray(), cancellationToken)
+        var analyses = await ClassifyAsync(wordSegments.Select(s => text.Substring(s.Start, s.Length)).ToArray(), cancellationToken)
             .ConfigureAwait(false);
 
         var result = new List<WordSenseToken>(segments.Count);
         var next = 0;
         foreach (var segment in segments)
         {
-            var sense = segment.IsSpace ? null : senses[next++];
-            result.Add(new WordSenseToken(segment.Start, segment.Length, text.Substring(segment.Start, segment.Length), sense));
-        }
-
-        return result;
-    }
-
-    /// <inheritdoc />
-    public async Task<WordSenseDetail?[]> ClassifyDetailAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
-    {
-        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
-        var result = new WordSenseDetail?[words.Count];
-        for (var i = 0; i < result.Length; i++)
-        {
-            if (scored[i] is { } s)
-            {
-                result[i] = BuildDetail(s);
-            }
-        }
-
-        return result;
-    }
-
-    /// <inheritdoc />
-    public async Task<string?[]> ClassifyTagAsync(
-        IReadOnlyList<string> words,
-        IReadOnlyCollection<string> tags,
-        CancellationToken cancellationToken = default)
-    {
-        ArgumentNullException.ThrowIfNull(words);
-        ArgumentNullException.ThrowIfNull(tags);
-        foreach (var item in tags)
-        {
-            ArgumentNullException.ThrowIfNull(item);
-        }
-
-        var query = tags.Distinct(StringComparer.Ordinal).Order(StringComparer.Ordinal).ToArray();
-        if (query.Length == 0 || query.Any(t => t.Length == 0))
-        {
-            throw new ArgumentException("At least one tag is required and no tag may be empty.", nameof(tags));
-        }
-
-        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
-        var result = new string?[words.Count];
-        for (var i = 0; i < result.Length; i++)
-        {
-            if (scored[i] is { } s)
-            {
-                result[i] = TagScorer.Classify(s.Model.Senses, s.Scores, query, Threshold(s.Model));
-            }
-        }
-
-        return result;
-    }
-
-    /// <inheritdoc />
-    public async Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default)
-    {
-        ArgumentNullException.ThrowIfNull(words);
-        ArgumentNullException.ThrowIfNull(tag);
-        if (tag.Length == 0)
-        {
-            throw new ArgumentException("The tag must not be empty.", nameof(tag));
-        }
-
-        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
-        var result = new bool?[words.Count];
-        for (var i = 0; i < result.Length; i++)
-        {
-            if (scored[i] is { } s)
-            {
-                result[i] = TagScorer.IsTag(s.Model.Senses, s.Scores, tag, Threshold(s.Model));
-            }
+            var segmentText = text.Substring(segment.Start, segment.Length);
+            var analysis = segment.IsSpace ? Unknown(segmentText) : analyses[next++];
+            result.Add(new WordSenseToken(segment.Start, segment.Length, segmentText, analysis));
         }
 
         return result;
@@ -755,11 +477,19 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     private double Threshold(LemmaModel model) => model.AbstainMargin * _abstainScale;
 
     /// <summary>
-    ///     Builds the detail of one scored word.
+    ///     Builds the analysis of a word that is not known.
     /// </summary>
+    /// <param name="word">The word as given.</param>
+    /// <returns>The analysis with no answer, no abstention and zero margins.</returns>
+    private static WordAnalysis Unknown(string word) => new(word, null, 0.0, false, null, 0.0);
+
+    /// <summary>
+    ///     Builds the analysis of one scored word.
+    /// </summary>
+    /// <param name="word">The word as given.</param>
     /// <param name="scored">The scored word.</param>
-    /// <returns>The detail.</returns>
-    private WordSenseDetail BuildDetail(Scored scored)
+    /// <returns>The analysis.</returns>
+    private WordAnalysis Analyze(string word, Scored scored)
     {
         // Rank the senses after the best one: the runner-up and then the third-best
         var scores = scored.Scores;
@@ -782,12 +512,15 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         }
 
         var runnerMargin = third < 0 ? 0.0 : (double)scores[runner] - scores[third];
-        return new WordSenseDetail(
-            scored.Model.Senses[scored.Best],
+        var abstained = AbstainRule.Abstains(scored.Margin, Threshold(scored.Model));
+        var candidates = scored.Model.Candidates;
+        return new WordAnalysis(
+            word,
+            abstained ? null : candidates[scored.Best],
             scored.Margin,
-            scored.Model.Senses[runner],
-            runnerMargin,
-            TagScorer.Abstains(scored.Margin, Threshold(scored.Model)));
+            abstained,
+            candidates[runner],
+            runnerMargin);
     }
 
     /// <summary>

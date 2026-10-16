@@ -25,8 +25,9 @@ public enum LemmaModelKind
 ///     Instances are thread-safe provided no caller modifies <see cref="Weights"/> or <see cref="Bias"/>, which
 ///     are exposed as arrays for speed and must be treated as read-only; the constructor copies the arrays it
 ///     is given. The order in which the senses are
-///     supplied defines the order of the weight rows; sense names (<see cref="SenseDefinition.Name"/>,
-///     exposed as <see cref="WordSense.Sense"/>) must be unique.
+///     supplied defines the order of the weight rows. The senses must agree: either all or none carry a meaning,
+///     a lemma with meanings has at least two distinct ones, a (part of speech, meaning) pair is unique, a meaning
+///     has one respelling and distinct meanings have distinct respellings.
 /// </remarks>
 public sealed class LemmaModel
 {
@@ -34,7 +35,7 @@ public sealed class LemmaModel
     ///     Initializes a new instance of the <see cref="LemmaModel"/> class.
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="senses">The sense definitions (name and tags), at least two; their order defines the weight-row order.</param>
+    /// <param name="senses">The sense definitions (part of speech, meaning, respelling), at least two; their order defines the weight-row order.</param>
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major, <c>rows × dimension</c> values.</param>
     /// <param name="bias">One bias per weight row.</param>
@@ -88,22 +89,22 @@ public sealed class LemmaModel
             throw new ArgumentException("Model values must be finite.", nameof(weights));
         }
 
-        // Every sense needs valid tags, and names must be unique
+        // Every sense must be valid, and the senses must be consistent as a set
         foreach (var definition in senses)
         {
             ArgumentNullException.ThrowIfNull(definition);
             definition.Validate();
         }
 
-        if (senses.Select(s => s.Name).Distinct(StringComparer.Ordinal).Count() != senses.Count)
-        {
-            throw new ArgumentException("Sense names must be unique.", nameof(senses));
-        }
+        ValidateSet(senses);
 
         Lemma = lemma;
+        Senses = senses.ToArray();
 
-        // Exactly one shared record per (lemma, sense), created here
-        Senses = senses.Select(s => new WordSense(lemma, s.Name, s.Tags, s.Group)).ToArray();
+        // One shared answer per sense, created once
+        Candidates = Senses
+            .Select(s => new WordDetails(lemma, s.Pos, s.Meaning is null ? null : new Pronunciation(s.Meaning, s.Respelling)))
+            .ToArray();
         Kind = kind;
         Weights = (float[])weights.Clone();
         Bias = (float[])bias.Clone();
@@ -112,14 +113,81 @@ public sealed class LemmaModel
     }
 
     /// <summary>
+    ///     Checks that the senses of a lemma agree with each other.
+    /// </summary>
+    /// <param name="senses">The senses.</param>
+    /// <exception cref="ArgumentException">
+    ///     Thrown when meanings are given for only some senses, a heteronym has fewer than two distinct meanings, a
+    ///     (part of speech, meaning) pair repeats, a meaning has inconsistent respellings, or two distinct meanings
+    ///     share a respelling.
+    /// </exception>
+    internal static void ValidateSet(IReadOnlyList<SenseDefinition> senses)
+    {
+        var withMeaning = senses.Count(s => s.Meaning is not null);
+        if (withMeaning != 0 && withMeaning != senses.Count)
+        {
+            throw new ArgumentException("Either every sense or no sense of a lemma carries a meaning.", nameof(senses));
+        }
+
+        if (senses.Select(s => (s.Pos, s.Meaning)).Distinct().Count() != senses.Count)
+        {
+            throw new ArgumentException("A (part of speech, meaning) pair must be unique within a lemma.", nameof(senses));
+        }
+
+        if (withMeaning == 0)
+        {
+            return;
+        }
+
+        var byMeaning = senses.GroupBy(s => s.Meaning, StringComparer.Ordinal).ToList();
+        if (byMeaning.Count < 2)
+        {
+            throw new ArgumentException("A lemma with meanings needs at least two distinct meanings.", nameof(senses));
+        }
+
+        // One respelling per meaning, and distinct meanings sound different
+        var respellings = new List<string>();
+        foreach (var group in byMeaning)
+        {
+            var spelled = group.Select(s => s.Respelling).Distinct(StringComparer.Ordinal).ToList();
+            if (spelled.Count != 1)
+            {
+                throw new ArgumentException($"Meaning '{group.Key}' has inconsistent respellings.", nameof(senses));
+            }
+
+            if (spelled[0] is { } respelling)
+            {
+                respellings.Add(respelling);
+            }
+        }
+
+        if (respellings.Distinct(StringComparer.Ordinal).Count() != respellings.Count)
+        {
+            throw new ArgumentException("Distinct meanings of a lemma must have distinct respellings.", nameof(senses));
+        }
+    }
+
+    /// <summary>
     ///     Gets the lower-case lemma this model classifies.
     /// </summary>
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the senses, one shared record each, in the supplied order (which defines the order of the weight rows).
+    ///     Gets the sense definitions in the supplied order (which defines the order of the weight rows).
     /// </summary>
-    public IReadOnlyList<WordSense> Senses { get; }
+    public IReadOnlyList<SenseDefinition> Senses { get; }
+
+    /// <summary>
+    ///     Gets the answer each sense stands for, parallel to <see cref="Senses"/>: the lemma, the part of speech and,
+    ///     for a heteronym, the pronunciation. Exactly one shared instance exists per sense.
+    /// </summary>
+    public IReadOnlyList<WordDetails> Candidates { get; }
+
+    /// <summary>
+    ///     Gets a value indicating whether the lemma is a heteronym, that is, whether its senses have at least two
+    ///     distinct meanings.
+    /// </summary>
+    public bool IsHeteronym => Senses[0].Meaning is not null;
 
     /// <summary>
     ///     Gets how scores derive from the weight rows.

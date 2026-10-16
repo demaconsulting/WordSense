@@ -134,10 +134,10 @@ internal static class BatchImporter
         var emitted = new HashSet<(string, string)>();
         foreach (var row in anchors.Where(r => emitted.Add((r.Lemma, r.Sense))))
         {
-            if (!PosRules.PartsOfSpeech.Contains(row.Sense))
+            if (InventoryRow.PosOfTag(row.Sense) is not { } pos)
             {
                 throw new InvalidDataException(
-                    $"Sense label '{row.Sense}' (lemma '{row.Lemma}') is not a part of speech; add the sense to the sense inventory by hand with true part-of-speech tags.");
+                    $"Sense label '{row.Sense}' (lemma '{row.Lemma}') is not a part of speech; add the sense to the sense inventory by hand with a part of speech and meaning.");
             }
 
             if (!files.TryGetValue(row.Source, out var list))
@@ -145,12 +145,12 @@ internal static class BatchImporter
                 files[row.Source] = list = [];
             }
 
-            list.Add(new InventoryRow(row.Lemma, row.Sense, [row.Sense], row.Source));
+            list.Add(new InventoryRow(row.Lemma, row.Sense, pos, InventoryRow.SpellOut(row.Sense), null, row.Source));
         }
 
         foreach (var list in files.Values)
         {
-            list.Sort((a, b) => a.Lemma == b.Lemma ? string.CompareOrdinal(a.Sense, b.Sense) : string.CompareOrdinal(a.Lemma, b.Lemma));
+            list.Sort((a, b) => a.Lemma == b.Lemma ? string.CompareOrdinal(a.Label, b.Label) : string.CompareOrdinal(a.Lemma, b.Lemma));
         }
 
         return files;

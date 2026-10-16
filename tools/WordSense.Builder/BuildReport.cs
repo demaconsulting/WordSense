@@ -16,9 +16,10 @@ namespace WordSense.Builder;
 /// <param name="Margin">The abstain margin of the lemma.</param>
 /// <param name="DefaultMargin">Whether the margin is the global default rather than cross-validated.</param>
 /// <param name="MinAnchorsPerSense">The smallest number of training sentences of any sense.</param>
-/// <param name="GroupCorrect">Holdout sentences whose best sense belongs to the group of the gold sense.</param>
+/// <param name="MeaningCorrect">Holdout sentences whose best sense has the meaning of the gold sense (the same sense for a lemma that is not a heteronym).</param>
 /// <param name="Senses">The holdout counts per gold sense, or null when they were not collected.</param>
-/// <param name="Tag">The noun-versus-verb tag-level counts of the lemma, or null when it was not collected.</param>
+/// <param name="Pos">The part-of-speech counts of the lemma, or null when they were not collected.</param>
+/// <param name="Pronunciation">The pronunciation (meaning) counts of the lemma, or null when not collected or not a heteronym.</param>
 internal sealed record LemmaReport(
     string Lemma,
     int AnchorCount,
@@ -29,9 +30,10 @@ internal sealed record LemmaReport(
     float Margin,
     bool DefaultMargin,
     int MinAnchorsPerSense,
-    int GroupCorrect,
+    int MeaningCorrect,
     IReadOnlyList<SenseStats>? Senses = null,
-    TagStats? Tag = null)
+    LevelStats? Pos = null,
+    LevelStats? Pronunciation = null)
 {
     /// <summary>
     ///     Gets the accuracy of the best sense over every holdout sentence.
@@ -65,13 +67,13 @@ internal sealed record GroupStats(int Total, int Correct, int Answered, int Answ
 /// <param name="BySource">Overall counts per holdout file.</param>
 /// <param name="Warnings">Quality warnings.</param>
 /// <param name="TargetAccuracy">The accuracy a lemma is expected to reach.</param>
-/// <param name="Tags">The tag-level evaluation.</param>
+/// <param name="Accuracy">The part-of-speech and pronunciation evaluation.</param>
 internal sealed record BuildReport(
     IReadOnlyList<LemmaReport> Lemmas,
     IReadOnlyDictionary<string, GroupStats> BySource,
     IReadOnlyList<string> Warnings,
     double TargetAccuracy,
-    TagReport Tags)
+    AccuracyReport Accuracy)
 {
     /// <summary>
     ///     Gets the overall counts over every holdout sentence.
@@ -92,7 +94,7 @@ internal sealed record BuildReport(
         var text = new StringBuilder();
         var overall = Overall;
         text.AppendLine(inv, $"Overall holdout: {Pct(overall.Correct, overall.Total)} best-sense accuracy over {overall.Total} sentences");
-        text.AppendLine(inv, $"Group level: {Pct(Lemmas.Sum(l => l.GroupCorrect), overall.Total)} best-group accuracy over {overall.Total} sentences (a prediction is right when the predicted sense is in the group of the gold sense)");
+        text.AppendLine(inv, $"Meaning level: {Pct(Lemmas.Sum(l => l.MeaningCorrect), overall.Total)} best-meaning accuracy over {overall.Total} sentences (a prediction is right when the predicted sense has the meaning of the gold sense; for a lemma that is not a heteronym the sense itself)");
         text.AppendLine(inv, $"With abstention: {Pct(overall.AnsweredCorrect, overall.Answered)} accuracy at {Pct(overall.Answered, overall.Total)} coverage");
         text.AppendLine();
         text.AppendLine("Per holdout file:");
@@ -102,7 +104,7 @@ internal sealed record BuildReport(
         }
 
         text.AppendLine();
-        RenderTags(text, inv);
+        RenderAccuracy(text, inv);
         text.AppendLine();
         text.AppendLine("Per lemma (anchors, holdout, accuracy, abstain accuracy, coverage, margin):");
         foreach (var l in Lemmas)
@@ -122,42 +124,41 @@ internal sealed record BuildReport(
     }
 
     /// <summary>
-    ///     Renders the tag-level section.
+    ///     Renders the part-of-speech and pronunciation sections.
     /// </summary>
     /// <param name="text">The report text.</param>
     /// <param name="inv">The invariant culture.</param>
-    private void RenderTags(StringBuilder text, CultureInfo inv)
+    private void RenderAccuracy(StringBuilder text, CultureInfo inv)
     {
-        text.AppendLine("Tag level, noun versus verb (queried tags: noun, verb; rows whose gold sense has exactly one of them):");
-        text.AppendLine(inv, $"  Overall:    {Line(Tags.Overall)}");
-        text.AppendLine(inv, $"  Lemmas with both a noun and a verb sense: {Line(Tags.BothSenses)}");
-        foreach (var (tag, stats) in Tags.ByGoldTag.OrderBy(s => s.Key, StringComparer.Ordinal))
+        text.AppendLine("POS accuracy (part of speech of the best sense against the gold sense, every holdout sentence):");
+        text.AppendLine(inv, $"  Overall: {Line(Accuracy.Pos)}");
+        foreach (var (pos, stats) in Accuracy.PosByGold.OrderBy(s => s.Key, StringComparer.Ordinal))
         {
-            text.AppendLine(inv, $"  Gold {tag}: {Line(stats)}");
+            text.AppendLine(inv, $"  Gold {pos}: {Line(stats)}");
         }
 
-        foreach (var (source, stats) in Tags.BySource.OrderBy(s => s.Key, StringComparer.Ordinal))
+        foreach (var (source, stats) in Accuracy.PosBySource.OrderBy(s => s.Key, StringComparer.Ordinal))
         {
             text.AppendLine(inv, $"  {source}: {Line(stats)}");
         }
 
-        text.AppendLine(inv, $"  Excluded: {Tags.MixedRows} rows with a mixed noun|verb gold sense, {Tags.OtherRows} rows with neither tag.");
-        text.AppendLine(inv, $"  Lemmas with a mixed noun|verb sense: {string.Join(", ", Tags.MixedLemmas)}");
-        text.AppendLine("Tag level, has-tag per tag (every holdout row of a lemma that has the tag; expected true when the gold sense carries it):");
-        foreach (var (tag, stats) in Tags.PerTag.OrderBy(s => s.Key, StringComparer.Ordinal))
+        text.AppendLine();
+        text.AppendLine("Pronunciation (meaning) accuracy (meaning of the best sense against the gold sense, sentences of heteronym lemmas only):");
+        text.AppendLine(inv, $"  Overall: {Line(Accuracy.Pronunciation)}");
+        foreach (var (source, stats) in Accuracy.PronunciationBySource.OrderBy(s => s.Key, StringComparer.Ordinal))
         {
-            text.AppendLine(inv, $"  {tag}: {Line(stats)}");
+            text.AppendLine(inv, $"  {source}: {Line(stats)}");
         }
     }
 
     /// <summary>
-    ///     Formats the counts of one tag-level group.
+    ///     Formats the counts of one evaluation level.
     /// </summary>
     /// <param name="s">The counts.</param>
     /// <returns>The text.</returns>
-    private static string Line(TagStats s)
+    private static string Line(LevelStats s)
     {
-        return $"{Pct(s.Correct, s.Evaluated)} best-tag accuracy over {s.Evaluated}; abstain {Pct(s.AnsweredCorrect, s.Answered)} at {Pct(s.Answered, s.Evaluated)} coverage; other wins {s.OtherWins}";
+        return $"{Pct(s.Correct, s.Evaluated)} best accuracy over {s.Evaluated}; abstain {Pct(s.AnsweredCorrect, s.Answered)} at {Pct(s.Answered, s.Evaluated)} coverage";
     }
 
     /// <summary>
