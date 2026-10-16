@@ -53,40 +53,40 @@ anchors per sense that were used.
 
 | Set | Anchors per sense | Lemmas | Rows | Macro best sense | Micro best sense | Answered | Answered accuracy |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| holdout | 2 (2.0000) | 324 | 6136 | 84.75 % | 84.82 % | 60.16 % | 92.95 % |
-| holdout | 4 (4.0000) | 324 | 6136 | 90.50 % | 90.33 % | 74.41 % | 96.16 % |
-| holdout | 7 (7.0000) | 324 | 6136 | 93.65 % | 93.47 % | 83.40 % | 97.34 % |
-| holdout | 10 (10.0000) | 324 | 6136 | 95.17 % | 94.98 % | 87.47 % | 98.05 % |
-| holdout | 14 (13.9738) | 324 | 6136 | 96.26 % | 94.41 % | 86.52 % | 98.15 % |
-| holdout | all (14.2634) | 324 | 6136 | 96.31 % | 96.17 % | 90.50 % | 98.54 % |
-| real | 2 (2.0000) | 17 | 345 | 75.15 % | 73.28 % | 35.36 % | 89.02 % |
-| real | 4 (4.0000) | 17 | 345 | 80.48 % | 78.72 % | 53.74 % | 89.64 % |
-| real | 7 (7.0000) | 17 | 345 | 84.99 % | 83.13 % | 62.20 % | 93.20 % |
-| real | 10 (10.0000) | 17 | 345 | 86.42 % | 85.33 % | 68.58 % | 93.74 % |
-| real | 14 (13.9706) | 17 | 345 | 87.48 % | 86.49 % | 70.09 % | 96.11 % |
-| real | all (19.4020) | 17 | 345 | 88.38 % | 87.25 % | 74.49 % | 96.50 % |
-| real-eval | 2 (2.0000) | 39 | 689 | 80.66 % | 78.66 % | 55.41 % | 91.93 % |
-| real-eval | 4 (4.0000) | 39 | 689 | 86.27 % | 84.47 % | 69.61 % | 93.08 % |
-| real-eval | 7 (7.0000) | 39 | 689 | 89.85 % | 88.56 % | 77.16 % | 94.17 % |
-| real-eval | 10 (10.0000) | 39 | 689 | 90.53 % | 89.06 % | 80.55 % | 95.14 % |
-| real-eval | 14 (13.9872) | 39 | 689 | 92.28 % | 86.73 % | 74.26 % | 95.28 % |
-| real-eval | all (15.6111) | 39 | 689 | 93.54 % | 92.60 % | 85.63 % | 96.44 % |
+| holdout | 2 (2.0000) | 716 | 12789 | 85.46 % | 85.25 % | 58.43 % | 92.82 % |
+| holdout | 4 (4.0000) | 716 | 12789 | 90.93 % | 90.68 % | 73.14 % | 96.08 % |
+| holdout | 7 (7.0000) | 716 | 12789 | 94.07 % | 93.82 % | 81.99 % | 97.53 % |
+| holdout | 10 (10.0000) | 716 | 12789 | 95.52 % | 95.26 % | 86.39 % | 98.15 % |
+| holdout | 14 (13.9881) | 716 | 12789 | 96.70 % | 96.26 % | 88.12 % | 98.62 % |
+| holdout | all (16.1307) | 716 | 12789 | 97.12 % | 96.91 % | 90.74 % | 98.73 % |
+| real | 2 (2.0000) | 409 | 6600 | 85.72 % | 85.30 % | 56.04 % | 92.81 % |
+| real | 4 (4.0000) | 409 | 6600 | 90.95 % | 90.55 % | 71.15 % | 95.89 % |
+| real | 7 (7.0000) | 409 | 6600 | 94.04 % | 93.72 % | 79.79 % | 97.58 % |
+| real | 10 (10.0000) | 409 | 6600 | 95.52 % | 95.20 % | 84.62 % | 98.20 % |
+| real | 14 (13.9988) | 409 | 6600 | 96.65 % | 96.38 % | 87.67 % | 98.72 % |
+| real | all (17.7459) | 409 | 6600 | 97.49 % | 97.26 % | 90.17 % | 98.94 % |
+| real-eval | 2 (2.0000) | 39 | 689 | 80.52 % | 78.49 % | 54.14 % | 92.60 % |
+| real-eval | 4 (4.0000) | 39 | 689 | 86.14 % | 84.30 % | 68.77 % | 93.54 % |
+| real-eval | 7 (7.0000) | 39 | 689 | 89.89 % | 88.62 % | 76.63 % | 94.39 % |
+| real-eval | 10 (10.0000) | 39 | 689 | 90.43 % | 88.91 % | 80.44 % | 95.38 % |
+| real-eval | 14 (13.9872) | 39 | 689 | 92.16 % | 86.35 % | 74.26 % | 95.11 % |
+| real-eval | all (15.6111) | 39 | 689 | 93.54 % | 92.60 % | 84.76 % | 96.40 % |
 
 ### Plateau Estimate
 
 | Set | Lemma curves | Plateaued | Rising | Not estimable | Macro slope per anchor | Macro gain at twice the anchors |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| holdout | 324 | 189 | 135 | 0 | 0.0027 | 3.69 % |
-| real | 17 | 10 | 7 | 0 | 0.0017 | 3.21 % |
-| real-eval | 39 | 22 | 17 | 0 | 0.0054 | 6.46 % |
+| holdout | 716 | 443 | 273 | 0 | 0.0026 | 2.88 % |
+| real | 409 | 265 | 144 | 0 | 0.0022 | 2.51 % |
+| real-eval | 39 | 22 | 17 | 0 | 0.0056 | 6.46 % |
 
 ## Error Diagnosis
 
 | Set | Rows | Correct | Abstained | Errors | Coverage gap | Overlap | Ambiguous |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| holdout | 6136 | 5901 | 583 | 664 | 80 | 458 | 126 |
-| real | 345 | 301 | 88 | 97 | 9 | 77 | 11 |
-| real-eval | 689 | 638 | 99 | 120 | 16 | 89 | 15 |
+| holdout | 12789 | 12394 | 1184 | 1331 | 206 | 849 | 276 |
+| real | 6600 | 6419 | 649 | 712 | 133 | 413 | 166 |
+| real-eval | 689 | 638 | 105 | 126 | 18 | 93 | 15 |
 
 ### Threshold Calibration
 
@@ -95,110 +95,163 @@ far threshold 0.77 is about the 10th percentile of the `correct` row; the overla
 
 | Class | Rows | 10th percentile of s_same | Median s_same | Median s_other |
 | --- | ---: | ---: | ---: | ---: |
-| correct | 6041 | 0.7721 | 0.8797 | 0.7773 |
-| coverage-gap | 96 | 0.5946 | 0.7138 | 0.7028 |
-| overlap | 547 | 0.8036 | 0.8646 | 0.8628 |
-| ambiguous | 141 | 0.7374 | 0.8242 | 0.7835 |
+| correct | 12021 | 0.7613 | 0.8699 | 0.7577 |
+| coverage-gap | 224 | 0.5958 | 0.7139 | 0.6965 |
+| overlap | 942 | 0.7999 | 0.8581 | 0.8569 |
+| ambiguous | 291 | 0.7451 | 0.8226 | 0.7808 |
 
 ## Weak Lemmas
 
-126 lemmas are weak. The full ranking is `corpus/audit/analysis/weak-lemmas.tsv`; the 30 weakest are:
+233 lemmas are weak. The full ranking is `corpus/audit/analysis/weak-lemmas.tsv`; the 30 weakest are:
 
 | Rank | Lemma | Holdout | Real rows | Real | Errors | Gap | Overlap | Ambiguous | Recommendation | Expected gain |
 | ---: | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- | ---: |
-| 1 | excommunicate | 75.00 % | 0 | 75.00 % | 8 | 0 | 7 | 1 | consumer-rule | 29.17 % |
+| 1 | excommunicate | 75.00 % | 0 | 75.00 % | 7 | 0 | 7 | 0 | consumer-rule | 29.17 % |
 | 2 | reread | 75.00 % | 0 | 75.00 % | 4 | 1 | 3 | 0 | consumer-rule | 18.75 % |
-| 3 | uptown | 76.67 % | 30 | 76.67 % | 13 | 0 | 13 | 0 | consumer-rule | 43.33 % |
-| 4 | read | 92.11 % | 23 | 65.22 % | 18 | 5 | 11 | 2 | consumer-rule | 18.03 % |
-| 5 | upsetting | 76.00 % | 38 | 84.21 % | 13 | 2 | 8 | 3 | consumer-rule | 21.05 % |
-| 6 | closer | 80.00 % | 48 | 81.25 % | 21 | 0 | 20 | 1 | consumer-rule | 41.67 % |
-| 7 | oversteer | 81.25 % | 0 | 81.25 % | 7 | 0 | 7 | 0 | consumer-rule | 43.75 % |
-| 8 | reincarnate | 81.25 % | 0 | 81.25 % | 6 | 0 | 6 | 0 | consumer-rule | 37.50 % |
-| 9 | collocate | 81.25 % | 0 | 81.25 % | 5 | 0 | 4 | 1 | stronger-encoder | 25.00 % |
-| 10 | imbricate | 81.25 % | 0 | 81.25 % | 5 | 2 | 2 | 1 | more-sentences | 4.37 % |
-| 11 | foliate | 81.25 % | 0 | 81.25 % | 3 | 0 | 1 | 2 | fix-labels | 12.50 % |
-| 12 | close | 93.02 % | 34 | 73.53 % | 18 | 1 | 11 | 6 | consumer-rule | 16.18 % |
-| 13 | overhead | 83.33 % | 30 | 83.33 % | 11 | 1 | 9 | 1 | stronger-encoder | 30.00 % |
-| 14 | bow | 88.46 % | 47 | 78.72 % | 20 | 0 | 20 | 0 | consumer-rule | 40.00 % |
-| 15 | expatriate | 86.67 % | 0 | 86.67 % | 4 | 1 | 3 | 0 | consumer-rule | 20.00 % |
-| 16 | rewind | 86.67 % | 0 | 86.67 % | 3 | 0 | 3 | 0 | stronger-encoder | 20.00 % |
-| 17 | polish | 85.71 % | 42 | 88.10 % | 18 | 1 | 17 | 0 | consumer-rule | 29.31 % |
-| 18 | aspirate | 87.50 % | 0 | 87.50 % | 9 | 1 | 6 | 2 | consumer-rule | 25.00 % |
-| 19 | obverse | 87.50 % | 0 | 87.50 % | 8 | 1 | 7 | 0 | consumer-rule | 43.75 % |
-| 20 | rehash | 87.50 % | 0 | 87.50 % | 6 | 4 | 0 | 2 | more-sentences | 12.50 % |
-| 21 | trifurcate | 87.50 % | 0 | 87.50 % | 6 | 0 | 5 | 1 | consumer-rule | 31.25 % |
-| 22 | retread | 87.50 % | 0 | 87.50 % | 5 | 2 | 1 | 2 | more-sentences | 0.00 % |
-| 23 | foretoken | 87.50 % | 0 | 87.50 % | 4 | 1 | 2 | 1 | stronger-encoder | 12.50 % |
-| 24 | incorporate | 87.50 % | 0 | 87.50 % | 4 | 1 | 3 | 0 | consumer-rule | 18.75 % |
-| 25 | incurvate | 87.50 % | 0 | 87.50 % | 4 | 2 | 0 | 2 | more-sentences | 0.00 % |
-| 26 | prefetch | 87.50 % | 0 | 87.50 % | 4 | 0 | 4 | 0 | stronger-encoder | 25.00 % |
-| 27 | animate | 87.50 % | 0 | 87.50 % | 3 | 0 | 3 | 0 | stronger-encoder | 18.75 % |
-| 28 | entrance | 87.50 % | 0 | 87.50 % | 3 | 0 | 3 | 0 | stronger-encoder | 18.75 % |
-| 29 | indent | 87.50 % | 0 | 87.50 % | 3 | 0 | 3 | 0 | stronger-encoder | 18.75 % |
-| 30 | overdose | 87.50 % | 0 | 87.50 % | 3 | 0 | 3 | 0 | stronger-encoder | 18.75 % |
+| 3 | read | 92.11 % | 23 | 65.22 % | 18 | 5 | 11 | 2 | consumer-rule | 18.03 % |
+| 4 | uptown | 80.00 % | 30 | 80.00 % | 13 | 0 | 13 | 0 | consumer-rule | 43.33 % |
+| 5 | upsetting | 76.00 % | 38 | 84.21 % | 13 | 3 | 8 | 2 | consumer-rule | 21.05 % |
+| 6 | gallant | 82.76 % | 23 | 78.26 % | 8 | 0 | 8 | 0 | stronger-encoder | 27.59 % |
+| 7 | closer | 80.00 % | 48 | 81.25 % | 21 | 0 | 20 | 1 | consumer-rule | 41.67 % |
+| 8 | oversteer | 81.25 % | 0 | 81.25 % | 7 | 0 | 7 | 0 | consumer-rule | 43.75 % |
+| 9 | reincarnate | 81.25 % | 0 | 81.25 % | 6 | 0 | 6 | 0 | consumer-rule | 37.50 % |
+| 10 | collocate | 81.25 % | 0 | 81.25 % | 5 | 0 | 5 | 0 | consumer-rule | 31.25 % |
+| 11 | imbricate | 81.25 % | 0 | 81.25 % | 5 | 1 | 3 | 1 | consumer-rule | 18.75 % |
+| 12 | foliate | 81.25 % | 0 | 81.25 % | 3 | 0 | 1 | 2 | fix-labels | 12.50 % |
+| 13 | close | 93.02 % | 34 | 70.59 % | 18 | 2 | 10 | 6 | consumer-rule | 14.71 % |
+| 14 | dictate | 85.00 % | 16 | 81.25 % | 4 | 4 | 0 | 0 | more-sentences | 0.00 % |
+| 15 | bow | 88.46 % | 47 | 80.85 % | 21 | 0 | 21 | 0 | consumer-rule | 42.00 % |
+| 16 | export | 85.00 % | 20 | 85.00 % | 7 | 0 | 7 | 0 | stronger-encoder | 35.00 % |
+| 17 | submarine | 85.00 % | 20 | 85.00 % | 4 | 0 | 4 | 0 | consumer-rule | 20.00 % |
+| 18 | sewer | 90.00 % | 10 | 80.00 % | 2 | 0 | 2 | 0 | stronger-encoder | 10.00 % |
+| 19 | detail | 85.00 % | 14 | 85.71 % | 4 | 2 | 0 | 2 | more-sentences | 0.00 % |
+| 20 | accent | 80.00 % | 12 | 91.67 % | 4 | 0 | 4 | 0 | stronger-encoder | 20.00 % |
+| 21 | overhead | 86.67 % | 30 | 86.67 % | 11 | 0 | 9 | 2 | consumer-rule | 30.00 % |
+| 22 | expatriate | 86.67 % | 0 | 86.67 % | 4 | 1 | 3 | 0 | consumer-rule | 20.00 % |
+| 23 | rewind | 86.67 % | 0 | 86.67 % | 3 | 0 | 3 | 0 | stronger-encoder | 20.00 % |
+| 24 | polish | 85.71 % | 42 | 88.10 % | 19 | 1 | 17 | 1 | consumer-rule | 29.31 % |
+| 25 | aspirate | 87.50 % | 0 | 87.50 % | 8 | 1 | 7 | 0 | consumer-rule | 29.17 % |
+| 26 | obverse | 87.50 % | 0 | 87.50 % | 8 | 1 | 7 | 0 | consumer-rule | 43.75 % |
+| 27 | rehash | 87.50 % | 0 | 87.50 % | 6 | 2 | 1 | 3 | fix-labels | 18.75 % |
+| 28 | trifurcate | 87.50 % | 0 | 87.50 % | 6 | 0 | 5 | 1 | consumer-rule | 31.25 % |
+| 29 | foretoken | 87.50 % | 0 | 87.50 % | 4 | 1 | 2 | 1 | stronger-encoder | 12.50 % |
+| 30 | incorporate | 87.50 % | 0 | 87.50 % | 4 | 1 | 3 | 0 | consumer-rule | 18.75 % |
 
 ### Recommendations
 
-- `more-sentences` (18 lemmas): imbricate, rehash, retread, incurvate, agglomerate, interlock, present, inebriate,
-  insert, rethink, respray, correlate, incarnate, triplicate, guesstimate, rerun, situate, conjugate
-- `consumer-rule` (47 lemmas): excommunicate, reread, uptown, read, upsetting, closer, oversteer, reincarnate, close,
-  bow, expatriate, polish, aspirate, obverse, trifurcate, incorporate, postfix, relapse, row, increase, conflict,
-  underground, adulterate, discourse, overflow, underlay, conglomerate, geminate, outgo, overrun, bifurcate, overshoot,
-  overstock, recharge, affiliate, diagnoses, ornament, uphill, contrast, inside, interchange, overall, reboot, restart,
-  retake, uplift, recoil
-- `stronger-encoder` (55 lemmas): collocate, overhead, rewind, foretoken, prefetch, animate, entrance, indent, overdose,
-  premix, reuse, arithmetic, overcall, overhaul, override, pasty, refresh, relay, conjunct, bass, rows, lead, desert,
-  unlearned, overthrow, overspend, conscript, overlap, overpass, delegate, intimate, overwork, refund, reprint, addict,
-  house, moped, redial, underspend, abstract, arsenic, combine, diffuse, entail, misprint, mouth, outreach, overdub,
-  overlay, progress, pustulate, reheat, rewrite, underbid, undercount
-- `fix-labels` (6 lemmas): foliate, quintuplicate, relaunch, aggregate, rerelease, resit
+- `more-sentences` (47 lemmas): dictate, detail, incurvate, agglomerate, interlock, egress, intermediate, present,
+  insert, rethink, respray, pass, point, approach, breed, correlate, fail, retread, root, trigger, whisper, list, mean,
+  orbit, range, study, cross, draw, drive, duck, face, gift, guesstimate, line, mention, plague, tune, break, favor,
+  flush, mind, rear, rerun, situate, spark, venture, conjugate
+- `consumer-rule` (71 lemmas): excommunicate, reread, read, uptown, upsetting, closer, oversteer, reincarnate,
+  collocate, imbricate, close, bow, submarine, overhead, expatriate, polish, aspirate, obverse, trifurcate, incorporate,
+  postfix, relapse, intern, reset, inebriate, row, shower, slough, increase, conflict, underground, adulterate,
+  discourse, underlay, conglomerate, geminate, outgo, overrun, quintuplicate, bifurcate, overflow, overshoot, overstock,
+  pause, recharge, sin, affiliate, hunt, ornament, overcall, reason, reprint, shift, stroke, swing, uphill, watch,
+  border, bubble, contrast, inside, interchange, reboot, restart, retake, risk, overall, part, recoil, waste, reprimand
+- `stronger-encoder` (96 lemmas): gallant, export, sewer, accent, rewind, foretoken, prefetch, animate, entrance,
+  indent, overdose, premix, reuse, arithmetic, overhaul, override, pasty, refresh, relay, second, conjunct, bass, rows,
+  recreate, blessed, ellipses, lead, desert, suffix, unlearned, overthrow, overspend, conscript, desire, flash, overlap,
+  overpass, rent, sketch, spray, button, colour, intimate, refund, respect, sail, stand, addict, dispute, drag, escape,
+  gossip, hand, hope, house, leak, moped, redial, score, skate, sow, stack, storm, underspend, wax, abstract, aid,
+  arsenic, cast, combine, diffuse, dust, entail, fight, kiss, launch, misprint, mouth, outreach, overdub, overlay,
+  patch, pinch, progress, pustulate, reheat, reserve, resit, rewrite, seat, strip, triplicate, underbid, undercount,
+  uplift, whip
+- `fix-labels` (19 lemmas): foliate, rehash, predate, supposed, delight, lift, relaunch, roll, shock, aggregate, care,
+  crowd, fold, interest, jerk, offer, pace, rerelease, screw
 
 ## Conclusions
 
-- On `holdout` the macro accuracy rises from 84.75 % at 2 anchors per sense to 96.31 % with all anchors (mean 14.2634
-  per sense); between 10.0000 and 14.2634 anchors per sense the slope is 0.0027 per anchor, so doubling the anchors is
-  expected to add about 3.69 %. 189 of 324 lemma curves are plateaued.
-- On `real` the macro accuracy rises from 75.15 % at 2 anchors per sense to 88.38 % with all anchors (mean 19.4020 per
-  sense); between 13.9706 and 19.4020 anchors per sense the slope is 0.0017 per anchor, so doubling the anchors is
-  expected to add about 3.21 %. 10 of 17 lemma curves are plateaued.
-- On `real-eval` the macro accuracy rises from 80.66 % at 2 anchors per sense to 93.54 % with all anchors (mean 15.6111
-  per sense); between 10.0000 and 15.6111 anchors per sense the slope is 0.0054 per anchor, so doubling the anchors is
+- On `holdout` the macro accuracy rises from 85.46 % at 2 anchors per sense to 97.12 % with all anchors (mean 16.1307
+  per sense); between 10.0000 and 16.1307 anchors per sense the slope is 0.0026 per anchor, so doubling the anchors is
+  expected to add about 2.88 %. 443 of 716 lemma curves are plateaued.
+- On `real` the macro accuracy rises from 85.72 % at 2 anchors per sense to 97.49 % with all anchors (mean 17.7459 per
+  sense); between 13.9988 and 17.7459 anchors per sense the slope is 0.0022 per anchor, so doubling the anchors is
+  expected to add about 2.51 %. 265 of 409 lemma curves are plateaued.
+- On `real-eval` the macro accuracy rises from 80.52 % at 2 anchors per sense to 93.54 % with all anchors (mean 15.6111
+  per sense); between 10.0000 and 15.6111 anchors per sense the slope is 0.0056 per anchor, so doubling the anchors is
   expected to add about 6.46 %. 22 of 39 lemma curves are plateaued.
-- Of 784 diagnosed errors (holdout and real-eval) 96 are coverage gaps (12.24 %), 547 are overlaps (69.77 %) and 141 are
-  ambiguous (17.98 %).
-- 126 lemmas are weak: 18 `more-sentences`, 55 `stronger-encoder`, 47 `consumer-rule` and 6 `fix-labels`. The expected
+- Of 1457 diagnosed errors (holdout and real-eval) 224 are coverage gaps (15.37 %), 942 are overlaps (64.65 %) and 291
+  are ambiguous (19.97 %).
+- 233 lemmas are weak: 47 `more-sentences`, 96 `stronger-encoder`, 71 `consumer-rule` and 19 `fix-labels`. The expected
   gains are estimates: gap gains come from the learning-curve extrapolation, the others are upper bounds.
 
-## Before and After Phase 3b
+## Phase 5: Noun/Verb Lemmas in the Analysis
 
-This section is written by hand after the generated report (the generator does not know the earlier state). The
-before figures are the same four commands run on the corpus after Phase 3a and before Phase 3b; the after figures are
-the tables above. Phase 3b added 68 real anchors and 48 real holdout rows for `conjugate`, `insert` and `present`
-(`corpus/anchors|holdout|provenance/real-gap-1.tsv`, see `weak-lemma-decisions.md`); the other 15 coverage-gap lemmas
-were skipped because real text gave too few usable sentences.
+This section is written by hand after the generated report. The analysis above was run again on the table of Phase 5
+(744 lemmas, of which 716 have holdout rows; 329 of those are the new noun/verb lemmas of `nounverb-results.md`, 387
+the older lemmas). The committed analysis files in `corpus/audit/analysis/` were stale before this run: they described
+the Phase 3b corpus (324 lemmas with holdout rows, 6,136 rows) and did not include the Phase 4 and Phase 5 lemmas. The
+hand-written Phase 3b before and after comparison that followed the generated text in the earlier version of this page
+is kept in the git history (the generator rewrites the page); its subject, the real anchors of `conjugate`, `insert`
+and `present`, is described in `weak-lemma-decisions.md`.
 
-| Figure | Before | After |
+| Figure | Before (Phase 3b files) | After (this run) |
 | --- | ---: | ---: |
-| Holdout rows / best sense | 6,088 / 96.17 % | 6,136 / 96.17 % |
-| Holdout answered / answered accuracy | 90.49 % / 98.49 % | 90.50 % / 98.54 % |
-| `real` holdout rows / best sense | 297 / 86.20 % | 345 / 87.25 % |
-| `real` holdout answered | 72.05 % | 74.49 % |
-| `real-eval` rows / best sense | 689 / 92.16 % | 689 / 92.60 % |
-| `real-eval` group / answered accuracy | 93.03 % / 95.95 % | 93.47 % / 96.44 % |
-| Diagnosed errors (coverage gap / overlap / ambiguous) | 783 (94 / 546 / 143) | 784 (96 / 547 / 141) |
-| Weak lemmas | 126 | 126 |
+| Lemmas / holdout rows | 324 / 6,136 | 716 / 12,789 |
+| Holdout macro best sense, all anchors | 96.31 % | 97.12 % |
+| `real` rows (lemmas) | 345 (17) | 6,600 (409) |
+| `real` macro best sense, all anchors | 88.38 % | 97.49 % |
+| `real-eval` (unchanged set), macro best sense | 93.54 % | 93.54 % |
+| Diagnosed errors (coverage gap / overlap / ambiguous) | 784 (96 / 547 / 141) | 1,457 (224 / 942 / 291) |
+| Weak lemmas | 126 | 233 |
 
-Per lemma (best sense with all anchors; rows in parentheses):
+The `real` set is now mostly the real holdout rows of the noun/verb lemmas (every sentence of those lemmas is real
+text), so it is no longer the small, hard set it was; the unbiased real-text figure remains the untouched `real-eval`
+set.
 
-| Lemma | Set | Before | After |
-| --- | --- | ---: | ---: |
-| `conjugate` | holdout | 86.67 % (15) | 93.55 % (31, of which 16 real at 100.00 %) |
-| `insert` | holdout | 87.50 % (16) | 90.63 % (32, of which 16 real at 93.75 %) |
-| `present` | holdout | 92.68 % (66) | 92.98 % (82, of which 16 new real) |
-| `present` | `real-eval` | 80.00 % (25) | 92.00 % (25) |
-| `present` | real rows pooled (`real` and `real-eval`) | 82.86 % (35) | 90.20 % (51) |
+### Plateau
 
-The holdout rows that existed before are unchanged for `conjugate` and `insert` (13 of 15 and 14 of 16 correct), so
-their gain is carried by the new real rows being easy for the enlarged anchor set; the clearest effect is `present` on
-the untouched `real-eval` set (+12 points). The weak-lemma list did not shrink: the three lemmas stay on it, and the
-remaining `present` noun errors are overlaps ("at present" against the adjective), which more sentences do not fix.
+The macro accuracy on the holdout rises from 85.46 % at 2 anchors per sense to 97.12 % with all anchors (mean 16.13).
+Most of the gain is in by 7 anchors (94.07 %); from 10 to all anchors the macro gain is 1.6 points, and the gain at
+twice the anchors is estimated at 2.88 %, down from 3.69 % before. 443 of 716 curves are plateaued (62 %, before
+58 %). Split by group, with the same anchors per sense:
+
+| Group | Lemmas | 2 | 4 | 7 | 10 | 14 | all | Plateaued |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| New noun/verb lemmas | 329 | 86.83 % | 91.89 % | 95.09 % | 96.48 % | 97.67 % | 98.27 % | 223 (68 %) |
+| Older lemmas | 387 | 84.29 % | 90.12 % | 93.20 % | 94.70 % | 95.87 % | 96.14 % | 220 (57 %) |
+
+The noun/verb lemmas start higher and are flatter: each has exactly two senses, so a wrong answer is one of two
+choices, and each has about 17.6 anchors per sense. The extra anchors pay little for these lemmas: the 14-to-all step
+adds 0.6 points.
+
+### Coverage Gap Against Overlap
+
+| Group | Holdout rows | Errors (wrong or abstained) | Coverage gap | Overlap | Ambiguous |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| New noun/verb lemmas | 5,296 | 477 | 104 (21.8 %) | 248 (52.0 %) | 125 (26.2 %) |
+| Older lemmas | 7,493 | 854 | 102 (11.9 %) | 601 (70.4 %) | 151 (17.7 %) |
+
+For the noun/verb lemmas overlap is still the largest class but smaller than for the older lemmas, and the coverage
+gap and ambiguous shares are larger: a noun and a verb of one word often appear in similar sentences (`pass`,
+`point`, `list`), but the lemma has many, quite different noun uses and verb uses, so some holdout rows lie far from
+every anchor. The ambiguous share (26 %) is also where a few rows may be mislabeled; the blind audit in
+`nounverb-results.md` found 3 label disagreements in 400 rows (0.75 %), so most ambiguous rows are hard sentences, not
+wrong labels.
+
+### Weak Noun/Verb Lemmas
+
+233 lemmas are weak: 144 older and 89 noun/verb lemmas. The 88 highest ranks all belong to older lemmas, because the
+noun/verb quality gate removed every lemma below 90 % and a lemma with 15 of 16 holdout rows right (93.75 %) is the
+weakest that can pass. All 89 weak noun/verb lemmas are at exactly 93.75 % and differ in their errors and answered
+accuracy. Their recommendations: 34 `stronger-encoder`, 30 `more-sentences`, 13 `consumer-rule` and 12 `fix-labels`.
+The weakest by rank (errors include abstained rows):
+
+| Rank | Lemma | Holdout | Errors | Gap | Overlap | Ambiguous | Recommendation |
+| ---: | --- | ---: | ---: | ---: | ---: | ---: | --- |
+| 89 | pass | 93.75 % | 5 | 2 | 2 | 1 | more-sentences |
+| 90 | point | 93.75 % | 5 | 3 | 0 | 2 | more-sentences |
+| 91 | approach | 93.75 % | 4 | 3 | 0 | 1 | more-sentences |
+| 92 | breed | 93.75 % | 4 | 2 | 0 | 2 | more-sentences |
+| 95 | delight | 93.75 % | 4 | 1 | 0 | 3 | fix-labels |
+| 96 | desire | 93.75 % | 4 | 1 | 2 | 1 | stronger-encoder |
+| 97 | fail | 93.75 % | 4 | 2 | 2 | 0 | more-sentences |
+| 98 | flash | 93.75 % | 4 | 0 | 2 | 2 | stronger-encoder |
+| 103 | pause | 93.75 % | 4 | 0 | 4 | 0 | consumer-rule |
+| 105 | rent | 93.75 % | 4 | 0 | 4 | 0 | stronger-encoder |
+
+The overall weakest lemmas are still the older ones (`excommunicate`, `reread`, `read`, `uptown`, `upsetting`,
+`gallant`, `closer`, `oversteer`, `reincarnate`, `collocate`). With 16 rows per noun/verb lemma, one row is 6.25
+points, so the ranking among the noun/verb lemmas is noise-dominated and should be read as a list of lemmas to
+re-check, not as a measured order.
