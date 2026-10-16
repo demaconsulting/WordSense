@@ -1,0 +1,67 @@
+lemma	category	note
+ace	name	proper name or brand in the corpus
+fall	policy	README sample word; already handled by the shipped samples
+march	name	month and proper name dominate
+trump	name	proper name dominates
+twitter	name	proper name
+bit	collision	past tense of bite and a noun; the form bit would collide
+bodied	collision	regular inflected form of another word
+bore	collision	past tense of bear
+chasing	collision	regular inflected form of another word
+felt	collision	past tense of feel
+fell	collision	past tense of fall
+fixing	collision	regular inflected form of another word
+found	collision	past tense of find
+ground	collision	past tense of grind
+leaving	collision	regular inflected form of another word
+left	collision	past tense of leave
+lie	collision	the past tense lay is kept with the lemma lay; lie would claim lay and lain
+rose	collision	past tense of rise
+saw	collision	past tense of see
+scored	collision	regular inflected form of another word
+scoring	collision	regular inflected form of another word
+bound	collision	past tense of bind
+alarm	adjective-heavy	judged mostly as other uses
+ally	adjective-heavy	judged mostly as other uses
+bias	adjective-heavy	judged mostly as other uses
+better	adjective-heavy	adjective or adverb dominate
+bitch	adjective-heavy	slur and exclamation dominate
+blank	adjective-heavy	judged mostly as other uses
+blind	adjective-heavy	adjective dominates
+brand	adjective-heavy	judged mostly as other uses
+chill	adjective-heavy	judged mostly as other uses
+concern	adjective-heavy	judged mostly as other uses
+crush	adjective-heavy	judged mostly as other uses
+flavor	adjective-heavy	judged mostly as other uses
+glow	adjective-heavy	judged mostly as other uses
+grill	adjective-heavy	judged mostly as other uses
+humour	adjective-heavy	judged mostly as other uses
+loose	adjective-heavy	adjective dominates
+major	adjective-heavy	adjective dominates
+mask	adjective-heavy	judged mostly as other uses
+pale	adjective-heavy	judged mostly as other uses
+pitch	adjective-heavy	judged mostly as other uses
+prejudice	adjective-heavy	judged mostly as other uses
+process	adjective-heavy	judged mostly as other uses
+puzzle	adjective-heavy	judged mostly as other uses
+regard	adjective-heavy	judged mostly as other uses
+rim	adjective-heavy	judged mostly as other uses
+roast	adjective-heavy	judged mostly as other uses
+rough	adjective-heavy	adjective dominates
+round	adjective-heavy	adjective or preposition dominate
+shape	adjective-heavy	judged mostly as other uses
+single	adjective-heavy	adjective dominates
+steam	adjective-heavy	judged mostly as other uses
+stray	adjective-heavy	judged mostly as other uses
+stunt	adjective-heavy	judged mostly as other uses
+temper	adjective-heavy	judged mostly as other uses
+tender	adjective-heavy	adjective dominates
+wet	adjective-heavy	adjective dominates
+ensure	spurious-pos	no noun use
+free	spurious-pos	adjective and adverb dominate
+improve	spurious-pos	no noun use
+last	spurious-pos	adjective, adverb and determiner dominate
+obstruct	spurious-pos	no noun use
+reclaim	spurious-pos	no noun use
+respond	spurious-pos	no noun use
+stimulate	spurious-pos	no noun use

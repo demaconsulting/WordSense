@@ -61,5 +61,10 @@ Phase 4 ran it once as `new-authored-1` (576 anchor and 398 holdout rows, all fl
 `pos`, `group`, `arpabet`, `anchors`, `holdout`, `source_mix` as `real=N;authored=M`, `holdout_accuracy` in percent and
 `status`, `trained` or `dropped`), built from `new-lemma-inventory.tsv` and the build report; see
 `docs/build_notes/new-lemma-results.md`.
+Phase 5 trains noun/verb ambiguous lemmas from merged real sentences with `nounverb-import --corpus corpus --name
+nounverb-N --sentences F1[,F2..] --provenance P1[,P2..] --exclusions tools/real-text/nounverb-exclusions.tsv --forms
+tools/real-text/nounverb-forms.tsv` (sentences `lemma<TAB>noun|verb<TAB>sentence`; the exclusion list names proper names,
+adjective-heavy words, words with a spurious part of speech and collision forms such as `lie`, `bit` and `found`; the forms
+file lists irregular inflections). Only lemmas with at least 14 anchors and 8 holdout rows per sense are trained.
 See the design of the
 WordSenseBuilder unit.
