@@ -285,8 +285,8 @@ catch (WordSenseModelDownloadException ex)
 
 | Type                                             | Purpose                                                   |
 |--------------------------------------------------|-----------------------------------------------------------|
-| `IWordSenseClassifier`                           | Word-list and text `ClassifyAsync`                        |
-| `WordSenseClassifier`                            | Implementation; `CreateAsync`, `GetCandidates`            |
+| `IWordSenseClassifier`                           | `ClassifyAsync` overloads; lemma and candidate lookup     |
+| `WordSenseClassifier`                            | Implementation; `CreateAsync`                             |
 | `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention  |
 | `WordAnalysis`, `WordDetails`, `WordSenseToken`  | Result of a word, best answer, text tile                  |
 | `PartOfSpeech`, `Pronunciation`                  | Part of speech; pronunciation meaning and respelling      |
@@ -297,14 +297,15 @@ catch (WordSenseModelDownloadException ex)
 | `IWordSenseEncoder`, `OnnxWordSenseEncoder`      | Encoder abstraction and ONNX Runtime encoder              |
 | `WordSenseTable`                                 | The embedded classifier table (`LoadEmbedded`)            |
 
-The members of `IWordSenseClassifier` are asynchronous, and the results are parallel to their input:
+The two `ClassifyAsync` members of `IWordSenseClassifier` are asynchronous, and the results are parallel to their input:
 
 | Member                                 | Result                                                              |
 |----------------------------------------|---------------------------------------------------------------------|
 | `ClassifyAsync(IReadOnlyList<string>)` | `WordAnalysis[]`: the full result of each word of a tokenized text  |
 | `ClassifyAsync(string)`                | `IReadOnlyList<WordSenseToken>`: the raw text split into tiles      |
 
-`WordSenseClassifier` also has `KnownLemmas` (the supported lemmas) and `GetCandidates(lemma)` (the possible answers
+`IWordSenseClassifier` also has the synchronous `KnownLemmas` (the supported lemmas) and `GetCandidates(lemma)` (the
+possible answers
 of one lemma, empty when it is unknown).
 
 `WordAnalysis` has `Word`, `Details` (`WordDetails?`), `Margin`, `Abstained`, `RunnerUp` and `RunnerUpMargin`.
@@ -321,7 +322,7 @@ model differ) and `WordSenseTableFormatException` (damaged table); `WordSenseMod
 # Accuracy and Performance
 
 The figures below come from the builder reports in `docs/build_notes/` (the embedded table has 744 lemmas and 1,521
-senses, format v3). Read them with their caveats.
+senses, format v4). Read them with their caveats.
 
 **What the corpus is.** The training and held-out sentences have three kinds of origin: sentences written by a large
 language model for the original 34 seed lemmas and the heteronym lemmas of the first batches, real sentences from
@@ -420,7 +421,7 @@ documented in the build notes. The `tools/real-text` harvester collects candidat
   pronunciation `meaning` id and plain `respelling`.
 - `forms/speech.tsv` maps inflected forms to lemmas (`form`, `lemma`, `labels`).
 - `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
-  `lemma`, `label`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
+  `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
 
 ## Adding a Word
 

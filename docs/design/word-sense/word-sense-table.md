@@ -14,7 +14,8 @@ zero and ignored when read), model id, model SHA-256, u32 dimension, f32 mean ve
 and per lemma: name, u16 sense count, the senses (u8 part of speech, meaning string, respelling string;
 an empty string means "none"), then the u8 model kind, weights, biases and the f32 abstention margin. After the
 lemmas come the u32 form count, the forms (string and u32 lemma index), and a trailing SHA-256 digest of all
-preceding bytes. Strings are a u16 byte length
+preceding bytes. The writer emits lemmas and forms in ordinal order, so output is deterministic; the reader
+requires lemmas in ordinal order (the constructor enforces it) but accepts forms in any order. Strings are a u16 byte length
 followed by UTF-8.
 
 `LemmaModel` kinds: binary (one weight row, two senses, margin `2|s|`) and one-versus-rest (one row
@@ -22,8 +23,8 @@ per sense, margin between the best and the second-best score). `LemmaModel.Score
 fills one score per sense (`{-a, +a}` for a binary model with activation `a`); `Score(feature)` returns
 the best sense and the margin.
 
-Format version 4 stores a part of speech, a meaning and a respelling per sense instead of the earlier
-labels, tags and groups; any other version is rejected. A sense label is a build-time join key and is not
+Format version 4 is the only version: it stores a part of speech, a meaning and a respelling per sense, and
+any other version is rejected. A sense label is a build-time join key and is not
 stored. Each lemma model keeps its `SenseDefinition` list and builds one shared `WordDetails` per sense
 (the `Candidates` list) when it is constructed, so a lemma's answers are shared instances. A lemma is a
 heteronym when its senses carry meanings; only then does a candidate have a `Pronunciation`.
@@ -77,11 +78,13 @@ the same result as the plain scalar sum up to floating-point rounding. A binary 
   one lemma).
 - `Read` verifies the trailing digest before trusting any length field, caps every count (dimension
   4096, lemmas 100,000, forms 2,000,000, senses per lemma 2 to 64), and checks the structure: a defined
-  part of speech and a valid meaning and respelling for every sense, known model kinds, valid
-  form-to-lemma indexes (in range and without a duplicated form), and no trailing data. A sense with an
-  undefined part of speech or an invalid meaning is reported as `WordSenseTableFormatException`, like every
-  other structural failure. Constructor validation failures raised while reading (including an invalid
-  sense set) are reported as `WordSenseTableFormatException`.
+  part of speech for every sense, known model kinds, valid
+  form-to-lemma indexes (in range and without a duplicated form), strings that are valid UTF-8, and no trailing
+  data. A sense with an
+  undefined part of speech is reported as `WordSenseTableFormatException`, like every
+  other structural failure. The `LemmaModel` constructor validates the senses (`SenseDefinition.Validate`),
+  so an invalid meaning or respelling, like any other constructor validation failure raised while reading
+  (including an invalid sense set), is reported as `WordSenseTableFormatException`.
 - The read caps are enforced only by `Read`: the constructors and `Write` do not apply them, so a table
   built in memory can exceed a cap and be written, but `Read` will then reject it.
 
@@ -89,5 +92,5 @@ the same result as the plain scalar sum up to floating-point rounding. A binary 
 
 Read by `WordSenseClassifier`; written by `WordSenseBuilder`. `VectorMath.Dot` is the only numeric helper the
 scoring uses. `LemmaModel` also depends on the SenseRecord unit: it validates the sense set and creates one
-`WordDetails` per `SenseDefinition`, and `Read` uses `SenseDefinition.IsValidMeaning` and `IsValidRespelling`
-to validate the strings it reads.
+`WordDetails` per `SenseDefinition`, and validates the meaning and respelling of every sense through
+`SenseDefinition.Validate`, which is how `Read` rejects bad sense strings.

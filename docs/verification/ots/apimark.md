@@ -18,7 +18,7 @@ integration runs during the ordinary `dotnet build`, and the CI workflow then ru
 against the generated files in the same job, before the test step. ApiMark's `--validate`
 self-test is not used because it does not self-test generation.
 
-Three assertions check content rather than existence, because a complete-looking file tree could
+Each assertion checks content rather than existence, because a complete-looking file tree could
 still hide examples rendered as prose or dropped remarks.
 
 ### Test Scenarios

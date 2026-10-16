@@ -14,9 +14,11 @@ plus optional Basic credentials or a bearer token. The environment variables are
 
 - Constructor: validates eagerly. The base must be an absolute http or https URL without query,
   fragment or user information; Basic credentials and a bearer token are mutually exclusive; a
-  bearer token must not be blank; credentials require https unless the host is loopback.
+  bearer token must not be blank; credentials require https unless the host is loopback. The constructor does not
+  require a non-blank user name or password in a supplied `NetworkCredential`.
 - `FromEnvironment(getter)`: returns `null` when `WORDSENSE_MIRROR_URL` is unset; otherwise builds
-  the mirror; credentials without a URL, or a user without a password (or the reverse), are errors.
+  the mirror; credentials without a URL, or a user without a password (or the reverse), are errors, so the
+  environment path requires the user and the password together.
   A blank or whitespace-only value counts as unset for every variable.
 - `ToString()`: shows the base URL; the credentials and bearer token are replaced by `***` markers (or `null` when
   absent).

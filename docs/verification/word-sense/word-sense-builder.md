@@ -18,9 +18,9 @@ table.
 - **WordSenseBuilder_BatchImporter_MissingLemmaIsWarning**, **..._DropsFewBadRows**,
   **..._RejectsBatchWithManyBadRows**, **..._ExcludesThinLemmas**: lemma-level absence is a warning, few
   bad rows are dropped, many reject the batch, and thin lemmas are excluded.
-- **WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged**, **..._WritesDerivedInventory**,
+- **WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreAssigned**, **..._WritesDerivedInventory**,
   **..._UnmappedLabel_IsInvalid**: only part-of-speech labels are accepted when an inventory is derived, and the
-  derived inventory carries the part of speech of each label.
+  derived inventory carries the part of speech of each label and no meaning (imported lemmas are not heteronyms).
 - **WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations**,
   **WordSenseBuilder_SenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings**,
   **WordSenseBuilder_Program_ValidatePos_ReportsViolations**: each inventory rule violation (undefined part of
@@ -30,12 +30,13 @@ table.
 - **WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional**,
   **..._InvalidColumns_AreRejected**: the five-column inventory round-trips with empty meaning and respelling
   allowed, and an invalid part of speech, meaning or respelling is rejected.
-- **WordSenseBuilder_PosAudit_Resolve_FollowsTheRules**, **..._RowId_IsStable**: the retained judge-resolution and
-  sentence-identifier helpers.
+- **WordSenseBuilder_PosAudit_RowId_IsStable**: the retained sentence-identifier helper is stable and depends on the
+  lemma and the sentence.
 - **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
   **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
   **WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels**: inventory reading and writing,
-  validation in both directions, and counting of the meaning, part-of-speech and pronunciation levels.
+  validation in both directions, and counting of the part-of-speech and pronunciation levels (the meaning level is
+  counted by `TableBuilder`, see the build report tests).
 - **WordSenseBuilder_RealJudge_Resolve_FollowsTheRules**, **WordSenseBuilder_RealImport_Validate_RequiresProvenance**:
   sense judging resolution, licence ranking, and the provenance gate (missing row flagged, complete sidecar accepted).
 - **WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows**,
@@ -99,8 +100,12 @@ table.
   returns exit code 1 and a message naming the option, before any file is read.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
-- **WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections**: a small build report contains the
-  meaning-level, part-of-speech and pronunciation accuracy sections.
+- **WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections**: a small build report of a lemma that
+  is not a heteronym contains the best-sense, part-of-speech and pronunciation sections, with no pronunciation
+  sentences evaluated.
+- **WordSenseBuilder_TableBuilder_Build_HeteronymReportsMeaningLevel**: a heteronym lemma adds the `Meaning level:`
+  line, a meaning-correct count equal to the sense-correct count (distinct meanings per sense), and pronunciation
+  counts for its holdout sentences.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
   braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.

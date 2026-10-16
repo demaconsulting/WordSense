@@ -42,6 +42,8 @@ sections:
           - SenseDefinition_Validate_InvalidDefinitions_Throw
           - SenseDefinition_IsValidMeaning_ChecksSyntax
           - SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength
+          - LemmaModel_Constructor_InvalidSenseDefinition_Throws
+          - PartOfSpeech_Values_ArePinned
 
       - id: WordSense-Sense-Abstain
         title: >-

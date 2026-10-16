@@ -96,6 +96,7 @@ sections:
           - WordSenseClassifier_Constructor_InvalidArguments_Throw
           - WordSenseClassifier_Constructor_ModelMismatch_Throws
           - WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
+          - WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
           - WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel
 
       - id: WordSense-Classifier-Lifetime
@@ -107,3 +108,5 @@ sections:
           - WordSenseClassifier_ClassifyAsync_Cancelled_Throws
           - WordSenseClassifier_ClassifyAsync_Concurrent_IsConsistent
           - WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed
+          - WordSenseClassifier_ClassifyAsync_CancelledDuringEncode_StopsBeforeNextTarget
+          - WordSenseClassifier_Dispose_OwnedEncoder_LaterCallsBehaveAsDocumented

@@ -17,10 +17,20 @@ and the text splitter directly with hand-built inputs; no model is needed.
   reject invalid sets.
 - **SenseDefinition_Validate_InvalidDefinitions_Throw**, **SenseDefinition_IsValidMeaning_ChecksSyntax**,
   **SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength**: syntax (including a trailing newline, null and
-  empty) and length limits, an undefined part of speech and a respelling without a meaning.
+  empty) and length limits, an undefined part of speech and a respelling without a meaning. The invalid
+  definitions assert the exception message: an undefined part of speech mentions the part of speech; an
+  upper-case or empty meaning gives `Meaning 'Weapon' is invalid` and `Meaning '' is invalid`; a meaning with a
+  trailing newline says it is invalid; a respelling without a meaning, with a space or empty mentions the
+  respelling. Valid definitions pass.
+- **LemmaModel_Constructor_InvalidSenseDefinition_Throws**: the lemma model constructor validates each sense
+  definition; an undefined part of speech in the first of two senses throws `ArgumentException` mentioning the
+  part of speech.
+- **PartOfSpeech_Values_ArePinned**: the eight parts of speech keep the numeric values 0 (noun) to 7
+  (interjection) used by the table format, and the enumeration has exactly eight members.
 - **AbstainRule_Abstains_NaNMarginOrThreshold_Abstains**: a NaN margin or threshold abstains.
 - **TextSplitter_SplitSegments_TileTheText**, **TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets**:
-  segmentation. The exact-tiling invariant is verified at the splitter level by
+  segmentation. **TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets** splits `a  bat.` into the tiles
+  `a`, `bat` and `.` starting at 0, 3 and 6. The exact-tiling invariant is verified at the splitter level by
   **TextSplitter_SplitSegments_TileTheText** and at the classifier level by
   **WordSenseClassifier_ClassifyAsync_Text_TokensTileInput** and **WordSenseToken_Tiles_FollowSegmentSpans**
   (see the classifier verification).

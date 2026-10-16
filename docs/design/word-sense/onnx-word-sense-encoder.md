@@ -5,13 +5,18 @@
 `OnnxWordSenseEncoder` implements `IWordSenseEncoder` with an ONNX Runtime `InferenceSession` over
 the int8 `all-MiniLM-L6-v2` model.
 
+## Interface
+
+`IWordSenseEncoder` is the seam for test substitution and alternative encoders: the classifier depends only on
+that interface. Implementations must be safe for concurrent calls.
+
 ## Data Model
 
 The encoder holds one session, the model file's SHA-256 (computed at construction) and the hidden
-size read from the model output (384): the last dimension of the first output as reported by ONNX Runtime. The
-encoder does not validate that value; when the model declares that dimension as dynamic or unknown, ONNX Runtime
-reports `-1`, so `HiddenSize` would be `-1` and the classifier would reject the pairing as a dimension mismatch with
-the table (`WordSenseModelMismatchException`). The pinned model has a fixed dimension of 384.
+size read from the model output: the last dimension of the first output as reported by ONNX Runtime, which is 384
+for the pinned model. The encoder does not validate that value. When the model declares that dimension as
+dynamic or unknown, ONNX Runtime reports `-1`, so `HiddenSize` would be `-1`, and the classifier would reject
+the pairing as a dimension mismatch with the table (`WordSenseModelMismatchException`).
 
 ## Methods
 

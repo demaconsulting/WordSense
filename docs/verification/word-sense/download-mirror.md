@@ -20,7 +20,18 @@ getter; no process environment is modified.
   `WORDSENSE_MIRROR_*` variables.
 - **DownloadMirror_ToString_RedactsSecrets**: neither the password, the user name nor the token appears; a credential
   and a token are shown as `***` and an absent one as `null`.
+- **DownloadMirror_FromEnvironment_InvalidConfiguration_Throws** sub-cases:
+  - credentials without a URL (user only) throw `ArgumentException`;
+  - a URL with a user but no password throws `ArgumentException`;
+  - a non-URL string (`not a url`) as the URL throws `ArgumentException`;
+  - an `ftp` scheme URL throws `ArgumentException`;
+  - a null getter throws `ArgumentNullException`;
+  - a URL with user, password and bearer token all set throws `ArgumentException` and the message does not contain
+    any of the secret values;
+  - a rejected `ftp` URL and a rejected non-URL string that both embed `pw@x` throw messages that do not contain
+    `pw@x`, so a mistyped URL carrying a pasted credential is never echoed.
 
 ## Requirements Coverage
 
-`WordSense-Mirror-Validation`, `WordSense-Mirror-Environment` and `WordSense-Mirror-Redaction`.
+`WordSense-Mirror-Validation`, `WordSense-Mirror-Environment` and `WordSense-Mirror-Redaction` (which also covers
+the secret-free messages of the invalid-configuration scenario).

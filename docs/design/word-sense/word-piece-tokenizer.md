@@ -12,6 +12,8 @@ spanning the whole word.
 
 - `TokenizedText`: parallel arrays of token ids and UTF-16 start/end offsets into the original text
   (special tokens are not included).
+- `TokenizedText.WordFirst` / `WordEnd`: for each word, the index range of its tokens (first token and one past
+  the last); both are empty unless the result was produced by `TokenizeWords`.
 - The vocabulary is a dictionary from piece to id, loaded from `vocab.txt` (line number is the id).
 
 ## Methods

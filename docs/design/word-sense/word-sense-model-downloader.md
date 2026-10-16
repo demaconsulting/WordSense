@@ -72,9 +72,11 @@ The committed `model_int8.onnx` was produced by local dynamic quantization (22,9
 SHA-256 `afdb6f1a...`). The upstream repository publishes `onnx/model_qint8_avx512.onnx`
 (24,113,097 bytes) among others; none matches the committed digest, so the ONNX file is never requested
 from Hugging Face. `vocab.txt` carries the well-known BERT uncased vocabulary digest and is requested
-from Hugging Face; the digest could not be compared against the live upstream file from the
-development environment (TLS interception blocked access) and is therefore verified on download.
+from Hugging Face. Its digest is pinned in the catalog and every download is verified against it; whether it
+equals the live upstream file is not asserted.
 
 ## Interactions
 
-Uses `DownloadMirror`; called by `WordSenseClassifier.CreateAsync`.
+Uses `DownloadMirror`. It is called by `WordSenseClassifier.CreateAsync`, which also calls
+`WordSenseModelLocation.FromDirectory` for a user-supplied directory. `WordSenseModelCatalog.HashFile` is
+shared with `OnnxWordSenseEncoder`.

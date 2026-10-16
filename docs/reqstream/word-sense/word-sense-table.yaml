@@ -29,6 +29,7 @@ sections:
           not be mistaken for a current one.
         tests:
           - WordSenseTable_Read_OldVersion_Throws
+          - WordSenseTable_Read_ResignedNewerVersion_Throws
           - WordSenseTable_RoundTrip_PreservesPronunciations
           - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
           - WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw
@@ -55,6 +56,8 @@ sections:
           - WordSenseTable_Read_ResignedUndefinedPos_Throws
           - WordSenseTable_Read_ResignedInvalidMeaning_Throws
           - WordSenseTable_Read_ResignedBadFormEntry_Throws
+          - WordSenseTable_Read_ResignedBinaryKindWithThreeSenses_Throws
+          - WordSenseTable_Read_ResignedInconsistentSenseSet_Throws
           - WordSenseTable_Constructor_NullArguments_Throw
           - WordSenseTable_Constructor_InvalidValues_Throw
 
@@ -82,3 +85,4 @@ sections:
           The library must work out of the box without an external table file.
         tests:
           - WordSenseTable_LoadEmbedded_ContainsSeedLemmas
+          - WordSenseTable_LoadEmbedded_HeteronymSensesHavePronunciations

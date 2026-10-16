@@ -18,7 +18,8 @@ pronunciation, does this word have here".
   `Abstained` is true when `Margin` is below the lemma's abstain threshold (`LemmaModel.AbstainMargin` times
   `AbstainMarginScale`) by `AbstainRule`; `Details` is then null but the margin and runner-up are still reported.
   An unknown word (not a form of a lemma with a classifier) has null `Details`, `Abstained` false, no runner-up and
-  zero margins, so it is distinguishable from an abstention.
+  zero margins, so it is distinguishable from an abstention. A known word that has no word pieces, or whose
+  feature vector has zero norm, also yields this unknown result (null `Details`, `Abstained` false, zero margins).
 - `WordSenseToken(Start, Length, Text, Analysis)`: a tile of the input text of the raw-string overload; the type is
   declared in `WordSenseClassifier.cs` next to `IWordSenseClassifier` and is owned by this unit. `Analysis` is the
   analysis of a word tile and is the unknown-word analysis for any other tile. Invariant: the tiles returned for a
@@ -71,7 +72,8 @@ Features are the mean of the target word pieces' hidden states minus the table m
 
 ## Interactions
 
-Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder` and `WordSenseModelDownloader`, and the
+Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder`, `FeatureExtractor` (pooling, centering and
+normalization of the target features) and `WordSenseModelDownloader`, and the
 SenseRecord unit (the answer types, `TextSplitter` and `AbstainRule`). The
 classifier is thread-safe when its encoder is: the table and tokenizer are immutable and the session is
 shared.

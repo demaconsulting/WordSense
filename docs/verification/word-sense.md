@@ -12,7 +12,8 @@ substitutes (a fake encoder and a local HTTP server).
 
 - **Framework**: xUnit v3 running under the .NET SDK on net8.0, net9.0 and net10.0
 - **Execution**: `dotnet test` invoked by `build.ps1` and the CI pipeline (Git LFS content is fetched)
-- **Dependencies**: the Git LFS model files `model_int8.onnx` and `vocab.txt` under `model/`; no network access. Tests that
+- **Dependencies**: the Git LFS model files `model_int8.onnx` and `vocab.txt` under `model/`; no network access.
+  Tests that
   need the model are skipped, not failed, when the LFS content is absent.
 - **Isolation**: each test creates its own classifier; no shared state.
 
@@ -43,8 +44,9 @@ files in `model/`; a stale table fails.
 
 ### WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
 
-Creating a classifier from an empty directory (no model files) fails with a `FileNotFoundException` naming the
-missing file.
+Creating a classifier from an empty directory (no model files) fails with a `FileNotFoundException`; the test
+asserts the exception
+type only.
 
 ### WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
 
@@ -96,24 +98,21 @@ milliseconds). The test carries the trait `Category=Benchmark`.
 
 ### WordSense_Readme_CodeBlock_MatchesCompiledSample
 
-For each README sample (`download`, `classify`, `tags`), extracts the code block marked `<!-- sample:name -->` from
-`README.md`
-and the region between the `<sample:name>` markers of `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and
+For the README sample (`readme`), extracts the code block marked `<!-- sample:readme -->` from `README.md`
+and the region between the `<sample:readme>` markers of `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and
 requires them to be equal after normalizing line endings and trailing white space. Because the region is compiled
 code, the README sample is guaranteed to build against the current API.
 
 ### WordSense_Readme_Output_MatchesReadme
 
-Runs the two compiled samples that print output (`classify` and `tags`; `download` prints a directory and is not
-run) against the committed model (skipped when the model files are missing or are Git LFS pointers) and requires
-the lines they write to equal the output blocks marked `<!-- output:name -->` in `README.md`.
-Unknown or abstained words print `-`, so a change to the model, table or abstention shows up as a failing test and
-the documented output is updated deliberately.
+Runs the compiled README sample against the committed model (skipped when the model files are missing or are Git
+LFS pointers) and requires the lines it writes to equal the output block marked `<!-- output:readme -->` in
+`README.md`. Unknown words print `unknown` and abstained words print `abstained`, so a change to the model, table
+or abstention shows up as a failing test and the documented output is updated deliberately.
 
 ### WordSense_Readme_SampleMarkers_AreAllChecked
 
-Requires the set of sample markers in `README.md` to equal the set of checked samples (`download`, `classify`,
-`tags`).
+Requires the set of sample markers in `README.md` to equal the set of checked samples (only `readme`).
 
 ### WordSense_XmlDocExamples_Compile
 
@@ -128,9 +127,11 @@ the options error (not a model error) to be reported, so invalid options never c
 
 ### WordSense_UserGuide_CodeBlock_MatchesCompiledSample
 
-For each user guide sample (`quick-start`, `text`, `detail`, `tags`, `senses`, `tuning`, `download`, `mirror`,
-`errors`), extracts the code block marked `<!-- sample:name -->` from `docs/user_guide/introduction.md` and the region
-between the `<sample:name>` markers of `test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`, and requires them to
+For each user guide sample (`quick-start`, `text`, `confidence`, `pronunciation`, `candidates`, `tuning`, `download`,
+`mirror`, `errors`), extracts the code block marked `<!-- sample:name -->` from
+`docs/user_guide/introduction.md` and the
+region between the `<sample:name>` markers of
+`test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`, and requires them to
 be equal after normalizing line endings and trailing white space. The regions are compiled code, so every user guide
 sample builds against the current API.
 
@@ -141,16 +142,20 @@ be added without a compiled copy.
 
 ### WordSense_UserGuide_Samples_RunAgainstModel
 
-Runs the samples that need only a classifier (`text`, `detail`, `tags`, `senses`) and the `mirror` sample against the
-committed model (skipped when the model files are missing or are Git LFS pointers) and requires that they complete
+Runs the samples that need only a classifier (`text`, `confidence`, `pronunciation`, `candidates`) and the `mirror`
+sample against the committed model (skipped when the model files are missing or are Git LFS pointers) and
+requires that they complete
 without an error. The samples that download the model are compiled but not run.
 
 ### Platform Support
 
 `WordSense_Classifier_EndToEnd_ClassifiesRecord` is run on each CI operating system (Windows, Linux, macOS) and
 under each target framework (net8.0, net9.0, net10.0). The six `WordSense-Platform-*` requirements are each
-linked to this test with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`), so
-a requirement is satisfied only by a passing result from its own platform or framework.
+linked to this test with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`):
+`WordSense-Platform-Windows`, `WordSense-Platform-Linux`, `WordSense-Platform-MacOS`, `WordSense-Platform-Net8`,
+`WordSense-Platform-Net9` and `WordSense-Platform-Net10`. A requirement is satisfied only by a passing result from
+its own
+platform or framework.
 
 ## Requirements Coverage
 
@@ -166,10 +171,10 @@ a requirement is satisfied only by a passing result from its own platform or fra
 | WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                           |
 | WordSense-Lib-ModelDownload | EnsureModel_* (downloader verification)                                             |
 | WordSense-Lib-Mirror        | EnsureModel_Mirror* (downloader and mirror verification)                            |
-| WordSense-Lib-Integrity     | EnsureModel_HashMismatch_*, FromDirectory_ChecksEveryFile, CreateAsync_Rejects*     |
+| WordSense-Lib-Integrity     | EnsureModel_HashMismatch_*, FromDirectory_ChecksEveryFile                           |
 | WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                           |
 | WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                  |
-| WordSense-Lib-Documentation | Readme_*, UserGuide_*, XmlDocExamples_Compile                                       |
+| WordSense-Lib-Documentation | Readme_*, UserGuide_*                                                               |
 | WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)                |
 
 The abstention, download, mirror and integrity rows summarize scenarios that are detailed in the unit-level

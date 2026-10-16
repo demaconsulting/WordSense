@@ -45,11 +45,25 @@ the bytes systematically. The embedded table is checked for its lemma count, par
   **WordSenseTable_Scores_LengthMismatch_Throws**: the public per-sense `Scores` output for binary and
   one-versus-rest models, and rejection of a wrong feature or scores length.
 - **WordSenseTable_Read_OldVersion_Throws**, **WordSenseTable_RoundTrip_PreservesPronunciations**,
-  **WordSenseTable_LemmaModel_BadSenseDefinitions_Throw**: other format versions and bad sense definitions are
-  rejected, and parts of speech, meanings and respellings survive a round trip.
+  **WordSenseTable_LemmaModel_BadSenseDefinitions_Throw**: versions 1 to 3 are rejected (only version 4 is
+  accepted) with a message that mentions the version, bad sense definitions are rejected, and parts of speech,
+  meanings and respellings survive a round trip.
+- **WordSenseTable_Read_ResignedNewerVersion_Throws**: a correctly signed table whose version byte is 5 is
+  rejected with `WordSenseTableFormatException` whose message mentions version 5.
+  **WordSenseTable_Read_ResignedBinaryKindWithThreeSenses_Throws**: a correctly signed table whose three-sense
+  lemma has its kind byte changed to binary is rejected with a message containing "inconsistent".
+  **WordSenseTable_Read_ResignedInconsistentSenseSet_Throws**: a correctly signed table in which one meaning is
+  altered to equal the other, so one meaning has two respellings, is rejected with a message containing
+  "inconsistent" and an `ArgumentException` as inner exception.
 - **WordSenseTable_LoadEmbedded_ContainsSeedLemmas**: the embedded resource loads with at least 344
-  lemmas, the expected parts of speech and meanings for `record`, dimension 384, and every form resolving to a
+  lemmas, the expected parts of speech and meanings for `record`, a `read` lemma that has a past verb sense
+  (meaning `past`, part of speech verb), dimension 384, and every form resolving to a
   lemma with a model.
+- **WordSenseTable_LoadEmbedded_HeteronymSensesHavePronunciations**: the embedded table has at least one
+  heteronym, and every candidate of every heteronym has a pronunciation.
+- **WordSenseTable_RoundTrip_PreservesAllValues** also asserts that the candidates of a read lemma are shared
+  (the same list and the same first element on every access) and carry the lemma and part of speech of their
+  sense.
 - **WordSenseTable_WriteAndTryGetLemma_EdgeCases**: writing a string over 65,535 bytes throws
   `InvalidOperationException`; `TryGetLemma` is false for an unknown lemma and throws for null.
 
@@ -70,11 +84,13 @@ Each requirement is mapped to the scenarios above as follows.
 - `WordSense-Table-Format`: the round-trip, determinism and stream scenarios,
   **WordSenseTable_Constructor_InconsistentInput_Throws**,
   **WordSenseTable_LemmaModel_BadShapes_Throw** and **WordSenseTable_WriteAndTryGetLemma_EdgeCases**.
-- `WordSense-Table-Senses`: the pronunciation round-trip, old-version, bad sense definition, null or non-finite
-  lemma model argument and undefined-kind scenarios.
+- `WordSense-Table-Senses`: the pronunciation round-trip, old-version, newer-version, bad sense definition, null or
+  non-finite lemma model argument and undefined-kind scenarios.
 - `WordSense-Table-Integrity`: the truncation, byte-flip, garbage, mutated-body and every re-signed scenario
-  (magic, trailing data, caps, sense count, part of speech, meaning, form entries, model kind) and the table
+  (magic, trailing data, caps, sense count, part of speech, meaning, form entries, model kind, binary kind with
+  three senses, inconsistent sense set) and the table
   constructor null and invalid-value scenarios.
 - `WordSense-Table-Score`: the binary and one-versus-rest scoring scenarios, the zero-activation and tie scenarios,
   the per-sense `Scores` scenarios, the length-mismatch scenario and the odd-dimension scalar-reference scenario.
-- `WordSense-Table-Embedded`: **WordSenseTable_LoadEmbedded_ContainsSeedLemmas**.
+- `WordSense-Table-Embedded`: **WordSenseTable_LoadEmbedded_ContainsSeedLemmas** and
+  **WordSenseTable_LoadEmbedded_HeteronymSensesHavePronunciations**.

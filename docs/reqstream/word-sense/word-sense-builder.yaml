@@ -58,13 +58,14 @@ sections:
           - WordSenseBuilder_SenseInventory_InvalidColumns_AreRejected
           - WordSenseBuilder_BatchImporter_WritesDerivedInventory
           - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
-          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged
+          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreAssigned
 
       - id: WordSense-Builder-InventoryRules
         title: >-
           The builder shall reject an inventory in which a sense lacks a defined part of speech, a lemma gives
           meanings to only some of its senses, a heteronym has fewer than two distinct meanings, two senses share a
-          part of speech and meaning, or distinct meanings share a respelling, and shall allow two senses of one
+          part of speech and meaning, a meaning has inconsistent respellings, or distinct meanings share a
+          respelling, and shall allow two senses of one
           part of speech that have different meanings.
         tags: [unit]
         justification: |
@@ -86,6 +87,7 @@ sections:
         tests:
           - WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels
           - WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections
+          - WordSenseBuilder_TableBuilder_Build_HeteronymReportsMeaningLevel
 
       - id: WordSense-Builder-Provenance
         title: >-
@@ -112,7 +114,6 @@ sections:
           - WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall
           - WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows
           - WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory
-          - WordSenseBuilder_PosAudit_Resolve_FollowsTheRules
           - WordSenseBuilder_PosAudit_RowId_IsStable
 
       - id: WordSense-Builder-AuthoredImport
@@ -212,8 +213,8 @@ sections:
         tags: [unit]
         justification: |
           The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
-          describe the trained
-          corpus; generating it, and failing when the committed file is stale, makes drift impossible.
+          describe the trained corpus; generating it, and failing when the committed file is stale, makes drift
+          impossible.
         tests:
           - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
           - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput

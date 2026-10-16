@@ -8,8 +8,9 @@ abstention rule and the text splitter. It consists of `PartOfSpeech`, `Pronuncia
 
 ## Data Model
 
-- `PartOfSpeech`: an enumeration of eight values (noun, verb, adjective, adverb, pronoun, preposition,
-  conjunction, interjection). The shipped table produces noun, verb, adjective and adverb only.
+- `PartOfSpeech`: an enumeration of eight values, in numeric order: noun (0), pronoun (1), verb (2), adjective (3),
+  adverb (4), preposition (5), conjunction (6), interjection (7). The numeric values are part of the table format
+  (one byte per sense), so they never change. The shipped table produces noun, verb, adjective and adverb only.
 - `Pronunciation(Meaning, Respelling?)`: a record. `Meaning` is a short lower-case identifier that names the
   meaning of a heteronym (for example `weapon` or `bend` for `bow`). `Respelling` is an optional plain respelling
   of the pronunciation in the library's own convention: syllables separated by hyphens, stress in capitals, no
@@ -28,8 +29,8 @@ abstention rule and the text splitter. It consists of `PartOfSpeech`, `Pronuncia
   and runner-up populated.
 - `SenseDefinition(Pos, Meaning?, Respelling?)`: a record as stored in the table. The meaning is a lower-case
   identifier of at most `MaxMeaningLength` = 32 characters (a lower-case ASCII letter followed by lower-case
-  letters, digits or `-`; a trailing newline is rejected). The respelling uses letters, hyphens and apostrophes,
-  at most `MaxRespellingLength` = 32 characters, and needs a meaning. Null and empty strings are not valid.
+  ASCII letters, digits or `-`; a trailing newline is rejected). The respelling uses ASCII letters, hyphens and apostrophes,
+  at most `MaxRespellingLength` = 32 characters, and needs a meaning. An empty string is not valid; null means absent.
   `Validate()` throws `ArgumentException` for an undefined part of speech, an invalid meaning or respelling, or a
   respelling without a meaning.
 

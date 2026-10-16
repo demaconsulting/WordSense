@@ -7,7 +7,7 @@ sections:
       - id: WordSense-Mirror-Validation
         title: >-
           The mirror shall accept only absolute http or https base URLs and consistent, safe credentials:
-          either a user name with a password or a bearer token but not both, a bearer token that is not
+          Basic credentials or a bearer token but not both, a bearer token that is not
           blank, and credentials only over https unless the host is a loopback address.
         tags: [unit]
         justification: |
@@ -36,9 +36,12 @@ sections:
           - DownloadMirror_FromEnvironment_WhitespaceOnlyCredentials_AreUnset
 
       - id: WordSense-Mirror-Redaction
-        title: The mirror configuration shall never reveal secrets when converted to text.
+        title: >-
+          The mirror configuration shall never reveal secrets when converted to text, and a configuration error
+          shall never repeat a secret or the rejected URL.
         tags: [unit]
         justification: |
           Logs and exception messages must not leak passwords or tokens.
         tests:
           - DownloadMirror_ToString_RedactsSecrets
+          - DownloadMirror_FromEnvironment_InvalidConfiguration_Throws

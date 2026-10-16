@@ -16,7 +16,7 @@ real-text commands (`real-gap`,
 ## Data Model
 
 The corpus is tab-separated files under `corpus/anchors` (training) and `corpus/holdout`
-(evaluation): `lemma`, `sense`, `sentence` with the target in one `{...}` pair. `corpus/forms/*.tsv`
+(evaluation): `lemma`, `label`, `sentence` with the target in one `{...}` pair. `corpus/forms/*.tsv`
 lists word forms per lemma. Training and evaluation sentences must be disjoint.
 
 ## Algorithm
@@ -56,8 +56,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   speech is the label); any other label marks the batch `Invalid`. The `derive-senses` command is retired.
 - The blind part-of-speech audit and relabeling that produced the current labels are retired: the commands
   `audit-export`, `audit-adjudicate`, `audit-merge`, `audit-report` and `apply-relabel` no longer exist. Only the
-  helpers that identify a sentence (`PosAudit.Resolve` and `PosAudit.RowId`) remain, because the real-text
-  importers and the provenance sidecars match rows with them. The decisions and dropped rows of the audit stay
+  sentence identifier `PosAudit.RowId`, the `PosAudit.Undecided` marker and the reader `PosAudit.ReadResults` of
+  `corpus/audit/pos-audit.tsv` remain, because the real-text importers and the provenance sidecars match rows with
+  them. The decisions and dropped rows of the audit stay
   under `corpus/audit/` as a record.
 - Real-text restoration: senses that the audit had excluded for lack of sentences were restored from real
   text. `tools/real-text/harvest.py` (Python standard library; raw downloads in the git-ignored
