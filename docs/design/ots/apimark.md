@@ -17,9 +17,13 @@ the code it describes.
 - Package inclusion (`ApiMarkPackDocs`), which places the generated `api/` tree in the NuGet package
 - Documentation-coverage enforcement (`ApiMarkEnforceDocs`, `ApiMarkEnforceDocsSeverity`)
 - Rendering of `<example>`/`<code>` blocks as fenced code blocks and of `<remarks>` prose
-- Namespace description from a `NamespaceDoc` carrier class (`NamespaceDoc.cs`, an internal static class whose
-  XML summary, remarks and example become the namespace page; without it the namespace shows "No description
-  provided")
+- Namespace description from a `NamespaceDoc` carrier class (`NamespaceDoc.cs`, an `internal static class NamespaceDoc`
+  in the namespace, which is ApiMark's documented convention; ApiMark recognizes it by that shape and omits it
+  from the type list and from enforcement; its XML summary, remarks and example become the namespace page; without
+  it the namespace shows "No description provided"). The page carries the quickstart, package and target
+  frameworks, tag catalog, single-word recipe, tokenization notes, thread safety, group semantics and examples.
+  The carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to repository documents in
+  XML docs use absolute GitHub URLs, because the packaged API reference has no access to repository files.
 
 ### Integration Pattern
 

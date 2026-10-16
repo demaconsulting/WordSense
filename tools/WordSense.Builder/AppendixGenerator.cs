@@ -175,11 +175,12 @@ internal static class AppendixGenerator
         lines.Add("### Groups");
         lines.Add(string.Empty);
         AddParagraph(lines,
-            "A **group** is a coarser label that joins senses a consumer usually does not need to tell apart. " +
-            "`WordSense.Group` is the group of the sense. It equals the sense label unless the inventory joins " +
-            "senses: for example `bow` has the senses `bend-noun` and `bend-verb` (the act of bending, as a noun or a " +
-            "verb), which share the group `bend`, and `weapon`, which is a group of its own. A consumer that does " +
-            "not care about the split reads `Group` instead of `Sense`.");
+            "A **group** is an equivalence class of the senses of one lemma: senses that share a group are " +
+            "interchangeable for the consumer because they share a pronunciation. `WordSense.Group` is the group of " +
+            "the sense. It equals the sense label unless the inventory joins senses: for example `bow` has the " +
+            "senses `bend-noun` and `bend-verb` (the act of bending, as a noun or a verb), which share the group " +
+            "`bend`, and `weapon`, which is a group of its own. The library has no pronunciation data: a consumer " +
+            "such as a speech synthesizer keeps its own pronunciations keyed by (lemma, group).");
 
         lines.Add("### Forms");
         lines.Add(string.Empty);

@@ -27,7 +27,7 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="GetSenses"/>: for <c>lead</c>, <c>GetSenses("lead")</c> returns <c>guide-noun</c> (tags <c>noun</c>,
 ///     group <c>guide</c>), <c>guide-verb</c> (<c>verb</c>, group <c>guide</c>) and <c>metal</c> (<c>noun</c>, group
 ///     <c>metal</c>). The complete list of lemmas, senses, tags, groups and recognized forms is the user guide appendix
-///     <c>docs/user_guide/appendix-senses.md</c> ("Appendix: Supported Senses and Tags").
+///     <c>https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md</c> ("Appendix: Supported Senses and Tags").
 ///     </para>
 ///     <para>
 ///     <b>Sense or tag?</b> Use <see cref="ClassifyAsync(IReadOnlyList{string}, CancellationToken)"/> (or

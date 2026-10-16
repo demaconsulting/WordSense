@@ -15,7 +15,8 @@ whether "record" is a noun or a verb, or whether "bass" is a fish or an instrume
 
 ## Features
 
-- **Contextual sense decisions**: per-word senses with a coarser `Group`, true part-of-speech tags (noun, verb, ...),
+- **Contextual sense decisions**: per-word senses with a `Group` (the pronunciation equivalence class of senses),
+  true part-of-speech tags (noun, verb, ...),
   a confidence margin and tag-level queries such as noun versus verb, for 744 lemmas: a curated set of homographs
   and several hundred common words that are both a noun and a verb (embedded table format v3)
 - **Abstention**: returns no sense instead of guessing when the evidence is weak
@@ -107,7 +108,8 @@ present  lemma=present sense=noun group=noun tags=noun
 
 Here `lead` (guiding), `tear` (a drop) and `present` (a gift) are nouns, while `bow` (to bend) and `presents` are
 verbs. `read` is the past tense (tags `past` and `verb`). `read`, `lead`, `bow`, `tear` and `present` are heteronyms
-whose sense depends on the context. Each answer carries the `lemma`, the `sense`, the coarser `group` and the `tags`
+whose sense depends on the context. Each answer carries the `lemma`, the `sense`, the `group` (senses of a lemma in
+one group share a pronunciation; the library has no pronunciation data) and the `tags`
 (a part of speech plus optional qualifiers); the [senses appendix](docs/user_guide/appendix-senses.md) lists every
 supported lemma with its senses and tags.
 

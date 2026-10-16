@@ -72,9 +72,11 @@ abstained because the evidence was weak. Inflected forms are recognized (`presen
 A `WordSense` is an immutable record with `Lemma`, `Sense`, `Group`, `Tags` and `HasTag(tag)`. `Tags` is a frozen
 set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`,
 `superlative`; `participle` is also a valid qualifier but no sense uses it yet); every sense has exactly one part of
-speech. `Group` is the coarser group of the sense: the sense
-label unless senses are grouped (the senses `bend-noun` and `bend-verb` of `bow` share the group `bend`), so a
-consumer that does not care about the split reads `Group`. The same instance is returned for the same lemma and
+speech. `Group` is the equivalence class of the sense: senses of
+one lemma that share a group are interchangeable for the consumer because they share a pronunciation (the senses
+`bend-noun` and `bend-verb` of `bow` share the group `bend`). It equals the sense label when the sense is not
+grouped. The library has no pronunciation data; a consumer such as a speech synthesizer keys its own pronunciations
+by (`Lemma`, `Group`). The same instance is returned for the same lemma and
 sense. The
 <!-- markdownlint-disable-next-line MD051 -->
 [appendix](#appendix-supported-senses-and-tags) explains tags and groups and lists every supported lemma with its
@@ -325,8 +327,8 @@ on a development workstation; run the `Benchmark` test category to measure your 
 - **Only trained words are answered.** A word that is not in the table (see the appendix) yields no sense: `null` in
   the API and `-` in the examples. WordSense is not a general word-sense disambiguator.
 - **One part of speech per sense.** A sense is either a noun, a verb, an adjective or an adverb sense, never a mix.
-  Lemmas are split into several senses when the part of speech differs, and `Group` rejoins senses that you
-  do not need to tell apart.
+  Lemmas are split into several senses when the part of speech differs, and `Group` rejoins senses that
+  share a pronunciation (the library itself has no pronunciation data).
 - **Collision forms are excluded.** A form that also belongs to another lemma cannot be attributed safely, so these
   forms (for example `saw`, `left`, `found`, `fell`, `rose`, `felt`, `bit` and `ground`) are not targets of the
   noun/verb lemmas. `lie` is excluded because its past tense `lay` is a lemma of its own, which is classified only as

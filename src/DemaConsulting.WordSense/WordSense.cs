@@ -115,7 +115,8 @@ public sealed class WordSense
     ///     (every sense has exactly one) and the qualifier tags <c>past</c>, <c>present</c>, <c>comparative</c>,
     ///     <c>participle</c> and <c>superlative</c>. The last two are valid but no shipped sense carries them
     ///     (<see cref="SenseDefinition.IsValidTag"/> accepts any well-formed tag, so custom tables may use others). The
-    ///     senses of every lemma are listed in the user guide appendix <c>docs/user_guide/appendix-senses.md</c>.
+    ///     senses of every lemma are listed in the user guide appendix
+    ///     https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md.
     /// </remarks>
     public IReadOnlySet<string> Tags { get; }
 
