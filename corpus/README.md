@@ -76,7 +76,10 @@ weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anch
 `anchors|holdout|provenance/new-authored-N.tsv` (command `real-authored-import`; two independent authors, origin
 `authored`, contributor `authored-anchor` or `authored-holdout`). `audit/new-lemma-speech-map.tsv` maps every sense of the
 Phase 4 lemmas to its pronunciation group and ARPAbet with its counts, source mix (real or authored) and holdout
-accuracy; see `docs/build_notes/new-lemma-results.md`.
+accuracy; see `docs/build_notes/new-lemma-results.md`. Phase 5 noun/verb lemmas are imported by `nounverb-import` into
+`anchors|holdout|provenance|senses/nounverb-N.tsv` (origins real or `user-supplied`, licence
+`MIT (project-authored)` for the latter) and `audit/nounverb-untrained.tsv` lists every lemma left untrained with the
+reason.
 
 ## Analysis Output
 

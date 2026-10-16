@@ -99,7 +99,7 @@ internal static class RealPlan
     {
         var directory = Path.Combine(corpus, split);
         var rows = new List<CorpusRow>();
-        foreach (var file in Directory.GetFiles(directory, "*.tsv").Where(f => Path.GetFileName(f) != RestoreFile && !RealAuthored.IsAuthoredFile(Path.GetFileName(f))).OrderBy(f => f, StringComparer.Ordinal))
+        foreach (var file in Directory.GetFiles(directory, "*.tsv").Where(f => Path.GetFileName(f) != RestoreFile && !RealAuthored.IsAuthoredFile(Path.GetFileName(f)) && !NounVerbImport.IsNounVerbFile(Path.GetFileName(f))).OrderBy(f => f, StringComparer.Ordinal))
         {
             rows.AddRange(Corpus.ReadSentences(file).Where(r => lemmas.Contains(r.Lemma)));
         }

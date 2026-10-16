@@ -70,6 +70,19 @@ table.
   are reported together and no file is written.
 - **WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches**: the `real-authored-import` command
   runs through the tool and `RealPlan.ReadExisting` ignores authored batches.
+- **WordSenseBuilder_NounVerbImport_Inflect_FollowsTheRules**: regular plural, past and gerund forms, including e-drop,
+  `y` to `ies`, doubling, `c` to `ck`, and both spellings of a longer word.
+- **WordSenseBuilder_NounVerbImport_Import_WritesSplitsProvenanceFormsAndReport**: a batch trains only the lemma that reaches
+  the minimums, writes disjoint-group anchors and holdout with normalized licences, forms and senses, validates, repeats
+  byte for byte, and lists excluded, already trained, insufficient and dominant-use lemmas.
+- **WordSenseBuilder_NounVerbImport_Import_DropsBadRowsAndLeavesOutCollisionForms**: rows without provenance, with a
+  disallowed licence, a repeated or already existing sentence or a non-noun/verb sense are dropped and counted, and collision
+  forms stay out of the forms file.
+- **WordSenseBuilder_NounVerbImport_Allocate_SeparatesGroupsAndCountsSharing**: the holdout takes small groups, and sharing
+  occurs only to reach the minimum.
+- **WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage**: the group key per source.
+- **WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches**: the command runs through
+  the tool, a user-supplied row validates, bad names and settings fail, and `RealPlan.ReadExisting` ignores the batches.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level

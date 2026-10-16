@@ -41,7 +41,7 @@ public static class Program
                 error.WriteLine(
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
-                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, " +
+                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, nounverb-import, " +
                     "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix.");
                 return 1;
             }
@@ -84,6 +84,8 @@ public static class Program
                 case "real-authored-import":
                     output.Write(RealAuthored.Import(Require(options, "corpus"), Require(options, "name"), Require(options, "anchors"), Require(options, "holdout")));
                     return 0;
+                case "nounverb-import":
+                    return RunNounVerbImport(options, output);
                 case "real-eval-import":
                     var perSense = IntOption(options, "per-sense", 12);
                     output.Write(RealEval.ImportEval(
@@ -304,6 +306,25 @@ public static class Program
     private static int RunApplyRelabel(Dictionary<string, string> options, TextWriter output)
     {
         output.WriteLine(Relabeler.Apply(Require(options, "corpus")));
+        return 0;
+    }
+
+    private static int RunNounVerbImport(Dictionary<string, string> options, TextWriter output)
+    {
+        var defaults = new NounVerbOptions();
+        var settings = new NounVerbOptions(
+            IntOption(options, "min-anchors", defaults.MinAnchors),
+            IntOption(options, "min-holdout", defaults.MinHoldout),
+            IntOption(options, "max-anchors", defaults.MaxAnchors),
+            IntOption(options, "max-holdout", defaults.MaxHoldout));
+        output.Write(NounVerbImport.Import(
+            Require(options, "corpus"),
+            Require(options, "name"),
+            Require(options, "sentences").Split(','),
+            Require(options, "provenance").Split(','),
+            Require(options, "exclusions"),
+            options.GetValueOrDefault("forms"),
+            settings));
         return 0;
     }
 

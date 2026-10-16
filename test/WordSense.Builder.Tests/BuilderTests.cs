@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.RegularExpressions;
 using IWordSenseEncoder = DemaConsulting.WordSense.IWordSenseEncoder;
 using WordPieceTokenizer = DemaConsulting.WordSense.WordPieceTokenizer;
 
@@ -1052,6 +1053,225 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("anchors 1, holdout 1", output.ToString(), StringComparison.Ordinal);
         Assert.Empty(RealPlan.ReadExisting(corpus, "anchors", new HashSet<string> { "bow" }));
         Assert.Empty(RealPlan.ReadExisting(corpus, "holdout", new HashSet<string> { "bow" }));
+    }
+
+    /// <summary>
+    ///     The regular inflection rules produce the documented forms.
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="expected">The expected forms, separated by a space.</param>
+    [Theory]
+    [InlineData("chip", "chips chipped chipping")]
+    [InlineData("substitute", "substitutes substituted substituting")]
+    [InlineData("carry", "carries carried carrying")]
+    [InlineData("box", "boxes boxed boxing")]
+    [InlineData("lie", "lies lied lying")]
+    [InlineData("panic", "panics panicked panicking")]
+    [InlineData("quiz", "quizes quizzes quizzed quizzing")]
+    [InlineData("visit", "visits visited visitted visiting visitting")]
+    [InlineData("dye", "dyes dyed dyeing")]
+    [InlineData("play", "plays played playing")]
+    [InlineData("wish", "wishes wished wishing")]
+    [InlineData("quit", "quits quitted quitting")]
+    public void WordSenseBuilder_NounVerbImport_Inflect_FollowsTheRules(string lemma, string expected)
+    {
+        var forms = NounVerbImport.Inflect(lemma).Select(f => f.Form).Distinct().Order(StringComparer.Ordinal).ToList();
+
+        Assert.Equal(expected.Split(' ').Order(StringComparer.Ordinal), forms);
+    }
+
+    /// <summary>
+    ///     A batch trains the lemmas that reach the minimums, splits by source group, normalizes licences, writes the forms
+    ///     and the report of untrained lemmas, validates, and repeats byte for byte.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbImport_Import_WritesSplitsProvenanceFormsAndReport()
+    {
+        var corpus = PrepareNounVerbCorpus();
+        var (sentences, provenance) = NounVerbInputs(("chip", 24, 24, "chipped"), ("scarce", 24, 2, null), ("meagre", 10, 10, null), ("banned", 24, 24, null), ("oldie", 24, 24, null));
+        var exclusions = Write("in/exclusions.tsv", "lemma\tcategory\tnote\nbanned\tname\tproper name\n");
+
+        var report = NounVerbImport.Import(corpus, "nounverb-1", [sentences], [provenance], exclusions, null, new NounVerbOptions());
+        var first = new[] { "anchors", "holdout", "provenance", "senses" }.Select(d => File.ReadAllText(Path.Combine(corpus, d, "nounverb-1.tsv"))).Append(File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv"))).ToList();
+        NounVerbImport.Import(corpus, "nounverb-1", [sentences], [provenance], exclusions, null, new NounVerbOptions());
+        var second = new[] { "anchors", "holdout", "provenance", "senses" }.Select(d => File.ReadAllText(Path.Combine(corpus, d, "nounverb-1.tsv"))).Append(File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv"))).ToList();
+
+        Assert.Equal(first, second);
+        Assert.Contains("lemmas trained 1;", report, StringComparison.Ordinal);
+        var anchors = Corpus.ReadSentences(Path.Combine(corpus, "anchors", "nounverb-1.tsv"));
+        var holdout = Corpus.ReadSentences(Path.Combine(corpus, "holdout", "nounverb-1.tsv"));
+        Assert.Equal((16, 16), (anchors.Count(r => r.Sense == "noun"), anchors.Count(r => r.Sense == "verb")));
+        Assert.Equal((8, 8), (holdout.Count(r => r.Sense == "noun"), holdout.Count(r => r.Sense == "verb")));
+        Assert.All(anchors.Concat(holdout), r => Assert.Equal("chip", r.Lemma));
+        Assert.Contains(anchors.Concat(holdout), r => r.Words[r.TargetWordIndex] == "chipped");
+
+        var rows = RealImport.ReadProvenance(Path.Combine(corpus, "provenance", "nounverb-1.tsv"));
+        Assert.Equal(48, rows.Count);
+        Assert.DoesNotContain(rows, r => r.Licence is "CC0" or "Public domain (US)");
+        Assert.All(rows.Where(r => r.Source == "gutenberg"), r => Assert.StartsWith("pg", r.SourceKey, StringComparison.Ordinal));
+        Assert.Empty(RealImport.Validate(corpus));
+
+        // The holdout of a sense uses whole source groups that the anchors do not use
+        var groups = rows.GroupBy(r => (r.Sense, Group: NounVerbImport.GroupOf(r.Source, r.Url, r.Contributor)));
+        Assert.DoesNotContain(groups, g => g.Any(r => r.Split == "anchors") && g.Any(r => r.Split == "holdout"));
+
+        var forms = File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv"));
+        Assert.Contains("chipped\tchip\tverb\n", forms, StringComparison.Ordinal);
+        Assert.Contains("chips\tchip\tnoun,verb\n", forms, StringComparison.Ordinal);
+        Assert.Contains("keep\tkeeper\tnoun\n", forms, StringComparison.Ordinal);
+        Assert.Equal(2, SenseInventory.ReadDirectory(Path.Combine(corpus, "senses")).Rows.Count(r => r.Lemma == "chip"));
+
+        var untrained = File.ReadAllLines(Path.Combine(corpus, "audit", NounVerbImport.UntrainedFile));
+        Assert.Equal("lemma\tnoun\tverb\treason\tnote", untrained[0]);
+        Assert.Contains("banned\t24\t24\texcluded\tname", untrained);
+        Assert.Contains("meagre\t10\t10\tinsufficient-data\t", untrained);
+        Assert.Contains("oldie\t24\t24\talready-trained\tthe lemma is in the sense inventory", untrained);
+        Assert.Contains("scarce\t24\t2\tdominant-use\t", untrained);
+        Assert.DoesNotContain(untrained, l => l.StartsWith("chip\t", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     Rows are dropped, and counted, for a missing provenance row, a disallowed licence, a repeat of an existing sentence,
+    ///     a repeated sentence and a target that is a collision form; collisions are reported.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbImport_Import_DropsBadRowsAndLeavesOutCollisionForms()
+    {
+        var corpus = PrepareNounVerbCorpus();
+        Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nchipped\tcarve\tverb\n");
+        var (sentences, provenance) = NounVerbInputs(("chip", 30, 30, "chipped"), ("rowing", 24, 24, null), ("rowings", 24, 24, null));
+        var lines = File.ReadAllLines(sentences).ToList();
+        lines.Add("chip\tnoun\tA {chip} without any provenance row at all.");
+        lines.Add("chip\tnoun\t" + lines[0].Split('\t')[2]);
+        lines.Add("chip\tadj\tA {chip} with a sense that is no noun or verb.");
+        File.WriteAllLines(sentences, lines);
+        Write("corpus/anchors/seed.tsv", lines[1] + "\n");
+        var licences = new Regex("CC0\t").Replace(File.ReadAllText(provenance), "WTFPL\t", 1);
+        File.WriteAllText(provenance, licences);
+        var exclusions = Write("in/exclusions.tsv", "lemma\tcategory\n");
+
+        var report = NounVerbImport.Import(corpus, "nounverb-1", [sentences], [provenance], exclusions, null, new NounVerbOptions());
+
+        foreach (var fragment in new[] { "no provenance row", "licence not allowed", "sentence already in the corpus", "duplicate sentence", "sense is not noun or verb", "target is a collision form", "collision form 'chipped' of 'chip' is already a form of carve", "collision form 'rowings' of 'rowing' is the base form of another new lemma" })
+        {
+            Assert.Contains(fragment, report, StringComparison.Ordinal);
+        }
+
+        Assert.Empty(RealImport.Validate(corpus));
+        Assert.DoesNotContain("chipped\tchip", File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv")), StringComparison.Ordinal);
+        Assert.Contains("chipped\tcarve\tverb", File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv")), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The holdout takes whole small groups and shares a group with the anchors only when a single group is all there is.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbImport_Allocate_SeparatesGroupsAndCountsSharing()
+    {
+        var options = new NounVerbOptions();
+        var varied = Enumerable.Range(0, 30).Select(i => Row(i, "g" + (i < 20 ? 0 : i))).ToList();
+        var (anchors, holdout, shared) = NounVerbImport.Allocate(varied, options);
+        Assert.Equal((21, 9, 0), (anchors.Count, holdout.Count, shared));
+        Assert.Empty(anchors.Select(r => r.Group).Intersect(holdout.Select(r => r.Group)));
+
+        var single = Enumerable.Range(0, 60).Select(i => Row(i, "only")).ToList();
+        (anchors, holdout, shared) = NounVerbImport.Allocate(single, options);
+        Assert.Equal((14, 12), (anchors.Count, holdout.Count));
+        Assert.Equal(14, shared);
+
+        var tight = Enumerable.Range(0, 22).Select(i => Row(i, i < 18 ? "big" : "g" + i)).ToList();
+        (anchors, holdout, shared) = NounVerbImport.Allocate(tight, options);
+        Assert.Equal((14, 8, 14), (anchors.Count, holdout.Count, shared));
+        Assert.Equal(22, anchors.Concat(holdout).Select(r => r.Id).Distinct().Count());
+    }
+
+    /// <summary>
+    ///     The groups are Tatoeba contributors, UD documents, Gutenberg works and Wiktionary pages.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage()
+    {
+        Assert.Equal("tatoeba:Ann", NounVerbImport.GroupOf("tatoeba-by", "https://tatoeba.org/en/sentences/show/1", "Ann"));
+        Assert.Equal("ud-ewt:weblog-site_x_ENG_2005-1", NounVerbImport.GroupOf("ud-ewt", "https://github.com/UD#sent_id=weblog-site_x_ENG_2005-1-0041", "ewt/train"));
+        Assert.Equal("ud-ud-gum:", NounVerbImport.GroupOf("ud-ud-gum", "https://github.com/UD#sent_id=159", "ud-gum/test"));
+        Assert.Equal("pg139", "pg" + NounVerbImport.GroupOf("gutenberg", "https://www.gutenberg.org/ebooks/139", "Work")[3..]);
+        Assert.Equal("wikt:https://en.wiktionary.org/wiki/air", NounVerbImport.GroupOf("wiktionary", "https://en.wiktionary.org/wiki/air#English", "Wiktionary contributors"));
+    }
+
+    /// <summary>
+    ///     The command is wired into the tool, user-supplied rows validate with their own origin, bad settings and names are
+    ///     rejected, and the real-sentence import ignores noun/verb batches.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches()
+    {
+        var corpus = PrepareNounVerbCorpus();
+        var (sentences, provenance) = NounVerbInputs(("grip", 24, 24, null));
+        var lines = File.ReadAllLines(provenance).ToList();
+        lines[1] = lines[1].Replace("tatoeba-by", "user-supplied", StringComparison.Ordinal).Replace("CC BY 2.0 FR", "user-supplied", StringComparison.Ordinal);
+        File.WriteAllLines(provenance, lines);
+        var exclusions = Write("in/exclusions.tsv", "lemma\tcategory\n");
+        var (output, error) = (new StringWriter(), new StringWriter());
+
+        var code = Program.Run(["nounverb-import", "--corpus", corpus, "--name", "nounverb-1", "--sentences", sentences, "--provenance", provenance, "--exclusions", exclusions], output, error);
+
+        Assert.Equal(0, code);
+        Assert.Contains("lemmas trained 1;", output.ToString(), StringComparison.Ordinal);
+        Assert.Contains("\tuser-supplied\t", File.ReadAllText(Path.Combine(corpus, "provenance", "nounverb-1.tsv")), StringComparison.Ordinal);
+        Assert.Empty(RealImport.Validate(corpus));
+        Assert.Empty(RealPlan.ReadExisting(corpus, "anchors", new HashSet<string> { "grip" }));
+        Assert.Empty(RealPlan.ReadExisting(corpus, "holdout", new HashSet<string> { "grip" }));
+        Assert.Equal(1, Program.Run(["nounverb-import", "--corpus", corpus, "--name", "nounverb-x", "--sentences", sentences, "--provenance", provenance, "--exclusions", exclusions], new StringWriter(), error));
+        Assert.Equal(1, Program.Run(["nounverb-import", "--corpus", corpus, "--name", "nounverb-1", "--sentences", sentences, "--provenance", provenance, "--exclusions", exclusions, "--min-anchors", "2"], new StringWriter(), error));
+        Assert.Throws<ArgumentException>(() => NounVerbImport.ValidateName("new-authored-1"));
+    }
+
+    private static NounVerbRow Row(int i, string group)
+    {
+        var sentence = $"The {{chip}} number {i} is here.";
+        var row = new CorpusRow("chip", "noun", sentence, "x", ["The", "chip", "number", i.ToString(), "is", "here"], 1);
+        return new NounVerbRow($"id{i:D3}", row, new ProvenanceRow($"id{i:D3}", "chip", "noun", "anchors", "tatoeba-by", "CC BY 2.0 FR", "1", "-", group, "real"), group);
+    }
+
+    private string PrepareNounVerbCorpus()
+    {
+        var corpus = Path.Combine(_root, "corpus");
+        Directory.CreateDirectory(Path.Combine(corpus, "anchors"));
+        Directory.CreateDirectory(Path.Combine(corpus, "holdout"));
+        Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nkeep\tkeeper\tnoun\n");
+        SenseInventory.WriteFile(Path.Combine(corpus, "senses", "base.tsv"), [new InventoryRow("oldie", "noun", ["noun"], "base.tsv")]);
+        return corpus;
+    }
+
+    /// <summary>
+    ///     Writes a sentence file and a provenance file: per lemma the given numbers of noun and verb rows from three sources,
+    ///     optionally with an inflected target in some verb rows.
+    /// </summary>
+    private (string Sentences, string Provenance) NounVerbInputs(params (string Lemma, int Nouns, int Verbs, string? VerbForm)[] lemmas)
+    {
+        var sentences = new StringBuilder();
+        var provenance = new StringBuilder("sentence_hash\tlemma\tsense\tsource\tlicence\turl\tcontributor_or_work\tsurface_form\tmethod\n");
+        foreach (var (lemma, nouns, verbs, verbForm) in lemmas)
+        {
+            foreach (var (sense, count) in new[] { ("noun", nouns), ("verb", verbs) })
+            {
+                for (var i = 0; i < count; i++)
+                {
+                    var target = sense == "verb" && verbForm is not null && i % 4 == 1 ? verbForm : lemma;
+                    var sentence = $"The {{{target}}} number {i} of kind {sense} is fine.";
+                    sentences.Append($"{lemma}\t{sense}\t{sentence}\n");
+                    var (source, licence, url, who) = (i % 3) switch
+                    {
+                        0 => ("tatoeba-by", "CC BY 2.0 FR", $"https://tatoeba.org/en/sentences/show/{i}", "c" + (i % 5)),
+                        1 => ("gutenberg", "Public domain (US)", $"https://www.gutenberg.org/ebooks/{100 + (i % 4)}", "Work " + (i % 4)),
+                        _ => ("tatoeba-cc0", "CC0", $"https://tatoeba.org/en/sentences/show/{i}", "u" + (i % 3))
+                    };
+                    provenance.Append($"{PosAudit.RowId(lemma, sentence)}\t{lemma}\t{sense}\t{source}\t{licence}\t{url}\t{who}\t{target}\ttagged-judged\n");
+                }
+            }
+        }
+
+        return (Write("in/sentences.tsv", sentences.ToString()), Write("in/provenance.tsv", provenance.ToString()));
     }
 
     private string PrepareAuthoredCorpus()

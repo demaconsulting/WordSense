@@ -35,7 +35,7 @@ internal static class RealImport
     /// <summary>
     ///     The accepted origins.
     /// </summary>
-    public static readonly string[] Origins = ["real", "authored", "llm-corpus"];
+    public static readonly string[] Origins = ["real", "authored", "llm-corpus", NounVerbImport.UserOrigin];
 
     /// <summary>
     ///     The maximum number of words of a sentence.
@@ -310,9 +310,9 @@ internal static class RealImport
             var folder = Path.Combine(corpus, split);
             if (Directory.Exists(folder))
             {
-                // The restore file, every gap batch (real-gap-N.tsv) and every new-lemma batch (new-*.tsv, real or
-                // authored sentences) need provenance
-                files.AddRange(Directory.GetFiles(folder, "real-*.tsv").Concat(Directory.GetFiles(folder, "new-*.tsv"))
+                // The restore file, every gap batch (real-gap-N.tsv), every new-lemma batch (new-*.tsv, real or
+                // authored sentences) and every noun/verb batch (nounverb-*.tsv) need provenance
+                files.AddRange(Directory.GetFiles(folder, "real-*.tsv").Concat(Directory.GetFiles(folder, "new-*.tsv")).Concat(Directory.GetFiles(folder, NounVerbImport.Prefix + "*.tsv"))
                     .OrderBy(f => f, StringComparer.Ordinal).Select(f => (f, split)));
             }
         }
@@ -363,12 +363,17 @@ internal static class RealImport
 
         if (!Origins.Contains(row.Origin))
         {
-            errors.Add($"provenance {row.Id}: origin '{row.Origin}' is not real, authored or llm-corpus.");
+            errors.Add($"provenance {row.Id}: origin '{row.Origin}' is not real, authored, llm-corpus or user-supplied.");
         }
 
         if (row.Origin == "authored" && row.Licence != "MIT (project-authored)")
         {
             errors.Add($"provenance {row.Id}: an authored row needs the MIT (project-authored) licence.");
+        }
+
+        if (row.Origin == NounVerbImport.UserOrigin && row.Licence != NounVerbImport.UserLicence)
+        {
+            errors.Add($"provenance {row.Id}: a user-supplied row needs the {NounVerbImport.UserLicence} licence.");
         }
 
         if (row.Licence == "CC BY 2.0 FR" && (row.Contributor.Length == 0 || row.Contributor == "-" || row.Contributor == "unknown"))

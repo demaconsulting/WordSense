@@ -107,6 +107,24 @@ sections:
           - WordSenseBuilder_RealAuthored_Import_WritesProvenanceDeclaresSenseOnceAndIsDeterministic
           - WordSenseBuilder_RealAuthored_Import_RejectsBadRows_AndWritesNothing
           - WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches
+      - id: WordSense-Builder-NounVerbImport
+        title: >-
+          The builder shall import merged noun and verb sentences for lemmas that reach the anchor and holdout
+          minimums, split each sense by source group so the holdout shares no group with the anchors where
+          possible, normalize licences, generate the inflected forms without adding collision forms, and report
+          the lemmas it left untrained and the reason.
+        tags: [unit]
+        justification: |
+          Part-of-speech ambiguous lemmas need real noun and verb sentences; a deterministic, group-aware split
+          keeps the holdout a fair test, and a documented list of excluded and untrained lemmas keeps the
+          coverage claim honest.
+        tests:
+          - WordSenseBuilder_NounVerbImport_Inflect_FollowsTheRules
+          - WordSenseBuilder_NounVerbImport_Import_WritesSplitsProvenanceFormsAndReport
+          - WordSenseBuilder_NounVerbImport_Import_DropsBadRowsAndLeavesOutCollisionForms
+          - WordSenseBuilder_NounVerbImport_Allocate_SeparatesGroupsAndCountsSharing
+          - WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage
+          - WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches
       - id: WordSense-Builder-LearningCurve
         title: >-
           The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered

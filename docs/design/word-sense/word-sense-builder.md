@@ -95,6 +95,29 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   `real-restore.tsv` and every `new-authored-*.tsv`, so authored rows never shrink the number of real rows that
   `real-import` takes and a later `real-import` is not affected by them; if a rerun of `real-import` starts to declare
   a sense that an authored batch declared, move the `senses/new-authored-N.tsv` file away and import the batch again.
+- `nounverb-import` (`NounVerbImport`) trains noun/verb ambiguous lemmas from merged real sentences (Phase 5):
+  `--corpus DIR --name nounverb-N --sentences F1[,F2..] --provenance P1[,P2..] --exclusions FILE [--forms FILE]
+  [--min-anchors N --min-holdout N --max-anchors N --max-holdout N]`. A sentence file has
+  `lemma<TAB>noun|verb<TAB>sentence` with one braced target; provenance files carry the columns
+  `sentence_hash lemma sense source licence url contributor_or_work` (matched on `PosAudit.RowId`). Rows are dropped
+  and counted by reason: excluded lemma (`tools/real-text/nounverb-exclusions.tsv`: names, adjective-heavy, spurious
+  part of speech, collision), lemma already in the inventory, missing or disagreeing provenance, more than 35 words,
+  a licence outside the allowed list, a repeat of an existing corpus sentence or of another input row, and a target
+  that is not a form of the lemma or is a collision form. Licences are normalized (`Public domain (US)` to
+  `Public domain`, `CC0` to `CC0 1.0`; the origin `user-supplied` gets `MIT (project-authored)`). A lemma is trained
+  only with at least 14 + 8 rows for both noun and verb. Each sense is split by source group (Tatoeba contributor, UD
+  document, Gutenberg work, Wiktionary page): the holdout (30 %, between 8 and 12 rows) takes whole small groups
+  first and the anchors (at most 40) are taken round-robin from the other groups; rows of a holdout group serve as
+  anchors only when the minimum cannot otherwise be met, and are reported as shared. The order inside a group is by a
+  hash of the row id, so the output is deterministic. Inflected forms (`-s/-es/-ies`, `-ed/-ing` with e-drop,
+  doubling, `c` to `ck`; irregular forms from `--forms`) are written to `corpus/forms/speech.tsv`; a form that is the
+  base of another new lemma, a trained lemma, claimed by two new lemmas or already a form of another lemma is left
+  out and reported (for example `lie`, `bit`, `found`). Output is
+  `corpus/{anchors,holdout,provenance,senses}/nounverb-N.tsv` and `corpus/audit/nounverb-untrained.tsv` (lemma, noun
+  and verb counts, reason: `dominant-use`, `insufficient-data`, `excluded`, `already-trained`). Everything is
+  computed before anything is written, and a rerun with the same inputs replaces the previous output of the same
+  name byte for byte. `RealPlan.ReadExisting` ignores `nounverb-*.tsv`, and `validate-provenance` checks them with
+  the extra origin `user-supplied`.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level
