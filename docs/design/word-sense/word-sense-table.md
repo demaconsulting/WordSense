@@ -43,7 +43,9 @@ the records of equal tags share the table's tag strings.
   duplicated, unordered or of another dimension, forms that name a lemma without a model, fewer than two
   senses (exactly two for binary), weight or bias shapes that do not match, non-finite values,
   duplicate sense labels, and invalid sense definitions.
-- `Write` throws `InvalidOperationException` when a string exceeds 65,535 UTF-8 bytes.
+- `Write` throws `InvalidOperationException` when a string exceeds 65,535 UTF-8 bytes, and `Write` and `ToArray`
+  throw `OverflowException` when a count does not fit its field (for example more than 65,535 distinct tags or
+  senses in one lemma).
 - `Read` verifies the trailing digest before trusting any length field, caps every count (dimension
   4096, lemmas 100,000, forms 2,000,000, senses per lemma 64, distinct tags 256), and checks the
   structure: tags valid, sorted and unique, sense tag indexes in range and ascending, every dictionary

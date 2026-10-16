@@ -26,7 +26,7 @@ table.
   **WordSenseBuilder_PosAudit_Resolve_FollowsTheRules**, **..._RowId_IsStable**,
   **WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes**: part-of-speech tags only, group column,
   audit resolution and relabeling.
-  **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
+- **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
   **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
   **WordSenseBuilder_TagEvaluator_CountsRowsPerRule**: inventory derivation, validation in both directions and
   tag-level counting.
@@ -99,7 +99,6 @@ table.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
 - **WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption**: a non-numeric `--size`,
   `--max` or `--per-sense` returns exit code 1 with a message naming the option.
-
 - **WordSenseBuilder_LearningCurve_StableHash_IsFixed**, **..._Draw_CapsPerSenseAndIsRepeatable**: the subset seed
   hash has a fixed value, and a draw takes at most the available anchors per sense and repeats exactly.
 - **WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical**,

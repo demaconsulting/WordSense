@@ -35,7 +35,7 @@ namespace DemaConsulting.WordSense.Tests;
 ///     fitted.
 ///     </para>
 ///     <para>
-///     This file is linked into each package's test project rather than shared through a project
+///     This file is a copy in this repository's test project rather than shared through a project
 ///     reference, because a test project that referenced a common library would publish that
 ///     library's assembly into its own output and change what the verifier sees.
 ///     </para>

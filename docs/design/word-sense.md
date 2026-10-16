@@ -74,7 +74,7 @@ _ONNX Runtime_ design). The model file `model_int8.onnx` is not part of the pack
 downloaded on first use, or supplied through `WordSenseClassifierOptions.ModelDirectory`. The
 following OTS items are used for building and verifying this system (not consumed at runtime):
 
-- **BuildMark**, **FileAssert**, **Pandoc**, **ReqStream**, **ReviewMark**, **SarifMark**,
+- **ApiMark**, **BuildMark**, **FileAssert**, **Pandoc**, **ReqStream**, **ReviewMark**, **SarifMark**,
   **SonarMark**, **SysML2Tools**, **VersionMark**, **WeasyPrint** and **xUnit**; see each item's
   design document.
 

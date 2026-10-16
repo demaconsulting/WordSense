@@ -31,6 +31,7 @@ The OnnxRuntime OTS runtime dependency is also covered.
 
 The following OTS items are also covered:
 
+- **ApiMark** — API documentation generation tool
 - **BuildMark** — build-notes documentation tool
 - **FileAssert** — document assertion tool
 - **Pandoc** — Markdown-to-HTML conversion tool

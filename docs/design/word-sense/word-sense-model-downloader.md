@@ -10,8 +10,7 @@ returns a `WordSenseModelLocation`. `WordSenseModelCatalog` pins the file names 
 - Store: `{LocalApplicationData}/DemaConsulting/WordSense/models/all-MiniLM-L6-v2-int8-{sha8}` (or
   `StoreRoot`).
 - Files: `model_int8.onnx` (22,972,370 bytes) and `vocab.txt`, each with a pinned digest and a flag
-  telling whether Hugging Face may serve it.
-  `tokenizer.json` is pinned for documentation only (it is not downloaded at runtime).
+  telling whether Hugging Face may serve it. The catalog pins exactly these two files.
   Every file under `model/` is a Git LFS object; the GitHub source uses the media endpoint and the digests are of
   the real content, never of the LFS pointer.
 - `WordSenseModelDownloaderOptions`: `Mirror`, `GetEnvironmentVariable`, `HuggingFaceBaseUri`,
@@ -26,8 +25,12 @@ set; GitHub LFS) and try each: download to a unique `.part` file under a per-att
 SHA-256, then atomically move into place. Request failures, timeouts, digest mismatches and I/O errors
 are recorded and the next source is tried; cancellation by the caller propagates. If all sources fail,
 `WordSenseModelDownloadException` is thrown with every failure. `RequestTimeout` is validated first
-(positive or infinite, else `ArgumentOutOfRangeException`) and an exception from the progress receiver
-propagates instead of falling through. Redirects are followed manually (at most 10 hops, http(s) only)
+(positive or infinite, else `ArgumentOutOfRangeException`). A `StoreRoot` that is not a valid path (for
+example an empty string or one with invalid characters) raises `ArgumentException` from path resolution. An
+exception thrown by the progress receiver is not a download failure and propagates to the caller (after the
+partial file is deleted), unless it is of a type that is treated as a source failure (`HttpRequestException`,
+`IOException`, `UnauthorizedAccessException` or a timeout `OperationCanceledException`), in which case it is
+recorded and the next source is tried. Redirects are followed manually (at most 10 hops, http(s) only)
 by the private client, which has automatic redirects disabled; authentication headers are attached per
 hop and only when the hop has the mirror's scheme, host and port, so no credential reaches another
 origin. A caller-supplied client keeps its own redirect policy.

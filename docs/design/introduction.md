@@ -1,6 +1,6 @@
 # Introduction
 
-This document provides the detailed design for the WordSense, a .NET library
+This document provides the detailed design for the WordSense library, a .NET library
 that classifies the sense of ambiguous English words in context.
 
 ## Purpose
@@ -38,6 +38,7 @@ The OnnxRuntime OTS runtime dependency is also covered.
 
 The following OTS items are also covered:
 
+- **ApiMark** — API documentation generation tool
 - **BuildMark** — build-notes documentation tool
 - **FileAssert** — document assertion tool
 - **Pandoc** — Markdown-to-HTML conversion tool

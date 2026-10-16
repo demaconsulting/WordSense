@@ -54,3 +54,4 @@ sections:
           - TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets
           - TextSplitter_SplitWords_InternalPunctuationAndMarks_StayOneWord
           - TextSplitter_SplitWords_SurrogatePairAndTrailingApostrophe_AreSeparateTiles
+          - TextSplitter_SplitWords_TrailingHyphen_IsOwnTile

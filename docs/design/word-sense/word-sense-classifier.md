@@ -11,7 +11,7 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
   loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
 - `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly struct.
 - `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload (the type
-  belongs to the SenseRecord unit; see there).
+  is defined in the SenseRecord unit and is also listed in this unit's review set; see the SenseRecord design).
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
   `IntraOpThreads`, `AbstainMarginScale`.
 
@@ -24,7 +24,8 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
   from that vocabulary file instead of a supplied tokenizer.
 - `ClassifyAsync(IReadOnlyList<string> words, ct)`: primary API. Returns an array parallel to the input
   with the `WordSense` of each known word, and `null` for unknown words and for abstentions. Words are
-  resolved to a lemma (lower-case, curly apostrophe normalized, trailing `'s` removed). The words are
+  resolved to a lemma (lower-case, curly apostrophe normalized; a trailing `'s` is removed only when the word
+  is not already a known form itself). The words are
   encoded in one pass, joined by single spaces.
 - `ClassifyDetailAsync(words, ct)`: as above, returning a `WordSenseDetail?` per word; the best sense is
   reported also when `Abstained` is true. `Margin` is best minus runner-up; `RunnerUpMargin` is runner-up
@@ -44,8 +45,9 @@ Features are the mean of the target word pieces' hidden states minus the table m
 
 ## Error Handling
 
-- Null arguments (encoder, table, tokenizer, options, words, a word, text, lemma, tags, a tag) raise
-  `ArgumentNullException`; an empty tag list or an empty tag raises `ArgumentException`.
+- Null arguments (encoder, table, tokenizer, words, a word, text, lemma, tags, a tag) raise
+  `ArgumentNullException`; a null `options` is not an error and means the defaults. An empty tag list or an
+  empty tag raises `ArgumentException`.
 - `MaxSequenceLength` outside 8 to 512 and a negative `AbstainMarginScale` raise
   `ArgumentOutOfRangeException` from the constructor. A scale of 0 never abstains.
 - A table whose model digest or dimension differs from the encoder's raises

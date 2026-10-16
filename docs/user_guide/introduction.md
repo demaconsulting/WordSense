@@ -71,7 +71,8 @@ abstained because the evidence was weak. Inflected forms are recognized (`presen
 
 A `WordSense` is an immutable record with `Lemma`, `Sense`, `Group`, `Tags` and `HasTag(tag)`. `Tags` is a frozen
 set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`,
-`superlative`); every sense has exactly one part of speech. `Group` is the coarser group of the sense: the sense
+`superlative`; `participle` is also a valid qualifier but no sense uses it yet); every sense has exactly one part of
+speech. `Group` is the coarser group of the sense: the sense
 label unless senses are grouped (the senses `bend-noun` and `bend-verb` of `bow` share the group `bend`), so a
 consumer that does not care about the split reads `Group`. The same instance is returned for the same lemma and
 sense. The
@@ -366,6 +367,7 @@ format of the files is described in `corpus/README.md`. All commands run from th
 - `nounverb-import` and `nounverb-gate`: import noun/verb lemmas and apply the quality gate
 - `import-batches`, `real-import` and `real-authored-import`: import batches of sentences (see
   `corpus/README.md`)
+
 The `audit-*`, `apply-relabel`, `real-gap*` and `real-judge-*` commands belong to the blind labeling process and are
 documented in the build notes. The `tools/real-text` harvester collects candidate real sentences.
 

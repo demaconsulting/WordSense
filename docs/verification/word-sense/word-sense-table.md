@@ -31,6 +31,16 @@ the bytes systematically. The embedded table is checked for its lemma count, tag
 - **WordSenseTable_WriteAndTryGetLemma_EdgeCases**: writing a string over 65,535 bytes throws
   `InvalidOperationException`; `TryGetLemma` is false for an unknown lemma and throws for null.
 
+## Test Environment
+
+Tests run under the standard xUnit v3 runner on net8.0, net9.0 and net10.0 with no setup beyond it. The embedded
+table is a resource of the library; the unit tests need no model files, no network access and no external services.
+
+## Acceptance Criteria
+
+All tests listed in the scenarios above pass on every platform and target framework of the CI matrix, and each
+requirement listed under Requirements Coverage is satisfied by at least one passing test.
+
 ## Requirements Coverage
 
 `WordSense-Table-Format`, `WordSense-Table-Senses`, `WordSense-Table-Integrity`, `WordSense-Table-Score`, `WordSense-Table-Embedded`.
