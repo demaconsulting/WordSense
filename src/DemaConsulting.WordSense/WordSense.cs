@@ -24,8 +24,9 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     <b>Groups and pronunciation.</b> A <see cref="Group"/> is an equivalence class of the senses of one lemma:
-///     senses in the same group are interchangeable for the consumer, and in the shipped inventory they share a
-///     pronunciation. The library has <em>no pronunciation data</em>; it does not know how any word is spoken, and
+///     senses in the same group share a pronunciation, so a consumer that only needs the pronunciation cannot and
+///     need not tell them apart. A group is not a coarser meaning and does not mean "same meaning across parts of
+///     speech". The library has <em>no pronunciation data</em>; it does not know how any word is spoken, and
 ///     <see cref="Group"/> is its only equivalence mechanism. Which pronunciation belongs to a group is the
 ///     consumer's knowledge. A consumer such as Speech therefore keeps a table keyed by
 ///     (<see cref="Lemma"/>, <see cref="Group"/>) and looks up the group of the classified sense. Because a

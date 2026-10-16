@@ -51,7 +51,10 @@ sentences are trained but not evaluated (30 lemmas).
 
 `senses/*.tsv` has the header `lemma`, `sense`, `tags`, `group` (tab-separated; a legacy 3-column file is still
 read). `tags` is a `|`-separated, ordinal-sorted list. The optional `group` (default: the sense id) names the
-coarser group a split sense belongs to, exposed as `WordSense.Group`. The inventory must list exactly the senses
+equivalence class of senses of the lemma that share a pronunciation, exposed as `WordSense.Group` (empty or equal to
+the sense id means the sense is its own class). The library has no pronunciation data; a consumer maps
+(lemma, group) to a pronunciation. A group is not a coarser meaning and does not mean "same meaning across parts of
+speech". The inventory must list exactly the senses
 used by the anchors: an anchor label missing from the inventory, or an inventory sense without anchors, fails the
 build.
 
@@ -75,7 +78,8 @@ weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anch
 `tools/real-text/README.md` describes the repeatable harvest. Senses that real text cannot fill are completed by
 `anchors|holdout|provenance/new-authored-N.tsv` (command `real-authored-import`; two independent authors, origin
 `authored`, contributor `authored-anchor` or `authored-holdout`). `audit/new-lemma-speech-map.tsv` maps every sense of the
-Phase 4 lemmas to its pronunciation group and ARPAbet with its counts, source mix (real or authored) and holdout
+Phase 4 lemmas to its group and an authoring-time ARPAbet note (reference data for consumers; the library itself
+ships no pronunciations) with its counts, source mix (real or authored) and holdout
 accuracy; see `docs/build_notes/new-lemma-results.md`. Phase 5 noun/verb lemmas are imported by `nounverb-import` into
 `anchors|holdout|provenance|senses/nounverb-N.tsv` (origins real or `user-supplied`, licence
 `MIT (project-authored)` for the latter) and `audit/nounverb-untrained.tsv` lists every lemma left untrained with the

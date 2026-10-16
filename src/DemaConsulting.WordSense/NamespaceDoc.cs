@@ -31,8 +31,8 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Groups and pronunciation: this library has no pronunciation data. A sense's <see cref="WordSense.Group"/> is
-///     the library's only equivalence mechanism: senses of one lemma that share a group are interchangeable for the
-///     consumer (in the shipped inventory, they share a pronunciation). A consumer such as a speech synthesizer keeps its
+///     the library's only equivalence mechanism: senses of one lemma that share a group share a pronunciation, so a
+///     consumer that only needs the pronunciation does not need to tell them apart. A consumer such as a speech synthesizer keeps its
 ///     own pronunciations keyed by (<see cref="WordSense.Lemma"/>, <see cref="WordSense.Group"/>). See
 ///     <see cref="WordSense"/> for the full explanation. The supported lemmas, senses, tags and groups are listed in
 ///     the user guide appendix "Appendix: Supported Senses and Tags"

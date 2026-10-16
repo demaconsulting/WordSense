@@ -175,8 +175,9 @@ internal static class AppendixGenerator
         lines.Add("### Groups");
         lines.Add(string.Empty);
         AddParagraph(lines,
-            "A **group** is an equivalence class of the senses of one lemma: senses that share a group are " +
-            "interchangeable for the consumer because they share a pronunciation. `WordSense.Group` is the group of " +
+            "A **group** is an equivalence class of the senses of one lemma: senses that share a group share a " +
+            "pronunciation, so a consumer that only needs the pronunciation need not tell them apart. A group is not a " +
+            "coarser meaning. `WordSense.Group` is the group of " +
             "the sense. It equals the sense label unless the inventory joins senses: for example `bow` has the " +
             "senses `bend-noun` and `bend-verb` (the act of bending, as a noun or a verb), which share the group " +
             "`bend`, and `weapon`, which is a group of its own. The library has no pronunciation data: a consumer " +

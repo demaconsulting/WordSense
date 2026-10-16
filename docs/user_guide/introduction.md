@@ -73,7 +73,8 @@ A `WordSense` is an immutable record with `Lemma`, `Sense`, `Group`, `Tags` and 
 set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`,
 `superlative`; `participle` is also a valid qualifier but no sense uses it yet); every sense has exactly one part of
 speech. `Group` is the equivalence class of the sense: senses of
-one lemma that share a group are interchangeable for the consumer because they share a pronunciation (the senses
+one lemma that share a group share a pronunciation, so a consumer that only needs the pronunciation need not tell
+them apart (the senses
 `bend-noun` and `bend-verb` of `bow` share the group `bend`). It equals the sense label when the sense is not
 grouped. The library has no pronunciation data; a consumer such as a speech synthesizer keys its own pronunciations
 by (`Lemma`, `Group`). The same instance is returned for the same lemma and
