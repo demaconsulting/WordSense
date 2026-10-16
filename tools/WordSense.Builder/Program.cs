@@ -40,7 +40,7 @@ public static class Program
                 error.WriteLine(
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
-                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, " +
+                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, " +
                     "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas.");
                 return 1;
             }
@@ -79,6 +79,9 @@ public static class Program
                     return 0;
                 case "real-gap-import":
                     output.Write(RealGap.Import(Require(options, "corpus"), Require(options, "name"), ReadCandidateFiles(Require(options, "candidates")), RealJudge.ReadJudgements(Require(options, "audit").Split(','))));
+                    return 0;
+                case "real-authored-import":
+                    output.Write(RealAuthored.Import(Require(options, "corpus"), Require(options, "name"), Require(options, "anchors"), Require(options, "holdout")));
                     return 0;
                 case "real-eval-import":
                     var perSense = IntOption(options, "per-sense", 12);

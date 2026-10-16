@@ -80,6 +80,20 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   fills the holdout first from small contributors and takes the anchors from the others, so the sets are disjoint;
   output is `corpus/{anchors,holdout,provenance}/real-gap-N.tsv`, and a sense short of rows is reported. `real-eval`
   scores these holdout rows as the sets `real-gap` and `llm-holdout-gap-lemmas`.
+- `real-authored-import` (`RealAuthored`) completes senses that real text cannot fill (new lemmas, Phase 4):
+  `--corpus DIR --name new-authored-N --anchors FILE --holdout FILE`, where the two files
+  (`lemma<TAB>sense<TAB>sentence`) come from two independent authors who never see each other's output (frozen prompts in
+  `tools/real-text/authoring-prompt.md`). Every problem is collected and nothing is written on error: a sense not in the
+  restore plan, a target that is not exactly one braced word, a target that is not a form of the lemma in
+  `corpus/forms/*.tsv`, a sentence of more than 35 words, and a sentence (case-insensitive) that repeats inside a file,
+  across anchors and holdout, or an existing row of any other file. Output is
+  `corpus/{anchors,holdout,provenance}/new-authored-N.tsv` with origin `authored`, licence `MIT (project-authored)` and
+  contributor `authored-anchor` or `authored-holdout`, rows in ordinal order, plus `corpus/senses/new-authored-N.tsv`
+  only for planned senses that no other file declares (a sense is declared once). The report lists per sense the
+  authored and total counts against the minima 14 and 8. Order rule: `RealPlan.ReadExisting` ignores
+  `real-restore.tsv` and every `new-authored-*.tsv`, so authored rows never shrink the number of real rows that
+  `real-import` takes and a later `real-import` is not affected by them; if a rerun of `real-import` starts to declare
+  a sense that an authored batch declared, move the `senses/new-authored-N.tsv` file away and import the batch again.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level

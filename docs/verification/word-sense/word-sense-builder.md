@@ -62,6 +62,14 @@ table.
   towards the holdout target and a pool smaller than the plan is reported as `SHORT`.
 - **WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows**: a name other than `real-gap-N`, a non-numeric count and
   a sense missing from the inventory are each rejected.
+- **WordSenseBuilder_RealAuthored_Import_WritesProvenanceDeclaresSenseOnceAndIsDeterministic**: an authored batch
+  writes anchors, holdout and provenance (origin `authored`, contributors `authored-anchor` and `authored-holdout`),
+  declares a new sense once, validates, and repeats byte for byte; a second batch does not declare the sense again.
+- **WordSenseBuilder_RealAuthored_Import_RejectsBadRows_AndWritesNothing**: overlap between anchors and holdout, an
+  unknown sense, a bad brace count, a target that is no form, an over-long sentence and a repeat of an existing sentence
+  are reported together and no file is written.
+- **WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches**: the `real-authored-import` command
+  runs through the tool and `RealPlan.ReadExisting` ignores authored batches.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level

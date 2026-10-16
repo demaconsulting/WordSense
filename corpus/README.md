@@ -72,7 +72,9 @@ builder command `validate-provenance` checks the sidecar. The corpus is not ship
 `audit/real-gap-1-plan.tsv`, judged rows in `audit/real-gap-audit-1.tsv`) add real anchors and a real holdout for the
 weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anchors. See
 `docs/build_notes/weak-lemma-decisions.md`.
-`tools/real-text/README.md` describes the repeatable harvest.
+`tools/real-text/README.md` describes the repeatable harvest. Senses that real text cannot fill are completed by
+`anchors|holdout|provenance/new-authored-N.tsv` (command `real-authored-import`; two independent authors, origin
+`authored`, contributor `authored-anchor` or `authored-holdout`).
 
 ## Analysis Output
 

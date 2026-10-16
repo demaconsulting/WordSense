@@ -88,8 +88,8 @@ internal static class RealPlan
     }
 
     /// <summary>
-    ///     Reads the corpus rows of the given lemmas, ignoring the restore files so that the result is stable
-    ///     when the import has already run.
+    ///     Reads the corpus rows of the given lemmas, ignoring the restore file and the authored batches
+    ///     (<c>new-authored-*.tsv</c>) so that the result is stable when the import or an authored import has already run.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
     /// <param name="split">Either <c>anchors</c> or <c>holdout</c>.</param>
@@ -99,7 +99,7 @@ internal static class RealPlan
     {
         var directory = Path.Combine(corpus, split);
         var rows = new List<CorpusRow>();
-        foreach (var file in Directory.GetFiles(directory, "*.tsv").Where(f => Path.GetFileName(f) != RestoreFile).OrderBy(f => f, StringComparer.Ordinal))
+        foreach (var file in Directory.GetFiles(directory, "*.tsv").Where(f => Path.GetFileName(f) != RestoreFile && !RealAuthored.IsAuthoredFile(Path.GetFileName(f))).OrderBy(f => f, StringComparer.Ordinal))
         {
             rows.AddRange(Corpus.ReadSentences(file).Where(r => lemmas.Contains(r.Lemma)));
         }

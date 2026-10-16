@@ -93,6 +93,20 @@ sections:
           - WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall
           - WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows
           - WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory
+      - id: WordSense-Builder-AuthoredImport
+        title: >-
+          The builder shall import independently authored anchor and holdout sentences with a provenance row
+          per sentence that names the author role, reject any batch in which a sentence repeats or the anchors
+          and holdout overlap, and report the per-sense counts against the minima.
+        tags: [unit]
+        justification: |
+          Senses without enough real sentences are completed by authored sentences; keeping the anchor and
+          holdout authors separate and the splits disjoint keeps the holdout a fair test, and the recorded
+          provenance keeps authored rows distinguishable from real ones.
+        tests:
+          - WordSenseBuilder_RealAuthored_Import_WritesProvenanceDeclaresSenseOnceAndIsDeterministic
+          - WordSenseBuilder_RealAuthored_Import_RejectsBadRows_AndWritesNothing
+          - WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches
       - id: WordSense-Builder-LearningCurve
         title: >-
           The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered

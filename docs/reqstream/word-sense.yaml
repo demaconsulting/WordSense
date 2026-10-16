@@ -39,6 +39,7 @@ sections:
           - WordSense-Table-Senses
           - WordSense-Builder-Inventory
           - WordSense-Builder-Provenance
+          - WordSense-Builder-AuthoredImport
         tests:
           - WordSense_Classifier_Holdout_MeetsNounVerbTagGate
           - WordSense_Classifier_Holdout_MeetsGroupGate

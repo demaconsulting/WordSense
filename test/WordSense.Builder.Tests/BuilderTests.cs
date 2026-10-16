@@ -969,6 +969,98 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     An authored batch writes anchors, holdout, provenance of two author roles and a sense declaration, validates, and is deterministic.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealAuthored_Import_WritesProvenanceDeclaresSenseOnceAndIsDeterministic()
+    {
+        var corpus = PrepareAuthoredCorpus();
+        var anchors = Write("in/anchors.tsv", "bow\tweapon-noun\tShe strung the {bow} before the hunt began today.\nbow\tweapon-noun\tHe carried a {bows} quiver and a spare string.\n");
+        var holdout = Write("in/holdout.tsv", "bow\tweapon-noun\tThe archer drew the {bow} and held her breath steadily.\n");
+
+        var report = RealAuthored.Import(corpus, "new-authored-1", anchors, holdout);
+        var first = File.ReadAllText(Path.Combine(corpus, "provenance", "new-authored-1.tsv"));
+        RealAuthored.Import(corpus, "new-authored-1", anchors, holdout);
+
+        Assert.Contains("anchors 2, holdout 1, new senses 1.", report, StringComparison.Ordinal);
+        Assert.Contains("LACKING", report, StringComparison.Ordinal);
+        Assert.Equal(first, File.ReadAllText(Path.Combine(corpus, "provenance", "new-authored-1.tsv")));
+        var provenance = RealImport.ReadProvenance(Path.Combine(corpus, "provenance", "new-authored-1.tsv"));
+        Assert.All(provenance, p => Assert.Equal(("authored", "MIT (project-authored)"), (p.Origin, p.Licence)));
+        Assert.Equal(2, provenance.Count(p => p.Contributor == "authored-anchor" && p.Split == "anchors"));
+        Assert.Single(provenance, p => p.Contributor == "authored-holdout" && p.Split == "holdout");
+        Assert.Empty(RealImport.Validate(corpus));
+        Assert.Contains("weapon-noun", File.ReadAllText(Path.Combine(corpus, "senses", "new-authored-1.tsv")), StringComparison.Ordinal);
+
+        // A second batch for the same sense does not declare it again
+        var more = Write("in/anchors2.tsv", "bow\tweapon-noun\tThe {bow} was carved from yew wood by hand.\n");
+        var none = Write("in/holdout2.tsv", string.Empty);
+        RealAuthored.Import(corpus, "new-authored-2", more, none);
+        Assert.False(File.Exists(Path.Combine(corpus, "senses", "new-authored-2.tsv")));
+        Assert.Equal(2, SenseInventory.ReadDirectory(Path.Combine(corpus, "senses")).Rows.Count());
+    }
+
+    /// <summary>
+    ///     An authored batch is rejected, with nothing written, for overlap between anchors and holdout, an unknown sense,
+    ///     a bad brace count, a target that is no form, an over-long sentence and a repeat of an existing sentence.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealAuthored_Import_RejectsBadRows_AndWritesNothing()
+    {
+        var corpus = PrepareAuthoredCorpus();
+        Write("corpus/anchors/seed.tsv", "bow\tbend-noun\tShe gave a deep {bow}.\n");
+        var longSentence = "{bow} " + string.Join(' ', Enumerable.Repeat("word", 40));
+        var anchors = Write("in/anchors.tsv", string.Join('\n',
+            "bow\tweapon-noun\tShe strung the {bow} before the hunt began today.",
+            "bow\tnope\tAn {bow} of unknown sense appears here.",
+            "bow\tweapon-noun\tNo braces appear in this sentence.",
+            "bow\tweapon-noun\tThe {arrow} is not a form of the lemma.",
+            "bow\tweapon-noun\t" + longSentence,
+            "bow\tbend-noun\tshe gave a deep {bow}.") + "\n");
+        var holdout = Write("in/holdout.tsv", "bow\tweapon-noun\tshe strung the {bow} before the hunt began today.\n");
+
+        var ex = Assert.Throws<InvalidDataException>(() => RealAuthored.Import(corpus, "new-authored-1", anchors, holdout));
+
+        foreach (var fragment in new[] { "must stay disjoint", "not a sense of the restore plan", "exactly one", "not a form", "more than 35 words", "duplicate of a sentence in anchors/seed.tsv" })
+        {
+            Assert.Contains(fragment, ex.Message, StringComparison.Ordinal);
+        }
+
+        Assert.False(File.Exists(Path.Combine(corpus, "anchors", "new-authored-1.tsv")));
+        Assert.False(File.Exists(Path.Combine(corpus, "provenance", "new-authored-1.tsv")));
+        Assert.False(File.Exists(Path.Combine(corpus, "senses", "new-authored-1.tsv")));
+        Assert.Throws<ArgumentException>(() => RealAuthored.ValidateName("real-gap-1"));
+        Assert.Throws<ArgumentException>(() => RealAuthored.ValidateName("new-authored-"));
+    }
+
+    /// <summary>
+    ///     The command is wired into the tool, and the real-sentence import does not count authored batches as existing rows.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches()
+    {
+        var corpus = PrepareAuthoredCorpus();
+        var anchors = Write("in/anchors.tsv", "bow\tweapon-noun\tShe strung the {bow} before the hunt began today.\n");
+        var holdout = Write("in/holdout.tsv", "bow\tweapon-noun\tThe archer drew the {bow} and held her breath steadily.\n");
+        var output = new StringWriter();
+
+        var code = Program.Run(["real-authored-import", "--corpus", corpus, "--name", "new-authored-1", "--anchors", anchors, "--holdout", holdout], output, new StringWriter());
+
+        Assert.Equal(0, code);
+        Assert.Contains("anchors 1, holdout 1", output.ToString(), StringComparison.Ordinal);
+        Assert.Empty(RealPlan.ReadExisting(corpus, "anchors", new HashSet<string> { "bow" }));
+        Assert.Empty(RealPlan.ReadExisting(corpus, "holdout", new HashSet<string> { "bow" }));
+    }
+
+    private string PrepareAuthoredCorpus()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/restore-plan.tsv", "lemma\tsense\ttags\tgroup\tfrom\tdefinition\tstatus\nbow\tbend-noun\tnoun\t\told:noun\ta bend\texisting\nbow\tweapon-noun\tnoun\tweapon\t\ta weapon\tnew\n");
+        Write("corpus/forms/new-lemmas.tsv", "form\tlemma\tlabels\nbow\tbow\tbend-noun,weapon-noun\nbows\tbow\tbend-noun,weapon-noun\n");
+        return corpus;
+    }
+
+    /// <summary>
     ///     A gap batch name and plan are validated.
     /// </summary>
     [Fact]

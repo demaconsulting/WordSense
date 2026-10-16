@@ -43,5 +43,9 @@ rarer reading, see `docs/build_notes/new-lemma-decisions.md`). Use the
 builder commands `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge` and `real-import`
 (or `real-eval-import`) to judge the candidates blind and write the corpus and its provenance. Phase 3b adds
 senses of existing lemmas as extra anchors and a separate real holdout with `real-judge-export --gap-plan real-gap-1`
-(menus from `corpus/audit/real-gap-1-plan.tsv`) and `real-gap-import --name real-gap-1`. See the design of the
+(menus from `corpus/audit/real-gap-1-plan.tsv`) and `real-gap-import --name real-gap-1`. Senses that real text cannot
+fill are completed by independently authored sentences with `real-authored-import --corpus corpus --name
+new-authored-N --anchors FILE --holdout FILE` (two input files of `lemma<TAB>sense<TAB>sentence`, one per author; the
+frozen prompts are in `tools/real-text/authoring-prompt.md`). Run it only after the last `real-import` of the phase.
+See the design of the
 WordSenseBuilder unit.

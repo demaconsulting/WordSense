@@ -80,16 +80,17 @@ internal sealed class SenseInventory
     ///     Reads every <c>*.tsv</c> file of a directory, in file-name order.
     /// </summary>
     /// <param name="directory">The <c>senses</c> directory.</param>
+    /// <param name="skipFile">The name of a file to leave out, or null to read all files.</param>
     /// <returns>The inventory.</returns>
     /// <exception cref="InvalidDataException">Thrown with every problem found, one per line.</exception>
-    public static SenseInventory ReadDirectory(string directory)
+    public static SenseInventory ReadDirectory(string directory, string? skipFile = null)
     {
         var rows = new List<InventoryRow>();
         var errors = new List<string>();
         var seen = new Dictionary<(string, string), string>();
         if (Directory.Exists(directory))
         {
-            foreach (var file in Directory.GetFiles(directory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal))
+            foreach (var file in Directory.GetFiles(directory, "*.tsv").Where(f => Path.GetFileName(f) != skipFile).OrderBy(f => f, StringComparer.Ordinal))
             {
                 ReadFile(file, rows, errors, seen);
             }
