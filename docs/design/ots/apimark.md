@@ -17,6 +17,9 @@ the code it describes.
 - Package inclusion (`ApiMarkPackDocs`), which places the generated `api/` tree in the NuGet package
 - Documentation-coverage enforcement (`ApiMarkEnforceDocs`, `ApiMarkEnforceDocsSeverity`)
 - Rendering of `<example>`/`<code>` blocks as fenced code blocks and of `<remarks>` prose
+- Namespace description from a `NamespaceDoc` carrier class (`NamespaceDoc.cs`, an internal static class whose
+  XML summary, remarks and example become the namespace page; without it the namespace shows "No description
+  provided")
 
 ### Integration Pattern
 

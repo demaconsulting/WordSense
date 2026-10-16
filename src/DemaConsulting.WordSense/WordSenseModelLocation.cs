@@ -15,7 +15,9 @@ public sealed record WordSenseModelLocation(string Directory, string ModelPath, 
     ///     Every file is checked against its pinned SHA-256, so a stale, truncated or tampered file is
     ///     rejected instead of silently producing wrong word senses.
     /// </remarks>
-    /// <param name="directory">The directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c>.</param>
+    /// <param name="directory">
+    ///     The directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c> directly; its own name does not matter.
+    /// </param>
     /// <returns>The verified location.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="directory"/> is null.</exception>
     /// <exception cref="FileNotFoundException">Thrown when a model file is missing.</exception>
@@ -57,7 +59,11 @@ public sealed record WordSenseModelLocation(string Directory, string ModelPath, 
     /// <summary>
     ///     Gets the default directory in which downloaded models are stored for the current user.
     /// </summary>
-    /// <returns>A folder beneath the user's local application data directory.</returns>
+    /// <returns>
+    ///     A folder beneath the user's local application data directory: <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>,
+    ///     for example <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows. The application base
+    ///     directory replaces the local application data directory when the platform has none.
+    /// </returns>
     public static string DefaultStoreRoot()
     {
         var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);

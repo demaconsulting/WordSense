@@ -10,6 +10,15 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="LemmaModel.AbstainMargin"/> multiplied by
 ///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>, and the models are public through
 ///     <see cref="WordSenseTable.LoadEmbedded"/>. Otherwise use <see cref="Abstained"/>.
+///     <para>
+///     Reading the margin: it is a score difference, not a probability, and each lemma has its own scale. As a rough
+///     guide, the README sample answers for <c>record</c> that are clearly right have margins of about 5 to 7
+///     (5.99 for the verb, 7.16 for the noun); a margin near 0 means the two best senses are almost tied, and a margin
+///     below the lemma's effective threshold is reported as <see cref="Abstained"/>. The effective threshold is
+///     <c>LemmaModel.AbstainMargin * AbstainMarginScale</c> (see the example), so doubling the scale doubles
+///     the margin an answer needs. Which sense was chosen is <see cref="Sense"/>, whose
+///     <see cref="WordSense.Group"/> tells a consumer which pronunciation class it is in.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
@@ -23,6 +32,19 @@ namespace DemaConsulting.WordSense;
 ///         {
 ///             Console.WriteLine("The classifier is not confident enough to answer.");
 ///         }
+///     }
+///     </code>
+///     Apply your own threshold: here an answer is accepted only when its margin is at least twice the lemma's
+///     abstain margin, that is as if <c>AbstainMarginScale</c> were 2.
+///     <code>
+///     var table = WordSenseTable.LoadEmbedded();
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(["They", "will", "record", "it"]);
+///
+///     if (details[2] is { } detail &amp;&amp; table.TryGetLemma(detail.Sense.Lemma, out var model))
+///     {
+///         double threshold = model.AbstainMargin * 2.0;
+///         Console.WriteLine(detail.Margin >= threshold ? "accepted" : "rejected");
 ///     }
 ///     </code>
 /// </example>

@@ -48,8 +48,9 @@ Features are the mean of the target word pieces' hidden states minus the table m
 - Null arguments (encoder, table, tokenizer, words, a word, text, lemma, tags, a tag) raise
   `ArgumentNullException`; a null `options` is not an error and means the defaults. An empty tag list or an
   empty tag raises `ArgumentException`.
-- `MaxSequenceLength` outside 8 to 512 and a negative `AbstainMarginScale` raise
-  `ArgumentOutOfRangeException` from the constructor. A scale of 0 never abstains.
+- `MaxSequenceLength` outside 8 to 512, a negative `AbstainMarginScale` and a negative `IntraOpThreads` raise
+  `ArgumentOutOfRangeException`; the constructor checks the first two, and `CreateAsync` checks all three before it
+  downloads or verifies any model file. A scale of 0 never abstains.
 - A table whose model digest or dimension differs from the encoder's raises
   `WordSenseModelMismatchException`.
 - A user-supplied `ModelDirectory` is verified against the pinned digests before use; a missing,

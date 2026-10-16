@@ -6,7 +6,7 @@ using System.Text;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The trained classifier table: per-lemma linear models, the feature centering mean, and the
+///     Advanced: the trained classifier table: per-lemma linear models, the feature centering mean, and the
 ///     form-to-lemma map, plus its versioned binary serialization.
 /// </summary>
 /// <remarks>

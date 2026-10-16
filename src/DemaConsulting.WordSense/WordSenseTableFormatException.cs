@@ -1,7 +1,7 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Thrown when a classifier table is malformed, truncated, corrupted, or of an unsupported version.
+///     Advanced: thrown when a classifier table is malformed, truncated, corrupted, or of an unsupported version.
 /// </summary>
 public sealed class WordSenseTableFormatException : Exception
 {

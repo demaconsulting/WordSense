@@ -98,6 +98,23 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     Invalid option values are reported before the model directory is touched.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel()
+    {
+        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        var cancellationToken = TestContext.Current.CancellationToken;
+
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, MaxSequenceLength = 4 }, cancellationToken));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, AbstainMarginScale = -1 }, cancellationToken));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, IntraOpThreads = -1 }, cancellationToken));
+    }
+
+    /// <summary>
     ///     Reads every fifth holdout row as the words of its sentence, the index of the target word, and the gold lemma and sense.
     /// </summary>
     /// <returns>The sampled rows.</returns>

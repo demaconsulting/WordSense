@@ -1,7 +1,7 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Thrown when the encoder model does not match the model a classifier table was trained against.
+///     Advanced: thrown when the encoder model does not match the model a classifier table was trained against.
 /// </summary>
 /// <remarks>
 ///     The table stores the SHA-256 of the model it was trained with. A different model produces a

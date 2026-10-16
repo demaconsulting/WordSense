@@ -88,6 +88,7 @@ src/DemaConsulting.WordSense/
 ├── WordSenseClassifier.cs, FeatureExtractor.cs    — classifier unit
 ├── DownloadMirror.cs                              — mirror unit
 ├── WordSenseModelDownloader*.cs, ...ModelCatalog.cs — downloader unit
+├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
 └── Resources/wordsense-table.bin                  — embedded table
 
 tools/WordSense.Builder/                           — builder unit (not shipped)

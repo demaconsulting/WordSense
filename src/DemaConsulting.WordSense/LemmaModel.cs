@@ -1,7 +1,7 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Describes how the scores of a <see cref="LemmaModel"/> are computed from its weight rows.
+///     Advanced: describes how the scores of a <see cref="LemmaModel"/> are computed from its weight rows.
 /// </summary>
 public enum LemmaModelKind
 {
@@ -18,7 +18,8 @@ public enum LemmaModelKind
 }
 
 /// <summary>
-///     The trained linear classifier for one ambiguous lemma.
+///     Advanced: the trained linear classifier for one ambiguous lemma. Applications normally use
+///     <see cref="IWordSenseClassifier"/>; read this to see a lemma's <see cref="AbstainMargin"/>.
 /// </summary>
 /// <remarks>
 ///     Instances are immutable after construction and thread-safe. The order in which the senses are

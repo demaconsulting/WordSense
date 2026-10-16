@@ -72,6 +72,12 @@ public sealed class WordSenseModelDownloadException : Exception
 public sealed class WordSenseModelDownloaderOptions
 {
     /// <summary>
+    ///     Initializes a new instance of the <see cref="WordSenseModelDownloaderOptions"/> class with every option at its default.
+    /// </summary>
+    public WordSenseModelDownloaderOptions()
+    {
+    }
+    /// <summary>
     ///     The default Hugging Face base location for the sentence-transformers model.
     /// </summary>
     public static readonly Uri DefaultHuggingFaceBaseUri =
@@ -84,38 +90,50 @@ public sealed class WordSenseModelDownloaderOptions
         new("https://media.githubusercontent.com/media/demaconsulting/WordSense");
 
     /// <summary>
-    ///     Gets the mirror to try first, or null to fall back to <see cref="GetEnvironmentVariable"/>.
+    ///     Gets the mirror to try first, or null (the default) to fall back to <see cref="GetEnvironmentVariable"/>.
     /// </summary>
     /// <remarks>An explicitly supplied mirror always wins over the environment variables.</remarks>
     public DownloadMirror? Mirror { get; init; }
 
     /// <summary>
-    ///     Gets the function used to read the mirror environment variables; null uses the process environment.
+    ///     Gets the function used to read the mirror environment variables; null (the default) uses the process environment.
     /// </summary>
     public Func<string, string?>? GetEnvironmentVariable { get; init; }
 
     /// <summary>
-    ///     Gets the Hugging Face base location, or null to skip Hugging Face. The file name is appended.
+    ///     Gets the Hugging Face base location, or null to skip Hugging Face; the default is
+    ///     <see cref="DefaultHuggingFaceBaseUri"/>. The file name is appended.
     /// </summary>
     public Uri? HuggingFaceBaseUri { get; init; } = DefaultHuggingFaceBaseUri;
 
     /// <summary>
-    ///     Gets the GitHub Git LFS media base location, or null to skip it. <c>/{ref}/model/{file}</c> is appended.
+    ///     Gets the GitHub Git LFS media base location, or null to skip it; the default is
+    ///     <see cref="DefaultGitHubLfsBaseUri"/>. <c>/{ref}/model/{file}</c> is appended.
     /// </summary>
     public Uri? GitHubLfsBaseUri { get; init; } = DefaultGitHubLfsBaseUri;
 
     /// <summary>
-    ///     Gets the Git reference (branch, tag or commit) requested from the GitHub Git LFS endpoint.
+    ///     Gets the Git reference (branch, tag or commit) requested from the GitHub Git LFS endpoint; the default is <c>main</c>.
     /// </summary>
     public string GitHubLfsRef { get; init; } = "main";
 
     /// <summary>
-    ///     Gets the directory beneath which model folders are stored; null uses the per-user default.
+    ///     Gets the directory beneath which model folders are stored; null (the default) uses
+    ///     <see cref="WordSenseModelLocation.DefaultStoreRoot"/>.
     /// </summary>
+    /// <remarks>
+    ///     The default is <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>, for example
+    ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
+    ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux (the application base directory is used when
+    ///     the platform has no local application data folder). The model is stored in the folder
+    ///     <c>all-MiniLM-L6-v2-int8-afdb6f1a</c> beneath that root, holding <c>model_int8.onnx</c> (about 23 MB) and
+    ///     <c>vocab.txt</c>. The folder name is derived from the model digest, so a different model version never
+    ///     reuses it.
+    /// </remarks>
     public string? StoreRoot { get; init; }
 
     /// <summary>
-    ///     Gets the HTTP client to use; null creates and disposes a private one.
+    ///     Gets the HTTP client to use; null (the default) creates and disposes a private one.
     /// </summary>
     /// <remarks>
     ///     The private client does not follow redirects automatically; the downloader follows them itself
@@ -128,7 +146,7 @@ public sealed class WordSenseModelDownloaderOptions
     public HttpClient? HttpClient { get; init; }
 
     /// <summary>
-    ///     Gets the maximum time a single source attempt for a single file may take.
+    ///     Gets the maximum time a single source attempt for a single file may take; the default is 5 minutes.
     /// </summary>
     /// <remarks>
     ///     Must be positive or <see cref="Timeout.InfiniteTimeSpan"/>; <see cref="WordSenseModelDownloader.EnsureModelAsync"/>
@@ -137,7 +155,7 @@ public sealed class WordSenseModelDownloaderOptions
     public TimeSpan RequestTimeout { get; init; } = TimeSpan.FromMinutes(5);
 
     /// <summary>
-    ///     Gets the receiver of download progress reports, or null.
+    ///     Gets the receiver of download progress reports, or null (the default).
     /// </summary>
     /// <remarks>
     ///     An exception thrown by the receiver is not treated as a source failure: it propagates out of

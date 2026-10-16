@@ -2,7 +2,9 @@
 
 ## Verification Approach
 
-Tests in `WordSenseClassifierTests.cs` (except `WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory`,
+Tests in `WordSenseClassifierTests.cs` (except the `WordSenseTests.cs` tests
+`WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory` and
+`WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel`,
 which lives in `WordSenseTests.cs`) use a fake `IWordSenseEncoder` that returns deterministic
 hidden states and a small in-memory table, so behavior is verified without the model.
 
@@ -20,7 +22,9 @@ hidden states and a small in-memory table, so behavior is verified without the m
 - **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention.
 - **WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget**: windowing.
 - **WordSenseClassifier_Constructor_InvalidArguments_Throw**, **..._ModelMismatch_Throws**,
-  **WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory**: validation.
+  **WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory**,
+  **WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel** (invalid options are reported before the
+  model directory is touched): validation.
 - **WordSenseClassifier_ClassifyAsync_Cancelled_Throws**, **..._Concurrent_IsConsistent**,
   **WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed**: lifetime.
 

@@ -25,17 +25,27 @@ namespace DemaConsulting.WordSense;
 public sealed class WordSenseClassifierOptions
 {
     /// <summary>
-    ///     Gets the directory that already contains the verified model files; when null the model is
+    ///     Initializes a new instance of the <see cref="WordSenseClassifierOptions"/> class with every option at its default.
+    /// </summary>
+    public WordSenseClassifierOptions()
+    {
+    }
+
+    /// <summary>
+    ///     Gets the directory that already contains the verified model files; when null (the default) the model is
     ///     obtained through <see cref="WordSenseModelDownloader"/> using <see cref="Downloader"/>.
     /// </summary>
     /// <remarks>
     ///     When this is set, <see cref="Downloader"/> is ignored: the files are verified in place, nothing is
-    ///     downloaded and no mirror environment variable is read.
+    ///     downloaded and no mirror environment variable is read. The directory must contain the two files
+    ///     <c>model_int8.onnx</c> and <c>vocab.txt</c> directly (not in a subfolder); the name of the folder itself
+    ///     does not matter. Each file must match its pinned SHA-256, otherwise
+    ///     <see cref="WordSenseClassifier.CreateAsync"/> throws.
     /// </remarks>
     public string? ModelDirectory { get; init; }
 
     /// <summary>
-    ///     Gets the options used when the model has to be downloaded.
+    ///     Gets the options used when the model has to be downloaded; the default is null.
     /// </summary>
     /// <remarks>
     ///     Ignored when <see cref="ModelDirectory"/> is set. When null, default downloader options are used,
@@ -48,20 +58,26 @@ public sealed class WordSenseClassifierOptions
     public WordSenseModelDownloaderOptions? Downloader { get; init; }
 
     /// <summary>
-    ///     Gets the maximum encoder sequence length including special tokens; at least 8, at most 512.
+    ///     Gets the maximum encoder sequence length including special tokens; at least 8, at most 512; the default is 256.
     ///     Longer texts are classified from a window centered on each target word.
     /// </summary>
     public int MaxSequenceLength { get; init; } = 256;
 
     /// <summary>
-    ///     Gets the number of threads ONNX Runtime may use within one inference; 0 lets it decide.
+    ///     Gets the number of threads ONNX Runtime may use within one inference; the default is 0, which lets it decide.
+    ///     A negative value is rejected by <see cref="WordSenseClassifier.CreateAsync"/>.
     /// </summary>
     public int IntraOpThreads { get; init; }
 
     /// <summary>
-    ///     Gets the factor applied to every lemma's abstain margin. Values above 1 make the classifier
-    ///     abstain more often; 0 never abstains.
+    ///     Gets the factor applied to every lemma's abstain margin; the default is 1.0. Values above 1 make the
+    ///     classifier abstain more often; 0 never abstains.
     /// </summary>
-    /// <remarks>Must not be negative or NaN; <see cref="WordSenseClassifier.CreateAsync"/> rejects such values.</remarks>
+    /// <remarks>
+    ///     Must not be negative or NaN; <see cref="WordSenseClassifier.CreateAsync"/> rejects such values. The
+    ///     effective threshold of a lemma is <c>LemmaModel.AbstainMargin * AbstainMarginScale</c>; a decision whose
+    ///     margin (see <see cref="WordSenseDetail.Margin"/>) is below it is withheld. For example a scale of 0.5 halves
+    ///     every lemma's threshold, so more answers are given and more of them may be wrong.
+    /// </remarks>
     public double AbstainMarginScale { get; init; } = 1.0;
 }

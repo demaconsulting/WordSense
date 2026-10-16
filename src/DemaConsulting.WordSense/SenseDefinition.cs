@@ -3,17 +3,23 @@ using System.Text.RegularExpressions;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The definition of one sense of a lemma: its name and its tags.
+///     The definition of one sense of a lemma: its name, its tags and its group. Advanced: used to build
+///     classifier tables; an application that only classifies words reads <see cref="WordSense"/> instead.
 /// </summary>
 /// <remarks>
 ///     The name becomes <see cref="WordSense.Sense"/> on the results. The group, when given, and every tag
 ///     are validated with <see cref="IsValidTag"/> (lower-case letters, digits and hyphens, starting with a
 ///     letter, at most <see cref="MaxTagLength"/> characters). The name itself is only required to be
-///     non-empty and unique within the lemma; it is not held to the tag syntax.
+///     non-empty and unique within the lemma; it is not held to the tag syntax. The group is the equivalence
+///     class of senses that share a pronunciation (see <see cref="WordSense.Group"/>); the library carries no
+///     pronunciation data itself.
 /// </remarks>
 /// <param name="Name">The sense name (exposed as <see cref="WordSense.Sense"/>), unique within the lemma.</param>
 /// <param name="Tags">The tags: at least one, lower-case, sorted ordinally and without duplicates.</param>
-/// <param name="Group">The group the sense belongs to, or null for a group of its own (named like the sense).</param>
+/// <param name="Group">
+///     The group (pronunciation equivalence class) the sense belongs to, or null for a group of its own (named like
+///     the sense).
+/// </param>
 public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> Tags, string? Group = null)
 {
     /// <summary>

@@ -10,7 +10,8 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
 
 - `WordSense`: sealed, immutable class (not a record, so it has no value equality) with `Lemma`, `Sense`,
   `Tags` (a frozen, ordinal `IReadOnlySet<string>`, never empty) and `Group` (never null or empty; defaults
-  to the sense label; senses split from one mixed-part-of-speech sense share a group). Tags are true parts
+  to the sense label; the senses of one lemma that share a pronunciation share a group, which is the library's
+  only equivalence mechanism, as it holds no pronunciation data). Tags are true parts
   of speech plus qualifiers; a sense has one part of speech. `HasTag(tag)` tests membership ordinally and
   throws `ArgumentNullException` for a null tag. One instance exists per (lemma, sense), created when the
   owning `LemmaModel` is constructed, so callers compare senses by reference.

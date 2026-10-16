@@ -11,11 +11,63 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Terminology: a <em>lemma</em> is the base form of an ambiguous word (for example <c>record</c>); a
-///     <em>sense</em> is one meaning of a lemma (<see cref="WordSense"/>); senses that share a meaning but differ
-///     in part of speech share a <em>group</em>; a <em>tag</em> is a lower-case property of a sense such as
+///     <em>sense</em> is one meaning of a lemma (<see cref="WordSense"/>); a <em>group</em> is the equivalence class of
+///     senses of one lemma that share a pronunciation (the library holds no pronunciation data; the group is the
+///     only equivalence mechanism, and a consumer maps (lemma, group) to its own pronunciation; see
+///     <see cref="WordSense"/>); a <em>tag</em> is a lower-case property of a sense such as
 ///     <c>noun</c> or <c>verb</c>. Each sense gets a score; the <em>margin</em> is the best score minus the
 ///     runner-up's score, and the classifier <em>abstains</em> (returns null) when the margin is below the
 ///     lemma's abstain threshold. Create an instance with <see cref="WordSenseClassifier.CreateAsync"/>.
+///     </para>
+///     <para>
+///     <b>Catalog.</b> The tags are the part-of-speech tags <c>noun</c>, <c>verb</c>, <c>adj</c> and <c>adv</c> and the
+///     qualifier tags <c>past</c>, <c>present</c>, <c>comparative</c>, <c>participle</c> (valid, but no shipped sense
+///     carries it) and <c>superlative</c> (likewise unused). Every lemma that was trained as a noun/verb lemma has senses
+///     tagged <c>noun</c> and <c>verb</c>. Discover what is supported with <see cref="KnownLemmas"/> and
+///     <see cref="GetSenses"/>: for <c>lead</c>, <c>GetSenses("lead")</c> returns <c>guide-noun</c> (tags <c>noun</c>,
+///     group <c>guide</c>), <c>guide-verb</c> (<c>verb</c>, group <c>guide</c>) and <c>metal</c> (<c>noun</c>, group
+///     <c>metal</c>). The complete list of lemmas, senses, tags, groups and recognized forms is the user guide appendix
+///     <c>docs/user_guide/appendix-senses.md</c> ("Appendix: Supported Senses and Tags").
+///     </para>
+///     <para>
+///     <b>Sense or tag?</b> Use <see cref="ClassifyAsync(IReadOnlyList{string}, CancellationToken)"/> (or
+///     <see cref="ClassifyDetailAsync"/>) when the meaning or group matters, for example to choose a pronunciation of
+///     <c>lead</c>: the <c>guide-noun</c> and <c>metal</c> senses are both nouns, so only the sense or its group tells
+///     them apart. Use <see cref="ClassifyTagAsync"/> or <see cref="IsTagAsync"/> for a coarse question such as
+///     noun versus verb: they compare tags, so they stay confident when a lemma is split into several senses of the
+///     same part of speech. <see cref="IsTagAsync"/> answers null, not false, when the lemma has no sense with the
+///     tag at all (for example <c>recreate</c> has only verb senses, so <c>IsTagAsync</c> for <c>noun</c> is null);
+///     false means the lemma has the tag but another reading won.
+///     </para>
+///     <para>
+///     <b>Running text and context.</b> The list overloads read the whole list as <em>one running text</em> in which
+///     the words are joined by single spaces. Several sentences in one list are therefore one text, not separate
+///     inputs: they are encoded together and each sentence provides context for the words of the others, and the list
+///     is not split at sentence boundaries. To classify independent sentences, make one call per sentence. The same
+///     holds for the string overload. The encoder reads at most
+///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> tokens (default 256, including two special tokens;
+///     one word can be several word pieces). A text that fits is encoded once; a longer one is truncated per target:
+///     each known word is classified from a window of that many tokens centered on it (clamped to the text bounds), and
+///     text outside the window is ignored.
+///     </para>
+///     <para>
+///     <b>One target word.</b> To classify one word of one sentence, pass the sentence and take the entry of the target.
+///     With the string overload, find the target's token by its offset. With the list overload, you must tokenize
+///     yourself so that every word, and every punctuation mark, is its own element: the lookup is by the whole
+///     element, so <c>"race."</c> is not a known word (it yields null) and must be passed as <c>"race"</c> and
+///     <c>"."</c>. The string overload does this for you: it splits a text into words (letters and digits, with an
+///     inner apostrophe or hyphen kept inside the word, so <c>don't</c> and <c>well-known</c> are one word) and into
+///     whitespace and single punctuation characters. Other words of the sentence that are known ambiguous words are
+///     classified as well; that costs no extra encoder call.
+///     </para>
+///     <para>
+///     <b>Thread safety and disposal.</b> One classifier may be shared by many threads and tasks, and its methods may
+///     be called concurrently. Dispose it once, after all calls have finished; disposing while a call is in flight is
+///     not supported. After <see cref="IDisposable.Dispose"/> of a classifier from
+///     <see cref="WordSenseClassifier.CreateAsync"/> (which owns its encoder), a call that has to run the encoder (any text containing a
+///     known ambiguous word) throws <see cref="ObjectDisposedException"/>; a call whose words contain none can still
+///     return normally, and <see cref="KnownLemmas"/> and <see cref="GetSenses"/> keep working. Disposing twice is
+///     harmless.
 ///     </para>
 ///     <para>
 ///     A sense has one name: <see cref="WordSense.Sense"/> on a result is the same string as
@@ -45,11 +97,32 @@ namespace DemaConsulting.WordSense;
 ///         Console.WriteLine($"{words[i]}: {senses[i]?.Sense ?? "-"}");
 ///     }
 ///     </code>
+///     To classify one target word of one sentence, use the string overload and pick the token at the target's offset:
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///
+///     const string sentence = "They went to the race.";
+///     var start = sentence.IndexOf("race", StringComparison.Ordinal);
+///     var tokens = await classifier.ClassifyAsync(sentence);
+///     WordSense? sense = tokens.Single(t => t.Start == start).Sense;
+///     // null when the word is not an ambiguous word or the classifier abstained
+///     Console.WriteLine(sense?.Sense ?? "-");
+///     </code>
+///     With the list overload, tokenize so that punctuation is separate (<c>"race"</c> and <c>"."</c>, not
+///     <c>"race."</c>), then read the entry at the target's index:
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///
+///     string[] words = ["They", "went", "to", "the", "race", "."];
+///     WordSense?[] senses = await classifier.ClassifyAsync(words);
+///     WordSense? sense = senses[Array.IndexOf(words, "race")];
+///     </code>
 /// </example>
 public interface IWordSenseClassifier : IDisposable
 {
     /// <summary>
-    ///     Gets the lemmas this classifier can disambiguate, in ordinal order.
+    ///     Gets the lemmas this classifier can disambiguate, in ordinal order. Use it to discover what is supported;
+    ///     the senses of a lemma come from <see cref="GetSenses"/>.
     /// </summary>
     /// <example>
     ///     <code>
@@ -60,9 +133,9 @@ public interface IWordSenseClassifier : IDisposable
     IReadOnlyList<string> KnownLemmas { get; }
 
     /// <summary>
-    ///     Gets the senses of a lemma.
+    ///     Gets the senses of a lemma. For <c>lead</c> these are <c>guide-noun</c>, <c>guide-verb</c> and <c>metal</c>.
     /// </summary>
-    /// <param name="lemma">The lemma, for example <c>record</c>.</param>
+    /// <param name="lemma">The lemma, lower-case, for example <c>record</c>; an inflected form such as <c>records</c> is not a lemma.</param>
     /// <returns>The shared sense records, or an empty list when the lemma is unknown.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
     /// <example>
@@ -80,8 +153,9 @@ public interface IWordSenseClassifier : IDisposable
     ///     Classifies every word of a tokenized sentence or text.
     /// </summary>
     /// <param name="words">
-    ///     The words in order, including punctuation tokens. They are read as one running text in which
-    ///     the words are separated by single spaces.
+    ///     The words in order, including punctuation tokens, each as its own element (<c>"race"</c> then
+    ///     <c>"."</c>, never <c>"race."</c>, which is not a known word and yields null). They are read as one running
+    ///     text in which the words are separated by single spaces, so several sentences in one list share context.
     /// </param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>
@@ -91,6 +165,7 @@ public interface IWordSenseClassifier : IDisposable
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
@@ -112,6 +187,7 @@ public interface IWordSenseClassifier : IDisposable
     /// <returns>Tokens that tile the text exactly; see <see cref="WordSenseToken"/>.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="text"/> is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
@@ -136,6 +212,7 @@ public interface IWordSenseClassifier : IDisposable
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
@@ -165,6 +242,7 @@ public interface IWordSenseClassifier : IDisposable
     /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="tags"/> is empty or contains an empty tag.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
@@ -192,12 +270,20 @@ public interface IWordSenseClassifier : IDisposable
     /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="tag"/> is empty.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
     ///     string[] words = ["They", "will", "record", "the", "record"];
     ///     bool?[] isVerb = await classifier.IsTagAsync(words, "verb");
     ///     // true for a verb use, false for another use, null when unknown or abstained
+    ///     </code>
+    ///     The result is null, not false, for a word whose lemma has no sense with the tag: <c>recreate</c> has only
+    ///     verb senses, so asking for <c>noun</c> gives null:
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     bool?[] isNoun = await classifier.IsTagAsync(["They", "recreate", "it"], "noun");
+    ///     // isNoun[1] is null
     ///     </code>
     /// </example>
     Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default);
@@ -209,10 +295,13 @@ public interface IWordSenseClassifier : IDisposable
 /// <remarks>
 ///     The words are encoded once and every known word in them is classified from the same hidden
 ///     states. Inputs longer than the maximum sequence length are classified from a window centered on
-///     each target. The instance is thread-safe when its encoder is. Instances created by
-///     <see cref="CreateAsync"/> own their ONNX session, so dispose them (for example with <c>using</c>);
-///     create one classifier and share it rather than creating one per request. The classification
-///     methods, and how words are matched to lemmas, are described on <see cref="IWordSenseClassifier"/>.
+///     each target. The instance is thread-safe for concurrent classification calls when its encoder is;
+///     the encoder of an instance from <see cref="CreateAsync"/> is an <see cref="OnnxWordSenseEncoder"/>, which is.
+///     Instances created by <see cref="CreateAsync"/> own their ONNX session, so dispose them (for example with
+///     <c>using</c>) after every call has finished; later calls that need the encoder throw
+///     <see cref="ObjectDisposedException"/>. Create one classifier and share it rather than creating one per request.
+///     The classification methods, and how words are matched to lemmas, are described on
+///     <see cref="IWordSenseClassifier"/>.
 /// </remarks>
 /// <example>
 ///     Create the classifier once, then classify as many texts as needed. With no options the model is
@@ -234,7 +323,8 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     private readonly string[] _lemmas;
 
     /// <summary>
-    ///     Initializes a new instance of the <see cref="WordSenseClassifier"/> class from its parts.
+    ///     Initializes a new instance of the <see cref="WordSenseClassifier"/> class from its parts. Advanced: most
+    ///     applications use <see cref="CreateAsync"/> instead.
     /// </summary>
     /// <param name="encoder">The encoder; it is not disposed by this classifier.</param>
     /// <param name="table">The classifier table.</param>
@@ -287,9 +377,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         ArgumentNullException.ThrowIfNull(table);
         ArgumentNullException.ThrowIfNull(tokenizer);
         options ??= new WordSenseClassifierOptions();
-        ArgumentOutOfRangeException.ThrowIfLessThan(options.MaxSequenceLength, 8);
-        ArgumentOutOfRangeException.ThrowIfGreaterThan(options.MaxSequenceLength, 512);
-        ArgumentOutOfRangeException.ThrowIfNegative(options.AbstainMarginScale);
+        ValidateOptions(options);
 
         // A table is only meaningful for the exact model it was trained with
         if (!string.Equals(table.ModelSha256, encoder.ModelSha256, StringComparison.OrdinalIgnoreCase) ||
@@ -312,6 +400,17 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     public IReadOnlyList<string> KnownLemmas => _lemmas;
 
     /// <summary>
+    ///     Validates the range of the options that do not depend on the model.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    private static void ValidateOptions(WordSenseClassifierOptions options)
+    {
+        ArgumentOutOfRangeException.ThrowIfLessThan(options.MaxSequenceLength, 8);
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(options.MaxSequenceLength, 512);
+        ArgumentOutOfRangeException.ThrowIfNegative(options.AbstainMarginScale);
+    }
+
+    /// <summary>
     ///     Creates a classifier from the embedded table, obtaining and verifying the model first.
     /// </summary>
     /// <param name="options">The options, or null for defaults.</param>
@@ -322,10 +421,12 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     ///     them (see that method for its additional exceptions, such as <see cref="ArgumentException"/> for an
     ///     invalid <c>WORDSENSE_MIRROR_*</c> environment configuration; <see cref="WordSenseClassifierOptions.Downloader"/>
     ///     describes the download settings). The embedded table is loaded with <see cref="WordSenseTable.LoadEmbedded"/>.
-    ///     The model is obtained before <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> and
-    ///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> are validated, so an invalid value of either
-    ///     is reported only after the model has been downloaded or verified. <c>AbstainMarginScale</c> is
-    ///     rejected when negative or NaN; positive infinity is accepted.
+    ///     The options are validated first: an invalid
+    ///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/>, <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>
+    ///     or <see cref="WordSenseClassifierOptions.IntraOpThreads"/> is reported before anything is downloaded or
+    ///     verified. <c>AbstainMarginScale</c> is rejected when negative or NaN; positive infinity is accepted. The
+    ///     first call without a <c>ModelDirectory</c> downloads about 23 MB (the 22.97 MB <c>model_int8.onnx</c> and a
+    ///     232 KB <c>vocab.txt</c>) into the per-user store; later calls reuse the verified files with no network access.
     /// </remarks>
     /// <returns>A classifier that owns its encoder and must be disposed.</returns>
     /// <exception cref="WordSenseModelDownloadException">Thrown when the model could not be downloaded.</exception>
@@ -333,8 +434,15 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// <exception cref="WordSenseTableFormatException">Thrown when the embedded table is missing or malformed.</exception>
     /// <exception cref="FileNotFoundException">Thrown when a file of the model directory is missing.</exception>
     /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match the pinned value.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when an option value is out of range (checked after the model is obtained).</exception>
-    /// <exception cref="ArgumentException">Thrown when the <c>WORDSENSE_MIRROR_*</c> environment configuration is invalid.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown when <c>MaxSequenceLength</c> is outside 8 to 512, <c>AbstainMarginScale</c> is negative or NaN,
+    ///     <c>IntraOpThreads</c> is negative, or the downloader's <c>RequestTimeout</c> is invalid.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///     Thrown when the <c>WORDSENSE_MIRROR_*</c> environment configuration is invalid, or a directory or store path is not a valid path.
+    /// </exception>
+    /// <exception cref="IOException">Thrown when the store directory cannot be created or a model file cannot be read.</exception>
+    /// <exception cref="UnauthorizedAccessException">Thrown when the store directory or a model file cannot be accessed.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <example>
     ///     <code>
@@ -351,6 +459,10 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         CancellationToken cancellationToken = default)
     {
         options ??= new WordSenseClassifierOptions();
+
+        // Reject invalid option values before any download or file verification happens
+        ValidateOptions(options);
+        ArgumentOutOfRangeException.ThrowIfNegative(options.IntraOpThreads);
 
         var location = options.ModelDirectory is not null
             ? WordSenseModelLocation.FromDirectory(options.ModelDirectory)
@@ -486,7 +598,11 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         return result;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Releases the encoder when this classifier owns it (an instance from <see cref="CreateAsync"/>); otherwise
+    ///     it does nothing. Calling it more than once is harmless. Dispose only after every classification call has
+    ///     finished; afterwards calls that need the encoder throw <see cref="ObjectDisposedException"/>.
+    /// </summary>
     public void Dispose()
     {
         if (_ownsEncoder)

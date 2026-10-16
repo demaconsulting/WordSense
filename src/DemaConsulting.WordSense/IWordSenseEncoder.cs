@@ -1,12 +1,13 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Produces contextual token embeddings for a sequence of WordPiece ids.
+///     Advanced: produces contextual token embeddings for a sequence of WordPiece ids.
 /// </summary>
 /// <remarks>
 ///     The abstraction exists so the classifier can be tested without a model and so alternative
 ///     encoders can be supplied. The production implementation is <see cref="OnnxWordSenseEncoder"/>.
-///     Implementations must be safe for concurrent calls.
+///     Implementations must be safe for concurrent calls, because one classifier shares its encoder between
+///     all of its callers.
 /// </remarks>
 public interface IWordSenseEncoder : IDisposable
 {
@@ -29,5 +30,9 @@ public interface IWordSenseEncoder : IDisposable
     /// <returns>
     ///     The hidden states, row-major, <c>inputIds.Length × HiddenSize</c> values.
     /// </returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="inputIds"/> is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="inputIds"/> is empty.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is already cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
     ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken);
 }

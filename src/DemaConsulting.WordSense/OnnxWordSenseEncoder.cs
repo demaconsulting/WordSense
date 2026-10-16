@@ -4,12 +4,15 @@ using Microsoft.ML.OnnxRuntime.Tensors;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Runs the all-MiniLM-L6-v2 ONNX encoder with ONNX Runtime.
+///     Advanced: runs the all-MiniLM-L6-v2 ONNX encoder with ONNX Runtime. Applications normally get one
+///     from <see cref="WordSenseClassifier.CreateAsync"/> and never construct it.
 /// </summary>
 /// <remarks>
 ///     The instance owns one inference session, which ONNX Runtime documents as safe for concurrent
-///     <c>Run</c> calls, so a single encoder may serve many threads. The SHA-256 of the model file is
-///     computed when the encoder is opened and is what the classifier compares with the table.
+///     <c>Run</c> calls, so <see cref="EncodeAsync"/> may be called from many threads at once and a single encoder
+///     may serve many threads. The SHA-256 of the model file is computed when the encoder is opened and is what the
+///     classifier compares with the table. Dispose the encoder once, after every call has finished; calls made after
+///     disposal throw <see cref="ObjectDisposedException"/>.
 /// </remarks>
 public sealed class OnnxWordSenseEncoder : IWordSenseEncoder
 {
@@ -63,7 +66,16 @@ public sealed class OnnxWordSenseEncoder : IWordSenseEncoder
     /// <inheritdoc />
     public int HiddenSize { get; }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Encodes one sequence of WordPiece ids; safe to call concurrently from several threads.
+    /// </summary>
+    /// <param name="inputIds">The WordPiece ids, including the special tokens; at least one.</param>
+    /// <param name="cancellationToken">A token that cancels the call before inference starts.</param>
+    /// <returns>The hidden states, row-major, <c>inputIds.Length × HiddenSize</c> values.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="inputIds"/> is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when <paramref name="inputIds"/> is empty.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the encoder has been disposed.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is already cancelled.</exception>
     public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(inputIds);
@@ -98,7 +110,11 @@ public sealed class OnnxWordSenseEncoder : IWordSenseEncoder
         return ValueTask.FromResult(output.ToArray());
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Releases the ONNX inference session. Calling it more than once is harmless; after the first call
+    ///     <see cref="EncodeAsync"/> throws <see cref="ObjectDisposedException"/>. Do not dispose while an
+    ///     <see cref="EncodeAsync"/> call is still running.
+    /// </summary>
     public void Dispose()
     {
         if (Interlocked.Exchange(ref _disposed, 1) == 0)
