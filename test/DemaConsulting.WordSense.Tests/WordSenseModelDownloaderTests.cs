@@ -263,9 +263,13 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
     {
         using var server = new LocalServer(async context =>
         {
-            if (context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal))
+            // Only the mirror's model request stalls (well past the timeout), so the timeout is the only way out of
+            // it; the 23 MB fall-through download has to finish inside the same timeout, which gets a wide margin
+            // so that a heavily loaded machine does not turn a slow local copy into a failure
+            if (context.Request.Url!.AbsolutePath.StartsWith("/mirror", StringComparison.Ordinal)
+                && FileOf(context) == "model_int8.onnx")
             {
-                await Task.Delay(TimeSpan.FromSeconds(30));
+                await Task.Delay(TimeSpan.FromSeconds(120));
                 return;
             }
 
@@ -277,7 +281,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
             HuggingFaceBaseUri = new Uri(server.BaseUri, "/hf"),
             GitHubLfsBaseUri = new Uri(server.BaseUri, "/lfs"),
             StoreRoot = _store,
-            RequestTimeout = TimeSpan.FromSeconds(12),
+            RequestTimeout = TimeSpan.FromSeconds(20),
         };
 
         var location = await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
