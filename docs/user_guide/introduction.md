@@ -6,14 +6,17 @@ This document is the user guide for WordSense, a .NET library that tells, for En
 the part of speech and the pronunciation. It tells, for example, whether "record" is a noun or a verb, and
 whether "bow" is said like "bough" (a bend) or like "beau" (a weapon). Every word is looked up in an embedded
 dictionary of over 140,000 words; only a word with several meanings that the library has been trained on is decided
-by an encoder model from its sentence.
+by an encoder model from its sentence. The library comes as two NuGet packages: `DemaConsulting.WordSense`, the core
+with the API and the dictionary, which works on its own without any model, and `DemaConsulting.WordSense.MiniLM`,
+which adds the MiniLM encoder model and the weights trained for it.
 
 ## Scope
 
 This user guide covers:
 
-- Installation, requirements and a quick start
+- Installation of the two packages, requirements and a quick start
 - The classification API: words, text, outcomes, confidence, pronunciation and listing the candidates
+- Using the core package alone, without a model
 - Model download, mirrors and offline use
 - Accuracy, limitations and abstention
 - Licensing and provenance of the data
@@ -28,8 +31,8 @@ This user guide covers:
 
 The code samples in this guide are compiled by the test suite (`UserGuideSampleTests`): each C# block is preceded by
 a `sample` marker comment in the source of this guide and must equal the code in
-`test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`. The samples assume `ImplicitUsings` and
-`using DemaConsulting.WordSense;`.
+`test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSamples.cs`. The samples assume `ImplicitUsings`,
+`using DemaConsulting.WordSense;` and `using DemaConsulting.WordSense.MiniLM;`.
 
 # Glossary
 
@@ -59,16 +62,22 @@ a `sample` marker comment in the source of this guide and must equal the code in
 
 ```bash
 dotnet add package DemaConsulting.WordSense
+dotnet add package DemaConsulting.WordSense.MiniLM
 ```
 
-The package id is `DemaConsulting.WordSense` and the package depends only on Microsoft.ML.OnnxRuntime.
+`DemaConsulting.WordSense` is the core: the public API, the embedded dictionary and the `IWordSenseModel`
+abstraction. It has no runtime dependencies (no ONNX Runtime and no tokenizer) and works on its own: see "Using the
+Core Package Alone". `DemaConsulting.WordSense.MiniLM` depends on the core and on Microsoft.ML.OnnxRuntime; it adds the
+`all-MiniLM-L6-v2` encoder, its downloader and the weights table trained for it, which is what decides a word with
+several meanings from its sentence. Install both for the full behavior; the examples below use both.
 
 ## Requirements
 
-- .NET 8, 9 or 10 (the package targets `net8.0`, `net9.0` and `net10.0`) on Windows, Linux or macOS.
-- About 23 MB of disk space in a per-user directory for the encoder model, which is downloaded on first use. The
-  NuGet package contains the classifier table but not the model. A machine that cannot reach the internet needs a
-  mirror or a pre-seeded model directory (see "Model Files and Mirrors").
+- .NET 8, 9 or 10 (the packages target `net8.0`, `net9.0` and `net10.0`) on Windows, Linux or macOS.
+- For the MiniLM package, about 23 MB of disk space in a per-user directory for the encoder model, which is downloaded
+  on first use. The NuGet package contains the weights table but not the model. A machine that cannot reach the
+  internet needs a mirror or a pre-seeded model directory (see "Model Files and Mirrors"). The core package needs
+  neither.
 - Contributors who clone the repository also need [Git LFS](https://git-lfs.com): the files in `model/` are stored
   in Git LFS (`git lfs install` once, then `git lfs pull`). See "Troubleshooting".
 
@@ -77,7 +86,7 @@ The package id is `DemaConsulting.WordSense` and the package depends only on Mic
 <!-- sample:quick-start -->
 ```csharp
 // Downloads the model on first use (mirror, Hugging Face, GitHub LFS), verifies its SHA-256 and reuses it later
-using var classifier = await WordSenseClassifier.CreateAsync();
+using var classifier = await MiniLMWordSense.CreateClassifierAsync();
 
 string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album"];
 WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
@@ -109,7 +118,8 @@ Every word follows the same path:
 4. A word that is not in the dictionary, a determiner, a number, a proper noun or a capitalized word inside a sentence
    is **unknown**.
 
-The encoder runs only when a word needs it, so a sentence without such a word costs no model call.
+The encoder runs only when a word needs it, so a sentence without such a word costs no model call. Without a model
+(core package alone) step 3 gives the candidates only for every word with several senses.
 
 A caller gets two facts per answered word:
 
@@ -258,18 +268,22 @@ lemma, or for a dictionary-only lemma when `UseLexicon` is `false`.
 For each trained lemma the table stores a margin threshold. When the best candidate beats the runner-up by less than
 that threshold, the classifier abstains: `Details` is `null` and `Abstained` is `true`, while `Margin` and `RunnerUp`
 still report the best guess. Abstaining trades coverage for precision (about 91 % of the held-out rows are answered, see
-"Accuracy and Performance"). Scale all thresholds with `WordSenseClassifierOptions.AbstainMarginScale`:
+"Accuracy and Performance"). Scale all thresholds with `WordSenseClassifierOptions.AbstainMarginScale`. The model
+settings (`IntraOpThreads`, `MaxSequenceLength`) belong to `MiniLMWordSenseOptions`:
 
 <!-- sample:tuning -->
 ```csharp
-var options = new WordSenseClassifierOptions
+var miniLmOptions = new MiniLMWordSenseOptions
 {
-    AbstainMarginScale = 0.5, // below 1 answers more often, above 1 abstains more often; 0 never abstains
     IntraOpThreads = 2,       // ONNX Runtime threads; 0 selects the default
     MaxSequenceLength = 128,  // model window, 8 to 512 tokens; longer texts use a window around each target
 };
+var classifierOptions = new WordSenseClassifierOptions
+{
+    AbstainMarginScale = 0.5, // below 1 answers more often, above 1 abstains more often; 0 never abstains
+};
 
-using var tuned = await WordSenseClassifier.CreateAsync(options);
+using var tuned = await MiniLMWordSense.CreateClassifierAsync(miniLmOptions, classifierOptions);
 ```
 
 ## Dictionary Option
@@ -283,23 +297,48 @@ dictionary-only lemma. The option never changes a context answer.
 // Answer only the trained lemmas, as before the dictionary existed; every other word is unknown
 var options = new WordSenseClassifierOptions { UseLexicon = false };
 
-using var trainedOnly = await WordSenseClassifier.CreateAsync(options);
+using var trainedOnly = await MiniLMWordSense.CreateClassifierAsync(null, options);
 ```
+
+## Using the Core Package Alone
+
+`DemaConsulting.WordSense` works without a model, without ONNX Runtime and without network access.
+`WordSenseClassifier.Create()` builds a classifier from the embedded dictionary only:
+
+```csharp
+using var lexiconOnly = WordSenseClassifier.Create();
+WordAnalysis[] analyses = await lexiconOnly.ClassifyAsync(["The", "hunter", "will", "record"]);
+```
+
+A word with one part of speech ("hunter") is answered from the dictionary (`Basis` `Dictionary`). A word with several
+senses ("will", "record") cannot be decided from its sentence without a model: it abstains with `Basis` `Dictionary`,
+`Details` `null` and its `Candidates`, and `ContextLemmas` is empty. Unknown words are unknown as usual. Adding the
+MiniLM package changes only those multi-sense words that have trained weights: they are then decided from the sentence.
+
+## Other Models
+
+A model package implements `IWordSenseModel` (model ID, SHA-256 of the model file, hidden size, encoding) and supplies
+the weights table trained for it with the builder; the classifier constructor checks that they match
+(`WordSenseModelMismatchException`). The MiniLM package is the only one so far.
 
 # Model Files and Mirrors
 
-`WordSenseClassifier.CreateAsync` needs two files: `model_int8.onnx` (23 MB) and `vocab.txt`. If
-`WordSenseClassifierOptions.ModelDirectory` is set, the files there are verified against their pinned SHA-256 and
+`MiniLMWordSense.CreateClassifierAsync` needs two files: `model_int8.onnx` (23 MB) and `vocab.txt`. If
+`MiniLMWordSenseOptions.ModelDirectory` is set, the files there are verified against their pinned SHA-256 and
 used; nothing is downloaded. Otherwise they are stored in a per-user directory
-(`LocalApplicationData/DemaConsulting/WordSense/models/...`) and downloaded when missing, from these sources in
-order:
+(`LocalApplicationData/DemaConsulting/WordSense/models/all-MiniLM-L6-v2-int8/`) and downloaded when missing, from
+these sources in order:
 
-1. **Your mirror**, when configured: `{mirror}/all-MiniLM-L6-v2/{file}`
+1. **Your mirror**, when configured: `{mirror}/all-MiniLM-L6-v2-int8/{file}`
 2. **Hugging Face**, for files that are identical to the upstream files (only `vocab.txt`)
-3. **GitHub LFS**: `https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{file}`
+3. **GitHub LFS**:
+   `https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/all-MiniLM-L6-v2-int8/{file}`
 
-Every file must match its pinned SHA-256 digest; on a request failure, timeout, block or digest mismatch the next
-source is tried. If all fail, `WordSenseModelDownloadException.Failures` lists each attempt.
+The folder name `all-MiniLM-L6-v2-int8` is the model ID; each model has its own folder in the repository (`model/`),
+on a mirror and in the per-user store. Every file must match its pinned SHA-256 digest; on a request failure, timeout,
+block or digest mismatch the next source is tried. If all fail, `WordSenseModelDownloadException.Failures` lists each
+attempt. The weights table trained for the model is embedded in the MiniLM package, so only the two files are
+downloaded.
 
 To download (or verify) the model without creating a classifier, with progress and your own settings:
 
@@ -316,8 +355,8 @@ var downloaderOptions = new WordSenseModelDownloaderOptions
 WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync(downloaderOptions);
 
 // Offline use: copy the two verified files to a machine without internet access and point ModelDirectory at them
-using var classifier = await WordSenseClassifier.CreateAsync(
-    new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+using var classifier = await MiniLMWordSense.CreateClassifierAsync(
+    new MiniLMWordSenseOptions { ModelDirectory = location.Directory });
 ```
 
 ## Configuring a Mirror
@@ -335,7 +374,7 @@ or in code, which takes precedence over the environment:
 
 <!-- sample:mirror -->
 ```csharp
-var options = new WordSenseClassifierOptions
+var options = new MiniLMWordSenseOptions
 {
     Downloader = new WordSenseModelDownloaderOptions
     {
@@ -345,9 +384,9 @@ var options = new WordSenseClassifierOptions
 ```
 
 Credentials require https (except for loopback hosts) and are sent only to the mirror. The mirror must serve the two
-files, byte-identical to the pinned ones, under `{base}/all-MiniLM-L6-v2/model_int8.onnx` and
-`{base}/all-MiniLM-L6-v2/vocab.txt`. An invalid mirror configuration in the environment fails fast with an
-`ArgumentException`.
+files, byte-identical to the pinned ones, under `{base}/all-MiniLM-L6-v2-int8/model_int8.onnx` and
+`{base}/all-MiniLM-L6-v2-int8/vocab.txt`: one folder per model ID below the base URL. An invalid mirror configuration
+in the environment fails fast with an `ArgumentException`.
 
 ## Handling Failures
 
@@ -355,7 +394,7 @@ files, byte-identical to the pinned ones, under `{base}/all-MiniLM-L6-v2/model_i
 ```csharp
 try
 {
-    using var classifier = await WordSenseClassifier.CreateAsync();
+    using var classifier = await MiniLMWordSense.CreateClassifierAsync();
 }
 catch (WordSenseModelDownloadException ex)
 {
@@ -368,21 +407,30 @@ catch (WordSenseModelDownloadException ex)
 
 # API Reference
 
+Package `DemaConsulting.WordSense` (namespace `DemaConsulting.WordSense`):
+
 | Type                                             | Purpose                                                   |
 |--------------------------------------------------|-----------------------------------------------------------|
 | `IWordSenseClassifier`                           | `ClassifyAsync` overloads; lemma and candidate lookup     |
-| `WordSenseClassifier`                            | Implementation; `CreateAsync`                             |
-| `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention, |
-|                                                  | dictionary (`UseLexicon`)                                 |
+| `WordSenseClassifier`                            | Implementation; `Create` (lexicon only)                   |
+| `WordSenseClassifierOptions`                     | Abstention scale and dictionary (`UseLexicon`)            |
 | `WordAnalysis`, `WordDetails`, `WordSenseToken`  | Result of a word, best answer, text tile                  |
 | `AnswerBasis`                                    | Where an answer comes from: context, dictionary, none     |
 | `PartOfSpeech`, `Pronunciation`                  | Part of speech; pronunciation meaning and respelling      |
+| `IWordSenseModel`                                | Encoder model abstraction (ID, SHA-256, `EncodeAsync`)    |
+| `WordSenseTable`, `WordSenseWeightsTable`        | The embedded lexicon table and a model's weights table    |
+
+Package `DemaConsulting.WordSense.MiniLM` (namespace `DemaConsulting.WordSense.MiniLM`):
+
+| Type                                             | Purpose                                                   |
+|--------------------------------------------------|-----------------------------------------------------------|
+| `MiniLMWordSense`                                | `CreateClassifierAsync`; `LoadWeights`; `ModelId`         |
+| `MiniLMWordSenseOptions`                         | Model directory, downloader, threads, window              |
+| `MiniLMWordSenseModel`                           | ONNX Runtime encoder, the `IWordSenseModel` for MiniLM    |
 | `WordSenseModelDownloader`                       | `EnsureModelAsync`: verify or download the model files    |
 | `WordSenseModelDownloaderOptions`                | Mirror, base URIs, store root, timeout, progress          |
 | `WordSenseModelLocation`                         | A verified model directory; `FromDirectory`               |
 | `DownloadMirror`                                 | Mirror base URL and credentials; `FromEnvironment`        |
-| `IWordSenseEncoder`, `OnnxWordSenseEncoder`      | Encoder abstraction and ONNX Runtime encoder              |
-| `WordSenseTable`                                 | The embedded classifier table (`LoadEmbedded`)            |
 
 The two `ClassifyAsync` members of `IWordSenseClassifier` are asynchronous, and the results are parallel to their input:
 
@@ -400,7 +448,8 @@ The two `ClassifyAsync` members of `IWordSenseClassifier` are asynchronous, and 
 `Respelling` (which may be `null`).
 
 Every method accepts a `CancellationToken`. One classifier may be shared by many threads and tasks, and its methods may
-be called concurrently. It is `IDisposable` (it owns the ONNX session): dispose it once, after all calls have
+be called concurrently. It is `IDisposable` (it owns the model, for MiniLM the ONNX session): dispose it once, after
+all calls have
 finished. Exceptions:
 `WordSenseModelDownloadException` (no source delivered a verified file), `WordSenseModelMismatchException` (table and
 model differ) and `WordSenseTableFormatException` (damaged table); `WordSenseModelLocation.FromDirectory` throws
@@ -409,7 +458,8 @@ model differ) and `WordSenseTableFormatException` (damaged table); `WordSenseMod
 # Accuracy and Performance
 
 The figures below come from the builder reports in `docs/build_notes/` (the embedded table has 744 trained lemmas and
-1,521 senses and a dictionary section of over 140,000 words, format v5). Read them with their caveats.
+1,521 senses and a dictionary section of over 140,000 words; the lexicon table is format v6 and the weights table
+format v1). Read them with their caveats. The accuracy is unchanged by the split into two packages.
 
 **Dictionary answers.** The dictionary was evaluated against Universal Dependencies English EWT (train, dev and test
 pooled; `docs/build_notes/lexicon-evaluation.md`). A word with one part of speech is correct 97.0 % to 99.9 % of the
@@ -482,8 +532,8 @@ builder reports and will differ on other hardware; run the `Benchmark` test cate
 - **Abstention.** The classifier abstains when the evidence is weak; about one answer in ten is withheld on held-out
   text and more on real text. `Margin` and `RunnerUp` still give the best guess when you need it anyway.
 - **English only**, and the context is a window of at most `MaxSequenceLength` tokens around the target word.
-- **The model is a separate download** (23 MB, on first use) and ONNX Runtime needs native libraries for the target
-  platform.
+- **The model is a separate download** (MiniLM package, 23 MB, on first use) and ONNX Runtime needs native libraries
+  for the target platform.
 
 # Licensing and Provenance
 
@@ -511,8 +561,8 @@ The table is generated by the non-shipped builder `tools/WordSense.Builder` from
 format of the files is described in `corpus/README.md`. All commands run from the repository root with
 `dotnet run --project tools/WordSense.Builder -c Release -- <command> --name value`:
 
-- `build`: trains every lemma and writes the table, with the dictionary from `corpus/lexicon/` (`--corpus`, `--model`,
-  `--output`, `--report`)
+- `build`: trains the weights of one model for every lemma and writes the lexicon table and the model's weights table,
+  with the dictionary from `corpus/lexicon/` (`--corpus`, `--model`, `--model-id`, `--output`, `--weights`, `--report`)
 - `import-moby`: filters Moby Part-of-Speech II into `corpus/lexicon/lexicon.tsv`; `lexicon-eval` scores the
   dictionary against Universal Dependencies English EWT
 - `validate-provenance` and `validate-pos`: check the provenance rows and the part-of-speech rules of the inventory
@@ -548,18 +598,22 @@ documented in the build notes. The `tools/real-text` harvester collects candidat
 3. Add every braced form to `forms/speech.tsv` with its lemma and the labels it can take, unless the form is the lemma.
 4. Add a provenance row for every sentence to `provenance/my-batch.tsv`: source, licence from the list above,
    a URL for web sources and the origin (`real`, `authored` or `user-supplied`).
-5. Run `validate-provenance`, then `build` to write `src/DemaConsulting.WordSense/Resources/wordsense-table.bin`
-   (the second command is one line; `\` marks the continuation):
+5. Run `validate-provenance`, then `build` to write the lexicon table
+   `src/DemaConsulting.WordSense/Resources/wordsense-lexicon.bin` and the weights table of the model,
+   `src/DemaConsulting.WordSense.MiniLM/Resources/weights.<model-id>.<onnx-sha256>.bin` (the second command is one
+   line; `\` marks the continuation):
 
    ```text
    dotnet run --project tools/WordSense.Builder -c Release -- validate-provenance --corpus corpus
    dotnet run --project tools/WordSense.Builder -c Release -- build --corpus corpus --model model \
-     --output src/DemaConsulting.WordSense/Resources/wordsense-table.bin --report build-report.md
+     --model-id all-MiniLM-L6-v2-int8 --output src/DemaConsulting.WordSense/Resources/wordsense-lexicon.bin \
+     --weights src/DemaConsulting.WordSense.MiniLM/Resources/weights.all-MiniLM-L6-v2-int8.<onnx-sha256>.bin \
+     --report build-report.md
    ```
 
 6. Check the per-lemma holdout accuracy in the report; a lemma with fewer than two anchor labels or fewer than four
    anchors for a label is excluded. Regenerate the appendix with `generate-appendix`, run `pwsh ./build.ps1` and
-   commit the corpus files, the table and the appendix together.
+   commit the corpus files, the tables and the appendix together.
 
 # Troubleshooting
 
@@ -581,14 +635,14 @@ stale, truncated, modified or a Git LFS pointer. Delete it and let the downloade
 
 ## Git LFS Pointer Instead of the Model
 
-In a clone made without Git LFS, `model/model_int8.onnx` is a short text file that starts with
+In a clone made without Git LFS, `model/all-MiniLM-L6-v2-int8/model_int8.onnx` is a short text file that starts with
 `version https://git-lfs`, and the tests that need the model skip with "missing or is a Git LFS pointer". Run
 `git lfs install` and `git lfs pull`. Package users are not affected: the downloader fetches the real file.
 
-## The Table and the Model Differ
+## The Weights and the Model Differ
 
-`WordSenseModelMismatchException` means the table was trained with another model than the encoder you supplied
-(with a custom `IWordSenseEncoder`). Use the pinned model files.
+`WordSenseModelMismatchException` means the weights table was trained with another model than the one you supplied
+(a custom `IWordSenseModel`), or with another lexicon. Use the pinned model files of the MiniLM package.
 
 ## The Mirror Configuration Is Rejected
 

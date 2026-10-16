@@ -12,7 +12,9 @@
 WordSense is a .NET library that tells, for words in context, the part of speech and the pronunciation: whether
 "record" is a noun or a verb, and how to say "bow" or "read". It looks every word up in an embedded dictionary of over
 140,000 common words and, only where a word has several meanings, asks the int8-quantized `all-MiniLM-L6-v2` encoder
-(run with ONNX Runtime) to choose from the sentence, using a compact classifier table embedded in the assembly.
+(run with ONNX Runtime) to choose from the sentence, using a compact per-model weights table embedded in the assembly.
+The library is split in two packages: the core `DemaConsulting.WordSense` holds the API and the dictionary and needs no
+model, and `DemaConsulting.WordSense.MiniLM` adds the encoder and its weights.
 
 ## Features
 
@@ -22,7 +24,7 @@ WordSense is a .NET library that tells, for words in context, the part of speech
 - 🎯 **744 Trained Lemmas** - Curated heteronyms plus common noun/verb words, decided by context
 - 🤔 **Abstains** - Lists the candidates instead of guessing when unsure
 - 📊 **Confidence** - Every context answer carries a margin and the runner-up
-- 📦 **Single Package** - Only runtime dependency is Microsoft.ML.OnnxRuntime
+- 📦 **Two Packages** - The core has no dependencies and works without a model; the MiniLM package adds ONNX Runtime
 - 🔒 **Verified Model** - Downloaded on first use and checked against pinned SHA-256 digests
 - ⚡ **Fast** - A few milliseconds per sentence on a developer workstation
 - 🌍 **Multi-Platform** - Windows, Linux and macOS; .NET 8, 9 and 10
@@ -33,30 +35,32 @@ WordSense is a .NET library that tells, for words in context, the part of speech
 
 ```bash
 dotnet add package DemaConsulting.WordSense
+dotnet add package DemaConsulting.WordSense.MiniLM
 ```
 
-Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and internet access on first use, or a mirror, to download the
-23 MB encoder model (it is not part of the package). Contributors who clone this repository also need
-[Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because the files in `model/` are stored in
-Git LFS.
+`DemaConsulting.WordSense` is the core (API, dictionary, model abstraction) and works on its own, without a model or
+ONNX Runtime: single-sense words are answered and every ambiguous word lists its candidates
+(`WordSenseClassifier.Create()`). `DemaConsulting.WordSense.MiniLM` depends on the core and ONNX Runtime and decides
+the ambiguous trained words from their sentence.
+
+Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and, for the MiniLM package, internet access on first use, or a
+mirror, to download the 23 MB encoder model (it is not part of the package). Contributors who clone this repository also
+need [Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because the files in `model/` are stored
+in Git LFS.
 
 ## Usage
 
 The example below is checked by the test suite (`ReadmeSampleTests`): the code block must equal the compiled sample
-code in `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and the output block must equal what that code prints
-with the real model. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and
+code in `test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs`, and the output block must equal what that code
+prints with the real model. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and
 troubleshooting.
 
 <!-- sample:readme -->
 ```csharp
-using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
 
-// Ensure the model is present, downloading and verifying it on first use
-WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync();
-
-// Create a classifier that runs the model from that location
-using var classifier = await WordSenseClassifier.CreateAsync(
-    new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+// Create a classifier that runs the MiniLM model, downloading and verifying the model on first use
+using var classifier = await MiniLMWordSense.CreateClassifierAsync();
 
 // Classify the words of a sentence whose "record", "read" and "bow" are heteronyms
 var words = "The hunter fired an arrow from his bow so I will record a record and read the book yesterday".Split(' ');
@@ -106,10 +110,11 @@ several parts of speech and no classifier ("will", "so") is not answered: `Detai
 and `Candidates` lists the possibilities (shortened above). The classifier also abstains from a word whose margin is
 too low ("read": both of its pronunciations are verbs, so only the verb shows). Determiners such as "the" are
 `unknown` (`Basis` is `None`), like numbers and capitalized words inside a sentence. The encoder runs only for a
-sentence that has a word that needs it. The model is stored in a per-user directory and
-reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL` (optionally with `WORDSENSE_MIRROR_USER` and
-`WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a `DownloadMirror`; it is tried first, and the
-files can be copied to a machine without internet access. See the [user guide][link-user-guide] for details and the
+sentence that has a word that needs it. The model is stored in a per-user directory under its model ID
+(`all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL` (optionally with
+`WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a `DownloadMirror`;
+it is tried first, and it serves the files at `{mirror}/all-MiniLM-L6-v2-int8/{file}`. The files can be copied to a
+machine without internet access. See the [user guide][link-user-guide] for details and the
 [senses appendix][link-appendix] for the list of lemmas.
 
 ## Accuracy and Limitations
