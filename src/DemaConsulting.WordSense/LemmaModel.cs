@@ -42,7 +42,7 @@ public sealed class LemmaModel
     /// <param name="abstainMargin">
     ///     The base abstain margin. A word is answered only when its score margin is at least
     ///     <c>AbstainMargin * AbstainMarginScale</c> (see <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>);
-    ///     otherwise the classifier abstains and reports null. Must be finite.
+    ///     otherwise the classifier abstains: <c>Details</c> is null and <c>Abstained</c> is true. Must be finite.
     /// </param>
     /// <param name="dimension">The feature dimension.</param>
     /// <exception cref="ArgumentNullException">
@@ -207,7 +207,7 @@ public sealed class LemmaModel
     /// <summary>
     ///     Gets the base abstain margin. A word is answered only when its score margin is at least
     ///     <c>AbstainMargin * AbstainMarginScale</c> (<see cref="WordSenseClassifierOptions.AbstainMarginScale"/>,
-    ///     1 by default); a smaller margin makes the classifier abstain, so the result is null.
+    ///     1 by default); a smaller margin makes the classifier abstain, so <c>Details</c> is null and <c>Abstained</c> is true.
     /// </summary>
     public float AbstainMargin { get; }
 

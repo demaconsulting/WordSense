@@ -62,6 +62,18 @@ public class WordSenseTableTests
         Assert.Equal(original.Lemmas[0].Senses, copy.Lemmas[0].Senses);
         Assert.Equal(new Pronunciation("animal", "bat"), copy.Lemmas[0].Candidates[0].Pronunciation);
         Assert.Null(copy.Lemmas[0].Candidates[1].Pronunciation!.Respelling);
+
+        // Candidates are shared across reads and carry the lemma and part of speech of their sense
+        foreach (var lemma in copy.Lemmas)
+        {
+            Assert.Same(lemma.Candidates, lemma.Candidates);
+            Assert.Same(lemma.Candidates[0], lemma.Candidates[0]);
+            for (var i = 0; i < lemma.Senses.Count; i++)
+            {
+                Assert.Equal(lemma.Lemma, lemma.Candidates[i].Lemma);
+                Assert.Equal(lemma.Senses[i].Pos, lemma.Candidates[i].PartOfSpeech);
+            }
+        }
     }
 
     /// <summary>
@@ -362,6 +374,22 @@ public class WordSenseTableTests
     }
 
     /// <summary>
+    ///     In the embedded table every sense of every lemma that has meanings carries a pronunciation.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_LoadEmbedded_HeteronymSensesHavePronunciations()
+    {
+        var table = WordSenseTable.LoadEmbedded();
+
+        var heteronyms = table.Lemmas.Where(l => l.IsHeteronym).ToList();
+        Assert.NotEmpty(heteronyms);
+        foreach (var lemma in heteronyms)
+        {
+            Assert.All(lemma.Candidates, c => Assert.NotNull(c.Pronunciation));
+        }
+    }
+
+    /// <summary>
     ///     Builds a one-lemma table without forms; its body layout is fixed so tests can patch known offsets.
     /// </summary>
     /// <returns>The serialized table.</returns>
@@ -568,6 +596,68 @@ public class WordSenseTableTests
 
         var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
         Assert.Contains("form", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table with a version above the current one is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedNewerVersion_Throws()
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[4] = 5; return b; });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("version 5", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose binary lemma declares more than two senses is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedBinaryKindWithThreeSenses_Throws()
+    {
+        var lead = CreateSmallTable().Lemmas[1];
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [lead], new Dictionary<string, string>());
+
+        // The kind byte precedes weights (9 floats), bias (3 floats), the margin and the empty form count
+        var bytes = Resign(table.ToArray(), b =>
+        {
+            var kindOffset = b.Length - 4 - 4 - 12 - 36 - 1;
+            Assert.Equal((byte)LemmaModelKind.OneVersusRest, b[kindOffset]);
+            b[kindOffset] = (byte)LemmaModelKind.Binary;
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("inconsistent", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose senses disagree as a set (two meanings with different respellings that
+    ///     are made identical) is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedInconsistentSenseSet_Throws()
+    {
+        var model = new LemmaModel(
+            "bat", [Def(PartOfSpeech.Noun, "cccc", "xx"), Def(PartOfSpeech.Verb, "bbbb", "yy")],
+            LemmaModelKind.Binary, [1f, 0f, 0f], [0f], 0.5f, 3);
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [model], new Dictionary<string, string>());
+
+        // The second meaning now equals the first, so one meaning has two respellings
+        var bytes = Resign(table.ToArray(), b =>
+        {
+            var index = b.AsSpan().IndexOf("bbbb"u8);
+            Assert.True(index > 0);
+            "cccc"u8.CopyTo(b.AsSpan(index));
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("inconsistent", ex.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.IsAssignableFrom<ArgumentException>(ex.InnerException);
     }
 
     /// <summary>

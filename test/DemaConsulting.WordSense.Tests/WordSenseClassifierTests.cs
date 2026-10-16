@@ -34,24 +34,16 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
-    ///     A token sequence built from the segments of a text tiles it, each token has the text at its offsets and
-    ///     only words may carry a sense.
+    ///     A token sequence returned for a text tiles it, each token has the text at its offsets and
+    ///     only known words carry a sense.
     /// </summary>
     [Fact]
-    public void WordSenseToken_Tiles_FollowSegmentSpans()
+    public async Task WordSenseToken_Tiles_FollowSegmentSpans()
     {
-        const string text = "They record it, don't.";
-        var details = new WordDetails("record", PartOfSpeech.Verb, null);
-        var tokens = TextSplitter.SplitSegments(text)
-            .Select(s =>
-            {
-                var piece = text.Substring(s.Start, s.Length);
-                var analysis = s.IsWord && piece == "record"
-                    ? new WordAnalysis(piece, details, 1.0, false, null, 0.0)
-                    : new WordAnalysis(piece, null, 0.0, false, null, 0.0);
-                return new WordSenseToken(s.Start, s.Length, piece, analysis);
-            })
-            .ToList();
+        const string text = "They bat it, don't.";
+        using var classifier = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = 0 });
+
+        var tokens = await classifier.ClassifyAsync(text, TestContext.Current.CancellationToken);
 
         var position = 0;
         foreach (var token in tokens)
@@ -67,8 +59,9 @@ public class WordSenseClassifierTests
         Assert.Equal(text.Length, position);
         Assert.Equal(text, string.Concat(tokens.Select(t => t.Text)));
         var tagged = Assert.Single(tokens, t => t.Analysis.Details is not null);
-        Assert.Equal("record", tagged.Text);
-        Assert.Same(details, tagged.Analysis.Details);
+        Assert.Equal("bat", tagged.Text);
+        Assert.Equal(5, tagged.Start);
+        Assert.Same(classifier.GetCandidates("bat")[0], tagged.Analysis.Details);
         Assert.Null(tokens[0].Analysis.Details);
     }
 
@@ -92,6 +85,13 @@ public class WordSenseClassifierTests
         {
             Assert.Equal(position, token.Start);
             Assert.Equal(token.Text.Length, token.Length);
+            Assert.Equal(token.Text, token.Analysis.Word);
+            if (string.IsNullOrWhiteSpace(token.Text))
+            {
+                Assert.Null(token.Analysis.Details);
+                Assert.Equal(0.0, token.Analysis.Margin);
+            }
+
             position += token.Length;
         }
     }
@@ -219,11 +219,16 @@ public class WordSenseClassifierTests
     {
         var encoder = new FakeEncoder();
         using var classifier = Create(encoder, new WordSenseClassifierOptions { MaxSequenceLength = 8 });
-        var text = string.Join(' ', Enumerable.Repeat("a flies", 20)) + " the bat " + string.Join(' ', Enumerable.Repeat("a flies", 20));
+        var text = string.Join(' ', Enumerable.Repeat("a flies", 20)) + " the bat " + string.Join(' ', Enumerable.Repeat("a flies", 20))
+            + " a bat " + string.Join(' ', Enumerable.Repeat("a flies", 20));
 
         var tokens = await classifier.ClassifyAsync(text, TestContext.Current.CancellationToken);
 
-        Assert.Equal(PartOfSpeech.Verb, Assert.Single(tokens, t => t.Analysis.Details is not null).Analysis.Details!.PartOfSpeech);
+        var known = tokens.Where(t => t.Analysis.Details is not null).ToList();
+        Assert.Equal(2, known.Count);
+        Assert.Equal(PartOfSpeech.Verb, known[0].Analysis.Details!.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, known[1].Analysis.Details!.PartOfSpeech);
+        Assert.Equal(2, encoder.Calls);
         Assert.All(encoder.Lengths, length => Assert.True(length <= 8));
     }
 
@@ -253,16 +258,33 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
-    ///     Cancellation reaches the encoder.
+    ///     A token already cancelled when the call starts is rejected at the top of scoring, before any encoding.
     /// </summary>
     [Fact]
     public async Task WordSenseClassifier_ClassifyAsync_Cancelled_Throws()
     {
-        using var classifier = Create();
+        var encoder = new FakeEncoder();
+        using var classifier = Create(encoder);
         using var cts = new CancellationTokenSource();
         await cts.CancelAsync();
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() => classifier.ClassifyAsync("the bat", cts.Token));
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     A token cancelled by the encoder during its first call stops the classification before the next target.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CancelledDuringEncode_StopsBeforeNextTarget()
+    {
+        using var cts = CancellationTokenSource.CreateLinkedTokenSource(TestContext.Current.CancellationToken);
+        var encoder = new FakeEncoder { CancelDuringEncode = cts };
+        using var classifier = Create(encoder);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => classifier.ClassifyAsync("the bat and a bat", cts.Token));
+
+        Assert.Equal(1, encoder.Calls);
     }
 
     /// <summary>
@@ -388,6 +410,30 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
+    ///     After an owned classifier is disposed, a call with a known word throws, a call without one still returns
+    ///     and disposing again is harmless.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_Dispose_OwnedEncoder_LaterCallsBehaveAsDocumented()
+    {
+        var encoder = new FakeEncoder();
+        var classifier = Create(encoder, ownsEncoder: true);
+        var token = TestContext.Current.CancellationToken;
+
+        classifier.Dispose();
+        classifier.Dispose();
+
+        Assert.True(encoder.Disposed);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["the", "bat"], token));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync("the bat", token));
+        var tokens = await classifier.ClassifyAsync("nothing to see here", token);
+        Assert.All(tokens, t => Assert.Null(t.Analysis.Details));
+        var words = await classifier.ClassifyAsync(["nothing", "here"], token);
+        Assert.All(words, a => Assert.Null(a.Details));
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
     ///     Returns hidden states whose first component depends on whether "bat" follows "the".
     /// </summary>
     private sealed class FakeEncoder : IWordSenseEncoder
@@ -407,6 +453,8 @@ public class WordSenseClassifierTests
 
         public bool Disposed { get; private set; }
 
+        public CancellationTokenSource? CancelDuringEncode { get; init; }
+
         public int[] Lengths
         {
             get
@@ -420,8 +468,10 @@ public class WordSenseClassifierTests
 
         public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
         {
+            ObjectDisposedException.ThrowIf(Disposed, this);
             cancellationToken.ThrowIfCancellationRequested();
             Interlocked.Increment(ref _calls);
+            CancelDuringEncode?.Cancel();
             lock (_lengths)
             {
                 _lengths.Add(inputIds.Length);

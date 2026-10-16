@@ -21,27 +21,31 @@ internal sealed record InventoryRow(
     string Source)
 {
     /// <summary>
-    ///     Creates a row from the legacy plan fields (a tag list and a group) used by the one-shot importers.
+    ///     Creates a row from the legacy plan fields (a label list and a group) used by the one-shot real-text importers.
     /// </summary>
+    /// <remarks>
+    ///     This deliberately keeps the legacy plan format: the meaning is the group, else the label. It serves only the
+    ///     real-import and real-authored paths, whose plans were written that way; new importers write no meaning.
+    /// </remarks>
     /// <param name="lemma">The lemma.</param>
     /// <param name="label">The sense label.</param>
-    /// <param name="tags">The legacy tags; one of them is a part of speech (noun, verb, adj, adv).</param>
+    /// <param name="tags">The legacy plan labels; one of them is a part of speech (noun, verb, adj, adv).</param>
     /// <param name="group">The legacy group, or null.</param>
     /// <param name="source">The file name.</param>
     /// <returns>The row; its meaning is the group, else the label (adj and adv spelled out).</returns>
     public static InventoryRow FromPlan(string lemma, string label, IReadOnlyList<string> tags, string? group, string source)
     {
         var pos = tags.Select(PosOfTag).FirstOrDefault(p => p is not null)
-            ?? throw new InvalidDataException($"Sense '{lemma}/{label}' has no part-of-speech tag.");
+            ?? throw new InvalidDataException($"Sense '{lemma}/{label}' has no part-of-speech label.");
         var meaning = SpellOut(string.IsNullOrEmpty(group) ? label : group);
         return new InventoryRow(lemma, label, pos, meaning, null, source);
     }
 
     /// <summary>
-    ///     Maps a legacy part-of-speech tag to a part of speech.
+    ///     Maps a legacy part-of-speech label to a part of speech.
     /// </summary>
-    /// <param name="tag">The tag.</param>
-    /// <returns>The part of speech, or null when the tag is not one.</returns>
+    /// <param name="tag">The label.</param>
+    /// <returns>The part of speech, or null when the label is not one.</returns>
     public static PartOfSpeech? PosOfTag(string tag) => tag switch
     {
         "noun" => PartOfSpeech.Noun,

@@ -42,11 +42,12 @@ namespace DemaConsulting.WordSense;
 /// <param name="Meaning">
 ///     A short identifier of the meaning that determines the pronunciation, for example <c>bend</c> or <c>weapon</c>
 ///     for <c>bow</c>, <c>past</c> or <c>present</c> for <c>read</c>, or <c>noun</c> or <c>verb</c> for a word whose
-///     stress depends on its part of speech. Lower-case letters, digits and hyphens.
+///     stress depends on its part of speech. Lower-case ASCII letters, digits and hyphens; it must start with a
+///     letter and is at most 32 characters.
 /// </param>
 /// <param name="Respelling">
 ///     Our own plain respelling of the pronunciation, or <see langword="null"/> when none has been authored. It uses
-///     letters, hyphens and apostrophes only: syllables are separated by hyphens and, when there are several, the
+///     ASCII letters, hyphens and apostrophes only: syllables are separated by hyphens and, when there are several, the
 ///     stressed syllable is written in capitals (<c>REK-urd</c> for the noun <c>record</c>, <c>rih-KORD</c> for the
 ///     verb; <c>bow</c> and <c>boh</c> for the two meanings of <c>bow</c>). It is not IPA or any dictionary's scheme.
 /// </param>

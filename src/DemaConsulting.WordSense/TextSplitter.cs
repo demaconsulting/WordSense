@@ -83,7 +83,7 @@ internal static class TextSplitter
     }
 
     /// <summary>
-    ///     Determines whether the character at an index is a letter or digit.
+    ///     Determines whether the character at an index is a letter, a digit or a combining mark.
     /// </summary>
     /// <param name="text">The text.</param>
     /// <param name="index">The index.</param>

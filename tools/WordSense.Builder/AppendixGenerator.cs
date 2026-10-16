@@ -152,9 +152,13 @@ internal static class AppendixGenerator
 
         lines.Add("### Parts of Speech");
         lines.Add(string.Empty);
+        var posCount = rows.Select(r => r.Pos).Distinct().Count();
+        var posWord = posCount is >= 0 and <= 8
+            ? new[] { "none", "one", "two", "three", "four", "five", "six", "seven", "eight" }[posCount]
+            : posCount.ToString(System.Globalization.CultureInfo.InvariantCulture);
         AddParagraph(lines,
             "The `PartOfSpeech` enumeration defines all eight classic parts of speech, but the shipped table only " +
-            "produces the four listed here.");
+            $"produces the {posWord} listed here.");
         lines.Add("| Part of speech | Senses |");
         lines.Add("|----------------|--------|");
         foreach (var pos in rows.Select(r => r.Pos).Distinct().Order())

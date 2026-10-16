@@ -6,7 +6,8 @@ namespace DemaConsulting.WordSense;
 /// <remarks>
 ///     Every property is optional. Set <see cref="ModelDirectory"/> for offline use, <see cref="Downloader"/>
 ///     to reach the model through a mirror or a custom store, and <see cref="AbstainMarginScale"/> to trade
-///     coverage against precision: a larger scale makes the classifier abstain (return null) more often.
+///     coverage against precision: a larger scale makes the classifier abstain more often (<c>Details</c> is null and
+///     <c>Abstained</c> is true).
 ///     A null <see cref="Downloader"/> does not disable the mirror environment variables; see
 ///     <see cref="DownloadMirror.UrlEnvironmentVariable"/>.
 /// </remarks>

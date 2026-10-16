@@ -15,7 +15,8 @@ namespace DemaConsulting.WordSense;
 ///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], u32 lemma count, lemmas in ordinal order (string lemma,
 ///     u16 sense count, per sense: u8 part of speech, string meaning (empty when none), string respelling (empty when
 ///     none); then u8 kind,
-///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms in ordinal order (string form, u32 lemma index), and a trailing
+///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms (string form, u32 lemma index; the writer
+///     emits them in ordinal order and the reader accepts any order), and a trailing
 ///     32-byte SHA-256 of everything before it. Strings are a u16 byte length followed by UTF-8.
 ///     </para>
 ///     <para>
@@ -229,7 +230,7 @@ public sealed class WordSenseTable
     /// </example>
     public static WordSenseTable LoadEmbedded()
     {
-        // Copy the resource into memory; it is a few hundred kilobytes
+        // Copy the resource into memory; it is about 1.3 MB
         using var stream = typeof(WordSenseTable).Assembly.GetManifestResourceStream(EmbeddedResourceName)
             ?? throw new WordSenseTableFormatException("The embedded classifier table is missing from the assembly.");
         using var memory = new MemoryStream();

@@ -253,7 +253,7 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     An imported batch also writes its senses, with derived tags, to the inventory.
+    ///     An imported batch also writes its senses, with derived parts of speech, to the inventory.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_BatchImporter_WritesDerivedInventory()
@@ -267,6 +267,7 @@ public sealed class BuilderTests : IDisposable
 
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
         Assert.Equal(["bank/noun/Noun", "bank/verb/Verb"], inventory.Rows.Select(r => $"{r.Lemma}/{r.Label}/{r.Pos}"));
+        Assert.All(inventory.Rows, r => Assert.Null(r.Meaning));
         Assert.DoesNotContain("\r", File.ReadAllText(Path.Combine(corpus, "senses", "speech-batch1.tsv")), StringComparison.Ordinal);
     }
 
@@ -292,7 +293,7 @@ public sealed class BuilderTests : IDisposable
     ///     Only part-of-speech labels can be imported; a descriptive label makes the batch invalid.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged()
+    public void WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreAssigned()
     {
         var corpus = PrepareCorpus();
         Write("source/batches/batch1.tsv", "lemma\tlabels\nbank\tnoun,verb\n");
@@ -305,6 +306,7 @@ public sealed class BuilderTests : IDisposable
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
         Assert.Equal(PartOfSpeech.Noun, inventory.DefinitionsOf("bank")[0].Pos);
         Assert.Equal(PartOfSpeech.Verb, inventory.DefinitionsOf("bank")[1].Pos);
+        Assert.All(inventory.DefinitionsOf("bank"), d => Assert.Null(d.Meaning));
     }
 
     /// <summary>
@@ -326,11 +328,21 @@ public sealed class BuilderTests : IDisposable
             new InventoryRow("single", "b", PartOfSpeech.Verb, "x", null, "s.tsv"),
             new InventoryRow("dup", "a", PartOfSpeech.Noun, null, null, "s.tsv"),
             new InventoryRow("dup", "b", PartOfSpeech.Noun, null, null, "s.tsv"),
+            new InventoryRow("wobble", "a", PartOfSpeech.Noun, "x", "bou", "s.tsv"),
+            new InventoryRow("wobble", "b", PartOfSpeech.Verb, "x", "bow", "s.tsv"),
+            new InventoryRow("wobble", "c", PartOfSpeech.Noun, "y", "bo", "s.tsv"),
+            new InventoryRow("shared", "a", PartOfSpeech.Noun, "x", "bou", "s.tsv"),
+            new InventoryRow("shared", "b", PartOfSpeech.Noun, "y", "bou", "s.tsv"),
+            new InventoryRow("undef", "a", (PartOfSpeech)999, null, null, "s.tsv"),
+            new InventoryRow("undef", "b", PartOfSpeech.Verb, null, null, "s.tsv"),
         ]);
 
         var errors = inventory.ValidateRules();
 
-        Assert.Equal(["dup", "mixed", "single"], errors.Select(e => e.Split('\'')[1]).Order(StringComparer.Ordinal));
+        Assert.Equal(["dup", "mixed", "shared", "single", "undef", "wobble"], errors.Select(e => e.Split('\'')[1]).Order(StringComparer.Ordinal));
+        Assert.Contains(errors, e => e.Contains("inconsistent respellings", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("distinct respellings", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("undefined part of speech", StringComparison.Ordinal));
     }
 
     /// <summary>
@@ -388,26 +400,6 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("a.tsv:2", ex.Message, StringComparison.Ordinal);
         Assert.Contains("a.tsv:3", ex.Message, StringComparison.Ordinal);
         Assert.Contains("a.tsv:4", ex.Message, StringComparison.Ordinal);
-    }
-
-    /// <summary>
-    ///     The audit resolves rows: agreement is accepted, a low-confidence or disagreeing row needs the third judge, and a low-confidence third judge leaves it undecided.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_PosAudit_Resolve_FollowsTheRules()
-    {
-        var noun = new JudgeAnswer("x", "noun", "singular", "H", string.Empty);
-        var nounLow = new JudgeAnswer("x", "noun", "singular", "L", "unsure");
-        var verb = new JudgeAnswer("x", "verb", "base", "H", string.Empty);
-        var other = new JudgeAnswer("x", "other", "none", "H", "proper noun");
-
-        Assert.Equal("agree", PosAudit.Resolve(noun, noun, null).Resolution);
-        Assert.True(PosAudit.AutoAccept(noun, noun));
-        Assert.False(PosAudit.AutoAccept(noun, nounLow));
-        Assert.False(PosAudit.AutoAccept(other, other));
-        Assert.Equal(("verb", "adjudicated"), (PosAudit.Resolve(noun, verb, verb).Pos, PosAudit.Resolve(noun, verb, verb).Resolution));
-        Assert.Equal(PosAudit.Undecided, PosAudit.Resolve(noun, verb, other).Resolution);
-        Assert.Equal(PosAudit.Undecided, PosAudit.Resolve(noun, nounLow, new JudgeAnswer("x", "noun", "singular", "L", "still unsure")).Resolution);
     }
 
     /// <summary>
@@ -790,6 +782,45 @@ public sealed class BuilderTests : IDisposable
         Assert.Equal(2, result.Report.Accuracy.Pos.Evaluated);
         Assert.Equal(0, result.Report.Accuracy.Pronunciation.Evaluated);
         Assert.All(result.Table.Lemmas[0].Candidates, c => Assert.Null(c.Pronunciation));
+    }
+
+    /// <summary>
+    ///     A heteronym lemma is also evaluated at the meaning level and has pronunciation counts.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_TableBuilder_Build_HeteronymReportsMeaningLevel()
+    {
+        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "bow", "the", "money", "river", "deep", "rich", "wide", "tall", "high", "low", "old", "new", "."];
+        string[] fillers = ["deep", "rich", "wide", "tall", "high", "low"];
+        var anchors = new List<CorpusRow>();
+        foreach (var filler in fillers)
+        {
+            anchors.Add(Row("bow", "noun", $"the {{bow}} money {filler}.", "a.tsv"));
+            anchors.Add(Row("bow", "verb", $"the {{bow}} river {filler}.", "a.tsv"));
+        }
+
+        var holdout = new[]
+        {
+            Row("bow", "noun", "the {bow} money old.", "h.tsv"),
+            Row("bow", "verb", "the {bow} river new.", "h.tsv"),
+        };
+        var inventory = new SenseInventory(
+        [
+            new InventoryRow("bow", "noun", PartOfSpeech.Noun, "a", "bou", "s.tsv"),
+            new InventoryRow("bow", "verb", PartOfSpeech.Verb, "b", "bo", "s.tsv"),
+        ]);
+        var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bow", "bow", ["noun", "verb"]) };
+        using var encoder = new FakeEncoder();
+
+        var result = TableBuilder.Build(
+            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+
+        var lemma = Assert.Single(result.Report.Lemmas);
+        Assert.Contains("Meaning level:", result.Report.Render(), StringComparison.Ordinal);
+        Assert.Equal(lemma.Correct, lemma.MeaningCorrect);
+        Assert.Equal(2, result.Report.Accuracy.Pronunciation.Evaluated);
+        Assert.NotNull(lemma.Pronunciation);
+        Assert.Equal(2, lemma.Pronunciation.Evaluated);
     }
 
     /// <summary>
@@ -1238,7 +1269,7 @@ public sealed class BuilderTests : IDisposable
         Assert.Equal(["good", "weak"], results.Select(r => r.Lemma));
         Assert.True(results[0].Passed);
         Assert.Equal(15.0 / 16, results[0].BestSense);
-        Assert.Equal(15.0 / 16, results[0].TagAccuracy);
+        Assert.Equal(15.0 / 16, results[0].PosAccuracy);
         Assert.Equal(1.0, results[0].SenseAnswered("noun"));
         Assert.True(double.IsNaN(results[0].SenseAnswered("adj")));
         Assert.False(results[1].Passed);

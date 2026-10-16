@@ -221,5 +221,27 @@ public class DownloadMirrorTests
         Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new() { ["WORDSENSE_MIRROR_URL"] = "not a url" })));
         Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new() { ["WORDSENSE_MIRROR_URL"] = "ftp://x/y" })));
         Assert.Throws<ArgumentNullException>(() => DownloadMirror.FromEnvironment(null!));
+
+        // Credentials and a bearer token together are rejected without echoing any secret
+        var both = Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "https://mirror.example/m",
+            ["WORDSENSE_MIRROR_USER"] = "secret-user",
+            ["WORDSENSE_MIRROR_PASSWORD"] = "secret-password",
+            ["WORDSENSE_MIRROR_BEARER_TOKEN"] = "secret-token",
+        })));
+        Assert.DoesNotContain("secret", both.Message);
+
+        // A rejected URL is never echoed, because a mistyped one can carry a pasted credential
+        var badScheme = Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "ftp://pw@x/y",
+        })));
+        Assert.DoesNotContain("pw@x", badScheme.Message);
+        var notUrl = Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "not a url pw@x",
+        })));
+        Assert.DoesNotContain("pw@x", notUrl.Message);
     }
 }

@@ -20,7 +20,7 @@ internal sealed record GatePolicy(double MinBestSense = 0.90, double MinSenseAns
 /// <param name="BestSense">The best-sense accuracy over the holdout rows.</param>
 /// <param name="Coverage">The share of holdout rows answered.</param>
 /// <param name="AnsweredAccuracy">The accuracy of the answered rows.</param>
-/// <param name="TagAccuracy">The best-answer part-of-speech accuracy of the noun-versus-verb question.</param>
+/// <param name="PosAccuracy">The best-answer part-of-speech accuracy of the noun-versus-verb question.</param>
 /// <param name="Senses">The counts per gold sense.</param>
 /// <param name="Failure">Why the lemma failed the gate, or an empty text when it passed.</param>
 internal sealed record GateResult(
@@ -30,7 +30,7 @@ internal sealed record GateResult(
     double BestSense,
     double Coverage,
     double AnsweredAccuracy,
-    double TagAccuracy,
+    double PosAccuracy,
     IReadOnlyList<SenseStats> Senses,
     string Failure)
 {
@@ -116,7 +116,7 @@ internal static class NounVerbGate
                 failures.Add($"coverage {Pct(coverage)} below {Pct(policy.MinCoverage)}");
             }
 
-            var tag = l.Pos is { Evaluated: > 0 } t ? (double)t.Correct / t.Evaluated : 0;
+            var pos = l.Pos is { Evaluated: > 0 } t ? (double)t.Correct / t.Evaluated : 0;
             results.Add(new GateResult(
                 l.Lemma,
                 l.AnchorCount,
@@ -124,7 +124,7 @@ internal static class NounVerbGate
                 best,
                 coverage,
                 l.Answered == 0 ? 0 : (double)l.AnsweredCorrect / l.Answered,
-                tag,
+                pos,
                 senses,
                 string.Join("; ", failures)));
         }
@@ -213,7 +213,7 @@ internal static class NounVerbGate
     /// <returns>The table text with a header.</returns>
     public static string RenderTsv(IReadOnlyList<GateResult> results)
     {
-        var text = new StringBuilder("lemma\tanchors\tholdout\tbest_sense\tnoun_best\tverb_best\tnoun_answered\tverb_answered\tcoverage\tanswered_accuracy\ttag_accuracy\tstatus\n");
+        var text = new StringBuilder("lemma\tanchors\tholdout\tbest_sense\tnoun_best\tverb_best\tnoun_answered\tverb_answered\tcoverage\tanswered_accuracy\tpos_accuracy\tstatus\n");
         foreach (var r in results)
         {
             text.Append(string.Join(
@@ -228,7 +228,7 @@ internal static class NounVerbGate
                 Pct(r.SenseAnswered("verb")),
                 Pct(r.Coverage),
                 Pct(r.AnsweredAccuracy),
-                Pct(r.TagAccuracy),
+                Pct(r.PosAccuracy),
                 r.Passed ? "pass" : "fail: " + r.Failure)).Append('\n');
         }
 
@@ -243,11 +243,11 @@ internal static class NounVerbGate
     public static string RenderMarkdown(IReadOnlyList<GateResult> results)
     {
         var text = new StringBuilder();
-        text.Append("| Lemma | Anchors | Holdout | Best | Noun | Verb | Noun ans. | Verb ans. | Cov. | Ans. | Tag | Gate |\n");
+        text.Append("| Lemma | Anchors | Holdout | Best | Noun | Verb | Noun ans. | Verb ans. | Cov. | Ans. | POS | Gate |\n");
         text.Append("| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |\n");
         foreach (var r in results)
         {
-            text.Append($"| {r.Lemma} | {r.Anchors} | {r.Holdout} | {Pct(r.BestSense)} | {Pct(r.SenseBest("noun"))} | {Pct(r.SenseBest("verb"))} | {Pct(r.SenseAnswered("noun"))} | {Pct(r.SenseAnswered("verb"))} | {Pct(r.Coverage)} | {Pct(r.AnsweredAccuracy)} | {Pct(r.TagAccuracy)} | {(r.Passed ? "pass" : "fail")} |\n");
+            text.Append($"| {r.Lemma} | {r.Anchors} | {r.Holdout} | {Pct(r.BestSense)} | {Pct(r.SenseBest("noun"))} | {Pct(r.SenseBest("verb"))} | {Pct(r.SenseAnswered("noun"))} | {Pct(r.SenseAnswered("verb"))} | {Pct(r.Coverage)} | {Pct(r.AnsweredAccuracy)} | {Pct(r.PosAccuracy)} | {(r.Passed ? "pass" : "fail")} |\n");
         }
 
         return text.ToString();

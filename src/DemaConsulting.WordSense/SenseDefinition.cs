@@ -9,8 +9,8 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     A lemma is a heteronym when its senses have at least two distinct meanings; then every sense carries a
-///     meaning. The meaning is a short identifier (lower-case letters, digits and hyphens, starting with a letter, at
-///     most <see cref="MaxMeaningLength"/> characters) and the optional respelling uses letters, hyphens and
+///     meaning. The meaning is a short identifier (lower-case ASCII letters, digits and hyphens, starting with a letter, at
+///     most <see cref="MaxMeaningLength"/> characters) and the optional respelling uses ASCII letters, hyphens and
 ///     apostrophes (at most <see cref="MaxRespellingLength"/> characters). A respelling needs a meaning.
 /// </remarks>
 /// <param name="Pos">The part of speech.</param>
@@ -32,7 +32,7 @@ public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning =
     ///     Determines whether a string is a valid meaning identifier.
     /// </summary>
     /// <param name="meaning">The candidate.</param>
-    /// <returns>True when it uses lower-case letters, digits and hyphens, starts with a letter and is not too long.</returns>
+    /// <returns>True when it uses lower-case ASCII letters, digits and hyphens, starts with a letter and is not too long.</returns>
     internal static bool IsValidMeaning(string? meaning)
     {
         return meaning is { Length: > 0 and <= MaxMeaningLength } && MeaningPattern().IsMatch(meaning);
@@ -42,7 +42,7 @@ public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning =
     ///     Determines whether a string is a valid respelling.
     /// </summary>
     /// <param name="respelling">The candidate.</param>
-    /// <returns>True when it uses only letters, hyphens and apostrophes and is not too long.</returns>
+    /// <returns>True when it uses only ASCII letters, hyphens and apostrophes and is not too long.</returns>
     internal static bool IsValidRespelling(string? respelling)
     {
         return respelling is { Length: > 0 and <= MaxRespellingLength } && RespellingPattern().IsMatch(respelling);
@@ -61,12 +61,12 @@ public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning =
 
         if (Meaning is not null && !IsValidMeaning(Meaning))
         {
-            throw new ArgumentException($"Meaning '{Meaning}' is invalid; use lower-case letters, digits and hyphens.");
+            throw new ArgumentException($"Meaning '{Meaning}' is invalid; use lower-case ASCII letters, digits and hyphens.");
         }
 
         if (Respelling is not null && (Meaning is null || !IsValidRespelling(Respelling)))
         {
-            throw new ArgumentException("A respelling needs a meaning and may only use letters, hyphens and apostrophes.");
+            throw new ArgumentException("A respelling needs a meaning and may only use ASCII letters, hyphens and apostrophes.");
         }
     }
 

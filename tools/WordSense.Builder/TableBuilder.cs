@@ -100,6 +100,7 @@ internal static class TableBuilder
             .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
         var holdoutByLemma = holdout.Select((row, i) => (row, i)).ToLookup(t => t.row.Lemma, StringComparer.Ordinal);
         var unknown = holdoutByLemma.Select(g => g.Key).Where(k => lemmas.All(l => l.Key != k)).ToList();
+        // Defensive: the corpus validation already rejects holdout lemmas without anchors, so this is unreachable
         if (unknown.Count > 0)
         {
             throw new InvalidDataException($"Holdout lemmas without anchor sentences: {string.Join(", ", unknown)}");
@@ -208,6 +209,7 @@ internal static class TableBuilder
             warnings.Add($"{report.Lemma}: holdout accuracy {report.Accuracy:P1} is below {ReportTargetAccuracy:P0}.");
         }
 
+        // Defensive: the corpus validation already rejects holdout senses outside the inventory, so this is unreachable
         foreach (var sense in holdoutSenses.Distinct(StringComparer.Ordinal).Where(s => !senses.Contains(s, StringComparer.Ordinal)))
         {
             warnings.Add($"{report.Lemma}: holdout sense '{sense}' has no anchor sentences.");

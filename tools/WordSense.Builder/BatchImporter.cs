@@ -145,7 +145,8 @@ internal static class BatchImporter
                 files[row.Source] = list = [];
             }
 
-            list.Add(new InventoryRow(row.Lemma, row.Sense, pos, InventoryRow.SpellOut(row.Sense), null, row.Source));
+            // Imported lemmas are not heteronyms: no meaning, as in NounVerbImport
+            list.Add(new InventoryRow(row.Lemma, row.Sense, pos, null, null, row.Source));
         }
 
         foreach (var list in files.Values)

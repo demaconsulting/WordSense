@@ -69,7 +69,10 @@ public class SenseRecordTests
         Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Verb)));
 
         // The part of speech and meaning pair is unique
-        Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Noun, "a")));
+        Assert.Throws<ArgumentException>(() => Model(
+            new SenseDefinition(PartOfSpeech.Noun, "a"),
+            new SenseDefinition(PartOfSpeech.Noun, "a"),
+            new SenseDefinition(PartOfSpeech.Verb, "b")));
         Assert.Throws<ArgumentException>(() => Model(new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Noun)));
 
         // A heteronym needs two distinct meanings
@@ -91,13 +94,49 @@ public class SenseRecordTests
     {
         new SenseDefinition(PartOfSpeech.Noun).Validate();
         new SenseDefinition(PartOfSpeech.Noun, "weapon", "boh").Validate();
-        Assert.Throws<ArgumentException>(() => new SenseDefinition((PartOfSpeech)99).Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "Weapon").Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "").Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a\n").Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, null, "boh").Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "b o").Validate());
-        Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "").Validate());
+        var undefined = Assert.Throws<ArgumentException>(() => new SenseDefinition((PartOfSpeech)99).Validate());
+        Assert.Contains("part of speech", undefined.Message);
+        var upper = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "Weapon").Validate());
+        Assert.Contains("Meaning 'Weapon' is invalid", upper.Message);
+        var empty = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "").Validate());
+        Assert.Contains("Meaning '' is invalid", empty.Message);
+        var newline = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a\n").Validate());
+        Assert.Contains("is invalid", newline.Message);
+        var orphan = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, null, "boh").Validate());
+        Assert.Contains("respelling", orphan.Message, StringComparison.OrdinalIgnoreCase);
+        var spaced = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "b o").Validate());
+        Assert.Contains("respelling", spaced.Message, StringComparison.OrdinalIgnoreCase);
+        var blank = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a", "").Validate());
+        Assert.Contains("respelling", blank.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     The lemma model constructor validates each sense definition.
+    /// </summary>
+    [Fact]
+    public void LemmaModel_Constructor_InvalidSenseDefinition_Throws()
+    {
+        var ex = Assert.Throws<ArgumentException>(() =>
+            Model(new SenseDefinition((PartOfSpeech)99), new SenseDefinition(PartOfSpeech.Verb)));
+        Assert.Contains("part of speech", ex.Message);
+    }
+
+    /// <summary>
+    ///     The numeric value of each part of speech is part of the table format and must not change.
+    /// </summary>
+    [Theory]
+    [InlineData(PartOfSpeech.Noun, 0)]
+    [InlineData(PartOfSpeech.Pronoun, 1)]
+    [InlineData(PartOfSpeech.Verb, 2)]
+    [InlineData(PartOfSpeech.Adjective, 3)]
+    [InlineData(PartOfSpeech.Adverb, 4)]
+    [InlineData(PartOfSpeech.Preposition, 5)]
+    [InlineData(PartOfSpeech.Conjunction, 6)]
+    [InlineData(PartOfSpeech.Interjection, 7)]
+    public void PartOfSpeech_Values_ArePinned(PartOfSpeech pos, int value)
+    {
+        Assert.Equal(value, (int)pos);
+        Assert.Equal(8, Enum.GetValues<PartOfSpeech>().Length);
     }
 
     /// <summary>
@@ -150,7 +189,6 @@ public class SenseRecordTests
         Assert.Equal(analysis, analysis with { });
         Assert.Equal("Records", analysis.Word);
         Assert.Equal(new WordSenseToken(0, 7, "Records", analysis), new WordSenseToken(0, 7, "Records", analysis));
-        Assert.Equal(8, Enum.GetValues<PartOfSpeech>().Length);
     }
 
     /// <summary>
@@ -201,7 +239,8 @@ public class SenseRecordTests
 
         Assert.All(words, w => Assert.Equal(w.Text, "a  bat.".Substring(w.Start, w.Length)));
         Assert.DoesNotContain(words, w => string.IsNullOrWhiteSpace(w.Text));
-        Assert.Equal(0, words[0].Start);
+        Assert.Equal(["a", "bat", "."], words.Select(w => w.Text));
+        Assert.Equal([0, 3, 6], words.Select(w => w.Start));
     }
 
     /// <summary>
