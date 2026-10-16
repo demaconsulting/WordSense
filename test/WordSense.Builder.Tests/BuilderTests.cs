@@ -1,9 +1,8 @@
 using System.Text;
 using System.Text.RegularExpressions;
-using IWordSenseEncoder = DemaConsulting.WordSense.IWordSenseEncoder;
+using IWordSenseModel = DemaConsulting.WordSense.IWordSenseModel;
 using PartOfSpeech = DemaConsulting.WordSense.PartOfSpeech;
 using SenseDefinition = DemaConsulting.WordSense.SenseDefinition;
-using WordPieceTokenizer = DemaConsulting.WordSense.WordPieceTokenizer;
 
 namespace WordSense.Builder.Tests;
 
@@ -498,11 +497,9 @@ public sealed class BuilderTests : IDisposable
         var bow = new DemaConsulting.WordSense.LemmaEntry(
             "bow",
             [new SenseDefinition(PartOfSpeech.Noun, "bend"), new SenseDefinition(PartOfSpeech.Verb, "bend"), new SenseDefinition(PartOfSpeech.Noun, "weapon")],
-            new DemaConsulting.WordSense.SenseWeights(DemaConsulting.WordSense.LemmaModelKind.OneVersusRest,
-            new float[3], new float[3], 0.5f, 1));
+            true);
         var bank = new DemaConsulting.WordSense.LemmaEntry(
-            "bank", [new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Verb)],
-            new DemaConsulting.WordSense.SenseWeights(DemaConsulting.WordSense.LemmaModelKind.Binary, new float[1], new float[1], 0.5f, 1));
+            "bank", [new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Verb)], true);
         var evaluator = new AccuracyEvaluator();
 
         evaluator.Add("h.tsv", bow, 0, 2, true);    // gold weapon (noun), best bend noun: POS right, meaning wrong
@@ -786,11 +783,11 @@ public sealed class BuilderTests : IDisposable
         };
         var inventory = new SenseInventory([new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "s.tsv"), new InventoryRow("bank", "verb", PartOfSpeech.Verb, null, null, "s.tsv")]);
         var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bank", "bank", ["noun", "verb"]) };
-        using var encoder = new FakeEncoder();
+        using var encoder = new FakeModel(vocabulary);
 
         // Act
         var result = TableBuilder.Build(
-            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+            encoder, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
         var text = result.Report.Render();
 
         // Assert: the table and both accuracy sections
@@ -832,10 +829,10 @@ public sealed class BuilderTests : IDisposable
             new InventoryRow("bow", "verb", PartOfSpeech.Verb, "b", "bo", "s.tsv"),
         ]);
         var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bow", "bow", ["noun", "verb"]) };
-        using var encoder = new FakeEncoder();
+        using var encoder = new FakeModel(vocabulary);
 
         var result = TableBuilder.Build(
-            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+            encoder, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
 
         var lemma = Assert.Single(result.Report.Lemmas);
         Assert.Contains("Meaning level:", result.Report.Render(), StringComparison.Ordinal);
@@ -846,11 +843,14 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     A deterministic encoder whose hidden states depend on the token id and on the whole sequence.
+    ///     A deterministic model whose vector for a target word depends on the word and on the whole sentence.
     /// </summary>
-    private sealed class FakeEncoder : IWordSenseEncoder
+    private sealed class FakeModel(IReadOnlyList<string> vocabulary) : IWordSenseModel
     {
         private const int Size = 8;
+
+        /// <inheritdoc />
+        public string ModelId => "fake-model";
 
         /// <inheritdoc />
         public string ModelSha256 { get; } = new('a', 64);
@@ -859,19 +859,25 @@ public sealed class BuilderTests : IDisposable
         public int HiddenSize => Size;
 
         /// <inheritdoc />
-        public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
+        public ValueTask<double[]?[]> EncodeAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken)
         {
-            var context = inputIds.Sum();
-            var hidden = new float[inputIds.Length * Size];
-            for (var p = 0; p < inputIds.Length; p++)
+            // Ids are positions in the vocabulary, with the sequence markers [CLS] and [SEP] around the words
+            var ids = words.Select(w => Math.Max(1, vocabulary.ToList().IndexOf(w.ToLowerInvariant()))).ToArray();
+            var context = 2 + 3 + ids.Sum();
+            var result = new double[]?[targets.Count];
+            for (var t = 0; t < targets.Count; t++)
             {
+                var id = ids[targets[t]];
+                var vector = new double[Size];
                 for (var d = 0; d < Size; d++)
                 {
-                    hidden[(p * Size) + d] = (float)(Math.Sin(inputIds[p] * (d + 1)) + (3 * Math.Cos(context * (d + 1))));
+                    vector[d] = Math.Sin(id * (d + 1)) + (3 * Math.Cos(context * (d + 1)));
                 }
+
+                result[t] = vector;
             }
 
-            return ValueTask.FromResult(hidden);
+            return ValueTask.FromResult(result);
         }
 
         /// <inheritdoc />
@@ -1899,11 +1905,11 @@ public sealed class BuilderTests : IDisposable
         RealImport.WriteProvenance(
             Path.Combine(corpus, "provenance", "p.tsv"),
             [new ProvenanceRow(PosAudit.RowId("bank", "the {bank} money old."), "bank", "noun", "holdout", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/1", "x", "real")]);
-        using var encoder = new FakeEncoder();
+        using var encoder = new FakeModel(vocabulary);
 
         // Act
-        var data = AnalysisData.Load(encoder, new WordPieceTokenizer(vocabulary), corpus, null, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
-        var filtered = AnalysisData.Load(encoder, new WordPieceTokenizer(vocabulary), corpus, new HashSet<string> { "other" }, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+        var data = AnalysisData.Load(encoder, corpus, null, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
+        var filtered = AnalysisData.Load(encoder, corpus, new HashSet<string> { "other" }, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32));
 
         // Assert: the unknown eval sense is skipped; origins come from the sidecar, eval rows default to real
         var lemma = Assert.Single(data.Lemmas);
@@ -2124,11 +2130,11 @@ public sealed class BuilderTests : IDisposable
         var inventory = new SenseInventory([new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "s.tsv"), new InventoryRow("bank", "verb", PartOfSpeech.Verb, null, null, "s.tsv")]);
         var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bank", "bank", ["noun", "verb"]) };
         List<(string Word, byte Mask)> words = [("bank", Mask(PartOfSpeech.Noun)), ("quick", Mask(PartOfSpeech.Adjective)), ("run", Mask(PartOfSpeech.Verb))];
-        using var encoder = new FakeEncoder();
+        using var encoder = new FakeModel(vocabulary);
 
         // Act
         var result = TableBuilder.Build(
-            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32),
+            encoder, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32),
             words, DemaConsulting.WordSense.LemmaMorphologyRules.Plural);
         var table = DemaConsulting.WordSense.WordSenseTable.Read(result.Table.ToArray());
 
@@ -2156,14 +2162,13 @@ public sealed class BuilderTests : IDisposable
         var root = FindRepositoryRoot();
         var lexiconDirectory = Path.Combine(root.FullName, "corpus", "lexicon");
         var committed = DemaConsulting.WordSense.WordSenseTable.Read(
-            File.ReadAllBytes(Path.Combine(root.FullName, "src", "DemaConsulting.WordSense", "Resources", "wordsense-table.bin")));
+            File.ReadAllBytes(Path.Combine(root.FullName, "src", "DemaConsulting.WordSense", "Resources", "wordsense-lexicon.bin")));
         var words = LexiconSource.ReadWords(Path.Combine(lexiconDirectory, "lexicon.tsv"));
         var rules = LexiconSource.EnabledRules(LexiconSource.ReadMorphology(Path.Combine(lexiconDirectory, "morphology.tsv")));
 
         // Act: rebuild the table from the committed trained lemmas and forms
         var merge = LexiconSource.Merge(committed.ContextLemmas, committed.Forms, words);
-        var rebuilt = new DemaConsulting.WordSense.WordSenseTable(
-            committed.ModelId, committed.ModelSha256, committed.Dimension, committed.Mean.ToArray(), merge.Entries, committed.Forms, rules);
+        var rebuilt = new DemaConsulting.WordSense.WordSenseTable(merge.Entries, committed.Forms, rules);
 
         // Assert: the same rules, the same lemmas and senses in the same order
         Assert.Equal(rules, committed.Morphology);
@@ -2304,6 +2309,7 @@ public sealed class BuilderTests : IDisposable
         Directory.CreateDirectory(corpus);
         var model = Path.Combine(_root, "no-model");
         var output = Path.Combine(_root, "table.bin");
+        var weightsFile = Path.Combine(_root, "weights.bin");
 
         // Act
         var (words, rules) = Program.ReadLexiconSettings(new Dictionary<string, string> { ["lexicon"] = lexicon }, corpus);
@@ -2311,13 +2317,13 @@ public sealed class BuilderTests : IDisposable
         using var missingDefaultError = new StringWriter();
         using var missingExplicitError = new StringWriter();
         using var missingMorphologyError = new StringWriter();
-        var missingDefault = Program.Run(["build", "--model", model, "--corpus", corpus, "--output", output], new StringWriter(), missingDefaultError);
+        var missingDefault = Program.Run(["build", "--model", model, "--corpus", corpus, "--output", output, "--weights", weightsFile], new StringWriter(), missingDefaultError);
         var missingExplicit = Program.Run(
-            ["build", "--model", model, "--corpus", corpus, "--output", output, "--lexicon", Path.Combine(_root, "nope.tsv")],
+            ["build", "--model", model, "--corpus", corpus, "--output", output, "--weights", weightsFile, "--lexicon", Path.Combine(_root, "nope.tsv")],
             new StringWriter(),
             missingExplicitError);
         var missingMorphology = Program.Run(
-            ["build", "--model", model, "--corpus", corpus, "--output", output, "--lexicon", Path.Combine(bare, "lexicon.tsv")],
+            ["build", "--model", model, "--corpus", corpus, "--output", output, "--weights", weightsFile, "--lexicon", Path.Combine(bare, "lexicon.tsv")],
             new StringWriter(),
             missingMorphologyError);
 
@@ -2369,7 +2375,6 @@ public sealed class BuilderTests : IDisposable
         params (string Word, byte Mask)[] words)
     {
         var entries = words.OrderBy(w => w.Word, StringComparer.Ordinal).Select(w => DemaConsulting.WordSense.WordSenseTable.CreateDictionaryEntry(w.Word, w.Mask)).ToList();
-        return new DemaConsulting.WordSense.WordSenseTable(
-            "synthetic", new string('a', 64), 8, new float[8], entries, new Dictionary<string, string>(), rules);
+        return new DemaConsulting.WordSense.WordSenseTable(entries, new Dictionary<string, string>(), rules);
     }
 }
