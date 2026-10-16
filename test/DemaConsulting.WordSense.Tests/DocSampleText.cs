@@ -1,0 +1,83 @@
+using System.Text.RegularExpressions;
+
+namespace DemaConsulting.WordSense.Tests;
+
+/// <summary>
+///     Text helpers shared by the doc-check tests that compare fenced code blocks of the documentation with
+///     compiled sample code.
+/// </summary>
+internal static partial class DocSampleText
+{
+    /// <summary>
+    ///     Returns the content of the fenced block that follows a marker line.
+    /// </summary>
+    /// <param name="text">The document text.</param>
+    /// <param name="marker">The marker line, for example <c>&lt;!-- sample:classify --&gt;</c>.</param>
+    /// <param name="language">The language of the fence that follows the marker.</param>
+    /// <returns>The block content without the fences.</returns>
+    public static string FencedBlock(string text, string marker, string language)
+    {
+        var start = text.IndexOf(marker, StringComparison.Ordinal);
+        Assert.True(start >= 0, $"The marker '{marker}' was not found.");
+        var open = $"```{language}";
+        var from = text.IndexOf(open, start, StringComparison.Ordinal);
+        Assert.True(from >= 0, $"No '{open}' block follows '{marker}'.");
+        from = text.IndexOf('\n', from) + 1;
+        var to = text.IndexOf("```", from, StringComparison.Ordinal);
+        Assert.True(to >= 0, $"The block after '{marker}' is not closed.");
+        return text[from..to];
+    }
+
+    /// <summary>
+    ///     Returns the names of all samples marked in a document.
+    /// </summary>
+    /// <param name="text">The document text.</param>
+    /// <returns>The sample names in document order.</returns>
+    public static IReadOnlyList<string> SampleNames(string text) =>
+        [.. Marker().Matches(text).Select(m => m.Groups[1].Value)];
+
+    /// <summary>
+    ///     Returns the lines between two marker lines of the sample source.
+    /// </summary>
+    /// <param name="text">The source text.</param>
+    /// <param name="begin">The begin marker.</param>
+    /// <param name="end">The end marker.</param>
+    /// <returns>The lines between the markers.</returns>
+    public static string Between(string text, string begin, string end)
+    {
+        var from = text.IndexOf(begin, StringComparison.Ordinal);
+        var to = text.IndexOf(end, StringComparison.Ordinal);
+        Assert.True(from >= 0 && to > from, $"The markers '{begin}' and '{end}' were not found.");
+        from = text.IndexOf('\n', from) + 1;
+        return text[from..to];
+    }
+
+    /// <summary>
+    ///     Removes the common leading indentation of the lines.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The text with the indentation removed.</returns>
+    public static string Dedent(string text)
+    {
+        var lines = text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
+        var indent = lines.Where(l => l.Trim().Length > 0).Min(l => l.Length - l.TrimStart().Length);
+        return string.Join('\n', lines.Select(l => l.Length >= indent ? l[indent..] : l.TrimStart()));
+    }
+
+    /// <summary>
+    ///     Normalizes line endings and trailing white space, so only the content is compared.
+    /// </summary>
+    /// <param name="text">The text.</param>
+    /// <returns>The normalized text.</returns>
+    public static string Normalize(string text)
+    {
+        var lines = text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n').Select(l => l.TrimEnd());
+        return Trailing().Replace(string.Join('\n', lines), string.Empty);
+    }
+
+    [GeneratedRegex(@"\s+$")]
+    private static partial Regex Trailing();
+
+    [GeneratedRegex(@"<!-- sample:([a-z0-9-]+) -->")]
+    private static partial Regex Marker();
+}

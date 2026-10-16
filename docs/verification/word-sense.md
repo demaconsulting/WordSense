@@ -85,7 +85,8 @@ percentile latency; the median must stay below two seconds (the typical value is
 
 ### WordSense_Readme_CodeBlock_MatchesCompiledSample
 
-For each README sample (`classify`, `tags`), extracts the code block marked `<!-- sample:name -->` from `README.md`
+For each README sample (`download`, `classify`, `tags`), extracts the code block marked `<!-- sample:name -->` from
+`README.md`
 and the region between the `<sample:name>` markers of `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and
 requires them to be equal after normalizing line endings and trailing white space. Because the region is compiled
 code, the README sample is guaranteed to build against the current API.
@@ -96,6 +97,25 @@ Runs both compiled samples against the committed model (skipped when the model f
 pointers) and requires the lines they write to equal the output blocks marked `<!-- output:name -->` in `README.md`.
 Unknown or abstained words print `-`, so a change to the model, table or abstention shows up as a failing test and
 the documented output is updated deliberately.
+
+### WordSense_UserGuide_CodeBlock_MatchesCompiledSample
+
+For each user guide sample (`quick-start`, `text`, `detail`, `tags`, `senses`, `tuning`, `download`, `mirror`,
+`errors`), extracts the code block marked `<!-- sample:name -->` from `docs/user_guide/introduction.md` and the region
+between the `<sample:name>` markers of `test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`, and requires them to
+be equal after normalizing line endings and trailing white space. The regions are compiled code, so every user guide
+sample builds against the current API.
+
+### WordSense_UserGuide_SampleMarkers_AreAllChecked
+
+Requires the set of sample markers in the user guide to equal the set of checked samples, so a new code block cannot
+be added without a compiled copy.
+
+### WordSense_UserGuide_Samples_RunAgainstModel
+
+Runs the samples that need only a classifier (`text`, `detail`, `tags`, `senses`) and the `mirror` sample against the
+committed model (skipped when the model files are missing or are Git LFS pointers) and requires that they complete
+without an error. The samples that download the model are compiled but not run.
 
 ### Platform Support
 
@@ -115,7 +135,7 @@ a requirement is satisfied only by a passing result from its own platform or fra
 | WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                         |
 | WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                         |
 | WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                |
-| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme               |
+| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme, UserGuide_*  |
 | WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)              |
 
 The remaining library requirements (abstention, download, mirror, integrity) are verified by the unit-level

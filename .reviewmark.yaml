@@ -48,6 +48,9 @@ reviews:
       - "docs/user_guide/**/*.md"                                   # user guide
       - "test/DemaConsulting.WordSense.Tests/ReadmeSample.cs"       # README sample code, compiled and run
       - "test/DemaConsulting.WordSense.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
+      - "test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs"   # user guide sample code, compiled
+      - "test/DemaConsulting.WordSense.Tests/UserGuideSampleTests.cs"  # keeps user guide code in sync
+      - "test/DemaConsulting.WordSense.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
 
   # Decomposition Review (only one per repository)
   - id: Decomposition

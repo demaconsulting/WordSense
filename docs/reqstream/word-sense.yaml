@@ -184,8 +184,9 @@ sections:
 
       - id: WordSense-Lib-Documentation
         title: >-
-          The documentation shall show a README usage sample whose code and output are verified against the library,
-          and an appendix that lists every supported lemma with its senses, tags, groups and forms and is never stale.
+          The documentation shall show a README usage sample and user guide code samples whose code and output are
+          verified against the library, and an appendix that lists every supported lemma with its senses, tags,
+          groups and forms and is never stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written
@@ -196,3 +197,6 @@ sections:
         tests:
           - WordSense_Readme_CodeBlock_MatchesCompiledSample
           - WordSense_Readme_Output_MatchesReadme
+          - WordSense_UserGuide_CodeBlock_MatchesCompiledSample
+          - WordSense_UserGuide_SampleMarkers_AreAllChecked
+          - WordSense_UserGuide_Samples_RunAgainstModel

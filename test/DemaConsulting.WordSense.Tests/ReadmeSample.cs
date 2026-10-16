@@ -23,6 +23,19 @@ internal sealed class ReadmeSample
     public string Output => _output.ToString();
 
     /// <summary>
+    ///     The "download" sample. It downloads the model when it is missing, so it is compiled but not run.
+    /// </summary>
+    /// <returns>A task that completes when the sample has run.</returns>
+    public async Task DownloadAsync()
+    {
+        // <sample:download>
+        // Downloads missing files (mirror, Hugging Face, GitHub LFS) and verifies each against its pinned SHA-256
+        WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync();
+        Console.WriteLine(location.Directory); // holds model_int8.onnx and vocab.txt
+        // </sample:download>
+    }
+
+    /// <summary>
     ///     The "classify" sample.
     /// </summary>
     /// <param name="location">The verified model location (from the download step of the README).</param>
