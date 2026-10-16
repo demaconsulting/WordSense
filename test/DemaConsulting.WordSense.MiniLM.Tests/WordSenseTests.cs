@@ -1,33 +1,37 @@
 using System.Diagnostics;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
-///     Tests that run the real ONNX model and the embedded table. They are skipped when the Git LFS
+///     Tests that run the real ONNX model and the embedded tables. They are skipped when the Git LFS
 ///     content of the <c>model</c> directory is not available.
 /// </summary>
 public class WordSenseTests
 {
     private static async Task<WordSenseClassifier> CreateClassifierAsync(int threads = 0)
     {
-        var options = new WordSenseClassifierOptions { ModelDirectory = ModelAssets.RequireModelDirectory(), IntraOpThreads = threads };
-        return await WordSenseClassifier.CreateAsync(options, TestContext.Current.CancellationToken);
+        var options = new MiniLMWordSenseOptions { ModelDirectory = ModelAssets.RequireModelDirectory(), IntraOpThreads = threads };
+        return await MiniLMWordSense.CreateClassifierAsync(options, null, TestContext.Current.CancellationToken);
     }
 
     /// <summary>
-    ///     The embedded table must have been trained with exactly the pinned model file, and the pinned
-    ///     digests must match the committed files; a stale table fails here.
+    ///     The embedded weights must have been trained with exactly the pinned model file and the embedded lexicon,
+    ///     and the pinned digests must match the committed files; stale weights fail here.
     /// </summary>
     [Fact]
-    public void WordSense_EmbeddedTable_MatchesPinnedModel()
+    public void WordSense_EmbeddedWeights_MatchPinnedModelAndLexicon()
     {
         var modelDirectory = ModelAssets.RequireModelDirectory();
+        var weights = MiniLMWordSense.LoadWeights();
         var table = WordSenseTable.LoadEmbedded();
 
-        Assert.Equal(WordSenseModelCatalog.OnnxSha256, table.ModelSha256);
+        Assert.Equal(WordSenseModelCatalog.OnnxSha256, weights.ModelSha256);
         Assert.Equal(WordSenseModelCatalog.OnnxSha256, WordSenseModelCatalog.HashFile(Path.Combine(modelDirectory, "model_int8.onnx")));
         Assert.Equal(WordSenseModelCatalog.VocabularySha256, WordSenseModelCatalog.HashFile(Path.Combine(modelDirectory, "vocab.txt")));
-        Assert.Equal(WordSenseModelCatalog.ModelId, table.ModelId);
+        Assert.Equal(WordSenseModelCatalog.ModelId, weights.ModelId);
+        Assert.Equal(MiniLMWordSense.ModelId, weights.ModelId);
+        Assert.Equal(384, weights.Dimension);
+        weights.EnsureMatches(table);
 
         // The committed checksum list is what the documentation and the workflow verify
         var sums = File.ReadAllLines(Path.Combine(modelDirectory, "SHA256SUMS")).Select(l => l.TrimEnd('\r')).ToList();
@@ -36,75 +40,39 @@ public class WordSenseTests
     }
 
     /// <summary>
-    ///     With the embedded table, a sentence of common dictionary words is answered without any encoder call; the
-    ///     encoder here is a counting fake, so no model files are needed.
+    ///     The embedded weights are accepted by the model built from the committed files, and refused when a lexicon
+    ///     with another context lemma set is supplied.
     /// </summary>
     [Fact]
-    public async Task WordSense_Dictionary_CommonWords_Answered()
+    public void WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused()
     {
-        var encoder = new CountingEncoder();
-        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "hunter"];
-        using var classifier = new WordSenseClassifier(encoder, WordSenseTable.LoadEmbedded(), new WordPieceTokenizer(vocabulary), null, false);
+        var directory = ModelAssets.RequireModelDirectory();
+        using var model = new MiniLMWordSenseModel(Path.Combine(directory, "model_int8.onnx"), Path.Combine(directory, "vocab.txt"), 128, 1);
+        var weights = MiniLMWordSense.LoadWeights();
+
+        ((IWordSenseModel)model).EnsureWeightsMatch(weights);
+        var other = new WordSenseTable([], new Dictionary<string, string>());
+
+        Assert.Throws<WordSenseModelMismatchException>(() => new WordSenseClassifier(other, model, weights));
+    }
+
+    /// <summary>
+    ///     With the real model, a sentence of common dictionary words is answered from the lexicon.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Classifier_CommonDictionaryWords_AnsweredFromLexicon()
+    {
+        using var classifier = await CreateClassifierAsync();
 
         var analyses = await classifier.ClassifyAsync(
             ["The", "hunter", "quickly", "climbed", "a", "tall", "mountain", "."],
             TestContext.Current.CancellationToken);
 
-        Assert.Equal(0, encoder.Calls);
         Assert.Equal(PartOfSpeech.Noun, analyses[1].Details!.PartOfSpeech);
         Assert.Equal(AnswerBasis.Dictionary, analyses[1].Basis);
         Assert.Equal(AnswerBasis.Dictionary, analyses[2].Basis);
         Assert.Equal(AnswerBasis.Dictionary, analyses[6].Basis);
         Assert.Equal(AnswerBasis.None, analyses[0].Basis);
-
-        // A dictionary answer has margin 0, no runner-up and exactly its own sense as candidate
-        foreach (var index in new[] { 1, 2, 6 })
-        {
-            Assert.False(analyses[index].Abstained);
-            Assert.Equal(0.0, analyses[index].Margin);
-            Assert.Equal(0.0, analyses[index].RunnerUpMargin);
-            Assert.Null(analyses[index].RunnerUp);
-            Assert.Null(analyses[index].Details!.Pronunciation);
-            Assert.Same(analyses[index].Details, Assert.Single(analyses[index].Candidates));
-        }
-
-        // A dictionary word with several parts of speech has no answer and lists them all
-        var table = WordSenseTable.LoadEmbedded();
-        var several = table.Lemmas.First(l => l.Weights is null && l.Senses.Count > 1 && l.Lemma.Length > 3);
-        var multi = (await classifier.ClassifyAsync([several.Lemma], TestContext.Current.CancellationToken))[0];
-        Assert.Equal(AnswerBasis.Dictionary, multi.Basis);
-        Assert.True(multi.Abstained);
-        Assert.Null(multi.Details);
-        Assert.Equal(several.Candidates, multi.Candidates);
-
-        // With the dictionary switched off every one of these words is unknown
-        using var off = new WordSenseClassifier(
-            encoder, table, new WordPieceTokenizer(vocabulary), new WordSenseClassifierOptions { UseLexicon = false }, false);
-        var none = await off.ClassifyAsync(
-            ["The", "hunter", "quickly", "climbed", "a", "tall", "mountain", ".", several.Lemma],
-            TestContext.Current.CancellationToken);
-        Assert.All(none, a => Assert.Equal(AnswerBasis.None, a.Basis));
-        Assert.All(none, a => Assert.Null(a.Details));
-        Assert.Equal(0, encoder.Calls);
-    }
-
-    private sealed class CountingEncoder : IWordSenseEncoder
-    {
-        public int Calls { get; private set; }
-
-        public string ModelSha256 => WordSenseModelCatalog.OnnxSha256;
-
-        public int HiddenSize => 384;
-
-        public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
-        {
-            Calls++;
-            return ValueTask.FromResult(new float[inputIds.Length * HiddenSize]);
-        }
-
-        public void Dispose()
-        {
-        }
     }
 
     /// <summary>
@@ -163,7 +131,7 @@ public class WordSenseTests
         try
         {
             await Assert.ThrowsAsync<FileNotFoundException>(
-                () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = empty }, TestContext.Current.CancellationToken));
+                () => MiniLMWordSense.CreateClassifierAsync(new MiniLMWordSenseOptions { ModelDirectory = empty }, null, TestContext.Current.CancellationToken));
         }
         finally
         {
@@ -187,7 +155,7 @@ public class WordSenseTests
             await File.WriteAllTextAsync(Path.Combine(wrong, "vocab.txt"), "not the vocabulary", TestContext.Current.CancellationToken);
 
             await Assert.ThrowsAsync<InvalidDataException>(
-                () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = wrong }, TestContext.Current.CancellationToken));
+                () => MiniLMWordSense.CreateClassifierAsync(new MiniLMWordSenseOptions { ModelDirectory = wrong }, null, TestContext.Current.CancellationToken));
         }
         finally
         {
@@ -205,13 +173,17 @@ public class WordSenseTests
         var cancellationToken = TestContext.Current.CancellationToken;
 
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
-            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, MaxSequenceLength = 4 }, cancellationToken));
+            () => MiniLMWordSense.CreateClassifierAsync(new MiniLMWordSenseOptions { ModelDirectory = missing, MaxSequenceLength = 4 }, null, cancellationToken));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
-            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, AbstainMarginScale = -1 }, cancellationToken));
+            () => MiniLMWordSense.CreateClassifierAsync(new MiniLMWordSenseOptions { ModelDirectory = missing, MaxSequenceLength = 513 }, null, cancellationToken));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
-            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, AbstainMarginScale = double.NaN }, cancellationToken));
+            () => MiniLMWordSense.CreateClassifierAsync(
+                new MiniLMWordSenseOptions { ModelDirectory = missing }, new WordSenseClassifierOptions { AbstainMarginScale = -1 }, cancellationToken));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
-            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, IntraOpThreads = -1 }, cancellationToken));
+            () => MiniLMWordSense.CreateClassifierAsync(
+                new MiniLMWordSenseOptions { ModelDirectory = missing }, new WordSenseClassifierOptions { AbstainMarginScale = double.NaN }, cancellationToken));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => MiniLMWordSense.CreateClassifierAsync(new MiniLMWordSenseOptions { ModelDirectory = missing, IntraOpThreads = -1 }, null, cancellationToken));
     }
 
     /// <summary>
@@ -353,7 +325,7 @@ public class WordSenseTests
     }
 
     /// <summary>
-    ///     Honesty of the shipped table: every lemma has a part of speech from the four shipped classes, a lemma is a
+    ///     Honesty of the shipped lexicon: every lemma has a part of speech from the four shipped classes, a lemma is a
     ///     heteronym exactly when its senses have at least two distinct meanings, and every candidate is exposed.
     /// </summary>
     [Fact]

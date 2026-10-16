@@ -1,4 +1,4 @@
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     The code of the C# samples of the user guide, compiled by the test project and run by
@@ -20,7 +20,7 @@ internal static class UserGuideSamples
     {
         // <sample:quick-start>
         // Downloads the model on first use (mirror, Hugging Face, GitHub LFS), verifies its SHA-256 and reuses it later
-        using var classifier = await WordSenseClassifier.CreateAsync();
+        using var classifier = await MiniLMWordSense.CreateClassifierAsync();
 
         string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album"];
         WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
@@ -74,7 +74,7 @@ internal static class UserGuideSamples
         // Answer only the trained lemmas, as before the dictionary existed; every other word is unknown
         var options = new WordSenseClassifierOptions { UseLexicon = false };
 
-        using var trainedOnly = await WordSenseClassifier.CreateAsync(options);
+        using var trainedOnly = await MiniLMWordSense.CreateClassifierAsync(null, options);
         // </sample:lexicon>
     }
 
@@ -166,14 +166,17 @@ internal static class UserGuideSamples
     public static async Task TuningAsync()
     {
         // <sample:tuning>
-        var options = new WordSenseClassifierOptions
+        var miniLmOptions = new MiniLMWordSenseOptions
         {
-            AbstainMarginScale = 0.5, // below 1 answers more often, above 1 abstains more often; 0 never abstains
             IntraOpThreads = 2,       // ONNX Runtime threads; 0 selects the default
             MaxSequenceLength = 128,  // model window, 8 to 512 tokens; longer texts use a window around each target
         };
+        var classifierOptions = new WordSenseClassifierOptions
+        {
+            AbstainMarginScale = 0.5, // below 1 answers more often, above 1 abstains more often; 0 never abstains
+        };
 
-        using var tuned = await WordSenseClassifier.CreateAsync(options);
+        using var tuned = await MiniLMWordSense.CreateClassifierAsync(miniLmOptions, classifierOptions);
         // </sample:tuning>
     }
 
@@ -195,8 +198,8 @@ internal static class UserGuideSamples
         WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync(downloaderOptions);
 
         // Offline use: copy the two verified files to a machine without internet access and point ModelDirectory at them
-        using var classifier = await WordSenseClassifier.CreateAsync(
-            new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+        using var classifier = await MiniLMWordSense.CreateClassifierAsync(
+            new MiniLMWordSenseOptions { ModelDirectory = location.Directory });
         // </sample:download>
     }
 
@@ -204,10 +207,10 @@ internal static class UserGuideSamples
     ///     The "mirror" sample.
     /// </summary>
     /// <returns>The options of the sample.</returns>
-    public static WordSenseClassifierOptions Mirror()
+    public static MiniLMWordSenseOptions Mirror()
     {
         // <sample:mirror>
-        var options = new WordSenseClassifierOptions
+        var options = new MiniLMWordSenseOptions
         {
             Downloader = new WordSenseModelDownloaderOptions
             {
@@ -228,7 +231,7 @@ internal static class UserGuideSamples
         // <sample:errors>
         try
         {
-            using var classifier = await WordSenseClassifier.CreateAsync();
+            using var classifier = await MiniLMWordSense.CreateClassifierAsync();
         }
         catch (WordSenseModelDownloadException ex)
         {

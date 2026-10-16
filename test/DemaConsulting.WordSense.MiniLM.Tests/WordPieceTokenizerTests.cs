@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Tests for <see cref="WordPieceTokenizer"/> and <see cref="TokenizedText"/>.

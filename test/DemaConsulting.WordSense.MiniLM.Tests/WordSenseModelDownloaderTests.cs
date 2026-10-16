@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Tests for <see cref="WordSenseModelDownloader"/> and <see cref="WordSenseModelLocation"/>, using only a
@@ -56,7 +56,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         var location = await WordSenseModelDownloader.EnsureModelAsync(Options(server, MirrorOn(server)), TestContext.Current.CancellationToken);
 
-        Assert.All(Paths(server), p => Assert.StartsWith("/mirror/all-MiniLM-L6-v2/", p, StringComparison.Ordinal));
+        Assert.All(Paths(server), p => Assert.StartsWith("/mirror/all-MiniLM-L6-v2-int8/", p, StringComparison.Ordinal));
         Assert.Equal(2, Paths(server).Length);
         Assert.True(File.Exists(location.ModelPath));
         Assert.True(File.Exists(location.VocabularyPath));
@@ -77,9 +77,9 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         Assert.Equal(
             [
-                "/mirror/all-MiniLM-L6-v2/model_int8.onnx",
-                "/lfs/main/model/model_int8.onnx",
-                "/mirror/all-MiniLM-L6-v2/vocab.txt",
+                "/mirror/all-MiniLM-L6-v2-int8/model_int8.onnx",
+                "/lfs/main/model/all-MiniLM-L6-v2-int8/model_int8.onnx",
+                "/mirror/all-MiniLM-L6-v2-int8/vocab.txt",
                 "/hf/vocab.txt",
             ],
             Paths(server));
@@ -97,7 +97,13 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         await WordSenseModelDownloader.EnsureModelAsync(Options(server), TestContext.Current.CancellationToken);
 
-        Assert.Equal(["/lfs/main/model/model_int8.onnx", "/hf/vocab.txt", "/lfs/main/model/vocab.txt"], Paths(server));
+        Assert.Equal(
+            [
+                "/lfs/main/model/all-MiniLM-L6-v2-int8/model_int8.onnx",
+                "/hf/vocab.txt",
+                "/lfs/main/model/all-MiniLM-L6-v2-int8/vocab.txt",
+            ],
+            Paths(server));
     }
 
     /// <summary>
@@ -114,7 +120,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         Assert.Equal(WordSenseModelCatalog.OnnxSha256, WordSenseModelCatalog.HashFile(location.ModelPath));
         Assert.Empty(Directory.GetFiles(location.Directory, "*.part"));
-        Assert.Contains("/lfs/main/model/model_int8.onnx", Paths(server));
+        Assert.Contains("/lfs/main/model/all-MiniLM-L6-v2-int8/model_int8.onnx", Paths(server));
     }
 
     /// <summary>
@@ -148,7 +154,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
             Options(server, null, name => name == DownloadMirror.UrlEnvironmentVariable ? url : null),
             TestContext.Current.CancellationToken);
 
-        Assert.All(Paths(server), p => Assert.StartsWith("/base-from-environment/all-MiniLM-L6-v2/", p, StringComparison.Ordinal));
+        Assert.All(Paths(server), p => Assert.StartsWith("/base-from-environment/all-MiniLM-L6-v2-int8/", p, StringComparison.Ordinal));
     }
 
     /// <summary>
@@ -287,7 +293,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
         var location = await WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken);
 
         Assert.True(File.Exists(location.ModelPath));
-        Assert.Contains("/lfs/main/model/model_int8.onnx", Paths(server));
+        Assert.Contains("/lfs/main/model/all-MiniLM-L6-v2-int8/model_int8.onnx", Paths(server));
     }
 
     /// <summary>
@@ -440,7 +446,7 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
 
         // Assert: the files still arrive, from a later source
         Assert.True(File.Exists(location.ModelPath));
-        Assert.Contains("/lfs/main/model/model_int8.onnx", Paths(server));
+        Assert.Contains("/lfs/main/model/all-MiniLM-L6-v2-int8/model_int8.onnx", Paths(server));
     }
 
     /// <summary>

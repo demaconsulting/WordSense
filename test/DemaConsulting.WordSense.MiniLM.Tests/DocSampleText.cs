@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Text helpers shared by the doc-check tests that compare fenced code blocks of the documentation with

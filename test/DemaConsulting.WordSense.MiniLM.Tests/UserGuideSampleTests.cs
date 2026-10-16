@@ -1,4 +1,4 @@
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Doc-check tests that keep the C# samples of the user guide compiling and equal to the documented code.
@@ -32,7 +32,7 @@ public class UserGuideSampleTests
         var token = TestContext.Current.CancellationToken;
         var guide = await File.ReadAllTextAsync(Path.Combine(root, "docs", "user_guide", "introduction.md"), token);
         var source = await File.ReadAllTextAsync(
-            Path.Combine(root, "test", "DemaConsulting.WordSense.Tests", "UserGuideSamples.cs"), token);
+            Path.Combine(root, "test", "DemaConsulting.WordSense.MiniLM.Tests", "UserGuideSamples.cs"), token);
 
         var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(guide, $"<!-- sample:{name} -->", "csharp"));
         var compiled = DocSampleText.Normalize(
@@ -63,8 +63,9 @@ public class UserGuideSampleTests
     public async Task WordSense_UserGuide_Samples_RunAgainstModel()
     {
         var location = WordSenseModelLocation.FromDirectory(ModelAssets.RequireModelDirectory());
-        using var classifier = await WordSenseClassifier.CreateAsync(
-            new WordSenseClassifierOptions { ModelDirectory = location.Directory },
+        using var classifier = await MiniLMWordSense.CreateClassifierAsync(
+            new MiniLMWordSenseOptions { ModelDirectory = location.Directory },
+            null,
             TestContext.Current.CancellationToken);
 
         await UserGuideSamples.OutcomesAsync(classifier);

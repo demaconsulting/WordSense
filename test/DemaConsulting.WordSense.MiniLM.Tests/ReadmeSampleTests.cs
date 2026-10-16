@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Doc-check tests that keep the README usage samples and their documented output from drifting.
@@ -13,7 +13,7 @@ namespace DemaConsulting.WordSense.Tests;
 /// </remarks>
 public class ReadmeSampleTests
 {
-    private const string Usings = "using DemaConsulting.WordSense;\n\n";
+    private const string Usings = "using DemaConsulting.WordSense.MiniLM;\n\n";
 
     /// <summary>
     ///     The README code block equals the compiled sample code.
@@ -26,7 +26,7 @@ public class ReadmeSampleTests
         var token = TestContext.Current.CancellationToken;
         var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), token);
         var source = await File.ReadAllTextAsync(
-            Path.Combine(root, "test", "DemaConsulting.WordSense.Tests", "ReadmeSample.cs"), token);
+            Path.Combine(root, "test", "DemaConsulting.WordSense.MiniLM.Tests", "ReadmeSample.cs"), token);
 
         var documented = DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:readme -->", "csharp"));
         var compiled = DocSampleText.Normalize(

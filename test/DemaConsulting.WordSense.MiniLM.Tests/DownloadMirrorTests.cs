@@ -1,6 +1,6 @@
 using System.Net;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Tests for <see cref="DownloadMirror"/>.

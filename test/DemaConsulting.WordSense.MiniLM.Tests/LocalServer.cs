@@ -1,7 +1,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     A minimal loopback HTTP server used to exercise the downloader without any network access.

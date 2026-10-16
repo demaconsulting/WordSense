@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace DemaConsulting.WordSense.Tests;
+namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Locates the committed model files and skips tests that need them when they are unavailable
@@ -11,14 +11,14 @@ internal static class ModelAssets
     private static readonly string[] Names = ["model_int8.onnx", "vocab.txt"];
 
     /// <summary>
-    ///     Finds the repository's <c>model</c> directory by walking up from the test output directory.
+    ///     Finds the repository's <c>model/all-MiniLM-L6-v2-int8</c> directory by walking up from the test output directory.
     /// </summary>
     /// <returns>The directory, or null when not found.</returns>
     public static string? FindModelDirectory()
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            var candidate = Path.Combine(dir.FullName, "model");
+            var candidate = Path.Combine(dir.FullName, "model", WordSenseModelCatalog.ModelId);
             if (File.Exists(Path.Combine(candidate, "SHA256SUMS")))
             {
                 return candidate;
@@ -64,7 +64,7 @@ internal static class ModelAssets
             Assert.Skip("The repository root was not found.");
         }
 
-        return Path.GetDirectoryName(model)!;
+        return Path.GetDirectoryName(Path.GetDirectoryName(model))!;
     }
 
     /// <summary>
