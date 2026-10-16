@@ -16,6 +16,7 @@ exception.
 
 | OTS Item    | Purpose                                                              |
 |-------------|----------------------------------------------------------------------|
+| ApiMark     | Generates the API reference from XML docs and enforces doc coverage  |
 | BuildMark   | Generates build-notes documentation from GitHub Actions metadata     |
 | FileAssert  | Validates generated documents (HTML/PDF) against acceptance criteria |
 | OnnxRuntime | Runtime dependency: executes the quantized transformer model         |

@@ -238,6 +238,16 @@ reviews:
       - "corpus/provenance/**"
       - "corpus/realtext/**"
 
+  # OTS-ApiMark Review (one per OTS item)
+  - id: OTS-ApiMark
+    title: Review that ApiMark Provides Required Functionality
+    paths:
+      - "docs/reqstream/ots/apimark.yaml"                                  # OTS requirements
+      - "docs/design/ots/apimark.md"                                       # OTS integration design
+      - "docs/verification/ots/apimark.md"                                 # OTS verification
+      - "test/DemaConsulting.WordSense.Tests/XmlDocExampleVerifier.cs"     # compiles documented examples
+      - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"        # example compile test
+
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark
     title: Review that BuildMark Provides Required Functionality

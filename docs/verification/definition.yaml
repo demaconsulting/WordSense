@@ -16,6 +16,7 @@ input-files:
   - docs/verification/word-sense/word-sense-builder.md
   - docs/verification/ots.md
   - docs/verification/ots/buildmark.md
+  - docs/verification/ots/apimark.md
   - docs/verification/ots/onnxruntime.md
   - docs/verification/ots/fileassert.md
   - docs/verification/ots/pandoc.md

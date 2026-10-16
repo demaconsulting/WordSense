@@ -94,6 +94,34 @@ sections:
           - WordSense-OTS-ReqStream-Lint
           - WordSense-OTS-FileAssert
 
+      - id: Quality-ApiReferenceGeneration
+        title: The repository shall rely on ApiMark to generate API reference documentation for the shipped package.
+        tags: [quality]
+        justification: |
+          The API reference an agent consuming WordSense reads is generated from XML doc
+          comments by ApiMark during the build, and ApiMark also enforces that every public
+          member carries a documentation summary, so the reference is complete rather than
+          merely present. This grouping requirement links those OTS requirements to the
+          quality root so they participate in orphan detection without being falsely
+          reported as disconnected from library functionality.
+        children:
+          - WordSense-OTS-ApiMark-Generate
+          - WordSense-OTS-ApiMark-RenderExamples
+          - WordSense-OTS-ApiMark-EnforceDocs
+
+      - id: Quality-ApiExamplesCompile
+        title: >-
+          Every example documented on the shipped package's public API shall compile against
+          the package's real API.
+        tags: [quality]
+        justification: |
+          The documented examples are instructions a coding agent follows to use the library,
+          so an example that does not compile is a confident instruction that fails only after
+          the reader has acted on it. The test project extracts every example from the shipped
+          XML documentation file and compiles it with Roslyn against the real compiled API.
+        tests:
+          - WordSense_XmlDocExamples_Compile
+
       - id: Quality-SoftwareStructureModeling
         title: The repository shall rely on SysML2Tools to lint and render software-structure models.
         tags: [quality]

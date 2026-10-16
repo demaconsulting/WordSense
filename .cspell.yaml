@@ -15,6 +15,7 @@ language: en,en-GB
 # Project-specific technical terms and tool names
 words:
   - nounverb
+  - apimark
   - ying
   - wikt
   - quizes

@@ -185,6 +185,12 @@ jobs:
           --configuration Release
           --property:Version=${{ inputs.version }}
 
+      - name: Assert API documentation
+        run: >
+          dotnet fileassert
+          --results artifacts/fileassert-api-docs-${{ matrix.os }}.trx
+          api-docs
+
       - name: Test
         run: >
           dotnet test

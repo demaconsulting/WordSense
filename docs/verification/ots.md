@@ -15,6 +15,7 @@ detailed approach and named test scenarios.
 
 | OTS Item    | Verification Approach                                                       |
 |-------------|-----------------------------------------------------------------------------|
+| ApiMark     | Pipeline evidence: FileAssert assertions on the generated API reference     |
 | BuildMark   | Self-validation CLI suite plus pipeline evidence via build-notes document   |
 | FileAssert  | Self-validation CLI suite plus transitive evidence from document assertions |
 | OnnxRuntime | Pipeline evidence: real-model encoder and end-to-end tests                  |
