@@ -46,12 +46,12 @@ public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> 
     /// <summary>
     ///     Validates the definition.
     /// </summary>
-    /// <exception cref="ArgumentException">Thrown when the name is empty or the tags are invalid, unsorted or duplicated.</exception>
+    /// <exception cref="ArgumentException">Thrown when the name is empty, or the tags or the group are invalid, unsorted or duplicated.</exception>
     internal void Validate()
     {
         if (string.IsNullOrEmpty(Name) || Tags is null || Tags.Count is 0 or > MaxTagsPerSense)
         {
-            throw new ArgumentException("A sense needs a name and between 1 and 16 tags.");
+            throw new ArgumentException($"A sense needs a name and between 1 and {MaxTagsPerSense} tags.");
         }
 
         for (var i = 0; i < Tags.Count; i++)

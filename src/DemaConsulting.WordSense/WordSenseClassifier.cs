@@ -407,6 +407,11 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     {
         ArgumentOutOfRangeException.ThrowIfLessThan(options.MaxSequenceLength, 8);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(options.MaxSequenceLength, 512);
+        if (double.IsNaN(options.AbstainMarginScale))
+        {
+            throw new ArgumentOutOfRangeException(nameof(options), "AbstainMarginScale must not be NaN.");
+        }
+
         ArgumentOutOfRangeException.ThrowIfNegative(options.AbstainMarginScale);
     }
 
@@ -496,7 +501,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         var result = new WordSense?[words.Count];
         for (var i = 0; i < result.Length; i++)
         {
-            if (scored[i] is { } s && s.Margin >= Threshold(s.Model))
+            if (scored[i] is { } s && !TagScorer.Abstains(s.Margin, Threshold(s.Model)))
             {
                 result[i] = s.Model.Senses[s.Best];
             }
@@ -660,7 +665,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
             scored.Margin,
             scored.Model.Senses[runner],
             runnerMargin,
-            scored.Margin < Threshold(scored.Model));
+            TagScorer.Abstains(scored.Margin, Threshold(scored.Model)));
     }
 
     /// <summary>

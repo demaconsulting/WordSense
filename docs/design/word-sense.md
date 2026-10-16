@@ -69,7 +69,7 @@ only to the mirror. If every source fails, `WordSenseModelDownloadException` lis
 
 ## Dependencies
 
-The runtime dependency is Microsoft.ML.OnnxRuntime 1.28.0 (see _OTS Integration Design_ and the
+The runtime dependency is Microsoft.ML.OnnxRuntime (see _OTS Integration Design_ and the
 _ONNX Runtime_ design). The model file `model_int8.onnx` is not part of the package; it is
 downloaded on first use, or supplied through `WordSenseClassifierOptions.ModelDirectory`. The
 following OTS items are used for building and verifying this system (not consumed at runtime):

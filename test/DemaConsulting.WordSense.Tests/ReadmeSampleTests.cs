@@ -37,6 +37,19 @@ public class ReadmeSampleTests
     }
 
     /// <summary>
+    ///     Every sample marked in the README is one of the checked samples.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSense_Readme_SampleMarkers_AreAllChecked()
+    {
+        var root = ModelAssets.RequireRepositoryRoot();
+        var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), TestContext.Current.CancellationToken);
+
+        Assert.Equal(["classify", "download", "tags"], DocSampleText.SampleNames(readme).Order());
+    }
+
+    /// <summary>
     ///     The documented output equals the output of the sample run against the real model.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
@@ -46,16 +59,25 @@ public class ReadmeSampleTests
         var root = ModelAssets.RequireRepositoryRoot();
         var location = WordSenseModelLocation.FromDirectory(ModelAssets.RequireModelDirectory());
         var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), TestContext.Current.CancellationToken);
+        var previous = CultureInfo.CurrentCulture;
         CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
+        ReadmeSample classify;
+        ReadmeSample tags;
+        try
+        {
+            classify = new ReadmeSample();
+            await classify.ClassifyAsync(location);
 
-        var classify = new ReadmeSample();
-        await classify.ClassifyAsync(location);
-
-        using var classifier = await WordSenseClassifier.CreateAsync(
-            new WordSenseClassifierOptions { ModelDirectory = location.Directory },
-            TestContext.Current.CancellationToken);
-        var tags = new ReadmeSample();
-        await tags.TagsAsync(classifier);
+            using var classifier = await WordSenseClassifier.CreateAsync(
+                new WordSenseClassifierOptions { ModelDirectory = location.Directory },
+                TestContext.Current.CancellationToken);
+            tags = new ReadmeSample();
+            await tags.TagsAsync(classifier);
+        }
+        finally
+        {
+            CultureInfo.CurrentCulture = previous;
+        }
 
         Assert.Equal(DocSampleText.Normalize(classify.Output), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- output:classify -->", "text")));
         Assert.Equal(DocSampleText.Normalize(tags.Output), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- output:tags -->", "text")));

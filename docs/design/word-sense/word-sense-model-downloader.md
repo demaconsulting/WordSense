@@ -25,7 +25,8 @@ set; GitHub LFS) and try each: download to a unique `.part` file under a per-att
 SHA-256, then atomically move into place. Request failures, timeouts, digest mismatches and I/O errors
 are recorded and the next source is tried; cancellation by the caller propagates. If all sources fail,
 `WordSenseModelDownloadException` is thrown with every failure. `RequestTimeout` is validated first
-(positive or infinite, else `ArgumentOutOfRangeException`). A `StoreRoot` that is not a valid path (for
+(positive and no longer than about 49 days, the largest value a cancellation timer accepts, or infinite; else
+`ArgumentOutOfRangeException`). A `StoreRoot` that is not a valid path (for
 example an empty string or one with invalid characters) raises `ArgumentException` from path resolution. An
 exception thrown by the progress receiver is not a download failure and propagates to the caller (after the
 partial file is deleted), unless it is of a type that is treated as a source failure (`HttpRequestException`,

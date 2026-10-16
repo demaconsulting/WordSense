@@ -111,6 +111,8 @@ public class WordSenseTests
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
             () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, AbstainMarginScale = -1 }, cancellationToken));
         await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
+            () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, AbstainMarginScale = double.NaN }, cancellationToken));
+        await Assert.ThrowsAsync<ArgumentOutOfRangeException>(
             () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = missing, IntraOpThreads = -1 }, cancellationToken));
     }
 

@@ -27,7 +27,7 @@ test uses the network. Request logs show the order of attempts and the headers r
   **..._InfiniteRequestTimeout_Succeeds**, **..._ProgressThrows_PropagatesWithoutFallThrough**.
 - **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**.
 - **WordSenseModelDownloader_FromDirectory_ChecksEveryFile**: a directory with a missing or altered
-  file is rejected (`WordSense-Downloader-Location`).
+  file is rejected (`WordSense-Downloader-Location`); it covers `WordSenseModelLocation.FromDirectory`.
 - **WordSenseModelDownloader_DefaultStoreRoot_IsPerUser**: the default store is beneath the user's
   local application data (`WordSense-Downloader-StoreRoot`).
 - **..._CallerCancels_ThrowsOperationCanceled**, **..._Progress_IsReported**.

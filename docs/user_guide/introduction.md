@@ -59,7 +59,7 @@ for (var i = 0; i < words.Length; i++)
 {
     if (senses[i] is { } sense)
     {
-        Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags)}]");
+        Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags.Order())}]");
     }
 }
 ```
@@ -70,8 +70,8 @@ read as one running text. The result is parallel to the input: element `i` is th
 abstained because the evidence was weak. Inflected forms are recognized (`presents` is a form of `present`).
 
 A `WordSense` is an immutable record with `Lemma`, `Sense`, `Group`, `Tags` and `HasTag(tag)`. `Tags` is a frozen
-set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`,
-`superlative`; `participle` is also a valid qualifier but no sense uses it yet); every sense has exactly one part of
+set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`;
+`participle` and `superlative` are also valid qualifiers but no sense uses them yet); every sense has exactly one part of
 speech. `Group` is the equivalence class of the sense: senses of
 one lemma that share a group share a pronunciation, so a consumer that only needs the pronunciation need not tell
 them apart (the senses

@@ -76,7 +76,7 @@ sections:
         tags: [unit]
         justification: |
           Real sentences carry licences and attribution duties; the corpus must record where each came from,
-          and only sentences whose sense two judges agree on may become labeled data.
+          and only sentences whose sense is settled by judge agreement or adjudication may become labeled data.
         tests:
           - WordSenseBuilder_RealJudge_Resolve_FollowsTheRules
           - WordSenseBuilder_RealImport_Validate_RequiresProvenance

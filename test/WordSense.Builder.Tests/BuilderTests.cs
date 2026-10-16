@@ -1323,6 +1323,26 @@ public sealed class BuilderTests : IDisposable
         Assert.Empty(RealImport.Validate(corpus));
     }
 
+    /// <summary>
+    ///     Anchors and holdout files have no header line, so a first line that looks like a header is still data and is dropped.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbGate_Drop_FiltersTheFirstLineOfFilesWithoutHeader()
+    {
+        var corpus = PrepareNounVerbCorpus();
+        Write("corpus/anchors/nounverb-1.tsv", "lemma\tnoun\tA {lemma} here.\nkeep\tnoun\tA {keep} here.\n");
+        var failed = NounVerbGate.Evaluate(
+            [new LemmaReport("lemma", 28, 16, 10, 8, 6, 0.1f, false, 14, 10, [new SenseStats("noun", 8, 5, 4, 3), new SenseStats("verb", 8, 5, 4, 3)])],
+            new HashSet<string> { "lemma" },
+            new GatePolicy());
+
+        NounVerbGate.Drop(corpus, failed);
+
+        var text = File.ReadAllText(Path.Combine(corpus, "anchors", "nounverb-1.tsv"));
+        Assert.DoesNotContain("lemma\t", text, StringComparison.Ordinal);
+        Assert.Contains("keep\t", text, StringComparison.Ordinal);
+    }
+
     private static NounVerbRow Row(int i, string group)
     {
         var sentence = $"The {{chip}} number {i} is here.";

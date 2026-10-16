@@ -183,11 +183,11 @@ internal static class NounVerbGate
             var directory = Path.Combine(corpus, folder);
             foreach (var file in Directory.Exists(directory) ? Directory.GetFiles(directory, "*.tsv").Where(f => NounVerbImport.IsNounVerbFile(Path.GetFileName(f))) : [])
             {
-                FilterLines(file, drop, folder == "provenance" ? 1 : 0);
+                FilterLines(file, drop, folder == "provenance" ? 1 : 0, folder is not ("anchors" or "holdout"));
             }
         }
 
-        FilterLines(Path.Combine(corpus, "forms", "speech.tsv"), drop, 1);
+        FilterLines(Path.Combine(corpus, "forms", "speech.tsv"), drop, 1, true);
 
         var path = Path.Combine(corpus, "audit", DroppedFile);
         var lines = File.Exists(path) ? File.ReadAllLines(path, new UTF8Encoding(false)).Skip(1).Where(l => l.Length > 0).ToList() : [];
@@ -253,7 +253,9 @@ internal static class NounVerbGate
         return text.ToString();
     }
 
-    private static void FilterLines(string path, HashSet<string> drop, int column)
+    // Only files that have a header line keep their first line; anchors and holdout have none, so their first
+    // line is data and must be filtered like every other
+    private static void FilterLines(string path, HashSet<string> drop, int column, bool hasHeader)
     {
         if (!File.Exists(path))
         {
@@ -261,7 +263,7 @@ internal static class NounVerbGate
         }
 
         var lines = File.ReadAllLines(path, new UTF8Encoding(false)).Where(l => l.Length > 0).ToList();
-        var kept = lines.Where((l, i) => i == 0 && column >= 0 && IsHeader(l) || !drop.Contains(l.Split('\t')[column])).ToList();
+        var kept = lines.Where((l, i) => i == 0 && hasHeader && IsHeader(l) || !drop.Contains(l.Split('\t')[column])).ToList();
         File.WriteAllText(path, string.Join('\n', kept) + (kept.Count > 0 ? "\n" : string.Empty), new UTF8Encoding(false));
     }
 

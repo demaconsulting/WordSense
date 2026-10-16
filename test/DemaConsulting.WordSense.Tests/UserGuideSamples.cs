@@ -29,7 +29,7 @@ internal static class UserGuideSamples
         {
             if (senses[i] is { } sense)
             {
-                Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags)}]");
+                Console.WriteLine($"{words[i]}: {sense.Sense} [{string.Join(", ", sense.Tags.Order())}]");
             }
         }
 

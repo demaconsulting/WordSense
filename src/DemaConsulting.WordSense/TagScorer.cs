@@ -92,8 +92,17 @@ internal static class TagScorer
 
         // With a single present group the margin is infinite
         var margin = double.IsNegativeInfinity(second) ? double.PositiveInfinity : bestScore - second;
-        return margin < threshold ? null : tags[best];
+        return Abstains(margin, threshold) ? null : tags[best];
     }
+
+    /// <summary>
+    ///     Decides whether a margin is too small to answer; the single predicate shared by every classification
+    ///     path, so a NaN margin or threshold always abstains.
+    /// </summary>
+    /// <param name="margin">The score margin.</param>
+    /// <param name="threshold">The abstain threshold.</param>
+    /// <returns>True when no answer should be given.</returns>
+    public static bool Abstains(double margin, double threshold) => !(margin >= threshold);
 
     /// <summary>
     ///     Answers whether the best sense of the lemma carries a tag.
@@ -121,7 +130,7 @@ internal static class TagScorer
         }
 
         var margin = double.IsNegativeInfinity(other) ? double.PositiveInfinity : Math.Abs(with - other);
-        if (margin < threshold)
+        if (Abstains(margin, threshold))
         {
             return null;
         }

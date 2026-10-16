@@ -33,7 +33,10 @@ the records of equal tags share the table's tag strings.
   inconsistent count or digest mismatch raises `WordSenseTableFormatException`.
 - `ToArray()`, `Write(stream)`: deterministic serialization.
 - `TryGetLemma(lemma, out model)`: true with the model for a known lemma, false for an unknown one;
-  throws `ArgumentNullException` for a null lemma. `LemmaModel.Score(feature)`: best sense index and margin.
+  throws `ArgumentNullException` for a null lemma. `LemmaModel.Score(feature)`: best sense index and margin;
+  it throws `ArgumentException` when the feature length differs from the dimension. `LemmaModel.Scores(feature, scores)`
+  throws `ArgumentException` when the feature length differs from the dimension or the scores length from the
+  sense count.
 
 ## Error Handling
 

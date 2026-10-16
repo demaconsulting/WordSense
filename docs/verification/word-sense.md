@@ -93,10 +93,21 @@ code, the README sample is guaranteed to build against the current API.
 
 ### WordSense_Readme_Output_MatchesReadme
 
-Runs both compiled samples against the committed model (skipped when the model files are missing or are Git LFS
-pointers) and requires the lines they write to equal the output blocks marked `<!-- output:name -->` in `README.md`.
+Runs the two compiled samples that print output (`classify` and `tags`; `download` prints a directory and is not
+run) against the committed model (skipped when the model files are missing or are Git LFS pointers) and requires
+the lines they write to equal the output blocks marked `<!-- output:name -->` in `README.md`.
 Unknown or abstained words print `-`, so a change to the model, table or abstention shows up as a failing test and
 the documented output is updated deliberately.
+
+### WordSense_Readme_SampleMarkers_AreAllChecked
+
+Requires the set of sample markers in `README.md` to equal the set of checked samples (`download`, `classify`,
+`tags`).
+
+### WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel
+
+Calls `WordSenseClassifier.CreateAsync` with invalid options and a model directory that does not exist, and requires
+the options error (not a model error) to be reported, so invalid options never cause a download or a file read.
 
 ### WordSense_UserGuide_CodeBlock_MatchesCompiledSample
 
@@ -126,20 +137,24 @@ a requirement is satisfied only by a passing result from its own platform or fra
 
 ## Requirements Coverage
 
-| Requirement                 | Verified by                                                                       |
-|-----------------------------|-----------------------------------------------------------------------------------|
-| WordSense-Lib-Classify      | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                   |
-| WordSense-Lib-Tags          | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech |
-| WordSense-Lib-Accuracy      | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                    |
-| WordSense-Lib-Embedded      | EmbeddedTable_MatchesPinnedModel                                                  |
-| WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                         |
-| WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                         |
-| WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                |
-| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme, UserGuide_*  |
-| WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)              |
+| Requirement                 | Verified by                                                                         |
+|-----------------------------|-------------------------------------------------------------------------------------|
+| WordSense-Lib-Classify      | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                     |
+| WordSense-Lib-Tags          | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech   |
+| WordSense-Lib-Accuracy      | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                      |
+| WordSense-Lib-Abstain       | ClassifyAsync_LowMargin_Abstains (classifier verification)                          |
+| WordSense-Lib-Embedded      | EmbeddedTable_MatchesPinnedModel                                                    |
+| WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                           |
+| WordSense-Lib-ModelDownload | EnsureModel_* (downloader verification)                                             |
+| WordSense-Lib-Mirror        | EnsureModel_Mirror* (downloader and mirror verification)                            |
+| WordSense-Lib-Integrity     | EnsureModel_HashMismatch_*, FromDirectory_ChecksEveryFile (downloader verification) |
+| WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                           |
+| WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                  |
+| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme, UserGuide_*    |
+| WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)                |
 
-The remaining library requirements (abstention, download, mirror, integrity) are verified by the unit-level
-scenarios of the classifier, downloader and mirror documents. `WordSense-Lib-Documentation` is also verified by
+The abstention, download, mirror and integrity rows summarize scenarios that are detailed in the unit-level
+verification documents of the classifier, downloader and mirror. `WordSense-Lib-Documentation` is also verified by
 the appendix scenarios of the builder verification document (`WordSense-Builder-Appendix`).
 
 ## Acceptance Criteria

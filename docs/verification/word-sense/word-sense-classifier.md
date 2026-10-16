@@ -2,11 +2,10 @@
 
 ## Verification Approach
 
-Tests in `WordSenseClassifierTests.cs` (except the `WordSenseTests.cs` tests
+Tests in `WordSenseClassifierTests.cs` use a fake `IWordSenseEncoder` that returns deterministic
+hidden states and a small in-memory table, so behavior is verified without the model. The exceptions are
 `WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory` and
-`WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel`,
-which lives in `WordSenseTests.cs`) use a fake `IWordSenseEncoder` that returns deterministic
-hidden states and a small in-memory table, so behavior is verified without the model.
+`WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel`, which are in `WordSenseTests.cs`.
 
 ## Test Scenarios
 
@@ -19,9 +18,10 @@ hidden states and a small in-memory table, so behavior is verified without the m
   detail margins and the abstained flag.
 - **WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull**, **WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull**,
   **WordSenseClassifier_TagQueries_InvalidArguments_Throw**: tag queries.
-- **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention.
+- **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention; `ClassifyAsync` and `ClassifyDetailAsync`
+  share one abstain predicate, so they agree.
 - **WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget**: windowing.
-- **WordSenseClassifier_Constructor_InvalidArguments_Throw**, **..._ModelMismatch_Throws**,
+- **WordSenseClassifier_Constructor_InvalidArguments_Throw** (including a negative or NaN `AbstainMarginScale`), **..._ModelMismatch_Throws**,
   **WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory**,
   **WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel** (invalid options are reported before the
   model directory is touched): validation.
