@@ -45,64 +45,66 @@ shown in bold.
 ### Lemmas Starting With A
 
 - **absent**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: absents (verb verb)
-  - `adjective`; meaning: `adjective`; example: Vitamin D is nearly **absent** in this diet.
-  - `verb`; meaning: `verb`; example: She **absents** herself from every family argument.
+  - `adjective`; meaning: `adjective`; respelling: `AB-sent`; example: Vitamin D is nearly **absent** in this diet.
+  - `verb`; meaning: `verb`; respelling: `ab-SENT`; example: She **absents** herself from every family argument.
 - **abstract**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: abstracts (verb verb)
-  - `adjective`; meaning: `adjective`; example: Philosophy deals with many **abstract** ideas.
-  - `verb`; meaning: `verb`; example: We **abstract** the details into a simple diagram.
+  - `adjective`; meaning: `adjective`; respelling: `AB-strakt`; example: Philosophy deals with many **abstract** ideas.
+  - `verb`; meaning: `verb`; respelling: `ab-STRAKT`; example: We **abstract** the details into a simple diagram.
 - **abuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: abuses
-  - `noun`; meaning: `noun`; example: Alcohol **abuse** can damage the liver.
-  - `verb`; meaning: `verb`; example: He would never **abuse** an animal.
+  - `noun`; meaning: `noun`; respelling: `uh-BYOOS`; example: Alcohol **abuse** can damage the liver.
+  - `verb`; meaning: `verb`; respelling: `uh-BYOOZ`; example: He would never **abuse** an animal.
 - **accent**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: accented (verb
   stress-last), accenting (verb stress-last), accents
-  - `noun`; meaning: `stress-first`; example: Tom has a thick Scottish **accent**.
-  - `verb`; meaning: `stress-last`; example: His bushy brows **accented** his face.
+  - `noun`; meaning: `stress-first`; respelling: `AK-sent`; example: Tom has a thick Scottish **accent**.
+  - `verb`; meaning: `stress-last`; respelling: `ak-SENT`; example: His bushy brows **accented** his face.
 - **access**; parts of speech: noun, verb; forms: accessed (verb), accesses, accessing (verb)
   - `noun`; example: This door gives **access** to the garden.
   - `verb`; example: Mary can't seem to **access** her data.
 - **addict**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: addicts
-  - `noun`; meaning: `noun`; example: That gambling **addict** lost his house.
-  - `verb`; meaning: `verb`; example: Cheap thrills **addict** the restless mind.
+  - `noun`; meaning: `noun`; respelling: `AD-ikt`; example: That gambling **addict** lost his house.
+  - `verb`; meaning: `verb`; respelling: `uh-DIKT`; example: Cheap thrills **addict** the restless mind.
 - **address**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: addressed (verb
   stress-last), addresses, addressing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: I'm not giving them my email **address**.
-  - `verb`; meaning: `stress-last`; example: He **addressed** Sappho: "You've lost your bet.
+  - `noun`; meaning: `stress-first`; respelling: `AD-res`; example: I'm not giving them my email **address**.
+  - `verb`; meaning: `stress-last`; respelling: `uh-DRES`; example: He **addressed** Sappho: "You've lost your bet.
 - **adduct**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: adducted (verb
   stress-last), adducting (verb stress-last), adducts
-  - `noun`; meaning: `stress-first`; example: Agents that form DNA **adducts** (e.g., ochratoxin A)
-  - `verb`; meaning: `stress-last`; example: It acts to **adduct** and flex the arm.
+  - `noun`; meaning: `stress-first`; respelling: `AD-ukt`; example: Agents that form DNA **adducts** (e.g., ochratoxin
+    A)
+  - `verb`; meaning: `stress-last`; respelling: `uh-DUKT`; example: It acts to **adduct** and flex the arm.
 - **adulterate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: adulterates (verb verb)
-  - `adjective`; meaning: `adjective`; example: An **adulterate** drug is dangerous to take.
-  - `verb`; meaning: `verb`; example: The farmer **adulterates** the milk with water.
+  - `adjective`; meaning: `adjective`; respelling: `uh-DUL-tur-it`; example: An **adulterate** drug is dangerous to
+    take.
+  - `verb`; meaning: `verb`; respelling: `uh-DUL-tur-ayt`; example: The farmer **adulterates** the milk with water.
 - **advance**; parts of speech: noun, verb; forms: advanced (verb), advances, advancing (verb)
   - `noun`; example: Payment must be made in **advance**.
   - `verb`; example: The boss had to **advance** him some money.
 - **advert**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: adverted (verb
   stress-last), adverting (verb stress-last), adverts
-  - `noun`; meaning: `stress-first`; example: What's your favourite **advert**?
-  - `verb`; meaning: `stress-last`; example: The bishop **adverted** to the town's recent troubles in his sermon, though
-    he named no names.
+  - `noun`; meaning: `stress-first`; respelling: `AD-vurt`; example: What's your favourite **advert**?
+  - `verb`; meaning: `stress-last`; respelling: `ad-VURT`; example: The bishop **adverted** to the town's recent
+    troubles in his sermon, though he named no names.
 - **advocate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: advocates
-  - `noun`; meaning: `noun`; example: Every **advocate** must know the law well.
-  - `verb`; meaning: `verb`; example: Do you **advocate** changing the schedule?
+  - `noun`; meaning: `noun`; respelling: `AD-vuh-kit`; example: Every **advocate** must know the law well.
+  - `verb`; meaning: `verb`; respelling: `AD-vuh-kayt`; example: Do you **advocate** changing the schedule?
 - **affect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: affects
-  - `noun`; meaning: `noun`; example: Her cheerful **affect** hid a deep sadness.
-  - `verb`; meaning: `verb`; example: It doesn't **affect** me one bit.
+  - `noun`; meaning: `noun`; respelling: `AF-ekt`; example: Her cheerful **affect** hid a deep sadness.
+  - `verb`; meaning: `verb`; respelling: `uh-FEKT`; example: It doesn't **affect** me one bit.
 - **affiliate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: affiliates
-  - `noun`; meaning: `noun`; example: Our hospital is a university **affiliate**.
-  - `verb`; meaning: `verb`; example: Teams that **affiliate** must meet league standards.
+  - `noun`; meaning: `noun`; respelling: `uh-FIL-ee-it`; example: Our hospital is a university **affiliate**.
+  - `verb`; meaning: `verb`; respelling: `uh-FIL-ee-ayt`; example: Teams that **affiliate** must meet league standards.
 - **affix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: affixes
-  - `noun`; meaning: `noun`; example: This **affix** marks the past tense.
-  - `verb`; meaning: `verb`; example: Can you **affix** this note to the door?
+  - `noun`; meaning: `noun`; respelling: `AF-iks`; example: This **affix** marks the past tense.
+  - `verb`; meaning: `verb`; respelling: `uh-FIKS`; example: Can you **affix** this note to the door?
 - **agape**; parts of speech: noun, adjective; heteronym, meanings: love, open; no other forms
-  - `noun`; meaning: `love`; example: This was what their **Agape** had come to.
-  - `adjective`; meaning: `open`; example: That child stared at me, his mouth **agape**.
+  - `noun`; meaning: `love`; respelling: `ah-GAH-pay`; example: This was what their **Agape** had come to.
+  - `adjective`; meaning: `open`; respelling: `uh-GAYP`; example: That child stared at me, his mouth **agape**.
 - **agglomerate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: agglomerates
-  - `noun`; meaning: `noun`; example: The powder tends to form a hard **agglomerate**.
-  - `verb`; meaning: `verb`; example: The salt may **agglomerate** in damp storage.
+  - `noun`; meaning: `noun`; respelling: `uh-GLOM-ur-it`; example: The powder tends to form a hard **agglomerate**.
+  - `verb`; meaning: `verb`; respelling: `uh-GLOM-ur-ayt`; example: The salt may **agglomerate** in damp storage.
 - **aggregate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: aggregates
-  - `noun`; meaning: `noun`; example: Sand is a common fine **aggregate**.
-  - `verb`; meaning: `verb`; example: Platelets **aggregate** to seal the wound.
+  - `noun`; meaning: `noun`; respelling: `AG-rih-git`; example: Sand is a common fine **aggregate**.
+  - `verb`; meaning: `verb`; respelling: `AG-rih-gayt`; example: Platelets **aggregate** to seal the wound.
 - **aid**; parts of speech: noun, verb; forms: aided (verb), aiding (verb), aids
   - `noun`; example: It was a mistake to refuse his **aid**.
   - `verb`; example: We **aided** him in his business.
@@ -114,37 +116,37 @@ shown in bold.
   - `verb`; example: We need to **alert** a bomb squad.
 - **alloy**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: alloyed (verb
   stress-last), alloying (verb stress-last), alloys
-  - `noun`; meaning: `stress-first`; example: That's not iron, but some **alloy**.
-  - `verb`; meaning: `stress-last`; example: If you **alloy** gold with too much copper, the jewelry will turn a reddish
-    color.
+  - `noun`; meaning: `stress-first`; respelling: `AL-oy`; example: That's not iron, but some **alloy**.
+  - `verb`; meaning: `stress-last`; respelling: `uh-LOI`; example: If you **alloy** gold with too much copper, the
+    jewelry will turn a reddish color.
 - **ally**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: allied (verb
   stress-last), allies, allying (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: He felt betrayed by his closest **ally**.
-  - `verb`; meaning: `stress-last`; example: Germany was **allied** with Italy in World War II.
+  - `noun`; meaning: `stress-first`; respelling: `AL-eye`; example: He felt betrayed by his closest **ally**.
+  - `verb`; meaning: `stress-last`; respelling: `uh-LY`; example: Germany was **allied** with Italy in World War II.
 - **alternate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: alternates
-  - `noun`; meaning: `noun`; example: I'll send my **alternate** to the meeting.
-  - `verb`; meaning: `verb`; example: The shifts **alternate** every other week.
+  - `noun`; meaning: `noun`; respelling: `AWL-tur-nit`; example: I'll send my **alternate** to the meeting.
+  - `verb`; meaning: `verb`; respelling: `AWL-tur-nayt`; example: The shifts **alternate** every other week.
 - **alum**; parts of speech: noun; heteronym, meanings: graduate, mineral; forms: alums
-  - `noun`; meaning: `graduate`; example: As a proud **alum**, he still wears the school sweatshirt to every football
-    game.
-  - `noun`; meaning: `mineral`; example: Both native and imported potassium **alum** was used.
+  - `noun`; meaning: `graduate`; respelling: `uh-LUM`; example: As a proud **alum**, he still wears the school
+    sweatshirt to every football game.
+  - `noun`; meaning: `mineral`; respelling: `AL-um`; example: Both native and imported potassium **alum** was used.
 - **amount**; parts of speech: noun, verb; forms: amounted (verb), amounting (verb), amounts
   - `noun`; example: "Any **amount** of 'em," sobbed Toad.
   - `verb`; example: Figure up how much it **amounts** to.
 - **analyses**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: We compared the **analyses** line by line.
-  - `verb`; meaning: `verb`; example: The critic **analyses** each poem line by line.
+  - `noun`; meaning: `noun`; respelling: `uh-NAL-uh-seez`; example: We compared the **analyses** line by line.
+  - `verb`; meaning: `verb`; respelling: `AN-uh-ly-ziz`; example: The critic **analyses** each poem line by line.
 - **anger**; parts of speech: noun, verb; forms: angered (verb), angering (verb), angerred (verb), angerring (verb),
   angers
   - `noun`; example: I could not control my **anger**.
   - `verb`; example: We should not have **angered** Tom.
 - **animate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: animates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Is a robot **animate** or inanimate?
-  - `verb`; meaning: `verb`; example: Joy seems to **animate** her whole face.
+  - `adjective`; meaning: `adjective`; respelling: `AN-uh-mit`; example: Is a robot **animate** or inanimate?
+  - `verb`; meaning: `verb`; respelling: `AN-uh-mayt`; example: Joy seems to **animate** her whole face.
 - **annex**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: annexed (verb
   stress-last), annexes, annexing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: In this **annex** are 10 passenger exits.
-  - `verb`; meaning: `stress-last`; example: China will occupy and **annex** Taiwan.
+  - `noun`; meaning: `stress-first`; respelling: `AN-eks`; example: In this **annex** are 10 passenger exits.
+  - `verb`; meaning: `stress-last`; respelling: `uh-NEKS`; example: China will occupy and **annex** Taiwan.
 - **appeal**; parts of speech: noun, verb; forms: appealed (verb), appealing (verb), appeals
   - `noun`; example: I'm going to prepare an **appeal**.
   - `verb`; example: You can **appeal** to the court.
@@ -153,14 +155,16 @@ shown in bold.
   - `verb`; example: I'm often told that I'm hard to **approach**.
 - **appropriate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: appropriates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: Is this film **appropriate** for children?
-  - `verb`; meaning: `verb`; example: He **appropriates** credit for every success.
+  - `adjective`; meaning: `adjective`; respelling: `uh-PROH-pree-it`; example: Is this film **appropriate** for
+    children?
+  - `verb`; meaning: `verb`; respelling: `uh-PROH-pree-ayt`; example: He **appropriates** credit for every success.
 - **approximate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: approximates
-  - `adjective`; meaning: `adjective`; example: An **approximate** value will do for now.
-  - `verb`; meaning: `verb`; example: The sum will **approximate** one million.
+  - `adjective`; meaning: `adjective`; respelling: `uh-PROK-suh-mit`; example: An **approximate** value will do for now.
+  - `verb`; meaning: `verb`; respelling: `uh-PROK-suh-mayt`; example: The sum will **approximate** one million.
 - **arithmetic**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
-  - `adjective`; meaning: `adjective`; example: An **arithmetic** error led to the wrong total.
-  - `noun`; meaning: `noun`; example: He was never good at mental **arithmetic**.
+  - `adjective`; meaning: `adjective`; respelling: `ar-ith-MET-ik`; example: An **arithmetic** error led to the wrong
+    total.
+  - `noun`; meaning: `noun`; respelling: `uh-RITH-muh-tik`; example: He was never good at mental **arithmetic**.
 - **arm**; parts of speech: noun, verb; forms: armed (verb), arming (verb), arms
   - `noun`; example: In your **arms** my soul finds peace.
   - `verb`; example: Tom was **armed** with a kitchen knife.
@@ -168,37 +172,39 @@ shown in bold.
   - `noun`; example: "Nor running a chance of **arrest**?"
   - `verb`; example: "Are you **arrested** for much, sir?
 - **arsenic**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
-  - `adjective`; meaning: `adjective`; example: Is this acid **arsenic** or arsenous?
-  - `noun`; meaning: `noun`; example: A tiny dose of **arsenic** can be deadly.
+  - `adjective`; meaning: `adjective`; respelling: `ar-SEN-ik`; example: Is this acid **arsenic** or arsenous?
+  - `noun`; meaning: `noun`; respelling: `AR-suh-nik`; example: A tiny dose of **arsenic** can be deadly.
 - **articulate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: articulates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Being **articulate** helps in job interviews.
-  - `verb`; meaning: `verb`; example: He **articulates** each word with care.
-- **aspirate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: aspirates
-  (noun noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: An **aspirate** stop releases a puff of air.
-  - `noun`; meaning: `noun`; example: Each **aspirate** was tested for bacteria.
-  - `verb`; meaning: `verb`; example: Speakers **aspirate** the p in "pot".
+  - `adjective`; meaning: `adjective`; respelling: `ar-TIK-yuh-lit`; example: Being **articulate** helps in job
+    interviews.
+  - `verb`; meaning: `verb`; respelling: `ar-TIK-yuh-layt`; example: He **articulates** each word with care.
+- **aspirate**; parts of speech: noun, verb, adjective; heteronym, meanings: adj-noun, verb; forms: aspirates (noun
+  adj-noun, verb verb)
+  - `adjective`; meaning: `adj-noun`; respelling: `AS-pur-it`; example: An **aspirate** stop releases a puff of air.
+  - `noun`; meaning: `adj-noun`; respelling: `AS-pur-it`; example: Each **aspirate** was tested for bacteria.
+  - `verb`; meaning: `verb`; respelling: `AS-pur-ayt`; example: Speakers **aspirate** the p in "pot".
 - **associate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: associates
-  - `noun`; meaning: `noun`; example: She works as a law firm **associate**.
-  - `verb`; meaning: `verb`; example: Why do we **associate** owls with wisdom?
+  - `noun`; meaning: `noun`; respelling: `uh-SOH-shee-it`; example: She works as a law firm **associate**.
+  - `verb`; meaning: `verb`; respelling: `uh-SOH-shee-ayt`; example: Why do we **associate** owls with wisdom?
 - **attenuate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: attenuates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Is the leaf apex acute or **attenuate**?
-  - `verb`; meaning: `verb`; example: Can this cable **attenuate** the noise?
+  - `adjective`; meaning: `adjective`; respelling: `uh-TEN-yoo-it`; example: Is the leaf apex acute or **attenuate**?
+  - `verb`; meaning: `verb`; respelling: `uh-TEN-yoo-ayt`; example: Can this cable **attenuate** the noise?
 - **attribute**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: attributes
-  - `noun`; meaning: `noun`; example: Her calm is a rare **attribute**.
-  - `verb`; meaning: `verb`; example: Don't **attribute** that quote to me.
+  - `noun`; meaning: `noun`; respelling: `AT-rih-byoot`; example: Her calm is a rare **attribute**.
+  - `verb`; meaning: `verb`; respelling: `uh-TRIB-yoot`; example: Don't **attribute** that quote to me.
 - **augment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: augmented, augments
-  - `noun`; meaning: `noun`; example: Linguists call the epsilon an **augment**.
-  - `verb`; meaning: `verb`; example: New sensors **augment** the pilot's view.
+  - `noun`; meaning: `noun`; respelling: `AWG-ment`; example: Linguists call the epsilon an **augment**.
+  - `verb`; meaning: `verb`; respelling: `awg-MENT`; example: New sensors **augment** the pilot's view.
 - **august**; parts of speech: noun, adjective; heteronym, meanings: adjective, month; no other forms
-  - `adjective`; meaning: `adjective`; example: This aged man is **august** in the eyes of his country.
-  - `noun`; meaning: `month`; example: **August** is named after Augustus.
+  - `adjective`; meaning: `adjective`; respelling: `aw-GUST`; example: This aged man is **august** in the eyes of his
+    country.
+  - `noun`; meaning: `month`; respelling: `AW-gust`; example: **August** is named after Augustus.
 - **award**; parts of speech: noun, verb; forms: awarded (verb), awarding (verb), awards
   - `noun`; example: The **award** was not given last year.
   - `verb`; example: I was **awarded** an honor prize.
 - **axes**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: Plot the data on the x and y **axes**.
-  - `verb`; meaning: `verb`; example: He **axes** the log in one swing.
+  - `noun`; meaning: `noun`; respelling: `AK-seez`; example: Plot the data on the x and y **axes**.
+  - `verb`; meaning: `verb`; respelling: `AK-siz`; example: He **axes** the log in one swing.
 
 ### Lemmas Starting With B
 
@@ -209,12 +215,14 @@ shown in bold.
   - `noun`; example: What does "getting to first **base**" mean?
   - `verb`; example: Sami's company is **based** in Egypt.
 - **bases**; parts of speech: noun, verb; heteronym, meanings: base, basis; no other forms
-  - `noun`; meaning: `base`; example: Algeria doesn't have overseas **bases**.
-  - `noun`; meaning: `basis`; example: On both of these **bases**, the proposal should be rejected at once.
-  - `verb`; meaning: `base`; example: Unfortunately, Tom **bases** his arguments on science and reason.
+  - `noun`; meaning: `base`; respelling: `BAY-siz`; example: Algeria doesn't have overseas **bases**.
+  - `noun`; meaning: `basis`; respelling: `BAY-seez`; example: On both of these **bases**, the proposal should be
+    rejected at once.
+  - `verb`; meaning: `base`; respelling: `BAY-siz`; example: Unfortunately, Tom **bases** his arguments on science and
+    reason.
 - **bass**; parts of speech: noun; heteronym, meanings: fish, music; no other forms
-  - `noun`; meaning: `fish`; example: He hooked a huge **bass** on a lure.
-  - `noun`; meaning: `music`; example: She sang in a deep **bass** voice.
+  - `noun`; meaning: `fish`; respelling: `bas`; example: He hooked a huge **bass** on a lure.
+  - `noun`; meaning: `music`; respelling: `bays`; example: She sang in a deep **bass** voice.
 - **beam**; parts of speech: noun, verb; forms: beamed (verb), beaming (verb), beams
   - `noun`; example: Is the **beam** solid or hollow?
   - `verb`; example: The girl was **beaming** with joy.
@@ -228,15 +236,15 @@ shown in bold.
   - `noun`; example: His car skidded on the **bend**.
   - `verb`; example: I can't **bend** him to my will.
 - **bifurcate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: bifurcates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The beetle has a **bifurcate** horn.
-  - `verb`; meaning: `verb`; example: The party may **bifurcate** into two camps.
+  - `adjective`; meaning: `adjective`; respelling: `BY-fur-kit`; example: The beetle has a **bifurcate** horn.
+  - `verb`; meaning: `verb`; respelling: `BY-fur-kayt`; example: The party may **bifurcate** into two camps.
 - **bite**; parts of speech: noun, verb; forms: bited (verb), bites, biting (verb)
   - `noun`; example: There was a **bite** in his remark.
   - `verb`; example: Ziri's dog tried to **bite** him.
 - **blessed**; parts of speech: verb, adjective; heteronym, meanings: two-syllable, one-syllable; forms: blesses (verb
   one-syllable), blessing (verb one-syllable)
-  - `adjective`; meaning: `two-syllable`; example: **Blessed** are those who come back.
-  - `verb`; meaning: `one-syllable`; example: In going by he had **blessed** us.
+  - `adjective`; meaning: `two-syllable`; respelling: `BLES-id`; example: **Blessed** are those who come back.
+  - `verb`; meaning: `one-syllable`; respelling: `blest`; example: In going by he had **blessed** us.
 - **block**; parts of speech: noun, verb; forms: blocked (verb), blocking (verb), blocks
   - `noun`; example: We've each got a stumbling **block**.
   - `verb`; example: The bridge is **blocked** for traffic.
@@ -253,8 +261,8 @@ shown in bold.
   - `noun`; example: The atom **bomb** is an awful weapon.
   - `verb`; example: Aart tried to **bomb** Layla's job.
 - **bombard**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: bombards
-  - `noun`; meaning: `noun`; example: The **bombard** was an early cannon.
-  - `verb`; meaning: `verb`; example: The media **bombards** us with bad news.
+  - `noun`; meaning: `noun`; respelling: `BOM-bard`; example: The **bombard** was an early cannon.
+  - `verb`; meaning: `verb`; respelling: `bom-BARD`; example: The media **bombards** us with bad news.
 - **book**; parts of speech: noun, verb; forms: booked (verb), booking (verb), books
   - `noun`; example: How much does this **book** cost?
   - `verb`; example: I **booked** a flight to New York.
@@ -264,9 +272,9 @@ shown in bold.
   - `verb`; example: Ziri purchased a cabin **bordering** a thick forest.
 - **bow**; parts of speech: noun, verb; heteronym, meanings: bend, weapon; forms: bowed (verb bend), bowing (noun bend,
   verb bend), bows
-  - `noun`; meaning: `bend`; example: The custom of **bowing** is peculiar to the islanders.
-  - `verb`; meaning: `bend`; example: He **bowed** low before Her Majesty.
-  - `noun`; meaning: `weapon`; example: The archer drew the **bow** and took aim.
+  - `noun`; meaning: `bend`; respelling: `bow`; example: The custom of **bowing** is peculiar to the islanders.
+  - `verb`; meaning: `bend`; respelling: `bow`; example: He **bowed** low before Her Majesty.
+  - `noun`; meaning: `weapon`; respelling: `boh`; example: The archer drew the **bow** and took aim.
 - **break**; parts of speech: noun, verb; forms: breaked (verb), breaking (verb), breaks, broke (verb), broken (verb)
   - `noun`; example: Mary says she needs a **break**, too.
   - `verb`; example: Tom helped **break** up the fight.
@@ -280,8 +288,8 @@ shown in bold.
   - `noun`; example: Want to get some **bubble** tea?
   - `verb`; example: The coffee **bubbled** in the pot.
 - **buffet**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: buffets
-  - `noun`; meaning: `noun`; example: We had lunch at a hotel **buffet**.
-  - `verb`; meaning: `verb`; example: Hail can **buffet** the crops badly.
+  - `noun`; meaning: `noun`; respelling: `buh-FAY`; example: We had lunch at a hotel **buffet**.
+  - `verb`; meaning: `verb`; respelling: `BUF-it`; example: Hail can **buffet** the crops badly.
 - **bump**; parts of speech: noun, verb; forms: bumped (verb), bumping (verb), bumps
   - `noun`; example: The truck drove over a **bump**.
   - `verb`; example: Sami **bumped** into an old friend.
@@ -299,8 +307,8 @@ shown in bold.
   - `noun`; example: The children are singing around the **camp** fire.
   - `verb`; example: We took our cat Mitten **camping**.
 - **carbonate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: carbonates
-  - `noun`; meaning: `noun`; example: Pure **carbonate** is a white powder.
-  - `verb`; meaning: `verb`; example: You can **carbonate** tap water at home.
+  - `noun`; meaning: `noun`; respelling: `KAR-buh-nit`; example: Pure **carbonate** is a white powder.
+  - `verb`; meaning: `verb`; respelling: `KAR-buh-nayt`; example: You can **carbonate** tap water at home.
 - **care**; parts of speech: noun, verb; forms: cared (verb), cares, caring (verb)
   - `noun`; example: "The car will be my next **care**.
   - `verb`; example: How should I **care** for my stitches?
@@ -314,8 +322,8 @@ shown in bold.
   - `noun`; example: She is working for a good **cause**.
   - `verb`; example: Can reheating rice **cause** food poisoning?
 - **certificate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: certificates
-  - `noun`; meaning: `noun`; example: The bank holds the stock **certificate**.
-  - `verb`; meaning: `verb`; example: They did not **certificate** the course.
+  - `noun`; meaning: `noun`; respelling: `sur-TIF-ih-kit`; example: The bank holds the stock **certificate**.
+  - `verb`; meaning: `verb`; respelling: `sur-TIF-ih-kayt`; example: They did not **certificate** the course.
 - **chain**; parts of speech: noun, verb; forms: chained (verb), chaining (verb), chains
   - `noun`; example: He had no snow **chains** with him.
   - `verb`; example: Ziri is locked up and **chained**.
@@ -335,152 +343,159 @@ shown in bold.
   - `noun`; example: Ziri and Rima paid the **check**.
   - `verb`; example: How should I **check** my breasts?
 - **cleanly**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: A **cleanly** maid is a treasure.
-  - `adverb`; meaning: `adverb`; example: The bone broke **cleanly** in two.
-- **close**; parts of speech: verb, adjective, adverb; heteronym, meanings: adjective, adverb, verb; forms: closes (verb
-  verb)
-  - `adjective`; meaning: `adjective`; example: The score was **close** all night.
-  - `adverb`; meaning: `adverb`; example: I came pretty **close** to dying.
-  - `verb`; meaning: `verb`; example: Do not **close** the window yet.
+  - `adjective`; meaning: `adjective`; respelling: `KLEN-lee`; example: A **cleanly** maid is a treasure.
+  - `adverb`; meaning: `adverb`; respelling: `KLEEN-lee`; example: The bone broke **cleanly** in two.
+- **close**; parts of speech: verb, adjective, adverb; heteronym, meanings: near, shut; forms: closes (verb shut)
+  - `adjective`; meaning: `near`; respelling: `klohs`; example: The score was **close** all night.
+  - `adverb`; meaning: `near`; respelling: `klohs`; example: I came pretty **close** to dying.
+  - `verb`; meaning: `shut`; respelling: `klohz`; example: Do not **close** the window yet.
 - **closer**; parts of speech: noun, adjective, adverb; heteronym, meanings: nearer, noun; forms: closers (noun noun)
-  - `adjective`; meaning: `nearer`; example: Are they **closer** to agreement?
-  - `adverb`; meaning: `nearer`; example: The cub cowered **closer** to the ground.
-  - `noun`; meaning: `noun`; example: Familia began the season as the Mets **closer**.
+  - `adjective`; meaning: `nearer`; respelling: `KLOH-sur`; example: Are they **closer** to agreement?
+  - `adverb`; meaning: `nearer`; respelling: `KLOH-sur`; example: The cub cowered **closer** to the ground.
+  - `noun`; meaning: `noun`; respelling: `KLOH-zur`; example: Familia began the season as the Mets **closer**.
 - **cloud**; parts of speech: noun, verb; forms: clouded (verb), clouding (verb), clouds
   - `noun`; example: Black **clouds** began to come up.
   - `verb`; example: Her vision was **clouded** by tears.
 - **collect**; parts of speech: noun, verb; heteronym, meanings: prayer, gather; forms: collected (verb gather),
   collecting (verb gather), collects
-  - `noun`; meaning: `prayer`; example: The Introductory Rites are brought to a close by the **Collect** Prayer.
-  - `verb`; meaning: `gather`; example: Are they **collecting** samples today?
+  - `noun`; meaning: `prayer`; respelling: `KOL-ekt`; example: The Introductory Rites are brought to a close by the
+    **Collect** Prayer.
+  - `verb`; meaning: `gather`; respelling: `kuh-LEKT`; example: Are they **collecting** samples today?
 - **collocate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: collocates
-  - `noun`; meaning: `noun`; example: "Heavy" is a common **collocate** of "rain".
-  - `verb`; meaning: `verb`; example: Idioms **collocate** words in fixed patterns.
+  - `noun`; meaning: `noun`; respelling: `KOL-uh-kit`; example: "Heavy" is a common **collocate** of "rain".
+  - `verb`; meaning: `verb`; respelling: `KOL-uh-kayt`; example: Idioms **collocate** words in fixed patterns.
 - **colour**; parts of speech: noun, verb; forms: coloured (verb), colouring, colours
   - `noun`; example: Tom's feeling a bit off **colour**.
   - `verb`; example: The glass is **coloured** red and white.
 - **combat**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: combated (verb
   stress-last), combating (verb stress-last), combats, combatted (verb stress-last), combatting (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: The form of this **combat** was monstrous.
-  - `verb`; meaning: `stress-last`; example: It was necessary to **combat** it, and this was a duty, for it attacked the
-    republic.
+  - `noun`; meaning: `stress-first`; respelling: `KOM-bat`; example: The form of this **combat** was monstrous.
+  - `verb`; meaning: `stress-last`; respelling: `kum-BAT`; example: It was necessary to **combat** it, and this was a
+    duty, for it attacked the republic.
 - **combine**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: combines
-  - `noun`; meaning: `noun`; example: He parked the **combine** in the barn.
-  - `verb`; meaning: `verb`; example: Oil and water do not **combine** easily.
+  - `noun`; meaning: `noun`; respelling: `KOM-byne`; example: He parked the **combine** in the barn.
+  - `verb`; meaning: `verb`; respelling: `kum-BYNE`; example: Oil and water do not **combine** easily.
 - **comment**; parts of speech: noun, verb; forms: commented (verb), commenting (verb), comments
   - `noun`; example: I wish I hadn't read the **comments**.
   - `verb`; example: Sami **commented** on his own posts.
 - **commune**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: communes
-  - `noun`; meaning: `noun`; example: He grew up in a hippie **commune**.
-  - `verb`; meaning: `verb`; example: Do you ever **commune** with the sea?
-- **compact**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: compacts (noun
-  noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: The new design is very **compact**.
-  - `noun`; meaning: `noun`; example: He bought a **compact** for his commute.
-  - `verb`; meaning: `verb`; example: Don't **compact** the snow too tightly.
-- **complement**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: complements
-  - `noun`; meaning: `noun`; example: The staff's full **complement** arrived by nine.
-  - `verb`; meaning: `verb`; example: Soft music can **complement** a quiet dinner.
+  - `noun`; meaning: `noun`; respelling: `KOM-yoon`; example: He grew up in a hippie **commune**.
+  - `verb`; meaning: `verb`; respelling: `kuh-MYOON`; example: Do you ever **commune** with the sea?
+- **compact**; parts of speech: noun, verb, adjective; heteronym, meanings: stress-last, stress-first; forms: compacts
+  (noun stress-first, verb stress-last)
+  - `adjective`; meaning: `stress-last`; respelling: `kum-PAKT`; example: The new design is very **compact**.
+  - `noun`; meaning: `stress-first`; respelling: `KOM-pakt`; example: He bought a **compact** for his commute.
+  - `verb`; meaning: `stress-last`; respelling: `kum-PAKT`; example: Don't **compact** the snow too tightly.
+- **complement**; parts of speech: noun, verb; forms: complements
+  - `noun`; example: The staff's full **complement** arrived by nine.
+  - `verb`; example: Soft music can **complement** a quiet dinner.
 - **complex**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; forms: complexes
-  - `adjective`; meaning: `adjective`; example: Space travel is **complex** and risky.
-  - `noun`; meaning: `noun`; example: Sami got to his apartment **complex**.
-- **compliment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: compliments
-  - `noun`; meaning: `noun`; example: That was meant as a **compliment**.
-  - `verb`; meaning: `verb`; example: Please **compliment** the cook for me.
+  - `adjective`; meaning: `adjective`; respelling: `kum-PLEKS`; example: Space travel is **complex** and risky.
+  - `noun`; meaning: `noun`; respelling: `KOM-pleks`; example: Sami got to his apartment **complex**.
+- **compliment**; parts of speech: noun, verb; forms: compliments
+  - `noun`; example: That was meant as a **compliment**.
+  - `verb`; example: Please **compliment** the cook for me.
 - **compound**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: compounds
-  - `noun`; meaning: `noun`; example: Salt is a simple ionic **compound**.
-  - `verb`; meaning: `verb`; example: Stress can **compound** a health problem.
+  - `noun`; meaning: `noun`; respelling: `KOM-pound`; example: Salt is a simple ionic **compound**.
+  - `verb`; meaning: `verb`; respelling: `kom-POUND`; example: Stress can **compound** a health problem.
 - **compress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: compresses
-  - `noun`; meaning: `noun`; example: A cloth **compress** soothed the burn.
-  - `verb`; meaning: `verb`; example: Do not **compress** the foam too hard.
+  - `noun`; meaning: `noun`; respelling: `KOM-pres`; example: A cloth **compress** soothed the burn.
+  - `verb`; meaning: `verb`; respelling: `kum-PRES`; example: Do not **compress** the foam too hard.
 - **concert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: concerts
-  - `noun`; meaning: `noun`; example: We saw a great **concert** last night.
-  - `verb`; meaning: `verb`; example: The rebels **concert** a joint attack.
+  - `noun`; meaning: `noun`; respelling: `KON-surt`; example: We saw a great **concert** last night.
+  - `verb`; meaning: `verb`; respelling: `kun-SURT`; example: The rebels **concert** a joint attack.
 - **conduct**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conducts
-  - `noun`; meaning: `noun`; example: The school has a strict code of **conduct**.
-  - `verb`; meaning: `verb`; example: Copper can **conduct** heat very well.
+  - `noun`; meaning: `noun`; respelling: `KON-dukt`; example: The school has a strict code of **conduct**.
+  - `verb`; meaning: `verb`; respelling: `kun-DUKT`; example: Copper can **conduct** heat very well.
 - **confederate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: confederates
-  - `noun`; meaning: `noun`; example: He had no **confederate** in the scheme.
-  - `verb`; meaning: `verb`; example: They plan to **confederate** their armies.
+  - `noun`; meaning: `noun`; respelling: `kun-FED-ur-it`; example: He had no **confederate** in the scheme.
+  - `verb`; meaning: `verb`; respelling: `kun-FED-ur-ayt`; example: They plan to **confederate** their armies.
 - **confine**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: confines
-  - `noun`; meaning: `noun`; example: Her imagination knew no **confines** at all.
-  - `verb`; meaning: `verb`; example: Try to **confine** your answer to two short sentences.
+  - `noun`; meaning: `noun`; respelling: `KON-fine`; example: Her imagination knew no **confines** at all.
+  - `verb`; meaning: `verb`; respelling: `kun-FINE`; example: Try to **confine** your answer to two short sentences.
 - **conflict**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conflicts
-  - `noun`; meaning: `noun`; example: Peace talks aim to end the long **conflict** in the north.
-  - `verb`; meaning: `verb`; example: Those two meetings **conflict**, so I cannot attend both.
+  - `noun`; meaning: `noun`; respelling: `KON-flikt`; example: Peace talks aim to end the long **conflict** in the
+    north.
+  - `verb`; meaning: `verb`; respelling: `kun-FLIKT`; example: Those two meetings **conflict**, so I cannot attend both.
 - **conglomerate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conglomerates
-  - `noun`; meaning: `noun`; example: Investors often distrust a **conglomerate** with no clear focus.
-  - `verb`; meaning: `verb`; example: Protesters tend to **conglomerate** in the central square.
+  - `noun`; meaning: `noun`; respelling: `kun-GLOM-ur-it`; example: Investors often distrust a **conglomerate** with no
+    clear focus.
+  - `verb`; meaning: `verb`; respelling: `kun-GLOM-ur-ayt`; example: Protesters tend to **conglomerate** in the central
+    square.
 - **conjugate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conjugates
-  - `noun`; meaning: `noun`; example: That **conjugate** is stable only at low temperatures.
-  - `verb`; meaning: `verb`; example: I like to **conjugate** difficult verbs.
+  - `noun`; meaning: `noun`; respelling: `KON-juh-git`; example: That **conjugate** is stable only at low temperatures.
+  - `verb`; meaning: `verb`; respelling: `KON-juh-gayt`; example: I like to **conjugate** difficult verbs.
 - **conjunct**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; forms: conjuncts (noun noun)
-  - `adjective`; meaning: `adjective`; example: The prefixes can be divided into a **conjunct** prefix set and disjunct
-    prefix set.
-  - `noun`; meaning: `noun`; example: The major classes of adverbials are adjunct, disjunct and **conjunct**.
+  - `adjective`; meaning: `adjective`; respelling: `kun-JUNKT`; example: The prefixes can be divided into a **conjunct**
+    prefix set and disjunct prefix set.
+  - `noun`; meaning: `noun`; respelling: `KON-junkt`; example: The major classes of adverbials are adjunct, disjunct and
+    **conjunct**.
 - **conscript**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conscripts
-  - `noun`; meaning: `noun`; example: Some **conscripts** refused to fight and were jailed.
-  - `verb`; meaning: `verb`; example: We will not **conscript** anyone against their will.
+  - `noun`; meaning: `noun`; respelling: `KON-skript`; example: Some **conscripts** refused to fight and were jailed.
+  - `verb`; meaning: `verb`; respelling: `kun-SKRIPT`; example: We will not **conscript** anyone against their will.
 - **conserve**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: conserves
-  - `noun`; meaning: `noun`; example: A jar of plum **conserve** sat next to the toast.
-  - `verb`; meaning: `verb`; example: Never **conserve** resources at the cost of safety.
+  - `noun`; meaning: `noun`; respelling: `KON-surv`; example: A jar of plum **conserve** sat next to the toast.
+  - `verb`; meaning: `verb`; respelling: `kun-SURV`; example: Never **conserve** resources at the cost of safety.
 - **consist**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: consists
-  - `noun`; meaning: `noun`; example: The **consist** showed every tank car and its cargo.
-  - `verb`; meaning: `verb`; example: What does this compound **consist** of exactly?
+  - `noun`; meaning: `noun`; respelling: `KON-sist`; example: The **consist** showed every tank car and its cargo.
+  - `verb`; meaning: `verb`; respelling: `kun-SIST`; example: What does this compound **consist** of exactly?
 - **console**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: consoles
-  - `noun`; meaning: `noun`; example: Errors appeared in the **console** window.
-  - `verb`; meaning: `verb`; example: She tried to **console** her crying son.
+  - `noun`; meaning: `noun`; respelling: `KON-sohl`; example: Errors appeared in the **console** window.
+  - `verb`; meaning: `verb`; respelling: `kun-SOHL`; example: She tried to **console** her crying son.
 - **consort**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: consorts
-  - `noun`; meaning: `noun`; example: The **consort** stood quietly behind the throne.
-  - `verb`; meaning: `verb`; example: The knight refused to **consort** with traitors.
+  - `noun`; meaning: `noun`; respelling: `KON-sort`; example: The **consort** stood quietly behind the throne.
+  - `verb`; meaning: `verb`; respelling: `kun-SORT`; example: The knight refused to **consort** with traitors.
 - **construct**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: constructs
-  - `noun`; meaning: `noun`; example: Gender, some argue, is a cultural **construct**.
-  - `verb`; meaning: `verb`; example: Beavers **construct** dams out of sticks and mud.
+  - `noun`; meaning: `noun`; respelling: `KON-strukt`; example: Gender, some argue, is a cultural **construct**.
+  - `verb`; meaning: `verb`; respelling: `kun-STRUKT`; example: Beavers **construct** dams out of sticks and mud.
 - **consummate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: consummates (verb verb)
-  - `adjective`; meaning: `adjective`; example: He told the lie with **consummate** ease.
-  - `verb`; meaning: `verb`; example: Signing the papers will **consummate** the adoption.
+  - `adjective`; meaning: `adjective`; respelling: `kun-SUM-it`; example: He told the lie with **consummate** ease.
+  - `verb`; meaning: `verb`; respelling: `KON-suh-mayt`; example: Signing the papers will **consummate** the adoption.
 - **contact**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: contacted (verb
   stress-last), contacting (verb stress-last), contacts
-  - `noun`; meaning: `stress-first`; example: Every **contact** with them had been a blow.
-  - `verb`; meaning: `stress-last`; example: Sami decided to **contact** the FBI.
-- **content**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: contented
-  (verb verb), contenting (verb verb), contents (noun noun)
-  - `adjective`; meaning: `adjective`; example: A **content** baby is a quiet baby.
-  - `noun`; meaning: `noun`; example: The **contents** of the box were fragile.
-  - `verb`; meaning: `verb`; example: So I **contented** myself with saying -
+  - `noun`; meaning: `stress-first`; respelling: `KON-takt`; example: Every **contact** with them had been a blow.
+  - `verb`; meaning: `stress-last`; respelling: `kon-TAKT`; example: Sami decided to **contact** the FBI.
+- **content**; parts of speech: noun, verb, adjective; heteronym, meanings: stress-last, stress-first; forms: contented
+  (verb stress-last), contenting (verb stress-last), contents (noun stress-first)
+  - `adjective`; meaning: `stress-last`; respelling: `kun-TENT`; example: A **content** baby is a quiet baby.
+  - `noun`; meaning: `stress-first`; respelling: `KON-tent`; example: The **contents** of the box were fragile.
+  - `verb`; meaning: `stress-last`; respelling: `kun-TENT`; example: So I **contented** myself with saying -
 - **contest**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: contests
-  - `noun`; meaning: `noun`; example: The race for governor was a close **contest**.
-  - `verb`; meaning: `verb`; example: Will you **contest** the speeding ticket?
+  - `noun`; meaning: `noun`; respelling: `KON-test`; example: The race for governor was a close **contest**.
+  - `verb`; meaning: `verb`; respelling: `kun-TEST`; example: Will you **contest** the speeding ticket?
 - **contract**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: contracts
-  - `noun`; meaning: `noun`; example: A verbal **contract** is hard to prove in court.
-  - `verb`; meaning: `verb`; example: Air **contracts** as it cools overnight.
+  - `noun`; meaning: `noun`; respelling: `KON-trakt`; example: A verbal **contract** is hard to prove in court.
+  - `verb`; meaning: `verb`; respelling: `kun-TRAKT`; example: Air **contracts** as it cools overnight.
 - **contrast**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: contrasts
-  - `noun`; meaning: `noun`; example: In **contrast** to his brother, he is quiet and shy.
-  - `verb`; meaning: `verb`; example: Let's **contrast** the two novels on the final exam.
-- **converse**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: converses
-  (noun noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: Is the **converse** claim just as plausible?
-  - `noun`; meaning: `noun`; example: The **converse** holds for smaller engines.
-  - `verb`; meaning: `verb`; example: Could we **converse** in private for a minute?
+  - `noun`; meaning: `noun`; respelling: `KON-trast`; example: In **contrast** to his brother, he is quiet and shy.
+  - `verb`; meaning: `verb`; respelling: `kun-TRAST`; example: Let's **contrast** the two novels on the final exam.
+- **converse**; parts of speech: noun, verb, adjective; heteronym, meanings: stress-first, stress-last; forms: converses
+  (noun stress-first, verb stress-last)
+  - `adjective`; meaning: `stress-first`; respelling: `KON-vurs`; example: Is the **converse** claim just as plausible?
+  - `noun`; meaning: `stress-first`; respelling: `KON-vurs`; example: The **converse** holds for smaller engines.
+  - `verb`; meaning: `stress-last`; respelling: `kun-VURS`; example: Could we **converse** in private for a minute?
 - **convert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: converts
-  - `noun`; meaning: `noun`; example: Every **convert** was baptized in the river.
-  - `verb`; meaning: `verb`; example: Can you **convert** this file to a PDF?
+  - `noun`; meaning: `noun`; respelling: `KON-vurt`; example: Every **convert** was baptized in the river.
+  - `verb`; meaning: `verb`; respelling: `kun-VURT`; example: Can you **convert** this file to a PDF?
 - **convict**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: convicts
-  - `noun`; meaning: `noun`; example: That **convict** claims he was framed.
-  - `verb`; meaning: `verb`; example: Do not **convict** a man before the trial.
+  - `noun`; meaning: `noun`; respelling: `KON-vikt`; example: That **convict** claims he was framed.
+  - `verb`; meaning: `verb`; respelling: `kun-VIKT`; example: Do not **convict** a man before the trial.
 - **coordinate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: coordinates
-  - `noun`; meaning: `noun`; example: The x **coordinate** of the point is three.
-  - `verb`; meaning: `verb`; example: Can you **coordinate** the volunteers on Saturday?
+  - `noun`; meaning: `noun`; respelling: `koh-OR-dih-nit`; example: The x **coordinate** of the point is three.
+  - `verb`; meaning: `verb`; respelling: `koh-OR-dih-nayt`; example: Can you **coordinate** the volunteers on Saturday?
 - **correlate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: correlates
-  - `noun`; meaning: `noun`; example: Poor diet is one **correlate** of heart disease.
-  - `verb`; meaning: `verb`; example: Doctors **correlate** symptoms with lab results.
+  - `noun`; meaning: `noun`; respelling: `KOR-uh-lit`; example: Poor diet is one **correlate** of heart disease.
+  - `verb`; meaning: `verb`; respelling: `KOR-uh-layt`; example: Doctors **correlate** symptoms with lab results.
 - **costume**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: costumed (verb
   stress-last), costumes, costuming (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: This was the **costume** that best became the king.
-  - `verb`; meaning: `stress-last`; example: They **costume** their actors in period clothing borrowed from a museum.
+  - `noun`; meaning: `stress-first`; respelling: `KOS-toom`; example: This was the **costume** that best became the
+    king.
+  - `verb`; meaning: `stress-last`; respelling: `kos-TOOM`; example: They **costume** their actors in period clothing
+    borrowed from a museum.
 - **counterbalance**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: counterbalances
-  - `noun`; meaning: `noun`; example: A stone **counterbalance** held the gate in place.
-  - `verb`; meaning: `verb`; example: Does the benefit really **counterbalance** the cost?
+  - `noun`; meaning: `noun`; respelling: `KOUN-tur-bal-uns`; example: A stone **counterbalance** held the gate in place.
+  - `verb`; meaning: `verb`; respelling: `koun-tur-BAL-uns`; example: Does the benefit really **counterbalance** the
+    cost?
 - **court**; parts of speech: noun, verb; forms: courted (verb), courting (verb), courts
   - `noun`; example: Turn that Dormouse out of **court**!
   - `verb`; example: He **courted** disaster by reckless driving.
@@ -496,8 +511,8 @@ shown in bold.
   - `noun`; example: We bought a house on **credit**.
   - `verb`; example: He could not **credit** her story.
 - **crooked**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: That **crooked** fence leans toward the road.
-  - `verb`; meaning: `verb`; example: He **crooked** his arm so she could take it.
+  - `adjective`; meaning: `adjective`; respelling: `KROOK-id`; example: That **crooked** fence leans toward the road.
+  - `verb`; meaning: `verb`; respelling: `krookt`; example: He **crooked** his arm so she could take it.
 - **cross**; parts of speech: noun, verb; forms: crossed (verb), crosses, crossing (verb)
   - `noun`; example: It's a map, and here's a **cross** on it.
   - `verb`; example: I helped him **cross** the street.
@@ -511,8 +526,8 @@ shown in bold.
   - `noun`; example: Sure enough it ended in a **cry**.
   - `verb`; example: What makes you **cry** like that?
 - **curate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: curates
-  - `noun`; meaning: `noun`; example: She married a **curate** from a nearby town.
-  - `verb`; meaning: `verb`; example: He can **curate** a feed that suits any mood.
+  - `noun`; meaning: `noun`; respelling: `KYOOR-it`; example: She married a **curate** from a nearby town.
+  - `verb`; meaning: `verb`; respelling: `kyoo-RAYT`; example: He can **curate** a feed that suits any mood.
 - **cure**; parts of speech: noun, verb; forms: cured (verb), cures, curing
   - `noun`; example: His illness is without a **cure**.
   - `verb`; example: Love is a sickness **cured** by time.
@@ -538,29 +553,29 @@ shown in bold.
   - `noun`; example: Algeria's economy is experiencing a sharp **decline**.
   - `verb`; example: I'm positive you won't be **declined**.
 - **decrease**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: decreases
-  - `noun`; meaning: `noun`; example: That **decrease** in rainfall hurt the harvest.
-  - `verb`; meaning: `verb`; example: Her fever did not **decrease** overnight.
+  - `noun`; meaning: `noun`; respelling: `DEE-krees`; example: That **decrease** in rainfall hurt the harvest.
+  - `verb`; meaning: `verb`; respelling: `dih-KREES`; example: Her fever did not **decrease** overnight.
 - **defeat**; parts of speech: noun, verb; forms: defeated (verb), defeating (verb), defeats
   - `noun`; example: Every life is a string of **defeats**.
   - `verb`; example: That kind of **defeats** the purpose.
 - **defect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: defects
-  - `noun`; meaning: `noun`; example: Her only real **defect** is a short temper.
-  - `verb`; meaning: `verb`; example: Few citizens dared to **defect** from the regime.
+  - `noun`; meaning: `noun`; respelling: `DEE-fekt`; example: Her only real **defect** is a short temper.
+  - `verb`; meaning: `verb`; respelling: `dih-FEKT`; example: Few citizens dared to **defect** from the regime.
 - **defense**; parts of speech: noun; heteronym, meanings: general, sports; forms: defenses
-  - `noun`; meaning: `general`; example: They should fully fund missile **defense** programs.
-  - `noun`; meaning: `sports`; example: Our soccer team has good **defense**.
+  - `noun`; meaning: `general`; respelling: `dih-FENS`; example: They should fully fund missile **defense** programs.
+  - `noun`; meaning: `sports`; respelling: `DEE-fens`; example: Our soccer team has good **defense**.
 - **degenerate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: degenerates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The **degenerate** triangle had zero area.
-  - `verb`; meaning: `verb`; example: Healthy cells can **degenerate** slowly with age.
+  - `adjective`; meaning: `adjective`; respelling: `dih-JEN-ur-it`; example: The **degenerate** triangle had zero area.
+  - `verb`; meaning: `verb`; respelling: `dih-JEN-ur-ayt`; example: Healthy cells can **degenerate** slowly with age.
 - **delay**; parts of speech: noun, verb; forms: delayed (verb), delaying (verb), delays
   - `noun`; example: What’s the reason for the **delay**?
   - `verb`; example: Let us not **delay** any further.
 - **delegate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: delegates
-  - `noun`; meaning: `noun`; example: No **delegate** objected to the proposal.
-  - `verb`; meaning: `verb`; example: Good managers **delegate** tasks to their team.
+  - `noun`; meaning: `noun`; respelling: `DEL-ih-git`; example: No **delegate** objected to the proposal.
+  - `verb`; meaning: `verb`; respelling: `DEL-ih-gayt`; example: Good managers **delegate** tasks to their team.
 - **deliberate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: deliberates (verb verb)
-  - `adjective`; meaning: `adjective`; example: He spoke in a calm, **deliberate** voice.
-  - `verb`; meaning: `verb`; example: The board **deliberates** behind closed doors.
+  - `adjective`; meaning: `adjective`; respelling: `dih-LIB-ur-it`; example: He spoke in a calm, **deliberate** voice.
+  - `verb`; meaning: `verb`; respelling: `dih-LIB-ur-ayt`; example: The board **deliberates** behind closed doors.
 - **delight**; parts of speech: noun, verb; forms: delighted (verb), delighting (verb), delights
   - `noun`; example: Neither **delight** nor sorrow is permanent.
   - `verb`; example: Ivan was **delighted** by the result.
@@ -572,68 +587,70 @@ shown in bold.
   - `noun`; example: I need to go make a **deposit**.
   - `verb`; example: I've **deposited** the papers with him.
 - **desert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: deserts
-  - `noun`; meaning: `noun`; example: Cacti grow well in the **desert**.
-  - `verb`; meaning: `verb`; example: Many soldiers **desert** when food runs out.
+  - `noun`; meaning: `noun`; respelling: `DEZ-urt`; example: Cacti grow well in the **desert**.
+  - `verb`; meaning: `verb`; respelling: `dih-ZURT`; example: Many soldiers **desert** when food runs out.
 - **desire**; parts of speech: noun, verb; forms: desired (verb), desires, desiring (verb)
   - `noun`; example: I've no **desire** to defend myself.
   - `verb`; example: We soon believe what we **desire**.
 - **desolate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: desolates (verb verb)
-  - `adjective`; meaning: `adjective`; example: She stood alone in the **desolate** house.
-  - `verb`; meaning: `verb`; example: Heavy mining will **desolate** the hillside.
+  - `adjective`; meaning: `adjective`; respelling: `DES-uh-lit`; example: She stood alone in the **desolate** house.
+  - `verb`; meaning: `verb`; respelling: `DES-uh-layt`; example: Heavy mining will **desolate** the hillside.
 - **detail**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: detailed (verb
   stress-last), detailing (verb stress-last), details
-  - `noun`; meaning: `stress-first`; example: I have no doubt I can get **details** from Forbes.
-  - `verb`; meaning: `stress-last`; example: Can you send us an email **detailing** the problem?
-- **deviate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: deviates (noun
-  noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: Such a **deviate** form is very rare in nature.
-  - `noun`; meaning: `noun`; example: A **deviate** from the norm needs closer study.
-  - `verb`; meaning: `verb`; example: Try not to **deviate** from the main topic.
+  - `noun`; meaning: `stress-first`; respelling: `DEE-tayl`; example: I have no doubt I can get **details** from Forbes.
+  - `verb`; meaning: `stress-last`; respelling: `dih-TAYL`; example: Can you send us an email **detailing** the problem?
+- **deviate**; parts of speech: noun, verb, adjective; heteronym, meanings: adj-noun, verb; forms: deviates (noun
+  adj-noun, verb verb)
+  - `adjective`; meaning: `adj-noun`; respelling: `DEE-vee-it`; example: Such a **deviate** form is very rare in nature.
+  - `noun`; meaning: `adj-noun`; respelling: `DEE-vee-it`; example: A **deviate** from the norm needs closer study.
+  - `verb`; meaning: `verb`; respelling: `DEE-vee-ayt`; example: Try not to **deviate** from the main topic.
 - **diagnoses**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: The two **diagnoses** contradicted each other.
-  - `verb`; meaning: `verb`; example: The app **diagnoses** plant diseases from a photo.
+  - `noun`; meaning: `noun`; respelling: `dy-ug-NOH-seez`; example: The two **diagnoses** contradicted each other.
+  - `verb`; meaning: `verb`; respelling: `DY-ug-noh-siz`; example: The app **diagnoses** plant diseases from a photo.
 - **dictate**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: dictated (verb
   stress-last), dictates, dictating (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Also, it was a **dictate** of his pride.
-  - `verb`; meaning: `stress-last`; example: Have the goodness to write what I am about to **dictate** to you."
+  - `noun`; meaning: `stress-first`; respelling: `DIK-tayt`; example: Also, it was a **dictate** of his pride.
+  - `verb`; meaning: `stress-last`; respelling: `dik-TAYT`; example: Have the goodness to write what I am about to
+    **dictate** to you."
 - **diffuse**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: diffuses (verb verb)
-  - `adjective`; meaning: `adjective`; example: The speech felt long and **diffuse**.
-  - `verb`; meaning: `verb`; example: The dye began to **diffuse** in the water.
+  - `adjective`; meaning: `adjective`; respelling: `dih-FYOOS`; example: The speech felt long and **diffuse**.
+  - `verb`; meaning: `verb`; respelling: `dih-FYOOZ`; example: The dye began to **diffuse** in the water.
 - **digest**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: digests
-  - `noun`; meaning: `noun`; example: She subscribed to a weekly news **digest**.
-  - `verb`; meaning: `verb`; example: It takes hours to **digest** a big meal.
+  - `noun`; meaning: `noun`; respelling: `DY-jest`; example: She subscribed to a weekly news **digest**.
+  - `verb`; meaning: `verb`; respelling: `dy-JEST`; example: It takes hours to **digest** a big meal.
 - **discard**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: discards
-  - `noun`; meaning: `noun`; example: The **discard** contained a perfect ace.
-  - `verb`; meaning: `verb`; example: Can I **discard** this broken mug?
+  - `noun`; meaning: `noun`; respelling: `DIS-kard`; example: The **discard** contained a perfect ace.
+  - `verb`; meaning: `verb`; respelling: `dis-KARD`; example: Can I **discard** this broken mug?
 - **discharge**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: discharges
-  - `noun`; meaning: `noun`; example: A yellow **discharge** oozed from the wound.
-  - `verb`; meaning: `verb`; example: Ships **discharge** their cargo at the main dock.
+  - `noun`; meaning: `noun`; respelling: `DIS-charj`; example: A yellow **discharge** oozed from the wound.
+  - `verb`; meaning: `verb`; respelling: `dis-CHARJ`; example: Ships **discharge** their cargo at the main dock.
 - **discord**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: discorded (verb
   stress-last), discords
-  - `noun`; meaning: `stress-first`; example: We wish for fraternity to prevail over **discord**.
-  - `verb`; meaning: `stress-last`; example: The witness's two statements **discorded**, and the lawyer asked her to say
-    which of them was true.
+  - `noun`; meaning: `stress-first`; respelling: `DIS-kord`; example: We wish for fraternity to prevail over
+    **discord**.
+  - `verb`; meaning: `stress-last`; respelling: `dis-KORD`; example: The witness's two statements **discorded**, and the
+    lawyer asked her to say which of them was true.
 - **discount**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: discounts
-  - `noun`; meaning: `noun`; example: A family **discount** is offered at the zoo.
-  - `verb`; meaning: `verb`; example: The shop will **discount** every item by half.
+  - `noun`; meaning: `noun`; respelling: `DIS-kount`; example: A family **discount** is offered at the zoo.
+  - `verb`; meaning: `verb`; respelling: `dis-KOUNT`; example: The shop will **discount** every item by half.
 - **discourse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: discourses
-  - `noun`; meaning: `noun`; example: Civil **discourse** is rare on the internet.
-  - `verb`; meaning: `verb`; example: Would you care to **discourse** on that subject?
+  - `noun`; meaning: `noun`; respelling: `DIS-kors`; example: Civil **discourse** is rare on the internet.
+  - `verb`; meaning: `verb`; respelling: `dis-KORS`; example: Would you care to **discourse** on that subject?
 - **dispute**; parts of speech: noun, verb; forms: disputed (verb), disputes, disputing (verb)
   - `noun`; example: The **dispute** has finally been settled.
   - `verb`; example: I don't want to **dispute** that.
 - **divorce**; parts of speech: noun, verb; forms: divorced (verb), divorces, divorcing (verb)
   - `noun`; example: Do you want to get a **divorce**?
   - `verb`; example: I think she will **divorce** him.
-- **document**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: documents
-  - `noun`; meaning: `noun`; example: He emailed the **document** to his lawyer.
-  - `verb`; meaning: `verb`; example: Why did they not **document** the changes?
+- **document**; parts of speech: noun, verb; forms: documents
+  - `noun`; example: He emailed the **document** to his lawyer.
+  - `verb`; example: Why did they not **document** the changes?
 - **dogged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: Her **dogged** work ethic inspired the interns.
-  - `verb`; meaning: `verb`; example: Hard times **dogged** the family for years.
+  - `adjective`; meaning: `adjective`; respelling: `DAW-gid`; example: Her **dogged** work ethic inspired the interns.
+  - `verb`; meaning: `verb`; respelling: `dawgd`; example: Hard times **dogged** the family for years.
 - **dove**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: doves (noun noun)
-  - `noun`; meaning: `noun`; example: The **dove** is a symbol of peace.
-  - `verb`; meaning: `verb`; example: He **dove** headfirst into the pool.
+  - `noun`; meaning: `noun`; respelling: `duv`; example: The **dove** is a symbol of peace.
+  - `verb`; meaning: `verb`; respelling: `dohv`; example: He **dove** headfirst into the pool.
 - **drag**; parts of speech: noun, verb; forms: dragged (verb), dragging (verb), drags
   - `noun`; example: Tom is Mary's **drag** king name.
   - `verb`; example: He was **dragged** to the bottom.
@@ -659,8 +676,8 @@ shown in bold.
   - `noun`; example: He might need a bigger **dump**.
   - `verb`; example: He **dumped** me over the phone.
 - **duplicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: duplicates
-  - `noun`; meaning: `noun`; example: Delete each **duplicate** to save disk space.
-  - `verb`; meaning: `verb`; example: He **duplicates** each form by hand.
+  - `noun`; meaning: `noun`; respelling: `DOO-plih-kit`; example: Delete each **duplicate** to save disk space.
+  - `verb`; meaning: `verb`; respelling: `DOO-plih-kayt`; example: He **duplicates** each form by hand.
 - **dust**; parts of speech: noun, verb; forms: dusted (verb), dusting (verb), dusts
   - `noun`; example: These desks are covered in **dust**.
   - `verb`; example: Someone needs to **dust** this room.
@@ -675,18 +692,21 @@ shown in bold.
   - `verb`; example: I hope to **effect** positive change in the world.
 - **egress**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: egressed (verb
   stress-last), egresses
-  - `noun`; meaning: `stress-first`; example: What did each do at the door of **egress**?
-  - `verb`; meaning: `stress-last`; example: Water that **egresses** from the tank passes through a filter before it
-    reaches the drain.
+  - `noun`; meaning: `stress-first`; respelling: `EE-gres`; example: What did each do at the door of **egress**?
+  - `verb`; meaning: `stress-last`; respelling: `ih-GRES`; example: Water that **egresses** from the tank passes through
+    a filter before it reaches the drain.
 - **ejaculate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: ejaculates
-  - `noun`; meaning: `noun`; example: Her only reply was a short **ejaculate** of disbelief.
-  - `verb`; meaning: `verb`; example: She did not **ejaculate** a single word of protest.
+  - `noun`; meaning: `noun`; respelling: `ih-JAK-yuh-lit`; example: Her only reply was a short **ejaculate** of
+    disbelief.
+  - `verb`; meaning: `verb`; respelling: `ih-JAK-yuh-layt`; example: She did not **ejaculate** a single word of protest.
 - **elaborate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: elaborates (verb verb)
-  - `adjective`; meaning: `adjective`; example: His excuse seemed **elaborate** and rehearsed.
-  - `verb`; meaning: `verb`; example: Could you **elaborate** on what you mean by that?
+  - `adjective`; meaning: `adjective`; respelling: `ih-LAB-er-it`; example: His excuse seemed **elaborate** and
+    rehearsed.
+  - `verb`; meaning: `verb`; respelling: `ih-LAB-uh-rayt`; example: Could you **elaborate** on what you mean by that?
 - **ellipses**; parts of speech: noun; heteronym, meanings: ellipse, ellipsis; no other forms
-  - `noun`; meaning: `ellipse`; example: For the simple two-body problem, all orbits are **ellipses**.
-  - `noun`; meaning: `ellipsis`; example: Before the **ellipses**, you need a space.
+  - `noun`; meaning: `ellipse`; respelling: `ih-LIP-siz`; example: For the simple two-body problem, all orbits are
+    **ellipses**.
+  - `noun`; meaning: `ellipsis`; respelling: `ih-LIP-seez`; example: Before the **ellipses**, you need a space.
 - **embrace**; parts of speech: noun, verb; forms: embraced (verb), embraces, embracing (verb)
   - `noun`; example: I miss the warmth of his **embraces**.
   - `verb`; example: They **embrace** change with open minds.
@@ -698,63 +718,69 @@ shown in bold.
   - `noun`; example: Is there an **end** to knowledge?
   - `verb`; example: The race seemed to never **end**.
 - **enervate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: enervates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Too **enervate** to argue, she simply nodded.
-  - `verb`; meaning: `verb`; example: Do not let idleness **enervate** your discipline.
+  - `adjective`; meaning: `adjective`; respelling: `ih-NUR-vit`; example: Too **enervate** to argue, she simply nodded.
+  - `verb`; meaning: `verb`; respelling: `EN-er-vayt`; example: Do not let idleness **enervate** your discipline.
 - **entail**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: entails
-  - `noun`; meaning: `noun`; example: An **entail** restricts who may inherit an estate.
-  - `verb`; meaning: `verb`; example: Success may **entail** some sacrifice.
+  - `noun`; meaning: `noun`; respelling: `EN-tayl`; example: An **entail** restricts who may inherit an estate.
+  - `verb`; meaning: `verb`; respelling: `en-TAYL`; example: Success may **entail** some sacrifice.
 - **entrance**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: entrances
-  - `noun`; meaning: `noun`; example: A narrow **entrance** led into the cave.
-  - `verb`; meaning: `verb`; example: The dancer's grace will **entrance** you.
+  - `noun`; meaning: `noun`; respelling: `EN-truns`; example: A narrow **entrance** led into the cave.
+  - `verb`; meaning: `verb`; respelling: `en-TRANS`; example: The dancer's grace will **entrance** you.
 - **escape**; parts of speech: noun, verb; forms: escaped (verb), escapes, escaping (verb)
   - `noun`; example: Tom pointed to the fire **escape**.
   - `verb`; example: One could not **escape** from them.
 - **escort**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: escorts
-  - `noun`; meaning: `noun`; example: Prisoners moved only with a guard **escort**.
-  - `verb`; meaning: `verb`; example: Who will **escort** the bride down the aisle?
+  - `noun`; meaning: `noun`; respelling: `ES-kort`; example: Prisoners moved only with a guard **escort**.
+  - `verb`; meaning: `verb`; respelling: `ih-SKORT`; example: Who will **escort** the bride down the aisle?
 - **essay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: essays
-  - `noun`; meaning: `noun`; example: The **essay** was marked down for poor grammar.
-  - `verb`; meaning: `verb`; example: Will he **essay** a speech at the wedding?
+  - `noun`; meaning: `noun`; respelling: `ES-ay`; example: The **essay** was marked down for poor grammar.
+  - `verb`; meaning: `verb`; respelling: `eh-SAY`; example: Will he **essay** a speech at the wedding?
 - **estimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: estimates
-  - `noun`; meaning: `noun`; example: An accurate **estimate** requires good data.
-  - `verb`; meaning: `verb`; example: I would **estimate** her age at around forty.
+  - `noun`; meaning: `noun`; respelling: `ES-tuh-mit`; example: An accurate **estimate** requires good data.
+  - `verb`; meaning: `verb`; respelling: `ES-tuh-mayt`; example: I would **estimate** her age at around forty.
 - **excerpt**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: excerpted (verb
   stress-last), excerpting (verb stress-last), excerpts
-  - `noun`; meaning: `stress-first`; example: The students have to analyze an **excerpt** from the book.
-  - `verb`; meaning: `stress-last`; example: I'm **excerpting** a few lines from the old letters for the museum catalog.
+  - `noun`; meaning: `stress-first`; respelling: `EK-surpt`; example: The students have to analyze an **excerpt** from
+    the book.
+  - `verb`; meaning: `stress-last`; respelling: `ek-SURPT`; example: I'm **excerpting** a few lines from the old letters
+    for the museum catalog.
 - **excise**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: excises
-  - `noun`; meaning: `noun`; example: Many states levy an **excise** on alcohol.
-  - `verb`; meaning: `verb`; example: The surgeon will **excise** the tumor next week.
-- **excommunicate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms:
-  excommunicates (noun noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: The town shunned the **excommunicate** heretic.
-  - `noun`; meaning: `noun`; example: No one dared to shelter an **excommunicate**.
-  - `verb`; meaning: `verb`; example: Why did the abbot **excommunicate** the village?
+  - `noun`; meaning: `noun`; respelling: `EK-syze`; example: Many states levy an **excise** on alcohol.
+  - `verb`; meaning: `verb`; respelling: `ek-SYZE`; example: The surgeon will **excise** the tumor next week.
+- **excommunicate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective-noun, verb; forms:
+  excommunicates (noun adjective-noun, verb verb)
+  - `adjective`; meaning: `adjective-noun`; respelling: `eks-kuh-MYOO-nih-kit`; example: The town shunned the
+    **excommunicate** heretic.
+  - `noun`; meaning: `adjective-noun`; respelling: `eks-kuh-MYOO-nih-kit`; example: No one dared to shelter an
+    **excommunicate**.
+  - `verb`; meaning: `verb`; respelling: `eks-kuh-MYOO-nih-kayt`; example: Why did the abbot **excommunicate** the
+    village?
 - **excuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: excuses
-  - `noun`; meaning: `noun`; example: "I forgot" is not a valid **excuse**.
-  - `verb`; meaning: `verb`; example: **Excuse** me, is this seat taken?
+  - `noun`; meaning: `noun`; respelling: `ik-SKYOOS`; example: "I forgot" is not a valid **excuse**.
+  - `verb`; meaning: `verb`; respelling: `ik-SKYOOZ`; example: **Excuse** me, is this seat taken?
 - **exit**; parts of speech: noun, verb; forms: exited (verb), exiting (verb), exits, exitted (verb), exitting (verb)
   - `noun`; example: They turned off at the wrong **exit**.
   - `verb`; example: Tap to **exit** full screen mode.
 - **expatriate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: expatriates
-  - `noun`; meaning: `noun`; example: He lived for decades as an **expatriate** in Mexico.
-  - `verb`; meaning: `verb`; example: The regime tried to **expatriate** its critics.
+  - `noun`; meaning: `noun`; respelling: `eks-PAY-tree-it`; example: He lived for decades as an **expatriate** in
+    Mexico.
+  - `verb`; meaning: `verb`; respelling: `eks-PAY-tree-ayt`; example: The regime tried to **expatriate** its critics.
 - **experience**; parts of speech: noun, verb; forms: experienced (verb), experiences, experiencing (verb)
   - `noun`; example: I was very pleased with my **experience** here.
   - `verb`; example: I have never **experienced** anything like it.
 - **explant**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: explants
-  - `noun`; meaning: `noun`; example: Roots sprouted from the **explant** within days.
-  - `verb`; meaning: `verb`; example: Why did they **explant** the sample so early?
+  - `noun`; meaning: `noun`; respelling: `EKS-plant`; example: Roots sprouted from the **explant** within days.
+  - `verb`; meaning: `verb`; respelling: `eks-PLANT`; example: Why did they **explant** the sample so early?
 - **exploit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: exploits
-  - `noun`; meaning: `noun`; example: A heroic **exploit** saved the entire crew.
-  - `verb`; meaning: `verb`; example: Do not **exploit** a child's trust.
+  - `noun`; meaning: `noun`; respelling: `EKS-ployt`; example: A heroic **exploit** saved the entire crew.
+  - `verb`; meaning: `verb`; respelling: `ik-SPLOYT`; example: Do not **exploit** a child's trust.
 - **export**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: exported (verb
   stress-last), exporting (verb stress-last), exports
-  - `noun`; meaning: `stress-first`; example: What are some of Australia's main **exports**?
-  - `verb`; meaning: `stress-last`; example: Algeria needs to **export** more oil.
+  - `noun`; meaning: `stress-first`; respelling: `EK-sport`; example: What are some of Australia's main **exports**?
+  - `verb`; meaning: `stress-last`; respelling: `ik-SPORT`; example: Algeria needs to **export** more oil.
 - **extract**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: extracts
-  - `noun`; meaning: `noun`; example: Beef **extract** makes the soup richer.
-  - `verb`; meaning: `verb`; example: Use pliers to **extract** the rusty nail.
+  - `noun`; meaning: `noun`; respelling: `EK-strakt`; example: Beef **extract** makes the soup richer.
+  - `verb`; meaning: `verb`; respelling: `ik-STRAKT`; example: Use pliers to **extract** the rusty nail.
 - **eye**; parts of speech: noun, verb; forms: eyed (verb), eyeing (verb), eyes
   - `noun`; example: He kept an **eye** on Christopher.
   - `verb`; example: They **eyed** each other in silence.
@@ -778,8 +804,8 @@ shown in bold.
   - `noun`; example: Just previews and the main **feature**.
   - `verb`; example: The air show **features** various warplanes.
 - **federate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: Is the committee **federate** or centralized?
-  - `verb`; meaning: `verb`; example: Cities often **federate** to share resources.
+  - `adjective`; meaning: `adjective`; respelling: `FED-er-it`; example: Is the committee **federate** or centralized?
+  - `verb`; meaning: `verb`; respelling: `FED-uh-rayt`; example: Cities often **federate** to share resources.
 - **feed**; parts of speech: noun, verb; forms: feeded (verb), feeding (verb), feeds
   - `noun`; example: I'll offer some **feed** to the hens.
   - `verb`; example: The vixen is **feeding** her cubs.
@@ -787,8 +813,8 @@ shown in bold.
   - `noun`; example: The room had a nice cosy **feel**.
   - `verb`; example: Ziri is **feeling** a lot worse.
 - **ferment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: ferments
-  - `noun`; meaning: `noun`; example: A **ferment** of new ideas filled the age.
-  - `verb`; meaning: `verb`; example: How long does tea take to **ferment**?
+  - `noun`; meaning: `noun`; respelling: `FUR-ment`; example: A **ferment** of new ideas filled the age.
+  - `verb`; meaning: `verb`; respelling: `fer-MENT`; example: How long does tea take to **ferment**?
 - **fight**; parts of speech: noun, verb; forms: fighted (verb), fighting (verb), fights
   - `noun`; example: They had a **fight** last night.
   - `verb`; example: Freedom is what we're **fighting** for.
@@ -820,30 +846,30 @@ shown in bold.
   - `noun`; example: China wants Taiwan to return to its **fold**.
   - `verb`; example: **Fold** the paper in the middle.
 - **foliate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: A **foliate** ornament framed the doorway.
-  - `verb`; meaning: `verb`; example: Slates **foliate** along neat planes.
+  - `adjective`; meaning: `adjective`; respelling: `FOH-lee-it`; example: A **foliate** ornament framed the doorway.
+  - `verb`; meaning: `verb`; respelling: `FOH-lee-ayt`; example: Slates **foliate** along neat planes.
 - **fool**; parts of speech: noun, verb; forms: fooled (verb), fooling (verb), fools
   - `noun`; example: Tom won't suffer a **fool** gladly.
   - `verb`; example: They **fooled** a lot of people.
 - **forbear**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: forbears, forbore
   (verb stress-last), forborne (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Do you ever wonder what your distant **forbears** would think of the way
-    you live now?
-  - `verb`; meaning: `stress-last`; example: The Pilgrim could not **forbear** smiling.
+  - `noun`; meaning: `stress-first`; respelling: `FOR-bair`; example: Do you ever wonder what your distant **forbears**
+    would think of the way you live now?
+  - `verb`; meaning: `stress-last`; respelling: `for-BAIR`; example: The Pilgrim could not **forbear** smiling.
 - **force**; parts of speech: noun, verb; forms: forced (verb), forces, forcing (verb)
   - `noun`; example: They dragged us away by **force**.
   - `verb`; example: Gabor **forced** his daugther to leave Uni.
 - **forearm**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: forearmed (verb
   stress-last), forearms
-  - `noun`; meaning: `stress-first`; example: Tom has a tattoo on his **forearm**.
-  - `verb`; meaning: `stress-last`; example: Reading the weather reports each morning **forearms** the farmers against
-    sudden frost.
+  - `noun`; meaning: `stress-first`; respelling: `FOR-arm`; example: Tom has a tattoo on his **forearm**.
+  - `verb`; meaning: `stress-last`; respelling: `for-ARM`; example: Reading the weather reports each morning
+    **forearms** the farmers against sudden frost.
 - **foretoken**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: foretokens
-  - `noun`; meaning: `noun`; example: Her dream was a **foretoken** of the war.
-  - `verb`; meaning: `verb`; example: Rising prices may **foretoken** unrest.
+  - `noun`; meaning: `noun`; respelling: `FOR-toh-kun`; example: Her dream was a **foretoken** of the war.
+  - `verb`; meaning: `verb`; respelling: `for-TOH-kun`; example: Rising prices may **foretoken** unrest.
 - **fragment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: fragments
-  - `noun`; meaning: `noun`; example: A **fragment** of glass cut his hand.
-  - `verb`; meaning: `verb`; example: The glass will **fragment** if you drop it.
+  - `noun`; meaning: `noun`; respelling: `FRAG-munt`; example: A **fragment** of glass cut his hand.
+  - `verb`; meaning: `verb`; respelling: `FRAG-ment`; example: The glass will **fragment** if you drop it.
 - **frame**; parts of speech: noun, verb; forms: framed (verb), frames, framing (verb)
   - `noun`; example: She put the slat down on the bed **frame**.
   - `verb`; example: Tom **framed** the picture of Mary.
@@ -852,8 +878,9 @@ shown in bold.
   - `verb`; example: He said that he **freaked** out.
 - **frequent**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: frequented (verb verb),
   frequenting (verb verb), frequents
-  - `adjective`; meaning: `adjective`; example: Hannah, the servant, was my most **frequent** visitor.
-  - `verb`; meaning: `verb`; example: "Certainly, just as spies **frequent** hostile camps.
+  - `adjective`; meaning: `adjective`; respelling: `FREE-kwunt`; example: Hannah, the servant, was my most **frequent**
+    visitor.
+  - `verb`; meaning: `verb`; respelling: `free-KWENT`; example: "Certainly, just as spies **frequent** hostile camps.
 - **function**; parts of speech: noun, verb; forms: functioned (verb), functioning, functions
   - `noun`; example: The search **function** has too few options.
   - `verb`; example: The liver is no longer **functioning**.
@@ -868,12 +895,13 @@ shown in bold.
   - `verb`; example: I want to **gain** thirty pounds.
 - **gallant**; parts of speech: noun, adjective; heteronym, meanings: brave, courtly; forms: gallantly (adjective
   brave), gallants (noun courtly)
-  - `adjective`; meaning: `brave`; example: Ladies are carrying off our **gallant** soldiers from their duty.
-  - `adjective`; meaning: `courtly`; example: He is a very **gallant** gentleman.
-  - `noun`; meaning: `courtly`; example: It's a way we **gallants** have in the navy.
+  - `adjective`; meaning: `brave`; respelling: `GAL-unt`; example: Ladies are carrying off our **gallant** soldiers from
+    their duty.
+  - `adjective`; meaning: `courtly`; respelling: `guh-LANT`; example: He is a very **gallant** gentleman.
+  - `noun`; meaning: `courtly`; respelling: `guh-LANT`; example: It's a way we **gallants** have in the navy.
 - **geminate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The **geminate** stalks bore tiny flowers.
-  - `verb`; meaning: `verb`; example: Don't **geminate** the sound in this syllable.
+  - `adjective`; meaning: `adjective`; respelling: `JEM-uh-nit`; example: The **geminate** stalks bore tiny flowers.
+  - `verb`; meaning: `verb`; respelling: `JEM-uh-nayt`; example: Don't **geminate** the sound in this syllable.
 - **gift**; parts of speech: noun, verb; forms: gifted (verb), gifting, gifts
   - `noun`; example: He came to give Brandon a **gift**.
   - `verb`; example: He **gifted** her a box of chocolates.
@@ -885,8 +913,8 @@ shown in bold.
   - `noun`; example: Avoid negative **gossip** like the plague.
   - `verb`; example: Why do you **gossip** about her?
 - **graduate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: graduates
-  - `noun`; meaning: `noun`; example: A Harvard **graduate** led the research team.
-  - `verb`; meaning: `verb`; example: She did not **graduate** on time.
+  - `noun`; meaning: `noun`; respelling: `GRAJ-oo-it`; example: A Harvard **graduate** led the research team.
+  - `verb`; meaning: `verb`; respelling: `GRAJ-oo-ayt`; example: She did not **graduate** on time.
 - **grasp**; parts of speech: noun, verb; forms: grasped (verb), grasping (verb), grasps
   - `noun`; example: He has a good **grasp** of English.
   - `verb`; example: The drowning man **grasped** at the rope.
@@ -897,8 +925,8 @@ shown in bold.
   - `noun`; example: Mary is a security **guard**, isn't she?
   - `verb`; example: I choose to keep my heart **guarded**.
 - **guesstimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: guesstimates
-  - `noun`; meaning: `noun`; example: A wild **guesstimate** won't help the budget.
-  - `verb`; meaning: `verb`; example: Don't just **guesstimate**; measure it.
+  - `noun`; meaning: `noun`; respelling: `GES-tuh-mit`; example: A wild **guesstimate** won't help the budget.
+  - `verb`; meaning: `verb`; respelling: `GES-tuh-mayt`; example: Don't just **guesstimate**; measure it.
 - **guide**; parts of speech: noun, verb; forms: guided (verb), guides, guiding (verb)
   - `noun`; example: I looked for a map in the **guide**.
   - `verb`; example: Do the stars **guide** your way?
@@ -941,8 +969,8 @@ shown in bold.
   - `noun`; example: My **host** family often advises me.
   - `verb`; example: The city is **hosting** the fair.
 - **house**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: houses
-  - `noun`; meaning: `noun`; example: Dinner is on the **house** tonight.
-  - `verb`; meaning: `verb`; example: Bunkers **house** the stored grain.
+  - `noun`; meaning: `noun`; respelling: `hows`; example: Dinner is on the **house** tonight.
+  - `verb`; meaning: `verb`; respelling: `howz`; example: Bunkers **house** the stored grain.
 - **hunt**; parts of speech: noun, verb; forms: hunted (verb), hunting, hunts
   - `noun`; example: A **hunt** is on for the runaway.
   - `verb`; example: She said she didn't **hunt** anymore.
@@ -950,134 +978,136 @@ shown in bold.
 ### Lemmas Starting With I
 
 - **imbricate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The bark was **imbricate** and gray.
-  - `verb`; meaning: `verb`; example: Do the petals **imbricate** in the bud?
+  - `adjective`; meaning: `adjective`; respelling: `IM-brih-kit`; example: The bark was **imbricate** and gray.
+  - `verb`; meaning: `verb`; respelling: `IM-brih-kayt`; example: Do the petals **imbricate** in the bud?
 - **impact**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: impacted (verb
   stress-last), impacting (verb stress-last), impacts
-  - `noun`; meaning: `stress-first`; example: They discuss the **impact** of technology.
-  - `verb`; meaning: `stress-last`; example: This will negatively **impact** Edmundo.
+  - `noun`; meaning: `stress-first`; respelling: `IM-pakt`; example: They discuss the **impact** of technology.
+  - `verb`; meaning: `stress-last`; respelling: `im-PAKT`; example: This will negatively **impact** Edmundo.
 - **implant**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: implants
-  - `noun`; meaning: `noun`; example: His knee **implant** is made of titanium.
-  - `verb`; meaning: `verb`; example: Propaganda can **implant** false beliefs.
+  - `noun`; meaning: `noun`; respelling: `IM-plant`; example: His knee **implant** is made of titanium.
+  - `verb`; meaning: `verb`; respelling: `im-PLANT`; example: Propaganda can **implant** false beliefs.
 - **implement**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: implements
-  - `noun`; meaning: `noun`; example: A rake is a common garden **implement**.
-  - `verb`; meaning: `verb`; example: Please **implement** the changes before Friday.
+  - `noun`; meaning: `noun`; respelling: `IM-pluh-munt`; example: A rake is a common garden **implement**.
+  - `verb`; meaning: `verb`; respelling: `IM-pluh-ment`; example: Please **implement** the changes before Friday.
 - **implicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: implicates
-  - `noun`; meaning: `noun`; example: Each **implicate** follows logically from the premise.
-  - `verb`; meaning: `verb`; example: Why would she **implicate** herself?
+  - `noun`; meaning: `noun`; respelling: `IM-plih-kit`; example: Each **implicate** follows logically from the premise.
+  - `verb`; meaning: `verb`; respelling: `IM-plih-kayt`; example: Why would she **implicate** herself?
 - **import**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: imports
-  - `noun`; meaning: `noun`; example: The car is a foreign **import**.
-  - `verb`; meaning: `verb`; example: Does the country **import** much wheat?
+  - `noun`; meaning: `noun`; respelling: `IM-port`; example: The car is a foreign **import**.
+  - `verb`; meaning: `verb`; respelling: `im-PORT`; example: Does the country **import** much wheat?
 - **impress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: impresses
-  - `noun`; meaning: `noun`; example: The wax kept an **impress** of the ring.
-  - `verb`; meaning: `verb`; example: Does the new design **impress** you?
+  - `noun`; meaning: `noun`; respelling: `IM-pres`; example: The wax kept an **impress** of the ring.
+  - `verb`; meaning: `verb`; respelling: `im-PRES`; example: Does the new design **impress** you?
 - **imprint**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: imprints
-  - `noun`; meaning: `noun`; example: Fossil **imprints** show ancient ferns.
-  - `verb`; meaning: `verb`; example: Do not **imprint** the clay too hard.
+  - `noun`; meaning: `noun`; respelling: `IM-print`; example: Fossil **imprints** show ancient ferns.
+  - `verb`; meaning: `verb`; respelling: `im-PRINT`; example: Do not **imprint** the clay too hard.
 - **incarnate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: incarnates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The dancer is grace **incarnate**.
-  - `verb`; meaning: `verb`; example: Gods in the myth **incarnate** as animals.
+  - `adjective`; meaning: `adjective`; respelling: `in-KAR-nit`; example: The dancer is grace **incarnate**.
+  - `verb`; meaning: `verb`; respelling: `IN-kar-nayt`; example: Gods in the myth **incarnate** as animals.
 - **incense**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: incenses
-  - `noun`; meaning: `noun`; example: The room was heavy with **incense**.
-  - `verb`; meaning: `verb`; example: Unfair rules always **incense** him.
+  - `noun`; meaning: `noun`; respelling: `IN-sens`; example: The room was heavy with **incense**.
+  - `verb`; meaning: `verb`; respelling: `in-SENS`; example: Unfair rules always **incense** him.
 - **incline**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: inclines
-  - `noun`; meaning: `noun`; example: The ramp has a shallow **incline**.
-  - `verb`; meaning: `verb`; example: She never **inclines** toward violence.
+  - `noun`; meaning: `noun`; respelling: `IN-klyne`; example: The ramp has a shallow **incline**.
+  - `verb`; meaning: `verb`; respelling: `in-KLYNE`; example: She never **inclines** toward violence.
 - **incorporate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: incorporates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: The firm became **incorporate** last year.
-  - `verb`; meaning: `verb`; example: He did not **incorporate** the changes.
+  - `adjective`; meaning: `adjective`; respelling: `in-KOR-per-it`; example: The firm became **incorporate** last year.
+  - `verb`; meaning: `verb`; respelling: `in-KOR-puh-rayt`; example: He did not **incorporate** the changes.
 - **increase**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: increases
-  - `noun`; meaning: `noun`; example: The tax **increase** angered many voters.
-  - `verb`; meaning: `verb`; example: She **increases** her speed on the last lap.
+  - `noun`; meaning: `noun`; respelling: `IN-krees`; example: The tax **increase** angered many voters.
+  - `verb`; meaning: `verb`; respelling: `in-KREES`; example: She **increases** her speed on the last lap.
 - **incurvate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The seashell's lip is **incurvate**.
-  - `verb`; meaning: `verb`; example: Does the blade **incurvate** with age?
+  - `adjective`; meaning: `adjective`; respelling: `in-KUR-vit`; example: The seashell's lip is **incurvate**.
+  - `verb`; meaning: `verb`; respelling: `IN-kur-vayt`; example: Does the blade **incurvate** with age?
 - **indent**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: indents
-  - `noun`; meaning: `noun`; example: Add an **indent** before the quote.
-  - `verb`; meaning: `verb`; example: Dents **indent** the soft metal.
-- **inebriate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: inebriates
-  (noun noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: Is he really that **inebriate**?
-  - `noun`; meaning: `noun`; example: A chronic **inebriate** lost his job.
-  - `verb`; meaning: `verb`; example: The heady wine will **inebriate** you.
+  - `noun`; meaning: `noun`; respelling: `IN-dent`; example: Add an **indent** before the quote.
+  - `verb`; meaning: `verb`; respelling: `in-DENT`; example: Dents **indent** the soft metal.
+- **inebriate**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective-noun, verb; forms: inebriates
+  (noun adjective-noun, verb verb)
+  - `adjective`; meaning: `adjective-noun`; respelling: `in-EE-bree-it`; example: Is he really that **inebriate**?
+  - `noun`; meaning: `adjective-noun`; respelling: `in-EE-bree-it`; example: A chronic **inebriate** lost his job.
+  - `verb`; meaning: `verb`; respelling: `in-EE-bree-ayt`; example: The heady wine will **inebriate** you.
 - **infix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: infixes
-  - `noun`; meaning: `noun`; example: English has few true **infixes**.
-  - `verb`; meaning: `verb`; example: The language does not **infix** nouns.
+  - `noun`; meaning: `noun`; respelling: `IN-fiks`; example: English has few true **infixes**.
+  - `verb`; meaning: `verb`; respelling: `in-FIKS`; example: The language does not **infix** nouns.
 - **influence**; parts of speech: noun, verb; forms: influenced (verb), influences, influencing (verb)
   - `noun`; example: He has great **influence** in his country.
   - `verb`; example: I admit that it **influenced** me.
 - **initiate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: initiates
-  - `noun`; meaning: `noun`; example: He was an **initiate** of the order.
-  - `verb`; meaning: `verb`; example: Who will **initiate** the conversation?
+  - `noun`; meaning: `noun`; respelling: `ih-NISH-ee-it`; example: He was an **initiate** of the order.
+  - `verb`; meaning: `verb`; respelling: `ih-NISH-ee-ayt`; example: Who will **initiate** the conversation?
 - **inlay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: inlays
-  - `noun`; meaning: `noun`; example: Each **inlay** was cut from a different type of wood.
-  - `verb`; meaning: `verb`; example: He plans to **inlay** the handle with silver wire.
+  - `noun`; meaning: `noun`; respelling: `IN-lay`; example: Each **inlay** was cut from a different type of wood.
+  - `verb`; meaning: `verb`; respelling: `in-LAY`; example: He plans to **inlay** the handle with silver wire.
 - **insert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: inserts
-  - `noun`; meaning: `noun`; example: Would you like shoe **inserts** for comfort?
-  - `verb`; meaning: `verb`; example: **Insert** the card with the chip facing up.
+  - `noun`; meaning: `noun`; respelling: `IN-surt`; example: Would you like shoe **inserts** for comfort?
+  - `verb`; meaning: `verb`; respelling: `in-SURT`; example: **Insert** the card with the chip facing up.
 - **inside**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: The stove's **inside** temperature rose rapidly.
-  - `adverb`; meaning: `adverb`; example: Come **inside**, the dinner is getting cold.
+  - `adjective`; meaning: `adjective`; respelling: `IN-syde`; example: The stove's **inside** temperature rose rapidly.
+  - `adverb`; meaning: `adverb`; respelling: `in-SYDE`; example: Come **inside**, the dinner is getting cold.
 - **insult**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: insults
-  - `noun`; meaning: `noun`; example: She threw an **insult** at the referee.
-  - `verb`; meaning: `verb`; example: I did not mean to **insult** you.
+  - `noun`; meaning: `noun`; respelling: `IN-sult`; example: She threw an **insult** at the referee.
+  - `verb`; meaning: `verb`; respelling: `in-SULT`; example: I did not mean to **insult** you.
 - **intercept**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: intercepts
-  - `noun`; meaning: `noun`; example: A late **intercept** saved the touchdown.
-  - `verb`; meaning: `verb`; example: Can the guards **intercept** him in time?
+  - `noun`; meaning: `noun`; respelling: `IN-ter-sept`; example: A late **intercept** saved the touchdown.
+  - `verb`; meaning: `verb`; respelling: `in-ter-SEPT`; example: Can the guards **intercept** him in time?
 - **interchange**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: interchanges
-  - `noun`; meaning: `noun`; example: The new **interchange** has four levels of ramps.
-  - `verb`; meaning: `verb`; example: Don't **interchange** the red and blue wires.
+  - `noun`; meaning: `noun`; respelling: `IN-ter-chaynj`; example: The new **interchange** has four levels of ramps.
+  - `verb`; meaning: `verb`; respelling: `in-ter-CHAYNJ`; example: Don't **interchange** the red and blue wires.
 - **interdict**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: interdicts
-  - `noun`; meaning: `noun`; example: She challenged the **interdict** in a higher court.
-  - `verb`; meaning: `verb`; example: The treaty does not **interdict** peaceful trade.
+  - `noun`; meaning: `noun`; respelling: `IN-ter-dikt`; example: She challenged the **interdict** in a higher court.
+  - `verb`; meaning: `verb`; respelling: `in-ter-DIKT`; example: The treaty does not **interdict** peaceful trade.
 - **interest**; parts of speech: noun, verb; forms: interested (verb), interesting, interests
   - `noun`; example: Thanks for your **interest** in me.
   - `verb`; example: "I shall **interest** you by and by.
 - **intergrade**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: intergrades
-  - `noun`; meaning: `noun`; example: This soil type is an **intergrade** of clay and loam.
-  - `verb`; meaning: `verb`; example: Traits **intergrade** slowly from east to west.
+  - `noun`; meaning: `noun`; respelling: `IN-ter-grayd`; example: This soil type is an **intergrade** of clay and loam.
+  - `verb`; meaning: `verb`; respelling: `in-ter-GRAYD`; example: Traits **intergrade** slowly from east to west.
 - **interlay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: interlays
-  - `noun`; meaning: `noun`; example: A rubber **interlay** dampens the vibration.
-  - `verb`; meaning: `verb`; example: He plans to **interlay** each row with straw.
+  - `noun`; meaning: `noun`; respelling: `IN-ter-lay`; example: A rubber **interlay** dampens the vibration.
+  - `verb`; meaning: `verb`; respelling: `in-ter-LAY`; example: He plans to **interlay** each row with straw.
 - **interlock**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: interlocks
-  - `noun`; meaning: `noun`; example: The **interlock** failed during the test.
-  - `verb`; meaning: `verb`; example: Do the doors **interlock** with the alarm?
+  - `noun`; meaning: `noun`; respelling: `IN-ter-lok`; example: The **interlock** failed during the test.
+  - `verb`; meaning: `verb`; respelling: `in-ter-LOK`; example: Do the doors **interlock** with the alarm?
 - **intermediate**; parts of speech: noun, verb, adjective; heteronym, meanings: short-ending, long-ending; forms:
   intermediated (verb long-ending), intermediates, intermediating (verb long-ending)
-  - `adjective`; meaning: `short-ending`; example: My level in English is **intermediate**.
-  - `noun`; meaning: `short-ending`; example: The nitroso **intermediate** (4) has been isolated from the reaction.
-  - `verb`; meaning: `long-ending`; example: An elder was asked to **intermediate** between the striking workers and the
-    owners of the mill.
+  - `adjective`; meaning: `short-ending`; respelling: `in-tur-MEE-dee-ut`; example: My level in English is
+    **intermediate**.
+  - `noun`; meaning: `short-ending`; respelling: `in-tur-MEE-dee-ut`; example: The nitroso **intermediate** (4) has been
+    isolated from the reaction.
+  - `verb`; meaning: `long-ending`; respelling: `in-tur-MEE-dee-ayt`; example: An elder was asked to **intermediate**
+    between the striking workers and the owners of the mill.
 - **intern**; parts of speech: noun, verb; heteronym, meanings: confine, trainee; forms: interned (verb confine, verb
   trainee), interning (verb confine, verb trainee), interns
-  - `verb`; meaning: `confine`; example: They were **interned** at Copieweg internment camp.
-  - `noun`; meaning: `trainee`; example: I feel like an **intern** again.
-  - `verb`; meaning: `trainee`; example: They started **interning** at Dad's company.
+  - `verb`; meaning: `confine`; respelling: `in-TURN`; example: They were **interned** at Copieweg internment camp.
+  - `noun`; meaning: `trainee`; respelling: `IN-turn`; example: I feel like an **intern** again.
+  - `verb`; meaning: `trainee`; respelling: `IN-turn`; example: They started **interning** at Dad's company.
 - **interspace**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: interspaces
-  - `noun`; meaning: `noun`; example: A narrow **interspace** separated the cells.
-  - `verb`; meaning: `verb`; example: They did not **interspace** the stakes evenly.
+  - `noun`; meaning: `noun`; respelling: `IN-ter-spays`; example: A narrow **interspace** separated the cells.
+  - `verb`; meaning: `verb`; respelling: `in-ter-SPAYS`; example: They did not **interspace** the stakes evenly.
 - **intimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: intimates
-  - `noun`; meaning: `noun`; example: Each **intimate** was sworn to secrecy.
-  - `verb`; meaning: `verb`; example: I wouldn't **intimate** anything so rude.
+  - `noun`; meaning: `noun`; respelling: `IN-tuh-mit`; example: Each **intimate** was sworn to secrecy.
+  - `verb`; meaning: `verb`; respelling: `IN-tuh-mayt`; example: I wouldn't **intimate** anything so rude.
 - **intrigue**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: intrigues
-  - `noun`; meaning: `noun`; example: Her eyes held a hint of **intrigue**.
-  - `verb`; meaning: `verb`; example: Such rumors **intrigue** the press.
+  - `noun`; meaning: `noun`; respelling: `IN-treeg`; example: Her eyes held a hint of **intrigue**.
+  - `verb`; meaning: `verb`; respelling: `in-TREEG`; example: Such rumors **intrigue** the press.
 - **invalid**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; forms: invalids (noun noun)
-  - `adjective`; meaning: `adjective`; example: The form was rejected as **invalid**.
-  - `noun`; meaning: `noun`; example: An **invalid** needs rest and a quiet room.
+  - `adjective`; meaning: `adjective`; respelling: `in-VAL-id`; example: The form was rejected as **invalid**.
+  - `noun`; meaning: `noun`; respelling: `IN-vuh-lid`; example: An **invalid** needs rest and a quiet room.
 - **invert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: inverts
-  - `noun`; meaning: `noun`; example: Mud filled the **invert** of the pipe.
-  - `verb`; meaning: `verb`; example: Flip the switch to **invert** the colors.
+  - `noun`; meaning: `noun`; respelling: `IN-vurt`; example: Mud filled the **invert** of the pipe.
+  - `verb`; meaning: `verb`; respelling: `in-VURT`; example: Flip the switch to **invert** the colors.
 - **invite**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: invites
-  - `noun`; meaning: `noun`; example: She declined the **invite** politely.
-  - `verb`; meaning: `verb`; example: Can we **invite** the neighbors, too?
+  - `noun`; meaning: `noun`; respelling: `IN-vyte`; example: She declined the **invite** politely.
+  - `verb`; meaning: `verb`; respelling: `in-VYTE`; example: Can we **invite** the neighbors, too?
 - **iron**; parts of speech: noun, verb; forms: ironed (verb), ironing (verb), ironned (verb), ironning (verb), irons
   - `noun`; example: You have too many **irons** in the fire.
   - `verb`; example: He watches TV while he **irons**.
 - **isolate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: isolates
-  - `noun`; meaning: `noun`; example: That **isolate** may represent a new species.
-  - `verb`; meaning: `verb`; example: We need to **isolate** the cause of the leak.
+  - `noun`; meaning: `noun`; respelling: `EYE-suh-lit`; example: That **isolate** may represent a new species.
+  - `verb`; meaning: `verb`; respelling: `EYE-suh-layt`; example: We need to **isolate** the cause of the leak.
 - **issue**; parts of speech: noun, verb; forms: issued (verb), issues, issuing (verb)
   - `noun`; example: He focuses on human rights **issues**.
   - `verb`; example: Governments borrow money by **issuing** bonds.
@@ -1085,8 +1115,8 @@ shown in bold.
 ### Lemmas Starting With J
 
 - **jagged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The coastline looks **jagged** from the air.
-  - `verb`; meaning: `verb`; example: The fence line **jagged** toward the barn.
+  - `adjective`; meaning: `adjective`; respelling: `JAG-id`; example: The coastline looks **jagged** from the air.
+  - `verb`; meaning: `verb`; respelling: `jagd`; example: The fence line **jagged** toward the barn.
 - **jerk**; parts of speech: noun, verb; forms: jerked (verb), jerking (verb), jerks
   - `noun`; example: How could I have been such a **jerk**?
   - `verb`; example: He **jerked** his arm out of my grasp.
@@ -1115,8 +1145,8 @@ shown in bold.
 ### Lemmas Starting With L
 
 - **laminate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: laminates
-  - `noun`; meaning: `noun`; example: The sample was a thin plastic **laminate**.
-  - `verb`; meaning: `verb`; example: Does your office **laminate** badges?
+  - `noun`; meaning: `noun`; respelling: `LAM-uh-nit`; example: The sample was a thin plastic **laminate**.
+  - `verb`; meaning: `verb`; respelling: `LAM-uh-nayt`; example: Does your office **laminate** badges?
 - **land**; parts of speech: noun, verb; forms: landed (verb), landing (verb), lands
   - `noun`; example: I am benefiting from that **land**.
   - `verb`; example: Tomorrow he **lands** on the moon.
@@ -1128,15 +1158,15 @@ shown in bold.
   - `verb`; example: You're **laying** it on too thick.
 - **lead**; parts of speech: noun, verb; heteronym, meanings: guide, metal; forms: leading (noun guide, verb guide),
   leads, led (verb guide)
-  - `noun`; meaning: `guide`; example: Our band needs a **lead** guitarist.
-  - `verb`; meaning: `guide`; example: He **led** the posse through the mountains.
-  - `noun`; meaning: `metal`; example: I measured it with the **lead** line.
+  - `noun`; meaning: `guide`; respelling: `leed`; example: Our band needs a **lead** guitarist.
+  - `verb`; meaning: `guide`; respelling: `leed`; example: He **led** the posse through the mountains.
+  - `noun`; meaning: `metal`; respelling: `led`; example: I measured it with the **lead** line.
 - **leak**; parts of speech: noun, verb; forms: leaked (verb), leaking (verb), leaks
   - `noun`; example: There's a **leak** in that pipe.
   - `verb`; example: The source code had been **leaked**.
 - **learned**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: He seemed **learned** beyond his years.
-  - `verb`; meaning: `verb`; example: She never **learned** how to drive.
+  - `adjective`; meaning: `adjective`; respelling: `LUR-nid`; example: He seemed **learned** beyond his years.
+  - `verb`; meaning: `verb`; respelling: `lurnd`; example: She never **learned** how to drive.
 - **leave**; parts of speech: noun, verb; forms: leaved (verb), leaves, leaving (verb)
   - `noun`; example: Might I beg **leave** to accompany you?
   - `verb`; example: The train **leaves** at 6 o'clock.
@@ -1144,8 +1174,8 @@ shown in bold.
   - `noun`; example: Did you take notes during the **lecture**?
   - `verb`; example: I don't need to be **lectured** by you.
 - **legitimate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: legitimates
-  - `adjective`; meaning: `adjective`; example: Is this website **legitimate** or a scam?
-  - `verb`; meaning: `verb`; example: They did not **legitimate** the treaty.
+  - `adjective`; meaning: `adjective`; respelling: `luh-JIT-uh-mit`; example: Is this website **legitimate** or a scam?
+  - `verb`; meaning: `verb`; respelling: `luh-JIT-uh-mayt`; example: They did not **legitimate** the treaty.
 - **lift**; parts of speech: noun, verb; forms: lifted (verb), lifting (verb), lifts
   - `noun`; example: He gave me a **lift** in his cart.
   - `verb`; example: I hope that the fog will **lift** soon.
@@ -1165,11 +1195,10 @@ shown in bold.
 - **list**; parts of speech: noun, verb; forms: listed (verb), listing (verb), lists
   - `noun`; example: Did you discuss any of the issues on our **list**?
   - `verb`; example: She has too many hobbies to **list**.
-- **live**; parts of speech: verb, adjective, adverb; heteronym, meanings: adjective, adverb, verb; forms: lives (verb
-  verb)
-  - `adjective`; meaning: `adjective`; example: Be careful, that is a **live** wire.
-  - `adverb`; meaning: `adverb`; example: The show was broadcast **live**.
-  - `verb`; meaning: `verb`; example: He **lives** alone in a tiny cabin.
+- **live**; parts of speech: verb, adjective, adverb; heteronym, meanings: alive, dwell; forms: lives (verb dwell)
+  - `adjective`; meaning: `alive`; respelling: `lyve`; example: Be careful, that is a **live** wire.
+  - `adverb`; meaning: `alive`; respelling: `lyve`; example: The show was broadcast **live**.
+  - `verb`; meaning: `dwell`; respelling: `liv`; example: He **lives** alone in a tiny cabin.
 - **lock**; parts of speech: noun, verb; forms: locked (verb), locking (verb), locks
   - `noun`; example: Give me the key to this **lock**!
   - `verb`; example: Mary said her house was **locked**.
@@ -1177,8 +1206,8 @@ shown in bold.
   - `noun`; example: Our **lounge** is lovely and sunny.
   - `verb`; example: She was **lounging** on the sofa.
 - **lunged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: Choir directors favor a full-**lunged** tenor.
-  - `verb`; meaning: `verb`; example: Why **lunged** he at the referee?
+  - `adjective`; meaning: `adjective`; respelling: `lungd`; example: Choir directors favor a full-**lunged** tenor.
+  - `verb`; meaning: `verb`; respelling: `lunjd`; example: Why **lunged** he at the referee?
 
 ### Lemmas Starting With M
 
@@ -1186,8 +1215,8 @@ shown in bold.
   - `noun`; example: Did you already get my **mail**?
   - `verb`; example: I'm going to **mail** this letter.
 - **marginate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The **marginate** shell has a thickened rim.
-  - `verb`; meaning: `verb`; example: Editors **marginate** proofs with corrections.
+  - `adjective`; meaning: `adjective`; respelling: `MAR-juh-nit`; example: The **marginate** shell has a thickened rim.
+  - `verb`; meaning: `verb`; respelling: `MAR-juh-nayt`; example: Editors **marginate** proofs with corrections.
 - **mark**; parts of speech: noun, verb; forms: marked (verb), marking (verb), marks
   - `noun`; example: Don't assume a pockmarked face has no **marks**.
   - `verb`; example: I will manage. **Mark** my words.
@@ -1202,14 +1231,14 @@ shown in bold.
   - `noun`; example: He did not it with half **measures** with him.
   - `verb`; example: How can I **measure** my Berber fluency?
 - **mediate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: mediates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Such a **mediate** relation is hard to prove.
-  - `verb`; meaning: `verb`; example: She was asked to **mediate** the talks.
+  - `adjective`; meaning: `adjective`; respelling: `MEE-dee-it`; example: Such a **mediate** relation is hard to prove.
+  - `verb`; meaning: `verb`; respelling: `MEE-dee-ayt`; example: She was asked to **mediate** the talks.
 - **mention**; parts of speech: noun, verb; forms: mentioned (verb), mentioning (verb), mentions
   - `noun`; example: No **mention** is made of that fact.
   - `verb`; example: Why didn't you **mention** that before?
-- **merchandise**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: merchandises
-  - `noun`; meaning: `noun`; example: Imported **merchandise** faces a new tax.
-  - `verb`; meaning: `verb`; example: How do you **merchandise** a product like this?
+- **merchandise**; parts of speech: noun, verb; forms: merchandises
+  - `noun`; example: Imported **merchandise** faces a new tax.
+  - `verb`; example: How do you **merchandise** a product like this?
 - **milk**; parts of speech: noun, verb; forms: milked (verb), milking, milks
   - `noun`; example: I like **milk** more than juice.
   - `verb`; example: I am going to **milk** the cows.
@@ -1217,71 +1246,73 @@ shown in bold.
   - `noun`; example: He has lost his frigging **mind**.
   - `verb`; example: You **mind** if I smoke a joint?
 - **minute**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; forms: minutes (noun noun)
-  - `adjective`; meaning: `adjective`; example: The amount of dust was **minute**.
-  - `noun`; meaning: `noun`; example: Boil the eggs for ten **minutes**.
+  - `adjective`; meaning: `adjective`; respelling: `my-NOOT`; example: The amount of dust was **minute**.
+  - `noun`; meaning: `noun`; respelling: `MIN-it`; example: Boil the eggs for ten **minutes**.
 - **misconduct**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: misconducts
-  - `noun`; meaning: `noun`; example: Prosecutorial **misconduct** forced a retrial.
-  - `verb`; meaning: `verb`; example: Officers must never **misconduct** an arrest.
+  - `noun`; meaning: `noun`; respelling: `mis-KON-dukt`; example: Prosecutorial **misconduct** forced a retrial.
+  - `verb`; meaning: `verb`; respelling: `mis-kun-DUKT`; example: Officers must never **misconduct** an arrest.
 - **miscount**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: miscounts
-  - `noun`; meaning: `noun`; example: An honest **miscount** can happen to anyone.
-  - `verb`; meaning: `verb`; example: I tend to **miscount** when I'm tired.
+  - `noun`; meaning: `noun`; respelling: `MIS-kownt`; example: An honest **miscount** can happen to anyone.
+  - `verb`; meaning: `verb`; respelling: `mis-KOWNT`; example: I tend to **miscount** when I'm tired.
 - **misfire**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: misfires
-  - `noun`; meaning: `noun`; example: The joke was a total **misfire**.
-  - `verb`; meaning: `verb`; example: Bad plugs make an engine **misfire**.
+  - `noun`; meaning: `noun`; respelling: `MIS-fyer`; example: The joke was a total **misfire**.
+  - `verb`; meaning: `verb`; respelling: `mis-FYER`; example: Bad plugs make an engine **misfire**.
 - **mishit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: mishits
-  - `noun`; meaning: `noun`; example: One **mishit** cost her the hole.
-  - `verb`; meaning: `verb`; example: The wet bat will **mishit** the ball.
+  - `noun`; meaning: `noun`; respelling: `MIS-hit`; example: One **mishit** cost her the hole.
+  - `verb`; meaning: `verb`; respelling: `mis-HIT`; example: The wet bat will **mishit** the ball.
 - **mismatch**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: mismatches
-  - `noun`; meaning: `noun`; example: The couple seemed a perfect **mismatch**.
-  - `verb`; meaning: `verb`; example: Be careful not to **mismatch** the cables.
+  - `noun`; meaning: `noun`; respelling: `MIS-mach`; example: The couple seemed a perfect **mismatch**.
+  - `verb`; meaning: `verb`; respelling: `mis-MACH`; example: Be careful not to **mismatch** the cables.
 - **misplay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: misplays
-  - `noun`; meaning: `noun`; example: A **misplay** on the flop cost him the pot.
-  - `verb`; meaning: `verb`; example: She rarely **misplays** a ground ball.
+  - `noun`; meaning: `noun`; respelling: `MIS-play`; example: A **misplay** on the flop cost him the pot.
+  - `verb`; meaning: `verb`; respelling: `mis-PLAY`; example: She rarely **misplays** a ground ball.
 - **misprint**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: misprints
-  - `noun`; meaning: `noun`; example: He found a **misprint** in the dictionary.
-  - `verb`; meaning: `verb`; example: Cheap printers often **misprint** fine text.
+  - `noun`; meaning: `noun`; respelling: `MIS-print`; example: He found a **misprint** in the dictionary.
+  - `verb`; meaning: `verb`; respelling: `mis-PRINT`; example: Cheap printers often **misprint** fine text.
 - **misuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: misuses
-  - `noun`; meaning: `noun`; example: Repeated **misuse** damaged the tool.
-  - `verb`; meaning: `verb`; example: He tends to **misuse** big words.
+  - `noun`; meaning: `noun`; respelling: `mis-YOOS`; example: Repeated **misuse** damaged the tool.
+  - `verb`; meaning: `verb`; respelling: `mis-YOOZ`; example: He tends to **misuse** big words.
 - **moderate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: moderates
-  - `noun`; meaning: `noun`; example: **Moderates** praised the budget deal.
-  - `verb`; meaning: `verb`; example: Their anger will **moderate** with time.
+  - `noun`; meaning: `noun`; respelling: `MOD-er-it`; example: **Moderates** praised the budget deal.
+  - `verb`; meaning: `verb`; respelling: `MOD-uh-rayt`; example: Their anger will **moderate** with time.
 - **monitor**; parts of speech: noun, verb; forms: monitored (verb), monitoring, monitorred (verb), monitorring (verb),
   monitors
   - `noun`; example: Tom is hooked up to **monitors**.
   - `verb`; example: He was **monitored** by the FBI.
 - **moped**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: A **moped** zipped between the cars.
-  - `verb`; meaning: `verb`; example: She just **moped** and refused to eat.
+  - `noun`; meaning: `noun`; respelling: `MOH-ped`; example: A **moped** zipped between the cars.
+  - `verb`; meaning: `verb`; respelling: `mohpt`; example: She just **moped** and refused to eat.
 - **mouth**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: mouths
-  - `noun`; meaning: `noun`; example: He had a smile on his **mouth**.
-  - `verb`; meaning: `verb`; example: **Mouth** the answer to me quietly.
+  - `noun`; meaning: `noun`; respelling: `mowth`; example: He had a smile on his **mouth**.
+  - `verb`; meaning: `verb`; respelling: `mowthe`; example: **Mouth** the answer to me quietly.
 - **move**; parts of speech: noun, verb; forms: moved (verb), moves, moving (verb)
   - `noun`; example: It's your **move**! Roll the dice!
   - `verb`; example: I will be **moving** on tomorrow.
 - **mow**; parts of speech: noun, verb; heteronym, meanings: cut, hay; forms: mowed (verb cut), mowing (verb cut), mown
   (verb cut), mows
-  - `verb`; meaning: `cut`; example: So they **mowed** the first row.
-  - `noun`; meaning: `hay`; example: It was loaded into the **mow** by a horse-drawn elevator.
+  - `verb`; meaning: `cut`; respelling: `moh`; example: So they **mowed** the first row.
+  - `noun`; meaning: `hay`; respelling: `mow`; example: It was loaded into the **mow** by a horse-drawn elevator.
 - **multiply**; parts of speech: verb, adverb; heteronym, meanings: adverb, verb; forms: multiplied (verb verb),
   multiplies (verb verb), multiplying (verb verb)
-  - `adverb`; meaning: `adverb`; example: To prove now that the **multiply** connected domain
-  - `verb`; meaning: `verb`; example: "Increase and **multiply**, my friends," said Montgomery.
+  - `adverb`; meaning: `adverb`; respelling: `MUL-tuh-plee`; example: To prove now that the **multiply** connected
+    domain
+  - `verb`; meaning: `verb`; respelling: `MUL-tuh-ply`; example: "Increase and **multiply**, my friends," said
+    Montgomery.
 
 ### Lemmas Starting With N
 
 - **nail**; parts of speech: noun, verb; forms: nailed (verb), nailing (verb), nails
   - `noun`; example: This affair was a **nail** in my coffin.
   - `verb`; example: I **nailed** the sign to the door.
-- **nearby**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: We stayed at a **nearby** hotel.
-  - `adverb`; meaning: `adverb`; example: We found a quiet cafe **nearby**.
+- **nearby**; parts of speech: adjective, adverb; no other forms
+  - `adjective`; example: We stayed at a **nearby** hotel.
+  - `adverb`; example: We found a quiet cafe **nearby**.
 - **nod**; parts of speech: noun, verb; forms: nodded (verb), nodding (verb), nods
   - `noun`; example: Mary gave me a friendly **nod**.
   - `verb`; example: He **nodded** his head in approval.
 - **nominate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: nominates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Field guides list the **nominate** form first.
-  - `verb`; meaning: `verb`; example: Will you **nominate** me for the board?
+  - `adjective`; meaning: `adjective`; respelling: `NOM-uh-nit`; example: Field guides list the **nominate** form first.
+  - `verb`; meaning: `verb`; respelling: `NOM-uh-nayt`; example: Will you **nominate** me for the board?
 - **note**; parts of speech: noun, verb; forms: noted (verb), notes, noting (verb)
   - `noun`; example: I'm going to write him a **note** now.
   - `verb`; example: **Note** down what I'm going to say.
@@ -1289,20 +1320,20 @@ shown in bold.
   - `noun`; example: He certainly acted on very short **notice**."
   - `verb`; example: I **noticed** she was wearing my slippers.
 - **nucleate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The tissue was densely **nucleate**.
-  - `verb`; meaning: `verb`; example: Rough edges **nucleate** bubbles in soda.
+  - `adjective`; meaning: `adjective`; respelling: `NOO-klee-it`; example: The tissue was densely **nucleate**.
+  - `verb`; meaning: `verb`; respelling: `NOO-klee-ayt`; example: Rough edges **nucleate** bubbles in soda.
 
 ### Lemmas Starting With O
 
 - **object**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: objects
-  - `noun`; meaning: `noun`; example: The robot can pick up an **object** of any shape.
-  - `verb`; meaning: `verb`; example: Would you **object** if I opened the window?
+  - `noun`; meaning: `noun`; respelling: `OB-jekt`; example: The robot can pick up an **object** of any shape.
+  - `verb`; meaning: `verb`; respelling: `ub-JEKT`; example: Would you **object** if I opened the window?
 - **obligate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: obligates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The tapeworm is an **obligate** parasite.
-  - `verb`; meaning: `verb`; example: Such promises **obligate** the officers to act.
+  - `adjective`; meaning: `adjective`; respelling: `OB-lih-git`; example: The tapeworm is an **obligate** parasite.
+  - `verb`; meaning: `verb`; respelling: `OB-lih-gayt`; example: Such promises **obligate** the officers to act.
 - **obverse**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
-  - `adjective`; meaning: `adjective`; example: The **obverse** angle gave a clearer look.
-  - `noun`; meaning: `noun`; example: Fear is the **obverse** of courage.
+  - `adjective`; meaning: `adjective`; respelling: `ob-VURS`; example: The **obverse** angle gave a clearer look.
+  - `noun`; meaning: `noun`; respelling: `OB-vurs`; example: Fear is the **obverse** of courage.
 - **occasion**; parts of speech: noun, verb; forms: occasioned (verb), occasioning (verb), occasions
   - `noun`; example: I hate his talking big on every **occasion**.
   - `verb`; example: Over-feeding, if persisted in, may **occasion** indigestion.
@@ -1311,120 +1342,120 @@ shown in bold.
   - `noun`; example: What do you think of my **offer**?
   - `verb`; example: They **offered** to teach kids to play guitar.
 - **offset**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: offsets
-  - `noun`; meaning: `noun`; example: The **offset** between the signals was tiny.
-  - `verb`; meaning: `verb`; example: A bright scarf will **offset** the dark coat.
+  - `noun`; meaning: `noun`; respelling: `AWF-set`; example: The **offset** between the signals was tiny.
+  - `verb`; meaning: `verb`; respelling: `awf-SET`; example: A bright scarf will **offset** the dark coat.
 - **opiate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: opiates
-  - `noun`; meaning: `noun`; example: The clinic treats **opiate** addiction.
-  - `verb`; meaning: `verb`; example: The tincture will **opiate** the pain away.
+  - `noun`; meaning: `noun`; respelling: `OH-pee-it`; example: The clinic treats **opiate** addiction.
+  - `verb`; meaning: `verb`; respelling: `OH-pee-ayt`; example: The tincture will **opiate** the pain away.
 - **orbit**; parts of speech: noun, verb; forms: orbited (verb), orbiting (verb), orbits, orbitted (verb), orbitting
   (verb)
   - `noun`; example: The satellite is now in **orbit**.
   - `verb`; example: A great many satellites **orbit** the Earth.
-- **orient**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: oriented (verb verb), orienting (verb
-  verb), orients
-  - `noun`; meaning: `noun`; example: He sailed east, toward the fabled **orient**.
-  - `verb`; meaning: `verb`; example: We have to re-**orient** ourselves.
+- **orient**; parts of speech: noun, verb; forms: oriented (verb), orienting (verb), orients
+  - `noun`; example: He sailed east, toward the fabled **orient**.
+  - `verb`; example: We have to re-**orient** ourselves.
 - **ornament**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: ornaments
-  - `noun`; meaning: `noun`; example: A silver **ornament** sat on the mantel.
-  - `verb`; meaning: `verb`; example: Let us **ornament** the hall with garlands.
+  - `noun`; meaning: `noun`; respelling: `AWR-nuh-munt`; example: A silver **ornament** sat on the mantel.
+  - `verb`; meaning: `verb`; respelling: `AWR-nuh-ment`; example: Let us **ornament** the hall with garlands.
 - **outgo**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: outgoes
-  - `noun`; meaning: `noun`; example: Each **outgo** is recorded in the ledger.
-  - `verb`; meaning: `verb`; example: Nothing can **outgo** her determination.
+  - `noun`; meaning: `noun`; respelling: `OWT-goh`; example: Each **outgo** is recorded in the ledger.
+  - `verb`; meaning: `verb`; respelling: `owt-GOH`; example: Nothing can **outgo** her determination.
 - **outreach**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: outreaches
-  - `noun`; meaning: `noun`; example: Budget cuts hurt the agency's **outreach**.
-  - `verb`; meaning: `verb`; example: The pastor **outreaches** to families in need.
+  - `noun`; meaning: `noun`; respelling: `OWT-reech`; example: Budget cuts hurt the agency's **outreach**.
+  - `verb`; meaning: `verb`; respelling: `owt-REECH`; example: The pastor **outreaches** to families in need.
 - **overall**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: Her **overall** grade for the course was an A.
-  - `adverb`; meaning: `adverb`; example: Crime fell **overall** across the region.
+  - `adjective`; meaning: `adjective`; respelling: `OH-vur-awl`; example: Her **overall** grade for the course was an A.
+  - `adverb`; meaning: `adverb`; respelling: `oh-vur-AWL`; example: Crime fell **overall** across the region.
 - **overbid**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overbids
-  - `noun`; meaning: `noun`; example: A single **overbid** ruined the hand.
-  - `verb`; meaning: `verb`; example: Don't **overbid** on the first item.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-bid`; example: A single **overbid** ruined the hand.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-BID`; example: Don't **overbid** on the first item.
 - **overburden**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overburdens
-  - `noun`; meaning: `noun`; example: A thick **overburden** covers the coal seam.
-  - `verb`; meaning: `verb`; example: Will the added duties **overburden** him?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-bur-dun`; example: A thick **overburden** covers the coal seam.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-BUR-dun`; example: Will the added duties **overburden** him?
 - **overcall**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overcalls
-  - `noun`; meaning: `noun`; example: That **overcall** on five points was risky.
-  - `verb`; meaning: `verb`; example: She chose to **overcall** in hearts.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-kawl`; example: That **overcall** on five points was risky.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-KAWL`; example: She chose to **overcall** in hearts.
 - **overcharge**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overcharges
-  - `noun`; meaning: `noun`; example: The **overcharge** was corrected within a day.
-  - `verb`; meaning: `verb`; example: Some shops **overcharge** tourists.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-charj`; example: The **overcharge** was corrected within a day.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-CHARJ`; example: Some shops **overcharge** tourists.
 - **overdose**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overdoses
-  - `noun`; meaning: `noun`; example: A single **overdose** can be fatal.
-  - `verb`; meaning: `verb`; example: Pets can **overdose** on chocolate.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-dohs`; example: A single **overdose** can be fatal.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-DOHS`; example: Pets can **overdose** on chocolate.
 - **overdress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overdresses
-  - `noun`; meaning: `noun`; example: The stylist warned against **overdress**.
-  - `verb`; meaning: `verb`; example: Why did you **overdress** for a hike?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-dres`; example: The stylist warned against **overdress**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-DRES`; example: Why did you **overdress** for a hike?
 - **overdub**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overdubs
-  - `noun`; meaning: `noun`; example: The album relies on heavy **overdub**.
-  - `verb`; meaning: `verb`; example: Can you **overdub** a harmony here?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-dub`; example: The album relies on heavy **overdub**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-DUB`; example: Can you **overdub** a harmony here?
 - **overestimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overestimates
-  - `noun`; meaning: `noun`; example: The **overestimate** misled the investors.
-  - `verb`; meaning: `verb`; example: Don't **overestimate** your savings.
+  - `noun`; meaning: `noun`; respelling: `oh-vur-ES-tuh-mit`; example: The **overestimate** misled the investors.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-ES-tuh-mayt`; example: Don't **overestimate** your savings.
 - **overflow**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overflows
-  - `noun`; meaning: `noun`; example: The **overflow** sat in a tent next door.
-  - `verb`; meaning: `verb`; example: Don't let the bathtub **overflow**.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-floh`; example: The **overflow** sat in a tent next door.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-FLOH`; example: Don't let the bathtub **overflow**.
 - **overhang**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overhangs
-  - `noun`; meaning: `noun`; example: Birds nested under the **overhang**.
-  - `verb`; meaning: `verb`; example: Her bangs **overhang** her eyes.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-hang`; example: Birds nested under the **overhang**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-HANG`; example: Her bangs **overhang** her eyes.
 - **overhaul**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overhauls
-  - `noun`; meaning: `noun`; example: The old plane got an **overhaul**.
-  - `verb`; meaning: `verb`; example: We must **overhaul** our approach.
-- **overhead**; parts of speech: noun, adjective, adverb; heteronym, meanings: above, noun; forms: overheads (noun noun)
-  - `adjective`; meaning: `above`; example: I turned off the **overhead** light.
-  - `adverb`; meaning: `above`; example: The night was serene and splendid **overhead**.
-  - `noun`; meaning: `noun`; example: These expenses are sometimes referred to as **overheads**, and represent indirect
-    or fixed costs.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-hawl`; example: The old plane got an **overhaul**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-HAWL`; example: We must **overhaul** our approach.
+- **overhead**; parts of speech: noun, adjective, adverb; heteronym, meanings: stress-first, stress-last; forms:
+  overheads (noun stress-first)
+  - `adjective`; meaning: `stress-first`; respelling: `OH-vur-hed`; example: I turned off the **overhead** light.
+  - `adverb`; meaning: `stress-last`; respelling: `oh-vur-HED`; example: The night was serene and splendid **overhead**.
+  - `noun`; meaning: `stress-first`; respelling: `OH-vur-hed`; example: These expenses are sometimes referred to as
+    **overheads**, and represent indirect or fixed costs.
 - **overlap**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overlaps
-  - `noun`; meaning: `noun`; example: Our tastes have a surprising **overlap**.
-  - `verb`; meaning: `verb`; example: Do these two classes **overlap**?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-lap`; example: Our tastes have a surprising **overlap**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-LAP`; example: Do these two classes **overlap**?
 - **overlay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overlays
-  - `noun`; meaning: `noun`; example: A thin **overlay** protects the print.
-  - `verb`; meaning: `verb`; example: Don't **overlay** too much text.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-lay`; example: A thin **overlay** protects the print.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-LAY`; example: Don't **overlay** too much text.
 - **overload**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overloads
-  - `noun`; meaning: `noun`; example: The **overload** damaged the motor.
-  - `verb`; meaning: `verb`; example: Why did they **overload** the boat?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-lohd`; example: The **overload** damaged the motor.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-LOHD`; example: Why did they **overload** the boat?
 - **overlook**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overlooks
-  - `noun`; meaning: `noun`; example: We ate lunch at the **overlook**.
-  - `verb`; meaning: `verb`; example: We must not **overlook** safety.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-luk`; example: We ate lunch at the **overlook**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-LUK`; example: We must not **overlook** safety.
 - **overpass**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overpasses
-  - `noun`; meaning: `noun`; example: Cars slowed near the **overpass**.
-  - `verb`; meaning: `verb`; example: Few players **overpass** that mark.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-pas`; example: Cars slowed near the **overpass**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-PAS`; example: Few players **overpass** that mark.
 - **overprint**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overprints
-  - `noun`; meaning: `noun`; example: Each **overprint** was numbered.
-  - `verb`; meaning: `verb`; example: Can you **overprint** this sheet?
+  - `noun`; meaning: `noun`; respelling: `OH-vur-print`; example: Each **overprint** was numbered.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-PRINT`; example: Can you **overprint** this sheet?
 - **override**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overrides
-  - `noun`; meaning: `noun`; example: The **override** worked only once.
-  - `verb`; meaning: `verb`; example: He **overrides** every objection.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-ride`; example: The **override** worked only once.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-RIDE`; example: He **overrides** every objection.
 - **overrun**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overruns
-  - `noun`; meaning: `noun`; example: The project had a costly **overrun**.
-  - `verb`; meaning: `verb`; example: Rats can **overrun** a warehouse.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-run`; example: The project had a costly **overrun**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-RUN`; example: Rats can **overrun** a warehouse.
 - **overshoot**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overshoots
-  - `noun`; meaning: `noun`; example: The **overshoot** ended in the grass.
-  - `verb`; meaning: `verb`; example: Costs could **overshoot** the budget.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-shoot`; example: The **overshoot** ended in the grass.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-SHOOT`; example: Costs could **overshoot** the budget.
 - **overspend**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overspends
-  - `noun`; meaning: `noun`; example: A chronic **overspend** threatens the charity.
-  - `verb`; meaning: `verb`; example: Don't **overspend** on holiday gifts.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-spend`; example: A chronic **overspend** threatens the charity.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-SPEND`; example: Don't **overspend** on holiday gifts.
 - **oversteer**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: oversteers
-  - `noun`; meaning: `noun`; example: Engineers tuned out the **oversteer**.
-  - `verb`; meaning: `verb`; example: Don't **oversteer** in the corner.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-steer`; example: Engineers tuned out the **oversteer**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-STEER`; example: Don't **oversteer** in the corner.
 - **overstock**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overstocks
-  - `noun`; meaning: `noun`; example: A big **overstock** cut into profits.
-  - `verb`; meaning: `verb`; example: Don't **overstock** the aquarium.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-stok`; example: A big **overstock** cut into profits.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-STOK`; example: Don't **overstock** the aquarium.
 - **overthrow**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overthrows
-  - `noun`; meaning: `noun`; example: The general led the **overthrow**.
-  - `verb`; meaning: `verb`; example: Don't **overthrow** the cutoff man.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-throh`; example: The general led the **overthrow**.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-THROH`; example: Don't **overthrow** the cutoff man.
 - **overturn**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overturns
-  - `noun`; meaning: `noun`; example: The kayak's **overturn** was harmless.
-  - `verb`; meaning: `verb`; example: He wants to **overturn** the record.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-turn`; example: The kayak's **overturn** was harmless.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-TURN`; example: He wants to **overturn** the record.
 - **overuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overuses
-  - `noun`; meaning: `noun`; example: Pesticide **overuse** harms bees.
-  - `verb`; meaning: `verb`; example: Don't **overuse** the heating pad.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-yoos`; example: Pesticide **overuse** harms bees.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-YOOZ`; example: Don't **overuse** the heating pad.
 - **overweight**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overweights
-  - `noun`; meaning: `noun`; example: The **overweight** cost us forty dollars.
-  - `verb`; meaning: `verb`; example: Don't **overweight** the backpack.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-wayt`; example: The **overweight** cost us forty dollars.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-WAYT`; example: Don't **overweight** the backpack.
 - **overwork**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: overworks
-  - `noun`; meaning: `noun`; example: The **overwork** led to mistakes.
-  - `verb`; meaning: `verb`; example: Never **overwork** a tired horse.
+  - `noun`; meaning: `noun`; respelling: `OH-vur-wurk`; example: The **overwork** led to mistakes.
+  - `verb`; meaning: `verb`; respelling: `oh-vur-WURK`; example: Never **overwork** a tired horse.
 
 ### Lemmas Starting With P
 
@@ -1454,8 +1485,8 @@ shown in bold.
   - `noun`; example: How had he come to such a **pass**?
   - `verb`; example: Not many students **passed** the exam.
 - **pasty**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
-  - `adjective`; meaning: `adjective`; example: The oatmeal was **pasty** and bland.
-  - `noun`; meaning: `noun`; example: The local **pasty** won an award.
+  - `adjective`; meaning: `adjective`; respelling: `PAY-stee`; example: The oatmeal was **pasty** and bland.
+  - `noun`; meaning: `noun`; respelling: `PAS-tee`; example: The local **pasty** won an award.
 - **patch**; parts of speech: noun, verb; forms: patched (verb), patches, patching (verb)
   - `noun`; example: My people are working on a **patch**.
   - `verb`; example: My mother had to **patch** my pants.
@@ -1466,27 +1497,28 @@ shown in bold.
   - `noun`; example: I'd like a week off with **pay**.
   - `verb`; example: I don't mind **paying** you back.
 - **perfect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: perfects
-  - `noun`; meaning: `noun`; example: The **perfect** of this verb is irregular.
-  - `verb`; meaning: `verb`; example: The chef **perfects** each sauce.
+  - `noun`; meaning: `noun`; respelling: `PUR-fikt`; example: The **perfect** of this verb is irregular.
+  - `verb`; meaning: `verb`; respelling: `pur-FEKT`; example: The chef **perfects** each sauce.
 - **perforate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: perforates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Is the cap **perforate** or solid at the apex?
-  - `verb`; meaning: `verb`; example: Will this drill bit **perforate** ceramic tile?
+  - `adjective`; meaning: `adjective`; respelling: `PUR-fur-it`; example: Is the cap **perforate** or solid at the apex?
+  - `verb`; meaning: `verb`; respelling: `PUR-fuh-rayt`; example: Will this drill bit **perforate** ceramic tile?
 - **perfume**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: perfumed (verb
   stress-last), perfumes, perfuming (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: For him, Cosette was a **perfume** and not a woman.
-  - `verb`; meaning: `stress-last`; example: The air is **perfumed** with essences.
+  - `noun`; meaning: `stress-first`; respelling: `PUR-fyoom`; example: For him, Cosette was a **perfume** and not a
+    woman.
+  - `verb`; meaning: `stress-last`; respelling: `pur-FYOOM`; example: The air is **perfumed** with essences.
 - **permit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: permits
-  - `noun`; meaning: `noun`; example: The **permit** was signed by the mayor.
-  - `verb`; meaning: `verb`; example: Did the manager **permit** you to leave early?
+  - `noun`; meaning: `noun`; respelling: `PUR-mit`; example: The **permit** was signed by the mayor.
+  - `verb`; meaning: `verb`; respelling: `pur-MIT`; example: Did the manager **permit** you to leave early?
 - **pervert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: perverts
-  - `noun`; meaning: `noun`; example: Why would anyone hire a known **pervert** as a tutor?
-  - `verb`; meaning: `verb`; example: How can anyone **pervert** such a simple rule?
+  - `noun`; meaning: `noun`; respelling: `PUR-vurt`; example: Why would anyone hire a known **pervert** as a tutor?
+  - `verb`; meaning: `verb`; respelling: `pur-VURT`; example: How can anyone **pervert** such a simple rule?
 - **picture**; parts of speech: noun, verb; forms: pictured (verb), pictures, picturing (verb)
   - `noun`; example: She's as pretty as a **picture**.
   - `verb`; example: How do you have to **picture** that?
 - **pigment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: pigments
-  - `noun`; meaning: `noun`; example: A bright **pigment** was mixed into the wet plaster.
-  - `verb`; meaning: `verb`; example: The chemical **pigments** the glass as it cools.
+  - `noun`; meaning: `noun`; respelling: `PIG-munt`; example: A bright **pigment** was mixed into the wet plaster.
+  - `verb`; meaning: `verb`; respelling: `PIG-ment`; example: The chemical **pigments** the glass as it cools.
 - **pile**; parts of speech: noun, verb; forms: piled (verb), piles, piling (verb)
   - `noun`; example: Put a card back in the **pile**.
   - `verb`; example: Problems are **piling** up on me.
@@ -1515,15 +1547,15 @@ shown in bold.
   (verb), poisons
   - `noun`; example: Socrates happily drank up the **poison**.
   - `verb`; example: He was **poisoned** by mercury vapor.
-- **polish**; parts of speech: noun, verb, adjective; heteronym, meanings: nationality, noun, verb; forms: polishes
-  (noun noun, verb verb)
-  - `adjective`; meaning: `nationality`; example: **Polish** grammar is difficult.
-  - `noun`; meaning: `nationality`; example: Have you never studied **Polish**?
-  - `noun`; meaning: `noun`; example: The nail **polish** chipped within a day.
-  - `verb`; meaning: `verb`; example: Don't **polish** the pan with steel wool.
+- **polish**; parts of speech: noun, verb, adjective; heteronym, meanings: nationality, shine; forms: polishes (noun
+  shine, verb shine)
+  - `adjective`; meaning: `nationality`; respelling: `POH-lish`; example: **Polish** grammar is difficult.
+  - `noun`; meaning: `nationality`; respelling: `POH-lish`; example: Have you never studied **Polish**?
+  - `noun`; meaning: `shine`; respelling: `POL-ish`; example: The nail **polish** chipped within a day.
+  - `verb`; meaning: `shine`; respelling: `POL-ish`; example: Don't **polish** the pan with steel wool.
 - **pontificate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: pontificates
-  - `noun`; meaning: `noun`; example: A brief **pontificate** left few lasting records.
-  - `verb`; meaning: `verb`; example: Don't **pontificate**; just tell us what you found.
+  - `noun`; meaning: `noun`; respelling: `pon-TIF-ih-kit`; example: A brief **pontificate** left few lasting records.
+  - `verb`; meaning: `verb`; respelling: `pon-TIF-ih-kayt`; example: Don't **pontificate**; just tell us what you found.
 - **pop**; parts of speech: noun, verb; forms: popped (verb), popping (verb), pops
   - `noun`; example: Young people all like **pop** music.
   - `verb`; example: Where the deuce did he **pop** out of?
@@ -1531,48 +1563,50 @@ shown in bold.
   - `noun`; example: Tom is going to the **post** office.
   - `verb`; example: Click here to **post** a comment.
 - **postfix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: postfixes
-  - `noun`; meaning: `noun`; example: A **postfix** operator follows its operand.
-  - `verb`; meaning: `verb`; example: Simply **postfix** the letter to the stem.
+  - `noun`; meaning: `noun`; respelling: `POHST-fiks`; example: A **postfix** operator follows its operand.
+  - `verb`; meaning: `verb`; respelling: `pohst-FIKS`; example: Simply **postfix** the letter to the stem.
 - **postulate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: postulates
-  - `noun`; meaning: `noun`; example: Her argument depends on an unstated **postulate**.
-  - `verb`; meaning: `verb`; example: Do you **postulate** that the effect is permanent?
+  - `noun`; meaning: `noun`; respelling: `POS-chuh-lit`; example: Her argument depends on an unstated **postulate**.
+  - `verb`; meaning: `verb`; respelling: `POS-chuh-layt`; example: Do you **postulate** that the effect is permanent?
 - **power**; parts of speech: noun, verb; forms: powered (verb), powering (verb), powerred (verb), powerring (verb),
   powers
   - `noun`; example: Another beadle had come into **power**.
   - `verb`; example: The car is **powered** by electricity.
 - **precipitate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: precipitates
-  - `noun`; meaning: `noun`; example: Silver chloride is a curdy **precipitate**.
-  - `verb`; meaning: `verb`; example: Hasty words may **precipitate** an argument.
+  - `noun`; meaning: `noun`; respelling: `prih-SIP-ih-tit`; example: Silver chloride is a curdy **precipitate**.
+  - `verb`; meaning: `verb`; respelling: `prih-SIP-ih-tayt`; example: Hasty words may **precipitate** an argument.
 - **predate**; parts of speech: verb; heteronym, meanings: earlier, prey; forms: predated, predates, predating
-  - `verb`; meaning: `earlier`; example: Both socialism and communism **predate** Karl Marx.
-  - `verb`; meaning: `prey`; example: Owls often **predate** on field mice, swooping silently over the meadow after
-    dark.
+  - `verb`; meaning: `earlier`; respelling: `pree-DAYT`; example: Both socialism and communism **predate** Karl Marx.
+  - `verb`; meaning: `prey`; respelling: `PRED-ayt`; example: Owls often **predate** on field mice, swooping silently
+    over the meadow after dark.
 - **predestinate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: predestinates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: He felt too **predestinate** to change course.
-  - `verb`; meaning: `verb`; example: Nothing can **predestinate** a free choice.
+  - `adjective`; meaning: `adjective`; respelling: `pree-DES-tuh-nit`; example: He felt too **predestinate** to change
+    course.
+  - `verb`; meaning: `verb`; respelling: `pree-DES-tuh-nayt`; example: Nothing can **predestinate** a free choice.
 - **predicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: predicates
-  - `noun`; meaning: `noun`; example: The **predicate** "is red" applies to the apple.
-  - `verb`; meaning: `verb`; example: Can we **predicate** truth of that statement?
+  - `noun`; meaning: `noun`; respelling: `PRED-ih-kit`; example: The **predicate** "is red" applies to the apple.
+  - `verb`; meaning: `verb`; respelling: `PRED-ih-kayt`; example: Can we **predicate** truth of that statement?
 - **prefetch**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: prefetches
-  - `noun`; meaning: `noun`; example: Too many **prefetches** can pollute the cache.
-  - `verb`; meaning: `verb`; example: It helps to **prefetch** the data in parallel.
+  - `noun`; meaning: `noun`; respelling: `PREE-fech`; example: Too many **prefetches** can pollute the cache.
+  - `verb`; meaning: `verb`; respelling: `pree-FECH`; example: It helps to **prefetch** the data in parallel.
 - **prefix**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: prefixed (verb
   stress-last), prefixes, prefixing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Trans people didn't invent the **prefix** "cis-."
-  - `verb`; meaning: `stress-last`; example: We **prefixed** all the test names with "unit" so the build tool could find
-    and run them together.
+  - `noun`; meaning: `stress-first`; respelling: `PREE-fiks`; example: Trans people didn't invent the **prefix** "cis-."
+  - `verb`; meaning: `stress-last`; respelling: `pree-FIKS`; example: We **prefixed** all the test names with "unit" so
+    the build tool could find and run them together.
 - **preload**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: preloads
-  - `noun`; meaning: `noun`; example: A heavy **preload** can damage the bolts.
-  - `verb`; meaning: `verb`; example: Don't **preload** every module at startup.
+  - `noun`; meaning: `noun`; respelling: `PREE-lohd`; example: A heavy **preload** can damage the bolts.
+  - `verb`; meaning: `verb`; respelling: `pree-LOHD`; example: Don't **preload** every module at startup.
 - **premix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: premixes
-  - `noun`; meaning: `noun`; example: A **premix** burner gives a cleaner flame.
-  - `verb`; meaning: `verb`; example: He quickly **premixes** the glaze in a bowl.
+  - `noun`; meaning: `noun`; respelling: `PREE-miks`; example: A **premix** burner gives a cleaner flame.
+  - `verb`; meaning: `verb`; respelling: `pree-MIKS`; example: He quickly **premixes** the glaze in a bowl.
 - **present**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: presents (noun
   noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: The **present** betrothed condition is perhaps better than marriage.
-  - `noun`; meaning: `noun`; example: At **present** you are a perfect type.
-  - `verb`; meaning: `verb`; example: You must **present** your ticket at the gate.
+  - `adjective`; meaning: `adjective`; respelling: `PREZ-unt`; example: The **present** betrothed condition is perhaps
+    better than marriage.
+  - `noun`; meaning: `noun`; respelling: `PREZ-ent`; example: At **present** you are a perfect type.
+  - `verb`; meaning: `verb`; respelling: `prih-ZENT`; example: You must **present** your ticket at the gate.
 - **press**; parts of speech: noun, verb; forms: pressed (verb), presses, pressing (verb)
   - `noun`; example: He works for a newspaper printing **press**.
   - `verb`; example: 'Do not **press** me,' she replied.
@@ -1583,27 +1617,28 @@ shown in bold.
   - `noun`; example: She is the **pride** of her class.
   - `verb`; example: She **prides** herself on her talent.
 - **primer**; parts of speech: noun; heteronym, meanings: paint, textbook; forms: primers
-  - `noun`; meaning: `paint`; example: The unchanged residue is rinsed off and the **primer** stoved.
-  - `noun`; meaning: `textbook`; example: Critical Pedagogy **Primer** is a book by Joe L.
+  - `noun`; meaning: `paint`; respelling: `PRY-mur`; example: The unchanged residue is rinsed off and the **primer**
+    stoved.
+  - `noun`; meaning: `textbook`; respelling: `PRIM-ur`; example: Critical Pedagogy **Primer** is a book by Joe L.
 - **print**; parts of speech: noun, verb; forms: printed (verb), printing, prints
   - `noun`; example: My new book is not yet in **print**.
   - `verb`; example: This book was **printed** in England.
 - **proceeds**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: He spent the **proceeds** on a new truck.
-  - `verb`; meaning: `verb`; example: Our guide **proceeds** along the narrow trail.
+  - `noun`; meaning: `noun`; respelling: `PROH-seedz`; example: He spent the **proceeds** on a new truck.
+  - `verb`; meaning: `verb`; respelling: `proh-SEEDZ`; example: Our guide **proceeds** along the narrow trail.
 - **produce**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: produces
-  - `noun`; meaning: `noun`; example: Local **produce** tastes better in the summer.
-  - `verb`; meaning: `verb`; example: Cows **produce** milk every single day.
+  - `noun`; meaning: `noun`; respelling: `PROH-doos`; example: Local **produce** tastes better in the summer.
+  - `verb`; meaning: `verb`; respelling: `pruh-DOOS`; example: Cows **produce** milk every single day.
 - **progress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: progresses
-  - `noun`; meaning: `noun`; example: We saw steady **progress** in her recovery.
-  - `verb`; meaning: `verb`; example: I want to **progress** to the next level.
+  - `noun`; meaning: `noun`; respelling: `PROG-res`; example: We saw steady **progress** in her recovery.
+  - `verb`; meaning: `verb`; respelling: `pruh-GRES`; example: I want to **progress** to the next level.
 - **project**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: projects
-  - `noun`; meaning: `noun`; example: Our science **project** won first prize at the fair.
-  - `verb`; meaning: `verb`; example: The pier **projects** far out into the cold water.
+  - `noun`; meaning: `noun`; respelling: `PROJ-ekt`; example: Our science **project** won first prize at the fair.
+  - `verb`; meaning: `verb`; respelling: `pruh-JEKT`; example: The pier **projects** far out into the cold water.
 - **protest**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: protested (verb
   stress-last), protesting (verb stress-last), protests
-  - `noun`; meaning: `stress-first`; example: They support peaceful **protests**.
-  - `verb`; meaning: `stress-last`; example: "And what can you **protest** about?
+  - `noun`; meaning: `stress-first`; respelling: `PROH-test`; example: They support peaceful **protests**.
+  - `verb`; meaning: `stress-last`; respelling: `pruh-TEST`; example: "And what can you **protest** about?
 - **pull**; parts of speech: noun, verb; forms: pulled (verb), pulling (verb), pulls
   - `noun`; example: Get the **pull** over him that way.
   - `verb`; example: Sami **pulled** up to a hospital.
@@ -1614,28 +1649,30 @@ shown in bold.
   - `noun`; example: Tom is not pulling any **punches**.
   - `verb`; example: I ought to **punch** him in the face.
 - **purport**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: purports
-  - `noun`; meaning: `noun`; example: The **purport** of the treaty was peace.
-  - `verb`; meaning: `verb`; example: He does not **purport** to be an expert.
+  - `noun`; meaning: `noun`; respelling: `PUR-port`; example: The **purport** of the treaty was peace.
+  - `verb`; meaning: `verb`; respelling: `pur-PORT`; example: He does not **purport** to be an expert.
 - **push**; parts of speech: noun, verb; forms: pushed (verb), pushes, pushing (verb)
   - `noun`; example: We might need a little **push**.
   - `verb`; example: A young father **pushed** a pram.
 - **pustulate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: pustulates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Is the lesion **pustulate** or smooth?
-  - `verb`; meaning: `verb`; example: The sore began to **pustulate** overnight.
+  - `adjective`; meaning: `adjective`; respelling: `PUS-chuh-lit`; example: Is the lesion **pustulate** or smooth?
+  - `verb`; meaning: `verb`; respelling: `PUS-chuh-layt`; example: The sore began to **pustulate** overnight.
 
 ### Lemmas Starting With Q
 
 - **quadrate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: quadrates
-  - `noun`; meaning: `noun`; example: Each **quadrate** showed signs of wear.
-  - `verb`; meaning: `verb`; example: Her plan **quadrates** well with the budget.
+  - `noun`; meaning: `noun`; respelling: `KWOD-rit`; example: Each **quadrate** showed signs of wear.
+  - `verb`; meaning: `verb`; respelling: `KWOD-rayt`; example: Her plan **quadrates** well with the budget.
 - **quadruplicate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: quadruplicates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: Is this order **quadruplicate** or triplicate?
-  - `verb`; meaning: `verb`; example: The clerk must **quadruplicate** each form.
+  - `adjective`; meaning: `adjective`; respelling: `kwod-ROO-plih-kit`; example: Is this order **quadruplicate** or
+    triplicate?
+  - `verb`; meaning: `verb`; respelling: `kwod-ROO-plih-kayt`; example: The clerk must **quadruplicate** each form.
 - **quintuplicate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: quintuplicates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: His **quintuplicate** report weighed a pound.
-  - `verb`; meaning: `verb`; example: Why **quintuplicate** a note this small?
+  - `adjective`; meaning: `adjective`; respelling: `kwin-TOO-plih-kit`; example: His **quintuplicate** report weighed a
+    pound.
+  - `verb`; meaning: `verb`; respelling: `kwin-TOO-plih-kayt`; example: Why **quintuplicate** a note this small?
 - **quote**; parts of speech: noun, verb; forms: quoted (verb), quotes, quoting (verb)
   - `noun`; example: End of **quote**. Repeat the line.
   - `verb`; example: He **quoted** a passage from the Bible.
@@ -1646,11 +1683,11 @@ shown in bold.
   - `noun`; example: Put our bags up on the **rack**.
   - `verb`; example: I'm **racking** my brain to remember.
 - **radiate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: radiates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The statue wore a **radiate** diadem.
-  - `verb`; meaning: `verb`; example: Wires **radiate** from the central hub.
+  - `adjective`; meaning: `adjective`; respelling: `RAY-dee-it`; example: The statue wore a **radiate** diadem.
+  - `verb`; meaning: `verb`; respelling: `RAY-dee-ayt`; example: Wires **radiate** from the central hub.
 - **ragged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: The old book had **ragged** pages.
-  - `verb`; meaning: `verb`; example: He **ragged** on the project all week.
+  - `adjective`; meaning: `adjective`; respelling: `RAG-id`; example: The old book had **ragged** pages.
+  - `verb`; meaning: `verb`; respelling: `ragd`; example: He **ragged** on the project all week.
 - **rain**; parts of speech: noun, verb; forms: rained (verb), raining (verb), rains
   - `noun`; example: She said that she liked **rain**.
   - `verb`; example: Why does it **rain** so much here?
@@ -1661,8 +1698,8 @@ shown in bold.
   - `noun`; example: The fruit is beyond my **reach**.
   - `verb`; example: We couldn't **reach** the initial goal.
 - **read**; parts of speech: verb; heteronym, meanings: past, present; forms: reads (verb present)
-  - `verb`; meaning: `past`; example: I **read** that book last summer.
-  - `verb`; meaning: `present`; example: Do you **read** the news online?
+  - `verb`; meaning: `past`; respelling: `red`; example: I **read** that book last summer.
+  - `verb`; meaning: `present`; respelling: `reed`; example: Do you **read** the news online?
 - **rear**; parts of speech: noun, verb; forms: reared (verb), rearing, rears
   - `noun`; example: He attacked me from the **rear**.
   - `verb`; example: He **reared** me in the country.
@@ -1671,257 +1708,259 @@ shown in bold.
   - `noun`; example: For some **reason** I can relate.
   - `verb`; example: Maybe I can **reason** with her.
 - **rebel**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rebels
-  - `noun`; meaning: `noun`; example: **Rebels** captured the town at dawn.
-  - `verb`; meaning: `verb`; example: The village could **rebel** at any moment.
+  - `noun`; meaning: `noun`; respelling: `REB-ul`; example: **Rebels** captured the town at dawn.
+  - `verb`; meaning: `verb`; respelling: `rih-BEL`; example: The village could **rebel** at any moment.
 - **rebid**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rebids
-  - `noun`; meaning: `noun`; example: The final **rebid** won the contract.
-  - `verb`; meaning: `verb`; example: We plan to **rebid** the roofing work.
+  - `noun`; meaning: `noun`; respelling: `REE-bid`; example: The final **rebid** won the contract.
+  - `verb`; meaning: `verb`; respelling: `ree-BID`; example: We plan to **rebid** the roofing work.
 - **reboot**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reboots
-  - `noun`; meaning: `noun`; example: A quick **reboot** fixed the problem.
-  - `verb`; meaning: `verb`; example: **Reboot** the phone and try again.
+  - `noun`; meaning: `noun`; respelling: `REE-boot`; example: A quick **reboot** fixed the problem.
+  - `verb`; meaning: `verb`; respelling: `ree-BOOT`; example: **Reboot** the phone and try again.
 - **rebore**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rebores
-  - `noun`; meaning: `noun`; example: The **rebore** job took a full week.
-  - `verb`; meaning: `verb`; example: You may need to **rebore** the block.
+  - `noun`; meaning: `noun`; respelling: `REE-bor`; example: The **rebore** job took a full week.
+  - `verb`; meaning: `verb`; respelling: `ree-BOR`; example: You may need to **rebore** the block.
 - **recall**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: recalls
-  - `noun`; meaning: `noun`; example: His **recall** of names is poor.
-  - `verb`; meaning: `verb`; example: Can you **recall** what she said?
+  - `noun`; meaning: `noun`; respelling: `REE-kawl`; example: His **recall** of names is poor.
+  - `verb`; meaning: `verb`; respelling: `rih-KAWL`; example: Can you **recall** what she said?
 - **recap**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: recapped (verb
   stress-last), recapping (verb stress-last), recaps
-  - `noun`; meaning: `stress-first`; example: Dmitri watches movie **recaps**.
-  - `verb`; meaning: `stress-last`; example: Please **recap** the most important points.
+  - `noun`; meaning: `stress-first`; respelling: `REE-kap`; example: Dmitri watches movie **recaps**.
+  - `verb`; meaning: `stress-last`; respelling: `ree-KAP`; example: Please **recap** the most important points.
 - **recess**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: recessed (verb
   stress-last), recesses, recessing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: She kept me in at **recess** and talked to me.
-  - `verb`; meaning: `stress-last`; example: After two hours of testimony the judge **recessed** the trial until the
-    following morning.
+  - `noun`; meaning: `stress-first`; respelling: `REE-ses`; example: She kept me in at **recess** and talked to me.
+  - `verb`; meaning: `stress-last`; respelling: `rih-SES`; example: After two hours of testimony the judge **recessed**
+    the trial until the following morning.
 - **recharge**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: recharges
-  - `noun`; meaning: `noun`; example: Each **recharge** lasts about a day.
-  - `verb`; meaning: `verb`; example: I need to **recharge** my phone.
+  - `noun`; meaning: `noun`; respelling: `REE-charj`; example: Each **recharge** lasts about a day.
+  - `verb`; meaning: `verb`; respelling: `ree-CHARJ`; example: I need to **recharge** my phone.
 - **recoil**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: recoils
-  - `noun`; meaning: `noun`; example: He felt a **recoil** of disgust.
-  - `verb`; meaning: `verb`; example: Why did he **recoil** at the idea?
+  - `noun`; meaning: `noun`; respelling: `REE-koyl`; example: He felt a **recoil** of disgust.
+  - `verb`; meaning: `verb`; respelling: `rih-KOYL`; example: Why did he **recoil** at the idea?
 - **record**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: records
-  - `noun`; meaning: `noun`; example: Her medical **record** lists two allergies.
-  - `verb`; meaning: `verb`; example: Did you **record** the show about the ocean?
+  - `noun`; meaning: `noun`; respelling: `REK-urd`; example: Her medical **record** lists two allergies.
+  - `verb`; meaning: `verb`; respelling: `rih-KORD`; example: Did you **record** the show about the ocean?
 - **recreate**; parts of speech: verb; heteronym, meanings: again, refresh; forms: recreated, recreates, recreating
-  - `verb`; meaning: `again`; example: I want to **recreate** my future.
-  - `verb`; meaning: `refresh`; example: Where was she **recreating** when the weather turned warm, at the beach or
-    somewhere in the mountains?
+  - `verb`; meaning: `again`; respelling: `ree-kree-AYT`; example: I want to **recreate** my future.
+  - `verb`; meaning: `refresh`; respelling: `REK-ree-ayt`; example: Where was she **recreating** when the weather turned
+    warm, at the beach or somewhere in the mountains?
 - **redial**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: redials
-  - `noun`; meaning: `noun`; example: Use **redial** if the call drops.
-  - `verb`; meaning: `verb`; example: Why does the modem **redial** so often?
+  - `noun`; meaning: `noun`; respelling: `REE-dy-ul`; example: Use **redial** if the call drops.
+  - `verb`; meaning: `verb`; respelling: `ree-DY-ul`; example: Why does the modem **redial** so often?
 - **redirect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: redirects
-  - `noun`; meaning: `noun`; example: Each **redirect** adds a small delay.
-  - `verb`; meaning: `verb`; example: Why does the page **redirect** twice?
+  - `noun`; meaning: `noun`; respelling: `REE-dih-rekt`; example: Each **redirect** adds a small delay.
+  - `verb`; meaning: `verb`; respelling: `ree-dih-REKT`; example: Why does the page **redirect** twice?
 - **redo**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: redoes (verb verb), redos (noun noun)
-  - `noun`; meaning: `noun`; example: Her haircut was a total **redo**.
-  - `verb`; meaning: `verb`; example: Can we **redo** the first scene?
+  - `noun`; meaning: `noun`; respelling: `REE-doo`; example: Her haircut was a total **redo**.
+  - `verb`; meaning: `verb`; respelling: `ree-DOO`; example: Can we **redo** the first scene?
 - **redraft**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: redrafts
-  - `noun`; meaning: `noun`; example: A quick **redraft** fixed the typos.
-  - `verb`; meaning: `verb`; example: Why does he **redraft** every email?
+  - `noun`; meaning: `noun`; respelling: `REE-draft`; example: A quick **redraft** fixed the typos.
+  - `verb`; meaning: `verb`; respelling: `ree-DRAFT`; example: Why does he **redraft** every email?
 - **refill**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refills
-  - `noun`; meaning: `noun`; example: Each **refill** lasts about a month.
-  - `verb`; meaning: `verb`; example: Why do I always **refill** the printer?
+  - `noun`; meaning: `noun`; respelling: `REE-fil`; example: Each **refill** lasts about a month.
+  - `verb`; meaning: `verb`; respelling: `ree-FIL`; example: Why do I always **refill** the printer?
 - **refit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refits
-  - `noun`; meaning: `noun`; example: Dry dock is booked for the **refit**.
-  - `verb`; meaning: `verb`; example: He **refits** the boots with new soles.
+  - `noun`; meaning: `noun`; respelling: `REE-fit`; example: Dry dock is booked for the **refit**.
+  - `verb`; meaning: `verb`; respelling: `ree-FIT`; example: He **refits** the boots with new soles.
 - **reform**; parts of speech: noun, verb; forms: reformed (verb), reforming (verb), reforms
   - `noun`; example: The time is ripe for a drastic **reform**.
   - `verb`; example: Don't try to **reform** everyone you meet.
 - **refresh**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refreshes
-  - `noun`; meaning: `noun`; example: A hard **refresh** cleared the cache.
-  - `verb`; meaning: `verb`; example: A cool drink will **refresh** you.
+  - `noun`; meaning: `noun`; respelling: `REE-fresh`; example: A hard **refresh** cleared the cache.
+  - `verb`; meaning: `verb`; respelling: `rih-FRESH`; example: A cool drink will **refresh** you.
 - **refund**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refunds
-  - `noun`; meaning: `noun`; example: I asked the store for a **refund**.
-  - `verb`; meaning: `verb`; example: Why won't the company **refund** me?
+  - `noun`; meaning: `noun`; respelling: `REE-fund`; example: I asked the store for a **refund**.
+  - `verb`; meaning: `verb`; respelling: `ree-FUND`; example: Why won't the company **refund** me?
 - **refuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refuses
-  - `noun`; meaning: `noun`; example: The smell of **refuse** filled the alley.
-  - `verb`; meaning: `verb`; example: I **refuse** to sign this paper.
+  - `noun`; meaning: `noun`; respelling: `REF-yoos`; example: The smell of **refuse** filled the alley.
+  - `verb`; meaning: `verb`; respelling: `rih-FYOOZ`; example: I **refuse** to sign this paper.
 - **regenerate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: regenerates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The poem describes a **regenerate** world.
-  - `verb`; meaning: `verb`; example: Some lizards can **regenerate** their tails.
+  - `adjective`; meaning: `adjective`; respelling: `rih-JEN-ur-it`; example: The poem describes a **regenerate** world.
+  - `verb`; meaning: `verb`; respelling: `rih-JEN-uh-rayt`; example: Some lizards can **regenerate** their tails.
 - **regift**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: regifts
-  - `noun`; meaning: `noun`; example: A thoughtful **regift** is no shame.
-  - `verb`; meaning: `verb`; example: We always **regift** the extra ties.
+  - `noun`; meaning: `noun`; respelling: `REE-gift`; example: A thoughtful **regift** is no shame.
+  - `verb`; meaning: `verb`; respelling: `ree-GIFT`; example: We always **regift** the extra ties.
 - **regiment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: regiments
-  - `noun`; meaning: `noun`; example: A cavalry **regiment** guarded the pass.
-  - `verb`; meaning: `verb`; example: The coach **regiments** the team's diet.
+  - `noun`; meaning: `noun`; respelling: `REJ-uh-munt`; example: A cavalry **regiment** guarded the pass.
+  - `verb`; meaning: `verb`; respelling: `REJ-uh-ment`; example: The coach **regiments** the team's diet.
 - **register**; parts of speech: noun, verb; forms: registered (verb), registering (verb), registerred (verb),
   registerring (verb), registers
   - `noun`; example: Yanni was waiting at the **register**.
   - `verb`; example: The thermometer **registers** 37 degrees Celsius.
 - **regress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: regresses
-  - `noun`; meaning: `noun`; example: This is not growth but **regress**.
-  - `verb`; meaning: `verb`; example: He tends to **regress** under stress.
+  - `noun`; meaning: `noun`; respelling: `REE-gres`; example: This is not growth but **regress**.
+  - `verb`; meaning: `verb`; respelling: `rih-GRES`; example: He tends to **regress** under stress.
 - **rehang**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rehangs
-  - `noun`; meaning: `noun`; example: The gallery closed for a **rehang**.
-  - `verb`; meaning: `verb`; example: I need to **rehang** this picture.
+  - `noun`; meaning: `noun`; respelling: `REE-hang`; example: The gallery closed for a **rehang**.
+  - `verb`; meaning: `verb`; respelling: `ree-HANG`; example: I need to **rehang** this picture.
 - **rehash**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rehashes
-  - `noun`; meaning: `noun`; example: Two hours of **rehash** left the committee exhausted.
-  - `verb`; meaning: `verb`; example: She **rehashes** the same joke at every meeting.
+  - `noun`; meaning: `noun`; respelling: `REE-hash`; example: Two hours of **rehash** left the committee exhausted.
+  - `verb`; meaning: `verb`; respelling: `ree-HASH`; example: She **rehashes** the same joke at every meeting.
 - **reheat**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reheats
-  - `noun`; meaning: `noun`; example: Pilots engaged the **reheat** for a short burst of speed.
-  - `verb`; meaning: `verb`; example: Don't **reheat** rice more than once.
+  - `noun`; meaning: `noun`; respelling: `REE-heet`; example: Pilots engaged the **reheat** for a short burst of speed.
+  - `verb`; meaning: `verb`; respelling: `ree-HEET`; example: Don't **reheat** rice more than once.
 - **reincarnate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: reincarnates (verb
   verb)
-  - `adjective`; meaning: `adjective`; example: Was the spirit truly **reincarnate** in that boy?
-  - `verb`; meaning: `verb`; example: Do you think we **reincarnate** after we die?
+  - `adjective`; meaning: `adjective`; respelling: `ree-in-KAR-nit`; example: Was the spirit truly **reincarnate** in
+    that boy?
+  - `verb`; meaning: `verb`; respelling: `ree-in-KAR-nayt`; example: Do you think we **reincarnate** after we die?
 - **reject**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rejects
-  - `noun`; meaning: `noun`; example: He felt like a **reject** at the new school.
-  - `verb`; meaning: `verb`; example: She **rejects** every suggestion I make.
+  - `noun`; meaning: `noun`; respelling: `REE-jekt`; example: He felt like a **reject** at the new school.
+  - `verb`; meaning: `verb`; respelling: `rih-JEKT`; example: She **rejects** every suggestion I make.
 - **relapse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: relapses
-  - `noun`; meaning: `noun`; example: The cancer's **relapse** came two years later.
-  - `verb`; meaning: `verb`; example: Her condition **relapses** every winter.
+  - `noun`; meaning: `noun`; respelling: `REE-laps`; example: The cancer's **relapse** came two years later.
+  - `verb`; meaning: `verb`; respelling: `rih-LAPS`; example: Her condition **relapses** every winter.
 - **relaunch**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: relaunches
-  - `noun`; meaning: `noun`; example: A **relaunch** of the magazine is planned for spring.
-  - `verb`; meaning: `verb`; example: **Relaunch** the browser to apply the update.
+  - `noun`; meaning: `noun`; respelling: `REE-lawnch`; example: A **relaunch** of the magazine is planned for spring.
+  - `verb`; meaning: `verb`; respelling: `ree-LAWNCH`; example: **Relaunch** the browser to apply the update.
 - **relay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: relays
-  - `noun`; meaning: `noun`; example: She ran the last leg of the **relay**.
-  - `verb`; meaning: `verb`; example: **Relay** this order to the night shift.
+  - `noun`; meaning: `noun`; respelling: `REE-lay`; example: She ran the last leg of the **relay**.
+  - `verb`; meaning: `verb`; respelling: `rih-LAY`; example: **Relay** this order to the night shift.
 - **relet**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: relets
-  - `noun`; meaning: `noun`; example: A **relet** often brings a higher rent.
-  - `verb`; meaning: `verb`; example: Can the council **relet** the vacant units?
+  - `noun`; meaning: `noun`; respelling: `REE-let`; example: A **relet** often brings a higher rent.
+  - `verb`; meaning: `verb`; respelling: `ree-LET`; example: Can the council **relet** the vacant units?
 - **remake**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remakes
-  - `noun`; meaning: `noun`; example: A **remake** in color made the story feel new.
-  - `verb`; meaning: `verb`; example: Hollywood loves to **remake** foreign hits.
+  - `noun`; meaning: `noun`; respelling: `REE-mayk`; example: A **remake** in color made the story feel new.
+  - `verb`; meaning: `verb`; respelling: `ree-MAYK`; example: Hollywood loves to **remake** foreign hits.
 - **remit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remits
-  - `noun`; meaning: `noun`; example: That decision is beyond my **remit**.
-  - `verb`; meaning: `verb`; example: They may **remit** the debt if you apply.
+  - `noun`; meaning: `noun`; respelling: `REE-mit`; example: That decision is beyond my **remit**.
+  - `verb`; meaning: `verb`; respelling: `rih-MIT`; example: They may **remit** the debt if you apply.
 - **remold**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remolds
-  - `noun`; meaning: `noun`; example: The old **remold** blew out on the highway.
-  - `verb`; meaning: `verb`; example: They **remold** the casing with fresh rubber.
+  - `noun`; meaning: `noun`; respelling: `REE-mohld`; example: The old **remold** blew out on the highway.
+  - `verb`; meaning: `verb`; respelling: `ree-MOHLD`; example: They **remold** the casing with fresh rubber.
 - **remould**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remoulds
-  - `noun`; meaning: `noun`; example: He inspected the **remould** for cracks.
-  - `verb`; meaning: `verb`; example: She **remoulds** old candles into new ones.
+  - `noun`; meaning: `noun`; respelling: `REE-mohld`; example: He inspected the **remould** for cracks.
+  - `verb`; meaning: `verb`; respelling: `ree-MOHLD`; example: She **remoulds** old candles into new ones.
 - **remount**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remounts
-  - `noun`; meaning: `noun`; example: A **remount** stood ready behind the lines.
-  - `verb`; meaning: `verb`; example: He **remounts** his horse and rides on.
+  - `noun`; meaning: `noun`; respelling: `REE-mount`; example: A **remount** stood ready behind the lines.
+  - `verb`; meaning: `verb`; respelling: `ree-MOUNT`; example: He **remounts** his horse and rides on.
 - **rent**; parts of speech: noun, verb; forms: rented (verb), renting (verb), rents
   - `noun`; example: I hope the **rent** is reasonable.
   - `verb`; example: I **rented** a tux for a wedding.
 - **renunciate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: renunciates
-  - `noun`; meaning: `noun`; example: He lived as a **renunciate** for twenty years.
-  - `verb`; meaning: `verb`; example: Do you **renunciate** your former loyalties?
+  - `noun`; meaning: `noun`; respelling: `rih-NUN-see-it`; example: He lived as a **renunciate** for twenty years.
+  - `verb`; meaning: `verb`; respelling: `rih-NUN-see-ayt`; example: Do you **renunciate** your former loyalties?
 - **replay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: replays
-  - `noun`; meaning: `noun`; example: The **replay** proved the umpire wrong.
-  - `verb`; meaning: `verb`; example: **Replay** the clip in slow motion.
+  - `noun`; meaning: `noun`; respelling: `REE-play`; example: The **replay** proved the umpire wrong.
+  - `verb`; meaning: `verb`; respelling: `ree-PLAY`; example: **Replay** the clip in slow motion.
 - **replicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: replicates
-  - `noun`; meaning: `noun`; example: Every **replicate** was run on a separate plate.
-  - `verb`; meaning: `verb`; example: Other labs hope to **replicate** the finding.
+  - `noun`; meaning: `noun`; respelling: `REP-lih-kit`; example: Every **replicate** was run on a separate plate.
+  - `verb`; meaning: `verb`; respelling: `REP-lih-kayt`; example: Other labs hope to **replicate** the finding.
 - **repost**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reposts
-  - `noun`; meaning: `noun`; example: Every **repost** spread the rumor further.
-  - `verb`; meaning: `verb`; example: **Repost** the photo if you enjoyed it.
+  - `noun`; meaning: `noun`; respelling: `REE-pohst`; example: Every **repost** spread the rumor further.
+  - `verb`; meaning: `verb`; respelling: `ree-POHST`; example: **Repost** the photo if you enjoyed it.
 - **reprimand**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: reprimanded (verb
   stress-last), reprimanding (verb stress-last), reprimands
-  - `noun`; meaning: `stress-first`; example: We'll get off with a **reprimand**.
-  - `verb`; meaning: `stress-last`; example: The director **reprimanded** you.
+  - `noun`; meaning: `stress-first`; respelling: `REP-ruh-mand`; example: We'll get off with a **reprimand**.
+  - `verb`; meaning: `stress-last`; respelling: `rep-ruh-MAND`; example: The director **reprimanded** you.
 - **reprint**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reprints
-  - `noun`; meaning: `noun`; example: Each **reprint** sold out within days.
-  - `verb`; meaning: `verb`; example: **Reprint** the form on thicker paper.
+  - `noun`; meaning: `noun`; respelling: `REE-print`; example: Each **reprint** sold out within days.
+  - `verb`; meaning: `verb`; respelling: `ree-PRINT`; example: **Reprint** the form on thicker paper.
 - **request**; parts of speech: noun, verb; forms: requested (verb), requesting (verb), requests
   - `noun`; example: He flatly turned down our **request**.
   - `verb`; example: It was not Tom who **requested** that I do this.
 - **reread**; parts of speech: verb; heteronym, meanings: past, present; forms: rereads (verb present)
-  - `verb`; meaning: `past`; example: I **reread** that novel twice last summer.
-  - `verb`; meaning: `present`; example: She never **rereads** her own texts.
+  - `verb`; meaning: `past`; respelling: `ree-RED`; example: I **reread** that novel twice last summer.
+  - `verb`; meaning: `present`; respelling: `ree-REED`; example: She never **rereads** her own texts.
 - **rerelease**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rereleases
-  - `noun`; meaning: `noun`; example: Both **rereleases** sold out in a day.
-  - `verb`; meaning: `verb`; example: He hopes to **rerelease** his debut record.
+  - `noun`; meaning: `noun`; respelling: `REE-rih-lees`; example: Both **rereleases** sold out in a day.
+  - `verb`; meaning: `verb`; respelling: `ree-rih-LEES`; example: He hopes to **rerelease** his debut record.
 - **rerun**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reruns
-  - `noun`; meaning: `noun`; example: Summer television is full of **reruns**.
-  - `verb`; meaning: `verb`; example: We had to **rerun** the whole analysis.
+  - `noun`; meaning: `noun`; respelling: `REE-run`; example: Summer television is full of **reruns**.
+  - `verb`; meaning: `verb`; respelling: `ree-RUN`; example: We had to **rerun** the whole analysis.
 - **reserve**; parts of speech: noun, verb; forms: reserved (verb), reserves, reserving (verb)
   - `noun`; example: Ziri went to a nature **reserve**.
   - `verb`; example: He **reserved** a table at the restaurant.
 - **reset**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: resets, resetting (verb
   stress-last)
-  - `noun`; meaning: `stress-first`; example: Did you press the **reset** button?
-  - `verb`; meaning: `stress-last`; example: You need to **reset** your password.
+  - `noun`; meaning: `stress-first`; respelling: `REE-set`; example: Did you press the **reset** button?
+  - `verb`; meaning: `stress-last`; respelling: `ree-SET`; example: You need to **reset** your password.
 - **reshuffle**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reshuffles
-  - `noun`; meaning: `noun`; example: A bold **reshuffle** may save the government.
-  - `verb`; meaning: `verb`; example: **Reshuffle** the deck and try again.
+  - `noun`; meaning: `noun`; respelling: `REE-shuf-ul`; example: A bold **reshuffle** may save the government.
+  - `verb`; meaning: `verb`; respelling: `ree-SHUF-ul`; example: **Reshuffle** the deck and try again.
 - **resign**; parts of speech: verb; heteronym, meanings: quit, sign-again; forms: re-sign (verb sign-again), re-signed
   (verb sign-again), re-signing (verb sign-again), re-signs (verb sign-again), resigned (verb quit), resigning (verb
   quit), resigns
-  - `verb`; meaning: `quit`; example: I wish Tom would just **resign**.
-  - `verb`; meaning: `sign-again`; example: March 11: The Storm **re-signed** Lauren Jackson.
+  - `verb`; meaning: `quit`; respelling: `rih-ZYNE`; example: I wish Tom would just **resign**.
+  - `verb`; meaning: `sign-again`; respelling: `ree-SYNE`; example: March 11: The Storm **re-signed** Lauren Jackson.
 - **resit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resits
-  - `noun`; meaning: `noun`; example: The student dreaded the **resit**.
-  - `verb`; meaning: `verb`; example: He hopes to **resit** in the spring.
+  - `noun`; meaning: `noun`; respelling: `REE-sit`; example: The student dreaded the **resit**.
+  - `verb`; meaning: `verb`; respelling: `ree-SIT`; example: He hopes to **resit** in the spring.
 - **resort**; parts of speech: noun, verb; forms: resorted (verb), resorting (verb), resorts
   - `noun`; example: Use this key as a last **resort**.
   - `verb`; example: We should not **resort** to violence.
 - **respawn**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: respawns
-  - `noun`; meaning: `noun`; example: Each **respawn** restores full health.
-  - `verb`; meaning: `verb`; example: **Respawn** at the base and heal up.
+  - `noun`; meaning: `noun`; respelling: `REE-spawn`; example: Each **respawn** restores full health.
+  - `verb`; meaning: `verb`; respelling: `ree-SPAWN`; example: **Respawn** at the base and heal up.
 - **respect**; parts of speech: noun, verb; forms: respected (verb), respecting (verb), respects
   - `noun`; example: He has no **respect** for his parents.
   - `verb`; example: Privacy should be **respected** by all.
 - **respray**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resprays
-  - `noun`; meaning: `noun`; example: A bright red **respray** hid the rust.
-  - `verb`; meaning: `verb`; example: He **resprays** old bikes and sells them.
+  - `noun`; meaning: `noun`; respelling: `REE-spray`; example: A bright red **respray** hid the rust.
+  - `verb`; meaning: `verb`; respelling: `ree-SPRAY`; example: He **resprays** old bikes and sells them.
 - **restart**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: restarts
-  - `noun`; meaning: `noun`; example: The race **restart** was chaotic.
-  - `verb`; meaning: `verb`; example: Let's **restart** from chapter one.
+  - `noun`; meaning: `noun`; respelling: `REE-start`; example: The race **restart** was chaotic.
+  - `verb`; meaning: `verb`; respelling: `ree-START`; example: Let's **restart** from chapter one.
 - **restyle**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: restyles
-  - `noun`; meaning: `noun`; example: **Restyle** of the old sofa took a week.
-  - `verb`; meaning: `verb`; example: We might **restyle** the logo next year.
+  - `noun`; meaning: `noun`; respelling: `REE-stighl`; example: **Restyle** of the old sofa took a week.
+  - `verb`; meaning: `verb`; respelling: `ree-STIGHL`; example: We might **restyle** the logo next year.
 - **result**; parts of speech: noun, verb; forms: resulted (verb), resulting (verb), results
   - `noun`; example: Are you pleased with the **results**?
   - `verb`; example: Her diet **resulted** in weight loss.
 - **resume**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resumes
-  - `noun`; meaning: `noun`; example: I updated my **resume** last night.
-  - `verb`; meaning: `verb`; example: The talks **resume** after lunch.
+  - `noun`; meaning: `noun`; respelling: `REZ-oo-may`; example: I updated my **resume** last night.
+  - `verb`; meaning: `verb`; respelling: `rih-ZOOM`; example: The talks **resume** after lunch.
 - **retake**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: retakes
-  - `noun`; meaning: `noun`; example: A late **retake** saved the project.
-  - `verb`; meaning: `verb`; example: He did not **retake** the class.
+  - `noun`; meaning: `noun`; respelling: `REE-tayk`; example: A late **retake** saved the project.
+  - `verb`; meaning: `verb`; respelling: `ree-TAYK`; example: He did not **retake** the class.
 - **retard**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: retards
-  - `noun`; meaning: `noun`; example: The dial showed a ten-degree **retard**.
-  - `verb`; meaning: `verb`; example: Does lack of sleep **retard** recovery?
+  - `noun`; meaning: `noun`; respelling: `REE-tard`; example: The dial showed a ten-degree **retard**.
+  - `verb`; meaning: `verb`; respelling: `rih-TARD`; example: Does lack of sleep **retard** recovery?
 - **retest**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: retests
-  - `noun`; meaning: `noun`; example: A **retest** of the brakes is mandatory.
-  - `verb`; meaning: `verb`; example: She **retests** each batch to be sure.
+  - `noun`; meaning: `noun`; respelling: `REE-test`; example: A **retest** of the brakes is mandatory.
+  - `verb`; meaning: `verb`; respelling: `ree-TEST`; example: She **retests** each batch to be sure.
 - **rethink**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rethinks
-  - `noun`; meaning: `noun`; example: The coach's **rethink** brought a win.
-  - `verb`; meaning: `verb`; example: She **rethinks** every decision twice.
+  - `noun`; meaning: `noun`; respelling: `REE-thingk`; example: The coach's **rethink** brought a win.
+  - `verb`; meaning: `verb`; respelling: `ree-THINGK`; example: She **rethinks** every decision twice.
 - **reticulate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: reticulates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Her shawl was lacy and **reticulate**.
-  - `verb`; meaning: `verb`; example: The roots **reticulate** beneath the soil.
+  - `adjective`; meaning: `adjective`; respelling: `rih-TIK-yuh-lit`; example: Her shawl was lacy and **reticulate**.
+  - `verb`; meaning: `verb`; respelling: `rih-TIK-yuh-layt`; example: The roots **reticulate** beneath the soil.
 - **retread**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: retreads
-  - `noun`; meaning: `noun`; example: A **retread** blew out on the highway.
-  - `verb`; meaning: `verb`; example: He did not **retread** the worn casing.
+  - `noun`; meaning: `noun`; respelling: `REE-tred`; example: A **retread** blew out on the highway.
+  - `verb`; meaning: `verb`; respelling: `ree-TRED`; example: He did not **retread** the worn casing.
 - **retreat**; parts of speech: noun, verb; forms: retreated (verb), retreating (verb), retreats
   - `noun`; example: The balcony was Ziri’s peaceful **retreat**.
   - `verb`; example: You have gone too far to **retreat**.
 - **retrofit**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: retrofits,
   retrofitted (verb stress-last), retrofitting (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Tom refused to allow the robot to return a change in the **retrofit**
-    frame.
-  - `verb`; meaning: `stress-last`; example: It is going to be **retrofitted** into a wood-fired power station.
+  - `noun`; meaning: `stress-first`; respelling: `RET-roh-fit`; example: Tom refused to allow the robot to return a
+    change in the **retrofit** frame.
+  - `verb`; meaning: `stress-last`; respelling: `ret-roh-FIT`; example: It is going to be **retrofitted** into a
+    wood-fired power station.
 - **return**; parts of speech: noun, verb; forms: returned (verb), returning (verb), returns
   - `noun`; example: A service requires a service in **return**.
   - `verb`; example: He always asks when you will **return**.
 - **reuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reuses
-  - `noun`; meaning: `noun`; example: Water **reuse** is vital in dry regions.
-  - `verb`; meaning: `verb`; example: He did not **reuse** his password.
+  - `noun`; meaning: `noun`; respelling: `ree-YOOS`; example: Water **reuse** is vital in dry regions.
+  - `verb`; meaning: `verb`; respelling: `ree-YOOZ`; example: He did not **reuse** his password.
 - **revamp**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: revamps
-  - `noun`; meaning: `noun`; example: The mall's **revamp** added a food court.
-  - `verb`; meaning: `verb`; example: He wants to **revamp** his résumé.
+  - `noun`; meaning: `noun`; respelling: `REE-vamp`; example: The mall's **revamp** added a food court.
+  - `verb`; meaning: `verb`; respelling: `ree-VAMP`; example: He wants to **revamp** his résumé.
 - **revert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reverts
-  - `noun`; meaning: `noun`; example: The **revert** was merged within an hour.
-  - `verb`; meaning: `verb`; example: Please **revert** the last change.
+  - `noun`; meaning: `noun`; respelling: `REE-vurt`; example: The **revert** was merged within an hour.
+  - `verb`; meaning: `verb`; respelling: `rih-VURT`; example: Please **revert** the last change.
 - **reward**; parts of speech: noun, verb; forms: rewarded (verb), rewarding (verb), rewards
   - `noun`; example: A good deed is its own **reward**.
   - `verb`; example: I was well **rewarded** for my efforts.
 - **rewatch**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rewatches
-  - `noun`; meaning: `noun`; example: A second **rewatch** changed my opinion.
-  - `verb`; meaning: `verb`; example: I might **rewatch** that documentary.
+  - `noun`; meaning: `noun`; respelling: `REE-wach`; example: A second **rewatch** changed my opinion.
+  - `verb`; meaning: `verb`; respelling: `ree-WACH`; example: I might **rewatch** that documentary.
 - **rewind**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rewinds
-  - `noun`; meaning: `noun`; example: A long **rewind** wasted our time.
-  - `verb`; meaning: `verb`; example: He did not **rewind** the cassette.
+  - `noun`; meaning: `noun`; respelling: `REE-wighnd`; example: A long **rewind** wasted our time.
+  - `verb`; meaning: `verb`; respelling: `ree-WIGHND`; example: He did not **rewind** the cassette.
 - **rewrite**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rewrites
-  - `noun`; meaning: `noun`; example: The code needs a total **rewrite**.
-  - `verb`; meaning: `verb`; example: She did not **rewrite** the speech.
+  - `noun`; meaning: `noun`; respelling: `REE-right`; example: The code needs a total **rewrite**.
+  - `verb`; meaning: `verb`; respelling: `ree-RIGHT`; example: She did not **rewrite** the speech.
 - **ride**; parts of speech: noun, verb; forms: ridden (verb), rided (verb), rides, riding (verb), rode (verb)
   - `noun`; example: This is going to be a long bus **ride**.
   - `verb`; example: Have you ever **ridden** a mule?
@@ -1939,19 +1978,20 @@ shown in bold.
   - `verb`; example: A single tear **rolled** down her cheek.
 - **romance**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: romanced (verb
   stress-last), romances, romancing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: What a **romance** it had all been!
-  - `verb`; meaning: `stress-last`; example: The count set out to **romance** the heiress at every ball of the season.
+  - `noun`; meaning: `stress-first`; respelling: `ROH-mans`; example: What a **romance** it had all been!
+  - `verb`; meaning: `stress-last`; respelling: `roh-MANS`; example: The count set out to **romance** the heiress at
+    every ball of the season.
 - **root**; parts of speech: noun, verb; forms: rooted (verb), rooting (verb), roots
   - `noun`; example: The tree **roots** are warping the pavement.
   - `verb`; example: We were all **rooting** for her.
-- **row**; parts of speech: noun, verb; heteronym, meanings: argument, line, paddle; no other forms
-  - `noun`; meaning: `argument`; example: A bitter **row** split the committee.
-  - `noun`; meaning: `line`; example: Add up the numbers in each **row**.
-  - `verb`; meaning: `paddle`; example: **Row** the boat toward the island.
-- **rows**; parts of speech: noun, verb; heteronym, meanings: argument, line, paddle; no other forms
-  - `noun`; meaning: `argument`; example: Those noisy **rows** had to stop.
-  - `noun`; meaning: `line`; example: The tulips grew in straight **rows**.
-  - `verb`; meaning: `paddle`; example: Solo woman **rows** the Atlantic: Part 1
+- **row**; parts of speech: noun, verb; heteronym, meanings: rhymes-cow, rhymes-go; no other forms
+  - `noun`; meaning: `rhymes-cow`; respelling: `rou`; example: A bitter **row** split the committee.
+  - `noun`; meaning: `rhymes-go`; respelling: `roh`; example: Add up the numbers in each **row**.
+  - `verb`; meaning: `rhymes-go`; respelling: `roh`; example: **Row** the boat toward the island.
+- **rows**; parts of speech: noun, verb; heteronym, meanings: argument, line; no other forms
+  - `noun`; meaning: `argument`; respelling: `rouz`; example: Those noisy **rows** had to stop.
+  - `noun`; meaning: `line`; respelling: `rohz`; example: The tulips grew in straight **rows**.
+  - `verb`; meaning: `line`; respelling: `rohz`; example: Solo woman **rows** the Atlantic: Part 1
 - **ruin**; parts of speech: noun, verb; forms: ruined (verb), ruining (verb), ruins
   - `noun`; example: The war left the city in **ruins**.
   - `verb`; example: My old tools were **ruined** by rust.
@@ -1965,8 +2005,8 @@ shown in bold.
   - `noun`; example: A gust of wind swelled the **sails**.
   - `verb`; example: The ship **sailed** into the storm.
 - **saturate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: saturates
-  - `noun`; meaning: `noun`; example: Is a fully hydrogenated oil really a **saturate**?
-  - `verb`; meaning: `verb`; example: Gently **saturate** the bandage with clean water.
+  - `noun`; meaning: `noun`; respelling: `SACH-uh-rit`; example: Is a fully hydrogenated oil really a **saturate**?
+  - `verb`; meaning: `verb`; respelling: `SACH-uh-rayt`; example: Gently **saturate** the bandage with clean water.
 - **schedule**; parts of speech: noun, verb; forms: scheduled (verb), schedules, scheduling (verb)
   - `noun`; example: I often have a busy **schedule**.
   - `verb`; example: When was the trip **scheduled** to happen?
@@ -1994,17 +2034,18 @@ shown in bold.
   - `verb`; example: You are **seated** between Tom and John.
 - **second**; parts of speech: noun, verb, adjective; heteronym, meanings: ordinal, secondment; forms: seconded (verb
   ordinal), seconding (verb ordinal), seconds (noun ordinal, verb ordinal)
-  - `noun`; meaning: `ordinal`; example: Impressions are formed in **seconds**.
-  - `adjective`; meaning: `ordinal`; example: The director has asked the board to nominate him for a **second** term.
-  - `verb`; meaning: `ordinal`; example: The motion is proposed and **seconded**.
-  - `verb`; meaning: `secondment`; example: I was **seconded** from the sales department to the new project team and
-    given a desk on the fourth floor.
+  - `noun`; meaning: `ordinal`; respelling: `SEK-und`; example: Impressions are formed in **seconds**.
+  - `adjective`; meaning: `ordinal`; respelling: `SEK-und`; example: The director has asked the board to nominate him
+    for a **second** term.
+  - `verb`; meaning: `ordinal`; respelling: `SEK-und`; example: The motion is proposed and **seconded**.
+  - `verb`; meaning: `secondment`; respelling: `sih-KOND`; example: I was **seconded** from the sales department to the
+    new project team and given a desk on the fourth floor.
 - **segment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: segments
-  - `noun`; meaning: `noun`; example: She peeled the orange and ate one **segment**.
-  - `verb`; meaning: `verb`; example: We need to **segment** the customers by age.
+  - `noun`; meaning: `noun`; respelling: `SEG-munt`; example: She peeled the orange and ate one **segment**.
+  - `verb`; meaning: `verb`; respelling: `SEG-ment`; example: We need to **segment** the customers by age.
 - **segregate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: segregated (verb verb), segregates
-  - `noun`; meaning: `noun`; example: Every **segregate** was grown in a separate pot.
-  - `verb`; meaning: `verb`; example: Do not **segregate** the data by gender.
+  - `noun`; meaning: `noun`; respelling: `SEG-rih-git`; example: Every **segregate** was grown in a separate pot.
+  - `verb`; meaning: `verb`; respelling: `SEG-rih-gayt`; example: Do not **segregate** the data by gender.
 - **sense**; parts of speech: noun, verb; forms: sensed (verb), senses, sensing (verb)
   - `noun`; example: She is lacking in **sense** of beauty.
   - `verb`; example: Tom **sensed** he'd hit a nerve.
@@ -2012,15 +2053,15 @@ shown in bold.
   - `noun`; example: There is an error in the **sentence**.
   - `verb`; example: He was **sentenced** to life in prison.
 - **separate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: separates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Each child has a **separate** room.
-  - `verb`; meaning: `verb`; example: Scientists **separate** the cells by size.
+  - `adjective`; meaning: `adjective`; respelling: `SEP-ur-it`; example: Each child has a **separate** room.
+  - `verb`; meaning: `verb`; respelling: `SEP-uh-rayt`; example: Scientists **separate** the cells by size.
 - **seriate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: seriates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The teeth appear very **seriate** in the jaw.
-  - `verb`; meaning: `verb`; example: Can you **seriate** these tools by their form?
+  - `adjective`; meaning: `adjective`; respelling: `SEER-ee-it`; example: The teeth appear very **seriate** in the jaw.
+  - `verb`; meaning: `verb`; respelling: `SEER-ee-ayt`; example: Can you **seriate** these tools by their form?
 - **sewer**; parts of speech: noun; heteronym, meanings: drain, sews; forms: sewers
-  - `noun`; meaning: `drain`; example: Some one has passed through the **sewer**.
-  - `noun`; meaning: `sews`; example: The tailor hired a new **sewer** to take in the hems and sew buttons onto the
-    coats.
+  - `noun`; meaning: `drain`; respelling: `SOO-ur`; example: Some one has passed through the **sewer**.
+  - `noun`; meaning: `sews`; respelling: `SOH-ur`; example: The tailor hired a new **sewer** to take in the hems and sew
+    buttons onto the coats.
 - **shake**; parts of speech: noun, verb; forms: shaked (verb), shaken (verb), shakes, shaking (verb), shook (verb)
   - `noun`; example: Do fries go with that **shake**?
   - `verb`; example: His body was **shaking** in anger.
@@ -2041,9 +2082,10 @@ shown in bold.
   - `verb`; example: Tom has been **showing** a lot of promise.
 - **shower**; parts of speech: noun, verb; heteronym, meanings: rain, shows; forms: showered (verb rain), showering
   (verb rain), showers (noun rain, verb rain)
-  - `noun`; meaning: `rain`; example: Can I get my stitches wet in the bath or **shower**?
-  - `noun`; meaning: `shows`; example: I am no **shower** of my feelings, so you will rarely see me weep in public.
-  - `verb`; meaning: `rain`; example: I usually **shower** before bed.
+  - `noun`; meaning: `rain`; respelling: `SHOW-ur`; example: Can I get my stitches wet in the bath or **shower**?
+  - `noun`; meaning: `shows`; respelling: `SHOH-ur`; example: I am no **shower** of my feelings, so you will rarely see
+    me weep in public.
+  - `verb`; meaning: `rain`; respelling: `SHOW-ur`; example: I usually **shower** before bed.
 - **side**; parts of speech: noun, verb; forms: sided (verb), sides, siding (verb)
   - `noun`; example: On which **side** do I have to put the fork?
   - `verb`; example: Why are you **siding** with him?
@@ -2060,8 +2102,9 @@ shown in bold.
   - `noun`; example: You may as well forgive his **sins**.
   - `verb`; example: We **sin** a lot, but we enjoy it.
 - **situate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: situates (verb verb)
-  - `adjective`; meaning: `adjective`; example: A farm **situate** in the valley changed hands.
-  - `verb`; meaning: `verb`; example: Carefully **situate** the tent on level ground.
+  - `adjective`; meaning: `adjective`; respelling: `SICH-oo-it`; example: A farm **situate** in the valley changed
+    hands.
+  - `verb`; meaning: `verb`; respelling: `SICH-oo-ayt`; example: Carefully **situate** the tent on level ground.
 - **skate**; parts of speech: noun, verb; forms: skated (verb), skates, skating
   - `noun`; example: I've got to get my **skates** on.
   - `verb`; example: It is difficult for me to **skate**.
@@ -2076,9 +2119,11 @@ shown in bold.
   - `verb`; example: I'll let it **slide** this time.
 - **slough**; parts of speech: noun, verb; heteronym, meanings: shed, swamp; forms: sloughed (verb shed), sloughing
   (verb shed), sloughs (verb shed, noun swamp)
-  - `verb`; meaning: `shed`; example: The wound slowly **sloughed** the dead tissue as new skin formed beneath it.
-  - `noun`; meaning: `shed`; example: A thin, dry **slough** peeled from his sunburned shoulder in the shower.
-  - `noun`; meaning: `swamp`; example: The name of the **slough** was Despond." - BUNYAN.
+  - `verb`; meaning: `shed`; respelling: `sluf`; example: The wound slowly **sloughed** the dead tissue as new skin
+    formed beneath it.
+  - `noun`; meaning: `shed`; respelling: `sluf`; example: A thin, dry **slough** peeled from his sunburned shoulder in
+    the shower.
+  - `noun`; meaning: `swamp`; respelling: `sloo`; example: The name of the **slough** was Despond." - BUNYAN.
 - **smell**; parts of speech: noun, verb; forms: smelled (verb), smelling (verb), smells
   - `noun`; example: I like the **smell** of old books.
   - `verb`; example: You **smell** like a rotten egg.
@@ -2089,8 +2134,8 @@ shown in bold.
   - `noun`; example: It was the **snap** of the whip.
   - `verb`; example: I'm sorry for **snapping** at you.
 - **sophisticate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: sophisticates
-  - `noun`; meaning: `noun`; example: The novel's hero is a jaded **sophisticate**.
-  - `verb`; meaning: `verb`; example: Time and money can **sophisticate** any hobby.
+  - `noun`; meaning: `noun`; respelling: `suh-FIS-tih-kit`; example: The novel's hero is a jaded **sophisticate**.
+  - `verb`; meaning: `verb`; respelling: `suh-FIS-tih-kayt`; example: Time and money can **sophisticate** any hobby.
 - **sort**; parts of speech: noun, verb; forms: sorted (verb), sorting (verb), sorts
   - `noun`; example: What **sort** of infection is this?
   - `verb`; example: It took a while to **sort** things out.
@@ -2098,8 +2143,8 @@ shown in bold.
   - `noun`; example: I like the **sound** of that bell!
   - `verb`; example: It kinda **sounds** like a scam.
 - **sow**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: sows
-  - `noun`; meaning: `noun`; example: The pen held two **sows** and a boar.
-  - `verb`; meaning: `verb`; example: Farmers **sow** wheat in the fall.
+  - `noun`; meaning: `noun`; respelling: `sou`; example: The pen held two **sows** and a boar.
+  - `verb`; meaning: `verb`; respelling: `soh`; example: Farmers **sow** wheat in the fall.
 - **spark**; parts of speech: noun, verb; forms: sparked (verb), sparking (verb), sparks
   - `noun`; example: There was a tiny **spark** in the east.
   - `verb`; example: Mixing things up can **spark** creativity.
@@ -2171,49 +2216,51 @@ shown in bold.
   - `noun`; example: Campanology is the **study** of bells.
   - `verb`; example: The more you **study**, the better.
 - **subject**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: subjects
-  - `noun`; meaning: `noun`; example: The **subject** of the email was missing.
-  - `verb`; meaning: `verb`; example: Do not **subject** young children to loud noise.
+  - `noun`; meaning: `noun`; respelling: `SUB-jekt`; example: The **subject** of the email was missing.
+  - `verb`; meaning: `verb`; respelling: `sub-JEKT`; example: Do not **subject** young children to loud noise.
 - **sublease**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: subleases
-  - `noun`; meaning: `noun`; example: Our **sublease** runs through December.
-  - `verb`; meaning: `verb`; example: They **sublease** the shop to a florist.
+  - `noun`; meaning: `noun`; respelling: `SUB-lees`; example: Our **sublease** runs through December.
+  - `verb`; meaning: `verb`; respelling: `sub-LEES`; example: They **sublease** the shop to a florist.
 - **submarine**; parts of speech: noun, adjective; heteronym, meanings: stress-last, stress-first; forms: submarines
   (noun stress-first)
-  - `adjective`; meaning: `stress-last`; example: I said that the **submarine** crater threw up lava, but no flames.
-  - `noun`; meaning: `stress-first`; example: Does Algeria need **submarines**?
+  - `adjective`; meaning: `stress-last`; respelling: `sub-muh-REEN`; example: I said that the **submarine** crater threw
+    up lava, but no flames.
+  - `noun`; meaning: `stress-first`; respelling: `SUB-muh-reen`; example: Does Algeria need **submarines**?
 - **subordinate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: subordinates
-  - `noun`; meaning: `noun`; example: She is my **subordinate**, not my equal.
-  - `verb`; meaning: `verb`; example: Do not **subordinate** safety to speed.
+  - `noun`; meaning: `noun`; respelling: `suh-BOR-dih-nit`; example: She is my **subordinate**, not my equal.
+  - `verb`; meaning: `verb`; respelling: `suh-BOR-dih-nayt`; example: Do not **subordinate** safety to speed.
 - **substitute**; parts of speech: noun, verb; forms: substituted (verb), substitutes, substituting (verb)
   - `noun`; example: Perhaps we could find a **substitute**.
   - `verb`; example: He was **substituted** for his father.
 - **suffix**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: suffixed (verb
   stress-last), suffixes, suffixing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: The -s was reanalyzed as a plural **suffix**.
-  - `verb`; meaning: `stress-last`; example: She **suffixed** the product code with a letter to show the color, so red
-    items ended with R.
+  - `noun`; meaning: `stress-first`; respelling: `SUF-iks`; example: The -s was reanalyzed as a plural **suffix**.
+  - `verb`; meaning: `stress-last`; respelling: `suh-FIKS`; example: She **suffixed** the product code with a letter to
+    show the color, so red items ended with R.
 - **suit**; parts of speech: noun, verb; forms: suited (verb), suiting (verb), suits
   - `noun`; example: Logic is not his strong **suit**.
   - `verb`; example: Which day **suits** you this week?
 - **supplement**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: supplements
-  - `noun`; meaning: `noun`; example: Is this **supplement** safe for children?
-  - `verb`; meaning: `verb`; example: Photos **supplement** the text nicely.
+  - `noun`; meaning: `noun`; respelling: `SUP-luh-munt`; example: Is this **supplement** safe for children?
+  - `verb`; meaning: `verb`; respelling: `SUP-luh-ment`; example: Photos **supplement** the text nicely.
 - **supply**; parts of speech: noun, verb; forms: supplied (verb), supplies, supplying (verb)
   - `noun`; example: Tom is high on his own **supply**.
   - `verb`; example: That store **supplies** us with coffee.
 - **supposed**; parts of speech: verb, adjective; heteronym, meanings: voiced, unvoiced; forms: supposedly (adjective
   voiced), supposes (verb voiced), supposing (verb voiced)
-  - `adjective`; meaning: `voiced`; example: Not like her mother and not like her (**supposed**) father.
-  - `verb`; meaning: `voiced`; example: "Harder than I could have **supposed** you would be."
-  - `adjective`; meaning: `unvoiced`; example: How was I **supposed** to help Tom?
+  - `adjective`; meaning: `voiced`; respelling: `suh-POHZD`; example: Not like her mother and not like her
+    (**supposed**) father.
+  - `verb`; meaning: `voiced`; respelling: `suh-POHZD`; example: "Harder than I could have **supposed** you would be."
+  - `adjective`; meaning: `unvoiced`; respelling: `suh-POHST`; example: How was I **supposed** to help Tom?
 - **surprise**; parts of speech: noun, verb; forms: surprised (verb), surprises, surprising (verb)
   - `noun`; example: The book is full of **surprises**.
   - `verb`; example: We were **surprised** by the big lion.
 - **survey**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: surveys
-  - `noun`; meaning: `noun`; example: A short **survey** follows every class.
-  - `verb`; meaning: `verb`; example: How many people did you **survey**?
+  - `noun`; meaning: `noun`; respelling: `SUR-vay`; example: A short **survey** follows every class.
+  - `verb`; meaning: `verb`; respelling: `sur-VAY`; example: How many people did you **survey**?
 - **suspect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: suspects
-  - `noun`; meaning: `noun`; example: The main **suspect** denied everything.
-  - `verb`; meaning: `verb`; example: They did not **suspect** a thing.
+  - `noun`; meaning: `noun`; respelling: `SUS-pekt`; example: The main **suspect** denied everything.
+  - `verb`; meaning: `verb`; respelling: `suh-SPEKT`; example: They did not **suspect** a thing.
 - **swallow**; parts of speech: noun, verb; forms: swallowed (verb), swallowing (verb), swallows
   - `noun`; example: The **swallow** is a sign of summer.
   - `verb`; example: It's a tough pill to **swallow**.
@@ -2221,8 +2268,8 @@ shown in bold.
   - `noun`; example: Ziri cut the rope of the **swing**.
   - `verb`; example: **Swing** your arm back and forth.
 - **syndicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: syndicates
-  - `noun`; meaning: `noun`; example: The **syndicate** owns three racehorses.
-  - `verb`; meaning: `verb`; example: Papers **syndicate** her cartoon nationwide.
+  - `noun`; meaning: `noun`; respelling: `SIN-dih-kit`; example: The **syndicate** owns three racehorses.
+  - `verb`; meaning: `verb`; respelling: `SIN-dih-kayt`; example: Papers **syndicate** her cartoon nationwide.
 
 ### Lemmas Starting With T
 
@@ -2241,16 +2288,17 @@ shown in bold.
   - `verb`; example: Its metadata can be used to track and **target** you.
 - **tarry**; parts of speech: verb, adjective; heteronym, meanings: linger, tar; forms: tarried (verb linger), tarries
   (verb linger), tarrying (verb linger)
-  - `verb`; meaning: `linger`; example: Clement! false-hearted, knaves, where **tarry** ye?"
-  - `adjective`; meaning: `tar`; example: A **tarry** sludge at the bottom of the barrel showed that it once held pitch.
+  - `verb`; meaning: `linger`; respelling: `TAIR-ee`; example: Clement! false-hearted, knaves, where **tarry** ye?"
+  - `adjective`; meaning: `tar`; respelling: `TAH-ree`; example: A **tarry** sludge at the bottom of the barrel showed
+    that it once held pitch.
 - **taste**; parts of speech: noun, verb; forms: tasted (verb), tastes, tasting (verb)
   - `noun`; example: It's too sweet for my **taste**.
   - `verb`; example: The fish **tastes** like the sea.
 - **tear**; parts of speech: noun, verb; heteronym, meanings: drop, rip; forms: tearing (verb rip), tears, tore (verb
   rip), torn (verb rip)
-  - `noun`; meaning: `drop`; example: The procurator's wife shed a **tear**.
-  - `noun`; meaning: `rip`; example: And the cut - a positive **tear**, I see.
-  - `verb`; meaning: `rip`; example: They will **tear** you to pieces!
+  - `noun`; meaning: `drop`; respelling: `teer`; example: The procurator's wife shed a **tear**.
+  - `noun`; meaning: `rip`; respelling: `tair`; example: And the cut - a positive **tear**, I see.
+  - `verb`; meaning: `rip`; respelling: `tair`; example: They will **tear** you to pieces!
 - **thunder**; parts of speech: noun, verb; forms: thundered (verb), thundering (verb), thunderred (verb), thunderring
   (verb), thunders
   - `noun`; example: My dog is scared of the **thunder**.
@@ -2259,15 +2307,16 @@ shown in bold.
   - `noun`; example: The **tie** doesn't fit with my suit.
   - `verb`; example: He bent over to **tie** his shoe.
 - **tier**; parts of speech: noun, verb; heteronym, meanings: row, ties; forms: tiered (verb row), tiers
-  - `noun`; meaning: `row`; example: Those words are in the second and third **tiers** of frequency.
-  - `noun`; meaning: `ties`; example: Bailey became known as one of the most innovative fly **tiers** in the West.
-  - `verb`; meaning: `row`; example: We're approaching a two-**tiered** medical system.
+  - `noun`; meaning: `row`; respelling: `teer`; example: Those words are in the second and third **tiers** of frequency.
+  - `noun`; meaning: `ties`; respelling: `TY-ur`; example: Bailey became known as one of the most innovative fly
+    **tiers** in the West.
+  - `verb`; meaning: `row`; respelling: `teer`; example: We're approaching a two-**tiered** medical system.
 - **tip**; parts of speech: noun, verb; forms: tipped (verb), tipping (verb), tips
   - `noun`; example: Before eating here's a small **tip**.
   - `verb`; example: Tom must have been **tipped** off.
 - **torment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: torments
-  - `noun`; meaning: `noun`; example: The long wait was pure **torment**.
-  - `verb`; meaning: `verb`; example: Guilt will **torment** him forever.
+  - `noun`; meaning: `noun`; respelling: `TOR-ment`; example: The long wait was pure **torment**.
+  - `verb`; meaning: `verb`; respelling: `tor-MENT`; example: Guilt will **torment** him forever.
 - **torture**; parts of speech: noun, verb; forms: tortured (verb), tortures, torturing (verb)
   - `noun`; example: Do you know what **torture** is?
   - `verb`; example: Are you trying to **torture** me?
@@ -2276,10 +2325,10 @@ shown in bold.
   - `verb`; example: I am **touched** by their kindness.
 - **tower**; parts of speech: noun, verb; heteronym, meanings: structure, tows; forms: towered (verb structure),
   towering (verb structure), towers (noun structure, verb structure)
-  - `noun`; meaning: `structure`; example: "Show me the North **Tower**!" said Defarge.
-  - `noun`; meaning: `tows`; example: With both of the **towers** on duty, the highway crash was cleared within the
-    hour.
-  - `verb`; meaning: `structure`; example: He **towered** like a Goliath above Wolf Larsen.
+  - `noun`; meaning: `structure`; respelling: `TOW-ur`; example: "Show me the North **Tower**!" said Defarge.
+  - `noun`; meaning: `tows`; respelling: `TOH-ur`; example: With both of the **towers** on duty, the highway crash was
+    cleared within the hour.
+  - `verb`; meaning: `structure`; respelling: `TOW-ur`; example: He **towered** like a Goliath above Wolf Larsen.
 - **trace**; parts of speech: noun, verb; forms: traced (verb), traces, tracing
   - `noun`; example: There is no **trace** of him, he disappeared.
   - `verb`; example: The FBI **traced** the coupons back to Leonid.
@@ -2291,39 +2340,40 @@ shown in bold.
   - `verb`; example: Tom is **training** a guide dog.
 - **transfer**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: transferred (verb
   stress-last), transferring (verb stress-last), transfers
-  - `noun`; meaning: `stress-first`; example: Can I get a **transfer** ticket?
-  - `verb`; meaning: `stress-last`; example: We need to **transfer** buses at Park and Main.
+  - `noun`; meaning: `stress-first`; respelling: `TRANS-fur`; example: Can I get a **transfer** ticket?
+  - `verb`; meaning: `stress-last`; respelling: `trans-FUR`; example: We need to **transfer** buses at Park and Main.
 - **transform**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: transforms
-  - `noun`; meaning: `noun`; example: Apply the **transform** to every pixel.
-  - `verb`; meaning: `verb`; example: Technology **transforms** how we shop.
+  - `noun`; meaning: `noun`; respelling: `TRANS-form`; example: Apply the **transform** to every pixel.
+  - `verb`; meaning: `verb`; respelling: `trans-FORM`; example: Technology **transforms** how we shop.
 - **transplant**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: transplants
-  - `noun`; meaning: `noun`; example: The **transplant** was a success.
-  - `verb`; meaning: `verb`; example: We **transplant** the seedlings in May.
+  - `noun`; meaning: `noun`; respelling: `TRANS-plant`; example: The **transplant** was a success.
+  - `verb`; meaning: `verb`; respelling: `trans-PLANT`; example: We **transplant** the seedlings in May.
 - **transport**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: transports
-  - `noun`; meaning: `noun`; example: A military **transport** landed at dawn.
-  - `verb`; meaning: `verb`; example: The ship will **transport** cars to Europe.
+  - `noun`; meaning: `noun`; respelling: `TRANZ-port`; example: A military **transport** landed at dawn.
+  - `verb`; meaning: `verb`; respelling: `tranz-PORT`; example: The ship will **transport** cars to Europe.
 - **travel**; parts of speech: noun, verb; forms: traveled (verb), traveling (verb), travelled (verb), travelling
   (verb), travels
   - `noun`; example: I have not had good experience with **travel** agents.
   - `verb`; example: He likes to **travel**. I do, too.
 - **traverse**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: traversed (verb
   stress-last), traverses, traversing (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Two wooden **traverses** span the gap between the walls of the loft, and
-    the cat likes to nap upon them.
-  - `verb`; meaning: `stress-last`; example: He **traversed** a corridor and came upon a staircase.
+  - `noun`; meaning: `stress-first`; respelling: `TRAV-urs`; example: Two wooden **traverses** span the gap between the
+    walls of the loft, and the cat likes to nap upon them.
+  - `verb`; meaning: `stress-last`; respelling: `truh-VURS`; example: He **traversed** a corridor and came upon a
+    staircase.
 - **treat**; parts of speech: noun, verb; forms: treated (verb), treating (verb), treats
   - `noun`; example: It's been a real **treat** for me.
   - `verb`; example: Don't **treat** me as common people.
 - **trifurcate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: trifurcates (verb verb)
-  - `adjective`; meaning: `adjective`; example: Its antlers were oddly **trifurcate**.
-  - `verb`; meaning: `verb`; example: Roots often **trifurcate** in rocky soil.
+  - `adjective`; meaning: `adjective`; respelling: `TRIGH-fur-kit`; example: Its antlers were oddly **trifurcate**.
+  - `verb`; meaning: `verb`; respelling: `TRIGH-fur-kayt`; example: Roots often **trifurcate** in rocky soil.
 - **trigger**; parts of speech: noun, verb; forms: triggered (verb), triggering (verb), triggerred (verb), triggerring
   (verb), triggers
   - `noun`; example: His finger was on the **trigger**.
   - `verb`; example: Laughter **triggers** the release of endorphins.
 - **triplicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: triplicates
-  - `noun`; meaning: `noun`; example: The treaty exists in **triplicate**.
-  - `verb`; meaning: `verb`; example: Can you **triplicate** these pages quickly?
+  - `noun`; meaning: `noun`; respelling: `TRIP-lih-kit`; example: The treaty exists in **triplicate**.
+  - `verb`; meaning: `verb`; respelling: `TRIP-lih-kayt`; example: Can you **triplicate** these pages quickly?
 - **trust**; parts of speech: noun, verb; forms: trusted (verb), trusting (verb), trusts
   - `noun`; example: I want to put my **trust** in you.
   - `verb`; example: I wouldn't **trust** Mary an inch.
@@ -2337,93 +2387,97 @@ shown in bold.
 ### Lemmas Starting With U
 
 - **underbid**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: underbids
-  - `noun`; meaning: `noun`; example: A careless **underbid** sank the project.
-  - `verb`; meaning: `verb`; example: Can they **underbid** the other firm again?
+  - `noun`; meaning: `noun`; respelling: `UN-dur-bid`; example: A careless **underbid** sank the project.
+  - `verb`; meaning: `verb`; respelling: `un-dur-BID`; example: Can they **underbid** the other firm again?
 - **undercharge**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: undercharges
-  - `noun`; meaning: `noun`; example: Was the **undercharge** on purpose?
-  - `verb`; meaning: `verb`; example: Don't **undercharge** for your time.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-charj`; example: Was the **undercharge** on purpose?
+  - `verb`; meaning: `verb`; respelling: `un-dur-CHARJ`; example: Don't **undercharge** for your time.
 - **undercount**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: undercounts
-  - `noun`; meaning: `noun`; example: Fixing the **undercount** took years.
-  - `verb`; meaning: `verb`; example: The poll **undercounts** young voters.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-kount`; example: Fixing the **undercount** took years.
+  - `verb`; meaning: `verb`; respelling: `un-dur-KOUNT`; example: The poll **undercounts** young voters.
 - **undercut**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: undercuts
-  - `noun`; meaning: `noun`; example: The barber gave him a sharp **undercut**.
-  - `verb`; meaning: `verb`; example: Rivals will **undercut** our prices.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-kut`; example: The barber gave him a sharp **undercut**.
+  - `verb`; meaning: `verb`; respelling: `un-dur-KUT`; example: Rivals will **undercut** our prices.
 - **underestimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: underestimates
-  - `noun`; meaning: `noun`; example: The audit exposed the **underestimate**.
-  - `verb`; meaning: `verb`; example: He **underestimates** how tired he is.
+  - `noun`; meaning: `noun`; respelling: `un-dur-ES-tih-mit`; example: The audit exposed the **underestimate**.
+  - `verb`; meaning: `verb`; respelling: `un-dur-ES-tih-mayt`; example: He **underestimates** how tired he is.
 - **underground**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: The bunker was entirely **underground**.
-  - `adverb`; meaning: `adverb`; example: They buried the tank **underground**.
+  - `adjective`; meaning: `adjective`; respelling: `UN-dur-ground`; example: The bunker was entirely **underground**.
+  - `adverb`; meaning: `adverb`; respelling: `un-dur-GROUND`; example: They buried the tank **underground**.
 - **underlay**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: underlays
-  - `noun`; meaning: `noun`; example: The **underlays** varied in thickness.
-  - `verb`; meaning: `verb`; example: Don't **underlay** the rug with plastic.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-lay`; example: The **underlays** varied in thickness.
+  - `verb`; meaning: `verb`; respelling: `un-dur-LAY`; example: Don't **underlay** the rug with plastic.
 - **underscore**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: underscored (verb
   stress-last), underscores, underscoring (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: Tom has an **underscore** in his password.
-  - `verb`; meaning: `stress-last`; example: Weisberg **underscored** the importance of the authenticity.
+  - `noun`; meaning: `stress-first`; respelling: `UN-dur-skor`; example: Tom has an **underscore** in his password.
+  - `verb`; meaning: `stress-last`; respelling: `un-dur-SKOR`; example: Weisberg **underscored** the importance of the
+    authenticity.
 - **underset**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: undersets
-  - `noun`; meaning: `noun`; example: A hidden **underset** caught the swimmers.
-  - `verb`; meaning: `verb`; example: Please **underset** the post with gravel.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-set`; example: A hidden **underset** caught the swimmers.
+  - `verb`; meaning: `verb`; respelling: `un-dur-SET`; example: Please **underset** the post with gravel.
 - **undershoot**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: undershoots
-  - `noun`; meaning: `noun`; example: He blamed his **undershoot** on the wind.
-  - `verb`; meaning: `verb`; example: Did the plane **undershoot** the strip?
+  - `noun`; meaning: `noun`; respelling: `UN-dur-shoot`; example: He blamed his **undershoot** on the wind.
+  - `verb`; meaning: `verb`; respelling: `un-dur-SHOOT`; example: Did the plane **undershoot** the strip?
 - **underspend**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: underspends
-  - `noun`; meaning: `noun`; example: Auditors questioned the **underspend**.
-  - `verb`; meaning: `verb`; example: The school **underspends** on books.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-spend`; example: Auditors questioned the **underspend**.
+  - `verb`; meaning: `verb`; respelling: `un-dur-SPEND`; example: The school **underspends** on books.
 - **undertaking**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
-  - `noun`; meaning: `noun`; example: The **undertaking** cost millions.
-  - `verb`; meaning: `verb`; example: I am **undertaking** to finish by Friday.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-tay-king`; example: The **undertaking** cost millions.
+  - `verb`; meaning: `verb`; respelling: `un-dur-TAY-king`; example: I am **undertaking** to finish by Friday.
 - **underuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: underuses
-  - `noun`; meaning: `noun`; example: This **underuse** of land is a waste.
-  - `verb`; meaning: `verb`; example: Cities **underuse** their rooftops.
+  - `noun`; meaning: `noun`; respelling: `UN-dur-yoos`; example: This **underuse** of land is a waste.
+  - `verb`; meaning: `verb`; respelling: `un-dur-YOOZ`; example: Cities **underuse** their rooftops.
 - **undulate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: undulates (verb verb)
-  - `adjective`; meaning: `adjective`; example: The skirt had an **undulate** hem.
-  - `verb`; meaning: `verb`; example: The plains **undulate** for miles.
+  - `adjective`; meaning: `adjective`; respelling: `UN-juh-lit`; example: The skirt had an **undulate** hem.
+  - `verb`; meaning: `verb`; respelling: `UN-juh-layt`; example: The plains **undulate** for miles.
 - **unlearned**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: They were poor and **unlearned**.
-  - `verb`; meaning: `verb`; example: Slowly she **unlearned** the accent.
+  - `adjective`; meaning: `adjective`; respelling: `un-LUR-nid`; example: They were poor and **unlearned**.
+  - `verb`; meaning: `verb`; respelling: `un-LURND`; example: Slowly she **unlearned** the accent.
 - **unpeople**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: unpeoples
-  - `noun`; meaning: `noun`; example: The state treated them as **unpeople**.
-  - `verb`; meaning: `verb`; example: Tyrants **unpeople** whole villages.
+  - `noun`; meaning: `noun`; respelling: `UN-pee-pul`; example: The state treated them as **unpeople**.
+  - `verb`; meaning: `verb`; respelling: `un-PEE-pul`; example: Tyrants **unpeople** whole villages.
 - **update**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: updated (verb
   stress-last), updates, updating (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: **Updates** are ready to install.
-  - `verb`; meaning: `stress-last`; example: I **update** my blog every week.
+  - `noun`; meaning: `stress-first`; respelling: `UP-dayt`; example: **Updates** are ready to install.
+  - `verb`; meaning: `stress-last`; respelling: `up-DAYT`; example: I **update** my blog every week.
 - **upgrade**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: upgraded (verb
   stress-last), upgrades, upgrading (verb stress-last)
-  - `noun`; meaning: `stress-first`; example: I don’t like this new **upgrade**.
-  - `verb`; meaning: `stress-last`; example: I got **upgraded** to first class.
+  - `noun`; meaning: `stress-first`; respelling: `UP-grayd`; example: I don’t like this new **upgrade**.
+  - `verb`; meaning: `stress-last`; respelling: `up-GRAYD`; example: I got **upgraded** to first class.
 - **uphill**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
-  - `adjective`; meaning: `adjective`; example: An **uphill** task lay ahead of them.
-  - `adverb`; meaning: `adverb`; example: The runners sprinted **uphill**.
+  - `adjective`; meaning: `adjective`; respelling: `UP-hil`; example: An **uphill** task lay ahead of them.
+  - `adverb`; meaning: `adverb`; respelling: `up-HIL`; example: The runners sprinted **uphill**.
 - **uplift**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: uplifts
-  - `noun`; meaning: `noun`; example: Her kind words were a real **uplift**.
-  - `verb`; meaning: `verb`; example: Can charity **uplift** the poor?
-- **upset**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; forms: upsets (noun
-  noun, verb verb)
-  - `adjective`; meaning: `adjective`; example: The **upset** fans booed the referee.
-  - `noun`; meaning: `noun`; example: A stomach **upset** kept her home.
-  - `verb`; meaning: `verb`; example: I hope this won't **upset** you.
-- **upsetting**; parts of speech: noun, verb, adjective; heteronym, meanings: adjective, noun, verb; no other forms
-  - `adjective`; meaning: `adjective`; example: Don't say such **upsetting** things!
-  - `noun`; meaning: `noun`; example: The **upsetting** of old habits takes time.
-  - `verb`; meaning: `verb`; example: Pardon me for **upsetting** you.
-- **uptown**; parts of speech: noun, adjective, adverb; heteronym, meanings: uptown, noun; no other forms
-  - `adjective`; meaning: `uptown`; example: All routes are **uptown** unless specified below:
-  - `adverb`; meaning: `uptown`; example: We're taking a class on disaster preparedness **uptown**.
-  - `noun`; meaning: `noun`; example: In modern times, there are several entities called "**Uptown**".
+  - `noun`; meaning: `noun`; respelling: `UP-lift`; example: Her kind words were a real **uplift**.
+  - `verb`; meaning: `verb`; respelling: `up-LIFT`; example: Can charity **uplift** the poor?
+- **upset**; parts of speech: noun, verb, adjective; heteronym, meanings: adjverb, noun; forms: upsets (noun noun, verb
+  adjverb)
+  - `adjective`; meaning: `adjverb`; respelling: `up-SET`; example: The **upset** fans booed the referee.
+  - `noun`; meaning: `noun`; respelling: `UP-set`; example: A stomach **upset** kept her home.
+  - `verb`; meaning: `adjverb`; respelling: `up-SET`; example: I hope this won't **upset** you.
+- **upsetting**; parts of speech: noun, verb, adjective; no other forms
+  - `adjective`; example: Don't say such **upsetting** things!
+  - `noun`; example: The **upsetting** of old habits takes time.
+  - `verb`; example: Pardon me for **upsetting** you.
+- **uptown**; parts of speech: noun, adjective, adverb; heteronym, meanings: stress-first, stress-last; no other forms
+  - `adjective`; meaning: `stress-first`; respelling: `UP-town`; example: All routes are **uptown** unless specified
+    below:
+  - `adverb`; meaning: `stress-last`; respelling: `up-TOWN`; example: We're taking a class on disaster preparedness
+    **uptown**.
+  - `noun`; meaning: `stress-first`; respelling: `UP-town`; example: In modern times, there are several entities called
+    "**Uptown**".
 - **upturn**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: upturns
-  - `noun`; meaning: `noun`; example: A modest **upturn** in hiring followed.
-  - `verb`; meaning: `verb`; example: Storms can **upturn** small boats.
+  - `noun`; meaning: `noun`; respelling: `UP-turn`; example: A modest **upturn** in hiring followed.
+  - `verb`; meaning: `verb`; respelling: `up-TURN`; example: Storms can **upturn** small boats.
 - **urge**; parts of speech: noun, verb; forms: urged (verb), urges, urging (verb)
   - `noun`; example: I can't resist the **urge** to cry.
   - `verb`; example: I **urged** Mary to do what she wanted.
 - **use**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: uses
-  - `noun`; meaning: `noun`; example: The spare room is for guest **use** only.
-  - `verb`; meaning: `verb`; example: **Use** a sharp knife to cut the bread.
+  - `noun`; meaning: `noun`; respelling: `yoos`; example: The spare room is for guest **use** only.
+  - `verb`; meaning: `verb`; respelling: `yooz`; example: **Use** a sharp knife to cut the bread.
 - **used**; parts of speech: verb; heteronym, meanings: past, habit; no other forms
-  - `verb`; meaning: `past`; example: She **used** to live in Chicago.
-  - `verb`; meaning: `habit`; example: I **used** the last of the flour.
+  - `verb`; meaning: `past`; respelling: `yoozd`; example: She **used** to live in Chicago.
+  - `verb`; meaning: `habit`; respelling: `yoost`; example: I **used** the last of the flour.
 
 ### Lemmas Starting With V
 
@@ -2453,8 +2507,8 @@ shown in bold.
   - `noun`; example: She likes to go for **walks** alone.
   - `verb`; example: I am **walking** to the restroom.
 - **warehouse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: warehouses
-  - `noun`; meaning: `noun`; example: He works nights at a **warehouse**.
-  - `verb`; meaning: `verb`; example: Don't **warehouse** food in a damp room.
+  - `noun`; meaning: `noun`; respelling: `WAIR-hous`; example: He works nights at a **warehouse**.
+  - `verb`; meaning: `verb`; respelling: `WAIR-houz`; example: Don't **warehouse** food in a damp room.
 - **warrant**; parts of speech: noun, verb; forms: warranted (verb), warranting (verb), warrants
   - `noun`; example: It is a death **warrant** for me.
   - `verb`; example: Such a response is not **warranted**.
@@ -2482,17 +2536,18 @@ shown in bold.
   - `verb`; example: She **whispered**, but no one heard.
 - **wicked**; parts of speech: verb, adjective; heteronym, meanings: evil, wick; forms: wick (verb wick), wickedly
   (adjective evil), wicking (verb wick), wicks (verb wick)
-  - `adjective`; meaning: `evil`; example: The **wicked** are the most suspicious.
-  - `verb`; meaning: `wick`; example: Cool max - a hollow fiber that absorbs bodily moisture and **wicks** it outwards
+  - `adjective`; meaning: `evil`; respelling: `WIK-id`; example: The **wicked** are the most suspicious.
+  - `verb`; meaning: `wick`; respelling: `wikt`; example: Cool max - a hollow fiber that absorbs bodily moisture and
+    **wicks** it outwards
 - **wind**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: winds
-  - `noun`; meaning: `noun`; example: The kite rose with the **wind**.
-  - `verb`; meaning: `verb`; example: Vines **wind** around the old oak.
+  - `noun`; meaning: `noun`; respelling: `wind`; example: The kite rose with the **wind**.
+  - `verb`; meaning: `verb`; respelling: `wynd`; example: Vines **wind** around the old oak.
 - **work**; parts of speech: noun, verb; forms: worked (verb), working (verb), works
   - `noun`; example: I have taken on too much **work**.
   - `verb`; example: You know how the system **works**.
 - **wound**; parts of speech: noun, verb; heteronym, meanings: injury, past; forms: wounds (noun injury)
-  - `noun`; meaning: `injury`; example: The **wound** bled for a long time.
-  - `verb`; meaning: `past`; example: The path **wound** up the mountain.
+  - `noun`; meaning: `injury`; respelling: `woond`; example: The **wound** bled for a long time.
+  - `verb`; meaning: `past`; respelling: `wound`; example: The path **wound** up the mountain.
 - **wreck**; parts of speech: noun, verb; forms: wrecked (verb), wrecking (verb), wrecks
   - `noun`; example: She wasn't injured in the train **wreck**.
   - `verb`; example: "Tax him with having **wrecked** you?

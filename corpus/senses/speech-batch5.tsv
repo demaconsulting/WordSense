@@ -1,71 +1,71 @@
 lemma	label	pos	meaning	respelling
-orient	noun	noun	noun	
-orient	verb	verb	verb	
-ornament	noun	noun	noun	
-ornament	verb	verb	verb	
-outgo	noun	noun	noun	
-outgo	verb	verb	verb	
-outreach	noun	noun	noun	
-outreach	verb	verb	verb	
-overall	adj	adjective	adjective	
-overall	adv	adverb	adverb	
-overbid	noun	noun	noun	
-overbid	verb	verb	verb	
-overburden	noun	noun	noun	
-overburden	verb	verb	verb	
-overcall	noun	noun	noun	
-overcall	verb	verb	verb	
-overcharge	noun	noun	noun	
-overcharge	verb	verb	verb	
-overdose	noun	noun	noun	
-overdose	verb	verb	verb	
-overdress	noun	noun	noun	
-overdress	verb	verb	verb	
-overdub	noun	noun	noun	
-overdub	verb	verb	verb	
-overestimate	noun	noun	noun	
-overestimate	verb	verb	verb	
-overflow	noun	noun	noun	
-overflow	verb	verb	verb	
-overhang	noun	noun	noun	
-overhang	verb	verb	verb	
-overhaul	noun	noun	noun	
-overhaul	verb	verb	verb	
-overlap	noun	noun	noun	
-overlap	verb	verb	verb	
-overlay	noun	noun	noun	
-overlay	verb	verb	verb	
-overload	noun	noun	noun	
-overload	verb	verb	verb	
-overlook	noun	noun	noun	
-overlook	verb	verb	verb	
-overpass	noun	noun	noun	
-overpass	verb	verb	verb	
-overprint	noun	noun	noun	
-overprint	verb	verb	verb	
-override	noun	noun	noun	
-override	verb	verb	verb	
-overrun	noun	noun	noun	
-overrun	verb	verb	verb	
-overshoot	noun	noun	noun	
-overshoot	verb	verb	verb	
-overspend	noun	noun	noun	
-overspend	verb	verb	verb	
-oversteer	noun	noun	noun	
-oversteer	verb	verb	verb	
-overstock	noun	noun	noun	
-overstock	verb	verb	verb	
-overthrow	noun	noun	noun	
-overthrow	verb	verb	verb	
-overturn	noun	noun	noun	
-overturn	verb	verb	verb	
-overuse	noun	noun	noun	
-overuse	verb	verb	verb	
-overweight	noun	noun	noun	
-overweight	verb	verb	verb	
-overwork	noun	noun	noun	
-overwork	verb	verb	verb	
-pasty	adj	adjective	adjective	
-pasty	noun	noun	noun	
-perfect	noun	noun	noun	
-perfect	verb	verb	verb	
+orient	noun	noun		
+orient	verb	verb		
+ornament	noun	noun	noun	AWR-nuh-munt
+ornament	verb	verb	verb	AWR-nuh-ment
+outgo	noun	noun	noun	OWT-goh
+outgo	verb	verb	verb	owt-GOH
+outreach	noun	noun	noun	OWT-reech
+outreach	verb	verb	verb	owt-REECH
+overall	adj	adjective	adjective	OH-vur-awl
+overall	adv	adverb	adverb	oh-vur-AWL
+overbid	noun	noun	noun	OH-vur-bid
+overbid	verb	verb	verb	oh-vur-BID
+overburden	noun	noun	noun	OH-vur-bur-dun
+overburden	verb	verb	verb	oh-vur-BUR-dun
+overcall	noun	noun	noun	OH-vur-kawl
+overcall	verb	verb	verb	oh-vur-KAWL
+overcharge	noun	noun	noun	OH-vur-charj
+overcharge	verb	verb	verb	oh-vur-CHARJ
+overdose	noun	noun	noun	OH-vur-dohs
+overdose	verb	verb	verb	oh-vur-DOHS
+overdress	noun	noun	noun	OH-vur-dres
+overdress	verb	verb	verb	oh-vur-DRES
+overdub	noun	noun	noun	OH-vur-dub
+overdub	verb	verb	verb	oh-vur-DUB
+overestimate	noun	noun	noun	oh-vur-ES-tuh-mit
+overestimate	verb	verb	verb	oh-vur-ES-tuh-mayt
+overflow	noun	noun	noun	OH-vur-floh
+overflow	verb	verb	verb	oh-vur-FLOH
+overhang	noun	noun	noun	OH-vur-hang
+overhang	verb	verb	verb	oh-vur-HANG
+overhaul	noun	noun	noun	OH-vur-hawl
+overhaul	verb	verb	verb	oh-vur-HAWL
+overlap	noun	noun	noun	OH-vur-lap
+overlap	verb	verb	verb	oh-vur-LAP
+overlay	noun	noun	noun	OH-vur-lay
+overlay	verb	verb	verb	oh-vur-LAY
+overload	noun	noun	noun	OH-vur-lohd
+overload	verb	verb	verb	oh-vur-LOHD
+overlook	noun	noun	noun	OH-vur-luk
+overlook	verb	verb	verb	oh-vur-LUK
+overpass	noun	noun	noun	OH-vur-pas
+overpass	verb	verb	verb	oh-vur-PAS
+overprint	noun	noun	noun	OH-vur-print
+overprint	verb	verb	verb	oh-vur-PRINT
+override	noun	noun	noun	OH-vur-ride
+override	verb	verb	verb	oh-vur-RIDE
+overrun	noun	noun	noun	OH-vur-run
+overrun	verb	verb	verb	oh-vur-RUN
+overshoot	noun	noun	noun	OH-vur-shoot
+overshoot	verb	verb	verb	oh-vur-SHOOT
+overspend	noun	noun	noun	OH-vur-spend
+overspend	verb	verb	verb	oh-vur-SPEND
+oversteer	noun	noun	noun	OH-vur-steer
+oversteer	verb	verb	verb	oh-vur-STEER
+overstock	noun	noun	noun	OH-vur-stok
+overstock	verb	verb	verb	oh-vur-STOK
+overthrow	noun	noun	noun	OH-vur-throh
+overthrow	verb	verb	verb	oh-vur-THROH
+overturn	noun	noun	noun	OH-vur-turn
+overturn	verb	verb	verb	oh-vur-TURN
+overuse	noun	noun	noun	OH-vur-yoos
+overuse	verb	verb	verb	oh-vur-YOOZ
+overweight	noun	noun	noun	OH-vur-wayt
+overweight	verb	verb	verb	oh-vur-WAYT
+overwork	noun	noun	noun	OH-vur-wurk
+overwork	verb	verb	verb	oh-vur-WURK
+pasty	adj	adjective	adjective	PAY-stee
+pasty	noun	noun	noun	PAS-tee
+perfect	noun	noun	noun	PUR-fikt
+perfect	verb	verb	verb	pur-FEKT
