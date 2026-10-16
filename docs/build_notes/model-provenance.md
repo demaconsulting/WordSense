@@ -1,17 +1,32 @@
 # Model Provenance
 
-This note records where the WordSense encoder model and tokenizer vocabulary come from, how they are verified, and
-the license terms that apply to them.
+This note records where each WordSense encoder model and its tokenizer vocabulary come from, how they are verified,
+and the license terms that apply to them. There is one section per model. Every model has an identifier (the model
+ID) that names its folder everywhere: `model/<model-id>/` in the repository, `<mirror>/<model-id>/` on a mirror,
+`<store>/<model-id>/` in the per-user store and `<ref>/model/<model-id>/` on the GitHub LFS endpoint. The weights
+table trained for a model is embedded in the package of that model as the resource
+`weights.<model-id>.<onnx-sha256>.bin`, so the file name pairs the model ID with the SHA-256 of the ONNX file the
+weights were trained against; a model file with another digest never matches those weights.
 
-## Files
+## all-MiniLM-L6-v2-int8
+
+Package: `DemaConsulting.WordSense.MiniLM`. Weights table resource:
+`weights.all-MiniLM-L6-v2-int8.afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1.bin` (in
+`src/DemaConsulting.WordSense.MiniLM/Resources/`).
+
+### Files
+
+The digests below are the ones in `model/all-MiniLM-L6-v2-int8/SHA256SUMS`.
 
 | File | Size (bytes) | SHA-256 |
 | ---- | ------------ | ------- |
-| `model/model_int8.onnx` | 22,972,370 | `afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1` |
-| `model/vocab.txt` | 231,508 | `07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3` |
-| `model/tokenizer.json` | 711,661 | `da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0` |
+| `model_int8.onnx` | 22,972,370 | `afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1` |
+| `vocab.txt` | 231,508 | `07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3` |
+| `tokenizer.json` | 711,661 | `da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0` |
 
-## Origin
+All files are in `model/all-MiniLM-L6-v2-int8/`.
+
+### Origin
 
 - Base model: `sentence-transformers/all-MiniLM-L6-v2` (BERT, six layers, 384 hidden units, uncased WordPiece
   vocabulary of 30,522 entries).
@@ -26,18 +41,25 @@ the license terms that apply to them.
   digest of the BERT uncased vocabulary. The download pipeline pins the digest, so a mismatching upstream file is
   rejected and the next source is tried.
 
-## Download Sources
+### Download Sources
 
 Downloads are tried in this order, each verified against the pinned SHA-256 before it is accepted:
 
-1. A user-configured mirror, when set.
+1. A user-configured mirror, when set: `{mirror}/all-MiniLM-L6-v2-int8/{file}`.
 2. Hugging Face (`vocab.txt` only).
 3. GitHub Git LFS media endpoint for this repository (`media.githubusercontent.com`).
 
-All three files above are Git LFS objects, so one URL pattern (`/media/<owner>/WordSense/{ref}/model/{file}`)
-serves each of them. The SHA-256 values in the table are of the real content, not of the LFS pointer files. The
-runtime downloader fetches only `model_int8.onnx` and `vocab.txt`; `tokenizer.json` is needed only to regenerate
-the tokenizer parity fixture and is fetched with `git lfs pull`.
+All three files above are Git LFS objects, so one URL pattern
+(`/media/<owner>/WordSense/{ref}/model/all-MiniLM-L6-v2-int8/{file}`) serves each of them. The SHA-256 values in the
+table are of the real content, not of the LFS pointer files. The runtime downloader fetches only `model_int8.onnx`
+and `vocab.txt` into `<store>/all-MiniLM-L6-v2-int8/`; `tokenizer.json` is needed only to regenerate the tokenizer
+parity fixture and is fetched with `git lfs pull`.
+
+### Adding a Model
+
+A further model gets its own `model/<model-id>/` folder (files, `SHA256SUMS` and a README), its own section in this
+note, a package that implements `IWordSenseModel`, and a weights table trained by the builder with
+`build --model model --model-id <model-id> ... --weights <file>`.
 
 ## License
 

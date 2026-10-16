@@ -106,9 +106,14 @@ claimed.
 
 ```text
 dotnet run --project tools/WordSense.Builder -c Release -- import-moby --input mobypos.txt --output corpus/lexicon/lexicon.tsv
-dotnet run --project tools/WordSense.Builder -c Release -- build --model model --corpus corpus \
-  --output src/DemaConsulting.WordSense/Resources/wordsense-table.bin
+dotnet run --project tools/WordSense.Builder -c Release -- build --model model --model-id all-MiniLM-L6-v2-int8 \
+  --corpus corpus --output src/DemaConsulting.WordSense/Resources/wordsense-lexicon.bin \
+  --weights src/DemaConsulting.WordSense.MiniLM/Resources/weights.all-MiniLM-L6-v2-int8.afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1.bin
 dotnet run --project tools/WordSense.Builder -c Release -- lexicon-eval \
-  --table src/DemaConsulting.WordSense/Resources/wordsense-table.bin --ud tools/real-text/cache \
+  --table src/DemaConsulting.WordSense/Resources/wordsense-lexicon.bin --ud tools/real-text/cache \
   --output report.md --enforce
 ```
+
+Since the package split the dictionary lives in the lexicon table (`wordsense-lexicon.bin`, in the core package) and
+the trained weights in a separate weights table per model, so `lexicon-eval` takes the lexicon table. The page
+describes the table as it was measured, before the split; the dictionary content is unchanged.
