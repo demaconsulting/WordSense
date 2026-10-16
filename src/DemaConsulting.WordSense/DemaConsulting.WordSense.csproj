@@ -36,6 +36,21 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
 
+    <!-- API Documentation Configuration -->
+    <!-- ApiMark turns this project's XML doc comments into gradually-disclosed Markdown API
+         reference (index -> namespace -> type -> member) for a coding agent to read.
+         - Output goes under 'generated/', which the repository already excludes from git,
+           markdownlint, and cspell, so the build regenerates it and nothing stale is committed.
+         - ApiMarkPackDocs ships the generated api/ tree inside the nupkg, so a consuming agent
+           receives the reference with the library.
+         - ApiMarkEnforceDocs fails the build on any public API member lacking an XML doc
+           summary; the Public tier matches the surface that is generated and shipped. -->
+    <ApiMarkOutputDir>$(MSBuildProjectDirectory)\generated\api</ApiMarkOutputDir>
+    <ApiMarkVisibility>Public</ApiMarkVisibility>
+    <ApiMarkPackDocs>true</ApiMarkPackDocs>
+    <ApiMarkEnforceDocs>Public</ApiMarkEnforceDocs>
+    <ApiMarkEnforceDocsSeverity>Error</ApiMarkEnforceDocsSeverity>
+
     <!-- SBOM Configuration -->
     <GenerateSBOM>true</GenerateSBOM>
     <SBOMPackageName>$(PackageId)</SBOMPackageName>
@@ -47,6 +62,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.13" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.402" PrivateAssets="All" />
+    <!-- Build-time only: PrivateAssets="All" keeps the documentation generator out of any
+         package that consumes this library. -->
+    <PackageReference Include="DemaConsulting.ApiMark.MSBuild" Version="0.5.10" PrivateAssets="All" />
   </ItemGroup>
 
   <!-- Code Analysis Dependencies -->
