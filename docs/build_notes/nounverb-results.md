@@ -111,16 +111,18 @@ The 329 new lemmas have 11,566 anchors (35.2 per lemma) and 5,296 holdout rows. 
 at 91.61 % coverage; noun senses reach 99.06 % and verb senses 97.48 % best-sense accuracy (macro average over
 lemmas). For these lemmas the noun-versus-verb tag accuracy equals the best-sense accuracy, because each has exactly
 one noun and one verb sense; the table lists both. The real-text evaluation of the existing 689-row set is unchanged
-(92.60 % best sense, 96.57 % answered accuracy, 84.62 % answered), because the new lemmas are not in that set. No
-real-text rows were set aside for the new lemmas; the independent audit sample of 400 final rows (200 per sense, anchors
-and holdout, one or two rows per lemma) is prepared for a later blind judge.
+(92.60 % best sense, 96.40 % answered accuracy, 84.76 % answered, re-run on the final table), because the new lemmas
+are not in that set. No real-text evaluation rows were set aside for the new lemmas (see "Real-Text Evaluation"); the
+independent audit of 400 final rows is reported under "Independent Blind Audit".
 
 Size and time: the embedded table grows from 770,840 to 1,306,779 bytes (1.31 MB, well under the 5 MB guard). The
 full `build` of the final corpus takes 63 seconds on the development machine (including the ONNX encoding of every
 anchor and holdout sentence); `learning-curve` takes about 3.5 minutes.
 
 Aggregate for the Simplified Technical English use case: 107 of the 329 trained lemmas are in the maintainer's local
-STE-100 working list (counted locally; the list itself is not part of the repository).
+STE-100 working list (counted locally; the list itself is not part of the repository). Of the other flagged lemmas, 33
+were dropped by the gate and 101 were never trained (dominant use, insufficient data or exclusion); 4 trained lemmas
+are not flagged either way. Only these counts are recorded here.
 
 ### Weakest Lemmas
 
@@ -483,10 +485,104 @@ the noun-versus-verb tag accuracy.
 | wreck | 33 | 16 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | 87.5% | 100.0% | 100.0% |
 | wrong | 32 | 16 | 100.0% | 100.0% | 100.0% | 100.0% | 100.0% | 87.5% | 100.0% | 100.0% |
 
+## Real-Text Evaluation
+
+The holdout rows of every noun/verb lemma are real text (Tatoeba, Project Gutenberg, UD EWT, UD CTeTex) and are taken
+from whole source groups (contributor, work or document) that share nothing with the anchors, so they are already a
+source-disjoint real-text test; the 5,296 rows are scored above (98.26 % best sense, 99.34 % answered accuracy). The
+existing `real-eval` flow scores a separate set of sentences that were never in the holdout. It was considered for the
+new lemmas with sentences left over in the pool, but none are available: of the accepted pool rows of the 329 trained
+lemmas, all but 54 went to an anchor set or a holdout (the caps of 40 anchors and 12 holdout
+rows per sense and the unused rows of partly used source groups leave 54 rows, spread over 7 lemmas), which is too
+few and too uneven to score. A real-text evaluation set for these lemmas would need a fresh harvest and a new blind
+judging round; it is left for a later phase. The two checks that are not biased by the quality gate are therefore the
+blind audit below and the unchanged `real-eval` set of the older lemmas.
+
+Because the gate selects lemmas on their holdout, the holdout figures of the 329 lemmas are optimistic. One way to see
+the size of that effect is the 97 dropped lemmas: most of them scored 68.8 % to 87.5 % best sense on the same kind of
+holdout, and a random 15/16 versus 14/16 outcome decides many cases, so a few of the passed lemmas are lucky and a
+few of the dropped lemmas are unlucky.
+
+## Independent Blind Audit
+
+400 final rows were drawn at random (200 per sense; anchors 234 and holdout 166; one or two rows per lemma) and judged
+blind by a fresh judge (not one of the judges of the import) against the menu `noun`, `verb` or `none`, without the
+label. The sample files are in the git-ignored working area `audit-work/p5/audit-sample` (`rows.tsv` and the four
+chunk and answer files).
+
+| Result | Value |
+| --- | ---: |
+| Rows judged | 400 |
+| Agree with the label | 397 (99.25 %) |
+| Disagree | 3 |
+| Noun rows agree | 198 of 200 (99.0 %) |
+| Verb rows agree | 199 of 200 (99.5 %) |
+| Anchor rows agree | 233 of 234 (99.6 %) |
+| Holdout rows agree | 164 of 166 (98.8 %) |
+
+The three disagreements: two rows the judge called `none` (a noun row of `leave` from a Tatoeba CC0 anchor and a verb
+row of `stream` from a Gutenberg holdout) and one row where the judge chose verb for a noun label (`spell`, Tatoeba CC
+BY 2.0 FR holdout). By source: Tatoeba CC BY 2.0 FR 194 of 195, Project Gutenberg 93 of 94, Tatoeba CC0 65 of 66, UD
+EWT 40 of 40, UD CTeTex 4 of 4, UD Pronouns 1 of 1. The agreement is above the planned acceptance rate of 97 %. A
+sample of 400 gives a 95 % interval of about 97.8 % to 99.7 % for the true agreement, assuming the judge itself is
+right; the judge is an LLM, so this is agreement, not human-verified correctness.
+
+## Tag-Level Accuracy
+
+From the `build` report of the final corpus (holdout rows of lemmas that carry the queried tag):
+
+| Query | Rows | Best-tag accuracy | Answered accuracy (answered) |
+| --- | ---: | ---: | ---: |
+| Noun versus verb, all lemmas | 11,963 | 97.52 % | 99.22 % (91.60 %) |
+| Noun versus verb, gold noun | 5,910 | 98.19 % | 99.49 % (92.54 %) |
+| Noun versus verb, gold verb | 6,053 | 96.86 % | 98.94 % (90.68 %) |
+| Noun versus verb, new lemmas only (`nounverb-1.tsv`) | 5,296 | 98.26 % | 99.34 % (91.60 %) |
+| Has-tag `noun` | 11,757 | 97.41 % | 99.00 % (91.66 %) |
+| Has-tag `verb` | 12,198 | 97.62 % | 99.11 % (91.77 %) |
+| Has-tag `adj` | 1,618 | 93.88 % | 97.12 % (85.85 %) |
+| Has-tag `adv` | 294 | 94.22 % | 96.75 % (83.67 %) |
+
+On verbs the tag is a little harder than on nouns (96.86 % against 98.19 %): a bare verb form is also a noun form.
+
+## Dropped and Untrained Lemmas
+
+- The 97 lemmas that failed the gate are listed with their figures in `corpus/audit/nounverb-dropped.tsv`; they are not
+  in the table and a re-import skips them.
+- The 906 lemmas that were not trained, and the 46 that were excluded by the list, are in
+  `corpus/audit/nounverb-untrained.tsv`: 642 with a dominant use (one use has fewer than three rows), 264 with
+  insufficient data, and 46 marked `excluded`.
+- For the Simplified Technical English use case only the aggregate counts above are recorded; the list itself stays
+  outside the repository (see "Results").
+
+## Licence Decision
+
+About 12 % of the rows written before the gate come from UD EWT, UD CTeTex and Wiktionary, which are CC BY-SA 4.0
+(share-alike); the rest is Tatoeba (CC BY 2.0 FR and CC0) and public-domain Project Gutenberg. The table holds only
+trained vectors, not sentences, and the same policy already covers the UD and Tatoeba material of earlier phases. This
+needs a decision by the project owner (whether trained vectors from share-alike sentences carry the share-alike
+condition). Decision for now: keep the rows as they are, mark every row with its licence in `provenance` and record
+the question here.
+
+## Policy Rationale and Noise Caveat
+
+- Only real sentences are used; the project writes none, so a lemma that real text cannot fill is left out (906
+  lemmas), not filled with invented sentences.
+- A lemma with a dominant use (the minor use has fewer than three rows) would learn that one sense wins and is of no
+  use to a "noun or verb?" question, so it is left untrained instead of being trained on a handful of rows.
+- The gate prefers a smaller table of lemmas that were each right on 15 of 16 held-out rows over a bigger table with
+  weaker lemmas; a wrong answer for a common word costs the caller more than a missing lemma, which the caller can
+  handle as "not in the table".
+- Noise: most lemmas have 8 holdout rows per sense, so 16 rows per lemma and 6.25 points per row. A lemma at 93.75 %
+  differs from one at 87.5 % (dropped) by a single sentence. The gate therefore removes some good lemmas and keeps
+  some lucky ones, and its figures (98.26 % best sense) are optimistic; the blind audit (99.25 % label agreement) says
+  the labels are sound, not that the classifier is as accurate on new text.
+
 ## Open Items
 
-- Licence: UD EWT and Wiktionary rows are CC BY-SA 4.0 (about 12 % of the rows written before the gate); the
-  table holds only trained
-  vectors. This stays with the existing policy for UD and Tatoeba material and is open for the maintainer to confirm.
-- Judging was done by LLM judges, with the tagger as the second opinion; no human judged a row. The 400-row audit
-  sample is the planned independent check (accept at a confirmed rate of at least 97 %).
+- Licence: the share-alike question above is open for the maintainer to confirm.
+- Judging was done by LLM judges, with the tagger as the second opinion; no human judged a row. The blind audit of 400
+  rows by a fresh LLM judge found 99.25 % agreement; a human spot check remains optional.
+- No real-text evaluation rows exist for the new lemmas that are separate from the holdout (see "Real-Text
+  Evaluation").
+- 97 lemmas dropped by the gate (`nounverb-dropped.tsv`) and 906 untrained lemmas could be revisited with more real
+  text.

@@ -156,8 +156,9 @@ held-out rows whose correct sense is exactly one of the two), the best tag is co
 the table only when their held-out rows pass a quality gate (see the build notes, "Noun/Verb Lemmas (Phase 5)").
 On real text (public-domain and openly licensed
 sentences that were judged blind and never used for training) the best sense is correct 92.60 % of the time
-(96.57 % of the answered rows, 84.62 % answered) on 689 sentences, against 97.71 % on the project-written
-held-out sentences of the same lemmas. The lemmas `bow`,
+(96.40 % of the answered rows, 84.76 % answered) on 689 sentences, against 97.71 % on the project-written
+held-out sentences of the same lemmas. A blind audit of 400 rows of the noun/verb lemmas agreed with the label in
+99.25 % of the rows. The lemmas `bow`,
 `lead`, `tear`, `closer`, `upsetting`, `polish` and `orient` are supported with split senses (for example `bow`
 bend-noun and bend-verb share the group `bend`).
 The build notes also report how accuracy grows with the number of anchor sentences per sense, and which lemmas are
