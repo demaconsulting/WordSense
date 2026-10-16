@@ -34,29 +34,35 @@ whether "record" is a noun or a verb, or whether "bass" is a fish or an instrume
 dotnet add package DemaConsulting.WordSense
 ```
 
+Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and internet access on first use, or a mirror, to download the
+23 MB encoder model (it is not part of the package). Contributors who clone this repository also need
+[Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because the files in `model/` are stored in
+Git LFS.
+
 ## Usage
 
-The examples below are checked by the test suite (`ReadmeSampleTests`): the second and third code blocks must equal
+The examples below are checked by the test suite (`ReadmeSampleTests`): the code blocks marked as samples must equal
 the compiled sample code in `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and the output blocks must equal
-what that code prints with the real model.
+what that code prints with the real model. The samples assume `using DemaConsulting.WordSense;`. The
+[user guide](docs/user_guide/introduction.md) covers the rest of the API, mirrors, limitations and troubleshooting.
 
 First, download the model (or locate it, when it is already in the per-user store) and verify it:
 
+<!-- sample:download -->
 ```csharp
-using DemaConsulting.WordSense;
-
 // Downloads missing files (mirror, Hugging Face, GitHub LFS) and verifies each against its pinned SHA-256
 WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync();
+Console.WriteLine(location.Directory); // holds model_int8.onnx and vocab.txt
 ```
 
-The 23 MB model is stored in a per-user directory and reused on later runs. To use your own mirror, set
+The model is stored in a per-user directory and reused on later runs. To use your own mirror, set
 `WORDSENSE_MIRROR_URL` (and optionally `WORDSENSE_MIRROR_USER` with `WORDSENSE_MIRROR_PASSWORD`, or
 `WORDSENSE_MIRROR_BEARER_TOKEN`), or pass a `DownloadMirror` in `WordSenseModelDownloaderOptions.Mirror`. The mirror
 is tried first. `WordSenseClassifier.CreateAsync` does the same download on its own when you do not call
 `EnsureModelAsync` yourself.
 
-Next, classify a sentence and print every tag of each word; words that are unknown or that the classifier abstains
-from print `-`:
+Next, classify a sentence (given as a list of words) and print every tag of each word; words that are unknown or that
+the classifier abstains from print `-`:
 
 <!-- sample:classify -->
 ```csharp
@@ -132,11 +138,24 @@ record   pos=noun isVerb=False sense=noun margin=7.16 abstained=False
 ```
 
 `ClassifyTagAsync` and `IsTagAsync` score a tag by the best sense that carries it. `Margin` is the score of the best
-sense minus the runner-up; the classifier abstains when it is below the threshold of the lemma.
+sense minus the runner-up; the classifier abstains when it is below the threshold of the lemma. A raw string can be
+passed to `ClassifyAsync(string)` instead of a word list.
+
+## Accuracy and Limitations
+
+On 12,789 held-out rows the best sense is correct 96.91 % of the time, and 98.73 % of the answered rows are correct
+(90.74 % answered). That corpus is partly project-written (LLM-generated) text, so it is the optimistic figure: on 689
+real, blind-judged sentences of 39 lemmas the best sense is correct 92.60 % of the time (96.40 % of the answered rows,
+84.76 % answered). The noun/verb lemmas are based on real text and enter the table only when they reach 90 % on a
+source-disjoint holdout; rare senses use sentences authored by the project. Words that are not in the table are never
+answered (they print `-`), a sense has exactly one part of speech, forms that collide with other words (`saw`, `left`,
+`found`, ...) are excluded, and the classifier abstains instead of guessing. The
+[user guide](docs/user_guide/introduction.md) has the details, the caveats and troubleshooting.
 
 ## Documentation
 
-- **User Guide**: usage, configuration and API reference
+- **User Guide**: usage, configuration, API reference, accuracy, limitations, licensing, extending the corpus and
+  troubleshooting ([docs/user_guide/introduction.md](docs/user_guide/introduction.md))
 - **Senses appendix**: every supported lemma with its senses, tags, groups and forms, generated from the corpus
   ([docs/user_guide/appendix-senses.md](docs/user_guide/appendix-senses.md))
 - **Design, Verification and Requirements**: generated from `docs/`
@@ -153,7 +172,8 @@ standards, and the pull request process.
 Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
 `all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License. The training
 corpus (not shipped in the NuGet package, only the derived vectors) contains openly licensed sentences recorded with
-their source and licence in `corpus/provenance/`.
+their source and licence in `corpus/provenance/`; rows under `CC BY-SA 4.0` keep that licence if the corpus itself is
+redistributed (see the user guide).
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 
