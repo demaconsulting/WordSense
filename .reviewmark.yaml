@@ -46,6 +46,8 @@ reviews:
     paths:
       - "README.md"                                                 # project readme
       - "docs/user_guide/**/*.md"                                   # user guide
+      - "test/DemaConsulting.WordSense.Tests/ReadmeSample.cs"       # README sample code, compiled and run
+      - "test/DemaConsulting.WordSense.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
 
   # Decomposition Review (only one per repository)
   - id: Decomposition

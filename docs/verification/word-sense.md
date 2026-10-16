@@ -83,6 +83,20 @@ Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, 
 Classifies a two-target sentence 100 times with one and four threads and reports the median and 95th
 percentile latency; the median must stay below two seconds (the typical value is a few milliseconds).
 
+### WordSense_Readme_CodeBlock_MatchesCompiledSample
+
+For each README sample (`classify`, `tags`), extracts the code block marked `<!-- sample:name -->` from `README.md`
+and the region between the `<sample:name>` markers of `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and
+requires them to be equal after normalizing line endings and trailing white space. Because the region is compiled
+code, the README sample is guaranteed to build against the current API.
+
+### WordSense_Readme_Output_MatchesReadme
+
+Runs both compiled samples against the committed model (skipped when the model files are missing or are Git LFS
+pointers) and requires the lines they write to equal the output blocks marked `<!-- output:name -->` in `README.md`.
+Unknown or abstained words print `-`, so a change to the model, table or abstention shows up as a failing test and
+the documented output is updated deliberately.
+
 ### Platform Support
 
 `WordSense_Classifier_EndToEnd_ClassifiesRecord` is run on each CI operating system (Windows, Linux, macOS) and
@@ -92,19 +106,21 @@ a requirement is satisfied only by a passing result from its own platform or fra
 
 ## Requirements Coverage
 
-| Requirement                | Verified by                                                                        |
-|----------------------------|------------------------------------------------------------------------------------|
-| WordSense-Lib-Classify     | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                    |
-| WordSense-Lib-Tags         | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech  |
-| WordSense-Lib-Accuracy     | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                     |
-| WordSense-Lib-Embedded     | EmbeddedTable_MatchesPinnedModel                                                   |
-| WordSense-Lib-Encoder      | EndToEnd_ClassifiesRecord                                                          |
-| WordSense-Lib-Performance  | Benchmark_ClassifyLatency                                                          |
-| WordSense-Lib-Reproducible | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                 |
-| WordSense-Platform-* (six) | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)               |
+| Requirement                 | Verified by                                                                       |
+|-----------------------------|-----------------------------------------------------------------------------------|
+| WordSense-Lib-Classify      | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                   |
+| WordSense-Lib-Tags          | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech |
+| WordSense-Lib-Accuracy      | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                    |
+| WordSense-Lib-Embedded      | EmbeddedTable_MatchesPinnedModel                                                  |
+| WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                         |
+| WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                         |
+| WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                |
+| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme               |
+| WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)              |
 
 The remaining library requirements (abstention, download, mirror, integrity) are verified by the unit-level
-scenarios of the classifier, downloader and mirror documents.
+scenarios of the classifier, downloader and mirror documents. `WordSense-Lib-Documentation` is also verified by
+the appendix scenarios of the builder verification document (`WordSense-Builder-Appendix`).
 
 ## Acceptance Criteria
 

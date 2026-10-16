@@ -9,7 +9,7 @@ package WordSense {
     part def WordSenseSystem {
         doc /* The WordSense system as a whole. */
 
-        comment testRef /* Test: test/DemaConsulting.WordSense.Tests/WordSenseTests.cs */
+        comment testRef /* Test: test/DemaConsulting.WordSense.Tests/WordSenseTests.cs, test/DemaConsulting.WordSense.Tests/ReadmeSampleTests.cs */
         comment designRef /* Design: docs/design/word-sense.md */
         comment verificationRef /* Verification: docs/verification/word-sense.md */
         comment reqRef /* Requirements: docs/reqstream/word-sense.yaml */

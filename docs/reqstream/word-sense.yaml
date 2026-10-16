@@ -179,3 +179,18 @@ sections:
           - WordSense-Builder-Trainer
         tests:
           - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+
+      - id: WordSense-Lib-Documentation
+        title: >-
+          The documentation shall show a README usage sample whose code and output are verified against the library,
+          and an appendix that lists every supported lemma with its senses, tags, groups and forms and is never stale.
+        tags: [system]
+        justification: |
+          A usage example that no longer compiles or prints something else misleads new users, and a hand-written
+          list of supported words drifts from the trained table. Compiling and running the README sample against
+          the committed model, and generating the appendix from the corpus, keep both honest.
+        children:
+          - WordSense-Builder-Appendix
+        tests:
+          - WordSense_Readme_CodeBlock_MatchesCompiledSample
+          - WordSense_Readme_Output_MatchesReadme

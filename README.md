@@ -36,22 +36,109 @@ dotnet add package DemaConsulting.WordSense
 
 ## Usage
 
+The examples below are checked by the test suite (`ReadmeSampleTests`): the second and third code blocks must equal
+the compiled sample code in `test/DemaConsulting.WordSense.Tests/ReadmeSample.cs`, and the output blocks must equal
+what that code prints with the real model.
+
+First, download the model (or locate it, when it is already in the per-user store) and verify it:
+
 ```csharp
 using DemaConsulting.WordSense;
 
-using var classifier = await WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions());
-string[] words = ["They", "will", "record", "the", "record"];
-WordSense?[] senses = await classifier.ClassifyAsync(words); // parallel to words; null = unknown or unsure
-string?[] tags = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // verb, noun for the two records
+// Downloads missing files (mirror, Hugging Face, GitHub LFS) and verifies each against its pinned SHA-256
+WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync();
 ```
 
-The first call downloads the 23 MB model into a per-user store. Set `WORDSENSE_MIRROR_URL` (and optionally
-`WORDSENSE_MIRROR_USER`/`WORDSENSE_MIRROR_PASSWORD` or `WORDSENSE_MIRROR_BEARER_TOKEN`) to use your own mirror. See
-the user guide for details.
+The 23 MB model is stored in a per-user directory and reused on later runs. To use your own mirror, set
+`WORDSENSE_MIRROR_URL` (and optionally `WORDSENSE_MIRROR_USER` with `WORDSENSE_MIRROR_PASSWORD`, or
+`WORDSENSE_MIRROR_BEARER_TOKEN`), or pass a `DownloadMirror` in `WordSenseModelDownloaderOptions.Mirror`. The mirror
+is tried first. `WordSenseClassifier.CreateAsync` does the same download on its own when you do not call
+`EnsureModelAsync` yourself.
+
+Next, classify a sentence and print every tag of each word; words that are unknown or that the classifier abstains
+from print `-`:
+
+<!-- sample:classify -->
+```csharp
+using var classifier = await WordSenseClassifier.CreateAsync(
+    new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+
+string[] words = ["I", "read", "that", "the", "lead", "singer", "will", "bow", "and", "a", "tear", "will",
+    "fall", "when", "she", "presents", "the", "present"];
+WordSense?[] senses = await classifier.ClassifyAsync(words); // parallel to words; null = unknown or unsure
+
+for (var i = 0; i < words.Length; i++)
+{
+    Console.WriteLine(senses[i] is { } s
+        ? $"{words[i],-8} lemma={s.Lemma} sense={s.Sense} group={s.Group} tags={string.Join(",", s.Tags.Order())}"
+        : $"{words[i],-8} -");
+}
+```
+
+The output, as produced by the committed model:
+
+<!-- output:classify -->
+```text
+I        -
+read     lemma=read sense=past group=past tags=past,verb
+that     -
+the      -
+lead     lemma=lead sense=guide-noun group=guide tags=noun
+singer   -
+will     -
+bow      lemma=bow sense=bend-verb group=bend tags=verb
+and      -
+a        -
+tear     lemma=tear sense=drop group=drop tags=noun
+will     -
+fall     -
+when     -
+she      -
+presents lemma=present sense=verb group=verb tags=verb
+the      -
+present  lemma=present sense=noun group=noun tags=noun
+```
+
+Here `lead` (guiding), `tear` (a drop) and `present` (a gift) are nouns, while `bow` (to bend) and `presents` are
+verbs. `read` is the past tense (tags `past` and `verb`). `read`, `lead`, `bow`, `tear` and `present` are heteronyms
+whose sense depends on the context. Each answer carries the `lemma`, the `sense`, the coarser `group` and the `tags`
+(a part of speech plus optional qualifiers); the [senses appendix](docs/user_guide/appendix-senses.md) lists every
+supported lemma with its senses and tags.
+
+To ask only a tag-level question (noun versus verb) and to see the confidence behind each decision, reusing the
+classifier from above:
+
+<!-- sample:tags -->
+```csharp
+string[] words = ["They", "will", "record", "the", "record"];
+string?[] pos = await classifier.ClassifyTagAsync(words, ["noun", "verb"]); // "noun", "verb" or null
+bool?[] isVerb = await classifier.IsTagAsync(words, "verb");                // true, false or null
+WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);   // also for abstained words
+
+for (var i = 0; i < words.Length; i++)
+{
+    var detail = details[i] is { } d ? $"sense={d.Sense.Sense} margin={d.Margin:F2} abstained={d.Abstained}" : "-";
+    Console.WriteLine($"{words[i],-8} pos={pos[i] ?? "-"} isVerb={isVerb[i]?.ToString() ?? "-"} {detail}");
+}
+```
+
+<!-- output:tags -->
+```text
+They     pos=- isVerb=- -
+will     pos=- isVerb=- -
+record   pos=verb isVerb=True sense=verb margin=5.96 abstained=False
+the      pos=- isVerb=- -
+record   pos=noun isVerb=False sense=noun margin=7.14 abstained=False
+```
+
+`ClassifyTagAsync` and `IsTagAsync` score a tag by the best sense that carries it. `Margin` is the score of the best
+sense minus the runner-up; the classifier abstains when it is below the threshold of the lemma.
 
 ## Documentation
 
 - **User Guide**: usage, configuration and API reference
+- **Senses appendix**: every supported lemma with its senses, tags, groups and forms, generated from the corpus
+  ([docs/user_guide/appendix-senses.md](docs/user_guide/appendix-senses.md))
 - **Design, Verification and Requirements**: generated from `docs/`
 - **Trace Matrix**: requirements to test traceability
 - **Model provenance**: `docs/build_notes/model-provenance.md`
