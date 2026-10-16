@@ -18,7 +18,7 @@ public class LemmaResolutionTests
             .Concat(words.Select(w => WordSenseTableTests.Word(w.Word, w.Parts)))
             .OrderBy(l => l.Lemma, StringComparer.Ordinal)
             .ToArray();
-        return new WordSenseTable("m", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 3, trained.Mean, all, trained.Forms, rules);
+        return new WordSenseTable(all, trained.Forms, rules);
     }
 
     private static readonly PartOfSpeech[] N = [PartOfSpeech.Noun];
@@ -42,10 +42,10 @@ public class LemmaResolutionTests
         Assert.True(table.TryResolve("BATS", true, out var upper));
         Assert.Equal("bat", upper.Entry.Lemma);
         Assert.True(table.TryResolve("cat", true, out var cat));
-        Assert.Null(cat.Entry.Weights);
+        Assert.False(cat.Entry.IsContextual);
         Assert.False(table.TryResolve("cat", false, out _));
         Assert.True(table.TryResolve("bat", false, out var bat));
-        Assert.NotNull(bat.Entry.Weights);
+        Assert.True(bat.Entry.IsContextual);
         Assert.False(table.TryResolve("cats", true, out _));
         Assert.False(table.TryResolve(string.Empty, true, out _));
         Assert.False(table.TryResolve("unknown", true, out _));

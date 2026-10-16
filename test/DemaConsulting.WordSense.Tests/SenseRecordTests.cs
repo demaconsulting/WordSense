@@ -8,9 +8,7 @@ public class SenseRecordTests
 {
     private static LemmaEntry Model(params SenseDefinition[] senses)
     {
-        var kind = senses.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
-        var rows = kind == LemmaModelKind.Binary ? 1 : senses.Length;
-        return new LemmaEntry("bow", senses, new SenseWeights(kind, new float[rows * 3], new float[rows], 0.5f, 3));
+        return new LemmaEntry("bow", senses, true);
     }
 
     /// <summary>
