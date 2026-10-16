@@ -101,3 +101,33 @@ prefix	prefix-noun	noun	stress-first	-	noun (PREE-fix): a word part added to the
 prefix	prefix-verb	verb	stress-last	-	verb (pre-FIX): to add something to the front of a word, name or number: prefix the name with a title, prefixed with a zero, prefixing the code	new
 suffix	suffix-noun	noun	stress-first	-	noun (SUF-fix): a word part added to the end of a word: the suffix -ness, a plural suffix, a noun suffix	new
 suffix	suffix-verb	verb	stress-last	-	verb (suf-FIX): to add something to the end of a word, name or number: suffix the word with -ly, suffixed with a letter, suffixing the number	new
+discord	discord-noun	noun	stress-first	-	noun (DIS-cord): disagreement or conflict, or an unpleasant mixture of sounds: sow discord, family discord, a discord of voices	new
+discord	discord-verb	verb	stress-last	-	verb (dis-CORD): to disagree or be out of harmony with something (rare): the notes discord, discorded with the rest, a story discording with the facts	new
+recap	recap-noun	noun	stress-first	-	noun (REE-cap): a short summary of what has already happened: a recap of the game, a weekly recap, a quick recap	new
+recap	recap-verb	verb	stress-last	-	verb (re-CAP): to go over the main points of something again briefly: recap the story, recapped the evening news, recapping the plot	new
+advert	advert-noun	noun	stress-first	-	noun (AD-vert): British short form of advertisement: a television advert, an advert for a car, the adverts on the radio	new
+advert	advert-verb	verb	stress-last	-	verb (ad-VERT): to refer to something, or to turn attention to it, in speech or writing (formal): advert to the matter, adverted to the earlier case, as I adverted to in my letter	new
+alloy	alloy-noun	noun	stress-first	-	noun (AL-oy): a metal made by mixing two or more metals, or a metal mixed with another substance: an aluminum alloy, a steel alloy, alloy wheels	new
+alloy	alloy-verb	verb	stress-last	-	verb (al-LOY): to mix metals together, or to spoil or weaken something by adding something else: alloy the copper with tin, was alloyed with zinc, joy alloyed with sorrow	new
+primer	primer-paint	noun	paint	-	noun (PRY-mer): a first coat of paint or a substance that prepares a surface, or a cap that sets off an explosive charge: a coat of primer, wall primer, the primer in the shell	new
+primer	primer-textbook	noun	textbook	-	noun (PRIM-er): a book that introduces a subject to beginners: a primer on economics, a reading primer, a primer for new parents	new
+intermediate	intermediate-adj	adj	short-ending	-	adjective (in-ter-MEE-dee-it): in the middle between two things, or at a level between beginner and advanced: an intermediate stage, an intermediate class, intermediate skills	new
+intermediate	intermediate-noun	noun	short-ending	-	noun (in-ter-MEE-dee-it): something in the middle, such as a substance formed between steps of a process: a chemical intermediate, an intermediate in the reaction, the intermediates of the synthesis	new
+intermediate	intermediate-verb	verb	long-ending	-	verb (in-ter-MEE-dee-ate, ending like ate): to act as a go-between, or to mediate (rare): intermediate between the parties, intermediated the deal, intermediating the dispute	new
+wicked	wicked-evil	adj	evil	-	adjective (WICK-id): morally bad or evil, or playfully naughty: a wicked witch, a wicked smile, wicked deeds	new
+wicked	wicked-wick	verb	wick	-	verb (WICKT, one syllable): past tense of wick, drew moisture away like a candle wick: the fabric wicked away sweat, moisture wicked from the skin, the oil wicked up the cloth	new
+tier	tier-noun	noun	row	-	noun (TEER): one of several rows, levels or ranks placed one above another: the upper tier, a three-tier cake, tiers of seats	new
+tier	tier-verb	verb	row	-	verb (TEER): to arrange or build something in tiers: a tiered cake, tiered seating, the fountain tiers upward	new
+tier	tier-one-who-ties	noun	ties	-	noun (TIE-er, rhymes with higher): a person who ties things: a fly tier, a rope tier, a bow tier	new
+tower	tower-noun	noun	structure	-	noun (TOW-er, rhymes with flour): a tall narrow building or structure, or a tall stack of things: a clock tower, the Eiffel Tower, a control tower, a tower of blocks	new
+tower	tower-verb	verb	structure	-	verb (TOW-er, rhymes with flour): to rise high above something, or to be much taller or greater than others: towered over the crowd, towering above the town, mountains tower overhead	new
+tower	tower-one-who-tows	noun	tows	-	noun (TOE-er, rhymes with lower): a person or vehicle that tows something: a barge tower, the tower hired to haul the car, the car's tower	new
+shower	shower-noun	noun	rain	-	noun (SHOW-er, rhymes with flower): a brief fall of rain, a spray of water for washing, or a party for a gift occasion: an April shower, take a shower, a baby shower, a shower of sparks	new
+shower	shower-verb	verb	rain	-	verb (SHOW-er, rhymes with flower): to wash under a shower, or to give or cover someone with a great many things: showered before bed, showered her with praise, showering the crowd with confetti	new
+shower	shower-one-who-shows	noun	shows	-	noun (SHOH-er, rhymes with lower): a person who shows something: a shower of horses, a dog shower, a shower of films	new
+sewer	sewer-drain	noun	drain	-	noun (SOO-er): an underground pipe or channel that carries away waste water: a storm sewer, the city sewer, sewer rats, a sewer line	new
+sewer	sewer-seamstress	noun	sews	-	noun (SOH-er, rhymes with lower): a person who sews, such as a tailor or seamstress: a skilled sewer, a quick sewer, the sewers in the factory	new
+forearm	forearm-noun	noun	stress-first	-	noun (FOR-arm, stress on the first syllable): the part of the arm between the elbow and the wrist: a tattoo on her forearm, forearm muscles, broke his forearm	new
+forearm	forearm-verb	verb	stress-last	-	verb (for-ARM, stress on the last syllable): to arm or prepare someone beforehand against danger: forewarned is forearmed, forearmed with facts, forearm yourself against attack	new
+alum	alum-mineral	noun	mineral	-	noun (AL-um, first syllable like pal): a pale mineral salt used in dyeing, tanning and pickling and to stop bleeding: a pinch of alum, alum crystals, potassium alum	new
+alum	alum-graduate	noun	graduate	-	noun (a-LUM, like alumni): informal short form of alumnus or alumna, a former student of a school or college: a Harvard alum, an alum of the class of 1990, alums of the university	new

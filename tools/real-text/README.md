@@ -41,7 +41,11 @@ lemmas of Phase 3a; only `conjunct`, `overhead` and `uptown` reached the thresho
 `collect`, `export`, `accent`, `upgrade`, `second`, `detail` and `combat`; noun and verb context patterns enrich the
 rarer reading, see `docs/build_notes/new-lemma-decisions.md`) and
 `targets7.tsv` (the 13 lemmas of Phase 4 batch 2: `resign`, `reset`, `intern`, `recreate`, `perfume`, `dictate`,
-`recess`, `complex`, `frequent`, `ally`, `traverse`, `prefix` and `suffix`). Use the
+`recess`, `complex`, `frequent`, `ally`, `traverse`, `prefix` and `suffix`) and
+`targets8.tsv` (the 13 lemmas of Phase 4 batch 3: `discord`, `recap`, `advert`, `alloy`, `primer`, `intermediate`,
+`wicked`, `tier`, `tower`, `shower`, `sewer`, `forearm` and `alum`) and
+`targets9.tsv` (the 13 lemmas of Phase 4 batch 4: `supposed`, `blessed`, `august`, `defense`, `bases`, `costume`,
+`romance`, `submarine`, `excerpt`, `annex`, `slough`, `tarry` and `underscore`). Use the
 builder commands `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge` and `real-import`
 (or `real-eval-import`) to judge the candidates blind and write the corpus and its provenance. Phase 3b adds
 senses of existing lemmas as extra anchors and a separate real holdout with `real-judge-export --gap-plan real-gap-1`
