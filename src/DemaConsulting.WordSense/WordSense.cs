@@ -29,9 +29,9 @@ public sealed class WordSense
     ///     Initializes a new instance of the <see cref="WordSense"/> class.
     /// </summary>
     /// <param name="lemma">The lemma.</param>
-    /// <param name="sense">The sense label.</param>
+    /// <param name="sense">The sense name.</param>
     /// <param name="tags">The tags; already validated.</param>
-    /// <param name="group">The group name, or null for a group of its own (the sense label).</param>
+    /// <param name="group">The group name, or null for a group of its own (the sense name).</param>
     internal WordSense(string lemma, string sense, IEnumerable<string> tags, string? group = null)
     {
         Lemma = lemma;

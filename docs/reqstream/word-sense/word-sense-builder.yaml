@@ -85,6 +85,7 @@ sections:
           - WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin
           - WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates
           - WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing
+          - WordSenseBuilder_RealImport_Import_MalformedDecisionsRow_Throws
           - WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers
           - WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws
           - WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut
@@ -137,6 +138,7 @@ sections:
         tests:
           - WordSenseBuilder_NounVerbGate_Evaluate_AppliesTheThresholds
           - WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut
+          - WordSenseBuilder_Program_NounVerbGate_UsageErrors_AreReported
       - id: WordSense-Builder-LearningCurve
         title: >-
           The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered

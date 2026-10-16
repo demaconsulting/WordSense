@@ -5,7 +5,11 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     Returned by <see cref="IWordSenseClassifier.ClassifyDetailAsync"/>, which reports a detail even when
-///     the classifier abstained, so a caller can apply its own threshold to <see cref="Margin"/>.
+///     the classifier abstained, so a caller can apply its own threshold to <see cref="Margin"/>. The classifier
+///     does not expose the threshold it applied; the effective threshold of a lemma is
+///     <see cref="LemmaModel.AbstainMargin"/> multiplied by
+///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>, and the models are public through
+///     <see cref="WordSenseTable.LoadEmbedded"/>. Otherwise use <see cref="Abstained"/>.
 /// </remarks>
 /// <example>
 ///     <code>
@@ -31,9 +35,10 @@ namespace DemaConsulting.WordSense;
 ///     The score of the best sense minus the score of the runner-up. A score is the linear activation of a
 ///     sense (feature vector times the sense's weights plus bias; for a two-sense lemma the scores are
 ///     <c>-a</c> and <c>+a</c>), so higher is better but the scale is not a probability. The margin is the
-///     value compared with the lemma's abstain threshold; it is comparable only within one lemma, or
-///     relative to the default threshold of that lemma, because each lemma has its own threshold and that
-///     per-lemma threshold is not exposed.
+///     value compared with the lemma's abstain threshold (<see cref="LemmaModel.AbstainMargin"/> times
+///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>); it is comparable only within one lemma,
+///     because each lemma has its own threshold. The classifier does not expose the threshold itself; use
+///     <see cref="Abstained"/> unless you compute the threshold from the embedded table.
 /// </param>
 /// <param name="RunnerUp">The second-best sense.</param>
 /// <param name="RunnerUpMargin">

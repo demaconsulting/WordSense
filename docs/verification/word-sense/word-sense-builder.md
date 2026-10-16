@@ -87,6 +87,9 @@ table.
   threshold fail with the reason and numbers; others pass.
 - **WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut**: dropping removes the lemma from the
   corpus files, records it, and a later import skips it.
+- **WordSenseBuilder_Program_NounVerbGate_UsageErrors_AreReported**: `nounverb-gate` without `--model`, with a
+  threshold that is not a number or outside 0 to 1 (including NaN), or with an `--apply` other than `true` or `false`
+  returns exit code 1 and a message naming the option, before any file is read.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
@@ -129,5 +132,11 @@ table.
 ## Requirements Coverage
 
 `WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
-`WordSense-Builder-Inventory`, `WordSense-Builder-Provenance`, `WordSense-Builder-LearningCurve`,
+`WordSense-Builder-Inventory`, `WordSense-Builder-Provenance`, `WordSense-Builder-AuthoredImport`,
+`WordSense-Builder-NounVerbImport`, `WordSense-Builder-NounVerbGate`, `WordSense-Builder-LearningCurve`,
 `WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas` and `WordSense-Builder-Appendix`.
+
+The `real-eval-import` and `real-eval` commands (`RealEval`) have no requirement of their own: they need a model and
+blind-judged candidate files, so a unit test is not practical. Their option parsing is covered by
+`WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption`, and the real-eval rows are read by
+`WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance`.

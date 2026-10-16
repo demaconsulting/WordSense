@@ -330,6 +330,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// <returns>A classifier that owns its encoder and must be disposed.</returns>
     /// <exception cref="WordSenseModelDownloadException">Thrown when the model could not be downloaded.</exception>
     /// <exception cref="WordSenseModelMismatchException">Thrown when the embedded table does not match the model.</exception>
+    /// <exception cref="WordSenseTableFormatException">Thrown when the embedded table is missing or malformed.</exception>
     /// <exception cref="FileNotFoundException">Thrown when a file of the model directory is missing.</exception>
     /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match the pinned value.</exception>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when an option value is out of range (checked after the model is obtained).</exception>

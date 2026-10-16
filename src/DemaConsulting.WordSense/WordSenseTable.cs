@@ -14,8 +14,8 @@ namespace DemaConsulting.WordSense;
 ///     Binary layout (little-endian): magic <c>WSNS</c>, u16 version, u16 flags, model id string,
 ///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], the tag dictionary (u16 tag count,
 ///     tag strings in ordinal order), u32 lemma count, lemmas in ordinal order (string lemma, u16 sense
-///     count, per sense: string label, u8 tag count, u16 tag indexes in ascending order, string group (empty
-///     when the group is the label); then u8 kind,
+///     count, per sense: string name, u8 tag count, u16 tag indexes in ascending order, string group (empty
+///     when the group is the name); then u8 kind,
 ///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms in ordinal order (string form, u32 lemma index), and a trailing
 ///     32-byte SHA-256 of everything before it. Strings are a u16 byte length followed by UTF-8.
 ///     </para>
@@ -327,7 +327,7 @@ public sealed class WordSenseTable
                     WriteU16(buffer, index);
                 }
 
-                // The group is written empty when it equals the sense label (the default)
+                // The group is written empty when it equals the sense name (the default)
                 WriteString(buffer, sense.Group == sense.Sense ? string.Empty : sense.Group);
             }
 
@@ -462,7 +462,7 @@ public sealed class WordSenseTable
     }
 
     /// <summary>
-    ///     Reads one sense definition: its label and its tag indexes.
+    ///     Reads one sense definition: its name and its tag indexes.
     /// </summary>
     /// <param name="reader">The table reader.</param>
     /// <param name="tags">The tag dictionary.</param>

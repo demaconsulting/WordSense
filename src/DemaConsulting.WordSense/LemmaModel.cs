@@ -73,7 +73,7 @@ public sealed class LemmaModel
             throw new ArgumentException("Model values must be finite.", nameof(weights));
         }
 
-        // Every sense needs valid tags, and labels must be unique
+        // Every sense needs valid tags, and names must be unique
         foreach (var definition in senses)
         {
             ArgumentNullException.ThrowIfNull(definition);
@@ -82,7 +82,7 @@ public sealed class LemmaModel
 
         if (senses.Select(s => s.Name).Distinct(StringComparer.Ordinal).Count() != senses.Count)
         {
-            throw new ArgumentException("Sense labels must be unique.", nameof(senses));
+            throw new ArgumentException("Sense names must be unique.", nameof(senses));
         }
 
         Lemma = lemma;

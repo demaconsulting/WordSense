@@ -6,7 +6,8 @@
 `build --model DIR --corpus DIR --output FILE [--report FILE]`,
 `import-batches --source DIR --corpus DIR [--max N]`, the audit commands (`audit-export`, `audit-adjudicate`,
 `audit-merge`, `audit-report`, `validate-pos`), `apply-relabel` and the real-text commands (`real-gap`,
-`real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-eval-import`, `real-eval`,
+`real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-gap-import`,
+`real-authored-import`, `nounverb-import`, `nounverb-gate`, `real-eval-import`, `real-eval`,
 `validate-provenance`) and the analysis commands (`learning-curve --corpus DIR --model DIR --out DIR [--subsets N]
 [--seed N] [--lemmas a,b]`, `error-diagnosis --corpus DIR --model DIR --out DIR [--lemmas a,b]` and
 `weak-lemmas --analysis DIR [--report FILE]`) and the documentation command
@@ -105,7 +106,9 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   a licence outside the allowed list, a repeat of an existing corpus sentence or of another input row, and a target
   that is not a form of the lemma or is a collision form. Licences are normalized (`Public domain (US)` to
   `Public domain`, `CC0` to `CC0 1.0`; the origin `user-supplied` gets `MIT (project-authored)`). A lemma is trained
-  only with at least 14 + 8 rows for both noun and verb. Each sense is split by source group (Tatoeba contributor, UD
+  only with at least 14 + 8 rows for both noun and verb; a lemma that falls short is reported as `dominant-use` when
+  its smaller sense has fewer than 3 rows (`min(noun, verb) < 3`) and as `insufficient-data` otherwise. Each sense is
+  split by source group (Tatoeba contributor, UD
   document, Gutenberg work, Wiktionary page): the holdout (30 %, between 8 and 12 rows) takes whole small groups
   first and the anchors (at most 40) are taken round-robin from the other groups; rows of a holdout group serve as
   anchors only when the minimum cannot otherwise be met, and are reported as shared. The order inside a group is by a
@@ -118,9 +121,13 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   computed before anything is written, and a rerun with the same inputs replaces the previous output of the same
   name byte for byte. `RealPlan.ReadExisting` ignores `nounverb-*.tsv`, and `validate-provenance` checks them with
   the extra origin `user-supplied`.
-- `nounverb-gate` (`NounVerbGate`) applies the Phase 5 quality gate to a build report (`--corpus DIR --report FILE
-  [--model DIR] [--results FILE] [--apply true] [--min-best 0.90 --min-sense 0.80 --min-coverage 0.70]`). A lemma
-  passes when its holdout best-sense accuracy, every sense's answered accuracy and its coverage meet the thresholds.
+- `nounverb-gate` (`NounVerbGate`) applies the Phase 5 quality gate (`--corpus DIR --model DIR [--results FILE]
+  [--report FILE] [--apply true|false] [--min-best 0.90 --min-sense 0.80 --min-coverage 0.70]`). `--model` is required:
+  the command builds the table itself, in memory, from `anchors`, `holdout`, `senses` and `forms/speech.tsv` (the only
+  forms file) of the corpus; it reads no build report. `--results` is the output TSV and `--report` the output Markdown
+  report. A lemma passes when its holdout best-sense accuracy, every sense's answered accuracy and its coverage meet the
+  thresholds, each of which must be a number from 0 to 1. `--apply` must be `true` or `false` (default `false`, a dry
+  run); any other value is a usage error.
   With `--apply true` the failing lemmas are moved from `nounverb-*.tsv` into `corpus/audit/nounverb-dropped.tsv`
   (lemma, reason, numbers) and their forms are removed; later `nounverb-import` runs skip them. Rebuild afterwards,
   and rerun until nothing more fails.
@@ -192,6 +199,14 @@ still applies to it.
   not caught, so an internal inconsistency is not hidden.
 - `validate-provenance` writes one line per problem to the error writer and exits 1 when there is any problem,
   otherwise 0.
+- `real-authored-import` and `nounverb-import` compute everything before writing, so an error writes nothing.
+  `nounverb-import` rejects a `forms/speech.tsv` line with fewer than two columns with an `InvalidDataException`
+  naming file and line.
+- `nounverb-gate` reports a missing `--corpus` or `--model`, a threshold that is not a number from 0 to 1 (NaN
+  included) and an `--apply` value other than `true` or `false` as usage errors before it reads anything, and a missing
+  corpus or model file as an `IOException`; all exit 1. `NounVerbGate.Drop` rewrites several files in turn and is not
+  atomic: if it fails part way, some files are already rewritten, so restore the corpus from version control and run
+  the gate again.
 - Readers of tab-separated files (`rows.tsv`, judge input and answer files, `dropped-rows.tsv`, the candidate and
   judgement files, `relabel-decisions.tsv`, the restore plan, provenance files) reject a row with an unacceptable
   number of columns with an `InvalidDataException` that names the file and line. The accepted ranges are: judge
@@ -201,7 +216,8 @@ still applies to it.
 ## Key Methods and Callers
 
 `Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `PosAudit`, `Relabeler`, `RealPlan`,
-`RealJudge`, `RealImport`, `RealEval`, `LearningCurve`, `ErrorDiagnosis`, `WeakLemmas` or `AppendixGenerator`. It is
+`RealJudge`, `RealImport`, `RealGap`, `RealAuthored`, `NounVerbImport`, `NounVerbGate`, `RealEval`, `LearningCurve`,
+`ErrorDiagnosis`, `WeakLemmas` or `AppendixGenerator`. It is
 called by `Main` and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by
 the library or the CI build.
 

@@ -319,6 +319,14 @@ internal static partial class NounVerbImport
         var speechLines = File.Exists(speechPath)
             ? File.ReadAllLines(speechPath, new UTF8Encoding(false)).Select(l => l.TrimEnd('\r')).Where(l => l.Length > 0).ToList()
             : ["form\tlemma\tlabels"];
+        for (var i = 1; i < speechLines.Count; i++)
+        {
+            if (speechLines[i].Split('\t').Length < 2)
+            {
+                throw new InvalidDataException($"{speechPath}:{i + 1}: expected the columns form, lemma and labels separated by tabs.");
+            }
+        }
+
         var existingForms = (File.Exists(speechPath) ? Corpus.ReadForms(speechPath) : []).Where(f => !previous.Contains(f.Lemma)).ToList();
         var taken = ReadExistingSentences(corpus, ownFile);
 
@@ -714,7 +722,7 @@ internal static partial class NounVerbImport
             report.AppendLine($"  dropped {count}: {reason}");
         }
 
-        report.AppendLine($"lemmas trained {trained.Count}; not trained {lemmas - trained.Count} (rows at or below the minimums of a sense) and {others.Count} excluded or already trained.");
+        report.AppendLine($"lemmas trained {trained.Count}; not trained {lemmas - trained.Count} (rows below the minimums of a sense) and {others.Count} excluded or already trained.");
         report.AppendLine($"rows written: anchors {anchors.Count}, holdout {holdout.Count}, surplus not used {surplus}.");
         report.AppendLine($"forms written: {trained.Sum(l => formsOf[l].Count)}; collision forms left out: {collisions.Count(c => trained.Contains(c.Lemma))}.");
         foreach (var (lemma, form, reason) in collisions.Where(c => trained.Contains(c.Lemma)).Take(50))

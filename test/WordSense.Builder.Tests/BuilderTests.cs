@@ -623,6 +623,33 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains($"--{option} must be an integer", error.ToString(), StringComparison.Ordinal);
     }
 
+    /// <summary>
+    ///     The noun/verb gate command reports a missing model, an out-of-range threshold and a malformed
+    ///     <c>--apply</c> as usage errors, before reading the corpus or the model.
+    /// </summary>
+    /// <param name="expected">The text the error message must contain.</param>
+    /// <param name="options">The options after <c>nounverb-gate --corpus c</c>.</param>
+    [Theory]
+    [InlineData("Missing required option --model", new string[0])]
+    [InlineData("--min-best must be between", new[] { "--model", "m", "--min-best", "1.5" })]
+    [InlineData("--min-sense must be between", new[] { "--model", "m", "--min-sense", "NaN" })]
+    [InlineData("--min-coverage must be a number", new[] { "--model", "m", "--min-coverage", "abc" })]
+    [InlineData("--apply must be true or false", new[] { "--model", "m", "--apply", "yes" })]
+    public void WordSenseBuilder_Program_NounVerbGate_UsageErrors_AreReported(string expected, string[] options)
+    {
+        // Arrange
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+        string[] args = ["nounverb-gate", "--corpus", "c", .. options];
+
+        // Act
+        var code = Program.Run(args, output, error);
+
+        // Assert: exit code 1 and a message naming the problem
+        Assert.Equal(1, code);
+        Assert.Contains(expected, error.ToString(), StringComparison.Ordinal);
+    }
+
     private string PrepareCorpus()
     {
         Write("corpus/forms/speech.tsv", "form\tlemma\tlabels\nbank\tbank\tnoun,verb\nnovel\tnovel\tnoun\nhold\thold\tnoun,verb\n");

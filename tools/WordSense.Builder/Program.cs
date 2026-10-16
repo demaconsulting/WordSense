@@ -333,12 +333,14 @@ public static class Program
     private static int RunNounVerbGate(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
+        var modelDirectory = Require(options, "model");
+        var apply = BoolOption(options, "apply");
         var defaults = new GatePolicy();
         var policy = new GatePolicy(
-            DoubleOption(options, "min-best", defaults.MinBestSense),
-            DoubleOption(options, "min-sense", defaults.MinSenseAnswered),
-            DoubleOption(options, "min-coverage", defaults.MinCoverage));
-        var location = WordSenseModelLocation.FromDirectory(Require(options, "model"));
+            DoubleOption(options, "min-best", defaults.MinBestSense, 0, 1),
+            DoubleOption(options, "min-sense", defaults.MinSenseAnswered, 0, 1),
+            DoubleOption(options, "min-coverage", defaults.MinCoverage, 0, 1));
+        var location = WordSenseModelLocation.FromDirectory(modelDirectory);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
@@ -364,7 +366,7 @@ public static class Program
             File.WriteAllText(reportPath, NounVerbGate.RenderMarkdown(results), new UTF8Encoding(false));
         }
 
-        if (options.GetValueOrDefault("apply") == "true")
+        if (apply)
         {
             NounVerbGate.Drop(corpus, failed);
             output.WriteLine($"Moved {failed.Count} lemmas out of the corpus into audit/{NounVerbGate.DroppedFile}.");
@@ -373,16 +375,34 @@ public static class Program
         return 0;
     }
 
-    private static double DoubleOption(Dictionary<string, string> options, string name, double fallback)
+    private static bool BoolOption(Dictionary<string, string> options, string name)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return false;
+        }
+
+        return text switch
+        {
+            "true" => true,
+            "false" => false,
+            _ => throw new ArgumentException($"Option --{name} must be true or false.")
+        };
+    }
+
+    private static double DoubleOption(Dictionary<string, string> options, string name, double fallback, double min = double.NegativeInfinity, double max = double.PositiveInfinity)
     {
         if (!options.TryGetValue(name, out var text))
         {
             return fallback;
         }
 
-        return double.TryParse(text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var value)
-            ? value
+        var value = double.TryParse(text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var parsed)
+            ? parsed
             : throw new ArgumentException($"Option --{name} must be a number.");
+        return value >= min && value <= max
+            ? value
+            : throw new ArgumentException($"Option --{name} must be between {min} and {max}.");
     }
 
     private static List<Candidate> ReadCandidateFiles(string list) => list.Split(',').SelectMany(RealJudge.ReadCandidates).ToList();
