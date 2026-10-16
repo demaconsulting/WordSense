@@ -1,756 +1,785 @@
 lemma	set	origin	gold	predicted	answered	s_same	s_other	class	sentence
-absent	holdout	llm-corpus	adj	adj	no	0.7311	0.7320	coverage-gap	Mom, why is your phone number {absent} from the school directory again?
-absent	holdout	llm-corpus	adj	adj	no	0.8557	0.8756	overlap	Players who are {absent} without notice will be removed from the roster.
-absent	holdout	llm-corpus	adj	adj	no	0.7887	0.7725	overlap	The silence was so complete that every sound seemed {absent} from the world.
+absent	holdout	llm-corpus	adj	adj	no	0.7312	0.7319	coverage-gap	Mom, why is your phone number {absent} from the school directory again?
+absent	holdout	llm-corpus	adj	adj	no	0.8557	0.8755	overlap	Players who are {absent} without notice will be removed from the roster.
+absent	holdout	llm-corpus	adj	adj	no	0.7888	0.7726	overlap	The silence was so complete that every sound seemed {absent} from the world.
 abstract	holdout	llm-corpus	verb	adj	no	0.8602	0.8488	overlap	Good librarians {abstract} and index each document as it arrives.
-abuse	holdout	llm-corpus	verb	verb	no	0.8156	0.8049	overlap	It is a crime to deliberately {abuse} or neglect an elderly resident of the home.
-abuse	holdout	llm-corpus	noun	noun	no	0.9333	0.7904	ambiguous	The commission documented widespread {abuse} of power in the regional police force.
+abuse	holdout	llm-corpus	verb	verb	no	0.8158	0.8049	overlap	It is a crime to deliberately {abuse} or neglect an elderly resident of the home.
+abuse	holdout	llm-corpus	noun	noun	no	0.9334	0.7906	ambiguous	The commission documented widespread {abuse} of power in the regional police force.
 addict	holdout	llm-corpus	noun	noun	no	0.9484	0.9566	overlap	Clinics see an {addict} in crisis almost every night.
-addict	holdout	llm-corpus	verb	noun	no	0.9006	0.8802	overlap	Some drugs {addict} so quickly that a single dose can start the cycle.
-adulterate	holdout	llm-corpus	adj	verb	no	0.7822	0.7838	overlap	Her argument was that no {adulterate} remedy should reach the pharmacy shelves.
-adulterate	holdout	llm-corpus	verb	verb	no	0.7426	0.7690	coverage-gap	Some bartenders {adulterate} expensive whiskey with cheaper blends.
-adulterate	holdout	llm-corpus	adj	adj	no	0.8273	0.8541	overlap	The chemist found the oil to be {adulterate} and unfit for sale.
-adulterate	holdout	llm-corpus	verb	verb	no	0.8337	0.8086	overlap	The dairy was fined for deciding to {adulterate} its product with water.
-adulterate	holdout	llm-corpus	verb	verb	no	0.8760	0.8030	ambiguous	The new law makes it a felony to knowingly {adulterate} any pharmaceutical product.
-adulterate	holdout	llm-corpus	adj	adj	no	0.7781	0.7585	ambiguous	The poet wrote of love that was never {adulterate} nor tainted with doubt.
-adulterate	holdout	llm-corpus	verb	verb	no	0.7299	0.7146	coverage-gap	Unscrupulous vendors {adulterate} honey with cheap corn syrup.
-affiliate	holdout	llm-corpus	noun	verb	no	0.8732	0.8403	overlap	Each hospital is a university {affiliate} with shared research facilities.
-affiliate	holdout	llm-corpus	noun	noun	no	0.9062	0.8826	overlap	Earn commissions as an {affiliate} by sharing links with your readers.
-affiliate	holdout	llm-corpus	verb	verb	no	0.8572	0.8631	overlap	The labs {affiliate} with the regional university for funding.
-agglomerate	holdout	llm-corpus	noun	verb	no	0.7375	0.7392	coverage-gap	Researchers found a dense {agglomerate} of metal particles in the filter.
-agglomerate	holdout	llm-corpus	verb	noun	no	0.8687	0.8373	overlap	You can see the nanoparticles {agglomerate} in the second image.
+addict	holdout	llm-corpus	verb	noun	no	0.9005	0.8801	overlap	Some drugs {addict} so quickly that a single dose can start the cycle.
+adulterate	holdout	llm-corpus	adj	verb	no	0.7818	0.7838	overlap	Her argument was that no {adulterate} remedy should reach the pharmacy shelves.
+adulterate	holdout	llm-corpus	verb	verb	no	0.7426	0.7678	coverage-gap	Some bartenders {adulterate} expensive whiskey with cheaper blends.
+adulterate	holdout	llm-corpus	adj	adj	no	0.8271	0.8539	overlap	The chemist found the oil to be {adulterate} and unfit for sale.
+adulterate	holdout	llm-corpus	verb	verb	no	0.8333	0.8082	overlap	The dairy was fined for deciding to {adulterate} its product with water.
+adulterate	holdout	llm-corpus	verb	verb	no	0.8758	0.8026	ambiguous	The new law makes it a felony to knowingly {adulterate} any pharmaceutical product.
+adulterate	holdout	llm-corpus	adj	adj	no	0.7777	0.7580	ambiguous	The poet wrote of love that was never {adulterate} nor tainted with doubt.
+adulterate	holdout	llm-corpus	verb	verb	no	0.7291	0.7134	coverage-gap	Unscrupulous vendors {adulterate} honey with cheap corn syrup.
+affiliate	holdout	llm-corpus	noun	verb	no	0.8731	0.8402	overlap	Each hospital is a university {affiliate} with shared research facilities.
+affiliate	holdout	llm-corpus	noun	noun	no	0.9060	0.8824	overlap	Earn commissions as an {affiliate} by sharing links with your readers.
+affiliate	holdout	llm-corpus	verb	verb	no	0.8570	0.8630	overlap	The labs {affiliate} with the regional university for funding.
+agglomerate	holdout	llm-corpus	noun	verb	no	0.7371	0.7382	coverage-gap	Researchers found a dense {agglomerate} of metal particles in the filter.
+agglomerate	holdout	llm-corpus	verb	noun	no	0.8682	0.8367	overlap	You can see the nanoparticles {agglomerate} in the second image.
 aggregate	holdout	llm-corpus	verb	noun	yes	0.7646	0.8920	ambiguous	Particles of silt {aggregate} in still water and settle out.
-aggregate	holdout	llm-corpus	noun	noun	no	0.8050	0.7199	ambiguous	Sand and gravel {aggregates} are in short supply after the building boom.
-animate	holdout	llm-corpus	adj	adj	no	0.8205	0.8032	overlap	Is any {animate} life possible in the sulfurous water of that cave?
-animate	holdout	llm-corpus	adj	verb	no	0.7911	0.7830	overlap	The tale involves an {animate} scarecrow who wanders the fields at night.
-animate	holdout	llm-corpus	verb	adj	no	0.8592	0.8517	overlap	What spirit could {animate} such a lifeless place?
+aggregate	holdout	llm-corpus	noun	noun	no	0.8051	0.7201	ambiguous	Sand and gravel {aggregates} are in short supply after the building boom.
+animate	holdout	llm-corpus	adj	adj	no	0.8207	0.8035	overlap	Is any {animate} life possible in the sulfurous water of that cave?
+animate	holdout	llm-corpus	adj	verb	no	0.7913	0.7832	overlap	The tale involves an {animate} scarecrow who wanders the fields at night.
+animate	holdout	llm-corpus	verb	adj	no	0.8594	0.8519	overlap	What spirit could {animate} such a lifeless place?
 arithmetic	holdout	llm-corpus	noun	adj	yes	0.8890	0.8965	overlap	Binary {arithmetic} is the foundation of every digital computer.
-arithmetic	holdout	llm-corpus	adj	noun	yes	0.8425	0.8868	overlap	Population grows geometrically while food supply, he argued, grows at an {arithmetic} rate.
+arithmetic	holdout	llm-corpus	adj	noun	yes	0.8424	0.8867	overlap	Population grows geometrically while food supply, he argued, grows at an {arithmetic} rate.
 arsenic	holdout	llm-corpus	adj	noun	no	0.8940	0.8966	overlap	Wood preservers once relied on copper salts along with {arsenic} acid.
 aspirate	holdout	llm-corpus	adj	adj	no	0.9597	0.9180	overlap	An {aspirate} stop is released with a burst of air.
-aspirate	holdout	llm-corpus	noun	noun	no	0.9254	0.8819	overlap	Cockney speakers famously drop the {aspirate} at the start of words.
-aspirate	holdout	llm-corpus	adj	noun	no	0.8311	0.8912	overlap	Greek grammars describe a rough, {aspirate} form of the vowel at the start of certain words.
-aspirate	holdout	llm-corpus	noun	noun	no	0.9188	0.8807	overlap	In Spanish, the letter h is not an {aspirate}, and is simply silent.
-aspirate	holdout	llm-corpus	adj	noun	no	0.8602	0.8479	overlap	In some dialects the initial consonant is distinctly {aspirate}, with a puff of breath.
-aspirate	holdout	llm-corpus	verb	verb	no	0.7681	0.7754	ambiguous	Pull back on the plunger to {aspirate} for blood before delivering the dose.
-aspirate	holdout	llm-corpus	noun	verb	no	0.5998	0.6120	coverage-gap	She lost her {aspirates} when she moved from the north to London.
-aspirate	holdout	llm-corpus	adj	adj	no	0.8501	0.8481	overlap	The linguist marked each {aspirate} consonant in the transcription with a raised h.
-aspirate	holdout	llm-corpus	adj	adj	no	0.8958	0.8456	ambiguous	The second syllable begins with a strongly {aspirate} sound, unlike the first.
-attenuate	holdout	llm-corpus	adj	adj	no	0.6236	0.5538	coverage-gap	The fossil's {attenuate} snout suggests a diet of small fish.
+aspirate	holdout	llm-corpus	noun	noun	no	0.9254	0.8820	overlap	Cockney speakers famously drop the {aspirate} at the start of words.
+aspirate	holdout	llm-corpus	adj	noun	no	0.8311	0.8910	overlap	Greek grammars describe a rough, {aspirate} form of the vowel at the start of certain words.
+aspirate	holdout	llm-corpus	noun	noun	no	0.9187	0.8805	overlap	In Spanish, the letter h is not an {aspirate}, and is simply silent.
+aspirate	holdout	llm-corpus	adj	noun	no	0.8604	0.8479	overlap	In some dialects the initial consonant is distinctly {aspirate}, with a puff of breath.
+aspirate	holdout	llm-corpus	verb	verb	no	0.7685	0.7751	ambiguous	Pull back on the plunger to {aspirate} for blood before delivering the dose.
+aspirate	holdout	llm-corpus	noun	verb	no	0.5987	0.6124	coverage-gap	She lost her {aspirates} when she moved from the north to London.
+aspirate	holdout	llm-corpus	adj	adj	no	0.8499	0.8478	overlap	The linguist marked each {aspirate} consonant in the transcription with a raised h.
+aspirate	holdout	llm-corpus	adj	adj	no	0.8959	0.8456	ambiguous	The second syllable begins with a strongly {aspirate} sound, unlike the first.
+attenuate	holdout	llm-corpus	adj	adj	no	0.6236	0.5548	coverage-gap	The fossil's {attenuate} snout suggests a diet of small fish.
 bass	holdout	llm-corpus	music	fish	yes	0.9277	0.9545	overlap	He took up the {bass} at age twelve.
-bass	holdout	llm-corpus	music	fish	no	0.9145	0.9156	overlap	Heavy {bass} rattled the car doors.
+bass	holdout	llm-corpus	music	fish	no	0.9145	0.9157	overlap	Heavy {bass} rattled the car doors.
 bass	holdout	llm-corpus	music	fish	yes	0.9274	0.9536	overlap	The neighbors complained about the {bass} coming from the party.
 bass	holdout	llm-corpus	music	fish	yes	0.9184	0.9297	overlap	The upright {bass} stood in the corner of the studio.
 bass	holdout	llm-corpus	fish	music	yes	0.9310	0.9421	overlap	The {bass} season opens on Saturday.
 bass	real-eval	real	music	fish	yes	0.8041	0.8715	overlap	A figure moved behind him, and thinking it was still the girl with the broom Jude took no notice, till the person came close and laid her fingers lightly upon his {bass} hand.
-bifurcate	holdout	llm-corpus	adj	adj	no	0.8957	0.8619	overlap	A distinctly {bifurcate} root system anchors the shrub.
-bifurcate	holdout	llm-corpus	verb	verb	no	0.8685	0.8540	overlap	At that point the trail begins to {bifurcate}, so watch for the sign.
-bifurcate	holdout	llm-corpus	verb	verb	no	0.9033	0.8877	overlap	Streams {bifurcate} where they meet the rocks.
+bifurcate	holdout	llm-corpus	adj	adj	no	0.8959	0.8621	overlap	A distinctly {bifurcate} root system anchors the shrub.
+bifurcate	holdout	llm-corpus	verb	verb	no	0.8686	0.8540	overlap	At that point the trail begins to {bifurcate}, so watch for the sign.
+bifurcate	holdout	llm-corpus	verb	verb	no	0.9034	0.8878	overlap	Streams {bifurcate} where they meet the rocks.
 bifurcate	holdout	llm-corpus	adj	verb	no	0.8990	0.9159	overlap	The river ends in a {bifurcate} delta of narrow channels.
-bifurcate	holdout	llm-corpus	adj	adj	no	0.8502	0.8275	overlap	Under the lens, the hair appeared {bifurcate} near the end.
-bow	holdout	real	weapon	weapon	no	0.9063	0.8963	overlap	"There," said he, drawing from the casket a large {bow} of blue ribbon all sparkling with diamonds, "there are the precious studs which I have taken an oath should be buried with me.
-bow	holdout	real	bend-noun	weapon	no	0.9339	0.9217	overlap	"Walk in, Mr. Franklin," he said, opening the door behind him, with his quaint old-fashioned {bow}.
-bow	holdout	llm-corpus	weapon	weapon	no	0.8471	0.8306	overlap	A hair {bow} came untied.
-bow	holdout	real	bend-noun	weapon	yes	0.9147	0.9090	overlap	The boy gave me a {bow}.
-bow	holdout	real	weapon	bend-noun	no	0.8247	0.8248	overlap	Tom ripped off his {bow} tie.
-bow	holdout	real	bend-noun	bend-noun	no	0.8879	0.8860	overlap	Twenty times they thought the whirling eddies were sweeping them to destruction, when the master-hand of their pilot would bring the {bows} of the canoe to stem the rapid.
-bow	real-eval	real	bend-noun	bend-noun	no	0.9166	0.9126	overlap	'Thank'ee, Sir,' replied Mr. Weller; and having made his best {bow}, and put on his best clothes, Sam planted himself on the top of the Arundel coach, and journeyed on to Dorking.
-bow	real-eval	real	weapon	weapon	no	0.9229	0.9253	overlap	As this was drawing a {bow} at a venture, I dared not assume local knowledge, and spoke of the visit as my first.
-bow	real-eval	real	weapon	bend-noun	no	0.8044	0.8013	overlap	Fern is a pink owl with purple eyes and a violet {bow}.
-bow	real-eval	real	bend-noun	weapon	no	0.9159	0.9129	overlap	His attempt at a formal {bow} was so graceless that he nearly stumbled over his own feet.
-bow	real-eval	real	bend-noun	weapon	no	0.8652	0.9050	overlap	I gave it up at last; I said I'd row {bow}.
-bow	real-eval	real	weapon	weapon	no	0.9129	0.8896	overlap	I hunt with a {bow}.
-bow	real-eval	real	bend-noun	bend-noun	no	0.9171	0.9025	overlap	Much affected, but still intensely enjoying himself, Mr. Micawber folded up his letter, and handed it with a {bow} to my aunt, as something she might like to keep.
-bow	real-eval	real	bend-noun	bend-noun	no	0.8923	0.8933	overlap	Then Harvey felt that he was near a moving body, and found himself looking up and up at the wet edge of a cliff-like {bow}, leaping, it seemed, directly over the schooner.
-bow	real-eval	real	weapon	bend-noun	no	0.8967	0.9046	overlap	This is a {bow} for a strong person.
-bow	real-eval	real	weapon	bend-noun	yes	0.9245	0.9385	overlap	When Maria woke up, a gift with a beautiful {bow} stood on her bedside table. "It can only be from Tom," she thought, but it was not from Tom!
-bow	real-eval	real	bend-noun	bend-noun	no	0.8633	0.8731	overlap	When he saw us, he came forward a step with his usual heavy tread, and there stopped and made a slight {bow}.
-bow	real-eval	real	bend-noun	weapon	no	0.9072	0.9124	overlap	With this apology Mr. Jackson smiled, made a comprehensive {bow}, and gave his hair another wind.
-bow	real-eval	real	weapon	bend-noun	no	0.8863	0.8929	overlap	Ziri quietly took his {bow} out.
-bow	real-eval	real	bend-verb	bend-verb	no	0.8420	0.8453	overlap	{Bow} to the master.
-carbonate	holdout	llm-corpus	verb	verb	no	0.9155	0.8998	overlap	Brewers {carbonate} kegs with a tank of compressed gas.
-carbonate	holdout	llm-corpus	verb	verb	no	0.9140	0.8875	overlap	Soda fountains {carbonate} plain water on demand.
-certificate	holdout	llm-corpus	verb	verb	no	0.8832	0.8746	overlap	The council moved to {certificate} nurses trained abroad.
-close	holdout	real	adv	adj	yes	0.8155	0.8177	overlap	He lives {close} by in Kozel's house....
-close	holdout	real	adv	adv	no	0.7910	0.8016	overlap	Once or twice it came quite {close}, but was, I suppose, frightened at seeing me, and flitted away across the harbour towards the abbey.
-close	holdout	llm-corpus	adj	adj	no	0.7825	0.7598	ambiguous	Police are keeping {close} tabs on the suspect.
-close	holdout	real	adv	adj	no	0.8592	0.8099	overlap	Sami lives {close} to Layla's hometown.
-close	holdout	real	adv	adv	no	0.7428	0.7097	coverage-gap	Sitting {close} behind her, I heard her sigh.
-close	holdout	real	adv	adv	no	0.8182	0.7939	overlap	There thousands of birds fluttered and flew of all kinds, deafening us with their cries; others crowded the rock, looking at us as we passed by without fear, and pressing familiarly {close} by our feet.
-close	holdout	real	adv	adj	no	0.6151	0.7802	ambiguous	There was a bazaar {close} by, and only three hours' work a day."
-close	real-eval	real	adv	adj	no	0.8142	0.8264	overlap	"He had some presentiment that worthy footsteps would follow {close} behind him."
-close	real-eval	real	adv	adj	no	0.8380	0.8010	overlap	As never before, he felt his dependence on the love-master, {close} at whose heels he followed, no matter what happened never losing sight of him.
-close	real-eval	real	adv	adv	no	0.7758	0.7611	ambiguous	He drew his chair {close}, and took her hand, when he said "hopeless love.
-close	real-eval	real	adv	adj	yes	0.8449	0.8129	overlap	He lives in a city {close} to Algiers.
-close	real-eval	real	adj	adj	no	0.7395	0.8303	ambiguous	He wants to be {close} to someone.
-close	real-eval	real	adv	adv	no	0.7955	0.8040	overlap	I loved the atmosphere here and the food is good, however the tables are so {close} together that it feels very cramped.
-close	real-eval	real	adv	adj	no	0.8049	0.7692	ambiguous	It was in the Rue des France-Bourgeois, {close} to La Force.
-close	real-eval	real	adj	adj	no	0.8350	0.8561	overlap	Leonid has become very {close} to Rima.
-close	real-eval	real	adv	adj	yes	0.7411	0.8284	ambiguous	Seen {close}-up, things have a way of showing their defects, their innate ugliness.
-close	real-eval	real	adv	adv	no	0.8129	0.8248	overlap	She made the confession very prettily and simply, and, with quaint, childish earnestness, drew the sketch-book away {close} to her own side of the table.
-close	real-eval	real	adj	adv	no	0.7950	0.8414	overlap	Until Mariner 10, astronomers were not sure what Mercury really looked like because it is so {close} to the Sun.
-closer	holdout	real	noun	adj	no	0.8565	0.8998	overlap	'I thought such a child as the Phenomenon must have been a {closer}; but it seems we are to have another.
-closer	holdout	real	adv	adv	no	0.8912	0.8250	ambiguous	'Yes,' cried Frank, looking a little {closer}.
-closer	holdout	real	adv	adv	no	0.8648	0.8379	overlap	Alice smiled mournfully at Harriet, and fondled her hand a little {closer}, but said nothing.
-closer	holdout	real	adv	adj	no	0.8869	0.8497	overlap	But hark again, a little {closer} - put your heart in your ears, Mr. Utterson, and tell me, is that the doctor's foot?"
-closer	holdout	real	adv	adj	no	0.8331	0.8592	overlap	Can you move {closer} to me?
-closer	holdout	real	adv	adv	no	0.8860	0.8576	overlap	Come {closer} in order that you may see the screen better.
-closer	holdout	real	adj	noun	no	0.7785	0.8189	overlap	Having ascertained its situation, Carton came out of those {closer} streets again, and dined at a place of refreshment and fell sound asleep after dinner.
-closer	holdout	real	adv	adv	no	0.8808	0.8430	overlap	He looked at me {closer}, and checked himself "No!" he resumed.
-closer	holdout	real	adj	adj	no	0.8334	0.8388	overlap	He uses an old-style razor, with shaving cream, for a {closer} shave.
-closer	holdout	real	adv	adv	no	0.8774	0.8789	overlap	My heart could take her no {closer} to me, or I should have loved her then as I had never loved her yet.
-closer	holdout	real	adj	adv	no	0.8183	0.7946	overlap	Please let me know if you need help in reserving a room {closer} to the Convention Center.
-closer	holdout	real	adj	adv	yes	0.8665	0.8959	overlap	Whenever I meet them they're always fighting, but people say "The more they fight, the {closer} they are." So I guess you could say they're close.
-closer	real-eval	real	adv	adv	no	0.8291	0.8306	overlap	Heathcliff groaned a curse, and strained Catherine {closer}: she never moved.
-closer	real-eval	real	adv	adj	no	0.8783	0.8496	overlap	In order to see that picture better, I want to get a little {closer}.
-closer	real-eval	real	adj	adj	no	0.8658	0.8368	overlap	Objects in the mirror are {closer} than they appear.
-closer	real-eval	real	adv	adv	no	0.8349	0.8289	overlap	Presently we began again to get a little strength; and as the soldiers were now lying {closer} along the river-side, Alan proposed that we should try a start.
-closer	real-eval	real	adj	adv	no	0.8692	0.8806	overlap	Sami and Layla got {closer}.
-closer	real-eval	real	adv	adv	no	0.8799	0.8742	overlap	The helicopter came {closer}, and the noise got even louder.
-closer	real-eval	real	adv	adv	no	0.8458	0.8563	overlap	Tom got {closer} to Mary.
-closer	real-eval	real	adv	adj	yes	0.8205	0.8445	overlap	Tom is thinking of moving so he'll be {closer} to Mary.
-closer	real-eval	real	adv	adv	no	0.8426	0.8738	overlap	Tom moved {closer} to see what was going on.
-collocate	holdout	llm-corpus	noun	noun	no	0.8563	0.9195	overlap	"Strong" is a common {collocate} of "tea" but not of "powerful."
-collocate	holdout	llm-corpus	verb	verb	no	0.8221	0.8400	overlap	Adjectives that {collocate} with the noun are listed in the table.
-collocate	holdout	llm-corpus	noun	verb	no	0.7955	0.7842	overlap	An unexpected {collocate} in the corpus was the word "tide."
-collocate	holdout	llm-corpus	noun	verb	no	0.8295	0.8332	overlap	Learners benefit from studying the {collocates} of high-frequency verbs.
-collocate	holdout	llm-corpus	noun	verb	no	0.7724	0.7695	ambiguous	The thesis compares {collocates} of the word in news and fiction.
-combine	holdout	llm-corpus	noun	verb	yes	0.7867	0.7783	overlap	Several {combines} idled in the yard waiting for the rain to stop.
-compact	holdout	llm-corpus	noun	noun	no	0.8804	0.8371	overlap	The founders drafted a {compact} promising mutual defense.
-compact	holdout	llm-corpus	adj	adj	no	0.8917	0.8427	overlap	The soil is {compact} and hard after weeks without rain.
-compound	holdout	llm-corpus	noun	noun	no	0.7544	0.7750	ambiguous	Some {compounds} in the soap can irritate sensitive skin.
-compress	holdout	llm-corpus	verb	verb	no	0.8521	0.8302	overlap	Divers know that the water will {compress} the air in their suits.
-compress	holdout	llm-corpus	verb	verb	no	0.7855	0.8095	overlap	Schedules {compress} when deadlines move up.
-compress	holdout	llm-corpus	noun	noun	no	0.8376	0.8157	overlap	The pharmacy sells reusable gel {compresses}.
-compress	real-eval	real	verb	verb	no	0.8631	0.8445	overlap	I only know that I found myself, with a perseverance worthy of a much better cause, making the most strenuous exertions to {compress} it within those limits.
-compress	real-eval	real	verb	verb	no	0.8947	0.8810	overlap	This is only where we {compress} it.
-compress	real-eval	real	verb	noun	yes	0.7363	0.7817	ambiguous	{Compress} into one handsome face the conscious self-abasement, and the burning indignation of a hundred women, strong in passion and in pride; and there it hid itself with two white shuddering arms.
-conduct	real-eval	real	verb	noun	yes	0.7045	0.7109	coverage-gap	What Mrs. Ferrars would say and do, though there could not be a doubt of its nature, she was anxious to hear; and still more anxious to know how Edward would {conduct} himself.
-confederate	holdout	llm-corpus	verb	verb	no	0.9416	0.9485	overlap	The nations chose to {confederate} loosely rather than merge.
-confine	holdout	llm-corpus	verb	verb	no	0.8267	0.7820	overlap	The warden {confines} the most dangerous inmates to single cells twenty-three hours a day.
-conflict	holdout	llm-corpus	noun	noun	no	0.8288	0.8264	overlap	I had a scheduling {conflict} and could not make the meeting.
-conflict	holdout	llm-corpus	noun	verb	no	0.8204	0.8312	overlap	Is there a {conflict} between your religious beliefs and the company dress code?
-conflict	holdout	llm-corpus	verb	verb	no	0.7989	0.8320	overlap	Packages that {conflict} with each other cannot be installed at the same time.
-conflict	holdout	llm-corpus	verb	verb	no	0.8256	0.7641	ambiguous	Two scheduled backups should never {conflict} with each other.
-conglomerate	holdout	llm-corpus	verb	verb	no	0.8895	0.8301	ambiguous	Clouds of ice crystals slowly {conglomerate} at high altitude, forming larger flakes.
-conglomerate	holdout	llm-corpus	noun	noun	no	0.9065	0.8491	ambiguous	Geologists identified the rock as a coarse {conglomerate} of pebbles cemented together by clay.
-conglomerate	holdout	llm-corpus	verb	noun	no	0.8599	0.8633	overlap	Over time, minerals in the sediment {conglomerate} into a single solid mass.
-conglomerate	holdout	llm-corpus	verb	verb	no	0.8951	0.8812	overlap	Protesters {conglomerate} in the square every Friday afternoon.
-conglomerate	holdout	llm-corpus	verb	verb	no	0.8341	0.8114	overlap	Small tribes would occasionally {conglomerate} into larger alliances for protection.
-conglomerate	holdout	llm-corpus	verb	verb	no	0.7548	0.7014	coverage-gap	The sticky residue tends to {conglomerate} around the filter and clog it.
-conjugate	holdout	llm-corpus	verb	noun	yes	0.6647	0.7656	coverage-gap	The liver enzymes {conjugate} the toxin with a sugar molecule before excretion.
-conjugate	holdout	llm-corpus	verb	noun	yes	0.7040	0.7684	coverage-gap	Whenever a bacterium cell {conjugates} with another, it passes along a copy of its plasmid.
+bifurcate	holdout	llm-corpus	adj	adj	no	0.8502	0.8276	overlap	Under the lens, the hair appeared {bifurcate} near the end.
+bow	holdout	real	weapon	weapon	no	0.9061	0.8961	overlap	"There," said he, drawing from the casket a large {bow} of blue ribbon all sparkling with diamonds, "there are the precious studs which I have taken an oath should be buried with me.
+bow	holdout	real	bend-noun	weapon	no	0.9338	0.9215	overlap	"Walk in, Mr. Franklin," he said, opening the door behind him, with his quaint old-fashioned {bow}.
+bow	holdout	llm-corpus	weapon	weapon	no	0.8469	0.8304	overlap	A hair {bow} came untied.
+bow	holdout	real	bend-noun	weapon	yes	0.9146	0.9089	overlap	The boy gave me a {bow}.
+bow	holdout	real	weapon	bend-noun	no	0.8244	0.8246	overlap	Tom ripped off his {bow} tie.
+bow	holdout	real	bend-noun	bend-noun	no	0.8878	0.8858	overlap	Twenty times they thought the whirling eddies were sweeping them to destruction, when the master-hand of their pilot would bring the {bows} of the canoe to stem the rapid.
+bow	real-eval	real	bend-noun	bend-noun	no	0.9165	0.9125	overlap	'Thank'ee, Sir,' replied Mr. Weller; and having made his best {bow}, and put on his best clothes, Sam planted himself on the top of the Arundel coach, and journeyed on to Dorking.
+bow	real-eval	real	weapon	weapon	no	0.9228	0.9251	overlap	As this was drawing a {bow} at a venture, I dared not assume local knowledge, and spoke of the visit as my first.
+bow	real-eval	real	weapon	bend-noun	no	0.8041	0.8010	overlap	Fern is a pink owl with purple eyes and a violet {bow}.
+bow	real-eval	real	bend-noun	weapon	no	0.9158	0.9128	overlap	His attempt at a formal {bow} was so graceless that he nearly stumbled over his own feet.
+bow	real-eval	real	bend-noun	weapon	no	0.8650	0.9049	overlap	I gave it up at last; I said I'd row {bow}.
+bow	real-eval	real	weapon	weapon	no	0.9128	0.8895	overlap	I hunt with a {bow}.
+bow	real-eval	real	bend-noun	bend-noun	no	0.9170	0.9024	overlap	Much affected, but still intensely enjoying himself, Mr. Micawber folded up his letter, and handed it with a {bow} to my aunt, as something she might like to keep.
+bow	real-eval	real	bend-noun	bend-noun	no	0.8921	0.8932	overlap	Then Harvey felt that he was near a moving body, and found himself looking up and up at the wet edge of a cliff-like {bow}, leaping, it seemed, directly over the schooner.
+bow	real-eval	real	weapon	bend-noun	no	0.8966	0.9045	overlap	This is a {bow} for a strong person.
+bow	real-eval	real	weapon	bend-noun	yes	0.9244	0.9384	overlap	When Maria woke up, a gift with a beautiful {bow} stood on her bedside table. "It can only be from Tom," she thought, but it was not from Tom!
+bow	real-eval	real	bend-noun	bend-noun	no	0.8632	0.8730	overlap	When he saw us, he came forward a step with his usual heavy tread, and there stopped and made a slight {bow}.
+bow	real-eval	real	bend-noun	weapon	no	0.9071	0.9123	overlap	With this apology Mr. Jackson smiled, made a comprehensive {bow}, and gave his hair another wind.
+bow	real-eval	real	weapon	bend-noun	no	0.8861	0.8927	overlap	Ziri quietly took his {bow} out.
+bow	real-eval	real	bend-verb	bend-verb	no	0.8419	0.8452	overlap	{Bow} to the master.
+carbonate	holdout	llm-corpus	verb	verb	no	0.9156	0.8999	overlap	Brewers {carbonate} kegs with a tank of compressed gas.
+carbonate	holdout	llm-corpus	verb	verb	no	0.9141	0.8876	overlap	Soda fountains {carbonate} plain water on demand.
+certificate	holdout	llm-corpus	verb	verb	no	0.8834	0.8749	overlap	The council moved to {certificate} nurses trained abroad.
+close	holdout	real	adv	adj	yes	0.8146	0.8170	overlap	He lives {close} by in Kozel's house....
+close	holdout	real	adv	adv	no	0.7909	0.8015	overlap	Once or twice it came quite {close}, but was, I suppose, frightened at seeing me, and flitted away across the harbour towards the abbey.
+close	holdout	llm-corpus	adj	adj	no	0.7824	0.7594	ambiguous	Police are keeping {close} tabs on the suspect.
+close	holdout	real	adv	adj	no	0.8585	0.8088	overlap	Sami lives {close} to Layla's hometown.
+close	holdout	real	adv	adv	no	0.7423	0.7092	coverage-gap	Sitting {close} behind her, I heard her sigh.
+close	holdout	real	adv	adv	no	0.8171	0.7926	overlap	There thousands of birds fluttered and flew of all kinds, deafening us with their cries; others crowded the rock, looking at us as we passed by without fear, and pressing familiarly {close} by our feet.
+close	holdout	real	adv	adj	no	0.6137	0.7802	ambiguous	There was a bazaar {close} by, and only three hours' work a day."
+close	real-eval	real	adv	adj	no	0.8136	0.8259	overlap	"He had some presentiment that worthy footsteps would follow {close} behind him."
+close	real-eval	real	adv	adj	no	0.8374	0.8001	overlap	As never before, he felt his dependence on the love-master, {close} at whose heels he followed, no matter what happened never losing sight of him.
+close	real-eval	real	adv	adv	no	0.7756	0.7607	ambiguous	He drew his chair {close}, and took her hand, when he said "hopeless love.
+close	real-eval	real	adv	adj	yes	0.8441	0.8115	overlap	He lives in a city {close} to Algiers.
+close	real-eval	real	adj	adj	no	0.7392	0.8302	ambiguous	He wants to be {close} to someone.
+close	real-eval	real	adv	adv	no	0.7937	0.8023	overlap	I loved the atmosphere here and the food is good, however the tables are so {close} together that it feels very cramped.
+close	real-eval	real	adv	adj	no	0.8039	0.7678	ambiguous	It was in the Rue des France-Bourgeois, {close} to La Force.
+close	real-eval	real	adj	adj	no	0.8345	0.8557	overlap	Leonid has become very {close} to Rima.
+close	real-eval	real	adv	adj	yes	0.7402	0.8281	ambiguous	Seen {close}-up, things have a way of showing their defects, their innate ugliness.
+close	real-eval	real	adv	adv	no	0.8123	0.8240	overlap	She made the confession very prettily and simply, and, with quaint, childish earnestness, drew the sketch-book away {close} to her own side of the table.
+close	real-eval	real	adj	adv	no	0.7941	0.8406	overlap	Until Mariner 10, astronomers were not sure what Mercury really looked like because it is so {close} to the Sun.
+closer	holdout	real	noun	adj	no	0.8563	0.8997	overlap	'I thought such a child as the Phenomenon must have been a {closer}; but it seems we are to have another.
+closer	holdout	real	adv	adv	no	0.8911	0.8251	ambiguous	'Yes,' cried Frank, looking a little {closer}.
+closer	holdout	real	adv	adv	no	0.8647	0.8378	overlap	Alice smiled mournfully at Harriet, and fondled her hand a little {closer}, but said nothing.
+closer	holdout	real	adv	adj	no	0.8868	0.8495	overlap	But hark again, a little {closer} - put your heart in your ears, Mr. Utterson, and tell me, is that the doctor's foot?"
+closer	holdout	real	adv	adj	no	0.8329	0.8590	overlap	Can you move {closer} to me?
+closer	holdout	real	adv	adv	no	0.8859	0.8574	overlap	Come {closer} in order that you may see the screen better.
+closer	holdout	real	adj	noun	no	0.7781	0.8185	overlap	Having ascertained its situation, Carton came out of those {closer} streets again, and dined at a place of refreshment and fell sound asleep after dinner.
+closer	holdout	real	adv	adv	no	0.8807	0.8428	overlap	He looked at me {closer}, and checked himself "No!" he resumed.
+closer	holdout	real	adj	adj	no	0.8334	0.8387	overlap	He uses an old-style razor, with shaving cream, for a {closer} shave.
+closer	holdout	real	adv	adv	no	0.8773	0.8788	overlap	My heart could take her no {closer} to me, or I should have loved her then as I had never loved her yet.
+closer	holdout	real	adj	adv	no	0.8173	0.7935	overlap	Please let me know if you need help in reserving a room {closer} to the Convention Center.
+closer	holdout	real	adj	adv	yes	0.8661	0.8959	overlap	Whenever I meet them they're always fighting, but people say "The more they fight, the {closer} they are." So I guess you could say they're close.
+closer	real-eval	real	adv	adv	no	0.8289	0.8303	overlap	Heathcliff groaned a curse, and strained Catherine {closer}: she never moved.
+closer	real-eval	real	adv	adj	no	0.8782	0.8496	overlap	In order to see that picture better, I want to get a little {closer}.
+closer	real-eval	real	adj	adj	no	0.8657	0.8366	overlap	Objects in the mirror are {closer} than they appear.
+closer	real-eval	real	adv	adv	no	0.8344	0.8277	overlap	Presently we began again to get a little strength; and as the soldiers were now lying {closer} along the river-side, Alan proposed that we should try a start.
+closer	real-eval	real	adj	adv	no	0.8692	0.8805	overlap	Sami and Layla got {closer}.
+closer	real-eval	real	adv	adv	no	0.8798	0.8744	overlap	The helicopter came {closer}, and the noise got even louder.
+closer	real-eval	real	adv	adv	no	0.8456	0.8561	overlap	Tom got {closer} to Mary.
+closer	real-eval	real	adv	adj	yes	0.8203	0.8443	overlap	Tom is thinking of moving so he'll be {closer} to Mary.
+closer	real-eval	real	adv	adv	no	0.8424	0.8736	overlap	Tom moved {closer} to see what was going on.
+collocate	holdout	llm-corpus	noun	noun	no	0.8564	0.9193	overlap	"Strong" is a common {collocate} of "tea" but not of "powerful."
+collocate	holdout	llm-corpus	verb	verb	no	0.8219	0.8400	overlap	Adjectives that {collocate} with the noun are listed in the table.
+collocate	holdout	llm-corpus	noun	verb	no	0.7953	0.7839	overlap	An unexpected {collocate} in the corpus was the word "tide."
+collocate	holdout	llm-corpus	noun	verb	no	0.8291	0.8330	overlap	Learners benefit from studying the {collocates} of high-frequency verbs.
+collocate	holdout	llm-corpus	noun	verb	no	0.7722	0.7694	ambiguous	The thesis compares {collocates} of the word in news and fiction.
+combine	holdout	llm-corpus	noun	verb	yes	0.7865	0.7781	overlap	Several {combines} idled in the yard waiting for the rain to stop.
+compact	holdout	llm-corpus	noun	noun	no	0.8803	0.8371	overlap	The founders drafted a {compact} promising mutual defense.
+compact	holdout	llm-corpus	adj	adj	no	0.8918	0.8428	overlap	The soil is {compact} and hard after weeks without rain.
+compound	holdout	llm-corpus	noun	noun	no	0.7547	0.7751	ambiguous	Some {compounds} in the soap can irritate sensitive skin.
+compress	holdout	llm-corpus	verb	verb	no	0.8517	0.8298	overlap	Divers know that the water will {compress} the air in their suits.
+compress	holdout	llm-corpus	verb	verb	no	0.7854	0.8093	overlap	Schedules {compress} when deadlines move up.
+compress	holdout	llm-corpus	noun	noun	no	0.8374	0.8155	overlap	The pharmacy sells reusable gel {compresses}.
+compress	real-eval	real	verb	verb	no	0.8628	0.8443	overlap	I only know that I found myself, with a perseverance worthy of a much better cause, making the most strenuous exertions to {compress} it within those limits.
+compress	real-eval	real	verb	verb	no	0.8945	0.8809	overlap	This is only where we {compress} it.
+compress	real-eval	real	verb	noun	yes	0.7358	0.7814	ambiguous	{Compress} into one handsome face the conscious self-abasement, and the burning indignation of a hundred women, strong in passion and in pride; and there it hid itself with two white shuddering arms.
+conduct	real-eval	real	verb	noun	yes	0.7040	0.7103	coverage-gap	What Mrs. Ferrars would say and do, though there could not be a doubt of its nature, she was anxious to hear; and still more anxious to know how Edward would {conduct} himself.
+confederate	holdout	llm-corpus	verb	verb	no	0.9415	0.9484	overlap	The nations chose to {confederate} loosely rather than merge.
+confine	holdout	llm-corpus	verb	verb	no	0.8267	0.7818	overlap	The warden {confines} the most dangerous inmates to single cells twenty-three hours a day.
+conflict	holdout	llm-corpus	noun	noun	no	0.8292	0.8266	overlap	I had a scheduling {conflict} and could not make the meeting.
+conflict	holdout	llm-corpus	noun	verb	no	0.8208	0.8315	overlap	Is there a {conflict} between your religious beliefs and the company dress code?
+conflict	holdout	llm-corpus	verb	verb	no	0.7992	0.8322	overlap	Packages that {conflict} with each other cannot be installed at the same time.
+conflict	holdout	llm-corpus	verb	verb	no	0.8258	0.7643	ambiguous	Two scheduled backups should never {conflict} with each other.
+conglomerate	holdout	llm-corpus	verb	verb	no	0.8891	0.8297	ambiguous	Clouds of ice crystals slowly {conglomerate} at high altitude, forming larger flakes.
+conglomerate	holdout	llm-corpus	noun	noun	no	0.9062	0.8488	ambiguous	Geologists identified the rock as a coarse {conglomerate} of pebbles cemented together by clay.
+conglomerate	holdout	llm-corpus	verb	noun	no	0.8595	0.8628	overlap	Over time, minerals in the sediment {conglomerate} into a single solid mass.
+conglomerate	holdout	llm-corpus	verb	verb	no	0.8949	0.8810	overlap	Protesters {conglomerate} in the square every Friday afternoon.
+conglomerate	holdout	llm-corpus	verb	verb	no	0.8344	0.8108	overlap	Small tribes would occasionally {conglomerate} into larger alliances for protection.
+conglomerate	holdout	llm-corpus	verb	verb	no	0.7535	0.7014	coverage-gap	The sticky residue tends to {conglomerate} around the filter and clog it.
+conjugate	holdout	real	verb	verb	no	0.8433	0.8219	overlap	Is there a language that {conjugates} based on gender?
+conjugate	holdout	llm-corpus	verb	noun	no	0.6962	0.7652	coverage-gap	The liver enzymes {conjugate} the toxin with a sugar molecule before excretion.
+conjugate	holdout	llm-corpus	verb	noun	no	0.7366	0.7679	coverage-gap	Whenever a bacterium cell {conjugates} with another, it passes along a copy of its plasmid.
+conjunct	holdout	real	noun	noun	no	0.9500	0.8733	ambiguous	An operand of a conjunction is a {conjunct}.
+conjunct	holdout	real	noun	adj	yes	0.9203	0.8885	overlap	In linguistics, the term {conjunct} has three distinct uses:
+conjunct	holdout	real	noun	adj	yes	0.8653	0.8762	overlap	{Conjunct} - Semantic or grammatical clustering of words or expressions in linguistic analysis
 conscript	holdout	llm-corpus	noun	noun	no	0.9328	0.9203	overlap	A weary {conscript} from the mountains, he spoke little and slept on the floor.
 conscript	holdout	llm-corpus	noun	noun	no	0.9184	0.9047	overlap	He was a mere {conscript}, plucked from his father's farm at seventeen.
 conscript	holdout	llm-corpus	noun	noun	no	0.9215	0.9148	overlap	Unlike a professional soldier, the reluctant {conscript} counted the days until his service ended.
 conscript	holdout	llm-corpus	verb	noun	no	0.8595	0.8478	overlap	When the war dragged on, the state {conscripts} even more young men each spring.
-conserve	holdout	llm-corpus	verb	verb	no	0.8355	0.8026	overlap	The hikers rationed their food to {conserve} supplies until help arrived.
-console	holdout	llm-corpus	verb	verb	no	0.8975	0.7788	ambiguous	Don't try to {console} me with platitudes.
-console	holdout	llm-corpus	verb	verb	no	0.9236	0.8382	ambiguous	Neighbors came by to {console} the family.
-console	holdout	llm-corpus	verb	verb	no	0.9258	0.8718	ambiguous	The coach went to {console} the players after the defeat.
-console	real-eval	real	verb	verb	no	0.8740	0.7927	ambiguous	I cannot {console} Taninna. She doesn't want to talk to anyone.
-console	real-eval	real	verb	verb	no	0.8492	0.8223	overlap	Leaving the others to {console} Beth, she departed to the kitchen, which was in a most discouraging state of confusion.
-content	holdout	llm-corpus	adj	adj	no	0.8329	0.8436	overlap	A {content} customer is likely to return.
-content	holdout	llm-corpus	adj	noun	yes	0.8176	0.8789	overlap	The audience left less than {content}.
-content	real-eval	real	verb	verb	no	0.7895	0.8197	overlap	Foiled in these attempts, he was fain to {content} himself with watching for the young lady's next visit, but here again he was disappointed.
-content	real-eval	real	adj	noun	yes	0.7141	0.7781	ambiguous	The recipe for perpetual ignorance is: Be satisfied with your opinions and {content} with your knowledge.
-contest	holdout	llm-corpus	verb	verb	no	0.7888	0.7924	overlap	The company {contests} every claim, however small.
-contract	holdout	llm-corpus	verb	noun	yes	0.8273	0.8244	overlap	Credit markets {contract} when banks grow wary.
-contrast	holdout	llm-corpus	noun	noun	no	0.8606	0.9013	overlap	The dark wooden table makes a pleasing {contrast} with the white walls.
-contrast	holdout	llm-corpus	noun	verb	no	0.8210	0.8232	overlap	The warm, easy tone of her speech stood in stark {contrast} to the cold facts she presented.
-converse	holdout	llm-corpus	adj	adj	no	0.9250	0.9042	overlap	A {converse} implication is one with the antecedent and consequent swapped.
-converse	holdout	llm-corpus	adj	noun	no	0.9330	0.9363	overlap	If the first statement is true, the {converse} statement is not necessarily true.
-converse	holdout	llm-corpus	adj	adj	no	0.8936	0.9115	overlap	Prices moved in the {converse} direction, falling while wages rose.
-correlate	holdout	llm-corpus	noun	noun	no	0.8649	0.8044	ambiguous	Height is a well-known {correlate} of lifetime earnings.
-correlate	holdout	llm-corpus	verb	verb	no	0.6471	0.6798	coverage-gap	Ice cream sales {correlate} with the number of sunburns, though one does not cause the other.
-correlate	holdout	llm-corpus	verb	verb	no	0.6846	0.7264	coverage-gap	Measurements from the two sensors should {correlate} within a small margin of error.
-correlate	holdout	llm-corpus	noun	verb	no	0.7814	0.8017	overlap	The accountant noted that rainfall is an obvious {correlate} of crop yield.
-decrease	holdout	llm-corpus	noun	noun	no	0.9148	0.8764	overlap	The study showed a ten percent {decrease} in hospital visits.
-defect	holdout	llm-corpus	noun	noun	no	0.8562	0.8440	overlap	Engineers found several {defects} in the code before launch.
-defect	holdout	llm-corpus	verb	verb	no	0.8549	0.7946	ambiguous	In the game, players can cooperate or {defect}, and the payoffs depend on both choices.
-defect	holdout	llm-corpus	noun	noun	no	0.8585	0.8241	overlap	Inspectors rejected one of every ten pieces because of visible {defects} along the seams.
-defect	holdout	llm-corpus	noun	noun	no	0.8536	0.8428	overlap	The only {defect} in an otherwise flawless performance was a missed note near the end.
-defect	holdout	llm-corpus	verb	verb	no	0.9049	0.8878	overlap	The scientist {defects} to the West in the second act of the film.
-delegate	holdout	llm-corpus	noun	noun	no	0.8900	0.9050	overlap	An uncommitted {delegate} may switch sides at the last minute.
-delegate	holdout	llm-corpus	noun	noun	no	0.8757	0.8624	overlap	In C#, a {delegate} is a type that represents a reference to a method.
-delegate	holdout	llm-corpus	verb	noun	no	0.8616	0.8604	overlap	Why would the founder {delegate} the final approval to a new intern?
+conserve	holdout	llm-corpus	verb	verb	no	0.8356	0.8027	overlap	The hikers rationed their food to {conserve} supplies until help arrived.
+console	holdout	llm-corpus	verb	verb	no	0.8974	0.7786	ambiguous	Don't try to {console} me with platitudes.
+console	holdout	llm-corpus	verb	verb	no	0.9235	0.8381	ambiguous	Neighbors came by to {console} the family.
+console	holdout	llm-corpus	verb	verb	no	0.9258	0.8717	ambiguous	The coach went to {console} the players after the defeat.
+console	real-eval	real	verb	verb	no	0.8740	0.7926	ambiguous	I cannot {console} Taninna. She doesn't want to talk to anyone.
+console	real-eval	real	verb	verb	no	0.8491	0.8222	overlap	Leaving the others to {console} Beth, she departed to the kitchen, which was in a most discouraging state of confusion.
+content	holdout	llm-corpus	adj	adj	no	0.8330	0.8438	overlap	A {content} customer is likely to return.
+content	holdout	llm-corpus	adj	noun	yes	0.8177	0.8790	overlap	The audience left less than {content}.
+content	real-eval	real	verb	verb	no	0.7897	0.8197	overlap	Foiled in these attempts, he was fain to {content} himself with watching for the young lady's next visit, but here again he was disappointed.
+content	real-eval	real	adj	noun	yes	0.7145	0.7781	ambiguous	The recipe for perpetual ignorance is: Be satisfied with your opinions and {content} with your knowledge.
+contest	holdout	llm-corpus	verb	verb	no	0.7891	0.7926	overlap	The company {contests} every claim, however small.
+contract	holdout	llm-corpus	verb	noun	yes	0.8275	0.8246	overlap	Credit markets {contract} when banks grow wary.
+contrast	holdout	llm-corpus	noun	noun	no	0.8605	0.9012	overlap	The dark wooden table makes a pleasing {contrast} with the white walls.
+contrast	holdout	llm-corpus	noun	verb	no	0.8208	0.8232	overlap	The warm, easy tone of her speech stood in stark {contrast} to the cold facts she presented.
+converse	holdout	llm-corpus	adj	adj	no	0.9250	0.9041	overlap	A {converse} implication is one with the antecedent and consequent swapped.
+converse	holdout	llm-corpus	adj	noun	no	0.9330	0.9362	overlap	If the first statement is true, the {converse} statement is not necessarily true.
+converse	holdout	llm-corpus	adj	adj	no	0.8935	0.9114	overlap	Prices moved in the {converse} direction, falling while wages rose.
+correlate	holdout	llm-corpus	noun	noun	no	0.8645	0.8035	ambiguous	Height is a well-known {correlate} of lifetime earnings.
+correlate	holdout	llm-corpus	verb	verb	no	0.6465	0.6790	coverage-gap	Ice cream sales {correlate} with the number of sunburns, though one does not cause the other.
+correlate	holdout	llm-corpus	verb	verb	no	0.6848	0.7260	coverage-gap	Measurements from the two sensors should {correlate} within a small margin of error.
+correlate	holdout	llm-corpus	noun	verb	no	0.7812	0.8016	overlap	The accountant noted that rainfall is an obvious {correlate} of crop yield.
+decrease	holdout	llm-corpus	noun	noun	no	0.9148	0.8765	overlap	The study showed a ten percent {decrease} in hospital visits.
+defect	holdout	llm-corpus	noun	noun	no	0.8565	0.8443	overlap	Engineers found several {defects} in the code before launch.
+defect	holdout	llm-corpus	verb	verb	no	0.8554	0.7952	ambiguous	In the game, players can cooperate or {defect}, and the payoffs depend on both choices.
+defect	holdout	llm-corpus	noun	noun	no	0.8588	0.8244	overlap	Inspectors rejected one of every ten pieces because of visible {defects} along the seams.
+defect	holdout	llm-corpus	noun	noun	no	0.8540	0.8432	overlap	The only {defect} in an otherwise flawless performance was a missed note near the end.
+defect	holdout	llm-corpus	verb	verb	no	0.9051	0.8881	overlap	The scientist {defects} to the West in the second act of the film.
+delegate	holdout	llm-corpus	noun	noun	no	0.8899	0.9050	overlap	An uncommitted {delegate} may switch sides at the last minute.
+delegate	holdout	llm-corpus	noun	noun	no	0.8755	0.8622	overlap	In C#, a {delegate} is a type that represents a reference to a method.
+delegate	holdout	llm-corpus	verb	noun	no	0.8616	0.8603	overlap	Why would the founder {delegate} the final approval to a new intern?
 desert	holdout	llm-corpus	verb	noun	yes	0.8406	0.8616	overlap	Customers {desert} restaurants that raise prices too far.
 desert	holdout	llm-corpus	verb	noun	no	0.8989	0.9012	overlap	Recruits who {desert} are hunted down by military police.
-desert	real-eval	real	verb	noun	no	0.8459	0.8451	overlap	"George," returns Mr. Bagnet, "will never {desert}.
+desert	real-eval	real	verb	noun	no	0.8458	0.8450	overlap	"George," returns Mr. Bagnet, "will never {desert}.
 desert	real-eval	real	verb	noun	yes	0.8646	0.8944	overlap	I do not {desert}.
-diagnoses	holdout	llm-corpus	verb	verb	no	0.8166	0.8596	overlap	She carefully {diagnoses} each case before suggesting medication.
-diagnoses	holdout	llm-corpus	verb	noun	no	0.8351	0.8485	overlap	Whenever the senior physician {diagnoses} a case this rare, she writes it up for the journal.
-diagnoses	holdout	llm-corpus	verb	verb	no	0.8313	0.8136	overlap	Whoever correctly {diagnoses} the problem first wins the prize.
-diffuse	holdout	llm-corpus	adj	verb	no	0.8037	0.8460	overlap	Is this rash localized, or is it {diffuse} across the whole torso?
-discharge	holdout	llm-corpus	noun	noun	no	0.8456	0.8142	overlap	Environmental officials fined the plant for the illegal {discharge} of chemicals into the river.
+diagnoses	holdout	llm-corpus	verb	verb	no	0.8168	0.8597	overlap	She carefully {diagnoses} each case before suggesting medication.
+diagnoses	holdout	llm-corpus	verb	noun	no	0.8353	0.8486	overlap	Whenever the senior physician {diagnoses} a case this rare, she writes it up for the journal.
+diagnoses	holdout	llm-corpus	verb	verb	no	0.8316	0.8139	overlap	Whoever correctly {diagnoses} the problem first wins the prize.
+diffuse	holdout	llm-corpus	adj	verb	no	0.8036	0.8459	overlap	Is this rash localized, or is it {diffuse} across the whole torso?
+discharge	holdout	llm-corpus	noun	noun	no	0.8454	0.8139	overlap	Environmental officials fined the plant for the illegal {discharge} of chemicals into the river.
 discourse	holdout	llm-corpus	verb	verb	no	0.9293	0.9066	overlap	He could {discourse} knowledgeably on wine, music, and politics.
 discourse	holdout	llm-corpus	noun	noun	no	0.8850	0.8775	overlap	Scholars study the {discourse} of power in colonial literature.
-discourse	holdout	llm-corpus	verb	verb	no	0.9020	0.9038	overlap	The guide began to {discourse} at length about the temple's origins.
-discourse	holdout	llm-corpus	noun	noun	no	0.9233	0.8885	overlap	The lecture was a long {discourse} on the nature of justice.
-discourse	holdout	llm-corpus	verb	verb	no	0.8999	0.9357	overlap	The preacher would {discourse} for an hour on a single verse.
-discourse	holdout	llm-corpus	noun	noun	no	0.7636	0.7624	coverage-gap	Their {discourses} on morality filled several volumes.
-discourse	holdout	llm-corpus	verb	noun	no	0.9027	0.9064	overlap	Why does he always {discourse} when a simple yes would do?
-document	holdout	llm-corpus	verb	verb	no	0.7946	0.7970	overlap	The photographer {documents} daily life in remote mountain towns.
-dove	holdout	llm-corpus	noun	noun	no	0.9724	0.8424	ambiguous	A white {dove} landed on the windowsill.
-dove	holdout	llm-corpus	noun	noun	no	0.8198	0.8124	overlap	In the debate, the senator, long known as a {dove} on defense spending, shocked his allies.
-dove	holdout	llm-corpus	noun	noun	no	0.9669	0.8401	ambiguous	The magician pulled a live {dove} from his hat.
-dove	holdout	llm-corpus	verb	verb	no	0.8635	0.7730	ambiguous	When the stock market crashed, the price of gold suddenly {dove} and then rebounded.
-duplicate	holdout	llm-corpus	verb	verb	no	0.8778	0.8798	overlap	Click the layer, then choose "{duplicate}" from the menu.
-duplicate	holdout	llm-corpus	verb	verb	no	0.8984	0.8884	overlap	Why would the team {duplicate} work that another department had already finished?
-ejaculate	holdout	llm-corpus	verb	verb	no	0.7780	0.7750	overlap	Side effects include difficulty getting an erection or being unable to {ejaculate}.
-elaborate	holdout	llm-corpus	adj	adj	no	0.8647	0.7710	ambiguous	Nothing about the plan, however {elaborate}, could disguise how thin the budget was.
-elaborate	holdout	llm-corpus	verb	verb	no	0.5405	0.5807	coverage-gap	The appendix {elaborates} each of the rules in far greater detail.
-entail	holdout	llm-corpus	verb	noun	no	0.8313	0.8277	overlap	What does the job {entail}?
-entrance	holdout	llm-corpus	noun	verb	yes	0.8230	0.8598	overlap	The actor made his {entrance} from stage left carrying a lantern.
-entrance	holdout	llm-corpus	verb	noun	no	0.8370	0.8712	overlap	The northern lights {entrance} every visitor who braves the winter cold.
-entrance	holdout	llm-corpus	verb	verb	no	0.8411	0.8584	overlap	Will the new exhibit {entrance} teenagers as much as it does their grandparents?
-estimate	holdout	llm-corpus	verb	verb	no	0.8041	0.8187	overlap	She {estimates} that she walks about ten miles a day.
+discourse	holdout	llm-corpus	verb	verb	no	0.9020	0.9039	overlap	The guide began to {discourse} at length about the temple's origins.
+discourse	holdout	llm-corpus	noun	noun	no	0.9234	0.8886	overlap	The lecture was a long {discourse} on the nature of justice.
+discourse	holdout	llm-corpus	verb	verb	no	0.8999	0.9358	overlap	The preacher would {discourse} for an hour on a single verse.
+discourse	holdout	llm-corpus	noun	noun	no	0.7639	0.7626	coverage-gap	Their {discourses} on morality filled several volumes.
+discourse	holdout	llm-corpus	verb	noun	no	0.9028	0.9064	overlap	Why does he always {discourse} when a simple yes would do?
+document	holdout	llm-corpus	verb	verb	no	0.7947	0.7972	overlap	The photographer {documents} daily life in remote mountain towns.
+dove	holdout	llm-corpus	noun	noun	no	0.9725	0.8426	ambiguous	A white {dove} landed on the windowsill.
+dove	holdout	llm-corpus	noun	noun	no	0.8199	0.8127	overlap	In the debate, the senator, long known as a {dove} on defense spending, shocked his allies.
+dove	holdout	llm-corpus	noun	noun	no	0.9669	0.8403	ambiguous	The magician pulled a live {dove} from his hat.
+dove	holdout	llm-corpus	verb	verb	no	0.8637	0.7731	ambiguous	When the stock market crashed, the price of gold suddenly {dove} and then rebounded.
+duplicate	holdout	llm-corpus	verb	verb	no	0.8779	0.8799	overlap	Click the layer, then choose "{duplicate}" from the menu.
+duplicate	holdout	llm-corpus	verb	verb	no	0.8985	0.8884	overlap	Why would the team {duplicate} work that another department had already finished?
+ejaculate	holdout	llm-corpus	verb	verb	no	0.7781	0.7753	overlap	Side effects include difficulty getting an erection or being unable to {ejaculate}.
+elaborate	holdout	llm-corpus	adj	adj	no	0.8647	0.7708	ambiguous	Nothing about the plan, however {elaborate}, could disguise how thin the budget was.
+elaborate	holdout	llm-corpus	verb	verb	no	0.5404	0.5805	coverage-gap	The appendix {elaborates} each of the rules in far greater detail.
+entail	holdout	llm-corpus	verb	noun	no	0.8314	0.8279	overlap	What does the job {entail}?
+entrance	holdout	llm-corpus	noun	verb	yes	0.8227	0.8597	overlap	The actor made his {entrance} from stage left carrying a lantern.
+entrance	holdout	llm-corpus	verb	noun	no	0.8366	0.8709	overlap	The northern lights {entrance} every visitor who braves the winter cold.
+entrance	holdout	llm-corpus	verb	verb	no	0.8408	0.8581	overlap	Will the new exhibit {entrance} teenagers as much as it does their grandparents?
+estimate	holdout	llm-corpus	verb	verb	no	0.8041	0.8186	overlap	She {estimates} that she walks about ten miles a day.
 excommunicate	holdout	llm-corpus	adj	noun	yes	0.8838	0.8567	overlap	Being {excommunicate} meant that no one in the parish would trade with him.
-excommunicate	holdout	llm-corpus	adj	adj	no	0.7134	0.7737	ambiguous	Her family, {excommunicate} and penniless, fled across the border.
-excommunicate	holdout	llm-corpus	verb	noun	yes	0.7826	0.8061	overlap	In 1521 the Vatican moved to {excommunicate} the monk from Wittenberg.
-excommunicate	holdout	llm-corpus	noun	adj	yes	0.8135	0.8307	overlap	Medieval law treated every {excommunicate} as an outcast without legal rights.
-excommunicate	holdout	llm-corpus	adj	noun	yes	0.8334	0.9116	overlap	No {excommunicate} person could receive communion or Christian burial.
+excommunicate	holdout	llm-corpus	adj	adj	no	0.7126	0.7736	ambiguous	Her family, {excommunicate} and penniless, fled across the border.
+excommunicate	holdout	llm-corpus	verb	noun	yes	0.7831	0.8063	overlap	In 1521 the Vatican moved to {excommunicate} the monk from Wittenberg.
+excommunicate	holdout	llm-corpus	noun	adj	yes	0.8135	0.8305	overlap	Medieval law treated every {excommunicate} as an outcast without legal rights.
+excommunicate	holdout	llm-corpus	adj	noun	yes	0.8332	0.9114	overlap	No {excommunicate} person could receive communion or Christian burial.
 excommunicate	holdout	llm-corpus	noun	noun	no	0.8122	0.8239	overlap	The abbot sheltered an {excommunicate} against the bishop's orders.
-excommunicate	holdout	llm-corpus	adj	verb	yes	0.8122	0.8524	overlap	The council declared him {excommunicate} and stripped him of his lands.
-excommunicate	holdout	llm-corpus	adj	noun	no	0.7890	0.7894	overlap	The prince, long since {excommunicate}, ignored the legate's letters.
-expatriate	holdout	llm-corpus	noun	noun	no	0.7370	0.7580	coverage-gap	As an {expatriate}, he voted by mail from Singapore.
-expatriate	holdout	llm-corpus	verb	verb	no	0.8425	0.8221	overlap	Courts historically could {expatriate} convicted traitors, stripping them of citizenship.
-expatriate	holdout	llm-corpus	noun	verb	yes	0.7839	0.7818	overlap	Hemingway became the most famous literary {expatriate} of the 1920s.
-expatriate	holdout	llm-corpus	noun	verb	no	0.9095	0.8871	overlap	Tax rules for the long-term {expatriate} are surprisingly complicated.
-explant	holdout	llm-corpus	noun	noun	no	0.7355	0.6707	coverage-gap	Callus formed at the edges of the leaf {explant} within two weeks.
-explant	holdout	llm-corpus	verb	verb	no	0.7166	0.7427	coverage-gap	When biologists {explant} an organ, they must keep it oxygenated.
-federate	holdout	llm-corpus	verb	verb	no	0.8099	0.7585	ambiguous	Rival clans agreed to {federate} against the invaders.
-federate	holdout	llm-corpus	verb	verb	no	0.9229	0.7664	ambiguous	Several small unions voted to {federate} under a single banner.
-federate	holdout	llm-corpus	verb	verb	no	0.7584	0.7986	ambiguous	The goal is to {federate} identity systems across partner organizations.
-ferment	holdout	llm-corpus	verb	verb	no	0.7545	0.7316	coverage-gap	Bacteria {ferment} fiber in the gut, producing short-chain fatty acids.
-foliate	holdout	llm-corpus	verb	adj	no	0.7540	0.8089	ambiguous	Craftsmen {foliate} silver by beating it between sheets of vellum.
-foliate	holdout	llm-corpus	verb	adj	no	0.7948	0.8325	overlap	Librarians {foliate} rare volumes so that missing pages are noticed at once.
-foliate	holdout	llm-corpus	adj	verb	no	0.7929	0.7512	ambiguous	Unlike its crusty cousin, this lichen is {foliate} and easily peeled from the rock.
-foretoken	holdout	llm-corpus	noun	noun	no	0.8036	0.7517	ambiguous	Every {foretoken} the villagers recorded was later said to have come true.
-foretoken	holdout	llm-corpus	noun	noun	no	0.7271	0.7041	coverage-gap	In the old ballad, a white raven is the {foretoken} of ruin.
-foretoken	holdout	llm-corpus	verb	noun	no	0.8578	0.8717	overlap	Such signs {foretoken} trouble for the harvest.
-foretoken	holdout	llm-corpus	verb	noun	no	0.8060	0.8437	overlap	What might these omens {foretoken} for the coming year?
-geminate	holdout	llm-corpus	adj	verb	yes	0.6796	0.6974	coverage-gap	A {geminate} "t" in "mattina" lengthens the sound.
-geminate	holdout	llm-corpus	adj	adj	no	0.8491	0.8367	overlap	Arabic has {geminate} roots whose second and third consonants are identical.
-geminate	holdout	llm-corpus	verb	verb	no	0.8764	0.8620	overlap	Does Finnish {geminate} the final stop in this context?
-geminate	holdout	llm-corpus	verb	verb	no	0.7513	0.7295	coverage-gap	Latin stops can {geminate} after a prefix assimilates.
-geminate	holdout	llm-corpus	verb	verb	no	0.8075	0.7829	overlap	Some languages {geminate} consonants to mark emphasis.
-geminate	holdout	llm-corpus	verb	verb	no	0.8407	0.8488	overlap	When a prefix ends in the same sound the root begins with, the two sounds {geminate}.
-graduate	holdout	llm-corpus	noun	noun	no	0.8149	0.8064	overlap	A proud {graduate} of the class of 1994, she returned to give the commencement speech.
-graduate	holdout	llm-corpus	verb	verb	no	0.8425	0.8432	overlap	After the trainees {graduate}, they receive their badges.
-graduate	holdout	llm-corpus	noun	noun	no	0.8338	0.8279	overlap	He was the first {graduate} from the village to attend medical school.
-graduate	holdout	llm-corpus	verb	verb	no	0.9041	0.8505	ambiguous	Most students {graduate} in the spring.
-graduate	holdout	llm-corpus	noun	noun	no	0.8134	0.8021	overlap	The firm hires only one {graduate} from each class.
-guesstimate	holdout	llm-corpus	noun	verb	yes	0.5938	0.6511	coverage-gap	Give me a quick {guesstimate} of the crowd size.
-guesstimate	holdout	llm-corpus	noun	noun	no	0.8895	0.8158	ambiguous	That number is just a {guesstimate}, not a measured value.
-house	holdout	llm-corpus	verb	noun	no	0.7877	0.8388	overlap	Many farms {house} migrant workers in trailers.
-house	holdout	llm-corpus	verb	verb	no	0.8833	0.8191	ambiguous	Plans call for a complex to {house} refugees displaced by the flood.
-imbricate	holdout	llm-corpus	adj	adj	no	0.7514	0.7365	coverage-gap	Cypress leaves are small and {imbricate} along the twig.
+excommunicate	holdout	llm-corpus	adj	verb	yes	0.8122	0.8526	overlap	The council declared him {excommunicate} and stripped him of his lands.
+excommunicate	holdout	llm-corpus	adj	noun	no	0.7891	0.7892	overlap	The prince, long since {excommunicate}, ignored the legate's letters.
+expatriate	holdout	llm-corpus	noun	noun	no	0.7369	0.7579	coverage-gap	As an {expatriate}, he voted by mail from Singapore.
+expatriate	holdout	llm-corpus	verb	verb	no	0.8425	0.8220	overlap	Courts historically could {expatriate} convicted traitors, stripping them of citizenship.
+expatriate	holdout	llm-corpus	noun	verb	yes	0.7837	0.7816	overlap	Hemingway became the most famous literary {expatriate} of the 1920s.
+expatriate	holdout	llm-corpus	noun	verb	no	0.9094	0.8871	overlap	Tax rules for the long-term {expatriate} are surprisingly complicated.
+explant	holdout	llm-corpus	noun	noun	no	0.7353	0.6705	coverage-gap	Callus formed at the edges of the leaf {explant} within two weeks.
+explant	holdout	llm-corpus	verb	verb	no	0.7169	0.7426	coverage-gap	When biologists {explant} an organ, they must keep it oxygenated.
+federate	holdout	llm-corpus	verb	verb	no	0.8106	0.7596	ambiguous	Rival clans agreed to {federate} against the invaders.
+federate	holdout	llm-corpus	verb	verb	no	0.9229	0.7666	ambiguous	Several small unions voted to {federate} under a single banner.
+federate	holdout	llm-corpus	verb	verb	no	0.7584	0.7987	ambiguous	The goal is to {federate} identity systems across partner organizations.
+ferment	holdout	llm-corpus	verb	verb	no	0.7540	0.7320	coverage-gap	Bacteria {ferment} fiber in the gut, producing short-chain fatty acids.
+foliate	holdout	llm-corpus	verb	adj	no	0.7543	0.8090	ambiguous	Craftsmen {foliate} silver by beating it between sheets of vellum.
+foliate	holdout	llm-corpus	verb	adj	no	0.7955	0.8326	overlap	Librarians {foliate} rare volumes so that missing pages are noticed at once.
+foliate	holdout	llm-corpus	adj	verb	no	0.7932	0.7515	ambiguous	Unlike its crusty cousin, this lichen is {foliate} and easily peeled from the rock.
+foretoken	holdout	llm-corpus	noun	noun	no	0.8038	0.7519	ambiguous	Every {foretoken} the villagers recorded was later said to have come true.
+foretoken	holdout	llm-corpus	noun	noun	no	0.7269	0.7042	coverage-gap	In the old ballad, a white raven is the {foretoken} of ruin.
+foretoken	holdout	llm-corpus	verb	noun	no	0.8581	0.8719	overlap	Such signs {foretoken} trouble for the harvest.
+foretoken	holdout	llm-corpus	verb	noun	no	0.8061	0.8436	overlap	What might these omens {foretoken} for the coming year?
+geminate	holdout	llm-corpus	adj	verb	yes	0.6803	0.6986	coverage-gap	A {geminate} "t" in "mattina" lengthens the sound.
+geminate	holdout	llm-corpus	adj	adj	no	0.8493	0.8370	overlap	Arabic has {geminate} roots whose second and third consonants are identical.
+geminate	holdout	llm-corpus	verb	verb	no	0.8767	0.8624	overlap	Does Finnish {geminate} the final stop in this context?
+geminate	holdout	llm-corpus	verb	verb	no	0.7521	0.7305	coverage-gap	Latin stops can {geminate} after a prefix assimilates.
+geminate	holdout	llm-corpus	verb	verb	no	0.8075	0.7830	overlap	Some languages {geminate} consonants to mark emphasis.
+geminate	holdout	llm-corpus	verb	verb	no	0.8410	0.8491	overlap	When a prefix ends in the same sound the root begins with, the two sounds {geminate}.
+graduate	holdout	llm-corpus	noun	noun	no	0.8146	0.8060	overlap	A proud {graduate} of the class of 1994, she returned to give the commencement speech.
+graduate	holdout	llm-corpus	verb	verb	no	0.8421	0.8429	overlap	After the trainees {graduate}, they receive their badges.
+graduate	holdout	llm-corpus	noun	noun	no	0.8333	0.8274	overlap	He was the first {graduate} from the village to attend medical school.
+graduate	holdout	llm-corpus	verb	verb	no	0.9039	0.8503	ambiguous	Most students {graduate} in the spring.
+graduate	holdout	llm-corpus	noun	noun	no	0.8131	0.8019	overlap	The firm hires only one {graduate} from each class.
+guesstimate	holdout	llm-corpus	noun	verb	yes	0.5946	0.6520	coverage-gap	Give me a quick {guesstimate} of the crowd size.
+guesstimate	holdout	llm-corpus	noun	noun	no	0.8900	0.8166	ambiguous	That number is just a {guesstimate}, not a measured value.
+house	holdout	llm-corpus	verb	noun	no	0.7876	0.8385	overlap	Many farms {house} migrant workers in trailers.
+house	holdout	llm-corpus	verb	verb	no	0.8832	0.8190	ambiguous	Plans call for a complex to {house} refugees displaced by the flood.
+imbricate	holdout	llm-corpus	adj	adj	no	0.7523	0.7368	coverage-gap	Cypress leaves are small and {imbricate} along the twig.
 imbricate	holdout	llm-corpus	verb	adj	yes	0.8853	0.9263	overlap	Plates of armor {imbricate} to give flexibility.
-imbricate	holdout	llm-corpus	adj	verb	no	0.7370	0.8254	ambiguous	The bud scales are tightly {imbricate}, shielding the tender growth.
-imbricate	holdout	llm-corpus	adj	verb	no	0.8185	0.8234	overlap	The creature had {imbricate} plates running down its back.
-imbricate	holdout	llm-corpus	verb	verb	no	0.7670	0.7648	coverage-gap	The feathers {imbricate} along the wing's edge.
-incarnate	holdout	llm-corpus	verb	adj	no	0.6078	0.6336	coverage-gap	Actors who {incarnate} real tyrants face a moral challenge.
-incarnate	holdout	llm-corpus	verb	verb	no	0.8772	0.8081	ambiguous	The god was believed to {incarnate} as a child in each generation.
-incarnate	holdout	llm-corpus	adj	adj	no	0.7960	0.8422	overlap	To the faithful, the child was the god {incarnate}.
-incense	holdout	llm-corpus	verb	verb	no	0.8477	0.8322	overlap	Tactless jokes about the flag {incense} veterans.
-incense	holdout	llm-corpus	verb	verb	no	0.9340	0.8750	ambiguous	What could possibly {incense} a gentle man like him?
-incorporate	holdout	llm-corpus	adj	verb	yes	0.7964	0.8079	overlap	Archaic law distinguished {incorporate} towns from mere villages.
-incorporate	holdout	llm-corpus	verb	verb	no	0.9187	0.8799	overlap	Founders often {incorporate} in Delaware for legal reasons.
-incorporate	holdout	llm-corpus	adj	adj	no	0.7431	0.6883	coverage-gap	The poet imagined an {incorporate} spirit, joined to matter.
-incorporate	holdout	llm-corpus	adj	verb	no	0.8251	0.8302	overlap	The sect lived as one {incorporate} community, owning all property in common.
-increase	holdout	llm-corpus	verb	noun	yes	0.8180	0.9152	overlap	Costs {increase} as the work drags on.
-increase	holdout	llm-corpus	verb	verb	no	0.8779	0.8704	overlap	Demand for solar panels continues to {increase}.
-increase	holdout	llm-corpus	verb	verb	no	0.9113	0.8500	ambiguous	Prices {increase} every spring.
-increase	holdout	llm-corpus	verb	noun	yes	0.8066	0.8379	overlap	Rents {increase} faster than wages in the city.
-increase	real-eval	real	verb	noun	yes	0.7709	0.7984	overlap	As the population {increases}, the economy grows.
-increase	real-eval	real	noun	noun	no	0.8026	0.7852	overlap	Could you not spare me the {increase} of torture which your visits cause me?"
-increase	real-eval	real	noun	verb	yes	0.7950	0.8381	overlap	Friend Mousqueton, you see that we have a reinforcement, and we must have an {increase} of supplies."
-incurvate	holdout	llm-corpus	verb	verb	no	0.8626	0.8005	ambiguous	The edges of the leaf {incurvate} as the plant dries.
-incurvate	holdout	llm-corpus	adj	verb	yes	0.5708	0.6945	coverage-gap	The grass blades are narrow and {incurvate} in dry weather.
-incurvate	holdout	llm-corpus	adj	verb	yes	0.7274	0.8532	ambiguous	The petals are {incurvate}, closing like cupped hands.
-incurvate	holdout	llm-corpus	verb	verb	no	0.6993	0.7073	coverage-gap	The tips {incurvate} slightly, forming a hook.
-indent	holdout	llm-corpus	verb	noun	no	0.8565	0.9044	overlap	Most editors {indent} new lines automatically.
-indent	holdout	llm-corpus	noun	noun	no	0.8625	0.8497	overlap	The coastline has a deep {indent} where the river meets the sea.
-indent	holdout	llm-corpus	verb	noun	no	0.8434	0.8643	overlap	Why does the formatter {indent} this block twice?
-inebriate	holdout	llm-corpus	noun	adj	yes	0.7835	0.7841	overlap	A notorious {inebriate}, he was banned from every pub in town.
-inebriate	holdout	llm-corpus	verb	verb	no	0.7061	0.7584	coverage-gap	Absinthe was said to {inebriate} in ways that ordinary liquor did not.
-inebriate	holdout	llm-corpus	noun	adj	no	0.8555	0.7849	ambiguous	An {inebriate} stumbled out of the tavern and into the snow.
-inebriate	holdout	llm-corpus	noun	noun	no	0.7649	0.7614	coverage-gap	The cabbie refused to pick up the {inebriate} swaying at the curb.
-inebriate	holdout	llm-corpus	adj	adj	no	0.7913	0.8148	overlap	The {inebriate} revelers filled the square by midnight.
-infix	holdout	llm-corpus	noun	noun	no	0.8559	0.8362	overlap	Each {infix} in the Khmer examples changes the meaning of the root.
-inlay	holdout	llm-corpus	verb	verb	no	0.6637	0.7188	coverage-gap	Some luthiers {inlay} abalone shell into the neck, while others prefer simple dots.
-inlay	holdout	llm-corpus	noun	noun	no	0.8686	0.8411	overlap	Where did you find an {inlay} this delicate, and who cut the tiny pieces of walnut and maple?
-insert	holdout	llm-corpus	noun	verb	yes	0.6898	0.6307	coverage-gap	Replace the filter {insert} every three months or whenever the light turns amber.
-insert	holdout	llm-corpus	noun	noun	no	0.7201	0.6214	coverage-gap	The carbide {inserts} on the cutting tool wear out faster when the feed rate is set too high.
-insert	holdout	llm-corpus	noun	verb	yes	0.6643	0.7166	coverage-gap	{Insert} A shows the fault line in more detail, with the epicenter marked in red.
-inside	holdout	llm-corpus	adv	adv	no	0.7925	0.8048	overlap	The pastries smell great from out here, so let's step {inside} and order a few.
-inside	holdout	llm-corpus	adv	adj	yes	0.7877	0.8119	overlap	You can leave the tools in the yard, but please bring the generator {inside} before the storm hits.
+imbricate	holdout	llm-corpus	adj	verb	no	0.7374	0.8258	ambiguous	The bud scales are tightly {imbricate}, shielding the tender growth.
+imbricate	holdout	llm-corpus	adj	verb	no	0.8186	0.8235	overlap	The creature had {imbricate} plates running down its back.
+imbricate	holdout	llm-corpus	verb	verb	no	0.7672	0.7649	coverage-gap	The feathers {imbricate} along the wing's edge.
+incarnate	holdout	llm-corpus	verb	adj	no	0.6098	0.6347	coverage-gap	Actors who {incarnate} real tyrants face a moral challenge.
+incarnate	holdout	llm-corpus	verb	verb	no	0.8776	0.8087	ambiguous	The god was believed to {incarnate} as a child in each generation.
+incarnate	holdout	llm-corpus	adj	adj	no	0.7966	0.8427	overlap	To the faithful, the child was the god {incarnate}.
+incense	holdout	llm-corpus	verb	verb	no	0.8476	0.8320	overlap	Tactless jokes about the flag {incense} veterans.
+incense	holdout	llm-corpus	verb	verb	no	0.9340	0.8749	ambiguous	What could possibly {incense} a gentle man like him?
+incorporate	holdout	llm-corpus	adj	verb	yes	0.7965	0.8080	overlap	Archaic law distinguished {incorporate} towns from mere villages.
+incorporate	holdout	llm-corpus	verb	verb	no	0.9186	0.8800	overlap	Founders often {incorporate} in Delaware for legal reasons.
+incorporate	holdout	llm-corpus	adj	adj	no	0.7430	0.6881	coverage-gap	The poet imagined an {incorporate} spirit, joined to matter.
+incorporate	holdout	llm-corpus	adj	verb	no	0.8251	0.8303	overlap	The sect lived as one {incorporate} community, owning all property in common.
+increase	holdout	llm-corpus	verb	noun	yes	0.8178	0.9151	overlap	Costs {increase} as the work drags on.
+increase	holdout	llm-corpus	verb	verb	no	0.8777	0.8702	overlap	Demand for solar panels continues to {increase}.
+increase	holdout	llm-corpus	verb	verb	no	0.9112	0.8498	ambiguous	Prices {increase} every spring.
+increase	holdout	llm-corpus	verb	noun	yes	0.8064	0.8377	overlap	Rents {increase} faster than wages in the city.
+increase	real-eval	real	verb	noun	no	0.7705	0.7979	overlap	As the population {increases}, the economy grows.
+increase	real-eval	real	noun	noun	no	0.8023	0.7849	overlap	Could you not spare me the {increase} of torture which your visits cause me?"
+increase	real-eval	real	noun	verb	yes	0.7948	0.8379	overlap	Friend Mousqueton, you see that we have a reinforcement, and we must have an {increase} of supplies."
+incurvate	holdout	llm-corpus	verb	verb	no	0.8627	0.8008	ambiguous	The edges of the leaf {incurvate} as the plant dries.
+incurvate	holdout	llm-corpus	adj	verb	yes	0.5717	0.6952	coverage-gap	The grass blades are narrow and {incurvate} in dry weather.
+incurvate	holdout	llm-corpus	adj	verb	yes	0.7281	0.8539	ambiguous	The petals are {incurvate}, closing like cupped hands.
+incurvate	holdout	llm-corpus	verb	verb	no	0.7004	0.7072	coverage-gap	The tips {incurvate} slightly, forming a hook.
+indent	holdout	llm-corpus	verb	noun	no	0.8566	0.9044	overlap	Most editors {indent} new lines automatically.
+indent	holdout	llm-corpus	noun	noun	no	0.8626	0.8497	overlap	The coastline has a deep {indent} where the river meets the sea.
+indent	holdout	llm-corpus	verb	noun	no	0.8435	0.8643	overlap	Why does the formatter {indent} this block twice?
+inebriate	holdout	llm-corpus	noun	adj	yes	0.7833	0.7839	overlap	A notorious {inebriate}, he was banned from every pub in town.
+inebriate	holdout	llm-corpus	verb	verb	no	0.7055	0.7580	coverage-gap	Absinthe was said to {inebriate} in ways that ordinary liquor did not.
+inebriate	holdout	llm-corpus	noun	adj	no	0.8555	0.7847	ambiguous	An {inebriate} stumbled out of the tavern and into the snow.
+inebriate	holdout	llm-corpus	noun	noun	no	0.7646	0.7609	coverage-gap	The cabbie refused to pick up the {inebriate} swaying at the curb.
+inebriate	holdout	llm-corpus	adj	adj	no	0.7912	0.8147	overlap	The {inebriate} revelers filled the square by midnight.
+infix	holdout	llm-corpus	noun	noun	no	0.8557	0.8360	overlap	Each {infix} in the Khmer examples changes the meaning of the root.
+inlay	holdout	llm-corpus	verb	verb	no	0.6621	0.7176	coverage-gap	Some luthiers {inlay} abalone shell into the neck, while others prefer simple dots.
+inlay	holdout	llm-corpus	noun	noun	no	0.8685	0.8408	overlap	Where did you find an {inlay} this delicate, and who cut the tiny pieces of walnut and maple?
+insert	holdout	llm-corpus	noun	verb	no	0.6896	0.6304	coverage-gap	Replace the filter {insert} every three months or whenever the light turns amber.
+insert	holdout	real	verb	noun	no	0.8239	0.8113	overlap	When I got to the job and tried to {insert} the new piece of metal IT WOULD NOT FIT!!
+insert	holdout	llm-corpus	noun	verb	yes	0.7358	0.7165	coverage-gap	{Insert} A shows the fault line in more detail, with the epicenter marked in red.
+inside	holdout	llm-corpus	adv	adv	no	0.7920	0.8041	overlap	The pastries smell great from out here, so let's step {inside} and order a few.
+inside	holdout	llm-corpus	adv	adj	yes	0.7870	0.8111	overlap	You can leave the tools in the yard, but please bring the generator {inside} before the storm hits.
 insult	holdout	llm-corpus	noun	noun	no	0.9242	0.9041	overlap	Fans hurled racist {insults} at the player.
-insult	holdout	llm-corpus	noun	noun	no	0.9155	0.8583	ambiguous	Injury was added to {insult} when the bill arrived.
+insult	holdout	llm-corpus	noun	noun	no	0.9154	0.8583	ambiguous	Injury was added to {insult} when the bill arrived.
 insult	holdout	llm-corpus	verb	verb	no	0.8668	0.8337	overlap	The speech seemed designed to {insult}, not persuade.
 insult	holdout	llm-corpus	noun	noun	no	0.8806	0.8750	overlap	What an {insult} to the memory of those soldiers!
-insult	real-eval	real	noun	noun	no	0.8969	0.8831	overlap	"How many times," said Edith, bending her darkest glance upon him, "has your bold knavery assailed me with outrage and {insult}?
-insult	real-eval	real	verb	verb	no	0.8955	0.8540	overlap	He ventured this remark without any intention to {insult}; but Heathcliff's violent nature was not prepared to endure the appearance of impertinence from one whom he seemed to hate, even then, as a rival.
+insult	real-eval	real	noun	noun	no	0.8970	0.8831	overlap	"How many times," said Edith, bending her darkest glance upon him, "has your bold knavery assailed me with outrage and {insult}?
+insult	real-eval	real	verb	verb	no	0.8955	0.8539	overlap	He ventured this remark without any intention to {insult}; but Heathcliff's violent nature was not prepared to endure the appearance of impertinence from one whom he seemed to hate, even then, as a rival.
 insult	real-eval	real	noun	noun	no	0.8422	0.8184	overlap	How there were more years; more impertinences, ignorances, and {insults}.
 insult	real-eval	real	verb	verb	no	0.8673	0.8793	overlap	Tom severs ties with anyone that {insults} him.
-insult	real-eval	real	noun	noun	no	0.8443	0.7964	overlap	Yidir is a good guy. He doesn't deserve {insults}.
-interchange	holdout	llm-corpus	verb	noun	yes	0.8361	0.8673	overlap	Shopkeepers in the border town {interchange} dollars and pesos without a second thought.
-interchange	holdout	llm-corpus	noun	noun	no	0.8033	0.7537	ambiguous	The play ends with a tense {interchange} between father and son that is more silence than speech.
-interdict	holdout	llm-corpus	noun	noun	no	0.8238	0.7584	ambiguous	The pope laid the whole city under an {interdict}, barring all public worship.
-interlock	holdout	llm-corpus	verb	noun	yes	0.8667	0.8752	overlap	Branches overhead {interlock} to form a green tunnel along the old road.
-interlock	holdout	llm-corpus	noun	verb	no	0.7366	0.7284	coverage-gap	The crane's electronic {interlocks} shut down the hoist if the load exceeds the limit.
+insult	real-eval	real	noun	noun	no	0.8441	0.7963	overlap	Yidir is a good guy. He doesn't deserve {insults}.
+interchange	holdout	llm-corpus	verb	noun	yes	0.8362	0.8670	overlap	Shopkeepers in the border town {interchange} dollars and pesos without a second thought.
+interchange	holdout	llm-corpus	noun	noun	no	0.8033	0.7536	ambiguous	The play ends with a tense {interchange} between father and son that is more silence than speech.
+interdict	holdout	llm-corpus	noun	noun	no	0.8242	0.7586	ambiguous	The pope laid the whole city under an {interdict}, barring all public worship.
+interlock	holdout	llm-corpus	verb	noun	yes	0.8664	0.8750	overlap	Branches overhead {interlock} to form a green tunnel along the old road.
+interlock	holdout	llm-corpus	noun	verb	no	0.7361	0.7278	coverage-gap	The crane's electronic {interlocks} shut down the hoist if the load exceeds the limit.
 intimate	holdout	llm-corpus	noun	noun	no	0.8842	0.8822	overlap	He had been an {intimate} of the mayor for thirty years before the scandal broke.
-intimate	holdout	llm-corpus	verb	noun	no	0.8293	0.7884	overlap	In the letter, the minister {intimates} that he may resign before the end of the year.
-intimate	holdout	llm-corpus	noun	noun	no	0.8956	0.8065	ambiguous	The letters were never shown to anyone but an {intimate} of the author.
-intrigue	holdout	llm-corpus	verb	verb	no	0.6764	0.7422	coverage-gap	The detective's odd habit of humming while he thinks {intrigues} everyone who works with him.
-invalid	holdout	llm-corpus	adj	noun	yes	0.8022	0.8435	overlap	If the address is {invalid}, the email will bounce.
+intimate	holdout	llm-corpus	verb	noun	no	0.8295	0.7884	overlap	In the letter, the minister {intimates} that he may resign before the end of the year.
+intimate	holdout	llm-corpus	noun	noun	no	0.8955	0.8065	ambiguous	The letters were never shown to anyone but an {intimate} of the author.
+intrigue	holdout	llm-corpus	verb	verb	no	0.6764	0.7419	coverage-gap	The detective's odd habit of humming while he thinks {intrigues} everyone who works with him.
+invalid	holdout	llm-corpus	adj	noun	yes	0.8025	0.8437	overlap	If the address is {invalid}, the email will bounce.
 invite	holdout	llm-corpus	noun	noun	no	0.9009	0.8659	overlap	An {invite} to the White House dinner is not something you decline lightly.
-laminate	holdout	llm-corpus	noun	noun	no	0.8282	0.7274	ambiguous	Several {laminates} were tested for impact strength before the supplier was chosen.
-lead	holdout	real	metal	metal	no	0.8858	0.8919	overlap	But he did his best to replace the {lead} by stones, and, after several fruitless attempts, he succeeded in wounding a magnificent bird.
-lead	holdout	real	metal	guide-noun	no	0.8576	0.8830	overlap	His legs had turned to {lead}.
-lead	holdout	real	guide-noun	metal	no	0.9030	0.9032	overlap	It's merely a matter of expediency, you see, my girls will naturally take the {lead}, and this table is considered their proper place.
-lead	holdout	real	metal	metal	no	0.8460	0.8190	overlap	It's the {lead} that goes in the pencil sharpener, not the eraser.
-lead	holdout	real	metal	metal	no	0.8376	0.8410	overlap	Then he drew off his glove, produced a small book from his waist, licked the {lead} of his pencil and made ready to indite.
-lead	real-eval	real	guide-verb	guide-noun	yes	0.7842	0.8563	overlap	"And who should {lead} but I?
-lead	real-eval	real	guide-verb	guide-verb	no	0.7173	0.7020	coverage-gap	"Phil has something more to do, before we can afford to part with him; so go back to the company, my dear, and tell them to {lead} merry lives - while they last.
-lead	real-eval	real	guide-verb	guide-verb	no	0.7565	0.7731	ambiguous	"Truly, a help in time of need; for none can hope to {lead} the Pack forever," said Bagheera.
-lead	real-eval	real	guide-verb	guide-verb	no	0.8446	0.8523	overlap	He bade him {lead} the way, and, by the light of the torch which his conductor held up for the purpose, inspected all three cellars narrowly.
-lead	real-eval	real	guide-verb	guide-noun	no	0.7869	0.7980	overlap	She didn't want to {lead} him on.
-lead	real-eval	real	guide-verb	guide-verb	no	0.7689	0.7556	coverage-gap	We {lead} a merry life, and no one leads a merry life for a farthing, so I will close the bargain with thee.
-learned	holdout	llm-corpus	adj	adj	no	0.8326	0.8231	overlap	"My {learned} friend has overlooked one small detail," the barrister said dryly.
-learned	holdout	llm-corpus	verb	verb	no	0.7650	0.7881	ambiguous	By the end of the war, he had {learned} to trust no one.
-learned	holdout	llm-corpus	adj	adj	no	0.8388	0.8280	overlap	Her {learned} commentary on the text runs to nearly four hundred pages.
-live	holdout	real	adv	adv	no	0.8972	0.8842	overlap	A BBC presenter called Jeremy Hunt "Jeremy Cunt" {live} on air.
-live	holdout	llm-corpus	adj	adj	no	0.8598	0.8813	overlap	A {live} feed from the camera appeared on screen.
-live	holdout	llm-corpus	verb	verb	no	0.7759	0.7181	ambiguous	Frogs {live} in the pond behind the school.
+laminate	holdout	llm-corpus	noun	noun	no	0.8279	0.7267	ambiguous	Several {laminates} were tested for impact strength before the supplier was chosen.
+lead	holdout	real	metal	metal	no	0.8859	0.8920	overlap	But he did his best to replace the {lead} by stones, and, after several fruitless attempts, he succeeded in wounding a magnificent bird.
+lead	holdout	real	metal	guide-noun	no	0.8577	0.8831	overlap	His legs had turned to {lead}.
+lead	holdout	real	guide-noun	metal	no	0.9031	0.9033	overlap	It's merely a matter of expediency, you see, my girls will naturally take the {lead}, and this table is considered their proper place.
+lead	holdout	real	metal	metal	no	0.8461	0.8192	overlap	It's the {lead} that goes in the pencil sharpener, not the eraser.
+lead	holdout	real	metal	metal	no	0.8377	0.8412	overlap	Then he drew off his glove, produced a small book from his waist, licked the {lead} of his pencil and made ready to indite.
+lead	real-eval	real	guide-verb	guide-noun	yes	0.7843	0.8564	overlap	"And who should {lead} but I?
+lead	real-eval	real	guide-verb	guide-verb	no	0.7177	0.7031	coverage-gap	"Phil has something more to do, before we can afford to part with him; so go back to the company, my dear, and tell them to {lead} merry lives - while they last.
+lead	real-eval	real	guide-verb	guide-verb	no	0.7567	0.7733	ambiguous	"Truly, a help in time of need; for none can hope to {lead} the Pack forever," said Bagheera.
+lead	real-eval	real	guide-verb	guide-verb	no	0.8447	0.8525	overlap	He bade him {lead} the way, and, by the light of the torch which his conductor held up for the purpose, inspected all three cellars narrowly.
+lead	real-eval	real	guide-verb	guide-noun	no	0.7872	0.7983	overlap	She didn't want to {lead} him on.
+lead	real-eval	real	guide-verb	guide-verb	no	0.7690	0.7559	coverage-gap	We {lead} a merry life, and no one leads a merry life for a farthing, so I will close the bargain with thee.
+learned	holdout	llm-corpus	adj	adj	no	0.8327	0.8233	overlap	"My {learned} friend has overlooked one small detail," the barrister said dryly.
+learned	holdout	llm-corpus	verb	verb	no	0.7653	0.7885	ambiguous	By the end of the war, he had {learned} to trust no one.
+learned	holdout	llm-corpus	adj	adj	no	0.8390	0.8282	overlap	Her {learned} commentary on the text runs to nearly four hundred pages.
+live	holdout	real	adv	adv	no	0.8971	0.8842	overlap	A BBC presenter called Jeremy Hunt "Jeremy Cunt" {live} on air.
+live	holdout	llm-corpus	adj	adj	no	0.8597	0.8812	overlap	A {live} feed from the camera appeared on screen.
+live	holdout	llm-corpus	verb	verb	no	0.7760	0.7183	ambiguous	Frogs {live} in the pond behind the school.
 live	holdout	real	adv	adv	no	0.9210	0.8635	ambiguous	Is this broadcast {live} or pre-recorded?
 live	holdout	real	adv	adv	no	0.7947	0.8079	overlap	The TV show host embarrassed herself {live} on air.
-live	holdout	real	adv	adv	no	0.9004	0.8552	overlap	The bottom part of a soapstone carving of the mythical Zimbabwe Bird was handed to President Robert Mugabe in a ceremony broadcast {live} Wednesday on radio and television.
-live	holdout	llm-corpus	adj	adj	no	0.8962	0.8738	overlap	The interview was {live}, so nobody could edit it.
-live	holdout	llm-corpus	adj	adj	no	0.9193	0.8914	overlap	The network airs {live} coverage of the parade.
-live	holdout	llm-corpus	adj	adj	no	0.8666	0.8774	overlap	The show goes {live} at nine.
+live	holdout	real	adv	adv	no	0.9004	0.8551	overlap	The bottom part of a soapstone carving of the mythical Zimbabwe Bird was handed to President Robert Mugabe in a ceremony broadcast {live} Wednesday on radio and television.
+live	holdout	llm-corpus	adj	adj	no	0.8961	0.8738	overlap	The interview was {live}, so nobody could edit it.
+live	holdout	llm-corpus	adj	adj	no	0.9192	0.8914	overlap	The network airs {live} coverage of the parade.
+live	holdout	llm-corpus	adj	adj	no	0.8665	0.8773	overlap	The show goes {live} at nine.
 live	holdout	llm-corpus	adj	adj	no	0.8208	0.8045	overlap	The theater offers {live} performances every night.
-merchandise	holdout	llm-corpus	verb	verb	no	0.8559	0.8660	overlap	She knows how to {merchandise} a window so that people stop and stare.
-minute	holdout	llm-corpus	noun	noun	no	0.8491	0.8485	overlap	Don't spend a single {minute} worrying about it.
-minute	holdout	llm-corpus	noun	noun	no	0.8746	0.8303	overlap	Every {minute} counts in an emergency.
-minute	holdout	llm-corpus	noun	noun	no	0.8225	0.8371	overlap	Heart rates are measured in beats per {minute}.
-minute	holdout	llm-corpus	noun	adj	yes	0.7539	0.8516	ambiguous	The {minute} hand had stopped at twelve.
-minute	real-eval	real	noun	noun	no	0.8736	0.8630	overlap	A {minute} later a carriage and engine could be seen flying along the open curve which leads to the station.
-minute	real-eval	real	noun	adj	no	0.8979	0.8755	overlap	But, instead of manifesting an intention to contend with the successful marksman, he stood leaning on his rifle for more than a {minute}, like a man who was completely buried in thought.
-minute	real-eval	real	noun	noun	no	0.8890	0.8846	overlap	Miss Beirne expected them any {minute} and asked could she do anything.
-minute	real-eval	real	noun	noun	no	0.9088	0.8603	overlap	The teacher could walk in any {minute}.
-miscount	holdout	llm-corpus	verb	verb	no	0.7673	0.8434	ambiguous	Census takers sometimes {miscount} people who move often or have no fixed address.
-mishit	holdout	llm-corpus	noun	noun	no	0.8342	0.8111	overlap	The announcer called it a {mishit}, though it landed safely between the fielders.
-misprint	holdout	llm-corpus	noun	verb	no	0.8439	0.8105	overlap	Some of the most valuable coins are accidental {misprints} from the mint.
-moped	holdout	llm-corpus	verb	noun	yes	0.9099	0.9164	overlap	Grandpa {moped} for days after his team was knocked out of the playoffs.
-moped	holdout	llm-corpus	noun	noun	no	0.8690	0.8665	overlap	Police chased a speeding {moped} through the market.
-mouth	holdout	llm-corpus	noun	verb	yes	0.8153	0.8394	overlap	He kept his {mouth} shut about what he had seen at the dock.
-nearby	holdout	llm-corpus	adj	adj	no	0.8118	0.7906	overlap	She picked up a {nearby} rock and threw it at the target.
-object	holdout	llm-corpus	verb	noun	yes	0.6648	0.7734	ambiguous	The senator {objects} that the bill was rushed.
+merchandise	holdout	llm-corpus	verb	verb	no	0.8556	0.8657	overlap	She knows how to {merchandise} a window so that people stop and stare.
+minute	holdout	llm-corpus	noun	noun	no	0.8490	0.8484	overlap	Don't spend a single {minute} worrying about it.
+minute	holdout	llm-corpus	noun	noun	no	0.8745	0.8302	overlap	Every {minute} counts in an emergency.
+minute	holdout	llm-corpus	noun	noun	no	0.8223	0.8370	overlap	Heart rates are measured in beats per {minute}.
+minute	holdout	llm-corpus	noun	adj	yes	0.7537	0.8515	ambiguous	The {minute} hand had stopped at twelve.
+minute	real-eval	real	noun	noun	no	0.8735	0.8629	overlap	A {minute} later a carriage and engine could be seen flying along the open curve which leads to the station.
+minute	real-eval	real	noun	adj	no	0.8978	0.8753	overlap	But, instead of manifesting an intention to contend with the successful marksman, he stood leaning on his rifle for more than a {minute}, like a man who was completely buried in thought.
+minute	real-eval	real	noun	noun	no	0.8889	0.8844	overlap	Miss Beirne expected them any {minute} and asked could she do anything.
+minute	real-eval	real	noun	noun	no	0.9087	0.8600	overlap	The teacher could walk in any {minute}.
+miscount	holdout	llm-corpus	verb	verb	no	0.7685	0.8445	ambiguous	Census takers sometimes {miscount} people who move often or have no fixed address.
+mishit	holdout	llm-corpus	noun	noun	no	0.8345	0.8113	overlap	The announcer called it a {mishit}, though it landed safely between the fielders.
+misprint	holdout	llm-corpus	noun	verb	no	0.8443	0.8110	overlap	Some of the most valuable coins are accidental {misprints} from the mint.
+moped	holdout	llm-corpus	verb	noun	yes	0.9098	0.9164	overlap	Grandpa {moped} for days after his team was knocked out of the playoffs.
+moped	holdout	llm-corpus	noun	noun	no	0.8689	0.8664	overlap	Police chased a speeding {moped} through the market.
+mouth	holdout	llm-corpus	noun	verb	yes	0.8157	0.8398	overlap	He kept his {mouth} shut about what he had seen at the dock.
+nearby	holdout	llm-corpus	adj	adj	no	0.8108	0.7893	overlap	She picked up a {nearby} rock and threw it at the target.
+object	holdout	llm-corpus	verb	noun	yes	0.6649	0.7735	ambiguous	The senator {objects} that the bill was rushed.
 object	real-eval	real	verb	noun	yes	0.8216	0.8329	overlap	Some {object} to Tom's opinion.
-obverse	holdout	llm-corpus	adj	adj	no	0.8961	0.8934	overlap	Collectors examined the {obverse} design of the old penny.
-obverse	holdout	llm-corpus	noun	noun	no	0.7286	0.6849	coverage-gap	Honesty is the {obverse} of deceit, and he valued it highly.
-obverse	holdout	llm-corpus	adj	noun	no	0.8638	0.8789	overlap	The medal's {obverse} inscription was in Latin.
-obverse	holdout	llm-corpus	adj	adj	no	0.9040	0.9231	overlap	The {obverse} face of the banknote carries the signature.
-obverse	holdout	llm-corpus	noun	noun	no	0.8479	0.8512	overlap	The {obverse} of the seal was damaged, though the reverse was perfect.
-obverse	holdout	llm-corpus	adj	adj	no	0.8841	0.9437	overlap	The {obverse} side of the coin shows the president's portrait.
-obverse	holdout	llm-corpus	adj	adj	no	0.8724	0.8572	overlap	The {obverse} surface of the seal is engraved with a crest.
-obverse	holdout	llm-corpus	noun	adj	no	0.8750	0.9085	overlap	Which is the {obverse}, the side with the date or the side with the eagle?
-offset	holdout	llm-corpus	noun	noun	no	0.6931	0.6045	coverage-gap	Check the {offset} on the second wrench before you tighten the bolt.
-offset	holdout	llm-corpus	verb	verb	no	0.9239	0.8421	ambiguous	Designers sometimes {offset} the text slightly to give the page a fresher look.
-ornament	holdout	llm-corpus	verb	noun	yes	0.4542	0.8789	ambiguous	A band of embroidery {ornaments} the collar of the gown.
-ornament	holdout	llm-corpus	verb	verb	no	0.8122	0.8421	overlap	The silversmith will {ornament} the handle of the dagger with tiny rubies.
-ornament	holdout	llm-corpus	verb	verb	no	0.8484	0.8434	overlap	You can {ornament} the top of the gingerbread house with royal icing.
-outgo	holdout	llm-corpus	noun	noun	no	0.7751	0.6968	ambiguous	After the fire, the family's {outgo} for rent and repairs doubled.
+obverse	holdout	llm-corpus	adj	adj	no	0.8956	0.8929	overlap	Collectors examined the {obverse} design of the old penny.
+obverse	holdout	llm-corpus	noun	noun	no	0.7274	0.6829	coverage-gap	Honesty is the {obverse} of deceit, and he valued it highly.
+obverse	holdout	llm-corpus	adj	noun	no	0.8632	0.8784	overlap	The medal's {obverse} inscription was in Latin.
+obverse	holdout	llm-corpus	adj	adj	no	0.9035	0.9228	overlap	The {obverse} face of the banknote carries the signature.
+obverse	holdout	llm-corpus	noun	noun	no	0.8473	0.8505	overlap	The {obverse} of the seal was damaged, though the reverse was perfect.
+obverse	holdout	llm-corpus	adj	adj	no	0.8836	0.9434	overlap	The {obverse} side of the coin shows the president's portrait.
+obverse	holdout	llm-corpus	adj	adj	no	0.8717	0.8565	overlap	The {obverse} surface of the seal is engraved with a crest.
+obverse	holdout	llm-corpus	noun	adj	no	0.8746	0.9082	overlap	Which is the {obverse}, the side with the date or the side with the eagle?
+offset	holdout	llm-corpus	noun	noun	no	0.6944	0.6058	coverage-gap	Check the {offset} on the second wrench before you tighten the bolt.
+offset	holdout	llm-corpus	verb	verb	no	0.9240	0.8422	ambiguous	Designers sometimes {offset} the text slightly to give the page a fresher look.
+ornament	holdout	llm-corpus	verb	noun	yes	0.4520	0.8787	ambiguous	A band of embroidery {ornaments} the collar of the gown.
+ornament	holdout	llm-corpus	verb	verb	no	0.8123	0.8420	overlap	The silversmith will {ornament} the handle of the dagger with tiny rubies.
+ornament	holdout	llm-corpus	verb	verb	no	0.8485	0.8433	overlap	You can {ornament} the top of the gingerbread house with royal icing.
+outgo	holdout	llm-corpus	noun	noun	no	0.7752	0.6968	ambiguous	After the fire, the family's {outgo} for rent and repairs doubled.
 outgo	holdout	llm-corpus	noun	noun	no	0.8199	0.7909	overlap	Careful budgeting means tracking every dollar of income and {outgo}.
-outgo	holdout	llm-corpus	verb	verb	no	0.7731	0.7478	ambiguous	It is hard to {outgo} a team that practices twice as often as you do.
+outgo	holdout	llm-corpus	verb	verb	no	0.7733	0.7479	ambiguous	It is hard to {outgo} a team that practices twice as often as you do.
 outgo	holdout	llm-corpus	noun	noun	no	0.7853	0.7013	ambiguous	Ledgers record the {outgoes} of the household in the left-hand column.
-outgo	holdout	llm-corpus	noun	noun	no	0.8253	0.7879	overlap	The firm's heavy {outgo} on legal fees left little for dividends.
+outgo	holdout	llm-corpus	noun	noun	no	0.8251	0.7878	overlap	The firm's heavy {outgo} on legal fees left little for dividends.
 outgo	holdout	llm-corpus	verb	noun	no	0.8458	0.8638	overlap	Will the new model {outgo} last year's sales record?
-outreach	holdout	llm-corpus	noun	verb	no	0.8795	0.8788	overlap	The senator's {outreach} to young voters paid off in the primary.
-overall	holdout	llm-corpus	adj	adj	no	0.8666	0.7785	ambiguous	Despite a few weak chapters, the {overall} impression of the book is positive.
-overall	holdout	llm-corpus	adj	adv	yes	0.7828	0.8285	overlap	She was named {overall} champion after winning three of five events.
-overbid	holdout	llm-corpus	verb	verb	no	0.8794	0.8731	overlap	Why do bidders {overbid} so often in online auctions?
-overcall	holdout	llm-corpus	noun	verb	no	0.9158	0.8824	overlap	The textbook chapter explains when a jump {overcall} is a good idea.
-overcall	holdout	llm-corpus	verb	noun	no	0.8627	0.8796	overlap	West will {overcall} in clubs if the opponents seem to be stopping low.
-overdose	holdout	llm-corpus	verb	noun	yes	0.9213	0.9239	overlap	Patients who {overdose} on this drug may need dialysis.
-overdose	holdout	llm-corpus	verb	verb	no	0.9085	0.9079	overlap	People who quit and relapse often {overdose} because their tolerance has dropped.
+outreach	holdout	llm-corpus	noun	verb	no	0.8795	0.8787	overlap	The senator's {outreach} to young voters paid off in the primary.
+overall	holdout	llm-corpus	adj	adj	no	0.8662	0.7779	ambiguous	Despite a few weak chapters, the {overall} impression of the book is positive.
+overall	holdout	llm-corpus	adj	adv	yes	0.7827	0.8284	overlap	She was named {overall} champion after winning three of five events.
+overbid	holdout	llm-corpus	verb	verb	no	0.8795	0.8733	overlap	Why do bidders {overbid} so often in online auctions?
+overcall	holdout	llm-corpus	noun	verb	no	0.9155	0.8820	overlap	The textbook chapter explains when a jump {overcall} is a good idea.
+overcall	holdout	llm-corpus	verb	noun	no	0.8622	0.8793	overlap	West will {overcall} in clubs if the opponents seem to be stopping low.
+overdose	holdout	llm-corpus	verb	noun	yes	0.9213	0.9240	overlap	Patients who {overdose} on this drug may need dialysis.
+overdose	holdout	llm-corpus	verb	verb	no	0.9086	0.9080	overlap	People who quit and relapse often {overdose} because their tolerance has dropped.
 overdose	holdout	llm-corpus	verb	noun	no	0.9273	0.9397	overlap	The nurse worried that the confused patient would {overdose} on his own medication.
-overdress	holdout	llm-corpus	verb	verb	no	0.8798	0.8634	overlap	Guests who {overdress} for a backyard barbecue can feel awkward.
-overdress	holdout	llm-corpus	verb	verb	no	0.8879	0.8918	overlap	She would rather {overdress} than be caught in jeans at a gala.
-overdress	holdout	llm-corpus	noun	noun	no	0.7024	0.6965	coverage-gap	The shop sells linen {overdresses} in six colors.
-overdub	holdout	llm-corpus	verb	noun	no	0.9028	0.8776	overlap	Many bands {overdub} strings long after the basic tracks are finished.
-overflow	holdout	llm-corpus	noun	noun	no	0.8412	0.8321	overlap	A buffer {overflow} in the parser let attackers run their own code.
-overflow	holdout	llm-corpus	noun	noun	no	0.9179	0.9161	overlap	Guests in the {overflow} room watched the ceremony on a screen.
-overflow	holdout	llm-corpus	verb	noun	no	0.8756	0.9393	overlap	Heavy rain caused the creek to {overflow} near the old mill.
-overflow	holdout	llm-corpus	verb	verb	no	0.8519	0.8401	overlap	If the bucket is full, the water will {overflow} onto the floor.
-overflow	holdout	llm-corpus	verb	verb	no	0.6388	0.6831	coverage-gap	Make sure the input cannot {overflow} the fixed-size buffer.
-overflow	holdout	llm-corpus	noun	noun	no	0.8162	0.8033	overlap	Rising {overflows} from the sewers fouled the beaches after the storm.
-overflow	holdout	llm-corpus	verb	verb	no	0.8362	0.8712	overlap	The crowd {overflows} the plaza and spills into side streets.
-overhaul	holdout	llm-corpus	verb	noun	no	0.8640	0.8616	overlap	Congress voted to {overhaul} the health care system.
-overhaul	holdout	llm-corpus	verb	noun	yes	0.8279	0.8474	overlap	The shipyard {overhauls} three destroyers each year.
-overlap	holdout	llm-corpus	noun	noun	no	0.8660	0.8585	overlap	A slight {overlap} of the shingles keeps the rain out.
-overlap	holdout	llm-corpus	verb	verb	no	0.7463	0.7977	ambiguous	Don't let the text {overlap} the image, or the page will look cluttered.
-overlap	holdout	llm-corpus	noun	noun	no	0.9114	0.8887	overlap	There is a significant {overlap} between the two job descriptions.
-overlap	holdout	llm-corpus	noun	verb	no	0.8498	0.8610	overlap	Where's the {overlap} between your schedule and mine?
-overlay	holdout	llm-corpus	noun	verb	no	0.8424	0.8217	overlap	Each {overlay} in the atlas covers a different century.
-overload	holdout	llm-corpus	noun	noun	no	0.8490	0.8220	overlap	A circuit breaker protects wiring from {overload}.
-overpass	holdout	llm-corpus	noun	noun	no	0.8909	0.8434	overlap	Police closed the highway {overpass} after the crash.
-overpass	holdout	llm-corpus	noun	noun	no	0.9144	0.8695	overlap	The detour takes you over the {overpass} and back to the ramp.
-overpass	holdout	llm-corpus	noun	noun	no	0.8570	0.7990	ambiguous	Two {overpasses} were damaged in the earthquake.
-overpass	holdout	llm-corpus	noun	verb	no	0.9008	0.8988	overlap	Where's the {overpass} that the bus route uses?
-override	holdout	llm-corpus	noun	verb	no	0.9166	0.9208	overlap	Pilots have a manual {override} in case the autopilot fails.
-override	holdout	llm-corpus	noun	verb	yes	0.8343	0.7732	ambiguous	This {override} in the config file changes the default port.
+overdress	holdout	llm-corpus	verb	verb	no	0.8797	0.8633	overlap	Guests who {overdress} for a backyard barbecue can feel awkward.
+overdress	holdout	llm-corpus	verb	verb	no	0.8877	0.8917	overlap	She would rather {overdress} than be caught in jeans at a gala.
+overdress	holdout	llm-corpus	noun	noun	no	0.7019	0.6959	coverage-gap	The shop sells linen {overdresses} in six colors.
+overdub	holdout	llm-corpus	verb	noun	no	0.9025	0.8774	overlap	Many bands {overdub} strings long after the basic tracks are finished.
+overflow	holdout	llm-corpus	noun	noun	no	0.8413	0.8323	overlap	A buffer {overflow} in the parser let attackers run their own code.
+overflow	holdout	llm-corpus	noun	noun	no	0.9179	0.9160	overlap	Guests in the {overflow} room watched the ceremony on a screen.
+overflow	holdout	llm-corpus	verb	noun	no	0.8757	0.9394	overlap	Heavy rain caused the creek to {overflow} near the old mill.
+overflow	holdout	llm-corpus	verb	verb	no	0.8521	0.8402	overlap	If the bucket is full, the water will {overflow} onto the floor.
+overflow	holdout	llm-corpus	verb	verb	no	0.6394	0.6824	coverage-gap	Make sure the input cannot {overflow} the fixed-size buffer.
+overflow	holdout	llm-corpus	noun	noun	no	0.8163	0.8036	overlap	Rising {overflows} from the sewers fouled the beaches after the storm.
+overflow	holdout	llm-corpus	verb	verb	no	0.8364	0.8712	overlap	The crowd {overflows} the plaza and spills into side streets.
+overhaul	holdout	llm-corpus	verb	noun	no	0.8642	0.8618	overlap	Congress voted to {overhaul} the health care system.
+overhaul	holdout	llm-corpus	verb	noun	yes	0.8284	0.8477	overlap	The shipyard {overhauls} three destroyers each year.
+overhead	holdout	real	noun	noun	no	0.7689	0.7557	coverage-gap	A variety of attempts to achieve this were unsuccessful due to the huge {overhead} of the information processing of the time.
+overhead	holdout	real	noun	noun	no	0.8773	0.8995	overlap	Costs of goods made by the businesses include material, labor, and allocated {overhead}.
+overhead	holdout	real	adj	noun	no	0.8892	0.8980	overlap	FCA accounts for all {overhead} and indirect costs, including those that are shared with other public agencies.
+overhead	holdout	real	adv	adv	no	0.8513	0.8363	overlap	I heard an airplane pass {overhead}.
+overhead	holdout	real	adj	noun	no	0.8819	0.8940	overlap	In accounting and economics, fixed costs, also known as indirect costs or {overhead} costs, are business expenses that are not dependent on the level of goods or services produced by the business.
+overhead	holdout	real	adj	noun	no	0.8233	0.8471	overlap	It includes material costs, direct labour, and {overhead} costs (as in absorption costing), and excludes operating costs (period costs) such as selling, administrative, advertising or R&D, etc.
+overhead	holdout	real	adj	adj	no	0.8852	0.8455	overlap	Returning an {overhead} smash is one of the most difficult shots in professional tennis.
+overhead	holdout	real	adj	adv	no	0.7592	0.7822	ambiguous	The restaurant's prices reflect the dining room's plush surroundings — polished stone floors, uncrowded, comfortable seating, a coffered ceiling, {overhead} chandeliers and a glass-domed atrium featuring a pond with water lilies and traditional lanterns.
+overhead	holdout	real	adj	adj	no	0.8294	0.8118	overlap	The storm had struck the {overhead} wire of the tramline, and one of the great supports had fallen.
+overhead	holdout	real	adj	adv	no	0.8182	0.8062	overlap	This went on, hour after hour, while outside all the world swooned under the {overhead} California sun.
+overhead	holdout	real	adv	adv	no	0.8403	0.8215	overlap	We have eccentric friends {overhead}, Kit, and we mustn't ask questions or talk too much--you understand?
+overlap	holdout	llm-corpus	noun	noun	no	0.8654	0.8579	overlap	A slight {overlap} of the shingles keeps the rain out.
+overlap	holdout	llm-corpus	verb	verb	no	0.7453	0.7967	ambiguous	Don't let the text {overlap} the image, or the page will look cluttered.
+overlap	holdout	llm-corpus	noun	noun	no	0.9112	0.8882	overlap	There is a significant {overlap} between the two job descriptions.
+overlap	holdout	llm-corpus	noun	verb	no	0.8487	0.8606	overlap	Where's the {overlap} between your schedule and mine?
+overlay	holdout	llm-corpus	noun	verb	no	0.8420	0.8212	overlap	Each {overlay} in the atlas covers a different century.
+overload	holdout	llm-corpus	noun	noun	no	0.8487	0.8220	overlap	A circuit breaker protects wiring from {overload}.
+overpass	holdout	llm-corpus	noun	noun	no	0.8906	0.8428	overlap	Police closed the highway {overpass} after the crash.
+overpass	holdout	llm-corpus	noun	noun	no	0.9139	0.8689	overlap	The detour takes you over the {overpass} and back to the ramp.
+overpass	holdout	llm-corpus	noun	noun	no	0.8565	0.7982	ambiguous	Two {overpasses} were damaged in the earthquake.
+overpass	holdout	llm-corpus	noun	verb	no	0.9004	0.8984	overlap	Where's the {overpass} that the bus route uses?
+override	holdout	llm-corpus	noun	verb	no	0.9169	0.9211	overlap	Pilots have a manual {override} in case the autopilot fails.
+override	holdout	llm-corpus	noun	verb	yes	0.8351	0.7742	ambiguous	This {override} in the config file changes the default port.
 overrun	holdout	llm-corpus	noun	noun	no	0.9129	0.8561	ambiguous	A schedule {overrun} delayed the opening by six months.
-overrun	holdout	llm-corpus	verb	verb	no	0.7885	0.8026	overlap	Do not {overrun} the end of the buffer when copying data.
-overrun	holdout	llm-corpus	noun	noun	no	0.8727	0.8284	overlap	The audit flagged a 30 percent {overrun} on the bridge.
-overrun	holdout	llm-corpus	noun	noun	no	0.8194	0.7904	overlap	The factory sells its {overruns} to outlet stores.
-overrun	holdout	llm-corpus	noun	noun	no	0.9157	0.8720	overlap	The pilot braked hard to avoid a runway {overrun}.
-overrun	holdout	llm-corpus	verb	noun	no	0.8232	0.8844	overlap	Will the budget {overrun} again this year?
-overshoot	holdout	llm-corpus	noun	noun	no	0.8344	0.7742	ambiguous	Engineers tuned the loop to minimize {overshoot}.
+overrun	holdout	llm-corpus	verb	verb	no	0.7884	0.8025	overlap	Do not {overrun} the end of the buffer when copying data.
+overrun	holdout	llm-corpus	noun	noun	no	0.8726	0.8283	overlap	The audit flagged a 30 percent {overrun} on the bridge.
+overrun	holdout	llm-corpus	noun	noun	no	0.8195	0.7907	overlap	The factory sells its {overruns} to outlet stores.
+overrun	holdout	llm-corpus	noun	noun	no	0.9156	0.8719	overlap	The pilot braked hard to avoid a runway {overrun}.
+overrun	holdout	llm-corpus	verb	noun	no	0.8230	0.8844	overlap	Will the budget {overrun} again this year?
+overshoot	holdout	llm-corpus	noun	noun	no	0.8343	0.7740	ambiguous	Engineers tuned the loop to minimize {overshoot}.
 overshoot	holdout	llm-corpus	verb	noun	yes	0.8281	0.8747	overlap	Stocks often {overshoot} when panic sets in.
-overshoot	holdout	llm-corpus	noun	noun	no	0.8690	0.8505	overlap	The rocket's {overshoot} put it two miles past the landing zone.
-overshoot	holdout	llm-corpus	verb	verb	no	0.8188	0.8480	overlap	Why does the cursor {overshoot} every time I move the mouse quickly?
-overspend	holdout	llm-corpus	noun	verb	no	0.8761	0.8437	overlap	A small {overspend} in marketing is not a big concern.
+overshoot	holdout	llm-corpus	noun	noun	no	0.8689	0.8504	overlap	The rocket's {overshoot} put it two miles past the landing zone.
+overshoot	holdout	llm-corpus	verb	verb	no	0.8187	0.8479	overlap	Why does the cursor {overshoot} every time I move the mouse quickly?
+overspend	holdout	llm-corpus	noun	verb	no	0.8761	0.8435	overlap	A small {overspend} in marketing is not a big concern.
 overspend	holdout	llm-corpus	noun	noun	no	0.8903	0.8657	overlap	Department heads must explain any {overspend} above five percent.
 overspend	holdout	llm-corpus	noun	noun	no	0.8658	0.8504	overlap	Hospital {overspends} have grown every year.
-overspend	holdout	llm-corpus	verb	verb	no	0.8576	0.8657	overlap	Students who {overspend} early in the month go hungry by the end.
-overspend	holdout	llm-corpus	verb	verb	no	0.8827	0.8916	overlap	The ministry tends to {overspend} in its final quarter.
-overspend	holdout	llm-corpus	noun	noun	no	0.9111	0.9110	overlap	What caused the {overspend} on the stadium?
-oversteer	holdout	llm-corpus	verb	verb	no	0.8977	0.8952	overlap	Be careful not to {oversteer} when the road is icy.
+overspend	holdout	llm-corpus	verb	verb	no	0.8577	0.8658	overlap	Students who {overspend} early in the month go hungry by the end.
+overspend	holdout	llm-corpus	verb	verb	no	0.8828	0.8917	overlap	The ministry tends to {overspend} in its final quarter.
+overspend	holdout	llm-corpus	noun	noun	no	0.9111	0.9111	overlap	What caused the {overspend} on the stadium?
+oversteer	holdout	llm-corpus	verb	verb	no	0.8976	0.8951	overlap	Be careful not to {oversteer} when the road is icy.
 oversteer	holdout	llm-corpus	verb	noun	no	0.8207	0.8354	overlap	Cars with a rear weight bias {oversteer} when the driver lifts off.
-oversteer	holdout	llm-corpus	noun	noun	no	0.8821	0.8647	overlap	Mild {oversteers} are fun on a closed circuit.
+oversteer	holdout	llm-corpus	noun	noun	no	0.8820	0.8647	overlap	Mild {oversteers} are fun on a closed circuit.
 oversteer	holdout	llm-corpus	verb	verb	no	0.8839	0.8866	overlap	Rally drivers deliberately {oversteer} to slide through the hairpins.
-oversteer	holdout	llm-corpus	noun	verb	no	0.9296	0.9007	overlap	Rear-wheel-drive cars are prone to {oversteer} under power.
-oversteer	holdout	llm-corpus	verb	verb	no	0.8661	0.8855	overlap	Soft rear springs make this car {oversteer} on corner entry.
-oversteer	holdout	llm-corpus	noun	verb	no	0.8959	0.9036	overlap	The car has a tendency toward {oversteer} in wet corners.
-overstock	holdout	llm-corpus	noun	noun	no	0.8938	0.8847	overlap	Brands dump their {overstock} at outlet malls.
-overstock	holdout	llm-corpus	noun	noun	no	0.9017	0.8710	overlap	The store held a clearance sale to clear its {overstock}.
-overstock	holdout	llm-corpus	noun	noun	no	0.8727	0.8375	overlap	Too many {overstocks} can sink a small retailer.
-overstock	holdout	llm-corpus	verb	noun	yes	0.8532	0.8405	overlap	Why did the buyer {overstock} sweaters in July?
-overthrow	holdout	llm-corpus	verb	noun	no	0.8314	0.8804	overlap	In the novel, the general {overthrows} governments for a living.
-overturn	holdout	llm-corpus	verb	verb	no	0.8901	0.7356	ambiguous	Strong winds {overturn} trucks on the bridge.
-overturn	holdout	llm-corpus	verb	verb	no	0.7244	0.7223	coverage-gap	The Supreme Court {overturns} precedent only rarely.
-overweight	holdout	llm-corpus	noun	noun	no	0.9184	0.9143	overlap	Fund managers hold an {overweight} in energy this quarter.
-overweight	holdout	llm-corpus	verb	verb	no	0.8963	0.8969	overlap	If you {overweight} bonds, expect lower returns in a rally.
-overweight	holdout	llm-corpus	verb	verb	no	0.8912	0.8955	overlap	Many funds {overweight} tech relative to the benchmark.
-overwork	holdout	llm-corpus	verb	noun	no	0.7939	0.7798	overlap	Bosses who {overwork} their employees see higher turnover.
+oversteer	holdout	llm-corpus	noun	verb	no	0.9295	0.9007	overlap	Rear-wheel-drive cars are prone to {oversteer} under power.
+oversteer	holdout	llm-corpus	verb	verb	no	0.8660	0.8854	overlap	Soft rear springs make this car {oversteer} on corner entry.
+oversteer	holdout	llm-corpus	noun	verb	no	0.8958	0.9036	overlap	The car has a tendency toward {oversteer} in wet corners.
+overstock	holdout	llm-corpus	noun	noun	no	0.8936	0.8846	overlap	Brands dump their {overstock} at outlet malls.
+overstock	holdout	llm-corpus	noun	noun	no	0.9016	0.8709	overlap	The store held a clearance sale to clear its {overstock}.
+overstock	holdout	llm-corpus	noun	noun	no	0.8726	0.8373	overlap	Too many {overstocks} can sink a small retailer.
+overstock	holdout	llm-corpus	verb	noun	yes	0.8528	0.8402	overlap	Why did the buyer {overstock} sweaters in July?
+overthrow	holdout	llm-corpus	verb	noun	no	0.8317	0.8806	overlap	In the novel, the general {overthrows} governments for a living.
+overturn	holdout	llm-corpus	verb	verb	no	0.8904	0.7364	ambiguous	Strong winds {overturn} trucks on the bridge.
+overturn	holdout	llm-corpus	verb	verb	no	0.7255	0.7235	coverage-gap	The Supreme Court {overturns} precedent only rarely.
+overweight	holdout	llm-corpus	noun	noun	no	0.9183	0.9142	overlap	Fund managers hold an {overweight} in energy this quarter.
+overweight	holdout	llm-corpus	verb	verb	no	0.8962	0.8968	overlap	If you {overweight} bonds, expect lower returns in a rally.
+overweight	holdout	llm-corpus	verb	verb	no	0.8911	0.8954	overlap	Many funds {overweight} tech relative to the benchmark.
+overwork	holdout	llm-corpus	verb	noun	no	0.7942	0.7804	overlap	Bosses who {overwork} their employees see higher turnover.
 overwork	holdout	llm-corpus	verb	verb	no	0.8960	0.8474	overlap	Please don't {overwork} yourself over this report.
-overwork	holdout	llm-corpus	verb	verb	no	0.9161	0.8916	overlap	She tends to {overwork} when deadlines approach.
-pasty	holdout	llm-corpus	adj	noun	no	0.7473	0.7841	ambiguous	The gravy was thick, gray, and {pasty}.
-pasty	holdout	llm-corpus	adj	noun	no	0.8260	0.8128	overlap	Too much flour leaves the sauce {pasty}.
-perforate	holdout	llm-corpus	adj	adj	no	0.8534	0.8196	overlap	Is the membrane solid, or is it {perforate} along its outer edge?
-permit	holdout	llm-corpus	verb	noun	yes	0.7226	0.8588	ambiguous	The terms of the lease {permit} subletting with written consent.
+overwork	holdout	llm-corpus	verb	verb	no	0.9161	0.8917	overlap	She tends to {overwork} when deadlines approach.
+pasty	holdout	llm-corpus	adj	noun	no	0.7464	0.7835	ambiguous	The gravy was thick, gray, and {pasty}.
+pasty	holdout	llm-corpus	adj	noun	no	0.8255	0.8119	overlap	Too much flour leaves the sauce {pasty}.
+perforate	holdout	llm-corpus	adj	adj	no	0.8536	0.8199	overlap	Is the membrane solid, or is it {perforate} along its outer edge?
+permit	holdout	llm-corpus	verb	noun	yes	0.7227	0.8589	ambiguous	The terms of the lease {permit} subletting with written consent.
 pigment	holdout	llm-corpus	verb	verb	no	0.8300	0.8131	overlap	The factory {pigments} each batch of vinyl to match the customer's swatch.
 polish	holdout	real	language	language	no	0.8731	0.8805	overlap	Do you see the L with the strike through it? That's probably {Polish}.
 polish	holdout	llm-corpus	noun	language	no	0.8807	0.8984	overlap	Her debut novel has real energy, though it could use a bit more {polish}.
-polish	holdout	real	language	language	no	0.9157	0.9174	overlap	I come from Poland. I'm a Pole, and I speak {Polish}.
-polish	holdout	real	language	adj	no	0.8475	0.8460	overlap	Let us be fully aware of all the importance of this day, because today within the generous walls of Boulogne-sur-Mer have met not French with English, nor Russians with {Polish}, but people with people.
+polish	holdout	real	language	language	no	0.9158	0.9173	overlap	I come from Poland. I'm a Pole, and I speak {Polish}.
+polish	holdout	real	language	adj	no	0.8478	0.8456	overlap	Let us be fully aware of all the importance of this day, because today within the generous walls of Boulogne-sur-Mer have met not French with English, nor Russians with {Polish}, but people with people.
 polish	holdout	real	adj	adj	no	0.9700	0.9450	overlap	My wife is {Polish}.
-polish	holdout	llm-corpus	noun	noun	no	0.9054	0.9010	overlap	The recipe is good, but the writing still lacks {polish}.
+polish	holdout	llm-corpus	noun	noun	no	0.9055	0.9011	overlap	The recipe is good, but the writing still lacks {polish}.
 polish	holdout	llm-corpus	noun	adj	yes	0.9181	0.9350	overlap	The team's offense had speed, but it lacked the {polish} of a champion.
 polish	holdout	real	language	adj	yes	0.9031	0.9009	overlap	The three Poles were tremendously excited and were continually shouting at him: "The pan is a lajdak!" and muttering threats in {Polish}.
 polish	holdout	real	language	language	no	0.9127	0.9164	overlap	Which is easier to learn, {Polish} or Czech?
-polish	holdout	llm-corpus	verb	verb	no	0.7655	0.7660	coverage-gap	Who {polishes} the trophies after the season ends?
-polish	holdout	real	adj	language	no	0.8130	0.8258	overlap	Żur is a {Polish} soup made of soured rye flour and meat.
+polish	holdout	llm-corpus	verb	verb	no	0.7659	0.7660	coverage-gap	Who {polishes} the trophies after the season ends?
+polish	holdout	real	adj	language	no	0.8131	0.8259	overlap	Żur is a {Polish} soup made of soured rye flour and meat.
 polish	real-eval	real	adj	adj	no	0.9189	0.9253	overlap	"What sort of {Polish} mazuwka is this?
-polish	real-eval	real	adj	language	no	0.8527	0.8572	overlap	Have you noticed the similarity in pronunciation between the {Polish} and Portuguese languages?
-polish	real-eval	real	adj	adj	no	0.9175	0.9252	overlap	I'm half Hungarian, half {Polish}.
+polish	real-eval	real	adj	language	no	0.8526	0.8571	overlap	Have you noticed the similarity in pronunciation between the {Polish} and Portuguese languages?
+polish	real-eval	real	adj	adj	no	0.9174	0.9251	overlap	I'm half Hungarian, half {Polish}.
 polish	real-eval	real	adj	adj	no	0.9679	0.9324	overlap	My spouse is {Polish}.
 polish	real-eval	real	language	language	no	0.8470	0.8502	overlap	Poland is called "Polska" in {Polish}.
 polish	real-eval	real	adj	adj	no	0.9596	0.9345	overlap	Their spouses are {Polish}.
-polish	real-eval	real	verb	noun	no	0.8213	0.8633	overlap	What if equal pains were taken to smooth and {polish} their manners?
-postfix	holdout	llm-corpus	noun	verb	yes	0.8916	0.9137	overlap	Add a {postfix} such as _old to the folder name before archiving.
-postfix	holdout	llm-corpus	verb	noun	yes	0.8805	0.9077	overlap	The renaming utility will {postfix} all matching files in the folder.
-postfix	holdout	llm-corpus	verb	verb	no	0.9170	0.9075	overlap	To keep names unique, {postfix} them with the user's initials.
-postulate	holdout	llm-corpus	verb	verb	no	0.8113	0.8286	overlap	Let us {postulate} a world in which energy costs nothing.
-precipitate	holdout	llm-corpus	noun	noun	no	0.8346	0.8056	overlap	Heavy metals settle out of the solution as an insoluble {precipitate}.
-precipitate	holdout	llm-corpus	noun	noun	no	0.7887	0.7006	ambiguous	The fine, powdery {precipitates} clogged the filter paper.
-prefetch	holdout	llm-corpus	verb	noun	no	0.9144	0.9340	overlap	Modern processors {prefetch} data they expect to need.
-prefetch	holdout	llm-corpus	noun	noun	no	0.9542	0.9108	overlap	The CPU issues a {prefetch} whenever it detects a sequential read pattern.
-prefetch	holdout	llm-corpus	noun	noun	no	0.9112	0.8954	overlap	The compiler inserts a {prefetch} three iterations ahead of the load.
+polish	real-eval	real	verb	noun	no	0.8214	0.8634	overlap	What if equal pains were taken to smooth and {polish} their manners?
+postfix	holdout	llm-corpus	noun	verb	yes	0.8914	0.9136	overlap	Add a {postfix} such as _old to the folder name before archiving.
+postfix	holdout	llm-corpus	verb	noun	yes	0.8804	0.9076	overlap	The renaming utility will {postfix} all matching files in the folder.
+postfix	holdout	llm-corpus	verb	verb	no	0.9168	0.9073	overlap	To keep names unique, {postfix} them with the user's initials.
+postulate	holdout	llm-corpus	verb	verb	no	0.8116	0.8288	overlap	Let us {postulate} a world in which energy costs nothing.
+precipitate	holdout	llm-corpus	noun	noun	no	0.8346	0.8052	overlap	Heavy metals settle out of the solution as an insoluble {precipitate}.
+precipitate	holdout	llm-corpus	noun	noun	no	0.7878	0.7006	ambiguous	The fine, powdery {precipitates} clogged the filter paper.
+prefetch	holdout	llm-corpus	verb	noun	no	0.9144	0.9339	overlap	Modern processors {prefetch} data they expect to need.
+prefetch	holdout	llm-corpus	noun	noun	no	0.9542	0.9107	overlap	The CPU issues a {prefetch} whenever it detects a sequential read pattern.
+prefetch	holdout	llm-corpus	noun	noun	no	0.9112	0.8953	overlap	The compiler inserts a {prefetch} three iterations ahead of the load.
 prefetch	holdout	llm-corpus	verb	noun	no	0.8806	0.9126	overlap	The driver will {prefetch} blocks when it detects a streaming workload.
-premix	holdout	llm-corpus	noun	noun	no	0.8835	0.8457	overlap	Several {premixes} are available, each with a different spice blend.
-premix	holdout	llm-corpus	verb	noun	no	0.9481	0.9393	overlap	Some bartenders {premix} cocktails in large batches.
-premix	holdout	llm-corpus	noun	verb	no	0.7204	0.7030	coverage-gap	The two-stroke engine runs on a {premix} of gasoline and oil.
-present	holdout	llm-corpus	verb	verb	no	0.6094	0.4654	coverage-gap	A dilemma like this seldom {presents} itself twice.
-present	holdout	real	adj	adj	no	0.8383	0.8467	overlap	I live in the {present} moment.
-present	holdout	real	adj	adj	no	0.8657	0.8441	overlap	Is the {present} moment all there is?
-present	holdout	llm-corpus	verb	adj	no	0.5046	0.6316	coverage-gap	The disease can {present} with fever, a rash, or no symptoms at all.
-present	holdout	llm-corpus	verb	adj	no	0.3732	0.4449	coverage-gap	The new law could {present} difficulties for small farms.
-present	holdout	llm-corpus	noun	noun	no	0.8279	0.7731	ambiguous	The novel moves between the past and the {present} in alternating chapters.
-present	holdout	real	adj	noun	no	0.6820	0.7347	coverage-gap	Those {present} at the concert were surprised by his performance.
-present	holdout	llm-corpus	noun	noun	no	0.8621	0.7564	ambiguous	Up to the {present}, the team has lost no home games.
-present	holdout	real	adj	adj	no	0.8174	0.8127	overlap	What is happening at the {present} time in the dispute over place-name signs in Carinthia is grotesque.
-present	holdout	llm-corpus	verb	verb	no	0.5962	0.4599	coverage-gap	You must {present} valid identification before boarding.
-present	real-eval	real	noun	adj	yes	0.6497	0.6758	coverage-gap	"If I had set my heart on Mr. Elton's marrying Harriet, it would have been very kind to open my eyes; but at {present} I only want to keep Harriet to myself.
-present	real-eval	real	adj	noun	no	0.7726	0.7947	overlap	Am I satisfied with my {present} self?
-present	real-eval	real	noun	noun	no	0.8152	0.6970	ambiguous	At {present}, there are three varieties to choose from.
-present	real-eval	real	noun	adj	yes	0.7404	0.7515	coverage-gap	No, my dear fellow; we must reconcile ourselves to the fact that we have no case at {present}, and that it is worth our while to run any risk in order to establish one."
-present	real-eval	real	noun	adj	no	0.6556	0.6579	coverage-gap	Ouija Board; fun for the whole family, past or {present}.
-present	real-eval	real	noun	noun	no	0.8437	0.6472	ambiguous	Seryozha understood at once that what the hall-porter was speaking of was a {present} from Countess Lidia Ivanovna for his birthday.
-present	real-eval	real	adj	adj	no	0.6619	0.6952	coverage-gap	They were the only ones {present} there.
-present	real-eval	real	adj	adj	no	0.7509	0.7460	coverage-gap	We were all {present} at the meeting.
-present	real-eval	real	noun	adj	no	0.6386	0.6469	coverage-gap	We've more of this sort of thing on hand than we know what to do with at {present}, but I'll run my eye over it, and give you an answer next week."
-produce	holdout	llm-corpus	noun	noun	no	0.8231	0.7410	ambiguous	A truck carrying California {produce} overturned on the interstate.
-produce	holdout	llm-corpus	noun	noun	no	0.8518	0.7584	ambiguous	Refrigerate leafy {produce} in a sealed container.
-produce	real-eval	real	verb	verb	no	0.7865	0.7190	ambiguous	The family keep their buffaloes solely for the milk they {produce}, he explained, which they use for their own consumption within the family.
-progress	holdout	llm-corpus	verb	noun	no	0.8090	0.8244	overlap	Students {progress} from simple sums to algebra over two years.
+premix	holdout	llm-corpus	noun	noun	no	0.8831	0.8454	overlap	Several {premixes} are available, each with a different spice blend.
+premix	holdout	llm-corpus	verb	noun	no	0.9479	0.9391	overlap	Some bartenders {premix} cocktails in large batches.
+premix	holdout	llm-corpus	noun	verb	no	0.7198	0.7006	coverage-gap	The two-stroke engine runs on a {premix} of gasoline and oil.
+present	holdout	llm-corpus	verb	verb	no	0.6094	0.5563	coverage-gap	A dilemma like this seldom {presents} itself twice.
+present	holdout	real	verb	verb	no	0.5054	0.5952	coverage-gap	Almost all the joints of the machinery {present} a complicated system of sliding parts moving over small but beautifully curved friction bearings.
+present	holdout	real	noun	adj	yes	0.6316	0.6246	coverage-gap	He is in the hospital at {present}.
+present	holdout	real	adj	adj	no	0.8380	0.8647	overlap	I live in the {present} moment.
+present	holdout	real	noun	adj	no	0.7470	0.7514	coverage-gap	Now did you or did you not write a letter to him to say that the most original moralist at {present} in England, to the best of your knowledge, was Alfred Doolittle, a common dustman.
+present	holdout	real	adj	adj	no	0.8416	0.7534	ambiguous	Such is my journal of what relates to this strange occurrence up to the {present} day.
+present	holdout	llm-corpus	verb	adj	no	0.5038	0.6302	coverage-gap	The disease can {present} with fever, a rash, or no symptoms at all.
+present	holdout	llm-corpus	verb	verb	no	0.4062	0.4432	coverage-gap	The new law could {present} difficulties for small farms.
+present	holdout	real	adj	noun	no	0.6816	0.7345	coverage-gap	Those {present} at the concert were surprised by his performance.
+present	holdout	real	verb	verb	no	0.6566	0.5763	coverage-gap	What a study for an artist did that exciting scene {present}!
+present	holdout	real	adj	adj	no	0.8165	0.8120	overlap	What is happening at the {present} time in the dispute over place-name signs in Carinthia is grotesque.
+present	real-eval	real	noun	noun	no	0.7360	0.7220	coverage-gap	"If I had set my heart on Mr. Elton's marrying Harriet, it would have been very kind to open my eyes; but at {present} I only want to keep Harriet to myself.
+present	real-eval	real	adj	noun	no	0.7724	0.7946	overlap	Am I satisfied with my {present} self?
+present	real-eval	real	adj	adj	no	0.7390	0.7310	coverage-gap	From the report of the Secretary of the Treasury you will perceive that the fiscal means, {present} and accruing, are insufficient to supply the wants of the Government for the current year.
+present	real-eval	real	adj	noun	no	0.7110	0.6893	coverage-gap	If she could not have been angry with Frank Churchill too, it would have been dreadful. - As for Jane Fairfax, she might at least relieve her feelings from any {present} solicitude on her account.
+present	real-eval	real	noun	noun	no	0.7469	0.7607	coverage-gap	No, my dear fellow; we must reconcile ourselves to the fact that we have no case at {present}, and that it is worth our while to run any risk in order to establish one."
+present	real-eval	real	noun	noun	no	0.6873	0.6753	coverage-gap	Ouija Board; fun for the whole family, past or {present}.
+present	real-eval	real	noun	noun	no	0.8435	0.6776	ambiguous	Seryozha understood at once that what the hall-porter was speaking of was a {present} from Countess Lidia Ivanovna for his birthday.
+present	real-eval	real	adj	adj	no	0.6613	0.6948	coverage-gap	They were the only ones {present} there.
+produce	holdout	llm-corpus	noun	noun	no	0.8232	0.7412	ambiguous	A truck carrying California {produce} overturned on the interstate.
+produce	holdout	llm-corpus	noun	noun	no	0.8519	0.7586	ambiguous	Refrigerate leafy {produce} in a sealed container.
+produce	real-eval	real	verb	verb	no	0.7866	0.7191	ambiguous	The family keep their buffaloes solely for the milk they {produce}, he explained, which they use for their own consumption within the family.
+progress	holdout	llm-corpus	verb	noun	no	0.8088	0.8242	overlap	Students {progress} from simple sums to algebra over two years.
 project	holdout	llm-corpus	verb	noun	yes	0.8322	0.8787	overlap	Rocks {project} from the cliff face like teeth.
-project	holdout	llm-corpus	verb	verb	no	0.7581	0.7927	ambiguous	Singers learn to {project} without straining their throats.
-pustulate	holdout	llm-corpus	verb	adj	no	0.7924	0.8306	overlap	Boils {pustulate} when the follicle becomes inflamed.
-quintuplicate	holdout	llm-corpus	verb	verb	no	0.7461	0.7795	ambiguous	Costs could {quintuplicate} if the project is delayed again.
-quintuplicate	holdout	llm-corpus	verb	verb	no	0.6802	0.6940	coverage-gap	Demand {quintuplicates} every holiday season.
-quintuplicate	holdout	llm-corpus	adj	adj	no	0.8323	0.7463	ambiguous	She filed a {quintuplicate} set of the blueprints with the city.
-quintuplicate	holdout	llm-corpus	adj	adj	no	0.8320	0.7289	ambiguous	The agency demands a {quintuplicate} copy of every application.
-quintuplicate	holdout	llm-corpus	verb	adj	no	0.8061	0.8429	overlap	The company plans to {quintuplicate} its output within five years.
-quintuplicate	holdout	llm-corpus	verb	verb	no	0.7522	0.7879	ambiguous	The studio hopes to {quintuplicate} its revenue by 2030.
-read	holdout	llm-corpus	present	present	no	0.8051	0.7570	ambiguous	Can you {read} the sign from here?
-read	holdout	llm-corpus	present	present	no	0.9179	0.8941	overlap	Every night, my father would {read} to us.
-read	holdout	llm-corpus	present	past	yes	0.7926	0.8062	overlap	Experts {read} the market differently every time.
-read	holdout	llm-corpus	present	past	yes	0.9124	0.9510	overlap	I {read} the news every morning.
-read	holdout	llm-corpus	present	past	yes	0.4614	0.5486	coverage-gap	If you {read} the manual, you'll find the answer.
-read	holdout	llm-corpus	present	present	no	0.7217	0.7697	coverage-gap	Scanners {read} the barcode in an instant.
-read	holdout	llm-corpus	past	past	no	0.8621	0.8907	overlap	When I was young, I {read} everything I could find.
-read	real-eval	real	present	present	no	0.8868	0.8868	overlap	"I advise you to {read} two lines of writing which I have about me," I rejoined, "before you finally decide that question."
-read	real-eval	real	present	past	yes	0.8513	0.8587	overlap	"I {read} immortality in your eyes," I answered, dropping the "sir," - an experiment, for I thought the intimacy of the conversation warranted it.
-read	real-eval	real	present	past	yes	0.8563	0.8632	overlap	"You {read} it to me, Charley," she murmured.
-read	real-eval	real	present	past	no	0.8420	0.8420	overlap	'{Read} it, sir,' he said, in a low shivering voice.
-read	real-eval	real	past	present	yes	0.8577	0.8743	overlap	But all this, of course, I am telling you on the assumption that you have not already {read} it in the papers.
-read	real-eval	real	past	present	yes	0.8751	0.8889	overlap	He unrolled the newspaper baton idly and {read} idly:
-read	real-eval	real	present	present	no	0.6711	0.7183	coverage-gap	I am going to {read} books about bones and muscles, but I am going to write a book about Magic.
-read	real-eval	real	present	past	yes	0.4787	0.4882	coverage-gap	If Japanese influence interests you, maybe {read} the article "Wabi-Sabi: A Way for Science (and the World) to Rediscover Itself."
-read	real-eval	real	present	past	yes	0.7382	0.8305	ambiguous	What book would you suggest that I {read}?
-read	real-eval	real	past	present	yes	0.8236	0.8310	overlap	When my books were all written, no one who had {read} the manuscripts seemed to care for them.
-read	real-eval	real	present	present	no	0.7460	0.7300	coverage-gap	{Read} the work "Dao De Jing: A Minimalist Translation."
+project	holdout	llm-corpus	verb	verb	no	0.7581	0.7928	ambiguous	Singers learn to {project} without straining their throats.
+pustulate	holdout	llm-corpus	verb	adj	no	0.7929	0.8311	overlap	Boils {pustulate} when the follicle becomes inflamed.
+quintuplicate	holdout	llm-corpus	verb	verb	no	0.7458	0.7792	ambiguous	Costs could {quintuplicate} if the project is delayed again.
+quintuplicate	holdout	llm-corpus	verb	verb	no	0.6801	0.6935	coverage-gap	Demand {quintuplicates} every holiday season.
+quintuplicate	holdout	llm-corpus	adj	adj	no	0.8322	0.7468	ambiguous	She filed a {quintuplicate} set of the blueprints with the city.
+quintuplicate	holdout	llm-corpus	adj	adj	no	0.8316	0.7289	ambiguous	The agency demands a {quintuplicate} copy of every application.
+quintuplicate	holdout	llm-corpus	verb	adj	no	0.8058	0.8429	overlap	The company plans to {quintuplicate} its output within five years.
+quintuplicate	holdout	llm-corpus	verb	verb	no	0.7519	0.7876	ambiguous	The studio hopes to {quintuplicate} its revenue by 2030.
+read	holdout	llm-corpus	present	present	no	0.8052	0.7570	ambiguous	Can you {read} the sign from here?
+read	holdout	llm-corpus	present	present	no	0.9180	0.8942	overlap	Every night, my father would {read} to us.
+read	holdout	llm-corpus	present	past	yes	0.7928	0.8063	overlap	Experts {read} the market differently every time.
+read	holdout	llm-corpus	present	past	yes	0.9125	0.9511	overlap	I {read} the news every morning.
+read	holdout	llm-corpus	present	past	yes	0.4634	0.5506	coverage-gap	If you {read} the manual, you'll find the answer.
+read	holdout	llm-corpus	present	present	no	0.7219	0.7698	coverage-gap	Scanners {read} the barcode in an instant.
+read	holdout	llm-corpus	past	past	no	0.8621	0.8908	overlap	When I was young, I {read} everything I could find.
+read	real-eval	real	present	present	no	0.8869	0.8868	overlap	"I advise you to {read} two lines of writing which I have about me," I rejoined, "before you finally decide that question."
+read	real-eval	real	present	past	yes	0.8514	0.8587	overlap	"I {read} immortality in your eyes," I answered, dropping the "sir," - an experiment, for I thought the intimacy of the conversation warranted it.
+read	real-eval	real	present	past	yes	0.8564	0.8633	overlap	"You {read} it to me, Charley," she murmured.
+read	real-eval	real	present	past	no	0.8421	0.8421	overlap	'{Read} it, sir,' he said, in a low shivering voice.
+read	real-eval	real	past	present	yes	0.8578	0.8743	overlap	But all this, of course, I am telling you on the assumption that you have not already {read} it in the papers.
+read	real-eval	real	past	present	yes	0.8752	0.8890	overlap	He unrolled the newspaper baton idly and {read} idly:
+read	real-eval	real	present	present	no	0.6718	0.7184	coverage-gap	I am going to {read} books about bones and muscles, but I am going to write a book about Magic.
+read	real-eval	real	present	past	yes	0.4790	0.4882	coverage-gap	If Japanese influence interests you, maybe {read} the article "Wabi-Sabi: A Way for Science (and the World) to Rediscover Itself."
+read	real-eval	real	present	past	yes	0.7384	0.8304	ambiguous	What book would you suggest that I {read}?
+read	real-eval	real	past	present	yes	0.8239	0.8313	overlap	When my books were all written, no one who had {read} the manuscripts seemed to care for them.
+read	real-eval	real	present	present	no	0.7462	0.7304	coverage-gap	{Read} the work "Dao De Jing: A Minimalist Translation."
 rebel	holdout	llm-corpus	noun	noun	no	0.9026	0.8855	overlap	Called a {rebel} by his teachers, he preferred "artist."
-rebel	holdout	llm-corpus	verb	verb	no	0.9053	0.8355	ambiguous	Citizens, tired of corruption, will {rebel}.
-rebel	holdout	llm-corpus	verb	noun	no	0.8369	0.8334	overlap	Generals who {rebel} rarely survive.
+rebel	holdout	llm-corpus	verb	verb	no	0.9053	0.8354	ambiguous	Citizens, tired of corruption, will {rebel}.
+rebel	holdout	llm-corpus	verb	noun	no	0.8368	0.8333	overlap	Generals who {rebel} rarely survive.
 rebel	holdout	llm-corpus	verb	verb	no	0.8916	0.8643	overlap	He didn't dare {rebel} openly.
-rebel	holdout	llm-corpus	verb	verb	no	0.8456	0.8350	overlap	Soldiers who {rebel} face harsh punishment.
-rebel	real-eval	real	noun	verb	no	0.8323	0.8563	overlap	Do you hear my voice, you {rebel}!'
-rebel	real-eval	real	noun	noun	no	0.8774	0.8713	overlap	He returns, in fine, to punish as a {rebel} every adherent of his brother Prince John.
-rebel	real-eval	real	verb	verb	no	0.8222	0.7838	overlap	Hindley is a detestable substitute - his conduct to Heathcliff is atrocious - H. and I are going to {rebel} - we took our initiatory step this evening.
-rebel	real-eval	real	noun	noun	no	0.9100	0.9243	overlap	Like a sort of {rebel}, don't you see?"
-rebel	real-eval	real	noun	noun	no	0.8981	0.8280	ambiguous	Mary is a {rebel} who doesn't respect authority.
-rebid	holdout	llm-corpus	verb	verb	no	0.8837	0.8886	overlap	Contractors who lost the first round are free to {rebid}.
-reboot	holdout	llm-corpus	verb	verb	no	0.8063	0.7695	ambiguous	Honestly, I need to {reboot} my whole morning routine.
-reboot	holdout	llm-corpus	verb	noun	no	0.8890	0.8736	overlap	Studios keep trying to {reboot} old franchises for new audiences.
+rebel	holdout	llm-corpus	verb	verb	no	0.8457	0.8350	overlap	Soldiers who {rebel} face harsh punishment.
+rebel	real-eval	real	noun	verb	no	0.8323	0.8562	overlap	Do you hear my voice, you {rebel}!'
+rebel	real-eval	real	noun	noun	no	0.8773	0.8712	overlap	He returns, in fine, to punish as a {rebel} every adherent of his brother Prince John.
+rebel	real-eval	real	verb	verb	no	0.8222	0.7836	overlap	Hindley is a detestable substitute - his conduct to Heathcliff is atrocious - H. and I are going to {rebel} - we took our initiatory step this evening.
+rebel	real-eval	real	noun	noun	no	0.9099	0.9243	overlap	Like a sort of {rebel}, don't you see?"
+rebel	real-eval	real	noun	noun	no	0.8981	0.8279	ambiguous	Mary is a {rebel} who doesn't respect authority.
+rebid	holdout	llm-corpus	verb	verb	no	0.8839	0.8887	overlap	Contractors who lost the first round are free to {rebid}.
+reboot	holdout	llm-corpus	verb	verb	no	0.8067	0.7698	ambiguous	Honestly, I need to {reboot} my whole morning routine.
+reboot	holdout	llm-corpus	verb	noun	no	0.8893	0.8741	overlap	Studios keep trying to {reboot} old franchises for new audiences.
 recall	holdout	llm-corpus	verb	verb	no	0.9153	0.8849	overlap	The company will {recall} every unit sold since March.
-recharge	holdout	llm-corpus	noun	noun	no	0.9160	0.8658	ambiguous	Heavy storms produced a rapid {recharge} of the basin.
-recharge	holdout	llm-corpus	verb	verb	no	0.8770	0.9195	overlap	I need a quiet weekend to {recharge} after that project.
-recharge	holdout	llm-corpus	verb	verb	no	0.8695	0.8576	overlap	Rain helps {recharge} the underground aquifers.
-recharge	holdout	llm-corpus	noun	verb	no	0.8349	0.8344	overlap	Weekend retreats are a great chance for mental {recharge}.
-recoil	holdout	llm-corpus	verb	noun	yes	0.9055	0.8981	overlap	He saw her {recoil} when he reached for the door.
-record	holdout	llm-corpus	verb	noun	yes	0.7338	0.7723	ambiguous	Historians {record} that the winter of 1816 brought snow in July.
-redial	holdout	llm-corpus	noun	noun	no	0.8184	0.8002	overlap	Fax machines include automatic {redial} for busy numbers.
-redial	holdout	llm-corpus	verb	noun	no	0.8325	0.8328	overlap	Please hang up and {redial} using the correct area code.
-redirect	holdout	llm-corpus	noun	noun	no	0.8180	0.7430	ambiguous	A 301 {redirect} tells search engines the page has moved.
-redirect	holdout	llm-corpus	noun	noun	no	0.8567	0.8120	overlap	Our legacy URLs are all handled by a single {redirect}.
-redirect	holdout	llm-corpus	verb	verb	no	0.9394	0.8281	ambiguous	She tried to {redirect} the conversation to a less awkward topic.
-redirect	holdout	llm-corpus	verb	verb	no	0.7249	0.7362	coverage-gap	The company decided to {redirect} its research toward batteries.
-redraft	holdout	llm-corpus	noun	noun	no	0.7670	0.7703	ambiguous	I've attached a {redraft} of the proposal with tracked changes.
-redraft	holdout	llm-corpus	noun	noun	no	0.9395	0.8518	ambiguous	The editor demanded yet another {redraft} before publication.
-redraft	holdout	llm-corpus	noun	noun	no	0.8758	0.8390	overlap	The lawyers circulated a {redraft} of the merger agreement.
-refit	holdout	llm-corpus	noun	noun	no	0.9272	0.8476	ambiguous	A complete {refit} of the restaurant cost two million.
-refresh	holdout	llm-corpus	verb	noun	no	0.7873	0.7323	ambiguous	Please {refresh} the screen and try the link again.
-refresh	holdout	llm-corpus	verb	noun	no	0.9046	0.9011	overlap	The site fails to {refresh} on mobile.
+recharge	holdout	llm-corpus	noun	noun	no	0.9157	0.8654	ambiguous	Heavy storms produced a rapid {recharge} of the basin.
+recharge	holdout	llm-corpus	verb	verb	no	0.8765	0.9193	overlap	I need a quiet weekend to {recharge} after that project.
+recharge	holdout	llm-corpus	verb	verb	no	0.8692	0.8572	overlap	Rain helps {recharge} the underground aquifers.
+recharge	holdout	llm-corpus	noun	verb	no	0.8344	0.8338	overlap	Weekend retreats are a great chance for mental {recharge}.
+recoil	holdout	llm-corpus	verb	noun	yes	0.9057	0.8983	overlap	He saw her {recoil} when he reached for the door.
+record	holdout	llm-corpus	verb	noun	yes	0.7340	0.7725	ambiguous	Historians {record} that the winter of 1816 brought snow in July.
+redial	holdout	llm-corpus	noun	noun	no	0.8184	0.8005	overlap	Fax machines include automatic {redial} for busy numbers.
+redial	holdout	llm-corpus	verb	noun	no	0.8324	0.8325	overlap	Please hang up and {redial} using the correct area code.
+redirect	holdout	llm-corpus	noun	noun	no	0.8185	0.7436	ambiguous	A 301 {redirect} tells search engines the page has moved.
+redirect	holdout	llm-corpus	noun	noun	no	0.8570	0.8124	overlap	Our legacy URLs are all handled by a single {redirect}.
+redirect	holdout	llm-corpus	verb	verb	no	0.9395	0.8283	ambiguous	She tried to {redirect} the conversation to a less awkward topic.
+redirect	holdout	llm-corpus	verb	verb	no	0.7260	0.7368	coverage-gap	The company decided to {redirect} its research toward batteries.
+redraft	holdout	llm-corpus	noun	noun	no	0.7674	0.7708	ambiguous	I've attached a {redraft} of the proposal with tracked changes.
+redraft	holdout	llm-corpus	noun	noun	no	0.9396	0.8521	ambiguous	The editor demanded yet another {redraft} before publication.
+redraft	holdout	llm-corpus	noun	noun	no	0.8760	0.8390	overlap	The lawyers circulated a {redraft} of the merger agreement.
+refit	holdout	llm-corpus	noun	noun	no	0.9271	0.8474	ambiguous	A complete {refit} of the restaurant cost two million.
+refresh	holdout	llm-corpus	verb	noun	no	0.7873	0.7317	ambiguous	Please {refresh} the screen and try the link again.
+refresh	holdout	llm-corpus	verb	noun	no	0.9047	0.9011	overlap	The site fails to {refresh} on mobile.
 refund	holdout	llm-corpus	noun	verb	no	0.9228	0.9412	overlap	Customers demanded {refunds} after the concert was canceled.
-refund	holdout	llm-corpus	noun	noun	no	0.9311	0.9095	overlap	I'd like a {refund}, please.
-refund	holdout	llm-corpus	noun	noun	no	0.9029	0.8856	overlap	The contract denies any {refund} after the deadline.
-refuse	holdout	llm-corpus	verb	verb	no	0.8078	0.8378	overlap	The landlord, after weeks of delay, continues to {refuse} repairs.
-refuse	real-eval	real	verb	noun	no	0.7163	0.7418	coverage-gap	Dolly was in despair, she detested her husband, despised him, pitied him, resolved on a separation, resolved to {refuse}, but ended by agreeing to sell part of her property.
+refund	holdout	llm-corpus	noun	noun	no	0.9312	0.9096	overlap	I'd like a {refund}, please.
+refund	holdout	llm-corpus	noun	noun	no	0.9030	0.8857	overlap	The contract denies any {refund} after the deadline.
+refuse	holdout	llm-corpus	verb	verb	no	0.8083	0.8382	overlap	The landlord, after weeks of delay, continues to {refuse} repairs.
+refuse	real-eval	real	verb	noun	no	0.7177	0.7433	coverage-gap	Dolly was in despair, she detested her husband, despised him, pitied him, resolved on a separation, resolved to {refuse}, but ended by agreeing to sell part of her property.
 regiment	holdout	llm-corpus	noun	noun	no	0.9293	0.8924	overlap	A whole {regiment} of lawyers appeared for the defense.
-regiment	holdout	llm-corpus	noun	noun	no	0.8856	0.8675	overlap	A {regiment} of tourists blocked the museum entrance.
-regiment	holdout	llm-corpus	noun	noun	no	0.8914	0.8989	overlap	Both {regiments} were ordered to hold the bridge.
-rehash	holdout	llm-corpus	noun	noun	no	0.7655	0.8100	ambiguous	Another {rehash} of the same old argument is the last thing this meeting needs.
-rehash	holdout	llm-corpus	verb	verb	no	0.8570	0.7661	ambiguous	Please don't ask me to {rehash} what happened last spring.
-rehash	holdout	llm-corpus	noun	noun	no	0.7468	0.7202	coverage-gap	The new sitcom is little more than a {rehash} of old plots.
-rehash	holdout	llm-corpus	verb	noun	no	0.7643	0.7441	coverage-gap	The newspaper's columnists {rehash} press releases and call it analysis.
-rehash	holdout	llm-corpus	noun	verb	yes	0.7663	0.6975	coverage-gap	The sequel's {rehashes} of famous scenes left audiences cold.
-rehash	holdout	llm-corpus	verb	verb	no	0.7213	0.7256	coverage-gap	Writers who {rehash} classic fairy tales must find something new to say.
-reheat	holdout	llm-corpus	verb	noun	yes	0.7800	0.7754	overlap	Pizza that has gone cold {reheats} best in a skillet, covered.
-reincarnate	holdout	llm-corpus	verb	verb	no	0.9039	0.9073	overlap	Characters in the game {reincarnate} with new abilities each time they die.
-reincarnate	holdout	llm-corpus	verb	adj	yes	0.8749	0.8807	overlap	In the story, the hero's spirit {reincarnates} every thousand years.
-reincarnate	holdout	llm-corpus	verb	adj	no	0.8372	0.8341	overlap	The author lets her villain {reincarnate} as a talking raven.
-reincarnate	holdout	llm-corpus	adj	adj	no	0.8966	0.8880	overlap	The cult leader presented himself as Buddha {reincarnate}.
-reincarnate	holdout	llm-corpus	verb	adj	no	0.9113	0.8938	overlap	The lama is said to {reincarnate} deliberately so that he can keep teaching.
-reincarnate	holdout	llm-corpus	adj	adj	no	0.8386	0.8425	overlap	They greeted the young pianist as Mozart {reincarnate}.
-relapse	holdout	llm-corpus	verb	noun	yes	0.8935	0.8539	overlap	Addicts who {relapse} should not be treated as failures.
-relapse	holdout	llm-corpus	verb	verb	no	0.9093	0.8875	overlap	He tried not to {relapse} into his old habits.
-relapse	holdout	llm-corpus	noun	verb	yes	0.7461	0.8860	ambiguous	The team's sudden {relapse} into sloppy play cost them the match.
-relaunch	holdout	llm-corpus	verb	verb	no	0.8558	0.7469	ambiguous	The airline {relaunches} its Boston route in June.
-relaunch	holdout	llm-corpus	verb	verb	no	0.8857	0.7981	ambiguous	The company {relaunches} its flagship store each decade with a new look.
-relaunch	holdout	llm-corpus	noun	verb	no	0.8303	0.7892	overlap	The company's {relaunch} of the app drew mixed reviews.
-relay	holdout	llm-corpus	verb	noun	yes	0.8312	0.9049	overlap	Soldiers at the outpost {relay} orders by flag.
+regiment	holdout	llm-corpus	noun	noun	no	0.8857	0.8676	overlap	A {regiment} of tourists blocked the museum entrance.
+regiment	holdout	llm-corpus	noun	noun	no	0.8915	0.8989	overlap	Both {regiments} were ordered to hold the bridge.
+rehash	holdout	llm-corpus	noun	noun	no	0.7665	0.8103	ambiguous	Another {rehash} of the same old argument is the last thing this meeting needs.
+rehash	holdout	llm-corpus	verb	verb	no	0.8577	0.7666	ambiguous	Please don't ask me to {rehash} what happened last spring.
+rehash	holdout	llm-corpus	noun	noun	no	0.7477	0.7215	coverage-gap	The new sitcom is little more than a {rehash} of old plots.
+rehash	holdout	llm-corpus	verb	noun	no	0.7658	0.7450	coverage-gap	The newspaper's columnists {rehash} press releases and call it analysis.
+rehash	holdout	llm-corpus	noun	verb	yes	0.7669	0.6991	coverage-gap	The sequel's {rehashes} of famous scenes left audiences cold.
+rehash	holdout	llm-corpus	verb	verb	no	0.7220	0.7261	coverage-gap	Writers who {rehash} classic fairy tales must find something new to say.
+reheat	holdout	llm-corpus	verb	noun	yes	0.7801	0.7753	overlap	Pizza that has gone cold {reheats} best in a skillet, covered.
+reincarnate	holdout	llm-corpus	verb	verb	no	0.9042	0.9075	overlap	Characters in the game {reincarnate} with new abilities each time they die.
+reincarnate	holdout	llm-corpus	verb	adj	yes	0.8754	0.8810	overlap	In the story, the hero's spirit {reincarnates} every thousand years.
+reincarnate	holdout	llm-corpus	verb	adj	no	0.8374	0.8344	overlap	The author lets her villain {reincarnate} as a talking raven.
+reincarnate	holdout	llm-corpus	adj	adj	no	0.8967	0.8883	overlap	The cult leader presented himself as Buddha {reincarnate}.
+reincarnate	holdout	llm-corpus	verb	adj	no	0.9115	0.8940	overlap	The lama is said to {reincarnate} deliberately so that he can keep teaching.
+reincarnate	holdout	llm-corpus	adj	adj	no	0.8390	0.8429	overlap	They greeted the young pianist as Mozart {reincarnate}.
+relapse	holdout	llm-corpus	verb	noun	yes	0.8938	0.8542	overlap	Addicts who {relapse} should not be treated as failures.
+relapse	holdout	llm-corpus	verb	verb	no	0.9094	0.8877	overlap	He tried not to {relapse} into his old habits.
+relapse	holdout	llm-corpus	noun	verb	yes	0.7468	0.8866	ambiguous	The team's sudden {relapse} into sloppy play cost them the match.
+relaunch	holdout	llm-corpus	verb	verb	no	0.8562	0.7478	ambiguous	The airline {relaunches} its Boston route in June.
+relaunch	holdout	llm-corpus	verb	verb	no	0.8861	0.7988	ambiguous	The company {relaunches} its flagship store each decade with a new look.
+relaunch	holdout	llm-corpus	noun	verb	no	0.8308	0.7901	overlap	The company's {relaunch} of the app drew mixed reviews.
+relay	holdout	llm-corpus	verb	noun	yes	0.8311	0.9048	overlap	Soldiers at the outpost {relay} orders by flag.
 relay	holdout	llm-corpus	verb	noun	no	0.8681	0.9184	overlap	Towers along the ridge {relay} the radio signal across the valley.
-remake	holdout	llm-corpus	verb	verb	no	0.9061	0.8718	overlap	Directors who {remake} foreign films often change the ending.
-remould	holdout	llm-corpus	noun	noun	no	0.7103	0.5667	coverage-gap	An unmarked {remould} lay in the boot of the car.
-remould	holdout	llm-corpus	verb	verb	no	0.7891	0.7952	overlap	Can the party {remould} itself after such a heavy defeat?
-remould	holdout	llm-corpus	noun	noun	no	0.7748	0.7876	overlap	The depot sells new tires and {remoulds}.
-repost	holdout	llm-corpus	verb	verb	no	0.8904	0.8908	overlap	Brands that {repost} fan photos should ask first.
-repost	holdout	llm-corpus	verb	verb	no	0.8178	0.8396	overlap	If you {repost} this, tag the original artist.
-repost	holdout	llm-corpus	noun	noun	no	0.8489	0.8342	overlap	The thread is full of {reposts} of the same screenshot.
+remake	holdout	llm-corpus	verb	verb	no	0.9063	0.8720	overlap	Directors who {remake} foreign films often change the ending.
+remould	holdout	llm-corpus	noun	noun	no	0.7117	0.5691	coverage-gap	An unmarked {remould} lay in the boot of the car.
+remould	holdout	llm-corpus	verb	verb	no	0.7904	0.7963	overlap	Can the party {remould} itself after such a heavy defeat?
+remould	holdout	llm-corpus	noun	noun	no	0.7766	0.7885	overlap	The depot sells new tires and {remoulds}.
+repost	holdout	llm-corpus	verb	verb	no	0.8906	0.8910	overlap	Brands that {repost} fan photos should ask first.
+repost	holdout	llm-corpus	verb	verb	no	0.8181	0.8398	overlap	If you {repost} this, tag the original artist.
+repost	holdout	llm-corpus	noun	noun	no	0.8492	0.8344	overlap	The thread is full of {reposts} of the same screenshot.
 reprint	holdout	llm-corpus	verb	verb	no	0.8648	0.8795	overlap	Do not {reprint} this material without written permission.
-reprint	holdout	llm-corpus	noun	noun	no	0.8668	0.8707	overlap	The author requested ten {reprints} of the journal article.
-reprint	holdout	llm-corpus	verb	noun	no	0.8261	0.8702	overlap	The press {reprints} classic novels in affordable editions.
-reread	holdout	llm-corpus	present	past	yes	0.7069	0.6564	coverage-gap	Before you sign, {reread} the contract carefully.
-reread	holdout	llm-corpus	present	past	no	0.8114	0.8553	overlap	He {rereads} the same letter whenever he misses her.
-reread	holdout	llm-corpus	present	past	yes	0.7754	0.8674	overlap	She {rereads} the instructions whenever she gets stuck.
-reread	holdout	llm-corpus	past	present	no	0.8226	0.8528	overlap	Yesterday I {reread} the whole report before the meeting.
-rerelease	holdout	llm-corpus	noun	verb	yes	0.7331	0.7812	ambiguous	The studio's {rereleases} of older titles outsold its new ones.
-rerun	holdout	llm-corpus	noun	verb	no	0.6390	0.6869	coverage-gap	He watches {reruns} of old sitcoms before bed.
-reshuffle	holdout	llm-corpus	noun	noun	no	0.8931	0.8676	overlap	Analysts expect a {reshuffle} of the bank's management.
-reshuffle	holdout	llm-corpus	verb	verb	no	0.6956	0.7822	ambiguous	Let's {reshuffle} the seating chart so the cousins sit apart.
-reshuffle	holdout	llm-corpus	verb	verb	no	0.8000	0.8004	overlap	The governor {reshuffles} her staff each January.
-resit	holdout	llm-corpus	noun	verb	yes	0.8887	0.8374	ambiguous	Students have one {resit} per module.
-respawn	holdout	llm-corpus	verb	verb	no	0.9324	0.8943	overlap	Wait, why does the boss {respawn} when I leave the room?
-respray	holdout	llm-corpus	noun	verb	no	0.6196	0.5550	coverage-gap	Two {resprays} in five years had thinned the paint.
-restart	holdout	llm-corpus	verb	verb	no	0.9136	0.8989	overlap	Can the engine {restart} in midair?
-restart	holdout	llm-corpus	noun	verb	no	0.9256	0.8665	ambiguous	The update requires a {restart}.
-resume	holdout	llm-corpus	verb	verb	no	0.9259	0.8315	ambiguous	Talks {resume} on Monday.
-retake	holdout	llm-corpus	noun	verb	yes	0.7610	0.8155	ambiguous	Her SAT {retake} improved her score by 120 points.
-retake	holdout	llm-corpus	noun	noun	no	0.9292	0.9219	overlap	Students may sign up for a {retake} of the exam.
-retest	holdout	llm-corpus	noun	noun	no	0.8923	0.8519	overlap	Failing parts go to {retest} before shipping.
-rethink	holdout	llm-corpus	verb	noun	no	0.7485	0.7597	coverage-gap	Can educators {rethink} testing?
-rethink	holdout	llm-corpus	noun	noun	no	0.7554	0.7664	coverage-gap	We need a serious {rethink} of how we grade.
-reticulate	holdout	llm-corpus	verb	verb	no	0.8653	0.8387	overlap	In the painting, thin veins {reticulate} over the marble.
-reticulate	holdout	llm-corpus	verb	verb	no	0.7791	0.7927	overlap	Roots of the old fig {reticulate} through the temple wall.
-reticulate	holdout	llm-corpus	verb	verb	no	0.8824	0.8263	ambiguous	The cracks in the glaze {reticulate} as the vase cools.
-reticulate	holdout	llm-corpus	adj	adj	no	0.8624	0.8634	overlap	The mineral formed a {reticulate} network of thin veins.
-retread	holdout	llm-corpus	verb	noun	no	0.6856	0.7226	coverage-gap	Could the band {retread} its early sound without sounding stale?
-retread	holdout	llm-corpus	noun	noun	no	0.7710	0.6748	ambiguous	Each {retread} is built on an old casing with new rubber.
+reprint	holdout	llm-corpus	noun	noun	no	0.8667	0.8707	overlap	The author requested ten {reprints} of the journal article.
+reprint	holdout	llm-corpus	verb	noun	no	0.8263	0.8702	overlap	The press {reprints} classic novels in affordable editions.
+reread	holdout	llm-corpus	present	past	yes	0.7080	0.6576	coverage-gap	Before you sign, {reread} the contract carefully.
+reread	holdout	llm-corpus	present	past	no	0.8117	0.8558	overlap	He {rereads} the same letter whenever he misses her.
+reread	holdout	llm-corpus	present	past	yes	0.7761	0.8679	overlap	She {rereads} the instructions whenever she gets stuck.
+reread	holdout	llm-corpus	past	present	no	0.8232	0.8534	overlap	Yesterday I {reread} the whole report before the meeting.
+rerelease	holdout	llm-corpus	noun	verb	yes	0.7341	0.7818	ambiguous	The studio's {rereleases} of older titles outsold its new ones.
+rerun	holdout	llm-corpus	noun	verb	no	0.6400	0.6879	coverage-gap	He watches {reruns} of old sitcoms before bed.
+reshuffle	holdout	llm-corpus	noun	noun	no	0.8932	0.8676	overlap	Analysts expect a {reshuffle} of the bank's management.
+reshuffle	holdout	llm-corpus	verb	verb	no	0.6977	0.7830	ambiguous	Let's {reshuffle} the seating chart so the cousins sit apart.
+reshuffle	holdout	llm-corpus	verb	verb	no	0.8008	0.8006	overlap	The governor {reshuffles} her staff each January.
+resit	holdout	llm-corpus	noun	verb	yes	0.8889	0.8380	ambiguous	Students have one {resit} per module.
+respawn	holdout	llm-corpus	verb	verb	no	0.9325	0.8944	overlap	Wait, why does the boss {respawn} when I leave the room?
+respray	holdout	llm-corpus	noun	verb	no	0.6188	0.5548	coverage-gap	Two {resprays} in five years had thinned the paint.
+restart	holdout	llm-corpus	verb	verb	no	0.9137	0.8990	overlap	Can the engine {restart} in midair?
+restart	holdout	llm-corpus	noun	verb	no	0.9257	0.8667	ambiguous	The update requires a {restart}.
+resume	holdout	llm-corpus	verb	verb	no	0.9258	0.8313	ambiguous	Talks {resume} on Monday.
+retake	holdout	llm-corpus	noun	verb	yes	0.7615	0.8162	ambiguous	Her SAT {retake} improved her score by 120 points.
+retake	holdout	llm-corpus	noun	noun	no	0.9294	0.9222	overlap	Students may sign up for a {retake} of the exam.
+retest	holdout	llm-corpus	noun	noun	no	0.8927	0.8523	overlap	Failing parts go to {retest} before shipping.
+rethink	holdout	llm-corpus	verb	noun	no	0.7494	0.7604	coverage-gap	Can educators {rethink} testing?
+rethink	holdout	llm-corpus	noun	noun	no	0.7560	0.7669	coverage-gap	We need a serious {rethink} of how we grade.
+reticulate	holdout	llm-corpus	verb	verb	no	0.8656	0.8392	overlap	In the painting, thin veins {reticulate} over the marble.
+reticulate	holdout	llm-corpus	verb	verb	no	0.7803	0.7934	overlap	Roots of the old fig {reticulate} through the temple wall.
+reticulate	holdout	llm-corpus	verb	verb	no	0.8831	0.8270	ambiguous	The cracks in the glaze {reticulate} as the vase cools.
+reticulate	holdout	llm-corpus	adj	adj	no	0.8628	0.8638	overlap	The mineral formed a {reticulate} network of thin veins.
+retread	holdout	llm-corpus	verb	noun	no	0.6851	0.7225	coverage-gap	Could the band {retread} its early sound without sounding stale?
+retread	holdout	llm-corpus	noun	noun	no	0.7706	0.6743	ambiguous	Each {retread} is built on an old casing with new rubber.
 retread	holdout	llm-corpus	noun	noun	no	0.8773	0.7103	ambiguous	Never put a {retread} on a steering axle.
-retread	holdout	llm-corpus	noun	noun	no	0.7717	0.8189	overlap	The truck's front tires were cheap {retreads}.
-retread	holdout	llm-corpus	verb	noun	no	0.5456	0.5109	coverage-gap	Writers {retread} familiar ground when they have no new ideas.
-reuse	holdout	llm-corpus	verb	noun	no	0.8367	0.8321	overlap	Developers {reuse} libraries to avoid reinventing the wheel.
-reuse	holdout	llm-corpus	verb	verb	no	0.8777	0.8360	overlap	Hospitals must not {reuse} needles under any circumstances.
-reuse	holdout	llm-corpus	noun	verb	no	0.8950	0.8914	overlap	There is little scope for {reuse} of these single-use parts.
-revamp	holdout	llm-corpus	noun	noun	no	0.7802	0.7456	ambiguous	Is the {revamp} of the tax code finally coming?
-revert	holdout	llm-corpus	noun	noun	no	0.7923	0.7610	ambiguous	Some {reverts} prefer the term to "convert," saying they returned to their natural faith.
-revert	holdout	llm-corpus	noun	noun	no	0.8107	0.7584	ambiguous	The mosque welcomed a new {revert} to Islam last week.
-revert	holdout	llm-corpus	verb	verb	no	0.8442	0.8269	overlap	Why does the file {revert} to an old version each time I save?
-revert	holdout	llm-corpus	noun	noun	no	0.8338	0.7570	ambiguous	Wikipedia's rule limits each user to three {reverts} per day.
-rewind	holdout	llm-corpus	noun	verb	no	0.8962	0.9000	overlap	Give the film a quick {rewind} before returning it.
-rewind	holdout	llm-corpus	verb	noun	no	0.9006	0.8585	overlap	Machines that {rewind} the film automatically are faster.
-rewind	holdout	llm-corpus	noun	noun	no	0.9313	0.9236	overlap	The machine automatically does a {rewind} at the end of the reel.
-rewrite	holdout	llm-corpus	noun	verb	no	0.9043	0.8640	overlap	The editor demanded a {rewrite} of the opening paragraph.
-row	holdout	llm-corpus	line	argument	yes	0.8269	0.8357	overlap	Delete the empty {row} at the bottom.
-row	holdout	llm-corpus	line	line	no	0.7878	0.8112	overlap	Knit one {row}, then purl one.
-row	holdout	llm-corpus	paddle	paddle	no	0.8909	0.9008	overlap	Let's {row} across the lake.
-row	holdout	llm-corpus	paddle	line	no	0.8626	0.8727	overlap	Novices {row} in pairs before moving to eights.
-row	holdout	llm-corpus	line	line	no	0.8836	0.8968	overlap	She tapped the person in the {row} ahead.
-row	holdout	llm-corpus	paddle	paddle	no	0.8878	0.8890	overlap	Teams {row} against the tide in the annual regatta.
-row	holdout	llm-corpus	line	line	no	0.8340	0.8139	overlap	The back {row} of the theater was empty.
-row	holdout	llm-corpus	argument	argument	no	0.9003	0.8933	overlap	The brothers had a stand-up {row} at the wedding.
-row	holdout	llm-corpus	paddle	argument	no	0.9146	0.9022	overlap	To turn left, {row} harder on the right.
-row	real-eval	real	line	argument	no	0.8537	0.8709	overlap	"Where are you sitting?" "On the fifth {row}."
-row	real-eval	real	argument	argument	no	0.8860	0.8597	overlap	If you want to have a {row}, have it with me.
-row	real-eval	real	line	argument	no	0.8762	0.8400	overlap	There was a turmoil in the audience--someone screamed, two ladies in the front {row} fell senseless from their chairs, and there was a general movement upon the platform to follow their chairman into the orchestra.
-rows	holdout	real	argument	line	no	0.9130	0.8783	overlap	He makes tremendous {rows}, - roars, and pegs at the floor with some frightful instrument.
-rows	holdout	real	paddle	paddle	no	0.8440	0.8395	overlap	In multi-person boats (2,4, or 8), the lightest person typically {rows} in the bow seat at the front of the boat.
-rows	holdout	real	line	line	no	0.8265	0.8216	overlap	The columns of the periodic table are called groups and the {rows} are called periods.
-rows	holdout	real	paddle	line	no	0.7543	0.7860	ambiguous	The gondola is propelled by a person (the gondolier) who stands on the stern facing the bow and {rows} with a forward stroke, followed by a compensating backward stroke.
-rows	holdout	real	line	line	no	0.8608	0.8734	overlap	The {rows} of houses are divided by a street.
-rows	real-eval	real	argument	line	no	0.8561	0.8380	overlap	"I keep a bull pup," I said, "and I object to {rows} because my nerves are shaken, and I get up at all sorts of ungodly hours, and I am extremely lazy.
-rows	real-eval	real	line	argument	no	0.8872	0.9025	overlap	"Well, master, when summer's here, mind you don't scold me for these {rows}," said Vassily.
-rows	real-eval	real	line	line	no	0.8845	0.8967	overlap	But however fast they worked, they did not spoil the grass, and the {rows} were laid just as neatly and exactly.
-rows	real-eval	real	line	line	no	0.8785	0.8703	overlap	{Rows} of houses, each of them different and pleasing with their spacious gardens, are replaced by purely functional blocks of flats which have nothing more to commend them than over-praised 'modern conveniences'.
-separate	real-eval	real	adj	verb	yes	0.8257	0.7807	overlap	Phillotson mused, and said: "No, I think we ought to be really {separate}, if we are to be at all.
-seriate	holdout	llm-corpus	adj	adj	no	0.7297	0.6493	coverage-gap	In this wood the vessels are {seriate} in radial files.
-seriate	holdout	llm-corpus	adj	adj	no	0.7368	0.6806	coverage-gap	The fossil shows a {seriate} arrangement of pores running the length of the shell.
-seriate	holdout	llm-corpus	adj	adj	no	0.6454	0.5807	coverage-gap	The leaf bears {seriate} rows of tiny glands along its margin.
-situate	holdout	llm-corpus	verb	adj	yes	0.6215	0.6023	coverage-gap	Developers who {situate} housing far from jobs create long commutes.
-sophisticate	holdout	llm-corpus	noun	noun	no	0.7099	0.7034	coverage-gap	Wine bars attract {sophisticates} and curious beginners alike.
-sow	holdout	llm-corpus	verb	verb	no	0.8056	0.8466	overlap	"What you {sow}, you shall reap," the old priest reminded them.
-sow	holdout	llm-corpus	verb	verb	no	0.8779	0.8036	ambiguous	The propaganda was designed to {sow} fear and division in the border towns.
-subject	holdout	llm-corpus	verb	verb	no	0.6521	0.5654	coverage-gap	Engineers {subject} the bridge model to simulated earthquakes.
-subject	holdout	llm-corpus	verb	verb	no	0.7330	0.6789	coverage-gap	The interviewers {subject} candidates, one after another, to a battery of questions.
-suspect	holdout	llm-corpus	noun	noun	no	0.8630	0.7687	ambiguous	"Every guest at the dinner is a {suspect}," the inspector announced.
-syndicate	holdout	llm-corpus	noun	noun	no	0.8777	0.8212	ambiguous	Her comic strip is carried by a national newspaper {syndicate}.
-syndicate	holdout	llm-corpus	noun	noun	no	0.8598	0.7760	ambiguous	Police say the {syndicate} smuggled cigarettes across three states.
-syndicate	holdout	llm-corpus	verb	verb	no	0.8269	0.8308	overlap	Publishers {syndicate} the articles to hundreds of small websites.
-syndicate	holdout	llm-corpus	noun	noun	no	0.8664	0.7722	ambiguous	Several {syndicates} bid for the broadcast rights.
-tear	holdout	real	drop	drop	no	0.9313	0.9141	overlap	After his blood, the best thing a man can give of himself is a {tear}.
-tear	holdout	real	drop	drop	no	0.9388	0.8829	ambiguous	I haven't shed a {tear} in a while.
-tear	holdout	real	drop	rip-noun	no	0.8561	0.8954	overlap	The album included two original singles, "There's a {Tear} in My Beer" and "Finders Are Keepers", that peaked at number 7 and number 6 respectively on the Billboard Hot Country Singles & Tracks chart.
-tear	holdout	real	rip-noun	rip-noun	no	0.9117	0.9034	overlap	When there is a {tear} in the human fabric we should all feel it."
-tear	real-eval	real	rip-verb	drop	no	0.8552	0.8465	overlap	"I can't {tear} you out of my heart," she said, "even now!
-tear	real-eval	real	rip-verb	rip-verb	no	0.8769	0.8332	overlap	"When you are here he can't {tear} himself away," she said.
-tear	real-eval	real	drop	drop	no	0.8905	0.8788	overlap	'Let them go, once and for ever, and I would never shed another {tear} if every penny had been a thousand pounds.'
-tear	real-eval	real	rip-verb	drop	no	0.8614	0.8898	overlap	He had to go, but he could not {tear} himself from her eyes.
-tear	real-eval	real	rip-verb	rip-verb	no	0.8723	0.8271	overlap	Help, help!" screamed she, turning towards the wall, as if she would {tear} an opening with her hands.
-tear	real-eval	real	rip-verb	rip-verb	no	0.8086	0.7906	overlap	I'll know the truth from this boy even if I have to {tear} his head off.
-tear	real-eval	real	drop	drop	no	0.9168	0.8920	overlap	This discouraging information a little dashed the child, who could scarcely repress a {tear} as she glanced along the darkening road.
-tear	real-eval	real	rip-verb	rip-verb	no	0.9003	0.8292	ambiguous	Where did you {tear} them up?
-tear	real-eval	real	rip-verb	drop	yes	0.7498	0.8240	ambiguous	Your tears {tear} my heart!
-transplant	holdout	llm-corpus	verb	verb	no	0.9394	0.9194	overlap	Gardeners {transplant} lettuce in cool weather so the roots can settle.
-transplant	holdout	llm-corpus	verb	verb	no	0.8954	0.8783	overlap	Researchers hope one day to {transplant} insulin-producing cells into diabetic patients.
-transport	holdout	llm-corpus	verb	noun	no	0.8662	0.8744	overlap	Barges {transport}, at very low cost, enormous quantities of coal.
-transport	holdout	llm-corpus	noun	noun	no	0.8666	0.8340	overlap	Does the hotel provide {transport} to the airport?
-transport	real-eval	real	noun	noun	no	0.7509	0.7770	ambiguous	Costaguana had no navy, and, apart from a few coastguard cutters, there were no national ships except a couple of old merchant steamers used as {transports}.
-transport	real-eval	real	verb	noun	no	0.8787	0.8452	overlap	Oscar Díaz, managing director of Mundopalet, a company that makes pallets to {transport} goods, is a worried man.
-trifurcate	holdout	llm-corpus	verb	adj	yes	0.9119	0.9484	overlap	Does the artery {trifurcate} before or after it enters the muscle?
-trifurcate	holdout	llm-corpus	verb	verb	no	0.8843	0.8813	overlap	Here the vein will {trifurcate}, sending one branch to each lobe.
-trifurcate	holdout	llm-corpus	adj	adj	no	0.9067	0.8782	overlap	The beetle's antennae are {trifurcate} at the tip.
-trifurcate	holdout	llm-corpus	verb	verb	no	0.9013	0.8861	overlap	The plans call for the highway to {trifurcate} at the interchange.
-trifurcate	holdout	llm-corpus	adj	adj	no	0.9805	0.8904	ambiguous	The river forms a {trifurcate} delta before reaching the sea.
-trifurcate	holdout	llm-corpus	verb	adj	yes	0.8884	0.8861	overlap	Where the canyon walls {trifurcate}, hikers must choose among three trails.
-triplicate	holdout	llm-corpus	noun	noun	no	0.7554	0.6378	coverage-gap	Bring your passport and the documents in {triplicate}.
-triplicate	holdout	llm-corpus	verb	noun	no	0.7778	0.8045	overlap	Could the plant {triplicate} its output within five years?
-triplicate	holdout	llm-corpus	noun	noun	no	0.8286	0.7184	ambiguous	Hospital records have to be kept in {triplicate}, one copy per department.
-underbid	holdout	llm-corpus	verb	noun	yes	0.8473	0.8812	overlap	"We can't afford to {underbid} again," the director warned.
-undercount	holdout	llm-corpus	noun	verb	no	0.8396	0.8354	overlap	A mail-in {undercount} hit counties with poor internet service.
-underestimate	holdout	llm-corpus	verb	verb	no	0.7302	0.7773	ambiguous	Contractors who {underestimate} the timeline lose money.
-underestimate	holdout	llm-corpus	noun	noun	no	0.8451	0.8011	overlap	One {underestimate} led to another, and the schedule collapsed.
-underestimate	holdout	llm-corpus	noun	noun	no	0.8411	0.8145	overlap	The consultants called last year's forecast a clear {underestimate}.
-underground	holdout	llm-corpus	adv	adj	yes	0.9015	0.9472	overlap	The bunker was built deep {underground}, far from the town.
-underground	holdout	llm-corpus	adv	adv	no	0.9408	0.9263	overlap	The fugitive had gone {underground} months ago, hiding with friends.
-underlay	holdout	llm-corpus	noun	noun	no	0.9145	0.8671	overlap	A good carpet {underlay} improves comfort and insulation.
-underlay	holdout	llm-corpus	verb	verb	no	0.8434	0.8431	overlap	A strange calm {underlay} the whole village that summer.
-underlay	holdout	llm-corpus	verb	verb	no	0.8453	0.8248	overlap	Fear {underlay} everything he said that evening.
-underlay	holdout	llm-corpus	noun	verb	no	0.8037	0.7951	overlap	Staple the rubber {underlay} to the subfloor, then trim the edges.
-underlay	holdout	llm-corpus	verb	verb	no	0.8020	0.7725	overlap	The anger that {underlay} her remarks surprised the committee.
-underlay	holdout	llm-corpus	verb	verb	no	0.7996	0.7542	ambiguous	The assumptions that {underlay} the model were never tested.
-underlay	holdout	llm-corpus	noun	noun	no	0.8470	0.8236	overlap	The installer rolled out a foam {underlay} before laying the laminate.
-undershoot	holdout	llm-corpus	verb	verb	no	0.8406	0.8192	overlap	The estimates {undershoot} real demand by a wide margin.
-underspend	holdout	llm-corpus	noun	verb	yes	0.7913	0.8235	overlap	The charity spent last year's {underspend} on new programs.
-underspend	holdout	llm-corpus	noun	noun	no	0.7882	0.7300	ambiguous	Why has the health trust posted an {underspend} again?
-undertaking	holdout	llm-corpus	noun	noun	no	0.7724	0.6585	ambiguous	Building a boat from scratch is a serious {undertaking} for a beginner.
-unlearned	holdout	llm-corpus	verb	adj	no	0.8052	0.8147	overlap	Fluent speakers rarely realize how much they have {unlearned} over time.
-unlearned	holdout	llm-corpus	adj	adj	no	0.7744	0.7674	ambiguous	The tutor was frustrated by his {unlearned} pupils.
-uphill	holdout	llm-corpus	adv	adj	no	0.8983	0.9108	overlap	Go {uphill} and you'll find the cabin.
-uphill	holdout	llm-corpus	adv	adv	no	0.9471	0.9210	overlap	The path leads {uphill} for another mile.
-uphill	holdout	llm-corpus	adv	adv	no	0.9386	0.9251	overlap	The trail runs {uphill} from the creek.
-uplift	holdout	llm-corpus	verb	verb	no	0.8805	0.8449	overlap	Collisions between plates {uplift} the crust over millions of years.
-uplift	holdout	llm-corpus	verb	noun	no	0.8377	0.8740	overlap	Stories like these {uplift} readers in hard times.
-upset	holdout	llm-corpus	noun	noun	no	0.8723	0.8495	overlap	A minor {upset} in the lab delayed the experiment.
-upset	holdout	llm-corpus	adj	adj	no	0.9218	0.9481	overlap	An {upset} stomach kept her home from work.
-upset	holdout	llm-corpus	noun	adj	no	0.9145	0.9465	overlap	She had a stomach {upset} after the long flight.
-upset	holdout	llm-corpus	adj	adj	no	0.9255	0.8804	overlap	The children were {upset} by the loud noise.
-upset	holdout	llm-corpus	adj	adj	no	0.9452	0.8522	ambiguous	The {upset} customer demanded to speak to the manager.
-upset	holdout	llm-corpus	verb	verb	no	0.8800	0.8543	overlap	Why would you {upset} your mother on her birthday?
-upsetting	holdout	real	noun	noun	no	0.8315	0.8509	overlap	"By the {upsetting} of a boat in which his nurse had no business to have put him," said the Major.
-upsetting	holdout	real	verb	verb	no	0.8379	0.8766	overlap	"Oh I seem so bad - {upsetting} men's courses like this!" said she, taking up in her voice the emotion that had begun in his.
-upsetting	holdout	real	adj	verb	yes	0.7335	0.7934	ambiguous	A gadfly is a person who interferes with the status quo of a society or community by posing novel, potentially {upsetting} questions, usually directed at authorities.
-upsetting	holdout	real	adj	verb	no	0.7443	0.7902	ambiguous	Also, it is important to avoid the situation where a change might be more {upsetting} to users, long-term, than living with the known problem(s) (where the "cure would be worse than the disease").
-upsetting	holdout	real	verb	noun	no	0.6108	0.6274	coverage-gap	Brookhart would lead Akron to its first MAC title, {upsetting} Northern Illinois 31-30 in the conference championship game.
-upsetting	holdout	real	adj	verb	no	0.7323	0.7917	ambiguous	Here we find that mustang humor of his forever kicking its silver heels with the most {upsetting} suddenness into the honeyed sweetness of his flowing poetry.
-upsetting	holdout	real	adj	adj	no	0.8461	0.8304	overlap	However, Poskanzer criticized Lewis for what she regarded as scenes of gratuitous violence, which she felt were {upsetting} to children.
-upsetting	holdout	real	verb	verb	no	0.7499	0.7628	coverage-gap	Nelson instituted new cardinal and gold uniforms, rather than the traditional maroon and white, {upsetting} fans and alumni.
-upsetting	holdout	real	adj	adj	no	0.9080	0.8639	overlap	She found confrontations very {upsetting}.
-upsetting	holdout	real	noun	verb	no	0.7865	0.7875	overlap	Unlike most other areas of India, British rule meant no major {upsetting} of the community's traditional social system, although the traditional peasant landowning class, the Banias and Patidars, were absorbed into the Jain business community.
-upsetting	holdout	real	noun	noun	no	0.7915	0.8236	overlap	We also witness Ryng-Mayne's callous {upsetting} of Sally.
-upsetting	holdout	real	noun	adj	no	0.8259	0.8515	overlap	We have caused the fall of the old world, and the old world, that vase of miseries, has become, through its {upsetting} upon the human race, an urn of joy."
+retread	holdout	llm-corpus	noun	noun	no	0.7712	0.8188	overlap	The truck's front tires were cheap {retreads}.
+retread	holdout	llm-corpus	verb	noun	no	0.5444	0.5098	coverage-gap	Writers {retread} familiar ground when they have no new ideas.
+reuse	holdout	llm-corpus	verb	noun	no	0.8368	0.8323	overlap	Developers {reuse} libraries to avoid reinventing the wheel.
+reuse	holdout	llm-corpus	verb	verb	no	0.8779	0.8362	overlap	Hospitals must not {reuse} needles under any circumstances.
+reuse	holdout	llm-corpus	noun	verb	no	0.8951	0.8916	overlap	There is little scope for {reuse} of these single-use parts.
+revamp	holdout	llm-corpus	noun	noun	no	0.7809	0.7464	ambiguous	Is the {revamp} of the tax code finally coming?
+revert	holdout	llm-corpus	noun	noun	no	0.7932	0.7627	ambiguous	Some {reverts} prefer the term to "convert," saying they returned to their natural faith.
+revert	holdout	llm-corpus	noun	noun	no	0.8112	0.7592	ambiguous	The mosque welcomed a new {revert} to Islam last week.
+revert	holdout	llm-corpus	verb	verb	no	0.8450	0.8278	overlap	Why does the file {revert} to an old version each time I save?
+revert	holdout	llm-corpus	noun	noun	no	0.8348	0.7584	ambiguous	Wikipedia's rule limits each user to three {reverts} per day.
+rewind	holdout	llm-corpus	noun	verb	no	0.8963	0.9001	overlap	Give the film a quick {rewind} before returning it.
+rewind	holdout	llm-corpus	verb	noun	no	0.9007	0.8586	overlap	Machines that {rewind} the film automatically are faster.
+rewind	holdout	llm-corpus	noun	noun	no	0.9313	0.9235	overlap	The machine automatically does a {rewind} at the end of the reel.
+rewrite	holdout	llm-corpus	noun	verb	no	0.9045	0.8643	overlap	The editor demanded a {rewrite} of the opening paragraph.
+row	holdout	llm-corpus	line	argument	yes	0.8270	0.8358	overlap	Delete the empty {row} at the bottom.
+row	holdout	llm-corpus	line	line	no	0.7877	0.8111	overlap	Knit one {row}, then purl one.
+row	holdout	llm-corpus	paddle	paddle	no	0.8908	0.9007	overlap	Let's {row} across the lake.
+row	holdout	llm-corpus	paddle	line	no	0.8625	0.8725	overlap	Novices {row} in pairs before moving to eights.
+row	holdout	llm-corpus	line	line	no	0.8834	0.8967	overlap	She tapped the person in the {row} ahead.
+row	holdout	llm-corpus	paddle	paddle	no	0.8877	0.8890	overlap	Teams {row} against the tide in the annual regatta.
+row	holdout	llm-corpus	line	line	no	0.8338	0.8137	overlap	The back {row} of the theater was empty.
+row	holdout	llm-corpus	argument	argument	no	0.9002	0.8932	overlap	The brothers had a stand-up {row} at the wedding.
+row	holdout	llm-corpus	paddle	argument	no	0.9145	0.9021	overlap	To turn left, {row} harder on the right.
+row	real-eval	real	line	argument	no	0.8535	0.8707	overlap	"Where are you sitting?" "On the fifth {row}."
+row	real-eval	real	argument	argument	no	0.8860	0.8596	overlap	If you want to have a {row}, have it with me.
+row	real-eval	real	line	argument	no	0.8760	0.8398	overlap	There was a turmoil in the audience--someone screamed, two ladies in the front {row} fell senseless from their chairs, and there was a general movement upon the platform to follow their chairman into the orchestra.
+rows	holdout	real	argument	line	no	0.9129	0.8781	overlap	He makes tremendous {rows}, - roars, and pegs at the floor with some frightful instrument.
+rows	holdout	real	paddle	paddle	no	0.8439	0.8393	overlap	In multi-person boats (2,4, or 8), the lightest person typically {rows} in the bow seat at the front of the boat.
+rows	holdout	real	line	line	no	0.8263	0.8215	overlap	The columns of the periodic table are called groups and the {rows} are called periods.
+rows	holdout	real	paddle	line	no	0.7537	0.7856	ambiguous	The gondola is propelled by a person (the gondolier) who stands on the stern facing the bow and {rows} with a forward stroke, followed by a compensating backward stroke.
+rows	holdout	real	line	line	no	0.8605	0.8732	overlap	The {rows} of houses are divided by a street.
+rows	real-eval	real	argument	line	no	0.8559	0.8376	overlap	"I keep a bull pup," I said, "and I object to {rows} because my nerves are shaken, and I get up at all sorts of ungodly hours, and I am extremely lazy.
+rows	real-eval	real	line	argument	no	0.8870	0.9024	overlap	"Well, master, when summer's here, mind you don't scold me for these {rows}," said Vassily.
+rows	real-eval	real	line	line	no	0.8844	0.8965	overlap	But however fast they worked, they did not spoil the grass, and the {rows} were laid just as neatly and exactly.
+rows	real-eval	real	line	line	no	0.8783	0.8701	overlap	{Rows} of houses, each of them different and pleasing with their spacious gardens, are replaced by purely functional blocks of flats which have nothing more to commend them than over-praised 'modern conveniences'.
+separate	real-eval	real	adj	verb	yes	0.8256	0.7806	overlap	Phillotson mused, and said: "No, I think we ought to be really {separate}, if we are to be at all.
+seriate	holdout	llm-corpus	adj	adj	no	0.7290	0.6488	coverage-gap	In this wood the vessels are {seriate} in radial files.
+seriate	holdout	llm-corpus	adj	adj	no	0.7365	0.6802	coverage-gap	The fossil shows a {seriate} arrangement of pores running the length of the shell.
+seriate	holdout	llm-corpus	adj	adj	no	0.6447	0.5800	coverage-gap	The leaf bears {seriate} rows of tiny glands along its margin.
+situate	holdout	llm-corpus	verb	adj	yes	0.6209	0.6007	coverage-gap	Developers who {situate} housing far from jobs create long commutes.
+sophisticate	holdout	llm-corpus	noun	noun	no	0.7094	0.7028	coverage-gap	Wine bars attract {sophisticates} and curious beginners alike.
+sow	holdout	llm-corpus	verb	verb	no	0.8053	0.8464	overlap	"What you {sow}, you shall reap," the old priest reminded them.
+sow	holdout	llm-corpus	verb	verb	no	0.8778	0.8032	ambiguous	The propaganda was designed to {sow} fear and division in the border towns.
+subject	holdout	llm-corpus	verb	verb	no	0.6525	0.5660	coverage-gap	Engineers {subject} the bridge model to simulated earthquakes.
+subject	holdout	llm-corpus	verb	verb	no	0.7332	0.6794	coverage-gap	The interviewers {subject} candidates, one after another, to a battery of questions.
+suspect	holdout	llm-corpus	noun	noun	no	0.8631	0.7687	ambiguous	"Every guest at the dinner is a {suspect}," the inspector announced.
+syndicate	holdout	llm-corpus	noun	noun	no	0.8776	0.8210	ambiguous	Her comic strip is carried by a national newspaper {syndicate}.
+syndicate	holdout	llm-corpus	noun	noun	no	0.8597	0.7756	ambiguous	Police say the {syndicate} smuggled cigarettes across three states.
+syndicate	holdout	llm-corpus	verb	verb	no	0.8268	0.8305	overlap	Publishers {syndicate} the articles to hundreds of small websites.
+syndicate	holdout	llm-corpus	noun	noun	no	0.8662	0.7719	ambiguous	Several {syndicates} bid for the broadcast rights.
+tear	holdout	real	drop	drop	no	0.9314	0.9142	overlap	After his blood, the best thing a man can give of himself is a {tear}.
+tear	holdout	real	drop	drop	no	0.9389	0.8831	ambiguous	I haven't shed a {tear} in a while.
+tear	holdout	real	drop	rip-noun	no	0.8563	0.8956	overlap	The album included two original singles, "There's a {Tear} in My Beer" and "Finders Are Keepers", that peaked at number 7 and number 6 respectively on the Billboard Hot Country Singles & Tracks chart.
+tear	holdout	real	rip-noun	rip-noun	no	0.9119	0.9035	overlap	When there is a {tear} in the human fabric we should all feel it."
+tear	real-eval	real	rip-verb	drop	no	0.8555	0.8467	overlap	"I can't {tear} you out of my heart," she said, "even now!
+tear	real-eval	real	rip-verb	rip-verb	no	0.8771	0.8335	overlap	"When you are here he can't {tear} himself away," she said.
+tear	real-eval	real	drop	drop	no	0.8907	0.8790	overlap	'Let them go, once and for ever, and I would never shed another {tear} if every penny had been a thousand pounds.'
+tear	real-eval	real	rip-verb	drop	no	0.8617	0.8899	overlap	He had to go, but he could not {tear} himself from her eyes.
+tear	real-eval	real	rip-verb	rip-verb	no	0.8726	0.8275	overlap	Help, help!" screamed she, turning towards the wall, as if she would {tear} an opening with her hands.
+tear	real-eval	real	rip-verb	rip-verb	no	0.8089	0.7909	overlap	I'll know the truth from this boy even if I have to {tear} his head off.
+tear	real-eval	real	drop	drop	no	0.9169	0.8922	overlap	This discouraging information a little dashed the child, who could scarcely repress a {tear} as she glanced along the darkening road.
+tear	real-eval	real	rip-verb	rip-verb	no	0.9005	0.8295	ambiguous	Where did you {tear} them up?
+tear	real-eval	real	rip-verb	drop	yes	0.7503	0.8243	ambiguous	Your tears {tear} my heart!
+transplant	holdout	llm-corpus	verb	verb	no	0.9395	0.9195	overlap	Gardeners {transplant} lettuce in cool weather so the roots can settle.
+transplant	holdout	llm-corpus	verb	verb	no	0.8955	0.8784	overlap	Researchers hope one day to {transplant} insulin-producing cells into diabetic patients.
+transport	holdout	llm-corpus	verb	noun	no	0.8660	0.8742	overlap	Barges {transport}, at very low cost, enormous quantities of coal.
+transport	holdout	llm-corpus	noun	noun	no	0.8663	0.8336	overlap	Does the hotel provide {transport} to the airport?
+transport	real-eval	real	noun	noun	no	0.7502	0.7764	ambiguous	Costaguana had no navy, and, apart from a few coastguard cutters, there were no national ships except a couple of old merchant steamers used as {transports}.
+transport	real-eval	real	verb	noun	no	0.8785	0.8447	overlap	Oscar Díaz, managing director of Mundopalet, a company that makes pallets to {transport} goods, is a worried man.
+trifurcate	holdout	llm-corpus	verb	adj	yes	0.9117	0.9483	overlap	Does the artery {trifurcate} before or after it enters the muscle?
+trifurcate	holdout	llm-corpus	verb	verb	no	0.8842	0.8810	overlap	Here the vein will {trifurcate}, sending one branch to each lobe.
+trifurcate	holdout	llm-corpus	adj	adj	no	0.9065	0.8780	overlap	The beetle's antennae are {trifurcate} at the tip.
+trifurcate	holdout	llm-corpus	verb	verb	no	0.9010	0.8858	overlap	The plans call for the highway to {trifurcate} at the interchange.
+trifurcate	holdout	llm-corpus	adj	adj	no	0.9805	0.8903	ambiguous	The river forms a {trifurcate} delta before reaching the sea.
+trifurcate	holdout	llm-corpus	verb	adj	yes	0.8884	0.8860	overlap	Where the canyon walls {trifurcate}, hikers must choose among three trails.
+triplicate	holdout	llm-corpus	noun	noun	no	0.7554	0.6372	coverage-gap	Bring your passport and the documents in {triplicate}.
+triplicate	holdout	llm-corpus	verb	noun	no	0.7783	0.8048	overlap	Could the plant {triplicate} its output within five years?
+triplicate	holdout	llm-corpus	noun	noun	no	0.8285	0.7184	ambiguous	Hospital records have to be kept in {triplicate}, one copy per department.
+underbid	holdout	llm-corpus	verb	noun	yes	0.8472	0.8812	overlap	"We can't afford to {underbid} again," the director warned.
+undercount	holdout	llm-corpus	noun	verb	no	0.8395	0.8354	overlap	A mail-in {undercount} hit counties with poor internet service.
+underestimate	holdout	llm-corpus	verb	verb	no	0.7306	0.7777	ambiguous	Contractors who {underestimate} the timeline lose money.
+underestimate	holdout	llm-corpus	noun	noun	no	0.8453	0.8013	overlap	One {underestimate} led to another, and the schedule collapsed.
+underestimate	holdout	llm-corpus	noun	noun	no	0.8413	0.8147	overlap	The consultants called last year's forecast a clear {underestimate}.
+underground	holdout	llm-corpus	adv	adj	yes	0.9011	0.9471	overlap	The bunker was built deep {underground}, far from the town.
+underground	holdout	llm-corpus	adv	adv	no	0.9406	0.9261	overlap	The fugitive had gone {underground} months ago, hiding with friends.
+underlay	holdout	llm-corpus	noun	noun	no	0.9143	0.8667	overlap	A good carpet {underlay} improves comfort and insulation.
+underlay	holdout	llm-corpus	verb	verb	no	0.8431	0.8427	overlap	A strange calm {underlay} the whole village that summer.
+underlay	holdout	llm-corpus	verb	verb	no	0.8450	0.8245	overlap	Fear {underlay} everything he said that evening.
+underlay	holdout	llm-corpus	noun	verb	no	0.8029	0.7946	overlap	Staple the rubber {underlay} to the subfloor, then trim the edges.
+underlay	holdout	llm-corpus	verb	verb	no	0.8017	0.7720	overlap	The anger that {underlay} her remarks surprised the committee.
+underlay	holdout	llm-corpus	verb	verb	no	0.7991	0.7535	ambiguous	The assumptions that {underlay} the model were never tested.
+underlay	holdout	llm-corpus	noun	noun	no	0.8463	0.8232	overlap	The installer rolled out a foam {underlay} before laying the laminate.
+undershoot	holdout	llm-corpus	verb	verb	no	0.8403	0.8189	overlap	The estimates {undershoot} real demand by a wide margin.
+underspend	holdout	llm-corpus	noun	verb	yes	0.7915	0.8236	overlap	The charity spent last year's {underspend} on new programs.
+underspend	holdout	llm-corpus	noun	noun	no	0.7881	0.7296	ambiguous	Why has the health trust posted an {underspend} again?
+undertaking	holdout	llm-corpus	noun	noun	no	0.7722	0.6582	ambiguous	Building a boat from scratch is a serious {undertaking} for a beginner.
+unlearned	holdout	llm-corpus	verb	adj	no	0.8067	0.8158	overlap	Fluent speakers rarely realize how much they have {unlearned} over time.
+unlearned	holdout	llm-corpus	adj	adj	no	0.7758	0.7692	ambiguous	The tutor was frustrated by his {unlearned} pupils.
+uphill	holdout	llm-corpus	adv	adj	no	0.8978	0.9103	overlap	Go {uphill} and you'll find the cabin.
+uphill	holdout	llm-corpus	adv	adv	no	0.9469	0.9208	overlap	The path leads {uphill} for another mile.
+uphill	holdout	llm-corpus	adv	adv	no	0.9384	0.9249	overlap	The trail runs {uphill} from the creek.
+uplift	holdout	llm-corpus	verb	verb	no	0.8805	0.8444	overlap	Collisions between plates {uplift} the crust over millions of years.
+uplift	holdout	llm-corpus	verb	noun	no	0.8374	0.8738	overlap	Stories like these {uplift} readers in hard times.
+upset	holdout	llm-corpus	noun	noun	no	0.8725	0.8498	overlap	A minor {upset} in the lab delayed the experiment.
+upset	holdout	llm-corpus	adj	adj	no	0.9219	0.9481	overlap	An {upset} stomach kept her home from work.
+upset	holdout	llm-corpus	noun	adj	no	0.9146	0.9466	overlap	She had a stomach {upset} after the long flight.
+upset	holdout	llm-corpus	adj	adj	no	0.9256	0.8807	overlap	The children were {upset} by the loud noise.
+upset	holdout	llm-corpus	adj	adj	no	0.9453	0.8524	ambiguous	The {upset} customer demanded to speak to the manager.
+upset	holdout	llm-corpus	verb	verb	no	0.8802	0.8546	overlap	Why would you {upset} your mother on her birthday?
+upsetting	holdout	real	noun	noun	no	0.8320	0.8512	overlap	"By the {upsetting} of a boat in which his nurse had no business to have put him," said the Major.
+upsetting	holdout	real	verb	verb	no	0.8385	0.8769	overlap	"Oh I seem so bad - {upsetting} men's courses like this!" said she, taking up in her voice the emotion that had begun in his.
+upsetting	holdout	real	adj	verb	yes	0.7340	0.7935	ambiguous	A gadfly is a person who interferes with the status quo of a society or community by posing novel, potentially {upsetting} questions, usually directed at authorities.
+upsetting	holdout	real	adj	verb	no	0.7450	0.7902	ambiguous	Also, it is important to avoid the situation where a change might be more {upsetting} to users, long-term, than living with the known problem(s) (where the "cure would be worse than the disease").
+upsetting	holdout	real	verb	noun	no	0.6121	0.6284	coverage-gap	Brookhart would lead Akron to its first MAC title, {upsetting} Northern Illinois 31-30 in the conference championship game.
+upsetting	holdout	real	adj	verb	no	0.7338	0.7921	ambiguous	Here we find that mustang humor of his forever kicking its silver heels with the most {upsetting} suddenness into the honeyed sweetness of his flowing poetry.
+upsetting	holdout	real	adj	adj	no	0.8463	0.8309	overlap	However, Poskanzer criticized Lewis for what she regarded as scenes of gratuitous violence, which she felt were {upsetting} to children.
+upsetting	holdout	real	verb	verb	no	0.7508	0.7635	coverage-gap	Nelson instituted new cardinal and gold uniforms, rather than the traditional maroon and white, {upsetting} fans and alumni.
+upsetting	holdout	real	adj	adj	no	0.9082	0.8643	overlap	She found confrontations very {upsetting}.
+upsetting	holdout	real	noun	verb	no	0.7871	0.7879	overlap	Unlike most other areas of India, British rule meant no major {upsetting} of the community's traditional social system, although the traditional peasant landowning class, the Banias and Patidars, were absorbed into the Jain business community.
+upsetting	holdout	real	noun	noun	no	0.7921	0.8241	overlap	We also witness Ryng-Mayne's callous {upsetting} of Sally.
+upsetting	holdout	real	noun	adj	no	0.8264	0.8523	overlap	We have caused the fall of the old world, and the old world, that vase of miseries, has become, through its {upsetting} upon the human race, an urn of joy."
 upsetting	real-eval	real	verb	verb	no	0.8963	0.9330	overlap	I don't like {upsetting} people.
-upturn	holdout	llm-corpus	noun	noun	no	0.9090	0.8032	ambiguous	Her fortunes took an {upturn} after the move.
-upturn	holdout	llm-corpus	verb	verb	no	0.7264	0.7305	coverage-gap	Will the new tax rules {upturn} the market?
-use	holdout	llm-corpus	verb	verb	no	0.8855	0.7320	ambiguous	Can I {use} your phone for a second?
-use	holdout	llm-corpus	verb	verb	no	0.5992	0.6358	coverage-gap	People who {use} public transit save an average of $10,000 a year.
-use	holdout	llm-corpus	verb	verb	no	0.6364	0.6888	coverage-gap	Why would anyone {use} a fax machine today?
-use	real-eval	real	verb	verb	no	0.7137	0.7102	coverage-gap	It is often said that if you {use} certain "environmentally friendly" products, you will be "saving the earth". Unfortunately, such products are, in many cases, merely less destructive than their conventional equivalent.
-use	real-eval	real	verb	verb	no	0.7562	0.6986	coverage-gap	That horrid thing has the wolves and the rats and his own kind to help him, so I suppose he isn't above trying to {use} a respectable lunatic.
-warehouse	holdout	llm-corpus	verb	verb	no	0.8445	0.8322	overlap	Firms that {warehouse} products across several regions cut delivery times.
-wind	holdout	llm-corpus	verb	noun	yes	0.8978	0.8800	overlap	The road begins to {wind} as it climbs the ridge.
-wound	holdout	llm-corpus	past	past	no	0.9034	0.8827	overlap	The trail {wound}, mile after mile, through pines.
+uptown	holdout	real	adv	adv	no	0.9291	0.9565	overlap	And I don't care what people are saying {Uptown} or wherever they are.
+uptown	holdout	real	adv	adj	no	0.9342	0.9163	overlap	Blacks who went {uptown} to shop had a designated parking area and only had access to one filthy bathroom.
+uptown	holdout	real	adj	noun	no	0.8811	0.8853	overlap	For open-cut, grade-level and elevated stations, prevalent in {uptown} Manhattan and the outer boroughs, the mezzanine area often consists of a station house at street level or above the street.
+uptown	holdout	real	noun	noun	no	0.9247	0.9333	overlap	From Central Business District to {Uptown}
+uptown	holdout	real	adv	adv	no	0.8965	0.8834	overlap	In this proposal, every other bus would go to Worth Street via Bowery and Third Avenue, returning {uptown} via Centre Street and Lafayette Street.
+uptown	holdout	real	noun	noun	no	0.8649	0.8833	overlap	Outside the loop, the city's typology is more suburban, though many major business districts - such as {Uptown}, Westchase, and the Energy Corridor - lie well outside the urban core.
+uptown	holdout	real	noun	adv	no	0.8740	0.8877	overlap	Some areas are commonly known by nicknames of business associations like Dinkytown, Downtown, Midtown and {Uptown}.
+uptown	holdout	real	noun	adj	no	0.8798	0.8884	overlap	The Charlotte Area Transit System (CATS) operates two bus routes from the airport terminal: Route 5-Airport (Sprinter) to {Uptown} Charlotte/CTC and Route 60-Tyvola Road to LYNX Tyvola station.
+uptown	holdout	real	adj	adv	no	0.8926	0.8719	overlap	The M-Line Trolley is a 4.6-mile (7.4 km) heritage streetcar line in Dallas's {Uptown} neighborhood.
+uptown	holdout	real	noun	adj	no	0.8698	0.8923	overlap	The San Antonio International Airport (SAT) is located in {uptown} San Antonio, approximately eight miles north of downtown.
+uptown	holdout	real	adv	adv	no	0.8805	0.8840	overlap	The St. Charles Line starts {uptown}, at South Carrollton Avenue and South Claiborne Avenue.
+uptown	holdout	real	adv	adj	yes	0.9213	0.9051	overlap	Traffic on First Avenue runs northbound ({uptown}) only.
+uptown	holdout	real	noun	noun	no	0.8785	0.8784	overlap	US 29 routes through Charlotte along Tryon Street, one of the main arteries that runs through {Uptown} Charlotte.
+upturn	holdout	llm-corpus	noun	noun	no	0.9092	0.8035	ambiguous	Her fortunes took an {upturn} after the move.
+upturn	holdout	llm-corpus	verb	verb	no	0.7271	0.7313	coverage-gap	Will the new tax rules {upturn} the market?
+use	holdout	llm-corpus	verb	verb	no	0.8855	0.7321	ambiguous	Can I {use} your phone for a second?
+use	holdout	llm-corpus	verb	verb	no	0.5996	0.6351	coverage-gap	People who {use} public transit save an average of $10,000 a year.
+use	holdout	llm-corpus	verb	verb	no	0.6365	0.6887	coverage-gap	Why would anyone {use} a fax machine today?
+use	real-eval	real	verb	verb	no	0.7138	0.7100	coverage-gap	It is often said that if you {use} certain "environmentally friendly" products, you will be "saving the earth". Unfortunately, such products are, in many cases, merely less destructive than their conventional equivalent.
+use	real-eval	real	verb	verb	no	0.7565	0.6984	coverage-gap	That horrid thing has the wolves and the rats and his own kind to help him, so I suppose he isn't above trying to {use} a respectable lunatic.
+use	real-eval	real	verb	verb	no	0.5766	0.5896	coverage-gap	This car {uses} more gas than these other two cars.
+warehouse	holdout	llm-corpus	verb	verb	no	0.8443	0.8320	overlap	Firms that {warehouse} products across several regions cut delivery times.
+wind	holdout	llm-corpus	verb	noun	yes	0.8976	0.8798	overlap	The road begins to {wind} as it climbs the ridge.
+wound	holdout	llm-corpus	past	past	no	0.9035	0.8828	overlap	The trail {wound}, mile after mile, through pines.
