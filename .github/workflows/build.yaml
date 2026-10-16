@@ -236,6 +236,8 @@ jobs:
           path: |
             src/DemaConsulting.WordSense/bin/Release/*.nupkg
             src/DemaConsulting.WordSense/bin/Release/*.snupkg
+            src/DemaConsulting.WordSense.MiniLM/bin/Release/*.nupkg
+            src/DemaConsulting.WordSense.MiniLM/bin/Release/*.snupkg
 
   # Runs CodeQL security and quality analysis, gathering results to include
   # in the code quality report.

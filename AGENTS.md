@@ -4,8 +4,10 @@
 - **organization**: DEMA Consulting
 - **project-tagline**: Offline word-sense disambiguation for .NET
 - **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
-  ambiguous English words in context, offline. It combines a managed WordPiece tokenizer, an int8 ONNX
-  MiniLM sentence encoder, and a per-lemma linear classifier table embedded in the assembly.
+  ambiguous English words in context, offline. It ships as two NuGet packages: `DemaConsulting.WordSense`, the core
+  (public API, embedded lexicon, `IWordSenseModel` abstraction; no ONNX dependency, usable without a model), and
+  `DemaConsulting.WordSense.MiniLM`, which adds a managed WordPiece tokenizer, an int8 ONNX MiniLM sentence encoder,
+  a verified model downloader and the per-model weights table (a per-lemma linear classifier) embedded in the assembly.
 - **languages**: C#, Python (one-off tokenizer fixture generator and the real-text harvest tool `tools/real-text`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
@@ -13,7 +15,8 @@
 
 ```text
 ├── corpus/                     (training anchors, holdout sentences, form maps)
-├── model/                      (ONNX encoder, vocabulary and tokenizer; all stored in Git LFS)
+├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
+│                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
 │   ├── WordSense.Builder/      (non-shipped table builder and corpus importer)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
@@ -30,9 +33,11 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   └── DemaConsulting.WordSense/
+│   ├── DemaConsulting.WordSense/          (core package: API, lexicon, IWordSenseModel)
+│   └── DemaConsulting.WordSense.MiniLM/   (MiniLM encoder package: ONNX model, tokenizer, downloader, weights)
 └── test/
     ├── DemaConsulting.WordSense.Tests/
+    ├── DemaConsulting.WordSense.MiniLM.Tests/
     └── WordSense.Builder.Tests/
 ```
 

@@ -48,7 +48,17 @@ tests:
     tags: [api-docs]
     files:
       - pattern: >-
-          src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordSenseClassifier/CreateAsync.md
+          src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordSenseClassifier/Create.md
+        count: 1
+        text:
+          - contains: "```csharp"
+
+  - name: ApiMark_MiniLMFactoryDocumented
+    description: "The MiniLM classifier factory member is documented and generated with an example"
+    tags: [api-docs]
+    files:
+      - pattern: >-
+          src/DemaConsulting.WordSense.MiniLM/generated/api/DemaConsulting.WordSense.MiniLM/MiniLMWordSense/CreateClassifierAsync.md
         count: 1
         text:
           - contains: "```csharp"
