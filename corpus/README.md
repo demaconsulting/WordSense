@@ -1,6 +1,7 @@
 # WordSense Corpus
 
-Training and evaluation data for the per-lemma sense classifiers.
+Training and evaluation data for the per-lemma classifiers that answer the part of speech and, for heteronyms, the
+pronunciation of a word in context.
 
 ## Layout
 
@@ -14,7 +15,8 @@ Every file is UTF-8 without a byte-order mark, with LF line endings.
 
 ## Sentence Files
 
-Rows have three tab-separated columns and no header: `lemma`, `sense`, `sentence`. The sentence marks the target word
+Rows have three tab-separated columns and no header: `lemma`, `sense` (the sense label, see the inventory below) and
+`sentence`. The sentence marks the target word
 by wrapping it in exactly one pair of braces, for example `The {record} for the fastest mile was set in 1999.`
 
 Sources are grouped by file name. `seed-34.tsv` is the 34-lemma seed set; `speech-batchN.tsv` files are imported by the
@@ -49,18 +51,30 @@ sentences are trained but not evaluated (30 lemmas).
 
 ## Sense Inventory
 
-`senses/*.tsv` has the header `lemma`, `sense`, `tags`, `group` (tab-separated; a legacy 3-column file is still
-read). `tags` is a `|`-separated, ordinal-sorted list. The optional `group` (default: the sense id) names the
-equivalence class of senses of the lemma that share a pronunciation, exposed as `WordSense.Group` (empty or equal to
-the sense id means the sense is its own class). The library has no pronunciation data; a consumer maps
-(lemma, group) to a pronunciation. A group is not a coarser meaning and does not mean "same meaning across parts of
-speech". The inventory must list exactly the senses
-used by the anchors: an anchor label missing from the inventory, or an inventory sense without anchors, fails the
-build.
+`senses/*.tsv` has the header `lemma`, `label`, `pos`, `meaning`, `respelling` (tab-separated, five columns). A *lemma*
+is the dictionary base form of a word (`record` for `records`); a *heteronym* is a lemma whose meanings are pronounced
+differently (`record`, `bow`).
 
-Tag rule: tags are true parts of speech (`noun`, `verb`, `adj`, `adv`) plus qualifiers (`past`, `present`,
-`comparative`, `superlative`); a sense has exactly one part of speech. A tag never stands in for a pronunciation or
-meaning. The build fails on violations (`PosRules`). The earlier `derive-senses` rules are retired.
+- `label` is an internal join key that ties the anchor sentences, the holdout sentences, the forms and the inventory
+  together. It is never shipped in the table or shown to callers, so it may be any name that is unique within the
+  lemma (it is often the part of speech, or a short description).
+- `pos` is one of the eight `PartOfSpeech` names (the corpus uses `noun`, `verb`, `adj` and `adv`; the first
+  letter may be upper or lower case).
+- `meaning` is a lower-case identifier of at most 32 characters (letters, digits and hyphens, starting with a
+  letter) that names the meaning of a heteronym, for example `weapon` and `bend` for `bow`. It may be empty.
+- `respelling` is the plain respelling of the pronunciation in the library's own convention: syllables separated by
+  hyphens, stress in capitals, no phonetic alphabet (`REK-urd` for the noun `record`, `rih-KORD` for the verb; `boh`
+  for the weapon `bow` and `bow` for the bend). It may be empty, and it needs a meaning.
+
+The inventory must list exactly the senses used by the anchors: an anchor label missing from the inventory, or an
+inventory sense without anchors, fails the build.
+
+Inventory rules (checked by `validate-pos` and by every build): every sense has a defined part of speech; meanings are
+all or none within a lemma; a lemma with meanings (a heteronym) has at least two distinct meanings; a
+(part of speech, meaning) pair appears once per lemma, so two senses of one part of speech are allowed only with
+different meanings; one meaning always has the same respelling; distinct meanings have distinct respellings. A lemma
+without meanings has no pronunciation in the answers. The earlier tag and group columns and the `derive-senses`
+rules are retired.
 
 ## Real Sentences and Provenance
 
@@ -77,10 +91,11 @@ weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anch
 `docs/build_notes/weak-lemma-decisions.md`.
 `tools/real-text/README.md` describes the repeatable harvest. Senses that real text cannot fill are completed by
 `anchors|holdout|provenance/new-authored-N.tsv` (command `real-authored-import`; two independent authors, origin
-`authored`, contributor `authored-anchor` or `authored-holdout`). `audit/new-lemma-speech-map.tsv` maps every sense of the
-Phase 4 lemmas to its group and an authoring-time ARPAbet note (reference data for consumers; the library itself
-ships no pronunciations) with its counts, source mix (real or authored) and holdout
-accuracy; see `docs/build_notes/new-lemma-results.md`. Phase 5 noun/verb lemmas are imported by `nounverb-import` into
+`authored`, contributor `authored-anchor` or `authored-holdout`). `audit/new-lemma-speech-map.tsv` is a historical
+record of the Phase 4 lemmas (the pronunciation class and an authoring-time note of each sense, with its counts,
+source mix (real or authored) and holdout accuracy); the shipped respellings live in the `respelling` column of the
+inventory; see `docs/build_notes/new-lemma-results.md`. Phase 5 noun/verb lemmas are imported by `nounverb-import`
+into
 `anchors|holdout|provenance|senses/nounverb-N.tsv` (origins real or `user-supplied`, licence
 `MIT (project-authored)` for the latter) and `audit/nounverb-untrained.tsv` lists every lemma left untrained with the
 reason. `audit/nounverb-dropped.tsv` lists lemmas removed by `nounverb-gate` (see
@@ -91,12 +106,13 @@ reason. `audit/nounverb-dropped.tsv` lists lemmas removed by `nounverb-gate` (se
 `audit/analysis/` holds the output of `learning-curve`, `error-diagnosis` and `weak-lemmas` (accuracy against anchors
 per sense, the diagnosed errors and the ranked weak lemmas); see `docs/build_notes/learning-curve-and-diagnosis.md`.
 
-## Part-of-Speech Audit
+## Part-of-Speech Audit (historical)
 
 `audit/pos-audit.tsv` holds the blind two-judge audit of every anchor and holdout sentence (judge C for
-disagreements); `audit/judge-prompt.md` is the judge prompt. `apply-relabel` applied the audit once: it retagged,
-split or dropped rows and excluded senses, recording the decisions in `audit/relabel-decisions.tsv` and the dropped
-rows in `audit/dropped-rows.tsv`. See `docs/build_notes/pos-audit.md`.
+disagreements); `audit/judge-prompt.md` is the judge prompt. The audit was applied once: it retagged, split or
+dropped rows and excluded senses, recording the decisions in `audit/relabel-decisions.tsv` and the dropped rows in
+`audit/dropped-rows.tsv`. These files are a record; the commands that produced them (`audit-*`, `apply-relabel`) are
+retired, and `real-import` still reads `relabel-decisions.tsv`. See `docs/build_notes/pos-audit.md`.
 
 ## Label Reconciliation
 

@@ -14,54 +14,67 @@ sections:
           - WordSenseToken_Tiles_FollowSegmentSpans
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
 
-      - id: WordSense-Classifier-Senses
-        title: The classifier shall assign senses only to known lemmas and their inflected forms.
+      - id: WordSense-Classifier-Answers
+        title: >-
+          The classifier shall answer only for known lemmas and their inflected forms, returning the lemma, the part
+          of speech and, for a heteronym, the pronunciation of the best candidate.
         tags: [unit]
         justification: |
-          Unknown words carry no sense, and a single encoder pass per text keeps latency low.
+          Unknown words carry no answer, an inflected form must resolve to its lemma, and a single encoder pass per
+          text keeps latency low.
         tests:
           - WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly
           - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
           - WordSenseClassifier_ClassifyAsync_Words_ResolvesForms
           - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
-          - WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed
           - WordSenseClassifier_ClassifyAsync_InfiniteAbstainMarginScale_AlwaysAbstains
 
+      - id: WordSense-Classifier-Candidates
+        title: >-
+          The classifier shall list the lemmas it supports and, for a lemma, every possible answer (part of speech
+          and pronunciation), and an empty list for an unknown lemma.
+        tags: [unit]
+        justification: |
+          Callers discover what is supported at run time instead of relying on documentation alone.
+        tests:
+          - WordSenseClassifier_KnownLemmas_And_GetCandidates_AreExposed
+
       - id: WordSense-Classifier-Abstain
-        title: The classifier shall return no sense when the margin is below the per-lemma threshold.
+        title: The classifier shall give no answer when the margin is below the per-lemma threshold.
         tags: [unit]
         justification: |
           Abstaining is better than a low-confidence guess.
         tests:
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
-      - id: WordSense-Classifier-Detail
+      - id: WordSense-Classifier-Analysis
         title: >-
-          The classifier shall report, on request, a WordSenseDetail with the best sense, the runner-up sense,
-          the margin of the best over the runner-up, the margin of the runner-up over the third-best sense and
-          whether the classifier abstained, including for words it abstained from.
+          The classifier shall return, for every word of every call, the word as given, the best answer, the margin
+          of the best candidate over the runner-up, the runner-up, the margin of the runner-up over the third-best
+          candidate and whether it abstained, including for words it abstained from.
         tags: [unit]
         justification: |
           Callers that apply their own confidence policy need the evidence behind a decision, including
           decisions the classifier abstained from. The margin is a score difference that is comparable only
-          within one lemma, so the runner-up and the abstained flag are reported with it.
+          within one lemma, so the runner-up and the abstained flag are reported with it. One complete result
+          for every call keeps the interface small.
         tests:
-          - WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp
-          - WordSenseClassifier_ClassifyDetailAsync_ThreeSenses_ReportsRunnerUpMargin
-          - WordSenseClassifier_ClassifyDetailAsync_LowMargin_IsFlaggedAbstained
+          - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
+          - WordSenseClassifier_ClassifyAsync_ThreeSenses_ReportsRunnerUpMargin
+          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
-      - id: WordSense-Classifier-Tags
+      - id: WordSense-Classifier-Unknown
         title: >-
-          The classifier shall answer tag-level queries, scoring a tag by the best sense that carries it,
-          and return no answer when the tag is absent or the tag-level margin is too small.
+          The classifier shall report a word it has no classifier for with no answer, no abstention, no runner-up
+          and zero margins, so that it differs from a word it abstained from.
         tags: [unit]
         justification: |
-          Callers often need only a coarse property such as noun versus verb; senses that agree on the
-          tag must not weaken each other, and an absent tag must never be guessed.
+          A caller must be able to tell "this word is not covered" from "this word is covered but the evidence is
+          weak", because they need different fallbacks.
         tests:
-          - WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull
-          - WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull
-          - WordSenseClassifier_TagQueries_InvalidArguments_Throw
+          - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
+          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
+          - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
 
       - id: WordSense-Classifier-LongText
         title: The classifier shall classify texts longer than the model limit using a window around each target.
@@ -77,7 +90,7 @@ sections:
           and a user-supplied model directory whose files do not match the pinned model digests.
         tags: [unit]
         justification: |
-          A mismatched table and model silently produce wrong senses, and an unverified model directory
+          A mismatched table and model silently produce wrong answers, and an unverified model directory
           could supply a different model than the table was trained with.
         tests:
           - WordSenseClassifier_Constructor_InvalidArguments_Throw

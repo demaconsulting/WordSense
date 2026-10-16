@@ -6,14 +6,16 @@ This document provides the system-level design for WordSense.
 
 ## Architecture
 
-WordSense is a .NET library that decides which sense an ambiguous English word carries in a given
+WordSense is a .NET library that decides which part of speech and, for words pronounced differently
+by meaning, which pronunciation an ambiguous English word carries in a given
 text. It ships as one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
 Microsoft.ML.OnnxRuntime. The system consists of these units, all in one assembly:
 
 - **WordPieceTokenizer**: BERT uncased word-piece tokenizer with character offsets
 - **WordSenseTable**: embedded binary table of per-lemma linear classifiers, word forms and abstention margins
 - **OnnxWordSenseEncoder**: ONNX Runtime wrapper around the int8 `all-MiniLM-L6-v2` model
-- **SenseRecord**: immutable tagged sense records (WordSense), tag scoring and text segmentation
+- **SenseRecord**: immutable answer values (part of speech, pronunciation, word details, analysis), sense
+  definition validation, the abstention rule and text segmentation
 - **WordSenseClassifier**: public entry point that combines the units above
 - **DownloadMirror**: validated user mirror configuration
 - **WordSenseModelDownloader**: ordered, verified model download (mirror, Hugging Face, GitHub LFS)
@@ -28,11 +30,9 @@ encoder, table and feature extraction so that training and inference share one c
 | Interface                              | Direction | Format                         | Constraints                    |
 |----------------------------------------|-----------|--------------------------------|--------------------------------|
 | `CreateAsync(options)`                 | In        | Async factory                  | Model available                |
-| `ClassifyAsync(words)`                 | In/Out    | Words to `WordSense?[]`        | Parallel to input              |
-| `ClassifyDetailAsync(words)`           | In/Out    | Words to `WordSenseDetail?[]`  | Margins, runner-up             |
-| `ClassifyTagAsync`, `IsTagAsync`       | In/Out    | Words, tags to tag arrays      | `null` if absent or unsure     |
+| `ClassifyAsync(words)`                 | In/Out    | Words to `WordAnalysis[]`      | Parallel to input, never null  |
 | `ClassifyAsync(text)`                  | In/Out    | `string` to list of tokens     | Tokens tile the input          |
-| `KnownLemmas`, `GetSenses(lemma)`      | Out       | Lemmas, `WordSense` list       | Unknown lemma: empty list      |
+| `KnownLemmas`, `GetCandidates(lemma)`  | Out       | Lemmas, `WordDetails` list     | Unknown lemma: empty list      |
 | `EnsureModelAsync(options)`            | In/Out    | Async call                     | SHA-256 verified               |
 | `WordSenseModelLocation.FromDirectory` | In/Out    | Directory to location          | Missing or altered file throws |
 | `DownloadMirror`, `Options.Mirror`     | In        | Record / options               | Absolute http(s) URL           |
@@ -78,8 +78,9 @@ only to the mirror. If every source fails, `WordSenseModelDownloadException` lis
   corrupted (checksum mismatch) or otherwise malformed.
 - `FileNotFoundException` and `InvalidDataException`: a supplied `ModelDirectory` throws the former when a model
   file is missing and the latter when a file does not match its pinned SHA-256; no download is attempted.
-- Invalid arguments (for example empty tags or an invalid mirror URL) throw `ArgumentException` or its
-  derived types. Words that are not known or are below the abstention margin are not errors; they yield `null`.
+- Invalid arguments (for example a null word list or an invalid mirror URL) throw `ArgumentException` or its
+  derived types. Words that are not known or are below the abstention margin are not errors; they yield an
+  analysis without details, and `Abstained` and a zero margin tell the two cases apart.
 
 ## Dependencies
 
@@ -114,8 +115,10 @@ the table's trailing digest.
 3. The tokenizer produces word pieces with offsets; the encoder runs once for the sentence (a window
    around each target for long texts).
 4. For each target the hidden states of its word pieces are pooled, centered with the table mean and
-   normalized; the lemma's linear model yields the best sense and margin; a margin below the lemma's
-   abstention threshold yields no sense.
+   normalized; the lemma's linear model scores the senses. The best sense gives the part of speech and, for a
+   heteronym, the pronunciation; the margin, the runner-up and its margin are reported with it. A margin below
+   the lemma's abstention threshold yields an analysis without details and with `Abstained` set. A word
+   without a classifier yields an analysis without details, a zero margin and `Abstained` unset.
 
 ## Design Constraints
 

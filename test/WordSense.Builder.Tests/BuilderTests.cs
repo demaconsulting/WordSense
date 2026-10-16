@@ -381,7 +381,7 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_SenseInventory_InvalidColumns_AreRejected()
     {
-        Write("bad-col/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tNoun\t\t\nbank\tb\tverb\tBad Meaning\t\nbank\tc\tverb\t\tbou\n");
+        Write("bad-col/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tNoun\t\t\nbank\tb\tverb\tBad Meaning\t\nbank\tc\tverb\t\tbow\n");
 
         var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(Path.Combine(_root, "bad-col")));
 
@@ -1876,7 +1876,7 @@ public sealed class BuilderTests : IDisposable
             "bow\tweapon\tHe drew a {bow}.\n" +
             "bow\tbend-noun\t" + longSentence + "\n");
         Write("corpus/senses/s.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nzip\tnoun\tnoun\t\t\nzip\tverb\tverb\t\t\n" +
-            "bow\tbend-verb\tverb\tbend\tbou\nbow\tbend-noun\tnoun\tbend\tbou\nbow\tweapon\tnoun\tweapon\t\n");
+            "bow\tbend-verb\tverb\tbend\tbow\nbow\tbend-noun\tnoun\tbend\tbow\nbow\tweapon\tnoun\tweapon\t\n");
         Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun,verb\nbowed\tbow\tbend-verb\nzip\tzip\tnoun,verb\nother\tunknown\tx\n");
 
         // Act
@@ -1896,8 +1896,8 @@ public sealed class BuilderTests : IDisposable
         Assert.True(text.IndexOf("- **bow**;", StringComparison.Ordinal) < text.IndexOf("- **zip**;", StringComparison.Ordinal));
         Assert.Contains("- **bow**; parts of speech: noun, verb; heteronym, meanings: bend, weapon; forms: bowed (verb bend)\n", text, StringComparison.Ordinal);
         Assert.Contains("- **zip**; parts of speech: noun, verb; forms: zips\n", text, StringComparison.Ordinal);
-        Assert.Contains("  - `noun`; meaning: `bend`; respelling: `bou`; example: He **took** ", text, StringComparison.Ordinal);
-        Assert.Contains("  - `verb`; meaning: `bend`; respelling: `bou`; example: They **bowed** to the audience \\*twice\\* at the end.\n", text, StringComparison.Ordinal);
+        Assert.Contains("  - `noun`; meaning: `bend`; respelling: `bow`; example: He **took** ", text, StringComparison.Ordinal);
+        Assert.Contains("  - `verb`; meaning: `bend`; respelling: `bow`; example: They **bowed** to the audience \\*twice\\* at the end.\n", text, StringComparison.Ordinal);
         Assert.Contains("  - `noun`; meaning: `weapon`; example: He drew a **bow**.\n", text, StringComparison.Ordinal);
         Assert.Contains("  - `noun`; example: She pulled the **zip** on the old bag.\n", text, StringComparison.Ordinal);
         Assert.Contains("  - `verb`; example: To **zip**.\n", text, StringComparison.Ordinal);

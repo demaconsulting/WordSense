@@ -27,7 +27,9 @@ namespace DemaConsulting.WordSense;
 ///     stress depends on its part of speech. Lower-case letters, digits and hyphens.
 /// </param>
 /// <param name="Respelling">
-///     Our own plain respelling of the pronunciation (letters, hyphens and apostrophes; stressed syllables in capitals
-///     when there are several), or <see langword="null"/> when none has been authored.
+///     Our own plain respelling of the pronunciation, or <see langword="null"/> when none has been authored. It uses
+///     letters, hyphens and apostrophes only: syllables are separated by hyphens and, when there are several, the
+///     stressed syllable is written in capitals (<c>REK-urd</c> for the noun <c>record</c>, <c>rih-KORD</c> for the
+///     verb; <c>bow</c> and <c>boh</c> for the two meanings of <c>bow</c>). It is not IPA or any dictionary's scheme.
 /// </param>
 public sealed record Pronunciation(string Meaning, string? Respelling);

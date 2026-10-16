@@ -1,6 +1,6 @@
 package WordSense {
     part def WordSenseBuilder {
-        doc /* Non-shipped build-time tool that trains the classifier table from the labeled corpus, imports sentence batches, runs the part-of-speech audit and relabeling, and restores and evaluates senses with real, provenance-tracked sentences, and generates the senses appendix of the user guide. */
+        doc /* Non-shipped build-time tool that trains the classifier table from the labeled corpus, imports sentence batches, validates the sense inventory (parts of speech, meanings and respellings), reports accuracy per level, restores and evaluates senses with real, provenance-tracked sentences, and generates the senses appendix of the user guide. */
 
         comment sourceRef /* Source: tools/WordSense.Builder/ (every C# file of the builder project, for example Program.cs, TableBuilder.cs and LogisticTrainer.cs) */
         comment testRef /* Test: test/WordSense.Builder.Tests/BuilderTests.cs */

@@ -30,10 +30,11 @@ the new album." and must return noun for the first and verb for the second "reco
 
 ### WordSense_Classifier_EndToEnd_WordListApi
 
-A classifier classifies the word list "The", "record", "was", "broken", "so", "they", "will", "record", "it"
-with the sense, tag, `IsTag` and detail queries. Every result array is parallel to the input; the first
-"record" is noun and the second is verb (tag `noun`/`verb`, `IsTag(verb)` false/true), the non-ambiguous word
-"The" yields `null`, and the detail query returns the same sense instance as the sense query.
+A classifier classifies the word list "The", "record", "was", "broken", "so", "they", "will", "record", "it".
+The result array is parallel to the input and holds the word as given; the first "record" is a noun and the
+second a verb with lemma `record`, the non-ambiguous word "The" has no details and is not abstained, the
+first "record" has a positive margin and a runner-up, and its details are one of the candidates listed for
+`record`.
 
 ### WordSense_EmbeddedTable_MatchesPinnedModel
 
@@ -59,21 +60,19 @@ least 96 % with at least 85 % coverage over more than 400 sentences. Rows whose 
 classified through the forms table, so every such form must be listed there (see the forms completeness scenario
 below); an unlisted form would count as unanswered.
 
-### WordSense_Classifier_Holdout_MeetsNounVerbTagGate
+### WordSense_Classifier_Holdout_MeetsPartOfSpeechGate
 
-Holdout rows whose gold sense has exactly one of the `noun` and `verb` tags (rows with both or neither are
-skipped) are classified with the tag query; the answered accuracy must be at least 97 % with at least 85 %
-coverage over more than 350 rows (every fifth row of the holdout is evaluated). The measured values for the whole
-holdout are reported in the build notes (`docs/build_notes/nounverb-results.md`) and the user guide; this document
-quotes only the thresholds that the test asserts.
+Holdout rows (every fifth row, as in the accuracy gate) are classified and a result counts as correct when the
+predicted part of speech equals that of the gold sense; the answered accuracy must be at least 97 % with at least
+85 % coverage over more than 400 rows. Only the asserted thresholds are quoted here; the measured values are in
+the build notes (`docs/build_notes/`).
 
-### WordSense_Classifier_Holdout_MeetsGroupGate
+### WordSense_Classifier_Holdout_MeetsPronunciationGate
 
-The holdout is classified (every fifth row, as in the accuracy gate) and a result counts as correct when the
-predicted sense's `Group` equals the gold sense's group; the answered accuracy must be at least 96 % with at
-least 85 % coverage over more than 400 rows (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share
-groups, so this gate can exceed the sense-level gate). Only the asserted thresholds are quoted here; the measured
-values are in the build notes (`docs/build_notes/`).
+Holdout rows of heteronym lemmas (those whose gold sense has a meaning) are classified and a result counts as
+correct when the predicted pronunciation meaning equals the gold meaning (the senses of `bow`, `lead`, `tear`,
+`closer` and `polish` can share a meaning, so this gate can exceed the sense-level gate); the answered accuracy
+must be at least 96 % with at least 85 % coverage over more than 200 rows.
 
 ### WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
 
@@ -82,10 +81,11 @@ the possessive fallback of the classifier) must resolve through the embedded for
 The only exception is the plural `rows` of the lemma `row`, because `rows` is itself a trained lemma. The test
 fails with the list of missing forms, which are then added to `corpus/forms/speech.tsv` and the table rebuilt.
 
-### WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
+### WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
 
-Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, `adv` and only the qualifiers
-`past`, `present`, `comparative`, `superlative`, `participle` besides.
+Every sense of the embedded table has one of the four shipped parts of speech (noun, verb, adjective, adverb); a
+lemma is a heteronym exactly when its senses have at least two distinct meanings, and a candidate has a
+pronunciation exactly when its lemma is a heteronym.
 
 ### WordSense_Benchmark_ClassifyLatency
 
@@ -157,7 +157,9 @@ a requirement is satisfied only by a passing result from its own platform or fra
 | Requirement                 | Verified by                                                                         |
 |-----------------------------|-------------------------------------------------------------------------------------|
 | WordSense-Lib-Classify      | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                     |
-| WordSense-Lib-Tags          | Holdout_MeetsNounVerbTagGate, MeetsGroupGate, EverySenseHasExactlyOnePartOfSpeech   |
+| WordSense-Lib-PartOfSpeech  | Holdout_MeetsPartOfSpeechGate, EmbeddedTable consistency scenario                   |
+| WordSense-Lib-Pronunciation | Holdout_MeetsPronunciationGate, EmbeddedTable consistency scenario                  |
+| WordSense-Lib-Analysis      | ClassifyAsync_ReportsMarginsAndRunnerUp, ClassifyAsync_LowMargin_Abstains           |
 | WordSense-Lib-Accuracy      | Holdout_MeetsAccuracyGate, EveryCorpusTargetResolvesToItsLemma                      |
 | WordSense-Lib-Abstain       | ClassifyAsync_LowMargin_Abstains (classifier verification)                          |
 | WordSense-Lib-Embedded      | EmbeddedTable_MatchesPinnedModel                                                    |

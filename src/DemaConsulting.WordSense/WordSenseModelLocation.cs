@@ -13,7 +13,7 @@ public sealed record WordSenseModelLocation(string Directory, string ModelPath, 
     /// </summary>
     /// <remarks>
     ///     Every file is checked against its pinned SHA-256, so a stale, truncated or tampered file is
-    ///     rejected instead of silently producing wrong word senses.
+    ///     rejected instead of silently producing wrong answers.
     /// </remarks>
     /// <param name="directory">
     ///     The directory that holds <c>model_int8.onnx</c> and <c>vocab.txt</c> directly; its own name does not matter.

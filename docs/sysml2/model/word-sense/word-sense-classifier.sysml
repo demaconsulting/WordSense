@@ -1,8 +1,8 @@
 package WordSense {
     part def WordSenseClassifier {
-        doc /* Combines tokenizer, encoder and table to classify word senses in text. */
+        doc /* Combines tokenizer, encoder and table to classify the part of speech and pronunciation of words in text. */
 
-        comment sourceRef /* Source: src/DemaConsulting.WordSense/WordSenseClassifier.cs (also declares IWordSenseClassifier, WordSenseDetail and WordSenseToken), src/DemaConsulting.WordSense/WordSenseClassifierOptions.cs, src/DemaConsulting.WordSense/FeatureExtractor.cs, src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs */
+        comment sourceRef /* Source: src/DemaConsulting.WordSense/WordSenseClassifier.cs (also declares IWordSenseClassifier and WordSenseToken), src/DemaConsulting.WordSense/WordSenseClassifierOptions.cs, src/DemaConsulting.WordSense/FeatureExtractor.cs, src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Tests/WordSenseClassifierTests.cs */
         comment designRef /* Design: docs/design/word-sense/word-sense-classifier.md */
         comment verificationRef /* Verification: docs/verification/word-sense/word-sense-classifier.md */

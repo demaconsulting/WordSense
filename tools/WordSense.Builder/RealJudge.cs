@@ -44,7 +44,7 @@ internal sealed record SenseJudgement(string Id, string Lemma, string A, string 
 ///     The blind sense judging of candidate sentences: chunk export, strict answer parsing, adjudication and merge.
 /// </summary>
 /// <remarks>
-///     The judges see only the id, the lemma, the braced sentence and the lemma's sense menu (labels, tags, short
+///     The judges see only the id, the lemma, the braced sentence and the lemma's sense menu (labels, parts of speech, short
 ///     definition and up to three example sentences). They never see the source, the split or the intended sense.
 /// </remarks>
 internal static class RealJudge

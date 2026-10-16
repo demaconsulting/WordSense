@@ -3,13 +3,16 @@ using System.Text;
 namespace DemaConsulting.WordSense.Tests;
 
 /// <summary>
-///     The code of the README usage samples, compiled and run by <see cref="ReadmeSampleTests"/>.
+///     The code of the README usage sample, compiled and run by <see cref="ReadmeSampleTests"/>.
 /// </summary>
 /// <remarks>
-///     The text between the <c>&lt;sample:name&gt;</c> and <c>&lt;/sample:name&gt;</c> markers must equal the
-///     matching code block of <c>README.md</c> (marked <c>&lt;!-- sample:name --&gt;</c>), and the lines the
-///     sample writes must equal the output block marked <c>&lt;!-- output:name --&gt;</c>. The member named
-///     <c>Console</c> only captures the lines, so the sample reads like ordinary console code.
+///     The README code block (marked <c>&lt;!-- sample:readme --&gt;</c>) must equal
+///     <c>using DemaConsulting.WordSense;</c>, a blank line and the text between the
+///     <c>&lt;sample:readme&gt;</c> and <c>&lt;/sample:readme&gt;</c> markers, and the lines the sample writes must
+///     equal the text block marked <c>&lt;!-- output:readme --&gt;</c>. The member named <c>Console</c> only
+///     captures the lines, so the sample reads like ordinary console code. The nested
+///     <c>WordSenseModelDownloader</c> stands in for the real downloader so that the test needs no download: it
+///     returns the committed model directory.
 /// </remarks>
 internal sealed class ReadmeSample
 {
@@ -23,61 +26,50 @@ internal sealed class ReadmeSample
     public string Output => _output.ToString();
 
     /// <summary>
-    ///     The "download" sample. It downloads the model when it is missing, so it is compiled but not run.
+    ///     The README sample. It runs against the committed model through the stand-in downloader.
     /// </summary>
     /// <returns>A task that completes when the sample has run.</returns>
-    public async Task DownloadAsync()
+    public async Task RunAsync()
     {
-        // <sample:download>
-        // Downloads missing files (mirror, Hugging Face, GitHub LFS) and verifies each against its pinned SHA-256
+        // <sample:readme>
+        // Ensure the model is present, downloading and verifying it on first use
         WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync();
-        Console.WriteLine(location.Directory); // holds model_int8.onnx and vocab.txt
-        // </sample:download>
-    }
 
-    /// <summary>
-    ///     The "classify" sample.
-    /// </summary>
-    /// <param name="location">The verified model location (from the download step of the README).</param>
-    /// <returns>A task that completes when the sample has run.</returns>
-    public async Task ClassifyAsync(WordSenseModelLocation location)
-    {
-        // <sample:classify>
+        // Create a classifier that runs the model from that location
         using var classifier = await WordSenseClassifier.CreateAsync(
             new WordSenseClassifierOptions { ModelDirectory = location.Directory });
 
-        string[] words = ["I", "read", "that", "the", "lead", "singer", "will", "bow", "and", "a", "tear", "will",
-            "fall", "when", "she", "presents", "the", "present"];
-        WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // parallel to words; Details is null = unknown or unsure
+        // Classify the words of a sentence whose "record", "read" and "bow" are heteronyms
+        var words = "The hunter fired an arrow from his bow so I will record a record and read the book yesterday".Split(' ');
+        var results = await classifier.ClassifyAsync(words);
 
-        for (var i = 0; i < words.Length; i++)
+        // Print each word's part of speech, pronunciation (heteronyms only) and confidence (margin)
+        foreach (var a in results)
         {
-            Console.WriteLine(analyses[i].Details is { } d
-                ? $"{words[i],-8} lemma={d.Lemma} pos={d.PartOfSpeech} pronunciation={d.Pronunciation?.Meaning ?? "-"}"
-                : $"{words[i],-8} -");
+            if (a.Details is not { } d)
+            {
+                Console.WriteLine($"{a.Word,-9} {(a.Abstained ? "abstained" : "unknown")}");
+                continue;
+            }
+
+            var p = d.Pronunciation;
+            Console.WriteLine($"{a.Word,-9} {d.PartOfSpeech,-9} {p?.Meaning,-8} {p?.Respelling,-9} margin={a.Margin:F1}");
         }
 
-        // </sample:classify>
+        // </sample:readme>
     }
 
     /// <summary>
-    ///     The "tags" sample.
+    ///     Stands in for the real downloader, so that the sample runs without a download.
     /// </summary>
-    /// <param name="classifier">The classifier created by the classify sample.</param>
-    /// <returns>A task that completes when the sample has run.</returns>
-    public async Task TagsAsync(WordSenseClassifier classifier)
+    private static class WordSenseModelDownloader
     {
-        // <sample:tags>
-        string[] words = ["They", "will", "record", "the", "record"];
-        WordAnalysis[] analyses = await classifier.ClassifyAsync(words); // the full result for every word
-
-        for (var i = 0; i < words.Length; i++)
-        {
-            var a = analyses[i];
-            Console.WriteLine($"{words[i],-8} best={a.Details?.PartOfSpeech.ToString() ?? "-"} margin={a.Margin:F2} abstained={a.Abstained} runner-up={a.RunnerUp?.PartOfSpeech.ToString() ?? "-"}");
-        }
-
-        // </sample:tags>
+        /// <summary>
+        ///     Returns the committed model directory.
+        /// </summary>
+        /// <returns>The model location.</returns>
+        public static Task<WordSenseModelLocation> EnsureModelAsync() =>
+            Task.FromResult(WordSenseModelLocation.FromDirectory(ModelAssets.RequireModelDirectory()));
     }
 
     /// <summary>

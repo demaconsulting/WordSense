@@ -8,49 +8,85 @@ sections:
   - title: Library API
     requirements:
       - id: WordSense-Lib-Classify
-        title: The library shall classify the sense of known ambiguous words in free text and tile the whole input.
+        title: >-
+          The library shall classify known ambiguous words in free text, answering each word's lemma, part of speech
+          and (for a heteronym) pronunciation, and tile the whole input.
         tags: [system]
         justification: |
-          This is the purpose of the library: given a text, callers learn which sense each
-          homograph (for example "record" as noun or verb) carries, while the returned tokens
-          still reproduce the input exactly so callers can map results back to the text.
+          This is the purpose of the library: given a text, callers learn which part of speech and, where the
+          pronunciation depends on the meaning, which pronunciation each ambiguous word (for example "record" as
+          noun or verb) carries, while the returned tokens still reproduce the input exactly so callers can map
+          results back to the text.
         children:
           - WordSense-Classifier-Tiles
-          - WordSense-Classifier-Senses
+          - WordSense-Classifier-Answers
+          - WordSense-Classifier-Candidates
           - WordSense-Classifier-LongText
           - WordSense-Classifier-Lifetime
-          - WordSense-Classifier-Detail
           - WordSense-Sense-Words
         tests:
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
           - WordSense_Classifier_EndToEnd_WordListApi
 
-      - id: WordSense-Lib-Tags
-        title: The library shall describe every sense with tags and answer tag-level queries such as noun versus verb.
+      - id: WordSense-Lib-PartOfSpeech
+        title: >-
+          The library shall answer the part of speech (noun, verb, adjective or adverb) of every known ambiguous
+          word, with the lemma of the word.
         tags: [system]
         justification: |
-          Callers that need only a coarse property (for example noun versus verb) should not depend on
-          the fine sense labels of each lemma, and the coarse answer must be at least as reliable.
+          The part of speech is the first fact that callers (for example a text-to-speech front end) need to
+          resolve a word, so it is stored with every possible answer and its accuracy is measured on its own.
         children:
           - WordSense-Sense-Record
-          - WordSense-Sense-Tags
-          - WordSense-Sense-TagScoring
-          - WordSense-Classifier-Tags
+          - WordSense-Sense-Validation
           - WordSense-Table-Senses
           - WordSense-Builder-Inventory
+          - WordSense-Builder-InventoryRules
           - WordSense-Builder-Provenance
           - WordSense-Builder-AuthoredImport
           - WordSense-Builder-NounVerbImport
           - WordSense-Builder-NounVerbGate
         tests:
-          - WordSense_Classifier_Holdout_MeetsNounVerbTagGate
-          - WordSense_Classifier_Holdout_MeetsGroupGate
-          - WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech
+          - WordSense_Classifier_Holdout_MeetsPartOfSpeechGate
+          - WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
+
+      - id: WordSense-Lib-Pronunciation
+        title: >-
+          The library shall answer, for a known heteronym only, which pronunciation the word has in its sentence
+          (a meaning and, when authored, a plain respelling), and no pronunciation for any other word.
+        tags: [system]
+        justification: |
+          Words such as "bow" or "record" are pronounced according to their meaning; callers need to know which
+          pronunciation applies. The library holds no audio or phonemes, so the answer is a meaning plus an
+          optional plain-letter respelling, and a word whose pronunciation does not depend on its meaning must
+          not be given one.
+        children:
+          - WordSense-Sense-Pronunciation
+        tests:
+          - WordSense_Classifier_Holdout_MeetsPronunciationGate
+          - WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
+
+      - id: WordSense-Lib-Analysis
+        title: >-
+          The library shall return the full analysis of every word on every call (answer, margin, runner-up,
+          runner-up margin and whether it abstained) and let a caller tell an unknown word from an abstention.
+        tags: [system]
+        justification: |
+          Callers that apply their own confidence policy need the evidence behind a decision, also when the
+          library declined to answer; an unknown word (no answer, nothing to report) and an uncertain word (no
+          answer, evidence reported) call for different handling.
+        children:
+          - WordSense-Classifier-Analysis
+          - WordSense-Classifier-Unknown
+        tests:
+          - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
+          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
       - id: WordSense-Lib-Accuracy
         title: >-
-          The library shall be at least 96% accurate on the sentences it answers, while answering at least
-          85% of the held-out sentences of the labeled corpus, with the pinned model.
+          The library shall give the correct part of speech and pronunciation meaning for at least 96% of the
+          sentences it answers, while answering at least 85% of the held-out sentences of the labeled corpus, with
+          the pinned model.
         tags: [system]
         justification: |
           Classification quality is the measurable promise of the library. The gate evaluates
@@ -63,6 +99,7 @@ sections:
           - WordSense-Builder-LearningCurve
           - WordSense-Builder-ErrorDiagnosis
           - WordSense-Builder-WeakLemmas
+          - WordSense-Builder-Accuracy
           - WordSense-Tokenizer-Parity
         tests:
           - WordSense_Classifier_Holdout_MeetsAccuracyGate
@@ -78,6 +115,7 @@ sections:
           threshold lets the library trade coverage for precision.
         children:
           - WordSense-Classifier-Abstain
+          - WordSense-Sense-Abstain
           - WordSense-Table-Score
         tests:
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
@@ -187,8 +225,8 @@ sections:
       - id: WordSense-Lib-Documentation
         title: >-
           The documentation shall show a README usage sample and user guide code samples whose code and output are
-          verified against the library, and an appendix that lists every supported lemma with its senses, tags,
-          groups and forms and is never stale.
+          verified against the library, and an appendix that lists every supported lemma with its parts of speech,
+          meanings, respellings and forms and is never stale.
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written

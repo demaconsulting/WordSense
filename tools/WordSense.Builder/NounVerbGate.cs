@@ -20,7 +20,7 @@ internal sealed record GatePolicy(double MinBestSense = 0.90, double MinSenseAns
 /// <param name="BestSense">The best-sense accuracy over the holdout rows.</param>
 /// <param name="Coverage">The share of holdout rows answered.</param>
 /// <param name="AnsweredAccuracy">The accuracy of the answered rows.</param>
-/// <param name="TagAccuracy">The best-tag accuracy of the noun-versus-verb question.</param>
+/// <param name="TagAccuracy">The best-answer part-of-speech accuracy of the noun-versus-verb question.</param>
 /// <param name="Senses">The counts per gold sense.</param>
 /// <param name="Failure">Why the lemma failed the gate, or an empty text when it passed.</param>
 internal sealed record GateResult(

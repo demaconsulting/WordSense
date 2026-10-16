@@ -19,15 +19,17 @@ sections:
           - WordSenseTable_WriteAndTryGetLemma_EdgeCases
 
       - id: WordSense-Table-Senses
-        title: The table shall store a tagged definition per sense and expose one shared immutable record per sense.
+        title: >-
+          The table shall store a part of speech, an optional meaning and an optional respelling per sense in format
+          version 4, expose one shared immutable answer per sense, and reject any other format version.
         tags: [unit]
         justification: |
-          Tags describe what a sense is; storing them with the senses keeps one source of truth and lets
-          callers compare senses by reference.
+          The part of speech and pronunciation describe what a sense is; storing them with the senses keeps one
+          source of truth and lets callers compare answers by reference, while an older table without them must
+          not be mistaken for a current one.
         tests:
-          - WordSenseTable_Read_SensesWithSameTag_ShareTagInstance
           - WordSenseTable_Read_OldVersion_Throws
-          - WordSenseTable_RoundTrip_PreservesGroups
+          - WordSenseTable_RoundTrip_PreservesPronunciations
           - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
           - WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw
           - WordSenseTable_LemmaModel_UndefinedKind_Throws
@@ -36,7 +38,7 @@ sections:
         title: The table reader shall reject truncated, corrupted or foreign data.
         tags: [unit]
         justification: |
-          A damaged table would produce wrong senses silently; a trailing SHA-256 digest and
+          A damaged table would produce wrong answers silently; a trailing SHA-256 digest and
           structural checks detect any change.
         tests:
           - WordSenseTable_Read_TruncatedAtEveryLength_Throws
@@ -46,14 +48,12 @@ sections:
           - WordSenseTable_Read_ResignedBadMagic_Throws
           - WordSenseTable_Read_ResignedTrailingData_Throws
           - WordSenseTable_Read_ResignedDimensionAboveCap_Throws
-          - WordSenseTable_Read_ResignedTagCountAboveCap_Throws
           - WordSenseTable_Read_ResignedUnknownModelKind_Throws
-          - WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws
           - WordSenseTable_Read_ResignedLemmaCountAboveCap_Throws
           - WordSenseTable_Read_ResignedFormCountAboveCap_Throws
           - WordSenseTable_Read_ResignedSenseCountOutOfRange_Throws
-          - WordSenseTable_Read_ResignedSenseTagCountOutOfRange_Throws
-          - WordSenseTable_Read_ResignedInvalidGroup_Throws
+          - WordSenseTable_Read_ResignedUndefinedPos_Throws
+          - WordSenseTable_Read_ResignedInvalidMeaning_Throws
           - WordSenseTable_Read_ResignedBadFormEntry_Throws
           - WordSenseTable_Constructor_NullArguments_Throw
           - WordSenseTable_Constructor_InvalidValues_Throw
@@ -75,8 +75,8 @@ sections:
 
       - id: WordSense-Table-Embedded
         title: >-
-          The assembly shall contain an embedded table that loads, covers at least 344 lemmas with
-          tagged senses, and maps every word form to a lemma that has a model.
+          The assembly shall contain an embedded table that loads, covers at least 344 lemmas with a part of speech
+          (and, for heteronyms, a pronunciation) per sense, and maps every word form to a lemma that has a model.
         tags: [unit]
         justification: |
           The library must work out of the box without an external table file.

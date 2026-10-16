@@ -10,11 +10,11 @@ and a dictionary from lower-case word form to lemma. It is stored as an embedded
 ## Data Model
 
 Binary layout, little-endian: magic `WSNS`, u16 format version, a reserved u16 flags field (written as
-zero and ignored when read), model id, model SHA-256, u32 dimension, f32 mean vector, tag dictionary
-(u16 count, ordinal-sorted tag strings), u32 lemma count, and per lemma: name, u16 sense count, the
-senses (label, u8 tag count, ascending u16 tag indexes, group string), then the u8 model kind, weights,
-biases and the f32 abstention margin. After the lemmas come the u32 form count, the forms (string and
-u32 lemma index), and a trailing SHA-256 digest of all preceding bytes. Strings are a u16 byte length
+zero and ignored when read), model id, model SHA-256, u32 dimension, f32 mean vector, u32 lemma count,
+and per lemma: name, u16 sense count, the senses (u8 part of speech, meaning string, respelling string;
+an empty string means "none"), then the u8 model kind, weights, biases and the f32 abstention margin. After the
+lemmas come the u32 form count, the forms (string and u32 lemma index), and a trailing SHA-256 digest of all
+preceding bytes. Strings are a u16 byte length
 followed by UTF-8.
 
 `LemmaModel` kinds: binary (one weight row, two senses, margin `2|s|`) and one-versus-rest (one row
@@ -22,10 +22,11 @@ per sense, margin between the best and the second-best score). `LemmaModel.Score
 fills one score per sense (`{-a, +a}` for a binary model with activation `a`); `Score(feature)` returns
 the best sense and the margin.
 
-Format version 3 adds a per-sense group string (empty = the sense label) after the tag indexes; version 1
-and 2 tables are rejected. Each sense becomes one shared `WordSense` record when its `LemmaModel` is
-constructed (so for a read table during `Read`, and for a built table in the builder), and
-the records of equal tags share the table's tag strings.
+Format version 4 stores a part of speech, a meaning and a respelling per sense instead of the earlier
+labels, tags and groups; any other version is rejected. A sense label is a build-time join key and is not
+stored. Each lemma model keeps its `SenseDefinition` list and builds one shared `WordDetails` per sense
+(the `Candidates` list) when it is constructed, so a lemma's answers are shared instances. A lemma is a
+heteronym when its senses carry meanings; only then does a candidate have a `Pronunciation`.
 
 ## Public Interface
 
@@ -33,7 +34,8 @@ the records of equal tags share the table's tag strings.
   `Dimension`), `Lemmas` (ordinal order) and `Forms` (form to lemma). Callers must treat these collections and the
   arrays of a `LemmaModel` as read-only; the constructors copy the arrays and the lemma list they are given but not
   the forms map.
-- `LemmaModel` properties: `Lemma`, `Senses` (one shared `WordSense` per sense, in weight-row order), `Kind`
+- `LemmaModel` properties: `Lemma`, `Senses` (the `SenseDefinition` of each sense, in weight-row order),
+  `Candidates` (one shared `WordDetails` per sense, same order), `IsHeteronym`, `Kind`
   (`LemmaModelKind.Binary` or `OneVersusRest`; any other value is rejected with `ArgumentOutOfRangeException`),
   `Weights`, `Bias`, `AbstainMargin` and `Dimension`.
 - `WordSenseTableFormatException` is the only exception `Read` and `LoadEmbedded` report for bad content.
@@ -64,26 +66,28 @@ the same result as the plain scalar sum up to floating-point rounding. A binary 
   characters, a mean that is not finite or does not match the dimension, lemma models that are
   duplicated, unordered or of another dimension, forms that name a lemma without a model, fewer than two
   senses (exactly two for binary), weight or bias shapes that do not match, non-finite values,
-  duplicate sense labels, and invalid sense definitions. A `LemmaModel` also rejects a model kind that is not
+  and an invalid sense set (an undefined part of speech, a malformed meaning or respelling, meanings given
+  to only some senses, a heteronym with fewer than two distinct meanings, a repeated part of speech and
+  meaning, inconsistent respellings of one meaning, or distinct meanings that share a respelling). A
+  `LemmaModel` also rejects a model kind that is not
   defined (`ArgumentOutOfRangeException`), and a null element of the sense list or of the lemma list raises
   `ArgumentNullException`.
 - `Write` throws `InvalidOperationException` when a string exceeds 65,535 UTF-8 bytes, and `Write` and `ToArray`
-  throw `OverflowException` when a count does not fit its field (for example more than 65,535 distinct tags or
-  senses in one lemma).
+  throw `OverflowException` when a count does not fit its field (for example more than 65,535 senses in
+  one lemma).
 - `Read` verifies the trailing digest before trusting any length field, caps every count (dimension
-  4096, lemmas 100,000, forms 2,000,000, senses per lemma 2 to 64, distinct tags 256, tags per sense 1 to 16),
-  and checks the
-  structure: tags valid, sorted and unique, sense tag indexes in range and ascending, every dictionary
-  tag used, known model kinds, a sense group that is empty or a valid group string, valid form-to-lemma indexes
-  (in range and without a duplicated form), and no trailing data.
-  A sense with zero or more than 16 tags and a sense whose group string is invalid are reported as
-  `WordSenseTableFormatException`, like every other structural failure.
-  Constructor validation failures raised while reading are reported as `WordSenseTableFormatException`.
+  4096, lemmas 100,000, forms 2,000,000, senses per lemma 2 to 64), and checks the structure: a defined
+  part of speech and a valid meaning and respelling for every sense, known model kinds, valid
+  form-to-lemma indexes (in range and without a duplicated form), and no trailing data. A sense with an
+  undefined part of speech or an invalid meaning is reported as `WordSenseTableFormatException`, like every
+  other structural failure. Constructor validation failures raised while reading (including an invalid
+  sense set) are reported as `WordSenseTableFormatException`.
 - The read caps are enforced only by `Read`: the constructors and `Write` do not apply them, so a table
   built in memory can exceed a cap and be written, but `Read` will then reject it.
 
 ## Interactions
 
 Read by `WordSenseClassifier`; written by `WordSenseBuilder`. `VectorMath.Dot` is the only numeric helper the
-scoring uses. `LemmaModel` also depends on the SenseRecord unit: it creates one `WordSense` per
-`SenseDefinition`, and `Read` uses `SenseDefinition.IsValidTag` to validate tags and groups.
+scoring uses. `LemmaModel` also depends on the SenseRecord unit: it validates the sense set and creates one
+`WordDetails` per `SenseDefinition`, and `Read` uses `SenseDefinition.IsValidMeaning` and `IsValidRespelling`
+to validate the strings it reads.

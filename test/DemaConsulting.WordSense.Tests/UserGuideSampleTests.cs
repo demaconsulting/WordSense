@@ -11,7 +11,7 @@ namespace DemaConsulting.WordSense.Tests;
 public class UserGuideSampleTests
 {
     private static readonly string[] SampleNames =
-        ["quick-start", "text", "detail", "tags", "senses", "tuning", "download", "mirror", "errors"];
+        ["quick-start", "text", "confidence", "pronunciation", "candidates", "tuning", "download", "mirror", "errors"];
 
     /// <summary>
     ///     The user guide code blocks equal the compiled sample code.
@@ -21,9 +21,9 @@ public class UserGuideSampleTests
     [Theory]
     [InlineData("quick-start")]
     [InlineData("text")]
-    [InlineData("detail")]
-    [InlineData("tags")]
-    [InlineData("senses")]
+    [InlineData("confidence")]
+    [InlineData("pronunciation")]
+    [InlineData("candidates")]
     [InlineData("tuning")]
     [InlineData("download")]
     [InlineData("mirror")]
@@ -70,9 +70,9 @@ public class UserGuideSampleTests
             TestContext.Current.CancellationToken);
 
         await UserGuideSamples.TextAsync(classifier);
-        await UserGuideSamples.DetailAsync(classifier);
-        await UserGuideSamples.TagsAsync(classifier);
-        UserGuideSamples.Senses(classifier);
+        await UserGuideSamples.ConfidenceAsync(classifier);
+        await UserGuideSamples.PronunciationAsync(classifier);
+        UserGuideSamples.Candidates(classifier);
         Assert.NotNull(UserGuideSamples.Mirror().Downloader?.Mirror);
     }
 }

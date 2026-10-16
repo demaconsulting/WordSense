@@ -55,13 +55,13 @@ internal static class UserGuideSamples
     }
 
     /// <summary>
-    ///     The "detail" sample.
+    ///     The "confidence" sample.
     /// </summary>
     /// <param name="classifier">The classifier.</param>
     /// <returns>A task that completes when the sample has run.</returns>
-    public static async Task DetailAsync(WordSenseClassifier classifier)
+    public static async Task ConfidenceAsync(WordSenseClassifier classifier)
     {
-        // <sample:detail>
+        // <sample:confidence>
         string[] words = ["They", "will", "record", "the", "record"];
         WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
@@ -71,35 +71,39 @@ internal static class UserGuideSamples
                 $"{analysis.Word} margin={analysis.Margin:F2} runner-up={analysis.RunnerUp} abstained={analysis.Abstained}");
         }
 
-        // </sample:detail>
+        // </sample:confidence>
     }
 
     /// <summary>
-    ///     The "tags" sample.
+    ///     The "pronunciation" sample.
     /// </summary>
     /// <param name="classifier">The classifier.</param>
     /// <returns>A task that completes when the sample has run.</returns>
-    public static async Task TagsAsync(WordSenseClassifier classifier)
+    public static async Task PronunciationAsync(WordSenseClassifier classifier)
     {
-        // <sample:tags>
+        // <sample:pronunciation>
         string[] words = ["They", "will", "record", "the", "record"];
         WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
-        for (var i = 0; i < words.Length; i++)
+        foreach (var analysis in analyses)
         {
-            Console.WriteLine($"{words[i]}: pos={analyses[i].Details?.PartOfSpeech.ToString() ?? "-"}");
+            if (analysis.Details is { Pronunciation: { } pronunciation } details)
+            {
+                Console.WriteLine(
+                    $"{analysis.Word}: {details.Lemma}/{pronunciation.Meaning}, say \"{pronunciation.Respelling}\"");
+            }
         }
 
-        // </sample:tags>
+        // </sample:pronunciation>
     }
 
     /// <summary>
-    ///     The "senses" sample.
+    ///     The "candidates" sample.
     /// </summary>
     /// <param name="classifier">The classifier.</param>
-    public static void Senses(WordSenseClassifier classifier)
+    public static void Candidates(WordSenseClassifier classifier)
     {
-        // <sample:senses>
+        // <sample:candidates>
         Console.WriteLine($"{classifier.KnownLemmas.Count} lemmas");
 
         foreach (var candidate in classifier.GetCandidates("record"))
@@ -107,7 +111,7 @@ internal static class UserGuideSamples
             Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech} pronunciation={candidate.Pronunciation?.Meaning}");
         }
 
-        // </sample:senses>
+        // </sample:candidates>
     }
 
     /// <summary>

@@ -2,31 +2,46 @@
 
 ## Purpose
 
-This document is the user guide for WordSense, a .NET library that classifies the sense of ambiguous
-English words in context, offline. It tells, for example, whether "record" is a noun or a verb, or whether
-"bow" is a bend or a weapon.
+This document is the user guide for WordSense, a .NET library that tells, for English words in context and offline,
+the part of speech and the pronunciation. It tells, for example, whether "record" is a noun or a verb, and
+whether "bow" is said like "bough" (a bend) or like "beau" (a weapon).
 
 ## Scope
 
 This user guide covers:
 
 - Installation, requirements and a quick start
-- The classification API: words, text, confidence details, tag queries
+- The classification API: words, text, confidence, pronunciation and listing the supported words
 - Model download, mirrors and offline use
 - Accuracy, limitations and abstention
 - Licensing and provenance of the data
 - Extending the training corpus
 - Troubleshooting
+- A glossary of the terms used
 <!-- markdownlint-disable MD051 -->
 <!-- The appendix is a separate file that pandoc concatenates, so its heading anchor only exists in the PDF. -->
-- [Appendix: Supported Senses and Tags](#appendix-supported-senses-and-tags): how tags and groups work and the
-  full list of supported lemmas (generated from the corpus)
+- [Appendix: Supported Senses](#appendix-supported-senses): the catalog of all supported lemmas with their parts of
+  speech, pronunciation meanings and forms (generated from the corpus)
 <!-- markdownlint-enable MD051 -->
 
 The code samples in this guide are compiled by the test suite (`UserGuideSampleTests`): each C# block is preceded by
 a `sample` marker comment in the source of this guide and must equal the code in
 `test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`. The samples assume `ImplicitUsings` and
 `using DemaConsulting.WordSense;`.
+
+# Glossary
+
+- **Lemma**: the dictionary base form of a word, for example "record" for "records".
+- **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
+  "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
+- **Part of speech**: the grammatical role of a word in its sentence, such as noun, verb, adjective or adverb.
+- **Meaning**: a short id, for example `bend` or `weapon` for "bow", that names which of the pronunciations of a
+  heteronym is meant; it is only given for heteronyms.
+- **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
+  speech engine and not a phonetic transcription.
+- **Abstain**: to give no answer for a word the library knows but is not sure about in its context.
+- **Margin**: the confidence of an answer, the score of the best candidate minus the score of the runner-up; the
+  higher it is, the surer the library is (it is a score difference, not a probability).
 
 # Installation
 
@@ -65,23 +80,26 @@ for (var i = 0; i < words.Length; i++)
 ```
 
 The input is a list of words that you have tokenized yourself, in order and including punctuation tokens; they are
-read as one running text. The result is parallel to the input: element `i` is the `WordSense` of `words[i]`, or
-`null`. `null` means the word is not one of the supported ambiguous words (see the appendix), or that the classifier
-abstained because the evidence was weak. Inflected forms are recognized (`presents` is a form of `present`).
+read as one running text. `ClassifyAsync` returns a non-null array that is parallel to the input: element `i` is the
+`WordAnalysis` of `words[i]`, whatever the word is. Inflected forms are recognized (`presents` is a form of
+`present`).
 
-A `WordSense` is an immutable record with `Lemma`, `Sense`, `Group`, `Tags` and `HasTag(tag)`. `Tags` is a frozen
-set of true parts of speech (`noun`, `verb`, `adj`, `adv`) and qualifiers (`past`, `present`, `comparative`;
-`participle` and `superlative` are also valid qualifiers but no sense uses them yet); every sense has exactly one part of
-speech. `Group` is the equivalence class of the sense: senses of
-one lemma that share a group share a pronunciation, so a consumer that only needs the pronunciation need not tell
-them apart (the senses
-`bend-noun` and `bend-verb` of `bow` share the group `bend`). It equals the sense label when the sense is not
-grouped. The library has no pronunciation data; a consumer such as a speech synthesizer keys its own pronunciations
-by (`Lemma`, `Group`). The same instance is returned for the same lemma and
-sense. The
+A caller gets two facts per word:
+
+- The **part of speech** of the word in its sentence (`WordDetails.PartOfSpeech`), together with the `Lemma`.
+- For a **heteronym**, the **pronunciation** (`WordDetails.Pronunciation`): a `Meaning` id and an optional
+  `Respelling`. A word that is not a heteronym has a `null` `Pronunciation`; most noun/verb lemmas are not
+  heteronyms.
+
+`WordAnalysis.Details` is `null` when the word is **unknown** (it is not in the table, see the appendix) or when the
+classifier **abstained**. `WordAnalysis.Abstained` tells the two cases apart: it is `true` only for a word the library
+knows but is not sure about. The `PartOfSpeech` enumeration defines all eight traditional parts of speech, but the
+table only produces `Noun`, `Verb`, `Adjective` and `Adverb`.
+
+The
 <!-- markdownlint-disable-next-line MD051 -->
-[appendix](#appendix-supported-senses-and-tags) explains tags and groups and lists every supported lemma with its
-senses.
+[appendix](#appendix-supported-senses) is the catalog of the supported lemmas, their parts of speech and their
+pronunciation meanings.
 
 # Usage
 
@@ -101,11 +119,13 @@ foreach (var token in tokens)
 
 The tokens tile the input: concatenating `Text` reproduces the string exactly, so results map back onto it (`Start`
 and `Length` are UTF-16 offsets). Words, runs of whitespace and single punctuation characters are separate tokens;
-`Sense` is set only for answered words.
+each token has a `WordAnalysis`, and `Details` is set only for answered words.
 
-## Confidence Details
+## Confidence and Abstention
 
-<!-- sample:detail -->
+Every call returns the full result, so there is no separate detail mode:
+
+<!-- sample:confidence -->
 ```csharp
 string[] words = ["They", "will", "record", "the", "record"];
 WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
@@ -117,31 +137,40 @@ foreach (var analysis in analyses.Where(a => a.RunnerUp is not null))
 }
 ```
 
-A `WordSenseDetail` holds the best `Sense`, its `Margin` (the score of the best sense minus the runner-up), the
-`RunnerUp` sense, the `RunnerUpMargin` (runner-up minus the third best; 0 for a lemma with two senses) and
-`Abstained`. The detail is also returned for words the classifier abstained from, so callers can apply their own
-policy; it is `null` only for words that have no classifier.
+A `WordAnalysis` holds the `Word` as given, `Details` (the best answer), the `Margin` (the score of the best candidate
+minus the runner-up), the `RunnerUp` candidate, the `RunnerUpMargin` (runner-up minus the third best; 0 for a lemma
+with two candidates) and `Abstained`. The margin and the runner-up are also filled in for a word the classifier
+abstained from, so you can apply your own policy; for an unknown word `Details` and `RunnerUp` are `null` and both
+margins are 0.
 
-## Tag Queries
+## Pronunciation for Speech
 
-<!-- sample:tags -->
+A speech synthesizer or another consumer uses `Pronunciation` to pick how to say a heteronym. The library has no
+phonetic data of its own: `Meaning` is a stable id, so the consumer keeps its own pronunciations keyed by
+(`Lemma`, `Meaning`), and `Respelling` is a ready-made plain hint to use or to display:
+
+<!-- sample:pronunciation -->
 ```csharp
 string[] words = ["They", "will", "record", "the", "record"];
 WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
 
-for (var i = 0; i < words.Length; i++)
+foreach (var analysis in analyses)
 {
-    Console.WriteLine($"{words[i]}: pos={analyses[i].Details?.PartOfSpeech.ToString() ?? "-"}");
+    if (analysis.Details is { Pronunciation: { } pronunciation } details)
+    {
+        Console.WriteLine(
+            $"{analysis.Word}: {details.Lemma}/{pronunciation.Meaning}, say \"{pronunciation.Respelling}\"");
+    }
 }
 ```
 
-A tag is scored by the best sense that carries it, so senses that agree on the tag do not weaken each other. The
-result is `null` when the word is unknown, when none of the tags exists on the lemma (a tag is never guessed), or
-when the margin is below the abstention threshold of the lemma.
+A word that is not a heteronym (or an unknown or abstained word) has no pronunciation; the consumer then falls back to
+its normal pronunciation of the word. The two uses of `record` have the meanings `noun` (REK-urd) and `verb`
+(rih-KORD); `bow` has `bend` (bow, as in "take a bow") and `weapon` (boh).
 
 ## Listing the Supported Words
 
-<!-- sample:senses -->
+<!-- sample:candidates -->
 ```csharp
 Console.WriteLine($"{classifier.KnownLemmas.Count} lemmas");
 
@@ -151,15 +180,14 @@ foreach (var candidate in classifier.GetCandidates("record"))
 }
 ```
 
-`GetSenses` returns an empty list for an unknown lemma. The appendix lists the same data for every lemma.
+`GetCandidates` returns an empty list for an unknown lemma. The appendix lists the same data for every lemma.
 
 ## Abstention
 
-For each lemma the table stores a margin threshold. When the best sense beats the runner-up by less than that
-threshold, the classifier abstains: the word-list API returns `null`, the tag queries return `null`, and
-`ClassifyDetailAsync` still reports the best guess with `Abstained` set to `true`. Abstaining trades coverage for
-precision (about 91 % of the held-out rows are answered, see "Accuracy and Performance"). Scale all thresholds with
-`WordSenseClassifierOptions.AbstainMarginScale`:
+For each lemma the table stores a margin threshold. When the best candidate beats the runner-up by less than that
+threshold, the classifier abstains: `Details` is `null` and `Abstained` is `true`, while `Margin` and `RunnerUp` still
+report the best guess. Abstaining trades coverage for precision (about 91 % of the held-out rows are answered, see
+"Accuracy and Performance"). Scale all thresholds with `WordSenseClassifierOptions.AbstainMarginScale`:
 
 <!-- sample:tuning -->
 ```csharp
@@ -257,10 +285,11 @@ catch (WordSenseModelDownloadException ex)
 
 | Type                                             | Purpose                                                   |
 |--------------------------------------------------|-----------------------------------------------------------|
-| `IWordSenseClassifier`                           | Word and text `ClassifyAsync`, detail and tag queries     |
-| `WordSenseClassifier`                            | Implementation; `CreateAsync`, `KnownLemmas`, `GetSenses` |
+| `IWordSenseClassifier`                           | Word-list and text `ClassifyAsync`                        |
+| `WordSenseClassifier`                            | Implementation; `CreateAsync`, `GetCandidates`            |
 | `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention  |
-| `WordSense`, `WordSenseDetail`, `WordSenseToken` | Immutable sense with tags, detail, text tile              |
+| `WordAnalysis`, `WordDetails`, `WordSenseToken`  | Result of a word, best answer, text tile                  |
+| `PartOfSpeech`, `Pronunciation`                  | Part of speech; pronunciation meaning and respelling      |
 | `WordSenseModelDownloader`                       | `EnsureModelAsync`: verify or download the model files    |
 | `WordSenseModelDownloaderOptions`                | Mirror, base URIs, store root, timeout, progress          |
 | `WordSenseModelLocation`                         | A verified model directory; `FromDirectory`               |
@@ -268,18 +297,23 @@ catch (WordSenseModelDownloadException ex)
 | `IWordSenseEncoder`, `OnnxWordSenseEncoder`      | Encoder abstraction and ONNX Runtime encoder              |
 | `WordSenseTable`                                 | The embedded classifier table (`LoadEmbedded`)            |
 
-The members of `IWordSenseClassifier`, all asynchronous and parallel to their input (`null` = unknown or unsure):
+The members of `IWordSenseClassifier` are asynchronous, and the results are parallel to their input:
 
-| Member                                      | Result                                                          |
-|---------------------------------------------|-----------------------------------------------------------------|
-| `ClassifyAsync(IReadOnlyList<string>)`      | `WordSense?[]`: the sense of each word of a tokenized text      |
-| `ClassifyAsync(string)`                     | `IReadOnlyList<WordSenseToken>`: the raw text split into tiles  |
-| `ClassifyDetailAsync(words)`                | `WordSenseDetail?[]`: best sense, margins, `Abstained`          |
-| `ClassifyTagAsync(words, tags)`             | `string?[]`: the winning tag of the given tags                  |
-| `IsTagAsync(words, tag)`                    | `bool?[]`: whether the word has the tag                         |
-| `KnownLemmas`, `GetSenses(lemma)`           | The supported lemmas and the senses of one lemma                |
+| Member                                 | Result                                                              |
+|----------------------------------------|---------------------------------------------------------------------|
+| `ClassifyAsync(IReadOnlyList<string>)` | `WordAnalysis[]`: the full result of each word of a tokenized text  |
+| `ClassifyAsync(string)`                | `IReadOnlyList<WordSenseToken>`: the raw text split into tiles      |
 
-Every method accepts a `CancellationToken`; the classifier is `IDisposable` (it owns the ONNX session). Exceptions:
+`WordSenseClassifier` also has `KnownLemmas` (the supported lemmas) and `GetCandidates(lemma)` (the possible answers
+of one lemma, empty when it is unknown).
+
+`WordAnalysis` has `Word`, `Details` (`WordDetails?`), `Margin`, `Abstained`, `RunnerUp` and `RunnerUpMargin`.
+`WordDetails` has `Lemma`, `PartOfSpeech` and `Pronunciation` (`Pronunciation?`), and `Pronunciation` has `Meaning` and
+`Respelling` (which may be `null`).
+
+Every method accepts a `CancellationToken`. One classifier may be shared by many threads and tasks, and its methods may
+be called concurrently. It is `IDisposable` (it owns the ONNX session): dispose it once, after all calls have
+finished. Exceptions:
 `WordSenseModelDownloadException` (no source delivered a verified file), `WordSenseModelMismatchException` (table and
 model differ) and `WordSenseTableFormatException` (damaged table); `WordSenseModelLocation.FromDirectory` throws
 `FileNotFoundException` or `InvalidDataException` for a missing or modified model file.
@@ -295,16 +329,16 @@ openly licensed sources (Tatoeba, Project Gutenberg, Universal Dependencies Engl
 that real text could not fill, sentences authored by the project. The 329 common noun/verb lemmas added later are
 based on real text (plus a few project-supplied sentences). Every sentence has a provenance record.
 
-**Held-out accuracy.** On the 12,789 held-out rows (never used for training) the best sense is correct 96.91 % of the
-time (97.08 % at group level), and 98.73 % of the answered rows are correct (90.74 % answered). For noun versus verb
-(11,963 held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.52 % of the time, and
-99.22 % of the answered rows are correct (91.60 % answered). Many of these rows were written by the project, so this
-is the optimistic number.
+**Held-out accuracy.** On the 12,789 held-out rows (never used for training) the best answer is correct 96.91 % of the
+time, and 98.73 % of the answered rows are correct (90.74 % answered). For noun versus verb (11,963 held-out rows whose
+correct answer is exactly one of the two), the part of speech is correct 97.52 % of the time, and 99.22 % of the
+answered rows are correct (91.60 % answered). Many of these rows were written by the project, so this is the
+optimistic number.
 
-**Real text.** On 689 real sentences of 39 lemmas that were judged blind and never used for training, the best sense
-is correct 92.60 % of the time (96.40 % of the answered rows, 84.76 % answered), against 97.71 % on the
-project-written held-out sentences of the same lemmas. Expect real-world accuracy closer to this figure than to the
-held-out figure, and abstention on roughly one word in six.
+**Real text.** On 689 real sentences of 39 lemmas that were judged blind and never used for training, the best answer
+is correct 92.60 % of the time (96.40 % of the answered rows, 84.76 % answered), and the part of speech is correct
+97.22 % of the time, against 97.71 % on the project-written held-out sentences of the same lemmas. Expect real-world
+accuracy closer to this figure than to the held-out figure, and abstention on roughly one word in six.
 
 **Noun/verb lemmas.** The holdout of the 329 noun/verb lemmas is real text taken from whole source groups, so it
 shares no source with the training sentences. A lemma enters the table only when it reaches at least 90 % best-sense
@@ -326,17 +360,19 @@ builder reports and will differ on other hardware; run the `Benchmark` test cate
 
 # Limitations
 
-- **Only trained words are answered.** A word that is not in the table (see the appendix) yields no sense: `null` in
-  the API and `-` in the examples. WordSense is not a general word-sense disambiguator.
-- **One part of speech per sense.** A sense is either a noun, a verb, an adjective or an adverb sense, never a mix.
-  Lemmas are split into several senses when the part of speech differs, and `Group` rejoins senses that
-  share a pronunciation (the library itself has no pronunciation data).
+- **Only trained words are answered.** A word that is not in the table (see the appendix) is unknown: it has no
+  `Details`. WordSense is not a general word-sense disambiguator.
+- **Four parts of speech.** The answer is a noun, a verb, an adjective or an adverb; pronouns, prepositions,
+  conjunctions and interjections are never answered, although `PartOfSpeech` defines them.
+- **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Pronunciation`, and the library has no
+  phonetic data of its own: the `Respelling` is a plain hint, and the consumer maps (`Lemma`, `Meaning`) to its own
+  pronunciation.
 - **Collision forms are excluded.** A form that also belongs to another lemma cannot be attributed safely, so these
   forms (for example `saw`, `left`, `found`, `fell`, `rose`, `felt`, `bit` and `ground`) are not targets of the
   noun/verb lemmas. `lie` is excluded because its past tense `lay` is a lemma of its own, which is classified only as
   noun versus verb. The form maps of the corpus decide what is recognized.
 - **Abstention.** The classifier abstains when the evidence is weak; about one answer in ten is withheld on held-out
-  text and more on real text. Use `ClassifyDetailAsync` when you need the best guess anyway.
+  text and more on real text. `Margin` and `RunnerUp` still give the best guess when you need it anyway.
 - **English only**, and the context is a window of at most `MaxSequenceLength` tokens around the target word.
 - **The model is a separate download** (23 MB, on first use) and ONNX Runtime needs native libraries for the target
   platform.
@@ -362,8 +398,7 @@ format of the files is described in `corpus/README.md`. All commands run from th
 `dotnet run --project tools/WordSense.Builder -c Release -- <command> --name value`:
 
 - `build`: trains every lemma and writes the table (`--corpus`, `--model`, `--output`, `--report`)
-- `validate-provenance` and `validate-pos`: check the provenance rows and the tag rules (one part of speech per
-  sense)
+- `validate-provenance` and `validate-pos`: check the provenance rows and the part-of-speech rules of the inventory
 - `generate-appendix`: regenerates the senses appendix of this guide (`--corpus`, `--output`)
 - `real-eval`: scores the table on the real-text evaluation set
 - `learning-curve`, `error-diagnosis` and `weak-lemmas`: accuracy against the number of anchors, the errors
@@ -378,20 +413,22 @@ documented in the build notes. The `tools/real-text` harvester collects candidat
 ## Corpus Format
 
 - `anchors/*.tsv` (training) and `holdout/*.tsv` (evaluation) have three tab-separated columns and no header:
-  `lemma`, `sense`, `sentence`. The sentence marks the target by one pair of braces:
-  `The {record} for the fastest mile was set in 1999.`
-- `senses/*.tsv` is the sense inventory: `lemma`, `sense`, `tags` (`|`-separated) and an optional `group`.
+  `lemma`, `label`, `sentence`. The label names one candidate of the lemma in `senses/*.tsv`, and the sentence marks
+  the target by one pair of braces: `The {record} for the fastest mile was set in 1999.`
+- `senses/*.tsv` is the inventory of the candidates, with the header `lemma`, `label`, `pos`, `meaning` and
+  `respelling`: the part of speech (`noun`, `verb`, `adj` or `adv`) of the label and, for a heteronym only, its
+  pronunciation `meaning` id and plain `respelling`.
 - `forms/speech.tsv` maps inflected forms to lemmas (`form`, `lemma`, `labels`).
 - `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
-  `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
+  `lemma`, `label`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
 
 ## Adding a Word
 
-1. Write the senses of the lemma into a `senses/*.tsv` file with true part-of-speech tags and a group when you split a
-   sense.
-2. Add at least four anchor sentences for each sense to a new `anchors/my-batch.tsv`, with holdout sentences that are
+1. Write the candidates of the lemma into a `senses/*.tsv` file with their part of speech and, for a heteronym, the
+   pronunciation meaning and respelling of each.
+2. Add at least four anchor sentences for each label to a new `anchors/my-batch.tsv`, with holdout sentences that are
    different (and, ideally, from different sources) in `holdout/my-batch.tsv`. The braced target may be any form.
-3. Add every braced form to `forms/speech.tsv` with its lemma and the senses it can take, unless the form is the lemma.
+3. Add every braced form to `forms/speech.tsv` with its lemma and the labels it can take, unless the form is the lemma.
 4. Add a provenance row for every sentence to `provenance/my-batch.tsv`: source, licence from the list above,
    a URL for web sources and the origin (`real`, `authored` or `user-supplied`).
 5. Run `validate-provenance`, then `build` to write `src/DemaConsulting.WordSense/Resources/wordsense-table.bin`
@@ -403,8 +440,8 @@ documented in the build notes. The `tools/real-text` harvester collects candidat
      --output src/DemaConsulting.WordSense/Resources/wordsense-table.bin --report build-report.md
    ```
 
-6. Check the per-lemma holdout accuracy in the report; a lemma with fewer than two anchor senses or fewer than four
-   anchors for a sense is excluded. Regenerate the appendix with `generate-appendix`, run `pwsh ./build.ps1` and
+6. Check the per-lemma holdout accuracy in the report; a lemma with fewer than two anchor labels or fewer than four
+   anchors for a label is excluded. Regenerate the appendix with `generate-appendix`, run `pwsh ./build.ps1` and
    commit the corpus files, the table and the appendix together.
 
 # Troubleshooting
@@ -444,8 +481,9 @@ with plain http for a host that is not loopback.
 
 ## A Word Returns Nothing
 
-The word is not in the table (check the appendix or `KnownLemmas`), or the classifier abstained. Use
-`ClassifyDetailAsync` to see the margin, and lower `AbstainMarginScale` to answer more often.
+`Details` is `null` for a word that is unknown or abstained. The word is unknown when it is not in the table (check the
+appendix or `KnownLemmas`); `Abstained` is `true` when the classifier was not sure. Look at `Margin` and `RunnerUp`, and
+lower `AbstainMarginScale` to answer more often.
 
 ## Results Differ from the Documentation
 

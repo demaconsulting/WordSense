@@ -4,8 +4,8 @@
 
 `tools/WordSense.Builder` is a non-shipped console tool with these commands:
 `build --model DIR --corpus DIR --output FILE [--report FILE]`,
-`import-batches --source DIR --corpus DIR [--max N]`, the audit commands (`audit-export`, `audit-adjudicate`,
-`audit-merge`, `audit-report`, `validate-pos`), `apply-relabel` and the real-text commands (`real-gap`,
+`import-batches --source DIR --corpus DIR [--max N]`, `validate-pos --corpus DIR` (checks the inventory rules) and the
+real-text commands (`real-gap`,
 `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-gap-import`,
 `real-authored-import`, `nounverb-import`, `nounverb-gate`, `real-eval-import`, `real-eval`,
 `validate-provenance`) and the analysis commands (`learning-curve --corpus DIR --model DIR --out DIR [--subsets N]
@@ -36,25 +36,30 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   are dropped the batch is `Invalid` and nothing is imported. A lemma left with fewer than two senses,
   or fewer than four anchors for a represented sense, or with holdout rows but no anchors, is excluded
   from both sets and listed. Sentences are never created or edited. Importing is idempotent.
-- Sense inventory (`corpus/senses/*.tsv`: `lemma`, `sense`, `tags`, optional `group`) must list exactly the
-  senses that the anchors use:
-  an anchor label that is not in the inventory, or an inventory sense without anchors, is a validation
-  error. `PosRules` fails the build when a sense has no or more than one true part of speech (`noun`, `verb`,
-  `adj`, `adv`; qualifiers `past`, `present`, `comparative`, `superlative`, `participle` allowed). Labels of
+- Sense inventory (`corpus/senses/*.tsv`: `lemma`, `label`, `pos`, `meaning`, `respelling`) must list exactly the
+  senses that the anchors use: an anchor label that is not in the inventory, or an inventory sense without
+  anchors, is a validation error. The label is an internal join key between the anchors, the forms and the
+  inventory; it is not shipped. `pos` is one of the eight `PartOfSpeech` names. `meaning` and `respelling` are
+  optional and follow the `SenseDefinition` syntax. `SenseInventory.ValidateRules` (the `validate-pos` command
+  and the `build` command) fails when a sense has no defined part of speech, when only some senses of a lemma
+  have a meaning (all or none), when a lemma with meanings has fewer than two distinct meanings (a heteronym
+  needs two), when two senses share a part of speech and meaning, when the respellings of one meaning differ,
+  or when distinct meanings share a respelling. Two senses of one part of speech with different meanings are
+  valid. Labels of
   `corpus/forms/*.tsv` must be senses of a trained lemma; a forms label without a sense is
   an error, and forms of untrained lemmas are ignored. Every braced target word of the anchor, holdout and
   real-text files must be listed in the forms file (or be a trained lemma) and map to the lemma of its row, because
   the embedded form map is the only way the classifier finds a lemma; the test
   `WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma` enforces this. The only exception is the plural
   `rows` of the lemma `row`: `rows` is itself a trained lemma, so it cannot also map to `row`.
-- `BatchImporter.DeriveInventory` accepts only part-of-speech labels (`noun`, `verb`, `adj`, `adv`; tags = label);
-  any other label marks the batch `Invalid`. The `derive-senses` command is retired.
-- `audit-export`, `audit-adjudicate`, `audit-merge`, `audit-report` and `validate-pos` run the blind
-  two-judge part-of-speech audit (judge C for disagreements; `PosAudit`, `PosAuditReport`); `apply-relabel`
-  (`Relabeler`) applies it once: undecided and noise rows are dropped, a uniformly wrongly tagged sense is retagged,
-  a mixed sense is split per part of speech when each part has at least 14 anchors and 8 holdout rows (else
-  its rows are dropped and the sense excluded). Decisions and dropped rows are written under `corpus/audit/`.
-- Real-text restoration: senses that `apply-relabel` had excluded for lack of sentences are restored from real
+- `BatchImporter.DeriveInventory` accepts only part-of-speech labels (`noun`, `verb`, `adj`, `adv`; the part of
+  speech is the label); any other label marks the batch `Invalid`. The `derive-senses` command is retired.
+- The blind part-of-speech audit and relabeling that produced the current labels are retired: the commands
+  `audit-export`, `audit-adjudicate`, `audit-merge`, `audit-report` and `apply-relabel` no longer exist. Only the
+  helpers that identify a sentence (`PosAudit.Resolve` and `PosAudit.RowId`) remain, because the real-text
+  importers and the provenance sidecars match rows with them. The decisions and dropped rows of the audit stay
+  under `corpus/audit/` as a record.
+- Real-text restoration: senses that the audit had excluded for lack of sentences were restored from real
   text. `tools/real-text/harvest.py` (Python standard library; raw downloads in the git-ignored
   `tools/real-text/cache/`) extracts candidate sentences of at most 35 words from Tatoeba (CC0 or CC BY 2.0 FR with
   contributor), allow-listed public-domain Project Gutenberg works (header and footer stripped) and open-licensed
@@ -71,7 +76,7 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   that no sentence has more than 35 words or mentions Gutenberg. The checked sentence files are `real-*.tsv` and
   the new-lemma batch files `new-*.tsv` of `anchors` and `holdout`, plus `realtext/*.tsv`. A sense is one part of
   speech; two senses of the same part of speech (for example a noun and an agent noun with different
-  pronunciations) are valid and are told apart by their `group`.
+  pronunciations) are valid and are told apart by their `meaning`.
   `RealImport.Import` reads `relabel-decisions.tsv` before writing any output, so a missing file leaves the corpus
   unchanged, and it marks every `drop` or `exclude` decision of a plan lemma as `restore` (not only the senses that
   actually received sentences); the plan defines the restored lemmas.
@@ -133,10 +138,10 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   and rerun until nothing more fails.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
-- After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level
-  accuracy on the holdout: noun versus verb (best
-  tag, answered accuracy, coverage; rows of lemmas with both tags and per gold tag; mixed and untagged rows
-  are excluded and counted) and has-tag accuracy per tag.
+- After the sense evaluation the report lists, on the holdout, accuracy at the meaning level (a result is right
+  when the meaning of the predicted sense equals the gold meaning; senses without meaning count by their own
+  label), part-of-speech accuracy (best, and answered accuracy with coverage under abstention) and, over the
+  rows of heteronym lemmas, pronunciation-meaning accuracy (best, answered accuracy and coverage).
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a
   lemma that exists in the table; forms of lemmas without a classifier are omitted.
 
@@ -177,8 +182,8 @@ order, forms are listed once per lemma (excluding the lemma itself), the example
 sentence of at least 30 characters (ties ordinal; the longest anchor when none is that long) with its target in bold,
 markdown-significant characters of the sentence are escaped, text is wrapped at 120 characters (the markdown
 line-length limit) without breaking before a word that would read as a list or heading marker, lines end with LF and
-the file ends with one line feed. The explanatory part states the tag set (`PosRules.PartsOfSpeech` and
-`PosRules.Qualifiers`, with the number of senses carrying each tag), groups and the form map. The input is checked:
+the file ends with one line feed. The explanatory part states the parts of speech (with the number of senses of
+each), the meanings and respellings, and the form map. The input is checked:
 a missing `senses`, `forms` or `anchors` directory, an inventory without senses, a sense without an anchor sentence
 and a form label that is not a sense of the lemma are reported together as an `InvalidDataException`. Forms of
 lemmas that have no sense are ignored, as in `build`. The appendix is generated, never edited by hand; a test and
@@ -215,7 +220,7 @@ still applies to it.
 
 ## Key Methods and Callers
 
-`Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `PosAudit`, `Relabeler`, `RealPlan`,
+`Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `SenseInventory`, `RealPlan`,
 `RealJudge`, `RealImport`, `RealGap`, `RealAuthored`, `NounVerbImport`, `NounVerbGate`, `RealEval`, `LearningCurve`,
 `ErrorDiagnosis`, `WeakLemmas` or `AppendixGenerator`. It is
 called by `Main` and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by

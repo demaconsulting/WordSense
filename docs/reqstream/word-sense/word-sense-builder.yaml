@@ -43,31 +43,49 @@ sections:
       - id: WordSense-Builder-Inventory
         title: >-
           The builder shall require every anchor label to be a sense in the sense inventory and every inventory
-          sense to have anchors, accept only part-of-speech labels when deriving tags for imported batches, require
-          every sense to have exactly one true part of speech, and report sense, group and tag-level accuracy.
+          sense to have anchors, read and write the inventory with its part of speech, meaning and respelling
+          columns, and derive the part of speech of each sense of an imported batch from its label.
         tags: [unit]
         justification: |
-          The inventory is the source of the tags shipped in the table; a mismatch with the anchors would
-          ship senses that cannot be predicted or labels without tags, and a tag that stands in for a
-          pronunciation or meaning would make tag-level answers untrue.
+          The inventory is the source of the parts of speech and pronunciations shipped in the table; a mismatch
+          with the anchors would ship senses that cannot be predicted or labels without an answer.
         tests:
-          - WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags
-          - WordSenseBuilder_PosRules_Validate_AllowsTwoSensesOfOnePartOfSpeechInDifferentGroups
-          - WordSenseBuilder_Program_ValidatePos_ReportsViolations
-          - WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional
-          - WordSenseBuilder_SenseInventory_InvalidGroup_IsRejected
-          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged
-          - WordSenseBuilder_PosAudit_Resolve_FollowsTheRules
-          - WordSenseBuilder_PosAudit_RowId_IsStable
-          - WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes
           - WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows
           - WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips
           - WordSenseBuilder_SenseInventory_Validate_ChecksBothDirections
           - WordSenseBuilder_SenseInventory_Validate_ConsistentCorpus_Passes
+          - WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional
+          - WordSenseBuilder_SenseInventory_InvalidColumns_AreRejected
           - WordSenseBuilder_BatchImporter_WritesDerivedInventory
           - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
-          - WordSenseBuilder_TagEvaluator_CountsRowsPerRule
-          - WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections
+          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged
+
+      - id: WordSense-Builder-InventoryRules
+        title: >-
+          The builder shall reject an inventory in which a sense lacks a defined part of speech, a lemma gives
+          meanings to only some of its senses, a heteronym has fewer than two distinct meanings, two senses share a
+          part of speech and meaning, or distinct meanings share a respelling, and shall allow two senses of one
+          part of speech that have different meanings.
+        tags: [unit]
+        justification: |
+          The part of speech and pronunciation shown to callers come from the inventory, so an inventory that
+          cannot describe the senses unambiguously would make the shipped answers untrue.
+        tests:
+          - WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations
+          - WordSenseBuilder_SenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings
+          - WordSenseBuilder_Program_ValidatePos_ReportsViolations
+
+      - id: WordSense-Builder-Accuracy
+        title: >-
+          The builder shall report holdout accuracy at the sense, meaning, part-of-speech and pronunciation levels,
+          with part of speech and pronunciation shown with and without abstention.
+        tags: [unit]
+        justification: |
+          Each fact the library answers needs its own measured accuracy, so that claims in the documentation can
+          be checked against the report.
+        tests:
+          - WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels
+          - WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections
 
       - id: WordSense-Builder-Provenance
         title: >-
@@ -94,6 +112,9 @@ sections:
           - WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall
           - WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows
           - WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory
+          - WordSenseBuilder_PosAudit_Resolve_FollowsTheRules
+          - WordSenseBuilder_PosAudit_RowId_IsStable
+
       - id: WordSense-Builder-AuthoredImport
         title: >-
           The builder shall import independently authored anchor and holdout sentences with a provenance row
@@ -190,7 +211,8 @@ sections:
           generated one.
         tags: [unit]
         justification: |
-          The list of supported lemmas with their senses, tags, groups and forms must always describe the trained
+          The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
+          describe the trained
           corpus; generating it, and failing when the committed file is stale, makes drift impossible.
         tests:
           - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms

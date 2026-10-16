@@ -2,22 +2,23 @@
 
 ## Verification Approach
 
-Tests in `SenseRecordTests.cs` exercise the records, the tag scorer and the text splitter directly with
-hand-built inputs; no model is needed.
+Tests in `SenseRecordTests.cs` exercise the answer values, the sense definition validation, the abstention rule
+and the text splitter directly with hand-built inputs; no model is needed.
 
 ## Test Scenarios
 
-- **WordSense_HasTag_ReportsMembership**, **WordSense_HasTag_NullTag_ThrowsArgumentNullException**,
-  **WordSense_Tags_AreImmutable**, **WordSense_LemmaModel_SharesOneRecordPerSense**: record behavior.
-- **SenseDefinition_IsValidTag_ChecksSyntax**, **SenseDefinition_IsValidTag_LengthLimit**,
-  **SenseDefinition_Validate_InvalidDefinitions_Throw**: tag syntax (including a trailing newline and null) and
-  rejection of an empty name, no tags, more than 16 tags, unsorted, duplicated and invalid tags or groups.
-- **WordSense_Group_DefaultsToSenseAndValidates**: the group defaults to the sense label and is validated.
-- **TagScorer_Classify_BestScoringTagWins**, **..._EqualTagScores_TiesAndIsBelowAnyPositiveThreshold**,
-  **..._SensesOfSameTag_DoNotReduceMargin**, **..._BelowThreshold_Abstains**, **..._OtherWins_ReturnsNull**,
-  **..._OtherAsRunnerUp_LimitsMargin**, **..._AbsentTag_ReturnsNull_SinglePresentTag_Answers**,
-  **TagScorer_IsTag_AnswersBoolOrNull** (which includes the tie rule: the tag wins a tie): the tag rule.
-- **TagScorer_Abstains_NaNMarginOrThreshold_Abstains**: a NaN margin or threshold abstains.
+- **LemmaModel_Candidates_MapSensesToDetails**, **ResultRecords_HaveValueEquality**: one shared `WordDetails` per
+  sense with the lemma, part of speech and pronunciation of its definition, and value equality of the answer and
+  analysis records.
+- **LemmaModel_NonHeteronym_HasNoPronunciation**, **LemmaModel_MissingRespelling_IsNull**,
+  **LemmaModel_SenseSet_Rules**: a lemma without meanings is not a heteronym and its answers have no
+  pronunciation; a meaning without respelling gives a pronunciation with a null respelling; the sense-set rules
+  (all or none, two distinct meanings, unique part of speech and meaning, consistent and distinct respellings)
+  reject invalid sets.
+- **SenseDefinition_Validate_InvalidDefinitions_Throw**, **SenseDefinition_IsValidMeaning_ChecksSyntax**,
+  **SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength**: syntax (including a trailing newline, null and
+  empty) and length limits, an undefined part of speech and a respelling without a meaning.
+- **AbstainRule_Abstains_NaNMarginOrThreshold_Abstains**: a NaN margin or threshold abstains.
 - **TextSplitter_SplitSegments_TileTheText**, **TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets**:
   segmentation. The exact-tiling invariant is verified at the splitter level by
   **TextSplitter_SplitSegments_TileTheText** and at the classifier level by
@@ -30,4 +31,5 @@ hand-built inputs; no model is needed.
 
 ## Requirements Coverage
 
-`WordSense-Sense-Record`, `WordSense-Sense-Tags`, `WordSense-Sense-TagScoring` and `WordSense-Sense-Words`.
+`WordSense-Sense-Record`, `WordSense-Sense-Pronunciation`, `WordSense-Sense-Validation`,
+`WordSense-Sense-Abstain` and `WordSense-Sense-Words`.

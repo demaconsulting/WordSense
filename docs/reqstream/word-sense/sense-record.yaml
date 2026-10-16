@@ -6,44 +6,52 @@ sections:
     requirements:
       - id: WordSense-Sense-Record
         title: >-
-          The library shall represent each sense as one sealed immutable type with a frozen tag set and
-          reference identity.
+          The library shall represent each possible answer as an immutable value with a lemma, a part of speech and
+          an optional pronunciation, shared once per sense, and shall report an analysis as an immutable value.
         tags: [unit]
         justification: |
-          Callers compare, store and share senses across threads; tags must not change after creation.
+          Callers compare, store and share answers and analyses across threads; they must not change after
+          creation.
         tests:
-          - WordSense_HasTag_ReportsMembership
-          - WordSense_HasTag_NullTag_ThrowsArgumentNullException
-          - WordSense_Tags_AreImmutable
-          - WordSense_LemmaModel_SharesOneRecordPerSense
+          - LemmaModel_Candidates_MapSensesToDetails
+          - ResultRecords_HaveValueEquality
 
-      - id: WordSense-Sense-Tags
-        title: The library shall accept only well-formed tags and bound the tag length.
+      - id: WordSense-Sense-Pronunciation
+        title: >-
+          The library shall give a pronunciation (a meaning and an optional respelling) only to the senses of a
+          heteronym, a lemma with at least two distinct meanings, and none to any other lemma.
         tags: [unit]
         justification: |
-          Tags are matched as plain strings, so a simple syntax avoids lookalike or empty tags.
+          Most lemmas are pronounced the same whatever they mean; reporting a pronunciation for them would be
+          noise, and a heteronym is only meaningful when its meanings can be told apart.
         tests:
-          - SenseDefinition_IsValidTag_ChecksSyntax
-          - SenseDefinition_IsValidTag_LengthLimit
+          - LemmaModel_NonHeteronym_HasNoPronunciation
+          - LemmaModel_MissingRespelling_IsNull
+          - LemmaModel_SenseSet_Rules
+
+      - id: WordSense-Sense-Validation
+        title: >-
+          The library shall accept only well-formed sense definitions: a defined part of speech, a meaning
+          identifier of bounded length in a simple syntax, and a bounded respelling in letters, hyphens and
+          apostrophes that is given only together with a meaning.
+        tags: [unit]
+        justification: |
+          Meanings are matched as plain strings and respellings are shown to people, so a simple syntax avoids
+          lookalike, empty or oversized values.
+        tests:
           - SenseDefinition_Validate_InvalidDefinitions_Throw
-          - WordSense_Group_DefaultsToSenseAndValidates
+          - SenseDefinition_IsValidMeaning_ChecksSyntax
+          - SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength
 
-      - id: WordSense-Sense-TagScoring
-        title: The library shall score tags from sense scores so that the best sense carrying a tag represents it.
+      - id: WordSense-Sense-Abstain
+        title: >-
+          The library shall decide whether to answer or abstain with one rule, so that a margin or a threshold
+          that is not a number never produces an answer.
         tags: [unit]
         justification: |
-          Tag-level answers are derived from sense scores with one rule so they are consistent with
-          sense-level answers.
+          One shared rule keeps every classification path consistent, and a degenerate margin must fail safe.
         tests:
-          - TagScorer_Classify_BestScoringTagWins
-          - TagScorer_Classify_EqualTagScores_TiesAndIsBelowAnyPositiveThreshold
-          - TagScorer_Classify_SensesOfSameTag_DoNotReduceMargin
-          - TagScorer_Classify_BelowThreshold_Abstains
-          - TagScorer_Classify_OtherWins_ReturnsNull
-          - TagScorer_Classify_OtherAsRunnerUp_LimitsMargin
-          - TagScorer_Classify_AbsentTag_ReturnsNull_SinglePresentTag_Answers
-          - TagScorer_IsTag_AnswersBoolOrNull
-          - TagScorer_Abstains_NaNMarginOrThreshold_Abstains
+          - AbstainRule_Abstains_NaNMarginOrThreshold_Abstains
 
       - id: WordSense-Sense-Words
         title: The library shall split text into word and non-word segments that tile the text.

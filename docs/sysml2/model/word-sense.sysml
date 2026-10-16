@@ -1,8 +1,9 @@
 package WordSense {
     doc
     /*
-     * WordSense is a .NET library that tells which sense an ambiguous English word carries in
-     * context (for example "record" as noun or verb) using a quantized MiniLM encoder and a
+     * WordSense is a .NET library that tells the part of speech, and for words pronounced differently by
+     * meaning the pronunciation, that an ambiguous English word carries in context (for example "record"
+     * as noun or verb) using a quantized MiniLM encoder and a
      * compact embedded classifier table. It ships as the single package DemaConsulting.WordSense.
      */
 

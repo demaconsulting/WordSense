@@ -1,7 +1,7 @@
 # Introduction
 
 This document provides the detailed design for the WordSense library, a .NET library
-that classifies the sense of ambiguous English words in context.
+that tells the part of speech and pronunciation of ambiguous English words in context.
 
 ## Purpose
 
@@ -27,7 +27,7 @@ software items, specifically:
 - **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
 - **WordPieceTokenizer (Unit)** — BERT uncased word-piece tokenizer
 - **WordSenseTable (Unit)** — embedded binary classifier table
-- **SenseRecord (Unit)** — immutable tagged sense records and tag scoring
+- **SenseRecord (Unit)** — immutable answer values, sense definition validation and abstention rule
 - **OnnxWordSenseEncoder (Unit)** — ONNX Runtime encoder
 - **WordSenseClassifier (Unit)** — public classification entry point
 - **DownloadMirror (Unit)** — user mirror configuration
@@ -87,9 +87,10 @@ and descriptions as follows:
 src/DemaConsulting.WordSense/
 ├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
 ├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs, WordSenseTableFormatException.cs — table unit
-├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs — sense record unit
+├── PartOfSpeech.cs, Pronunciation.cs, WordDetails.cs, WordAnalysis.cs, SenseDefinition.cs, AbstainRule.cs,
+│   TextSplitter.cs                                — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
-├── WordSenseClassifier.cs (also declares IWordSenseClassifier, WordSenseDetail and WordSenseToken),
+├── WordSenseClassifier.cs (also declares IWordSenseClassifier and WordSenseToken),
 │   WordSenseClassifierOptions.cs,
 │   FeatureExtractor.cs, WordSenseModelMismatchException.cs — classifier unit
 ├── DownloadMirror.cs                              — mirror unit

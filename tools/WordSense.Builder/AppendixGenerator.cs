@@ -138,7 +138,7 @@ internal static class AppendixGenerator
     }
 
     /// <summary>
-    ///     Adds the explanation of tags, groups and forms.
+    ///     Adds the explanation of parts of speech, pronunciations and forms.
     /// </summary>
     private static void AddExplanation(List<string> lines, List<InventoryRow> rows, int lemmaCount)
     {

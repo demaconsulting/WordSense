@@ -19,17 +19,23 @@ table.
   **..._RejectsBatchWithManyBadRows**, **..._ExcludesThinLemmas**: lemma-level absence is a warning, few
   bad rows are dropped, many reject the batch, and thin lemmas are excluded.
 - **WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreTagged**, **..._WritesDerivedInventory**,
-  **..._UnmappedLabel_IsInvalid**,
-  **WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags**,
-  **WordSenseBuilder_Program_ValidatePos_ReportsViolations**,
-  **WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional**, **..._InvalidGroup_IsRejected**,
-  **WordSenseBuilder_PosAudit_Resolve_FollowsTheRules**, **..._RowId_IsStable**,
-  **WordSenseBuilder_Relabeler_Apply_RelabelsDropsAndExcludes**: part-of-speech tags only, group column,
-  audit resolution and relabeling.
+  **..._UnmappedLabel_IsInvalid**: only part-of-speech labels are accepted when an inventory is derived, and the
+  derived inventory carries the part of speech of each label.
+- **WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations**,
+  **WordSenseBuilder_SenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings**,
+  **WordSenseBuilder_Program_ValidatePos_ReportsViolations**: each inventory rule violation (undefined part of
+  speech, meanings on only some senses, a heteronym with fewer than two distinct meanings, a repeated part of
+  speech and meaning, inconsistent respellings, a shared respelling) is reported, two senses of one part of speech
+  with different meanings pass, and `validate-pos` exits 1 listing the violations.
+- **WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional**,
+  **..._InvalidColumns_AreRejected**: the five-column inventory round-trips with empty meaning and respelling
+  allowed, and an invalid part of speech, meaning or respelling is rejected.
+- **WordSenseBuilder_PosAudit_Resolve_FollowsTheRules**, **..._RowId_IsStable**: the retained judge-resolution and
+  sentence-identifier helpers.
 - **WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows**, **..._WriteAndRead_RoundTrips**,
   **..._Validate_ChecksBothDirections**, **..._Validate_ConsistentCorpus_Passes**,
-  **WordSenseBuilder_TagEvaluator_CountsRowsPerRule**: inventory derivation, validation in both directions and
-  tag-level counting.
+  **WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels**: inventory reading and writing,
+  validation in both directions, and counting of the meaning, part-of-speech and pronunciation levels.
 - **WordSenseBuilder_RealJudge_Resolve_FollowsTheRules**, **WordSenseBuilder_RealImport_Validate_RequiresProvenance**:
   sense judging resolution, licence ranking, and the provenance gate (missing row flagged, complete sidecar accepted).
 - **WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows**,
@@ -39,8 +45,6 @@ table.
   and a sentence mentioning Gutenberg are each rejected; a 35-word sentence is accepted.
 - **WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin**: a `new-*.tsv` anchor file
   without provenance is flagged and a complete sidecar with an `authored` row and the project licence is accepted.
-- **WordSenseBuilder_PosRules_Validate_AllowsTwoSensesOfOnePartOfSpeechInDifferentGroups**: two noun senses in
-  different groups pass the part-of-speech rule.
 - **WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates**: importing real sentences into a
   synthetic corpus writes a provenance row for every written sentence (real and project-authored) and the result
   passes `RealImport.Validate`.
@@ -95,8 +99,8 @@ table.
   returns exit code 1 and a message naming the option, before any file is read.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
-- **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
-  and tag-level accuracy sections.
+- **WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections**: a small build report contains the
+  meaning-level, part-of-speech and pronunciation accuracy sections.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the
   braces.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
@@ -118,7 +122,8 @@ table.
 - **WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance**: corpus, provenance origin and real-eval
   rows are loaded into the three sets.
 - **WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms**: a synthetic corpus gives an appendix with the
-  tag table and counts, lemmas in alphabetical order, senses with tags, group and a bold example (shortest anchor of
+  parts-of-speech overview and counts, lemmas in alphabetical order, senses with part of speech, meaning and
+  respelling and a bold example (shortest anchor of
   at least 30 characters), forms with restrictions in parentheses, escaped markdown characters, wrapped lines within
   120 characters, LF line endings and byte-identical output on repeat.
 - **WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput**: a missing `forms` or `anchors` directory, a sense
@@ -134,7 +139,8 @@ table.
 ## Requirements Coverage
 
 `WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
-`WordSense-Builder-Inventory`, `WordSense-Builder-Provenance`, `WordSense-Builder-AuthoredImport`,
+`WordSense-Builder-Inventory`, `WordSense-Builder-InventoryRules`, `WordSense-Builder-Accuracy`,
+`WordSense-Builder-Provenance`, `WordSense-Builder-AuthoredImport`,
 `WordSense-Builder-NounVerbImport`, `WordSense-Builder-NounVerbGate`, `WordSense-Builder-LearningCurve`,
 `WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas` and `WordSense-Builder-Appendix`.
 

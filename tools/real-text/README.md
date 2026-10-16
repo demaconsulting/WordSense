@@ -18,8 +18,9 @@ licensed or public-domain sources. Raw downloads go to `cache/` (git-ignored); o
 (lemma, inflected forms, ARPAbet variants, probable sense labels and WordNet part-of-speech counts). Provenance:
 pronunciations from CMUdict (BSD-style licence), Wiktionary (CC BY-SA 4.0; facts and word lists only, no prose) and
 WordNet 3.0 (Princeton licence); word frequencies came from the `wordfreq` package. `new-lemma-inventory.tsv` is the
-sense inventory authored from them (one row per sense with part of speech, pronunciation group, ARPAbet, batch, tier and
-status), and `docs/build_notes/new-lemma-decisions.md` records every accept and reject decision. Authored sentences for
+sense inventory authored from them (one row per sense with part of speech, pronunciation class, ARPAbet, batch, tier and
+status; a record of the authoring work: the shipped inventory has `pos`, `meaning` and `respelling` columns), and
+`docs/build_notes/new-lemma-decisions.md` records every accept and reject decision. Authored sentences for
 rare senses go into `anchors/new-*.tsv` and `holdout/new-*.tsv` with the origin `authored`, which `validate-provenance`
 checks.
 
@@ -57,8 +58,9 @@ new-authored-N --anchors FILE --holdout FILE` (two input files of `lemma<TAB>sen
 frozen prompts are in `tools/real-text/authoring-prompt.md`). Run it only after the last `real-import` of the phase.
 Phase 4 ran it once as `new-authored-1` (576 anchor and 398 holdout rows, all flagged `authored` in the provenance; the
 16 top-up holdout rows of `predate` were not blind-judged). No lemma was dropped. The result is the sense map
-`corpus/audit/new-lemma-speech-map.tsv` (tab-separated, one row per sense of the 63 accepted lemmas: `lemma`, `sense`,
-`pos`, `group`, `arpabet`, `anchors`, `holdout`, `source_mix` as `real=N;authored=M`, `holdout_accuracy` in percent and
+`corpus/audit/new-lemma-speech-map.tsv` (a historical record, tab-separated, one row per sense of the 63 accepted
+lemmas: `lemma`, `sense`, `pos`, `group` (the authoring-time pronunciation class), `arpabet` (an authoring-time
+note), `anchors`, `holdout`, `source_mix` as `real=N;authored=M`, `holdout_accuracy` in percent and
 `status`, `trained` or `dropped`), built from `new-lemma-inventory.tsv` and the build report; see
 `docs/build_notes/new-lemma-results.md`.
 Phase 5 trains noun/verb ambiguous lemmas from merged real sentences with `nounverb-import --corpus corpus --name

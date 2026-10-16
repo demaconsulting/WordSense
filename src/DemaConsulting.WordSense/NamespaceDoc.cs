@@ -51,22 +51,42 @@ namespace DemaConsulting.WordSense;
 ///     encoders and tests; an application that only classifies words never needs them.
 ///     </para>
 ///     <para>
-///     Parts of speech and pronunciation: <see cref="PartOfSpeech"/> defines all eight classic parts of speech, but the
-///     shipped table only produces <see cref="PartOfSpeech.Noun"/>, <see cref="PartOfSpeech.Verb"/>,
-///     <see cref="PartOfSpeech.Adjective"/> and <see cref="PartOfSpeech.Adverb"/>. A lemma whose senses have at least
-///     two distinct pronunciation meanings is a heteronym, and only then is <see cref="WordDetails.Pronunciation"/>
-///     set; its <see cref="Pronunciation.Meaning"/> is a short identifier such as <c>guide</c> or <c>metal</c>.
-///     A <see cref="Pronunciation.Respelling"/> may be present. Supported lemmas can be discovered at run time with
+///     Glossary: a <em>lemma</em> is the dictionary base form of a word (for example <c>record</c> for
+///     <c>records</c>); a <em>heteronym</em> is a lemma with at least two distinct meanings that are pronounced
+///     differently (for example <c>record</c>, the noun REK-urd and the verb rih-KORD, or <c>bow</c>, to bend
+///     and the weapon).
+///     </para>
+///     <para>
+///     The two facts the library answers: first, the part of speech (<see cref="PartOfSpeech"/> defines all eight
+///     classic parts of speech, but the shipped table only produces <see cref="PartOfSpeech.Noun"/>,
+///     <see cref="PartOfSpeech.Verb"/>, <see cref="PartOfSpeech.Adjective"/> and <see cref="PartOfSpeech.Adverb"/>);
+///     second, for a heteronym only, the pronunciation (<see cref="WordDetails.Pronunciation"/>). A
+///     <see cref="Pronunciation"/> has a <see cref="Pronunciation.Meaning"/>, a short identifier of the meaning that
+///     decides how the word is said (for example <c>bend</c> or <c>weapon</c> for <c>bow</c>, or <c>noun</c> and
+///     <c>verb</c> for <c>record</c>), and an optional <see cref="Pronunciation.Respelling"/>, our own plain-letter
+///     spelling of the sound (<c>bow</c> for bending, <c>boh</c> for the weapon): syllables are separated by hyphens
+///     and the stressed syllable is written in capitals when there are several, such as <c>REK-urd</c> and
+///     <c>rih-KORD</c>. For a lemma that is not a heteronym (most nouns and verbs) <see cref="WordDetails.Pronunciation"/>
+///     is <see langword="null"/>. Supported lemmas can be discovered at run time with
 ///     <see cref="IWordSenseClassifier.KnownLemmas"/> and <see cref="IWordSenseClassifier.GetCandidates"/>; the full
-///     list is the user guide appendix
+///     catalog of lemmas, parts of speech and meanings is the user guide appendix
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md).
 ///     </para>
 ///     <para>
 ///     Classifying one word: pass the whole sentence and read the entry of the target word. A word is matched to its
 ///     lemma through known forms (inflections): <see cref="WordAnalysis.Word"/> is the input and
 ///     <see cref="WordDetails.Lemma"/> the base form. <see cref="WordAnalysis.Details"/> is null when the word is not
-///     known or when the classifier abstained because the evidence was weak (<see cref="WordAnalysis.Abstained"/>). A
-///     consumer that needs an answer for every word must supply its own fallback; the library never guesses.
+///     known or when the classifier abstained because the evidence was weak (<see cref="WordAnalysis.Abstained"/>). To
+///     tell the two apart, read <see cref="WordAnalysis.Abstained"/> (true only for a known word with weak evidence;
+///     an unknown word also has <see cref="WordAnalysis.Margin"/> 0). A consumer that needs an answer for every word
+///     must supply its own fallback; the library never guesses.
+///     </para>
+///     <para>
+///     Confidence: every call returns the full <see cref="WordAnalysis"/>. <see cref="WordAnalysis.Margin"/> is the
+///     score of the best candidate minus the score of the runner-up (a score difference, not a probability; each
+///     lemma has its own scale), <see cref="WordAnalysis.RunnerUp"/> is the second-best candidate and
+///     <see cref="WordAnalysis.RunnerUpMargin"/> is the runner-up's score minus the third-best's (0 when there are only
+///     two candidates). They are also set when the classifier abstained, so a caller may apply its own threshold.
 ///     </para>
 ///     <para>
 ///     Tokenization and context window: the list overload reads the whole list as one running text with the words

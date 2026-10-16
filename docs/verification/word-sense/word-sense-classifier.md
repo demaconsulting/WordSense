@@ -11,24 +11,21 @@ hidden states and a small in-memory table, so behavior is verified without the m
 
 - **WordSenseClassifier_ClassifyAsync_Text_TokensTileInput**: concatenated tokens equal the input.
 - **WordSenseToken_Tiles_FollowSegmentSpans**: tokens built from the splitter segments have contiguous spans
-  whose texts concatenate to the input, and only a word segment carries a sense.
+  whose texts concatenate to the input, and only a word segment carries details.
 - **WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode**: no encoder call without targets.
 - **WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly**,
-  **..._Words_ResolvesForms**, **..._Words_EdgeCases**, **..._ManyTargets_EncodesOnce**,
-  **WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed** (including `GetSenses(null)`): lemma resolution and
-  single pass. **..._InfiniteAbstainMarginScale_AlwaysAbstains**: a positive-infinity scale is accepted and every
-  word abstains.
-- **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**,
-  **..._ThreeSenses_ReportsRunnerUpMargin**, **..._LowMargin_IsFlaggedAbstained**: the `WordSenseDetail`
-  (declared in `WordSenseClassifier.cs`) fields. For a two-sense lemma `Margin` is twice the activation,
-  `RunnerUp` is the other
-  sense and `RunnerUpMargin` is 0; for a three-sense lemma `RunnerUp` is the second-best sense, `RunnerUpMargin` is
-  its score minus the third-best score, and a tie for the best score gives a `Margin` of 0 with the first sense
-  listed as `Sense`. `Abstained` is set when the margin is below the scaled threshold and `Sense` is still given.
-- **WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull**, **WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull**,
-  **WordSenseClassifier_TagQueries_InvalidArguments_Throw**: tag queries.
-- **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention; `ClassifyAsync` and `ClassifyDetailAsync`
-  share one abstain predicate, so they agree.
+  **..._Words_ResolvesForms**, **..._Words_EdgeCases**, **..._ManyTargets_EncodesOnce**: lemma resolution, an
+  array parallel to the input and a single encoder pass. **..._InfiniteAbstainMarginScale_AlwaysAbstains**: a
+  positive-infinity scale is accepted and every word abstains. **..._Words_EdgeCases** also covers unknown words,
+  which have no details, are not abstained and have zero margins.
+- **WordSenseClassifier_KnownLemmas_And_GetCandidates_AreExposed** (including an unknown lemma): the lemmas and the
+  candidate answers of a lemma.
+- **WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp**, **..._ThreeSenses_ReportsRunnerUpMargin**,
+  **..._LowMargin_Abstains**: the `WordAnalysis` fields. For a two-sense lemma `Margin` is twice the activation,
+  `RunnerUp` is the other sense and `RunnerUpMargin` is 0; for a three-sense lemma `RunnerUp` is the second-best
+  sense and `RunnerUpMargin` is its score minus the third-best score. A word below the scaled threshold has
+  `Abstained` set, no details, and its margin and runner-up still reported, which tells it apart from an unknown
+  word.
 - **WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget**: windowing.
 - **WordSenseClassifier_Constructor_InvalidArguments_Throw** (including a negative or NaN
   `AbstainMarginScale`), **..._ModelMismatch_Throws**,
@@ -40,4 +37,5 @@ hidden states and a small in-memory table, so behavior is verified without the m
 
 ## Requirements Coverage
 
-`WordSense-Classifier-Tiles`, `-Senses`, `-Detail`, `-Tags`, `-Abstain`, `-LongText`, `-Validation` and `-Lifetime`.
+`WordSense-Classifier-Tiles`, `-Answers`, `-Candidates`, `-Abstain`, `-Analysis`, `-Unknown`, `-LongText`,
+`-Validation` and `-Lifetime`.

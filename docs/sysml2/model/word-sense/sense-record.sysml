@@ -1,8 +1,8 @@
 package WordSense {
     part def SenseRecord {
-        doc /* Immutable tagged sense records (true parts of speech, one per sense, with an optional group), tag scoring and text segmentation. */
+        doc /* Immutable answer values (part of speech, pronunciation, word details, word analysis), sense definition validation, the abstention rule and text segmentation. */
 
-        comment sourceRef /* Source: src/DemaConsulting.WordSense/WordSense.cs, src/DemaConsulting.WordSense/SenseDefinition.cs, src/DemaConsulting.WordSense/TagScorer.cs, src/DemaConsulting.WordSense/TextSplitter.cs */
+        comment sourceRef /* Source: src/DemaConsulting.WordSense/PartOfSpeech.cs, src/DemaConsulting.WordSense/Pronunciation.cs, src/DemaConsulting.WordSense/WordDetails.cs, src/DemaConsulting.WordSense/WordAnalysis.cs, src/DemaConsulting.WordSense/SenseDefinition.cs, src/DemaConsulting.WordSense/AbstainRule.cs, src/DemaConsulting.WordSense/TextSplitter.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Tests/SenseRecordTests.cs */
         comment designRef /* Design: docs/design/word-sense/sense-record.md */
         comment verificationRef /* Verification: docs/verification/word-sense/sense-record.md */

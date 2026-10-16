@@ -17,8 +17,8 @@ internal sealed record BatchResult(int Batch, string Status, string Detail, IRea
 /// <remarks>
 ///     A batch is a pair of files, <c>anchors/batchN.tsv</c> and <c>holdout/batchN.tsv</c>, plus an
 ///     optional specification <c>batches/batchN.tsv</c> (<c>lemma</c> and comma-separated <c>labels</c>).
-///     The import also writes the batch's sense inventory <c>senses/speech-batchN.tsv</c>, with tags derived
-///     with part-of-speech tags (the label); a label that is not a part of speech makes the batch invalid.
+///     The import also writes the batch's sense inventory <c>senses/speech-batchN.tsv</c>, in which the part of
+///     speech of every sense is derived from its label; a label that is not a part of speech makes the batch invalid.
 ///     Lemma-level absence (a specified lemma without sentences) is a warning: the lemma is left out.
 ///     Row-level errors (bad format, unknown lemma, disallowed label, duplicate sentence, anchor/holdout
 ///     overlap) drop only the offending rows, provided they are few (at most <see cref="MaxDroppedShare"/>
