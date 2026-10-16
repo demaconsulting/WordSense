@@ -16,8 +16,8 @@ whether "record" is a noun or a verb, or whether "bass" is a fish or an instrume
 ## Features
 
 - **Contextual sense decisions**: per-word senses with a coarser `Group`, true part-of-speech tags (noun, verb, ...),
-  a confidence margin and tag-level queries such as noun versus verb, for a curated set of homographs (embedded
-  table format v3)
+  a confidence margin and tag-level queries such as noun versus verb, for 744 lemmas: a curated set of homographs
+  and several hundred common words that are both a noun and a verb (embedded table format v3)
 - **Abstention**: returns no sense instead of guessing when the evidence is weak
 - **Single package**: one NuGet package, `DemaConsulting.WordSense`, whose only runtime dependency is
   Microsoft.ML.OnnxRuntime
@@ -126,9 +126,9 @@ for (var i = 0; i < words.Length; i++)
 ```text
 They     pos=- isVerb=- -
 will     pos=- isVerb=- -
-record   pos=verb isVerb=True sense=verb margin=5.96 abstained=False
+record   pos=verb isVerb=True sense=verb margin=5.99 abstained=False
 the      pos=- isVerb=- -
-record   pos=noun isVerb=False sense=noun margin=7.14 abstained=False
+record   pos=noun isVerb=False sense=noun margin=7.16 abstained=False
 ```
 
 `ClassifyTagAsync` and `IsTagAsync` score a tag by the best sense that carries it. `Margin` is the score of the best

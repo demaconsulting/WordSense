@@ -19,8 +19,8 @@ question such as noun versus verb does not depend on how finely a lemma is split
 |---------------|----------------|------------------------------|--------|
 | `adj`         | part of speech | adjective                    |     93 |
 | `adv`         | part of speech | adverb                       |     12 |
-| `noun`        | part of speech | noun                         |    362 |
-| `verb`        | part of speech | verb                         |    396 |
+| `noun`        | part of speech | noun                         |    691 |
+| `verb`        | part of speech | verb                         |    725 |
 | `comparative` | qualifier      | comparative degree (closer)  |      2 |
 | `participle`  | qualifier      | participle form              |      0 |
 | `past`        | qualifier      | past tense                   |      5 |
@@ -47,8 +47,8 @@ never classified.
 
 ## Supported Lemmas
 
-The library supports 415 lemmas with 863 senses in total, listed alphabetically. For each sense the list gives the sense
-label, the tags, the group and an example sentence in which the classified word is shown in bold, followed by the
+The library supports 744 lemmas with 1521 senses in total, listed alphabetically. For each sense the list gives the
+sense label, the tags, the group and an example sentence in which the classified word is shown in bold, followed by the
 inflected forms the lemma recognizes.
 
 ### Lemmas Starting With A
@@ -65,6 +65,9 @@ inflected forms the lemma recognizes.
 - **accent**; forms: accented (accent-verb), accenting (accent-verb), accents
   - `accent-noun`; tags: noun; group: stress-first; example: Tom has a thick Scottish **accent**.
   - `accent-verb`; tags: verb; group: stress-last; example: His bushy brows **accented** his face.
+- **access**; forms: accessed (verb), accesses, accessing (verb)
+  - `noun`; tags: noun; group: noun; example: This door gives **access** to the garden.
+  - `verb`; tags: verb; group: verb; example: Mary can't seem to **access** her data.
 - **addict**; forms: addicts
   - `noun`; tags: noun; group: noun; example: That gambling **addict** lost his house.
   - `verb`; tags: verb; group: verb; example: Cheap thrills **addict** the restless mind.
@@ -77,6 +80,9 @@ inflected forms the lemma recognizes.
 - **adulterate**; forms: adulterates (verb)
   - `adj`; tags: adj; group: adj; example: An **adulterate** drug is dangerous to take.
   - `verb`; tags: verb; group: verb; example: The farmer **adulterates** the milk with water.
+- **advance**; forms: advanced (verb), advances, advancing (verb)
+  - `noun`; tags: noun; group: noun; example: Payment must be made in **advance**.
+  - `verb`; tags: verb; group: verb; example: The boss had to **advance** him some money.
 - **advert**; forms: adverted (advert-verb), adverting (advert-verb), adverts
   - `advert-noun`; tags: noun; group: stress-first; example: What's your favourite **advert**?
   - `advert-verb`; tags: verb; group: stress-last; example: The bishop **adverted** to the town's recent troubles in his
@@ -102,6 +108,15 @@ inflected forms the lemma recognizes.
 - **aggregate**; forms: aggregates
   - `noun`; tags: noun; group: noun; example: Sand is a common fine **aggregate**.
   - `verb`; tags: verb; group: verb; example: Platelets **aggregate** to seal the wound.
+- **aid**; forms: aided (verb), aiding (verb), aids
+  - `noun`; tags: noun; group: noun; example: It was a mistake to refuse his **aid**.
+  - `verb`; tags: verb; group: verb; example: We **aided** him in his business.
+- **aim**; forms: aimed (verb), aiming (verb), aims
+  - `noun`; tags: noun; group: noun; example: "What was the **aim** of that visit?"
+  - `verb`; tags: verb; group: verb; example: She **aimed** carefully at the target.
+- **alert**; forms: alerted (verb), alerting (verb), alerts
+  - `noun`; tags: noun; group: noun; example: I was constantly on the **alert**.
+  - `verb`; tags: verb; group: verb; example: We need to **alert** a bomb squad.
 - **alloy**; forms: alloyed (alloy-verb), alloying (alloy-verb), alloys
   - `alloy-noun`; tags: noun; group: stress-first; example: That's not iron, but some **alloy**.
   - `alloy-verb`; tags: verb; group: stress-last; example: If you **alloy** gold with too much copper, the jewelry will
@@ -116,15 +131,27 @@ inflected forms the lemma recognizes.
   - `alum-graduate`; tags: noun; group: graduate; example: As a proud **alum**, he still wears the school sweatshirt to
     every football game.
   - `alum-mineral`; tags: noun; group: mineral; example: Both native and imported potassium **alum** was used.
+- **amount**; forms: amounted (verb), amounting (verb), amounts
+  - `noun`; tags: noun; group: noun; example: "Any **amount** of 'em," sobbed Toad.
+  - `verb`; tags: verb; group: verb; example: Figure up how much it **amounts** to.
 - **analyses**; no other forms
   - `noun`; tags: noun; group: noun; example: We compared the **analyses** line by line.
   - `verb`; tags: verb; group: verb; example: The critic **analyses** each poem line by line.
+- **anger**; forms: angered (verb), angering (verb), angerred (verb), angerring (verb), angers
+  - `noun`; tags: noun; group: noun; example: I could not control my **anger**.
+  - `verb`; tags: verb; group: verb; example: We should not have **angered** Tom.
 - **animate**; forms: animates (verb)
   - `adj`; tags: adj; group: adj; example: Is a robot **animate** or inanimate?
   - `verb`; tags: verb; group: verb; example: Joy seems to **animate** her whole face.
 - **annex**; forms: annexed (annex-verb), annexes, annexing (annex-verb)
   - `annex-noun`; tags: noun; group: stress-first; example: In this **annex** are 10 passenger exits.
   - `annex-verb`; tags: verb; group: stress-last; example: China will occupy and **annex** Taiwan.
+- **appeal**; forms: appealed (verb), appealing (verb), appeals
+  - `noun`; tags: noun; group: noun; example: I'm going to prepare an **appeal**.
+  - `verb`; tags: verb; group: verb; example: You can **appeal** to the court.
+- **approach**; forms: approached (verb), approaches, approaching (verb)
+  - `noun`; tags: noun; group: noun; example: A laidback **approach** may work best.
+  - `verb`; tags: verb; group: verb; example: I'm often told that I'm hard to **approach**.
 - **appropriate**; forms: appropriates (verb)
   - `adj`; tags: adj; group: adj; example: Is this film **appropriate** for children?
   - `verb`; tags: verb; group: verb; example: He **appropriates** credit for every success.
@@ -134,6 +161,12 @@ inflected forms the lemma recognizes.
 - **arithmetic**; no other forms
   - `adj`; tags: adj; group: adj; example: An **arithmetic** error led to the wrong total.
   - `noun`; tags: noun; group: noun; example: He was never good at mental **arithmetic**.
+- **arm**; forms: armed (verb), arming (verb), arms
+  - `noun`; tags: noun; group: noun; example: In your **arms** my soul finds peace.
+  - `verb`; tags: verb; group: verb; example: Tom was **armed** with a kitchen knife.
+- **arrest**; forms: arrested (verb), arresting (verb), arrests
+  - `noun`; tags: noun; group: noun; example: "Nor running a chance of **arrest**?"
+  - `verb`; tags: verb; group: verb; example: "Are you **arrested** for much, sir?
 - **arsenic**; no other forms
   - `adj`; tags: adj; group: adj; example: Is this acid **arsenic** or arsenous?
   - `noun`; tags: noun; group: noun; example: A tiny dose of **arsenic** can be deadly.
@@ -159,12 +192,21 @@ inflected forms the lemma recognizes.
 - **august**; no other forms
   - `august-adj`; tags: adj; group: adj; example: This aged man is **august** in the eyes of his country.
   - `august-month`; tags: noun; group: month; example: **August** is named after Augustus.
+- **award**; forms: awarded (verb), awarding (verb), awards
+  - `noun`; tags: noun; group: noun; example: The **award** was not given last year.
+  - `verb`; tags: verb; group: verb; example: I was **awarded** an honor prize.
 - **axes**; no other forms
   - `noun`; tags: noun; group: noun; example: Plot the data on the x and y **axes**.
   - `verb`; tags: verb; group: verb; example: He **axes** the log in one swing.
 
 ### Lemmas Starting With B
 
+- **ban**; forms: banned (verb), banning (verb), bans
+  - `noun`; tags: noun; group: noun; example: A wheat import **ban** was enacted.
+  - `verb`; tags: verb; group: verb; example: Ziri was **banned** from the Olympics.
+- **base**; forms: based (verb), basing (verb)
+  - `noun`; tags: noun; group: noun; example: What does "getting to first **base**" mean?
+  - `verb`; tags: verb; group: verb; example: Sami's company is **based** in Egypt.
 - **bases**; no other forms
   - `bases-base`; tags: noun; group: base; example: Algeria doesn't have overseas **bases**.
   - `bases-basis`; tags: noun; group: basis; example: On both of these **bases**, the proposal should be rejected at
@@ -173,31 +215,121 @@ inflected forms the lemma recognizes.
 - **bass**; no other forms
   - `fish`; tags: noun; group: fish; example: He hooked a huge **bass** on a lure.
   - `music`; tags: noun; group: music; example: She sang in a deep **bass** voice.
+- **beam**; forms: beamed (verb), beaming (verb), beams
+  - `noun`; tags: noun; group: noun; example: Is the **beam** solid or hollow?
+  - `verb`; tags: verb; group: verb; example: The girl was **beaming** with joy.
+- **bear**; forms: beared (verb), bearing (verb), bears
+  - `noun`; tags: noun; group: noun; example: Are there **bears** in this park?
+  - `verb`; tags: verb; group: verb; example: The data doesn't **bear** this out.
+- **beat**; forms: beated (verb), beating (verb), beats
+  - `noun`; tags: noun; group: noun; example: He produces **beats** for local artists.
+  - `verb`; tags: verb; group: verb; example: She **beat** the shit out of Tom.
+- **bend**; forms: bended (verb), bending (verb), bends, bent (verb)
+  - `noun`; tags: noun; group: noun; example: His car skidded on the **bend**.
+  - `verb`; tags: verb; group: verb; example: I can't **bend** him to my will.
 - **bifurcate**; forms: bifurcates (verb)
   - `adj`; tags: adj; group: adj; example: The beetle has a **bifurcate** horn.
   - `verb`; tags: verb; group: verb; example: The party may **bifurcate** into two camps.
+- **bite**; forms: bited (verb), bites, biting (verb)
+  - `noun`; tags: noun; group: noun; example: There was a **bite** in his remark.
+  - `verb`; tags: verb; group: verb; example: Ziri's dog tried to **bite** him.
 - **blessed**; forms: blesses (blessed-past), blessing (blessed-past)
   - `blessed-adj`; tags: adj; group: two-syllable; example: **Blessed** are those who come back.
   - `blessed-past`; tags: verb; group: one-syllable; example: In going by he had **blessed** us.
+- **block**; forms: blocked (verb), blocking (verb), blocks
+  - `noun`; tags: noun; group: noun; example: We've each got a stumbling **block**.
+  - `verb`; tags: verb; group: verb; example: The bridge is **blocked** for traffic.
+- **bloom**; forms: bloomed (verb), blooming (verb), blooms
+  - `noun`; tags: noun; group: noun; example: Cherry blossoms are in full **bloom**.
+  - `verb`; tags: verb; group: verb; example: A lot of flowers have **bloomed**.
+- **board**; forms: boarded (verb), boarding (verb), boards
+  - `noun`; tags: noun; group: noun; example: Let's play a **board** game tomorrow!
+  - `verb`; tags: verb; group: verb; example: All the windows were **boarded** up.
+- **bolt**; forms: bolted (verb), bolting (verb), bolts
+  - `noun`; tags: noun; group: noun; example: The **bolt** is all the way screwed in.
+  - `verb`; tags: verb; group: verb; example: She **bolted** the doors and windows.
+- **bomb**; forms: bombed (verb), bombing (verb), bombs
+  - `noun`; tags: noun; group: noun; example: The atom **bomb** is an awful weapon.
+  - `verb`; tags: verb; group: verb; example: Aart tried to **bomb** Layla's job.
 - **bombard**; forms: bombards
   - `noun`; tags: noun; group: noun; example: The **bombard** was an early cannon.
   - `verb`; tags: verb; group: verb; example: The media **bombards** us with bad news.
+- **book**; forms: booked (verb), booking (verb), books
+  - `noun`; tags: noun; group: noun; example: How much does this **book** cost?
+  - `verb`; tags: verb; group: verb; example: I **booked** a flight to New York.
+- **border**; forms: bordered (verb), bordering (verb), borderred (verb), borderring (verb), borders
+  - `noun`; tags: noun; group: noun; example: Do we have to get off the train at the **border**?
+  - `verb`; tags: verb; group: verb; example: Ziri purchased a cabin **bordering** a thick forest.
 - **bow**; forms: bowed (bend-verb), bowing (bend-noun, bend-verb), bows
   - `bend-noun`; tags: noun; group: bend; example: The custom of **bowing** is peculiar to the islanders.
   - `bend-verb`; tags: verb; group: bend; example: He **bowed** low before Her Majesty.
   - `weapon`; tags: noun; group: weapon; example: The archer drew the **bow** and took aim.
+- **break**; forms: breaked (verb), breaking (verb), breaks, broke (verb), broken (verb)
+  - `noun`; tags: noun; group: noun; example: Mary says she needs a **break**, too.
+  - `verb`; tags: verb; group: verb; example: Tom helped **break** up the fight.
+- **breed**; forms: breeded (verb), breeding, breeds
+  - `noun`; tags: noun; group: noun; example: What's the most popular dog **breed**?
+  - `verb`; tags: verb; group: verb; example: He learned how to **breed** cattle.
+- **brush**; forms: brushed (verb), brushes, brushing (verb)
+  - `noun`; tags: noun; group: noun; example: He swept his **brush** across the canvas.
+  - `verb`; tags: verb; group: verb; example: He **brushed** her hand with his.
+- **bubble**; forms: bubbled (verb), bubbles, bubbling (verb)
+  - `noun`; tags: noun; group: noun; example: Want to get some **bubble** tea?
+  - `verb`; tags: verb; group: verb; example: The coffee **bubbled** in the pot.
 - **buffet**; forms: buffets
   - `noun`; tags: noun; group: noun; example: We had lunch at a hotel **buffet**.
   - `verb`; tags: verb; group: verb; example: Hail can **buffet** the crops badly.
+- **bump**; forms: bumped (verb), bumping (verb), bumps
+  - `noun`; tags: noun; group: noun; example: The truck drove over a **bump**.
+  - `verb`; tags: verb; group: verb; example: Sami **bumped** into an old friend.
+- **button**; forms: buttoned (verb), buttoning (verb), buttonned (verb), buttonning (verb), buttons
+  - `noun`; tags: noun; group: noun; example: Tatoeba has a "Log out" **button**.
+  - `verb`; tags: verb; group: verb; example: I need to **button** up my jacket.
 
 ### Lemmas Starting With C
 
+- **call**; forms: called (verb), calling (verb), calls
+  - `noun`; tags: noun; group: noun; example: Mary knows that it's her **call**.
+  - `verb`; tags: verb; group: verb; example: I **call** the girl, and she comes.
+- **camp**; forms: camped (verb), camping (verb), camps
+  - `noun`; tags: noun; group: noun; example: The children are singing around the **camp** fire.
+  - `verb`; tags: verb; group: verb; example: We took our cat Mitten **camping**.
 - **carbonate**; forms: carbonates
   - `noun`; tags: noun; group: noun; example: Pure **carbonate** is a white powder.
   - `verb`; tags: verb; group: verb; example: You can **carbonate** tap water at home.
+- **care**; forms: cared (verb), cares, caring (verb)
+  - `noun`; tags: noun; group: noun; example: "The car will be my next **care**.
+  - `verb`; tags: verb; group: verb; example: How should I **care** for my stitches?
+- **cash**; forms: cashed (verb), cashes, cashing (verb)
+  - `noun`; tags: noun; group: noun; example: He told me he needed some **cash**.
+  - `verb`; tags: verb; group: verb; example: He came to **cash** in the check.
+- **cast**; forms: casted (verb), casting (verb), casts
+  - `noun`; tags: noun; group: noun; example: It was not of a gloomy **cast**.
+  - `verb`; tags: verb; group: verb; example: He **cast** a vote for the proposition.
+- **cause**; forms: caused (verb), causes, causing (verb)
+  - `noun`; tags: noun; group: noun; example: She is working for a good **cause**.
+  - `verb`; tags: verb; group: verb; example: Can reheating rice **cause** food poisoning?
 - **certificate**; forms: certificates
   - `noun`; tags: noun; group: noun; example: The bank holds the stock **certificate**.
   - `verb`; tags: verb; group: verb; example: They did not **certificate** the course.
+- **chain**; forms: chained (verb), chaining (verb), chains
+  - `noun`; tags: noun; group: noun; example: He had no snow **chains** with him.
+  - `verb`; tags: verb; group: verb; example: Ziri is locked up and **chained**.
+- **chance**; forms: chanced (verb), chances, chancing (verb)
+  - `noun`; tags: noun; group: noun; example: I didn't even stand a **chance**.
+  - `verb`; tags: verb; group: verb; example: We didn't want to **chance** it.
+- **change**; forms: changed (verb), changes, changing (verb)
+  - `noun`; tags: noun; group: noun; example: It's time for a **change** of scenery.
+  - `verb`; tags: verb; group: verb; example: You have not **changed** at all.
+- **charm**; forms: charmed (verb), charming (verb), charms
+  - `noun`; tags: noun; group: noun; example: The third time is the **charm**.
+  - `verb`; tags: verb; group: verb; example: He knows how to **charm** this audience.
+- **chase**; forms: chased (verb), chases, chasing (verb)
+  - `noun`; tags: noun; group: noun; example: I think it's a wild goose **chase**.
+  - `verb`; tags: verb; group: verb; example: My only concern is **chasing** money.
+- **check**; forms: checked (verb), checking (verb), checks
+  - `noun`; tags: noun; group: noun; example: Ziri and Rima paid the **check**.
+  - `verb`; tags: verb; group: verb; example: How should I **check** my breasts?
 - **cleanly**; no other forms
   - `adj`; tags: adj; group: adj; example: A **cleanly** maid is a treasure.
   - `adv`; tags: adv; group: adv; example: The bone broke **cleanly** in two.
@@ -209,6 +341,9 @@ inflected forms the lemma recognizes.
   - `adj`; tags: adj, comparative; group: nearer; example: Are they **closer** to agreement?
   - `adv`; tags: adv, comparative; group: nearer; example: The cub cowered **closer** to the ground.
   - `noun`; tags: noun; group: noun; example: Familia began the season as the Mets **closer**.
+- **cloud**; forms: clouded (verb), clouding (verb), clouds
+  - `noun`; tags: noun; group: noun; example: Black **clouds** began to come up.
+  - `verb`; tags: verb; group: verb; example: Her vision was **clouded** by tears.
 - **collect**; forms: collected (collect-verb), collecting (collect-verb), collects
   - `collect-prayer`; tags: noun; group: prayer; example: The Introductory Rites are brought to a close by the
     **Collect** Prayer.
@@ -216,6 +351,9 @@ inflected forms the lemma recognizes.
 - **collocate**; forms: collocates
   - `noun`; tags: noun; group: noun; example: "Heavy" is a common **collocate** of "rain".
   - `verb`; tags: verb; group: verb; example: Idioms **collocate** words in fixed patterns.
+- **colour**; forms: coloured (verb), colouring, colours
+  - `noun`; tags: noun; group: noun; example: Tom's feeling a bit off **colour**.
+  - `verb`; tags: verb; group: verb; example: The glass is **coloured** red and white.
 - **combat**; forms: combated (combat-verb), combating (combat-verb), combats, combatted (combat-verb), combatting
   (combat-verb)
   - `combat-noun`; tags: noun; group: stress-first; example: The form of this **combat** was monstrous.
@@ -224,6 +362,9 @@ inflected forms the lemma recognizes.
 - **combine**; forms: combines
   - `noun`; tags: noun; group: noun; example: He parked the **combine** in the barn.
   - `verb`; tags: verb; group: verb; example: Oil and water do not **combine** easily.
+- **comment**; forms: commented (verb), commenting (verb), comments
+  - `noun`; tags: noun; group: noun; example: I wish I hadn't read the **comments**.
+  - `verb`; tags: verb; group: verb; example: Sami **commented** on his own posts.
 - **commune**; forms: communes
   - `noun`; tags: noun; group: noun; example: He grew up in a hippie **commune**.
   - `verb`; tags: verb; group: verb; example: Do you ever **commune** with the sea?
@@ -331,18 +472,66 @@ inflected forms the lemma recognizes.
 - **counterbalance**; forms: counterbalances
   - `noun`; tags: noun; group: noun; example: A stone **counterbalance** held the gate in place.
   - `verb`; tags: verb; group: verb; example: Does the benefit really **counterbalance** the cost?
+- **court**; forms: courted (verb), courting (verb), courts
+  - `noun`; tags: noun; group: noun; example: Turn that Dormouse out of **court**!
+  - `verb`; tags: verb; group: verb; example: He **courted** disaster by reckless driving.
+- **cover**; forms: covered (verb), covering (verb), coverred (verb), coverring (verb), covers
+  - `noun`; tags: noun; group: noun; example: He did **covers** of famous songs.
+  - `verb`; tags: verb; group: verb; example: The plan **covered** all the risks.
+- **crash**; forms: crashed (verb), crashes, crashing (verb)
+  - `noun`; tags: noun; group: noun; example: With a loud **crash**, he broke them.
+  - `verb`; tags: verb; group: verb; example: The car **crashed** into the truck.
+- **credit**; forms: credited (verb), crediting (verb), credits, creditted (verb), creditting (verb)
+  - `noun`; tags: noun; group: noun; example: We bought a house on **credit**.
+  - `verb`; tags: verb; group: verb; example: He could not **credit** her story.
 - **crooked**; no other forms
   - `adj`; tags: adj; group: adj; example: That **crooked** fence leans toward the road.
   - `verb`; tags: verb; group: verb; example: He **crooked** his arm so she could take it.
+- **cross**; forms: crossed (verb), crosses, crossing (verb)
+  - `noun`; tags: noun; group: noun; example: It's a map, and here's a **cross** on it.
+  - `verb`; tags: verb; group: verb; example: I helped him **cross** the street.
+- **crowd**; forms: crowded (verb), crowding (verb), crowds
+  - `noun`; tags: noun; group: noun; example: Tom performed and the **crowd** applauded.
+  - `verb`; tags: verb; group: verb; example: It being Sunday, the park was **crowded**.
+- **crown**; forms: crowned (verb), crowning (verb), crowns
+  - `noun`; tags: noun; group: noun; example: The king had a weird blue **crown**!
+  - `verb`; tags: verb; group: verb; example: He was **crowned** with eternal victory.
+- **cry**; forms: cried (verb), cries, crying (verb)
+  - `noun`; tags: noun; group: noun; example: Sure enough it ended in a **cry**.
+  - `verb`; tags: verb; group: verb; example: What makes you **cry** like that?
 - **curate**; forms: curates
   - `noun`; tags: noun; group: noun; example: She married a **curate** from a nearby town.
   - `verb`; tags: verb; group: verb; example: He can **curate** a feed that suits any mood.
+- **cure**; forms: cured (verb), cures, curing
+  - `noun`; tags: noun; group: noun; example: His illness is without a **cure**.
+  - `verb`; tags: verb; group: verb; example: Love is a sickness **cured** by time.
+- **cycle**; forms: cycled (verb), cycles, cycling (verb)
+  - `noun`; tags: noun; group: noun; example: He was doomed to repeat the **cycle**.
+  - `verb`; tags: verb; group: verb; example: He came **cycling** down the hill.
 
 ### Lemmas Starting With D
 
+- **damage**; forms: damaged (verb), damages, damaging (verb)
+  - `noun`; tags: noun; group: noun; example: What sort of **damage** did he cause?
+  - `verb`; tags: verb; group: verb; example: This plastic is not **damaged** by fire.
+- **dance**; forms: danced (verb), dances, dancing (verb)
+  - `noun`; tags: noun; group: noun; example: A **dance** will be held on Friday.
+  - `verb`; tags: verb; group: verb; example: The fairies **danced** in wispy gowns.
+- **dawn**; forms: dawned (verb), dawning (verb), dawns
+  - `noun`; tags: noun; group: noun; example: He emerged from sleep at **dawn**.
+  - `verb`; tags: verb; group: verb; example: The truth began to **dawn** on Tom.
+- **deal**; forms: dealed (verb), dealing (verb), deals, dealt (verb)
+  - `noun`; tags: noun; group: noun; example: Is it really such a big **deal**?
+  - `verb`; tags: verb; group: verb; example: Pierre **dealt** cards to all the players.
+- **decline**; forms: declined (verb), declines, declining (verb)
+  - `noun`; tags: noun; group: noun; example: Algeria's economy is experiencing a sharp **decline**.
+  - `verb`; tags: verb; group: verb; example: I'm positive you won't be **declined**.
 - **decrease**; forms: decreases
   - `noun`; tags: noun; group: noun; example: That **decrease** in rainfall hurt the harvest.
   - `verb`; tags: verb; group: verb; example: Her fever did not **decrease** overnight.
+- **defeat**; forms: defeated (verb), defeating (verb), defeats
+  - `noun`; tags: noun; group: noun; example: Every life is a string of **defeats**.
+  - `verb`; tags: verb; group: verb; example: That kind of **defeats** the purpose.
 - **defect**; forms: defects
   - `noun`; tags: noun; group: noun; example: Her only real **defect** is a short temper.
   - `verb`; tags: verb; group: verb; example: Few citizens dared to **defect** from the regime.
@@ -352,15 +541,30 @@ inflected forms the lemma recognizes.
 - **degenerate**; forms: degenerates (verb)
   - `adj`; tags: adj; group: adj; example: The **degenerate** triangle had zero area.
   - `verb`; tags: verb; group: verb; example: Healthy cells can **degenerate** slowly with age.
+- **delay**; forms: delayed (verb), delaying (verb), delays
+  - `noun`; tags: noun; group: noun; example: What’s the reason for the **delay**?
+  - `verb`; tags: verb; group: verb; example: Let us not **delay** any further.
 - **delegate**; forms: delegates
   - `noun`; tags: noun; group: noun; example: No **delegate** objected to the proposal.
   - `verb`; tags: verb; group: verb; example: Good managers **delegate** tasks to their team.
 - **deliberate**; forms: deliberates (verb)
   - `adj`; tags: adj; group: adj; example: He spoke in a calm, **deliberate** voice.
   - `verb`; tags: verb; group: verb; example: The board **deliberates** behind closed doors.
+- **delight**; forms: delighted (verb), delighting (verb), delights
+  - `noun`; tags: noun; group: noun; example: Neither **delight** nor sorrow is permanent.
+  - `verb`; tags: verb; group: verb; example: Ivan was **delighted** by the result.
+- **demand**; forms: demanded (verb), demanding (verb), demands
+  - `noun`; tags: noun; group: noun; example: Did they agree to all the **demands**?
+  - `verb`; tags: verb; group: verb; example: I **demand** to speak with my lawyer.
+- **deposit**; forms: deposited (verb), depositing (verb), deposits, depositted (verb), depositting (verb)
+  - `noun`; tags: noun; group: noun; example: I need to go make a **deposit**.
+  - `verb`; tags: verb; group: verb; example: I've **deposited** the papers with him.
 - **desert**; forms: deserts
   - `noun`; tags: noun; group: noun; example: Cacti grow well in the **desert**.
   - `verb`; tags: verb; group: verb; example: Many soldiers **desert** when food runs out.
+- **desire**; forms: desired (verb), desires, desiring (verb)
+  - `noun`; tags: noun; group: noun; example: I've no **desire** to defend myself.
+  - `verb`; tags: verb; group: verb; example: We soon believe what we **desire**.
 - **desolate**; forms: desolates (verb)
   - `adj`; tags: adj; group: adj; example: She stood alone in the **desolate** house.
   - `verb`; tags: verb; group: verb; example: Heavy mining will **desolate** the hillside.
@@ -400,6 +604,12 @@ inflected forms the lemma recognizes.
 - **discourse**; forms: discourses
   - `noun`; tags: noun; group: noun; example: Civil **discourse** is rare on the internet.
   - `verb`; tags: verb; group: verb; example: Would you care to **discourse** on that subject?
+- **dispute**; forms: disputed (verb), disputes, disputing (verb)
+  - `noun`; tags: noun; group: noun; example: The **dispute** has finally been settled.
+  - `verb`; tags: verb; group: verb; example: I don't want to **dispute** that.
+- **divorce**; forms: divorced (verb), divorces, divorcing (verb)
+  - `noun`; tags: noun; group: noun; example: Do you want to get a **divorce**?
+  - `verb`; tags: verb; group: verb; example: I think she will **divorce** him.
 - **document**; forms: documents
   - `noun`; tags: noun; group: noun; example: He emailed the **document** to his lawyer.
   - `verb`; tags: verb; group: verb; example: Why did they not **document** the changes?
@@ -409,12 +619,45 @@ inflected forms the lemma recognizes.
 - **dove**; forms: doves (noun)
   - `noun`; tags: noun; group: noun; example: The **dove** is a symbol of peace.
   - `verb`; tags: verb; group: verb; example: He **dove** headfirst into the pool.
+- **drag**; forms: dragged (verb), dragging (verb), drags
+  - `noun`; tags: noun; group: noun; example: Tom is Mary's **drag** king name.
+  - `verb`; tags: verb; group: verb; example: He was **dragged** to the bottom.
+- **drain**; forms: drained (verb), draining (verb), drains
+  - `noun`; tags: noun; group: noun; example: That is money down the **drain**.
+  - `verb`; tags: verb; group: verb; example: This business **drained** my bank account.
+- **draw**; forms: drawed (verb), drawing (verb), drawn (verb), draws, drew (verb)
+  - `noun`; tags: noun; group: noun; example: The movie was a big **draw** at the box office.
+  - `verb`; tags: verb; group: verb; example: She **drew** a line in the dirt.
+- **drill**; forms: drilled (verb), drilling, drills
+  - `noun`; tags: noun; group: noun; example: Make a hole in the bone with a **drill**.
+  - `verb`; tags: verb; group: verb; example: They intended to **drill** for oil.
+- **drink**; forms: drinked (verb), drinking (verb), drinks
+  - `noun`; tags: noun; group: noun; example: 'Number one may take a **drink**.'
+  - `verb`; tags: verb; group: verb; example: I want to **drink** coconut milk.
+- **drive**; forms: drived (verb), driven (verb), drives, driving (verb), drove (verb)
+  - `noun`; tags: noun; group: noun; example: Tom put the vehicle in **drive**.
+  - `verb`; tags: verb; group: verb; example: He is not able to **drive** a car.
+- **duck**; forms: ducked (verb), ducking (verb), ducks
+  - `noun`; tags: noun; group: noun; example: My son's rubber **duck** is yellow.
+  - `verb`; tags: verb; group: verb; example: Tom **ducked** down behind his desk.
+- **dump**; forms: dumped (verb), dumping (verb), dumps
+  - `noun`; tags: noun; group: noun; example: He might need a bigger **dump**.
+  - `verb`; tags: verb; group: verb; example: He **dumped** me over the phone.
 - **duplicate**; forms: duplicates
   - `noun`; tags: noun; group: noun; example: Delete each **duplicate** to save disk space.
   - `verb`; tags: verb; group: verb; example: He **duplicates** each form by hand.
+- **dust**; forms: dusted (verb), dusting (verb), dusts
+  - `noun`; tags: noun; group: noun; example: These desks are covered in **dust**.
+  - `verb`; tags: verb; group: verb; example: Someone needs to **dust** this room.
 
 ### Lemmas Starting With E
 
+- **ease**; forms: eased (verb), eases, easing (verb)
+  - `noun`; tags: noun; group: noun; example: He made her laugh with **ease**.
+  - `verb`; tags: verb; group: verb; example: These pills will **ease** the pain.
+- **effect**; forms: effected (verb), effecting (verb), effects
+  - `noun`; tags: noun; group: noun; example: The **effect** of this drug was immediate.
+  - `verb`; tags: verb; group: verb; example: I hope to **effect** positive change in the world.
 - **egress**; forms: egressed (egress-verb), egresses
   - `egress-noun`; tags: noun; group: stress-first; example: What did each do at the door of **egress**?
   - `egress-verb`; tags: verb; group: stress-last; example: Water that **egresses** from the tank passes through a
@@ -429,6 +672,15 @@ inflected forms the lemma recognizes.
   - `ellipses-ellipse`; tags: noun; group: ellipse; example: For the simple two-body problem, all orbits are
     **ellipses**.
   - `ellipses-ellipsis`; tags: noun; group: ellipsis; example: Before the **ellipses**, you need a space.
+- **embrace**; forms: embraced (verb), embraces, embracing (verb)
+  - `noun`; tags: noun; group: noun; example: I miss the warmth of his **embraces**.
+  - `verb`; tags: verb; group: verb; example: They **embrace** change with open minds.
+- **encounter**; forms: encountered (verb), encountering (verb), encounterred (verb), encounterring (verb), encounters
+  - `noun`; tags: noun; group: noun; example: In spring, I await many **encounters**!
+  - `verb`; tags: verb; group: verb; example: In my dream, I **encountered** a wolf.
+- **end**; forms: ended (verb), ending (verb), ends
+  - `noun`; tags: noun; group: noun; example: Is there an **end** to knowledge?
+  - `verb`; tags: verb; group: verb; example: The race seemed to never **end**.
 - **enervate**; forms: enervates (verb)
   - `adj`; tags: adj; group: adj; example: Too **enervate** to argue, she simply nodded.
   - `verb`; tags: verb; group: verb; example: Do not let idleness **enervate** your discipline.
@@ -438,6 +690,9 @@ inflected forms the lemma recognizes.
 - **entrance**; forms: entrances
   - `noun`; tags: noun; group: noun; example: A narrow **entrance** led into the cave.
   - `verb`; tags: verb; group: verb; example: The dancer's grace will **entrance** you.
+- **escape**; forms: escaped (verb), escapes, escaping (verb)
+  - `noun`; tags: noun; group: noun; example: Tom pointed to the fire **escape**.
+  - `verb`; tags: verb; group: verb; example: One could not **escape** from them.
 - **escort**; forms: escorts
   - `noun`; tags: noun; group: noun; example: Prisoners moved only with a guard **escort**.
   - `verb`; tags: verb; group: verb; example: Who will **escort** the bride down the aisle?
@@ -461,9 +716,15 @@ inflected forms the lemma recognizes.
 - **excuse**; forms: excuses
   - `noun`; tags: noun; group: noun; example: "I forgot" is not a valid **excuse**.
   - `verb`; tags: verb; group: verb; example: **Excuse** me, is this seat taken?
+- **exit**; forms: exited (verb), exiting (verb), exits, exitted (verb), exitting (verb)
+  - `noun`; tags: noun; group: noun; example: They turned off at the wrong **exit**.
+  - `verb`; tags: verb; group: verb; example: Tap to **exit** full screen mode.
 - **expatriate**; forms: expatriates
   - `noun`; tags: noun; group: noun; example: He lived for decades as an **expatriate** in Mexico.
   - `verb`; tags: verb; group: verb; example: The regime tried to **expatriate** its critics.
+- **experience**; forms: experienced (verb), experiences, experiencing (verb)
+  - `noun`; tags: noun; group: noun; example: I was very pleased with my **experience** here.
+  - `verb`; tags: verb; group: verb; example: I have never **experienced** anything like it.
 - **explant**; forms: explants
   - `noun`; tags: noun; group: noun; example: Roots sprouted from the **explant** within days.
   - `verb`; tags: verb; group: verb; example: Why did they **explant** the sample so early?
@@ -476,22 +737,82 @@ inflected forms the lemma recognizes.
 - **extract**; forms: extracts
   - `noun`; tags: noun; group: noun; example: Beef **extract** makes the soup richer.
   - `verb`; tags: verb; group: verb; example: Use pliers to **extract** the rusty nail.
+- **eye**; forms: eyed (verb), eyeing (verb), eyes
+  - `noun`; tags: noun; group: noun; example: He kept an **eye** on Christopher.
+  - `verb`; tags: verb; group: verb; example: They **eyed** each other in silence.
 
 ### Lemmas Starting With F
 
+- **face**; forms: faced (verb), faces, facing (verb)
+  - `noun`; tags: noun; group: noun; example: I put the mask close to my **face**.
+  - `verb`; tags: verb; group: verb; example: The barcode has to be **facing** up.
+- **fail**; forms: failed (verb), failing (verb), fails
+  - `noun`; tags: noun; group: noun; example: I will call you without **fail**.
+  - `verb`; tags: verb; group: verb; example: I shall not **fail** to correspond.
+- **favor**; forms: favored (verb), favoring (verb), favorred (verb), favorring (verb), favors
+  - `noun`; tags: noun; group: noun; example: We didn't ask for any **favors**.
+  - `verb`; tags: verb; group: verb; example: I always try to **favor** my bad knee.
+- **favour**; forms: favoured (verb), favouring (verb), favours
+  - `noun`; tags: noun; group: noun; example: I have a **favour** to ask of you.
+  - `verb`; tags: verb; group: verb; example: If you endeavour, fate will **favour** you.
+- **feature**; forms: featured (verb), features, featuring (verb)
+  - `noun`; tags: noun; group: noun; example: Just previews and the main **feature**.
+  - `verb`; tags: verb; group: verb; example: The air show **features** various warplanes.
 - **federate**; no other forms
   - `adj`; tags: adj; group: adj; example: Is the committee **federate** or centralized?
   - `verb`; tags: verb; group: verb; example: Cities often **federate** to share resources.
+- **feed**; forms: feeded (verb), feeding (verb), feeds
+  - `noun`; tags: noun; group: noun; example: I'll offer some **feed** to the hens.
+  - `verb`; tags: verb; group: verb; example: The vixen is **feeding** her cubs.
+- **feel**; forms: feeled (verb), feeling (verb), feels
+  - `noun`; tags: noun; group: noun; example: The room had a nice cosy **feel**.
+  - `verb`; tags: verb; group: verb; example: Ziri is **feeling** a lot worse.
 - **ferment**; forms: ferments
   - `noun`; tags: noun; group: noun; example: A **ferment** of new ideas filled the age.
   - `verb`; tags: verb; group: verb; example: How long does tea take to **ferment**?
+- **fight**; forms: fighted (verb), fighting (verb), fights
+  - `noun`; tags: noun; group: noun; example: They had a **fight** last night.
+  - `verb`; tags: verb; group: verb; example: Freedom is what we're **fighting** for.
+- **figure**; forms: figured (verb), figures, figuring (verb)
+  - `noun`; tags: noun; group: noun; example: It was a human **figure** running.
+  - `verb`; tags: verb; group: verb; example: Did you **figure** out what was wrong?
+- **file**; forms: filed (verb), files, filing (verb)
+  - `noun`; tags: noun; group: noun; example: Send it to me as a compressed **file**.
+  - `verb`; tags: verb; group: verb; example: We can **file** charges against Tom.
+- **finance**; forms: financed (verb), finances, financing (verb)
+  - `noun`; tags: noun; group: noun; example: Tom has a degree in **finance**.
+  - `verb`; tags: verb; group: verb; example: They'll **finance** your trip to Algeria.
+- **fix**; forms: fixed (verb), fixes, fixing (verb)
+  - `noun`; tags: noun; group: noun; example: He will wriggle out of the **fix**.
+  - `verb`; tags: verb; group: verb; example: Can you **fix** the flat tire now?
+- **flash**; forms: flashed (verb), flashes, flashing (verb)
+  - `noun`; tags: noun; group: noun; example: Have you seen my **flash** drive?
+  - `verb`; tags: verb; group: verb; example: Tom **flashed** his headlights at Mary.
+- **flood**; forms: flooded (verb), flooding, floods
+  - `noun`; tags: noun; group: noun; example: I was not affected by the **flood**.
+  - `verb`; tags: verb; group: verb; example: Her soul was **flooded** with happiness.
+- **flush**; forms: flushed (verb), flushes, flushing (verb)
+  - `noun`; tags: noun; group: noun; example: Can you beat a straight **flush**?
+  - `verb`; tags: verb; group: verb; example: Push the lever down to **flush**.
+- **fly**; forms: flew (verb), flied (verb), flies, flown (verb), flying (verb)
+  - `noun`; tags: noun; group: noun; example: A **fly** fell into my cup of coffee.
+  - `verb`; tags: verb; group: verb; example: He really doesn't like to **fly**.
+- **fold**; forms: folded (verb), folding (verb), folds
+  - `noun`; tags: noun; group: noun; example: China wants Taiwan to return to its **fold**.
+  - `verb`; tags: verb; group: verb; example: **Fold** the paper in the middle.
 - **foliate**; no other forms
   - `adj`; tags: adj; group: adj; example: A **foliate** ornament framed the doorway.
   - `verb`; tags: verb; group: verb; example: Slates **foliate** along neat planes.
+- **fool**; forms: fooled (verb), fooling (verb), fools
+  - `noun`; tags: noun; group: noun; example: Tom won't suffer a **fool** gladly.
+  - `verb`; tags: verb; group: verb; example: They **fooled** a lot of people.
 - **forbear**; forms: forbears, forbore (forbear-verb), forborne (forbear-verb)
   - `forbear-ancestor`; tags: noun; group: stress-first; example: Do you ever wonder what your distant **forbears**
     would think of the way you live now?
   - `forbear-verb`; tags: verb; group: stress-last; example: The Pilgrim could not **forbear** smiling.
+- **force**; forms: forced (verb), forces, forcing (verb)
+  - `noun`; tags: noun; group: noun; example: They dragged us away by **force**.
+  - `verb`; tags: verb; group: verb; example: Gabor **forced** his daugther to leave Uni.
 - **forearm**; forms: forearmed (forearm-verb), forearms
   - `forearm-noun`; tags: noun; group: stress-first; example: Tom has a tattoo on his **forearm**.
   - `forearm-verb`; tags: verb; group: stress-last; example: Reading the weather reports each morning **forearms** the
@@ -502,12 +823,27 @@ inflected forms the lemma recognizes.
 - **fragment**; forms: fragments
   - `noun`; tags: noun; group: noun; example: A **fragment** of glass cut his hand.
   - `verb`; tags: verb; group: verb; example: The glass will **fragment** if you drop it.
+- **frame**; forms: framed (verb), frames, framing (verb)
+  - `noun`; tags: noun; group: noun; example: She put the slat down on the bed **frame**.
+  - `verb`; tags: verb; group: verb; example: Tom **framed** the picture of Mary.
+- **freak**; forms: freaked (verb), freaking (verb), freaks
+  - `noun`; tags: noun; group: noun; example: I didn't want to be a **freak**.
+  - `verb`; tags: verb; group: verb; example: He said that he **freaked** out.
 - **frequent**; forms: frequented (frequent-verb), frequenting (frequent-verb), frequents
   - `frequent-adj`; tags: adj; group: adj; example: Hannah, the servant, was my most **frequent** visitor.
   - `frequent-verb`; tags: verb; group: verb; example: "Certainly, just as spies **frequent** hostile camps.
+- **function**; forms: functioned (verb), functioning, functions
+  - `noun`; tags: noun; group: noun; example: The search **function** has too few options.
+  - `verb`; tags: verb; group: verb; example: The liver is no longer **functioning**.
+- **fund**; forms: funded (verb), funding (verb), funds
+  - `noun`; tags: noun; group: noun; example: I don't have any source of **funds**.
+  - `verb`; tags: verb; group: verb; example: His project was **funded** by grants.
 
 ### Lemmas Starting With G
 
+- **gain**; forms: gained (verb), gaining (verb), gains
+  - `noun`; tags: noun; group: noun; example: "Do we not all work for **gain**?
+  - `verb`; tags: verb; group: verb; example: I want to **gain** thirty pounds.
 - **gallant**; forms: gallantly (gallant-brave), gallants (gallant-suitor)
   - `gallant-brave`; tags: adj; group: brave; example: Ladies are carrying off our **gallant** soldiers from their duty.
   - `gallant-courtly`; tags: adj; group: courtly; example: He is a very **gallant** gentleman.
@@ -515,18 +851,75 @@ inflected forms the lemma recognizes.
 - **geminate**; no other forms
   - `adj`; tags: adj; group: adj; example: The **geminate** stalks bore tiny flowers.
   - `verb`; tags: verb; group: verb; example: Don't **geminate** the sound in this syllable.
+- **gift**; forms: gifted (verb), gifting, gifts
+  - `noun`; tags: noun; group: noun; example: He came to give Brandon a **gift**.
+  - `verb`; tags: verb; group: verb; example: He **gifted** her a box of chocolates.
+- **glance**; forms: glanced (verb), glances, glancing (verb)
+  - `noun`; tags: noun; group: noun; example: She took a casual **glance** at her watch.
+  - `verb`; tags: verb; group: verb; example: She **glanced** at the clock nervously.
+- **gossip**; forms: gossiped (verb), gossiping, gossipped (verb), gossipping (verb), gossips
+  - `noun`; tags: noun; group: noun; example: Avoid negative **gossip** like the plague.
+  - `verb`; tags: verb; group: verb; example: Why do you **gossip** about her?
 - **graduate**; forms: graduates
   - `noun`; tags: noun; group: noun; example: A Harvard **graduate** led the research team.
   - `verb`; tags: verb; group: verb; example: She did not **graduate** on time.
+- **grasp**; forms: grasped (verb), grasping (verb), grasps
+  - `noun`; tags: noun; group: noun; example: He has a good **grasp** of English.
+  - `verb`; tags: verb; group: verb; example: The drowning man **grasped** at the rope.
+- **grip**; forms: gripped (verb), gripping (verb), grips
+  - `noun`; tags: noun; group: noun; example: in the **grip** of a blackmailer
+  - `verb`; tags: verb; group: verb; example: Dread **gripped** each and every one.
+- **guard**; forms: guarded (verb), guarding (verb), guards
+  - `noun`; tags: noun; group: noun; example: Mary is a security **guard**, isn't she?
+  - `verb`; tags: verb; group: verb; example: I choose to keep my heart **guarded**.
 - **guesstimate**; forms: guesstimates
   - `noun`; tags: noun; group: noun; example: A wild **guesstimate** won't help the budget.
   - `verb`; tags: verb; group: verb; example: Don't just **guesstimate**; measure it.
+- **guide**; forms: guided (verb), guides, guiding (verb)
+  - `noun`; tags: noun; group: noun; example: I looked for a map in the **guide**.
+  - `verb`; tags: verb; group: verb; example: Do the stars **guide** your way?
 
 ### Lemmas Starting With H
 
+- **halt**; forms: halted (verb), halting (verb), halts
+  - `noun`; tags: noun; group: noun; example: Production came grinding to a **halt**.
+  - `verb`; tags: verb; group: verb; example: The soldiers **halted** at the entrance to the town.
+- **hammer**; forms: hammered (verb), hammering (verb), hammerred (verb), hammerring (verb), hammers
+  - `noun`; tags: noun; group: noun; example: I whacked my finger with a **hammer**.
+  - `verb`; tags: verb; group: verb; example: Six years I **hammered** at the fiddle.
+- **hand**; forms: handed (verb), handing (verb), hands
+  - `noun`; tags: noun; group: noun; example: The pencil fell out of my **hand**.
+  - `verb`; tags: verb; group: verb; example: Could you **hand** me that wrench?
+- **handle**; forms: handled (verb), handles, handling (verb)
+  - `noun`; tags: noun; group: noun; example: I've put a new **handle** on the door.
+  - `verb`; tags: verb; group: verb; example: Mary knows how to **handle** herself.
+- **harm**; forms: harmed (verb), harming (verb), harms
+  - `noun`; tags: noun; group: noun; example: Do no **harm**, but take no shit.
+  - `verb`; tags: verb; group: verb; example: Do not hit, yell, or **harm** them.
+- **hate**; forms: hated (verb), hates, hating (verb)
+  - `noun`; tags: noun; group: noun; example: Love is blind. **Hate** is also blind.
+  - `verb`; tags: verb; group: verb; example: I **hate** living in a big city.
+- **head**; forms: headed (verb), heading (verb), heads
+  - `noun`; tags: noun; group: noun; example: A great thought came to my **head**.
+  - `verb`; tags: verb; group: verb; example: Tom **headed** back to the office.
+- **honor**; forms: honored (verb), honoring (verb), honorred (verb), honorring (verb), honors
+  - `noun`; tags: noun; group: noun; example: It's an **honor** to be with you.
+  - `verb`; tags: verb; group: verb; example: I'm **honored** to work with Tom.
+- **hook**; forms: hooked (verb), hooking (verb), hooks
+  - `noun`; tags: noun; group: noun; example: Tom can use a grappling **hook**.
+  - `verb`; tags: verb; group: verb; example: Tom is **hooked** up to a respirator.
+- **hope**; forms: hoped (verb), hopes, hoping (verb)
+  - `noun`; tags: noun; group: noun; example: You were making Tom lose **hope**.
+  - `verb`; tags: verb; group: verb; example: I **hope** you live a long life.
+- **host**; forms: hosted (verb), hosting (verb), hosts
+  - `noun`; tags: noun; group: noun; example: My **host** family often advises me.
+  - `verb`; tags: verb; group: verb; example: The city is **hosting** the fair.
 - **house**; forms: houses
   - `noun`; tags: noun; group: noun; example: Dinner is on the **house** tonight.
   - `verb`; tags: verb; group: verb; example: Bunkers **house** the stored grain.
+- **hunt**; forms: hunted (verb), hunting, hunts
+  - `noun`; tags: noun; group: noun; example: A **hunt** is on for the runaway.
+  - `verb`; tags: verb; group: verb; example: She said she didn't **hunt** anymore.
 
 ### Lemmas Starting With I
 
@@ -582,6 +975,9 @@ inflected forms the lemma recognizes.
 - **infix**; forms: infixes
   - `noun`; tags: noun; group: noun; example: English has few true **infixes**.
   - `verb`; tags: verb; group: verb; example: The language does not **infix** nouns.
+- **influence**; forms: influenced (verb), influences, influencing (verb)
+  - `noun`; tags: noun; group: noun; example: He has great **influence** in his country.
+  - `verb`; tags: verb; group: verb; example: I admit that it **influenced** me.
 - **initiate**; forms: initiates
   - `noun`; tags: noun; group: noun; example: He was an **initiate** of the order.
   - `verb`; tags: verb; group: verb; example: Who will **initiate** the conversation?
@@ -606,6 +1002,9 @@ inflected forms the lemma recognizes.
 - **interdict**; forms: interdicts
   - `noun`; tags: noun; group: noun; example: She challenged the **interdict** in a higher court.
   - `verb`; tags: verb; group: verb; example: The treaty does not **interdict** peaceful trade.
+- **interest**; forms: interested (verb), interesting, interests
+  - `noun`; tags: noun; group: noun; example: Thanks for your **interest** in me.
+  - `verb`; tags: verb; group: verb; example: "I shall **interest** you by and by.
 - **intergrade**; forms: intergrades
   - `noun`; tags: noun; group: noun; example: This soil type is an **intergrade** of clay and loam.
   - `verb`; tags: verb; group: verb; example: Traits **intergrade** slowly from east to west.
@@ -643,50 +1042,146 @@ inflected forms the lemma recognizes.
 - **invite**; forms: invites
   - `noun`; tags: noun; group: noun; example: She declined the **invite** politely.
   - `verb`; tags: verb; group: verb; example: Can we **invite** the neighbors, too?
+- **iron**; forms: ironed (verb), ironing (verb), ironned (verb), ironning (verb), irons
+  - `noun`; tags: noun; group: noun; example: You have too many **irons** in the fire.
+  - `verb`; tags: verb; group: verb; example: He watches TV while he **irons**.
 - **isolate**; forms: isolates
   - `noun`; tags: noun; group: noun; example: That **isolate** may represent a new species.
   - `verb`; tags: verb; group: verb; example: We need to **isolate** the cause of the leak.
+- **issue**; forms: issued (verb), issues, issuing (verb)
+  - `noun`; tags: noun; group: noun; example: He focuses on human rights **issues**.
+  - `verb`; tags: verb; group: verb; example: Governments borrow money by **issuing** bonds.
 
 ### Lemmas Starting With J
 
 - **jagged**; no other forms
   - `adj`; tags: adj; group: adj; example: The coastline looks **jagged** from the air.
   - `verb`; tags: verb; group: verb; example: The fence line **jagged** toward the barn.
+- **jerk**; forms: jerked (verb), jerking (verb), jerks
+  - `noun`; tags: noun; group: noun; example: How could I have been such a **jerk**?
+  - `verb`; tags: verb; group: verb; example: He **jerked** his arm out of my grasp.
+- **joke**; forms: joked (verb), jokes, joking (verb)
+  - `noun`; tags: noun; group: noun; example: The child laughed at the **joke**.
+  - `verb`; tags: verb; group: verb; example: I hope Mary was just **joking**.
+- **judge**; forms: judged (verb), judges, judging (verb)
+  - `noun`; tags: noun; group: noun; example: Tom is a good **judge** of character.
+  - `verb`; tags: verb; group: verb; example: Don't **judge** people by their looks.
+
+### Lemmas Starting With K
+
+- **kick**; forms: kicked (verb), kicking (verb), kicks
+  - `noun`; tags: noun; group: noun; example: Did you do it just for **kicks**?
+  - `verb`; tags: verb; group: verb; example: It's hard to **kick** a bad habit.
+- **kid**; forms: kidded (verb), kidding (verb), kids
+  - `noun`; tags: noun; group: noun; example: Let Grandma take care of the **kid**.
+  - `verb`; tags: verb; group: verb; example: You have got to be **kidding** me.
+- **kiss**; forms: kissed (verb), kisses, kissing
+  - `noun`; tags: noun; group: noun; example: I gave him a **kiss** on the cheek.
+  - `verb`; tags: verb; group: verb; example: Tom **kissed** Cookie on the head.
+- **knock**; forms: knocked (verb), knocking (verb), knocks
+  - `noun`; tags: noun; group: noun; example: We heard a **knock** on the door.
+  - `verb`; tags: verb; group: verb; example: Médus is **knocking** on the door.
 
 ### Lemmas Starting With L
 
 - **laminate**; forms: laminates
   - `noun`; tags: noun; group: noun; example: The sample was a thin plastic **laminate**.
   - `verb`; tags: verb; group: verb; example: Does your office **laminate** badges?
+- **land**; forms: landed (verb), landing (verb), lands
+  - `noun`; tags: noun; group: noun; example: I am benefiting from that **land**.
+  - `verb`; tags: verb; group: verb; example: Tomorrow he **lands** on the moon.
+- **launch**; forms: launched (verb), launches, launching (verb)
+  - `noun`; tags: noun; group: noun; example: I'm looking forward to the **launch**.
+  - `verb`; tags: verb; group: verb; example: She **launched** herself into her work.
+- **lay**; forms: laid (verb), laying (verb), lays
+  - `noun`; tags: noun; group: noun; example: What was her line or her **lay**?
+  - `verb`; tags: verb; group: verb; example: You're **laying** it on too thick.
 - **lead**; forms: leading (guide-noun, guide-verb), leads, led (guide-verb)
   - `guide-noun`; tags: noun; group: guide; example: Our band needs a **lead** guitarist.
   - `guide-verb`; tags: verb; group: guide; example: He **led** the posse through the mountains.
   - `metal`; tags: noun; group: metal; example: I measured it with the **lead** line.
+- **leak**; forms: leaked (verb), leaking (verb), leaks
+  - `noun`; tags: noun; group: noun; example: There's a **leak** in that pipe.
+  - `verb`; tags: verb; group: verb; example: The source code had been **leaked**.
 - **learned**; no other forms
   - `adj`; tags: adj; group: adj; example: He seemed **learned** beyond his years.
   - `verb`; tags: verb; group: verb; example: She never **learned** how to drive.
+- **leave**; forms: leaved (verb), leaves, leaving (verb)
+  - `noun`; tags: noun; group: noun; example: Might I beg **leave** to accompany you?
+  - `verb`; tags: verb; group: verb; example: The train **leaves** at 6 o'clock.
+- **lecture**; forms: lectured (verb), lectures, lecturing (verb)
+  - `noun`; tags: noun; group: noun; example: Did you take notes during the **lecture**?
+  - `verb`; tags: verb; group: verb; example: I don't need to be **lectured** by you.
 - **legitimate**; forms: legitimates
   - `adj`; tags: adj; group: adj; example: Is this website **legitimate** or a scam?
   - `verb`; tags: verb; group: verb; example: They did not **legitimate** the treaty.
+- **lift**; forms: lifted (verb), lifting (verb), lifts
+  - `noun`; tags: noun; group: noun; example: He gave me a **lift** in his cart.
+  - `verb`; tags: verb; group: verb; example: I hope that the fog will **lift** soon.
+- **like**; forms: liked (verb), likes, liking (verb)
+  - `noun`; tags: noun; group: noun; example: Tell me your **likes** and dislikes.
+  - `verb`; tags: verb; group: verb; example: I would **like** to write a book.
+- **limit**; forms: limited (verb), limiting (verb), limits, limitted (verb), limitting (verb)
+  - `noun`; tags: noun; group: noun; example: Tom was over the legal **limit**.
+  - `verb`; tags: verb; group: verb; example: Try to **limit** your sugar intake.
+- **line**; forms: lined (verb), lines, lining (verb)
+  - `noun`; tags: noun; group: noun; example: Tom works in the front **lines**.
+  - `verb`; tags: verb; group: verb; example: He told the boys to **line** up.
+- **link**; forms: linked (verb), linking (verb), links
+  - `noun`; tags: noun; group: noun; example: Thanks for the **link** you sent me.
+  - `verb`; tags: verb; group: verb; example: How can I **link** or unlink sentences?
+- **list**; forms: listed (verb), listing (verb), lists
+  - `noun`; tags: noun; group: noun; example: Did you discuss any of the issues on our **list**?
+  - `verb`; tags: verb; group: verb; example: She has too many hobbies to **list**.
 - **live**; forms: lives (verb)
   - `adj`; tags: adj; group: adj; example: Be careful, that is a **live** wire.
   - `adv`; tags: adv; group: adv; example: The show was broadcast **live**.
   - `verb`; tags: verb; group: verb; example: He **lives** alone in a tiny cabin.
+- **lock**; forms: locked (verb), locking (verb), locks
+  - `noun`; tags: noun; group: noun; example: Give me the key to this **lock**!
+  - `verb`; tags: verb; group: verb; example: Mary said her house was **locked**.
+- **lounge**; forms: lounged (verb), lounges, lounging (verb)
+  - `noun`; tags: noun; group: noun; example: Our **lounge** is lovely and sunny.
+  - `verb`; tags: verb; group: verb; example: She was **lounging** on the sofa.
 - **lunged**; no other forms
   - `adj`; tags: adj; group: adj; example: Choir directors favor a full-**lunged** tenor.
   - `verb`; tags: verb; group: verb; example: Why **lunged** he at the referee?
 
 ### Lemmas Starting With M
 
+- **mail**; forms: mailed (verb), mailing (verb), mails
+  - `noun`; tags: noun; group: noun; example: Did you already get my **mail**?
+  - `verb`; tags: verb; group: verb; example: I'm going to **mail** this letter.
 - **marginate**; no other forms
   - `adj`; tags: adj; group: adj; example: The **marginate** shell has a thickened rim.
   - `verb`; tags: verb; group: verb; example: Editors **marginate** proofs with corrections.
+- **mark**; forms: marked (verb), marking (verb), marks
+  - `noun`; tags: noun; group: noun; example: Don't assume a pockmarked face has no **marks**.
+  - `verb`; tags: verb; group: verb; example: I will manage. **Mark** my words.
+- **master**; forms: mastered (verb), mastering (verb), masterred (verb), masterring (verb), masters
+  - `noun`; tags: noun; group: noun; example: As is the **master**, so is the servant.
+  - `verb`; tags: verb; group: verb; example: She works hard to **master** her skills.
+- **mean**; forms: meaned (verb), meaning (verb), means, meant (verb)
+  - `noun`; tags: noun; group: noun; example: I'm a person of little **means**.
+  - `verb`; tags: verb; group: verb; example: I **mean** those of the 10th of June.
+- **measure**; forms: measured (verb), measures, measuring (verb)
+  - `noun`; tags: noun; group: noun; example: He did not it with half **measures** with him.
+  - `verb`; tags: verb; group: verb; example: How can I **measure** my Berber fluency?
 - **mediate**; forms: mediates (verb)
   - `adj`; tags: adj; group: adj; example: Such a **mediate** relation is hard to prove.
   - `verb`; tags: verb; group: verb; example: She was asked to **mediate** the talks.
+- **mention**; forms: mentioned (verb), mentioning (verb), mentions
+  - `noun`; tags: noun; group: noun; example: No **mention** is made of that fact.
+  - `verb`; tags: verb; group: verb; example: Why didn't you **mention** that before?
 - **merchandise**; forms: merchandises
   - `noun`; tags: noun; group: noun; example: Imported **merchandise** faces a new tax.
   - `verb`; tags: verb; group: verb; example: How do you **merchandise** a product like this?
+- **milk**; forms: milked (verb), milking, milks
+  - `noun`; tags: noun; group: noun; example: I like **milk** more than juice.
+  - `verb`; tags: verb; group: verb; example: I am going to **milk** the cows.
+- **mind**; forms: minded (verb), minding (verb), minds
+  - `noun`; tags: noun; group: noun; example: He has lost his frigging **mind**.
+  - `verb`; tags: verb; group: verb; example: You **mind** if I smoke a joint?
 - **minute**; forms: minutes (noun)
   - `adj`; tags: adj; group: adj; example: The amount of dust was **minute**.
   - `noun`; tags: noun; group: noun; example: Boil the eggs for ten **minutes**.
@@ -717,12 +1212,18 @@ inflected forms the lemma recognizes.
 - **moderate**; forms: moderates
   - `noun`; tags: noun; group: noun; example: **Moderates** praised the budget deal.
   - `verb`; tags: verb; group: verb; example: Their anger will **moderate** with time.
+- **monitor**; forms: monitored (verb), monitoring, monitorred (verb), monitorring (verb), monitors
+  - `noun`; tags: noun; group: noun; example: Tom is hooked up to **monitors**.
+  - `verb`; tags: verb; group: verb; example: He was **monitored** by the FBI.
 - **moped**; no other forms
   - `noun`; tags: noun; group: noun; example: A **moped** zipped between the cars.
   - `verb`; tags: verb; group: verb; example: She just **moped** and refused to eat.
 - **mouth**; forms: mouths
   - `noun`; tags: noun; group: noun; example: He had a smile on his **mouth**.
   - `verb`; tags: verb; group: verb; example: **Mouth** the answer to me quietly.
+- **move**; forms: moved (verb), moves, moving (verb)
+  - `noun`; tags: noun; group: noun; example: It's your **move**! Roll the dice!
+  - `verb`; tags: verb; group: verb; example: I will be **moving** on tomorrow.
 - **mow**; forms: mowed (mow-cut), mowing (mow-cut), mown (mow-cut), mows
   - `mow-cut`; tags: verb; group: cut; example: So they **mowed** the first row.
   - `mow-haymow`; tags: noun; group: hay; example: It was loaded into the **mow** by a horse-drawn elevator.
@@ -732,12 +1233,24 @@ inflected forms the lemma recognizes.
 
 ### Lemmas Starting With N
 
+- **nail**; forms: nailed (verb), nailing (verb), nails
+  - `noun`; tags: noun; group: noun; example: This affair was a **nail** in my coffin.
+  - `verb`; tags: verb; group: verb; example: I **nailed** the sign to the door.
 - **nearby**; no other forms
   - `adj`; tags: adj; group: adj; example: We stayed at a **nearby** hotel.
   - `adv`; tags: adv; group: adv; example: We found a quiet cafe **nearby**.
+- **nod**; forms: nodded (verb), nodding (verb), nods
+  - `noun`; tags: noun; group: noun; example: Mary gave me a friendly **nod**.
+  - `verb`; tags: verb; group: verb; example: He **nodded** his head in approval.
 - **nominate**; forms: nominates (verb)
   - `adj`; tags: adj; group: adj; example: Field guides list the **nominate** form first.
   - `verb`; tags: verb; group: verb; example: Will you **nominate** me for the board?
+- **note**; forms: noted (verb), notes, noting (verb)
+  - `noun`; tags: noun; group: noun; example: I'm going to write him a **note** now.
+  - `verb`; tags: verb; group: verb; example: **Note** down what I'm going to say.
+- **notice**; forms: noticed (verb), notices, noticing (verb)
+  - `noun`; tags: noun; group: noun; example: He certainly acted on very short **notice**."
+  - `verb`; tags: verb; group: verb; example: I **noticed** she was wearing my slippers.
 - **nucleate**; no other forms
   - `adj`; tags: adj; group: adj; example: The tissue was densely **nucleate**.
   - `verb`; tags: verb; group: verb; example: Rough edges **nucleate** bubbles in soda.
@@ -753,12 +1266,21 @@ inflected forms the lemma recognizes.
 - **obverse**; no other forms
   - `adj`; tags: adj; group: adj; example: The **obverse** angle gave a clearer look.
   - `noun`; tags: noun; group: noun; example: Fear is the **obverse** of courage.
+- **occasion**; forms: occasioned (verb), occasioning (verb), occasions
+  - `noun`; tags: noun; group: noun; example: I hate his talking big on every **occasion**.
+  - `verb`; tags: verb; group: verb; example: Over-feeding, if persisted in, may **occasion** indigestion.
+- **offer**; forms: offered (verb), offering (verb), offerred (verb), offerring (verb), offers
+  - `noun`; tags: noun; group: noun; example: What do you think of my **offer**?
+  - `verb`; tags: verb; group: verb; example: They **offered** to teach kids to play guitar.
 - **offset**; forms: offsets
   - `noun`; tags: noun; group: noun; example: The **offset** between the signals was tiny.
   - `verb`; tags: verb; group: verb; example: A bright scarf will **offset** the dark coat.
 - **opiate**; forms: opiates
   - `noun`; tags: noun; group: noun; example: The clinic treats **opiate** addiction.
   - `verb`; tags: verb; group: verb; example: The tincture will **opiate** the pain away.
+- **orbit**; forms: orbited (verb), orbiting (verb), orbits, orbitted (verb), orbitting (verb)
+  - `noun`; tags: noun; group: noun; example: The satellite is now in **orbit**.
+  - `verb`; tags: verb; group: verb; example: A great many satellites **orbit** the Earth.
 - **orient**; forms: oriented (verb), orienting (verb), orients
   - `noun`; tags: noun; group: noun; example: He sailed east, toward the fabled **orient**.
   - `verb`; tags: verb; group: verb; example: We have to re-**orient** ourselves.
@@ -866,9 +1388,42 @@ inflected forms the lemma recognizes.
 
 ### Lemmas Starting With P
 
+- **pace**; forms: paced (verb), paces, pacing (verb)
+  - `noun`; tags: noun; group: noun; example: I can't keep **pace** with your plan.
+  - `verb`; tags: verb; group: verb; example: You distract me by **pacing** up and down.
+- **pack**; forms: packed (verb), packing (verb), packs
+  - `noun`; tags: noun; group: noun; example: A group of wolves is a **pack**.
+  - `verb`; tags: verb; group: verb; example: So don't **pack** your bags ,yet.
+- **pain**; forms: pained (verb), paining (verb), pains
+  - `noun`; tags: noun; group: noun; example: Mary felt a **pain** in her chest.
+  - `verb`; tags: verb; group: verb; example: It **pains** me to believe that.
+- **paint**; forms: painted (verb), painting (verb), paints
+  - `noun`; tags: noun; group: noun; example: The wall had fresh **paint** on it.
+  - `verb`; tags: verb; group: verb; example: Who was this picture **painted** by?
+- **pardon**; forms: pardoned (verb), pardoning (verb), pardonned (verb), pardonning (verb), pardons
+  - `noun`; tags: noun; group: noun; example: "I beg your **pardon**, Mr Carker.
+  - `verb`; tags: verb; group: verb; example: "**Pardon** me," said a frigid voice.
+- **park**; forms: parked (verb), parking (verb), parks
+  - `noun`; tags: noun; group: noun; example: Are there bears in this **park**?
+  - `verb`; tags: verb; group: verb; example: You can **park** at the trailhead.
+- **part**; forms: parted (verb), parting (verb), parts
+  - `noun`; tags: noun; group: noun; example: Music constitutes a **part** of me.
+  - `verb`; tags: verb; group: verb; example: Nothing in the world can **part** us.
+- **pass**; forms: passed (verb), passes, passing (verb)
+  - `noun`; tags: noun; group: noun; example: How had he come to such a **pass**?
+  - `verb`; tags: verb; group: verb; example: Not many students **passed** the exam.
 - **pasty**; no other forms
   - `adj`; tags: adj; group: adj; example: The oatmeal was **pasty** and bland.
   - `noun`; tags: noun; group: noun; example: The local **pasty** won an award.
+- **patch**; forms: patched (verb), patches, patching (verb)
+  - `noun`; tags: noun; group: noun; example: My people are working on a **patch**.
+  - `verb`; tags: verb; group: verb; example: My mother had to **patch** my pants.
+- **pause**; forms: paused (verb), pauses, pausing (verb)
+  - `noun`; tags: noun; group: noun; example: Martino put the machine on **pause**.
+  - `verb`; tags: verb; group: verb; example: Tom **paused** to have a cigarette.
+- **pay**; forms: paying (verb), pays
+  - `noun`; tags: noun; group: noun; example: I'd like a week off with **pay**.
+  - `verb`; tags: verb; group: verb; example: I don't mind **paying** you back.
 - **perfect**; forms: perfects
   - `noun`; tags: noun; group: noun; example: The **perfect** of this verb is irregular.
   - `verb`; tags: verb; group: verb; example: The chef **perfects** each sauce.
@@ -884,9 +1439,39 @@ inflected forms the lemma recognizes.
 - **pervert**; forms: perverts
   - `noun`; tags: noun; group: noun; example: Why would anyone hire a known **pervert** as a tutor?
   - `verb`; tags: verb; group: verb; example: How can anyone **pervert** such a simple rule?
+- **picture**; forms: pictured (verb), pictures, picturing (verb)
+  - `noun`; tags: noun; group: noun; example: She's as pretty as a **picture**.
+  - `verb`; tags: verb; group: verb; example: How do you have to **picture** that?
 - **pigment**; forms: pigments
   - `noun`; tags: noun; group: noun; example: A bright **pigment** was mixed into the wet plaster.
   - `verb`; tags: verb; group: verb; example: The chemical **pigments** the glass as it cools.
+- **pile**; forms: piled (verb), piles, piling (verb)
+  - `noun`; tags: noun; group: noun; example: Put a card back in the **pile**.
+  - `verb`; tags: verb; group: verb; example: Problems are **piling** up on me.
+- **pin**; forms: pinned (verb), pinning (verb), pins
+  - `noun`; tags: noun; group: noun; example: Tom only knocked down one **pin**.
+  - `verb`; tags: verb; group: verb; example: He wanted to **pin** the blame on me.
+- **pinch**; forms: pinched (verb), pinches, pinching (verb)
+  - `noun`; tags: noun; group: noun; example: We add a **pinch** of salt for taste.
+  - `verb`; tags: verb; group: verb; example: He **pinched** some cash off me.
+- **place**; forms: placed (verb), places, placing (verb)
+  - `noun`; tags: noun; group: noun; example: This is a great **place** to shop.
+  - `verb`; tags: verb; group: verb; example: The company **places** its main focus on innovation.
+- **plague**; forms: plagued (verb), plagues, plaguing (verb)
+  - `noun`; tags: noun; group: noun; example: The **plague** does not touch him.
+  - `verb`; tags: verb; group: verb; example: I was **plagued** by dark thoughts.
+- **plant**; forms: planted (verb), planting (verb), plants
+  - `noun`; tags: noun; group: noun; example: Do you know what kind of **plant** this is?
+  - `verb`; tags: verb; group: verb; example: Ziri has to **plant** some trees.
+- **play**; forms: played (verb), playing (verb), plays
+  - `noun`; tags: noun; group: noun; example: Why are Chekhov's **plays** so popular?
+  - `verb`; tags: verb; group: verb; example: Arthur is **playing** the bad guy.
+- **point**; forms: pointed (verb), pointing (verb), points
+  - `noun`; tags: noun; group: noun; example: Every man has his weak **points**.
+  - `verb`; tags: verb; group: verb; example: Don't **point** at me with your finger.
+- **poison**; forms: poisoned (verb), poisoning (verb), poisonned (verb), poisonning (verb), poisons
+  - `noun`; tags: noun; group: noun; example: Socrates happily drank up the **poison**.
+  - `verb`; tags: verb; group: verb; example: He was **poisoned** by mercury vapor.
 - **polish**; forms: polishes (noun, verb)
   - `adj`; tags: adj; group: nationality; example: **Polish** grammar is difficult.
   - `language`; tags: noun; group: nationality; example: Have you never studied **Polish**?
@@ -895,12 +1480,21 @@ inflected forms the lemma recognizes.
 - **pontificate**; forms: pontificates
   - `noun`; tags: noun; group: noun; example: A brief **pontificate** left few lasting records.
   - `verb`; tags: verb; group: verb; example: Don't **pontificate**; just tell us what you found.
+- **pop**; forms: popped (verb), popping (verb), pops
+  - `noun`; tags: noun; group: noun; example: Young people all like **pop** music.
+  - `verb`; tags: verb; group: verb; example: Where the deuce did he **pop** out of?
+- **post**; forms: posted (verb), posting (verb), posts
+  - `noun`; tags: noun; group: noun; example: Tom is going to the **post** office.
+  - `verb`; tags: verb; group: verb; example: Click here to **post** a comment.
 - **postfix**; forms: postfixes
   - `noun`; tags: noun; group: noun; example: A **postfix** operator follows its operand.
   - `verb`; tags: verb; group: verb; example: Simply **postfix** the letter to the stem.
 - **postulate**; forms: postulates
   - `noun`; tags: noun; group: noun; example: Her argument depends on an unstated **postulate**.
   - `verb`; tags: verb; group: verb; example: Do you **postulate** that the effect is permanent?
+- **power**; forms: powered (verb), powering (verb), powerred (verb), powerring (verb), powers
+  - `noun`; tags: noun; group: noun; example: Another beadle had come into **power**.
+  - `verb`; tags: verb; group: verb; example: The car is **powered** by electricity.
 - **precipitate**; forms: precipitates
   - `noun`; tags: noun; group: noun; example: Silver chloride is a curdy **precipitate**.
   - `verb`; tags: verb; group: verb; example: Hasty words may **precipitate** an argument.
@@ -931,9 +1525,21 @@ inflected forms the lemma recognizes.
   - `adj`; tags: adj; group: adj; example: The **present** betrothed condition is perhaps better than marriage.
   - `noun`; tags: noun; group: noun; example: At **present** you are a perfect type.
   - `verb`; tags: verb; group: verb; example: You must **present** your ticket at the gate.
+- **press**; forms: pressed (verb), presses, pressing (verb)
+  - `noun`; tags: noun; group: noun; example: He works for a newspaper printing **press**.
+  - `verb`; tags: verb; group: verb; example: 'Do not **press** me,' she replied.
+- **pressure**; forms: pressured (verb), pressures, pressuring (verb)
+  - `noun`; tags: noun; group: noun; example: I will measure your blood **pressure**.
+  - `verb`; tags: verb; group: verb; example: Tom **pressured** me to do that.
+- **pride**; forms: prided (verb), prides, priding (verb)
+  - `noun`; tags: noun; group: noun; example: She is the **pride** of her class.
+  - `verb`; tags: verb; group: verb; example: She **prides** herself on her talent.
 - **primer**; forms: primers
   - `primer-paint`; tags: noun; group: paint; example: The unchanged residue is rinsed off and the **primer** stoved.
   - `primer-textbook`; tags: noun; group: textbook; example: Critical Pedagogy **Primer** is a book by Joe L.
+- **print**; forms: printed (verb), printing, prints
+  - `noun`; tags: noun; group: noun; example: My new book is not yet in **print**.
+  - `verb`; tags: verb; group: verb; example: This book was **printed** in England.
 - **proceeds**; no other forms
   - `noun`; tags: noun; group: noun; example: He spent the **proceeds** on a new truck.
   - `verb`; tags: verb; group: verb; example: Our guide **proceeds** along the narrow trail.
@@ -949,9 +1555,21 @@ inflected forms the lemma recognizes.
 - **protest**; forms: protested (protest-verb), protesting (protest-verb), protests
   - `protest-noun`; tags: noun; group: stress-first; example: They support peaceful **protests**.
   - `protest-verb`; tags: verb; group: stress-last; example: "And what can you **protest** about?
+- **pull**; forms: pulled (verb), pulling (verb), pulls
+  - `noun`; tags: noun; group: noun; example: Get the **pull** over him that way.
+  - `verb`; tags: verb; group: verb; example: Sami **pulled** up to a hospital.
+- **pump**; forms: pumped (verb), pumping (verb), pumps
+  - `noun`; tags: noun; group: noun; example: Can I get 20 dollars on **pump** 3?
+  - `verb`; tags: verb; group: verb; example: The heart serves to **pump** blood.
+- **punch**; forms: punched (verb), punches, punching (verb)
+  - `noun`; tags: noun; group: noun; example: Tom is not pulling any **punches**.
+  - `verb`; tags: verb; group: verb; example: I ought to **punch** him in the face.
 - **purport**; forms: purports
   - `noun`; tags: noun; group: noun; example: The **purport** of the treaty was peace.
   - `verb`; tags: verb; group: verb; example: He does not **purport** to be an expert.
+- **push**; forms: pushed (verb), pushes, pushing (verb)
+  - `noun`; tags: noun; group: noun; example: We might need a little **push**.
+  - `verb`; tags: verb; group: verb; example: A young father **pushed** a pram.
 - **pustulate**; forms: pustulates (verb)
   - `adj`; tags: adj; group: adj; example: Is the lesion **pustulate** or smooth?
   - `verb`; tags: verb; group: verb; example: The sore began to **pustulate** overnight.
@@ -967,18 +1585,40 @@ inflected forms the lemma recognizes.
 - **quintuplicate**; forms: quintuplicates (verb)
   - `adj`; tags: adj; group: adj; example: His **quintuplicate** report weighed a pound.
   - `verb`; tags: verb; group: verb; example: Why **quintuplicate** a note this small?
+- **quote**; forms: quoted (verb), quotes, quoting (verb)
+  - `noun`; tags: noun; group: noun; example: End of **quote**. Repeat the line.
+  - `verb`; tags: verb; group: verb; example: He **quoted** a passage from the Bible.
 
 ### Lemmas Starting With R
 
+- **rack**; forms: racked (verb), racking (verb), racks
+  - `noun`; tags: noun; group: noun; example: Put our bags up on the **rack**.
+  - `verb`; tags: verb; group: verb; example: I'm **racking** my brain to remember.
 - **radiate**; forms: radiates (verb)
   - `adj`; tags: adj; group: adj; example: The statue wore a **radiate** diadem.
   - `verb`; tags: verb; group: verb; example: Wires **radiate** from the central hub.
 - **ragged**; no other forms
   - `adj`; tags: adj; group: adj; example: The old book had **ragged** pages.
   - `verb`; tags: verb; group: verb; example: He **ragged** on the project all week.
+- **rain**; forms: rained (verb), raining (verb), rains
+  - `noun`; tags: noun; group: noun; example: She said that she liked **rain**.
+  - `verb`; tags: verb; group: verb; example: Why does it **rain** so much here?
+- **range**; forms: ranged (verb), ranges, ranging (verb)
+  - `noun`; tags: noun; group: noun; example: It was out of my price **range**.
+  - `verb`; tags: verb; group: verb; example: Only a few of the deck chairs **ranged** around the bandstand were
+    occupied.
+- **reach**; forms: reached (verb), reaches, reaching (verb)
+  - `noun`; tags: noun; group: noun; example: The fruit is beyond my **reach**.
+  - `verb`; tags: verb; group: verb; example: We couldn't **reach** the initial goal.
 - **read**; forms: reads (present)
   - `past`; tags: past, verb; group: past; example: I **read** that book last summer.
   - `present`; tags: present, verb; group: present; example: Do you **read** the news online?
+- **rear**; forms: reared (verb), rearing, rears
+  - `noun`; tags: noun; group: noun; example: He attacked me from the **rear**.
+  - `verb`; tags: verb; group: verb; example: He **reared** me in the country.
+- **reason**; forms: reasoned (verb), reasoning (verb), reasonned (verb), reasonning (verb), reasons
+  - `noun`; tags: noun; group: noun; example: For some **reason** I can relate.
+  - `verb`; tags: verb; group: verb; example: Maybe I can **reason** with her.
 - **rebel**; forms: rebels
   - `noun`; tags: noun; group: noun; example: **Rebels** captured the town at dawn.
   - `verb`; tags: verb; group: verb; example: The village could **rebel** at any moment.
@@ -1032,6 +1672,9 @@ inflected forms the lemma recognizes.
 - **refit**; forms: refits
   - `noun`; tags: noun; group: noun; example: Dry dock is booked for the **refit**.
   - `verb`; tags: verb; group: verb; example: He **refits** the boots with new soles.
+- **reform**; forms: reformed (verb), reforming (verb), reforms
+  - `noun`; tags: noun; group: noun; example: The time is ripe for a drastic **reform**.
+  - `verb`; tags: verb; group: verb; example: Don't try to **reform** everyone you meet.
 - **refresh**; forms: refreshes
   - `noun`; tags: noun; group: noun; example: A hard **refresh** cleared the cache.
   - `verb`; tags: verb; group: verb; example: A cool drink will **refresh** you.
@@ -1050,6 +1693,9 @@ inflected forms the lemma recognizes.
 - **regiment**; forms: regiments
   - `noun`; tags: noun; group: noun; example: A cavalry **regiment** guarded the pass.
   - `verb`; tags: verb; group: verb; example: The coach **regiments** the team's diet.
+- **register**; forms: registered (verb), registering (verb), registerred (verb), registerring (verb), registers
+  - `noun`; tags: noun; group: noun; example: Yanni was waiting at the **register**.
+  - `verb`; tags: verb; group: verb; example: The thermometer **registers** 37 degrees Celsius.
 - **regress**; forms: regresses
   - `noun`; tags: noun; group: noun; example: This is not growth but **regress**.
   - `verb`; tags: verb; group: verb; example: He tends to **regress** under stress.
@@ -1095,6 +1741,9 @@ inflected forms the lemma recognizes.
 - **remount**; forms: remounts
   - `noun`; tags: noun; group: noun; example: A **remount** stood ready behind the lines.
   - `verb`; tags: verb; group: verb; example: He **remounts** his horse and rides on.
+- **rent**; forms: rented (verb), renting (verb), rents
+  - `noun`; tags: noun; group: noun; example: I hope the **rent** is reasonable.
+  - `verb`; tags: verb; group: verb; example: I **rented** a tux for a wedding.
 - **renunciate**; forms: renunciates
   - `noun`; tags: noun; group: noun; example: He lived as a **renunciate** for twenty years.
   - `verb`; tags: verb; group: verb; example: Do you **renunciate** your former loyalties?
@@ -1113,6 +1762,9 @@ inflected forms the lemma recognizes.
 - **reprint**; forms: reprints
   - `noun`; tags: noun; group: noun; example: Each **reprint** sold out within days.
   - `verb`; tags: verb; group: verb; example: **Reprint** the form on thicker paper.
+- **request**; forms: requested (verb), requesting (verb), requests
+  - `noun`; tags: noun; group: noun; example: He flatly turned down our **request**.
+  - `verb`; tags: verb; group: verb; example: It was not Tom who **requested** that I do this.
 - **reread**; forms: rereads (present)
   - `past`; tags: past, verb; group: past; example: I **reread** that novel twice last summer.
   - `present`; tags: present, verb; group: present; example: She never **rereads** her own texts.
@@ -1122,6 +1774,9 @@ inflected forms the lemma recognizes.
 - **rerun**; forms: reruns
   - `noun`; tags: noun; group: noun; example: Summer television is full of **reruns**.
   - `verb`; tags: verb; group: verb; example: We had to **rerun** the whole analysis.
+- **reserve**; forms: reserved (verb), reserves, reserving (verb)
+  - `noun`; tags: noun; group: noun; example: Ziri went to a nature **reserve**.
+  - `verb`; tags: verb; group: verb; example: He **reserved** a table at the restaurant.
 - **reset**; forms: resets, resetting (reset-verb)
   - `reset-noun`; tags: noun; group: stress-first; example: Did you press the **reset** button?
   - `reset-verb`; tags: verb; group: stress-last; example: You need to **reset** your password.
@@ -1135,9 +1790,15 @@ inflected forms the lemma recognizes.
 - **resit**; forms: resits
   - `noun`; tags: noun; group: noun; example: The student dreaded the **resit**.
   - `verb`; tags: verb; group: verb; example: He hopes to **resit** in the spring.
+- **resort**; forms: resorted (verb), resorting (verb), resorts
+  - `noun`; tags: noun; group: noun; example: Use this key as a last **resort**.
+  - `verb`; tags: verb; group: verb; example: We should not **resort** to violence.
 - **respawn**; forms: respawns
   - `noun`; tags: noun; group: noun; example: Each **respawn** restores full health.
   - `verb`; tags: verb; group: verb; example: **Respawn** at the base and heal up.
+- **respect**; forms: respected (verb), respecting (verb), respects
+  - `noun`; tags: noun; group: noun; example: He has no **respect** for his parents.
+  - `verb`; tags: verb; group: verb; example: Privacy should be **respected** by all.
 - **respray**; forms: resprays
   - `noun`; tags: noun; group: noun; example: A bright red **respray** hid the rust.
   - `verb`; tags: verb; group: verb; example: He **resprays** old bikes and sells them.
@@ -1147,6 +1808,9 @@ inflected forms the lemma recognizes.
 - **restyle**; forms: restyles
   - `noun`; tags: noun; group: noun; example: **Restyle** of the old sofa took a week.
   - `verb`; tags: verb; group: verb; example: We might **restyle** the logo next year.
+- **result**; forms: resulted (verb), resulting (verb), results
+  - `noun`; tags: noun; group: noun; example: Are you pleased with the **results**?
+  - `verb`; tags: verb; group: verb; example: Her diet **resulted** in weight loss.
 - **resume**; forms: resumes
   - `noun`; tags: noun; group: noun; example: I updated my **resume** last night.
   - `verb`; tags: verb; group: verb; example: The talks **resume** after lunch.
@@ -1168,11 +1832,17 @@ inflected forms the lemma recognizes.
 - **retread**; forms: retreads
   - `noun`; tags: noun; group: noun; example: A **retread** blew out on the highway.
   - `verb`; tags: verb; group: verb; example: He did not **retread** the worn casing.
+- **retreat**; forms: retreated (verb), retreating (verb), retreats
+  - `noun`; tags: noun; group: noun; example: The balcony was Ziri’s peaceful **retreat**.
+  - `verb`; tags: verb; group: verb; example: You have gone too far to **retreat**.
 - **retrofit**; forms: retrofits, retrofitted (retrofit-verb), retrofitting (retrofit-verb)
   - `retrofit-noun`; tags: noun; group: stress-first; example: Tom refused to allow the robot to return a change in the
     **retrofit** frame.
   - `retrofit-verb`; tags: verb; group: stress-last; example: It is going to be **retrofitted** into a wood-fired power
     station.
+- **return**; forms: returned (verb), returning (verb), returns
+  - `noun`; tags: noun; group: noun; example: A service requires a service in **return**.
+  - `verb`; tags: verb; group: verb; example: He always asks when you will **return**.
 - **reuse**; forms: reuses
   - `noun`; tags: noun; group: noun; example: Water **reuse** is vital in dry regions.
   - `verb`; tags: verb; group: verb; example: He did not **reuse** his password.
@@ -1182,6 +1852,9 @@ inflected forms the lemma recognizes.
 - **revert**; forms: reverts
   - `noun`; tags: noun; group: noun; example: The **revert** was merged within an hour.
   - `verb`; tags: verb; group: verb; example: Please **revert** the last change.
+- **reward**; forms: rewarded (verb), rewarding (verb), rewards
+  - `noun`; tags: noun; group: noun; example: A good deed is its own **reward**.
+  - `verb`; tags: verb; group: verb; example: I was well **rewarded** for my efforts.
 - **rewatch**; forms: rewatches
   - `noun`; tags: noun; group: noun; example: A second **rewatch** changed my opinion.
   - `verb`; tags: verb; group: verb; example: I might **rewatch** that documentary.
@@ -1191,10 +1864,28 @@ inflected forms the lemma recognizes.
 - **rewrite**; forms: rewrites
   - `noun`; tags: noun; group: noun; example: The code needs a total **rewrite**.
   - `verb`; tags: verb; group: verb; example: She did not **rewrite** the speech.
+- **ride**; forms: ridden (verb), rided (verb), rides, riding (verb), rode (verb)
+  - `noun`; tags: noun; group: noun; example: This is going to be a long bus **ride**.
+  - `verb`; tags: verb; group: verb; example: Have you ever **ridden** a mule?
+- **rise**; forms: rised (verb), rises, rising (verb)
+  - `noun`; tags: noun; group: noun; example: Why did you turn down his request for a pay **rise**?
+  - `verb`; tags: verb; group: verb; example: Prices **rise** from day to day.
+- **risk**; forms: risked (verb), risking (verb), risks
+  - `noun`; tags: noun; group: noun; example: I'm not willing to take that **risk**.
+  - `verb`; tags: verb; group: verb; example: To win is to **risk** everything.
+- **rock**; forms: rocked (verb), rocking, rocks
+  - `noun`; tags: noun; group: noun; example: Abranis is a Kabyle **rock** band.
+  - `verb`; tags: verb; group: verb; example: I was **rocking** the baby to sleep.
+- **roll**; forms: rolled (verb), rolling (verb), rolls
+  - `noun`; tags: noun; group: noun; example: Tom gave Mary a **roll** of film.
+  - `verb`; tags: verb; group: verb; example: A single tear **rolled** down her cheek.
 - **romance**; forms: romanced (romance-verb), romances, romancing (romance-verb)
   - `romance-noun`; tags: noun; group: stress-first; example: What a **romance** it had all been!
   - `romance-verb`; tags: verb; group: stress-last; example: The count set out to **romance** the heiress at every ball
     of the season.
+- **root**; forms: rooted (verb), rooting (verb), roots
+  - `noun`; tags: noun; group: noun; example: The tree **roots** are warping the pavement.
+  - `verb`; tags: verb; group: verb; example: We were all **rooting** for her.
 - **row**; no other forms
   - `argument`; tags: noun; group: argument; example: A bitter **row** split the committee.
   - `line`; tags: noun; group: line; example: Add up the numbers in each **row**.
@@ -1203,12 +1894,45 @@ inflected forms the lemma recognizes.
   - `argument`; tags: noun; group: argument; example: Those noisy **rows** had to stop.
   - `line`; tags: noun; group: line; example: The tulips grew in straight **rows**.
   - `paddle`; tags: verb; group: paddle; example: Solo woman **rows** the Atlantic: Part 1
+- **ruin**; forms: ruined (verb), ruining (verb), ruins
+  - `noun`; tags: noun; group: noun; example: The war left the city in **ruins**.
+  - `verb`; tags: verb; group: verb; example: My old tools were **ruined** by rust.
+- **rule**; forms: ruled (verb), rules, ruling (verb)
+  - `noun`; tags: noun; group: noun; example: The **rules** of this game are simple.
+  - `verb`; tags: verb; group: verb; example: The king **rules** over his subjects.
 
 ### Lemmas Starting With S
 
+- **sail**; forms: sailed (verb), sailing (verb), sails
+  - `noun`; tags: noun; group: noun; example: A gust of wind swelled the **sails**.
+  - `verb`; tags: verb; group: verb; example: The ship **sailed** into the storm.
 - **saturate**; forms: saturates
   - `noun`; tags: noun; group: noun; example: Is a fully hydrogenated oil really a **saturate**?
   - `verb`; tags: verb; group: verb; example: Gently **saturate** the bandage with clean water.
+- **schedule**; forms: scheduled (verb), schedules, scheduling (verb)
+  - `noun`; tags: noun; group: noun; example: I often have a busy **schedule**.
+  - `verb`; tags: verb; group: verb; example: When was the trip **scheduled** to happen?
+- **score**; forms: scored (verb), scores, scoring (verb)
+  - `noun`; tags: noun; group: noun; example: He had a **score** to settle with her.
+  - `verb`; tags: verb; group: verb; example: He **scored** excellently in all tests.
+- **scream**; forms: screamed (verb), screaming, screams
+  - `noun`; tags: noun; group: noun; example: The **screams** echoed in the woods.
+  - `verb`; tags: verb; group: verb; example: I always **scream** when I get angry.
+- **screen**; forms: screened (verb), screening (verb), screens
+  - `noun`; tags: noun; group: noun; example: This new **screen** is much brighter.
+  - `verb`; tags: verb; group: verb; example: Tom and Mary often **screen** their calls.
+- **screw**; forms: screwed (verb), screwing (verb), screws
+  - `noun`; tags: noun; group: noun; example: Our **screw** really wore me out.
+  - `verb`; tags: verb; group: verb; example: The waiter **screwed** up my order.
+- **seal**; forms: sealed (verb), sealing (verb), seals
+  - `noun`; tags: noun; group: noun; example: Is a manatee a type of **seal**?
+  - `verb`; tags: verb; group: verb; example: Their fate seems to be **sealed**.
+- **season**; forms: seasoned (verb), seasoning (verb), seasonned (verb), seasonning (verb), seasons
+  - `noun`; tags: noun; group: noun; example: Which **season** do you like best?
+  - `verb`; tags: verb; group: verb; example: Salt is used to **season** food.
+- **seat**; forms: seated (verb), seating (verb), seats
+  - `noun`; tags: noun; group: noun; example: I'm saving this **seat** for them.
+  - `verb`; tags: verb; group: verb; example: You are **seated** between Tom and John.
 - **second**; forms: seconded (second-support), seconding (second-support), seconds (second-noun, second-support)
   - `second-noun`; tags: noun; group: ordinal; example: Impressions are formed in **seconds**.
   - `second-ordinal-adj`; tags: adj; group: ordinal; example: The director has asked the board to nominate him for a
@@ -1222,6 +1946,12 @@ inflected forms the lemma recognizes.
 - **segregate**; forms: segregated (verb), segregates
   - `noun`; tags: noun; group: noun; example: Every **segregate** was grown in a separate pot.
   - `verb`; tags: verb; group: verb; example: Do not **segregate** the data by gender.
+- **sense**; forms: sensed (verb), senses, sensing (verb)
+  - `noun`; tags: noun; group: noun; example: She is lacking in **sense** of beauty.
+  - `verb`; tags: verb; group: verb; example: Tom **sensed** he'd hit a nerve.
+- **sentence**; forms: sentenced (verb), sentences, sentencing (verb)
+  - `noun`; tags: noun; group: noun; example: There is an error in the **sentence**.
+  - `verb`; tags: verb; group: verb; example: He was **sentenced** to life in prison.
 - **separate**; forms: separates (verb)
   - `adj`; tags: adj; group: adj; example: Each child has a **separate** room.
   - `verb`; tags: verb; group: verb; example: Scientists **separate** the cells by size.
@@ -1232,26 +1962,155 @@ inflected forms the lemma recognizes.
   - `sewer-drain`; tags: noun; group: drain; example: Some one has passed through the **sewer**.
   - `sewer-seamstress`; tags: noun; group: sews; example: The tailor hired a new **sewer** to take in the hems and sew
     buttons onto the coats.
+- **shake**; forms: shaked (verb), shaken (verb), shakes, shaking (verb), shook (verb)
+  - `noun`; tags: noun; group: noun; example: Do fries go with that **shake**?
+  - `verb`; tags: verb; group: verb; example: His body was **shaking** in anger.
+- **shield**; forms: shielded (verb), shielding (verb), shields
+  - `noun`; tags: noun; group: noun; example: He used the book as a **shield**.
+  - `verb`; tags: verb; group: verb; example: I opt to **shield** my emotions.
+- **shift**; forms: shifted (verb), shifting (verb), shifts
+  - `noun`; tags: noun; group: noun; example: She writes a paper on cultural **shifts**.
+  - `verb`; tags: verb; group: verb; example: Changes are **shifting** outside the word.
+- **shock**; forms: shocked (verb), shocking (verb), shocks
+  - `noun`; tags: noun; group: noun; example: It must have been a **shock** to you.
+  - `verb`; tags: verb; group: verb; example: I was **shocked** at the sad news.
+- **shout**; forms: shouted (verb), shouting (verb), shouts
+  - `noun`; tags: noun; group: noun; example: He heard **shouts** in the house.
+  - `verb`; tags: verb; group: verb; example: I **shout** but no one hears me.
+- **show**; forms: showed (verb), showing (verb), shows
+  - `noun`; tags: noun; group: noun; example: Boris worked as a **show** actor.
+  - `verb`; tags: verb; group: verb; example: Tom has been **showing** a lot of promise.
 - **shower**; forms: showered (shower-verb), showering (shower-verb), showers (shower-noun, shower-verb)
   - `shower-noun`; tags: noun; group: rain; example: Can I get my stitches wet in the bath or **shower**?
   - `shower-one-who-shows`; tags: noun; group: shows; example: I am no **shower** of my feelings, so you will rarely see
     me weep in public.
   - `shower-verb`; tags: verb; group: rain; example: I usually **shower** before bed.
+- **side**; forms: sided (verb), sides, siding (verb)
+  - `noun`; tags: noun; group: noun; example: On which **side** do I have to put the fork?
+  - `verb`; tags: verb; group: verb; example: Why are you **siding** with him?
+- **sigh**; forms: sighed (verb), sighing (verb), sighs
+  - `noun`; tags: noun; group: noun; example: At this **sigh** Felton turned round.
+  - `verb`; tags: verb; group: verb; example: They **sighed** and shook their heads.
+- **sign**; forms: signed (verb), signing (verb), signs
+  - `noun`; tags: noun; group: noun; example: The house shows **signs** of neglect.
+  - `verb`; tags: verb; group: verb; example: He **signed** a lease for ten years.
+- **silence**; forms: silenced (verb), silences, silencing (verb)
+  - `noun`; tags: noun; group: noun; example: He bore his grief in **silence**.
+  - `verb`; tags: verb; group: verb; example: "How do you propose to **silence** him?"
+- **sin**; forms: sinned (verb), sinning, sins
+  - `noun`; tags: noun; group: noun; example: You may as well forgive his **sins**.
+  - `verb`; tags: verb; group: verb; example: We **sin** a lot, but we enjoy it.
 - **situate**; forms: situates (verb)
   - `adj`; tags: adj; group: adj; example: A farm **situate** in the valley changed hands.
   - `verb`; tags: verb; group: verb; example: Carefully **situate** the tent on level ground.
+- **skate**; forms: skated (verb), skates, skating
+  - `noun`; tags: noun; group: noun; example: I've got to get my **skates** on.
+  - `verb`; tags: verb; group: verb; example: It is difficult for me to **skate**.
+- **sketch**; forms: sketched (verb), sketches, sketching
+  - `noun`; tags: noun; group: noun; example: Make a **sketch** of your house.
+  - `verb`; tags: verb; group: verb; example: Now he is **sketching** an apple.
+- **slice**; forms: sliced (verb), slices, slicing (verb)
+  - `noun`; tags: noun; group: noun; example: Cut the meat into thin **slices**.
+  - `verb`; tags: verb; group: verb; example: We use a knife to **slice** food.
+- **slide**; forms: slid (verb), slided (verb), slides, sliding (verb)
+  - `noun`; tags: noun; group: noun; example: He went fast down the **slide**.
+  - `verb`; tags: verb; group: verb; example: I'll let it **slide** this time.
 - **slough**; forms: sloughed (slough-shed), sloughing (slough-shed), sloughs (slough-shed, slough-swamp)
   - `slough-shed`; tags: verb; group: shed; example: The wound slowly **sloughed** the dead tissue as new skin formed
     beneath it.
   - `slough-skin`; tags: noun; group: shed; example: A thin, dry **slough** peeled from his sunburned shoulder in the
     shower.
   - `slough-swamp`; tags: noun; group: swamp; example: The name of the **slough** was Despond." - BUNYAN.
+- **smell**; forms: smelled (verb), smelling (verb), smells
+  - `noun`; tags: noun; group: noun; example: I like the **smell** of old books.
+  - `verb`; tags: verb; group: verb; example: You **smell** like a rotten egg.
+- **smoke**; forms: smoked (verb), smokes, smoking
+  - `noun`; tags: noun; group: noun; example: I might go to the **smoke** shop today.
+  - `verb`; tags: verb; group: verb; example: You mind if I **smoke** a joint?
+- **snap**; forms: snapped (verb), snapping (verb), snaps
+  - `noun`; tags: noun; group: noun; example: It was the **snap** of the whip.
+  - `verb`; tags: verb; group: verb; example: I'm sorry for **snapping** at you.
 - **sophisticate**; forms: sophisticates
   - `noun`; tags: noun; group: noun; example: The novel's hero is a jaded **sophisticate**.
   - `verb`; tags: verb; group: verb; example: Time and money can **sophisticate** any hobby.
+- **sort**; forms: sorted (verb), sorting (verb), sorts
+  - `noun`; tags: noun; group: noun; example: What **sort** of infection is this?
+  - `verb`; tags: verb; group: verb; example: It took a while to **sort** things out.
+- **sound**; forms: sounded (verb), sounding (verb), sounds
+  - `noun`; tags: noun; group: noun; example: I like the **sound** of that bell!
+  - `verb`; tags: verb; group: verb; example: It kinda **sounds** like a scam.
 - **sow**; forms: sows
   - `noun`; tags: noun; group: noun; example: The pen held two **sows** and a boar.
   - `verb`; tags: verb; group: verb; example: Farmers **sow** wheat in the fall.
+- **spark**; forms: sparked (verb), sparking (verb), sparks
+  - `noun`; tags: noun; group: noun; example: There was a tiny **spark** in the east.
+  - `verb`; tags: verb; group: verb; example: Mixing things up can **spark** creativity.
+- **spell**; forms: spelled (verb), spelling (verb), spells
+  - `noun`; tags: noun; group: noun; example: Her beauty cast a **spell** over him.
+  - `verb`; tags: verb; group: verb; example: Listen! How do you **spell** it?
+- **spot**; forms: spots, spotted (verb), spotting (verb)
+  - `noun`; tags: noun; group: noun; example: I fact-checked Tom on the **spot**.
+  - `verb`; tags: verb; group: verb; example: The fakes are very easy to **spot**.
+- **spray**; forms: sprayed (verb), spraying (verb), sprays
+  - `noun`; tags: noun; group: noun; example: Can you hand me that bug **spray**?
+  - `verb`; tags: verb; group: verb; example: They are **spraying** the fruit trees.
+- **spring**; forms: springed (verb), springing (verb), springs
+  - `noun`; tags: noun; group: noun; example: This is a tree in the **spring**.
+  - `verb`; tags: verb; group: verb; example: I **spring** out of the darkness.
+- **stack**; forms: stacked (verb), stacking (verb), stacks
+  - `noun`; tags: noun; group: noun; example: Tom gave Mary a **stack** of money.
+  - `verb`; tags: verb; group: verb; example: The odds are **stacked** against us.
+- **stamp**; forms: stamped (verb), stamping (verb), stamps
+  - `noun`; tags: noun; group: noun; example: I didn't know you collected **stamps**.
+  - `verb`; tags: verb; group: verb; example: He **stamped** his foot three times.
+- **stand**; forms: standed (verb), standing (verb), stands
+  - `noun`; tags: noun; group: noun; example: A brawl is breaking out in the **stands**.
+  - `verb`; tags: verb; group: verb; example: Ken **stands** on the diving board.
+- **stare**; forms: stared (verb), stares, staring (verb)
+  - `noun`; tags: noun; group: noun; example: She threw him an insolent **stare**.
+  - `verb`; tags: verb; group: verb; example: They stopped to **stare** at him.
+- **state**; forms: stated (verb), states, stating (verb)
+  - `noun`; tags: noun; group: noun; example: There are still some dry **states** in the U.S.
+  - `verb`; tags: verb; group: verb; example: We all have views. That's **stating** the obvious.
+- **station**; forms: stationed (verb), stationing (verb), stations
+  - `noun`; tags: noun; group: noun; example: How do I get to the bus **station**?
+  - `verb`; tags: verb; group: verb; example: I was **stationed** on the pier.
+- **stem**; forms: stemmed (verb), stemming (verb), stems
+  - `noun`; tags: noun; group: noun; example: A rose has thorns on its **stem**.
+  - `verb`; tags: verb; group: verb; example: Many English words **stem** from Latin.
+- **stick**; forms: sticked (verb), sticking, sticks, stuck (verb)
+  - `noun`; tags: noun; group: noun; example: She got the short end of the **stick**.
+  - `verb`; tags: verb; group: verb; example: My pickup is **stuck** in the mud.
+- **stock**; forms: stocked (verb), stocking (verb), stocks
+  - `noun`; tags: noun; group: noun; example: On the **stock** was engraved 'SS.
+  - `verb`; tags: verb; group: verb; example: to **stock** a warehouse with goods
+- **store**; forms: stored (verb), stores, storing (verb)
+  - `noun`; tags: noun; group: noun; example: I've never been to this **store**.
+  - `verb`; tags: verb; group: verb; example: I'll **store** these books in the attic.
+- **storm**; forms: stormed (verb), storming (verb), storms
+  - `noun`; tags: noun; group: noun; example: Last night there was a **storm**.
+  - `verb`; tags: verb; group: verb; example: Tom **stormed** out of the house.
+- **stream**; forms: streamed (verb), streaming (verb), streams
+  - `noun`; tags: noun; group: noun; example: Has Don provided the fixed payment **stream**?
+  - `verb`; tags: verb; group: verb; example: Why, the water **streams** from them!
+- **stretch**; forms: stretched (verb), stretches, stretching (verb)
+  - `noun`; tags: noun; group: noun; example: This **stretch** of road is very dangerous.
+  - `verb`; tags: verb; group: verb; example: The road **stretched** on for miles.
+- **strike**; forms: stricken (verb), striked (verb), strikes, striking (verb), struck (verb)
+  - `noun`; tags: noun; group: noun; example: I'm going on a hunger **strike**.
+  - `verb`; tags: verb; group: verb; example: He was **struck** by lightning and died.
+- **strip**; forms: stripped (verb), stripping (verb), strips
+  - `noun`; tags: noun; group: noun; example: Cut the meat into thin **strips**.
+  - `verb`; tags: verb; group: verb; example: Maria is **stripping** in a pub.
+- **stroke**; forms: stroked (verb), strokes, stroking (verb)
+  - `noun`; tags: noun; group: noun; example: Here is a sharp **stroke** or two.
+  - `verb`; tags: verb; group: verb; example: Tom **stroked** the cat's soft fur.
+- **struggle**; forms: struggled (verb), struggles, struggling (verb)
+  - `noun`; tags: noun; group: noun; example: Had they been killed in the **struggle**?
+  - `verb`; tags: verb; group: verb; example: I **struggled** against it, but in vain.
+- **study**; forms: studied (verb), studies, studying (verb)
+  - `noun`; tags: noun; group: noun; example: Campanology is the **study** of bells.
+  - `verb`; tags: verb; group: verb; example: The more you **study**, the better.
 - **subject**; forms: subjects
   - `noun`; tags: noun; group: noun; example: The **subject** of the email was missing.
   - `verb`; tags: verb; group: verb; example: Do not **subject** young children to loud noise.
@@ -1265,50 +2124,107 @@ inflected forms the lemma recognizes.
 - **subordinate**; forms: subordinates
   - `noun`; tags: noun; group: noun; example: She is my **subordinate**, not my equal.
   - `verb`; tags: verb; group: verb; example: Do not **subordinate** safety to speed.
+- **substitute**; forms: substituted (verb), substitutes, substituting (verb)
+  - `noun`; tags: noun; group: noun; example: Perhaps we could find a **substitute**.
+  - `verb`; tags: verb; group: verb; example: He was **substituted** for his father.
 - **suffix**; forms: suffixed (suffix-verb), suffixes, suffixing (suffix-verb)
   - `suffix-noun`; tags: noun; group: stress-first; example: The -s was reanalyzed as a plural **suffix**.
   - `suffix-verb`; tags: verb; group: stress-last; example: She **suffixed** the product code with a letter to show the
     color, so red items ended with R.
+- **suit**; forms: suited (verb), suiting (verb), suits
+  - `noun`; tags: noun; group: noun; example: Logic is not his strong **suit**.
+  - `verb`; tags: verb; group: verb; example: Which day **suits** you this week?
 - **supplement**; forms: supplements
   - `noun`; tags: noun; group: noun; example: Is this **supplement** safe for children?
   - `verb`; tags: verb; group: verb; example: Photos **supplement** the text nicely.
+- **supply**; forms: supplied (verb), supplies, supplying (verb)
+  - `noun`; tags: noun; group: noun; example: Tom is high on his own **supply**.
+  - `verb`; tags: verb; group: verb; example: That store **supplies** us with coffee.
 - **supposed**; forms: supposedly (supposed-adj), supposes (supposed-past), supposing (supposed-past)
   - `supposed-adj`; tags: adj; group: voiced; example: Not like her mother and not like her (**supposed**) father.
   - `supposed-past`; tags: verb; group: voiced; example: "Harder than I could have **supposed** you would be."
   - `supposed-to`; tags: adj; group: unvoiced; example: How was I **supposed** to help Tom?
+- **surprise**; forms: surprised (verb), surprises, surprising (verb)
+  - `noun`; tags: noun; group: noun; example: The book is full of **surprises**.
+  - `verb`; tags: verb; group: verb; example: We were **surprised** by the big lion.
 - **survey**; forms: surveys
   - `noun`; tags: noun; group: noun; example: A short **survey** follows every class.
   - `verb`; tags: verb; group: verb; example: How many people did you **survey**?
 - **suspect**; forms: suspects
   - `noun`; tags: noun; group: noun; example: The main **suspect** denied everything.
   - `verb`; tags: verb; group: verb; example: They did not **suspect** a thing.
+- **swallow**; forms: swallowed (verb), swallowing (verb), swallows
+  - `noun`; tags: noun; group: noun; example: The **swallow** is a sign of summer.
+  - `verb`; tags: verb; group: verb; example: It's a tough pill to **swallow**.
+- **swing**; forms: swinged (verb), swinging (verb), swings
+  - `noun`; tags: noun; group: noun; example: Ziri cut the rope of the **swing**.
+  - `verb`; tags: verb; group: verb; example: **Swing** your arm back and forth.
 - **syndicate**; forms: syndicates
   - `noun`; tags: noun; group: noun; example: The **syndicate** owns three racehorses.
   - `verb`; tags: verb; group: verb; example: Papers **syndicate** her cartoon nationwide.
 
 ### Lemmas Starting With T
 
+- **tag**; forms: tagged (verb), tagging (verb), tags
+  - `noun`; tags: noun; group: noun; example: Tom wasn't wearing a name **tag**.
+  - `verb`; tags: verb; group: verb; example: Don't you want to **tag** along?
+- **talk**; forms: talked (verb), talking (verb), talks
+  - `noun`; tags: noun; group: noun; example: You are the **talk** of the whole town.
+  - `verb`; tags: verb; group: verb; example: Kaci was **talking** to his mother.
+- **tap**; forms: tapped (verb), tapping (verb), taps
+  - `noun`; tags: noun; group: noun; example: There was a **tap** at the door.
+  - `verb`; tags: verb; group: verb; example: Bill **tapped** me on the shoulder.
+- **target**; forms: targeted (verb), targeting (verb), targets, targetted (verb), targetting (verb)
+  - `noun`; tags: noun; group: noun; example: Not a single arrow hit the **target**.
+  - `verb`; tags: verb; group: verb; example: Its metadata can be used to track and **target** you.
 - **tarry**; forms: tarried (tarry-linger), tarries (tarry-linger), tarrying (tarry-linger)
   - `tarry-linger`; tags: verb; group: linger; example: Clement! false-hearted, knaves, where **tarry** ye?"
   - `tarry-tar`; tags: adj; group: tar; example: A **tarry** sludge at the bottom of the barrel showed that it once held
     pitch.
+- **taste**; forms: tasted (verb), tastes, tasting (verb)
+  - `noun`; tags: noun; group: noun; example: It's too sweet for my **taste**.
+  - `verb`; tags: verb; group: verb; example: The fish **tastes** like the sea.
 - **tear**; forms: tearing (rip-verb), tears, tore (rip-verb), torn (rip-verb)
   - `drop`; tags: noun; group: drop; example: The procurator's wife shed a **tear**.
   - `rip-noun`; tags: noun; group: rip; example: And the cut - a positive **tear**, I see.
   - `rip-verb`; tags: verb; group: rip; example: They will **tear** you to pieces!
+- **thunder**; forms: thundered (verb), thundering (verb), thunderred (verb), thunderring (verb), thunders
+  - `noun`; tags: noun; group: noun; example: My dog is scared of the **thunder**.
+  - `verb`; tags: verb; group: verb; example: I heard it **thunder** in the distance.
+- **tie**; forms: tied (verb), ties, tying (verb)
+  - `noun`; tags: noun; group: noun; example: The **tie** doesn't fit with my suit.
+  - `verb`; tags: verb; group: verb; example: He bent over to **tie** his shoe.
 - **tier**; forms: tiered (tier-verb), tiers
   - `tier-noun`; tags: noun; group: row; example: Those words are in the second and third **tiers** of frequency.
   - `tier-one-who-ties`; tags: noun; group: ties; example: Bailey became known as one of the most innovative fly
     **tiers** in the West.
   - `tier-verb`; tags: verb; group: row; example: We're approaching a two-**tiered** medical system.
+- **tip**; forms: tipped (verb), tipping (verb), tips
+  - `noun`; tags: noun; group: noun; example: Before eating here's a small **tip**.
+  - `verb`; tags: verb; group: verb; example: Tom must have been **tipped** off.
 - **torment**; forms: torments
   - `noun`; tags: noun; group: noun; example: The long wait was pure **torment**.
   - `verb`; tags: verb; group: verb; example: Guilt will **torment** him forever.
+- **torture**; forms: tortured (verb), tortures, torturing (verb)
+  - `noun`; tags: noun; group: noun; example: Do you know what **torture** is?
+  - `verb`; tags: verb; group: verb; example: Are you trying to **torture** me?
+- **touch**; forms: touched (verb), touches, touching (verb)
+  - `noun`; tags: noun; group: noun; example: I felt a **touch** of pain in my head.
+  - `verb`; tags: verb; group: verb; example: I am **touched** by their kindness.
 - **tower**; forms: towered (tower-verb), towering (tower-verb), towers (tower-noun, tower-verb)
   - `tower-noun`; tags: noun; group: structure; example: "Show me the North **Tower**!" said Defarge.
   - `tower-one-who-tows`; tags: noun; group: tows; example: With both of the **towers** on duty, the highway crash was
     cleared within the hour.
   - `tower-verb`; tags: verb; group: structure; example: He **towered** like a Goliath above Wolf Larsen.
+- **trace**; forms: traced (verb), traces, tracing
+  - `noun`; tags: noun; group: noun; example: There is no **trace** of him, he disappeared.
+  - `verb`; tags: verb; group: verb; example: The FBI **traced** the coupons back to Leonid.
+- **track**; forms: tracked (verb), tracking (verb), tracks
+  - `noun`; tags: noun; group: noun; example: The path leads to the **tracks**.
+  - `verb`; tags: verb; group: verb; example: I'm afraid they've **tracked** me down.
+- **train**; forms: trained (verb), training (verb), trains
+  - `noun`; tags: noun; group: noun; example: I will catch the 9:00 **train**.
+  - `verb`; tags: verb; group: verb; example: Tom is **training** a guide dog.
 - **transfer**; forms: transferred (transfer-verb), transferring (transfer-verb), transfers
   - `transfer-noun`; tags: noun; group: stress-first; example: Can I get a **transfer** ticket?
   - `transfer-verb`; tags: verb; group: stress-last; example: We need to **transfer** buses at Park and Main.
@@ -1321,16 +2237,34 @@ inflected forms the lemma recognizes.
 - **transport**; forms: transports
   - `noun`; tags: noun; group: noun; example: A military **transport** landed at dawn.
   - `verb`; tags: verb; group: verb; example: The ship will **transport** cars to Europe.
+- **travel**; forms: traveled (verb), traveling (verb), travelled (verb), travelling (verb), travels
+  - `noun`; tags: noun; group: noun; example: I have not had good experience with **travel** agents.
+  - `verb`; tags: verb; group: verb; example: He likes to **travel**. I do, too.
 - **traverse**; forms: traversed (traverse-verb), traverses, traversing (traverse-verb)
   - `traverse-noun`; tags: noun; group: stress-first; example: Two wooden **traverses** span the gap between the walls
     of the loft, and the cat likes to nap upon them.
   - `traverse-verb`; tags: verb; group: stress-last; example: He **traversed** a corridor and came upon a staircase.
+- **treat**; forms: treated (verb), treating (verb), treats
+  - `noun`; tags: noun; group: noun; example: It's been a real **treat** for me.
+  - `verb`; tags: verb; group: verb; example: Don't **treat** me as common people.
 - **trifurcate**; forms: trifurcates (verb)
   - `adj`; tags: adj; group: adj; example: Its antlers were oddly **trifurcate**.
   - `verb`; tags: verb; group: verb; example: Roots often **trifurcate** in rocky soil.
+- **trigger**; forms: triggered (verb), triggering (verb), triggerred (verb), triggerring (verb), triggers
+  - `noun`; tags: noun; group: noun; example: His finger was on the **trigger**.
+  - `verb`; tags: verb; group: verb; example: Laughter **triggers** the release of endorphins.
 - **triplicate**; forms: triplicates
   - `noun`; tags: noun; group: noun; example: The treaty exists in **triplicate**.
   - `verb`; tags: verb; group: verb; example: Can you **triplicate** these pages quickly?
+- **trust**; forms: trusted (verb), trusting (verb), trusts
+  - `noun`; tags: noun; group: noun; example: I want to put my **trust** in you.
+  - `verb`; tags: verb; group: verb; example: I wouldn't **trust** Mary an inch.
+- **tune**; forms: tuned (verb), tunes, tuning (verb)
+  - `noun`; tags: noun; group: noun; example: The third string is out of **tune**.
+  - `verb`; tags: verb; group: verb; example: She **tuned** his guitar for him.
+- **type**; forms: typed (verb), types, typing (verb)
+  - `noun`; tags: noun; group: noun; example: What **type** of work did he do?
+  - `verb`; tags: verb; group: verb; example: I'll **type** more about it later.
 
 ### Lemmas Starting With U
 
@@ -1410,6 +2344,9 @@ inflected forms the lemma recognizes.
 - **upturn**; forms: upturns
   - `noun`; tags: noun; group: noun; example: A modest **upturn** in hiring followed.
   - `verb`; tags: verb; group: verb; example: Storms can **upturn** small boats.
+- **urge**; forms: urged (verb), urges, urging (verb)
+  - `noun`; tags: noun; group: noun; example: I can't resist the **urge** to cry.
+  - `verb`; tags: verb; group: verb; example: I **urged** Mary to do what she wanted.
 - **use**; forms: uses
   - `noun`; tags: noun; group: noun; example: The spare room is for guest **use** only.
   - `verb`; tags: verb; group: verb; example: **Use** a sharp knife to cut the bread.
@@ -1417,11 +2354,59 @@ inflected forms the lemma recognizes.
   - `past`; tags: past, verb; group: past; example: She **used** to live in Chicago.
   - `verb`; tags: past, verb; group: verb; example: I **used** the last of the flour.
 
+### Lemmas Starting With V
+
+- **value**; forms: valued (verb), values, valuing (verb)
+  - `noun`; tags: noun; group: noun; example: Earth reflects the **values** of humans.
+  - `verb`; tags: verb; group: verb; example: How much do you **value** your health?
+- **venture**; forms: ventured (verb), ventures, venturing (verb)
+  - `noun`; tags: noun; group: noun; example: Who will provide capital for the **venture**?
+  - `verb`; tags: verb; group: verb; example: The explorers **ventured** inside the caverns.
+- **view**; forms: viewed (verb), viewing (verb), views
+  - `noun`; tags: noun; group: noun; example: I know this was Cornelius's **view**.
+  - `verb`; tags: verb; group: verb; example: Her family **views** her as crazy and unstable.
+- **visit**; forms: visited (verb), visiting (verb), visits, visitted (verb), visitting (verb)
+  - `noun`; tags: noun; group: noun; example: He'll pay the kids a little **visit**.
+  - `verb`; tags: verb; group: verb; example: I've never **visited** Boston with Tom.
+- **voice**; forms: voiced (verb), voices, voicing (verb)
+  - `noun`; tags: noun; group: noun; example: I wish I had a **voice** like his!
+  - `verb`; tags: verb; group: verb; example: He **voiced** the sentiments of the nation.
+- **vote**; forms: voted (verb), votes, voting (verb)
+  - `noun`; tags: noun; group: noun; example: There will be a **vote** on Sunday.
+  - `verb`; tags: verb; group: verb; example: I know which party to **vote** for.
+
 ### Lemmas Starting With W
 
+- **walk**; forms: walked (verb), walking (verb), walks
+  - `noun`; tags: noun; group: noun; example: She likes to go for **walks** alone.
+  - `verb`; tags: verb; group: verb; example: I am **walking** to the restroom.
 - **warehouse**; forms: warehouses
   - `noun`; tags: noun; group: noun; example: He works nights at a **warehouse**.
   - `verb`; tags: verb; group: verb; example: Don't **warehouse** food in a damp room.
+- **warrant**; forms: warranted (verb), warranting (verb), warrants
+  - `noun`; tags: noun; group: noun; example: It is a death **warrant** for me.
+  - `verb`; tags: verb; group: verb; example: Such a response is not **warranted**.
+- **waste**; forms: wasted (verb), wastes, wasting (verb)
+  - `noun`; tags: noun; group: noun; example: Social media is a **waste** of time.
+  - `verb`; tags: verb; group: verb; example: There is no more time to **waste**.
+- **watch**; forms: watched (verb), watches, watching (verb)
+  - `noun`; tags: noun; group: noun; example: The spring in my **watch** is broken.
+  - `verb`; tags: verb; group: verb; example: Did you **watch** the match of yesterday?
+- **wave**; forms: waved (verb), waves, waving (verb)
+  - `noun`; tags: noun; group: noun; example: She moves like the ocean’s **waves**.
+  - `verb`; tags: verb; group: verb; example: Tom and I **waved** to each other.
+- **wax**; forms: waxed (verb), waxes, waxing
+  - `noun`; tags: noun; group: noun; example: It was like a dreadful **wax** image.
+  - `verb`; tags: verb; group: verb; example: It was Tom who **waxed** the car.
+- **wheel**; forms: wheeled (verb), wheeling (verb), wheels
+  - `noun`; tags: noun; group: noun; example: Bad **wheels** will squeal a lot.
+  - `verb`; tags: verb; group: verb; example: "**Wheel** me over there!" he commanded.
+- **whip**; forms: whipped (verb), whipping (verb), whips
+  - `noun`; tags: noun; group: noun; example: The driver pointed with his **whip**.
+  - `verb`; tags: verb; group: verb; example: Tom **whipped** Mary with his belt.
+- **whisper**; forms: whispered (verb), whispering (verb), whisperred (verb), whisperring (verb), whispers
+  - `noun`; tags: noun; group: noun; example: "I wonder," said Tom in a **whisper**.
+  - `verb`; tags: verb; group: verb; example: She **whispered**, but no one heard.
 - **wicked**; forms: wick (wicked-wick), wickedly (wicked-evil), wicking (wicked-wick), wicks (wicked-wick)
   - `wicked-evil`; tags: adj; group: evil; example: The **wicked** are the most suspicious.
   - `wicked-wick`; tags: verb; group: wick; example: Cool max - a hollow fiber that absorbs bodily moisture and
@@ -1429,6 +2414,15 @@ inflected forms the lemma recognizes.
 - **wind**; forms: winds
   - `noun`; tags: noun; group: noun; example: The kite rose with the **wind**.
   - `verb`; tags: verb; group: verb; example: Vines **wind** around the old oak.
+- **work**; forms: worked (verb), working (verb), works
+  - `noun`; tags: noun; group: noun; example: I have taken on too much **work**.
+  - `verb`; tags: verb; group: verb; example: You know how the system **works**.
 - **wound**; forms: wounds (injury)
   - `injury`; tags: noun; group: injury; example: The **wound** bled for a long time.
   - `past`; tags: past, verb; group: past; example: The path **wound** up the mountain.
+- **wreck**; forms: wrecked (verb), wrecking (verb), wrecks
+  - `noun`; tags: noun; group: noun; example: She wasn't injured in the train **wreck**.
+  - `verb`; tags: verb; group: verb; example: "Tax him with having **wrecked** you?
+- **wrong**; forms: wronged (verb), wronging (verb), wrongs
+  - `noun`; tags: noun; group: noun; example: Can you tell right from **wrong**?
+  - `verb`; tags: verb; group: verb; example: He accused us of **wronging** him.

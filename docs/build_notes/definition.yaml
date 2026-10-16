@@ -13,6 +13,7 @@ input-files:
   - docs/build_notes/weak-lemma-decisions.md
   - docs/build_notes/new-lemma-decisions.md
   - docs/build_notes/new-lemma-results.md
+  - docs/build_notes/nounverb-results.md
   # new-lemma-results.md also documents corpus/audit/new-lemma-speech-map.tsv (sense-to-pronunciation map of the
   # Phase 4 lemmas: lemma, sense, pos, group, arpabet, anchors, holdout, source_mix, holdout_accuracy, status).
   - docs/build_notes/generated/build_notes.md
