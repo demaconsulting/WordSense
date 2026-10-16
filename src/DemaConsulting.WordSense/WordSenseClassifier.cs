@@ -17,6 +17,17 @@ namespace DemaConsulting.WordSense;
 ///     runner-up's score, and the classifier <em>abstains</em> (returns null) when the margin is below the
 ///     lemma's abstain threshold. Create an instance with <see cref="WordSenseClassifier.CreateAsync"/>.
 ///     </para>
+///     <para>
+///     A sense has one name: <see cref="WordSense.Sense"/> on a result is the same string as
+///     <see cref="SenseDefinition.Name"/> on the definition it was built from.
+///     </para>
+///     <para>
+///     Each word is matched against the table's known surface forms after lower-casing it (invariant
+///     culture) and replacing the typographic apostrophe (U+2019) with <c>'</c>, so case does not matter and
+///     inflected forms listed in the table (for example a plural or past tense) resolve to their lemma. A
+///     possessive <c>'s</c> is also accepted: when the word is not itself a known form, <c>'s</c> is removed
+///     and the rest is looked up (so <c>record's</c> resolves like <c>record</c>).
+///     </para>
 /// </remarks>
 /// <example>
 ///     Pick the method that matches the question being asked: <c>ClassifyAsync</c> for the sense,
@@ -75,7 +86,8 @@ public interface IWordSenseClassifier : IDisposable
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>
     ///     An array parallel to <paramref name="words"/>: the sense of each word, or null when the word is
-    ///     not a known ambiguous word or the classifier abstained.
+    ///     not a known ambiguous word, the word yields no tokens or features (for example an empty or
+    ///     whitespace-only string), or the classifier abstained.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
@@ -119,7 +131,8 @@ public interface IWordSenseClassifier : IDisposable
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>
     ///     An array parallel to <paramref name="words"/>: the detail of each word that has a classifier
-    ///     (also when it abstained, see <see cref="WordSenseDetail.Abstained"/>), or null for other words.
+    ///     (also when it abstained, see <see cref="WordSenseDetail.Abstained"/>), or null for other words,
+    ///     including a known word that yields no tokens or features.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
@@ -199,7 +212,7 @@ public interface IWordSenseClassifier : IDisposable
 ///     each target. The instance is thread-safe when its encoder is. Instances created by
 ///     <see cref="CreateAsync"/> own their ONNX session, so dispose them (for example with <c>using</c>);
 ///     create one classifier and share it rather than creating one per request. The classification
-///     methods are described on <see cref="IWordSenseClassifier"/>.
+///     methods, and how words are matched to lemmas, are described on <see cref="IWordSenseClassifier"/>.
 /// </remarks>
 /// <example>
 ///     Create the classifier once, then classify as many texts as needed. With no options the model is
@@ -227,7 +240,25 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// <param name="table">The classifier table.</param>
     /// <param name="vocabularyPath">The path of the vocabulary file that matches the encoder.</param>
     /// <param name="options">Classifier options, or null for defaults.</param>
-    /// <exception cref="WordSenseModelMismatchException">Thrown when the table was trained with a different model.</exception>
+    /// <remarks>
+    ///     The vocabulary file is read first, so a problem with it is reported before the other arguments
+    ///     are checked.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when <paramref name="encoder"/>, <paramref name="table"/> or <paramref name="vocabularyPath"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown when <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> is outside 8 to 512, or
+    ///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> is negative or NaN.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    ///     Thrown when <paramref name="vocabularyPath"/> is empty or the vocabulary lacks a required special token.
+    /// </exception>
+    /// <exception cref="FileNotFoundException">Thrown when the vocabulary file does not exist.</exception>
+    /// <exception cref="IOException">Thrown when the vocabulary file cannot be read.</exception>
+    /// <exception cref="WordSenseModelMismatchException">
+    ///     Thrown when the table was trained with a different model (SHA-256 or dimension) than the encoder.
+    /// </exception>
     public WordSenseClassifier(
         IWordSenseEncoder encoder,
         WordSenseTable table,
@@ -288,14 +319,21 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// <remarks>
     ///     When <see cref="WordSenseClassifierOptions.ModelDirectory"/> is set the files in it are verified
     ///     and no network access happens; otherwise <see cref="WordSenseModelDownloader.EnsureModelAsync"/> obtains
-    ///     them. The embedded table is loaded with <see cref="WordSenseTable.LoadEmbedded"/>.
+    ///     them (see that method for its additional exceptions, such as <see cref="ArgumentException"/> for an
+    ///     invalid <c>WORDSENSE_MIRROR_*</c> environment configuration; <see cref="WordSenseClassifierOptions.Downloader"/>
+    ///     describes the download settings). The embedded table is loaded with <see cref="WordSenseTable.LoadEmbedded"/>.
+    ///     The model is obtained before <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> and
+    ///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> are validated, so an invalid value of either
+    ///     is reported only after the model has been downloaded or verified. <c>AbstainMarginScale</c> is
+    ///     rejected when negative or NaN; positive infinity is accepted.
     /// </remarks>
     /// <returns>A classifier that owns its encoder and must be disposed.</returns>
     /// <exception cref="WordSenseModelDownloadException">Thrown when the model could not be downloaded.</exception>
     /// <exception cref="WordSenseModelMismatchException">Thrown when the embedded table does not match the model.</exception>
     /// <exception cref="FileNotFoundException">Thrown when a file of the model directory is missing.</exception>
     /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match the pinned value.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when an option value is out of range.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when an option value is out of range (checked after the model is obtained).</exception>
+    /// <exception cref="ArgumentException">Thrown when the <c>WORDSENSE_MIRROR_*</c> environment configuration is invalid.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <example>
     ///     <code>

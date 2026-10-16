@@ -3,9 +3,15 @@ using System.Text.RegularExpressions;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The definition of one sense of a lemma: its label and its tags.
+///     The definition of one sense of a lemma: its name and its tags.
 /// </summary>
-/// <param name="Name">The sense label, unique within the lemma.</param>
+/// <remarks>
+///     The name becomes <see cref="WordSense.Sense"/> on the results. The group, when given, and every tag
+///     are validated with <see cref="IsValidTag"/> (lower-case letters, digits and hyphens, starting with a
+///     letter, at most <see cref="MaxTagLength"/> characters). The name itself is only required to be
+///     non-empty and unique within the lemma; it is not held to the tag syntax.
+/// </remarks>
+/// <param name="Name">The sense name (exposed as <see cref="WordSense.Sense"/>), unique within the lemma.</param>
 /// <param name="Tags">The tags: at least one, lower-case, sorted ordinally and without duplicates.</param>
 /// <param name="Group">The group the sense belongs to, or null for a group of its own (named like the sense).</param>
 public sealed partial record SenseDefinition(string Name, IReadOnlyList<string> Tags, string? Group = null)

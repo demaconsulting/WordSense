@@ -11,9 +11,12 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Some environments block public download hosts. A mirror lets such an environment serve the model
 ///     files from an internal location. Files are requested at
-///     <c>{BaseUri}/{model-id}/{file-name}</c> (for example
+///     <c>{BaseUri}/{model-id}/{file-name}</c> where the model id is the literal folder name
+///     <c>all-MiniLM-L6-v2</c> and the files are <c>model_int8.onnx</c> and <c>vocab.txt</c> (for example
 ///     <c>https://mirror.example/models/all-MiniLM-L6-v2/vocab.txt</c>); only the base is replaced, the
-///     relative layout stays fixed. The mirror can be configured programmatically through
+///     relative layout stays fixed. Each file must match its pinned SHA-256; a mirror copy that does not
+///     match is discarded and the mirror is skipped for that file, so the next source (Hugging Face, then
+///     GitHub) is tried. The mirror can be configured programmatically through
 ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> or through the environment variables named by
 ///     <see cref="UrlEnvironmentVariable"/>, <see cref="UserEnvironmentVariable"/>,
 ///     <see cref="PasswordEnvironmentVariable"/> and <see cref="BearerTokenEnvironmentVariable"/>; the

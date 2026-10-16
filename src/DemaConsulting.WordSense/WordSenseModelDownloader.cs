@@ -42,8 +42,16 @@ public static class WordSenseModelDownloader
     ///     Thrown when <see cref="WordSenseModelDownloaderOptions.RequestTimeout"/> is zero or negative and is not
     ///     <see cref="Timeout.InfiniteTimeSpan"/>, or exceeds the maximum the platform timer supports.
     /// </exception>
+    /// <exception cref="ArgumentException">
+    ///     Thrown when the mirror environment configuration (<c>WORDSENSE_MIRROR_*</c>, read only when no
+    ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> is given) is invalid, or when
+    ///     <see cref="WordSenseModelDownloaderOptions.StoreRoot"/> is not a valid path.
+    /// </exception>
+    /// <exception cref="IOException">Thrown when the store directory cannot be created or an existing model file cannot be read.</exception>
+    /// <exception cref="UnauthorizedAccessException">Thrown when the store directory cannot be created or accessed.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <remarks>
+    ///     A null <paramref name="options"/> is valid and means the defaults (no <see cref="ArgumentNullException"/>).
     ///     An exception thrown by the <see cref="WordSenseModelDownloaderOptions.Progress"/> callback is not a
     ///     source failure: it propagates to the caller and the remaining sources are not tried. When no
     ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> is given, the mirror environment variables named

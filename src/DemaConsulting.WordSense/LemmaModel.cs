@@ -22,7 +22,8 @@ public enum LemmaModelKind
 /// </summary>
 /// <remarks>
 ///     Instances are immutable after construction and thread-safe. The order in which the senses are
-///     supplied defines the order of the weight rows; sense labels must be unique.
+///     supplied defines the order of the weight rows; sense names (<see cref="SenseDefinition.Name"/>,
+///     exposed as <see cref="WordSense.Sense"/>) must be unique.
 /// </remarks>
 public sealed class LemmaModel
 {
@@ -30,11 +31,15 @@ public sealed class LemmaModel
     ///     Initializes a new instance of the <see cref="LemmaModel"/> class.
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="senses">The sense definitions (label and tags), at least two; their order defines the weight-row order.</param>
+    /// <param name="senses">The sense definitions (name and tags), at least two; their order defines the weight-row order.</param>
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major, <c>rows × dimension</c> values.</param>
     /// <param name="bias">One bias per weight row.</param>
-    /// <param name="abstainMargin">The minimum score margin below which the classifier abstains.</param>
+    /// <param name="abstainMargin">
+    ///     The base abstain margin. A word is answered only when its score margin is at least
+    ///     <c>AbstainMargin * AbstainMarginScale</c> (see <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>);
+    ///     otherwise the classifier abstains and reports null. Must be finite.
+    /// </param>
     /// <param name="dimension">The feature dimension.</param>
     /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent or a value is not finite.</exception>
     public LemmaModel(
@@ -117,7 +122,9 @@ public sealed class LemmaModel
     public float[] Bias { get; }
 
     /// <summary>
-    ///     Gets the minimum score margin below which the classifier reports no sense.
+    ///     Gets the base abstain margin. A word is answered only when its score margin is at least
+    ///     <c>AbstainMargin * AbstainMarginScale</c> (<see cref="WordSenseClassifierOptions.AbstainMarginScale"/>,
+    ///     1 by default); a smaller margin makes the classifier abstain, so the result is null.
     /// </summary>
     public float AbstainMargin { get; }
 

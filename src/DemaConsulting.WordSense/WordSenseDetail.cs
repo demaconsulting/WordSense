@@ -22,10 +22,18 @@ namespace DemaConsulting.WordSense;
 ///     }
 ///     </code>
 /// </example>
-/// <param name="Sense">The best sense; always set for a word that has a classifier.</param>
+/// <param name="Sense">
+///     The best sense; always set for a word that has a classifier. It is populated even when
+///     <paramref name="Abstained"/> is true, whereas <see cref="IWordSenseClassifier.ClassifyAsync(IReadOnlyList{string}, CancellationToken)"/>
+///     returns null for such a word.
+/// </param>
 /// <param name="Margin">
-///     The score of the best sense minus the score of the runner-up. This is the value compared with
-///     the lemma's abstain threshold.
+///     The score of the best sense minus the score of the runner-up. A score is the linear activation of a
+///     sense (feature vector times the sense's weights plus bias; for a two-sense lemma the scores are
+///     <c>-a</c> and <c>+a</c>), so higher is better but the scale is not a probability. The margin is the
+///     value compared with the lemma's abstain threshold; it is comparable only within one lemma, or
+///     relative to the default threshold of that lemma, because each lemma has its own threshold and that
+///     per-lemma threshold is not exposed.
 /// </param>
 /// <param name="RunnerUp">The second-best sense.</param>
 /// <param name="RunnerUpMargin">

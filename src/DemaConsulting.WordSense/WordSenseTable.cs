@@ -109,6 +109,10 @@ public sealed class WordSenseTable
     /// <param name="mean">The mean embedding used to center features; length <paramref name="dimension"/>.</param>
     /// <param name="lemmas">The lemma models, which must be unique and in ordinal order of lemma.</param>
     /// <param name="forms">The map from lower-case word form to lemma; every lemma must have a model.</param>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when <paramref name="modelId"/>, <paramref name="modelSha256"/>, <paramref name="mean"/>,
+    ///     <paramref name="lemmas"/> or <paramref name="forms"/> is null.
+    /// </exception>
     /// <exception cref="ArgumentException">Thrown when the content is inconsistent.</exception>
     public WordSenseTable(
         string modelId,
@@ -238,6 +242,12 @@ public sealed class WordSenseTable
     /// </summary>
     /// <param name="data">The serialized table bytes.</param>
     /// <returns>The parsed table.</returns>
+    /// <remarks>
+    ///     To bound memory the reader rejects, whatever the checksum says: a dimension above 4,096; more than
+    ///     100,000 lemmas; more than 2,000,000 forms; fewer than 2 or more than 64 senses in a lemma; more
+    ///     than 256 distinct tags; more than 16 tags (or none) on a sense. Strings are limited to 65,535
+    ///     UTF-8 bytes by their length prefix.
+    /// </remarks>
     /// <exception cref="WordSenseTableFormatException">
     ///     Thrown when the data is truncated, corrupted, of an unsupported version, or otherwise malformed.
     /// </exception>
@@ -258,6 +268,12 @@ public sealed class WordSenseTable
     ///     Serializes the table to its binary format.
     /// </summary>
     /// <returns>The serialized bytes, including the trailing digest.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when a string is too long to encode.</exception>
+    /// <exception cref="OverflowException">
+    ///     Thrown when a count does not fit its field in the format, for example more than 65,535 distinct tags
+    ///     or more than 65,535 senses in one lemma. The writer does not apply the limits that <see cref="Read"/>
+    ///     enforces, so a table that is written successfully can still be rejected when read back.
+    /// </exception>
     public byte[] ToArray()
     {
         using var stream = new MemoryStream();
@@ -271,6 +287,9 @@ public sealed class WordSenseTable
     /// <param name="destination">The stream receiving the bytes.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="destination"/> is null.</exception>
     /// <exception cref="InvalidOperationException">Thrown when a string is too long to encode.</exception>
+    /// <exception cref="OverflowException">
+    ///     Thrown when a count does not fit its field in the format (see <see cref="ToArray"/>).
+    /// </exception>
     public void Write(Stream destination)
     {
         ArgumentNullException.ThrowIfNull(destination);

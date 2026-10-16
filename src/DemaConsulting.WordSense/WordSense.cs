@@ -46,14 +46,16 @@ public sealed class WordSense
     public string Lemma { get; }
 
     /// <summary>
-    ///     Gets the sense label, unique within the lemma, for example <c>noun</c> or <c>bend</c>.
+    ///     Gets the sense name (the <see cref="SenseDefinition.Name"/> it was built from), unique within the
+    ///     lemma, for example <c>noun</c> or <c>bend</c>.
     /// </summary>
     public string Sense { get; }
 
     /// <summary>
     ///     Gets the group of the sense: senses that share a meaning but differ in part of speech share a group
-    ///     (for example <c>bend-noun</c> and <c>bend-verb</c> in group <c>bend</c>). It is the sense label
-    ///     when the sense has no explicit group, and is never null or empty.
+    ///     (for example <c>bend-noun</c> and <c>bend-verb</c> in group <c>bend</c>). It is the sense name
+    ///     when the sense has no explicit group, and is never null or empty. An explicit group is validated
+    ///     like a tag (lower-case letters, digits and hyphens, starting with a letter).
     /// </summary>
     public string Group { get; }
 
