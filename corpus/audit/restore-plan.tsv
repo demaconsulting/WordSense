@@ -74,3 +74,30 @@ detail	detail-noun	noun	stress-first	-	noun (DEE-tail): a small fact or feature,
 detail	detail-verb	verb	stress-last	-	verb (de-TAIL): to describe or list fully, or to assign a person or group to a special task: detail the plans, detailed the changes, detailing the costs, was detailed to guard the gate	new
 combat	combat-noun	noun	stress-first	-	noun (COM-bat): fighting between armed forces or individuals: in combat, hand-to-hand combat, combat troops, a combat zone	new
 combat	combat-verb	verb	stress-last	-	verb (com-BAT): to fight against or try to stop something, such as a disease or a problem: combat crime, combating climate change, combated the infection	new
+resign	resign-quit	verb	quit	-	verb (re-ZINE): to give up a job, post or position formally: resign from the board, he resigned as mayor, resigning next month	new
+resign	resign-sign-again	verb	sign-again	-	verb (re-SIGN, like sign again): to sign a document, contract or lease again: resign the lease, re-signed the contract, the player was re-signed for another year	new
+reset	reset-noun	noun	stress-first	-	noun (REE-set): the act of setting something back to its original state, or a fresh start: a hard reset, a factory reset, the reset button, a reset of relations	new
+reset	reset-verb	verb	stress-last	-	verb (ree-SET): to set something again or return it to its starting state: reset the clock, reset your password, the router resets itself, resetting the counter	new
+intern	intern-noun	noun	trainee	-	noun (IN-turn): a student or recent graduate who works for training and experience: a summer intern, a medical intern, the interns at the firm	new
+intern	intern-train	verb	trainee	-	verb (IN-turn): to work as an intern, gaining experience: interned at the newspaper, interning for a senator, she interns on Fridays	new
+intern	intern-confine	verb	confine	-	verb (in-TURN): to confine or imprison someone, especially in wartime and without trial: interned as enemy aliens, were interned for the duration of the war, interning civilians	new
+recreate	recreate-refresh	verb	refresh	-	verb (REC-re-ate, like rec room): to refresh yourself by relaxing or doing something enjoyable: recreate by the lake, they recreated on the weekends, a place to recreate	new
+recreate	recreate-again	verb	again	-	verb (re-cre-ATE, like create again): to make or create something again, or to reproduce it: recreate the scene, recreated the original, recreating the experiment	new
+perfume	perfume-noun	noun	stress-first	-	noun (PER-fume): a sweet-smelling liquid worn on the skin, or a pleasant smell: a bottle of perfume, French perfume, the perfume of roses	new
+perfume	perfume-verb	verb	stress-last	-	verb (per-FUME): to fill something with a pleasant smell, or to put perfume on it: perfumed the air, a perfumed letter, perfuming the room	new
+dictate	dictate-noun	noun	stress-first	-	noun (DIC-tate): an order, rule or principle that must be obeyed: the dictates of conscience, follow the dictates of fashion, a dictate from above	new
+dictate	dictate-verb	verb	stress-last	-	verb (dic-TATE): to say words aloud for someone to write down, or to give orders or set terms: dictate a letter, dictated the terms, dictating to a secretary	new
+recess	recess-noun	noun	stress-first	-	noun (REE-cess): a break in work or a school day, or a hollow space set into a wall: the court's recess, children at recess, a recess in the wall, the summer recess	new
+recess	recess-verb	verb	stress-last	-	verb (re-CESS): to take a break, or to set something back into a wall or surface: the court recessed for lunch, recessed lighting, recessing the shelf	new
+complex	complex-adj	adj	adj	-	adjective (com-PLEX): made of many connected parts, or hard to understand: a complex system, a complex problem, very complex	new
+complex	complex-noun	noun	noun	-	noun (COM-plex): a group of connected buildings, or a set of related ideas or feelings: a sports complex, an apartment complex, an inferiority complex	new
+frequent	frequent-adj	adj	adj	-	adjective (FREE-quent): happening often or occurring many times: frequent visits, a frequent flyer, frequent rain	new
+frequent	frequent-verb	verb	verb	-	verb (free-QUENT): to visit a place often or habitually: frequent the cafe, frequented by tourists, frequenting the library	new
+ally	ally-noun	noun	stress-first	-	noun (AL-lie): a person, group or country that supports or is joined with another: a close ally, allies in the war, an ally of the United States	new
+ally	ally-verb	verb	stress-last	-	verb (al-LIE): to unite or join with another for a shared purpose: ally with the rebels, allied themselves with the king, allying with local groups	new
+traverse	traverse-noun	noun	stress-first	-	noun (TRAV-erse): a path or crossing, or something that lies across: a traverse across the cliff, the traverse of a gun carriage, a surveyor's traverse	new
+traverse	traverse-verb	verb	stress-last	-	verb (tra-VERSE): to travel across or through a place, or to extend across it: traverse the desert, traversed the bridge, traversing the ridge	new
+prefix	prefix-noun	noun	stress-first	-	noun (PREE-fix): a word part added to the front of a word, or a title or code placed before a name or number: the prefix un-, a telephone prefix, the prefix Dr.	new
+prefix	prefix-verb	verb	stress-last	-	verb (pre-FIX): to add something to the front of a word, name or number: prefix the name with a title, prefixed with a zero, prefixing the code	new
+suffix	suffix-noun	noun	stress-first	-	noun (SUF-fix): a word part added to the end of a word: the suffix -ness, a plural suffix, a noun suffix	new
+suffix	suffix-verb	verb	stress-last	-	verb (suf-FIX): to add something to the end of a word, name or number: suffix the word with -ly, suffixed with a letter, suffixing the number	new
