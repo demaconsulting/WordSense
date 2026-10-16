@@ -12,6 +12,7 @@ input-files:
   - docs/build_notes/learning-curve-and-diagnosis.md
   - docs/build_notes/weak-lemma-decisions.md
   - docs/build_notes/new-lemma-decisions.md
+  - docs/build_notes/new-lemma-results.md
   - docs/build_notes/generated/build_notes.md
   - docs/build_notes/generated/versions.md
 template: template.html

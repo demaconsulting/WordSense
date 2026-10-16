@@ -29,3 +29,30 @@ uptown	adv	adv	uptown
 uptown	noun	noun	
 conjunct	adj	adj	
 conjunct	noun	noun	
+contact	contact-noun	noun	stress-first
+contact	contact-verb	verb	stress-last
+impact	impact-noun	noun	stress-first
+impact	impact-verb	verb	stress-last
+address	address-noun	noun	stress-first
+address	address-verb	verb	stress-last
+transfer	transfer-noun	noun	stress-first
+transfer	transfer-verb	verb	stress-last
+update	update-noun	noun	stress-first
+update	update-verb	verb	stress-last
+protest	protest-noun	noun	stress-first
+protest	protest-verb	verb	stress-last
+collect	collect-verb	verb	gather
+collect	collect-prayer	noun	prayer
+export	export-noun	noun	stress-first
+export	export-verb	verb	stress-last
+accent	accent-noun	noun	stress-first
+accent	accent-verb	verb	stress-last
+upgrade	upgrade-noun	noun	stress-first
+upgrade	upgrade-verb	verb	stress-last
+second	second-ordinal-adj	adj	ordinal
+second	second-noun	noun	ordinal
+second	second-support	verb	ordinal
+detail	detail-noun	noun	stress-first
+detail	detail-verb	verb	stress-last
+combat	combat-noun	noun	stress-first
+combat	combat-verb	verb	stress-last

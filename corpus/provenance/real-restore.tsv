@@ -1,4 +1,100 @@
 id	lemma	sense	split	source	licence	source_key	url	contributor	origin
+0b548f4b465c	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p3074	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+213907503a63	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p6826	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+3999360f86e1	accent	accent-noun	anchors	gutenberg	Public domain	pg2814#p338	https://www.gutenberg.org/ebooks/2814	James Joyce: Dubliners	real
+3a9788a2b5b7	accent	accent-noun	anchors	gutenberg	Public domain	pg164#p353	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+4e3679052977	accent	accent-noun	anchors	gutenberg	Public domain	pg1257#p6174	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+55fcb72761a0	accent	accent-noun	anchors	gutenberg	Public domain	pg164#p410	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+5875b69fceab	accent	accent-noun	anchors	tatoeba-cc0	CC0 1.0	13320180	https://tatoeba.org/en/sentences/show/13320180	deniko	real
+5c05c98b6855	accent	accent-noun	anchors	gutenberg	Public domain	pg1399#p6160	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+6d791aa3051c	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p6346	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+7facf721d74b	accent	accent-noun	anchors	tatoeba-cc0	CC0 1.0	11578325	https://tatoeba.org/en/sentences/show/11578325	Cangarejo	real
+80e6ab9e4fbf	accent	accent-noun	anchors	tatoeba-cc0	CC0 1.0	8094032	https://tatoeba.org/en/sentences/show/8094032	deniko	real
+8dec449046c7	accent	accent-noun	anchors	gutenberg	Public domain	pg1257#p4477	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+903aa7addf2d	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p4069	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+a0bcdcf0cef2	accent	accent-noun	anchors	gutenberg	Public domain	pg1399#p2691	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+bf370761b5d1	accent	accent-noun	anchors	tatoeba-cc0	CC0 1.0	8091526	https://tatoeba.org/en/sentences/show/8091526	deniko	real
+c75b89691e23	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p2795	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+c8f6a31e59db	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p10328	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+d65f65174e02	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p1788	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+f7b56f8aa829	accent	accent-noun	anchors	tatoeba-cc0	CC0 1.0	11859734	https://tatoeba.org/en/sentences/show/11859734	Cangarejo	real
+fc6cdaf05ab8	accent	accent-noun	anchors	gutenberg	Public domain	pg135#p7910	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+5b92773c5606	accent	accent-noun	holdout	tatoeba-by	CC BY 2.0 FR	12938355	https://tatoeba.org/en/sentences/show/12938355	rul	real
+6267332fa291	accent	accent-noun	holdout	gutenberg	Public domain	pg110#p2853	https://www.gutenberg.org/ebooks/110	Thomas Hardy: Tess of the d'Urbervilles: A Pure Woman	real
+8a21d9b76099	accent	accent-noun	holdout	gutenberg	Public domain	pg155#p334	https://www.gutenberg.org/ebooks/155	Wilkie Collins: The Moonstone	real
+94d3ae7786ed	accent	accent-noun	holdout	gutenberg	Public domain	pg910#p643	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+95283b08d94e	accent	accent-noun	holdout	gutenberg	Public domain	pg821#p2041	https://www.gutenberg.org/ebooks/821	Charles Dickens: Dombey and Son	real
+9beea037c331	accent	accent-noun	holdout	tatoeba-by	CC BY 2.0 FR	10193432	https://tatoeba.org/en/sentences/show/10193432	terrywallwork	real
+a531481a7583	accent	accent-noun	holdout	gutenberg	Public domain	pg82#p2512	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+a8a46896d55c	accent	accent-noun	holdout	tatoeba-by	CC BY 2.0 FR	1039591	https://tatoeba.org/en/sentences/show/1039591	sundown	real
+b27a424febc9	accent	accent-noun	holdout	ud-ewt	CC BY-SA 4.0	weblog-juancole.com_juancole_20040823064025_ENG_20040823_064025-0049	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: weblog-juancole.com_juancole_20040823064025_ENG_20040823_064025	real
+e5b2b9f26679	accent	accent-noun	holdout	gutenberg	Public domain	pg84#p69	https://www.gutenberg.org/ebooks/84	Mary Wollstonecraft Shelley: Frankenstein; or, the modern prometheus	real
+07a66afda363	accent	accent-verb	anchors	gutenberg	Public domain	pg135#p6340	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+898a43a9e4ca	accent	accent-verb	anchors	gutenberg	Public domain	pg135#p9240	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+9f4d451380a8	accent	accent-verb	anchors	tatoeba-by	CC BY 2.0 FR	323537	https://tatoeba.org/en/sentences/show/323537	al_ex_an_der	real
+f00f4afb6210	accent	accent-verb	anchors	tatoeba-by	CC BY 2.0 FR	3983618	https://tatoeba.org/en/sentences/show/3983618	AlanF_US	real
+a5c7a8242e19	accent	accent-verb	holdout	ud-ewt	CC BY-SA 4.0	email-enronsent11_01-0015	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent11_01	real
+bd2252f11355	accent	accent-verb	holdout	tatoeba-cc0	CC0 1.0	11893454	https://tatoeba.org/en/sentences/show/11893454	Cangarejo	real
+05566c526235	address	address-noun	anchors	gutenberg	Public domain	pg1056#p1060	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+1c96393d3980	address	address-noun	anchors	gutenberg	Public domain	pg766#p5570	https://www.gutenberg.org/ebooks/766	Charles Dickens: David Copperfield	real
+1e882c72f7f9	address	address-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Bogon filtering	https://en.wikipedia.org/wiki/Bogon_filtering	Wikipedia: Bogon filtering	real
+2d7226238fb4	address	address-noun	anchors	gutenberg	Public domain	pg155#p1283	https://www.gutenberg.org/ebooks/155	Wilkie Collins: The Moonstone	real
+326916fd597e	address	address-noun	anchors	tatoeba-cc0	CC0 1.0	10719766	https://tatoeba.org/en/sentences/show/10719766	shekitten	real
+32c9a68dbd7b	address	address-noun	anchors	gutenberg	Public domain	pg599#p3040	https://www.gutenberg.org/ebooks/599	William Makepeace Thackeray: Vanity Fair	real
+385fb19b4a31	address	address-noun	anchors	tatoeba-cc0	CC0 1.0	11514148	https://tatoeba.org/en/sentences/show/11514148	books	real
+43b792d64ffd	address	address-noun	anchors	gutenberg	Public domain	pg135#p1607	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+550cda7e2796	address	address-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Email address	https://en.wikipedia.org/wiki/Email_address	Wikipedia: Email address	real
+566fef47294f	address	address-noun	anchors	tatoeba-cc0	CC0 1.0	10164876	https://tatoeba.org/en/sentences/show/10164876	ddnktr	real
+6cbd1cd571b6	address	address-noun	anchors	gutenberg	Public domain	pg963#p2124	https://www.gutenberg.org/ebooks/963	Charles Dickens: Little Dorrit	real
+6f83d0273dd8	address	address-noun	anchors	gutenberg	Public domain	pg110#p2344	https://www.gutenberg.org/ebooks/110	Thomas Hardy: Tess of the d'Urbervilles: A Pure Woman	real
+811c54012478	address	address-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Regional Internet registry	https://en.wikipedia.org/wiki/Regional_Internet_registry	Wikipedia: Regional Internet registry	real
+922bd954173c	address	address-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Address (disambiguation)	https://en.wikipedia.org/wiki/Address_(disambiguation)	Wikipedia: Address (disambiguation)	real
+948a934fb956	address	address-noun	anchors	gutenberg	Public domain	pg766#p6779	https://www.gutenberg.org/ebooks/766	Charles Dickens: David Copperfield	real
+9fe1fa35af06	address	address-noun	anchors	gutenberg	Public domain	pg145#p320	https://www.gutenberg.org/ebooks/145	George Eliot: Middlemarch	real
+a39d9a741b58	address	address-noun	anchors	tatoeba-by	CC BY 2.0 FR	6521326	https://tatoeba.org/en/sentences/show/6521326	CT	real
+c51210f12cf8	address	address-noun	anchors	gutenberg	Public domain	pg4300#p5096	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+dd46e8fc516e	address	address-noun	anchors	gutenberg	Public domain	pg1056#p1670	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+e28e6b8eee0a	address	address-noun	anchors	tatoeba-by	CC BY 2.0 FR	6518461	https://tatoeba.org/en/sentences/show/6518461	CT	real
+1bb021cb6ff1	address	address-noun	holdout	gutenberg	Public domain	pg834#p632	https://www.gutenberg.org/ebooks/834	Arthur Conan Doyle: The Memoirs of Sherlock Holmes	real
+3e89f4cf67c5	address	address-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Email-address harvesting	https://en.wikipedia.org/wiki/Email-address_harvesting	Wikipedia: Email-address harvesting	real
+670a5a288ed6	address	address-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:IP address blocking	https://en.wikipedia.org/wiki/IP_address_blocking	Wikipedia: IP address blocking	real
+6b5373898981	address	address-noun	holdout	tatoeba-by	CC BY 2.0 FR	11817223	https://tatoeba.org/en/sentences/show/11817223	calypsow	real
+91f979baf961	address	address-noun	holdout	tatoeba-by	CC BY 2.0 FR	432858	https://tatoeba.org/en/sentences/show/432858	FeuDRenais	real
+9590ae72f651	address	address-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Domain name	https://en.wikipedia.org/wiki/Domain_name	Wikipedia: Domain name	real
+96b57bc70fdd	address	address-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Network address translation	https://en.wikipedia.org/wiki/Network_address_translation	Wikipedia: Network address translation	real
+cb984cbf0e85	address	address-noun	holdout	gutenberg	Public domain	pg583#p163	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+d91e1c39b2ed	address	address-noun	holdout	gutenberg	Public domain	pg1399#p4710	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+fe1674734912	address	address-noun	holdout	tatoeba-by	CC BY 2.0 FR	11217972	https://tatoeba.org/en/sentences/show/11217972	Cabo	real
+12cac96bd433	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11285069	https://tatoeba.org/en/sentences/show/11285069	Cangarejo	real
+16faf2eef679	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11989293	https://tatoeba.org/en/sentences/show/11989293	Cangarejo	real
+35119eda232e	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	10834853	https://tatoeba.org/en/sentences/show/10834853	Cangarejo	real
+3f89910e8b62	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12089234	https://tatoeba.org/en/sentences/show/12089234	Cangarejo	real
+47e02bddeb2e	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12364738	https://tatoeba.org/en/sentences/show/12364738	Cangarejo	real
+47e7043a26e8	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12023114	https://tatoeba.org/en/sentences/show/12023114	Cangarejo	real
+4cd24bf5380a	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12100739	https://tatoeba.org/en/sentences/show/12100739	Cangarejo	real
+6c077bfb0554	address	address-verb	anchors	gutenberg	Public domain	pg583#p297	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+788f9896b0f6	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12198480	https://tatoeba.org/en/sentences/show/12198480	Cangarejo	real
+7d3967680dca	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11715126	https://tatoeba.org/en/sentences/show/11715126	Cangarejo	real
+96d2b7054fec	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11323103	https://tatoeba.org/en/sentences/show/11323103	Cangarejo	real
+b305ae3d691a	address	address-verb	anchors	gutenberg	Public domain	pg583#p3693	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+c3a8be13604a	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11867818	https://tatoeba.org/en/sentences/show/11867818	Cangarejo	real
+d674020f80ca	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11335216	https://tatoeba.org/en/sentences/show/11335216	Cangarejo	real
+e0003cbb7401	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12360467	https://tatoeba.org/en/sentences/show/12360467	Cangarejo	real
+e0ccde1efe6c	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12140052	https://tatoeba.org/en/sentences/show/12140052	Cangarejo	real
+e1516d42b594	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12300128	https://tatoeba.org/en/sentences/show/12300128	Cangarejo	real
+e329033027d7	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	12031276	https://tatoeba.org/en/sentences/show/12031276	Cangarejo	real
+f9fe837977fd	address	address-verb	anchors	gutenberg	Public domain	pg1399#p2908	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+fffed8d46994	address	address-verb	anchors	tatoeba-cc0	CC0 1.0	11062521	https://tatoeba.org/en/sentences/show/11062521	Cangarejo	real
+0ebfa6d4abf8	address	address-verb	holdout	tatoeba-cc0	CC0 1.0	8906192	https://tatoeba.org/en/sentences/show/8906192	deniko	real
+15e50962da3b	address	address-verb	holdout	gutenberg	Public domain	pg730#p1678	https://www.gutenberg.org/ebooks/730	Charles Dickens: Oliver Twist	real
+17c5cbcf9133	address	address-verb	holdout	tatoeba-by	CC BY 2.0 FR	11560777	https://tatoeba.org/en/sentences/show/11560777	Abderrahmane	real
+2c13cd35a27e	address	address-verb	holdout	gutenberg	Public domain	pg122#p2228	https://www.gutenberg.org/ebooks/122	Thomas Hardy: The Return of the Native	real
+2d911c070630	address	address-verb	holdout	gutenberg	Public domain	pg1023#p5735	https://www.gutenberg.org/ebooks/1023	Charles Dickens: Bleak House	real
+36465a97668b	address	address-verb	holdout	gutenberg	Public domain	pg834#p90	https://www.gutenberg.org/ebooks/834	Arthur Conan Doyle: The Memoirs of Sherlock Holmes	real
+a40027b7421e	address	address-verb	holdout	gutenberg	Public domain	pg135#p1877	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+bb49745a3ac6	address	address-verb	holdout	tatoeba-by	CC BY 2.0 FR	12169680	https://tatoeba.org/en/sentences/show/12169680	megamanenm	real
+d5575be4c0c2	address	address-verb	holdout	gutenberg	Public domain	pg98#p3048	https://www.gutenberg.org/ebooks/98	Charles Dickens: A Tale of Two Cities	real
+da2d3361fa01	address	address-verb	holdout	gutenberg	Public domain	pg700#p3228	https://www.gutenberg.org/ebooks/700	Charles Dickens: The Old Curiosity Shop	real
 25b75f75f98f	bow	bend-noun	anchors	gutenberg	Public domain	pg599#p2452	https://www.gutenberg.org/ebooks/599	William Makepeace Thackeray: Vanity Fair	real
 2b5bb2690925	bow	bend-noun	anchors	gutenberg	Public domain	pg2186#p349	https://www.gutenberg.org/ebooks/2186	Rudyard Kipling: "Captains Courageous": A Story of the Grand Banks	real
 3687d31d8086	bow	bend-noun	anchors	tatoeba-by	CC BY 2.0 FR	64444	https://tatoeba.org/en/sentences/show/64444	\N	real
@@ -199,6 +295,108 @@ f25fe9155c8d	closer	noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Raisel Iglesias	htt
 9fc9716cb634	closer	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Cody Allen	https://en.wikipedia.org/wiki/Cody_Allen	Wikipedia: Cody Allen	real
 af37119096b1	closer	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Save (baseball)	https://en.wikipedia.org/wiki/Save_(baseball)	Wikipedia: Save (baseball)	real
 c329336fa0ab	closer	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Sean Doolittle	https://en.wikipedia.org/wiki/Sean_Doolittle	Wikipedia: Sean Doolittle	real
+2b4a18e27928	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Mass (liturgy)	https://en.wikipedia.org/wiki/Mass_(liturgy)	Wikipedia: Mass (liturgy)	real
+2d6b0f49351d	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Canonical hours	https://en.wikipedia.org/wiki/Canonical_hours	Wikipedia: Canonical hours	real
+3ae0b6bd45af	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Book of Common Prayer (1928, United States)	https://en.wikipedia.org/wiki/Book_of_Common_Prayer_(1928,_United_States)	Wikipedia: Book of Common Prayer (1928, United States)	real
+5369ed1126f4	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Secret (liturgy)	https://en.wikipedia.org/wiki/Secret_(liturgy)	Wikipedia: Secret (liturgy)	real
+6b049ce26e17	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Book of Common Prayer	https://en.wikipedia.org/wiki/Book_of_Common_Prayer	Wikipedia: Book of Common Prayer	real
+985da0122f7e	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Book of Common Prayer (1962)	https://en.wikipedia.org/wiki/Book_of_Common_Prayer_(1962)	Wikipedia: Book of Common Prayer (1962)	real
+dbde8b970598	collect	collect-prayer	anchors	gutenberg	Public domain	pg107#p2723	https://www.gutenberg.org/ebooks/107	Thomas Hardy: Far from the Madding Crowd	real
+e5ec137db80d	collect	collect-prayer	anchors	wikipedia	CC BY-SA 4.0	wiki:Book of Common Prayer (1549)	https://en.wikipedia.org/wiki/Book_of_Common_Prayer_(1549)	Wikipedia: Book of Common Prayer (1549)	real
+b95a24c5a7d0	collect	collect-prayer	holdout	wikipedia	CC BY-SA 4.0	wiki:Collect for Purity	https://en.wikipedia.org/wiki/Collect_for_Purity	Wikipedia: Collect for Purity	real
+d1dd6530a047	collect	collect-prayer	holdout	wikipedia	CC BY-SA 4.0	wiki:Collect	https://en.wikipedia.org/wiki/Collect	Wikipedia: Collect	real
+dcddf95c331f	collect	collect-prayer	holdout	wikipedia	CC BY-SA 4.0	wiki:Book of Common Prayer (1552)	https://en.wikipedia.org/wiki/Book_of_Common_Prayer_(1552)	Wikipedia: Book of Common Prayer (1552)	real
+df3e57c0e2e6	collect	collect-prayer	holdout	wikipedia	CC BY-SA 4.0	wiki:Good Friday prayer for the Jews	https://en.wikipedia.org/wiki/Good_Friday_prayer_for_the_Jews	Wikipedia: Good Friday prayer for the Jews	real
+068ada82ccac	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11062529	https://tatoeba.org/en/sentences/show/11062529	Cangarejo	real
+0a7c57991336	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12389008	https://tatoeba.org/en/sentences/show/12389008	Cangarejo	real
+0bd0ec47d6a2	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11854622	https://tatoeba.org/en/sentences/show/11854622	Cangarejo	real
+191f64d4c973	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12777354	https://tatoeba.org/en/sentences/show/12777354	Igider	real
+24c63cdb0d27	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11578424	https://tatoeba.org/en/sentences/show/11578424	Cangarejo	real
+2e2f22932731	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12107468	https://tatoeba.org/en/sentences/show/12107468	Cangarejo	real
+416bddef5b38	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12764845	https://tatoeba.org/en/sentences/show/12764845	Igider	real
+66a98a1633d5	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12265963	https://tatoeba.org/en/sentences/show/12265963	Cangarejo	real
+75026d786ba1	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11767215	https://tatoeba.org/en/sentences/show/11767215	Cangarejo	real
+87ceb622516e	collect	collect-verb	anchors	gutenberg	Public domain	pg135#p13473	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+8def92a60453	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12356782	https://tatoeba.org/en/sentences/show/12356782	Cangarejo	real
+a3fafa61bca4	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12413237	https://tatoeba.org/en/sentences/show/12413237	Cangarejo	real
+b948b0aa30c2	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12273688	https://tatoeba.org/en/sentences/show/12273688	Cangarejo	real
+bccc39af9bc5	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11574431	https://tatoeba.org/en/sentences/show/11574431	Cangarejo	real
+bda50f8bd646	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12776870	https://tatoeba.org/en/sentences/show/12776870	Igider	real
+d36f7c6826bb	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12764754	https://tatoeba.org/en/sentences/show/12764754	Igider	real
+d8642cb07003	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	11719945	https://tatoeba.org/en/sentences/show/11719945	Cangarejo	real
+de45978122dd	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12178199	https://tatoeba.org/en/sentences/show/12178199	Cangarejo	real
+dfd1dda669f5	collect	collect-verb	anchors	tatoeba-cc0	CC0 1.0	12092218	https://tatoeba.org/en/sentences/show/12092218	Cangarejo	real
+f415587d4bbe	collect	collect-verb	anchors	gutenberg	Public domain	pg135#p1937	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+08edcb4abea0	collect	collect-verb	holdout	gutenberg	Public domain	pg1399#p4403	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+1328cdd7d607	collect	collect-verb	holdout	tatoeba-by	CC BY 2.0 FR	8269504	https://tatoeba.org/en/sentences/show/8269504	Rwmpelstilzchen	real
+1c65624fc18f	collect	collect-verb	holdout	tatoeba-by	CC BY 2.0 FR	6072104	https://tatoeba.org/en/sentences/show/6072104	OsoHombre	real
+3cf52f9140c3	collect	collect-verb	holdout	gutenberg	Public domain	pg84#p576	https://www.gutenberg.org/ebooks/84	Mary Wollstonecraft Shelley: Frankenstein; or, the modern prometheus	real
+6b36c3ecf7c6	collect	collect-verb	holdout	gutenberg	Public domain	pg164#p1710	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+83b019c38778	collect	collect-verb	holdout	tatoeba-by	CC BY 2.0 FR	9460482	https://tatoeba.org/en/sentences/show/9460482	sundown	real
+9bcf42af87d2	collect	collect-verb	holdout	tatoeba-by	CC BY 2.0 FR	575318	https://tatoeba.org/en/sentences/show/575318	FeuDRenais2	real
+bd04c2492e26	collect	collect-verb	holdout	gutenberg	Public domain	pg2554#p3383	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+e4bd7692e13f	collect	collect-verb	holdout	gutenberg	Public domain	pg76#p1331	https://www.gutenberg.org/ebooks/76	Mark Twain: Adventures of Huckleberry Finn	real
+f879af02ca4a	collect	collect-verb	holdout	tatoeba-by	CC BY 2.0 FR	13869757	https://tatoeba.org/en/sentences/show/13869757	Vortarulo	real
+0aac93a828b8	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p13672	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+1c87eccca802	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p6409	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+2867abff64aa	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p13018	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+4dbbbd8a6037	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p3417	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+513a5ac92a59	combat	combat-noun	anchors	gutenberg	Public domain	pg1257#p4701	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+562f162a64ec	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p3061	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+58a39a2d7ae1	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p11974	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+5c2d61bbf28a	combat	combat-noun	anchors	gutenberg	Public domain	pg1257#p4044	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+5d868d2fb2dd	combat	combat-noun	anchors	gutenberg	Public domain	pg1257#p3092	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+83700c6f25bf	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p3355	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+90f2965b9b20	combat	combat-noun	anchors	tatoeba-cc0	CC0 1.0	11253810	https://tatoeba.org/en/sentences/show/11253810	Cangarejo	real
+92f59061853c	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p11062	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+9dcb76c21f16	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p11793	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+ac3e0a116b39	combat	combat-noun	anchors	gutenberg	Public domain	pg82#p536	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+afffbf357e3b	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p12037	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+be873598f46b	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p12171	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+c75dd3087d55	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p10896	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+d3943e7128cb	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p11508	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+ea1231c21497	combat	combat-noun	anchors	gutenberg	Public domain	pg135#p3305	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+faf895cf105e	combat	combat-noun	anchors	tatoeba-cc0	CC0 1.0	11974884	https://tatoeba.org/en/sentences/show/11974884	Cangarejo	real
+169155b75db2	combat	combat-noun	holdout	gutenberg	Public domain	pg205#p379	https://www.gutenberg.org/ebooks/205	Henry David Thoreau: Walden, and On The Duty Of Civil Disobedience	real
+1c56591dc9df	combat	combat-noun	holdout	gutenberg	Public domain	pg967#p5835	https://www.gutenberg.org/ebooks/967	Charles Dickens: Nicholas Nickleby	real
+319ed7bce791	combat	combat-noun	holdout	gutenberg	Public domain	pg4300#p1852	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+4a3305d76190	combat	combat-noun	holdout	tatoeba-by	CC BY 2.0 FR	11618281	https://tatoeba.org/en/sentences/show/11618281	tieguy	real
+70e76b197ecd	combat	combat-noun	holdout	tatoeba-by	CC BY 2.0 FR	10891102	https://tatoeba.org/en/sentences/show/10891102	megamanenm	real
+7c2f31710c85	combat	combat-noun	holdout	tatoeba-by	CC BY 2.0 FR	6297804	https://tatoeba.org/en/sentences/show/6297804	Hybrid	real
+839dad240885	combat	combat-noun	holdout	tatoeba-by	CC BY 2.0 FR	407538	https://tatoeba.org/en/sentences/show/407538	FeuDRenais	real
+bb2df37b48ee	combat	combat-noun	holdout	gutenberg	Public domain	pg164#p7	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+cbf7a3304b5c	combat	combat-noun	holdout	tatoeba-by	CC BY 2.0 FR	12277752	https://tatoeba.org/en/sentences/show/12277752	CK	real
+dc6bbc44ab0f	combat	combat-noun	holdout	gutenberg	Public domain	pg910#p475	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+2bec51a0c2c5	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11056858	https://tatoeba.org/en/sentences/show/11056858	Cangarejo	real
+2c3f0d1cc072	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11301691	https://tatoeba.org/en/sentences/show/11301691	Cangarejo	real
+581ccd0f1a1d	combat	combat-verb	anchors	gutenberg	Public domain	pg135#p2441	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+5880d565a57b	combat	combat-verb	anchors	gutenberg	Public domain	pg135#p5209	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+628951e5b6b1	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11240164	https://tatoeba.org/en/sentences/show/11240164	Cangarejo	real
+639432b59b6c	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11993101	https://tatoeba.org/en/sentences/show/11993101	Cangarejo	real
+64fa0689b847	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11114661	https://tatoeba.org/en/sentences/show/11114661	Cangarejo	real
+715c0890aeda	combat	combat-verb	anchors	gutenberg	Public domain	pg583#p1359	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+76c4e267a702	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11046944	https://tatoeba.org/en/sentences/show/11046944	Cangarejo	real
+91a6d2b1bac8	combat	combat-verb	anchors	gutenberg	Public domain	pg135#p11289	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+91fd75e7e6f0	combat	combat-verb	anchors	gutenberg	Public domain	pg583#p502	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+9760b4a5094a	combat	combat-verb	anchors	gutenberg	Public domain	pg135#p8542	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+a200fa4535f2	combat	combat-verb	anchors	gutenberg	Public domain	pg135#p11290	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+a5e3a4fdbdb0	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11339150	https://tatoeba.org/en/sentences/show/11339150	Cangarejo	real
+b7383729af34	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	12168364	https://tatoeba.org/en/sentences/show/12168364	Cangarejo	real
+c336b46d622a	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11906036	https://tatoeba.org/en/sentences/show/11906036	Cangarejo	real
+c3af3dfa7ba4	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11168923	https://tatoeba.org/en/sentences/show/11168923	Cangarejo	real
+d5607f4f1afe	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11068594	https://tatoeba.org/en/sentences/show/11068594	Cangarejo	real
+d687202fa481	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	11824049	https://tatoeba.org/en/sentences/show/11824049	Cangarejo	real
+f0580bac13d6	combat	combat-verb	anchors	tatoeba-cc0	CC0 1.0	12210942	https://tatoeba.org/en/sentences/show/12210942	Cangarejo	real
+33cb3078902d	combat	combat-verb	holdout	wikipedia	CC BY-SA 4.0	wiki:Climate change	https://en.wikipedia.org/wiki/Climate_change	Wikipedia: Climate change	real
+6e1a692c69da	combat	combat-verb	holdout	wikipedia	CC BY-SA 4.0	wiki:Feminization of poverty	https://en.wikipedia.org/wiki/Feminization_of_poverty	Wikipedia: Feminization of poverty	real
+8778a185b870	combat	combat-verb	holdout	wikipedia	CC BY-SA 4.0	wiki:Climate change in Turkey	https://en.wikipedia.org/wiki/Climate_change_in_Turkey	Wikipedia: Climate change in Turkey	real
+bc85782c015d	combat	combat-verb	holdout	gutenberg	Public domain	pg2852#p186	https://www.gutenberg.org/ebooks/2852	Arthur Conan Doyle: The Hound of the Baskervilles	real
+bf8dd3ea0e67	combat	combat-verb	holdout	tatoeba-by	CC BY 2.0 FR	13023668	https://tatoeba.org/en/sentences/show/13023668	Nuel	real
+d1c9ab490271	combat	combat-verb	holdout	gutenberg	Public domain	pg98#p715	https://www.gutenberg.org/ebooks/98	Charles Dickens: A Tale of Two Cities	real
+f53100809402	combat	combat-verb	holdout	tatoeba-by	CC BY 2.0 FR	2883578	https://tatoeba.org/en/sentences/show/2883578	AlanF_US	real
+f8695dfba2dc	combat	combat-verb	holdout	tatoeba-by	CC BY 2.0 FR	5398545	https://tatoeba.org/en/sentences/show/5398545	Objectivesea	real
+fbc8213e0830	combat	combat-verb	holdout	gutenberg	Public domain	pg82#p494	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+ff05babb8c8a	combat	combat-verb	holdout	gutenberg	Public domain	pg122#p2289	https://www.gutenberg.org/ebooks/122	Thomas Hardy: The Return of the Native	real
 02a02d69adae	conjunct	adj	anchors	wikipedia	CC BY-SA 4.0	wiki:Jha (Indic)	https://en.wikipedia.org/wiki/Jha_(Indic)	Wikipedia: Jha (Indic)	real
 090b1a0bb6cb	conjunct	adj	anchors	wikipedia	CC BY-SA 4.0	wiki:Gregorian chant	https://en.wikipedia.org/wiki/Gregorian_chant	Wikipedia: Gregorian chant	real
 0c0e16c4f8d8	conjunct	adj	anchors	wikipedia	CC BY-SA 4.0	wiki:Siddhaṃ script	https://en.wikipedia.org/wiki/Siddha%E1%B9%83_script	Wikipedia: Siddhaṃ script	real
@@ -253,6 +451,66 @@ b8cb2a581a08	conjunct	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Conjunction falla
 ba51c9c7ca36	conjunct	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Consequentia mirabilis	https://en.wikipedia.org/wiki/Consequentia_mirabilis	Wikipedia: Consequentia mirabilis	real
 d00214e5650e	conjunct	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Gapping	https://en.wikipedia.org/wiki/Gapping	Wikipedia: Gapping	real
 f9b42cf65409	conjunct	noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Disjunct (linguistics)	https://en.wikipedia.org/wiki/Disjunct_(linguistics)	Wikipedia: Disjunct (linguistics)	real
+04a3bb86196c	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11178267	https://tatoeba.org/en/sentences/show/11178267	Cangarejo	real
+250f21739a1e	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p13291	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+309e413c1fa8	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	12290770	https://tatoeba.org/en/sentences/show/12290770	Cangarejo	real
+30b51634386b	contact	contact-noun	anchors	gutenberg	Public domain	pg910#p608	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+4dd3b87d48fa	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11689936	https://tatoeba.org/en/sentences/show/11689936	Cangarejo	real
+525d3ceba0bb	contact	contact-noun	anchors	gutenberg	Public domain	pg345#p246	https://www.gutenberg.org/ebooks/345	Bram Stoker: Dracula	real
+5564b1fa39d1	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11134489	https://tatoeba.org/en/sentences/show/11134489	Cangarejo	real
+5922aaf3b5ec	contact	contact-noun	anchors	gutenberg	Public domain	pg910#p286	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+66f752c01131	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p1176	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+698cccdfb5ff	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11119104	https://tatoeba.org/en/sentences/show/11119104	Cangarejo	real
+6fb55d320d58	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p4655	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+8ab26fc7b3ab	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11098965	https://tatoeba.org/en/sentences/show/11098965	Cangarejo	real
+91b16a3eb562	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p12262	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+b82ca22aeefc	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	12291392	https://tatoeba.org/en/sentences/show/12291392	Cangarejo	real
+dafbb524d97f	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p10781	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+e5e52b97d953	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	11820676	https://tatoeba.org/en/sentences/show/11820676	Cangarejo	real
+e62985646a55	contact	contact-noun	anchors	gutenberg	Public domain	pg164#p2198	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+ef62cb8cdb0b	contact	contact-noun	anchors	tatoeba-cc0	CC0 1.0	9805160	https://tatoeba.org/en/sentences/show/9805160	Igider	real
+f5cceeff919c	contact	contact-noun	anchors	gutenberg	Public domain	pg910#p851	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+fa07ee747690	contact	contact-noun	anchors	gutenberg	Public domain	pg135#p8764	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+219b5fb66767	contact	contact-noun	holdout	gutenberg	Public domain	pg159#p50	https://www.gutenberg.org/ebooks/159	H. G. Wells: The island of Doctor Moreau	real
+2abc5946bb35	contact	contact-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Contact	https://en.wikipedia.org/wiki/Contact	Wikipedia: Contact	real
+3472e28012ef	contact	contact-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Contact improvisation	https://en.wikipedia.org/wiki/Contact_improvisation	Wikipedia: Contact improvisation	real
+368ad57bb7b9	contact	contact-noun	holdout	tatoeba-by	CC BY 2.0 FR	13639229	https://tatoeba.org/en/sentences/show/13639229	rul	real
+49d8455be572	contact	contact-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Contact hypothesis	https://en.wikipedia.org/wiki/Contact_hypothesis	Wikipedia: Contact hypothesis	real
+609a09558d67	contact	contact-noun	holdout	gutenberg	Public domain	pg974#p365	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+96d0d7c8a926	contact	contact-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Acanthamoeba keratitis	https://en.wikipedia.org/wiki/Acanthamoeba_keratitis	Wikipedia: Acanthamoeba keratitis	real
+9b2adf9ae0d4	contact	contact-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Keratoconus	https://en.wikipedia.org/wiki/Keratoconus	Wikipedia: Keratoconus	real
+a45b8da0d81c	contact	contact-noun	holdout	gutenberg	Public domain	pg1257#p6944	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+ac145c475cf3	contact	contact-noun	holdout	gutenberg	Public domain	pg1399#p7522	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+0ffd5106272f	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	6783804	https://tatoeba.org/en/sentences/show/6783804	CK	real
+1336693470fd	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	54448	https://tatoeba.org/en/sentences/show/54448	CK	real
+1cdb750025e5	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11546654	https://tatoeba.org/en/sentences/show/11546654	Nuel	real
+2fd0b2511d6e	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	2331700	https://tatoeba.org/en/sentences/show/2331700	CK	real
+31c7da1e5a6d	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	9967018	https://tatoeba.org/en/sentences/show/9967018	CK	real
+37f1d9e95a70	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7152563	https://tatoeba.org/en/sentences/show/7152563	CK	real
+3c0a3eee8120	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	2839469	https://tatoeba.org/en/sentences/show/2839469	CK	real
+3faa1d9c096f	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7201902	https://tatoeba.org/en/sentences/show/7201902	OsoHombre	real
+4f044972c7b6	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11684797	https://tatoeba.org/en/sentences/show/11684797	Nuel	real
+52d52024a1d2	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	3309979	https://tatoeba.org/en/sentences/show/3309979	CK	real
+5381b1d0311d	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	13905858	https://tatoeba.org/en/sentences/show/13905858	Nuel	real
+5ab128622277	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	6765993	https://tatoeba.org/en/sentences/show/6765993	OsoHombre	real
+75567256dff4	contact	contact-verb	anchors	tatoeba-cc0	CC0 1.0	10463312	https://tatoeba.org/en/sentences/show/10463312	shekitten	real
+7f046528e4e1	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	4132349	https://tatoeba.org/en/sentences/show/4132349	CK	real
+86b89b28ba9b	contact	contact-verb	anchors	tatoeba-cc0	CC0 1.0	11478996	https://tatoeba.org/en/sentences/show/11478996	shekitten	real
+9732d92a27ad	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7252674	https://tatoeba.org/en/sentences/show/7252674	OsoHombre	real
+978029c8012a	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7732261	https://tatoeba.org/en/sentences/show/7732261	CK	real
+9dcca0933e13	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	12177312	https://tatoeba.org/en/sentences/show/12177312	CK	real
+f3cd88ee300b	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	4496884	https://tatoeba.org/en/sentences/show/4496884	CK	real
+f688f940c650	contact	contact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7989608	https://tatoeba.org/en/sentences/show/7989608	CK	real
+0f96c4818daf	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	13796321	https://tatoeba.org/en/sentences/show/13796321	glossboss	real
+1eee5fc63a66	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	8521396	https://tatoeba.org/en/sentences/show/8521396	CH	real
+3dd8669c59db	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	10259142	https://tatoeba.org/en/sentences/show/10259142	bekindtoall	real
+6a2ba464c0b1	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	13895249	https://tatoeba.org/en/sentences/show/13895249	kylewii	real
+889245514a71	contact	contact-verb	holdout	ud-ewt	CC BY-SA 4.0	email-enronsent13_01-0078	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent13_01	real
+95eb75fb9d84	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	534751	https://tatoeba.org/en/sentences/show/534751	Scott	real
+be20379348a8	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	393142	https://tatoeba.org/en/sentences/show/393142	blay_paul	real
+c7b98deb5c97	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	2525588	https://tatoeba.org/en/sentences/show/2525588	raggione	real
+e2dd832ff959	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	3255271	https://tatoeba.org/en/sentences/show/3255271	celeriac	real
+e89c44794124	contact	contact-verb	holdout	tatoeba-by	CC BY 2.0 FR	11039909	https://tatoeba.org/en/sentences/show/11039909	hidemat	real
 78bf2eb22a03	content	adj	anchors	tatoeba-cc0	CC0 1.0	11327583	https://tatoeba.org/en/sentences/show/11327583	Cangarejo	real
 a373a6014264	content	adj	anchors	gutenberg	Public domain	pg910#p654	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
 b90a5628a6be	content	adj	anchors	gutenberg	Public domain	pg64317#p1248	https://www.gutenberg.org/ebooks/64317	F. Scott Fitzgerald: The Great Gatsby	real
@@ -291,6 +549,168 @@ dbac782cc432	content	verb	anchors	gutenberg	Public domain	pg164#p203	https://www
 9c7042784b27	content	verb	holdout	gutenberg	Public domain	pg145#p2079	https://www.gutenberg.org/ebooks/145	George Eliot: Middlemarch	real
 a6b836a13007	content	verb	holdout	gutenberg	Public domain	pg514#p2296	https://www.gutenberg.org/ebooks/514	Louisa May Alcott: Little Women	real
 a6b84c51bd9e	content	verb	holdout	tatoeba-by	CC BY 2.0 FR	11700976	https://tatoeba.org/en/sentences/show/11700976	Nuel	real
+0cea3d582472	detail	detail-noun	anchors	gutenberg	Public domain	pg583#p2934	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+3e51c472ef4f	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11549849	https://tatoeba.org/en/sentences/show/11549849	Cangarejo	real
+4717df16d572	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	12378897	https://tatoeba.org/en/sentences/show/12378897	Cangarejo	real
+50f91e3268d4	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11734047	https://tatoeba.org/en/sentences/show/11734047	Cangarejo	real
+5da26f0a39d6	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11923746	https://tatoeba.org/en/sentences/show/11923746	Cangarejo	real
+68d257ad6c70	detail	detail-noun	anchors	gutenberg	Public domain	pg834#p1801	https://www.gutenberg.org/ebooks/834	Arthur Conan Doyle: The Memoirs of Sherlock Holmes	real
+7cc62b1c2465	detail	detail-noun	anchors	gutenberg	Public domain	pg583#p940	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+7f0584039a2e	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11455178	https://tatoeba.org/en/sentences/show/11455178	Cangarejo	real
+a704a1810143	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11657427	https://tatoeba.org/en/sentences/show/11657427	Cangarejo	real
+acc33d4e089c	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11574442	https://tatoeba.org/en/sentences/show/11574442	Cangarejo	real
+ae051725fcd7	detail	detail-noun	anchors	gutenberg	Public domain	pg583#p2041	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+b1639a791ea9	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	12406312	https://tatoeba.org/en/sentences/show/12406312	Cangarejo	real
+b644448f1c89	detail	detail-noun	anchors	gutenberg	Public domain	pg834#p78	https://www.gutenberg.org/ebooks/834	Arthur Conan Doyle: The Memoirs of Sherlock Holmes	real
+cd825ab7beae	detail	detail-noun	anchors	gutenberg	Public domain	pg583#p1622	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+cdd0e1920329	detail	detail-noun	anchors	gutenberg	Public domain	pg1399#p3260	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+d70d5ceff0c2	detail	detail-noun	anchors	gutenberg	Public domain	pg583#p561	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+d7e47c05acf0	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11354625	https://tatoeba.org/en/sentences/show/11354625	Cangarejo	real
+edf41db6c58e	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11698532	https://tatoeba.org/en/sentences/show/11698532	Cangarejo	real
+ee72be8a5745	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	11921416	https://tatoeba.org/en/sentences/show/11921416	Cangarejo	real
+f5a51416978f	detail	detail-noun	anchors	tatoeba-cc0	CC0 1.0	10832845	https://tatoeba.org/en/sentences/show/10832845	Cangarejo	real
+1109056221f9	detail	detail-noun	holdout	gutenberg	Public domain	pg2852#p5	https://www.gutenberg.org/ebooks/2852	Arthur Conan Doyle: The Hound of the Baskervilles	real
+212f62b7842a	detail	detail-noun	holdout	gutenberg	Public domain	pg1257#p2946	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+267a17fd1762	detail	detail-noun	holdout	tatoeba-by	CC BY 2.0 FR	7910995	https://tatoeba.org/en/sentences/show/7910995	User83551	real
+79907880be95	detail	detail-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:In Cold Blood	https://en.wikipedia.org/wiki/In_Cold_Blood	Wikipedia: In Cold Blood	real
+7b93ee439eda	detail	detail-noun	holdout	tatoeba-by	CC BY 2.0 FR	996909	https://tatoeba.org/en/sentences/show/996909	thayne	real
+7c05ececc54d	detail	detail-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Attentive user interface	https://en.wikipedia.org/wiki/Attentive_user_interface	Wikipedia: Attentive user interface	real
+8773978847a1	detail	detail-noun	holdout	gutenberg	Public domain	pg98#p482	https://www.gutenberg.org/ebooks/98	Charles Dickens: A Tale of Two Cities	real
+a72b50f7ce60	detail	detail-noun	holdout	tatoeba-by	CC BY 2.0 FR	13232263	https://tatoeba.org/en/sentences/show/13232263	Nuel	real
+ef3367f71caa	detail	detail-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:List of Martin Mystery episodes	https://en.wikipedia.org/wiki/List_of_Martin_Mystery_episodes	Wikipedia: List of Martin Mystery episodes	real
+efdca52a3330	detail	detail-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Kitbashing	https://en.wikipedia.org/wiki/Kitbashing	Wikipedia: Kitbashing	real
+2ba7cea3a3aa	detail	detail-verb	anchors	tatoeba-cc0	CC0 1.0	10110904	https://tatoeba.org/en/sentences/show/10110904	ddnktr	real
+4f367c71cbc4	detail	detail-verb	anchors	gutenberg	Public domain	pg580#p1495	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+59d29b8aa0a1	detail	detail-verb	anchors	tatoeba-cc0	CC0 1.0	11595487	https://tatoeba.org/en/sentences/show/11595487	Cangarejo	real
+714389c04fb7	detail	detail-verb	anchors	gutenberg	Public domain	pg2021#p496	https://www.gutenberg.org/ebooks/2021	Joseph Conrad: Nostromo: A Tale of the Seaboard	real
+94cd6ec45713	detail	detail-verb	anchors	tatoeba-cc0	CC0 1.0	12353105	https://tatoeba.org/en/sentences/show/12353105	Cangarejo	real
+9b7f4527df8a	detail	detail-verb	anchors	tatoeba-cc0	CC0 1.0	12052600	https://tatoeba.org/en/sentences/show/12052600	Cangarejo	real
+9e70afd0922a	detail	detail-verb	anchors	tatoeba-cc0	CC0 1.0	12401342	https://tatoeba.org/en/sentences/show/12401342	Cangarejo	real
+b8cc745a49d8	detail	detail-verb	anchors	gutenberg	Public domain	pg1184#p3061	https://www.gutenberg.org/ebooks/1184	Alexandre Dumas: The Count of Monte Cristo	real
+45c61d7ff009	detail	detail-verb	holdout	gutenberg	Public domain	pg1257#p4183	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+b534fed5fe0b	detail	detail-verb	holdout	gutenberg	Public domain	pg84#p782	https://www.gutenberg.org/ebooks/84	Mary Wollstonecraft Shelley: Frankenstein; or, the modern prometheus	real
+d1a3ab59664b	detail	detail-verb	holdout	gutenberg	Public domain	pg1056#p1837	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+e5ca09cbf95c	detail	detail-verb	holdout	gutenberg	Public domain	pg82#p662	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+0b8208eebe4a	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8904678	https://tatoeba.org/en/sentences/show/8904678	The_World_Factbook	real
+1850661f3cb5	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	11044151	https://tatoeba.org/en/sentences/show/11044151	Cangarejo	real
+1dc9e847406b	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	11753256	https://tatoeba.org/en/sentences/show/11753256	robingaspi	real
+3e6e8894c703	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8906771	https://tatoeba.org/en/sentences/show/8906771	The_World_Factbook	real
+51faaaa920f6	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8904575	https://tatoeba.org/en/sentences/show/8904575	The_World_Factbook	real
+573f4956e562	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8904892	https://tatoeba.org/en/sentences/show/8904892	The_World_Factbook	real
+57bffa146f59	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8904938	https://tatoeba.org/en/sentences/show/8904938	The_World_Factbook	real
+7523d705de7a	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	2949054	https://tatoeba.org/en/sentences/show/2949054	CK	real
+77c01e21e003	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	275612	https://tatoeba.org/en/sentences/show/275612	CK	real
+8ad16ccfa206	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	11089850	https://tatoeba.org/en/sentences/show/11089850	Cangarejo	real
+9b9f1cb9bfd9	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	11857263	https://tatoeba.org/en/sentences/show/11857263	hecko2	real
+b485380849c3	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	7633315	https://tatoeba.org/en/sentences/show/7633315	CK	real
+b911a75b093c	export	export-noun	anchors	gutenberg	Public domain	pg205#p69	https://www.gutenberg.org/ebooks/205	Henry David Thoreau: Walden, and On The Duty Of Civil Disobedience	real
+c7bb0e5ce2d3	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	12222247	https://tatoeba.org/en/sentences/show/12222247	Cangarejo	real
+d4b514d0fb93	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8904697	https://tatoeba.org/en/sentences/show/8904697	The_World_Factbook	real
+d6f03d18b0fb	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	11122857	https://tatoeba.org/en/sentences/show/11122857	Cangarejo	real
+d796c2bd7f80	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	11466530	https://tatoeba.org/en/sentences/show/11466530	robingaspi	real
+f50c0a0f78cc	export	export-noun	anchors	tatoeba-cc0	CC0 1.0	12300167	https://tatoeba.org/en/sentences/show/12300167	Cangarejo	real
+f7c79233131a	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8905257	https://tatoeba.org/en/sentences/show/8905257	The_World_Factbook	real
+fb6722fbc930	export	export-noun	anchors	tatoeba-by	CC BY 2.0 FR	8906249	https://tatoeba.org/en/sentences/show/8906249	The_World_Factbook	real
+1a46f5e1617c	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	1969277	https://tatoeba.org/en/sentences/show/1969277	jjbraam	real
+23f27486f9dd	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	10273769	https://tatoeba.org/en/sentences/show/10273769	sundown	real
+26a83df52aaf	export	export-noun	holdout	gutenberg	Public domain	pg2021#p667	https://www.gutenberg.org/ebooks/2021	Joseph Conrad: Nostromo: A Tale of the Seaboard	real
+273c42fd3a6b	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	12808163	https://tatoeba.org/en/sentences/show/12808163	rul	real
+73d2610484e9	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	13406248	https://tatoeba.org/en/sentences/show/13406248	Igider	real
+8e4500f46365	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	13247819	https://tatoeba.org/en/sentences/show/13247819	Lumi	real
+8f0d1617fed3	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	2600079	https://tatoeba.org/en/sentences/show/2600079	sharptoothed	real
+9a6787468aee	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	10578192	https://tatoeba.org/en/sentences/show/10578192	LimeGreenTeknii	real
+d11306c2e916	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	6040467	https://tatoeba.org/en/sentences/show/6040467	mailohilohi	real
+e9cf90cc3943	export	export-noun	holdout	tatoeba-by	CC BY 2.0 FR	8969650	https://tatoeba.org/en/sentences/show/8969650	Hybrid	real
+01651755209a	export	export-verb	anchors	gutenberg	Public domain	pg5658#p616	https://www.gutenberg.org/ebooks/5658	Joseph Conrad: Lord Jim	real
+089400e79899	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	8378915	https://tatoeba.org/en/sentences/show/8378915	Amastan	real
+0aa99f32b392	export	export-verb	anchors	tatoeba-cc0	CC0 1.0	11034537	https://tatoeba.org/en/sentences/show/11034537	Cangarejo	real
+17cc8a05f64e	export	export-verb	anchors	tatoeba-cc0	CC0 1.0	13237157	https://tatoeba.org/en/sentences/show/13237157	ZegPhig	real
+2079098a4edc	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	1026597	https://tatoeba.org/en/sentences/show/1026597	CK	real
+20a244c234cb	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	10118536	https://tatoeba.org/en/sentences/show/10118536	Amastan	real
+3a25e4551ce4	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	10112035	https://tatoeba.org/en/sentences/show/10112035	Amastan	real
+56167d981bfc	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	8582474	https://tatoeba.org/en/sentences/show/8582474	Amastan	real
+5c2f976a1cac	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	8700091	https://tatoeba.org/en/sentences/show/8700091	Amastan	real
+67efa3b7f092	export	export-verb	anchors	tatoeba-cc0	CC0 1.0	10820374	https://tatoeba.org/en/sentences/show/10820374	Cangarejo	real
+6d1e1c14edc8	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	8576252	https://tatoeba.org/en/sentences/show/8576252	Amastan	real
+7d4832fa9f37	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	11576915	https://tatoeba.org/en/sentences/show/11576915	Amastan	real
+8b52170f25fe	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	11409698	https://tatoeba.org/en/sentences/show/11409698	Amastan	real
+91b103b75f4d	export	export-verb	anchors	tatoeba-cc0	CC0 1.0	11796274	https://tatoeba.org/en/sentences/show/11796274	Cangarejo	real
+9aef6c087fe4	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	8182574	https://tatoeba.org/en/sentences/show/8182574	Amastan	real
+ac69acbb611d	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	11038961	https://tatoeba.org/en/sentences/show/11038961	Amastan	real
+b9feaac6b63b	export	export-verb	anchors	gutenberg	Public domain	pg205#p48	https://www.gutenberg.org/ebooks/205	Henry David Thoreau: Walden, and On The Duty Of Civil Disobedience	real
+c8b083cc8c83	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	67750	https://tatoeba.org/en/sentences/show/67750	CK	real
+e38d504ef933	export	export-verb	anchors	tatoeba-by	CC BY 2.0 FR	953385	https://tatoeba.org/en/sentences/show/953385	CK	real
+efb6124b1a0c	export	export-verb	anchors	tatoeba-cc0	CC0 1.0	13237165	https://tatoeba.org/en/sentences/show/13237165	ZegPhig	real
+030bde6d7bf2	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	10275589	https://tatoeba.org/en/sentences/show/10275589	Hybrid	real
+12a431cb48b8	export	export-verb	holdout	gutenberg	Public domain	pg4300#p1463	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+135213163801	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	2510630	https://tatoeba.org/en/sentences/show/2510630	AlanF_US	real
+482183f140c1	export	export-verb	holdout	tatoeba-cc0	CC0 1.0	12766147	https://tatoeba.org/en/sentences/show/12766147	Igider	real
+6e9ad76a9e53	export	export-verb	holdout	gutenberg	Public domain	pg917#p961	https://www.gutenberg.org/ebooks/917	Charles Dickens: Barnaby Rudge: A Tale of the Riots of 'Eighty	real
+706720f53114	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	1723114	https://tatoeba.org/en/sentences/show/1723114	belgavox	real
+71c4ffd394c6	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	681093	https://tatoeba.org/en/sentences/show/681093	Source_VOA	real
+a833e13849d8	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	8904969	https://tatoeba.org/en/sentences/show/8904969	The_World_Factbook	real
+cddc9d3f8f6f	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	11503931	https://tatoeba.org/en/sentences/show/11503931	robingaspi	real
+ddc618dd21d6	export	export-verb	holdout	tatoeba-by	CC BY 2.0 FR	305545	https://tatoeba.org/en/sentences/show/305545	sundown	real
+07f6ea814700	impact	impact-noun	anchors	gutenberg	Public domain	pg910#p461	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+0e9e8d25947f	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12301445	https://tatoeba.org/en/sentences/show/12301445	Cangarejo	real
+1948eecb4e20	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12777285	https://tatoeba.org/en/sentences/show/12777285	Igider	real
+1c3ad04f50f9	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	11083183	https://tatoeba.org/en/sentences/show/11083183	Cangarejo	real
+1cb38273482e	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12327377	https://tatoeba.org/en/sentences/show/12327377	Cangarejo	real
+379259d252fa	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	11739415	https://tatoeba.org/en/sentences/show/11739415	Cangarejo	real
+382b732cedf1	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12139992	https://tatoeba.org/en/sentences/show/12139992	Cangarejo	real
+442b5a32718a	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12188638	https://tatoeba.org/en/sentences/show/12188638	Cangarejo	real
+4459f7fdf5a0	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12284985	https://tatoeba.org/en/sentences/show/12284985	Cangarejo	real
+469749bb224c	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12221761	https://tatoeba.org/en/sentences/show/12221761	Cangarejo	real
+633c094355ef	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12381501	https://tatoeba.org/en/sentences/show/12381501	Cangarejo	real
+66da37c0afbf	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	10873849	https://tatoeba.org/en/sentences/show/10873849	Cangarejo	real
+679eb0d3ac79	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	11668446	https://tatoeba.org/en/sentences/show/11668446	Cangarejo	real
+9034fec204f3	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12767977	https://tatoeba.org/en/sentences/show/12767977	Igider	real
+930a70a585fc	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	11121046	https://tatoeba.org/en/sentences/show/11121046	Cangarejo	real
+abe5a1d9287e	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	10986618	https://tatoeba.org/en/sentences/show/10986618	Cangarejo	real
+ccd7cc10e327	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	11042469	https://tatoeba.org/en/sentences/show/11042469	Cangarejo	real
+d2fb46311d31	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	12776900	https://tatoeba.org/en/sentences/show/12776900	Igider	real
+e22e7e9524ef	impact	impact-noun	anchors	gutenberg	Public domain	pg910#p489	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+fbcfb90b9205	impact	impact-noun	anchors	tatoeba-cc0	CC0 1.0	10832808	https://tatoeba.org/en/sentences/show/10832808	Cangarejo	real
+1c04e1ed7f50	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	394509	https://tatoeba.org/en/sentences/show/394509	Scott	real
+25034368af56	impact	impact-noun	holdout	gutenberg	Public domain	pg153#p49	https://www.gutenberg.org/ebooks/153	Thomas Hardy: Jude the Obscure	real
+4596c5382377	impact	impact-noun	holdout	gutenberg	Public domain	pg110#p2537	https://www.gutenberg.org/ebooks/110	Thomas Hardy: Tess of the d'Urbervilles: A Pure Woman	real
+4f3dd62ed93c	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	460258	https://tatoeba.org/en/sentences/show/460258	jeanne	real
+74d6d8362d45	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	12562415	https://tatoeba.org/en/sentences/show/12562415	always	real
+b4a6ac733b13	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	3383707	https://tatoeba.org/en/sentences/show/3383707	patgfisher	real
+b74818a94a47	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	10543714	https://tatoeba.org/en/sentences/show/10543714	nonong	real
+b754742ccbd7	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	327181	https://tatoeba.org/en/sentences/show/327181	\N	real
+dca63d6572a7	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	4256899	https://tatoeba.org/en/sentences/show/4256899	JFMorais	real
+f8a33b060af2	impact	impact-noun	holdout	tatoeba-by	CC BY 2.0 FR	12908933	https://tatoeba.org/en/sentences/show/12908933	Conjuice	real
+1215adf17593	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11832237	https://tatoeba.org/en/sentences/show/11832237	Amastan	real
+1c75e788a16d	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11736120	https://tatoeba.org/en/sentences/show/11736120	Amastan	real
+24bc1b31b2fb	impact	impact-verb	anchors	tatoeba-cc0	CC0 1.0	11148927	https://tatoeba.org/en/sentences/show/11148927	Cangarejo	real
+41db67605ad8	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	8583791	https://tatoeba.org/en/sentences/show/8583791	Amastan	real
+57326253c4c1	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	7364251	https://tatoeba.org/en/sentences/show/7364251	Hybrid	real
+60fb7b1edba1	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	6679486	https://tatoeba.org/en/sentences/show/6679486	Hybrid	real
+636b51950bf5	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	10078301	https://tatoeba.org/en/sentences/show/10078301	Amastan	real
+76038116d8e0	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11567731	https://tatoeba.org/en/sentences/show/11567731	Amastan	real
+8df85ea1c5dc	impact	impact-verb	anchors	tatoeba-cc0	CC0 1.0	9805732	https://tatoeba.org/en/sentences/show/9805732	Igider	real
+92cf09692f44	impact	impact-verb	anchors	tatoeba-cc0	CC0 1.0	12034353	https://tatoeba.org/en/sentences/show/12034353	Cangarejo	real
+9727d0be5f0c	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	10138573	https://tatoeba.org/en/sentences/show/10138573	Amastan	real
+a9a45aaf4884	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	13259966	https://tatoeba.org/en/sentences/show/13259966	Nuel	real
+ae831f125c66	impact	impact-verb	anchors	tatoeba-cc0	CC0 1.0	12015216	https://tatoeba.org/en/sentences/show/12015216	Cangarejo	real
+b8e4ef125bf7	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	13018893	https://tatoeba.org/en/sentences/show/13018893	Nuel	real
+c3a4bb289a93	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11753789	https://tatoeba.org/en/sentences/show/11753789	Amastan	real
+c5dd108ebcc0	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11567696	https://tatoeba.org/en/sentences/show/11567696	Amastan	real
+ca67ae050a8a	impact	impact-verb	anchors	tatoeba-cc0	CC0 1.0	9805585	https://tatoeba.org/en/sentences/show/9805585	Igider	real
+cfa9c62df966	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	11736197	https://tatoeba.org/en/sentences/show/11736197	Amastan	real
+e46690034b68	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	8623704	https://tatoeba.org/en/sentences/show/8623704	Hybrid	real
+eb853b257701	impact	impact-verb	anchors	tatoeba-by	CC BY 2.0 FR	12123347	https://tatoeba.org/en/sentences/show/12123347	Nuel	real
+2808623e9c2a	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	10137977	https://tatoeba.org/en/sentences/show/10137977	Ricardo14	real
+2c4953fa53f5	impact	impact-verb	holdout	tatoeba-cc0	CC0 1.0	12432125	https://tatoeba.org/en/sentences/show/12432125	ddnktr	real
+359accfe05f8	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	6691117	https://tatoeba.org/en/sentences/show/6691117	OsoHombre	real
+465b4f10f6a0	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	9585509	https://tatoeba.org/en/sentences/show/9585509	issadouba	real
+53ecf8c7b9df	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	10749669	https://tatoeba.org/en/sentences/show/10749669	DJ_Saidez	real
+59a9c87b72ae	impact	impact-verb	holdout	tatoeba-cc0	CC0 1.0	12294656	https://tatoeba.org/en/sentences/show/12294656	Miktsoanit	real
+65bde2f33e13	impact	impact-verb	holdout	tatoeba-cc0	CC0 1.0	11492684	https://tatoeba.org/en/sentences/show/11492684	shekitten	real
+e70db4229588	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	13441388	https://tatoeba.org/en/sentences/show/13441388	MAC	real
+ea3f0f45c66a	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	13756210	https://tatoeba.org/en/sentences/show/13756210	CK	real
+f2ac36b7602d	impact	impact-verb	holdout	tatoeba-by	CC BY 2.0 FR	13141268	https://tatoeba.org/en/sentences/show/13141268	rul	real
 0c5369204948	lead	guide-noun	anchors	tatoeba-by	CC BY 2.0 FR	7277435	https://tatoeba.org/en/sentences/show/7277435	Hybrid	real
 1633b9b2592e	lead	guide-noun	anchors	tatoeba-cc0	CC0 1.0	12050581	https://tatoeba.org/en/sentences/show/12050581	Cangarejo	real
 1a02034a07dc	lead	guide-noun	anchors	gutenberg	Public domain	pg74#p1976	https://www.gutenberg.org/ebooks/74	Mark Twain: The Adventures of Tom Sawyer, Complete	real
@@ -612,6 +1032,66 @@ f0e2588e4244	present	adj	holdout	tatoeba-cc0	CC0 1.0	12777658	https://tatoeba.or
 79f7b823e273	present	noun	anchors	gutenberg	Public domain	pg2554#p3940	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
 bb6eb03aaed5	present	noun	anchors	gutenberg	Public domain	pg583#p1895	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
 dc5b5269f93f	present	noun	anchors	gutenberg	Public domain	pg2554#p1649	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+054a84abf801	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12765151	https://tatoeba.org/en/sentences/show/12765151	Igider	real
+1a826a235210	protest	protest-noun	anchors	gutenberg	Public domain	pg2852#p793	https://www.gutenberg.org/ebooks/2852	Arthur Conan Doyle: The Hound of the Baskervilles	real
+1fb2231fb076	protest	protest-noun	anchors	gutenberg	Public domain	pg155#p3068	https://www.gutenberg.org/ebooks/155	Wilkie Collins: The Moonstone	real
+223fc7568656	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12029386	https://tatoeba.org/en/sentences/show/12029386	Cangarejo	real
+2efa23b1b60d	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12765576	https://tatoeba.org/en/sentences/show/12765576	Igider	real
+3e449b0b86b7	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12776997	https://tatoeba.org/en/sentences/show/12776997	Igider	real
+418cfd1fae7e	protest	protest-noun	anchors	gutenberg	Public domain	pg2554#p1899	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+4d5f87601b3a	protest	protest-noun	anchors	gutenberg	Public domain	pg135#p572	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+52cbd4283807	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12765447	https://tatoeba.org/en/sentences/show/12765447	Igider	real
+54f86807f63a	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12765615	https://tatoeba.org/en/sentences/show/12765615	Igider	real
+55e2728e8ae4	protest	protest-noun	anchors	gutenberg	Public domain	pg2852#p808	https://www.gutenberg.org/ebooks/2852	Arthur Conan Doyle: The Hound of the Baskervilles	real
+6c018f46d4e5	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	10844787	https://tatoeba.org/en/sentences/show/10844787	Cangarejo	real
+6f17e349c565	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	11794318	https://tatoeba.org/en/sentences/show/11794318	Cangarejo	real
+93545531db7d	protest	protest-noun	anchors	gutenberg	Public domain	pg155#p3264	https://www.gutenberg.org/ebooks/155	Wilkie Collins: The Moonstone	real
+ac6988057668	protest	protest-noun	anchors	gutenberg	Public domain	pg135#p6167	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+be506beb1552	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12777365	https://tatoeba.org/en/sentences/show/12777365	Igider	real
+d85f7a51807f	protest	protest-noun	anchors	gutenberg	Public domain	pg2554#p2820	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+e051baf5a04c	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	11030342	https://tatoeba.org/en/sentences/show/11030342	Cangarejo	real
+e659fd4837ee	protest	protest-noun	anchors	gutenberg	Public domain	pg135#p1042	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+f45a2d3dddea	protest	protest-noun	anchors	tatoeba-cc0	CC0 1.0	12230142	https://tatoeba.org/en/sentences/show/12230142	Cangarejo	real
+03516ca17eb8	protest	protest-noun	holdout	gutenberg	Public domain	pg974#p127	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+482064854e4a	protest	protest-noun	holdout	tatoeba-by	CC BY 2.0 FR	10073581	https://tatoeba.org/en/sentences/show/10073581	sundown	real
+58a8b2d7a366	protest	protest-noun	holdout	tatoeba-by	CC BY 2.0 FR	10573092	https://tatoeba.org/en/sentences/show/10573092	Ooneykcall	real
+77a1d335da02	protest	protest-noun	holdout	tatoeba-by	CC BY 2.0 FR	13106245	https://tatoeba.org/en/sentences/show/13106245	hansolo	real
+8f59ec5b9e5f	protest	protest-noun	holdout	gutenberg	Public domain	pg345#p448	https://www.gutenberg.org/ebooks/345	Bram Stoker: Dracula	real
+97588f5670de	protest	protest-noun	holdout	gutenberg	Public domain	pg1023#p784	https://www.gutenberg.org/ebooks/1023	Charles Dickens: Bleak House	real
+b15fef3695fa	protest	protest-noun	holdout	gutenberg	Public domain	pg834#p374	https://www.gutenberg.org/ebooks/834	Arthur Conan Doyle: The Memoirs of Sherlock Holmes	real
+bc81e5321839	protest	protest-noun	holdout	gutenberg	Public domain	pg64317#p1498	https://www.gutenberg.org/ebooks/64317	F. Scott Fitzgerald: The Great Gatsby	real
+be08085896ab	protest	protest-noun	holdout	tatoeba-cc0	CC0 1.0	13425223	https://tatoeba.org/en/sentences/show/13425223	deniko	real
+ec0c4878de72	protest	protest-noun	holdout	tatoeba-by	CC BY 2.0 FR	3657902	https://tatoeba.org/en/sentences/show/3657902	Wu	real
+078a985f84fc	protest	protest-verb	anchors	gutenberg	Public domain	pg2021#p398	https://www.gutenberg.org/ebooks/2021	Joseph Conrad: Nostromo: A Tale of the Seaboard	real
+46c91a055618	protest	protest-verb	anchors	gutenberg	Public domain	pg2554#p1902	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+58a07a0f8c25	protest	protest-verb	anchors	gutenberg	Public domain	pg5230#p815	https://www.gutenberg.org/ebooks/5230	H. G. Wells: The Invisible Man: A Grotesque Romance	real
+5a31f54e0f78	protest	protest-verb	anchors	gutenberg	Public domain	pg974#p127	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+62b072959fd1	protest	protest-verb	anchors	gutenberg	Public domain	pg583#p2595	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+6a5b63eaba9a	protest	protest-verb	anchors	gutenberg	Public domain	pg103#p1184	https://www.gutenberg.org/ebooks/103	Jules Verne: Around the World in Eighty Days	real
+76a4c6f552c5	protest	protest-verb	anchors	gutenberg	Public domain	pg5658#p251	https://www.gutenberg.org/ebooks/5658	Joseph Conrad: Lord Jim	real
+87ab5667791e	protest	protest-verb	anchors	tatoeba-cc0	CC0 1.0	11807420	https://tatoeba.org/en/sentences/show/11807420	shekitten	real
+8c294f7c5e7a	protest	protest-verb	anchors	gutenberg	Public domain	pg4300#p4745	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+b94cb53832bb	protest	protest-verb	anchors	gutenberg	Public domain	pg967#p534	https://www.gutenberg.org/ebooks/967	Charles Dickens: Nicholas Nickleby	real
+c1e13a4d1344	protest	protest-verb	anchors	tatoeba-by	CC BY 2.0 FR	8808264	https://tatoeba.org/en/sentences/show/8808264	shekitten	real
+cb7d7710adb9	protest	protest-verb	anchors	gutenberg	Public domain	pg580#p2532	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+ccc1e95663f2	protest	protest-verb	anchors	gutenberg	Public domain	pg5658#p112	https://www.gutenberg.org/ebooks/5658	Joseph Conrad: Lord Jim	real
+e169762e98cb	protest	protest-verb	anchors	gutenberg	Public domain	pg974#p1467	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+e97057b67293	protest	protest-verb	anchors	tatoeba-by	CC BY 2.0 FR	6956293	https://tatoeba.org/en/sentences/show/6956293	shekitten	real
+e992dbf02372	protest	protest-verb	anchors	gutenberg	Public domain	pg580#p2595	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+f847e6f768df	protest	protest-verb	anchors	gutenberg	Public domain	pg5230#p829	https://www.gutenberg.org/ebooks/5230	H. G. Wells: The Invisible Man: A Grotesque Romance	real
+f9214e6e213f	protest	protest-verb	anchors	gutenberg	Public domain	pg2554#p2296	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+f99982b5a39c	protest	protest-verb	anchors	gutenberg	Public domain	pg2554#p1701	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+fbae67009ac4	protest	protest-verb	anchors	gutenberg	Public domain	pg583#p4087	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+10e6bcf708f8	protest	protest-verb	holdout	gutenberg	Public domain	pg98#p3024	https://www.gutenberg.org/ebooks/98	Charles Dickens: A Tale of Two Cities	real
+868aefedb3c6	protest	protest-verb	holdout	tatoeba-by	CC BY 2.0 FR	9200533	https://tatoeba.org/en/sentences/show/9200533	Nylez	real
+8d9e60e0507e	protest	protest-verb	holdout	gutenberg	Public domain	pg110#p2882	https://www.gutenberg.org/ebooks/110	Thomas Hardy: Tess of the d'Urbervilles: A Pure Woman	real
+96dadcab8c71	protest	protest-verb	holdout	tatoeba-by	CC BY 2.0 FR	4940827	https://tatoeba.org/en/sentences/show/4940827	AlanF_US	real
+9b2546e69fc1	protest	protest-verb	holdout	gutenberg	Public domain	pg1257#p5271	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+9da3041b39ee	protest	protest-verb	holdout	gutenberg	Public domain	pg1399#p5740	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+a27df8daecf6	protest	protest-verb	holdout	gutenberg	Public domain	pg155#p371	https://www.gutenberg.org/ebooks/155	Wilkie Collins: The Moonstone	real
+c5e50a6854dc	protest	protest-verb	holdout	tatoeba-by	CC BY 2.0 FR	2958898	https://tatoeba.org/en/sentences/show/2958898	sharptoothed	real
+e4eecf463df7	protest	protest-verb	holdout	tatoeba-by	CC BY 2.0 FR	313396	https://tatoeba.org/en/sentences/show/313396	sundown	real
+f2747e6ceeab	protest	protest-verb	holdout	gutenberg	Public domain	pg164#p105	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
 587cb4d283ce	rows	argument	anchors	gutenberg	Public domain	pg219#p55	https://www.gutenberg.org/ebooks/219	Joseph Conrad: Heart of Darkness	real
 58d4af463846	rows	argument	anchors	gutenberg	Public domain	pg219#p167	https://www.gutenberg.org/ebooks/219	Joseph Conrad: Heart of Darkness	real
 72b3cbaa0c6b	rows	argument	holdout	tatoeba-by	CC BY 2.0 FR	6957973	https://tatoeba.org/en/sentences/show/6957973	Hybrid	real
@@ -659,6 +1139,92 @@ b65d759b6e8e	rows	paddle	holdout	wikipedia	CC BY-SA 4.0	wiki:Selkie	https://en.w
 ba51170ea769	rows	paddle	holdout	wikipedia	CC BY-SA 4.0	wiki:The Last Report on the Miracles at Little No Horse	https://en.wikipedia.org/wiki/The_Last_Report_on_the_Miracles_at_Little_No_Horse	Wikipedia: The Last Report on the Miracles at Little No Horse	real
 c3b14982e586	rows	paddle	holdout	wikipedia	CC BY-SA 4.0	wiki:Gondola	https://en.wikipedia.org/wiki/Gondola	Wikipedia: Gondola	real
 eeb95aac6a2f	rows	paddle	holdout	wikipedia	CC BY-SA 4.0	wiki:Rowing (sport)	https://en.wikipedia.org/wiki/Rowing_(sport)	Wikipedia: Rowing (sport)	real
+03de9758a4c7	second	second-noun	anchors	gutenberg	Public domain	pg139#p874	https://www.gutenberg.org/ebooks/139	Arthur Conan Doyle: The Lost World	real
+05a5d158e9cc	second	second-noun	anchors	gutenberg	Public domain	pg580#p6287	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+146ad46edef2	second	second-noun	anchors	tatoeba-cc0	CC0 1.0	11978654	https://tatoeba.org/en/sentences/show/11978654	Cangarejo	real
+280bad79b798	second	second-noun	anchors	gutenberg	Public domain	pg2600#p7405	https://www.gutenberg.org/ebooks/2600	graf Leo Tolstoy: War and Peace	real
+2da3d784eea5	second	second-noun	anchors	tatoeba-cc0	CC0 1.0	12766988	https://tatoeba.org/en/sentences/show/12766988	Igider	real
+333e66a5e8c4	second	second-noun	anchors	tatoeba-cc0	CC0 1.0	11426992	https://tatoeba.org/en/sentences/show/11426992	Cangarejo	real
+61a9ba230874	second	second-noun	anchors	gutenberg	Public domain	pg36#p33	https://www.gutenberg.org/ebooks/36	H. G. Wells: The war of the worlds	real
+638b2be89517	second	second-noun	anchors	gutenberg	Public domain	pg215#p116	https://www.gutenberg.org/ebooks/215	Jack London: The call of the wild	real
+875944c9867c	second	second-noun	anchors	gutenberg	Public domain	pg963#p4317	https://www.gutenberg.org/ebooks/963	Charles Dickens: Little Dorrit	real
+8cacaf3f2264	second	second-noun	anchors	gutenberg	Public domain	pg580#p345	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+9a583dbef6c1	second	second-noun	anchors	gutenberg	Public domain	pg158#p209	https://www.gutenberg.org/ebooks/158	Jane Austen: Emma	real
+9cfa9c0f92ad	second	second-noun	anchors	gutenberg	Public domain	pg2600#p7695	https://www.gutenberg.org/ebooks/2600	graf Leo Tolstoy: War and Peace	real
+a54d234842dd	second	second-noun	anchors	tatoeba-cc0	CC0 1.0	12308038	https://tatoeba.org/en/sentences/show/12308038	Cangarejo	real
+b66709d1389f	second	second-noun	anchors	gutenberg	Public domain	pg76#p494	https://www.gutenberg.org/ebooks/76	Mark Twain: Adventures of Huckleberry Finn	real
+b861f2c06af1	second	second-noun	anchors	gutenberg	Public domain	pg5658#p490	https://www.gutenberg.org/ebooks/5658	Joseph Conrad: Lord Jim	real
+d7475a47441b	second	second-noun	anchors	gutenberg	Public domain	pg76#p833	https://www.gutenberg.org/ebooks/76	Mark Twain: Adventures of Huckleberry Finn	real
+db6047e95bad	second	second-noun	anchors	gutenberg	Public domain	pg120#p681	https://www.gutenberg.org/ebooks/120	Robert Louis Stevenson: Treasure Island	real
+de5eccd96d1d	second	second-noun	anchors	tatoeba-cc0	CC0 1.0	12766680	https://tatoeba.org/en/sentences/show/12766680	Igider	real
+e40ed4c535fd	second	second-noun	anchors	gutenberg	Public domain	pg107#p2402	https://www.gutenberg.org/ebooks/107	Thomas Hardy: Far from the Madding Crowd	real
+f1e1a323ec51	second	second-noun	anchors	gutenberg	Public domain	pg2600#p9270	https://www.gutenberg.org/ebooks/2600	graf Leo Tolstoy: War and Peace	real
+0b578d592ced	second	second-noun	holdout	gutenberg	Public domain	pg135#p5671	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+0d420b048d57	second	second-noun	holdout	gutenberg	Public domain	pg164#p549	https://www.gutenberg.org/ebooks/164	Jules Verne: Twenty Thousand Leagues under the Sea	real
+17b0458167db	second	second-noun	holdout	tatoeba-by	CC BY 2.0 FR	10704205	https://tatoeba.org/en/sentences/show/10704205	AlanF_US	real
+2d4f1e08bade	second	second-noun	holdout	tatoeba-by	CC BY 2.0 FR	559031	https://tatoeba.org/en/sentences/show/559031	FeuDRenais	real
+2e419b2f5bc7	second	second-noun	holdout	gutenberg	Public domain	pg1257#p1351	https://www.gutenberg.org/ebooks/1257	Alexandre Dumas: The three musketeers	real
+3af50ab57fc7	second	second-noun	holdout	tatoeba-by	CC BY 2.0 FR	2970963	https://tatoeba.org/en/sentences/show/2970963	carlosalberto	real
+7974ae3db0a5	second	second-noun	holdout	gutenberg	Public domain	pg174#p1209	https://www.gutenberg.org/ebooks/174	Oscar Wilde: The Picture of Dorian Gray	real
+87d78e4ff6c2	second	second-noun	holdout	gutenberg	Public domain	pg1399#p3274	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+b54c82d736e3	second	second-noun	holdout	gutenberg	Public domain	pg2814#p584	https://www.gutenberg.org/ebooks/2814	James Joyce: Dubliners	real
+d687ca3cf148	second	second-noun	holdout	gutenberg	Public domain	pg244#p366	https://www.gutenberg.org/ebooks/244	Arthur Conan Doyle: A Study in Scarlet	real
+2b34751a59da	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11924048	https://tatoeba.org/en/sentences/show/11924048	Cangarejo	real
+2ea5b57e50b6	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10910801	https://tatoeba.org/en/sentences/show/10910801	Cangarejo	real
+4620f23a46e6	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	12286242	https://tatoeba.org/en/sentences/show/12286242	Cangarejo	real
+4c986533b039	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11081594	https://tatoeba.org/en/sentences/show/11081594	Cangarejo	real
+4e12aa49de35	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11230966	https://tatoeba.org/en/sentences/show/11230966	Cangarejo	real
+5595aa172064	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10813140	https://tatoeba.org/en/sentences/show/10813140	Cangarejo	real
+61e427adadbe	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10824288	https://tatoeba.org/en/sentences/show/10824288	Cangarejo	real
+62632003258e	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11485337	https://tatoeba.org/en/sentences/show/11485337	Cangarejo	real
+774a3d008f0e	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	12265790	https://tatoeba.org/en/sentences/show/12265790	Cangarejo	real
+8093172c7aa8	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11220225	https://tatoeba.org/en/sentences/show/11220225	Cangarejo	real
+8e3b4f9cf8ae	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11849875	https://tatoeba.org/en/sentences/show/11849875	Cangarejo	real
+a4e44230a105	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	12121690	https://tatoeba.org/en/sentences/show/12121690	Cangarejo	real
+b8572d2fba05	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10735613	https://tatoeba.org/en/sentences/show/10735613	Cangarejo	real
+ba89adbd4edc	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11194889	https://tatoeba.org/en/sentences/show/11194889	Cangarejo	real
+d266311b7648	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10797940	https://tatoeba.org/en/sentences/show/10797940	Cangarejo	real
+d796648279fc	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	12256692	https://tatoeba.org/en/sentences/show/12256692	Cangarejo	real
+dd28a1c2a87e	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11917071	https://tatoeba.org/en/sentences/show/11917071	Cangarejo	real
+ef02fab7d5f4	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	12059826	https://tatoeba.org/en/sentences/show/12059826	Cangarejo	real
+f17286bd8858	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	10786577	https://tatoeba.org/en/sentences/show/10786577	Cangarejo	real
+f99e927f2de5	second	second-ordinal-adj	anchors	tatoeba-cc0	CC0 1.0	11469067	https://tatoeba.org/en/sentences/show/11469067	Cangarejo	real
+17a1181f608d	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg910#p13	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+34e516988a61	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg2554#p468	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+3beafba854b2	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg98#p3282	https://www.gutenberg.org/ebooks/98	Charles Dickens: A Tale of Two Cities	real
+4ea34ff64e7e	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg1023#p1789	https://www.gutenberg.org/ebooks/1023	Charles Dickens: Bleak House	real
+567fa148222b	second	second-ordinal-adj	holdout	tatoeba-cc0	CC0 1.0	8310528	https://tatoeba.org/en/sentences/show/8310528	Isomorph	real
+5a5edcf955f1	second	second-ordinal-adj	holdout	tatoeba-by	CC BY 2.0 FR	2711627	https://tatoeba.org/en/sentences/show/2711627	sharptoothed	real
+a88b25466f78	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg974#p679	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+bab6fc4811a7	second	second-ordinal-adj	holdout	tatoeba-by	CC BY 2.0 FR	12261456	https://tatoeba.org/en/sentences/show/12261456	mollydot	real
+e53b92c5132c	second	second-ordinal-adj	holdout	tatoeba-by	CC BY 2.0 FR	12997338	https://tatoeba.org/en/sentences/show/12997338	rul	real
+fb932025d2ba	second	second-ordinal-adj	holdout	gutenberg	Public domain	pg153#p214	https://www.gutenberg.org/ebooks/153	Thomas Hardy: Jude the Obscure	real
+000151365ca9	second	second-support	anchors	gutenberg	Public domain	pg82#p1106	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+039d24b215d5	second	second-support	anchors	tatoeba-by	CC BY 2.0 FR	280210	https://tatoeba.org/en/sentences/show/280210	CM	real
+0a45df9c314e	second	second-support	anchors	gutenberg	Public domain	pg1074#p739	https://www.gutenberg.org/ebooks/1074	Jack London: The Sea-Wolf	real
+3dd3d8214d92	second	second-support	anchors	gutenberg	Public domain	pg507#p874	https://www.gutenberg.org/ebooks/507	George Eliot: Adam Bede	real
+4361b4b68c65	second	second-support	anchors	tatoeba-by	CC BY 2.0 FR	4500016	https://tatoeba.org/en/sentences/show/4500016	CK	real
+44e573ba269e	second	second-support	anchors	gutenberg	Public domain	pg1056#p918	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+531c70748c6b	second	second-support	anchors	gutenberg	Public domain	pg583#p748	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+5962349fa514	second	second-support	anchors	gutenberg	Public domain	pg158#p173	https://www.gutenberg.org/ebooks/158	Jane Austen: Emma	real
+68152811ab4b	second	second-support	anchors	gutenberg	Public domain	pg82#p203	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+7f1273d5beab	second	second-support	anchors	gutenberg	Public domain	pg768#p1217	https://www.gutenberg.org/ebooks/768	Emily Brontë: Wuthering Heights	real
+b6c54dcb0f43	second	second-support	anchors	tatoeba-by	CC BY 2.0 FR	260925	https://tatoeba.org/en/sentences/show/260925	\N	real
+c7b9a0f84a64	second	second-support	anchors	tatoeba-by	CC BY 2.0 FR	1164233	https://tatoeba.org/en/sentences/show/1164233	CK	real
+cf32f8e76655	second	second-support	anchors	gutenberg	Public domain	pg215#p202	https://www.gutenberg.org/ebooks/215	Jack London: The call of the wild	real
+d04dc98b76f7	second	second-support	anchors	gutenberg	Public domain	pg583#p2506	https://www.gutenberg.org/ebooks/583	Wilkie Collins: The Woman in White	real
+db531a9dae78	second	second-support	anchors	gutenberg	Public domain	pg1056#p1785	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+dff4343ebdd9	second	second-support	anchors	gutenberg	Public domain	pg940#p1333	https://www.gutenberg.org/ebooks/940	James Fenimore Cooper: The Last of the Mohicans; A narrative of 1757	real
+e4ee1a62bc96	second	second-support	anchors	gutenberg	Public domain	pg940#p137	https://www.gutenberg.org/ebooks/940	James Fenimore Cooper: The Last of the Mohicans; A narrative of 1757	real
+0870f3807fc0	second	second-support	holdout	gutenberg	Public domain	pg910#p999	https://www.gutenberg.org/ebooks/910	Jack London: White Fang	real
+170b999ad84a	second	second-support	holdout	gutenberg	Public domain	pg821#p1558	https://www.gutenberg.org/ebooks/821	Charles Dickens: Dombey and Son	real
+327fe8deb380	second	second-support	holdout	gutenberg	Public domain	pg1023#p5636	https://www.gutenberg.org/ebooks/1023	Charles Dickens: Bleak House	real
+4bab6f087028	second	second-support	holdout	gutenberg	Public domain	pg967#p107	https://www.gutenberg.org/ebooks/967	Charles Dickens: Nicholas Nickleby	real
+66f0224747de	second	second-support	holdout	gutenberg	Public domain	pg2554#p120	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
+a036c2759947	second	second-support	holdout	gutenberg	Public domain	pg4300#p6631	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+a0a5f19ba51a	second	second-support	holdout	gutenberg	Public domain	pg135#p10183	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+b97d8c236120	second	second-support	holdout	tatoeba-by	CC BY 2.0 FR	6212700	https://tatoeba.org/en/sentences/show/6212700	Hybrid	real
+d4378786f276	second	second-support	holdout	tatoeba-by	CC BY 2.0 FR	11190386	https://tatoeba.org/en/sentences/show/11190386	Amastan	real
 0254ceb91662	tear	drop	anchors	gutenberg	Public domain	pg514#p1757	https://www.gutenberg.org/ebooks/514	Louisa May Alcott: Little Women	real
 0ba3c9b67856	tear	drop	anchors	gutenberg	Public domain	pg514#p2665	https://www.gutenberg.org/ebooks/514	Louisa May Alcott: Little Women	real
 28f3c8f5f5e1	tear	drop	anchors	gutenberg	Public domain	pg514#p3828	https://www.gutenberg.org/ebooks/514	Louisa May Alcott: Little Women	real
@@ -749,6 +1315,182 @@ f4ea378e3820	tear	rip-verb	anchors	tatoeba-cc0	CC0 1.0	9193331	https://tatoeba.o
 9dbdb6317f8d	tear	rip-verb	holdout	gutenberg	Public domain	pg2554#p570	https://www.gutenberg.org/ebooks/2554	Fyodor Dostoyevsky: Crime and Punishment	real
 dfebc520121b	tear	rip-verb	holdout	gutenberg	Public domain	pg345#p1512	https://www.gutenberg.org/ebooks/345	Bram Stoker: Dracula	real
 febdb8745403	tear	rip-verb	holdout	gutenberg	Public domain	pg174#p939	https://www.gutenberg.org/ebooks/174	Oscar Wilde: The Picture of Dorian Gray	real
+0379e0fd30aa	transfer	transfer-noun	anchors	tatoeba-cc0	CC0 1.0	11977010	https://tatoeba.org/en/sentences/show/11977010	shekitten	real
+2c50da6a98c9	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	12109896	https://tatoeba.org/en/sentences/show/12109896	CK	real
+313ca88491d9	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	13565226	https://tatoeba.org/en/sentences/show/13565226	CK	real
+41b1ff2f6fb3	transfer	transfer-noun	anchors	gutenberg	Public domain	pg5658#p424	https://www.gutenberg.org/ebooks/5658	Joseph Conrad: Lord Jim	real
+426b89625b57	transfer	transfer-noun	anchors	ud-ewt	CC BY-SA 4.0	email-enronsent00_02-0011	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent00_02	real
+42814283a682	transfer	transfer-noun	anchors	ud-ewt	CC BY-SA 4.0	email-enronsent00_02-0010	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent00_02	real
+5679cce72552	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	11607892	https://tatoeba.org/en/sentences/show/11607892	Amastan	real
+84a24b535209	transfer	transfer-noun	anchors	ud-ewt	CC BY-SA 4.0	email-enronsent38_01-0125	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent38_01	real
+8c36d9bc1413	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	12354853	https://tatoeba.org/en/sentences/show/12354853	carlosalberto	real
+8d83def37057	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	10658161	https://tatoeba.org/en/sentences/show/10658161	jungnet	real
+8ef9e115a284	transfer	transfer-noun	anchors	gutenberg	Public domain	pg2600#p8718	https://www.gutenberg.org/ebooks/2600	graf Leo Tolstoy: War and Peace	real
+9e9ae0a0a91f	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	2014345	https://tatoeba.org/en/sentences/show/2014345	CK	real
+abfb0c8917db	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	22368	https://tatoeba.org/en/sentences/show/22368	CK	real
+d080b354cb2f	transfer	transfer-noun	anchors	tatoeba-cc0	CC0 1.0	12066564	https://tatoeba.org/en/sentences/show/12066564	Cangarejo	real
+dd708718f4d0	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	2546213	https://tatoeba.org/en/sentences/show/2546213	CK	real
+decc7b502a2f	transfer	transfer-noun	anchors	gutenberg	Public domain	pg580#p7854	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+e21edc078b9e	transfer	transfer-noun	anchors	ud-ewt	CC BY-SA 4.0	email-enronsent38_01-0122	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent38_01	real
+e8ee2e4224ac	transfer	transfer-noun	anchors	tatoeba-cc0	CC0 1.0	11095118	https://tatoeba.org/en/sentences/show/11095118	Cangarejo	real
+e9af2ef9022c	transfer	transfer-noun	anchors	tatoeba-by	CC BY 2.0 FR	12354847	https://tatoeba.org/en/sentences/show/12354847	carlosalberto	real
+f1a008b52c55	transfer	transfer-noun	anchors	gutenberg	Public domain	pg1260#p3484	https://www.gutenberg.org/ebooks/1260	Charlotte Brontë: Jane Eyre: An Autobiography	real
+0a72c2d93e4c	transfer	transfer-noun	holdout	gutenberg	Public domain	pg2814#p755	https://www.gutenberg.org/ebooks/2814	James Joyce: Dubliners	real
+2b89f84322f8	transfer	transfer-noun	holdout	tatoeba-by	CC BY 2.0 FR	774018	https://tatoeba.org/en/sentences/show/774018	FeuDRenais2	real
+4de95d108e14	transfer	transfer-noun	holdout	tatoeba-by	CC BY 2.0 FR	893831	https://tatoeba.org/en/sentences/show/893831	Scott	real
+7116317787e3	transfer	transfer-noun	holdout	gutenberg	Public domain	pg2701#p1256	https://www.gutenberg.org/ebooks/2701	Herman Melville: Moby Dick; Or, The Whale	real
+80d26f784b94	transfer	transfer-noun	holdout	ud-ewt	CC BY-SA 4.0	newsgroup-groups.google.com_misc.consumers_628669ce346c590d_ENG_20040527_065700-0024	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: newsgroup-groups.google.com_misc.consumers_628669ce346c590d_ENG_20040527_065700	real
+8306fdffb042	transfer	transfer-noun	holdout	gutenberg	Public domain	pg974#p769	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+9ace502af36d	transfer	transfer-noun	holdout	tatoeba-by	CC BY 2.0 FR	5379845	https://tatoeba.org/en/sentences/show/5379845	Objectivesea	real
+c7fa0bca7ae6	transfer	transfer-noun	holdout	tatoeba-by	CC BY 2.0 FR	3316587	https://tatoeba.org/en/sentences/show/3316587	nonong	real
+da422950bfda	transfer	transfer-noun	holdout	tatoeba-by	CC BY 2.0 FR	5816164	https://tatoeba.org/en/sentences/show/5816164	Hybrid	real
+fbb4ce5a66b2	transfer	transfer-noun	holdout	gutenberg	Public domain	pg153#p779	https://www.gutenberg.org/ebooks/153	Thomas Hardy: Jude the Obscure	real
+239c327a2a80	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	11098814	https://tatoeba.org/en/sentences/show/11098814	Cangarejo	real
+2dd0b9cb4297	transfer	transfer-verb	anchors	gutenberg	Public domain	pg4300#p1242	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+2e098b5ebef9	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	11741055	https://tatoeba.org/en/sentences/show/11741055	Cangarejo	real
+4d230d449352	transfer	transfer-verb	anchors	gutenberg	Public domain	pg135#p3128	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+4ddb5badb565	transfer	transfer-verb	anchors	gutenberg	Public domain	pg4300#p867	https://www.gutenberg.org/ebooks/4300	James Joyce: Ulysses	real
+6397c7acbad3	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	11817715	https://tatoeba.org/en/sentences/show/11817715	Cangarejo	real
+66e0029a2f8d	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	12115802	https://tatoeba.org/en/sentences/show/12115802	Cangarejo	real
+747bf3e992f7	transfer	transfer-verb	anchors	gutenberg	Public domain	pg205#p191	https://www.gutenberg.org/ebooks/205	Henry David Thoreau: Walden, and On The Duty Of Civil Disobedience	real
+754e6f4969e2	transfer	transfer-verb	anchors	gutenberg	Public domain	pg1661#p1229	https://www.gutenberg.org/ebooks/1661	Arthur Conan Doyle: The Adventures of Sherlock Holmes	real
+7fca483fd6db	transfer	transfer-verb	anchors	gutenberg	Public domain	pg2701#p1867	https://www.gutenberg.org/ebooks/2701	Herman Melville: Moby Dick; Or, The Whale	real
+ba518266ffbd	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	12111805	https://tatoeba.org/en/sentences/show/12111805	Cangarejo	real
+bb6cf97be287	transfer	transfer-verb	anchors	gutenberg	Public domain	pg2814#p1462	https://www.gutenberg.org/ebooks/2814	James Joyce: Dubliners	real
+be87c3733bd3	transfer	transfer-verb	anchors	gutenberg	Public domain	pg599#p989	https://www.gutenberg.org/ebooks/599	William Makepeace Thackeray: Vanity Fair	real
+c5d5bd15410b	transfer	transfer-verb	anchors	tatoeba-cc0	CC0 1.0	12486882	https://tatoeba.org/en/sentences/show/12486882	Miktsoanit	real
+ccbd722004d1	transfer	transfer-verb	anchors	gutenberg	Public domain	pg580#p7897	https://www.gutenberg.org/ebooks/580	Charles Dickens: The Pickwick Papers	real
+d6f85dd53aa5	transfer	transfer-verb	anchors	gutenberg	Public domain	pg1400#p1001	https://www.gutenberg.org/ebooks/1400	Charles Dickens: Great Expectations	real
+e7e58d59eecd	transfer	transfer-verb	anchors	gutenberg	Public domain	pg103#p1507	https://www.gutenberg.org/ebooks/103	Jules Verne: Around the World in Eighty Days	real
+e936b0f3c68a	transfer	transfer-verb	anchors	gutenberg	Public domain	pg135#p5868	https://www.gutenberg.org/ebooks/135	Victor Hugo: Les Misérables	real
+ed7c0d085f45	transfer	transfer-verb	anchors	gutenberg	Public domain	pg1056#p1221	https://www.gutenberg.org/ebooks/1056	Jack London: Martin Eden	real
+f30d9afc187e	transfer	transfer-verb	anchors	gutenberg	Public domain	pg967#p5766	https://www.gutenberg.org/ebooks/967	Charles Dickens: Nicholas Nickleby	real
+09a1d1cc7e11	transfer	transfer-verb	holdout	gutenberg	Public domain	pg974#p1308	https://www.gutenberg.org/ebooks/974	Joseph Conrad: The Secret Agent: A Simple Tale	real
+1858c1ebf780	transfer	transfer-verb	holdout	gutenberg	Public domain	pg82#p2047	https://www.gutenberg.org/ebooks/82	Walter Scott: Ivanhoe: A Romance	real
+1bc658c43a42	transfer	transfer-verb	holdout	gutenberg	Public domain	pg1023#p2074	https://www.gutenberg.org/ebooks/1023	Charles Dickens: Bleak House	real
+51a2830280df	transfer	transfer-verb	holdout	gutenberg	Public domain	pg153#p783	https://www.gutenberg.org/ebooks/153	Thomas Hardy: Jude the Obscure	real
+62bcc6575c1d	transfer	transfer-verb	holdout	tatoeba-by	CC BY 2.0 FR	9957379	https://tatoeba.org/en/sentences/show/9957379	Nylez	real
+76699baa2e1b	transfer	transfer-verb	holdout	gutenberg	Public domain	pg730#p932	https://www.gutenberg.org/ebooks/730	Charles Dickens: Oliver Twist	real
+79cd81046310	transfer	transfer-verb	holdout	gutenberg	Public domain	pg1399#p6968	https://www.gutenberg.org/ebooks/1399	graf Leo Tolstoy: Anna Karenina	real
+b9efb15fd08a	transfer	transfer-verb	holdout	tatoeba-by	CC BY 2.0 FR	7356157	https://tatoeba.org/en/sentences/show/7356157	jimkillock	real
+dd2351af16e9	transfer	transfer-verb	holdout	tatoeba-by	CC BY 2.0 FR	11562071	https://tatoeba.org/en/sentences/show/11562071	megamanenm	real
+ffe29ba214ef	transfer	transfer-verb	holdout	tatoeba-by	CC BY 2.0 FR	5940061	https://tatoeba.org/en/sentences/show/5940061	bretsky	real
+0828ef13a85d	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	8310561	https://tatoeba.org/en/sentences/show/8310561	Isomorph	real
+1144f2c13da9	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	4495893	https://tatoeba.org/en/sentences/show/4495893	CK	real
+13a4bfbb86c2	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	9414206	https://tatoeba.org/en/sentences/show/9414206	shekitten	real
+25c05f34f36d	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	13696537	https://tatoeba.org/en/sentences/show/13696537	Rafik	real
+2a8af3d8587f	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	4502582	https://tatoeba.org/en/sentences/show/4502582	CK	real
+32e5038539a3	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	11203008	https://tatoeba.org/en/sentences/show/11203008	DJ_Saidez	real
+39a168755d60	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	8310491	https://tatoeba.org/en/sentences/show/8310491	Isomorph	real
+3fb70237ff31	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	2537443	https://tatoeba.org/en/sentences/show/2537443	CK	real
+5449641608a3	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	6788819	https://tatoeba.org/en/sentences/show/6788819	CK	real
+689255dc5a07	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	10545369	https://tatoeba.org/en/sentences/show/10545369	shekitten	real
+6eda0cc5e2be	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	2646530	https://tatoeba.org/en/sentences/show/2646530	CK	real
+7a251b1de454	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	11266460	https://tatoeba.org/en/sentences/show/11266460	hecko	real
+8b23325f8fbd	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	6790021	https://tatoeba.org/en/sentences/show/6790021	CK	real
+a0c6801f377d	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	11674841	https://tatoeba.org/en/sentences/show/11674841	shekitten	real
+c0af0ca84359	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	11884874	https://tatoeba.org/en/sentences/show/11884874	CK	real
+c8aa81e0d185	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	9195997	https://tatoeba.org/en/sentences/show/9195997	DJ_Saidez	real
+c8c1d4786d7b	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	8083566	https://tatoeba.org/en/sentences/show/8083566	cykel	real
+ccf47a63e926	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	6993429	https://tatoeba.org/en/sentences/show/6993429	Hybrid	real
+d67c29f83629	update	update-noun	anchors	tatoeba-cc0	CC0 1.0	10719758	https://tatoeba.org/en/sentences/show/10719758	shekitten	real
+df8f68394f26	update	update-noun	anchors	tatoeba-by	CC BY 2.0 FR	2031946	https://tatoeba.org/en/sentences/show/2031946	CK	real
+1012d346df10	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	11040300	https://tatoeba.org/en/sentences/show/11040300	end	real
+2b6eded153cb	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	2890503	https://tatoeba.org/en/sentences/show/2890503	AlanF_US	real
+3be13a019252	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	13750713	https://tatoeba.org/en/sentences/show/13750713	Aghanim	real
+5b607e653f71	update	update-noun	holdout	tatoeba-cc0	CC0 1.0	12048508	https://tatoeba.org/en/sentences/show/12048508	Cangarejo	real
+a113e5d4c6da	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	12523918	https://tatoeba.org/en/sentences/show/12523918	rul	real
+b4f784030f2a	update	update-noun	holdout	ud-ewt	CC BY-SA 4.0	email-enronsent41_01-0088	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent41_01	real
+cd0a3c9671be	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	9948015	https://tatoeba.org/en/sentences/show/9948015	Ooneykcall	real
+dd5c612d7380	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	7266024	https://tatoeba.org/en/sentences/show/7266024	OsoHombre	real
+f2f04f0a0258	update	update-noun	holdout	tatoeba-by	CC BY 2.0 FR	2921270	https://tatoeba.org/en/sentences/show/2921270	vicch	real
+f62f373d4776	update	update-noun	holdout	ud-ewt	CC BY-SA 4.0	answers-20111107180248AAnQ3aE_ans-0004	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: answers-20111107180248AAnQ3aE_ans	real
+0e01dfdb29f9	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	7389324	https://tatoeba.org/en/sentences/show/7389324	CH	real
+0e207bccb00a	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	8606102	https://tatoeba.org/en/sentences/show/8606102	shekitten	real
+13b357a80475	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	5937766	https://tatoeba.org/en/sentences/show/5937766	mailohilohi	real
+26a1a085c229	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	4498331	https://tatoeba.org/en/sentences/show/4498331	CK	real
+290b6f239601	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	7390130	https://tatoeba.org/en/sentences/show/7390130	CH	real
+2fa81bf3bd9f	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	10731237	https://tatoeba.org/en/sentences/show/10731237	ddnktr	real
+3c4378a9b29e	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	8606100	https://tatoeba.org/en/sentences/show/8606100	shekitten	real
+5948c062b76f	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	10593478	https://tatoeba.org/en/sentences/show/10593478	felidad	real
+5b7d15306766	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	10719748	https://tatoeba.org/en/sentences/show/10719748	shekitten	real
+62cd65cd4329	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	9979987	https://tatoeba.org/en/sentences/show/9979987	tsp_2	real
+66b2d7568e54	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	7407991	https://tatoeba.org/en/sentences/show/7407991	CH	real
+7979d0fd77a4	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	7389323	https://tatoeba.org/en/sentences/show/7389323	CH	real
+80dc362ad5e8	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	13087338	https://tatoeba.org/en/sentences/show/13087338	abiniz	real
+9f393c8c5193	update	update-verb	anchors	ud-ewt	CC BY-SA 4.0	email-enronsent06_01-0096	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent06_01	real
+b093e3f5c6cc	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	8606101	https://tatoeba.org/en/sentences/show/8606101	shekitten	real
+bc8887c0f20b	update	update-verb	anchors	ud-ewt	CC BY-SA 4.0	newsgroup-groups.google.com_alt.animals.cat_0f877e44e3521d27_ENG_20040131_084700-0003	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: newsgroup-groups.google.com_alt.animals.cat_0f877e44e3521d27_ENG_20040131_084700	real
+d0fe3fe37420	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	4736949	https://tatoeba.org/en/sentences/show/4736949	paper1n0	real
+dfe3c632d016	update	update-verb	anchors	tatoeba-by	CC BY 2.0 FR	10129320	https://tatoeba.org/en/sentences/show/10129320	tsp_2	real
+ea250e16463c	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	10161802	https://tatoeba.org/en/sentences/show/10161802	ddnktr	real
+fc0b0a7a1649	update	update-verb	anchors	tatoeba-cc0	CC0 1.0	10101861	https://tatoeba.org/en/sentences/show/10101861	ddnktr	real
+1b3b0e175b48	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	13453753	https://tatoeba.org/en/sentences/show/13453753	rul	real
+312a4e1b65cc	update	update-verb	holdout	ud-ewt	CC BY-SA 4.0	email-enronsent38_01-0081	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: email-enronsent38_01	real
+376819a8231d	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	7381112	https://tatoeba.org/en/sentences/show/7381112	CF	real
+5c9083729f17	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	10621695	https://tatoeba.org/en/sentences/show/10621695	DJ_Saidez	real
+645842ad1c64	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	6519219	https://tatoeba.org/en/sentences/show/6519219	CT	real
+6d3c7b22841e	update	update-verb	holdout	ud-ewt	CC BY-SA 4.0	newsgroup-groups.google.com_AlexandrianReligiousStudies_ebcd97e243c4440b_ENG_20051021_201800-0002	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: newsgroup-groups.google.com_AlexandrianReligiousStudies_ebcd97e243c4440b_ENG_20051021_201800	real
+b0243ff7e987	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	13640665	https://tatoeba.org/en/sentences/show/13640665	Nuel	real
+e3df91895583	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	10534460	https://tatoeba.org/en/sentences/show/10534460	carlosalberto	real
+ea61de8a81bd	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	11265362	https://tatoeba.org/en/sentences/show/11265362	kremlin	real
+effe0c56122d	update	update-verb	holdout	tatoeba-by	CC BY 2.0 FR	749803	https://tatoeba.org/en/sentences/show/749803	sundown	real
+22a3f439e94b	upgrade	upgrade-noun	anchors	ud-ewt	CC BY-SA 4.0	reviews-396880-0003	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: reviews-396880	real
+22d4637a4558	upgrade	upgrade-noun	anchors	tatoeba-by	CC BY 2.0 FR	11125007	https://tatoeba.org/en/sentences/show/11125007	CM	real
+23e32c46bbdb	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Legacy system	https://en.wikipedia.org/wiki/Legacy_system	Wikipedia: Legacy system	real
+513c34cba039	upgrade	upgrade-noun	anchors	tatoeba-cc0	CC0 1.0	12129232	https://tatoeba.org/en/sentences/show/12129232	Cangarejo	real
+5a196bc85ac3	upgrade	upgrade-noun	anchors	tatoeba-by	CC BY 2.0 FR	8680921	https://tatoeba.org/en/sentences/show/8680921	sabretou	real
+6974bee78620	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Lockheed Martin F-16V Viper	https://en.wikipedia.org/wiki/Lockheed_Martin_F-16V_Viper	Wikipedia: Lockheed Martin F-16V Viper	real
+83f6ca811bb0	upgrade	upgrade-noun	anchors	tatoeba-by	CC BY 2.0 FR	3186730	https://tatoeba.org/en/sentences/show/3186730	patgfisher	real
+84216afad8c5	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Upgrade	https://en.wikipedia.org/wiki/Upgrade	Wikipedia: Upgrade	real
+8c1c75abc898	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Apple IIe	https://en.wikipedia.org/wiki/Apple_IIe	Wikipedia: Apple IIe	real
+9e3936f0b5c9	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Acorn Archimedes	https://en.wikipedia.org/wiki/Acorn_Archimedes	Wikipedia: Acorn Archimedes	real
+a59dc02a7615	upgrade	upgrade-noun	anchors	tatoeba-by	CC BY 2.0 FR	239556	https://tatoeba.org/en/sentences/show/239556	\N	real
+ab9c6cfd3e10	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Windows 10	https://en.wikipedia.org/wiki/Windows_10	Wikipedia: Windows 10	real
+b141627cacdf	upgrade	upgrade-noun	anchors	tatoeba-by	CC BY 2.0 FR	7047602	https://tatoeba.org/en/sentences/show/7047602	Eccles17	real
+b80336e48f5c	upgrade	upgrade-noun	anchors	ud-ewt	CC BY-SA 4.0	reviews-396880-0004	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: reviews-396880	real
+c5c7d6fa4d68	upgrade	upgrade-noun	anchors	tatoeba-cc0	CC0 1.0	11217979	https://tatoeba.org/en/sentences/show/11217979	Cangarejo	real
+c8c47607decf	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Memorymoog	https://en.wikipedia.org/wiki/Memorymoog	Wikipedia: Memorymoog	real
+f2b7a827a595	upgrade	upgrade-noun	anchors	wikipedia	CC BY-SA 4.0	wiki:Downgrade	https://en.wikipedia.org/wiki/Downgrade	Wikipedia: Downgrade	real
+1a2aa9b5106b	upgrade	upgrade-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Tesla Autopilot hardware	https://en.wikipedia.org/wiki/Tesla_Autopilot_hardware	Wikipedia: Tesla Autopilot hardware	real
+22ad45c5c15e	upgrade	upgrade-noun	holdout	tatoeba-by	CC BY 2.0 FR	4430483	https://tatoeba.org/en/sentences/show/4430483	Ooneykcall	real
+73122c7c7b15	upgrade	upgrade-noun	holdout	tatoeba-by	CC BY 2.0 FR	8971775	https://tatoeba.org/en/sentences/show/8971775	earthsophagus	real
+839549ce1b9c	upgrade	upgrade-noun	holdout	tatoeba-by	CC BY 2.0 FR	2938661	https://tatoeba.org/en/sentences/show/2938661	vicch	real
+962170fa58d6	upgrade	upgrade-noun	holdout	tatoeba-by	CC BY 2.0 FR	9461045	https://tatoeba.org/en/sentences/show/9461045	Nylez	real
+98c6e42b694c	upgrade	upgrade-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Bambu Lab	https://en.wikipedia.org/wiki/Bambu_Lab	Wikipedia: Bambu Lab	real
+cf027355eab6	upgrade	upgrade-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Apple IIGS	https://en.wikipedia.org/wiki/Apple_IIGS	Wikipedia: Apple IIGS	real
+d086accf9670	upgrade	upgrade-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Apple Lisa	https://en.wikipedia.org/wiki/Apple_Lisa	Wikipedia: Apple Lisa	real
+f60402c18f57	upgrade	upgrade-noun	holdout	wikipedia	CC BY-SA 4.0	wiki:Spearfish torpedo	https://en.wikipedia.org/wiki/Spearfish_torpedo	Wikipedia: Spearfish torpedo	real
+19ad1674f926	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	8261051	https://tatoeba.org/en/sentences/show/8261051	marioo	real
+21b031573d7c	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11886674	https://tatoeba.org/en/sentences/show/11886674	Amastan	real
+25052da0ecf5	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11888681	https://tatoeba.org/en/sentences/show/11888681	Amastan	real
+2e7feac36b60	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	12106478	https://tatoeba.org/en/sentences/show/12106478	Amastan	real
+462af3436de9	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11891949	https://tatoeba.org/en/sentences/show/11891949	Amastan	real
+4896ad9f5469	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	9862334	https://tatoeba.org/en/sentences/show/9862334	Hybrid	real
+50acc2830246	upgrade	upgrade-verb	anchors	tatoeba-cc0	CC0 1.0	10176394	https://tatoeba.org/en/sentences/show/10176394	ddnktr	real
+529a830b128c	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	2168781	https://tatoeba.org/en/sentences/show/2168781	Hybrid	real
+63c6f1599c93	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11221904	https://tatoeba.org/en/sentences/show/11221904	ddnktr	real
+7cd6be3404ec	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11881988	https://tatoeba.org/en/sentences/show/11881988	Amastan	real
+83063e67f4f6	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	4512678	https://tatoeba.org/en/sentences/show/4512678	patgfisher	real
+b274e16f7ced	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	12648688	https://tatoeba.org/en/sentences/show/12648688	always	real
+b9eefbeafdc4	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	12653780	https://tatoeba.org/en/sentences/show/12653780	always	real
+be01de4ddccb	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	10817017	https://tatoeba.org/en/sentences/show/10817017	Amastan	real
+be3119ed74dc	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	12053028	https://tatoeba.org/en/sentences/show/12053028	Amastan	real
+c8a5f1020929	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11970450	https://tatoeba.org/en/sentences/show/11970450	Amastan	real
+e03e6650864d	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11886167	https://tatoeba.org/en/sentences/show/11886167	Amastan	real
+ea1bdbfb8ab9	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	5072006	https://tatoeba.org/en/sentences/show/5072006	CK	real
+f057df211ec7	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	10326152	https://tatoeba.org/en/sentences/show/10326152	CK	real
+fd7ec5dde1df	upgrade	upgrade-verb	anchors	tatoeba-by	CC BY 2.0 FR	11590325	https://tatoeba.org/en/sentences/show/11590325	Amastan	real
+3d744f1469f2	upgrade	upgrade-verb	holdout	ud-ewt	CC BY-SA 4.0	reviews-212369-0002	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: reviews-212369	real
+5330ecc0f171	upgrade	upgrade-verb	holdout	tatoeba-cc0	CC0 1.0	12775162	https://tatoeba.org/en/sentences/show/12775162	Igider	real
+5aa2408affe1	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	11425333	https://tatoeba.org/en/sentences/show/11425333	Nuel	real
+64cd57d73934	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	12939548	https://tatoeba.org/en/sentences/show/12939548	TerminusPro	real
+64d34fc1b04c	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	13945246	https://tatoeba.org/en/sentences/show/13945246	rul	real
+d9169c024ee2	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	1034876	https://tatoeba.org/en/sentences/show/1034876	sacredceltic	real
+dba1369309c4	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	4877372	https://tatoeba.org/en/sentences/show/4877372	jshholland	real
+e5b9f088a4f3	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	818460	https://tatoeba.org/en/sentences/show/818460	papabear	real
+e74f9a7c4928	upgrade	upgrade-verb	holdout	tatoeba-by	CC BY 2.0 FR	9479447	https://tatoeba.org/en/sentences/show/9479447	DJ_Saidez	real
+fa6155ce373d	upgrade	upgrade-verb	holdout	tatoeba-cc0	CC0 1.0	10792626	https://tatoeba.org/en/sentences/show/10792626	Cangarejo	real
 06c8c8b58544	upsetting	adj	anchors	wikipedia	CC BY-SA 4.0	wiki:Psychopathology	https://en.wikipedia.org/wiki/Psychopathology	Wikipedia: Psychopathology	real
 10c86fda1527	upsetting	adj	anchors	wikipedia	CC BY-SA 4.0	wiki:Potcake dog	https://en.wikipedia.org/wiki/Potcake_dog	Wikipedia: Potcake dog	real
 1268e720d4bc	upsetting	adj	anchors	ud-ewt	CC BY-SA 4.0	reviews-269560-0003	https://github.com/UniversalDependencies/UD_English-EWT	UD English EWT: reviews-269560	real
