@@ -9,7 +9,8 @@ namespace WordSense.Builder;
 /// <remarks>
 ///     Commands: <c>build --model DIR --corpus DIR --output FILE [--report FILE]</c> trains and writes the
 ///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
-///     <c>validate-pos --corpus DIR</c> checks that every sense has exactly one part of speech; the
+///     <c>validate-pos --corpus DIR</c> checks that every sense has exactly one part of speech;
+///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide; the
 ///     <c>audit-*</c> commands and <c>apply-relabel</c> drive the part-of-speech audit and relabel.
 /// </remarks>
 public static class Program
@@ -41,7 +42,7 @@ public static class Program
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
                     "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, " +
-                    "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas.");
+                    "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix.");
                 return 1;
             }
 
@@ -103,6 +104,8 @@ public static class Program
                     return RunErrorDiagnosis(options, output);
                 case "weak-lemmas":
                     return RunWeakLemmas(options, output);
+                case "generate-appendix":
+                    return RunGenerateAppendix(options, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'.");
                     return 1;
@@ -242,6 +245,14 @@ public static class Program
         var outDirectory = Require(options, "out");
         var result = ErrorDiagnosis.RunAndWrite(LoadAnalysis(options), outDirectory);
         output.WriteLine($"Wrote the diagnosis of {result.Rows.Count} errors to {outDirectory}.");
+        return 0;
+    }
+
+    private static int RunGenerateAppendix(Dictionary<string, string> options, TextWriter output)
+    {
+        var target = Require(options, "output");
+        var lemmas = AppendixGenerator.Write(Require(options, "corpus"), target);
+        output.WriteLine($"Wrote the appendix of {lemmas} lemmas to {target}.");
         return 0;
     }
 

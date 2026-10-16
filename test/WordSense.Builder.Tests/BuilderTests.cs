@@ -583,6 +583,8 @@ public sealed class BuilderTests : IDisposable
     [InlineData("error-diagnosis", "--corpus", "x", "--model", "m")]
     [InlineData("weak-lemmas")]
     [InlineData("weak-lemmas", "--analysis", "missing-analysis-dir")]
+    [InlineData("generate-appendix")]
+    [InlineData("generate-appendix", "--corpus", "missing-corpus-dir", "--output", "out.md")]
     public void WordSenseBuilder_Program_Run_ReportsErrors(params string[] args)
     {
         using var output = new StringWriter();
@@ -1548,5 +1550,141 @@ public sealed class BuilderTests : IDisposable
         Assert.Equal(3, lemma.Eval.Count);
         Assert.Equal(["real", "llm-corpus", "real"], lemma.Eval.Select(e => e.Origin));
         Assert.Empty(filtered.Lemmas);
+    }
+
+    /// <summary>
+    ///     The appendix explains the tags, lists lemmas alphabetically with senses, tags, groups, bold examples and
+    ///     forms (restricted forms in parentheses), keeps every line within the limit and is byte-identical on repeat.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms()
+    {
+        // Arrange: two lemmas written in reverse order, one with a group, a restricted form and a long example
+        var corpus = PrepareAppendixCorpus();
+        var longSentence = "He {took} " + string.Join(' ', Enumerable.Repeat("another remarkably long stretch of words", 8)) + ".";
+        Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n" +
+            "zip\tnoun\tA {zip} is a fastener that joins two edges of cloth.\n" +
+            "zip\tverb\tTo {zip}.\n" +
+            "bow\tbend-verb\tThey {bowed} to the audience *twice* at the end.\n" +
+            "bow\tbend-noun\t" + longSentence + "\n");
+        Write("corpus/senses/s.tsv", "lemma\tsense\ttags\tgroup\nzip\tnoun\tnoun\t\nzip\tverb\tverb\t\n" +
+            "bow\tbend-verb\tverb\tbend\nbow\tbend-noun\tnoun\tbend\n");
+        Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun,verb\nbowed\tbow\tbend-verb\nzip\tzip\tnoun,verb\nother\tunknown\tx\n");
+
+        // Act
+        var text = AppendixGenerator.Generate(corpus);
+        var again = AppendixGenerator.Generate(corpus);
+
+        // Assert
+        Assert.Equal(text, again);
+        Assert.StartsWith("# Appendix: Supported Senses and Tags\n", text, StringComparison.Ordinal);
+        Assert.DoesNotContain('\r', text);
+        Assert.EndsWith("\n", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("\n\n\n", text, StringComparison.Ordinal);
+        Assert.All(text.Split('\n'), line => Assert.True(line.Length <= AppendixGenerator.LineLimit, line));
+        Assert.Contains("| `noun`        | part of speech | noun                         |      2 |", text, StringComparison.Ordinal);
+        Assert.Contains("| `verb`        | part of speech | verb                         |      2 |", text, StringComparison.Ordinal);
+        Assert.Contains("The library supports 2 lemmas with 4 senses in total", text, StringComparison.Ordinal);
+        Assert.True(text.IndexOf("- **bow**;", StringComparison.Ordinal) < text.IndexOf("- **zip**;", StringComparison.Ordinal));
+        Assert.Contains("- **bow**; forms: bowed (bend-verb)\n", text, StringComparison.Ordinal);
+        Assert.Contains("- **zip**; forms: zips\n", text, StringComparison.Ordinal);
+        Assert.Contains("  - `bend-noun`; tags: noun; group: bend; example: He **took** ", text, StringComparison.Ordinal);
+        Assert.Contains("  - `bend-verb`; tags: verb; group: bend; example: They **bowed** to the audience \\*twice\\* at the end.\n", text, StringComparison.Ordinal);
+        Assert.Contains("  - `noun`; tags: noun; group: noun; example: She pulled the **zip** on the old bag.\n", text, StringComparison.Ordinal);
+        Assert.Contains("  - `verb`; tags: verb; group: verb; example: To **zip**.\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Lemmas Starting With B\n", text, StringComparison.Ordinal);
+        Assert.Contains("### Lemmas Starting With Z\n", text, StringComparison.Ordinal);
+        Assert.Contains(text.Split('\n'), line => line.StartsWith("    ", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     The generator rejects a missing directory, a sense without an anchor and a form label that is not a sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput()
+    {
+        // Arrange: only the senses exist, and the forms file names an unknown label
+        var corpus = Path.Combine(_root, "corpus");
+        Write("corpus/senses/s.tsv", "lemma\tsense\ttags\tgroup\nzip\tnoun\tnoun\t\nzip\tverb\tverb\t\n");
+
+        // Act and assert: missing forms and anchors directories
+        var missing = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
+        Assert.Contains("forms", missing.Message, StringComparison.Ordinal);
+        Assert.Contains("anchors", missing.Message, StringComparison.Ordinal);
+
+        // Act and assert: no anchor for the verb sense, and a form with an unknown label
+        Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n");
+        Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun,bogus\n");
+        var incomplete = Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
+        Assert.Contains("'zip/verb' has no anchor sentence", incomplete.Message, StringComparison.Ordinal);
+        Assert.Contains("label 'bogus'", incomplete.Message, StringComparison.Ordinal);
+
+        // Act and assert: an empty inventory
+        File.Delete(Path.Combine(corpus, "senses", "s.tsv"));
+        Assert.Throws<InvalidDataException>(() => AppendixGenerator.Generate(corpus));
+    }
+
+    /// <summary>
+    ///     The command writes the appendix file and reports the number of lemmas; the output option is required.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions()
+    {
+        // Arrange
+        var corpus = PrepareAppendixCorpus();
+        Write("corpus/anchors/a.tsv", "zip\tnoun\tShe pulled the {zip} on the old bag.\n");
+        Write("corpus/senses/s.tsv", "lemma\tsense\ttags\tgroup\nzip\tnoun\tnoun\t\n");
+        Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nzips\tzip\tnoun\n");
+        var target = Path.Combine(_root, "out", "appendix.md");
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act
+        var exit = Program.Run(["generate-appendix", "--corpus", corpus, "--output", target], output, error);
+        var noOutput = Program.Run(["generate-appendix", "--corpus", corpus], new StringWriter(), error);
+
+        // Assert
+        Assert.Equal(0, exit);
+        Assert.Contains("Wrote the appendix of 1 lemmas", output.ToString(), StringComparison.Ordinal);
+        Assert.Equal(AppendixGenerator.Generate(corpus), File.ReadAllText(target));
+        Assert.Equal(1, noOutput);
+        Assert.Contains("--output", error.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The committed user-guide appendix equals what the generator produces from the committed corpus, so it
+    ///     cannot go stale: regenerate it with <c>generate-appendix --corpus corpus --output docs/user_guide/appendix-senses.md</c>.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Appendix_Committed_MatchesCorpus()
+    {
+        // Arrange: find the repository root from the test output directory
+        var root = new DirectoryInfo(AppContext.BaseDirectory);
+        while (root is not null && !File.Exists(Path.Combine(root.FullName, "docs", "user_guide", "appendix-senses.md")))
+        {
+            root = root.Parent;
+        }
+
+        Assert.NotNull(root);
+        var committedPath = Path.Combine(root.FullName, "docs", "user_guide", "appendix-senses.md");
+        var regenerated = Path.Combine(_root, "regenerated", "appendix-senses.md");
+
+        // Act
+        AppendixGenerator.Write(Path.Combine(root.FullName, "corpus"), regenerated);
+
+        // Assert: line endings are normalized, so a checkout with CRLF conversion does not matter
+        var expected = File.ReadAllText(regenerated).ReplaceLineEndings("\n");
+        var committed = File.ReadAllText(committedPath).ReplaceLineEndings("\n");
+        Assert.True(
+            expected == committed,
+            "docs/user_guide/appendix-senses.md is stale. Run: dotnet run --project tools/WordSense.Builder -- " +
+            "generate-appendix --corpus corpus --output docs/user_guide/appendix-senses.md");
+    }
+
+    private string PrepareAppendixCorpus()
+    {
+        var corpus = Path.Combine(_root, "corpus");
+        Directory.CreateDirectory(corpus);
+        return corpus;
     }
 }

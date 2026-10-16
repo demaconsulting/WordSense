@@ -149,3 +149,18 @@ sections:
           - WordSenseBuilder_WeakLemmas_Recommend_MapsDominantClass
           - WordSenseBuilder_WeakLemmas_Rank_OrdersWeakLemmasByScore
           - WordSenseBuilder_WeakLemmas_RunAndWrite_RanksFromFilesAndRendersStableReport
+
+      - id: WordSense-Builder-Appendix
+        title: >-
+          The builder shall generate the senses appendix of the user guide deterministically from the sense inventory,
+          the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal the
+          generated one.
+        tags: [unit]
+        justification: |
+          The list of supported lemmas with their senses, tags, groups and forms must always describe the trained
+          corpus; generating it, and failing when the committed file is stale, makes drift impossible.
+        tests:
+          - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
+          - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
+          - WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions
+          - WordSenseBuilder_Appendix_Committed_MatchesCorpus

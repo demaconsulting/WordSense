@@ -95,9 +95,22 @@ table.
   stable report from the written files.
 - **WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance**: corpus, provenance origin and real-eval
   rows are loaded into the three sets.
+- **WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms**: a synthetic corpus gives an appendix with the
+  tag table and counts, lemmas in alphabetical order, senses with tags, group and a bold example (shortest anchor of
+  at least 30 characters), forms with restrictions in parentheses, escaped markdown characters, wrapped lines within
+  120 characters, LF line endings and byte-identical output on repeat.
+- **WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput**: a missing `forms` or `anchors` directory, a sense
+  without an anchor sentence, a form label that is not a sense and an empty inventory are each rejected with an
+  `InvalidDataException` that names the problem.
+- **WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions**: the `generate-appendix` command writes the file
+  and reports the lemma count; a missing `--output` exits with 1 and names the option.
+  `WordSenseBuilder_Program_Run_ReportsErrors` also covers the command without options and with a missing corpus.
+- **WordSenseBuilder_Appendix_Committed_MatchesCorpus**: regenerates the appendix from the committed corpus into a
+  temporary file and requires it to equal `docs/user_guide/appendix-senses.md` (line endings normalized), so the
+  committed appendix cannot go stale. `lint.ps1` performs the same comparison.
 
 ## Requirements Coverage
 
 `WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
 `WordSense-Builder-Inventory`, `WordSense-Builder-Provenance`, `WordSense-Builder-LearningCurve`,
-`WordSense-Builder-ErrorDiagnosis` and `WordSense-Builder-WeakLemmas`.
+`WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas` and `WordSense-Builder-Appendix`.

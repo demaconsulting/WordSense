@@ -121,6 +121,20 @@ if (-not $skipDotnetTools) {
     }
 }
 
+# Project-specific: the senses appendix of the user guide is generated from the corpus and must not be stale
+Write-Host "Linting: generated senses appendix..."
+$appendix = "docs/user_guide/appendix-senses.md"
+$regenerated = Join-Path ([System.IO.Path]::GetTempPath()) ("appendix-senses-" + [guid]::NewGuid().ToString("N") + ".md")
+dotnet run --project tools/WordSense.Builder --configuration Release -- generate-appendix --corpus corpus --output $regenerated
+if ($LASTEXITCODE -ne 0) {
+    $lintError = $true
+}
+elseif ((Get-Content -Raw $regenerated).Replace("`r`n", "`n") -ne (Get-Content -Raw $appendix).Replace("`r`n", "`n")) {
+    Write-Host "$appendix is stale. Run: dotnet run --project tools/WordSense.Builder -- generate-appendix --corpus corpus --output $appendix"
+    $lintError = $true
+}
+Remove-Item -Force -ErrorAction SilentlyContinue $regenerated
+
 # [PROJECT-SPECIFIC] Add additional dotnet tool lint checks here.
 # Example:
 #   if (-not $skipDotnetTools) {

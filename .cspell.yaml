@@ -87,4 +87,6 @@ ignorePaths:
   - corpus/**
   - tools/real-text/cache/**
   - tools/tokenizer-fixture/**
+  # Generated from the corpus (lemma inventory and real sentences contain many rare words and names)
+  - docs/user_guide/appendix-senses.md
   - test/**/Fixtures/**

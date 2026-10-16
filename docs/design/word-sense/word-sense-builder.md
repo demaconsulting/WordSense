@@ -9,7 +9,8 @@
 `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-eval-import`, `real-eval`,
 `validate-provenance`) and the analysis commands (`learning-curve --corpus DIR --model DIR --out DIR [--subsets N]
 [--seed N] [--lemmas a,b]`, `error-diagnosis --corpus DIR --model DIR --out DIR [--lemmas a,b]` and
-`weak-lemmas --analysis DIR [--report FILE]`).
+`weak-lemmas --analysis DIR [--report FILE]`) and the documentation command
+`generate-appendix --corpus DIR --output FILE`.
 
 ## Data Model
 
@@ -132,6 +133,23 @@ are skipped.
   `stronger-encoder` for overlaps on a plateaued curve, otherwise `consumer-rule`; `fix-labels`. The expected gain is
   the learning-curve gain at twice the anchors limited by the gap share, or the class share (an upper bound).
 
+### Appendix Generation
+
+`generate-appendix` (`AppendixGenerator`) writes `docs/user_guide/appendix-senses.md` from `corpus/senses`,
+`corpus/forms` and `corpus/anchors`; it needs no model. The document is deterministic: lemmas and senses are in ordinal
+order, forms are listed once per lemma (excluding the lemma itself), the example of a sense is the shortest anchor
+sentence of at least 30 characters (ties ordinal; the longest anchor when none is that long) with its target in bold,
+markdown-significant characters of the sentence are escaped, text is wrapped at 120 characters (the markdown
+line-length limit) without breaking before a word that would read as a list or heading marker, lines end with LF and
+the file ends with one line feed. The explanatory part states the tag set (`PosRules.PartsOfSpeech` and
+`PosRules.Qualifiers`, with the number of senses carrying each tag), groups and the form map. The input is checked:
+a missing `senses`, `forms` or `anchors` directory, an inventory without senses, a sense without an anchor sentence
+and a form label that is not a sense of the lemma are reported together as an `InvalidDataException`. Forms of
+lemmas that have no sense are ignored, as in `build`. The appendix is generated, never edited by hand; a test and
+`lint.ps1` regenerate it to a temporary file and fail when the committed file differs. The generated file is excluded
+from spell checking (`.cspell.yaml`) because the corpus contains many rare words and names; the line-length rule
+still applies to it.
+
 ## Error Handling
 
 - `Program.Run` returns 0 on success and 1 on a usage or data error; it never lets such an error escape. Usage
@@ -154,9 +172,9 @@ are skipped.
 ## Key Methods and Callers
 
 `Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `PosAudit`, `Relabeler`, `RealPlan`,
-`RealJudge`, `RealImport`, `RealEval`, `LearningCurve`, `ErrorDiagnosis` or `WeakLemmas`. It is called by `Main`
-and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by the library or
-the CI build.
+`RealJudge`, `RealImport`, `RealEval`, `LearningCurve`, `ErrorDiagnosis`, `WeakLemmas` or `AppendixGenerator`. It is
+called by `Main` and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by
+the library or the CI build.
 
 ## Interactions
 

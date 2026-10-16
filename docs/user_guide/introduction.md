@@ -13,6 +13,11 @@ This user guide covers:
 - Model download, mirrors and offline use
 - API reference
 - Accuracy, abstention and performance notes
+<!-- markdownlint-disable MD051 -->
+<!-- The appendix is a separate file that pandoc concatenates, so its heading anchor only exists in the PDF. -->
+- [Appendix: Supported Senses and Tags](#appendix-supported-senses-and-tags): how tags and groups work and the
+  full list of supported lemmas (generated from the corpus)
+<!-- markdownlint-enable MD051 -->
 
 # Installation
 
@@ -46,7 +51,10 @@ not a known ambiguous word, or the classifier abstained because the evidence was
 record with `Lemma`, `Sense`, `Group`, `Tags` (a frozen set of true parts of speech and qualifiers such as `noun`,
 `verb`, `adj`, `adv`, `past`) and `HasTag(tag)`; `Group` is the coarser group of the sense (the sense label unless
 senses are grouped, so a consumer that does not care about a split reads `Group`); the same
-instance is returned for the same (lemma, sense). A sense has exactly one part of speech.
+instance is returned for the same (lemma, sense). A sense has exactly one part of speech. The
+<!-- markdownlint-disable-next-line MD051 -->
+[appendix](#appendix-supported-senses-and-tags) explains tags and groups and lists every supported lemma with its
+senses.
 
 ## Text input
 
