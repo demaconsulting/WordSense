@@ -36,7 +36,10 @@ python tools/real-text/harvest.py eval-sample --corpus corpus --lemmas lemmas.tx
 The target lists are `targets.tsv`, `targets2.tsv` and `targets3.tsv` (restoration) and `targets4.tsv` (the 13 gap
 lemmas of Phase 3a; only `conjunct`, `overhead` and `uptown` reached the thresholds, see
 `docs/build_notes/gap-lemmas-decisions.md`) and `targets5.tsv` (the 18 weak `more-sentences` lemmas of Phase 3b; only
-`conjugate`, `insert` and `present` reached the thresholds, see `docs/build_notes/weak-lemma-decisions.md`). Use the
+`conjugate`, `insert` and `present` reached the thresholds, see `docs/build_notes/weak-lemma-decisions.md`) and
+`targets6.tsv` (the 13 lemmas of Phase 4 batch 1: `contact`, `impact`, `address`, `transfer`, `update`, `protest`,
+`collect`, `export`, `accent`, `upgrade`, `second`, `detail` and `combat`; noun and verb context patterns enrich the
+rarer reading, see `docs/build_notes/new-lemma-decisions.md`). Use the
 builder commands `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge` and `real-import`
 (or `real-eval-import`) to judge the candidates blind and write the corpus and its provenance. Phase 3b adds
 senses of existing lemmas as extra anchors and a separate real holdout with `real-judge-export --gap-plan real-gap-1`
