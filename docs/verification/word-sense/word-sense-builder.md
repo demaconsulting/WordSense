@@ -34,8 +34,13 @@ table.
   sense judging resolution, licence ranking, and the provenance gate (missing row flagged, complete sidecar accepted).
 - **WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows**,
   **WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences**: a disallowed licence, invalid origin,
-  CC BY row without contributor, Gutenberg row without a pg key or Public domain licence, a sentence over 35 words,
+  CC BY row without contributor, an authored row without the project licence, Gutenberg row without a pg key or
+  Public domain licence, a sentence over 35 words,
   and a sentence mentioning Gutenberg are each rejected; a 35-word sentence is accepted.
+- **WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin**: a `new-*.tsv` anchor file
+  without provenance is flagged and a complete sidecar with an `authored` row and the project licence is accepted.
+- **WordSenseBuilder_PosRules_Validate_AllowsTwoSensesOfOnePartOfSpeechInDifferentGroups**: two noun senses in
+  different groups pass the part-of-speech rule.
 - **WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates**: importing real sentences into a
   synthetic corpus writes a provenance row for every written sentence (real and project-authored) and the result
   passes `RealImport.Validate`.

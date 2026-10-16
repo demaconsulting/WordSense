@@ -684,6 +684,7 @@ public sealed class BuilderTests : IDisposable
     [InlineData("Public domain", "real", "gutenberg", "1342", "someone", "https://gutenberg.org/1342", "a Gutenberg row needs a pgN key")]
     [InlineData("CC0 1.0", "real", "gutenberg", "pg1342", "someone", "https://gutenberg.org/1342", "a Gutenberg row needs a pgN key")]
     [InlineData("web-excerpt", "real", "web", "1", "someone", "-", "a web excerpt needs its URL")]
+    [InlineData("CC0 1.0", "authored", "authored", "batch1", "project", "-", "an authored row needs the MIT (project-authored) licence")]
     public void WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows(
         string licence, string origin, string source, string key, string contributor, string url, string expected)
     {
@@ -697,6 +698,38 @@ public sealed class BuilderTests : IDisposable
         var errors = RealImport.Validate(Path.Combine(_root, "corpus"));
 
         Assert.Contains(errors, e => e.Contains(expected, StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     A new-lemma batch file needs provenance, and an authored row with the project licence is accepted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin()
+    {
+        const string sentence = "The {tower} fell.";
+        Write("corpus/anchors/new-authored-batch1.tsv", $"tower\tstructure\t{sentence}\n");
+        Assert.Contains(RealImport.Validate(Path.Combine(_root, "corpus")), e => e.Contains("no provenance", StringComparison.Ordinal));
+        var header = string.Join('\t', "id", "lemma", "sense", "split", "source", "licence", "source_key", "url", "contributor", "origin");
+        var row = string.Join('\t', PosAudit.RowId("tower", sentence), "tower", "structure", "anchors", "authored", "MIT (project-authored)", "new-batch1", "-", "project", "authored");
+        Write("corpus/provenance/new-authored-batch1.tsv", header + "\n" + row + "\n");
+
+        Assert.Empty(RealImport.Validate(Path.Combine(_root, "corpus")));
+    }
+
+    /// <summary>
+    ///     Two senses of one part of speech are valid when they sit in different pronunciation groups.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_PosRules_Validate_AllowsTwoSensesOfOnePartOfSpeechInDifferentGroups()
+    {
+        var inventory = new SenseInventory(
+        [
+            new InventoryRow("sewer", "drain", ["noun"], "s.tsv", "drain"),
+            new InventoryRow("sewer", "stitcher", ["noun"], "s.tsv", "stitcher"),
+        ]);
+
+        Assert.Empty(PosRules.Validate(inventory));
+        Assert.Equal(["drain", "stitcher"], inventory.DefinitionsOf("sewer").Select(d => d.Group).ToArray());
     }
 
     /// <summary>

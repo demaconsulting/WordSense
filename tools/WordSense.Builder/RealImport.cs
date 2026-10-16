@@ -310,8 +310,10 @@ internal static class RealImport
             var folder = Path.Combine(corpus, split);
             if (Directory.Exists(folder))
             {
-                // The restore file and every gap batch (real-gap-N.tsv) hold real sentences
-                files.AddRange(Directory.GetFiles(folder, "real-*.tsv").OrderBy(f => f, StringComparer.Ordinal).Select(f => (f, split)));
+                // The restore file, every gap batch (real-gap-N.tsv) and every new-lemma batch (new-*.tsv, real or
+                // authored sentences) need provenance
+                files.AddRange(Directory.GetFiles(folder, "real-*.tsv").Concat(Directory.GetFiles(folder, "new-*.tsv"))
+                    .OrderBy(f => f, StringComparer.Ordinal).Select(f => (f, split)));
             }
         }
         var realtext = Path.Combine(corpus, "realtext");
@@ -362,6 +364,11 @@ internal static class RealImport
         if (!Origins.Contains(row.Origin))
         {
             errors.Add($"provenance {row.Id}: origin '{row.Origin}' is not real, authored or llm-corpus.");
+        }
+
+        if (row.Origin == "authored" && row.Licence != "MIT (project-authored)")
+        {
+            errors.Add($"provenance {row.Id}: an authored row needs the MIT (project-authored) licence.");
         }
 
         if (row.Licence == "CC BY 2.0 FR" && (row.Contributor.Length == 0 || row.Contributor == "-" || row.Contributor == "unknown"))

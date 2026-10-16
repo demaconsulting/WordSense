@@ -65,7 +65,11 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   (`RealImport.Validate`) checks that every restored and real-text sentence has a provenance row that matches its
   lemma, sense and split; that the licence and origin (`real`, `authored` or `llm-corpus`) are from the allowed
   lists; that a CC BY 2.0 FR row names a contributor, a `web-excerpt` row has a URL, and a Gutenberg row has a
-  `pg` key and the Public domain licence; and that no sentence has more than 35 words or mentions Gutenberg.
+  `pg` key and the Public domain licence; that an `authored` row carries the `MIT (project-authored)` licence; and
+  that no sentence has more than 35 words or mentions Gutenberg. The checked sentence files are `real-*.tsv` and
+  the new-lemma batch files `new-*.tsv` of `anchors` and `holdout`, plus `realtext/*.tsv`. A sense is one part of
+  speech; two senses of the same part of speech (for example a noun and an agent noun with different
+  pronunciations) are valid and are told apart by their `group`.
   `RealImport.Import` reads `relabel-decisions.tsv` before writing any output, so a missing file leaves the corpus
   unchanged, and it marks every `drop` or `exclude` decision of a plan lemma as `restore` (not only the senses that
   actually received sentences); the plan defines the restored lemmas.

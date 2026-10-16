@@ -52,6 +52,7 @@ sections:
           pronunciation or meaning would make tag-level answers untrue.
         tests:
           - WordSenseBuilder_PosRules_Validate_FlagsMixedAndNonPartOfSpeechTags
+          - WordSenseBuilder_PosRules_Validate_AllowsTwoSensesOfOnePartOfSpeechInDifferentGroups
           - WordSenseBuilder_Program_ValidatePos_ReportsViolations
           - WordSenseBuilder_SenseInventory_Group_RoundTripsAndIsOptional
           - WordSenseBuilder_SenseInventory_InvalidGroup_IsRejected
@@ -81,6 +82,7 @@ sections:
           - WordSenseBuilder_RealImport_Validate_RequiresProvenance
           - WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows
           - WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences
+          - WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin
           - WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates
           - WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing
           - WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers
