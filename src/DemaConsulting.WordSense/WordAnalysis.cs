@@ -56,7 +56,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///     WordAnalysis[] words = await classifier.ClassifyAsync(["They", "will", "record", "it"]);
 ///
 ///     WordAnalysis record = words[2];

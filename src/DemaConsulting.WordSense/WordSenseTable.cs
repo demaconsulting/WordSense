@@ -116,7 +116,7 @@ public sealed class WordSenseTable
     /// <summary>
     ///     The lazily computed digest of the serialized table.
     /// </summary>
-    private readonly Lazy<string> _sha256;
+    private Lazy<string> _sha256;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="WordSenseTable"/> class.
@@ -646,7 +646,12 @@ public sealed class WordSenseTable
             throw new WordSenseTableFormatException("The lexicon table has unexpected trailing data.");
         }
 
-        return new WordSenseTable(lemmas, lexicon, forms, (LemmaMorphologyRules)flags);
+        // A table read from bytes keeps the digest of those bytes: DEFLATE output differs between runtimes, so
+        // re-serializing could name a different table than the one a weights table was trained for
+        var table = new WordSenseTable(lemmas, lexicon, forms, (LemmaMorphologyRules)flags);
+        var digest = Convert.ToHexString(data[^HashLength..]).ToLowerInvariant();
+        table._sha256 = new Lazy<string>(() => digest);
+        return table;
     }
 
     /// <summary>

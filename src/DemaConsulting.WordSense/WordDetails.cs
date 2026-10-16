@@ -10,7 +10,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///     foreach (WordDetails candidate in classifier.GetCandidates("record"))
 ///     {
 ///         Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech}, {candidate.Pronunciation?.Meaning ?? "-"}");

@@ -431,6 +431,7 @@ public static class Program
     private static int RunNounVerbGate(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
+        _ = Require(options, "model");
         var apply = BoolOption(options, "apply");
         var defaults = new GatePolicy();
         var policy = new GatePolicy(

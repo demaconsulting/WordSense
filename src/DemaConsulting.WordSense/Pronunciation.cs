@@ -31,7 +31,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     using var classifier = WordSenseClassifier.Create();
 ///     WordAnalysis[] words = await classifier.ClassifyAsync(["The", "pipe", "is", "made", "of", "lead"]);
 ///
 ///     if (words[5].Details?.Pronunciation is { } pronunciation)
