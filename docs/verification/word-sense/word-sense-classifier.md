@@ -13,7 +13,9 @@ hidden states and a small in-memory table, so behavior is verified without the m
 - **WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode**: no encoder call without targets.
 - **WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly**,
   **..._Words_ResolvesForms**, **..._Words_EdgeCases**, **..._ManyTargets_EncodesOnce**,
-  **WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed**: lemma resolution and single pass.
+  **WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed** (including `GetSenses(null)`): lemma resolution and
+  single pass. **..._InfiniteAbstainMarginScale_AlwaysAbstains**: a positive-infinity scale is accepted and every
+  word abstains.
 - **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**, **..._LowMargin_IsFlaggedAbstained**:
   detail margins and the abstained flag.
 - **WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull**, **WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull**,

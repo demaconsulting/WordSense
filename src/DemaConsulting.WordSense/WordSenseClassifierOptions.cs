@@ -32,7 +32,8 @@ public sealed class WordSenseClassifierOptions
     }
 
     /// <summary>
-    ///     Gets the directory that already contains the verified model files; when null (the default) the model is
+    ///     Gets the directory that holds the model files, which are verified against their pinned digests when the
+    ///     classifier is created; when null (the default) the model is
     ///     obtained through <see cref="WordSenseModelDownloader"/> using <see cref="Downloader"/>.
     /// </summary>
     /// <remarks>

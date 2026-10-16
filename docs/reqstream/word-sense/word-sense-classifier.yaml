@@ -24,6 +24,7 @@ sections:
           - WordSenseClassifier_ClassifyAsync_Words_ResolvesForms
           - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
           - WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed
+          - WordSenseClassifier_ClassifyAsync_InfiniteAbstainMarginScale_AlwaysAbstains
 
       - id: WordSense-Classifier-Abstain
         title: The classifier shall return no sense when the margin is below the per-lemma threshold.

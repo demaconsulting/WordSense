@@ -58,7 +58,8 @@ namespace DemaConsulting.WordSense;
 ///     <c>"."</c>. The string overload does this for you: it splits a text into words (letters and digits, with an
 ///     inner apostrophe or hyphen kept inside the word, so <c>don't</c> and <c>well-known</c> are one word) and into
 ///     whitespace and single punctuation characters. Other words of the sentence that are known ambiguous words are
-///     classified as well; that costs no extra encoder call.
+///     classified as well, at no extra encoder call when the whole text fits one
+///     <see cref="WordSenseClassifierOptions.MaxSequenceLength"/> window (a longer text is encoded per target word).
 ///     </para>
 ///     <para>
 ///     <b>Thread safety and disposal.</b> One classifier may be shared by many threads and tasks, and its methods may
@@ -233,7 +234,11 @@ public interface IWordSenseClassifier : IDisposable
     ///     The score of a tag is the best score among the senses that carry it. The tag with the highest
     ///     score wins. The result is null when the lemma has no sense carrying any queried tag, when the
     ///     best sense carries none of them, or when the winner's margin over the runner-up tag (or over
-    ///     the senses carrying none of the tags) is below the lemma's abstain threshold.
+    ///     the senses carrying none of the tags) is below the lemma's abstain threshold. That threshold is the same
+    ///     one the sense-level methods use, including <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>.
+    ///     Tags are matched exactly (ordinal, so <c>noun</c> and <c>Noun</c> are different); duplicate tags are
+    ///     ignored; a tag that no sense of the lemma carries (for example a misspelled one) never wins and simply
+    ///     does not take part, so the other queried tags still compete.
     /// </remarks>
     /// <param name="words">The words in order.</param>
     /// <param name="tags">The tags to choose between; at least one, none null or empty.</param>
@@ -259,6 +264,15 @@ public interface IWordSenseClassifier : IDisposable
     /// <summary>
     ///     Classifies every word as having or not having a tag.
     /// </summary>
+    /// <remarks>
+    ///     The tag is matched exactly (ordinal, case-sensitive). The abstain threshold is the same as for the
+    ///     sense-level methods, including <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>. The margin
+    ///     compared with it is the best score of the senses that carry the tag minus the best score of the senses
+    ///     that do not (the answer is true when the first is the larger); when every sense of the lemma carries the tag
+    ///     the answer is true without any threshold. To tell an abstention from an unknown word, use
+    ///     <see cref="ClassifyDetailAsync"/>, which returns null for unknown words (and gives a detail with
+    ///     <see cref="WordSenseDetail.Abstained"/> set for abstentions).
+    /// </remarks>
     /// <param name="words">The words in order.</param>
     /// <param name="tag">The tag.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>

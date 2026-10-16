@@ -136,8 +136,8 @@ sections:
         title: The library shall support a user download mirror set by environment variables or options.
         tags: [system]
         justification: |
-          Enterprises and offline users host the model on their own server; the same configuration
-          model as the sibling Speech library keeps the experience consistent.
+          Enterprises and offline users host the model on their own server; environment variables and
+          options let a deployment point the library at it without code changes.
         children:
           - WordSense-Mirror-Validation
           - WordSense-Mirror-Environment
@@ -161,13 +161,13 @@ sections:
 
       - id: WordSense-Lib-Performance
         title: >-
-          The library shall classify a typical sentence with a median latency below two seconds, with one
-          and with four threads.
+          The library shall classify a sentence with several ambiguous words with a median latency below two seconds,
+          with one and with four threads.
         tags: [system]
         justification: |
           Interactive callers need classification latency that does not block a user interface;
           the benchmark enforces the median bound and records the 95th percentile latency for one
-          and four threads. The typical latency is a few milliseconds.
+          and four threads. The sentence is fixed (four ambiguous words), and the typical latency is a few milliseconds.
         tests:
           - WordSense_Benchmark_ClassifyLatency
 
@@ -197,6 +197,7 @@ sections:
         tests:
           - WordSense_Readme_CodeBlock_MatchesCompiledSample
           - WordSense_Readme_Output_MatchesReadme
+          - WordSense_Readme_SampleMarkers_AreAllChecked
           - WordSense_UserGuide_CodeBlock_MatchesCompiledSample
           - WordSense_UserGuide_SampleMarkers_AreAllChecked
           - WordSense_UserGuide_Samples_RunAgainstModel

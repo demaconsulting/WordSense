@@ -16,7 +16,8 @@ hand-built inputs; no model is needed.
 - **TagScorer_Classify_BestScoringTagWins**, **..._EqualTagScores_TiesAndIsBelowAnyPositiveThreshold**,
   **..._SensesOfSameTag_DoNotReduceMargin**, **..._BelowThreshold_Abstains**, **..._OtherWins_ReturnsNull**,
   **..._OtherAsRunnerUp_LimitsMargin**, **..._AbsentTag_ReturnsNull_SinglePresentTag_Answers**,
-  **TagScorer_IsTag_AnswersBoolOrNull**: the tag rule.
+  **TagScorer_IsTag_AnswersBoolOrNull** (which includes the tie rule: the tag wins a tie): the tag rule.
+- **TagScorer_Abstains_NaNMarginOrThreshold_Abstains**: a NaN margin or threshold abstains.
 - **TextSplitter_SplitSegments_TileTheText**, **TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets**:
   segmentation. The exact-tiling invariant of `WordSenseToken` sequences is verified at the splitter level by
   **TextSplitter_SplitSegments_TileTheText** and at the classifier level by

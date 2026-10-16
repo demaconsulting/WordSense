@@ -87,6 +87,9 @@ table.
   threshold fail with the reason and numbers; others pass.
 - **WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut**: dropping removes the lemma from the
   corpus files, records it, and a later import skips it.
+- **WordSenseBuilder_NounVerbGate_Drop_FiltersTheFirstLineOfFilesWithoutHeader**: anchor and holdout files have no
+  header line, so dropping a lemma whose name looks like a header (`lemma`) still removes the first data line of
+  such a file while keeping the other lemmas.
 - **WordSenseBuilder_Program_NounVerbGate_UsageErrors_AreReported**: `nounverb-gate` without `--model`, with a
   threshold that is not a number or outside 0 to 1 (including NaN), or with an `--apply` other than `true` or `false`
   returns exit code 1 and a message naming the option, before any file is read.

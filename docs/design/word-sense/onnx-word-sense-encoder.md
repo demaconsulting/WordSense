@@ -12,8 +12,8 @@ size read from the model output (384).
 
 ## Key Methods
 
-- `OnnxWordSenseEncoder(path, intraOpThreads)`: validates the path and thread count, creates the
-  session and hashes the file; the session is disposed if reading the output shape fails.
+- `OnnxWordSenseEncoder(path, intraOpThreads)`: validates the path and thread count, hashes the file first,
+  then creates the session; the session is disposed if reading the output shape fails.
 - `EncodeAsync(ids, ct)`: validates the input (non-null, non-empty), builds `input_ids`,
   `attention_mask` and `token_type_ids`, runs the session and returns the flattened
   `last_hidden_state` (`ids.Length × HiddenSize`). The run is synchronous on the calling thread and the
@@ -40,8 +40,10 @@ propagated unchanged.
 ## Thread Safety
 
 The ONNX Runtime session supports concurrent `Run` calls, so `EncodeAsync` may be called from many
-threads at once. `Dispose()` does not wait for running calls: it must be called once every call has
-finished.
+threads at once. Concurrent encoding is verified by
+`OnnxWordSenseEncoder_EncodeAsync_Concurrent_MatchesSequentialResults`, which shares one encoder between many
+tasks and requires the results to equal the sequential ones. `Dispose()` does not wait for running calls: it must
+be called once every call has finished.
 
 ## Dependencies
 

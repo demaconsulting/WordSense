@@ -11,7 +11,7 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
   loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
 - `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly struct.
 - `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload (the type
-  is defined in the SenseRecord unit and is also listed in this unit's review set; see the SenseRecord design).
+  is owned by the SenseRecord unit; see the SenseRecord design).
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
   `IntraOpThreads`, `AbstainMarginScale`.
 
@@ -48,9 +48,13 @@ Features are the mean of the target word pieces' hidden states minus the table m
 - Null arguments (encoder, table, tokenizer, words, a word, text, lemma, tags, a tag) raise
   `ArgumentNullException`; a null `options` is not an error and means the defaults. An empty tag list or an
   empty tag raises `ArgumentException`.
-- `MaxSequenceLength` outside 8 to 512, a negative `AbstainMarginScale` and a negative `IntraOpThreads` raise
-  `ArgumentOutOfRangeException`; the constructor checks the first two, and `CreateAsync` checks all three before it
-  downloads or verifies any model file. A scale of 0 never abstains.
+- `MaxSequenceLength` outside 8 to 512, a negative or NaN `AbstainMarginScale` and a negative `IntraOpThreads` raise
+  `ArgumentOutOfRangeException` (positive infinity is accepted for `AbstainMarginScale`, so every word abstains).
+  The constructor checks the first two through `ValidateOptions`; `CreateAsync` runs the same validation and also
+  checks `IntraOpThreads`, all before it downloads or verifies any model file. A scale of 0 never abstains.
+- The constructor that takes a `vocabularyPath` reads the vocabulary through `WordPieceTokenizer.FromFile`:
+  a missing file raises `FileNotFoundException`, another read failure `IOException`, and a vocabulary without the
+  `[UNK]`, `[CLS]` or `[SEP]` token raises `ArgumentException`.
 - A table whose model digest or dimension differs from the encoder's raises
   `WordSenseModelMismatchException`.
 - A user-supplied `ModelDirectory` is verified against the pinned digests before use; a missing,

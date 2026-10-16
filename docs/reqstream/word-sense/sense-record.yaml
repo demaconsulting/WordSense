@@ -43,6 +43,7 @@ sections:
           - TagScorer_Classify_OtherAsRunnerUp_LimitsMargin
           - TagScorer_Classify_AbsentTag_ReturnsNull_SinglePresentTag_Answers
           - TagScorer_IsTag_AnswersBoolOrNull
+          - TagScorer_Abstains_NaNMarginOrThreshold_Abstains
 
       - id: WordSense-Sense-Words
         title: The library shall split text into word and non-word segments that tile the text.

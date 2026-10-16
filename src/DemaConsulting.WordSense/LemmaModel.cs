@@ -22,7 +22,9 @@ public enum LemmaModelKind
 ///     <see cref="IWordSenseClassifier"/>; read this to see a lemma's <see cref="AbstainMargin"/>.
 /// </summary>
 /// <remarks>
-///     Instances are immutable after construction and thread-safe. The order in which the senses are
+///     Instances are thread-safe provided no caller modifies <see cref="Weights"/> or <see cref="Bias"/>, which
+///     are exposed as arrays for speed and must be treated as read-only; the constructor copies the arrays it
+///     is given. The order in which the senses are
 ///     supplied defines the order of the weight rows; sense names (<see cref="SenseDefinition.Name"/>,
 ///     exposed as <see cref="WordSense.Sense"/>) must be unique.
 /// </remarks>
@@ -42,6 +44,12 @@ public sealed class LemmaModel
     ///     otherwise the classifier abstains and reports null. Must be finite.
     /// </param>
     /// <param name="dimension">The feature dimension.</param>
+    /// <exception cref="ArgumentNullException">
+    ///     Thrown when an argument or an element of <paramref name="senses"/> is null.
+    /// </exception>
+    /// <exception cref="ArgumentOutOfRangeException">
+    ///     Thrown when <paramref name="kind"/> is not a defined <see cref="LemmaModelKind"/> value.
+    /// </exception>
     /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent or a value is not finite.</exception>
     public LemmaModel(
         string lemma,
@@ -57,7 +65,13 @@ public sealed class LemmaModel
         ArgumentNullException.ThrowIfNull(weights);
         ArgumentNullException.ThrowIfNull(bias);
 
-        // Validate shapes up front so a corrupt model can never index out of range at classification time
+        // Reject undefined kinds, then validate shapes up front so a corrupt model can never index out of range
+        // at classification time
+        if (kind is not (LemmaModelKind.Binary or LemmaModelKind.OneVersusRest))
+        {
+            throw new ArgumentOutOfRangeException(nameof(kind), kind, "The model kind is not defined.");
+        }
+
         var rows = kind == LemmaModelKind.Binary ? 1 : senses.Count;
         if (senses.Count < 2 || (kind == LemmaModelKind.Binary && senses.Count != 2))
         {
@@ -91,8 +105,8 @@ public sealed class LemmaModel
         // Exactly one shared record per (lemma, sense), created here
         Senses = senses.Select(s => new WordSense(lemma, s.Name, s.Tags, s.Group)).ToArray();
         Kind = kind;
-        Weights = weights;
-        Bias = bias;
+        Weights = (float[])weights.Clone();
+        Bias = (float[])bias.Clone();
         AbstainMargin = abstainMargin;
         Dimension = dimension;
     }

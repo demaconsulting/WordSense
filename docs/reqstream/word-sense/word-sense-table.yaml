@@ -29,6 +29,8 @@ sections:
           - WordSenseTable_Read_OldVersion_Throws
           - WordSenseTable_RoundTrip_PreservesGroups
           - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
+          - WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw
+          - WordSenseTable_LemmaModel_UndefinedKind_Throws
 
       - id: WordSense-Table-Integrity
         title: The table reader shall reject truncated, corrupted or foreign data.
@@ -41,6 +43,14 @@ sections:
           - WordSenseTable_Read_AnyByteFlipped_Throws
           - WordSenseTable_Read_Garbage_Throws
           - WordSenseTable_Read_MutatedBodyWithValidChecksum_ThrowsFormatExceptionOrLoads
+          - WordSenseTable_Read_ResignedBadMagic_Throws
+          - WordSenseTable_Read_ResignedTrailingData_Throws
+          - WordSenseTable_Read_ResignedDimensionAboveCap_Throws
+          - WordSenseTable_Read_ResignedTagCountAboveCap_Throws
+          - WordSenseTable_Read_ResignedUnknownModelKind_Throws
+          - WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws
+          - WordSenseTable_Constructor_NullArguments_Throw
+          - WordSenseTable_Constructor_InvalidValues_Throw
 
       - id: WordSense-Table-Score
         title: The table shall score a feature vector per lemma and return the best sense and its margin.
@@ -53,6 +63,7 @@ sections:
           - WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation
           - WordSenseTable_Scores_OneVersusRest_ReturnsPerRowActivation
           - WordSenseTable_Scores_LengthMismatch_Throws
+          - WordSenseTable_Scores_OddDimension_MatchesScalarReference
 
       - id: WordSense-Table-Embedded
         title: >-

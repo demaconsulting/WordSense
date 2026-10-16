@@ -121,6 +121,35 @@ public class DownloadMirrorTests
     }
 
     /// <summary>
+    ///     A bearer token without a URL, and a password without a user, are configuration errors.
+    /// </summary>
+    [Fact]
+    public void DownloadMirror_FromEnvironment_BearerWithoutUrlOrPasswordWithoutUser_Throws()
+    {
+        Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new() { ["WORDSENSE_MIRROR_BEARER_TOKEN"] = "tok" })));
+        Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "https://mirror.example/m",
+            ["WORDSENSE_MIRROR_PASSWORD"] = "pw",
+        })));
+    }
+
+    /// <summary>
+    ///     The names localhost and the IPv6 loopback literal count as loopback for plain http secrets.
+    /// </summary>
+    /// <param name="uri">The plain http mirror address.</param>
+    [Theory]
+    [InlineData("http://localhost:8080/m")]
+    [InlineData("http://LOCALHOST/m")]
+    [InlineData("http://[::1]:8080/m")]
+    public void DownloadMirror_Constructor_LoopbackNames_AllowSecretsOverHttp(string uri)
+    {
+        var mirror = new DownloadMirror(new Uri(uri), null, "token");
+
+        Assert.Equal("token", mirror.BearerToken);
+    }
+
+    /// <summary>
     ///     Credentials without a URL, half a credential and a bad URL are configuration errors.
     /// </summary>
     [Fact]

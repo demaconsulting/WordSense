@@ -19,16 +19,19 @@ sections:
           - DownloadMirror_Constructor_RelativeBase_Throws
           - DownloadMirror_Constructor_BadAuthentication_Throws
           - DownloadMirror_Constructor_CredentialsOverPlainHttp_OnlyLoopbackAllowed
+          - DownloadMirror_Constructor_LoopbackNames_AllowSecretsOverHttp
 
       - id: WordSense-Mirror-Environment
         title: The mirror configuration shall be readable from the WORDSENSE_MIRROR_* environment variables.
         tags: [unit]
         justification: |
-          Deployments configure the mirror without code changes, as with the sibling Speech library.
+          Deployments configure the mirror without code changes, for example in a container or CI job where
+          only the environment can be set.
         tests:
           - DownloadMirror_FromEnvironment_NoUrl_ReturnsNull
           - DownloadMirror_FromEnvironment_AllVariables_BuildsMirror
           - DownloadMirror_FromEnvironment_InvalidConfiguration_Throws
+          - DownloadMirror_FromEnvironment_BearerWithoutUrlOrPasswordWithoutUser_Throws
 
       - id: WordSense-Mirror-Redaction
         title: The mirror configuration shall never reveal secrets when converted to text.

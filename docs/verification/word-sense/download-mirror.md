@@ -9,9 +9,11 @@ getter; no process environment is modified.
 
 - **DownloadMirror_Constructor_HttpsBase_IsAccepted**, **..._InvalidBase_Throws**,
   **..._RelativeBase_Throws**, **..._BadAuthentication_Throws**,
-  **..._CredentialsOverPlainHttp_OnlyLoopbackAllowed**: validation rules.
+  **..._CredentialsOverPlainHttp_OnlyLoopbackAllowed**, **..._LoopbackNames_AllowSecretsOverHttp**
+  (`localhost` and `[::1]`): validation rules.
 - **DownloadMirror_FromEnvironment_NoUrl_ReturnsNull**, **..._AllVariables_BuildsMirror**,
-  **..._InvalidConfiguration_Throws**: the `WORDSENSE_MIRROR_*` variables.
+  **..._InvalidConfiguration_Throws**, **..._BearerWithoutUrlOrPasswordWithoutUser_Throws**: the
+  `WORDSENSE_MIRROR_*` variables.
 - **DownloadMirror_ToString_RedactsSecrets**: no secret in the text form.
 
 ## Requirements Coverage

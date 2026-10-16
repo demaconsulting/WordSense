@@ -20,6 +20,7 @@ sections:
         justification: |
           A blocked or tampered source must not stop the download when another source works.
         tests:
+          - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
           - WordSenseModelDownloader_EnsureModel_Timeout_FallsThrough
           - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
 
@@ -31,6 +32,7 @@ sections:
         tests:
           - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
           - WordSenseModelDownloader_EnsureModel_CorruptExistingFile_IsRedownloaded
+          - WordSenseModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace
 
       - id: WordSense-Downloader-Location
         title: >-
@@ -94,6 +96,7 @@ sections:
           - WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
           - WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
           - WordSenseModelDownloader_EnsureModel_InvalidEnvironment_ThrowsBeforeRequests
+          - WordSenseModelDownloader_EnsureModel_InvalidEnvironmentWithValidCache_Throws
 
       - id: WordSense-Downloader-Credentials
         title: The downloader shall send mirror credentials only to the mirror.
@@ -110,12 +113,15 @@ sections:
       - id: WordSense-Downloader-Options
         title: >-
           The downloader shall reject an invalid request timeout before any request and shall let
-          exceptions from the progress receiver propagate.
+          exceptions from the progress receiver propagate, except those that denote a failed source
+          (network, cancellation, input/output and access errors), which fall through to the next source.
         tags: [unit]
         justification: |
           A zero or negative timeout can never work and must fail clearly; a failing progress receiver is
-          a caller bug, not a source failure, so it must not silently trigger fall-through.
+          a caller bug, not a source failure, so an unexpected exception must not silently trigger
+          fall-through, whereas the exception types that a failing source itself produces do.
         tests:
           - WordSenseModelDownloader_EnsureModel_InvalidRequestTimeout_ThrowsBeforeRequests
           - WordSenseModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds
           - WordSenseModelDownloader_EnsureModel_ProgressThrows_PropagatesWithoutFallThrough
+          - WordSenseModelDownloader_EnsureModel_ProgressThrowsIOException_EndsInDownloadException

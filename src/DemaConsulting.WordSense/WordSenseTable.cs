@@ -23,7 +23,9 @@ namespace DemaConsulting.WordSense;
 ///     The reader validates every length against the bytes that remain, caps every count, and checks
 ///     the trailing digest first, so truncated, corrupted or hostile input fails with
 ///     <see cref="WordSenseTableFormatException"/> rather than a different exception or an
-///     oversized allocation. Instances are immutable after construction and thread-safe.
+///     oversized allocation. Instances are thread-safe provided callers treat <see cref="Mean"/>, the
+///     models in <see cref="Lemmas"/> and the <see cref="Forms"/> map supplied to the constructor as
+///     read-only; the constructor copies the mean and the lemma list but not the forms map.
 ///     </para>
 ///     <para>
 ///     Most callers never touch a table: <see cref="WordSenseClassifier.CreateAsync"/> loads the embedded
@@ -114,6 +116,9 @@ public sealed class WordSenseTable
     ///     <paramref name="lemmas"/> or <paramref name="forms"/> is null.
     /// </exception>
     /// <exception cref="ArgumentException">Thrown when the content is inconsistent.</exception>
+    /// <remarks>
+    ///     An element of <paramref name="lemmas"/> that is null also throws <see cref="ArgumentNullException"/>.
+    /// </remarks>
     public WordSenseTable(
         string modelId,
         string modelSha256,
@@ -142,7 +147,7 @@ public sealed class WordSenseTable
         _lemmaIndex = new Dictionary<string, int>(StringComparer.Ordinal);
         for (var i = 0; i < lemmas.Count; i++)
         {
-            var model = lemmas[i];
+            var model = lemmas[i] ?? throw new ArgumentNullException(nameof(lemmas), "A lemma model is null.");
             if (model.Dimension != dimension || !_lemmaIndex.TryAdd(model.Lemma, i))
             {
                 throw new ArgumentException("Lemma models must be unique and share the table dimension.", nameof(lemmas));
@@ -163,8 +168,8 @@ public sealed class WordSenseTable
         ModelId = modelId;
         ModelSha256 = modelSha256.ToLowerInvariant();
         Dimension = dimension;
-        Mean = mean;
-        Lemmas = lemmas;
+        Mean = (float[])mean.Clone();
+        Lemmas = lemmas.ToArray();
         Forms = forms;
     }
 
@@ -217,7 +222,8 @@ public sealed class WordSenseTable
     }
 
     /// <summary>
-    ///     Loads the table that is embedded in this assembly.
+    ///     Loads the table that is embedded in this assembly. It needs no model files and no network access, so it can
+    ///     be used to browse <see cref="Lemmas"/> and <see cref="Forms"/> offline.
     /// </summary>
     /// <returns>The embedded table.</returns>
     /// <exception cref="WordSenseTableFormatException">Thrown when the table is missing or malformed.</exception>

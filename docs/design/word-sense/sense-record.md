@@ -35,9 +35,10 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   a tag wins ties against other and ties between tags go to the first tag in ordinal order. Result is `null`
   when no queried tag is on the lemma, other wins, or the margin is below the threshold. When only one group
   is present the margin is infinite.
-- `TagScorer.IsTag(senses, scores, tag, threshold)`: `true`/`false` from the tag score versus other,
-  `null` when the tag is absent or
-  the margin is too small.
+- `TagScorer.Abstains(margin, threshold)`: the single abstention predicate shared by every classification path;
+  it is `!(margin >= threshold)`, so a NaN margin or a NaN threshold abstains.
+- `TagScorer.IsTag(senses, scores, tag, threshold)`: `true`/`false` from the tag score versus other (the tag wins
+  a tie, so equal scores give `true`), `null` when the tag is absent or the margin is too small.
 - `TextSplitter.SplitSegments(text)`: words, whitespace runs and single other characters, tiling the
   text. A word is a run of letters, digits and combining marks (non-spacing and spacing), and may contain
   an internal apostrophe (`'` or U+2019) or hyphen that is directly followed by a word character, so

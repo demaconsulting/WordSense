@@ -11,7 +11,12 @@ namespace WordSense.Builder;
 ///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
 ///     <c>validate-pos --corpus DIR</c> checks that every sense has exactly one part of speech;
 ///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide; the
-///     <c>audit-*</c> commands and <c>apply-relabel</c> drive the part-of-speech audit and relabel.
+///     <c>audit-*</c> commands and <c>apply-relabel</c> drive the part-of-speech audit and relabel. The remaining
+///     commands (<c>real-gap</c>, <c>real-judge-export</c>, <c>real-judge-adjudicate</c>, <c>real-judge-merge</c>,
+///     <c>real-import</c>, <c>real-gap-import</c>, <c>real-authored-import</c>, <c>nounverb-import</c>,
+///     <c>nounverb-gate</c>, <c>real-eval-import</c>, <c>real-eval</c>, <c>validate-provenance</c>,
+///     <c>learning-curve</c>, <c>error-diagnosis</c> and <c>weak-lemmas</c>) prepare and evaluate the corpus; the
+///     usage message printed for no arguments lists every command, and the builder design document describes them.
 /// </remarks>
 public static class Program
 {

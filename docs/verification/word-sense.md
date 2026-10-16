@@ -42,7 +42,15 @@ files in `model/`; a stale table fails.
 
 ### WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
 
-Creating a classifier from an empty directory (no model files) fails verification.
+Creating a classifier from an empty directory (no model files) fails with a `FileNotFoundException` naming the
+missing file.
+
+### WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
+
+Creating a classifier from a directory whose `model_int8.onnx` and `vocab.txt` exist but have the wrong content
+fails with an `InvalidDataException` (digest mismatch). The test writes the files itself and needs no real model.
+The same exception for `WordSenseModelLocation.FromDirectory` is covered by
+`WordSenseModelDownloader_FromDirectory_ChecksEveryFile` in the downloader verification.
 
 ### WordSense_Classifier_Holdout_MeetsAccuracyGate
 
@@ -55,16 +63,17 @@ below); an unlisted form would count as unanswered.
 
 Holdout rows whose gold sense has exactly one of the `noun` and `verb` tags (rows with both or neither are
 skipped) are classified with the tag query; the answered accuracy must be at least 97 % with at least 85 %
-coverage over more than 350 rows (the build report measures 99.15 % at 91.74 % over
-the 5,411 rows of the whole holdout; the test evaluates every fifth row).
+coverage over more than 350 rows (every fifth row of the holdout is evaluated). The measured values for the whole
+holdout are reported in the build notes (`docs/build_notes/nounverb-results.md`) and the user guide; this document
+quotes only the thresholds that the test asserts.
 
 ### WordSense_Classifier_Holdout_MeetsGroupGate
 
 The holdout is classified (every fifth row, as in the accuracy gate) and a result counts as correct when the
 predicted sense's `Group` equals the gold sense's group; the answered accuracy must be at least 96 % with at
 least 85 % coverage over more than 400 rows (the senses of `bow`, `lead`, `tear`, `closer` and `polish` share
-groups, so this gate can exceed the sense-level gate; the build report measures 96.37 % against 96.17 % over
-the whole holdout).
+groups, so this gate can exceed the sense-level gate). Only the asserted thresholds are quoted here; the measured
+values are in the build notes (`docs/build_notes/`).
 
 ### WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
 
@@ -80,8 +89,10 @@ Every sense of the embedded table carries exactly one of `noun`, `verb`, `adj`, 
 
 ### WordSense_Benchmark_ClassifyLatency
 
-Classifies a two-target sentence 100 times with one and four threads and reports the median and 95th
-percentile latency; the median must stay below two seconds (the typical value is a few milliseconds).
+Classifies a sentence with four ambiguous words ("She will record the vote in the record book, then lead the team
+to the lead mine.") 100 times, after 20 warm-up calls, with one and four threads (`IntraOpThreads`), and reports
+the median and 95th percentile latency; the median must stay below two seconds (the typical value is a few
+milliseconds). The test carries the trait `Category=Benchmark`.
 
 ### WordSense_Readme_CodeBlock_MatchesCompiledSample
 
@@ -103,6 +114,12 @@ the documented output is updated deliberately.
 
 Requires the set of sample markers in `README.md` to equal the set of checked samples (`download`, `classify`,
 `tags`).
+
+### WordSense_XmlDocExamples_Compile
+
+Extracts every `<code>` example from the shipped XML documentation file (`DemaConsulting.WordSense.xml`) and
+compiles it against the real public API, so a documented example cannot drift from the API. The scenario is
+also linked by the quality requirements.
 
 ### WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel
 
@@ -147,10 +164,10 @@ a requirement is satisfied only by a passing result from its own platform or fra
 | WordSense-Lib-Encoder       | EndToEnd_ClassifiesRecord                                                           |
 | WordSense-Lib-ModelDownload | EnsureModel_* (downloader verification)                                             |
 | WordSense-Lib-Mirror        | EnsureModel_Mirror* (downloader and mirror verification)                            |
-| WordSense-Lib-Integrity     | EnsureModel_HashMismatch_*, FromDirectory_ChecksEveryFile (downloader verification) |
+| WordSense-Lib-Integrity     | EnsureModel_HashMismatch_*, FromDirectory_ChecksEveryFile, CreateAsync_Rejects*     |
 | WordSense-Lib-Performance   | Benchmark_ClassifyLatency                                                           |
 | WordSense-Lib-Reproducible  | LogisticTrainer_SeparatesAndIsDeterministic (builder verification)                  |
-| WordSense-Lib-Documentation | Readme_CodeBlock_MatchesCompiledSample, Readme_Output_MatchesReadme, UserGuide_*    |
+| WordSense-Lib-Documentation | Readme_*, UserGuide_*, XmlDocExamples_Compile                                       |
 | WordSense-Platform-* (six)  | Source-filtered runs of EndToEnd_ClassifiesRecord (Platform Support)                |
 
 The abstention, download, mirror and integrity rows summarize scenarios that are detailed in the unit-level

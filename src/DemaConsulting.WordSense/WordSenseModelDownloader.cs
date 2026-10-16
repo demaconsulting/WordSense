@@ -45,15 +45,19 @@ public static class WordSenseModelDownloader
     /// <exception cref="ArgumentException">
     ///     Thrown when the mirror environment configuration (<c>WORDSENSE_MIRROR_*</c>, read only when no
     ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> is given) is invalid, or when
-    ///     <see cref="WordSenseModelDownloaderOptions.StoreRoot"/> is not a valid path.
+    ///     <see cref="WordSenseModelDownloaderOptions.StoreRoot"/> is not a valid path (an empty or malformed path, or,
+    ///     depending on the platform, <see cref="NotSupportedException"/> or <see cref="PathTooLongException"/> for a
+    ///     path the platform cannot represent).
     /// </exception>
     /// <exception cref="IOException">Thrown when the store directory cannot be created or an existing model file cannot be read.</exception>
     /// <exception cref="UnauthorizedAccessException">Thrown when the store directory cannot be created or accessed.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <remarks>
     ///     A null <paramref name="options"/> is valid and means the defaults (no <see cref="ArgumentNullException"/>).
-    ///     An exception thrown by the <see cref="WordSenseModelDownloaderOptions.Progress"/> callback is not a
-    ///     source failure: it propagates to the caller and the remaining sources are not tried. When no
+    ///     An exception thrown by the <see cref="WordSenseModelDownloaderOptions.Progress"/> callback propagates to the
+    ///     caller and the remaining sources are not tried, unless it is an <see cref="HttpRequestException"/>,
+    ///     <see cref="OperationCanceledException"/>, <see cref="IOException"/> or
+    ///     <see cref="UnauthorizedAccessException"/>, which count as a failure of the source being tried. When no
     ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> is given, the mirror environment variables named
     ///     on <see cref="DownloadMirror"/> are consulted.
     /// </remarks>

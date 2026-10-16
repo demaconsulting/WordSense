@@ -16,6 +16,19 @@ the bytes systematically. The embedded table is checked for its lemma count, tag
 - **WordSenseTable_Read_MutatedBodyWithValidChecksum_ThrowsFormatExceptionOrLoads**: every single-byte
   mutation of the body, re-signed with a valid digest, is either rejected with
   `WordSenseTableFormatException` or loads into a table that serializes; no other exception occurs.
+- **WordSenseTable_Read_ResignedBadMagic_Throws**, **WordSenseTable_Read_ResignedTrailingData_Throws**,
+  **WordSenseTable_Read_ResignedDimensionAboveCap_Throws**, **WordSenseTable_Read_ResignedTagCountAboveCap_Throws**,
+  **WordSenseTable_Read_ResignedUnknownModelKind_Throws**,
+  **WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws**: deterministic structural rejections; the body is
+  crafted and re-signed with a valid digest so that only the structural check can reject it.
+- **WordSenseTable_Constructor_NullArguments_Throw**, **WordSenseTable_Constructor_InvalidValues_Throw**: null
+  arguments, a malformed digest, a non-finite or wrong-length mean, duplicate lemmas and a dimension mismatch are
+  rejected.
+- **WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw**, **WordSenseTable_LemmaModel_UndefinedKind_Throws**:
+  null arguments, non-finite bias or abstain margin, a bias of the wrong length and an undefined model kind are
+  rejected.
+- **WordSenseTable_Scores_OddDimension_MatchesScalarReference**: dimensions 19 and 37 (not a multiple of any SIMD
+  width) give the same scores as a scalar reference.
 - **WordSenseTable_Score_Binary_UsesActivationSign**, **WordSenseTable_Score_OneVersusRest_PicksBestRow**:
   scoring.
 - **WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation**,

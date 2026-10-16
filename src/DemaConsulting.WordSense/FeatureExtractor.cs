@@ -17,7 +17,7 @@ internal static class FeatureExtractor
     /// <param name="dimension">The size of each hidden state.</param>
     /// <param name="first">First target row.</param>
     /// <param name="end">Exclusive end target row.</param>
-    /// <param name="mean">The anchor mean to subtract, or null to subtract nothing.</param>
+    /// <param name="mean">The anchor mean to subtract, or empty to subtract nothing.</param>
     /// <returns>The unit-length feature, or null when the range is empty or the feature has no magnitude.</returns>
     public static float[]? Extract(ReadOnlySpan<float> hidden, int dimension, int first, int end, ReadOnlySpan<float> mean)
     {

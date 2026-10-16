@@ -47,15 +47,18 @@ public class SenseRecordTests
     [Fact]
     public void WordSense_LemmaModel_SharesOneRecordPerSense()
     {
-        var model = WordSenseTableTests.CreateSmallTable().Lemmas[0];
-
         var table = WordSenseTableTests.CreateSmallTable();
-        var viaModel = table.Lemmas[0].Senses;
+        var model = table.Lemmas[0];
 
-        Assert.Same(model.Senses[0], model.Senses[0]);
-        Assert.True(table.TryGetLemma(table.Lemmas[0].Lemma, out var found));
-        Assert.Same(viaModel[0], found.Senses[0]);
-        Assert.Same(viaModel[1], found.Senses[1]);
+        var first = model.Senses;
+        var second = model.Senses;
+
+        Assert.Same(first[0], second[0]);
+        Assert.Same(first[1], second[1]);
+        Assert.True(table.TryGetLemma(model.Lemma, out var found));
+        Assert.Same(model, found);
+        Assert.Same(first[0], found.Senses[0]);
+        Assert.Same(first[1], found.Senses[1]);
         Assert.Equal(2, model.Senses.Count);
         Assert.Equal(["animal", "tool"], model.Senses.Select(s => s.Sense));
     }
@@ -207,6 +210,19 @@ public class SenseRecordTests
         Assert.Null(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1.2f], "noun", 0.5));
         Assert.Null(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1f], "adv", 0));
         Assert.True(TagScorer.IsTag([Sense("x", "a", "noun"), Sense("x", "b", "noun")], [0f, 1f], "noun", 100));
+        Assert.True(TagScorer.IsTag(Mixed, [0f, 1f, 0f, 1f], "noun", 0));
+    }
+
+    /// <summary>
+    ///     A NaN margin or a NaN threshold abstains.
+    /// </summary>
+    [Fact]
+    public void TagScorer_Abstains_NaNMarginOrThreshold_Abstains()
+    {
+        Assert.True(TagScorer.Abstains(double.NaN, 0.5));
+        Assert.True(TagScorer.Abstains(0.5, double.NaN));
+        Assert.True(TagScorer.Abstains(double.NaN, double.NaN));
+        Assert.False(TagScorer.Abstains(0.5, 0.5));
     }
 
     /// <summary>

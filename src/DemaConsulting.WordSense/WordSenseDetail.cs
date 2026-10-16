@@ -12,8 +12,8 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="WordSenseTable.LoadEmbedded"/>. Otherwise use <see cref="Abstained"/>.
 ///     <para>
 ///     Reading the margin: it is a score difference, not a probability, and each lemma has its own scale. As a rough
-///     guide, the README sample answers for <c>record</c> that are clearly right have margins of about 5 to 7
-///     (5.99 for the verb, 7.16 for the noun); a margin near 0 means the two best senses are almost tied, and a margin
+///     guide, answers for <c>record</c> that are clearly right have margins of about 5 to 7
+///     (for example 5.99 for the verb and 7.16 for the noun); a margin near 0 means the two best senses are almost tied, and a margin
 ///     below the lemma's effective threshold is reported as <see cref="Abstained"/>. The effective threshold is
 ///     <c>LemmaModel.AbstainMargin * AbstainMarginScale</c> (see the example), so doubling the scale doubles
 ///     the margin an answer needs. Which sense was chosen is <see cref="Sense"/>, whose
@@ -62,7 +62,9 @@ namespace DemaConsulting.WordSense;
 ///     because each lemma has its own threshold. The classifier does not expose the threshold itself; use
 ///     <see cref="Abstained"/> unless you compute the threshold from the embedded table.
 /// </param>
-/// <param name="RunnerUp">The second-best sense.</param>
+/// <param name="RunnerUp">
+///     The second-best sense; never null, because every lemma has at least two senses.
+/// </param>
 /// <param name="RunnerUpMargin">
 ///     The score of the runner-up minus the score of the third-best sense; 0 when the lemma has only two senses.
 /// </param>

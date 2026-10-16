@@ -11,7 +11,26 @@ namespace DemaConsulting.WordSense;
 ///     table is embedded in the assembly; the ~23 MB int8 ONNX encoder model (<c>model_int8.onnx</c>, plus a
 ///     small <c>vocab.txt</c>) is downloaded once on first use, verified against pinned SHA-256 digests and cached
 ///     per user, or it is read from a directory you supply (<see cref="WordSenseClassifierOptions.ModelDirectory"/>),
-///     in which case no network access happens at all.
+///     in which case no network access happens at all. Install it with
+///     <c>dotnet add package DemaConsulting.WordSense</c>; no native or other setup is needed.
+///     </para>
+///     <para>
+///     Offline and air-gapped use: on a machine with network access call
+///     <see cref="WordSenseModelDownloader.EnsureModelAsync"/> and copy the folder it
+///     reports (<see cref="WordSenseModelLocation.Directory"/>) to the target machine, or fetch
+///     <c>model_int8.onnx</c> (SHA-256 <c>afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1</c>) and
+///     <c>vocab.txt</c> (SHA-256 <c>07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3</c>) yourself:
+///     <c>vocab.txt</c> from
+///     <c>https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/vocab.txt</c> and both files from
+///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{file}</c>
+///     (a file is verified against its pinned digest wherever it comes from). Then set
+///     <see cref="WordSenseClassifierOptions.ModelDirectory"/> to a directory that holds the two
+///     files directly. For a corporate mirror set <see cref="WordSenseModelDownloaderOptions.Mirror"/> or the
+///     environment variables <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>,
+///     <c>WORDSENSE_MIRROR_PASSWORD</c> and <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> (see <see cref="DownloadMirror"/>).
+///     The cache store holds one folder per model revision beneath the store root, named like
+///     <c>all-MiniLM-L6-v2-int8-{first 8 hex digits of the model SHA-256}</c>; a file that fails verification is never
+///     used.
 ///     </para>
 ///     <para>
 ///     Start with <see cref="WordSenseClassifier.CreateAsync"/> and the <see cref="IWordSenseClassifier"/> it returns.
@@ -32,11 +51,12 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Groups and pronunciation: this library has no pronunciation data. A sense's <see cref="WordSense.Group"/> is
 ///     the library's only equivalence mechanism: senses of one lemma that share a group share a pronunciation, so a
-///     consumer that only needs the pronunciation does not need to tell them apart. A consumer such as a speech synthesizer keeps its
-///     own pronunciations keyed by (<see cref="WordSense.Lemma"/>, <see cref="WordSense.Group"/>). See
+///     consumer that only needs the pronunciation does not need to tell them apart. A consumer such as a speech
+///     synthesizer keeps its own pronunciations keyed by (<see cref="WordSense.Lemma"/>, <see cref="WordSense.Group"/>). See
 ///     <see cref="WordSense"/> for the full explanation. The supported lemmas, senses, tags and groups are listed in
 ///     the user guide appendix "Appendix: Supported Senses and Tags"
-///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md) and
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md; the appendix is
+///     not part of this package, so a consumer without network access enumerates the catalog at run time) and
 ///     can be discovered at run time with <see cref="IWordSenseClassifier.KnownLemmas"/> and
 ///     <see cref="IWordSenseClassifier.GetSenses"/>.
 ///     </para>
@@ -55,7 +75,12 @@ namespace DemaConsulting.WordSense;
 ///     pick the <see cref="WordSenseToken"/> whose start offset is the target's; with the list overload, tokenize so
 ///     that every word and every punctuation mark is its own element (<c>"race"</c> and <c>"."</c>, never
 ///     <c>"race."</c>) and read the entry at the target's index. A result is null when the word is not an ambiguous
-///     word the library knows or when the classifier abstained because the evidence was weak.
+///     word the library knows or when the classifier abstained because the evidence was weak. An empty list of words
+///     gives an empty array for every classification method, and the string overload gives an empty list for empty
+///     text. An empty <c>tags</c> collection is an error. A tag that no sense of a word's lemma carries (for example a
+///     misspelled one) gives null for that word, never an exception. A consumer that
+///     needs an answer for every word must supply its own fallback for null (for example the most common
+///     sense of the word, or its own default pronunciation); the library never guesses.
 ///     </para>
 ///     <para>
 ///     Tokenization and context window: the list overloads read the whole list as one running text with the words
@@ -66,8 +91,11 @@ namespace DemaConsulting.WordSense;
 ///     word, and text outside the window is ignored.
 ///     </para>
 ///     <para>
-///     Thread safety: a <see cref="WordSenseClassifier"/> may be shared by many threads and its methods called
-///     concurrently. Dispose it exactly once, after all calls have finished.
+///     Thread safety: a classifier returned by <see cref="WordSenseClassifier.CreateAsync"/> may be shared by many
+///     threads and its methods called concurrently (a classifier built on a custom <see cref="IWordSenseEncoder"/>
+///     is as thread-safe as that encoder). Dispose it once, after all calls have finished (a second dispose is
+///     harmless); after disposal a call whose words include a known word throws
+///     <see cref="ObjectDisposedException"/>.
 ///     </para>
 /// </remarks>
 /// <example>

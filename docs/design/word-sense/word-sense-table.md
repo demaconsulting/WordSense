@@ -27,6 +27,25 @@ and 2 tables are rejected. Each sense becomes one shared `WordSense` record when
 constructed (so for a read table during `Read`, and for a built table in the builder), and
 the records of equal tags share the table's tag strings.
 
+## Public Interface
+
+- `WordSenseTable` properties: `ModelId`, `ModelSha256` (lower-case hexadecimal), `Dimension`, `Mean` (length
+  `Dimension`), `Lemmas` (ordinal order) and `Forms` (form to lemma). Callers must treat these collections and the
+  arrays of a `LemmaModel` as read-only; the constructors copy the arrays and the lemma list they are given but not
+  the forms map.
+- `LemmaModel` properties: `Lemma`, `Senses` (one shared `WordSense` per sense, in weight-row order), `Kind`
+  (`LemmaModelKind.Binary` or `OneVersusRest`; any other value is rejected with `ArgumentOutOfRangeException`),
+  `Weights`, `Bias`, `AbstainMargin` and `Dimension`.
+- `WordSenseTableFormatException` is the only exception `Read` and `LoadEmbedded` report for bad content.
+
+## Scoring Algorithm
+
+`VectorMath.Dot(left, right)` sums the products over the length of `left`; `right` must be at least as long.
+It uses `Vector<float>` SIMD lanes for full blocks and a scalar loop for the remainder, so any dimension gives
+the same result as the plain scalar sum up to floating-point rounding. A binary model computes one activation
+`a = dot(weights, feature) + bias`; the scores are `{-a, +a}`, and the tie rule is that an activation of 0 or more
+(`a >= 0`) selects sense index 1. A one-versus-rest model scores each row and the first highest row wins a tie.
+
 ## Methods
 
 - `LoadEmbedded()`, `Read(bytes)`: parse and validate; any truncation, bad magic, bad version,
@@ -45,7 +64,9 @@ the records of equal tags share the table's tag strings.
   characters, a mean that is not finite or does not match the dimension, lemma models that are
   duplicated, unordered or of another dimension, forms that name a lemma without a model, fewer than two
   senses (exactly two for binary), weight or bias shapes that do not match, non-finite values,
-  duplicate sense labels, and invalid sense definitions.
+  duplicate sense labels, and invalid sense definitions. A `LemmaModel` also rejects a model kind that is not
+  defined (`ArgumentOutOfRangeException`), and a null element of the sense list or of the lemma list raises
+  `ArgumentNullException`.
 - `Write` throws `InvalidOperationException` when a string exceeds 65,535 UTF-8 bytes, and `Write` and `ToArray`
   throw `OverflowException` when a count does not fit its field (for example more than 65,535 distinct tags or
   senses in one lemma).

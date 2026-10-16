@@ -320,8 +320,11 @@ authors, origin `authored`); these have fewer and less varied examples. The `lea
 reports in `docs/build_notes/learning-curve-and-diagnosis.md` list the weakest lemmas and why (coverage gaps,
 overlapping senses or suspect labels).
 
-**Performance.** A typical sentence takes a few milliseconds (median 5.6 ms with one thread, 2.5 ms with four threads
-on a development workstation; run the `Benchmark` test category to measure your hardware).
+**Performance.** A typical sentence takes a few milliseconds. These are indicative measurements from a development
+workstation with the `WordSense_Benchmark_ClassifyLatency` test, which classifies one sentence with four ambiguous
+words: a median of about 5.6 ms with one thread and about 2.5 ms with four threads. They are not derived from the
+builder reports and will differ on other hardware; run the `Benchmark` test category (for example
+`dotnet test --filter-trait "Category=Benchmark"`) to measure your own.
 
 # Limitations
 

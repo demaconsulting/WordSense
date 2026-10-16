@@ -65,9 +65,13 @@ public sealed class WordSenseModelDownloadException : Exception
 /// </summary>
 /// <remarks>
 ///     Sources are tried in this order for every file: the mirror (when configured), Hugging Face (only
-///     for files known to be identical upstream), then the GitHub Git LFS media endpoint of this
-///     repository. Every download is verified against the pinned SHA-256; a request failure, timeout,
-///     block or digest mismatch moves on to the next source.
+///     for <c>vocab.txt</c>, which is the upstream tokenizer vocabulary; the ONNX file is not published there in this form and is
+///     never requested from Hugging Face), then the GitHub Git LFS media endpoint of this library's repository.
+///     Every download is verified against the pinned SHA-256; a request failure, timeout,
+///     block or digest mismatch moves on to the next source. A file already in the store that fails verification is
+///     treated as missing and downloaded again; it is replaced only by a verified download, so if every source
+///     fails it is left where it is (and still never used), and temporary download files are removed on a best-effort
+///     basis.
 /// </remarks>
 public sealed class WordSenseModelDownloaderOptions
 {
@@ -77,14 +81,17 @@ public sealed class WordSenseModelDownloaderOptions
     public WordSenseModelDownloaderOptions()
     {
     }
+
     /// <summary>
-    ///     The default Hugging Face base location for the sentence-transformers model.
+    ///     The default Hugging Face base location for the sentence-transformers model
+    ///     (<c>https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main</c>).
     /// </summary>
     public static readonly Uri DefaultHuggingFaceBaseUri =
         new("https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main");
 
     /// <summary>
-    ///     The default GitHub Git LFS media base location of this repository (without reference or path).
+    ///     The default GitHub Git LFS media base location of this library's repository
+    ///     (<c>https://media.githubusercontent.com/media/demaconsulting/WordSense</c>, without reference or path).
     /// </summary>
     public static readonly Uri DefaultGitHubLfsBaseUri =
         new("https://media.githubusercontent.com/media/demaconsulting/WordSense");
@@ -92,7 +99,10 @@ public sealed class WordSenseModelDownloaderOptions
     /// <summary>
     ///     Gets the mirror to try first, or null (the default) to fall back to <see cref="GetEnvironmentVariable"/>.
     /// </summary>
-    /// <remarks>An explicitly supplied mirror always wins over the environment variables.</remarks>
+    /// <remarks>
+    ///     An explicitly supplied mirror always wins over the environment variables. The environment variables are
+    ///     validated on every download call, even when the cached model is already valid and nothing is downloaded.
+    /// </remarks>
     public DownloadMirror? Mirror { get; init; }
 
     /// <summary>
@@ -126,7 +136,7 @@ public sealed class WordSenseModelDownloaderOptions
     ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
     ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux (the application base directory is used when
     ///     the platform has no local application data folder). The model is stored in the folder
-    ///     <c>all-MiniLM-L6-v2-int8-afdb6f1a</c> beneath that root, holding <c>model_int8.onnx</c> (about 23 MB) and
+    ///     <c>all-MiniLM-L6-v2-int8-afdb6f1a</c> (the first eight hex digits of the ONNX file's SHA-256) beneath that root, holding <c>model_int8.onnx</c> (about 23 MB) and
     ///     <c>vocab.txt</c>. The folder name is derived from the model digest, so a different model version never
     ///     reuses it.
     /// </remarks>
@@ -158,8 +168,11 @@ public sealed class WordSenseModelDownloaderOptions
     ///     Gets the receiver of download progress reports, or null (the default).
     /// </summary>
     /// <remarks>
-    ///     An exception thrown by the receiver is not treated as a source failure: it propagates out of
-    ///     <see cref="WordSenseModelDownloader.EnsureModelAsync"/> and the remaining sources are not tried.
+    ///     An exception thrown by the receiver is not a source failure and propagates out of
+    ///     <see cref="WordSenseModelDownloader.EnsureModelAsync"/> without the remaining sources being tried, unless
+    ///     it is an <see cref="HttpRequestException"/>, <see cref="OperationCanceledException"/>,
+    ///     <see cref="IOException"/> or <see cref="UnauthorizedAccessException"/>: those are treated like any other
+    ///     failure of the source being tried, so the next source is tried. Do not throw from the receiver.
     /// </remarks>
     public IProgress<WordSenseModelDownloadProgress>? Progress { get; init; }
 }

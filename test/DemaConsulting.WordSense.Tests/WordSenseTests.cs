@@ -98,6 +98,30 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     Model files whose content does not match the pinned digests are rejected with an invalid-data error.
+    ///     This needs no real model.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory()
+    {
+        var wrong = Path.Combine(Path.GetTempPath(), "wordsense-wrong-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(wrong);
+        try
+        {
+            await File.WriteAllTextAsync(Path.Combine(wrong, "model_int8.onnx"), "not the model", TestContext.Current.CancellationToken);
+            await File.WriteAllTextAsync(Path.Combine(wrong, "vocab.txt"), "not the vocabulary", TestContext.Current.CancellationToken);
+
+            await Assert.ThrowsAsync<InvalidDataException>(
+                () => WordSenseClassifier.CreateAsync(new WordSenseClassifierOptions { ModelDirectory = wrong }, TestContext.Current.CancellationToken));
+        }
+        finally
+        {
+            Directory.Delete(wrong, true);
+        }
+    }
+
+    /// <summary>
     ///     Invalid option values are reported before the model directory is touched.
     /// </summary>
     [Fact]

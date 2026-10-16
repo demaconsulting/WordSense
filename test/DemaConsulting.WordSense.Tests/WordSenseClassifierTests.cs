@@ -241,6 +241,20 @@ public class WordSenseClassifierTests
         Assert.Same(classifier.GetSenses("bat")[0], classifier.GetSenses("bat")[0]);
         Assert.Equal(["verb"], classifier.GetSenses("bat")[1].Tags);
         Assert.Empty(classifier.GetSenses("zzz"));
+        Assert.Throws<ArgumentNullException>(() => classifier.GetSenses(null!));
+    }
+
+    /// <summary>
+    ///     An infinite abstain margin scale makes every known word abstain.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_InfiniteAbstainMarginScale_AlwaysAbstains()
+    {
+        using var classifier = Create(options: new WordSenseClassifierOptions { AbstainMarginScale = double.PositiveInfinity });
+
+        var senses = await classifier.ClassifyAsync(["the", "bat", "a", "bat"], TestContext.Current.CancellationToken);
+
+        Assert.All(senses, s => Assert.Null(s));
     }
 
     /// <summary>

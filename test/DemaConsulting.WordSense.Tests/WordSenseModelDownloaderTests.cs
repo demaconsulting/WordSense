@@ -518,6 +518,68 @@ public sealed class WordSenseModelDownloaderTests : IDisposable
         public void Report(WordSenseModelDownloadProgress value) => throw new InvalidOperationException("progress receiver failed");
     }
 
+    /// <summary>
+    ///     A bad mirror environment is a configuration error even when the store already holds valid files.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_InvalidEnvironmentWithValidCache_Throws()
+    {
+        using var server = new LocalServer(ServeReal);
+        await WordSenseModelDownloader.EnsureModelAsync(Options(server), TestContext.Current.CancellationToken);
+        var before = server.Requests.Count;
+
+        await Assert.ThrowsAsync<ArgumentException>(
+            () => WordSenseModelDownloader.EnsureModelAsync(
+                Options(server, null, name => name == DownloadMirror.UserEnvironmentVariable ? "user" : null),
+                TestContext.Current.CancellationToken));
+
+        Assert.Equal(before, server.Requests.Count);
+    }
+
+    /// <summary>
+    ///     A corrupt cached file is left untouched when every source fails.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace()
+    {
+        using var server = new LocalServer(context => LocalServer.SendAsync(context, 500, "broken"));
+        var directory = Path.Combine(_store, WordSenseModelCatalog.DirectoryName);
+        Directory.CreateDirectory(directory);
+        var vocabulary = Path.Combine(directory, "vocab.txt");
+        await File.WriteAllTextAsync(vocabulary, "corrupt", TestContext.Current.CancellationToken);
+
+        await Assert.ThrowsAsync<WordSenseModelDownloadException>(
+            () => WordSenseModelDownloader.EnsureModelAsync(Options(server), TestContext.Current.CancellationToken));
+
+        Assert.Equal("corrupt", await File.ReadAllTextAsync(vocabulary, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     A progress callback that throws an I/O error is treated like a source failure, so every source fails.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseModelDownloader_EnsureModel_ProgressThrowsIOException_EndsInDownloadException()
+    {
+        using var server = new LocalServer(ServeReal);
+        var options = new WordSenseModelDownloaderOptions
+        {
+            GetEnvironmentVariable = _ => null,
+            HuggingFaceBaseUri = new Uri(server.BaseUri, "/hf"),
+            GitHubLfsBaseUri = new Uri(server.BaseUri, "/lfs"),
+            GitHubLfsRef = "main",
+            StoreRoot = _store,
+            Progress = new ThrowingIoProgress(),
+        };
+
+        await Assert.ThrowsAsync<WordSenseModelDownloadException>(
+            () => WordSenseModelDownloader.EnsureModelAsync(options, TestContext.Current.CancellationToken));
+    }
+
+    private sealed class ThrowingIoProgress : IProgress<WordSenseModelDownloadProgress>
+    {
+        public void Report(WordSenseModelDownloadProgress value) => throw new IOException("progress receiver failed");
+    }
+
     private sealed class SynchronousProgress(List<WordSenseModelDownloadProgress> reports) : IProgress<WordSenseModelDownloadProgress>
     {
         public void Report(WordSenseModelDownloadProgress value)

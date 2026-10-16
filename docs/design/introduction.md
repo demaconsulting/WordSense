@@ -36,6 +36,10 @@ software items, specifically:
 
 The OnnxRuntime OTS runtime dependency is also covered.
 
+OTS items are intentionally outside the SysML2 model: the model describes only the software items of
+WordSense (the system and its units), while the OTS items are documented by their own design, requirements
+and verification documents.
+
 The following OTS items are also covered:
 
 - **ApiMark** — API documentation generation tool
@@ -82,12 +86,14 @@ and descriptions as follows:
 ```text
 src/DemaConsulting.WordSense/
 ├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
-├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs — table unit
+├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs, WordSenseTableFormatException.cs — table unit
 ├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs, WordSenseToken.cs — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
-├── WordSenseClassifier.cs, FeatureExtractor.cs    — classifier unit
+├── WordSenseClassifier.cs, WordSenseClassifierOptions.cs, WordSenseDetail.cs,
+│   FeatureExtractor.cs, WordSenseModelMismatchException.cs — classifier unit
 ├── DownloadMirror.cs                              — mirror unit
-├── WordSenseModelDownloader*.cs, ...ModelCatalog.cs — downloader unit
+├── WordSenseModelDownloader.cs, WordSenseModelDownloaderOptions.cs,
+│   WordSenseModelLocation.cs, WordSenseModelCatalog.cs — downloader unit
 ├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
 └── Resources/wordsense-table.bin                  — embedded table
 

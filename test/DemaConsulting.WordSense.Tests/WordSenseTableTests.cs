@@ -355,4 +355,215 @@ public class WordSenseTableTests
         Assert.Equal(384, table.Dimension);
         Assert.All(table.Forms.Values, lemma => Assert.True(table.TryGetLemma(lemma, out _), lemma));
     }
+
+    /// <summary>
+    ///     Builds a one-lemma table without forms; its body layout is fixed so tests can patch known offsets.
+    /// </summary>
+    /// <returns>The serialized table.</returns>
+    private static byte[] CreateSingleLemmaBytes()
+    {
+        var bat = CreateSmallTable().Lemmas[0];
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [bat], new Dictionary<string, string>());
+        return table.ToArray();
+    }
+
+    /// <summary>
+    ///     Applies a change to the body of a serialized table and signs the result with a valid checksum.
+    /// </summary>
+    /// <param name="bytes">The serialized table.</param>
+    /// <param name="change">The change applied to the body (without checksum).</param>
+    /// <returns>The re-signed bytes.</returns>
+    private static byte[] Resign(byte[] bytes, Func<byte[], byte[]> change)
+    {
+        var body = change(bytes[..^32]);
+        return body.Concat(System.Security.Cryptography.SHA256.HashData(body)).ToArray();
+    }
+
+    /// <summary>
+    ///     A correctly signed table with a wrong magic is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedBadMagic_Throws()
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[0] ^= 0xFF; return b; });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("signature", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table with extra bytes after the last form is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedTrailingData_Throws()
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b => [.. b, 0]);
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("trailing", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table that declares a dimension above the cap is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedDimensionAboveCap_Throws()
+    {
+        // The dimension follows magic, version, flags, the model id string and the 32-byte digest
+        const int dimensionOffset = 8 + 2 + 16 + 32;
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[dimensionOffset] = 0x01; b[dimensionOffset + 1] = 0x10; return b; });
+
+        Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+    }
+
+    /// <summary>
+    ///     A correctly signed table that declares more tags than allowed is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedTagCountAboveCap_Throws()
+    {
+        // The tag count follows the dimension and the mean
+        const int tagCountOffset = 8 + 2 + 16 + 32 + 4 + (3 * 4);
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[tagCountOffset] = 0x01; b[tagCountOffset + 1] = 0x01; return b; });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("tag dictionary", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table with an unknown model kind is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedUnknownModelKind_Throws()
+    {
+        // The kind byte precedes weights (3 floats), bias (1 float), the margin and the empty form count
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[b.Length - 4 - 4 - 4 - 12 - 1] = 9; return b; });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("model kind", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose tag dictionary is unsorted or duplicated is rejected.
+    /// </summary>
+    /// <param name="duplicate">True to duplicate the first tag, false to swap the two tags.</param>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws(bool duplicate)
+    {
+        // Two tags follow the count: "noun" then "verb", each a u16 length and four bytes
+        const int firstTag = 8 + 2 + 16 + 32 + 4 + (3 * 4) + 2 + 2;
+        var bytes = Resign(CreateSingleLemmaBytes(), b =>
+        {
+            var noun = b[firstTag..(firstTag + 4)];
+            var verb = b[(firstTag + 6)..(firstTag + 10)];
+            Assert.Equal("noun", System.Text.Encoding.UTF8.GetString(noun));
+            Assert.Equal("verb", System.Text.Encoding.UTF8.GetString(verb));
+            (duplicate ? noun : verb).CopyTo(b, firstTag);
+            noun.CopyTo(b, firstTag + 6);
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("tag dictionary", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     The table constructor rejects null arguments.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Constructor_NullArguments_Throw()
+    {
+        var t = CreateSmallTable();
+        float[] mean = [0.1f, 0.2f, 0.3f];
+
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable(null!, Sha, 3, mean, t.Lemmas, t.Forms));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable("m", null!, 3, mean, t.Lemmas, t.Forms));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable("m", Sha, 3, null!, t.Lemmas, t.Forms));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable("m", Sha, 3, mean, null!, t.Forms));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable("m", Sha, 3, mean, t.Lemmas, null!));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseTable("m", Sha, 3, mean, [t.Lemmas[0], null!], t.Forms));
+    }
+
+    /// <summary>
+    ///     The table constructor rejects a malformed digest, a bad mean, duplicate lemmas and a dimension mismatch.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Constructor_InvalidValues_Throw()
+    {
+        var t = CreateSmallTable();
+        float[] mean = [0.1f, 0.2f, 0.3f];
+        var noForms = new Dictionary<string, string>();
+
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha[..63], 3, mean, t.Lemmas, noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", new string('z', 64), 3, mean, t.Lemmas, noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha, 3, [0.1f, float.NaN, 0.3f], t.Lemmas, noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha, 3, [0.1f, float.PositiveInfinity, 0.3f], t.Lemmas, noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha, 3, [0.1f, 0.2f], t.Lemmas, noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha, 3, mean, [t.Lemmas[0], t.Lemmas[0]], noForms));
+        Assert.Throws<ArgumentException>(() => new WordSenseTable("m", Sha, 4, [0f, 0f, 0f, 0f], t.Lemmas, noForms));
+    }
+
+    /// <summary>
+    ///     The lemma model constructor rejects null arguments, non-finite values and a bias of the wrong length.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw()
+    {
+        SenseDefinition[] senses = [Def("x", "noun"), Def("y", "verb")];
+
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel(null!, senses, LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", null!, LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, null!, [0f], 0f, 1));
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], null!, 0f, 1));
+        Assert.Throws<ArgumentNullException>(() => new LemmaModel("a", [Def("x", "noun"), null!], LemmaModelKind.Binary, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [float.NaN], 0f, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [0f], float.NaN, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [0f], float.PositiveInfinity, 1));
+        Assert.Throws<ArgumentException>(() => new LemmaModel("a", senses, LemmaModelKind.Binary, [1f], [0f, 0f], 0f, 1));
+    }
+
+    /// <summary>
+    ///     An undefined model kind is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_LemmaModel_UndefinedKind_Throws()
+    {
+        SenseDefinition[] senses = [Def("x", "noun"), Def("y", "verb")];
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => new LemmaModel("a", senses, (LemmaModelKind)0, [1f], [0f], 0f, 1));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new LemmaModel("a", senses, (LemmaModelKind)9, [1f], [0f], 0f, 1));
+    }
+
+    /// <summary>
+    ///     A model with a dimension that is not a multiple of the SIMD width scores like a scalar reference.
+    /// </summary>
+    /// <param name="dimension">The feature dimension.</param>
+    [Theory]
+    [InlineData(19)]
+    [InlineData(37)]
+    public void WordSenseTable_Scores_OddDimension_MatchesScalarReference(int dimension)
+    {
+        var weights = Enumerable.Range(0, 3 * dimension).Select(i => (float)Math.Sin(i * 0.7)).ToArray();
+        var bias = new[] { 0.5f, -0.25f, 0.125f };
+        var feature = Enumerable.Range(0, dimension).Select(i => (float)Math.Cos(i * 1.3)).ToArray();
+        var model = new LemmaModel(
+            "odd", [Def("a", "noun"), Def("b", "verb"), Def("c", "adj")], LemmaModelKind.OneVersusRest, weights, bias, 0f, dimension);
+        var scores = new float[3];
+
+        model.Scores(feature, scores);
+
+        for (var row = 0; row < 3; row++)
+        {
+            double expected = bias[row];
+            for (var i = 0; i < dimension; i++)
+            {
+                expected += (double)weights[(row * dimension) + i] * feature[i];
+            }
+
+            Assert.Equal(expected, scores[row], 3);
+        }
+    }
 }

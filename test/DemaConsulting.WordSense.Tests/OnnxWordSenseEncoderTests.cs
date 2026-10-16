@@ -36,7 +36,7 @@ public class OnnxWordSenseEncoderTests
     {
         // Arrange: an encoder and a cancelled token
         var path = Path.Combine(ModelAssets.RequireModelDirectory(), "model_int8.onnx");
-        var encoder = new OnnxWordSenseEncoder(path);
+        using var encoder = new OnnxWordSenseEncoder(path);
         using var cts = new CancellationTokenSource();
         await cts.CancelAsync();
 
@@ -49,6 +49,34 @@ public class OnnxWordSenseEncoderTests
         await Assert.ThrowsAsync<ObjectDisposedException>(async () => await encoder.EncodeAsync([101, 102], TestContext.Current.CancellationToken));
         Assert.Throws<FileNotFoundException>(() => new OnnxWordSenseEncoder(Path.Combine(Path.GetTempPath(), "missing.onnx")));
         Assert.Throws<ArgumentOutOfRangeException>(() => new OnnxWordSenseEncoder(path, -1));
+    }
+
+    /// <summary>
+    ///     Concurrent encodes on one encoder give the same hidden states as sequential encodes.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task OnnxWordSenseEncoder_EncodeAsync_Concurrent_MatchesSequentialResults()
+    {
+        var path = Path.Combine(ModelAssets.RequireModelDirectory(), "model_int8.onnx");
+        using var encoder = new OnnxWordSenseEncoder(path, 1);
+        var cancellationToken = TestContext.Current.CancellationToken;
+        int[][] inputs = [[101, 2501, 102], [101, 2023, 2003, 1037, 3231, 102], [101, 2501, 2501, 2501, 2501, 102]];
+        var expected = new List<float[]>();
+        foreach (var ids in inputs)
+        {
+            expected.Add(await encoder.EncodeAsync(ids, cancellationToken));
+        }
+
+        var tasks = Enumerable.Range(0, 24)
+            .Select(i => Task.Run(async () => await encoder.EncodeAsync(inputs[i % inputs.Length], cancellationToken), cancellationToken))
+            .ToArray();
+        var results = await Task.WhenAll(tasks);
+
+        for (var i = 0; i < results.Length; i++)
+        {
+            Assert.Equal(expected[i % inputs.Length], results[i]);
+        }
     }
 
     /// <summary>

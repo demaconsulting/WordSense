@@ -11,6 +11,8 @@ the Git LFS content is absent).
   identical on repetition; the digest is the pinned one.
 - **OnnxWordSenseEncoder_EncodeAsync_InvalidUse_Throws**: empty and null input, a cancelled token, use
   after disposal, a missing file and an invalid thread count.
+- **OnnxWordSenseEncoder_EncodeAsync_Concurrent_MatchesSequentialResults**: parallel calls on one encoder give
+  the same hidden states as sequential calls.
 - **OnnxWordSenseEncoder_Constructor_InvalidModelFile_Throws**: a file that is not an ONNX model is
   rejected with an exception (this test does not need the real model).
 

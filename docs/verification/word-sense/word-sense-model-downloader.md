@@ -25,7 +25,12 @@ test uses the network. Request logs show the order of attempts and the headers r
   them on a same-origin redirect; **..._RedirectLoop_FallsThrough** abandons a redirect loop.
 - **..._InvalidRequestTimeout_ThrowsBeforeRequests** (zero, negative, oversized),
   **..._InfiniteRequestTimeout_Succeeds**, **..._ProgressThrows_PropagatesWithoutFallThrough**.
-- **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**.
+- **..._AlreadyPresent_MakesNoRequests**, **..._CorruptExistingFile_IsRedownloaded**,
+  **..._CorruptCacheAndAllSourcesFail_LeavesFileInPlace** (the corrupt file is not deleted when no source works).
+- **..._InvalidEnvironmentWithValidCache_Throws**: a bad mirror environment is an `ArgumentException` even when the
+  cache is already valid.
+- **..._ProgressThrowsIOException_EndsInDownloadException**: an `IOException` from the progress callback is a
+  source failure, so every source fails and `WordSenseModelDownloadException` is thrown.
 - **WordSenseModelDownloader_FromDirectory_ChecksEveryFile**: a directory with a missing or altered
   file is rejected (`WordSense-Downloader-Location`); it covers `WordSenseModelLocation.FromDirectory`.
 - **WordSenseModelDownloader_DefaultStoreRoot_IsPerUser**: the default store is beneath the user's
