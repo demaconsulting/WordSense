@@ -18,7 +18,8 @@ hidden states and a small in-memory table, so behavior is verified without the m
   word abstains.
 - **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**,
   **..._ThreeSenses_ReportsRunnerUpMargin**, **..._LowMargin_IsFlaggedAbstained**: the `WordSenseDetail`
-  (`WordSenseDetail.cs`) fields. For a two-sense lemma `Margin` is twice the activation, `RunnerUp` is the other
+  (declared in `WordSenseClassifier.cs`) fields. For a two-sense lemma `Margin` is twice the activation,
+  `RunnerUp` is the other
   sense and `RunnerUpMargin` is 0; for a three-sense lemma `RunnerUp` is the second-best sense, `RunnerUpMargin` is
   its score minus the third-best score, and a tie for the best score gives a `Margin` of 0 with the first sense
   listed as `Sense`. `Abstained` is set when the margin is below the scaled threshold and `Sense` is still given.

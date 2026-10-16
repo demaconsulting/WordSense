@@ -10,7 +10,7 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
 - `WordSense`: sealed immutable class, one instance per (lemma, sense) created when the table is
   loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
 - `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly record struct, declared in
-  `WordSenseDetail.cs` and returned by `ClassifyDetailAsync`. `Sense` is the best sense and is set even when the
+  `WordSenseClassifier.cs` and returned by `ClassifyDetailAsync`. `Sense` is the best sense and is set even when the
   classifier abstained. `Margin` is the score of the best sense minus the score of the runner-up (a score
   difference, not a probability, comparable only within one lemma; for a two-sense lemma the scores are `-a` and
   `+a`, so the margin is `2|a|`). `RunnerUp` is the second-best sense and is never null because every lemma has at
