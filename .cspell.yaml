@@ -14,6 +14,7 @@ language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - wordfreq
   - tatoeba
   - featurized
   - overcall

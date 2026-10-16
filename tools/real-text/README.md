@@ -12,6 +12,17 @@ licensed or public-domain sources. Raw downloads go to `cache/` (git-ignored); o
   fetch them; a single short excerpt is entered by hand into a candidates file with its URL, and the builder rejects a
   web excerpt without an `http(s)` URL (`validate-provenance`).
 
+## Phase 4 Candidates
+
+`candidates-a-b.tsv` lists the 112 tier A and B heteronym candidates (53 and 59) taken from a one-off candidate survey
+(lemma, inflected forms, ARPAbet variants, probable sense labels and WordNet part-of-speech counts). Provenance:
+pronunciations from CMUdict (BSD-style licence), Wiktionary (CC BY-SA 4.0; facts and word lists only, no prose) and
+WordNet 3.0 (Princeton licence); word frequencies came from the `wordfreq` package. `new-lemma-inventory.tsv` is the
+sense inventory authored from them (one row per sense with part of speech, pronunciation group, ARPAbet, batch, tier and
+status), and `docs/build_notes/new-lemma-decisions.md` records every accept and reject decision. Authored sentences for
+rare senses go into `anchors/new-*.tsv` and `holdout/new-*.tsv` with the origin `authored`, which `validate-provenance`
+checks.
+
 ## Usage
 
 ```text
