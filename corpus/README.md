@@ -79,7 +79,8 @@ Phase 4 lemmas to its pronunciation group and ARPAbet with its counts, source mi
 accuracy; see `docs/build_notes/new-lemma-results.md`. Phase 5 noun/verb lemmas are imported by `nounverb-import` into
 `anchors|holdout|provenance|senses/nounverb-N.tsv` (origins real or `user-supplied`, licence
 `MIT (project-authored)` for the latter) and `audit/nounverb-untrained.tsv` lists every lemma left untrained with the
-reason.
+reason. `audit/nounverb-dropped.tsv` lists lemmas removed by `nounverb-gate` (see
+`docs/build_notes/nounverb-results.md`).
 
 ## Analysis Output
 
