@@ -131,3 +131,32 @@ forearm	forearm-noun	noun	stress-first	-	noun (FOR-arm, stress on the first syll
 forearm	forearm-verb	verb	stress-last	-	verb (for-ARM, stress on the last syllable): to arm or prepare someone beforehand against danger: forewarned is forearmed, forearmed with facts, forearm yourself against attack	new
 alum	alum-mineral	noun	mineral	-	noun (AL-um, first syllable like pal): a pale mineral salt used in dyeing, tanning and pickling and to stop bleeding: a pinch of alum, alum crystals, potassium alum	new
 alum	alum-graduate	noun	graduate	-	noun (a-LUM, like alumni): informal short form of alumnus or alumna, a former student of a school or college: a Harvard alum, an alum of the class of 1990, alums of the university	new
+supposed	supposed-adj	adj	voiced	-	adjective (sup-POZED, ends with z): believed or assumed, often wrongly: the supposed cause, a supposed expert, their supposed friend	new
+supposed	supposed-past	verb	voiced	-	verb (sup-POZED, ends with z): past tense of suppose, to assume or think something likely: I supposed he was right, she supposed it was true, they supposed that we knew	new
+supposed	supposed-to	adj	unvoiced	-	adjective (sup-POST, ends with t): in 'supposed to', meaning expected, required or meant to: I am supposed to go, you are not supposed to, what was it supposed to do	new
+blessed	blessed-adj	adj	two-syllable	-	adjective (BLESS-id, two syllables): holy or sacred, or fortunate and happy: the Blessed Virgin, a blessed event, blessed are the meek, blessed with good health	new
+blessed	blessed-past	verb	one-syllable	-	verb (BLEST, one syllable): past tense of bless, to make holy or to wish well: the priest blessed the crowd, she blessed the food, was blessed by the pope	new
+august	august-adj	adj	adj	-	adjective (aw-GUST, stress on the second syllable): respected, noble or impressive: an august gathering, the august presence, an august institution	new
+august	august-month	noun	month	-	noun (AW-gust, stress on the first syllable): the eighth month of the year: in August, August 15, the heat of August	new
+defense	defense-general	noun	general	-	noun (de-FENSE, stress on the second syllable): protection against attack or harm, or the arguments made for an accused person: self-defense, a strong defense, the defense of the city, the defense lawyer	new
+defense	defense-sports	noun	sports	-	noun (DEE-fense, stress on the first syllable): in sports, the team or players trying to stop the other side from scoring: the defense held, a strong defense, the defense forced a turnover	new
+bases	bases-base	noun	base	-	noun (BAY-sez): the plural of base, meaning foundations, bottoms or supports, military camps, or the bases in baseball: the army bases, the bases of the columns, loaded the bases	new
+bases	bases-verb	verb	base	-	verb (BAY-sez): the present tense of base, to build or found something on something else: she bases her answer on the facts, he bases his decisions on data, the firm bases its prices on costs	new
+bases	bases-basis	noun	basis	-	noun (BAY-seez): the plural of basis, the underlying reasons or foundations: the bases for the decision, on what bases, the bases of the argument	new
+costume	costume-noun	noun	stress-first	-	noun (COS-tume): clothing worn for a role, a party or a special occasion: a Halloween costume, a theater costume, a costume party	new
+costume	costume-verb	verb	stress-last	-	verb (cos-TUME): to dress someone in a costume or to provide the costumes for a show: costume the actors, costumed as a pirate, costuming the play	new
+romance	romance-noun	noun	stress-first	-	noun (RO-mance): a love affair, or a story about love and adventure: a summer romance, a historical romance, the romance of the sea	new
+romance	romance-verb	verb	stress-last	-	verb (ro-MANCE): to court or woo someone, or to flatter someone to win favor: romance a customer, romanced her with flowers, romancing the voters	new
+submarine	submarine-noun	noun	stress-first	-	noun (SUB-ma-reen, stress on the first syllable): a ship that can travel under water, or a long sandwich: a nuclear submarine, a submarine captain, a submarine sandwich	new
+submarine	submarine-adj	adj	stress-last	-	adjective (sub-ma-REEN, stress on the last syllable): lying, living or working under the sea: a submarine cable, submarine canyons, submarine plants	new
+excerpt	excerpt-noun	noun	stress-first	-	noun (EX-erpt): a short passage taken from a longer text or film: an excerpt from the novel, read an excerpt, excerpts of the speech	new
+excerpt	excerpt-verb	verb	stress-last	-	verb (ex-ERPT): to take a short passage from a longer work: excerpt a chapter, excerpted in the magazine, excerpting the report	new
+annex	annex-noun	noun	stress-first	-	noun (AN-ex): a building added to or near a larger one: the hotel annex, a library annex, a new annex	new
+annex	annex-verb	verb	stress-last	-	verb (a-NEX): to take over territory, or to attach something as an addition: annex the island, annexed by Austria, annexing the province	new
+slough	slough-skin	noun	shed	-	noun (SLUFF): dead skin or tissue that is shed, such as the cast skin of a snake: a slough of dead tissue, the snake's slough, necrotic slough	new
+slough	slough-shed	verb	shed	-	verb (SLUFF): to shed or cast off something, such as skin, or to get rid of something unwanted: the snake sloughed its skin, sloughing off old habits, sloughed off the dead cells	new
+slough	slough-swamp	noun	swamp	-	noun (SLOW, rhymes with cow): a swamp, a muddy inlet or a state of deep gloom: a slough of despond, a muddy slough, the cattails of the slough	new
+tarry	tarry-linger	verb	linger	-	verb (TAIR-ee, rhymes with carry): to stay somewhere longer than you should, or to be slow to leave or act: do not tarry, tarried in the village, tarrying at the gate	new
+tarry	tarry-tar	adj	tar	-	adjective (TAR-ee, rhymes with starry): covered with or like tar: a tarry smell, tarry black stains, a tarry residue	new
+underscore	underscore-noun	noun	stress-first	-	noun (UN-der-score): the character _ used in file names and code, or a line drawn under a word: a name with an underscore, the underscore key, words separated by underscores	new
+underscore	underscore-verb	verb	stress-last	-	verb (un-der-SCORE): to emphasize something, or to draw a line under it: underscore the importance, underscored the need, underscoring the point	new
