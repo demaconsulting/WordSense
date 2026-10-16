@@ -16,6 +16,7 @@ sections:
         tests:
           - DownloadMirror_Constructor_HttpsBase_IsAccepted
           - DownloadMirror_Constructor_InvalidBase_Throws
+          - DownloadMirror_Constructor_UserInfoInBase_Throws
           - DownloadMirror_Constructor_RelativeBase_Throws
           - DownloadMirror_Constructor_BadAuthentication_Throws
           - DownloadMirror_Constructor_CredentialsOverPlainHttp_OnlyLoopbackAllowed
@@ -32,6 +33,7 @@ sections:
           - DownloadMirror_FromEnvironment_AllVariables_BuildsMirror
           - DownloadMirror_FromEnvironment_InvalidConfiguration_Throws
           - DownloadMirror_FromEnvironment_BearerWithoutUrlOrPasswordWithoutUser_Throws
+          - DownloadMirror_FromEnvironment_WhitespaceOnlyCredentials_AreUnset
 
       - id: WordSense-Mirror-Redaction
         title: The mirror configuration shall never reveal secrets when converted to text.

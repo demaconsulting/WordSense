@@ -104,7 +104,9 @@ sections:
           encoder wraps ONNX Runtime so the rest of the library depends only on a small interface.
         children:
           - WordSense-Encoder-Encode
+          - WordSense-Encoder-Identity
           - WordSense-Encoder-Validation
+          - WordSense-Encoder-Concurrency
           - WordSense-Tokenizer-Window
           - WordSense-Tokenizer-Spans
           - WordSense-OTS-OnnxRuntime-Inference

@@ -15,6 +15,8 @@ sections:
           - WordPieceTokenizer_Tokenize_SmallVocabulary_SplitsIntoWordPieces
           - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
           - WordPieceTokenizer_Tokenize_LoneSurrogatesAndControlCharacters_AreDropped
+          - WordPieceTokenizer_Tokenize_OverlongWord_BecomesSingleUnknown
+          - WordPieceTokenizer_FromFile_ReadsLinesAndReportsIoErrors
           - WordPieceTokenizer_NullArguments_ThrowArgumentNullException
           - WordPieceTokenizer_VocabularyMissingSpecialToken_ThrowsArgumentException
 

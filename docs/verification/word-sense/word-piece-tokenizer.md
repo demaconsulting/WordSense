@@ -23,6 +23,10 @@ vocabularies. No mocking is needed.
   `[UNK]`, `[CLS]` or `[SEP]` is rejected.
 - **WordPieceTokenizer_Tokenize_LoneSurrogatesAndControlCharacters_AreDropped**: lone surrogates and
   control characters are dropped.
+- **WordPieceTokenizer_Tokenize_OverlongWord_BecomesSingleUnknown**: a word of 100 normalized characters is split
+  into pieces and one of 101 becomes a single `[UNK]` spanning the word.
+- **WordPieceTokenizer_FromFile_ReadsLinesAndReportsIoErrors**: a vocabulary file with mixed line endings is read
+  line by line and a missing file raises an `IOException`.
 
 ## Requirements Coverage
 

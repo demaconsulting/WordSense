@@ -35,13 +35,18 @@ sections:
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
       - id: WordSense-Classifier-Detail
-        title: The classifier shall report, on request, the best sense, the runner-up sense and their margins.
+        title: >-
+          The classifier shall report, on request, a WordSenseDetail with the best sense, the runner-up sense,
+          the margin of the best over the runner-up, the margin of the runner-up over the third-best sense and
+          whether the classifier abstained, including for words it abstained from.
         tags: [unit]
         justification: |
           Callers that apply their own confidence policy need the evidence behind a decision, including
-          decisions the classifier abstained from.
+          decisions the classifier abstained from. The margin is a score difference that is comparable only
+          within one lemma, so the runner-up and the abstained flag are reported with it.
         tests:
           - WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp
+          - WordSenseClassifier_ClassifyDetailAsync_ThreeSenses_ReportsRunnerUpMargin
           - WordSenseClassifier_ClassifyDetailAsync_LowMargin_IsFlaggedAbstained
 
       - id: WordSense-Classifier-Tags

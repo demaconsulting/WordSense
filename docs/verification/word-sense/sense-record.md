@@ -19,7 +19,9 @@ hand-built inputs; no model is needed.
   **TagScorer_IsTag_AnswersBoolOrNull** (which includes the tie rule: the tag wins a tie): the tag rule.
 - **TagScorer_Abstains_NaNMarginOrThreshold_Abstains**: a NaN margin or threshold abstains.
 - **TextSplitter_SplitSegments_TileTheText**, **TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets**:
-  segmentation. The exact-tiling invariant of `WordSenseToken` sequences is verified at the splitter level by
+  segmentation. The exact-tiling invariant of `WordSenseToken` sequences is verified at the record level by
+  **WordSenseToken_Tiles_FollowSegmentSpans** (tokens built from the splitter segments have contiguous
+  spans whose texts concatenate to the input), at the splitter level by
   **TextSplitter_SplitSegments_TileTheText** and at the classifier level by
   **WordSenseClassifier_ClassifyAsync_Text_TokensTileInput** (see the classifier verification), which
   concatenates the token texts and compares them with the input.

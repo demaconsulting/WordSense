@@ -292,6 +292,42 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
+    ///     For a three-sense lemma the detail names the runner-up and measures it against the third-best sense; a tie
+    ///     for the best score gives a zero margin and the sense listed first wins.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyDetailAsync_ThreeSenses_ReportsRunnerUpMargin()
+    {
+        var model = new LemmaModel(
+            "bat",
+            [new SenseDefinition("a", ["noun"]), new SenseDefinition("b", ["noun"]), new SenseDefinition("c", ["verb"])],
+            LemmaModelKind.OneVersusRest,
+            [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f],
+            [0f, 0f, 0f],
+            0.1f,
+            3);
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", TableSha, 3, [0f, 0f, 0f], [model], new Dictionary<string, string> { ["bat"] = "bat" });
+        using var classifier = new WordSenseClassifier(new FakeEncoder(), table, new WordPieceTokenizer(Vocabulary), null, false);
+
+        // After "the" the feature is (0.707, 0.707, 0): senses a and b tie; after "a" it is (-0.707, 0.707, 0)
+        var details = await classifier.ClassifyDetailAsync(["the", "bat", "a", "bat"], TestContext.Current.CancellationToken);
+
+        var tie = details[1]!.Value;
+        Assert.Equal("a", tie.Sense.Sense);
+        Assert.Equal("b", tie.RunnerUp.Sense);
+        Assert.Equal(0.0, tie.Margin, 4);
+        Assert.Equal(Math.Sqrt(0.5), tie.RunnerUpMargin, 4);
+        Assert.True(tie.Abstained);
+        var clear = details[3]!.Value;
+        Assert.Equal("b", clear.Sense.Sense);
+        Assert.Equal("c", clear.RunnerUp.Sense);
+        Assert.Equal(Math.Sqrt(0.5), clear.Margin, 4);
+        Assert.Equal(Math.Sqrt(0.5), clear.RunnerUpMargin, 4);
+        Assert.False(clear.Abstained);
+    }
+
+    /// <summary>
     ///     A tag query answers with the best matching tag, or null when the tag is absent or abstained.
     /// </summary>
     [Fact]

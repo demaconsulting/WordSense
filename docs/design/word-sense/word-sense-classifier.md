@@ -9,9 +9,20 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
 
 - `WordSense`: sealed immutable class, one instance per (lemma, sense) created when the table is
   loaded, with `Lemma`, `Sense`, `Tags` and `Group`; see the SenseRecord unit.
-- `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly struct.
-- `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload (the type
-  is owned by the SenseRecord unit; see the SenseRecord design).
+- `WordSenseDetail(Sense, Margin, RunnerUp, RunnerUpMargin, Abstained)`: readonly record struct, declared in
+  `WordSenseDetail.cs` and returned by `ClassifyDetailAsync`. `Sense` is the best sense and is set even when the
+  classifier abstained. `Margin` is the score of the best sense minus the score of the runner-up (a score
+  difference, not a probability, comparable only within one lemma; for a two-sense lemma the scores are `-a` and
+  `+a`, so the margin is `2|a|`). `RunnerUp` is the second-best sense and is never null because every lemma has at
+  least two senses; of equal scores the sense that comes first in the table wins, so a tie gives `Margin` 0.
+  `RunnerUpMargin` is the runner-up score minus the third-best score, or 0 for a two-sense lemma. `Abstained` is
+  true when `Margin` is below the lemma's abstain threshold (`LemmaModel.AbstainMargin` times
+  `AbstainMarginScale`), by the same predicate `ClassifyAsync` uses. The threshold itself is not part of the
+  detail; a caller who needs it derives it from the table.
+- `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload; the type is
+  owned by the SenseRecord unit (see the SenseRecord design) and the classifier only constructs it.
+- `IWordSenseClassifier`: the public interface, declared in `WordSenseClassifier.cs`, implemented by
+  `WordSenseClassifier`.
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
   `IntraOpThreads`, `AbstainMarginScale`.
 
@@ -27,9 +38,10 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
   resolved to a lemma (lower-case, curly apostrophe normalized; a trailing `'s` is removed only when the word
   is not already a known form itself). The words are
   encoded in one pass, joined by single spaces.
-- `ClassifyDetailAsync(words, ct)`: as above, returning a `WordSenseDetail?` per word; the best sense is
+- `ClassifyDetailAsync(words, ct)`: as above, returning a `WordSenseDetail?` per word (null for a word that has no
+  classifier); the best sense is
   reported also when `Abstained` is true. `Margin` is best minus runner-up; `RunnerUpMargin` is runner-up
-  minus third (0 for two senses).
+  minus third (0 for two senses); see the data model for the full semantics.
 - `ClassifyTagAsync(words, tags, ct)` and `IsTagAsync(words, tag, ct)`: tag-level queries. A tag's score
   is the best sense score among the senses carrying it; the senses without any queried tag form an
   "other" group. The tag with the best score is returned, and `null` when no queried tag is on the lemma,
@@ -66,6 +78,7 @@ Features are the mean of the target word pieces' hidden states minus the table m
 
 ## Interactions
 
-Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder` and `WordSenseModelDownloader`. The
+Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder` and `WordSenseModelDownloader`, and the
+SenseRecord unit (`WordSense`, `WordSenseToken`, `TextSplitter` and `TagScorer`). The
 classifier is thread-safe when its encoder is: the table and tokenizer are immutable and the session is
 shared.

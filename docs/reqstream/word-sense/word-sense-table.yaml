@@ -49,6 +49,12 @@ sections:
           - WordSenseTable_Read_ResignedTagCountAboveCap_Throws
           - WordSenseTable_Read_ResignedUnknownModelKind_Throws
           - WordSenseTable_Read_ResignedUnsortedOrDuplicateTags_Throws
+          - WordSenseTable_Read_ResignedLemmaCountAboveCap_Throws
+          - WordSenseTable_Read_ResignedFormCountAboveCap_Throws
+          - WordSenseTable_Read_ResignedSenseCountOutOfRange_Throws
+          - WordSenseTable_Read_ResignedSenseTagCountOutOfRange_Throws
+          - WordSenseTable_Read_ResignedInvalidGroup_Throws
+          - WordSenseTable_Read_ResignedBadFormEntry_Throws
           - WordSenseTable_Constructor_NullArguments_Throw
           - WordSenseTable_Constructor_InvalidValues_Throw
 
@@ -60,6 +66,8 @@ sections:
         tests:
           - WordSenseTable_Score_Binary_UsesActivationSign
           - WordSenseTable_Score_OneVersusRest_PicksBestRow
+          - WordSenseTable_Score_BinaryZeroActivation_SelectsSecondSense
+          - WordSenseTable_Score_OneVersusRestTie_SelectsFirstHighest
           - WordSenseTable_Scores_Binary_ReturnsNegatedAndActivation
           - WordSenseTable_Scores_OneVersusRest_ReturnsPerRowActivation
           - WordSenseTable_Scores_LengthMismatch_Throws

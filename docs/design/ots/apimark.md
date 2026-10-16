@@ -20,9 +20,12 @@ the code it describes.
 - Namespace description from a `NamespaceDoc` carrier class (`NamespaceDoc.cs`, an `internal static class NamespaceDoc`
   in the namespace, which is ApiMark's documented convention; ApiMark recognizes it by that shape and omits it
   from the type list and from enforcement; its XML summary, remarks and example become the namespace page; without
-  it the namespace shows "No description provided"). The page carries the quickstart, package and target
-  frameworks, tag catalog, single-word recipe, tokenization notes, thread safety, group semantics and examples.
-  The carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to repository documents in
+  it the namespace shows "No description provided"). The carrier's XML documentation is written to cover the
+  quickstart, package and target frameworks, tag catalog, single-word recipe, tokenization and context window,
+  thread safety, group semantics and examples. FileAssert does not assert that content of the namespace page
+  (it asserts only the index, the classifier example block, the terminology on `IWordSenseClassifier` and the
+  `CreateAsync` page); the carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to
+  repository documents in
   XML docs use absolute GitHub URLs, because the packaged API reference has no access to repository files.
 
 ### Integration Pattern
@@ -53,8 +56,9 @@ rebuild (`--no-incremental`), since an up-to-date incremental build skips the ta
 
 Enforcement was confirmed active by observation: adding a public property without an XML summary
 made the build fail with `[Undocumented] Property` and `ApiMark.Tool exited with code 1`; removing
-it returned the build to green. ApiMark did not flag an implicit constructor of a documented
-class, so that case is not claimed as covered.
+it returned the build to green. This observation is manual evidence and is not repeated by an
+automated test. Whether ApiMark flags a missing summary on an implicit (compiler-generated)
+constructor was not observed, so enforcement is not claimed for that case.
 
 ### Example Correctness
 

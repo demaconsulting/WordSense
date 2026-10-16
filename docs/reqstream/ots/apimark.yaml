@@ -36,6 +36,7 @@ sections:
             tests:
               - ApiMark_ExampleCodeRendered
               - ApiMark_TerminologyDocumented
+              - WordSense_XmlDocExamples_Compile
 
           - id: WordSense-OTS-ApiMark-EnforceDocs
             title: >-

@@ -89,11 +89,12 @@ src/DemaConsulting.WordSense/
 ├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs, WordSenseTableFormatException.cs — table unit
 ├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs, WordSenseToken.cs — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
-├── WordSenseClassifier.cs, WordSenseClassifierOptions.cs, WordSenseDetail.cs,
+├── WordSenseClassifier.cs (also declares IWordSenseClassifier), WordSenseClassifierOptions.cs, WordSenseDetail.cs,
 │   FeatureExtractor.cs, WordSenseModelMismatchException.cs — classifier unit
 ├── DownloadMirror.cs                              — mirror unit
-├── WordSenseModelDownloader.cs, WordSenseModelDownloaderOptions.cs,
-│   WordSenseModelLocation.cs, WordSenseModelCatalog.cs — downloader unit
+├── WordSenseModelDownloader.cs, WordSenseModelLocation.cs, WordSenseModelCatalog.cs — downloader unit
+├── WordSenseModelDownloaderOptions.cs             — downloader unit; also declares WordSenseModelDownloadProgress
+│                                                    and WordSenseModelDownloadException
 ├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
 └── Resources/wordsense-table.bin                  — embedded table
 
@@ -109,7 +110,8 @@ Throughout this document:
 - Class names, method names, property names, and file names appear in `monospace` font.
 - The word **shall** denotes a design constraint that the implementation must satisfy.
 - Section headings within each unit chapter follow a consistent structure: overview, data model,
-  methods/algorithms, and interactions with other units.
+  methods (or algorithm), error handling, and interactions with other units; a unit may add further sections
+  where it needs them (for example thread safety).
 - Text tables are used in preference to diagrams, which may not render in all PDF viewers.
 
 ## Companion Artifact Structure

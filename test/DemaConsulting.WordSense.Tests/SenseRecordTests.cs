@@ -47,9 +47,12 @@ public class SenseRecordTests
     [Fact]
     public void WordSense_LemmaModel_SharesOneRecordPerSense()
     {
-        var table = WordSenseTableTests.CreateSmallTable();
-        var model = table.Lemmas[0];
-
+        var model = new LemmaModel(
+            "bat", [new SenseDefinition("animal", ["noun"]), new SenseDefinition("tool", ["noun", "verb"])],
+            LemmaModelKind.Binary, [1f, -2f, 0.5f], [0.25f], 0.75f, 3);
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", "afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1", 3,
+            [0.1f, 0.2f, 0.3f], [model], new Dictionary<string, string> { ["bat"] = "bat" });
         var first = model.Senses;
         var second = model.Senses;
 
@@ -320,6 +323,39 @@ public class SenseRecordTests
         Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun\n"]).Validate());
         Assert.Throws<ArgumentException>(() => new SenseDefinition("a", ["noun"], "grp\n").Validate());
         new SenseDefinition("a", tooMany.Take(SenseDefinition.MaxTagsPerSense).ToArray()).Validate();
+    }
+
+    /// <summary>
+    ///     A token sequence built from the segments of a text tiles it, each token has the text at its offsets and
+    ///     only words may carry a sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseToken_Tiles_FollowSegmentSpans()
+    {
+        const string text = "They record it, don't.";
+        var sense = Sense("record", "verb", "verb");
+        var tokens = TextSplitter.SplitSegments(text)
+            .Select(s => new WordSenseToken(
+                s.Start, s.Length, text.Substring(s.Start, s.Length),
+                s.IsWord && text.Substring(s.Start, s.Length) == "record" ? sense : null))
+            .ToList();
+
+        var position = 0;
+        foreach (var token in tokens)
+        {
+            Assert.Equal(position, token.Start);
+            Assert.True(token.Length > 0);
+            Assert.Equal(token.Length, token.Text.Length);
+            Assert.Equal(text.Substring(token.Start, token.Length), token.Text);
+            position += token.Length;
+        }
+
+        Assert.Equal(text.Length, position);
+        Assert.Equal(text, string.Concat(tokens.Select(t => t.Text)));
+        var tagged = Assert.Single(tokens, t => t.Sense is not null);
+        Assert.Equal("record", tagged.Text);
+        Assert.Same(sense, tagged.Sense);
+        Assert.Equal(new WordSenseToken(0, 4, "They", null), tokens[0]);
     }
 
     /// <summary>

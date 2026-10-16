@@ -40,7 +40,7 @@ public class WordPieceTokenizerTests
             count++;
         }
 
-        Assert.True(count >= 150);
+        Assert.Equal(176, count);
     }
 
     /// <summary>
@@ -56,6 +56,51 @@ public class WordPieceTokenizerTests
         Assert.Equal([4, 5, 6, 7, 8, 1, 9], result.Ids);
         Assert.Equal(0, result.Starts[0]);
         Assert.Equal(3, result.Ends[0]);
+    }
+
+    /// <summary>
+    ///     A word of 100 normalized characters is split into pieces, but one of 101 becomes a single unknown token
+    ///     that spans the whole word.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_Tokenize_OverlongWord_BecomesSingleUnknown()
+    {
+        var tokenizer = new WordPieceTokenizer(["[PAD]", "[UNK]", "[CLS]", "[SEP]", "a", "##a"]);
+
+        var atLimit = tokenizer.Tokenize(new string('a', 100));
+        var overLimit = tokenizer.Tokenize(new string('a', 101));
+
+        Assert.Equal(100, atLimit.Count);
+        Assert.Equal(4, atLimit.Ids[0]);
+        Assert.All(atLimit.Ids.Skip(1), id => Assert.Equal(5, id));
+        Assert.Equal([1], overLimit.Ids);
+        Assert.Equal(0, overLimit.Starts[0]);
+        Assert.Equal(101, overLimit.Ends[0]);
+    }
+
+    /// <summary>
+    ///     A vocabulary file is read line by line whatever its line endings, and an unreadable file is an I/O error.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_FromFile_ReadsLinesAndReportsIoErrors()
+    {
+        var path = Path.Combine(Path.GetTempPath(), $"wordsense-vocab-{Guid.NewGuid():N}.txt");
+        try
+        {
+            File.WriteAllText(path, "[PAD]\r\n[UNK]\r\n[CLS]\n[SEP]\nthe\n");
+
+            var tokenizer = WordPieceTokenizer.FromFile(path);
+
+            Assert.Equal(1, tokenizer.UnknownId);
+            Assert.Equal(2, tokenizer.ClsId);
+            Assert.Equal(3, tokenizer.SepId);
+            Assert.Equal([4], tokenizer.Tokenize("The").Ids);
+            Assert.ThrowsAny<IOException>(() => WordPieceTokenizer.FromFile(path + ".missing"));
+        }
+        finally
+        {
+            File.Delete(path);
+        }
     }
 
     /// <summary>

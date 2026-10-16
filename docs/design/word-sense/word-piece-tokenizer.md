@@ -4,8 +4,9 @@
 
 `WordPieceTokenizer` reproduces the BERT uncased tokenizer used by `all-MiniLM-L6-v2`: Unicode
 normalization (NFD, accents stripped, lower-casing), splitting on whitespace and punctuation, CJK
-characters as separate words, and greedy longest-match WordPiece with `##` continuations. Words
-longer than 100 characters, or with no match, become `[UNK]`.
+characters as separate words, and greedy longest-match WordPiece with `##` continuations. A word of more
+than 100 normalized characters (code points after accent stripping), or with no match, becomes one `[UNK]`
+spanning the whole word.
 
 ## Data Model
 
@@ -33,8 +34,9 @@ longer than 100 characters, or with no match, become `[UNK]`.
 - `ArgumentNullException` for a null vocabulary, text, word list, or word in the list.
 - `ArgumentException` when the vocabulary lacks `[UNK]`, `[CLS]` or `[SEP]`.
 - `IOException` (or a derived exception) from `FromFile` when the vocabulary file cannot be read.
-- Lone surrogates, NUL, U+FFFD and control characters carry no content and are dropped; they never
-  raise an exception.
+- Characters that BERT text cleaning removes never raise an exception: NUL, U+FFFD, lone surrogates, and every
+  code point of the Unicode categories control (other than tab, line feed and carriage return), format,
+  unassigned, private-use and surrogate are dropped. Other white space becomes a space.
 
 ## Interactions
 

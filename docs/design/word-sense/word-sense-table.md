@@ -71,13 +71,19 @@ the same result as the plain scalar sum up to floating-point rounding. A binary 
   throw `OverflowException` when a count does not fit its field (for example more than 65,535 distinct tags or
   senses in one lemma).
 - `Read` verifies the trailing digest before trusting any length field, caps every count (dimension
-  4096, lemmas 100,000, forms 2,000,000, senses per lemma 64, distinct tags 256), and checks the
+  4096, lemmas 100,000, forms 2,000,000, senses per lemma 2 to 64, distinct tags 256, tags per sense 1 to 16),
+  and checks the
   structure: tags valid, sorted and unique, sense tag indexes in range and ascending, every dictionary
-  tag used, known model kinds, valid form-to-lemma indexes without duplicates, and no trailing data.
+  tag used, known model kinds, a sense group that is empty or a valid group string, valid form-to-lemma indexes
+  (in range and without a duplicated form), and no trailing data.
+  A sense with zero or more than 16 tags and a sense whose group string is invalid are reported as
+  `WordSenseTableFormatException`, like every other structural failure.
   Constructor validation failures raised while reading are reported as `WordSenseTableFormatException`.
 - The read caps are enforced only by `Read`: the constructors and `Write` do not apply them, so a table
   built in memory can exceed a cap and be written, but `Read` will then reject it.
 
 ## Interactions
 
-Read by `WordSenseClassifier`; written by `WordSenseBuilder`. `VectorMath.Dot` is the only helper.
+Read by `WordSenseClassifier`; written by `WordSenseBuilder`. `VectorMath.Dot` is the only numeric helper the
+scoring uses. `LemmaModel` also depends on the SenseRecord unit: it creates one `WordSense` per
+`SenseDefinition`, and `Read` uses `SenseDefinition.IsValidTag` to validate tags and groups.

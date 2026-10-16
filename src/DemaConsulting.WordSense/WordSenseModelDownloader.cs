@@ -50,6 +50,10 @@ public static class WordSenseModelDownloader
     ///     path the platform cannot represent).
     /// </exception>
     /// <exception cref="IOException">Thrown when the store directory cannot be created or an existing model file cannot be read.</exception>
+    /// <exception cref="FileNotFoundException">Thrown by the final verification when a model file is missing.</exception>
+    /// <exception cref="InvalidDataException">
+    ///     Thrown by the final verification when a stored model file does not match its pinned SHA-256 digest.
+    /// </exception>
     /// <exception cref="UnauthorizedAccessException">Thrown when the store directory cannot be created or accessed.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <remarks>
@@ -95,7 +99,7 @@ public static class WordSenseModelDownloader
         if (requestTimeout != Timeout.InfiniteTimeSpan && (requestTimeout <= TimeSpan.Zero || requestTimeout.TotalMilliseconds > uint.MaxValue - 1))
         {
             throw new ArgumentOutOfRangeException(
-                nameof(options),
+                $"{nameof(options)}.{nameof(options.RequestTimeout)}",
                 requestTimeout,
                 "RequestTimeout must be positive (or Timeout.InfiniteTimeSpan) and no longer than about 49 days.");
         }

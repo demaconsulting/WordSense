@@ -471,6 +471,179 @@ public class WordSenseTableTests
     }
 
     /// <summary>
+    ///     The offset of the lemma count in the single-lemma body: header, model id, digest, dimension, mean and
+    ///     the two-tag dictionary precede it.
+    /// </summary>
+    private const int LemmaCountOffset = 8 + 2 + 16 + 32 + 4 + (3 * 4) + 2 + 12;
+
+    /// <summary>
+    ///     The offset of the sense count of the only lemma (after the lemma count and the string "bat").
+    /// </summary>
+    private const int SenseCountOffset = LemmaCountOffset + 4 + 2 + 3;
+
+    /// <summary>
+    ///     The offset of the tag count of the first sense (after the sense count and the name "animal").
+    /// </summary>
+    private const int FirstSenseTagCountOffset = SenseCountOffset + 2 + 2 + 6;
+
+    /// <summary>
+    ///     A correctly signed table that declares a lemma count above the cap is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedLemmaCountAboveCap_Throws()
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b =>
+        {
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt32LittleEndian(b.AsSpan(LemmaCountOffset), 100_001);
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("count", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table that declares a form count above the cap is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedFormCountAboveCap_Throws()
+    {
+        // With no forms the body ends with the u32 form count
+        var bytes = Resign(CreateSingleLemmaBytes(), b =>
+        {
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt32LittleEndian(b.AsSpan(b.Length - 4), 2_000_001);
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("count", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose lemma declares fewer than 2 or more than 64 senses is rejected.
+    /// </summary>
+    /// <param name="senseCount">The declared sense count.</param>
+    [Theory]
+    [InlineData(1)]
+    [InlineData(65)]
+    public void WordSenseTable_Read_ResignedSenseCountOutOfRange_Throws(int senseCount)
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b =>
+        {
+            System.Buffers.Binary.BinaryPrimitives.WriteUInt16LittleEndian(b.AsSpan(SenseCountOffset), (ushort)senseCount);
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("sense count", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose sense declares no tags or more than 16 tags is rejected.
+    /// </summary>
+    /// <param name="tagCount">The declared tag count of the first sense.</param>
+    [Theory]
+    [InlineData(0)]
+    [InlineData(17)]
+    public void WordSenseTable_Read_ResignedSenseTagCountOutOfRange_Throws(int tagCount)
+    {
+        var bytes = Resign(CreateSingleLemmaBytes(), b => { b[FirstSenseTagCountOffset] = (byte)tagCount; return b; });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("tag count", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table whose sense has a malformed group string is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Read_ResignedInvalidGroup_Throws()
+    {
+        // The first sense has one tag index (u16) and then an empty group string (u16 length 0); replace the
+        // empty group with the one-character group "X", which is not a valid group
+        const int groupOffset = FirstSenseTagCountOffset + 1 + 2;
+        var bytes = Resign(CreateSingleLemmaBytes(), b =>
+        {
+            Assert.Equal(0, b[groupOffset]);
+            Assert.Equal(0, b[groupOffset + 1]);
+            return [.. b[..groupOffset], 1, 0, (byte)'X', .. b[(groupOffset + 2)..]];
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("group", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A correctly signed table with a form that points past the lemma list or repeats a form is rejected.
+    /// </summary>
+    /// <param name="duplicate">True to repeat a form, false to use an out-of-range lemma index.</param>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void WordSenseTable_Read_ResignedBadFormEntry_Throws(bool duplicate)
+    {
+        // Two forms "bar" and "bat", each a u16 length, three bytes and a u32 lemma index, follow the form count
+        var bat = CreateSmallTable().Lemmas[0];
+        var table = new WordSenseTable(
+            "all-MiniLM-L6-v2", Sha, 3, [0.1f, 0.2f, 0.3f], [bat],
+            new Dictionary<string, string> { ["bar"] = "bat", ["bat"] = "bat" });
+        var bytes = Resign(table.ToArray(), b =>
+        {
+            const int entry = 2 + 3 + 4;
+            var first = b.Length - (2 * entry);
+            var second = b.Length - entry;
+            Assert.Equal("bar", System.Text.Encoding.UTF8.GetString(b, first + 2, 3));
+            Assert.Equal("bat", System.Text.Encoding.UTF8.GetString(b, second + 2, 3));
+            if (duplicate)
+            {
+                b[first + 4] = (byte)'t';
+            }
+            else
+            {
+                b[second + 5] = 1;
+            }
+
+            return b;
+        });
+
+        var ex = Assert.Throws<WordSenseTableFormatException>(() => WordSenseTable.Read(bytes));
+        Assert.Contains("form", ex.Message, StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    ///     A binary model whose activation is exactly zero selects the second sense with a margin of zero.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Score_BinaryZeroActivation_SelectsSecondSense()
+    {
+        var model = CreateSmallTable().Lemmas[0];
+        var scores = new float[2];
+
+        // Weights [1, -2, 0.5] and bias 0.25: this feature gives -0.25 + 0.25 = 0 exactly
+        var (best, margin) = model.Score([0f, 0.125f, 0f]);
+        model.Scores([0f, 0.125f, 0f], scores);
+
+        Assert.Equal(1, best);
+        Assert.Equal(0f, margin);
+        Assert.Equal(0f, scores[1]);
+    }
+
+    /// <summary>
+    ///     A one-versus-rest model with equal best activations selects the first of them with a margin of zero.
+    /// </summary>
+    [Fact]
+    public void WordSenseTable_Score_OneVersusRestTie_SelectsFirstHighest()
+    {
+        var model = CreateSmallTable().Lemmas[1];
+
+        // Rows 0 and 1 both score 0.1 (feature 0.1 on row 0; bias 0.1 on row 1); row 2 scores -0.1
+        var (best, margin) = model.Score([0.1f, 0f, 0f]);
+
+        Assert.Equal(0, best);
+        Assert.Equal(0f, margin);
+    }
+
+    /// <summary>
     ///     The table constructor rejects null arguments.
     /// </summary>
     [Fact]

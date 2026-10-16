@@ -75,6 +75,20 @@ public class DownloadMirrorTests
     }
 
     /// <summary>
+    ///     A base address that carries user information is rejected, whatever the other arguments are.
+    /// </summary>
+    [Fact]
+    public void DownloadMirror_Constructor_UserInfoInBase_Throws()
+    {
+        var withUser = new Uri("https://user@mirror.example/m");
+        var withUserAndPassword = new Uri("https://user:pw@mirror.example/m");
+
+        Assert.Throws<ArgumentException>(() => new DownloadMirror(withUser));
+        Assert.Throws<ArgumentException>(() => new DownloadMirror(withUserAndPassword));
+        Assert.Throws<ArgumentException>(() => new DownloadMirror(withUserAndPassword, null, "token"));
+    }
+
+    /// <summary>
     ///     The text form never reveals secrets.
     /// </summary>
     [Fact]
@@ -82,9 +96,52 @@ public class DownloadMirrorTests
     {
         var mirror = new DownloadMirror(new Uri("https://mirror.example/m"), new NetworkCredential("user", "hunter2"));
         var token = new DownloadMirror(new Uri("https://mirror.example/m"), null, "secret-token");
+        var none = new DownloadMirror(new Uri("https://mirror.example/m"));
 
         Assert.DoesNotContain("hunter2", mirror.ToString(), StringComparison.Ordinal);
+        Assert.DoesNotContain("user", mirror.ToString(), StringComparison.Ordinal);
         Assert.DoesNotContain("secret-token", token.ToString(), StringComparison.Ordinal);
+        Assert.Contains("Credentials = ***", mirror.ToString(), StringComparison.Ordinal);
+        Assert.Contains("BearerToken = null", mirror.ToString(), StringComparison.Ordinal);
+        Assert.Contains("BearerToken = ***", token.ToString(), StringComparison.Ordinal);
+        Assert.Contains("Credentials = null", token.ToString(), StringComparison.Ordinal);
+        Assert.Contains("https://mirror.example/m", mirror.ToString(), StringComparison.Ordinal);
+        Assert.Contains("Credentials = null", none.ToString(), StringComparison.Ordinal);
+        Assert.DoesNotContain("***", none.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A whitespace-only value counts as unset for the user, password and bearer-token variables.
+    /// </summary>
+    [Fact]
+    public void DownloadMirror_FromEnvironment_WhitespaceOnlyCredentials_AreUnset()
+    {
+        var mirror = DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "https://mirror.example/m",
+            ["WORDSENSE_MIRROR_USER"] = " \t ",
+            ["WORDSENSE_MIRROR_PASSWORD"] = "  ",
+            ["WORDSENSE_MIRROR_BEARER_TOKEN"] = " ",
+        }));
+        var withoutUrl = DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_USER"] = " ",
+            ["WORDSENSE_MIRROR_PASSWORD"] = " ",
+            ["WORDSENSE_MIRROR_BEARER_TOKEN"] = " ",
+        }));
+
+        Assert.NotNull(mirror);
+        Assert.Null(mirror.Credentials);
+        Assert.Null(mirror.BearerToken);
+        Assert.Null(withoutUrl);
+
+        // A blank user with a real password leaves a password without a user, which is an error
+        Assert.Throws<ArgumentException>(() => DownloadMirror.FromEnvironment(Env(new()
+        {
+            ["WORDSENSE_MIRROR_URL"] = "https://mirror.example/m",
+            ["WORDSENSE_MIRROR_USER"] = " ",
+            ["WORDSENSE_MIRROR_PASSWORD"] = "pw",
+        })));
     }
 
     /// <summary>

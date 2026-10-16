@@ -16,14 +16,19 @@ hidden states and a small in-memory table, so behavior is verified without the m
   **WordSenseClassifier_KnownLemmas_And_GetSenses_AreExposed** (including `GetSenses(null)`): lemma resolution and
   single pass. **..._InfiniteAbstainMarginScale_AlwaysAbstains**: a positive-infinity scale is accepted and every
   word abstains.
-- **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**, **..._LowMargin_IsFlaggedAbstained**:
-  detail margins and the abstained flag.
+- **WordSenseClassifier_ClassifyDetailAsync_ReportsMarginsAndRunnerUp**,
+  **..._ThreeSenses_ReportsRunnerUpMargin**, **..._LowMargin_IsFlaggedAbstained**: the `WordSenseDetail`
+  (`WordSenseDetail.cs`) fields. For a two-sense lemma `Margin` is twice the activation, `RunnerUp` is the other
+  sense and `RunnerUpMargin` is 0; for a three-sense lemma `RunnerUp` is the second-best sense, `RunnerUpMargin` is
+  its score minus the third-best score, and a tie for the best score gives a `Margin` of 0 with the first sense
+  listed as `Sense`. `Abstained` is set when the margin is below the scaled threshold and `Sense` is still given.
 - **WordSenseClassifier_ClassifyTagAsync_ReturnsTagOrNull**, **WordSenseClassifier_IsTagAsync_ReturnsBoolOrNull**,
   **WordSenseClassifier_TagQueries_InvalidArguments_Throw**: tag queries.
 - **WordSenseClassifier_ClassifyAsync_LowMargin_Abstains**: abstention; `ClassifyAsync` and `ClassifyDetailAsync`
   share one abstain predicate, so they agree.
 - **WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget**: windowing.
-- **WordSenseClassifier_Constructor_InvalidArguments_Throw** (including a negative or NaN `AbstainMarginScale`), **..._ModelMismatch_Throws**,
+- **WordSenseClassifier_Constructor_InvalidArguments_Throw** (including a negative or NaN
+  `AbstainMarginScale`), **..._ModelMismatch_Throws**,
   **WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory**,
   **WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel** (invalid options are reported before the
   model directory is touched): validation.

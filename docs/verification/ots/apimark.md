@@ -18,7 +18,7 @@ integration runs during the ordinary `dotnet build`, and the CI workflow then ru
 against the generated files in the same job, before the test step. ApiMark's `--validate`
 self-test is not used because it does not self-test generation.
 
-Two assertions check content rather than existence, because a complete-looking file tree could
+Three assertions check content rather than existence, because a complete-looking file tree could
 still hide examples rendered as prose or dropped remarks.
 
 ### Test Scenarios
@@ -50,21 +50,32 @@ still hide examples rendered as prose or dropped remarks.
 
 #### ApiMark_ClassifierDocumented
 
-**Scenario**: Documentation-coverage enforcement is active and the classifier factory is
-documented and generated.
+**Scenario**: The classifier factory member is documented and its page is generated.
 
 **Expected**: The `WordSenseClassifier.CreateAsync` member page exists and contains a fenced
 `csharp` example.
 
-**Rationale**: Enforcement is verified by the build itself: with severity `Error`, a green build
-cannot coexist with an undocumented public member. Enforcement was also demonstrated by observed
-green-to-red-to-green transitions when an undocumented public property was temporarily added.
+**What this proves**: only that the member page was generated from its documentation. It does not
+by itself prove enforcement. Enforcement is proven by the build failing when a public member lacks
+an XML summary: with severity `Error`, a green build cannot coexist with an undocumented public
+member, and this was observed manually as green-to-red-to-green transitions when an undocumented
+public property was temporarily added. That observation is not an automated test.
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-EnforceDocs`.
+
+#### WordSense_XmlDocExamples_Compile
+
+**Scenario**: Every `<example><code>` block in the shipped XML documentation file is compiled with
+Roslyn against the real compiled API (xUnit test in the main test project).
+
+**Expected**: All documented examples compile without errors.
+
+**Requirement coverage**: supporting evidence for `WordSense-OTS-ApiMark-RenderExamples`, because
+the rendered examples are only useful to a reader if they are correct.
 
 ### Requirements Coverage
 
 - **`WordSense-OTS-ApiMark-Generate`**: ApiMark_ApiIndex
 - **`WordSense-OTS-ApiMark-RenderExamples`**: ApiMark_ExampleCodeRendered,
-  ApiMark_TerminologyDocumented
+  ApiMark_TerminologyDocumented, WordSense_XmlDocExamples_Compile
 - **`WordSense-OTS-ApiMark-EnforceDocs`**: ApiMark_ClassifierDocumented

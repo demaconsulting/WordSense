@@ -1,6 +1,6 @@
 # OnnxWordSenseEncoder Unit Design
 
-## Purpose
+## Overview
 
 `OnnxWordSenseEncoder` implements `IWordSenseEncoder` with an ONNX Runtime `InferenceSession` over
 the int8 `all-MiniLM-L6-v2` model.
@@ -8,9 +8,12 @@ the int8 `all-MiniLM-L6-v2` model.
 ## Data Model
 
 The encoder holds one session, the model file's SHA-256 (computed at construction) and the hidden
-size read from the model output (384).
+size read from the model output (384): the last dimension of the first output as reported by ONNX Runtime. The
+encoder does not validate that value; when the model declares that dimension as dynamic or unknown, ONNX Runtime
+reports `-1`, so `HiddenSize` would be `-1` and the classifier would reject the pairing as a dimension mismatch with
+the table (`WordSenseModelMismatchException`). The pinned model has a fixed dimension of 384.
 
-## Key Methods
+## Methods
 
 - `OnnxWordSenseEncoder(path, intraOpThreads)`: validates the path and thread count, hashes the file first,
   then creates the session; the session is disposed if reading the output shape fails.
@@ -40,15 +43,12 @@ propagated unchanged.
 ## Thread Safety
 
 The ONNX Runtime session supports concurrent `Run` calls, so `EncodeAsync` may be called from many
-threads at once. Concurrent encoding is verified by
+threads at once (requirement `WordSense-Encoder-Concurrency`). Concurrent encoding is verified by
 `OnnxWordSenseEncoder_EncodeAsync_Concurrent_MatchesSequentialResults`, which shares one encoder between many
 tasks and requires the results to equal the sequential ones. `Dispose()` does not wait for running calls: it must
 be called once every call has finished.
 
-## Dependencies
+## Interactions
 
-ONNX Runtime (see the OTS design) and `WordSenseModelCatalog` (file hashing).
-
-## Callers
-
+Uses ONNX Runtime (see the OTS design) and `WordSenseModelCatalog` (file hashing). It is called by
 `WordSenseClassifier` and `WordSenseBuilder`, through `IWordSenseEncoder`.

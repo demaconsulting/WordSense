@@ -167,6 +167,7 @@ reviews:
       - "docs/verification/word-sense/word-sense-classifier.md"
       - "src/DemaConsulting.WordSense/WordSenseClassifier.cs"
       - "src/DemaConsulting.WordSense/WordSenseClassifierOptions.cs"
+      - "src/DemaConsulting.WordSense/WordSenseDetail.cs"
       - "src/DemaConsulting.WordSense/WordSenseToken.cs"
       - "src/DemaConsulting.WordSense/FeatureExtractor.cs"
       - "src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs"

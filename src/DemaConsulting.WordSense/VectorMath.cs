@@ -12,7 +12,7 @@ namespace DemaConsulting.WordSense;
 internal static class VectorMath
 {
     /// <summary>
-    ///     Computes the dot product of two equal-length vectors.
+    ///     Computes the dot product of two vectors over the length of the first one.
     /// </summary>
     /// <param name="left">The first vector.</param>
     /// <param name="right">The second vector; at least as long as <paramref name="left"/>.</param>

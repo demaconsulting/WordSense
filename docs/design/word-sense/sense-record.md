@@ -12,7 +12,11 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   `Tags` (a frozen, ordinal `IReadOnlySet<string>`, never empty) and `Group` (never null or empty; defaults
   to the sense label; the senses of one lemma that share a pronunciation share a group, which is the library's
   only equivalence mechanism, as it holds no pronunciation data). Tags are true parts
-  of speech plus qualifiers; a sense has one part of speech. `HasTag(tag)` tests membership ordinally and
+  of speech plus qualifiers. That a sense has exactly one part of speech is a data convention that this unit
+  does not enforce (a `WordSense` or `SenseDefinition` accepts any valid tag set); the builder's part-of-speech
+  rules enforce it when a table is built, and the embedded-table test
+  `WordSense_EmbeddedTable_EverySenseHasExactlyOnePartOfSpeech` checks it on the shipped table. `HasTag(tag)`
+  tests membership ordinally and
   throws `ArgumentNullException` for a null tag. One instance exists per (lemma, sense), created when the
   owning `LemmaModel` is constructed, so callers compare senses by reference.
 - `SenseDefinition`: a record with the sense label (`Name`), its tags (1 to `MaxTagsPerSense` = 16,
@@ -22,7 +26,8 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   character (a trailing newline is rejected); null and empty strings are not valid. A group follows the same
   syntax. `Validate()` throws `ArgumentException` for an empty name, no tags or more than 16, an invalid,
   unsorted or duplicated tag, or an invalid group.
-- `WordSenseToken(Start, Length, Text, Sense)`: a tile of an input text, owned by this unit and returned by the
+- `WordSenseToken(Start, Length, Text, Sense)`: a tile of an input text, owned by this unit (this unit is the
+  only owner of its source file) and returned by the
   classifier's raw-string overload. `Sense` is `null` when the tile is not a known ambiguous word, or when the
   classifier abstained because its confidence was too low. Invariant: the tokens returned for a text tile it
   exactly; the tiles are in order with no gaps or overlaps, so concatenating every `Text` reproduces the input.
@@ -45,6 +50,17 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   `don't`, `well-known` and `x1` are each one word; a trailing apostrophe or hyphen is its own tile.
   Surrogate pairs are kept together as one character. `SplitWords` returns the non-space tiles.
 
+## Error Handling
+
+- `SenseDefinition.Validate` throws `ArgumentException` for an invalid label, group, tag set or tag.
+- `WordSense.HasTag` throws `ArgumentNullException` for a null tag.
+- `TagScorer`, `TextSplitter` and `WordSenseToken` do not throw for well-formed input; an abstention is a `null`
+  result, not an error.
+
 ## Interactions
 
-Used by `WordSenseClassifier`, `WordSenseTable` and `LemmaModel`; has no dependencies on other units.
+Used by `WordSenseClassifier`, `WordSenseTable` and `LemmaModel` (the `WordSense` and `SenseDefinition` types);
+has no dependencies on other units. `TagScorer` and `TextSplitter` are internal helpers used by
+`WordSenseClassifier` and by `WordSenseBuilder` (the builder reaches them through the assembly's
+internals-visible declaration). `WordSenseToken` is returned by `WordSenseClassifier`, which fills it from the
+`TextSplitter` segments.

@@ -18,7 +18,19 @@ plus optional Basic credentials or a bearer token. The environment variables are
 - `FromEnvironment(getter)`: returns `null` when `WORDSENSE_MIRROR_URL` is unset; otherwise builds
   the mirror; credentials without a URL, or a user without a password (or the reverse), are errors.
   A blank or whitespace-only value counts as unset for every variable.
-- `ToString()`: shows the base URL; the credentials and bearer token are replaced by `***` markers.
+- `ToString()`: shows the base URL; the credentials and bearer token are replaced by `***` markers (or `null` when
+  absent).
+
+## Error Handling
+
+- A null base URL raises `ArgumentNullException`; a null environment getter raises `ArgumentNullException`.
+- The constructor raises `ArgumentException` for a relative base, a scheme other than http or https, a query,
+  fragment or user information, both Basic credentials and a bearer token, a blank bearer token, and any credential
+  with a plain-http non-loopback host.
+- `FromEnvironment` raises `ArgumentException` for credentials without a URL, a user without a password (or the
+  reverse), a URL that is not absolute, and a scheme other than http or https. The messages never echo the rejected
+  URL, because a mistyped URL can carry a pasted credential. The constructor errors above also apply.
+- Nothing is thrown by `ToString()`.
 
 ## Interactions
 
