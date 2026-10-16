@@ -3,8 +3,7 @@
 ## Overview
 
 The SenseRecord unit holds the immutable description of a sense and the rules that derive tag-level answers
-from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `TextSplitter` and
-`WordSenseToken`.
+from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer` and `TextSplitter`.
 
 ## Data Model
 
@@ -26,12 +25,6 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
   character (a trailing newline is rejected); null and empty strings are not valid. A group follows the same
   syntax. `Validate()` throws `ArgumentException` for an empty name, no tags or more than 16, an invalid,
   unsorted or duplicated tag, or an invalid group.
-- `WordSenseToken(Start, Length, Text, Sense)`: a tile of an input text, owned by this unit (this unit is the
-  only owner of its source file) and returned by the
-  classifier's raw-string overload. `Sense` is `null` when the tile is not a known ambiguous word, or when the
-  classifier abstained because its confidence was too low. Invariant: the tokens returned for a text tile it
-  exactly; the tiles are in order with no gaps or overlaps, so concatenating every `Text` reproduces the input.
-  The tiles come from `TextSplitter.SplitSegments`.
 
 ## Methods
 
@@ -54,7 +47,7 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
 
 - `SenseDefinition.Validate` throws `ArgumentException` for an invalid label, group, tag set or tag.
 - `WordSense.HasTag` throws `ArgumentNullException` for a null tag.
-- `TagScorer`, `TextSplitter` and `WordSenseToken` do not throw for well-formed input; an abstention is a `null`
+- `TagScorer` and `TextSplitter` do not throw for well-formed input; an abstention is a `null`
   result, not an error.
 
 ## Interactions
@@ -62,5 +55,5 @@ from sense scores. It consists of `WordSense`, `SenseDefinition`, `TagScorer`, `
 Used by `WordSenseClassifier`, `WordSenseTable` and `LemmaModel` (the `WordSense` and `SenseDefinition` types);
 has no dependencies on other units. `TagScorer` and `TextSplitter` are internal helpers used by
 `WordSenseClassifier` and by `WordSenseBuilder` (the builder reaches them through the assembly's
-internals-visible declaration). `WordSenseToken` is returned by `WordSenseClassifier`, which fills it from the
-`TextSplitter` segments.
+internals-visible declaration). The `WordSenseToken` records that the classifier returns are built from the
+`TextSplitter` segments; the type belongs to the classifier unit.

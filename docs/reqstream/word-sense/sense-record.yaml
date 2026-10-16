@@ -52,7 +52,6 @@ sections:
           Callers of the text overload map results back onto the original text.
         tests:
           - TextSplitter_SplitSegments_TileTheText
-          - WordSenseToken_Tiles_FollowSegmentSpans
           - TextSplitter_SplitWords_ReturnsNonSpaceTilesWithOffsets
           - TextSplitter_SplitWords_InternalPunctuationAndMarks_StayOneWord
           - TextSplitter_SplitWords_SurrogatePairAndTrailingApostrophe_AreSeparateTiles

@@ -14,13 +14,17 @@ borrows an encoder, a tokenizer and a table and answers "which sense does this w
   classifier abstained. `Margin` is the score of the best sense minus the score of the runner-up (a score
   difference, not a probability, comparable only within one lemma; for a two-sense lemma the scores are `-a` and
   `+a`, so the margin is `2|a|`). `RunnerUp` is the second-best sense and is never null because every lemma has at
-  least two senses; of equal scores the sense that comes first in the table wins, so a tie gives `Margin` 0.
+  least two senses; a tie gives `Margin` 0. Of equal scores in a one-versus-rest lemma the sense that comes first in
+  the table wins; for a binary lemma an activation of exactly 0 selects the second sense.
   `RunnerUpMargin` is the runner-up score minus the third-best score, or 0 for a two-sense lemma. `Abstained` is
   true when `Margin` is below the lemma's abstain threshold (`LemmaModel.AbstainMargin` times
   `AbstainMarginScale`), by the same predicate `ClassifyAsync` uses. The threshold itself is not part of the
   detail; a caller who needs it derives it from the table.
 - `WordSenseToken(Start, Length, Text, Sense)`: a tile of the input text of the raw-string overload; the type is
-  owned by the SenseRecord unit (see the SenseRecord design) and the classifier only constructs it.
+  declared in `WordSenseClassifier.cs` next to `IWordSenseClassifier` and is owned by this unit. `Sense` is `null`
+  when the tile is not a known ambiguous word, or when the classifier abstained. Invariant: the tiles returned for a
+  text are in order with no gaps or overlaps, so concatenating every `Text` reproduces the input; they come from
+  `TextSplitter.SplitSegments`.
 - `IWordSenseClassifier`: the public interface, declared in `WordSenseClassifier.cs`, implemented by
   `WordSenseClassifier`.
 - `WordSenseClassifierOptions`: `ModelDirectory`, `Downloader`, `MaxSequenceLength` (256),
@@ -79,6 +83,6 @@ Features are the mean of the target word pieces' hidden states minus the table m
 ## Interactions
 
 Uses `WordPieceTokenizer`, `WordSenseTable`, `IWordSenseEncoder` and `WordSenseModelDownloader`, and the
-SenseRecord unit (`WordSense`, `WordSenseToken`, `TextSplitter` and `TagScorer`). The
+SenseRecord unit (`WordSense`, `TextSplitter` and `TagScorer`). The
 classifier is thread-safe when its encoder is: the table and tokenizer are immutable and the session is
 shared.

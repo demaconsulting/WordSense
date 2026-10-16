@@ -34,6 +34,39 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
+    ///     A token sequence built from the segments of a text tiles it, each token has the text at its offsets and
+    ///     only words may carry a sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseToken_Tiles_FollowSegmentSpans()
+    {
+        const string text = "They record it, don't.";
+        var sense = new WordSense("record", "verb", ["verb"]);
+        var tokens = TextSplitter.SplitSegments(text)
+            .Select(s => new WordSenseToken(
+                s.Start, s.Length, text.Substring(s.Start, s.Length),
+                s.IsWord && text.Substring(s.Start, s.Length) == "record" ? sense : null))
+            .ToList();
+
+        var position = 0;
+        foreach (var token in tokens)
+        {
+            Assert.Equal(position, token.Start);
+            Assert.True(token.Length > 0);
+            Assert.Equal(token.Length, token.Text.Length);
+            Assert.Equal(text.Substring(token.Start, token.Length), token.Text);
+            position += token.Length;
+        }
+
+        Assert.Equal(text.Length, position);
+        Assert.Equal(text, string.Concat(tokens.Select(t => t.Text)));
+        var tagged = Assert.Single(tokens, t => t.Sense is not null);
+        Assert.Equal("record", tagged.Text);
+        Assert.Same(sense, tagged.Sense);
+        Assert.Equal(new WordSenseToken(0, 4, "They", null), tokens[0]);
+    }
+
+    /// <summary>
     ///     The returned tokens tile the input exactly.
     /// </summary>
     [Theory]

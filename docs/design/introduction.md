@@ -87,9 +87,10 @@ and descriptions as follows:
 src/DemaConsulting.WordSense/
 ├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
 ├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs, WordSenseTableFormatException.cs — table unit
-├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs, WordSenseToken.cs — sense record unit
+├── WordSense.cs, SenseDefinition.cs, TagScorer.cs, TextSplitter.cs — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
-├── WordSenseClassifier.cs (also declares IWordSenseClassifier and WordSenseDetail), WordSenseClassifierOptions.cs,
+├── WordSenseClassifier.cs (also declares IWordSenseClassifier, WordSenseDetail and WordSenseToken),
+│   WordSenseClassifierOptions.cs,
 │   FeatureExtractor.cs, WordSenseModelMismatchException.cs — classifier unit
 ├── DownloadMirror.cs                              — mirror unit
 ├── WordSenseModelDownloader.cs, WordSenseModelLocation.cs, WordSenseModelCatalog.cs — downloader unit

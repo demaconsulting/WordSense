@@ -11,6 +11,7 @@ sections:
           Callers rebuild or annotate the text from the tokens; no character may be lost or duplicated.
         tests:
           - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+          - WordSenseToken_Tiles_FollowSegmentSpans
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
 
       - id: WordSense-Classifier-Senses

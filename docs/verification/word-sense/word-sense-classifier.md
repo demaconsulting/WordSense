@@ -10,6 +10,8 @@ hidden states and a small in-memory table, so behavior is verified without the m
 ## Test Scenarios
 
 - **WordSenseClassifier_ClassifyAsync_Text_TokensTileInput**: concatenated tokens equal the input.
+- **WordSenseToken_Tiles_FollowSegmentSpans**: tokens built from the splitter segments have contiguous spans
+  whose texts concatenate to the input, and only a word segment carries a sense.
 - **WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode**: no encoder call without targets.
 - **WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly**,
   **..._Words_ResolvesForms**, **..._Words_EdgeCases**, **..._ManyTargets_EncodesOnce**,
