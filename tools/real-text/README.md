@@ -67,4 +67,6 @@ tools/real-text/nounverb-forms.tsv` (sentences `lemma<TAB>noun|verb<TAB>sentence
 adjective-heavy words, words with a spurious part of speech and collision forms such as `lie`, `bit` and `found`; the forms
 file lists irregular inflections). Only lemmas with at least 14 anchors and 8 holdout rows per sense are trained.
 See the design of the
-WordSenseBuilder unit.
+WordSenseBuilder unit. After a build, `nounverb-gate --corpus corpus --report <build report> --apply true` drops the
+lemmas that miss the gate (best-sense 90%, per-sense answered 80%, coverage 70%) into
+`corpus/audit/nounverb-dropped.tsv`; rebuild and repeat until none fail.

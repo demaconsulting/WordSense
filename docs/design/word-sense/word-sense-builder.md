@@ -118,6 +118,12 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   computed before anything is written, and a rerun with the same inputs replaces the previous output of the same
   name byte for byte. `RealPlan.ReadExisting` ignores `nounverb-*.tsv`, and `validate-provenance` checks them with
   the extra origin `user-supplied`.
+- `nounverb-gate` (`NounVerbGate`) applies the Phase 5 quality gate to a build report (`--corpus DIR --report FILE
+  [--model DIR] [--results FILE] [--apply true] [--min-best 0.90 --min-sense 0.80 --min-coverage 0.70]`). A lemma
+  passes when its holdout best-sense accuracy, every sense's answered accuracy and its coverage meet the thresholds.
+  With `--apply true` the failing lemmas are moved from `nounverb-*.tsv` into `corpus/audit/nounverb-dropped.tsv`
+  (lemma, reason, numbers) and their forms are removed; later `nounverb-import` runs skip them. Rebuild afterwards,
+  and rerun until nothing more fails.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level

@@ -125,6 +125,18 @@ sections:
           - WordSenseBuilder_NounVerbImport_Allocate_SeparatesGroupsAndCountsSharing
           - WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage
           - WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches
+      - id: WordSense-Builder-NounVerbGate
+        title: >-
+          The builder shall evaluate each imported noun and verb lemma against a quality gate (holdout best-sense
+          accuracy, per-sense answered accuracy and coverage), record the lemmas that fail with the reason and
+          the numbers, remove them from the corpus files, and keep them out of later imports.
+        tags: [unit]
+        justification: |
+          A mechanical, repeatable gate keeps weak lemmas out of the shipped table and leaves an auditable
+          record of what was dropped and why.
+        tests:
+          - WordSenseBuilder_NounVerbGate_Evaluate_AppliesTheThresholds
+          - WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut
       - id: WordSense-Builder-LearningCurve
         title: >-
           The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered

@@ -41,6 +41,7 @@ sections:
           - WordSense-Builder-Provenance
           - WordSense-Builder-AuthoredImport
           - WordSense-Builder-NounVerbImport
+          - WordSense-Builder-NounVerbGate
         tests:
           - WordSense_Classifier_Holdout_MeetsNounVerbTagGate
           - WordSense_Classifier_Holdout_MeetsGroupGate

@@ -311,6 +311,7 @@ internal static partial class NounVerbImport
 
         var ownFile = name + ".tsv";
         var exclusions = ReadExclusions(exclusionsFile);
+        var gateDropped = NounVerbGate.ReadDropped(corpus);
         var explicitForms = formsFile is null ? [] : Corpus.ReadForms(formsFile);
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"), ownFile);
         var previous = ReadPreviousLemmas(Path.Combine(corpus, "senses", ownFile));
@@ -352,6 +353,12 @@ internal static partial class NounVerbImport
                 {
                     AddCount(otherCounts, row, "excluded", category);
                     tally("excluded lemma");
+                    continue;
+                }
+
+                if (gateDropped.Contains(row.Lemma))
+                {
+                    tally("lemma dropped by the quality gate");
                     continue;
                 }
 

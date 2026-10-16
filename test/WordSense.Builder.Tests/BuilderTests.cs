@@ -1226,6 +1226,76 @@ public sealed class BuilderTests : IDisposable
         Assert.Throws<ArgumentException>(() => NounVerbImport.ValidateName("new-authored-1"));
     }
 
+    /// <summary>
+    ///     The gate passes a lemma that reaches every threshold and names each threshold a lemma misses.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbGate_Evaluate_AppliesTheThresholds()
+    {
+        var good = new LemmaReport("good", 28, 16, 15, 14, 14, 0.1f, false, 14, 15, [new SenseStats("noun", 8, 8, 7, 7), new SenseStats("verb", 8, 7, 7, 7)], new TagStats(16, 15, 14, 14, 0));
+        var weak = new LemmaReport("weak", 28, 16, 13, 10, 7, 0.1f, false, 14, 13, [new SenseStats("noun", 8, 8, 8, 8), new SenseStats("verb", 8, 5, 2, 1)], new TagStats(16, 13, 10, 7, 0));
+        var other = new LemmaReport("other", 28, 16, 8, 8, 8, 0.1f, false, 14, 8);
+
+        var results = NounVerbGate.Evaluate([weak, good, other], new HashSet<string> { "good", "weak" }, new GatePolicy());
+
+        Assert.Equal(["good", "weak"], results.Select(r => r.Lemma));
+        Assert.True(results[0].Passed);
+        Assert.Equal(15.0 / 16, results[0].BestSense);
+        Assert.Equal(15.0 / 16, results[0].TagAccuracy);
+        Assert.Equal(1.0, results[0].SenseAnswered("noun"));
+        Assert.True(double.IsNaN(results[0].SenseAnswered("adj")));
+        Assert.False(results[1].Passed);
+        Assert.Contains("best-sense accuracy 81.3% below 90.0%", results[1].Failure, StringComparison.Ordinal);
+        Assert.Contains("verb answered accuracy 50.0% below 80.0%", results[1].Failure, StringComparison.Ordinal);
+        Assert.Contains("coverage 62.5% below 70.0%", results[1].Failure, StringComparison.Ordinal);
+        Assert.DoesNotContain("noun answered", results[1].Failure, StringComparison.Ordinal);
+        Assert.Contains("fail: ", NounVerbGate.RenderTsv(results), StringComparison.Ordinal);
+        Assert.Contains("| weak |", NounVerbGate.RenderMarkdown(results), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A dropped lemma leaves every corpus file and the forms, is recorded with its numbers, and a re-import keeps it out.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut()
+    {
+        var corpus = PrepareNounVerbCorpus();
+        var (sentences, provenance) = NounVerbInputs(("chip", 24, 24, "chipped"), ("grip", 24, 24, null));
+        var exclusions = Write("in/exclusions.tsv", "lemma\tcategory\n");
+        NounVerbImport.Import(corpus, "nounverb-1", [sentences], [provenance], exclusions, null, new NounVerbOptions());
+        Assert.Equal(["chip", "grip"], NounVerbGate.ReadScope(corpus).Order(StringComparer.Ordinal));
+        var failed = NounVerbGate.Evaluate(
+            [new LemmaReport("chip", 28, 16, 10, 8, 6, 0.1f, false, 14, 10, [new SenseStats("noun", 8, 5, 4, 3), new SenseStats("verb", 8, 5, 4, 3)])],
+            new HashSet<string> { "chip" },
+            new GatePolicy());
+
+        NounVerbGate.Drop(corpus, failed);
+        NounVerbGate.Drop(corpus, []);
+
+        foreach (var folder in new[] { "anchors", "holdout", "senses" })
+        {
+            var text = File.ReadAllText(Path.Combine(corpus, folder, "nounverb-1.tsv"));
+            Assert.DoesNotContain("chip\t", text, StringComparison.Ordinal);
+            Assert.Contains("grip\t", text, StringComparison.Ordinal);
+        }
+
+        Assert.DoesNotContain("\tchip\t", File.ReadAllText(Path.Combine(corpus, "provenance", "nounverb-1.tsv")), StringComparison.Ordinal);
+        var forms = File.ReadAllText(Path.Combine(corpus, "forms", "speech.tsv"));
+        Assert.DoesNotContain("\tchip\t", forms, StringComparison.Ordinal);
+        Assert.Contains("keep\tkeeper\tnoun", forms, StringComparison.Ordinal);
+        Assert.Contains("grip\tgrip\t", forms, StringComparison.Ordinal);
+        var dropped = File.ReadAllLines(Path.Combine(corpus, "audit", NounVerbGate.DroppedFile));
+        Assert.Equal(2, dropped.Length);
+        Assert.StartsWith("chip\tbest-sense accuracy 62.5% below 90.0%", dropped[1], StringComparison.Ordinal);
+        Assert.Equal(["chip"], NounVerbGate.ReadDropped(corpus));
+
+        var report = NounVerbImport.Import(corpus, "nounverb-1", [sentences], [provenance], exclusions, null, new NounVerbOptions());
+
+        Assert.Contains("dropped 48: lemma dropped by the quality gate", report, StringComparison.Ordinal);
+        Assert.Equal(["grip"], NounVerbGate.ReadScope(corpus));
+        Assert.Empty(RealImport.Validate(corpus));
+    }
+
     private static NounVerbRow Row(int i, string group)
     {
         var sentence = $"The {{chip}} number {i} is here.";

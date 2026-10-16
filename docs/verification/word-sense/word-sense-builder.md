@@ -83,6 +83,10 @@ table.
 - **WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage**: the group key per source.
 - **WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches**: the command runs through
   the tool, a user-supplied row validates, bad names and settings fail, and `RealPlan.ReadExisting` ignores the batches.
+- **WordSenseBuilder_NounVerbGate_Evaluate_AppliesTheThresholds**: lemmas below the best-sense, per-sense or coverage
+  threshold fail with the reason and numbers; others pass.
+- **WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut**: dropping removes the lemma from the
+  corpus files, records it, and a later import skips it.
 - **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
   the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level

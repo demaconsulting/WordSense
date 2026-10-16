@@ -113,6 +113,8 @@ internal static class TableBuilder
 
             // Score the holdout and group it by source file
             int correct = 0, answered = 0, answeredCorrect = 0, total = 0, groupCorrect = 0;
+            var lemmaTags = new TagEvaluator();
+            var bySense = new SortedDictionary<string, int[]>(StringComparer.Ordinal);
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
                 var (best, rowMargin) = model.Score(holdoutFeatures[i]);
@@ -122,7 +124,17 @@ internal static class TableBuilder
                 var scores = new float[t.Senses.Length];
                 model.Scores(holdoutFeatures[i], scores);
                 tagEvaluator.Add(row.Source, model, scores, goldIndex, margin);
+                lemmaTags.Add(row.Source, model, scores, goldIndex, margin);
                 var isAnswered = rowMargin >= margin;
+                if (!bySense.TryGetValue(row.Sense, out var senseCounts))
+                {
+                    bySense[row.Sense] = senseCounts = new int[4];
+                }
+
+                senseCounts[0]++;
+                senseCounts[1] += right ? 1 : 0;
+                senseCounts[2] += isAnswered ? 1 : 0;
+                senseCounts[3] += isAnswered && right ? 1 : 0;
                 total++;
                 correct += right ? 1 : 0;
                 answered += isAnswered ? 1 : 0;
@@ -132,7 +144,9 @@ internal static class TableBuilder
                     old.Total + 1, old.Correct + (right ? 1 : 0), old.Answered + (isAnswered ? 1 : 0), old.AnsweredCorrect + (isAnswered && right ? 1 : 0));
             }
 
-            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), groupCorrect);
+            var report = new LemmaReport(lemma, t.Index.Length, total, correct, answered, answeredCorrect, margin, !t.Cv, counts.Min(), groupCorrect,
+                bySense.Select(p => new SenseStats(p.Key, p.Value[0], p.Value[1], p.Value[2], p.Value[3])).ToList(),
+                lemmaTags.ToReport().Overall);
             reports.Add(report);
             AddWarnings(report, t.Senses.Select(s => s.Name).ToArray(), holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }

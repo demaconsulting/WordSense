@@ -41,7 +41,7 @@ public static class Program
                 error.WriteLine(
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
-                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, nounverb-import, " +
+                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, nounverb-import, nounverb-gate, " +
                     "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix.");
                 return 1;
             }
@@ -86,6 +86,8 @@ public static class Program
                     return 0;
                 case "nounverb-import":
                     return RunNounVerbImport(options, output);
+                case "nounverb-gate":
+                    return RunNounVerbGate(options, output);
                 case "real-eval-import":
                     var perSense = IntOption(options, "per-sense", 12);
                     output.Write(RealEval.ImportEval(
@@ -326,6 +328,61 @@ public static class Program
             options.GetValueOrDefault("forms"),
             settings));
         return 0;
+    }
+
+    private static int RunNounVerbGate(Dictionary<string, string> options, TextWriter output)
+    {
+        var corpus = Require(options, "corpus");
+        var defaults = new GatePolicy();
+        var policy = new GatePolicy(
+            DoubleOption(options, "min-best", defaults.MinBestSense),
+            DoubleOption(options, "min-sense", defaults.MinSenseAnswered),
+            DoubleOption(options, "min-coverage", defaults.MinCoverage));
+        var location = WordSenseModelLocation.FromDirectory(Require(options, "model"));
+        var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
+        var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
+        var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
+        var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
+        var result = TableBuilder.Build(encoder, tokenizer, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: Math.Max(1, Environment.ProcessorCount / 2)));
+        var results = NounVerbGate.Evaluate(result.Report.Lemmas, NounVerbGate.ReadScope(corpus), policy);
+        var failed = results.Where(r => !r.Passed).ToList();
+        output.WriteLine($"Noun/verb lemmas: {results.Count}; passed {results.Count - failed.Count}; failed {failed.Count}.");
+        foreach (var f in failed)
+        {
+            output.WriteLine($"  {f.Lemma}: {f.Failure}");
+        }
+
+        if (options.TryGetValue("results", out var resultsPath))
+        {
+            File.WriteAllText(resultsPath, NounVerbGate.RenderTsv(results), new UTF8Encoding(false));
+        }
+
+        if (options.TryGetValue("report", out var reportPath))
+        {
+            File.WriteAllText(reportPath, NounVerbGate.RenderMarkdown(results), new UTF8Encoding(false));
+        }
+
+        if (options.GetValueOrDefault("apply") == "true")
+        {
+            NounVerbGate.Drop(corpus, failed);
+            output.WriteLine($"Moved {failed.Count} lemmas out of the corpus into audit/{NounVerbGate.DroppedFile}.");
+        }
+
+        return 0;
+    }
+
+    private static double DoubleOption(Dictionary<string, string> options, string name, double fallback)
+    {
+        if (!options.TryGetValue(name, out var text))
+        {
+            return fallback;
+        }
+
+        return double.TryParse(text, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var value)
+            ? value
+            : throw new ArgumentException($"Option --{name} must be a number.");
     }
 
     private static List<Candidate> ReadCandidateFiles(string list) => list.Split(',').SelectMany(RealJudge.ReadCandidates).ToList();

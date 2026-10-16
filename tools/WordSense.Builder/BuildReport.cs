@@ -17,6 +17,8 @@ namespace WordSense.Builder;
 /// <param name="DefaultMargin">Whether the margin is the global default rather than cross-validated.</param>
 /// <param name="MinAnchorsPerSense">The smallest number of training sentences of any sense.</param>
 /// <param name="GroupCorrect">Holdout sentences whose best sense belongs to the group of the gold sense.</param>
+/// <param name="Senses">The holdout counts per gold sense, or null when they were not collected.</param>
+/// <param name="Tag">The noun-versus-verb tag-level counts of the lemma, or null when it was not collected.</param>
 internal sealed record LemmaReport(
     string Lemma,
     int AnchorCount,
@@ -27,13 +29,25 @@ internal sealed record LemmaReport(
     float Margin,
     bool DefaultMargin,
     int MinAnchorsPerSense,
-    int GroupCorrect)
+    int GroupCorrect,
+    IReadOnlyList<SenseStats>? Senses = null,
+    TagStats? Tag = null)
 {
     /// <summary>
     ///     Gets the accuracy of the best sense over every holdout sentence.
     /// </summary>
     public double Accuracy => HoldoutCount == 0 ? double.NaN : (double)Correct / HoldoutCount;
 }
+
+/// <summary>
+///     Holdout counts of the sentences whose gold sense is one sense of a lemma.
+/// </summary>
+/// <param name="Sense">The gold sense.</param>
+/// <param name="Total">Sentences.</param>
+/// <param name="Correct">Sentences whose best sense was the gold sense.</param>
+/// <param name="Answered">Answered sentences.</param>
+/// <param name="AnsweredCorrect">Answered sentences that were right.</param>
+internal sealed record SenseStats(string Sense, int Total, int Correct, int Answered, int AnsweredCorrect);
 
 /// <summary>
 ///     Counts for one group of holdout sentences.
