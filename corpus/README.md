@@ -68,6 +68,10 @@ real sentences. Each real sentence has a row in `provenance/*.tsv` (`id` = first
 Allowed licences: `CC0 1.0`, `Public domain`, `CC BY 2.0 FR`, `CC BY-SA 4.0`, `MIT (project-authored)` and, as a last
 resort, `web-excerpt`. `realtext/eval-seed.tsv` holds real sentences for evaluation only (never trained on). The
 builder command `validate-provenance` checks the sidecar. The corpus is not shipped in the NuGet package.
+`anchors/real-gap-1.tsv`, `holdout/real-gap-1.tsv` and `provenance/real-gap-1.tsv` (Phase 3b, plan in
+`audit/real-gap-1-plan.tsv`, judged rows in `audit/real-gap-audit-1.tsv`) add real anchors and a real holdout for the
+weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anchors. See
+`docs/build_notes/weak-lemma-decisions.md`.
 `tools/real-text/README.md` describes the repeatable harvest.
 
 ## Analysis Output

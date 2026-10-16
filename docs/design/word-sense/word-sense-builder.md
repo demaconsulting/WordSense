@@ -69,6 +69,13 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
   `RealImport.Import` reads `relabel-decisions.tsv` before writing any output, so a missing file leaves the corpus
   unchanged, and it marks every `drop` or `exclude` decision of a plan lemma as `restore` (not only the senses that
   actually received sentences); the plan defines the restored lemmas.
+- `real-gap-import` (`RealGap`) adds real sentences for senses of existing lemmas (Phase 3b): the plan file
+  `corpus/audit/real-gap-N-plan.tsv` (`lemma`, `sense`, `definition`, `add_anchors`, `real_holdout`) gives the sense
+  menus (`real-judge-export --gap-plan`, frozen in `menus.tsv` of the work directory), the sentences to add as
+  anchors and the real holdout size per sense (the existing real holdout of other files counts). `RealImport.Allocate`
+  fills the holdout first from small contributors and takes the anchors from the others, so the sets are disjoint;
+  output is `corpus/{anchors,holdout,provenance}/real-gap-N.tsv`, and a sense short of rows is reported. `real-eval`
+  scores these holdout rows as the sets `real-gap` and `llm-holdout-gap-lemmas`.
 - `real-eval-import` and `real-eval` (`RealEval`) keep randomly sampled, blind-judged real sentences in
   `corpus/realtext/` (never used for training) and measure the table on them against the LLM-written holdout.
 - After the sense evaluation the report lists group-level accuracy (the sense's `group`) and tag-level

@@ -87,7 +87,10 @@ sections:
           - WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws
           - WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut
           - WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors
-
+          - WordSenseBuilder_RealGap_Import_WritesSeparateAnchorsAndHoldoutWithProvenance
+          - WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall
+          - WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows
+          - WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory
       - id: WordSense-Builder-LearningCurve
         title: >-
           The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered

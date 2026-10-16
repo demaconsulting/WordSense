@@ -87,15 +87,20 @@ internal static class RealEval
 
         var realEval = Corpus.ReadSentences(Path.Combine(corpus, EvalFile));
         var restoredHoldout = Corpus.ReadSentences(Path.Combine(corpus, "holdout", RealPlan.RestoreFile));
+        var gapHoldout = Directory.GetFiles(Path.Combine(corpus, "holdout"), RealGap.Prefix + "*.tsv").OrderBy(f => f, StringComparer.Ordinal)
+            .SelectMany(Corpus.ReadSentences).Where(r => Origin(provenance, r) == "real").ToList();
         var realRestored = restoredHoldout.Where(r => Origin(provenance, r) == "real").ToList();
         var llmRestored = restoredHoldout.Where(r => Origin(provenance, r) != "real").ToList();
         var lemmas = realEval.Concat(realRestored).Select(r => r.Lemma).ToHashSet(StringComparer.Ordinal);
         var llmHoldout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"))
-            .Where(r => lemmas.Contains(r.Lemma) && r.Source != RealPlan.RestoreFile).Concat(llmRestored).ToList();
+            .Where(r => lemmas.Contains(r.Lemma) && r.Source != RealPlan.RestoreFile && !r.Source.StartsWith(RealGap.Prefix, StringComparison.Ordinal)).Concat(llmRestored).ToList();
         var evalLemmas = realEval.Select(r => r.Lemma).ToHashSet(StringComparer.Ordinal);
         var llmSeed = llmHoldout.Where(r => evalLemmas.Contains(r.Lemma)).ToList();
         var restoredLemmas = realRestored.Select(r => r.Lemma).ToHashSet(StringComparer.Ordinal);
         var llmRestoredLemmas = llmHoldout.Where(r => restoredLemmas.Contains(r.Lemma)).ToList();
+        var gapLemmas = gapHoldout.Select(r => r.Lemma).ToHashSet(StringComparer.Ordinal);
+        var llmGapLemmas = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"))
+            .Where(r => gapLemmas.Contains(r.Lemma) && Origin(provenance, r) != "real").ToList();
 
         var scored = new Dictionary<string, List<Scored>>(StringComparer.Ordinal)
         {
@@ -104,6 +109,12 @@ internal static class RealEval
             ["real-restored"] = await ScoreAsync(classifier, realRestored, provenance, cancellationToken).ConfigureAwait(false),
             ["llm-holdout-restored-lemmas"] = await ScoreAsync(classifier, llmRestoredLemmas, provenance, cancellationToken).ConfigureAwait(false)
         };
+        if (gapHoldout.Count > 0)
+        {
+            scored["real-gap"] = await ScoreAsync(classifier, gapHoldout, provenance, cancellationToken).ConfigureAwait(false);
+            scored["llm-holdout-gap-lemmas"] = await ScoreAsync(classifier, llmGapLemmas, provenance, cancellationToken).ConfigureAwait(false);
+        }
+
         return Render(scored);
     }
 

@@ -304,11 +304,16 @@ internal static class RealImport
         }
 
         var covered = new HashSet<string>(StringComparer.Ordinal);
-        var files = new List<(string Path, string Split)>
+        var files = new List<(string Path, string Split)>();
+        foreach (var split in new[] { "anchors", "holdout" })
         {
-            (Path.Combine(corpus, "anchors", RealPlan.RestoreFile), "anchors"),
-            (Path.Combine(corpus, "holdout", RealPlan.RestoreFile), "holdout")
-        };
+            var folder = Path.Combine(corpus, split);
+            if (Directory.Exists(folder))
+            {
+                // The restore file and every gap batch (real-gap-N.tsv) hold real sentences
+                files.AddRange(Directory.GetFiles(folder, "real-*.tsv").OrderBy(f => f, StringComparer.Ordinal).Select(f => (f, split)));
+            }
+        }
         var realtext = Path.Combine(corpus, "realtext");
         if (Directory.Exists(realtext))
         {

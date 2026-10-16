@@ -50,6 +50,15 @@ table.
   input files, `dropped-rows.tsv` and the candidates file raise an error naming the file and line.
 - **WordSenseBuilder_RealImport_Import_MalformedDecisionsRow_Throws**: a `relabel-decisions.tsv` row without exactly 9
   columns fails the import with an error naming the file and line, and nothing is written.
+- **WordSenseBuilder_RealGap_Import_WritesSeparateAnchorsAndHoldoutWithProvenance**: a gap batch writes the planned
+  number of anchors and holdout rows to `real-gap-1.tsv` files with a provenance row (origin `real`) for each, the
+  sets are disjoint, the corpus validates and the existing anchor file is unchanged.
+- **WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall**: an existing real holdout row counts
+  towards the holdout target and a pool smaller than the plan is reported as `SHORT`.
+- **WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows**: a name other than `real-gap-N`, a non-numeric count and
+  a sense missing from the inventory are each rejected.
+- **WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory**: `real-judge-export --gap-plan` writes
+  the plan's menus to `menus.tsv` in the work directory and the later steps read them back; an unknown lemma fails.
 - **WordSenseBuilder_TableBuilder_Build_ReportHasGroupAndTagSections**: a small build report contains the group-level
   and tag-level accuracy sections.
 - **WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget**: a target inside a compound word is split at the

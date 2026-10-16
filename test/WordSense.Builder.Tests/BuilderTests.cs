@@ -890,6 +890,87 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     A gap batch adds real anchors and a separate real holdout without touching the existing files, and the result validates.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealGap_Import_WritesSeparateAnchorsAndHoldoutWithProvenance()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/real-gap-1-plan.tsv", "lemma\tsense\tdefinition\tadd_anchors\treal_holdout\nbow\tbend-noun\ta bend\t3\t2\n");
+        Write("corpus/anchors/seed.tsv", "bow\tbend-noun\tShe gave a deep {bow}.\n");
+        var (candidates, judgements) = RealCandidates(8);
+
+        var report = RealGap.Import(corpus, "real-gap-1", candidates, judgements);
+
+        Assert.Contains("anchors 3, holdout 2.", report, StringComparison.Ordinal);
+        Assert.Equal(3, File.ReadAllLines(Path.Combine(corpus, "anchors", "real-gap-1.tsv")).Count(l => l.Length > 0));
+        Assert.Equal(2, File.ReadAllLines(Path.Combine(corpus, "holdout", "real-gap-1.tsv")).Count(l => l.Length > 0));
+        var provenance = RealImport.ReadProvenance(Path.Combine(corpus, "provenance", "real-gap-1.tsv"));
+        Assert.Equal(5, provenance.Count);
+        Assert.All(provenance, p => Assert.Equal("real", p.Origin));
+        Assert.Equal(5, provenance.Select(p => p.Id).Distinct().Count());
+        Assert.Empty(RealImport.Validate(corpus));
+        Assert.Equal("bow\tbend-noun\tShe gave a deep {bow}.\n", File.ReadAllText(Path.Combine(corpus, "anchors", "seed.tsv")));
+    }
+
+    /// <summary>
+    ///     Real holdout rows that exist already count towards the holdout target, and a short pool is reported.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/real-gap-1-plan.tsv", "lemma\tsense\tdefinition\tadd_anchors\treal_holdout\nbow\tbend-noun\ta bend\t5\t2\n");
+        var holdoutSentence = "He took a {bow} and left.";
+        Write("corpus/holdout/real-restore.tsv", $"bow\tbend-noun\t{holdoutSentence}\n");
+        RealImport.WriteProvenance(
+            Path.Combine(corpus, "provenance", "real-restore.tsv"),
+            [new ProvenanceRow(PosAudit.RowId("bow", holdoutSentence), "bow", "bend-noun", "holdout", "tatoeba-cc0", "CC0 1.0", "1", "https://tatoeba.org/1", "person", "real")]);
+        var (candidates, judgements) = RealCandidates(3);
+
+        var report = RealGap.Import(corpus, "real-gap-1", candidates, judgements);
+
+        Assert.Contains("anchors 2, holdout 1.", report, StringComparison.Ordinal);
+        Assert.Contains("SHORT", report, StringComparison.Ordinal);
+        Assert.Empty(RealImport.Validate(corpus));
+    }
+
+    /// <summary>
+    ///     A gap batch name and plan are validated.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/real-gap-2-plan.tsv", "lemma\tsense\tdefinition\tadd_anchors\treal_holdout\nbow\tbend-noun\ta bend\tx\t2\n");
+        Write("corpus/audit/real-gap-3-plan.tsv", "lemma\tsense\tdefinition\tadd_anchors\treal_holdout\nbow\tnope\ta bend\t1\t2\n");
+
+        Assert.Throws<ArgumentException>(() => RealGap.ValidateName("real-restore"));
+        Assert.Throws<ArgumentException>(() => RealGap.ValidateName("real-gap-"));
+        Assert.Throws<InvalidDataException>(() => RealGap.ReadPlan(corpus, "real-gap-2"));
+        Assert.Throws<InvalidDataException>(() => RealGap.Import(corpus, "real-gap-3", [], new Dictionary<string, SenseJudgement>()));
+    }
+
+    /// <summary>
+    ///     The judge export freezes the menus of a gap plan, and the merge steps read them back.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory()
+    {
+        var corpus = PrepareRealCorpus();
+        Write("corpus/audit/real-gap-1-plan.tsv", "lemma\tsense\tdefinition\tadd_anchors\treal_holdout\nbow\tbend-noun\tinclined greeting\t3\t2\n");
+        var (candidates, _) = RealCandidates(2);
+        var work = Path.Combine(_root, "work");
+
+        var (rows, _) = RealJudge.Export(corpus, candidates, work, 10, "real-gap-1");
+        var menus = RealJudge.LoadMenus(corpus, work, ["bow"]);
+
+        Assert.Equal(2, rows);
+        Assert.Contains("inclined greeting", Assert.Single(menus["bow"]), StringComparison.Ordinal);
+        Assert.Throws<InvalidDataException>(() => RealJudge.LoadMenus(corpus, work, ["other"]));
+    }
+
+    /// <summary>
     ///     The judge answer parser rejects every kind of malformed answer.
     /// </summary>
     /// <param name="content">The answer file content.</param>

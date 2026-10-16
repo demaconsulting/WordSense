@@ -61,6 +61,8 @@ internal static class RealJudge
 
     private const string JudgementHeader = "id\tlemma\ta_sense\ta_conf\tb_sense\tb_conf\tc_sense\tc_conf\tfinal_sense\tresolution";
 
+    private const string MenusFile = "menus.tsv";
+
     /// <summary>
     ///     Reads a candidate file written by the harvest tool.
     /// </summary>
@@ -89,22 +91,39 @@ internal static class RealJudge
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
     /// <param name="lemmas">The lemmas.</param>
+    /// <param name="gapPlan">The name of a gap plan whose senses and definitions form the menus, or null for the restore plan and the inventory.</param>
     /// <returns>The menu lines per lemma.</returns>
-    public static Dictionary<string, List<string>> BuildMenus(string corpus, IReadOnlyCollection<string> lemmas)
+    public static Dictionary<string, List<string>> BuildMenus(string corpus, IReadOnlyCollection<string> lemmas, string? gapPlan = null)
     {
-        var plan = RealPlan.ReadPlan(corpus);
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var plan = gapPlan is null ? RealPlan.ReadPlan(corpus) : [];
+        var gap = gapPlan is null ? [] : RealGap.ReadPlan(corpus, gapPlan);
         var planLemmas = plan.Select(p => p.Lemma).ToHashSet(StringComparer.Ordinal);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors")).Where(r => lemmas.Contains(r.Lemma))
             .Select(r => (r.Lemma, r.Sense, r.Sentence)).ToList();
-        var (mapped, _, _) = RealPlan.ReadPool(corpus, plan);
-        anchors.AddRange(mapped.Where(r => r.Split == "anchors").Select(r => (r.Lemma, r.Sense!, r.Sentence)));
+        if (gapPlan is null)
+        {
+            var (mapped, _, _) = RealPlan.ReadPool(corpus, plan);
+            anchors.AddRange(mapped.Where(r => r.Split == "anchors").Select(r => (r.Lemma, r.Sense!, r.Sentence)));
+        }
+
         var menus = new Dictionary<string, List<string>>(StringComparer.Ordinal);
         foreach (var lemma in lemmas.OrderBy(l => l, StringComparer.Ordinal))
         {
-            var senses = planLemmas.Contains(lemma)
-                ? plan.Where(p => p.Lemma == lemma).Select(p => (Sense: p.Sense, Tags: string.Join('|', p.Tags), Definition: p.Definition)).ToList()
-                : inventory.DefinitionsOf(lemma).Select(d => (Sense: d.Name, Tags: string.Join('|', d.Tags), Definition: string.Empty)).ToList();
+            string Tags(string sense) => string.Join('|', inventory.DefinitionsOf(lemma).First(d => d.Name == sense).Tags);
+            List<(string Sense, string Tags, string Definition)> senses;
+            if (gap.Any(g => g.Lemma == lemma))
+            {
+                senses = gap.Where(g => g.Lemma == lemma).Select(g => (g.Sense, Tags(g.Sense), g.Definition)).ToList();
+            }
+            else if (planLemmas.Contains(lemma))
+            {
+                senses = plan.Where(p => p.Lemma == lemma).Select(p => (p.Sense, string.Join('|', p.Tags), p.Definition)).ToList();
+            }
+            else
+            {
+                senses = inventory.DefinitionsOf(lemma).Select(d => (d.Name, string.Join('|', d.Tags), string.Empty)).ToList();
+            }
             var lines = new List<string>();
             foreach (var (sense, tags, definition) in senses)
             {
@@ -120,19 +139,58 @@ internal static class RealJudge
     }
 
     /// <summary>
+    ///     Reads the frozen menus that the export wrote to the work directory, or builds them when the directory has none.
+    /// </summary>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <param name="work">The work directory.</param>
+    /// <param name="lemmas">The lemmas.</param>
+    /// <returns>The menu lines per lemma.</returns>
+    public static Dictionary<string, List<string>> LoadMenus(string corpus, string work, IReadOnlyCollection<string> lemmas)
+    {
+        var path = Path.Combine(work, MenusFile);
+        if (!File.Exists(path))
+        {
+            return BuildMenus(corpus, lemmas);
+        }
+
+        var menus = new Dictionary<string, List<string>>(StringComparer.Ordinal);
+        foreach (var line in File.ReadAllLines(path, new UTF8Encoding(false)).Where(l => l.Length > 0))
+        {
+            var parts = line.TrimEnd('\r').Split('\t');
+            if (parts.Length < 3 || parts[0] != "#menu")
+            {
+                throw new InvalidDataException($"{MenusFile}: '{line}' is not a menu line.");
+            }
+
+            if (!menus.TryAdd(parts[1], [line.TrimEnd('\r')]))
+            {
+                menus[parts[1]].Add(line.TrimEnd('\r'));
+            }
+        }
+
+        var absent = lemmas.FirstOrDefault(l => !menus.ContainsKey(l));
+        return absent is null ? menus : throw new InvalidDataException($"{MenusFile}: no menu for lemma '{absent}'.");
+    }
+
+    /// <summary>
     ///     Writes the judge chunks for A (as is) and B (reversed), plus the id list used by the merge.
     /// </summary>
     /// <param name="corpus">The corpus directory.</param>
     /// <param name="candidates">The candidates to judge.</param>
     /// <param name="work">The work directory.</param>
     /// <param name="size">The chunk size.</param>
+    /// <param name="gapPlan">The name of a gap plan that supplies the menus, or null.</param>
     /// <returns>The number of rows and chunks.</returns>
-    public static (int Rows, int Chunks) Export(string corpus, IReadOnlyList<Candidate> candidates, string work, int size)
+    public static (int Rows, int Chunks) Export(string corpus, IReadOnlyList<Candidate> candidates, string work, int size, string? gapPlan = null)
     {
         Directory.CreateDirectory(work);
         var rows = candidates.GroupBy(c => c.Id, StringComparer.Ordinal).Select(g => g.First())
             .OrderBy(c => c.Lemma, StringComparer.Ordinal).ThenBy(c => c.Id, StringComparer.Ordinal).ToList();
-        var menus = BuildMenus(corpus, rows.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).ToList());
+        var menus = BuildMenus(corpus, rows.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).ToList(), gapPlan);
+        File.WriteAllText(
+            Path.Combine(work, MenusFile),
+            string.Concat(menus.OrderBy(m => m.Key, StringComparer.Ordinal).SelectMany(m => m.Value).Select(l => l + "\n")),
+            new UTF8Encoding(false));
         var chunks = new List<List<Candidate>>();
         foreach (var lemmaRows in rows.GroupBy(r => r.Lemma, StringComparer.Ordinal))
         {
@@ -278,7 +336,7 @@ internal static class RealJudge
         var a = ReadJudge(work, "a", rows, menu, lemmaOf);
         var b = ReadJudge(work, "b", rows, menu, lemmaOf);
         var open = rows.Where(r => !AutoAccept(a[r.Id], b[r.Id])).ToList();
-        var menus = BuildMenus(corpus, open.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).ToList());
+        var menus = LoadMenus(corpus, work, open.Select(r => r.Lemma).Distinct(StringComparer.Ordinal).ToList());
         var number = 0;
         foreach (var part in open.Chunk(size))
         {
@@ -404,7 +462,7 @@ internal static class RealJudge
             rows.Add((c[0], c[1], c[2]));
         }
 
-        var menus = BuildMenus(corpus, rows.Select(r => r.Item2).Distinct(StringComparer.Ordinal).ToList());
+        var menus = LoadMenus(corpus, work, rows.Select(r => r.Item2).Distinct(StringComparer.Ordinal).ToList());
         var menu = menus.ToDictionary(m => m.Key, m => m.Value.Select(l => l.Split('\t')[2]).ToHashSet(StringComparer.Ordinal), StringComparer.Ordinal);
         return (rows, menu, rows.ToDictionary(r => r.Item1, r => r.Item2, StringComparer.Ordinal));
     }

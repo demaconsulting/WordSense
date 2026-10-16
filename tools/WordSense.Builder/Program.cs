@@ -40,7 +40,7 @@ public static class Program
                 error.WriteLine(
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "audit-export, audit-adjudicate, audit-merge, audit-report, apply-relabel, validate-pos, " +
-                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, " +
+                    "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, " +
                     "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas.");
                 return 1;
             }
@@ -76,6 +76,9 @@ public static class Program
                     return RunRealJudgeMerge(options, output);
                 case "real-import":
                     output.Write(RealImport.Import(Require(options, "corpus"), ReadCandidateFiles(Require(options, "candidates")), RealJudge.ReadJudgements(Require(options, "audit").Split(','))));
+                    return 0;
+                case "real-gap-import":
+                    output.Write(RealGap.Import(Require(options, "corpus"), Require(options, "name"), ReadCandidateFiles(Require(options, "candidates")), RealJudge.ReadJudgements(Require(options, "audit").Split(','))));
                     return 0;
                 case "real-eval-import":
                     var perSense = IntOption(options, "per-sense", 12);
@@ -295,15 +298,21 @@ public static class Program
     private static int RunRealJudgeExport(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
+        var gapPlan = options.GetValueOrDefault("gap-plan");
+        if (gapPlan is not null)
+        {
+            RealGap.ValidateName(gapPlan);
+        }
+
         var candidates = options.ContainsKey("candidates") ? ReadCandidateFiles(options["candidates"]) : [];
-        if (options.GetValueOrDefault("undecided", "false") == "true")
+        if (gapPlan is null && options.GetValueOrDefault("undecided", "false") == "true")
         {
             var (_, undecided, _) = RealPlan.ReadPool(corpus, RealPlan.ReadPlan(corpus));
             candidates.AddRange(undecided.Select(r => new Candidate(PosAudit.RowId(r.Lemma, r.Sentence), r.Lemma, r.Sentence, "llm-corpus", "MIT (project-authored)", "dropped-rows.tsv", "-", "project (LLM-written)", r.Split)));
         }
 
         var size = IntOption(options, "size", 100);
-        var (rows, chunks) = RealJudge.Export(corpus, candidates, Require(options, "work"), size);
+        var (rows, chunks) = RealJudge.Export(corpus, candidates, Require(options, "work"), size, gapPlan);
         output.WriteLine($"Exported {rows} rows in {chunks} chunks.");
         return 0;
     }
