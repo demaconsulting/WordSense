@@ -20,6 +20,14 @@ public sealed record WordSenseModelLocation(string Directory, string ModelPath, 
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="directory"/> is null.</exception>
     /// <exception cref="FileNotFoundException">Thrown when a model file is missing.</exception>
     /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match.</exception>
+    /// <example>
+    ///     <code>
+    ///     // The directory holds model_int8.onnx and vocab.txt, for example copied from another machine
+    ///     WordSenseModelLocation location = WordSenseModelLocation.FromDirectory("/models/all-MiniLM-L6-v2");
+    ///     using var classifier = await WordSenseClassifier.CreateAsync(
+    ///         new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+    ///     </code>
+    /// </example>
     public static WordSenseModelLocation FromDirectory(string directory)
     {
         ArgumentNullException.ThrowIfNull(directory);

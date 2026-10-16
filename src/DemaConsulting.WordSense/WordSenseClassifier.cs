@@ -4,15 +4,48 @@ namespace DemaConsulting.WordSense;
 ///     Classifies the sense of ambiguous words in context.
 /// </summary>
 /// <remarks>
+///     <para>
 ///     The primary input is a list of words that the caller has already tokenized; every result array
 ///     is parallel to that list. Results are null for words that have no classifier and for answers
 ///     withheld because the confidence is too low.
+///     </para>
+///     <para>
+///     Terminology: a <em>lemma</em> is the base form of an ambiguous word (for example <c>record</c>); a
+///     <em>sense</em> is one meaning of a lemma (<see cref="WordSense"/>); senses that share a meaning but differ
+///     in part of speech share a <em>group</em>; a <em>tag</em> is a lower-case property of a sense such as
+///     <c>noun</c> or <c>verb</c>. Each sense gets a score; the <em>margin</em> is the best score minus the
+///     runner-up's score, and the classifier <em>abstains</em> (returns null) when the margin is below the
+///     lemma's abstain threshold. Create an instance with <see cref="WordSenseClassifier.CreateAsync"/>.
+///     </para>
 /// </remarks>
+/// <example>
+///     Pick the method that matches the question being asked: <c>ClassifyAsync</c> for the sense,
+///     <c>ClassifyTagAsync</c> or <c>IsTagAsync</c> for a part-of-speech style answer, and
+///     <c>ClassifyDetailAsync</c> when the confidence matters.
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///
+///     string[] words = ["They", "will", "record", "the", "record"];
+///     WordSense?[] senses = await classifier.ClassifyAsync(words);
+///
+///     for (var i = 0; i &lt; words.Length; i++)
+///     {
+///         // null: not an ambiguous word, or the classifier abstained
+///         Console.WriteLine($"{words[i]}: {senses[i]?.Sense ?? "-"}");
+///     }
+///     </code>
+/// </example>
 public interface IWordSenseClassifier : IDisposable
 {
     /// <summary>
     ///     Gets the lemmas this classifier can disambiguate, in ordinal order.
     /// </summary>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     bool canClassify = classifier.KnownLemmas.Contains("record");
+    ///     </code>
+    /// </example>
     IReadOnlyList<string> KnownLemmas { get; }
 
     /// <summary>
@@ -20,6 +53,16 @@ public interface IWordSenseClassifier : IDisposable
     /// </summary>
     /// <param name="lemma">The lemma, for example <c>record</c>.</param>
     /// <returns>The shared sense records, or an empty list when the lemma is unknown.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     foreach (var sense in classifier.GetSenses("record"))
+    ///     {
+    ///         Console.WriteLine($"{sense.Sense} group={sense.Group} tags={string.Join(",", sense.Tags.Order())}");
+    ///     }
+    ///     </code>
+    /// </example>
     IReadOnlyList<WordSense> GetSenses(string lemma);
 
     /// <summary>
@@ -35,6 +78,18 @@ public interface IWordSenseClassifier : IDisposable
     ///     not a known ambiguous word or the classifier abstained.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     string[] words = ["The", "record", "was", "broken"];
+    ///     WordSense?[] senses = await classifier.ClassifyAsync(words);
+    ///     if (senses[1] is { } sense)
+    ///     {
+    ///         Console.WriteLine($"{sense.Lemma}: {sense.Sense} tags={string.Join(",", sense.Tags.Order())}");
+    ///     }
+    ///     </code>
+    /// </example>
     Task<WordSense?[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -43,6 +98,18 @@ public interface IWordSenseClassifier : IDisposable
     /// <param name="text">The text to classify.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>Tokens that tile the text exactly; see <see cref="WordSenseToken"/>.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="text"/> is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     var tokens = await classifier.ClassifyAsync("They will record the record.");
+    ///     foreach (var token in tokens.Where(t => t.Sense is not null))
+    ///     {
+    ///         Console.WriteLine($"{token.Start}: {token.Text} is {token.Sense}");
+    ///     }
+    ///     </code>
+    /// </example>
     Task<IReadOnlyList<WordSenseToken>> ClassifyAsync(string text, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -55,6 +122,18 @@ public interface IWordSenseClassifier : IDisposable
     ///     (also when it abstained, see <see cref="WordSenseDetail.Abstained"/>), or null for other words.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     string[] words = ["They", "will", "record", "the", "record"];
+    ///     WordSenseDetail?[] details = await classifier.ClassifyDetailAsync(words);
+    ///     foreach (var detail in details.OfType&lt;WordSenseDetail&gt;())
+    ///     {
+    ///         Console.WriteLine($"{detail.Sense} margin={detail.Margin:F2} abstained={detail.Abstained}");
+    ///     }
+    ///     </code>
+    /// </example>
     Task<WordSenseDetail?[]> ClassifyDetailAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -72,6 +151,15 @@ public interface IWordSenseClassifier : IDisposable
     /// <returns>An array parallel to <paramref name="words"/>: the winning tag, or null.</returns>
     /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="tags"/> is empty or contains an empty tag.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     string[] words = ["They", "will", "record", "the", "record"];
+    ///     string?[] partOfSpeech = await classifier.ClassifyTagAsync(words, ["noun", "verb"]);
+    ///     // Each entry is "noun", "verb", or null (unknown word or the classifier abstained)
+    ///     </code>
+    /// </example>
     Task<string?[]> ClassifyTagAsync(
         IReadOnlyList<string> words,
         IReadOnlyCollection<string> tags,
@@ -90,6 +178,15 @@ public interface IWordSenseClassifier : IDisposable
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when an argument or element is null.</exception>
     /// <exception cref="ArgumentException">Thrown when <paramref name="tag"/> is empty.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     using var classifier = await WordSenseClassifier.CreateAsync();
+    ///     string[] words = ["They", "will", "record", "the", "record"];
+    ///     bool?[] isVerb = await classifier.IsTagAsync(words, "verb");
+    ///     // true for a verb use, false for another use, null when unknown or abstained
+    ///     </code>
+    /// </example>
     Task<bool?[]> IsTagAsync(IReadOnlyList<string> words, string tag, CancellationToken cancellationToken = default);
 }
 
@@ -99,8 +196,20 @@ public interface IWordSenseClassifier : IDisposable
 /// <remarks>
 ///     The words are encoded once and every known word in them is classified from the same hidden
 ///     states. Inputs longer than the maximum sequence length are classified from a window centered on
-///     each target. The instance is thread-safe when its encoder is.
+///     each target. The instance is thread-safe when its encoder is. Instances created by
+///     <see cref="CreateAsync"/> own their ONNX session, so dispose them (for example with <c>using</c>);
+///     create one classifier and share it rather than creating one per request. The classification
+///     methods are described on <see cref="IWordSenseClassifier"/>.
 /// </remarks>
+/// <example>
+///     Create the classifier once, then classify as many texts as needed. With no options the model is
+///     downloaded on first use, verified, and cached in the per-user store.
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     var tokens = await classifier.ClassifyAsync("Please record the record.");
+///     Console.WriteLine(string.Join(" ", tokens.Select(t => t.Sense?.ToString() ?? t.Text)));
+///     </code>
+/// </example>
 public sealed class WordSenseClassifier : IWordSenseClassifier
 {
     private readonly IWordSenseEncoder _encoder;
@@ -176,9 +285,28 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// </summary>
     /// <param name="options">The options, or null for defaults.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <remarks>
+    ///     When <see cref="WordSenseClassifierOptions.ModelDirectory"/> is set the files in it are verified
+    ///     and no network access happens; otherwise <see cref="WordSenseModelDownloader.EnsureModelAsync"/> obtains
+    ///     them. The embedded table is loaded with <see cref="WordSenseTable.LoadEmbedded"/>.
+    /// </remarks>
     /// <returns>A classifier that owns its encoder and must be disposed.</returns>
     /// <exception cref="WordSenseModelDownloadException">Thrown when the model could not be downloaded.</exception>
     /// <exception cref="WordSenseModelMismatchException">Thrown when the embedded table does not match the model.</exception>
+    /// <exception cref="FileNotFoundException">Thrown when a file of the model directory is missing.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a model file's SHA-256 does not match the pinned value.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when an option value is out of range.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <example>
+    ///     <code>
+    ///     // Default: download on first use, verify, and cache
+    ///     using var online = await WordSenseClassifier.CreateAsync();
+    ///
+    ///     // Offline: use a directory that already holds model_int8.onnx and vocab.txt
+    ///     var options = new WordSenseClassifierOptions { ModelDirectory = "/models/all-MiniLM-L6-v2" };
+    ///     using var offline = await WordSenseClassifier.CreateAsync(options);
+    ///     </code>
+    /// </example>
     public static async Task<WordSenseClassifier> CreateAsync(
         WordSenseClassifierOptions? options = null,
         CancellationToken cancellationToken = default)

@@ -14,6 +14,21 @@ namespace DemaConsulting.WordSense;
 ///     in order, downloaded to a uniquely named temporary file, verified, and atomically moved into place,
 ///     so a partial or corrupt download never becomes visible under the final name.
 /// </remarks>
+/// <example>
+///     Download the model ahead of time (for example in an installer or a CI step), then use it offline.
+///     <code>
+///     var options = new WordSenseModelDownloaderOptions
+///     {
+///         StoreRoot = Path.Combine(Path.GetTempPath(), "wordsense-models"),
+///         Progress = new Progress&lt;WordSenseModelDownloadProgress&gt;(
+///             p => Console.WriteLine($"{p.FileName} from {p.Source}: {p.BytesTransferred} bytes")),
+///     };
+///
+///     WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync(options);
+///     using var classifier = await WordSenseClassifier.CreateAsync(
+///         new WordSenseClassifierOptions { ModelDirectory = location.Directory });
+///     </code>
+/// </example>
 public static class WordSenseModelDownloader
 {
     /// <summary>
@@ -30,8 +45,33 @@ public static class WordSenseModelDownloader
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <remarks>
     ///     An exception thrown by the <see cref="WordSenseModelDownloaderOptions.Progress"/> callback is not a
-    ///     source failure: it propagates to the caller and the remaining sources are not tried.
+    ///     source failure: it propagates to the caller and the remaining sources are not tried. When no
+    ///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> is given, the mirror environment variables named
+    ///     on <see cref="DownloadMirror"/> are consulted.
     /// </remarks>
+    /// <example>
+    ///     <code>
+    ///     // A corporate mirror tried before Hugging Face and GitHub; files are fetched from
+    ///     // https://models.example.com/wordsense/{model-id}/{file-name}
+    ///     var options = new WordSenseModelDownloaderOptions
+    ///     {
+    ///         Mirror = new DownloadMirror(new Uri("https://models.example.com/wordsense"), bearerToken: "token"),
+    ///     };
+    ///
+    ///     try
+    ///     {
+    ///         WordSenseModelLocation location = await WordSenseModelDownloader.EnsureModelAsync(options);
+    ///         Console.WriteLine(location.ModelPath);
+    ///     }
+    ///     catch (WordSenseModelDownloadException ex)
+    ///     {
+    ///         foreach (var failure in ex.Failures)
+    ///         {
+    ///             Console.Error.WriteLine(failure); // one entry per source that was tried
+    ///         }
+    ///     }
+    ///     </code>
+    /// </example>
     public static async Task<WordSenseModelLocation> EnsureModelAsync(
         WordSenseModelDownloaderOptions? options = null,
         CancellationToken cancellationToken = default)

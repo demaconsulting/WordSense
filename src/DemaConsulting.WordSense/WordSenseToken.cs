@@ -9,6 +9,20 @@ namespace DemaConsulting.WordSense;
 ///     and digits, with internal apostrophes and hyphens), runs of whitespace, or single other
 ///     characters such as punctuation.
 /// </remarks>
+/// <example>
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     const string text = "They will record the record.";
+///     var tokens = await classifier.ClassifyAsync(text);
+///
+///     // The tokens tile the text, so the original can be rebuilt and offsets index into it
+///     bool tiles = string.Concat(tokens.Select(t => t.Text)) == text;
+///     foreach (var token in tokens.Where(t => t.Sense is not null))
+///     {
+///         Console.WriteLine($"{text.Substring(token.Start, token.Length)} -> {token.Sense}");
+///     }
+///     </code>
+/// </example>
 /// <param name="Start">Inclusive UTF-16 start offset of the segment in the input text.</param>
 /// <param name="Length">Length of the segment in UTF-16 code units.</param>
 /// <param name="Text">The segment text.</param>

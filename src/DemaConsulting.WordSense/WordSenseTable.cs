@@ -25,7 +25,29 @@ namespace DemaConsulting.WordSense;
 ///     <see cref="WordSenseTableFormatException"/> rather than a different exception or an
 ///     oversized allocation. Instances are immutable after construction and thread-safe.
 ///     </para>
+///     <para>
+///     Most callers never touch a table: <see cref="WordSenseClassifier.CreateAsync"/> loads the embedded
+///     one. Use this type to inspect which lemmas and senses a build supports, or to read a table from
+///     bytes with <see cref="Read"/>.
+///     </para>
 /// </remarks>
+/// <example>
+///     <code>
+///     WordSenseTable table = WordSenseTable.LoadEmbedded();
+///     Console.WriteLine($"{table.Lemmas.Count} lemmas, trained with {table.ModelId}");
+///
+///     if (table.TryGetLemma("record", out LemmaModel model))
+///     {
+///         foreach (var sense in model.Senses)
+///         {
+///             Console.WriteLine($"{sense.Sense}: {string.Join(",", sense.Tags.Order())}");
+///         }
+///     }
+///
+///     // A table round-trips through its binary form
+///     WordSenseTable copy = WordSenseTable.Read(table.ToArray());
+///     </code>
+/// </example>
 public sealed class WordSenseTable
 {
     /// <summary>
@@ -195,6 +217,12 @@ public sealed class WordSenseTable
     /// </summary>
     /// <returns>The embedded table.</returns>
     /// <exception cref="WordSenseTableFormatException">Thrown when the table is missing or malformed.</exception>
+    /// <example>
+    ///     <code>
+    ///     WordSenseTable table = WordSenseTable.LoadEmbedded();
+    ///     bool hasRecord = table.TryGetLemma("record", out _);
+    ///     </code>
+    /// </example>
     public static WordSenseTable LoadEmbedded()
     {
         // Copy the resource into memory; it is a few hundred kilobytes

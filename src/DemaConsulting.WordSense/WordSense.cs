@@ -11,6 +11,18 @@ namespace DemaConsulting.WordSense;
 ///     immutable and thread-safe. Tags are lower-case ordinal strings such as <c>noun</c>, <c>verb</c>
 ///     or <c>past</c>; a sense may carry several (for example <c>past</c> and <c>verb</c>).
 /// </remarks>
+/// <example>
+///     <code>
+///     using var classifier = await WordSenseClassifier.CreateAsync();
+///     WordSense?[] senses = await classifier.ClassifyAsync(["They", "will", "record", "it"]);
+///
+///     if (senses[2] is { } sense)
+///     {
+///         Console.WriteLine($"{sense.Lemma} -> {sense.Sense} (group {sense.Group})");
+///         bool isVerb = sense.HasTag("verb"); // tags are case-sensitive
+///     }
+///     </code>
+/// </example>
 public sealed class WordSense
 {
     /// <summary>

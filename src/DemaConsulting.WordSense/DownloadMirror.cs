@@ -28,6 +28,21 @@ namespace DemaConsulting.WordSense;
 ///     <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
 ///     </para>
 /// </remarks>
+/// <example>
+///     <code>
+///     // Explicit mirror with a bearer token (sent only to the mirror's own origin)
+///     var mirror = new DownloadMirror(new Uri("https://models.example.com/wordsense"), bearerToken: "token");
+///
+///     // Or read WORDSENSE_MIRROR_URL (and optional credentials) from the environment; null when unset
+///     DownloadMirror? fromEnvironment = DownloadMirror.FromEnvironment(Environment.GetEnvironmentVariable);
+///
+///     var options = new WordSenseClassifierOptions
+///     {
+///         Downloader = new WordSenseModelDownloaderOptions { Mirror = mirror },
+///     };
+///     using var classifier = await WordSenseClassifier.CreateAsync(options);
+///     </code>
+/// </example>
 public sealed record DownloadMirror
 {
     /// <summary>
@@ -141,6 +156,17 @@ public sealed record DownloadMirror
     /// <returns>The configured mirror, or null when <see cref="UrlEnvironmentVariable"/> is blank.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="getEnvironmentVariable"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when the configuration is invalid.</exception>
+    /// <example>
+    ///     <code>
+    ///     var values = new Dictionary&lt;string, string&gt;
+    ///     {
+    ///         [DownloadMirror.UrlEnvironmentVariable] = "https://models.example.com/wordsense",
+    ///         [DownloadMirror.BearerTokenEnvironmentVariable] = "token",
+    ///     };
+    ///
+    ///     DownloadMirror? mirror = DownloadMirror.FromEnvironment(name => values.GetValueOrDefault(name));
+    ///     </code>
+    /// </example>
     public static DownloadMirror? FromEnvironment(Func<string, string?> getEnvironmentVariable)
     {
         ArgumentNullException.ThrowIfNull(getEnvironmentVariable);
