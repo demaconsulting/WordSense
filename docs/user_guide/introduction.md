@@ -141,12 +141,12 @@ Exceptions: `WordSenseModelDownloadException`, `WordSenseModelMismatchException`
 # Accuracy and Performance
 
 Accuracy is measured on held-out sentences that are never used for training; see the build notes for current
-numbers per lemma. On the 6,136 held-out rows the best sense is correct 96.17 % of the time (96.37 % at the
-sense-group level), and 98.54 % of the answered rows are correct (90.50 % answered). For noun versus verb (5,459
-held-out rows whose correct sense is exactly one of the two), the best tag is correct 97.03 % of the time, and
-99.22 % of the answered rows are correct (91.72 % answered). On real text (public-domain and openly licensed
+numbers per lemma. On the 7,493 held-out rows the best sense is correct 95.86 % of the time (96.20 % at the
+sense-group level), and 98.32 % of the answered rows are correct (89.92 % answered). For noun versus verb (6,667
+held-out rows whose correct sense is exactly one of the two), the best tag is correct 96.84 % of the time, and
+99.15 % of the answered rows are correct (91.39 % answered). On real text (public-domain and openly licensed
 sentences that were judged blind and never used for training) the best sense is correct 92.60 % of the time
-(96.44 % of the answered rows, 85.63 % answered) on 689 sentences, against 97.71 % on the project-written
+(96.57 % of the answered rows, 84.62 % answered) on 689 sentences, against 97.71 % on the project-written
 held-out sentences of the same lemmas. The lemmas `bow`,
 `lead`, `tear`, `closer`, `upsetting`, `polish` and `orient` are supported with split senses (for example `bow`
 bend-noun and bend-verb share the group `bend`).

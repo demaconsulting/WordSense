@@ -1,7 +1,8 @@
-# New Lemma Results (Phase 4, Batches 1 to 5)
+# New Lemma Results (Phase 4)
 
-Phase 4 adds new lemmas to the table from real text. This page records batch 1 first and batches 2 to 5 after it
-(see [Batches 2 to 5](#batches-2-to-5)). Batch 1: thirteen lemmas with 28 senses. The
+Phase 4 adds new lemmas to the table. This page records batch 1 first, batches 2 to 5 after it
+(see [Batches 2 to 5](#batches-2-to-5)) and the final state after the authored sentences
+(see [Final Results](#final-results)). Batch 1: thirteen lemmas with 28 senses. The
 sense inventory and the choice of lemmas are in `new-lemma-decisions.md`. Every sentence of this batch is a real
 sentence (Tatoeba, Project Gutenberg, UD EWT or a Wikipedia sentence); the sentences were judged blind by two judges
 against the sense menu of the lemma, and a third judge decided the disagreements. The project wrote no sentence in
@@ -297,3 +298,151 @@ lemmas that are in the table with a short sense are provisional.
 
 The 603 new holdout rows of `real-restore.tsv` score about 95.5 %. The `real-eval` report now evaluates 545 rows of
 `real-restore.tsv` (89.72 %); the 689 rows of `eval-seed.tsv` contain no new lemma and are unchanged.
+
+## Final Results
+
+The authored step completed Phase 4. This section is the final state: 63 accepted lemmas, none dropped, 137 senses.
+
+### Method of the Authored Step
+
+1. The 12 held-back lemmas were restored: their real rows (211 anchor, 108 holdout, 12 sense and 319 provenance rows)
+   went back into the four `real-restore.tsv` files and their forms (42 rows) into `corpus/forms/speech.tsv`. A
+   verb form (`intermediated`, `intermediating`) was added for `intermediate`.
+2. The 16 top-up holdout rows for `predate-earlier` and `predate-prey` passed the checks of the preparation step (forms
+   of the menu, braces, at most 35 words, no duplicate, not in the corpus). **They were not blind-judged.** See
+   `new-lemma-decisions.md`.
+3. `real-authored-import --name new-authored-1` imported 576 anchor rows (author `authored-anchor`) and 398 holdout
+   rows (author `authored-holdout`, 382 accepted plus the 16 top-up rows) and declared 18 new senses in
+   `senses/new-authored-1.tsv`. Provenance flags every one of these rows `authored`. No sense is short of 14 anchors or
+   8 holdout rows (`resign-sign-again` has exactly 8 holdout rows).
+4. The table was rebuilt (415 lemmas, 863 senses). `validate-provenance`, `validate-pos` (863 senses), the real-text
+   evaluation and the unit tests (575 passed) are green. The build warns about no sense with fewer than 8 anchors.
+5. No lemma had a shortfall or could not be trained, so **no lemma was dropped** (0 lemmas, 0 rows, 0 forms removed).
+
+### Per Lemma After Authoring
+
+Counts are of the lemma after the import (all senses). Anchors and holdout are real / authored. The accuracy columns
+are best-sense accuracies of the build report on the holdout rows of the lemma: real-only and authored-only rows (an
+empty split is `-`), all rows (All), and answered accuracy and coverage with abstention (Answered, Coverage), which
+cover all holdout rows of the lemma. **Authored accuracy is optimistic:** the sentences were written for a known sense
+menu by an author who knew what the senses are, and the 16 top-up rows were not judged.
+
+| Lemma | Senses | Anchors real / auth. | Holdout real / auth. | Real-only | Authored-only | All | Answered | Coverage |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| `contact` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 100.00 % |
+| `impact` | 2 | 40 / 0 | 20 / 0 | 90.00 % | - | 90.00 % | 94.74 % | 95.00 % |
+| `address` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 100.00 % |
+| `transfer` | 2 | 40 / 0 | 20 / 0 | 95.00 % | - | 95.00 % | 93.75 % | 80.00 % |
+| `update` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 90.00 % |
+| `protest` | 2 | 40 / 0 | 20 / 0 | 95.00 % | - | 95.00 % | 100.00 % | 65.00 % |
+| `collect` | 2 | 28 / 8 | 14 / 6 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 95.00 % |
+| `export` | 2 | 40 / 0 | 20 / 0 | 85.00 % | - | 85.00 % | 100.00 % | 65.00 % |
+| `accent` | 2 | 24 / 12 | 12 / 8 | 91.67 % | 62.50 % | 80.00 % | 88.89 % | 90.00 % |
+| `upgrade` | 2 | 37 / 0 | 19 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 100.00 % |
+| `second` | 4 | 57 / 16 | 29 / 10 | 86.21 % | 100.00 % | 89.74 % | 90.32 % | 79.49 % |
+| `detail` | 2 | 28 / 8 | 14 / 6 | 85.71 % | 83.33 % | 85.00 % | 94.12 % | 85.00 % |
+| `combat` | 2 | 40 / 0 | 20 / 0 | 95.00 % | - | 95.00 % | 95.00 % | 100.00 % |
+| `resign` | 2 | 25 / 11 | 12 / 6 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `reset` | 2 | 40 / 0 | 20 / 0 | 90.00 % | - | 90.00 % | 100.00 % | 80.00 % |
+| `intern` | 3 | 42 / 10 | 21 / 7 | 85.71 % | 71.43 % | 82.14 % | 100.00 % | 64.29 % |
+| `recreate` | 2 | 20 / 16 | 10 / 10 | 90.00 % | 90.00 % | 90.00 % | 100.00 % | 75.00 % |
+| `perfume` | 2 | 35 / 0 | 18 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 100.00 % |
+| `dictate` | 2 | 31 / 5 | 16 / 4 | 81.25 % | 100.00 % | 85.00 % | 88.89 % | 90.00 % |
+| `recess` | 2 | 28 / 8 | 14 / 6 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 80.00 % |
+| `complex` | 2 | 40 / 0 | 20 / 0 | 95.00 % | - | 95.00 % | 100.00 % | 85.00 % |
+| `frequent` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 80.00 % |
+| `ally` | 2 | 33 / 3 | 16 / 4 | 93.75 % | 100.00 % | 95.00 % | 100.00 % | 90.00 % |
+| `traverse` | 2 | 25 / 10 | 12 / 8 | 91.67 % | 100.00 % | 95.00 % | 100.00 % | 95.00 % |
+| `prefix` | 2 | 20 / 16 | 10 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 85.00 % |
+| `suffix` | 2 | 24 / 12 | 12 / 8 | 100.00 % | 62.50 % | 85.00 % | 100.00 % | 70.00 % |
+| `discord` | 2 | 20 / 16 | 10 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `recap` | 2 | 12 / 20 | 5 / 15 | 100.00 % | 93.33 % | 95.00 % | 100.00 % | 75.00 % |
+| `advert` | 2 | 27 / 9 | 14 / 6 | 100.00 % | 83.33 % | 95.00 % | 95.00 % | 100.00 % |
+| `alloy` | 2 | 20 / 16 | 10 / 10 | 100.00 % | 90.00 % | 95.00 % | 100.00 % | 75.00 % |
+| `primer` | 2 | 23 / 9 | 11 / 9 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 95.00 % |
+| `intermediate` | 3 | 31 / 21 | 16 / 14 | 87.50 % | 100.00 % | 93.33 % | 93.33 % | 100.00 % |
+| `wicked` | 2 | 24 / 11 | 12 / 8 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `tier` | 3 | 35 / 17 | 18 / 12 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 93.33 % |
+| `tower` | 3 | 40 / 16 | 20 / 10 | 100.00 % | 90.00 % | 96.67 % | 100.00 % | 80.00 % |
+| `shower` | 3 | 40 / 16 | 20 / 10 | 95.00 % | 80.00 % | 90.00 % | 89.66 % | 96.67 % |
+| `sewer` | 2 | 20 / 16 | 10 / 10 | 90.00 % | 100.00 % | 95.00 % | 95.00 % | 100.00 % |
+| `forearm` | 2 | 24 / 12 | 12 / 8 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `alum` | 2 | 9 / 23 | 5 / 15 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 95.00 % |
+| `supposed` | 3 | 60 / 0 | 30 / 0 | 93.33 % | - | 93.33 % | 94.44 % | 60.00 % |
+| `blessed` | 2 | 40 / 0 | 20 / 0 | 90.00 % | - | 90.00 % | 94.12 % | 85.00 % |
+| `august` | 2 | 40 / 0 | 20 / 0 | 95.00 % | - | 95.00 % | 100.00 % | 85.00 % |
+| `defense` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 95.00 % |
+| `bases` | 3 | 24 / 28 | 11 / 19 | 100.00 % | 94.74 % | 96.67 % | 100.00 % | 76.67 % |
+| `costume` | 2 | 20 / 15 | 10 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `romance` | 2 | 20 / 15 | 10 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `submarine` | 2 | 39 / 0 | 20 / 0 | 85.00 % | - | 85.00 % | 88.89 % | 90.00 % |
+| `excerpt` | 2 | 16 / 16 | 9 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 94.74 % |
+| `annex` | 2 | 40 / 0 | 20 / 0 | 100.00 % | - | 100.00 % | 100.00 % | 95.00 % |
+| `slough` | 3 | 27 / 25 | 14 / 16 | 92.86 % | 87.50 % | 90.00 % | 100.00 % | 60.00 % |
+| `tarry` | 2 | 26 / 10 | 13 / 7 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `underscore` | 2 | 31 / 5 | 16 / 4 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `gallant` | 3 | 47 / 7 | 23 / 6 | 78.26 % | 100.00 % | 82.76 % | 87.50 % | 82.76 % |
+| `mow` | 2 | 24 / 12 | 12 / 8 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 95.00 % |
+| `multiply` | 2 | 29 / 7 | 14 / 6 | 92.86 % | 83.33 % | 90.00 % | 94.12 % | 85.00 % |
+| `reprimand` | 2 | 36 / 0 | 19 / 0 | 94.74 % | - | 94.74 % | 92.86 % | 73.68 % |
+| `retrofit` | 2 | 17 / 15 | 8 / 12 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 85.00 % |
+| `egress` | 2 | 19 / 16 | 10 / 10 | 100.00 % | 60.00 % | 80.00 % | 94.12 % | 85.00 % |
+| `agape` | 2 | 29 / 3 | 14 / 4 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 72.22 % |
+| `predate` | 2 | 7 / 25 | 4 / 16 | 100.00 % | 75.00 % | 80.00 % | 80.00 % | 100.00 % |
+| `ellipses` | 2 | 16 / 16 | 8 / 12 | 87.50 % | 100.00 % | 95.00 % | 100.00 % | 95.00 % |
+| `adduct` | 2 | 24 / 8 | 12 / 8 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+| `forbear` | 2 | 20 / 16 | 10 / 10 | 100.00 % | 100.00 % | 100.00 % | 100.00 % | 100.00 % |
+
+Totals over the 63 lemmas: 1,913 real and 576 authored anchors, 959 real and 398 authored holdout rows. Best-sense
+accuracy is 94.99 % on the real holdout rows, 92.96 % on the authored rows and 94.40 % on all 1,357 rows. The authored
+figure is not higher than the real one here because the authored rows cover the rarest senses (for example the one who
+shows, ties or tows readings), which are harder for the model; it is nevertheless an optimistic figure, because the
+authored holdout was written by an author who knew the senses and 16 rows were not judged. Treat the real-only column
+as the honest measure.
+
+The weakest lemmas (holdout accuracy at or below 85 %) are `accent`, `detail`, `suffix`, `submarine`, `export`, `intern`,
+`gallant`, `egress` and `predate`. The real and authored columns are listed per sense in
+`corpus/audit/new-lemma-speech-map.tsv` (see below).
+
+### Decisions per Doubtful Word
+
+| Lemma | Decision | Outcome |
+| --- | --- | --- |
+| `gas`, `mouse`, `automobile`, `finance` | Rejected | Not in the table (uncorroborated reading or free variation) |
+| `alum` | Accepted | Trained; `alum-graduate` is authored only (16 anchors, 10 holdout); 100.00 % holdout |
+| `sewer` | Accepted | Trained; `sewer-seamstress` is authored only; 95.00 % holdout |
+| `primer` | Accepted | Trained; both senses have real and authored rows; 100.00 % holdout |
+| `shower` | Accepted | Trained; `shower-one-who-shows` is authored only; 80.00 % on that sense, 90.00 % for the lemma |
+| `tier` | Accepted | Trained; `tier-one-who-ties` is mostly authored (6 real, 20 authored); 100.00 % holdout |
+| `tower` | Accepted | Trained; `tower-one-who-tows` is authored only; 90.00 % on that sense, 96.67 % for the lemma |
+
+None of the six accepted doubtful words was dropped.
+
+### Speech Mapping File
+
+`corpus/audit/new-lemma-speech-map.tsv` (inside this repository) maps every sense of the Phase 4 lemmas to its
+pronunciation. Columns: `lemma`, `sense`, `pos`, `group` (pronunciation group), `arpabet` (the ARPAbet of the sense),
+`anchors` and `holdout` (counts), `source_mix` (`real=N;authored=M` over anchors and holdout), `holdout_accuracy`
+(best-sense accuracy of the sense in percent) and `status` (`trained` or `dropped`). The sense inventory is
+`tools/real-text/new-lemma-inventory.tsv`; a lemma that was dropped would appear with status `dropped` and empty counts.
+No lemma was dropped, so every row is `trained` (137 rows).
+
+### Overall Figures After Authoring
+
+| Figure | Phase 3b baseline | After batches 2 to 5 | Final |
+| --- | ---: | ---: | ---: |
+| Lemmas in the table | 352 | 403 | 415 |
+| Senses | 726 | 833 | 863 |
+| Anchors, holdout rows | not recorded, 6,136 | 12,108, 6,987 | 12,895, 7,493 |
+| Overall holdout, best sense | 96.17 % | 96.05 % | 95.86 % (7,493 rows) |
+| Overall holdout, group | 96.37 % | 96.32 % | 96.20 % |
+| With abstention | 98.54 % at 90.50 % | 98.38 % at 90.11 % | 98.32 % at 89.92 % |
+| Noun versus verb, best tag | 97.03 % (5,459 rows) | 96.94 % (6,178 rows) | 96.84 % (6,667 rows) |
+| Real-text evaluation (`eval-seed.tsv`, 689 rows) | 92.60 % | 92.60 % | 92.60 % (96.57 % of the 84.62 % answered) |
+| Real restored-sense holdout (`real-restored`) | 86.20 % | 89.72 % (545 rows) | 92.91 % (1,256 rows) |
+
+The overall holdout figure falls by 0.31 points against the Phase 3b baseline because 63 new lemmas with rare senses
+are harder than the average (the 63 lemmas score 94.40 % on their own 1,357 holdout rows) and because the authored
+senses are measured by sentences with a different style. The real-text evaluation is unchanged: it contains no new
+lemma, so the new rows did not disturb the earlier ones. The authored holdout file `new-authored-1.tsv` scores 92.96 %
+(398 rows) in the build report and is not included in the real-text figures.

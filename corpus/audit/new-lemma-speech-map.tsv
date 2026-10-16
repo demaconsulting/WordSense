@@ -1,0 +1,138 @@
+lemma	sense	pos	group	arpabet	anchors	holdout	source_mix	holdout_accuracy	status
+contact	contact-noun	noun	stress-first	K AA1 N T AE2 K T	20	10	real=30;authored=0	100.00	trained
+contact	contact-verb	verb	stress-last	K AH0 N T AE1 K T	20	10	real=30;authored=0	100.00	trained
+impact	impact-noun	noun	stress-first	IH1 M P AE0 K T	20	10	real=30;authored=0	90.00	trained
+impact	impact-verb	verb	stress-last	IH2 M P AE1 K T	20	10	real=30;authored=0	90.00	trained
+address	address-noun	noun	stress-first	AE1 D R EH2 S	20	10	real=30;authored=0	100.00	trained
+address	address-verb	verb	stress-last	AH0 D R EH1 S	20	10	real=30;authored=0	100.00	trained
+transfer	transfer-noun	noun	stress-first	T R AE1 N S F ER0	20	10	real=30;authored=0	100.00	trained
+transfer	transfer-verb	verb	stress-last	T R AE0 N S F ER1	20	10	real=30;authored=0	90.00	trained
+update	update-noun	noun	stress-first	AH1 P D EY2 T	20	10	real=30;authored=0	100.00	trained
+update	update-verb	verb	stress-last	AH0 P D EY1 T	20	10	real=30;authored=0	100.00	trained
+protest	protest-noun	noun	stress-first	P R OW1 T EH2 S T	20	10	real=30;authored=0	100.00	trained
+protest	protest-verb	verb	stress-last	P R AH0 T EH1 S T	20	10	real=30;authored=0	90.00	trained
+collect	collect-verb	verb	gather	K AH0 L EH1 K T	20	10	real=30;authored=0	100.00	trained
+collect	collect-prayer	noun	prayer	K AA1 L IH0 K T	16	10	real=12;authored=14	100.00	trained
+export	export-noun	noun	stress-first	EH1 K S P AO0 R T	20	10	real=30;authored=0	90.00	trained
+export	export-verb	verb	stress-last	IH0 K S P AO1 R T	20	10	real=30;authored=0	80.00	trained
+accent	accent-noun	noun	stress-first	AE1 K S EH2 N T	20	10	real=30;authored=0	100.00	trained
+accent	accent-verb	verb	stress-last	AH0 K S EH1 N T	16	10	real=6;authored=20	60.00	trained
+upgrade	upgrade-noun	noun	stress-first	AH1 P G R EY2 D	17	9	real=26;authored=0	100.00	trained
+upgrade	upgrade-verb	verb	stress-last	AH0 P G R EY1 D	20	10	real=30;authored=0	100.00	trained
+second	second-ordinal-adj	adj	ordinal	S EH1 K AH0 N D	20	10	real=30;authored=0	80.00	trained
+second	second-noun	noun	ordinal	S EH1 K AH0 N D	20	10	real=30;authored=0	80.00	trained
+second	second-support	verb	ordinal	S EH1 K AH0 N D	17	9	real=26;authored=0	100.00	trained
+second	second-transfer	verb	secondment	S AH0 K AA1 N D	16	10	real=0;authored=26	100.00	trained
+detail	detail-noun	noun	stress-first	D IY1 T EY0 L	20	10	real=30;authored=0	100.00	trained
+detail	detail-verb	verb	stress-last	D IH0 T EY1 L	16	10	real=12;authored=14	70.00	trained
+combat	combat-noun	noun	stress-first	K AA1 M B AE0 T	20	10	real=30;authored=0	100.00	trained
+combat	combat-verb	verb	stress-last	K AH0 M B AE1 T	20	10	real=30;authored=0	90.00	trained
+resign	resign-quit	verb	quit	R IH0 Z AY1 N	20	10	real=30;authored=0	100.00	trained
+resign	resign-sign-again	verb	sign-again	R IY0 S AY1 N	16	8	real=7;authored=17	100.00	trained
+reset	reset-noun	noun	stress-first	R IY1 S EH0 T	20	10	real=30;authored=0	90.00	trained
+reset	reset-verb	verb	stress-last	R IY0 S EH1 T	20	10	real=30;authored=0	90.00	trained
+intern	intern-noun	noun	trainee	IH1 N T ER0 N	20	10	real=30;authored=0	90.00	trained
+intern	intern-train	verb	trainee	IH1 N T ER0 N	16	10	real=9;authored=17	80.00	trained
+intern	intern-confine	verb	confine	IH0 N T ER1 N	16	8	real=24;authored=0	75.00	trained
+recreate	recreate-refresh	verb	refresh	R EH1 K R IY0 EY2 T	16	10	real=0;authored=26	90.00	trained
+recreate	recreate-again	verb	again	R IY0 K R IY0 EY1 T	20	10	real=30;authored=0	90.00	trained
+perfume	perfume-noun	noun	stress-first	P ER1 F Y UW0 M	20	10	real=30;authored=0	100.00	trained
+perfume	perfume-verb	verb	stress-last	P ER0 F Y UW1 M	15	8	real=23;authored=0	100.00	trained
+dictate	dictate-noun	noun	stress-first	D IH1 K T EY2 T	16	10	real=17;authored=9	80.00	trained
+dictate	dictate-verb	verb	stress-last	D IH0 K T EY1 T	20	10	real=30;authored=0	90.00	trained
+recess	recess-noun	noun	stress-first	R IY1 S EH0 S	20	10	real=30;authored=0	100.00	trained
+recess	recess-verb	verb	stress-last	R IH0 S EH1 S	16	10	real=12;authored=14	100.00	trained
+complex	complex-adj	adj	adj	K AH0 M P L EH1 K S	20	10	real=30;authored=0	100.00	trained
+complex	complex-noun	noun	noun	K AA1 M P L EH0 K S	20	10	real=30;authored=0	90.00	trained
+frequent	frequent-adj	adj	adj	F R IY1 K W AH0 N T	20	10	real=30;authored=0	100.00	trained
+frequent	frequent-verb	verb	verb	F R IH0 K W EH1 N T	20	10	real=30;authored=0	100.00	trained
+ally	ally-noun	noun	stress-first	AE1 L AY0	20	10	real=30;authored=0	100.00	trained
+ally	ally-verb	verb	stress-last	AH0 L AY1	16	10	real=19;authored=7	90.00	trained
+traverse	traverse-noun	noun	stress-first	T R AE1 V ER0 S	15	10	real=7;authored=18	100.00	trained
+traverse	traverse-verb	verb	stress-last	T R AH0 V ER1 S	20	10	real=30;authored=0	90.00	trained
+prefix	prefix-noun	noun	stress-first	P R IY1 F IH0 K S	20	10	real=30;authored=0	100.00	trained
+prefix	prefix-verb	verb	stress-last	P R EH0 F IH1 K S	16	10	real=0;authored=26	100.00	trained
+suffix	suffix-noun	noun	stress-first	S AH1 F IH0 K S	20	10	real=30;authored=0	100.00	trained
+suffix	suffix-verb	verb	stress-last	S AH0 F IH1 K S	16	10	real=6;authored=20	70.00	trained
+discord	discord-noun	noun	stress-first	D IH1 S K AO0 R D	20	10	real=30;authored=0	100.00	trained
+discord	discord-verb	verb	stress-last	D IH0 S K AO1 R D	16	10	real=0;authored=26	100.00	trained
+recap	recap-noun	noun	stress-first	R IY1 K AE2 P	16	10	real=8;authored=18	100.00	trained
+recap	recap-verb	verb	stress-last	R IH0 K AE1 P	16	10	real=9;authored=17	90.00	trained
+advert	advert-noun	noun	stress-first	AE1 D V ER0 T	20	10	real=30;authored=0	100.00	trained
+advert	advert-verb	verb	stress-last	AE0 D V ER1 T	16	10	real=11;authored=15	90.00	trained
+alloy	alloy-noun	noun	stress-first	AE1 L OY2	20	10	real=30;authored=0	100.00	trained
+alloy	alloy-verb	verb	stress-last	AH0 L OY1	16	10	real=0;authored=26	90.00	trained
+primer	primer-paint	noun	paint	P R AY1 M ER0	16	10	real=15;authored=11	100.00	trained
+primer	primer-textbook	noun	textbook	P R IH1 M ER0	16	10	real=19;authored=7	100.00	trained
+intermediate	intermediate-adj	adj	short-ending	IH2 N T ER0 M IY1 D IY0 IH0 T	20	10	real=30;authored=0	100.00	trained
+intermediate	intermediate-noun	noun	short-ending	IH2 N T ER0 M IY1 D IY0 IH0 T	16	10	real=17;authored=9	80.00	trained
+intermediate	intermediate-verb	verb	long-ending	IH2 N T ER0 M IY1 D IY0 EY2 T	16	10	real=0;authored=26	100.00	trained
+wicked	wicked-evil	adj	evil	W IH1 K AH0 D	20	10	real=30;authored=0	100.00	trained
+wicked	wicked-wick	verb	wick	W IH1 K T	15	10	real=6;authored=19	100.00	trained
+tier	tier-noun	noun	row	T IY1 R	20	10	real=30;authored=0	100.00	trained
+tier	tier-verb	verb	row	T IY1 R	16	10	real=17;authored=9	100.00	trained
+tier	tier-one-who-ties	noun	ties	T AY1 ER0	16	10	real=6;authored=20	100.00	trained
+tower	tower-noun	noun	structure	T AW1 ER0	20	10	real=30;authored=0	100.00	trained
+tower	tower-verb	verb	structure	T AW1 ER0	20	10	real=30;authored=0	100.00	trained
+tower	tower-one-who-tows	noun	tows	T OW1 ER0	16	10	real=0;authored=26	90.00	trained
+shower	shower-noun	noun	rain	SH AW1 ER0	20	10	real=30;authored=0	90.00	trained
+shower	shower-verb	verb	rain	SH AW1 ER0	20	10	real=30;authored=0	100.00	trained
+shower	shower-one-who-shows	noun	shows	SH OW1 ER0	16	10	real=0;authored=26	80.00	trained
+sewer	sewer-drain	noun	drain	S UW1 ER0	20	10	real=30;authored=0	90.00	trained
+sewer	sewer-seamstress	noun	sews	S OW1 ER0	16	10	real=0;authored=26	100.00	trained
+forearm	forearm-noun	noun	stress-first	F AO1 R AA2 R M	20	10	real=30;authored=0	100.00	trained
+forearm	forearm-verb	verb	stress-last	F AO0 R AA1 R M	16	10	real=6;authored=20	100.00	trained
+alum	alum-mineral	noun	mineral	AE1 L AH0 M	16	10	real=14;authored=12	100.00	trained
+alum	alum-graduate	noun	graduate	AH0 L AH1 M	16	10	real=0;authored=26	100.00	trained
+supposed	supposed-adj	adj	voiced	S AH0 P OW1 Z D	20	10	real=30;authored=0	100.00	trained
+supposed	supposed-past	verb	voiced	S AH0 P OW1 Z D	20	10	real=30;authored=0	80.00	trained
+supposed	supposed-to	adj	unvoiced	S AH0 P OW1 S T	20	10	real=30;authored=0	100.00	trained
+blessed	blessed-adj	adj	two-syllable	B L EH1 S AH0 D	20	10	real=30;authored=0	90.00	trained
+blessed	blessed-past	verb	one-syllable	B L EH1 S T	20	10	real=30;authored=0	90.00	trained
+august	august-adj	adj	adj	AO0 G AH1 S T	20	10	real=30;authored=0	90.00	trained
+august	august-month	noun	month	AO1 G AH0 S T	20	10	real=30;authored=0	100.00	trained
+defense	defense-general	noun	general	D IH0 F EH1 N S	20	10	real=30;authored=0	100.00	trained
+defense	defense-sports	noun	sports	D IY1 F EH2 N S	20	10	real=30;authored=0	100.00	trained
+bases	bases-base	noun	base	B EY1 S AH0 Z	20	10	real=30;authored=0	100.00	trained
+bases	bases-verb	verb	base	B EY1 S AH0 Z	16	10	real=5;authored=21	90.00	trained
+bases	bases-basis	noun	basis	B EY1 S IY0 Z	16	10	real=0;authored=26	100.00	trained
+costume	costume-noun	noun	stress-first	K AA1 S T UW0 M	20	10	real=30;authored=0	100.00	trained
+costume	costume-verb	verb	stress-last	K AA0 S T UW1 M	15	10	real=0;authored=25	100.00	trained
+romance	romance-noun	noun	stress-first	R OW1 M AE0 N S	20	10	real=30;authored=0	100.00	trained
+romance	romance-verb	verb	stress-last	R OW0 M AE1 N S	15	10	real=0;authored=25	100.00	trained
+submarine	submarine-noun	noun	stress-first	S AH1 B M ER0 IY2 N	19	10	real=29;authored=0	100.00	trained
+submarine	submarine-adj	adj	stress-last	S AH2 B M ER0 IY1 N	20	10	real=30;authored=0	70.00	trained
+excerpt	excerpt-noun	noun	stress-first	EH1 K S ER0 P T	16	9	real=25;authored=0	100.00	trained
+excerpt	excerpt-verb	verb	stress-last	EH0 K S ER1 P T	16	10	real=0;authored=26	100.00	trained
+annex	annex-noun	noun	stress-first	AE1 N EH2 K S	20	10	real=30;authored=0	100.00	trained
+annex	annex-verb	verb	stress-last	AH0 N EH1 K S	20	10	real=30;authored=0	100.00	trained
+slough	slough-skin	noun	shed	S L AH1 F	16	10	real=0;authored=26	80.00	trained
+slough	slough-shed	verb	shed	S L AH1 F	16	10	real=11;authored=15	100.00	trained
+slough	slough-swamp	noun	swamp	S L AW1	20	10	real=30;authored=0	90.00	trained
+tarry	tarry-linger	verb	linger	T EH1 R IY0	20	10	real=30;authored=0	100.00	trained
+tarry	tarry-tar	adj	tar	T AA1 R IY0	16	10	real=9;authored=17	100.00	trained
+underscore	underscore-noun	noun	stress-first	AH1 N D ER0 S K AO2 R	16	10	real=17;authored=9	100.00	trained
+underscore	underscore-verb	verb	stress-last	AH2 N D ER0 S K AO1 R	20	10	real=30;authored=0	100.00	trained
+gallant	gallant-brave	adj	brave	G AE1 L AH0 N T	20	10	real=30;authored=0	90.00	trained
+gallant	gallant-courtly	adj	courtly	G AH0 L AE1 N T	18	9	real=27;authored=0	66.67	trained
+gallant	gallant-suitor	noun	courtly	G AH0 L AE1 N T	16	10	real=13;authored=13	90.00	trained
+mow	mow-cut	verb	cut	M OW1	20	10	real=30;authored=0	100.00	trained
+mow	mow-haymow	noun	hay	M AW1	16	10	real=6;authored=20	100.00	trained
+multiply	multiply-verb	verb	verb	M AH1 L T AH0 P L AY2	20	10	real=30;authored=0	100.00	trained
+multiply	multiply-adverb	adv	adverb	M AH1 L T AH0 P L IY0	16	10	real=13;authored=13	80.00	trained
+reprimand	reprimand-noun	noun	stress-first	R EH1 P R AH0 M AE2 N D	16	9	real=25;authored=0	100.00	trained
+reprimand	reprimand-verb	verb	stress-last	R EH0 P R IH0 M AA1 N D	20	10	real=30;authored=0	90.00	trained
+retrofit	retrofit-noun	noun	stress-first	R EH1 T R OW0 F IH2 T	16	10	real=12;authored=14	100.00	trained
+retrofit	retrofit-verb	verb	stress-last	R EH2 T R OW0 F IH1 T	16	10	real=13;authored=13	100.00	trained
+egress	egress-noun	noun	stress-first	IY1 G R EH0 S	19	10	real=29;authored=0	100.00	trained
+egress	egress-verb	verb	stress-last	IH0 G R EH1 S	16	10	real=0;authored=26	60.00	trained
+agape	agape-open	adj	open	AH0 G EY1 P	16	10	real=19;authored=7	100.00	trained
+agape	agape-love	noun	love	AH0 G AA1 P EY2	16	8	real=24;authored=0	100.00	trained
+predate	predate-earlier	verb	earlier	P R IY0 D EY1 T	16	10	real=11;authored=15	90.00	trained
+predate	predate-prey	verb	prey	P R AH0 D EY1 T	16	10	real=0;authored=26	70.00	trained
+ellipses	ellipses-ellipse	noun	ellipse	IH0 L IH1 P S IH0 Z	16	10	real=11;authored=15	90.00	trained
+ellipses	ellipses-ellipsis	noun	ellipsis	IH0 L IH1 P S IY0 Z	16	10	real=13;authored=13	100.00	trained
+adduct	adduct-noun	noun	stress-first	AE1 D AH0 K T	16	10	real=16;authored=10	100.00	trained
+adduct	adduct-verb	verb	stress-last	AH0 D AH1 K T	16	10	real=20;authored=6	100.00	trained
+forbear	forbear-verb	verb	stress-last	F AO0 R B EH1 ER0	20	10	real=30;authored=0	100.00	trained
+forbear	forbear-ancestor	noun	stress-first	F AO1 R B EH0 ER0	16	10	real=0;authored=26	100.00	trained

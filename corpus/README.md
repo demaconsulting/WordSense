@@ -74,7 +74,9 @@ weak lemmas `conjugate`, `insert` and `present`; the holdout rows are never anch
 `docs/build_notes/weak-lemma-decisions.md`.
 `tools/real-text/README.md` describes the repeatable harvest. Senses that real text cannot fill are completed by
 `anchors|holdout|provenance/new-authored-N.tsv` (command `real-authored-import`; two independent authors, origin
-`authored`, contributor `authored-anchor` or `authored-holdout`).
+`authored`, contributor `authored-anchor` or `authored-holdout`). `audit/new-lemma-speech-map.tsv` maps every sense of the
+Phase 4 lemmas to its pronunciation group and ARPAbet with its counts, source mix (real or authored) and holdout
+accuracy; see `docs/build_notes/new-lemma-results.md`.
 
 ## Analysis Output
 

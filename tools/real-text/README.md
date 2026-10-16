@@ -55,5 +55,11 @@ senses of existing lemmas as extra anchors and a separate real holdout with `rea
 fill are completed by independently authored sentences with `real-authored-import --corpus corpus --name
 new-authored-N --anchors FILE --holdout FILE` (two input files of `lemma<TAB>sense<TAB>sentence`, one per author; the
 frozen prompts are in `tools/real-text/authoring-prompt.md`). Run it only after the last `real-import` of the phase.
+Phase 4 ran it once as `new-authored-1` (576 anchor and 398 holdout rows, all flagged `authored` in the provenance; the
+16 top-up holdout rows of `predate` were not blind-judged). No lemma was dropped. The result is the sense map
+`corpus/audit/new-lemma-speech-map.tsv` (tab-separated, one row per sense of the 63 accepted lemmas: `lemma`, `sense`,
+`pos`, `group`, `arpabet`, `anchors`, `holdout`, `source_mix` as `real=N;authored=M`, `holdout_accuracy` in percent and
+`status`, `trained` or `dropped`), built from `new-lemma-inventory.tsv` and the build report; see
+`docs/build_notes/new-lemma-results.md`.
 See the design of the
 WordSenseBuilder unit.

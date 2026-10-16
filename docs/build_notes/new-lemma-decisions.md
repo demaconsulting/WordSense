@@ -139,6 +139,37 @@ Pronunciation groups use `stress-first` (noun reading) and `stress-last` (verb r
 The free stress variants (for example `mandate`, `research`, `default`, `detour` and `chauffeur`) are the best
 candidates to reconsider if the user wants more lemmas.
 
+## Authored Sentences and Dropped Lemmas
+
+Real text could not fill 54 senses, so the project authored sentences for them with `real-authored-import` (batch
+`new-authored-1`). The anchor author and the holdout author worked from separate menus and never saw each other's
+output (see `tools/real-text/authoring-prompt.md`). Of 964 authored rows, 958 were accepted (576 anchor and 382
+holdout rows); five failed the form, brace or length checks and one (`traverse-noun`) was judged as another sense.
+
+Two senses (`predate-earlier`, `predate-prey`) had too few accepted holdout rows (4 and 0 against a minimum of 8).
+A separate holdout author wrote 16 top-up rows. **Decision: these 16 rows were not blind-judged.** They passed the
+same mechanical checks as every other authored row (target form from the menu, one pair of braces, at most 35 words,
+no duplicate, not in the corpus), and the importer checks them again, but no judge compared them with the sense menu.
+They are reported as authored holdout rows and are the only authored rows without a judge.
+
+The 12 lemmas that were held back after batches 2 to 5 (`recreate`, `prefix`, `discord`, `alloy`, `sewer`, `alum`,
+`costume`, `romance`, `excerpt`, `egress`, `predate`, `forbear`) were restored (their real rows, 211 anchor, 108
+holdout, 12 sense and 319 provenance rows, and their forms) before the authored import, so that each has two senses
+with anchors.
+
+**Dropped lemmas: none.** After the import every sense has at least 14 anchors and 8 holdout rows (final counts: 2,489
+anchors and 1,357 holdout rows for the 137 senses), the builder trained every lemma, and `validate-provenance` and
+`validate-pos` pass. Nothing was removed from the corpus or from the forms. The doubtful words ended as follows:
+
+| Lemma | Decision |
+| --- | --- |
+| `gas`, `mouse`, `automobile`, `finance` | rejected (see above) |
+| `alum`, `sewer`, `primer`, `shower`, `tier`, `tower` | accepted and trained; the rare second readings are authored |
+
+The rare senses of `alum`, `sewer`, `shower`, `tier` and `tower` rest on authored sentences only (or on a few real
+ones), so their accuracy is likely optimistic; the results page gives the figures separately for real and authored
+rows.
+
 ## Sources
 
 - CMUdict, BSD-style licence (pronunciations).
