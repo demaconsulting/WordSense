@@ -24,7 +24,10 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     The margin is a score difference, not a probability, and each lemma has its own scale. An answer is given
 ///     when the margin is at least the lemma's abstain margin multiplied by
-///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>.
+///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/>. The scale is not calibrated: margins of answered
+///     words typically fall between about 1 and 10 and larger means more confident, but there is no fixed value that
+///     means "certain". Rely on <see cref="Abstained"/>, and tune
+///     <see cref="WordSenseClassifierOptions.AbstainMarginScale"/> for a stricter or looser rule.
 ///     </para>
 /// </remarks>
 /// <example>

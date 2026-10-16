@@ -135,8 +135,8 @@ public interface IWordSenseClassifier : IDisposable
     /// </param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>
-    ///     A non-null array parallel to <paramref name="words"/>; see <see cref="WordAnalysis"/> for the unknown,
-    ///     answered and abstained cases.
+    ///     A non-null array parallel to <paramref name="words"/> (empty for an empty list); see
+    ///     <see cref="WordAnalysis"/> for the unknown, answered and abstained cases.
     /// </returns>
     /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
@@ -159,7 +159,7 @@ public interface IWordSenseClassifier : IDisposable
     /// </summary>
     /// <param name="text">The text to classify.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>Tokens that tile the text exactly; see <see cref="WordSenseToken"/>.</returns>
+    /// <returns>Tokens that tile the text exactly (none for an empty text); see <see cref="WordSenseToken"/>.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="text"/> is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the classifier has been disposed and the encoder has to run.</exception>

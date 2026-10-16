@@ -9,6 +9,24 @@ namespace DemaConsulting.WordSense;
 ///     distinct meanings that are pronounced differently, such as <c>lead</c> (to guide) and <c>lead</c> (the metal).
 ///     For every other word <see cref="WordDetails.Pronunciation"/> is <see langword="null"/>. The library holds no
 ///     audio or phoneme data; the respelling is our own plain-letter spelling of the sound, offered as a convenience.
+///     Every heteronym in the shipped table has a respelling, so <see cref="Respelling"/> is null only for tables
+///     that were built without one.
+///     <para>
+///         For speech synthesis, key your own pronunciation lexicon on the pair (<see cref="WordDetails.Lemma"/>,
+///         <see cref="Meaning"/>): the meaning id is the stable value, and the respelling is a human-readable hint you
+///         can translate into your engine's phoneme notation, or feed to an engine that accepts plain respellings.
+///         Treat a null <see cref="WordDetails.Pronunciation"/> as "use the engine's default pronunciation".
+///     </para>
+///     <para>
+///         The part of speech and the pronunciation of a word always come from the same decision (the best
+///         candidate), so they never contradict each other. When the pronunciation follows the part of speech, as for
+///         <c>record</c>, the meaning ids repeat it (<c>noun</c>, <c>verb</c>).
+///     </para>
+///     <para>
+///         Examples: <c>bow</c> as a gesture of respect, as in "take a bow", has the meaning <c>bend</c> (the
+///         respelling <c>bow</c> rhymes with "now"); <c>bow</c> as in "bow and arrow" has the meaning <c>weapon</c>
+///         (respelling <c>boh</c>).
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
