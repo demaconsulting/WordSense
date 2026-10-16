@@ -43,17 +43,16 @@ internal sealed class ReadmeSample
         var words = "The hunter fired an arrow from his bow so I will record a record and read the book yesterday".Split(' ');
         var results = await classifier.ClassifyAsync(words);
 
-        // Print each word's part of speech, pronunciation (heteronyms only) and confidence (margin)
+        // Print the part of speech (or the candidates, or unknown), where the answer comes from, the margin and,
+        // for a heteronym, the meaning and the respelling
         foreach (var a in results)
         {
-            if (a.Details is not { } d)
-            {
-                Console.WriteLine($"{a.Word,-9} {(a.Abstained ? "abstained" : "unknown")}");
-                continue;
-            }
-
-            var p = d.Pronunciation;
-            Console.WriteLine($"{a.Word,-9} {d.PartOfSpeech,-9} {p?.Meaning,-8} {p?.Respelling,-9} margin={a.Margin:F1}");
+            var pos = a.Details?.PartOfSpeech.ToString()
+                ?? (a.Candidates.Count > 0
+                    ? string.Join("/", a.Candidates.Select(c => c.PartOfSpeech.ToString()[..3]).Distinct())
+                    : "unknown");
+            var say = a.Details?.Pronunciation is { } p ? $"{p.Meaning} {p.Respelling}" : "";
+            Console.WriteLine($"{a.Word,-9} {pos,-24} {a.Basis,-10} {a.Margin,4:F1}  {say}".TrimEnd());
         }
 
         // </sample:readme>

@@ -77,9 +77,21 @@ public sealed class WordSenseClassifierOptions
     /// </summary>
     /// <remarks>
     ///     Must not be negative or NaN; <see cref="WordSenseClassifier.CreateAsync"/> rejects such values. The
-    ///     effective threshold of a lemma is <c>LemmaModel.AbstainMargin * AbstainMarginScale</c>; a decision whose
+    ///     effective threshold of a lemma is <c>SenseWeights.AbstainMargin * AbstainMarginScale</c>; a decision whose
     ///     margin (see <see cref="WordAnalysis.Margin"/>) is below it is withheld. For example a scale of 0.5 halves
     ///     every lemma's threshold, so more answers are given and more of them may be wrong.
     /// </remarks>
     public double AbstainMarginScale { get; init; } = 1.0;
+
+    /// <summary>
+    ///     Gets a value indicating whether words that only the dictionary knows are answered; the default is true.
+    /// </summary>
+    /// <remarks>
+    ///     When true, a word without a trained classifier is answered from the dictionary (<see cref="AnswerBasis.Dictionary"/>):
+    ///     with its one part of speech, or abstained with its candidates when it has several. When false only lemmas with a
+    ///     trained classifier are answered and every other word is unknown with <see cref="AnswerBasis.None"/>; this
+    ///     is the behavior before the dictionary existed. It also makes <see cref="IWordSenseClassifier.GetCandidates"/>
+    ///     return nothing for a dictionary-only lemma. The setting never changes a context answer.
+    /// </remarks>
+    public bool UseLexicon { get; init; } = true;
 }

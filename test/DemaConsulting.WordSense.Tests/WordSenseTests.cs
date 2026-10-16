@@ -36,6 +36,78 @@ public class WordSenseTests
     }
 
     /// <summary>
+    ///     With the embedded table, a sentence of common dictionary words is answered without any encoder call; the
+    ///     encoder here is a counting fake, so no model files are needed.
+    /// </summary>
+    [Fact]
+    public async Task WordSense_Dictionary_CommonWords_Answered()
+    {
+        var encoder = new CountingEncoder();
+        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "hunter"];
+        using var classifier = new WordSenseClassifier(encoder, WordSenseTable.LoadEmbedded(), new WordPieceTokenizer(vocabulary), null, false);
+
+        var analyses = await classifier.ClassifyAsync(
+            ["The", "hunter", "quickly", "climbed", "a", "tall", "mountain", "."],
+            TestContext.Current.CancellationToken);
+
+        Assert.Equal(0, encoder.Calls);
+        Assert.Equal(PartOfSpeech.Noun, analyses[1].Details!.PartOfSpeech);
+        Assert.Equal(AnswerBasis.Dictionary, analyses[1].Basis);
+        Assert.Equal(AnswerBasis.Dictionary, analyses[2].Basis);
+        Assert.Equal(AnswerBasis.Dictionary, analyses[6].Basis);
+        Assert.Equal(AnswerBasis.None, analyses[0].Basis);
+
+        // A dictionary answer has margin 0, no runner-up and exactly its own sense as candidate
+        foreach (var index in new[] { 1, 2, 6 })
+        {
+            Assert.False(analyses[index].Abstained);
+            Assert.Equal(0.0, analyses[index].Margin);
+            Assert.Equal(0.0, analyses[index].RunnerUpMargin);
+            Assert.Null(analyses[index].RunnerUp);
+            Assert.Null(analyses[index].Details!.Pronunciation);
+            Assert.Same(analyses[index].Details, Assert.Single(analyses[index].Candidates));
+        }
+
+        // A dictionary word with several parts of speech has no answer and lists them all
+        var table = WordSenseTable.LoadEmbedded();
+        var several = table.Lemmas.First(l => l.Weights is null && l.Senses.Count > 1 && l.Lemma.Length > 3);
+        var multi = (await classifier.ClassifyAsync([several.Lemma], TestContext.Current.CancellationToken))[0];
+        Assert.Equal(AnswerBasis.Dictionary, multi.Basis);
+        Assert.True(multi.Abstained);
+        Assert.Null(multi.Details);
+        Assert.Equal(several.Candidates, multi.Candidates);
+
+        // With the dictionary switched off every one of these words is unknown
+        using var off = new WordSenseClassifier(
+            encoder, table, new WordPieceTokenizer(vocabulary), new WordSenseClassifierOptions { UseLexicon = false }, false);
+        var none = await off.ClassifyAsync(
+            ["The", "hunter", "quickly", "climbed", "a", "tall", "mountain", ".", several.Lemma],
+            TestContext.Current.CancellationToken);
+        Assert.All(none, a => Assert.Equal(AnswerBasis.None, a.Basis));
+        Assert.All(none, a => Assert.Null(a.Details));
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    private sealed class CountingEncoder : IWordSenseEncoder
+    {
+        public int Calls { get; private set; }
+
+        public string ModelSha256 => WordSenseModelCatalog.OnnxSha256;
+
+        public int HiddenSize => 384;
+
+        public ValueTask<float[]> EncodeAsync(int[] inputIds, CancellationToken cancellationToken)
+        {
+            Calls++;
+            return ValueTask.FromResult(new float[inputIds.Length * HiddenSize]);
+        }
+
+        public void Dispose()
+        {
+        }
+    }
+
+    /// <summary>
     ///     End to end: a classifier created from the model directory tells the senses of "record" apart.
     /// </summary>
     [Fact]
@@ -50,7 +122,7 @@ public class WordSenseTests
         var details = tokens.Where(t => t.Analysis.Details is not null).Select(t => t.Analysis.Details!).ToList();
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], details.Where(d => d.Lemma == "record").Select(d => d.PartOfSpeech));
         Assert.Equal(["noun", "verb"], details.Where(d => d.Lemma == "record").Select(d => d.Pronunciation!.Meaning));
-        Assert.Contains("record", classifier.KnownLemmas);
+        Assert.Contains("record", classifier.ContextLemmas);
     }
 
     /// <summary>
@@ -75,6 +147,9 @@ public class WordSenseTests
         Assert.True(analyses[1].Margin > 0);
         Assert.NotNull(analyses[1].RunnerUp);
         Assert.Contains(analyses[1].Details, classifier.GetCandidates("record"));
+        Assert.Equal(AnswerBasis.Context, analyses[1].Basis);
+        Assert.Equal(AnswerBasis.Context, analyses[7].Basis);
+        Assert.Same(classifier.GetCandidates("record"), analyses[1].Candidates);
     }
 
     /// <summary>
@@ -287,10 +362,10 @@ public class WordSenseTests
         PartOfSpeech[] shipped = [PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Adjective, PartOfSpeech.Adverb];
         var table = WordSenseTable.LoadEmbedded();
 
-        foreach (var lemma in table.Lemmas)
+        foreach (var lemma in table.ContextLemmas)
         {
-            Assert.All(lemma.Senses, s => Assert.Contains(s.Pos, shipped));
             var meanings = lemma.Senses.Select(s => s.Meaning).Distinct().Count();
+            Assert.All(lemma.Senses, s => Assert.Contains(s.Pos, shipped));
             Assert.Equal(lemma.IsHeteronym, meanings >= 2);
             Assert.All(lemma.Candidates, c => Assert.Equal(lemma.IsHeteronym, c.Pronunciation is not null));
         }

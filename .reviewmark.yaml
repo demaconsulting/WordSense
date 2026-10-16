@@ -17,6 +17,7 @@ needs-review:
   - "tools/real-text/**"          # Real-text harvest tooling
   - "corpus/provenance/**"        # Provenance of the real sentences
   - "corpus/realtext/**"          # Real-text evaluation sentences
+  - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
   - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
@@ -136,10 +137,16 @@ reviews:
       - "docs/design/word-sense/word-sense-table.md"
       - "docs/verification/word-sense/word-sense-table.md"
       - "src/DemaConsulting.WordSense/WordSenseTable.cs"
-      - "src/DemaConsulting.WordSense/LemmaModel.cs"
+      - "src/DemaConsulting.WordSense/LemmaEntry.cs"
+      - "src/DemaConsulting.WordSense/SenseWeights.cs"
+      - "src/DemaConsulting.WordSense/LexicalIndex.cs"
+      - "src/DemaConsulting.WordSense/LemmaMorphology.cs"
+      - "src/DemaConsulting.WordSense/LemmaResolution.cs"
       - "src/DemaConsulting.WordSense/VectorMath.cs"
       - "src/DemaConsulting.WordSense/WordSenseTableFormatException.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseTableTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/LexicalIndexTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/LemmaResolutionTests.cs"
 
   # WordSense-OnnxWordSenseEncoder Review (one per unit)
   - id: WordSense-OnnxWordSenseEncoder
@@ -184,6 +191,7 @@ reviews:
       - "src/DemaConsulting.WordSense/PartOfSpeech.cs"
       - "src/DemaConsulting.WordSense/Pronunciation.cs"
       - "src/DemaConsulting.WordSense/WordDetails.cs"
+      - "src/DemaConsulting.WordSense/AnswerBasis.cs"
       - "src/DemaConsulting.WordSense/WordAnalysis.cs"
       - "src/DemaConsulting.WordSense/SenseDefinition.cs"
       - "src/DemaConsulting.WordSense/AbstainRule.cs"
@@ -238,6 +246,7 @@ reviews:
       - "!tools/real-text/cache/**"
       - "corpus/provenance/**"
       - "corpus/realtext/**"
+      - "corpus/lexicon/**"
 
   # OTS-ApiMark Review (one per OTS item)
   - id: OTS-ApiMark

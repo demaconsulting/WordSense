@@ -14,11 +14,14 @@ language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - NRVJBPCI
   - nounverb
   - respelling
   - respellings
   - kord
   - apimark
+  - batly
+  - xyzs
   - ying
   - wikt
   - quizes
@@ -29,6 +32,20 @@ words:
   - leed
   - localappdata
   - tatoeba
+  - treebank
+  - mobypos
+  - overfitting
+  - sconj
+  - cconj
+  - intj
+  - propn
+  - punct
+  - multiword
+  - unscored
+  - conllu
+  - glasss
+  - earlyly
+  - catly
   - featurized
   - overcall
   - overstudies

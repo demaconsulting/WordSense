@@ -1,0 +1,8 @@
+Noun	answer	Moby-derived noun-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Pronoun	answer	Moby-derived pronoun-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Verb	answer	Moby-derived verb-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Adjective	answer	Moby-derived adjective-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Adverb	answer	Moby-derived adverb-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Preposition	answer	Moby-derived preposition-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Conjunction	candidate-only	Conjunction-only words fail the 95 percent gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md); a word whose only part of speech is Conjunction is not in the dictionary
+Interjection	candidate-only	Interjection-only words fail the 95 percent gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md); a word whose only part of speech is Interjection is not in the dictionary

@@ -495,14 +495,14 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels()
     {
-        var bow = new DemaConsulting.WordSense.LemmaModel(
+        var bow = new DemaConsulting.WordSense.LemmaEntry(
             "bow",
             [new SenseDefinition(PartOfSpeech.Noun, "bend"), new SenseDefinition(PartOfSpeech.Verb, "bend"), new SenseDefinition(PartOfSpeech.Noun, "weapon")],
-            DemaConsulting.WordSense.LemmaModelKind.OneVersusRest,
-            new float[3], new float[3], 0.5f, 1);
-        var bank = new DemaConsulting.WordSense.LemmaModel(
+            new DemaConsulting.WordSense.SenseWeights(DemaConsulting.WordSense.LemmaModelKind.OneVersusRest,
+            new float[3], new float[3], 0.5f, 1));
+        var bank = new DemaConsulting.WordSense.LemmaEntry(
             "bank", [new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Verb)],
-            DemaConsulting.WordSense.LemmaModelKind.Binary, new float[1], new float[1], 0.5f, 1);
+            new DemaConsulting.WordSense.SenseWeights(DemaConsulting.WordSense.LemmaModelKind.Binary, new float[1], new float[1], 0.5f, 1));
         var evaluator = new AccuracyEvaluator();
 
         evaluator.Add("h.tsv", bow, 0, 2, true);    // gold weapon (noun), best bend noun: POS right, meaning wrong
@@ -570,6 +570,28 @@ public sealed class BuilderTests : IDisposable
         // Assert: exit code 1 and a message naming the option
         Assert.Equal(1, code);
         Assert.Contains($"--{option} must be an integer", error.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     An option name where an option value is expected (<c>--output --enforce</c>) is a usage error, not a value.
+    /// </summary>
+    /// <param name="command">The command line.</param>
+    [Theory]
+    [InlineData("generate-appendix", "--corpus", "c", "--output", "--enforce")]
+    [InlineData("lexicon-eval", "--table", "--ud", "u")]
+    [InlineData("build", "--model", "m", "--corpus", "--output", "o")]
+    public void WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError(params string[] command)
+    {
+        // Arrange
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+
+        // Act
+        var code = Program.Run(command, output, error);
+
+        // Assert: exit code 1 and a message that names the option lacking a value
+        Assert.Equal(1, code);
+        Assert.Contains("needs a value but found the option", error.ToString(), StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -781,7 +803,7 @@ public sealed class BuilderTests : IDisposable
         Assert.Contains("  Gold verb: ", text, StringComparison.Ordinal);
         Assert.Equal(2, result.Report.Accuracy.Pos.Evaluated);
         Assert.Equal(0, result.Report.Accuracy.Pronunciation.Evaluated);
-        Assert.All(result.Table.Lemmas[0].Candidates, c => Assert.Null(c.Pronunciation));
+        Assert.All(result.Table.ContextLemmas[0].Candidates, c => Assert.Null(c.Pronunciation));
     }
 
     /// <summary>
@@ -2026,5 +2048,328 @@ public sealed class BuilderTests : IDisposable
         var corpus = Path.Combine(_root, "corpus");
         Directory.CreateDirectory(corpus);
         return corpus;
+    }
+
+    private static byte Mask(params PartOfSpeech[] parts) => parts.Aggregate((byte)0, (m, p) => (byte)(m | LexiconSource.Bit(p)));
+
+    private static DirectoryInfo FindRepositoryRoot()
+    {
+        var root = new DirectoryInfo(AppContext.BaseDirectory);
+        while (root is not null && !File.Exists(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
+        {
+            root = root.Parent;
+        }
+
+        Assert.NotNull(root);
+        return root;
+    }
+
+    /// <summary>
+    ///     Importing a synthetic Moby list applies the filter rules and writes byte-identical files every time.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_ImportMoby_IsDeterministic()
+    {
+        // Arrange: Latin-1 entries with an upper-case word, a phrase, a determiner, a non-ASCII word, a participle,
+        // a correction target and two classes held back
+        var moby = string.Join(
+            "\n",
+            "cat\\N", "Cat\\N", "two words\\N", "the\\DA", "run\\Vti", "quick\\A", "quickly\\v", "and\\C", "oh\\!", "wow\\!N", "i\\N",
+            "caf\u00E9\\N", "walking\\A", "cat\\h", string.Empty);
+        var input = Path.Combine(_root, "mobypos.txt");
+        File.WriteAllBytes(input, Encoding.Latin1.GetBytes(moby));
+        Write("a/corrections.tsv", "i\tR\tthe letter is the pronoun in running text\n");
+        Write("a/classes.tsv", "Conjunction\tcandidate-only\tevidence\nInterjection\tcandidate-only\tevidence\n");
+        Write("b/corrections.tsv", "i\tR\tthe letter is the pronoun in running text\n");
+        Write("b/classes.tsv", "Conjunction\tcandidate-only\tevidence\nInterjection\tcandidate-only\tevidence\n");
+
+        // Act
+        var first = LexiconSource.Import(input, Path.Combine(_root, "a", "lexicon.tsv"), null, null);
+        LexiconSource.Import(input, Path.Combine(_root, "b", "lexicon.tsv"), null, null);
+
+        // Assert: the same bytes, and the pinned policy
+        foreach (var file in new[] { "lexicon.tsv", "gated.tsv", "PROVENANCE.md" })
+        {
+            Assert.Equal(File.ReadAllBytes(Path.Combine(_root, "a", file)), File.ReadAllBytes(Path.Combine(_root, "b", file)));
+        }
+
+        Assert.Equal("cat\tN\ni\tR\nquick\tJ\nquickly\tB\nrun\tV\nwalking\tVJ\nwow\tNI\n", File.ReadAllText(Path.Combine(_root, "a", "lexicon.tsv")));
+        Assert.Equal("and\tC\noh\tI\n", File.ReadAllText(Path.Combine(_root, "a", "gated.tsv")));
+        Assert.DoesNotContain('\r', File.ReadAllText(Path.Combine(_root, "a", "lexicon.tsv")));
+        Assert.Equal(7, first.Counts.Words);
+        Assert.Equal(1, first.Counts.DroppedDeterminer);
+        Assert.Equal(2, first.Counts.DroppedByClassGate);
+        var provenance = File.ReadAllText(Path.Combine(_root, "a", "PROVENANCE.md"));
+        Assert.Contains(Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(File.ReadAllBytes(input))), provenance, StringComparison.Ordinal);
+        Assert.Contains("Words in lexicon.tsv: 7", provenance, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A build embeds the dictionary words and the enabled rules; a trained lemma takes precedence over a word.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_Build_EmbedsLexicon()
+    {
+        // Arrange: the tiny two-sense corpus of the other build tests, and a dictionary that also spells the lemma
+        string[] vocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "bank", "the", "money", "river", "deep", "rich", "wide", "tall", "high", "low", "old", "new", "."];
+        string[] fillers = ["deep", "rich", "wide", "tall", "high", "low"];
+        var anchors = new List<CorpusRow>();
+        foreach (var filler in fillers)
+        {
+            anchors.Add(Row("bank", "noun", $"the {{bank}} money {filler}.", "a.tsv"));
+            anchors.Add(Row("bank", "verb", $"the {{bank}} river {filler}.", "a.tsv"));
+        }
+
+        var holdout = new[] { Row("bank", "noun", "the {bank} money old.", "h.tsv"), Row("bank", "verb", "the {bank} river new.", "h.tsv") };
+        var inventory = new SenseInventory([new InventoryRow("bank", "noun", PartOfSpeech.Noun, null, null, "s.tsv"), new InventoryRow("bank", "verb", PartOfSpeech.Verb, null, null, "s.tsv")]);
+        var forms = new List<(string Form, string Lemma, string[] Labels)> { ("bank", "bank", ["noun", "verb"]) };
+        List<(string Word, byte Mask)> words = [("bank", Mask(PartOfSpeech.Noun)), ("quick", Mask(PartOfSpeech.Adjective)), ("run", Mask(PartOfSpeech.Verb))];
+        using var encoder = new FakeEncoder();
+
+        // Act
+        var result = TableBuilder.Build(
+            encoder, new WordPieceTokenizer(vocabulary), anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: 1, MaxSequenceLength: 32),
+            words, DemaConsulting.WordSense.LemmaMorphologyRules.Plural);
+        var table = DemaConsulting.WordSense.WordSenseTable.Read(result.Table.ToArray());
+
+        // Assert
+        Assert.Equal(2, result.DictionaryWords);
+        Assert.Equal(1, result.ShadowedWords);
+        Assert.Single(table.ContextLemmas);
+        Assert.Equal(3, table.Count);
+        Assert.Equal(DemaConsulting.WordSense.LemmaMorphologyRules.Plural, table.Morphology);
+        Assert.True(table.TryGetDictionaryMask("run", out var run));
+        Assert.Equal(Mask(PartOfSpeech.Verb), run);
+        Assert.False(table.TryGetDictionaryMask("bank", out _));
+        Assert.True(table.TryResolve("runs", true, out var derived));
+        Assert.Equal(PartOfSpeech.Verb, derived.Entry.Senses[0].Pos);
+    }
+
+    /// <summary>
+    ///     The committed table is the committed trained lemmas and forms plus the committed lexicon, with the rules
+    ///     of <c>morphology.tsv</c>; the check compares decoded content because DEFLATE bytes may differ across runtimes.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_CommittedTable_IsUpToDate()
+    {
+        // Arrange
+        var root = FindRepositoryRoot();
+        var lexiconDirectory = Path.Combine(root.FullName, "corpus", "lexicon");
+        var committed = DemaConsulting.WordSense.WordSenseTable.Read(
+            File.ReadAllBytes(Path.Combine(root.FullName, "src", "DemaConsulting.WordSense", "Resources", "wordsense-table.bin")));
+        var words = LexiconSource.ReadWords(Path.Combine(lexiconDirectory, "lexicon.tsv"));
+        var rules = LexiconSource.EnabledRules(LexiconSource.ReadMorphology(Path.Combine(lexiconDirectory, "morphology.tsv")));
+
+        // Act: rebuild the table from the committed trained lemmas and forms
+        var merge = LexiconSource.Merge(committed.ContextLemmas, committed.Forms, words);
+        var rebuilt = new DemaConsulting.WordSense.WordSenseTable(
+            committed.ModelId, committed.ModelSha256, committed.Dimension, committed.Mean.ToArray(), merge.Entries, committed.Forms, rules);
+
+        // Assert: the same rules, the same lemmas and senses in the same order
+        Assert.Equal(rules, committed.Morphology);
+        Assert.Equal(rebuilt.Count, committed.Count);
+        Assert.Equal(
+            rebuilt.Lemmas.Select(l => l.Lemma + ":" + string.Join(',', l.Senses.Select(s => s.Pos))),
+            committed.Lemmas.Select(l => l.Lemma + ":" + string.Join(',', l.Senses.Select(s => s.Pos))));
+
+        // The provenance states the number of words of the committed file
+        var lines = File.ReadAllText(Path.Combine(lexiconDirectory, "lexicon.tsv")).Split('\n', StringSplitOptions.RemoveEmptyEntries).Length;
+        Assert.Equal(lines, words.Count);
+        Assert.Contains($"Words in lexicon.tsv: {lines}", File.ReadAllText(Path.Combine(lexiconDirectory, "PROVENANCE.md")), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The evaluation fails a class below the gate when enforcing and passes a class above it.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_Eval_EnforcesPrecisionGate()
+    {
+        // Arrange: a table whose noun-only 'run' is a verb in the gold text, and one whose words are right
+        var failing = SyntheticTable(("cat", Mask(PartOfSpeech.Noun)), ("run", Mask(PartOfSpeech.Noun)));
+        var passing = SyntheticTable(("cat", Mask(PartOfSpeech.Noun)));
+        var badTable = Path.Combine(_root, "bad.bin");
+        var goodTable = Path.Combine(_root, "good.bin");
+        File.WriteAllBytes(badTable, failing.ToArray());
+        File.WriteAllBytes(goodTable, passing.ToArray());
+        var ud = Path.Combine(_root, "ud");
+        Directory.CreateDirectory(ud);
+        var sentence = "1\tcat\tcat\tNOUN\tNN\t_\n2\trun\trun\tVERB\tVB\t_\n3\t.\t.\tPUNCT\t.\t_\n\n";
+        File.WriteAllText(Path.Combine(ud, "x.conllu"), "# text = cat run.\n" + string.Concat(Enumerable.Repeat(sentence, 20)));
+        var missingGated = Path.Combine(_root, "none.tsv");
+
+        // Act
+        using var badOut = new StringWriter();
+        using var goodOut = new StringWriter();
+        using var error = new StringWriter();
+        var failed = Program.Run(["lexicon-eval", "--table", badTable, "--ud", ud, "--gated", missingGated, "--enforce"], badOut, error);
+        var notEnforced = Program.Run(["lexicon-eval", "--table", badTable, "--ud", ud, "--gated", missingGated], new StringWriter(), error);
+        var passed = Program.Run(["lexicon-eval", "--table", goodTable, "--ud", ud, "--gated", missingGated, "--enforce"], goodOut, error);
+
+        // Assert
+        Assert.Equal(1, failed);
+        Assert.Contains("GATE: class Noun precision", badOut.ToString(), StringComparison.Ordinal);
+        Assert.Equal(0, notEnforced);
+        Assert.Equal(0, passed);
+        Assert.DoesNotContain("GATE:", goodOut.ToString(), StringComparison.Ordinal);
+        Assert.Empty(error.ToString());
+    }
+
+    /// <summary>
+    ///     An enforced evaluation fails when there are no sentences, when an enabled class or rule has no scored token
+    ///     and when an enabled rule is below the gate (the message names the rule); a report alone never fails.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_Eval_Enforce_FailsWithoutEvidenceAndNamesTheRule()
+    {
+        // Arrange: a table with the plural rule; 'dogs' is a verb in the gold text, so the rule is wrong
+        var table = SyntheticTable(DemaConsulting.WordSense.LemmaMorphologyRules.Plural, ("dog", Mask(PartOfSpeech.Noun)));
+        var tablePath = Path.Combine(_root, "rule.bin");
+        File.WriteAllBytes(tablePath, table.ToArray());
+        var missingGated = Path.Combine(_root, "none.tsv");
+        var empty = Path.Combine(_root, "empty-ud");
+        Directory.CreateDirectory(empty);
+        var wrong = Path.Combine(_root, "wrong-ud");
+        Directory.CreateDirectory(wrong);
+        var wrongSentence = "1\tdog\tdog\tNOUN\tNN\t_\n2\tdogs\tdog\tVERB\tVBZ\t_\n\n";
+        File.WriteAllText(Path.Combine(wrong, "x.conllu"), string.Concat(Enumerable.Repeat(wrongSentence, 5)));
+        var thin = Path.Combine(_root, "thin-ud");
+        Directory.CreateDirectory(thin);
+        File.WriteAllText(Path.Combine(thin, "x.conllu"), "1\tcat\tcat\tNOUN\tNN\t_\n\n");
+
+        // Act
+        using var emptyOut = new StringWriter();
+        using var wrongOut = new StringWriter();
+        using var thinOut = new StringWriter();
+        using var error = new StringWriter();
+        var noSentences = Program.Run(["lexicon-eval", "--table", tablePath, "--ud", empty, "--gated", missingGated, "--enforce"], emptyOut, error);
+        var noSentencesReport = Program.Run(["lexicon-eval", "--table", tablePath, "--ud", empty, "--gated", missingGated], new StringWriter(), error);
+        var wrongRule = Program.Run(["lexicon-eval", "--table", tablePath, "--ud", wrong, "--gated", missingGated, "--enforce"], wrongOut, error);
+        var noEvidence = Program.Run(["lexicon-eval", "--table", tablePath, "--ud", thin, "--gated", missingGated, "--enforce"], thinOut, error);
+
+        // Assert
+        Assert.Equal(1, noSentences);
+        Assert.Contains("GATE: no sentences were evaluated", emptyOut.ToString(), StringComparison.Ordinal);
+        Assert.Equal(0, noSentencesReport);
+        Assert.Equal(1, wrongRule);
+        Assert.Contains("GATE: rule Plural precision", wrongOut.ToString(), StringComparison.Ordinal);
+        Assert.Equal(1, noEvidence);
+        Assert.Contains("GATE: class Noun has no scored tokens", thinOut.ToString(), StringComparison.Ordinal);
+        Assert.Contains("GATE: rule Plural has no scored tokens", thinOut.ToString(), StringComparison.Ordinal);
+        Assert.Empty(error.ToString());
+    }
+
+    /// <summary>
+    ///     Thin evidence (fewer than 100 tokens) that passes the gate is marked in the report but does not fail.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_Eval_ThinEvidence_IsOnlyANote()
+    {
+        // Arrange
+        var table = SyntheticTable(DemaConsulting.WordSense.LemmaMorphologyRules.None, ("cat", Mask(PartOfSpeech.Noun)));
+        var tablePath = Path.Combine(_root, "thin.bin");
+        File.WriteAllBytes(tablePath, table.ToArray());
+        var ud = Path.Combine(_root, "thin-ud");
+        Directory.CreateDirectory(ud);
+        File.WriteAllText(Path.Combine(ud, "x.conllu"), "1\tcat\tcat\tNOUN\tNN\t_\n\n");
+
+        // Act
+        using var output = new StringWriter();
+        using var error = new StringWriter();
+        var code = Program.Run(["lexicon-eval", "--table", tablePath, "--ud", ud, "--gated", Path.Combine(_root, "none.tsv"), "--enforce"], output, error);
+
+        // Assert
+        Assert.Equal(0, code);
+        Assert.Contains("pass (thin)", output.ToString(), StringComparison.Ordinal);
+        Assert.DoesNotContain("GATE:", output.ToString(), StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The build takes the lexicon of <c>--lexicon FILE</c> with the rules next to it, builds without a dictionary
+    ///     for <c>--lexicon none</c>, and reports a missing default lexicon, a missing explicit file and a missing
+    ///     morphology file as errors before any work is done.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors()
+    {
+        // Arrange
+        var lexiconDirectory = Path.Combine(_root, "lex");
+        Directory.CreateDirectory(lexiconDirectory);
+        var lexicon = Path.Combine(lexiconDirectory, "lexicon.tsv");
+        File.WriteAllText(lexicon, "cat\tN\nquick\tJ\n");
+        File.WriteAllText(Path.Combine(lexiconDirectory, "morphology.tsv"), "Plural\tenabled\tgate\nPastTense\tdisabled\tbelow the gate\n");
+        var bare = Path.Combine(_root, "bare");
+        Directory.CreateDirectory(bare);
+        File.WriteAllText(Path.Combine(bare, "lexicon.tsv"), "cat\tN\n");
+        var corpus = Path.Combine(_root, "empty-corpus");
+        Directory.CreateDirectory(corpus);
+        var model = Path.Combine(_root, "no-model");
+        var output = Path.Combine(_root, "table.bin");
+
+        // Act
+        var (words, rules) = Program.ReadLexiconSettings(new Dictionary<string, string> { ["lexicon"] = lexicon }, corpus);
+        var (none, noneRules) = Program.ReadLexiconSettings(new Dictionary<string, string> { ["lexicon"] = "none" }, corpus);
+        using var missingDefaultError = new StringWriter();
+        using var missingExplicitError = new StringWriter();
+        using var missingMorphologyError = new StringWriter();
+        var missingDefault = Program.Run(["build", "--model", model, "--corpus", corpus, "--output", output], new StringWriter(), missingDefaultError);
+        var missingExplicit = Program.Run(
+            ["build", "--model", model, "--corpus", corpus, "--output", output, "--lexicon", Path.Combine(_root, "nope.tsv")],
+            new StringWriter(),
+            missingExplicitError);
+        var missingMorphology = Program.Run(
+            ["build", "--model", model, "--corpus", corpus, "--output", output, "--lexicon", Path.Combine(bare, "lexicon.tsv")],
+            new StringWriter(),
+            missingMorphologyError);
+
+        // Assert
+        Assert.Equal(["cat", "quick"], words!.Select(w => w.Word));
+        Assert.Equal(DemaConsulting.WordSense.LemmaMorphologyRules.Plural, rules);
+        Assert.Null(none);
+        Assert.Equal(DemaConsulting.WordSense.LemmaMorphologyRules.None, noneRules);
+        Assert.Equal(1, missingDefault);
+        Assert.Contains("--lexicon none", missingDefaultError.ToString(), StringComparison.Ordinal);
+        Assert.Equal(1, missingExplicit);
+        Assert.Contains("nope.tsv", missingExplicitError.ToString(), StringComparison.Ordinal);
+        Assert.Equal(1, missingMorphology);
+        Assert.Contains("morphology.tsv", missingMorphologyError.ToString(), StringComparison.Ordinal);
+        Assert.False(File.Exists(output));
+    }
+
+    /// <summary>
+    ///     An <c>-ing</c> word of five or more letters gains the verb sense when its stem (with an added <c>e</c> or
+    ///     without a doubled consonant) is a verb, and keeps its class otherwise.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Lexicon_ImportMoby_GerundOfVerb_GainsVerbSense()
+    {
+        // Arrange
+        var moby = string.Join("\n", "walk\\V", "walking\\N", "make\\V", "making\\N", "run\\V", "running\\N", "morning\\N", "ring\\V", "king\\N", string.Empty);
+        var input = Path.Combine(_root, "gerund-moby.txt");
+        File.WriteAllBytes(input, Encoding.Latin1.GetBytes(moby));
+        var output = Path.Combine(_root, "gerund", "lexicon.tsv");
+        Directory.CreateDirectory(Path.GetDirectoryName(output)!);
+
+        // Act
+        LexiconSource.Import(input, output, null, null);
+
+        // Assert: the four gerunds gain the verb; 'morning' has no verb stem and 'king' is too short
+        var lines = File.ReadAllText(output).Split('\n', StringSplitOptions.RemoveEmptyEntries);
+        Assert.Contains("making\tNV", lines);
+        Assert.Contains("running\tNV", lines);
+        Assert.Contains("walking\tNV", lines);
+        Assert.Contains("morning\tN", lines);
+        Assert.Contains("king\tN", lines);
+    }
+
+    private static DemaConsulting.WordSense.WordSenseTable SyntheticTable(params (string Word, byte Mask)[] words)
+        => SyntheticTable(DemaConsulting.WordSense.LemmaMorphologyRules.None, words);
+
+    private static DemaConsulting.WordSense.WordSenseTable SyntheticTable(
+        DemaConsulting.WordSense.LemmaMorphologyRules rules,
+        params (string Word, byte Mask)[] words)
+    {
+        var entries = words.OrderBy(w => w.Word, StringComparer.Ordinal).Select(w => DemaConsulting.WordSense.WordSenseTable.CreateDictionaryEntry(w.Word, w.Mask)).ToList();
+        return new DemaConsulting.WordSense.WordSenseTable(
+            "synthetic", new string('a', 64), 8, new float[8], entries, new Dictionary<string, string>(), rules);
     }
 }

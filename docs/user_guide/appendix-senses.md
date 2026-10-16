@@ -11,11 +11,13 @@ pronunciation.
 
 ### Parts of Speech
 
-The `PartOfSpeech` enumeration defines all eight classic parts of speech, but the shipped table only produces the four
-listed here.
+The `PartOfSpeech` enumeration defines all eight classic parts of speech. The trained senses listed here, which give the
+context answers, cover four of them (`Noun`, `Verb`, `Adjective`, `Adverb`). A dictionary answer can also be a `Pronoun`
+or a `Preposition`; `Conjunction` and `Interjection` appear only as candidates of a dictionary word that has other parts
+of speech too, never as an answer. The table counts the trained senses of each part of speech:
 
 | Part of speech | Senses |
-|----------------|--------|
+| -------------- | -----: |
 | `Noun`         |    691 |
 | `Verb`         |    725 |
 | `Adjective`    |     93 |
@@ -41,6 +43,102 @@ The library supports 744 lemmas with 1521 senses in total, listed alphabetically
 and, for a heteronym, its pronunciation meanings and the inflected forms it recognizes. Under it, every sense gives its
 part of speech, its meaning and respelling when it has them, and an example sentence in which the classified word is
 shown in bold.
+
+### Dictionary Words
+
+Besides the lemmas listed below, the lexicon list has 143,712 words (derived from the public-domain Moby Part-of-Speech
+II list, see `corpus/lexicon/PROVENANCE.md`), of which 142,485 are embedded as dictionary words. A dictionary word has
+no trained classifier: a word with one part of speech is answered directly, and a word with several parts of speech
+returns them as candidates. A word that a lemma or a form of the list below spells is not embedded as a dictionary word,
+because the lemma takes precedence. A capitalized word in the middle of a sentence is not looked up. The words are not
+listed here; this is how many words of the lexicon list have each set of parts of speech:
+
+| Parts of speech                                                 |   Words |
+|-----------------------------------------------------------------|---------|
+| Noun                                                            |   63057 |
+| Adjective                                                       |   29770 |
+| Verb                                                            |   20448 |
+| Adverb                                                          |   11517 |
+| Verb, Adjective                                                 |    8224 |
+| Noun, Verb                                                      |    5481 |
+| Noun, Adjective                                                 |    3569 |
+| Noun, Verb, Adjective                                           |     474 |
+| Adjective, Adverb                                               |     326 |
+| Noun, Adjective, Adverb                                         |     167 |
+| Noun, Verb, Adjective, Adverb                                   |      80 |
+| Noun, Adverb                                                    |      75 |
+| Noun, Interjection                                              |      64 |
+| Noun, Verb, Interjection                                        |      50 |
+| Pronoun                                                         |      46 |
+| Preposition                                                     |      36 |
+| Verb, Adjective, Adverb                                         |      32 |
+| Noun, Verb, Adverb                                              |      28 |
+| Adverb, Preposition                                             |      27 |
+| Adverb, Conjunction                                             |      16 |
+| Verb, Interjection                                              |      15 |
+| Noun, Adjective, Adverb, Preposition                            |      14 |
+| Noun, Pronoun                                                   |      14 |
+| Adverb, Interjection                                            |      11 |
+| Verb, Adverb                                                    |      10 |
+| Noun, Adjective, Adverb, Interjection                           |       9 |
+| Noun, Preposition                                               |       9 |
+| Pronoun, Adverb                                                 |       9 |
+| Noun, Verb, Adjective, Adverb, Interjection                     |       8 |
+| Pronoun, Adjective                                              |       8 |
+| Noun, Verb, Adjective, Interjection                             |       7 |
+| Preposition, Conjunction                                        |       7 |
+| Verb, Preposition                                               |       7 |
+| Adjective, Interjection                                         |       6 |
+| Adverb, Preposition, Conjunction                                |       6 |
+| Noun, Adjective, Interjection                                   |       5 |
+| Noun, Adjective, Preposition                                    |       5 |
+| Adjective, Adverb, Preposition                                  |       4 |
+| Noun, Adverb, Preposition                                       |       4 |
+| Noun, Conjunction                                               |       4 |
+| Noun, Verb, Preposition                                         |       4 |
+| Adjective, Preposition                                          |       3 |
+| Noun, Adverb, Interjection                                      |       3 |
+| Noun, Pronoun, Adverb                                           |       3 |
+| Noun, Verb, Adjective, Adverb, Preposition                      |       3 |
+| Noun, Verb, Adverb, Interjection                                |       3 |
+| Noun, Verb, Preposition, Conjunction                            |       3 |
+| Verb, Adjective, Preposition                                    |       3 |
+| Adjective, Adverb, Interjection                                 |       2 |
+| Noun, Adverb, Conjunction                                       |       2 |
+| Noun, Pronoun, Adverb, Conjunction                              |       2 |
+| Noun, Verb, Adverb, Preposition                                 |       2 |
+| Verb, Preposition, Conjunction                                  |       2 |
+| Adjective, Adverb, Preposition, Conjunction                     |       1 |
+| Adverb, Conjunction, Interjection                               |       1 |
+| Noun, Adjective, Adverb, Preposition, Conjunction, Interjection |       1 |
+| Noun, Adjective, Preposition, Conjunction                       |       1 |
+| Noun, Adverb, Conjunction, Interjection                         |       1 |
+| Noun, Adverb, Preposition, Conjunction                          |       1 |
+| Noun, Preposition, Conjunction                                  |       1 |
+| Noun, Pronoun, Adjective                                        |       1 |
+| Noun, Pronoun, Adjective, Adverb, Conjunction, Interjection     |       1 |
+| Noun, Pronoun, Adverb, Interjection                             |       1 |
+| Noun, Pronoun, Interjection                                     |       1 |
+| Noun, Pronoun, Verb                                             |       1 |
+| Noun, Pronoun, Verb, Adverb                                     |       1 |
+| Noun, Verb, Adjective, Adverb, Preposition, Conjunction         |       1 |
+| Noun, Verb, Adjective, Preposition, Conjunction                 |       1 |
+| Noun, Verb, Adjective, Preposition, Interjection                |       1 |
+| Noun, Verb, Adverb, Preposition, Interjection                   |       1 |
+| Noun, Verb, Conjunction                                         |       1 |
+| Pronoun, Adjective, Adverb                                      |       1 |
+| Pronoun, Adjective, Adverb, Conjunction                         |       1 |
+| Pronoun, Adverb, Conjunction                                    |       1 |
+| Pronoun, Conjunction                                            |       1 |
+| Verb, Adjective, Adverb, Interjection                           |       1 |
+| Verb, Adjective, Adverb, Preposition                            |       1 |
+| Verb, Adjective, Interjection                                   |       1 |
+| Verb, Adverb, Interjection                                      |       1 |
+| Verb, Adverb, Preposition, Conjunction                          |       1 |
+| Verb, Conjunction                                               |       1 |
+
+A word that the table lacks may be derived from a dictionary word by a suffix rule. Rules enabled: `Plural`, `Adverb`.
+Rules disabled because they did not reach 95 percent precision on real text: `PastTense`.
 
 ### Lemmas Starting With A
 

@@ -1,7 +1,8 @@
 # Introduction
 
 This document provides the verification design for the WordSense, a .NET library
-that tells the part of speech and pronunciation of ambiguous English words in context.
+that tells the part of speech and pronunciation of ambiguous English words in context and the part of speech of
+common English words from an embedded dictionary.
 
 ## Purpose
 

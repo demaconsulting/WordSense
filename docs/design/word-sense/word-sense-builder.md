@@ -11,13 +11,40 @@ real-text commands (`real-gap`,
 `validate-provenance`) and the analysis commands (`learning-curve --corpus DIR --model DIR --out DIR [--subsets N]
 [--seed N] [--lemmas a,b]`, `error-diagnosis --corpus DIR --model DIR --out DIR [--lemmas a,b]` and
 `weak-lemmas --analysis DIR [--report FILE]`) and the documentation command
-`generate-appendix --corpus DIR --output FILE`.
+`generate-appendix --corpus DIR --output FILE`, and the lexicon commands `import-moby --input FILE
+[--corrections FILE] [--classes FILE] [--output FILE]` and `lexicon-eval --table FILE --ud DIR [--output FILE]
+[--gated FILE] [--enforce]`. The `build` command also reads the committed lexicon `corpus/lexicon/lexicon.tsv`
+(`--lexicon FILE` selects another file, `--lexicon none` builds without a dictionary and is the only way to do so) and
+the `morphology.tsv` next to the lexicon, and embeds them in the table.
 
 ## Data Model
 
 The corpus is tab-separated files under `corpus/anchors` (training) and `corpus/holdout`
 (evaluation): `lemma`, `label`, `sentence` with the target in one `{...}` pair. `corpus/forms/*.tsv`
 lists word forms per lemma. Training and evaluation sentences must be disjoint.
+
+The lexicon is committed under `corpus/lexicon/`:
+
+- `lexicon.tsv`: one line per word, `word<TAB>POS letters`.
+- `corrections.tsv`: manual changes applied by the importer.
+- `classes.tsv`: the class gate, one row per part of speech with the mode `answer` or `candidate-only` and the
+  evidence; `import-moby --classes FILE` applies it. A word whose every part of speech is candidate-only is not
+  written to `lexicon.tsv`; it goes to `gated.tsv`.
+- `gated.tsv`: the words held back by the class gate, in the lexicon format. `lexicon-eval --gated FILE` (default
+  `corpus/lexicon/gated.tsv`) reads it to report the precision the held-back classes would have had; a missing file
+  only drops the held-class statistics from the report.
+- `morphology.tsv`: one row per morphology rule (`Plural`, `PastTense`, `Adverb`) with the state `enabled` or
+  `disabled` and the evidence. `build` writes the enabled rules into the table flags, and a rule that is not listed is
+  disabled. A `build` that uses a lexicon requires the `morphology.tsv` next to the lexicon file and fails with a
+  missing-file error otherwise, because the rules decide what the shipped table may derive and must never default.
+- `PROVENANCE.md`: source, licence, filters and counts.
+
+The source is the Moby Part-of-Speech II list by Grady Ward, which is in the public domain; the raw list is not
+committed, only the derived, filtered lexicon. No data from ASD-STE100 is used or embedded. The gold data of
+`lexicon-eval` is the Universal Dependencies English Web Treebank (UD EWT, `en_ewt-ud-{train,dev,test}.conllu`, from
+<https://github.com/UniversalDependencies/UD_English-EWT>), licensed CC BY-SA 4.0. It is used for evaluation only: it
+is neither embedded nor redistributed. The files live in the git-ignored `tools/real-text/cache` and the repository
+does not pin a release or commit of the treebank, so a figure is reproducible only for the files that were used.
 
 ## Algorithm
 
@@ -146,6 +173,41 @@ lists word forms per lemma. Training and evaluation sentences must be disjoint.
 - The embedded form map contains only forms whose lemma has a classifier, so every form resolves to a
   lemma that exists in the table; forms of lemmas without a classifier are omitted.
 
+### Lexicon Commands
+
+- `import-moby` (`LexiconSource`) turns the raw Moby list into `corpus/lexicon/lexicon.tsv`. It reads the file as
+  Latin-1 and keeps single lower-case `a-z` words. The part-of-speech code policy is pinned: `N`, `h` (noun phrase)
+  and `p` (plural noun) are noun, `V` (with the sub-types `t` and `i`) is verb, `A` is adjective, `v` is adverb, `r`
+  is pronoun, `P` is preposition, `C` is conjunction and `!` is interjection. A word that is only an adjective
+  and ends in `-ed` or `-ing` becomes adjective and verb, because real text uses such participles as verbs. The gerund
+  rule adds the verb sense to an `-ing` word of at least five letters that has no verb code when its stem (as is, plus
+  `e`, or without a doubled final consonant) has a verb code (for example `being`). A word
+  with a determiner, article or numeral code (`D`, `I`, `o`) is dropped, so determiner words stay unknown, and so is a
+  row without a code. Words whose only part of speech is conjunction or interjection are not emitted by the class
+  gate. `corrections.tsv` applies the few manual changes that the evaluation justified (for example `i` as a
+  pronoun, which Moby lacks). The output is sorted in ordinal order with LF line ends, so the same input always gives
+  the same bytes; `PROVENANCE.md` records the SHA-256 of the input, the filter rules and the counts, and the importer
+  reports the counts.
+- `build` merges the lexicon with the trained lemmas in one table. The precedence is trained lemma over lexicon word:
+  a dictionary word that is a trained lemma, or a form of one, is dropped and counted, so every lemma and every form
+  appears once. The table is written with the enabled rules of `morphology.tsv` (`-s/-es/-ies` and `-ly` in the
+  committed table; `-ed` is implemented but disabled because it measured 94.69 %, below the gate). The lexicon is the
+  file of `--lexicon FILE`; without `--lexicon` the default `corpus/lexicon/lexicon.tsv` is used and its absence is a
+  usage error that tells the caller to pass `--lexicon none` explicitly to build without a dictionary (no words, no
+  rules). This is checked before any other work.
+- `lexicon-eval` evaluates the committed table against the gold part-of-speech labels of the Universal Dependencies
+  English Web Treebank text (UD EWT). It resolves each token with the same `TryResolve` code the classifier uses, and
+  reports precision per part-of-speech class and per morphology rule, candidate recall, the number of resolved tokens
+  and the share of sentences that need no encoder. The gate is a precision of at least 95 % for every class the table
+  answers directly and every enabled rule. With `--enforce` the command exits 1 (message `GATE: ...`) when there is no
+  sentence at all, when an enabled class or enabled rule is below the gate, and when an enabled class or enabled rule
+  has no scored token, because an empty tally has no evidence and must not pass as perfect. A figure over fewer than
+  100 tokens is only marked thin in the report and never fails; without `--enforce` the command only reports. The
+  disabled rules (`-ed`, `-ing`, `-er`/`-est`, possessives of dictionary words) did not reach the gate when measured.
+- Reproducibility: `import-moby` is deterministic, `build` is deterministic for a given runtime, and the committed
+  table is checked against the committed lexicon by comparing decoded content: the compressed bytes of the dictionary
+  section can differ between runtimes, so the check decodes both tables and compares words and parts of speech.
+
 ### Analysis Commands
 
 The analysis commands (`LearningCurve`, `ErrorDiagnosis`, `WeakLemmas`, loading through `AnalysisData`) write
@@ -195,9 +257,13 @@ still applies to it.
 ## Error Handling
 
 - `Program.Run` returns 0 on success and 1 on a usage or data error; it never lets such an error escape. Usage
-  errors (no command, unknown command, a missing or malformed option, a non-numeric integer option) and data
+  errors (no command, unknown command, a missing or malformed option, an option whose value is another option such
+  as `--output --enforce`, a non-numeric integer option) and data
   errors (`InvalidDataException`, `ArgumentException`, `IOException` including a missing file, and
   `UnauthorizedAccessException`) are written to the error writer as `Error: <message>`.
+- `build` without `--lexicon` and without the default `corpus/lexicon/lexicon.tsv` is a usage error that names
+  `--lexicon none`; an explicit `--lexicon FILE` that does not exist, or a lexicon without a `morphology.tsv` next to
+  it, is a missing-file error. Both exit 1 before the corpus is read or the table is written.
 - `import-batches` reports row- and lemma-level problems per batch and only exits 1 when a batch is `Invalid` or
   missing; an invalid batch imports nothing.
 - The analysis commands need their inputs: a missing corpus, model or analysis file is an `IOException` and exits 1; a
@@ -223,11 +289,14 @@ still applies to it.
 
 `Program.Run` dispatches each command to `TableBuilder`, `BatchImporter`, `SenseInventory`, `RealPlan`,
 `RealJudge`, `RealImport`, `RealGap`, `RealAuthored`, `NounVerbImport`, `NounVerbGate`, `RealEval`, `LearningCurve`,
-`ErrorDiagnosis`, `WeakLemmas` or `AppendixGenerator`. It is
+`ErrorDiagnosis`, `WeakLemmas`, `AppendixGenerator`, `LexiconSource` (`import-moby`, and the lexicon files that `build`
+reads) or `LexiconEvaluation` (`lexicon-eval`). It is
 called by `Main` and by the builder tests; the tool is run by hand and by the corpus maintenance workflow, never by
 the library or the CI build.
 
 ## Interactions
 
 Uses `WordPieceTokenizer`, `OnnxWordSenseEncoder`, `WordSenseTable` and `FeatureExtractor` from the
-library through `InternalsVisibleTo`.
+library through `InternalsVisibleTo`; `lexicon-eval` calls the library resolver (`WordSenseTable.TryResolve`) so that
+the evaluated behaviour is the shipped behaviour. `Program.Run` also dispatches `import-moby` to `LexiconSource` and
+`lexicon-eval` to `LexiconEvaluation`.

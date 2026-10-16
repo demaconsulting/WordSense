@@ -2,9 +2,10 @@ package WordSense {
     doc
     /*
      * WordSense is a .NET library that tells the part of speech, and for words pronounced differently by
-     * meaning the pronunciation, that an ambiguous English word carries in context (for example "record"
-     * as noun or verb) using a quantized MiniLM encoder and a
-     * compact embedded classifier table. It ships as the single package DemaConsulting.WordSense.
+     * meaning the pronunciation, of English words in text. Words with one part of speech are answered from
+     * an embedded dictionary; ambiguous words (for example "record" as noun or verb) are answered in context
+     * using a quantized MiniLM encoder and compact per-lemma classifiers held in the same embedded table.
+     * It ships as the single package DemaConsulting.WordSense.
      */
 
     part def WordSenseSystem {

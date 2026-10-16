@@ -60,7 +60,9 @@ internal static partial class DocSampleText
     public static string Dedent(string text)
     {
         var lines = text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n');
-        var indent = lines.Where(l => l.Trim().Length > 0).Min(l => l.Length - l.TrimStart().Length);
+        var indents = lines.Where(l => l.Trim().Length > 0).Select(l => l.Length - l.TrimStart().Length).ToList();
+        Assert.True(indents.Count > 0, "The sample block is empty: it has no non-blank line to compare.");
+        var indent = indents.Min();
         return string.Join('\n', lines.Select(l => l.Length >= indent ? l[indent..] : l.TrimStart()));
     }
 

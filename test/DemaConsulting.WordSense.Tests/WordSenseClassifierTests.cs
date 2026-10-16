@@ -21,16 +21,349 @@ public class WordSenseClassifierTests
 
     private static WordSenseTable CreateTable(float margin)
     {
-        var model = new LemmaModel(
+        return CreateTable(margin, []);
+    }
+
+    private static WordSenseTable CreateTable(float margin, IReadOnlyList<LemmaEntry> dictionary)
+    {
+        var model = new LemmaEntry(
             "bat",
             [new SenseDefinition(PartOfSpeech.Noun, "animal"), new SenseDefinition(PartOfSpeech.Verb, "tool")],
-            LemmaModelKind.Binary,
-            [1f, 0f, 0f],
-            [0f],
-            margin,
-            3);
+            new SenseWeights(LemmaModelKind.Binary, [1f, 0f, 0f], [0f], margin, 3));
         var forms = new Dictionary<string, string> { ["bat"] = "bat", ["bats"] = "bat" };
-        return new WordSenseTable("all-MiniLM-L6-v2", TableSha, 3, [0f, 0f, 0f], [model], forms);
+        var all = dictionary.Append(model).OrderBy(e => e.Lemma, StringComparer.Ordinal).ToArray();
+        return new WordSenseTable("all-MiniLM-L6-v2", TableSha, 3, [0f, 0f, 0f], all, forms);
+    }
+
+    private static LemmaEntry Word(string lemma, params PartOfSpeech[] parts) =>
+        new(lemma, parts.Select(p => new SenseDefinition(p)).ToArray());
+
+    /// <summary>
+    ///     Creates a classifier whose table has the trained lemma bat and a small dictionary.
+    /// </summary>
+    private static WordSenseClassifier CreateWithDictionary(FakeEncoder? encoder = null, WordSenseClassifierOptions? options = null)
+    {
+        var table = CreateTable(
+            0.75f,
+            [
+                Word("cat", PartOfSpeech.Noun),
+                Word("i", PartOfSpeech.Pronoun),
+                Word("quick", PartOfSpeech.Adjective),
+                Word("run", PartOfSpeech.Noun, PartOfSpeech.Verb),
+            ]);
+        return new WordSenseClassifier(encoder ?? new FakeEncoder(), table, new WordPieceTokenizer(Vocabulary), options, false);
+    }
+
+    /// <summary>
+    ///     A dictionary word with one part of speech is answered from the table without running the encoder.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder);
+
+        var analyses = await classifier.ClassifyAsync(["a", "cat", "is", "quick"], TestContext.Current.CancellationToken);
+
+        var cat = analyses[1];
+        Assert.Equal(AnswerBasis.Dictionary, cat.Basis);
+        Assert.Equal(new WordDetails("cat", PartOfSpeech.Noun, null), cat.Details);
+        Assert.False(cat.Abstained);
+        Assert.Equal(0.0, cat.Margin);
+        Assert.Null(cat.RunnerUp);
+        Assert.Equal(0.0, cat.RunnerUpMargin);
+        Assert.Same(cat.Details, Assert.Single(cat.Candidates));
+        Assert.Equal(PartOfSpeech.Adjective, analyses[3].Details!.PartOfSpeech);
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     A dictionary word with several parts of speech and no classifier abstains and lists its candidates.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder);
+
+        var run = (await classifier.ClassifyAsync(["a", "run"], TestContext.Current.CancellationToken))[1];
+
+        Assert.Null(run.Details);
+        Assert.True(run.Abstained);
+        Assert.Equal(AnswerBasis.Dictionary, run.Basis);
+        Assert.Equal(0.0, run.Margin);
+        Assert.Null(run.RunnerUp);
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], run.Candidates.Select(c => c.PartOfSpeech));
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     An unknown word has no basis and an empty, non-null candidate list.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder);
+
+        var analyses = await classifier.ClassifyAsync(["zzz", ".", ""], TestContext.Current.CancellationToken);
+
+        Assert.All(analyses, a =>
+        {
+            Assert.Equal(AnswerBasis.None, a.Basis);
+            Assert.NotNull(a.Candidates);
+            Assert.Empty(a.Candidates);
+            Assert.Null(a.Details);
+            Assert.False(a.Abstained);
+        });
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     A word derived from a dictionary base by a morphology rule is a dictionary answer.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_DerivedPlural_AnswersFromDictionary()
+    {
+        using var classifier = CreateWithDictionary();
+
+        var cats = (await classifier.ClassifyAsync(["a", "cats"], TestContext.Current.CancellationToken))[1];
+
+        Assert.Equal(AnswerBasis.Dictionary, cats.Basis);
+        Assert.Equal("cat", cats.Details!.Lemma);
+        Assert.Equal(PartOfSpeech.Noun, cats.Details.PartOfSpeech);
+        Assert.Equal("cats", cats.Word);
+        Assert.Single(cats.Candidates);
+    }
+
+    /// <summary>
+    ///     A context answer has the context basis and every sense of the lemma as candidates, also when it abstains.
+    /// </summary>
+    [Theory]
+    [InlineData(0.0, false)]
+    [InlineData(10.0, true)]
+    public async Task WordSenseClassifier_ClassifyAsync_ContextAnswer_HasContextBasisAndCandidates(double scale, bool abstains)
+    {
+        using var classifier = CreateWithDictionary(options: new WordSenseClassifierOptions { AbstainMarginScale = scale });
+
+        var bat = (await classifier.ClassifyAsync(["the", "bat"], TestContext.Current.CancellationToken))[1];
+
+        Assert.Equal(AnswerBasis.Context, bat.Basis);
+        Assert.Equal(abstains, bat.Abstained);
+        Assert.Equal(abstains, bat.Details is null);
+        Assert.Same(classifier.GetCandidates("bat"), bat.Candidates);
+        Assert.Contains(bat.RunnerUp, bat.Candidates);
+        Assert.True(abstains || bat.Candidates.Contains(bat.Details!));
+    }
+
+    /// <summary>
+    ///     The encoder runs once for a sentence that mixes a context word with dictionary and unknown words, and the
+    ///     dictionary words are answered from the same call; the text overload behaves the same.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder);
+        var token = TestContext.Current.CancellationToken;
+
+        var words = await classifier.ClassifyAsync(["the", "bat", "and", "a", "cat", "run"], token);
+        Assert.Equal(1, encoder.Calls);
+        Assert.Equal(
+            [AnswerBasis.None, AnswerBasis.Context, AnswerBasis.None, AnswerBasis.None, AnswerBasis.Dictionary, AnswerBasis.Dictionary],
+            words.Select(w => w.Basis));
+
+        var tokens = await classifier.ClassifyAsync("the bat and a cat", token);
+        Assert.Equal(2, encoder.Calls);
+        Assert.Equal(1, tokens.Count(t => t.Analysis.Basis == AnswerBasis.Context));
+        Assert.Equal(1, tokens.Count(t => t.Analysis.Basis == AnswerBasis.Dictionary));
+    }
+
+    /// <summary>
+    ///     Text made only of dictionary, candidates-only and unknown words never reaches the encoder, whether it is
+    ///     given as a list or as text, and whether it is short or longer than the window.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_NoContextWords_NeverEncodes()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder, new WordSenseClassifierOptions { MaxSequenceLength = 8 });
+        var token = TestContext.Current.CancellationToken;
+
+        await classifier.ClassifyAsync(["a", "cat", "run", "zzz", "quick"], token);
+        var tokens = await classifier.ClassifyAsync("a cat can run. " + string.Join(' ', Enumerable.Repeat("quick cat", 30)), token);
+
+        Assert.Equal(0, encoder.Calls);
+        Assert.Equal(62, tokens.Count(t => t.Analysis.Basis == AnswerBasis.Dictionary));
+    }
+
+    /// <summary>
+    ///     A long text with context words encodes only for those words.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_LongTextWithDictionaryWords_EncodesOnlyContextTargets()
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder, new WordSenseClassifierOptions { MaxSequenceLength = 8 });
+        var text = string.Join(' ', Enumerable.Repeat("quick cat", 20)) + " the bat " + string.Join(' ', Enumerable.Repeat("quick cat", 20));
+
+        await classifier.ClassifyAsync(text, TestContext.Current.CancellationToken);
+
+        Assert.Equal(1, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     UseLexicon false answers only lemmas with a classifier: dictionary words are unknown and not encoded.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_UseLexiconFalse_AnswersOnlyContextLemmas()
+    {
+        var encoder = new FakeEncoder();
+        using var off = CreateWithDictionary(encoder, new WordSenseClassifierOptions { UseLexicon = false });
+        using var on = CreateWithDictionary();
+        var token = TestContext.Current.CancellationToken;
+
+        var dictionaryOnly = await off.ClassifyAsync(["a", "cat", "cats", "run"], token);
+        Assert.Equal(0, encoder.Calls);
+        Assert.All(dictionaryOnly, a => Assert.Equal(AnswerBasis.None, a.Basis));
+
+        var mixed = await off.ClassifyAsync(["the", "bat", "cat"], token);
+        Assert.Equal(AnswerBasis.Context, mixed[1].Basis);
+        Assert.Equal(AnswerBasis.None, mixed[2].Basis);
+        Assert.Equal(1, encoder.Calls);
+
+        Assert.Empty(off.GetCandidates("cat"));
+        Assert.Single(on.GetCandidates("cat"));
+        Assert.Equal(2, off.GetCandidates("bat").Count);
+        Assert.Equal(["bat"], off.ContextLemmas);
+    }
+
+    /// <summary>
+    ///     With UseLexicon false a dictionary word, also one derived by a rule, has no basis and no candidates.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_UseLexiconFalse_DictionaryWordIsUnknown()
+    {
+        using var classifier = CreateWithDictionary(options: new WordSenseClassifierOptions { UseLexicon = false });
+
+        var analyses = await classifier.ClassifyAsync(["a", "cat", "cats", "quick"], TestContext.Current.CancellationToken);
+
+        Assert.All(analyses, a =>
+        {
+            Assert.Equal(AnswerBasis.None, a.Basis);
+            Assert.Empty(a.Candidates);
+            Assert.Null(a.Details);
+        });
+    }
+
+    /// <summary>
+    ///     A capitalized dictionary word at the start of a sentence is looked up.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CasePolicy_SentenceStartIsLookedUp()
+    {
+        using var classifier = CreateWithDictionary();
+
+        var analyses = await classifier.ClassifyAsync(["Cat", "a", ".", "Quick"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(AnswerBasis.Dictionary, analyses[0].Basis);
+        Assert.Equal(AnswerBasis.Dictionary, analyses[3].Basis);
+    }
+
+    /// <summary>
+    ///     A capitalized dictionary word in the middle of a sentence is treated as a name and is unknown.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CasePolicy_MidSentenceCapitalIsUnknown()
+    {
+        using var classifier = CreateWithDictionary();
+
+        var analyses = await classifier.ClassifyAsync(["a", "Cat", "Quick"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(AnswerBasis.None, analyses[1].Basis);
+        Assert.Equal(AnswerBasis.None, analyses[2].Basis);
+    }
+
+    /// <summary>
+    ///     The pronoun I is looked up wherever it stands.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CasePolicy_PronounIIsLookedUp()
+    {
+        using var classifier = CreateWithDictionary();
+
+        var analyses = await classifier.ClassifyAsync(["a", "cat", "I"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(AnswerBasis.Dictionary, analyses[2].Basis);
+        Assert.Equal(PartOfSpeech.Pronoun, analyses[2].Details!.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     The case policy applies to dictionary words only: a capitalized word is looked up at the start of the input
+    ///     or of a sentence, after an opening quote or bracket, or when it is I; otherwise it is unknown.
+    /// </summary>
+    [Theory]
+    [InlineData("Cat", true)]
+    [InlineData("a . Cat", true)]
+    [InlineData("a ! Cat", true)]
+    [InlineData("a ? Cat", true)]
+    [InlineData("a : Cat", true)]
+    [InlineData("a \" Cat", true)]
+    [InlineData("a ( Cat", true)]
+    [InlineData("a [ Cat", true)]
+    [InlineData("a \u201C Cat", true)]
+    [InlineData("a Cat", false)]
+    [InlineData("a , Cat", false)]
+    [InlineData("a cat", true)]
+    [InlineData("a CAT", false)]
+    [InlineData("a I", true)]
+    [InlineData("a Quick", false)]
+    public async Task WordSenseClassifier_ClassifyAsync_CasePolicy_AppliesToDictionaryWords(string sentence, bool answered)
+    {
+        var encoder = new FakeEncoder();
+        using var classifier = CreateWithDictionary(encoder);
+        var words = sentence.Split(' ');
+
+        var analyses = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        var last = analyses[^1];
+        Assert.Equal(answered ? AnswerBasis.Dictionary : AnswerBasis.None, last.Basis);
+        Assert.Equal(answered, last.Details is not null);
+        Assert.Equal(0, encoder.Calls);
+    }
+
+    /// <summary>
+    ///     The case policy does not affect a lemma with a trained classifier, and the text overload uses the previous
+    ///     non-space token.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CasePolicy_TrainedLemmasAndTextOverload()
+    {
+        using var classifier = CreateWithDictionary();
+        var token = TestContext.Current.CancellationToken;
+
+        var tokens = await classifier.ClassifyAsync("a cat. Cat and a Cat", token);
+
+        var cats = tokens.Where(t => t.Text.Equals("cat", StringComparison.OrdinalIgnoreCase)).ToList();
+        Assert.Equal(
+            [AnswerBasis.Dictionary, AnswerBasis.Dictionary, AnswerBasis.None],
+            cats.Select(t => t.Analysis.Basis));
+        var bat = (await classifier.ClassifyAsync(["a", "BAT"], token))[1];
+        Assert.Equal(AnswerBasis.Context, bat.Basis);
+    }
+
+    /// <summary>
+    ///     GetCandidates works for a dictionary lemma and ContextLemmas lists only trained lemmas.
+    /// </summary>
+    [Fact]
+    public void WordSenseClassifier_GetCandidates_DictionaryLemma_ReturnsSenses()
+    {
+        using var classifier = CreateWithDictionary();
+
+        Assert.Equal(["bat"], classifier.ContextLemmas);
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], classifier.GetCandidates("run").Select(c => c.PartOfSpeech));
+        Assert.Equal(new WordDetails("cat", PartOfSpeech.Noun, null), Assert.Single(classifier.GetCandidates("cat")));
+        Assert.Empty(classifier.GetCandidates("zzz"));
     }
 
     /// <summary>
@@ -255,10 +588,52 @@ public class WordSenseClassifierTests
         Assert.Throws<ArgumentOutOfRangeException>(() => Create(options: new WordSenseClassifierOptions { AbstainMarginScale = -1 }));
         Assert.Throws<ArgumentOutOfRangeException>(() => Create(options: new WordSenseClassifierOptions { AbstainMarginScale = double.NaN }));
         Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(null!, CreateTable(1), new WordPieceTokenizer(Vocabulary), null, false));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(new FakeEncoder(), null!, new WordPieceTokenizer(Vocabulary), null, false));
+        Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(new FakeEncoder(), CreateTable(1), (WordPieceTokenizer)null!, null, false));
     }
 
     /// <summary>
-    ///     A token already cancelled when the call starts is rejected at the top of scoring, before any encoding.
+    ///     The public constructor that takes a vocabulary path reads the file and reports the documented exceptions
+    ///     for a null, empty or missing path and for a bad vocabulary or table.
+    /// </summary>
+    [Fact]
+    public void WordSenseClassifier_Constructor_VocabularyPath_ReadsFileOrThrows()
+    {
+        var directory = Path.Combine(Path.GetTempPath(), $"wordsense-classifier-{Guid.NewGuid():N}");
+        Directory.CreateDirectory(directory);
+        try
+        {
+            var path = Path.Combine(directory, "vocab.txt");
+            File.WriteAllLines(path, Vocabulary);
+
+            // A valid vocabulary classifies like the in-memory tokenizer
+            using (var classifier = new WordSenseClassifier(new FakeEncoder(), CreateTable(0.75f), path))
+            {
+                Assert.Equal(["bat"], classifier.ContextLemmas);
+            }
+
+            Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(new FakeEncoder(), CreateTable(0.75f), null!));
+            Assert.Throws<ArgumentException>(() => new WordSenseClassifier(new FakeEncoder(), CreateTable(0.75f), string.Empty));
+            Assert.Throws<FileNotFoundException>(() => new WordSenseClassifier(new FakeEncoder(), CreateTable(0.75f), Path.Combine(directory, "missing.txt")));
+
+            // The vocabulary is read first, so a missing special token is reported as an argument error
+            var incomplete = Path.Combine(directory, "incomplete.txt");
+            File.WriteAllLines(incomplete, ["the", "bat"]);
+            Assert.Throws<ArgumentException>(() => new WordSenseClassifier(new FakeEncoder(), CreateTable(0.75f), incomplete));
+
+            // The other arguments are still checked
+            Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(null!, CreateTable(0.75f), path));
+            Assert.Throws<ArgumentNullException>(() => new WordSenseClassifier(new FakeEncoder(), null!, path));
+            Assert.Throws<WordSenseModelMismatchException>(() => new WordSenseClassifier(new FakeEncoder { Hidden = 4 }, CreateTable(0.75f), path));
+        }
+        finally
+        {
+            Directory.Delete(directory, true);
+        }
+    }
+
+    /// <summary>
+    ///     A token already cancelled when the call starts is rejected at the start of the call, before any encoding.
     /// </summary>
     [Fact]
     public async Task WordSenseClassifier_ClassifyAsync_Cancelled_Throws()
@@ -288,6 +663,62 @@ public class WordSenseClassifierTests
     }
 
     /// <summary>
+    ///     A token cancelled during the encoding of the first window of a long text stops the classification at the
+    ///     check before the second target, which is a real cancellation between two window encodings.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_CancelledBetweenTargets_StopsAfterFirstWindow()
+    {
+        using var cts = CancellationTokenSource.CreateLinkedTokenSource(TestContext.Current.CancellationToken);
+        var encoder = new FakeEncoder { CancelDuringEncode = cts };
+        using var classifier = Create(encoder, new WordSenseClassifierOptions { MaxSequenceLength = 8 });
+        var filler = string.Join(' ', Enumerable.Repeat("a flies", 20));
+        var text = filler + " the bat " + filler + " a bat " + filler;
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => classifier.ClassifyAsync(text, cts.Token));
+
+        // The first window was encoded (the first target passed its check); the second target never was
+        Assert.Equal(1, encoder.Calls);
+        Assert.True(encoder.Lengths[0] <= 8);
+    }
+
+    /// <summary>
+    ///     A word with trained weights whose text yields no word pieces, or whose feature has no direction, stays
+    ///     unknown, and so does a form derived by morphology from a trained lemma.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseClassifier_ClassifyAsync_WeightedWordWithoutEvidence_IsUnknown()
+    {
+        var model = new LemmaEntry(
+            "bat",
+            [new SenseDefinition(PartOfSpeech.Noun, "animal"), new SenseDefinition(PartOfSpeech.Verb, "tool")],
+            new SenseWeights(LemmaModelKind.Binary, [1f, 0f, 0f], [0f], 0.75f, 3));
+        var forms = new Dictionary<string, string> { ["bat"] = "bat", ["\u0001"] = "bat" };
+
+        // The mean equals the hidden state of "bat" after "the", so its centered feature is zero
+        var table = new WordSenseTable("all-MiniLM-L6-v2", TableSha, 3, [1f, 1f, 0f], [model], forms);
+        var encoder = new FakeEncoder();
+        using var classifier = new WordSenseClassifier(encoder, table, new WordPieceTokenizer(Vocabulary), null, false);
+
+        var noPieces = await classifier.ClassifyAsync(["\u0001"], TestContext.Current.CancellationToken);
+        Assert.Equal(AnswerBasis.None, noPieces[0].Basis);
+        Assert.Null(noPieces[0].Details);
+        Assert.False(noPieces[0].Abstained);
+        Assert.Empty(noPieces[0].Candidates);
+
+        var zeroNorm = await classifier.ClassifyAsync(["the", "bat"], TestContext.Current.CancellationToken);
+        Assert.Equal(AnswerBasis.None, zeroNorm[1].Basis);
+        Assert.Null(zeroNorm[1].Details);
+        Assert.False(zeroNorm[1].Abstained);
+
+        // Morphology never derives from a trained lemma, so no sense is chosen without the classifier
+        var calls = encoder.Calls;
+        var derived = await classifier.ClassifyAsync(["batted", "batly"], TestContext.Current.CancellationToken);
+        Assert.All(derived, a => Assert.Equal(AnswerBasis.None, a.Basis));
+        Assert.Equal(calls, encoder.Calls);
+    }
+
+    /// <summary>
     ///     Many concurrent calls give consistent answers.
     /// </summary>
     [Fact]
@@ -308,11 +739,11 @@ public class WordSenseClassifierTests
     ///     Known lemmas and candidates are exposed as shared records.
     /// </summary>
     [Fact]
-    public void WordSenseClassifier_KnownLemmas_And_GetCandidates_AreExposed()
+    public void WordSenseClassifier_ContextLemmas_And_GetCandidates_AreExposed()
     {
         using var classifier = Create();
 
-        Assert.Equal(["bat"], classifier.KnownLemmas);
+        Assert.Equal(["bat"], classifier.ContextLemmas);
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], classifier.GetCandidates("bat").Select(s => s.PartOfSpeech));
         Assert.Equal(["animal", "tool"], classifier.GetCandidates("bat").Select(s => s.Pronunciation!.Meaning));
         Assert.Same(classifier.GetCandidates("bat")[0], classifier.GetCandidates("bat")[0]);
@@ -363,14 +794,10 @@ public class WordSenseClassifierTests
     [Fact]
     public async Task WordSenseClassifier_ClassifyAsync_ThreeSenses_ReportsRunnerUpMargin()
     {
-        var model = new LemmaModel(
+        var model = new LemmaEntry(
             "bat",
             [new SenseDefinition(PartOfSpeech.Noun, "a"), new SenseDefinition(PartOfSpeech.Verb, "a"), new SenseDefinition(PartOfSpeech.Adjective, "b")],
-            LemmaModelKind.OneVersusRest,
-            [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f],
-            [0f, 0f, 0f],
-            0.1f,
-            3);
+            new SenseWeights(LemmaModelKind.OneVersusRest, [1f, 0f, 0f, 0f, 1f, 0f, 0f, 0f, 1f], [0f, 0f, 0f], 0.1f, 3));
         var table = new WordSenseTable(
             "all-MiniLM-L6-v2", TableSha, 3, [0f, 0f, 0f], [model], new Dictionary<string, string> { ["bat"] = "bat" });
         using var classifier = new WordSenseClassifier(new FakeEncoder(), table, new WordPieceTokenizer(Vocabulary), null, false);

@@ -12,27 +12,43 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     Terminology: a <em>lemma</em> is the dictionary base form of a word (for example <c>record</c> for
 ///     <c>records</c>); a <em>word</em> is the input as written; a <em>candidate</em> (<see cref="WordDetails"/>) is one
-///     possible answer for a lemma: a part of speech and, for a heteronym, a pronunciation. Words are matched to their
-///     lemma through the table's known forms (inflections), so <c>records</c> and <c>recorded</c> resolve to
-///     <c>record</c>; <see cref="WordAnalysis.Word"/> is the input and <see cref="WordDetails.Lemma"/> the base form.
+///     possible answer for a lemma: a part of speech and, for a heteronym, a pronunciation. Every lemma is an entry
+///     with one or more candidates (its senses) and, for the lemmas the classifier was trained on, weights that choose
+///     between them. Words are matched to their lemma through the table's known forms (inflections), so
+///     <c>records</c> and <c>recorded</c> resolve to <c>record</c>; <see cref="WordAnalysis.Word"/> is the input and
+///     <see cref="WordDetails.Lemma"/> the base form.
 ///     A <em>heteronym</em> is a lemma with at least two distinct meanings that are pronounced differently; only for a
-///     heteronym is <see cref="WordDetails.Pronunciation"/> set. Each candidate gets a score; the <em>margin</em> is the
-///     best score minus the runner-up's score, and the classifier <em>abstains</em> when the margin is below the
-///     lemma's abstain threshold. Create an instance with <see cref="WordSenseClassifier.CreateAsync"/>.
+///     heteronym is <see cref="WordDetails.Pronunciation"/> set. Create an instance with
+///     <see cref="WordSenseClassifier.CreateAsync"/>.
 ///     </para>
 ///     <para>
-///     <b>Catalog.</b> The shipped table answers the parts of speech <see cref="PartOfSpeech.Noun"/>,
+///     <b>One flow.</b> Each word is resolved to an entry. An entry with exactly one candidate is a
+///     <em>dictionary answer</em> (<see cref="AnswerBasis.Dictionary"/>): no context is needed, so the margins are 0.
+///     An entry with several candidates and weights is a <em>context answer</em> (<see cref="AnswerBasis.Context"/>):
+///     each candidate gets a score, the <em>margin</em> is the best score minus the runner-up's score, and the classifier
+///     <em>abstains</em> when the margin is below the lemma's abstain threshold. An entry with several candidates and
+///     no weights abstains with <see cref="AnswerBasis.Dictionary"/> and lists its candidates. A word that is not found
+///     is unknown (<see cref="AnswerBasis.None"/>). The encoder runs only when at least one word of the input needs
+///     context. <see cref="WordSenseClassifierOptions.UseLexicon"/> set to false restricts the answers to the lemmas that have a trained
+///     classifier.
+///     </para>
+///     <para>
+///     <b>Catalog.</b> The context classifier answers the parts of speech <see cref="PartOfSpeech.Noun"/>,
 ///     <see cref="PartOfSpeech.Verb"/>, <see cref="PartOfSpeech.Adjective"/> and <see cref="PartOfSpeech.Adverb"/>. Discover
-///     what is supported with <see cref="KnownLemmas"/> and <see cref="GetCandidates"/>: for <c>lead</c> the candidates are
+///     what it can disambiguate with <see cref="ContextLemmas"/> and the possible answers of any lemma with
+///     <see cref="GetCandidates"/>: for <c>lead</c> the candidates are
 ///     a noun and a verb with the meaning <c>guide</c> and a noun with the meaning <c>metal</c>. The complete list is the
 ///     user guide appendix
 ///     <c>https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md</c>.
 ///     </para>
 ///     <para>
-///     <b>Results.</b> A word that is not known (no classifier for it, or it yields no tokens) has
-///     <see cref="WordAnalysis.Details"/> null and <see cref="WordAnalysis.Abstained"/> false. A known word whose margin is
+///     <b>Results.</b> A word that is not known (not in the table, rejected by the case rule below, or a trained lemma
+///     that yields no tokens) has <see cref="WordAnalysis.Details"/> null, <see cref="WordAnalysis.Abstained"/> false,
+///     <see cref="WordAnalysis.Basis"/> <see cref="AnswerBasis.None"/> and no candidates. A known word whose margin is
 ///     below the threshold abstains: <see cref="WordAnalysis.Details"/> is null, <see cref="WordAnalysis.Abstained"/> is true
-///     and <see cref="WordAnalysis.Margin"/> and <see cref="WordAnalysis.RunnerUp"/> are still set.
+///     and <see cref="WordAnalysis.Margin"/> and <see cref="WordAnalysis.RunnerUp"/> are still set. Every known word
+///     reports its <see cref="WordAnalysis.Candidates"/> (for a word derived from a dictionary word by morphology,
+///     the one derived sense). See <see cref="WordAnalysis"/> for the field values of each case.
 ///     </para>
 ///     <para>
 ///     <b>Running text and context.</b> The list overload reads the whole list as <em>one running text</em> in which
@@ -58,16 +74,23 @@ namespace DemaConsulting.WordSense;
 ///     be called concurrently. Dispose it once, after all calls have finished; disposing while a call is in flight is
 ///     not supported. After <see cref="IDisposable.Dispose"/> of a classifier from
 ///     <see cref="WordSenseClassifier.CreateAsync"/> (which owns its encoder), a call that has to run the encoder (any text
-///     containing a known word) throws <see cref="ObjectDisposedException"/>; a call whose words contain none can still
-///     return normally, and <see cref="KnownLemmas"/> and <see cref="GetCandidates"/> keep working. Disposing twice is
+///     containing a word that needs context) throws <see cref="ObjectDisposedException"/>; a call whose words need none can still
+///     return normally, and <see cref="ContextLemmas"/> and <see cref="GetCandidates"/> keep working. Disposing twice is
 ///     harmless.
 ///     </para>
 ///     <para>
 ///     Each word is matched against the table's known surface forms after lower-casing it (invariant
-///     culture) and replacing the typographic apostrophe (U+2019) with <c>'</c>, so case does not matter and
-///     inflected forms listed in the table resolve to their lemma. A possessive <c>'s</c> is also accepted: when the word
+///     culture) and replacing the typographic apostrophe (U+2019) with <c>'</c>, so inflected forms listed in the table
+///     resolve to their lemma. A possessive <c>'s</c> is also accepted for a lemma with a trained classifier: when the word
 ///     is not itself a known form, <c>'s</c> is removed and the rest is looked up (so <c>record's</c> resolves like
-///     <c>record</c>).
+///     <c>record</c>). A word absent from the table may also be derived from a dictionary base word by a few
+///     conservative suffix rules (for example a regular plural of a noun), which gives a dictionary answer.
+///     </para>
+///     <para>
+///     <b>Case.</b> A lemma with a trained classifier matches in any case. A dictionary word that has no trained
+///     classifier matches in lower case; a word that starts with a capital letter is looked up only when it is the first
+///     word of the input, follows a token that is exactly <c>.</c>, <c>!</c>, <c>?</c> or <c>:</c> or an opening quote or
+///     bracket, or is exactly <c>I</c>. Any other capitalized word (usually a name) is unknown.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -97,19 +120,21 @@ namespace DemaConsulting.WordSense;
 public interface IWordSenseClassifier : IDisposable
 {
     /// <summary>
-    ///     Gets the lemmas this classifier can disambiguate, in ordinal order. Use it to discover what is supported;
-    ///     the possible answers for a lemma come from <see cref="GetCandidates"/>.
+    ///     Gets the lemmas this classifier can disambiguate from context (those with a trained classifier), in ordinal
+    ///     order. Dictionary-only lemmas are not listed; use <see cref="GetCandidates"/> for any lemma.
     /// </summary>
     /// <example>
     ///     <code>
     ///     using var classifier = await WordSenseClassifier.CreateAsync();
-    ///     bool canClassify = classifier.KnownLemmas.Contains("record");
+    ///     bool canClassify = classifier.ContextLemmas.Contains("record");
     ///     </code>
     /// </example>
-    IReadOnlyList<string> KnownLemmas { get; }
+    IReadOnlyList<string> ContextLemmas { get; }
 
     /// <summary>
-    ///     Gets every possible answer for a lemma: each (part of speech, pronunciation) it can have.
+    ///     Gets every possible answer for a lemma: each (part of speech, pronunciation) it can have. This works for any
+    ///     lemma of the table, with or without a trained classifier; a dictionary-only lemma is hidden when
+    ///     <see cref="WordSenseClassifierOptions.UseLexicon"/> is false.
     /// </summary>
     /// <param name="lemma">The lemma, lower-case, for example <c>record</c>; an inflected form such as <c>records</c> is not a lemma.</param>
     /// <returns>The candidates, or an empty list when the lemma is unknown.</returns>
@@ -184,7 +209,8 @@ public interface IWordSenseClassifier : IDisposable
 ///     <see cref="Text"/> reproduces the input, with no gaps or overlaps. Segments are words (letters
 ///     and digits, with internal apostrophes and hyphens), runs of whitespace, or single other
 ///     characters such as punctuation. For whitespace, punctuation and unknown words
-///     <see cref="WordAnalysis.Details"/> is null and <see cref="WordAnalysis.Abstained"/> is false.
+///     <see cref="WordAnalysis.Details"/> is null, <see cref="WordAnalysis.Abstained"/> is false and
+///     <see cref="WordAnalysis.Basis"/> is <see cref="AnswerBasis.None"/>.
 /// </remarks>
 /// <example>
 ///     <code>
@@ -210,7 +236,8 @@ public sealed record WordSenseToken(int Start, int Length, string Text, WordAnal
 ///     Classifies ambiguous words using a BERT-style encoder and an embedded linear table.
 /// </summary>
 /// <remarks>
-///     The words are encoded once and every known word in them is classified from the same hidden
+///     The words are resolved first; they are encoded once, and only when at least one needs context, and then every
+///     such word is classified from the same hidden
 ///     states. Inputs longer than the maximum sequence length are classified from a window centered on
 ///     each target. The instance is thread-safe for concurrent classification calls when its encoder is;
 ///     the encoder of an instance from <see cref="CreateAsync"/> is an <see cref="OnnxWordSenseEncoder"/>, which is.
@@ -237,6 +264,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     private readonly int _maxLength;
     private readonly double _abstainScale;
     private readonly bool _ownsEncoder;
+    private readonly bool _useLexicon;
     private readonly string[] _lemmas;
 
     /// <summary>
@@ -310,11 +338,12 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
         _maxLength = options.MaxSequenceLength;
         _abstainScale = options.AbstainMarginScale;
         _ownsEncoder = ownsEncoder;
-        _lemmas = table.Lemmas.Select(l => l.Lemma).OrderBy(l => l, StringComparer.Ordinal).ToArray();
+        _useLexicon = options.UseLexicon;
+        _lemmas = table.ContextLemmas.Select(l => l.Lemma).OrderBy(l => l, StringComparer.Ordinal).ToArray();
     }
 
     /// <inheritdoc />
-    public IReadOnlyList<string> KnownLemmas => _lemmas;
+    public IReadOnlyList<string> ContextLemmas => _lemmas;
 
     /// <summary>
     ///     Validates the range of the options that do not depend on the model.
@@ -408,17 +437,37 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     public IReadOnlyList<WordDetails> GetCandidates(string lemma)
     {
         ArgumentNullException.ThrowIfNull(lemma);
-        return _table.TryGetLemma(lemma, out var model) ? model.Candidates : [];
+        if (!_table.TryGetLemma(lemma, out var entry) || (entry.Weights is null && !_useLexicon))
+        {
+            return [];
+        }
+
+        return entry.Candidates;
     }
 
     /// <inheritdoc />
     public async Task<WordAnalysis[]> ClassifyAsync(IReadOnlyList<string> words, CancellationToken cancellationToken = default)
     {
-        var scored = await ScoreAsync(words, cancellationToken).ConfigureAwait(false);
+        ArgumentNullException.ThrowIfNull(words);
+        foreach (var word in words)
+        {
+            ArgumentNullException.ThrowIfNull(word);
+        }
+
+        cancellationToken.ThrowIfCancellationRequested();
+
+        // Resolve every word first, so the encoder only runs when some word needs context
+        var resolutions = new LemmaResolution?[words.Count];
+        for (var i = 0; i < resolutions.Length; i++)
+        {
+            resolutions[i] = Resolve(words, i);
+        }
+
+        var scored = await ScoreAsync(words, resolutions, cancellationToken).ConfigureAwait(false);
         var result = new WordAnalysis[words.Count];
         for (var i = 0; i < result.Length; i++)
         {
-            result[i] = scored[i] is { } s ? Analyze(words[i], s) : Unknown(words[i]);
+            result[i] = resolutions[i] is not { } resolution ? Unknown(words[i]) : Answer(words[i], resolution, scored[i]);
         }
 
         return result;
@@ -463,25 +512,53 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// <summary>
     ///     The scores of one word that has a classifier.
     /// </summary>
-    /// <param name="Model">The lemma model.</param>
+    /// <param name="Model">The lemma entry, which has weights.</param>
     /// <param name="Scores">The score of every sense.</param>
     /// <param name="Best">The index of the best sense.</param>
     /// <param name="Margin">The margin between the best and the second-best score.</param>
-    private sealed record Scored(LemmaModel Model, float[] Scores, int Best, float Margin);
+    private sealed record Scored(LemmaEntry Model, float[] Scores, int Best, float Margin);
 
     /// <summary>
     ///     Gets the margin below which a lemma gives no answer.
     /// </summary>
-    /// <param name="model">The lemma model.</param>
+    /// <param name="model">The lemma entry, which has weights.</param>
     /// <returns>The scaled abstain margin.</returns>
-    private double Threshold(LemmaModel model) => model.AbstainMargin * _abstainScale;
+    private double Threshold(LemmaEntry model) => model.Weights!.AbstainMargin * _abstainScale;
 
     /// <summary>
     ///     Builds the analysis of a word that is not known.
     /// </summary>
     /// <param name="word">The word as given.</param>
     /// <returns>The analysis with no answer, no abstention and zero margins.</returns>
-    private static WordAnalysis Unknown(string word) => new(word, null, 0.0, false, null, 0.0);
+    private static WordAnalysis Unknown(string word) => new(word, null, 0.0, false, null, 0.0, AnswerBasis.None, []);
+
+    /// <summary>
+    ///     Builds the analysis of a resolved word from its dictionary entry or its context scores.
+    /// </summary>
+    /// <param name="word">The word as given.</param>
+    /// <param name="resolution">The resolution of the word.</param>
+    /// <param name="scored">The context scores, or null when the word was not scored.</param>
+    /// <returns>The analysis.</returns>
+    private WordAnalysis Answer(string word, LemmaResolution resolution, Scored? scored)
+    {
+        var entry = resolution.Entry;
+        if (resolution.IsNarrowed)
+        {
+            // Morphology narrowed the entry to one sense, which is therefore the answer
+            var sense = entry.Candidates[resolution.SenseIndex];
+            return new WordAnalysis(word, sense, 0.0, false, null, 0.0, AnswerBasis.Dictionary, [sense]);
+        }
+
+        if (entry.Weights is not null)
+        {
+            // A word the encoder could not score stays unknown
+            return scored is null ? Unknown(word) : Analyze(word, scored);
+        }
+
+        return entry.Candidates.Count == 1
+            ? new WordAnalysis(word, entry.Candidates[0], 0.0, false, null, 0.0, AnswerBasis.Dictionary, entry.Candidates)
+            : new WordAnalysis(word, null, 0.0, true, null, 0.0, AnswerBasis.Dictionary, entry.Candidates);
+    }
 
     /// <summary>
     ///     Builds the analysis of one scored word.
@@ -520,62 +597,80 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
             scored.Margin,
             abstained,
             candidates[runner],
-            runnerMargin);
+            runnerMargin,
+            AnswerBasis.Context,
+            candidates);
     }
 
     /// <summary>
-    ///     Resolves a surface word to the model of its lemma.
-    /// </summary>
-    /// <param name="word">The word as written.</param>
-    /// <param name="model">The lemma model when found.</param>
-    /// <returns>True when the word belongs to a known lemma.</returns>
-    private bool TryResolve(string word, out LemmaModel model)
-    {
-        var lower = word.ToLowerInvariant().Replace('\u2019', '\'');
-        if (_table.Forms.TryGetValue(lower, out var lemma) && _table.TryGetLemma(lemma, out model))
-        {
-            return true;
-        }
-
-        // Possessives share the lemma of the bare word
-        if (lower.EndsWith("'s", StringComparison.Ordinal) &&
-            _table.Forms.TryGetValue(lower[..^2], out lemma) &&
-            _table.TryGetLemma(lemma, out model))
-        {
-            return true;
-        }
-
-        model = null!;
-        return false;
-    }
-
-    /// <summary>
-    ///     Scores every word that has a classifier.
+    ///     Resolves the word at an index to a lemma entry, applying the case policy to dictionary entries.
     /// </summary>
     /// <param name="words">The words.</param>
-    /// <param name="cancellationToken">A token that cancels the call.</param>
-    /// <returns>An array parallel to the words; null where a word has no classifier or no tokens.</returns>
-    private async Task<Scored?[]> ScoreAsync(IReadOnlyList<string> words, CancellationToken cancellationToken)
+    /// <param name="index">The index of the word.</param>
+    /// <returns>The resolution, or null when the word is unknown.</returns>
+    private LemmaResolution? Resolve(IReadOnlyList<string> words, int index)
     {
-        ArgumentNullException.ThrowIfNull(words);
-        foreach (var word in words)
+        var word = words[index];
+        if (!_table.TryResolve(word, _useLexicon, out var resolution))
         {
-            ArgumentNullException.ThrowIfNull(word);
+            return null;
         }
 
-        cancellationToken.ThrowIfCancellationRequested();
+        // Only dictionary entries are subject to the case policy; trained lemmas match in any case
+        if (resolution.Entry.Weights is null && !CaseAllowed(words, index))
+        {
+            return null;
+        }
+
+        return resolution;
+    }
+
+    /// <summary>
+    ///     Applies the case policy: a word that starts with an upper-case letter may be looked up in the dictionary only
+    ///     at the start of the text, after a sentence end (<c>.</c>, <c>!</c>, <c>?</c>), after a colon, after an
+    ///     opening quote or bracket (<c>"</c>, <c>'</c>, <c>(</c>, <c>[</c>, <c>{</c> and the typographic opening and
+    ///     low quotes), or when it is the pronoun <c>I</c>.
+    /// </summary>
+    /// <param name="words">The words.</param>
+    /// <param name="index">The index of the word.</param>
+    /// <returns>True when the word may be looked up.</returns>
+    internal static bool CaseAllowed(IReadOnlyList<string> words, int index)
+    {
+        var word = words[index];
+        if (word.Length == 0 || !char.IsUpper(word[0]) || index == 0 || word == "I")
+        {
+            return true;
+        }
+
+        return words[index - 1] is "." or "!" or "?" or ":" or "\"" or "'" or "(" or "[" or "{"
+            or "\u2018" or "\u201C" or "\u201A" or "\u201E" or "\u00AB" or "\u2039";
+    }
+
+    /// <summary>
+    ///     Scores every word that needs context.
+    /// </summary>
+    /// <param name="words">The words.</param>
+    /// <param name="resolutions">The resolution of every word, null for an unknown word.</param>
+    /// <param name="cancellationToken">A token that cancels the call.</param>
+    /// <returns>An array parallel to the words; null where a word needs no context or has no tokens.</returns>
+    private async Task<Scored?[]> ScoreAsync(
+        IReadOnlyList<string> words,
+        LemmaResolution?[] resolutions,
+        CancellationToken cancellationToken)
+    {
         var result = new Scored?[words.Count];
-        var models = new LemmaModel?[words.Count];
+        var models = new LemmaEntry?[words.Count];
         var any = false;
         for (var i = 0; i < words.Count; i++)
         {
-            if (TryResolve(words[i], out var model))
+            if (resolutions[i] is { IsNarrowed: false, Entry.Weights: not null } resolution)
             {
-                models[i] = model;
+                models[i] = resolution.Entry;
                 any = true;
             }
         }
 
+        // Dictionary, unknown and candidates-only words never reach the tokenizer or the encoder
         if (!any)
         {
             return result;
@@ -613,7 +708,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     /// </summary>
     /// <param name="tokens">The tokenized words.</param>
     /// <param name="whole">Hidden states of the whole input when it fits one window, otherwise null.</param>
-    /// <param name="model">The lemma model.</param>
+    /// <param name="model">The lemma entry, which has weights.</param>
     /// <param name="first">First token of the target.</param>
     /// <param name="last">Exclusive end token of the target.</param>
     /// <param name="cancellationToken">A token that cancels the call.</param>
@@ -621,7 +716,7 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
     private async Task<Scored?> ScoreTargetAsync(
         TokenizedText tokens,
         float[]? whole,
-        LemmaModel model,
+        LemmaEntry model,
         int first,
         int last,
         CancellationToken cancellationToken)
@@ -654,9 +749,10 @@ public sealed class WordSenseClassifier : IWordSenseClassifier
             return null;
         }
 
-        var (best, margin) = model.Score(feature);
+        var weights = model.Weights!;
+        var (best, margin) = weights.Score(feature);
         var scores = new float[model.Senses.Count];
-        model.Scores(feature, scores);
+        weights.Scores(feature, scores);
         return new Scored(model, scores, best, margin);
     }
 }

@@ -111,6 +111,8 @@ table.
 - **WordSenseBuilder_Program_Run_ReportsErrors**: usage and data errors return exit code 1.
 - **WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption**: a non-numeric `--size`,
   `--max` or `--per-sense` returns exit code 1 with a message naming the option.
+- **WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError**: an option whose value is another option
+  (`--output --enforce`) returns exit code 1 with a message naming the option that lacks a value.
 - **WordSenseBuilder_LearningCurve_StableHash_IsFixed**, **..._Draw_CapsPerSenseAndIsRepeatable**: the subset seed
   hash has a fixed value, and a draw takes at most the available anchors per sense and repeats exactly.
 - **WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical**,
@@ -141,13 +143,40 @@ table.
   temporary file and requires it to equal `docs/user_guide/appendix-senses.md` (line endings normalized), so the
   committed appendix cannot go stale. `lint.ps1` performs the same comparison.
 
+- **WordSenseBuilder_Lexicon_ImportMoby_IsDeterministic**: importing a small synthetic Moby-format file twice
+  gives byte-identical `lexicon.tsv`; the part-of-speech code policy (noun, verb, adjective, adverb, pronoun,
+  preposition), the dropped codes, the removal of words that cannot be classified safely, the committed corrections
+  and the provenance file are checked.
+- **WordSenseBuilder_Lexicon_ImportMoby_GerundOfVerb_GainsVerbSense**: an `-ing` word of at least five letters
+  without a verb code gains the verb sense when its stem (as is, plus `e`, or without a doubled consonant) has one
+  (`walking`, `making`, `running`); `morning` (no verb stem) and the four-letter `king` keep their class.
+- **WordSenseBuilder_Lexicon_Build_EmbedsLexicon**: a table built from a small `lexicon.tsv` contains its words with
+  the stated parts of speech and the enabled morphology rules.
+- **WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors**: `--lexicon FILE` yields the
+  words of the file and the enabled rules of the `morphology.tsv` next to it; `--lexicon none` yields no words and no
+  rules; `build` without `--lexicon` and without the default lexicon, with a missing explicit file, and with a lexicon
+  that has no `morphology.tsv` each exit 1 with an error (naming `--lexicon none`, the file and `morphology.tsv`) and
+  write no table.
+- **WordSenseBuilder_Lexicon_CommittedTable_IsUpToDate**: a table built from the committed `corpus/lexicon` files
+  holds the same decoded dictionary content as the committed table (the compressed bytes are not compared, because
+  they may differ between runtimes).
+- **WordSenseBuilder_Lexicon_Eval_EnforcesPrecisionGate**: with synthetic gold data, `lexicon-eval --enforce` exits
+  0 when every class reaches 95 % precision and exits 1 and names the class that falls short; without `--enforce`
+  it exits 0.
+- **WordSenseBuilder_Lexicon_Eval_Enforce_FailsWithoutEvidenceAndNamesTheRule**: `--enforce` exits 1 for a gold
+  directory without sentences, names an enabled rule (`Plural`) whose answers are wrong, and names an enabled class
+  and an enabled rule that have no scored token; without `--enforce` an empty gold directory still exits 0.
+- **WordSenseBuilder_Lexicon_Eval_ThinEvidence_IsOnlyANote**: a class that passes over fewer than 100 tokens is
+  marked `(thin)` in the report and does not fail `--enforce`.
+
 ## Requirements Coverage
 
 `WordSense-Builder-Corpus`, `WordSense-Builder-Trainer`, `WordSense-Builder-Importer`,
 `WordSense-Builder-Inventory`, `WordSense-Builder-InventoryRules`, `WordSense-Builder-Accuracy`,
 `WordSense-Builder-Provenance`, `WordSense-Builder-AuthoredImport`,
 `WordSense-Builder-NounVerbImport`, `WordSense-Builder-NounVerbGate`, `WordSense-Builder-LearningCurve`,
-`WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas` and `WordSense-Builder-Appendix`.
+`WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas`, `WordSense-Builder-Appendix`,
+`WordSense-Builder-LexiconImport`, `WordSense-Builder-LexiconBuild` and `WordSense-Builder-LexiconEval`.
 
 The `real-eval-import` and `real-eval` commands (`RealEval`) have no requirement of their own: they need a model and
 blind-judged candidate files, so a unit test is not practical. Their option parsing is covered by

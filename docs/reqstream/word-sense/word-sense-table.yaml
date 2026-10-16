@@ -5,42 +5,101 @@ sections:
   - title: WordSenseTable Requirements
     requirements:
       - id: WordSense-Table-Format
-        title: The table shall serialize to and read from a deterministic binary format without loss.
+        title: >-
+          The table shall serialize to and read from a deterministic binary format (version 5) without loss, with
+          its trained weights, forms, morphology rules and dictionary words in one file.
         tags: [unit]
         justification: |
-          The table is embedded in the assembly; identical bytes for identical content make the
-          build reproducible and reviewable.
+          The table is embedded in the assembly; identical content gives identical decoded content, which makes the
+          build reviewable, and one file with one digest and one version keeps the vocabulary in one place.
         tests:
           - WordSenseTable_RoundTrip_PreservesAllValues
+          - WordSenseTable_RoundTrip_WithDictionary_PreservesLemmasAndMorphology
           - WordSenseTable_ToArray_CalledTwice_ReturnsIdenticalBytes
           - WordSenseTable_Write_Stream_MatchesToArray
           - WordSenseTable_Constructor_InconsistentInput_Throws
-          - WordSenseTable_LemmaModel_BadShapes_Throw
+          - WordSenseTable_Weights_BadShapes_Throw
           - WordSenseTable_WriteAndTryGetLemma_EdgeCases
+          - LexicalIndex_CompressDecompress_RoundTrips
 
       - id: WordSense-Table-Senses
         title: >-
-          The table shall store a part of speech, an optional meaning and an optional respelling per sense in format
-          version 4, expose one shared immutable answer per sense, and reject any other format version.
+          The table shall represent every lemma as an entry of senses (a part of speech, an optional meaning and an
+          optional respelling each) with optional trained weights, give a lemma without weights no pronunciation,
+          expose one shared immutable answer per sense of an entry, and reject any other format version.
         tags: [unit]
         justification: |
-          The part of speech and pronunciation describe what a sense is; storing them with the senses keeps one
-          source of truth and lets callers compare answers by reference, while an older table without them must
-          not be mistaken for a current one.
+          One entry model for every lemma lets one flow answer them all: the number of senses and the presence of
+          weights decide what can be answered. A lemma that cannot be disambiguated must not carry a pronunciation,
+          and an older table must not be mistaken for a current one.
         tests:
           - WordSenseTable_Read_OldVersion_Throws
           - WordSenseTable_Read_ResignedNewerVersion_Throws
           - WordSenseTable_RoundTrip_PreservesPronunciations
-          - WordSenseTable_LemmaModel_BadSenseDefinitions_Throw
-          - WordSenseTable_LemmaModel_NullAndNonFiniteArguments_Throw
-          - WordSenseTable_LemmaModel_UndefinedKind_Throws
+          - WordSenseTable_LemmaEntry_BadSenseDefinitions_Throw
+          - WordSenseTable_LemmaEntry_WithoutWeights_FollowsDictionaryRules
+          - WordSenseTable_Weights_NullAndNonFiniteArguments_Throw
+          - WordSenseTable_Weights_UndefinedKind_Throws
 
-      - id: WordSense-Table-Integrity
-        title: The table reader shall reject truncated, corrupted or foreign data.
+      - id: WordSense-Table-Lexicon
+        title: >-
+          The table shall hold the dictionary words with their parts of speech, and shall report a word that is absent,
+          or that is not made of the letters a to z, as absent.
         tags: [unit]
         justification: |
-          A damaged table would produce wrong answers silently; a trailing SHA-256 digest and
-          structural checks detect any change.
+          The dictionary has well over a hundred thousand words, so it must stay small in the assembly and in
+          memory, and a lookup of untrusted text must be cheap and safe.
+        tests:
+          - LexicalIndex_BuildAndFind_FindsEveryWord
+          - LexicalIndex_TryFind_AbsentOrInvalid_ReturnsFalse
+          - LexicalIndex_Build_InvalidInput_Throws
+          - LexicalIndex_CompressDecompress_RoundTrips
+          - WordSenseTable_RoundTrip_WithDictionary_PreservesLemmasAndMorphology
+
+      - id: WordSense-Table-Resolve
+        title: >-
+          The table shall resolve a surface word to exactly one lemma entry or to unknown, a listed form or word
+          always taking precedence over a derived one, report the entry of the lemma, let a table lookup by lemma find
+          any entry, and ignore the dictionary when it is not requested.
+        tags: [unit]
+        justification: |
+          Everything the classifier knows about a word must come from one place, so that the same word always gets
+          the same entry, and a derived answer can never replace a listed one; the option to ignore the dictionary
+          keeps the context-only behavior available. The ordered steps are in the unit design.
+        tests:
+          - TryResolve_FormExactAndDictionary_Resolve
+          - TryResolve_Possessive_OnlyForWeightedEntries
+          - TryResolve_DisabledRuleOrNoDictionary_DoesNotApply
+          - Table_CountLemmasAndContextLemmas_Differ
+          - WordSenseTable_WriteAndTryGetLemma_EdgeCases
+
+      - id: WordSense-Table-Morphology
+        title: >-
+          The table shall derive an entry for a word it does not contain only through the enabled suffix rules
+          (plural and third person, adverb, and past tense when enabled), only from a dictionary entry that has no
+          weights and satisfies the rule, narrowed to the derived sense, and never override a word the table contains.
+        tags: [unit]
+        justification: |
+          A rule is accepted only where it was measured to be at least 95 % precise on real text (the past-tense rule
+          is implemented but not enabled in the shipped table); confining it to absent words and to weight-less bases
+          means that a derived answer can neither replace a listed word nor alter an answer of the trained
+          classifier.
+        tests:
+          - TryResolve_Plural_GatedOnBase
+          - TryResolve_PastTense_GatedOnVerbBase
+          - TryResolve_Adverb_GatedOnAdjectiveOnlyBase
+          - TryResolve_DisabledRuleOrNoDictionary_DoesNotApply
+          - WordSenseTable_Read_ResignedUndefinedMorphologyRule_Throws
+
+      - id: WordSense-Table-Integrity
+        title: >-
+          The table reader shall reject truncated, corrupted or foreign data, a malformed or oversized dictionary
+          section, and a dictionary word that is also a trained lemma or a form.
+        tags: [unit]
+        justification: |
+          A damaged table would produce wrong answers silently; a trailing SHA-256 digest and strict structural
+          checks, including a bound on the decompressed size and one namespace for lemmas and forms, detect any
+          change and any hostile input.
         tests:
           - WordSenseTable_Read_TruncatedAtEveryLength_Throws
           - WordSenseTable_Read_AnyByteFlipped_Throws
@@ -58,8 +117,14 @@ sections:
           - WordSenseTable_Read_ResignedBadFormEntry_Throws
           - WordSenseTable_Read_ResignedBinaryKindWithThreeSenses_Throws
           - WordSenseTable_Read_ResignedInconsistentSenseSet_Throws
+          - WordSenseTable_Read_ResignedValidDictionary_Loads
+          - WordSenseTable_Read_ResignedBadDictionaryRecords_Throws
+          - WordSenseTable_Read_ResignedBadDictionarySection_Throws
+          - WordSenseTable_Read_ResignedShadowing_Throws
           - WordSenseTable_Constructor_NullArguments_Throw
           - WordSenseTable_Constructor_InvalidValues_Throw
+          - WordSenseTable_Constructor_ShadowingAndBadDictionaryWords_Throw
+          - LexicalIndex_Decompress_InvalidData_Throws
 
       - id: WordSense-Table-Score
         title: The table shall score a feature vector per lemma and return the best sense and its margin.
@@ -78,11 +143,14 @@ sections:
 
       - id: WordSense-Table-Embedded
         title: >-
-          The assembly shall contain an embedded table that loads, covers at least 344 lemmas with a part of speech
-          (and, for heteronyms, a pronunciation) per sense, and maps every word form to a lemma that has a model.
+          The assembly shall contain an embedded table that loads, covers at least 344 trained lemmas with a part of
+          speech (and, for heteronyms, a pronunciation) per sense, maps every word form to a trained lemma, and
+          contains at least 100,000 dictionary words.
         tags: [unit]
         justification: |
-          The library must work out of the box without an external table file.
+          The library must work out of the box without an external table file, and the dictionary must be large
+          enough that most common English words are covered.
         tests:
           - WordSenseTable_LoadEmbedded_ContainsSeedLemmas
           - WordSenseTable_LoadEmbedded_HeteronymSensesHavePronunciations
+          - WordSenseTable_LoadEmbedded_ContainsDictionaryWords

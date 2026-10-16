@@ -50,7 +50,7 @@ internal sealed class AccuracyEvaluator
     /// <param name="best">The index of the best sense.</param>
     /// <param name="gold">The index of the gold sense.</param>
     /// <param name="answered">Whether the sense-level decision was an answer rather than an abstention.</param>
-    public void Add(string source, LemmaModel model, int best, int gold, bool answered)
+    public void Add(string source, LemmaEntry model, int best, int gold, bool answered)
     {
         var posRight = model.Senses[best].Pos == model.Senses[gold].Pos;
         _pos.Add(posRight, answered);

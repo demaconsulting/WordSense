@@ -39,6 +39,7 @@ sections:
           - WordSenseBuilder_BatchImporter_ExcludesThinLemmas
           - WordSenseBuilder_Program_Run_ReportsErrors
           - WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption
+          - WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError
 
       - id: WordSense-Builder-Inventory
         title: >-
@@ -220,3 +221,46 @@ sections:
           - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
           - WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions
           - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+
+      - id: WordSense-Builder-LexiconImport
+        title: >-
+          The builder shall derive the filtered dictionary deterministically from the public-domain Moby Part-of-Speech
+          II list, apply the committed corrections, record the provenance and the licence of the source, give an
+          inflected word the senses of its base where real text uses it so, and shall not emit words it cannot
+          classify safely.
+        tags: [unit]
+        justification: |
+          The dictionary ships in the library, so its origin and licence must be recorded and the derivation must be
+          reproducible and reviewable from the committed files alone.
+        tests:
+          - WordSenseBuilder_Lexicon_ImportMoby_IsDeterministic
+          - WordSenseBuilder_Lexicon_ImportMoby_GerundOfVerb_GainsVerbSense
+
+      - id: WordSense-Builder-LexiconBuild
+        title: >-
+          The builder shall embed the committed dictionary and the enabled morphology rules into the table it builds,
+          shall build without a dictionary only when asked to explicitly, and the committed table shall hold the same
+          decoded content as a fresh build from the committed files.
+        tags: [unit]
+        justification: |
+          The dictionary in the shipped table must be the reviewed one, and a missing dictionary or rule file must
+          never silently change what the table may answer; the comparison is made on decoded content because
+          compressed bytes may differ between runtimes.
+        tests:
+          - WordSenseBuilder_Lexicon_Build_EmbedsLexicon
+          - WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors
+          - WordSenseBuilder_Lexicon_CommittedTable_IsUpToDate
+
+      - id: WordSense-Builder-LexiconEval
+        title: >-
+          The builder shall evaluate each dictionary class and each morphology rule against a gold-annotated English
+          corpus and, when asked to enforce, fail unless there is evidence and every class and every enabled rule
+          reaches a precision of at least 95 %.
+        tags: [unit]
+        justification: |
+          A dictionary answer has no context to fall back on, so its correctness must be measured, a rule that
+          falls short must not ship enabled, and a class or rule without any measurement proves nothing.
+        tests:
+          - WordSenseBuilder_Lexicon_Eval_EnforcesPrecisionGate
+          - WordSenseBuilder_Lexicon_Eval_Enforce_FailsWithoutEvidenceAndNamesTheRule
+          - WordSenseBuilder_Lexicon_Eval_ThinEvidence_IsOnlyANote

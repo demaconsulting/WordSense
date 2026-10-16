@@ -198,7 +198,7 @@ internal sealed class SenseInventory
                     throw new ArgumentException("A lemma needs at least two senses.");
                 }
 
-                LemmaModel.ValidateSet(definitions);
+                LemmaEntry.ValidateSet(definitions);
             }
             catch (ArgumentException ex)
             {

@@ -153,7 +153,7 @@ internal static class RealEval
             var predicted = senses.First(s => s.Pos == best.PartOfSpeech && s.Meaning == best.Pronunciation?.Meaning);
             var source = provenance.TryGetValue(PosAudit.RowId(row.Lemma, row.Sentence), out var p) ? p.Source : "llm-corpus";
             var meaningCorrect = model.IsHeteronym ? predicted.Meaning == gold.Meaning : predicted.Label == gold.Label;
-            result.Add(new Scored(row.Lemma, row.Sense, predicted.Label, source, predicted.Label == row.Sense, meaningCorrect, details.Margin >= model.AbstainMargin, row.Sentence));
+            result.Add(new Scored(row.Lemma, row.Sense, predicted.Label, source, predicted.Label == row.Sense, meaningCorrect, details.Margin >= model.Weights!.AbstainMargin, row.Sentence));
         }
 
         return result;

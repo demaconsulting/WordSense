@@ -62,12 +62,12 @@ internal sealed record LemmaAnalysis(
     /// <param name="anchorIndexes">The indexes into <see cref="AnchorFeatures"/>.</param>
     /// <param name="c">The inverse regularization strength.</param>
     /// <returns>The model, using the lemma's abstain margin.</returns>
-    public LemmaModel Train(IReadOnlyList<int> anchorIndexes, double c)
+    public SenseWeights Train(IReadOnlyList<int> anchorIndexes, double c)
     {
         var x = anchorIndexes.Select(i => AnchorFeatures[i]).ToArray();
         var labels = anchorIndexes.Select(i => AnchorSense[i]).ToArray();
         var (weights, bias) = TableBuilder.Fit(x, labels, Senses.Length, Kind, c);
-        return new LemmaModel(Lemma, Senses, Kind, weights, bias, Margin, x[0].Length);
+        return new SenseWeights(Kind, weights, bias, Margin, x[0].Length);
     }
 }
 

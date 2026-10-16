@@ -61,6 +61,8 @@ internal static class TableBuilder
     /// <param name="forms">The form to lemma rows.</param>
     /// <param name="inventory">The sense inventory; it must agree with the anchors, holdout and forms.</param>
     /// <param name="options">The builder settings.</param>
+    /// <param name="lexicon">The dictionary words, in ordinal order, or null for none.</param>
+    /// <param name="morphology">The morphology rules the table enables.</param>
     /// <returns>The table and the report.</returns>
     /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
     public static BuildResult Build(
@@ -70,7 +72,9 @@ internal static class TableBuilder
         IReadOnlyList<CorpusRow> holdout,
         IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms,
         SenseInventory inventory,
-        TableBuilderOptions options)
+        TableBuilderOptions options,
+        IReadOnlyList<(string Word, byte Mask)>? lexicon = null,
+        LemmaMorphologyRules morphology = LemmaMorphologyRules.Default)
     {
         ArgumentNullException.ThrowIfNull(encoder);
         ArgumentNullException.ThrowIfNull(tokenizer);
@@ -117,7 +121,7 @@ internal static class TableBuilder
         var fallbackMargins = trained.Where(t => t.Cv).Select(t => t.Margin).OrderBy(m => m).ToList();
         var fallback = fallbackMargins.Count == 0 ? 0f : fallbackMargins[fallbackMargins.Count / 2];
 
-        var models = new List<LemmaModel>();
+        var models = new List<LemmaEntry>();
         var reports = new List<LemmaReport>();
         var bySource = new Dictionary<string, GroupStats>(StringComparer.Ordinal);
         var accuracyEvaluator = new AccuracyEvaluator();
@@ -126,7 +130,7 @@ internal static class TableBuilder
             var t = trained[k];
             var lemma = lemmas[k].Key;
             var margin = t.Cv ? t.Margin : fallback;
-            var model = new LemmaModel(lemma, t.Senses, t.Kind, t.Weights, t.Bias, margin, dim);
+            var model = new LemmaEntry(lemma, t.Senses, new SenseWeights(t.Kind, t.Weights, t.Bias, margin, dim));
             models.Add(model);
 
             var counts = new int[t.Senses.Length];
@@ -141,7 +145,7 @@ internal static class TableBuilder
             var bySense = new SortedDictionary<string, int[]>(StringComparer.Ordinal);
             foreach (var (row, i) in holdoutByLemma[lemma])
             {
-                var (best, rowMargin) = model.Score(holdoutFeatures[i]);
+                var (best, rowMargin) = model.Weights!.Score(holdoutFeatures[i]);
                 var right = string.Equals(t.Names[best], row.Sense, StringComparison.Ordinal);
                 var goldIndex = Array.FindIndex(t.Names, s => s == row.Sense);
                 var isAnswered = rowMargin >= margin;
@@ -180,9 +184,16 @@ internal static class TableBuilder
             AddWarnings(report, t.Names, holdoutByLemma[lemma].Select(h => h.row.Sense), warnings);
         }
 
+        // The trained lemmas take precedence over the dictionary: a word that a trained lemma or a form spells is dropped
+        var formMap = BuildForms(forms, models);
+        var merge = LexiconSource.Merge(models, formMap, lexicon ?? []);
         var table = new WordSenseTable(
-            WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, models, BuildForms(forms, models));
-        return new BuildResult(table, new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, accuracyEvaluator.ToReport()));
+            WordSenseModelCatalog.ModelId, encoder.ModelSha256, dim, mean, merge.Entries, formMap, morphology);
+        return new BuildResult(
+            table,
+            new BuildReport(reports, bySource, warnings, ReportTargetAccuracy, accuracyEvaluator.ToReport()),
+            merge.Entries.Count - models.Count,
+            merge.Shadowed);
     }
 
     /// <summary>
@@ -223,7 +234,7 @@ internal static class TableBuilder
     /// <param name="models">The trained lemma models.</param>
     /// <returns>The sorted form to lemma map.</returns>
     private static SortedDictionary<string, string> BuildForms(
-        IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms, List<LemmaModel> models)
+        IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms, List<LemmaEntry> models)
     {
         var byLemma = models.ToDictionary(m => m.Lemma, StringComparer.Ordinal);
         var result = new SortedDictionary<string, string>(StringComparer.Ordinal);
@@ -384,7 +395,7 @@ internal static class TableBuilder
         {
             var train = Enumerable.Range(0, x.Length).Where(i => assignment[i] != fold).ToArray();
             var (weights, bias) = Fit(train.Select(i => x[i]).ToArray(), train.Select(i => labels[i]).ToArray(), senses.Length, kind, options.C);
-            var model = new LemmaModel(lemma, senses, kind, weights, bias, 0f, dim);
+            var model = new SenseWeights(kind, weights, bias, 0f, dim);
             foreach (var i in Enumerable.Range(0, x.Length).Where(i => assignment[i] == fold))
             {
                 var (best, margin) = model.Score(x[i]);

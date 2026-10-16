@@ -1,7 +1,8 @@
 # Introduction
 
 This document provides the detailed design for the WordSense library, a .NET library
-that tells the part of speech and pronunciation of ambiguous English words in context.
+that tells the part of speech and pronunciation of English words in text, answering words that have one part of
+speech from an embedded dictionary and ambiguous words in context.
 
 ## Purpose
 
@@ -26,8 +27,8 @@ software items, specifically:
 
 - **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
 - **WordPieceTokenizer (Unit)** — BERT uncased word-piece tokenizer
-- **WordSenseTable (Unit)** — embedded binary classifier table
-- **SenseRecord (Unit)** — immutable answer values, sense definition validation and abstention rule
+- **WordSenseTable (Unit)** — embedded binary table of lemma entries (dictionary and trained), forms and the resolver
+- **SenseRecord (Unit)** — immutable answer values, answer basis, sense definition validation and abstention rule
 - **OnnxWordSenseEncoder (Unit)** — ONNX Runtime encoder
 - **WordSenseClassifier (Unit)** — public classification entry point
 - **DownloadMirror (Unit)** — user mirror configuration
@@ -86,9 +87,10 @@ and descriptions as follows:
 ```text
 src/DemaConsulting.WordSense/
 ├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
-├── WordSenseTable.cs, LemmaModel.cs, VectorMath.cs, WordSenseTableFormatException.cs — table unit
-├── PartOfSpeech.cs, Pronunciation.cs, WordDetails.cs, WordAnalysis.cs, SenseDefinition.cs, AbstainRule.cs,
-│   TextSplitter.cs                                — sense record unit
+├── WordSenseTable.cs, LemmaEntry.cs, SenseWeights.cs, LexicalIndex.cs, LemmaMorphology.cs, LemmaResolution.cs,
+│   VectorMath.cs, WordSenseTableFormatException.cs — table unit
+├── PartOfSpeech.cs, Pronunciation.cs, WordDetails.cs, WordAnalysis.cs, AnswerBasis.cs, SenseDefinition.cs,
+│   AbstainRule.cs, TextSplitter.cs                 — sense record unit
 ├── OnnxWordSenseEncoder.cs, IWordSenseEncoder.cs  — encoder unit
 ├── WordSenseClassifier.cs (also declares IWordSenseClassifier and WordSenseToken),
 │   WordSenseClassifierOptions.cs,
@@ -98,12 +100,16 @@ src/DemaConsulting.WordSense/
 ├── WordSenseModelDownloaderOptions.cs             — downloader unit; also declares WordSenseModelDownloadProgress
 │                                                    and WordSenseModelDownloadException
 ├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
-└── Resources/wordsense-table.bin                  — embedded table
+├── generated/                                     — generated API reference (not committed)
+└── Resources/wordsense-table.bin                  — embedded table (trained weights, forms and dictionary)
 
 tools/WordSense.Builder/                           — builder unit (not shipped)
+corpus/lexicon/                                    — lexicon, corrections, classes, gated words, morphology rules and
+                                                     provenance (builder unit input)
 ```
 
-The folder structure is flat because the system has no subsystems.
+The folder structure is flat because the system has no subsystems. The lexicon files are data inputs of the
+builder unit; the table unit holds the compiled result, so no separate unit exists for the dictionary.
 
 ## Document Conventions
 

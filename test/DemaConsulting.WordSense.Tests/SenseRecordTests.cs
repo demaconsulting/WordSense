@@ -1,23 +1,23 @@
 namespace DemaConsulting.WordSense.Tests;
 
 /// <summary>
-///     Tests for <see cref="SenseDefinition"/>, <see cref="LemmaModel"/> sense sets, the result records, the abstain
+///     Tests for <see cref="SenseDefinition"/>, <see cref="LemmaEntry"/> sense sets, the result records, the abstain
 ///     rule and text splitting.
 /// </summary>
 public class SenseRecordTests
 {
-    private static LemmaModel Model(params SenseDefinition[] senses)
+    private static LemmaEntry Model(params SenseDefinition[] senses)
     {
         var kind = senses.Length == 2 ? LemmaModelKind.Binary : LemmaModelKind.OneVersusRest;
         var rows = kind == LemmaModelKind.Binary ? 1 : senses.Length;
-        return new LemmaModel("bow", senses, kind, new float[rows * 3], new float[rows], 0.5f, 3);
+        return new LemmaEntry("bow", senses, new SenseWeights(kind, new float[rows * 3], new float[rows], 0.5f, 3));
     }
 
     /// <summary>
     ///     A model exposes one shared answer per sense: lemma, part of speech and pronunciation.
     /// </summary>
     [Fact]
-    public void LemmaModel_Candidates_MapSensesToDetails()
+    public void LemmaEntry_Candidates_MapSensesToDetails()
     {
         var model = Model(
             new SenseDefinition(PartOfSpeech.Noun, "weapon", "boh"),
@@ -33,7 +33,7 @@ public class SenseRecordTests
     ///     A lemma whose senses have no meanings is not a heteronym and has no pronunciation.
     /// </summary>
     [Fact]
-    public void LemmaModel_NonHeteronym_HasNoPronunciation()
+    public void LemmaEntry_NonHeteronym_HasNoPronunciation()
     {
         var model = Model(new SenseDefinition(PartOfSpeech.Noun), new SenseDefinition(PartOfSpeech.Verb));
 
@@ -45,7 +45,7 @@ public class SenseRecordTests
     ///     A respelling is optional and stays null when it is not authored.
     /// </summary>
     [Fact]
-    public void LemmaModel_MissingRespelling_IsNull()
+    public void LemmaEntry_MissingRespelling_IsNull()
     {
         var model = Model(new SenseDefinition(PartOfSpeech.Noun, "weapon"), new SenseDefinition(PartOfSpeech.Verb, "bend"));
 
@@ -57,7 +57,7 @@ public class SenseRecordTests
     ///     Senses of one meaning may differ in part of speech, and the same pair twice is rejected.
     /// </summary>
     [Fact]
-    public void LemmaModel_SenseSet_Rules()
+    public void LemmaEntry_SenseSet_Rules()
     {
         var ok = Model(
             new SenseDefinition(PartOfSpeech.Noun, "guide"),
@@ -98,6 +98,8 @@ public class SenseRecordTests
         Assert.Contains("part of speech", undefined.Message);
         var upper = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "Weapon").Validate());
         Assert.Contains("Meaning 'Weapon' is invalid", upper.Message);
+        Assert.Contains("start with a lower-case letter", upper.Message);
+        Assert.Contains("at most 32 characters", upper.Message);
         var empty = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "").Validate());
         Assert.Contains("Meaning '' is invalid", empty.Message);
         var newline = Assert.Throws<ArgumentException>(() => new SenseDefinition(PartOfSpeech.Noun, "a\n").Validate());
@@ -114,7 +116,7 @@ public class SenseRecordTests
     ///     The lemma model constructor validates each sense definition.
     /// </summary>
     [Fact]
-    public void LemmaModel_Constructor_InvalidSenseDefinition_Throws()
+    public void LemmaEntry_Constructor_InvalidSenseDefinition_Throws()
     {
         var ex = Assert.Throws<ArgumentException>(() =>
             Model(new SenseDefinition((PartOfSpeech)99), new SenseDefinition(PartOfSpeech.Verb)));
@@ -183,12 +185,55 @@ public class SenseRecordTests
     public void ResultRecords_HaveValueEquality()
     {
         var details = new WordDetails("record", PartOfSpeech.Verb, new Pronunciation("verb", null));
-        var analysis = new WordAnalysis("Records", details, 1.5, false, null, 0.0);
+        var analysis = new WordAnalysis("Records", details, 1.5, false, null, 0.0, AnswerBasis.Context, [details]);
 
         Assert.Equal(new WordDetails("record", PartOfSpeech.Verb, new Pronunciation("verb", null)), details);
         Assert.Equal(analysis, analysis with { });
         Assert.Equal("Records", analysis.Word);
+        Assert.Equal(AnswerBasis.Context, analysis.Basis);
+        Assert.Same(details, Assert.Single(analysis.Candidates));
         Assert.Equal(new WordSenseToken(0, 7, "Records", analysis), new WordSenseToken(0, 7, "Records", analysis));
+    }
+
+    /// <summary>
+    ///     The three shapes of a dictionary-or-unknown analysis keep their documented field values: an unknown word has
+    ///     no candidates, a one-sense dictionary answer holds that sense, and a several-sense word abstains with the
+    ///     basis Dictionary.
+    /// </summary>
+    [Fact]
+    public void WordAnalysis_NoneAndDictionaryShapes_KeepDocumentedValues()
+    {
+        var unknown = new WordAnalysis("zzz", null, 0.0, false, null, 0.0, AnswerBasis.None, []);
+        Assert.Null(unknown.Details);
+        Assert.False(unknown.Abstained);
+        Assert.Empty(unknown.Candidates);
+
+        var cat = new WordDetails("cat", PartOfSpeech.Noun, null);
+        var one = new WordAnalysis("cat", cat, 0.0, false, null, 0.0, AnswerBasis.Dictionary, [cat]);
+        Assert.Same(cat, one.Details);
+        Assert.Null(one.Details!.Pronunciation);
+        Assert.False(one.Abstained);
+        Assert.Same(cat, Assert.Single(one.Candidates));
+
+        var verb = new WordDetails("run", PartOfSpeech.Verb, null);
+        var noun = new WordDetails("run", PartOfSpeech.Noun, null);
+        var several = new WordAnalysis("run", null, 0.0, true, null, 0.0, AnswerBasis.Dictionary, [noun, verb]);
+        Assert.Null(several.Details);
+        Assert.True(several.Abstained);
+        Assert.Equal(AnswerBasis.Dictionary, several.Basis);
+        Assert.Equal(2, several.Candidates.Count);
+    }
+
+    /// <summary>
+    ///     The answer bases have stable numeric values.
+    /// </summary>
+    [Fact]
+    public void AnswerBasis_Values_AreStable()
+    {
+        Assert.Equal(0, (int)AnswerBasis.None);
+        Assert.Equal(1, (int)AnswerBasis.Context);
+        Assert.Equal(2, (int)AnswerBasis.Dictionary);
+        Assert.Null(default(WordAnalysis).Candidates);
     }
 
     /// <summary>

@@ -10,7 +10,10 @@ namespace WordSense.Builder;
 ///     Commands: <c>build --model DIR --corpus DIR --output FILE [--report FILE]</c> trains and writes the
 ///     table; <c>import-batches --source DIR --corpus DIR [--max N]</c> validates and imports sentence batches;
 ///     <c>validate-pos --corpus DIR</c> checks the part-of-speech and pronunciation rules of every lemma;
-///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide. The remaining
+///     <c>generate-appendix --corpus DIR --output FILE</c> writes the senses appendix of the user guide;
+///     <c>import-moby --input FILE [--corrections FILE] [--classes FILE] [--output FILE]</c> derives the dictionary
+///     from the Moby list; <c>lexicon-eval --table FILE --ud DIR [--gated FILE] [--output FILE] [--enforce]</c>
+///     evaluates the dictionary of a table, and <c>build</c> also takes <c>--lexicon FILE|none</c>. The remaining
 ///     commands (<c>real-gap</c>, <c>real-judge-export</c>, <c>real-judge-adjudicate</c>, <c>real-judge-merge</c>,
 ///     <c>real-import</c>, <c>real-gap-import</c>, <c>real-authored-import</c>, <c>nounverb-import</c>,
 ///     <c>nounverb-gate</c>, <c>real-eval-import</c>, <c>real-eval</c>, <c>validate-provenance</c>,
@@ -46,7 +49,8 @@ public static class Program
                     "Usage: WordSense.Builder <command> [--name value ...]. Commands: build, import-batches, " +
                     "validate-pos, " +
                     "real-gap, real-judge-export, real-judge-adjudicate, real-judge-merge, real-import, real-gap-import, real-authored-import, nounverb-import, nounverb-gate, " +
-                    "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix.");
+                    "real-eval-import, real-eval, validate-provenance, learning-curve, error-diagnosis, weak-lemmas, generate-appendix, " +
+                    "import-moby, lexicon-eval.");
                 return 1;
             }
 
@@ -104,6 +108,10 @@ public static class Program
                     return RunWeakLemmas(options, output);
                 case "generate-appendix":
                     return RunGenerateAppendix(options, output);
+                case "import-moby":
+                    return RunImportMoby(options, output);
+                case "lexicon-eval":
+                    return RunLexiconEval(options, output);
                 default:
                     error.WriteLine($"Unknown command '{args[0]}'.");
                     return 1;
@@ -124,14 +132,30 @@ public static class Program
     private static Dictionary<string, string> ParseOptions(string[] args)
     {
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
-        for (var i = 0; i < args.Length; i += 2)
+        var i = 0;
+        while (i < args.Length)
         {
+            // A switch without a value: it is recorded as "true"
+            if (args[i] == "--enforce")
+            {
+                options["enforce"] = "true";
+                i++;
+                continue;
+            }
+
             if (!args[i].StartsWith("--", StringComparison.Ordinal) || i + 1 >= args.Length)
             {
                 throw new ArgumentException($"Expected '--name value' but found '{args[i]}'.");
             }
 
+            // An option name where a value is expected is a usage error, for example '--output --enforce'
+            if (args[i + 1].StartsWith("--", StringComparison.Ordinal))
+            {
+                throw new ArgumentException($"Option {args[i]} needs a value but found the option '{args[i + 1]}'.");
+            }
+
             options[args[i][2..]] = args[i + 1];
+            i += 2;
         }
 
         return options;
@@ -169,6 +193,87 @@ public static class Program
     }
 
     /// <summary>
+    ///     Reads the dictionary words and the morphology rules for a build: the file of <c>--lexicon</c>, else
+    ///     <c>lexicon/lexicon.tsv</c> of the corpus; <c>--lexicon none</c> builds without a dictionary. A lexicon is
+    ///     always accompanied by the <c>morphology.tsv</c> next to it, because the rules it enables decide what the
+    ///     shipped table may derive.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <param name="corpus">The corpus directory.</param>
+    /// <returns>The words (null for none) and the rules.</returns>
+    /// <exception cref="ArgumentException">No <c>--lexicon</c> was given and the default lexicon is missing.</exception>
+    /// <exception cref="FileNotFoundException">The lexicon or its <c>morphology.tsv</c> is missing.</exception>
+    internal static (List<(string Word, byte Mask)>? Words, LemmaMorphologyRules Rules) ReadLexiconSettings(Dictionary<string, string> options, string corpus)
+    {
+        var explicitPath = options.GetValueOrDefault("lexicon");
+        if (explicitPath == "none")
+        {
+            return (null, LemmaMorphologyRules.None);
+        }
+
+        var path = explicitPath ?? Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile);
+        if (!File.Exists(path))
+        {
+            throw explicitPath is null
+                ? new ArgumentException($"The default lexicon '{path}' was not found; pass --lexicon FILE, or --lexicon none to build without a dictionary.")
+                : new FileNotFoundException($"The lexicon '{path}' was not found.", path);
+        }
+
+        var morphology = LexiconSource.ReadMorphologyIfPresent(Path.GetDirectoryName(Path.GetFullPath(path))!)
+            ?? throw new FileNotFoundException(
+                $"The morphology rules '{LexiconSource.MorphologyFile}' were not found next to the lexicon '{path}'.", path);
+        return (LexiconSource.ReadWords(path), LexiconSource.EnabledRules(morphology));
+    }
+
+    /// <summary>
+    ///     Imports the Moby list.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <param name="output">The output writer.</param>
+    /// <returns>The exit code.</returns>
+    private static int RunImportMoby(Dictionary<string, string> options, TextWriter output)
+    {
+        var import = LexiconSource.Import(
+            Require(options, "input"),
+            options.GetValueOrDefault("output", Path.Combine("corpus", "lexicon", LexiconSource.LexiconFile)),
+            options.GetValueOrDefault("corrections"),
+            options.GetValueOrDefault("classes"));
+        var c = import.Counts;
+        output.WriteLine(
+            $"Read {c.Entries} entries, {c.SingleWords} single lower-case words; dropped {c.DroppedDeterminer} determiner words, " +
+            $"{c.DroppedNoCode} without a code and {c.DroppedByClassGate} by the class gate; {c.Words} words written.");
+        return 0;
+    }
+
+    /// <summary>
+    ///     Evaluates the dictionary of a table on the gold corpus.
+    /// </summary>
+    /// <param name="options">The parsed options.</param>
+    /// <param name="output">The output writer.</param>
+    /// <returns>The exit code: 1 when enforcing and a class or rule is below the gate.</returns>
+    private static int RunLexiconEval(Dictionary<string, string> options, TextWriter output)
+    {
+        var table = WordSenseTable.Read(File.ReadAllBytes(Require(options, "table")));
+        var gold = LexiconEvaluation.ReadGold(Require(options, "ud"));
+        var gatedPath = options.GetValueOrDefault("gated", Path.Combine("corpus", "lexicon", LexiconSource.GatedFile));
+        var result = LexiconEvaluation.Evaluate(table, gold, File.Exists(gatedPath) ? LexiconSource.ReadWords(gatedPath) : []);
+        var report = result.Render();
+        if (options.TryGetValue("output", out var reportPath))
+        {
+            File.WriteAllText(reportPath, report, new UTF8Encoding(false));
+        }
+
+        output.Write(report);
+        var failures = result.GateFailures();
+        foreach (var failure in failures)
+        {
+            output.WriteLine("GATE: " + failure);
+        }
+
+        return failures.Count > 0 && options.ContainsKey("enforce") ? 1 : 0;
+    }
+
+    /// <summary>
     ///     Trains and writes the table.
     /// </summary>
     /// <param name="options">The parsed options.</param>
@@ -177,7 +282,12 @@ public static class Program
     private static int RunBuild(Dictionary<string, string> options, TextWriter output)
     {
         var corpus = Require(options, "corpus");
-        var location = WordSenseModelLocation.FromDirectory(Require(options, "model"));
+        var modelDirectory = Require(options, "model");
+        var outputPath = Require(options, "output");
+
+        // The dictionary settings are checked first, so that a usage error is reported before any heavy work
+        var (words, rules) = ReadLexiconSettings(options, corpus);
+        var location = WordSenseModelLocation.FromDirectory(modelDirectory);
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
         var forms = Corpus.ReadForms(Path.Combine(corpus, "forms", "speech.tsv"));
@@ -193,16 +303,17 @@ public static class Program
         var threads = Math.Max(1, Environment.ProcessorCount / 2);
         using var encoder = new OnnxWordSenseEncoder(location.ModelPath, 1);
         var tokenizer = WordPieceTokenizer.FromFile(location.VocabularyPath);
-        var result = TableBuilder.Build(encoder, tokenizer, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: threads));
+        var result = TableBuilder.Build(encoder, tokenizer, anchors, holdout, forms, inventory, new TableBuilderOptions(Parallelism: threads), words, rules);
 
         var table = result.Table.ToArray();
-        var path = Path.GetFullPath(Require(options, "output"));
+        var path = Path.GetFullPath(outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllBytes(path, table);
 
         var report = result.Report.Render();
         output.Write(report);
-        output.WriteLine($"Wrote {table.Length} bytes for {result.Table.Lemmas.Count} lemmas to {path}.");
+        output.WriteLine($"Dictionary: {result.DictionaryWords} words embedded, {result.ShadowedWords} dropped because a trained lemma or form spells them; morphology rules: {rules}.");
+        output.WriteLine($"Wrote {table.Length} bytes for {result.Table.ContextLemmas.Count} trained lemmas and {result.DictionaryWords} dictionary words to {path}.");
         if (options.TryGetValue("report", out var reportPath))
         {
             File.WriteAllText(reportPath, report, new UTF8Encoding(false));

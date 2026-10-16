@@ -35,7 +35,8 @@ A classifier classifies the word list "The", "record", "was", "broken", "so", "t
 The result array is parallel to the input and holds the word as given; the first "record" is a noun and the
 second a verb with lemma `record`, the non-ambiguous word "The" has no details and is not abstained, the
 first "record" has a positive margin and a runner-up, and its details are one of the candidates listed for
-`record`.
+`record`, and the analyses of both "record" words have basis `Context`, with the candidates of the first being the
+list `GetCandidates("record")` returns.
 
 ### WordSense_EmbeddedTable_MatchesPinnedModel
 
@@ -85,9 +86,9 @@ fails with the list of missing forms, which are then added to `corpus/forms/spee
 
 ### WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
 
-Every sense of the embedded table has one of the four shipped parts of speech (noun, verb, adjective, adverb); a
-lemma is a heteronym exactly when its senses have at least two distinct meanings, and a candidate has a
-pronunciation exactly when its lemma is a heteronym.
+Every sense of every trained (context) lemma of the embedded table has one of the four context parts of speech (noun,
+verb, adjective, adverb); a lemma is a heteronym exactly when its senses have at least two distinct meanings, and a
+candidate has a pronunciation exactly when its lemma is a heteronym.
 
 ### WordSense_Benchmark_ClassifyLatency
 
@@ -95,6 +96,16 @@ Classifies a sentence with four ambiguous words ("She will record the vote in th
 to the lead mine.") 100 times, after 20 warm-up calls, with one and four threads (`IntraOpThreads`), and reports
 the median and 95th percentile latency; the median must stay below two seconds (the typical value is a few
 milliseconds). The test carries the trait `Category=Benchmark`.
+
+### WordSense_Dictionary_CommonWords_Answered
+
+Classifies the words `The`, `hunter`, `quickly`, `climbed`, `a`, `tall`, `mountain` and `.` with the embedded table and
+a counting fake encoder, so no model is needed. The words `hunter`, `quickly` and `mountain` are answered with basis
+`Dictionary`, margin 0, no runner-up, no pronunciation and exactly the answered sense as the only candidate (`hunter`
+is a noun); the capitalized `The` is unknown with basis `None`; and the encoder is never invoked. A dictionary-only
+lemma with several parts of speech (the first such lemma of the table) has basis `Dictionary`, no details,
+`Abstained` true and all its senses as candidates. A second classifier with the dictionary option switched off
+reports every one of these words as unknown with basis `None`, again without calling the encoder.
 
 ### WordSense_Readme_CodeBlock_MatchesCompiledSample
 
@@ -127,13 +138,12 @@ the options error (not a model error) to be reported, so invalid options never c
 
 ### WordSense_UserGuide_CodeBlock_MatchesCompiledSample
 
-For each user guide sample (`quick-start`, `text`, `confidence`, `pronunciation`, `candidates`, `tuning`, `download`,
-`mirror`, `errors`), extracts the code block marked `<!-- sample:name -->` from
-`docs/user_guide/introduction.md` and the
-region between the `<sample:name>` markers of
-`test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`, and requires them to
-be equal after normalizing line endings and trailing white space. The regions are compiled code, so every user guide
-sample builds against the current API.
+For each user guide sample (`quick-start`, `outcomes`, `text`, `confidence`, `pronunciation`, `candidates`, `tuning`,
+`lexicon`, `download`, `mirror`, `errors`), extracts the code block marked `<!-- sample:name -->` from
+`docs/user_guide/introduction.md` and the region between the `<sample:name>` markers of
+`test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs`, and requires them to be equal after normalizing line
+endings and trailing white space. The test is a theory driven by the same list of sample names as the marker check.
+The regions are compiled code, so every user guide sample builds against the current API.
 
 ### WordSense_UserGuide_SampleMarkers_AreAllChecked
 
@@ -142,10 +152,14 @@ be added without a compiled copy.
 
 ### WordSense_UserGuide_Samples_RunAgainstModel
 
-Runs the samples that need only a classifier (`text`, `confidence`, `pronunciation`, `candidates`) and the `mirror`
-sample against the committed model (skipped when the model files are missing or are Git LFS pointers) and
+Runs the samples that need only a classifier (`outcomes`, `text`, `confidence`, `pronunciation`, `candidates`) and the
+`mirror` sample against the committed model (skipped when the model files are missing or are Git LFS pointers) and
 requires that they complete
-without an error. The samples that download the model are compiled but not run.
+without an error. For the `outcomes` words the test also checks the documented results: `The` is unknown, `hunter` is
+a dictionary answer, `will` has basis `Dictionary` with no answer and the candidates noun and verb, both `record` words
+are context answers (or context abstentions, which carry the context basis), and the meanings of `record` are noun and
+verb and those of `bow` are bend and weapon. The other samples (`quick-start`, `tuning`, `lexicon`, `download`,
+`errors`) are compiled but not run.
 
 ### Platform Support
 
@@ -162,6 +176,8 @@ platform or framework.
 | Requirement                 | Verified by                                                                         |
 |-----------------------------|-------------------------------------------------------------------------------------|
 | WordSense-Lib-Classify      | EndToEnd_ClassifiesRecord, EndToEnd_WordListApi                                     |
+| WordSense-Lib-Dictionary    | Dictionary_CommonWords_Answered, ClassifyAsync_DictionaryWord_AnswersWithoutEncoder |
+| WordSense-Lib-Basis         | Dictionary_CommonWords_Answered, ClassifyAsync_UnknownWord_HasBasisNone             |
 | WordSense-Lib-PartOfSpeech  | Holdout_MeetsPartOfSpeechGate, EmbeddedTable consistency scenario                   |
 | WordSense-Lib-Pronunciation | Holdout_MeetsPronunciationGate, EmbeddedTable consistency scenario                  |
 | WordSense-Lib-Analysis      | ClassifyAsync_ReportsMarginsAndRunnerUp, ClassifyAsync_LowMargin_Abstains           |
@@ -180,6 +196,8 @@ platform or framework.
 The abstention, download, mirror and integrity rows summarize scenarios that are detailed in the unit-level
 verification documents of the classifier, downloader and mirror. `WordSense-Lib-Documentation` is also verified by
 the appendix scenarios of the builder verification document (`WordSense-Builder-Appendix`).
+`WordSense-Lib-Dictionary` is also verified by the table, classifier and builder lexicon scenarios of the unit
+verification documents.
 
 ## Acceptance Criteria
 

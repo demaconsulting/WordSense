@@ -7,7 +7,8 @@ namespace DemaConsulting.WordSense;
 /// <remarks>
 ///     A word has a pronunciation only when its lemma is a heteronym, that is, when the lemma has at least two
 ///     distinct meanings that are pronounced differently, such as <c>lead</c> (to guide) and <c>lead</c> (the metal).
-///     For every other word <see cref="WordDetails.Pronunciation"/> is <see langword="null"/>. The library holds no
+///     For every other word, including every dictionary answer, <see cref="WordDetails.Pronunciation"/> is
+///     <see langword="null"/>. The library holds no
 ///     audio or phoneme data; the respelling is our own plain-letter spelling of the sound, offered as a convenience.
 ///     Every heteronym in the shipped table has a respelling, so <see cref="Respelling"/> is null only for tables
 ///     that were built without one.

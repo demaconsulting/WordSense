@@ -6,26 +6,36 @@ using System.Text;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Advanced: the trained classifier table: per-lemma linear models, the feature centering mean, and the
-///     form-to-lemma map, plus its versioned binary serialization.
+///     Advanced: the lemma table: every known lemma with its senses, the per-lemma trained classifiers, the feature
+///     centering mean, the form-to-lemma map and the morphology rules, plus its versioned binary serialization.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Binary layout (little-endian): magic <c>WSNS</c>, u16 version (4), u16 flags, model id string,
-///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], u32 lemma count, lemmas in ordinal order (string lemma,
+///     One vocabulary of <see cref="LemmaEntry"/> values backs every lookup: lemmas with trained
+///     <see cref="SenseWeights"/> (<see cref="ContextLemmas"/>, held in memory) and dictionary lemmas without
+///     weights, which are kept front-coded in one byte array and turned into entries only when asked for.
+///     A lemma appears once and a form never spells another lemma.
+///     </para>
+///     <para>
+///     Binary layout (little-endian): magic <c>WSNS</c>, u16 version (5), u16 flags (the enabled
+///     <see cref="LemmaMorphologyRules"/>), model id string,
+///     32-byte model SHA-256, u32 dimension, f32 mean[dimension], u32 trained lemma count, trained lemmas in ordinal
+///     order (string lemma,
 ///     u16 sense count, per sense: u8 part of speech, string meaning (empty when none), string respelling (empty when
 ///     none); then u8 kind,
-///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms (string form, u32 lemma index; the writer
-///     emits them in ordinal order and the reader accepts any order), and a trailing
+///     f32 weights, f32 bias, f32 abstain margin), u32 form count, forms (string form, u32 trained lemma index; the
+///     writer emits them in ordinal order and the reader accepts any order), the dictionary section (u32 word count,
+///     u16 block size, u32 decoded length, u32 compressed length, raw-DEFLATE of front-coded records: u8 shared prefix
+///     length, u8 suffix length, suffix, u8 part-of-speech mask), and a trailing
 ///     32-byte SHA-256 of everything before it. Strings are a u16 byte length followed by UTF-8.
 ///     </para>
 ///     <para>
 ///     The reader validates every length against the bytes that remain, caps every count, and checks
 ///     the trailing digest first, so truncated, corrupted or hostile input fails with
 ///     <see cref="WordSenseTableFormatException"/> rather than a different exception or an
-///     oversized allocation. Instances are thread-safe provided callers treat <see cref="Mean"/>, the
-///     models in <see cref="Lemmas"/> and the <see cref="Forms"/> map supplied to the constructor as
-///     read-only; the constructor copies the mean and the lemma list but not the forms map.
+///     oversized allocation. Only version 5 is read. Instances are thread-safe provided callers treat
+///     <see cref="Mean"/>, the weights of <see cref="ContextLemmas"/> and the <see cref="Forms"/> map supplied to
+///     the constructor as read-only; the constructor copies the mean and the lemma list but not the forms map.
 ///     </para>
 ///     <para>
 ///     Most callers never touch a table: <see cref="WordSenseClassifier.CreateAsync"/> loads the embedded
@@ -36,9 +46,9 @@ namespace DemaConsulting.WordSense;
 /// <example>
 ///     <code>
 ///     WordSenseTable table = WordSenseTable.LoadEmbedded();
-///     Console.WriteLine($"{table.Lemmas.Count} lemmas, trained with {table.ModelId}");
+///     Console.WriteLine($"{table.Count} lemmas, trained with {table.ModelId}");
 ///
-///     if (table.TryGetLemma("record", out LemmaModel model))
+///     if (table.TryGetLemma("record", out LemmaEntry model))
 ///     {
 ///         foreach (var sense in model.Senses)
 ///         {
@@ -60,7 +70,7 @@ public sealed class WordSenseTable
     /// <summary>
     ///     The only serialization version this library reads and writes.
     /// </summary>
-    private const ushort CurrentVersion = 4;
+    private const ushort CurrentVersion = 5;
 
     /// <summary>
     ///     The length of a SHA-256 digest in bytes.
@@ -73,7 +83,7 @@ public sealed class WordSenseTable
     private const int MaxDimension = 4096;
 
     /// <summary>
-    ///     The largest lemma count accepted from a file.
+    ///     The largest trained lemma count accepted from a file.
     /// </summary>
     private const int MaxLemmas = 100_000;
 
@@ -88,14 +98,30 @@ public sealed class WordSenseTable
     private const int MaxSenses = 64;
 
     /// <summary>
+    ///     The fewest bytes a serialized form entry can take: a string length and a lemma index.
+    /// </summary>
+    private const int MinFormBytes = 6;
+
+    /// <summary>
+    ///     The fewest bytes a serialized lemma can take: name length, sense count, two minimal senses, model kind,
+    ///     one weight, one bias and the margin.
+    /// </summary>
+    private const int MinLemmaBytes = 27;
+
+    /// <summary>
     ///     The manifest resource name of the table embedded in this assembly.
     /// </summary>
     internal const string EmbeddedResourceName = "DemaConsulting.WordSense.wordsense-table.bin";
 
     /// <summary>
-    ///     Maps each lemma to its index in <see cref="Lemmas"/>.
+    ///     Maps each trained lemma to its index in <see cref="ContextLemmas"/>.
     /// </summary>
     private readonly Dictionary<string, int> _lemmaIndex;
+
+    /// <summary>
+    ///     The dictionary lemmas that have no trained classifier.
+    /// </summary>
+    private readonly LexicalIndex _lexicon;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="WordSenseTable"/> class.
@@ -104,8 +130,16 @@ public sealed class WordSenseTable
     /// <param name="modelSha256">The lower-case hexadecimal SHA-256 of that encoder model file.</param>
     /// <param name="dimension">The feature dimension.</param>
     /// <param name="mean">The mean embedding used to center features; length <paramref name="dimension"/>.</param>
-    /// <param name="lemmas">The lemma models, which must be unique and in ordinal order of lemma.</param>
-    /// <param name="forms">The map from lower-case word form to lemma; every lemma must have a model.</param>
+    /// <param name="lemmas">
+    ///     Every lemma of the table, with or without weights, unique and in ordinal order of lemma. An entry without
+    ///     weights is a dictionary word: its lemma must be 1 to 255 letters <c>a-z</c>, and its senses are stored as a
+    ///     set, so it reads back with its senses in ascending <see cref="PartOfSpeech"/> order.
+    /// </param>
+    /// <param name="forms">
+    ///     The map from lower-case word form to lemma; every lemma must have weights, and a form must not spell a
+    ///     different lemma of the table.
+    /// </param>
+    /// <param name="morphology">The suffix rules that may derive an absent word from a dictionary lemma.</param>
     /// <exception cref="ArgumentNullException">
     ///     Thrown when <paramref name="modelId"/>, <paramref name="modelSha256"/>, <paramref name="mean"/>,
     ///     <paramref name="lemmas"/> or <paramref name="forms"/> is null.
@@ -119,13 +153,37 @@ public sealed class WordSenseTable
         string modelSha256,
         int dimension,
         float[] mean,
-        IReadOnlyList<LemmaModel> lemmas,
-        IReadOnlyDictionary<string, string> forms)
+        IReadOnlyList<LemmaEntry> lemmas,
+        IReadOnlyDictionary<string, string> forms,
+        LemmaMorphologyRules morphology = LemmaMorphologyRules.Default)
+        : this(modelId, modelSha256, dimension, mean, Partition(lemmas, dimension, out var lexicon), lexicon, forms, morphology)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="WordSenseTable"/> class from its two stores.
+    /// </summary>
+    /// <param name="modelId">The model identifier.</param>
+    /// <param name="modelSha256">The model SHA-256.</param>
+    /// <param name="dimension">The feature dimension.</param>
+    /// <param name="mean">The mean embedding.</param>
+    /// <param name="trained">The lemmas with weights, unique and in ordinal order.</param>
+    /// <param name="lexicon">The dictionary lemmas.</param>
+    /// <param name="forms">The form map.</param>
+    /// <param name="morphology">The enabled morphology rules.</param>
+    private WordSenseTable(
+        string modelId,
+        string modelSha256,
+        int dimension,
+        float[] mean,
+        List<LemmaEntry> trained,
+        LexicalIndex lexicon,
+        IReadOnlyDictionary<string, string> forms,
+        LemmaMorphologyRules morphology)
     {
         ArgumentNullException.ThrowIfNull(modelId);
         ArgumentNullException.ThrowIfNull(modelSha256);
         ArgumentNullException.ThrowIfNull(mean);
-        ArgumentNullException.ThrowIfNull(lemmas);
         ArgumentNullException.ThrowIfNull(forms);
 
         // Validate everything the classifier will rely on
@@ -139,33 +197,44 @@ public sealed class WordSenseTable
             throw new ArgumentException("The mean must be finite and match the dimension.", nameof(mean));
         }
 
-        _lemmaIndex = new Dictionary<string, int>(StringComparer.Ordinal);
-        for (var i = 0; i < lemmas.Count; i++)
+        if ((morphology & ~LemmaMorphologyRules.Default) != 0)
         {
-            var model = lemmas[i] ?? throw new ArgumentNullException(nameof(lemmas), "A lemma model is null.");
-            if (model.Dimension != dimension || !_lemmaIndex.TryAdd(model.Lemma, i))
-            {
-                throw new ArgumentException("Lemma models must be unique and share the table dimension.", nameof(lemmas));
-            }
+            throw new ArgumentException("The morphology rules are not defined.", nameof(morphology));
+        }
 
-            if (i > 0 && string.CompareOrdinal(lemmas[i - 1].Lemma, model.Lemma) >= 0)
+        _lemmaIndex = new Dictionary<string, int>(StringComparer.Ordinal);
+        for (var i = 0; i < trained.Count; i++)
+        {
+            // Partition guarantees uniqueness and order; a lemma must also not hide in the dictionary
+            _lemmaIndex.Add(trained[i].Lemma, i);
+            if (lexicon.TryFind(trained[i].Lemma, out _))
             {
-                throw new ArgumentException("Lemma models must be in ordinal order.", nameof(lemmas));
+                throw new ArgumentException("A lemma is both trained and a dictionary word.", nameof(trained));
             }
         }
 
-        var unknown = forms.Values.FirstOrDefault(l => !_lemmaIndex.ContainsKey(l));
-        if (unknown is not null)
+        // A form maps to a trained lemma and may not spell another lemma
+        foreach (var (form, lemma) in forms)
         {
-            throw new ArgumentException($"A form refers to lemma '{unknown}' that has no model.", nameof(forms));
+            if (!_lemmaIndex.ContainsKey(lemma))
+            {
+                throw new ArgumentException($"A form refers to lemma '{lemma}' that has no trained classifier.", nameof(forms));
+            }
+
+            if ((form != lemma && _lemmaIndex.ContainsKey(form)) || lexicon.TryFind(form, out _))
+            {
+                throw new ArgumentException($"The form '{form}' shadows a lemma.", nameof(forms));
+            }
         }
 
         ModelId = modelId;
         ModelSha256 = modelSha256.ToLowerInvariant();
         Dimension = dimension;
         Mean = (float[])mean.Clone();
-        Lemmas = lemmas.ToArray();
+        ContextLemmas = trained;
+        _lexicon = lexicon;
         Forms = forms;
+        Morphology = morphology;
     }
 
     /// <summary>
@@ -189,31 +258,219 @@ public sealed class WordSenseTable
     public float[] Mean { get; }
 
     /// <summary>
-    ///     Gets the lemma models in ordinal order of lemma.
+    ///     Gets the number of lemmas in the table, with or without a trained classifier.
     /// </summary>
-    public IReadOnlyList<LemmaModel> Lemmas { get; }
+    public int Count => ContextLemmas.Count + _lexicon.Count;
 
     /// <summary>
-    ///     Gets the map from lower-case word form to lemma.
+    ///     Gets the lemmas that have a trained classifier, in ordinal order of lemma.
+    /// </summary>
+    public IReadOnlyList<LemmaEntry> ContextLemmas { get; }
+
+    /// <summary>
+    ///     Gets every lemma of the table in ordinal order. Dictionary lemmas are decoded one at a time as the
+    ///     sequence is enumerated, so enumerating it all is cheap in memory but not free in time.
+    /// </summary>
+    public IEnumerable<LemmaEntry> Lemmas => EnumerateLemmas();
+
+    /// <summary>
+    ///     Gets the map from lower-case word form to the lemma it inflects, a lemma with a trained classifier.
     /// </summary>
     public IReadOnlyDictionary<string, string> Forms { get; }
 
     /// <summary>
-    ///     Looks up the model of a lemma.
+    ///     Gets the suffix rules that may derive an absent word from a dictionary lemma.
+    /// </summary>
+    public LemmaMorphologyRules Morphology { get; }
+
+    /// <summary>
+    ///     Looks up a lemma, whether or not it has a trained classifier.
     /// </summary>
     /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="model">Receives the model when found.</param>
-    /// <returns>True when the lemma has a model.</returns>
-    public bool TryGetLemma(string lemma, out LemmaModel model)
+    /// <param name="entry">Receives the entry when found.</param>
+    /// <returns>True when the table has the lemma.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="lemma"/> is null.</exception>
+    /// <remarks>
+    ///     A dictionary entry is created for each call, so its <see cref="LemmaEntry.Candidates"/> are equal, but not
+    ///     reference-equal, across calls.
+    /// </remarks>
+    public bool TryGetLemma(string lemma, out LemmaEntry entry)
     {
+        ArgumentNullException.ThrowIfNull(lemma);
         if (_lemmaIndex.TryGetValue(lemma, out var index))
         {
-            model = Lemmas[index];
+            entry = ContextLemmas[index];
             return true;
         }
 
-        model = null!;
+        if (_lexicon.TryFind(lemma, out var mask))
+        {
+            entry = CreateDictionaryEntry(lemma, mask);
+            return true;
+        }
+
+        entry = null!;
         return false;
+    }
+
+    /// <summary>
+    ///     Resolves a surface word to a lemma entry: the form map, then an exact lemma, then a possessive of a trained
+    ///     lemma, then (when dictionary words are enabled) the morphology rules.
+    /// </summary>
+    /// <param name="word">The word as written; it is lower-cased and a typographic apostrophe is straightened.</param>
+    /// <param name="useDictionary">True when lemmas without a trained classifier may be returned.</param>
+    /// <param name="resolution">Receives the entry and the sense the word was narrowed to, if any.</param>
+    /// <returns>True when the word resolves.</returns>
+    internal bool TryResolve(string word, bool useDictionary, out LemmaResolution resolution)
+    {
+        var lower = word.ToLowerInvariant().Replace('\u2019', '\'');
+        if (TryResolveExact(lower, useDictionary, out var entry))
+        {
+            resolution = new LemmaResolution(entry, -1);
+            return true;
+        }
+
+        // A possessive shares the lemma of the bare word, but only for trained lemmas
+        if (lower.Length > 2 && lower.EndsWith("'s", StringComparison.Ordinal) &&
+            TryResolveExact(lower[..^2], useDictionary, out entry) && entry.Weights is not null)
+        {
+            resolution = new LemmaResolution(entry, -1);
+            return true;
+        }
+
+        // Only a word the table lacks is derived, so a rule can never override an entry
+        if (useDictionary)
+        {
+            return LemmaMorphology.TryResolve(lower, Morphology, this, out resolution);
+        }
+
+        resolution = default;
+        return false;
+    }
+
+    /// <summary>
+    ///     Looks a lower-case word up as an inflected form or as a lemma.
+    /// </summary>
+    /// <param name="lower">The lower-case word.</param>
+    /// <param name="useDictionary">True when dictionary lemmas count.</param>
+    /// <param name="entry">Receives the entry.</param>
+    /// <returns>True when found.</returns>
+    private bool TryResolveExact(string lower, bool useDictionary, out LemmaEntry entry)
+    {
+        if (Forms.TryGetValue(lower, out var lemma) && _lemmaIndex.TryGetValue(lemma, out var formIndex))
+        {
+            entry = ContextLemmas[formIndex];
+            return true;
+        }
+
+        if (_lemmaIndex.TryGetValue(lower, out var index))
+        {
+            entry = ContextLemmas[index];
+            return true;
+        }
+
+        if (useDictionary && _lexicon.TryFind(lower, out var mask))
+        {
+            entry = CreateDictionaryEntry(lower, mask);
+            return true;
+        }
+
+        entry = null!;
+        return false;
+    }
+
+    /// <summary>
+    ///     Looks a dictionary word up without creating an entry.
+    /// </summary>
+    /// <param name="word">The lower-case word.</param>
+    /// <param name="mask">Receives the part-of-speech mask.</param>
+    /// <returns>True when the dictionary has the word.</returns>
+    internal bool TryGetDictionaryMask(ReadOnlySpan<char> word, out byte mask) => _lexicon.TryFind(word, out mask);
+
+    /// <summary>
+    ///     Creates the entry of a dictionary word: one sense per part of speech in the mask, in ascending order.
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="mask">The part-of-speech mask.</param>
+    /// <returns>The entry.</returns>
+    internal static LemmaEntry CreateDictionaryEntry(string lemma, byte mask)
+    {
+        var senses = new List<SenseDefinition>(2);
+        for (var pos = 0; pos < 8; pos++)
+        {
+            if ((mask & (1 << pos)) != 0)
+            {
+                senses.Add(new SenseDefinition((PartOfSpeech)pos));
+            }
+        }
+
+        return new LemmaEntry(lemma, senses);
+    }
+
+    /// <summary>
+    ///     Splits the supplied lemmas into the trained ones and the compiled dictionary.
+    /// </summary>
+    /// <param name="lemmas">All lemmas, unique and in ordinal order.</param>
+    /// <param name="dimension">The feature dimension the weights must have.</param>
+    /// <param name="lexicon">Receives the dictionary lemmas.</param>
+    /// <returns>The trained lemmas.</returns>
+    private static List<LemmaEntry> Partition(IReadOnlyList<LemmaEntry> lemmas, int dimension, out LexicalIndex lexicon)
+    {
+        ArgumentNullException.ThrowIfNull(lemmas);
+        var trained = new List<LemmaEntry>();
+        var words = new List<(string Word, byte Mask)>();
+        for (var i = 0; i < lemmas.Count; i++)
+        {
+            var entry = lemmas[i] ?? throw new ArgumentNullException(nameof(lemmas), "A lemma entry is null.");
+            if (i > 0 && string.CompareOrdinal(lemmas[i - 1].Lemma, entry.Lemma) >= 0)
+            {
+                throw new ArgumentException("Lemma entries must be unique and in ordinal order.", nameof(lemmas));
+            }
+
+            if (entry.Weights is { } weights)
+            {
+                if (weights.Dimension != dimension)
+                {
+                    throw new ArgumentException("Lemma entries must share the table dimension.", nameof(lemmas));
+                }
+
+                trained.Add(entry);
+            }
+            else
+            {
+                var mask = entry.Senses.Aggregate(0, (m, s) => m | LemmaMorphology.Bit(s.Pos));
+                words.Add((entry.Lemma, (byte)mask));
+            }
+        }
+
+        lexicon = words.Count == 0 ? LexicalIndex.Empty : LexicalIndex.Build(words);
+        return trained;
+    }
+
+    /// <summary>
+    ///     Enumerates the trained and dictionary lemmas as one ordinal sequence.
+    /// </summary>
+    /// <returns>Every lemma.</returns>
+    private IEnumerable<LemmaEntry> EnumerateLemmas()
+    {
+        using var words = _lexicon.Enumerate().GetEnumerator();
+        var hasWord = words.MoveNext();
+        foreach (var trained in ContextLemmas)
+        {
+            while (hasWord && string.CompareOrdinal(words.Current.Word, trained.Lemma) < 0)
+            {
+                yield return CreateDictionaryEntry(words.Current.Word, words.Current.Mask);
+                hasWord = words.MoveNext();
+            }
+
+            yield return trained;
+        }
+
+        while (hasWord)
+        {
+            yield return CreateDictionaryEntry(words.Current.Word, words.Current.Mask);
+            hasWord = words.MoveNext();
+        }
     }
 
     /// <summary>
@@ -230,7 +487,7 @@ public sealed class WordSenseTable
     /// </example>
     public static WordSenseTable LoadEmbedded()
     {
-        // Copy the resource into memory; it is about 1.3 MB
+        // Copy the resource into memory; it is about 1.7 MB
         using var stream = typeof(WordSenseTable).Assembly.GetManifestResourceStream(EmbeddedResourceName)
             ?? throw new WordSenseTableFormatException("The embedded classifier table is missing from the assembly.");
         using var memory = new MemoryStream();
@@ -245,8 +502,11 @@ public sealed class WordSenseTable
     /// <returns>The parsed table.</returns>
     /// <remarks>
     ///     To bound memory the reader rejects, whatever the checksum says: a dimension above 4,096; more than
-    ///     100,000 lemmas; more than 2,000,000 forms; fewer than 2 or more than 64 senses in a lemma; an undefined
-    ///     part of speech; and sense sets that are inconsistent (see <see cref="LemmaModel"/>). Strings are limited to 65,535
+    ///     100,000 trained lemmas; more than 2,000,000 forms; more than 400,000 dictionary words or 4 MB of decoded
+    ///     dictionary; fewer than 2 or more than 64 senses in a trained lemma; an undefined part of speech; sense sets
+    ///     that are inconsistent (see <see cref="LemmaEntry"/>); a dictionary that is not strictly ascending lower-case
+    ///     <c>a-z</c> words in its canonical encoding; undefined morphology rules; and a form or trained lemma that
+    ///     shadows a dictionary word. Strings are limited to 65,535
     ///     UTF-8 bytes by their length prefix.
     /// </remarks>
     /// <exception cref="WordSenseTableFormatException">
@@ -299,15 +559,16 @@ public sealed class WordSenseTable
         var buffer = new MemoryStream();
         buffer.Write(Magic);
         WriteU16(buffer, CurrentVersion);
-        WriteU16(buffer, 0);
+        WriteU16(buffer, (int)Morphology);
         WriteString(buffer, ModelId);
         buffer.Write(Convert.FromHexString(ModelSha256));
         WriteU32(buffer, Dimension);
         WriteFloats(buffer, Mean);
 
-        WriteU32(buffer, Lemmas.Count);
-        foreach (var lemma in Lemmas)
+        WriteU32(buffer, ContextLemmas.Count);
+        foreach (var lemma in ContextLemmas)
         {
+            var weights = lemma.Weights!;
             WriteString(buffer, lemma.Lemma);
             WriteU16(buffer, lemma.Senses.Count);
             foreach (var sense in lemma.Senses)
@@ -317,10 +578,10 @@ public sealed class WordSenseTable
                 WriteString(buffer, sense.Respelling ?? string.Empty);
             }
 
-            buffer.WriteByte((byte)lemma.Kind);
-            WriteFloats(buffer, lemma.Weights);
-            WriteFloats(buffer, lemma.Bias);
-            WriteFloats(buffer, [lemma.AbstainMargin]);
+            buffer.WriteByte((byte)weights.Kind);
+            WriteFloats(buffer, weights.Weights);
+            WriteFloats(buffer, weights.Bias);
+            WriteFloats(buffer, [weights.AbstainMargin]);
         }
 
         // Forms are written in ordinal order so output is deterministic
@@ -331,6 +592,14 @@ public sealed class WordSenseTable
             WriteString(buffer, form.Key);
             WriteU32(buffer, _lemmaIndex[form.Value]);
         }
+
+        // The dictionary section
+        var compressed = _lexicon.Compress();
+        WriteU32(buffer, _lexicon.Count);
+        WriteU16(buffer, LexicalIndex.BlockSize);
+        WriteU32(buffer, _lexicon.RawLength);
+        WriteU32(buffer, compressed.Length);
+        buffer.Write(compressed);
 
         // Append the integrity digest of everything written so far
         var body = buffer.ToArray();
@@ -369,14 +638,24 @@ public sealed class WordSenseTable
             throw new WordSenseTableFormatException($"Unsupported classifier table version {version}.");
         }
 
-        _ = reader.ReadU16();
+        var flags = reader.ReadU16();
+        if ((flags & ~(int)LemmaMorphologyRules.Default) != 0)
+        {
+            throw new WordSenseTableFormatException("The classifier table enables undefined morphology rules.");
+        }
+
         var modelId = reader.ReadString();
         var modelSha = Convert.ToHexString(reader.ReadBytes(HashLength)).ToLowerInvariant();
         var dimension = reader.ReadCount(MaxDimension, 1);
         var mean = reader.ReadFloats(dimension);
 
         var lemmaCount = reader.ReadCount(MaxLemmas, 0);
-        var lemmas = new List<LemmaModel>(lemmaCount);
+        if ((long)lemmaCount * MinLemmaBytes > reader.Remaining)
+        {
+            throw new WordSenseTableFormatException("The lemma count exceeds the data of the classifier table.");
+        }
+
+        var lemmas = new List<LemmaEntry>(lemmaCount);
         for (var i = 0; i < lemmaCount; i++)
         {
             var lemma = reader.ReadString();
@@ -402,10 +681,27 @@ public sealed class WordSenseTable
             var weights = reader.ReadFloats(checked(rows * dimension));
             var bias = reader.ReadFloats(rows);
             var margin = reader.ReadFloats(1)[0];
-            lemmas.Add(new LemmaModel(lemma, senses, kind, weights, bias, margin, dimension));
+            lemmas.Add(new LemmaEntry(lemma, senses, new SenseWeights(kind, weights, bias, margin, dimension)));
+        }
+
+        // The constructor of the private overload checks order and uniqueness of the trained lemmas
+        for (var i = 1; i < lemmas.Count; i++)
+        {
+            if (string.CompareOrdinal(lemmas[i - 1].Lemma, lemmas[i].Lemma) >= 0)
+            {
+                throw new WordSenseTableFormatException("The trained lemmas are not unique and in ordinal order.");
+            }
         }
 
         var formCount = reader.ReadCount(MaxForms, 0);
+
+        // Every form takes at least a string length and a lemma index, so the declared count must fit the bytes left;
+        // this keeps a hostile count from reserving memory that the data cannot back
+        if ((long)formCount * MinFormBytes > reader.Remaining)
+        {
+            throw new WordSenseTableFormatException("The form count exceeds the data of the classifier table.");
+        }
+
         var forms = new Dictionary<string, string>(formCount, StringComparer.Ordinal);
         for (var i = 0; i < formCount; i++)
         {
@@ -417,12 +713,22 @@ public sealed class WordSenseTable
             }
         }
 
+        var wordCount = reader.ReadCount(LexicalIndex.MaxWords, 0);
+        if (reader.ReadU16() != LexicalIndex.BlockSize)
+        {
+            throw new WordSenseTableFormatException("The dictionary section has an unsupported block size.");
+        }
+
+        var rawLength = reader.ReadCount(LexicalIndex.MaxRawLength, 0);
+        var compressedLength = reader.ReadCount(int.MaxValue, 0);
+        var lexicon = LexicalIndex.Decompress(wordCount, rawLength, reader.ReadBytes(compressedLength));
+
         if (!reader.AtEnd)
         {
             throw new WordSenseTableFormatException("The classifier table has unexpected trailing data.");
         }
 
-        return new WordSenseTable(modelId, modelSha, dimension, mean, lemmas, forms);
+        return new WordSenseTable(modelId, modelSha, dimension, mean, lemmas, lexicon, forms, (LemmaMorphologyRules)flags);
     }
 
     /// <summary>
@@ -523,6 +829,11 @@ public sealed class WordSenseTable
         ///     Gets a value indicating whether every byte has been consumed.
         /// </summary>
         public readonly bool AtEnd => _remaining.IsEmpty;
+
+        /// <summary>
+        ///     Gets the number of bytes not yet consumed.
+        /// </summary>
+        public readonly int Remaining => _remaining.Length;
 
         /// <summary>
         ///     Consumes a fixed number of bytes.

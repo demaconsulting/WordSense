@@ -4,14 +4,16 @@
 
 This document is the user guide for WordSense, a .NET library that tells, for English words in context and offline,
 the part of speech and the pronunciation. It tells, for example, whether "record" is a noun or a verb, and
-whether "bow" is said like "bough" (a bend) or like "beau" (a weapon).
+whether "bow" is said like "bough" (a bend) or like "beau" (a weapon). Every word is looked up in an embedded
+dictionary of over 140,000 words; only a word with several meanings that the library has been trained on is decided
+by an encoder model from its sentence.
 
 ## Scope
 
 This user guide covers:
 
 - Installation, requirements and a quick start
-- The classification API: words, text, confidence, pronunciation and listing the supported words
+- The classification API: words, text, outcomes, confidence, pronunciation and listing the candidates
 - Model download, mirrors and offline use
 - Accuracy, limitations and abstention
 - Licensing and provenance of the data
@@ -32,6 +34,15 @@ a `sample` marker comment in the source of this guide and must equal the code in
 # Glossary
 
 - **Lemma**: the dictionary base form of a word, for example "record" for "records".
+- **Dictionary**: the embedded word list (derived from Moby Part-of-Speech II) that gives every word its possible
+  parts of speech. A word in it is *known*.
+- **Dictionary answer**: an answer taken from the dictionary alone, because the word has exactly one part of speech.
+  It has `Basis` `Dictionary`, needs no encoder and has a margin of 0.
+- **Context answer**: an answer chosen by the encoder from the sentence for a word that has a trained classifier. It
+  has `Basis` `Context` and a margin.
+- **Basis**: where the result of a word comes from (`AnswerBasis`): `Context`, `Dictionary` or `None` (unknown word).
+- **Candidates**: the possible answers of a word's lemma (`WordAnalysis.Candidates`, `GetCandidates`): the senses of its
+  entry, one per part of speech and, for a heteronym, per pronunciation.
 - **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
   "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
 - **Part of speech**: the grammatical role of a word in its sentence, such as noun, verb, adjective or adverb.
@@ -39,7 +50,8 @@ a `sample` marker comment in the source of this guide and must equal the code in
   heteronym is meant; it is only given for heteronyms.
 - **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
   speech engine and not a phonetic transcription.
-- **Abstain**: to give no answer for a word the library knows but is not sure about in its context.
+- **Abstain**: to give no single answer for a word the library knows but cannot decide: its context margin is too low,
+  or it has several parts of speech and no trained classifier. `Details` is `null` and `Candidates` lists the options.
 - **Margin**: the confidence of an answer, the score of the best candidate minus the score of the runner-up; the
   higher it is, the surer the library is (it is a score difference, not a probability).
 
@@ -74,34 +86,87 @@ for (var i = 0; i < words.Length; i++)
 {
     if (analyses[i].Details is { } details)
     {
-        Console.WriteLine($"{words[i]}: {details.PartOfSpeech} {details.Pronunciation?.Meaning}");
+        Console.WriteLine($"{words[i]}: {details.PartOfSpeech} {details.Pronunciation?.Meaning} ({analyses[i].Basis})");
     }
 }
 ```
 
 The input is a list of words that you have tokenized yourself, in order and including punctuation tokens; they are
 read as one running text. `ClassifyAsync` returns a non-null array that is parallel to the input: element `i` is the
-`WordAnalysis` of `words[i]`, whatever the word is. Inflected forms are recognized (`presents` is a form of
-`present`).
+`WordAnalysis` of `words[i]`, whatever the word is.
 
-A caller gets two facts per word:
+## The Flow
+
+Every word follows the same path:
+
+1. The surface form is reduced to a **lemma**: a form map handles irregular and trained forms, and gated morphology
+   handles the regular ones. Plural `-s`, `-es` and `-ies` and adverb `-ly` are enabled; `-ed`, `-ing`, `-er`/`-est`
+   and the possessive of a dictionary word are disabled, because they did not reach the precision gate.
+2. The lemma is looked up as an **entry** with one or more senses (a part of speech and, for a heteronym, a
+   pronunciation) and, for 744 lemmas, trained weights.
+3. One sense gives a **dictionary answer** without the encoder. Several senses with trained weights are decided by the
+   encoder from the sentence (a **context answer**). Several senses without weights give the candidates only.
+4. A word that is not in the dictionary, a determiner, a number, a proper noun or a capitalized word inside a sentence
+   is **unknown**.
+
+The encoder runs only when a word needs it, so a sentence without such a word costs no model call.
+
+A caller gets two facts per answered word:
 
 - The **part of speech** of the word in its sentence (`WordDetails.PartOfSpeech`), together with the `Lemma`.
 - For a **heteronym**, the **pronunciation** (`WordDetails.Pronunciation`): a `Meaning` id and an optional
-  `Respelling`. A word that is not a heteronym has a `null` `Pronunciation`; most noun/verb lemmas are not
-  heteronyms.
+  `Respelling`. A word that is not a heteronym has a `null` `Pronunciation`.
 
-`WordAnalysis.Details` is `null` when the word is **unknown** (it is not in the table, see the appendix) or when the
-classifier **abstained**. `WordAnalysis.Abstained` tells the two cases apart: it is `true` only for a word the library
-knows but is not sure about. The `PartOfSpeech` enumeration defines all eight traditional parts of speech, but the
-table only produces `Noun`, `Verb`, `Adjective` and `Adverb`.
+The `PartOfSpeech` enumeration defines the eight traditional parts of speech. Context answers are a noun, a verb, an
+adjective or an adverb; dictionary answers can also be a pronoun or a preposition (conjunctions and interjections only
+appear as candidates of a word that has another part of speech).
 
 The
 <!-- markdownlint-disable-next-line MD051 -->
-[appendix](#appendix-supported-senses) is the catalog of the supported lemmas, their parts of speech and their
+[appendix](#appendix-supported-senses) is the catalog of the trained lemmas, their parts of speech and their
 pronunciation meanings.
 
 # Usage
+
+## Outcomes
+
+Each `WordAnalysis` is one of five outcomes; `Basis` tells them apart without looking at the margins:
+
+| Outcome             | Details   | Abstained | Basis        | Margin        | Candidates               |
+|---------------------|-----------|-----------|--------------|---------------|--------------------------|
+| Dictionary answer   | the sense | `false`   | `Dictionary` | 0             | the one sense            |
+| Context answer      | the best  | `false`   | `Context`    | the score gap | every sense of the lemma |
+| Context abstention  | `null`    | `true`    | `Context`    | the score gap | every sense of the lemma |
+| Candidates only     | `null`    | `true`    | `Dictionary` | 0             | the possible senses      |
+| Unknown             | `null`    | `false`   | `None`       | 0             | empty                    |
+
+<!-- sample:outcomes -->
+```csharp
+string[] words = ["The", "hunter", "will", "record", "the", "record"];
+WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
+
+foreach (var analysis in analyses)
+{
+    var outcome = analysis switch
+    {
+        { Basis: AnswerBasis.None } => "unknown",
+        { Details: not null, Basis: AnswerBasis.Dictionary } => "dictionary answer",
+        { Details: not null } => "context answer",
+        { Basis: AnswerBasis.Context } => "context abstention",
+        _ => "candidates only",
+    };
+    var candidates = string.Join("/", analysis.Candidates.Select(c => c.PartOfSpeech));
+    Console.WriteLine($"{analysis.Word,-8} {outcome,-18} {candidates}");
+}
+```
+
+A **dictionary answer** differs from a **context answer** in what it knows. It says what the word is in the
+dictionary, not what it is in this sentence, so it is only given when the dictionary has one part of speech for the
+word; it carries no confidence (`Margin` 0, `RunnerUp` `null`) and needs no encoder. A context answer is chosen by the
+encoder from the sentence, so it has a `Margin` and a `RunnerUp`, and the classifier can abstain from it (`Details`
+`null`, `Abstained` `true`, `Basis` `Context`, with `Margin` still set). A word that is in the dictionary with several
+senses and has no trained classifier is never decided: it is the candidates-only outcome, and you pick from
+`Candidates` yourself.
 
 ## Text Input
 
@@ -119,7 +184,7 @@ foreach (var token in tokens)
 
 The tokens tile the input: concatenating `Text` reproduces the string exactly, so results map back onto it (`Start`
 and `Length` are UTF-16 offsets). Words, runs of whitespace and single punctuation characters are separate tokens;
-each token has a `WordAnalysis`, and `Details` is set only for answered words.
+each token has a `WordAnalysis`, and `Details` is set only for answered words (dictionary or context).
 
 ## Confidence and Abstention
 
@@ -139,9 +204,10 @@ foreach (var analysis in analyses.Where(a => a.RunnerUp is not null))
 
 A `WordAnalysis` holds the `Word` as given, `Details` (the best answer), the `Margin` (the score of the best candidate
 minus the runner-up), the `RunnerUp` candidate, the `RunnerUpMargin` (runner-up minus the third best; 0 for a lemma
-with two candidates) and `Abstained`. The margin and the runner-up are also filled in for a word the classifier
-abstained from, so you can apply your own policy; for an unknown word `Details` and `RunnerUp` are `null` and both
-margins are 0.
+with two candidates), `Abstained`, the `Basis` and the `Candidates`. Margin and runner-up exist only for a context
+classification (the sample lists exactly those words); the margin and the runner-up are also filled in for a word the
+classifier abstained from, so you can apply your own policy. For a dictionary answer, a candidates-only word and an
+unknown word both margins are 0 and `RunnerUp` is `null`.
 
 ## Pronunciation for Speech
 
@@ -168,25 +234,30 @@ A word that is not a heteronym (or an unknown or abstained word) has no pronunci
 its normal pronunciation of the word. The two uses of `record` have the meanings `noun` (REK-urd) and `verb`
 (rih-KORD); `bow` has `bend` (bow, as in "take a bow") and `weapon` (boh).
 
-## Listing the Supported Words
+## Listing the Candidates
 
 <!-- sample:candidates -->
 ```csharp
-Console.WriteLine($"{classifier.KnownLemmas.Count} lemmas");
+Console.WriteLine($"{classifier.ContextLemmas.Count} lemmas with a trained classifier");
 
 foreach (var candidate in classifier.GetCandidates("record"))
 {
     Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech} pronunciation={candidate.Pronunciation?.Meaning}");
 }
+
+// Any lemma of the dictionary has candidates, not only the trained ones
+Console.WriteLine(string.Join("/", classifier.GetCandidates("will").Select(c => c.PartOfSpeech)));
 ```
 
-`GetCandidates` returns an empty list for an unknown lemma. The appendix lists the same data for every lemma.
+`ContextLemmas` lists only the lemmas that have a trained classifier, the ones decided from their context (the
+appendix lists them). `GetCandidates` works for any lemma of the dictionary and returns an empty list for an unknown
+lemma, or for a dictionary-only lemma when `UseLexicon` is `false`.
 
 ## Abstention
 
-For each lemma the table stores a margin threshold. When the best candidate beats the runner-up by less than that
-threshold, the classifier abstains: `Details` is `null` and `Abstained` is `true`, while `Margin` and `RunnerUp` still
-report the best guess. Abstaining trades coverage for precision (about 91 % of the held-out rows are answered, see
+For each trained lemma the table stores a margin threshold. When the best candidate beats the runner-up by less than
+that threshold, the classifier abstains: `Details` is `null` and `Abstained` is `true`, while `Margin` and `RunnerUp`
+still report the best guess. Abstaining trades coverage for precision (about 91 % of the held-out rows are answered, see
 "Accuracy and Performance"). Scale all thresholds with `WordSenseClassifierOptions.AbstainMarginScale`:
 
 <!-- sample:tuning -->
@@ -199,6 +270,20 @@ var options = new WordSenseClassifierOptions
 };
 
 using var tuned = await WordSenseClassifier.CreateAsync(options);
+```
+
+## Dictionary Option
+
+`WordSenseClassifierOptions.UseLexicon` is `true` by default. Set it to `false` to answer only the trained lemmas, as
+the first versions did: every other word is then unknown (`Basis` `None`) and `GetCandidates` returns nothing for a
+dictionary-only lemma. The option never changes a context answer.
+
+<!-- sample:lexicon -->
+```csharp
+// Answer only the trained lemmas, as before the dictionary existed; every other word is unknown
+var options = new WordSenseClassifierOptions { UseLexicon = false };
+
+using var trainedOnly = await WordSenseClassifier.CreateAsync(options);
 ```
 
 # Model Files and Mirrors
@@ -287,8 +372,10 @@ catch (WordSenseModelDownloadException ex)
 |--------------------------------------------------|-----------------------------------------------------------|
 | `IWordSenseClassifier`                           | `ClassifyAsync` overloads; lemma and candidate lookup     |
 | `WordSenseClassifier`                            | Implementation; `CreateAsync`                             |
-| `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention  |
+| `WordSenseClassifierOptions`                     | Model directory, downloader, threads, window, abstention, |
+|                                                  | dictionary (`UseLexicon`)                                 |
 | `WordAnalysis`, `WordDetails`, `WordSenseToken`  | Result of a word, best answer, text tile                  |
+| `AnswerBasis`                                    | Where an answer comes from: context, dictionary, none     |
 | `PartOfSpeech`, `Pronunciation`                  | Part of speech; pronunciation meaning and respelling      |
 | `WordSenseModelDownloader`                       | `EnsureModelAsync`: verify or download the model files    |
 | `WordSenseModelDownloaderOptions`                | Mirror, base URIs, store root, timeout, progress          |
@@ -304,11 +391,11 @@ The two `ClassifyAsync` members of `IWordSenseClassifier` are asynchronous, and 
 | `ClassifyAsync(IReadOnlyList<string>)` | `WordAnalysis[]`: the full result of each word of a tokenized text  |
 | `ClassifyAsync(string)`                | `IReadOnlyList<WordSenseToken>`: the raw text split into tiles      |
 
-`IWordSenseClassifier` also has the synchronous `KnownLemmas` (the supported lemmas) and `GetCandidates(lemma)` (the
-possible answers
-of one lemma, empty when it is unknown).
+`IWordSenseClassifier` also has the synchronous `ContextLemmas` (the lemmas with a trained classifier) and
+`GetCandidates(lemma)` (the possible answers of any lemma, empty when it is unknown).
 
-`WordAnalysis` has `Word`, `Details` (`WordDetails?`), `Margin`, `Abstained`, `RunnerUp` and `RunnerUpMargin`.
+`WordAnalysis` has `Word`, `Details` (`WordDetails?`), `Margin`, `Abstained`, `RunnerUp`, `RunnerUpMargin`, `Basis`
+(`AnswerBasis`) and `Candidates` (never `null`).
 `WordDetails` has `Lemma`, `PartOfSpeech` and `Pronunciation` (`Pronunciation?`), and `Pronunciation` has `Meaning` and
 `Respelling` (which may be `null`).
 
@@ -321,8 +408,17 @@ model differ) and `WordSenseTableFormatException` (damaged table); `WordSenseMod
 
 # Accuracy and Performance
 
-The figures below come from the builder reports in `docs/build_notes/` (the embedded table has 744 lemmas and 1,521
-senses, format v4). Read them with their caveats.
+The figures below come from the builder reports in `docs/build_notes/` (the embedded table has 744 trained lemmas and
+1,521 senses and a dictionary section of over 140,000 words, format v5). Read them with their caveats.
+
+**Dictionary answers.** The dictionary was evaluated against Universal Dependencies English EWT (train, dev and test
+pooled; `docs/build_notes/lexicon-evaluation.md`). A word with one part of speech is correct 97.0 % to 99.9 % of the
+time depending on the class: noun 97.61 %, verb 97.79 %, adjective 97.26 %, adverb 97.01 %, pronoun 99.89 % and
+preposition 99.86 %. For a word with several parts of speech the right one is in `Candidates` 97.32 % of the time
+(96.79 % for two candidates). The plural rule is correct 98.98 % of the time and the `-ly` rule 100 % (57 tokens, thin
+evidence). Of the 16,622 sentences, 51.8 % need no encoder call. These figures use text from one treebank, so
+expect somewhat different numbers on other kinds of text; a parts-of-speech class or rule that scored below 95 % was
+not enabled (conjunctions and interjections only appear as candidates; `-ed` scored 94.69 % and is off).
 
 **What the corpus is.** The training and held-out sentences have three kinds of origin: sentences written by a large
 language model for the original 34 seed lemmas and the heteronym lemmas of the first batches, real sentences from
@@ -361,10 +457,21 @@ builder reports and will differ on other hardware; run the `Benchmark` test cate
 
 # Limitations
 
-- **Only trained words are answered.** A word that is not in the table (see the appendix) is unknown: it has no
-  `Details`. WordSense is not a general word-sense disambiguator.
-- **Four parts of speech.** The answer is a noun, a verb, an adjective or an adverb; pronouns, prepositions,
-  conjunctions and interjections are never answered, although `PartOfSpeech` defines them.
+- **Dictionary words are not decided by context.** A word in the dictionary that has several parts of speech and no
+  trained classifier ("will", "so", "yesterday") gives its candidates only: `Details` is `null`, `Abstained` is `true`.
+  Only the 744 trained lemmas (see the appendix) are decided from the sentence. WordSense is not a general
+  word-sense disambiguator.
+- **No inflection of dictionary words beyond plural and `-ly`.** Plural `-s`, `-es`, `-ies` and adverb `-ly` are
+  recognized. `-ed`, `-ing`, `-er`/`-est` and the possessive are not, because they did not reach the precision gate:
+  such a form is answered only when the dictionary itself lists it as spelled, and is otherwise unknown. The trained
+  lemmas have their own form lists.
+- **Determiners and some words are unknown.** Determiners (the, a, an, his, ...), numbers and words that are not in
+  the dictionary are unknown, and so are proper nouns: a capitalized word inside a sentence is skipped by the case
+  policy (the corrections for the pronoun "I" are an exception).
+- **Parts of speech.** Dictionary answers can be a noun, verb, adjective, adverb, pronoun or preposition; a word whose
+  only part of speech is a conjunction or an interjection is not in the dictionary (those classes did not reach the
+  precision gate and only appear as candidates of a word with another part of speech). Context answers are a noun, a
+  verb, an adjective or an adverb.
 - **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Pronunciation`, and the library has no
   phonetic data of its own: the `Respelling` is a plain hint, and the consumer maps (`Lemma`, `Meaning`) to its own
   pronunciation.
@@ -383,6 +490,12 @@ builder reports and will differ on other hardware; run the `Benchmark` test cate
 WordSense is licensed under the MIT License. The `all-MiniLM-L6-v2` model (Apache License 2.0) and ONNX Runtime (MIT)
 are used under their own licences.
 
+The embedded dictionary is derived from Moby Part-of-Speech II by Grady Ward
+(<https://www.gutenberg.org/ebooks/3203>), which the author dedicated to the public domain; no attribution is
+required, but it is given here with thanks. Only a filtered list (single lowercase words, determiners removed, a few
+corrections and held-back classes) is committed, in `corpus/lexicon/`, with its source, checksum and filter rules in
+`corpus/lexicon/PROVENANCE.md`. The accuracy figures are in `docs/build_notes/lexicon-evaluation.md`.
+
 The training corpus is not shipped in the NuGet package; only the derived classifier vectors are embedded in the
 assembly. Every corpus sentence has a row in `corpus/provenance/*.tsv` recording its source, licence, URL and
 contributor. The licences in use are `CC0 1.0`, `Public domain`, `CC BY 2.0 FR` (Tatoeba, with the contributor
@@ -398,7 +511,10 @@ The table is generated by the non-shipped builder `tools/WordSense.Builder` from
 format of the files is described in `corpus/README.md`. All commands run from the repository root with
 `dotnet run --project tools/WordSense.Builder -c Release -- <command> --name value`:
 
-- `build`: trains every lemma and writes the table (`--corpus`, `--model`, `--output`, `--report`)
+- `build`: trains every lemma and writes the table, with the dictionary from `corpus/lexicon/` (`--corpus`, `--model`,
+  `--output`, `--report`)
+- `import-moby`: filters Moby Part-of-Speech II into `corpus/lexicon/lexicon.tsv`; `lexicon-eval` scores the
+  dictionary against Universal Dependencies English EWT
 - `validate-provenance` and `validate-pos`: check the provenance rows and the part-of-speech rules of the inventory
 - `generate-appendix`: regenerates the senses appendix of this guide (`--corpus`, `--output`)
 - `real-eval`: scores the table on the real-text evaluation set
@@ -482,9 +598,12 @@ with plain http for a host that is not loopback.
 
 ## A Word Returns Nothing
 
-`Details` is `null` for a word that is unknown or abstained. The word is unknown when it is not in the table (check the
-appendix or `KnownLemmas`); `Abstained` is `true` when the classifier was not sure. Look at `Margin` and `RunnerUp`, and
-lower `AbstainMarginScale` to answer more often.
+`Details` is `null` for a word that is unknown, has no single answer, or was abstained. `Basis` and `Abstained` tell
+them apart: `None` means unknown (the word is not in the dictionary, is a determiner, number or proper noun, or is a
+capitalized word inside a sentence); `Dictionary` with `Abstained` means a word with several parts of speech and no
+trained classifier, so read `Candidates`; `Context` with `Abstained` means the classifier was not sure, so look at
+`Margin` and `RunnerUp`, and lower `AbstainMarginScale` to answer more often. With `UseLexicon` set to `false` only the
+trained lemmas (`ContextLemmas`) are known.
 
 ## Results Differ from the Documentation
 

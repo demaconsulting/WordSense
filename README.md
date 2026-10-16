@@ -10,16 +10,18 @@
 [![NuGet][badge-nuget]][link-nuget]
 
 WordSense is a .NET library that tells, for words in context, the part of speech and the pronunciation: whether
-"record" is a noun or a verb, and how to say "bow" or "read". It combines the int8-quantized `all-MiniLM-L6-v2`
-encoder, run with ONNX Runtime, with a compact classifier table embedded in the assembly.
+"record" is a noun or a verb, and how to say "bow" or "read". It looks every word up in an embedded dictionary of over
+140,000 common words and, only where a word has several meanings, asks the int8-quantized `all-MiniLM-L6-v2` encoder
+(run with ONNX Runtime) to choose from the sentence, using a compact classifier table embedded in the assembly.
 
 ## Features
 
+- 📖 **Dictionary** - Parts of speech for over 140,000 common words, with no model call for most of them
 - 🧠 **Context Aware** - Decides the part of speech of a word from its sentence
 - 🔊 **Pronunciation** - Heteronyms like "bow" and "read" get a meaning id and a respelling
-- 📖 **744 Lemmas** - Curated heteronyms plus common noun/verb words
-- 🤔 **Abstains** - Returns no answer instead of guessing when unsure
-- 📊 **Confidence** - Every answer carries a margin and the runner-up
+- 🎯 **744 Trained Lemmas** - Curated heteronyms plus common noun/verb words, decided by context
+- 🤔 **Abstains** - Lists the candidates instead of guessing when unsure
+- 📊 **Confidence** - Every context answer carries a margin and the runner-up
 - 📦 **Single Package** - Only runtime dependency is Microsoft.ML.OnnxRuntime
 - 🔒 **Verified Model** - Downloaded on first use and checked against pinned SHA-256 digests
 - ⚡ **Fast** - A few milliseconds per sentence on a developer workstation
@@ -60,46 +62,51 @@ using var classifier = await WordSenseClassifier.CreateAsync(
 var words = "The hunter fired an arrow from his bow so I will record a record and read the book yesterday".Split(' ');
 var results = await classifier.ClassifyAsync(words);
 
-// Print each word's part of speech, pronunciation (heteronyms only) and confidence (margin)
+// Print the part of speech (or the candidates, or unknown), where the answer comes from, the margin and,
+// for a heteronym, the meaning and the respelling
 foreach (var a in results)
 {
-    if (a.Details is not { } d)
-    {
-        Console.WriteLine($"{a.Word,-9} {(a.Abstained ? "abstained" : "unknown")}");
-        continue;
-    }
-
-    var p = d.Pronunciation;
-    Console.WriteLine($"{a.Word,-9} {d.PartOfSpeech,-9} {p?.Meaning,-8} {p?.Respelling,-9} margin={a.Margin:F1}");
+    var pos = a.Details?.PartOfSpeech.ToString()
+        ?? (a.Candidates.Count > 0
+            ? string.Join("/", a.Candidates.Select(c => c.PartOfSpeech.ToString()[..3]).Distinct())
+            : "unknown");
+    var say = a.Details?.Pronunciation is { } p ? $"{p.Meaning} {p.Respelling}" : "";
+    Console.WriteLine($"{a.Word,-9} {pos,-24} {a.Basis,-10} {a.Margin,4:F1}  {say}".TrimEnd());
 }
 ```
 
 <!-- output:readme -->
 ```text
-The       unknown
-hunter    unknown
-fired     unknown
-an        unknown
-arrow     unknown
-from      unknown
-his       unknown
-bow       Noun      weapon   boh       margin=4.2
-so        unknown
-I         unknown
-will      unknown
-record    Verb      verb     rih-KORD  margin=4.8
-a         unknown
-record    Noun      noun     REK-urd   margin=7.7
-and       unknown
-read      abstained
-the       unknown
-book      Noun                         margin=7.4
-yesterday unknown
+The       unknown                  None        0.0
+hunter    Noun                     Dictionary  0.0
+fired     Verb                     Dictionary  0.0
+an        unknown                  None        0.0
+arrow     Noun                     Dictionary  0.0
+from      Preposition              Dictionary  0.0
+his       unknown                  None        0.0
+bow       Noun                     Context     4.2  weapon boh
+so        Nou/Pro/Adj/Adv/Con/Int  Dictionary  0.0
+I         Pronoun                  Dictionary  0.0
+will      Nou/Ver                  Dictionary  0.0
+record    Verb                     Context     4.8  verb rih-KORD
+a         unknown                  None        0.0
+record    Noun                     Context     7.7  noun REK-urd
+and       Nou/Con                  Dictionary  0.0
+read      Ver                      Context     0.8
+the       unknown                  None        0.0
+book      Noun                     Context     7.4
+yesterday Nou/Adv                  Dictionary  0.0
 ```
 
-Each word gets its part of speech and, for a heteronym, a pronunciation: a `Meaning` id and a plain `Respelling` that a
-speech synthesizer can use. `Margin` is the confidence; words that are not in the table are `unknown`, and a word the
-classifier is unsure about is `abstained`. Both have no `Details`. The model is stored in a per-user directory and
+Every word is looked up in the embedded dictionary. A word with one part of speech ("hunter") is answered from the
+dictionary alone (`Basis` is `Dictionary`, `Margin` 0). A word with a trained classifier ("bow", "record", "book") is
+decided by the encoder from its sentence (`Basis` is `Context`) and carries a `Margin`, the confidence, and for a
+heteronym a pronunciation: a `Meaning` id and a plain `Respelling` that a speech synthesizer can use. A word with
+several parts of speech and no classifier ("will", "so") is not answered: `Details` is `null`, `Abstained` is `true`
+and `Candidates` lists the possibilities (shortened above). The classifier also abstains from a word whose margin is
+too low ("read": both of its pronunciations are verbs, so only the verb shows). Determiners such as "the" are
+`unknown` (`Basis` is `None`), like numbers and capitalized words inside a sentence. The encoder runs only for a
+sentence that has a word that needs it. The model is stored in a per-user directory and
 reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL` (optionally with `WORDSENSE_MIRROR_USER` and
 `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a `DownloadMirror`; it is tried first, and the
 files can be copied to a machine without internet access. See the [user guide][link-user-guide] for details and the
@@ -110,8 +117,13 @@ files can be copied to a machine without internet access. See the [user guide][l
 On 12,789 held-out rows the best sense is correct 96.91 % of the time. With abstention 98.73 % of the answered rows
 are correct (90.74 % answered). That corpus is partly project-written (LLM-generated) text, so it is the optimistic
 figure: on 689 real, blind-judged sentences of 39 lemmas the best sense is correct 92.60 % of the time, and the part of
-speech is correct 97.22 % of the time. Words that are not in the table are never answered, forms that collide with
-other words (`saw`, `left`, `found`, ...) are excluded, and the classifier abstains instead of guessing. The
+speech is correct 97.22 % of the time. Words that are in neither the dictionary nor the table are never answered,
+forms that collide with other words (`saw`, `left`, `found`, ...) are excluded from the trained lemmas, and the
+classifier abstains instead of guessing. The dictionary answers (a word with one part of speech) were measured on
+Universal Dependencies English EWT: 97 % to 99.9 % precision per part of speech, and the right part of speech is among the
+candidates of a multi-meaning word 97.3 % of the time; 51.8 % of the sentences there need no encoder call. The
+dictionary knows plural `-s`/`-es`/`-ies` and `-ly` forms but not `-ed`, `-ing` or `-er`/`-est`, and determiners,
+numbers and proper names are unknown. The
 [user guide][link-user-guide] has the details, the caveats and troubleshooting.
 
 ## Documentation
@@ -132,7 +144,8 @@ standards, and the pull request process.
 ## License
 
 Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
-`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License. The training
+`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License. The embedded
+dictionary is derived from Moby Part-of-Speech II by Grady Ward, which is in the public domain. The training
 corpus (not shipped in the NuGet package, only the derived vectors) contains openly licensed sentences recorded with
 their source and licence in `corpus/provenance/`; rows under `CC BY-SA 4.0` keep that licence if the corpus itself is
 redistributed (see the user guide).

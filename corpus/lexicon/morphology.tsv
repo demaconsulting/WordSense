@@ -1,0 +1,3 @@
+Plural	enabled	UD English-EWT precision 98.98 percent over 3630 tokens
+PastTense	disabled	UD English-EWT precision 94.69 percent over 1638 tokens is below the 95 percent gate
+Adverb	enabled	UD English-EWT precision 100 percent but only 57 tokens: thin evidence, kept because the rule only adds adverbs for adjective-only bases

@@ -1,0 +1,5 @@
+days	N	Moby lists 'days' only as an adverb; in UD English-EWT the word is almost always the plural noun (121 wrong adverb answers before this correction)
+needs	NV	Moby lists 'needs' only as an adverb; in UD English-EWT it is the third-person verb or the plural noun (68 wrong adverb answers before this correction)
+says	V	Moby lists 'says' only as a noun; in UD English-EWT it is the third-person verb (69 wrong noun answers before this correction)
+comes	V	Moby lists 'comes' only as a noun; in UD English-EWT it is the third-person verb (39 wrong noun answers before this correction)
+i	R	Moby lists the letter 'i' as a noun only; as a word of running text 'I' is the pronoun (UD English-EWT: PRON)

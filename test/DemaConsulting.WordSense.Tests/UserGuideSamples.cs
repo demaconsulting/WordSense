@@ -29,11 +29,53 @@ internal static class UserGuideSamples
         {
             if (analyses[i].Details is { } details)
             {
-                Console.WriteLine($"{words[i]}: {details.PartOfSpeech} {details.Pronunciation?.Meaning}");
+                Console.WriteLine($"{words[i]}: {details.PartOfSpeech} {details.Pronunciation?.Meaning} ({analyses[i].Basis})");
             }
         }
 
         // </sample:quick-start>
+    }
+
+    /// <summary>
+    ///     The "outcomes" sample.
+    /// </summary>
+    /// <param name="classifier">The classifier.</param>
+    /// <returns>A task that completes when the sample has run.</returns>
+    public static async Task OutcomesAsync(WordSenseClassifier classifier)
+    {
+        // <sample:outcomes>
+        string[] words = ["The", "hunter", "will", "record", "the", "record"];
+        WordAnalysis[] analyses = await classifier.ClassifyAsync(words);
+
+        foreach (var analysis in analyses)
+        {
+            var outcome = analysis switch
+            {
+                { Basis: AnswerBasis.None } => "unknown",
+                { Details: not null, Basis: AnswerBasis.Dictionary } => "dictionary answer",
+                { Details: not null } => "context answer",
+                { Basis: AnswerBasis.Context } => "context abstention",
+                _ => "candidates only",
+            };
+            var candidates = string.Join("/", analysis.Candidates.Select(c => c.PartOfSpeech));
+            Console.WriteLine($"{analysis.Word,-8} {outcome,-18} {candidates}");
+        }
+
+        // </sample:outcomes>
+    }
+
+    /// <summary>
+    ///     The "lexicon" sample. It needs the model in the per-user store, so it is compiled but not run.
+    /// </summary>
+    /// <returns>A task that completes when the sample has run.</returns>
+    public static async Task LexiconAsync()
+    {
+        // <sample:lexicon>
+        // Answer only the trained lemmas, as before the dictionary existed; every other word is unknown
+        var options = new WordSenseClassifierOptions { UseLexicon = false };
+
+        using var trainedOnly = await WordSenseClassifier.CreateAsync(options);
+        // </sample:lexicon>
     }
 
     /// <summary>
@@ -104,12 +146,15 @@ internal static class UserGuideSamples
     public static void Candidates(WordSenseClassifier classifier)
     {
         // <sample:candidates>
-        Console.WriteLine($"{classifier.KnownLemmas.Count} lemmas");
+        Console.WriteLine($"{classifier.ContextLemmas.Count} lemmas with a trained classifier");
 
         foreach (var candidate in classifier.GetCandidates("record"))
         {
             Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech} pronunciation={candidate.Pronunciation?.Meaning}");
         }
+
+        // Any lemma of the dictionary has candidates, not only the trained ones
+        Console.WriteLine(string.Join("/", classifier.GetCandidates("will").Select(c => c.PartOfSpeech)));
 
         // </sample:candidates>
     }

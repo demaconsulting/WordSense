@@ -5,7 +5,8 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     The classifier matches a word as written to its lemma through the table's known forms, so inflected
-///     forms resolve to their base form: the word <c>records</c> has the lemma <c>record</c>.
+///     forms resolve to their base form: the word <c>records</c> has the lemma <c>record</c>. A dictionary answer
+///     (one part of speech, no context needed) has a null <see cref="Pronunciation"/>.
 /// </remarks>
 /// <example>
 ///     <code>

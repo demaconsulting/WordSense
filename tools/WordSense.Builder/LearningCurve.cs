@@ -250,7 +250,7 @@ internal static class LearningCurve
         return points;
     }
 
-    private static Dictionary<string, Tally> Evaluate(LemmaAnalysis lemma, DemaConsulting.WordSense.LemmaModel model)
+    private static Dictionary<string, Tally> Evaluate(LemmaAnalysis lemma, DemaConsulting.WordSense.SenseWeights model)
     {
         var result = new Dictionary<string, Tally>(StringComparer.Ordinal);
         foreach (var row in lemma.Eval)

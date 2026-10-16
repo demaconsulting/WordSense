@@ -14,14 +14,29 @@ sections:
           - WordSenseToken_Tiles_FollowSegmentSpans
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
 
+      - id: WordSense-Classifier-Flow
+        title: >-
+          The classifier shall resolve every word through the table and decide from the entry alone:
+          an entry with one sense is answered directly from the dictionary, an entry with several senses and trained
+          weights is answered from the context, an entry with several senses and no weights yields its candidates
+          without an answer, and a word that does not resolve is unknown.
+        tags: [unit]
+        justification: |
+          One rule for every word keeps the behavior predictable: whether a word is covered, and by what evidence,
+          follows from what the table knows about it and from nothing else.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
+          - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
+          - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
+
       - id: WordSense-Classifier-Answers
         title: >-
-          The classifier shall answer only for known lemmas and their inflected forms, returning the lemma, the part
+          The classifier shall answer for known lemmas and their inflected forms, returning the lemma, the part
           of speech and, for a heteronym, the pronunciation of the best candidate.
         tags: [unit]
         justification: |
-          Unknown words carry no answer, an inflected form must resolve to its lemma, and a single encoder pass per
-          text keeps latency low.
+          An inflected form must resolve to its lemma, so that a caller gets the same answer for every form of a word.
         tests:
           - WordSenseClassifier_ClassifyAsync_Sentence_AssignsSenseToKnownWordOnly
           - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
@@ -29,15 +44,75 @@ sections:
           - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
           - WordSenseClassifier_ClassifyAsync_InfiniteAbstainMarginScale_AlwaysAbstains
 
+      - id: WordSense-Classifier-Encoder
+        title: >-
+          The classifier shall run the encoder only when at least one word of the call resolves to an entry with
+          trained weights, and then once per call when the text fits one encoder window; for longer text it shall
+          run it once per target window (see WordSense-Classifier-LongText).
+        tags: [unit]
+        justification: |
+          Dictionary answers need no model, so text made only of such words costs no inference time, and a single
+          encoder pass per text keeps latency low.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
+          - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
+          - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
+
+      - id: WordSense-Classifier-CasePolicy
+        title: >-
+          The classifier shall look up an entry without trained weights in lower case, and shall look up a
+          capitalized word for such an entry only at the start of the input, after a sentence-ending mark, a colon,
+          an opening quotation mark or bracket, or when it is exactly the word I; every other capitalized word shall
+          be unknown. Lemmas with trained weights shall match in any case.
+        tags: [unit]
+        justification: |
+          A capitalized word inside a sentence is usually a name, and giving a name the part of speech of a common
+          word with the same spelling would be wrong. Trained lemmas are decided from their context, which already
+          separates names from common words.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_CasePolicy_SentenceStartIsLookedUp
+          - WordSenseClassifier_ClassifyAsync_CasePolicy_MidSentenceCapitalIsUnknown
+          - WordSenseClassifier_ClassifyAsync_CasePolicy_PronounIIsLookedUp
+
+      - id: WordSense-Classifier-UseLexicon
+        title: >-
+          The classifier shall, when the dictionary is switched off by option, answer only the words that have
+          trained weights and report every other word as unknown, including words that would be derived from a
+          dictionary word, and shall list no candidates for a lemma that has only a dictionary entry.
+        tags: [unit]
+        justification: |
+          Callers that want only context answers must be able to keep the earlier behavior.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_UseLexiconFalse_AnswersOnlyContextLemmas
+          - WordSenseClassifier_ClassifyAsync_UseLexiconFalse_DictionaryWordIsUnknown
+
+      - id: WordSense-Classifier-Basis
+        title: >-
+          The classifier shall state, for every word, the basis of its analysis: context when the trained classifier
+          of the lemma decided, dictionary when the table alone decided (a single sense, a morphology-derived sense,
+          or the candidates of a word with several senses and no classifier), and none when the word is unknown.
+        tags: [unit]
+        justification: |
+          Callers weigh an answer differently when it came from the sentence than when it came from a word list, and
+          need to tell an unknown word from an abstention.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_ContextAnswer_HasContextBasisAndCandidates
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
+          - WordSenseClassifier_ClassifyAsync_DerivedPlural_AnswersFromDictionary
+          - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
+          - WordSenseClassifier_ClassifyAsync_WeightedWordWithoutEvidence_IsUnknown
+
       - id: WordSense-Classifier-Candidates
         title: >-
-          The classifier shall list the lemmas it supports and, for a lemma, every possible answer (part of speech
-          and pronunciation), and an empty list for an unknown lemma.
+          The classifier shall list the lemmas it trained a classifier for and, for any lemma of the table, every
+          possible answer (part of speech and pronunciation), and an empty list for an unknown lemma.
         tags: [unit]
         justification: |
           Callers discover what is supported at run time instead of relying on documentation alone.
         tests:
-          - WordSenseClassifier_KnownLemmas_And_GetCandidates_AreExposed
+          - WordSenseClassifier_ContextLemmas_And_GetCandidates_AreExposed
 
       - id: WordSense-Classifier-Abstain
         title: The classifier shall give no answer when the margin is below the per-lemma threshold.
@@ -51,7 +126,8 @@ sections:
         title: >-
           The classifier shall return, for every word of every call, the word as given, the best answer, the margin
           of the best candidate over the runner-up, the runner-up, the margin of the runner-up over the third-best
-          candidate and whether it abstained, including for words it abstained from.
+          candidate, whether it abstained, the basis of the answer and the candidate answers, including for words
+          it abstained from; a dictionary answer shall have margin zero, no runner-up and a basis of dictionary.
         tags: [unit]
         justification: |
           Callers that apply their own confidence policy need the evidence behind a decision, including
@@ -62,11 +138,14 @@ sections:
           - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
           - WordSenseClassifier_ClassifyAsync_ThreeSenses_ReportsRunnerUpMargin
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
 
       - id: WordSense-Classifier-Unknown
         title: >-
-          The classifier shall report a word it has no classifier for with no answer, no abstention, no runner-up
-          and zero margins, so that it differs from a word it abstained from.
+          The classifier shall report a word that does not resolve to an entry with no answer, no abstention, no
+          runner-up, zero margins, a basis of none and no candidates, so that it differs from a word it abstained
+          from.
         tags: [unit]
         justification: |
           A caller must be able to tell "this word is not covered" from "this word is covered but the evidence is
@@ -75,6 +154,7 @@ sections:
           - WordSenseClassifier_ClassifyAsync_Words_EdgeCases
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
+          - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
 
       - id: WordSense-Classifier-LongText
         title: The classifier shall classify texts longer than the model limit using a window around each target.
@@ -94,6 +174,7 @@ sections:
           could supply a different model than the table was trained with.
         tests:
           - WordSenseClassifier_Constructor_InvalidArguments_Throw
+          - WordSenseClassifier_Constructor_VocabularyPath_ReadsFileOrThrows
           - WordSenseClassifier_Constructor_ModelMismatch_Throws
           - WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
           - WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
@@ -109,4 +190,5 @@ sections:
           - WordSenseClassifier_ClassifyAsync_Concurrent_IsConsistent
           - WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed
           - WordSenseClassifier_ClassifyAsync_CancelledDuringEncode_StopsBeforeNextTarget
+          - WordSenseClassifier_ClassifyAsync_CancelledBetweenTargets_StopsAfterFirstWindow
           - WordSenseClassifier_Dispose_OwnedEncoder_LaterCallsBehaveAsDocumented

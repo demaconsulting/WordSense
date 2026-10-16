@@ -7,27 +7,32 @@ sections:
       - id: WordSense-Sense-Record
         title: >-
           The library shall represent each possible answer as an immutable value with a lemma, a part of speech and
-          an optional pronunciation, shared once per sense, and shall report an analysis as an immutable value.
+          an optional pronunciation, shared once per sense, and shall report an analysis as an immutable value that
+          states the basis of its answer (none, context or dictionary) and lists every candidate answer of the word.
         tags: [unit]
         justification: |
           Callers compare, store and share answers and analyses across threads; they must not change after
-          creation.
+          creation. The basis tells a caller whether an answer came from the sentence or from a dictionary, and the
+          candidates are what remains when no single answer can be given.
         tests:
-          - LemmaModel_Candidates_MapSensesToDetails
+          - LemmaEntry_Candidates_MapSensesToDetails
           - ResultRecords_HaveValueEquality
+          - WordAnalysis_NoneAndDictionaryShapes_KeepDocumentedValues
+          - AnswerBasis_Values_AreStable
 
       - id: WordSense-Sense-Pronunciation
         title: >-
           The library shall give a pronunciation (a meaning and an optional respelling) only to the senses of a
-          heteronym, a lemma with at least two distinct meanings, and none to any other lemma.
+          heteronym, a lemma with at least two distinct meanings, and none to any other lemma, including every
+          lemma of the dictionary.
         tags: [unit]
         justification: |
           Most lemmas are pronounced the same whatever they mean; reporting a pronunciation for them would be
           noise, and a heteronym is only meaningful when its meanings can be told apart.
         tests:
-          - LemmaModel_NonHeteronym_HasNoPronunciation
-          - LemmaModel_MissingRespelling_IsNull
-          - LemmaModel_SenseSet_Rules
+          - LemmaEntry_NonHeteronym_HasNoPronunciation
+          - LemmaEntry_MissingRespelling_IsNull
+          - LemmaEntry_SenseSet_Rules
 
       - id: WordSense-Sense-Validation
         title: >-
@@ -42,7 +47,7 @@ sections:
           - SenseDefinition_Validate_InvalidDefinitions_Throw
           - SenseDefinition_IsValidMeaning_ChecksSyntax
           - SenseDefinition_IsValidRespelling_ChecksSyntaxAndLength
-          - LemmaModel_Constructor_InvalidSenseDefinition_Throws
+          - LemmaEntry_Constructor_InvalidSenseDefinition_Throws
           - PartOfSpeech_Values_ArePinned
 
       - id: WordSense-Sense-Abstain

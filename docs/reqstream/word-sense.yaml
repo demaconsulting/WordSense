@@ -9,7 +9,7 @@ sections:
     requirements:
       - id: WordSense-Lib-Classify
         title: >-
-          The library shall classify known ambiguous words in free text, answering each word's lemma, part of speech
+          The library shall classify words in free text, answering each word's lemma, part of speech
           and (for a heteronym) pronunciation, and tile the whole input.
         tags: [system]
         justification: |
@@ -28,10 +28,52 @@ sections:
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
           - WordSense_Classifier_EndToEnd_WordListApi
 
+      - id: WordSense-Lib-Dictionary
+        title: >-
+          The library shall answer the part of speech of common English words that need no context, from an embedded
+          dictionary of at least 100,000 words, the plural and third-person (-s) forms of its nouns and verbs and
+          the -ly adverbs of its adjectives, without running the model, and shall list the candidate answers of a
+          dictionary word that has several parts of speech instead of guessing.
+        tags: [system]
+        justification: |
+          Most words of a text are not ambiguous or cannot be told apart by a small model; answering them from a
+          public-domain dictionary gives broad coverage at no inference cost, and refusing to guess for a word with
+          several parts of speech keeps the answers trustworthy. Every word follows one flow, so the behavior is
+          the same for a trained and for a dictionary word.
+        children:
+          - WordSense-Classifier-Flow
+          - WordSense-Classifier-Encoder
+          - WordSense-Classifier-CasePolicy
+          - WordSense-Classifier-UseLexicon
+          - WordSense-Table-Lexicon
+          - WordSense-Table-Resolve
+          - WordSense-Table-Morphology
+          - WordSense-Builder-LexiconImport
+          - WordSense-Builder-LexiconBuild
+          - WordSense-Builder-LexiconEval
+        tests:
+          - WordSense_Dictionary_CommonWords_Answered
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+
+      - id: WordSense-Lib-Basis
+        title: >-
+          The library shall state with every answer whether it is based on the context of the sentence, on the
+          dictionary, or on nothing, so that a caller can tell a measured answer from a dictionary answer.
+        tags: [system]
+        justification: |
+          A context answer has a margin and was checked against held-out sentences; a dictionary answer has neither,
+          so callers that apply their own confidence policy must be able to distinguish them.
+        children:
+          - WordSense-Classifier-Basis
+        tests:
+          - WordSense_Dictionary_CommonWords_Answered
+          - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
+
       - id: WordSense-Lib-PartOfSpeech
         title: >-
-          The library shall answer the part of speech (noun, verb, adjective or adverb) of every known ambiguous
-          word, with the lemma of the word.
+          The library shall answer the part of speech and the lemma of every word it answers: a noun, verb,
+          adjective or adverb for a context answer, and for a dictionary answer also a pronoun or a preposition
+          (a conjunction or an interjection is only ever given as a candidate).
         tags: [system]
         justification: |
           The part of speech is the first fact that callers (for example a text-to-speech front end) need to
@@ -78,6 +120,7 @@ sections:
         children:
           - WordSense-Classifier-Analysis
           - WordSense-Classifier-Unknown
+          - WordSense-Sense-Record
         tests:
           - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
@@ -201,7 +244,7 @@ sections:
 
       - id: WordSense-Lib-Performance
         title: >-
-          The library shall classify a sentence with several ambiguous words with a median latency below two seconds,
+          The library shall classify a sentence with four ambiguous words with a median latency below two seconds,
           with one and with four threads.
         tags: [system]
         justification: |

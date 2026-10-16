@@ -61,7 +61,9 @@ public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning =
 
         if (Meaning is not null && !IsValidMeaning(Meaning))
         {
-            throw new ArgumentException($"Meaning '{Meaning}' is invalid; use lower-case ASCII letters, digits and hyphens.");
+            throw new ArgumentException(
+                $"Meaning '{Meaning}' is invalid; it must start with a lower-case letter, have at most 32 characters " +
+                "and use only lower-case ASCII letters, digits and hyphens.");
         }
 
         if (Respelling is not null && (Meaning is null || !IsValidRespelling(Respelling)))

@@ -72,7 +72,7 @@ internal static class AppendixGenerator
             throw new InvalidDataException(string.Join(Environment.NewLine, errors));
         }
 
-        return Render(rows, forms, examples);
+        return Render(corpus, rows, forms, examples);
     }
 
     /// <summary>
@@ -118,6 +118,7 @@ internal static class AppendixGenerator
     ///     Renders the document.
     /// </summary>
     private static string Render(
+        string corpus,
         List<InventoryRow> rows,
         List<(string Form, string Lemma, string[] Labels)> forms,
         Dictionary<(string Lemma, string Sense), string> examples)
@@ -132,9 +133,81 @@ internal static class AppendixGenerator
 
         var lemmas = rows.GroupBy(r => r.Lemma).OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
         AddExplanation(lines, rows, lemmas.Count);
+        AddLexicon(lines, corpus, rows, forms);
         AddLemmas(lines, lemmas, forms, examples);
 
         return string.Join('\n', lines) + "\n";
+    }
+
+    /// <summary>
+    ///     Adds the summary of the dictionary words, when the corpus has a lexicon: the counts per part-of-speech set and
+    ///     the state of the morphology rules. The words themselves are not listed.
+    /// </summary>
+    private static void AddLexicon(
+        List<string> lines,
+        string corpus,
+        List<InventoryRow> rows,
+        List<(string Form, string Lemma, string[] Labels)> forms)
+    {
+        var lexiconDirectory = Path.Combine(corpus, "lexicon");
+        var lexiconPath = Path.Combine(lexiconDirectory, LexiconSource.LexiconFile);
+        if (!File.Exists(lexiconPath))
+        {
+            return;
+        }
+
+        var words = LexiconSource.ReadWords(lexiconPath);
+        var taken = new HashSet<string>(rows.Select(r => r.Lemma), StringComparer.Ordinal);
+        taken.UnionWith(forms.Select(f => f.Form));
+        var all = words.Count.ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
+        var embedded = words.Count(w => !taken.Contains(w.Word)).ToString("N0", System.Globalization.CultureInfo.InvariantCulture);
+        var sets = words
+            .GroupBy(w => LexiconSource.ToLetters(w.Mask))
+            .Select(g => (Letters: g.Key, Count: g.Count(), Name: SetName(g.Key)))
+            .OrderByDescending(s => s.Count)
+            .ThenBy(s => s.Name, StringComparer.Ordinal)
+            .ToList();
+
+        lines.Add("### Dictionary Words");
+        lines.Add(string.Empty);
+        AddParagraph(lines,
+            $"Besides the lemmas listed below, the lexicon list has {all:N0} words (derived from the " +
+            "public-domain Moby Part-of-Speech II list, see `corpus/lexicon/PROVENANCE.md`), of which " +
+            $"{embedded:N0} are embedded as dictionary words. A dictionary word has no " +
+            "trained classifier: a word with one part of speech is answered directly, and a word with several parts " +
+            "of speech returns them as candidates. A word that a lemma or a form of the list below spells is not " +
+            "embedded as a dictionary word, because the lemma takes precedence. A capitalized word in the middle of " +
+            "a sentence is not looked up. The words are not " +
+            "listed here; this is how many words of the lexicon list have each set of parts of speech:");
+        var width = Math.Max(sets.Max(s => s.Name.Length), "Parts of speech".Length);
+        lines.Add($"| {"Parts of speech".PadRight(width)} | {"Words",7} |");
+        lines.Add($"|{new string('-', width + 2)}|{new string('-', 9)}|");
+        foreach (var set in sets)
+        {
+            lines.Add($"| {set.Name.PadRight(width)} | {set.Count,7} |");
+        }
+
+        lines.Add(string.Empty);
+
+        var morphology = LexiconSource.ReadMorphologyIfPresent(lexiconDirectory);
+        if (morphology is not null)
+        {
+            var enabled = morphology.Where(m => m.Enabled).Select(m => $"`{m.Rule}`").ToList();
+            var disabled = morphology.Where(m => !m.Enabled).Select(m => $"`{m.Rule}`").ToList();
+            AddParagraph(lines,
+                "A word that the table lacks may be derived from a dictionary word by a suffix rule. Rules enabled: " +
+                (enabled.Count == 0 ? "none" : string.Join(", ", enabled)) + ". Rules disabled because they did not " +
+                "reach 95 percent precision on real text: " + (disabled.Count == 0 ? "none" : string.Join(", ", disabled)) + ".");
+        }
+    }
+
+    /// <summary>
+    ///     Names a set of parts of speech given as letters.
+    /// </summary>
+    private static string SetName(string letters)
+    {
+        var names = letters.Select(c => ((DemaConsulting.WordSense.PartOfSpeech)LexiconSource.Letters.IndexOf(c, StringComparison.Ordinal)).ToString());
+        return string.Join(", ", names);
     }
 
     /// <summary>
@@ -156,11 +229,15 @@ internal static class AppendixGenerator
         var posWord = posCount is >= 0 and <= 8
             ? new[] { "none", "one", "two", "three", "four", "five", "six", "seven", "eight" }[posCount]
             : posCount.ToString(System.Globalization.CultureInfo.InvariantCulture);
+        var posNames = string.Join(", ", rows.Select(r => r.Pos).Distinct().Order().Select(p => $"`{p}`"));
         AddParagraph(lines,
-            "The `PartOfSpeech` enumeration defines all eight classic parts of speech, but the shipped table only " +
-            $"produces the {posWord} listed here.");
+            "The `PartOfSpeech` enumeration defines all eight classic parts of speech. The trained senses listed " +
+            $"here, which give the context answers, cover {posWord} of them ({posNames}). A dictionary answer can " +
+            "also be a `Pronoun` or a `Preposition`; `Conjunction` and `Interjection` appear only as candidates of a " +
+            "dictionary word that has other parts of speech too, never as an answer. The table counts the trained " +
+            "senses of each part of speech:");
         lines.Add("| Part of speech | Senses |");
-        lines.Add("|----------------|--------|");
+        lines.Add("| -------------- | -----: |");
         foreach (var pos in rows.Select(r => r.Pos).Distinct().Order())
         {
             lines.Add($"| {"`" + pos + "`",-14} | {rows.Count(r => r.Pos == pos),6} |");

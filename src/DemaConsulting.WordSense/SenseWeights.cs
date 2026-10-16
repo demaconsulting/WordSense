@@ -1,7 +1,7 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Advanced: describes how the scores of a <see cref="LemmaModel"/> are computed from its weight rows.
+///     Advanced: describes how the scores of a <see cref="SenseWeights"/> are computed from its weight rows.
 /// </summary>
 public enum LemmaModelKind
 {
@@ -18,24 +18,20 @@ public enum LemmaModelKind
 }
 
 /// <summary>
-///     Advanced: the trained linear classifier for one ambiguous lemma. Applications normally use
+///     Advanced: the trained linear classifier of one ambiguous lemma. Applications normally use
 ///     <see cref="IWordSenseClassifier"/>; read this to see a lemma's <see cref="AbstainMargin"/>.
 /// </summary>
 /// <remarks>
 ///     Instances are thread-safe provided no caller modifies <see cref="Weights"/> or <see cref="Bias"/>, which
 ///     are exposed as arrays for speed and must be treated as read-only; the constructor copies the arrays it
-///     is given. The order in which the senses are
-///     supplied defines the order of the weight rows. The senses must agree: either all or none carry a meaning,
-///     a lemma with meanings has at least two distinct ones, a (part of speech, meaning) pair is unique, a meaning
-///     has one respelling and distinct meanings have distinct respellings.
+///     is given. The number of weight rows is the number of bias values; the senses of the owning
+///     <see cref="LemmaEntry"/> are scored in the order of the rows.
 /// </remarks>
-public sealed class LemmaModel
+public sealed class SenseWeights
 {
     /// <summary>
-    ///     Initializes a new instance of the <see cref="LemmaModel"/> class.
+    ///     Initializes a new instance of the <see cref="SenseWeights"/> class.
     /// </summary>
-    /// <param name="lemma">The lower-case lemma.</param>
-    /// <param name="senses">The sense definitions (part of speech, meaning, respelling), at least two; their order defines the weight-row order.</param>
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major, <c>rows × dimension</c> values.</param>
     /// <param name="bias">One bias per weight row.</param>
@@ -45,24 +41,13 @@ public sealed class LemmaModel
     ///     otherwise the classifier abstains: <c>Details</c> is null and <c>Abstained</c> is true. Must be finite.
     /// </param>
     /// <param name="dimension">The feature dimension.</param>
-    /// <exception cref="ArgumentNullException">
-    ///     Thrown when an argument or an element of <paramref name="senses"/> is null.
-    /// </exception>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="weights"/> or <paramref name="bias"/> is null.</exception>
     /// <exception cref="ArgumentOutOfRangeException">
     ///     Thrown when <paramref name="kind"/> is not a defined <see cref="LemmaModelKind"/> value.
     /// </exception>
     /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent or a value is not finite.</exception>
-    public LemmaModel(
-        string lemma,
-        IReadOnlyList<SenseDefinition> senses,
-        LemmaModelKind kind,
-        float[] weights,
-        float[] bias,
-        float abstainMargin,
-        int dimension)
+    public SenseWeights(LemmaModelKind kind, float[] weights, float[] bias, float abstainMargin, int dimension)
     {
-        ArgumentNullException.ThrowIfNull(lemma);
-        ArgumentNullException.ThrowIfNull(senses);
         ArgumentNullException.ThrowIfNull(weights);
         ArgumentNullException.ThrowIfNull(bias);
 
@@ -73,15 +58,15 @@ public sealed class LemmaModel
             throw new ArgumentOutOfRangeException(nameof(kind), kind, "The model kind is not defined.");
         }
 
-        var rows = kind == LemmaModelKind.Binary ? 1 : senses.Count;
-        if (senses.Count < 2 || (kind == LemmaModelKind.Binary && senses.Count != 2))
+        var rows = bias.Length;
+        if (kind == LemmaModelKind.Binary ? rows != 1 : rows < 2)
         {
-            throw new ArgumentException("A lemma needs two senses, or more for one-versus-rest.", nameof(senses));
+            throw new ArgumentException("A binary model has one weight row; a one-versus-rest model at least two.", nameof(bias));
         }
 
-        if (dimension <= 0 || weights.Length != rows * dimension || bias.Length != rows)
+        if (dimension <= 0 || weights.Length != rows * dimension)
         {
-            throw new ArgumentException("Weight and bias shapes do not match the sense count and dimension.", nameof(weights));
+            throw new ArgumentException("Weight and bias shapes do not match the dimension.", nameof(weights));
         }
 
         if (!float.IsFinite(abstainMargin) || weights.Any(w => !float.IsFinite(w)) || bias.Any(b => !float.IsFinite(b)))
@@ -89,105 +74,12 @@ public sealed class LemmaModel
             throw new ArgumentException("Model values must be finite.", nameof(weights));
         }
 
-        // Every sense must be valid, and the senses must be consistent as a set
-        foreach (var definition in senses)
-        {
-            ArgumentNullException.ThrowIfNull(definition);
-            definition.Validate();
-        }
-
-        ValidateSet(senses);
-
-        Lemma = lemma;
-        Senses = senses.ToArray();
-
-        // One shared answer per sense, created once
-        Candidates = Senses
-            .Select(s => new WordDetails(lemma, s.Pos, s.Meaning is null ? null : new Pronunciation(s.Meaning, s.Respelling)))
-            .ToArray();
         Kind = kind;
         Weights = (float[])weights.Clone();
         Bias = (float[])bias.Clone();
         AbstainMargin = abstainMargin;
         Dimension = dimension;
     }
-
-    /// <summary>
-    ///     Checks that the senses of a lemma agree with each other.
-    /// </summary>
-    /// <param name="senses">The senses.</param>
-    /// <exception cref="ArgumentException">
-    ///     Thrown when meanings are given for only some senses, a heteronym has fewer than two distinct meanings, a
-    ///     (part of speech, meaning) pair repeats, a meaning has inconsistent respellings, or two distinct meanings
-    ///     share a respelling.
-    /// </exception>
-    internal static void ValidateSet(IReadOnlyList<SenseDefinition> senses)
-    {
-        var withMeaning = senses.Count(s => s.Meaning is not null);
-        if (withMeaning != 0 && withMeaning != senses.Count)
-        {
-            throw new ArgumentException("Either every sense or no sense of a lemma carries a meaning.", nameof(senses));
-        }
-
-        if (senses.Select(s => (s.Pos, s.Meaning)).Distinct().Count() != senses.Count)
-        {
-            throw new ArgumentException("A (part of speech, meaning) pair must be unique within a lemma.", nameof(senses));
-        }
-
-        if (withMeaning == 0)
-        {
-            return;
-        }
-
-        var byMeaning = senses.GroupBy(s => s.Meaning, StringComparer.Ordinal).ToList();
-        if (byMeaning.Count < 2)
-        {
-            throw new ArgumentException("A lemma with meanings needs at least two distinct meanings.", nameof(senses));
-        }
-
-        // One respelling per meaning, and distinct meanings sound different
-        var respellings = new List<string>();
-        foreach (var group in byMeaning)
-        {
-            var spelled = group.Select(s => s.Respelling).Distinct(StringComparer.Ordinal).ToList();
-            if (spelled.Count != 1)
-            {
-                throw new ArgumentException($"Meaning '{group.Key}' has inconsistent respellings.", nameof(senses));
-            }
-
-            if (spelled[0] is { } respelling)
-            {
-                respellings.Add(respelling);
-            }
-        }
-
-        if (respellings.Distinct(StringComparer.Ordinal).Count() != respellings.Count)
-        {
-            throw new ArgumentException("Distinct meanings of a lemma must have distinct respellings.", nameof(senses));
-        }
-    }
-
-    /// <summary>
-    ///     Gets the lower-case lemma this model classifies.
-    /// </summary>
-    public string Lemma { get; }
-
-    /// <summary>
-    ///     Gets the sense definitions in the supplied order (which defines the order of the weight rows).
-    /// </summary>
-    public IReadOnlyList<SenseDefinition> Senses { get; }
-
-    /// <summary>
-    ///     Gets the answer each sense stands for, parallel to <see cref="Senses"/>: the lemma, the part of speech and,
-    ///     for a heteronym, the pronunciation. Exactly one shared instance exists per sense.
-    /// </summary>
-    public IReadOnlyList<WordDetails> Candidates { get; }
-
-    /// <summary>
-    ///     Gets a value indicating whether the lemma is a heteronym, that is, whether its senses have at least two
-    ///     distinct meanings.
-    /// </summary>
-    public bool IsHeteronym => Senses[0].Meaning is not null;
 
     /// <summary>
     ///     Gets how scores derive from the weight rows.
@@ -217,6 +109,11 @@ public sealed class LemmaModel
     public int Dimension { get; }
 
     /// <summary>
+    ///     Gets the number of senses these weights score: two for a binary model, otherwise the number of rows.
+    /// </summary>
+    public int SenseCount => Kind == LemmaModelKind.Binary ? 2 : Bias.Length;
+
+    /// <summary>
     ///     Computes the score of every sense for a normalized feature vector.
     /// </summary>
     /// <remarks>
@@ -225,11 +122,11 @@ public sealed class LemmaModel
     ///     the two highest of these scores.
     /// </remarks>
     /// <param name="feature">The centered, L2-normalized feature vector of length <see cref="Dimension"/>.</param>
-    /// <param name="scores">Receives one score per sense; its length must equal the sense count.</param>
+    /// <param name="scores">Receives one score per sense; its length must equal <see cref="SenseCount"/>.</param>
     /// <exception cref="ArgumentException">Thrown when a length does not match.</exception>
     public void Scores(ReadOnlySpan<float> feature, Span<float> scores)
     {
-        if (feature.Length != Dimension || scores.Length != Senses.Count)
+        if (feature.Length != Dimension || scores.Length != SenseCount)
         {
             throw new ArgumentException("Feature or score length does not match the model.", nameof(feature));
         }
@@ -242,7 +139,7 @@ public sealed class LemmaModel
             return;
         }
 
-        for (var row = 0; row < Senses.Count; row++)
+        for (var row = 0; row < Bias.Length; row++)
         {
             scores[row] = VectorMath.Dot(Weights.AsSpan(row * Dimension, Dimension), feature) + Bias[row];
         }
@@ -272,7 +169,7 @@ public sealed class LemmaModel
         var best = 0;
         var bestScore = float.NegativeInfinity;
         var second = float.NegativeInfinity;
-        for (var row = 0; row < Senses.Count; row++)
+        for (var row = 0; row < Bias.Length; row++)
         {
             var score = VectorMath.Dot(Weights.AsSpan(row * Dimension, Dimension), feature) + Bias[row];
             if (score > bestScore)

@@ -4,49 +4,53 @@ namespace DemaConsulting.WordSense;
 ///     The part of speech of a word in its sentence.
 /// </summary>
 /// <remarks>
-///     All eight traditional parts of speech are defined so that a later table can use them without a breaking
-///     change, but the shipped table only produces <see cref="Noun"/>, <see cref="Verb"/>, <see cref="Adjective"/>
-///     and <see cref="Adverb"/>. Pronouns, prepositions, conjunctions and interjections are never answered.
+///     All eight traditional parts of speech are defined. The context classifier answers only <see cref="Noun"/>,
+///     <see cref="Verb"/>, <see cref="Adjective"/> and <see cref="Adverb"/>; a dictionary answer (see
+///     <see cref="AnswerBasis.Dictionary"/>) may also be a <see cref="Pronoun"/> or <see cref="Preposition"/>, and
+///     <see cref="Conjunction"/> and <see cref="Interjection"/> appear only among the candidates of a word that has
+///     other parts of speech too. Determiners (for example <c>the</c>, <c>a</c>) have no value: such words are unknown.
 /// </remarks>
 public enum PartOfSpeech
 {
     /// <summary>
-    ///     A noun, for example the <c>record</c> in "a world record". Produced by the shipped table.
+    ///     A noun, for example the <c>record</c> in "a world record". Answered by context and by the dictionary.
     /// </summary>
     Noun = 0,
 
     /// <summary>
-    ///     A pronoun. Defined for completeness; the shipped table never produces it.
+    ///     A pronoun, for example <c>she</c>. A dictionary answer or candidate; never a context answer.
     /// </summary>
     Pronoun = 1,
 
     /// <summary>
-    ///     A verb, for example the <c>record</c> in "to record a song". Produced by the shipped table.
+    ///     A verb, for example the <c>record</c> in "to record a song". Answered by context and by the dictionary.
     /// </summary>
     Verb = 2,
 
     /// <summary>
-    ///     An adjective, for example the <c>close</c> in "a close friend". Produced by the shipped table.
+    ///     An adjective, for example the <c>close</c> in "a close friend". Answered by context and by the dictionary.
     /// </summary>
     Adjective = 3,
 
     /// <summary>
-    ///     An adverb, for example the <c>close</c> in "stand close". Produced by the shipped table.
+    ///     An adverb, for example the <c>close</c> in "stand close". Answered by context and by the dictionary.
     /// </summary>
     Adverb = 4,
 
     /// <summary>
-    ///     A preposition. Defined for completeness; the shipped table never produces it.
+    ///     A preposition, for example <c>under</c>. A dictionary answer or candidate; never a context answer.
     /// </summary>
     Preposition = 5,
 
     /// <summary>
-    ///     A conjunction. Defined for completeness; the shipped table never produces it.
+    ///     A conjunction. Appears only as a candidate of a dictionary word that has other parts of speech too; never an
+    ///     answer.
     /// </summary>
     Conjunction = 6,
 
     /// <summary>
-    ///     An interjection. Defined for completeness; the shipped table never produces it.
+    ///     An interjection. Appears only as a candidate of a dictionary word that has other parts of speech too; never
+    ///     an answer.
     /// </summary>
     Interjection = 7,
 }

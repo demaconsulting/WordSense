@@ -11,7 +11,13 @@ namespace DemaConsulting.WordSense.Tests;
 public class UserGuideSampleTests
 {
     private static readonly string[] SampleNames =
-        ["quick-start", "text", "confidence", "pronunciation", "candidates", "tuning", "download", "mirror", "errors"];
+        ["quick-start", "outcomes", "text", "confidence", "pronunciation", "candidates", "tuning", "lexicon", "download",
+            "mirror", "errors"];
+
+    /// <summary>
+    ///     Gets the sample names as theory data, so the theory covers exactly the checked samples.
+    /// </summary>
+    public static TheoryData<string> SampleNameData => new(SampleNames);
 
     /// <summary>
     ///     The user guide code blocks equal the compiled sample code.
@@ -19,15 +25,7 @@ public class UserGuideSampleTests
     /// <param name="name">The sample name.</param>
     /// <returns>A task that completes when the check has run.</returns>
     [Theory]
-    [InlineData("quick-start")]
-    [InlineData("text")]
-    [InlineData("confidence")]
-    [InlineData("pronunciation")]
-    [InlineData("candidates")]
-    [InlineData("tuning")]
-    [InlineData("download")]
-    [InlineData("mirror")]
-    [InlineData("errors")]
+    [MemberData(nameof(SampleNameData))]
     public async Task WordSense_UserGuide_CodeBlock_MatchesCompiledSample(string name)
     {
         var root = ModelAssets.RequireRepositoryRoot();
@@ -69,6 +67,28 @@ public class UserGuideSampleTests
             new WordSenseClassifierOptions { ModelDirectory = location.Directory },
             TestContext.Current.CancellationToken);
 
+        await UserGuideSamples.OutcomesAsync(classifier);
+
+        // The outcomes sample documents these results, so check them rather than only that the sample ran
+        var outcomes = await classifier.ClassifyAsync(
+            ["The", "hunter", "will", "record", "the", "record"], TestContext.Current.CancellationToken);
+        Assert.Equal(AnswerBasis.None, outcomes[0].Basis);
+        Assert.Equal(AnswerBasis.Dictionary, outcomes[1].Basis);
+        Assert.NotNull(outcomes[1].Details);
+        Assert.Equal(AnswerBasis.Dictionary, outcomes[2].Basis);
+        Assert.Null(outcomes[2].Details);
+        Assert.True(outcomes[2].Abstained);
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], outcomes[2].Candidates.Select(c => c.PartOfSpeech).Order());
+        Assert.Equal(AnswerBasis.Context, outcomes[3].Basis);
+        Assert.Equal(AnswerBasis.Context, outcomes[5].Basis);
+        // A context basis without details is the context-abstention outcome: abstained, with the margin still set
+        Assert.All(outcomes.Where(o => o is { Basis: AnswerBasis.Context, Details: null }), o => Assert.True(o.Abstained));
+        Assert.Equal(
+            ["noun", "verb"],
+            classifier.GetCandidates("record").Select(c => c.Pronunciation!.Meaning).Order());
+        Assert.Equal(
+            ["bend", "bend", "weapon"],
+            classifier.GetCandidates("bow").Select(c => c.Pronunciation!.Meaning).Order());
         await UserGuideSamples.TextAsync(classifier);
         await UserGuideSamples.ConfidenceAsync(classifier);
         await UserGuideSamples.PronunciationAsync(classifier);
