@@ -19,7 +19,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     the model creates. Dispose the model after every classifier call has finished.
 ///     </para>
 /// </remarks>
-public abstract class OnnxWordSenseModel : IWordSenseModel
+public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
 {
     private readonly ModelSpec _spec;
     private readonly string? _modelDirectory;
@@ -37,7 +37,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <param name="spec">The model description.</param>
     /// <param name="modelDirectory">A directory that holds the model files, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
-    internal OnnxWordSenseModel(ModelSpec spec, string? modelDirectory, int maxSequenceLength)
+    private protected OnnxWordSenseModel(ModelSpec spec, string? modelDirectory, int maxSequenceLength)
     {
         ArgumentNullException.ThrowIfNull(spec);
         ArgumentOutOfRangeException.ThrowIfLessThan(maxSequenceLength, 8);
@@ -68,7 +68,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     internal Func<string, string?>? GetEnvironmentVariable { get; set; }
 
     /// <inheritdoc />
-    public Task EnsureModelAsync(MirrorOptions? mirror, CancellationToken cancellationToken)
+    public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
     {
         Task task;
         lock (_gate)
@@ -93,17 +93,42 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
             var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
-            _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId);
+            _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
             _encoder ??= OpenEncoderCore(directory);
-            return new ClassificationEngine(Words.Entries, _table, new OnnxFeatureSource(_encoder, _table.Data.Mean));
+            return new OnnxClassifier(_encoder, _table);
         }
     }
+
+    /// <summary>
+    ///     Gets the hidden size (feature dimension) of the encoder; known before <see cref="EnsureModelAsync"/>.
+    /// </summary>
+    public int HiddenSize => _spec.HiddenSize;
+
+    /// <summary>
+    ///     Gets the identifier of the model, which names its folder in the repository, on a mirror and in the store.
+    /// </summary>
+    public string ModelId => _spec.ModelId;
 
     /// <summary>
     ///     Releases the ONNX session. Calling it more than once is harmless.
     /// </summary>
     public void Dispose()
     {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    ///     Releases the ONNX session.
+    /// </summary>
+    /// <param name="disposing">True when called from <see cref="Dispose()"/>.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!disposing)
+        {
+            return;
+        }
+
         lock (_gate)
         {
             if (_disposed)
@@ -175,40 +200,4 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         _spec.LowerCase,
         _maxSequenceLength,
         IntraOpThreads);
-}
-
-/// <summary>
-///     Computes dense context features with an ONNX encoder.
-/// </summary>
-internal sealed class OnnxFeatureSource : IFeatureSource
-{
-    private readonly OnnxEncoder _encoder;
-    private readonly float[] _mean;
-
-    /// <summary>
-    ///     Initializes a new instance of the <see cref="OnnxFeatureSource"/> class.
-    /// </summary>
-    /// <param name="encoder">The encoder.</param>
-    /// <param name="mean">The anchor mean the weights were trained with.</param>
-    public OnnxFeatureSource(OnnxEncoder encoder, float[] mean)
-    {
-        _encoder = encoder;
-        _mean = mean;
-    }
-
-    /// <inheritdoc />
-    public async Task<ContextFeature?[]> GetFeaturesAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken)
-    {
-        var pooled = await _encoder.EncodeAsync(words, targets, cancellationToken).ConfigureAwait(false);
-        var result = new ContextFeature?[pooled.Length];
-        for (var i = 0; i < pooled.Length; i++)
-        {
-            if (pooled[i] is { } vector && vector.Length == _mean.Length && FeatureExtractor.Center(vector, _mean) is { } feature)
-            {
-                result[i] = new ContextFeature(feature, null, 0);
-            }
-        }
-
-        return result;
-    }
 }

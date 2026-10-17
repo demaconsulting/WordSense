@@ -9,17 +9,26 @@ root-tags: [system, quality]
 includes:
   - docs/reqstream/quality.yaml
   - docs/reqstream/word-sense.yaml
-  - docs/reqstream/word-sense/word-sense-table.yaml
-  - docs/reqstream/word-sense/sense-record.yaml
-  - docs/reqstream/word-sense/word-sense-model.yaml
-  - docs/reqstream/word-sense/word-sense-classifier.yaml
   - docs/reqstream/word-sense/word-sense-builder.yaml
-  - docs/reqstream/word-sense-mini-lm.yaml
-  - docs/reqstream/word-sense-mini-lm/mini-lm-word-sense.yaml
-  - docs/reqstream/word-sense-mini-lm/mini-lm-word-sense-model.yaml
-  - docs/reqstream/word-sense-mini-lm/word-piece-tokenizer.yaml
-  - docs/reqstream/word-sense-mini-lm/word-sense-model-downloader.yaml
-  - docs/reqstream/word-sense-mini-lm/download-mirror.yaml
+  - docs/reqstream/word-sense/core.yaml
+  - docs/reqstream/word-sense/core/word-lexicon.yaml
+  - docs/reqstream/word-sense/core/word-sense-contracts.yaml
+  - docs/reqstream/word-sense/basic.yaml
+  - docs/reqstream/word-sense/basic/basic-word-sense-model.yaml
+  - docs/reqstream/word-sense/basic/basic-classifier.yaml
+  - docs/reqstream/word-sense/basic/rules.yaml
+  - docs/reqstream/word-sense/onnx.yaml
+  - docs/reqstream/word-sense/onnx/onnx-word-sense-model.yaml
+  - docs/reqstream/word-sense/onnx/onnx-classifier.yaml
+  - docs/reqstream/word-sense/onnx/onnx-encoder.yaml
+  - docs/reqstream/word-sense/onnx/word-piece-tokenizer.yaml
+  - docs/reqstream/word-sense/onnx/model-downloader.yaml
+  - docs/reqstream/word-sense/onnx/download-mirror.yaml
+  - docs/reqstream/word-sense/onnx/lemma-weights.yaml
+  - docs/reqstream/word-sense/mini-lm.yaml
+  - docs/reqstream/word-sense/mini-lm/mini-lm-word-sense-model.yaml
+  - docs/reqstream/word-sense/bert-base-cased.yaml
+  - docs/reqstream/word-sense/bert-base-cased/bert-base-cased-word-sense-model.yaml
   - docs/reqstream/word-sense/platform-requirements.yaml
   - docs/reqstream/ots/xunit.yaml
   - docs/reqstream/ots/onnxruntime.yaml

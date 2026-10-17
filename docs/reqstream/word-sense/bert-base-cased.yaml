@@ -1,0 +1,34 @@
+---
+# BertBaseCased subsystem requirements (the package DemaConsulting.WordSense.BertBaseCased)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: BertBaseCased Requirements
+        requirements:
+          - id: WordSense-BertBaseCased-Model
+            title: >-
+              The BertBaseCased subsystem shall provide a word-sense model on the bert-base-cased (int8) encoder, a
+              cased model with hidden size 768 that sees the capitalization of the text, with its trained weights
+              embedded in the package.
+            tags: [subsystem]
+            justification: |
+              The larger cased encoder gives callers a more accurate option that can use capitalization as context,
+              and embedding the weights leaves only the model files to be obtained.
+            children:
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Identity
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Weights
+              - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
+            tests:
+              - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
+
+          - id: WordSense-BertBaseCased-Packaging
+            title: >-
+              The BertBaseCased package shall ship its XML documentation with a namespace summary and verified
+              examples, its NuGet metadata, a README and a NOTICE for the model it describes.
+            tags: [subsystem]
+            justification: |
+              The model carries its own license and attribution; consumers learn the API from the package.
+            tests:
+              - BertBaseCasedWordSense_XmlDocExamples_Compile

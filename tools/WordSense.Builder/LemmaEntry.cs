@@ -1,14 +1,15 @@
-namespace DemaConsulting.WordSense;
+using DemaConsulting.WordSense;
+
+namespace WordSense.Builder;
 
 /// <summary>
-///     Advanced: one lemma of the table, with its senses and whether it needs context to choose between them.
+///     One lemma of the word table, with its senses and whether it needs context to choose between them.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     An entry with one sense that needs no context is a dictionary word; an entry with several senses that needs no
-///     context is a dictionary word whose candidates are known but which nobody can resolve (only its candidates are
-///     known); a context entry (<see cref="IsContextual"/>) is a lemma that an encoder model's
-///     <see cref="WordSenseWeightsTable"/> can disambiguate. Applications normally use <see cref="IWordSenseClassifier"/>.
+///     context is a dictionary word whose candidates are known but which nobody can resolve; a context entry
+///     (<see cref="IsContextual"/>) is a lemma that a model's weights can disambiguate.
 ///     </para>
 ///     <para>
 ///     The senses must agree: a (part of speech, meaning) pair is unique; either all or none carry a meaning; a lemma
@@ -18,7 +19,7 @@ namespace DemaConsulting.WordSense;
 ///     and thread-safe.
 ///     </para>
 /// </remarks>
-public sealed class LemmaEntry
+internal sealed class LemmaEntry
 {
     /// <summary>
     ///     Initializes a new instance of the <see cref="LemmaEntry"/> class.
@@ -68,7 +69,7 @@ public sealed class LemmaEntry
 
         // One shared answer per sense, created once
         Candidates = Senses
-            .Select(s => new WordDetails(lemma, s.Pos, s.Meaning is null ? null : new Pronunciation(s.Meaning, s.Respelling)))
+            .Select(s => new WordDetails(lemma, s.Pos, s.Meaning, s.Respelling))
             .ToArray();
     }
 
@@ -141,10 +142,6 @@ public sealed class LemmaEntry
     ///     Gets the answer each sense stands for, parallel to <see cref="Senses"/>: the lemma, the part of speech and,
     ///     for a heteronym, the pronunciation. Exactly one shared instance exists per sense of this entry instance.
     /// </summary>
-    /// <remarks>
-    ///     The table creates dictionary entries on demand, so two lookups of the same dictionary lemma return
-    ///     different entry instances with equal, but not reference-equal, candidates.
-    /// </remarks>
     public IReadOnlyList<WordDetails> Candidates { get; }
 
     /// <summary>

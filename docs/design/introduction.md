@@ -1,8 +1,8 @@
 # Introduction
 
-This document provides the detailed design for the WordSense library, a .NET library
-that tells the part of speech and pronunciation of English words in text, answering words that have one part of
-speech from an embedded dictionary and ambiguous words in context.
+This document provides the detailed design for the WordSense library, a .NET library that tells the part of
+speech and pronunciation of English words in text. Words that have one sense are answered from an embedded
+lexicon; words that have several senses are answered in context by an interchangeable word-sense model.
 
 ## Purpose
 
@@ -25,37 +25,45 @@ This document is intended for:
 This document covers the detailed design of the WordSense system and its constituent
 software items, specifically:
 
-- **WordSense (System)** — The core package DemaConsulting.WordSense: the lexicon, the model abstraction and the
-  classifier; it has no runtime dependency
-- **WordSenseModel (Unit)** — the model abstraction (`IWordSenseModel`) that the classifier uses to embed words
-- **WordSenseTable (Unit)** — embedded lexicon table of lemma entries, forms and the resolver, and the per-model
-  weights table
-- **SenseRecord (Unit)** — immutable answer values, answer basis, sense definition validation and abstention rule
-- **WordSenseClassifier (Unit)** — public classification entry point, with or without a model
-- **WordSenseBuilder (Unit)** — non-shipped table builder tool
-- **WordSenseMiniLM (System)** — The package DemaConsulting.WordSense.MiniLM: the MiniLM model, its model
-  management and the embedded weights; it depends on the core package and on ONNX Runtime
-- **MiniLMWordSense (Unit)** — factory that assembles a model-backed classifier and loads the embedded weights
-- **MiniLMWordSenseModel (Unit)** — ONNX Runtime implementation of the model abstraction
-- **WordPieceTokenizer (Unit)** — BERT uncased word-piece tokenizer
-- **DownloadMirror (Unit)** — user mirror configuration
-- **WordSenseModelDownloader (Unit)** — ordered, verified model download
+- **WordSense (System)** — the whole library, delivered as five layered NuGet packages
+- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and the public contracts;
+  it has no third-party dependency
+  - **WordLexicon (Unit)** — the embedded lexicon of known words and their senses, including the internal reader of
+    the lexicon blob
+  - **WordSenseContracts (Unit)** — the model and classifier interfaces, the mirror options and the answer values
+- **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a rule-based model that needs no files
+  - **BasicWordSenseModel (Unit)** — the public rule-based model
+  - **BasicClassifier (Unit)** — lexicon lookup followed by the rules
+  - **Rules (Unit)** — the ordered hand-written rules and their confidences
+- **Onnx (Subsystem)** — the package `DemaConsulting.WordSense.Onnx`: the machinery shared by the encoder models
+  - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management
+  - **OnnxClassifier (Unit)** — scoring of the candidate senses of a word from the encoder output
+  - **OnnxEncoder (Unit)** — ONNX inference session and mean pooling per word
+  - **WordPieceTokenizer (Unit)** — BERT WordPiece tokenizer, uncased or cased
+  - **ModelDownloader (Unit)** — ordered, verified download of model files
+  - **DownloadMirror (Unit)** — validated mirror configuration
+  - **LemmaWeights (Unit)** — per-lemma weights, their blob reader, matching to the lexicon and the feature
+    computation
+- **MiniLM (Subsystem)** — the package `DemaConsulting.WordSense.MiniLM`
+  - **MiniLMWordSenseModel (Unit)** — the all-MiniLM-L6-v2 int8 model
+- **BertBaseCased (Subsystem)** — the package `DemaConsulting.WordSense.BertBaseCased`
+  - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model
+- **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs
+  and measures the models
 
-The OnnxRuntime OTS runtime dependency of the MiniLM package is also covered.
-
-A shared package for ONNX-based models (a `WordSense.Onnx` package) is intentionally not created yet. With one
-model, the ONNX session handling, tokenizer and model management stay in the MiniLM package; the shared package
-is deferred until a second model exists and shows which parts the models really have in common.
+The ONNX Runtime OTS runtime dependency of the Onnx package is also covered. The core package and the Basic package
+have no third-party runtime dependency.
 
 OTS items are intentionally outside the SysML2 model: the model describes only the software items of
-WordSense (the system and its units), while the OTS items are documented by their own design, requirements
-and verification documents.
+WordSense (the system, its subsystems and units), while the OTS items are documented by their own design,
+requirements and verification documents.
 
 The following OTS items are also covered:
 
 - **ApiMark** — API documentation generation tool
 - **BuildMark** — build-notes documentation tool
 - **FileAssert** — document assertion tool
+- **OnnxRuntime** — ONNX inference engine used by the Onnx package
 - **Pandoc** — Markdown-to-HTML conversion tool
 - **ReqStream** — requirements traceability tool
 - **ReviewMark** — file review enforcement tool
@@ -85,59 +93,77 @@ diagram or the prose below.
 
 ![Software Structure](SoftwareStructureView.svg)
 
-WordSense ships as two packages, each modeled as a system with no subsystems; its units sit directly under it.
-The core system `DemaConsulting.WordSense` has no runtime dependency and answers every word that its lexicon
-settles. The MiniLM system `DemaConsulting.WordSense.MiniLM` adds a model that resolves the contextual words and
-carries the only runtime dependency, ONNX Runtime. The MiniLM system uses the core system; the core system does not
-know it.
+WordSense ships as five NuGet packages, each modeled as one subsystem of the single WordSense system. The packages
+form layers:
 
-![WordSense core system](WordSenseView.svg)
+- The **core** package defines the vocabulary: the lexicon of known words and the contracts (`IWordSenseModel`,
+  `IWordSenseClassifier`, `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
+  weights and no ONNX code.
+- The **Basic** package implements the contracts with hand-written rules. It references the core package only.
+- The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
+  tokenizer, weights and scoring. It references the core package and ONNX Runtime.
+- The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model and embeds the
+  weights trained for it. They reference the Onnx package.
 
-![WordSense MiniLM system](WordSenseMiniLMView.svg)
+The dependency rule is that a package may reference only the packages in layers below it: core references nothing,
+Basic and Onnx reference core, and MiniLM and BertBaseCased reference Onnx (and through it core). No package
+references a sibling model package. The builder tool references all five packages and is never shipped.
+
+![WordSense system](WordSenseView.svg)
+
+The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, calls
+`EnsureModelAsync` once, creates an `IWordSenseClassifier` and classifies tokenized text. Every classifier looks each
+word up in `WordLexicon` first; only a word with several senses needs the model's context decision.
 
 ## Folder Layout
 
-The source code folder structure mirrors the software structure organization, with file paths
-and descriptions as follows:
+The source code folder structure mirrors the packages, and the packages mirror the subsystems:
 
 ```text
-src/DemaConsulting.WordSense/                      — core system
-├── IWordSenseModel.cs, WordSenseModelMismatchException.cs — model abstraction unit
-├── WordSenseTable.cs, WordSenseWeightsTable.cs, LemmaEntry.cs, SenseWeights.cs, LexicalIndex.cs,
-│   LemmaMorphology.cs, LemmaResolution.cs, TableReader.cs, VectorMath.cs,
-│   WordSenseTableFormatException.cs                — table unit
-├── PartOfSpeech.cs, Pronunciation.cs, WordDetails.cs, WordAnalysis.cs, AnswerBasis.cs, SenseDefinition.cs,
-│   AbstainRule.cs, TextSplitter.cs                 — sense record unit
-├── WordSenseClassifier.cs (also declares IWordSenseClassifier and WordSenseToken),
-│   WordSenseClassifierOptions.cs, FeatureExtractor.cs — classifier unit
-├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
-├── generated/                                     — generated API reference (not committed)
-└── Resources/wordsense-lexicon.bin                — embedded lexicon (context lemmas, forms and dictionary)
+src/DemaConsulting.WordSense/                      — core subsystem
+├── WordLexicon.cs, WordsBlob.cs                    — word-lexicon unit
+├── IWordSenseModel.cs (also MirrorOptions), IWordSenseClassifier.cs (also WordSense), WordDetails.cs (also
+│   PartOfSpeech)                                   — word-sense-contracts unit
+├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
+└── Resources/words.bin                             — embedded lexicon blob (resource of the word-lexicon unit)
 
-src/DemaConsulting.WordSense.MiniLM/               — MiniLM system
-├── MiniLMWordSense.cs, MiniLMWordSenseOptions.cs  — factory unit
-├── MiniLMWordSenseModel.cs                        — model unit
-├── WordPieceTokenizer.cs, TokenizedText.cs        — tokenizer unit
-├── DownloadMirror.cs                              — mirror unit
-├── WordSenseModelDownloader.cs, WordSenseModelLocation.cs, WordSenseModelCatalog.cs — downloader unit
-├── WordSenseModelDownloaderOptions.cs             — downloader unit; also declares WordSenseModelDownloadProgress
-│                                                    and WordSenseModelDownloadException
-├── NamespaceDoc.cs                                — namespace description for the generated API reference (no code)
-├── generated/                                     — generated API reference (not committed)
-└── Resources/weights.<model-id>.<onnx-sha256>.bin — embedded weights of the model, keyed by model id and the
-                                                     SHA-256 of its ONNX file
+src/DemaConsulting.WordSense.Basic/                — basic subsystem
+├── BasicWordSenseModel.cs                          — basic-word-sense-model unit
+├── BasicClassifier.cs                              — basic-classifier unit
+├── Rules.cs                                        — rules unit
+└── NamespaceDoc.cs
 
-model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer file, SHA256SUMS)
+src/DemaConsulting.WordSense.Onnx/                 — onnx subsystem
+├── OnnxWordSenseModel.cs                           — onnx-word-sense-model unit
+├── OnnxClassifier.cs                               — onnx-classifier unit
+├── OnnxEncoder.cs                                  — onnx-encoder unit
+├── WordPieceTokenizer.cs, TokenizedText.cs         — word-piece-tokenizer unit
+├── ModelDownloader.cs (also ModelSpec, ModelFile)  — model-downloader unit
+├── DownloadMirror.cs                               — download-mirror unit
+├── LemmaWeights.cs, WeightsBlob.cs, WeightedLemmaTable.cs, FeatureExtractor.cs, VectorMath.cs — lemma-weights unit
+└── NamespaceDoc.cs
 
-tools/WordSense.Builder/                           — builder unit (not shipped)
-corpus/lexicon/                                    — lexicon, corrections, classes, gated words, morphology rules and
-                                                     provenance (builder unit input)
+src/DemaConsulting.WordSense.MiniLM/               — mini-lm subsystem
+├── MiniLMWordSenseModel.cs                         — mini-lm-word-sense-model unit
+├── NamespaceDoc.cs
+└── Resources/weights.bin                           — embedded weights of the MiniLM model
+
+src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
+├── BertBaseCasedWordSenseModel.cs                  — bert-base-cased-word-sense-model unit
+├── NamespaceDoc.cs
+└── Resources/weights.bin                           — embedded weights of the bert-base-cased model
+
+model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
+                                                      SHA256SUMS) of each encoder model
+tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
+corpus/                                            — builder inputs: sense inventory, anchor, holdout and form
+                                                      sentences, dictionary lexicon, provenance
 ```
 
-The folder structure is flat because the systems have no subsystems. The lexicon files are data inputs of the
-builder unit; the table unit holds the compiled result, so no separate unit exists for the dictionary. The model
-files under `model/<model-id>/` are the same files that a mirror serves as `<mirror>/<model-id>/<file>` and that
-the per-user store keeps as `<store>/<model-id>/`.
+The `generated/` folders of the packages hold the generated API reference and are not committed. The corpus files
+are data inputs of the builder unit; the word-lexicon unit holds the compiled result, so no separate unit exists for
+the dictionary. The model files under `model/<model-id>/` are the same files that a mirror serves as
+`<mirror>/<model-id>/<file>` and that the per-user store keeps as `<store>/<model-id>/`.
 
 ## Document Conventions
 
@@ -145,24 +171,29 @@ Throughout this document:
 
 - Class names, method names, property names, and file names appear in `monospace` font.
 - The word **shall** denotes a design constraint that the implementation must satisfy.
-- Section headings within each unit chapter follow a consistent structure: overview, data model,
-  methods (or algorithm), error handling, and interactions with other units; a unit may add further sections
-  where it needs them (for example thread safety).
-- Unit chapters of the core system are in the folder `word-sense/` and those of the MiniLM system in the folder
-  `word-sense-mini-lm/`.
+- Section headings within each unit chapter follow a consistent structure: purpose, data model, key methods,
+  error handling, dependencies and callers.
+- Subsystem chapters are in the folder `word-sense/`, and the unit chapters of each subsystem are in the folder of
+  the same name below it (for example `word-sense/onnx/`). The builder unit chapter is directly in `word-sense/`.
 - Text tables are used in preference to diagrams, which may not render in all PDF viewers.
 
 ## Companion Artifact Structure
 
 Each software item has corresponding artifacts in parallel directory trees:
 
-- Requirements: `docs/reqstream/{system}/.../{item}.yaml` (kebab-case)
-- Design docs: `docs/design/{system}/.../{item}.md` (kebab-case)
-- Verification design: `docs/verification/{system}/.../{item}.md` (kebab-case)
-- Source code: `src/{System}/.../{Item}.cs` (PascalCase for C#)
-- Tests: `test/{System}.Tests/.../{Item}Tests.cs` (PascalCase for C#)
-- SysML2 model: `docs/sysml2/model/{system}/.../{item}.sysml` (kebab-case)
+- Requirements: `docs/reqstream/{system}/[{subsystem}/]{item}.yaml` (kebab-case)
+- Design docs: `docs/design/{system}/[{subsystem}/]{item}.md` (kebab-case)
+- Verification design: `docs/verification/{system}/[{subsystem}/]{item}.md` (kebab-case)
+- Source code: `src/{PackageName}/{Item}.cs` (PascalCase for C#); the package folder is the subsystem
+- Tests: `test/{PackageName}.Tests/{Item}Tests.cs` (PascalCase for C#); the builder tests are in
+  `test/WordSense.Builder.Tests/`
+- SysML2 model: `docs/sysml2/model/{system}/[{subsystem}/]{item}.sysml` (kebab-case)
 - Review-sets: defined in `.reviewmark.yaml`
+
+For example, the unit `LemmaWeights` of the Onnx subsystem has the requirements file
+`docs/reqstream/word-sense/onnx/lemma-weights.yaml`, the design `docs/design/word-sense/onnx/lemma-weights.md`, the
+verification design `docs/verification/word-sense/onnx/lemma-weights.md`, the sources in
+`src/DemaConsulting.WordSense.Onnx/` and the tests in `test/DemaConsulting.WordSense.Onnx.Tests/`.
 
 ## References
 

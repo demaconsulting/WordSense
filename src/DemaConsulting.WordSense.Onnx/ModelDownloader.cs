@@ -23,6 +23,7 @@ internal sealed record ModelFile(string Name, string Sha256);
 /// <param name="LowerCase">True when the model is uncased.</param>
 /// <param name="WeightsAssembly">The assembly that embeds the trained weights.</param>
 /// <param name="WeightsResourceName">The manifest resource name of the trained weights.</param>
+/// <param name="HiddenSize">The hidden size (output dimension) of the encoder.</param>
 internal sealed record ModelSpec(
     string ModelId,
     IReadOnlyList<ModelFile> Files,
@@ -30,7 +31,8 @@ internal sealed record ModelSpec(
     string VocabularyFileName,
     bool LowerCase,
     Assembly WeightsAssembly,
-    string WeightsResourceName);
+    string WeightsResourceName,
+    int HiddenSize);
 
 /// <summary>
 ///     Obtains and verifies the files of a model: from the per-user store, a mirror or the GitHub LFS copy.

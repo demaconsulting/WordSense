@@ -1,0 +1,51 @@
+---
+# BertBaseCasedWordSenseModel unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: BertBaseCased Requirements
+        sections:
+          - title: BertBaseCasedWordSenseModel Requirements
+            requirements:
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Identity
+                title: >-
+                  BertBaseCasedWordSenseModel shall identify itself as bert-base-cased-int8 with hidden size 768 and use
+                  a cased vocabulary.
+                tags: [unit]
+                justification: |
+                  The identifier names the model's folder in the repository, on a mirror and in the store, and the
+                  weights were trained for exactly this cased encoder.
+                tests:
+                  - BertBaseCasedWordSenseModel_ModelIdAndHiddenSize_AreBertBaseCased
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
+                title: >-
+                  BertBaseCasedWordSenseModel shall require the files model_int8.onnx, vocab.txt, config.json and
+                  tokenizer.json, each pinned by its SHA-256 digest.
+                tags: [unit]
+                justification: |
+                  A model file that does not match the pinned digest could silently change results.
+                tests:
+                  - BertBaseCasedWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Weights
+                title: >-
+                  BertBaseCasedWordSenseModel shall use the trained weights embedded in its assembly and classify the
+                  senses of ambiguous words with them.
+                tags: [unit]
+                justification: |
+                  Embedded weights make the package self-contained apart from the model files.
+                tests:
+                  - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
+
+              - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
+                title: >-
+                  BertBaseCasedWordSenseModel shall accept an optional model directory and a maximum sequence length
+                  that defaults to 128.
+                tags: [unit]
+                justification: |
+                  Offline callers supply their own copy of the files; the weights were trained with the default length.
+                tests:
+                  - BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128
+                  - BertBaseCasedWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws

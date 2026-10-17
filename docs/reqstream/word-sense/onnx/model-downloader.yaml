@@ -1,0 +1,144 @@
+---
+# ModelDownloader unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: ModelDownloader Requirements
+            requirements:
+              - id: WordSense-Onnx-ModelDownloader-Order
+                title: The downloader shall try the mirror first, when there is one, and then the GitHub LFS copy.
+                tags: [unit]
+                justification: |
+                  A user-provided mirror must take precedence, and the public repository copy is the fallback.
+                tests:
+                  - ModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror
+                  - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+                  - ModelDownloader_EnsureModel_NoMirror_UsesGitHubLfs
+
+              - id: WordSense-Onnx-ModelDownloader-Fallthrough
+                title: >-
+                  The downloader shall fall through to the next source on a failed request, a timeout or a digest
+                  mismatch.
+                tags: [unit]
+                justification: |
+                  A blocked or tampered source must not stop the download when another source works.
+                tests:
+                  - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+                  - ModelDownloader_EnsureModel_Timeout_FallsThrough
+                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+
+              - id: WordSense-Onnx-ModelDownloader-Integrity
+                title: The downloader shall verify the SHA-256 digest of each download and of each existing file.
+                tags: [unit]
+                justification: |
+                  Only verified content may end up in the model store.
+                tests:
+                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureModel_CorruptExistingFile_IsRedownloaded
+                  - ModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace
+
+              - id: WordSense-Onnx-ModelDownloader-Atomic
+                title: >-
+                  The downloader shall store a file in the model's folder of the store only after it is complete and
+                  verified, so that a partial or corrupt file is never visible under its final name.
+                tags: [unit]
+                justification: |
+                  A crash or a cancelled download must not leave a file that a later start would trust.
+                tests:
+                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureModel_Success_LeavesNoTemporaryFiles
+
+              - id: WordSense-Onnx-ModelDownloader-Location
+                title: >-
+                  The downloader shall locate a model in a caller-supplied directory only after verifying that every
+                  model file is present and matches its pinned SHA-256 digest, rejecting a missing or altered file.
+                tags: [unit]
+                justification: |
+                  A user-supplied directory is as untrusted as a download; a stale, truncated or tampered model would
+                  silently produce wrong senses.
+                tests:
+                  - ModelDownloader_FromDirectory_ChecksEveryFile
+
+              - id: WordSense-Onnx-ModelDownloader-StoreRoot
+                title: >-
+                  The downloader shall by default store models in a per-user location, beneath a folder named by the
+                  model identifier, unless the caller supplies a store location.
+                tags: [unit]
+                justification: |
+                  A shared or application-relative store would let one user's download affect another and may not be
+                  writable; per-model folders keep models apart.
+                tests:
+                  - ModelDownloader_DefaultStoreRoot_IsPerUser
+                  - ModelDownloader_EnsureModel_StoreRootOption_StoresInModelFolder
+
+              - id: WordSense-Onnx-ModelDownloader-AllFail
+                title: The downloader shall report every failed attempt when all sources fail.
+                tags: [unit]
+                justification: |
+                  Users need the full list of failures to diagnose network or mirror problems.
+                tests:
+                  - ModelDownloader_EnsureModel_AllSourcesFail_ThrowsWithEveryAttempt
+
+              - id: WordSense-Onnx-ModelDownloader-Present
+                title: The downloader shall make no request for files that are already present and valid.
+                tags: [unit]
+                justification: |
+                  Repeated start-ups must work offline and quickly.
+                tests:
+                  - ModelDownloader_EnsureModel_AlreadyPresent_MakesNoRequests
+
+              - id: WordSense-Onnx-ModelDownloader-Cancel
+                title: The downloader shall stop and propagate cancellation requested by the caller.
+                tags: [unit]
+                justification: |
+                  Cancellation is not a source failure and must not trigger fall-through.
+                tests:
+                  - ModelDownloader_EnsureModel_CallerCancels_ThrowsOperationCanceled
+
+              - id: WordSense-Onnx-ModelDownloader-MirrorConfig
+                title: >-
+                  The downloader shall prefer a programmatic mirror over the environment mirror and shall reject an
+                  invalid environment mirror before any request.
+                tags: [unit]
+                justification: |
+                  Explicit configuration wins over ambient configuration, and bad configuration fails early.
+                tests:
+                  - ModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
+                  - ModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
+                  - ModelDownloader_EnsureModel_InvalidEnvironment_ThrowsBeforeRequests
+                  - ModelDownloader_EnsureModel_InvalidEnvironmentWithValidCache_Throws
+
+              - id: WordSense-Onnx-ModelDownloader-MirrorLayout
+                title: >-
+                  The downloader shall request each file from a mirror at the mirror address followed by the model
+                  identifier and the file name.
+                tags: [unit]
+                justification: |
+                  A fixed layout lets users populate a mirror by copying the model folders from the repository.
+                tests:
+                  - ModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror
+                  - ModelDownloader_EnsureModel_Mirror_RequestsModelIdAndFileName
+
+              - id: WordSense-Onnx-ModelDownloader-Credentials
+                title: The downloader shall send mirror credentials only to the mirror's own origin.
+                tags: [unit]
+                justification: |
+                  Public hosts, and hosts a mirror redirects to, must never receive the user's credentials.
+                tests:
+                  - ModelDownloader_EnsureModel_BearerToken_SentOnlyToMirror
+                  - ModelDownloader_EnsureModel_BasicCredentials_SentToMirror
+                  - ModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere
+                  - ModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials
+                  - ModelDownloader_EnsureModel_RedirectLoop_FallsThrough
+
+              - id: WordSense-Onnx-ModelDownloader-Options
+                title: The downloader shall reject an invalid request timeout before any request.
+                tags: [unit]
+                justification: |
+                  A zero or negative timeout can never work and must fail clearly.
+                tests:
+                  - ModelDownloader_EnsureModel_InvalidRequestTimeout_ThrowsBeforeRequests
+                  - ModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds

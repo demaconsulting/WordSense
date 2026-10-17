@@ -11,22 +11,11 @@ namespace DemaConsulting.WordSense;
 ///     elements of their own (<c>"race"</c> then <c>"."</c>, never <c>"race."</c>).
 ///     </para>
 ///     <para>
-///     Each word is lower-cased and looked up in <see cref="Words"/>. The curly apostrophe (U+2019) is read as
-///     <c>'</c>, and a possessive <c>'s</c> is accepted for a lemma that has a trained classifier. A word without an
-///     entry is unknown. A word with one sense is answered with confidence 1. A word with several senses is resolved
-///     from its context when the model has a classifier for its lemma; otherwise it stays unresolved.
-///     </para>
-///     <para>
-///     A word that starts with a capital letter and has no trained classifier is looked up only when it is the first
-///     word, follows <c>.</c>, <c>!</c>, <c>?</c>, <c>:</c> or an opening quote or bracket, or is exactly <c>I</c>; any
-///     other capitalized word (usually a name) is unknown.
-///     </para>
-///     <para>
-///     <b>Confidence.</b> For a word with several senses and a classifier, let <c>m</c> be the score margin between
-///     the best and the second-best sense and <c>a</c> the abstain margin of the lemma (never negative). The
-///     confidence is <c>clamp(0.5 + 0.5 * (m - a) / max(a, 0.5), 0, 1)</c>: it is exactly 0.5 at the point where the
-///     lemma's own rule would abstain, grows toward 1 for larger margins and falls toward 0 for smaller ones. A caller
-///     threshold of 0.5 therefore reproduces the lemma's abstain rule; a higher threshold is stricter.
+///     Each word is lower-cased and looked up in <see cref="WordLexicon.Words"/>; the curly apostrophe (U+2019) is read
+///     as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the confidence is 0.
+///     A word with one sense is answered with confidence 1. A word with several senses is resolved from its context;
+///     how the context is used, and what the confidence means, is defined by each model package. A model that cannot
+///     decide leaves <see cref="WordSense.Details"/> null with confidence 0.
 ///     </para>
 ///     <para>
 ///     A classifier is safe for concurrent use. It does not own the model that created it.
@@ -36,7 +25,7 @@ namespace DemaConsulting.WordSense;
 ///     <code>
 ///     // classifier comes from IWordSenseModel.Create()
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words, CancellationToken.None);
+///     WordSense[] senses = await classifier.ClassifyAsync(words);
 ///     foreach (WordSense sense in senses.Where(s => s.Details is not null))
 ///     {
 ///         Console.WriteLine($"{sense.Word}: {sense.Details!.PartOfSpeech} ({sense.Confidence:F2})");
@@ -51,19 +40,20 @@ public interface IWordSenseClassifier
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the list or an element is null.</exception>
+    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed and has to run.</exception>
-    Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken);
+    Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default);
 }
 
 /// <summary>
 ///     The classification of one word.
 /// </summary>
 /// <remarks>
-///     <see cref="Details"/> is null when the word is unknown, or when it has several senses and none could be chosen
-///     (the model has no classifier for it); <see cref="Confidence"/> is then 0. For a word with one sense the
-///     confidence is 1. See <see cref="IWordSenseClassifier"/> for how the confidence of a context decision is derived.
+///     <see cref="Details"/> is null when the word is unknown, or when it has several senses and the model could not
+///     choose one; <see cref="Confidence"/> is then 0. For a word with one sense the confidence is 1. For a word that
+///     was resolved from its context, the confidence is defined by the model package that produced it.
 /// </remarks>
 /// <example>
 ///     <code>
@@ -74,4 +64,4 @@ public interface IWordSenseClassifier
 /// <param name="Word">The word as given by the caller.</param>
 /// <param name="Details">The chosen sense, or <see langword="null"/> when none was chosen.</param>
 /// <param name="Confidence">The confidence in <paramref name="Details"/>, from 0 to 1.</param>
-public sealed record WordSense(string Word, WordDetails? Details, double Confidence);
+public readonly record struct WordSense(string Word, WordDetails? Details, double Confidence);

@@ -1,0 +1,62 @@
+---
+# Rules unit requirements (the hand-written rules of the Basic model)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        sections:
+          - title: Rules Requirements
+            requirements:
+              - id: WordSense-Basic-Rules-ClosedClass
+                title: >-
+                  The rules shall select a part of speech from the word before the target (a modal or auxiliary verb,
+                  the word "to", a subject pronoun, a determiner, a degree adverb or a preposition) and from the word
+                  after it (an auxiliary verb, or a word that can only be a noun).
+                tags: [unit]
+                justification: |
+                  Closed-class words and the possible parts of speech of neighbors are the strongest cheap evidence
+                  of the part of speech of an ambiguous word.
+                tests:
+                  - Rules_Evaluate_AfterModal_SelectsVerb
+                  - Rules_Evaluate_AfterTo_SelectsVerb
+                  - Rules_Evaluate_AfterSubjectPronoun_SelectsVerb
+                  - Rules_Evaluate_AfterDeterminer_PrefersNoun
+                  - Rules_Evaluate_AfterDeterminer_FallsBackToAdjective
+                  - Rules_Evaluate_AfterDegreeAdverb_SelectsAdjective
+                  - Rules_Evaluate_AfterPreposition_SelectsNoun
+                  - Rules_Evaluate_BeforeAuxiliary_SelectsNoun
+                  - Rules_Evaluate_BeforeNoun_SelectsAdjective
+
+              - id: WordSense-Basic-Rules-Order
+                title: >-
+                  The rules shall be tried in one fixed order and the first rule that fires shall decide.
+                tags: [unit]
+                justification: |
+                  A fixed order makes results deterministic and lets the precision of each rule be measured.
+                tests:
+                  - Rules_RuleNames_ListEveryRuleInOrder
+                  - Rules_Evaluate_FirstRuleWins
+
+              - id: WordSense-Basic-Rules-Confidence
+                title: >-
+                  Each rule shall carry a fixed confidence between 0 and 1, documented with the rule, and a result
+                  from a rule shall carry exactly that confidence.
+                tags: [unit]
+                justification: |
+                  Callers rely on the confidence to decide which results to trust; fixed values calibrated to the
+                  measured precision of each rule keep it meaningful.
+                tests:
+                  - Rules_Confidences_AreFixedPerRuleAndBetweenZeroAndOne
+                  - Rules_Evaluate_ResultCarriesRuleConfidence
+
+              - id: WordSense-Basic-Rules-Candidates
+                title: >-
+                  A rule shall fire only when the part of speech it selects is one the target word can have, and no
+                  rule shall fire when none applies.
+                tags: [unit]
+                justification: |
+                  A rule must never select a part of speech the lexicon does not list for the word.
+                tests:
+                  - Rules_Evaluate_SelectedPartOfSpeechNotACandidate_DoesNotFire
+                  - Rules_Evaluate_NoRuleFires_ReturnsNull

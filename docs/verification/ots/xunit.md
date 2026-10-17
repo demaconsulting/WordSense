@@ -18,10 +18,9 @@ run for all scenarios constitutes evidence that both requirements are satisfied.
 
 ### Test Scenarios
 
-#### WordSenseTable_RoundTrip_PreservesAllValues
+#### DownloadMirror_ToString_RedactsSecrets
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that a table written to bytes is
-read back with identical values.
+**Scenario**: xUnit discovers and runs this test; the test verifies that the mirror description hides its secrets.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
@@ -35,10 +34,10 @@ read back with identical values.
 
 **Requirement coverage**: `WordSense-OTS-xUnit-Execute`, `WordSense-OTS-xUnit-Report`.
 
-#### WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+#### WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that the classifier tokens tile the
-input text.
+**Scenario**: xUnit discovers and runs this test; the test verifies that a short text is framed whole by the
+special tokens.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
@@ -46,9 +45,9 @@ input text.
 
 ### Requirements Coverage
 
-- **`WordSense-OTS-xUnit-Execute`**: WordSenseTable_RoundTrip_PreservesAllValues,
+- **`WordSense-OTS-xUnit-Execute`**: DownloadMirror_ToString_RedactsSecrets,
   WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens,
-  WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
-- **`WordSense-OTS-xUnit-Report`**: WordSenseTable_RoundTrip_PreservesAllValues,
+  WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
+- **`WordSense-OTS-xUnit-Report`**: DownloadMirror_ToString_RedactsSecrets,
   WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens,
-  WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+  WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText

@@ -9,7 +9,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     Package: the NuGet package <c>DemaConsulting.WordSense.BertBaseCased</c>, which targets <c>net8.0</c>,
 ///     <c>net9.0</c> and <c>net10.0</c>; it depends on <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. The weights trained for the model are embedded in
-///     the assembly. The roughly 108 MB encoder (<c>encoder_int8.onnx</c>, plus a small <c>vocab.txt</c>) is downloaded
+///     the assembly. The roughly 108 MB encoder (<c>model_int8.onnx</c>, plus <c>vocab.txt</c>, <c>config.json</c> and
+///     <c>tokenizer.json</c>) is downloaded
 ///     once on first use, verified against pinned SHA-256 digests and cached per user, or it is read from a directory you
 ///     supply, in which case no network access happens at all.
 ///     </para>
@@ -21,9 +22,10 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>tools/model-prep/make-bert-encoder.py</c>.
 ///     </para>
 ///     <para>
-///     Offline and air-gapped use: fetch <c>encoder_int8.onnx</c> (SHA-256
+///     Offline and air-gapped use: fetch <c>model_int8.onnx</c> (SHA-256
 ///     <c>dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d</c>) and <c>vocab.txt</c> (SHA-256
-///     <c>eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02</c>) from
+///     <c>eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02</c>), plus <c>config.json</c> and
+///     <c>tokenizer.json</c>, from
 ///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/bert-base-cased-int8/{file}</c>,
 ///     put them in one directory and pass it to the constructor. For a corporate mirror pass a
 ///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional

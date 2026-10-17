@@ -8,8 +8,8 @@ namespace DemaConsulting.WordSense.Basic;
 ///     <para>
 ///     Package: the NuGet package <c>DemaConsulting.WordSense.Basic</c>, which targets <c>net8.0</c>, <c>net9.0</c> and
 ///     <c>net10.0</c>; it depends only on <c>DemaConsulting.WordSense</c>. Install it with
-///     <c>dotnet add package DemaConsulting.WordSense.Basic</c>. The weights trained for the model are embedded in the
-///     assembly; nothing is downloaded. It is small and fast and less accurate than the encoder models; the comparison is
+///     <c>dotnet add package DemaConsulting.WordSense.Basic</c>. It uses hand-written rules; no weights are embedded and
+///     nothing is downloaded. It is small and fast and less accurate than the encoder models; the comparison is
 ///     in the build notes (https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes).
 ///     </para>
 ///     <para>
@@ -20,8 +20,8 @@ namespace DemaConsulting.WordSense.Basic;
 /// <example>
 ///     Quickstart: classify a sentence and read the part of speech of the ambiguous word.
 ///     <code>
-///     using var model = new BasicWordSenseModel();
-///     await model.EnsureModelAsync(null, CancellationToken.None);
+///     var model = new BasicWordSenseModel();
+///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];

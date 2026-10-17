@@ -4,10 +4,13 @@
 - **organization**: DEMA Consulting
 - **project-tagline**: Offline word-sense disambiguation for .NET
 - **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
-  ambiguous English words in context, offline. It ships as two NuGet packages: `DemaConsulting.WordSense`, the core
-  (public API, embedded lexicon, `IWordSenseModel` abstraction; no ONNX dependency, usable without a model), and
-  `DemaConsulting.WordSense.MiniLM`, which adds a managed WordPiece tokenizer, an int8 ONNX MiniLM sentence encoder,
-  a verified model downloader and the per-model weights table (a per-lemma linear classifier) embedded in the assembly.
+  ambiguous English words in context, offline. It ships as five layered NuGet packages: `DemaConsulting.WordSense`,
+  the core (public contracts, embedded lexicon with build-time inflections; no ONNX dependency, no model);
+  `DemaConsulting.WordSense.Basic` (deterministic closed-class and neighbor-part-of-speech rules; no model files);
+  `DemaConsulting.WordSense.Onnx` (shared WordPiece tokenizer, ONNX encoder, verified model downloader with mirror
+  support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Basic and Onnx
+  depend only on core; MiniLM and BertBaseCased depend on Onnx.
 - **languages**: C#, Python (one-off tokenizer fixture generator and the real-text harvest tool `tools/real-text`)
 - **technologies**: .NET, ONNX Runtime, Git LFS
 
@@ -18,7 +21,7 @@
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped table builder and corpus importer)
+│   ├── WordSense.Builder/      (non-shipped builder: words, weights, evaluate, basic-precision, appendix)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/
@@ -33,11 +36,17 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   ├── DemaConsulting.WordSense/          (core package: API, lexicon, IWordSenseModel)
-│   └── DemaConsulting.WordSense.MiniLM/   (MiniLM encoder package: ONNX model, tokenizer, downloader, weights)
+│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded words.bin)
+│   ├── DemaConsulting.WordSense.Basic/          (rule-based model; no files, no network)
+│   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, abstract model)
+│   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights)
+│   └── DemaConsulting.WordSense.BertBaseCased/  (BERT base cased model: pinned files, embedded weights)
 └── test/
     ├── DemaConsulting.WordSense.Tests/
+    ├── DemaConsulting.WordSense.Basic.Tests/
+    ├── DemaConsulting.WordSense.Onnx.Tests/
     ├── DemaConsulting.WordSense.MiniLM.Tests/
+    ├── DemaConsulting.WordSense.BertBaseCased.Tests/
     └── WordSense.Builder.Tests/
 ```
 

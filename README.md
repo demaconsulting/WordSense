@@ -10,136 +10,137 @@
 [![NuGet][badge-nuget]][link-nuget]
 
 WordSense is a .NET library that tells, for words in context, the part of speech and the pronunciation: whether
-"record" is a noun or a verb, and how to say "bow" or "read". It looks every word up in an embedded dictionary of over
-140,000 common words and, only where a word has several meanings, asks the int8-quantized `all-MiniLM-L6-v2` encoder
-(run with ONNX Runtime) to choose from the sentence, using a compact per-model weights table embedded in the assembly.
-The library is split in two packages: the core `DemaConsulting.WordSense` holds the API and the dictionary and needs no
-model, and `DemaConsulting.WordSense.MiniLM` adds the encoder and its weights.
+"record" is a noun or a verb, and how to say "bow" or "read". Every word is looked up in an embedded dictionary of
+over 140,000 common words. Only where a word has several meanings does a model choose from the sentence: either the
+`Basic` model, which uses a few hand-written rules and needs nothing else, or an ONNX encoder model (`MiniLM` or
+`BertBaseCased`) that is more accurate and runs on ONNX Runtime.
 
 ## Features
 
 - 📖 **Dictionary** - Parts of speech for over 140,000 common words, with no model call for most of them
 - 🧠 **Context Aware** - Decides the part of speech of a word from its sentence
 - 🔊 **Pronunciation** - Heteronyms like "bow" and "read" get a meaning id and a respelling
-- 🎯 **744 Trained Lemmas** - Curated heteronyms plus common noun/verb words, decided by context
-- 🤔 **Abstains** - Lists the candidates instead of guessing when unsure
-- 📊 **Confidence** - Every context answer carries a margin and the runner-up
-- 📦 **Two Packages** - The core has no dependencies and works without a model; the MiniLM package adds ONNX Runtime
-- 🔒 **Verified Model** - Downloaded on first use and checked against pinned SHA-256 digests
-- ⚡ **Fast** - A few milliseconds per sentence on a developer workstation
+- 📊 **Confidence** - Every answer carries a confidence from 0 to 1; 0 means no answer
+- 📦 **Layered Packages** - A small core, a dependency-free `Basic` model, and ONNX models you add only if you need them
+- 🔒 **Verified Models** - Encoder files are downloaded on first use and checked against pinned SHA-256 digests
 - 🌍 **Multi-Platform** - Windows, Linux and macOS; .NET 8, 9 and 10
 - ✅ **Continuous Compliance** - Evidence generated on every CI run, following the
   [Continuous Compliance][link-continuous-compliance] methodology
 
 ## Installation
 
+Pick the model package that fits; each one brings the core package `DemaConsulting.WordSense` with it.
+
 ```bash
-dotnet add package DemaConsulting.WordSense
-dotnet add package DemaConsulting.WordSense.MiniLM
+dotnet add package DemaConsulting.WordSense.Basic          # rules only: no model files, no ONNX Runtime
+dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (23 MB model files)
+dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensitive encoder
 ```
 
-`DemaConsulting.WordSense` is the core (API, dictionary, model abstraction) and works on its own, without a model or
-ONNX Runtime: single-sense words are answered and every ambiguous word lists its candidates
-(`WordSenseClassifier.Create()`). `DemaConsulting.WordSense.MiniLM` depends on the core and ONNX Runtime and decides
-the ambiguous trained words from their sentence.
+| Package | Contents | Needs |
+| :--- | :--- | :--- |
+| `DemaConsulting.WordSense` | Contracts and the dictionary (`WordLexicon`) | Nothing |
+| `DemaConsulting.WordSense.Basic` | Rule-based model | Nothing |
+| `DemaConsulting.WordSense.Onnx` | Shared ONNX implementation (brought in by the model packages) | ONNX Runtime |
+| `DemaConsulting.WordSense.MiniLM` | MiniLM model and its weights | Model files, downloaded on first use |
+| `DemaConsulting.WordSense.BertBaseCased` | BERT base cased model and its weights | Model files, downloaded on first use |
 
-Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and, for the MiniLM package, internet access on first use, or a
-mirror, to download the 23 MB encoder model (it is not part of the package). Contributors who clone this repository also
+Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and, for the ONNX models, internet access on first use, or a
+mirror, to download the model files (they are not part of the package). Contributors who clone this repository also
 need [Git LFS](https://git-lfs.com) (`git lfs install`, then `git lfs pull`), because the files in `model/` are stored
 in Git LFS.
 
 ## Usage
 
-The example below is checked by the test suite (`ReadmeSampleTests`): the code block must equal the compiled sample
-code in `test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs`, and the output block must equal what that code
-prints with the real model. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and
-troubleshooting.
+The examples below are checked by the test suite (`ReadmeSampleTests`): each code block must equal the compiled sample
+code in `test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs`, and each output block must equal what that code
+prints. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and troubleshooting.
+
+### MiniLM
 
 <!-- sample:readme -->
 ```csharp
+using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.MiniLM;
 
-// Create a classifier that runs the MiniLM model, downloading and verifying the model on first use
-using var classifier = await MiniLMWordSense.CreateClassifierAsync();
+// Create the model and make sure its files are available (downloaded and verified on first use)
+using var model = new MiniLMWordSenseModel();
+await model.EnsureModelAsync();
 
-// Classify the words of a sentence whose "record", "read" and "bow" are heteronyms
-var words = "The hunter fired an arrow from his bow so I will record a record and read the book yesterday".Split(' ');
-var results = await classifier.ClassifyAsync(words);
+// Classify the words of a sentence whose "bow" and "record" are heteronyms
+var words = "The hunter fired an arrow from his bow so I will record a record".Split(' ');
+var results = await model.Create().ClassifyAsync(words);
 
-// Print the part of speech (or the candidates, or unknown), where the answer comes from, the margin and,
-// for a heteronym, the meaning and the respelling
-foreach (var a in results)
+// Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
+foreach (var result in results)
 {
-    var pos = a.Details?.PartOfSpeech.ToString()
-        ?? (a.Candidates.Count > 0
-            ? string.Join("/", a.Candidates.Select(c => c.PartOfSpeech.ToString()[..3]).Distinct())
-            : "unknown");
-    var say = a.Details?.Pronunciation is { } p ? $"{p.Meaning} {p.Respelling}" : "";
-    Console.WriteLine($"{a.Word,-9} {pos,-24} {a.Basis,-10} {a.Margin,4:F1}  {say}".TrimEnd());
+    var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
+    var say = result.Details?.Respelling ?? "";
+    Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
 }
 ```
 
 <!-- output:readme -->
 ```text
-The       unknown                  None        0.0
-hunter    Noun                     Dictionary  0.0
-fired     Verb                     Dictionary  0.0
-an        unknown                  None        0.0
-arrow     Noun                     Dictionary  0.0
-from      Preposition              Dictionary  0.0
-his       unknown                  None        0.0
-bow       Noun                     Context     4.2  weapon boh
-so        Nou/Pro/Adj/Adv/Con/Int  Dictionary  0.0
-I         Pronoun                  Dictionary  0.0
-will      Nou/Ver                  Dictionary  0.0
-record    Verb                     Context     4.8  verb rih-KORD
-a         unknown                  None        0.0
-record    Noun                     Context     7.7  noun REK-urd
-and       Nou/Con                  Dictionary  0.0
-read      Ver                      Context     0.8
-the       unknown                  None        0.0
-book      Noun                     Context     7.4
-yesterday Nou/Adv                  Dictionary  0.0
+TBD (generated by the build phase from the sample above)
 ```
 
-Every word is looked up in the embedded dictionary. A word with one part of speech ("hunter") is answered from the
-dictionary alone (`Basis` is `Dictionary`, `Margin` 0). A word with a trained classifier ("bow", "record", "book") is
-decided by the encoder from its sentence (`Basis` is `Context`) and carries a `Margin`, the confidence, and for a
-heteronym a pronunciation: a `Meaning` id and a plain `Respelling` that a speech synthesizer can use. A word with
-several parts of speech and no classifier ("will", "so") is not answered: `Details` is `null`, `Abstained` is `true`
-and `Candidates` lists the possibilities (shortened above). The classifier also abstains from a word whose margin is
-too low ("read": both of its pronunciations are verbs, so only the verb shows). Determiners such as "the" are
-`unknown` (`Basis` is `None`), like numbers and capitalized words inside a sentence. The encoder runs only for a
-sentence that has a word that needs it. The model is stored in a per-user directory under its model ID
-(`all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL` (optionally with
-`WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a `DownloadMirror`;
-it is tried first, and it serves the files at `{mirror}/all-MiniLM-L6-v2-int8/{file}`. The files can be copied to a
-machine without internet access. See the [user guide][link-user-guide] for details and the
-[senses appendix][link-appendix] for the list of lemmas.
+### Basic
+
+<!-- sample:basic -->
+```csharp
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.Basic;
+
+// The basic model uses the embedded dictionary and a few rules, so there is nothing to download
+var model = new BasicWordSenseModel();
+await model.EnsureModelAsync();
+
+var words = "They will record the record".Split(' ');
+var results = await model.Create().ClassifyAsync(words);
+
+// A word the model cannot decide has no details and a confidence of 0
+foreach (var result in results)
+{
+    var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
+    Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}");
+}
+```
+
+<!-- output:basic -->
+```text
+TBD (generated by the build phase from the sample above)
+```
+
+A word that is not in the dictionary has no details and a confidence of 0. A word with one meaning is answered with
+confidence 1. A word with several meanings is resolved from its sentence by the model; its confidence is defined by the
+model package (the `Basic` model uses a fixed confidence per rule; the ONNX models derive it from the margin of the
+trained classifier, and the best candidate is still returned when the confidence is low). The encoder runs only for a
+sentence that has a word that needs it. Encoder model files are stored in a per-user directory under their model ID
+(for example `all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL`
+(optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
+`MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. See
+the [user guide][link-user-guide] for details and the [senses appendix][link-appendix] for the list of lemmas.
 
 ## Accuracy and Limitations
 
-On 12,789 held-out rows the best sense is correct 96.91 % of the time. With abstention 98.73 % of the answered rows
-are correct (90.74 % answered). That corpus is partly project-written (LLM-generated) text, so it is the optimistic
-figure: on 689 real, blind-judged sentences of 39 lemmas the best sense is correct 92.60 % of the time, and the part of
-speech is correct 97.22 % of the time. Words that are in neither the dictionary nor the table are never answered,
-forms that collide with other words (`saw`, `left`, `found`, ...) are excluded from the trained lemmas, and the
-classifier abstains instead of guessing. The dictionary answers (a word with one part of speech) were measured on
-Universal Dependencies English EWT: 97 % to 99.9 % precision per part of speech, and the right part of speech is among the
-candidates of a multi-meaning word 97.3 % of the time; 51.8 % of the sentences there need no encoder call. The
-dictionary knows plural `-s`/`-es`/`-ies` and `-ly` forms but not `-ed`, `-ing` or `-er`/`-est`, and determiners,
-numbers and proper names are unknown. The
-[user guide][link-user-guide] has the details, the caveats and troubleshooting.
+Accuracy depends on the model and is measured by the repository's build tool on held-out and real-text sentences; the
+results of all models are collected in the [model comparison][link-model-comparison] and the Basic model's in the
+[Basic evaluation][link-basic-evaluation]. Words that are in neither the dictionary nor the trained lemmas are not
+decided by a model, and a model that cannot decide a word leaves its details empty instead of guessing. The
+dictionary knows the inflected forms that were materialized when it was built; determiners, numbers and proper names
+are unknown. The [user guide][link-user-guide] has the details, the caveats and troubleshooting.
 
 ## Documentation
 
-- **User Guide**: usage, configuration, API reference, accuracy, limitations, licensing, extending the corpus and
+- **User Guide**: choosing a package, usage, configuration, limitations, licensing, extending the corpus and
   troubleshooting ([user guide][link-user-guide])
 - **Senses appendix**: every supported lemma with its parts of speech, pronunciation meanings and forms
   ([appendix][link-appendix])
 - **Design, Verification and Requirements**: generated from `docs/`
 - **Trace Matrix**: requirements to test traceability
 - **Model provenance**: `docs/build_notes/model-provenance.md`
+- **Package split**: `docs/build_notes/package-split.md`
 
 ## Contributing
 
@@ -149,11 +150,11 @@ standards, and the pull request process.
 ## License
 
 Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
-`all-MiniLM-L6-v2` model is licensed under the Apache License 2.0; ONNX Runtime under the MIT License. The embedded
-dictionary is derived from Moby Part-of-Speech II by Grady Ward, which is in the public domain. The training
-corpus (not shipped in the NuGet package, only the derived vectors) contains openly licensed sentences recorded with
-their source and licence in `corpus/provenance/`; rows under `CC BY-SA 4.0` keep that licence if the corpus itself is
-redistributed (see the user guide).
+`all-MiniLM-L6-v2` and `bert-base-cased` models are licensed under the Apache License 2.0; ONNX Runtime under the MIT
+License. The embedded dictionary is derived from Moby Part-of-Speech II by Grady Ward, which is in the public domain.
+The training corpus (not shipped in the NuGet packages, only the derived vectors) contains openly licensed sentences
+recorded with their source and licence in `corpus/provenance/`; rows under `CC BY-SA 4.0` keep that licence if the
+corpus itself is redistributed (see the user guide).
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 
@@ -180,3 +181,5 @@ By contributing to this project, you agree that your contributions will be licen
 [link-contributing]: https://github.com/demaconsulting/WordSense/blob/main/CONTRIBUTING.md
 [link-user-guide]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/introduction.md
 [link-appendix]: https://github.com/demaconsulting/WordSense/blob/main/docs/user_guide/appendix-senses.md
+[link-model-comparison]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md
+[link-basic-evaluation]: https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md

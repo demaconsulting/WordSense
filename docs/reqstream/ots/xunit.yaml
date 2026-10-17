@@ -17,9 +17,9 @@ sections:
               test method.
             tags: [ots]
             tests:
-              - WordSenseTable_RoundTrip_PreservesAllValues
+              - WordsBlob_Read_UnknownMagic_Throws
               - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
-              - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+              - WeightsBlob_Read_UnknownMagic_Throws
           - id: WordSense-OTS-xUnit-Report
             title: xUnit shall record test results in TRX output files.
             justification: |
@@ -29,6 +29,6 @@ sections:
               correctly.
             tags: [ots]
             tests:
-              - WordSenseTable_RoundTrip_PreservesAllValues
+              - WordsBlob_Read_UnknownMagic_Throws
               - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
-              - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
+              - WeightsBlob_Read_UnknownMagic_Throws

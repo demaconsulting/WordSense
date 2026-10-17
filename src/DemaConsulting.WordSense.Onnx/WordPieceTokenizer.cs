@@ -40,7 +40,7 @@ internal sealed class WordPieceTokenizer
     ///     Initializes a new instance of the <see cref="WordPieceTokenizer"/> class.
     /// </summary>
     /// <param name="vocabulary">The vocabulary entries; the id of an entry is its zero-based position.</param>
-    /// <param name="lowerCase">True for an uncased model: lower-case and strip accents; false for a cased model.</param></param>
+    /// <param name="lowerCase">True for an uncased model: lower-case and strip accents; false for a cased model.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="vocabulary"/> is null.</exception>
     /// <exception cref="ArgumentException">
     ///     Thrown when the vocabulary lacks <c>[UNK]</c>, <c>[CLS]</c> or <c>[SEP]</c>.

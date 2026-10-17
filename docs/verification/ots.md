@@ -18,7 +18,7 @@ detailed approach and named test scenarios.
 | ApiMark     | Pipeline evidence: FileAssert assertions on the generated API reference     |
 | BuildMark   | Self-validation CLI suite plus pipeline evidence via build-notes document   |
 | FileAssert  | Self-validation CLI suite plus transitive evidence from document assertions |
-| OnnxRuntime | Pipeline evidence: real-model and MiniLM end-to-end tests                   |
+| OnnxRuntime | Pipeline evidence: real-model tests of the Onnx and model packages          |
 | Pandoc      | Pipeline evidence: FileAssert assertions on each generated HTML document    |
 | ReqStream   | Self-validation CLI suite plus pipeline evidence via --enforce traceability |
 | ReviewMark  | Self-validation CLI suite plus pipeline evidence via review plan/report     |

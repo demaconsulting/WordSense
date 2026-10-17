@@ -2,5 +2,5 @@ DemaConsulting.WordSense.Basic
 
 Copyright DEMA Consulting. Licensed under the MIT License.
 
-The embedded weights (weights.bin) were trained on the sentence corpus of this repository with a feature extractor
-written for this project. They contain no third-party model data.
+The model consists of hand-written rules that run over the word lexicon of DemaConsulting.WordSense. It embeds no
+trained weights and no third-party model data.

@@ -1,280 +1,102 @@
 ---
 # WordSenseBuilder (build-time tool) unit requirements
+#
+# The builder is a repository tool and is never shipped in a package.
 
 sections:
-  - title: WordSenseBuilder Requirements
-    requirements:
-      - id: WordSense-Builder-Corpus
-        title: The builder shall validate corpus format and the disjointness of training and evaluation data.
-        tags: [unit]
-        justification: |
-          Leaked or malformed sentences invalidate the accuracy measurement.
-        tests:
-          - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
-          - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
-          - WordSenseBuilder_Corpus_DirectoryAndDisjointness
-          - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
-          - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
+  - title: WordSense Requirements
+    sections:
+      - title: WordSenseBuilder Requirements
+        requirements:
+          - id: WordSense-WordSenseBuilder-Words
+            title: >-
+              The builder shall build the word lexicon of the core package deterministically from the corpus and
+              the dictionary, with every sense of a trained lemma, the inflected forms of dictionary words and the
+              generated forms, and shall write it in the compact binary format that the core package reads.
+            tags: [unit]
+            justification: |
+              The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it.
+            tests:
+              - WordSenseBuilder_Words_SameCorpus_IsByteIdentical
+              - WordSenseBuilder_Words_TrainedLemma_ListsAllSenses
+              - WordSenseBuilder_Words_GeneratedForm_NeverReplacesKnownWord
+              - WordSenseBuilder_WordsBlobWriter_RoundTrip_ReadsBackThroughCoreReader
 
-      - id: WordSense-Builder-Trainer
-        title: The builder shall train classifiers deterministically.
-        tags: [unit]
-        justification: |
-          The embedded table must be reproducible from the committed corpus.
-        tests:
-          - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+          - id: WordSense-WordSenseBuilder-Weights
+            title: >-
+              The builder shall train, for a named encoder model and the shared corpus, one set of per-lemma weights
+              deterministically, and shall write it, naming the model, to the package of that model.
+            tags: [unit]
+            justification: |
+              Each encoder package needs classifiers trained for its own embedding space; training every model from
+              the one shared corpus keeps the models comparable.
+            tests:
+              - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+              - WordSenseBuilder_WeightsBlobWriter_RoundTrip_ReadsBackThroughOnnxReader
+              - WordSenseBuilder_Program_Weights_UnknownModel_ReportsError
 
-      - id: WordSense-Builder-Importer
-        title: >-
-          The builder shall import valid sentence batches, dropping only offending rows
-          and excluding thin lemmas, and shall be idempotent.
-        tags: [unit]
-        justification: |
-          Partial or invalid batches must never enter the corpus.
-        tests:
-          - WordSenseBuilder_BatchImporter_ImportsValidatesAndIsIdempotent
-          - WordSenseBuilder_BatchImporter_MissingLemmaIsWarning
-          - WordSenseBuilder_BatchImporter_DropsFewBadRows
-          - WordSenseBuilder_BatchImporter_RejectsBatchWithManyBadRows
-          - WordSenseBuilder_BatchImporter_ExcludesThinLemmas
-          - WordSenseBuilder_Program_Run_ReportsErrors
-          - WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption
-          - WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError
+          - id: WordSense-WordSenseBuilder-Evaluate
+            title: >-
+              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
+              real-text sentences of the corpus, and report accuracy and coverage.
+            tags: [unit]
+            justification: |
+              Each model's accuracy claim must be checkable against a repeatable measurement on sentences that were
+              never used for training.
+            tests:
+              - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
+              - WordSenseBuilder_Evaluator_Render_ReportsCountsAndAccuracy
 
-      - id: WordSense-Builder-Inventory
-        title: >-
-          The builder shall require every anchor label to be a sense in the sense inventory and every inventory
-          sense to have anchors, read and write the inventory with its part of speech, meaning and respelling
-          columns, and derive the part of speech of each sense of an imported batch from its label.
-        tags: [unit]
-        justification: |
-          The inventory is the source of the parts of speech and pronunciations shipped in the table; a mismatch
-          with the anchors would ship senses that cannot be predicted or labels without an answer.
-        tests:
-          - WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows
-          - WordSenseBuilder_SenseInventory_WriteAndRead_RoundTrips
-          - WordSenseBuilder_SenseInventory_Validate_ChecksBothDirections
-          - WordSenseBuilder_SenseInventory_Validate_ConsistentCorpus_Passes
-          - WordSenseBuilder_SenseInventory_MeaningAndRespelling_RoundTripAndAreOptional
-          - WordSenseBuilder_SenseInventory_InvalidColumns_AreRejected
-          - WordSenseBuilder_BatchImporter_WritesDerivedInventory
-          - WordSenseBuilder_BatchImporter_UnmappedLabel_IsInvalid
-          - WordSenseBuilder_BatchImporter_PartOfSpeechLabels_AreAssigned
+          - id: WordSense-WordSenseBuilder-BasicPrecision
+            title: >-
+              The builder shall measure the precision of each rule of the basic model on the training anchors only,
+              and report it next to the confidence the rule currently has.
+            tags: [unit]
+            justification: |
+              The fixed rule confidences must be calibrated on data that is not used for the final accuracy
+              measurement, so that the reported accuracy stays honest.
+            tests:
+              - WordSenseBuilder_BasicPrecision_Measure_CountsFiringsPerRule
+              - WordSenseBuilder_BasicPrecision_Measure_UsesOnlyTrainingAnchors
+              - WordSenseBuilder_BasicPrecision_Render_ListsConfidencePerRule
 
-      - id: WordSense-Builder-InventoryRules
-        title: >-
-          The builder shall reject an inventory in which a sense lacks a defined part of speech, a lemma gives
-          meanings to only some of its senses, a heteronym has fewer than two distinct meanings, two senses share a
-          part of speech and meaning, a meaning has inconsistent respellings, or distinct meanings share a
-          respelling, and shall allow two senses of one
-          part of speech that have different meanings.
-        tags: [unit]
-        justification: |
-          The part of speech and pronunciation shown to callers come from the inventory, so an inventory that
-          cannot describe the senses unambiguously would make the shipped answers untrue.
-        tests:
-          - WordSenseBuilder_SenseInventory_ValidateRules_FlagsViolations
-          - WordSenseBuilder_SenseInventory_ValidateRules_AllowsTwoSensesOfOnePartOfSpeechWithDifferentMeanings
-          - WordSenseBuilder_Program_ValidatePos_ReportsViolations
+          - id: WordSense-WordSenseBuilder-Appendix
+            title: >-
+              The builder shall generate the senses appendix of the user guide deterministically from the sense
+              inventory, the forms and the anchor sentences, shall reject incomplete input, and the committed
+              appendix shall equal the generated one.
+            tags: [unit]
+            justification: |
+              The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
+              describe the trained corpus; generating it, and failing when the committed file is stale, makes drift
+              impossible.
+            tests:
+              - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
+              - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
+              - WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions
+              - WordSenseBuilder_Appendix_Committed_MatchesCorpus
 
-      - id: WordSense-Builder-Accuracy
-        title: >-
-          The builder shall report holdout accuracy at the sense, meaning, part-of-speech and pronunciation levels,
-          with part of speech and pronunciation shown with and without abstention.
-        tags: [unit]
-        justification: |
-          Each fact the library answers needs its own measured accuracy, so that claims in the documentation can
-          be checked against the report.
-        tests:
-          - WordSenseBuilder_AccuracyEvaluator_CountsPosAndPronunciationLevels
-          - WordSenseBuilder_TableBuilder_Build_ReportHasPosAndPronunciationSections
-          - WordSenseBuilder_TableBuilder_Build_HeteronymReportsMeaningLevel
+          - id: WordSense-WordSenseBuilder-Corpus
+            title: The builder shall validate corpus format and the disjointness of training and evaluation data.
+            tags: [unit]
+            justification: |
+              Leaked or malformed sentences invalidate the accuracy measurement.
+            tests:
+              - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
+              - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
+              - WordSenseBuilder_Corpus_DirectoryAndDisjointness
+              - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
+              - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
 
-      - id: WordSense-Builder-Provenance
-        title: >-
-          The builder shall require a provenance row with an allowed licence for every real sentence it
-          imports, and shall resolve sense judgements by two blind judges and an adjudicator.
-        tags: [unit]
-        justification: |
-          Real sentences carry licences and attribution duties; the corpus must record where each came from,
-          and only sentences whose sense is settled by judge agreement or adjudication may become labeled data.
-        tests:
-          - WordSenseBuilder_RealJudge_Resolve_FollowsTheRules
-          - WordSenseBuilder_RealImport_Validate_RequiresProvenance
-          - WordSenseBuilder_RealImport_Validate_RejectsBadProvenanceRows
-          - WordSenseBuilder_RealImport_Validate_RejectsLongAndGutenbergSentences
-          - WordSenseBuilder_RealImport_Validate_CoversNewLemmaBatchesAndAcceptsAuthoredOrigin
-          - WordSenseBuilder_RealImport_Import_EverySentenceHasProvenanceAndValidates
-          - WordSenseBuilder_RealImport_Import_MissingDecisions_WritesNothing
-          - WordSenseBuilder_RealImport_Import_MalformedDecisionsRow_Throws
-          - WordSenseBuilder_RealJudge_ParseAnswers_RejectsMalformedAnswers
-          - WordSenseBuilder_RealJudge_Merge_MissingJudgeC_Throws
-          - WordSenseBuilder_RealJudge_Merge_AdjudicatedRow_InWorkDirectoryNamedOut
-          - WordSenseBuilder_RealJudge_MalformedRows_AreDataErrors
-          - WordSenseBuilder_RealGap_Import_WritesSeparateAnchorsAndHoldoutWithProvenance
-          - WordSenseBuilder_RealGap_Import_CountsExistingRealHoldoutAndReportsShortfall
-          - WordSenseBuilder_RealGap_ReadPlan_RejectsBadNamesAndRows
-          - WordSenseBuilder_RealJudge_Export_GapPlanMenusAreFrozenInTheWorkDirectory
-          - WordSenseBuilder_PosAudit_RowId_IsStable
-
-      - id: WordSense-Builder-AuthoredImport
-        title: >-
-          The builder shall import independently authored anchor and holdout sentences with a provenance row
-          per sentence that names the author role, reject any batch in which a sentence repeats or the anchors
-          and holdout overlap, and report the per-sense counts against the minima.
-        tags: [unit]
-        justification: |
-          Senses without enough real sentences are completed by authored sentences; keeping the anchor and
-          holdout authors separate and the splits disjoint keeps the holdout a fair test, and the recorded
-          provenance keeps authored rows distinguishable from real ones.
-        tests:
-          - WordSenseBuilder_RealAuthored_Import_WritesProvenanceDeclaresSenseOnceAndIsDeterministic
-          - WordSenseBuilder_RealAuthored_Import_RejectsBadRows_AndWritesNothing
-          - WordSenseBuilder_RealAuthored_Run_IsWiredAndExistingRowsIgnoreAuthoredBatches
-      - id: WordSense-Builder-NounVerbImport
-        title: >-
-          The builder shall import merged noun and verb sentences for lemmas that reach the anchor and holdout
-          minimums, split each sense by source group so the holdout shares no group with the anchors where
-          possible, normalize licences, generate the inflected forms without adding collision forms, and report
-          the lemmas it left untrained and the reason.
-        tags: [unit]
-        justification: |
-          Part-of-speech ambiguous lemmas need real noun and verb sentences; a deterministic, group-aware split
-          keeps the holdout a fair test, and a documented list of excluded and untrained lemmas keeps the
-          coverage claim honest.
-        tests:
-          - WordSenseBuilder_NounVerbImport_Inflect_FollowsTheRules
-          - WordSenseBuilder_NounVerbImport_Import_WritesSplitsProvenanceFormsAndReport
-          - WordSenseBuilder_NounVerbImport_Import_DropsBadRowsAndLeavesOutCollisionForms
-          - WordSenseBuilder_NounVerbImport_Allocate_SeparatesGroupsAndCountsSharing
-          - WordSenseBuilder_NounVerbImport_GroupOf_UsesContributorDocumentWorkAndPage
-          - WordSenseBuilder_NounVerbImport_Run_IsWiredAcceptsUserOriginAndExistingRowsIgnoreBatches
-      - id: WordSense-Builder-NounVerbGate
-        title: >-
-          The builder shall evaluate each imported noun and verb lemma against a quality gate (holdout best-sense
-          accuracy, per-sense answered accuracy and coverage), record the lemmas that fail with the reason and
-          the numbers, remove them from the corpus files, and keep them out of later imports.
-        tags: [unit]
-        justification: |
-          A mechanical, repeatable gate keeps weak lemmas out of the shipped table and leaves an auditable
-          record of what was dropped and why.
-        tests:
-          - WordSenseBuilder_NounVerbGate_Evaluate_AppliesTheThresholds
-          - WordSenseBuilder_NounVerbGate_Drop_RemovesTheLemmaAndTheImportKeepsItOut
-          - WordSenseBuilder_NounVerbGate_Drop_FiltersTheFirstLineOfFilesWithoutHeader
-          - WordSenseBuilder_Program_NounVerbGate_UsageErrors_AreReported
-      - id: WordSense-Builder-LearningCurve
-        title: >-
-          The builder shall report, per lemma and in aggregate, best-sense accuracy, answered rate and answered
-          accuracy against the number of anchors per sense on the holdout and real-text rows, with a plateau
-          estimate, and the report shall be identical on repeat runs.
-        tags: [unit]
-        justification: |
-          Maintainers need to know whether more anchor sentences still help; a repeatable report makes
-          the figures auditable.
-        tests:
-          - WordSenseBuilder_LearningCurve_StableHash_IsFixed
-          - WordSenseBuilder_LearningCurve_Draw_CapsPerSenseAndIsRepeatable
-          - WordSenseBuilder_LearningCurve_RunAndWrite_CapsAtAvailableAnchorsAndIsByteIdentical
-          - WordSenseBuilder_LearningCurve_Run_RejectsNoSubsets
-          - WordSenseBuilder_LearningCurve_Run_SeparatesRealAndHoldoutSets
-          - WordSenseBuilder_LearningCurve_EstimatePlateau_ExtrapolatesAndFlagsPlateau
-          - WordSenseBuilder_AnalysisData_Load_ReadsCorpusFilesAndProvenance
-
-      - id: WordSense-Builder-ErrorDiagnosis
-        title: >-
-          The builder shall classify every misclassified or abstained evaluation sentence as a coverage gap, an
-          overlap or an ambiguous (label-noise suspect) case from its similarity to the nearest anchors.
-        tags: [unit]
-        justification: |
-          Different error causes need different remedies; the class tells maintainers whether to add sentences,
-          change the encoder or consumer rules, or fix labels.
-        tests:
-          - WordSenseBuilder_ErrorDiagnosis_Nearest_IsHighestDotProduct
-          - WordSenseBuilder_ErrorDiagnosis_Classify_FollowsThresholds
-          - WordSenseBuilder_ErrorDiagnosis_Run_ClassifiesEachErrorAndIsByteIdentical
-
-      - id: WordSense-Builder-WeakLemmas
-        title: >-
-          The builder shall rank weak lemmas from the diagnosis and learning curve and give each a recommendation
-          (more-sentences, consumer-rule, stronger-encoder or fix-labels) with an expected gain.
-        tags: [unit]
-        justification: |
-          A ranked, explained list directs corpus work to where it pays off most.
-        tests:
-          - WordSenseBuilder_WeakLemmas_Recommend_MapsDominantClass
-          - WordSenseBuilder_WeakLemmas_Rank_OrdersWeakLemmasByScore
-          - WordSenseBuilder_WeakLemmas_RunAndWrite_RanksFromFilesAndRendersStableReport
-
-      - id: WordSense-Builder-Appendix
-        title: >-
-          The builder shall generate the senses appendix of the user guide deterministically from the sense inventory,
-          the forms and the anchor sentences, shall reject incomplete input, and the committed appendix shall equal the
-          generated one.
-        tags: [unit]
-        justification: |
-          The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
-          describe the trained corpus; generating it, and failing when the committed file is stale, makes drift
-          impossible.
-        tests:
-          - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
-          - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
-          - WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions
-          - WordSenseBuilder_Appendix_Committed_MatchesCorpus
-
-      - id: WordSense-Builder-LexiconImport
-        title: >-
-          The builder shall derive the filtered dictionary deterministically from the public-domain Moby Part-of-Speech
-          II list, apply the committed corrections, record the provenance and the licence of the source, give an
-          inflected word the senses of its base where real text uses it so, and shall not emit words it cannot
-          classify safely.
-        tags: [unit]
-        justification: |
-          The dictionary ships in the library, so its origin and licence must be recorded and the derivation must be
-          reproducible and reviewable from the committed files alone.
-        tests:
-          - WordSenseBuilder_Lexicon_ImportMoby_IsDeterministic
-          - WordSenseBuilder_Lexicon_ImportMoby_GerundOfVerb_GainsVerbSense
-
-      - id: WordSense-Builder-LexiconBuild
-        title: >-
-          The builder shall embed the committed dictionary and the enabled morphology rules into the table it builds,
-          shall build without a dictionary only when asked to explicitly, and the committed table shall hold the same
-          decoded content as a fresh build from the committed files.
-        tags: [unit]
-        justification: |
-          The dictionary in the shipped table must be the reviewed one, and a missing dictionary or rule file must
-          never silently change what the table may answer; the comparison is made on decoded content because
-          compressed bytes may differ between runtimes.
-        tests:
-          - WordSenseBuilder_Lexicon_Build_EmbedsLexicon
-          - WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors
-          - WordSenseBuilder_Lexicon_CommittedTable_IsUpToDate
-
-      - id: WordSense-Builder-ModelWeights
-        title: >-
-          The builder shall train, for a given encoder model and the shared corpus, one weights table that names the
-          model, the digest of its model file and the digest of the lexicon table it builds, and shall write it
-          beside the lexicon table.
-        tags: [unit]
-        justification: |
-          Each model package needs its own trained classifiers, and a weights table that does not name its model and
-          lexicon cannot be checked when it is loaded. Training every model from the one shared corpus keeps the
-          models comparable.
-        tests:
-          - WordSenseBuilder_Lexicon_Build_EmbedsLexicon
-          - WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors
-
-      - id: WordSense-Builder-LexiconEval
-        title: >-
-          The builder shall evaluate each dictionary class and each morphology rule against a gold-annotated English
-          corpus and, when asked to enforce, fail unless there is evidence and every class and every enabled rule
-          reaches a precision of at least 95 %.
-        tags: [unit]
-        justification: |
-          A dictionary answer has no context to fall back on, so its correctness must be measured, a rule that
-          falls short must not ship enabled, and a class or rule without any measurement proves nothing.
-        tests:
-          - WordSenseBuilder_Lexicon_Eval_EnforcesPrecisionGate
-          - WordSenseBuilder_Lexicon_Eval_Enforce_FailsWithoutEvidenceAndNamesTheRule
-          - WordSenseBuilder_Lexicon_Eval_ThinEvidence_IsOnlyANote
+          - id: WordSense-WordSenseBuilder-Usage
+            title: >-
+              The builder shall provide the commands words, weights, evaluate, basic-precision and appendix, and shall
+              report an unknown command, a malformed option or a data error with a message and a non-zero exit code.
+            tags: [unit]
+            justification: |
+              A build tool used in scripts must fail visibly and say why.
+            tests:
+              - WordSenseBuilder_Program_Run_ReportsErrors
+              - WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption
+              - WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError
+              - WordSenseBuilder_Program_Run_UnknownCommand_ReportsUsage

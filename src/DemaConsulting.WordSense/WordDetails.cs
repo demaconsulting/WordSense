@@ -17,7 +17,7 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     foreach (WordDetails sense in Words.Find("lead"))
+///     foreach (WordDetails sense in WordLexicon.Words["lead"])
 ///     {
 ///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, {sense.Meaning ?? "-"}, {sense.Respelling ?? "-"}");
 ///     }
@@ -35,3 +35,53 @@ namespace DemaConsulting.WordSense;
 ///     <see langword="null"/> when there is none. ASCII letters, hyphens and apostrophes only; it is not IPA.
 /// </param>
 public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string? Meaning, string? Respelling);
+
+/// <summary>
+///     The part of speech of a word.
+/// </summary>
+/// <remarks>
+///     All eight traditional parts of speech are defined. Determiners (for example <c>the</c>, <c>a</c>) have no
+///     value: such words have no entry in <see cref="WordLexicon.Words"/>.
+/// </remarks>
+public enum PartOfSpeech
+{
+    /// <summary>
+    ///     A noun, for example the <c>record</c> in "a world record".
+    /// </summary>
+    Noun = 0,
+
+    /// <summary>
+    ///     A pronoun, for example <c>she</c>.
+    /// </summary>
+    Pronoun = 1,
+
+    /// <summary>
+    ///     A verb, for example the <c>record</c> in "to record a song".
+    /// </summary>
+    Verb = 2,
+
+    /// <summary>
+    ///     An adjective, for example the <c>close</c> in "a close friend".
+    /// </summary>
+    Adjective = 3,
+
+    /// <summary>
+    ///     An adverb, for example the <c>close</c> in "stand close".
+    /// </summary>
+    Adverb = 4,
+
+    /// <summary>
+    ///     A preposition, for example <c>under</c>.
+    /// </summary>
+    Preposition = 5,
+
+    /// <summary>
+    ///     A conjunction, for example <c>because</c>.
+    /// </summary>
+    Conjunction = 6,
+
+    /// <summary>
+    ///     An interjection, for example <c>hello</c>.
+    /// </summary>
+    Interjection = 7,
+}

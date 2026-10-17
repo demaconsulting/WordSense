@@ -7,26 +7,28 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Model packages provide implementations: <c>DemaConsulting.WordSense.MiniLM</c> and
-///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once, and
-///     <c>DemaConsulting.WordSense.Basic</c> needs no model files at all. The usual sequence is to call
-///     <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts as needed.
+///     Model packages provide implementations: <c>DemaConsulting.WordSense.Basic</c> chooses senses with hand-written
+///     rules and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
+///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
+///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts
+///     as needed.
 ///     </para>
 ///     <para>
-///     A model is thread-safe for concurrent classification. Dispose it once, after every call has finished; a
-///     classification that needs the model after disposal throws <see cref="ObjectDisposedException"/>.
+///     A model is thread-safe for concurrent classification. A model that holds native resources (the encoder models)
+///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The rule
+///     model holds nothing to release.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     using IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
-///     await model.EnsureModelAsync(null, CancellationToken.None);
+///     IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
+///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
-///     WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"], CancellationToken.None);
+///     WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"]);
 ///     Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
 ///     </code>
 /// </example>
-public interface IWordSenseModel : IDisposable
+public interface IWordSenseModel
 {
     /// <summary>
     ///     Makes sure every file the model needs is present locally and verified, downloading what is missing.
@@ -45,7 +47,7 @@ public interface IWordSenseModel : IDisposable
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
     /// <exception cref="HttpRequestException">Thrown when a file could not be obtained from any source.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    Task EnsureModelAsync(MirrorOptions? mirror, CancellationToken cancellationToken);
+    Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a classifier on this model.
@@ -76,42 +78,32 @@ public interface IWordSenseModel : IDisposable
 ///     <para>
 ///     When no mirror is passed to <see cref="IWordSenseModel.EnsureModelAsync"/>, the variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
-///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one.
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one. Models that need no files ignore the mirror.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"))
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"), BearerToken: "token")
 ///     {
-///         BearerToken = "token",
 ///         Timeout = TimeSpan.FromMinutes(2),
 ///     };
 ///     </code>
 /// </example>
 /// <param name="BaseUri">The absolute <c>http</c> or <c>https</c> base location of the mirror.</param>
-public sealed record MirrorOptions(Uri BaseUri)
+/// <param name="BearerToken">The bearer token, or null when none is needed. Exclusive with <paramref name="Credentials"/>.</param>
+/// <param name="Credentials">The HTTP Basic credential, or null when none is needed. Exclusive with <paramref name="BearerToken"/>.</param>
+/// <param name="StoreRoot">
+///     The directory beneath which model folders are stored, or null for the per-user default
+///     (<c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>).
+/// </param>
+/// <param name="Timeout">The longest time a single download attempt of a single file may take, or null for 5 minutes.</param>
+public sealed record MirrorOptions(
+    Uri BaseUri,
+    string? BearerToken = null,
+    ICredentials? Credentials = null,
+    string? StoreRoot = null,
+    TimeSpan? Timeout = null)
 {
-    /// <summary>
-    ///     Gets the bearer token, or null when none is needed. Exclusive with <see cref="Credentials"/>.
-    /// </summary>
-    public string? BearerToken { get; init; }
-
-    /// <summary>
-    ///     Gets the HTTP Basic credential, or null when none is needed. Exclusive with <see cref="BearerToken"/>.
-    /// </summary>
-    public ICredentials? Credentials { get; init; }
-
-    /// <summary>
-    ///     Gets the directory beneath which model folders are stored, or null for the per-user default
-    ///     (<c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>).
-    /// </summary>
-    public string? StoreRoot { get; init; }
-
-    /// <summary>
-    ///     Gets the longest time a single download attempt of a single file may take, or null for 5 minutes.
-    /// </summary>
-    public TimeSpan? Timeout { get; init; }
-
     /// <summary>
     ///     Writes the members without ever printing the bearer token or a credential.
     /// </summary>
@@ -121,7 +113,9 @@ public sealed record MirrorOptions(Uri BaseUri)
     {
         builder.Append($"{nameof(BaseUri)} = {BaseUri}, ");
         builder.Append($"{nameof(BearerToken)} = {(BearerToken is null ? "null" : "***")}, ");
-        builder.Append($"{nameof(Credentials)} = {(Credentials is null ? "null" : "***")}");
+        builder.Append($"{nameof(Credentials)} = {(Credentials is null ? "null" : "***")}, ");
+        builder.Append($"{nameof(StoreRoot)} = {StoreRoot ?? "null"}, ");
+        builder.Append($"{nameof(Timeout)} = {(Timeout is null ? "null" : Timeout.ToString())}");
         return true;
     }
 }

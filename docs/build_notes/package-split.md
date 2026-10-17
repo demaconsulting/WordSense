@@ -1,55 +1,55 @@
 # Package Split
 
-This note records the split of the single `DemaConsulting.WordSense` package into a core package and a MiniLM
-package, the decisions behind it, and the evidence that the accuracy did not change.
+This note records the split of WordSense into five NuGet packages and the rules behind it.
 
 ## Packages
 
-- `DemaConsulting.WordSense` (core): the public API (`WordSenseClassifier`, `WordAnalysis`, `WordDetails`,
-  `Pronunciation`, `PartOfSpeech`, `AnswerBasis`), the lexicon table (`WSNS` v6), the weights table format (`WSNW` v1)
-  and the `IWordSenseModel` abstraction. No dependencies.
-- `DemaConsulting.WordSense.MiniLM`: `MiniLMWordSenseModel` (ONNX encoder), `WordPieceTokenizer`, the model catalog
-  and downloader, `DownloadMirror`, the `MiniLMWordSense` factory and the embedded MiniLM weights table. Depends on
-  `DemaConsulting.WordSense` and ONNX Runtime.
+Package dependencies:
 
-The core package has no ONNX or tokenizer dependency. `WordSenseClassifier.Create()` works from the lexicon alone: a
-word with one part of speech is answered, a contextual multi-sense word abstains with `AnswerBasis.Dictionary` and
-its candidates. `MiniLMWordSense.CreateClassifierAsync` returns the same classifier wired to the MiniLM model.
+- `DemaConsulting.WordSense` (core): `IWordSenseModel`, `IWordSenseClassifier`, `MirrorOptions`, `WordSense`,
+  `WordDetails`, `PartOfSpeech` and `WordLexicon.Words`. Depends on nothing.
+- `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with closed-class word lists and neighbor rules; no files.
+  Depends on the core.
+- `DemaConsulting.WordSense.Onnx`: the abstract `OnnxWordSenseModel`, the encoder, the tokenizer, the downloader and
+  the weights reader. Depends on the core and ONNX Runtime.
+- `DemaConsulting.WordSense.MiniLM`: `MiniLMWordSenseModel` with embedded weights. Depends on Onnx.
+- `DemaConsulting.WordSense.BertBaseCased`: `BertBaseCasedWordSenseModel` with embedded weights. Depends on Onnx.
 
-## Decisions
+```text
+WordSense.MiniLM ───────┐
+                        ├──> WordSense.Onnx ──> WordSense (core)
+WordSense.BertBaseCased ┘                            ^
+WordSense.Basic ─────────────────────────────────────┘
+```
 
-- **Weights are per model.** The weights table (`WSNW`) records the model ID, the SHA-256 of the model file, the
-  SHA-256 of the lexicon it was trained against, the dimension, the mean vector and the per-lemma weights. The
-  classifier checks them against the model (`IWordSenseModel.EnsureWeightsMatch`, which throws
-  `WordSenseModelMismatchException`), so weights are never applied to a different model or lexicon.
-- **Model files live in `model/<model-id>/`.** The same model ID names the mirror folder, the per-user store folder
-  and the GitHub LFS path. See `model-provenance.md`.
-- **One weights resource per model** is embedded in the model package as
-  `weights.<model-id>.<onnx-sha256>.bin`, trained by `tools/WordSense.Builder` from the shared corpus.
-- **No shared `WordSense.Onnx` package yet.** The ONNX session and tokenizer code could be shared by several ONNX
-  models, but with one model it would be an abstraction without a second user. It is deferred until a second model
-  exists.
-- **Behavior is unchanged.** The split moves code and splits the table; it does not retrain or change the scoring.
+The namespace of each package equals the package name.
 
-## Accuracy Evidence
+## Rules
 
-The builder `build` and `real-eval` reports before the split (`artifacts/baseline`) and after it (`artifacts/after`)
-are byte-identical.
+- **The core knows nothing of models.** It has no vectors, weights, ONNX or tokenizer, and it names no model package
+  in code. A model is anything that implements `IWordSenseModel`.
+- **Basic and Onnx depend on the core only.** The encoder packages depend on `Onnx`; nothing depends on an encoder
+  package.
+- **Weights belong to a model package.** Each encoder package embeds one `weights.bin` that was trained for its exact
+  model files (dense `WSX1` format) and is checked against their SHA-256 digests.
+- **Model files live in `model/<model-id>/`**, which also names the mirror folder, the per-user store folder and the
+  GitHub LFS path. See `model-provenance.md`.
+- **The word table is shared.** `WordLexicon.Words` holds the senses of all known surface forms, including the
+  inflections that the builder `words` command materializes at build time, so no model needs morphology at run time.
+- **Lifetime.** `IWordSenseModel` is not `IDisposable`; `OnnxWordSenseModel` is, because it holds the ONNX session.
+- **Mirror configuration** is the sealed record `MirrorOptions` in the core, so every model package takes the same
+  argument; models that need no files ignore it.
 
-| Measure | Before | After |
-| ------- | -----: | ----: |
-| Holdout best-sense accuracy (12,789 rows) | 96.91 % | 96.91 % |
-| Holdout best-meaning accuracy | 97.20 % | 97.20 % |
-| Holdout accuracy of answered rows | 98.73 % | 98.73 % |
-| Holdout coverage (answered) | 90.74 % | 90.74 % |
+## Deviations from the Earlier Design
 
-The real-text evaluation after the split (689 real sentences of 39 lemmas, `real-eval`):
+The classifier of the single package decided capitalization and possessive cases itself; these heuristics were dropped,
+because the word table now contains the inflected forms and the models classify what the table knows. Only the dense
+weights format is supported.
 
-| Set | Rows | Best sense | Meaning | Answered | Answered accuracy |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| real-eval | 689 | 92.60 % | 94.63 % | 84.76 % | 96.40 % |
-| llm-holdout-same-lemmas | 1263 | 97.70 % | 97.78 % | 95.17 % | 98.17 % |
-| real-restored | 1256 | 93.15 % | 94.98 % | 84.16 % | 97.16 % |
-| llm-holdout-restored-lemmas | 579 | 94.47 % | 95.16 % | 89.12 % | 97.67 % |
-| real-gap | 48 | 93.75 % | 93.75 % | 89.58 % | 97.67 % |
-| llm-holdout-gap-lemmas | 62 | 91.94 % | 91.94 % | 90.32 % | 98.21 % |
+## Superseded History
+
+An earlier split divided the single package into a core and a MiniLM package, with `WordSenseClassifier`,
+`WordAnalysis`, `AnswerBasis` and the `MiniLMWordSense` factory. That design is replaced by the five packages above,
+and its accuracy figures (a byte-identical before and after comparison of the split, about 97 percent best-sense
+accuracy on the holdout) are history and not a statement about the current packages; the current figures are in
+`model-comparison.md` and `basic-evaluation.md`.

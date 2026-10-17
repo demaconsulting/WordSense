@@ -36,7 +36,7 @@ still hide examples rendered as prose or dropped remarks.
 
 **Scenario**: A type documented with an `<example>` containing a `<code>` block is generated.
 
-**Expected**: The `WordSenseClassifier` type page contains a fenced `csharp` code block.
+**Expected**: The `WordLexicon` type page contains a fenced `csharp` code block.
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-RenderExamples`.
 
@@ -44,15 +44,15 @@ still hide examples rendered as prose or dropped remarks.
 
 **Scenario**: The shared terminology remarks on `IWordSenseClassifier` are generated.
 
-**Expected**: The `IWordSenseClassifier` type page contains the term "abstain".
+**Expected**: The `IWordSenseClassifier` type page contains the term "confidence".
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-RenderExamples`.
 
 #### ApiMark_ClassifierDocumented
 
-**Scenario**: The classifier factory member is documented and its page is generated.
+**Scenario**: The model contract type is documented and its page is generated.
 
-**Expected**: The `MiniLMWordSense.CreateClassifierAsync` member page exists and contains a fenced
+**Expected**: The `IWordSenseModel` type page exists and contains a fenced
 `csharp` example.
 
 **What this proves**: only that the member page was generated from its documentation. It does not

@@ -11,7 +11,7 @@ public class XmlDocExampleTests
     [Fact]
     public void MiniLMWordSense_XmlDocExamples_Compile()
     {
-        WordSense.Tests.XmlDocExampleVerifier.VerifyExamples(
+        DemaConsulting.WordSense.Tests.XmlDocExampleVerifier.VerifyExamples(
             "DemaConsulting.WordSense.MiniLM.xml", "DemaConsulting.WordSense", "DemaConsulting.WordSense.MiniLM");
     }
 }

@@ -1,0 +1,55 @@
+---
+# WordLexicon unit requirements (the lexicon and its embedded blob reader)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Core Requirements
+        sections:
+          - title: WordLexicon Requirements
+            requirements:
+              - id: WordSense-Core-WordLexicon-Words
+                title: >-
+                  WordLexicon shall map each known lower-case surface word, including the inflected forms generated at
+                  build time, to the list of senses (lemma, part of speech, meaning and respelling) it can have.
+                tags: [unit]
+                justification: |
+                  Callers and models look words up by their surface form; resolving inflections at build time keeps
+                  look-up a single dictionary access.
+                tests:
+                  - WordLexicon_Words_KnownWord_ReturnsItsSenses
+                  - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
+                  - WordLexicon_Words_Keys_AreLowerCase
+                  - WordLexicon_Words_UnknownWord_IsAbsent
+
+              - id: WordSense-Core-WordLexicon-Embedded
+                title: WordLexicon shall read its data from a resource embedded in the core assembly.
+                tags: [unit]
+                justification: |
+                  An embedded lexicon needs no file, no network access and no configuration.
+                tests:
+                  - WordLexicon_Words_EmbeddedBlob_LoadsAndIsNotEmpty
+
+              - id: WordSense-Core-WordLexicon-LazyLoad
+                title: >-
+                  WordLexicon shall load its data on first use, once, safely when many threads ask at the same time.
+                tags: [unit]
+                justification: |
+                  Applications that never classify must not pay for loading, and a concurrent first use must neither
+                  fail nor load twice.
+                tests:
+                  - WordLexicon_Words_ConcurrentFirstUse_ReturnsSameInstance
+
+              - id: WordSense-Core-WordLexicon-Format
+                title: >-
+                  WordLexicon shall reject a corrupt or foreign data blob and shall share one instance among equal
+                  senses.
+                tags: [unit]
+                justification: |
+                  A damaged blob must fail loudly instead of producing wrong senses, and sharing equal senses keeps
+                  the loaded lexicon small.
+                tests:
+                  - WordsBlob_Read_CorruptData_Throws
+                  - WordsBlob_Read_UnknownMagic_Throws
+                  - WordsBlob_Read_InvalidSense_Throws
+                  - WordsBlob_Read_ValidBlob_SharesEqualSenses

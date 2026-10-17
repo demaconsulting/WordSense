@@ -29,7 +29,7 @@ tests:
     description: "ApiMark rendered a documented example as a fenced code block"
     tags: [api-docs]
     files:
-      - pattern: "src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordSenseClassifier.md"
+      - pattern: "src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordLexicon.md"
         count: 1
         text:
           - contains: "```csharp"
@@ -41,24 +41,24 @@ tests:
       - pattern: "src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/IWordSenseClassifier.md"
         count: 1
         text:
-          - contains: "abstain"
+          - contains: "confidence"
 
   - name: ApiMark_ClassifierDocumented
-    description: "The classifier factory member is documented and generated with an example"
+    description: "The model contract type is documented and generated with an example"
     tags: [api-docs]
     files:
       - pattern: >-
-          src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/WordSenseClassifier/Create.md
+          src/DemaConsulting.WordSense/generated/api/DemaConsulting.WordSense/IWordSenseModel.md
         count: 1
         text:
           - contains: "```csharp"
 
-  - name: ApiMark_MiniLMFactoryDocumented
-    description: "The MiniLM classifier factory member is documented and generated with an example"
+  - name: ApiMark_MiniLMModelDocumented
+    description: "The MiniLM model class is documented and generated with an example"
     tags: [api-docs]
     files:
       - pattern: >-
-          src/DemaConsulting.WordSense.MiniLM/generated/api/DemaConsulting.WordSense.MiniLM/MiniLMWordSense/CreateClassifierAsync.md
+          src/DemaConsulting.WordSense.MiniLM/generated/api/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.md
         count: 1
         text:
           - contains: "```csharp"

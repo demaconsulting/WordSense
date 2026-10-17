@@ -1,0 +1,33 @@
+---
+# BasicWordSenseModel unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        sections:
+          - title: BasicWordSenseModel Requirements
+            requirements:
+              - id: WordSense-Basic-BasicWordSenseModel-NoFiles
+                title: >-
+                  BasicWordSenseModel shall complete its preparation step without files or network access, ignore any
+                  mirror, and report cancellation requested before the call.
+                tags: [unit]
+                justification: |
+                  The model has nothing to obtain, so preparation must never touch the network or the file system.
+                tests:
+                  - BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles
+                  - BasicWordSenseModel_EnsureModelAsync_IgnoresMirror
+                  - BasicWordSenseModel_EnsureModelAsync_Cancelled_ReturnsCanceledTask
+
+              - id: WordSense-Basic-BasicWordSenseModel-Create
+                title: >-
+                  BasicWordSenseModel shall create classifiers on demand, with or without a prior preparation call, each
+                  safe for concurrent use and needing no disposal.
+                tags: [unit]
+                justification: |
+                  A model without resources should be as simple to use as a plain object.
+                tests:
+                  - BasicWordSenseModel_Create_ReturnsClassifier
+                  - BasicWordSenseModel_Create_WithoutEnsure_Works
+                  - BasicWordSenseModel_Create_Classifier_IsThreadSafe

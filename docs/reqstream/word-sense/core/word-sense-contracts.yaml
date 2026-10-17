@@ -1,0 +1,82 @@
+---
+# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, IWordSenseClassifier, WordSense,
+# WordDetails and PartOfSpeech)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Core Requirements
+        sections:
+          - title: WordSenseContracts Requirements
+            requirements:
+              - id: WordSense-Core-WordSenseContracts-Classifier
+                title: >-
+                  IWordSenseClassifier shall classify a running text given as a list of words joined by single spaces,
+                  with punctuation as elements of their own, and return an array parallel to the input.
+                tags: [unit]
+                justification: |
+                  Callers tokenize themselves; a fixed text convention gives every model the same context and lets
+                  callers map each result to its input word by index.
+                tests:
+                  - BasicClassifier_ClassifyAsync_ResultsAreParallelToInput
+                  - BasicClassifier_ClassifyAsync_NullWords_Throws
+                  - BasicClassifier_ClassifyAsync_NullElement_Throws
+                  - BasicClassifier_ClassifyAsync_Cancelled_Throws
+
+              - id: WordSense-Core-WordSenseContracts-Result
+                title: >-
+                  WordSense shall be a value type carrying the word as given, the chosen details (or none) and a
+                  confidence, with value equality.
+                tags: [unit]
+                justification: |
+                  A value result is cheap to produce for every word, and equality makes results easy to compare and
+                  test.
+                tests:
+                  - WordSenseContracts_WordSense_SameValues_AreEqual
+                  - WordSenseContracts_WordSense_NoDetails_HasNullDetails
+
+              - id: WordSense-Core-WordSenseContracts-Model
+                title: >-
+                  IWordSenseModel shall provide an asynchronous preparation step and a method that creates a
+                  classifier, and shall not itself require disposal.
+                tags: [unit]
+                justification: |
+                  A single two-step contract serves models with no files and models that download files; disposal is a
+                  concern of the model packages that hold native resources.
+                tests:
+                  - WordSenseContracts_IWordSenseModel_IsNotDisposable
+                  - BasicWordSenseModel_Create_ReturnsClassifier
+
+              - id: WordSense-Core-WordSenseContracts-Mirror
+                title: >-
+                  MirrorOptions shall be an immutable sealed record describing a mirror base address, optional
+                  credentials or bearer token, store location and timeout, and shall never reveal secrets when
+                  converted to text.
+                tags: [unit]
+                justification: |
+                  Logs and exception messages must not leak passwords or tokens, and an immutable value is safe to
+                  share between models.
+                tests:
+                  - WordSenseContracts_MirrorOptions_ToString_RedactsSecrets
+                  - WordSenseContracts_MirrorOptions_IsSealedRecord
+                  - WordSenseContracts_MirrorOptions_Defaults_AreNull
+
+              - id: WordSense-Core-WordSenseContracts-Details
+                title: >-
+                  WordDetails shall describe one sense by lemma, part of speech, optional meaning and optional
+                  respelling, and PartOfSpeech shall name exactly eight parts of speech.
+                tags: [unit]
+                justification: |
+                  Callers (for example a text-to-speech front end) need the part of speech first, then the meaning and
+                  respelling that fix the pronunciation of a heteronym.
+                tests:
+                  - WordSenseContracts_WordDetails_Construct_ExposesMembers
+                  - WordSenseContracts_PartOfSpeech_Values_AreTheEightClasses
+
+              - id: WordSense-Core-WordSenseContracts-Independent
+                title: The core assembly shall reference no ONNX Runtime, weights or vector library.
+                tags: [unit]
+                justification: |
+                  Keeps the core package free of native and model dependencies.
+                tests:
+                  - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences

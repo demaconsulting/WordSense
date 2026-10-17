@@ -5,7 +5,8 @@ These are the exact encoder files that the embedded weights table of
 
 | File | Purpose | Storage |
 | ---- | ------- | ------- |
-| `encoder_int8.onnx` | ONNX encoder, int8 quantized (output `last_hidden_state`, 768 dimensions) | Git LFS |
+| `model_int8.onnx` | ONNX encoder, int8 quantized (output `last_hidden_state`, 768 dimensions) | Git LFS |
+| `config.json` | Model configuration published with the upstream export (hidden size 768) | Git LFS |
 | `vocab.txt` | BERT cased WordPiece vocabulary (28,996 entries) | Git LFS |
 | `tokenizer.json` | Reference tokenizer definition (used only to generate the tokenizer parity fixture) | Git LFS |
 | `SHA256SUMS` | Pinned SHA-256 digests of the files above (of the real content, not the LFS pointers) | Git |
@@ -18,10 +19,13 @@ These are the exact encoder files that the embedded weights table of
 - The upstream int8 export (`Xenova/bert-base-cased`, `onnx/model_int8.onnx`, 109,200,172 bytes, SHA-256
   `b4505ab8506e2e7dd53c43f26570191e5b09180353b9c5ce1b764bad736bc841`, also on the LAN mirror at
   `http://192.168.1.13:8000/bert-base-cased/`) is a masked-language-model export that exposes only `logits`.
-- `encoder_int8.onnx` is derived from it by `tools/model-prep/make-bert-encoder.py`, which cuts the graph at the
+- `model_int8.onnx` in this folder (previously named `encoder_int8.onnx`) is derived from it by `tools/model-prep/make-bert-encoder.py`, which cuts the graph at the
   output of the last encoder layer and exposes it as `last_hidden_state`. No weights are changed; the language-model
   head is dropped.
-- `vocab.txt` and `tokenizer.json` are the files published with the upstream export.
+- The file name matches the upstream and LAN-mirror layout (`onnx/model_int8.onnx`), but the content differs from the
+  upstream file: this one is the derived encoder. A mirror that serves the upstream file under this name fails
+  SHA-256 verification and the download falls back to the repository.
+- `vocab.txt`, `config.json` and `tokenizer.json` are the files published with the upstream export.
 
 All downloadable assets (every file except this README and `SHA256SUMS`) are Git LFS objects, served from
 `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/bert-base-cased-int8/{file}`.

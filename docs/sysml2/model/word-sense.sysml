@@ -2,25 +2,26 @@ package WordSense {
     doc
     /*
      * WordSense is a .NET library that tells the part of speech, and for words pronounced differently by
-     * meaning the pronunciation, of English words in text. Words with one part of speech are answered from
-     * an embedded dictionary; ambiguous words (for example "record" as noun or verb) are answered in context
-     * using an encoder model and compact per-lemma classifiers. The core package DemaConsulting.WordSense
-     * holds the lexicon, the answer values and the model abstraction and has no ONNX dependency; the
-     * package DemaConsulting.WordSense.MiniLM supplies the ONNX MiniLM encoder.
+     * meaning the pronunciation, of English words in text. It ships as five layered NuGet packages. The core
+     * package DemaConsulting.WordSense holds the embedded word lexicon and the contracts (model, classifier,
+     * answer values) and has no third-party dependency. Model packages build on it: Basic chooses senses with
+     * hand-written rules; Onnx holds the shared encoder machinery and download of the encoder models; MiniLM
+     * and BertBaseCased are the two encoder models, each one public class with its embedded weights.
      */
 
     part def WordSenseSystem {
-        doc /* The core WordSense system as a whole; it answers from the lexicon alone and uses an encoder model only when one is supplied. */
+        doc /* The WordSense system as a whole: a lexicon that answers unambiguous words, and interchangeable word-sense models that resolve the ambiguous ones in context. */
 
-        comment testRef /* Test: test/DemaConsulting.WordSense.MiniLM.Tests/WordSenseTests.cs, test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs, test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSampleTests.cs */
+        comment testRef /* Test: test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs, test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSampleTests.cs */
         comment designRef /* Design: docs/design/word-sense.md */
         comment verificationRef /* Verification: docs/verification/word-sense.md */
         comment reqRef /* Requirements: docs/reqstream/word-sense.yaml */
 
-        part wordSenseTable : WordSenseTable;
-        part senseRecord : SenseRecord;
-        part wordSenseModel : WordSenseModel;
-        part wordSenseClassifier : WordSenseClassifier;
+        part core : CoreSubsystem;
+        part basic : BasicSubsystem;
+        part onnx : OnnxSubsystem;
+        part miniLM : MiniLMSubsystem;
+        part bertBaseCased : BertBaseCasedSubsystem;
         part wordSenseBuilder : WordSenseBuilder;
     }
 }

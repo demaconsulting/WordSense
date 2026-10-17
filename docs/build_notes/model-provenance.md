@@ -4,72 +4,91 @@ This note records where each WordSense encoder model and its tokenizer vocabular
 and the license terms that apply to them. There is one section per model. Every model has an identifier (the model
 ID) that names its folder everywhere: `model/<model-id>/` in the repository, `<mirror>/<model-id>/` on a mirror,
 `<store>/<model-id>/` in the per-user store and `<ref>/model/<model-id>/` on the GitHub LFS endpoint. The weights
-table trained for a model is embedded in the package of that model as the resource
-`weights.<model-id>.<onnx-sha256>.bin`, so the file name pairs the model ID with the SHA-256 of the ONNX file the
-weights were trained against; a model file with another digest never matches those weights.
+trained for a model are embedded in the package of that model as the resource `weights.bin`; they are valid only for
+the exact `model_int8.onnx` pinned in that package, which the SHA-256 check enforces.
 
-## all-MiniLM-L6-v2-int8
+## Download Sources
 
-Package: `DemaConsulting.WordSense.MiniLM`. Weights table resource:
-`weights.all-MiniLM-L6-v2-int8.afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1.bin` (in
-`src/DemaConsulting.WordSense.MiniLM/Resources/`).
+For both encoder models, each missing file is requested in this order and verified against its pinned SHA-256 before
+it is accepted; a file that fails is discarded and the next source is tried:
 
-### Files
+1. A mirror, when one is passed to `EnsureModelAsync` or configured by the `WORDSENSE_MIRROR_URL` environment
+   variable: `{mirror}/{model-id}/{file}`.
+2. The GitHub Git LFS media endpoint of this repository (`media.githubusercontent.com`).
 
-The digests below are the ones in `model/all-MiniLM-L6-v2-int8/SHA256SUMS`.
+Hugging Face is not a download source. The files are written atomically into `<store>/<model-id>/` and reused
+without network access. The SHA-256 values below are of the real content, not of the LFS pointer files.
+
+## Basic
+
+`DemaConsulting.WordSense.Basic` has no model files: its rules and word lists are compiled into the package.
+
+## MiniLM (all-MiniLM-L6-v2-int8)
+
+Package: `DemaConsulting.WordSense.MiniLM`. Model ID: `all-MiniLM-L6-v2-int8`. Hidden size 384, uncased. Folder:
+`model/all-MiniLM-L6-v2-int8/`. Weights: the embedded resource `weights.bin` of the package.
 
 | File | Size (bytes) | SHA-256 |
-| ---- | ------------ | ------- |
+| ---- | -----------: | ------- |
 | `model_int8.onnx` | 22,972,370 | `afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1` |
 | `vocab.txt` | 231,508 | `07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3` |
-| `tokenizer.json` | 711,661 | `da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0` |
 
-All files are in `model/all-MiniLM-L6-v2-int8/`.
+The folder also holds `tokenizer.json` (711,661 bytes, SHA-256
+`da0e79933b9ed51798a3ae27893d3c5fa4a201126cef75586296df9b4d2c62a0`), which is used only to generate the tokenizer
+parity fixture of the tests and is not downloaded at run time.
 
-### Origin
+Origin:
 
 - Base model: `sentence-transformers/all-MiniLM-L6-v2` (BERT, six layers, 384 hidden units, uncased WordPiece
   vocabulary of 30,522 entries).
 - `model_int8.onnx` was produced locally during the feasibility spike: the base model was exported to ONNX with a
   `last_hidden_state` output and quantized with ONNX Runtime dynamic int8 quantization. The exact command was not
   recorded.
-- The Hugging Face repository publishes its own quantized files under `onnx/` (for example
-  `model_qint8_avx512.onnx`, about 24.1 MB). Those differ in size from the committed model, so they cannot match its
-  SHA-256 and are never used as a download source for `model_int8.onnx`.
-- `huggingface.co` could not be reached from the build environment (TLS interception), so the upstream
-  `vocab.txt` digest could not be compared directly. The committed `vocab.txt` digest equals the widely published
-  digest of the BERT uncased vocabulary. The download pipeline pins the digest, so a mismatching upstream file is
-  rejected and the next source is tried.
+- It is not byte-identical to any quantized file published in the Hugging Face repository (the upstream
+  `model_qint8_avx512.onnx` is about 24.1 MB), which is why Hugging Face is not a source.
+- `vocab.txt` is the standard BERT uncased vocabulary shipped with the base model.
 
-### Download Sources
+License: the base model is licensed under the Apache License 2.0. The quantized derivative and the vocabulary are
+redistributed under the same license, with attribution to the sentence-transformers project and the original MiniLM
+authors.
 
-Downloads are tried in this order, each verified against the pinned SHA-256 before it is accepted:
+## BertBaseCased (bert-base-cased-int8)
 
-1. A user-configured mirror, when set: `{mirror}/all-MiniLM-L6-v2-int8/{file}`.
-2. Hugging Face (`vocab.txt` only).
-3. GitHub Git LFS media endpoint for this repository (`media.githubusercontent.com`).
+Package: `DemaConsulting.WordSense.BertBaseCased`. Model ID: `bert-base-cased-int8`. Hidden size 768, cased. Folder:
+`model/bert-base-cased-int8/`. Weights: the embedded resource `weights.bin` of the package.
 
-All three files above are Git LFS objects, so one URL pattern
-(`/media/<owner>/WordSense/{ref}/model/all-MiniLM-L6-v2-int8/{file}`) serves each of them. The SHA-256 values in the
-table are of the real content, not of the LFS pointer files. The runtime downloader fetches only `model_int8.onnx`
-and `vocab.txt` into `<store>/all-MiniLM-L6-v2-int8/`; `tokenizer.json` is needed only to regenerate the tokenizer
-parity fixture and is fetched with `git lfs pull`.
+| File | Size (bytes) | SHA-256 |
+| ---- | -----------: | ------- |
+| `model_int8.onnx` | 108,477,896 | `dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d` |
+| `vocab.txt` | 213,450 | `eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02` |
+| `config.json` | 639 | `19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286` |
+| `tokenizer.json` | 668,923 | `343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1` |
 
-### Adding a Model
+All four files are pinned by the package and downloaded.
 
-A further model gets its own `model/<model-id>/` folder (files, `SHA256SUMS` and a README), its own section in this
-note, a package that implements `IWordSenseModel`, and a weights table trained by the builder with
-`build --model model --model-id <model-id> ... --weights <file>`.
+Origin:
 
-## License
+- Base model: `bert-base-cased` (BERT, 12 layers, hidden size 768, cased vocabulary).
+- The upstream int8 export of bert-base-cased from Hugging Face (`onnx/model_int8.onnx`, 109,200,172 bytes, SHA-256
+  `b4505ab8506e2e7dd53c43f26570191e5b09180353b9c5ce1b764bad736bc841`) is a masked-language-model export that
+  exposes only the language-model output scores.
+- `model_int8.onnx` of this model is the derived encoder, not the upstream file: `tools/model-prep/make-bert-encoder.py`
+  cuts the graph at the output of the last encoder layer and exposes it as `last_hidden_state`. No weights are changed;
+  the language-model head is dropped. The file keeps the upstream name, so a mirror that serves the upstream file
+  under this name fails the SHA-256 check and the download falls back to GitHub.
+- `vocab.txt`, `config.json` and `tokenizer.json` are the files published with the upstream export.
 
-The base model is licensed under the Apache License 2.0. The quantized derivative and the vocabulary are
-redistributed under the same license, with attribution to the sentence-transformers project and the original
-MiniLM authors.
+License: the base model is licensed under the Apache License 2.0; the derivative and the vocabulary are redistributed
+under the same license, with attribution to the authors of BERT.
+
+## Adding a Model
+
+A further encoder gets its own `model/<model-id>/` folder (files, `SHA256SUMS` and a README), its own section in this
+note, a package that derives from `OnnxWordSenseModel`, and weights trained by the builder with `weights <modelId>`.
 
 ## Training Corpus Licences
 
-The sentence corpus under `corpus/` is not shipped in the NuGet package; only the derived classifier vectors are.
+The sentence corpus under `corpus/` is not shipped in the NuGet packages; only the derived weights are.
 Every real sentence has a row in `corpus/provenance/*.tsv` (hash id, source, licence, URL, contributor or work,
 origin `real`, `authored` or `llm-corpus`). Accepted sources:
 

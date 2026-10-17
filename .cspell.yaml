@@ -16,6 +16,8 @@ language: en,en-GB
 words:
   - NRVJBPCI
   - nounverb
+  - minilm
+  - varints
   - respelling
   - respellings
   - kord

@@ -22,10 +22,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 /// <example>
 ///     <code>
 ///     using var model = new MiniLMWordSenseModel();
-///     await model.EnsureModelAsync(null, CancellationToken.None);
+///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///
-///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], CancellationToken.None);
+///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
 public sealed class MiniLMWordSenseModel : OnnxWordSenseModel
@@ -40,7 +40,8 @@ public sealed class MiniLMWordSenseModel : OnnxWordSenseModel
         "vocab.txt",
         true,
         typeof(MiniLMWordSenseModel).Assembly,
-        "DemaConsulting.WordSense.MiniLM.weights.bin");
+        "DemaConsulting.WordSense.MiniLM.weights.bin",
+        384);
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="MiniLMWordSenseModel"/> class.

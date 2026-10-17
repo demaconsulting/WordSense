@@ -1,3 +1,4 @@
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace DemaConsulting.WordSense.MiniLM.Tests;
@@ -8,6 +9,52 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </summary>
 internal static partial class DocSampleText
 {
+    /// <summary>
+    ///     Finds the repository root by walking up from the test output directory to the solution file.
+    /// </summary>
+    /// <returns>The repository root.</returns>
+    public static string FindRepositoryRoot()
+    {
+        for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
+        {
+            if (File.Exists(Path.Combine(dir.FullName, "WordSense.slnx")))
+            {
+                return dir.FullName;
+            }
+        }
+
+        Assert.Skip("The repository root was not found.");
+        return string.Empty;
+    }
+
+    /// <summary>
+    ///     Gets the committed MiniLM model directory or skips the calling test when the files are unavailable (for
+    ///     example in a checkout without Git LFS content).
+    /// </summary>
+    /// <returns>The directory that holds the real model files.</returns>
+    public static string RequireMiniLMDirectory()
+    {
+        var directory = Path.Combine(FindRepositoryRoot(), "model", "all-MiniLM-L6-v2-int8");
+        foreach (var name in new[] { "model_int8.onnx", "vocab.txt" })
+        {
+            var path = Path.Combine(directory, name);
+            if (!File.Exists(path))
+            {
+                Assert.Skip($"The model file '{name}' is missing.");
+            }
+
+            using var stream = File.OpenRead(path);
+            var buffer = new byte[64];
+            var read = stream.Read(buffer, 0, buffer.Length);
+            if (Encoding.ASCII.GetString(buffer, 0, read).StartsWith("version https://git-lfs", StringComparison.Ordinal))
+            {
+                Assert.Skip($"The model file '{name}' is a Git LFS pointer; run 'git lfs pull'.");
+            }
+        }
+
+        return directory;
+    }
+
     /// <summary>
     ///     Returns the content of the fenced block that follows a marker line.
     /// </summary>

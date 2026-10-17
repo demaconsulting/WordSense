@@ -1,10 +1,11 @@
-DemaConsulting.WordSense
 
 Copyright DEMA Consulting. Licensed under the MIT License.
 
-The embedded word table (words.bin) is generated from:
+The embedded word lexicon (words.bin) is generated from:
 
 - the Moby Part-of-Speech List (Grady Ward), which is in the public domain; and
 - word, sense, meaning and respelling data authored for this project, which is licensed under the MIT License.
+
+Inflected forms in the lexicon are generated from those words by rules written for this project.
 
 No licensed or third-party dictionary text is included.

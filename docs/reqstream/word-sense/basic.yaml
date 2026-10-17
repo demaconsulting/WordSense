@@ -1,0 +1,76 @@
+---
+# Basic subsystem requirements (the package DemaConsulting.WordSense.Basic)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        requirements:
+          - id: WordSense-Basic-Classify
+            title: >-
+              The Basic subsystem shall classify words from the core lexicon: an unknown word without details, a word
+              with one sense with full confidence, and an ambiguous word by hand-written rules.
+            tags: [subsystem]
+            justification: |
+              A lexicon lookup decides most words; rules over the neighboring words handle the rest without a model.
+            children:
+              - WordSense-Basic-BasicWordSenseModel-Create
+              - WordSense-Basic-BasicClassifier-Unknown
+              - WordSense-Basic-BasicClassifier-SingleSense
+              - WordSense-Basic-BasicClassifier-Resolve
+              - WordSense-Basic-BasicClassifier-Normalization
+              - WordSense-Basic-BasicClassifier-Validation
+            tests:
+              - BasicClassifier_ClassifyAsync_AmbiguousWordWithRule_ReturnsRuleConfidence
+
+          - id: WordSense-Basic-Rules
+            title: >-
+              The Basic subsystem shall use a closed, documented set of eight rules over closed-class words and the
+              parts of speech of neighboring words, tried in a fixed order, each with a fixed documented confidence.
+            tags: [subsystem]
+            justification: |
+              Fixed, ordered and documented rules make the behavior predictable and the confidences auditable
+              against the measured precision of each rule.
+            children:
+              - WordSense-Basic-Rules-ClosedClass
+              - WordSense-Basic-Rules-Order
+              - WordSense-Basic-Rules-Confidence
+              - WordSense-Basic-Rules-Candidates
+            tests:
+              - Rules_RuleNames_ListEveryRuleInOrder
+
+          - id: WordSense-Basic-Abstain
+            title: >-
+              The Basic subsystem shall abstain, giving no details and confidence 0, when no rule fires or when the
+              part of speech a rule selects leaves several senses.
+            tags: [subsystem]
+            justification: |
+              Part of speech alone cannot choose between meanings of one part of speech; an honest abstention is
+              better than an arbitrary pick.
+            children:
+              - WordSense-Basic-BasicClassifier-Abstain
+              - WordSense-Basic-Rules-Candidates
+            tests:
+              - BasicClassifier_ClassifyAsync_NoRuleFires_Abstains
+
+          - id: WordSense-Basic-Offline
+            title: >-
+              The Basic subsystem shall need no model file, no network access, no trained weights and no native
+              runtime, and its preparation step shall complete immediately.
+            tags: [subsystem]
+            justification: |
+              The package exists for callers that cannot or will not download or ship a model.
+            children:
+              - WordSense-Basic-BasicWordSenseModel-NoFiles
+            tests:
+              - BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles
+
+          - id: WordSense-Basic-Packaging
+            title: >-
+              The Basic package shall ship its XML documentation with a namespace summary and verified examples, its
+              NuGet metadata, a README and a NOTICE.
+            tags: [subsystem]
+            justification: |
+              Consumers learn the API from the package; verified examples cannot go stale.
+            tests:
+              - BasicWordSense_XmlDocExamples_Compile

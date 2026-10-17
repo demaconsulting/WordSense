@@ -1,0 +1,79 @@
+---
+# OnnxWordSenseModel unit requirements (the abstract base class of the encoder models)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: OnnxWordSenseModel Requirements
+            requirements:
+              - id: WordSense-Onnx-OnnxWordSenseModel-Ensure
+                title: >-
+                  OnnxWordSenseModel shall, in its preparation step, verify every model file in a caller-supplied
+                  directory without network access, or otherwise obtain the files into the per-user store, and shall
+                  reject a missing or altered file.
+                tags: [unit]
+                justification: |
+                  A user-supplied directory is as untrusted as a download; a stale, truncated or tampered model would
+                  silently produce wrong senses.
+                tests:
+                  - OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesEveryFile
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Concurrent
+                title: >-
+                  OnnxWordSenseModel shall let concurrent preparation calls share one download and shall allow a
+                  failed preparation to be retried.
+                tags: [unit]
+                justification: |
+                  Services start several tasks at once; they must neither download twice nor be stuck after a
+                  transient network failure.
+                tests:
+                  - OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Create
+                title: >-
+                  OnnxWordSenseModel shall create classifiers that share one encoder session and one set of weights
+                  and shall refuse to create one before the model files are available.
+                tags: [unit]
+                justification: |
+                  Loading a session and weights is expensive and must happen once; creating a classifier without
+                  files can only fail later and obscurely.
+                tests:
+                  - OnnxWordSenseModel_Create_BeforeEnsure_ThrowsInvalidOperation
+                  - OnnxWordSenseModel_Create_TwiceAfterEnsure_ShareTheEncoder
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
+                title: >-
+                  OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated disposal and
+                  throw ObjectDisposedException for use after disposal.
+                tags: [unit]
+                justification: |
+                  The ONNX session holds native memory; its release must be deterministic, and use after disposal
+                  must fail clearly.
+                tests:
+                  - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - OnnxWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Identity
+                title: >-
+                  OnnxWordSenseModel shall expose the model identifier and the hidden size of the encoder before any
+                  file is downloaded.
+                tags: [unit]
+                justification: |
+                  Callers and tests need the identity to name folders and size buffers without waiting for a download.
+                tests:
+                  - OnnxWordSenseModel_ModelIdAndHiddenSize_AreAvailableBeforeEnsure
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Options
+                title: >-
+                  OnnxWordSenseModel shall accept a maximum sequence length from 8 to 512 and reject any other value.
+                tags: [unit]
+                justification: |
+                  The encoders cannot accept sequences outside that range, so a bad value must fail at construction.
+                tests:
+                  - OnnxWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws

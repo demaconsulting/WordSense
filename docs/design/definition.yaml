@@ -6,17 +6,26 @@ input-files:
   - docs/design/title.txt
   - docs/design/introduction.md
   - docs/design/word-sense.md
-  - docs/design/word-sense/word-sense-model.md
-  - docs/design/word-sense/word-sense-table.md
-  - docs/design/word-sense/sense-record.md
-  - docs/design/word-sense/word-sense-classifier.md
   - docs/design/word-sense/word-sense-builder.md
-  - docs/design/word-sense-mini-lm.md
-  - docs/design/word-sense-mini-lm/mini-lm-word-sense.md
-  - docs/design/word-sense-mini-lm/mini-lm-word-sense-model.md
-  - docs/design/word-sense-mini-lm/word-piece-tokenizer.md
-  - docs/design/word-sense-mini-lm/word-sense-model-downloader.md
-  - docs/design/word-sense-mini-lm/download-mirror.md
+  - docs/design/word-sense/core.md
+  - docs/design/word-sense/core/word-lexicon.md
+  - docs/design/word-sense/core/word-sense-contracts.md
+  - docs/design/word-sense/basic.md
+  - docs/design/word-sense/basic/basic-word-sense-model.md
+  - docs/design/word-sense/basic/basic-classifier.md
+  - docs/design/word-sense/basic/rules.md
+  - docs/design/word-sense/onnx.md
+  - docs/design/word-sense/onnx/onnx-word-sense-model.md
+  - docs/design/word-sense/onnx/onnx-classifier.md
+  - docs/design/word-sense/onnx/onnx-encoder.md
+  - docs/design/word-sense/onnx/word-piece-tokenizer.md
+  - docs/design/word-sense/onnx/model-downloader.md
+  - docs/design/word-sense/onnx/download-mirror.md
+  - docs/design/word-sense/onnx/lemma-weights.md
+  - docs/design/word-sense/mini-lm.md
+  - docs/design/word-sense/mini-lm/mini-lm-word-sense-model.md
+  - docs/design/word-sense/bert-base-cased.md
+  - docs/design/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md
   - docs/design/ots.md
   - docs/design/ots/apimark.md
   - docs/design/ots/buildmark.md

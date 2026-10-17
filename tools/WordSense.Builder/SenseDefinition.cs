@@ -1,6 +1,8 @@
 using System.Text.RegularExpressions;
 
-namespace DemaConsulting.WordSense;
+using DemaConsulting.WordSense;
+
+namespace WordSense.Builder;
 
 /// <summary>
 ///     The definition of one sense of a lemma: its part of speech and, for a heteronym, its pronunciation meaning
@@ -16,17 +18,17 @@ namespace DemaConsulting.WordSense;
 /// <param name="Pos">The part of speech.</param>
 /// <param name="Meaning">The pronunciation meaning, or null for a lemma that is not a heteronym.</param>
 /// <param name="Respelling">The respelling of the pronunciation, or null when none is authored.</param>
-public sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning = null, string? Respelling = null)
+internal sealed partial record SenseDefinition(PartOfSpeech Pos, string? Meaning = null, string? Respelling = null)
 {
     /// <summary>
     ///     The longest meaning identifier, in characters.
     /// </summary>
-    public const int MaxMeaningLength = 32;
+    internal const int MaxMeaningLength = 32;
 
     /// <summary>
     ///     The longest respelling, in characters.
     /// </summary>
-    public const int MaxRespellingLength = 32;
+    internal const int MaxRespellingLength = 32;
 
     /// <summary>
     ///     Determines whether a string is a valid meaning identifier.

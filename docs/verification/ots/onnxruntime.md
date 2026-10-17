@@ -1,34 +1,36 @@
 ## ONNX Runtime Verification
 
-This document provides the verification evidence for the ONNX Runtime OTS software item.
-Requirements for this OTS item are defined in the ONNX Runtime OTS Software Requirements document.
+This document provides the verification evidence for the ONNX Runtime OTS software item. ONNX Runtime is a dependency
+of the Onnx package, `DemaConsulting.WordSense.Onnx`, and reaches the MiniLM and BertBaseCased packages through it; the
+core and Basic packages do not use it. Requirements for this OTS item are defined in the ONNX Runtime OTS Software
+Requirements document.
 
 ### Required Functionality
 
-ONNX Runtime must load the pinned quantized model and return deterministic hidden states of the
-expected shape on every supported platform.
+ONNX Runtime must load the pinned quantized models and return deterministic hidden states of the expected shape on every
+supported platform.
 
 ### Verification Approach
 
-ONNX Runtime is verified by running the real model in the test suite, on every platform and target
-framework of the CI matrix. The tests are skipped locally only when the Git LFS model file has not
-been fetched; the CI checkout fetches it.
+ONNX Runtime is verified by running the real models in the test suite, on every platform and target framework of the CI
+matrix: the encoder tests in `test/DemaConsulting.WordSense.Onnx.Tests` and the end-to-end tests in
+`test/DemaConsulting.WordSense.MiniLM.Tests` and `test/DemaConsulting.WordSense.BertBaseCased.Tests`. The tests are
+skipped locally only when the Git LFS model files have not been fetched; the CI checkout fetches them.
 
 ### Test Scenarios
 
-#### MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+#### OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
 
-**Scenario**: The model is loaded and target words of a sentence are encoded twice.
+**Scenario**: The MiniLM model is loaded and target words of a sentence are encoded twice.
 
-**Expected**: Each target gets a vector of 384 values, the vectors are identical for both runs, and the
-model reports the pinned model digest.
+**Expected**: Each target gets a vector of 384 values and the vectors are identical for both runs.
 
 **Requirement coverage**: `WordSense-OTS-OnnxRuntime-Inference`.
 
 #### WordSense_Classifier_EndToEnd_ClassifiesRecord
 
-**Scenario**: A classifier built on the real model classifies a sentence containing two senses of
-"record".
+**Scenario**: A classifier built on the real MiniLM model, and one built on the real BertBaseCased model, each classify
+a sentence containing two senses of "record".
 
 **Expected**: The noun sense is assigned to the first and the verb sense to the second occurrence.
 
@@ -36,5 +38,5 @@ model reports the pinned model digest.
 
 ### Requirements Coverage
 
-- **`WordSense-OTS-OnnxRuntime-Inference`**: MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors,
+- **`WordSense-OTS-OnnxRuntime-Inference`**: OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors,
   WordSense_Classifier_EndToEnd_ClassifiesRecord

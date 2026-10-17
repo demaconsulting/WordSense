@@ -17,5 +17,5 @@ sections:
               on the platform under test.
             tags: [ots]
             tests:
-              - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+              - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
               - WordSense_Classifier_EndToEnd_ClassifiesRecord

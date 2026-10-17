@@ -12,7 +12,23 @@ package WordSense {
         expose WordSenseSystem;
     }
 
-    view WordSenseMiniLMView {
-        expose WordSenseMiniLMSystem;
+    view CoreView {
+        expose CoreSubsystem;
+    }
+
+    view BasicView {
+        expose BasicSubsystem;
+    }
+
+    view OnnxView {
+        expose OnnxSubsystem;
+    }
+
+    view MiniLMView {
+        expose MiniLMSubsystem;
+    }
+
+    view BertBaseCasedView {
+        expose BertBaseCasedSubsystem;
     }
 }

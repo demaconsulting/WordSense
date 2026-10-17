@@ -1,6 +1,6 @@
 using System.Globalization;
 
-namespace DemaConsulting.WordSense;
+namespace WordSense.Builder;
 
 /// <summary>
 ///     Splits a raw text into tiles: words, whitespace runs and single other characters.

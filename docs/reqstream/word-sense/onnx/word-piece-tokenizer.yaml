@@ -1,0 +1,61 @@
+---
+# WordPieceTokenizer unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: WordPieceTokenizer Requirements
+            requirements:
+              - id: WordSense-Onnx-WordPieceTokenizer-Parity
+                title: >-
+                  The tokenizer shall produce the same ids and character offsets as the reference BERT uncased
+                  tokenizer.
+                tags: [unit]
+                justification: |
+                  The classifier weights were trained on embeddings of ids produced by the reference tokenizer; any
+                  difference changes the embeddings and degrades accuracy.
+                tests:
+                  - WordPieceTokenizer_Tokenize_Fixture_MatchesReferenceTokenizer
+                  - WordPieceTokenizer_Tokenize_SmallVocabulary_SplitsIntoWordPieces
+                  - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
+                  - WordPieceTokenizer_Tokenize_LoneSurrogatesAndControlCharacters_AreDropped
+                  - WordPieceTokenizer_Tokenize_OverlongWord_BecomesSingleUnknown
+                  - WordPieceTokenizer_FromFile_ReadsLinesAndReportsIoErrors
+                  - WordPieceTokenizer_NullArguments_ThrowArgumentNullException
+                  - WordPieceTokenizer_VocabularyMissingSpecialToken_ThrowsArgumentException
+
+              - id: WordSense-Onnx-WordPieceTokenizer-Cased
+                title: >-
+                  The tokenizer shall also tokenize with a cased vocabulary, keeping the case of the text and not
+                  stripping accents.
+                tags: [unit]
+                justification: |
+                  The bert-base-cased model was trained on cased text; lower-casing its input would change the ids
+                  and degrade accuracy.
+                tests:
+                  - WordPieceTokenizer_Tokenize_CasedVocabulary_KeepsCase
+                  - WordPieceTokenizer_Tokenize_UncasedVocabulary_LowerCases
+
+              - id: WordSense-Onnx-WordPieceTokenizer-Spans
+                title: >-
+                  The tokenizer shall tokenize a list of words and return the range of word pieces belonging to each
+                  word.
+                tags: [unit]
+                justification: |
+                  The classifier pools the hidden states of the word pieces of a target word.
+                tests:
+                  - WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord
+                  - WordPieceTokenizer_TokenizeWords_NoWords_ReturnsNoTokens
+
+              - id: WordSense-Onnx-WordPieceTokenizer-Window
+                title: >-
+                  The tokenizer shall build a model input window that fits the maximum length and holds the target.
+                tags: [unit]
+                justification: |
+                  The model accepts a limited sequence length, but long texts must still be classified.
+                tests:
+                  - WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
+                  - WordPieceTokenizer_BuildWindow_LongText_KeepsTargetInsideWindow
+                  - WordPieceTokenizer_BuildWindow_TargetLongerThanCapacity_ClipsTargetToWindow

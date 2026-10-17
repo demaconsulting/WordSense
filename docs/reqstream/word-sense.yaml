@@ -1,259 +1,174 @@
 ---
-# Software System Requirements for WordSense (the core package DemaConsulting.WordSense)
+# Software System Requirements for WordSense
 #
-# These requirements describe the externally visible behavior of the core library from the perspective of its
-# consumers, without specifying implementation details. The model-dependent behavior (encoder, model download,
-# embedded weights) belongs to the MiniLM package and is specified in word-sense-mini-lm.yaml.
+# WordSense is delivered as five layered NuGet packages: the core package (DemaConsulting.WordSense: contracts and
+# the word lexicon), the rule-based Basic package, the shared Onnx package and the two encoder model packages
+# MiniLM and BertBaseCased. These requirements describe the externally visible behavior of the system from the
+# perspective of its consumers, without specifying implementation details. Each requirement is decomposed into the
+# subsystem requirements under docs/reqstream/word-sense/.
 
 sections:
-  - title: Library API
+  - title: WordSense Requirements
     requirements:
       - id: WordSense-Lib-Classify
         title: >-
-          The library shall classify words in free text, answering each word's lemma, part of speech
-          and (for a heteronym) pronunciation, and tile the whole input.
+          The system shall classify the words of a running text, answering for each word its lemma, part of speech,
+          meaning and (for a heteronym) respelling, and return one result per input word in the input order.
         tags: [system]
         justification: |
-          This is the purpose of the library: given a text, callers learn which part of speech and, where the
-          pronunciation depends on the meaning, which pronunciation each ambiguous word (for example "record" as
-          noun or verb) carries, while the returned tokens still reproduce the input exactly so callers can map
-          results back to the text.
+          This is the purpose of the system: given a text, callers learn which sense (for example "record" as noun
+          or verb) each word carries, while the results still map one to one onto the words they passed in.
         children:
-          - WordSense-Classifier-Tiles
-          - WordSense-Classifier-Answers
-          - WordSense-Classifier-Candidates
-          - WordSense-Classifier-Lifetime
-          - WordSense-Classifier-Validation
-          - WordSense-Sense-Words
+          - WordSense-Core-Contracts
+          - WordSense-Basic-Classify
+          - WordSense-Onnx-Classify
         tests:
-          - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
-          - WordSense_Classifier_EndToEnd_WordListApi
 
-      - id: WordSense-Lib-Dictionary
+      - id: WordSense-Lib-Lexicon
         title: >-
-          The library shall answer the part of speech of common English words that need no context, from an embedded
-          dictionary of at least 100,000 words, the plural and third-person (-s) forms of its nouns and verbs and
-          the -ly adverbs of its adjectives, without running any model, and shall list the candidate answers of a
-          dictionary word that has several parts of speech instead of guessing.
+          The system shall provide an embedded lexicon of English words, with the senses of each word and of its
+          inflected forms, that needs no model, no network access and no file outside the package.
         tags: [system]
         justification: |
-          Most words of a text are not ambiguous or cannot be told apart by a small model; answering them from a
-          public-domain dictionary gives broad coverage at no inference cost, and refusing to guess for a word with
-          several parts of speech keeps the answers trustworthy. Every word follows one flow, so the behavior is
-          the same for a trained and for a dictionary word.
+          Most words of a text are not ambiguous; answering them from a lexicon gives broad coverage at no
+          inference cost, and embedding the lexicon keeps the system self-contained.
         children:
-          - WordSense-Classifier-Flow
-          - WordSense-Classifier-Encoder
-          - WordSense-Classifier-CasePolicy
-          - WordSense-Classifier-UseLexicon
-          - WordSense-Table-Lexicon
-          - WordSense-Table-Resolve
-          - WordSense-Table-Morphology
-          - WordSense-Builder-LexiconImport
-          - WordSense-Builder-LexiconBuild
-          - WordSense-Builder-LexiconEval
+          - WordSense-Core-Lexicon
         tests:
-          - WordSense_Classifier_CommonDictionaryWords_AnsweredFromLexicon
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
+          - WordLexicon_Words_KnownWord_ReturnsItsSenses
+          - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
 
-      - id: WordSense-Lib-LexiconOnly
+      - id: WordSense-Lib-Layered
         title: >-
-          The library shall work without any encoder model: a classifier created without a model answers the words
-          the dictionary decides, lists the candidates of every other known word, and abstains for a word that
-          would need context, without requiring a model file, a model package or ONNX Runtime.
+          The system shall be delivered as five layered packages, in which the core package carries no ONNX
+          Runtime, weights or vector dependency and every other package builds on the core contracts.
         tags: [system]
         justification: |
-          Many callers need only the part of speech of unambiguous words, or want to pick their own model later;
-          the core package must be useful, small and free of native dependencies on its own, and it must be
-          honest about what it cannot decide instead of failing or guessing.
+          Callers that need only the lexicon or the rule-based model must not pay for a native runtime or a model
+          file; layering lets each caller take exactly the packages it needs, and lets a third party implement the
+          core contracts with its own model.
         children:
-          - WordSense-Classifier-LexiconOnly
+          - WordSense-Core-Independent
+          - WordSense-Basic-Offline
+          - WordSense-Onnx-Lifecycle
+          - WordSense-MiniLM-Model
+          - WordSense-BertBaseCased-Model
         tests:
-          - WordSenseClassifier_Create_LexiconOnly_AnswersSingleSenseWord
-          - WordSenseClassifier_Create_LexiconOnly_ContextualWordAbstainsWithCandidates
+          - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
-      - id: WordSense-Lib-Basis
+      - id: WordSense-Lib-BasicModel
         title: >-
-          The library shall state with every answer whether it is based on the context of the sentence, on the
-          dictionary, or on nothing, so that a caller can tell a measured answer from a dictionary answer.
+          The system shall provide a rule-based model that chooses the part of speech of an ambiguous word from its
+          neighboring words, needs no model file, no network access and no native runtime, and abstains when no rule
+          applies.
         tags: [system]
         justification: |
-          A context answer has a margin and was checked against held-out sentences; a dictionary answer has neither,
-          so callers that apply their own confidence policy must be able to distinguish them.
+          A small, fast and dependency-free model serves callers that accept lower accuracy; admitting when it
+          cannot decide is better than a guess.
         children:
-          - WordSense-Classifier-Basis
+          - WordSense-Basic-Classify
+          - WordSense-Basic-Rules
+          - WordSense-Basic-Abstain
+          - WordSense-Basic-Offline
         tests:
-          - WordSense_Classifier_CommonDictionaryWords_AnsweredFromLexicon
-          - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
+          - BasicClassifier_ClassifyAsync_AmbiguousWordWithRule_ReturnsRuleConfidence
+          - BasicClassifier_ClassifyAsync_NoRuleFires_Abstains
 
-      - id: WordSense-Lib-PartOfSpeech
+      - id: WordSense-Lib-EncoderModels
         title: >-
-          The library shall answer the part of speech and the lemma of every word it answers: a noun, verb,
-          adjective or adverb for a context answer, and for a dictionary answer also a pronoun or a preposition
-          (a conjunction or an interjection is only ever given as a candidate).
+          The system shall provide encoder-based models, the all-MiniLM-L6-v2 model (uncased) and the
+          bert-base-cased model (cased), that choose among the senses of an ambiguous word from its sentence context
+          with trained per-lemma weights embedded in the package.
         tags: [system]
         justification: |
-          The part of speech is the first fact that callers (for example a text-to-speech front end) need to
-          resolve a word, so it is stored with every possible answer and its accuracy is measured on its own.
+          Context-aware models are more accurate than rules; two encoders let callers trade size and speed (MiniLM)
+          against accuracy and case sensitivity (BERT base cased), and embedding the weights keeps each package
+          self-contained apart from the model files.
         children:
-          - WordSense-Sense-Record
-          - WordSense-Sense-Validation
-          - WordSense-Table-Senses
-          - WordSense-Builder-Inventory
-          - WordSense-Builder-InventoryRules
-          - WordSense-Builder-Provenance
-          - WordSense-Builder-AuthoredImport
-          - WordSense-Builder-NounVerbImport
-          - WordSense-Builder-NounVerbGate
+          - WordSense-Onnx-Classify
+          - WordSense-Onnx-Weights
+          - WordSense-Onnx-Encoder
+          - WordSense-MiniLM-Model
+          - WordSense-BertBaseCased-Model
         tests:
-          - WordSense_Classifier_Holdout_MeetsPartOfSpeechGate
-          - WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
+          - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+          - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
 
-      - id: WordSense-Lib-Pronunciation
+      - id: WordSense-Lib-Confidence
         title: >-
-          The library shall answer, for a known heteronym only, which pronunciation the word has in its sentence
-          (a meaning and, when authored, a plain respelling), and no pronunciation for any other word.
+          The system shall report a confidence between 0 and 1 with every result, shall give the best candidate
+          with a low confidence rather than none where the model can rank candidates, and shall report no sense and
+          confidence 0 where it cannot decide.
         tags: [system]
         justification: |
-          Words such as "bow" or "record" are pronounced according to their meaning; callers need to know which
-          pronunciation applies. The library holds no audio or phonemes, so the answer is a meaning plus an
-          optional plain-letter respelling, and a word whose pronunciation does not depend on its meaning must
-          not be given one.
+          Callers apply their own confidence policy; a monotonic, bounded confidence and a clear distinction between
+          low confidence and no decision let them do so.
         children:
-          - WordSense-Sense-Pronunciation
+          - WordSense-Basic-Abstain
+          - WordSense-Onnx-Confidence
+          - WordSense-Core-Contracts
         tests:
-          - WordSense_Classifier_Holdout_MeetsPronunciationGate
-          - WordSense_EmbeddedTable_PartsOfSpeechAndHeteronymsAreConsistent
+          - BasicClassifier_ClassifyAsync_NoRuleFires_Abstains
+          - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
 
-      - id: WordSense-Lib-Analysis
+      - id: WordSense-Lib-ModelFiles
         title: >-
-          The library shall return the full analysis of every word on every call (answer, margin, runner-up,
-          runner-up margin and whether it abstained) and let a caller tell an unknown word from an abstention.
+          The system shall obtain the files of an encoder model on first use from a user-supplied mirror or the
+          public repository copy, verify each against its pinned SHA-256 digest, store them in a per-user location
+          and use them offline afterwards.
         tags: [system]
         justification: |
-          Callers that apply their own confidence policy need the evidence behind a decision, also when the
-          library declined to answer; an unknown word (no answer, nothing to report) and an uncertain word (no
-          answer, evidence reported) call for different handling.
+          Encoder model files are too large to embed; users in restricted networks need their own mirror, everyone
+          else gets the public copy, and no file is used unless it is verified.
         children:
-          - WordSense-Classifier-Analysis
-          - WordSense-Classifier-Unknown
-          - WordSense-Sense-Record
+          - WordSense-Onnx-ModelFiles
+          - WordSense-Onnx-Mirror
         tests:
-          - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
-          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
-
-      - id: WordSense-Lib-Accuracy
-        title: >-
-          The library shall give the correct part of speech and pronunciation meaning for at least 96% of the
-          sentences it answers, while answering at least 85% of the held-out sentences of the labeled corpus, with
-          the pinned model.
-        tags: [system]
-        justification: |
-          Classification quality is the measurable promise of the library. The gate evaluates
-          sentences that are never used for training, so a regression in the table, tokenizer or
-          model shows up as a failing test.
-        children:
-          - WordSense-Builder-Corpus
-          - WordSense-Builder-Trainer
-          - WordSense-Builder-Importer
-          - WordSense-Builder-LearningCurve
-          - WordSense-Builder-ErrorDiagnosis
-          - WordSense-Builder-WeakLemmas
-          - WordSense-Builder-Accuracy
-          - WordSense-Tokenizer-Parity
-        tests:
-          - WordSense_Classifier_Holdout_MeetsAccuracyGate
-          - WordSense_EmbeddedTable_EveryCorpusTargetResolvesToItsLemma
-
-      - id: WordSense-Lib-Abstain
-        title: >-
-          The library shall abstain instead of guessing when the decision margin of a word is below the
-          abstention threshold stored in the weights table for its lemma.
-        tags: [system]
-        justification: |
-          Callers prefer no answer to a wrong answer for ambiguous contexts; a per-lemma margin
-          threshold lets the library trade coverage for precision.
-        children:
-          - WordSense-Classifier-Abstain
-          - WordSense-Sense-Abstain
-          - WordSense-Table-Score
-        tests:
-          - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
-
-      - id: WordSense-Lib-Embedded
-        title: The library shall embed the lexicon table and verify its integrity when it is loaded.
-        tags: [system]
-        justification: |
-          Embedding the lexicon makes the library self-contained, and the integrity check prevents a damaged
-          or foreign table from silently producing wrong answers.
-        children:
-          - WordSense-Table-Format
-          - WordSense-Table-Integrity
-          - WordSense-Table-Embedded
-        tests:
-          - WordSenseTable_LoadEmbedded_RoundTrips
-
-      - id: WordSense-Lib-ModelAbstraction
-        title: >-
-          The library shall let a caller supply any encoder model through an abstraction that names the model and
-          returns a vector for each requested word in its context, and shall classify with the model and the
-          weights table supplied for it.
-        tags: [system]
-        justification: |
-          Each encoder model has its own embedding space and package; a small abstraction lets the core package
-          stay free of model and runtime dependencies while any model package, or a test double, plugs into the
-          same classifier.
-        children:
-          - WordSense-Model-Contract
-          - WordSense-Model-Match
-        tests:
-          - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
-          - WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused
-
-      - id: WordSense-Lib-ModelMismatch
-        title: >-
-          The library shall reject a weights table that was not trained for the supplied model or for the lexicon in
-          use, instead of classifying with it.
-        tags: [system]
-        justification: |
-          A weights table is only meaningful in the embedding space of the model it was trained with and for the
-          lexicon it was trained against; mixing them gives silently wrong answers, so the mismatch must be refused
-          up front.
-        children:
-          - WordSense-Classifier-ModelMatch
-          - WordSense-Table-WeightsMatch
-        tests:
-          - WordSenseClassifier_Constructor_Mismatch_Throws
-          - WordSenseWeightsTable_EnsureMatches_OtherLexicon_Throws
-
-      - id: WordSense-Lib-PerModelWeights
-        title: >-
-          The library shall keep the trained per-lemma classifiers of each encoder model in a separate weights table
-          that names its model, its model file digest and the lexicon it belongs to, so that each model has its own
-          table.
-        tags: [system]
-        justification: |
-          Embedding spaces differ between models, so classifiers cannot be shared; one self-describing table per
-          model lets a model package ship its own weights while all packages share one lexicon.
-        children:
-          - WordSense-Table-WeightsFormat
-          - WordSense-Table-WeightsIntegrity
-          - WordSense-Builder-ModelWeights
-        tests:
-          - WordSenseWeightsTable_RoundTrip_PreservesAllValues
-          - WordSenseWeightsTable_Read_AnyByteFlipped_Throws
+          - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+          - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
 
       - id: WordSense-Lib-Reproducible
-        title: The table builder shall produce the same tables from the same corpus and model.
+        title: >-
+          The build-time tool shall produce the same lexicon, weights and reports from the same corpus and models,
+          and shall never be shipped in a package.
         tags: [system]
         justification: |
-          A reproducible, deterministic build lets reviewers verify that the embedded tables were
-          trained from the committed corpus.
+          A reproducible build lets reviewers verify that the shipped lexicon and weights come from the committed
+          corpus; keeping the tool out of the packages keeps training code out of consumers' dependency graphs.
         children:
-          - WordSense-Builder-Trainer
+          - WordSense-WordSenseBuilder-Words
+          - WordSense-WordSenseBuilder-Weights
+          - WordSense-WordSenseBuilder-Evaluate
+          - WordSense-WordSenseBuilder-BasicPrecision
+          - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Corpus
+          - WordSense-WordSenseBuilder-Usage
         tests:
-          - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+          - WordSenseBuilder_Words_SameCorpus_IsByteIdentical
+          - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+
+      - id: WordSense-Lib-Packaging
+        title: >-
+          Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
+          NuGet metadata, a README and, where it contains third-party material, a NOTICE.
+        tags: [system]
+        justification: |
+          Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
+          stale, and attribution notices satisfy the licenses of the embedded data and models.
+        children:
+          - WordSense-Core-Packaging
+          - WordSense-Basic-Packaging
+          - WordSense-Onnx-Packaging
+          - WordSense-MiniLM-Packaging
+          - WordSense-BertBaseCased-Packaging
+        tests:
+          - WordSense_XmlDocExamples_Compile
+          - BasicWordSense_XmlDocExamples_Compile
+          - OnnxWordSense_XmlDocExamples_Compile
+          - MiniLMWordSense_XmlDocExamples_Compile
+          - BertBaseCasedWordSense_XmlDocExamples_Compile
 
       - id: WordSense-Lib-Documentation
         title: >-
@@ -263,10 +178,10 @@ sections:
         tags: [system]
         justification: |
           A usage example that no longer compiles or prints something else misleads new users, and a hand-written
-          list of supported words drifts from the trained table. Compiling and running the README sample against
-          the committed model, and generating the appendix from the corpus, keep both honest.
+          list of supported words drifts from the corpus. Compiling and running the samples, and generating the
+          appendix from the corpus, keep both honest.
         children:
-          - WordSense-Builder-Appendix
+          - WordSense-WordSenseBuilder-Appendix
         tests:
           - WordSense_Readme_CodeBlock_MatchesCompiledSample
           - WordSense_Readme_Output_MatchesReadme

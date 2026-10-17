@@ -1,0 +1,76 @@
+---
+# BasicClassifier unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        sections:
+          - title: BasicClassifier Requirements
+            requirements:
+              - id: WordSense-Basic-BasicClassifier-Unknown
+                title: >-
+                  BasicClassifier shall answer a word that has no lexicon entry with no details and confidence 0.
+                tags: [unit]
+                justification: |
+                  An unknown word must be distinguishable from a known one.
+                tests:
+                  - BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
+
+              - id: WordSense-Basic-BasicClassifier-SingleSense
+                title: >-
+                  BasicClassifier shall answer a word with exactly one lexicon sense with that sense and confidence 1.
+                tags: [unit]
+                justification: |
+                  A word without ambiguity needs no context.
+                tests:
+                  - BasicClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+
+              - id: WordSense-Basic-BasicClassifier-Resolve
+                title: >-
+                  BasicClassifier shall answer a word with several senses with the single sense of the part of speech
+                  chosen by the first rule that fires, with the fixed confidence of that rule.
+                tags: [unit]
+                justification: |
+                  This is the rule-based disambiguation that the package provides.
+                tests:
+                  - BasicClassifier_ClassifyAsync_AmbiguousWordWithRule_ReturnsRuleConfidence
+                  - BasicClassifier_ClassifyAsync_RecordAfterTo_IsVerb
+                  - BasicClassifier_ClassifyAsync_RecordAfterThe_IsNoun
+
+              - id: WordSense-Basic-BasicClassifier-Abstain
+                title: >-
+                  BasicClassifier shall answer with no details and confidence 0 when no rule fires, or when several
+                  senses share the part of speech the rule selects.
+                tags: [unit]
+                justification: |
+                  Without a rule, or without a way to choose among meanings of one part of speech, the classifier has
+                  no evidence for an answer.
+                tests:
+                  - BasicClassifier_ClassifyAsync_NoRuleFires_Abstains
+                  - BasicClassifier_ClassifyAsync_SamePartOfSpeechAmbiguity_Abstains
+
+              - id: WordSense-Basic-BasicClassifier-Normalization
+                title: >-
+                  BasicClassifier shall look words up case-insensitively, read the curly apostrophe as a straight one
+                  and treat a token without a letter as unknown.
+                tags: [unit]
+                justification: |
+                  Callers pass words as written in their text, including capitalization and typographic punctuation.
+                tests:
+                  - BasicClassifier_ClassifyAsync_MixedCaseAndCurlyApostrophe_AreNormalized
+                  - BasicClassifier_ClassifyAsync_Punctuation_IsUnknown
+
+              - id: WordSense-Basic-BasicClassifier-Validation
+                title: >-
+                  BasicClassifier shall return an empty array for an empty list, keep results parallel to the input,
+                  and reject a null list, a null element and a cancelled call.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with a documented exception, and results must map onto the input by index.
+                tests:
+                  - BasicClassifier_ClassifyAsync_EmptyList_ReturnsEmpty
+                  - BasicClassifier_ClassifyAsync_ResultsAreParallelToInput
+                  - BasicClassifier_ClassifyAsync_NullWords_Throws
+                  - BasicClassifier_ClassifyAsync_NullElement_Throws
+                  - BasicClassifier_ClassifyAsync_Cancelled_Throws
