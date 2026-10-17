@@ -45,7 +45,8 @@ stay in the lexicon, and so do the words that a trained lemma or form spells. Th
 decides which parts of speech a model is trained or evaluated to answer.
 
 The output letters are N noun, R pronoun, V verb, J adjective, B adverb, P preposition, C conjunction, I
-interjection and D determiner; their order within a word is the sense order.
+interjection, D determiner and A auxiliary; their order within a word is the sense order. The dictionary itself has no
+auxiliary letter: the Auxiliary sense comes from `auxiliaries.tsv`.
 
 ## Corrections
 
@@ -107,6 +108,9 @@ The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/infle
   dictionary-filtered; the test part is never read). License: CC BY-SA 4.0 (see `corpus/ud/PROVENANCE.md`).
 - `additions.tsv`: hand-curated words missing from the dictionary (days, months, nationalities, British spellings,
   `coverage` gaps). License: same as the repository.
+- `auxiliaries.tsv`: hand-written closed list of the English auxiliary verbs (modals and the forms of be, have and
+  do), general knowledge, no licensed data. The `words` command appends an Auxiliary sense after the existing senses
+  of each listed word (after the expansion, so no inflected form gains it). License: same as the repository.
 
 ## Counts
 

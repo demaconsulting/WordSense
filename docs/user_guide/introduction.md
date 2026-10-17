@@ -42,9 +42,11 @@ test suite for each of the three models; the samples in this guide are reviewed 
 - **Sense**: one possible reading of a word, a `WordDetails`: lemma, part of speech, meaning and respelling.
 - **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
   "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
-- **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has nine values: noun, pronoun,
-  verb, adjective, adverb, preposition, conjunction, interjection and determiner (`the`, `a`, `an`, `his`). A modal
-  verb such as `will` is a verb.
+- **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has ten values: noun, pronoun,
+  verb, adjective, adverb, preposition, conjunction, interjection, determiner (`the`, `a`, `an`, `his`) and auxiliary
+  (`will`, `can`, `is`, `has`). A word such as `will` lists its content senses first (verb, noun) and `Auxiliary` as
+  the last sense. Basic chooses `Auxiliary` where the context calls for it ("we will record"); the encoder models
+  never answer `Auxiliary` and keep deciding between the content senses.
 - **Meaning**: a short id, for example `bend` or `weapon` for "bow", that names which pronunciation of a heteronym is
   meant; it is `null` when the lemma is not a heteronym.
 - **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
@@ -612,7 +614,8 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
   heuristic for looking a word up: a form that is not in the table is unknown.
 - **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
   appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
-  senses. Basic decides by part of speech only, and it can tag an auxiliary such as `will` as a noun.
+  senses. Basic decides by part of speech only; the encoder models never answer `Auxiliary` for a modal or an
+  auxiliary verb such as `will`.
 - **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Meaning` or `Respelling`, and the
   library has no phonetic data of its own: the `Respelling` is a plain hint, and the consumer maps (`Lemma`,
   `Meaning`) to its own pronunciation.

@@ -96,7 +96,7 @@ public class WordsBlobTests
         { "string length above int range", Raw([1, 0xFF, 0xFF, 0xFF, 0xFF, 0x07]) },
         { "huge detail count", Raw(OneString, [0xFF, 0xFF, 0xFF, 0x7F]) },
         { "detail truncated", Raw(OneString, [1, 0, 0]) },
-        { "unknown part of speech", Raw(OneString, [1, 0, 9, 0, 0]) },
+        { "unknown part of speech", Raw(OneString, [1, 0, 10, 0, 0]) },
         { "meaning out of range", Raw(OneString, [1, 0, 0, 2, 0]) },
         { "respelling out of range", Raw(OneString, [1, 0, 0, 0, 2]) },
         { "huge entry count", Raw(OneString, OneDetail, [0xFF, 0xFF, 0xFF, 0x7F]) },
@@ -122,7 +122,18 @@ public class WordsBlobTests
     }
 
     /// <summary>
-    ///     The last part of speech, Determiner, is accepted.
+    ///     The last part of speech, Auxiliary, is accepted.
+    /// </summary>
+    [Fact]
+    public void WordsBlob_Read_AuxiliarySense_IsAccepted()
+    {
+        var lexicon = WordsBlob.Read(Compress(Raw(OneString, [1, 0, 9, 0, 0], [1, 0, 1, 0])));
+
+        Assert.Equal(PartOfSpeech.Auxiliary, lexicon["run"][0].PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A part of speech before the last one, Determiner, is accepted.
     /// </summary>
     [Fact]
     public void WordsBlob_Read_DeterminerSense_IsAccepted()

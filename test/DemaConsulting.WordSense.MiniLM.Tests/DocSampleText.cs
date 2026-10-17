@@ -135,6 +135,41 @@ internal static partial class DocSampleText
     [GeneratedRegex(@"\s+$")]
     private static partial Regex Trailing();
 
+    /// <summary>
+    ///     Asserts that the output of a README sample equals the documented output, with the confidence column compared
+    ///     within a tolerance and every other column exactly.
+    /// </summary>
+    /// <remarks>
+    ///     Each line is <c>word pos confidence [respelling]</c> separated by spaces. The confidences of an encoder model
+    ///     come from an int8 ONNX graph whose output differs slightly between CPUs and operating systems, so they are
+    ///     approximate; the word, the part of speech and the respelling are decisions and must match exactly.
+    /// </remarks>
+    /// <param name="documented">The output block of the README, the single source of truth.</param>
+    /// <param name="actual">The output the sample wrote.</param>
+    /// <param name="tolerance">The largest allowed absolute difference of a confidence.</param>
+    public static void AssertSampleOutput(string documented, string actual, decimal tolerance)
+    {
+        var expectedLines = Normalize(documented).Split('\n');
+        var actualLines = Normalize(actual).Split('\n');
+        Assert.Equal(expectedLines.Length, actualLines.Length);
+        for (var i = 0; i < expectedLines.Length; i++)
+        {
+            var expected = expectedLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            Assert.True(expected.Length >= 3 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
+
+            // Word, part of speech and respelling exactly; the confidence (third column) within the tolerance
+            Assert.Equal(expected[0], found[0]);
+            Assert.Equal(expected[1], found[1]);
+            Assert.Equal(string.Join(' ', expected.Skip(3)), string.Join(' ', found.Skip(3)));
+            var expectedConfidence = decimal.Parse(expected[2], System.Globalization.CultureInfo.InvariantCulture);
+            var foundConfidence = decimal.Parse(found[2], System.Globalization.CultureInfo.InvariantCulture);
+            Assert.True(
+                Math.Abs(expectedConfidence - foundConfidence) <= tolerance,
+                $"Line {i + 1}: the confidence {found[2]} of '{found[0]}' differs from the documented {expected[2]} by more than {tolerance}.");
+        }
+    }
+
     [GeneratedRegex(@"<!-- sample:([a-z0-9-]+) -->")]
     private static partial Regex Marker();
 }

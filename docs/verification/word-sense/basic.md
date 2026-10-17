@@ -44,7 +44,9 @@ model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents
 #### Context Chooses the Part of Speech
 
 The same word is a noun after a determiner and a verb after a pronoun, because the tagger weighs the whole sentence
-(see the `PosTagger` and `BasicClassifier` unit documents).
+(see the `PosTagger` and `BasicClassifier` unit documents). A modal or primary auxiliary (`we will record`, `she is
+here`) is answered `Auxiliary`, while `his last will and testament`, `the can is empty` and `the will` stay nouns:
+the Auxiliary sense is not chosen directly after an article or possessive.
 
 #### Cues Separate Senses of One Part of Speech
 

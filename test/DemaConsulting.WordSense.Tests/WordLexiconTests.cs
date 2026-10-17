@@ -110,6 +110,22 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     The auxiliary verbs have an Auxiliary sense after the senses they had, and their forms do not gain it.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_Auxiliaries_HaveTrailingAuxiliarySense()
+    {
+        Assert.Equal(
+            [PartOfSpeech.Verb, PartOfSpeech.Noun, PartOfSpeech.Auxiliary],
+            WordLexicon.Words["will"].Select(s => s.PartOfSpeech));
+        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Words["is"][^1].PartOfSpeech);
+        Assert.Equal("is", WordLexicon.Words["is"][^1].Lemma);
+        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Words["having"][^1].PartOfSpeech);
+        Assert.DoesNotContain(WordLexicon.Words["wills"], s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
+        Assert.DoesNotContain(WordLexicon.Words["record"], s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
+    }
+
+    /// <summary>
     ///     Every sense of a word has the lemma of its first sense, and so the weights of one lemma cover the word.
     /// </summary>
     [Fact]

@@ -8,6 +8,28 @@ public class SenseFusionTests
     private static readonly WordDetails Fish = new("bass", PartOfSpeech.Noun, "fish", null);
     private static readonly WordDetails Music = new("bass", PartOfSpeech.Noun, "music", null);
     private static readonly WordDetails Verb = new("bass", PartOfSpeech.Verb, null, null);
+    private static readonly WordDetails Auxiliary = new("bass", PartOfSpeech.Auxiliary, null, null);
+
+    /// <summary>
+    ///     The auxiliary tag has the numeric value of the auxiliary part of speech, so the mass of the auxiliary state
+    ///     reaches the auxiliary sense and it wins when the tagger is sure of it.
+    /// </summary>
+    [Fact]
+    public void SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliarySense()
+    {
+        var posteriors = new double[PosTag.Count];
+        posteriors[PosTag.Noun] = 0.001;
+        posteriors[PosTag.Verb] = 0.001;
+        posteriors[PosTag.Auxiliary] = 0.998;
+        double[] cues = [double.NaN, double.NaN, double.NaN];
+        var probabilities = new double[3];
+
+        SenseFusion.Fuse(posteriors, [Fish, Verb, Auxiliary], cues, 1.5, 0.5, probabilities);
+
+        Assert.Equal(PosTag.Auxiliary, PosTag.Of(PartOfSpeech.Auxiliary));
+        Assert.Equal(2, SenseFusion.Winner(probabilities));
+        Assert.True(probabilities[2] > 0.9);
+    }
 
     /// <summary>
     ///     Fusion gives probabilities that sum to one and pick the sense of the likely part of speech.

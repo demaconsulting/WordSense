@@ -56,7 +56,7 @@ reference rows are fixed values of earlier measurements; the first row is the cu
 
 | Model | Best sense, holdout | Best sense, real text | Part of speech (holdout / real) | Pronunciation (holdout / real) |
 | ----- | ------------------: | --------------------: | ------------------------------: | -----------------------------: |
-| Basic (this build) | 89.04% | 85.63% | 90.11% / 90.42% | 89.72% / 87.86% |
+| Basic (this build) | 89.05% | 85.63% | 90.12% / 90.42% | 89.72% / 87.86% |
 | Basic spike (research prototype) | 91.4% | 81.9% | 92.6% / 87.5% | 93.9% / 84.9% |
 | MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% |
 | BertBaseCased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% |

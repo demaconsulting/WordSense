@@ -1,11 +1,11 @@
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     The tag set of the statistical tagger: the nine parts of speech of the lexicon plus four closed-class tags that
+///     The tag set of the statistical tagger: the ten parts of speech of the lexicon plus three closed-class tags that
 ///     only exist inside the tagger, and the sentence boundary.
 /// </summary>
 /// <remarks>
-///     The first nine tags have the same numeric values as <see cref="PartOfSpeech"/>, so a part of speech converts to
+///     The first ten tags have the same numeric values as <see cref="PartOfSpeech"/>, so a part of speech converts to
 ///     its tag with a cast. The tags are the states of the hidden Markov model; the boundary is a pseudo state that
 ///     only appears in the transition counts.
 /// </remarks>
@@ -38,7 +38,7 @@ internal static class PosTag
     /// <summary>The determiner tag (also the lexicon part of speech <see cref="PartOfSpeech.Determiner"/>).</summary>
     public const int Determiner = 8;
 
-    /// <summary>The auxiliary tag (modals and forms of be, do and have used as helpers).</summary>
+    /// <summary>The auxiliary tag (modals and forms of be, do and have used as helpers; also the lexicon part of speech <see cref="PartOfSpeech.Auxiliary"/>).</summary>
     public const int Auxiliary = 9;
 
     /// <summary>The infinitive marker tag (the word "to" used as a particle).</summary>
@@ -67,7 +67,7 @@ internal static class PosTag
 
     /// <summary>
     ///     The closed-class tags (determiner, auxiliary, infinitive marker, punctuation, other) that a word may have
-    ///     regardless of the dictionary; only the determiner is also a part of speech of the lexicon.
+    ///     regardless of the dictionary; only the determiner and the auxiliary are also parts of speech of the lexicon.
     /// </summary>
     public static readonly int[] ClosedClasses = [Determiner, Auxiliary, InfinitiveTo, Punctuation, Other];
 

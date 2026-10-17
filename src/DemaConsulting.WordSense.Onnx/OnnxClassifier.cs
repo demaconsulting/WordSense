@@ -21,7 +21,9 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     exactly 0.5 where the lemma's own abstain rule would switch. A word with several entries but missing or
 ///     mismatched weights is answered with its first entry and the confidence <c>1/n</c> for <c>n</c> entries; the
 ///     first entry is the most frequent sense of the dictionary. A lemma whose lexicon entry has more senses than the
-///     weights were trained for is scored over the trained senses only.
+///     weights were trained for is scored over the trained senses only. A trailing
+///     <see cref="PartOfSpeech.Auxiliary"/> sense is not counted as an entry, because no weights are trained for it: the
+///     encoder models never answer <see cref="PartOfSpeech.Auxiliary"/>, only the Basic model does.
 ///     </para>
 /// </remarks>
 internal sealed class OnnxClassifier
@@ -47,7 +49,7 @@ internal sealed class OnnxClassifier
     /// <param name="words">The words.</param>
     /// <returns>True when some word has several senses.</returns>
     internal static bool HasMultiSenseWord(IReadOnlyList<string> words) =>
-        words.Any(w => w.Length != 0 && WordLexicon.Words.TryGetValue(Normalize(w), out var senses) && senses.Length > 1);
+        words.Any(w => w.Length != 0 && WordLexicon.Words.TryGetValue(Normalize(w), out var senses) && EffectiveSenseCount(senses) > 1);
 
     /// <summary>
     ///     Tells whether any word of a list has several senses and intact weights, which is the only case that needs the encoder.
@@ -60,7 +62,7 @@ internal sealed class OnnxClassifier
         ArgumentNullException.ThrowIfNull(table);
         return words.Any(w => w.Length != 0
             && WordLexicon.Words.TryGetValue(Normalize(w), out var senses)
-            && senses.Length > 1
+            && EffectiveSenseCount(senses) > 1
             && table.Find(senses[0].Lemma) is not null);
     }
 
@@ -147,7 +149,8 @@ internal sealed class OnnxClassifier
             return unknown;
         }
 
-        if (senses.Length == 1)
+        var count = EffectiveSenseCount(senses);
+        if (count == 1)
         {
             return new WordSense(word, senses[0], 1);
         }
@@ -156,13 +159,22 @@ internal sealed class OnnxClassifier
         // dictionary order) with a confidence of one over the number of senses
         if (table?.Find(senses[0].Lemma) is not { } weighted)
         {
-            return new WordSense(word, senses[0], 1.0 / senses.Length);
+            return new WordSense(word, senses[0], 1.0 / count);
         }
 
         lemma = weighted;
         candidates = senses;
         return unknown;
     }
+
+    /// <summary>
+    ///     Counts the senses of a word that the encoder models can answer: a trailing <see cref="PartOfSpeech.Auxiliary"/>
+    ///     sense is ignored because no weights are ever trained for it, so the encoder models never answer it.
+    /// </summary>
+    /// <param name="senses">The senses of the word.</param>
+    /// <returns>The number of senses, without a trailing auxiliary sense that follows another sense.</returns>
+    private static int EffectiveSenseCount(ImmutableArray<WordDetails> senses) =>
+        senses.Length > 1 && senses[^1].PartOfSpeech == PartOfSpeech.Auxiliary ? senses.Length - 1 : senses.Length;
 
     /// <summary>
     ///     Lower-cases a word and straightens the typographic apostrophe.

@@ -41,6 +41,35 @@ public class OnnxClassifierTests
     private static string SingleSenseWord() => WordLexicon.Words.First(p => p.Value.Length == 1 && p.Key.All(char.IsAsciiLetterLower)).Key;
 
     /// <summary>
+    ///     An untrained trailing Auxiliary sense is not counted: the encoder models never answer it, so the fallback
+    ///     confidence of a word that has it stays what it was before the sense existed.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored()
+    {
+        var results = OnnxClassifier.ResolveWithoutModel(["is", "will", "can", "have", "record"], CancellationToken.None);
+
+        Assert.Equal(new WordSense("is", WordLexicon.Words["is"][0], 1), results[0]);
+        Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
+        Assert.Equal(0.5, results[1].Confidence);
+        Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
+        Assert.Equal(0.5, results[2].Confidence);
+        Assert.Equal(0.5, results[3].Confidence);
+        Assert.All(results, r => Assert.NotEqual(PartOfSpeech.Auxiliary, r.Details?.PartOfSpeech));
+    }
+
+    /// <summary>
+    ///     The auxiliary verbs have no trained weights, so a text with only auxiliaries needs no model and the cheap
+    ///     pre-check does not count their auxiliary sense as an ambiguity.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse()
+    {
+        Assert.False(OnnxClassifier.HasMultiSenseWord(["is", "been", "the"]));
+        Assert.True(OnnxClassifier.HasMultiSenseWord(["they", "will", "go"]));
+    }
+
+    /// <summary>
     ///     A word that is not in the lexicon gets no details and confidence 0.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

@@ -79,6 +79,8 @@ sections:
                   frequent part of speech, and the low confidence tells the caller that the answer is a guess.
                 tests:
                   - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense
+                  - OnnxClassifier_ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored
+                  - OnnxClassifier_HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse
                   - OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked
 
               - id: WordSense-Onnx-OnnxClassifier-NoVector

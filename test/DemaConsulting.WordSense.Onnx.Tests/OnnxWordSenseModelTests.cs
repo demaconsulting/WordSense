@@ -94,7 +94,10 @@ public class OnnxWordSenseModelTests
         {
             var senses = WordLexicon.Words[word];
             Assert.True(senses.Length > 1);
-            Assert.Equal(new WordSense(word, senses[0], 1.0 / senses.Length), sense);
+
+            // A trailing untrained Auxiliary sense is not counted (encoder models never answer it)
+            var counted = senses[^1].PartOfSpeech == PartOfSpeech.Auxiliary ? senses.Length - 1 : senses.Length;
+            Assert.Equal(new WordSense(word, senses[0], 1.0 / counted), sense);
         }
 
         Assert.False(Directory.Exists(missing));

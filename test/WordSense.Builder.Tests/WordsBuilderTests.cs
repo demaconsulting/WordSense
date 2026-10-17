@@ -64,6 +64,42 @@ public sealed class WordsBuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     A listed auxiliary gains an Auxiliary sense after all its other senses, a trained lemma keeps its trained
+    ///     senses as a prefix, the forms generated from it do not gain the sense, and the shared arrays stay unchanged.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WordsBuilder_Build_AppendsAuxiliarySenseLast()
+    {
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
+        _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nbanks\tbank\tnoun,verb\n");
+        _dir.Write("corpus/lexicon/lexicon.tsv", "bank\tNV\nbanks\tNV\nwill\tVN\n");
+        _dir.Write("corpus/lexicon/morphology.tsv", "Plural\tenabled\tevidence\nThirdPerson\tenabled\tevidence\n");
+        _dir.Write("corpus/lexicon/auxiliaries.tsv", "will\tmodal\nbanks\tprimary\n");
+
+        var table = WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"));
+
+        Assert.Equal([PartOfSpeech.Verb, PartOfSpeech.Noun, PartOfSpeech.Auxiliary], table["will"].Select(d => d.PartOfSpeech));
+        Assert.All(table["will"], d => Assert.Equal("will", d.Lemma));
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Auxiliary], table["banks"].Select(d => d.PartOfSpeech));
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], table["bank"].Select(d => d.PartOfSpeech));
+        Assert.DoesNotContain(table["wills"], d => d.PartOfSpeech == PartOfSpeech.Auxiliary);
+    }
+
+    /// <summary>
+    ///     An auxiliary that is not in the word table is an error.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WordsBuilder_Build_UnknownAuxiliary_Throws()
+    {
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
+        _dir.Write("corpus/lexicon/auxiliaries.tsv", "zzqxjw\tmodal\n");
+
+        var ex = Assert.Throws<InvalidDataException>(() => WordsBuilder.Build(Path.Combine(_dir.Root, "corpus")));
+
+        Assert.Contains("zzqxjw", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A corpus without forms, lexicon and morphology still builds from the senses alone.
     /// </summary>
     [Fact]

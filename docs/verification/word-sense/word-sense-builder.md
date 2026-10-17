@@ -65,6 +65,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   correction is rejected.
 - **Pinned input**: input whose SHA-256 differs from the pin is rejected, and the command without `--input` reports a
   usage error (`WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput`).
+- **Auxiliaries**: each word of `corpus/lexicon/auxiliaries.tsv` gains an `Auxiliary` sense after all its other senses
+  (`Build_AppendsAuxiliarySenseLast`); a word missing from the table is an error (`Build_UnknownAuxiliary_Throws`); the
+  file reader rejects malformed lines and repeats (`ReadAuxiliaries_ReadsWordsAndRejectsBadLines`), the letters cover
+  all ten parts of speech (`Letters_CoverTheTenParts`), and a sense inventory that trains `auxiliary` is rejected.
 - **Reader**: the dictionary reader keeps the order of the letters, accepts the determiner letter and rejects bad
   files.
 

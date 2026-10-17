@@ -9,8 +9,9 @@ model for another without code changes.
 
 #### Data Model
 
-- `PartOfSpeech`: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection and Determiner (the
-  articles and possessives such as the, a, an, his, my). Every dictionary word has a lexicon entry.
+- `PartOfSpeech`: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection, Determiner (the
+  articles and possessives such as the, a, an, his, my) and Auxiliary (modal and primary auxiliaries such as will,
+  can, is, has; always the last sense of a word, after its content senses). Every dictionary word has a lexicon entry.
 - `WordDetails(Lemma, PartOfSpeech, Meaning, Respelling)`: a sealed record. `Meaning` (lower-case ASCII letters,
   digits and hyphens) and `Respelling` (ASCII letters, hyphens and apostrophes) are non-null only for heteronyms.
 - `WordSense(Word, Details, Confidence)`: a readonly record struct. `Word` is the input word as given; `Details` is

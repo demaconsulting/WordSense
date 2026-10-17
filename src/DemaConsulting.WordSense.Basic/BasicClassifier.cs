@@ -14,7 +14,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///     computes the part-of-speech posterior of every word of the segment, the cue model scores the senses from the
 ///     neighboring words, and <see cref="SenseFusion"/> turns both into one probability per sense. The result is the most
 ///     probable sense and its probability, so the confidence of an ambiguous word is at least one over the number of
-///     senses and the word never goes unanswered.
+///     senses and the word never goes unanswered. The posterior of the auxiliary state decides the
+///     <see cref="PartOfSpeech.Auxiliary"/> sense of the modal and helping verbs (<c>will</c>, <c>is</c>), except right
+///     after an article or a possessive, where the word is a noun or a main verb (<c>the can</c>, <c>his will</c>).
 ///     </para>
 ///     <para>
 ///     The classifier holds no mutable state, so one instance may be used from many threads at once, and the result
@@ -149,6 +151,16 @@ internal sealed class BasicClassifier
     private static bool IsTerminator(string word) => word is "." or "!" or "?";
 
     /// <summary>
+    ///     Tells whether a word is an article or a possessive determiner, after which an auxiliary verb cannot follow
+    ///     (<c>the can</c>, <c>his will</c>): the word that follows is a noun. Quantifiers such as <c>all</c> or
+    ///     <c>some</c> are not in the set because they can precede an auxiliary (<c>all can see</c>).
+    /// </summary>
+    /// <param name="lowerWord">The lower-case previous word.</param>
+    /// <returns>True when the word is an article or a possessive determiner.</returns>
+    private static bool IsNounDeterminer(string lowerWord) =>
+        lowerWord is "the" or "a" or "an" or "my" or "your" or "his" or "its" or "our" or "their";
+
+    /// <summary>
     ///     Creates the tagger token of a written word.
     /// </summary>
     /// <param name="lexicon">The lexicon, by lower-case word.</param>
@@ -177,7 +189,7 @@ internal sealed class BasicClassifier
         return mask;
     }
 
-    private static WordSense Choose(BasicTables tables, string word, ImmutableArray<WordDetails> senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features)
+    private static WordSense Choose(BasicTables tables, string word, ImmutableArray<WordDetails> senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features, bool afterDeterminer)
     {
         var count = senses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
@@ -193,7 +205,16 @@ internal sealed class BasicClassifier
             cues.Clear();
         }
 
-        SenseFusion.Fuse(posterior, senses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
+        // After an article or a possessive the word is not an auxiliary: remove that mass from the posterior
+        ReadOnlySpan<double> effective = posterior;
+        if (afterDeterminer && posterior[PosTag.Auxiliary] > 0)
+        {
+            var adjusted = posterior.ToArray();
+            adjusted[PosTag.Auxiliary] = 0;
+            effective = adjusted;
+        }
+
+        SenseFusion.Fuse(effective, senses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
         var best = SenseFusion.Winner(probabilities);
         return new WordSense(word, senses[best], probabilities[best]);
     }
@@ -230,7 +251,7 @@ internal sealed class BasicClassifier
             else
             {
                 var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
-                results[start + i] = Choose(tables, word, senses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount));
+                results[start + i] = Choose(tables, word, senses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount), i > 0 && IsNounDeterminer(lower[start + i - 1]));
             }
         }
     }

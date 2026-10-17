@@ -320,7 +320,11 @@ internal sealed class SenseInventory
             }
             else if (!Enum.TryParse<PartOfSpeech>(posText, true, out var pos) || posText != pos.ToString().ToLowerInvariant())
             {
-                errors.Add($"senses/{name}:{number}: pos must be one of noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection.");
+                errors.Add($"senses/{name}:{number}: pos must be one of noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection (a trained sense is never an auxiliary or determiner).");
+            }
+            else if (pos is PartOfSpeech.Auxiliary)
+            {
+                errors.Add($"senses/{name}:{number}: pos 'auxiliary' cannot be trained; the Auxiliary sense comes from corpus/lexicon/auxiliaries.tsv.");
             }
             else if (meaning.Length > 0 && !SenseDefinition.IsValidMeaning(meaning))
             {

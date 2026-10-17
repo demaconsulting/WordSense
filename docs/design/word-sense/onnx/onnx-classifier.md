@@ -26,7 +26,10 @@ the list of words still pending a decision.
 4. Score only the word's own candidate senses (a subset of the lemma's trained senses, in lexicon order; further
    lexicon senses that were not trained are never ranked). `Details` is the best
    candidate even when its confidence is low. A single candidate has an infinite margin.
-5. The confidence is `clamp(0.5 + 0.5 * (m - a) / max(a, 0.5), 0, 1)` where `m` is the margin between the best and the
+5. An untrained trailing `Auxiliary` sense is not counted as a sense of the word: `will` with the trained senses
+   missing counts two senses, and a word whose only extra sense is `Auxiliary` is single-sense. The encoder models
+   therefore never answer `Auxiliary`.
+6. The confidence is `clamp(0.5 + 0.5 * (m - a) / max(a, 0.5), 0, 1)` where `m` is the margin between the best and the
    second-best score and `a` is the abstain margin of the lemma. It is exactly 0.5 at the abstain margin, increases
    with the margin, and is 0 for a non-numeric margin. A word without word pieces gets `(word, null, 0)`.
 

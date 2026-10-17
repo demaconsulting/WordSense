@@ -16,6 +16,18 @@ public class ReadmeSampleTests
 {
     private const string Usings = "using DemaConsulting.WordSense;\nusing DemaConsulting.WordSense.Basic;\n\n";
 
+    /// <summary>
+    ///     The allowed difference of a documented Basic confidence: the Basic model is deterministic managed code, so
+    ///     only the last digit of a rounded value may differ between math libraries.
+    /// </summary>
+    private const decimal BasicConfidenceTolerance = 0.01m;
+
+    /// <summary>
+    ///     The allowed difference of a documented encoder confidence: the int8 ONNX output differs slightly between
+    ///     CPUs and operating systems (for example 0.80 on one and 0.85 on another).
+    /// </summary>
+    private const decimal EncoderConfidenceTolerance = 0.10m;
+
     private static async Task<(string Readme, string Source)> ReadAsync()
     {
         var root = DocSampleText.FindRepositoryRoot();
@@ -77,23 +89,25 @@ public class ReadmeSampleTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_BasicOutput_MatchesReadme() => CheckOutputAsync("basic", "basic", null);
+    public Task WordSense_Readme_BasicOutput_MatchesReadme() => CheckOutputAsync("basic", "basic", null, BasicConfidenceTolerance);
 
     /// <summary>
-    ///     The documented MiniLM output equals the output of the sample run against the real model.
+    ///     The documented MiniLM output equals the output of the sample run against the real model; the confidences
+    ///     match within <see cref="EncoderConfidenceTolerance"/>.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8");
+    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8", EncoderConfidenceTolerance);
 
     /// <summary>
-    ///     The documented BertBaseCased output equals the output of the sample run against the real model.
+    ///     The documented BertBaseCased output equals the output of the sample run against the real model; the
+    ///     confidences match within <see cref="EncoderConfidenceTolerance"/>.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8");
+    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8", EncoderConfidenceTolerance);
 
-    private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId)
+    private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId, decimal tolerance)
     {
         var (readme, _) = await ReadAsync();
         var documented = DocSampleText.FencedBlock(readme, $"<!-- output:{marker} -->", "text");
@@ -106,7 +120,8 @@ public class ReadmeSampleTests
         var sample = new ReadmeSample();
         await RunInvariantAsync(() => sample.RunAsync(modelKey));
 
-        Assert.Equal(DocSampleText.Normalize(sample.Output), DocSampleText.Normalize(documented));
+        // The README is the expected value: the words, parts of speech and respellings must match exactly
+        DocSampleText.AssertSampleOutput(documented, sample.Output, tolerance);
     }
 
     private static void FailWhenNotGenerated(string documented)

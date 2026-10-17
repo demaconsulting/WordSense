@@ -28,6 +28,32 @@ public sealed class LexiconTests : IDisposable
     }
 
     /// <summary>
+    ///     The letters cover the ten parts of speech in enum order, auxiliary last.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LexiconSource_Letters_CoverTheTenParts()
+    {
+        Assert.Equal(10, LexiconSource.Letters.Length);
+        Assert.Equal('A', LexiconSource.Letters[(int)PartOfSpeech.Auxiliary]);
+        Assert.Equal(Enum.GetValues<PartOfSpeech>().Length, LexiconSource.Letters.Length);
+    }
+
+    /// <summary>
+    ///     The auxiliaries file is read as a list of distinct words; a malformed line or a repeat is rejected.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines()
+    {
+        var good = _dir.Write("good.tsv", "# comment\nwill\tmodal\n\nis\tprimary\n");
+        Assert.Equal(["will", "is"], LexiconSource.ReadAuxiliaries(good));
+
+        Assert.Throws<InvalidDataException>(() => LexiconSource.ReadAuxiliaries(_dir.Write("a.tsv", "Will\tmodal\n")));
+        Assert.Throws<InvalidDataException>(() => LexiconSource.ReadAuxiliaries(_dir.Write("b.tsv", "will\tother\n")));
+        Assert.Throws<InvalidDataException>(() => LexiconSource.ReadAuxiliaries(_dir.Write("c.tsv", "will\n")));
+        Assert.Throws<InvalidDataException>(() => LexiconSource.ReadAuxiliaries(_dir.Write("d.tsv", "will\tmodal\nwill\tmodal\n")));
+    }
+
+    /// <summary>
     ///     Empty, unknown, repeated and out-of-order letters are rejected.
     /// </summary>
     /// <param name="letters">The letters.</param>

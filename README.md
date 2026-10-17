@@ -93,7 +93,7 @@ a         Determiner   1.00
 deer      Noun         1.00
 so        Conjunction  0.61
 we        Pronoun      1.00
-will      Noun         0.58
+will      Auxiliary    1.00
 record    Verb         1.00  rih-KORD
 a         Determiner   1.00
 record    Noun         1.00  REK-urd
@@ -146,8 +146,10 @@ record    Noun         0.35  REK-urd
 ```
 
 The heteronyms `bow` and `record` get their respelling. A word with one meaning is answered with confidence 1; a word
-with several meanings gets its best sense, and a low confidence marks a guess (for example `so` and `will`), so read the
-confidence of the model you use. A word that is not in the dictionary has `Details` of `null` and a confidence of 0.
+with several meanings gets its best sense, and a low confidence marks a guess (for example `so`), so read the
+confidence of the model you use. The modal and helping verbs (`will`, `can`, `is`, `have`) have an `Auxiliary` sense that
+only the `Basic` model answers. The confidences shown for the encoder models are approximate: they differ slightly
+between CPUs and operating systems. A word that is not in the dictionary has `Details` of `null` and a confidence of 0.
 Tokenize the text yourself, one sentence per call: punctuation is a token of its own. See the
 [user guide][link-user-guide] for tokenizing, confidence thresholds, mirrors, disposal and threading.
 
@@ -158,7 +160,7 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 89.04% | 85.63% | 90.11% / 90.42% | 89.72% / 87.86% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
+| Basic | 89.05% | 85.63% | 90.12% / 90.42% | 89.72% / 87.86% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
 | MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
 | BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
 <!-- model-table:end -->

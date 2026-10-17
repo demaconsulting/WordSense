@@ -82,6 +82,63 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
+    ///     A modal or helping verb in an auxiliary position is answered as an auxiliary with high confidence.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the auxiliary word.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("so we will record a record", 2)]
+    [InlineData("they can see it", 1)]
+    [InlineData("you may go now", 1)]
+    [InlineData("we must go", 1)]
+    [InlineData("she is here", 1)]
+    [InlineData("he has gone", 1)]
+    [InlineData("she did not go", 1)]
+    public async Task BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary(string sentence, int index)
+    {
+        using var model = new BasicWordSenseModel();
+
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        Assert.Equal(PartOfSpeech.Auxiliary, results[index].Details?.PartOfSpeech);
+        Assert.True(results[index].Confidence > 0.9, $"The confidence of '{results[index].Word}' is {results[index].Confidence}.");
+    }
+
+    /// <summary>
+    ///     The word <c>will</c> as a legal document, and <c>can</c> and <c>will</c> after an article, stay nouns.
+    /// </summary>
+    /// <param name="sentence">The sentence, words separated by spaces.</param>
+    /// <param name="index">The index of the noun.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData("his last will and testament", 2)]
+    [InlineData("the can is empty", 1)]
+    [InlineData("the will", 1)]
+    public async Task BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun(string sentence, int index)
+    {
+        using var model = new BasicWordSenseModel();
+
+        var results = await model.ClassifyAsync(sentence.Split(' '), TestContext.Current.CancellationToken);
+
+        Assert.Equal(PartOfSpeech.Noun, results[index].Details?.PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     The word <c>need</c> as a noun or a main verb stays what it was before the auxiliary sense existed.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_NeedAsMainVerb_IsNotAuxiliary()
+    {
+        using var model = new BasicWordSenseModel();
+
+        var results = await model.ClassifyAsync(["we", "need", "rest"], TestContext.Current.CancellationToken);
+
+        Assert.NotEqual(PartOfSpeech.Auxiliary, results[1].Details?.PartOfSpeech);
+    }
+
+    /// <summary>
     ///     A lexicon-only list is answered without any model resource: the model needs none.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

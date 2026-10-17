@@ -231,13 +231,14 @@ public sealed class BuilderTests : IDisposable
     public void WordSenseBuilder_SenseInventory_ReadDirectory_RejectsMalformedRows()
     {
         var dir = Path.Combine(_dir.Root, "inv");
-        Write("inv/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tnoun\t\t\nbank\tnoun\tnoun\t\t\nbank\tadj\tAdj\t\t\nBank\tx\tnoun\t\t\nbank\ty\n");
+        Write("inv/a.tsv", "lemma\tlabel\tpos\tmeaning\trespelling\nbank\tnoun\tnoun\t\t\nbank\tnoun\tnoun\t\t\nbank\tadj\tAdj\t\t\nBank\tx\tnoun\t\t\nbank\ty\nwill\taux\tauxiliary\t\t\n");
         Write("inv/b.tsv", "wrong header\n");
 
         var ex = Assert.Throws<InvalidDataException>(() => SenseInventory.ReadDirectory(dir));
 
         Assert.Contains("already listed", ex.Message, StringComparison.Ordinal);
         Assert.Contains("pos must be one of", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("'auxiliary' cannot be trained", ex.Message, StringComparison.Ordinal);
         Assert.Contains("lemma must be lower-case", ex.Message, StringComparison.Ordinal);
         Assert.Contains("expected 5 tab-separated columns", ex.Message, StringComparison.Ordinal);
         Assert.Contains("b.tsv:1", ex.Message, StringComparison.Ordinal);

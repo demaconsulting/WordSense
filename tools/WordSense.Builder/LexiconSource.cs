@@ -12,7 +12,52 @@ internal static class LexiconSource
     /// <summary>
     ///     The letters of the parts of speech, in the order of <see cref="PartOfSpeech"/>.
     /// </summary>
-    public const string Letters = "NRVJBPCID";
+    public const string Letters = "NRVJBPCIDA";
+
+    /// <summary>
+    ///     The name of the closed, hand-written list of auxiliary verbs.
+    /// </summary>
+    public const string AuxiliariesFile = "auxiliaries.tsv";
+
+    /// <summary>
+    ///     Reads the closed list of auxiliary verbs: one lower-case word per line, then a tab and the evidence
+    ///     (<c>modal</c> or <c>primary</c>); blank lines and lines starting with <c>#</c> are skipped.
+    /// </summary>
+    /// <param name="path">The auxiliaries file.</param>
+    /// <returns>The distinct words in file order.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed or a word is repeated.</exception>
+    public static List<string> ReadAuxiliaries(string path)
+    {
+        var words = new List<string>();
+        var seen = new HashSet<string>(StringComparer.Ordinal);
+        var number = 0;
+        foreach (var raw in File.ReadAllLines(path, Encoding.UTF8))
+        {
+            number++;
+            var line = raw.TrimEnd('\r');
+            if (line.Length == 0 || line[0] == '#')
+            {
+                continue;
+            }
+
+            var columns = line.Split('\t');
+            var where = $"{AuxiliariesFile} line {number}";
+            if (columns.Length != 2 || columns[0].Length == 0 || !columns[0].All(c => c is >= 'a' and <= 'z') ||
+                columns[1] is not ("modal" or "primary"))
+            {
+                throw new InvalidDataException($"{where}: expected 'word<TAB>modal|primary' with a word of the letters a-z.");
+            }
+
+            if (!seen.Add(columns[0]))
+            {
+                throw new InvalidDataException($"{where}: the word '{columns[0]}' is listed twice.");
+            }
+
+            words.Add(columns[0]);
+        }
+
+        return words;
+    }
 
     /// <summary>
     ///     Gets the part-of-speech mask bit of a part of speech.

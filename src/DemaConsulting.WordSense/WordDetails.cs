@@ -40,11 +40,13 @@ public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string
 ///     The part of speech of a word.
 /// </summary>
 /// <remarks>
-///     Nine parts of speech are defined: the eight traditional ones and <see cref="Determiner"/>, the class of articles
-///     (<c>the</c>, <c>a</c>), possessives (<c>his</c>), demonstratives (<c>this</c>), quantifiers (<c>some</c>) and number
-///     words (<c>two</c>). The dictionary the lexicon is built from marks these words as a class of their own, and
-///     treating them as adjectives, pronouns or nouns would give wrong answers for the most frequent words of English.
-///     There is no value for modal verbs: the dictionary has no modal class, so <c>will</c> and <c>can</c> are verbs.
+///     Ten parts of speech are defined: the eight traditional ones, <see cref="Determiner"/> and
+///     <see cref="Auxiliary"/>. A determiner is one of the articles (<c>the</c>, <c>a</c>), possessives (<c>his</c>),
+///     demonstratives (<c>this</c>), quantifiers (<c>some</c>) and number words (<c>two</c>); the dictionary the lexicon
+///     is built from marks these words as a class of their own, and treating them as adjectives, pronouns or nouns would
+///     give wrong answers for the most frequent words of English. An auxiliary is a modal or helping verb such as
+///     <c>will</c>, <c>can</c>, <c>is</c> or <c>have</c>; the lexicon lists it as an additional sense next to the
+///     existing ones, so <c>will</c> has the senses noun, verb and auxiliary.
 /// </remarks>
 public enum PartOfSpeech
 {
@@ -93,4 +95,10 @@ public enum PartOfSpeech
     ///     <c>his</c>.
     /// </summary>
     Determiner = 8,
+
+    /// <summary>
+    ///     An auxiliary (helping or modal) verb, for example the <c>will</c> in "we will record" or the <c>is</c> in
+    ///     "she is here". Only the Basic model answers this value; the encoder models never do.
+    /// </summary>
+    Auxiliary = 9,
 }

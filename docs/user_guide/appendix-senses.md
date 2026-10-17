@@ -11,11 +11,11 @@ pronunciation.
 
 ### Parts of Speech
 
-The `PartOfSpeech` enumeration defines nine parts of speech: the eight classic ones and `Determiner`. The trained senses
-listed here, which give the context answers, cover four of them (`Noun`, `Verb`, `Adjective`, `Adverb`). A dictionary
-answer can also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection` or a `Determiner`, as the answer for
-a word with one part of speech or as a candidate of a word that has several. The table counts the trained senses of each
-part of speech:
+The `PartOfSpeech` enumeration defines ten parts of speech: the eight classic ones, `Determiner` and `Auxiliary`. The
+trained senses listed here, which give the context answers, cover four of them (`Noun`, `Verb`, `Adjective`, `Adverb`).
+A dictionary answer can also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection`, a `Determiner` or an
+`Auxiliary`, as the answer for a word with one part of speech or as a candidate of a word that has several. The table
+counts the trained senses of each part of speech:
 
 | Part of speech | Senses |
 | -------------- | -----: |

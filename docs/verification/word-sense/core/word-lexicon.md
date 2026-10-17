@@ -31,6 +31,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `EverySense_SharesTheLemma`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a conjunction-only and
   an interjection-only word are present, `so` and `will` list all their parts of speech, and every sense of a word has
   the lemma of its first sense. The determiner sense is accepted by the blob reader (`DeterminerSense_IsAccepted`).
+- **Auxiliaries end with an Auxiliary sense** (`Auxiliaries_HaveTrailingAuxiliarySense`, `AuxiliarySense_IsAccepted`):
+  `will` is Verb, Noun, Auxiliary; `is` and `having` end with Auxiliary under the lemma `be`; `wills` and `record` have
+  none.
 - **Complete dictionary**: the builder test `Words_Committed_HoldsEveryDictionaryWord` shows that no dictionary word
   is absent from `Words`.
 - **Unknown or mixed-case key is absent**: a made-up word and an upper-case spelling of a known word are not found,

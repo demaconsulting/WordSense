@@ -94,6 +94,32 @@ public class BasicReadmeSampleTests
             CultureInfo.CurrentCulture = previous;
         }
 
-        Assert.Equal(Normalize(sample.Output), Normalize(documented));
+        AssertOutput(documented, sample.Output);
+    }
+
+    /// <summary>
+    ///     The allowed difference of a documented confidence. The Basic model is deterministic managed code, so only the
+    ///     last digit of a rounded value may differ between math libraries.
+    /// </summary>
+    private const decimal ConfidenceTolerance = 0.01m;
+
+    private static void AssertOutput(string documented, string actual)
+    {
+        var expectedLines = Normalize(documented).Split('\n');
+        var actualLines = Normalize(actual).Split('\n');
+        Assert.Equal(expectedLines.Length, actualLines.Length);
+        for (var i = 0; i < expectedLines.Length; i++)
+        {
+            var expected = expectedLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            var found = actualLines[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            Assert.True(expected.Length >= 3 && found.Length == expected.Length, $"Line {i + 1}: expected '{expectedLines[i]}' but found '{actualLines[i]}'.");
+
+            // Word, part of speech and respelling exactly; the confidence (third column) within the tolerance
+            Assert.Equal(expected[0], found[0]);
+            Assert.Equal(expected[1], found[1]);
+            Assert.Equal(string.Join(' ', expected.Skip(3)), string.Join(' ', found.Skip(3)));
+            var difference = Math.Abs(decimal.Parse(expected[2], CultureInfo.InvariantCulture) - decimal.Parse(found[2], CultureInfo.InvariantCulture));
+            Assert.True(difference <= ConfidenceTolerance, $"Line {i + 1}: the confidence {found[2]} of '{found[0]}' differs from the documented {expected[2]}.");
+        }
     }
 }

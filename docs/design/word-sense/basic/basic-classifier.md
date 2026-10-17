@@ -32,7 +32,9 @@ token and the cancellation token is checked per segment. For each segment it bui
 3. several entries: `CueModel.Extract` gets the features of the word in its segment; the cue table of the lemma of
    the first candidate (if the table has one) gives the cue scores, otherwise all cue scores are zero;
    `SenseFusion.Fuse` gives the probabilities, `SenseFusion.Winner` the index of the most probable sense (the lowest
-   index on a tie), and the result is that entry with its probability.
+   index on a tie), and the result is that entry with its probability. The tagger posterior of the Auxiliary tag
+   selects the Auxiliary sense of a word, except directly after an article or possessive (the, a, an, my, your, his,
+   its, our, their), where that posterior is ignored so that `the can` and `his will` stay nouns.
 
 `SegmentOf(words, index)` returns the start and length of the segment around a position.
 

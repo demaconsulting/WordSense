@@ -233,10 +233,10 @@ internal static class AppendixGenerator
             : posCount.ToString(System.Globalization.CultureInfo.InvariantCulture);
         var posNames = string.Join(", ", rows.Select(r => r.Pos).Distinct().Order().Select(p => $"`{p}`"));
         AddParagraph(lines,
-            "The `PartOfSpeech` enumeration defines nine parts of speech: the eight classic ones and `Determiner`. " +
+            "The `PartOfSpeech` enumeration defines ten parts of speech: the eight classic ones, `Determiner` and `Auxiliary`. " +
             $"The trained senses listed " +
             $"here, which give the context answers, cover {posWord} of them ({posNames}). A dictionary answer can " +
-            "also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection` or a `Determiner`, " +
+            "also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection`, a `Determiner` or an `Auxiliary`, " +
             "as the answer for a word with one part of speech or as a candidate of a " +
             "word that has several. The table counts the trained " +
             "senses of each part of speech:");

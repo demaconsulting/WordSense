@@ -40,6 +40,10 @@ sections:
                 tests:
                   - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
                   - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+                  - BasicWordSenseModel_ClassifyAsync_AuxiliaryContext_AnswersAuxiliary
+                  - BasicWordSenseModel_ClassifyAsync_NounContext_StaysNoun
+                  - BasicWordSenseModel_ClassifyAsync_NeedAsMainVerb_IsNotAuxiliary
+                  - SenseFusion_Fuse_AuxiliaryPosterior_SelectsAuxiliarySense
                   - BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues
 
               - id: WordSense-Basic-BasicClassifier-Segments

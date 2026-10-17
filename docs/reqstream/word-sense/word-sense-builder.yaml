@@ -16,7 +16,9 @@ sections:
               and trained lemma (regular and irregular, with the spelling rules of English), and shall write it in
               the compact binary format that the core package reads. A word that a trained lemma or form also
               spells, and a dictionary word, shall never be replaced by a generated form; a trained lemma shall keep
-              the trained senses first and gain the other parts of speech of the dictionary.
+              the trained senses first and gain the other parts of speech of the dictionary. A modal or primary
+              auxiliary listed in the committed auxiliary list shall gain an Auxiliary sense after all its other
+              senses, and an Auxiliary sense shall never be trained.
             tags: [unit]
             justification: |
               The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it, and it
@@ -26,6 +28,10 @@ sections:
               - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
               - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
               - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
+              - WordSenseBuilder_WordsBuilder_Build_AppendsAuxiliarySenseLast
+              - WordSenseBuilder_WordsBuilder_Build_UnknownAuxiliary_Throws
+              - WordSenseBuilder_LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines
+              - WordSenseBuilder_LexiconSource_Letters_CoverTheTenParts
               - WordSenseBuilder_MorphologyExpander_Expand_GeneratesForms
               - WordSenseBuilder_MorphologyExpander_Expand_AppliesSpellingRules
               - WordSenseBuilder_MorphologyExpander_Expand_UsesIrregularForms

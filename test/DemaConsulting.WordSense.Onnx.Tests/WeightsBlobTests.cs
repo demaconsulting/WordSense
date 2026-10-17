@@ -86,6 +86,7 @@ public class WeightsBlobTests
     [InlineData((byte)PartOfSpeech.Noun)]
     [InlineData((byte)PartOfSpeech.Interjection)]
     [InlineData((byte)PartOfSpeech.Determiner)]
+    [InlineData((byte)PartOfSpeech.Auxiliary)]
     public void WeightsBlob_Read_EveryPartOfSpeech_IsAccepted(byte pos)
     {
         var data = WeightsBlob.Read(OneLemma(pos, 0));

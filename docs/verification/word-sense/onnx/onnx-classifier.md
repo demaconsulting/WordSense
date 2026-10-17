@@ -34,6 +34,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   it.
 - **Extra dictionary senses** (`Pick_ExtraDictionarySenses_AreNeverRanked`): a sense after the trained ones is never
   the answer of the ranking.
+- **Trailing Auxiliary sense** (`ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored`,
+  `HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse`): an untrained trailing `Auxiliary` sense is not counted as an
+  ambiguity, so the encoder models answer as before and never answer `Auxiliary`.
 - **Capitalized word** (`CapitalizedWord_ResolvesLikeLowerCase`): `The` and `the` give the same sense.
 - **Encoder returns no vector**: a target with no word pieces, or a vector of the wrong length, gives `(word, null, 0)`.
 - **Words are returned as written**: the result array is parallel to the input, holds each word as given, and is
