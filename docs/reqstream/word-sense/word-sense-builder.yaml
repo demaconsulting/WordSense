@@ -12,22 +12,45 @@ sections:
             title: >-
               The builder shall build the word lexicon of the core package deterministically from the corpus and
               the dictionary, with every word of the dictionary (determiners, conjunctions and interjections
-              included), every sense of a trained lemma, the inflected forms of dictionary words and the generated
-              forms, and shall write it in the compact binary format that the core package reads. A word that a
-              trained lemma or form also spells shall keep the trained senses first and gain the other parts of
-              speech of the dictionary.
+              included), every sense of a trained lemma and the generated inflected forms of every dictionary word
+              and trained lemma (regular and irregular, with the spelling rules of English), and shall write it in
+              the compact binary format that the core package reads. A word that a trained lemma or form also
+              spells, and a dictionary word, shall never be replaced by a generated form; a trained lemma shall keep
+              the trained senses first and gain the other parts of speech of the dictionary.
             tags: [unit]
             justification: |
               The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it, and it
-              must never lose a dictionary word or a part of speech because of what was trained.
+              must never lose a dictionary word or a part of speech because of what was trained. Running text uses
+              inflected forms far more often than lemmas, so every form of every word has to be known.
             tests:
               - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
               - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
               - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
+              - WordSenseBuilder_MorphologyExpander_Expand_GeneratesForms
+              - WordSenseBuilder_MorphologyExpander_Expand_AppliesSpellingRules
+              - WordSenseBuilder_MorphologyExpander_Expand_UsesIrregularForms
               - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
               - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Words_Committed_MatchesCorpus
               - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+
+          - id: WordSense-WordSenseBuilder-Coverage
+            title: >-
+              The builder shall report, for a directory of plain-text files, the share of the running words that the
+              word table knows (excluding the Project Gutenberg header and footer), and list the unknown words,
+              separating likely names from other words, most frequent first.
+            tags: [unit]
+            justification: |
+              The completeness of the word table must be measured on real text, not assumed; a repeatable report is
+              how obviously valid unknown words are found and how a regression is detected.
+            tests:
+              - WordSenseBuilder_CoverageReport_Body_CutsAtMarkers
+              - WordSenseBuilder_CoverageReport_AddText_ClassifiesTokens
+              - WordSenseBuilder_CoverageReport_ReadAndRender_ListsFigures
+              - WordSenseBuilder_CoverageReport_Read_BadDirectory_Throws
+              - WordSenseBuilder_CoverageReport_AuthoredSample_IsFullyKnown
+              - WordSenseBuilder_Program_Coverage_ReportsAndWritesFile
+              - WordSenseBuilder_Program_Coverage_WithoutText_Fails
 
           - id: WordSense-WordSenseBuilder-ImportDictionary
             title: >-
@@ -170,9 +193,9 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands words, import-moby, weights, evaluate, ud-counts, train-basic,
-              tune-basic and appendix, print usage when given no arguments, and shall report an unknown or removed
-              command, a
+              The builder shall provide the commands words, import-moby, weights, evaluate, ud-counts, ud-irregular,
+              coverage, train-basic, tune-basic and appendix, print usage when given no arguments, and shall report an
+              unknown or removed command, a
               malformed option or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |

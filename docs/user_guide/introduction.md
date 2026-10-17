@@ -37,7 +37,8 @@ test suite; the samples in this guide are reviewed with the guide. They assume `
 
 - **Lemma**: the dictionary base form of a word, for example "record" for "records".
 - **Word table**: the embedded table of the core package, `WordLexicon.Words`. It maps every known lower-case surface
-  form, including the inflected forms that the build materialized, to its possible senses. A word in it is *known*.
+  form, including the inflected forms that the build generated for every dictionary word, to its possible senses.
+  A word in it is *known*.
 - **Sense**: one possible reading of a word, a `WordDetails`: lemma, part of speech, meaning and respelling.
 - **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
   "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
@@ -253,7 +254,8 @@ is not in the lexicon and starts with an upper-case letter inside a segment (not
 ## Core: the Word Table
 
 `WordLexicon.Words` is a `FrozenDictionary<string, WordDetails[]>` of lower-case surface forms to their senses. The
-inflected forms (plural, verb forms, comparatives and so on) are in the table, so no morphology runs at use time. The
+inflected forms (plural, verb forms, comparatives and so on) of every dictionary word are in the table, so no
+morphology runs at use time. The
 core package has no model, no ONNX Runtime and no weights: it knows nothing of the model packages.
 
 ```csharp
@@ -594,7 +596,9 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 # Limitations
 
 - **Words are classified by what the table knows.** A word that is not in `WordLexicon.Words` is unknown, and so are
-  numbers and most proper nouns. There is no morphology at use time and no capitalization or possessive
+  numbers, names, contractions and possessive forms such as `don't` and `Mary's`, dialect spellings and archaic verb
+  endings (about 96% of the running words of a Project Gutenberg sample are known). There is no morphology at use
+  time and no capitalization or possessive
   heuristic for looking a word up: a form that is not in the table is unknown.
 - **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
   appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
@@ -639,7 +643,9 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | Command | What it does |
 | ------- | ------------ |
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
-| `words` | Builds the word table (`words.bin`) of the core package, including the materialized inflections |
+| `words` | Builds the word table (`words.bin`), including the generated inflections |
+| `ud-irregular` | Derives `corpus/lexicon/irregular-ud.tsv` (irregular forms attested in UD) |
+| `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR` and the top unknown words |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text |
 | `ud-counts` | Counts the tag statistics of the pinned UD English-EWT treebank into `corpus/ud` |

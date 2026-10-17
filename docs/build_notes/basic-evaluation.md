@@ -56,7 +56,7 @@ reference rows are fixed values of earlier measurements; the first row is the cu
 
 | Model | Best sense, holdout | Best sense, real text | Part of speech (holdout / real) | Pronunciation (holdout / real) |
 | ----- | ------------------: | --------------------: | ------------------------------: | -----------------------------: |
-| Basic (this build) | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% |
+| Basic (this build) | 89.04% | 85.63% | 90.11% / 90.42% | 89.72% / 87.86% |
 | Basic spike (research prototype) | 91.4% | 81.9% | 92.6% / 87.5% | 93.9% / 84.9% |
 | MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% |
 | BertBaseCased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% |
@@ -69,15 +69,15 @@ expectation.
 
 | Set | Threshold | Coverage | Precision |
 | --- | --------: | -------: | --------: |
-| holdout | 0.6 | 95.28% | 90.42% |
-| holdout | 0.8 | 85.83% | 93.76% |
-| holdout | 0.9 | 77.93% | 96.17% |
-| real text | 0.6 | 89.84% | 89.34% |
-| real text | 0.8 | 78.23% | 93.14% |
-| real text | 0.9 | 69.67% | 96.04% |
+| holdout | 0.6 | 95.14% | 91.19% |
+| holdout | 0.8 | 85.98% | 94.53% |
+| holdout | 0.9 | 78.07% | 96.83% |
+| real text | 0.6 | 88.39% | 91.30% |
+| real text | 0.8 | 77.50% | 94.19% |
+| real text | 0.9 | 69.23% | 97.27% |
 
-Calibration is monotone: holdout accuracy per bucket is 52.9% (0.4-0.6), 57.8% (0.6-0.7), 62.1% (0.7-0.8), 70.0%
-(0.8-0.9) and 96.2% (at least 0.9). The probabilities are under-confident in the middle buckets, over-confident
+Calibration is monotone: holdout accuracy per bucket is 47.3% (0.4-0.6), 57.7% (0.6-0.7), 61.8% (0.7-0.8), 71.9%
+(0.8-0.9) and 96.8% (at least 0.9). The probabilities are under-confident in the middle buckets, over-confident
 below 0.6, and well calibrated at 0.9 and above.
 
 ### Cost
@@ -87,7 +87,7 @@ below 0.6, and well calibrated at 0.9 and above.
 | Table size | 83 KiB |
 | Table cold load | 22 ms |
 | Classification time | 2.3 us per word, 34 us per sentence |
-| Word table first use (core package) | 122 ms, 42.8 MiB |
+| Word table first use (core package) | 170 ms, 59.7 MiB |
 | Process memory added by the model | 21 MiB |
 
 ### Differences to the spike

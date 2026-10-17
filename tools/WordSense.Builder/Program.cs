@@ -21,12 +21,14 @@ namespace WordSense.Builder;
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
 ///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
+///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
+///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, train-basic, tune-basic, appendix.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix.";
 
     /// <summary>
     ///     Runs the builder.
@@ -112,6 +114,23 @@ internal static class Program
                     }
 
                     return 0;
+                case "ud-irregular":
+                    var irregularCache = options.TryGetValue("ud", out var ud4) ? Path.GetFullPath(ud4) : BasicModelBuilder.DefaultUdCache(repository);
+                    var irregularOutput = options.TryGetValue("output", out var io) ? io : Path.Combine(corpus, "lexicon", IrregularForms.DerivedFile);
+                    output.WriteLine(IrregularForms.Derive(irregularCache, corpus, irregularOutput));
+                    return 0;
+                case "coverage":
+                    var textDirectory = Path.GetFullPath(Require(options, "text"));
+                    var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
+                    var table = WordsBuilder.Build(corpus);
+                    var coverage = CoverageReport.Read(textDirectory, table.ContainsKey).Render(topCount);
+                    output.Write(coverage);
+                    if (options.TryGetValue("output", out var coverageFile))
+                    {
+                        File.WriteAllText(coverageFile, coverage, new System.Text.UTF8Encoding(false));
+                    }
+
+                    return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
                     var lemmas = AppendixGenerator.Write(corpus, appendix);
@@ -129,7 +148,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Parses <c>--name value</c> pairs.

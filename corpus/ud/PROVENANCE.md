@@ -24,6 +24,8 @@ Both TSV files are UTF-8 without a byte-order mark, with LF line endings, in a d
   - `en_ewt-ud-dev.conllu`, SHA-256 `39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`
 - License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), see
   `LICENSE-CC-BY-SA-4.0.txt`. The treebank is credited in the "Credits and licenses" section of the main README.
+- The irregular-form list `corpus/lexicon/irregular-ud.tsv` (one entry) is also derived from the train and development
+  parts of this treebank by the `ud-irregular` command and is covered by the same license; the test part is not used.
 
 ## Regeneration
 

@@ -122,15 +122,61 @@ public sealed class LexiconTests : IDisposable
         var verb = LexiconSource.Bit(PartOfSpeech.Verb);
         var adjective = LexiconSource.Bit(PartOfSpeech.Adjective);
         var noun = LexiconSource.Bit(PartOfSpeech.Noun);
-        (string, ushort)[] bases = [("city", noun), ("happy", adjective), ("walk", verb)];
+        (string, ushort, string)[] bases = [("city", noun, "N"), ("happy", adjective, "J"), ("walk", verb, "V")];
 
-        var forms = MorphologyExpander.Expand(bases, _ => false, new HashSet<string> { "Plural", "PastTense", "Adverb" }, Single);
+        var forms = MorphologyExpander.Expand(bases, _ => false, new HashSet<string> { "Plural", "ThirdPerson", "PastTense", "Adverb" }, [], Single);
 
-        Assert.Equal(new[] { "cities", "citys", "happily", "walked", "walks" }, forms.Keys.ToArray());
+        Assert.Equal(new[] { "cities", "happily", "walked", "walks" }, forms.Keys.ToArray());
         Assert.Equal(PartOfSpeech.Adverb, forms["happily"][0].PartOfSpeech);
         Assert.Equal("happy", forms["happily"][0].Lemma);
         Assert.Equal(PartOfSpeech.Verb, forms["walked"][0].PartOfSpeech);
         Assert.Equal(PartOfSpeech.Noun, forms["cities"][0].PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     Spelling rules: dropped e, doubled consonant, y to i, and -ing.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_MorphologyExpander_Expand_AppliesSpellingRules()
+    {
+        var verb = LexiconSource.Bit(PartOfSpeech.Verb);
+        (string, ushort, string)[] bases = [("stop", verb, "V"), ("love", verb, "V"), ("carry", verb, "V"), ("look", verb, "V")];
+        var enabled = new HashSet<string> { "ThirdPerson", "PastTense", "Gerund" };
+
+        var forms = MorphologyExpander.Expand(bases, _ => false, enabled, [], Single).Keys.ToHashSet();
+
+        Assert.Superset(new HashSet<string> { "stopped", "stopping", "loved", "loving", "carried", "carries", "carrying", "looked", "looking" }, forms);
+        Assert.DoesNotContain("stoped", forms);
+        Assert.DoesNotContain("lovng", forms);
+    }
+
+    /// <summary>
+    ///     Irregular entries replace the regular form, and Moby words win over generated forms.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_MorphologyExpander_Expand_UsesIrregularForms()
+    {
+        var verb = LexiconSource.Bit(PartOfSpeech.Verb);
+        var noun = LexiconSource.Bit(PartOfSpeech.Noun);
+        (string, ushort, string)[] bases = [("child", noun, "N"), ("go", verb, "V"), ("take", verb, "V")];
+        IrregularEntry[] irregular =
+        [
+            new("go", PartOfSpeech.Verb, "Past", ["went"]),
+            new("take", PartOfSpeech.Verb, "Past", ["took"]),
+            new("child", PartOfSpeech.Noun, "Plural", ["children"]),
+        ];
+        var enabled = new HashSet<string> { "Plural", "ThirdPerson", "PastTense", "Gerund", "Irregular" };
+
+        var forms = MorphologyExpander.Expand(bases, _ => false, enabled, irregular, Single);
+
+        Assert.Equal("go", forms["went"][0].Lemma);
+        Assert.Equal("child", forms["children"][0].Lemma);
+        Assert.Equal("take", forms["took"][0].Lemma);
+        Assert.DoesNotContain("goed", forms.Keys);
+        Assert.DoesNotContain("childs", forms.Keys);
+        Assert.DoesNotContain("taked", forms.Keys);
+        Assert.Contains("taking", forms.Keys);
+        Assert.Contains("takes", forms.Keys);
     }
 
     /// <summary>
@@ -139,10 +185,10 @@ public sealed class LexiconTests : IDisposable
     [Fact]
     public void WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules()
     {
-        (string, ushort)[] bases = [("walk", LexiconSource.Bit(PartOfSpeech.Verb))];
+        (string, ushort, string)[] bases = [("walk", LexiconSource.Bit(PartOfSpeech.Verb), "V")];
 
-        var withKnown = MorphologyExpander.Expand(bases, w => w == "walks", new HashSet<string> { "Plural", "PastTense" }, Single);
-        var none = MorphologyExpander.Expand(bases, _ => false, new HashSet<string>(), Single);
+        var withKnown = MorphologyExpander.Expand(bases, w => w == "walks", new HashSet<string> { "Plural", "ThirdPerson", "PastTense" }, [], Single);
+        var none = MorphologyExpander.Expand(bases, _ => false, new HashSet<string>(), [], Single);
 
         Assert.Equal(new[] { "walked" }, withKnown.Keys.ToArray());
         Assert.Empty(none);
@@ -180,5 +226,5 @@ public sealed class LexiconTests : IDisposable
         Assert.Empty(TextSplitter.SplitWords("   "));
     }
 
-    private static WordDetails[] Single(string lemma, PartOfSpeech pos) => [new WordDetails(lemma, pos, null, null)];
+    private static WordDetails[] Single(string lemma, IReadOnlyList<PartOfSpeech> pos) => pos.Select(p => new WordDetails(lemma, p, null, null)).ToArray();
 }

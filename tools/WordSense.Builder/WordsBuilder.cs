@@ -61,6 +61,7 @@ internal static class WordsBuilder
         // Dictionary words: one sense per part of speech
         var lexiconPath = Path.Combine(corpus, "lexicon", "lexicon.tsv");
         var lexicon = File.Exists(lexiconPath) ? LexiconSource.ReadWords(lexiconPath) : [];
+        lexicon = LexiconSource.MergeAdditions(lexicon, Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile));
         var singles = new Dictionary<(string, PartOfSpeech), WordDetails[]>();
         WordDetails[] Single(string lemma, PartOfSpeech pos)
         {
@@ -72,9 +73,10 @@ internal static class WordsBuilder
             return one;
         }
 
-        var dictionaryBases = new List<(string Word, ushort Mask)>();
+        var dictionaryBases = new List<(string Word, ushort Mask, string Letters)>();
         foreach (var (word, mask, letters) in lexicon)
         {
+            dictionaryBases.Add((word, mask, letters));
             if (entries.TryGetValue(word, out var trained))
             {
                 // The trained senses come first (the weights fix their order); the dictionary adds only the parts of
@@ -96,12 +98,27 @@ internal static class WordsBuilder
             entries[word] = letters
                 .Select(l => Single(word, (PartOfSpeech)LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))[0])
                 .ToArray();
-            dictionaryBases.Add((word, mask));
         }
+
+        // A trained lemma that the dictionary lacks is a base too
+        var lexiconWords = lexicon.Select(l => l.Word).ToHashSet(StringComparer.Ordinal);
+        foreach (var lemma in senses.Keys.Where(k => !lexiconWords.Contains(k)))
+        {
+            var letters = string.Concat(senses[lemma].Select(d => LexiconSource.Letters[(int)d.PartOfSpeech]).Distinct());
+            dictionaryBases.Add((lemma, LexiconSource.ToMask(letters, lemma), letters));
+        }
+
+        dictionaryBases.Sort((a, b) => string.CompareOrdinal(a.Word, b.Word));
+
+        // A form of a trained lemma that has several parts of speech answers with the trained senses, like the listed forms;
+        // any other generated form has one sense for each of its parts of speech and its base as lemma
+        WordDetails[] Answer(string lemma, IReadOnlyList<PartOfSpeech> pos) =>
+            pos.Count > 1 && senses.TryGetValue(lemma, out var trainedSenses) ? trainedSenses : pos.Select(p => Single(lemma, p)[0]).ToArray();
 
         // Generated forms of the dictionary words
         var enabled = MorphologyExpander.ReadEnabled(Path.Combine(corpus, "lexicon", "morphology.tsv"));
-        foreach (var (form, details) in MorphologyExpander.Expand(dictionaryBases, entries.ContainsKey, enabled, Single))
+        var irregular = IrregularForms.Read(Path.Combine(corpus, "lexicon"));
+        foreach (var (form, details) in MorphologyExpander.Expand(dictionaryBases, entries.ContainsKey, enabled, irregular, Answer))
         {
             entries.TryAdd(form, details);
         }

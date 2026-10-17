@@ -20,7 +20,7 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     The inflected forms materialized at build time resolve to the lemma of the base form.
+    ///     The inflected forms materialized at build time for every dictionary word resolve to the lemma of the base form.
     /// </summary>
     [Fact]
     public void WordLexicon_Words_InflectedForm_ReturnsSensesOfBase()
@@ -28,6 +28,46 @@ public class WordLexiconTests
         Assert.True(WordLexicon.Words.TryGetValue("records", out var senses));
 
         Assert.Contains(senses, s => s.Lemma == "record");
+    }
+
+    /// <summary>
+    ///     Regular and irregular inflections of ordinary words resolve to their lemma.
+    /// </summary>
+    [Theory]
+    [InlineData("looked", "look", PartOfSpeech.Verb)]
+    [InlineData("seemed", "seem", PartOfSpeech.Verb)]
+    [InlineData("trees", "tree", PartOfSpeech.Noun)]
+    [InlineData("knows", "know", PartOfSpeech.Verb)]
+    [InlineData("having", "have", PartOfSpeech.Verb)]
+    public void WordLexicon_Words_InflectedFormOfAnyDictionaryWord_ResolvesToLemma(string form, string lemma, PartOfSpeech pos)
+    {
+        Assert.True(WordLexicon.Words.TryGetValue(form, out var senses));
+
+        Assert.Contains(senses, s => s.Lemma == lemma && s.PartOfSpeech == pos);
+    }
+
+    /// <summary>
+    ///     An irregular form that the dictionary already lists keeps its dictionary entry (the dictionary wins), and is known.
+    /// </summary>
+    [Theory]
+    [InlineData("went")]
+    [InlineData("children")]
+    [InlineData("happier")]
+    public void WordLexicon_Words_IrregularFormInDictionary_IsKnown(string form)
+    {
+        Assert.True(WordLexicon.Words.ContainsKey(form));
+    }
+
+    /// <summary>
+    ///     Wrong regular forms of irregular words are not generated.
+    /// </summary>
+    [Theory]
+    [InlineData("goed")]
+    [InlineData("childs")]
+    [InlineData("knowed")]
+    public void WordLexicon_Words_WrongRegularFormOfIrregularWord_IsAbsent(string form)
+    {
+        Assert.False(WordLexicon.Words.ContainsKey(form));
     }
 
     /// <summary>

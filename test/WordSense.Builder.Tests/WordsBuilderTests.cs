@@ -24,7 +24,7 @@ public sealed class WordsBuilderTests : IDisposable
         _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
         _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nbanks\tbank\tnoun,verb\n");
         _dir.Write("corpus/lexicon/lexicon.tsv", "bank\tNV\nquick\tJ\nrun\tV\n");
-        _dir.Write("corpus/lexicon/morphology.tsv", "Plural\tenabled\tevidence\nPastTense\tdisabled\tevidence\n");
+        _dir.Write("corpus/lexicon/morphology.tsv", "Plural\tenabled\tevidence\nThirdPerson\tenabled\tevidence\nPastTense\tdisabled\tevidence\n");
 
         var table = WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"));
 

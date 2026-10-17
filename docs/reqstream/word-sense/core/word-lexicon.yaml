@@ -10,7 +10,8 @@ sections:
             requirements:
               - id: WordSense-Core-WordLexicon-Words
                 title: >-
-                  WordLexicon shall map each known lower-case surface word, including the inflected forms generated at
+                  WordLexicon shall map each known lower-case surface word, including the inflected forms (plural,
+                  verb, comparative and adverb forms, irregular forms included) of every dictionary word generated at
                   build time, to the list of senses (lemma, part of speech, meaning and respelling) it can have.
                 tags: [unit]
                 justification: |
@@ -19,6 +20,9 @@ sections:
                 tests:
                   - WordLexicon_Words_KnownWord_ReturnsItsSenses
                   - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
+                  - WordLexicon_Words_InflectedFormOfAnyDictionaryWord_ResolvesToLemma
+                  - WordLexicon_Words_IrregularFormInDictionary_IsKnown
+                  - WordLexicon_Words_WrongRegularFormOfIrregularWord_IsAbsent
                   - WordLexicon_Words_Keys_AreLowerCase
                   - WordLexicon_Words_UnknownWord_IsAbsent
 

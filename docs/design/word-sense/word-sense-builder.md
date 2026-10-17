@@ -38,7 +38,11 @@ inference share one implementation of the feature computation.
   letters `NRVJBPCID`, the first letter being the first sense).
 - `LexiconImporter`: derives the word list from the pinned Moby list (checksum, source order of the parts of speech,
   corrections, participle and gerund rule) and writes `lexicon.tsv`.
-- `MorphologyExpander`: generates inflected forms of dictionary words from the enabled morphology rules.
+- `MorphologyExpander`: generates the inflected forms of every dictionary word (and of every trained lemma) from the
+  enabled morphology rules, spelling rules and the irregular entries read by `IrregularForms`.
+- `IrregularForms`: reads the irregular form lists and derives the treebank list (`ud-irregular`).
+- `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
+  table knows and lists the unknown words as names and others.
 - `WordsBuilder` and `WordsBlobWriter`: combine the word sources and serialize the lexicon blob (`WSW1`).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX1`).
@@ -97,8 +101,13 @@ removes a sense:
 3. The dictionary word list: each word answers with one sense per part of speech and no meaning. When a trained
    lemma or form spells the same word, its trained senses stay first and the dictionary's other parts of speech are
    appended, so no part of speech of the dictionary is lost. Every sense of an entry has the lemma of its first sense.
-4. Generated inflections: `MorphologyExpander` adds forms of the dictionary words from the enabled rules, each
-   answering with one sense of its base; the first base in ordinal order wins when two bases give the same form.
+4. Generated inflections: `MorphologyExpander` adds the forms of every dictionary word and trained lemma from the
+   enabled rules (noun plural, verb third person, past and -ing, adjective comparative and superlative, adverb, and
+   the derived forms), with the spelling rules and the irregular entries (an irregular form replaces the regular
+   one). Each form answers with the base's lemma; a generated form of a trained lemma with several parts of speech
+   keeps the trained senses, every other form has one sense per part of speech. An existing word always wins, so the
+   forms of step 1 to 3 are never replaced, and the first base in ordinal order wins when two bases give the same form.
+   The dictionary additions (`additions.tsv`) are merged into the word list before the expansion.
 
 Every dictionary word is kept, whatever the accuracy of any model for it: the accuracy of a model governs only which
 senses it chooses between, never whether a word exists.

@@ -197,9 +197,9 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
-| BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
-| Basic | 89.02% | 85.49% | 90.09% / 90.28% | 89.71% / 87.71% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
+| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
+| BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
+| Basic | 89.04% | 85.63% | 90.11% / 90.42% | 89.72% / 87.86% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -278,9 +278,10 @@ Accuracy depends on the model and is measured by the repository's build tool on 
 results of all models are collected in the [model comparison][link-model-comparison] and the Basic model's in the
 [Basic evaluation][link-basic-evaluation]. Every dictionary word is in the lexicon, whatever the model's accuracy;
 the model only chooses among the senses of a multi-sense word, and a lemma the encoder was not trained for gets its
-first dictionary sense with a low confidence. The dictionary knows the inflected forms that were materialized when it
-was built; numbers and most proper nouns are unknown. The [user guide][link-user-guide] has the details, the caveats
-and troubleshooting.
+first dictionary sense with a low confidence. The dictionary knows the inflected forms of every dictionary word
+(plural, verb forms, comparatives and so on, generated when it was built, about 96% of the running words of the
+Project Gutenberg sample); numbers, names and apostrophe forms are unknown. The [user guide][link-user-guide] has
+the details, the caveats and troubleshooting.
 
 ## Documentation
 

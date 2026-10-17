@@ -152,6 +152,7 @@ sections:
           - WordSense-WordSenseBuilder-TuneBasic
           - WordSense-WordSenseBuilder-Hyperparameters
           - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Coverage
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-Usage
         tests:

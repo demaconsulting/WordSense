@@ -84,16 +84,19 @@ best-sense accuracy of those words. The Basic model's figures (0.6 / 0.8 / 0.9) 
 | Classification latency (ms per sentence) | 1.84 | 8.55 |
 | Model first use (ms) | 388 | 521 |
 | Process memory added by the model (MiB) | 64 | 150 |
-| Word table first use (ms) | 122 | 118 |
-| Word table first use (MiB) | 42.8 | 42.8 |
+| Word table first use (ms) | 201 | 173 |
+| Word table first use (MiB) | 59.7 | 59.7 |
 
 The download sizes are the sums of the sizes of the pinned files of each model (MiniLM: 23,203,878 bytes = 22.13 MiB;
 BertBaseCased: 109,360,908 bytes = 104.29 MiB), in MiB (1 MiB = 1,048,576 bytes). The earlier evaluator summed every file
 in the model folder, which gave 23 MiB for MiniLM; it now sums the pinned files only. They replace the decimal-megabyte
 figures in `model-provenance.md` (23.2 MB and 109.4 MB). The latency is machine dependent.
 
-The memory row is what the model adds, measured after the word lexicon had been loaded (the word table row, 42.8
-MiB); it does not include the lexicon. The timing and memory rows are from the quiet reference run; the second run that
+The memory row is what the model adds, measured after the word lexicon had been loaded (the word table row, 59.7
+MiB since every dictionary word has its inflected forms; it was 42.8 MiB before, see `inflection-coverage.md`); it
+does not include the lexicon. The timing and memory rows are from the quiet reference run (the latency, model and
+memory rows were not re-measured after the inflection change because a busy machine distorted the re-run; only the
+word table rows and the accuracy were refreshed); the second run that
 measured the calibration (MiniLM 1.92 ms, 40 MiB, 300 ms; BertBaseCased 12.77 ms, 127 MiB, 529 ms) was noisier, and
 the accuracy figures were identical.
 

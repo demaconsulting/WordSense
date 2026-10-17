@@ -10,7 +10,8 @@ possible senses. Every model starts from it, and a word with one sense never nee
 #### Data Model
 
 - `WordLexicon.Words`: a `FrozenDictionary<string, WordDetails[]>`.
-- Keys are lower-case surface forms, including the inflected forms generated at build time. The senses under one key
+- Keys are lower-case surface forms, including the inflected forms of every dictionary word generated at build
+  time. The senses under one key
   all belong to one lemma. Callers lower-case the word and map the typographic apostrophe (U+2019) to `'` before the
   lookup.
 - `WordDetails` is non-null in `Meaning` and `Respelling` only for heteronyms (words whose pronunciation depends on

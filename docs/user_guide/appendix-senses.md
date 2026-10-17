@@ -163,7 +163,8 @@ speech:
 | Verb, Determiner                                                |       1 |
 
 The word table also holds the inflected forms that suffix rules generate from dictionary words. Rules enabled: `Plural`,
-`Adverb`. Rules disabled because they did not reach 95 percent precision on real text: `PastTense`.
+`ThirdPerson`, `PastTense`, `Gerund`, `Comparative`, `Superlative`, `Adverb`, `Irregular`, `Quality`, `Agent`, `Manner`.
+Rules disabled because they did not reach 95 percent precision on real text: none.
 
 ### Lemmas Starting With A
 

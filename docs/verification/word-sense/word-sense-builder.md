@@ -29,8 +29,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **Words command writes the lexicon**: `words --corpus DIR --output FILE` on a small synthetic corpus writes the
   lexicon file and reports the number of words; the file is read back by `WordsBlob` into the expected keys and senses.
-- **Inflections are materialized**: the written lexicon contains the inflected forms of the lemmas (plural, past and
-  gerund forms) as lower-case keys with the senses of their lemma, so the shipped reader needs no morphology.
+- **Inflections are materialized for every dictionary word**: the written lexicon contains the plural, third person,
+  past, -ing, comparative, superlative, adverb and derived forms of every dictionary word and trained lemma as
+  lower-case keys with the senses of their lemma, with the spelling rules of English (`GeneratesForms`,
+  `AppliesSpellingRules`), so the shipped reader needs no morphology.
+- **Irregular forms replace the regular form** (`UsesIrregularForms`): `went`, `took` and `children` are keys and
+  `goed`, `taked` and `childs` are not; an existing word is never replaced (`RespectsKnownWordsAndDisabledRules`).
 - **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms, and the
   dictionary's other parts of speech of the same word follow them (`MergesDictionaryPartsOfSpeechAfterTrainedSenses`).
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
@@ -39,6 +43,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Writer and reader agree**: every key and sense written by the writer is read back unchanged, and the reader rejects
   a tampered file (see the `WordLexicon` unit document).
 - **Invalid corpus**: an inconsistent sense inventory exits with code 1 and an error message and writes no file.
+
+#### coverage
+
+- **Gutenberg boundaries**: only the text between the `*** START` and `*** END` lines is read (`Body_CutsAtMarkers`).
+- **Classification**: known, apostrophe, name-like (capitalized at least four times as often as lower case) and other
+  tokens are counted apart (`AddText_ClassifiesTokens`).
+- **Directory and rendering**: every `.txt` file of a directory is read and the report lists the figures and the unknown
+  words; a missing or empty directory is rejected (`ReadAndRender_ListsFigures`, `Read_BadDirectory_Throws`).
+- **Command**: `coverage --text DIR` prints the report and `--output` writes it; the text option is required
+  (`Program_Coverage_*`).
+- **Regression on an authored sample** (`AuthoredSample_IsFullyKnown`): a small authored paragraph of inflected
+  English (no licensed text) is fully known by the committed lexicon. The figure of the real-text sample is
+  in the build notes, not asserted here.
 
 #### import-moby
 

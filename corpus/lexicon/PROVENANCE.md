@@ -86,10 +86,27 @@ Dependencies English-EWT treebank labels `the`, `a` and `an` determiner in over 
 | Rule | State |
 | --- | --- |
 | Plural | enabled |
-| PastTense | disabled |
+| ThirdPerson | enabled |
+| PastTense | enabled |
+| Gerund | enabled |
+| Comparative | enabled |
+| Superlative | enabled |
 | Adverb | enabled |
+| Irregular | enabled |
+| Quality | enabled |
+| Agent | enabled |
+| Manner | enabled |
 
-The evidence of every rule is in `morphology.tsv`.
+The evidence of every rule is in `morphology.tsv` and in `docs/build_notes/inflection-coverage.md`.
+
+## Inflection Data
+
+- `irregular-forms.tsv`: hand-written closed list of irregular English forms, general knowledge, no third-party
+  data. License: same as the repository.
+- `irregular-ud.tsv`: derived by `ud-irregular` from UD English-EWT train and development (pairs seen twice,
+  dictionary-filtered; the test part is never read). License: CC BY-SA 4.0 (see `corpus/ud/PROVENANCE.md`).
+- `additions.tsv`: hand-curated words missing from the dictionary (days, months, nationalities, British spellings,
+  `coverage` gaps). License: same as the repository.
 
 ## Counts
 

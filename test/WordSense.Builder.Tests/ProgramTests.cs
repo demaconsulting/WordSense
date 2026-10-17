@@ -40,7 +40,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "words", "import-moby", "weights", "evaluate", "ud-counts", "train-basic", "tune-basic", "appendix" })
+        foreach (var command in new[] { "words", "import-moby", "weights", "evaluate", "ud-counts", "ud-irregular", "coverage", "train-basic", "tune-basic", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -206,6 +206,38 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(1, code);
         Assert.Contains("Expected '--name value'", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The coverage command reports the figures of a text directory and can write them to a file.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Coverage_ReportsAndWritesFile()
+    {
+        var corpus = PrepareCorpus();
+        _dir.Write("text/t.txt", "*** START ***\nwalk walked zzqxj\n*** END ***\n");
+        var target = Path.Combine(_dir.Root, "out", "coverage.md");
+        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
+
+        var (code, output, error) = await RunAsync("coverage", "--corpus", corpus, "--text", Path.Combine(_dir.Root, "text"), "--top", "5", "--output", target);
+
+        Assert.Equal(0, code);
+        Assert.Empty(error);
+        Assert.Contains("| Known tokens | 1 (33.33 percent) |", output, StringComparison.Ordinal);
+        Assert.Contains("| zzqxj | 1 |", output, StringComparison.Ordinal);
+        Assert.Equal(output, await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     The coverage command requires the text directory.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Coverage_WithoutText_Fails()
+    {
+        var (code, _, error) = await RunAsync("coverage", "--corpus", PrepareCorpus());
+
+        Assert.Equal(1, code);
+        Assert.Contains("text", error, StringComparison.Ordinal);
     }
 
     /// <summary>

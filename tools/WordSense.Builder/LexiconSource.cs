@@ -51,6 +51,52 @@ internal static class LexiconSource
     }
 
     /// <summary>
+    ///     The name of the file of additions to the dictionary.
+    /// </summary>
+    public const string AdditionsFile = "additions.tsv";
+
+    /// <summary>
+    ///     Merges the hand-written additions into the dictionary: a word that is new is added, and a word that exists gains
+    ///     the parts of speech it lacks (after its own, in the order of the additions).
+    /// </summary>
+    /// <param name="words">The dictionary words in ordinal order.</param>
+    /// <param name="path">The additions file (<c>word</c>, <c>letters</c>, <c>evidence</c>); nothing is added when it does not exist.</param>
+    /// <returns>The merged dictionary in ordinal order.</returns>
+    /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
+    public static List<(string Word, ushort Mask, string Letters)> MergeAdditions(List<(string Word, ushort Mask, string Letters)> words, string path)
+    {
+        if (!File.Exists(path))
+        {
+            return words;
+        }
+
+        var merged = words.ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
+        var number = 0;
+        foreach (var raw in File.ReadAllLines(path, Encoding.UTF8))
+        {
+            number++;
+            var line = raw.TrimEnd('\r');
+            if (line.Length == 0 || line[0] == '#')
+            {
+                continue;
+            }
+
+            var columns = line.Split('\t');
+            var where = $"{AdditionsFile} line {number}";
+            if (columns.Length < 2 || columns[0].Length == 0 || !columns[0].All(c => c is >= 'a' and <= 'z'))
+            {
+                throw new InvalidDataException($"{where}: expected 'word<TAB>letters<TAB>evidence' with a word of the letters a-z.");
+            }
+
+            ToMask(columns[1], where);
+            var current = merged.GetValueOrDefault(columns[0], string.Empty);
+            merged[columns[0]] = current + string.Concat(columns[1].Where(l => !current.Contains(l, StringComparison.Ordinal)));
+        }
+
+        return merged.OrderBy(m => m.Key, StringComparer.Ordinal).Select(m => (m.Key, ToMask(m.Value, m.Key), m.Value)).ToList();
+    }
+
+    /// <summary>
     ///     Reads the morphology rules next to the lexicon, when the file exists.
     /// </summary>
     /// <param name="directory">The lexicon directory.</param>

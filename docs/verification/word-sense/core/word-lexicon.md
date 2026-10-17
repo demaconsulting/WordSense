@@ -20,7 +20,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Known lemma has its senses**: `Words["read"]` holds two entries that share the lemma `read`; a single-sense word
   holds one.
 - **Keys are lower case and include inflections**: every key equals its lower-cased form, and inflected forms such as
-  `records` and `recorded` are keys whose entries carry the lemma `record`. No morphology runs at run time.
+  `records` and `recorded` are keys whose entries carry the lemma `record`, and so are the forms of every dictionary
+  word (`looked`, `seemed`, `trees`, `knows`, `having`); `went`, `children` and `happier` are known (the dictionary
+  lists them itself and wins); the wrong regular forms of irregular
+  words (`goed`, `childs`) are absent. No morphology runs at run time.
 - **Closed-class words are present** (`ClosedClassWord_HasItsPartOfSpeechAlone`, `SoAndWill_ListTheirParts`,
   `EverySense_SharesTheLemma`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a conjunction-only and
   an interjection-only word are present, `so` and `will` list all their parts of speech, and every sense of a word has
