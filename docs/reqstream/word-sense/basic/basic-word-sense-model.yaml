@@ -20,23 +20,23 @@ sections:
                   - BasicWordSenseModel_EnsureModelAsync_IgnoresMirror
                   - BasicWordSenseModel_EnsureModelAsync_Cancelled_ReturnsCanceledTask
 
-              - id: WordSense-Basic-BasicWordSenseModel-Create
+              - id: WordSense-Basic-BasicWordSenseModel-Classify
                 title: >-
-                  BasicWordSenseModel shall create classifiers on demand, with or without a prior preparation call, each
-                  safe for concurrent use.
+                  BasicWordSenseModel shall classify on demand, with or without a prior preparation call, answering
+                  lexicon-only words without any preparation, and shall be safe for concurrent use.
                 tags: [unit]
                 justification: |
                   A model without resources should be as simple to use as a plain object.
                 tests:
-                  - BasicWordSenseModel_Create_ReturnsClassifier
-                  - BasicWordSenseModel_Create_WithoutEnsure_Works
-                  - BasicWordSenseModel_Create_Classifier_IsThreadSafe
+                  - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
+                  - BasicWordSenseModel_ClassifyAsync_WithoutEnsure_Works
+                  - BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure
+                  - BasicWordSenseModel_ClassifyAsync_IsThreadSafe
 
               - id: WordSense-Basic-BasicWordSenseModel-Dispose
                 title: >-
                   BasicWordSenseModel shall tolerate repeated and concurrent disposal, and after disposal shall throw
-                  ObjectDisposedException from its preparation step, from Create and from every call of a classifier it
-                  created.
+                  ObjectDisposedException from its preparation step and from ClassifyAsync.
                 tags: [unit]
                 justification: |
                   The model honors the disposal contract of IWordSenseModel, so code that handles any model behaves the
@@ -44,6 +44,5 @@ sections:
                 tests:
                   - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - BasicWordSenseModel_Dispose_Concurrent_IsHarmless
-                  - BasicWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed
+                  - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
                   - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
-                  - BasicWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed

@@ -42,9 +42,9 @@ still hide examples rendered as prose or dropped remarks.
 
 #### ApiMark_TerminologyDocumented
 
-**Scenario**: The shared terminology remarks on `IWordSenseClassifier` are generated.
+**Scenario**: The shared terminology remarks on `WordSense` are generated.
 
-**Expected**: The `IWordSenseClassifier` type page contains the term "confidence".
+**Expected**: The `WordSense` type page contains the term "confidence".
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-RenderExamples`.
 

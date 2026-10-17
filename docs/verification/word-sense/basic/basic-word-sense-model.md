@@ -17,11 +17,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **EnsureModelAsync is a no-op**: the returned task completes without touching the file system or the network, and a
   mirror passed in (even an unusual one) is ignored.
-- **Create returns a classifier without setup**: `Create` works without calling `EnsureModelAsync` first and returns
-  a classifier that answers a word list.
-- **Created classifiers are independent and thread-safe**: classifiers from two `Create` calls give identical results,
-  and parallel calls on one classifier give the same results as sequential calls.
+- **ClassifyAsync works without setup**: `ClassifyAsync` works without calling `EnsureModelAsync` first and answers a
+  word list parallel to the input; lexicon-only words need no ensure at all.
+- **Classification is thread-safe**: parallel calls on one model give the same results as sequential calls.
 - **Cancelled token is honored**: `EnsureModelAsync` with an already cancelled token returns a cancelled task.
-- **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing. After it, `EnsureModelAsync` and `Create`
-  throw `ObjectDisposedException`, and so does every call of a classifier created earlier, whatever the words
-  (including an empty list).
+- **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing. After it, `EnsureModelAsync` and
+  `ClassifyAsync` throw `ObjectDisposedException`, whatever the words (including an empty list).

@@ -14,7 +14,7 @@ The subsystem contains one unit, **BertBaseCasedWordSenseModel**. It references 
 ### Interfaces
 
 It exposes `BertBaseCasedWordSenseModel` with the constructor `(string? modelDirectory = null,
-int maxSequenceLength = 128)`, and through its base class `EnsureModelAsync`, `Create`, `HiddenSize`, `ModelId` and
+int maxSequenceLength = 128)`, and through its base class `EnsureModelAsync`, `ClassifyAsync`, `HiddenSize`, `ModelId` and
 `Dispose`. It consumes the internal model description type of the Onnx package and the weights embedded in its own
 assembly.
 

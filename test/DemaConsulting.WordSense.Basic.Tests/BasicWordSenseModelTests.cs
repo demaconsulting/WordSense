@@ -53,47 +53,61 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
-    ///     The model creates a classifier that answers.
+    ///     The model classifies after the ensure call.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_Create_ReturnsClassifier()
+    public async Task BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults()
     {
         IWordSenseModel model = new BasicWordSenseModel();
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        var results = await model.Create().ClassifyAsync(["Hello", "world"], TestContext.Current.CancellationToken);
+        var results = await model.ClassifyAsync(["Hello", "world"], TestContext.Current.CancellationToken);
 
         Assert.Equal(2, results.Length);
     }
 
     /// <summary>
-    ///     A classifier can be created without a preparation call.
+    ///     The model classifies without a preparation call.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_Create_WithoutEnsure_Works()
+    public async Task BasicWordSenseModel_ClassifyAsync_WithoutEnsure_Works()
     {
-        var classifier = new BasicWordSenseModel().Create();
+        using var model = new BasicWordSenseModel();
 
-        var results = await classifier.ClassifyAsync(["They", "record", "the", "record"], TestContext.Current.CancellationToken);
+        var results = await model.ClassifyAsync(["They", "record", "the", "record"], TestContext.Current.CancellationToken);
 
         Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
     }
 
     /// <summary>
-    ///     One classifier gives the same answers when used from many threads at once.
+    ///     A lexicon-only list is answered without any model resource: the model needs none.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_Create_Classifier_IsThreadSafe()
+    public async Task BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure()
     {
-        var classifier = new BasicWordSenseModel().Create();
+        using var model = new BasicWordSenseModel();
+
+        var results = await model.ClassifyAsync(["the", ".", "zzqxjw"], TestContext.Current.CancellationToken);
+
+        Assert.All(results, r => Assert.Null(r.Details));
+    }
+
+    /// <summary>
+    ///     One model gives the same answers when used from many threads at once.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_IsThreadSafe()
+    {
+        using var model = new BasicWordSenseModel();
         string[] words = ["They", "will", "record", "the", "record"];
-        var expected = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var expected = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
 
         var runs = await Task.WhenAll(Enumerable.Range(0, 16).Select(_ =>
-            Task.Run(() => classifier.ClassifyAsync(words, TestContext.Current.CancellationToken), TestContext.Current.CancellationToken)));
+            Task.Run(() => model.ClassifyAsync(words, TestContext.Current.CancellationToken), TestContext.Current.CancellationToken)));
 
         Assert.All(runs, run => Assert.Equal(expected, run));
     }
@@ -115,7 +129,7 @@ public class BasicWordSenseModelTests
     ///     Disposing from many threads at once never throws.
     /// </summary>
     [Fact]
-    public void BasicWordSenseModel_Dispose_Concurrent_IsHarmless()
+    public async Task BasicWordSenseModel_Dispose_Concurrent_IsHarmless()
     {
         var model = new BasicWordSenseModel();
         var exceptions = new System.Collections.Concurrent.ConcurrentBag<Exception>();
@@ -133,19 +147,7 @@ public class BasicWordSenseModelTests
         });
 
         Assert.Empty(exceptions);
-        Assert.Throws<ObjectDisposedException>(model.Create);
-    }
-
-    /// <summary>
-    ///     Creating a classifier after disposal is rejected.
-    /// </summary>
-    [Fact]
-    public void BasicWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed()
-    {
-        var model = new BasicWordSenseModel();
-        model.Dispose();
-
-        Assert.Throws<ObjectDisposedException>(model.Create);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["a"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -162,19 +164,18 @@ public class BasicWordSenseModelTests
     }
 
     /// <summary>
-    ///     A classifier created earlier rejects every call once its model is disposed, whatever the words.
+    ///     Classifying is rejected once the model is disposed, whatever the words.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed()
+    public async Task BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed()
     {
         var model = new BasicWordSenseModel();
-        var classifier = model.Create();
-        var before = await classifier.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken);
+        var before = await model.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken);
         model.Dispose();
 
         Assert.Equal(2, before.Length);
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken));
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync([], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync([], TestContext.Current.CancellationToken));
     }
 }

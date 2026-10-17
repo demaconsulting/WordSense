@@ -30,16 +30,17 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
-    ///     Creating a classifier before the files are available is an error that names the remedy.
+    ///     A lexicon-only call needs no model files, so it works on a model that was never ensured.
     /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public void MiniLMWordSenseModel_Create_BeforeEnsureModel_Throws()
+    public async Task MiniLMWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure()
     {
         using var model = new MiniLMWordSenseModel();
 
-        var ex = Assert.Throws<InvalidOperationException>(model.Create);
+        var senses = await model.ClassifyAsync(["the", "."], TestContext.Current.CancellationToken);
 
-        Assert.Contains("EnsureModelAsync", ex.Message, StringComparison.Ordinal);
+        Assert.All(senses, s => Assert.Null(s.Details));
     }
 
     /// <summary>
@@ -56,16 +57,17 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
-    ///     A disposed model rejects <c>Create</c> and disposing again is harmless.
+    ///     A disposed model rejects <c>ClassifyAsync</c> and disposing again is harmless.
     /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public void MiniLMWordSenseModel_Create_AfterDispose_Throws()
+    public async Task MiniLMWordSenseModel_ClassifyAsync_AfterDispose_Throws()
     {
         var model = new MiniLMWordSenseModel();
         model.Dispose();
         model.Dispose();
 
-        Assert.Throws<ObjectDisposedException>(model.Create);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -94,7 +96,7 @@ public class MiniLMWordSenseModelTests
 
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        Assert.NotNull(model.Create());
+        Assert.NotNull(await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -106,11 +108,10 @@ public class MiniLMWordSenseModelTests
     {
         using var model = new MiniLMWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
-        var classifier = model.Create();
         string[] words = ["They", "will", "record", "the", "record", "."];
 
-        var first = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
-        var second = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var first = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        var second = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
 
         Assert.Equal(first, second);
         Assert.Equal(PartOfSpeech.Verb, first[2].Details?.PartOfSpeech);

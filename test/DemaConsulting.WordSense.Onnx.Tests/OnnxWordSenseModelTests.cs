@@ -42,7 +42,7 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     A caller-supplied directory is verified without network access, and a classifier can then be created.
+    ///     A caller-supplied directory is verified without network access, and the model can then classify.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -52,9 +52,89 @@ public class OnnxWordSenseModelTests
 
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        var classifier = model.Create();
-        var result = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
         Assert.NotNull(result[2].Details);
+    }
+
+    /// <summary>
+    ///     A list without an ambiguous word is answered from the lexicon alone: no ensure, no model file, no ONNX.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles()
+    {
+        // The directory does not exist: an ensure would throw FileNotFoundException
+        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        using var model = Open(missing);
+
+        var result = await model.ClassifyAsync(["the", "zzqxjw", "."], TestContext.Current.CancellationToken);
+
+        Assert.All(result, r => Assert.Null(r.Details));
+        Assert.False(Directory.Exists(missing));
+    }
+
+    /// <summary>
+    ///     An ambiguous word makes the model ensure itself lazily, without a prior EnsureModelAsync call.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily()
+    {
+        using var model = Open(ModelAssets.RequireModelDirectory());
+
+        var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+
+        Assert.NotNull(result[2].Details);
+        Assert.NotNull(result[4].Details);
+    }
+
+    /// <summary>
+    ///     Concurrent classifications that need the model share one lazy ensure and give identical results.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure()
+    {
+        using var model = Open(ModelAssets.RequireModelDirectory());
+        string[] words = ["They", "will", "record", "the", "record", "."];
+
+        var runs = await Task.WhenAll(Enumerable.Range(0, 4).Select(_ =>
+            Task.Run(() => model.ClassifyAsync(words, TestContext.Current.CancellationToken), TestContext.Current.CancellationToken)));
+
+        Assert.All(runs, run => Assert.Equal(runs[0], run));
+    }
+
+    /// <summary>
+    ///     A failed lazy ensure is retried by the next classification.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried()
+    {
+        var source = ModelAssets.RequireModelDirectory();
+        var directory = Path.Combine(Path.GetTempPath(), "wordsense-model-" + Guid.NewGuid().ToString("N"));
+        try
+        {
+            using var model = Open(directory);
+            string[] words = ["They", "will", "record", "the", "record", "."];
+
+            await Assert.ThrowsAsync<FileNotFoundException>(() => model.ClassifyAsync(words, TestContext.Current.CancellationToken));
+            Directory.CreateDirectory(directory);
+            foreach (var name in ModelFiles)
+            {
+                File.Copy(Path.Combine(source, name), Path.Combine(directory, name));
+            }
+
+            var result = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+            Assert.NotNull(result[2].Details);
+        }
+        finally
+        {
+            if (Directory.Exists(directory))
+            {
+                Directory.Delete(directory, true);
+            }
+        }
     }
 
     /// <summary>
@@ -154,7 +234,8 @@ public class OnnxWordSenseModelTests
             healthy = true;
             await model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
 
-            Assert.NotNull(model.Create());
+            var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+            Assert.NotNull(result[2].Details);
         }
         finally
         {
@@ -166,34 +247,35 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     Creating a classifier before the files are available is an error.
-    /// </summary>
-    [Fact]
-    public void OnnxWordSenseModel_Create_BeforeEnsure_ThrowsInvalidOperation()
-    {
-        using var model = Open();
-
-        var ex = Assert.Throws<InvalidOperationException>(model.Create);
-
-        Assert.Contains("EnsureModelAsync", ex.Message, StringComparison.Ordinal);
-    }
-
-    /// <summary>
-    ///     Two classifiers of one model share one encoder.
+    ///     A model that was never ensured and is asked about an ambiguous word with an unavailable directory fails with
+    ///     the ensure error, not with an invalid-operation error.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_Create_TwiceAfterEnsure_ShareTheEncoder()
+    public async Task OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound()
+    {
+        using var model = Open(Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N")));
+
+        await Assert.ThrowsAsync<FileNotFoundException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     Many classifications of one model share one encoder and one classifier.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_Repeated_ShareTheEncoder()
     {
         using var model = Open(ModelAssets.RequireModelDirectory());
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        var first = model.Create();
-        var second = model.Create();
+        await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken);
+        var field = typeof(OnnxWordSenseModel).GetField("_classifier", BindingFlags.Instance | BindingFlags.NonPublic)!;
+        var first = field.GetValue(model);
+        await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken);
 
-        var field = typeof(OnnxClassifier).GetField("_encoder", BindingFlags.Instance | BindingFlags.NonPublic)!;
-        Assert.NotSame(first, second);
-        Assert.Same(field.GetValue(first), field.GetValue(second));
+        Assert.NotNull(first);
+        Assert.Same(first, field.GetValue(model));
     }
 
     /// <summary>
@@ -211,17 +293,20 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     Creating a classifier after disposal is rejected.
+    ///     Classifying after disposal is rejected, whatever the words.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed()
+    public async Task OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed()
     {
         var model = Open(ModelAssets.RequireModelDirectory());
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
         model.Dispose();
 
-        Assert.Throws<ObjectDisposedException>(model.Create);
+        // "the" never needs the encoder and an empty list needs nothing at all: both are still rejected
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync([], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -241,7 +326,7 @@ public class OnnxWordSenseModelTests
     ///     Disposing from many threads at once releases once and never throws.
     /// </summary>
     [Fact]
-    public void OnnxWordSenseModel_Dispose_Concurrent_IsHarmless()
+    public async Task OnnxWordSenseModel_Dispose_Concurrent_IsHarmless()
     {
         var model = Open();
 
@@ -259,25 +344,7 @@ public class OnnxWordSenseModelTests
         });
 
         Assert.Empty(exceptions);
-        Assert.Throws<ObjectDisposedException>(model.Create);
-    }
-
-    /// <summary>
-    ///     A classifier created earlier rejects every call once its model is disposed, whatever the words.
-    /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
-    [Fact]
-    public async Task OnnxWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed()
-    {
-        var model = Open(ModelAssets.RequireModelDirectory());
-        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
-        var classifier = model.Create();
-        model.Dispose();
-
-        // "the" never needs the encoder and an empty list needs nothing at all: both are still rejected
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync([], TestContext.Current.CancellationToken));
-        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync([], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -321,7 +388,7 @@ public class OnnxWordSenseModelTests
             await Assert.ThrowsAnyAsync<OperationCanceledException>(() => pending.WaitAsync(TimeSpan.FromSeconds(30), TestContext.Current.CancellationToken));
             await Assert.ThrowsAnyAsync<OperationCanceledException>(() => second.WaitAsync(TimeSpan.FromSeconds(30), TestContext.Current.CancellationToken));
             await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken));
-            Assert.Throws<ObjectDisposedException>(model.Create);
+            await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
 
             release.TrySetResult();
             var files = Directory.Exists(store) ? Directory.GetFiles(store, "*", SearchOption.AllDirectories) : [];

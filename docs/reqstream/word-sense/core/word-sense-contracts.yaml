@@ -1,5 +1,5 @@
 ---
-# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, IWordSenseClassifier, WordSense,
+# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, WordSense,
 # WordDetails and PartOfSpeech)
 
 sections:
@@ -11,7 +11,8 @@ sections:
             requirements:
               - id: WordSense-Core-WordSenseContracts-Classifier
                 title: >-
-                  IWordSenseClassifier shall classify a running text given as a list of words joined by single spaces,
+                  IWordSenseModel.ClassifyAsync shall classify a running text given as a list of words joined by
+                  single spaces,
                   with punctuation as elements of their own, and return an array parallel to the input.
                 tags: [unit]
                 justification: |
@@ -37,17 +38,18 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Model
                 title: >-
-                  IWordSenseModel shall provide an asynchronous preparation step and a method that creates a
-                  classifier, and shall be disposable so that the model owns the lifetime of its resources, while the
-                  classifier it creates only borrows the model and is not disposable.
+                  IWordSenseModel shall provide an asynchronous preparation step and a classification method that
+                  ensures the model lazily on first need, and shall be disposable so that the model owns the lifetime
+                  of its resources, with idempotent thread-safe disposal after which both methods throw
+                  ObjectDisposedException.
                 tags: [unit]
                 justification: |
-                  A single two-step contract serves models with no files and models that download files; the model
+                  A single contract serves models with no files and models that download files; the model
                   owns the encoder session and downloader state, so one disposal point serves every model without
                   casts, and callers never need to know which model they hold.
                 tests:
                   - WordSenseContracts_IWordSenseModel_IsDisposable
-                  - BasicWordSenseModel_Create_ReturnsClassifier
+                  - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
 
               - id: WordSense-Core-WordSenseContracts-Mirror
                 title: >-

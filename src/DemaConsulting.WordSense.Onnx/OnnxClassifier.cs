@@ -20,31 +20,57 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     mismatched weights is <c>(word, null, 0)</c>.
 ///     </para>
 /// </remarks>
-internal sealed class OnnxClassifier : IWordSenseClassifier
+internal sealed class OnnxClassifier
 {
     private readonly OnnxEncoder _encoder;
 
     private readonly WeightedLemmaTable _table;
-
-    private readonly Action? _throwIfDisposed;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class.
     /// </summary>
     /// <param name="encoder">The encoder; it is owned by the caller.</param>
     /// <param name="table">The matched weights.</param>
-    /// <param name="throwIfDisposed">A check that throws <see cref="ObjectDisposedException"/> once the owning model is disposed, or null for none.</param>
-    public OnnxClassifier(OnnxEncoder encoder, WeightedLemmaTable table, Action? throwIfDisposed = null)
+    public OnnxClassifier(OnnxEncoder encoder, WeightedLemmaTable table)
     {
         _encoder = encoder ?? throw new ArgumentNullException(nameof(encoder));
         _table = table ?? throw new ArgumentNullException(nameof(table));
-        _throwIfDisposed = throwIfDisposed;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Tells whether any word of a list has several senses, which is the only case that needs the encoder.
+    /// </summary>
+    /// <param name="words">The words.</param>
+    /// <returns>True when the model files, the encoder and the weights are needed to classify the list.</returns>
+    internal static bool NeedsModel(IReadOnlyList<string> words) =>
+        words.Any(w => w.Length != 0 && WordLexicon.Words.TryGetValue(Normalize(w), out var senses) && senses.Length > 1);
+
+    /// <summary>
+    ///     Classifies a list that has no ambiguous word, using the lexicon alone: no model file, encoder or weights.
+    /// </summary>
+    /// <param name="words">The words; <see cref="NeedsModel"/> must be false for them.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>The results, parallel to the words.</returns>
+    internal static WordSense[] ResolveWithoutModel(IReadOnlyList<string> words, CancellationToken cancellationToken)
+    {
+        var results = new WordSense[words.Count];
+        for (var i = 0; i < results.Length; i++)
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            results[i] = Resolve(null, words[i], out _, out _);
+        }
+
+        return results;
+    }
+
+    /// <summary>
+    ///     Classifies every word of a tokenized sentence or text.
+    /// </summary>
+    /// <param name="words">The words in order, including punctuation tokens.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>An array parallel to <paramref name="words"/>.</returns>
     public async Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
-        _throwIfDisposed?.Invoke();
         ArgumentNullException.ThrowIfNull(words);
         var list = words.ToList();
         if (list.Any(w => w is null))
@@ -57,7 +83,7 @@ internal sealed class OnnxClassifier : IWordSenseClassifier
         for (var i = 0; i < list.Count; i++)
         {
             cancellationToken.ThrowIfCancellationRequested();
-            results[i] = Resolve(list[i], out var lemma, out var candidates);
+            results[i] = Resolve(_table, list[i], out var lemma, out var candidates);
             if (lemma is not null)
             {
                 pending.Add((i, candidates, lemma));
@@ -87,11 +113,12 @@ internal sealed class OnnxClassifier : IWordSenseClassifier
     /// <summary>
     ///     Looks one word up and decides whether it needs context.
     /// </summary>
+    /// <param name="table">The weights, or null when the caller knows that no word is ambiguous.</param>
     /// <param name="word">The word.</param>
     /// <param name="lemma">Receives the weights when the word needs context; otherwise null.</param>
     /// <param name="candidates">Receives the senses of the word when it needs context.</param>
     /// <returns>The final result, or the unresolved placeholder when <paramref name="lemma"/> is set.</returns>
-    private WordSense Resolve(string word, out WeightedLemma? lemma, out WordDetails[] candidates)
+    private static WordSense Resolve(WeightedLemmaTable? table, string word, out WeightedLemma? lemma, out WordDetails[] candidates)
     {
         lemma = null;
         candidates = [];
@@ -107,7 +134,7 @@ internal sealed class OnnxClassifier : IWordSenseClassifier
         }
 
         // Several senses need intact weights for the lemma; without them the word stays unresolved
-        if (_table.Find(senses[0].Lemma) is not { } weighted)
+        if (table?.Find(senses[0].Lemma) is not { } weighted)
         {
             return unknown;
         }

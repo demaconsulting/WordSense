@@ -4,7 +4,7 @@
 
 #### Purpose
 
-`BasicClassifier` implements `IWordSenseClassifier` with the lexicon and the statistical units: it answers unambiguous
+`BasicClassifier` is the internal helper of the Basic model with the lexicon and the statistical units: it answers unambiguous
 words directly and, for ambiguous words, drives the tagger, the cue model and the fusion to pick the most probable
 sense with its probability.
 
@@ -53,4 +53,4 @@ to the call. One instance may be used from many threads at once, and the same wo
 
 #### Callers
 
-`BasicWordSenseModel.Create` and the builder (`BasicTrainer`, `BasicTuner` and the evaluation of `basic`).
+`BasicWordSenseModel.ClassifyAsync` and the builder (`BasicTrainer`, `BasicTuner` and the evaluation of `basic`).

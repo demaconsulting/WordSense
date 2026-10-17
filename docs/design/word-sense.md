@@ -28,16 +28,15 @@ layered NuGet packages, each modeled as a subsystem, plus a non-shipped build-ti
 The layering is strict. Core references nothing. Basic and Onnx reference only core. MiniLM and BertBaseCased
 reference only Onnx and, through it, core. Model packages never reference each other, so a consumer installs only the
 model it wants. The contracts in core are the seam between callers and models: a caller programs against
-`IWordSenseModel` and `IWordSenseClassifier` and can swap models without code changes.
+`IWordSenseModel` and can swap models without code changes.
 
 ## External Interfaces
 
 - `IWordSenseModel.EnsureModelAsync` (in): optional `MirrorOptions` and a cancellation token. Idempotent; a no-op for
   the Basic model.
-- `IWordSenseModel.Create` (out): an `IWordSenseClassifier`. For encoder models it requires a completed
-  `EnsureModelAsync`.
-- `IWordSenseClassifier.ClassifyAsync` (in/out): tokenized words in, a parallel `WordSense[]` out. The words are one
-  running text with punctuation as its own elements.
+- `IWordSenseModel.ClassifyAsync` (in/out): tokenized words in, a parallel `WordSense[]` out. The words are one
+  running text with punctuation as its own elements. An encoder model ensures its files lazily (default and
+  environment mirror settings) when some word needs the encoder.
 - `WordLexicon.Words` (out): read-only dictionary from lower-case word to `WordDetails[]`.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
   `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no mirror option is passed.
@@ -71,15 +70,17 @@ wrong answer.
 ## Data Flow
 
 1. The caller creates a model (`BasicWordSenseModel`, `MiniLMWordSenseModel` or `BertBaseCasedWordSenseModel`) and
-   calls `EnsureModelAsync`. The Basic model returns immediately. An encoder model uses the files of its model
+   calls `EnsureModelAsync` (optional for words the lexicon alone resolves: `ClassifyAsync` ensures lazily with the
+   default and environment mirror settings, and a model that is never needed is never downloaded). The Basic model
+   returns immediately. An encoder model uses the files of its model
    directory when one was given, otherwise reuses valid files in the per-user store, otherwise downloads each missing
    file from the mirror (explicit option or environment variables) and then from the GitHub LFS copy, verifying every
    file against its pinned SHA-256.
-2. The caller calls `Create` to obtain an `IWordSenseClassifier`. An encoder model loads its embedded weights, matches
-   them to the lexicon and opens the ONNX session on first use; the session and weights are shared by all classifiers
+2. The caller passes the tokenized words to `ClassifyAsync`. An encoder model loads its embedded weights, matches
+   them to the lexicon and opens the ONNX session on first need; the session and weights are shared by all callers
    of the model.
-3. The caller passes the tokenized words to `ClassifyAsync`. The words are one running text joined by single spaces.
-4. For every word the classifier lower-cases it and looks it up in `WordLexicon.Words`:
+3. The words are one running text joined by single spaces.
+4. For every word the model lower-cases it and looks it up in `WordLexicon.Words`:
    - no entry: the result is the word, no details, confidence 0;
    - one entry: the word, that entry, confidence 1;
    - several entries: the model decides. Basic estimates the part of speech of every word of the sentence with a hidden
@@ -88,7 +89,7 @@ wrong answer.
      encoder once over the text (only when some word needs it), pools the hidden states of the word, centers and
      scales the vector, scores the word's candidate senses with the lemma's weights and derives a confidence from the
      score margin.
-5. The classifier returns a `WordSense[]` parallel to the input.
+5. The model returns a `WordSense[]` parallel to the input.
 
 At build time the builder reads the corpus and writes the lexicon blob embedded in core and the weights blobs
 embedded in the encoder packages.
@@ -99,10 +100,10 @@ embedded in the encoder packages.
   models run on the CPU through ONNX Runtime.
 - **Offline use**: the lexicon and the Basic model need no network. An encoder model needs the network only to
   download its files once; supplying a model directory avoids all network access.
-- **Thread safety**: the lexicon, the models and the classifiers are safe for concurrent use. `IWordSenseModel` is
+- **Thread safety**: the lexicon and the models are safe for concurrent use. `IWordSenseModel` is
   `IDisposable` and owns the lifetime (the ONNX session and the downloader state); it is disposed once after all
-  classification has finished, and disposal is idempotent and thread-safe. A classifier only borrows its model and
-  throws `ObjectDisposedException` after the model is disposed.
+  classification has finished, and disposal is idempotent and thread-safe. `EnsureModelAsync` and `ClassifyAsync`
+  throw `ObjectDisposedException` after the model is disposed.
 - **Security**: downloaded files are accepted only when they match their pinned SHA-256; mirror credentials are
   sent only to the mirror's own origin and are rejected for plain http except on a loopback host; redirects are
   followed manually so credentials never cross origins; credentials never appear in a printed option value.

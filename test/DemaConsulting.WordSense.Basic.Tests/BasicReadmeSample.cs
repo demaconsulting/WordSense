@@ -34,7 +34,7 @@ internal sealed class BasicReadmeSample
         await model.EnsureModelAsync();
 
         var words = "They record the record".Split(' ');
-        var results = await model.Create().ClassifyAsync(words);
+        var results = await model.ClassifyAsync(words);
 
         // A word that is not in the dictionary has no details and a confidence of 0
         foreach (var result in results)

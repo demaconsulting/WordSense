@@ -19,7 +19,7 @@ and needs no Python runtime.
 ### Integration Pattern
 
 `OnnxEncoder` is the only class that references ONNX Runtime. `OnnxWordSenseModel` creates one encoder, and so one
-session, per model and serializes nothing: `InferenceSession.Run` is thread-safe, so concurrent classifiers share
+session, per model and serializes nothing: `InferenceSession.Run` is thread-safe, so concurrent callers share
 the session. The core package depends only on the `IWordSenseModel` interface, which allows
 tests to substitute a fake model and lexicon-only or Basic-model use to run without ONNX Runtime at all. The
 session is disposed with the model.

@@ -38,7 +38,7 @@ internal sealed class ReadmeSample
 
         // Classify the words of a sentence whose "bow" and "record" are heteronyms
         var words = "The hunter fired an arrow from his bow so I will record a record".Split(' ');
-        var results = await model.Create().ClassifyAsync(words);
+        var results = await model.ClassifyAsync(words);
 
         // Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
         foreach (var result in results)
@@ -63,7 +63,7 @@ internal sealed class ReadmeSample
         await model.EnsureModelAsync();
 
         var words = "They record the record".Split(' ');
-        var results = await model.Create().ClassifyAsync(words);
+        var results = await model.ClassifyAsync(words);
 
         // A word that is not in the dictionary has no details and a confidence of 0
         foreach (var result in results)
@@ -88,7 +88,8 @@ internal sealed class ReadmeSample
             _model.EnsureModelAsync(mirror, cancellationToken);
 
         /// <inheritdoc />
-        public IWordSenseClassifier Create() => _model.Create();
+        public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            _model.ClassifyAsync(words, cancellationToken);
 
         /// <inheritdoc />
         public void Dispose() => _model.Dispose();

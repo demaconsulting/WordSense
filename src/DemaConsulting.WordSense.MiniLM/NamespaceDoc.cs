@@ -17,8 +17,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     it is read from a directory you supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
-///     Start with <see cref="MiniLMWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>Create</c> to get an
-///     <see cref="IWordSenseClassifier"/>. The files are described in the repository at
+///     Start with <see cref="MiniLMWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>ClassifyAsync</c>.
+///     (<c>ClassifyAsync</c> also ensures the model lazily when a word needs it.) The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The model identifier
 ///     (<c>ModelId</c>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the folder on a mirror. The
 ///     model is uncased: its tokenizer lower-cases the text, so the case of your words never changes its answer.
@@ -34,13 +34,13 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     downloaded. Latency, first-use time and memory are approximate and machine dependent.
 ///     </para>
 ///     <para>
-///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files; the first <c>Create</c>
+///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files; the first classification of
+///     an ambiguous word
 ///     opens the ONNX session and loads the weights in about 0.4 s, and the word lexicon of the core package loads in
 ///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every classification has finished; afterwards
-///     <c>EnsureModelAsync</c>, <c>Create</c> and every call of a classifier it created throw
+///     <c>EnsureModelAsync</c> and <c>ClassifyAsync</c> throw
 ///     <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
-///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The model and the
-///     classifiers it creates are safe for concurrent use.
+///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The model is safe for concurrent use.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
@@ -95,10 +95,9 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///
 ///     using var model = new MiniLMWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///     WordSense[] senses = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
@@ -110,13 +109,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new MiniLMWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
-///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
 ///     </code>
 ///     Offline: the two files are in one flat directory, for example <c>/opt/models/minilm</c>.
 ///     <code>
 ///     using var offline = new MiniLMWordSenseModel("/opt/models/minilm");
 ///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
-///     IWordSenseClassifier offlineClassifier = offline.Create();
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;

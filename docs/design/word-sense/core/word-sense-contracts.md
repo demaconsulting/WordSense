@@ -16,14 +16,15 @@ model for another without code changes.
 - `WordSense(Word, Details, Confidence)`: a readonly record struct. `Word` is the input word as given; `Details` is
   the chosen sense or null when no sense could be chosen; `Confidence` is from 0 to 1 (1 when the word has a single
   sense, 0 when unknown or undecided).
-- `IWordSenseClassifier.ClassifyAsync(IEnumerable<string> words, CancellationToken)`: returns `Task<WordSense[]>`
-  parallel to the input; empty input gives an empty array. The input is one running text whose words are joined by
-  single spaces, with punctuation as separate elements. A classifier is safe for concurrent use, is not disposable and
-  only borrows the model: after the model is disposed every call throws `ObjectDisposedException`.
 - `IWordSenseModel : IDisposable`: `EnsureModelAsync(MirrorOptions? mirror, CancellationToken)` prepares the model
-  (files, download); `Create()` returns a classifier. `EnsureModelAsync` shall complete before `Create`. The model owns
-  the lifetime; `Dispose` is idempotent and thread-safe, and `EnsureModelAsync` and `Create` throw
-  `ObjectDisposedException` afterwards.
+  (files, download). `ClassifyAsync(IEnumerable<string> words, CancellationToken)` returns `Task<WordSense[]>`
+  parallel to the input; empty input gives an empty array. The input is one running text whose words are joined by
+  single spaces, with punctuation as separate elements. `ClassifyAsync` ensures the model lazily on first need (the
+  default and environment mirror settings; lexicon-only words never need the model; concurrent callers share one
+  ensure; a failed ensure can be retried), so `EnsureModelAsync` is optional, and it is safe for concurrent use. The
+  model owns the lifetime; `Dispose` is idempotent and thread-safe, cancels a pending ensure
+  (`OperationCanceledException`), and `EnsureModelAsync` and `ClassifyAsync` throw `ObjectDisposedException`
+  afterwards.
 - `MirrorOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record. The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
   file download and defaults to 5 minutes. The printed form masks the token and the credentials.

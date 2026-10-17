@@ -5,14 +5,14 @@
 ### Overview
 
 The core subsystem is the package `DemaConsulting.WordSense`. It defines the vocabulary every other package builds
-on: the embedded word lexicon and the public contracts of models and classifiers. It contains no vectors, no weights,
+on: the embedded word lexicon and the public contracts of models. It contains no vectors, no weights,
 no ONNX code and no third-party dependency, so a consumer that only needs to know which senses a word can have, or
 that writes its own model, installs nothing else.
 
 The subsystem contains two units:
 
 - **WordLexicon**: the embedded lexicon of known words, with its internal blob reader.
-- **WordSenseContracts**: `IWordSenseModel`, `MirrorOptions`, `IWordSenseClassifier`, `WordSense`, `WordDetails` and
+- **WordSenseContracts**: `IWordSenseModel`, `MirrorOptions`, `WordSense`, `WordDetails` and
   `PartOfSpeech`.
 
 Boundaries: the subsystem does not classify ambiguous words in context; that is the work of the model packages. It
@@ -23,7 +23,7 @@ does not download anything; `MirrorOptions` only carries the configuration that 
 The subsystem exposes:
 
 - `WordLexicon.Words`: the read-only dictionary from lower-case surface word to its possible senses;
-- `IWordSenseModel` and `IWordSenseClassifier`: the contracts that model packages implement;
+- `IWordSenseModel`: the contract that model packages implement;
 - `WordSense`, `WordDetails` and `PartOfSpeech`: the answer values;
 - `MirrorOptions`: the download mirror configuration passed to `EnsureModelAsync`.
 

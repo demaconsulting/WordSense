@@ -12,7 +12,7 @@ identity.
 
 The subsystem contains seven units:
 
-- **OnnxWordSenseModel**: file management, lazy loading and the creation of classifiers.
+- **OnnxWordSenseModel**: file management, lazy loading and classification.
 - **OnnxClassifier**: lexicon lookup and sense scoring.
 - **OnnxEncoder**: tokenization, inference and mean pooling.
 - **WordPieceTokenizer**: the BERT WordPiece tokenizer, uncased or cased.
@@ -39,15 +39,16 @@ The units collaborate as follows:
 1. `OnnxWordSenseModel.EnsureModelAsync` verifies an explicit model directory with `ModelDownloader.Verify`, or calls
    `ModelDownloader.EnsureAsync`, which builds the mirror with `DownloadMirror` (from `MirrorOptions` or the
    environment), reuses valid files from the store and downloads the others.
-2. `OnnxWordSenseModel.Create` loads the embedded weights once through `LemmaWeights` (blob reader and
+2. `OnnxWordSenseModel.ClassifyAsync` (lazily ensuring first when a word needs context) loads the embedded weights
+   once through `LemmaWeights` (blob reader and
    all-or-nothing match to the lexicon), opens one `OnnxEncoder` once (which builds a `WordPieceTokenizer` and the ONNX
-   session) and returns an `OnnxClassifier` over the shared encoder and weights.
+   session) and runs an `OnnxClassifier` over the shared encoder and weights.
 3. `OnnxClassifier.ClassifyAsync` resolves every word from the lexicon, asks `OnnxEncoder` for the pooled vector of
    the words that need context, turns each vector into a feature with the global mean of the weights, and scores the
    word's candidate senses with `LemmaWeights`.
 
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
-and the weights are shared by all classifiers of one model and are released when the model is disposed.
+and the weights are shared by all callers of one model and are released when the model is disposed.
 
 ### Adding a New ONNX Model
 

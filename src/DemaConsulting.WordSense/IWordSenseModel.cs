@@ -3,27 +3,34 @@ using System.Net;
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     A word-sense model: something that can provide an <see cref="IWordSenseClassifier"/>.
+///     A word-sense model: classifies the words of a tokenized text, and owns the files and resources it needs.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     Model packages provide implementations: <c>DemaConsulting.WordSense.Basic</c> chooses senses with a small
 ///     statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
-///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts
-///     as needed. <see cref="EnsureModelAsync"/> is required for the encoder models even when you supply a model
-///     directory (it verifies the files against their pinned SHA-256 digests, with no network access); it is optional
-///     for the Basic model, whose <see cref="Create"/> works at any time, but calling it keeps the code the same for
-///     every model.
+///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="ClassifyAsync"/> as many times as
+///     needed. <see cref="EnsureModelAsync"/> is the explicit way to prepare an encoder model, even when you supply a
+///     model directory (it verifies the files against their pinned SHA-256 digests, with no network access), and the
+///     only way to pass a <see cref="MirrorOptions"/>; it is optional for the Basic model, but calling it keeps the code
+///     the same for every model.
+///     </para>
+///     <para>
+///     Lazy ensure: <see cref="ClassifyAsync"/> ensures the model itself on first use, when (and only when) a word
+///     needs it. A word list in which no word has several senses is answered from the lexicon alone and never touches
+///     model files or ONNX, so a model that is never needed is never downloaded. When the model is needed and was not
+///     ensured yet, the call awaits <see cref="EnsureModelAsync"/> with the defaults (no explicit mirror; the
+///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed
+///     ensure is retried by the next call.
 ///     </para>
 ///     <para>
 ///     A model is thread-safe for concurrent classification. <see cref="IWordSenseModel"/> is
 ///     <see cref="IDisposable"/>: the model owns what it needs (the ONNX session and the downloader state of an encoder
 ///     model), so dispose it, for example with <c>using</c>, once every classification has finished. The Basic model
-///     holds nothing to release, but honors the same contract. A classifier from <see cref="Create"/> only borrows its
-///     model and is not disposable: after the model is disposed, <see cref="Create"/>, <see cref="EnsureModelAsync"/>
-///     and every call of such a classifier throw <see cref="ObjectDisposedException"/>. Disposing is idempotent and
-///     thread-safe. Disposing while <see cref="EnsureModelAsync"/> is downloading cancels the download, and the
+///     holds nothing to release, but honors the same contract. After the model is disposed,
+///     <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>.
+///     Disposing is idempotent and thread-safe. Disposing while an ensure is downloading cancels the download, and the
 ///     pending task then throws <see cref="OperationCanceledException"/>. Disposing while a classification is running
 ///     is not supported.
 ///     </para>
@@ -31,9 +38,10 @@ namespace DemaConsulting.WordSense;
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
 ///     to <see cref="WordLexicon.Words"/> takes about 120 ms and about 43 MiB, and happens once per process for every
 ///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
-///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first <see cref="Create"/>, and
-///     <see cref="EnsureModelAsync"/> reads and hashes every model file once, which takes longer for the larger
-///     files. Warm the model at startup (ensure, create and classify one short text) if the first request must be fast.
+///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first classification that needs
+///     it, and <see cref="EnsureModelAsync"/> reads and hashes every model file once, which takes longer for the larger
+///     files. Warm the model at startup (ensure and classify one short text with an ambiguous word) if the first
+///     request must be fast.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -42,8 +50,7 @@ namespace DemaConsulting.WordSense;
 ///     using (model)
 ///     {
 ///         await model.EnsureModelAsync();
-///         IWordSenseClassifier classifier = model.Create();
-///         WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"]);
+///         WordSense[] senses = await model.ClassifyAsync(["to", "record", "the", "record"]);
 ///         Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
 ///     }
 ///     </code>
@@ -66,7 +73,8 @@ public interface IWordSenseModel : IDisposable
     ///     A failed call can be retried. The Basic model needs no files and completes at once.
     ///     </para>
     ///     <para>
-    ///     When an encoder model was constructed with a model directory, this call is still required: it checks that
+    ///     When an encoder model was constructed with a model directory, this call is still the way to verify it up
+    ///     front: it checks that
     ///     every file exists in that directory (directly in it, not in a subfolder) and matches its pinned SHA-256,
     ///     and it never touches the network. Without a directory it verifies the per-user store, or the store
     ///     beneath <see cref="MirrorOptions.StoreRoot"/>, and downloads what is missing or invalid.
@@ -92,19 +100,106 @@ public interface IWordSenseModel : IDisposable
     Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
     /// <summary>
-    ///     Creates a classifier on this model.
+    ///     Classifies every word of a tokenized sentence or text: which sense (lemma, part of speech, pronunciation
+    ///     meaning) each word has.
     /// </summary>
-    /// <returns>A classifier that shares this model and is safe for concurrent use. It only borrows the model and is not disposable: once the model is disposed, every call of the classifier throws <see cref="ObjectDisposedException"/>.</returns>
+    /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
-    ///     An encoder model needs <see cref="EnsureModelAsync"/> to have completed first; its first call loads the ONNX
-    ///     session and the weights (about 0.4 to 0.5 s, approximate and machine dependent). The Basic model needs no
-    ///     files, so its <see cref="Create"/> works at any time (it loads the word lexicon, about 120 ms on first use).
+    ///     <para>
+    ///     The input is a list of words that the caller has already tokenized; the result array is parallel to it. The
+    ///     list is read as one running text in which the words are joined by single spaces, so several sentences in one
+    ///     list share context. To classify independent sentences, make one call per sentence. Punctuation marks must be
+    ///     elements of their own (<c>"race"</c> then <c>"."</c>, never <c>"race."</c>).
+    ///     </para>
+    ///     <para>
+    ///     Each word is lower-cased and looked up in <see cref="WordLexicon.Words"/>; the curly apostrophe (U+2019) is
+    ///     read as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the
+    ///     confidence is 0. A word with one sense is answered with confidence 1. A word with several senses is resolved
+    ///     from its context; how the context is used, and what the confidence means, is defined by each model package
+    ///     (see <see cref="WordSense"/>). There are exactly two ways to get a null <see cref="WordSense.Details"/>: the
+    ///     word is unknown to the lexicon (every model), or an encoder model cannot score the word (it has several
+    ///     senses but its lemma has no intact trained weights, or the encoder produced no usable vector for it). The
+    ///     Basic model never leaves <see cref="WordSense.Details"/> null for a word that is in the lexicon. Every other
+    ///     word with several senses gets its best sense, even when the confidence is low.
+    ///     </para>
+    ///     <para>
+    ///     Tokenization is the caller's job, and the models expect the tokens that the evaluation used: split off
+    ///     punctuation (<c>"race"</c>, <c>"."</c>), but keep a contraction (<c>"don't"</c>) and a hyphenated word
+    ///     (<c>"re-read"</c>) as one token. Such a token has no lexicon entry, so it is unknown (null, confidence 0),
+    ///     but the surrounding words are still classified. Classify one sentence per call: the Basic model splits the
+    ///     list at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, while an encoder model reads the whole list as one
+    ///     text, of at most 128 word pieces by default (512 at most); a longer list is handled per word from a window
+    ///     of that size around the word, so very long lists lose distant context but are not rejected. The
+    ///     documentation of the <c>DemaConsulting.WordSense</c> namespace has a reference tokenizer, a table of edge
+    ///     cases (numbers, abbreviations, quotes, dashes, possessives) and the rules for case: the lookup ignores case,
+    ///     MiniLM is uncased and BertBaseCased is cased.
+    ///     </para>
+    ///     <para>
+    ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): a list without
+    ///     an ambiguous word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit mirror;
+    ///     the <c>WORDSENSE_MIRROR_*</c> environment variables apply), is shared by concurrent callers and is retried
+    ///     after a failure; call <see cref="EnsureModelAsync"/> first to pass a <see cref="MirrorOptions"/>. The method
+    ///     is safe for concurrent use.
+    ///     </para>
     /// </remarks>
-    /// <exception cref="InvalidOperationException">Thrown by an encoder model when the model files are not available; call <see cref="EnsureModelAsync"/> first. The Basic model never throws it.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    /// <exception cref="InvalidDataException">Thrown by an encoder model when its embedded weights or ONNX file cannot be read.</exception>
-    IWordSenseClassifier Create();
+    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during a lazy ensure.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
+    /// <exception cref="HttpRequestException">Thrown by a lazy ensure of an encoder model when a file could not be obtained and verified from any source.</exception>
+    /// <exception cref="FileNotFoundException">Thrown by a lazy ensure of an encoder model when a supplied model directory does not exist or lacks a model file.</exception>
+    /// <exception cref="InvalidDataException">Thrown by an encoder model when a file of a supplied model directory does not match its pinned SHA-256, or its embedded weights or ONNX file cannot be read.</exception>
+    Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default);
 }
+
+/// <summary>
+///     The classification of one word.
+/// </summary>
+/// <remarks>
+///     <para>
+///     The type <c>WordSense</c> (this record struct) shares its name with the namespace <c>DemaConsulting.WordSense</c>
+///     that contains it; in code, write <c>WordSense[]</c> for the result type.
+///     </para>
+///     <para>
+///     <see cref="Details"/> is null in exactly two cases. First, the word is unknown: it has no entry in the lexicon
+///     (a determiner, a number, punctuation, most proper nouns, a misspelling, a contraction such as <c>don't</c>);
+///     every model does this. Second, an encoder model (MiniLM, BertBaseCased) could not score a word that has several
+///     senses: its lemma has no intact trained weights, or the encoder produced no vector for the word. The packages of
+///     this repository ship weights for every lemma (a test asserts that no lemma is dropped), so the second case does
+///     not occur in practice, but the contract allows it. In both cases <see cref="Confidence"/> is 0. Every other
+///     word gets a sense: a word with one sense gets it with confidence 1, and a word with several senses gets its best
+///     sense even when the confidence is low, so a null <see cref="Details"/> never means "low confidence". The Basic
+///     model never leaves <see cref="Details"/> null for a word that is in the lexicon.
+///     </para>
+///     <para>
+///     Confidence is a number from 0 to 1: 0 means unknown or unscored, 1 means the word has only one sense in the
+///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
+///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
+///     several senses the probability of the chosen sense (at least one over the number of senses; a threshold such
+///     as 0.8 works for it, see the <c>DemaConsulting.WordSense.Basic</c> namespace documentation), so it is never
+///     undecided. The encoder models (MiniLM, BertBaseCased) map
+///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
+///     trained for the word's lemma: 0.5 means the margin equals the abstain margin, larger values mean a clearer
+///     decision, and the result is clamped to 0 to 1; the threshold used in their evaluation is 0.5, and the share of words that reaches a given value differs between the two encoders, so tune a threshold per model on your own text. It is a ranking
+///     score, not a calibrated probability: compare it against a threshold you choose and treat lower values as
+///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low.
+///     </para>
+/// </remarks>
+/// <example>
+///     <code>
+///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, null, null), 0.93);
+///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
+///
+///     // Keep only confident answers; the threshold is specific to the model that produced the confidence
+///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= 0.5;
+///     </code>
+/// </example>
+/// <param name="Word">The word as given by the caller.</param>
+/// <param name="Details">The chosen sense, or <see langword="null"/> when none was chosen.</param>
+/// <param name="Confidence">The confidence in <paramref name="Details"/>, from 0 to 1.</param>
+public readonly record struct WordSense(string Word, WordDetails? Details, double Confidence);
 
 /// <summary>
 ///     Describes a user-supplied HTTP(S) mirror that is tried before the public download source, plus where downloaded
@@ -179,7 +274,7 @@ public interface IWordSenseModel : IDisposable
 ///     async Task PrepareAsync(IWordSenseModel model)
 ///     {
 ///         await model.EnsureModelAsync(mirror);   // mirror first, then the public source; files verified
-///         IWordSenseClassifier classifier = model.Create();
+///         WordSense[] senses = await model.ClassifyAsync(["to", "record", "the", "record"]);
 ///     }
 ///     </code>
 /// </example>

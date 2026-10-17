@@ -54,10 +54,9 @@ public class ReferenceTokenizerTests
     [Fact]
     public async Task ReferenceTokenizer_Tokens_ClassifyAsDocumented()
     {
-        var model = new Basic.BasicWordSenseModel();
-        var classifier = model.Create();
+        using var model = new Basic.BasicWordSenseModel();
 
-        var senses = await classifier.ClassifyAsync(Tokenize("They didn't record the record."), TestContext.Current.CancellationToken);
+        var senses = await model.ClassifyAsync(Tokenize("They didn't record the record."), TestContext.Current.CancellationToken);
 
         Assert.Equal(6, senses.Length);
         Assert.Null(senses[1].Details);

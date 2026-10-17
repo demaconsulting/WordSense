@@ -26,8 +26,8 @@ the code it describes.
   `PartOfSpeech` and `Pronunciation` result model, a glossary, confidence (margin and runner-up), tokenization
   and context window, thread safety and examples. The carrier and the example-compile test are in the
   OTS-ApiMark review set because they are ApiMark's inputs and evidence. FileAssert does not assert that
-  content of the namespace page (it asserts only the index, the classifier example block, the terminology on
-  `IWordSenseClassifier` and the
+  content of the namespace page (it asserts only the index, the model example block, the terminology on
+  `WordSense` and the
   `WordLexicon` page); the carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to
   repository documents in
   XML docs use absolute GitHub URLs, because the packaged API reference has no access to repository files.

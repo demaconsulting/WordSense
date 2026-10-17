@@ -4,7 +4,7 @@
 
 #### Purpose
 
-`OnnxClassifier` implements `IWordSenseClassifier` for the encoder models: it resolves words from the lexicon and
+`OnnxClassifier` is the internal helper of the encoder models: it resolves words from the lexicon and
 decides the senses of ambiguous words from the encoder's view of their context.
 
 #### Data Model
@@ -40,4 +40,5 @@ Encoder failures propagate.
 
 #### Callers
 
-`OnnxWordSenseModel.Create` and the builder (`Evaluator`).
+`OnnxWordSenseModel.ClassifyAsync` and the builder (`Evaluator`). `NeedsModel` and `ResolveWithoutModel` let the model
+answer lexicon-only text without ensuring or opening anything.

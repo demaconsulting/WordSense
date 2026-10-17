@@ -17,22 +17,20 @@ namespace DemaConsulting.WordSense.Basic;
 ///     </para>
 ///     <para>
 ///     The classifier holds no mutable state, so one instance may be used from many threads at once, and the result
-///     depends only on the input words. After the model that created it is disposed, every call throws
-///     <see cref="ObjectDisposedException"/>.
+///     depends only on the input words. It is internal: <see cref="BasicWordSenseModel"/> delegates to it.
 ///     </para>
 /// </remarks>
-internal sealed class BasicClassifier : IWordSenseClassifier
+internal sealed class BasicClassifier
 {
     private readonly BasicTables? _tables;
     private readonly IReadOnlyDictionary<string, WordDetails[]> _lexicon;
-    private readonly Action? _throwIfDisposed;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BasicClassifier"/> class that uses the embedded table and the
     ///     lexicon of the core library.
     /// </summary>
-    public BasicClassifier(Action? throwIfDisposed = null)
-        : this(null, WordLexicon.Words, throwIfDisposed)
+    public BasicClassifier()
+        : this(null, WordLexicon.Words)
     {
     }
 
@@ -41,18 +39,20 @@ internal sealed class BasicClassifier : IWordSenseClassifier
     /// </summary>
     /// <param name="tables">The statistics, or null for the embedded table (loaded on first use).</param>
     /// <param name="lexicon">The lexicon, by lower-case word.</param>
-    /// <param name="throwIfDisposed">A check that throws <see cref="ObjectDisposedException"/> once the owning model is disposed, or null for none.</param>
-    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, WordDetails[]> lexicon, Action? throwIfDisposed = null)
+    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, WordDetails[]> lexicon)
     {
         _tables = tables;
         _lexicon = lexicon;
-        _throwIfDisposed = throwIfDisposed;
     }
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Classifies every word of a tokenized sentence or text.
+    /// </summary>
+    /// <param name="words">The words in order, including punctuation tokens.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>An array parallel to <paramref name="words"/>.</returns>
     public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
-        _throwIfDisposed?.Invoke();
         ArgumentNullException.ThrowIfNull(words);
         var list = words.ToList();
         if (list.Any(w => w is null))

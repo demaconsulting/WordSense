@@ -2,7 +2,7 @@ namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
 ///     The shared implementation of the ONNX encoder models: model file management, the ONNX session and the
-///     classifier it creates.
+///     classification it performs.
 /// </summary>
 /// <remarks>
 ///     <para>
@@ -10,27 +10,30 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     files with their SHA-256 digests, the vocabulary style and the trained weights embedded in its own assembly. The
 ///     constructor is not accessible outside the WordSense assemblies, so this class is extended only by the packages of
 ///     this repository (<c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>); use
-///     those packages, or the contracts <see cref="IWordSenseModel"/> and <see cref="IWordSenseClassifier"/>, rather
-///     than deriving from it.
+///     those packages, or the contract <see cref="IWordSenseModel"/>, rather than deriving from it.
 ///     </para>
 ///     <para>
-///     Call <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>. The model files come from the directory
+///     Call <see cref="EnsureModelAsync"/> once, then <see cref="ClassifyAsync"/> as often as needed; a
+///     <see cref="ClassifyAsync"/> call that needs the model ensures it itself (see below), so the explicit call is
+///     only required to pass a <see cref="MirrorOptions"/> or to fail early. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
 ///     when none was given, from the per-user store, which a mirror or the GitHub copy of the repository fills on first
 ///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight download (the mirror of a later call is
 ///     ignored while one is running), and a failed or cancelled call can be repeated. Cancelling the token only stops
 ///     that caller from waiting: the shared work continues, and a download in progress writes to temporary files that
 ///     are never visible under a final file name, so a cancelled or failed download leaves no partial model file.
-///     <see cref="Create"/> may be called repeatedly after <see cref="EnsureModelAsync"/> has completed; every call
-///     returns a classifier that shares one ONNX session and one set of weights, and the method is thread-safe.
-///     The ONNX session and the weights are loaded on the first <see cref="Create"/> call. The model owns the ONNX
+///     <see cref="ClassifyAsync"/> is thread-safe; every call shares one ONNX session and one set of weights, which
+///     are opened on the first classification that needs them. A word list without an ambiguous word (every word is
+///     unknown or has one sense) is answered from the lexicon alone: it never touches model files or ONNX, so a model
+///     that is never needed is never downloaded. The model owns the ONNX
 ///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>):
-///     dispose it, for example with <c>using</c>, after every classifier call has finished; disposing while a
-///     classification is running is not supported. Disposing while <see cref="EnsureModelAsync"/> is downloading
-///     cancels the download; the pending task then throws <see cref="OperationCanceledException"/>.
+///     dispose it, for example with <c>using</c>, after every classification has finished; disposing while a
+///     classification is running is not supported. Disposing is idempotent and thread-safe; it cancels a download that
+///     <see cref="EnsureModelAsync"/> (or a lazy ensure of <see cref="ClassifyAsync"/>) has in flight, and the
+///     pending task then throws <see cref="OperationCanceledException"/>.
 ///     </para>
 ///     <para>
-///     A classifier returns a confidence between 0 and 1 for each word it resolved. For a word with one sense it is 1.
+///     The classification returns a confidence between 0 and 1 for each word it resolved. For a word with one sense it is 1.
 ///     For a word with several senses it is a monotonic mapping of the margin between the best and the runner-up
 ///     sense, relative to the abstain margin trained for that word's lemma, clamped to 0 to 1: 0.5 means the margin
 ///     equals the abstain margin. It is a ranking score, not a calibrated probability, and its scale belongs to the
@@ -59,11 +62,10 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent): <see cref="EnsureModelAsync"/> reads and hashes each model
-///     file; the first <see cref="Create"/> opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
+///     file; the first classification that needs the encoder opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
 ///     BertBaseCased) and loads the weights; the word lexicon (about 120 ms, about 43 MiB) loads on first use. After
-///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="Create"/> throw
-///     <see cref="ObjectDisposedException"/>, as does every <c>ClassifyAsync</c> call of a classifier created
-///     earlier (a classifier only borrows its model and is not disposable itself).
+///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw
+///     <see cref="ObjectDisposedException"/>.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -75,8 +77,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     static async Task&lt;WordSense[]&gt; ClassifyAsync(OnnxWordSenseModel model, string[] words)
 ///     {
 ///         await model.EnsureModelAsync();
-///         IWordSenseClassifier classifier = model.Create();
-///         return await classifier.ClassifyAsync(words);
+///         return await model.ClassifyAsync(words);
 ///     }
 ///     </code>
 /// </example>
@@ -89,6 +90,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     private Task? _ensure;
     private string? _directory;
     private OnnxEncoder? _encoder;
+    private OnnxClassifier? _classifier;
     private WeightedLemmaTable? _table;
     private readonly CancellationTokenSource _disposeCts = new();
     private readonly CancellationToken _disposeToken;
@@ -185,24 +187,67 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Creates a classifier on this model; call <see cref="EnsureModelAsync"/> first.
+    ///     Classifies every word of a tokenized sentence or text; the model files are ensured on first use.
     /// </summary>
-    /// <returns>
-    ///     A classifier that shares this model's ONNX session and weights. Calling the method again is allowed, safe
-    ///     from several threads, and returns another classifier on the same shared resources.
-    /// </returns>
-    /// <exception cref="InvalidOperationException">Thrown when <see cref="EnsureModelAsync"/> has not completed.</exception>
+    /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
+    /// <remarks>
+    ///     A list in which no word has several senses is answered from the lexicon alone: no model file is read or
+    ///     downloaded and no ONNX session is opened. A list with an ambiguous word first awaits
+    ///     <see cref="EnsureModelAsync"/> (with the default mirror: the <c>WORDSENSE_MIRROR_*</c> environment
+    ///     variables, if any), which concurrent callers share, and which is retried by the next call after a failure;
+    ///     call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/>. The ONNX session
+    ///     and the weights are then opened once (about 0.4 to 0.5 s, approximate and machine dependent). The method is
+    ///     thread-safe.
+    /// </remarks>
+    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
+    /// <exception cref="HttpRequestException">Thrown by the lazy ensure when a file could not be obtained and verified.</exception>
+    /// <exception cref="FileNotFoundException">Thrown by the lazy ensure when a supplied model directory lacks a model file.</exception>
+    public async Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
+    {
+        ThrowIfDisposed();
+        ArgumentNullException.ThrowIfNull(words);
+        var list = words.ToList();
+        if (list.Any(w => w is null))
+        {
+            throw new ArgumentException("A word must not be null.", nameof(words));
+        }
+
+        if (!OnnxClassifier.NeedsModel(list))
+        {
+            return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
+        }
+
+        // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
+        await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
+        return await GetClassifier().ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+    }
+
+    /// <summary>
+    ///     Gets the classifier on the shared ONNX session and weights, opening them on first use.
+    /// </summary>
+    /// <returns>The classifier.</returns>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
-    public IWordSenseClassifier Create()
+    private OnnxClassifier GetClassifier()
     {
         lock (_gate)
         {
             ObjectDisposedException.ThrowIf(_disposed, this);
-            var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
-            _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
-            _encoder ??= OpenEncoderCore(directory);
-            return new OnnxClassifier(_encoder, _table, ThrowIfDisposed);
+            if (_classifier is null)
+            {
+                var directory = _directory ?? throw new InvalidOperationException("The model files are not available.");
+                _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+                _encoder ??= OpenEncoderCore(directory);
+                _classifier = new OnnxClassifier(_encoder, _table);
+            }
+
+            return _classifier;
         }
     }
 
@@ -252,6 +297,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
             _disposed = true;
             _encoder?.Dispose();
             _encoder = null;
+            _classifier = null;
         }
 
         // Cancel outside the gate; every callback has run when Cancel returns, so the source can then be disposed. A
@@ -261,7 +307,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Throws when the model has been disposed; used by the classifiers this model created.
+    ///     Throws when the model has been disposed.
     /// </summary>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     internal void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(_disposed, this);

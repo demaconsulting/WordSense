@@ -5,7 +5,7 @@
 #### Purpose
 
 `OnnxWordSenseModel` is the public abstract base of the encoder models. It prepares the model files, loads the
-encoder and weights lazily, and creates classifiers that share them.
+encoder and weights lazily, and classifies words with them (lazily ensuring the files when a word needs the encoder).
 
 #### Data Model
 
@@ -25,22 +25,25 @@ encoder and weights lazily, and creates classifiers that share them.
   or was canceled (retry after failure); concurrent callers share that task and each caller can stop waiting when its
   own token is canceled without canceling the shared work. With a model directory the task only verifies the files
   (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
-- `Create()`: on first call loads the embedded weights through `LemmaWeights` and opens the encoder; both are cached
-  and shared by all classifiers. Returns a new `OnnxClassifier` that checks the disposed flag on every call.
+- `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words and, when no word has more
+  than one lexicon sense (`OnnxClassifier.NeedsModel` is false), answers from the lexicon alone without touching model
+  files, weights or ONNX. Otherwise it awaits `EnsureModelAsync(null, cancellationToken)` (the default and
+  environment mirror settings; concurrent callers share one ensure and a failed ensure is retried by the next call).
+  It then, under the lock, loads the embedded weights through `LemmaWeights` and opens the encoder on first need (both
+  cached) and runs the `OnnxClassifier`. It is safe for concurrent use.
 - `Dispose()`: idempotent and thread-safe; the first call disposes the encoder and then cancels the disposal token, which
   aborts an in-flight download (its temporary files are removed). It does not wait for the abort. The shared ensure
-  task, and so every pending `EnsureModelAsync`, ends canceled: `OperationCanceledException`, whatever exception the
-  abort surfaced as.
+  task, and so every pending `EnsureModelAsync` or lazy ensure, ends canceled: `OperationCanceledException`, whatever
+  exception the abort surfaced as.
 
 #### Error Handling
 
-- `Create` before a successful `EnsureModelAsync` throws `InvalidOperationException`.
-- Any call after `Dispose` throws `ObjectDisposedException`, including every call of a classifier created earlier; a
-  pending `EnsureModelAsync` that was running at disposal throws `OperationCanceledException` instead.
+- Any call of `EnsureModelAsync` or `ClassifyAsync` after `Dispose` throws `ObjectDisposedException`; a pending
+  ensure that was running at disposal throws `OperationCanceledException` instead.
 - A constructor sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
 - Download and verification failures propagate from `ModelDownloader` (see that unit); a failed ensure can be
   retried.
-- A missing or inconsistent weights resource throws `InvalidDataException` from `Create`.
+- A missing or inconsistent weights resource throws `InvalidDataException` from `ClassifyAsync`.
 
 #### Dependencies
 

@@ -34,7 +34,7 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 #### Model Needs No Setup
 
 `EnsureModelAsync` completes immediately without touching the file system or the network, ignores a mirror, and
-`Create` returns a working classifier at once (see the `BasicWordSenseModel` unit document).
+`ClassifyAsync` returns a working answer at once (see the `BasicWordSenseModel` unit document).
 
 #### Ambiguous Words Are Always Answered
 

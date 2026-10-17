@@ -6,7 +6,7 @@ This note records the split of WordSense into five NuGet packages and the rules 
 
 Package dependencies:
 
-- `DemaConsulting.WordSense` (core): `IWordSenseModel`, `IWordSenseClassifier`, `MirrorOptions`, `WordSense`,
+- `DemaConsulting.WordSense` (core): `IWordSenseModel`, `MirrorOptions`, `WordSense`,
   `WordDetails`, `PartOfSpeech` and `WordLexicon.Words`. Depends on nothing.
 - `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with a small embedded statistical table (part-of-speech
   tagger and context cues); no files.

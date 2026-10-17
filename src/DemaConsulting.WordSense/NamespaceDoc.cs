@@ -10,7 +10,7 @@ namespace DemaConsulting.WordSense;
 ///     <c>net10.0</c> and has no dependencies. It holds <see cref="WordLexicon"/> (every known word with its lemma, part
 ///     of speech, meaning and respelling, loaded from an embedded table on first use), the types
 ///     <see cref="WordDetails"/> and <see cref="PartOfSpeech"/>, and the contracts <see cref="IWordSenseModel"/>,
-///     <see cref="MirrorOptions"/>, <see cref="IWordSenseClassifier"/> and <see cref="WordSense"/>. It cannot
+///     <see cref="MirrorOptions"/> and <see cref="WordSense"/>. It cannot
 ///     disambiguate a word in context by itself: add one of the model packages for that.
 ///     </para>
 ///     <para>
@@ -116,8 +116,10 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     First-use costs (approximate, machine dependent): the lexicon loads on first use of <see cref="WordLexicon"/>
 ///     (about 120 ms, about 43 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
-///     session on the first <c>Create</c> (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased) after
-///     <c>EnsureModelAsync</c> has verified its files. The Basic model has no files, so its <c>Create</c> needs no
+///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
+///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
+///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
+///     model files. The Basic model has no files, so it needs no
 ///     preceding <c>EnsureModelAsync</c>.
 ///     </para>
 ///     <para>
@@ -128,7 +130,7 @@ namespace DemaConsulting.WordSense;
 ///     symbols) is a token of its own; a decimal or a number with thousands separators (<c>3.5</c>, <c>1,000</c>) is
 ///     best kept as one token. One sentence per call. The reference tokenizer in the example below does exactly
 ///     that (it is verified by a unit test of this repository). The tokens are not trimmed or lower-cased by you; the
-///     classifiers do that for the lookup.
+///     models do that for the lookup.
 ///     </para>
 ///     <para>
 ///     What the lookup does with typical tokens (the same for all three models, because the lexicon lookup comes
@@ -190,7 +192,7 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Naming: <c>WordSense</c> is both this namespace and the result type <see cref="WordSense"/> (a record struct of
-///     the word, its details and a confidence). Classifiers return <c>WordSense[]</c>.
+///     the word, its details and a confidence). Models return <c>WordSense[]</c>.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -206,8 +208,7 @@ namespace DemaConsulting.WordSense;
 ///
 ///     using IWordSenseModel model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
-///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+///     WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Tokenizing text: a reference tokenizer (a word, a number with separators, or one other character per token).
 ///     <code>

@@ -8,10 +8,10 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 /// <remarks>
 ///     <para>
 ///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it derives from <see cref="OnnxWordSenseModel"/>,
-///     which provides the tokenizer, the ONNX session, the verified downloader and the classifier, and adds only the
+///     which provides the tokenizer, the ONNX session, the verified downloader and the classification, and adds only the
 ///     identity of this encoder (its pinned files and its embedded weights). Everything described for
 ///     <see cref="OnnxWordSenseModel"/> applies: <c>EnsureModelAsync</c> (mirror precedence, verification, retry and
-///     cancellation behavior), <c>Create</c>, the confidence of a result, and the requirement to dispose the model once
+///     cancellation behavior), <c>ClassifyAsync</c> (lazy ensure), the confidence of a result, and the requirement to dispose the model once
 ///     after all classifications have finished.
 ///     </para>
 ///     <para>
@@ -53,10 +53,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var model = new BertBaseCasedWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///     WordSense[] senses = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
@@ -71,7 +70,6 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
-///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>
@@ -79,7 +77,6 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
 ///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
-///     var offlineClassifier = offline.Create();
 ///     </code>
 /// </example>
 public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel

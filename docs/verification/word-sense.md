@@ -50,7 +50,8 @@ references show the layering. Requirements-to-test coverage is tracked by the Re
 ### End-to-End Classification with a Real Model
 
 The MiniLM and BertBaseCased test projects each create the model from the committed model directory, call
-`EnsureModelAsync` and `Create`, and classify the words of "The record was broken last year, so they will record the
+`EnsureModelAsync` and `ClassifyAsync`, and classify the words of "The record was broken last year, so they will
+record the
 new album." The first `record` must be a noun and the second a verb. This scenario is run on each CI operating system
 (Windows, Linux, macOS) and each target framework (net8.0, net9.0, net10.0); the platform requirements are each linked
 to it with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`), so a requirement is
@@ -72,7 +73,7 @@ BertBaseCased packages reference only the Onnx package (and, transitively, the c
 
 ### Packages Share One Contract
 
-A model of each package (Basic, MiniLM, BertBaseCased) is used through `IWordSenseModel` and `IWordSenseClassifier`
+A model of each package (Basic, MiniLM, BertBaseCased) is used through `IWordSenseModel`
 only. For a word with a single sense every package gives the same answer, the lexicon entry with confidence 1; for an
 unknown word every package gives `(word, null, 0)`.
 

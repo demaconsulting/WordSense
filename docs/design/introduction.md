@@ -101,7 +101,7 @@ WordSense ships as five NuGet packages, each modeled as one subsystem of the sin
 form layers:
 
 - The **core** package defines the vocabulary: the lexicon of known words and the contracts (`IWordSenseModel`,
-  `IWordSenseClassifier`, `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
+  `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
   weights and no ONNX code.
 - The **Basic** package implements the contracts with a statistical tagger and cue model. It references the core
   package only.
@@ -117,7 +117,8 @@ references a sibling model package. The builder tool references all five package
 ![WordSense system](WordSenseView.svg)
 
 The data flows from the contracts upward: a caller obtains an `IWordSenseModel` from a model package, calls
-`EnsureModelAsync` once, creates an `IWordSenseClassifier` and classifies tokenized text. Every classifier looks each
+`EnsureModelAsync` once (optional: `ClassifyAsync` ensures lazily when a word needs the model) and classifies
+tokenized text. Every model looks each
 word up in `WordLexicon` first; only a word with several senses needs the model's context decision.
 
 ## Folder Layout
@@ -127,7 +128,7 @@ The source code folder structure mirrors the packages, and the packages mirror t
 ```text
 src/DemaConsulting.WordSense/                      — core subsystem
 ├── WordLexicon.cs, WordsBlob.cs                    — word-lexicon unit
-├── IWordSenseModel.cs (also MirrorOptions), IWordSenseClassifier.cs (also WordSense), WordDetails.cs (also
+├── IWordSenseModel.cs (also WordSense, MirrorOptions), WordDetails.cs (also
 │   PartOfSpeech)                                   — word-sense-contracts unit
 ├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
 └── Resources/words.bin                             — embedded lexicon blob (resource of the word-lexicon unit)

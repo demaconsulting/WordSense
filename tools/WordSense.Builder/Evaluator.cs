@@ -339,7 +339,7 @@ internal static class Evaluator
         var firstUse = Stopwatch.StartNew();
         using var model = info.Create(modelDirectory);
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
-        var classifier = model.Create();
+        IWordSenseModel classifier = model;
 
         foreach (var row in holdout.Take(1))
         {
@@ -389,7 +389,7 @@ internal static class Evaluator
     private static async Task<SetResult> ScoreAsync(
         string name,
         IReadOnlyList<CorpusRow> rows,
-        IWordSenseClassifier classifier,
+        IWordSenseModel classifier,
         IReadOnlyDictionary<(string Lemma, string Label), InventoryRow> gold,
         CancellationToken cancellationToken)
     {

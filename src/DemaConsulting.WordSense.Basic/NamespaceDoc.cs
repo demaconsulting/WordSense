@@ -13,21 +13,21 @@ namespace DemaConsulting.WordSense.Basic;
 ///     in the build notes (https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes).
 ///     </para>
 ///     <para>
-///     Start with <see cref="BasicWordSenseModel"/>: create it and call <c>Create</c> to get an
-///     <see cref="IWordSenseClassifier"/>. <c>EnsureModelAsync</c> is optional for this model (it completes at once and
-///     checks nothing, because there are no files), and <c>Create</c> works with or without it; call it only to keep
+///     Start with <see cref="BasicWordSenseModel"/>: create it and call <c>ClassifyAsync</c>.
+///     <c>EnsureModelAsync</c> is optional for this model (it completes at once and
+///     checks nothing, because there are no files), and <c>ClassifyAsync</c> works with or without it; call it only to keep
 ///     the code identical to the encoder models. Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/>
-///     (it holds nothing to release, but afterwards <c>EnsureModelAsync</c>, <c>Create</c> and the classifiers it created
+///     (it holds nothing to release, but afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c>
 ///     throw <see cref="ObjectDisposedException"/>). With a token that is already
 ///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): the word lexicon of the core package loads on first use (about 120 ms,
-///     about 43 MiB), at the latest in <c>Create</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
+///     about 43 MiB), at the latest in the first <c>ClassifyAsync</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
 ///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes about 0.03 ms (about 30
 ///     microseconds per sentence, about 2 microseconds per word, measured) and the model adds about 21 MiB of memory,
-///     not counting the 43 MiB of the lexicon. The classifier is safe for concurrent use.
+///     not counting the 43 MiB of the lexicon. The model is safe for concurrent use.
 ///     </para>
 ///     <para>
 ///     Accuracy (build notes, https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md and
@@ -77,10 +77,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///
 ///     using var model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///     WordSense[] senses = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {

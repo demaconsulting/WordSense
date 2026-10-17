@@ -26,16 +26,19 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `InvalidDataException`.
 - **Store is used without a directory**: without a model directory the files are obtained through the downloader into
   `<store>/<model-id>/`.
-- **Create before EnsureModelAsync fails**: `Create` throws `InvalidOperationException` until the files are ready.
-- **Concurrent EnsureModelAsync calls share one download**: parallel calls produce one set of requests.
-- **Failed EnsureModelAsync can be retried**: after all sources fail, a second call starts a new attempt and succeeds when
-  a source works.
+- **Lexicon-only words never touch model files**: `ClassifyAsync` on words with at most one sense, on a model whose
+  directory does not exist, returns the lexicon answers without any ensure.
+- **Lazy ensure**: `ClassifyAsync` on an ambiguous word without a prior `EnsureModelAsync` ensures the files by itself
+  (default settings) and classifies; a missing directory throws `FileNotFoundException`.
+- **Concurrent EnsureModelAsync calls share one download**: parallel calls produce one set of requests; parallel
+  `ClassifyAsync` calls share one lazy ensure.
+- **Failed EnsureModelAsync can be retried**: after all sources fail, a second call (or `ClassifyAsync`) starts a new
+  attempt and succeeds when a source works.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared download.
-- **Weights and session are shared**: classifiers from two `Create` calls share one encoder and one weights table.
-- **Disposal**: `Dispose` can be called twice and from many threads at once; `EnsureModelAsync` and `Create` after
-  disposal throw `ObjectDisposedException`, and so does every call of a classifier created earlier, even for words that
-  never need the encoder.
+- **Weights and session are shared**: repeated `ClassifyAsync` calls share one encoder and one weights table.
+- **Disposal**: `Dispose` can be called twice and from many threads at once; `EnsureModelAsync` and `ClassifyAsync`
+  after disposal throw `ObjectDisposedException`, even for words that never need the encoder.
 - **Dispose during EnsureModelAsync**: a local server starts a response and stalls; disposing the model cancels the
   download, every pending `EnsureModelAsync` task ends with `OperationCanceledException` without hanging, later calls
   throw `ObjectDisposedException`, and no `.part` or model file remains in the store.

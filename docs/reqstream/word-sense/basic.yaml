@@ -16,7 +16,7 @@ sections:
               A lexicon lookup decides most words; the part of speech and the context cues in the sentence decide the
               rest without a model.
             children:
-              - WordSense-Basic-BasicWordSenseModel-Create
+              - WordSense-Basic-BasicWordSenseModel-Classify
               - WordSense-Basic-BasicWordSenseModel-Dispose
               - WordSense-Basic-BasicClassifier-Unknown
               - WordSense-Basic-BasicClassifier-SingleSense
@@ -80,7 +80,7 @@ sections:
             children:
               - WordSense-Basic-BasicClassifier-Deterministic
               - WordSense-Basic-PosTagger-Deterministic
-              - WordSense-Basic-BasicWordSenseModel-Create
+              - WordSense-Basic-BasicWordSenseModel-Classify
             tests:
               - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
 

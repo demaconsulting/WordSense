@@ -27,7 +27,8 @@ only and uses only the public `WordLexicon.Words`.
 ### Interfaces
 
 It exposes `BasicWordSenseModel` with a public parameterless constructor. `EnsureModelAsync` returns immediately and
-ignores the mirror; `Create` returns a classifier. It consumes `WordLexicon.Words` and the contracts of the core
+ignores the mirror; `ClassifyAsync` classifies at once, so a lazy ensure is trivial. It consumes `WordLexicon.Words`
+and the contracts of the core
 package. All other types are internal and visible to the builder (which trains and writes the table with the same
 feature hash and tag constants) and to the Basic test project.
 
@@ -35,7 +36,8 @@ feature hash and tag constants) and to the Basic test project.
 
 #### Classification
 
-`BasicWordSenseModel.Create` returns a new `BasicClassifier` that shares the process-wide `BasicTables.Default`, which
+`BasicWordSenseModel.ClassifyAsync` delegates to a lazily created `BasicClassifier` that shares the process-wide
+`BasicTables.Default`, which
 is loaded on first use. The classifier normalizes each word (lower case, typographic apostrophe straightened; tokens
 without a letter become empty), splits the list into segments that end after a `.`, `!` or `?` token, and processes
 each segment independently:

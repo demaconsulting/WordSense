@@ -19,10 +19,10 @@ namespace DemaConsulting.WordSense.Basic;
 ///     <para>
 ///     The model holds no native resources, so its <see cref="Dispose"/> releases nothing; it only marks the model as
 ///     disposed, for the same contract as every <see cref="IWordSenseModel"/>: afterwards <see cref="EnsureModelAsync"/>
-///     and <see cref="Create"/> throw <see cref="ObjectDisposedException"/>, and so does every call of a classifier
-///     created earlier (a classifier only borrows its model). Dispose it with <c>using</c> like any other model.
-///     One instance and the classifiers it creates can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional (it only returns a completed
-///     task) and <see cref="Create"/> needs no preceding call. If the token passed to <see cref="EnsureModelAsync"/> is
+///     and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>. Dispose it with <c>using</c> like
+///     any other model. One instance can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional
+///     (it only returns a completed task) and <see cref="ClassifyAsync"/> needs no preceding call: there is nothing
+///     to ensure, so its lazy ensure is a no-op. If the token passed to <see cref="EnsureModelAsync"/> is
 ///     already cancelled, the returned task is cancelled (awaiting it throws <see cref="OperationCanceledException"/>);
 ///     any other token is ignored. See the namespace documentation for first-use costs,
 ///     tokenization, the meaning of the confidence (a probability, with a scale of its own) and when this model is
@@ -36,10 +36,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///
 ///     using var model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///     WordSense[] senses = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
@@ -49,6 +48,7 @@ namespace DemaConsulting.WordSense.Basic;
 /// </example>
 public sealed class BasicWordSenseModel : IWordSenseModel
 {
+    private readonly Lazy<BasicClassifier> _classifier = new(() => new BasicClassifier());
     private volatile bool _disposed;
 
     /// <summary>
@@ -76,14 +76,19 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     }
 
     /// <summary>
-    ///     Creates a classifier that uses the embedded statistics.
+    ///     Classifies every word of a tokenized sentence or text with the embedded statistics.
     /// </summary>
-    /// <returns>A new classifier, safe for concurrent use. Unlike the encoder models, it needs no preceding call of <see cref="EnsureModelAsync"/> and never throws <see cref="InvalidOperationException"/>; the first call loads the word lexicon (about 120 ms, approximate). Its calls throw <see cref="ObjectDisposedException"/> once this model is disposed.</returns>
+    /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 120 ms, approximate).</returns>
+    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    public IWordSenseClassifier Create()
+    public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ThrowIfDisposed();
-        return new BasicClassifier(ThrowIfDisposed);
+        return _classifier.Value.ClassifyAsync(words, cancellationToken);
     }
 
     /// <summary>

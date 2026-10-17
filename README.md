@@ -71,7 +71,7 @@ await model.EnsureModelAsync();
 
 // Classify the words of a sentence whose "bow" and "record" are heteronyms
 var words = "The hunter fired an arrow from his bow so I will record a record".Split(' ');
-var results = await model.Create().ClassifyAsync(words);
+var results = await model.ClassifyAsync(words);
 
 // Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
 foreach (var result in results)
@@ -112,7 +112,7 @@ using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 
 var words = "They record the record".Split(' ');
-var results = await model.Create().ClassifyAsync(words);
+var results = await model.ClassifyAsync(words);
 
 // A word that is not in the dictionary has no details and a confidence of 0
 foreach (var result in results)
@@ -144,7 +144,11 @@ token, and one sentence per call is recommended (Basic splits at `.` `!` `?`; th
 at most 128 word pieces by default and use a window around the word for longer texts).
 
 The model API: call `EnsureModelAsync` for the encoder models even when you pass a model directory (it verifies the
-SHA-256 of the files, with no network access); for Basic it is optional. Model files are
+SHA-256 of the files, with no network access); for Basic it is optional. `ClassifyAsync` also ensures the model lazily
+on first use, but only when a word needs it (a list without an ambiguous word is answered from the dictionary and
+never touches model files, so a model that is never needed is never downloaded); the lazy ensure uses the default and
+environment mirror settings, so call `EnsureModelAsync` yourself to pass a `MirrorOptions` or to fail early. Model
+files are
 stored in a per-user directory under their model ID (for example `all-MiniLM-L6-v2-int8`) and reused on later runs; a
 directory you supply must hold the files directly (flat, no model-ID subfolder). To use your own mirror, set
 `WORDSENSE_MIRROR_URL`
@@ -170,6 +174,9 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 - ⚡ **basic** - Enough when you want no download and the fastest start; about 85% best-sense accuracy on real text.
 - ⚖️ **minilm** - The default recommendation: a 22 MiB download, a few milliseconds per sentence and about 93% on real text.
 - 🎯 **bert-base-cased** - Choose it when accuracy matters most and a 104 MiB download and about 150 MiB of RAM are fine.
+
+"Download needed: yes" means the files are downloaded the first time a classification needs the encoder (lazily, by
+`ClassifyAsync`, or earlier by `EnsureModelAsync`); a model whose encoder is never needed is never downloaded.
 
 The numbers come from the repository's build tool (`evaluate <model> --table`), run once per model on one machine with
 at most two ONNX threads. Holdout sentences were written together with the training sentences, so the holdout accuracy
@@ -213,8 +220,7 @@ string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats."
 ```
 
 The edge-case table is in the [user guide][link-user-guide]. `IWordSenseModel` is `IDisposable`; dispose any model with
-`using`. A classifier only borrows its model, so it must not be used after the model is disposed (it then throws
-`ObjectDisposedException`).
+`using`. After disposal the model's `EnsureModelAsync` and `ClassifyAsync` throw `ObjectDisposedException`.
 
 ## Accuracy and Limitations
 

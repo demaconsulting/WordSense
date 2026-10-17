@@ -15,7 +15,7 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Keys are lower case and compared ordinally; lower-case a word yourself (<c>ToLowerInvariant()</c>) before looking
-///     it up, and replace the curly apostrophe U+2019 with <c>'</c> (the classifiers do both for you). The indexer
+///     it up, and replace the curly apostrophe U+2019 with <c>'</c> (the models do both for you). The indexer
 ///     <c>Words["x"]</c> throws <see cref="KeyNotFoundException"/> for a word that is not in the lexicon (and for a
 ///     word that is not lower case), so use <c>TryGetValue</c> for text from users. The senses of a lemma appear in a
 ///     fixed order that is part of the lexicon. The lexicon is read-only

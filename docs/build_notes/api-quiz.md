@@ -23,7 +23,7 @@ documentation, the README or the user guide. The check is repeated until every q
 1. **Classify end to end.** With each of the three models (Basic, MiniLM, BertBaseCased), show how to classify a
    tokenized sentence: which packages to install, `EnsureModelAsync` (with the default download, with a mirror, and
    with an offline model directory, including the layout of that directory and whether `EnsureModelAsync` is still
-   required), `Create`, `ClassifyAsync`, and how to read `Details` and `Confidence`.
+   required, or whether `ClassifyAsync` ensures lazily), `ClassifyAsync`, and how to read `Details` and `Confidence`.
 2. **Look up candidates.** How do you list the possible senses of a word such as `read` with `WordLexicon.Words`? What
    are the keys (case, apostrophes), what happens for a missing word, and what do the entries contain?
 3. **Choose a model.** Which model should be used when, with the measured accuracy, download size, latency and memory,
@@ -41,10 +41,14 @@ documentation, the README or the user guide. The check is repeated until every q
    apostrophes), how many sentences per call, how does Basic split sentences, and what is the maximum input length of
    the encoders and what happens beyond it?
 9. **Disposal and ownership.** Who disposes a model, and is it the same for every model (Basic included) without
-   casting? Is a classifier disposable, and how long may it be used? What happens when the model is disposed while
+   casting? What happens when the model is disposed while
    `EnsureModelAsync` is downloading (which exception, any leftover files)? What happens after disposal to
-   `EnsureModelAsync`, `Create` and to a classifier created earlier (which exception, for which words), and is
+   `EnsureModelAsync` and `ClassifyAsync` (which exception, for which words), and is
    disposing twice or from several threads safe?
+10. **Laziness and lazy ensure.** Must `EnsureModelAsync` be called before `ClassifyAsync`? When does `ClassifyAsync`
+    ensure the model by itself, which mirror settings does it use, is a model that is never needed ever downloaded,
+    do lexicon-only words touch the model files or ONNX, do concurrent callers share one ensure, and can a failed
+    ensure be retried?
 
 ## Log
 
@@ -54,6 +58,6 @@ documentation, the README or the user guide. The check is repeated until every q
 | ----- | ------ | ----- |
 | 1 | Gaps in all eight questions | Closed by the commit "Close API documentation gaps found by quiz round 1" |
 | 2 | Q1-Q7 PASS with minor gaps, Q8 GAP | Minor gaps: no `EnsureModelAsync(mirror)` snippet in the encoder packages, no threshold-versus-coverage table for the encoders, no generic disposal guidance, no byte sizes and mixed MB/MiB, no concrete store paths, unclear whether memory includes the lexicon, repo-relative paths in XML docs, punctuation, cancelled-token behavior of Basic, unequal latency statements, no `ModelId` values. Q8: no reference tokenizer, no edge-case table, case handling not stated. Closed by the commit "Close API documentation gaps found by quiz round 2" |
-| 3 | Pending | Q9 (disposal and ownership) added with the change "Make IWordSenseModel disposable; remove IDisposable casts"; run the quiz again |
+| 3 | Pending | Q9 (disposal and ownership) added with the change "Make IWordSenseModel disposable; remove IDisposable casts"; Q10 (laziness) and the merged contract added with "Merge classifier into IWordSenseModel"; run the quiz again |
 
 <!-- markdownlint-enable MD013 -->

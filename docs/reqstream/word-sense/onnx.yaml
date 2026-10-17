@@ -19,7 +19,7 @@ sections:
               - WordSense-Onnx-OnnxClassifier-Encode
               - WordSense-Onnx-OnnxClassifier-Candidates
               - WordSense-Onnx-OnnxClassifier-Validation
-              - WordSense-Onnx-OnnxWordSenseModel-Create
+              - WordSense-Onnx-OnnxWordSenseModel-Classify
             tests:
               - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
 

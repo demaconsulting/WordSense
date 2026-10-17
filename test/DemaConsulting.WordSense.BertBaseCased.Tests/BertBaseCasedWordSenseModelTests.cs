@@ -30,16 +30,17 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     Creating a classifier before the files are available is an error that names the remedy.
+    ///     A lexicon-only call needs no model files, so it works on a model that was never ensured.
     /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public void BertBaseCasedWordSenseModel_Create_BeforeEnsureModel_Throws()
+    public async Task BertBaseCasedWordSenseModel_ClassifyAsync_LexiconOnly_NeedsNoEnsure()
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        var ex = Assert.Throws<InvalidOperationException>(model.Create);
+        var senses = await model.ClassifyAsync(["the", "."], TestContext.Current.CancellationToken);
 
-        Assert.Contains("EnsureModelAsync", ex.Message, StringComparison.Ordinal);
+        Assert.All(senses, s => Assert.Null(s.Details));
     }
 
     /// <summary>
@@ -69,16 +70,17 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     A disposed model rejects <c>Create</c> and disposing again is harmless.
+    ///     A disposed model rejects <c>ClassifyAsync</c> and disposing again is harmless.
     /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public void BertBaseCasedWordSenseModel_Create_AfterDispose_Throws()
+    public async Task BertBaseCasedWordSenseModel_ClassifyAsync_AfterDispose_Throws()
     {
         var model = new BertBaseCasedWordSenseModel();
         model.Dispose();
         model.Dispose();
 
-        Assert.Throws<ObjectDisposedException>(model.Create);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -92,7 +94,7 @@ public class BertBaseCasedWordSenseModelTests
 
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
 
-        Assert.NotNull(model.Create());
+        Assert.NotNull(await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -104,9 +106,8 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
-        var classifier = model.Create();
 
-        var result = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
         Assert.Equal(PartOfSpeech.Verb, result[2].Details?.PartOfSpeech);
         Assert.Equal(PartOfSpeech.Noun, result[4].Details?.PartOfSpeech);

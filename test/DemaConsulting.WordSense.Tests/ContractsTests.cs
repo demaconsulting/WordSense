@@ -33,13 +33,16 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     The model contract owns the lifetime, so it is disposable; the classifier only borrows the model.
+    ///     The model contract owns the lifetime, so it is disposable, and it is the only classification contract: the
+    ///     removed classifier interface no longer exists.
     /// </summary>
     [Fact]
     public void WordSenseContracts_IWordSenseModel_IsDisposable()
     {
         Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(IWordSenseModel)));
-        Assert.False(typeof(IDisposable).IsAssignableFrom(typeof(IWordSenseClassifier)));
+        Assert.NotNull(typeof(IWordSenseModel).GetMethod("ClassifyAsync"));
+        Assert.Null(typeof(IWordSenseModel).Assembly.GetType("DemaConsulting.WordSense.IWordSenseClassifier"));
+        Assert.Null(typeof(IWordSenseModel).GetMethod("Create"));
     }
 
     /// <summary>

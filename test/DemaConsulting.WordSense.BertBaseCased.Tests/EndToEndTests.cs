@@ -15,9 +15,8 @@ public class EndToEndTests
     {
         using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
         await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
-        var classifier = model.Create();
 
-        var senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        var senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
 
         Assert.Equal(6, senses.Length);
         Assert.Equal(PartOfSpeech.Verb, senses[2].Details?.PartOfSpeech);

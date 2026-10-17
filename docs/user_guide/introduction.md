@@ -118,10 +118,9 @@ Installing a model package brings the core with it. Install `DemaConsulting.Word
 // Downloads the model files on first use, verifies their SHA-256 and reuses them later
 using var model = new MiniLMWordSenseModel();
 await model.EnsureModelAsync();
-IWordSenseClassifier classifier = model.Create();
 
 string[] words = ["The", "record", "was", "broken", "so", "they", "will", "record", "the", "new", "album", "."];
-WordSense[] senses = await classifier.ClassifyAsync(words);
+WordSense[] senses = await model.ClassifyAsync(words);
 
 foreach (var sense in senses)
 {
@@ -180,7 +179,7 @@ never leaves `Details` null for a word that is in the table.
 
 ```csharp
 // "the" and "." are unknown (null, 0); "record" has several senses: best sense, model-specific confidence
-WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ```
 
 ## Input and Tokenization
@@ -257,15 +256,15 @@ if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
 ```
 
 The keys are lower-case and compared ordinally, and the table has no key with a curly apostrophe: lower-case the word and
-replace U+2019 with `'` yourself (the classifiers do it for you). The indexer `Words["x"]` throws
+replace U+2019 with `'` yourself (the models do it for you). The indexer `Words["x"]` throws
 `KeyNotFoundException` for a word that is not in the table, so use `TryGetValue`. The first access takes about 120 ms and
 about 43 MiB (approximate, machine dependent), once per process.
 
 ## Basic
 
 `BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` is optional: it completes at
-once and checks nothing, `Create()` works with or without it, a mirror is ignored, and disposing the model (with `using`)
-releases nothing but is still honored: afterwards `Create()` and the classifiers it created throw
+once and checks nothing, `ClassifyAsync` works with or without it, a mirror is ignored, and disposing the model (with `using`)
+releases nothing but is still honored: afterwards `EnsureModelAsync` and `ClassifyAsync` throw
 `ObjectDisposedException`. It
 decides a multi-sense word with a small statistical table that is
 embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the Universal Dependencies English
@@ -282,7 +281,7 @@ using DemaConsulting.WordSense.Basic;
 
 using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
-WordSense[] senses = await model.Create().ClassifyAsync(["to", "record", "the", "record"]);
+WordSense[] senses = await model.ClassifyAsync(["to", "record", "the", "record"]);
 Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
 ```
 
@@ -304,17 +303,20 @@ in the build notes).
 Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and has the
 public properties `HiddenSize` and `ModelId`. `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the
 downloader state, so dispose it with `using`, after every classification has finished. The Basic model has nothing to
-release but follows the same contract. The usual sequence is: call `EnsureModelAsync` once, call `Create()` to
-get a classifier, classify as many texts as you like and dispose the model. A classifier is safe for concurrent use,
-is not disposable and only borrows its model. `Create()` throws `InvalidOperationException` before the files are ready
-(the Basic model has no files, so its `Create()` never does). The ONNX session and the weights are loaded at the first
-`Create()` call: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
+release but follows the same contract. The usual sequence is: call `EnsureModelAsync` once, classify as many texts as
+you like with `ClassifyAsync` (safe for concurrent use) and dispose the model. `EnsureModelAsync` is optional:
+`ClassifyAsync` ensures the model lazily on first need, with the default (or environment variable) mirror settings, so
+pass a mirror or a model directory through `EnsureModelAsync` (or the constructor) first if you need them. Text whose
+words the word table alone resolves (no word with several senses) never needs the model: nothing is downloaded, opened
+or verified, and a model that is never needed is never downloaded. Concurrent callers share one ensure, and a failed
+ensure can be retried by the next call. The ONNX session and the weights are loaded at the first classification that needs
+them: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
 and of the hashing of the model files in `EnsureModelAsync` (approximate, machine dependent). Disposing is idempotent
-and thread-safe. After `Dispose()`, `EnsureModelAsync` and `Create()` throw `ObjectDisposedException`, and so does every
-call of a classifier that was created earlier (for the Basic model as well). Disposing while `EnsureModelAsync` is
+and thread-safe. After `Dispose()`, `EnsureModelAsync` and `ClassifyAsync` throw `ObjectDisposedException` (for the
+Basic model as well). Disposing while `EnsureModelAsync` (or a lazy ensure) is
 downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains.
-`EnsureModelAsync` is required also when you pass a model directory: it verifies the SHA-256 of the files and does not
-use the network.
+Do not dispose a model while a classification is running. With a model directory, the files are verified against their
+SHA-256 without using the network, either by `EnsureModelAsync` or by the lazy ensure.
 
 ## Confidence
 
@@ -326,7 +328,7 @@ when you want an answer anyway. A word with several senses but no weights for it
 (not the case for the shipped packages).
 
 ```csharp
-WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 foreach (var sense in senses.Where(s => s.Details is not null))
 {
     var use = sense.Confidence >= 0.5 ? "answer" : "guess";
@@ -403,7 +405,6 @@ using DemaConsulting.WordSense.MiniLM;
 
 using var model = new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8");
 await model.EnsureModelAsync();
-IWordSenseClassifier classifier = model.Create();
 ```
 
 `BertBaseCasedWordSenseModel` works the same way with its four files in the folder.
@@ -460,7 +461,7 @@ constructor argument, so a `MirrorOptions` always names a mirror; setting only a
 | `FileNotFoundException` | A supplied model directory does not exist or lacks a file |
 | `InvalidDataException` | A file of a supplied model directory does not match its SHA-256 |
 | `IOException`, `UnauthorizedAccessException` | The store cannot be created or written |
-| `ObjectDisposedException` | The model has been disposed (also for every call of a classifier created from it) |
+| `ObjectDisposedException` | The model has been disposed (`EnsureModelAsync` and `ClassifyAsync`) |
 | `OperationCanceledException` | The token was cancelled, or the model was disposed while the call was downloading |
 
 The Basic model throws only the cancellation exception and, after disposal, `ObjectDisposedException`. A failed call can

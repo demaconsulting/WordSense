@@ -34,24 +34,30 @@ sections:
                   - OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload
                   - OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried
 
-              - id: WordSense-Onnx-OnnxWordSenseModel-Create
+              - id: WordSense-Onnx-OnnxWordSenseModel-Classify
                 title: >-
-                  OnnxWordSenseModel shall create classifiers that share one encoder session and one set of weights
-                  and shall refuse to create one before the model files are available.
+                  OnnxWordSenseModel shall classify with one shared encoder session and one set of weights, shall
+                  ensure its model files lazily on first need (with the default and environment mirror settings,
+                  sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
+                  answer lexicon-only words without touching model files, weights or the encoder.
                 tags: [unit]
                 justification: |
-                  Loading a session and weights is expensive and must happen once; creating a classifier without
-                  files can only fail later and obscurely.
+                  Loading a session and weights is expensive and must happen once; a model that is never needed must
+                  never be downloaded, and callers should not have to sequence preparation and use themselves.
                 tests:
-                  - OnnxWordSenseModel_Create_BeforeEnsure_ThrowsInvalidOperation
-                  - OnnxWordSenseModel_Create_TwiceAfterEnsure_ShareTheEncoder
+                  - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily
+                  - OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure
+                  - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried
+                  - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound
+                  - OnnxWordSenseModel_ClassifyAsync_Repeated_ShareTheEncoder
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
                 title: >-
                   OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated and concurrent
                   disposal, cancel a download that its preparation step has in flight (the pending call then throws
-                  OperationCanceledException and leaves no partial file), and throw ObjectDisposedException for use
-                  after disposal, including every call of a classifier it created.
+                  OperationCanceledException and leaves no partial file), and throw ObjectDisposedException from
+                  EnsureModelAsync and ClassifyAsync after disposal.
                 tags: [unit]
                 justification: |
                   The ONNX session holds native memory; its release must be deterministic, a disposal must never hang
@@ -60,9 +66,8 @@ sections:
                   - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - OnnxWordSenseModel_Dispose_Concurrent_IsHarmless
                   - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
-                  - OnnxWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
                   - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
-                  - OnnxWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Identity
                 title: >-

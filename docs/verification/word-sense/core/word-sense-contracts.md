@@ -2,9 +2,9 @@
 
 #### Verification Approach
 
-The unit groups the public contract types `IWordSenseModel`, `MirrorOptions`, `IWordSenseClassifier`, `WordSense`,
+The unit groups the public contract types `IWordSenseModel`, `MirrorOptions`, `WordSense`,
 `WordDetails` and `PartOfSpeech`. Tests in `test/DemaConsulting.WordSense.Tests/ContractsTests.cs` exercise the records
-and the enum directly and implement the two interfaces with small test doubles to show they are usable without a model
+and the enum directly and implement the interface with a small test double to show it is usable without a model
 package. Nothing else is mocked.
 
 #### Test Environment
@@ -27,7 +27,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **MirrorOptions hides secrets**: `ToString` shows neither the bearer token nor a credential; each is shown as `***` and
   an absent one as `null`; the user-info, query and fragment of the base address are never printed, and a token or
   credential never appears however the options are formatted.
-- **Interfaces are implementable**: a test double implements `IWordSenseModel` (`EnsureModelAsync`, `Create`) and
-  `IWordSenseClassifier` (`ClassifyAsync` over a word list) and is used through the interfaces only.
-- **Ownership**: `IWordSenseModel` is `IDisposable` (so `using` disposes any model without a cast) and
-  `IWordSenseClassifier` is not.
+- **Interface is implementable**: a test double implements `IWordSenseModel` (`EnsureModelAsync`, `ClassifyAsync` over
+  a word list) and is used through the interface only.
+- **Ownership**: `IWordSenseModel` is `IDisposable` (so `using` disposes any model without a cast), is the only
+  classification contract, and has no `Create` method.

@@ -179,7 +179,6 @@ reviews:
       - "docs/design/word-sense/core/word-sense-contracts.md"
       - "docs/verification/word-sense/core/word-sense-contracts.md"
       - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
-      - "src/DemaConsulting.WordSense/IWordSenseClassifier.cs"
       - "src/DemaConsulting.WordSense/WordDetails.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
 

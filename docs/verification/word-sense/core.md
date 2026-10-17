@@ -32,7 +32,7 @@ senses and a word with one sense has one. The scenarios are detailed in the `Wor
 
 #### Contracts Are Usable Without a Model Package
 
-`WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`, `IWordSenseModel` and `IWordSenseClassifier` can be used
+`WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions` and `IWordSenseModel` can be used
 by a test double with no model package referenced (`ContractsTests`). The scenarios are detailed in the
 `WordSenseContracts` unit document.
 

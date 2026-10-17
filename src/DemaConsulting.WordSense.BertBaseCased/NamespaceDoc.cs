@@ -17,8 +17,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
-///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>Create</c> to
-///     get an <see cref="IWordSenseClassifier"/>. The files are described in the repository at
+///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then
+///     <c>ClassifyAsync</c> (which also ensures the model lazily when a word needs it). The files are described in the repository at
 ///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier
 ///     (<c>ModelId</c>) is <c>bert-base-cased-int8</c>; it names the store folder and the folder on a mirror. The encoder is
 ///     the base model without its masked-language head, cut and quantized with
@@ -36,12 +36,12 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files (the ONNX file is the
-///     bulk); the first <c>Create</c> opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
+///     bulk); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
 ///     of the core package loads in about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every
-///     classification has finished; afterwards <c>EnsureModelAsync</c>, <c>Create</c> and every call of a classifier it
-///     created throw <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
+///     classification has finished; afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c>
+///     throw <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
 ///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The
-///     model and the classifiers it creates are safe for concurrent use.
+///     model is safe for concurrent use.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
@@ -104,10 +104,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var model = new BertBaseCasedWordSenseModel();
 ///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///     WordSense[] senses = await model.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {
@@ -119,13 +118,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
-///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
 ///     await offline.EnsureModelAsync();   // verifies all four SHA-256 digests, no network
-///     IWordSenseClassifier offlineClassifier = offline.Create();
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;
