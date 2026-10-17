@@ -64,7 +64,16 @@ namespace DemaConsulting.WordSense;
 ///     Confidence: a word that the lexicon does not know has <see cref="WordSense.Details"/> null and confidence 0; a
 ///     word with a single sense gets that sense with confidence 1; an ambiguous word gets its best sense together with
 ///     a confidence from 0 to 1 whose scale the implementation documents (callers must not reuse a threshold across
-///     implementations). An implementation that needs no files completes <see cref="EnsureModelAsync"/> at once.
+///     implementations); only a null <see cref="WordSense.Details"/> means unknown or unscored, so an ambiguous word
+///     with a non-null <see cref="WordSense.Details"/> may legitimately carry any value from 0 to 1, including exactly
+///     0 or exactly 1. An implementation that needs no files completes <see cref="EnsureModelAsync"/> at once.
+///     Disposal while calls run: <c>Dispose</c> must be safe while calls are running (it must not break or hang a
+///     running classification). Lazy ensure: <see cref="ClassifyAsync"/> should ensure the model lazily and only when
+///     a word needs it, never for a list that the lexicon alone answers. Word list: enumerate the
+///     <c>words</c> argument exactly once (copy it to a list first). Already cancelled token:
+///     <see cref="EnsureModelAsync"/> must not throw for it; it returns a cancelled task (awaiting it throws
+///     <see cref="OperationCanceledException"/>), except that a task that has already completed may be returned as it
+///     is (see the remarks of <see cref="EnsureModelAsync"/>).
 ///     Result content: each element of the result has <see cref="WordSense.Word"/> equal to the input element at the
 ///     same index (as given, not lower-cased); <see cref="WordSense.Details"/> comes from
 ///     <c>WordLexicon.Words[key]</c> where the key is the word lower-cased (<c>ToLowerInvariant()</c>) with the curly
@@ -136,6 +145,14 @@ public interface IWordSenseModel : IDisposable
     ///     starts a new ensure with its own <see cref="MirrorOptions"/> only if the earlier one failed. A failed call can be retried. The Basic model needs no files and completes at once.
     ///     </para>
     ///     <para>
+    ///     Already-cancelled token, the same rule for every model: the call does not throw for it. It returns a
+    ///     cancelled task (awaiting it throws <see cref="OperationCanceledException"/>); the only exception is that an
+    ///     encoder model whose ensure has already completed returns that completed task as it is (and, when an ensure
+    ///     is still running or has to start, the shared ensure is started or joined and keeps running although the task
+    ///     returned to this caller is cancelled). The Basic model always returns a cancelled task. A disposed model
+    ///     throws <see cref="ObjectDisposedException"/> first, even for an already cancelled token.
+    ///     </para>
+    ///     <para>
     ///     When an encoder model was constructed with a model directory, this call is optional but is the way to verify
     ///     it up front (otherwise <see cref="ClassifyAsync"/> verifies lazily and may throw the same exceptions): it checks that
     ///     every file exists in that directory (directly in it, not in a subfolder) and matches its pinned SHA-256,
@@ -147,7 +164,11 @@ public interface IWordSenseModel : IDisposable
     ///     <see cref="InvalidDataException"/>; a file that no source could deliver verified throws
     ///     <see cref="HttpRequestException"/>; an invalid mirror configuration throws <see cref="ArgumentException"/>
     ///     (an invalid timeout, that is a <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about
-    ///     49 days, throws its subclass <see cref="ArgumentOutOfRangeException"/>; infinite is allowed); an unwritable store
+    ///     49 days, throws its subclass <see cref="ArgumentOutOfRangeException"/>; infinite is allowed; no
+    ///     <see cref="ArgumentException"/> is thrown when a model directory was supplied, because the mirror is then
+    ///     ignored, valid or not); a download that exceeds the timeout is not an exception of its own: that attempt is
+    ///     discarded and the next source is tried, and when no source delivers the file, the call fails with the
+    ///     <see cref="HttpRequestException"/> described above; an unwritable store
     ///     reports the file system exception of the platform (for example <see cref="IOException"/> or
     ///     <see cref="UnauthorizedAccessException"/>); a disposed model throws <see cref="ObjectDisposedException"/>;
     ///     a cancelled token cancels the returned task (<see cref="OperationCanceledException"/> when awaited), and so
@@ -179,7 +200,9 @@ public interface IWordSenseModel : IDisposable
     ///     <para>
     ///     The input is a list of words that the caller has already tokenized; the result array is parallel to it. The
     ///     list is read as one running text in which the words are joined by single spaces, so several sentences in one
-    ///     list share context. To classify independent sentences, make one call per sentence. Punctuation marks must be
+    ///     list share context (the context is shared across the whole list, except that the Basic model cuts the context
+    ///     at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>). To classify independent sentences, make one call per
+    ///     sentence. Punctuation marks must be
     ///     elements of their own (<c>"race"</c> then <c>"."</c>, never <c>"race."</c>).
     ///     </para>
     ///     <para>
@@ -256,9 +279,11 @@ public interface IWordSenseModel : IDisposable
 ///     <c>using DemaConsulting.WordSense;</c>, needs neither.
 ///     </para>
 ///     <para>
-///     The test for "no sense chosen" is <c>Details is null</c>, not <c>Confidence == 0</c>: confidence 0 and a null
-///     <see cref="Details"/> go together for every model of this repository, but a non-null <see cref="Details"/> is the
-///     contract, whereas the confidence is only a score.
+///     The test for "no sense chosen" is <c>Details is null</c>, not <c>Confidence == 0</c>. Only a null
+///     <see cref="Details"/> means unknown or unscored (and then <see cref="Confidence"/> is 0). The reverse does not
+///     hold: an ambiguous word that an encoder model resolved has a non-null <see cref="Details"/> and may legitimately
+///     carry any confidence from 0 to 1, including exactly 0 or exactly 1; a word with a single sense in the lexicon
+///     always gets 1. Never treat a confidence of 0 as "unknown" by itself.
 ///     </para>
 ///     <para>
 ///     <see cref="Details"/> is null in exactly two cases. First, the word is unknown: it has no entry in the lexicon
@@ -272,8 +297,10 @@ public interface IWordSenseModel : IDisposable
 ///     model never leaves <see cref="Details"/> null for a word that is in the lexicon.
 ///     </para>
 ///     <para>
-///     Confidence is a number from 0 to 1: 0 means unknown or unscored, 1 means the word has only one sense in the
-///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
+///     Confidence is a number from 0 to 1: a null <see cref="Details"/> (unknown or unscored) goes with 0, a word that
+///     has only one sense in the lexicon gets 1, and a word resolved from its context gets a value from the model
+///     package's own scale, which can be any value from 0 to 1 (even exactly 0 or 1) with a non-null
+///     <see cref="Details"/>. The
 ///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
 ///     several senses the probability of the chosen sense (never below 1/n for a word with n senses, so 0.5 for a
 ///     word with two senses: a threshold at or below 1/n keeps every answer of an n-sense word), so it is never
@@ -288,12 +315,15 @@ public interface IWordSenseModel : IDisposable
 ///     a hundred for BertBaseCased); the share of words that reaches a given value differs between the two encoders,
 ///     so tune the threshold per model on your own text. It is a ranking
 ///     score, not a calibrated probability: compare it against a threshold you choose and treat lower values as
-///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low.
+///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low. Below your threshold,
+///     treat the word as unresolved or low confidence: fall back to handling that does not depend on
+///     <see cref="WordDetails.Meaning"/> (for example your default pronunciation), or use <see cref="Details"/> only as
+///     a guess (for example show it marked as uncertain).
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, null, null), 0.93);
+///     WordSense sense = new("barks", new WordDetails("bark", PartOfSpeech.Verb, null, null), 0.93);
 ///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
 ///
 ///     // Keep only confident answers. A threshold belongs to one model: 0.8 is the recommended start for each of
@@ -321,7 +351,7 @@ public interface IWordSenseModel : IDisposable
 /// </example>
 /// <param name="Word">The word as given by the caller.</param>
 /// <param name="Details">The chosen sense, or <see langword="null"/> when none was chosen.</param>
-/// <param name="Confidence">The confidence in <paramref name="Details"/>, from 0 to 1.</param>
+/// <param name="Confidence">The confidence in <paramref name="Details"/>, from 0 to 1; 0 with a null <paramref name="Details"/> means unknown or unscored, while a non-null <paramref name="Details"/> may carry any value from 0 to 1.</param>
 public readonly record struct WordSense(string Word, WordDetails? Details, double Confidence);
 
 /// <summary>
@@ -379,7 +409,13 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     <see cref="ArgumentException"/>. A <see cref="Timeout"/> that is zero, negative or longer than about 49 days
 ///     throws <see cref="ArgumentOutOfRangeException"/> (a subclass of <see cref="ArgumentException"/>; <see cref="System.Threading.Timeout.InfiniteTimeSpan"/> means no limit); the
 ///     timeout applies only to a <see cref="MirrorOptions"/> that you pass, because the environment variables have
-///     no timeout (the default of 5 minutes applies then).
+///     no timeout (the default of 5 minutes applies then). The timeout limits one download attempt: an attempt that
+///     exceeds it is not reported as an exception of its own (not as <see cref="TimeoutException"/> or
+///     <see cref="OperationCanceledException"/>); that source is discarded and the next one is tried, and when no
+///     source delivers the file, <see cref="IWordSenseModel.EnsureModelAsync"/> fails with
+///     <see cref="System.Net.Http.HttpRequestException"/>. When the model was constructed with a model directory, no
+///     <see cref="ArgumentException"/> is thrown for an invalid <see cref="MirrorOptions"/> (not for the base URI, the
+///     credentials or the timeout), because the options are not read at all.
 ///     </para>
 ///     <para>
 ///     Store location: downloaded files are kept in <c>{StoreRoot}/{model-id}/{file}</c>; without a store root, the

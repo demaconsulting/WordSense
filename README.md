@@ -156,7 +156,7 @@ a model when you no longer need it; disposing while calls are running is safe: n
 calls complete, and an encoder model releases its ONNX session after the last one. Cancelling the token of
 `EnsureModelAsync` only ends that call's wait: the shared ensure keeps running, the next call joins it (its
 `MirrorOptions` are ignored) or, after a failure, starts a new one; an already cancelled token returns a cancelled task
-instead of throwing. The Basic model runs synchronously on
+(or the already completed task) instead of throwing. The Basic model runs synchronously on
 the calling thread; an encoder model hashes and downloads on the thread pool but runs inference synchronously, and a
 cancellation token is checked between steps (a single ONNX run is never interrupted). The
 ONNX models run on the CPU only, and concurrent classifications share one ONNX session and run in parallel. Model
@@ -254,7 +254,9 @@ The edge-case table is in the [user guide][link-user-guide]. `IWordSenseModel` i
 `using`. After disposal the model's `EnsureModelAsync` and `ClassifyAsync` throw `ObjectDisposedException`.
 In code under a
 `DemaConsulting.*` namespace add `using WordSense = DemaConsulting.WordSense.WordSense;` (the type name clashes with the
-namespace), and test for no answer with `Details is null`, not `Confidence == 0`.
+namespace), and test for no answer with `Details is null`, not `Confidence == 0` (only a null `Details` means unknown;
+an ambiguous word with non-null `Details` can have any confidence from 0 to 1, so below your threshold treat it as
+unresolved or show `Details` as a guess).
 
 ## Accuracy and Limitations
 

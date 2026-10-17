@@ -22,15 +22,15 @@ namespace DemaConsulting.WordSense.Basic;
 ///     other check, so even with an already cancelled token). Disposing while a classification is running is safe,
 ///     as for every model: new calls throw at once, and a call that is already running completes normally (this model
 ///     has nothing to release). The Basic model throws every
-///     exception of <c>ClassifyAsync</c> (null list, null element, cancelled token) from the call itself. With a token that is already
-///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
+///     exception of <c>ClassifyAsync</c> (null list, null element, <see cref="OperationCanceledException"/> for a token that is cancelled at the start or between sentence segments) from the call itself. With a token that is already
+///     cancelled, <c>EnsureModelAsync</c> always returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): the word lexicon of the core package loads on first use (about 120 ms,
 ///     about 43 MiB), at the latest in the first <c>ClassifyAsync</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
-///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes 0.03 ms (about 30 µs) per
-///     sentence, under 0.1 ms (about 2 µs per word, measured), and the model adds about 21 MiB of memory,
+///     on the first classification of a non-empty list (the table is loaded whether or not the list contains an ambiguous word; an empty list does not load it). After that a sentence takes about 0.03 ms (30 µs),
+///     about 2 µs per word (measured), and the model adds about 21 MiB of memory,
 ///     not counting the 43 MiB of the lexicon. That figure is the growth of the private memory of the process
 ///     (<c>Process.PrivateMemorySize64</c>, after a full garbage collection) from before the model was created to
 ///     after it classified warm-up sentences; it holds the decoded tables and working buffers of the model, but also

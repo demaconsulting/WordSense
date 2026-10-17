@@ -55,7 +55,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw the
 ///     ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
 ///     ignored while an ensure is already in flight. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
-///     of that call only (the returned task is cancelled, also for an already cancelled token; nothing is thrown from
+///     of that call only (the returned task is cancelled, also for an already cancelled token unless the ensure has
+///     already completed, in which case the completed task is returned; nothing is thrown from
 ///     the call); the shared ensure keeps running even when no caller waits any more, and the next call joins it. The opening of the ONNX
 ///     session and the inference run synchronously on the thread that continues the call (not offloaded), and a
 ///     token is checked between the words, never inside one ONNX run.

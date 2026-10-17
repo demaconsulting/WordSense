@@ -25,7 +25,8 @@ namespace DemaConsulting.WordSense.Basic;
 ///     any other model. One instance can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional
 ///     (it only returns a completed task) and <see cref="ClassifyAsync"/> needs no preceding call: there is nothing
 ///     to ensure, so its lazy ensure is a no-op. If the token passed to <see cref="EnsureModelAsync"/> is
-///     already cancelled, the returned task is cancelled (awaiting it throws <see cref="OperationCanceledException"/>);
+///     already cancelled, the returned task is always cancelled (awaiting it throws <see cref="OperationCanceledException"/>,
+///     the same rule as for every model; see <see cref="IWordSenseModel.EnsureModelAsync"/>);
 ///     any other token is ignored. See the namespace documentation for first-use costs,
 ///     tokenization, the meaning of the confidence (a probability, with a scale of its own) and when this model is
 ///     enough.
@@ -85,7 +86,7 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 120 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (null, 0); an element that contains a space is not split and is unknown too.</returns>
     /// <exception cref="ArgumentNullException">Thrown (from the call itself) when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown (from the call itself) when an element is null.</exception>
-    /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts.</exception>
+    /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts, or is cancelled between two sentence segments.</exception>
     /// <exception cref="ObjectDisposedException">Thrown (from the call itself, before any other check) when the model has been disposed.</exception>
     public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {

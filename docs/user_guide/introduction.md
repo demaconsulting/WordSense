@@ -357,7 +357,8 @@ running even when no caller waits any more (only disposing the model cancels it)
 (its `MirrorOptions` are ignored), returns at once when it has succeeded, and starts a new ensure with its own
 `MirrorOptions` only after a failed one. An already cancelled token does not make `EnsureModelAsync` throw from the
 call: it returns a cancelled task (awaiting it throws `OperationCanceledException`), for the Basic model as well, except
-that a task that has already completed is returned as it is; only a disposed model throws from the call. An empty
+that a task that has already completed is returned as it is (the Basic model always returns a cancelled task); only a
+disposed model throws from the call. An empty
 element is an unknown word
 (`null`, 0) and an element that contains a space is
 looked up as one key, which no lexicon entry has, so it is unknown too: pass one token per element.
@@ -369,7 +370,11 @@ An implementation must: throw `ArgumentNullException` for a null word list and `
 return a non-null array parallel to the input (empty for an empty list); throw `ObjectDisposedException` from both
 methods after `Dispose`; make `Dispose` idempotent and thread-safe; allow concurrent `ClassifyAsync` calls; and honor the
 confidence semantics: an unknown word has `Details` null and confidence 0, a word with one sense gets it with confidence
-1, and an ambiguous word gets its best sense with a confidence from 0 to 1 whose scale the implementation documents.
+1, and an ambiguous word gets its best sense with a confidence from 0 to 1 whose scale the implementation documents
+(only a null `Details` means unknown; a non-null `Details` may carry any value from 0 to 1). `Dispose` must be safe
+while calls run; `ClassifyAsync` should ensure lazily and only when a word needs it; enumerate the word list once; and
+`EnsureModelAsync` must not throw for an already cancelled token but return a cancelled task (a task that has already
+completed may be returned as it is).
 It must also: return in `Word` the input element as given; take `Details` from `WordLexicon.Words[key]`, where the key is
 the word lower-cased with U+2019 replaced by `'` (the shipped models do this, and an implementation should too, so that
 every model finds the same candidates); honor the cancellation token; make `EnsureModelAsync` idempotent, thread-safe
@@ -392,7 +397,8 @@ starting threshold is **0.8 for each of the three models**, read in that model's
 but no weights for its lemma is `null` with confidence 0
 (not the case for the shipped packages).
 
-The test for "no sense chosen" is `Details is null`, not `Confidence == 0`. In code under a `DemaConsulting.*`
+The test for "no sense chosen" is `Details is null`, not `Confidence == 0` (only a null `Details` means unknown or
+unscored; an ambiguous word with non-null `Details` can have any confidence from 0 to 1). In code under a `DemaConsulting.*`
 namespace the name `WordSense` resolves to the namespace `DemaConsulting.WordSense`, so add
 `using WordSense = DemaConsulting.WordSense.WordSense;` or write the type fully qualified.
 
@@ -414,7 +420,11 @@ hundred) (`basic-evaluation.md`, `model-comparison.md`); the confidence of Basic
 below 1/n (0.5 for two senses), so a threshold at or below 1/n is not a filter for Basic. MiniLM and BertBaseCased each
 have their own margin scale
 too, so tune a threshold per model on your own text. The test for "no sense chosen" is `Details is null`, not
-`Confidence == 0`. Measured thresholds (target words = the evaluation words, one annotated ambiguous word per
+`Confidence == 0`: only `Details is null` means unknown or unscored (confidence 0). A word that an encoder resolved has
+non-null `Details` and may carry any confidence from 0 to 1, including exactly 0 or 1; a word with a single sense in the
+lexicon gets 1. Below your threshold, treat the word as unresolved or low confidence: fall back to handling that does not
+depend on `Meaning` (for example your default pronunciation), or show `Details` as a guess. Measured thresholds
+(target words = the evaluation words, one annotated ambiguous word per
 evaluation sentence; coverage = share of the target words whose confidence is at or above the threshold, precision =
 share of those that are right; real text, holdout in parentheses; rounded):
 

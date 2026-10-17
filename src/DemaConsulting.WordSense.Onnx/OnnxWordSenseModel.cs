@@ -208,8 +208,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     failed; a failed download leaves no partial file under a final file name, so the call can simply be
     ///     repeated. A token that is already cancelled does not make the call throw: the call returns a cancelled task
     ///     (awaiting it throws <see cref="OperationCanceledException"/>), as the Basic model does, except that a
-    ///     task that has already completed is returned as it is; the shared ensure is still started (or joined) and
-    ///     continues. Only a disposed model throws from the call itself. The only environment variables are the four
+    ///     task that has already completed (the ensure succeeded earlier) is returned as it is; otherwise the shared ensure is still started (or joined) and
+    ///     continues, although the task returned to this caller is cancelled. Only a disposed model throws from the call itself (even for an already cancelled token). The only environment variables are the four
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
     ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI;
     ///     a relative <see cref="MirrorOptions.StoreRoot"/> is resolved against the current directory of the process).
@@ -224,7 +224,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     ignored without an exception) or when a <see cref="MirrorOptions"/> is passed. A
     ///     <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
     ///     <see cref="ArgumentOutOfRangeException"/> (infinite is allowed); it is ignored when a model directory was
-    ///     supplied.
+    ///     supplied (so no <see cref="ArgumentException"/> is thrown for an invalid <see cref="MirrorOptions"/> then). A download that exceeds the timeout is not
+    ///     reported as an exception of its own: that source is discarded, the next is tried, and when none delivers the
+    ///     file the task fails with <see cref="HttpRequestException"/>.
     ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
     ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS),
     ///     with no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
@@ -285,13 +287,13 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     session and the inference then run synchronously, without <c>Task.Run</c>, on the thread that continues
     ///     the call (the calling thread when the model is already ensured), so offload the call yourself if the caller
     ///     must not block. The token is checked before the work starts, while the ensure is awaited (it cancels the
-    ///     wait of this call only; shared work continues if other callers wait) and between the words that are
+    ///     wait of this call only; the shared ensure keeps running, and only disposing the model cancels it) and between the words that are
     ///     encoded; a single ONNX run is never interrupted. An empty element is unknown (null, 0) and an element
     ///     containing a space is looked up as one key, which no lexicon entry has, so it is unknown too.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled (cancelling ends only this call's wait; the shared ensure keeps running and only disposing the model cancels it), or when the model is disposed during the lazy ensure.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or the ONNX model cannot be read.</exception>
     /// <exception cref="HttpRequestException">Thrown by the lazy ensure when a file could not be obtained and verified.</exception>
