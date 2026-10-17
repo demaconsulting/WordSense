@@ -6,13 +6,17 @@ input-files:
   - docs/design/title.txt
   - docs/design/introduction.md
   - docs/design/word-sense.md
-  - docs/design/word-sense/word-piece-tokenizer.md
+  - docs/design/word-sense/word-sense-model.md
   - docs/design/word-sense/word-sense-table.md
-  - docs/design/word-sense/onnx-word-sense-encoder.md
+  - docs/design/word-sense/sense-record.md
   - docs/design/word-sense/word-sense-classifier.md
-  - docs/design/word-sense/download-mirror.md
-  - docs/design/word-sense/word-sense-model-downloader.md
   - docs/design/word-sense/word-sense-builder.md
+  - docs/design/word-sense-mini-lm.md
+  - docs/design/word-sense-mini-lm/mini-lm-word-sense.md
+  - docs/design/word-sense-mini-lm/mini-lm-word-sense-model.md
+  - docs/design/word-sense-mini-lm/word-piece-tokenizer.md
+  - docs/design/word-sense-mini-lm/word-sense-model-downloader.md
+  - docs/design/word-sense-mini-lm/download-mirror.md
   - docs/design/ots.md
   - docs/design/ots/apimark.md
   - docs/design/ots/buildmark.md

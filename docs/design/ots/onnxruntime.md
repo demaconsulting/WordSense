@@ -4,8 +4,8 @@
 
 Microsoft.ML.OnnxRuntime 1.28.0 (MIT license) is the inference engine that runs the int8-quantized
 `all-MiniLM-L6-v2` model. It is the only runtime (shipped) dependency of the
-`DemaConsulting.WordSense.MiniLM` package; the core `DemaConsulting.WordSense` package does not use it. It was chosen because it executes the model file directly,
-supports Windows, Linux and macOS, and needs no Python runtime.
+`DemaConsulting.WordSense.MiniLM` package; the core `DemaConsulting.WordSense` package does not use it.
+It was chosen because it executes the model file directly, supports Windows, Linux and macOS, and needs no Python runtime.
 
 ### Features Used
 

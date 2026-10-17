@@ -24,11 +24,16 @@ This document is intended for:
 This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
-- **WordSense (System)** — The complete library, shipped as the single package DemaConsulting.WordSense
-- **WordPieceTokenizer**, **WordSenseTable**, **SenseRecord**, **OnnxWordSenseEncoder**, **WordSenseClassifier**,
-  **DownloadMirror**, **WordSenseModelDownloader** (Units) and **WordSenseBuilder** (non-shipped tool unit)
+- **WordSense (System)** — The core package DemaConsulting.WordSense, which needs no model
+- **WordSenseModel**, **WordSenseTable**, **SenseRecord**, **WordSenseClassifier** (Units) and **WordSenseBuilder**
+  (non-shipped tool unit) of the core system
+- **WordSenseMiniLM (System)** — The package DemaConsulting.WordSense.MiniLM, which supplies the MiniLM model and its
+  weights
+- **MiniLMWordSense**, **MiniLMWordSenseModel**, **WordPieceTokenizer**, **DownloadMirror** and
+  **WordSenseModelDownloader** (Units) of the MiniLM system
 
-The OnnxRuntime OTS runtime dependency is also covered.
+The OnnxRuntime OTS runtime dependency of the MiniLM package is also covered. A shared `WordSense.Onnx` package is
+intentionally not created yet (it is deferred until a second model exists), so no verification design covers it.
 
 The following OTS items are also covered:
 

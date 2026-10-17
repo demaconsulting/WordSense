@@ -5,7 +5,8 @@
 Tests in `WordSenseModelDownloaderTests.cs` run a loopback `HttpListener` (`LocalServer`) that
 serves small files, a failure, a corrupted file, a slow response or a challenge, and point the mirror,
 Hugging Face and GitHub LFS base URIs at it with pinned digests substituted for the test files. No
-test uses the network. Request logs show the order of attempts and the headers received.
+test uses the network. Files are requested and stored per model, under `<model-id>/<file>` on the mirror and in
+the store. Request logs show the order of attempts and the headers received.
 
 ## Test Scenarios
 

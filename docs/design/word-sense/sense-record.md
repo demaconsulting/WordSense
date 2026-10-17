@@ -23,15 +23,15 @@ abstention rule and the text splitter. It consists of `PartOfSpeech`, `Pronuncia
   dictionary answer. One instance exists per sense of an entry instance, created when the owning `LemmaEntry` is
   constructed, so callers may compare answers by reference (context lemmas) or by value (always).
 - `AnswerBasis`: an enumeration saying where an analysis came from: `None` (0, the word is unknown), `Context` (1, the
-  encoder and the lemma's trained classifier chose the sense) and `Dictionary` (2, the table alone decided: the lemma
-  has one sense, or has several senses and no classifier).
+  model and the lemma's trained classifier chose the sense) and `Dictionary` (2, the lexicon alone decided: the lemma
+  has one sense, or has several senses and the classifier has no model for them).
 - `WordAnalysis(Word, Details?, Margin, Abstained, RunnerUp?, RunnerUpMargin, Basis, Candidates)`: a readonly record
   struct returned for each classified word. `Word` is the word as the caller gave it. `Details` is the best answer, or
   null when the word is unknown, the classifier abstained or a dictionary word has several senses. `Margin` is the
   score of the best candidate minus the score of the runner-up (a score difference, not a probability, comparable only
   within one lemma). `RunnerUp` is the second-best candidate and `RunnerUpMargin` its score minus the third-best score
   (0 for a two-sense lemma). `Abstained` is true when the word is known but has no single answer: the margin is below
-  the lemma's threshold, or a dictionary word has several senses and no classifier. `Basis` tells which of the cases
+  the lemma's threshold, or a dictionary word has several senses and no model. `Basis` tells which of the cases
   applies, and `Candidates` lists the possible answers of the word's lemma (never null from the library: empty for an
   unknown word, equal to the lemma's candidates otherwise; a word narrowed by morphology has the one derived sense).
   Field values per case:
@@ -41,9 +41,9 @@ abstention rule and the text splitter. It consists of `PartOfSpeech`, `Pronuncia
   | Unknown word | `None` | null | false | 0, null, 0 | empty |
   | One sense | `Dictionary` | the sense | false | 0, null, 0 | that sense |
   | Morphology-narrowed word | `Dictionary` | the derived sense | false | 0, null, 0 | that one derived sense |
-  | Several senses, no classifier | `Dictionary` | null | true | 0, null, 0 | all senses |
-  | Several senses, classifier answers | `Context` | best sense | false | reported | all senses |
-  | Several senses, classifier abstains | `Context` | null | true | reported | all senses |
+  | Several senses, no model | `Dictionary` | null | true | 0, null, 0 | all senses |
+  | Several senses, model answers | `Context` | best sense | false | reported | all senses |
+  | Several senses, model abstains | `Context` | null | true | reported | all senses |
 
   The margin fields are meaningful only for `Context`; callers test `Basis` first. `default(WordAnalysis)` has a null
   `Candidates`, which the library never returns.

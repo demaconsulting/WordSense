@@ -151,7 +151,8 @@ table.
   without a verb code gains the verb sense when its stem (as is, plus `e`, or without a doubled consonant) has one
   (`walking`, `making`, `running`); `morning` (no verb stem) and the four-letter `king` keep their class.
 - **WordSenseBuilder_Lexicon_Build_EmbedsLexicon**: a table built from a small `lexicon.tsv` contains its words with
-  the stated parts of speech and the enabled morphology rules.
+  the stated parts of speech and the enabled morphology rules; `build --weights` also writes a weights table that
+  matches the lexicon table (`WordSense-Builder-ModelWeights`).
 - **WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors**: `--lexicon FILE` yields the
   words of the file and the enabled rules of the `morphology.tsv` next to it; `--lexicon none` yields no words and no
   rules; `build` without `--lexicon` and without the default lexicon, with a missing explicit file, and with a lexicon
@@ -176,7 +177,10 @@ table.
 `WordSense-Builder-Provenance`, `WordSense-Builder-AuthoredImport`,
 `WordSense-Builder-NounVerbImport`, `WordSense-Builder-NounVerbGate`, `WordSense-Builder-LearningCurve`,
 `WordSense-Builder-ErrorDiagnosis`, `WordSense-Builder-WeakLemmas`, `WordSense-Builder-Appendix`,
-`WordSense-Builder-LexiconImport`, `WordSense-Builder-LexiconBuild` and `WordSense-Builder-LexiconEval`.
+`WordSense-Builder-LexiconImport`, `WordSense-Builder-LexiconBuild`, `WordSense-Builder-LexiconEval` and
+`WordSense-Builder-ModelWeights` (**WordSenseBuilder_Lexicon_Build_EmbedsLexicon** and
+**WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors**, which pass `--weights` and
+check the weights table).
 
 The `real-eval-import` and `real-eval` commands (`RealEval`) have no requirement of their own: they need a model and
 blind-judged candidate files, so a unit test is not practical. Their option parsing is covered by

@@ -27,7 +27,7 @@ the code it describes.
   OTS-ApiMark review set because they are ApiMark's inputs and evidence. FileAssert does not assert that
   content of the namespace page (it asserts only the index, the classifier example block, the terminology on
   `IWordSenseClassifier` and the
-  `CreateAsync` page); the carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to
+  `CreateClassifierAsync` page); the carrier's examples are compiled by `WordSense_XmlDocExamples_Compile`. References to
   repository documents in
   XML docs use absolute GitHub URLs, because the packaged API reference has no access to repository files.
 

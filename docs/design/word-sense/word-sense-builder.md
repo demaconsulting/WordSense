@@ -3,7 +3,7 @@
 ## Overview
 
 `tools/WordSense.Builder` is a non-shipped console tool with these commands:
-`build --model DIR --corpus DIR --output FILE [--report FILE]`,
+`build --model DIR [--model-id ID] --corpus DIR --output FILE --weights FILE [--report FILE]`,
 `import-batches --source DIR --corpus DIR [--max N]`, `validate-pos --corpus DIR` (checks the inventory rules) and the
 real-text commands (`real-gap`,
 `real-judge-export`, `real-judge-adjudicate`, `real-judge-merge`, `real-import`, `real-gap-import`,
@@ -15,7 +15,16 @@ real-text commands (`real-gap`,
 [--corrections FILE] [--classes FILE] [--output FILE]` and `lexicon-eval --table FILE --ud DIR [--output FILE]
 [--gated FILE] [--enforce]`. The `build` command also reads the committed lexicon `corpus/lexicon/lexicon.tsv`
 (`--lexicon FILE` selects another file, `--lexicon none` builds without a dictionary and is the only way to do so) and
-the `morphology.tsv` next to the lexicon, and embeds them in the table.
+the `morphology.tsv` next to the lexicon, and embeds them in the lexicon table.
+
+The model options of every command that needs a model are `--model DIR`, the folder that holds the model folders, and
+`--model-id ID` (default `all-MiniLM-L6-v2-int8`); the model files are read from `DIR/ID`. An unknown model id is a
+usage error, because only a model that has a package can be opened. `build` writes two files: the lexicon table to
+`--output` (shipped as `src/DemaConsulting.WordSense/Resources/wordsense-lexicon.bin`) and the weights table of the
+model to `--weights` (shipped as
+`src/DemaConsulting.WordSense.MiniLM/Resources/weights.<model-id>.<onnx-sha256>.bin`). The weights table names the
+model id, the SHA-256 of the model file and the SHA-256 of the lexicon table that was just built. Every model is
+trained from the same shared corpus, so models stay comparable.
 
 ## Data Model
 
@@ -49,11 +58,13 @@ does not pin a release or commit of the treebank, so a figure is reproducible on
 ## Algorithm
 
 - `Corpus` parses and validates the files; `EnsureDisjoint` rejects duplicates.
-- `TableBuilder` encodes every sentence with the real model, pools and centers the target features
+- `TableBuilder` embeds every sentence with the real model, pools and centers the target features
   (`FeatureExtractor`), trains one binary or one-versus-rest logistic regression per lemma with
   `LogisticTrainer` (Newton iterations, fixed `C`, backtracking line search, no randomness), picks a
   per-lemma abstention margin by seeded 5-fold cross-validation (lowest threshold with at least 99 %
-  answered accuracy and 70 % coverage), evaluates on the holdout and writes the table and a report.
+  answered accuracy and 70 % coverage), evaluates on the holdout and returns the lexicon table, the weights table
+  of the model and a report. The trained lemmas appear in the lexicon as contextual entries without weights; the
+  weights go only to the weights table, bound to the lexicon by its digest.
 - `BatchImporter` imports a batch only if both files exist (otherwise `Missing`). Lemma-level absence
   (a specified lemma without anchors or holdout sentences) is a warning listed per batch: a lemma without
   anchors has no classifier and is left out, a lemma without holdout is trained but not evaluated.
@@ -264,6 +275,8 @@ still applies to it.
 - `build` without `--lexicon` and without the default `corpus/lexicon/lexicon.tsv` is a usage error that names
   `--lexicon none`; an explicit `--lexicon FILE` that does not exist, or a lexicon without a `morphology.tsv` next to
   it, is a missing-file error. Both exit 1 before the corpus is read or the table is written.
+- `build` without `--weights` is a usage error that names the option, and an unknown `--model-id` is an
+  `ArgumentException` naming the known model; both exit 1 before anything is written.
 - `import-batches` reports row- and lemma-level problems per batch and only exits 1 when a batch is `Invalid` or
   missing; an invalid batch imports nothing.
 - The analysis commands need their inputs: a missing corpus, model or analysis file is an `IOException` and exits 1; a
@@ -296,7 +309,8 @@ the library or the CI build.
 
 ## Interactions
 
-Uses `WordPieceTokenizer`, `OnnxWordSenseEncoder`, `WordSenseTable` and `FeatureExtractor` from the
-library through `InternalsVisibleTo`; `lexicon-eval` calls the library resolver (`WordSenseTable.TryResolve`) so that
+Uses `MiniLMWordSenseModel` and `WordPieceTokenizer` of the MiniLM package, and `WordSenseTable`,
+`WordSenseWeightsTable` and `FeatureExtractor` of the core package, through `InternalsVisibleTo`; `lexicon-eval` calls
+the library resolver (`WordSenseTable.TryResolve`) so that
 the evaluated behaviour is the shipped behaviour. `Program.Run` also dispatches `import-moby` to `LexiconSource` and
 `lexicon-eval` to `LexiconEvaluation`.

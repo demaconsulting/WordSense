@@ -47,11 +47,11 @@ reviews:
     paths:
       - "README.md"                                                 # project readme
       - "docs/user_guide/**/*.md"                                   # user guide
-      - "test/DemaConsulting.WordSense.Tests/ReadmeSample.cs"       # README sample code, compiled and run
-      - "test/DemaConsulting.WordSense.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
-      - "test/DemaConsulting.WordSense.Tests/UserGuideSamples.cs"   # user guide sample code, compiled
-      - "test/DemaConsulting.WordSense.Tests/UserGuideSampleTests.cs"  # keeps user guide code in sync
-      - "test/DemaConsulting.WordSense.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs"       # README sample code, compiled and run
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSamples.cs"   # user guide sample code, compiled
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSampleTests.cs"  # keeps user guide code in sync
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
 
   # Decomposition Review (only one per repository)
   - id: Decomposition
@@ -72,12 +72,12 @@ reviews:
       - "docs/user_guide/**/*.md"
     paths:
       - "docs/reqstream/word-sense.yaml"                      # system requirements
-      - "docs/design/introduction.md"                                           # design introduction
-      - "docs/design/word-sense.md"                               # system design
-      - "docs/verification/introduction.md"                                    # verification introduction
-      - "docs/verification/word-sense.md"                        # system verification
-      - "test/DemaConsulting.WordSense.Tests/WordSenseTests.cs"  # integration tests
-      - "test/DemaConsulting.WordSense.Tests/ModelAssets.cs"     # integration test helper
+      - "docs/design/introduction.md"                         # design introduction
+      - "docs/design/word-sense.md"                           # system design
+      - "docs/verification/introduction.md"                   # verification introduction
+      - "docs/verification/word-sense.md"                     # system verification
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/WordSenseTests.cs"  # integration tests
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelAssets.cs"     # integration test helper
 
   # WordSense-Design Review (one per system)
   - id: WordSense-Design
@@ -86,10 +86,10 @@ reviews:
       - "docs/reqstream/word-sense.yaml"
     paths:
       - "docs/reqstream/word-sense/platform-requirements.yaml"  # platform requirements
-      - "docs/design/introduction.md"                                       # design introduction
-      - "docs/design/word-sense.md"                           # system design
-      - "docs/design/word-sense/**/*.md"                      # all system design documents
-      - "docs/design/ots.md"                                                # OTS overview
+      - "docs/design/introduction.md"                           # design introduction
+      - "docs/design/word-sense.md"                             # system design
+      - "docs/design/word-sense/**/*.md"                        # all system design documents
+      - "docs/design/ots.md"                                    # OTS overview
 
   # WordSense-Verification Review (one per system)
   - id: WordSense-Verification
@@ -97,10 +97,10 @@ reviews:
     context:
       - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/verification/introduction.md"                                 # verification introduction
-      - "docs/verification/word-sense.md"                     # system verification
-      - "docs/verification/word-sense/**/*.md"               # all verification documents
-      - "docs/verification/ots.md"                                          # OTS overview
+      - "docs/verification/introduction.md"                     # verification introduction
+      - "docs/verification/word-sense.md"                       # system verification
+      - "docs/verification/word-sense/**/*.md"                  # all verification documents
+      - "docs/verification/ots.md"                              # OTS overview
 
   # WordSense-AllRequirements Review (one per system)
   - id: WordSense-AllRequirements
@@ -109,22 +109,44 @@ reviews:
       - "docs/design/word-sense.md"
       - "docs/reqstream/word-sense.yaml"
     paths:
-      - "requirements.yaml"                                                 # root requirements file
-      - "docs/reqstream/**/*.yaml"                                          # all requirements files
+      - "requirements.yaml"                                     # root requirements file
+      - "docs/reqstream/**/*.yaml"                              # all requirements files
 
-  # WordSense-WordPieceTokenizer Review (one per unit)
-  - id: WordSense-WordPieceTokenizer
-    title: Review that WordSense WordPieceTokenizer Implementation is Correct
+  # WordSenseMiniLM-Architecture Review (one per system)
+  - id: WordSenseMiniLM-Architecture
+    title: Review that WordSense MiniLM Architecture Satisfies Requirements
     context:
+      - "README.md"
+      - "docs/user_guide/**/*.md"
       - "docs/design/word-sense.md"
-      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/word-sense/word-piece-tokenizer.yaml"
-      - "docs/design/word-sense/word-piece-tokenizer.md"
-      - "docs/verification/word-sense/word-piece-tokenizer.md"
-      - "src/DemaConsulting.WordSense/WordPieceTokenizer.cs"
-      - "src/DemaConsulting.WordSense/TokenizedText.cs"
-      - "test/DemaConsulting.WordSense.Tests/WordPieceTokenizerTests.cs"
+      - "docs/reqstream/word-sense-mini-lm.yaml"              # system requirements
+      - "docs/design/introduction.md"                         # design introduction
+      - "docs/design/word-sense-mini-lm.md"                   # system design
+      - "docs/verification/introduction.md"                   # verification introduction
+      - "docs/verification/word-sense-mini-lm.md"             # system verification
+
+  # WordSenseMiniLM-Design Review (one per system)
+  - id: WordSenseMiniLM-Design
+    title: Review that WordSense MiniLM Design is Consistent and Complete
+    context:
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/design/introduction.md"                           # design introduction
+      - "docs/design/word-sense-mini-lm.md"                     # system design
+      - "docs/design/word-sense-mini-lm/**/*.md"                # all system design documents
+      - "docs/design/ots.md"                                    # OTS overview
+
+  # WordSenseMiniLM-Verification Review (one per system)
+  - id: WordSenseMiniLM-Verification
+    title: Review that WordSense MiniLM Verification is Consistent and Complete
+    context:
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/verification/introduction.md"                     # verification introduction
+      - "docs/verification/word-sense-mini-lm.md"               # system verification
+      - "docs/verification/word-sense-mini-lm/**/*.md"          # all verification documents
+      - "docs/verification/ots.md"                              # OTS overview
 
   # WordSense-WordSenseTable Review (one per unit)
   - id: WordSense-WordSenseTable
@@ -137,6 +159,8 @@ reviews:
       - "docs/design/word-sense/word-sense-table.md"
       - "docs/verification/word-sense/word-sense-table.md"
       - "src/DemaConsulting.WordSense/WordSenseTable.cs"
+      - "src/DemaConsulting.WordSense/WordSenseWeightsTable.cs"
+      - "src/DemaConsulting.WordSense/TableReader.cs"
       - "src/DemaConsulting.WordSense/LemmaEntry.cs"
       - "src/DemaConsulting.WordSense/SenseWeights.cs"
       - "src/DemaConsulting.WordSense/LexicalIndex.cs"
@@ -145,22 +169,24 @@ reviews:
       - "src/DemaConsulting.WordSense/VectorMath.cs"
       - "src/DemaConsulting.WordSense/WordSenseTableFormatException.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseTableTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordSenseWeightsTableTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/SenseWeightsTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexicalIndexTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LemmaResolutionTests.cs"
 
-  # WordSense-OnnxWordSenseEncoder Review (one per unit)
-  - id: WordSense-OnnxWordSenseEncoder
-    title: Review that WordSense OnnxWordSenseEncoder Implementation is Correct
+  # WordSense-WordSenseModel Review (one per unit)
+  - id: WordSense-WordSenseModel
+    title: Review that WordSense WordSenseModel Implementation is Correct
     context:
       - "docs/design/word-sense.md"
       - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/word-sense/onnx-word-sense-encoder.yaml"
-      - "docs/design/word-sense/onnx-word-sense-encoder.md"
-      - "docs/verification/word-sense/onnx-word-sense-encoder.md"
-      - "src/DemaConsulting.WordSense/OnnxWordSenseEncoder.cs"
-      - "src/DemaConsulting.WordSense/IWordSenseEncoder.cs"
-      - "test/DemaConsulting.WordSense.Tests/OnnxWordSenseEncoderTests.cs"
+      - "docs/reqstream/word-sense/word-sense-model.yaml"
+      - "docs/design/word-sense/word-sense-model.md"
+      - "docs/verification/word-sense/word-sense-model.md"
+      - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs"
+      - "test/DemaConsulting.WordSense.Tests/FakeWordSenseModel.cs"
 
   # WordSense-WordSenseClassifier Review (one per unit)
   - id: WordSense-WordSenseClassifier
@@ -175,7 +201,6 @@ reviews:
       - "src/DemaConsulting.WordSense/WordSenseClassifier.cs"
       - "src/DemaConsulting.WordSense/WordSenseClassifierOptions.cs"
       - "src/DemaConsulting.WordSense/FeatureExtractor.cs"
-      - "src/DemaConsulting.WordSense/WordSenseModelMismatchException.cs"
       - "test/DemaConsulting.WordSense.Tests/WordSenseClassifierTests.cs"
 
   # WordSense-SenseRecord Review (one per unit)
@@ -198,36 +223,6 @@ reviews:
       - "src/DemaConsulting.WordSense/TextSplitter.cs"
       - "test/DemaConsulting.WordSense.Tests/SenseRecordTests.cs"
 
-  # WordSense-DownloadMirror Review (one per unit)
-  - id: WordSense-DownloadMirror
-    title: Review that WordSense DownloadMirror Implementation is Correct
-    context:
-      - "docs/design/word-sense.md"
-      - "docs/reqstream/word-sense.yaml"
-    paths:
-      - "docs/reqstream/word-sense/download-mirror.yaml"
-      - "docs/design/word-sense/download-mirror.md"
-      - "docs/verification/word-sense/download-mirror.md"
-      - "src/DemaConsulting.WordSense/DownloadMirror.cs"
-      - "test/DemaConsulting.WordSense.Tests/DownloadMirrorTests.cs"
-
-  # WordSense-WordSenseModelDownloader Review (one per unit)
-  - id: WordSense-WordSenseModelDownloader
-    title: Review that WordSense WordSenseModelDownloader Implementation is Correct
-    context:
-      - "docs/design/word-sense.md"
-      - "docs/reqstream/word-sense.yaml"
-    paths:
-      - "docs/reqstream/word-sense/word-sense-model-downloader.yaml"
-      - "docs/design/word-sense/word-sense-model-downloader.md"
-      - "docs/verification/word-sense/word-sense-model-downloader.md"
-      - "src/DemaConsulting.WordSense/WordSenseModelDownloader.cs"
-      - "src/DemaConsulting.WordSense/WordSenseModelDownloaderOptions.cs"
-      - "src/DemaConsulting.WordSense/WordSenseModelLocation.cs"
-      - "src/DemaConsulting.WordSense/WordSenseModelCatalog.cs"
-      - "test/DemaConsulting.WordSense.Tests/WordSenseModelDownloaderTests.cs"
-      - "test/DemaConsulting.WordSense.Tests/LocalServer.cs"
-
   # WordSense-WordSenseBuilder Review (one per unit)
   - id: WordSense-WordSenseBuilder
     title: Review that WordSense WordSenseBuilder Implementation is Correct
@@ -248,6 +243,78 @@ reviews:
       - "corpus/realtext/**"
       - "corpus/lexicon/**"
 
+  # WordSenseMiniLM-MiniLMWordSense Review (one per unit)
+  - id: WordSenseMiniLM-MiniLMWordSense
+    title: Review that WordSense MiniLMWordSense Implementation is Correct
+    context:
+      - "docs/design/word-sense-mini-lm.md"
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense-mini-lm/mini-lm-word-sense.yaml"
+      - "docs/design/word-sense-mini-lm/mini-lm-word-sense.md"
+      - "docs/verification/word-sense-mini-lm/mini-lm-word-sense.md"
+      - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSense.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseOptions.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/WordSenseTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelAssets.cs"
+
+  # WordSenseMiniLM-MiniLMWordSenseModel Review (one per unit)
+  - id: WordSenseMiniLM-MiniLMWordSenseModel
+    title: Review that WordSense MiniLMWordSenseModel Implementation is Correct
+    context:
+      - "docs/design/word-sense-mini-lm.md"
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense-mini-lm/mini-lm-word-sense-model.yaml"
+      - "docs/design/word-sense-mini-lm/mini-lm-word-sense-model.md"
+      - "docs/verification/word-sense-mini-lm/mini-lm-word-sense-model.md"
+      - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
+
+  # WordSenseMiniLM-WordPieceTokenizer Review (one per unit)
+  - id: WordSenseMiniLM-WordPieceTokenizer
+    title: Review that WordSense WordPieceTokenizer Implementation is Correct
+    context:
+      - "docs/design/word-sense-mini-lm.md"
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense-mini-lm/word-piece-tokenizer.yaml"
+      - "docs/design/word-sense-mini-lm/word-piece-tokenizer.md"
+      - "docs/verification/word-sense-mini-lm/word-piece-tokenizer.md"
+      - "src/DemaConsulting.WordSense.MiniLM/WordPieceTokenizer.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/TokenizedText.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/WordPieceTokenizerTests.cs"
+
+  # WordSenseMiniLM-DownloadMirror Review (one per unit)
+  - id: WordSenseMiniLM-DownloadMirror
+    title: Review that WordSense DownloadMirror Implementation is Correct
+    context:
+      - "docs/design/word-sense-mini-lm.md"
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense-mini-lm/download-mirror.yaml"
+      - "docs/design/word-sense-mini-lm/download-mirror.md"
+      - "docs/verification/word-sense-mini-lm/download-mirror.md"
+      - "src/DemaConsulting.WordSense.MiniLM/DownloadMirror.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/DownloadMirrorTests.cs"
+
+  # WordSenseMiniLM-WordSenseModelDownloader Review (one per unit)
+  - id: WordSenseMiniLM-WordSenseModelDownloader
+    title: Review that WordSense WordSenseModelDownloader Implementation is Correct
+    context:
+      - "docs/design/word-sense-mini-lm.md"
+      - "docs/reqstream/word-sense-mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense-mini-lm/word-sense-model-downloader.yaml"
+      - "docs/design/word-sense-mini-lm/word-sense-model-downloader.md"
+      - "docs/verification/word-sense-mini-lm/word-sense-model-downloader.md"
+      - "src/DemaConsulting.WordSense.MiniLM/WordSenseModelDownloader.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/WordSenseModelDownloaderOptions.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/WordSenseModelLocation.cs"
+      - "src/DemaConsulting.WordSense.MiniLM/WordSenseModelCatalog.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/WordSenseModelDownloaderTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/LocalServer.cs"
+
   # OTS-ApiMark Review (one per OTS item)
   - id: OTS-ApiMark
     title: Review that ApiMark Provides Required Functionality
@@ -256,8 +323,10 @@ reviews:
       - "docs/design/ots/apimark.md"                                       # OTS integration design
       - "docs/verification/ots/apimark.md"                                 # OTS verification
       - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # namespace description for the API reference
+      - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"              # namespace description for the MiniLM API reference
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleVerifier.cs"     # compiles documented examples
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"        # example compile test
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/XmlDocExampleTests.cs" # MiniLM example compile test
 
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark

@@ -36,5 +36,5 @@ plus optional Basic credentials or a bearer token. The environment variables are
 
 ## Interactions
 
-Consumed by `WordSenseModelDownloader`, which appends `all-MiniLM-L6-v2/{file}` to `BaseUri` and sends
+Consumed by `WordSenseModelDownloader`, which appends `{model-id}/{file}` to `BaseUri` and sends
 the credentials only to requests of the same scheme, host and port as the mirror (including redirect hops).

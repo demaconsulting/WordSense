@@ -52,7 +52,7 @@ still hide examples rendered as prose or dropped remarks.
 
 **Scenario**: The classifier factory member is documented and its page is generated.
 
-**Expected**: The `WordSenseClassifier.CreateAsync` member page exists and contains a fenced
+**Expected**: The `MiniLMWordSense.CreateClassifierAsync` member page exists and contains a fenced
 `csharp` example.
 
 **What this proves**: only that the member page was generated from its documentation. It does not

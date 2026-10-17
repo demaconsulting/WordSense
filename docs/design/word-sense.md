@@ -1,34 +1,40 @@
 # System Design
 
-This document provides the system-level design for WordSense.
+This document provides the system-level design for the core WordSense package, `DemaConsulting.WordSense`.
 
 ![WordSense Structure](WordSenseView.svg)
 
 ## Architecture
 
 WordSense is a .NET library that decides which part of speech and, for words pronounced differently
-by meaning, which pronunciation an English word carries in a given text. Words with one part of speech are answered
-from an embedded dictionary without running any model; ambiguous words that the library has a trained classifier for
-(for example "record" as noun or verb) are answered in context. It ships as one NuGet package,
-`DemaConsulting.WordSense`, whose only runtime dependency is Microsoft.ML.OnnxRuntime. The system consists of these
-units, all in one assembly:
+by meaning, which pronunciation an English word carries in a given text. The core package holds everything that does
+not depend on a particular model: the embedded lexicon, the per-model weights table format, the model abstraction and
+the classifier. Words with one part of speech are answered from the embedded lexicon without any model. Ambiguous
+words (for example "record" as noun or verb) are answered in context when the classifier has a model and the weights
+trained for it, which the companion package `DemaConsulting.WordSense.MiniLM` supplies; without a model the classifier
+still answers every lexicon word and reports the candidates of the ambiguous ones. The package has no runtime
+dependency. The system consists of these units:
 
-- **WordPieceTokenizer**: BERT uncased word-piece tokenizer with character offsets
-- **WordSenseTable**: embedded binary table of lemma entries (senses with part of speech and optional pronunciation,
-  optional per-lemma linear classifier weights and abstention margins), word forms, the front-coded dictionary and
-  the one resolver from surface word to lemma entry
-- **OnnxWordSenseEncoder**: ONNX Runtime wrapper around the int8 `all-MiniLM-L6-v2` model
+- **WordSenseModel**: the model abstraction `IWordSenseModel` (identity, embedding size, embedding of target words
+  and the check that a weights table belongs to the model) and the mismatch exception
+- **WordSenseTable**: the embedded lexicon table (format `WSNS`, context lemmas with their senses, word forms, the
+  front-coded dictionary and the one resolver from surface word to lemma entry) and the per-model weights table
+  (format `WSNW`: one set of classifier weights and abstention margins per context lemma, trained for one model and
+  one lexicon)
 - **SenseRecord**: immutable answer values (part of speech, pronunciation, word details, analysis with its answer
   basis and candidates), sense definition validation, the abstention rule and text segmentation
 - **WordSenseClassifier**: public entry point that combines the units above in one flow
-- **DownloadMirror**: validated user mirror configuration
-- **WordSenseModelDownloader**: ordered, verified model download (mirror, Hugging Face, GitHub LFS)
-- **WordSenseBuilder**: non-shipped tool (`tools/WordSense.Builder`) that trains the weights, imports the
-  public-domain Moby part-of-speech list into the derived lexicon and builds the table from both
+- **WordSenseBuilder**: non-shipped tool (`tools/WordSense.Builder`) that trains one weights table per model, imports
+  the public-domain Moby part-of-speech list into the derived lexicon and builds the lexicon table
 
-There are no subsystems. The classifier collaborates with the tokenizer, encoder and table; the
-downloader uses the mirror configuration and the model catalog. The builder reuses the tokenizer,
-encoder, table and feature extraction so that training and inference share one code path.
+There are no subsystems. The classifier collaborates with the model abstraction and the table; it never sees a
+tokenizer, a model file or a download. The builder reuses the table, the weights table and the feature extraction so
+that training and inference share one code path, and opens the MiniLM model through the MiniLM package.
+
+A shared package for ONNX-based models (a `WordSense.Onnx` package) is intentionally not created yet. There is one
+model, so the ONNX session handling stays in the MiniLM package; the shared package is deferred until a second model
+exists. The model abstraction in this package is the seam that makes the later split possible without changing the
+classifier.
 
 ### Uniform data flow
 
@@ -36,36 +42,33 @@ There is one data model and one flow, with no separate "dictionary mode":
 
 ```text
 surface word -> lemma (form map / gated morphology; one resolver) -> lemma entry
-  one sense                         -> dictionary answer, no encoder
-  several senses, with weights      -> encode and choose: context answer
-  several senses, without weights   -> candidates only, no answer
+  one sense                         -> dictionary answer, no model
+  several senses, model + weights   -> embed and choose: context answer
+  several senses, no model          -> candidates only, no answer
   not resolved                      -> unknown
 ```
 
-A lemma entry is a list of senses (part of speech, optional pronunciation) plus optional weights. A dictionary word is
-an entry with one sense and no weights. The entry alone decides the action, and the encoder runs only when at least
-one word of the call resolves to an entry with weights. The dictionary comes from the Moby Part-of-Speech II list
-(Grady Ward, public domain), filtered and committed as `corpus/lexicon/lexicon.tsv`, and is embedded in the same table
-file as the trained weights.
+A lemma entry is a list of senses (part of speech, optional pronunciation). A dictionary word is an entry with one
+sense. A context lemma has at least two senses, and the weights table of a model has one set of weights for it. The
+entry alone decides the action, and the model runs only when at least one word of the call resolves to a context
+lemma and the classifier has a model. The dictionary comes from the Moby Part-of-Speech II list (Grady Ward, public
+domain), filtered and committed as `corpus/lexicon/lexicon.tsv`, and is embedded in the lexicon table. The weights
+are not part of the lexicon table, so adding a model never changes the lexicon.
 
 ## External Interfaces
 
-| Interface                              | Direction | Format                         | Constraints                    |
-|----------------------------------------|-----------|--------------------------------|--------------------------------|
-| `CreateAsync(options)`                 | In        | Async factory                  | Model available                |
-| `ClassifyAsync(words)`                 | In/Out    | Words to `WordAnalysis[]`      | Parallel to input, never null  |
-| `ClassifyAsync(text)`                  | In/Out    | `string` to list of tokens     | Tokens tile the input          |
-| `ContextLemmas`, `GetCandidates()`     | Out       | Lemmas, `WordDetails` list     | Unknown lemma: empty list      |
-| `EnsureModelAsync(options)`            | In/Out    | Async call                     | SHA-256 verified               |
-| `WordSenseModelLocation.FromDirectory` | In/Out    | Directory to location          | Missing or altered file throws |
-| `DownloadMirror`, `Options.Mirror`     | In        | Record / options               | Absolute http(s) URL           |
-| `WORDSENSE_MIRROR_*`                   | In        | Environment                    | Used if no option mirror       |
-| `MaxSequenceLength`                    | In        | Classifier option              | 8 to 512                       |
-| `AbstainMarginScale`                   | In        | Classifier option              | Not NaN, not negative          |
-| `UseLexicon`                           | In        | Classifier option              | Default true                   |
-| `IntraOpThreads`                       | In        | Classifier option              | Not negative                   |
-| `ModelDirectory`                       | In        | Classifier option              | Files verified, no download    |
-| `IWordSenseEncoder`                    | In        | Interface                      | Test substitutable             |
+| Interface                          | Direction | Format                         | Constraints                       |
+|------------------------------------|-----------|--------------------------------|-----------------------------------|
+| `WordSenseClassifier.Create()`     | In        | Factory                        | Lexicon only; needs no model      |
+| `WordSenseClassifier` constructor  | In        | Table, model, weights, options | Model and weights both or neither |
+| `ClassifyAsync(words)`             | In/Out    | Words to `WordAnalysis[]`      | Parallel to input, never null     |
+| `ClassifyAsync(text)`              | In/Out    | `string` to list of tokens     | Tokens tile the input             |
+| `ContextLemmas`, `GetCandidates()` | Out       | Lemmas, `WordDetails` list     | Unknown lemma: empty list         |
+| `IWordSenseModel`                  | In        | Interface                      | Test substitutable                |
+| `WordSenseWeightsTable.Read`       | In        | Weights table bytes            | Checksum and bounds verified      |
+| `WordSenseTable.LoadEmbedded`      | In        | Embedded lexicon resource      | Checksum and bounds verified      |
+| `AbstainMarginScale`               | In        | Classifier option              | Not NaN, not negative             |
+| `UseLexicon`                       | In        | Classifier option              | Default true                      |
 
 ### Documentation verification
 
@@ -73,47 +76,25 @@ The README and user-guide code samples carry markers, and the test
 `WordSense_Readme_SampleMarkers_AreAllChecked` fails if any marked sample is not checked. The compile-checked
 XML documentation examples are verified by `WordSense_XmlDocExamples_Compile` (linked from the quality
 requirements). The appendix document
-(`WordSense-Lib-Documentation`) is generated by the build from the same sources. Reproducibility of the table
-itself (`WordSense-Lib-Reproducible`) is a property of the table builder, described in its unit design.
-
-### Download sources and order
-
-`WordSenseModelDownloader` obtains each missing or invalid model file from the first source that
-delivers bytes with the pinned SHA-256 digest:
-
-1. **User mirror** when configured: `{mirrorBase}/all-MiniLM-L6-v2/{file}`. The programmatic
-   `WordSenseModelDownloaderOptions.Mirror` wins over the environment variables.
-2. **Hugging Face** `https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2/resolve/main/{file}`,
-   only for files whose pinned digest is the upstream file. The int8 ONNX model is quantized locally and
-   is **not** the upstream `model_qint8_*.onnx` (the upstream file has a different size and digest), so
-   only `vocab.txt` is requested from Hugging Face.
-3. **GitHub LFS** `https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/{file}`
-   for every file.
-
-A failed request, timeout, block or digest mismatch moves on to the next source; credentials are sent
-only to the mirror. If every source fails, `WordSenseModelDownloadException` lists each attempt.
+(`WordSense-Lib-Documentation`) is generated by the build from the same sources. Reproducibility of the tables
+themselves (`WordSense-Lib-Reproducible`) is a property of the table builder, described in its unit design.
 
 ## Error Handling
 
-- `WordSenseModelDownloadException`: `EnsureModelAsync` (and `CreateAsync` without a `ModelDirectory`) throws it
-  when every download source failed for a missing or invalid model file; the message lists each attempt.
-- `WordSenseModelMismatchException`: creating a classifier throws it when the table's model SHA-256 or embedding
-  dimension differs from the encoder's, so a table is never used with a model it was not trained for.
-- `WordSenseTableFormatException`: loading the embedded table throws it when the table (including its dictionary
-  section) is missing, truncated, corrupted (checksum mismatch) or otherwise malformed.
-- `FileNotFoundException` and `InvalidDataException`: a supplied `ModelDirectory` throws the former when a model
-  file is missing and the latter when a file does not match its pinned SHA-256; no download is attempted.
-- Invalid arguments (for example a null word list or an invalid mirror URL) throw `ArgumentException` or its
-  derived types. Words that are not known, dictionary words with several parts of speech (which no trained classifier
-  decides) and words below the abstention margin are not errors; they yield an analysis without details, and `Basis`,
-  `Abstained`, `Candidates` and a zero margin tell the cases apart.
+- `WordSenseModelMismatchException`: creating a classifier throws it when the weights table was trained for another
+  model (model id, model SHA-256 or embedding dimension) or for another lexicon (lexicon SHA-256, the context
+  lemmas or their sense counts), so a weights table is never used with a model or lexicon it was not trained for.
+- `WordSenseTableFormatException`: loading the embedded lexicon, or reading a lexicon or weights table, throws it
+  when the data is missing, truncated, corrupted (checksum mismatch) or otherwise malformed.
+- Invalid arguments (for example a null word list, a model without weights or weights without a model) throw
+  `ArgumentException` or its derived types. Words that are not known, ambiguous words that the classifier has no
+  model for and words below the abstention margin are not errors; they yield an analysis without details, and
+  `Basis`, `Abstained`, `Candidates` and a zero margin tell the cases apart.
 
 ## Dependencies
 
-The runtime dependency is Microsoft.ML.OnnxRuntime (see _OTS Integration Design_ and the
-_ONNX Runtime_ design). The model file `model_int8.onnx` is not part of the package; it is
-downloaded on first use, or supplied through `WordSenseClassifierOptions.ModelDirectory`. The
-following OTS items are used for building and verifying this system (not consumed at runtime):
+The core package has no runtime dependency; it does not use ONNX Runtime. The following OTS items are used for
+building and verifying this system (not consumed at runtime):
 
 - **ApiMark**, **BuildMark**, **FileAssert**, **Pandoc**, **ReqStream**, **ReviewMark**, **SarifMark**,
   **SonarMark**, **SysML2Tools**, **VersionMark**, **WeasyPrint** and **xUnit**; see each item's
@@ -122,51 +103,52 @@ following OTS items are used for building and verifying this system (not consume
 ## Risk Control Measures
 
 N/A - WordSense is a text-analysis library with no safety-critical functionality requiring risk
-control measures (IEC 62304 §5.3.3). Model integrity is protected by pinned SHA-256 digests and by
-the table's trailing digest.
+control measures (IEC 62304 §5.3.3). Table integrity is protected by each table's trailing digest, and a weights
+table is bound to its model and lexicon by digests.
 
 ## Data Flow
 
 **Creation path:**
 
-1. `CreateAsync` resolves the model directory: `ModelDirectory` if set, otherwise
-   `WordSenseModelDownloader.EnsureModelAsync` (verifies existing files, downloads the rest).
-2. The vocabulary is loaded into the tokenizer, the ONNX session is created, and the embedded table
-   is loaded; the table's model digest must equal the encoder's digest.
+1. `WordSenseClassifier.Create()` loads the embedded lexicon table and builds a classifier without a model. The
+   constructor with a model also takes the weights table.
+2. When a model is given, the model checks that the weights belong to it (model id, model SHA-256, dimension) and the
+   weights table checks that it belongs to the lexicon (lexicon SHA-256, context lemmas, sense counts); either check
+   failing throws `WordSenseModelMismatchException`.
 
 **Classification path:**
 
 1. The text is split into tiles (word, whitespace run or single character).
 2. Every word is resolved to a lemma entry by the table's one resolver (form map, exact lemma, possessive of a
-   trained lemma, gated morphology). With `UseLexicon` set to false, entries without weights are invisible, so every
-   word that is not a trained lemma or one of its forms is unknown (basis `None`) and, when no word has a classifier,
-   nothing is encoded. Entries without weights are subject to the case policy: lower case, the first
+   context lemma, gated morphology). With `UseLexicon` set to false, dictionary entries are invisible, so every
+   word that is not a context lemma or one of its forms is unknown (basis `None`) and nothing is embedded unless a
+   context word is present. Dictionary entries are subject to the case policy: lower case, the first
    word, a word after `. ! ? :` or an opening quote or bracket, or exactly `I`; a capitalized word elsewhere is
    treated as unknown.
-3. A word whose entry has one sense is answered from the dictionary (basis `Dictionary`), a word whose entry has
-   several senses and no weights is a dictionary word with several parts of speech: it gets its candidates and no
-   answer (basis `Dictionary`, `Abstained` true), and an unresolved word is
-   unknown (basis `None`). Only words whose entry has weights become targets; if there are none, no tokenization and no
-   inference is done.
-4. For the targets the tokenizer produces word pieces with offsets; the encoder runs once for the sentence when it fits
-   one window, and once per target window for longer texts.
-5. For each target the hidden states of its word pieces are pooled, centered with the table mean and
-   normalized; the lemma's linear model scores the senses. The best sense gives the part of speech and, for a
-   heteronym, the pronunciation; the margin, the runner-up and its margin are reported with it (basis `Context`). A
-   margin below the lemma's abstention threshold yields an analysis without details and with `Abstained` set. A
-   known weighted word with no word pieces, and a word whose feature vector has zero norm, yield the unknown
-   analysis: no details, a zero margin and `Abstained` unset.
+3. A word whose entry has one sense is answered from the dictionary (basis `Dictionary`). A context lemma without a
+   model is a word with several parts of speech that nothing can decide: it gets its candidates and no answer (basis
+   `Dictionary`, `Abstained` true). An unresolved word is unknown (basis `None`). Only context words, and only when
+   the classifier has a model, become targets; if there are none, the model is not called.
+4. The model embeds the target words in their context and returns one vector per target (null when a target has no
+   embedding).
+5. For each target the vector is centered with the weights table mean and normalized; the lemma's linear model scores
+   the senses. The best sense gives the part of speech and, for a heteronym, the pronunciation; the margin, the
+   runner-up and its margin are reported with it (basis `Context`). A margin below the lemma's abstention threshold
+   yields an analysis without details and with `Abstained` set. A context word without a vector, and a word whose
+   feature vector has zero norm, yield the unknown analysis: no details, a zero margin and `Abstained` unset.
 
 ## Design Constraints
 
-- **Determinism**: same text and model give the same result; the table is built reproducibly from the committed
-  corpus and lexicon.
+- **Determinism**: same text, model and weights give the same result; the tables are built reproducibly from the
+  committed corpus and lexicon.
 - **Licensing of data**: the dictionary derives from the public-domain Moby Part-of-Speech II list; the Universal
   Dependencies treebank used to evaluate it is not shipped, and no ASD-STE100 data is used or embedded.
-- **Concurrency**: the classifier is thread-safe when its encoder is; the table and tokenizer are immutable.
-- **Integrity**: no model file is used unless its SHA-256 matches the pinned digest.
-- **Portability**: the assembly targets net8.0, net9.0 and net10.0; native code comes only from
-  ONNX Runtime.
+- **Concurrency**: the classifier is thread-safe when its model is; the tables are immutable.
+- **Integrity**: a weights table is used only with the model and lexicon whose digests it names.
+- **Independence**: the package has no runtime dependency and works without any model file.
+- **Portability**: the assembly targets net8.0, net9.0 and net10.0; it contains no native code.
+- **Accuracy**: moving from one package to two does not change behavior; the holdout results stay at 96.91 % best
+  sense, 97.20 % meaning and 98.73 % accuracy at 90.74 % coverage.
 - **Quality**: zero warnings, requirements traceable to tests.
 
 ### Platform Support
@@ -181,9 +163,6 @@ The library is supported on Windows, Linux and macOS.
 
 ### Integration Patterns
 
-- **NuGet Packaging**: one package, `DemaConsulting.WordSense`.
-- **Git LFS**: every model file in `model/` (except its README and SHA256SUMS) is stored
-  with Git LFS and served through the GitHub
-  media endpoint.
+- **NuGet Packaging**: the package `DemaConsulting.WordSense`; the model packages build on it.
 - **CI/CD Integration**: automated build, test and quality validation.
 - **Review Management**: file review with ReviewMark review-sets.

@@ -7,12 +7,12 @@ returns a `WordSenseModelLocation`. `WordSenseModelCatalog` pins the file names 
 
 ## Data Model
 
-- Store: `{LocalApplicationData}/DemaConsulting/WordSense/models/all-MiniLM-L6-v2-int8-{sha8}` (or
-  `StoreRoot`).
+- Store: `{LocalApplicationData}/DemaConsulting/WordSense/models/{model-id}` (or `StoreRoot`), where the model id is
+  the catalog constant `all-MiniLM-L6-v2-int8`.
 - Files: `model_int8.onnx` (22,972,370 bytes) and `vocab.txt`, each with a pinned digest and a flag
-  telling whether Hugging Face may serve it. The catalog pins exactly these two files.
-  Every file under `model/` is a Git LFS object; the GitHub source uses the media endpoint and the digests are of
-  the real content, never of the LFS pointer.
+  telling whether Hugging Face may serve it. The catalog pins exactly these two files under the model id.
+  Every file under `model/{model-id}/` is a Git LFS object (except its README and SHA256SUMS); the GitHub source uses
+  the media endpoint and the digests are of the real content, never of the LFS pointer.
 - `WordSenseModelDownloaderOptions`: `Mirror`, `GetEnvironmentVariable`, `HuggingFaceBaseUri`,
   `GitHubLfsBaseUri`, `GitHubLfsRef`, `StoreRoot`, `HttpClient`, `RequestTimeout`, `Progress`. Base
   URIs are overridable so tests use a local server.
@@ -23,9 +23,9 @@ Source URIs are built from the base of each source and the escaped file name (`{
 
 | Source | URI layout |
 | :----- | :--------- |
-| Mirror | `{mirror base}/{ModelId}/{file}`, where `ModelId` is the catalog constant `all-MiniLM-L6-v2` |
+| Mirror | `{mirror base}/{model-id}/{file}`, where the model id is the catalog constant `all-MiniLM-L6-v2-int8` |
 | Hugging Face | `{HuggingFaceBaseUri}/{file}` |
-| GitHub LFS | `{GitHubLfsBaseUri}/{GitHubLfsRef}/model/{file}` (`GitHubLfsRef` defaults to `main`) |
+| GitHub LFS | `{GitHubLfsBaseUri}/{GitHubLfsRef}/model/{model-id}/{file}` (`GitHubLfsRef` defaults to `main`) |
 
 For each file: if it exists with the pinned digest, skip it (no request). Otherwise build the source
 list in order (mirror from options or environment; Hugging Face if the file allows it and the base is
@@ -77,6 +77,6 @@ equals the live upstream file is not asserted.
 
 ## Interactions
 
-Uses `DownloadMirror`. It is called by `WordSenseClassifier.CreateAsync`, which also calls
+Uses `DownloadMirror`. It is called by `MiniLMWordSense.CreateClassifierAsync`, which also calls
 `WordSenseModelLocation.FromDirectory` for a user-supplied directory. `WordSenseModelCatalog.HashFile` is
-shared with `OnnxWordSenseEncoder`.
+shared with `MiniLMWordSenseModel`.
