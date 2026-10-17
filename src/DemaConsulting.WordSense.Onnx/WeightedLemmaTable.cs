@@ -7,8 +7,10 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     The trained lemmas of a model, keyed by lemma and each matched to the word lexicon.
 /// </summary>
 /// <remarks>
-///     A lemma is matched all or nothing: its weights are kept only when the lexicon holds exactly the same senses
-///     (same lemma, part of speech and meaning, in the same order) for the lemma. Otherwise the whole lemma is dropped
+///     A lemma is matched all or nothing: its weights are kept only when the trained senses (same lemma, part of speech
+///     and meaning, in the same order) are the first senses the lexicon holds for the lemma; the lexicon may append
+///     senses after them (parts of speech the dictionary lists that the model was not trained on), and the model then
+///     chooses among the trained senses only. Otherwise the whole lemma is dropped
 ///     and counted in <see cref="DroppedLemmaNames"/>, so a stale or mismatched weights blob never gives a wrong answer.
 ///     The tests assert that the shipped blobs drop nothing.
 /// </remarks>
@@ -97,19 +99,20 @@ internal sealed class WeightedLemmaTable
     public WeightedLemma? Find(string lemma) => Lemmas.GetValueOrDefault(lemma);
 
     /// <summary>
-    ///     Checks whether the senses of a weights entry equal the senses in the word lexicon.
+    ///     Checks whether the senses of a weights entry are the first senses of the word lexicon entry.
     /// </summary>
     /// <param name="entry">The weights entry.</param>
     /// <param name="details">The senses from the word lexicon.</param>
-    /// <returns>True when the senses are identical in content and order.</returns>
+    /// <returns>True when the trained senses are identical in content and order to the first lexicon senses.</returns>
     private static bool Matches(WeightedLemma entry, WordDetails[] details)
     {
-        if (details.Length != entry.Senses.Count || details.Length != entry.Weights.SenseCount)
+        if (details.Length < entry.Senses.Count || entry.Senses.Count != entry.Weights.SenseCount)
         {
             return false;
         }
 
-        for (var i = 0; i < details.Length; i++)
+        // The trained senses are a prefix of the lexicon senses; the lexicon may append senses the model has no weights for
+        for (var i = 0; i < entry.Senses.Count; i++)
         {
             if (details[i].Lemma != entry.Senses[i].Lemma ||
                 details[i].PartOfSpeech != entry.Senses[i].PartOfSpeech ||

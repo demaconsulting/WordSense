@@ -21,6 +21,12 @@ All scenarios below pass on every platform and target framework of the CI matrix
   holds one.
 - **Keys are lower case and include inflections**: every key equals its lower-cased form, and inflected forms such as
   `records` and `recorded` are keys whose entries carry the lemma `record`. No morphology runs at run time.
+- **Closed-class words are present** (`ClosedClassWord_HasItsPartOfSpeechAlone`, `SoAndWill_ListTheirParts`,
+  `EverySense_SharesTheLemma`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a conjunction-only and
+  an interjection-only word are present, `so` and `will` list all their parts of speech, and every sense of a word has
+  the lemma of its first sense. The determiner sense is accepted by the blob reader (`DeterminerSense_IsAccepted`).
+- **Complete dictionary**: the builder test `Words_Committed_HoldsEveryDictionaryWord` shows that no dictionary word
+  is absent from `Words`.
 - **Unknown or mixed-case key is absent**: a made-up word and an upper-case spelling of a known word are not found,
   because lookup is ordinal on lower-case keys.
 - **Lazy loading**: the lexicon is not loaded until the first access of `Words`, and later accesses return the same

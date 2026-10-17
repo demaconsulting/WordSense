@@ -34,14 +34,17 @@ sections:
               - id: WordSense-Onnx-LemmaWeights-Match
                 title: >-
                   The weighted lemma table shall match the weights of a lemma to the word lexicon by lemma, part of
-                  speech and meaning, and shall keep them only when the lexicon has exactly the same senses; otherwise
-                  the lemma shall be dropped as a whole.
+                  speech and meaning, and shall keep them only when the trained senses are the first senses of the
+                  lexicon entry, with the same lemma, part of speech and meaning; otherwise the lemma shall be dropped
+                  as a whole.
                 tags: [unit]
                 justification: |
                   Weights score senses by position in the trained classes; a lexicon that disagrees would assign scores
-                  to the wrong senses, so the lemma must have no weights instead.
+                  to the wrong senses, so the lemma must have no weights instead. The lexicon may hold more parts of
+                  speech than were trained, and those further senses are never scored.
                 tests:
                   - WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma
+                  - WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma
                   - WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma
                   - WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma
                   - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
@@ -67,8 +70,8 @@ sections:
                   lemma is dropped.
                 tags: [unit]
                 justification: |
-                  A dropped lemma silently turns every ambiguous use of its words into an abstention; the shipped
-                  lexicon and weights must always have been built together.
+                  A dropped lemma silently takes the trained decision away from every ambiguous use of its words; the
+                  shipped lexicon and weights must always have been built together.
                 tests:
                   - EmbeddedWeights_MiniLM_DropsNoLemma
                   - EmbeddedWeights_BertBaseCased_DropsNoLemma

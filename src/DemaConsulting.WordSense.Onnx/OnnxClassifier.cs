@@ -17,7 +17,9 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <c>clamp(0.5 + 0.5 * (m - a) / max(a, 0.5), 0, 1)</c>, where <c>m</c> is the margin between the best and the
 ///     second-best score and <c>a</c> the lemma's abstain margin. It grows monotonically with the margin and is
 ///     exactly 0.5 where the lemma's own abstain rule would switch. A word with several entries but missing or
-///     mismatched weights is <c>(word, null, 0)</c>.
+///     mismatched weights is answered with its first entry and the confidence <c>1/n</c> for <c>n</c> entries; the
+///     first entry is the most frequent sense of the dictionary. A lemma whose lexicon entry has more senses than the
+///     weights were trained for is scored over the trained senses only.
 ///     </para>
 /// </remarks>
 internal sealed class OnnxClassifier
@@ -133,10 +135,11 @@ internal sealed class OnnxClassifier
             return new WordSense(word, senses[0], 1);
         }
 
-        // Several senses need intact weights for the lemma; without them the word stays unresolved
+        // Several senses without intact weights for the lemma: the first sense (the most frequent one in the
+        // dictionary order) with a confidence of one over the number of senses
         if (table?.Find(senses[0].Lemma) is not { } weighted)
         {
-            return unknown;
+            return new WordSense(word, senses[0], 1.0 / senses.Length);
         }
 
         lemma = weighted;
@@ -169,10 +172,11 @@ internal sealed class OnnxClassifier
         var scores = new float[weights.SenseCount];
         weights.Scores(feature, scores);
 
-        // Rank only the senses the word itself can have; the weights score the senses of the lemma in lexicon order
+        // Rank only the senses the word itself can have and the weights were trained for; the weights score the first
+        // senses of the lemma in lexicon order, and the lexicon may hold further senses after them
         var all = WordLexicon.Words[lemma.Lemma];
         var allowed = new List<int>(candidates.Length);
-        for (var i = 0; i < all.Length; i++)
+        for (var i = 0; i < Math.Min(all.Length, weights.SenseCount); i++)
         {
             if (Array.IndexOf(candidates, all[i]) >= 0)
             {
@@ -185,7 +189,7 @@ internal sealed class OnnxClassifier
             return (null, 0);
         }
 
-        var (best, margin) = allowed.Count == all.Length ? LemmaWeights.Rank(scores) : RankSubset(scores, allowed);
+        var (best, margin) = allowed.Count == weights.SenseCount ? LemmaWeights.Rank(scores) : RankSubset(scores, allowed);
         return (all[best], LemmaWeights.Confidence(margin, weights.AbstainMargin));
     }
 

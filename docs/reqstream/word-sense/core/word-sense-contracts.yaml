@@ -81,15 +81,19 @@ sections:
               - id: WordSense-Core-WordSenseContracts-Details
                 title: >-
                   WordDetails shall describe one sense by lemma, part of speech, optional meaning and optional
-                  respelling, and PartOfSpeech shall name exactly eight parts of speech.
+                  respelling, and PartOfSpeech shall name nine parts of speech: the eight traditional ones and
+                  determiner.
                 tags: [unit]
                 justification: |
                   Callers (for example a text-to-speech front end) need the part of speech first, then the meaning and
-                  respelling that fix the pronunciation of a heteronym.
+                  respelling that fix the pronunciation of a heteronym. The articles and possessives (the, a, his) are
+                  among the most frequent words of English and fit none of the eight traditional values; a modal verb
+                  such as will stays a verb.
                 tests:
                   - WordSenseContracts_WordDetails_Construct_ExposesMembers
                   - WordSenseContracts_WordDetails_SameValues_AreEqual
-                  - WordSenseContracts_PartOfSpeech_Values_AreTheEightClasses
+                  - WordSenseContracts_PartOfSpeech_Values_AreTheNineClasses
+                  - WordsBlob_Read_DeterminerSense_IsAccepted
 
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.

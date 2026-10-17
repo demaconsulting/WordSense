@@ -12,14 +12,14 @@ internal static class LexiconSource
     /// <summary>
     ///     The letters of the parts of speech, in the order of <see cref="PartOfSpeech"/>.
     /// </summary>
-    public const string Letters = "NRVJBPCI";
+    public const string Letters = "NRVJBPCID";
 
     /// <summary>
     ///     Gets the part-of-speech mask bit of a part of speech.
     /// </summary>
     /// <param name="pos">The part of speech.</param>
     /// <returns>The bit.</returns>
-    public static byte Bit(PartOfSpeech pos) => (byte)(1 << (int)pos);
+    public static ushort Bit(PartOfSpeech pos) => (ushort)(1 << (int)pos);
 
     /// <summary>
     ///     The name of the lexicon file.
@@ -36,7 +36,7 @@ internal static class LexiconSource
     /// </summary>
     /// <param name="mask">The mask.</param>
     /// <returns>The letters.</returns>
-    public static string ToLetters(byte mask)
+    public static string ToLetters(ushort mask)
     {
         var text = new StringBuilder(Letters.Length);
         for (var i = 0; i < Letters.Length; i++)
@@ -75,38 +75,37 @@ internal static class LexiconSource
     /// <summary>
     ///     Converts part-of-speech letters to a mask.
     /// </summary>
-    /// <param name="letters">The letters, in the order of <see cref="PartOfSpeech"/> and without repeats.</param>
+    /// <param name="letters">The letters, in any order and without repeats.</param>
     /// <param name="context">A description of the place of the letters, for the error message.</param>
     /// <returns>The mask.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the letters are empty, unknown, repeated or out of order.</exception>
-    public static byte ToMask(string letters, string context)
+    /// <exception cref="InvalidDataException">Thrown when the letters are empty, unknown or repeated.</exception>
+    public static ushort ToMask(string letters, string context)
     {
         var mask = 0;
-        var last = -1;
         foreach (var letter in letters)
         {
             var index = Letters.IndexOf(letter, StringComparison.Ordinal);
-            if (index <= last)
+            if (index < 0 || (mask & (1 << index)) != 0)
             {
-                throw new InvalidDataException($"{context}: '{letters}' is not a set of part-of-speech letters from '{Letters}' in order.");
+                throw new InvalidDataException($"{context}: '{letters}' is not a set of distinct part-of-speech letters from '{Letters}'.");
             }
 
             mask |= 1 << index;
-            last = index;
         }
 
-        return mask == 0 ? throw new InvalidDataException($"{context}: the part-of-speech set is empty.") : (byte)mask;
+        return mask == 0 ? throw new InvalidDataException($"{context}: the part-of-speech set is empty.") : (ushort)mask;
     }
 
     /// <summary>
-    ///     Reads a lexicon TSV: strictly ascending lower-case words with letter sets.
+    ///     Reads a lexicon TSV: strictly ascending lower-case words with letter sets. The order of the letters of a word is
+    ///     the order of its senses (the order of the source dictionary, most frequent first).
     /// </summary>
     /// <param name="path">The file.</param>
-    /// <returns>The words with their masks, in file order.</returns>
+    /// <returns>The words with their masks and their letters in sense order, in file order.</returns>
     /// <exception cref="InvalidDataException">Thrown when a line is malformed or out of order.</exception>
-    public static List<(string Word, byte Mask)> ReadWords(string path)
+    public static List<(string Word, ushort Mask, string Letters)> ReadWords(string path)
     {
-        var words = new List<(string Word, byte Mask)>();
+        var words = new List<(string Word, ushort Mask, string Letters)>();
         var number = 0;
         foreach (var raw in File.ReadAllText(path, Encoding.UTF8).Split('\n'))
         {
@@ -129,7 +128,7 @@ internal static class LexiconSource
                 throw new InvalidDataException($"{where}: the words are not unique and in ordinal order.");
             }
 
-            words.Add((columns[0], ToMask(columns[1], where)));
+            words.Add((columns[0], ToMask(columns[1], where), columns[1]));
         }
 
         return words;

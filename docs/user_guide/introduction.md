@@ -41,17 +41,19 @@ test suite; the samples in this guide are reviewed with the guide. They assume `
 - **Sense**: one possible reading of a word, a `WordDetails`: lemma, part of speech, meaning and respelling.
 - **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
   "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
-- **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has eight values: noun, pronoun,
-  verb, adjective, adverb, preposition, conjunction and interjection.
+- **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has nine values: noun, pronoun,
+  verb, adjective, adverb, preposition, conjunction, interjection and determiner (`the`, `a`, `an`, `his`). A modal
+  verb such as `will` is a verb.
 - **Meaning**: a short id, for example `bend` or `weapon` for "bow", that names which pronunciation of a heteronym is
   meant; it is `null` when the lemma is not a heteronym.
 - **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
   speech engine and not a phonetic transcription.
-- **Confidence**: a number from 0 to 1 in each result. It is 1 for a word with one sense and 0 for an unknown word
-  or an abstention. For a word decided by an encoder model it grows with the model's score margin; for the Basic
-  model it is the relative probability of the chosen sense. It is not a calibrated probability.
-- **Abstain**: an encoder model gives no sense for a known word that has several senses (for example when it has no
-  weights for the lemma): `Details` is `null` and `Confidence` is 0. The Basic model never abstains.
+- **Confidence**: a number from 0 to 1 in each result. It is 1 for a word with one sense and 0 for an unknown word.
+  For a word decided by an encoder model it grows with the model's score margin; for the Basic model it is the
+  relative probability of the chosen sense; for a word with several senses that the encoder has no weights for it is
+  one over the number of senses. It is not a calibrated probability.
+- **Abstain**: an encoder model gives no sense for a word only when the encoder produced no vector for it: `Details`
+  is `null` and `Confidence` is 0. The Basic model never abstains.
 - **Mirror**: an HTTP(S) location, usually inside your network, that serves the model files.
 - **Model directory**: a folder that holds the exact model files, used instead of a download.
 
@@ -150,7 +152,9 @@ Every word follows the same path:
 2. A word with one sense is answered with that sense and `Confidence` 1, by every model, without running anything.
 3. A word with several senses is decided from its context by the model: the encoder models score the senses of the
    word from the sentence and the Basic model tags the sentence and weighs the context words. Every model answers a
-   word with several senses; the confidence says how sure it is.
+   word with several senses; the confidence says how sure it is. An encoder model that was not trained for the word
+   (the lemma has no weights) answers its first dictionary sense, the most frequent one, with `Confidence` one over the
+   number of senses.
 
 An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
 costs no model call. Whatever is in the word table is classified, whatever its capitalization or a trailing
@@ -175,16 +179,16 @@ The
 speech and pronunciation meanings.
 
 `Details` is `null` in exactly two cases, and `Confidence` is 0 in both. First, the word is unknown: it has no entry in
-`WordLexicon.Words` (a determiner, a number, punctuation, most proper nouns, a misspelling, a contraction such as
-`don't`); every model does this. Second, an encoder model cannot score a word that has several senses because its lemma
-has no intact trained weights, or the encoder produced no vector for the word. The weights shipped in the MiniLM and
-BertBaseCased packages cover every lemma (a test asserts that none is dropped), so in practice only unknown words are
-`null`. Every other word gets a sense: a word with one sense gets it with `Confidence` 1, and a word with several
-senses gets its best sense even when the confidence is low, so a `null` never means "low confidence". The Basic model
-never leaves `Details` null for a word that is in the table.
+`WordLexicon.Words` (a number, punctuation, most proper nouns, a misspelling, a contraction such as `don't`); every
+model does this. Second, an encoder model produced no vector for a word that has trained weights. Every dictionary
+word is in the table, the determiners, conjunctions and interjections among them, whatever the accuracy of a model:
+the accuracy only decides which sense a model chooses. Every other word gets a sense: a word with one sense gets it
+with `Confidence` 1, and a word with several senses gets its best sense even when the confidence is low, so a `null`
+never means "low confidence". The Basic model never leaves `Details` null for a word that is in the table.
 
 ```csharp
-// "the" and "." are unknown (null, 0); "record" has several senses: best sense, model-specific confidence
+// "the" is a determiner (Determiner, 1) and "." is unknown (null, 0); "record" has several senses: best sense,
+// model-specific confidence
 WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ```
 
@@ -227,7 +231,8 @@ token is known; "null" means `Details` is null and the confidence is 0):
 | Token | Result |
 | --- | --- |
 | `record`, `Record`, `RECORD`, `records` | Found (case is ignored by the lookup): best sense from context with a confidence |
-| `the`, `a`, a misspelling, a name not in the lexicon | Unknown: null, 0 (a name that is in the lexicon, such as `Smith`, is found) |
+| `the`, `The`, `a`, `an`, `his` | Found (case is ignored): `Determiner`, confidence 1 |
+| a misspelling, a name not in the lexicon | Unknown: null, 0 (a name that is in the lexicon, such as `Smith`, is found) |
 | `,` `"` `-` an em dash `;` `)` | Unknown: null, 0; for Basic only `.`, `!` and `?` also end a sentence segment |
 | `race.` (period attached) | Unknown: null, 0, and Basic sees no sentence end; always split the period off |
 | `don't` (also with U+2019), `it's`, `dog's`, `didn't` | Unknown: null, 0 (no contraction or possessive keys); neighbors are classified normally |
@@ -394,8 +399,8 @@ margin: it is exactly 0.5 where the model would, by that margin, have declined t
 abstain rule would not have answered and 0.5 is the lowest meaningful value, not a useful filter. The recommended
 starting threshold is **0.8 for each of the three models**, read in that model's own scale (see the table below).
 `Details` is still the best candidate, so you can use it when you want an answer anyway. A word with several senses
-but no weights for its lemma is `null` with confidence 0
-(not the case for the shipped packages).
+but no weights for its lemma gets its first dictionary sense (the most frequent one) with a confidence of one over the
+number of senses: a guess that stays below any useful threshold.
 
 The test for "no sense chosen" is `Details is null`, not `Confidence == 0` (only a null `Details` means unknown or
 unscored; an ambiguous word with non-null `Details` can have any confidence from 0 to 1). In code under a `DemaConsulting.*`
@@ -589,10 +594,11 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 # Limitations
 
 - **Words are classified by what the table knows.** A word that is not in `WordLexicon.Words` is unknown, and so are
-  determiners, numbers and most proper nouns. There is no morphology at use time and no capitalization or possessive
+  numbers and most proper nouns. There is no morphology at use time and no capitalization or possessive
   heuristic for looking a word up: a form that is not in the table is unknown.
 - **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
-  appendix); a multi-sense word without weights is `null` with confidence 0. Basic decides by part of speech only.
+  appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
+  senses. Basic decides by part of speech only, and it can tag an auxiliary such as `will` as a noun.
 - **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Meaning` or `Respelling`, and the
   library has no phonetic data of its own: the `Respelling` is a plain hint, and the consumer maps (`Lemma`,
   `Meaning`) to its own pronunciation.
@@ -632,6 +638,7 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 
 | Command | What it does |
 | ------- | ------------ |
+| `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
 | `words` | Builds the word table (`words.bin`) of the core package, including the materialized inflections |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text |
@@ -713,8 +720,7 @@ with plain http for a host that is not loopback.
 
 ## A Word Returns Nothing
 
-`Details` is `null` for a word that is unknown, or for an encoder model that has several senses but no weights for the
-lemma (not the case for the shipped packages). Check
+`Details` is `null` for a word that is unknown. Check
 `WordLexicon.Words.ContainsKey(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table; a
 contraction such as `don't` or a hyphenated word kept as one token is also unknown. When it is `true`, the word has an
 answer from every shipped model, with a low confidence if the model is unsure.

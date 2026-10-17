@@ -10,14 +10,18 @@ sections:
             requirements:
               - id: WordSense-Onnx-OnnxClassifier-Lookup
                 title: >-
-                  OnnxClassifier shall answer a word with no lexicon entry with no details and confidence 0, and a
-                  word with exactly one sense with that sense and confidence 1, without running the encoder.
+                  OnnxClassifier shall look a word up without regard to its case, answer a word with no lexicon entry
+                  with no details and confidence 0, and answer a word with exactly one sense (a determiner such as
+                  the, for example) with that sense and confidence 1, without running the encoder.
                 tags: [unit]
                 justification: |
-                  Words that need no context must cost no inference and must be answered identically in every model.
+                  Words that need no context must cost no inference and must be answered identically in every model,
+                  whatever their capitalization.
                 tests:
                   - OnnxClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
                   - OnnxClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+                  - OnnxClassifier_ClassifyAsync_CapitalizedWord_ResolvesLikeLowerCase
+                  - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
 
               - id: WordSense-Onnx-OnnxClassifier-Encode
                 title: >-
@@ -66,13 +70,26 @@ sections:
 
               - id: WordSense-Onnx-OnnxClassifier-MissingWeights
                 title: >-
-                  OnnxClassifier shall answer a word with several senses whose lemma has missing or mismatched
-                  weights with no details and confidence 0.
+                  OnnxClassifier shall answer a word with several senses whose lemma has no usable trained weights with
+                  its first lexicon sense and a confidence of one over the number of its senses, and shall rank only
+                  the trained senses of a lemma that the lexicon extends with further parts of speech.
                 tags: [unit]
                 justification: |
-                  Without trained weights the model has no evidence, and a guess would be silently wrong.
+                  A word must never vanish because a model was not trained for it: the first lexicon sense is the most
+                  frequent part of speech, and the low confidence tells the caller that the answer is a guess.
                 tests:
-                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_Abstains
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense
+                  - OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked
+
+              - id: WordSense-Onnx-OnnxClassifier-NoVector
+                title: >-
+                  OnnxClassifier shall answer a word that has trained weights but no usable encoder vector with no
+                  details and confidence 0.
+                tags: [unit]
+                justification: |
+                  Without evidence for a word that a trained classifier should decide, a guess would look like a
+                  trained answer; the caller must be able to see that no decision was made.
+                tests:
                   - OnnxClassifier_ClassifyAsync_DimensionMismatch_Abstains
 
               - id: WordSense-Onnx-OnnxClassifier-Validation

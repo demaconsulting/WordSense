@@ -84,19 +84,19 @@ foreach (var result in results)
 
 <!-- output:readme -->
 ```text
-The       unknown      0.00
+The       Determiner   1.00
 hunter    Noun         1.00
 fired     Verb         1.00
-an        unknown      0.00
+an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
-his       unknown      0.00
+his       Determiner   1.00
 bow       Noun         1.00  boh
-so        unknown      0.00
+so        Adverb       0.17
 I         Pronoun      1.00
-will      unknown      0.00
+will      Verb         0.50
 record    Verb         1.00  rih-KORD
-a         unknown      0.00
+a         Determiner   1.00
 record    Noun         1.00  REK-urd
 ```
 
@@ -111,10 +111,11 @@ using DemaConsulting.WordSense.Basic;
 using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 
-var words = "They record the record".Split(' ');
+var words = "They said so and the hunter fired an arrow from his bow at a deer".Split(' ');
 var results = await model.ClassifyAsync(words);
 
-// A word that is not in the dictionary has no details and a confidence of 0
+// Every word of the dictionary has details, the determiners among them;
+// a word that is not in it has none and a confidence of 0
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
@@ -125,19 +126,32 @@ foreach (var result in results)
 <!-- output:basic -->
 ```text
 They      Pronoun      1.00
-record    Verb         0.99
-the       unknown      0.00
-record    Noun         1.00
+said      Verb         1.00
+so        Adverb       0.97
+and       Conjunction  1.00
+the       Determiner   1.00
+hunter    Noun         1.00
+fired     Verb         1.00
+an        Determiner   1.00
+arrow     Noun         1.00
+from      Preposition  1.00
+his       Determiner   1.00
+bow       Noun         0.78
+at        Preposition  1.00
+a         Determiner   1.00
+deer      Noun         1.00
 ```
 
-A word that is not in the dictionary (`will` and `the` above, punctuation, a contraction such as `don't`) has no details
-and a confidence of 0. A word with one meaning is answered with confidence 1. A word with several meanings is resolved
-from its sentence by the model and always gets its best sense, even when the confidence is low; `Details` is `null` only
-for an unknown word (or, for an encoder model, a multi-sense word without trained weights, which does not occur in the
-shipped packages). Its confidence is defined by the model package: the `Basic` model reports the probability of its
-answer among the senses of the word, the ONNX models derive it from the margin of the trained classifier (0.5 is the
-abstain point), so a confidence threshold must not be reused across models. The encoder runs only for a
-sentence that has a word that needs it.
+Every word of the dictionary has details, the determiners (`the`, `a`, `an`, `his`) and the conjunctions and
+interjections among them; a word that is not in the dictionary (a made-up word, a number, punctuation, a contraction
+such as `don't`) has no details and a confidence of 0. A word with one meaning is answered with confidence 1. A word
+with several meanings is resolved from its sentence by the model and always gets its best sense, even when the
+confidence is low; `Details` is `null` only for an unknown word (or, for an encoder model, a word whose encoder gave no
+vector). A multi-sense word that the encoder was not trained for (`so` and `will` in the MiniLM sample above) gets its
+first dictionary sense with a confidence of one over its number of senses. Its confidence is defined by the model
+package: the `Basic` model reports the probability of its answer among the senses of the word, the ONNX models derive
+it from the margin of the trained classifier (0.5 is the abstain point), so a confidence threshold must not be reused
+across models. The encoder runs only for a sentence that has a word that needs it.
 
 Tokenize the text yourself: punctuation is a token of its own, a contraction (`don't`) or hyphenated word stays one
 token, and one sentence per call is recommended (Basic splits at `.` `!` `?`; the encoders read the list as one text of
@@ -185,7 +199,7 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
 | BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
-| Basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
+| Basic | 89.02% | 85.49% | 90.09% / 90.28% | 89.71% / 87.71% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->
@@ -262,11 +276,11 @@ unresolved or show `Details` as a guess).
 
 Accuracy depends on the model and is measured by the repository's build tool on held-out and real-text sentences; the
 results of all models are collected in the [model comparison][link-model-comparison] and the Basic model's in the
-[Basic evaluation][link-basic-evaluation]. Words that are in neither the dictionary nor the trained lemmas are not
-decided by a model; an encoder model could in principle leave a word without trained weights undecided, but the shipped
-packages have weights for every lemma. The
-dictionary knows the inflected forms that were materialized when it was built; determiners, numbers and most proper nouns
-are unknown. The [user guide][link-user-guide] has the details, the caveats and troubleshooting.
+[Basic evaluation][link-basic-evaluation]. Every dictionary word is in the lexicon, whatever the model's accuracy;
+the model only chooses among the senses of a multi-sense word, and a lemma the encoder was not trained for gets its
+first dictionary sense with a low confidence. The dictionary knows the inflected forms that were materialized when it
+was built; numbers and most proper nouns are unknown. The [user guide][link-user-guide] has the details, the caveats
+and troubleshooting.
 
 ## Documentation
 

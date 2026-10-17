@@ -35,10 +35,25 @@ public sealed class LexiconTests : IDisposable
     [InlineData("")]
     [InlineData("X")]
     [InlineData("NN")]
-    [InlineData("VN")]
+    [InlineData("N V")]
     public void WordSenseBuilder_LexiconSource_ToMask_RejectsBadLetters(string letters)
     {
         Assert.Throws<InvalidDataException>(() => LexiconSource.ToMask(letters, "test"));
+    }
+
+    /// <summary>
+    ///     The letters may be in any order, the order is kept by the reader, and the determiner letter is known.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_LexiconSource_ReadWords_KeepsSenseOrderAndKnowsDeterminer()
+    {
+        var path = _dir.Write("lexicon.tsv", "so\tBCRJIN\nthe\tD\n");
+
+        var words = LexiconSource.ReadWords(path);
+
+        Assert.Equal("BCRJIN", words[0].Letters);
+        Assert.Equal("NRJBCI", LexiconSource.ToLetters(words[0].Mask));
+        Assert.Equal(LexiconSource.Bit(PartOfSpeech.Determiner), words[1].Mask);
     }
 
     /// <summary>
@@ -107,7 +122,7 @@ public sealed class LexiconTests : IDisposable
         var verb = LexiconSource.Bit(PartOfSpeech.Verb);
         var adjective = LexiconSource.Bit(PartOfSpeech.Adjective);
         var noun = LexiconSource.Bit(PartOfSpeech.Noun);
-        (string, byte)[] bases = [("city", noun), ("happy", adjective), ("walk", verb)];
+        (string, ushort)[] bases = [("city", noun), ("happy", adjective), ("walk", verb)];
 
         var forms = MorphologyExpander.Expand(bases, _ => false, new HashSet<string> { "Plural", "PastTense", "Adverb" }, Single);
 
@@ -124,7 +139,7 @@ public sealed class LexiconTests : IDisposable
     [Fact]
     public void WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules()
     {
-        (string, byte)[] bases = [("walk", LexiconSource.Bit(PartOfSpeech.Verb))];
+        (string, ushort)[] bases = [("walk", LexiconSource.Bit(PartOfSpeech.Verb))];
 
         var withKnown = MorphologyExpander.Expand(bases, w => w == "walks", new HashSet<string> { "Plural", "PastTense" }, Single);
         var none = MorphologyExpander.Expand(bases, _ => false, new HashSet<string>(), Single);

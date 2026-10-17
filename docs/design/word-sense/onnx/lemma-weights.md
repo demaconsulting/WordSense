@@ -28,8 +28,9 @@ the lexicon, computes the feature of a pooled vector and scores the senses of a 
 
 - `WeightsBlob.Read`: decodes and validates the blob.
 - `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and keeps a lemma only if
-  the lexicon has exactly the same senses (count, lemma, part of speech and meaning, in the same order). The match is
-  all-or-nothing per lemma; mismatches are counted in the dropped lemmas, and the tests require none.
+  the lexicon holds the trained senses as its first senses (same lemma, part of speech and meaning, in the same
+  order); it may hold further dictionary senses after them. A lemma that does not match, or whose lexicon entry is
+  shorter, is dropped as a whole and counted in the dropped lemmas, and the tests require none.
 - `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector.
 - Scoring: `Scores` gives the sense scores (a binary lemma gives the pair minus and plus the activation), `Rank`
   orders the candidate senses and `Confidence` turns the margin and abstain margin into a confidence.

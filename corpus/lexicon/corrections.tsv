@@ -3,3 +3,8 @@ needs	NV	Moby lists 'needs' only as an adverb; in UD English-EWT it is the third
 says	V	Moby lists 'says' only as a noun; in UD English-EWT it is the third-person verb (69 wrong noun answers before this correction)
 comes	V	Moby lists 'comes' only as a noun; in UD English-EWT it is the third-person verb (39 wrong noun answers before this correction)
 i	R	Moby lists the letter 'i' as a noun only; as a word of running text 'I' is the pronoun (UD English-EWT: PRON)
+the	D	Moby lists 'the' as determiner and adverb; in UD English-EWT 9064 of 9074 tokens are determiners, so it has no ambiguity worth a model
+a	D	Moby lists 'a' as determiner, noun, verb and preposition; in UD English-EWT 3738 of 3781 tokens are determiners (the others are letters, symbols and noise)
+an	D	Moby lists 'an' as determiner and conjunction; in UD English-EWT 496 of 499 tokens are determiners
+his	D	Moby lists 'his' as determiner and pronoun; it is the possessive determiner of the library, consistent with 'your', 'our', 'their' and 'its' (UD English-EWT labels all possessives PRON by its own scheme, so the treebank counts do not separate them)
+my	D	Moby lists 'my' as determiner and interjection; it is the possessive determiner of the library (UD English-EWT: 897 PRON as a possessive, 2 interjection tokens, 2 noun tokens)

@@ -571,6 +571,51 @@ public sealed class BuilderTests : IDisposable
         Assert.True(differences.Count == 0, "src/DemaConsulting.WordSense/Resources/words.bin is stale; run the 'words' command. First differences: " + string.Join(", ", differences));
     }
 
+    /// <summary>
+    ///     Every word of the committed dictionary list is a key of the embedded word table: the accuracy gate never decides
+    ///     whether a word exists, so determiners, conjunction-only and interjection-only words and the words that a trained
+    ///     lemma or form spells are all present, and a trained word keeps its trained senses first.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord()
+    {
+        var root = FindRepositoryRoot();
+        var lexicon = LexiconSource.ReadWords(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv"));
+        var table = DemaConsulting.WordSense.WordLexicon.Words;
+
+        var missing = lexicon.Where(w => !table.ContainsKey(w.Word)).Select(w => w.Word).Take(10).ToList();
+        Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from words.bin: " + string.Join(", ", missing));
+        Assert.True(lexicon.Count > 143_000);
+
+        // Every part of speech the dictionary lists for a word is among the senses of that word
+        var lost = lexicon
+            .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))))
+            .Select(w => w.Word)
+            .Take(10)
+            .ToList();
+        Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from words.bin: " + string.Join(", ", lost));
+        Assert.All(new[] { "the", "a", "an", "his", "albeit", "although", "alas", "ah", "two" }, w => Assert.True(table.ContainsKey(w), w));
+    }
+
+    /// <summary>
+    ///     The Basic row of the README model table equals the measurement of the evaluator on the committed holdout and
+    ///     real-text sets (the accuracy columns; the timing columns depend on the machine).
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation()
+    {
+        var root = FindRepositoryRoot();
+        var table = await File.ReadAllLinesAsync(Path.Combine(root.FullName, "docs", "build_notes", "model-table.md"), TestContext.Current.CancellationToken);
+        var committed = Assert.Single(table, l => l.StartsWith("| Basic |", StringComparison.Ordinal)).Split('|')[..6];
+        using var progress = new StringWriter();
+
+        var result = await Evaluator.RunAsync(root.FullName, Path.Combine(root.FullName, "corpus"), ModelCatalog.Find("basic"), progress, TestContext.Current.CancellationToken);
+
+        var measured = result.RenderTableRow().Split('|')[..6];
+        Assert.Equal(measured, committed);
+    }
+
     private static DirectoryInfo FindRepositoryRoot()
     {
         var root = new DirectoryInfo(AppContext.BaseDirectory);

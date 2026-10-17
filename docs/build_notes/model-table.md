@@ -10,7 +10,7 @@ Do not edit it by hand: the table of the root README must equal the table below 
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
 | MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
 | BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
-| Basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
+| Basic | 89.02% | 85.49% | 90.09% / 90.28% | 89.71% / 87.71% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

@@ -38,10 +38,11 @@ without a heteronym never runs the encoder (see the `OnnxClassifier` unit docume
 The confidence of a context-resolved word is monotonic in the margin between the best and second-best sense (see the
 `OnnxClassifier` unit document).
 
-#### Weights Match the Lexicon All or Nothing
+#### Weights Match the Lexicon Per Lemma
 
-A lemma whose weights disagree with the lexicon in any sense is dropped entirely and classifies as unresolved (see the
-`LemmaWeights` unit document).
+A lemma whose trained senses are not the first senses of its lexicon entry loses its weights and is answered with its
+first sense at low confidence (see the `LemmaWeights` unit document). Dictionary senses after the trained ones are
+allowed and are never ranked.
 
 #### Model Files Come From a Verified Source
 

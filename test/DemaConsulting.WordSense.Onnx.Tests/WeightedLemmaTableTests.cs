@@ -43,7 +43,7 @@ public class WeightedLemmaTableTests
     }
 
     /// <summary>
-    ///     A lemma whose sense differs in any part is dropped as a whole.
+    ///     A lemma whose senses differ in any part is dropped as a whole.
     /// </summary>
     [Fact]
     public void WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma()
@@ -55,6 +55,22 @@ public class WeightedLemmaTableTests
 
         Assert.Equal(1, table.DroppedLemmas);
         Assert.Empty(table.Lemmas);
+    }
+
+    /// <summary>
+    ///     A lemma whose trained senses are the first senses of a longer lexicon entry is kept: the lexicon may hold more
+    ///     parts of speech than were trained.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma()
+    {
+        var extra = new WordDetails("record", PartOfSpeech.Adjective, null, null);
+        var words = new Dictionary<string, WordDetails[]> { ["record"] = [Noun, Verb, extra] };
+
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
+
+        Assert.Equal(0, table.DroppedLemmas);
+        Assert.NotNull(table.Find("record"));
     }
 
     /// <summary>

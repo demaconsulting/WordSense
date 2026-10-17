@@ -192,11 +192,12 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     An ambiguous word whose lemma has no weights abstains.
+    ///     An ambiguous word whose lemma has no weights gets its first dictionary sense with a confidence of one over
+    ///     the number of senses.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_Abstains()
+    public async Task OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense()
     {
         using var encoder = Open();
         var empty = new WeightedLemmaTable(new WeightsData("all-MiniLM-L6-v2-int8", 384, new float[384], []), WordLexicon.Words);
@@ -204,7 +205,45 @@ public class OnnxClassifierTests
 
         var result = await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
-        Assert.Equal(new WordSense("record", null, 0), result[2]);
+        var senses = WordLexicon.Words["record"];
+        Assert.Equal(new WordSense("record", senses[0], 1.0 / senses.Length), result[2]);
+    }
+
+    /// <summary>
+    ///     A word with trained weights and more dictionary senses than trained ones is ranked among the trained senses
+    ///     only, and the extra sense is never the answer.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked()
+    {
+        var lemma = Embedded().Find("record")!;
+        var extra = new WordDetails("record", PartOfSpeech.Determiner, null, null);
+        WordDetails[] candidates = [.. WordLexicon.Words["record"], extra];
+        var feature = new float[lemma.Weights.Dimension];
+        feature[0] = 1f;
+
+        var (details, confidence) = OnnxClassifier.Pick(lemma, candidates, feature);
+
+        Assert.NotNull(details);
+        Assert.NotEqual(extra, details);
+        Assert.InRange(confidence, 0.0, 1.0);
+    }
+
+    /// <summary>
+    ///     A capitalized word resolves like its lower-case form, and a determiner needs no model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_CapitalizedWord_ResolvesLikeLowerCase()
+    {
+        using var encoder = Open();
+        var classifier = new OnnxClassifier(encoder, Embedded());
+
+        var result = await classifier.ClassifyAsync(["The", "the"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(PartOfSpeech.Determiner, result[0].Details!.PartOfSpeech);
+        Assert.Equal(result[0].Details, result[1].Details);
+        Assert.Equal(1.0, result[0].Confidence);
     }
 
     /// <summary>

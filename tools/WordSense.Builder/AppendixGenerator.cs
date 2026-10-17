@@ -174,9 +174,11 @@ internal static class AppendixGenerator
             $"Besides the lemmas listed below, the lexicon list has {all:N0} words (derived from the " +
             "public-domain Moby Part-of-Speech II list, see `corpus/lexicon/PROVENANCE.md`), of which " +
             $"{embedded:N0} are embedded as dictionary words. A dictionary word has no " +
-            "trained classifier: a word with one part of speech is answered directly, and a word with several parts " +
-            "of speech returns them as candidates. A word that a lemma or a form of the list below spells is not " +
-            "embedded as a dictionary word, because the lemma takes precedence. A capitalized word is " +
+            "trained classifier: a word with one part of speech is answered directly with confidence 1, and a word with several parts " +
+            "of speech returns them as candidates, most frequent first (the encoder models answer it with the first " +
+            "one and a confidence of one over the number of senses; the basic model chooses by tagger and context). A word that a lemma or a form of the list below spells is not " +
+            "embedded as a dictionary word, because the lemma takes precedence; it only gains the parts of speech " +
+            "that the dictionary lists and the trained senses lack. A capitalized word is " +
             "lower-cased before it is looked up. The words are not " +
             "listed here; this is how many words of the lexicon list have each set of parts of speech:");
         var width = Math.Max(sets.Max(s => s.Name.Length), "Parts of speech".Length);
@@ -231,10 +233,12 @@ internal static class AppendixGenerator
             : posCount.ToString(System.Globalization.CultureInfo.InvariantCulture);
         var posNames = string.Join(", ", rows.Select(r => r.Pos).Distinct().Order().Select(p => $"`{p}`"));
         AddParagraph(lines,
-            "The `PartOfSpeech` enumeration defines all eight classic parts of speech. The trained senses listed " +
+            "The `PartOfSpeech` enumeration defines nine parts of speech: the eight classic ones and `Determiner`. " +
+            $"The trained senses listed " +
             $"here, which give the context answers, cover {posWord} of them ({posNames}). A dictionary answer can " +
-            "also be a `Pronoun` or a `Preposition`; `Conjunction` and `Interjection` appear only as candidates of a " +
-            "dictionary word that has other parts of speech too, never as an answer. The table counts the trained " +
+            "also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection` or a `Determiner`, " +
+            "as the answer for a word with one part of speech or as a candidate of a " +
+            "word that has several. The table counts the trained " +
             "senses of each part of speech:");
         lines.Add("| Part of speech | Senses |");
         lines.Add("| -------------- | -----: |");

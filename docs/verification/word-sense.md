@@ -73,8 +73,8 @@ BertBaseCased packages reference only the Onnx package (and, transitively, the c
 ### Packages Share One Contract
 
 A model of each package (Basic, MiniLM, BertBaseCased) is used through `IWordSenseModel`
-only. For a word with a single sense every package gives the same answer, the lexicon entry with confidence 1; for an
-unknown word every package gives `(word, null, 0)`.
+only. For a word with a single sense every package gives the same answer, the lexicon entry with confidence 1 (this
+includes the determiners such as `the`, in any case); for an unknown word every package gives `(word, null, 0)`.
 
 ### Embedded Data Is Consistent
 
@@ -94,7 +94,7 @@ project).
 
 ### Builder Commands
 
-The builder verification document describes the commands `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`,
-`tune-basic` and
+The builder verification document describes the commands `words`, `import-moby`, `weights`, `evaluate`, `ud-counts`,
+`train-basic`, `tune-basic` and
 `appendix`. Together they regenerate the data that is committed in the packages, and the committed appendix of the user
 guide is compared with a regenerated one.

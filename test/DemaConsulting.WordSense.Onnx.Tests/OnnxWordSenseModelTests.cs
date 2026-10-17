@@ -57,7 +57,7 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
-    ///     A list without an ambiguous word is answered from the lexicon alone: no ensure, no model file, no ONNX.
+    ///     A list of single-sense and unknown words is answered from the lexicon alone: no ensure, no model file, no ONNX.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -67,9 +67,12 @@ public class OnnxWordSenseModelTests
         var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
         using var model = Open(missing);
 
-        var result = await model.ClassifyAsync(["the", "zzqxjw", "."], TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(["The", "zzqxjw", "."], TestContext.Current.CancellationToken);
 
-        Assert.All(result, r => Assert.Null(r.Details));
+        Assert.Equal(PartOfSpeech.Determiner, result[0].Details!.PartOfSpeech);
+        Assert.Equal(1.0, result[0].Confidence);
+        Assert.Null(result[1].Details);
+        Assert.Null(result[2].Details);
         Assert.False(Directory.Exists(missing));
     }
 

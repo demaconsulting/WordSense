@@ -40,7 +40,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "words", "weights", "evaluate", "ud-counts", "train-basic", "tune-basic", "appendix" })
+        foreach (var command in new[] { "words", "import-moby", "weights", "evaluate", "ud-counts", "train-basic", "tune-basic", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -58,6 +58,24 @@ public sealed class ProgramTests : IDisposable
         Assert.Empty(output);
         Assert.Contains("Unknown command 'frobnicate'", error, StringComparison.Ordinal);
         Assert.Contains("Usage:", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The import-moby command needs an input, and rejects an input that is not the pinned file.
+    /// </summary>
+    /// <returns>A task that completes when the check is done.</returns>
+    [Fact]
+    public async Task WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput()
+    {
+        var (missingCode, _, missingError) = await RunAsync("import-moby");
+        var input = _dir.Write("mobypos.txt", "the\\D\n");
+        var (wrongCode, _, wrongError) = await RunAsync("import-moby", "--input", input, "--output", Path.Combine(_dir.Root, "lexicon.tsv"));
+
+        Assert.Equal(1, missingCode);
+        Assert.Contains("--input", missingError, StringComparison.Ordinal);
+        Assert.Equal(1, wrongCode);
+        Assert.Contains("pinned", wrongError, StringComparison.Ordinal);
+        Assert.False(File.Exists(Path.Combine(_dir.Root, "lexicon.tsv")));
     }
 
     /// <summary>

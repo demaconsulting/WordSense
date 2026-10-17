@@ -43,8 +43,8 @@ model it wants. The contracts in core are the seam between callers and models: a
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
 - Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
   the mirror's own origin only.
-- Builder command line (in/out): `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`, `tune-basic` and
-  `appendix`; build time only, never shipped.
+- Builder command line (in/out): `words`, `import-moby`, `weights`, `evaluate`, `ud-counts`, `train-basic`,
+  `tune-basic` and `appendix`; build time only, never shipped.
 
 ## Dependencies
 
@@ -64,8 +64,8 @@ design.
 
 N/A - WordSense is a text-analysis library with no safety-critical functionality requiring risk control measures
 (IEC 62304 §5.3.3). Integrity of downloaded model files is protected by pinned SHA-256 digests, and the embedded
-weights are bound to their lexicon by an all-or-nothing match per lemma, so a stale weights blob never produces a
-wrong answer.
+weights are bound to their lexicon by a per-lemma match of the trained senses, so a stale weights blob never produces a
+wrong answer (a lemma that does not match loses its weights and is answered with its first sense at low confidence).
 
 ## Data Flow
 

@@ -23,10 +23,12 @@ namespace DemaConsulting.WordSense;
 ///     dependent) and happens once per process.
 ///     </para>
 ///     <para>
-///     The senses of a word use the eight values of <see cref="PartOfSpeech"/>: <see cref="PartOfSpeech.Noun"/>,
+///     The senses of a word use the nine values of <see cref="PartOfSpeech"/>: <see cref="PartOfSpeech.Noun"/>,
 ///     <see cref="PartOfSpeech.Pronoun"/>, <see cref="PartOfSpeech.Verb"/>, <see cref="PartOfSpeech.Adjective"/>,
-///     <see cref="PartOfSpeech.Adverb"/>, <see cref="PartOfSpeech.Preposition"/>, <see cref="PartOfSpeech.Conjunction"/>
-///     and <see cref="PartOfSpeech.Interjection"/>. A word that is not in the lexicon (a determiner, a number, most
+///     <see cref="PartOfSpeech.Adverb"/>, <see cref="PartOfSpeech.Preposition"/>, <see cref="PartOfSpeech.Conjunction"/>,
+///     <see cref="PartOfSpeech.Interjection"/> and <see cref="PartOfSpeech.Determiner"/>. The lexicon holds every word
+///     of its source dictionary, including determiners, conjunctions and interjections; for a word with several senses
+///     the first sense is the most frequent one. A word that is not in the lexicon (a number written with digits, most
 ///     proper nouns or a misspelling) is simply missing from <see cref="Words"/>.
 ///     </para>
 /// </remarks>

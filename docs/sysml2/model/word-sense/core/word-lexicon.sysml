@@ -1,6 +1,6 @@
 package WordSense {
     part def WordLexicon {
-        doc /* The embedded word lexicon: every known lower-case surface word, including build-time inflections, with its possible senses, read from the embedded words.bin and exposed as a read-only dictionary. */
+        doc /* The embedded word lexicon: every dictionary word (determiners, conjunctions and interjections included) and every build-time inflection, as a lower-case surface word with its possible senses, read from the embedded words.bin and exposed as a read-only dictionary. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense/WordLexicon.cs, src/DemaConsulting.WordSense/WordsBlob.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs, test/DemaConsulting.WordSense.Tests/WordsBlobTests.cs */

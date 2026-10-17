@@ -18,8 +18,9 @@ The builder creates the data that the shipped packages embed and measures the sh
 
 It reads the repository's `corpus/` folder: the sense inventory (`senses/`: every trained lemma with its senses, parts
 of speech, meanings and respellings), the training sentences (`anchors/`), the holdout sentences (`holdout/`, never
-used for training), the form lists (`forms/`: inflected forms of trained lemmas), the dictionary of single-sense
-words and the morphology rule switches (`lexicon/`), the real-text evaluation sentences (`realtext/`) and the vendored
+used for training), the form lists (`forms/`: inflected forms of trained lemmas), the dictionary of all words with
+their parts of speech and the morphology rule switches (`lexicon/`), the real-text evaluation sentences (`realtext/`)
+and the vendored
 Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank training file). It
 references all five packages and uses internal members of them through `InternalsVisibleTo`, so that training and
 inference share one implementation of the feature computation.
@@ -33,8 +34,10 @@ inference share one implementation of the feature computation.
 - `SenseInventory`: the authority on which senses exist (part of speech, meaning, respelling per lemma and sense).
 - `SenseDefinition`, `LemmaEntry`: the validated definition of one sense and of one lemma (meanings all-or-none; a
   heteronym has at least two distinct meanings).
-- `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, strictly ascending, parts of speech as the
-  letters `NRVJBPCI`).
+- `LexiconSource`: reads the dictionary word list (`word<TAB>letters`, ascending by word, parts of speech as the
+  letters `NRVJBPCID`, the first letter being the first sense).
+- `LexiconImporter`: derives the word list from the pinned Moby list (checksum, source order of the parts of speech,
+  corrections, participle and gerund rule) and writes `lexicon.tsv`.
 - `MorphologyExpander`: generates inflected forms of dictionary words from the enabled morphology rules.
 - `WordsBuilder` and `WordsBlobWriter`: combine the word sources and serialize the lexicon blob (`WSW1`).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
@@ -68,6 +71,9 @@ Options are `--name value` pairs; every path defaults to the repository layout b
 
 - `words [--corpus DIR] [--output FILE]`: builds the lexicon and writes `words.bin` (default: the core package
   resources).
+- `import-moby --input FILE [--corpus DIR]`: derives `corpus/lexicon/lexicon.tsv` from the pinned Moby Part-of-Speech
+  list after verifying its SHA-256, keeping every single lower-case word with all its parts of speech in source order
+  and applying `corrections.tsv` and `classes.tsv`; it prints the counts.
 - `weights <modelId> [--corpus DIR] [--repository DIR]`: trains the weights of an encoder model (`minilm`,
   `bert-base-cased`) and writes its `weights.bin`.
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
@@ -83,14 +89,19 @@ Options are `--name value` pairs; every path defaults to the repository layout b
 
 #### Lexicon build (`WordsBuilder.Build`)
 
-The lexicon entries come from four sources, in decreasing priority; a source never replaces a word an earlier one
-supplied:
+The lexicon entries come from four sources, in decreasing priority for the trained senses; the dictionary never
+removes a sense:
 
 1. The sense inventory: every trained lemma answers with all of its senses, in label order.
 2. The form lists: each form of a trained lemma answers with the lemma's senses.
-3. The dictionary word list: each word answers with one sense per part of speech and no meaning.
+3. The dictionary word list: each word answers with one sense per part of speech and no meaning. When a trained
+   lemma or form spells the same word, its trained senses stay first and the dictionary's other parts of speech are
+   appended, so no part of speech of the dictionary is lost. Every sense of an entry has the lemma of its first sense.
 4. Generated inflections: `MorphologyExpander` adds forms of the dictionary words from the enabled rules, each
    answering with one sense of its base; the first base in ordinal order wins when two bases give the same form.
+
+Every dictionary word is kept, whatever the accuracy of any model for it: the accuracy of a model governs only which
+senses it chooses between, never whether a word exists.
 
 The inflections are materialized at build time, so no morphology runs at run time. `WordsBlobWriter` writes the
 Brotli-compressed blob with a string table, a table of distinct `WordDetails` and the key-to-senses table.

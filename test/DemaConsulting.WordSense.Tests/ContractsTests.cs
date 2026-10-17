@@ -171,13 +171,13 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     The part-of-speech enumeration has exactly the eight traditional values.
+    ///     The part-of-speech enumeration has the eight traditional values and Determiner.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_PartOfSpeech_Values_AreTheEightClasses()
+    public void WordSenseContracts_PartOfSpeech_Values_AreTheNineClasses()
     {
         Assert.Equal(
-            ["Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Interjection"],
+            ["Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Interjection", "Determiner"],
             Enum.GetNames<PartOfSpeech>());
     }
 

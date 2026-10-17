@@ -1,29 +1,34 @@
 # Lexicon Evaluation
 
 This note records how the Moby-derived dictionary (the "lexical section" of the v5 table) was built, evaluated against
-Universal Dependencies English-EWT and gated, and what it costs in size, load time, memory and speed.
+Universal Dependencies English-EWT and gated, and what it costs in size, load time, memory and speed. The size, time and
+speed sections describe the table as it was measured before the lexicon was completed.
 
 ## Source and Filters
 
 The dictionary comes from Moby Part-of-Speech II (public domain, Grady Ward, <https://www.gutenberg.org/ebooks/3203>).
 The input `mobypos.txt` (3,004,202 bytes) has SHA-256
-`AB516C4918E017D7771DA70766EFB95C6C9B81DCECC97395FE0B61EE5373582D`. The importer is deterministic: Latin-1 read,
-entries split on LF, each entry `word\codes`.
+`AB516C4918E017D7771DA70766EFB95C6C9B81DCECC97395FE0B61EE5373582D`. The importer (`import-moby`) is deterministic:
+Latin-1 read, entries split on LF, each entry `word\codes`; a word on several lines has its codes joined.
 
 | Step | Count |
 | --- | ---: |
 | Entries read | 233,356 |
 | Single lowercase alphabetic words | 143,992 |
-| Dropped: determiner-flagged (D, I, o) | 103 |
-| Dropped: only held-back classes (see below) | 177 |
-| Words written to `lexicon.tsv` | 143,712 |
+| Dropped | 0 |
+| Words written to `lexicon.tsv` | 143,992 |
+| of which carry the determiner sense | 103 |
 
-The plan predicted 143,711 words. The one-word difference comes from the gerund rule below. Code mapping: N, p, h are
-Noun; V, t, i are Verb (V is the ordinary verb flag); A Adjective; v Adverb; C Conjunction; P Preposition;
-! Interjection; r Pronoun.
+Earlier versions of this table dropped 280 of the 143,992 words: 103 because of a determiner code (D, I, o) and 177
+because their only parts of speech were Conjunction or Interjection, which failed the accuracy gate. That was wrong:
+the gate decides which sense a model may choose, never whether a word exists. Every word is now kept and all of them
+are in the embedded table. Code mapping: N, p, h are Noun; V, t, i are Verb (V is the ordinary verb flag); A
+Adjective; v Adverb; C Conjunction; P Preposition; ! Interjection; r Pronoun; D, I, o Determiner. The parts of speech
+of a word are written in the order of its first code in the Moby entry.
 
-The table embeds 142,485 words; 1,227 more are dropped at build time because a trained lemma or a trained form spells
-them (trained lemmas take precedence, no form shadows another lemma).
+The table embeds 254,511 words. Of the 1,227 words that a trained lemma or a trained form also spells, 238 had lost a
+part of speech under the earlier merge; the merge now keeps the trained senses first and appends the Moby parts of
+speech that the trained entry lacks (they are never ranked by a trained classifier).
 
 ## Corrections and Rules
 
@@ -32,10 +37,33 @@ them (trained lemmas take precedence, no form shadows another lemma).
   Noun class failed at 90.8 percent.
 - `corrections.tsv`: i is Pronoun; days is Noun; needs is Noun and Verb; says and comes are Verb. The last four were
   chosen from the most frequent evaluation errors on the pooled UD data, so they carry a small risk of overfitting.
+  `the`, `a`, `an`, `his` and `my` are Determiner only: Moby also lists adverb, noun, verb, preposition, conjunction
+  and pronoun readings for them, and UD labels `the`, `a` and `an` determiner in over 99 percent of their uses.
 - Held-back classes (`classes.tsv`): Conjunction (76.37 percent) and Interjection (86.36 percent) fail the 95 percent
-  gate. They are kept only as candidates for a word that has another part of speech; a word whose only part of speech
-  is one of them is not in the table (`gated.tsv` lists them).
-- Determiner words are excluded entirely (not covered by the enumeration).
+  gate. They are never the target of a trained model; every word of these classes is kept in the table, as an answer
+  for a word that has only that part of speech and as a candidate for a word that has others. Determiner is also
+  candidate-only.
+- `PartOfSpeech.Determiner` was added because `the`, `a` and `an` are the most frequent words of English and no other
+  value fits them. No Modal value was added: `will` is a verb in the enumeration (UD AUX is scored as Verb) and the
+  data does not support a separate class.
+
+## Accuracy After Completing the Lexicon
+
+The Basic model measured on the committed holdout and real-text sets before and after (the encoder models are
+unchanged because their trained lemmas and weights are unchanged and the added words are single-sense or untrained):
+
+| Model | Holdout before | Holdout after | Real text before | Real text after |
+| --- | ---: | ---: | ---: | ---: |
+| MiniLM | 96.87 % | 96.87 % | 92.60 % | 92.60 % |
+| BERT base cased | 99.05 % | 99.05 % | 97.39 % | 97.39 % |
+| Basic | 88.65 % | 89.02 % | 84.76 % | 85.49 % |
+
+The earlier Basic figures are those of the committed model table before this change. No threshold or hyperparameter
+was tuned on the holdout.
+
+A multi-sense word that has no trained weights (for example `so`) is answered by an encoder model with its first
+Moby-order sense and a confidence of one over the number of senses; this fallback was approved because the sense order
+follows the Moby code order, which lists the most frequent part of speech first.
 
 ## Evaluation Method
 
@@ -105,7 +133,7 @@ claimed.
 
 ## Reproduction (historical)
 
-These commands are the ones used when the page was measured; `import-moby`, `build` and `lexicon-eval` no longer
+These commands are the ones used when the page was measured; `build` and `lexicon-eval` no longer
 exist in `WordSense.Builder` (see `package-split.md` and the `words` and `weights` commands for the current flow).
 
 ```text

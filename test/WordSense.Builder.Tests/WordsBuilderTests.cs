@@ -39,6 +39,31 @@ public sealed class WordsBuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     A trained lemma or form keeps its trained senses first and gains the dictionary's other parts of speech in
+    ///     dictionary order; a dictionary-only word, a determiner and a conjunction keep the dictionary order.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses()
+    {
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
+        _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nbanks\tbank\tnoun,verb\n");
+        _dir.Write("corpus/lexicon/lexicon.tsv", "albeit\tC\nbank\tBJNV\nbanks\tNR\nso\tBCRJIN\nthe\tD\n");
+
+        var table = WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"));
+
+        Assert.Equal(
+            [PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Adjective],
+            table["bank"].Select(d => d.PartOfSpeech));
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Pronoun], table["banks"].Select(d => d.PartOfSpeech));
+        Assert.All(table["banks"], d => Assert.Equal("bank", d.Lemma));
+        Assert.Equal(PartOfSpeech.Conjunction, Assert.Single(table["albeit"]).PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Determiner, Assert.Single(table["the"]).PartOfSpeech);
+        Assert.Equal(
+            [PartOfSpeech.Adverb, PartOfSpeech.Conjunction, PartOfSpeech.Pronoun, PartOfSpeech.Adjective, PartOfSpeech.Interjection, PartOfSpeech.Noun],
+            table["so"].Select(d => d.PartOfSpeech));
+    }
+
+    /// <summary>
     ///     A corpus without forms, lexicon and morphology still builds from the senses alone.
     /// </summary>
     [Fact]

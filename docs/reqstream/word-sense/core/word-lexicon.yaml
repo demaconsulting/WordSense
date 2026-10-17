@@ -22,6 +22,22 @@ sections:
                   - WordLexicon_Words_Keys_AreLowerCase
                   - WordLexicon_Words_UnknownWord_IsAbsent
 
+              - id: WordSense-Core-WordLexicon-Complete
+                title: >-
+                  WordLexicon shall hold every word of the dictionary the library is built from, including the
+                  determiners, the conjunctions and the interjections, each with all of its parts of speech, whatever
+                  the accuracy of any model for them, and every sense of a word shall have the lemma of its first sense.
+                tags: [unit]
+                justification: |
+                  A model's accuracy decides which sense it may choose, never whether a word exists; a word that the
+                  lexicon lacks cannot be classified by any model, and the single lemma per word lets the weights of
+                  one lemma cover its word.
+                tests:
+                  - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
+                  - WordLexicon_Words_SoAndWill_ListTheirParts
+                  - WordLexicon_Words_EverySense_SharesTheLemma
+                  - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+
               - id: WordSense-Core-WordLexicon-Embedded
                 title: WordLexicon shall read its data from a resource embedded in the core assembly.
                 tags: [unit]

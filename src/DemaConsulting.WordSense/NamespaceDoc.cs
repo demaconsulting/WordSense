@@ -176,7 +176,11 @@ namespace DemaConsulting.WordSense;
 ///     <description>Found (the lookup ignores case; <c>records</c> is a stored inflection): several senses, so the best sense from context with the model's confidence</description>
 ///     </item>
 ///     <item>
-///     <term><c>the</c>, <c>a</c>, a misspelling, a name that is not in the lexicon</term>
+///     <term><c>the</c>, <c>a</c>, <c>his</c></term>
+///     <description>Found: a determiner with one sense, so confidence 1 (the lexicon holds every word of its source dictionary)</description>
+///     </item>
+///     <item>
+///     <term>A misspelling, a name that is not in the lexicon</term>
 ///     <description>Unknown: null, 0 (a name that is in the lexicon, such as <c>Smith</c>, is found)</description>
 ///     </item>
 ///     <item>

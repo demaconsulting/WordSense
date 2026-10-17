@@ -38,6 +38,7 @@ sections:
         tests:
           - WordLexicon_Words_KnownWord_ReturnsItsSenses
           - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
+          - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
 
       - id: WordSense-Lib-Layered
         title: >-
@@ -143,6 +144,7 @@ sections:
           corpus; keeping the tool out of the packages keeps training code out of consumers' dependency graphs.
         children:
           - WordSense-WordSenseBuilder-Words
+          - WordSense-WordSenseBuilder-ImportDictionary
           - WordSense-WordSenseBuilder-Weights
           - WordSense-WordSenseBuilder-Evaluate
           - WordSense-WordSenseBuilder-UdCounts

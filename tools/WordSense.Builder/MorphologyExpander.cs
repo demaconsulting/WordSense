@@ -65,7 +65,7 @@ internal static class MorphologyExpander
     /// <param name="single">Gives the shared one-sense answer of a base and a part of speech.</param>
     /// <returns>The generated forms and their answers, in ordinal order.</returns>
     public static SortedDictionary<string, WordDetails[]> Expand(
-        IReadOnlyList<(string Word, byte Mask)> bases,
+        IReadOnlyList<(string Word, ushort Mask)> bases,
         Func<string, bool> known,
         IReadOnlySet<string> enabled,
         Func<string, PartOfSpeech, WordDetails[]> single)

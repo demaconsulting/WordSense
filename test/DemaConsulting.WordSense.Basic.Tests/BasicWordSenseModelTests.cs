@@ -90,9 +90,12 @@ public class BasicWordSenseModelTests
     {
         using var model = new BasicWordSenseModel();
 
-        var results = await model.ClassifyAsync(["the", ".", "zzqxjw"], TestContext.Current.CancellationToken);
+        var results = await model.ClassifyAsync(["The", ".", "zzqxjw"], TestContext.Current.CancellationToken);
 
-        Assert.All(results, r => Assert.Null(r.Details));
+        Assert.Equal(PartOfSpeech.Determiner, results[0].Details!.PartOfSpeech);
+        Assert.Equal(1.0, results[0].Confidence);
+        Assert.Null(results[1].Details);
+        Assert.Null(results[2].Details);
     }
 
     /// <summary>

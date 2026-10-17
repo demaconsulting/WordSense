@@ -15,6 +15,7 @@ namespace WordSense.Builder;
 ///     </para>
 ///     <list type="bullet">
 ///     <item><description><c>words [--corpus DIR] [--output FILE]</c> writes the word table of the core package.</description></item>
+///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file.</description></item>
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
@@ -25,7 +26,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, weights <modelId>, evaluate <modelId>, ud-counts, train-basic, tune-basic, appendix.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, train-basic, tune-basic, appendix.";
 
     /// <summary>
     ///     Runs the builder.
@@ -71,6 +72,12 @@ internal static class Program
                     var wordsOutput = options.TryGetValue("output", out var w) ? w : Path.Combine(repository, WordsBuilder.DefaultOutput);
                     var count = WordsBuilder.Write(corpus, wordsOutput);
                     output.WriteLine($"Wrote {count.ToString(CultureInfo.InvariantCulture)} words to {wordsOutput}.");
+                    return 0;
+                case "import-moby":
+                    var mobyInput = Require(options, "input");
+                    var lexiconOutput = options.TryGetValue("output", out var lo) ? lo : Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile);
+                    var imported = LexiconImporter.Import(mobyInput, lexiconOutput);
+                    output.WriteLine(LexiconImporter.Render(imported));
                     return 0;
                 case "weights":
                     await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
@@ -122,7 +129,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Parses <c>--name value</c> pairs.

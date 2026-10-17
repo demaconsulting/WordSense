@@ -11,10 +11,11 @@ pronunciation.
 
 ### Parts of Speech
 
-The `PartOfSpeech` enumeration defines all eight classic parts of speech. The trained senses listed here, which give the
-context answers, cover four of them (`Noun`, `Verb`, `Adjective`, `Adverb`). A dictionary answer can also be a `Pronoun`
-or a `Preposition`; `Conjunction` and `Interjection` appear only as candidates of a dictionary word that has other parts
-of speech too, never as an answer. The table counts the trained senses of each part of speech:
+The `PartOfSpeech` enumeration defines nine parts of speech: the eight classic ones and `Determiner`. The trained senses
+listed here, which give the context answers, cover four of them (`Noun`, `Verb`, `Adjective`, `Adverb`). A dictionary
+answer can also be a `Pronoun`, a `Preposition`, a `Conjunction`, an `Interjection` or a `Determiner`, as the answer for
+a word with one part of speech or as a candidate of a word that has several. The table counts the trained senses of each
+part of speech:
 
 | Part of speech | Senses |
 | -------------- | -----: |
@@ -46,12 +47,15 @@ shown in bold.
 
 ### Dictionary Words
 
-Besides the lemmas listed below, the lexicon list has 143,712 words (derived from the public-domain Moby Part-of-Speech
-II list, see `corpus/lexicon/PROVENANCE.md`), of which 142,485 are embedded as dictionary words. A dictionary word has
-no trained classifier: a word with one part of speech is answered directly, and a word with several parts of speech
-returns them as candidates. A word that a lemma or a form of the list below spells is not embedded as a dictionary word,
-because the lemma takes precedence. A capitalized word is lower-cased before it is looked up. The words are not listed
-here; this is how many words of the lexicon list have each set of parts of speech:
+Besides the lemmas listed below, the lexicon list has 143,992 words (derived from the public-domain Moby Part-of-Speech
+II list, see `corpus/lexicon/PROVENANCE.md`), of which 142,765 are embedded as dictionary words. A dictionary word has
+no trained classifier: a word with one part of speech is answered directly with confidence 1, and a word with several
+parts of speech returns them as candidates, most frequent first (the encoder models answer it with the first one and a
+confidence of one over the number of senses; the basic model chooses by tagger and context). A word that a lemma or a
+form of the list below spells is not embedded as a dictionary word, because the lemma takes precedence; it only gains
+the parts of speech that the dictionary lists and the trained senses lack. A capitalized word is lower-cased before it
+is looked up. The words are not listed here; this is how many words of the lexicon list have each set of parts of
+speech:
 
 | Parts of speech                                                 |   Words |
 |-----------------------------------------------------------------|---------|
@@ -65,19 +69,24 @@ here; this is how many words of the lexicon list have each set of parts of speec
 | Noun, Verb, Adjective                                           |     474 |
 | Adjective, Adverb                                               |     326 |
 | Noun, Adjective, Adverb                                         |     167 |
+| Interjection                                                    |     156 |
 | Noun, Verb, Adjective, Adverb                                   |      80 |
 | Noun, Adverb                                                    |      75 |
 | Noun, Interjection                                              |      64 |
 | Noun, Verb, Interjection                                        |      50 |
 | Pronoun                                                         |      46 |
+| Noun, Determiner                                                |      37 |
 | Preposition                                                     |      36 |
 | Verb, Adjective, Adverb                                         |      32 |
 | Noun, Verb, Adverb                                              |      28 |
 | Adverb, Preposition                                             |      27 |
+| Determiner                                                      |      26 |
+| Conjunction                                                     |      21 |
 | Adverb, Conjunction                                             |      16 |
 | Verb, Interjection                                              |      15 |
 | Noun, Adjective, Adverb, Preposition                            |      14 |
 | Noun, Pronoun                                                   |      14 |
+| Adverb, Determiner                                              |      11 |
 | Adverb, Interjection                                            |      11 |
 | Verb, Adverb                                                    |      10 |
 | Noun, Adjective, Adverb, Interjection                           |       9 |
@@ -92,25 +101,35 @@ here; this is how many words of the lexicon list have each set of parts of speec
 | Adverb, Preposition, Conjunction                                |       6 |
 | Noun, Adjective, Interjection                                   |       5 |
 | Noun, Adjective, Preposition                                    |       5 |
+| Pronoun, Determiner                                             |       5 |
 | Adjective, Adverb, Preposition                                  |       4 |
 | Noun, Adverb, Preposition                                       |       4 |
 | Noun, Conjunction                                               |       4 |
 | Noun, Verb, Preposition                                         |       4 |
+| Adjective, Adverb, Determiner                                   |       3 |
+| Adjective, Determiner                                           |       3 |
 | Adjective, Preposition                                          |       3 |
+| Noun, Adverb, Determiner                                        |       3 |
 | Noun, Adverb, Interjection                                      |       3 |
 | Noun, Pronoun, Adverb                                           |       3 |
+| Noun, Pronoun, Determiner                                       |       3 |
 | Noun, Verb, Adjective, Adverb, Preposition                      |       3 |
 | Noun, Verb, Adverb, Interjection                                |       3 |
 | Noun, Verb, Preposition, Conjunction                            |       3 |
 | Verb, Adjective, Preposition                                    |       3 |
 | Adjective, Adverb, Interjection                                 |       2 |
+| Adverb, Conjunction, Determiner                                 |       2 |
 | Noun, Adverb, Conjunction                                       |       2 |
 | Noun, Pronoun, Adverb, Conjunction                              |       2 |
 | Noun, Verb, Adverb, Preposition                                 |       2 |
 | Verb, Preposition, Conjunction                                  |       2 |
 | Adjective, Adverb, Preposition, Conjunction                     |       1 |
 | Adverb, Conjunction, Interjection                               |       1 |
+| Adverb, Preposition, Determiner                                 |       1 |
+| Conjunction, Determiner                                         |       1 |
+| Noun, Adjective, Adverb, Determiner                             |       1 |
 | Noun, Adjective, Adverb, Preposition, Conjunction, Interjection |       1 |
+| Noun, Adjective, Determiner                                     |       1 |
 | Noun, Adjective, Preposition, Conjunction                       |       1 |
 | Noun, Adverb, Conjunction, Interjection                         |       1 |
 | Noun, Adverb, Preposition, Conjunction                          |       1 |
@@ -121,14 +140,19 @@ here; this is how many words of the lexicon list have each set of parts of speec
 | Noun, Pronoun, Interjection                                     |       1 |
 | Noun, Pronoun, Verb                                             |       1 |
 | Noun, Pronoun, Verb, Adverb                                     |       1 |
+| Noun, Pronoun, Verb, Determiner                                 |       1 |
 | Noun, Verb, Adjective, Adverb, Preposition, Conjunction         |       1 |
 | Noun, Verb, Adjective, Preposition, Conjunction                 |       1 |
 | Noun, Verb, Adjective, Preposition, Interjection                |       1 |
 | Noun, Verb, Adverb, Preposition, Interjection                   |       1 |
 | Noun, Verb, Conjunction                                         |       1 |
+| Preposition, Determiner                                         |       1 |
 | Pronoun, Adjective, Adverb                                      |       1 |
 | Pronoun, Adjective, Adverb, Conjunction                         |       1 |
 | Pronoun, Adverb, Conjunction                                    |       1 |
+| Pronoun, Adverb, Conjunction, Determiner                        |       1 |
+| Pronoun, Adverb, Determiner                                     |       1 |
+| Pronoun, Adverb, Interjection, Determiner                       |       1 |
 | Pronoun, Conjunction                                            |       1 |
 | Verb, Adjective, Adverb, Interjection                           |       1 |
 | Verb, Adjective, Adverb, Preposition                            |       1 |
@@ -136,6 +160,7 @@ here; this is how many words of the lexicon list have each set of parts of speec
 | Verb, Adverb, Interjection                                      |       1 |
 | Verb, Adverb, Preposition, Conjunction                          |       1 |
 | Verb, Conjunction                                               |       1 |
+| Verb, Determiner                                                |       1 |
 
 The word table also holds the inflected forms that suffix rules generate from dictionary words. Rules enabled: `Plural`,
 `Adverb`. Rules disabled because they did not reach 95 percent precision on real text: `PastTense`.

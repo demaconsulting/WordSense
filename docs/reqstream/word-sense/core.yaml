@@ -9,13 +9,14 @@ sections:
           - id: WordSense-Core-Lexicon
             title: >-
               The core subsystem shall provide the embedded word lexicon: for each known lower-case word, including
-              inflected forms, the senses it can have.
+              inflected forms, determiners, conjunctions and interjections, the senses it can have.
             tags: [subsystem]
             justification: |
               Every model package starts from the same lexicon of candidate senses, so it is provided once, in the
               package that all others reference.
             children:
               - WordSense-Core-WordLexicon-Words
+              - WordSense-Core-WordLexicon-Complete
               - WordSense-Core-WordLexicon-Embedded
               - WordSense-Core-WordLexicon-LazyLoad
               - WordSense-Core-WordLexicon-Format

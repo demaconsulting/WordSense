@@ -122,6 +122,17 @@ public class WordsBlobTests
     }
 
     /// <summary>
+    ///     The last part of speech, Determiner, is accepted.
+    /// </summary>
+    [Fact]
+    public void WordsBlob_Read_DeterminerSense_IsAccepted()
+    {
+        var lexicon = WordsBlob.Read(Compress(Raw(OneString, [1, 0, 8, 0, 0], [1, 0, 1, 0])));
+
+        Assert.Equal(PartOfSpeech.Determiner, lexicon["run"][0].PartOfSpeech);
+    }
+
+    /// <summary>
     ///     Two keys that point to the same sense share one instance of it.
     /// </summary>
     [Fact]

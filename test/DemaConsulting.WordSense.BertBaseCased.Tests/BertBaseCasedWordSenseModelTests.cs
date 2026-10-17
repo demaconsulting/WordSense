@@ -39,9 +39,10 @@ public class BertBaseCasedWordSenseModelTests
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        var senses = await model.ClassifyAsync(["the", "."], TestContext.Current.CancellationToken);
+        var senses = await model.ClassifyAsync(["The", "."], TestContext.Current.CancellationToken);
 
-        Assert.All(senses, s => Assert.Null(s.Details));
+        Assert.Equal(PartOfSpeech.Determiner, senses[0].Details!.PartOfSpeech);
+        Assert.Null(senses[1].Details);
     }
 
     /// <summary>

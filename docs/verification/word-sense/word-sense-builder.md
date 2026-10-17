@@ -31,11 +31,30 @@ All scenarios below pass on every platform and target framework of the CI matrix
   lexicon file and reports the number of words; the file is read back by `WordsBlob` into the expected keys and senses.
 - **Inflections are materialized**: the written lexicon contains the inflected forms of the lemmas (plural, past and
   gerund forms) as lower-case keys with the senses of their lemma, so the shipped reader needs no morphology.
-- **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms.
+- **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms, and the
+  dictionary's other parts of speech of the same word follow them (`MergesDictionaryPartsOfSpeechAfterTrainedSenses`).
+- **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
+  word of the committed dictionary with each of its parts of speech.
 - **Output is deterministic**: two runs on the same corpus give byte-identical files.
 - **Writer and reader agree**: every key and sense written by the writer is read back unchanged, and the reader rejects
   a tampered file (see the `WordLexicon` unit document).
 - **Invalid corpus**: an inconsistent sense inventory exits with code 1 and an error message and writes no file.
+
+#### import-moby
+
+- **Every word kept in source order**: single lower-case words keep all their parts of speech in the order of the
+  source, determiner, conjunction-only and interjection-only words included (`LexiconImporterTests`).
+- **Rules and corrections**: the participle and gerund rule and the committed corrections are applied; a malformed
+  correction is rejected.
+- **Pinned input**: input whose SHA-256 differs from the pin is rejected, and the command without `--input` reports a
+  usage error (`WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput`).
+- **Reader**: the dictionary reader keeps the order of the letters, accepts the determiner letter and rejects bad
+  files.
+
+#### Model table
+
+- **Basic row matches the evaluation** (`WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation`): the accuracy
+  numbers of the Basic row of `docs/build_notes/model-table.md` equal a fresh evaluation of the Basic model.
 
 #### weights
 
@@ -113,7 +132,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Command line
 
-- **No arguments or unknown command**: exit code 1 and the usage text listing `words`, `weights <modelId>`,
+- **No arguments or unknown command**: exit code 1 and the usage text listing `words`, `import-moby`,
+  `weights <modelId>`,
   `evaluate <modelId>`, `ud-counts`, `train-basic`, `tune-basic` and `appendix`.
 - **Removed command** (`WordSenseBuilder_Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
   `generate-appendix`, `validate-pos`) are unknown commands and exit with code 1.

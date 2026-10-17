@@ -63,7 +63,7 @@ differently (`record`, `bow`).
 - `label` is an internal join key that ties the anchor sentences, the holdout sentences, the forms and the inventory
   together. It is never shipped in the table or shown to callers, so it may be any name that is unique within the
   lemma (it is often the part of speech, or a short description).
-- `pos` is one of the eight `PartOfSpeech` names (the corpus uses `noun`, `verb`, `adj` and `adv`; the first
+- `pos` is one of the nine `PartOfSpeech` names (the corpus uses `noun`, `verb`, `adj` and `adv`; the first
   letter may be upper or lower case).
 - `meaning` is a lower-case identifier of at most 32 characters (letters, digits and hyphens, starting with a
   letter) that names the meaning of a heteronym, for example `weapon` and `bend` for `bow`. It may be empty.

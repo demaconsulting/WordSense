@@ -11,17 +11,42 @@ sections:
           - id: WordSense-WordSenseBuilder-Words
             title: >-
               The builder shall build the word lexicon of the core package deterministically from the corpus and
-              the dictionary, with every sense of a trained lemma, the inflected forms of dictionary words and the
-              generated forms, and shall write it in the compact binary format that the core package reads.
+              the dictionary, with every word of the dictionary (determiners, conjunctions and interjections
+              included), every sense of a trained lemma, the inflected forms of dictionary words and the generated
+              forms, and shall write it in the compact binary format that the core package reads. A word that a
+              trained lemma or form also spells shall keep the trained senses first and gain the other parts of
+              speech of the dictionary.
             tags: [unit]
             justification: |
-              The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it.
+              The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it, and it
+              must never lose a dictionary word or a part of speech because of what was trained.
             tests:
               - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
               - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
+              - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
               - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
               - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Words_Committed_MatchesCorpus
+              - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+
+          - id: WordSense-WordSenseBuilder-ImportDictionary
+            title: >-
+              The builder shall derive the dictionary word list from the pinned public-domain word list after
+              verifying its checksum, keep every single lower-case word with all its parts of speech in the order of
+              the source, including the determiners, conjunctions and interjections, and apply the committed
+              corrections.
+            tags: [unit]
+            justification: |
+              The word list the lexicon grows from must be reproducible and complete: dropping a class of words
+              because a model is less accurate for it would make those words unknowable to every model.
+            tests:
+              - WordSenseBuilder_LexiconImporter_Import_KeepsEveryWordInCodeOrder
+              - WordSenseBuilder_LexiconImporter_Import_AppliesParticipleAndGerundRule
+              - WordSenseBuilder_LexiconImporter_Import_AppliesCorrections
+              - WordSenseBuilder_LexiconImporter_Import_ChecksHash
+              - WordSenseBuilder_LexiconImporter_Import_RejectsBadCorrection
+              - WordSenseBuilder_LexiconSource_ReadWords_KeepsSenseOrderAndKnowsDeterminer
+              - WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput
 
           - id: WordSense-WordSenseBuilder-Weights
             title: >-
@@ -50,6 +75,7 @@ sections:
               - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
               - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
+              - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
               - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
           - id: WordSense-WordSenseBuilder-UdCounts
@@ -144,8 +170,9 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands words, weights, evaluate, ud-counts, train-basic, tune-basic and
-              appendix, print usage when given no arguments, and shall report an unknown or removed command, a
+              The builder shall provide the commands words, import-moby, weights, evaluate, ud-counts, train-basic,
+              tune-basic and appendix, print usage when given no arguments, and shall report an unknown or removed
+              command, a
               malformed option or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |

@@ -19,12 +19,14 @@ sections:
 
               - id: WordSense-Basic-BasicClassifier-SingleSense
                 title: >-
-                  BasicClassifier shall answer a word with exactly one lexicon sense with that sense and confidence 1.
+                  BasicClassifier shall answer a word with exactly one lexicon sense, a determiner such as the among
+                  them, with that sense and confidence 1, whatever the case of the word.
                 tags: [unit]
                 justification: |
                   A word without ambiguity needs no context.
                 tests:
                   - BasicClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+                  - BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure
 
               - id: WordSense-Basic-BasicClassifier-Resolve
                 title: >-

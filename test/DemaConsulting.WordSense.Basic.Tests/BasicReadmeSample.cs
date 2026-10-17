@@ -33,10 +33,11 @@ internal sealed class BasicReadmeSample
         using var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 
-        var words = "They record the record".Split(' ');
+        var words = "They said so and the hunter fired an arrow from his bow at a deer".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // A word that is not in the dictionary has no details and a confidence of 0
+        // Every word of the dictionary has details, the determiners among them;
+        // a word that is not in it has none and a confidence of 0
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";

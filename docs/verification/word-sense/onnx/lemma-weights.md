@@ -5,7 +5,7 @@
 The unit covers `LemmaWeights` (scores, ranking and the confidence function), the `WeightsBlob` reader and the
 `WeightedLemmaTable` that matches weights to the lexicon. Tests in `test/DemaConsulting.WordSense.Onnx.Tests`
 (`LemmaWeightsTests`, `WeightsBlobTests`, `WeightedLemmaTableTests`, `EmbeddedWeightsTests`) use hand-made weights, tiny
-blobs built by a test helper (the writer lives in the builder) and a hand-made lexicon for the all-or-nothing match. The
+blobs built by a test helper (the writer lives in the builder) and a hand-made lexicon for the prefix match. The
 embedded-weights test uses the real weights of the model packages.
 
 #### Test Environment
@@ -29,9 +29,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   lemma with its senses and weights.
 - **Corrupt blob is rejected**: an unknown format marker, truncated data, inconsistent counts and trailing data each throw
   `InvalidDataException`.
-- **All-or-nothing match**: a lemma whose senses equal the lexicon (lemma, part of speech and meaning, in the same
-  order) is kept; if any sense differs, or the lemma is absent from the lexicon, the whole lemma is dropped and listed in
-  the dropped names.
+- **Prefix match**: a lemma whose trained senses equal the first senses of the lexicon entry (lemma, part of speech and
+  meaning, in the same order) is kept, also when the entry has further senses (`TrainedSensesArePrefix_KeepsLemma`); if
+  a trained sense differs, or the lemma is absent from the lexicon, the whole lemma is dropped and listed in the
+  dropped names.
 - **Embedded weights are checked on load**: weights trained for another model id or another dimension are refused with
   `InvalidDataException`, and a missing resource is reported.
 - **Shipped weights drop zero lemmas**: the embedded weights of MiniLM and of BertBaseCased, matched against the embedded

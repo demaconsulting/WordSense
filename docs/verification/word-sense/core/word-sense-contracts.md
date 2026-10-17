@@ -21,7 +21,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   a struct, so an array of results has no null element.
 - **WordDetails equality**: two `WordDetails` with equal lemma, part of speech, meaning and respelling are equal; the
   meaning and the respelling may be null.
-- **PartOfSpeech has eight values**: noun, pronoun, verb, adjective, adverb, preposition, conjunction and interjection.
+- **PartOfSpeech has nine values**: noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection and
+  determiner.
 - **MirrorOptions defaults**: only the base URI is required; bearer token, credentials, store root and timeout default to
   null.
 - **MirrorOptions hides secrets**: `ToString` shows neither the bearer token nor a credential; each is shown as `***` and

@@ -75,7 +75,7 @@ internal static class WordsBlob
             var pos = span[position++];
             var meaning = ReadVarint(span, ref position);
             var respelling = ReadVarint(span, ref position);
-            if (lemma >= stringCount || pos > (byte)PartOfSpeech.Interjection || meaning > stringCount || respelling > stringCount)
+            if (lemma >= stringCount || pos > (byte)PartOfSpeech.Determiner || meaning > stringCount || respelling > stringCount)
             {
                 throw new InvalidDataException("The word lexicon has an invalid sense.");
             }

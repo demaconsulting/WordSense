@@ -40,6 +40,45 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     The determiners, and the words that Moby lists with another code first, are in the lexicon with their real
+    ///     parts of speech; a determiner has exactly one sense.
+    /// </summary>
+    [Theory]
+    [InlineData("the", PartOfSpeech.Determiner)]
+    [InlineData("a", PartOfSpeech.Determiner)]
+    [InlineData("an", PartOfSpeech.Determiner)]
+    [InlineData("his", PartOfSpeech.Determiner)]
+    [InlineData("albeit", PartOfSpeech.Conjunction)]
+    [InlineData("alas", PartOfSpeech.Interjection)]
+    public void WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone(string word, PartOfSpeech expected)
+    {
+        Assert.True(WordLexicon.Words.TryGetValue(word, out var senses));
+
+        Assert.Equal(expected, Assert.Single(senses).PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     Words with several parts of speech list them all, so and will among them.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_SoAndWill_ListTheirParts()
+    {
+        Assert.Contains(WordLexicon.Words["so"], s => s.PartOfSpeech == PartOfSpeech.Adverb);
+        Assert.Contains(WordLexicon.Words["so"], s => s.PartOfSpeech == PartOfSpeech.Conjunction);
+        Assert.Contains(WordLexicon.Words["will"], s => s.PartOfSpeech == PartOfSpeech.Verb);
+        Assert.Contains(WordLexicon.Words["will"], s => s.PartOfSpeech == PartOfSpeech.Noun);
+    }
+
+    /// <summary>
+    ///     Every sense of a word has the lemma of its first sense, and so the weights of one lemma cover the word.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_EverySense_SharesTheLemma()
+    {
+        Assert.All(WordLexicon.Words.Values, senses => Assert.All(senses, s => Assert.Equal(senses[0].Lemma, s.Lemma)));
+    }
+
+    /// <summary>
     ///     A word that is not in the lexicon is absent, and so is a key that is not lower case.
     /// </summary>
     [Fact]

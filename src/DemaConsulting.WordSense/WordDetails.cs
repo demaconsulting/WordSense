@@ -40,8 +40,11 @@ public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string
 ///     The part of speech of a word.
 /// </summary>
 /// <remarks>
-///     All eight traditional parts of speech are defined. Determiners (for example <c>the</c>, <c>a</c>) have no
-///     value: such words have no entry in <see cref="WordLexicon.Words"/>.
+///     Nine parts of speech are defined: the eight traditional ones and <see cref="Determiner"/>, the class of articles
+///     (<c>the</c>, <c>a</c>), possessives (<c>his</c>), demonstratives (<c>this</c>), quantifiers (<c>some</c>) and number
+///     words (<c>two</c>). The dictionary the lexicon is built from marks these words as a class of their own, and
+///     treating them as adjectives, pronouns or nouns would give wrong answers for the most frequent words of English.
+///     There is no value for modal verbs: the dictionary has no modal class, so <c>will</c> and <c>can</c> are verbs.
 /// </remarks>
 public enum PartOfSpeech
 {
@@ -84,4 +87,10 @@ public enum PartOfSpeech
     ///     An interjection, for example <c>hello</c>.
     /// </summary>
     Interjection = 7,
+
+    /// <summary>
+    ///     A determiner: an article, possessive, demonstrative, quantifier or number word, for example <c>the</c> or
+    ///     <c>his</c>.
+    /// </summary>
+    Determiner = 8,
 }
