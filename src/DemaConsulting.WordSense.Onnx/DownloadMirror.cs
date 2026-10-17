@@ -1,52 +1,31 @@
 using System.Net;
 using System.Text;
 
-namespace DemaConsulting.WordSense.MiniLM;
+namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
-///     Describes a user-supplied HTTP(S) mirror that is tried before any public download source, plus
-///     the single authentication mechanism (if any) it requires.
+///     Describes an HTTP(S) mirror that is tried before the public download source, plus the single
+///     authentication mechanism (if any) it requires.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     Some environments block public download hosts. A mirror lets such an environment serve the model
-///     files from an internal location. Files are requested at
-///     <c>{BaseUri}/{model-id}/{file-name}</c> where the model id is the literal folder name
-///     <c>all-MiniLM-L6-v2-int8</c> and the files are <c>model_int8.onnx</c> and <c>vocab.txt</c> (for example
-///     <c>https://mirror.example/models/all-MiniLM-L6-v2-int8/vocab.txt</c>); only the base is replaced, the
-///     relative layout stays fixed. Each file must match its pinned SHA-256; a mirror copy that does not
-///     match is discarded and the mirror is skipped for that file, so the next source (Hugging Face, then
-///     GitHub) is tried. The mirror can be configured programmatically through
-///     <see cref="WordSenseModelDownloaderOptions.Mirror"/> or through the environment variables named by
+///     files from an internal location. Files are requested at <c>{BaseUri}/{model-id}/{file-name}</c> where the
+///     model id is the literal folder name of the model (for example <c>all-MiniLM-L6-v2-int8</c>). Each file must
+///     match its pinned SHA-256; a mirror copy that does not match is discarded and the next source is tried. The
+///     mirror comes from a <c>MirrorOptions</c> value or, when none is given, from the environment variables named by
 ///     <see cref="UrlEnvironmentVariable"/>, <see cref="UserEnvironmentVariable"/>,
-///     <see cref="PasswordEnvironmentVariable"/> and <see cref="BearerTokenEnvironmentVariable"/>; the
-///     programmatic option wins when both are present.
+///     <see cref="PasswordEnvironmentVariable"/> and <see cref="BearerTokenEnvironmentVariable"/>.
 ///     </para>
 ///     <para>
 ///     <see cref="Credentials"/> (HTTP Basic) and <see cref="BearerToken"/> are mutually exclusive and are
 ///     sent preemptively only to requests whose scheme, host and port equal the mirror's own base location,
-///     so a redirect to another origin never receives them (see
-///     <see cref="WordSenseModelDownloaderOptions.HttpClient"/> for caller-supplied clients). Because they are sent without a challenge, they are rejected for plain
-///     <c>http</c> mirrors unless the host is a loopback address. The base URI must be absolute, use
-///     <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
+///     so a redirect to another origin never receives them. Because they are sent without a challenge, they are
+///     rejected for plain <c>http</c> mirrors unless the host is a loopback address. The base URI must be absolute,
+///     use <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
 ///     </para>
 /// </remarks>
-/// <example>
-///     <code>
-///     // Explicit mirror with a bearer token (sent only to the mirror's own origin)
-///     var mirror = new DownloadMirror(new Uri("https://models.example.com/wordsense"), bearerToken: "token");
-///
-///     // Or read WORDSENSE_MIRROR_URL (and optional credentials) from the environment; null when unset
-///     DownloadMirror? fromEnvironment = DownloadMirror.FromEnvironment(Environment.GetEnvironmentVariable);
-///
-///     var options = new MiniLMWordSenseOptions
-///     {
-///         Downloader = new WordSenseModelDownloaderOptions { Mirror = mirror },
-///     };
-///     using var classifier = await MiniLMWordSense.CreateClassifierAsync(options);
-///     </code>
-/// </example>
-public sealed record DownloadMirror
+internal sealed record DownloadMirror
 {
     /// <summary>
     ///     The name of the environment variable that supplies the mirror base URL.
@@ -146,6 +125,26 @@ public sealed record DownloadMirror
     ///     Gets the bearer token, or null when none is needed.
     /// </summary>
     public string? BearerToken { get; }
+
+    /// <summary>
+    ///     Builds a mirror from the options a caller passed.
+    /// </summary>
+    /// <param name="options">The mirror options.</param>
+    /// <returns>The validated mirror.</returns>
+    /// <exception cref="ArgumentException">Thrown when the options are invalid.</exception>
+    public static DownloadMirror FromOptions(MirrorOptions options)
+    {
+        ArgumentNullException.ThrowIfNull(options);
+        return new DownloadMirror(options.BaseUri, options.Credentials as NetworkCredential ?? ToNetworkCredential(options), options.BearerToken);
+    }
+
+    /// <summary>
+    ///     Gets the credential of the options for the base URI as a basic-auth credential, when it has one.
+    /// </summary>
+    /// <param name="options">The mirror options.</param>
+    /// <returns>The credential, or null.</returns>
+    private static NetworkCredential? ToNetworkCredential(MirrorOptions options) =>
+        options.Credentials?.GetCredential(options.BaseUri, "Basic");
 
     /// <summary>
     ///     Builds a mirror from environment variables, or returns null when no mirror URL is configured.

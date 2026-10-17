@@ -1,26 +1,37 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     One possible answer for a word: its lemma, its part of speech and, for a heteronym, its pronunciation.
+///     One possible sense of a word: its lemma, its part of speech and, for a heteronym, its pronunciation meaning.
 /// </summary>
 /// <remarks>
-///     The classifier matches a word as written to its lemma through the table's known forms, so inflected
-///     forms resolve to their base form: the word <c>records</c> has the lemma <c>record</c>. A dictionary answer
-///     (one part of speech, no context needed) has a null <see cref="Pronunciation"/>.
+///     <para>
+///     A lemma is the dictionary base form of a word, so the word <c>records</c> has the lemma <c>record</c>. A
+///     lemma is a heteronym when its senses have at least two distinct meanings that are pronounced differently, such
+///     as <c>lead</c> (to guide) and <c>lead</c> (the metal); only then do <see cref="Meaning"/> and
+///     <see cref="Respelling"/> carry values.
+///     </para>
+///     <para>
+///     For speech synthesis, key your own pronunciation lexicon on the pair (<see cref="Lemma"/>,
+///     <see cref="Meaning"/>): the meaning is the stable value and the respelling is a human-readable hint.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     using var classifier = WordSenseClassifier.Create();
-///     foreach (WordDetails candidate in classifier.GetCandidates("record"))
+///     foreach (WordDetails sense in Words.Find("lead"))
 ///     {
-///         Console.WriteLine($"{candidate.Lemma}: {candidate.PartOfSpeech}, {candidate.Pronunciation?.Meaning ?? "-"}");
+///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, {sense.Meaning ?? "-"}, {sense.Respelling ?? "-"}");
 ///     }
 ///     </code>
 /// </example>
 /// <param name="Lemma">The lower-case base form of the word, for example <c>record</c> for <c>records</c>.</param>
 /// <param name="PartOfSpeech">The part of speech.</param>
-/// <param name="Pronunciation">
-///     The pronunciation, or <see langword="null"/> when the lemma is not a heteronym (a lemma is a heteronym when its
-///     senses have at least two distinct meanings).
+/// <param name="Meaning">
+///     A short identifier of the meaning that determines the pronunciation, for example <c>bend</c> or <c>weapon</c>
+///     for <c>bow</c>, or <see langword="null"/> when the lemma is not a heteronym. Lower-case ASCII letters, digits
+///     and hyphens, starting with a letter.
 /// </param>
-public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, Pronunciation? Pronunciation);
+/// <param name="Respelling">
+///     A plain-letter respelling of the pronunciation (for example <c>REK-urd</c> for the noun <c>record</c>), or
+///     <see langword="null"/> when there is none. ASCII letters, hyphens and apostrophes only; it is not IPA.
+/// </param>
+public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string? Meaning, string? Respelling);

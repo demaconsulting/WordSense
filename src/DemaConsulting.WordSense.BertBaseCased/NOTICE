@@ -1,0 +1,8 @@
+DemaConsulting.WordSense.BertBaseCased
+
+Copyright DEMA Consulting. Licensed under the MIT License.
+
+The embedded weights (weights.bin) were trained against features of the encoder bert-base-cased (Apache License 2.0,
+Google, https://huggingface.co/google-bert/bert-base-cased). The encoder itself, an int8 dynamically quantized ONNX
+export without its masked-language head, is not part of this package; it is downloaded on first use from the
+repository's model/bert-base-cased-int8 folder or a mirror. See that folder's README.md for its provenance and license.

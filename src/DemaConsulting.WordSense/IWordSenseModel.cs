@@ -1,78 +1,127 @@
+using System.Net;
+
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     Advanced: an encoder model that turns a word in its context into a vector, so the classifier can choose
-///     between the senses of a lemma. Each model has its own package, its own embedding space and its own
-///     <see cref="WordSenseWeightsTable"/>.
+///     A word-sense model: something that can provide an <see cref="IWordSenseClassifier"/>.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The core package has no encoder of its own: without a model the classifier still answers from the lexicon
-///     (single-sense words and the candidates of ambiguous ones). A model package supplies an implementation, such as
-///     the MiniLM package's <c>MiniLMWordSenseModel</c>, and the weights table trained for it. The model owns everything
-///     that is specific to the encoder: its tokenizer, its sequence window and its pooling of sub-word vectors.
+///     Model packages provide implementations: <c>DemaConsulting.WordSense.MiniLM</c> and
+///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once, and
+///     <c>DemaConsulting.WordSense.Basic</c> needs no model files at all. The usual sequence is to call
+///     <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts as needed.
 ///     </para>
 ///     <para>
-///     A weights table is only meaningful for the exact model it was trained with, so a model names itself by
-///     <see cref="ModelId"/> and <see cref="ModelSha256"/>, which together are the identity a weights table must carry.
-///     <see cref="EnsureWeightsMatch"/> compares that identity, and the classifier calls it before it accepts a table.
-///     Implementations must be safe for concurrent calls, because one classifier shares its model between all of its callers.
+///     A model is thread-safe for concurrent classification. Dispose it once, after every call has finished; a
+///     classification that needs the model after disposal throws <see cref="ObjectDisposedException"/>.
 ///     </para>
 /// </remarks>
+/// <example>
+///     <code>
+///     using IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
+///     await model.EnsureModelAsync(null, CancellationToken.None);
+///     IWordSenseClassifier classifier = model.Create();
+///     WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"], CancellationToken.None);
+///     Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
+///     </code>
+/// </example>
 public interface IWordSenseModel : IDisposable
 {
     /// <summary>
-    ///     Gets the identifier of the model, for example <c>all-MiniLM-L6-v2-int8</c>; it is the folder name of the model
-    ///     everywhere and the <see cref="WordSenseWeightsTable.ModelId"/> of its weights table.
+    ///     Makes sure every file the model needs is present locally and verified, downloading what is missing.
     /// </summary>
-    string ModelId { get; }
+    /// <param name="mirror">
+    ///     A mirror to try before the public source, or <see langword="null"/> to use the mirror configured by the
+    ///     <c>WORDSENSE_MIRROR_URL</c> environment variable (and its credential variables), if any. Ignored by a model
+    ///     that needs no files.
+    /// </param>
+    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <returns>A task that completes when the model files are ready.</returns>
+    /// <remarks>
+    ///     Files that are already present and valid are never downloaded again. Concurrent calls share one download.
+    ///     A failed call can be retried.
+    /// </remarks>
+    /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
+    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained from any source.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    Task EnsureModelAsync(MirrorOptions? mirror, CancellationToken cancellationToken);
 
     /// <summary>
-    ///     Gets the lower-case hexadecimal SHA-256 of the model file, which is the
-    ///     <see cref="WordSenseWeightsTable.ModelSha256"/> of the weights table trained for it.
+    ///     Creates a classifier on this model.
     /// </summary>
-    string ModelSha256 { get; }
-
-    /// <summary>
-    ///     Gets the size of the vectors the model produces.
-    /// </summary>
-    int HiddenSize { get; }
-
-    /// <summary>
-    ///     Encodes the words as one running text and returns a vector for each requested target word in that context.
-    /// </summary>
-    /// <param name="words">All words of the text, in order; the context of every target.</param>
-    /// <param name="targets">The indexes into <paramref name="words"/> of the words to return a vector for.</param>
-    /// <param name="cancellationToken">A token that cancels the call before inference starts.</param>
-    /// <returns>
-    ///     One vector of <see cref="HiddenSize"/> values per target, parallel to <paramref name="targets"/>: the
-    ///     contextual embedding of the target word, not centered or normalized. An entry is null when the model has no
-    ///     embedding for that word, for example because it produces no tokens.
-    /// </returns>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="words"/> or <paramref name="targets"/> is null.</exception>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when a target is not an index of <paramref name="words"/>.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is already cancelled.</exception>
+    /// <returns>A classifier that shares this model and is safe for concurrent use.</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the model files are not available; call <see cref="EnsureModelAsync"/> first.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    ValueTask<double[]?[]> EncodeAsync(IReadOnlyList<string> words, IReadOnlyList<int> targets, CancellationToken cancellationToken);
+    IWordSenseClassifier Create();
+}
+
+/// <summary>
+///     Describes a user-supplied HTTP(S) mirror that is tried before the public download source, plus where downloaded
+///     files are stored.
+/// </summary>
+/// <remarks>
+///     <para>
+///     Some environments block public download hosts. A mirror serves the model files from an internal location. A
+///     file is requested at <c>{BaseUri}/{model-id}/{file-name}</c>, where the model id is the folder name of the model
+///     (for example <c>all-MiniLM-L6-v2-int8</c>). Each file must match its pinned SHA-256; a mirror copy that does not
+///     match is discarded and the next source is tried.
+///     </para>
+///     <para>
+///     <see cref="BearerToken"/> and <see cref="Credentials"/> are mutually exclusive and are sent only to requests
+///     whose scheme, host and port equal those of <see cref="BaseUri"/>. Because they are sent without a challenge,
+///     they are rejected for a plain <c>http</c> mirror unless the host is a loopback address. The base URI must be
+///     absolute, use <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
+///     </para>
+///     <para>
+///     When no mirror is passed to <see cref="IWordSenseModel.EnsureModelAsync"/>, the variables
+///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one.
+///     </para>
+/// </remarks>
+/// <example>
+///     <code>
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"))
+///     {
+///         BearerToken = "token",
+///         Timeout = TimeSpan.FromMinutes(2),
+///     };
+///     </code>
+/// </example>
+/// <param name="BaseUri">The absolute <c>http</c> or <c>https</c> base location of the mirror.</param>
+public sealed record MirrorOptions(Uri BaseUri)
+{
+    /// <summary>
+    ///     Gets the bearer token, or null when none is needed. Exclusive with <see cref="Credentials"/>.
+    /// </summary>
+    public string? BearerToken { get; init; }
 
     /// <summary>
-    ///     Checks that a weights table was trained with this model.
+    ///     Gets the HTTP Basic credential, or null when none is needed. Exclusive with <see cref="BearerToken"/>.
     /// </summary>
-    /// <param name="weights">The weights table.</param>
-    /// <exception cref="ArgumentNullException">Thrown when <paramref name="weights"/> is null.</exception>
-    /// <exception cref="WordSenseModelMismatchException">
-    ///     Thrown when the table names another model identifier or model file, or its dimension differs from
-    ///     <see cref="HiddenSize"/>.
-    /// </exception>
-    void EnsureWeightsMatch(WordSenseWeightsTable weights)
+    public ICredentials? Credentials { get; init; }
+
+    /// <summary>
+    ///     Gets the directory beneath which model folders are stored, or null for the per-user default
+    ///     (<c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>).
+    /// </summary>
+    public string? StoreRoot { get; init; }
+
+    /// <summary>
+    ///     Gets the longest time a single download attempt of a single file may take, or null for 5 minutes.
+    /// </summary>
+    public TimeSpan? Timeout { get; init; }
+
+    /// <summary>
+    ///     Writes the members without ever printing the bearer token or a credential.
+    /// </summary>
+    /// <param name="builder">The builder receiving the text.</param>
+    /// <returns>Always true.</returns>
+    private bool PrintMembers(System.Text.StringBuilder builder)
     {
-        ArgumentNullException.ThrowIfNull(weights);
-        if (!string.Equals(weights.ModelId, ModelId, StringComparison.Ordinal) ||
-            !string.Equals(weights.ModelSha256, ModelSha256, StringComparison.OrdinalIgnoreCase) ||
-            weights.Dimension != HiddenSize)
-        {
-            throw new WordSenseModelMismatchException(
-                "The weights table was trained with a different encoder model than the one supplied.");
-        }
+        builder.Append($"{nameof(BaseUri)} = {BaseUri}, ");
+        builder.Append($"{nameof(BearerToken)} = {(BearerToken is null ? "null" : "***")}, ");
+        builder.Append($"{nameof(Credentials)} = {(Credentials is null ? "null" : "***")}");
+        return true;
     }
 }

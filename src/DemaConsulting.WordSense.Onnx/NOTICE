@@ -1,0 +1,7 @@
+DemaConsulting.WordSense.Onnx
+
+Copyright DEMA Consulting. Licensed under the MIT License.
+
+This package depends on Microsoft.ML.OnnxRuntime (MIT License, Copyright Microsoft Corporation), which is installed as a
+separate NuGet dependency and is not redistributed in this package. The WordPiece tokenizer follows the BERT reference
+implementation (Apache License 2.0, Google); no code from it is included.

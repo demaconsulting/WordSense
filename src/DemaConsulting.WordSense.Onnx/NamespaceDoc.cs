@@ -1,0 +1,25 @@
+namespace DemaConsulting.WordSense.Onnx;
+
+/// <summary>
+///     The shared ONNX Runtime implementation behind the encoder model packages of DemaConsulting.WordSense.
+/// </summary>
+/// <remarks>
+///     <para>
+///     Package: the NuGet package <c>DemaConsulting.WordSense.Onnx</c>, which targets <c>net8.0</c>, <c>net9.0</c> and
+///     <c>net10.0</c>; it depends on <c>DemaConsulting.WordSense</c> and ONNX Runtime. You normally do not reference it
+///     directly: <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c> bring it in.
+///     Its single public type is <see cref="OnnxWordSenseModel"/>, the base class of those models. It owns the model files
+///     (found in a directory you supply, in the per-user store, on a mirror, or on GitHub, each verified against a
+///     pinned SHA-256), the WordPiece tokenizer and the ONNX session. See
+///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Onnx.
+///     </para>
+///     <para>
+///     Offline and air-gapped use: fetch the model files of a model package (listed under <c>model/</c> in the repository,
+///     https://github.com/demaconsulting/WordSense/tree/main/model) on a machine with network access, copy them to the
+///     target machine and pass their directory to the model's constructor. For a corporate mirror pass a
+///     <see cref="MirrorOptions"/> to <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, or set the environment variables
+///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{model-id}/{file}</c>.
+///     </para>
+/// </remarks>
+internal static class NamespaceDoc;

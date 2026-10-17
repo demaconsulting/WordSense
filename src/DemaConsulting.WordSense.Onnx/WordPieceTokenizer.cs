@@ -1,7 +1,7 @@
 using System.Globalization;
 using System.Text;
 
-namespace DemaConsulting.WordSense.MiniLM;
+namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
 ///     A managed implementation of the BERT uncased WordPiece tokenizer used by the MiniLM encoder.
@@ -32,16 +32,23 @@ internal sealed class WordPieceTokenizer
     private readonly Dictionary<string, int> _vocabulary;
 
     /// <summary>
+    ///     Whether text is lower-cased and stripped of accents (an uncased model) or kept as written (a cased model).
+    /// </summary>
+    private readonly bool _lowerCase;
+
+    /// <summary>
     ///     Initializes a new instance of the <see cref="WordPieceTokenizer"/> class.
     /// </summary>
     /// <param name="vocabulary">The vocabulary entries; the id of an entry is its zero-based position.</param>
+    /// <param name="lowerCase">True for an uncased model: lower-case and strip accents; false for a cased model.</param></param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="vocabulary"/> is null.</exception>
     /// <exception cref="ArgumentException">
     ///     Thrown when the vocabulary lacks <c>[UNK]</c>, <c>[CLS]</c> or <c>[SEP]</c>.
     /// </exception>
-    public WordPieceTokenizer(IEnumerable<string> vocabulary)
+    public WordPieceTokenizer(IEnumerable<string> vocabulary, bool lowerCase = true)
     {
         ArgumentNullException.ThrowIfNull(vocabulary);
+        _lowerCase = lowerCase;
 
         // Index the vocabulary; the first occurrence of an entry wins like the reference implementation
         _vocabulary = new Dictionary<string, int>(StringComparer.Ordinal);
@@ -77,12 +84,13 @@ internal sealed class WordPieceTokenizer
     ///     Creates a tokenizer from a <c>vocab.txt</c> file with one entry per line.
     /// </summary>
     /// <param name="path">Path of the vocabulary file.</param>
+    /// <param name="lowerCase">True for an uncased model; false for a cased model.</param>
     /// <returns>A new tokenizer.</returns>
     /// <exception cref="IOException">Thrown when the file cannot be read.</exception>
-    public static WordPieceTokenizer FromFile(string path)
+    public static WordPieceTokenizer FromFile(string path, bool lowerCase = true)
     {
         // File.ReadLines strips both CRLF and LF so a checkout with either line ending behaves identically
-        return new WordPieceTokenizer(File.ReadLines(path, Encoding.UTF8));
+        return new WordPieceTokenizer(File.ReadLines(path, Encoding.UTF8), lowerCase);
     }
 
     /// <summary>
@@ -186,7 +194,7 @@ internal sealed class WordPieceTokenizer
     /// </remarks>
     /// <param name="text">The original text.</param>
     /// <returns>The normalized code points with their original spans.</returns>
-    private static List<Element> Normalize(string text)
+    private List<Element> Normalize(string text)
     {
         var result = new List<Element>(text.Length + 8);
         var index = 0;
@@ -217,7 +225,7 @@ internal sealed class WordPieceTokenizer
             {
                 // Ideographs are surrounded by spaces so each becomes its own word
                 result.Add(new Element(new Rune(' '), start, end));
-                result.Add(new Element(Rune.ToLowerInvariant(rune), start, end));
+                result.Add(new Element(_lowerCase ? Rune.ToLowerInvariant(rune) : rune, start, end));
                 result.Add(new Element(new Rune(' '), start, end));
             }
             else
@@ -236,8 +244,15 @@ internal sealed class WordPieceTokenizer
     /// <param name="rune">The original code point.</param>
     /// <param name="start">The original start offset.</param>
     /// <param name="end">The original end offset.</param>
-    private static void AddStripped(List<Element> result, Rune rune, int start, int end)
+    private void AddStripped(List<Element> result, Rune rune, int start, int end)
     {
+        // A cased model keeps the text as written, accents included
+        if (!_lowerCase)
+        {
+            result.Add(new Element(rune, start, end));
+            return;
+        }
+
         // Fast path: ASCII has no combining marks and lower-casing is trivial
         if (rune.IsAscii)
         {
