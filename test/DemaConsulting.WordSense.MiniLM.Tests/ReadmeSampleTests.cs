@@ -14,8 +14,7 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 /// </remarks>
 public class ReadmeSampleTests
 {
-    private const string MiniLMUsings = "using DemaConsulting.WordSense;\nusing DemaConsulting.WordSense.MiniLM;\n\n";
-    private const string BasicUsings = "using DemaConsulting.WordSense;\nusing DemaConsulting.WordSense.Basic;\n\n";
+    private const string Usings = "using DemaConsulting.WordSense;\nusing DemaConsulting.WordSense.Basic;\n\n";
 
     private static async Task<(string Readme, string Source)> ReadAsync()
     {
@@ -38,12 +37,11 @@ public class ReadmeSampleTests
     {
         var (readme, source) = await ReadAsync();
 
-        Assert.Equal(Compiled(source, "readme", MiniLMUsings), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
-        Assert.Equal(Compiled(source, "basic", BasicUsings), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:basic -->", "csharp")));
+        Assert.Equal(Compiled(source, "readme", Usings), DocSampleText.Normalize(DocSampleText.FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
     }
 
     /// <summary>
-    ///     The README marks exactly the two samples that are checked.
+    ///     The README marks exactly the one sample that is checked.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
@@ -51,25 +49,27 @@ public class ReadmeSampleTests
     {
         var (readme, _) = await ReadAsync();
 
-        Assert.Equal(["readme", "basic"], DocSampleText.SampleNames(readme));
+        Assert.Equal(["readme"], DocSampleText.SampleNames(readme));
     }
 
     /// <summary>
-    ///     The documented MiniLM output equals the output of the sample run against the real model.
+    ///     The two commented alternatives of the README sample name model classes that exist and can be created.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task WordSense_Readme_MiniLMOutput_MatchesReadme()
+    public async Task WordSense_Readme_CommentedAlternatives_NameExistingModels()
     {
-        var (readme, _) = await ReadAsync();
-        var documented = DocSampleText.FencedBlock(readme, "<!-- output:readme -->", "text");
-        FailWhenNotGenerated(documented);
-        DocSampleText.RequireMiniLMDirectory();
+        var (_, source) = await ReadAsync();
+        var sample = DocSampleText.Between(source, "// <sample:readme>", "// </sample:readme>");
 
-        var sample = new ReadmeSample();
-        await RunInvariantAsync(sample.RunMiniLMAsync);
+        Assert.Contains("// using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;", sample, StringComparison.Ordinal);
+        Assert.Contains("// using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;", sample, StringComparison.Ordinal);
 
-        Assert.Equal(DocSampleText.Normalize(sample.Output), DocSampleText.Normalize(documented));
+        // The alternatives compile as written: both classes have a parameterless constructor
+        using var miniLM = new MiniLMWordSenseModel();
+        using var bertBaseCased = new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel();
+        Assert.Equal("all-MiniLM-L6-v2-int8", miniLM.ModelId);
+        Assert.Equal("bert-base-cased-int8", bertBaseCased.ModelId);
     }
 
     /// <summary>
@@ -77,14 +77,34 @@ public class ReadmeSampleTests
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task WordSense_Readme_BasicOutput_MatchesReadme()
+    public Task WordSense_Readme_BasicOutput_MatchesReadme() => CheckOutputAsync("basic", "basic", null);
+
+    /// <summary>
+    ///     The documented MiniLM output equals the output of the sample run against the real model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public Task WordSense_Readme_MiniLMOutput_MatchesReadme() => CheckOutputAsync("minilm", "minilm", "all-MiniLM-L6-v2-int8");
+
+    /// <summary>
+    ///     The documented BertBaseCased output equals the output of the sample run against the real model.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public Task WordSense_Readme_BertBaseCasedOutput_MatchesReadme() => CheckOutputAsync("bertbasecased", "bertbasecased", "bert-base-cased-int8");
+
+    private static async Task CheckOutputAsync(string marker, string modelKey, string? modelId)
     {
         var (readme, _) = await ReadAsync();
-        var documented = DocSampleText.FencedBlock(readme, "<!-- output:basic -->", "text");
+        var documented = DocSampleText.FencedBlock(readme, $"<!-- output:{marker} -->", "text");
         FailWhenNotGenerated(documented);
+        if (modelId is not null)
+        {
+            DocSampleText.RequireModelDirectory(modelId);
+        }
 
         var sample = new ReadmeSample();
-        await RunInvariantAsync(sample.RunBasicAsync);
+        await RunInvariantAsync(() => sample.RunAsync(modelKey));
 
         Assert.Equal(DocSampleText.Normalize(sample.Output), DocSampleText.Normalize(documented));
     }

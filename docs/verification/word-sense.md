@@ -20,7 +20,7 @@ test project verifies the subsystem of that package through its public API and i
   (`OnnxWordSenseModelTests`, `OnnxClassifierTests`, `OnnxEncoderTests`) use test doubles or the committed int8 model.
 - `test/DemaConsulting.WordSense.MiniLM.Tests` and `test/DemaConsulting.WordSense.BertBaseCased.Tests` verify each
   model package against the real int8 model and the weights embedded in the package. The MiniLM tests also compile the
-  README sample against the public API.
+  README sample against the public API and run it against the Basic, MiniLM and BertBaseCased models.
 - `test/WordSense.Builder.Tests` verifies the builder commands with synthetic data in temporary directories.
 
 The system-level evidence is the combination of these projects: the end-to-end classification scenarios of the model
@@ -84,10 +84,12 @@ or dimension is refused when loaded.
 
 ### Documentation Samples Compile and Run
 
-The README samples are extracted by marker from `README.md` and compared with the compiled copies in the test projects
+The README sample is extracted by marker from `README.md` and compared with the compiled copies in the test projects
 after normalizing line
-endings and trailing white space. The set of markers must equal the set of checked samples. Samples that need a model
-run against the committed model and give the documented results. The user guide samples are reviewed with the guide
+endings and trailing white space. The set of markers must equal the set of checked samples. The sample runs against
+each model (a stand-in model class wraps Basic, or the committed MiniLM or BertBaseCased model) and gives the output
+documented for it; the two commented alternative lines are checked as text and their model classes are created.
+Tests that need model files are skipped when the files are absent. The user guide samples are reviewed with the guide
 and are not compiled. The XML documentation examples of every package are
 extracted from the shipped XML files and compiled against the public API (the `XmlDocExampleTests` of each test
 project).

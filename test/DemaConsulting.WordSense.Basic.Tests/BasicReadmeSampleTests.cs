@@ -6,9 +6,9 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 ///     Doc-check tests that keep the Basic README usage sample and its documented output from drifting.
 /// </summary>
 /// <remarks>
-///     <c>README.md</c> marks the sample with <c>&lt;!-- sample:basic --&gt;</c> before the code block and
+///     <c>README.md</c> marks the sample with <c>&lt;!-- sample:readme --&gt;</c> before the code block and
 ///     <c>&lt;!-- output:basic --&gt;</c> before the output block. The code block must equal the using directives plus
-///     the region of <c>BasicReadmeSample.cs</c> between the <c>&lt;sample:basic&gt;</c> markers, and the output block
+///     the region of <c>BasicReadmeSample.cs</c> between the <c>&lt;sample:readme&gt;</c> markers, and the output block
 ///     must equal what that code writes.
 /// </remarks>
 public class BasicReadmeSampleTests
@@ -45,8 +45,8 @@ public class BasicReadmeSampleTests
 
     private static string CompiledSample(string source)
     {
-        const string begin = "// <sample:basic>";
-        const string end = "// </sample:basic>";
+        const string begin = "// <sample:readme>";
+        const string end = "// </sample:readme>";
         var from = source.IndexOf(begin, StringComparison.Ordinal);
         var to = source.IndexOf(end, StringComparison.Ordinal);
         Assert.True(from >= 0 && to > from, "The sample markers were not found.");
@@ -68,7 +68,7 @@ public class BasicReadmeSampleTests
         var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), token);
         var source = await File.ReadAllTextAsync(Path.Combine(root, "test", "DemaConsulting.WordSense.Basic.Tests", "BasicReadmeSample.cs"), token);
 
-        Assert.Equal(CompiledSample(source), Normalize(FencedBlock(readme, "<!-- sample:basic -->", "csharp")));
+        Assert.Equal(CompiledSample(source), Normalize(FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
     }
 
     /// <summary>

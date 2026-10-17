@@ -1,5 +1,4 @@
 using System.Text;
-using DemaConsulting.WordSense.Basic;
 
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
@@ -7,15 +6,21 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 ///     The code of the README usage samples, compiled and run by <see cref="ReadmeSampleTests"/>.
 /// </summary>
 /// <remarks>
-///     The README code blocks (marked <c>&lt;!-- sample:readme --&gt;</c> and <c>&lt;!-- sample:basic --&gt;</c>) must
-///     equal the using directives, a blank line and the text between the matching <c>&lt;sample:...&gt;</c> markers,
-///     and the lines a sample writes must equal the text block marked <c>&lt;!-- output:... --&gt;</c>. The member
-///     named <c>Console</c> only captures the lines, so the samples read like ordinary console code. The nested
-///     <c>MiniLMWordSenseModel</c> stands in for the real model class so that the test needs no download: it uses the
-///     committed model directory.
+///     The README code block (marked <c>&lt;!-- sample:readme --&gt;</c>) must equal the using directives, a blank
+///     line and the text between the <c>&lt;sample:readme&gt;</c> markers, and the lines the sample writes for each
+///     model must equal the text blocks marked <c>&lt;!-- output:basic --&gt;</c>, <c>&lt;!-- output:minilm --&gt;</c>
+///     and <c>&lt;!-- output:bertbasecased --&gt;</c>. The member named <c>Console</c> only captures the lines, so the
+///     sample reads like ordinary console code. The nested <c>BasicWordSenseModel</c> stands in for the model that
+///     the sample creates: it wraps the Basic, MiniLM or BertBaseCased model chosen by the run, and the encoder models
+///     use the committed model directory, so that the test needs no download.
 /// </remarks>
 internal sealed class ReadmeSample
 {
+    /// <summary>
+    ///     The model the stand-in class wraps in the current run.
+    /// </summary>
+    private static readonly AsyncLocal<string> CurrentModel = new();
+
     private readonly StringBuilder _output = new();
 
     private Capture Console => new(_output);
@@ -26,18 +31,25 @@ internal sealed class ReadmeSample
     public string Output => _output.ToString();
 
     /// <summary>
-    ///     The MiniLM README sample. It runs against the committed model through the stand-in model class.
+    ///     The README sample. It runs against the Basic model or against the committed model of an encoder.
     /// </summary>
+    /// <param name="modelId">The model to run: <c>basic</c>, <c>minilm</c> or <c>bertbasecased</c>.</param>
     /// <returns>A task that completes when the sample has run.</returns>
-    public async Task RunMiniLMAsync()
+    public async Task RunAsync(string modelId)
     {
+        CurrentModel.Value = modelId;
+
+        // The sample shows the alternative model lines as comments on purpose
+#pragma warning disable S125
         // <sample:readme>
-        // Create the model and make sure its files are available (downloaded and verified on first use)
-        using var model = new MiniLMWordSenseModel();
+        // Basic needs no download; MiniLM and BertBaseCased need their package and using, and download on first use
+        using var model = new BasicWordSenseModel();
+        // using var model = new MiniLMWordSenseModel();         // using DemaConsulting.WordSense.MiniLM;
+        // using var model = new BertBaseCasedWordSenseModel();  // using DemaConsulting.WordSense.BertBaseCased;
         await model.EnsureModelAsync();
 
         // Classify the words of a sentence whose "bow" and "record" are heteronyms
-        var words = "The hunter fired an arrow from his bow so I will record a record".Split(' ');
+        var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
         var results = await model.ClassifyAsync(words);
 
         // Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
@@ -49,40 +61,24 @@ internal sealed class ReadmeSample
         }
 
         // </sample:readme>
+#pragma warning restore S125
     }
 
     /// <summary>
-    ///     The Basic README sample. It needs no model files and no network access.
+    ///     Stands in for the model class of the sample, so that the sample runs against every model without a
+    ///     download.
     /// </summary>
-    /// <returns>A task that completes when the sample has run.</returns>
-    public async Task RunBasicAsync()
+    private sealed class BasicWordSenseModel : IWordSenseModel
     {
-        // <sample:basic>
-        // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
-        using var model = new BasicWordSenseModel();
-        await model.EnsureModelAsync();
-
-        var words = "They said so and the hunter fired an arrow from his bow at a deer".Split(' ');
-        var results = await model.ClassifyAsync(words);
-
-        // Every word of the dictionary has details, the determiners among them;
-        // a word that is not in it has none and a confidence of 0
-        foreach (var result in results)
+        private readonly IWordSenseModel _model = CurrentModel.Value switch
         {
-            var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-            Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}");
-        }
-
-        // </sample:basic>
-    }
-
-    /// <summary>
-    ///     Stands in for the real model class, so that the sample runs without a download.
-    /// </summary>
-    private sealed class MiniLMWordSenseModel : IWordSenseModel
-    {
-        private readonly DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel _model =
-            new(DocSampleText.RequireMiniLMDirectory());
+            "basic" => new DemaConsulting.WordSense.Basic.BasicWordSenseModel(),
+            "minilm" => new DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel(
+                DocSampleText.RequireModelDirectory("all-MiniLM-L6-v2-int8")),
+            "bertbasecased" => new DemaConsulting.WordSense.BertBaseCased.BertBaseCasedWordSenseModel(
+                DocSampleText.RequireModelDirectory("bert-base-cased-int8")),
+            _ => throw new InvalidOperationException("Unknown model for the README sample."),
+        };
 
         /// <inheritdoc />
         public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) =>

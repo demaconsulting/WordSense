@@ -185,7 +185,8 @@ sections:
 
       - id: WordSense-Lib-Documentation
         title: >-
-          The documentation shall show a README usage sample whose code and output are verified against the library,
+          The documentation shall show a README usage sample whose code and output for each model are verified against
+          the library,
           and an appendix that lists every supported lemma with its parts of speech, meanings, respellings and forms
           and is never stale.
         tags: [system]
@@ -197,6 +198,8 @@ sections:
           - WordSense-WordSenseBuilder-Appendix
         tests:
           - WordSense_Readme_CodeBlocks_MatchCompiledSamples
-          - WordSense_Readme_MiniLMOutput_MatchesReadme
           - WordSense_Readme_BasicOutput_MatchesReadme
+          - WordSense_Readme_MiniLMOutput_MatchesReadme
+          - WordSense_Readme_BertBaseCasedOutput_MatchesReadme
+          - WordSense_Readme_CommentedAlternatives_NameExistingModels
           - WordSense_Readme_SampleMarkers_AreAllChecked

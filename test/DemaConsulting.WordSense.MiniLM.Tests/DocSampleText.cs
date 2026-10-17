@@ -32,9 +32,17 @@ internal static partial class DocSampleText
     ///     example in a checkout without Git LFS content).
     /// </summary>
     /// <returns>The directory that holds the real model files.</returns>
-    public static string RequireMiniLMDirectory()
+    public static string RequireMiniLMDirectory() => RequireModelDirectory("all-MiniLM-L6-v2-int8");
+
+    /// <summary>
+    ///     Gets the committed directory of a model or skips the calling test when the files are unavailable (for
+    ///     example in a checkout without Git LFS content).
+    /// </summary>
+    /// <param name="modelId">The model id, which is the name of the folder under <c>model</c>.</param>
+    /// <returns>The directory that holds the real model files.</returns>
+    public static string RequireModelDirectory(string modelId)
     {
-        var directory = Path.Combine(FindRepositoryRoot(), "model", "all-MiniLM-L6-v2-int8");
+        var directory = Path.Combine(FindRepositoryRoot(), "model", modelId);
         foreach (var name in new[] { "model_int8.onnx", "vocab.txt" })
         {
             var path = Path.Combine(directory, name);

@@ -30,7 +30,7 @@ This user guide covers:
 <!-- markdownlint-enable MD051 -->
 
 The code samples in this guide use only the public API of the packages. The README sample is compiled and run by the
-test suite; the samples in this guide are reviewed with the guide. They assume `ImplicitUsings`,
+test suite for each of the three models; the samples in this guide are reviewed with the guide. They assume `ImplicitUsings`,
 `using DemaConsulting.WordSense;` and `using DemaConsulting.WordSense.MiniLM;`.
 
 # Glossary
@@ -80,7 +80,11 @@ All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a depe
 
 The measured comparison (rounded; the exact table is `model-table.md` of the build notes and the README, and latency,
 first-use time and memory are approximate and machine dependent). "Real text" is the realistic expectation; the holdout
-was written together with the training sentences and is optimistic.
+was written together with the training sentences and is optimistic. The numbers come from the repository's build tool
+(`evaluate <model> --table`), run once per model on one machine with at most two ONNX threads, so use the absolute
+times and memory as relative figures. "Download needed: yes" in the table means that the files are downloaded the
+first time a classification needs the encoder (lazily by `ClassifyAsync`, or earlier by `EnsureModelAsync`); a model
+whose encoder is never needed is never downloaded.
 
 | Model | Best sense, holdout / real text | Download | Latency per sentence | Memory added |
 | ----- | ------------------------------: | -------: | -------------------: | -----------: |

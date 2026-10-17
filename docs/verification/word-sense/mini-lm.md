@@ -15,7 +15,8 @@ once for all models in the Onnx subsystem.
 ### Test Environment
 
 Standard xUnit v3 runner on net8.0, net9.0 and net10.0. The files `model_int8.onnx` and `vocab.txt` under
-`model/all-MiniLM-L6-v2-int8/` (Git LFS) are needed; tests that need them are skipped when the LFS content is absent.
+`model/all-MiniLM-L6-v2-int8/` (Git LFS) are needed, and for the README sample also `model_int8.onnx` and `vocab.txt`
+under `model/bert-base-cased-int8/`; tests that need them are skipped when the LFS content is absent.
 No network access. The ONNX Runtime session of the tests is limited to two intra-op threads.
 
 ### Acceptance Criteria
@@ -38,8 +39,10 @@ and drop zero lemmas.
 #### README Sample Matches and Runs
 
 The code block marked `<!-- sample:readme -->` in `README.md` equals the compiled README sample after normalizing line
-endings and trailing white space, the compiled sample runs against the committed model, and the lines it writes equal
-the block marked `<!-- output:readme -->`. The set of markers in `README.md` must equal the set of checked samples
+endings and trailing white space, and the compiled sample runs with the Basic model, with the committed MiniLM model
+and with the committed BertBaseCased model; the lines it writes equal the blocks marked `<!-- output:basic -->`,
+`<!-- output:minilm -->` and `<!-- output:bertbasecased -->`. The two commented alternatives in the sample name model
+classes that exist and can be created. The set of markers in `README.md` must equal the set of checked samples
 (`ReadmeSampleTests`).
 
 #### XML Documentation Examples Compile

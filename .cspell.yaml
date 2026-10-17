@@ -49,6 +49,7 @@ words:
   - tadvmod
   - nounverb
   - minilm
+  - bertbasecased
   - varints
   - respelling
   - respellings
