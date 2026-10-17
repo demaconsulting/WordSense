@@ -1,8 +1,9 @@
 ---
-# Software System Requirements for WordSense
+# Software System Requirements for WordSense (the core package DemaConsulting.WordSense)
 #
-# These requirements describe the externally visible behavior of the library
-# from the perspective of its consumers, without specifying implementation details.
+# These requirements describe the externally visible behavior of the core library from the perspective of its
+# consumers, without specifying implementation details. The model-dependent behavior (encoder, model download,
+# embedded weights) belongs to the MiniLM package and is specified in word-sense-mini-lm.yaml.
 
 sections:
   - title: Library API
@@ -21,10 +22,11 @@ sections:
           - WordSense-Classifier-Tiles
           - WordSense-Classifier-Answers
           - WordSense-Classifier-Candidates
-          - WordSense-Classifier-LongText
           - WordSense-Classifier-Lifetime
+          - WordSense-Classifier-Validation
           - WordSense-Sense-Words
         tests:
+          - WordSenseClassifier_ClassifyAsync_Text_TokensTileInput
           - WordSense_Classifier_EndToEnd_ClassifiesRecord
           - WordSense_Classifier_EndToEnd_WordListApi
 
@@ -32,7 +34,7 @@ sections:
         title: >-
           The library shall answer the part of speech of common English words that need no context, from an embedded
           dictionary of at least 100,000 words, the plural and third-person (-s) forms of its nouns and verbs and
-          the -ly adverbs of its adjectives, without running the model, and shall list the candidate answers of a
+          the -ly adverbs of its adjectives, without running any model, and shall list the candidate answers of a
           dictionary word that has several parts of speech instead of guessing.
         tags: [system]
         justification: |
@@ -52,8 +54,24 @@ sections:
           - WordSense-Builder-LexiconBuild
           - WordSense-Builder-LexiconEval
         tests:
-          - WordSense_Dictionary_CommonWords_Answered
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSense_Classifier_CommonDictionaryWords_AnsweredFromLexicon
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
+
+      - id: WordSense-Lib-LexiconOnly
+        title: >-
+          The library shall work without any encoder model: a classifier created without a model answers the words
+          the dictionary decides, lists the candidates of every other known word, and abstains for a word that
+          would need context, without requiring a model file, a model package or ONNX Runtime.
+        tags: [system]
+        justification: |
+          Many callers need only the part of speech of unambiguous words, or want to pick their own model later;
+          the core package must be useful, small and free of native dependencies on its own, and it must be
+          honest about what it cannot decide instead of failing or guessing.
+        children:
+          - WordSense-Classifier-LexiconOnly
+        tests:
+          - WordSenseClassifier_Create_LexiconOnly_AnswersSingleSenseWord
+          - WordSenseClassifier_Create_LexiconOnly_ContextualWordAbstainsWithCandidates
 
       - id: WordSense-Lib-Basis
         title: >-
@@ -66,7 +84,7 @@ sections:
         children:
           - WordSense-Classifier-Basis
         tests:
-          - WordSense_Dictionary_CommonWords_Answered
+          - WordSense_Classifier_CommonDictionaryWords_AnsweredFromLexicon
           - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
 
       - id: WordSense-Lib-PartOfSpeech
@@ -151,7 +169,7 @@ sections:
       - id: WordSense-Lib-Abstain
         title: >-
           The library shall abstain instead of guessing when the decision margin of a word is below the
-          abstention threshold stored in the classifier table for its lemma.
+          abstention threshold stored in the weights table for its lemma.
         tags: [system]
         justification: |
           Callers prefer no answer to a wrong answer for ambiguous contexts; a per-lemma margin
@@ -164,101 +182,73 @@ sections:
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
 
       - id: WordSense-Lib-Embedded
-        title: The library shall embed the trained classifier table and verify that it matches the pinned model.
+        title: The library shall embed the lexicon table and verify its integrity when it is loaded.
         tags: [system]
         justification: |
-          Embedding the table makes the library self-contained apart from the model file, and the
-          pinned model digest in the table prevents using a table with a model it was not trained for.
+          Embedding the lexicon makes the library self-contained, and the integrity check prevents a damaged
+          or foreign table from silently producing wrong answers.
         children:
           - WordSense-Table-Format
           - WordSense-Table-Integrity
           - WordSense-Table-Embedded
-          - WordSense-Classifier-Validation
         tests:
-          - WordSense_EmbeddedTable_MatchesPinnedModel
+          - WordSenseTable_LoadEmbedded_RoundTrips
 
-      - id: WordSense-Lib-Encoder
-        title: The library shall compute contextual embeddings of tokenized text with ONNX Runtime.
-        tags: [system]
-        justification: |
-          The embeddings of the surrounding sentence are the evidence for the sense decision; the
-          encoder wraps ONNX Runtime so the rest of the library depends only on a small interface.
-        children:
-          - WordSense-Encoder-Encode
-          - WordSense-Encoder-Identity
-          - WordSense-Encoder-Validation
-          - WordSense-Encoder-Concurrency
-          - WordSense-Tokenizer-Window
-          - WordSense-Tokenizer-Spans
-          - WordSense-OTS-OnnxRuntime-Inference
-        tests:
-          - WordSense_Classifier_EndToEnd_ClassifiesRecord
-
-      - id: WordSense-Lib-ModelDownload
-        title: The library shall obtain missing model files from ordered sources (mirror, Hugging Face, GitHub LFS).
-        tags: [system]
-        justification: |
-          Users in restricted networks need to supply their own mirror, while everyone else gets
-          the files from public hosting. Falling through the list keeps the library working when
-          one host is blocked or unavailable.
-        children:
-          - WordSense-Downloader-Order
-          - WordSense-Downloader-Fallthrough
-          - WordSense-Downloader-AllFail
-          - WordSense-Downloader-Present
-          - WordSense-Downloader-Cancel
-          - WordSense-Downloader-Progress
-          - WordSense-Downloader-Options
-          - WordSense-Downloader-Location
-          - WordSense-Downloader-StoreRoot
-        tests:
-          - WordSenseModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
-          - WordSenseModelDownloader_EnsureModel_NoMirror_HuggingFaceThenLfs
-
-      - id: WordSense-Lib-Mirror
-        title: The library shall support a user download mirror set by environment variables or options.
-        tags: [system]
-        justification: |
-          Enterprises and offline users host the model on their own server; environment variables and
-          options let a deployment point the library at it without code changes.
-        children:
-          - WordSense-Mirror-Validation
-          - WordSense-Mirror-Environment
-          - WordSense-Mirror-Redaction
-          - WordSense-Downloader-MirrorConfig
-          - WordSense-Downloader-Credentials
-        tests:
-          - WordSenseModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
-          - WordSenseModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
-
-      - id: WordSense-Lib-Integrity
-        title: The library shall verify the SHA-256 digest of every model file against pinned values.
-        tags: [system]
-        justification: |
-          A model file that does not match the pinned digest could silently change results or carry
-          malicious content; every source is therefore treated as untrusted until verified.
-        children:
-          - WordSense-Downloader-Integrity
-        tests:
-          - WordSenseModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
-
-      - id: WordSense-Lib-Performance
+      - id: WordSense-Lib-ModelAbstraction
         title: >-
-          The library shall classify a sentence with four ambiguous words with a median latency below two seconds,
-          with one and with four threads.
+          The library shall let a caller supply any encoder model through an abstraction that names the model and
+          returns a vector for each requested word in its context, and shall classify with the model and the
+          weights table supplied for it.
         tags: [system]
         justification: |
-          Interactive callers need classification latency that does not block a user interface;
-          the benchmark enforces the median bound and records the 95th percentile latency for one
-          and four threads. The sentence is fixed (four ambiguous words), and the typical latency is a few milliseconds.
+          Each encoder model has its own embedding space and package; a small abstraction lets the core package
+          stay free of model and runtime dependencies while any model package, or a test double, plugs into the
+          same classifier.
+        children:
+          - WordSense-Model-Contract
+          - WordSense-Model-Match
         tests:
-          - WordSense_Benchmark_ClassifyLatency
+          - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
+          - WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused
+
+      - id: WordSense-Lib-ModelMismatch
+        title: >-
+          The library shall reject a weights table that was not trained for the supplied model or for the lexicon in
+          use, instead of classifying with it.
+        tags: [system]
+        justification: |
+          A weights table is only meaningful in the embedding space of the model it was trained with and for the
+          lexicon it was trained against; mixing them gives silently wrong answers, so the mismatch must be refused
+          up front.
+        children:
+          - WordSense-Classifier-ModelMatch
+          - WordSense-Table-WeightsMatch
+        tests:
+          - WordSenseClassifier_Constructor_Mismatch_Throws
+          - WordSenseWeightsTable_EnsureMatches_OtherLexicon_Throws
+
+      - id: WordSense-Lib-PerModelWeights
+        title: >-
+          The library shall keep the trained per-lemma classifiers of each encoder model in a separate weights table
+          that names its model, its model file digest and the lexicon it belongs to, so that each model has its own
+          table.
+        tags: [system]
+        justification: |
+          Embedding spaces differ between models, so classifiers cannot be shared; one self-describing table per
+          model lets a model package ship its own weights while all packages share one lexicon.
+        children:
+          - WordSense-Table-WeightsFormat
+          - WordSense-Table-WeightsIntegrity
+          - WordSense-Builder-ModelWeights
+        tests:
+          - WordSenseWeightsTable_RoundTrip_PreservesAllValues
+          - WordSenseWeightsTable_Read_AnyByteFlipped_Throws
 
       - id: WordSense-Lib-Reproducible
-        title: The table builder shall produce the same table from the same corpus and model.
+        title: The table builder shall produce the same tables from the same corpus and model.
         tags: [system]
         justification: |
-          A reproducible, deterministic build lets reviewers verify that the embedded table was
+          A reproducible, deterministic build lets reviewers verify that the embedded tables were
           trained from the committed corpus.
         children:
           - WordSense-Builder-Trainer

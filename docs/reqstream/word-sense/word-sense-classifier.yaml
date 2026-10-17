@@ -25,7 +25,7 @@ sections:
           One rule for every word keeps the behavior predictable: whether a word is covered, and by what evidence,
           follows from what the table knows about it and from nothing else.
         tests:
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
           - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
           - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
           - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
@@ -46,18 +46,33 @@ sections:
 
       - id: WordSense-Classifier-Encoder
         title: >-
-          The classifier shall run the encoder only when at least one word of the call resolves to an entry with
-          trained weights, and then once per call when the text fits one encoder window; for longer text it shall
-          run it once per target window (see WordSense-Classifier-LongText).
+          The classifier shall ask the model for vectors only when at least one word of the call resolves to an entry
+          with trained weights, and then once per call for all such words of the text.
         tags: [unit]
         justification: |
           Dictionary answers need no model, so text made only of such words costs no inference time, and a single
-          encoder pass per text keeps latency low.
+          model call per text keeps latency low.
         tests:
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
+          - WordSenseClassifier_ClassifyAsync_NoContextWords_NeverEncodes
           - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
           - WordSenseClassifier_ClassifyAsync_ManyTargets_EncodesOnce
+
+      - id: WordSense-Classifier-LexiconOnly
+        title: >-
+          The classifier shall work without a model and without a weights table: it shall answer the words the
+          dictionary decides, give the candidates of the other known words, and abstain, without failing, for a word
+          that needs context, and shall be creatable in one call that needs neither.
+        tags: [unit]
+        justification: |
+          The core package must be usable on its own; a word that needs a model it does not have is an honest
+          abstention with its candidates, not an error.
+        tests:
+          - WordSenseClassifier_Create_LexiconOnly_AnswersSingleSenseWord
+          - WordSenseClassifier_Create_LexiconOnly_ContextualWordAbstainsWithCandidates
+          - WordSenseClassifier_Constructor_TableWithoutModel_ContextLemmaAbstains
+          - WordSenseClassifier_Dispose_LexiconOnly_IsHarmless
 
       - id: WordSense-Classifier-CasePolicy
         title: >-
@@ -74,6 +89,8 @@ sections:
           - WordSenseClassifier_ClassifyAsync_CasePolicy_SentenceStartIsLookedUp
           - WordSenseClassifier_ClassifyAsync_CasePolicy_MidSentenceCapitalIsUnknown
           - WordSenseClassifier_ClassifyAsync_CasePolicy_PronounIIsLookedUp
+          - WordSenseClassifier_ClassifyAsync_CasePolicy_AppliesToDictionaryWords
+          - WordSenseClassifier_ClassifyAsync_CasePolicy_ContextLemmasAndTextOverload
 
       - id: WordSense-Classifier-UseLexicon
         title: >-
@@ -98,7 +115,7 @@ sections:
           need to tell an unknown word from an abstention.
         tests:
           - WordSenseClassifier_ClassifyAsync_ContextAnswer_HasContextBasisAndCandidates
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
           - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
           - WordSenseClassifier_ClassifyAsync_DerivedPlural_AnswersFromDictionary
           - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
@@ -113,6 +130,7 @@ sections:
           Callers discover what is supported at run time instead of relying on documentation alone.
         tests:
           - WordSenseClassifier_ContextLemmas_And_GetCandidates_AreExposed
+          - WordSenseClassifier_GetCandidates_DictionaryLemma_ReturnsSenses
 
       - id: WordSense-Classifier-Abstain
         title: The classifier shall give no answer when the margin is below the per-lemma threshold.
@@ -138,7 +156,7 @@ sections:
           - WordSenseClassifier_ClassifyAsync_ReportsMarginsAndRunnerUp
           - WordSenseClassifier_ClassifyAsync_ThreeSenses_ReportsRunnerUpMargin
           - WordSenseClassifier_ClassifyAsync_LowMargin_Abstains
-          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutEncoder
+          - WordSenseClassifier_ClassifyAsync_DictionaryWord_AnswersWithoutModel
           - WordSenseClassifier_ClassifyAsync_DictionaryMultiSense_ReturnsCandidates
 
       - id: WordSense-Classifier-Unknown
@@ -156,39 +174,34 @@ sections:
           - WordSenseClassifier_ClassifyAsync_NoKnownWords_DoesNotEncode
           - WordSenseClassifier_ClassifyAsync_UnknownWord_HasBasisNone
 
-      - id: WordSense-Classifier-LongText
-        title: The classifier shall classify texts longer than the model limit using a window around each target.
+      - id: WordSense-Classifier-ModelMatch
+        title: >-
+          The classifier shall refuse a model and a weights table that do not belong together, a weights table that
+          belongs to another lexicon, and a model supplied without weights or weights supplied without a model.
         tags: [unit]
         justification: |
-          Real documents are longer than the model input limit.
+          A mismatched table and model silently produce wrong answers, and half a pair cannot be used at all.
         tests:
-          - WordSenseClassifier_ClassifyAsync_LongText_UsesWindowPerTarget
+          - WordSenseClassifier_Constructor_Mismatch_Throws
+          - WordSenseClassifier_Constructor_ModelWithoutWeights_Throws
 
       - id: WordSense-Classifier-Validation
-        title: >-
-          The classifier shall reject invalid arguments, a table that does not match the encoder model,
-          and a user-supplied model directory whose files do not match the pinned model digests.
+        title: The classifier shall reject invalid arguments and invalid options.
         tags: [unit]
         justification: |
-          A mismatched table and model silently produce wrong answers, and an unverified model directory
-          could supply a different model than the table was trained with.
+          Misuse must fail fast with a documented exception instead of producing wrong answers.
         tests:
           - WordSenseClassifier_Constructor_InvalidArguments_Throw
-          - WordSenseClassifier_Constructor_VocabularyPath_ReadsFileOrThrows
-          - WordSenseClassifier_Constructor_ModelMismatch_Throws
-          - WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
-          - WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
-          - WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel
+          - WordSenseClassifier_Create_InvalidOptions_Throw
 
       - id: WordSense-Classifier-Lifetime
-        title: The classifier shall support cancellation, concurrent use and disposal of an owned encoder.
+        title: The classifier shall support cancellation, concurrent use and disposal of an owned model.
         tags: [unit]
         justification: |
           Services call the classifier from many threads and need to cancel long requests.
         tests:
           - WordSenseClassifier_ClassifyAsync_Cancelled_Throws
           - WordSenseClassifier_ClassifyAsync_Concurrent_IsConsistent
-          - WordSenseClassifier_Dispose_OwnedEncoder_IsDisposed
-          - WordSenseClassifier_ClassifyAsync_CancelledDuringEncode_StopsBeforeNextTarget
-          - WordSenseClassifier_ClassifyAsync_CancelledBetweenTargets_StopsAfterFirstWindow
-          - WordSenseClassifier_Dispose_OwnedEncoder_LaterCallsBehaveAsDocumented
+          - WordSenseClassifier_Dispose_OwnedModel_IsDisposed
+          - WordSenseClassifier_ClassifyAsync_CancelledDuringEncode_Throws
+          - WordSenseClassifier_Dispose_OwnedModel_LaterCallsBehaveAsDocumented

@@ -11,4 +11,8 @@ package WordSense {
     view WordSenseView {
         expose WordSenseSystem;
     }
+
+    view WordSenseMiniLMView {
+        expose WordSenseMiniLMSystem;
+    }
 }

@@ -1,0 +1,31 @@
+---
+# WordSenseModel unit requirements (the IWordSenseModel abstraction of the core package)
+
+sections:
+  - title: WordSenseModel Requirements
+    requirements:
+      - id: WordSense-Model-Contract
+        title: >-
+          The model abstraction shall give the classifier the identifier of a model, the SHA-256 of its model file and
+          the size of its vectors, and shall return one vector per requested target word of a text, parallel to the
+          targets, with no vector for a word the model cannot embed.
+        tags: [unit]
+        justification: |
+          The classifier is independent of any concrete encoder; this is everything it needs to know about one, and
+          a missing vector must be distinguishable from a real one so the word is reported as unknown.
+        tests:
+          - WordSenseClassifier_ClassifyAsync_Mixed_EncodesOnce
+          - WordSenseClassifier_ClassifyAsync_WeightedWordWithoutEvidence_IsUnknown
+          - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+
+      - id: WordSense-Model-Match
+        title: >-
+          The model abstraction shall reject a weights table whose model identifier, model file digest or vector size
+          differs from the model's, with a model mismatch error.
+        tags: [unit]
+        justification: |
+          A weights table from another model lives in another embedding space; accepting it would give silently
+          wrong answers.
+        tests:
+          - WordSenseClassifier_Constructor_Mismatch_Throws
+          - WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused

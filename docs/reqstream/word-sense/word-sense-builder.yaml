@@ -251,6 +251,20 @@ sections:
           - WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors
           - WordSenseBuilder_Lexicon_CommittedTable_IsUpToDate
 
+      - id: WordSense-Builder-ModelWeights
+        title: >-
+          The builder shall train, for a given encoder model and the shared corpus, one weights table that names the
+          model, the digest of its model file and the digest of the lexicon table it builds, and shall write it
+          beside the lexicon table.
+        tags: [unit]
+        justification: |
+          Each model package needs its own trained classifiers, and a weights table that does not name its model and
+          lexicon cannot be checked when it is loaded. Training every model from the one shared corpus keeps the
+          models comparable.
+        tests:
+          - WordSenseBuilder_Lexicon_Build_EmbedsLexicon
+          - WordSenseBuilder_Lexicon_Build_LexiconOption_IsResolvedAndMissingFilesAreErrors
+
       - id: WordSense-Builder-LexiconEval
         title: >-
           The builder shall evaluate each dictionary class and each morphology rule against a gold-annotated English

@@ -16,12 +16,12 @@ been fetched; the CI checkout fetches it.
 
 ### Test Scenarios
 
-#### OnnxWordSenseEncoder_EncodeAsync_ValidIds_ReturnsHiddenStates
+#### MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
 
-**Scenario**: The model is loaded and three token ids are encoded twice.
+**Scenario**: The model is loaded and target words of a sentence are encoded twice.
 
-**Expected**: The result has `3 × 384` values, is identical for both runs, and the encoder reports the
-pinned model digest.
+**Expected**: Each target gets a vector of 384 values, the vectors are identical for both runs, and the
+model reports the pinned model digest.
 
 **Requirement coverage**: `WordSense-OTS-OnnxRuntime-Inference`.
 
@@ -36,5 +36,5 @@ pinned model digest.
 
 ### Requirements Coverage
 
-- **`WordSense-OTS-OnnxRuntime-Inference`**: OnnxWordSenseEncoder_EncodeAsync_ValidIds_ReturnsHiddenStates,
+- **`WordSense-OTS-OnnxRuntime-Inference`**: MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors,
   WordSense_Classifier_EndToEnd_ClassifiesRecord

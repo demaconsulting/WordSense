@@ -1,0 +1,51 @@
+---
+# MiniLMWordSense unit requirements (factory and embedded weights of the MiniLM package)
+
+sections:
+  - title: MiniLMWordSense Requirements
+    requirements:
+      - id: WordSenseMiniLM-Factory-Create
+        title: >-
+          The factory shall create a classifier from the core lexicon, the embedded MiniLM weights and the model
+          files, and the classifier shall own the model it was given so that disposing it releases the model.
+        tags: [unit]
+        justification: |
+          A caller that asks for a ready-made classifier must not have to manage the model separately.
+        tests:
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
+          - WordSense_Classifier_EndToEnd_WordListApi
+
+      - id: WordSenseMiniLM-Factory-Directory
+        title: >-
+          The factory shall, when given a model directory, verify its files against the pinned digests and make no
+          network access, rejecting a directory with a missing, altered or wrong file.
+        tags: [unit]
+        justification: |
+          Offline deployments supply the files themselves; an unverified directory could supply a different model
+          than the weights were trained with.
+        tests:
+          - WordSense_Classifier_CreateAsync_RejectsUnverifiedDirectory
+          - WordSense_Classifier_CreateAsync_RejectsWrongContentDirectory
+
+      - id: WordSenseMiniLM-Factory-Validation
+        title: >-
+          The factory shall reject invalid options (sequence length, thread count, abstention scale) before any
+          download or file verification.
+        tags: [unit]
+        justification: |
+          A bad option must fail fast and cheaply, not after a 23 MB download.
+        tests:
+          - WordSense_Classifier_CreateAsync_ValidatesOptionsBeforeModel
+
+      - id: WordSenseMiniLM-Factory-Weights
+        title: >-
+          The package shall load the embedded weights table, which names the MiniLM model identifier and model file
+          digest, and the table shall be accepted by the model built from the pinned files and refused together with
+          another lexicon.
+        tags: [unit]
+        justification: |
+          The embedded weights are the trained half of the pair formed with the encoder; if they do not name the
+          pinned model and the shipped lexicon, every context answer would be wrong.
+        tests:
+          - WordSense_EmbeddedWeights_MatchPinnedModelAndLexicon
+          - WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused

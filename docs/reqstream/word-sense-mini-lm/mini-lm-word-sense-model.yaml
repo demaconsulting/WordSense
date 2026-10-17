@@ -1,0 +1,56 @@
+---
+# MiniLMWordSenseModel unit requirements
+
+sections:
+  - title: MiniLMWordSenseModel Requirements
+    requirements:
+      - id: WordSense-Encoder-Encode
+        title: >-
+          The model shall return one contextual vector per requested word of a text, deterministically, and no
+          vector for a word that has no word pieces.
+        tags: [unit]
+        justification: |
+          The classifier needs the contextual embedding of each target word, and the same text must always give the
+          same vectors.
+        tests:
+          - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+          - MiniLMWordSenseModel_EncodeAsync_NoTargetsOrNoTokens_ReturnsEmptyOrNull
+
+      - id: WordSense-Encoder-Identity
+        title: The model shall report its identifier, the SHA-256 digest of its model file and the hidden size of its output.
+        tags: [unit]
+        justification: |
+          The classifier compares the identity with the weights table, so a table is never used with a model it was
+          not trained for.
+        tests:
+          - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+          - WordSense_EmbeddedWeights_ModelAcceptsThemAndOtherLexiconIsRefused
+
+      - id: WordSense-Encoder-Validation
+        title: The model shall reject invalid arguments, cancelled calls, an unusable model file and use after disposal.
+        tags: [unit]
+        justification: |
+          Misuse must fail fast with a documented exception.
+        tests:
+          - MiniLMWordSenseModel_EncodeAsync_InvalidUse_Throws
+          - MiniLMWordSenseModel_Constructor_InvalidArguments_Throws
+          - MiniLMWordSenseModel_Constructor_InvalidModelFile_Throws
+
+      - id: WordSense-Encoder-Concurrency
+        title: >-
+          The model shall allow concurrent encode calls on one instance and return the same results as
+          sequential calls.
+        tags: [unit]
+        justification: |
+          Services share one model between many threads; a concurrent call must neither fail nor return
+          values that differ from those of a sequential call.
+        tests:
+          - MiniLMWordSenseModel_EncodeAsync_Concurrent_MatchesSequentialResults
+
+      - id: WordSense-Encoder-LongText
+        title: The model shall encode texts longer than its input limit using a window around each target word.
+        tags: [unit]
+        justification: |
+          Real documents are longer than the model input limit, but every word must still get a vector.
+        tests:
+          - MiniLMWordSenseModel_EncodeAsync_TextLongerThanWindow_ReturnsVectorsForTargets

@@ -11,11 +11,11 @@ sections:
           - id: WordSense-OTS-OnnxRuntime-Inference
             title: ONNX Runtime shall execute the pinned quantized transformer model and return its hidden states.
             justification: |
-              Microsoft.ML.OnnxRuntime is the only runtime dependency of the library. It loads the
-              int8 MiniLM model and computes the contextual embeddings used for the sense decision.
+              Microsoft.ML.OnnxRuntime is the only runtime dependency of the MiniLM package (the core package has
+              none). It loads the int8 MiniLM model and computes the contextual embeddings used for the sense decision.
               A passing end-to-end test proves the runtime loads the model and produces usable output
               on the platform under test.
             tags: [ots]
             tests:
-              - OnnxWordSenseEncoder_EncodeAsync_ValidIds_ReturnsHiddenStates
+              - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
