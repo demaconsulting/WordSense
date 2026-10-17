@@ -126,7 +126,7 @@ internal sealed class OnnxClassifier : IWordSenseClassifier
     /// <param name="candidates">The senses the word can have.</param>
     /// <param name="feature">The unit-length context feature.</param>
     /// <returns>The best sense and its confidence; no sense and confidence 0 when the candidates do not fit the weights.</returns>
-    private static (WordDetails? Details, double Confidence) Pick(WeightedLemma lemma, WordDetails[] candidates, float[] feature)
+    internal static (WordDetails? Details, double Confidence) Pick(WeightedLemma lemma, WordDetails[] candidates, float[] feature)
     {
         var weights = lemma.Weights;
         if (feature.Length != weights.Dimension)

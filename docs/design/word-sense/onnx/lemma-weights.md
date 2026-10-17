@@ -19,7 +19,10 @@ the lexicon, computes the feature of a pooled vector and scores the senses of a 
   mean (little-endian floats), the lemma count, then per lemma in ordinal order the lemma, the abstain margin, the
   kind, the senses and the biases and weights.
 - The features are dense, finite and of unit length. `FeatureExtractor` computes them (global mean centering, then
-  unit scaling) and is shared by training and inference; `VectorMath` holds the dot product.
+  unit scaling) and is shared by training and inference; `VectorMath` holds the dot product. `FeatureExtractor`,
+  `WeightedLemmaTable` and `VectorMath` are internal helpers of the classifier path; they stay in their own files (one
+  responsibility each, shared with the builder) instead of being folded into `LemmaWeights`, and this unit's review
+  set covers all of them.
 
 #### Key Methods
 

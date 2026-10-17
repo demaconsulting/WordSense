@@ -11,7 +11,8 @@ encoder and weights lazily, and creates classifiers that share them.
 
 - The private protected constructor takes the model description (`ModelSpec`), an optional model directory (converted
   to a full path) and the maximum sequence length, which shall be from 8 to 512.
-- Public properties: `HiddenSize` and `ModelId`.
+- Public properties: `HiddenSize` and `ModelId`. They are public on purpose: callers and the model packages read them
+  (for example to show which model and encoder size is in use) before `EnsureModelAsync` has run.
 - State: the in-flight (or finished) ensure task, the cached encoder and weights table, and the disposed flag, all
   guarded by a lock.
 - Internal test and builder hooks: the ONNX intra-op thread count, the HTTP client, the GitHub base URI, the

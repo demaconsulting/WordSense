@@ -9,8 +9,8 @@ namespace DemaConsulting.WordSense.MiniLM.Tests;
 ///     <c>README.md</c> marks each usage sample with <c>&lt;!-- sample:NAME --&gt;</c> before the code block and
 ///     <c>&lt;!-- output:NAME --&gt;</c> before the output block. A code block must equal the using directives plus the
 ///     region of <c>ReadmeSample.cs</c> between the <c>&lt;sample:NAME&gt;</c> markers, and an output block must equal
-///     what that code writes. An output block that still holds the text <c>TBD</c> has not been generated yet; its
-///     output check is skipped.
+///     what that code writes. An output block that still holds the text <c>TBD</c> has not been generated yet and
+///     fails the test.
 /// </remarks>
 public class ReadmeSampleTests
 {
@@ -63,7 +63,7 @@ public class ReadmeSampleTests
     {
         var (readme, _) = await ReadAsync();
         var documented = DocSampleText.FencedBlock(readme, "<!-- output:readme -->", "text");
-        SkipWhenNotGenerated(documented);
+        FailWhenNotGenerated(documented);
         DocSampleText.RequireMiniLMDirectory();
 
         var sample = new ReadmeSample();
@@ -81,7 +81,7 @@ public class ReadmeSampleTests
     {
         var (readme, _) = await ReadAsync();
         var documented = DocSampleText.FencedBlock(readme, "<!-- output:basic -->", "text");
-        SkipWhenNotGenerated(documented);
+        FailWhenNotGenerated(documented);
 
         var sample = new ReadmeSample();
         await RunInvariantAsync(sample.RunBasicAsync);
@@ -89,11 +89,11 @@ public class ReadmeSampleTests
         Assert.Equal(DocSampleText.Normalize(sample.Output), DocSampleText.Normalize(documented));
     }
 
-    private static void SkipWhenNotGenerated(string documented)
+    private static void FailWhenNotGenerated(string documented)
     {
         if (documented.Contains("TBD", StringComparison.Ordinal))
         {
-            Assert.Skip("The documented output has not been generated yet.");
+            Assert.Fail("The documented output has not been generated yet: replace the TBD text with the real output.");
         }
     }
 

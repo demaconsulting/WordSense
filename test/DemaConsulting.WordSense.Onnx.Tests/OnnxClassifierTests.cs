@@ -123,30 +123,26 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
-    ///     A form that has fewer senses than its lemma is ranked only among its own senses.
+    ///     A form that has fewer senses than its lemma is ranked only among its own senses: the candidates of the
+    ///     form decide the result whatever the weights of the other senses of the lemma score.
     /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task OnnxClassifier_ClassifyAsync_FormWithFewerSenses_RanksOnlyItsOwnSenses()
+    public void OnnxClassifier_ClassifyAsync_FormWithFewerSenses_RanksOnlyItsOwnSenses()
     {
-        var table = Embedded();
-        var form = WordLexicon.Words
-            .Where(p => p.Value.Length > 1 && table.Find(p.Value[0].Lemma) is not null && WordLexicon.Words[p.Value[0].Lemma].Length > p.Value.Length)
-            .Select(p => p.Key)
-            .FirstOrDefault();
-        if (form is null)
+        var lemma = Embedded().Find("record")!;
+        var all = WordLexicon.Words["record"];
+        Assert.True(all.Length > 1, "The lemma needs several senses.");
+        var feature = new float[lemma.Weights.Dimension];
+        feature[0] = 1f;
+
+        foreach (var own in all)
         {
-            Assert.Skip("The lexicon has no ambiguous form with fewer senses than its lemma.");
+            var (details, confidence) = OnnxClassifier.Pick(lemma, [own], feature);
+
+            Assert.Equal(own, details);
+            Assert.InRange(confidence, 0.0, 1.0);
         }
-
-        using var encoder = Open();
-        var classifier = new OnnxClassifier(encoder, table);
-
-        var result = await classifier.ClassifyAsync(["the", form, "."], TestContext.Current.CancellationToken);
-
-        Assert.Contains(result[1].Details, WordLexicon.Words[form]);
     }
-
     /// <summary>
     ///     Larger weights give a larger margin and so a higher confidence, for the same text.
     /// </summary>

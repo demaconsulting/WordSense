@@ -51,6 +51,8 @@ reviews:
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs"       # README sample code, compiled and run
       - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
       - "test/DemaConsulting.WordSense.MiniLM.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSample.cs"       # Basic README sample, compiled and run
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSampleTests.cs"  # keeps Basic README in sync
 
   # Decomposition Review (only one per repository)
   - id: Decomposition
@@ -392,7 +394,6 @@ reviews:
       - "docs/verification/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
-
 
   # OTS-ApiMark Review (one per OTS item)
   - id: OTS-ApiMark

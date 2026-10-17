@@ -43,7 +43,7 @@ dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensit
 | `DemaConsulting.WordSense.Basic` | Rule-based model | Nothing |
 | `DemaConsulting.WordSense.Onnx` | Shared ONNX implementation (brought in by the model packages) | ONNX Runtime |
 | `DemaConsulting.WordSense.MiniLM` | MiniLM model and its weights | Model files, downloaded on first use |
-| `DemaConsulting.WordSense.BertBaseCased` | BERT base cased model and its weights | Model files, downloaded on first use |
+| `DemaConsulting.WordSense.BertBaseCased` | BERT base cased model and weights | Model files, downloaded on first use |
 
 Requirements: .NET 8, 9 or 10 (Windows, Linux or macOS) and, for the ONNX models, internet access on first use, or a
 mirror, to download the model files (they are not part of the package). Contributors who clone this repository also

@@ -33,7 +33,7 @@ for the word, the model abstains.
 | 1 | `after-modal` | a modal or auxiliary verb is directly before the word | 0.90 | 1,728 | 1,721 | 0.996 | 0.99 |
 | 2 | `after-to` | the word `to` is directly before the word | 0.70 | 1,597 | 1,561 | 0.977 | 0.98 |
 | 3 | `after-subject-pronoun` | a subject pronoun is directly before the word | 0.80 | 1,556 | 1,542 | 0.991 | 0.99 |
-| 4 | `after-determiner` | a determiner or possessive is directly before the word | 0.85 | 5,913 | 5,626 | 0.951 | 0.95 |
+| 4 | `after-determiner` | a determiner or possessive is directly before it | 0.85 | 5,913 | 5,626 | 0.951 | 0.95 |
 | 5 | `after-degree-adverb` | a degree adverb is directly before the word | 0.70 | 99 | 88 | 0.889 | 0.89 |
 | 6 | `after-preposition` | a preposition is directly before the word | 0.70 | 833 | 682 | 0.819 | 0.82 |
 | 7 | `before-auxiliary` | an auxiliary verb is directly after the word | 0.70 | 525 | 511 | 0.973 | 0.97 |

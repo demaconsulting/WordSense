@@ -9,7 +9,8 @@ The subsystem is verified through the public `BasicWordSenseModel` and through t
 `Rules` units, with the real embedded lexicon of the core package (the rules need real part-of-speech sets of the
 neighbors). Nothing is mocked: the model has no files, no network access and no state. Tests in
 `test/DemaConsulting.WordSense.Basic.Tests` (`BasicWordSenseModelTests`, `BasicClassifierTests`, `RulesTests`) verify the
-three units, and `XmlDocExampleTests` compiles the XML documentation examples.
+three units, and `XmlDocExampleTests` compiles the XML documentation examples. `BasicReadmeSampleTests` compiles and runs
+the Basic usage sample of the README and compares its code and output with the README.
 
 ### Test Environment
 

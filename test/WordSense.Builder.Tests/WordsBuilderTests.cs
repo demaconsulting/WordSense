@@ -59,7 +59,7 @@ public sealed class WordsBuilderTests : IDisposable
     {
         _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\n        bank\tverb\tbogus\t\t\n");
 
-                Assert.Throws<InvalidDataException>(() => WordsBuilder.Build(Path.Combine(_dir.Root, "corpus")));
+        Assert.Throws<InvalidDataException>(() => WordsBuilder.Build(Path.Combine(_dir.Root, "corpus")));
     }
 
     /// <summary>

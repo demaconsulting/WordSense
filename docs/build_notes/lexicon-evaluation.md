@@ -90,8 +90,9 @@ and mean) is bit-identical to the pre-lexicon table.
 
 ## Load Time and Memory
 
-Cold `WordSenseTable.LoadEmbedded()` in a fresh process (net10.0, Release), five runs: 86.7, 77.4, 71.9, 80.2 and
-73.8 ms. Allocated 12,023,832 bytes per load; about 3.18 MB retained after a full GC.
+Cold `WordSenseTable.LoadEmbedded()` (historical; this API was replaced by the layered model packages) in a fresh
+process (net10.0, Release), five runs: 86.7, 77.4, 71.9, 80.2 and 73.8 ms. Allocated 12,023,832 bytes per load;
+about 3.18 MB retained after a full GC.
 
 ## Speed
 
