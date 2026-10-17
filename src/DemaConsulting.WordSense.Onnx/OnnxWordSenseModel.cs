@@ -287,7 +287,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     a word needs the model); the hashing and download of the ensure run on the thread pool; opening the ONNX
     ///     session and the inference then run synchronously, without <c>Task.Run</c>, on the thread that continues
     ///     the call (the calling thread when the model is already ensured), so offload the call yourself if the caller
-    ///     must not block. The token is checked before the work starts, while the ensure is awaited (it cancels the
+    ///     must not block. The token is checked before the work starts (so an already canceled token cancels the call even for an empty list or a list that needs no model), while the ensure is awaited (it cancels the
     ///     wait of this call only; the shared ensure keeps running, and only disposing the model cancels it) and between the words that are
     ///     encoded; a single ONNX run is never interrupted. An empty element is unknown (null, 0) and an element
     ///     containing a space is looked up as one key, which no lexicon entry has, so it is unknown too.
@@ -308,6 +308,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         {
             throw new ArgumentException("A word must not be null.", nameof(words));
         }
+
+        // Honor an already canceled token before any work, whatever the words (a disposed model wins, above)
+        cancellationToken.ThrowIfCancellationRequested();
 
         // A word with several senses needs the model only when the lemma has intact trained weights; the weights are
         // embedded in the assembly, so deciding this needs no model file, download or ONNX session

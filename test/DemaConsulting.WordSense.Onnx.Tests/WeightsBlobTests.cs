@@ -1,4 +1,5 @@
 using System.IO.Compression;
+using System.Text;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
@@ -68,12 +69,14 @@ public class WeightsBlobTests
     /// </summary>
     /// <param name="pos">The part-of-speech byte of the first sense.</param>
     /// <param name="presence">The presence byte of the first sense's meaning.</param>
+    /// <param name="lemmaByte">The single byte of the lemma text.</param>
+    /// <param name="meaningByte">When set, the first sense's meaning is this one byte instead of empty.</param>
     /// <returns>The compressed blob.</returns>
-    private static byte[] OneLemma(byte pos, byte presence) => Compress(
+    private static byte[] OneLemma(byte pos, byte presence, byte lemmaByte = (byte)'a', byte? meaningByte = null) => Compress(
     [
         .. "WSX1"u8.ToArray(), 1, (byte)'m', 1, 0, 0, 0, 0, 0, // magic, model id, dimension, dense flag, mean
-        1, 1, (byte)'a', 0, 0, 0, 0, 1, 2, // one lemma "a", abstain 0.0f, binary kind, two senses
-        pos, 0, presence, // first sense: part of speech, empty meaning, presence byte
+        1, 1, lemmaByte, 0, 0, 0, 0, 1, 2, // one lemma, abstain 0.0f, binary kind, two senses
+        pos, .. (meaningByte is { } m ? (byte[])[1, m] : [0]), presence, // first sense: part of speech, meaning, presence byte
         (byte)PartOfSpeech.Verb, 0, 0, // second sense
         0, 0, 0, 0, 0, 0, 0, 0, // one bias and one weight (0.0f each)
     ]);
@@ -125,6 +128,28 @@ public class WeightsBlobTests
     {
         Assert.Null(Assert.Single(WeightsBlob.Read(OneLemma(1, 0)).Lemmas).Senses[0].Meaning);
         Assert.Equal(string.Empty, Assert.Single(WeightsBlob.Read(OneLemma(1, 1)).Lemmas).Senses[0].Meaning);
+    }
+
+    /// <summary>
+    ///     Malformed UTF-8 in a lemma is rejected as corrupt data, not decoded with replacement characters.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_MalformedUtf8Lemma_Throws()
+    {
+        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, 0, lemmaByte: 0xFF)));
+
+        Assert.IsType<DecoderFallbackException>(ex.InnerException);
+    }
+
+    /// <summary>
+    ///     Malformed UTF-8 in a meaning is rejected as corrupt data, not decoded with replacement characters.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_MalformedUtf8Meaning_Throws()
+    {
+        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, 1, meaningByte: 0xC3)));
+
+        Assert.IsType<DecoderFallbackException>(ex.InnerException);
     }
 
     /// <summary>

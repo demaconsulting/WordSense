@@ -41,6 +41,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   attempt and succeeds when a source works.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared work; a later call succeeds.
+- **Canceled token before any work**: `ClassifyAsync` with an already canceled token faults with
+  `OperationCanceledException` for an empty list and for a list that needs no model, as the Basic model does.
 - **Weights and session are shared**: repeated `ClassifyAsync` calls share one encoder and one weights table.
 - **Disposal**: `Dispose` can be called twice and from many threads at once; `EnsureModelAsync` and `ClassifyAsync`
   after disposal throw `ObjectDisposedException`, even for words that never need the encoder.

@@ -572,6 +572,11 @@ internal sealed class BasicTables
     /// <param name="data">The bytes.</param>
     private sealed class Reader(byte[] data)
     {
+        /// <summary>
+        ///     UTF-8 decoding that throws on malformed bytes instead of substituting replacement characters.
+        /// </summary>
+        private static readonly UTF8Encoding StrictUtf8 = new(false, true);
+
         private int _position;
 
         /// <summary>
@@ -682,9 +687,16 @@ internal sealed class BasicTables
                 throw Truncated();
             }
 
-            var value = Encoding.UTF8.GetString(data, _position, length);
-            _position += length;
-            return value;
+            try
+            {
+                var value = StrictUtf8.GetString(data, _position, length);
+                _position += length;
+                return value;
+            }
+            catch (DecoderFallbackException ex)
+            {
+                throw new InvalidDataException("The basic table has an invalid text.", ex);
+            }
         }
 
         private static InvalidDataException Truncated() => new("The basic table is truncated.");

@@ -34,7 +34,8 @@ and the cue tables of the ambiguous lemmas. It also defines the tag set through 
 - `Load(blob)`: decompresses and reads a table, validates it and derives the transition table. It checks the magic, the
   hyper-parameters (finite and in range), the tag count, that words, suffixes and lemmas are strictly ascending, the
   flags and masks, positive word counts, the sense counts and parts of speech, strictly ascending feature hashes, the
-  bounds of every number and that no bytes trail.
+  bounds of every number, that every string is well-formed UTF-8 (malformed bytes are rejected, never replaced) and
+  that no bytes trail.
 - `Default`: the table embedded in the assembly, loaded on first use under a thread-safe lazy initializer.
 - `FindSuffix(key)`: the distribution over noun, verb, adjective and adverb of the longest tabled suffix of one to three
   characters of a word (binary search), or null when none is tabled; probabilities are `(count + 0.1) / (total + 0.4)`.

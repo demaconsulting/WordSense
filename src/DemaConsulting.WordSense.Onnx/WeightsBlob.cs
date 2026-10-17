@@ -34,6 +34,11 @@ internal static class WeightsBlob
     private static readonly byte[] Magic = "WSX1"u8.ToArray();
 
     /// <summary>
+    ///     UTF-8 decoding that throws on malformed bytes instead of substituting replacement characters.
+    /// </summary>
+    private static readonly UTF8Encoding StrictUtf8 = new(false, true);
+
+    /// <summary>
     ///     The largest valid part-of-speech byte, derived from the enum so a new value is accepted automatically.
     /// </summary>
     private static readonly byte MaxPartOfSpeech = (byte)Enum.GetValues<PartOfSpeech>().Max();
@@ -173,9 +178,16 @@ internal static class WeightsBlob
     {
         var length = ReadVarint(span, ref position);
         Need(span, position, length);
-        var value = Encoding.UTF8.GetString(span.Slice(position, length));
-        position += length;
-        return value;
+        try
+        {
+            var value = StrictUtf8.GetString(span.Slice(position, length));
+            position += length;
+            return value;
+        }
+        catch (DecoderFallbackException ex)
+        {
+            throw new InvalidDataException("The weights have an invalid text.", ex);
+        }
     }
 
     /// <summary>

@@ -29,7 +29,9 @@ encoder and weights lazily, and classifies words with them (lazily ensuring the 
   already canceled token returns a canceled task rather than throwing. With a model directory the task only
   verifies the files
   (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
-- `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words and, when some word has
+- `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words, throws
+  `OperationCanceledException` (through the returned task) for an already canceled token, even for an empty list or a
+  list that needs no model, and, when some word has
   several lexicon senses, loads the embedded weights table (no model file and no ONNX; cached and shared with the
   later classifier). When no word has several senses together with intact weights for its lemma
   (`OnnxClassifier.NeedsModel` is false), it answers from the lexicon alone without touching model

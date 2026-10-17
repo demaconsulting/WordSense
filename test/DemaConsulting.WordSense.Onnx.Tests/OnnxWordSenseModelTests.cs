@@ -77,6 +77,27 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     An already canceled token is honored even when the list is empty or needs no model: the call faults with
+    ///     <see cref="OperationCanceledException"/> before any work, as the Basic model does.
+    /// </summary>
+    /// <param name="word">The single word of the list, or null for an empty list.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(null)]
+    [InlineData("The")]
+    public async Task OnnxWordSenseModel_ClassifyAsync_CanceledTokenWithoutModelWork_Throws(string? word)
+    {
+        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        using var model = Open(missing);
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(
+            () => model.ClassifyAsync(word is null ? [] : [word], cts.Token));
+        Assert.False(Directory.Exists(missing));
+    }
+
+    /// <summary>
     ///     Words with several senses but no trained weights (so, will) are answered from the lexicon alone with their
     ///     first sense and a confidence of one over the number of senses: no ensure, no model file, no ONNX.
     /// </summary>

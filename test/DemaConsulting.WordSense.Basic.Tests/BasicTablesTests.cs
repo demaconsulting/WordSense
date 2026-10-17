@@ -80,6 +80,22 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     A string with malformed UTF-8 is rejected as corrupt data, not decoded with replacement characters.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_MalformedUtf8String_ThrowsInvalidData()
+    {
+        var raw = TestTables.Decompress(TestTables.Build([("record", 0, new int[PosTag.Count])], [], []));
+        var at = raw.AsSpan().IndexOf("record"u8);
+        Assert.True(at >= 0);
+        raw[at] = 0xFF; // never valid in UTF-8
+
+        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(TestTables.Compress(raw)));
+
+        Assert.IsType<System.Text.DecoderFallbackException>(ex.InnerException);
+    }
+
+    /// <summary>
     ///     A truncated blob is rejected.
     /// </summary>
     [Fact]
