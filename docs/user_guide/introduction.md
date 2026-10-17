@@ -264,7 +264,9 @@ about 43 MiB (approximate, machine dependent), once per process.
 ## Basic
 
 `BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` is optional: it completes at
-once and checks nothing, `Create()` works with or without it, there is nothing to dispose, and a mirror is ignored. It
+once and checks nothing, `Create()` works with or without it, a mirror is ignored, and disposing the model (with `using`)
+releases nothing but is still honored: afterwards `Create()` and the classifiers it created throw
+`ObjectDisposedException`. It
 decides a multi-sense word with a small statistical table that is
 embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the Universal Dependencies English
 web treebank, limited to the parts of speech that the word table allows) and, for lemmas that have enough training
@@ -278,7 +280,7 @@ well under a millisecond.
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
-var model = new BasicWordSenseModel();
+using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 WordSense[] senses = await model.Create().ClassifyAsync(["to", "record", "the", "record"]);
 Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
@@ -299,18 +301,20 @@ in the build notes).
 
 ## Working with an Encoder Model
 
-Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and `IDisposable` and has the
-public properties `HiddenSize` and `ModelId`. The usual sequence is: call `EnsureModelAsync` once, call `Create()` to
-get a classifier, classify as many texts as you like and dispose the model after every classification has finished.
-`IWordSenseModel` itself is not `IDisposable`; only the encoder models hold native resources, so generic code disposes
-with `(model as IDisposable)?.Dispose()`. A classifier is safe for
-concurrent use and does not own its model. `Create()` throws `InvalidOperationException` before the files are ready (the
-Basic model has no files, so its `Create()` never does). The ONNX session and the weights are loaded at the first
+Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and has the
+public properties `HiddenSize` and `ModelId`. `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the
+downloader state, so dispose it with `using`, after every classification has finished. The Basic model has nothing to
+release but follows the same contract. The usual sequence is: call `EnsureModelAsync` once, call `Create()` to
+get a classifier, classify as many texts as you like and dispose the model. A classifier is safe for concurrent use,
+is not disposable and only borrows its model. `Create()` throws `InvalidOperationException` before the files are ready
+(the Basic model has no files, so its `Create()` never does). The ONNX session and the weights are loaded at the first
 `Create()` call: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
-and of the hashing of the model files in `EnsureModelAsync` (approximate, machine dependent). After `Dispose()`,
-`EnsureModelAsync` and `Create()` throw `ObjectDisposedException`, and so does a classifier that was created earlier when
-a text has a word that needs the encoder; a text without such a word is still answered. `EnsureModelAsync` is required
-also when you pass a model directory: it verifies the SHA-256 of the files and does not use the network.
+and of the hashing of the model files in `EnsureModelAsync` (approximate, machine dependent). Disposing is idempotent
+and thread-safe. After `Dispose()`, `EnsureModelAsync` and `Create()` throw `ObjectDisposedException`, and so does every
+call of a classifier that was created earlier (for the Basic model as well). Disposing while `EnsureModelAsync` is
+downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains.
+`EnsureModelAsync` is required also when you pass a model directory: it verifies the SHA-256 of the files and does not
+use the network.
 
 ## Confidence
 
@@ -456,10 +460,11 @@ constructor argument, so a `MirrorOptions` always names a mirror; setting only a
 | `FileNotFoundException` | A supplied model directory does not exist or lacks a file |
 | `InvalidDataException` | A file of a supplied model directory does not match its SHA-256 |
 | `IOException`, `UnauthorizedAccessException` | The store cannot be created or written |
-| `ObjectDisposedException` | The encoder model has been disposed |
-| `OperationCanceledException` | The token was cancelled |
+| `ObjectDisposedException` | The model has been disposed (also for every call of a classifier created from it) |
+| `OperationCanceledException` | The token was cancelled, or the model was disposed while the call was downloading |
 
-The Basic model throws only the cancellation exception. A failed call can be repeated, and concurrent calls share one
+The Basic model throws only the cancellation exception and, after disposal, `ObjectDisposedException`. A failed call can
+be repeated, and concurrent calls share one
 download.
 
 # Limitations

@@ -30,7 +30,7 @@ internal sealed class BasicReadmeSample
     {
         // <sample:basic>
         // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
-        var model = new BasicWordSenseModel();
+        using var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 
         var words = "They record the record".Split(' ');

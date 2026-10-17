@@ -17,12 +17,15 @@ namespace DemaConsulting.WordSense;
 ///     every model.
 ///     </para>
 ///     <para>
-///     A model is thread-safe for concurrent classification. A model that holds native resources (the encoder models)
-///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The basic
-///     model holds nothing to release. Because <see cref="IWordSenseModel"/> itself is not <see cref="IDisposable"/>,
-///     code that works with any model disposes it generically: <c>(model as IDisposable)?.Dispose();</c> (or
-///     <c>using (model as IDisposable)</c>), which does nothing for the Basic model and releases the ONNX session of an
-///     encoder model.
+///     A model is thread-safe for concurrent classification. <see cref="IWordSenseModel"/> is
+///     <see cref="IDisposable"/>: the model owns what it needs (the ONNX session and the downloader state of an encoder
+///     model), so dispose it, for example with <c>using</c>, once every classification has finished. The Basic model
+///     holds nothing to release, but honors the same contract. A classifier from <see cref="Create"/> only borrows its
+///     model and is not disposable: after the model is disposed, <see cref="Create"/>, <see cref="EnsureModelAsync"/>
+///     and every call of such a classifier throw <see cref="ObjectDisposedException"/>. Disposing is idempotent and
+///     thread-safe. Disposing while <see cref="EnsureModelAsync"/> is downloading cancels the download, and the
+///     pending task then throws <see cref="OperationCanceledException"/>. Disposing while a classification is running
+///     is not supported.
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
@@ -36,21 +39,16 @@ namespace DemaConsulting.WordSense;
 /// <example>
 ///     <code>
 ///     IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
-///     try
+///     using (model)
 ///     {
 ///         await model.EnsureModelAsync();
 ///         IWordSenseClassifier classifier = model.Create();
 ///         WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"]);
 ///         Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
 ///     }
-///     finally
-///     {
-///         // Works for every model: the encoder models are IDisposable, the Basic model is not
-///         (model as IDisposable)?.Dispose();
-///     }
 ///     </code>
 /// </example>
-public interface IWordSenseModel
+public interface IWordSenseModel : IDisposable
 {
     /// <summary>
     ///     Makes sure every file the model needs is present locally and verified, downloading what is missing.
@@ -80,29 +78,30 @@ public interface IWordSenseModel
     ///     (an invalid timeout throws its subclass <see cref="ArgumentOutOfRangeException"/>); an unwritable store
     ///     reports the file system exception of the platform (for example <see cref="IOException"/> or
     ///     <see cref="UnauthorizedAccessException"/>); a disposed model throws <see cref="ObjectDisposedException"/>;
-    ///     a cancelled token throws <see cref="OperationCanceledException"/>. The Basic model throws only the
-    ///     cancellation exception.
+    ///     a cancelled token throws <see cref="OperationCanceledException"/>, and so does a call that is still running
+    ///     when the model is disposed. The Basic model throws only the cancellation exception and, after disposal,
+    ///     <see cref="ObjectDisposedException"/>.
     ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
     /// <exception cref="HttpRequestException">Thrown when a file could not be obtained and verified from any source (encoder model without a model directory).</exception>
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory does not exist or lacks a model file (encoder model with a model directory).</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (encoder model with a model directory).</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed (encoder models).</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model was already disposed when the call started.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed while the call is downloading.</exception>
     Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
     /// <summary>
     ///     Creates a classifier on this model.
     /// </summary>
-    /// <returns>A classifier that shares this model and is safe for concurrent use.</returns>
+    /// <returns>A classifier that shares this model and is safe for concurrent use. It only borrows the model and is not disposable: once the model is disposed, every call of the classifier throws <see cref="ObjectDisposedException"/>.</returns>
     /// <remarks>
     ///     An encoder model needs <see cref="EnsureModelAsync"/> to have completed first; its first call loads the ONNX
     ///     session and the weights (about 0.4 to 0.5 s, approximate and machine dependent). The Basic model needs no
     ///     files, so its <see cref="Create"/> works at any time (it loads the word lexicon, about 120 ms on first use).
     /// </remarks>
     /// <exception cref="InvalidOperationException">Thrown by an encoder model when the model files are not available; call <see cref="EnsureModelAsync"/> first. The Basic model never throws it.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed (encoder models).</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     /// <exception cref="InvalidDataException">Thrown by an encoder model when its embedded weights or ONNX file cannot be read.</exception>
     IWordSenseClassifier Create();
 }

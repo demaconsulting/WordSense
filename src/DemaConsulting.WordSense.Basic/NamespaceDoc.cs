@@ -16,7 +16,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///     Start with <see cref="BasicWordSenseModel"/>: create it and call <c>Create</c> to get an
 ///     <see cref="IWordSenseClassifier"/>. <c>EnsureModelAsync</c> is optional for this model (it completes at once and
 ///     checks nothing, because there are no files), and <c>Create</c> works with or without it; call it only to keep
-///     the code identical to the encoder models. The model needs no disposal. With a token that is already
+///     the code identical to the encoder models. Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/>
+///     (it holds nothing to release, but afterwards <c>EnsureModelAsync</c>, <c>Create</c> and the classifiers it created
+///     throw <see cref="ObjectDisposedException"/>). With a token that is already
 ///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
 ///     </para>
@@ -73,7 +75,7 @@ namespace DemaConsulting.WordSense.Basic;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.Basic;
 ///
-///     var model = new BasicWordSenseModel();
+///     using var model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///

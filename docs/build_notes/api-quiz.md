@@ -1,7 +1,7 @@
 # API Documentation Quiz
 
 This note is a repeatable check that the generated API documentation of the five packages is enough to use the library
-without reading the source. An isolated reader gets only the generated API documents and answers eight questions; every
+without reading the source. An isolated reader gets only the generated API documents and answers nine questions; every
 answer that is missing, vague or contradictory is a gap that is fixed in the XML documentation, the namespace
 documentation, the README or the user guide. The check is repeated until every question is PASS.
 
@@ -40,6 +40,11 @@ documentation, the README or the user guide. The check is repeated until every q
 8. **Tokenization.** How must the text be tokenized (punctuation, contractions such as `don't`, hyphens, curly
    apostrophes), how many sentences per call, how does Basic split sentences, and what is the maximum input length of
    the encoders and what happens beyond it?
+9. **Disposal and ownership.** Who disposes a model, and is it the same for every model (Basic included) without
+   casting? Is a classifier disposable, and how long may it be used? What happens when the model is disposed while
+   `EnsureModelAsync` is downloading (which exception, any leftover files)? What happens after disposal to
+   `EnsureModelAsync`, `Create` and to a classifier created earlier (which exception, for which words), and is
+   disposing twice or from several threads safe?
 
 ## Log
 
@@ -49,5 +54,6 @@ documentation, the README or the user guide. The check is repeated until every q
 | ----- | ------ | ----- |
 | 1 | Gaps in all eight questions | Closed by the commit "Close API documentation gaps found by quiz round 1" |
 | 2 | Q1-Q7 PASS with minor gaps, Q8 GAP | Minor gaps: no `EnsureModelAsync(mirror)` snippet in the encoder packages, no threshold-versus-coverage table for the encoders, no generic disposal guidance, no byte sizes and mixed MB/MiB, no concrete store paths, unclear whether memory includes the lexicon, repo-relative paths in XML docs, punctuation, cancelled-token behavior of Basic, unequal latency statements, no `ModelId` values. Q8: no reference tokenizer, no edge-case table, case handling not stated. Closed by the commit "Close API documentation gaps found by quiz round 2" |
+| 3 | Pending | Q9 (disposal and ownership) added with the change "Make IWordSenseModel disposable; remove IDisposable casts"; run the quiz again |
 
 <!-- markdownlint-enable MD013 -->

@@ -97,4 +97,84 @@ public class BasicWordSenseModelTests
 
         Assert.All(runs, run => Assert.Equal(expected, run));
     }
+
+    /// <summary>
+    ///     Disposing twice is harmless.
+    /// </summary>
+    [Fact]
+    public void BasicWordSenseModel_Dispose_CalledTwice_IsHarmless()
+    {
+        var model = new BasicWordSenseModel();
+
+        model.Dispose();
+
+        Assert.Null(Record.Exception(model.Dispose));
+    }
+
+    /// <summary>
+    ///     Disposing from many threads at once never throws.
+    /// </summary>
+    [Fact]
+    public void BasicWordSenseModel_Dispose_Concurrent_IsHarmless()
+    {
+        var model = new BasicWordSenseModel();
+        var exceptions = new System.Collections.Concurrent.ConcurrentBag<Exception>();
+
+        Parallel.For(0, 16, new ParallelOptions { MaxDegreeOfParallelism = 4 }, _ =>
+        {
+            try
+            {
+                model.Dispose();
+            }
+            catch (Exception ex)
+            {
+                exceptions.Add(ex);
+            }
+        });
+
+        Assert.Empty(exceptions);
+        Assert.Throws<ObjectDisposedException>(model.Create);
+    }
+
+    /// <summary>
+    ///     Creating a classifier after disposal is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed()
+    {
+        var model = new BasicWordSenseModel();
+        model.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(model.Create);
+    }
+
+    /// <summary>
+    ///     Preparing after disposal is rejected.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed()
+    {
+        var model = new BasicWordSenseModel();
+        model.Dispose();
+
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     A classifier created earlier rejects every call once its model is disposed, whatever the words.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed()
+    {
+        var model = new BasicWordSenseModel();
+        var classifier = model.Create();
+        var before = await classifier.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken);
+        model.Dispose();
+
+        Assert.Equal(2, before.Length);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync([], TestContext.Current.CancellationToken));
+    }
 }

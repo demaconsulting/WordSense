@@ -22,4 +22,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Created classifiers are independent and thread-safe**: classifiers from two `Create` calls give identical results,
   and parallel calls on one classifier give the same results as sequential calls.
 - **Cancelled token is honored**: `EnsureModelAsync` with an already cancelled token returns a cancelled task.
-- **No disposal is needed**: the model holds no native resource and does not implement `IDisposable`.
+- **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing. After it, `EnsureModelAsync` and `Create`
+  throw `ObjectDisposedException`, and so does every call of a classifier created earlier, whatever the words
+  (including an empty list).

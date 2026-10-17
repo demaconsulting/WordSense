@@ -26,20 +26,25 @@ internal sealed class OnnxClassifier : IWordSenseClassifier
 
     private readonly WeightedLemmaTable _table;
 
+    private readonly Action? _throwIfDisposed;
+
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxClassifier"/> class.
     /// </summary>
     /// <param name="encoder">The encoder; it is owned by the caller.</param>
     /// <param name="table">The matched weights.</param>
-    public OnnxClassifier(OnnxEncoder encoder, WeightedLemmaTable table)
+    /// <param name="throwIfDisposed">A check that throws <see cref="ObjectDisposedException"/> once the owning model is disposed, or null for none.</param>
+    public OnnxClassifier(OnnxEncoder encoder, WeightedLemmaTable table, Action? throwIfDisposed = null)
     {
         _encoder = encoder ?? throw new ArgumentNullException(nameof(encoder));
         _table = table ?? throw new ArgumentNullException(nameof(table));
+        _throwIfDisposed = throwIfDisposed;
     }
 
     /// <inheritdoc />
     public async Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
+        _throwIfDisposed?.Invoke();
         ArgumentNullException.ThrowIfNull(words);
         var list = words.ToList();
         if (list.Any(w => w is null))

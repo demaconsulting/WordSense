@@ -26,4 +26,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Uncased classification**: the committed model classifies the first `record` of "The record was broken last year, so
   they will record the new album." as a noun and the second as a verb.
 - **Constructor validation**: a maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
-- **Disposal**: disposing twice is harmless and `Create` after disposal throws `ObjectDisposedException`.
+- **Disposal**: disposing twice is harmless and `Create` after disposal throws `ObjectDisposedException`; the model
+  contract is `IDisposable`, so `using` disposes it.

@@ -337,8 +337,7 @@ internal static class Evaluator
         }
         var modelDirectory = info.ModelDirectory is null ? null : Path.Combine(repository, "model", info.ModelDirectory);
         var firstUse = Stopwatch.StartNew();
-        var model = info.Create(modelDirectory);
-        using var disposable = model as IDisposable;
+        using var model = info.Create(modelDirectory);
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
         var classifier = model.Create();
 

@@ -56,6 +56,19 @@ public class MiniLMWordSenseModelTests
     }
 
     /// <summary>
+    ///     A disposed model rejects <c>Create</c> and disposing again is harmless.
+    /// </summary>
+    [Fact]
+    public void MiniLMWordSenseModel_Create_AfterDispose_Throws()
+    {
+        var model = new MiniLMWordSenseModel();
+        model.Dispose();
+        model.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(model.Create);
+    }
+
+    /// <summary>
     ///     The defaults construct a model with the per-user store and a 128-token window; the limits are accepted.
     /// </summary>
     [Fact]

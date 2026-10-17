@@ -9,20 +9,23 @@ prepare and creates the statistical classifier.
 
 #### Data Model
 
-The class is sealed and holds no state. The statistics live in the process-wide `BasicTables.Default`, which the
-classifier loads on first use.
+The class is sealed and holds one volatile disposed flag. The statistics live in the process-wide
+`BasicTables.Default`, which the classifier loads on first use.
 
 #### Key Methods
 
-- `EnsureModelAsync(mirror, cancellationToken)`: ignores the mirror; returns a completed task, or a canceled task when
-  the token is already canceled.
-- `Create()`: returns a new `BasicClassifier` that uses the embedded statistics and the core lexicon. It may be called
+- `EnsureModelAsync(mirror, cancellationToken)`: throws `ObjectDisposedException` after disposal; otherwise ignores the
+  mirror and returns a completed task, or a canceled task when the token is already canceled.
+- `Create()`: throws `ObjectDisposedException` after disposal; otherwise returns a new `BasicClassifier` that uses the
+  embedded statistics and the core lexicon and checks the disposed flag of this model on every call. It may be called
   at any time, with or without `EnsureModelAsync`. The classifier is safe for concurrent use.
+- `Dispose()`: sets the flag; idempotent and thread-safe; releases nothing.
 
 #### Error Handling
 
-No exceptions other than the cancellation of `EnsureModelAsync`. The model is not `IDisposable` because it owns no
-resources. A corrupt embedded table is reported by the first classification, not by the model.
+No exceptions other than the cancellation of `EnsureModelAsync` and `ObjectDisposedException` after `Dispose`. A
+classifier created earlier throws `ObjectDisposedException` on every call once the model is disposed. A corrupt
+embedded table is reported by the first classification, not by the model.
 
 #### Dependencies
 

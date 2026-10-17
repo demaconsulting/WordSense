@@ -18,11 +18,12 @@ model for another without code changes.
   sense, 0 when unknown or undecided).
 - `IWordSenseClassifier.ClassifyAsync(IEnumerable<string> words, CancellationToken)`: returns `Task<WordSense[]>`
   parallel to the input; empty input gives an empty array. The input is one running text whose words are joined by
-  single spaces, with punctuation as separate elements. A classifier is safe for concurrent use and does not own the
-  model.
-- `IWordSenseModel`: `EnsureModelAsync(MirrorOptions? mirror, CancellationToken)` prepares the model (files,
-  download); `Create()` returns a classifier. `EnsureModelAsync` shall complete before `Create`. The interface is not
-  `IDisposable`.
+  single spaces, with punctuation as separate elements. A classifier is safe for concurrent use, is not disposable and
+  only borrows the model: after the model is disposed every call throws `ObjectDisposedException`.
+- `IWordSenseModel : IDisposable`: `EnsureModelAsync(MirrorOptions? mirror, CancellationToken)` prepares the model
+  (files, download); `Create()` returns a classifier. `EnsureModelAsync` shall complete before `Create`. The model owns
+  the lifetime; `Dispose` is idempotent and thread-safe, and `EnsureModelAsync` and `Create` throw
+  `ObjectDisposedException` afterwards.
 - `MirrorOptions(BaseUri, BearerToken, Credentials, StoreRoot, Timeout)`: a sealed record. The base URI is the
   mirror's root; the store root defaults to the per-user `DemaConsulting/WordSense/models` folder; the timeout is per
   file download and defaults to 5 minutes. The printed form masks the token and the credentials.

@@ -204,7 +204,7 @@ namespace DemaConsulting.WordSense;
 ///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}");
 ///     }
 ///
-///     IWordSenseModel model = new BasicWordSenseModel();
+///     using IWordSenseModel model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);

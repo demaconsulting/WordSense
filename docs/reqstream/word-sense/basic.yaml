@@ -17,6 +17,7 @@ sections:
               rest without a model.
             children:
               - WordSense-Basic-BasicWordSenseModel-Create
+              - WordSense-Basic-BasicWordSenseModel-Dispose
               - WordSense-Basic-BasicClassifier-Unknown
               - WordSense-Basic-BasicClassifier-SingleSense
               - WordSense-Basic-BasicClassifier-Resolve

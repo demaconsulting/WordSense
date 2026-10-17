@@ -29,3 +29,5 @@ All scenarios below pass on every platform and target framework of the CI matrix
   credential never appears however the options are formatted.
 - **Interfaces are implementable**: a test double implements `IWordSenseModel` (`EnsureModelAsync`, `Create`) and
   `IWordSenseClassifier` (`ClassifyAsync` over a word list) and is used through the interfaces only.
+- **Ownership**: `IWordSenseModel` is `IDisposable` (so `using` disposes any model without a cast) and
+  `IWordSenseClassifier` is not.

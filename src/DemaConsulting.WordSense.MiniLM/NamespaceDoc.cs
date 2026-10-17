@@ -36,8 +36,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <para>
 ///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files; the first <c>Create</c>
 ///     opens the ONNX session and loads the weights in about 0.4 s, and the word lexicon of the core package loads in
-///     about 120 ms (about 43 MiB). Dispose the model once, after every classification has finished; afterwards
-///     <c>EnsureModelAsync</c> and <c>Create</c> throw <see cref="ObjectDisposedException"/>. The model and the
+///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every classification has finished; afterwards
+///     <c>EnsureModelAsync</c>, <c>Create</c> and every call of a classifier it created throw
+///     <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
+///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The model and the
 ///     classifiers it creates are safe for concurrent use.
 ///     </para>
 ///     <para>

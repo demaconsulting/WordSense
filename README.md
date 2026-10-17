@@ -108,7 +108,7 @@ using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
 // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
-var model = new BasicWordSenseModel();
+using var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 
 var words = "They record the record".Split(' ');
@@ -212,8 +212,9 @@ string[] Tokenize(string sentence) => tokenPattern.Matches(sentence).Select(matc
 string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats.");
 ```
 
-The edge-case table is in the [user guide][link-user-guide]. For generic code, dispose any model with
-`(model as IDisposable)?.Dispose()`; only the encoder models are disposable.
+The edge-case table is in the [user guide][link-user-guide]. `IWordSenseModel` is `IDisposable`; dispose any model with
+`using`. A classifier only borrows its model, so it must not be used after the model is disposed (it then throws
+`ObjectDisposedException`).
 
 ## Accuracy and Limitations
 

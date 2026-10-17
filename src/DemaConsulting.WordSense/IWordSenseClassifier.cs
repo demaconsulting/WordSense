@@ -34,9 +34,11 @@ namespace DemaConsulting.WordSense;
 ///     and BertBaseCased is cased.
 ///     </para>
 ///     <para>
-///     A classifier is safe for concurrent use. It does not own the model that created it, so disposing the model
-///     while a classification is running is not supported: finish (await) every classification first. After an
-///     encoder model is disposed, a call that needs the encoder throws <see cref="ObjectDisposedException"/>.
+///     A classifier is safe for concurrent use. It is not <see cref="IDisposable"/> and does not own the model that
+///     created it: it only borrows it, and the model owner disposes the model (with <c>using</c>), after every
+///     classification has finished (await them all first; disposing while one is running is not supported). Once the
+///     model is disposed, every <see cref="ClassifyAsync"/> call on the classifier throws
+///     <see cref="ObjectDisposedException"/>, whatever the words.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -44,7 +46,7 @@ namespace DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.Basic;
 ///
-///     IWordSenseModel model = new BasicWordSenseModel();
+///     using IWordSenseModel model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
@@ -68,7 +70,7 @@ public interface IWordSenseClassifier
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown by an encoder model that has been disposed, when the text has a word that needs the encoder; a text without such a word is still answered. The Basic model is never disposed.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model that created the classifier has been disposed, whatever the words.</exception>
     Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default);
 }
 

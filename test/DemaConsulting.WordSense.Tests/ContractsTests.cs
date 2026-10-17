@@ -33,13 +33,13 @@ public class ContractsTests
     }
 
     /// <summary>
-    ///     The model contract needs no disposal.
+    ///     The model contract owns the lifetime, so it is disposable; the classifier only borrows the model.
     /// </summary>
     [Fact]
-    public void WordSenseContracts_IWordSenseModel_IsNotDisposable()
+    public void WordSenseContracts_IWordSenseModel_IsDisposable()
     {
-        Assert.False(typeof(IDisposable).IsAssignableFrom(typeof(IWordSenseModel)));
-        Assert.False(typeof(IAsyncDisposable).IsAssignableFrom(typeof(IWordSenseModel)));
+        Assert.True(typeof(IDisposable).IsAssignableFrom(typeof(IWordSenseModel)));
+        Assert.False(typeof(IDisposable).IsAssignableFrom(typeof(IWordSenseClassifier)));
     }
 
     /// <summary>

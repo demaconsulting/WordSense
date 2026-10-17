@@ -33,6 +33,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
   without cancelling the shared download.
 - **Weights and session are shared**: classifiers from two `Create` calls share one encoder and one weights table.
-- **Disposal**: `Dispose` can be called twice; `EnsureModelAsync` and `Create` after disposal throw
-  `ObjectDisposedException`.
+- **Disposal**: `Dispose` can be called twice and from many threads at once; `EnsureModelAsync` and `Create` after
+  disposal throw `ObjectDisposedException`, and so does every call of a classifier created earlier, even for words that
+  never need the encoder.
+- **Dispose during EnsureModelAsync**: a local server starts a response and stalls; disposing the model cancels the
+  download, every pending `EnsureModelAsync` task ends with `OperationCanceledException` without hanging, later calls
+  throw `ObjectDisposedException`, and no `.part` or model file remains in the store.
 - **Argument validation**: a null spec and a maximum sequence length below 8 or above 512 are rejected.

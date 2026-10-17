@@ -59,7 +59,7 @@ internal sealed class ReadmeSample
     {
         // <sample:basic>
         // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
-        var model = new BasicWordSenseModel();
+        using var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 
         var words = "They record the record".Split(' ');
@@ -78,7 +78,7 @@ internal sealed class ReadmeSample
     /// <summary>
     ///     Stands in for the real model class, so that the sample runs without a download.
     /// </summary>
-    private sealed class MiniLMWordSenseModel : IWordSenseModel, IDisposable
+    private sealed class MiniLMWordSenseModel : IWordSenseModel
     {
         private readonly DemaConsulting.WordSense.MiniLM.MiniLMWordSenseModel _model =
             new(DocSampleText.RequireMiniLMDirectory());

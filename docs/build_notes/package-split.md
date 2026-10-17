@@ -37,7 +37,10 @@ The namespace of each package equals the package name.
   GitHub LFS path. See `model-provenance.md`.
 - **The word table is shared.** `WordLexicon.Words` holds the senses of all known surface forms, including the
   inflections that the builder `words` command materializes at build time, so no model needs morphology at run time.
-- **Lifetime.** `IWordSenseModel` is not `IDisposable`; `OnnxWordSenseModel` is, because it holds the ONNX session.
+- **Lifetime.** `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the downloader state, so it owns
+  the lifetime. A classifier only borrows its model (it is not disposable) and throws `ObjectDisposedException` after
+  the model is disposed. The Basic model's `Dispose` releases nothing but honors the same contract. Disposing during
+  `EnsureModelAsync` cancels the download (`OperationCanceledException`).
 - **Mirror configuration** is the sealed record `MirrorOptions` in the core, so every model package takes the same
   argument; models that need no files ignore it.
 

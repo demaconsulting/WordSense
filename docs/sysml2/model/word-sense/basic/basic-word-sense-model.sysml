@@ -1,6 +1,6 @@
 package WordSense {
     part def BasicWordSenseModel {
-        doc /* The public statistical word-sense model: it needs no files, performs no download and creates the basic classifier. */
+        doc /* The public statistical word-sense model: it needs no files, performs no download and creates the basic classifier; its disposal only marks the model so that later use throws. */
 
         comment sourceRef /* Source: src/DemaConsulting.WordSense.Basic/BasicWordSenseModel.cs */
         comment testRef /* Test: test/DemaConsulting.WordSense.Basic.Tests/BasicWordSenseModelTests.cs */

@@ -143,6 +143,7 @@ sections:
               - WordSense-Onnx-OnnxWordSenseModel-Options
             tests:
               - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+              - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
 
           - id: WordSense-Onnx-Packaging
             title: >-

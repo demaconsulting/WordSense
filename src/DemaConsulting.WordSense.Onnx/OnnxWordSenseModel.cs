@@ -23,8 +23,11 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     are never visible under a final file name, so a cancelled or failed download leaves no partial model file.
 ///     <see cref="Create"/> may be called repeatedly after <see cref="EnsureModelAsync"/> has completed; every call
 ///     returns a classifier that shares one ONNX session and one set of weights, and the method is thread-safe.
-///     The ONNX session and the weights are loaded on the first <see cref="Create"/> call. Dispose the model once,
-///     after every classifier call has finished: disposing while a classification is running is not supported.
+///     The ONNX session and the weights are loaded on the first <see cref="Create"/> call. The model owns the ONNX
+///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>):
+///     dispose it, for example with <c>using</c>, after every classifier call has finished; disposing while a
+///     classification is running is not supported. Disposing while <see cref="EnsureModelAsync"/> is downloading
+///     cancels the download; the pending task then throws <see cref="OperationCanceledException"/>.
 ///     </para>
 ///     <para>
 ///     A classifier returns a confidence between 0 and 1 for each word it resolved. For a word with one sense it is 1.
@@ -59,8 +62,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     file; the first <see cref="Create"/> opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
 ///     BertBaseCased) and loads the weights; the word lexicon (about 120 ms, about 43 MiB) loads on first use. After
 ///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="Create"/> throw
-///     <see cref="ObjectDisposedException"/>, as does a classification that has to run the encoder on a classifier
-///     created earlier.
+///     <see cref="ObjectDisposedException"/>, as does every <c>ClassifyAsync</c> call of a classifier created
+///     earlier (a classifier only borrows its model and is not disposable itself).
 ///     </para>
 /// </remarks>
 /// <example>
@@ -77,7 +80,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     }
 ///     </code>
 /// </example>
-public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
+public abstract class OnnxWordSenseModel : IWordSenseModel
 {
     private readonly ModelSpec _spec;
     private readonly string? _modelDirectory;
@@ -87,7 +90,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     private string? _directory;
     private OnnxEncoder? _encoder;
     private WeightedLemmaTable? _table;
-    private bool _disposed;
+    private readonly CancellationTokenSource _disposeCts = new();
+    private readonly CancellationToken _disposeToken;
+    private volatile bool _disposed;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxWordSenseModel"/> class.
@@ -103,6 +108,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
         _spec = spec;
         _modelDirectory = modelDirectory is null ? null : Path.GetFullPath(modelDirectory);
         _maxSequenceLength = maxSequenceLength;
+        _disposeToken = _disposeCts.Token;
     }
 
     /// <summary>
@@ -196,7 +202,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
             var directory = _directory ?? throw new InvalidOperationException("The model files are not available; call EnsureModelAsync first.");
             _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
             _encoder ??= OpenEncoderCore(directory);
-            return new OnnxClassifier(_encoder, _table);
+            return new OnnxClassifier(_encoder, _table, ThrowIfDisposed);
         }
     }
 
@@ -211,8 +217,14 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     public string ModelId => _spec.ModelId;
 
     /// <summary>
-    ///     Releases the ONNX session. Calling it more than once is harmless.
+    ///     Releases the ONNX session and cancels a download that <see cref="EnsureModelAsync"/> has in flight.
     /// </summary>
+    /// <remarks>
+    ///     Calling it more than once, or from several threads at once, is harmless: the first call releases, the others
+    ///     return. It does not wait for a cancelled download to unwind; the cancelled download leaves no partial model
+    ///     file. Every pending <see cref="EnsureModelAsync"/> task then ends with
+    ///     <see cref="OperationCanceledException"/>; calls made after disposal throw <see cref="ObjectDisposedException"/>.
+    /// </remarks>
     public void Dispose()
     {
         Dispose(true);
@@ -220,7 +232,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     }
 
     /// <summary>
-    ///     Releases the ONNX session.
+    ///     Releases the ONNX session and cancels a download in flight.
     /// </summary>
     /// <param name="disposing">True when called from <see cref="Dispose()"/>.</param>
     protected virtual void Dispose(bool disposing)
@@ -241,7 +253,18 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
             _encoder?.Dispose();
             _encoder = null;
         }
+
+        // Cancel outside the gate; every callback has run when Cancel returns, so the source can then be disposed. A
+        // download still holding the token (copied in the constructor) sees a cancelled token, never a disposed source
+        _disposeCts.Cancel();
+        _disposeCts.Dispose();
     }
+
+    /// <summary>
+    ///     Throws when the model has been disposed; used by the classifiers this model created.
+    /// </summary>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    internal void ThrowIfDisposed() => ObjectDisposedException.ThrowIf(_disposed, this);
 
     /// <summary>
     ///     Opens a new encoder on the verified model files; the caller owns it.
@@ -281,7 +304,15 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
         }
         else
         {
-            directory = await ModelDownloader.EnsureAsync(_spec, mirror, CancellationToken.None, HttpClient, GitHubBaseUri, GetEnvironmentVariable).ConfigureAwait(false);
+            try
+            {
+                directory = await ModelDownloader.EnsureAsync(_spec, mirror, _disposeToken, HttpClient, GitHubBaseUri, GetEnvironmentVariable).ConfigureAwait(false);
+            }
+            catch (Exception ex) when (_disposeToken.IsCancellationRequested && ex is not OperationCanceledException)
+            {
+                // Disposal cancelled the download; whatever the abort surfaced as, report one consistent outcome
+                throw new OperationCanceledException("The model was disposed while its files were being ensured.", ex, _disposeToken);
+            }
         }
 
         lock (_gate)

@@ -236,4 +236,104 @@ public class OnnxWordSenseModelTests
 
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
     }
+
+    /// <summary>
+    ///     Disposing from many threads at once releases once and never throws.
+    /// </summary>
+    [Fact]
+    public void OnnxWordSenseModel_Dispose_Concurrent_IsHarmless()
+    {
+        var model = Open();
+
+        var exceptions = new System.Collections.Concurrent.ConcurrentBag<Exception>();
+        Parallel.For(0, 16, new ParallelOptions { MaxDegreeOfParallelism = 4 }, _ =>
+        {
+            try
+            {
+                model.Dispose();
+            }
+            catch (Exception ex)
+            {
+                exceptions.Add(ex);
+            }
+        });
+
+        Assert.Empty(exceptions);
+        Assert.Throws<ObjectDisposedException>(model.Create);
+    }
+
+    /// <summary>
+    ///     A classifier created earlier rejects every call once its model is disposed, whatever the words.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed()
+    {
+        var model = Open(ModelAssets.RequireModelDirectory());
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        var classifier = model.Create();
+        model.Dispose();
+
+        // "the" never needs the encoder and an empty list needs nothing at all: both are still rejected
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["the"], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync([], TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => classifier.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     Disposing while a download is in flight cancels it: the pending calls throw
+    ///     <see cref="OperationCanceledException"/>, nothing hangs and no partial file remains.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload()
+    {
+        var store = Path.Combine(Path.GetTempPath(), "wordsense-store-" + Guid.NewGuid().ToString("N"));
+        var release = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        try
+        {
+            // The server starts a response and then stalls until the test ends
+            using var server = new LocalServer(async c =>
+            {
+                c.Response.StatusCode = 200;
+                c.Response.ContentLength64 = 10_000_000;
+                await c.Response.OutputStream.WriteAsync(new byte[16]);
+                await c.Response.OutputStream.FlushAsync();
+                await release.Task;
+            });
+            var model = Open();
+            model.GitHubBaseUri = new Uri(server.BaseUri, "/lfs/");
+            model.GetEnvironmentVariable = _ => null;
+            var mirror = new MirrorOptions(new Uri(server.BaseUri, "/mirror/"), StoreRoot: store);
+
+            var pending = model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
+            var second = model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken);
+            var deadline = DateTime.UtcNow.AddSeconds(30);
+            while (server.Requests.Count == 0 && DateTime.UtcNow < deadline)
+            {
+                await Task.Delay(20, TestContext.Current.CancellationToken);
+            }
+
+            Assert.NotEmpty(server.Requests);
+            model.Dispose();
+
+            // Every waiter ends with the cancellation exception, promptly
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => pending.WaitAsync(TimeSpan.FromSeconds(30), TestContext.Current.CancellationToken));
+            await Assert.ThrowsAnyAsync<OperationCanceledException>(() => second.WaitAsync(TimeSpan.FromSeconds(30), TestContext.Current.CancellationToken));
+            await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(mirror, TestContext.Current.CancellationToken));
+            Assert.Throws<ObjectDisposedException>(model.Create);
+
+            release.TrySetResult();
+            var files = Directory.Exists(store) ? Directory.GetFiles(store, "*", SearchOption.AllDirectories) : [];
+            Assert.DoesNotContain(files, path => path.EndsWith(".part", StringComparison.Ordinal) || path.EndsWith(".onnx", StringComparison.Ordinal));
+        }
+        finally
+        {
+            release.TrySetResult();
+            if (Directory.Exists(store))
+            {
+                Directory.Delete(store, true);
+            }
+        }
+    }
 }

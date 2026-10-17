@@ -66,7 +66,19 @@ public class BertBaseCasedWordSenseModelTests
         using var model = new BertBaseCasedWordSenseModel();
 
         Assert.Equal("bert-base-cased-int8", model.ModelId);
-        Assert.IsAssignableFrom<IDisposable>(model);
+    }
+
+    /// <summary>
+    ///     A disposed model rejects <c>Create</c> and disposing again is harmless.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_Create_AfterDispose_Throws()
+    {
+        var model = new BertBaseCasedWordSenseModel();
+        model.Dispose();
+        model.Dispose();
+
+        Assert.Throws<ObjectDisposedException>(model.Create);
     }
 
     /// <summary>

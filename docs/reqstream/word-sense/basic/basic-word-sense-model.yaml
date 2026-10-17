@@ -23,7 +23,7 @@ sections:
               - id: WordSense-Basic-BasicWordSenseModel-Create
                 title: >-
                   BasicWordSenseModel shall create classifiers on demand, with or without a prior preparation call, each
-                  safe for concurrent use and needing no disposal.
+                  safe for concurrent use.
                 tags: [unit]
                 justification: |
                   A model without resources should be as simple to use as a plain object.
@@ -31,3 +31,19 @@ sections:
                   - BasicWordSenseModel_Create_ReturnsClassifier
                   - BasicWordSenseModel_Create_WithoutEnsure_Works
                   - BasicWordSenseModel_Create_Classifier_IsThreadSafe
+
+              - id: WordSense-Basic-BasicWordSenseModel-Dispose
+                title: >-
+                  BasicWordSenseModel shall tolerate repeated and concurrent disposal, and after disposal shall throw
+                  ObjectDisposedException from its preparation step, from Create and from every call of a classifier it
+                  created.
+                tags: [unit]
+                justification: |
+                  The model honors the disposal contract of IWordSenseModel, so code that handles any model behaves the
+                  same with the Basic model.
+                tests:
+                  - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - BasicWordSenseModel_Dispose_Concurrent_IsHarmless
+                  - BasicWordSenseModel_Create_AfterDispose_ThrowsObjectDisposed
+                  - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+                  - BasicWordSenseModel_Classifier_AfterModelDispose_ThrowsObjectDisposed

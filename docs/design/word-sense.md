@@ -99,8 +99,10 @@ embedded in the encoder packages.
   models run on the CPU through ONNX Runtime.
 - **Offline use**: the lexicon and the Basic model need no network. An encoder model needs the network only to
   download its files once; supplying a model directory avoids all network access.
-- **Thread safety**: the lexicon, the models and the classifiers are safe for concurrent use. A model that holds a
-  native session implements `IDisposable`; it is disposed once after all classification has finished.
+- **Thread safety**: the lexicon, the models and the classifiers are safe for concurrent use. `IWordSenseModel` is
+  `IDisposable` and owns the lifetime (the ONNX session and the downloader state); it is disposed once after all
+  classification has finished, and disposal is idempotent and thread-safe. A classifier only borrows its model and
+  throws `ObjectDisposedException` after the model is disposed.
 - **Security**: downloaded files are accepted only when they match their pinned SHA-256; mirror credentials are
   sent only to the mirror's own origin and are rejected for plain http except on a loopback host; redirects are
   followed manually so credentials never cross origins; credentials never appear in a printed option value.
@@ -117,7 +119,7 @@ embedded in the encoder packages.
 - The weights format `WSX1` supports dense weights only; there is no sparse variant.
 - `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
   Design_), not in the record.
-- `IWordSenseModel` is not `IDisposable`; the encoder models implement `IDisposable` themselves and the Basic model
-  holds nothing to release.
+- `IWordSenseModel` is `IDisposable` and owns the lifetime; the Basic model's `Dispose` only marks the model as
+  disposed. Disposing a model while a classification is running is not supported.
 - The `model_int8.onnx` file of `bert-base-cased-int8` is the derived encoder export, not the upstream masked
   language model export.
