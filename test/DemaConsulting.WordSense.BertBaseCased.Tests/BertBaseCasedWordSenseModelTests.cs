@@ -41,4 +41,62 @@ public class BertBaseCasedWordSenseModelTests
 
         Assert.Contains("EnsureModelAsync", ex.Message, StringComparison.Ordinal);
     }
+
+    /// <summary>
+    ///     The defaults construct a model with the per-user store and a 128-token window; the limits are accepted.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_Constructor_Defaults_UseStoreAnd128()
+    {
+        using var defaults = new BertBaseCasedWordSenseModel();
+        using var smallest = new BertBaseCasedWordSenseModel(null, 8);
+        using var largest = new BertBaseCasedWordSenseModel(null, 512);
+
+        Assert.Equal(768, defaults.HiddenSize);
+        Assert.Equal(768, smallest.HiddenSize);
+        Assert.Equal(768, largest.HiddenSize);
+    }
+
+    /// <summary>
+    ///     The identity names the cased model and its hidden size.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_ModelIdAndHiddenSize_AreBertBaseCased()
+    {
+        using var model = new BertBaseCasedWordSenseModel();
+
+        Assert.Equal("bert-base-cased-int8", model.ModelId);
+        Assert.IsAssignableFrom<IDisposable>(model);
+    }
+
+    /// <summary>
+    ///     A directory with the pinned files is accepted without network access.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles()
+    {
+        using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+
+        Assert.NotNull(model.Create());
+    }
+
+    /// <summary>
+    ///     An ambiguous word is resolved to its best sense from the context.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense()
+    {
+        using var model = new BertBaseCasedWordSenseModel(ModelFolder.Require()) { IntraOpThreads = 2 };
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        var classifier = model.Create();
+
+        var result = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+
+        Assert.Equal(PartOfSpeech.Verb, result[2].Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Noun, result[4].Details?.PartOfSpeech);
+    }
 }

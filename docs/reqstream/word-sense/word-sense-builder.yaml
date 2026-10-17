@@ -17,10 +17,10 @@ sections:
             justification: |
               The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it.
             tests:
-              - WordSenseBuilder_Words_SameCorpus_IsByteIdentical
-              - WordSenseBuilder_Words_TrainedLemma_ListsAllSenses
-              - WordSenseBuilder_Words_GeneratedForm_NeverReplacesKnownWord
-              - WordSenseBuilder_WordsBlobWriter_RoundTrip_ReadsBackThroughCoreReader
+              - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
+              - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
+              - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
+              - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
 
           - id: WordSense-WordSenseBuilder-Weights
             title: >-
@@ -32,8 +32,8 @@ sections:
               the one shared corpus keeps the models comparable.
             tests:
               - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
-              - WordSenseBuilder_WeightsBlobWriter_RoundTrip_ReadsBackThroughOnnxReader
-              - WordSenseBuilder_Program_Weights_UnknownModel_ReportsError
+              - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
+              - WordSenseBuilder_Program_Weights_UnknownModel_ListsTheModels
 
           - id: WordSense-WordSenseBuilder-Evaluate
             title: >-
@@ -45,7 +45,7 @@ sections:
               never used for training.
             tests:
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
-              - WordSenseBuilder_Evaluator_Render_ReportsCountsAndAccuracy
+              - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
           - id: WordSense-WordSenseBuilder-BasicPrecision
             title: >-
@@ -56,9 +56,9 @@ sections:
               The fixed rule confidences must be calibrated on data that is not used for the final accuracy
               measurement, so that the reported accuracy stays honest.
             tests:
-              - WordSenseBuilder_BasicPrecision_Measure_CountsFiringsPerRule
+              - WordSenseBuilder_BasicPrecision_Measure_CountsFiringsOnAnchors
               - WordSenseBuilder_BasicPrecision_Measure_UsesOnlyTrainingAnchors
-              - WordSenseBuilder_BasicPrecision_Render_ListsConfidencePerRule
+              - WordSenseBuilder_BasicPrecision_Render_ListsEveryRule
 
           - id: WordSense-WordSenseBuilder-Appendix
             title: >-
@@ -73,7 +73,8 @@ sections:
             tests:
               - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
               - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
-              - WordSenseBuilder_Appendix_Run_WritesFileAndRequiresOptions
+              - WordSenseBuilder_Program_Appendix_WritesFile
+              - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails
               - WordSenseBuilder_Appendix_Committed_MatchesCorpus
 
           - id: WordSense-WordSenseBuilder-Corpus
@@ -96,7 +97,7 @@ sections:
             justification: |
               A build tool used in scripts must fail visibly and say why.
             tests:
-              - WordSenseBuilder_Program_Run_ReportsErrors
-              - WordSenseBuilder_Program_Run_NonNumericOption_ReportsErrorNamingOption
-              - WordSenseBuilder_Program_Run_OptionNameAsValue_ReportsUsageError
-              - WordSenseBuilder_Program_Run_UnknownCommand_ReportsUsage
+              - WordSenseBuilder_Program_Words_InconsistentCorpus_Fails
+              - WordSenseBuilder_Program_MalformedOptions_ReportUsage
+              - WordSenseBuilder_Program_MalformedOptions_ReportUsage
+              - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage

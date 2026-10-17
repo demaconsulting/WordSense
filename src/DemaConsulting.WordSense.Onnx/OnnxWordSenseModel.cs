@@ -19,6 +19,17 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     the model creates. Dispose the model after every classifier call has finished.
 ///     </para>
 /// </remarks>
+/// <example>
+///     <code>
+///     // Works with any ONNX encoder model, for example the MiniLM or BertBaseCased model.
+///     static async Task&lt;WordSense[]&gt; ClassifyAsync(OnnxWordSenseModel model, string[] words)
+///     {
+///         await model.EnsureModelAsync();
+///         IWordSenseClassifier classifier = model.Create();
+///         return await classifier.ClassifyAsync(words);
+///     }
+///     </code>
+/// </example>
 public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
 {
     private readonly ModelSpec _spec;

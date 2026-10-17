@@ -158,17 +158,6 @@ internal sealed record DownloadMirror
     /// <returns>The configured mirror, or null when <see cref="UrlEnvironmentVariable"/> is blank.</returns>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="getEnvironmentVariable"/> is null.</exception>
     /// <exception cref="ArgumentException">Thrown when the configuration is invalid.</exception>
-    /// <example>
-    ///     <code>
-    ///     var values = new Dictionary&lt;string, string&gt;
-    ///     {
-    ///         [DownloadMirror.UrlEnvironmentVariable] = "https://models.example.com/wordsense",
-    ///         [DownloadMirror.BearerTokenEnvironmentVariable] = "token",
-    ///     };
-    ///
-    ///     DownloadMirror? mirror = DownloadMirror.FromEnvironment(name => values.GetValueOrDefault(name));
-    ///     </code>
-    /// </example>
     public static DownloadMirror? FromEnvironment(Func<string, string?> getEnvironmentVariable)
     {
         ArgumentNullException.ThrowIfNull(getEnvironmentVariable);

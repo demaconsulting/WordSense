@@ -23,7 +23,9 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     // classifier comes from IWordSenseModel.Create()
+///     IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
+///     await model.EnsureModelAsync();
+///     IWordSenseClassifier classifier = model.Create();
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
 ///     WordSense[] senses = await classifier.ClassifyAsync(words);
 ///     foreach (WordSense sense in senses.Where(s => s.Details is not null))

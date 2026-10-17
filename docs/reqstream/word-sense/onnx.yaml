@@ -57,7 +57,7 @@ sections:
               - WordSense-Onnx-LemmaWeights-Scoring
               - WordSense-Onnx-LemmaWeights-Embedded
             tests:
-              - WeightedLemmaTable_LoadEmbedded_MatchingLexicon_KeepsAllLemmas
+              - EmbeddedWeights_MiniLM_DropsNoLemma
 
           - id: WordSense-Onnx-Encoder
             title: >-
@@ -104,8 +104,8 @@ sections:
               - WordSense-Onnx-OnnxWordSenseModel-Ensure
               - WordSense-Onnx-OnnxWordSenseModel-Concurrent
             tests:
-              - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
-              - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+              - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+              - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
           - id: WordSense-Onnx-Mirror
             title: >-

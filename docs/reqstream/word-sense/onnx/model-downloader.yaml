@@ -14,8 +14,8 @@ sections:
                 justification: |
                   A user-provided mirror must take precedence, and the public repository copy is the fallback.
                 tests:
-                  - ModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror
-                  - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+                  - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
+                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
                   - ModelDownloader_EnsureModel_NoMirror_UsesGitHubLfs
 
               - id: WordSense-Onnx-ModelDownloader-Fallthrough
@@ -26,9 +26,9 @@ sections:
                 justification: |
                   A blocked or tampered source must not stop the download when another source works.
                 tests:
-                  - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
+                  - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
                   - ModelDownloader_EnsureModel_Timeout_FallsThrough
-                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
               - id: WordSense-Onnx-ModelDownloader-Integrity
                 title: The downloader shall verify the SHA-256 digest of each download and of each existing file.
@@ -36,8 +36,8 @@ sections:
                 justification: |
                   Only verified content may end up in the model store.
                 tests:
-                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
-                  - ModelDownloader_EnsureModel_CorruptExistingFile_IsRedownloaded
+                  - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureAsync_PresentAndCorrupt_ReusesValidRedownloadsCorrupt
                   - ModelDownloader_EnsureModel_CorruptCacheAndAllSourcesFail_LeavesFileInPlace
 
               - id: WordSense-Onnx-ModelDownloader-Atomic
@@ -48,7 +48,7 @@ sections:
                 justification: |
                   A crash or a cancelled download must not leave a file that a later start would trust.
                 tests:
-                  - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+                  - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
                   - ModelDownloader_EnsureModel_Success_LeavesNoTemporaryFiles
 
               - id: WordSense-Onnx-ModelDownloader-Location
@@ -60,7 +60,7 @@ sections:
                   A user-supplied directory is as untrusted as a download; a stale, truncated or tampered model would
                   silently produce wrong senses.
                 tests:
-                  - ModelDownloader_FromDirectory_ChecksEveryFile
+                  - ModelDownloader_Verify_MissingOrWrongFile_Throws
 
               - id: WordSense-Onnx-ModelDownloader-StoreRoot
                 title: >-
@@ -72,7 +72,7 @@ sections:
                   writable; per-model folders keep models apart.
                 tests:
                   - ModelDownloader_DefaultStoreRoot_IsPerUser
-                  - ModelDownloader_EnsureModel_StoreRootOption_StoresInModelFolder
+                  - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
 
               - id: WordSense-Onnx-ModelDownloader-AllFail
                 title: The downloader shall report every failed attempt when all sources fail.
@@ -80,7 +80,7 @@ sections:
                 justification: |
                   Users need the full list of failures to diagnose network or mirror problems.
                 tests:
-                  - ModelDownloader_EnsureModel_AllSourcesFail_ThrowsWithEveryAttempt
+                  - ModelDownloader_EnsureAsync_AllSourcesFail_Throws
 
               - id: WordSense-Onnx-ModelDownloader-Present
                 title: The downloader shall make no request for files that are already present and valid.
@@ -88,7 +88,7 @@ sections:
                 justification: |
                   Repeated start-ups must work offline and quickly.
                 tests:
-                  - ModelDownloader_EnsureModel_AlreadyPresent_MakesNoRequests
+                  - ModelDownloader_EnsureAsync_PresentAndCorrupt_ReusesValidRedownloadsCorrupt
 
               - id: WordSense-Onnx-ModelDownloader-Cancel
                 title: The downloader shall stop and propagate cancellation requested by the caller.
@@ -119,8 +119,8 @@ sections:
                 justification: |
                   A fixed layout lets users populate a mirror by copying the model folders from the repository.
                 tests:
-                  - ModelDownloader_EnsureModel_MirrorServes_UsesOnlyMirror
-                  - ModelDownloader_EnsureModel_Mirror_RequestsModelIdAndFileName
+                  - ModelDownloader_EnsureAsync_MirrorServes_UsesOnlyMirror
+                  - ModelDownloader_BuildSources_MirrorThenGitHub_UsesDocumentedLayout
 
               - id: WordSense-Onnx-ModelDownloader-Credentials
                 title: The downloader shall send mirror credentials only to the mirror's own origin.
@@ -128,7 +128,7 @@ sections:
                 justification: |
                   Public hosts, and hosts a mirror redirects to, must never receive the user's credentials.
                 tests:
-                  - ModelDownloader_EnsureModel_BearerToken_SentOnlyToMirror
+                  - ModelDownloader_EnsureAsync_BearerToken_SentOnlyToMirror
                   - ModelDownloader_EnsureModel_BasicCredentials_SentToMirror
                   - ModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere
                   - ModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials
@@ -140,5 +140,5 @@ sections:
                 justification: |
                   A zero or negative timeout can never work and must fail clearly.
                 tests:
-                  - ModelDownloader_EnsureModel_InvalidRequestTimeout_ThrowsBeforeRequests
+                  - ModelDownloader_EnsureAsync_InvalidTimeout_ThrowsBeforeRequests
                   - ModelDownloader_EnsureModel_InfiniteRequestTimeout_Succeeds

@@ -17,8 +17,8 @@ sections:
                   The trained classifiers ship as one compact blob per model; the reader must reproduce exactly what
                   the build tool wrote.
                 tests:
-                  - WeightsBlob_Read_ValidBlob_ReturnsAllLemmas
-                  - WeightsBlob_Read_WriterRoundTrip_PreservesValues
+                  - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
+                  - WordSenseBuilder_WeightsBlobWriter_Write_NoLemmas_RoundTrips
 
               - id: WordSense-Onnx-LemmaWeights-Integrity
                 title: >-
@@ -27,7 +27,7 @@ sections:
                 justification: |
                   A damaged blob must fail loudly instead of producing silently wrong answers.
                 tests:
-                  - WeightsBlob_Read_CorruptData_Throws
+                  - WeightsBlob_Read_NotCompressed_Throws
                   - WeightsBlob_Read_UnknownMagic_Throws
                   - WeightsBlob_Read_Truncated_Throws
 
@@ -41,9 +41,9 @@ sections:
                   Weights score senses by position in the trained classes; a lexicon that disagrees would assign scores
                   to the wrong senses, so the lemma must have no weights instead.
                 tests:
-                  - WeightedLemmaTable_Constructor_MatchingLexicon_KeepsLemma
-                  - WeightedLemmaTable_Constructor_DifferentSenses_DropsWholeLemma
-                  - WeightedLemmaTable_Constructor_DroppedLemmas_AreReported
+                  - WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma
+                  - WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma
+                  - WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma
                   - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Scoring
@@ -56,10 +56,11 @@ sections:
                   The confidence is the contract callers rely on; a monotonic, bounded mapping makes thresholds
                   meaningful.
                 tests:
-                  - LemmaWeights_Scores_BinaryAndOneVersusRest_ScoreEverySense
-                  - LemmaWeights_Rank_ReturnsBestSenseAndMargin
-                  - LemmaWeights_Confidence_IsMonotonicAndBounded
-                  - LemmaWeights_Confidence_NaNMargin_IsZero
+                  - LemmaWeights_Scores_Binary_ReturnsSymmetricScores
+                  - LemmaWeights_Scores_OneVersusRest_ReturnsOneScorePerRow
+                  - LemmaWeights_Rank_ReturnsBestAndMargin
+                  - LemmaWeights_Confidence_IsMonotonicAndClamped
+                  - LemmaWeights_Confidence_IsMonotonicAndClamped
 
               - id: WordSense-Onnx-LemmaWeights-Embedded
                 title: >-
@@ -70,5 +71,5 @@ sections:
                   A dropped lemma silently turns every ambiguous use of its words into an abstention; the shipped
                   lexicon and weights must always have been built together.
                 tests:
-                  - EmbeddedWeights_MiniLM_DropNoLemma
-                  - EmbeddedWeights_BertBaseCased_DropNoLemma
+                  - EmbeddedWeights_MiniLM_DropsNoLemma
+                  - EmbeddedWeights_BertBaseCased_DropsNoLemma

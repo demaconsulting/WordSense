@@ -8,6 +8,8 @@ namespace DemaConsulting.WordSense.Tests;
 /// </summary>
 public class WordsBlobTests
 {
+    private static readonly byte[] Magic = "WSW1"u8.ToArray();
+
     private static byte[] Compress(byte[] raw)
     {
         using var output = new MemoryStream();
@@ -23,9 +25,12 @@ public class WordsBlobTests
     ///     Data that is not a compressed stream is rejected.
     /// </summary>
     [Fact]
-    public void WordsBlob_Read_NotCompressed_Throws()
+    public void WordsBlob_Read_CorruptData_Throws()
     {
         Assert.Throws<InvalidDataException>(() => WordsBlob.Read([1, 2, 3, 4, 5]));
+
+        // A truncated blob: the magic and a string count of 5 with no strings following
+        Assert.Throws<InvalidDataException>(() => WordsBlob.Read(Compress([.. Magic, 5])));
     }
 
     /// <summary>
@@ -40,26 +45,30 @@ public class WordsBlobTests
     }
 
     /// <summary>
-    ///     A blob with no strings, no details and no keys reads as an empty lexicon.
+    ///     A sense that refers to a string that does not exist is rejected.
     /// </summary>
     [Fact]
-    public void WordsBlob_Read_EmptyTables_ReturnsEmptyLexicon()
+    public void WordsBlob_Read_InvalidSense_Throws()
     {
-        // Magic, string count 0, details count 0, key count 0
-        var blob = Compress([.. "WSW1"u8.ToArray(), 0, 0, 0]);
+        // Strings: "run"; one sense whose lemma index 5 is out of range
+        var blob = Compress([.. Magic, 1, 3, (byte)'r', (byte)'u', (byte)'n', 1, 5, 0, 0, 0, 0]);
 
-        Assert.Empty(WordsBlob.Read(blob));
+        Assert.Throws<InvalidDataException>(() => WordsBlob.Read(blob));
     }
 
     /// <summary>
-    ///     A truncated blob is rejected.
+    ///     Two keys that point to the same sense share one instance of it.
     /// </summary>
     [Fact]
-    public void WordsBlob_Read_Truncated_Throws()
+    public void WordsBlob_Read_ValidBlob_SharesEqualSenses()
     {
-        // Magic and a string count of 5 with no strings following
-        var blob = Compress([.. "WSW1"u8.ToArray(), 5]);
+        // Strings "run" and "ran"; one sense (lemma "run", noun, no meaning, no respelling); two keys using it
+        var blob = Compress([.. Magic, 2, 3, (byte)'r', (byte)'u', (byte)'n', 3, (byte)'r', (byte)'a', (byte)'n', 1, 0, 0, 0, 0, 2, 0, 1, 0, 1, 1, 0]);
 
-        Assert.Throws<InvalidDataException>(() => WordsBlob.Read(blob));
+        var lexicon = WordsBlob.Read(blob);
+
+        Assert.Equal(2, lexicon.Count);
+        Assert.Same(lexicon["run"][0], lexicon["ran"][0]);
+        Assert.Equal(new WordDetails("run", PartOfSpeech.Noun, null, null), lexicon["run"][0]);
     }
 }

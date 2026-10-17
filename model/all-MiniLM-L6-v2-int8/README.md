@@ -1,7 +1,8 @@
 # WordSense Model Files
 
 These are the exact encoder files that the embedded weights table
-(`src/DemaConsulting.WordSense.MiniLM/Resources/weights.all-MiniLM-L6-v2-int8.{model-sha256}.bin`)
+(`src/DemaConsulting.WordSense.MiniLM/Resources/weights.bin`, embedded as the resource
+`DemaConsulting.WordSense.MiniLM.weights.bin`)
 was trained against.
 
 | File | Purpose | Storage |

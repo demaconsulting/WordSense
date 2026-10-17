@@ -17,7 +17,7 @@ sections:
                   The identifier names the model's folder in the repository, on a mirror and in the store, and the
                   weights were trained for exactly this encoder.
                 tests:
-                  - MiniLMWordSenseModel_ModelIdAndHiddenSize_AreMiniLM
+                  - MiniLMWordSenseModel_Identity_IsPinned
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Files
                 title: >-
@@ -37,7 +37,7 @@ sections:
                 justification: |
                   Embedded weights make the package self-contained apart from the model file.
                 tests:
-                  - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+                  - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
                   - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Options

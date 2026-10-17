@@ -20,7 +20,7 @@ sections:
               - WordSense-MiniLM-MiniLMWordSenseModel-Weights
               - WordSense-MiniLM-MiniLMWordSenseModel-Options
             tests:
-              - MiniLMWordSenseModel_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+              - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
 
           - id: WordSense-MiniLM-Packaging

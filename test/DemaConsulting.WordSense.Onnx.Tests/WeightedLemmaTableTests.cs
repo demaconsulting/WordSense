@@ -79,4 +79,17 @@ public class WeightedLemmaTableTests
         Assert.Throws<InvalidDataException>(() =>
             WeightedLemmaTable.LoadEmbedded(typeof(WeightedLemmaTableTests).Assembly, "no.such.resource", "x", 2));
     }
+
+    /// <summary>
+    ///     Weights that were trained for another model, or for another hidden size, are rejected.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws()
+    {
+        var assembly = typeof(MiniLM.MiniLMWordSenseModel).Assembly;
+        const string Resource = "DemaConsulting.WordSense.MiniLM.weights.bin";
+
+        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "another-model", 384));
+        Assert.Throws<InvalidDataException>(() => WeightedLemmaTable.LoadEmbedded(assembly, Resource, "all-MiniLM-L6-v2-int8", 768));
+    }
 }

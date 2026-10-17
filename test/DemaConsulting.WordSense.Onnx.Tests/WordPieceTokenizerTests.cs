@@ -244,4 +244,30 @@ public class WordPieceTokenizerTests
 
         Assert.Equal([4], result.Ids);
     }
+
+    private static readonly string[] CasedVocabulary = ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "Hello", "hello", "caf\u00E9"];
+
+    /// <summary>
+    ///     A cased vocabulary keeps the case of the text and does not strip accents.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_Tokenize_CasedVocabulary_KeepsCase()
+    {
+        var tokenizer = new WordPieceTokenizer(CasedVocabulary, lowerCase: false);
+
+        Assert.Equal([4], tokenizer.Tokenize("Hello").Ids);
+        Assert.Equal([5], tokenizer.Tokenize("hello").Ids);
+        Assert.Equal([6], tokenizer.Tokenize("caf\u00E9").Ids);
+    }
+
+    /// <summary>
+    ///     An uncased vocabulary lower-cases the text.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_Tokenize_UncasedVocabulary_LowerCases()
+    {
+        var tokenizer = new WordPieceTokenizer(CasedVocabulary, lowerCase: true);
+
+        Assert.Equal([5], tokenizer.Tokenize("Hello").Ids);
+    }
 }

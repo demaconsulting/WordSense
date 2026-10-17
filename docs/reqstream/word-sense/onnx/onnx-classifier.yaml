@@ -28,7 +28,7 @@ sections:
                   Encoding is the expensive step; a text without ambiguous words must not pay for it.
                 tests:
                   - OnnxClassifier_ClassifyAsync_NoAmbiguousWords_DoesNotEncode
-                  - OnnxClassifier_ClassifyAsync_AmbiguousWords_EncodesOnce
+                  - OnnxClassifier_ClassifyAsync_AmbiguousWords_UseTheEncoder
                   - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
 
               - id: WordSense-Onnx-OnnxClassifier-Candidates

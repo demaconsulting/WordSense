@@ -126,8 +126,8 @@ sections:
           - WordSense-Onnx-ModelFiles
           - WordSense-Onnx-Mirror
         tests:
-          - ModelDownloader_EnsureModel_MirrorFails_FallsThroughInOrder
-          - ModelDownloader_EnsureModel_HashMismatch_FallsThroughAndKeepsNothingBad
+          - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+          - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
       - id: WordSense-Lib-Reproducible
         title: >-
@@ -146,7 +146,7 @@ sections:
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-Usage
         tests:
-          - WordSenseBuilder_Words_SameCorpus_IsByteIdentical
+          - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
           - WordSenseBuilder_Appendix_Committed_MatchesCorpus
 
       - id: WordSense-Lib-Packaging

@@ -106,6 +106,18 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
+    ///     An unknown model id is reported with the known ones by the evaluation too.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError()
+    {
+        var (code, _, error) = await RunAsync("evaluate", "nosuchmodel", "--repository", _dir.Root);
+
+        Assert.Equal(1, code);
+        Assert.Contains("Unknown model 'nosuchmodel'", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The rule-based model has no weights to train.
     /// </summary>
     [Fact]

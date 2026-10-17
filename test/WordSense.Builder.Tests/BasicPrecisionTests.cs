@@ -39,8 +39,25 @@ public sealed class BasicPrecisionTests : IDisposable
         Assert.StartsWith("### Basic rule precision on the training anchors\n\nAnchors evaluated: 42\n\n", text, StringComparison.Ordinal);
         Assert.DoesNotContain('\r', text);
         Assert.Equal(BasicRules.RuleNames.Count, text.Split('\n').Count(l => l.StartsWith("| after-", StringComparison.Ordinal) || l.StartsWith("| before-", StringComparison.Ordinal)));
-        Assert.Contains("| after-modal | 1 | 0 | 0.000 | 0.900 |\n", text, StringComparison.Ordinal);
-        Assert.Contains("| after-to | 2 | 1 | 0.500 | 0.700 |\n", text, StringComparison.Ordinal);
+        Assert.Contains($"| after-modal | 1 | 0 | 0.000 | {Confidence(BasicRules.AfterModalConfidence)} |\n", text, StringComparison.Ordinal);
+        Assert.Contains($"| after-to | 2 | 1 | 0.500 | {Confidence(BasicRules.AfterToConfidence)} |\n", text, StringComparison.Ordinal);
+    }
+
+    private static string Confidence(double value) => value.ToString("0.000", System.Globalization.CultureInfo.InvariantCulture);
+
+    /// <summary>
+    ///     Only the training anchors are measured; the holdout rows are never read.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicPrecision_Measure_UsesOnlyTrainingAnchors()
+    {
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\nwalk\tverb\tverb\t\t\n");
+        _dir.Write("corpus/anchors/a.tsv", "walk\tverb\tThey will {walk} home.\n");
+        _dir.Write("corpus/holdout/h.tsv", "walk\tverb\tShe will {walk} home.\nwalk\tnoun\tA {walk} helps.\n");
+
+        var (_, anchors) = BasicPrecision.Measure(Path.Combine(_dir.Root, "corpus"));
+
+        Assert.Equal(1, anchors);
     }
 
     /// <summary>

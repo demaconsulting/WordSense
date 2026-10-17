@@ -21,6 +21,8 @@ input-files:
   - docs/build_notes/basic-evaluation.md
   # new-lemma-results.md also documents corpus/audit/new-lemma-speech-map.tsv (sense-to-pronunciation map of the
   # Phase 4 lemmas: lemma, sense, pos, group, arpabet, anchors, holdout, source_mix, holdout_accuracy, status).
+  # The two generated files are produced by the build workflow (BuildMark and VersionMark reports in
+  # .github/workflows/build.yaml) before this document is rendered; they do not exist in a plain checkout.
   - docs/build_notes/generated/build_notes.md
   - docs/build_notes/generated/versions.md
 template: template.html
