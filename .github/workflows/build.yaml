@@ -219,6 +219,17 @@ jobs:
           --configuration Release
           --property:PackageVersion=${{ inputs.version }}
 
+      # actions/upload-artifact roots its archive at the common ancestor of the matched
+      # paths, so uploading from each project's bin/Release would nest the packages under
+      # 'src/<project>/bin/Release/'. Stage all packages in one flat folder instead.
+      - name: Stage packages
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path packages | Out-Null
+          Get-ChildItem src -Recurse -Include *.nupkg,*.snupkg |
+            Where-Object { $_.FullName -match '[\\/]bin[\\/]Release[\\/][^\\/]+$' } |
+            Copy-Item -Destination packages
+
       # === UPLOAD ARTIFACTS ===
       # This section uploads all generated artifacts for use by downstream jobs.
       # Downstream projects: Add any additional artifact uploads here.
@@ -233,17 +244,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: packages-${{ matrix.os }}
-          path: |
-            src/DemaConsulting.WordSense/bin/Release/*.nupkg
-            src/DemaConsulting.WordSense/bin/Release/*.snupkg
-            src/DemaConsulting.WordSense.Basic/bin/Release/*.nupkg
-            src/DemaConsulting.WordSense.Basic/bin/Release/*.snupkg
-            src/DemaConsulting.WordSense.Onnx/bin/Release/*.nupkg
-            src/DemaConsulting.WordSense.Onnx/bin/Release/*.snupkg
-            src/DemaConsulting.WordSense.MiniLM/bin/Release/*.nupkg
-            src/DemaConsulting.WordSense.MiniLM/bin/Release/*.snupkg
-            src/DemaConsulting.WordSense.BertBaseCased/bin/Release/*.nupkg
-            src/DemaConsulting.WordSense.BertBaseCased/bin/Release/*.snupkg
+          path: packages/
 
   # Runs CodeQL security and quality analysis, gathering results to include
   # in the code quality report.
