@@ -142,7 +142,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
     ///     <c>config.json</c> and <c>tokenizer.json</c>, although the runtime reads only the ONNX file and
     ///     <c>vocab.txt</c>). Otherwise valid files in the store (<c>{StoreRoot}/{ModelId}/</c>, by default under the
-    ///     per-user local application data folder) are reused and only missing or invalid files are
+    ///     per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows,
+    ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS, or beneath <c>$XDG_DATA_HOME</c>
+    ///     when that variable is set) are reused and only missing or invalid files are
     ///     downloaded (mirror first, then the public source); a file that is already valid never contacts the mirror.
     ///     Every existing file is hashed on each process start, so the call costs time proportional to the file sizes.
     ///     Calling the method again after it completed is cheap and harmless. Cancelling stops only this caller from
@@ -154,7 +156,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory lacks a model file (or does not exist).</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256.</exception>
-    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained, verified, from any source.</exception>
+    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained and verified from any source.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)

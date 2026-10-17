@@ -19,7 +19,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///     <para>
 ///     The model holds no disposable resources, so it needs no disposal; one instance and the classifiers it creates
 ///     can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional (it only returns a completed
-///     task) and <see cref="Create"/> needs no preceding call; see the namespace documentation for first-use costs,
+///     task) and <see cref="Create"/> needs no preceding call. If the token passed to <see cref="EnsureModelAsync"/> is
+///     already cancelled, the returned task is cancelled (awaiting it throws <see cref="OperationCanceledException"/>);
+///     any other token is ignored. See the namespace documentation for first-use costs,
 ///     tokenization, the meaning of the confidence (a probability, with a scale of its own) and when this model is
 ///     enough.
 ///     </para>

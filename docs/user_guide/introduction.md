@@ -63,8 +63,8 @@ All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a depe
 | ------- | ----------------------------- | ---------------------- | ----------------- | ------ |
 | `DemaConsulting.WordSense` | nothing (word table only) | no | no | lower-cased |
 | `DemaConsulting.WordSense.Basic` | small statistical tagger and context cues | no | no | lower-cased |
-| `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 23 MiB, once | ONNX Runtime | uncased |
-| `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder | 104 MiB (109 MB), once | ONNX Runtime | cased |
+| `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 22 MiB, once | ONNX Runtime | uncased |
+| `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder | 104 MiB, once | ONNX Runtime | cased |
 
 - Use **core** alone to look up the possible senses of a word (`WordLexicon.Words`) and to answer words that have one
   sense, in your own code.
@@ -82,7 +82,7 @@ was written together with the training sentences and is optimistic.
 | Model | Best sense, holdout / real text | Download | Latency per sentence | Memory added |
 | ----- | ------------------------------: | -------: | -------------------: | -----------: |
 | Basic | about 89% / 85% | none (83 KiB table inside the package) | under 0.1 ms | about 21 MiB |
-| MiniLM | about 97% / 93% | 23 MiB | about 2 ms | about 64 MiB |
+| MiniLM | about 97% / 93% | 22 MiB | about 2 ms | about 64 MiB |
 | BertBaseCased | about 99% / 97% | 104 MiB | about 9 ms | about 150 MiB |
 
 **Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
@@ -198,6 +198,46 @@ You tokenize the text; the models expect what the evaluation used:
   the two special tokens; 8 to 512 can be set). A longer list is not rejected: each target is encoded from a window of
   that size around it, so only distant context is lost.
 
+A reference tokenizer (a word with inner apostrophes and hyphens, a number with separators, or one other character per
+token); the repository has a unit test that runs this exact pattern:
+
+```csharp
+using System.Text.RegularExpressions;
+
+var tokenPattern = new Regex(
+    @"\d+(?:[.,]\d+)+|[\p{L}\p{Nd}\p{Mn}\p{Mc}]+(?:['\u2019-][\p{L}\p{Nd}\p{Mn}\p{Mc}]+)*|[\uD800-\uDBFF][\uDC00-\uDFFF]|\S",
+    RegexOptions.CultureInvariant);
+
+string[] Tokenize(string sentence) => tokenPattern.Matches(sentence).Select(match => match.Value).ToArray();
+
+// Smith's | well-known | dog | didn't | " | bark | " | at | 3.5 | cats | .
+string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats.");
+```
+
+What each model returns for typical tokens (the lexicon lookup comes first, so the three models agree on whether a
+token is known; "null" means `Details` is null and the confidence is 0):
+
+<!-- markdownlint-disable MD013 -->
+
+| Token | Result |
+| --- | --- |
+| `record`, `Record`, `RECORD`, `records` | Found (case is ignored by the lookup): best sense from context with a confidence |
+| `the`, `a`, a misspelling, a name not in the lexicon | Unknown: null, 0 (a name that is in the lexicon, such as `Smith`, is found) |
+| `,` `"` `-` an em dash `;` `)` | Unknown: null, 0; for Basic only `.`, `!` and `?` also end a sentence segment |
+| `race.` (period attached) | Unknown: null, 0, and Basic sees no sentence end; always split the period off |
+| `don't` (also with U+2019), `it's`, `dog's`, `didn't` | Unknown: null, 0 (no contraction or possessive keys); neighbors are classified normally |
+| `do` + `n't` | `do` is found, `n't` is unknown; not the form the models were evaluated on, so avoid it |
+| `well-known`, `re-read`, `mother-in-law` | Unknown: null, 0; keep them as one token |
+| `3`, `3.5`, `1,000` | Unknown: null, 0; keep `3.5` as one token, because for Basic a split period ends a segment |
+| `Mr` + `.`, `U` + `.` + `S` + `.` | Each period ends a segment for Basic and cuts its context; write `Mr.` as one token or drop the periods |
+| empty string, null element, empty list | Empty string: null, 0; null element: `ArgumentException`; empty list: empty array |
+
+<!-- markdownlint-enable MD013 -->
+
+Case: the lookup lower-cases every word for all models. MiniLM is uncased (its tokenizer lower-cases, so case never
+changes its answer); BertBaseCased is cased, so keep the case of the original text; Basic uses case only for a word that
+is not in the lexicon and starts with an upper-case letter inside a segment (not first), which it tags as a noun.
+
 # The Models
 
 ## Core: the Word Table
@@ -262,7 +302,8 @@ in the build notes).
 Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and `IDisposable` and has the
 public properties `HiddenSize` and `ModelId`. The usual sequence is: call `EnsureModelAsync` once, call `Create()` to
 get a classifier, classify as many texts as you like and dispose the model after every classification has finished.
-`IWordSenseModel` itself is not `IDisposable`; only the encoder models hold native resources. A classifier is safe for
+`IWordSenseModel` itself is not `IDisposable`; only the encoder models hold native resources, so generic code disposes
+with `(model as IDisposable)?.Dispose()`. A classifier is safe for
 concurrent use and does not own its model. `Create()` throws `InvalidOperationException` before the files are ready (the
 Basic model has no files, so its `Create()` never does). The ONNX session and the weights are loaded at the first
 `Create()` call: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
@@ -293,7 +334,17 @@ The confidence of the Basic model is a probability among the senses of the word,
 encoder models; compare a confidence only with the same model. **Do not reuse a threshold across models**: 0.5 is the
 natural point for the encoder models, while for Basic a threshold such as 0.8 keeps about 78% of the ambiguous words
 on real text at about 93% precision (`basic-evaluation.md`). MiniLM and BertBaseCased each have their own margin scale
-too, so tune a threshold per model on your own text.
+too, so tune a threshold per model on your own text. Measured thresholds (coverage = share of the ambiguous target
+words kept, precision = share of those that are right; real text, holdout in parentheses; rounded):
+
+| Model | at least 0.6 | at least 0.8 | at least 0.9 |
+| --- | --- | --- | --- |
+| Basic | 90% / 89% (95% / 90%) | 78% / 93% (86% / 94%) | 70% / 96% (78% / 96%) |
+| MiniLM | 82% / 97% (88% / 99%) | 73% / 98% (79% / 99%) | 69% / 98% (75% / 99%) |
+| BertBaseCased | 85% / 99% (94% / 99.7%) | 70% / 99% (87% / 99.7%) | 64% / 99% (81% / 99.7%) |
+
+The full calibration buckets are in `model-comparison.md` in the build notes. The memory figures of the comparison
+table do not include the 43 MiB of the word lexicon.
 
 # Model Files
 
@@ -325,8 +376,14 @@ other two are provenance files that must still match).
 | BertBaseCased | `config.json` | `19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286` |
 | BertBaseCased | `tokenizer.json` | `343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1` |
 
-Basic and the core package have no model files. The download of MiniLM is 23 MiB and that of BertBaseCased 104 MiB
-(about 109 MB).
+Basic and the core package have no model files. The download of MiniLM is 22 MiB (`model_int8.onnx` 22,972,370 bytes,
+`vocab.txt` 231,508 bytes) and that of BertBaseCased
+104 MiB (`model_int8.onnx` 108,477,896 bytes plus three small files). All sizes in this guide are in MiB (1 MiB =
+1,048,576 bytes). The default store is `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and
+`~/.local/share/DemaConsulting/WordSense/models` on Linux and macOS (`$XDG_DATA_HOME` is honored when set); the
+`ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`, and they are the sub-folder names in the store
+and on a mirror. The memory figures in the comparison table are what a model adds and do not include the 43 MiB of
+the word lexicon.
 
 ## Offline and Air-Gapped Use
 
@@ -417,7 +474,7 @@ download.
   `Meaning`) to its own pronunciation.
 - **Confidence is a score, not a probability**, and its scale is specific to each model.
 - **English only**, and the context is a window of at most `maxSequenceLength` tokens around the target word.
-- **The encoder models need files**: a download on first use (23 MiB or 104 MiB) or a model directory, and ONNX Runtime
+- **The encoder models need files**: a download on first use (22 MiB or 104 MiB) or a model directory, and ONNX Runtime
   needs native libraries for the target platform.
 - **Weights are fixed to the model file.** The weights format (`WSX1`) is dense, and the weights of a model are only
   valid for its exact pinned files; other files are refused by the SHA-256 check.
@@ -509,7 +566,7 @@ firewall, configure a mirror or pass a model directory to the constructor.
 
 ## Timeouts or a Slow First Run
 
-The model files are 23 MiB (MiniLM) or 104 MiB (BertBaseCased). Raise `MirrorOptions.Timeout` (default 5 minutes per
+The model files are 22 MiB (MiniLM) or 104 MiB (BertBaseCased). Raise `MirrorOptions.Timeout` (default 5 minutes per
 file), check the proxy settings of the host, or use a mirror close to it.
 
 ## A Model File Does Not Match Its SHA-256

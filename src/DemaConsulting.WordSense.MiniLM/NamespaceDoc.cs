@@ -11,18 +11,23 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     downloader and abstract <c>OnnxWordSenseModel</c>, which <c>MiniLMWordSenseModel</c> extends) and depends on
 ///     <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. The weights
-///     trained for the model are embedded in the assembly. The roughly 23 MB encoder (<c>model_int8.onnx</c>, plus a small
-///     <c>vocab.txt</c>) is downloaded once on first use, verified against pinned SHA-256 digests and cached per user, or
+///     trained for the model are embedded in the assembly. The encoder (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
+///     bytes, plus <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) is downloaded once on first use,
+///     verified against pinned SHA-256 digests and cached per user, or
 ///     it is read from a directory you supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
 ///     Start with <see cref="MiniLMWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>Create</c> to get an
-///     <see cref="IWordSenseClassifier"/>. The files are described under <c>model/all-MiniLM-L6-v2-int8/</c> in the
-///     repository (https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8).
+///     <see cref="IWordSenseClassifier"/>. The files are described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The model identifier
+///     (<c>ModelId</c>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the folder on a mirror. The
+///     model is uncased: its tokenizer lower-cases the text, so the case of your words never changes its answer.
 ///     </para>
 ///     <para>
-///     Choose MiniLM for a small, fast model, the default recommendation: 23 MiB download, about 2 ms per sentence,
-///     about 97% best-sense accuracy on the holdout and about 93% on real text (<c>docs/build_notes/model-table.md</c>).
+///     Choose MiniLM for a small, fast model, the default recommendation: 22 MiB download, about 2 ms per sentence,
+///     about 97% best-sense accuracy on the holdout and about 93% on real text
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; the memory of
+///     about 64 MiB it adds does not include the 43 MiB of the word lexicon).
 ///     Choose <c>DemaConsulting.WordSense.BertBaseCased</c> when accuracy and case-awareness matter more than size:
 ///     104 MiB, about 9 ms per sentence, about 99% and 97%. The statistical Basic model
 ///     (<c>DemaConsulting.WordSense.Basic</c>, no download, about 85% on real text) is enough when nothing may be
@@ -42,7 +47,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     another model (the Basic model reports a probability and BertBaseCased has its own margin scale). 1 means a
 ///     single-sense word and 0 an unknown word (<c>Details</c> is null); <c>Details</c> is also null for a word with
 ///     several senses whose lemma has no intact weights, which does not happen for the weights embedded in this
-///     package. A low confidence still carries the best sense.
+///     package. A low confidence still carries the best sense. Measured on the real-text sentences (approximate,
+///     rounded): a threshold of at least 0.6 keeps about 82% of the target words at about 97% precision, at least 0.8
+///     about 73% at about 98%, and at least 0.9 about 69% at about 98% (holdout: 88% at 99%, 79% at 99%, 75% at 99%).
+///     Without a threshold the accuracy is the best-sense figure above; the full table is in
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md.
 ///     </para>
 ///     <para>
 ///     Mirrors: a <see cref="MirrorOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
@@ -50,7 +59,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
 ///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
 ///     <c>https://models.example.com/wordsense/all-MiniLM-L6-v2-int8/model_int8.onnx</c>. Downloaded files are kept in
-///     <c>{StoreRoot}/all-MiniLM-L6-v2-int8/</c>; only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
+///     <c>{StoreRoot}/all-MiniLM-L6-v2-int8/</c>; the default store root is
+///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
+///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
+///     variable is set); only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
 ///     environment variable does, and a <see cref="MirrorOptions"/> needs a mirror base URI).
 ///     </para>
 ///     <para>
@@ -90,6 +102,13 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     {
 ///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
 ///     }
+///     </code>
+///     Download through a mirror (see the mirror notes above): pass the options to <c>EnsureModelAsync</c>.
+///     <code>
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     using var mirrored = new MiniLMWordSenseModel();
+///     await mirrored.EnsureModelAsync(mirror);
+///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
 ///     </code>
 ///     Offline: the two files are in one flat directory, for example <c>/opt/models/minilm</c>.
 ///     <code>

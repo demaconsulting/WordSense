@@ -16,16 +16,20 @@ namespace DemaConsulting.WordSense.Basic;
 ///     Start with <see cref="BasicWordSenseModel"/>: create it and call <c>Create</c> to get an
 ///     <see cref="IWordSenseClassifier"/>. <c>EnsureModelAsync</c> is optional for this model (it completes at once and
 ///     checks nothing, because there are no files), and <c>Create</c> works with or without it; call it only to keep
-///     the code identical to the encoder models. The model needs no disposal.
+///     the code identical to the encoder models. The model needs no disposal. With a token that is already
+///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
+///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): the word lexicon of the core package loads on first use (about 120 ms,
 ///     about 43 MiB), at the latest in <c>Create</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
-///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes well under a millisecond
-///     (about 0.03 ms measured) and the model adds about 21 MiB of memory. The classifier is safe for concurrent use.
+///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes about 0.03 ms (about 30
+///     microseconds per sentence, about 2 microseconds per word, measured) and the model adds about 21 MiB of memory,
+///     not counting the 43 MiB of the lexicon. The classifier is safe for concurrent use.
 ///     </para>
 ///     <para>
-///     Accuracy (build notes, <c>docs/build_notes/basic-evaluation.md</c> and <c>model-table.md</c>): about 89% best-sense
+///     Accuracy (build notes, https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md and
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md): about 89% best-sense
 ///     accuracy on the holdout and about 85% on real text, against about 93% and 97% on real text for MiniLM and
 ///     BertBaseCased. Basic is enough when nothing may be downloaded, startup time and memory must stay small, or
 ///     ONNX Runtime cannot be shipped; use an encoder model when real-text accuracy matters more.
@@ -43,14 +47,22 @@ namespace DemaConsulting.WordSense.Basic;
 ///     the number of senses and 1; <c>Details</c> is never null for a word that is in the lexicon, so an ambiguous
 ///     word is never left undecided. This probability scale is specific to the Basic model: do not reuse a threshold
 ///     from, or for, MiniLM or BertBaseCased, whose confidence is a margin score. The value is a relative score, not a
-///     calibrated probability, but higher values are more often right: on real text a threshold of 0.8 keeps about
-///     78% of the ambiguous words at about 93% precision, and 0.9 about 70% at about 96%
-///     (<c>docs/build_notes/basic-evaluation.md</c>).
+///     calibrated probability, but higher values are more often right: on real text a threshold of 0.6 keeps about
+///     90% of the target words at about 89% precision, 0.8 about 78% at about 93%, and 0.9 about 70% at about 96%
+///     (holdout: 95% at 90%, 86% at 94%, 78% at 96%; the table is in
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md).
+///     </para>
+///     <para>
+///     Case: the lookup and the cue words are lower-cased, so <c>Record</c> and <c>record</c> are the same word. The
+///     only use of case is that a word that is not in the lexicon, starts with an upper-case letter and is not the
+///     first word of its sentence segment is tagged a noun (a likely proper noun). A period inside the list ends the
+///     segment, so write an abbreviation as one token (<c>Mr.</c>) and a decimal as one token (<c>3.5</c>); see the
+///     table of edge cases in the documentation of the <c>DemaConsulting.WordSense</c> namespace.
 ///     </para>
 ///     <para>
 ///     Which model to choose: Basic is the smallest and fastest and needs nothing else, but it is less accurate than
 ///     the encoder models. If accuracy matters more, use
-///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation: 23 MiB, about 2 ms per sentence) or
+///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation: 22 MiB, about 2 ms per sentence) or
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> (104 MiB, case-aware and the most accurate); see the namespace
 ///     documentation of <c>DemaConsulting.WordSense</c> for the comparison table.
 ///     </para>

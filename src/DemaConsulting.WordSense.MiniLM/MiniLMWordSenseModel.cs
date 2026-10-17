@@ -15,19 +15,23 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     after all classifications have finished.
 ///     </para>
 ///     <para>
-///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>, about
-///     23 MB, and <c>vocab.txt</c>) are downloaded once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, verified
+///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
+///     21.9 MiB or 22,972,370 bytes, and <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded
+///     once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, verified
 ///     against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use files you
-///     supply, in which case no network access happens at all. The files are described under
-///     <c>model/all-MiniLM-L6-v2-int8/</c> in the repository
-///     (https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8).
+///     supply, in which case no network access happens at all. The files are described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8. The identifier of this model
+///     (<see cref="OnnxWordSenseModel.ModelId"/>) is <c>all-MiniLM-L6-v2-int8</c>; it names the store folder and the
+///     folder on a mirror.
 ///     </para>
 ///     <para>
-///     Choose MiniLM when download size and speed matter, the default recommendation: 23 MiB and about 2 ms per
+///     Choose MiniLM when download size and speed matter, the default recommendation: 22 MiB and about 2 ms per
 ///     sentence, with about 97% best-sense accuracy on the holdout and about 93% on real text. The alternative
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB, about 9 ms per sentence) and case-aware
-///     but more accurate (about 99% and 97%); the figures are from <c>docs/build_notes/model-table.md</c> and are
-///     approximate and machine dependent.
+///     but more accurate (about 99% and 97%); the figures are from
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md and are
+///     approximate and machine dependent. The memory the model adds (about 64 MiB) does not include the 43 MiB of the
+///     word lexicon.
 ///     </para>
 ///     <para>
 ///     Sentences longer than the maximum sequence length are handled per target word from a window around the word. The
@@ -41,12 +45,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 /// </remarks>
 /// <example>
+///     Download on first use (or reuse the per-user store) and classify a sentence.
 ///     <code>
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.MiniLM;
 ///
-///     // Download on first use (or reuse the per-user store); pass a directory instead to work offline:
-///     // new MiniLMWordSenseModel("/opt/models/minilm")
 ///     using var model = new MiniLMWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
@@ -58,6 +61,24 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     {
 ///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
 ///     }
+///     </code>
+///     Download through a mirror (files at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>) instead of the public source.
+///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.MiniLM;
+///
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     using var mirrored = new MiniLMWordSenseModel();
+///     await mirrored.EnsureModelAsync(mirror);
+///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
+///     </code>
+///     Offline: the two files are in one flat directory, for example <c>/opt/models/minilm</c>.
+///     <code>
+///     using DemaConsulting.WordSense.MiniLM;
+///
+///     using var offline = new MiniLMWordSenseModel("/opt/models/minilm");
+///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
+///     var offlineClassifier = offline.Create();
 ///     </code>
 /// </example>
 public sealed class MiniLMWordSenseModel : OnnxWordSenseModel

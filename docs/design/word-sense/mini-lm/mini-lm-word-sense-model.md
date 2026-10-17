@@ -10,7 +10,8 @@ the two encoder models.
 #### Data Model
 
 A sealed public class deriving from `OnnxWordSenseModel` without state of its own. Its model description: model id
-`all-MiniLM-L6-v2-int8`; files `model_int8.onnx` (about 23 MB) and `vocab.txt`, each with a pinned SHA-256;
+`all-MiniLM-L6-v2-int8`; files `model_int8.onnx` (about 21.9 MiB; 22 MiB with `vocab.txt`) and `vocab.txt`, each with a
+pinned SHA-256;
 lower-casing (uncased) tokenizer; hidden size 384; embedded weights `weights.bin` trained at sequence length 128.
 
 #### Key Methods

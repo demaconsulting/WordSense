@@ -412,6 +412,30 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     An encoder evaluation renders the confidence calibration buckets and the threshold table of its sets.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_EvaluationResult_Render_EncoderModel_IncludesCalibrationAndThresholds()
+    {
+        (double Confidence, bool Correct)[] outcomes = [(0.95, true), (0.85, true), (0.65, false), (0.2, false)];
+        var result = new EvaluationResult(
+            "demo",
+            [new SetResult("real-text", 4, 2, 4, 2, 1, 2, 2, outcomes)],
+            2048,
+            1.5,
+            12,
+            2097152);
+
+        var text = result.Render();
+
+        Assert.Contains("#### Confidence calibration (rows; best-sense accuracy)\n", text, StringComparison.Ordinal);
+        Assert.Contains("| real-text | 1 / 0.00% | 0 / n/a | 1 / 0.00% | 0 / n/a | 1 / 100.00% | 1 / 100.00% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| real-text | 0.6 | 75.00% | 66.67% |\n", text, StringComparison.Ordinal);
+        Assert.Contains("| real-text | 0.9 | 25.00% | 100.00% |\n", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("#### Comparison", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     The statistical model is evaluated on the holdout without any model files.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>

@@ -33,7 +33,7 @@ Pick the model package that fits; each one brings the core package `DemaConsulti
 
 ```bash
 dotnet add package DemaConsulting.WordSense.Basic          # small statistical model: no model files, no ONNX Runtime
-dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (23 MiB model files)
+dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (22 MiB model files)
 dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensitive encoder
 ```
 
@@ -160,7 +160,7 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 23 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
+| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
 | BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
 | Basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
 <!-- model-table:end -->
@@ -168,14 +168,52 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 <!-- markdownlint-enable MD013 -->
 
 - ⚡ **basic** - Enough when you want no download and the fastest start; about 85% best-sense accuracy on real text.
-- ⚖️ **minilm** - The default recommendation: a 23 MiB download, a few milliseconds per sentence and about 93% on real text.
+- ⚖️ **minilm** - The default recommendation: a 22 MiB download, a few milliseconds per sentence and about 93% on real text.
 - 🎯 **bert-base-cased** - Choose it when accuracy matters most and a 104 MiB download and about 150 MiB of RAM are fine.
 
 The numbers come from the repository's build tool (`evaluate <model> --table`), run once per model on one machine with
 at most two ONNX threads. Holdout sentences were written together with the training sentences, so the holdout accuracy
 is optimistic; the real-text column is the realistic expectation. Absolute times and memory depend on the machine; use
-them as relative figures. The table is generated into `docs/build_notes/model-table.md` and a test keeps the README
+them as relative figures. The RAM column is what the model adds, measured after the word lexicon (about 43 MiB) was
+loaded, so it excludes the lexicon. The table is generated into `docs/build_notes/model-table.md` and a test keeps the README
 equal to it.
+
+Confidence thresholds (coverage of the ambiguous target words / precision on real text, rounded; holdout is higher):
+
+| Model | at least 0.6 | at least 0.8 | at least 0.9 |
+| --- | --- | --- | --- |
+| Basic | 90% / 89% | 78% / 93% | 70% / 96% |
+| MiniLM | 82% / 97% | 73% / 98% | 69% / 98% |
+| BERT base cased | 85% / 99% | 70% / 99% | 64% / 99% |
+
+The `ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`. The default model store is
+`%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and `~/.local/share/DemaConsulting/WordSense/models` on
+Linux and macOS. All sizes are in MiB.
+
+## Tokenizing text
+
+Split the text into words yourself, one sentence per call: punctuation is a token of its own (`"race"`, `"."`), while a
+contraction (`don't`), a possessive (`dog's`) and a hyphenated word (`well-known`) stay one token (they are unknown to
+the lexicon, so they return null with confidence 0, and their neighbors are classified normally). Keep decimals such as
+`3.5` and abbreviations such as `Mr.` as one token, because for Basic a lone period ends the sentence. The lookup
+ignores case; MiniLM is uncased, BERT base cased is cased, and Basic uses case only to tag unknown capitalized words as
+nouns.
+
+```csharp
+using System.Text.RegularExpressions;
+
+var tokenPattern = new Regex(
+    @"\d+(?:[.,]\d+)+|[\p{L}\p{Nd}\p{Mn}\p{Mc}]+(?:['\u2019-][\p{L}\p{Nd}\p{Mn}\p{Mc}]+)*|[\uD800-\uDBFF][\uDC00-\uDFFF]|\S",
+    RegexOptions.CultureInvariant);
+
+string[] Tokenize(string sentence) => tokenPattern.Matches(sentence).Select(match => match.Value).ToArray();
+
+// Smith's | well-known | dog | didn't | " | bark | " | at | 3.5 | cats | .
+string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats.");
+```
+
+The edge-case table is in the [user guide][link-user-guide]. For generic code, dispose any model with
+`(model as IDisposable)?.Dispose()`; only the encoder models are disposable.
 
 ## Accuracy and Limitations
 

@@ -28,7 +28,10 @@ namespace DemaConsulting.WordSense;
 ///     the surrounding words are still classified. Classify one sentence per call: the Basic model splits the list
 ///     at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, while an encoder model reads the whole list as one text,
 ///     of at most 128 word pieces by default (512 at most); a longer list is handled per word from a window of that
-///     size around the word, so very long lists lose distant context but are not rejected.
+///     size around the word, so very long lists lose distant context but are not rejected. The documentation of the
+///     <c>DemaConsulting.WordSense</c> namespace has a reference tokenizer, a table of edge cases (numbers,
+///     abbreviations, quotes, dashes, possessives) and the rules for case: the lookup ignores case, MiniLM is uncased
+///     and BertBaseCased is cased.
 ///     </para>
 ///     <para>
 ///     A classifier is safe for concurrent use. It does not own the model that created it, so disposing the model

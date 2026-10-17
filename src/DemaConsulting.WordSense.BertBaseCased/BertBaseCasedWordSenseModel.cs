@@ -15,19 +15,23 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     after all classifications have finished.
 ///     </para>
 ///     <para>
-///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: 104 MiB (about 109 MB)
+///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: 104 MiB
 ///     and about 9 ms per sentence, with about 99% best-sense accuracy on the holdout and about 97% on real text, and it
-///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (23 MiB,
+///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (22 MiB,
 ///     about 2 ms per sentence) but less accurate (about 97% and 93%); the figures are from
-///     <c>docs/build_notes/model-table.md</c> and are approximate and machine dependent.
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md and are approximate and
+///     machine dependent. The memory the model adds (about 150 MiB) does not include the 43 MiB of the word lexicon.
 ///     </para>
 ///     <para>
 ///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
-///     about 103 MiB, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>) are downloaded once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
+///     103.4 MiB or 108,477,896 bytes; <c>vocab.txt</c>, 0.2 MiB or 213,450 bytes; <c>config.json</c>, 639 bytes; and
+///     <c>tokenizer.json</c>, 0.6 MiB or 668,923 bytes; 104 MiB in total) are downloaded once by
+///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
 ///     verified against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use
-///     files you supply, in which case no network access happens at all. The files are described under
-///     <c>model/bert-base-cased-int8/</c> in the repository
-///     (https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8).
+///     files you supply, in which case no network access happens at all. The files are described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The identifier of this model
+///     (<see cref="OnnxWordSenseModel.ModelId"/>) is <c>bert-base-cased-int8</c>; it names the store folder and the
+///     folder on a mirror.
 ///     </para>
 ///     <para>
 ///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder), and
@@ -42,12 +46,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 /// </remarks>
 /// <example>
+///     Download on first use (or reuse the per-user store) and classify a sentence.
 ///     <code>
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.BertBaseCased;
 ///
-///     // Download on first use (or reuse the per-user store); pass a directory instead to work offline:
-///     // new BertBaseCasedWordSenseModel("/opt/models/bert")
 ///     using var model = new BertBaseCasedWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
@@ -59,6 +62,24 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     {
 ///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
 ///     }
+///     </code>
+///     Download through a mirror (files at <c>{mirror}/bert-base-cased-int8/{file}</c>) instead of the public source.
+///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.BertBaseCased;
+///
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     using var mirrored = new BertBaseCasedWordSenseModel();
+///     await mirrored.EnsureModelAsync(mirror);
+///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
+///     </code>
+///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
+///     <code>
+///     using DemaConsulting.WordSense.BertBaseCased;
+///
+///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
+///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
+///     var offlineClassifier = offline.Create();
 ///     </code>
 /// </example>
 public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel

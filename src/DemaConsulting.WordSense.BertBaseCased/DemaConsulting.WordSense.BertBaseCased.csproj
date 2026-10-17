@@ -11,7 +11,7 @@
     <Version>0.0.0</Version>
     <Authors>DEMA Consulting</Authors>
     <Company>DEMA Consulting</Company>
-    <Description>BERT base cased encoder for DemaConsulting.WordSense: classifies ambiguous English words in context with an int8 ONNX bert-base-cased encoder and the weights trained for it. The roughly 108 MB model is downloaded once on first use and verified by SHA-256.</Description>
+    <Description>BERT base cased encoder for DemaConsulting.WordSense: classifies ambiguous English words in context with an int8 ONNX bert-base-cased encoder and the weights trained for it. The roughly 104 MiB model is downloaded once on first use and verified by SHA-256.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/demaconsulting/WordSense</PackageProjectUrl>
     <RepositoryUrl>https://github.com/demaconsulting/WordSense</RepositoryUrl>

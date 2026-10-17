@@ -12,7 +12,7 @@ sections:
               model with hidden size 384, with its trained weights embedded in the package.
             tags: [subsystem]
             justification: |
-              MiniLM is the small, fast encoder: its 23 MB model file and low latency suit interactive callers, and
+              MiniLM is the small, fast encoder: its 22 MiB model file and low latency suit interactive callers, and
               embedding the weights leaves only the model file to be obtained.
             children:
               - WordSense-MiniLM-MiniLMWordSenseModel-Identity

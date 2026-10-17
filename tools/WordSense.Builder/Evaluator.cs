@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
+using DemaConsulting.WordSense.Onnx;
 
 #pragma warning disable S6966 // the tool writes small console and file outputs; asynchronous writes add nothing
 #pragma warning disable S1215 // the measurement of the word table memory needs explicit collections
@@ -186,6 +187,11 @@ internal sealed record EvaluationResult(
         {
             RenderBasic(text, Basic, inv);
         }
+        else
+        {
+            text.Append('\n');
+            RenderCalibration(text, inv);
+        }
 
         return text.ToString();
     }
@@ -220,6 +226,21 @@ internal sealed record EvaluationResult(
         text.Append("- Classification time: ").Append(details.MicrosecondsPerWord.ToString("N2", inv)).Append(" us per word, ")
             .Append(details.MicrosecondsPerSentence.ToString("N1", inv)).Append(" us per sentence\n\n");
 
+        RenderCalibration(text, inv);
+
+        text.Append("\n#### Comparison (best sense)\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
+        var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
+        var real = Sets.FirstOrDefault(s => s.Name == "real-text");
+        text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.BestSense, holdout.Rows))
+            .Append(" | ").Append(real is null ? "n/a" : Percent(real.BestSense, real.Rows)).Append(" |\n");
+        foreach (var (name, holdoutValue, realValue) in References)
+        {
+            text.Append("| ").Append(name).Append(" | ").Append(holdoutValue).Append(" | ").Append(realValue).Append(" |\n");
+        }
+    }
+
+    private void RenderCalibration(StringBuilder text, IFormatProvider inv)
+    {
         text.Append("#### Confidence calibration (rows; best-sense accuracy)\n\n");
         text.Append("| Set | ").Append(string.Join(" | ", Enumerable.Range(0, BucketEdges.Length + 1).Select(Bucket))).Append(" |\n");
         text.Append("| --- |").Append(string.Concat(Enumerable.Repeat(" ---: |", BucketEdges.Length + 1))).Append('\n');
@@ -246,16 +267,6 @@ internal sealed record EvaluationResult(
                     .Append(" | ").Append(Percent(kept.Count, set.Rows))
                     .Append(" | ").Append(Percent(kept.Count(o => o.Correct), kept.Count)).Append(" |\n");
             }
-        }
-
-        text.Append("\n#### Comparison (best sense)\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
-        var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
-        var real = Sets.FirstOrDefault(s => s.Name == "real-text");
-        text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.BestSense, holdout.Rows))
-            .Append(" | ").Append(real is null ? "n/a" : Percent(real.BestSense, real.Rows)).Append(" |\n");
-        foreach (var (name, holdoutValue, realValue) in References)
-        {
-            text.Append("| ").Append(name).Append(" | ").Append(holdoutValue).Append(" | ").Append(realValue).Append(" |\n");
         }
     }
 }
@@ -352,9 +363,8 @@ internal static class Evaluator
         }
 
         var ramBytes = Math.Max(0, privateAfter - privateBefore);
-        var downloadBytes = modelDirectory is not null && Directory.Exists(modelDirectory)
-            ? new DirectoryInfo(modelDirectory).EnumerateFiles("*", SearchOption.TopDirectoryOnly).Sum(f => f.Length)
-            : 0;
+        // Only the pinned files are downloaded, not every file of the model folder (README, SHA256SUMS, unused tokenizer)
+        var downloadBytes = model is OnnxWordSenseModel onnx ? onnx.Spec.Files.Sum(f => f.Length) : 0;
 
         var sets = new List<SetResult>();
         var clock = Stopwatch.StartNew();

@@ -11,24 +11,26 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     encoder, verified downloader and abstract <c>OnnxWordSenseModel</c>, which <c>BertBaseCasedWordSenseModel</c>
 ///     extends) and depends on <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. The weights trained for the model are embedded in
-///     the assembly. The encoder files (<c>model_int8.onnx</c> of about 103 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
-///     <c>tokenizer.json</c>; 104 MiB, about 109 MB, in total) are downloaded
+///     the assembly. The encoder files (<c>model_int8.onnx</c> of 103.4 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
+///     <c>tokenizer.json</c>; 104 MiB in total, exact sizes below) are downloaded
 ///     once on first use, verified against pinned SHA-256 digests and cached per user, or they are read from a directory you
 ///     supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
 ///     Start with <see cref="BertBaseCasedWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>Create</c> to
-///     get an <see cref="IWordSenseClassifier"/>. The files are described under <c>model/bert-base-cased-int8/</c> in the
-///     repository (https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8). The encoder is
+///     get an <see cref="IWordSenseClassifier"/>. The files are described in the repository at
+///     https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8. The model identifier
+///     (<c>ModelId</c>) is <c>bert-base-cased-int8</c>; it names the store folder and the folder on a mirror. The encoder is
 ///     the base model without its masked-language head, cut and quantized with
-///     <c>tools/model-prep/make-bert-encoder.py</c>.
+///     https://github.com/demaconsulting/WordSense/blob/main/tools/model-prep/make-bert-encoder.py.
 ///     </para>
 ///     <para>
 ///     Choose BertBaseCased for the most accurate model: 104 MiB, about 9 ms per sentence, about 99% best-sense
 ///     accuracy on the holdout and about 97% on real text, and it keeps the case of the text
-///     (<c>docs/build_notes/model-table.md</c>; approximate and machine dependent). Choose
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; approximate and machine
+///     dependent; the memory of about 150 MiB it adds does not include the 43 MiB of the word lexicon). Choose
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation) for a small, fast
-///     model: 23 MiB, about 2 ms per sentence, about 97% and 93%. The statistical Basic model
+///     model: 22 MiB, about 2 ms per sentence, about 97% and 93%. The statistical Basic model
 ///     (<c>DemaConsulting.WordSense.Basic</c>, no download, about 85% on real text) is enough when nothing may be
 ///     downloaded.
 ///     </para>
@@ -46,7 +48,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     another model (the Basic model reports a probability and MiniLM has its own margin scale). 1 means a
 ///     single-sense word and 0 an unknown word (<c>Details</c> is null); <c>Details</c> is also null for a word with
 ///     several senses whose lemma has no intact weights, which does not happen for the weights embedded in this
-///     package. A low confidence still carries the best sense.
+///     package. A low confidence still carries the best sense. Measured on the real-text sentences (approximate,
+///     rounded): a threshold of at least 0.6 keeps about 85% of the target words at about 99% precision, at least 0.8
+///     about 70% at about 99%, and at least 0.9 about 64% at about 99% (holdout: 94%, 87% and 81% of the words at about
+///     99.7%). Without a threshold the accuracy is the best-sense figure above; the full table is in
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md.
 ///     </para>
 ///     <para>
 ///     Mirrors: a <see cref="MirrorOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
@@ -54,7 +60,10 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     or invalid and is not contacted when every file is already present. The mirror holds the files at
 ///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
 ///     <c>https://models.example.com/wordsense/bert-base-cased-int8/model_int8.onnx</c>. Downloaded files are kept in
-///     <c>{StoreRoot}/bert-base-cased-int8/</c>; only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
+///     <c>{StoreRoot}/bert-base-cased-int8/</c>; the default store root is
+///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
+///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
+///     variable is set); only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
 ///     environment variable does, and a <see cref="MirrorOptions"/> needs a mirror base URI).
 ///     </para>
 ///     <para>
@@ -102,6 +111,13 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     {
 ///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
 ///     }
+///     </code>
+///     Download through a mirror (see the mirror notes above): pass the options to <c>EnsureModelAsync</c>.
+///     <code>
+///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
+///     using var mirrored = new BertBaseCasedWordSenseModel();
+///     await mirrored.EnsureModelAsync(mirror);
+///     IWordSenseClassifier mirroredClassifier = mirrored.Create();
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>

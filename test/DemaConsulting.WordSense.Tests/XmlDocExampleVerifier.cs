@@ -249,6 +249,7 @@ internal static class XmlDocExampleVerifier
         string[] candidates =
         [
             prologue + snippet,
+            prologue + snippet,
             prologue + "internal class __Wrap\n{\n" + snippet + "\n}\n",
             prologue + "internal class __Wrap\n{\n    private async Task __M()\n    {\n"
                 + snippet + "\n    }\n}\n"
@@ -256,9 +257,12 @@ internal static class XmlDocExampleVerifier
 
         List<Diagnostic>? best = null;
 
-        foreach (var candidate in candidates)
+        for (var index = 0; index < candidates.Length; index++)
         {
-            var errors = CompileErrors(candidate, references);
+            // The second candidate is the whole file again, compiled as an executable, because a file of
+            // top-level statements is only valid in one.
+            var kind = index == 1 ? OutputKind.ConsoleApplication : OutputKind.DynamicallyLinkedLibrary;
+            var errors = CompileErrors(candidates[index], references, kind);
             if (errors.Count == 0)
             {
                 return null;
@@ -292,8 +296,9 @@ internal static class XmlDocExampleVerifier
     /// </remarks>
     /// <param name="source">The complete candidate source text.</param>
     /// <param name="references">The metadata references to compile against.</param>
+    /// <param name="kind">The kind of assembly to produce.</param>
     /// <returns>The error diagnostics, empty when the candidate compiles.</returns>
-    private static List<Diagnostic> CompileErrors(string source, List<MetadataReference> references)
+    private static List<Diagnostic> CompileErrors(string source, List<MetadataReference> references, OutputKind kind)
     {
         var tree = CSharpSyntaxTree.ParseText(
             source,
@@ -304,7 +309,7 @@ internal static class XmlDocExampleVerifier
             [tree],
             references,
             new CSharpCompilationOptions(
-                OutputKind.DynamicallyLinkedLibrary,
+                kind,
                 nullableContextOptions: NullableContextOptions.Enable));
 
         return [.. compilation.GetDiagnostics().Where(diagnostic => diagnostic.Severity == DiagnosticSeverity.Error)];

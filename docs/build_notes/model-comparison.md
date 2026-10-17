@@ -47,11 +47,39 @@ dotnet run --project tools/WordSense.Builder -c Release -- evaluate bert-base-ca
 | holdout | 12,789 | 99.05% | 99.22% | 99.25% | 96.04% | 99.64% |
 | real text | 689 | 97.39% | 98.40% | 98.20% | 89.55% | 99.19% |
 
+### Confidence calibration and thresholds
+
+Measured once per encoder model with `evaluate` (IntraOpThreads 2). Cells are rows / best-sense accuracy per confidence
+bucket. Coverage is the share of the target words with a confidence at or above the threshold and precision is the
+best-sense accuracy of those words. The Basic model's figures (0.6 / 0.8 / 0.9) are in `basic-evaluation.md`.
+
+| Model | Set | < 0.4 | 0.4 - 0.6 | 0.6 - 0.7 | 0.7 - 0.8 | 0.8 - 0.9 | >= 0.9 |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| MiniLM | holdout | 857 / 75.50% | 742 / 91.37% | 514 / 96.30% | 522 / 96.36% | 614 / 97.23% | 9540 / 99.26% |
+| MiniLM | real-text | 78 / 65.38% | 48 / 89.58% | 26 / 76.92% | 35 / 97.14% | 30 / 96.67% | 472 / 97.67% |
+| BertBaseCased | holdout | 331 / 79.46% | 418 / 96.41% | 365 / 99.18% | 589 / 99.32% | 685 / 99.27% | 10401 / 99.74% |
+| BertBaseCased | real-text | 48 / 77.08% | 53 / 92.45% | 47 / 100.00% | 57 / 100.00% | 44 / 100.00% | 440 / 99.32% |
+
+| Model | Set | Threshold | Coverage | Precision |
+| --- | --- | ---: | ---: | ---: |
+| MiniLM | holdout | 0.6 | 87.50% | 98.87% |
+| MiniLM | holdout | 0.8 | 79.40% | 99.13% |
+| MiniLM | holdout | 0.9 | 74.60% | 99.26% |
+| MiniLM | real-text | 0.6 | 81.71% | 96.63% |
+| MiniLM | real-text | 0.8 | 72.86% | 97.61% |
+| MiniLM | real-text | 0.9 | 68.51% | 97.67% |
+| BertBaseCased | holdout | 0.6 | 94.14% | 99.68% |
+| BertBaseCased | holdout | 0.8 | 86.68% | 99.71% |
+| BertBaseCased | holdout | 0.9 | 81.33% | 99.74% |
+| BertBaseCased | real-text | 0.6 | 85.34% | 99.49% |
+| BertBaseCased | real-text | 0.8 | 70.25% | 99.38% |
+| BertBaseCased | real-text | 0.9 | 63.86% | 99.32% |
+
 ## Cost
 
 | Measure | MiniLM | BertBaseCased |
 | ------- | -----: | ------------: |
-| Model download (`model_int8.onnx` and the other files) | 23 MiB | 104 MiB |
+| Model download (`model_int8.onnx` and the other files) | 22 MiB | 104 MiB |
 | Weights size (KiB) | 1,129 | 2,241 |
 | Classification latency (ms per sentence) | 1.84 | 8.55 |
 | Model first use (ms) | 388 | 521 |
@@ -59,9 +87,15 @@ dotnet run --project tools/WordSense.Builder -c Release -- evaluate bert-base-ca
 | Word table first use (ms) | 122 | 118 |
 | Word table first use (MiB) | 42.8 | 42.8 |
 
-The download sizes are the sums of the file sizes in the model directories measured by the last evaluation run
-(IntraOpThreads 2, same machine for all models); they replace the earlier figures in `model-provenance.md`
-(23.2 MB and 109.4 MB, which use decimal megabytes). The latency is machine dependent.
+The download sizes are the sums of the sizes of the pinned files of each model (MiniLM: 23,203,878 bytes = 22.13 MiB;
+BertBaseCased: 109,360,908 bytes = 104.29 MiB), in MiB (1 MiB = 1,048,576 bytes). The earlier evaluator summed every file
+in the model folder, which gave 23 MiB for MiniLM; it now sums the pinned files only. They replace the decimal-megabyte
+figures in `model-provenance.md` (23.2 MB and 109.4 MB). The latency is machine dependent.
+
+The memory row is what the model adds, measured after the word lexicon had been loaded (the word table row, 42.8
+MiB); it does not include the lexicon. The timing and memory rows are from the quiet reference run; the second run that
+measured the calibration (MiniLM 1.92 ms, 40 MiB, 300 ms; BertBaseCased 12.77 ms, 127 MiB, 529 ms) was noisier, and
+the accuracy figures were identical.
 
 ## Against the Earlier Baseline
 

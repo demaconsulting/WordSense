@@ -24,11 +24,14 @@ namespace DemaConsulting.WordSense;
 ///     in the build notes: https://github.com/demaconsulting/WordSense/tree/main/docs/build_notes.
 ///     </para>
 ///     <para>
-///     Which model to choose. The figures are from the build notes (<c>docs/build_notes/model-table.md</c>, which the
+///     Which model to choose. The figures are from the build notes
+///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md, which the
 ///     README repeats exactly); they are rounded here, and latency, first-use time and memory are measured on one
 ///     machine, so treat them as approximate. "Real text" means sentences from openly licensed or public-domain
 ///     sources and is the realistic expectation; the holdout was written together with the training sentences and
-///     is optimistic.
+///     is optimistic. All sizes are in MiB (1 MiB = 1,048,576 bytes). The memory figure is what the model adds to the
+///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 43 MiB, once per process, shared
+///     by every model) is not included, so add it to the figure of the model you use.
 ///     </para>
 ///     <list type="table">
 ///     <listheader>
@@ -41,13 +44,68 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     <item>
 ///     <term>MiniLM</term>
-///     <description>about 97% / 93%; 23 MiB, once; about 2 ms; about 64 MiB</description>
+///     <description>about 97% / 93%; 22 MiB, once; about 2 ms; about 64 MiB</description>
 ///     </item>
 ///     <item>
 ///     <term>BertBaseCased</term>
 ///     <description>about 99% / 97%; 104 MiB, once; about 9 ms; about 150 MiB; keeps the case of the text</description>
 ///     </item>
 ///     </list>
+///     <para>
+///     Threshold versus coverage and precision (approximate, rounded; measured on the real-text sentences of the build
+///     notes, best-sense accuracy of the words that reach the threshold; "coverage" is the share of the rows that
+///     reach it, and the thresholds are specific to the model, so never reuse one across models):
+///     </para>
+///     <list type="table">
+///     <listheader>
+///     <term>Model and threshold</term>
+///     <description>Coverage / precision on real text (holdout in parentheses)</description>
+///     </listheader>
+///     <item>
+///     <term>Basic, at least 0.6</term>
+///     <description>about 90% / 89% (holdout: 95% / 90%)</description>
+///     </item>
+///     <item>
+///     <term>Basic, at least 0.8</term>
+///     <description>about 78% / 93% (holdout: 86% / 94%)</description>
+///     </item>
+///     <item>
+///     <term>Basic, at least 0.9</term>
+///     <description>about 70% / 96% (holdout: 78% / 96%)</description>
+///     </item>
+///     <item>
+///     <term>MiniLM, at least 0.6</term>
+///     <description>about 82% / 97% (holdout: 88% / 99%)</description>
+///     </item>
+///     <item>
+///     <term>MiniLM, at least 0.8</term>
+///     <description>about 73% / 98% (holdout: 79% / 99%)</description>
+///     </item>
+///     <item>
+///     <term>MiniLM, at least 0.9</term>
+///     <description>about 69% / 98% (holdout: 75% / 99%)</description>
+///     </item>
+///     <item>
+///     <term>BertBaseCased, at least 0.6</term>
+///     <description>about 85% / 99% (holdout: 94% / 99.7%)</description>
+///     </item>
+///     <item>
+///     <term>BertBaseCased, at least 0.8</term>
+///     <description>about 70% / 99% (holdout: 87% / 99.7%)</description>
+///     </item>
+///     <item>
+///     <term>BertBaseCased, at least 0.9</term>
+///     <description>about 64% / 99% (holdout: 81% / 99.7%)</description>
+///     </item>
+///     </list>
+///     <para>
+///     Without a threshold (every target word taken) the accuracy is the best-sense figure of the table above. A
+///     threshold of 0.8 is a reasonable start for every model: it keeps about three quarters of the real-text target
+///     words with about one error in fifty (MiniLM and BertBaseCased) or one in fourteen (Basic). The full tables are
+///     in
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md and
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md.
+///     </para>
 ///     <para>
 ///     Default recommendation: start with <c>DemaConsulting.WordSense.MiniLM</c>, which is small, fast and accurate
 ///     enough for most uses. Choose <c>DemaConsulting.WordSense.BertBaseCased</c> when accuracy matters most and the
@@ -61,6 +119,74 @@ namespace DemaConsulting.WordSense;
 ///     session on the first <c>Create</c> (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased) after
 ///     <c>EnsureModelAsync</c> has verified its files. The Basic model has no files, so its <c>Create</c> needs no
 ///     preceding <c>EnsureModelAsync</c>.
+///     </para>
+///     <para>
+///     Tokenizing text. You split the text into words before classifying; the models expect the tokens that the
+///     evaluation used: a word is a run of letters, digits and combining marks that may contain inner apostrophes
+///     (<c>'</c> or the curly U+2019) and hyphens, so a contraction (<c>don't</c>), a possessive (<c>dog's</c>) and a
+///     hyphenated word (<c>well-known</c>) are one token; every other non-space character (punctuation, quotes, dashes,
+///     symbols) is a token of its own; a decimal or a number with thousands separators (<c>3.5</c>, <c>1,000</c>) is
+///     best kept as one token. One sentence per call. The reference tokenizer in the example below does exactly
+///     that (it is verified by a unit test of this repository). The tokens are not trimmed or lower-cased by you; the
+///     classifiers do that for the lookup.
+///     </para>
+///     <para>
+///     What the lookup does with typical tokens (the same for all three models, because the lexicon lookup comes
+///     first; null means <see cref="WordSense.Details"/> is null and the confidence is 0):
+///     </para>
+///     <list type="table">
+///     <listheader>
+///     <term>Token</term>
+///     <description>Result</description>
+///     </listheader>
+///     <item>
+///     <term><c>record</c>, <c>Record</c>, <c>RECORD</c>, <c>records</c></term>
+///     <description>Found (the lookup ignores case; <c>records</c> is a stored inflection): several senses, so the best sense from context with the model's confidence</description>
+///     </item>
+///     <item>
+///     <term><c>the</c>, <c>a</c>, a misspelling, a name that is not in the lexicon</term>
+///     <description>Unknown: null, 0 (a name that is in the lexicon, such as <c>Smith</c>, is found)</description>
+///     </item>
+///     <item>
+///     <term><c>,</c> <c>"</c> <c>-</c> an em dash <c>;</c> <c>)</c></term>
+///     <description>Unknown: null, 0; punctuation is always its own token. For Basic, only the tokens <c>.</c>, <c>!</c> and <c>?</c> also end a sentence segment</description>
+///     </item>
+///     <item>
+///     <term><c>race.</c> (period attached)</term>
+///     <description>Unknown: null, 0, because <c>race.</c> is not a lexicon key; Basic then sees no sentence end. Always split the period off</description>
+///     </item>
+///     <item>
+///     <term><c>don't</c> (also with U+2019), <c>it's</c>, <c>dog's</c>, <c>didn't</c></term>
+///     <description>Unknown: null, 0 (the lexicon has no contraction or possessive keys); the neighboring words are classified normally. If you need the base word of a possessive classified, split it before the <c>'s</c> yourself (<c>record</c>, <c>'s</c>); the evaluation did not do that</description>
+///     </item>
+///     <item>
+///     <term><c>do</c> + <c>n't</c> (split by another tokenizer)</term>
+///     <description><c>do</c> is found, <c>n't</c> is unknown; but this is not the form the models were evaluated on, so avoid it (Basic guesses the tag of <c>n't</c> from its suffix)</description>
+///     </item>
+///     <item>
+///     <term><c>well-known</c>, <c>re-read</c>, <c>mother-in-law</c></term>
+///     <description>Unknown: null, 0 (hyphenated words are not lexicon keys); keep them as one token</description>
+///     </item>
+///     <item>
+///     <term><c>3</c>, <c>3.5</c>, <c>1,000</c></term>
+///     <description>Unknown: null, 0; a token without a letter is a number or punctuation. Keep <c>3.5</c> as one token: for Basic, split into <c>3</c>, <c>.</c>, <c>5</c> the period ends a sentence segment</description>
+///     </item>
+///     <item>
+///     <term><c>Mr</c> + <c>.</c>, <c>U</c> + <c>.</c> + <c>S</c> + <c>.</c></term>
+///     <description>Each period is a sentence end for Basic and cuts its context window; write an abbreviation as one token (<c>Mr.</c>, unknown, null, 0) or drop its periods. Encoders are not affected</description>
+///     </item>
+///     <item>
+///     <term>An empty string; a null element; an empty list</term>
+///     <description>An empty string is unknown (null, 0); a null element throws <see cref="ArgumentException"/>; an empty list gives an empty array</description>
+///     </item>
+///     </list>
+///     <para>
+///     Case. The lexicon lookup lower-cases every word for all models, so <c>Record</c> and <c>RECORD</c> find the same
+///     entry. After the lookup the models differ. MiniLM is uncased: its tokenizer lower-cases the text, so case never
+///     changes its answer. BertBaseCased is cased: it sees <c>READ</c>, <c>Read</c> and <c>read</c> as different word
+///     pieces, so keep the case of the original text and do not lower-case it yourself. Basic uses case in one place only: a word that is not in the lexicon and starts
+///     with an upper-case letter inside a sentence segment (not first) is tagged a noun (a likely proper noun), which
+///     helps the tagging of its neighbors; the lemma lookup and the cue words of Basic are lower-cased.
 ///     </para>
 ///     <para>
 ///     Naming: <c>WordSense</c> is both this namespace and the result type <see cref="WordSense"/> (a record struct of
@@ -82,6 +208,19 @@ namespace DemaConsulting.WordSense;
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+///     </code>
+///     Tokenizing text: a reference tokenizer (a word, a number with separators, or one other character per token).
+///     <code>
+///     using System.Text.RegularExpressions;
+///
+///     var tokenPattern = new Regex(
+///         @"\d+(?:[.,]\d+)+|[\p{L}\p{Nd}\p{Mn}\p{Mc}]+(?:['\u2019-][\p{L}\p{Nd}\p{Mn}\p{Mc}]+)*|[\uD800-\uDBFF][\uDC00-\uDFFF]|\S",
+///         RegexOptions.CultureInvariant);
+///
+///     string[] Tokenize(string sentence) => tokenPattern.Matches(sentence).Select(match => match.Value).ToArray();
+///
+///     // Smith's | well-known | dog | didn't | " | bark | " | at | 3.5 | cats | .
+///     string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats.");
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;

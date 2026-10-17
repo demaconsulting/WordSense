@@ -17,7 +17,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Onnx.
 ///     </para>
 ///     <para>
-///     Offline and air-gapped use: fetch the model files of a model package (listed under <c>model/</c> in the repository,
+///     Offline and air-gapped use: fetch the model files of a model package (listed in the model folder of the repository,
 ///     https://github.com/demaconsulting/WordSense/tree/main/model) on a machine with network access, copy them to the
 ///     target machine and pass their directory to the model's constructor. The directory is flat: the files sit
 ///     directly in it (no <c>{model-id}</c> subfolder), and the model's <c>EnsureModelAsync</c> must still be called, to
@@ -27,7 +27,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
 ///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{model-id}/{file}</c>. No environment
 ///     variable sets the store location (the downloaded copies live in <c>{StoreRoot}/{model-id}/</c>, by default beneath
-///     the per-user local application data folder); only <see cref="MirrorOptions.StoreRoot"/> changes it, and that type
+///     the per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
+///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS); only <see cref="MirrorOptions.StoreRoot"/> changes it, and that type
 ///     requires a mirror base URI.
 ///     </para>
 /// </remarks>

@@ -43,6 +43,11 @@ documentation, the README or the user guide. The check is repeated until every q
 
 ## Log
 
+<!-- markdownlint-disable MD013 -->
+
 | Round | Result | Notes |
 | ----- | ------ | ----- |
 | 1 | Gaps in all eight questions | Closed by the commit "Close API documentation gaps found by quiz round 1" |
+| 2 | Q1-Q7 PASS with minor gaps, Q8 GAP | Minor gaps: no `EnsureModelAsync(mirror)` snippet in the encoder packages, no threshold-versus-coverage table for the encoders, no generic disposal guidance, no byte sizes and mixed MB/MiB, no concrete store paths, unclear whether memory includes the lexicon, repo-relative paths in XML docs, punctuation, cancelled-token behavior of Basic, unequal latency statements, no `ModelId` values. Q8: no reference tokenizer, no edge-case table, case handling not stated. Closed by the commit "Close API documentation gaps found by quiz round 2" |
+
+<!-- markdownlint-enable MD013 -->

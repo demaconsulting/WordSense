@@ -19,7 +19,10 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     A model is thread-safe for concurrent classification. A model that holds native resources (the encoder models)
 ///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The basic
-///     model holds nothing to release.
+///     model holds nothing to release. Because <see cref="IWordSenseModel"/> itself is not <see cref="IDisposable"/>,
+///     code that works with any model disposes it generically: <c>(model as IDisposable)?.Dispose();</c> (or
+///     <c>using (model as IDisposable)</c>), which does nothing for the Basic model and releases the ONNX session of an
+///     encoder model.
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
@@ -33,10 +36,18 @@ namespace DemaConsulting.WordSense;
 /// <example>
 ///     <code>
 ///     IWordSenseModel model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
-///     await model.EnsureModelAsync();
-///     IWordSenseClassifier classifier = model.Create();
-///     WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"]);
-///     Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
+///     try
+///     {
+///         await model.EnsureModelAsync();
+///         IWordSenseClassifier classifier = model.Create();
+///         WordSense[] senses = await classifier.ClassifyAsync(["to", "record", "the", "record"]);
+///         Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
+///     }
+///     finally
+///     {
+///         // Works for every model: the encoder models are IDisposable, the Basic model is not
+///         (model as IDisposable)?.Dispose();
+///     }
 ///     </code>
 /// </example>
 public interface IWordSenseModel
@@ -74,7 +85,7 @@ public interface IWordSenseModel
     ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
-    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained, verified, from any source (encoder model without a model directory).</exception>
+    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained and verified from any source (encoder model without a model directory).</exception>
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory does not exist or lacks a model file (encoder model with a model directory).</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (encoder model with a model directory).</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed (encoder models).</exception>
@@ -142,7 +153,12 @@ public interface IWordSenseModel
 ///     <para>
 ///     Store location: downloaded files are kept in <c>{StoreRoot}/{model-id}/{file}</c>; without a store root, the
 ///     root is <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c> (the application base directory when the
-///     platform has no local application data folder). The only way to relocate the store is
+///     platform has no local application data folder). Concretely, as .NET reports the local application data folder:
+///     on Windows <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> (for example
+///     <c>C:\Users\Ann\AppData\Local\DemaConsulting\WordSense\models</c>); on Linux and macOS
+///     <c>$XDG_DATA_HOME/DemaConsulting/WordSense/models</c>, which is
+///     <c>~/.local/share/DemaConsulting/WordSense/models</c> when <c>XDG_DATA_HOME</c> is not set (on macOS too, not
+///     <c>~/Library/Application Support</c>). The only way to relocate the store is
 ///     <see cref="StoreRoot"/>, and no environment variable controls it: the four <c>WORDSENSE_MIRROR_*</c>
 ///     variables configure only the mirror. <see cref="BaseUri"/> is a required constructor argument, so a
 ///     <see cref="MirrorOptions"/> always describes a mirror; there is no way to set only a store root. To use files
@@ -159,6 +175,13 @@ public interface IWordSenseModel
 ///         StoreRoot = "/var/lib/wordsense",
 ///         Timeout = TimeSpan.FromMinutes(2),
 ///     };
+///
+///     // Pass it to EnsureModelAsync of any encoder model (MiniLMWordSenseModel or BertBaseCasedWordSenseModel)
+///     async Task PrepareAsync(IWordSenseModel model)
+///     {
+///         await model.EnsureModelAsync(mirror);   // mirror first, then the public source; files verified
+///         IWordSenseClassifier classifier = model.Create();
+///     }
 ///     </code>
 /// </example>
 /// <param name="BaseUri">The absolute <c>http</c> or <c>https</c> base location of the mirror.</param>
