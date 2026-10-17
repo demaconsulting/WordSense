@@ -1,16 +1,50 @@
+using System.Buffers;
+
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     The classifier of the basic model: a lexicon lookup followed by the hand-written <see cref="Rules"/>.
+///     The classifier of the basic model: a statistical part-of-speech tagger and a context cue model choose among the
+///     lexicon senses of each word.
 /// </summary>
 /// <remarks>
+///     <para>
 ///     A word with no lexicon entry is <c>(word, null, 0)</c>; a word with one entry is <c>(word, entry, 1)</c>. For a
-///     word with several entries the neighboring words are looked up and the first rule that fires picks a part of
-///     speech; the result is the single entry with that part of speech and the fixed confidence of the rule. When no
-///     rule fires, or several entries share the selected part of speech, the result is <c>(word, null, 0)</c>.
+///     word with several entries, the text is split into sentence segments at the tokens ".", "!" and "?"; the tagger
+///     computes the part-of-speech posterior of every word of the segment, the cue model scores the senses from the
+///     neighboring words, and <see cref="SenseFusion"/> turns both into one probability per sense. The result is the most
+///     probable sense and its probability, so the confidence of an ambiguous word is at least one over the number of
+///     senses and the word never goes unanswered.
+///     </para>
+///     <para>
+///     The classifier holds no mutable state, so one instance may be used from many threads at once, and the result
+///     depends only on the input words.
+///     </para>
 /// </remarks>
 internal sealed class BasicClassifier : IWordSenseClassifier
 {
+    private readonly BasicTables? _tables;
+    private readonly IReadOnlyDictionary<string, WordDetails[]> _lexicon;
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BasicClassifier"/> class that uses the embedded table and the
+    ///     lexicon of the core library.
+    /// </summary>
+    public BasicClassifier()
+        : this(null, WordLexicon.Words)
+    {
+    }
+
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BasicClassifier"/> class with explicit statistics and lexicon.
+    /// </summary>
+    /// <param name="tables">The statistics, or null for the embedded table (loaded on first use).</param>
+    /// <param name="lexicon">The lexicon, by lower-case word.</param>
+    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, WordDetails[]> lexicon)
+    {
+        _tables = tables;
+        _lexicon = lexicon;
+    }
+
     /// <inheritdoc />
     public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
@@ -22,45 +56,70 @@ internal sealed class BasicClassifier : IWordSenseClassifier
         }
 
         cancellationToken.ThrowIfCancellationRequested();
-        var keys = list.Select(Normalize).ToList();
         var results = new WordSense[list.Count];
-        for (var i = 0; i < list.Count; i++)
+        if (list.Count == 0)
         {
-            results[i] = Classify(list[i], keys, i);
+            return Task.FromResult(results);
+        }
+
+        var tables = _tables ?? BasicTables.Default;
+        var lower = new string[list.Count];
+        for (var i = 0; i < lower.Length; i++)
+        {
+            lower[i] = Lower(list[i]);
+        }
+
+        var tokens = ArrayPool<TaggerToken>.Shared.Rent(list.Count);
+        var posteriors = ArrayPool<double>.Shared.Rent(list.Count * PosTag.Count);
+        var features = new FeatureRef[CueModel.MaxFeatures];
+        try
+        {
+            var start = 0;
+            while (start < list.Count)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                var end = start;
+                while (end < list.Count - 1 && !IsTerminator(list[end]))
+                {
+                    end++;
+                }
+
+                var length = end - start + 1;
+                ClassifySegment(tables, list, lower, start, length, tokens, posteriors, features, results);
+                start = end + 1;
+            }
+        }
+        finally
+        {
+            ArrayPool<TaggerToken>.Shared.Return(tokens, clearArray: true);
+            ArrayPool<double>.Shared.Return(posteriors);
         }
 
         return Task.FromResult(results);
     }
 
     /// <summary>
-    ///     Classifies the word at one position.
+    ///     Finds the sentence segment around a position.
     /// </summary>
-    /// <param name="word">The word as written.</param>
-    /// <param name="keys">The normalized words of the whole text.</param>
-    /// <param name="index">The position of the word.</param>
-    /// <returns>The result.</returns>
-    internal static WordSense Classify(string word, IReadOnlyList<string> keys, int index)
+    /// <param name="words">The words as written.</param>
+    /// <param name="index">The position.</param>
+    /// <returns>The index of the first word of the segment and its length; a segment ends after a ".", "!" or "?" token.</returns>
+    internal static (int Start, int Length) SegmentOf(IReadOnlyList<string> words, int index)
     {
-        if (keys[index].Length == 0 || !WordLexicon.Words.TryGetValue(keys[index], out var senses))
+        ArgumentNullException.ThrowIfNull(words);
+        var start = index;
+        while (start > 0 && !IsTerminator(words[start - 1]))
         {
-            return new WordSense(word, null, 0);
+            start--;
         }
 
-        if (senses.Length == 1)
+        var end = index;
+        while (end < words.Count - 1 && !IsTerminator(words[end]))
         {
-            return new WordSense(word, senses[0], 1);
+            end++;
         }
 
-        var candidates = senses.Select(s => s.PartOfSpeech).ToHashSet();
-        var previous = index > 0 && keys[index - 1].Length > 0 ? keys[index - 1] : null;
-        var next = index + 1 < keys.Count && keys[index + 1].Length > 0 ? keys[index + 1] : null;
-        if (Rules.Evaluate(previous, next, candidates) is not { } match)
-        {
-            return new WordSense(word, null, 0);
-        }
-
-        var chosen = senses.Where(s => s.PartOfSpeech == match.PartOfSpeech).ToList();
-        return chosen.Count == 1 ? new WordSense(word, chosen[0], match.Confidence) : new WordSense(word, null, 0);
+        return (start, end - start + 1);
     }
 
     /// <summary>
@@ -70,7 +129,103 @@ internal sealed class BasicClassifier : IWordSenseClassifier
     /// <returns>The lexicon key, or an empty string for punctuation.</returns>
     internal static string Normalize(string word)
     {
-        var key = word.ToLowerInvariant().Replace('\u2019', '\'');
-        return key.Any(char.IsLetter) ? key : string.Empty;
+        var key = Lower(word);
+        return CueModel.HasLetter(key) ? key : string.Empty;
+    }
+
+    /// <summary>
+    ///     Lower-cases a word and straightens the typographic apostrophe.
+    /// </summary>
+    /// <param name="word">The word as written.</param>
+    /// <returns>The lower-case token.</returns>
+    internal static string Lower(string word) => word.ToLowerInvariant().Replace('\u2019', '\'');
+
+    private static bool IsTerminator(string word) => word is "." or "!" or "?";
+
+    /// <summary>
+    ///     Creates the tagger token of a written word.
+    /// </summary>
+    /// <param name="lexicon">The lexicon, by lower-case word.</param>
+    /// <param name="word">The word as written.</param>
+    /// <returns>A fixed token for a word without a letter (a number or punctuation), otherwise a word token with the parts of speech the lexicon lists.</returns>
+    internal static TaggerToken MakeToken(IReadOnlyDictionary<string, WordDetails[]> lexicon, string word)
+    {
+        var key = Normalize(word);
+        if (key.Length == 0)
+        {
+            return TaggerToken.Fixed(word.Any(char.IsDigit) ? PosTag.Other : PosTag.Punctuation);
+        }
+
+        var mask = lexicon.TryGetValue(key, out var found) ? MaskOf(found) : 0;
+        return TaggerToken.Word(key, mask, char.IsUpper(word[0]));
+    }
+
+    private static int MaskOf(WordDetails[] senses)
+    {
+        var mask = 0;
+        foreach (var sense in senses)
+        {
+            mask |= 1 << PosTag.Of(sense.PartOfSpeech);
+        }
+
+        return mask;
+    }
+
+    private static WordSense Choose(BasicTables tables, string word, WordDetails[] senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features)
+    {
+        var count = senses.Length;
+        Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];
+        Span<double> probabilities = count <= 32 ? stackalloc double[32] : new double[count];
+        cues = cues[..count];
+        probabilities = probabilities[..count];
+        if (tables.Cues.TryGetValue(senses[0].Lemma, out var cue))
+        {
+            CueModel.Score(cue, features, senses, cues);
+        }
+        else
+        {
+            cues.Clear();
+        }
+
+        SenseFusion.Fuse(posterior, senses, cues, tables.HmmWeight, tables.InvTemperature, probabilities);
+        var best = SenseFusion.Winner(probabilities);
+        return new WordSense(word, senses[best], probabilities[best]);
+    }
+
+    private void ClassifySegment(
+        BasicTables tables,
+        List<string> words,
+        string[] lower,
+        int start,
+        int length,
+        TaggerToken[] tokens,
+        double[] posteriors,
+        FeatureRef[] features,
+        WordSense[] results)
+    {
+        for (var i = 0; i < length; i++)
+        {
+            tokens[i] = MakeToken(_lexicon, words[start + i]);
+        }
+
+        PosTagger.Posteriors(tables, tokens.AsSpan(0, length), posteriors.AsSpan(0, length * PosTag.Count));
+        for (var i = 0; i < length; i++)
+        {
+            var word = words[start + i];
+            var key = Normalize(word);
+            if (key.Length == 0 || !_lexicon.TryGetValue(key, out var senses))
+            {
+                results[start + i] = new WordSense(word, null, 0);
+            }
+            else if (senses.Length == 1)
+            {
+                results[start + i] = new WordSense(word, senses[0], 1);
+            }
+            else
+            {
+                var featureCount = CueModel.Extract(lower.AsSpan(start, length), i, features);
+                results[start + i] = Choose(tables, word, senses, posteriors.AsSpan(i * PosTag.Count, PosTag.Count), features.AsSpan(0, featureCount));
+            }
+        }
     }
 }

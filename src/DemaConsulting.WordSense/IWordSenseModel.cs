@@ -7,15 +7,15 @@ namespace DemaConsulting.WordSense;
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Model packages provide implementations: <c>DemaConsulting.WordSense.Basic</c> chooses senses with hand-written
-///     rules and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
+///     Model packages provide implementations: <c>DemaConsulting.WordSense.Basic</c> chooses senses with a small
+///     statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
 ///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts
 ///     as needed.
 ///     </para>
 ///     <para>
 ///     A model is thread-safe for concurrent classification. A model that holds native resources (the encoder models)
-///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The rule
+///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The basic
 ///     model holds nothing to release.
 ///     </para>
 /// </remarks>

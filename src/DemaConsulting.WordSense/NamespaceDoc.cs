@@ -14,7 +14,7 @@ namespace DemaConsulting.WordSense;
 ///     disambiguate a word in context by itself: add one of the model packages for that.
 ///     </para>
 ///     <para>
-///     Model packages: <c>DemaConsulting.WordSense.Basic</c> (hand-written rules, no model files, no ONNX; see
+///     Model packages: <c>DemaConsulting.WordSense.Basic</c> (statistical tagger, no model files, no ONNX; see
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Basic),
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (a small encoder; see
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.MiniLM) and

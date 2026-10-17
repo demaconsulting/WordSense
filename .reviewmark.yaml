@@ -18,6 +18,7 @@ needs-review:
   - "corpus/provenance/**"        # Provenance of the real sentences
   - "corpus/realtext/**"          # Real-text evaluation sentences
   - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
+  - "corpus/ud/**"                # Universal Dependencies tag and word-tag counts for the Basic model
   - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
@@ -136,6 +137,7 @@ reviews:
       - "corpus/provenance/**"
       - "corpus/realtext/**"
       - "corpus/lexicon/**"
+      - "corpus/ud/**"
 
   # WordSense-Core Review (one per subsystem)
   - id: WordSense-Core
@@ -219,18 +221,58 @@ reviews:
       - "src/DemaConsulting.WordSense.Basic/BasicClassifier.cs"
       - "test/DemaConsulting.WordSense.Basic.Tests/BasicClassifierTests.cs"
 
-  # WordSense-Basic-Rules Review (one per unit)
-  - id: WordSense-Basic-Rules
-    title: Review that WordSense Rules Implementation is Correct
+  # WordSense-Basic-BasicTables Review (one per unit)
+  - id: WordSense-Basic-BasicTables
+    title: Review that WordSense BasicTables Implementation is Correct
     context:
       - "docs/design/word-sense/basic.md"
       - "docs/reqstream/word-sense/basic.yaml"
     paths:
-      - "docs/reqstream/word-sense/basic/rules.yaml"
-      - "docs/design/word-sense/basic/rules.md"
-      - "docs/verification/word-sense/basic/rules.md"
-      - "src/DemaConsulting.WordSense.Basic/Rules.cs"
-      - "test/DemaConsulting.WordSense.Basic.Tests/RulesTests.cs"
+      - "docs/reqstream/word-sense/basic/basic-tables.yaml"
+      - "docs/design/word-sense/basic/basic-tables.md"
+      - "docs/verification/word-sense/basic/basic-tables.md"
+      - "src/DemaConsulting.WordSense.Basic/BasicTables.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs"
+
+  # WordSense-Basic-PosTagger Review (one per unit)
+  - id: WordSense-Basic-PosTagger
+    title: Review that WordSense PosTagger Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/pos-tagger.yaml"
+      - "docs/design/word-sense/basic/pos-tagger.md"
+      - "docs/verification/word-sense/basic/pos-tagger.md"
+      - "src/DemaConsulting.WordSense.Basic/PosTagger.cs"
+      - "src/DemaConsulting.WordSense.Basic/PosTag.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/PosTaggerTests.cs"
+
+  # WordSense-Basic-CueModel Review (one per unit)
+  - id: WordSense-Basic-CueModel
+    title: Review that WordSense CueModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/cue-model.yaml"
+      - "docs/design/word-sense/basic/cue-model.md"
+      - "docs/verification/word-sense/basic/cue-model.md"
+      - "src/DemaConsulting.WordSense.Basic/CueModel.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/CueModelTests.cs"
+
+  # WordSense-Basic-SenseFusion Review (one per unit)
+  - id: WordSense-Basic-SenseFusion
+    title: Review that WordSense SenseFusion Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/sense-fusion.yaml"
+      - "docs/design/word-sense/basic/sense-fusion.md"
+      - "docs/verification/word-sense/basic/sense-fusion.md"
+      - "src/DemaConsulting.WordSense.Basic/SenseFusion.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/SenseFusionTests.cs"
 
   # WordSense-Onnx Review (one per subsystem)
   - id: WordSense-Onnx

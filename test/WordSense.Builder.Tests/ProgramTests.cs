@@ -38,7 +38,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "words", "weights", "evaluate", "basic-precision", "appendix" })
+        foreach (var command in new[] { "words", "weights", "evaluate", "ud-counts", "train-basic", "tune-basic", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -118,15 +118,15 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
-    ///     The rule-based model has no weights to train.
+    ///     The statistical model has no encoder weights; the error names the command that retrains it.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_Program_Weights_BasicModel_IsRuleBased()
+    public async Task WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic()
     {
         var (code, _, error) = await RunAsync("weights", "basic", "--repository", _dir.Root);
 
         Assert.Equal(1, code);
-        Assert.Contains("rule based", error, StringComparison.Ordinal);
+        Assert.Contains("train-basic", error, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -211,25 +211,7 @@ public sealed class ProgramTests : IDisposable
         Assert.Contains("was not found", error, StringComparison.Ordinal);
     }
 
-    /// <summary>
-    ///     The basic-precision command prints and optionally writes the report.
-    /// </summary>
-    [Fact]
-    public async Task WordSenseBuilder_Program_BasicPrecision_PrintsAndWritesReport()
-    {
-        var corpus = PrepareCorpus();
-        var target = Path.Combine(_dir.Root, "out", "precision.md");
-        Directory.CreateDirectory(Path.GetDirectoryName(target)!);
-
-        var (code, output, _) = await RunAsync("basic-precision", "--corpus", corpus, "--output", target);
-
-        Assert.Equal(0, code);
-        Assert.Contains("### Basic rule precision on the training anchors", output, StringComparison.Ordinal);
-        Assert.Equal(output, await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
-    }
-
-    /// <summary>
-    ///     The evaluate command accepts the model id as second argument and evaluates the rule-based model quickly.
+    ///     The evaluate command accepts the model id as second argument and evaluates the basic model quickly.
     /// </summary>
     [Fact]
     public async Task WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements()
@@ -244,6 +226,6 @@ public sealed class ProgramTests : IDisposable
         Assert.Empty(error);
         Assert.Contains("### ", output, StringComparison.Ordinal);
         Assert.Contains("| holdout | 1 |", output, StringComparison.Ordinal);
-        Assert.Contains("- Weights size: 0 KiB", await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken), StringComparison.Ordinal);
+        Assert.Contains("- Weights size:", await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken), StringComparison.Ordinal);
     }
 }

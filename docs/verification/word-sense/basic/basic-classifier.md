@@ -2,9 +2,9 @@
 
 #### Verification Approach
 
-Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicClassifierTests.cs` call the classifier with word lists and the
-embedded lexicon. The rules are real; nothing is mocked, because the expected results follow from the lexicon and the
-documented rules. The rule order and each rule are verified in the `Rules` unit document.
+Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicClassifierTests.cs` call the classifier with word lists, a toy
+statistical table (`TestTables`) and a toy lexicon, so the expected results follow from the table numbers. The tagger,
+cue model and fusion are real; nothing is mocked. Their own behavior is verified in their unit documents.
 
 #### Test Environment
 
@@ -16,16 +16,28 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Unknown word**: a word with no lexicon entry, and a token with no letter such as `.`, gives `(word, null, 0)`.
-- **Single-sense word**: a word with one entry gives `(word, entry, 1.0)` and the word is returned as written.
-- **Ambiguous word with a firing rule**: a word with several senses after a modal verb gives the verb sense with the
-  confidence of the rule that fired.
-- **Abstains when no rule fires**: a word with several senses at the start of the text, or between words that trigger
-  no rule, gives `(word, null, 0)`.
-- **Abstains on same-part-of-speech senses**: when the selected part of speech matches more than one sense (the senses
-  of a heteronym that share a part of speech), the result is `(word, null, 0)`, because a rule cannot choose among them.
-- **Case and apostrophe normalization**: upper-case words and the curly apostrophe resolve like their lower-case
-  straight forms.
-- **Punctuation neighbors**: a neighboring token without a letter counts as no neighbor, so no rule uses it.
-- **Argument validation**: a null word list and a null word in the list throw.
-- **Cancelled token**: a cancelled token throws `OperationCanceledException`.
+- **Unknown word** (`BasicClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails`): a word with no lexicon entry gives
+  `(word, null, 0)`.
+- **Single-sense word** (`..._SingleSenseWord_ReturnsEntryWithFullConfidence`): a word with one entry gives
+  `(word, entry, 1.0)` and the word is returned as written.
+- **Ambiguous word always answers** (`..._AmbiguousWord_AlwaysAnswersWithProbability`): a word with several senses has
+  details and a confidence of at least one over the number of senses and below 1.
+- **Context chooses the part of speech** (`..._Context_ChoosesPartOfSpeech`): the sentence context decides between a
+  noun and a verb sense of the same word.
+- **Same part of speech uses cues** (`..._SamePartOfSpeech_UsesCues`): senses that share a part of speech are told apart
+  by the words around the target.
+- **Segments are independent** (`..._Segments_AreIndependent`): a sentence-ending token separates the text into
+  segments, and a word gets the same result whatever the other segments contain.
+- **Segment bounds** (`BasicClassifier_SegmentOf_FindsBounds`): the segment of a position ends after a `.`, `!` or `?`
+  token and starts after the previous one.
+- **Case and apostrophe normalization** (`..._MixedCaseAndCurlyApostrophe_AreNormalized`): upper-case words and the
+  curly apostrophe resolve like their lower-case straight forms.
+- **Punctuation** (`..._Punctuation_IsUnknown`): a token without a letter is unknown.
+- **Empty list** (`..._EmptyList_ReturnsEmpty`): an empty list gives an empty array.
+- **Results parallel the input** (`..._ResultsAreParallelToInput`): the result at an index describes the word at that
+  index.
+- **Deterministic and thread-safe** (`..._IsDeterministicAndThreadSafe`): the same text gives the same results every
+  time, also from many threads at once.
+- **Argument validation** (`..._NullWords_Throws`, `..._NullElement_Throws`): a null word list and a null word in the
+  list throw.
+- **Cancelled token** (`..._Cancelled_Throws`): a cancelled token throws `OperationCanceledException`.

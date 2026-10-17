@@ -3,7 +3,7 @@
 #### Verification Approach
 
 Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicWordSenseModelTests.cs` use the public type with the embedded
-lexicon. The model has no files and no state, so nothing is mocked.
+lexicon and the embedded statistics table. The model has no files and no state, so nothing is mocked.
 
 #### Test Environment
 

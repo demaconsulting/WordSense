@@ -1,16 +1,21 @@
 ## Basic Subsystem Verification Design
 
 This document describes the verification of the Basic subsystem, the package `DemaConsulting.WordSense.Basic`: a
-model that needs no model files and chooses among the senses of a word with hand-written rules.
+model that needs no model files and chooses among the senses of a word with a statistical part-of-speech tagger and a
+context cue model.
 
 ### Verification Approach
 
-The subsystem is verified through the public `BasicWordSenseModel` and through the internal `BasicClassifier` and
-`Rules` units, with the real embedded lexicon of the core package (the rules need real part-of-speech sets of the
-neighbors). Nothing is mocked: the model has no files, no network access and no state. Tests in
-`test/DemaConsulting.WordSense.Basic.Tests` (`BasicWordSenseModelTests`, `BasicClassifierTests`, `RulesTests`) verify the
-three units, and `XmlDocExampleTests` compiles the XML documentation examples. `BasicReadmeSampleTests` compiles and runs
-the Basic usage sample of the README and compares its code and output with the README.
+The subsystem is verified through the public `BasicWordSenseModel` and through the internal `BasicClassifier`,
+`BasicTables`, `PosTagger`, `CueModel` and `SenseFusion` units. The unit tests use small toy tables built in the test
+project in the exact layout the builder writes (`TestTables`) and a toy lexicon, so that every expected result follows
+from numbers visible in the test; `BasicTablesTests` also loads the real embedded table. Nothing is mocked: the model
+has no files, no network access and no state. Tests in `test/DemaConsulting.WordSense.Basic.Tests`
+(`BasicWordSenseModelTests`, `BasicClassifierTests`, `BasicTablesTests`, `PosTaggerTests`, `CueModelTests`,
+`SenseFusionTests`) verify the six units, and `XmlDocExampleTests` compiles the XML documentation examples.
+`BasicReadmeSampleTests` compiles and runs the Basic usage sample of the README and compares its code and output with
+the README. The accuracy of the shipped table is measured by the builder (`evaluate basic`) and recorded in the build
+notes, not asserted here.
 
 ### Test Environment
 
@@ -20,7 +25,7 @@ are needed.
 ### Acceptance Criteria
 
 All subsystem scenarios pass on every platform and target framework of the CI matrix, and the unit scenarios of the
-`BasicWordSenseModel`, `BasicClassifier` and `Rules` units pass.
+`BasicWordSenseModel`, `BasicClassifier`, `BasicTables`, `PosTagger`, `CueModel` and `SenseFusion` units pass.
 
 ### Test Scenarios
 
@@ -29,21 +34,35 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 `EnsureModelAsync` completes immediately without touching the file system or the network, ignores a mirror, and
 `Create` returns a working classifier at once (see the `BasicWordSenseModel` unit document).
 
-#### Abstains When No Rule Fires
+#### Ambiguous Words Are Always Answered
 
-For a word with several senses and no rule that fires, the result is `(word, null, 0)`: the model abstains instead of
-guessing (see the `BasicClassifier` and `Rules` unit documents).
+For a word with several senses the result has details and a confidence between one over the number of senses and 1; the
+model never abstains (see the `BasicClassifier` and `SenseFusion` unit documents).
 
-#### Eight Rules Apply in Order
+#### Context Chooses the Part of Speech
 
-The rules `after-modal`, `after-to`, `after-subject-pronoun`, `after-determiner`, `after-degree-adverb`,
-`after-preposition`, `before-auxiliary` and `before-noun` are tried in this order and the first that fires decides (see
-the `Rules` unit document).
+The same word is a noun after a determiner and a verb after a pronoun, because the tagger weighs the whole sentence
+(see the `PosTagger` and `BasicClassifier` unit documents).
+
+#### Cues Separate Senses of One Part of Speech
+
+Senses that share a part of speech, such as the two meanings of a heteronym, are told apart by the words around the
+target (see the `CueModel`, `SenseFusion` and `BasicClassifier` unit documents).
 
 #### Unambiguous Words Match the Other Packages
 
 A word with a single sense is answered with the lexicon entry and confidence 1, and an unknown word is `(word, null,
 0)`, exactly as in the model packages.
+
+#### Embedded Table Is Valid
+
+The table embedded in the assembly loads and a malformed table is rejected with `InvalidDataException` (see the
+`BasicTables` unit document).
+
+#### Deterministic and Thread-Safe
+
+The same words give the same results every time, also from many threads at once (see the `BasicClassifier` and
+`BasicWordSenseModel` unit documents).
 
 #### XML Documentation Examples Compile
 

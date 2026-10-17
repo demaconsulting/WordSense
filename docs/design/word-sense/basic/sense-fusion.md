@@ -1,0 +1,43 @@
+### SenseFusion Unit Design
+
+![Basic Structure](BasicView.svg)
+
+#### Purpose
+
+`SenseFusion` combines the part-of-speech posterior of the tagger with the cue scores into one probability per
+candidate sense, and picks the winner. The probability of the winner is the confidence of the result.
+
+#### Data Model
+
+No state. Inputs per word: the 13 tag posteriors, the candidate senses, one cue score per candidate (`NaN` when the cue
+table has none), the tagger weight (`HmmWeight`, from the table header) and the inverse temperature of the cues.
+
+#### Key Methods
+
+`Fuse(posteriors, senses, cues, tagWeight, invTemperature, probabilities)`:
+
+1. take the posterior of the part of speech of each candidate and renormalize over the candidates (equal shares when the
+   tagger gave no mass to any candidate);
+2. replace a missing cue by the mean of the available cue scores (zero when none is available);
+3. compute the score `tagWeight * ln(max(p, 1e-6)) + cue * invTemperature` per candidate;
+4. take the softmax with the maximum subtracted first, so extreme scores stay finite, and the probabilities sum to 1.
+
+`Winner(probabilities)` returns the index of the largest probability and the lowest index on a tie. The result is at
+least one over the number of candidates and strictly monotone in the score margin.
+
+#### Error Handling
+
+A null sense array throws `ArgumentNullException`. No numeric input produces a non-finite probability.
+
+#### Determinism and Thread Safety
+
+The functions are pure; equal input gives equal output, and any number of threads may call them. A small stack buffer is
+the only scratch space.
+
+#### Dependencies
+
+`PosTag` and the core `WordDetails`.
+
+#### Callers
+
+`BasicClassifier`.

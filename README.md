@@ -12,7 +12,7 @@
 WordSense is a .NET library that tells, for words in context, the part of speech and the pronunciation: whether
 "record" is a noun or a verb, and how to say "bow" or "read". Every word is looked up in an embedded dictionary of
 over 140,000 common words. Only where a word has several meanings does a model choose from the sentence: either the
-`Basic` model, which uses a few hand-written rules and needs nothing else, or an ONNX encoder model (`MiniLM` or
+`Basic` model, which is a small statistical tagger that needs nothing else, or an ONNX encoder model (`MiniLM` or
 `BertBaseCased`) that is more accurate and runs on ONNX Runtime.
 
 ## Features
@@ -32,7 +32,7 @@ over 140,000 common words. Only where a word has several meanings does a model c
 Pick the model package that fits; each one brings the core package `DemaConsulting.WordSense` with it.
 
 ```bash
-dotnet add package DemaConsulting.WordSense.Basic          # rules only: no model files, no ONNX Runtime
+dotnet add package DemaConsulting.WordSense.Basic          # small statistical model: no model files, no ONNX Runtime
 dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (23 MB model files)
 dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensitive encoder
 ```
@@ -40,7 +40,7 @@ dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensit
 | Package | Contents | Needs |
 | :--- | :--- | :--- |
 | `DemaConsulting.WordSense` | Contracts and the dictionary (`WordLexicon`) | Nothing |
-| `DemaConsulting.WordSense.Basic` | Rule-based model | Nothing |
+| `DemaConsulting.WordSense.Basic` | Statistical model (part-of-speech tagger and context cues) | Nothing |
 | `DemaConsulting.WordSense.Onnx` | Shared ONNX implementation (brought in by the model packages) | ONNX Runtime |
 | `DemaConsulting.WordSense.MiniLM` | MiniLM model and its weights | Model files, downloaded on first use |
 | `DemaConsulting.WordSense.BertBaseCased` | BERT base cased model and weights | Model files, downloaded on first use |
@@ -105,7 +105,7 @@ record    Noun         1.00  REK-urd
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
-// The basic model uses the embedded dictionary and a few rules, so there is nothing to download
+// The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
 var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 
@@ -131,7 +131,7 @@ record    Noun         0.95
 
 A word that is not in the dictionary has no details and a confidence of 0. A word with one meaning is answered with
 confidence 1. A word with several meanings is resolved from its sentence by the model; its confidence is defined by the
-model package (the `Basic` model uses a fixed confidence per rule; the ONNX models derive it from the margin of the
+model package (the `Basic` model reports the probability of its answer among the senses of the word; the ONNX models derive it from the margin of the
 trained classifier, and the best candidate is still returned when the confidence is low). The encoder runs only for a
 sentence that has a word that needs it. Encoder model files are stored in a per-user directory under their model ID
 (for example `all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL`
@@ -161,10 +161,10 @@ are unknown. The [user guide][link-user-guide] has the details, the caveats and 
 
 ## Credits and licenses
 
-The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
-`DemaConsulting.WordSense.BertBaseCased`) carry this section in their package readme. The corpus itself is not shipped
-in the packages, only the derived weights; every real sentence is recorded with its source, license and URL in
-`corpus/provenance/`.
+The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.Basic`,
+`DemaConsulting.WordSense.MiniLM` and `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package
+readme. The corpus itself is not shipped in the packages, only the derived tables and weights; every real sentence is
+recorded with its source, license and URL in `corpus/provenance/`.
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
 - **Project-authored words, senses, meanings, respellings and sentences**: MIT License.
@@ -172,6 +172,8 @@ in the packages, only the derived weights; every real sentence is recorded with 
 - **Wikipedia and Wiktionary example sentences** (<https://www.wikipedia.org>, <https://www.wiktionary.org>):
   CC BY-SA 4.0, with the article URL recorded.
 - **Universal Dependencies English corpora** (EWT and others, <https://universaldependencies.org>): CC BY-SA 4.0.
+  The tag statistics of the UD English-EWT treebank (<https://github.com/UniversalDependencies/UD_English-EWT>,
+  CC BY-SA 4.0) train the statistical model of the `Basic` package; see `corpus/ud/PROVENANCE.md`.
 - **Project Gutenberg works** (<https://www.gutenberg.org>): US public domain.
 - **Corpus redistribution**: rows under CC BY-SA 4.0 keep that license if the corpus itself is redistributed.
 - **sentence-transformers/all-MiniLM-L6-v2** (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>): Apache

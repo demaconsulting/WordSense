@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Text;
 using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.Basic;
 
 #pragma warning disable S6966 // the tool writes small console and file outputs; asynchronous writes add nothing
 #pragma warning disable S1215 // the measurement of the word table memory needs explicit collections
@@ -19,7 +20,26 @@ namespace WordSense.Builder;
 /// <param name="Meaning">Sentences of heteronym lemmas whose meaning (pronunciation) was right.</param>
 /// <param name="Answered">Sentences with a confidence of at least 0.5.</param>
 /// <param name="AnsweredCorrect">Answered sentences whose best sense was right.</param>
-internal sealed record SetResult(string Name, int Rows, int BestSense, int Pos, int HeteronymRows, int Meaning, int Answered, int AnsweredCorrect);
+/// <param name="Outcomes">The confidence and correctness of every sentence, or null when not collected.</param>
+internal sealed record SetResult(
+    string Name,
+    int Rows,
+    int BestSense,
+    int Pos,
+    int HeteronymRows,
+    int Meaning,
+    int Answered,
+    int AnsweredCorrect,
+    IReadOnlyList<(double Confidence, bool Correct)>? Outcomes = null);
+
+/// <summary>
+///     The measurements that only the basic model reports.
+/// </summary>
+/// <param name="TableBytes">The size of the embedded statistical table.</param>
+/// <param name="ColdLoadMilliseconds">The time to read the table the first time.</param>
+/// <param name="MicrosecondsPerWord">The mean time to classify one word of the holdout sentences.</param>
+/// <param name="MicrosecondsPerSentence">The mean time to classify one holdout sentence.</param>
+internal sealed record BasicDetails(long TableBytes, double ColdLoadMilliseconds, double MicrosecondsPerWord, double MicrosecondsPerSentence);
 
 /// <summary>
 ///     The measurements of one model.
@@ -30,14 +50,30 @@ internal sealed record SetResult(string Name, int Rows, int BestSense, int Pos, 
 /// <param name="MillisecondsPerSentence">The mean time to classify one holdout sentence.</param>
 /// <param name="WordsLoadMilliseconds">The time of the first use of the word table.</param>
 /// <param name="WordsMemoryBytes">The managed memory the first use of the word table added.</param>
+/// <param name="Basic">The extra measurements of the basic model, or null for the other models.</param>
 internal sealed record EvaluationResult(
     string Model,
     IReadOnlyList<SetResult> Sets,
     long WeightsBytes,
     double MillisecondsPerSentence,
     double WordsLoadMilliseconds,
-    long WordsMemoryBytes)
+    long WordsMemoryBytes,
+    BasicDetails? Basic = null)
 {
+    private static readonly double[] BucketEdges = [0.4, 0.6, 0.7, 0.8, 0.9];
+    private static readonly double[] Thresholds = [0.6, 0.8, 0.9];
+
+    /// <summary>
+    ///     The best-sense accuracy (holdout, real-text) of the models the basic model is compared with; fixed reference
+    ///     values (the spike of the statistical tagger and the two encoder models), so that every run prints the same table.
+    /// </summary>
+    private static readonly (string Name, string Holdout, string Real)[] References =
+    [
+        ("Statistical tagger spike (reference)", "91.4%", "81.9%"),
+        ("MiniLM", "96.87%", "92.60%"),
+        ("BertBaseCased", "99.05%", "97.39%"),
+    ];
+
     /// <summary>
     ///     Renders the measurements as Markdown.
     /// </summary>
@@ -64,10 +100,82 @@ internal sealed record EvaluationResult(
         text.Append("- Classification latency: ").Append(MillisecondsPerSentence.ToString("N2", inv)).Append(" ms per sentence\n");
         text.Append("- Word table first use: ").Append(WordsLoadMilliseconds.ToString("N0", inv)).Append(" ms, ")
             .Append((WordsMemoryBytes / 1048576.0).ToString("N1", inv)).Append(" MiB\n");
+        if (Basic is not null)
+        {
+            RenderBasic(text, Basic, inv);
+        }
+
         return text.ToString();
     }
 
     private static string Percent(int part, int whole) => whole == 0 ? "n/a" : (100.0 * part / whole).ToString("0.00", CultureInfo.InvariantCulture) + "%";
+
+    private static string Bucket(int index) => index switch
+    {
+        0 => "< 0.4",
+        1 => "0.4 - 0.6",
+        2 => "0.6 - 0.7",
+        3 => "0.7 - 0.8",
+        4 => "0.8 - 0.9",
+        _ => ">= 0.9",
+    };
+
+    private static int BucketOf(double confidence)
+    {
+        var index = 0;
+        while (index < BucketEdges.Length && confidence >= BucketEdges[index])
+        {
+            index++;
+        }
+
+        return index;
+    }
+
+    private void RenderBasic(StringBuilder text, BasicDetails details, IFormatProvider inv)
+    {
+        text.Append("- Table size: ").Append((details.TableBytes / 1024.0).ToString("N0", inv)).Append(" KiB\n");
+        text.Append("- Table cold load: ").Append(details.ColdLoadMilliseconds.ToString("N1", inv)).Append(" ms\n");
+        text.Append("- Classification time: ").Append(details.MicrosecondsPerWord.ToString("N2", inv)).Append(" us per word, ")
+            .Append(details.MicrosecondsPerSentence.ToString("N1", inv)).Append(" us per sentence\n\n");
+
+        text.Append("#### Confidence calibration (rows; best-sense accuracy)\n\n");
+        text.Append("| Set | ").Append(string.Join(" | ", Enumerable.Range(0, BucketEdges.Length + 1).Select(Bucket))).Append(" |\n");
+        text.Append("| --- |").Append(string.Concat(Enumerable.Repeat(" ---: |", BucketEdges.Length + 1))).Append('\n');
+        foreach (var set in Sets.Where(s => s.Outcomes is not null))
+        {
+            var cells = new List<string>();
+            for (var b = 0; b <= BucketEdges.Length; b++)
+            {
+                var rows = set.Outcomes!.Where(o => BucketOf(o.Confidence) == b).ToList();
+                cells.Add(rows.Count.ToString(inv) + " / " + Percent(rows.Count(o => o.Correct), rows.Count));
+            }
+
+            text.Append("| ").Append(set.Name).Append(" | ").Append(string.Join(" | ", cells)).Append(" |\n");
+        }
+
+        text.Append("\n#### Confidence thresholds\n\n");
+        text.Append("| Set | Threshold | Coverage | Precision |\n| --- | ---: | ---: | ---: |\n");
+        foreach (var set in Sets.Where(s => s.Outcomes is not null))
+        {
+            foreach (var threshold in Thresholds)
+            {
+                var kept = set.Outcomes!.Where(o => o.Confidence >= threshold).ToList();
+                text.Append("| ").Append(set.Name).Append(" | ").Append(threshold.ToString("0.0", inv))
+                    .Append(" | ").Append(Percent(kept.Count, set.Rows))
+                    .Append(" | ").Append(Percent(kept.Count(o => o.Correct), kept.Count)).Append(" |\n");
+            }
+        }
+
+        text.Append("\n#### Comparison (best sense)\n\n| Model | Holdout | Real-text |\n| --- | ---: | ---: |\n");
+        var holdout = Sets.FirstOrDefault(s => s.Name == "holdout");
+        var real = Sets.FirstOrDefault(s => s.Name == "real-text");
+        text.Append("| Basic (this run) | ").Append(holdout is null ? "n/a" : Percent(holdout.BestSense, holdout.Rows))
+            .Append(" | ").Append(real is null ? "n/a" : Percent(real.BestSense, real.Rows)).Append(" |\n");
+        foreach (var (name, holdoutValue, realValue) in References)
+        {
+            text.Append("| ").Append(name).Append(" | ").Append(holdoutValue).Append(" | ").Append(realValue).Append(" |\n");
+        }
+    }
 }
 
 /// <summary>
@@ -107,6 +215,17 @@ internal static class Evaluator
     public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken)
     {
         var (wordsMs, wordsBytes) = MeasureWords();
+        double coldLoadMs = 0;
+        long tableBytes = 0;
+        if (!info.IsEncoder)
+        {
+            var load = Stopwatch.StartNew();
+            _ = BasicTables.Default;
+            load.Stop();
+            coldLoadMs = load.Elapsed.TotalMilliseconds;
+            using var resource = typeof(BasicWordSenseModel).Assembly.GetManifestResourceStream(BasicTables.ResourceName);
+            tableBytes = resource?.Length ?? 0;
+        }
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
         var gold = inventory.Rows.ToDictionary(r => (r.Lemma, r.Label));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
@@ -133,7 +252,10 @@ internal static class Evaluator
         sets.Add(await ScoreAsync("real-text", real, classifier, gold, cancellationToken).ConfigureAwait(false));
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
-        return new EvaluationResult(info.Name, sets, File.Exists(weights) ? new FileInfo(weights).Length : 0, latency, wordsMs, wordsBytes);
+        var basic = info.IsEncoder
+            ? null
+            : new BasicDetails(tableBytes, coldLoadMs, holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds * 1000 / Math.Max(1, holdout.Sum(r => r.Words.Count)), latency * 1000);
+        return new EvaluationResult(info.Name, sets, File.Exists(weights) ? new FileInfo(weights).Length : 0, latency, wordsMs, wordsBytes, basic);
     }
 
     private static async Task<SetResult> ScoreAsync(
@@ -144,6 +266,7 @@ internal static class Evaluator
         CancellationToken cancellationToken)
     {
         int best = 0, pos = 0, heteronyms = 0, meaning = 0, answered = 0, answeredCorrect = 0;
+        var outcomes = new List<(double Confidence, bool Correct)>(rows.Count);
         foreach (var row in rows)
         {
             var expected = gold[(row.Lemma, row.Sense)];
@@ -152,6 +275,7 @@ internal static class Evaluator
             var details = actual.Details;
             var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(details.Meaning, expected.Meaning, StringComparison.Ordinal);
             best += rightSense ? 1 : 0;
+            outcomes.Add((actual.Confidence, rightSense));
             pos += details is not null && details.PartOfSpeech == expected.Pos ? 1 : 0;
             if (expected.Meaning is not null)
             {
@@ -166,6 +290,6 @@ internal static class Evaluator
             }
         }
 
-        return new SetResult(name, rows.Count, best, pos, heteronyms, meaning, answered, answeredCorrect);
+        return new SetResult(name, rows.Count, best, pos, heteronyms, meaning, answered, answeredCorrect, outcomes);
     }
 }

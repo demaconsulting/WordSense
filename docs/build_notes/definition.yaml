@@ -19,6 +19,7 @@ input-files:
   - docs/build_notes/package-split.md
   - docs/build_notes/model-comparison.md
   - docs/build_notes/basic-evaluation.md
+  - docs/build_notes/tuning.md
   # new-lemma-results.md also documents corpus/audit/new-lemma-speech-map.tsv (sense-to-pronunciation map of the
   # Phase 4 lemmas: lemma, sense, pos, group, arpabet, anchors, holdout, source_mix, holdout_accuracy, status).
   # The two generated files are produced by the build workflow (BuildMark and VersionMark reports in

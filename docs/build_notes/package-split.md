@@ -8,7 +8,7 @@ Package dependencies:
 
 - `DemaConsulting.WordSense` (core): `IWordSenseModel`, `IWordSenseClassifier`, `MirrorOptions`, `WordSense`,
   `WordDetails`, `PartOfSpeech` and `WordLexicon.Words`. Depends on nothing.
-- `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with closed-class word lists and neighbor rules; no files.
+- `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with a small embedded statistical table (part-of-speech tagger and context cues); no files.
   Depends on the core.
 - `DemaConsulting.WordSense.Onnx`: the abstract `OnnxWordSenseModel`, the encoder, the tokenizer, the downloader and
   the weights reader. Depends on the core and ONNX Runtime.

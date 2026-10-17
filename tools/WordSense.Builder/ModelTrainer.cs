@@ -26,7 +26,7 @@ internal static class ModelTrainer
     {
         if (!info.IsEncoder)
         {
-            throw new ArgumentException($"The model '{info.Name}' is rule based and has no weights to train.");
+            throw new ArgumentException($"The model '{info.Name}' is statistical and has no encoder weights to train; use the 'train-basic' command.");
         }
 
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));

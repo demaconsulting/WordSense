@@ -21,7 +21,17 @@ without network access. The SHA-256 values below are of the real content, not of
 
 ## Basic
 
-`DemaConsulting.WordSense.Basic` has no model files: its rules and word lists are compiled into the package.
+`DemaConsulting.WordSense.Basic` has no model files: its statistical table (`basic.bin`, an embedded resource of about
+a megabyte or less) is trained by the builder command `train-basic` and compiled into the package. The table is derived from:
+
+- the tag counts in `corpus/ud`, which `ud-counts` produces from the Universal Dependencies English-EWT treebank
+  (training and development parts only), pinned to the commit `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`:
+  `en_ewt-ud-train.conllu` with SHA-256 `D68E06122A702464C613076523D56740F047E5BBE89DD90EC32737E04D952143` and
+  `en_ewt-ud-dev.conllu` with SHA-256 `39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`. The
+  treebank is licensed under CC BY-SA 4.0; see `corpus/ud/PROVENANCE.md`.
+- the word table of the core package, and the training anchors and sense inventory of `corpus/`.
+
+The SHA-256 of the committed `basic.bin` is printed by `train-basic` and recorded in `basic-evaluation.md`.
 
 ## MiniLM (all-MiniLM-L6-v2-int8)
 

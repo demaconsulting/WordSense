@@ -1,21 +1,23 @@
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     A word-sense model that needs no neural network: it picks the part of speech of an ambiguous word from the
-///     words around it with hand-written rules.
+///     A word-sense model that needs no neural network: a statistical part-of-speech tagger and a context cue model
+///     choose among the senses of an ambiguous word.
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     The model looks every word up in <see cref="WordLexicon"/>. A word with one entry is answered with full
-///     confidence. For a word with several entries, closed-class word lists (determiners, modals, pronouns,
-///     prepositions) and the possible parts of speech of the neighbors select a part of speech with a fixed confidence
-///     per rule; when no rule applies, the word is not classified. It has no model files, no trained weights and no ONNX
-///     Runtime dependency: <see cref="EnsureModelAsync"/> returns immediately and nothing is ever downloaded. It is
-///     small and fast, and less accurate than the encoder models of <c>DemaConsulting.WordSense.MiniLM</c> and
-///     <c>DemaConsulting.WordSense.BertBaseCased</c>; its accuracy is reported in the repository's build notes.
+///     confidence. For a word with several entries, a hidden Markov model over the whole sentence estimates the part of
+///     speech of the word, a naive Bayes model over the neighboring words separates senses that share a part of speech,
+///     and the two are combined into one probability per sense; the most probable sense is returned with that
+///     probability as the confidence. Its small statistical tables are embedded in the assembly: there are no model
+///     files, no ONNX Runtime dependency, <see cref="EnsureModelAsync"/> returns immediately and nothing is ever
+///     downloaded. It is small and fast, and less accurate than the encoder models of
+///     <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>; its accuracy is
+///     reported in the repository's build notes.
 ///     </para>
 ///     <para>
-///     The model holds no resources, so it needs no disposal.
+///     The model holds no disposable resources, so it needs no disposal.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -56,7 +58,7 @@ public sealed class BasicWordSenseModel : IWordSenseModel
         cancellationToken.IsCancellationRequested ? Task.FromCanceled(cancellationToken) : Task.CompletedTask;
 
     /// <summary>
-    ///     Creates a classifier that applies the rules.
+    ///     Creates a classifier that uses the embedded statistics.
     /// </summary>
     /// <returns>A new classifier, safe for concurrent use; it can be created at any time, even without calling <see cref="EnsureModelAsync"/>.</returns>
     public IWordSenseClassifier Create() => new BasicClassifier();

@@ -412,7 +412,7 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The rule-based model is evaluated on the holdout without any model files.
+    ///     The statistical model is evaluated on the holdout without any model files.
     /// </summary>
     /// <returns>A task that completes when the check is done.</returns>
     [Fact]

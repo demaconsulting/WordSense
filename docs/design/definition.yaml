@@ -13,7 +13,10 @@ input-files:
   - docs/design/word-sense/basic.md
   - docs/design/word-sense/basic/basic-word-sense-model.md
   - docs/design/word-sense/basic/basic-classifier.md
-  - docs/design/word-sense/basic/rules.md
+  - docs/design/word-sense/basic/basic-tables.md
+  - docs/design/word-sense/basic/pos-tagger.md
+  - docs/design/word-sense/basic/cue-model.md
+  - docs/design/word-sense/basic/sense-fusion.md
   - docs/design/word-sense/onnx.md
   - docs/design/word-sense/onnx/onnx-word-sense-model.md
   - docs/design/word-sense/onnx/onnx-classifier.md

@@ -4,35 +4,53 @@
 
 #### Purpose
 
-`BasicClassifier` implements `IWordSenseClassifier` with the lexicon and the ordered rules: it answers unambiguous
-words directly and picks the part of speech of ambiguous words from their neighbors.
+`BasicClassifier` implements `IWordSenseClassifier` with the lexicon and the statistical units: it answers unambiguous
+words directly and, for ambiguous words, drives the tagger, the cue model and the fusion to pick the most probable
+sense with its probability.
 
 #### Data Model
 
-An internal sealed class without state. Per word it derives a normalized key (lower case, U+2019 mapped to `'`,
-empty for a token without a letter) and, for ambiguous words, the previous and the next normalized word (null when
-empty or absent) and the set of candidate parts of speech.
+An internal sealed class holding two read-only references: the statistics (`BasicTables`, or null for the embedded
+table loaded on first use) and the lexicon (`WordLexicon.Words` by default). The second constructor is internal so the
+tests can use a toy table and lexicon. Per call it derives, once per word, the lower-case token (typographic
+apostrophe U+2019 mapped to `'`) and, per segment, the tagger tokens. A tagger token is fixed to the punctuation tag
+for a token without a letter (the other tag when the token contains a digit); otherwise it carries the lower-case key,
+the bit mask of the parts of speech the lexicon lists for the word and whether the word starts with a capital letter.
+The helpers `Normalize` (the lexicon key, empty for a token without a letter), `Lower`, `MakeToken` and `SegmentOf` are
+internal; the builder uses them so training and inference segment text identically.
 
 #### Key Methods
 
 `ClassifyAsync(words, cancellationToken)` validates the arguments, checks cancellation and then works synchronously
-and returns a completed task. For each word:
+and returns a completed task. An empty list gives an empty array. Otherwise it rents the token and posterior buffers
+from `ArrayPool` (returned in a `finally`) and walks the list segment by segment; a segment ends after a `.`, `!` or `?`
+token and the cancellation token is checked per segment. For each segment it builds the tagger tokens, calls
+`PosTagger.Posteriors` and then, per word:
 
-1. no lexicon entry: `(word, null, 0)`;
+1. no lexicon entry or no letter: `(word, null, 0)`;
 2. one entry: `(word, entry, 1.0)`;
-3. several entries: `Rules.Evaluate` with the neighbors and the candidate parts of speech. If a rule fired and
-   exactly one entry has the selected part of speech, the result is that entry with the rule's confidence; otherwise
-   `(word, null, 0)`.
+3. several entries: `CueModel.Extract` gets the features of the word in its segment; the cue table of the lemma of
+   the first candidate (if the table has one) gives the cue scores, otherwise all cue scores are zero;
+   `SenseFusion.Fuse` gives the probabilities, `SenseFusion.Winner` the index of the most probable sense (the lowest
+   index on a tie), and the result is that entry with its probability.
+
+`SegmentOf(words, index)` returns the start and length of the segment around a position.
 
 #### Error Handling
 
 A null list throws `ArgumentNullException`; a null element throws `ArgumentException`; a canceled token throws
-`OperationCanceledException`. Words unknown to the lexicon are not errors.
+`OperationCanceledException`. Words unknown to the lexicon are not errors. A missing or corrupt embedded table
+surfaces as the `InvalidDataException` of `BasicTables.Default` on first use.
+
+#### Determinism and Thread Safety
+
+The classifier keeps no mutable state: the results depend only on the input words, and every scratch buffer is local
+to the call. One instance may be used from many threads at once, and the same words always give the same results.
 
 #### Dependencies
 
-`WordLexicon`, `Rules` and the core contracts.
+`WordLexicon`, `BasicTables`, `PosTagger`, `CueModel`, `SenseFusion` and the core contracts.
 
 #### Callers
 
-`BasicWordSenseModel.Create` and the builder (`BasicPrecision`).
+`BasicWordSenseModel.Create` and the builder (`BasicTrainer`, `BasicTuner` and the evaluation of `basic`).

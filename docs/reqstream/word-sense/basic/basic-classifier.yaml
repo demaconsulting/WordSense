@@ -28,27 +28,37 @@ sections:
 
               - id: WordSense-Basic-BasicClassifier-Resolve
                 title: >-
-                  BasicClassifier shall answer a word with several senses with the single sense of the part of speech
-                  chosen by the first rule that fires, with the fixed confidence of that rule.
+                  BasicClassifier shall answer every word with several senses with the sense that the fused part-of-speech
+                  and context-cue evidence makes most probable, with the probability of that sense as confidence.
                 tags: [unit]
                 justification: |
-                  This is the rule-based disambiguation that the package provides.
+                  This is the statistical disambiguation that the package provides; the confidence lets callers apply
+                  their own policy instead of the classifier abstaining.
                 tests:
-                  - BasicClassifier_ClassifyAsync_AmbiguousWordWithRule_ReturnsRuleConfidence
-                  - BasicClassifier_ClassifyAsync_RecordAfterTo_IsVerb
-                  - BasicClassifier_ClassifyAsync_RecordAfterThe_IsNoun
+                  - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
+                  - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+                  - BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues
 
-              - id: WordSense-Basic-BasicClassifier-Abstain
+              - id: WordSense-Basic-BasicClassifier-Segments
                 title: >-
-                  BasicClassifier shall answer with no details and confidence 0 when no rule fires, or when several
-                  senses share the part of speech the rule selects.
+                  BasicClassifier shall treat the words after a period, exclamation mark or question mark as a new
+                  segment, so that words in different segments do not influence each other.
                 tags: [unit]
                 justification: |
-                  Without a rule, or without a way to choose among meanings of one part of speech, the classifier has
-                  no evidence for an answer.
+                  The words of one sentence do not tell anything about the part of speech of a word in the next.
                 tests:
-                  - BasicClassifier_ClassifyAsync_NoRuleFires_Abstains
-                  - BasicClassifier_ClassifyAsync_SamePartOfSpeechAmbiguity_Abstains
+                  - BasicClassifier_ClassifyAsync_Segments_AreIndependent
+                  - BasicClassifier_SegmentOf_FindsBounds
+
+              - id: WordSense-Basic-BasicClassifier-Deterministic
+                title: >-
+                  BasicClassifier shall give identical results for identical input on repeated calls and when called
+                  from several threads at once.
+                tags: [unit]
+                justification: |
+                  A classifier without mutable shared state can be shared by all callers of an application.
+                tests:
+                  - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
 
               - id: WordSense-Basic-BasicClassifier-Normalization
                 title: >-

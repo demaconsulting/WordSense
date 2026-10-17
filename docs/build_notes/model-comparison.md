@@ -2,7 +2,7 @@
 
 This note compares the two ONNX encoder models of WordSense, `DemaConsulting.WordSense.MiniLM` and
 `DemaConsulting.WordSense.BertBaseCased`, on the same data. The figures are the output of the builder command
-`evaluate`. The rule model is compared in `basic-evaluation.md`.
+`evaluate`. The statistical Basic model is compared in `basic-evaluation.md`; to re-measure it see `tuning.md`.
 
 ## Method
 

@@ -17,13 +17,15 @@ namespace WordSense.Builder;
 ///     <item><description><c>words [--corpus DIR] [--output FILE]</c> writes the word table of the core package.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
 ///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE]</c> measures a shipped model (minilm, bert-base-cased, basic).</description></item>
-///     <item><description><c>basic-precision [--corpus DIR] [--output FILE]</c> measures the precision of each rule of the basic model on the training anchors.</description></item>
+///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
+///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
+///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, weights <modelId>, evaluate <modelId>, basic-precision, appendix.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, weights <modelId>, evaluate <modelId>, ud-counts, train-basic, tune-basic, appendix.";
 
     /// <summary>
     ///     Runs the builder.
@@ -73,15 +75,20 @@ internal static class Program
                 case "weights":
                     await ModelTrainer.TrainAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
                     return 0;
-                case "basic-precision":
-                    var (rules, anchorCount) = BasicPrecision.Measure(corpus);
-                    var precision = BasicPrecision.Render(rules, anchorCount);
-                    output.Write(precision);
-                    if (options.TryGetValue("output", out var precisionReport))
-                    {
-                        File.WriteAllText(precisionReport, precision, new System.Text.UTF8Encoding(false));
-                    }
-
+                case "ud-counts":
+                    var udDirectory = options.TryGetValue("ud", out var ud) ? Path.GetFullPath(ud) : BasicModelBuilder.DefaultUdCache(repository);
+                    var countsOutput = options.TryGetValue("output", out var co) ? Path.GetFullPath(co) : Path.Combine(corpus, "ud");
+                    output.WriteLine(await BasicModelBuilder.WriteUdCountsAsync(udDirectory, countsOutput, cancellationToken).ConfigureAwait(false));
+                    return 0;
+                case "train-basic":
+                    var cache = options.TryGetValue("ud", out var ud2) ? Path.GetFullPath(ud2) : BasicModelBuilder.DefaultUdCache(repository);
+                    var refresh = options.TryGetValue("refresh-ud", out var r) && string.Equals(r, "true", StringComparison.OrdinalIgnoreCase);
+                    var tablePath = options.TryGetValue("output", out var to) ? to : BasicModelBuilder.DefaultOutput;
+                    await BasicModelBuilder.TrainAsync(repository, corpus, cache, refresh, tablePath, output, cancellationToken).ConfigureAwait(false);
+                    return 0;
+                case "tune-basic":
+                    var tuneCache = options.TryGetValue("ud", out var ud3) ? Path.GetFullPath(ud3) : BasicModelBuilder.DefaultUdCache(repository);
+                    output.Write(await BasicTuner.RunAsync(corpus, tuneCache, output, cancellationToken).ConfigureAwait(false));
                     return 0;
                 case "evaluate":
                     var result = await Evaluator.RunAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
@@ -103,14 +110,14 @@ internal static class Program
                     return 1;
             }
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidDataException or IOException or UnauthorizedAccessException or InvalidOperationException)
+        catch (Exception ex) when (ex is ArgumentException or InvalidDataException or IOException or UnauthorizedAccessException or InvalidOperationException or HttpRequestException)
         {
             error.WriteLine(ex.Message);
             return 1;
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Parses <c>--name value</c> pairs.

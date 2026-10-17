@@ -1,64 +1,80 @@
 # Basic Model Evaluation
 
-This note records how the rule model `DemaConsulting.WordSense.Basic` is measured and how the confidence of each of its
-rules is calibrated. The figures are the output of the builder
-commands `basic-precision` and `evaluate basic`.
+This note records how the statistical model `DemaConsulting.WordSense.Basic` is trained and measured. The figures are
+the output of the builder commands `train-basic` and `evaluate basic`; how to retrain and re-measure it is in
+`tuning.md`.
 
 ## Method
 
-- `basic-precision` runs the rules on every training anchor whose target word has at least two senses in the word
-  table. For each rule it counts how often the rule fired first (**fired**) and how often the part of speech it
-  selected was the gold part of speech of the anchor (**correct**); the precision is correct divided by fired. It
-  prints the rule, the counts, the precision and the confidence the rule has now. The holdout is never read.
-- The confidence of a rule is a fixed value in `Rules.cs`. The initial values were estimates; the calibrated values are
-  the measured precision on the training anchors, so a result with a confidence of 0.95 is right about 95 percent of
-  the time on the anchors.
-- `evaluate basic` measures the model like the encoder models (see `model-comparison.md`): best sense, part of
-  speech, pronunciation, answered and answered accuracy on the holdout and on the real-text sentences, plus latency
-  and the first use of the word table. A word without a decision is counted as not answered.
+The model is small enough to ship inside the package (the table `basic.bin`, see the design of `BasicTables`) and has
+two statistical parts that are fused for every ambiguous word:
 
-```text
-dotnet run --project tools/WordSense.Builder -c Release -- basic-precision --output basic-precision.md
-dotnet run --project tools/WordSense.Builder -c Release -- evaluate basic --output basic-evaluation.md
-```
+1. **Part-of-speech tagger.** A second-order hidden Markov model over thirteen tags (noun, pronoun, verb, adjective,
+   adverb, preposition, conjunction, interjection, determiner, auxiliary, infinitive "to", punctuation, other). The
+   transition counts and the counts of the closed-class words and of the word suffixes come from the Universal
+   Dependencies English-EWT treebank (training part). The dictionary of the core package limits the tags an open-class
+   word may take. The forward-backward algorithm gives a posterior over the tags for every word of a sentence.
+2. **Context cues.** For each lemma with at least two senses, a naive Bayes model over the words in a window of five on
+   each side and the words directly before and after the target. It is trained on the training anchors only, and it
+   separates senses that share a part of speech (for example `bass`, `tear` and `row`).
 
-## Rules
+The fusion adds the weighted logarithm of the tag posterior and the scaled cue score of each candidate sense and turns
+the scores into probabilities with a softmax. The sense with the highest probability is the answer and that
+probability is the confidence; the model answers every ambiguous word and never abstains.
 
-The rules run in the order of the table; the first rule that fires wins. A rule fires only when the part of speech it
-selects is one the target word can have. When no rule fires, or the selected part of speech has more than one sense
-for the word, the model abstains.
+## Training and hyperparameters
 
-| Order | Rule | Fires when | Initial confidence | Fired | Correct | Precision | Calibrated confidence |
-| ----: | ---- | ---------- | -----------------: | ----: | ------: | --------: | --------------------: |
-| 1 | `after-modal` | a modal or auxiliary verb is directly before the word | 0.90 | 1,728 | 1,721 | 0.996 | 0.99 |
-| 2 | `after-to` | the word `to` is directly before the word | 0.70 | 1,597 | 1,561 | 0.977 | 0.98 |
-| 3 | `after-subject-pronoun` | a subject pronoun is directly before the word | 0.80 | 1,556 | 1,542 | 0.991 | 0.99 |
-| 4 | `after-determiner` | a determiner or possessive is directly before it | 0.85 | 5,913 | 5,626 | 0.951 | 0.95 |
-| 5 | `after-degree-adverb` | a degree adverb is directly before the word | 0.70 | 99 | 88 | 0.889 | 0.89 |
-| 6 | `after-preposition` | a preposition is directly before the word | 0.70 | 833 | 682 | 0.819 | 0.82 |
-| 7 | `before-auxiliary` | an auxiliary verb is directly after the word | 0.70 | 525 | 511 | 0.973 | 0.97 |
-| 8 | `before-noun` | a word that can only be a noun is directly after the word | 0.60 | 133 | 102 | 0.767 | 0.77 |
+`train-basic` retrains everything from the committed counts in `corpus/ud`, the word table of the core package, and
+the anchors and sense inventory in `corpus`. Every tunable value is in one place, `BasicHyperparameters.cs` of the
+builder; the values the runtime needs travel in the header of the table. The values of the shipped table are the
+defaults of that file.
 
-Anchors evaluated by `basic-precision`: 24,461. The calibrated confidence is the precision rounded to two decimals and
-capped at 0.99, because a rule is never certain.
+| Parameter | Value | Meaning |
+| --------- | ----: | ------- |
+| gamma | 0.75 | Exponent of the emission ratio of a tabled word |
+| beta | 5 | Pseudo count of the tag prior in the emission of a tabled word |
+| lambda 1, 2, 3 | 0.1, 0.3, 0.6 | Unigram, bigram and trigram weights of the transition |
+| HMM weight | 1.5 | Weight of the log tag posterior in the fusion |
+| temperature | 2 | Divisor of the cue scores in the fusion |
+| closed-class minimum count / share / add share | 5 / 0.9 / 0.2 | When a treebank word counts as closed-class |
+| tabled ambiguous words | 2,000 | The most frequent dictionary-ambiguous words whose counts are tabled |
+| suffix minimum total | 5 | Fewest treebank words a suffix needs to be tabled |
+| cue alpha | 0.1 | Additive smoothing of the cue likelihoods |
+| cue minimum feature count | 2 | Fewest anchors a context feature needs to enter the vocabulary of a lemma |
+
+The hyperparameters were chosen on data that is not used for the reported results: the treebank development part, and
+a fixed-seed sample of 5,000 training anchors split into a training and a development subset (one sentence in five,
+by a hash of its text, is development). The holdout and the real-text sentences are never used for tuning.
 
 ## Results
 
-| Set | Rows | Best sense | Part of speech | Pronunciation | Answered | Answered accuracy |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| holdout | 12,789 | 47.24% | 47.25% | 47.65% | 49.29% | 95.84% |
-| real text | 689 | 49.64% | 49.64% | 49.63% | 51.96% | 95.53% |
+`evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
+reference rows are fixed values of earlier measurements; the first row is the current table.
 
-| Measure | Basic |
-| ------- | ----: |
-| Classification latency (ms per sentence) | 0.01 |
-| Word table first use (ms) | 152 |
-| Word table first use (MiB) | 42.8 |
+| Model | Best sense, holdout | Best sense, real text |
+| ----- | ------------------: | --------------------: |
+| Basic (this build) | see the output of `evaluate basic` | see the output of `evaluate basic` |
+| Basic spike (research prototype) | 91.4% | 81.9% |
+| MiniLM | 96.87% | 92.60% |
+| BertBaseCased | 99.05% | 97.39% |
 
-Basic answers about half of the ambiguous words, and about 96 percent of those answers are right, so its confidence
-is a trustworthy filter: use the answered subset, and treat abstentions as unknown. The unanswered half is where the
-encoder models earn their cost. The best-sense figure counts an abstention as wrong, which is why it is far below the
-answered accuracy.
+The first row is filled in from the build in the build notes generated with the release. The command also prints, for
+the basic model, the calibration of the confidence (rows and accuracy per confidence bucket), the share of answers and
+the accuracy at the confidence thresholds 0.6, 0.8 and 0.9, the size of the table, the first-use time of the table and
+the classification time per word and per sentence.
 
-Basic chooses a part of speech only, so its pronunciation figure is limited to heteronyms whose meanings differ in
-the part of speech.
+## Reading the confidence
+
+The confidence is the probability that the fusion assigns to its answer. It is a ranking signal and is roughly
+calibrated on the anchors, not a guarantee: the calibration buckets in the output show how often an answer of a given
+confidence is right on the holdout. A caller that wants fewer wrong answers can filter at a threshold of its choice,
+and treat the rest as unknown; the threshold rows show the cost in answered words.
+
+## Limits
+
+- The anchors and the holdout were written together, so their accuracy is higher than that on real text; the real-text
+  column is the honest number.
+- Basic chooses among the senses of the lexicon. A word that is not in the lexicon has no answer, and a tokenizer that
+  splits a clitic such as "don't" differently from the lexicon loses the word.
+- A heteronym with two meanings of the same part of speech is decided only for lemmas that have a cue table, that is,
+  lemmas with enough anchors.

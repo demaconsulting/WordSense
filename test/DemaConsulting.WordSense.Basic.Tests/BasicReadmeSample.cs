@@ -29,7 +29,7 @@ internal sealed class BasicReadmeSample
     public async Task RunAsync()
     {
         // <sample:basic>
-        // The basic model uses the embedded dictionary and a few rules, so there is nothing to download
+        // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
         var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 

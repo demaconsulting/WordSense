@@ -31,10 +31,14 @@ software items, specifically:
   - **WordLexicon (Unit)** — the embedded lexicon of known words and their senses, including the internal reader of
     the lexicon blob
   - **WordSenseContracts (Unit)** — the model and classifier interfaces, the mirror options and the answer values
-- **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a rule-based model that needs no files
-  - **BasicWordSenseModel (Unit)** — the public rule-based model
-  - **BasicClassifier (Unit)** — lexicon lookup followed by the rules
-  - **Rules (Unit)** — the ordered hand-written rules and their confidences
+- **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a statistical model (part-of-speech tagger and
+  context cues) that needs no model files
+  - **BasicWordSenseModel (Unit)** — the public statistical model
+  - **BasicClassifier (Unit)** — lexicon lookup, sentence segmentation and the driving of the statistical units
+  - **BasicTables (Unit)** — the embedded statistics table and its reader
+  - **PosTagger (Unit)** — the hidden Markov model part-of-speech tagger
+  - **CueModel (Unit)** — the context features and the naive Bayes cue scores
+  - **SenseFusion (Unit)** — the combination into sense probabilities and confidence
 - **Onnx (Subsystem)** — the package `DemaConsulting.WordSense.Onnx`: the machinery shared by the encoder models
   - **OnnxWordSenseModel (Unit)** — the public abstract encoder model with file management
   - **OnnxClassifier (Unit)** — scoring of the candidate senses of a word from the encoder output
@@ -99,7 +103,7 @@ form layers:
 - The **core** package defines the vocabulary: the lexicon of known words and the contracts (`IWordSenseModel`,
   `IWordSenseClassifier`, `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
   weights and no ONNX code.
-- The **Basic** package implements the contracts with hand-written rules. It references the core package only.
+- The **Basic** package implements the contracts with a statistical tagger and cue model. It references the core package only.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights and scoring. It references the core package and ONNX Runtime.
 - The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model and embeds the
@@ -130,8 +134,13 @@ src/DemaConsulting.WordSense/                      — core subsystem
 src/DemaConsulting.WordSense.Basic/                — basic subsystem
 ├── BasicWordSenseModel.cs                          — basic-word-sense-model unit
 ├── BasicClassifier.cs                              — basic-classifier unit
-├── Rules.cs                                        — rules unit
-└── NamespaceDoc.cs
+├── BasicTables.cs                                  — basic-tables unit (tables and the feature hash)
+├── PosTag.cs                                       — tag constants of the basic-tables and pos-tagger units
+├── PosTagger.cs                                    — pos-tagger unit
+├── CueModel.cs                                     — cue-model unit
+├── SenseFusion.cs                                  — sense-fusion unit
+├── NamespaceDoc.cs
+└── Resources/basic.bin                             — embedded statistics table (resource of the basic-tables unit)
 
 src/DemaConsulting.WordSense.Onnx/                 — onnx subsystem
 ├── OnnxWordSenseModel.cs                           — onnx-word-sense-model unit

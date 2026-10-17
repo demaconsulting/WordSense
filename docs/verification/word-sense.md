@@ -13,7 +13,8 @@ test project verifies the subsystem of that package through its public API and i
 
 - `test/DemaConsulting.WordSense.Tests` verifies the core package with the embedded word lexicon only. It needs no
   model, no model file and no network access.
-- `test/DemaConsulting.WordSense.Basic.Tests` verifies the rule-based model against the embedded word lexicon.
+- `test/DemaConsulting.WordSense.Basic.Tests` verifies the statistical model against the embedded word lexicon, toy
+  statistical tables and the embedded table.
 - `test/DemaConsulting.WordSense.Onnx.Tests` verifies the shared encoder implementation with small substitutes:
   hand-built vocabularies, fake weights and a loopback `HttpListener` for downloads. Its model-level tests
   (`OnnxWordSenseModelTests`, `OnnxClassifierTests`, `OnnxEncoderTests`) use test doubles or the committed int8 model.
@@ -92,6 +93,7 @@ project).
 
 ### Builder Commands
 
-The builder verification document describes the commands `words`, `weights`, `evaluate`, `basic-precision` and
+The builder verification document describes the commands `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`,
+`tune-basic` and
 `appendix`. Together they regenerate the data that is committed in the packages, and the committed appendix of the user
 guide is compared with a regenerated one.

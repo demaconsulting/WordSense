@@ -62,8 +62,8 @@ public interface IWordSenseClassifier
 ///     <para>
 ///     Confidence is a number from 0 to 1: 0 means unknown or undecided, 1 means the word has only one sense in the
 ///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
-///     Basic model gives each rule a fixed value (0.77 to 0.99; see the table in the
-///     <c>DemaConsulting.WordSense.Basic</c> namespace documentation). The encoder models (MiniLM, BertBaseCased) map
+///     Basic model gives a word with several senses the probability of the chosen sense, so it is never undecided
+///     (see the <c>DemaConsulting.WordSense.Basic</c> namespace documentation). The encoder models (MiniLM, BertBaseCased) map
 ///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
 ///     trained for the word's lemma: 0.5 means the margin equals the abstain margin, larger values mean a clearer
 ///     decision, and the result is clamped to 0 to 1. It is a ranking score, not a calibrated probability, so compare

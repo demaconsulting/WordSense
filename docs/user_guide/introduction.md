@@ -6,7 +6,7 @@ This document is the user guide for WordSense, a .NET library that tells, for En
 the part of speech and the pronunciation. It tells, for example, whether "record" is a noun or a verb, and
 whether "bow" is said like "bough" (a bend) or like "beau" (a weapon). Every word is looked up in an embedded
 word table; a word with several meanings is decided from its sentence by a model that you choose. The library comes as
-five NuGet packages: the core `DemaConsulting.WordSense` (API and word table, no model), the rule model
+five NuGet packages: the core `DemaConsulting.WordSense` (API and word table, no model), the statistical model
 `DemaConsulting.WordSense.Basic` (no files, no network), and two encoder models, `DemaConsulting.WordSense.MiniLM`
 and `DemaConsulting.WordSense.BertBaseCased`, which share the machinery of `DemaConsulting.WordSense.Onnx`.
 
@@ -61,13 +61,13 @@ All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a depe
 | Package | Decides a multi-sense word by | Needs files or network | Native dependency | Casing |
 | ------- | ----------------------------- | ---------------------- | ----------------- | ------ |
 | `DemaConsulting.WordSense` | nothing (word table only) | no | no | lower-cased |
-| `DemaConsulting.WordSense.Basic` | hand-written rules on the neighbor words | no | no | lower-cased |
+| `DemaConsulting.WordSense.Basic` | small statistical tagger and context cues | no | no | lower-cased |
 | `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 23 MB, once | ONNX Runtime | uncased |
 | `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder, weights | 109 MB, once | ONNX Runtime | cased |
 
 - Use **core** alone to look up the possible senses of a word (`WordLexicon.Words`) and to answer words that have one
   sense, in your own code.
-- Use **Basic** when you want a fast, dependency-free answer and can accept abstentions and less accuracy.
+- Use **Basic** when you want a fast, dependency-free answer and can accept less accuracy than the encoder models.
 - Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder.
 - Use **BertBaseCased** when the larger, cased encoder gives better results on your texts. The accuracy of each model
   is measured on the same held-out and real-text sentences; the figures are in the build notes
@@ -128,7 +128,8 @@ Every word follows the same path:
    not there is **unknown**: `Details` is `null` and `Confidence` is 0.
 2. A word with one sense is answered with that sense and `Confidence` 1, by every model, without running anything.
 3. A word with several senses is decided from its context by the model: the encoder models score the senses of the
-   word from the sentence and the Basic model applies its rules. A model that cannot decide gives `null` and 0.
+   word from the sentence and the Basic model tags the sentence and weighs the context words. Every model answers a
+   word with several senses; the confidence says how sure it is.
 
 An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
 costs no model call. The capitalization of a word and a trailing possessive are no longer used to skip a word:
@@ -172,12 +173,12 @@ if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
 ## Basic
 
 `BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` completes at once, there is
-nothing to dispose, and it ignores a mirror. It decides a multi-sense word from the parts of speech that its neighbor
-words can have, with closed-class word lists (determiners, modals, subject pronouns, prepositions, degree adverbs) and
-eight ordered rules, each with a fixed confidence. It abstains (`null`, confidence 0) when no rule fires or when the
-rule selects a part of speech that has more than one sense. It chooses a part of speech only: a heteronym that has
-two meanings of the same part of speech is not decided. The measured precision of the rules is in the build notes
-(`basic-evaluation.md`).
+nothing to dispose, and it ignores a mirror. It decides a multi-sense word with a small statistical table that is
+embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the Universal Dependencies English
+web treebank, limited to the parts of speech that the word table allows) and, for lemmas that have enough training
+sentences, context cues that separate senses of the same part of speech (for example `bass`). It always answers a
+multi-sense word; the confidence is the probability that the model gives to its answer, between 1 divided by the number
+of senses and 1. The measured quality is in the build notes (`basic-evaluation.md`).
 
 ```csharp
 var model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
@@ -225,8 +226,8 @@ foreach (var sense in senses.Where(s => s.Details is not null))
 }
 ```
 
-The Basic model uses a fixed confidence per rule. The confidence scales of the models are different, so compare a
-confidence only with the same model.
+The confidence of the Basic model is a probability among the senses of the word, so it is not on the scale of the
+encoder models; compare a confidence only with the same model.
 
 # Model Files
 
@@ -350,7 +351,9 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | `words` | Builds the word table (`words.bin`) of the core package, including the materialized inflections |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |
 | `evaluate <modelId>` | Measures a model (`minilm`, `bert-base-cased` or `basic`) on holdout and real text |
-| `basic-precision` | Measures the precision of each Basic rule on the training anchors |
+| `ud-counts` | Counts the tag statistics of the pinned UD English-EWT treebank into `corpus/ud` |
+| `train-basic` | Retrains the whole Basic model and writes its table (`Resources/basic.bin`) |
+| `tune-basic` | Compares hyperparameter variants of Basic on UD development and anchor subsets; writes nothing |
 | `appendix` | Regenerates the generated senses appendix of this guide |
 
 The options `--corpus`, `--repository`, `--output` and (for `weights` and `evaluate`) `--model` default to the
@@ -384,10 +387,10 @@ repository layout.
    dotnet run --project tools/WordSense.Builder -c Release -- words
    dotnet run --project tools/WordSense.Builder -c Release -- weights minilm
    dotnet run --project tools/WordSense.Builder -c Release -- weights bert-base-cased
+   dotnet run --project tools/WordSense.Builder -c Release -- train-basic
    dotnet run --project tools/WordSense.Builder -c Release -- evaluate minilm
    dotnet run --project tools/WordSense.Builder -c Release -- evaluate bert-base-cased
    dotnet run --project tools/WordSense.Builder -c Release -- evaluate basic
-   dotnet run --project tools/WordSense.Builder -c Release -- basic-precision
    dotnet run --project tools/WordSense.Builder -c Release -- appendix
    ```
 

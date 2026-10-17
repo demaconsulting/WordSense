@@ -38,27 +38,74 @@ sections:
           - id: WordSense-WordSenseBuilder-Evaluate
             title: >-
               The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
-              real-text sentences of the corpus, and report accuracy and coverage.
+              real-text sentences of the corpus, and report accuracy and coverage; for the basic model it shall also
+              report calibration, confidence thresholds, table size, latency and a fixed comparison table printed on
+              every run.
             tags: [unit]
             justification: |
               Each model's accuracy claim must be checkable against a repeatable measurement on sentences that were
               never used for training.
             tests:
+              - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
+              - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
               - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
               - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
 
-          - id: WordSense-WordSenseBuilder-BasicPrecision
+          - id: WordSense-WordSenseBuilder-UdCounts
             title: >-
-              The builder shall measure the precision of each rule of the basic model on the training anchors only,
-              and report it next to the confidence the rule currently has.
+              The builder shall count part-of-speech tag n-grams and word-tag pairs from the pinned Universal
+              Dependencies English-EWT training and development files, after verifying their checksums, and write the
+              counts deterministically to the corpus.
             tags: [unit]
             justification: |
-              The fixed rule confidences must be calibrated on data that is not used for the final accuracy
-              measurement, so that the reported accuracy stays honest.
+              The statistics of the basic model must come from committed, verifiable inputs and be reproducible.
             tests:
-              - WordSenseBuilder_BasicPrecision_Measure_CountsFiringsOnAnchors
-              - WordSenseBuilder_BasicPrecision_Measure_UsesOnlyTrainingAnchors
-              - WordSenseBuilder_BasicPrecision_Render_ListsEveryRule
+              - WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes
+              - WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws
+              - WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags
+              - WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes
+              - WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords
+              - WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically
+              - WordSenseBuilder_UdCounts_Read_BadHeader_Throws
+              - WordSenseBuilder_UdSource_Verify_ComparesChecksum
+
+          - id: WordSense-WordSenseBuilder-TrainBasic
+            title: >-
+              The builder shall retrain the whole basic model with one command, regenerating the tag counts first
+              when they are missing or when asked, and shall write the embedded table of the basic package
+              deterministically.
+            tags: [unit]
+            justification: |
+              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+            tests:
+              - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
+              - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
+              - WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenSense
+              - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
+              - WordSenseBuilder_BasicModelData_Summary_NamesSizes
+              - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
+
+          - id: WordSense-WordSenseBuilder-TuneBasic
+            title: >-
+              The builder shall score a grid of basic-model hyperparameters on the Universal Dependencies development
+              data and the anchor sentences only, print a stable table, write nothing, and never read the held-out
+              or real-text sentences.
+            tags: [unit]
+            justification: |
+              Tuning on data that is also used for the final accuracy measurement would make the reported accuracy
+              dishonest.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
+
+          - id: WordSense-WordSenseBuilder-Hyperparameters
+            title: >-
+              The builder shall keep all hyperparameters of the basic model in one place, with one consistent
+              default set used by training and tuning.
+            tags: [unit]
+            justification: |
+              A single definition prevents the trained model and the tuned grid from drifting apart.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
 
           - id: WordSense-WordSenseBuilder-Appendix
             title: >-
@@ -91,13 +138,16 @@ sections:
 
           - id: WordSense-WordSenseBuilder-Usage
             title: >-
-              The builder shall provide the commands words, weights, evaluate, basic-precision and appendix, and shall
-              report an unknown command, a malformed option or a data error with a message and a non-zero exit code.
+              The builder shall provide the commands words, weights, evaluate, ud-counts, train-basic, tune-basic and
+              appendix, print usage when given no arguments, and shall report an unknown or removed command, a
+              malformed option or a data error with a message and a non-zero exit code.
             tags: [unit]
             justification: |
               A build tool used in scripts must fail visibly and say why.
             tests:
+              - WordSenseBuilder_Program_NoArguments_PrintsUsage
+              - WordSenseBuilder_Program_RemovedCommand_IsUnknown
+              - WordSenseBuilder_Program_ModelCommandWithoutModel_ReportsUsage
               - WordSenseBuilder_Program_Words_InconsistentCorpus_Fails
-              - WordSenseBuilder_Program_MalformedOptions_ReportUsage
               - WordSenseBuilder_Program_MalformedOptions_ReportUsage
               - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage

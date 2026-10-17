@@ -1,12 +1,28 @@
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
-///     Tests for <see cref="BasicClassifier"/>.
+///     Tests for <see cref="BasicClassifier"/> on a toy table and lexicon.
 /// </summary>
 public class BasicClassifierTests
 {
+    private static readonly WordDetails Cat = new("cat", PartOfSpeech.Noun, null, null);
+    private static readonly WordDetails Fish = new("bass", PartOfSpeech.Noun, "fish", null);
+    private static readonly WordDetails Music = new("bass", PartOfSpeech.Noun, "music", null);
+
+    private static readonly Dictionary<string, WordDetails[]> Lexicon = new(StringComparer.Ordinal)
+    {
+        ["cat"] = [Cat],
+        ["don't"] = [new("don't", PartOfSpeech.Verb, null, null)],
+        ["record"] = [new("record", PartOfSpeech.Noun, null, null), new("record", PartOfSpeech.Verb, null, null)],
+        ["bass"] = [Fish, Music],
+    };
+
+    private static readonly BasicTables Tables = BasicTables.Load(TestTables.Default());
+
+    private static BasicClassifier Create() => new(Tables, Lexicon);
+
     private static Task<WordSense[]> Run(params string[] words) =>
-        new BasicClassifier().ClassifyAsync(words, TestContext.Current.CancellationToken);
+        Create().ClassifyAsync(words, TestContext.Current.CancellationToken);
 
     /// <summary>
     ///     A word that is not in the lexicon has no details and no confidence.
@@ -21,84 +37,85 @@ public class BasicClassifierTests
     }
 
     /// <summary>
-    ///     A word with exactly one lexicon entry is answered with full confidence, whatever its neighbors are.
+    ///     A word with exactly one lexicon entry is answered with full confidence.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence()
     {
-        var single = WordLexicon.Words.First(pair => pair.Value.Length == 1 && pair.Key.All(char.IsAsciiLetterLower));
+        var results = await Run("The", "CAT");
 
-        var results = await Run(single.Key.ToUpperInvariant());
-
-        Assert.Equal(new WordSense(single.Key.ToUpperInvariant(), single.Value[0], 1.0), results[0]);
+        Assert.Equal(new WordSense("CAT", Cat, 1.0), results[1]);
     }
 
     /// <summary>
-    ///     An ambiguous word after a word that fires a rule gets the rule's single sense and fixed confidence.
+    ///     An ambiguous word is always answered and its confidence is a probability among the candidates.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_AmbiguousWordWithRule_ReturnsRuleConfidence()
+    public async Task BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability()
     {
-        var results = await Run("will", "record");
+        var results = await Run("record", "the", "record", "they", "record", "bass");
 
-        Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
-        Assert.Equal(Rules.AfterModalConfidence, results[1].Confidence);
+        foreach (var index in new[] { 0, 2, 4, 5 })
+        {
+            Assert.NotNull(results[index].Details);
+            Assert.InRange(results[index].Confidence, 0.5, 1.0);
+        }
     }
 
     /// <summary>
-    ///     The word after the infinitive marker is the verb.
+    ///     The sentence context decides between a noun and a verb.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_RecordAfterTo_IsVerb()
+    public async Task BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech()
     {
-        var results = await Run("to", "record");
+        var noun = await Run("the", "record");
+        var verb = await Run("they", "record");
 
-        Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
-        Assert.Equal(Rules.AfterToConfidence, results[1].Confidence);
+        Assert.Equal(PartOfSpeech.Noun, noun[1].Details?.PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Verb, verb[1].Details?.PartOfSpeech);
     }
 
     /// <summary>
-    ///     The word after a determiner is the noun.
+    ///     Senses with the same part of speech are told apart by the words around the target.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_RecordAfterThe_IsNoun()
+    public async Task BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues()
     {
-        var results = await Run("the", "record");
+        var fish = await Run("the", "river", "bass");
+        var music = await Run("the", "guitar", "bass");
 
-        Assert.Equal(PartOfSpeech.Noun, results[1].Details?.PartOfSpeech);
-        Assert.Equal(Rules.AfterDeterminerConfidence, results[1].Confidence);
+        Assert.Equal("fish", fish[2].Details?.Meaning);
+        Assert.Equal("music", music[2].Details?.Meaning);
     }
 
     /// <summary>
-    ///     An ambiguous word without any rule-firing neighbor has no details and no confidence.
+    ///     A sentence-ending token separates the text into segments that do not influence each other.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_NoRuleFires_Abstains()
+    public async Task BasicClassifier_ClassifyAsync_Segments_AreIndependent()
     {
-        var results = await Run("record");
+        var alone = await Run("the", "guitar", "bass");
+        var inText = await Run("They", "record", "the", "river", ".", "the", "guitar", "bass");
 
-        Assert.Equal(new WordSense("record", null, 0), results[0]);
+        Assert.Equal(alone, inText[5..]);
     }
 
     /// <summary>
-    ///     When several senses share the part of speech a rule selects, the classifier abstains.
+    ///     The segment of a position ends after a terminator and starts after the previous one.
     /// </summary>
-    /// <returns>A task that completes when the check has run.</returns>
     [Fact]
-    public async Task BasicClassifier_ClassifyAsync_SamePartOfSpeechAmbiguity_Abstains()
+    public void BasicClassifier_SegmentOf_FindsBounds()
     {
-        var word = WordLexicon.Words.First(pair =>
-            pair.Value.Count(s => s.PartOfSpeech == PartOfSpeech.Noun) >= 2
-            && pair.Value.Any(s => s.PartOfSpeech != PartOfSpeech.Noun));
+        string[] words = ["a", ".", "b", "c", "!", "d"];
 
-        var results = await Run("the", word.Key);
-
-        Assert.Equal(new WordSense(word.Key, null, 0), results[1]);
+        Assert.Equal((2, 3), BasicClassifier.SegmentOf(words, 3));
+        Assert.Equal((0, 2), BasicClassifier.SegmentOf(words, 1));
+        Assert.Equal((5, 1), BasicClassifier.SegmentOf(words, 5));
     }
 
     /// <summary>
@@ -108,8 +125,8 @@ public class BasicClassifierTests
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_MixedCaseAndCurlyApostrophe_AreNormalized()
     {
-        var mixed = await Run("To", "RECORD", "Don\u2019t");
-        var plain = await Run("to", "record", "don't");
+        var mixed = await Run("They", "RECORD", "Don\u2019t");
+        var plain = await Run("they", "record", "don't");
 
         Assert.Equal(plain[1].Details, mixed[1].Details);
         Assert.Equal(plain[2].Details, mixed[2].Details);
@@ -148,11 +165,28 @@ public class BasicClassifierTests
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_ResultsAreParallelToInput()
     {
-        string[] words = ["They", "will", "record", "the", "record", "."];
+        string[] words = ["They", "record", "the", "record", "."];
 
         var results = await Run(words);
 
         Assert.Equal(words, results.Select(r => r.Word));
+    }
+
+    /// <summary>
+    ///     The same text gives the same results every time, also from many threads at once.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe()
+    {
+        var classifier = Create();
+        string[] words = ["They", "record", "the", "river", "bass", ".", "the", "record"];
+        var expected = await classifier.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        var runs = await Task.WhenAll(Enumerable.Range(0, 16).Select(_ =>
+            Task.Run(() => classifier.ClassifyAsync(words, TestContext.Current.CancellationToken), TestContext.Current.CancellationToken)));
+
+        Assert.All(runs, run => Assert.Equal(expected, run));
     }
 
     /// <summary>
@@ -163,7 +197,7 @@ public class BasicClassifierTests
     public async Task BasicClassifier_ClassifyAsync_NullWords_Throws()
     {
         await Assert.ThrowsAsync<ArgumentNullException>(
-            () => new BasicClassifier().ClassifyAsync(null!, TestContext.Current.CancellationToken));
+            () => Create().ClassifyAsync(null!, TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -187,6 +221,6 @@ public class BasicClassifierTests
         await cancelled.CancelAsync();
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(
-            () => new BasicClassifier().ClassifyAsync(["a"], cancelled.Token));
+            () => Create().ClassifyAsync(["a"], cancelled.Token));
     }
 }

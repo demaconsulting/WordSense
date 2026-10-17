@@ -11,13 +11,16 @@ The builder creates the data that the shipped packages embed and measures the sh
 
 - the lexicon blob `words.bin` embedded in the core package;
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased);
-- accuracy reports of the models and a precision report of the rules of the Basic model;
+- the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
+  trained from;
+- accuracy reports of the models, including the calibration of the Basic model;
 - the senses appendix of the user guide.
 
 It reads the repository's `corpus/` folder: the sense inventory (`senses/`: every trained lemma with its senses, parts
 of speech, meanings and respellings), the training sentences (`anchors/`), the holdout sentences (`holdout/`, never
 used for training), the form lists (`forms/`: inflected forms of trained lemmas), the dictionary of single-sense
-words and the morphology rule switches (`lexicon/`), and the real-text evaluation sentences (`realtext/`). It
+words and the morphology rule switches (`lexicon/`), the real-text evaluation sentences (`realtext/`) and the vendored
+Universal Dependencies counts (`ud/`: tag n-gram and per-word tag counts of the English EWT treebank training file). It
 references all five packages and uses internal members of them through `InternalsVisibleTo`, so that training and
 inference share one implementation of the feature computation.
 
@@ -37,7 +40,18 @@ inference share one implementation of the feature computation.
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX1`).
 - `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences.
-- `BasicPrecision`, `RulePrecision`: measure the precision of each Basic rule on the training anchors.
+- `UdSource`, `UdCounts`, `UdSentence`: the pinned treebank source (commit and SHA-256 checksums; download and
+  verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its first
+  word and skips empty nodes, the mapping of the universal tags onto the 13 tags of the tagger, the n-gram and per-word
+  counts, and the deterministic count files `tag-ngrams.tsv` and `word-tags.tsv`.
+- `BasicHyperparameters`: every tunable number of the Basic model in one place (the runtime values that travel in the
+  table header, the training choices, and the grid and sample sizes of the tuner).
+- `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
+  dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
+  the anchors.
+- `BasicTablesWriter`: serializes the model data into the `WSB1` blob, deterministically.
+- `BasicTuner`: scores the hyper-parameter grid.
+- `BasicModelBuilder`: the commands `ud-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.
 - `TextSplitter`: splits raw text into words and punctuation.
 
@@ -58,7 +72,13 @@ Options are `--name value` pairs; every path defaults to the repository layout b
   `bert-base-cased`) and writes its `weights.bin`.
 - `evaluate <modelId> [--corpus DIR] [--repository DIR] [--output FILE]`: measures a model (`minilm`,
   `bert-base-cased`, `basic`) and prints a Markdown table.
-- `basic-precision [--corpus DIR] [--output FILE]`: measures the precision of each Basic rule on the training anchors.
+- `ud-counts [--ud DIR] [--corpus DIR] [--output DIR]`: downloads (when missing) and verifies the pinned treebank files
+  and writes the count files of `corpus/ud`.
+- `train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]`: retrains the whole
+  Basic model with the default hyper-parameters and writes `Resources/basic.bin` of the Basic package. It regenerates
+  the count files first when they are missing or `--refresh-ud true` is given.
+- `tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]`: scores the hyper-parameter grid and prints a table; it
+  writes nothing.
 - `appendix [--corpus DIR] [--output FILE]`: writes the senses appendix of the user guide.
 
 #### Lexicon build (`WordsBuilder.Build`)
@@ -92,13 +112,31 @@ Brotli-compressed blob with a string table, a table of distinct `WordDetails` an
 Creates the model on the verified files, classifies the holdout and the real-text sentences, and reports per set
 the rows, the share of best-sense, part-of-speech and pronunciation matches, the answered share (confidence at least
 0.5) and its accuracy, plus the weights size, the latency per sentence and the first-use time and memory of the
-lexicon. `basic` is evaluated the same way without weights.
+lexicon. `basic` is evaluated the same way without weights and additionally reports the calibration of its
+confidence: the number and accuracy of the answers in the confidence buckets (below 0.4, 0.4 to 0.6, 0.6 to 0.7, 0.7 to
+0.8, 0.8 to 0.9 and at least 0.9), the coverage and precision at the thresholds 0.6, 0.8 and 0.9, the size of the
+embedded table, the cold load time, the latency per word and per sentence, and a fixed comparison table against the
+reference accuracies of the other models.
 
-#### Rule precision (`BasicPrecision.Measure`)
+#### Basic training (`BasicModelBuilder.TrainAsync`)
 
-Runs the Basic rules over the training anchors of every ambiguous word and reports, per rule, how often it fired and
-how often the part of speech it selected is correct, next to the confidence the rule currently has. The holdout is
-never read, so the confidences calibrated from this report stay an honest estimate on the holdout.
+1. Regenerate the count files of `corpus/ud` from the verified treebank when they are missing or `--refresh-ud true` is
+   given (`ud-counts` does the same on its own).
+2. Read and validate the inventory, anchors, holdout and forms as for the weights; the holdout is not used further.
+3. `BasicTrainer.Train` selects from the counts the closed-class words (enough occurrences and a dominant closed-class
+   share), the most frequent dictionary-ambiguous words and the suffixes of one to three characters of words the lexicon
+   lacks, and trains one naive Bayes cue table per lemma with at least two senses from the anchors, with the same
+   feature extraction and 16-bit hash as the runtime; hash collisions keep the more frequent feature, and weights and
+   priors are quantized to 1/8 nat. All numbers come from `BasicHyperparameters`.
+4. `BasicTablesWriter.Write` serializes the table, `BasicTables.Load` checks that it reads back, and the file is
+   written with its size and SHA-256 reported.
+
+#### Basic tuning (`BasicTuner.RunAsync`)
+
+Trains and scores each variant of the hyper-parameter grid (one parameter at a time around the default) on the
+treebank development file and on a deterministic sample of the anchors split into a train and a dev part. It reports
+the accuracy on the ambiguous treebank tokens, the best-sense accuracy on the anchor dev part and the table size. It
+never reads the holdout or the real-text sentences and writes no file, so the reported evaluation stays honest.
 
 #### Appendix (`AppendixGenerator.Write`)
 
@@ -118,7 +156,8 @@ output step.
 ### Dependencies
 
 - Core: `WordLexicon`, `WordDetails`, `PartOfSpeech`, `IWordSenseModel`.
-- Basic: `BasicClassifier` and `Rules` (for the rule precision).
+- Basic: `BasicTables`, `BasicClassifier`, `CueModel` and `PosTag` (the format, the tag set, the feature extraction and
+  hash, and the segmentation shared with training).
 - Onnx: `OnnxWordSenseModel`, `OnnxEncoder`, the weights data types and `FeatureExtractor`.
 - MiniLM and BertBaseCased: the two model classes.
 - The corpus files and the model files under `model/`.
