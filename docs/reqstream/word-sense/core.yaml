@@ -54,7 +54,7 @@ sections:
           - id: WordSense-Core-Packaging
             title: >-
               The core package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata, a README and a NOTICE for the third-party word data it embeds.
+              NuGet metadata, and a README that carries the credits and licenses of the third-party word data it embeds.
             tags: [subsystem]
             justification: |
               The embedded lexicon derives from third-party word lists whose licenses require attribution, and

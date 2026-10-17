@@ -142,6 +142,27 @@ are unknown. The [user guide][link-user-guide] has the details, the caveats and 
 - **Model provenance**: `docs/build_notes/model-provenance.md`
 - **Package split**: `docs/build_notes/package-split.md`
 
+## Credits and licenses
+
+The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
+`DemaConsulting.WordSense.BertBaseCased`) carry this section in their package readme. The corpus itself is not shipped
+in the packages, only the derived weights; every real sentence is recorded with its source, licence and URL in
+`corpus/provenance/`.
+
+- **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
+- **Project-authored words, senses, meanings, respellings and sentences**: MIT License.
+- **Tatoeba sentences** (<https://tatoeba.org>): CC0 1.0, or CC BY 2.0 FR with the contributor recorded.
+- **Wikipedia and Wiktionary example sentences** (<https://www.wikipedia.org>, <https://www.wiktionary.org>):
+  CC BY-SA 4.0, with the article URL recorded.
+- **Universal Dependencies English corpora** (EWT and others, <https://universaldependencies.org>): CC BY-SA 4.0.
+- **Project Gutenberg works** (<https://www.gutenberg.org>): US public domain.
+- **Corpus redistribution**: rows under CC BY-SA 4.0 keep that licence if the corpus itself is redistributed.
+- **sentence-transformers/all-MiniLM-L6-v2** (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>): Apache
+  License 2.0; the int8 ONNX export is redistributed under the same licence.
+- **bert-base-cased** (Google, <https://huggingface.co/google-bert/bert-base-cased>): Apache License 2.0; the int8 ONNX
+  export is redistributed under the same licence.
+- **ONNX Runtime** (Microsoft Corporation): MIT License; installed as a separate NuGet dependency.
+
 ## Contributing
 
 Contributions are welcome. See [CONTRIBUTING.md][link-contributing] for development setup, coding
@@ -149,12 +170,7 @@ standards, and the pull request process.
 
 ## License
 
-Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details. The
-`all-MiniLM-L6-v2` and `bert-base-cased` models are licensed under the Apache License 2.0; ONNX Runtime under the MIT
-License. The embedded dictionary is derived from Moby Part-of-Speech II by Grady Ward, which is in the public domain.
-The training corpus (not shipped in the NuGet packages, only the derived vectors) contains openly licensed sentences
-recorded with their source and licence in `corpus/provenance/`; rows under `CC BY-SA 4.0` keep that licence if the
-corpus itself is redistributed (see the user guide).
+Copyright (c) DEMA Consulting. Licensed under the MIT License. See [LICENSE][link-license] for details.
 
 By contributing to this project, you agree that your contributions will be licensed under the MIT License.
 

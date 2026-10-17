@@ -1,8 +1,0 @@
-DemaConsulting.WordSense.MiniLM
-
-Copyright DEMA Consulting. Licensed under the MIT License.
-
-The embedded weights (weights.bin) were trained against features of the encoder sentence-transformers/all-MiniLM-L6-v2
-(Apache License 2.0, https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2). The encoder itself, an int8
-dynamically quantized ONNX export, is not part of this package; it is downloaded on first use from the repository's
-model/all-MiniLM-L6-v2-int8 folder or a mirror. See that folder's README.md for its provenance and license.

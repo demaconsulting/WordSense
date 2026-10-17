@@ -147,7 +147,7 @@ sections:
           - id: WordSense-Onnx-Packaging
             title: >-
               The Onnx package shall ship its XML documentation with a namespace summary and verified examples, its
-              NuGet metadata, a README and a NOTICE.
+              NuGet metadata, and a README.
             tags: [subsystem]
             justification: |
               Consumers learn the API from the package; verified examples cannot go stale.

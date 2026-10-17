@@ -26,7 +26,7 @@ sections:
           - id: WordSense-BertBaseCased-Packaging
             title: >-
               The BertBaseCased package shall ship its XML documentation with a namespace summary and verified
-              examples, its NuGet metadata, a README and a NOTICE for the model it describes.
+              examples, its NuGet metadata, and a README that carries the credits and licenses of the model it describes.
             tags: [subsystem]
             justification: |
               The model carries its own license and attribution; consumers learn the API from the package.

@@ -1,6 +1,0 @@
-DemaConsulting.WordSense.Basic
-
-Copyright DEMA Consulting. Licensed under the MIT License.
-
-The model consists of hand-written rules that run over the word lexicon of DemaConsulting.WordSense. It embeds no
-trained weights and no third-party model data.

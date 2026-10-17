@@ -152,11 +152,12 @@ sections:
       - id: WordSense-Lib-Packaging
         title: >-
           Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
-          NuGet metadata, a README and, where it contains third-party material, a NOTICE.
+          NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
+          package readme.
         tags: [system]
         justification: |
           Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
-          stale, and attribution notices satisfy the licenses of the embedded data and models.
+          stale, and the credits and licenses in the package readme satisfy the licenses of the embedded data and models.
         children:
           - WordSense-Core-Packaging
           - WordSense-Basic-Packaging
