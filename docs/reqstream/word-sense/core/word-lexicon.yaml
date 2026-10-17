@@ -38,7 +38,7 @@ sections:
                   Applications that never classify must not pay for loading, and a concurrent first use must neither
                   fail nor load twice.
                 tests:
-                  - WordLexicon_Words_ConcurrentFirstUse_ReturnsSameInstance
+                  - WordLexicon_Words_ConcurrentAccess_ReturnsSameInstance
 
               - id: WordSense-Core-WordLexicon-Format
                 title: >-

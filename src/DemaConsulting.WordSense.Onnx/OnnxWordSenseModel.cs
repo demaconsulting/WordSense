@@ -58,8 +58,9 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     For a word with several senses it is a monotonic mapping of the margin between the best and the runner-up
 ///     sense, relative to the abstain margin trained for that word's lemma, clamped to 0 to 1: 0.5 means the margin
 ///     equals the abstain margin. It is a ranking score, not a calibrated probability, and its scale belongs to the
-///     model: never reuse a threshold from the Basic model (a probability) or from the other encoder; choose a
-///     threshold for your use (the evaluation in the repository's build notes uses 0.5) and treat lower values as
+///     model: never reuse a threshold from the Basic model (a probability) or from the other encoder; the recommended
+///     starting threshold for either encoder is 0.8 (see the namespace documentation for the measured coverage and
+///     precision), tune it on your own text, and treat lower values as
 ///     uncertain.
 ///     </para>
 ///     <para>
@@ -188,12 +189,20 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS, or beneath <c>$XDG_DATA_HOME</c>
     ///     when that variable is set) are reused and only missing or invalid files are
     ///     downloaded (mirror first, then the public source); a file that is already valid never contacts the mirror.
-    ///     Every existing file is hashed on each process start, so the call costs time proportional to the file sizes.
+    ///     Every existing file is hashed once per model instance (the first ensure; later calls on that instance
+    ///     return the remembered result), so the call costs time proportional to the file sizes.
     ///     Calling the method again after it completed is cheap and harmless. Cancelling stops only this caller from
     ///     waiting; the shared work continues, and a cancelled or failed download leaves no partial file under a final
     ///     file name, so the call can simply be repeated. The only environment variables are the four
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
     ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI).
+    ///     Environment details: a blank variable counts as unset; user without password (or the reverse), or a user,
+    ///     password or token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/> through the
+    ///     task; the environment is not read at all when a model directory was supplied (then an invalid setting is
+    ///     ignored without an exception) or when a <see cref="MirrorOptions"/> is passed. A
+    ///     <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
+    ///     <see cref="ArgumentOutOfRangeException"/> (infinite is allowed); it is ignored when a model directory was
+    ///     supplied.
     ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
     ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS),
     ///     with no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
@@ -248,7 +257,15 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
     ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
     ///     token. Disposing while this call is running inference is safe: the call completes normally and the ONNX
-    ///     session is released after it (and every other running call) has finished.
+    ///     session is released after it (and every other running call) has finished. Threads and cancellation: the
+    ///     call starts synchronously on the calling thread (argument checks, the lexicon load and the decision whether
+    ///     a word needs the model); the hashing and download of the ensure run on the thread pool; opening the ONNX
+    ///     session and the inference then run synchronously, without <c>Task.Run</c>, on the thread that continues
+    ///     the call (the calling thread when the model is already ensured), so offload the call yourself if the caller
+    ///     must not block. The token is checked before the work starts, while the ensure is awaited (it cancels the
+    ///     wait of this call only; shared work continues if other callers wait) and between the words that are
+    ///     encoded; a single ONNX run is never interrupted. An empty element is unknown (null, 0) and an element
+    ///     containing a space is looked up as one key, which no lexicon entry has, so it is unknown too.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>

@@ -303,7 +303,8 @@ in the build notes).
 
 Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and has the
 public properties `HiddenSize` and `ModelId`. `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the
-downloader state, so dispose it with `using`, after every classification has finished. The Basic model has nothing to
+downloader state, so dispose it with `using`; disposing while a classification is running is safe (see below). The
+Basic model has nothing to
 release but follows the same rules. The usual sequence is: call `EnsureModelAsync` once, classify as many texts as
 you like with `ClassifyAsync` (safe for concurrent use) and dispose the model. `EnsureModelAsync` is optional:
 `ClassifyAsync` ensures the model lazily on first need, with the default (or environment variable) mirror settings (and
@@ -317,7 +318,8 @@ instance keeps the verified directory (including the `StoreRoot` of the `MirrorO
 instance starts again; after a failed call, a lazy ensure uses no `MirrorOptions`. The ONNX session and the weights are
 loaded at the first classification that needs
 them: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
-and of the hashing of the model files in `EnsureModelAsync` (about 30 ms for MiniLM and about 110 ms for BertBaseCased
+and of the hashing of the model files in `EnsureModelAsync` (once per model instance; about 30 ms for MiniLM and about
+110 ms for BertBaseCased
 with a warm file cache; approximate, machine dependent). Concurrent classifications are not serialized: they share the
 one ONNX session and run in parallel, so throughput grows with the cores while the latency of one call stays the same.
 The ONNX models run on the CPU only. Disposing is idempotent
@@ -326,34 +328,57 @@ Basic model as well, and even when the token is already cancelled): the Basic mo
 call itself, an encoder model throws it from `EnsureModelAsync` but reports it through the task returned by
 `ClassifyAsync`, so put the `await` inside the `try`. Disposing while `EnsureModelAsync` (or a lazy ensure) is
 downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains.
-Disposal never deletes the downloaded files; they stay in the store and are reused. Do not dispose a model while a
-classification is running (Basic: the running call still completes; an encoder model: the outcome is undefined). With a
+Disposal never deletes the downloaded files; they stay in the store and are reused. Disposing while a classification
+is running is safe for every model: the model is marked disposed at once (new calls throw), the running calls complete
+normally, and an encoder model releases its ONNX session when the last of them finishes (`Dispose` never waits). With a
 model directory, the files are verified against their
 SHA-256 without using the network, either by `EnsureModelAsync` or by the lazy ensure.
+
+Threads and cancellation: the Basic model does everything synchronously on the calling thread and returns a task that
+is already complete; an encoder model starts on the calling thread (argument checks, the lexicon load), hashes and
+downloads on the thread pool, and then opens the ONNX session and runs the inference synchronously on the thread that
+continues the call (it is not offloaded with `Task.Run`; do that yourself if the caller must not block). A
+cancellation token is checked before the work starts, while the ensure is awaited (it cancels the wait of that call
+only; the shared download continues while other callers wait for it) and between the words that are encoded; a single
+ONNX run is never interrupted. An empty element is an unknown word (`null`, 0) and an element that contains a space is
+looked up as one key, which no lexicon entry has, so it is unknown too: pass one token per element.
+
+## Implementing `IWordSenseModel` Yourself
+
+Anyone may implement `IWordSenseModel` (for example to wrap another engine) and use it wherever a supplied model fits.
+An implementation must: throw `ArgumentNullException` for a null word list and `ArgumentException` for a null element;
+return a non-null array parallel to the input (empty for an empty list); throw `ObjectDisposedException` from both
+methods after `Dispose`; make `Dispose` idempotent and thread-safe; allow concurrent `ClassifyAsync` calls; and honor the
+confidence semantics: an unknown word has `Details` null and confidence 0, a word with one sense gets it with confidence
+1, and an ambiguous word gets its best sense with a confidence from 0 to 1 whose scale the implementation documents.
 
 ## Confidence
 
 An encoder model scores the senses of a word, picks the best and reports it even when it is unsure. The confidence is a
 monotonic function of the margin between the best and the second-best score, scaled by the lemma's own abstain
-margin: it is exactly 0.5 where the model would, by that margin, have declined to answer. Treat a confidence of at
-least 0.5 as an answer you can use and a lower one as a guess; `Details` is still the best candidate, so you can use it
-when you want an answer anyway. A word with several senses but no weights for its lemma is `null` with confidence 0
+margin: it is exactly 0.5 where the model would, by that margin, have declined to answer, so below 0.5 the model's own
+abstain rule would not have answered and 0.5 is the lowest meaningful value, not a useful filter. The recommended
+starting threshold is **0.8 for each of the three models**, read in that model's own scale (see the table below).
+`Details` is still the best candidate, so you can use it when you want an answer anyway. A word with several senses
+but no weights for its lemma is `null` with confidence 0
 (not the case for the shipped packages).
 
 ```csharp
 WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+const double threshold = 0.8;   // the recommended start for this model; re-tune it per model
 foreach (var sense in senses.Where(s => s.Details is not null))
 {
-    var use = sense.Confidence >= 0.5 ? "answer" : "guess";
+    var use = sense.Confidence >= threshold ? "answer" : "guess";
     Console.WriteLine($"{sense.Word}: {sense.Details!.PartOfSpeech} ({sense.Confidence:P0}, {use})");
 }
 ```
 
 The confidence of the Basic model is a probability among the senses of the word, so it is not on the scale of the
-encoder models; compare a confidence only with the same model. **Do not reuse a threshold across models**: 0.5 is the
-natural point for the encoder models, while for Basic a threshold such as 0.8 keeps about 78% of the ambiguous words
-on real text at about 93% precision (`basic-evaluation.md`); the confidence of Basic for a word with n senses is never
-below 1/n (0.5 for two senses), so the 0.5 of the snippet above is not a filter for Basic. MiniLM and BertBaseCased each
+encoder models; compare a confidence only with the same model. **Do not reuse a threshold across models**: a threshold
+of 0.8 keeps about 78% of the ambiguous words on real text at about 93% precision for Basic (about one error in
+fourteen), about 73% at about 98% for MiniLM (one in fifty) and about 70% at about 99% for BertBaseCased (one in a
+hundred) (`basic-evaluation.md`, `model-comparison.md`); the confidence of Basic for a word with n senses is never
+below 1/n (0.5 for two senses), so a threshold of 0.5 is not a filter for Basic. MiniLM and BertBaseCased each
 have their own margin scale
 too, so tune a threshold per model on your own text. Measured thresholds (coverage = share of the ambiguous target
 words kept, precision = share of those that are right; real text, holdout in parentheses; rounded):
@@ -460,6 +485,15 @@ sent only to the host of the mirror, never to a redirect target on another host,
 unless the host is a loopback address. `ToString()` of a `MirrorOptions` never prints a secret. A mirror is ignored by
 models that need no files and by a model that was given a model directory.
 
+Details of the variables (the settings are read only when a mirror is needed, that is by `EnsureModelAsync` without a
+`MirrorOptions` or by the lazy ensure of an ambiguous word): a blank value counts as unset; a user without a password
+(or the reverse), a user, password or token without `WORDSENSE_MIRROR_URL`, and a token together with a user all throw
+`ArgumentException` (reported through the task); with a model directory the variables are never read, so an invalid
+setting is ignored without an exception, and a passed `MirrorOptions` is not consulted either. A `Timeout` that is zero,
+negative or longer than about 49 days throws `ArgumentOutOfRangeException` (`Timeout.InfiniteTimeSpan` means no
+limit); it
+applies only to a `MirrorOptions` you pass, because the variables have no timeout (5 minutes then).
+
 **Relocating the store.** Downloaded files live in `<StoreRoot>/<model-id>/`; the default store root is
 `{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `MirrorOptions.StoreRoot` changes it. No environment
 variable does: the four `WORDSENSE_MIRROR_*` variables above are the only ones the library reads. `BaseUri` is a required
@@ -487,9 +521,10 @@ does not match its SHA-256 is downloaded again and replaced; it is never used.
 | `InvalidDataException` | A file of a supplied model directory does not match its SHA-256 |
 | `IOException`, `UnauthorizedAccessException` | The store cannot be created or written |
 | `ObjectDisposedException` | The model has been disposed (`EnsureModelAsync` and `ClassifyAsync`) |
-| `OperationCanceledException` | The token was cancelled, or the model was disposed while the call was downloading |
+| `OperationCanceledException` | The token was cancelled (this call's wait only), or the model was disposed mid-call |
 
-The Basic model throws only the cancellation exception and, after disposal, `ObjectDisposedException`. A failed call can
+The Basic model throws only the cancellation exception and, after disposal,
+`ObjectDisposedException`. A failed call can
 be repeated, and concurrent calls share one
 download.
 

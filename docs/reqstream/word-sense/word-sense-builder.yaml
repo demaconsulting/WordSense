@@ -21,6 +21,7 @@ sections:
               - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
               - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
               - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
+              - WordSenseBuilder_Words_Committed_MatchesCorpus
 
           - id: WordSense-WordSenseBuilder-Weights
             title: >-

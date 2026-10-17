@@ -12,7 +12,7 @@ package WordSense {
     part def WordSenseSystem {
         doc /* The WordSense system as a whole: a lexicon that answers unambiguous words, and interchangeable word-sense models that resolve the ambiguous ones in context. */
 
-        comment testRef /* Test: test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs */
+        comment testRef /* Test: test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs, test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSampleTests.cs */
         comment designRef /* Design: docs/design/word-sense.md */
         comment verificationRef /* Verification: docs/verification/word-sense.md */
         comment reqRef /* Requirements: docs/reqstream/word-sense.yaml */

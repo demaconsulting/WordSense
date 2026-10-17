@@ -100,12 +100,16 @@ namespace DemaConsulting.WordSense;
 ///     </list>
 ///     <para>
 ///     Without a threshold (every target word taken) the accuracy is the best-sense figure of the table above. A
-///     threshold is specific to a model, so choose one per model from the table: 0.8 is a reasonable start for each
-///     of the three, read in that model's own scale (never copy the value from one model to another without checking
-///     its row); it keeps about three quarters of the real-text target
-///     words with about one error in fifty (MiniLM and BertBaseCased) or one in fourteen (Basic). For Basic the
+///     threshold is specific to a model, so choose one per model from the table. Recommended starting value: 0.8 for
+///     each of the three models, read in that model's own scale (never copy a value from one model to another without
+///     checking its row); it keeps about three quarters of the real-text target words (Basic 78%, MiniLM 73%,
+///     BertBaseCased 70%) with about one error in fourteen (Basic), one in fifty (MiniLM) or one in a hundred
+///     (BertBaseCased). For Basic the
 ///     confidence of a word with n senses is never below 1/n (0.5 for two senses), so a threshold below that keeps
-///     every Basic answer for such words; for an encoder, 0.5 is the margin at which the model abstains. The full tables are
+///     every Basic answer for such words. For an encoder, 0.5 is the lowest meaningful value: the confidence is the
+///     margin relative to the abstain margin trained for the lemma, so 0.5 means the margin equals the abstain margin,
+///     and below 0.5 the model's own abstain rule would not have answered; use 0.6 for more coverage (MiniLM 82%,
+///     BertBaseCased 85% of the target words) or 0.9 for more precision. The full tables are
 ///     in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md and
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md.
@@ -158,7 +162,7 @@ namespace DemaConsulting.WordSense;
 ///     <description>Unknown: null, 0 (a name that is in the lexicon, such as <c>Smith</c>, is found)</description>
 ///     </item>
 ///     <item>
-///     <term><c>,</c> <c>"</c> <c>-</c> an em dash <c>;</c> <c>)</c></term>
+///     <term>A comma <c>,</c>, a quote <c>"</c>, a hyphen <c>-</c>, an em dash, a semicolon <c>;</c>, a parenthesis <c>)</c></term>
 ///     <description>Unknown: null, 0; punctuation is always its own token. For Basic, only the tokens <c>.</c>, <c>!</c> and <c>?</c> also end a sentence segment</description>
 ///     </item>
 ///     <item>
@@ -187,7 +191,7 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     <item>
 ///     <term>An empty string; a null element; an empty list</term>
-///     <description>An empty string is unknown (null, 0); a null element throws <see cref="ArgumentException"/>; an empty list gives an empty array</description>
+///     <description>An empty string is unknown (null, 0); an element that contains a space (<c>"New York"</c>) is not split: it is looked up as one key, which the lexicon never has, so it is unknown, so pass one token per element; a null element throws <see cref="ArgumentException"/>; an empty list gives an empty array</description>
 ///     </item>
 ///     </list>
 ///     <para>
@@ -220,6 +224,7 @@ namespace DemaConsulting.WordSense;
 ///     </code>
 ///     Tokenizing text: a reference tokenizer (a word, a number with separators, or one other character per token).
 ///     <code>
+///     using System.Linq;
 ///     using System.Text.RegularExpressions;
 ///
 ///     var tokenPattern = new Regex(

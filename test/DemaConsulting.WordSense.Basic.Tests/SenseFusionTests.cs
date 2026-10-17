@@ -76,4 +76,32 @@ public class SenseFusionTests
         Assert.Equal(1.0, probabilities.Sum(), 9);
         Assert.Equal(1, SenseFusion.Winner(probabilities));
     }
+
+    /// <summary>
+    ///     Equal probabilities pick the first candidate.
+    /// </summary>
+    [Fact]
+    public void SenseFusion_Winner_Tie_PicksFirst()
+    {
+        Assert.Equal(0, SenseFusion.Winner([0.4, 0.4, 0.2]));
+        Assert.Equal(1, SenseFusion.Winner([0.2, 0.4, 0.4]));
+    }
+
+    /// <summary>
+    ///     A missing (NaN) cue is filled with the mean of the finite cues, so it neither helps nor hurts the candidate.
+    /// </summary>
+    [Fact]
+    public void SenseFusion_Fuse_MissingCue_IsFilledWithMeanOfOthers()
+    {
+        var posteriors = new double[PosTag.Count];
+        posteriors[PosTag.Noun] = 1.0;
+        var withNaN = new double[2];
+        var withMean = new double[2];
+
+        SenseFusion.Fuse(posteriors, [Fish, Music], [-3.0, double.NaN], 1.5, 0.5, withNaN);
+        SenseFusion.Fuse(posteriors, [Fish, Music], [-3.0, -3.0], 1.5, 0.5, withMean);
+
+        Assert.Equal(withMean[0], withNaN[0], 9);
+        Assert.Equal(withMean[1], withNaN[1], 9);
+    }
 }

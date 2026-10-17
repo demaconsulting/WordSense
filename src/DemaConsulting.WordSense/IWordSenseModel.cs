@@ -40,8 +40,24 @@ namespace DemaConsulting.WordSense;
 ///     <c>ClassifyAsync</c>), so use <c>await</c> inside a <c>try</c> and both are caught.
 ///     Disposing is idempotent and thread-safe. Disposing while an ensure is downloading cancels the download, and the
 ///     pending task then throws <see cref="OperationCanceledException"/>; downloaded files are never deleted by
-///     disposal and are reused by the next instance. Disposing while a classification is running is not supported:
-///     for the Basic model the running call still completes, for an encoder model its outcome is undefined.
+///     disposal and are reused by the next instance. Disposing while a classification is running is safe, for every
+///     model: the model is marked disposed at once (new calls throw <see cref="ObjectDisposedException"/>), a
+///     classification that is already running completes normally, and the resources (the ONNX session of an encoder
+///     model) are released when the last running classification finishes; <c>Dispose</c> itself never waits for them.
+///     </para>
+///     <para>
+///     Implementing the interface. Third parties may implement <see cref="IWordSenseModel"/> themselves (for example
+///     to wrap another disambiguation engine); the models of this repository are only the supplied implementations.
+///     An implementation must honor the following, as the supplied models do. Argument validation:
+///     <see cref="ClassifyAsync"/> throws <see cref="ArgumentNullException"/> for a null word list and
+///     <see cref="ArgumentException"/> for a null element. Result shape: the returned array is never null and is
+///     parallel to the input (same length and order; empty for an empty list). Disposal: after <c>Dispose</c>, both
+///     methods throw <see cref="ObjectDisposedException"/>, and <c>Dispose</c> is idempotent and thread-safe.
+///     Concurrency: <see cref="ClassifyAsync"/> is safe to call from several threads at once on one instance.
+///     Confidence: a word that the lexicon does not know has <see cref="WordSense.Details"/> null and confidence 0; a
+///     word with a single sense gets that sense with confidence 1; an ambiguous word gets its best sense together with
+///     a confidence from 0 to 1 whose scale the implementation documents (callers must not reuse a threshold across
+///     implementations). An implementation that needs no files completes <see cref="EnsureModelAsync"/> at once.
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
@@ -76,7 +92,10 @@ public interface IWordSenseModel : IDisposable
     ///     <c>WORDSENSE_MIRROR_URL</c> environment variable (and its credential variables), if any. Ignored by a model
     ///     that needs no files, and by an encoder model that was given a model directory.
     /// </param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <param name="cancellationToken">
+    ///     A token that cancels the wait of this call. The work that is shared with other callers (a download in
+    ///     progress) continues while other callers still wait for it; only disposing the model stops it.
+    /// </param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
     ///     <para>
@@ -115,7 +134,10 @@ public interface IWordSenseModel : IDisposable
     ///     meaning) each word has.
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
-    /// <param name="cancellationToken">A token that cancels the operation.</param>
+    /// <param name="cancellationToken">
+    ///     A token that cancels the operation. It is checked before the work starts and between steps (see the remarks);
+    ///     a running ONNX inference is not interrupted.
+    /// </param>
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
     ///     <para>
@@ -157,9 +179,24 @@ public interface IWordSenseModel : IDisposable
     ///     even when the token is already cancelled (the Basic model throws it, and every other exception, from the
     ///     call itself; an encoder model reports exceptions through the returned task).
     ///     </para>
+    ///     <para>
+    ///     Threads and cancellation. The Basic model does everything synchronously on the calling thread (the lexicon
+    ///     load, the table load and the classification) and returns a task that is already complete, so the call
+    ///     blocks for that time; it checks the token before the work starts and between sentence segments. An encoder
+    ///     model starts synchronously on the calling thread too (argument checks, the lexicon load and the decision
+    ///     whether a word needs the model); the hashing and download of a lazy ensure run on the thread pool; the
+    ///     opening of the ONNX session and the inference then run synchronously, on whichever thread continues the
+    ///     call (the calling thread when the model is already ensured, otherwise a thread-pool thread), and are not
+    ///     offloaded with <c>Task.Run</c>, so use <c>Task.Run</c> yourself if the caller must not block. For an
+    ///     encoder model the token is checked before the work starts, while the lazy ensure is awaited (it cancels the
+    ///     wait of this call only), and between the words that are encoded; a single ONNX run is never interrupted.
+    ///     A word list is classified as given: an element that is an empty string is unknown (null, confidence 0),
+    ///     and an element that contains a space is not split, so it is looked up as one key and is unknown unless the
+    ///     lexicon has that exact key (it has none with a space); always pass one token per element.
+    ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null, or (encoder models) by the lazy ensure when the settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during a lazy ensure.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
     /// <exception cref="HttpRequestException">Thrown by a lazy ensure of an encoder model when a file could not be obtained and verified from any source.</exception>
@@ -192,12 +229,17 @@ public interface IWordSenseModel : IDisposable
 ///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
 ///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
 ///     several senses the probability of the chosen sense (never below one over the number of senses, so 0.5 for a
-///     word with two senses: a threshold of 0.5 keeps every answer of a two-sense word, and a threshold such
-///     as 0.8 is a sensible start, see the <c>DemaConsulting.WordSense.Basic</c> namespace documentation), so it is never
-///     undecided. The encoder models (MiniLM, BertBaseCased) map
+///     word with two senses: a threshold of 0.5 keeps every answer of a two-sense word), so it is never
+///     undecided; its recommended starting threshold is 0.8 (see the <c>DemaConsulting.WordSense.Basic</c> namespace
+///     documentation). The encoder models (MiniLM, BertBaseCased) map
 ///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
-///     trained for the word's lemma: 0.5 means the margin equals the abstain margin, larger values mean a clearer
-///     decision, and the result is clamped to 0 to 1; the threshold used in their evaluation is 0.5, and the share of words that reaches a given value differs between the two encoders, so tune a threshold per model on your own text. It is a ranking
+///     trained for the word's lemma: 0.5 means the margin equals the abstain margin (the evaluation counts a word as
+///     answered from 0.5 up and as abstained below it, so 0.5 is the lowest meaningful value, not a useful filter),
+///     larger values mean a clearer
+///     decision, and the result is clamped to 0 to 1. The recommended starting threshold for each encoder is 0.8
+///     (about three quarters of the real-text target words kept, with about one error in fifty for MiniLM and one in
+///     a hundred for BertBaseCased); the share of words that reaches a given value differs between the two encoders,
+///     so tune the threshold per model on your own text. It is a ranking
 ///     score, not a calibrated probability: compare it against a threshold you choose and treat lower values as
 ///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low.
 ///     </para>
@@ -207,9 +249,9 @@ public interface IWordSenseModel : IDisposable
 ///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, null, null), 0.93);
 ///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
 ///
-///     // Keep only confident answers; the threshold is specific to the model that produced the confidence:
-///     // 0.5 is the evaluation value of MiniLM and BertBaseCased; for Basic start at 0.8 (a probability)
-///     const double threshold = 0.5;
+///     // Keep only confident answers. A threshold belongs to one model: 0.8 is the recommended start for each of
+///     // Basic, MiniLM and BertBaseCased, but it is read in that model's own scale; re-tune it per model
+///     const double threshold = 0.8;
 ///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= threshold;
 ///     </code>
 /// </example>
@@ -257,9 +299,19 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
 ///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one (the URL variable is required, the others are optional, and
 ///     user and password go together). Without either, only the public source is used. Models that need no files
-///     ignore the mirror. The invalid configurations (for example a token together with a user, or credentials for a
-///     plain <c>http</c> host) are reported by <see cref="IWordSenseModel.EnsureModelAsync"/> as an
-///     <see cref="ArgumentException"/>.
+///     ignore the mirror. Details of the variables: a blank value counts as unset; <c>WORDSENSE_MIRROR_USER</c>
+///     without <c>WORDSENSE_MIRROR_PASSWORD</c> (or the reverse) is an error; any of user, password or token without
+///     <c>WORDSENSE_MIRROR_URL</c> is an error too (it is almost always a misspelled URL variable), and so is a token
+///     together with a user. The environment is read only when the mirror is needed, that is by an
+///     <c>EnsureModelAsync</c> without a <see cref="MirrorOptions"/> or by the lazy ensure of an ambiguous word, and
+///     never when the model was constructed with a model directory (the mirror, valid or not, is then ignored and
+///     nothing is thrown). The invalid configurations (for example a token together with a user, or credentials for a
+///     plain <c>http</c> host) are reported by <see cref="IWordSenseModel.EnsureModelAsync"/> (or by the lazy ensure
+///     of <see cref="IWordSenseModel.ClassifyAsync"/>) as an
+///     <see cref="ArgumentException"/>. A <see cref="Timeout"/> that is zero, negative or longer than about 49 days
+///     is reported as its subclass <see cref="ArgumentOutOfRangeException"/> (<see cref="System.Threading.Timeout.InfiniteTimeSpan"/> means no limit); the
+///     timeout applies only to a <see cref="MirrorOptions"/> that you pass, because the environment variables have
+///     no timeout (the default of 5 minutes applies then).
 ///     </para>
 ///     <para>
 ///     Store location: downloaded files are kept in <c>{StoreRoot}/{model-id}/{file}</c>; without a store root, the

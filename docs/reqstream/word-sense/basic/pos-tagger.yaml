@@ -11,7 +11,8 @@ sections:
               - id: WordSense-Basic-PosTagger-Posteriors
                 title: >-
                   PosTagger shall give, for every word of a segment, a probability for each part of speech that sums to
-                  1, weighing the words on both sides, and shall give certainty to a word that has only one possible
+                  1, weighing the context of the sentence (the tests cover the effect of the preceding word), and
+                  shall give certainty to a word that has only one possible
                   part of speech.
                 tags: [unit]
                 justification: |

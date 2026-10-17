@@ -6,7 +6,7 @@ namespace WordSense.Builder;
 ///     Splits a raw text into tiles: words, whitespace runs and single other characters.
 /// </summary>
 /// <remarks>
-///     Shared by the classifier's raw-string overload, the builder and the tests so that every
+///     Shared by the builder and the tests so that every
 ///     component agrees on what a word is.
 /// </remarks>
 internal static class TextSplitter

@@ -17,9 +17,9 @@ stale as tools are updated.
 ### Integration Pattern
 
 VersionMark is invoked as a `dotnet tool` from three places: `lint.ps1` runs
-`dotnet versionmark --lint` as an early-detection configuration check; each CI job in
-`.github/workflows/build.yaml` runs `dotnet versionmark --capture` to record the versions of tools
-used in that job; and the build-docs job runs `dotnet versionmark --publish` to produce
+`dotnet versionmark --lint` as an early-detection configuration check; the quality, build
+and build-docs jobs in `.github/workflows/build.yaml` run `dotnet versionmark --capture` to record
+the versions of tools used in that job; and the build-docs job runs `dotnet versionmark --publish` to produce
 `docs/build_notes/generated/versions.md`, included in the Build Notes document. It is a stateless
 CLI invocation — each run reads its configuration/input files, writes its output, and exits; there
 is no initialization, long-lived configuration object, or disposal step.

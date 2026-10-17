@@ -20,9 +20,10 @@ and writes a TRX file consumed by `reqstream --enforce`.
 Second, `lint.ps1` runs `dotnet sysml2tools lint 'docs/sysml2/**/*.sysml'` against the actual
 WordSense model and fails the build on any syntax or reference error. The build-docs
 job runs `dotnet sysml2tools render` to produce one SVG file per declared view under
-`docs/design/generated/`. FileAssert then directly asserts that each declared view's SVG file
-exists and is well-formed XML with an `<svg>` root element (`SysML2Tools_SoftwareStructureViewSvg`,
-`SysML2Tools_WordSenseViewSvg`), before Pandoc compiles `docs/design/*.md`, which embed
+`docs/design/generated/`. FileAssert then directly asserts that the SVG files for two of those
+views exist and are well-formed XML with an `<svg>` root element (`SysML2Tools_SoftwareStructureViewSvg`,
+`SysML2Tools_WordSenseViewSvg`); the remaining views are rendered but not individually asserted, before Pandoc
+compiles `docs/design/*.md`, which embed
 those SVG files by filename. A CI build failure at any of these steps is evidence that SysML2Tools
 did not produce the required model validation or diagrams against the real model.
 

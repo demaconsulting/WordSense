@@ -11,8 +11,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     which provides the tokenizer, the ONNX session, the verified downloader and the classification, and adds only the
 ///     identity of this encoder (its pinned files and its embedded weights). Everything described for
 ///     <see cref="OnnxWordSenseModel"/> applies: <c>EnsureModelAsync</c> (mirror precedence, verification, retry and
-///     cancellation behavior), <c>ClassifyAsync</c> (lazy ensure), the confidence of a result, and the requirement to dispose the model once
-///     after all classifications have finished.
+///     cancellation behavior), <c>ClassifyAsync</c> (lazy ensure), the confidence of a result (recommended starting threshold 0.8), and the requirement to dispose the model with <c>using</c> (disposing while
+///     a classification runs is safe: the running calls complete and the ONNX session is released after the last one).
 ///     </para>
 ///     <para>
 ///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: 104 MiB

@@ -150,14 +150,21 @@ on first use, but only when a word needs it (a list without an ambiguous word is
 never touches model files, so a model that is never needed is never downloaded); the lazy ensure uses the default and
 environment mirror settings and may throw the same exceptions as `EnsureModelAsync` (for example
 `FileNotFoundException` or `InvalidDataException` for a supplied directory), so call `EnsureModelAsync` yourself to pass
-a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. The
+a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. Every
+model may be disposed while a classification is running: new calls then throw `ObjectDisposedException`, the running
+calls complete, and an encoder model releases its ONNX session after the last one. The Basic model runs synchronously on
+the calling thread; an encoder model hashes and downloads on the thread pool but runs inference synchronously, and a
+cancellation token is checked between steps (a single ONNX run is never interrupted). The
 ONNX models run on the CPU only, and concurrent classifications share one ONNX session and run in parallel. Model
 files are
 stored in a per-user directory under their model ID (for example `all-MiniLM-L6-v2-int8`) and reused on later runs; a
 directory you supply must hold the files directly (flat, no model-ID subfolder). To use your own mirror, set
 `WORDSENSE_MIRROR_URL`
 (optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
-`MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. No
+`MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. A
+user without a password (or the reverse), or a user, password or token without the URL, throws `ArgumentException`; the
+variables are ignored when you pass a model directory, and a zero or negative `MirrorOptions.Timeout` throws
+`ArgumentOutOfRangeException`. No
 environment variable sets the store location; only `MirrorOptions.StoreRoot` does. See
 the [user guide][link-user-guide] for details and the [senses appendix][link-appendix] for the list of lemmas.
 
@@ -190,8 +197,11 @@ loaded, so it excludes the lexicon. The table is generated into `docs/build_note
 equal to it.
 
 Confidence thresholds (coverage of the ambiguous target words / precision on real text, rounded; holdout is higher).
-A threshold belongs to one model: read it from that model's row, and never reuse it across models. Basic's confidence
-for a word with n senses is never below 1/n (0.5 for two senses):
+A threshold belongs to one model: read it from that model's row, and never reuse it across models. The recommended
+starting value is 0.8 for each model (about one error in fourteen answers for Basic, one in fifty for MiniLM and one in
+a hundred for BERT base cased). Basic's confidence for a word with n senses is never below 1/n (0.5 for two senses);
+for an encoder, 0.5 is where the margin equals the trained abstain margin, so it is the lowest meaningful value and
+not a useful filter:
 
 | Model | at least 0.6 | at least 0.8 | at least 0.9 |
 | --- | --- | --- | --- |

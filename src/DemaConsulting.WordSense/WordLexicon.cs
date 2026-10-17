@@ -32,7 +32,8 @@ namespace DemaConsulting.WordSense;
 /// </remarks>
 /// <example>
 ///     <code>
-///     // "read" has two entries, both verbs: the present (REED) and the past (RED); every sense has the lemma "read"
+///     // "read" has two entries, both verbs: meaning "present" (respelling "reed") and meaning "past" (respelling "red");
+///     // every sense has the lemma "read"
 ///     WordDetails[] read = WordLexicon.Words["read"];
 ///     foreach (WordDetails sense in read)
 ///     {

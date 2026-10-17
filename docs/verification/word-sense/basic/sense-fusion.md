@@ -24,3 +24,6 @@ All scenarios below pass on every platform and target framework of the CI matrix
   candidates are equally likely before the cues.
 - **Extreme scores** (`SenseFusion_Fuse_ExtremeScores_StayFinite`): extreme scores do not produce non-finite
   probabilities.
+- **Tie** (`SenseFusion_Winner_Tie_PicksFirst`): equal probabilities pick the first candidate.
+- **Missing cue** (`SenseFusion_Fuse_MissingCue_IsFilledWithMeanOfOthers`): a NaN cue behaves like the mean of the
+  finite cues.

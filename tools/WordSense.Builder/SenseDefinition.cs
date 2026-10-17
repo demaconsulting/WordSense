@@ -6,7 +6,7 @@ namespace WordSense.Builder;
 
 /// <summary>
 ///     The definition of one sense of a lemma: its part of speech and, for a heteronym, its pronunciation meaning
-///     and respelling. Advanced: used to build classifier tables; an application that only classifies words reads
+///     and respelling. Advanced: used to build the lexicon and the model tables; an application that only classifies words reads
 ///     <see cref="WordDetails"/> instead.
 /// </summary>
 /// <remarks>

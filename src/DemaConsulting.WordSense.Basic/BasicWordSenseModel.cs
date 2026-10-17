@@ -82,7 +82,7 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     /// </summary>
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
-    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 120 ms, approximate).</returns>
+    /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 120 ms, approximate). Everything runs synchronously on the calling thread and the returned task is already complete (offload the call yourself if the caller must not block); the token is checked when the call starts and between sentence segments. An empty element is unknown (null, 0); an element that contains a space is not split and is unknown too.</returns>
     /// <exception cref="ArgumentNullException">Thrown (from the call itself) when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown (from the call itself) when an element is null.</exception>
     /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts.</exception>

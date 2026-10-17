@@ -62,10 +62,10 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     Concurrent first access returns the same instance everywhere.
+    ///     Concurrent access returns the same instance everywhere.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_ConcurrentFirstUse_ReturnsSameInstance()
+    public void WordLexicon_Words_ConcurrentAccess_ReturnsSameInstance()
     {
         var instances = Enumerable.Range(0, 16).AsParallel().Select(_ => WordLexicon.Words).Distinct().ToList();
 

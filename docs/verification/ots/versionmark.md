@@ -15,7 +15,7 @@ VersionMark is verified by two complementary layers of evidence. First, the CI p
 `versionmark --validate --results *.trx` in each build job, exercising VersionMark's built-in
 self-validation suite and recording results for ReqStream.
 
-Second, each CI job runs `versionmark --capture` to collect tool-version JSON files, and the
+Second, the quality, build and build-docs jobs run `versionmark --capture` to collect tool-version JSON files, and the
 build-docs job runs `versionmark --publish` to produce
 `docs/build_notes/generated/versions.md`. This file is included in the Build Notes document
 compiled by Pandoc. If VersionMark failed to produce the versions document, the Build Notes

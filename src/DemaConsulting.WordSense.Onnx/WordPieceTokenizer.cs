@@ -4,7 +4,8 @@ using System.Text;
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
-///     A managed implementation of the BERT uncased WordPiece tokenizer used by the MiniLM encoder.
+///     A managed implementation of the BERT WordPiece tokenizer used by the encoder models (uncased for MiniLM, cased
+///     for BertBaseCased).
 /// </summary>
 /// <remarks>
 ///     The tokenizer reproduces the Hugging Face <c>tokenizers</c> BERT pipeline (clean text, space

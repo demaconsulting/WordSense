@@ -19,8 +19,9 @@ namespace DemaConsulting.WordSense.Basic;
 ///     the code identical to the encoder models. Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/>
 ///     (it holds nothing to release, but afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c>
 ///     throw <see cref="ObjectDisposedException"/>, from the call itself, not through a returned task, and before any
-///     other check, so even with an already cancelled token). Disposing while a classification is running is not
-///     supported, but this model releases nothing, so a running call simply completes. The Basic model throws every
+///     other check, so even with an already cancelled token). Disposing while a classification is running is safe,
+///     as for every model: new calls throw at once, and a call that is already running completes normally (this model
+///     has nothing to release). The Basic model throws every
 ///     exception of <c>ClassifyAsync</c> (null list, null element, cancelled token) from the call itself. With a token that is already
 ///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
@@ -57,7 +58,14 @@ namespace DemaConsulting.WordSense.Basic;
 ///     (holdout: 95% at 90%, 86% at 94%, 78% at 96%; the table is in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md). The lowest value
 ///     a word with n senses can get is 1/n (0.5 for two senses), so a threshold at or below that keeps every answer
-///     for such words; 0.8 is a sensible start for this model.
+///     for such words; the recommended starting threshold for this model is 0.8.
+///     </para>
+///     <para>
+///     Offline and mirror: Basic needs no files and no network, so the mirror, the model-directory and the
+///     <c>WORDSENSE_MIRROR_*</c> environment settings of the encoder packages do not apply to it, and a
+///     <c>MirrorOptions</c> passed to <c>EnsureModelAsync</c> is ignored. It does everything synchronously on the
+///     calling thread (the returned task is already complete) and checks a cancellation token when the call starts
+///     and between sentence segments.
 ///     </para>
 ///     <para>
 ///     Case: the lookup and the cue words are lower-cased, so <c>Record</c> and <c>record</c> are the same word. The

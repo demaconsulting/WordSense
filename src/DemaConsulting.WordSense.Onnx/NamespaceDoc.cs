@@ -27,7 +27,12 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     as <see cref="FileNotFoundException"/> and <see cref="InvalidDataException"/>. For a corporate mirror pass a
 ///     <see cref="MirrorOptions"/> to <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, or set the environment variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
-///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{model-id}/{file}</c>. No environment
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>; files are requested at <c>{mirror}/{model-id}/{file}</c>. A blank variable
+///     counts as unset; a user without a password (or the reverse), or a user, password or token without
+///     <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; the variables are never read when a model
+///     directory was supplied (an invalid setting is then ignored without an exception) or when a
+///     <see cref="MirrorOptions"/> is passed, and a <see cref="MirrorOptions.Timeout"/> of zero or less throws
+///     <see cref="ArgumentOutOfRangeException"/>. No environment
 ///     variable sets the store location (the downloaded copies live in <c>{StoreRoot}/{model-id}/</c>, by default beneath
 ///     the per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS); only <see cref="MirrorOptions.StoreRoot"/> changes it, and that type

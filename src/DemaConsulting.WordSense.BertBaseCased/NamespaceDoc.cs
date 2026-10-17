@@ -37,28 +37,34 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     downloaded.
 ///     </para>
 ///     <para>
-///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files (the ONNX file is the
+///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files once per model instance (the ONNX file is the
 ///     bulk; about 110 ms in total with a warm file cache); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
-///     of the core package loads in about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every
-///     classification has finished (disposing while one runs is not supported); afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>
+///     of the core package loads in about 120 ms (about 43 MiB). Dispose the model with <c>using</c>. Disposing while a
+///     classification is running is safe: the model is marked disposed at once, the running classifications complete
+///     normally, and the ONNX session is released when the last of them finishes; afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>
 ///     (reported through the returned task; also when the token is already cancelled)
 ///     throw <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
 ///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>); downloaded files are kept. The
 ///     model is safe for concurrent use: concurrent classifications share one ONNX session and run in parallel. It
 ///     runs on the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw
 ///     the ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
-///     ignored while an ensure is already in flight.
+///     ignored while an ensure is already in flight. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
+///     of that call only; the shared download continues while other callers wait for it. The opening of the ONNX
+///     session and the inference run synchronously on the thread that continues the call (not offloaded), and a
+///     token is checked between the words, never inside one ONNX run.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
-///     runner-up sense onto 0 to 1, relative to the abstain margin trained for the word (0.5 at that margin, clamped); it
-///     is a ranking score, not a calibrated probability, so choose your own threshold, and never reuse a threshold from
+///     runner-up sense onto 0 to 1, relative to the abstain margin trained for the word (0.5 at that margin, clamped;
+///     the evaluation counts a word as answered from 0.5 up, so 0.5 is the lowest meaningful value); it
+///     is a ranking score, not a calibrated probability, so tune your threshold, starting at the recommended 0.8 for
+///     this model, and never reuse a threshold from
 ///     another model (the Basic model reports a probability and MiniLM has its own margin scale). 1 means a
 ///     single-sense word and 0 an unknown word (<c>Details</c> is null); <c>Details</c> is also null for a word with
 ///     several senses whose lemma has no intact weights, which does not happen for the weights embedded in this
 ///     package. A low confidence still carries the best sense. Measured on the real-text sentences (approximate,
 ///     rounded): a threshold of at least 0.6 keeps about 85% of the target words at about 99% precision, at least 0.8
-///     about 70% at about 99%, and at least 0.9 about 64% at about 99% (holdout: 94%, 87% and 81% of the words at about
+///     about 70% at about 99% (about one error in a hundred), and at least 0.9 about 64% at about 99% (holdout: 94%, 87% and 81% of the words at about
 ///     99.7%). Without a threshold the accuracy is the best-sense figure above; the full table is in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md.
 ///     </para>
@@ -93,7 +99,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     mirror pass a
 ///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
-///     requested at <c>{mirror}/bert-base-cased-int8/{file}</c>. A file that fails verification is never used.
+///     requested at <c>{mirror}/bert-base-cased-int8/{file}</c>. A file that fails verification is never used. Variable
+///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
+///     token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; none of this applies, and
+///     the variables are never read, when a model directory was supplied or a <see cref="MirrorOptions"/> is passed;
+///     a <see cref="MirrorOptions.Timeout"/> of zero or less throws <see cref="ArgumentOutOfRangeException"/>.
 ///     </para>
 ///     <para>
 ///     Input: one sentence per call; split punctuation into tokens of their own; keep a contraction such as

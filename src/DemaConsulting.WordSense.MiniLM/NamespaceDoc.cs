@@ -13,7 +13,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. Two kinds of
 ///     data are involved: the per-lemma classifier weights trained for the model are embedded in the assembly (nothing
 ///     to download), while the encoder files (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
-///     bytes, plus <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) is downloaded once on first use,
+///     bytes, plus <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded once on first use,
 ///     verified against pinned SHA-256 digests and cached per user, or
 ///     it is read from a directory you supply, in which case no network access happens at all.
 ///     </para>
@@ -35,12 +35,14 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     downloaded. Latency, first-use time and memory are approximate and machine dependent.
 ///     </para>
 ///     <para>
-///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files (about 30 ms with a warm
+///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files once per model instance
+///     (about 30 ms with a warm
 ///     file cache); the first classification of
 ///     an ambiguous word
 ///     opens the ONNX session and loads the weights in about 0.4 s, and the word lexicon of the core package loads in
-///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every classification has finished
-///     (disposing while one runs is not supported); afterwards
+///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>. Disposing while a classification is running
+///     is safe: the model is marked disposed at once, the running classifications complete normally, and the ONNX
+///     session is released when the last of them finishes; afterwards
 ///     <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c> (reported through the returned task;
 ///     also when the token is already cancelled) throw
 ///     <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
@@ -48,18 +50,23 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     is safe for concurrent use: concurrent classifications share one ONNX session and run in parallel. It runs on
 ///     the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw the
 ///     ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
-///     ignored while an ensure is already in flight.
+///     ignored while an ensure is already in flight. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
+///     of that call only; the shared download continues while other callers wait for it. The opening of the ONNX
+///     session and the inference run synchronously on the thread that continues the call (not offloaded), and a
+///     token is checked between the words, never inside one ONNX run.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
-///     runner-up sense onto 0 to 1, relative to the abstain margin trained for the word (0.5 at that margin, clamped); it
-///     is a ranking score, not a calibrated probability, so choose your own threshold, and never reuse a threshold from
+///     runner-up sense onto 0 to 1, relative to the abstain margin trained for the word (0.5 at that margin, clamped;
+///     the evaluation counts a word as answered from 0.5 up, so 0.5 is the lowest meaningful value); it
+///     is a ranking score, not a calibrated probability, so tune your threshold, starting at the recommended 0.8 for
+///     this model, and never reuse a threshold from
 ///     another model (the Basic model reports a probability and BertBaseCased has its own margin scale). 1 means a
 ///     single-sense word and 0 an unknown word (<c>Details</c> is null); <c>Details</c> is also null for a word with
 ///     several senses whose lemma has no intact weights, which does not happen for the weights embedded in this
 ///     package. A low confidence still carries the best sense. Measured on the real-text sentences (approximate,
 ///     rounded): a threshold of at least 0.6 keeps about 82% of the target words at about 97% precision, at least 0.8
-///     about 73% at about 98%, and at least 0.9 about 69% at about 98% (holdout: 88% at 99%, 79% at 99%, 75% at 99%).
+///     about 73% at about 98% (about one error in fifty), and at least 0.9 about 69% at about 98% (holdout: 88% at 99%, 79% at 99%, 75% at 99%).
 ///     Without a threshold the accuracy is the best-sense figure above; the full table is in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md.
 ///     </para>
@@ -87,7 +94,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <see cref="InvalidDataException"/>. For a corporate mirror pass a
 ///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
-///     requested at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>. A file that fails verification is never used.
+///     requested at <c>{mirror}/all-MiniLM-L6-v2-int8/{file}</c>. A file that fails verification is never used. Variable
+///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
+///     token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; none of this applies, and
+///     the variables are never read, when a model directory was supplied or a <see cref="MirrorOptions"/> is passed;
+///     a <see cref="MirrorOptions.Timeout"/> of zero or less throws <see cref="ArgumentOutOfRangeException"/>.
 ///     </para>
 ///     <para>
 ///     Input: one sentence per call; split punctuation into tokens of their own; keep a contraction such as

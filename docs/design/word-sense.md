@@ -121,6 +121,8 @@ embedded in the encoder packages.
 - `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
   Design_), not in the record.
 - `IWordSenseModel` is `IDisposable` and owns the lifetime; the Basic model's `Dispose` only marks the model as
-  disposed. Disposing a model while a classification is running is not supported.
+  disposed. Disposing a model while a classification is running is safe for every model: the running call completes,
+  new calls throw `ObjectDisposedException`, and an encoder model releases its ONNX session after the last running
+  call.
 - The `model_int8.onnx` file of `bert-base-cased-int8` is the derived encoder export, not the upstream masked
   language model export.

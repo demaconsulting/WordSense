@@ -117,7 +117,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `evaluate <modelId>`, `ud-counts`, `train-basic`, `tune-basic` and `appendix`.
 - **Removed command** (`WordSenseBuilder_Program_RemovedCommand_IsUnknown`): the old command names (`build`, `train`,
   `generate-appendix`, `validate-pos`) are unknown commands and exit with code 1.
-- **Option errors**: an option without a value, an option whose value is another option, and a value without a name exit
-  with code 1 and a message that names the option.
+- **Option errors** (`WordSenseBuilder_Program_MalformedOptions_ReportUsage`): an option without a value, an option whose
+  value is another option, and a value without a name exit with code 1 and the message "Expected '--name value'".
 - **Defaults**: without `--repository` and `--corpus` the paths default to the repository layout below the current
-  directory.
+  directory. This is by inspection of the option parser; no dedicated test exercises it, because every test passes the
+  paths explicitly.
