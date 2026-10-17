@@ -13,7 +13,7 @@ public sealed class ProgramTests : IDisposable
         _dir.Dispose();
     }
 
-    private async Task<(int Code, string Output, string Error)> RunAsync(params string[] args)
+    private static async Task<(int Code, string Output, string Error)> RunAsync(params string[] args)
     {
         using var output = new StringWriter();
         using var error = new StringWriter();
@@ -150,7 +150,7 @@ public sealed class ProgramTests : IDisposable
         Assert.Equal(0, code);
         Assert.Empty(error);
         Assert.Contains("Wrote 1 words to", output, StringComparison.Ordinal);
-        var table = DemaConsulting.WordSense.WordsBlob.Read(File.ReadAllBytes(target));
+        var table = DemaConsulting.WordSense.WordsBlob.Read(await File.ReadAllBytesAsync(target, TestContext.Current.CancellationToken));
         Assert.Equal(2, table["walk"].Length);
     }
 
@@ -184,7 +184,7 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(0, code);
         Assert.Contains("Wrote the appendix of 1 lemmas", output, StringComparison.Ordinal);
-        Assert.Equal(AppendixGenerator.Generate(corpus), File.ReadAllText(target));
+        Assert.Equal(AppendixGenerator.Generate(corpus), await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(0, code);
         Assert.Contains("### Basic rule precision on the training anchors", output, StringComparison.Ordinal);
-        Assert.Equal(output, File.ReadAllText(target));
+        Assert.Equal(output, await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
     }
 
     /// <summary>
@@ -232,6 +232,6 @@ public sealed class ProgramTests : IDisposable
         Assert.Empty(error);
         Assert.Contains("### ", output, StringComparison.Ordinal);
         Assert.Contains("| holdout | 1 |", output, StringComparison.Ordinal);
-        Assert.Contains("- Weights size: 0 KiB", File.ReadAllText(target), StringComparison.Ordinal);
+        Assert.Contains("- Weights size: 0 KiB", await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken), StringComparison.Ordinal);
     }
 }

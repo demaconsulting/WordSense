@@ -18,8 +18,9 @@ internal readonly record struct RuleMatch(string Rule, PartOfSpeech PartOfSpeech
 ///     <para>
 ///     The rules run in the order of <see cref="RuleNames"/>; the first rule that fires wins. A rule fires only when
 ///     the part of speech it selects is one the target word can have. Each rule carries a fixed confidence. The values
-///     below are initial estimates; the builder command <c>basic-precision</c> measures the precision of every rule on
-///     the training anchors so the values can be calibrated to it. Nothing here is trained or learned at run time.
+///     below are fixed constants: each is the part-of-speech precision of its rule measured by the builder command
+///     <c>basic-precision</c> on the 24,461 TRAIN anchors of the corpus (the holdout is never used for calibration),
+///     rounded to two decimals and never above 0.99. Nothing here is trained or learned at run time.
 ///     </para>
 ///     <para>
 ///     The rules use only the public word lexicon: neighbor part-of-speech sets come from
@@ -52,29 +53,29 @@ internal static class Rules
     /// <summary>The rule for a word that can only be a noun directly after the word.</summary>
     internal const string BeforeNoun = "before-noun";
 
-    /// <summary>The initial confidence of <see cref="AfterDeterminer"/>.</summary>
-    internal const double AfterDeterminerConfidence = 0.85;
+    /// <summary>The confidence of <see cref="AfterDeterminer"/>: measured train precision 0.951 (5,626 of 5,913).</summary>
+    internal const double AfterDeterminerConfidence = 0.95;
 
-    /// <summary>The initial confidence of <see cref="AfterModal"/>.</summary>
-    internal const double AfterModalConfidence = 0.9;
+    /// <summary>The confidence of <see cref="AfterModal"/>: measured train precision 0.996 (1,721 of 1,728), capped at 0.99.</summary>
+    internal const double AfterModalConfidence = 0.99;
 
-    /// <summary>The initial confidence of <see cref="AfterTo"/>.</summary>
-    internal const double AfterToConfidence = 0.7;
+    /// <summary>The confidence of <see cref="AfterTo"/>: measured train precision 0.977 (1,561 of 1,597).</summary>
+    internal const double AfterToConfidence = 0.98;
 
-    /// <summary>The initial confidence of <see cref="AfterSubjectPronoun"/>.</summary>
-    internal const double AfterSubjectPronounConfidence = 0.8;
+    /// <summary>The confidence of <see cref="AfterSubjectPronoun"/>: measured train precision 0.991 (1,542 of 1,556).</summary>
+    internal const double AfterSubjectPronounConfidence = 0.99;
 
-    /// <summary>The initial confidence of <see cref="AfterPreposition"/>.</summary>
-    internal const double AfterPrepositionConfidence = 0.7;
+    /// <summary>The confidence of <see cref="AfterPreposition"/>: measured train precision 0.819 (682 of 833).</summary>
+    internal const double AfterPrepositionConfidence = 0.82;
 
-    /// <summary>The initial confidence of <see cref="AfterDegreeAdverb"/>.</summary>
-    internal const double AfterDegreeAdverbConfidence = 0.7;
+    /// <summary>The confidence of <see cref="AfterDegreeAdverb"/>: measured train precision 0.889 (88 of 99).</summary>
+    internal const double AfterDegreeAdverbConfidence = 0.89;
 
-    /// <summary>The initial confidence of <see cref="BeforeAuxiliary"/>.</summary>
-    internal const double BeforeAuxiliaryConfidence = 0.7;
+    /// <summary>The confidence of <see cref="BeforeAuxiliary"/>: measured train precision 0.973 (511 of 525).</summary>
+    internal const double BeforeAuxiliaryConfidence = 0.97;
 
-    /// <summary>The initial confidence of <see cref="BeforeNoun"/>.</summary>
-    internal const double BeforeNounConfidence = 0.6;
+    /// <summary>The confidence of <see cref="BeforeNoun"/>: measured train precision 0.767 (102 of 133).</summary>
+    internal const double BeforeNounConfidence = 0.77;
 
     private static readonly FrozenSet<string> Determiners = Set(
         "the", "a", "an", "this", "these", "those", "my", "your", "his", "her", "its", "our", "their",

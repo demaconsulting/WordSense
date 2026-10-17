@@ -34,7 +34,7 @@ public class WordLexiconTests
     {
         Assert.True(WordLexicon.Words.TryGetValue("record", out var senses));
 
-        var parts = senses!.Select(s => s.PartOfSpeech).ToHashSet();
+        var parts = senses.Select(s => s.PartOfSpeech).ToHashSet();
         Assert.Contains(PartOfSpeech.Noun, parts);
         Assert.Contains(PartOfSpeech.Verb, parts);
     }
@@ -47,7 +47,7 @@ public class WordLexiconTests
     {
         Assert.True(WordLexicon.Words.TryGetValue("records", out var senses));
 
-        Assert.Contains(senses!, s => s.Lemma == "record");
+        Assert.Contains(senses, s => s.Lemma == "record");
     }
 
     /// <summary>
