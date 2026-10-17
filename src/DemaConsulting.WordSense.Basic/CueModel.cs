@@ -187,14 +187,6 @@ internal static class CueModel
     /// <returns>True when a character is a letter.</returns>
     public static bool HasLetter(string token)
     {
-        foreach (var ch in token)
-        {
-            if (char.IsLetter(ch))
-            {
-                return true;
-            }
-        }
-
-        return false;
+        return token.Any(char.IsLetter);
     }
 }

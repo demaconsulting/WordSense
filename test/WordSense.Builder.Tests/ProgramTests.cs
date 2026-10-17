@@ -211,6 +211,7 @@ public sealed class ProgramTests : IDisposable
         Assert.Contains("was not found", error, StringComparison.Ordinal);
     }
 
+    /// <summary>
     ///     The evaluate command accepts the model id as second argument and evaluates the basic model quickly.
     /// </summary>
     [Fact]

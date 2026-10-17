@@ -83,7 +83,10 @@ internal static class BasicTuner
     {
         ArgumentNullException.ThrowIfNull(anchors);
         var order = Enumerable.Range(0, anchors.Count).ToArray();
+        // A seeded generator is required here: the split must be reproducible, and nothing is security-sensitive
+#pragma warning disable S2245
         var random = new Random(BasicHyperparameters.AnchorSeed);
+#pragma warning restore S2245
         for (var i = order.Length - 1; i > 0; i--)
         {
             var j = random.Next(i + 1);

@@ -35,9 +35,9 @@ internal static class SenseFusion
         var count = senses.Length;
         Span<double> mass = stackalloc double[PosTag.Count];
         mass.Clear();
-        foreach (var sense in senses)
+        foreach (var pos in senses.Select(sense => PosTag.Of(sense.PartOfSpeech)))
         {
-            mass[PosTag.Of(sense.PartOfSpeech)] = posteriors[PosTag.Of(sense.PartOfSpeech)];
+            mass[pos] = posteriors[pos];
         }
 
         var total = 0.0;

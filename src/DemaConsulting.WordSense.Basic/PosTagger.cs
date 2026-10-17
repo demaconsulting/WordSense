@@ -98,7 +98,7 @@ internal static class PosTagger
             var lattice = new Lattice(tables.Transition, emission, allowed, counts, offsets, alpha.AsSpan(0, total), beta.AsSpan(0, total));
             lattice.Forward();
             lattice.Backward();
-            lattice.Posteriors(posteriors);
+            lattice.Combine(posteriors);
         }
         finally
         {
@@ -316,7 +316,7 @@ internal static class PosTagger
         ///     Combines both passes into the tag posteriors of every position.
         /// </summary>
         /// <param name="posteriors">Receives <see cref="PosTag.Count"/> probabilities per position, zeroed by the caller.</param>
-        public void Posteriors(Span<double> posteriors)
+        public void Combine(Span<double> posteriors)
         {
             for (var i = 0; i < _counts.Length; i++)
             {
@@ -388,6 +388,6 @@ internal static class PosTagger
 
         private double Emission(int position, int tag) => _emission[(position * K) + tag];
 
-        private double Probability(int a, int b, int c) => _transition[(((a * X) + b) * X) + c];
+        private double Probability(int first, int second, int third) => _transition[(((first * X) + second) * X) + third];
     }
 }

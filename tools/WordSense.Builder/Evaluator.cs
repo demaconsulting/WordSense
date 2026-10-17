@@ -252,9 +252,14 @@ internal static class Evaluator
         sets.Add(await ScoreAsync("real-text", real, classifier, gold, cancellationToken).ConfigureAwait(false));
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
-        var basic = info.IsEncoder
-            ? null
-            : new BasicDetails(tableBytes, coldLoadMs, holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds * 1000 / Math.Max(1, holdout.Sum(r => r.Words.Count)), latency * 1000);
+        BasicDetails? basic = null;
+        if (!info.IsEncoder)
+        {
+            var wordCount = Math.Max(1, holdout.Sum(r => r.Words.Count));
+            var perWordUs = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds * 1000 / wordCount;
+            basic = new BasicDetails(tableBytes, coldLoadMs, perWordUs, latency * 1000);
+        }
+
         return new EvaluationResult(info.Name, sets, File.Exists(weights) ? new FileInfo(weights).Length : 0, latency, wordsMs, wordsBytes, basic);
     }
 
