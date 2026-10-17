@@ -18,7 +18,8 @@ Both TSV files are UTF-8 without a byte-order mark, with LF line endings, in a d
 
 - Source: the UD English-EWT treebank (English Web Treebank), <https://github.com/UniversalDependencies/UD_English-EWT>.
 - Pinned commit: `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`.
-- Files counted: the training and development parts only; the test part is never used.
+- Files counted: the training part only (the development part is verified and used only for tuning); the test part is
+  never used.
   - `en_ewt-ud-train.conllu`, SHA-256 `D68E06122A702464C613076523D56740F047E5BBE89DD90EC32737E04D952143`
   - `en_ewt-ud-dev.conllu`, SHA-256 `39239E0A60DB3AE68F4B7036189F11B6692741D10FF8240DD91F74F2760D90F8`
 - License: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0), see

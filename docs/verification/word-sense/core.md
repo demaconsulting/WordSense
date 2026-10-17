@@ -38,8 +38,9 @@ by a test double with no model package referenced (`ContractsTests`). The scenar
 
 #### No ONNX Dependency
 
-The package does not reference ONNX Runtime or any other WordSense package; this is verified by inspecting the project
-references, and it is why the core test project runs without model files.
+The package does not reference ONNX Runtime or any other WordSense package; the automated test
+`WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences` (`ContractsTests`) checks the assembly references, and it
+is why the core test project runs without model files.
 
 #### XML Documentation Examples Compile
 

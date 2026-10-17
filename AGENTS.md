@@ -6,7 +6,7 @@
 - **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
   ambiguous English words in context, offline. It ships as five layered NuGet packages: `DemaConsulting.WordSense`,
   the core (public contracts, embedded lexicon with build-time inflections; no ONNX dependency, no model);
-  `DemaConsulting.WordSense.Basic` (deterministic closed-class and neighbor-part-of-speech rules; no model files);
+  `DemaConsulting.WordSense.Basic` (statistical part-of-speech tagger and context-cue model; no model files);
   `DemaConsulting.WordSense.Onnx` (shared WordPiece tokenizer, ONNX encoder, verified model downloader with mirror
   support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Basic and Onnx

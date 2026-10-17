@@ -21,7 +21,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Single-sense word** (`..._SingleSenseWord_ReturnsEntryWithFullConfidence`): a word with one entry gives
   `(word, entry, 1.0)` and the word is returned as written.
 - **Ambiguous word always answers** (`..._AmbiguousWord_AlwaysAnswersWithProbability`): a word with several senses has
-  details and a confidence of at least one over the number of senses and below 1.
+  details and a confidence of at least one over the number of senses and at most 1.
 - **Context chooses the part of speech** (`..._Context_ChoosesPartOfSpeech`): the sentence context decides between a
   noun and a verb sense of the same word.
 - **Same part of speech uses cues** (`..._SamePartOfSpeech_UsesCues`): senses that share a part of speech are told apart

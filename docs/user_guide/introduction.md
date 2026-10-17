@@ -48,9 +48,10 @@ test suite; the samples in this guide are reviewed with the guide. They assume `
 - **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
   speech engine and not a phonetic transcription.
 - **Confidence**: a number from 0 to 1 in each result. It is 1 for a word with one sense and 0 for an unknown word
-  or an abstention. For a model-decided word it grows with the model's score margin; it is not a calibrated
-  probability.
-- **Abstain**: to give no sense for a known word that has several senses: `Details` is `null` and `Confidence` is 0.
+  or an abstention. For a word decided by an encoder model it grows with the model's score margin; for the Basic
+  model it is the relative probability of the chosen sense. It is not a calibrated probability.
+- **Abstain**: an encoder model gives no sense for a known word that has several senses (for example when it has no
+  weights for the lemma): `Details` is `null` and `Confidence` is 0. The Basic model never abstains.
 - **Mirror**: an HTTP(S) location, usually inside your network, that serves the model files.
 - **Model directory**: a folder that holds the exact model files, used instead of a download.
 
@@ -429,9 +430,10 @@ with plain http for a host that is not loopback.
 
 ## A Word Returns Nothing
 
-`Details` is `null` for a word that is unknown, or that has several senses and no decision. Check
+`Details` is `null` for a word that is unknown, or that has several senses and no decision (encoder models only). Check
 `WordLexicon.Words.ContainsKey(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table. When it is
-`true` with several senses, the model abstained or has no weights for the lemma; an encoder model with a lemma in the
+`true` with several senses, an encoder model abstained or has no weights for the lemma (the Basic model never
+abstains); an encoder model with a lemma in the
 appendix gives its best candidate with a low confidence rather than `null`.
 
 # References

@@ -557,11 +557,9 @@ On verbs the tag is a little harder than on nouns (96.86 % against 98.19 %): a b
 ## Licence Decision
 
 About 12 % of the rows written before the gate come from UD EWT, UD CTeTex and Wiktionary, which are CC BY-SA 4.0
-(share-alike); the rest is Tatoeba (CC BY 2.0 FR and CC0) and public-domain Project Gutenberg. The table holds only
-trained vectors, not sentences, and the same policy already covers the UD and Tatoeba material of earlier phases. This
-needs a decision by the project owner (whether trained vectors from share-alike sentences carry the share-alike
-condition). Decision for now: keep the rows as they are, mark every row with its licence in `provenance` and record
-the question here.
+; the rest is Tatoeba (CC BY 2.0 FR and CC0) and public-domain Project Gutenberg. Decision (project owner):
+attribution only is acceptable; the CC BY-SA 4.0 sources are credited with their URLs and license in the README
+section "Credits and licenses".
 
 ## Policy Rationale and Noise Caveat
 
@@ -579,7 +577,6 @@ the question here.
 
 ## Open Items
 
-- Licence: the share-alike question above is open for the maintainer to confirm.
 - Judging was done by LLM judges, with the tagger as the second opinion; no human judged a row. The blind audit of 400
   rows by a fresh LLM judge found 99.25 % agreement; a human spot check remains optional.
 - No real-text evaluation rows exist for the new lemmas that are separate from the holdout (see "Real-Text

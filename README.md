@@ -52,9 +52,11 @@ in Git LFS.
 
 ## Usage
 
-The examples below are checked by the test suite (`ReadmeSampleTests`): each code block must equal the compiled sample
-code in `test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs`, and each output block must equal what that code
-prints. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and troubleshooting.
+The examples below are checked by the test suite (`ReadmeSampleTests`, `BasicReadmeSampleTests` and
+`ModelTableReadmeTests`): each code block must equal the compiled sample
+code in `test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs` (MiniLM) or
+`test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSample.cs` (Basic), and each output block must equal what that
+code prints. The [user guide][link-user-guide] covers the rest of the API, mirrors, limitations and troubleshooting.
 
 ### MiniLM
 
@@ -112,7 +114,7 @@ await model.EnsureModelAsync();
 var words = "They record the record".Split(' ');
 var results = await model.Create().ClassifyAsync(words);
 
-// A word the model cannot decide has no details and a confidence of 0
+// A word that is not in the dictionary has no details and a confidence of 0
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
@@ -131,8 +133,8 @@ record    Noun         1.00
 A word that is not in the dictionary has no details and a confidence of 0. A word with one meaning is answered with
 confidence 1. A word with several meanings is resolved from its sentence by the model; its confidence is defined by the
 model package (the `Basic` model reports the probability of its answer among the senses of the word; the ONNX models
-derive it from the margin of the
-trained classifier, and the best candidate is still returned when the confidence is low). The encoder runs only for a
+derive it from the margin of the trained classifier, and the best candidate is still returned when the confidence is
+low). The encoder runs only for a
 sentence that has a word that needs it. Encoder model files are stored in a per-user directory under their model ID
 (for example `all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL`
 (optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
@@ -146,9 +148,9 @@ the [user guide][link-user-guide] for details and the [senses appendix][link-app
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| minilm | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 23 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
-| bert-base-cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
-| basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
+| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 23 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
+| BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
+| Basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

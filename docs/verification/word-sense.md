@@ -59,8 +59,9 @@ satisfied only by a passing result from its own platform or framework.
 ### Lexicon-Only Classification with the Basic Model
 
 The Basic test project classifies a short word list through `BasicWordSenseModel`, with no model files: a word with
-one sense is answered with confidence 1, a word without a lexicon entry is unknown, and a heteronym with a clear
-neighbor (for example after a modal verb) is resolved by a rule.
+one sense is answered with confidence 1, a word without a lexicon entry is unknown with confidence 0, and a word with
+several senses is answered with the probability of its chosen sense. Repeated calls give identical results, and the
+embedded statistics table loads on first use.
 
 ### Core Package Has No ONNX Dependency
 

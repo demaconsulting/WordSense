@@ -54,10 +54,14 @@ public class CueModelTests
         var first = CueModel.Extract(["bass", "x"], 0, features);
         var firstKinds = features[..first].Select(f => f.Kind).ToArray();
         var alone = CueModel.Extract(["bass"], 0, features);
+        var last = CueModel.Extract(["x", "bass"], 1, features);
+        var lastKinds = features[..last].Select(f => f.Kind).ToArray();
 
         Assert.DoesNotContain(CueModel.Left, firstKinds);
         Assert.Contains(CueModel.Right, firstKinds);
         Assert.Equal(0, alone);
+        Assert.Contains(CueModel.Left, lastKinds);
+        Assert.DoesNotContain(CueModel.Right, lastKinds);
     }
 
     /// <summary>

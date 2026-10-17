@@ -70,7 +70,7 @@ differently (`record`, `bow`).
 The inventory must list exactly the senses used by the anchors: an anchor label missing from the inventory, or an
 inventory sense without anchors, fails the build.
 
-Inventory rules (checked by `validate-pos` and by every build): every sense has a defined part of speech; meanings are
+Inventory rules (checked by every build): every sense has a defined part of speech; meanings are
 all or none within a lemma; a lemma with meanings (a heteronym) has at least two distinct meanings; a
 (part of speech, meaning) pair appears once per lemma, so two senses of one part of speech are allowed only with
 different meanings; one meaning always has the same respelling; distinct meanings have distinct respellings. A lemma

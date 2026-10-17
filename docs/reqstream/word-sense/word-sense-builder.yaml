@@ -54,7 +54,8 @@ sections:
           - id: WordSense-WordSenseBuilder-UdCounts
             title: >-
               The builder shall count part-of-speech tag n-grams and word-tag pairs from the pinned Universal
-              Dependencies English-EWT training and development files, after verifying their checksums, and write the
+              Dependencies English-EWT training file, after verifying its checksum (and the development file used for
+              tuning), and write the
               counts deterministically to the corpus.
             tags: [unit]
             justification: |

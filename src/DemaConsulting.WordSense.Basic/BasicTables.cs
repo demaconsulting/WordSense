@@ -28,7 +28,18 @@ internal sealed class WordEntry
         ArgumentNullException.ThrowIfNull(counts);
         ClosedMask = closedMask;
         Counts = counts;
-        Total = counts.Sum();
+        long total = 0;
+        foreach (var count in counts)
+        {
+            total += count;
+        }
+
+        if (total > int.MaxValue)
+        {
+            throw new InvalidDataException("The basic table has a word count that is too large.");
+        }
+
+        Total = (int)total;
     }
 
     /// <summary>
@@ -374,7 +385,7 @@ internal sealed class BasicTables
 
     private static void ValidateParameters(double[] p)
     {
-        if (p.Any(v => !double.IsFinite(v)) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0)
+        if (p.Any(v => !double.IsFinite(v) || v > 1e6) || p[0] <= 0 || p[1] <= 0 || p[2] < 0 || p[3] < 0 || p[4] < 0 || p[5] < 0 || p[6] < 0)
         {
             throw new InvalidDataException("The basic table has invalid hyper-parameters.");
         }

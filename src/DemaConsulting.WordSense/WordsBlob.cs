@@ -17,6 +17,8 @@ internal static class WordsBlob
 {
     private static readonly byte[] Magic = "WSW1"u8.ToArray();
 
+    private static readonly UTF8Encoding StrictUtf8 = new(false, true);
+
     /// <summary>
     ///     Deserializes a word lexicon.
     /// </summary>
@@ -33,10 +35,6 @@ internal static class WordsBlob
             using var raw = new MemoryStream();
             brotli.CopyTo(raw);
             data = raw.ToArray();
-        }
-        catch (InvalidDataException)
-        {
-            throw;
         }
         catch (Exception ex) when (ex is IOException or InvalidOperationException)
         {
@@ -56,7 +54,15 @@ internal static class WordsBlob
         {
             var length = ReadVarint(span, ref position);
             Require(span, position, length);
-            strings[i] = Encoding.UTF8.GetString(span.Slice(position, length));
+            try
+            {
+                strings[i] = StrictUtf8.GetString(span.Slice(position, length));
+            }
+            catch (ArgumentException ex)
+            {
+                throw new InvalidDataException("The word lexicon has an invalid text.", ex);
+            }
+
             position += length;
         }
 
@@ -132,6 +138,11 @@ internal static class WordsBlob
             }
 
             var b = span[position++];
+            if (shift == 28 && (b & 0x7F) > 0x0F)
+            {
+                throw new InvalidDataException("A number is too large.");
+            }
+
             result |= (uint)(b & 0x7F) << shift;
             if ((b & 0x80) == 0)
             {

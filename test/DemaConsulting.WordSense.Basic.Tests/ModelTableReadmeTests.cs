@@ -68,8 +68,8 @@ public class ModelTableReadmeTests
         var lines = TableLines(generated, "docs/build_notes/model-table.md");
 
         Assert.Equal(5, lines.Length);
-        Assert.Contains(lines, l => l.StartsWith("| basic |", StringComparison.Ordinal));
-        Assert.Contains(lines, l => l.StartsWith("| minilm |", StringComparison.Ordinal));
-        Assert.Contains(lines, l => l.StartsWith("| bert-base-cased |", StringComparison.Ordinal));
+        Assert.Contains(lines, l => l.StartsWith("| Basic |", StringComparison.Ordinal));
+        Assert.Contains(lines, l => l.StartsWith("| MiniLM |", StringComparison.Ordinal));
+        Assert.Contains(lines, l => l.StartsWith("| BERT base cased |", StringComparison.Ordinal));
     }
 }

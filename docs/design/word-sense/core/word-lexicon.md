@@ -23,7 +23,7 @@ possible senses. Every model starts from it, and a word with one sense never nee
 
 - `WordLexicon.Words` (property): returns the dictionary. The dictionary is built on first access, thread-safely and
   exactly once (`Lazy` with execution-and-publication), and is immutable afterwards.
-- `WordsBlob.Read(stream)` (internal): decodes the blob into the dictionary and validates every reference.
+- `WordsBlob.Read(ReadOnlySpan<byte>)` (internal): decodes the blob into the dictionary and validates every reference.
 
 #### Error Handling
 

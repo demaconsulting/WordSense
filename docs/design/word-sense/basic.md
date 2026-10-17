@@ -51,7 +51,7 @@ each segment independently:
      most probable sense with that probability as its confidence.
 
 An ambiguous word is therefore always answered, and its confidence is the probability of the winner, at least one over
-the number of senses and below 1. The confidence is a relative score, not a calibrated probability, but a higher value
+the number of senses and at most 1. The confidence is a relative score, not a calibrated probability, but a higher value
 is more often right: the builder's `evaluate basic` reports the accuracy per confidence bucket and the coverage and
 precision at fixed thresholds, so a caller can trade coverage for precision with a threshold. Ties go to the sense
 that comes first in the lexicon entry.

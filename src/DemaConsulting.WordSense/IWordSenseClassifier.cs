@@ -15,8 +15,8 @@ namespace DemaConsulting.WordSense;
 ///     as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the confidence is 0.
 ///     A word with one sense is answered with confidence 1. A word with several senses is resolved from its context;
 ///     how the context is used, and what the confidence means, is defined by each model package (see
-///     <see cref="WordSense"/>). A model that cannot
-///     decide leaves <see cref="WordSense.Details"/> null with confidence 0.
+///     <see cref="WordSense"/>). A model that has no basis to choose (for example an encoder model without weights
+///     for the lemma) leaves <see cref="WordSense.Details"/> null with confidence 0; the Basic model always answers.
 ///     </para>
 ///     <para>
 ///     A classifier is safe for concurrent use. It does not own the model that created it, so disposing the model
@@ -57,7 +57,8 @@ public interface IWordSenseClassifier
 /// <remarks>
 ///     <para>
 ///     <see cref="Details"/> is null when the word is unknown, or when it has several senses and the model could not
-///     choose one; <see cref="Confidence"/> is then 0.
+///     choose one (a model without a basis to choose, such as an encoder model without weights for the lemma); the
+///     Basic model never leaves it null for a known word. <see cref="Confidence"/> is then 0.
 ///     </para>
 ///     <para>
 ///     Confidence is a number from 0 to 1: 0 means unknown or undecided, 1 means the word has only one sense in the

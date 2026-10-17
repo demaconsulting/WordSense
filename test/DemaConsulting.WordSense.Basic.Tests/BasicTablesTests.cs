@@ -117,6 +117,22 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     Word counts whose sum exceeds the 32-bit range are rejected as corrupt data, not as an overflow.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_CountSumOverflow_ThrowsInvalidData()
+    {
+        // Arrange: a word whose two counts together exceed int.MaxValue
+        var counts = new int[PosTag.Count];
+        counts[0] = int.MaxValue;
+        counts[1] = int.MaxValue;
+        var blob = TestTables.Build([("record", 0, counts)], [], []);
+
+        // Act and Assert
+        Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+    }
+
+    /// <summary>
     ///     The table embedded in the assembly loads and has statistics.
     /// </summary>
     [Fact]

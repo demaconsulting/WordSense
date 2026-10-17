@@ -432,7 +432,19 @@ internal static class UdSource
             if (!File.Exists(path))
             {
                 var bytes = await client.GetByteArrayAsync(UrlOf(name), cancellationToken).ConfigureAwait(false);
-                await File.WriteAllBytesAsync(path, bytes, cancellationToken).ConfigureAwait(false);
+                var partial = path + ".tmp";
+                await File.WriteAllBytesAsync(partial, bytes, cancellationToken).ConfigureAwait(false);
+                try
+                {
+                    Verify(partial, sha);
+                }
+                catch (InvalidDataException)
+                {
+                    File.Delete(partial);
+                    throw;
+                }
+
+                File.Move(partial, path, true);
             }
 
             Verify(path, sha);

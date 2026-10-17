@@ -45,7 +45,7 @@ sections:
           Runtime, weights or vector dependency and every other package builds on the core contracts.
         tags: [system]
         justification: |
-          Callers that need only the lexicon or the statistical basic model must not pay for a native runtime or a model
+          Callers that need only the lexicon or the statistical Basic model must not pay for a native runtime or a model
           file; layering lets each caller take exactly the packages it needs, and lets a third party implement the
           core contracts with its own model.
         children:
@@ -85,7 +85,8 @@ sections:
           with trained per-lemma weights embedded in the package.
         tags: [system]
         justification: |
-          Context-aware models are more accurate than rules; two encoders let callers trade size and speed (MiniLM)
+          Context-aware models are more accurate than a dictionary alone; two encoders let callers trade size and
+          speed (MiniLM)
           against accuracy and case sensitivity (BERT base cased), and embedding the weights keeps each package
           self-contained apart from the model files.
         children:
@@ -100,8 +101,6 @@ sections:
 
       - id: WordSense-Lib-Confidence
         title: >-
-          The system shall report a confidence between 0 and 1 with every result, shall give the best candidate
-          with a low confidence rather than none where the model can rank candidates, and shall report no sense and
           The system shall report a confidence between 0 and 1 with every result, shall give the best candidate
           with a low confidence rather than none where the model can rank candidates, and shall report no sense and
           confidence 0 where it cannot decide, as for a word it does not know.

@@ -14,8 +14,7 @@ layered NuGet packages, each modeled as a subsystem, plus a non-shipped build-ti
 - **Core** (`DemaConsulting.WordSense`): the word lexicon and the contracts. It has no vectors, weights, ONNX code or
   third-party dependency. See _Core Design_.
 - **Basic** (`DemaConsulting.WordSense.Basic`): a model that chooses among the senses of an ambiguous word with a
-  statistical part-of-speech tagger and context cues
-and needs no files, weights or network. See _Basic Design_.
+  statistical part-of-speech tagger and context cues, and needs no files, weights or network. See _Basic Design_.
 - **Onnx** (`DemaConsulting.WordSense.Onnx`): the machinery shared by the encoder models: model file download and
   verification, the ONNX encoder and tokenizer, per-lemma weights and the classifier that scores senses. See _Onnx
   Design_.
@@ -46,8 +45,7 @@ model it wants. The contracts in core are the seam between callers and models: a
 - Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
   the mirror's own origin only.
 - Builder command line (in/out): `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`, `tune-basic` and
-  `appendix`; build time only,
-  never shipped.
+  `appendix`; build time only, never shipped.
 
 ## Dependencies
 
@@ -85,8 +83,8 @@ wrong answer.
    - no entry: the result is the word, no details, confidence 0;
    - one entry: the word, that entry, confidence 1;
    - several entries: the model decides. Basic estimates the part of speech of every word of the sentence with a hidden
-     Markov model, scores the senses
-     from the neighboring words and picks the most probable sense, so it always answers. An encoder model runs the
+     Markov model, scores the senses from the neighboring words and picks the most probable sense, so it always
+     answers. An encoder model runs the
      encoder once over the text (only when some word needs it), pools the hidden states of the word, centers and
      scales the vector, scores the word's candidate senses with the lemma's weights and derives a confidence from the
      score margin.
@@ -113,7 +111,8 @@ embedded in the encoder packages.
 
 ### Deviations and Known Limitations
 
-- There are no capitalization or possessive heuristics; the encoder sees the text as
+- There is no sentence-level normalization of capitalization or possessives beyond what the models do themselves: the
+  Basic tagger uses a capitalized flag and a suffix table, and the encoder sees the text as
   given (the cased model keeps case, the uncased model lower-cases it).
 - The weights format `WSX1` supports dense weights only; there is no sparse variant.
 - `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit

@@ -36,7 +36,7 @@ internal sealed class BasicReadmeSample
         var words = "They record the record".Split(' ');
         var results = await model.Create().ClassifyAsync(words);
 
-        // A word the model cannot decide has no details and a confidence of 0
+        // A word that is not in the dictionary has no details and a confidence of 0
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
