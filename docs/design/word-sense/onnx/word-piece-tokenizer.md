@@ -25,8 +25,8 @@ tokens; it can build the encoder input window around a target word.
 
 #### Error Handling
 
-A missing vocabulary file throws `FileNotFoundException`; a vocabulary without the required special tokens throws
-`InvalidDataException`.
+A vocabulary file that cannot be read raises an `IOException` (for example `FileNotFoundException`); a vocabulary without
+the required special tokens throws `ArgumentException`; null arguments throw `ArgumentNullException`.
 
 #### Dependencies
 

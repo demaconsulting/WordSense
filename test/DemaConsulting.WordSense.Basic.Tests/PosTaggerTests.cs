@@ -17,6 +17,19 @@ public class PosTaggerTests
     private static double At(double[] posteriors, int position, int tag) => posteriors[(position * PosTag.Count) + tag];
 
     /// <summary>
+    ///     An unknown word that is capitalized inside the sentence is a noun; at the sentence start it is not forced.
+    /// </summary>
+    [Fact]
+    public void PosTagger_Posteriors_CapitalizedUnknownWord_IsNounInsideSentenceOnly()
+    {
+        var inside = Run([TaggerToken.Word("they", 0, false), TaggerToken.Word("zorped", 0, true)]);
+        var start = Run([TaggerToken.Word("zorped", 0, true), TaggerToken.Word("they", 0, false)]);
+
+        Assert.Equal(1.0, At(inside, 1, PosTag.Noun), 9);
+        Assert.True(At(start, 0, PosTag.Noun) < 1.0);
+    }
+
+    /// <summary>
     ///     A word after a determiner is a noun when the word could be either.
     /// </summary>
     [Fact]

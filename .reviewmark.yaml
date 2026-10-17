@@ -152,6 +152,7 @@ reviews:
       - "docs/verification/word-sense/core.md"
       - "src/DemaConsulting.WordSense/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/ReferenceTokenizerTests.cs"
 
   # WordSense-Core-WordLexicon Review (one per unit)
   - id: WordSense-Core-WordLexicon
@@ -194,6 +195,7 @@ reviews:
       - "docs/verification/word-sense/basic.md"
       - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"
       - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/TestTables.cs"
 
   # WordSense-Basic-BasicWordSenseModel Review (one per unit)
   - id: WordSense-Basic-BasicWordSenseModel
@@ -299,7 +301,9 @@ reviews:
       - "docs/design/word-sense/onnx/onnx-word-sense-model.md"
       - "docs/verification/word-sense/onnx/onnx-word-sense-model.md"
       - "src/DemaConsulting.WordSense.Onnx/OnnxWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense.Onnx/InFlightTracker.cs"
       - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/InFlightTrackerTests.cs"
 
   # WordSense-Onnx-OnnxClassifier Review (one per unit)
   - id: WordSense-Onnx-OnnxClassifier
@@ -398,6 +402,7 @@ reviews:
       - "docs/design/word-sense/mini-lm.md"
       - "docs/verification/word-sense/mini-lm.md"
       - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/EndToEndTests.cs"
 
   # WordSense-MiniLM-MiniLMWordSenseModel Review (one per unit)
   - id: WordSense-MiniLM-MiniLMWordSenseModel
@@ -411,6 +416,7 @@ reviews:
       - "docs/verification/word-sense/mini-lm/mini-lm-word-sense-model.md"
       - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
       - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelFolder.cs"
 
   # WordSense-BertBaseCased Review (one per subsystem)
   - id: WordSense-BertBaseCased
@@ -437,6 +443,7 @@ reviews:
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/ModelFolder.cs"
 
   # OTS-ApiMark Review (one per OTS item)
   - id: OTS-ApiMark

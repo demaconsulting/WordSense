@@ -17,7 +17,8 @@ sections:
                   The identifier names the model's folder in the repository, on a mirror and in the store, and the
                   weights were trained for exactly this cased encoder.
                 tests:
-                  - BertBaseCasedWordSenseModel_ModelIdAndHiddenSize_AreBertBaseCased
+                  - BertBaseCasedWordSenseModel_Identity_IsCased
+                  - BertBaseCasedWordSenseModel_Identity_IsPinned
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Files
                 title: >-
@@ -27,7 +28,10 @@ sections:
                 justification: |
                   A model file that does not match the pinned digest could silently change results.
                 tests:
+                  - BertBaseCasedWordSenseModel_Files_ArePinnedBySha256
                   - BertBaseCasedWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
 
               - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Weights
                 title: >-

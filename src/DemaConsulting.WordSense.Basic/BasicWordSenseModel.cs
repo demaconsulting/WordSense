@@ -21,7 +21,7 @@ namespace DemaConsulting.WordSense.Basic;
 ///     disposed, for the same rules as every <see cref="IWordSenseModel"/>: afterwards <see cref="EnsureModelAsync"/>
 ///     and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/> (from the call itself, not through
 ///     a returned task, and before any other check, so also when the token is already cancelled). Disposing while a
-///     classification is running is not supported, but nothing is released, so the running call completes. Dispose it with <c>using</c> like
+///     classification is running is safe: nothing is released, so the running call completes. Dispose it with <c>using</c> like
 ///     any other model. One instance can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional
 ///     (it only returns a completed task) and <see cref="ClassifyAsync"/> needs no preceding call: there is nothing
 ///     to ensure, so its lazy ensure is a no-op. If the token passed to <see cref="EnsureModelAsync"/> is

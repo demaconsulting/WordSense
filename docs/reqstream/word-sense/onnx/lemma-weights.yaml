@@ -60,7 +60,6 @@ sections:
                   - LemmaWeights_Scores_OneVersusRest_ReturnsOneScorePerRow
                   - LemmaWeights_Rank_ReturnsBestAndMargin
                   - LemmaWeights_Confidence_IsMonotonicAndClamped
-                  - LemmaWeights_Confidence_IsMonotonicAndClamped
 
               - id: WordSense-Onnx-LemmaWeights-Embedded
                 title: >-

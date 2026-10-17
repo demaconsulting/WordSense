@@ -1,5 +1,9 @@
 # Part-of-Speech Audit
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 Every anchor and holdout sentence of the corpus was judged for the real part of speech and form of the braced
 word. The audit is the evidence behind the relabel of the sense inventory (see `corpus/audit/`).
 

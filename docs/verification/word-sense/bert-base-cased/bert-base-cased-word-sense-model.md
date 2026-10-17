@@ -18,11 +18,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Pinned identity**: `ModelId` is `bert-base-cased-int8` and `HiddenSize` is 768 before any setup.
+- **Pinned identity**: `ModelId` is `bert-base-cased-int8`, `HiddenSize` is 768 and the vocabulary is cased before any
+  setup; the four files are pinned by SHA-256 digests.
 - **Model directory is verified**: a directory with all four files passes `EnsureModelAsync`; a missing or altered file
-  is refused.
+  is refused (verified for every model in `OnnxWordSenseModelTests`).
 - **Embedded weights load with zero dropped lemmas**: the weights embedded in the assembly load for the model id and hidden
   size and match the embedded lexicon with no lemma dropped.
-- **Cased classification**: the committed model classifies the first `record` of "The record was broken last year, so
-  they will record the new album." as a noun and the second as a verb.
+- **Cased classification**: the committed model classifies the words of "They will record the record." with a verb for
+  the first `record` and a noun for the second.
+- **Disposal**: `EnsureModelAsync` and `ClassifyAsync` after disposal throw `ObjectDisposedException`.
 - **Constructor validation**: a maximum sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.

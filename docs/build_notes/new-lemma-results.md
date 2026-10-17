@@ -1,5 +1,9 @@
 # New Lemma Results (Phase 4)
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 Phase 4 adds new lemmas to the table. This page records batch 1 first, batches 2 to 5 after it
 (see [Batches 2 to 5](#batches-2-to-5)) and the final state after the authored sentences
 (see [Final Results](#final-results)). Batch 1: thirteen lemmas with 28 senses. The

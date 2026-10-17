@@ -1,5 +1,9 @@
 # Authoring Prompt (frozen)
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 Two independent authors write the sentences that complete senses real text cannot fill: the **Anchor author** (training
 sentences) and the **Holdout author** (evaluation sentences). Use a fresh agent for each role, with no shared context.
 Neither author sees the other's menu or output. Each author gets only its own menu file and the rules below. The files

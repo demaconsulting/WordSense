@@ -178,4 +178,48 @@ public class BasicWordSenseModelTests
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["They", "record"], TestContext.Current.CancellationToken));
         await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync([], TestContext.Current.CancellationToken));
     }
+
+    /// <summary>
+    ///     A classification that has started completes normally when the model is disposed afterwards: the Basic model
+    ///     releases nothing, so a running call is never disturbed.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_Dispose_DuringClassification_RunningCallCompletes()
+    {
+        var model = new BasicWordSenseModel();
+        string[] words = ["They", "will", "record", "the", "record", "."];
+        var expected = await model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+
+        var running = model.ClassifyAsync(words, TestContext.Current.CancellationToken);
+        model.Dispose();
+
+        Assert.Equal(expected, await running);
+    }
+
+    /// <summary>
+    ///     A null word list is rejected.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_NullWords_Throws()
+    {
+        using var model = new BasicWordSenseModel();
+
+        await Assert.ThrowsAnyAsync<ArgumentNullException>(() => model.ClassifyAsync(null!, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     A token that is already cancelled stops the classification.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_Cancelled_Throws()
+    {
+        using var model = new BasicWordSenseModel();
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => model.ClassifyAsync(["record"], cts.Token));
+    }
 }

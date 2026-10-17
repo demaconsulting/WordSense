@@ -85,6 +85,8 @@ sections:
               - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
               - WordSenseBuilder_BasicModelData_Summary_NamesSizes
               - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
+              - WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable
+              - WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError
 
           - id: WordSense-WordSenseBuilder-TuneBasic
             title: >-
@@ -97,6 +99,8 @@ sections:
               dishonest.
             tests:
               - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
+              - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
+              - WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws
 
           - id: WordSense-WordSenseBuilder-Hyperparameters
             title: >-

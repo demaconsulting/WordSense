@@ -20,3 +20,4 @@ sections:
             tests:
               - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
               - WordSense_Classifier_EndToEnd_ClassifiesRecord
+              - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord

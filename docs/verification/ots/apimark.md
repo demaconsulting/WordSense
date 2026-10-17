@@ -48,15 +48,22 @@ still hide examples rendered as prose or dropped remarks.
 
 **Requirement coverage**: `WordSense-OTS-ApiMark-RenderExamples`.
 
-#### ApiMark_ClassifierDocumented
+#### ApiMark_ModelContractDocumented
 
 **Scenario**: The model contract type is documented and its page is generated.
 
 **Expected**: The `IWordSenseModel` type page exists and contains a fenced
 `csharp` example.
 
-**What this proves**: only that the member page was generated from its documentation. It does not
-by itself prove enforcement. Enforcement is proven by the build failing when a public member lacks
+#### ApiMark_BasicModelDocumented, ApiMark_OnnxModelDocumented, ApiMark_MiniLMModelDocumented, ApiMark_BertBaseCasedModelDocumented
+
+**Scenario**: The model class of each of the other four packages is documented and its page is generated.
+
+**Expected**: The `BasicWordSenseModel`, `OnnxWordSenseModel`, `MiniLMWordSenseModel` and
+`BertBaseCasedWordSenseModel` type pages exist and each contains a fenced `csharp` example.
+
+**What these prove**: only that the member pages were generated from their documentation. They do not
+by themselves prove enforcement. Enforcement is proven by the build failing when a public member lacks
 an XML summary: with severity `Error`, a green build cannot coexist with an undocumented public
 member, and this was observed manually as green-to-red-to-green transitions when an undocumented
 public property was temporarily added. That observation is not an automated test.
@@ -78,4 +85,5 @@ the rendered examples are only useful to a reader if they are correct.
 - **`WordSense-OTS-ApiMark-Generate`**: ApiMark_ApiIndex
 - **`WordSense-OTS-ApiMark-RenderExamples`**: ApiMark_ExampleCodeRendered,
   ApiMark_TerminologyDocumented, WordSense_XmlDocExamples_Compile
-- **`WordSense-OTS-ApiMark-EnforceDocs`**: ApiMark_ClassifierDocumented
+- **`WordSense-OTS-ApiMark-EnforceDocs`**: ApiMark_ModelContractDocumented, ApiMark_BasicModelDocumented,
+  ApiMark_OnnxModelDocumented, ApiMark_MiniLMModelDocumented, ApiMark_BertBaseCasedModelDocumented

@@ -33,6 +33,7 @@ sections:
                 tests:
                   - OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload
                   - OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried
+                  - OnnxWordSenseModel_EnsureModelAsync_CancelledCaller_DoesNotCancelSharedWork
 
               - id: WordSense-Onnx-OnnxWordSenseModel-Classify
                 title: >-
@@ -55,17 +56,27 @@ sections:
               - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
                 title: >-
                   OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated and concurrent
-                  disposal, cancel a download that its preparation step has in flight (the pending call then throws
-                  OperationCanceledException and leaves no partial file), and throw ObjectDisposedException from
-                  EnsureModelAsync and ClassifyAsync after disposal.
+                  disposal, defer the release while a classification is running (the running call completes and the
+                  last one to finish releases the session; new calls are refused at once), cancel a download that its
+                  preparation step has in flight (the pending call then throws OperationCanceledException and leaves
+                  no partial file), and throw ObjectDisposedException from EnsureModelAsync and ClassifyAsync after
+                  disposal.
                 tags: [unit]
                 justification: |
-                  The ONNX session holds native memory; its release must be deterministic, a disposal must never hang
-                  on a running download, and use after disposal must fail clearly.
+                  The ONNX session holds native memory; its release must be deterministic and must never happen under
+                  a running inference, a disposal must never hang on a running download or classification, and use
+                  after disposal must fail clearly.
                 tests:
                   - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - OnnxWordSenseModel_Dispose_Concurrent_IsHarmless
                   - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
+                  - OnnxWordSenseModel_Dispose_DuringClassification_DefersEncoderRelease
+                  - OnnxWordSenseModel_Dispose_Idle_ReleasesEncoderImmediately
+                  - InFlightTracker_Close_Idle_ReleasesOnce
+                  - InFlightTracker_Close_WithRunningOperations_ReleasesAfterLastExit
+                  - InFlightTracker_Enter_AfterClose_ThrowsObjectDisposed
+                  - InFlightTracker_Close_DoesNotWaitForRunningOperation
+                  - InFlightTracker_ConcurrentEnterExitClose_ReleasesExactlyOnce
                   - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
                   - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
 

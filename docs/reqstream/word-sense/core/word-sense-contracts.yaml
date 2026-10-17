@@ -9,7 +9,7 @@ sections:
         sections:
           - title: WordSenseContracts Requirements
             requirements:
-              - id: WordSense-Core-WordSenseContracts-Classifier
+              - id: WordSense-Core-WordSenseContracts-Classify
                 title: >-
                   IWordSenseModel.ClassifyAsync shall classify a running text given as a list of words joined by
                   single spaces,
@@ -19,6 +19,10 @@ sections:
                   Callers tokenize themselves; a fixed text convention gives every model the same context and lets
                   callers map each result to its input word by index.
                 tests:
+                  - WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface
+                  - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
+                  - BasicWordSenseModel_ClassifyAsync_NullWords_Throws
+                  - BasicWordSenseModel_ClassifyAsync_Cancelled_Throws
                   - BasicClassifier_ClassifyAsync_ResultsAreParallelToInput
                   - BasicClassifier_ClassifyAsync_NullWords_Throws
                   - BasicClassifier_ClassifyAsync_NullElement_Throws
@@ -49,7 +53,14 @@ sections:
                   casts, and callers never need to know which model they hold.
                 tests:
                   - WordSenseContracts_IWordSenseModel_IsDisposable
+                  - WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface
                   - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
+                  - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
+                  - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
 
               - id: WordSense-Core-WordSenseContracts-Mirror
                 title: >-
@@ -77,6 +88,7 @@ sections:
                   respelling that fix the pronunciation of a heteronym.
                 tests:
                   - WordSenseContracts_WordDetails_Construct_ExposesMembers
+                  - WordSenseContracts_WordDetails_SameValues_AreEqual
                   - WordSenseContracts_PartOfSpeech_Values_AreTheEightClasses
 
               - id: WordSense-Core-WordSenseContracts-Independent

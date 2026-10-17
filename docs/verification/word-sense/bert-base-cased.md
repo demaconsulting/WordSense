@@ -29,8 +29,8 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 #### Real Model Classifies Heteronyms in Context
 
-A model created from the committed directory classifies "The record was broken last year, so they will record the new
-album." with a noun for the first and a verb for the second `record`.
+A model created from the committed directory classifies the words of "They will record the record." with a verb for the
+first `record` and a noun for the second (`BertBaseCasedWordSenseModelTests`, `EndToEndTests`).
 
 #### Embedded Weights Match the Lexicon and Drop Nothing
 
@@ -39,8 +39,10 @@ and drop zero lemmas.
 
 #### Case Is Part of the Context
 
-The model keeps the case of the text; the cased tokenizer setting differs from that of MiniLM, which is verified by
-the tokenizer parity scenarios of the Onnx subsystem.
+The model keeps the case of the text: its model description is cased (the lower-casing setting is off,
+`BertBaseCasedWordSenseModel_Identity_IsCased`), unlike that of MiniLM (`MiniLMWordSenseModel_Identity_IsPinned`). How
+the cased and the uncased tokenizer settings tokenize is verified by the explicit cased and uncased scenarios of the
+`WordPieceTokenizer` unit in the Onnx subsystem.
 
 #### XML Documentation Examples Compile
 

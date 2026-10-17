@@ -2,11 +2,12 @@
 
 #### Verification Approach
 
-Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs` derive a small test model from the abstract
-class inside the test assembly (the constructor is `private protected`, so only the WordSense assemblies and their
-friend test projects can do this) with a hand-made `ModelSpec`. Files come from a temporary model directory or the
-loopback `LocalServer`; the pinned digests are those of the test files. Where a session is needed the committed MiniLM
-int8 model is used through `ModelAssets` (skipped when the Git LFS content is absent).
+Tests in `test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests.cs` exercise the abstract class through the
+MiniLM package (its constructor is `private protected`, so only the WordSense assemblies can derive from it). Files
+come from a temporary model directory or the loopback `LocalServer`; the pinned digests are those of the test files.
+Where a session is needed the committed MiniLM int8 model is used through `ModelAssets` (skipped when the Git LFS
+content is absent). `InFlightTrackerTests.cs` tests the deferred-release counter with fake release actions and needs
+no model files.
 
 #### Test Environment
 
@@ -35,11 +36,20 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Failed EnsureModelAsync can be retried**: after all sources fail, a second call (or `ClassifyAsync`) starts a new
   attempt and succeeds when a source works.
 - **A caller can stop waiting**: a cancelled token ends the wait of that caller with `OperationCanceledException`
-  without cancelling the shared download.
+  without cancelling the shared work; a later call succeeds.
 - **Weights and session are shared**: repeated `ClassifyAsync` calls share one encoder and one weights table.
 - **Disposal**: `Dispose` can be called twice and from many threads at once; `EnsureModelAsync` and `ClassifyAsync`
   after disposal throw `ObjectDisposedException`, even for words that never need the encoder.
+- **Dispose during classification**: with a classification registered (as `ClassifyAsync` does around its inference),
+  `Dispose` marks the model disposed at once (new calls throw `ObjectDisposedException`) but the encoder stays usable;
+  the running classification completes with a correct answer, and releasing the last registration releases the
+  encoder. With no classification running, `Dispose` releases the encoder immediately. The counter itself
+  (`InFlightTracker`) is tested with fake release actions: close when idle, close with running operations (release
+  after the last exit), enter after close, close not waiting for a gated operation, and concurrent enter/exit/close
+  releasing exactly once.
 - **Dispose during EnsureModelAsync**: a local server starts a response and stalls; disposing the model cancels the
   download, every pending `EnsureModelAsync` task ends with `OperationCanceledException` without hanging, later calls
-  throw `ObjectDisposedException`, and no `.part` or model file remains in the store.
-- **Argument validation**: a null spec and a maximum sequence length below 8 or above 512 are rejected.
+  throw `ObjectDisposedException`, and no `.part` or model file remains in the store. Cancellation applies to the
+  download path; with an explicit model directory the verification is synchronous.
+- **Argument validation**: a maximum sequence length below 8 or above 512 is rejected. (The constructor that takes
+  the spec is not reachable from outside the WordSense assemblies, so a null spec is not tested.)

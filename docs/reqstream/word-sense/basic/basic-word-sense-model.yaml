@@ -32,11 +32,14 @@ sections:
                   - BasicWordSenseModel_ClassifyAsync_WithoutEnsure_Works
                   - BasicWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverNeedEnsure
                   - BasicWordSenseModel_ClassifyAsync_IsThreadSafe
+                  - BasicWordSenseModel_ClassifyAsync_NullWords_Throws
+                  - BasicWordSenseModel_ClassifyAsync_Cancelled_Throws
 
               - id: WordSense-Basic-BasicWordSenseModel-Dispose
                 title: >-
-                  BasicWordSenseModel shall tolerate repeated and concurrent disposal, and after disposal shall throw
-                  ObjectDisposedException from its preparation step and from ClassifyAsync.
+                  BasicWordSenseModel shall tolerate repeated and concurrent disposal, let a classification that is
+                  already running complete, and after disposal shall throw ObjectDisposedException from its
+                  preparation step and from ClassifyAsync.
                 tags: [unit]
                 justification: |
                   The model honors the disposal contract of IWordSenseModel, so code that handles any model behaves the
@@ -44,5 +47,6 @@ sections:
                 tests:
                   - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
                   - BasicWordSenseModel_Dispose_Concurrent_IsHarmless
+                  - BasicWordSenseModel_Dispose_DuringClassification_RunningCallCompletes
                   - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
                   - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed

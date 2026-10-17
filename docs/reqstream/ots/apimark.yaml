@@ -50,4 +50,8 @@ sections:
               of a member that exists in documented form because enforcement demands it.
             tags: [ots]
             tests:
-              - ApiMark_ClassifierDocumented
+              - ApiMark_ModelContractDocumented
+              - ApiMark_BasicModelDocumented
+              - ApiMark_OnnxModelDocumented
+              - ApiMark_MiniLMModelDocumented
+              - ApiMark_BertBaseCasedModelDocumented

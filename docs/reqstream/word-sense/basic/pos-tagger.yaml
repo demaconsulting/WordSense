@@ -34,6 +34,7 @@ sections:
                   context.
                 tests:
                   - PosTagger_Posteriors_UnknownWords_UseCapitalizationAndSuffix
+                  - PosTagger_Posteriors_CapitalizedUnknownWord_IsNounInsideSentenceOnly
 
               - id: WordSense-Basic-PosTagger-Deterministic
                 title: >-

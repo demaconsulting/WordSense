@@ -46,6 +46,36 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     A test double implements the model contract without any model package: the contract is usable on its own.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface()
+    {
+        var model = new FakeModel();
+        IWordSenseModel contract = model;
+
+        await contract.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        var result = await contract.ClassifyAsync(["a", "record"], TestContext.Current.CancellationToken);
+        contract.Dispose();
+
+        Assert.True(model.Ensured);
+        Assert.True(model.Disposed);
+        Assert.Equal(2, result.Length);
+        Assert.Equal("record", result[1].Word);
+    }
+
+    /// <summary>
+    ///     Word details compare by value.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_WordDetails_SameValues_AreEqual()
+    {
+        Assert.Equal(new WordDetails("record", PartOfSpeech.Noun, "a", "REK-urd"), new WordDetails("record", PartOfSpeech.Noun, "a", "REK-urd"));
+        Assert.NotEqual(new WordDetails("record", PartOfSpeech.Noun, null, null), new WordDetails("record", PartOfSpeech.Verb, null, null));
+    }
+
+    /// <summary>
     ///     The mirror options are a sealed record.
     /// </summary>
     [Fact]
@@ -149,6 +179,24 @@ public class ContractsTests
         Assert.Equal(
             ["Noun", "Pronoun", "Verb", "Adjective", "Adverb", "Preposition", "Conjunction", "Interjection"],
             Enum.GetNames<PartOfSpeech>());
+    }
+
+    private sealed class FakeModel : IWordSenseModel
+    {
+        public bool Ensured { get; private set; }
+
+        public bool Disposed { get; private set; }
+
+        public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
+        {
+            Ensured = true;
+            return Task.CompletedTask;
+        }
+
+        public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default) =>
+            Task.FromResult(words.Select(w => new WordSense(w, null, 0)).ToArray());
+
+        public void Dispose() => Disposed = true;
     }
 
     /// <summary>

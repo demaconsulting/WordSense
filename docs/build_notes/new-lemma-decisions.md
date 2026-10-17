@@ -1,5 +1,9 @@
 # New Lemma Decisions (Phase 4 Setup)
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 Phase 4 adds new lemmas to the classifier. This page records, for the 112 candidates of tiers A (53) and B (59) in
 `tools/real-text/candidates-a-b.tsv`, whether each is accepted for corpus building, with the evidence and the
 pronunciations. The machine-readable result is `tools/real-text/new-lemma-inventory.tsv` (one row per sense, with the

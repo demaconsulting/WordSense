@@ -1,5 +1,9 @@
 # Gap Lemmas Decisions (Phase 3a)
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 Thirteen lemmas of the specification had no classifier because the earlier corpus held no sentences for them:
 `conjunct`, `cumulate`, `depute`, `domesticate`, `illegitimate`, `outcaste`, `overhead`, `overman`, `overstudies`,
 `overstudy`, `overwater`, `unstick` and `uptown`. This page records what real text supplied for each of them and which

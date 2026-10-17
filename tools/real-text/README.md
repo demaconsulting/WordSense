@@ -1,5 +1,9 @@
 # Real-Text Harvest
 
+> **Historical.** This page records an earlier phase of the project. The builder commands it names (for example
+> `real-import`, `real-judge-*`, `validate-provenance`, `nounverb-*`, `learning-curve`, `error-diagnosis`,
+> `weak-lemmas`) were removed from `WordSense.Builder`; the results stay as the record of how the data was built.
+
 `harvest.py` (Python standard library only) extracts candidate real sentences of at most 35 words from openly
 licensed or public-domain sources. Raw downloads go to `cache/` (git-ignored); only extracted sentences are used.
 

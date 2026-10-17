@@ -22,7 +22,7 @@ the code it describes.
   in the namespace, which is ApiMark's documented convention; ApiMark recognizes it by that shape and omits it
   from the type list and from enforcement; its XML summary, remarks and example become the namespace page; without
   it the namespace shows "No description provided"). The carrier's XML documentation is written to cover the
-  quickstart, package and target frameworks, offline and mirror setup, the `WordAnalysis`, `WordDetails`,
+  quickstart, package and target frameworks, offline and mirror setup, the `WordSense`, `WordDetails`,
   `PartOfSpeech` and `Pronunciation` result model, a glossary, confidence (margin and runner-up), tokenization
   and context window, thread safety and examples. The carrier and the example-compile test are in the
   OTS-ApiMark review set because they are ApiMark's inputs and evidence. FileAssert does not assert that

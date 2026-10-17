@@ -103,7 +103,10 @@ sentences/s with `UseLexicon` false and 498 and 34 sentences/s with it true acro
 passes is larger than any difference between modes, so the timing is noise from machine load and no speed effect is
 claimed.
 
-## Reproduction
+## Reproduction (historical)
+
+These commands are the ones used when the page was measured; `import-moby`, `build` and `lexicon-eval` no longer
+exist in `WordSense.Builder` (see `package-split.md` and the `words` and `weights` commands for the current flow).
 
 ```text
 dotnet run --project tools/WordSense.Builder -c Release -- import-moby --input mobypos.txt --output corpus/lexicon/lexicon.tsv

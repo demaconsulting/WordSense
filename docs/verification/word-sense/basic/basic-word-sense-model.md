@@ -20,6 +20,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **ClassifyAsync works without setup**: `ClassifyAsync` works without calling `EnsureModelAsync` first and answers a
   word list parallel to the input; lexicon-only words need no ensure at all.
 - **Classification is thread-safe**: parallel calls on one model give the same results as sequential calls.
-- **Cancelled token is honored**: `EnsureModelAsync` with an already cancelled token returns a cancelled task.
-- **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing. After it, `EnsureModelAsync` and
+- **Cancelled token is honored**: `EnsureModelAsync` with an already cancelled token returns a cancelled task, and
+  `ClassifyAsync` with one throws `OperationCanceledException`. A null word list is rejected.
+- **Disposal**: `Dispose` is idempotent, thread-safe and releases nothing, so a classification that is already
+  running completes normally. After it, `EnsureModelAsync` and
   `ClassifyAsync` throw `ObjectDisposedException`, whatever the words (including an empty list).

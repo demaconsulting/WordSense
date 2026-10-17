@@ -27,7 +27,10 @@ sections:
                 justification: |
                   A model file that does not match the pinned digest could silently change results.
                 tests:
+                  - MiniLMWordSenseModel_Files_ArePinnedBySha256
                   - MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
 
               - id: WordSense-MiniLM-MiniLMWordSenseModel-Weights
                 title: >-

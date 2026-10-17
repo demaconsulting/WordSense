@@ -27,8 +27,8 @@ All subsystem scenarios pass on every platform and target framework of the CI ma
 
 #### Real Model Classifies Heteronyms in Context
 
-A model created from the committed directory classifies "The record was broken last year, so they will record the new
-album." with a noun for the first and a verb for the second `record` (`MiniLMWordSenseModelTests`).
+A model created from the committed directory classifies the words of "They will record the record." with a verb for the
+first `record` and a noun for the second (`MiniLMWordSenseModelTests`, `EndToEndTests`).
 
 #### Embedded Weights Match the Lexicon and Drop Nothing
 

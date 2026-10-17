@@ -51,8 +51,8 @@ under `<store>/<model-id>/`, and downloaded once even when requested concurrentl
 
 #### Tokenization Equals the Reference
 
-The WordPiece tokenizer reproduces the reference Hugging Face tokenizer for both the uncased and the cased vocabulary
-(see the `WordPieceTokenizer` unit document).
+The WordPiece tokenizer reproduces the reference Hugging Face tokenizer for the uncased vocabulary, and honours the
+cased setting (see the `WordPieceTokenizer` unit document).
 
 #### XML Documentation Examples Compile
 

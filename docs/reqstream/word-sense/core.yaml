@@ -24,14 +24,14 @@ sections:
 
           - id: WordSense-Core-Contracts
             title: >-
-              The core subsystem shall define the public contracts through which callers obtain a classifier from a
-              model, classify words and receive results.
+              The core subsystem shall define the public contracts through which callers classify words with a
+              model and receive results.
             tags: [subsystem]
             justification: |
               Callers program against one small set of contracts and can swap model packages, or supply their own
               model, without changing their code.
             children:
-              - WordSense-Core-WordSenseContracts-Classifier
+              - WordSense-Core-WordSenseContracts-Classify
               - WordSense-Core-WordSenseContracts-Result
               - WordSense-Core-WordSenseContracts-Model
               - WordSense-Core-WordSenseContracts-Mirror

@@ -62,7 +62,7 @@ sections:
           - id: WordSense-Onnx-Encoder
             title: >-
               The Onnx subsystem shall compute contextual embeddings of the words of a text with ONNX Runtime and a
-              WordPiece tokenizer, for cased and uncased vocabularies, including texts longer than the model input.
+              WordPiece tokenizer, with a cased or an uncased vocabulary, including texts longer than the model input.
             tags: [subsystem]
             justification: |
               The embeddings of the surrounding text are the evidence for the sense decision; one shared encoder

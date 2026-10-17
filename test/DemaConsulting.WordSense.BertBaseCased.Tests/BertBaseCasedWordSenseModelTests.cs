@@ -1,7 +1,8 @@
 namespace DemaConsulting.WordSense.BertBaseCased.Tests;
 
 /// <summary>
-///     Quick tests for <see cref="BertBaseCasedWordSenseModel"/>. They need no model files and no network access.
+///     Tests for <see cref="BertBaseCasedWordSenseModel"/>. Most need no model files and no network access; the two
+///     that classify with the real model are skipped when the Git LFS files are absent.
 /// </summary>
 public class BertBaseCasedWordSenseModelTests
 {
@@ -59,14 +60,40 @@ public class BertBaseCasedWordSenseModelTests
     }
 
     /// <summary>
-    ///     The identity names the cased model and its hidden size.
+    ///     The identity names the cased model: the vocabulary is cased, so the case of a word is part of its context.
     /// </summary>
     [Fact]
-    public void BertBaseCasedWordSenseModel_ModelIdAndHiddenSize_AreBertBaseCased()
+    public void BertBaseCasedWordSenseModel_Identity_IsCased()
     {
         using var model = new BertBaseCasedWordSenseModel();
 
-        Assert.Equal("bert-base-cased-int8", model.ModelId);
+        Assert.False(model.Spec.LowerCase);
+        Assert.Equal(768, model.Spec.HiddenSize);
+    }
+
+    /// <summary>
+    ///     The model pins exactly its four files, each by a SHA-256 digest.
+    /// </summary>
+    [Fact]
+    public void BertBaseCasedWordSenseModel_Files_ArePinnedBySha256()
+    {
+        using var model = new BertBaseCasedWordSenseModel();
+
+        Assert.Equal(["config.json", "model_int8.onnx", "tokenizer.json", "vocab.txt"], model.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.All(model.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
+    }
+
+    /// <summary>
+    ///     A disposed model rejects <c>EnsureModelAsync</c>.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BertBaseCasedWordSenseModel_EnsureModelAsync_AfterDispose_Throws()
+    {
+        var model = new BertBaseCasedWordSenseModel();
+        model.Dispose();
+
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.EnsureModelAsync(null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

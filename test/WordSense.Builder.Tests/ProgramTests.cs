@@ -1,3 +1,5 @@
+using DemaConsulting.WordSense.Basic;
+
 namespace WordSense.Builder.Tests;
 
 /// <summary>
@@ -127,6 +129,46 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(1, code);
         Assert.Contains("train-basic", error, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The train-basic command trains a loadable table from a tiny corpus and treebank counts.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable()
+    {
+        var corpus = PrepareCorpus();
+        var sentences = new List<UdSentence>();
+        for (var i = 0; i < 4; i++)
+        {
+            sentences.Add(new UdSentence(["they", "walk", "."], [PosTag.Pronoun, PosTag.Verb, PosTag.Punctuation]));
+            sentences.Add(new UdSentence(["the", "walk", "."], [PosTag.Determiner, PosTag.Noun, PosTag.Punctuation]));
+        }
+
+        UdCounts.Count(sentences).Write(Path.Combine(corpus, "ud"));
+        var table = Path.Combine(_dir.Root, "out", "basic.bin");
+
+        var (code, output, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", table);
+
+        Assert.True(code == 0, error);
+        Assert.Contains("Trained", output, StringComparison.Ordinal);
+        Assert.True(BasicTables.Load(await File.ReadAllBytesAsync(table, TestContext.Current.CancellationToken)).Words.Count > 0);
+    }
+
+    /// <summary>
+    ///     A corpus whose anchors name a sense that the inventory lacks makes train-basic fail with an error.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError()
+    {
+        var corpus = PrepareCorpus();
+        _dir.Write("corpus/anchors/a.tsv", "walk\tbogus\tThey will {walk} home.\n");
+        UdCounts.Count([new UdSentence(["the", "walk"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Combine(corpus, "ud"));
+
+        var (code, _, error) = await RunAsync("train-basic", "--repository", _dir.Root, "--corpus", corpus, "--output", Path.Combine(_dir.Root, "basic.bin"));
+
+        Assert.Equal(1, code);
+        Assert.NotEmpty(error);
     }
 
     /// <summary>

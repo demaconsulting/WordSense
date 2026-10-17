@@ -148,8 +148,9 @@ Every word follows the same path:
    word with several senses; the confidence says how sure it is.
 
 An encoder model runs the encoder only when a sentence has a word that needs it, so a sentence without such a word
-costs no model call. The capitalization of a word and a trailing possessive are no longer used to skip a word:
-whatever is in the word table is classified, and the table covers the inflected forms.
+costs no model call. Whatever is in the word table is classified, whatever its capitalization or a trailing
+possessive, and the table covers the inflected forms. (The Basic model's tagger does use the capitalization of a
+word that is not in the table, as one of its features.)
 
 ## The Result
 
@@ -496,7 +497,7 @@ download.
 
 - **Words are classified by what the table knows.** A word that is not in `WordLexicon.Words` is unknown, and so are
   determiners, numbers and most proper nouns. There is no morphology at use time and no capitalization or possessive
-  heuristic: a form that is not in the table is unknown.
+  heuristic for looking a word up: a form that is not in the table is unknown.
 - **Only some multi-sense words are decided.** The encoder models decide the lemmas that have trained weights (see the
   appendix); a multi-sense word without weights is `null` with confidence 0. Basic decides by part of speech only.
 - **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Meaning` or `Respelling`, and the

@@ -50,9 +50,8 @@ references show the layering. Requirements-to-test coverage is tracked by the Re
 ### End-to-End Classification with a Real Model
 
 The MiniLM and BertBaseCased test projects each create the model from the committed model directory, call
-`EnsureModelAsync` and `ClassifyAsync`, and classify the words of "The record was broken last year, so they will
-record the
-new album." The first `record` must be a noun and the second a verb. This scenario is run on each CI operating system
+`EnsureModelAsync` and `ClassifyAsync`, and classify the words of "They will record the record." The first `record`
+must be a verb and the second a noun. This scenario is run on each CI operating system
 (Windows, Linux, macOS) and each target framework (net8.0, net9.0, net10.0); the platform requirements are each linked
 to it with a source filter (`windows@`, `ubuntu@`, `macos@`, `net8.0@`, `net9.0@`, `net10.0@`), so a requirement is
 satisfied only by a passing result from its own platform or framework.

@@ -43,7 +43,7 @@ tests:
         text:
           - contains: "confidence"
 
-  - name: ApiMark_ClassifierDocumented
+  - name: ApiMark_ModelContractDocumented
     description: "The model contract type is documented and generated with an example"
     tags: [api-docs]
     files:
@@ -59,6 +59,36 @@ tests:
     files:
       - pattern: >-
           src/DemaConsulting.WordSense.MiniLM/generated/api/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.md
+        count: 1
+        text:
+          - contains: "```csharp"
+
+  - name: ApiMark_BasicModelDocumented
+    description: "The Basic model class is documented and generated with an example"
+    tags: [api-docs]
+    files:
+      - pattern: >-
+          src/DemaConsulting.WordSense.Basic/generated/api/DemaConsulting.WordSense.Basic/BasicWordSenseModel.md
+        count: 1
+        text:
+          - contains: "```csharp"
+
+  - name: ApiMark_OnnxModelDocumented
+    description: "The shared ONNX model base class is documented and generated with an example"
+    tags: [api-docs]
+    files:
+      - pattern: >-
+          src/DemaConsulting.WordSense.Onnx/generated/api/DemaConsulting.WordSense.Onnx/OnnxWordSenseModel.md
+        count: 1
+        text:
+          - contains: "```csharp"
+
+  - name: ApiMark_BertBaseCasedModelDocumented
+    description: "The BertBaseCased model class is documented and generated with an example"
+    tags: [api-docs]
+    files:
+      - pattern: >-
+          src/DemaConsulting.WordSense.BertBaseCased/generated/api/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.md
         count: 1
         text:
           - contains: "```csharp"

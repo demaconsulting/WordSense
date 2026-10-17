@@ -144,6 +144,41 @@ public class BasicTrainerTests
     }
 
     /// <summary>
+    ///     The anchor split is deterministic, disjoint, and the hash does not change between runs.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint()
+    {
+        var anchors = Enumerable.Range(0, 200)
+            .Select(i => new CorpusRow("bass", "fish", $"sentence number {i} bass", "a.tsv", ["sentence", "number", i.ToString(System.Globalization.CultureInfo.InvariantCulture), "bass"], 3))
+            .ToList();
+
+        var (train1, dev1) = BasicTuner.SplitAnchors(anchors);
+        var (train2, dev2) = BasicTuner.SplitAnchors(anchors);
+
+        Assert.Equal(train1, train2);
+        Assert.Equal(dev1, dev2);
+        Assert.Empty(train1.Intersect(dev1));
+        Assert.Equal(Math.Min(anchors.Count, BasicHyperparameters.AnchorSample), train1.Count + dev1.Count);
+        Assert.Equal(BasicTuner.StableHash("record"), BasicTuner.StableHash("record"));
+        Assert.True(BasicTuner.StableHash("record") >= 0);
+        Assert.NotEqual(BasicTuner.StableHash("record"), BasicTuner.StableHash("Record"));
+    }
+
+    /// <summary>
+    ///     The tuning reports a missing treebank development file.
+    /// </summary>
+    [Fact]
+    public async Task WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws()
+    {
+        using var dir = new TestDirectory();
+        var corpus = Path.Combine(dir.Root, "corpus");
+        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Combine(corpus, "ud"));
+
+        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Combine(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
     ///     The hyper-parameters carry the values that the runtime reads and a tuning grid that includes them.
     /// </summary>
     [Fact]

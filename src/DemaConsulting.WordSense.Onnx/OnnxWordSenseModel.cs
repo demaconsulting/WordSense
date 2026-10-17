@@ -27,12 +27,12 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     unknown or has one sense) is answered from the lexicon alone: it never touches model files or ONNX, so a model
 ///     that is never needed is never downloaded. The model owns the ONNX
 ///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>):
-///     dispose it, for example with <c>using</c>, after every classification has finished. Disposing is idempotent
-///     and thread-safe; it cancels a download that <see cref="EnsureModelAsync"/> (or a lazy ensure of
-///     <see cref="ClassifyAsync"/>) has in flight, and the pending task then throws
-///     <see cref="OperationCanceledException"/>. Disposing while a classification is running the encoder is not
-///     supported: the session is released under that call, whose outcome is undefined (it may fail with
-///     <see cref="ObjectDisposedException"/> or an ONNX Runtime error), so wait for running classifications first.
+///     dispose it, for example with <c>using</c>. Disposing is idempotent and thread-safe; it cancels a download that
+///     <see cref="EnsureModelAsync"/> (or a lazy ensure of <see cref="ClassifyAsync"/>) has in flight, and the pending
+///     task then throws <see cref="OperationCanceledException"/>. Disposing while a classification is running the
+///     encoder is safe: the model is marked disposed at once (new calls throw <see cref="ObjectDisposedException"/>),
+///     the classifications already running complete normally, and the ONNX session is released when the last of them
+///     finishes. <see cref="Dispose()"/> itself never waits for them.
 ///     Dispose never deletes files: the downloaded (or supplied) model files stay in the store or directory and are
 ///     reused, after hashing, by the next instance.
 ///     </para>
@@ -123,6 +123,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     private readonly CancellationTokenSource _disposeCts = new();
     private readonly CancellationToken _disposeToken;
     private volatile bool _disposed;
+    private readonly InFlightTracker _inFlight;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="OnnxWordSenseModel"/> class.
@@ -130,6 +131,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <param name="spec">The model description.</param>
     /// <param name="modelDirectory">A directory that holds the model files, or null to use the per-user store.</param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="spec"/> is null.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     private protected OnnxWordSenseModel(ModelSpec spec, string? modelDirectory, int maxSequenceLength)
     {
         ArgumentNullException.ThrowIfNull(spec);
@@ -139,6 +142,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         _modelDirectory = modelDirectory is null ? null : Path.GetFullPath(modelDirectory);
         _maxSequenceLength = maxSequenceLength;
         _disposeToken = _disposeCts.Token;
+        _inFlight = new InFlightTracker(GetType().Name, ReleaseEncoder);
     }
 
     /// <summary>
@@ -202,12 +206,12 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     worst download the same file twice. A file in the store that is missing or fails its SHA-256 check (corrupt,
     ///     truncated or tampered) is downloaded again and replaced; it is never used.
     /// </remarks>
-    /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
-    /// <exception cref="FileNotFoundException">Thrown when a supplied model directory lacks a model file (or does not exist).</exception>
-    /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256.</exception>
-    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained and verified from any source.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown (from the call itself) when the model has been disposed.</exception>
+    /// <exception cref="ArgumentException">Reported through the returned task when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
+    /// <exception cref="FileNotFoundException">Reported through the returned task when a supplied model directory lacks a model file (or does not exist).</exception>
+    /// <exception cref="InvalidDataException">Reported through the returned task when a file of a supplied model directory does not match its pinned SHA-256.</exception>
+    /// <exception cref="HttpRequestException">Reported through the returned task when a file could not be obtained and verified from any source.</exception>
+    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or reported through the returned task when the model is disposed during a download.</exception>
     public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
     {
         Task task;
@@ -243,7 +247,8 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     and the weights are then opened once (about 0.4 to 0.5 s, approximate and machine dependent). The method is
     ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
     ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
-    ///     token. Disposing while this call is running inference is not supported.
+    ///     token. Disposing while this call is running inference is safe: the call completes normally and the ONNX
+    ///     session is released after it (and every other running call) has finished.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
     /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
@@ -269,7 +274,72 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
 
         // Ambiguous words need the model: ensure it lazily (shared with concurrent callers), then open the resources
         await EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
-        return await GetClassifier().ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+        var classifier = AcquireClassifier();
+        try
+        {
+            return await classifier.ClassifyAsync(list, cancellationToken).ConfigureAwait(false);
+        }
+        finally
+        {
+            ReleaseClassifier();
+        }
+    }
+
+    /// <summary>
+    ///     Gets whether the encoder (and with it the ONNX session) has been released or was never opened.
+    /// </summary>
+    internal bool IsEncoderReleased
+    {
+        get
+        {
+            lock (_gate)
+            {
+                return _encoder is null;
+            }
+        }
+    }
+
+    /// <summary>
+    ///     Registers a running classification and returns the classifier; every call must be paired with
+    ///     <see cref="ReleaseClassifier"/>. While registered, a disposal does not release the ONNX session.
+    /// </summary>
+    /// <returns>The classifier.</returns>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
+    internal OnnxClassifier AcquireClassifier()
+    {
+        _inFlight.Enter();
+        try
+        {
+            return GetClassifier();
+        }
+        catch
+        {
+            _inFlight.Exit();
+            throw;
+        }
+    }
+
+    /// <summary>
+    ///     Unregisters a classification registered by <see cref="AcquireClassifier"/>; after a disposal, the last one
+    ///     to finish releases the ONNX session.
+    /// </summary>
+    internal void ReleaseClassifier() => _inFlight.Exit();
+
+    /// <summary>
+    ///     Releases the encoder; run once by the in-flight tracker, after the last running classification.
+    /// </summary>
+    private void ReleaseEncoder()
+    {
+        OnnxEncoder? encoder;
+        lock (_gate)
+        {
+            encoder = _encoder;
+            _encoder = null;
+            _classifier = null;
+        }
+
+        encoder?.Dispose();
     }
 
     /// <summary>
@@ -310,7 +380,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// </summary>
     /// <remarks>
     ///     Calling it more than once, or from several threads at once, is harmless: the first call releases, the others
-    ///     return. It does not wait for a cancelled download to unwind; the cancelled download leaves no partial model
+    ///     return. When a classification is running on the ONNX session, the session is released when the last running
+    ///     classification finishes (they complete normally; new calls already throw); nothing here waits for them. It
+    ///     does not wait for a cancelled download to unwind; the cancelled download leaves no partial model
     ///     file. Every pending <see cref="EnsureModelAsync"/> task then ends with
     ///     <see cref="OperationCanceledException"/>; calls made after disposal throw <see cref="ObjectDisposedException"/>.
     /// </remarks>
@@ -339,10 +411,10 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
             }
 
             _disposed = true;
-            _encoder?.Dispose();
-            _encoder = null;
-            _classifier = null;
         }
+
+        // Release now when no classification is running, otherwise when the last one finishes
+        _inFlight.Close();
 
         // Cancel outside the gate; every callback has run when Cancel returns, so the source can then be disposed. A
         // download still holding the token (copied in the constructor) sees a cancelled token, never a disposed source

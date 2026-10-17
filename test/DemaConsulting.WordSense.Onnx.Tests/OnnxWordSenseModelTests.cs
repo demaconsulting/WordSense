@@ -279,6 +279,68 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     A caller whose token is cancelled stops waiting, but the shared work is not cancelled.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_EnsureModelAsync_CancelledCaller_DoesNotCancelSharedWork()
+    {
+        using var model = Open(ModelAssets.RequireModelDirectory());
+        using var cts = new CancellationTokenSource();
+        await cts.CancelAsync();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => model.EnsureModelAsync(null, cts.Token));
+
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        var result = await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken);
+        Assert.Single(result);
+    }
+
+    /// <summary>
+    ///     Disposing while a classification is registered keeps the encoder usable until the classification finishes;
+    ///     the last one to finish releases it, and new calls are rejected at once.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_Dispose_DuringClassification_DefersEncoderRelease()
+    {
+        var model = Open(ModelAssets.RequireModelDirectory());
+        await model.EnsureModelAsync(null, TestContext.Current.CancellationToken);
+        var classifier = model.AcquireClassifier();
+        Assert.False(model.IsEncoderReleased);
+
+        model.Dispose();
+
+        // The running classification still completes on the live session; new calls are refused
+        Assert.False(model.IsEncoderReleased);
+        var result = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."], TestContext.Current.CancellationToken);
+        Assert.NotNull(result[2].Details);
+        await Assert.ThrowsAsync<ObjectDisposedException>(() => model.ClassifyAsync(["record"], TestContext.Current.CancellationToken));
+        Assert.Throws<ObjectDisposedException>(model.AcquireClassifier);
+
+        model.ReleaseClassifier();
+
+        Assert.True(model.IsEncoderReleased);
+        Assert.Null(Record.Exception(model.Dispose));
+    }
+
+    /// <summary>
+    ///     Disposing while no classification runs releases the encoder at once.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_Dispose_Idle_ReleasesEncoderImmediately()
+    {
+        var model = Open(ModelAssets.RequireModelDirectory());
+        await model.ClassifyAsync(["record"], TestContext.Current.CancellationToken);
+        Assert.False(model.IsEncoderReleased);
+
+        model.Dispose();
+
+        Assert.True(model.IsEncoderReleased);
+    }
+
+    /// <summary>
     ///     Disposing twice is harmless.
     /// </summary>
     [Fact]

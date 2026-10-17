@@ -1,7 +1,8 @@
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
-///     Quick tests for <see cref="MiniLMWordSenseModel"/>. They need no model files and no network access.
+///     Tests for <see cref="MiniLMWordSenseModel"/>. Most need no model files and no network access; the two that
+///     classify with the real model are skipped when the Git LFS files are absent.
 /// </summary>
 public class MiniLMWordSenseModelTests
 {
@@ -15,6 +16,7 @@ public class MiniLMWordSenseModelTests
 
         Assert.Equal("all-MiniLM-L6-v2-int8", model.ModelId);
         Assert.Equal(384, model.HiddenSize);
+        Assert.True(model.Spec.LowerCase);
     }
 
     /// <summary>
@@ -41,6 +43,18 @@ public class MiniLMWordSenseModelTests
         var senses = await model.ClassifyAsync(["the", "."], TestContext.Current.CancellationToken);
 
         Assert.All(senses, s => Assert.Null(s.Details));
+    }
+
+    /// <summary>
+    ///     The model pins exactly its two files, each by a SHA-256 digest.
+    /// </summary>
+    [Fact]
+    public void MiniLMWordSenseModel_Files_ArePinnedBySha256()
+    {
+        using var model = new MiniLMWordSenseModel();
+
+        Assert.Equal(["model_int8.onnx", "vocab.txt"], model.Spec.Files.Select(f => f.Name).Order().ToArray());
+        Assert.All(model.Spec.Files, f => Assert.Matches("^[0-9a-f]{64}$", f.Sha256.ToLowerInvariant()));
     }
 
     /// <summary>
