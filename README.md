@@ -39,7 +39,7 @@ dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensit
 
 | Package | Contents | Needs |
 | :--- | :--- | :--- |
-| `DemaConsulting.WordSense` | Contracts and the dictionary (`WordLexicon`) | Nothing |
+| `DemaConsulting.WordSense` | The model interface and the dictionary (`WordLexicon`) | Nothing |
 | `DemaConsulting.WordSense.Basic` | Statistical model (part-of-speech tagger and context cues) | Nothing |
 | `DemaConsulting.WordSense.Onnx` | Shared ONNX implementation (brought in by the model packages) | ONNX Runtime |
 | `DemaConsulting.WordSense.MiniLM` | MiniLM model and its weights | Model files, downloaded on first use |
@@ -143,11 +143,15 @@ Tokenize the text yourself: punctuation is a token of its own, a contraction (`d
 token, and one sentence per call is recommended (Basic splits at `.` `!` `?`; the encoders read the list as one text of
 at most 128 word pieces by default and use a window around the word for longer texts).
 
-The model API: call `EnsureModelAsync` for the encoder models even when you pass a model directory (it verifies the
-SHA-256 of the files, with no network access); for Basic it is optional. `ClassifyAsync` also ensures the model lazily
+The model API: `EnsureModelAsync` is optional for every model. Call it to fail early (for an encoder model it verifies
+the SHA-256 of the files, with no network access when you pass a model directory) and to pass a `MirrorOptions`.
+`ClassifyAsync` also ensures the model lazily
 on first use, but only when a word needs it (a list without an ambiguous word is answered from the dictionary and
 never touches model files, so a model that is never needed is never downloaded); the lazy ensure uses the default and
-environment mirror settings, so call `EnsureModelAsync` yourself to pass a `MirrorOptions` or to fail early. Model
+environment mirror settings and may throw the same exceptions as `EnsureModelAsync` (for example
+`FileNotFoundException` or `InvalidDataException` for a supplied directory), so call `EnsureModelAsync` yourself to pass
+a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. The
+ONNX models run on the CPU only, and concurrent classifications share one ONNX session and run in parallel. Model
 files are
 stored in a per-user directory under their model ID (for example `all-MiniLM-L6-v2-int8`) and reused on later runs; a
 directory you supply must hold the files directly (flat, no model-ID subfolder). To use your own mirror, set
@@ -185,7 +189,9 @@ them as relative figures. The RAM column is what the model adds, measured after 
 loaded, so it excludes the lexicon. The table is generated into `docs/build_notes/model-table.md` and a test keeps the README
 equal to it.
 
-Confidence thresholds (coverage of the ambiguous target words / precision on real text, rounded; holdout is higher):
+Confidence thresholds (coverage of the ambiguous target words / precision on real text, rounded; holdout is higher).
+A threshold belongs to one model: read it from that model's row, and never reuse it across models. Basic's confidence
+for a word with n senses is never below 1/n (0.5 for two senses):
 
 | Model | at least 0.6 | at least 0.8 | at least 0.9 |
 | --- | --- | --- | --- |
@@ -195,15 +201,17 @@ Confidence thresholds (coverage of the ambiguous target words / precision on rea
 
 The `ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`. The default model store is
 `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and `~/.local/share/DemaConsulting/WordSense/models` on
-Linux and macOS. All sizes are in MiB.
+Linux and macOS. All sizes are in MiB. Basic takes about 0.03 ms (about 30 µs) per sentence.
 
 ## Tokenizing text
 
 Split the text into words yourself, one sentence per call: punctuation is a token of its own (`"race"`, `"."`), while a
 contraction (`don't`), a possessive (`dog's`) and a hyphenated word (`well-known`) stay one token (they are unknown to
 the lexicon, so they return null with confidence 0, and their neighbors are classified normally). Keep decimals such as
-`3.5` and abbreviations such as `Mr.` as one token, because for Basic a lone period ends the sentence. The lookup
-ignores case; MiniLM is uncased, BERT base cased is cased, and Basic uses case only to tag unknown capitalized words as
+`3.5` as one token, because for Basic a lone period ends the sentence; the tokenizer below does not handle
+abbreviations (it splits `Mr.` into `Mr` and `.`), so merge such an abbreviation into one token yourself or drop its
+periods. The lookup ignores case (the models lower-case for you; the dictionary itself is case-sensitive); MiniLM is
+uncased, BERT base cased is cased, and Basic uses case only to tag unknown capitalized words as
 nouns.
 
 ```csharp

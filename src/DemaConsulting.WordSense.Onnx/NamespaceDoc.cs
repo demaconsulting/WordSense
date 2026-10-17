@@ -12,16 +12,18 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     (found in a directory you supply, in the per-user store, on a mirror, or on GitHub, each verified against a
 ///     pinned SHA-256), the WordPiece tokenizer and the ONNX session. It is extended only by the packages of this
 ///     repository (<c>MiniLM</c> and <c>BertBaseCased</c>): its constructor is not accessible to other assemblies, so
-///     it is not an extension point for third parties. Contributors who add a new ONNX model follow the note "Adding a
-///     New ONNX Model" in the design documentation. See
+///     it is not an extension point for third parties. Contributors who add a new ONNX model follow the section "Adding a
+///     New ONNX Model" of
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/design/word-sense/onnx.md. See
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Onnx.
 ///     </para>
 ///     <para>
 ///     Offline and air-gapped use: fetch the model files of a model package (listed in the model folder of the repository,
 ///     https://github.com/demaconsulting/WordSense/tree/main/model) on a machine with network access, copy them to the
 ///     target machine and pass their directory to the model's constructor. The directory is flat: the files sit
-///     directly in it (no <c>{model-id}</c> subfolder), and the model's <c>EnsureModelAsync</c> must still be called, to
-///     verify every file against its pinned SHA-256 (no network access). Missing files and wrong digests are reported
+///     directly in it (no <c>{model-id}</c> subfolder). Calling the model's <c>EnsureModelAsync</c> is optional but
+///     recommended: it verifies every file against its pinned SHA-256 up front (no network access); without it,
+///     <c>ClassifyAsync</c> verifies lazily and may throw the same exceptions. Missing files and wrong digests are reported
 ///     as <see cref="FileNotFoundException"/> and <see cref="InvalidDataException"/>. For a corporate mirror pass a
 ///     <see cref="MirrorOptions"/> to <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, or set the environment variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and

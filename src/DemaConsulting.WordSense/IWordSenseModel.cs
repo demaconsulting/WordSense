@@ -11,10 +11,10 @@ namespace DemaConsulting.WordSense;
 ///     statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
 ///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="ClassifyAsync"/> as many times as
-///     needed. <see cref="EnsureModelAsync"/> is the explicit way to prepare an encoder model, even when you supply a
-///     model directory (it verifies the files against their pinned SHA-256 digests, with no network access), and the
-///     only way to pass a <see cref="MirrorOptions"/>; it is optional for the Basic model, but calling it keeps the code
-///     the same for every model.
+///     needed. <see cref="EnsureModelAsync"/> is optional for every model: call it to fail early (for an encoder model
+///     it verifies the files against their pinned SHA-256 digests, with no network access when you supply a model
+///     directory) and to pass a <see cref="MirrorOptions"/>; without it, <see cref="ClassifyAsync"/> ensures lazily
+///     and may throw the same exceptions. Calling it also keeps the code the same for every model.
 ///     </para>
 ///     <para>
 ///     Lazy ensure: <see cref="ClassifyAsync"/> ensures the model itself on first use, when (and only when) a word
@@ -22,26 +22,37 @@ namespace DemaConsulting.WordSense;
 ///     model files or ONNX, so a model that is never needed is never downloaded. When the model is needed and was not
 ///     ensured yet, the call awaits <see cref="EnsureModelAsync"/> with the defaults (no explicit mirror; the
 ///     <c>WORDSENSE_MIRROR_*</c> environment variables apply). Concurrent callers share one ensure, and a failed
-///     ensure is retried by the next call.
+///     ensure is retried by the next call. A <see cref="MirrorOptions"/> passed while an ensure is already in flight
+///     is ignored. The ensured state belongs to one model instance (a new instance verifies again): once a call
+///     succeeded, the instance keeps the directory it verified, including the
+///     <see cref="MirrorOptions.StoreRoot"/> of that call, and later lazy ensures reuse it; after a failed call, the
+///     next ensure starts afresh with only the options that call passes (a lazy one passes none).
 ///     </para>
 ///     <para>
 ///     A model is thread-safe for concurrent classification. <see cref="IWordSenseModel"/> is
 ///     <see cref="IDisposable"/>: the model owns what it needs (the ONNX session and the downloader state of an encoder
 ///     model), so dispose it, for example with <c>using</c>, once every classification has finished. The Basic model
-///     holds nothing to release, but honors the same contract. After the model is disposed,
-///     <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>.
+///     holds nothing to release, but honors the same rules. After the model is disposed,
+///     <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>
+///     (whatever the words and even when the token is already cancelled); whether that exception is thrown from the
+///     call or reported through the returned task depends on the model (Basic throws every exception from the call;
+///     an encoder model throws it from <c>EnsureModelAsync</c> and reports it through the task of
+///     <c>ClassifyAsync</c>), so use <c>await</c> inside a <c>try</c> and both are caught.
 ///     Disposing is idempotent and thread-safe. Disposing while an ensure is downloading cancels the download, and the
-///     pending task then throws <see cref="OperationCanceledException"/>. Disposing while a classification is running
-///     is not supported.
+///     pending task then throws <see cref="OperationCanceledException"/>; downloaded files are never deleted by
+///     disposal and are reused by the next instance. Disposing while a classification is running is not supported:
+///     for the Basic model the running call still completes, for an encoder model its outcome is undefined.
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
 ///     to <see cref="WordLexicon.Words"/> takes about 120 ms and about 43 MiB, and happens once per process for every
 ///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
 ///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first classification that needs
-///     it, and <see cref="EnsureModelAsync"/> reads and hashes every model file once, which takes longer for the larger
-///     files. Warm the model at startup (ensure and classify one short text with an ambiguous word) if the first
-///     request must be fast.
+///     it, and <see cref="EnsureModelAsync"/> reads and hashes every model file once per instance (about 30 ms for the
+///     22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files with a warm file cache; more on a slow
+///     disk). Warm the model at startup (ensure and classify one short text with an ambiguous word) if the first
+///     request must be fast. Concurrent classifications share one ONNX session and run in parallel; the encoder
+///     models run on the CPU only.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -69,12 +80,12 @@ public interface IWordSenseModel : IDisposable
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
     ///     <para>
-    ///     Files that are already present and valid are never downloaded again. Concurrent calls share one download.
-    ///     A failed call can be retried. The Basic model needs no files and completes at once.
+    ///     Files that are already present and valid are never downloaded again. Concurrent calls share one download; a
+    ///     <see cref="MirrorOptions"/> passed while another call is already downloading is ignored. A failed call can be retried. The Basic model needs no files and completes at once.
     ///     </para>
     ///     <para>
-    ///     When an encoder model was constructed with a model directory, this call is still the way to verify it up
-    ///     front: it checks that
+    ///     When an encoder model was constructed with a model directory, this call is optional but is the way to verify
+    ///     it up front (otherwise <see cref="ClassifyAsync"/> verifies lazily and may throw the same exceptions): it checks that
     ///     every file exists in that directory (directly in it, not in a subfolder) and matches its pinned SHA-256,
     ///     and it never touches the network. Without a directory it verifies the per-user store, or the store
     ///     beneath <see cref="MirrorOptions.StoreRoot"/>, and downloads what is missing or invalid.
@@ -140,8 +151,11 @@ public interface IWordSenseModel : IDisposable
     ///     The call ensures the model lazily, when a word needs it (see the remarks of the interface): a list without
     ///     an ambiguous word never touches model files or ONNX. The lazy ensure uses the defaults (no explicit mirror;
     ///     the <c>WORDSENSE_MIRROR_*</c> environment variables apply), is shared by concurrent callers and is retried
-    ///     after a failure; call <see cref="EnsureModelAsync"/> first to pass a <see cref="MirrorOptions"/>. The method
-    ///     is safe for concurrent use.
+    ///     after a failure; call <see cref="EnsureModelAsync"/> first to pass a <see cref="MirrorOptions"/> (it is
+    ///     ignored while an ensure is in flight, and the ensured state is per model instance). The method
+    ///     is safe for concurrent use. Disposal precedence: a disposed model throws <see cref="ObjectDisposedException"/>
+    ///     even when the token is already cancelled (the Basic model throws it, and every other exception, from the
+    ///     call itself; an encoder model reports exceptions through the returned task).
     ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
@@ -168,7 +182,7 @@ public interface IWordSenseModel : IDisposable
 ///     every model does this. Second, an encoder model (MiniLM, BertBaseCased) could not score a word that has several
 ///     senses: its lemma has no intact trained weights, or the encoder produced no vector for the word. The packages of
 ///     this repository ship weights for every lemma (a test asserts that no lemma is dropped), so the second case does
-///     not occur in practice, but the contract allows it. In both cases <see cref="Confidence"/> is 0. Every other
+///     not occur in practice, but the API allows it. In both cases <see cref="Confidence"/> is 0. Every other
 ///     word gets a sense: a word with one sense gets it with confidence 1, and a word with several senses gets its best
 ///     sense even when the confidence is low, so a null <see cref="Details"/> never means "low confidence". The Basic
 ///     model never leaves <see cref="Details"/> null for a word that is in the lexicon.
@@ -177,8 +191,9 @@ public interface IWordSenseModel : IDisposable
 ///     Confidence is a number from 0 to 1: 0 means unknown or unscored, 1 means the word has only one sense in the
 ///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
 ///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
-///     several senses the probability of the chosen sense (at least one over the number of senses; a threshold such
-///     as 0.8 works for it, see the <c>DemaConsulting.WordSense.Basic</c> namespace documentation), so it is never
+///     several senses the probability of the chosen sense (never below one over the number of senses, so 0.5 for a
+///     word with two senses: a threshold of 0.5 keeps every answer of a two-sense word, and a threshold such
+///     as 0.8 is a sensible start, see the <c>DemaConsulting.WordSense.Basic</c> namespace documentation), so it is never
 ///     undecided. The encoder models (MiniLM, BertBaseCased) map
 ///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
 ///     trained for the word's lemma: 0.5 means the margin equals the abstain margin, larger values mean a clearer
@@ -192,8 +207,10 @@ public interface IWordSenseModel : IDisposable
 ///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, null, null), 0.93);
 ///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
 ///
-///     // Keep only confident answers; the threshold is specific to the model that produced the confidence
-///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= 0.5;
+///     // Keep only confident answers; the threshold is specific to the model that produced the confidence:
+///     // 0.5 is the evaluation value of MiniLM and BertBaseCased; for Basic start at 0.8 (a probability)
+///     const double threshold = 0.5;
+///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= threshold;
 ///     </code>
 /// </example>
 /// <param name="Word">The word as given by the caller.</param>

@@ -10,8 +10,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>net9.0</c> and <c>net10.0</c>; it is built on <c>DemaConsulting.WordSense.Onnx</c> (the shared tokenizer, ONNX
 ///     encoder, verified downloader and abstract <c>OnnxWordSenseModel</c>, which <c>BertBaseCasedWordSenseModel</c>
 ///     extends) and depends on <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
-///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. The weights trained for the model are embedded in
-///     the assembly. The encoder files (<c>model_int8.onnx</c> of 103.4 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
+///     <c>dotnet add package DemaConsulting.WordSense.BertBaseCased</c>. Two kinds of data are involved: the per-lemma
+///     classifier weights trained for this model are embedded in the assembly (nothing to download), while the encoder
+///     files (<c>model_int8.onnx</c> of 103.5 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
 ///     <c>tokenizer.json</c>; 104 MiB in total, exact sizes below) are downloaded
 ///     once on first use, verified against pinned SHA-256 digests and cached per user, or they are read from a directory you
 ///     supply, in which case no network access happens at all.
@@ -26,7 +27,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     Choose BertBaseCased for the most accurate model: 104 MiB, about 9 ms per sentence, about 99% best-sense
-///     accuracy on the holdout and about 97% on real text, and it keeps the case of the text
+///     accuracy on the holdout and about 97% on real text (precision of the words it answers with a confidence of at
+///     least 0.6: about 99%), and it keeps the case of the text
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; approximate and machine
 ///     dependent; the memory of about 150 MiB it adds does not include the 43 MiB of the word lexicon). Choose
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation) for a small, fast
@@ -36,12 +38,16 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files (the ONNX file is the
-///     bulk); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
+///     bulk; about 110 ms in total with a warm file cache); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
 ///     of the core package loads in about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every
-///     classification has finished; afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c>
+///     classification has finished (disposing while one runs is not supported); afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>
+///     (reported through the returned task; also when the token is already cancelled)
 ///     throw <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
-///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The
-///     model is safe for concurrent use.
+///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>); downloaded files are kept. The
+///     model is safe for concurrent use: concurrent classifications share one ONNX session and run in parallel. It
+///     runs on the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw
+///     the ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
+///     ignored while an ensure is already in flight.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
@@ -80,8 +86,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     Offline and air-gapped use: fetch the four files from
 ///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/bert-base-cased-int8/{file}</c>,
-///     put them directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. You must
-///     still call <c>EnsureModelAsync</c>, which verifies the digests above without network access; a missing file
+///     put them directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     <c>EnsureModelAsync</c> is optional but recommended: it verifies the digests above up front without network
+///     access (otherwise <c>ClassifyAsync</c> verifies lazily and may throw the same exceptions); a missing file
 ///     throws <see cref="FileNotFoundException"/> and a wrong digest <see cref="InvalidDataException"/>. For a corporate
 ///     mirror pass a
 ///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
@@ -115,14 +122,19 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     </code>
 ///     Download through a mirror (see the mirror notes above): pass the options to <c>EnsureModelAsync</c>.
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.BertBaseCased;
+///
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>
+///     using DemaConsulting.WordSense.BertBaseCased;
+///
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
-///     await offline.EnsureModelAsync();   // verifies all four SHA-256 digests, no network
+///     await offline.EnsureModelAsync();   // optional: verifies all four SHA-256 digests now, no network
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;

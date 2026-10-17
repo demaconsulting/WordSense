@@ -5,7 +5,7 @@
 ### Overview
 
 The core subsystem is the package `DemaConsulting.WordSense`. It defines the vocabulary every other package builds
-on: the embedded word lexicon and the public contracts of models. It contains no vectors, no weights,
+on: the embedded word lexicon and the public model interface. It contains no vectors, no weights,
 no ONNX code and no third-party dependency, so a consumer that only needs to know which senses a word can have, or
 that writes its own model, installs nothing else.
 

@@ -38,8 +38,12 @@ encoder and weights lazily, and classifies words with them (lazily ensuring the 
 
 #### Error Handling
 
-- Any call of `EnsureModelAsync` or `ClassifyAsync` after `Dispose` throws `ObjectDisposedException`; a pending
-  ensure that was running at disposal throws `OperationCanceledException` instead.
+- Any call of `EnsureModelAsync` or `ClassifyAsync` after `Dispose` throws `ObjectDisposedException` (thrown from the
+  call by `EnsureModelAsync`, reported through the returned task by the `async` `ClassifyAsync`; the disposed check
+  comes before the cancellation check); a pending
+  ensure that was running at disposal throws `OperationCanceledException` instead. Disposal never deletes model files,
+  and disposing while an inference runs is unsupported (the session is released under it; the outcome is undefined).
+  Inference itself is not serialized: the shared session serves concurrent calls in parallel.
 - A constructor sequence length outside 8 to 512 throws `ArgumentOutOfRangeException`.
 - Download and verification failures propagate from `ModelDownloader` (see that unit); a failed ensure can be
   retried.

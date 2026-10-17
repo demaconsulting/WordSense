@@ -18,8 +18,10 @@ namespace DemaConsulting.WordSense.Basic;
 ///     </para>
 ///     <para>
 ///     The model holds no native resources, so its <see cref="Dispose"/> releases nothing; it only marks the model as
-///     disposed, for the same contract as every <see cref="IWordSenseModel"/>: afterwards <see cref="EnsureModelAsync"/>
-///     and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>. Dispose it with <c>using</c> like
+///     disposed, for the same rules as every <see cref="IWordSenseModel"/>: afterwards <see cref="EnsureModelAsync"/>
+///     and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/> (from the call itself, not through
+///     a returned task, and before any other check, so also when the token is already cancelled). Disposing while a
+///     classification is running is not supported, but nothing is released, so the running call completes. Dispose it with <c>using</c> like
 ///     any other model. One instance can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional
 ///     (it only returns a completed task) and <see cref="ClassifyAsync"/> needs no preceding call: there is nothing
 ///     to ensure, so its lazy ensure is a no-op. If the token passed to <see cref="EnsureModelAsync"/> is
@@ -81,10 +83,10 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     /// <param name="words">The words in order, including punctuation tokens, each as its own element.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A non-null array parallel to <paramref name="words"/>. Unlike the encoder models, it needs no preceding ensure (there is nothing to ensure); the first call loads the word lexicon (about 120 ms, approximate).</returns>
-    /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="ArgumentNullException">Thrown (from the call itself) when the list is null.</exception>
+    /// <exception cref="ArgumentException">Thrown (from the call itself) when an element is null.</exception>
+    /// <exception cref="OperationCanceledException">Thrown (from the call itself) when <paramref name="cancellationToken"/> is already cancelled when the call starts.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown (from the call itself, before any other check) when the model has been disposed.</exception>
     public Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
     {
         ThrowIfDisposed();

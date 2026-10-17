@@ -23,8 +23,9 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     machine dependent. The memory the model adds (about 150 MiB) does not include the 43 MiB of the word lexicon.
 ///     </para>
 ///     <para>
-///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
-///     103.4 MiB or 108,477,896 bytes; <c>vocab.txt</c>, 0.2 MiB or 213,450 bytes; <c>config.json</c>, 639 bytes; and
+///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
+///     assembly (nothing to download), while the encoder files (<c>model_int8.onnx</c>,
+///     103.5 MiB or 108,477,896 bytes; <c>vocab.txt</c>, 0.2 MiB or 213,450 bytes; <c>config.json</c>, 639 bytes; and
 ///     <c>tokenizer.json</c>, 0.6 MiB or 668,923 bytes; 104 MiB in total) are downloaded once by
 ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
 ///     verified against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use
@@ -34,9 +35,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     folder on a mirror.
 ///     </para>
 ///     <para>
-///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder), and
-///     <c>EnsureModelAsync</c> must still be called: it verifies every one of them, not only the ONNX file, against the
-///     pinned SHA-256 digests listed in the namespace documentation, with no network access. Dispose the model once
+///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder).
+///     <c>EnsureModelAsync</c> is optional but recommended: it verifies every one of them, not only the ONNX file,
+///     against the pinned SHA-256 digests listed in the namespace documentation, with no network access, and fails
+///     early; without it, <c>ClassifyAsync</c> verifies lazily and may throw the same
+///     <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>. Dispose the model once
 ///     after every classification has finished.
 ///     </para>
 ///     <para>
@@ -76,7 +79,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     using DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
-///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
+///     await offline.EnsureModelAsync();   // optional: verifies SHA-256 now, no network
 ///     </code>
 /// </example>
 public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel

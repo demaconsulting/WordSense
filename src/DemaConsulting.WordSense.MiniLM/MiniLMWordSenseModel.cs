@@ -15,7 +15,8 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     after all classifications have finished.
 ///     </para>
 ///     <para>
-///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
+///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the
+///     assembly (nothing to download), while the encoder files (<c>model_int8.onnx</c>,
 ///     21.9 MiB or 22,972,370 bytes, and <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) are downloaded
 ///     once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>, verified
 ///     against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use files you
@@ -39,9 +40,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </para>
 ///     <para>
 ///     When you supply a model directory, it must hold <c>model_int8.onnx</c> and <c>vocab.txt</c> directly (no
-///     <c>{model-id}</c> subfolder), and <c>EnsureModelAsync</c> must still be called: it verifies both files against
-///     their pinned SHA-256 digests without any network access. Dispose the model once after every classification has
-///     finished.
+///     <c>{model-id}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
+///     their pinned SHA-256 digests without any network access and fails early; without it, <c>ClassifyAsync</c>
+///     verifies lazily and may throw the same <see cref="FileNotFoundException"/> or
+///     <see cref="InvalidDataException"/>. Dispose the model once after every classification has finished.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -75,7 +77,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     using DemaConsulting.WordSense.MiniLM;
 ///
 ///     using var offline = new MiniLMWordSenseModel("/opt/models/minilm");
-///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
+///     await offline.EnsureModelAsync();   // optional: verifies SHA-256 now, no network
 ///     </code>
 /// </example>
 public sealed class MiniLMWordSenseModel : OnnxWordSenseModel

@@ -18,15 +18,18 @@ namespace DemaConsulting.WordSense.Basic;
 ///     checks nothing, because there are no files), and <c>ClassifyAsync</c> works with or without it; call it only to keep
 ///     the code identical to the encoder models. Dispose the model with <c>using</c> like every <see cref="IWordSenseModel"/>
 ///     (it holds nothing to release, but afterwards <c>EnsureModelAsync</c> and <c>ClassifyAsync</c>
-///     throw <see cref="ObjectDisposedException"/>). With a token that is already
+///     throw <see cref="ObjectDisposedException"/>, from the call itself, not through a returned task, and before any
+///     other check, so even with an already cancelled token). Disposing while a classification is running is not
+///     supported, but this model releases nothing, so a running call simply completes. The Basic model throws every
+///     exception of <c>ClassifyAsync</c> (null list, null element, cancelled token) from the call itself. With a token that is already
 ///     cancelled, <c>EnsureModelAsync</c> returns a cancelled task (awaiting it throws
 ///     <see cref="OperationCanceledException"/>); otherwise the token is ignored.
 ///     </para>
 ///     <para>
 ///     First use (approximate, machine dependent): the word lexicon of the core package loads on first use (about 120 ms,
 ///     about 43 MiB), at the latest in the first <c>ClassifyAsync</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
-///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes about 0.03 ms (about 30
-///     microseconds per sentence, about 2 microseconds per word, measured) and the model adds about 21 MiB of memory,
+///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes 0.03 ms (about 30 µs) per
+///     sentence (about 2 µs per word, measured) and the model adds about 21 MiB of memory,
 ///     not counting the 43 MiB of the lexicon. The model is safe for concurrent use.
 ///     </para>
 ///     <para>
@@ -52,13 +55,16 @@ namespace DemaConsulting.WordSense.Basic;
 ///     calibrated probability, but higher values are more often right: on real text a threshold of 0.6 keeps about
 ///     90% of the target words at about 89% precision, 0.8 about 78% at about 93%, and 0.9 about 70% at about 96%
 ///     (holdout: 95% at 90%, 86% at 94%, 78% at 96%; the table is in
-///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md).
+///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md). The lowest value
+///     a word with n senses can get is 1/n (0.5 for two senses), so a threshold at or below that keeps every answer
+///     for such words; 0.8 is a sensible start for this model.
 ///     </para>
 ///     <para>
 ///     Case: the lookup and the cue words are lower-cased, so <c>Record</c> and <c>record</c> are the same word. The
 ///     only use of case is that a word that is not in the lexicon, starts with an upper-case letter and is not the
 ///     first word of its sentence segment is tagged a noun (a likely proper noun). A period inside the list ends the
-///     segment, so write an abbreviation as one token (<c>Mr.</c>) and a decimal as one token (<c>3.5</c>); see the
+///     segment, so merge an abbreviation into one token yourself (<c>Mr.</c>; the reference tokenizer of the core
+///     namespace documentation does not do that) and write a decimal as one token (<c>3.5</c>); see the
 ///     table of edge cases in the documentation of the <c>DemaConsulting.WordSense</c> namespace.
 ///     </para>
 ///     <para>

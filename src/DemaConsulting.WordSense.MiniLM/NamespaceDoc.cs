@@ -10,8 +10,9 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>net10.0</c>; it is built on <c>DemaConsulting.WordSense.Onnx</c> (the shared tokenizer, ONNX encoder, verified
 ///     downloader and abstract <c>OnnxWordSenseModel</c>, which <c>MiniLMWordSenseModel</c> extends) and depends on
 ///     <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
-///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. The weights
-///     trained for the model are embedded in the assembly. The encoder (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
+///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. Two kinds of
+///     data are involved: the per-lemma classifier weights trained for the model are embedded in the assembly (nothing
+///     to download), while the encoder files (<c>model_int8.onnx</c>, 21.9 MiB or 22,972,370
 ///     bytes, plus <c>vocab.txt</c>, 0.2 MiB or 231,508 bytes; 22 MiB in total) is downloaded once on first use,
 ///     verified against pinned SHA-256 digests and cached per user, or
 ///     it is read from a directory you supply, in which case no network access happens at all.
@@ -34,13 +35,20 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     downloaded. Latency, first-use time and memory are approximate and machine dependent.
 ///     </para>
 ///     <para>
-///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files; the first classification of
+///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the two files (about 30 ms with a warm
+///     file cache); the first classification of
 ///     an ambiguous word
 ///     opens the ONNX session and loads the weights in about 0.4 s, and the word lexicon of the core package loads in
-///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every classification has finished; afterwards
-///     <c>EnsureModelAsync</c> and <c>ClassifyAsync</c> throw
+///     about 120 ms (about 43 MiB). Dispose the model with <c>using</c>, after every classification has finished
+///     (disposing while one runs is not supported); afterwards
+///     <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c> (reported through the returned task;
+///     also when the token is already cancelled) throw
 ///     <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
-///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>). The model is safe for concurrent use.
+///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>); downloaded files are kept. The model
+///     is safe for concurrent use: concurrent classifications share one ONNX session and run in parallel. It runs on
+///     the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw the
+///     ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
+///     ignored while an ensure is already in flight.
 ///     </para>
 ///     <para>
 ///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
@@ -72,9 +80,10 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1</c>) and <c>vocab.txt</c> (SHA-256
 ///     <c>07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3</c>) from
 ///     <c>https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/all-MiniLM-L6-v2-int8/{file}</c>,
-///     put both directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Both files are
-///     verified against these digests by <c>EnsureModelAsync</c>, which you must still call (no network access
-///     happens); a missing file throws <see cref="FileNotFoundException"/> and a wrong digest
+///     put both directly in one directory (no <c>{model-id}</c> subfolder) and pass it to the constructor. Calling
+///     <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against these digests up front (no
+///     network access happens; otherwise <c>ClassifyAsync</c> verifies lazily and may throw the same exceptions); a
+///     missing file throws <see cref="FileNotFoundException"/> and a wrong digest
 ///     <see cref="InvalidDataException"/>. For a corporate mirror pass a
 ///     <see cref="MirrorOptions"/> to <c>EnsureModelAsync</c> or set <c>WORDSENSE_MIRROR_URL</c> (with the optional
 ///     <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> or <c>WORDSENSE_MIRROR_BEARER_TOKEN</c>); files are
@@ -106,14 +115,19 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     </code>
 ///     Download through a mirror (see the mirror notes above): pass the options to <c>EnsureModelAsync</c>.
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.MiniLM;
+///
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new MiniLMWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
 ///     </code>
 ///     Offline: the two files are in one flat directory, for example <c>/opt/models/minilm</c>.
 ///     <code>
+///     using DemaConsulting.WordSense.MiniLM;
+///
 ///     using var offline = new MiniLMWordSenseModel("/opt/models/minilm");
-///     await offline.EnsureModelAsync();   // verifies SHA-256, no network
+///     await offline.EnsureModelAsync();   // optional: verifies SHA-256 now, no network
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;

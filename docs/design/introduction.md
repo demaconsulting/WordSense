@@ -26,11 +26,11 @@ This document covers the detailed design of the WordSense system and its constit
 software items, specifically:
 
 - **WordSense (System)** — the whole library, delivered as five layered NuGet packages
-- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and the public contracts;
-  it has no third-party dependency
+- **Core (Subsystem)** — the package `DemaConsulting.WordSense`: the embedded word lexicon and the public model
+  interface; it has no third-party dependency
   - **WordLexicon (Unit)** — the embedded lexicon of known words and their senses, including the internal reader of
     the lexicon blob
-  - **WordSenseContracts (Unit)** — the model and classifier interfaces, the mirror options and the answer values
+  - **WordSenseContracts (Unit)** — the model interface, the mirror options and the answer values
 - **Basic (Subsystem)** — the package `DemaConsulting.WordSense.Basic`: a statistical model (part-of-speech tagger and
   context cues) that needs no model files
   - **BasicWordSenseModel (Unit)** — the public statistical model

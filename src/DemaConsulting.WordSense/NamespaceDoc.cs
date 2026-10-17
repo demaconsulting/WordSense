@@ -1,16 +1,16 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     The core of DemaConsulting.WordSense: the English word lexicon and the contracts that every word-sense model
-///     package implements.
+///     The core of DemaConsulting.WordSense: the English word lexicon and the model contract (the interface that every
+///     word-sense model package implements).
 /// </summary>
 /// <remarks>
 ///     <para>
 ///     Package: the NuGet package <c>DemaConsulting.WordSense</c>, which targets <c>net8.0</c>, <c>net9.0</c> and
 ///     <c>net10.0</c> and has no dependencies. It holds <see cref="WordLexicon"/> (every known word with its lemma, part
 ///     of speech, meaning and respelling, loaded from an embedded table on first use), the types
-///     <see cref="WordDetails"/> and <see cref="PartOfSpeech"/>, and the contracts <see cref="IWordSenseModel"/>,
-///     <see cref="MirrorOptions"/> and <see cref="WordSense"/>. It cannot
+///     <see cref="WordDetails"/> and <see cref="PartOfSpeech"/>, the model interface <see cref="IWordSenseModel"/>
+///     and the types <see cref="MirrorOptions"/> and <see cref="WordSense"/>. It cannot
 ///     disambiguate a word in context by itself: add one of the model packages for that.
 ///     </para>
 ///     <para>
@@ -100,8 +100,12 @@ namespace DemaConsulting.WordSense;
 ///     </list>
 ///     <para>
 ///     Without a threshold (every target word taken) the accuracy is the best-sense figure of the table above. A
-///     threshold of 0.8 is a reasonable start for every model: it keeps about three quarters of the real-text target
-///     words with about one error in fifty (MiniLM and BertBaseCased) or one in fourteen (Basic). The full tables are
+///     threshold is specific to a model, so choose one per model from the table: 0.8 is a reasonable start for each
+///     of the three, read in that model's own scale (never copy the value from one model to another without checking
+///     its row); it keeps about three quarters of the real-text target
+///     words with about one error in fifty (MiniLM and BertBaseCased) or one in fourteen (Basic). For Basic the
+///     confidence of a word with n senses is never below 1/n (0.5 for two senses), so a threshold below that keeps
+///     every Basic answer for such words; for an encoder, 0.5 is the margin at which the model abstains. The full tables are
 ///     in
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-comparison.md and
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md.
@@ -120,7 +124,9 @@ namespace DemaConsulting.WordSense;
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
 ///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
 ///     model files. The Basic model has no files, so it needs no
-///     preceding <c>EnsureModelAsync</c>.
+///     preceding <c>EnsureModelAsync</c>; for the encoder models it is optional too (call it to fail early or to pass a
+///     <see cref="MirrorOptions"/>). Hashing the model files takes about 30 ms (MiniLM) and about 110 ms (BertBaseCased)
+///     with a warm file cache. The encoder models run on the CPU only.
 ///     </para>
 ///     <para>
 ///     Tokenizing text. You split the text into words before classifying; the models expect the tokens that the
@@ -129,12 +135,14 @@ namespace DemaConsulting.WordSense;
 ///     hyphenated word (<c>well-known</c>) are one token; every other non-space character (punctuation, quotes, dashes,
 ///     symbols) is a token of its own; a decimal or a number with thousands separators (<c>3.5</c>, <c>1,000</c>) is
 ///     best kept as one token. One sentence per call. The reference tokenizer in the example below does exactly
-///     that (it is verified by a unit test of this repository). The tokens are not trimmed or lower-cased by you; the
+///     that (it is verified by a unit test of this repository), with one limitation: it knows nothing about
+///     abbreviations, so <c>Mr.</c> and <c>U.S.</c> are split at every period (see the table). The tokens are not trimmed or lower-cased by you; the
 ///     models do that for the lookup.
 ///     </para>
 ///     <para>
 ///     What the lookup does with typical tokens (the same for all three models, because the lexicon lookup comes
-///     first; null means <see cref="WordSense.Details"/> is null and the confidence is 0):
+///     first; the models lower-case the word for you, but the dictionary <see cref="WordLexicon.Words"/> itself is
+///     case-sensitive, so look up lower-case keys there; null means <see cref="WordSense.Details"/> is null and the confidence is 0):
 ///     </para>
 ///     <list type="table">
 ///     <listheader>
@@ -175,7 +183,7 @@ namespace DemaConsulting.WordSense;
 ///     </item>
 ///     <item>
 ///     <term><c>Mr</c> + <c>.</c>, <c>U</c> + <c>.</c> + <c>S</c> + <c>.</c></term>
-///     <description>Each period is a sentence end for Basic and cuts its context window; write an abbreviation as one token (<c>Mr.</c>, unknown, null, 0) or drop its periods. Encoders are not affected</description>
+///     <description>Each period is a sentence end for Basic and cuts its context window; the reference tokenizer below does not handle abbreviations and splits <c>Mr.</c> into <c>Mr</c> and <c>.</c>, so merge such abbreviations into one token yourself before classifying (<c>Mr.</c>, unknown, null, 0) or drop their periods. Encoders are not affected</description>
 ///     </item>
 ///     <item>
 ///     <term>An empty string; a null element; an empty list</term>

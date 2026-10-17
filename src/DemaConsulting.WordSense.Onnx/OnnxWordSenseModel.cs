@@ -10,7 +10,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     files with their SHA-256 digests, the vocabulary style and the trained weights embedded in its own assembly. The
 ///     constructor is not accessible outside the WordSense assemblies, so this class is extended only by the packages of
 ///     this repository (<c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c>); use
-///     those packages, or the contract <see cref="IWordSenseModel"/>, rather than deriving from it.
+///     those packages, or the interface <see cref="IWordSenseModel"/>, rather than deriving from it.
 ///     </para>
 ///     <para>
 ///     Call <see cref="EnsureModelAsync"/> once, then <see cref="ClassifyAsync"/> as often as needed; a
@@ -27,10 +27,31 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     unknown or has one sense) is answered from the lexicon alone: it never touches model files or ONNX, so a model
 ///     that is never needed is never downloaded. The model owns the ONNX
 ///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>):
-///     dispose it, for example with <c>using</c>, after every classification has finished; disposing while a
-///     classification is running is not supported. Disposing is idempotent and thread-safe; it cancels a download that
-///     <see cref="EnsureModelAsync"/> (or a lazy ensure of <see cref="ClassifyAsync"/>) has in flight, and the
-///     pending task then throws <see cref="OperationCanceledException"/>.
+///     dispose it, for example with <c>using</c>, after every classification has finished. Disposing is idempotent
+///     and thread-safe; it cancels a download that <see cref="EnsureModelAsync"/> (or a lazy ensure of
+///     <see cref="ClassifyAsync"/>) has in flight, and the pending task then throws
+///     <see cref="OperationCanceledException"/>. Disposing while a classification is running the encoder is not
+///     supported: the session is released under that call, whose outcome is undefined (it may fail with
+///     <see cref="ObjectDisposedException"/> or an ONNX Runtime error), so wait for running classifications first.
+///     Dispose never deletes files: the downloaded (or supplied) model files stay in the store or directory and are
+///     reused, after hashing, by the next instance.
+///     </para>
+///     <para>
+///     State of the ensure: the ensured state belongs to the instance, not to the process. After one successful
+///     <see cref="EnsureModelAsync"/> the instance remembers the directory it verified (including the
+///     <see cref="MirrorOptions.StoreRoot"/> of the <see cref="MirrorOptions"/> passed to that call), and later lazy
+///     ensures of <see cref="ClassifyAsync"/> reuse it without hashing again; a new instance starts not yet ensured and
+///     hashes the files again. Only after a failed or cancelled ensure does the next call start a new one, and a lazy
+///     ensure then has no <see cref="MirrorOptions"/> (no explicit mirror or store root; the environment and the
+///     default store apply). Each ensure is shared by concurrent callers, and a <see cref="MirrorOptions"/> passed
+///     while an ensure is already in flight is ignored. After the model is ensured, passing another mirror has no
+///     effect.
+///     </para>
+///     <para>
+///     Concurrency: <see cref="ClassifyAsync"/> calls are not serialized. The one ONNX session is opened once, under
+///     an internal lock; after that, concurrent calls run inference on it in parallel (ONNX Runtime allows concurrent
+///     runs on one session), so throughput grows with the number of cores until the CPU is saturated, while the
+///     latency of a single call does not improve. The ONNX models run on the CPU only; there is no GPU option.
 ///     </para>
 ///     <para>
 ///     The classification returns a confidence between 0 and 1 for each word it resolved. For a word with one sense it is 1.
@@ -62,23 +83,30 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent): <see cref="EnsureModelAsync"/> reads and hashes each model
-///     file; the first classification that needs the encoder opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
+///     file (about 30 ms for the 22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files, measured
+///     with a warm file cache; a cold or slow disk takes longer); the first classification that needs the encoder opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
 ///     BertBaseCased) and loads the weights; the word lexicon (about 120 ms, about 43 MiB) loads on first use. After
 ///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw
-///     <see cref="ObjectDisposedException"/>.
+///     <see cref="ObjectDisposedException"/>: <see cref="EnsureModelAsync"/> throws it synchronously from the call,
+///     while <see cref="ClassifyAsync"/> reports it through the returned task (an <c>await</c> inside a <c>try</c>
+///     catches both). A disposed model reports <see cref="ObjectDisposedException"/> even when the token is already
+///     cancelled, because the disposal check comes first.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
 ///     using DemaConsulting.WordSense;
-///     using DemaConsulting.WordSense.Onnx;
+///     using DemaConsulting.WordSense.MiniLM;
 ///
-///     // Works with any ONNX encoder model, for example the MiniLM or BertBaseCased model.
-///     static async Task&lt;WordSense[]&gt; ClassifyAsync(OnnxWordSenseModel model, string[] words)
+///     // Any ONNX encoder model works through the interface; here the MiniLM model.
+///     static async Task&lt;WordSense[]&gt; ClassifyAsync(IWordSenseModel model, string[] words)
 ///     {
-///         await model.EnsureModelAsync();
+///         await model.EnsureModelAsync();   // optional: fails early, or takes a MirrorOptions
 ///         return await model.ClassifyAsync(words);
 ///     }
+///
+///     using var model = new MiniLMWordSenseModel();
+///     WordSense[] senses = await ClassifyAsync(model, ["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
 public abstract class OnnxWordSenseModel : IWordSenseModel
@@ -145,7 +173,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
-    ///     When a model directory was supplied, this call is still required and no network access happens: every file
+    ///     When a model directory was supplied, this call is optional but useful: it verifies the files up front, and no
+    ///     network access happens (without it, <see cref="ClassifyAsync"/> verifies lazily and may throw the same
+    ///     <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>). Every file
     ///     must exist directly in that directory (a flat layout; there is no <c>{model-id}</c> subfolder) and match its
     ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
     ///     <c>config.json</c> and <c>tokenizer.json</c>, although the runtime reads only the ONNX file and
@@ -160,6 +190,17 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     file name, so the call can simply be repeated. The only environment variables are the four
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
     ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI).
+    ///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
+    ///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS),
+    ///     with no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
+    ///     <c>media.githubusercontent.com</c> (files at
+    ///     https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{model-id}/{file});
+    ///     the library follows HTTP redirects itself (up to a fixed limit, http or https only), so a host that the public
+    ///     source redirects to must be reachable too, and mirror credentials are sent only to the mirror's own origin.
+    ///     Several processes (or instances) may share one store: each download goes to its own uniquely named temporary
+    ///     file, is verified, and then moved into place, so a reader never sees a partial file and the processes at
+    ///     worst download the same file twice. A file in the store that is missing or fails its SHA-256 check (corrupt,
+    ///     truncated or tampered) is downloaded again and replaced; it is never used.
     /// </remarks>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory lacks a model file (or does not exist).</exception>
@@ -197,15 +238,18 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     downloaded and no ONNX session is opened. A list with an ambiguous word first awaits
     ///     <see cref="EnsureModelAsync"/> (with the default mirror: the <c>WORDSENSE_MIRROR_*</c> environment
     ///     variables, if any), which concurrent callers share, and which is retried by the next call after a failure;
-    ///     call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/>. The ONNX session
+    ///     call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/> (a mirror passed
+    ///     while an ensure is already in flight is ignored). The ONNX session
     ///     and the weights are then opened once (about 0.4 to 0.5 s, approximate and machine dependent). The method is
-    ///     thread-safe.
+    ///     thread-safe. Every exception, including <see cref="ObjectDisposedException"/>, is reported through the
+    ///     returned task, so an <c>await</c> in a <c>try</c> catches it; a disposed model wins over an already cancelled
+    ///     token. Disposing while this call is running inference is not supported.
     /// </remarks>
     /// <exception cref="ArgumentNullException">Thrown when the list is null.</exception>
-    /// <exception cref="ArgumentException">Thrown when an element is null.</exception>
+    /// <exception cref="ArgumentException">Thrown when an element is null, or by the lazy ensure when the mirror settings of the <c>WORDSENSE_MIRROR_*</c> environment variables are invalid.</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during the lazy ensure.</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed, whatever the words.</exception>
-    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt or the ONNX model cannot be read.</exception>
+    /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (lazy ensure), the embedded weights are corrupt or the ONNX model cannot be read.</exception>
     /// <exception cref="HttpRequestException">Thrown by the lazy ensure when a file could not be obtained and verified.</exception>
     /// <exception cref="FileNotFoundException">Thrown by the lazy ensure when a supplied model directory lacks a model file.</exception>
     public async Task<WordSense[]> ClassifyAsync(IEnumerable<string> words, CancellationToken cancellationToken = default)
