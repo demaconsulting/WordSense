@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
@@ -9,7 +11,7 @@ public class BasicClassifierTests
     private static readonly WordDetails Fish = new("bass", PartOfSpeech.Noun, "fish", null);
     private static readonly WordDetails Music = new("bass", PartOfSpeech.Noun, "music", null);
 
-    private static readonly Dictionary<string, WordDetails[]> Lexicon = new(StringComparer.Ordinal)
+    private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
         ["cat"] = [Cat],
         ["don't"] = [new("don't", PartOfSpeech.Verb, null, null)],

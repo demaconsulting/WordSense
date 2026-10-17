@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using DemaConsulting.WordSense.MiniLM;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
@@ -218,7 +219,7 @@ public class OnnxClassifierTests
     {
         var lemma = Embedded().Find("record")!;
         var extra = new WordDetails("record", PartOfSpeech.Determiner, null, null);
-        WordDetails[] candidates = [.. WordLexicon.Words["record"], extra];
+        ImmutableArray<WordDetails> candidates = [.. WordLexicon.Words["record"], extra];
         var feature = new float[lemma.Weights.Dimension];
         feature[0] = 1f;
 

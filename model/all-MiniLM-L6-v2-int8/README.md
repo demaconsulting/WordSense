@@ -26,7 +26,7 @@ was trained against.
 - `vocab.txt` is the standard BERT uncased vocabulary shipped with the base model.
 
 All downloadable assets (every file except this README and `SHA256SUMS`) are Git LFS objects, served from
-`https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/{file}`.
+`https://media.githubusercontent.com/media/demaconsulting/WordSense/{ref}/model/all-MiniLM-L6-v2-int8/{file}`.
 
 ## Integrity
 

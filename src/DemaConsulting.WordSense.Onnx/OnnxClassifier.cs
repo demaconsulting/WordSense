@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Onnx;
 
 /// <summary>
@@ -40,17 +42,32 @@ internal sealed class OnnxClassifier
     }
 
     /// <summary>
-    ///     Tells whether any word of a list has several senses, which is the only case that needs the encoder.
+    ///     Tells whether any word of a list has several senses, which is the cheap pre-check before the weights are consulted.
     /// </summary>
     /// <param name="words">The words.</param>
-    /// <returns>True when the model files, the encoder and the weights are needed to classify the list.</returns>
-    internal static bool NeedsModel(IReadOnlyList<string> words) =>
+    /// <returns>True when some word has several senses.</returns>
+    internal static bool HasMultiSenseWord(IReadOnlyList<string> words) =>
         words.Any(w => w.Length != 0 && WordLexicon.Words.TryGetValue(Normalize(w), out var senses) && senses.Length > 1);
 
     /// <summary>
-    ///     Classifies a list that has no ambiguous word, using the lexicon alone: no model file, encoder or weights.
+    ///     Tells whether any word of a list has several senses and intact weights, which is the only case that needs the encoder.
     /// </summary>
-    /// <param name="words">The words; <see cref="NeedsModel"/> must be false for them.</param>
+    /// <param name="words">The words.</param>
+    /// <param name="table">The matched weights.</param>
+    /// <returns>True when the model files, the encoder and the weights are needed to classify the list.</returns>
+    internal static bool NeedsModel(IReadOnlyList<string> words, WeightedLemmaTable table)
+    {
+        ArgumentNullException.ThrowIfNull(table);
+        return words.Any(w => w.Length != 0
+            && WordLexicon.Words.TryGetValue(Normalize(w), out var senses)
+            && senses.Length > 1
+            && table.Find(senses[0].Lemma) is not null);
+    }
+
+    /// <summary>
+    ///     Classifies a list that needs no model, using the lexicon alone: no model file, encoder or weights.
+    /// </summary>
+    /// <param name="words">The words; no word may have several senses together with intact weights.</param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>The results, parallel to the words.</returns>
     internal static WordSense[] ResolveWithoutModel(IReadOnlyList<string> words, CancellationToken cancellationToken)
@@ -81,7 +98,7 @@ internal sealed class OnnxClassifier
         }
 
         var results = new WordSense[list.Count];
-        var pending = new List<(int Index, WordDetails[] Candidates, WeightedLemma Lemma)>();
+        var pending = new List<(int Index, ImmutableArray<WordDetails> Candidates, WeightedLemma Lemma)>();
         for (var i = 0; i < list.Count; i++)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -120,7 +137,7 @@ internal sealed class OnnxClassifier
     /// <param name="lemma">Receives the weights when the word needs context; otherwise null.</param>
     /// <param name="candidates">Receives the senses of the word when it needs context.</param>
     /// <returns>The final result, or the unresolved placeholder when <paramref name="lemma"/> is set.</returns>
-    private static WordSense Resolve(WeightedLemmaTable? table, string word, out WeightedLemma? lemma, out WordDetails[] candidates)
+    private static WordSense Resolve(WeightedLemmaTable? table, string word, out WeightedLemma? lemma, out ImmutableArray<WordDetails> candidates)
     {
         lemma = null;
         candidates = [];
@@ -161,7 +178,7 @@ internal sealed class OnnxClassifier
     /// <param name="candidates">The senses the word can have.</param>
     /// <param name="feature">The unit-length context feature.</param>
     /// <returns>The best sense and its confidence; no sense and confidence 0 when the candidates do not fit the weights.</returns>
-    internal static (WordDetails? Details, double Confidence) Pick(WeightedLemma lemma, WordDetails[] candidates, float[] feature)
+    internal static (WordDetails? Details, double Confidence) Pick(WeightedLemma lemma, ImmutableArray<WordDetails> candidates, float[] feature)
     {
         var weights = lemma.Weights;
         if (feature.Length != weights.Dimension)
@@ -178,7 +195,7 @@ internal sealed class OnnxClassifier
         var allowed = new List<int>(candidates.Length);
         for (var i = 0; i < Math.Min(all.Length, weights.SenseCount); i++)
         {
-            if (Array.IndexOf(candidates, all[i]) >= 0)
+            if (candidates.IndexOf(all[i]) >= 0)
             {
                 allowed.Add(i);
             }

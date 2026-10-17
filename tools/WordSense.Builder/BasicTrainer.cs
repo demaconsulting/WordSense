@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
@@ -86,7 +87,7 @@ internal static class BasicTrainer
     /// <returns>The model data.</returns>
     public static BasicModelData Train(
         UdCounts ud,
-        IReadOnlyDictionary<string, WordDetails[]> lexicon,
+        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
         IReadOnlyList<CorpusRow> anchors,
         SenseInventory inventory,
         BasicHyperparameters hp)
@@ -139,7 +140,7 @@ internal static class BasicTrainer
 
     private static List<BasicWordRow> SelectWords(
         UdCounts ud,
-        IReadOnlyDictionary<string, WordDetails[]> lexicon,
+        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
         Dictionary<string, int> closed,
         BasicHyperparameters hp)
     {
@@ -167,7 +168,7 @@ internal static class BasicTrainer
 
     private static List<BasicSuffixRow> SelectSuffixes(
         UdCounts ud,
-        IReadOnlyDictionary<string, WordDetails[]> lexicon,
+        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
         Dictionary<string, int> closed,
         BasicHyperparameters hp)
     {

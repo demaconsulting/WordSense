@@ -77,6 +77,30 @@ public class OnnxWordSenseModelTests
     }
 
     /// <summary>
+    ///     Words with several senses but no trained weights (so, will) are answered from the lexicon alone with their
+    ///     first sense and a confidence of one over the number of senses: no ensure, no model file, no ONNX.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxWordSenseModel_ClassifyAsync_MultiSenseWordsWithoutWeights_FallBackWithoutModelFiles()
+    {
+        // The directory does not exist: an ensure would throw FileNotFoundException
+        var missing = Path.Combine(Path.GetTempPath(), "wordsense-missing-" + Guid.NewGuid().ToString("N"));
+        using var model = Open(missing);
+
+        var result = await model.ClassifyAsync(["so", "will"], TestContext.Current.CancellationToken);
+
+        foreach (var (word, sense) in new[] { "so", "will" }.Zip(result))
+        {
+            var senses = WordLexicon.Words[word];
+            Assert.True(senses.Length > 1);
+            Assert.Equal(new WordSense(word, senses[0], 1.0 / senses.Length), sense);
+        }
+
+        Assert.False(Directory.Exists(missing));
+    }
+
+    /// <summary>
     ///     An ambiguous word makes the model ensure itself lazily, without a prior EnsureModelAsync call.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

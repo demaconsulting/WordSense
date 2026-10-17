@@ -37,7 +37,7 @@ model it wants. The contracts in core are the seam between callers and models: a
 - `IWordSenseModel.ClassifyAsync` (in/out): tokenized words in, a parallel `WordSense[]` out. The words are one
   running text with punctuation as its own elements. An encoder model ensures its files lazily (default and
   environment mirror settings) when some word needs the encoder.
-- `WordLexicon.Words` (out): read-only dictionary from lower-case word to `WordDetails[]`.
+- `WordLexicon.Words` (out): read-only dictionary from lower-case word to an immutable array of `WordDetails`.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
   `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no mirror option is passed.
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.

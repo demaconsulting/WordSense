@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using System.Globalization;
 using System.IO.Compression;
 using System.Text;
@@ -127,7 +128,7 @@ internal static class BasicTuner
         CultureInfo.InvariantCulture,
         $"gamma {hp.Gamma}, beta {hp.Beta}, closed {hp.ClosedMinCount}/{hp.ClosedShare}, hmm weight {hp.HmmWeight}, temperature {hp.Temperature}, cue alpha {hp.CueAlpha}");
 
-    private static (int Rows, int Correct) ScoreTreebank(BasicTables tables, List<UdSentence> sentences, IReadOnlyDictionary<string, WordDetails[]> lexicon)
+    private static (int Rows, int Correct) ScoreTreebank(BasicTables tables, List<UdSentence> sentences, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon)
     {
         var rows = 0;
         var correct = 0;
@@ -171,7 +172,7 @@ internal static class BasicTuner
     private static async Task<(int Rows, int Correct)> ScoreAnchorsAsync(
         BasicTables tables,
         List<CorpusRow> rows,
-        IReadOnlyDictionary<string, WordDetails[]> lexicon,
+        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
         SenseInventory inventory,
         CancellationToken cancellationToken)
     {

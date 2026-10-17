@@ -19,6 +19,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **Known lemma has its senses**: `Words["read"]` holds two entries that share the lemma `read`; a single-sense word
   holds one.
+- **Published values cannot be mutated** (`PublishedValues_CannotBeMutated`): the senses of a key are an immutable
+  array (never the default array); writing, adding or clearing through the list interface throws
+  `NotSupportedException`, and a second lookup returns the very same array.
 - **Keys are lower case and include inflections**: every key equals its lower-cased form, and inflected forms such as
   `records` and `recorded` are keys whose entries carry the lemma `record`, and so are the forms of every dictionary
   word (`looked`, `seemed`, `trees`, `knows`, `having`); `went`, `children` and `happier` are known (the dictionary

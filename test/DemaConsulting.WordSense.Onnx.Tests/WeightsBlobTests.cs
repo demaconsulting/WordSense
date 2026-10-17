@@ -63,6 +63,70 @@ public class WeightsBlobTests
     }
 
     /// <summary>
+    ///     Builds the smallest one-lemma blob: a binary lemma "a" with two senses, the given first-sense part of speech
+    ///     and the given presence byte of the first sense's meaning.
+    /// </summary>
+    /// <param name="pos">The part-of-speech byte of the first sense.</param>
+    /// <param name="presence">The presence byte of the first sense's meaning.</param>
+    /// <returns>The compressed blob.</returns>
+    private static byte[] OneLemma(byte pos, byte presence) => Compress(
+    [
+        .. "WSX1"u8.ToArray(), 1, (byte)'m', 1, 0, 0, 0, 0, 0, // magic, model id, dimension, dense flag, mean
+        1, 1, (byte)'a', 0, 0, 0, 0, 1, 2, // one lemma "a", abstain 0.0f, binary kind, two senses
+        pos, 0, presence, // first sense: part of speech, empty meaning, presence byte
+        (byte)PartOfSpeech.Verb, 0, 0, // second sense
+        0, 0, 0, 0, 0, 0, 0, 0, // one bias and one weight (0.0f each)
+    ]);
+
+    /// <summary>
+    ///     Every part of speech of the enum, Determiner included, is accepted in a sense.
+    /// </summary>
+    /// <param name="pos">The part-of-speech byte.</param>
+    [Theory]
+    [InlineData((byte)PartOfSpeech.Noun)]
+    [InlineData((byte)PartOfSpeech.Interjection)]
+    [InlineData((byte)PartOfSpeech.Determiner)]
+    public void WeightsBlob_Read_EveryPartOfSpeech_IsAccepted(byte pos)
+    {
+        var data = WeightsBlob.Read(OneLemma(pos, 0));
+
+        Assert.Equal((PartOfSpeech)pos, Assert.Single(data.Lemmas).Senses[0].PartOfSpeech);
+    }
+
+    /// <summary>
+    ///     A part of speech beyond the last value of the enum is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_PartOfSpeechOutOfRange_Throws()
+    {
+        var beyond = (byte)((byte)Enum.GetValues<PartOfSpeech>().Max() + 1);
+
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(beyond, 0)));
+    }
+
+    /// <summary>
+    ///     The presence byte of a meaning is 0 or 1; any other value is rejected.
+    /// </summary>
+    /// <param name="presence">The presence byte.</param>
+    [Theory]
+    [InlineData((byte)2)]
+    [InlineData((byte)255)]
+    public void WeightsBlob_Read_PresenceByteOutOfRange_Throws(byte presence)
+    {
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, presence)));
+    }
+
+    /// <summary>
+    ///     A presence byte of 1 keeps the meaning and 0 drops it.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_PresenceByteZeroAndOne_AreAccepted()
+    {
+        Assert.Null(Assert.Single(WeightsBlob.Read(OneLemma(1, 0)).Lemmas).Senses[0].Meaning);
+        Assert.Equal(string.Empty, Assert.Single(WeightsBlob.Read(OneLemma(1, 1)).Lemmas).Senses[0].Meaning);
+    }
+
+    /// <summary>
     ///     A blob with a dimension of zero is rejected.
     /// </summary>
     [Fact]

@@ -22,7 +22,7 @@ does not download anything; `MirrorOptions` only carries the configuration that 
 
 The subsystem exposes:
 
-- `WordLexicon.Words`: the read-only dictionary from lower-case surface word to its possible senses;
+- `WordLexicon.Words`: the read-only dictionary from lower-case surface word to its possible senses, each an immutable array;
 - `IWordSenseModel`: the contract that model packages implement;
 - `WordSense`, `WordDetails` and `PartOfSpeech`: the answer values;
 - `MirrorOptions`: the download mirror configuration passed to `EnsureModelAsync`.

@@ -29,6 +29,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `<store>/<model-id>/`.
 - **Lexicon-only words never touch model files**: `ClassifyAsync` on words with at most one sense, on a model whose
   directory does not exist, returns the lexicon answers without any ensure.
+- **Multi-sense words without weights need no model** (`MultiSenseWordsWithoutWeights_FallBackWithoutModelFiles`):
+  `ClassifyAsync(["so", "will"])` on a model whose directory does not exist returns the first sense of each word with
+  confidence one over the number of senses, with no ensure; a word with several senses and weights (`record`) still
+  ensures the files (`MissingDirectory_ThrowsFileNotFound`).
 - **Lazy ensure**: `ClassifyAsync` on an ambiguous word without a prior `EnsureModelAsync` ensures the files by itself
   (default settings) and classifies; a missing directory throws `FileNotFoundException`.
 - **Concurrent EnsureModelAsync calls share one download**: parallel calls produce one set of requests; parallel

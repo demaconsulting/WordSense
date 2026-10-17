@@ -9,7 +9,9 @@ possible senses. Every model starts from it, and a word with one sense never nee
 
 #### Data Model
 
-- `WordLexicon.Words`: a `FrozenDictionary<string, WordDetails[]>`.
+- `WordLexicon.Words`: a `FrozenDictionary<string, ImmutableArray<WordDetails>>`. The arrays are immutable and are the
+  very instances the reader built (no copy on lookup), so a caller can neither change nor corrupt them; none is ever
+  the default array.
 - Keys are lower-case surface forms, including the inflected forms of every dictionary word generated at build
   time. The senses under one key
   all belong to one lemma. Callers lower-case the word and map the typographic apostrophe (U+2019) to `'` before the
@@ -18,7 +20,8 @@ possible senses. Every model starts from it, and a word with one sense never nee
   the meaning); other words have one entry per part of speech without them.
 - The internal `WordsBlob` reader parses the embedded `words.bin`: a Brotli-compressed stream with the magic `WSW1`,
   a string table, a table of distinct `WordDetails`, and the entry table that maps each key to its details, all
-  integers as 7-bit varints. Equal details share one instance.
+  integers as 7-bit varints. Equal details share one instance. Every part-of-speech value is checked against the range
+  of the `PartOfSpeech` enum (derived from the enum, not a literal).
 
 #### Key Methods
 

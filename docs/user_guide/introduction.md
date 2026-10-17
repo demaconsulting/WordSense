@@ -253,13 +253,15 @@ is not in the lexicon and starts with an upper-case letter inside a segment (not
 
 ## Core: the Word Table
 
-`WordLexicon.Words` is a `FrozenDictionary<string, WordDetails[]>` of lower-case surface forms to their senses. The
+`WordLexicon.Words` is a `FrozenDictionary<string, ImmutableArray<WordDetails>>` of lower-case surface forms to their
+senses. The senses of a key are an immutable array that is shared, not copied, so nobody can change what another caller
+sees. The
 inflected forms (plural, verb forms, comparatives and so on) of every dictionary word are in the table, so no
 morphology runs at use time. The
 core package has no model, no ONNX Runtime and no weights: it knows nothing of the model packages.
 
 ```csharp
-if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
+if (WordLexicon.Words.TryGetValue("lead", out var senses))
 {
     foreach (WordDetails sense in senses)
     {
@@ -267,6 +269,9 @@ if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
     }
 }
 ```
+
+The `senses` value is an `ImmutableArray<WordDetails>` (from `System.Collections.Immutable`); a value read from
+`TryGetValue` is never the default array.
 
 The keys are lower-case and compared ordinally, and the table has no key with a curly apostrophe: lower-case the word and
 replace U+2019 with `'` yourself (the models do it for you). The indexer `Words["x"]` throws
@@ -345,7 +350,8 @@ hashing of files that are already in place is not interrupted: when no download 
 normally (the model is disposed nevertheless, so every later call throws). A `ClassifyAsync` that is still waiting for
 its lazy ensure ends with `OperationCanceledException` (the download was cancelled) or, when the ensure finished first
 and the call had not yet opened the ONNX session, with `ObjectDisposedException`; only a classification that already
-runs on the session completes normally, and a call that never needs the model (no ambiguous word) is not affected.
+runs on the session completes normally, and a call that never needs the model (no word with several senses and trained
+weights) is not affected.
 Disposal never deletes the downloaded files; they stay in the store and are reused. Disposing while a classification
 is running is safe for every model: the model is marked disposed at once (new calls throw), a running classification
 completes normally, and an encoder model releases its ONNX session when the last of them finishes (`Dispose` never

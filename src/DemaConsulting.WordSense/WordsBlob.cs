@@ -1,5 +1,7 @@
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace DemaConsulting.WordSense;
@@ -17,6 +19,11 @@ internal static class WordsBlob
 {
     private static readonly byte[] Magic = "WSW1"u8.ToArray();
 
+    /// <summary>
+    ///     The largest valid part-of-speech byte, derived from the enum so a new value is accepted automatically.
+    /// </summary>
+    private static readonly byte MaxPartOfSpeech = (byte)Enum.GetValues<PartOfSpeech>().Max();
+
     private static readonly UTF8Encoding StrictUtf8 = new(false, true);
 
     /// <summary>
@@ -25,7 +32,7 @@ internal static class WordsBlob
     /// <param name="blob">The compressed blob.</param>
     /// <returns>The lexicon, with ordinal key comparison.</returns>
     /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
-    public static FrozenDictionary<string, WordDetails[]> Read(ReadOnlySpan<byte> blob)
+    public static FrozenDictionary<string, ImmutableArray<WordDetails>> Read(ReadOnlySpan<byte> blob)
     {
         byte[] data;
         try
@@ -75,7 +82,7 @@ internal static class WordsBlob
             var pos = span[position++];
             var meaning = ReadVarint(span, ref position);
             var respelling = ReadVarint(span, ref position);
-            if (lemma >= stringCount || pos > (byte)PartOfSpeech.Determiner || meaning > stringCount || respelling > stringCount)
+            if (lemma >= stringCount || pos > MaxPartOfSpeech || meaning > stringCount || respelling > stringCount)
             {
                 throw new InvalidDataException("The word lexicon has an invalid sense.");
             }
@@ -88,7 +95,7 @@ internal static class WordsBlob
         }
 
         var entryCount = ReadCount(span, ref position, 3);
-        var entries = new Dictionary<string, WordDetails[]>(entryCount, StringComparer.Ordinal);
+        var entries = new Dictionary<string, ImmutableArray<WordDetails>>(entryCount, StringComparer.Ordinal);
         for (var i = 0; i < entryCount; i++)
         {
             var key = ReadVarint(span, ref position);
@@ -105,7 +112,7 @@ internal static class WordsBlob
                 senses[s] = id < detailsCount ? details[id] : throw new InvalidDataException("The word lexicon has an invalid sense reference.");
             }
 
-            if (!entries.TryAdd(strings[key], senses))
+            if (!entries.TryAdd(strings[key], ImmutableCollectionsMarshal.AsImmutableArray(senses)))
             {
                 throw new InvalidDataException("The word lexicon has a duplicate key.");
             }

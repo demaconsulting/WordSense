@@ -42,5 +42,7 @@ Encoder failures propagate.
 
 #### Callers
 
-`OnnxWordSenseModel.ClassifyAsync` and the builder (`Evaluator`). `NeedsModel` and `ResolveWithoutModel` let the model
-answer lexicon-only text without ensuring or opening anything.
+`OnnxWordSenseModel.ClassifyAsync` and the builder (`Evaluator`). `HasMultiSenseWord`, `NeedsModel` and
+`ResolveWithoutModel` let the model answer text without ensuring or opening anything when no word has several senses
+together with intact weights; `NeedsModel` takes the weights table (the embedded weights, which need no model file), so
+a multi-sense word without weights (`so`, `will`) is answered from the lexicon alone.

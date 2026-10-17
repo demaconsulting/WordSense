@@ -29,6 +29,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   lemma with its senses and weights.
 - **Corrupt blob is rejected**: an unknown format marker, truncated data, inconsistent counts and trailing data each throw
   `InvalidDataException`.
+- **Part of speech and flag bytes are checked**: every value of `PartOfSpeech` up to and including `Determiner` is
+  accepted in a sense, a value above the last one is rejected, and a meaning presence byte other than 0 or 1 is rejected
+  with `InvalidDataException`.
 - **Prefix match**: a lemma whose trained senses equal the first senses of the lexicon entry (lemma, part of speech and
   meaning, in the same order) is kept, also when the entry has further senses (`TrainedSensesArePrefix_KeepsLemma`); if
   a trained sense differs, or the lemma is absent from the lexicon, the whole lemma is dropped and listed in the

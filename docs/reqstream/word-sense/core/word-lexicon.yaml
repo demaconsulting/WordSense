@@ -12,13 +12,15 @@ sections:
                 title: >-
                   WordLexicon shall map each known lower-case surface word, including the inflected forms (plural,
                   verb, comparative and adverb forms, irregular forms included) of every dictionary word generated at
-                  build time, to the list of senses (lemma, part of speech, meaning and respelling) it can have.
+                  build time, to the immutable list of senses (lemma, part of speech, meaning and respelling) it can
+                  have, so that a caller cannot change what any other caller sees.
                 tags: [unit]
                 justification: |
                   Callers and models look words up by their surface form; resolving inflections at build time keeps
-                  look-up a single dictionary access.
+                  look-up a single dictionary access, and the lexicon is shared by every caller in the process.
                 tests:
                   - WordLexicon_Words_KnownWord_ReturnsItsSenses
+                  - WordLexicon_Words_PublishedValues_CannotBeMutated
                   - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
                   - WordLexicon_Words_InflectedFormOfAnyDictionaryWord_ResolvesToLemma
                   - WordLexicon_Words_IrregularFormInDictionary_IsKnown

@@ -1,4 +1,5 @@
 using System.Buffers;
+using System.Collections.Immutable;
 
 namespace DemaConsulting.WordSense.Basic;
 
@@ -23,7 +24,7 @@ namespace DemaConsulting.WordSense.Basic;
 internal sealed class BasicClassifier
 {
     private readonly BasicTables? _tables;
-    private readonly IReadOnlyDictionary<string, WordDetails[]> _lexicon;
+    private readonly IReadOnlyDictionary<string, ImmutableArray<WordDetails>> _lexicon;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BasicClassifier"/> class that uses the embedded table and the
@@ -39,7 +40,7 @@ internal sealed class BasicClassifier
     /// </summary>
     /// <param name="tables">The statistics, or null for the embedded table (loaded on first use).</param>
     /// <param name="lexicon">The lexicon, by lower-case word.</param>
-    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, WordDetails[]> lexicon)
+    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon)
     {
         _tables = tables;
         _lexicon = lexicon;
@@ -153,7 +154,7 @@ internal sealed class BasicClassifier
     /// <param name="lexicon">The lexicon, by lower-case word.</param>
     /// <param name="word">The word as written.</param>
     /// <returns>A fixed token for a word without a letter (a number or punctuation), otherwise a word token with the parts of speech the lexicon lists.</returns>
-    internal static TaggerToken MakeToken(IReadOnlyDictionary<string, WordDetails[]> lexicon, string word)
+    internal static TaggerToken MakeToken(IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon, string word)
     {
         var key = Normalize(word);
         if (key.Length == 0)
@@ -165,7 +166,7 @@ internal sealed class BasicClassifier
         return TaggerToken.Word(key, mask, char.IsUpper(word[0]));
     }
 
-    private static int MaskOf(WordDetails[] senses)
+    private static int MaskOf(ImmutableArray<WordDetails> senses)
     {
         var mask = 0;
         foreach (var sense in senses)
@@ -176,7 +177,7 @@ internal sealed class BasicClassifier
         return mask;
     }
 
-    private static WordSense Choose(BasicTables tables, string word, WordDetails[] senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features)
+    private static WordSense Choose(BasicTables tables, string word, ImmutableArray<WordDetails> senses, ReadOnlySpan<double> posterior, ReadOnlySpan<FeatureRef> features)
     {
         var count = senses.Length;
         Span<double> cues = count <= 32 ? stackalloc double[32] : new double[count];

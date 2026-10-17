@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
@@ -145,10 +147,10 @@ internal static class CueModel
     /// <param name="features">The features of the target.</param>
     /// <param name="senses">The candidate senses.</param>
     /// <param name="scores">Receives one log score per candidate (the prior plus the weights of the target's features); <see cref="double.NaN"/> for a candidate the table does not have.</param>
-    public static void Score(LemmaCue cue, ReadOnlySpan<FeatureRef> features, WordDetails[] senses, Span<double> scores)
+    public static void Score(LemmaCue cue, ReadOnlySpan<FeatureRef> features, ImmutableArray<WordDetails> senses, Span<double> scores)
     {
         ArgumentNullException.ThrowIfNull(cue);
-        ArgumentNullException.ThrowIfNull(senses);
+        ArgumentOutOfRangeException.ThrowIfEqual(senses.IsDefault, true);
         Span<int> rows = features.Length <= MaxFeatures ? stackalloc int[MaxFeatures] : new int[features.Length];
         var found = 0;
         foreach (var feature in features)

@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
@@ -21,7 +23,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma()
     {
-        var words = new Dictionary<string, WordDetails[]> { ["record"] = [Noun, Verb] };
+        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, Verb] };
 
         var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
 
@@ -36,7 +38,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), new Dictionary<string, WordDetails[]>());
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), new Dictionary<string, ImmutableArray<WordDetails>>());
 
         Assert.Equal(["record"], table.DroppedLemmaNames);
         Assert.Null(table.Find("record"));
@@ -49,7 +51,7 @@ public class WeightedLemmaTableTests
     public void WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma()
     {
         var changed = Verb with { Meaning = "changed" };
-        var words = new Dictionary<string, WordDetails[]> { ["record"] = [Noun, changed] };
+        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, changed] };
 
         var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
 
@@ -65,7 +67,7 @@ public class WeightedLemmaTableTests
     public void WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma()
     {
         var extra = new WordDetails("record", PartOfSpeech.Adjective, null, null);
-        var words = new Dictionary<string, WordDetails[]> { ["record"] = [Noun, Verb, extra] };
+        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, Verb, extra] };
 
         var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
 
@@ -79,7 +81,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_DifferentSenseCount_DropsLemma()
     {
-        var words = new Dictionary<string, WordDetails[]> { ["record"] = [Noun] };
+        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun] };
 
         var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
 

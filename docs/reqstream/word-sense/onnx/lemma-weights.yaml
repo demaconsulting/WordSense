@@ -22,14 +22,21 @@ sections:
 
               - id: WordSense-Onnx-LemmaWeights-Integrity
                 title: >-
-                  The weights reader shall reject a corrupt, truncated or foreign blob.
+                  The weights reader shall reject a corrupt, truncated or foreign blob, a part of speech outside the
+                  values of the part-of-speech type, and a flag byte that is neither 0 nor 1, and shall accept every
+                  defined part of speech, determiners included.
                 tags: [unit]
                 justification: |
-                  A damaged blob must fail loudly instead of producing silently wrong answers.
+                  A damaged blob must fail loudly instead of producing silently wrong answers, and a blob that uses a
+                  valid part of speech must not be refused.
                 tests:
                   - WeightsBlob_Read_NotCompressed_Throws
                   - WeightsBlob_Read_UnknownMagic_Throws
                   - WeightsBlob_Read_Truncated_Throws
+                  - WeightsBlob_Read_EveryPartOfSpeech_IsAccepted
+                  - WeightsBlob_Read_PartOfSpeechOutOfRange_Throws
+                  - WeightsBlob_Read_PresenceByteOutOfRange_Throws
+                  - WeightsBlob_Read_PresenceByteZeroAndOne_AreAccepted
 
               - id: WordSense-Onnx-LemmaWeights-Match
                 title: >-

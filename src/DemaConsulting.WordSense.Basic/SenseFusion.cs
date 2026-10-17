@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
@@ -25,13 +27,13 @@ internal static class SenseFusion
     /// <param name="probabilities">Receives the probability of each candidate; the values sum to 1.</param>
     public static void Fuse(
         ReadOnlySpan<double> posteriors,
-        WordDetails[] senses,
+        ImmutableArray<WordDetails> senses,
         Span<double> cues,
         double tagWeight,
         double invTemperature,
         Span<double> probabilities)
     {
-        ArgumentNullException.ThrowIfNull(senses);
+        ArgumentOutOfRangeException.ThrowIfEqual(senses.IsDefault, true);
         var count = senses.Length;
         Span<double> mass = stackalloc double[PosTag.Count];
         mass.Clear();

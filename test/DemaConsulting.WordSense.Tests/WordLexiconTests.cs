@@ -119,6 +119,26 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     The published sense lists cannot be mutated: not even through the list interfaces, and a lookup returns the
+    ///     very same list every time (no copy).
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_PublishedValues_CannotBeMutated()
+    {
+        var senses = WordLexicon.Words["record"];
+        IList<WordDetails> list = senses;
+        var first = senses[0];
+
+        Assert.True(list.IsReadOnly);
+        Assert.Throws<NotSupportedException>(() => list[0] = new WordDetails("x", PartOfSpeech.Noun, null, null));
+        Assert.Throws<NotSupportedException>(() => list.Add(first));
+        Assert.Throws<NotSupportedException>(() => list.Clear());
+        Assert.Equal(first, WordLexicon.Words["record"][0]);
+        Assert.True(senses == WordLexicon.Words["record"]);
+        Assert.All(WordLexicon.Words.Take(1000), pair => Assert.False(pair.Value.IsDefault));
+    }
+
+    /// <summary>
     ///     A word that is not in the lexicon is absent, and so is a key that is not lower case.
     /// </summary>
     [Fact]

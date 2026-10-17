@@ -1,3 +1,5 @@
+using System.Collections.Immutable;
+
 namespace DemaConsulting.WordSense.Basic.Tests;
 
 /// <summary>
@@ -71,7 +73,7 @@ public class CueModelTests
     public void CueModel_Score_UsesWeightsAndMarksMissingSenses()
     {
         var tables = BasicTables.Load(TestTables.Default());
-        WordDetails[] senses = [Fish, Music, Verb];
+        ImmutableArray<WordDetails> senses = [Fish, Music, Verb];
         var scores = new double[3];
 
         CueModel.Score(tables.Cues["bass"], [new FeatureRef(CueModel.Window, "river")], senses, scores);

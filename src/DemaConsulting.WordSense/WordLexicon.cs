@@ -1,4 +1,5 @@
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 
 namespace DemaConsulting.WordSense;
 
@@ -10,7 +11,9 @@ namespace DemaConsulting.WordSense;
 ///     The lexicon is embedded in the assembly and loaded on first use; it needs no model files and no network. A key is
 ///     a lower-case surface form: a lemma or an inflection of one (<c>record</c>, <c>records</c>, <c>recorded</c>); the
 ///     inflected forms are generated when the lexicon is built, so no morphology runs at run time. Every sense in the
-///     array of a key has the same lemma. A key with one sense is unambiguous; a key with several senses (a noun and a
+///     array of a key has the same lemma. The senses of a key are an <see cref="ImmutableArray{T}"/> of
+///     <see cref="WordDetails"/>: the published lists are immutable and shared, never copied, so no caller can change
+///     what another caller sees. A key with one sense is unambiguous; a key with several senses (a noun and a
 ///     verb, or the meanings of a heteronym) needs context, which a model from one of the model packages provides.
 ///     </para>
 ///     <para>
@@ -36,14 +39,14 @@ namespace DemaConsulting.WordSense;
 ///     <code>
 ///     // "read" has two entries, both verbs: meaning "present" (respelling "reed") and meaning "past" (respelling "red");
 ///     // every sense has the lemma "read"
-///     WordDetails[] read = WordLexicon.Words["read"];
+///     var read = WordLexicon.Words["read"];
 ///     foreach (WordDetails sense in read)
 ///     {
 ///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, meaning {sense.Meaning}, respelling {sense.Respelling}");
 ///     }
 ///
 ///     // A word that is not in the lexicon is missing from the dictionary, so use TryGetValue
-///     if (WordLexicon.Words.TryGetValue("zyzzyva", out WordDetails[]? senses))
+///     if (WordLexicon.Words.TryGetValue("zyzzyva", out var senses))
 ///     {
 ///         Console.WriteLine($"zyzzyva: {senses.Length} senses");
 ///     }
@@ -57,7 +60,7 @@ public static class WordLexicon
 {
     private const string ResourceName = "DemaConsulting.WordSense.words.bin";
 
-    private static readonly Lazy<FrozenDictionary<string, WordDetails[]>> Table =
+    private static readonly Lazy<FrozenDictionary<string, ImmutableArray<WordDetails>>> Table =
         new(Load, LazyThreadSafetyMode.ExecutionAndPublication);
 
     /// <summary>
@@ -70,14 +73,14 @@ public static class WordLexicon
     ///     indexes the embedded lexicon; later accesses return the same instance.
     /// </remarks>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
-    public static FrozenDictionary<string, WordDetails[]> Words => Table.Value;
+    public static FrozenDictionary<string, ImmutableArray<WordDetails>> Words => Table.Value;
 
     /// <summary>
     ///     Loads the embedded lexicon.
     /// </summary>
     /// <returns>The lexicon.</returns>
     /// <exception cref="InvalidDataException">Thrown when the resource is missing or corrupt.</exception>
-    private static FrozenDictionary<string, WordDetails[]> Load()
+    private static FrozenDictionary<string, ImmutableArray<WordDetails>> Load()
     {
         using var stream = typeof(WordLexicon).Assembly.GetManifestResourceStream(ResourceName)
             ?? throw new InvalidDataException("The embedded word lexicon is missing from the assembly.");

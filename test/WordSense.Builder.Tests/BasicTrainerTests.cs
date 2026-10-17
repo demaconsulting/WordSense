@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using DemaConsulting.WordSense;
 using DemaConsulting.WordSense.Basic;
 
@@ -11,7 +12,7 @@ public class BasicTrainerTests
     private static readonly WordDetails Noun = new("record", PartOfSpeech.Noun, null, null);
     private static readonly WordDetails Verb = new("record", PartOfSpeech.Verb, null, null);
 
-    private static readonly Dictionary<string, WordDetails[]> Lexicon = new(StringComparer.Ordinal)
+    private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
         ["record"] = [Noun, Verb],
         ["cat"] = [new("cat", PartOfSpeech.Noun, null, null)],

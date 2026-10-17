@@ -160,8 +160,10 @@ at most 128 word pieces by default and use a window around the word for longer t
 The model API: `EnsureModelAsync` is optional for every model. Call it to fail early (for an encoder model it verifies
 the SHA-256 of the files, with no network access when you pass a model directory) and to pass a `MirrorOptions`.
 `ClassifyAsync` also ensures the model lazily
-on first use, but only when a word needs it (a list without an ambiguous word is answered from the dictionary and
-never touches model files, so a model that is never needed is never downloaded); the lazy ensure uses the default and
+on first use, but only when a word needs it (a list in which no word has several senses with trained weights is answered
+from the dictionary and
+never touches model files, so a model that is never needed is never downloaded; a word with several senses but no trained
+weights, such as `so` or `will`, gets its first sense with confidence `1/n`); the lazy ensure uses the default and
 environment mirror settings and may throw the same exceptions as `EnsureModelAsync` (for example
 `FileNotFoundException` or `InvalidDataException` for a supplied directory), so call `EnsureModelAsync` yourself to pass
 a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. Dispose

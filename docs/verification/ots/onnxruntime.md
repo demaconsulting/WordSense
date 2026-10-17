@@ -32,7 +32,8 @@ skipped locally only when the Git LFS model files have not been fetched; the CI 
 **Scenario**: A classifier built on the real MiniLM model, and one built on the real BertBaseCased model, each classify
 a sentence containing two senses of "record".
 
-**Expected**: The noun sense is assigned to the first and the verb sense to the second occurrence.
+**Expected**: The verb sense is assigned to the first occurrence (after "will") and the noun sense to the second
+(after "the").
 
 **Requirement coverage**: `WordSense-OTS-OnnxRuntime-Inference`.
 

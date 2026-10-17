@@ -34,6 +34,11 @@ internal static class WeightsBlob
     private static readonly byte[] Magic = "WSX1"u8.ToArray();
 
     /// <summary>
+    ///     The largest valid part-of-speech byte, derived from the enum so a new value is accepted automatically.
+    /// </summary>
+    private static readonly byte MaxPartOfSpeech = (byte)Enum.GetValues<PartOfSpeech>().Max();
+
+    /// <summary>
     ///     Deserializes weights.
     /// </summary>
     /// <param name="blob">The compressed blob.</param>
@@ -95,13 +100,19 @@ internal static class WeightsBlob
                 for (var s = 0; s < senseCount; s++)
                 {
                     var pos = ReadByte(span, ref p);
-                    if (pos > (byte)PartOfSpeech.Interjection)
+                    if (pos > MaxPartOfSpeech)
                     {
                         throw new InvalidDataException("The weights have an invalid part of speech.");
                     }
 
                     var meaning = ReadString(span, ref p);
-                    var present = ReadByte(span, ref p) == 1;
+                    var presence = ReadByte(span, ref p);
+                    if (presence > 1)
+                    {
+                        throw new InvalidDataException("The weights have an invalid meaning flag.");
+                    }
+
+                    var present = presence == 1;
                     senses.Add(new WeightedWord(lemma, (PartOfSpeech)pos, present ? meaning : null));
                 }
 

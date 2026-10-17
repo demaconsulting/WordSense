@@ -1,4 +1,5 @@
 using System.Collections.Frozen;
+using System.Collections.Immutable;
 using System.Reflection;
 
 namespace DemaConsulting.WordSense.Onnx;
@@ -21,7 +22,7 @@ internal sealed class WeightedLemmaTable
     /// </summary>
     /// <param name="data">The trained weights.</param>
     /// <param name="words">The word lexicon to match against.</param>
-    public WeightedLemmaTable(WeightsData data, IReadOnlyDictionary<string, WordDetails[]> words)
+    public WeightedLemmaTable(WeightsData data, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> words)
     {
         ArgumentNullException.ThrowIfNull(data);
         ArgumentNullException.ThrowIfNull(words);
@@ -104,7 +105,7 @@ internal sealed class WeightedLemmaTable
     /// <param name="entry">The weights entry.</param>
     /// <param name="details">The senses from the word lexicon.</param>
     /// <returns>True when the trained senses are identical in content and order to the first lexicon senses.</returns>
-    private static bool Matches(WeightedLemma entry, WordDetails[] details)
+    private static bool Matches(WeightedLemma entry, ImmutableArray<WordDetails> details)
     {
         if (details.Length < entry.Senses.Count || entry.Senses.Count != entry.Weights.SenseCount)
         {

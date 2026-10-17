@@ -26,8 +26,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     with its own <see cref="MirrorOptions"/> only after a failed one. A download in progress writes to temporary
 ///     files that are never visible under a final file name, so a failed or abandoned download leaves no partial model file.
 ///     <see cref="ClassifyAsync"/> is thread-safe; every call shares one ONNX session and one set of weights, which
-///     are opened on the first classification that needs them. A word list without an ambiguous word (every word is
-///     unknown or has one sense) is answered from the lexicon alone: it never touches model files or ONNX, so a model
+///     are opened on the first classification that needs them. A word list without a word that the model can score (every word is
+///     unknown, has one sense, or has several senses but no trained weights) is answered from the lexicon alone: it never touches model files or ONNX, so a model
 ///     that is never needed is never downloaded. The model owns the ONNX
 ///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>).
 ///     Recommendation: dispose it (for example with <c>using</c>) when you no longer need the model. Guarantee:
@@ -271,8 +271,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A non-null array parallel to <paramref name="words"/>; empty for an empty list.</returns>
     /// <remarks>
-    ///     A list in which no word has several senses is answered from the lexicon alone: no model file is read or
-    ///     downloaded and no ONNX session is opened. A list with an ambiguous word first awaits
+    ///     A list in which no word has several senses together with trained weights is answered from the lexicon alone
+    ///     (a word with several senses but no weights gets its first sense and confidence 1/n): no model file is read or
+    ///     downloaded and no ONNX session is opened. A list with such a word first awaits
     ///     <see cref="EnsureModelAsync"/> (with the default mirror: the <c>WORDSENSE_MIRROR_*</c> environment
     ///     variables, if any), which concurrent callers share, and which is retried by the next call after a failure;
     ///     call <see cref="EnsureModelAsync"/> yourself first to pass a <see cref="MirrorOptions"/> (a mirror passed
@@ -308,7 +309,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
             throw new ArgumentException("A word must not be null.", nameof(words));
         }
 
-        if (!OnnxClassifier.NeedsModel(list))
+        // A word with several senses needs the model only when the lemma has intact trained weights; the weights are
+        // embedded in the assembly, so deciding this needs no model file, download or ONNX session
+        if (!OnnxClassifier.HasMultiSenseWord(list) || !OnnxClassifier.NeedsModel(list, GetTable()))
         {
             return OnnxClassifier.ResolveWithoutModel(list, cancellationToken);
         }
@@ -381,6 +384,21 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
         }
 
         encoder?.Dispose();
+    }
+
+    /// <summary>
+    ///     Gets the matched weights, loading the embedded weights on first use; needs no model file and no ONNX session.
+    /// </summary>
+    /// <returns>The weights table.</returns>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <exception cref="InvalidDataException">Thrown when the embedded weights are corrupt.</exception>
+    private WeightedLemmaTable GetTable()
+    {
+        lock (_gate)
+        {
+            ObjectDisposedException.ThrowIf(_disposed, this);
+            return _table ??= WeightedLemmaTable.LoadEmbedded(_spec.WeightsAssembly, _spec.WeightsResourceName, _spec.ModelId, _spec.HiddenSize);
+        }
     }
 
     /// <summary>
