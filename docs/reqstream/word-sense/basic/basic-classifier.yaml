@@ -28,8 +28,9 @@ sections:
 
               - id: WordSense-Basic-BasicClassifier-Resolve
                 title: >-
-                  BasicClassifier shall answer every word with several senses with the sense that the fused part-of-speech
-                  and context-cue evidence makes most probable, with the probability of that sense as confidence.
+                  BasicClassifier shall answer every word with several senses with the sense that the fused
+                  part-of-speech and context-cue evidence makes most probable, with the probability of that sense as
+                  confidence.
                 tags: [unit]
                 justification: |
                   This is the statistical disambiguation that the package provides; the confidence lets callers apply

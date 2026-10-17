@@ -57,7 +57,9 @@ internal sealed record BasicHyperparameters(
     public const int UdDevSentences = 2002;
 
     /// <summary>
-    ///     The values the shipped table is trained with.
+    ///     The values the shipped table is trained with: the values of the original design. <c>tune-basic</c> (UD
+    ///     development file and anchor development subset only) found only differences below one point for gamma 1.0
+    ///     and HMM weight 2.0, which did not carry over to a better holdout or real-text score, so the defaults stay.
     /// </summary>
     public static readonly BasicHyperparameters Default = new(
         Gamma: 0.75,

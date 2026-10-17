@@ -54,6 +54,7 @@ reviews:
       - "test/DemaConsulting.WordSense.MiniLM.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
       - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSample.cs"       # Basic README sample, compiled and run
       - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSampleTests.cs"  # keeps Basic README in sync
+      - "test/DemaConsulting.WordSense.Basic.Tests/ModelTableReadmeTests.cs"  # keeps README model table in sync
 
   # Decomposition Review (only one per repository)
   - id: Decomposition

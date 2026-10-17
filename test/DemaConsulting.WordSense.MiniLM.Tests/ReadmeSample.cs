@@ -58,11 +58,11 @@ internal sealed class ReadmeSample
     public async Task RunBasicAsync()
     {
         // <sample:basic>
-        // The basic model uses the embedded dictionary and a few rules, so there is nothing to download
+        // The basic model uses the embedded dictionary and a small statistical table, so there is nothing to download
         var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 
-        var words = "They will record the record".Split(' ');
+        var words = "They record the record".Split(' ');
         var results = await model.Create().ClassifyAsync(words);
 
         // A word the model cannot decide has no details and a confidence of 0

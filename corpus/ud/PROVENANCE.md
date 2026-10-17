@@ -5,9 +5,12 @@ from. They are counts only; the treebank itself is not stored in this repository
 
 | File | Content |
 | ---- | ------- |
-| `tag-ngrams.tsv` | Header `order`, `tags`, `count`. Unigram, bigram and trigram counts of the part-of-speech tags; the tags are the letters `NRVJBPCIDATUOS` (`S` marks a sentence boundary), separated by spaces. |
-| `word-tags.tsv` | Header `word`, `counts`. For each lower-case word made of letters and apostrophes, the number of occurrences per tag, for example `record` with `N:12,V:3`. |
+| `tag-ngrams.tsv` | Header `order`, `tags`, `count`: tag unigram, bigram and trigram counts. |
+| `word-tags.tsv` | Header `word`, `counts`: occurrences per tag of each lower-case word. |
 | `LICENSE-CC-BY-SA-4.0.txt` | The text of the Creative Commons Attribution-ShareAlike 4.0 International license. |
+
+The tags are the letters `NRVJBPCIDATUOS` (`S` marks a sentence boundary), separated by spaces in `tag-ngrams.tsv`.
+The words are made of letters and apostrophes, and the counts look like `record` with `N:12,V:3`.
 
 Both TSV files are UTF-8 without a byte-order mark, with LF line endings, in a deterministic order.
 

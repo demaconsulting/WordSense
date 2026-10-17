@@ -16,7 +16,7 @@ namespace WordSense.Builder;
 ///     <list type="bullet">
 ///     <item><description><c>words [--corpus DIR] [--output FILE]</c> writes the word table of the core package.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
-///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE]</c> measures a shipped model (minilm, bert-base-cased, basic).</description></item>
+///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file.</description></item>
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
 ///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
@@ -99,6 +99,11 @@ internal static class Program
                         File.WriteAllText(report, text, new System.Text.UTF8Encoding(false));
                     }
 
+                    if (options.TryGetValue("table", out var tableFile))
+                    {
+                        result.UpdateTableFile(tableFile);
+                    }
+
                     return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
@@ -117,7 +122,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table"], StringComparer.Ordinal);
 
     /// <summary>
     ///     Parses <c>--name value</c> pairs.

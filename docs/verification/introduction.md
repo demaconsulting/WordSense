@@ -30,7 +30,8 @@ constituent software items, specifically:
   `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
   `DemaConsulting.WordSense.BertBaseCased`
 - **WordLexicon** and **WordSenseContracts** (Units) of the Core subsystem
-- **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**, **PosTagger**, **CueModel** and **SenseFusion** (Units) of
+- **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**, **PosTagger**, **CueModel** and **SenseFusion**
+  (Units) of
   the Basic subsystem
 - **OnnxWordSenseModel**, **OnnxClassifier**, **OnnxEncoder**, **WordPieceTokenizer**, **ModelDownloader**,
   **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem

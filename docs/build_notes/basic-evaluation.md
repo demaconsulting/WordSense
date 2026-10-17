@@ -49,19 +49,63 @@ by a hash of its text, is development). The holdout and the real-text sentences 
 ## Results
 
 `evaluate basic` prints the same comparison table on every run, so that two runs can be compared line by line. The
-reference rows are fixed values of earlier measurements; the first row is the current table.
+reference rows are fixed values of earlier measurements; the first row is the current table. The table
+`basic.bin` is 85,237 bytes (83 KiB), SHA-256 `EE8FCBEA97188A0D6C687F601C1BF237E28DC2A2945B45A4C9CD2B0B6B0435FC`.
 
-| Model | Best sense, holdout | Best sense, real text |
-| ----- | ------------------: | --------------------: |
-| Basic (this build) | see the output of `evaluate basic` | see the output of `evaluate basic` |
-| Basic spike (research prototype) | 91.4% | 81.9% |
-| MiniLM | 96.87% | 92.60% |
-| BertBaseCased | 99.05% | 97.39% |
+<!-- markdownlint-disable MD013 -->
 
-The first row is filled in from the build in the build notes generated with the release. The command also prints, for
-the basic model, the calibration of the confidence (rows and accuracy per confidence bucket), the share of answers and
-the accuracy at the confidence thresholds 0.6, 0.8 and 0.9, the size of the table, the first-use time of the table and
-the classification time per word and per sentence.
+| Model | Best sense, holdout | Best sense, real text | Part of speech (holdout / real) | Pronunciation (holdout / real) |
+| ----- | ------------------: | --------------------: | ------------------------------: | -----------------------------: |
+| Basic (this build) | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% |
+| Basic spike (research prototype) | 91.4% | 81.9% | 92.6% / 87.5% | 93.9% / 84.9% |
+| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% |
+| BertBaseCased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% |
+
+<!-- markdownlint-enable MD013 -->
+The holdout is optimistic (written together with the training anchors); the real-text column is the realistic
+expectation.
+
+### Confidence
+
+| Set | Threshold | Coverage | Precision |
+| --- | --------: | -------: | --------: |
+| holdout | 0.6 | 95.28% | 90.42% |
+| holdout | 0.8 | 85.83% | 93.76% |
+| holdout | 0.9 | 77.93% | 96.17% |
+| real text | 0.6 | 89.84% | 89.34% |
+| real text | 0.8 | 78.23% | 93.14% |
+| real text | 0.9 | 69.67% | 96.04% |
+
+Calibration is monotone: holdout accuracy per bucket is 52.9% (0.4-0.6), 57.8% (0.6-0.7), 62.1% (0.7-0.8), 70.0%
+(0.8-0.9) and 96.2% (at least 0.9). The probabilities are under-confident in the middle buckets, over-confident
+below 0.6, and well calibrated at 0.9 and above.
+
+### Cost
+
+| Measure | Value |
+| ------- | ----: |
+| Table size | 83 KiB |
+| Table cold load | 22 ms |
+| Classification time | 2.3 us per word, 34 us per sentence |
+| Word table first use (core package) | 122 ms, 42.8 MiB |
+| Process memory added by the model | 21 MiB |
+
+### Differences to the spike
+
+The holdout is 2.8 points below the spike (88.65% against 91.4%) and the part-of-speech holdout 2.9 points below;
+the real-text best sense is 2.9 points above it (84.76% against 81.9%). The shipped model is trained only on the
+committed treebank counts and the training anchors, with hyperparameters tuned on the development subsets. The cause
+of the holdout gap was not established (it is a hypothesis, not a finding, that the spike was fitted closer to the
+holdout's own style). The gap was not closed by tuning: raising gamma to 1.0 and the HMM weight to 2.0 improved the
+development subsets by under a point each but lowered the holdout (88.46%) and real text (84.33%), so the defaults
+were kept. Table quantization and clitic tokenization were considered as causes but not isolated with experiments. The
+holdout was deliberately not used to chase the gap, to keep it unused for tuning.
+
+### A bug found during evaluation
+
+The first evaluation gave only 66.4% (holdout). The cue model accumulated the sense priors, which are stored as signed
+bytes, in a byte-typed sum and overflowed; the sum is now an `int`. The table was not affected, only the scoring; the
+evaluation above is after the fix.
 
 ## Reading the confidence
 

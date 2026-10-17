@@ -2,7 +2,8 @@
 
 #### Verification Approach
 
-Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs` load small toy tables that `TestTables` builds in
+Tests in `test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs` load small toy tables that `TestTables`
+builds in
 the layout of the builder's writer, and corrupted variants made by editing the decompressed bytes and recompressing
 them. One test loads the real embedded table. Nothing is mocked.
 

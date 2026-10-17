@@ -2,7 +2,9 @@
 
 This note compares the two ONNX encoder models of WordSense, `DemaConsulting.WordSense.MiniLM` and
 `DemaConsulting.WordSense.BertBaseCased`, on the same data. The figures are the output of the builder command
-`evaluate`. The statistical Basic model is compared in `basic-evaluation.md`; to re-measure it see `tuning.md`.
+`evaluate`. The statistical Basic model is compared in `basic-evaluation.md`; the combined table of all three models
+is generated into `model-table.md` (`evaluate <model> --table docs/build_notes/model-table.md`) and shown in the root
+README.
 
 ## Method
 
@@ -49,13 +51,17 @@ dotnet run --project tools/WordSense.Builder -c Release -- evaluate bert-base-ca
 
 | Measure | MiniLM | BertBaseCased |
 | ------- | -----: | ------------: |
-| Model download (`model_int8.onnx` and the other files) | 23.2 MB | 109.4 MB |
+| Model download (`model_int8.onnx` and the other files) | 23 MiB | 104 MiB |
 | Weights size (KiB) | 1,129 | 2,241 |
-| Classification latency (ms per sentence) | 1.61 | 9.93 |
-| Word table first use (ms) | 113 | 113 |
+| Classification latency (ms per sentence) | 1.84 | 8.55 |
+| Model first use (ms) | 388 | 521 |
+| Process memory added by the model (MiB) | 64 | 150 |
+| Word table first use (ms) | 122 | 118 |
 | Word table first use (MiB) | 42.8 | 42.8 |
 
-The download sizes are the sums of the file sizes in `model-provenance.md`.
+The download sizes are the sums of the file sizes in the model directories measured by the last evaluation run
+(IntraOpThreads 2, same machine for all models); they replace the earlier figures in `model-provenance.md`
+(23.2 MB and 109.4 MB, which use decimal megabytes). The latency is machine dependent.
 
 ## Against the Earlier Baseline
 

@@ -22,7 +22,8 @@ without network access. The SHA-256 values below are of the real content, not of
 ## Basic
 
 `DemaConsulting.WordSense.Basic` has no model files: its statistical table (`basic.bin`, an embedded resource of about
-a megabyte or less) is trained by the builder command `train-basic` and compiled into the package. The table is derived from:
+a megabyte or less) is trained by the builder command `train-basic` and compiled into the package. The table is
+derived from:
 
 - the tag counts in `corpus/ud`, which `ud-counts` produces from the Universal Dependencies English-EWT treebank
   (training and development parts only), pinned to the commit `4a4d77f599ea53cc405f85d0cec4b2f14f81d42b`:

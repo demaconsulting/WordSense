@@ -109,7 +109,7 @@ using DemaConsulting.WordSense.Basic;
 var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 
-var words = "They will record the record".Split(' ');
+var words = "They record the record".Split(' ');
 var results = await model.Create().ClassifyAsync(words);
 
 // A word the model cannot decide has no details and a confidence of 0
@@ -123,21 +123,45 @@ foreach (var result in results)
 <!-- output:basic -->
 ```text
 They      Pronoun      1.00
-will      Verb         0.99
 record    Verb         0.99
 the       unknown      0.00
-record    Noun         0.95
+record    Noun         1.00
 ```
 
 A word that is not in the dictionary has no details and a confidence of 0. A word with one meaning is answered with
 confidence 1. A word with several meanings is resolved from its sentence by the model; its confidence is defined by the
-model package (the `Basic` model reports the probability of its answer among the senses of the word; the ONNX models derive it from the margin of the
+model package (the `Basic` model reports the probability of its answer among the senses of the word; the ONNX models
+derive it from the margin of the
 trained classifier, and the best candidate is still returned when the confidence is low). The encoder runs only for a
 sentence that has a word that needs it. Encoder model files are stored in a per-user directory under their model ID
 (for example `all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL`
 (optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
 `MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. See
 the [user guide][link-user-guide] for details and the [senses appendix][link-appendix] for the list of lemmas.
+
+## Choosing a model
+
+<!-- markdownlint-disable MD013 -->
+
+<!-- model-table:begin -->
+| Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| minilm | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 23 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 122 ms | yes |
+| bert-base-cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 118 ms | yes |
+| basic | 88.65% | 84.76% | 89.73% / 90.13% | 89.62% / 87.41% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 122 ms | no |
+<!-- model-table:end -->
+
+<!-- markdownlint-enable MD013 -->
+
+- ⚡ **basic** - Enough when you want no download and the fastest start; about 85% best-sense accuracy on real text.
+- ⚖️ **minilm** - The default recommendation: a 23 MiB download, a few milliseconds per sentence and about 93% on real text.
+- 🎯 **bert-base-cased** - Choose it when accuracy matters most and a 104 MiB download and about 150 MiB of RAM are fine.
+
+The numbers come from the repository's build tool (`evaluate <model> --table`), run once per model on one machine with
+at most two ONNX threads. Holdout sentences were written together with the training sentences, so the holdout accuracy
+is optimistic; the real-text column is the realistic expectation. Absolute times and memory depend on the machine; use
+them as relative figures. The table is generated into `docs/build_notes/model-table.md` and a test keeps the README
+equal to it.
 
 ## Accuracy and Limitations
 

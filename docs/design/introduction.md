@@ -103,7 +103,8 @@ form layers:
 - The **core** package defines the vocabulary: the lexicon of known words and the contracts (`IWordSenseModel`,
   `IWordSenseClassifier`, `WordSense`, `WordDetails`, `PartOfSpeech`, `MirrorOptions`). It holds no vectors, no
   weights and no ONNX code.
-- The **Basic** package implements the contracts with a statistical tagger and cue model. It references the core package only.
+- The **Basic** package implements the contracts with a statistical tagger and cue model. It references the core
+  package only.
 - The **Onnx** package implements the contracts for any BERT-style encoder: model file management, encoder,
   tokenizer, weights and scoring. It references the core package and ONNX Runtime.
 - The **MiniLM** and **BertBaseCased** packages each add one public class that pins one encoder model and embeds the

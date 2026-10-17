@@ -33,7 +33,7 @@ internal sealed class BasicReadmeSample
         var model = new BasicWordSenseModel();
         await model.EnsureModelAsync();
 
-        var words = "They will record the record".Split(' ');
+        var words = "They record the record".Split(' ');
         var results = await model.Create().ClassifyAsync(words);
 
         // A word the model cannot decide has no details and a confidence of 0

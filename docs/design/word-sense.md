@@ -13,7 +13,8 @@ layered NuGet packages, each modeled as a subsystem, plus a non-shipped build-ti
 
 - **Core** (`DemaConsulting.WordSense`): the word lexicon and the contracts. It has no vectors, weights, ONNX code or
   third-party dependency. See _Core Design_.
-- **Basic** (`DemaConsulting.WordSense.Basic`): a model that chooses among the senses of an ambiguous word with a statistical part-of-speech tagger and context cues
+- **Basic** (`DemaConsulting.WordSense.Basic`): a model that chooses among the senses of an ambiguous word with a
+  statistical part-of-speech tagger and context cues
 and needs no files, weights or network. See _Basic Design_.
 - **Onnx** (`DemaConsulting.WordSense.Onnx`): the machinery shared by the encoder models: model file download and
   verification, the ONNX encoder and tokenizer, per-lemma weights and the classifier that scores senses. See _Onnx
@@ -44,7 +45,8 @@ model it wants. The contracts in core are the seam between callers and models: a
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
 - Mirror and GitHub LFS source (in): HTTP(S) `GET <base>/<model-id>/<file>`; SHA-256 verified, credentials sent to
   the mirror's own origin only.
-- Builder command line (in/out): `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`, `tune-basic` and `appendix`; build time only,
+- Builder command line (in/out): `words`, `weights`, `evaluate`, `ud-counts`, `train-basic`, `tune-basic` and
+  `appendix`; build time only,
   never shipped.
 
 ## Dependencies
@@ -82,7 +84,8 @@ wrong answer.
 4. For every word the classifier lower-cases it and looks it up in `WordLexicon.Words`:
    - no entry: the result is the word, no details, confidence 0;
    - one entry: the word, that entry, confidence 1;
-   - several entries: the model decides. Basic estimates the part of speech of every word of the sentence with a hidden Markov model, scores the senses
+   - several entries: the model decides. Basic estimates the part of speech of every word of the sentence with a hidden
+     Markov model, scores the senses
      from the neighboring words and picks the most probable sense, so it always answers. An encoder model runs the
      encoder once over the text (only when some word needs it), pools the hidden states of the word, centers and
      scales the vector, scores the word's candidate senses with the lemma's weights and derives a confidence from the

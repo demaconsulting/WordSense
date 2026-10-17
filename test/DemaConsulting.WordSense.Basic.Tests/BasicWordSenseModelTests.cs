@@ -76,7 +76,7 @@ public class BasicWordSenseModelTests
     {
         var classifier = new BasicWordSenseModel().Create();
 
-        var results = await classifier.ClassifyAsync(["to", "record"], TestContext.Current.CancellationToken);
+        var results = await classifier.ClassifyAsync(["They", "record", "the", "record"], TestContext.Current.CancellationToken);
 
         Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
     }

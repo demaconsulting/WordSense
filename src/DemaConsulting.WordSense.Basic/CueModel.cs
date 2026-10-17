@@ -170,7 +170,7 @@ internal static class CueModel
                 continue;
             }
 
-            var sum = cue.Senses[column].Prior;
+            int sum = cue.Senses[column].Prior;
             for (var r = 0; r < found; r++)
             {
                 sum += cue.Weights[(rows[r] * width) + column];

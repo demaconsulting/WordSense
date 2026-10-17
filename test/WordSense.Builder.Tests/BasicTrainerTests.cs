@@ -83,7 +83,7 @@ public class BasicTrainerTests
     {
         var data = Train();
 
-        Assert.Equal(["record", "the", "they"], data.Words.Select(w => w.Word));
+        Assert.Equal(["record", "the"], data.Words.Select(w => w.Word));
         Assert.Equal(0, data.Words.Single(w => w.Word == "record").ClosedMask);
         Assert.Equal(1 << PosTag.Determiner, data.Words.Single(w => w.Word == "the").ClosedMask);
         Assert.Equal([0, 6, 0, 0], data.Suffixes.Single(s => s.Suffix == "ed").Counts);
@@ -139,7 +139,7 @@ public class BasicTrainerTests
     {
         var summary = Train().Summary();
 
-        Assert.Contains("3 words", summary, StringComparison.Ordinal);
+        Assert.Contains("2 words", summary, StringComparison.Ordinal);
         Assert.Contains("1 cue lemmas", summary, StringComparison.Ordinal);
     }
 

@@ -10,7 +10,7 @@ pronunciation of a word in context.
 | `anchors/` | `*.tsv` | Labeled training sentences |
 | `holdout/` | `*.tsv` | Labeled evaluation sentences, never used for training |
 | `forms/` | `*.tsv` | Inflected form to lemma map |
-| `ud/` | `*.tsv` | Tag statistics of the UD English-EWT treebank for the statistical Basic model (see `ud/PROVENANCE.md`; regenerate with `ud-counts`) |
+| `ud/` | `*.tsv` | Tag statistics of the UD English-EWT treebank for the Basic model (see `ud/PROVENANCE.md`) |
 
 Every file is UTF-8 without a byte-order mark, with LF line endings.
 
