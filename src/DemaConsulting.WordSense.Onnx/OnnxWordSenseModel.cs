@@ -30,12 +30,44 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     A classifier returns a confidence between 0 and 1 for each word it resolved. For a word with one sense it is 1.
 ///     For a word with several senses it is a monotonic mapping of the margin between the best and the runner-up
 ///     sense, relative to the abstain margin trained for that word's lemma, clamped to 0 to 1: 0.5 means the margin
-///     equals the abstain margin. It is a ranking score, not a calibrated probability; choose a threshold for your
-///     use (the evaluation in the repository's build notes uses 0.5) and treat lower values as uncertain.
+///     equals the abstain margin. It is a ranking score, not a calibrated probability, and its scale belongs to the
+///     model: never reuse a threshold from the Basic model (a probability) or from the other encoder; choose a
+///     threshold for your use (the evaluation in the repository's build notes uses 0.5) and treat lower values as
+///     uncertain.
+///     </para>
+///     <para>
+///     <see cref="WordSense.Details"/> is null (with confidence 0) in exactly two cases: the word is not in the
+///     lexicon, or it has several senses and the model cannot score it (its lemma has no intact trained weights, or
+///     the encoder produced no vector for the word). The shipped MiniLM and BertBaseCased packages have intact
+///     weights for every lemma (a test asserts that none is dropped), so in practice only unknown words are null.
+///     A word with several senses and a low confidence still has its best sense in <see cref="WordSense.Details"/>.
+///     For example, in <c>["They", "will", "record", "the", "record", "."]</c> the word <c>"the"</c> and the period
+///     are unknown (null, 0), while <c>"record"</c> has several senses and is scored: its best sense is returned with
+///     the confidence of the model, however low.
+///     </para>
+///     <para>
+///     Input: split punctuation into elements of their own and keep contractions (<c>don't</c>) and hyphenated words
+///     as one token, as the evaluation did; classify one sentence per call, because the words are joined by single
+///     spaces and encoded as one text. The tokenizer lower-cases for an uncased model, splits each word into WordPieces
+///     and handles punctuation inside a word itself. A text of at most <c>maxSequenceLength</c> word pieces (128 by
+///     default, including the two special tokens; 8 to 512 allowed) is encoded once; a longer one is encoded per target
+///     word from a window of that size around the word, so nothing is truncated away from the target but distant context
+///     is lost.
+///     </para>
+///     <para>
+///     First-use costs (approximate and machine dependent): <see cref="EnsureModelAsync"/> reads and hashes each model
+///     file; the first <see cref="Create"/> opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
+///     BertBaseCased) and loads the weights; the word lexicon (about 120 ms, about 43 MiB) loads on first use. After
+///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="Create"/> throw
+///     <see cref="ObjectDisposedException"/>, as does a classification that has to run the encoder on a classifier
+///     created earlier.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.Onnx;
+///
 ///     // Works with any ONNX encoder model, for example the MiniLM or BertBaseCased model.
 ///     static async Task&lt;WordSense[]&gt; ClassifyAsync(OnnxWordSenseModel model, string[] words)
 ///     {
@@ -105,14 +137,21 @@ public abstract class OnnxWordSenseModel : IWordSenseModel, IDisposable
     /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
-    ///     When a model directory was supplied, no network access happens: every file must exist there and match its
-    ///     pinned SHA-256. Otherwise valid files in the store are reused and only missing or invalid files are
+    ///     When a model directory was supplied, this call is still required and no network access happens: every file
+    ///     must exist directly in that directory (a flat layout; there is no <c>{model-id}</c> subfolder) and match its
+    ///     pinned SHA-256, and all files of the model are verified (for BertBaseCased that includes
+    ///     <c>config.json</c> and <c>tokenizer.json</c>, although the runtime reads only the ONNX file and
+    ///     <c>vocab.txt</c>). Otherwise valid files in the store (<c>{StoreRoot}/{ModelId}/</c>, by default under the
+    ///     per-user local application data folder) are reused and only missing or invalid files are
     ///     downloaded (mirror first, then the public source); a file that is already valid never contacts the mirror.
+    ///     Every existing file is hashed on each process start, so the call costs time proportional to the file sizes.
     ///     Calling the method again after it completed is cheap and harmless. Cancelling stops only this caller from
     ///     waiting; the shared work continues, and a cancelled or failed download leaves no partial file under a final
-    ///     file name, so the call can simply be repeated.
+    ///     file name, so the call can simply be repeated. The only environment variables are the four
+    ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
+    ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI).
     /// </remarks>
-    /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
+    /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid (including <see cref="ArgumentOutOfRangeException"/> for an invalid timeout).</exception>
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory lacks a model file (or does not exist).</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256.</exception>
     /// <exception cref="HttpRequestException">Thrown when a file could not be obtained, verified, from any source.</exception>

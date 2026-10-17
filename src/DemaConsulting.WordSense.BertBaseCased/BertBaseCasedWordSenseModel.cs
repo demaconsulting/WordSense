@@ -15,19 +15,25 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     after all classifications have finished.
 ///     </para>
 ///     <para>
-///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: about 109 MB and about
-///     9.9 ms per sentence, with 99.1 percent best-sense accuracy on the holdout and 97.4 percent on real text, and it
-///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (about 23 MB,
-///     about 1.6 ms per sentence) but less accurate (96.9 and 92.6 percent); the figures are from
-///     <c>docs/build_notes/model-comparison.md</c>.
+///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: 104 MiB (about 109 MB)
+///     and about 9 ms per sentence, with about 99% best-sense accuracy on the holdout and about 97% on real text, and it
+///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (23 MiB,
+///     about 2 ms per sentence) but less accurate (about 97% and 93%); the figures are from
+///     <c>docs/build_notes/model-table.md</c> and are approximate and machine dependent.
 ///     </para>
 ///     <para>
 ///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
-///     about 108 MB, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>) are downloaded once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
+///     about 103 MiB, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>) are downloaded once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
 ///     verified against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use
 ///     files you supply, in which case no network access happens at all. The files are described under
 ///     <c>model/bert-base-cased-int8/</c> in the repository
 ///     (https://github.com/demaconsulting/WordSense/tree/main/model/bert-base-cased-int8).
+///     </para>
+///     <para>
+///     A supplied model directory must hold all four files directly (no <c>{model-id}</c> subfolder), and
+///     <c>EnsureModelAsync</c> must still be called: it verifies every one of them, not only the ONNX file, against the
+///     pinned SHA-256 digests listed in the namespace documentation, with no network access. Dispose the model once
+///     after every classification has finished.
 ///     </para>
 ///     <para>
 ///     The encoder keeps the case of the text, so capitalization is part of the context the model sees. Sentences longer
@@ -37,6 +43,11 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 /// </remarks>
 /// <example>
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.BertBaseCased;
+///
+///     // Download on first use (or reuse the per-user store); pass a directory instead to work offline:
+///     // new BertBaseCasedWordSenseModel("/opt/models/bert")
 ///     using var model = new BertBaseCasedWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();

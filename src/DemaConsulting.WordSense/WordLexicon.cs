@@ -14,9 +14,13 @@ namespace DemaConsulting.WordSense;
 ///     verb, or the meanings of a heteronym) needs context, which a model from one of the model packages provides.
 ///     </para>
 ///     <para>
-///     Keys are lower case; lower-case a word yourself before looking it up (and read the curly apostrophe U+2019 as
-///     <c>'</c>). The senses of a lemma appear in a fixed order that is part of the lexicon. The lexicon is read-only
-///     and safe for concurrent use.
+///     Keys are lower case and compared ordinally; lower-case a word yourself (<c>ToLowerInvariant()</c>) before looking
+///     it up, and replace the curly apostrophe U+2019 with <c>'</c> (the classifiers do both for you). The indexer
+///     <c>Words["x"]</c> throws <see cref="KeyNotFoundException"/> for a word that is not in the lexicon (and for a
+///     word that is not lower case), so use <c>TryGetValue</c> for text from users. The senses of a lemma appear in a
+///     fixed order that is part of the lexicon. The lexicon is read-only
+///     and safe for concurrent use. The first access takes about 120 ms and about 43 MiB (approximate, machine
+///     dependent) and happens once per process.
 ///     </para>
 ///     <para>
 ///     The senses of a word use the eight values of <see cref="PartOfSpeech"/>: <see cref="PartOfSpeech.Noun"/>,
@@ -57,8 +61,10 @@ public static class WordLexicon
     ///     Gets every known word with its possible senses.
     /// </summary>
     /// <remarks>
-    ///     The keys are lower-case surface forms compared ordinally. The first access loads and indexes the embedded
-    ///     lexicon; later accesses return the same instance.
+    ///     The keys are lower-case surface forms compared ordinally (no case folding, so <c>Record</c> is not found); a
+    ///     key never contains the curly apostrophe U+2019, which is normalized to <c>'</c>. The indexer throws
+    ///     <see cref="KeyNotFoundException"/> for a missing word; use <c>TryGetValue</c>. The first access loads and
+    ///     indexes the embedded lexicon; later accesses return the same instance.
     /// </remarks>
     /// <exception cref="InvalidDataException">Thrown on first access when the embedded lexicon is missing or corrupt.</exception>
     public static FrozenDictionary<string, WordDetails[]> Words => Table.Value;

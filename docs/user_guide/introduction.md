@@ -63,16 +63,32 @@ All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a depe
 | ------- | ----------------------------- | ---------------------- | ----------------- | ------ |
 | `DemaConsulting.WordSense` | nothing (word table only) | no | no | lower-cased |
 | `DemaConsulting.WordSense.Basic` | small statistical tagger and context cues | no | no | lower-cased |
-| `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 23 MB, once | ONNX Runtime | uncased |
-| `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder, weights | 109 MB, once | ONNX Runtime | cased |
+| `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 23 MiB, once | ONNX Runtime | uncased |
+| `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder | 104 MiB (109 MB), once | ONNX Runtime | cased |
 
 - Use **core** alone to look up the possible senses of a word (`WordLexicon.Words`) and to answer words that have one
   sense, in your own code.
 - Use **Basic** when you want a fast, dependency-free answer and can accept less accuracy than the encoder models.
-- Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder.
+- Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder. It is the
+  default recommendation.
 - Use **BertBaseCased** when the larger, cased encoder gives better results on your texts. The accuracy of each model
   is measured on the same held-out and real-text sentences; the figures are in the build notes
   (`model-comparison.md` and `basic-evaluation.md`).
+
+The measured comparison (rounded; the exact table is `model-table.md` of the build notes and the README, and latency,
+first-use time and memory are approximate and machine dependent). "Real text" is the realistic expectation; the holdout
+was written together with the training sentences and is optimistic.
+
+| Model | Best sense, holdout / real text | Download | Latency per sentence | Memory added |
+| ----- | ------------------------------: | -------: | -------------------: | -----------: |
+| Basic | about 89% / 85% | none (83 KiB table inside the package) | under 0.1 ms | about 21 MiB |
+| MiniLM | about 97% / 93% | 23 MiB | about 2 ms | about 64 MiB |
+| BertBaseCased | about 99% / 97% | 104 MiB | about 9 ms | about 150 MiB |
+
+**Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
+shipped, and you can accept about one wrong answer in six or seven ambiguous words on real text (a confidence threshold
+removes some of them, see Confidence). Otherwise start with MiniLM and move to BertBaseCased if its accuracy is not
+enough.
 
 `DemaConsulting.WordSense.Onnx` is the shared base of the two encoder packages (`OnnxWordSenseModel`, the downloader,
 the tokenizer and the weights reader). It is installed with them and is not used directly.
@@ -153,6 +169,35 @@ The
 [appendix](#appendix-supported-senses) is the catalog of the lemmas that have trained weights, with their parts of
 speech and pronunciation meanings.
 
+`Details` is `null` in exactly two cases, and `Confidence` is 0 in both. First, the word is unknown: it has no entry in
+`WordLexicon.Words` (a determiner, a number, punctuation, most proper nouns, a misspelling, a contraction such as
+`don't`); every model does this. Second, an encoder model cannot score a word that has several senses because its lemma
+has no intact trained weights, or the encoder produced no vector for the word. The weights shipped in the MiniLM and
+BertBaseCased packages cover every lemma (a test asserts that none is dropped), so in practice only unknown words are
+`null`. Every other word gets a sense: a word with one sense gets it with `Confidence` 1, and a word with several
+senses gets its best sense even when the confidence is low, so a `null` never means "low confidence". The Basic model
+never leaves `Details` null for a word that is in the table.
+
+```csharp
+// "the" and "." are unknown (null, 0); "record" has several senses: best sense, model-specific confidence
+WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+```
+
+## Input and Tokenization
+
+You tokenize the text; the models expect what the evaluation used:
+
+- Punctuation is an element of its own (`"race"`, `"."`, never `"race."`).
+- Keep a contraction (`don't`) and a hyphenated word (`re-read`) as one token. Neither is a key of the table, so such a
+  token is unknown (null, 0), but the words around it are still classified. A curly apostrophe (U+2019) is read as `'`.
+- Case does not matter for the lookup (words are lower-cased); the cased BertBaseCased encoder also sees the case you
+  give it.
+- Classify one sentence per call. The Basic model splits the list into sentences at the tokens `"."`, `"!"` and `"?"`
+  and uses a window of five words on each side of the target; it has no length limit. An encoder model joins the words
+  with single spaces and encodes them as one text of at most `maxSequenceLength` word pieces (128 by default, including
+  the two special tokens; 8 to 512 can be set). A longer list is not rejected: each target is encoded from a window of
+  that size around it, so only distant context is lost.
+
 # The Models
 
 ## Core: the Word Table
@@ -171,18 +216,29 @@ if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
 }
 ```
 
+The keys are lower-case and compared ordinally, and the table has no key with a curly apostrophe: lower-case the word and
+replace U+2019 with `'` yourself (the classifiers do it for you). The indexer `Words["x"]` throws
+`KeyNotFoundException` for a word that is not in the table, so use `TryGetValue`. The first access takes about 120 ms and
+about 43 MiB (approximate, machine dependent), once per process.
+
 ## Basic
 
-`BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` completes at once, there is
-nothing to dispose, and it ignores a mirror. It decides a multi-sense word with a small statistical table that is
+`BasicWordSenseModel` needs no files, no network and no ONNX Runtime. `EnsureModelAsync` is optional: it completes at
+once and checks nothing, `Create()` works with or without it, there is nothing to dispose, and a mirror is ignored. It
+decides a multi-sense word with a small statistical table that is
 embedded in the package: a part-of-speech tagger (a hidden Markov model trained on the Universal Dependencies English
 web treebank, limited to the parts of speech that the word table allows) and, for lemmas that have enough training
 sentences, context cues that separate senses of the same part of speech (for example `bass`). It always answers a
 multi-sense word; the confidence is the probability that the model gives to its answer, between 1 divided by the number
-of senses and 1. The measured quality is in the build notes (`basic-evaluation.md`).
+of senses and 1. The measured quality is in the build notes (`basic-evaluation.md`). First use costs about 120 ms for
+the word table and about 22 ms for the statistical table (approximate, machine dependent); after that a sentence takes
+well under a millisecond.
 
 ```csharp
-var model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.Basic;
+
+var model = new BasicWordSenseModel();
 await model.EnsureModelAsync();
 WordSense[] senses = await model.Create().ClassifyAsync(["to", "record", "the", "record"]);
 Console.WriteLine(senses[1].Details?.PartOfSpeech.ToString() ?? "unknown");
@@ -207,8 +263,13 @@ Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSen
 public properties `HiddenSize` and `ModelId`. The usual sequence is: call `EnsureModelAsync` once, call `Create()` to
 get a classifier, classify as many texts as you like and dispose the model after every classification has finished.
 `IWordSenseModel` itself is not `IDisposable`; only the encoder models hold native resources. A classifier is safe for
-concurrent use and does not own its model. `Create()` throws `InvalidOperationException` before the files are ready.
-The ONNX session and the weights are loaded at the first `Create()` call.
+concurrent use and does not own its model. `Create()` throws `InvalidOperationException` before the files are ready (the
+Basic model has no files, so its `Create()` never does). The ONNX session and the weights are loaded at the first
+`Create()` call: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
+and of the hashing of the model files in `EnsureModelAsync` (approximate, machine dependent). After `Dispose()`,
+`EnsureModelAsync` and `Create()` throw `ObjectDisposedException`, and so does a classifier that was created earlier when
+a text has a word that needs the encoder; a text without such a word is still answered. `EnsureModelAsync` is required
+also when you pass a model directory: it verifies the SHA-256 of the files and does not use the network.
 
 ## Confidence
 
@@ -216,7 +277,8 @@ An encoder model scores the senses of a word, picks the best and reports it even
 monotonic function of the margin between the best and the second-best score, scaled by the lemma's own abstain
 margin: it is exactly 0.5 where the model would, by that margin, have declined to answer. Treat a confidence of at
 least 0.5 as an answer you can use and a lower one as a guess; `Details` is still the best candidate, so you can use it
-when you want an answer anyway. A word with several senses but no weights for its lemma is `null` with confidence 0.
+when you want an answer anyway. A word with several senses but no weights for its lemma is `null` with confidence 0
+(not the case for the shipped packages).
 
 ```csharp
 WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
@@ -228,7 +290,10 @@ foreach (var sense in senses.Where(s => s.Details is not null))
 ```
 
 The confidence of the Basic model is a probability among the senses of the word, so it is not on the scale of the
-encoder models; compare a confidence only with the same model.
+encoder models; compare a confidence only with the same model. **Do not reuse a threshold across models**: 0.5 is the
+natural point for the encoder models, while for Basic a threshold such as 0.8 keeps about 78% of the ambiguous words
+on real text at about 93% precision (`basic-evaluation.md`). MiniLM and BertBaseCased each have their own margin scale
+too, so tune a threshold per model on your own text.
 
 # Model Files
 
@@ -247,19 +312,40 @@ repository (`media.githubusercontent.com`); there is no other source.
 | BertBaseCased | `bert-base-cased-int8` | `config.json` | 639 |
 | BertBaseCased | `bert-base-cased-int8` | `tokenizer.json` | 668,923 |
 
-The SHA-256 values are in `model-provenance.md` of the build notes. Basic and the core package have no model files.
+The SHA-256 values are in `model-provenance.md` of the build notes and below. **All files of a model are verified**,
+including `config.json` and `tokenizer.json` of BertBaseCased (the runtime reads only the ONNX file and `vocab.txt`; the
+other two are provenance files that must still match).
+
+| Model | File | SHA-256 |
+| ----- | ---- | ------- |
+| MiniLM | `model_int8.onnx` | `afdb6f1a0e45b715d0bb9b11772f032c399babd23bfc31fed1c170afc848bdb1` |
+| MiniLM | `vocab.txt` | `07eced375cec144d27c900241f3e339478dec958f92fddbc551f295c992038a3` |
+| BertBaseCased | `model_int8.onnx` | `dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d` |
+| BertBaseCased | `vocab.txt` | `eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02` |
+| BertBaseCased | `config.json` | `19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286` |
+| BertBaseCased | `tokenizer.json` | `343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1` |
+
+Basic and the core package have no model files. The download of MiniLM is 23 MiB and that of BertBaseCased 104 MiB
+(about 109 MB).
 
 ## Offline and Air-Gapped Use
 
 On a machine without internet access, copy the model files of the table above into one folder (from
 `model/<model-id>/` of the repository, or from a machine that has run `EnsureModelAsync`) and pass the folder to the
-constructor. The files are verified and no network access happens at all.
+constructor. The folder is flat: the files sit directly in it, with no `<model-id>` subfolder (the store and a mirror
+use `<model-id>` folders, a supplied directory does not). You must still call `EnsureModelAsync`: it verifies every
+file against its pinned SHA-256 and never uses the network.
 
 ```csharp
+using DemaConsulting.WordSense;
+using DemaConsulting.WordSense.MiniLM;
+
 using var model = new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8");
 await model.EnsureModelAsync();
 IWordSenseClassifier classifier = model.Create();
 ```
+
+`BertBaseCasedWordSenseModel` works the same way with its four files in the folder.
 
 Alternatively, copy the files to a mirror inside your network (next section).
 
@@ -294,14 +380,30 @@ Without an argument, the mirror comes from environment variables:
 The base URI must be absolute `http` or `https` without query, fragment or user-info. A bearer token or credential is
 sent only to the host of the mirror, never to a redirect target on another host, and is rejected for plain `http`
 unless the host is a loopback address. `ToString()` of a `MirrorOptions` never prints a secret. A mirror is ignored by
-models that need no files.
+models that need no files and by a model that was given a model directory.
+
+**Relocating the store.** Downloaded files live in `<StoreRoot>/<model-id>/`; the default store root is
+`{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `MirrorOptions.StoreRoot` changes it. No environment
+variable does: the four `WORDSENSE_MIRROR_*` variables above are the only ones the library reads. `BaseUri` is a required
+constructor argument, so a `MirrorOptions` always names a mirror; setting only a store root is not possible today
+(without a mirror, the default store is used, or pass a model directory with files you placed yourself).
 
 ## Handling Failures
 
-`EnsureModelAsync` throws `ArgumentException` for an invalid mirror configuration, `HttpRequestException` when no
-source delivered a verified file, and `OperationCanceledException` when cancelled. A failed call can be repeated, and
-concurrent calls share one download. A model directory that lacks a file or holds a file that does not match its
-SHA-256 throws `FileNotFoundException` or `InvalidDataException`.
+`EnsureModelAsync` throws:
+
+| Exception | When |
+| --------- | ---- |
+| `ArgumentException` | The mirror configuration is invalid (a bad timeout: `ArgumentOutOfRangeException`) |
+| `HttpRequestException` | No source delivered a verified file (store and download) |
+| `FileNotFoundException` | A supplied model directory does not exist or lacks a file |
+| `InvalidDataException` | A file of a supplied model directory does not match its SHA-256 |
+| `IOException`, `UnauthorizedAccessException` | The store cannot be created or written |
+| `ObjectDisposedException` | The encoder model has been disposed |
+| `OperationCanceledException` | The token was cancelled |
+
+The Basic model throws only the cancellation exception. A failed call can be repeated, and concurrent calls share one
+download.
 
 # Limitations
 
@@ -315,7 +417,7 @@ SHA-256 throws `FileNotFoundException` or `InvalidDataException`.
   `Meaning`) to its own pronunciation.
 - **Confidence is a score, not a probability**, and its scale is specific to each model.
 - **English only**, and the context is a window of at most `maxSequenceLength` tokens around the target word.
-- **The encoder models need files**: a download on first use (23 MB or 109 MB) or a model directory, and ONNX Runtime
+- **The encoder models need files**: a download on first use (23 MiB or 104 MiB) or a model directory, and ONNX Runtime
   needs native libraries for the target platform.
 - **Weights are fixed to the model file.** The weights format (`WSX1`) is dense, and the weights of a model are only
   valid for its exact pinned files; other files are refused by the SHA-256 check.
@@ -407,7 +509,7 @@ firewall, configure a mirror or pass a model directory to the constructor.
 
 ## Timeouts or a Slow First Run
 
-The model files are 23 MB (MiniLM) or 109 MB (BertBaseCased). Raise `MirrorOptions.Timeout` (default 5 minutes per
+The model files are 23 MiB (MiniLM) or 104 MiB (BertBaseCased). Raise `MirrorOptions.Timeout` (default 5 minutes per
 file), check the proxy settings of the host, or use a mirror close to it.
 
 ## A Model File Does Not Match Its SHA-256
@@ -430,11 +532,11 @@ with plain http for a host that is not loopback.
 
 ## A Word Returns Nothing
 
-`Details` is `null` for a word that is unknown, or that has several senses and no decision (encoder models only). Check
-`WordLexicon.Words.ContainsKey(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table. When it is
-`true` with several senses, an encoder model abstained or has no weights for the lemma (the Basic model never
-abstains); an encoder model with a lemma in the
-appendix gives its best candidate with a low confidence rather than `null`.
+`Details` is `null` for a word that is unknown, or for an encoder model that has several senses but no weights for the
+lemma (not the case for the shipped packages). Check
+`WordLexicon.Words.ContainsKey(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table; a
+contraction such as `don't` or a hyphenated word kept as one token is also unknown. When it is `true`, the word has an
+answer from every shipped model, with a low confidence if the model is unsure.
 
 # References
 

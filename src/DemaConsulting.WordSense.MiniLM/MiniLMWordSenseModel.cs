@@ -23,18 +23,30 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     (https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8).
 ///     </para>
 ///     <para>
-///     Choose MiniLM when download size and speed matter: about 23 MB and about 1.6 ms per sentence, with 96.9 percent
-///     best-sense accuracy on the holdout and 92.6 percent on real text. The alternative
-///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (about 109 MB, about 9.9 ms per sentence) and case-aware
-///     but more accurate (99.1 and 97.4 percent); the figures are from <c>docs/build_notes/model-comparison.md</c>.
+///     Choose MiniLM when download size and speed matter, the default recommendation: 23 MiB and about 2 ms per
+///     sentence, with about 97% best-sense accuracy on the holdout and about 93% on real text. The alternative
+///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB, about 9 ms per sentence) and case-aware
+///     but more accurate (about 99% and 97%); the figures are from <c>docs/build_notes/model-table.md</c> and are
+///     approximate and machine dependent.
 ///     </para>
 ///     <para>
 ///     Sentences longer than the maximum sequence length are handled per target word from a window around the word. The
 ///     weights were trained with the default length of 128; a different length is possible but unvalidated.
 ///     </para>
+///     <para>
+///     When you supply a model directory, it must hold <c>model_int8.onnx</c> and <c>vocab.txt</c> directly (no
+///     <c>{model-id}</c> subfolder), and <c>EnsureModelAsync</c> must still be called: it verifies both files against
+///     their pinned SHA-256 digests without any network access. Dispose the model once after every classification has
+///     finished.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.MiniLM;
+///
+///     // Download on first use (or reuse the per-user store); pass a directory instead to work offline:
+///     // new MiniLMWordSenseModel("/opt/models/minilm")
 ///     using var model = new MiniLMWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();

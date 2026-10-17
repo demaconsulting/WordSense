@@ -17,11 +17,18 @@ namespace DemaConsulting.WordSense.Basic;
 ///     reported in the repository's build notes.
 ///     </para>
 ///     <para>
-///     The model holds no disposable resources, so it needs no disposal.
+///     The model holds no disposable resources, so it needs no disposal; one instance and the classifiers it creates
+///     can be shared by any number of threads. <see cref="EnsureModelAsync"/> is optional (it only returns a completed
+///     task) and <see cref="Create"/> needs no preceding call; see the namespace documentation for first-use costs,
+///     tokenization, the meaning of the confidence (a probability, with a scale of its own) and when this model is
+///     enough.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
+///     using DemaConsulting.WordSense;
+///     using DemaConsulting.WordSense.Basic;
+///
 ///     var model = new BasicWordSenseModel();
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
@@ -60,6 +67,6 @@ public sealed class BasicWordSenseModel : IWordSenseModel
     /// <summary>
     ///     Creates a classifier that uses the embedded statistics.
     /// </summary>
-    /// <returns>A new classifier, safe for concurrent use; it can be created at any time, even without calling <see cref="EnsureModelAsync"/>.</returns>
+    /// <returns>A new classifier, safe for concurrent use. Unlike the encoder models, it needs no preceding call of <see cref="EnsureModelAsync"/> and never throws <see cref="InvalidOperationException"/>; the first call loads the word lexicon (about 120 ms, approximate).</returns>
     public IWordSenseClassifier Create() => new BasicClassifier();
 }

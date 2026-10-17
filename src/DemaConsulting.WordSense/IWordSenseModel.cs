@@ -11,12 +11,23 @@ namespace DemaConsulting.WordSense;
 ///     statistical model and needs no model files; <c>DemaConsulting.WordSense.MiniLM</c> and
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> run an encoder model and download its files once. The usual
 ///     sequence is to call <see cref="EnsureModelAsync"/> once, then <see cref="Create"/>, then classify as many texts
-///     as needed.
+///     as needed. <see cref="EnsureModelAsync"/> is required for the encoder models even when you supply a model
+///     directory (it verifies the files against their pinned SHA-256 digests, with no network access); it is optional
+///     for the Basic model, whose <see cref="Create"/> works at any time, but calling it keeps the code the same for
+///     every model.
 ///     </para>
 ///     <para>
 ///     A model is thread-safe for concurrent classification. A model that holds native resources (the encoder models)
 ///     also implements <see cref="IDisposable"/>; dispose it once, after every classification has finished. The basic
 ///     model holds nothing to release.
+///     </para>
+///     <para>
+///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
+///     to <see cref="WordLexicon.Words"/> takes about 120 ms and about 43 MiB, and happens once per process for every
+///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
+///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first <see cref="Create"/>, and
+///     <see cref="EnsureModelAsync"/> reads and hashes every model file once, which takes longer for the larger
+///     files. Warm the model at startup (ensure, create and classify one short text) if the first request must be fast.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -36,16 +47,37 @@ public interface IWordSenseModel
     /// <param name="mirror">
     ///     A mirror to try before the public source, or <see langword="null"/> to use the mirror configured by the
     ///     <c>WORDSENSE_MIRROR_URL</c> environment variable (and its credential variables), if any. Ignored by a model
-    ///     that needs no files.
+    ///     that needs no files, and by an encoder model that was given a model directory.
     /// </param>
     /// <param name="cancellationToken">A token that cancels the operation.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
+    ///     <para>
     ///     Files that are already present and valid are never downloaded again. Concurrent calls share one download.
-    ///     A failed call can be retried.
+    ///     A failed call can be retried. The Basic model needs no files and completes at once.
+    ///     </para>
+    ///     <para>
+    ///     When an encoder model was constructed with a model directory, this call is still required: it checks that
+    ///     every file exists in that directory (directly in it, not in a subfolder) and matches its pinned SHA-256,
+    ///     and it never touches the network. Without a directory it verifies the per-user store, or the store
+    ///     beneath <see cref="MirrorOptions.StoreRoot"/>, and downloads what is missing or invalid.
+    ///     </para>
+    ///     <para>
+    ///     Failures: a missing or wrong file in a supplied directory throws <see cref="FileNotFoundException"/> or
+    ///     <see cref="InvalidDataException"/>; a file that no source could deliver verified throws
+    ///     <see cref="HttpRequestException"/>; an invalid mirror configuration throws <see cref="ArgumentException"/>
+    ///     (an invalid timeout throws its subclass <see cref="ArgumentOutOfRangeException"/>); an unwritable store
+    ///     reports the file system exception of the platform (for example <see cref="IOException"/> or
+    ///     <see cref="UnauthorizedAccessException"/>); a disposed model throws <see cref="ObjectDisposedException"/>;
+    ///     a cancelled token throws <see cref="OperationCanceledException"/>. The Basic model throws only the
+    ///     cancellation exception.
+    ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
-    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained from any source.</exception>
+    /// <exception cref="HttpRequestException">Thrown when a file could not be obtained, verified, from any source (encoder model without a model directory).</exception>
+    /// <exception cref="FileNotFoundException">Thrown when a supplied model directory does not exist or lacks a model file (encoder model with a model directory).</exception>
+    /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (encoder model with a model directory).</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed (encoder models).</exception>
     /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled.</exception>
     Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
@@ -53,8 +85,14 @@ public interface IWordSenseModel
     ///     Creates a classifier on this model.
     /// </summary>
     /// <returns>A classifier that shares this model and is safe for concurrent use.</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the model files are not available; call <see cref="EnsureModelAsync"/> first.</exception>
-    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed.</exception>
+    /// <remarks>
+    ///     An encoder model needs <see cref="EnsureModelAsync"/> to have completed first; its first call loads the ONNX
+    ///     session and the weights (about 0.4 to 0.5 s, approximate and machine dependent). The Basic model needs no
+    ///     files, so its <see cref="Create"/> works at any time (it loads the word lexicon, about 120 ms on first use).
+    /// </remarks>
+    /// <exception cref="InvalidOperationException">Thrown by an encoder model when the model files are not available; call <see cref="EnsureModelAsync"/> first. The Basic model never throws it.</exception>
+    /// <exception cref="ObjectDisposedException">Thrown when the model has been disposed (encoder models).</exception>
+    /// <exception cref="InvalidDataException">Thrown by an encoder model when its embedded weights or ONNX file cannot be read.</exception>
     IWordSenseClassifier Create();
 }
 
@@ -101,11 +139,24 @@ public interface IWordSenseModel
 ///     plain <c>http</c> host) are reported by <see cref="IWordSenseModel.EnsureModelAsync"/> as an
 ///     <see cref="ArgumentException"/>.
 ///     </para>
+///     <para>
+///     Store location: downloaded files are kept in <c>{StoreRoot}/{model-id}/{file}</c>; without a store root, the
+///     root is <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c> (the application base directory when the
+///     platform has no local application data folder). The only way to relocate the store is
+///     <see cref="StoreRoot"/>, and no environment variable controls it: the four <c>WORDSENSE_MIRROR_*</c>
+///     variables configure only the mirror. <see cref="BaseUri"/> is a required constructor argument, so a
+///     <see cref="MirrorOptions"/> always describes a mirror; there is no way to set only a store root. To use files
+///     that you copied yourself, pass the directory to the constructor of the model instead (see the model packages);
+///     that directory is flat (the model files directly in it, no <c>{model-id}</c> subfolder), and a mirror is never
+///     used with it.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
+///     // Relocate the store (a mirror is mandatory: BaseUri has no default)
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"), BearerToken: "token")
 ///     {
+///         StoreRoot = "/var/lib/wordsense",
 ///         Timeout = TimeSpan.FromMinutes(2),
 ///     };
 ///     </code>

@@ -33,7 +33,7 @@ Pick the model package that fits; each one brings the core package `DemaConsulti
 
 ```bash
 dotnet add package DemaConsulting.WordSense.Basic          # small statistical model: no model files, no ONNX Runtime
-dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (23 MB model files)
+dotnet add package DemaConsulting.WordSense.MiniLM         # small and fast encoder (23 MiB model files)
 dotnet add package DemaConsulting.WordSense.BertBaseCased  # larger, case-sensitive encoder
 ```
 
@@ -130,15 +130,27 @@ the       unknown      0.00
 record    Noun         1.00
 ```
 
-A word that is not in the dictionary has no details and a confidence of 0. A word with one meaning is answered with
-confidence 1. A word with several meanings is resolved from its sentence by the model; its confidence is defined by the
-model package (the `Basic` model reports the probability of its answer among the senses of the word; the ONNX models
-derive it from the margin of the trained classifier, and the best candidate is still returned when the confidence is
-low). The encoder runs only for a
-sentence that has a word that needs it. Encoder model files are stored in a per-user directory under their model ID
-(for example `all-MiniLM-L6-v2-int8`) and reused on later runs. To use your own mirror, set `WORDSENSE_MIRROR_URL`
+A word that is not in the dictionary (`will` and `the` above, punctuation, a contraction such as `don't`) has no details
+and a confidence of 0. A word with one meaning is answered with confidence 1. A word with several meanings is resolved
+from its sentence by the model and always gets its best sense, even when the confidence is low; `Details` is `null` only
+for an unknown word (or, for an encoder model, a multi-sense word without trained weights, which does not occur in the
+shipped packages). Its confidence is defined by the model package: the `Basic` model reports the probability of its
+answer among the senses of the word, the ONNX models derive it from the margin of the trained classifier (0.5 is the
+abstain point), so a confidence threshold must not be reused across models. The encoder runs only for a
+sentence that has a word that needs it.
+
+Tokenize the text yourself: punctuation is a token of its own, a contraction (`don't`) or hyphenated word stays one
+token, and one sentence per call is recommended (Basic splits at `.` `!` `?`; the encoders read the list as one text of
+at most 128 word pieces by default and use a window around the word for longer texts).
+
+The model API: call `EnsureModelAsync` for the encoder models even when you pass a model directory (it verifies the
+SHA-256 of the files, with no network access); for Basic it is optional. Model files are
+stored in a per-user directory under their model ID (for example `all-MiniLM-L6-v2-int8`) and reused on later runs; a
+directory you supply must hold the files directly (flat, no model-ID subfolder). To use your own mirror, set
+`WORDSENSE_MIRROR_URL`
 (optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
-`MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. See
+`MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. No
+environment variable sets the store location; only `MirrorOptions.StoreRoot` does. See
 the [user guide][link-user-guide] for details and the [senses appendix][link-appendix] for the list of lemmas.
 
 ## Choosing a model
@@ -170,7 +182,8 @@ equal to it.
 Accuracy depends on the model and is measured by the repository's build tool on held-out and real-text sentences; the
 results of all models are collected in the [model comparison][link-model-comparison] and the Basic model's in the
 [Basic evaluation][link-basic-evaluation]. Words that are in neither the dictionary nor the trained lemmas are not
-decided by a model, and a model that cannot decide a word leaves its details empty instead of guessing. The
+decided by a model; an encoder model could in principle leave a word without trained weights undecided, but the shipped
+packages have weights for every lemma. The
 dictionary knows the inflected forms that were materialized when it was built; determiners, numbers and most proper nouns
 are unknown. The [user guide][link-user-guide] has the details, the caveats and troubleshooting.
 
