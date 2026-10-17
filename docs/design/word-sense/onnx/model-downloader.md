@@ -19,7 +19,7 @@ SHA-256 digests, from a configured mirror or from the GitHub LFS copy of the rep
 
 #### Key Methods
 
-- `Verify(directory, spec)`: checks that every file exists and matches its digest, without network access.
+- `Verify(spec, directory)`: checks that every file exists and matches its digest, without network access.
 - `EnsureAsync(spec, mirrorOptions, ...)`: for each file, skips it when the stored file is valid; otherwise tries the
   sources in order (mirror, then GitHub LFS). A download goes to `<file>.<guid>.part` under the per-download timeout,
   is hashed (lower-case hexadecimal SHA-256), compared with the pinned digest and atomically moved into place; the

@@ -145,7 +145,7 @@ Accuracy depends on the model and is measured by the repository's build tool on 
 results of all models are collected in the [model comparison][link-model-comparison] and the Basic model's in the
 [Basic evaluation][link-basic-evaluation]. Words that are in neither the dictionary nor the trained lemmas are not
 decided by a model, and a model that cannot decide a word leaves its details empty instead of guessing. The
-dictionary knows the inflected forms that were materialized when it was built; determiners, numbers and proper names
+dictionary knows the inflected forms that were materialized when it was built; determiners, numbers and most proper nouns
 are unknown. The [user guide][link-user-guide] has the details, the caveats and troubleshooting.
 
 ## Documentation
@@ -163,7 +163,7 @@ are unknown. The [user guide][link-user-guide] has the details, the caveats and 
 
 The packages that embed derived data (`DemaConsulting.WordSense`, `DemaConsulting.WordSense.MiniLM` and
 `DemaConsulting.WordSense.BertBaseCased`) carry this section in their package readme. The corpus itself is not shipped
-in the packages, only the derived weights; every real sentence is recorded with its source, licence and URL in
+in the packages, only the derived weights; every real sentence is recorded with its source, license and URL in
 `corpus/provenance/`.
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
@@ -173,11 +173,11 @@ in the packages, only the derived weights; every real sentence is recorded with 
   CC BY-SA 4.0, with the article URL recorded.
 - **Universal Dependencies English corpora** (EWT and others, <https://universaldependencies.org>): CC BY-SA 4.0.
 - **Project Gutenberg works** (<https://www.gutenberg.org>): US public domain.
-- **Corpus redistribution**: rows under CC BY-SA 4.0 keep that licence if the corpus itself is redistributed.
+- **Corpus redistribution**: rows under CC BY-SA 4.0 keep that license if the corpus itself is redistributed.
 - **sentence-transformers/all-MiniLM-L6-v2** (<https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2>): Apache
-  License 2.0; the int8 ONNX export is redistributed under the same licence.
+  License 2.0; the int8 ONNX export is redistributed under the same license.
 - **bert-base-cased** (Google, <https://huggingface.co/google-bert/bert-base-cased>): Apache License 2.0; the int8 ONNX
-  export is redistributed under the same licence.
+  export is redistributed under the same license.
 - **ONNX Runtime** (Microsoft Corporation): MIT License; installed as a separate NuGet dependency.
 
 ## Contributing

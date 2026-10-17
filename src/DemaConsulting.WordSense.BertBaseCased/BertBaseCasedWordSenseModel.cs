@@ -7,6 +7,21 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 /// </summary>
 /// <remarks>
 ///     <para>
+///     This model is built on <c>DemaConsulting.WordSense.Onnx</c>: it derives from <see cref="OnnxWordSenseModel"/>,
+///     which provides the tokenizer, the ONNX session, the verified downloader and the classifier, and adds only the
+///     identity of this encoder (its pinned files and its embedded weights). Everything described for
+///     <see cref="OnnxWordSenseModel"/> applies: <c>EnsureModelAsync</c> (mirror precedence, verification, retry and
+///     cancellation behavior), <c>Create</c>, the confidence of a result, and the requirement to dispose the model once
+///     after all classifications have finished.
+///     </para>
+///     <para>
+///     Choose BertBaseCased when accuracy matters most and the larger download is acceptable: about 109 MB and about
+///     9.9 ms per sentence, with 99.1 percent best-sense accuracy on the holdout and 97.4 percent on real text, and it
+///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (about 23 MB,
+///     about 1.6 ms per sentence) but less accurate (96.9 and 92.6 percent); the figures are from
+///     <c>docs/build_notes/model-comparison.md</c>.
+///     </para>
+///     <para>
 ///     The weights trained for this encoder are embedded in the assembly. The encoder files (<c>model_int8.onnx</c>,
 ///     about 108 MB, <c>vocab.txt</c>, <c>config.json</c> and <c>tokenizer.json</c>) are downloaded once by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>,
 ///     verified against pinned SHA-256 digests and cached per user; pass a model directory to the constructor to use
@@ -26,7 +41,13 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///
-///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+///     string[] words = ["They", "will", "record", "the", "record", "."];
+///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///
+///     for (var i = 0; i &lt; words.Length; i++)
+///     {
+///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
+///     }
 ///     </code>
 /// </example>
 public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel
@@ -34,10 +55,10 @@ public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel
     private static readonly ModelSpec Definition = new(
         "bert-base-cased-int8",
         [
-            new ModelFile("model_int8.onnx", "dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d"),
-            new ModelFile("vocab.txt", "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"),
-            new ModelFile("config.json", "19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286"),
-            new ModelFile("tokenizer.json", "343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1"),
+            new ModelFile("model_int8.onnx", "dcc10a647f1520c00e07fd2ee2b3ad383db94657bc97cba3e1915d27e98a962d", 108477896),
+            new ModelFile("vocab.txt", "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02", 213450),
+            new ModelFile("config.json", "19aa23b85dfc4ce3e199a4ab06d51acd4b7bfc9ae9bae62b78823dd5dfb0c286", 639),
+            new ModelFile("tokenizer.json", "343989712a36cd8b253efeaf8baf6a08b9d2583f78e395e83832e8ee9f8d8ee1", 668923),
         ],
         "model_int8.onnx",
         "vocab.txt",
@@ -54,6 +75,10 @@ public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel
     ///     <see cref="OnnxWordSenseModel.EnsureModelAsync"/> fills.
     /// </param>
     /// <param name="maxSequenceLength">The maximum sequence length including special tokens; 8 to 512.</param>
+    /// <remarks>
+    ///     The constructor does not touch the file system: a directory that does not exist, a missing file or a file
+    ///     with a wrong SHA-256 is reported by <see cref="OnnxWordSenseModel.EnsureModelAsync"/>.
+    /// </remarks>
     /// <exception cref="ArgumentOutOfRangeException">Thrown when <paramref name="maxSequenceLength"/> is outside 8 to 512.</exception>
     public BertBaseCasedWordSenseModel(string? modelDirectory = null, int maxSequenceLength = 128)
         : base(Definition, modelDirectory, maxSequenceLength)

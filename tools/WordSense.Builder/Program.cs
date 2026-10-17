@@ -103,13 +103,21 @@ internal static class Program
                     return 1;
             }
         }
-        catch (Exception ex) when (ex is ArgumentException or InvalidDataException or IOException or FileNotFoundException)
+        catch (Exception ex) when (ex is ArgumentException or InvalidDataException or IOException or UnauthorizedAccessException or InvalidOperationException)
         {
             error.WriteLine(ex.Message);
             return 1;
         }
     }
 
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model"], StringComparer.Ordinal);
+
+    /// <summary>
+    ///     Parses <c>--name value</c> pairs.
+    /// </summary>
+    /// <param name="args">The arguments after the command.</param>
+    /// <returns>The options by name.</returns>
+    /// <exception cref="ArgumentException">Thrown when an argument is malformed or an option is unknown.</exception>
     private static Dictionary<string, string> ParseOptions(string[] args)
     {
         var options = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -120,12 +128,24 @@ internal static class Program
                 throw new ArgumentException($"Expected '--name value' but found '{args[i]}'. {Usage}");
             }
 
+            if (!KnownOptions.Contains(args[i][2..]))
+            {
+                throw new ArgumentException($"Unknown option '{args[i]}'. {Usage}");
+            }
+
             options[args[i][2..]] = args[i + 1];
         }
 
         return options;
     }
 
+    /// <summary>
+    ///     Gets a required option.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="name">The option name.</param>
+    /// <returns>The value.</returns>
+    /// <exception cref="ArgumentException">Thrown when the option is missing.</exception>
     private static string Require(Dictionary<string, string> options, string name) =>
         options.TryGetValue(name, out var value) ? value : throw new ArgumentException($"The option --{name} is required. {Usage}");
 }

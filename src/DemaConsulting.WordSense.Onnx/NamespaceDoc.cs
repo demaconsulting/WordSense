@@ -10,7 +10,10 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     directly: <c>DemaConsulting.WordSense.MiniLM</c> and <c>DemaConsulting.WordSense.BertBaseCased</c> bring it in.
 ///     Its single public type is <see cref="OnnxWordSenseModel"/>, the base class of those models. It owns the model files
 ///     (found in a directory you supply, in the per-user store, on a mirror, or on GitHub, each verified against a
-///     pinned SHA-256), the WordPiece tokenizer and the ONNX session. See
+///     pinned SHA-256), the WordPiece tokenizer and the ONNX session. It is extended only by the packages of this
+///     repository (<c>MiniLM</c> and <c>BertBaseCased</c>): its constructor is not accessible to other assemblies, so
+///     it is not an extension point for third parties. Contributors who add a new ONNX model follow the note "Adding a
+///     New ONNX Model" in the design documentation. See
 ///     https://github.com/demaconsulting/WordSense/tree/main/src/DemaConsulting.WordSense.Onnx.
 ///     </para>
 ///     <para>

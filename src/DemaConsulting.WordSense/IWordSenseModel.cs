@@ -65,9 +65,25 @@ public interface IWordSenseModel
 /// <remarks>
 ///     <para>
 ///     Some environments block public download hosts. A mirror serves the model files from an internal location. A
-///     file is requested at <c>{BaseUri}/{model-id}/{file-name}</c>, where the model id is the folder name of the model
-///     (for example <c>all-MiniLM-L6-v2-int8</c>). Each file must match its pinned SHA-256; a mirror copy that does not
-///     match is discarded and the next source is tried.
+///     file is requested at <c>{BaseUri}/{model-id}/{file-name}</c>, where the model id is the <c>ModelId</c> of the
+///     model (the folder name of the model, for example <c>all-MiniLM-L6-v2-int8</c> or <c>bert-base-cased-int8</c>).
+///     A mirror therefore holds one folder per model that is used, for example:
+///     </para>
+///     <code>
+///     https://models.example.com/wordsense/               (the BaseUri)
+///         all-MiniLM-L6-v2-int8/model_int8.onnx
+///         all-MiniLM-L6-v2-int8/vocab.txt
+///         bert-base-cased-int8/model_int8.onnx
+///         bert-base-cased-int8/vocab.txt
+///         bert-base-cased-int8/config.json
+///         bert-base-cased-int8/tokenizer.json
+///     </code>
+///     <para>
+///     For each file, the mirror is tried first and the public source (the GitHub copy of the repository) second; a
+///     source that fails, is blocked, times out or serves bytes that do not match the pinned SHA-256 is discarded and
+///     the next source is tried. A file that is already present and valid in the store is never requested again, so the
+///     mirror is not contacted at all when every file is present. The files are always verified, whichever source
+///     delivered them.
 ///     </para>
 ///     <para>
 ///     <see cref="BearerToken"/> and <see cref="Credentials"/> are mutually exclusive and are sent only to requests
@@ -76,9 +92,14 @@ public interface IWordSenseModel
 ///     absolute, use <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
 ///     </para>
 ///     <para>
-///     When no mirror is passed to <see cref="IWordSenseModel.EnsureModelAsync"/>, the variables
+///     Precedence: a <see cref="MirrorOptions"/> passed to <see cref="IWordSenseModel.EnsureModelAsync"/> always wins;
+///     the environment is not consulted then. Only when no mirror is passed do the variables
 ///     <c>WORDSENSE_MIRROR_URL</c>, <c>WORDSENSE_MIRROR_USER</c>, <c>WORDSENSE_MIRROR_PASSWORD</c> and
-///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one. Models that need no files ignore the mirror.
+///     <c>WORDSENSE_MIRROR_BEARER_TOKEN</c> configure one (the URL variable is required, the others are optional, and
+///     user and password go together). Without either, only the public source is used. Models that need no files
+///     ignore the mirror. The invalid configurations (for example a token together with a user, or credentials for a
+///     plain <c>http</c> host) are reported by <see cref="IWordSenseModel.EnsureModelAsync"/> as an
+///     <see cref="ArgumentException"/>.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -111,7 +132,15 @@ public sealed record MirrorOptions(
     /// <returns>Always true.</returns>
     private bool PrintMembers(System.Text.StringBuilder builder)
     {
-        builder.Append($"{nameof(BaseUri)} = {BaseUri}, ");
+        // Print scheme, host, port and path only: user-info, query and fragment may carry secrets
+        var location = "***";
+        if (BaseUri is { IsAbsoluteUri: true } uri)
+        {
+            var port = uri.IsDefaultPort ? string.Empty : $":{uri.Port}";
+            location = $"{uri.Scheme}://{uri.Host}{port}{uri.AbsolutePath}";
+        }
+
+        builder.Append($"{nameof(BaseUri)} = {location}, ");
         builder.Append($"{nameof(BearerToken)} = {(BearerToken is null ? "null" : "***")}, ");
         builder.Append($"{nameof(Credentials)} = {(Credentials is null ? "null" : "***")}, ");
         builder.Append($"{nameof(StoreRoot)} = {StoreRoot ?? "null"}, ");

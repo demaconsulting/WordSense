@@ -109,9 +109,9 @@ embedded in the encoder packages.
 
 ### Deviations and Known Limitations
 
-- The capitalization and possessive heuristics of the earlier classifier were dropped; the encoder sees the text as
+- There are no capitalization or possessive heuristics; the encoder sees the text as
   given (the cased model keeps case, the uncased model lower-cases it).
-- The weights format `WSX1` supports dense weights only; the sparse variant of the earlier design was removed.
+- The weights format `WSX1` supports dense weights only; there is no sparse variant.
 - `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
   Design_), not in the record.
 - `IWordSenseModel` is not `IDisposable`; the encoder models implement `IDisposable` themselves and the Basic model

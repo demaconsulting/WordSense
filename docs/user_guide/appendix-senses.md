@@ -50,8 +50,8 @@ Besides the lemmas listed below, the lexicon list has 143,712 words (derived fro
 II list, see `corpus/lexicon/PROVENANCE.md`), of which 142,485 are embedded as dictionary words. A dictionary word has
 no trained classifier: a word with one part of speech is answered directly, and a word with several parts of speech
 returns them as candidates. A word that a lemma or a form of the list below spells is not embedded as a dictionary word,
-because the lemma takes precedence. A capitalized word in the middle of a sentence is not looked up. The words are not
-listed here; this is how many words of the lexicon list have each set of parts of speech:
+because the lemma takes precedence. A capitalized word is lower-cased before it is looked up. The words are not listed
+here; this is how many words of the lexicon list have each set of parts of speech:
 
 | Parts of speech                                                 |   Words |
 |-----------------------------------------------------------------|---------|

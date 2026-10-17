@@ -13,18 +13,18 @@ Each rule has a name, a condition on the neighbors, the part of speech it select
 evaluated in this order and the first rule that fires wins; a rule fires only when the part of speech it selects is
 among the candidates of the word.
 
-1. `after-modal`: the previous word is a modal verb or a form of "do"; selects Verb; confidence 0.9.
-2. `after-to`: the previous word is "to"; selects Verb; 0.7.
-3. `after-subject-pronoun`: the previous word is a subject pronoun; selects Verb; 0.8.
-4. `after-determiner`: the previous word is a determiner; selects Noun, else Adjective; 0.85.
-5. `after-degree-adverb`: the previous word is a degree adverb (very, too, so, ...); selects Adjective; 0.7.
-6. `after-preposition`: the previous word is a preposition; selects Noun; 0.7.
-7. `before-auxiliary`: the next word is an auxiliary verb; selects Noun; 0.7.
-8. `before-noun`: the next word is a word that is only a noun in the lexicon; selects Adjective; 0.6.
-
-The initial confidences are estimates. They are calibrated from the per-rule precision that the builder command
-`basic-precision` measures on the training sentences (never the holdout); the source file is authoritative for the
-current values. The word lists (modals, pronouns, determiners, degree adverbs, prepositions, auxiliaries) are fixed
+1. `after-modal`: the previous word is a modal verb or a form of "do"; selects Verb; confidence 0.99.
+2. `after-to`: the previous word is "to"; selects Verb; 0.98.
+3. `after-subject-pronoun`: the previous word is a subject pronoun; selects Verb; 0.99.
+4. `after-determiner`: the previous word is a determiner; selects Noun, else Adjective; 0.95.
+5. `after-degree-adverb`: the previous word is a degree adverb (very, too, so, ...); selects Adjective; 0.89.
+6. `after-preposition`: the previous word is a preposition; selects Noun; 0.82.
+7. `before-auxiliary`: the next word is an auxiliary verb; selects Noun; 0.97.
+8. `before-noun`: the next word is a word that is only a noun in the lexicon; selects Adjective; 0.77.
+The confidences are fixed constants (the `*Confidence` constants of `Rules`), each calibrated from the per-rule
+precision that the builder command `basic-precision` measures on the training sentences (never the holdout); the source
+file is authoritative for the current values. The word lists (modals, pronouns, determiners, degree adverbs,
+prepositions, auxiliaries) are fixed
 sets of lower-case words.
 
 #### Key Methods

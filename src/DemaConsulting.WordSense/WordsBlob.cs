@@ -50,7 +50,7 @@ internal static class WordsBlob
         }
 
         var position = Magic.Length;
-        var stringCount = ReadVarint(span, ref position);
+        var stringCount = ReadCount(span, ref position, 1);
         var strings = new string[stringCount];
         for (var i = 0; i < stringCount; i++)
         {
@@ -60,7 +60,7 @@ internal static class WordsBlob
             position += length;
         }
 
-        var detailsCount = ReadVarint(span, ref position);
+        var detailsCount = ReadCount(span, ref position, 4);
         var details = new WordDetails[detailsCount];
         for (var i = 0; i < detailsCount; i++)
         {
@@ -81,12 +81,12 @@ internal static class WordsBlob
                 respelling == 0 ? null : strings[respelling - 1]);
         }
 
-        var entryCount = ReadVarint(span, ref position);
+        var entryCount = ReadCount(span, ref position, 3);
         var entries = new Dictionary<string, WordDetails[]>(entryCount, StringComparer.Ordinal);
         for (var i = 0; i < entryCount; i++)
         {
             var key = ReadVarint(span, ref position);
-            var count = ReadVarint(span, ref position);
+            var count = ReadCount(span, ref position, 1);
             if (key >= stringCount || count == 0)
             {
                 throw new InvalidDataException("The word lexicon has an invalid entry.");
@@ -99,7 +99,10 @@ internal static class WordsBlob
                 senses[s] = id < detailsCount ? details[id] : throw new InvalidDataException("The word lexicon has an invalid sense reference.");
             }
 
-            entries[strings[key]] = senses;
+            if (!entries.TryAdd(strings[key], senses))
+            {
+                throw new InvalidDataException("The word lexicon has a duplicate key.");
+            }
         }
 
         if (position != span.Length)
@@ -149,9 +152,28 @@ internal static class WordsBlob
     /// <param name="length">The needed length.</param>
     private static void Require(ReadOnlySpan<byte> span, int position, int length)
     {
-        if (length < 0 || position + length > span.Length)
+        if (length < 0 || length > span.Length - position)
         {
             throw new InvalidDataException("The data is truncated.");
         }
+    }
+
+    /// <summary>
+    ///     Reads an item count and rejects a count that cannot fit in the remaining data, before anything is allocated.
+    /// </summary>
+    /// <param name="span">The data.</param>
+    /// <param name="position">The read position, advanced past the count.</param>
+    /// <param name="minimumItemBytes">The least number of bytes one item occupies.</param>
+    /// <returns>The count.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the count exceeds what the remaining data can hold.</exception>
+    private static int ReadCount(ReadOnlySpan<byte> span, ref int position, int minimumItemBytes)
+    {
+        var count = ReadVarint(span, ref position);
+        if (count > (span.Length - position) / minimumItemBytes)
+        {
+            throw new InvalidDataException("The data is truncated.");
+        }
+
+        return count;
     }
 }

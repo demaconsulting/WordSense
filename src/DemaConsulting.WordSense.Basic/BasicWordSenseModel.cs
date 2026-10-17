@@ -24,15 +24,40 @@ namespace DemaConsulting.WordSense.Basic;
 ///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///
-///     WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
+///     string[] words = ["They", "will", "record", "the", "record", "."];
+///     WordSense[] senses = await classifier.ClassifyAsync(words);
+///
+///     for (var i = 0; i &lt; words.Length; i++)
+///     {
+///         Console.WriteLine($"{words[i]}: {senses[i].Details?.PartOfSpeech.ToString() ?? "-"} ({senses[i].Confidence:0.00})");
+///     }
 ///     </code>
 /// </example>
 public sealed class BasicWordSenseModel : IWordSenseModel
 {
-    /// <inheritdoc />
+    /// <summary>
+    ///     Initializes a new instance of the <see cref="BasicWordSenseModel"/> class.
+    /// </summary>
+    /// <remarks>
+    ///     The model needs no arguments, no files and no network, and it holds no resources: it does not implement
+    ///     <see cref="IDisposable"/> and never needs disposal. One instance may be shared by any number of threads.
+    /// </remarks>
+    public BasicWordSenseModel()
+    {
+    }
+
+    /// <summary>
+    ///     Completes immediately: the model needs no files, so nothing is checked or downloaded.
+    /// </summary>
+    /// <param name="mirror">Ignored.</param>
+    /// <param name="cancellationToken">A token; a task that is already cancelled is returned when it is cancelled.</param>
+    /// <returns>A completed task, or a cancelled task when <paramref name="cancellationToken"/> is already cancelled.</returns>
     public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default) =>
         cancellationToken.IsCancellationRequested ? Task.FromCanceled(cancellationToken) : Task.CompletedTask;
 
-    /// <inheritdoc />
+    /// <summary>
+    ///     Creates a classifier that applies the rules.
+    /// </summary>
+    /// <returns>A new classifier, safe for concurrent use; it can be created at any time, even without calling <see cref="EnsureModelAsync"/>.</returns>
     public IWordSenseClassifier Create() => new BasicClassifier();
 }

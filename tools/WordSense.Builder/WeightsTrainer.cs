@@ -37,6 +37,11 @@ internal static class WeightsTrainer
     /// <returns>The weights.</returns>
     public static WeightsData TrainDense(string modelId, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options)
     {
+        if (pooled.Length == 0)
+        {
+            throw new InvalidDataException("There are no anchor sentences to train from.");
+        }
+
         var dim = pooled[0].Length;
         var mean = new float[dim];
         foreach (var vector in pooled)
@@ -67,7 +72,21 @@ internal static class WeightsTrainer
         var lemmas = anchors.Select((row, i) => (row, i)).GroupBy(t => t.row.Lemma, StringComparer.Ordinal)
             .OrderBy(g => g.Key, StringComparer.Ordinal).ToList();
         var trained = new (LemmaModelKind Kind, float[] Weights, float[] Bias, float Margin, bool Cv, int Dimension)[lemmas.Count];
-        Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
+        try
+        {
+            Parallel.For(0, lemmas.Count, new ParallelOptions { MaxDegreeOfParallelism = Math.Max(1, options.Parallelism) }, k =>
+            {
+                TrainLemma(k);
+            });
+        }
+        catch (AggregateException ex) when (ex.InnerExceptions.Count > 0)
+        {
+            // Report the first data error itself, not the wrapper, so the caller can print one line
+            System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex.Flatten().InnerExceptions[0]).Throw();
+            throw;
+        }
+
+        void TrainLemma(int k)
         {
             var lemma = lemmas[k].Key;
             var index = lemmas[k].Select(t => t.i).ToArray();
@@ -90,7 +109,7 @@ internal static class WeightsTrainer
             var cv = counts.Min() >= MinSamplesForCrossValidation && labels.Length >= MinTotalForCrossValidation;
             var margin = cv ? ChooseMargin(lemma, x, labels, names.Length, kind, options) : 0f;
             trained[k] = (kind, weights, bias, margin, cv, x[0].Length);
-        });
+        }
 
         var margins = trained.Where(t => t.Cv).Select(t => t.Margin).Order().ToList();
         var fallback = margins.Count == 0 ? 0f : margins[margins.Count / 2];

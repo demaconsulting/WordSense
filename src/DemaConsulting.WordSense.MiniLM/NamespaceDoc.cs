@@ -7,7 +7,9 @@ namespace DemaConsulting.WordSense.MiniLM;
 /// <remarks>
 ///     <para>
 ///     Package: the NuGet package <c>DemaConsulting.WordSense.MiniLM</c>, which targets <c>net8.0</c>, <c>net9.0</c> and
-///     <c>net10.0</c>; it depends on <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
+///     <c>net10.0</c>; it is built on <c>DemaConsulting.WordSense.Onnx</c> (the shared tokenizer, ONNX encoder, verified
+///     downloader and abstract <c>OnnxWordSenseModel</c>, which <c>MiniLMWordSenseModel</c> extends) and depends on
+///     <c>DemaConsulting.WordSense</c> and ONNX Runtime. Install it with
 ///     <c>dotnet add package DemaConsulting.WordSense.MiniLM</c>; no native or other setup is needed. The weights
 ///     trained for the model are embedded in the assembly. The roughly 23 MB encoder (<c>model_int8.onnx</c>, plus a small
 ///     <c>vocab.txt</c>) is downloaded once on first use, verified against pinned SHA-256 digests and cached per user, or
@@ -17,6 +19,25 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     Start with <see cref="MiniLMWordSenseModel"/>: create it, call <c>EnsureModelAsync</c>, then <c>Create</c> to get an
 ///     <see cref="IWordSenseClassifier"/>. The files are described under <c>model/all-MiniLM-L6-v2-int8/</c> in the
 ///     repository (https://github.com/demaconsulting/WordSense/tree/main/model/all-MiniLM-L6-v2-int8).
+///     </para>
+///     <para>
+///     Choose MiniLM for a small, fast model: about 23 MB, about 1.6 ms per sentence, 96.9 percent best-sense accuracy on
+///     the holdout and 92.6 percent on real text (<c>docs/build_notes/model-comparison.md</c>). Choose
+///     <c>DemaConsulting.WordSense.BertBaseCased</c> when accuracy and case-awareness matter more than size: about 109 MB,
+///     about 9.9 ms per sentence, 99.1 and 97.4 percent.
+///     </para>
+///     <para>
+///     Confidence: the confidence of a decided word is a monotonic mapping of the margin between the best and the
+///     runner-up sense onto 0 to 1, relative to the abstain margin trained for the word (0.5 at that margin, clamped); it
+///     is a ranking score, not a calibrated probability, so choose your own threshold. 1 means a single-sense word and
+///     0 an unknown word.
+///     </para>
+///     <para>
+///     Mirrors: a <see cref="MirrorOptions"/> passed to <c>EnsureModelAsync</c> takes precedence over the
+///     <c>WORDSENSE_MIRROR_*</c> variables; the mirror is tried before the public source for each file that is missing
+///     or invalid and is not contacted when every file is already present. The mirror holds the files at
+///     <c>{mirror}/{model-id}/{file}</c>, where the model id is the <c>ModelId</c> of the model, for example
+///     <c>https://models.example.com/wordsense/all-MiniLM-L6-v2-int8/model_int8.onnx</c>.
 ///     </para>
 ///     <para>
 ///     Offline and air-gapped use: fetch <c>model_int8.onnx</c> (SHA-256
@@ -33,11 +54,11 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     Quickstart: classify a sentence and read the part of speech of the ambiguous word.
 ///     <code>
 ///     using var model = new MiniLMWordSenseModel();
-///     await model.EnsureModelAsync(null, CancellationToken.None);
+///     await model.EnsureModelAsync();
 ///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words, CancellationToken.None);
+///     WordSense[] senses = await classifier.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {

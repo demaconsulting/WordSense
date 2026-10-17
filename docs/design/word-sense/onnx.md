@@ -48,3 +48,21 @@ The units collaborate as follows:
 
 Training and inference share the feature computation, so the builder and the classifier cannot diverge. The encoder
 and the weights are shared by all classifiers of one model and are released when the model is disposed.
+
+### Adding a New ONNX Model
+
+`OnnxWordSenseModel` is extended only by packages of this repository: its constructor is `private protected` and the
+internal types (`ModelSpec`, `ModelFile`) are visible only to the in-repo packages, the builder and the tests. It is
+not a public extension point. A contributor adds a model as follows:
+
+1. Put the encoder files in `model/<model-id>/` (Git LFS) with `SHA256SUMS` and a README that records the source,
+   license and the preparation steps (for example `tools/model-prep/make-bert-encoder.py`).
+2. Create a package `DemaConsulting.WordSense.<Name>` that references `DemaConsulting.WordSense.Onnx`, with a sealed
+   class that derives from `OnnxWordSenseModel` and passes a `ModelSpec` (model id, each `ModelFile` with its SHA-256 and
+   exact length, ONNX and vocabulary file names, whether the tokenizer lower-cases, the weights assembly and resource
+   name, the hidden size) and a default maximum sequence length of 128.
+3. Register the model in the builder's `ModelCatalog`, run `weights <modelId>` to train the weights and embed the
+   resulting `weights.bin` as the manifest resource named in the spec, and run `evaluate <modelId>` to record the
+   accuracy in the build notes.
+4. Add the test project, the requirements, the design and verification documents, the SysML2 model entries and the
+   review-set entries that the other model packages have.

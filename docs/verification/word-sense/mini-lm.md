@@ -8,7 +8,7 @@ This document describes the verification of the MiniLM subsystem, the package `D
 The subsystem is a thin layer on the Onnx package, so verification concentrates on what the layer adds: the pinned model
 identity and the embedded weights. Tests in `test/DemaConsulting.WordSense.MiniLM.Tests` run the real int8 model (Git
 LFS) from `model/all-MiniLM-L6-v2-int8/` against the embedded lexicon and weights through the public API
-(`MiniLMWordSenseModelTests`), compile and run the README sample (`ReadmeSampleTests`) and the user guide samples, and
+(`MiniLMWordSenseModelTests`), compile and run the README sample (`ReadmeSampleTests`) and
 compile the XML documentation examples (`XmlDocExampleTests`). Download behavior is not repeated here; it is verified
 once for all models in the Onnx subsystem.
 
@@ -41,11 +41,6 @@ The code block marked `<!-- sample:readme -->` in `README.md` equals the compile
 endings and trailing white space, the compiled sample runs against the committed model, and the lines it writes equal
 the block marked `<!-- output:readme -->`. The set of markers in `README.md` must equal the set of checked samples
 (`ReadmeSampleTests`).
-
-#### User Guide Samples Compile and Run
-
-Each user guide code block marked `<!-- sample:name -->` equals its compiled copy, the marker set is checked for
-completeness, and the samples that need a classifier run against the committed model.
 
 #### XML Documentation Examples Compile
 

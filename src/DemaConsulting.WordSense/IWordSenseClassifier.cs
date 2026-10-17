@@ -14,11 +14,13 @@ namespace DemaConsulting.WordSense;
 ///     Each word is lower-cased and looked up in <see cref="WordLexicon.Words"/>; the curly apostrophe (U+2019) is read
 ///     as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the confidence is 0.
 ///     A word with one sense is answered with confidence 1. A word with several senses is resolved from its context;
-///     how the context is used, and what the confidence means, is defined by each model package. A model that cannot
+///     how the context is used, and what the confidence means, is defined by each model package (see
+///     <see cref="WordSense"/>). A model that cannot
 ///     decide leaves <see cref="WordSense.Details"/> null with confidence 0.
 ///     </para>
 ///     <para>
-///     A classifier is safe for concurrent use. It does not own the model that created it.
+///     A classifier is safe for concurrent use. It does not own the model that created it, so disposing the model
+///     while a classification is running is not supported: finish (await) every classification first.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -53,14 +55,29 @@ public interface IWordSenseClassifier
 ///     The classification of one word.
 /// </summary>
 /// <remarks>
+///     <para>
 ///     <see cref="Details"/> is null when the word is unknown, or when it has several senses and the model could not
-///     choose one; <see cref="Confidence"/> is then 0. For a word with one sense the confidence is 1. For a word that
-///     was resolved from its context, the confidence is defined by the model package that produced it.
+///     choose one; <see cref="Confidence"/> is then 0.
+///     </para>
+///     <para>
+///     Confidence is a number from 0 to 1: 0 means unknown or undecided, 1 means the word has only one sense in the
+///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
+///     Basic model gives each rule a fixed value (0.77 to 0.99; see the table in the
+///     <c>DemaConsulting.WordSense.Basic</c> namespace documentation). The encoder models (MiniLM, BertBaseCased) map
+///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
+///     trained for the word's lemma: 0.5 means the margin equals the abstain margin, larger values mean a clearer
+///     decision, and the result is clamped to 0 to 1. It is a ranking score, not a calibrated probability, so compare
+///     it against a threshold you choose (for example 0.5) and treat lower values as uncertain; <see cref="Details"/>
+///     still holds the best sense when the confidence is low.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, "verb", "rih-KORD"), 0.93);
+///     WordSense sense = new("record", new WordDetails("record", PartOfSpeech.Verb, null, null), 0.93);
 ///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
+///
+///     // Keep only confident answers
+///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= 0.5;
 ///     </code>
 /// </example>
 /// <param name="Word">The word as given by the caller.</param>

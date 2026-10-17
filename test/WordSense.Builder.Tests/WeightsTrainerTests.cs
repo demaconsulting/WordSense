@@ -92,9 +92,8 @@ public sealed class WeightsTrainerTests
         CorpusRow[] anchors = [Row("bank", "noun", 1), Row("bank", "noun", 2)];
         double[][] pooled = [[1, 0], [0, 1]];
 
-        // Parallel.For wraps the failure of a lemma
-        var ex = Assert.Throws<AggregateException>(() => WeightsTrainer.TrainDense("m", pooled, anchors, inventory, new TrainingOptions(Parallelism: 1)));
-        Assert.IsType<InvalidDataException>(ex.InnerException);
+        // The failure of a lemma is rethrown unwrapped
+        Assert.Throws<InvalidDataException>(() => WeightsTrainer.TrainDense("m", pooled, anchors, inventory, new TrainingOptions(Parallelism: 1)));
     }
 
     /// <summary>

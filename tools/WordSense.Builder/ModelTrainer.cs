@@ -24,6 +24,11 @@ internal static class ModelTrainer
     /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
     public static async Task<int> TrainAsync(string repository, string corpus, ModelInfo info, TextWriter output, CancellationToken cancellationToken)
     {
+        if (!info.IsEncoder)
+        {
+            throw new ArgumentException($"The model '{info.Name}' is rule based and has no weights to train.");
+        }
+
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
         var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
         var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
@@ -35,11 +40,6 @@ internal static class ModelTrainer
         inventory.Validate(anchors, holdout, forms);
         var options = new TrainingOptions();
         var clock = Stopwatch.StartNew();
-
-        if (!info.IsEncoder)
-        {
-            throw new ArgumentException($"The model '{info.Name}' is rule based and has no weights to train.");
-        }
 
         using var model = (OnnxWordSenseModel)info.Create(Path.Combine(repository, "model", info.ModelDirectory!));
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);

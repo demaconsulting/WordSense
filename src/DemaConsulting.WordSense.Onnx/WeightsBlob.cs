@@ -70,13 +70,24 @@ internal static class WeightsBlob
         }
 
         var mean = ReadFloats(span, ref p, dimension);
+        if (dimension <= 0 || mean.Any(v => !float.IsFinite(v)))
+        {
+            throw new InvalidDataException("The weights have an invalid mean vector.");
+        }
+
         var count = ReadVarint(span, ref p);
         var lemmas = new List<WeightedLemma>(Math.Min(count, 65536));
+        var seen = new HashSet<string>(StringComparer.Ordinal);
         try
         {
             for (var i = 0; i < count; i++)
             {
                 var lemma = ReadString(span, ref p);
+                if (!seen.Add(lemma))
+                {
+                    throw new InvalidDataException("The weights have a duplicate lemma.");
+                }
+
                 var abstain = ReadFloats(span, ref p, 1)[0];
                 var kind = (LemmaModelKind)ReadByte(span, ref p);
                 var senseCount = ReadVarint(span, ref p);
@@ -84,6 +95,11 @@ internal static class WeightsBlob
                 for (var s = 0; s < senseCount; s++)
                 {
                     var pos = ReadByte(span, ref p);
+                    if (pos > (byte)PartOfSpeech.Interjection)
+                    {
+                        throw new InvalidDataException("The weights have an invalid part of speech.");
+                    }
+
                     var meaning = ReadString(span, ref p);
                     var present = ReadByte(span, ref p) == 1;
                     senses.Add(new WeightedWord(lemma, (PartOfSpeech)pos, present ? meaning : null));
@@ -195,7 +211,7 @@ internal static class WeightsBlob
     /// <param name="length">The needed length.</param>
     private static void Need(ReadOnlySpan<byte> span, int position, int length)
     {
-        if (length < 0 || position + length > span.Length)
+        if (length < 0 || length > span.Length - position)
         {
             throw new InvalidDataException("The weights are truncated.");
         }

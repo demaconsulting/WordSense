@@ -2,7 +2,8 @@
 
 ### Purpose
 
-DemaConsulting.ApiMark generates the API reference for the WordSense package from its XML doc
+DemaConsulting.ApiMark generates the API reference for each of the five WordSense packages (core, Basic, Onnx, MiniLM and
+BertBaseCased) from their XML doc
 comments. It was chosen because its output is organized for *gradual disclosure* (an index page,
 then a page per namespace, type, and member), which matches the stated audience: a coding agent
 learning how to use the library, which reads a small targeted page far more effectively than one
@@ -13,7 +14,7 @@ the code it describes.
 
 - MSBuild integration (`DemaConsulting.ApiMark.MSBuild`), so the reference is produced by the
   ordinary build rather than by a separate command
-- Output redirection (`ApiMarkOutputDir`) into `src/DemaConsulting.WordSense/generated/api`
+- Output redirection (`ApiMarkOutputDir`) into `src/<package>/generated/api` for each package
 - Package inclusion (`ApiMarkPackDocs`), which places the generated `api/` tree in the NuGet package
 - Documentation-coverage enforcement (`ApiMarkEnforceDocs`, `ApiMarkEnforceDocsSeverity`)
 - Rendering of `<example>`/`<code>` blocks as fenced code blocks and of `<remarks>` prose

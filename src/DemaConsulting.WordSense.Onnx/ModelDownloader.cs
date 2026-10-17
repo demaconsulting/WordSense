@@ -11,7 +11,9 @@ namespace DemaConsulting.WordSense.Onnx;
 /// </summary>
 /// <param name="Name">The file name, which is also its name beneath every source's model folder.</param>
 /// <param name="Sha256">The pinned lower-case hexadecimal SHA-256 digest.</param>
-internal sealed record ModelFile(string Name, string Sha256);
+/// <param name="Length">The exact size in bytes, or 0 when unknown; a download is aborted as soon as it exceeds the size
+/// (or <see cref="ModelDownloader.MaxUnpinnedLength"/> when unknown).</param>
+internal sealed record ModelFile(string Name, string Sha256, long Length = 0);
 
 /// <summary>
 ///     Everything the shared ONNX implementation needs to know about one model.
@@ -48,6 +50,11 @@ internal static class ModelDownloader
     ///     The branch the GitHub copy is read from.
     /// </summary>
     public const string GitHubRef = "main";
+
+    /// <summary>
+    ///     The largest download accepted for a file whose size is not pinned (1 GiB).
+    /// </summary>
+    public const long MaxUnpinnedLength = 1L << 30;
 
     /// <summary>
     ///     The default longest time a single download attempt of a single file may take.
@@ -240,7 +247,7 @@ internal static class ModelDownloader
                 using var limit = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
                 limit.CancelAfter(timeout);
 
-                var actual = await FetchAsync(client, uri, auth, temp, limit.Token).ConfigureAwait(false);
+                var actual = await FetchAsync(client, uri, auth, temp, file.Length > 0 ? file.Length : MaxUnpinnedLength, limit.Token).ConfigureAwait(false);
                 if (!string.Equals(actual, file.Sha256, StringComparison.Ordinal))
                 {
                     failures.Add($"{name}: SHA-256 mismatch for '{file.Name}'.");
@@ -275,21 +282,33 @@ internal static class ModelDownloader
     /// <param name="uri">The request URI.</param>
     /// <param name="auth">The mirror whose credentials apply, or null for an anonymous request.</param>
     /// <param name="temp">The temporary file path.</param>
+    /// <param name="maxLength">The most bytes accepted; the download is aborted beyond it.</param>
     /// <param name="cancellationToken">A token that cancels the request.</param>
     /// <returns>The lower-case hexadecimal SHA-256 of the received bytes.</returns>
-    private static async Task<string> FetchAsync(HttpClient client, Uri uri, DownloadMirror? auth, string temp, CancellationToken cancellationToken)
+    private static async Task<string> FetchAsync(HttpClient client, Uri uri, DownloadMirror? auth, string temp, long maxLength, CancellationToken cancellationToken)
     {
         using var response = await SendFollowingRedirectsAsync(client, uri, auth, cancellationToken).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
+        if (response.Content.Headers.ContentLength > maxLength)
+        {
+            throw new HttpRequestException("The response is larger than the pinned size of the file.");
+        }
 
         using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         await using var input = await response.Content.ReadAsStreamAsync(cancellationToken).ConfigureAwait(false);
         await using var output = new FileStream(temp, FileMode.CreateNew, FileAccess.Write, FileShare.None, 81920, true);
 
         var buffer = new byte[81920];
+        long total = 0;
         int read;
         while ((read = await input.ReadAsync(buffer, cancellationToken).ConfigureAwait(false)) > 0)
         {
+            total += read;
+            if (total > maxLength)
+            {
+                throw new HttpRequestException("The response is larger than the pinned size of the file.");
+            }
+
             hash.AppendData(buffer, 0, read);
             await output.WriteAsync(buffer.AsMemory(0, read), cancellationToken).ConfigureAwait(false);
         }

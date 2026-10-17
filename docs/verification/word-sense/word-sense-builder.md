@@ -6,12 +6,12 @@ This document describes the verification of the `WordSenseBuilder` unit, the non
 ### Verification Approach
 
 Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.RunAsync`) with explicit output writers
-and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the
-commands and their usage and data errors, `BlobWriterTests.cs` covers the lexicon and weights writers against the readers
-of the shipped packages, and `BasicPrecisionTests.cs` covers the rule-precision measurement. Commands that need a real
-encoder (`weights` and `evaluate` for the encoder models) are verified through the data they produce: the weights embedded
-in the model packages are loaded and matched in the MiniLM and BertBaseCased tests, and the accuracy figures are recorded
-in the build notes, not asserted here.
+and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
+and their usage and data errors, `WordsBlobWriterTests.cs` and `WeightsBlobWriterTests.cs` cover the lexicon and weights
+writers against the readers of the shipped packages, and `BasicPrecisionTests.cs` covers the rule-precision measurement.
+Commands that need a real encoder (`weights` and `evaluate` for the encoder models) are verified through the data they
+produce: the weights embedded in the model packages are loaded and matched in the MiniLM and BertBaseCased tests, and
+the accuracy figures are recorded in the build notes, not asserted here.
 
 ### Test Environment
 

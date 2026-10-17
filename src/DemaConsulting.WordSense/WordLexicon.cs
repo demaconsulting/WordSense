@@ -18,15 +18,31 @@ namespace DemaConsulting.WordSense;
 ///     <c>'</c>). The senses of a lemma appear in a fixed order that is part of the lexicon. The lexicon is read-only
 ///     and safe for concurrent use.
 ///     </para>
+///     <para>
+///     The senses of a word use the eight values of <see cref="PartOfSpeech"/>: <see cref="PartOfSpeech.Noun"/>,
+///     <see cref="PartOfSpeech.Pronoun"/>, <see cref="PartOfSpeech.Verb"/>, <see cref="PartOfSpeech.Adjective"/>,
+///     <see cref="PartOfSpeech.Adverb"/>, <see cref="PartOfSpeech.Preposition"/>, <see cref="PartOfSpeech.Conjunction"/>
+///     and <see cref="PartOfSpeech.Interjection"/>. A word that is not in the lexicon (a determiner, a number, most
+///     proper nouns or a misspelling) is simply missing from <see cref="Words"/>.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     if (WordLexicon.Words.TryGetValue("records", out WordDetails[]? senses))
+///     // "read" has two entries, both verbs: the present (REED) and the past (RED); every sense has the lemma "read"
+///     WordDetails[] read = WordLexicon.Words["read"];
+///     foreach (WordDetails sense in read)
 ///     {
-///         foreach (WordDetails sense in senses)
-///         {
-///             Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}");
-///         }
+///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, meaning {sense.Meaning}, respelling {sense.Respelling}");
+///     }
+///
+///     // A word that is not in the lexicon is missing from the dictionary, so use TryGetValue
+///     if (WordLexicon.Words.TryGetValue("zyzzyva", out WordDetails[]? senses))
+///     {
+///         Console.WriteLine($"zyzzyva: {senses.Length} senses");
+///     }
+///     else
+///     {
+///         Console.WriteLine("zyzzyva is unknown");
 ///     }
 ///     </code>
 /// </example>

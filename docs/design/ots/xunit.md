@@ -9,8 +9,8 @@ by downstream tooling.
 
 ### Features Used
 
-- Test discovery and execution of `[Fact]`-annotated test methods in
-  `DemaConsulting.WordSense.Tests`
+- Test discovery and execution of `[Fact]`- and `[Theory]`-annotated test methods in
+  all test projects under `test/`
 - TRX result-file generation, consumed by ReqStream for requirements-to-test traceability
 
 ### Integration Pattern

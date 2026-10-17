@@ -14,7 +14,30 @@ namespace DemaConsulting.WordSense.Basic;
 ///     </para>
 ///     <para>
 ///     Start with <see cref="BasicWordSenseModel"/>: create it, call <c>EnsureModelAsync</c> (it completes at once), then
-///     <c>Create</c> to get an <see cref="IWordSenseClassifier"/>.
+///     <c>Create</c> to get an <see cref="IWordSenseClassifier"/>. The model needs no disposal.
+///     </para>
+///     <para>
+///     Confidence: 0 means the word is unknown or no rule applied (undecided; <c>Details</c> is null), 1 means the word
+///     has a single sense in the lexicon, and a word decided by a rule gets that rule's fixed value, the precision the
+///     rule achieved on the training sentences. Thresholds are therefore meaningful: use 0.9 to keep only the most
+///     reliable rules.
+///     </para>
+///     <list type="table">
+///     <listheader><term>Rule</term><description>Selects (confidence)</description></listheader>
+///     <item><term>after-modal (previous word is a modal or a form of "do")</term><description>verb (0.99)</description></item>
+///     <item><term>after-to (previous word is "to")</term><description>verb (0.98)</description></item>
+///     <item><term>after-subject-pronoun</term><description>verb (0.99)</description></item>
+///     <item><term>after-determiner</term><description>noun, else adjective (0.95)</description></item>
+///     <item><term>after-degree-adverb ("very", "too", ...)</term><description>adjective (0.89)</description></item>
+///     <item><term>after-preposition</term><description>noun (0.82)</description></item>
+///     <item><term>before-auxiliary (next word is "is", "will", ...)</term><description>noun (0.97)</description></item>
+///     <item><term>before-noun (next word is only a noun)</term><description>adjective (0.77)</description></item>
+///     </list>
+///     <para>
+///     Which model to choose: Basic is the smallest and fastest and needs nothing else, but it decides only the part of
+///     speech from the neighbors and leaves some words undecided. If accuracy matters more, use
+///     <c>DemaConsulting.WordSense.MiniLM</c> (small and fast) or <c>DemaConsulting.WordSense.BertBaseCased</c> (larger,
+///     case-aware and more accurate); see their namespace documentation for the figures.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -25,7 +48,7 @@ namespace DemaConsulting.WordSense.Basic;
 ///     IWordSenseClassifier classifier = model.Create();
 ///
 ///     string[] words = ["They", "will", "record", "the", "record", "."];
-///     WordSense[] senses = await classifier.ClassifyAsync(words, CancellationToken.None);
+///     WordSense[] senses = await classifier.ClassifyAsync(words);
 ///
 ///     for (var i = 0; i &lt; words.Length; i++)
 ///     {

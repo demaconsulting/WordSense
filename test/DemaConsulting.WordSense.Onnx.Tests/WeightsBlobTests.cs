@@ -47,18 +47,27 @@ public class WeightsBlobTests
     }
 
     /// <summary>
-    ///     A blob with no lemmas and a dimension of zero reads as an empty set of weights.
+    ///     A blob with no lemmas reads as an empty set of weights.
     /// </summary>
     [Fact]
     public void WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights()
     {
-        // Magic, model id "m" (length 1), dimension 0, dense flag 0, no mean values, no lemmas
-        var blob = Compress([.. "WSX1"u8.ToArray(), 1, (byte)'m', 0, 0, 0]);
+        // Magic, model id "m" (length 1), dimension 1, dense flag 0, one mean value (0.0f), no lemmas
+        var blob = Compress([.. "WSX1"u8.ToArray(), 1, (byte)'m', 1, 0, 0, 0, 0, 0, 0]);
 
         var data = WeightsBlob.Read(blob);
 
         Assert.Equal("m", data.ModelId);
-        Assert.Equal(0, data.Dimension);
+        Assert.Equal(1, data.Dimension);
         Assert.Empty(data.Lemmas);
+    }
+
+    /// <summary>
+    ///     A blob with a dimension of zero is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_ZeroDimension_Throws()
+    {
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX1"u8.ToArray(), 1, (byte)'m', 0, 0, 0])));
     }
 }

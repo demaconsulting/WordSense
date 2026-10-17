@@ -9,8 +9,8 @@ server). It guarantees that an accepted mirror can be used without leaking crede
 
 #### Data Model
 
-An internal sealed record of the base URI, an optional bearer token, optional basic credentials and the timeout.
-Its printed form masks the secrets.
+An internal sealed record of the base URI, an optional bearer token and optional basic credentials. The timeout is
+held by `MirrorOptions`. Its printed form masks the secrets.
 
 #### Key Methods
 

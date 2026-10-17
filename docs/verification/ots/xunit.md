@@ -18,9 +18,10 @@ run for all scenarios constitutes evidence that both requirements are satisfied.
 
 ### Test Scenarios
 
-#### DownloadMirror_ToString_RedactsSecrets
+#### WordsBlob_Read_UnknownMagic_Throws
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that the mirror description hides its secrets.
+**Scenario**: xUnit discovers and runs this test (core test project); the test verifies that a lexicon blob with an
+unknown magic number is refused.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
@@ -28,16 +29,17 @@ run for all scenarios constitutes evidence that both requirements are satisfied.
 
 #### WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that empty text yields no tokens.
+**Scenario**: xUnit discovers and runs this test (Onnx test project); the test verifies that empty text yields no
+tokens.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
 **Requirement coverage**: `WordSense-OTS-xUnit-Execute`, `WordSense-OTS-xUnit-Report`.
 
-#### WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
+#### WeightsBlob_Read_UnknownMagic_Throws
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that a short text is framed whole by the
-special tokens.
+**Scenario**: xUnit discovers and runs this test (Onnx test project); the test verifies that a weights blob with an
+unknown magic number is refused.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
@@ -45,9 +47,7 @@ special tokens.
 
 ### Requirements Coverage
 
-- **`WordSense-OTS-xUnit-Execute`**: DownloadMirror_ToString_RedactsSecrets,
-  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens,
-  WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
-- **`WordSense-OTS-xUnit-Report`**: DownloadMirror_ToString_RedactsSecrets,
-  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens,
-  WordPieceTokenizer_BuildWindow_ShortText_ContainsWholeText
+- **`WordSense-OTS-xUnit-Execute`**: WordsBlob_Read_UnknownMagic_Throws,
+  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws
+- **`WordSense-OTS-xUnit-Report`**: WordsBlob_Read_UnknownMagic_Throws,
+  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws

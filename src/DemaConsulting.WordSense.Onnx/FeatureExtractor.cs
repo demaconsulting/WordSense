@@ -29,7 +29,7 @@ internal static class FeatureExtractor
             norm += value * value;
         }
 
-        if (norm <= 0 || double.IsNaN(norm))
+        if (norm <= 0 || !double.IsFinite(norm))
         {
             return null;
         }

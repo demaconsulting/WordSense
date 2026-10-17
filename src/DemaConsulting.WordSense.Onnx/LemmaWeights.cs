@@ -32,7 +32,7 @@ internal sealed class LemmaWeights
     /// <param name="kind">How scores derive from the weight rows.</param>
     /// <param name="weights">The weight rows, row-major.</param>
     /// <param name="bias">One bias per weight row.</param>
-    /// <param name="abstainMargin">The abstain margin (finite, not negative).</param>
+    /// <param name="abstainMargin">The abstain margin (finite); a negative value is treated as 0.</param>
     /// <param name="dimension">The dense dimension.</param>
     /// <exception cref="ArgumentException">Thrown when the shapes are inconsistent or a value is not finite.</exception>
     public LemmaWeights(LemmaModelKind kind, float[] weights, float[] bias, float abstainMargin, int dimension)

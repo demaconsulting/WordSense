@@ -58,6 +58,10 @@ internal sealed class OnnxEncoder : IDisposable
         {
             _outputName = _session.OutputMetadata.Keys.First();
             HiddenSize = _session.OutputMetadata[_outputName].Dimensions[^1];
+            if (HiddenSize <= 0)
+            {
+                throw new InvalidDataException("The ONNX model does not have a fixed hidden size.");
+            }
         }
         catch
         {

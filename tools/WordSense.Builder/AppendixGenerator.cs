@@ -176,8 +176,8 @@ internal static class AppendixGenerator
             $"{embedded:N0} are embedded as dictionary words. A dictionary word has no " +
             "trained classifier: a word with one part of speech is answered directly, and a word with several parts " +
             "of speech returns them as candidates. A word that a lemma or a form of the list below spells is not " +
-            "embedded as a dictionary word, because the lemma takes precedence. A capitalized word in the middle of " +
-            "a sentence is not looked up. The words are not " +
+            "embedded as a dictionary word, because the lemma takes precedence. A capitalized word is " +
+            "lower-cased before it is looked up. The words are not " +
             "listed here; this is how many words of the lexicon list have each set of parts of speech:");
         var width = Math.Max(sets.Max(s => s.Name.Length), "Parts of speech".Length);
         lines.Add($"| {"Parts of speech".PadRight(width)} | {"Words",7} |");

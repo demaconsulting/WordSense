@@ -29,9 +29,8 @@ This user guide covers:
   parts of speech, pronunciation meanings and forms (generated from the corpus)
 <!-- markdownlint-enable MD051 -->
 
-The code samples in this guide are compiled by the test suite (`UserGuideSampleTests`): each C# block is preceded by
-a `sample` marker comment in the source of this guide and must equal the code in
-`test/DemaConsulting.WordSense.MiniLM.Tests/UserGuideSamples.cs`. The samples assume `ImplicitUsings`,
+The code samples in this guide use only the public API of the packages. The README sample is compiled and run by the
+test suite; the samples in this guide are reviewed with the guide. They assume `ImplicitUsings`,
 `using DemaConsulting.WordSense;` and `using DemaConsulting.WordSense.MiniLM;`.
 
 # Glossary
@@ -98,7 +97,6 @@ Installing a model package brings the core with it. Install `DemaConsulting.Word
 
 # Quick Start
 
-<!-- sample:quick-start -->
 ```csharp
 // Downloads the model files on first use, verifies their SHA-256 and reuses them later
 using var model = new MiniLMWordSenseModel();
@@ -161,7 +159,6 @@ speech and pronunciation meanings.
 inflected forms (plural, verb forms, comparatives and so on) are in the table, so no morphology runs at use time. The
 core package has no model, no ONNX Runtime and no weights: it knows nothing of the model packages.
 
-<!-- sample:lexicon -->
 ```csharp
 if (WordLexicon.Words.TryGetValue("lead", out WordDetails[]? senses))
 {
@@ -182,7 +179,6 @@ rule selects a part of speech that has more than one sense. It chooses a part of
 two meanings of the same part of speech is not decided. The measured precision of the rules is in the build notes
 (`basic-evaluation.md`).
 
-<!-- sample:basic -->
 ```csharp
 var model = new DemaConsulting.WordSense.Basic.BasicWordSenseModel();
 await model.EnsureModelAsync();
@@ -220,7 +216,6 @@ margin: it is exactly 0.5 where the model would, by that margin, have declined t
 least 0.5 as an answer you can use and a lower one as a guess; `Details` is still the best candidate, so you can use it
 when you want an answer anyway. A word with several senses but no weights for its lemma is `null` with confidence 0.
 
-<!-- sample:confidence -->
 ```csharp
 WordSense[] senses = await classifier.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 foreach (var sense in senses.Where(s => s.Details is not null))
@@ -258,7 +253,6 @@ On a machine without internet access, copy the model files of the table above in
 `model/<model-id>/` of the repository, or from a machine that has run `EnsureModelAsync`) and pass the folder to the
 constructor. The files are verified and no network access happens at all.
 
-<!-- sample:offline -->
 ```csharp
 using var model = new MiniLMWordSenseModel(modelDirectory: @"C:\models\all-MiniLM-L6-v2-int8");
 await model.EnsureModelAsync();
@@ -275,7 +269,6 @@ before GitHub. A file that does not match its SHA-256 is discarded and the next 
 (an `ICredentials`, for HTTP Basic), `StoreRoot` (where the model folders are stored) and `Timeout` (per file, default
 5 minutes).
 
-<!-- sample:mirror -->
 ```csharp
 var mirror = new MirrorOptions(
     BaseUri: new Uri("https://models.example.com/wordsense"),
