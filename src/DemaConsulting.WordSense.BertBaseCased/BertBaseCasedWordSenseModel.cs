@@ -39,8 +39,8 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>EnsureModelAsync</c> is optional but recommended: it verifies every one of them, not only the ONNX file,
 ///     against the pinned SHA-256 digests listed in the namespace documentation, with no network access, and fails
 ///     early; without it, <c>ClassifyAsync</c> verifies lazily and may throw the same
-///     <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>. Dispose the model once
-///     after every classification has finished.
+///     <see cref="FileNotFoundException"/> or <see cref="InvalidDataException"/>. Dispose the model when you no longer need it; disposing while
+///     calls are running is safe.
 ///     </para>
 ///     <para>
 ///     The encoder keeps the case of the text, so capitalization is part of the context the model sees. Sentences longer
@@ -73,6 +73,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
+///     var mirroredSenses = await mirrored.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>
@@ -80,6 +81,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
 ///     await offline.EnsureModelAsync();   // optional: verifies SHA-256 now, no network
+///     var offlineSenses = await offline.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
 public sealed class BertBaseCasedWordSenseModel : OnnxWordSenseModel

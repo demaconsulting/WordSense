@@ -30,8 +30,12 @@ namespace DemaConsulting.WordSense.Basic;
 ///     First use (approximate, machine dependent): the word lexicon of the core package loads on first use (about 120 ms,
 ///     about 43 MiB), at the latest in the first <c>ClassifyAsync</c>, and the statistical table (83 KiB, embedded) loads in about 22 ms
 ///     on the first <c>ClassifyAsync</c> of a non-empty list. After that a sentence takes 0.03 ms (about 30 µs) per
-///     sentence (about 2 µs per word, measured) and the model adds about 21 MiB of memory,
-///     not counting the 43 MiB of the lexicon. The model is safe for concurrent use.
+///     sentence, under 0.1 ms (about 2 µs per word, measured), and the model adds about 21 MiB of memory,
+///     not counting the 43 MiB of the lexicon. That figure is the growth of the private memory of the process
+///     (<c>Process.PrivateMemorySize64</c>, after a full garbage collection) from before the model was created to
+///     after it classified warm-up sentences; it holds the decoded tables and working buffers of the model, but also
+///     allocator, JIT-compiled code and runtime effects, so it is not a count of the model's own data (the embedded
+///     table is only 83 KiB). The model is safe for concurrent use.
 ///     </para>
 ///     <para>
 ///     Accuracy (build notes, https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/basic-evaluation.md and

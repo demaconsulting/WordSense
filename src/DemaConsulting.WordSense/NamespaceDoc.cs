@@ -31,30 +31,48 @@ namespace DemaConsulting.WordSense;
 ///     sources and is the realistic expectation; the holdout was written together with the training sentences and
 ///     is optimistic. All sizes are in MiB (1 MiB = 1,048,576 bytes). The memory figure is what the model adds to the
 ///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 43 MiB, once per process, shared
-///     by every model) is not included, so add it to the figure of the model you use.
+///     by every model) is not included, so add it to the figure of the model you use. The memory figure is measured as
+///     the growth of the private memory of the process (<c>Process.PrivateMemorySize64</c>, after a full garbage
+///     collection) from before the model was created to after it has classified a number of warm-up sentences, so it
+///     is not a count of the model's own data: for Basic it holds the decoded statistical tables (the 83 KiB table
+///     becomes in-memory tables) and the working buffers, but also allocator, JIT-compiled code and runtime effects,
+///     which is why about 21 MiB is much more than the table. Latency per sentence is the average over the holdout
+///     sentences.
 ///     </para>
 ///     <list type="table">
 ///     <listheader>
-///     <term>Model</term>
-///     <description>Best sense, holdout / real text; download; latency per sentence; memory added</description>
+///     <term>Measure</term>
+///     <description>Basic / MiniLM / BertBaseCased</description>
 ///     </listheader>
 ///     <item>
-///     <term>Basic</term>
-///     <description>about 89% / 85%; none (83 KiB table inside the package); under 0.1 ms; about 21 MiB; no network, no ONNX Runtime</description>
+///     <term>Best sense, holdout / real text</term>
+///     <description>Basic about 89% / 85%; MiniLM about 97% / 93%; BertBaseCased about 99% / 97%</description>
 ///     </item>
 ///     <item>
-///     <term>MiniLM</term>
-///     <description>about 97% / 93%; 22 MiB, once; about 2 ms; about 64 MiB</description>
+///     <term>Download</term>
+///     <description>Basic none (83 KiB table inside the package); MiniLM 22 MiB, once; BertBaseCased 104 MiB, once</description>
 ///     </item>
 ///     <item>
-///     <term>BertBaseCased</term>
-///     <description>about 99% / 97%; 104 MiB, once; about 9 ms; about 150 MiB; keeps the case of the text</description>
+///     <term>Latency per sentence</term>
+///     <description>Basic 0.03 ms (about 30 µs) per sentence, under 0.1 ms; MiniLM about 2 ms; BertBaseCased about 9 ms</description>
+///     </item>
+///     <item>
+///     <term>Memory added (without the lexicon)</term>
+///     <description>Basic about 21 MiB; MiniLM about 64 MiB; BertBaseCased about 150 MiB</description>
+///     </item>
+///     <item>
+///     <term>Other</term>
+///     <description>Basic needs no network and no ONNX Runtime; BertBaseCased keeps the case of the text</description>
 ///     </item>
 ///     </list>
 ///     <para>
 ///     Threshold versus coverage and precision (approximate, rounded; measured on the real-text sentences of the build
-///     notes, best-sense accuracy of the words that reach the threshold; "coverage" is the share of the rows that
-///     reach it, and the thresholds are specific to the model, so never reuse one across models):
+///     notes, best-sense accuracy of the words that reach the threshold). The "target words" are the evaluation words:
+///     each evaluation sentence has exactly one annotated target word, an ambiguous word (a lemma with several senses
+///     in the lexicon) with a known correct sense, so words with one sense, unknown words and punctuation are not part
+///     of these figures. "Coverage" is the share of the target words whose confidence is at or above the threshold,
+///     "precision" is the best-sense accuracy of exactly those words, and the thresholds are specific to the model, so
+///     never reuse one across models:
 ///     </para>
 ///     <list type="table">
 ///     <listheader>
@@ -105,7 +123,7 @@ namespace DemaConsulting.WordSense;
 ///     checking its row); it keeps about three quarters of the real-text target words (Basic 78%, MiniLM 73%,
 ///     BertBaseCased 70%) with about one error in fourteen (Basic), one in fifty (MiniLM) or one in a hundred
 ///     (BertBaseCased). For Basic the
-///     confidence of a word with n senses is never below 1/n (0.5 for two senses), so a threshold below that keeps
+///     confidence of a word with n senses is never below 1/n (0.5 for two senses), so a threshold at or below 1/n keeps
 ///     every Basic answer for such words. For an encoder, 0.5 is the lowest meaningful value: the confidence is the
 ///     margin relative to the abstain margin trained for the lemma, so 0.5 means the margin equals the abstain margin,
 ///     and below 0.5 the model's own abstain rule would not have answered; use 0.6 for more coverage (MiniLM 82%,
@@ -204,7 +222,10 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     Naming: <c>WordSense</c> is both this namespace and the result type <see cref="WordSense"/> (a record struct of
-///     the word, its details and a confidence). Models return <c>WordSense[]</c>.
+///     the word, its details and a confidence). Models return <c>WordSense[]</c>. In code that lives in a namespace
+///     under <c>DemaConsulting.*</c>, the simple name <c>WordSense</c> means the namespace: alias the type inside your
+///     namespace (<c>using WordSense = DemaConsulting.WordSense.WordSense;</c>) or write
+///     <c>DemaConsulting.WordSense.WordSense</c>; the null test for an unknown word is <c>Details is null</c>.
 ///     </para>
 /// </remarks>
 /// <example>

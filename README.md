@@ -150,9 +150,13 @@ on first use, but only when a word needs it (a list without an ambiguous word is
 never touches model files, so a model that is never needed is never downloaded); the lazy ensure uses the default and
 environment mirror settings and may throw the same exceptions as `EnsureModelAsync` (for example
 `FileNotFoundException` or `InvalidDataException` for a supplied directory), so call `EnsureModelAsync` yourself to pass
-a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. Every
-model may be disposed while a classification is running: new calls then throw `ObjectDisposedException`, the running
-calls complete, and an encoder model releases its ONNX session after the last one. The Basic model runs synchronously on
+a `MirrorOptions` (ignored while an ensure is already in flight). The ensured state belongs to one model instance. Dispose
+a model when you no longer need it; disposing while calls are running is safe: new calls then throw
+`ObjectDisposedException`, the running
+calls complete, and an encoder model releases its ONNX session after the last one. Cancelling the token of
+`EnsureModelAsync` only ends that call's wait: the shared ensure keeps running, the next call joins it (its
+`MirrorOptions` are ignored) or, after a failure, starts a new one; an already cancelled token returns a cancelled task
+instead of throwing. The Basic model runs synchronously on
 the calling thread; an encoder model hashes and downloads on the thread pool but runs inference synchronously, and a
 cancellation token is checked between steps (a single ONNX run is never interrupted). The
 ONNX models run on the CPU only, and concurrent classifications share one ONNX session and run in parallel. Model
@@ -163,9 +167,13 @@ directory you supply must hold the files directly (flat, no model-ID subfolder).
 (optionally with `WORDSENSE_MIRROR_USER` and `WORDSENSE_MIRROR_PASSWORD`, or `WORDSENSE_MIRROR_BEARER_TOKEN`) or pass a
 `MirrorOptions` to `EnsureModelAsync`; it is tried first, and it serves the files at `{mirror}/{model-id}/{file}`. A
 user without a password (or the reverse), or a user, password or token without the URL, throws `ArgumentException`; the
-variables are ignored when you pass a model directory, and a zero or negative `MirrorOptions.Timeout` throws
-`ArgumentOutOfRangeException`. No
-environment variable sets the store location; only `MirrorOptions.StoreRoot` does. See
+variables are ignored when you pass a model directory, a relative, non-http(s), query, fragment or user-info `BaseUri` or
+`WORDSENSE_MIRROR_URL` throws `ArgumentException`, and a `MirrorOptions.Timeout` that is zero, negative or longer than
+about 49 days throws `ArgumentOutOfRangeException`. Files you pre-populate in `{StoreRoot}/{model-id}/` are verified
+and reused without network access. Downloads use the default .NET proxy settings; allow-list your mirror and
+`media.githubusercontent.com`. No
+environment variable sets the store location; only `MirrorOptions.StoreRoot` does (for example `/var/lib/wordsense` or
+`C:\ProgramData\WordSense\models`; a relative path is resolved against the current directory). See
 the [user guide][link-user-guide] for details and the [senses appendix][link-appendix] for the list of lemmas.
 
 ## Choosing a model
@@ -193,14 +201,19 @@ The numbers come from the repository's build tool (`evaluate <model> --table`), 
 at most two ONNX threads. Holdout sentences were written together with the training sentences, so the holdout accuracy
 is optimistic; the real-text column is the realistic expectation. Absolute times and memory depend on the machine; use
 them as relative figures. The RAM column is what the model adds, measured after the word lexicon (about 43 MiB) was
-loaded, so it excludes the lexicon. The table is generated into `docs/build_notes/model-table.md` and a test keeps the README
+loaded, so it excludes the lexicon; it is the growth of the process's private memory after a full garbage collection,
+so it includes allocator and JIT effects. The table is generated into `docs/build_notes/model-table.md` and a test
+keeps the README
 equal to it.
 
 Confidence thresholds (coverage of the ambiguous target words / precision on real text, rounded; holdout is higher).
 A threshold belongs to one model: read it from that model's row, and never reuse it across models. The recommended
 starting value is 0.8 for each model (about one error in fourteen answers for Basic, one in fifty for MiniLM and one in
 a hundred for BERT base cased). Basic's confidence for a word with n senses is never below 1/n (0.5 for two senses);
-for an encoder, 0.5 is where the margin equals the trained abstain margin, so it is the lowest meaningful value and
+so a threshold at or below 1/n is not a filter for Basic. Coverage is the share of the target words (one annotated
+ambiguous word per evaluation sentence) whose confidence is at or above the threshold; precision is the share of those
+that are right. For an encoder, 0.5 is where the margin equals the trained abstain margin, so it is the lowest
+meaningful value and
 not a useful filter:
 
 | Model | at least 0.6 | at least 0.8 | at least 0.9 |
@@ -211,7 +224,7 @@ not a useful filter:
 
 The `ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`. The default model store is
 `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and `~/.local/share/DemaConsulting/WordSense/models` on
-Linux and macOS. All sizes are in MiB. Basic takes about 0.03 ms (about 30 µs) per sentence.
+Linux and macOS. All sizes are in MiB. Basic takes 0.03 ms (about 30 µs) per sentence, under 0.1 ms.
 
 ## Tokenizing text
 
@@ -239,6 +252,9 @@ string[] tokens = Tokenize("Smith's well-known dog didn't \"bark\" at 3.5 cats."
 
 The edge-case table is in the [user guide][link-user-guide]. `IWordSenseModel` is `IDisposable`; dispose any model with
 `using`. After disposal the model's `EnsureModelAsync` and `ClassifyAsync` throw `ObjectDisposedException`.
+In code under a
+`DemaConsulting.*` namespace add `using WordSense = DemaConsulting.WordSense.WordSense;` (the type name clashes with the
+namespace), and test for no answer with `Details is null`, not `Confidence == 0`.
 
 ## Accuracy and Limitations
 

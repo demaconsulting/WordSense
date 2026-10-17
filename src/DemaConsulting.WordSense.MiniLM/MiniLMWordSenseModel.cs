@@ -43,7 +43,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>{model-id}</c> subfolder). <c>EnsureModelAsync</c> is optional but recommended: it verifies both files against
 ///     their pinned SHA-256 digests without any network access and fails early; without it, <c>ClassifyAsync</c>
 ///     verifies lazily and may throw the same <see cref="FileNotFoundException"/> or
-///     <see cref="InvalidDataException"/>. Dispose the model once after every classification has finished.
+///     <see cref="InvalidDataException"/>. Dispose the model when you no longer need it; disposing while calls are running is safe.
 ///     </para>
 /// </remarks>
 /// <example>
@@ -71,6 +71,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new MiniLMWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
+///     var mirroredSenses = await mirrored.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Offline: the two files are in one flat directory, for example <c>/opt/models/minilm</c>.
 ///     <code>
@@ -78,6 +79,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///
 ///     using var offline = new MiniLMWordSenseModel("/opt/models/minilm");
 ///     await offline.EnsureModelAsync();   // optional: verifies SHA-256 now, no network
+///     var offlineSenses = await offline.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
 public sealed class MiniLMWordSenseModel : OnnxWordSenseModel

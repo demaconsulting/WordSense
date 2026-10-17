@@ -22,9 +22,12 @@ encoder and weights lazily, and classifies words with them (lazily ensuring the 
 
 #### Key Methods
 
-- `EnsureModelAsync(mirror, cancellationToken)`: starts one shared task when none exists or the previous one faulted
-  or was canceled (retry after failure); concurrent callers share that task and each caller can stop waiting when its
-  own token is canceled without canceling the shared work. With a model directory the task only verifies the files
+- `EnsureModelAsync(mirror, cancellationToken)`: starts one shared task (run on the thread pool with no token of its own)
+  when none exists or the previous one faulted or was canceled (retry after failure); concurrent callers share that
+  task, and the next call while it runs joins it (its `mirror` is ignored). A caller's token only cancels that caller's
+  wait (`WaitAsync`): the shared work keeps running even when no waiter is left, and only disposal cancels it. An
+  already canceled token returns a canceled task rather than throwing. With a model directory the task only
+  verifies the files
   (`ModelDownloader.Verify`, no network); otherwise it calls `ModelDownloader.EnsureAsync` with the disposal token.
 - `ClassifyAsync(words, cancellationToken)`: checks the disposed flag, validates the words and, when no word has more
   than one lexicon sense (`OnnxClassifier.NeedsModel` is false), answers from the lexicon alone without touching model

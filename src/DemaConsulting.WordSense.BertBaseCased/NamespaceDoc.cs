@@ -14,7 +14,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     classifier weights trained for this model are embedded in the assembly (nothing to download), while the encoder
 ///     files (<c>model_int8.onnx</c> of 103.5 MiB, plus <c>vocab.txt</c>, <c>config.json</c> and
 ///     <c>tokenizer.json</c>; 104 MiB in total, exact sizes below) are downloaded
-///     once on first use, verified against pinned SHA-256 digests and cached per user, or they are read from a directory you
+///     once on first use, verified against pinned SHA-256 digests and cached per user, or read from a directory you
 ///     supply, in which case no network access happens at all.
 ///     </para>
 ///     <para>
@@ -39,17 +39,23 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files once per model instance (the ONNX file is the
 ///     bulk; about 110 ms in total with a warm file cache); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
-///     of the core package loads in about 120 ms (about 43 MiB). Dispose the model with <c>using</c>. Disposing while a
-///     classification is running is safe: the model is marked disposed at once, the running classifications complete
-///     normally, and the ONNX session is released when the last of them finishes; afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>
+///     of the core package loads in about 120 ms (about 43 MiB). Recommendation: dispose the model (with <c>using</c>)
+///     when you no longer need it. Guarantee: disposing while calls are running is safe: the model is marked disposed
+///     at once, a classification that already runs completes normally, and the ONNX session is released when the last
+///     of them finishes; afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>
 ///     (reported through the returned task; also when the token is already cancelled)
-///     throw <see cref="ObjectDisposedException"/>, and disposing during a download cancels it (the pending
-///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>); downloaded files are kept. The
+///     throw <see cref="ObjectDisposedException"/>. Disposing during a download cancels it (the pending
+///     <c>EnsureModelAsync</c> throws <see cref="OperationCanceledException"/>), but the hashing of files that are
+///     already in place is not interrupted: when no download is needed the pending ensure completes normally (the
+///     model is disposed nevertheless). A <c>ClassifyAsync</c> that is still waiting for its lazy ensure ends with
+///     <see cref="OperationCanceledException"/> or, when the ensure finished first and the session was not yet opened,
+///     with <see cref="ObjectDisposedException"/>. Downloaded files are kept. The
 ///     model is safe for concurrent use: concurrent classifications share one ONNX session and run in parallel. It
 ///     runs on the CPU only. <c>EnsureModelAsync</c> is optional: <c>ClassifyAsync</c> ensures lazily (so it may throw
 ///     the ensure exceptions too), but you need it to fail early or to pass a <see cref="MirrorOptions"/>, which is
 ///     ignored while an ensure is already in flight. Cancelling the token of <c>EnsureModelAsync</c> cancels the wait
-///     of that call only; the shared download continues while other callers wait for it. The opening of the ONNX
+///     of that call only (the returned task is cancelled, also for an already cancelled token; nothing is thrown from
+///     the call); the shared ensure keeps running even when no caller waits any more, and the next call joins it. The opening of the ONNX
 ///     session and the inference run synchronously on the thread that continues the call (not offloaded), and a
 ///     token is checked between the words, never inside one ONNX run.
 ///     </para>
@@ -78,7 +84,13 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS (beneath <c>$XDG_DATA_HOME</c> when that
 ///     variable is set); only <see cref="MirrorOptions.StoreRoot"/> relocates the store (no
-///     environment variable does, and a <see cref="MirrorOptions"/> needs a mirror base URI).
+///     environment variable does, and a <see cref="MirrorOptions"/> needs a mirror base URI; a relative store root is
+///     resolved against the current directory of the process). Offline route through the store: copy all four files
+///     into <c>{StoreRoot}/bert-base-cased-int8/</c> (or the default store); files that match their pinned SHA-256 are
+///     kept and never requested, so nothing is downloaded when all are valid. Network notes: downloads use the default
+///     .NET proxy behavior (system proxy; the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on
+///     Linux and macOS), with no proxy credentials of its own; allow-list your mirror host and
+///     <c>media.githubusercontent.com</c> (the public source, which may redirect to further hosts).
 ///     </para>
 ///     <para>
 ///     Pinned files: all four files are verified by <c>EnsureModelAsync</c>, whether they come from the store, a mirror,
@@ -103,11 +115,16 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     details: a blank variable counts as unset; a user without a password (or the reverse), or a user, password or
 ///     token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; none of this applies, and
 ///     the variables are never read, when a model directory was supplied or a <see cref="MirrorOptions"/> is passed;
-///     a <see cref="MirrorOptions.Timeout"/> of zero or less throws <see cref="ArgumentOutOfRangeException"/>.
+///     a <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
+///     <see cref="ArgumentOutOfRangeException"/> (<c>Timeout.InfiniteTimeSpan</c> means no limit); a mirror URL that is
+///     relative, not http or https, or has a query, a fragment or user-info throws <see cref="ArgumentException"/>.
 ///     </para>
 ///     <para>
 ///     Input: one sentence per call; split punctuation into tokens of their own; keep a contraction such as
-///     <c>don't</c> or a hyphenated word as one token; the model is case-aware, so keep the case of the text. The
+///     <c>don't</c> or a hyphenated word as one token; the model is case-aware, so keep the case of the text. A
+///     reference tokenizer and a table of edge cases are in the documentation of the core namespace
+///     <c>DemaConsulting.WordSense</c>
+///     (https://github.com/demaconsulting/WordSense/blob/main/src/DemaConsulting.WordSense/NamespaceDoc.cs). The
 ///     default maximum sequence length is 128 word pieces including the special tokens (8 to 512 can be set in the
 ///     constructor); a longer text is encoded per word from a window around it, so nothing fails but distant context
 ///     is lost.
@@ -138,6 +155,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"));
 ///     using var mirrored = new BertBaseCasedWordSenseModel();
 ///     await mirrored.EnsureModelAsync(mirror);
+///     var mirroredSenses = await mirrored.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 ///     Offline: the four files are in one flat directory, for example <c>/opt/models/bert</c>.
 ///     <code>
@@ -145,6 +163,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///
 ///     using var offline = new BertBaseCasedWordSenseModel("/opt/models/bert");
 ///     await offline.EnsureModelAsync();   // optional: verifies all four SHA-256 digests now, no network
+///     var offlineSenses = await offline.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
 ///     </code>
 /// </example>
 internal static class NamespaceDoc;

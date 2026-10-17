@@ -18,21 +18,29 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     only required to pass a <see cref="MirrorOptions"/> or to fail early. The model files come from the directory
 ///     given to the model's constructor (every file verified against its pinned SHA-256, with no network access) or,
 ///     when none was given, from the per-user store, which a mirror or the GitHub copy of the repository fills on first
-///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight download (the mirror of a later call is
-///     ignored while one is running), and a failed or cancelled call can be repeated. Cancelling the token only stops
-///     that caller from waiting: the shared work continues, and a download in progress writes to temporary files that
-///     are never visible under a final file name, so a cancelled or failed download leaves no partial model file.
+///     use. Concurrent <see cref="EnsureModelAsync"/> calls share one in-flight ensure (the mirror of a later call is
+///     ignored while one is running), and a failed call can be repeated. Cancelling a token only stops that caller from
+///     waiting: its returned task is cancelled, but the shared ensure is not cancelled, it keeps running even when no
+///     caller is waiting any more (only disposing the model cancels it), and the next call joins it while it runs
+///     (its <see cref="MirrorOptions"/> are ignored), returns at once when it has succeeded, and starts a new ensure
+///     with its own <see cref="MirrorOptions"/> only after a failed one. A download in progress writes to temporary
+///     files that are never visible under a final file name, so a failed or abandoned download leaves no partial model file.
 ///     <see cref="ClassifyAsync"/> is thread-safe; every call shares one ONNX session and one set of weights, which
 ///     are opened on the first classification that needs them. A word list without an ambiguous word (every word is
 ///     unknown or has one sense) is answered from the lexicon alone: it never touches model files or ONNX, so a model
 ///     that is never needed is never downloaded. The model owns the ONNX
-///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>):
-///     dispose it, for example with <c>using</c>. Disposing is idempotent and thread-safe; it cancels a download that
+///     session and the downloader state, so it is <see cref="IDisposable"/> (through <see cref="IWordSenseModel"/>).
+///     Recommendation: dispose it (for example with <c>using</c>) when you no longer need the model. Guarantee:
+///     disposing, which is idempotent and thread-safe, is safe while calls are running. It cancels a download that
 ///     <see cref="EnsureModelAsync"/> (or a lazy ensure of <see cref="ClassifyAsync"/>) has in flight, and the pending
-///     task then throws <see cref="OperationCanceledException"/>. Disposing while a classification is running the
-///     encoder is safe: the model is marked disposed at once (new calls throw <see cref="ObjectDisposedException"/>),
-///     the classifications already running complete normally, and the ONNX session is released when the last of them
-///     finishes. <see cref="Dispose()"/> itself never waits for them.
+///     task then throws <see cref="OperationCanceledException"/>; the hashing of files that are already in place (or
+///     of a supplied directory) is not interrupted, so when no download is needed the pending ensure completes
+///     normally even though the model is disposed (every later call throws). The model is marked disposed at once
+///     (new calls throw <see cref="ObjectDisposedException"/>); a classification that already runs on the ONNX session
+///     completes normally, and the session is released when the last of them finishes. A classification that is still
+///     waiting for its lazy ensure ends with <see cref="OperationCanceledException"/> (the download was cancelled) or,
+///     when the ensure finished first and the call had not yet opened the session, with
+///     <see cref="ObjectDisposedException"/>. <see cref="Dispose()"/> itself never waits for any of this.
 ///     Dispose never deletes files: the downloaded (or supplied) model files stay in the store or directory and are
 ///     reused, after hashing, by the next instance.
 ///     </para>
@@ -41,7 +49,8 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     <see cref="EnsureModelAsync"/> the instance remembers the directory it verified (including the
 ///     <see cref="MirrorOptions.StoreRoot"/> of the <see cref="MirrorOptions"/> passed to that call), and later lazy
 ///     ensures of <see cref="ClassifyAsync"/> reuse it without hashing again; a new instance starts not yet ensured and
-///     hashes the files again. Only after a failed or cancelled ensure does the next call start a new one, and a lazy
+///     hashes the files again. Only after a failed ensure does the next call start a new one (an ensure cancelled by
+///     disposal is never restarted: every later call throws <see cref="ObjectDisposedException"/>), and a lazy
 ///     ensure then has no <see cref="MirrorOptions"/> (no explicit mirror or store root; the environment and the
 ///     default store apply). Each ensure is shared by concurrent callers, and a <see cref="MirrorOptions"/> passed
 ///     while an ensure is already in flight is ignored. After the model is ensured, passing another mirror has no
@@ -175,7 +184,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     variables. Pass <see langword="null"/> to use the environment's mirror, if any. A mirror passed while an
     ///     earlier call is still running is ignored, and a mirror is never used when a model directory was supplied.
     /// </param>
-    /// <param name="cancellationToken">A token that cancels the wait of this call.</param>
+    /// <param name="cancellationToken">A token that cancels the wait of this call (the returned task is cancelled); the shared ensure itself is not cancelled by it.</param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
     ///     When a model directory was supplied, this call is optional but useful: it verifies the files up front, and no
@@ -191,14 +200,27 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     downloaded (mirror first, then the public source); a file that is already valid never contacts the mirror.
     ///     Every existing file is hashed once per model instance (the first ensure; later calls on that instance
     ///     return the remembered result), so the call costs time proportional to the file sizes.
-    ///     Calling the method again after it completed is cheap and harmless. Cancelling stops only this caller from
-    ///     waiting; the shared work continues, and a cancelled or failed download leaves no partial file under a final
-    ///     file name, so the call can simply be repeated. The only environment variables are the four
+    ///     Calling the method again after it completed is cheap and harmless. Cancelling a token stops only that caller
+    ///     from waiting: the task returned to it is cancelled, but the shared ensure is not cancelled and keeps running
+    ///     even when no caller is waiting any more (only disposing the model cancels it). The next call joins an ensure
+    ///     that is still running (its <see cref="MirrorOptions"/> are ignored), returns at once when it has succeeded
+    ///     in the meantime, and starts a new ensure with its own <see cref="MirrorOptions"/> only when the earlier one
+    ///     failed; a failed download leaves no partial file under a final file name, so the call can simply be
+    ///     repeated. A token that is already cancelled does not make the call throw: the call returns a cancelled task
+    ///     (awaiting it throws <see cref="OperationCanceledException"/>), as the Basic model does, except that a
+    ///     task that has already completed is returned as it is; the shared ensure is still started (or joined) and
+    ///     continues. Only a disposed model throws from the call itself. The only environment variables are the four
     ///     <c>WORDSENSE_MIRROR_*</c> mirror variables; none of them sets the store location, which only
-    ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI).
+    ///     <see cref="MirrorOptions.StoreRoot"/> changes (and a <see cref="MirrorOptions"/> needs a mirror base URI;
+    ///     a relative <see cref="MirrorOptions.StoreRoot"/> is resolved against the current directory of the process).
+    ///     Offline route through the store: copy the model files into <c>{StoreRoot}/{ModelId}/</c> (or the default
+    ///     store); files that match their pinned SHA-256 are kept and never requested, so nothing is downloaded when all
+    ///     are valid.
     ///     Environment details: a blank variable counts as unset; user without password (or the reverse), or a user,
     ///     password or token without <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/> through the
-    ///     task; the environment is not read at all when a model directory was supplied (then an invalid setting is
+    ///     task, and so does a <c>WORDSENSE_MIRROR_URL</c> or <see cref="MirrorOptions.BaseUri"/> that is relative,
+    ///     not http or https, or has a query, a fragment or user-info; the environment is not read at all when a model
+    ///     directory was supplied (then an invalid setting is
     ///     ignored without an exception) or when a <see cref="MirrorOptions"/> is passed. A
     ///     <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about 49 days throws
     ///     <see cref="ArgumentOutOfRangeException"/> (infinite is allowed); it is ignored when a model directory was
@@ -220,7 +242,7 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     /// <exception cref="FileNotFoundException">Reported through the returned task when a supplied model directory lacks a model file (or does not exist).</exception>
     /// <exception cref="InvalidDataException">Reported through the returned task when a file of a supplied model directory does not match its pinned SHA-256.</exception>
     /// <exception cref="HttpRequestException">Reported through the returned task when a file could not be obtained and verified from any source.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or reported through the returned task when the model is disposed during a download.</exception>
+    /// <exception cref="OperationCanceledException">Reported through the returned task (not thrown from the call, also not for an already cancelled token) when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed during a download.</exception>
     public Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default)
     {
         Task task;
@@ -400,8 +422,9 @@ public abstract class OnnxWordSenseModel : IWordSenseModel
     ///     return. When a classification is running on the ONNX session, the session is released when the last running
     ///     classification finishes (they complete normally; new calls already throw); nothing here waits for them. It
     ///     does not wait for a cancelled download to unwind; the cancelled download leaves no partial model
-    ///     file. Every pending <see cref="EnsureModelAsync"/> task then ends with
-    ///     <see cref="OperationCanceledException"/>; calls made after disposal throw <see cref="ObjectDisposedException"/>.
+    ///     file. Every pending <see cref="EnsureModelAsync"/> task that is downloading then ends with
+    ///     <see cref="OperationCanceledException"/> (one that only has to hash files already in place completes
+    ///     normally); calls made after disposal throw <see cref="ObjectDisposedException"/>.
     /// </remarks>
     public void Dispose()
     {

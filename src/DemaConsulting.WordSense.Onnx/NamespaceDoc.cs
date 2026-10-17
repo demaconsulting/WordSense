@@ -31,12 +31,19 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     counts as unset; a user without a password (or the reverse), or a user, password or token without
 ///     <c>WORDSENSE_MIRROR_URL</c>, throws <see cref="ArgumentException"/>; the variables are never read when a model
 ///     directory was supplied (an invalid setting is then ignored without an exception) or when a
-///     <see cref="MirrorOptions"/> is passed, and a <see cref="MirrorOptions.Timeout"/> of zero or less throws
-///     <see cref="ArgumentOutOfRangeException"/>. No environment
+///     <see cref="MirrorOptions"/> is passed, and a <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer
+///     than about 49 days throws <see cref="ArgumentOutOfRangeException"/> (<c>Timeout.InfiniteTimeSpan</c> means no
+///     limit). A <c>WORDSENSE_MIRROR_URL</c> or <see cref="MirrorOptions.BaseUri"/> that is relative, not http or https,
+///     or has a query, a fragment or user-info throws <see cref="ArgumentException"/>. No environment
 ///     variable sets the store location (the downloaded copies live in <c>{StoreRoot}/{model-id}/</c>, by default beneath
 ///     the per-user local application data folder: <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
 ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux and macOS); only <see cref="MirrorOptions.StoreRoot"/> changes it, and that type
-///     requires a mirror base URI.
+///     requires a mirror base URI. Network notes: downloads use the default .NET proxy behavior (system proxy; the
+///     <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS), with no proxy
+///     credentials of its own; allow-list your mirror host and <c>media.githubusercontent.com</c> (and the hosts it
+///     redirects to). Cancelling the token of <c>EnsureModelAsync</c> only cancels that caller's wait (an already
+///     cancelled token gives a cancelled task, not a synchronous exception); the shared ensure keeps running and the next call joins it.
+///     Disposal is safe while calls are running, and cancels a download in progress.
 ///     </para>
 /// </remarks>
 internal static class NamespaceDoc;

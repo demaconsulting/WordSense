@@ -81,9 +81,14 @@ was written together with the training sentences and is optimistic.
 
 | Model | Best sense, holdout / real text | Download | Latency per sentence | Memory added |
 | ----- | ------------------------------: | -------: | -------------------: | -----------: |
-| Basic | about 89% / 85% | none (83 KiB table inside the package) | under 0.1 ms | about 21 MiB |
+| Basic | about 89% / 85% | none (83 KiB embedded) | 0.03 ms (about 30 µs), under 0.1 ms | about 21 MiB |
 | MiniLM | about 97% / 93% | 22 MiB | about 2 ms | about 64 MiB |
 | BertBaseCased | about 99% / 97% | 104 MiB | about 9 ms | about 150 MiB |
+
+The memory column is measured as the growth of the private memory of the process (after a full garbage collection)
+from before the model was created to after it classified warm-up sentences, so it is not a count of the model's own
+data: for Basic (an 83 KiB embedded table) the about 21 MiB are the decoded tables and working buffers plus allocator,
+JIT-compiled code and runtime effects. The word lexicon (about 43 MiB) was loaded before and is not included.
 
 **Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
 shipped, and you can accept about one wrong answer in six or seven ambiguous words on real text (a confidence threshold
@@ -303,7 +308,8 @@ in the build notes).
 
 Both encoder models derive from `OnnxWordSenseModel`, which implements `IWordSenseModel` and has the
 public properties `HiddenSize` and `ModelId`. `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the
-downloader state, so dispose it with `using`; disposing while a classification is running is safe (see below). The
+downloader state, so dispose it (with `using`) when you no longer need it; disposing while calls are running is safe
+(see below). The
 Basic model has nothing to
 release but follows the same rules. The usual sequence is: call `EnsureModelAsync` once, classify as many texts as
 you like with `ClassifyAsync` (safe for concurrent use) and dispose the model. `EnsureModelAsync` is optional:
@@ -327,10 +333,16 @@ and thread-safe. After `Dispose()`, `EnsureModelAsync` and `ClassifyAsync` throw
 Basic model as well, and even when the token is already cancelled): the Basic model throws every exception from the
 call itself, an encoder model throws it from `EnsureModelAsync` but reports it through the task returned by
 `ClassifyAsync`, so put the `await` inside the `try`. Disposing while `EnsureModelAsync` (or a lazy ensure) is
-downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains.
+downloading cancels the download: the pending task throws `OperationCanceledException` and no partial file remains. The
+hashing of files that are already in place is not interrupted: when no download is needed, the pending ensure completes
+normally (the model is disposed nevertheless, so every later call throws). A `ClassifyAsync` that is still waiting for
+its lazy ensure ends with `OperationCanceledException` (the download was cancelled) or, when the ensure finished first
+and the call had not yet opened the ONNX session, with `ObjectDisposedException`; only a classification that already
+runs on the session completes normally, and a call that never needs the model (no ambiguous word) is not affected.
 Disposal never deletes the downloaded files; they stay in the store and are reused. Disposing while a classification
-is running is safe for every model: the model is marked disposed at once (new calls throw), the running calls complete
-normally, and an encoder model releases its ONNX session when the last of them finishes (`Dispose` never waits). With a
+is running is safe for every model: the model is marked disposed at once (new calls throw), a running classification
+completes normally, and an encoder model releases its ONNX session when the last of them finishes (`Dispose` never
+waits). With a
 model directory, the files are verified against their
 SHA-256 without using the network, either by `EnsureModelAsync` or by the lazy ensure.
 
@@ -339,8 +351,15 @@ is already complete; an encoder model starts on the calling thread (argument che
 downloads on the thread pool, and then opens the ONNX session and runs the inference synchronously on the thread that
 continues the call (it is not offloaded with `Task.Run`; do that yourself if the caller must not block). A
 cancellation token is checked before the work starts, while the ensure is awaited (it cancels the wait of that call
-only; the shared download continues while other callers wait for it) and between the words that are encoded; a single
-ONNX run is never interrupted. An empty element is an unknown word (`null`, 0) and an element that contains a space is
+only) and between the words that are encoded; a single
+ONNX run is never interrupted. Cancelling the token of `EnsureModelAsync` does not cancel the shared ensure: it keeps
+running even when no caller waits any more (only disposing the model cancels it), the next call joins it while it runs
+(its `MirrorOptions` are ignored), returns at once when it has succeeded, and starts a new ensure with its own
+`MirrorOptions` only after a failed one. An already cancelled token does not make `EnsureModelAsync` throw from the
+call: it returns a cancelled task (awaiting it throws `OperationCanceledException`), for the Basic model as well, except
+that a task that has already completed is returned as it is; only a disposed model throws from the call. An empty
+element is an unknown word
+(`null`, 0) and an element that contains a space is
 looked up as one key, which no lexicon entry has, so it is unknown too: pass one token per element.
 
 ## Implementing `IWordSenseModel` Yourself
@@ -351,6 +370,16 @@ return a non-null array parallel to the input (empty for an empty list); throw `
 methods after `Dispose`; make `Dispose` idempotent and thread-safe; allow concurrent `ClassifyAsync` calls; and honor the
 confidence semantics: an unknown word has `Details` null and confidence 0, a word with one sense gets it with confidence
 1, and an ambiguous word gets its best sense with a confidence from 0 to 1 whose scale the implementation documents.
+It must also: return in `Word` the input element as given; take `Details` from `WordLexicon.Words[key]`, where the key is
+the word lower-cased with U+2019 replaced by `'` (the shipped models do this, and an implementation should too, so that
+every model finds the same candidates); honor the cancellation token; make `EnsureModelAsync` idempotent, thread-safe
+and retryable; and throw its exceptions either synchronously or through the returned task (`BasicWordSenseModel` throws
+from the call, except for a cancelled token in `EnsureModelAsync`; `OnnxWordSenseModel` throws `ObjectDisposedException`
+from `EnsureModelAsync` and reports everything else through the task), so callers should `await` inside a `try`. The
+supplied implementations are `BasicWordSenseModel` and `OnnxWordSenseModel` (used through `MiniLMWordSenseModel` and
+`BertBaseCasedWordSenseModel`); `BasicWordSenseModel`, `MiniLMWordSenseModel` and `BertBaseCasedWordSenseModel` are
+sealed, and `OnnxWordSenseModel` cannot be subclassed outside the WordSense packages (its constructor is not
+accessible), so implement the interface yourself instead.
 
 ## Confidence
 
@@ -362,6 +391,10 @@ starting threshold is **0.8 for each of the three models**, read in that model's
 `Details` is still the best candidate, so you can use it when you want an answer anyway. A word with several senses
 but no weights for its lemma is `null` with confidence 0
 (not the case for the shipped packages).
+
+The test for "no sense chosen" is `Details is null`, not `Confidence == 0`. In code under a `DemaConsulting.*`
+namespace the name `WordSense` resolves to the namespace `DemaConsulting.WordSense`, so add
+`using WordSense = DemaConsulting.WordSense.WordSense;` or write the type fully qualified.
 
 ```csharp
 WordSense[] senses = await model.ClassifyAsync(["They", "will", "record", "the", "record", "."]);
@@ -378,10 +411,12 @@ encoder models; compare a confidence only with the same model. **Do not reuse a 
 of 0.8 keeps about 78% of the ambiguous words on real text at about 93% precision for Basic (about one error in
 fourteen), about 73% at about 98% for MiniLM (one in fifty) and about 70% at about 99% for BertBaseCased (one in a
 hundred) (`basic-evaluation.md`, `model-comparison.md`); the confidence of Basic for a word with n senses is never
-below 1/n (0.5 for two senses), so a threshold of 0.5 is not a filter for Basic. MiniLM and BertBaseCased each
+below 1/n (0.5 for two senses), so a threshold at or below 1/n is not a filter for Basic. MiniLM and BertBaseCased each
 have their own margin scale
-too, so tune a threshold per model on your own text. Measured thresholds (coverage = share of the ambiguous target
-words kept, precision = share of those that are right; real text, holdout in parentheses; rounded):
+too, so tune a threshold per model on your own text. The test for "no sense chosen" is `Details is null`, not
+`Confidence == 0`. Measured thresholds (target words = the evaluation words, one annotated ambiguous word per
+evaluation sentence; coverage = share of the target words whose confidence is at or above the threshold, precision =
+share of those that are right; real text, holdout in parentheses; rounded):
 
 | Model | at least 0.6 | at least 0.8 | at least 0.9 |
 | --- | --- | --- | --- |
@@ -480,7 +515,10 @@ Without an argument, the mirror comes from environment variables:
 | `WORDSENSE_MIRROR_PASSWORD` | The password |
 | `WORDSENSE_MIRROR_BEARER_TOKEN` | A bearer token (exclusive with user and password) |
 
-The base URI must be absolute `http` or `https` without query, fragment or user-info. A bearer token or credential is
+The base URI must be absolute `http` or `https` without query, fragment or user-info; a relative URI, another scheme,
+a query, a fragment or user-info (in `MirrorOptions.BaseUri` or in `WORDSENSE_MIRROR_URL`) throws `ArgumentException`
+through the task of `EnsureModelAsync` (the `MirrorOptions` constructor itself does not validate). A bearer token or
+credential is
 sent only to the host of the mirror, never to a redirect target on another host, and is rejected for plain `http`
 unless the host is a loopback address. `ToString()` of a `MirrorOptions` never prints a secret. A mirror is ignored by
 models that need no files and by a model that was given a model directory.
@@ -495,10 +533,20 @@ limit); it
 applies only to a `MirrorOptions` you pass, because the variables have no timeout (5 minutes then).
 
 **Relocating the store.** Downloaded files live in `<StoreRoot>/<model-id>/`; the default store root is
-`{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `MirrorOptions.StoreRoot` changes it. No environment
+`{LocalApplicationData}/DemaConsulting/WordSense/models`. Only `MirrorOptions.StoreRoot` changes it, for example
+`StoreRoot: "/var/lib/wordsense"` on Linux and macOS or `StoreRoot: @"C:\ProgramData\WordSense\models"` on Windows. A
+relative `StoreRoot` is allowed: it is resolved against the current directory of the process when the ensure runs, so
+prefer an absolute path (the directory is created when it does not exist). No environment
 variable does: the four `WORDSENSE_MIRROR_*` variables above are the only ones the library reads. `BaseUri` is a required
 constructor argument, so a `MirrorOptions` always names a mirror; setting only a store root is not possible today
 (without a mirror, the default store is used, or pass a model directory with files you placed yourself).
+
+**Pre-populated store (offline route).** Files that you copy into `<StoreRoot>/<model-id>/` (or into the default store,
+with no `MirrorOptions` at all) are hashed by `EnsureModelAsync`: a file that matches its pinned SHA-256 is kept and
+never requested, so when every file is present and valid nothing is downloaded and neither the mirror nor GitHub is
+contacted; a file that is missing or does not match is downloaded again and replaced. With a `StoreRoot` you must still
+pass a valid `BaseUri` (it is not contacted when the files are valid), and on a machine without network a missing or
+damaged file ends in `HttpRequestException`; a model directory passed to the constructor never uses the network.
 
 **Network notes.** Downloads use `HttpClient` with the default .NET proxy behavior (the system proxy settings, and the
 `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY` variables on Linux and macOS); no proxy credentials are configured by the
@@ -521,12 +569,12 @@ does not match its SHA-256 is downloaded again and replaced; it is never used.
 | `InvalidDataException` | A file of a supplied model directory does not match its SHA-256 |
 | `IOException`, `UnauthorizedAccessException` | The store cannot be created or written |
 | `ObjectDisposedException` | The model has been disposed (`EnsureModelAsync` and `ClassifyAsync`) |
-| `OperationCanceledException` | The token was cancelled (this call's wait only), or the model was disposed mid-call |
+| `OperationCanceledException` | The token was cancelled (this call's wait only), or disposed mid-download |
 
-The Basic model throws only the cancellation exception and, after disposal,
-`ObjectDisposedException`. A failed call can
+The Basic model throws only `ObjectDisposedException` (from the call) and returns a cancelled task for an already
+cancelled token. A failed call can
 be repeated, and concurrent calls share one
-download.
+ensure; cancelling does not stop the shared ensure (see "Threads and cancellation").
 
 # Limitations
 

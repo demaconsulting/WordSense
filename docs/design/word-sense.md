@@ -101,8 +101,9 @@ embedded in the encoder packages.
 - **Offline use**: the lexicon and the Basic model need no network. An encoder model needs the network only to
   download its files once; supplying a model directory avoids all network access.
 - **Thread safety**: the lexicon and the models are safe for concurrent use. `IWordSenseModel` is
-  `IDisposable` and owns the lifetime (the ONNX session and the downloader state); it is disposed once after all
-  classification has finished, and disposal is idempotent and thread-safe. `EnsureModelAsync` and `ClassifyAsync`
+  `IDisposable` and owns the lifetime (the ONNX session and the downloader state); dispose it when it is no longer
+  needed (disposing while calls are running is safe, they complete), and disposal is idempotent and thread-safe.
+  `EnsureModelAsync` and `ClassifyAsync`
   throw `ObjectDisposedException` after the model is disposed.
 - **Security**: downloaded files are accepted only when they match their pinned SHA-256; mirror credentials are
   sent only to the mirror's own origin and are rejected for plain http except on a loopback host; redirects are

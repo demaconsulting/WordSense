@@ -31,19 +31,26 @@ namespace DemaConsulting.WordSense;
 ///     <para>
 ///     A model is thread-safe for concurrent classification. <see cref="IWordSenseModel"/> is
 ///     <see cref="IDisposable"/>: the model owns what it needs (the ONNX session and the downloader state of an encoder
-///     model), so dispose it, for example with <c>using</c>, once every classification has finished. The Basic model
-///     holds nothing to release, but honors the same rules. After the model is disposed,
-///     <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw <see cref="ObjectDisposedException"/>
-///     (whatever the words and even when the token is already cancelled); whether that exception is thrown from the
-///     call or reported through the returned task depends on the model (Basic throws every exception from the call;
-///     an encoder model throws it from <c>EnsureModelAsync</c> and reports it through the task of
-///     <c>ClassifyAsync</c>), so use <c>await</c> inside a <c>try</c> and both are caught.
-///     Disposing is idempotent and thread-safe. Disposing while an ensure is downloading cancels the download, and the
-///     pending task then throws <see cref="OperationCanceledException"/>; downloaded files are never deleted by
-///     disposal and are reused by the next instance. Disposing while a classification is running is safe, for every
-///     model: the model is marked disposed at once (new calls throw <see cref="ObjectDisposedException"/>), a
-///     classification that is already running completes normally, and the resources (the ONNX session of an encoder
-///     model) are released when the last running classification finishes; <c>Dispose</c> itself never waits for them.
+///     model). Recommendation: dispose it (for example with <c>using</c>) when you no longer need the model. Guarantee:
+///     disposing while calls are running is safe; a classification that is already running completes normally, so
+///     you do not have to wait for the calls to finish first. The Basic model holds nothing to release, but honors the
+///     same rules. After the model is disposed, <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw
+///     <see cref="ObjectDisposedException"/> (whatever the words and even when the token is already cancelled);
+///     whether that exception is thrown from the call or reported through the returned task depends on the model
+///     (Basic throws every exception from the call; an encoder model throws it from <c>EnsureModelAsync</c> and reports
+///     it through the task of <c>ClassifyAsync</c>), so use <c>await</c> inside a <c>try</c> and both are caught.
+///     Disposing is idempotent and thread-safe, and <c>Dispose</c> itself never waits for running calls. The model is
+///     marked disposed at once (new calls throw), a classification that is already running completes normally, and
+///     the resources (the ONNX session of an encoder model) are released when the last running classification
+///     finishes. Disposing during an ensure (encoder models): a download in progress is cancelled and the pending task
+///     throws <see cref="OperationCanceledException"/>, but the hashing of files that are already in place is not
+///     interrupted: when every file is present and valid, the pending ensure completes normally (the model is
+///     disposed nevertheless, so every later call throws). A classification that is still waiting for its lazy ensure
+///     when the model is disposed throws <see cref="OperationCanceledException"/> (the download was cancelled) or, when
+///     the ensure finished first, <see cref="ObjectDisposedException"/> (it had not yet opened the ONNX session); only
+///     a classification that already runs on the session completes normally, and one that never needs the model
+///     (lexicon only) is not affected at all. Downloaded files are never deleted by disposal and are reused by the next
+///     instance.
 ///     </para>
 ///     <para>
 ///     Implementing the interface. Third parties may implement <see cref="IWordSenseModel"/> themselves (for example
@@ -58,6 +65,26 @@ namespace DemaConsulting.WordSense;
 ///     word with a single sense gets that sense with confidence 1; an ambiguous word gets its best sense together with
 ///     a confidence from 0 to 1 whose scale the implementation documents (callers must not reuse a threshold across
 ///     implementations). An implementation that needs no files completes <see cref="EnsureModelAsync"/> at once.
+///     Result content: each element of the result has <see cref="WordSense.Word"/> equal to the input element at the
+///     same index (as given, not lower-cased); <see cref="WordSense.Details"/> comes from
+///     <c>WordLexicon.Words[key]</c> where the key is the word lower-cased (<c>ToLowerInvariant()</c>) with the curly
+///     apostrophe U+2019 replaced by <c>'</c>; the shipped models do exactly that, and an implementation should too, so
+///     that the same text finds the same candidates with every model (the candidate senses of a word are the entries of
+///     the lexicon; an implementation must not invent others). Cancellation: honor the token (check it before the work
+///     starts and between steps). <see cref="EnsureModelAsync"/>: idempotent (calling it again after it succeeded is
+///     cheap and harmless), thread-safe (concurrent calls share one ensure) and retryable (a failed call can be
+///     repeated). Exceptions: an implementation may throw synchronously from the call or report through the returned
+///     task; the shipped models differ (<c>BasicWordSenseModel</c> throws every exception of both methods from the
+///     call, except that <c>EnsureModelAsync</c> returns a cancelled task for an already cancelled token;
+///     <c>OnnxWordSenseModel</c> throws <see cref="ObjectDisposedException"/> from <c>EnsureModelAsync</c> and reports
+///     every other exception of it, and every exception of <c>ClassifyAsync</c>, through the returned task), so callers
+///     should <c>await</c> inside a <c>try</c>. The supplied implementations are <c>BasicWordSenseModel</c> (package
+///     <c>DemaConsulting.WordSense.Basic</c>) and <c>OnnxWordSenseModel</c> (package
+///     <c>DemaConsulting.WordSense.Onnx</c>), which is used through <c>MiniLMWordSenseModel</c> and
+///     <c>BertBaseCasedWordSenseModel</c>. <c>BasicWordSenseModel</c>, <c>MiniLMWordSenseModel</c> and
+///     <c>BertBaseCasedWordSenseModel</c> are sealed; <c>OnnxWordSenseModel</c> is abstract but cannot be subclassed
+///     outside the WordSense packages (its constructor is not accessible), so to add an engine implement this interface
+///     yourself.
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
@@ -93,14 +120,20 @@ public interface IWordSenseModel : IDisposable
     ///     that needs no files, and by an encoder model that was given a model directory.
     /// </param>
     /// <param name="cancellationToken">
-    ///     A token that cancels the wait of this call. The work that is shared with other callers (a download in
-    ///     progress) continues while other callers still wait for it; only disposing the model stops it.
+    ///     A token that cancels the wait of this call: the returned task is cancelled (awaiting it throws
+    ///     <see cref="OperationCanceledException"/>); the exception is not thrown from the call itself, also not for a
+    ///     token that is already cancelled. The work that is shared with other callers (a download in progress) is not
+    ///     cancelled by a token: it continues, also when no caller is waiting any more; only disposing the model stops it.
     /// </param>
     /// <returns>A task that completes when the model files are ready.</returns>
     /// <remarks>
     ///     <para>
-    ///     Files that are already present and valid are never downloaded again. Concurrent calls share one download; a
-    ///     <see cref="MirrorOptions"/> passed while another call is already downloading is ignored. A failed call can be retried. The Basic model needs no files and completes at once.
+    ///     Files that are already present and valid are never downloaded again. Concurrent calls share one ensure; a
+    ///     <see cref="MirrorOptions"/> passed while another call's ensure is still running is ignored. The rule for
+    ///     cancellation, the same for every caller: when the only waiting caller cancels, the shared ensure keeps
+    ///     running (it is not cancelled), and the next call joins it if it is still running (its
+    ///     <see cref="MirrorOptions"/> are ignored then), returns at once if it has succeeded in the meantime, and
+    ///     starts a new ensure with its own <see cref="MirrorOptions"/> only if the earlier one failed. A failed call can be retried. The Basic model needs no files and completes at once.
     ///     </para>
     ///     <para>
     ///     When an encoder model was constructed with a model directory, this call is optional but is the way to verify
@@ -113,12 +146,15 @@ public interface IWordSenseModel : IDisposable
     ///     Failures: a missing or wrong file in a supplied directory throws <see cref="FileNotFoundException"/> or
     ///     <see cref="InvalidDataException"/>; a file that no source could deliver verified throws
     ///     <see cref="HttpRequestException"/>; an invalid mirror configuration throws <see cref="ArgumentException"/>
-    ///     (an invalid timeout throws its subclass <see cref="ArgumentOutOfRangeException"/>); an unwritable store
+    ///     (an invalid timeout, that is a <see cref="MirrorOptions.Timeout"/> that is zero, negative or longer than about
+    ///     49 days, throws its subclass <see cref="ArgumentOutOfRangeException"/>; infinite is allowed); an unwritable store
     ///     reports the file system exception of the platform (for example <see cref="IOException"/> or
     ///     <see cref="UnauthorizedAccessException"/>); a disposed model throws <see cref="ObjectDisposedException"/>;
-    ///     a cancelled token throws <see cref="OperationCanceledException"/>, and so does a call that is still running
-    ///     when the model is disposed. The Basic model throws only the cancellation exception and, after disposal,
-    ///     <see cref="ObjectDisposedException"/>.
+    ///     a cancelled token cancels the returned task (<see cref="OperationCanceledException"/> when awaited), and so
+    ///     does a download that is still running when the model is disposed. The Basic model throws only
+    ///     <see cref="ObjectDisposedException"/> (from the call) and returns a cancelled task for an already cancelled
+    ///     token; an encoder model throws <see cref="ObjectDisposedException"/> from the call and reports everything
+    ///     else through the returned task, so the exceptions are caught by an <c>await</c> in a <c>try</c>.
     ///     </para>
     /// </remarks>
     /// <exception cref="ArgumentException">Thrown when the mirror configuration is invalid.</exception>
@@ -126,7 +162,7 @@ public interface IWordSenseModel : IDisposable
     /// <exception cref="FileNotFoundException">Thrown when a supplied model directory does not exist or lacks a model file (encoder model with a model directory).</exception>
     /// <exception cref="InvalidDataException">Thrown when a file of a supplied model directory does not match its pinned SHA-256 (encoder model with a model directory).</exception>
     /// <exception cref="ObjectDisposedException">Thrown when the model was already disposed when the call started.</exception>
-    /// <exception cref="OperationCanceledException">Thrown when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed while the call is downloading.</exception>
+    /// <exception cref="OperationCanceledException">Reported through the returned task (not thrown from the call) when <paramref name="cancellationToken"/> is cancelled, or when the model is disposed while the call is downloading.</exception>
     Task EnsureModelAsync(MirrorOptions? mirror = null, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -211,7 +247,18 @@ public interface IWordSenseModel : IDisposable
 /// <remarks>
 ///     <para>
 ///     The type <c>WordSense</c> (this record struct) shares its name with the namespace <c>DemaConsulting.WordSense</c>
-///     that contains it; in code, write <c>WordSense[]</c> for the result type.
+///     that contains it; in code, write <c>WordSense[]</c> for the result type. In code that itself lives in a
+///     namespace under <c>DemaConsulting.*</c> (for example <c>namespace DemaConsulting.MyApp</c>), the simple name
+///     <c>WordSense</c> resolves to the namespace, not to the type, and the compiler reports an error (a namespace is
+///     used like a type): add an alias inside your namespace declaration,
+///     <c>using WordSense = DemaConsulting.WordSense.WordSense;</c>, or write the full name
+///     <c>DemaConsulting.WordSense.WordSense</c> (see the second example below). Code outside such a namespace, with
+///     <c>using DemaConsulting.WordSense;</c>, needs neither.
+///     </para>
+///     <para>
+///     The test for "no sense chosen" is <c>Details is null</c>, not <c>Confidence == 0</c>: confidence 0 and a null
+///     <see cref="Details"/> go together for every model of this repository, but a non-null <see cref="Details"/> is the
+///     contract, whereas the confidence is only a score.
 ///     </para>
 ///     <para>
 ///     <see cref="Details"/> is null in exactly two cases. First, the word is unknown: it has no entry in the lexicon
@@ -228,8 +275,8 @@ public interface IWordSenseModel : IDisposable
 ///     Confidence is a number from 0 to 1: 0 means unknown or unscored, 1 means the word has only one sense in the
 ///     lexicon, and a word resolved from its context gets a value in between that the model package defines. The
 ///     scales differ per model and a threshold must not be reused across models. The Basic model gives a word with
-///     several senses the probability of the chosen sense (never below one over the number of senses, so 0.5 for a
-///     word with two senses: a threshold of 0.5 keeps every answer of a two-sense word), so it is never
+///     several senses the probability of the chosen sense (never below 1/n for a word with n senses, so 0.5 for a
+///     word with two senses: a threshold at or below 1/n keeps every answer of an n-sense word), so it is never
 ///     undecided; its recommended starting threshold is 0.8 (see the <c>DemaConsulting.WordSense.Basic</c> namespace
 ///     documentation). The encoder models (MiniLM, BertBaseCased) map
 ///     the margin between the best and the runner-up sense monotonically onto 0 to 1, relative to the abstain margin
@@ -253,6 +300,23 @@ public interface IWordSenseModel : IDisposable
 ///     // Basic, MiniLM and BertBaseCased, but it is read in that model's own scale; re-tune it per model
 ///     const double threshold = 0.8;
 ///     bool confident = sense.Details is not null &amp;&amp; sense.Confidence >= threshold;
+///     </code>
+///     Code in a namespace under <c>DemaConsulting.*</c>: alias the type, because the simple name <c>WordSense</c>
+///     means the namespace there.
+///     <code>
+///     namespace DemaConsulting.MyApp
+///     {
+///         using WordSense = DemaConsulting.WordSense.WordSense;
+///
+///         internal static class Disambiguator
+///         {
+///             internal static async Task&lt;WordSense[]&gt; ClassifyAsync(IWordSenseModel model, string[] words)
+///             {
+///                 WordSense[] senses = await model.ClassifyAsync(words);
+///                 return senses;
+///             }
+///         }
+///     }
 ///     </code>
 /// </example>
 /// <param name="Word">The word as given by the caller.</param>
@@ -291,7 +355,11 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     <see cref="BearerToken"/> and <see cref="Credentials"/> are mutually exclusive and are sent only to requests
 ///     whose scheme, host and port equal those of <see cref="BaseUri"/>. Because they are sent without a challenge,
 ///     they are rejected for a plain <c>http</c> mirror unless the host is a loopback address. The base URI must be
-///     absolute, use <c>http</c> or <c>https</c>, and carry no query, fragment or user-info.
+///     absolute, use <c>http</c> or <c>https</c>, and carry no query, fragment or user-info; a relative URI, another
+///     scheme, a query, a fragment or user-info is an error, reported by <c>EnsureModelAsync</c> (not by the
+///     constructor of this record) as an <see cref="ArgumentException"/>, also when all files are already present. A
+///     value of <c>WORDSENSE_MIRROR_URL</c> that is not an absolute <c>http</c> or <c>https</c> URL, or that has a query,
+///     a fragment or user-info, is an <see cref="ArgumentException"/> as well.
 ///     </para>
 ///     <para>
 ///     Precedence: a <see cref="MirrorOptions"/> passed to <see cref="IWordSenseModel.EnsureModelAsync"/> always wins;
@@ -309,7 +377,7 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     plain <c>http</c> host) are reported by <see cref="IWordSenseModel.EnsureModelAsync"/> (or by the lazy ensure
 ///     of <see cref="IWordSenseModel.ClassifyAsync"/>) as an
 ///     <see cref="ArgumentException"/>. A <see cref="Timeout"/> that is zero, negative or longer than about 49 days
-///     is reported as its subclass <see cref="ArgumentOutOfRangeException"/> (<see cref="System.Threading.Timeout.InfiniteTimeSpan"/> means no limit); the
+///     throws <see cref="ArgumentOutOfRangeException"/> (a subclass of <see cref="ArgumentException"/>; <see cref="System.Threading.Timeout.InfiniteTimeSpan"/> means no limit); the
 ///     timeout applies only to a <see cref="MirrorOptions"/> that you pass, because the environment variables have
 ///     no timeout (the default of 5 minutes applies then).
 ///     </para>
@@ -329,13 +397,36 @@ public readonly record struct WordSense(string Word, WordDetails? Details, doubl
 ///     that directory is flat (the model files directly in it, no <c>{model-id}</c> subfolder), and a mirror is never
 ///     used with it.
 ///     </para>
+///     <para>
+///     Store root rules: <see cref="StoreRoot"/> may be relative; it is resolved with <c>Path.GetFullPath</c> against the
+///     current directory of the process at the time the ensure runs, so prefer an absolute path (the directory is
+///     created when it does not exist). Offline route through the store: files that you copy into
+///     <c>{StoreRoot}/{model-id}/</c> (or into the default store, then no <see cref="MirrorOptions"/> is needed) are
+///     hashed by <c>EnsureModelAsync</c>; a file that matches its pinned SHA-256 is kept and never requested, so when
+///     every file is present and valid nothing is downloaded and the mirror (and the public source) is not contacted,
+///     and a file that is missing or does not match is downloaded again (and replaced). Because a
+///     <see cref="MirrorOptions"/> needs a <see cref="BaseUri"/>, use any valid URI there when you only want a
+///     custom <see cref="StoreRoot"/> offline; on a machine without network access a missing or damaged file then
+///     ends in <see cref="System.Net.Http.HttpRequestException"/>, whereas a model directory passed to the constructor never
+///     touches the network at all.
+///     </para>
+///     <para>
+///     Network notes: downloads use <c>HttpClient</c> with the default proxy behavior of .NET (the system proxy
+///     settings, and the <c>HTTP_PROXY</c>, <c>HTTPS_PROXY</c> and <c>NO_PROXY</c> variables on Linux and macOS), with
+///     no proxy credentials of its own. Allow-list the host of your mirror, if any, and for the public source
+///     <c>media.githubusercontent.com</c> (files at
+///     https://media.githubusercontent.com/media/demaconsulting/WordSense/main/model/{model-id}/{file}); the
+///     library follows HTTP redirects itself (http or https only, up to a fixed limit), so a host that the public
+///     source redirects to must be reachable too, and mirror credentials are sent only to the mirror's own origin.
+///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     // Relocate the store (a mirror is mandatory: BaseUri has no default)
+///     // Relocate the store (a mirror is mandatory: BaseUri has no default). StoreRoot is the folder that holds the
+///     // model folders; on Linux and macOS: "/var/lib/wordsense", on Windows: @"C:\ProgramData\WordSense\models"
 ///     var mirror = new MirrorOptions(new Uri("https://models.example.com/wordsense"), BearerToken: "token")
 ///     {
-///         StoreRoot = "/var/lib/wordsense",
+///         StoreRoot = OperatingSystem.IsWindows() ? @"C:\ProgramData\WordSense\models" : "/var/lib/wordsense",
 ///         Timeout = TimeSpan.FromMinutes(2),
 ///     };
 ///
