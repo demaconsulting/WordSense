@@ -322,11 +322,11 @@ reviews:
       - "docs/reqstream/ots/apimark.yaml"                                  # OTS requirements
       - "docs/design/ots/apimark.md"                                       # OTS integration design
       - "docs/verification/ots/apimark.md"                                 # OTS verification
-      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # namespace description for the API reference
-      - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"              # namespace description for the MiniLM API reference
+      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # core API reference text
+      - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"              # MiniLM API reference text
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleVerifier.cs"     # compiles documented examples
       - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"        # example compile test
-      - "test/DemaConsulting.WordSense.MiniLM.Tests/XmlDocExampleTests.cs" # MiniLM example compile test
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/XmlDocExampleTests.cs"  # MiniLM example test
 
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark

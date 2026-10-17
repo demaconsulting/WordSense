@@ -135,10 +135,9 @@ public sealed class WordSenseModelDownloaderOptions
     ///     The default is <c>{LocalApplicationData}/DemaConsulting/WordSense/models</c>, for example
     ///     <c>%LOCALAPPDATA%\DemaConsulting\WordSense\models</c> on Windows and
     ///     <c>~/.local/share/DemaConsulting/WordSense/models</c> on Linux (the application base directory is used when
-    ///     the platform has no local application data folder). The model is stored in the folder
-    ///     <c>all-MiniLM-L6-v2-int8-afdb6f1a</c> (the first eight hex digits of the ONNX file's SHA-256) beneath that root, holding <c>model_int8.onnx</c> (about 23 MB) and
-    ///     <c>vocab.txt</c>. The folder name is derived from the model digest, so a different model version never
-    ///     reuses it.
+    ///     the platform has no local application data folder). The model is stored in the folder named by its model
+    ///     ID, <c>all-MiniLM-L6-v2-int8</c>, beneath that root, holding <c>model_int8.onnx</c> (about 23 MB) and
+    ///     <c>vocab.txt</c>. Files are verified against the SHA-256 digests of the model catalog before they are used.
     /// </remarks>
     public string? StoreRoot { get; init; }
 

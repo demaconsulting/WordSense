@@ -17,7 +17,9 @@ sections:
           - MiniLMWordSenseModel_EncodeAsync_NoTargetsOrNoTokens_ReturnsEmptyOrNull
 
       - id: WordSense-Encoder-Identity
-        title: The model shall report its identifier, the SHA-256 digest of its model file and the hidden size of its output.
+        title: >-
+          The model shall report its identifier, the SHA-256 digest of its model file and the hidden size of its
+          output.
         tags: [unit]
         justification: |
           The classifier compares the identity with the weights table, so a table is never used with a model it was
