@@ -9,7 +9,8 @@ trained for it embedded in the assembly.
 The subsystem is a thin layer on the Onnx package, so verification concentrates on what the layer adds: the pinned model
 identity with four files, the cased tokenizer setting and the embedded weights. Tests in
 `test/DemaConsulting.WordSense.BertBaseCased.Tests` run the real int8 model (Git LFS) from `model/bert-base-cased-int8/`
-against the embedded lexicon and weights through the public API (`BertBaseCasedWordSenseModelTests`) and compile the XML
+against the embedded lexicon and weights through the public API (`BertBaseCasedWordSenseModelTests` and the end-to-end
+`EndToEndTests`) and compile the XML
 documentation examples (`XmlDocExampleTests`). Download behavior and tokenizer parity are verified once for all models in
 the Onnx subsystem.
 

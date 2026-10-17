@@ -22,6 +22,7 @@ sections:
               - WordSense-BertBaseCased-BertBaseCasedWordSenseModel-Options
             tests:
               - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
+              - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord
 
           - id: WordSense-BertBaseCased-Packaging
             title: >-

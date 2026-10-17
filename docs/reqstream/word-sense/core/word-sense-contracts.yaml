@@ -58,6 +58,8 @@ sections:
                   share between models.
                 tests:
                   - WordSenseContracts_MirrorOptions_ToString_RedactsSecrets
+                  - WordSenseContracts_MirrorOptions_ToString_HidesUserInfoQueryAndFragment
+                  - WordSenseContracts_MirrorOptions_ToString_NeverPrintsTokenOrCredentials
                   - WordSenseContracts_MirrorOptions_IsSealedRecord
                   - WordSenseContracts_MirrorOptions_Defaults_AreNull
 

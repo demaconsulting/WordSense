@@ -436,6 +436,7 @@ reviews:
       - "docs/verification/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
       - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
       - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
 
   # OTS-ApiMark Review (one per OTS item)
   - id: OTS-ApiMark

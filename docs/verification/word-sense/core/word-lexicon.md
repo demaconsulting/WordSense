@@ -32,3 +32,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Valid blob round trip**: a small blob read by the `WordsBlob` reader gives the expected keys, senses and order.
 - **Corrupt blob is rejected**: an unknown format marker, truncated data, an invalid sense reference and trailing data
   each throw `InvalidDataException`.
+- **Broken payloads are rejected**: a table of broken payloads (truncated magic, over-long or over-large varints,
+  counts larger than the data, a string running past the end, an unknown part of speech, out-of-range meaning, key and
+  sense references, an entry without senses, a duplicate key, trailing bytes) each throw `InvalidDataException` before
+  a large allocation is made; the smallest valid blob is accepted.

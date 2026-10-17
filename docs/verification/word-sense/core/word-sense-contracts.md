@@ -25,6 +25,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **MirrorOptions defaults**: only the base URI is required; bearer token, credentials, store root and timeout default to
   null.
 - **MirrorOptions hides secrets**: `ToString` shows neither the bearer token nor a credential; each is shown as `***` and
-  an absent one as `null`.
+  an absent one as `null`; the user-info, query and fragment of the base address are never printed, and a token or
+  credential never appears however the options are formatted.
 - **Interfaces are implementable**: a test double implements `IWordSenseModel` (`EnsureModelAsync`, `Create`) and
   `IWordSenseClassifier` (`ClassifyAsync` over a word list) and is used through the interfaces only.

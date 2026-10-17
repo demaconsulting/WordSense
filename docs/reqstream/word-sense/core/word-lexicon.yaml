@@ -53,3 +53,5 @@ sections:
                   - WordsBlob_Read_UnknownMagic_Throws
                   - WordsBlob_Read_InvalidSense_Throws
                   - WordsBlob_Read_ValidBlob_SharesEqualSenses
+                  - WordsBlob_Read_BrokenPayload_Throws
+                  - WordsBlob_Read_MinimalValidBlob_IsAccepted

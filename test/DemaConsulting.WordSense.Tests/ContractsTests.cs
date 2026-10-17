@@ -82,6 +82,48 @@ public class ContractsTests
     }
 
     /// <summary>
+    ///     Converting mirror options to text hides user-info, query and fragment of the base address.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_MirrorOptions_ToString_HidesUserInfoQueryAndFragment()
+    {
+        var options = new MirrorOptions(new Uri("https://alice:hunter2@models.example.com:8443/wordsense?sig=abc123#frag-secret"));
+
+        var text = options.ToString();
+
+        Assert.Contains("https://models.example.com:8443/wordsense", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("alice", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("hunter2", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("abc123", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("frag-secret", text, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A bearer token and a credential are never printed by ToString, string interpolation or the record printer,
+    ///     even with every other member set.
+    /// </summary>
+    [Fact]
+    public void WordSenseContracts_MirrorOptions_ToString_NeverPrintsTokenOrCredentials()
+    {
+        var token = new MirrorOptions(new Uri("https://m.example/"), "tok-9f8e7d", null, "C:\\store", TimeSpan.FromSeconds(30));
+        var basic = new MirrorOptions(
+            new Uri("https://m.example/"),
+            Credentials: new System.Net.NetworkCredential("svc-user", "pw-1a2b3c"),
+            StoreRoot: "C:\\store");
+
+        var tokenText = $"{token}";
+        var basicText = $"{basic}";
+
+        Assert.DoesNotContain("tok-9f8e7d", tokenText, StringComparison.Ordinal);
+        Assert.Contains("BearerToken = ***", tokenText, StringComparison.Ordinal);
+        Assert.Contains("Credentials = null", tokenText, StringComparison.Ordinal);
+        Assert.DoesNotContain("svc-user", basicText, StringComparison.Ordinal);
+        Assert.DoesNotContain("pw-1a2b3c", basicText, StringComparison.Ordinal);
+        Assert.Contains("Credentials = ***", basicText, StringComparison.Ordinal);
+        Assert.Contains("BearerToken = null", basicText, StringComparison.Ordinal);
+    }
+
+    /// <summary>
     ///     A word details value exposes the members it was built with.
     /// </summary>
     [Fact]
