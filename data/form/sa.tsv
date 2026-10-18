@@ -1230,7 +1230,8 @@ sailfish	0	oewn-sailfish-n	Number=Sing	dema	0			oewn_form
 sailfishes	0	oewn-sailfish-n	Number=Plur	dema	0			oewn_form
 sailing	0	oewn-sail-v	VerbForm=Ger	dema	1			carried
 sailing	1	oewn-sail-n	Number=Sing+VerbForm=Ger	dema	1			carried
-sailing	2	oewn-sailing-n	Number=Plur	dema	0			agid
+sailing	2	oewn-sailing-n	Number=Sing	dema	0			oewn_form
+sailing	3	oewn-sailing-n	Number=Plur	dema	0			agid
 sailing boat	0	oewn-sailing_boat-n	Number=Sing	dema	0			oewn_form
 sailing boats	0	oewn-sailing_boat-n	Number=Plur	dema	0			rule
 sailing master	0	oewn-sailing_master-n	Number=Sing	dema	0			oewn_form

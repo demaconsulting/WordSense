@@ -6206,6 +6206,7 @@ pressies	0		Number=Plur	dema	0	pressie	n	rule
 pressing	0	oewn-press-v	VerbForm=Ger	dema	1			carried
 pressing	1	oewn-pressing-a	Degree=Pos	dema	0			carried
 pressing	2	oewn-press-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pressing	3	oewn-pressing-n	Number=Sing	dema	0			oewn_form
 pressing down	0	oewn-press_down-v	VerbForm=Ger	dema	0			rule
 pressing down on	0	oewn-press_down_on-v	VerbForm=Ger	dema	0			rule
 pressing home	0	oewn-press_home-v	VerbForm=Ger	dema	0			rule
@@ -7640,6 +7641,7 @@ printers	0	oewn-printer-n	Number=Plur	dema	0			rule
 printery	0		Number=Sing	dema	0	printery	n	moby_reverse
 printing	0	oewn-print-v	VerbForm=Ger	dema	1			carried
 printing	1	oewn-print-n	Number=Sing+VerbForm=Ger	dema	1			carried
+printing	2	oewn-printing-n	Number=Sing	dema	0			oewn_form
 printing business	0	oewn-printing_business-n	Number=Sing	dema	0			oewn_form
 printing businesses	0	oewn-printing_business-n	Number=Plur	dema	0			rule
 printing companies	0	oewn-printing_company-n	Number=Plur	dema	0			rule

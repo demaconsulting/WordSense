@@ -306,6 +306,8 @@ smelliness	0		Number=Sing	dema	0	smelliness	n	moby_reverse
 smellinesses	0		Number=Plur	dema	0	smelliness	n	rule
 smelling	0	oewn-smell-v	VerbForm=Ger	dema	1			carried
 smelling	1	oewn-smell-n	Number=Sing+VerbForm=Ger	dema	1			carried
+smelling	2	oewn-smelling-a	Degree=Pos	dema	0			oewn_form
+smelling	3	oewn-smelling-n	Number=Sing	dema	0			oewn_form
 smelling bottle	0	oewn-smelling_bottle-n	Number=Sing	dema	0			oewn_form
 smelling bottles	0	oewn-smelling_bottle-n	Number=Plur	dema	0			rule
 smelling out	0	oewn-smell_out-v	VerbForm=Ger	dema	0			rule
@@ -481,6 +483,8 @@ smokier	0	oewn-smoky-a	Degree=Cmp	dema	0			oewn_form
 smokiest	0	oewn-smoky-a	Degree=Sup	dema	0			oewn_form
 smoking	0	oewn-smoke-v	VerbForm=Ger	dema	1			carried
 smoking	1	oewn-smoke-n	Number=Sing+VerbForm=Ger	dema	1			carried
+smoking	2	oewn-smoking-a	Degree=Pos	dema	0			oewn_form
+smoking	3	oewn-smoking-n	Number=Sing	dema	0			oewn_form
 smoking car	0	oewn-smoking_car-n	Number=Sing	dema	0			oewn_form
 smoking carriage	0	oewn-smoking_carriage-n	Number=Sing	dema	0			oewn_form
 smoking carriages	0	oewn-smoking_carriage-n	Number=Plur	dema	0			rule

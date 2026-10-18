@@ -1449,6 +1449,7 @@ changes surface	0	oewn-change_surface-v	Person=3+Tense=Pres	dema	0			rule
 changes taste	0	oewn-change_taste-v	Person=3+Tense=Pres	dema	0			rule
 changing	0	oewn-change-v	VerbForm=Ger	dema	1			carried
 changing	1	oewn-change-n	Number=Sing+VerbForm=Ger	dema	1			carried
+changing	2	oewn-changing-a	Degree=Pos	dema	0			oewn_form
 changing by reversal	0	oewn-change_by_reversal-v	VerbForm=Ger	dema	0			rule
 changing course	0	oewn-change_course-v	VerbForm=Ger	dema	0			rule
 changing form	0	oewn-change_form-v	VerbForm=Ger	dema	0			rule

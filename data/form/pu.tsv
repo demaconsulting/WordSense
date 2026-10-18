@@ -609,6 +609,7 @@ pulleys	0	oewn-pulley-n	Number=Plur	dema	0			rule
 pulli	0		Number=Sing	dema	0	pulli	n	moby_reverse
 pulling	0	oewn-pull-v	VerbForm=Ger	dema	1			carried
 pulling	1	oewn-pull-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pulling	2	oewn-pulling-n	Number=Sing	dema	0			oewn_form
 pulling a face	0	oewn-pull_a_face-v	VerbForm=Ger	dema	0			rule
 pulling a fast one on	0	oewn-pull_a_fast_one_on-v	VerbForm=Ger	dema	0			rule
 pulling ahead	0	oewn-pull_ahead-v	VerbForm=Ger	dema	0			rule
@@ -1664,6 +1665,7 @@ pushing	0	oewn-push-v	VerbForm=Ger	dema	1			carried
 pushing	1	dema-pushing-a	Degree=Pos	dema	0			carried
 pushing	2	dema-pushing-r	Degree=Pos	dema	0			carried
 pushing	3	oewn-push-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pushing	4	oewn-pushing-n	Number=Sing	dema	0			oewn_form
 pushing around	0	oewn-push_around-v	VerbForm=Ger	dema	0			rule
 pushing aside	0	oewn-push_aside-v	VerbForm=Ger	dema	0			rule
 pushing away	0	oewn-push_away-v	VerbForm=Ger	dema	0			rule

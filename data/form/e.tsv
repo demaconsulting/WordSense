@@ -1903,6 +1903,7 @@ easiness	0	oewn-easiness-n	Number=Sing	dema	0			oewn_form
 easinesses	0	oewn-easiness-n	Number=Plur	dema	0			rule
 easing	0	oewn-ease-v	VerbForm=Ger	dema	1			carried
 easing	1	oewn-ease-n	Number=Sing+VerbForm=Ger	dema	1			carried
+easing	2	oewn-easing-n	Number=Sing	dema	0			oewn_form
 easing off	0	oewn-ease_off-v	VerbForm=Ger	dema	0			rule
 easing up	0	oewn-ease_up-v	VerbForm=Ger	dema	0			rule
 easings	0	oewn-easing-n	Number=Plur	dema	0			rule
@@ -5088,6 +5089,7 @@ embraces	0	oewn-embrace-n	Number=Plur	dema	1			carried
 embraces	1	oewn-embrace-v	Person=3+Tense=Pres	dema	1			carried
 embracing	0	oewn-embrace-v	VerbForm=Ger	dema	1			carried
 embracing	1	oewn-embrace-n	Number=Sing+VerbForm=Ger	dema	1			carried
+embracing	2	oewn-embracing-n	Number=Sing	dema	0			oewn_form
 embracings	0	oewn-embracing-n	Number=Plur	dema	0			rule
 embracive	0		Degree=Pos	dema	0	embracive	a	moby_reverse
 embranchment	0		Number=Sing	dema	0	embranchment	n	moby_reverse
@@ -6302,6 +6304,7 @@ endia	0		Number=Sing	dema	0	endia	n	moby_reverse
 endias	0		Number=Plur	dema	0	endia	n	rule
 ending	0	oewn-end-v	VerbForm=Ger	dema	1			carried
 ending	1	oewn-end-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ending	2	oewn-ending-n	Number=Sing	dema	0			oewn_form
 ending up	0	oewn-end_up-v	VerbForm=Ger	dema	0			rule
 endings	0	oewn-ending-n	Number=Plur	dema	0			rule
 endive	0	oewn-endive-n	Number=Sing	dema	0			oewn_form
@@ -12717,6 +12720,7 @@ exported	0	oewn-export-v	Tense=Past	dema	1			carried
 exporter	0	oewn-exporter-n	Number=Sing	dema	0			oewn_form
 exporters	0	oewn-exporter-n	Number=Plur	dema	0			rule
 exporting	0	oewn-export-v	VerbForm=Ger	dema	1			carried
+exporting	1	oewn-exporting-n	Number=Sing	dema	0			oewn_form
 exportings	0	oewn-exporting-n	Number=Plur	dema	0			rule
 exports	0	oewn-export-n	Number=Plur	dema	1			carried
 exports	1	oewn-export-v	Person=3+Tense=Pres	dema	1			carried

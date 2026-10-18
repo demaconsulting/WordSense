@@ -1367,6 +1367,7 @@ racketts	0		Number=Plur	dema	0	rackett	n	rule
 rackety	0	oewn-rackety-a	Degree=Pos	dema	0			oewn_form
 racking	0	oewn-rack-v	VerbForm=Ger	dema	1			carried
 racking	1	oewn-rack-n	Number=Sing+VerbForm=Ger	dema	1			carried
+racking	2	oewn-racking-a	Degree=Pos	dema	0			oewn_form
 racking up	0	oewn-rack_up-v	VerbForm=Ger	dema	0			rule
 rackle	0		Degree=Pos	dema	0	rackle	a	moby_reverse
 racks	0	oewn-rack-n	Number=Plur	dema	1			carried
@@ -2214,6 +2215,7 @@ raininess	0	oewn-raininess-n	Number=Sing	dema	0			oewn_form
 raininesses	0	oewn-raininess-n	Number=Plur	dema	0			rule
 raining	0	oewn-rain-v	VerbForm=Ger	dema	1			carried
 raining	1	oewn-rain-n	Number=Sing+VerbForm=Ger	dema	1			carried
+raining	2	oewn-raining-a	Degree=Pos	dema	0			oewn_form
 raining buckets	0	oewn-rain_buckets-v	VerbForm=Ger	dema	0			rule
 raining cats and dogs	0	oewn-rain_cats_and_dogs-v	VerbForm=Ger	dema	0			rule
 raining down	0	oewn-rain_down-v	VerbForm=Ger	dema	0			rule
@@ -2638,6 +2640,7 @@ ranginess	0	oewn-ranginess-n	Number=Sing	dema	0			oewn_form
 ranginesses	0	oewn-ranginess-n	Number=Plur	dema	0			rule
 ranging	0	oewn-range-v	VerbForm=Ger	dema	1			carried
 ranging	1	oewn-range-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ranging	2	oewn-ranging-a	Degree=Pos	dema	0			oewn_form
 ranging in	0	oewn-range_in-v	VerbForm=Ger	dema	0			rule
 ranging pole	0	oewn-ranging_pole-n	Number=Sing	dema	0			oewn_form
 ranging poles	0	oewn-ranging_pole-n	Number=Plur	dema	0			rule
@@ -3798,6 +3801,7 @@ reaches one's nostrils	0	oewn-reach_one-ap-s_nostrils-v	Person=3+Tense=Pres	dema
 reaches out	0	oewn-reach_out-v	Person=3+Tense=Pres	dema	0			rule
 reaching	0	oewn-reach-v	VerbForm=Ger	dema	1			carried
 reaching	1	oewn-reach-n	Number=Sing+VerbForm=Ger	dema	1			carried
+reaching	2	oewn-reaching-n	Number=Sing	dema	0			oewn_form
 reaching into	0	oewn-reach_into-v	VerbForm=Ger	dema	0			rule
 reaching one's nostrils	0	oewn-reach_one-ap-s_nostrils-v	VerbForm=Ger	dema	0			rule
 reaching out	0	oewn-reach_out-v	VerbForm=Ger	dema	0			rule
@@ -4436,6 +4440,8 @@ rearii	0		Number=Sing	dema	0	rearii	n	moby_reverse
 reariis	0		Number=Plur	dema	0	rearii	n	rule
 rearing	0	oewn-rear-v	VerbForm=Ger	dema	1			carried
 rearing	1	oewn-rear-n	Number=Sing+VerbForm=Ger	dema	1			carried
+rearing	2	oewn-rearing-a	Degree=Pos	dema	0			oewn_form
+rearing	3	oewn-rearing-n	Number=Sing	dema	0			oewn_form
 rearing back	0	oewn-rear_back-v	VerbForm=Ger	dema	0			rule
 rearings	0	oewn-rearing-n	Number=Plur	dema	0			rule
 rearise	0		VerbForm=Inf	dema	0	rearise	v	moby_reverse
@@ -4520,6 +4526,8 @@ reasoner	0	oewn-reasoner-n	Number=Sing	dema	0			oewn_form
 reasoners	0	oewn-reasoner-n	Number=Plur	dema	0			rule
 reasoning	0	oewn-reason-v	VerbForm=Ger	dema	1			carried
 reasoning	1	oewn-reason-n	Number=Sing+VerbForm=Ger	dema	1			carried
+reasoning	2	oewn-reasoning-a	Degree=Pos	dema	0			oewn_form
+reasoning	3	oewn-reasoning-n	Number=Sing	dema	0			oewn_form
 reasoning backward	0	oewn-reasoning_backward-n	Number=Sing	dema	0			oewn_form
 reasoning backwards	0	oewn-reasoning_backward-n	Number=Plur	dema	0			rule
 reasoning by elimination	0	oewn-reasoning_by_elimination-n	Number=Sing	dema	0			oewn_form
@@ -10959,6 +10967,7 @@ rentier	0	oewn-rentier-n	Number=Sing	dema	0			oewn_form
 rentiers	0	oewn-rentier-n	Number=Plur	dema	0			rule
 renting	0	oewn-rent-v	VerbForm=Ger	dema	1			carried
 renting	1	oewn-rent-n	Number=Sing+VerbForm=Ger	dema	1			carried
+renting	2	oewn-renting-n	Number=Sing	dema	0			oewn_form
 renting out	0	oewn-rent_out-v	VerbForm=Ger	dema	0			rule
 rentings	0	oewn-renting-n	Number=Plur	dema	0			rule
 rents	0	oewn-rent-n	Number=Plur	dema	1			carried
@@ -14306,6 +14315,7 @@ returnee	0		Number=Sing	dema	0	returnee	n	moby_reverse
 returnees	0		Number=Plur	dema	0	returnee	n	rule
 returning	0	oewn-return-v	VerbForm=Ger	dema	1			carried
 returning	1	oewn-return-n	Number=Sing+VerbForm=Ger	dema	1			carried
+returning	2	oewn-returning-a	Degree=Pos	dema	0			oewn_form
 returning officer	0	oewn-returning_officer-n	Number=Sing	dema	0			oewn_form
 returning officers	0	oewn-returning_officer-n	Number=Plur	dema	0			rule
 returns	0	oewn-return-n	Number=Plur	dema	1			carried
@@ -15771,6 +15781,7 @@ ridiculousness	0	oewn-ridiculousness-n	Number=Sing	dema	0			oewn_form
 ridiculousnesses	0	oewn-ridiculousness-n	Number=Plur	dema	0			rule
 riding	0	oewn-ride-v	VerbForm=Ger	dema	1			carried
 riding	1	oewn-ride-n	Number=Sing+VerbForm=Ger	dema	1			carried
+riding	2	oewn-riding-n	Number=Sing	dema	0			oewn_form
 riding away	0	oewn-ride_away-v	VerbForm=Ger	dema	0			rule
 riding bitt	0	oewn-riding_bitt-n	Number=Sing	dema	0			oewn_form
 riding bitts	0	oewn-riding_bitt-n	Number=Plur	dema	0			rule
@@ -16498,6 +16509,7 @@ risible	0	oewn-risible-a	Degree=Pos	dema	0			oewn_form
 rising	0	oewn-rise-v	VerbForm=Ger	dema	1			carried
 rising	1	oewn-rising-a	Degree=Pos	dema	0			carried
 rising	2	oewn-rise-n	Number=Sing+VerbForm=Ger	dema	1			carried
+rising	3	oewn-rising-n	Number=Sing	dema	0			oewn_form
 rising prices	0	oewn-rising_prices-n	Number=Sing	dema	0			oewn_form
 rising slope	0	oewn-rising_slope-n	Number=Sing	dema	0			oewn_form
 rising slopes	0	oewn-rising_slope-n	Number=Plur	dema	0			rule
@@ -17386,6 +17398,7 @@ rolling	0	oewn-roll-v	VerbForm=Ger	dema	1			carried
 rolling	1	oewn-rolling-a	Degree=Pos	dema	0			carried
 rolling	2	dema-rolling-r	Degree=Pos	dema	0			carried
 rolling	3	oewn-roll-n	Number=Sing+VerbForm=Ger	dema	1			carried
+rolling	4	oewn-rolling-n	Number=Sing	dema	0			oewn_form
 rolling around	0	oewn-roll_around-v	VerbForm=Ger	dema	0			rule
 rolling down	0	oewn-roll_down-v	VerbForm=Ger	dema	0			rule
 rolling hitch	0	oewn-rolling_hitch-n	Number=Sing	dema	0			oewn_form
@@ -17707,6 +17720,7 @@ rooti	0		Number=Sing	dema	0	rooti	n	moby_reverse
 rooties	0		Number=Plur	dema	0	rooty	n	rule
 rooting	0	oewn-root-v	VerbForm=Ger	dema	1			carried
 rooting	1	oewn-root-n	Number=Sing+VerbForm=Ger	dema	1			carried
+rooting	2	oewn-rooting-n	Number=Sing	dema	0			oewn_form
 rooting for	0	oewn-root_for-v	VerbForm=Ger	dema	0			rule
 rooting on	0	oewn-root_on-v	VerbForm=Ger	dema	0			rule
 rooting out	0	oewn-root_out-v	VerbForm=Ger	dema	0			rule
@@ -19089,6 +19103,7 @@ ruiners	0	oewn-ruiner-n	Number=Plur	dema	0			rule
 ruing	0	oewn-rue-v	VerbForm=Ger	dema	0			rule
 ruining	0	oewn-ruin-v	VerbForm=Ger	dema	1			carried
 ruining	1	oewn-ruin-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ruining	2	oewn-ruining-n	Number=Sing	dema	0			oewn_form
 ruinings	0	oewn-ruining-n	Number=Plur	dema	0			rule
 ruinous	0	oewn-ruinous-a	Degree=Pos	dema	0			oewn_form
 ruinously	0	oewn-ruinously-r	Degree=Pos	dema	0			oewn_form
@@ -19134,6 +19149,7 @@ ruliest	0	oewn-ruly-a	Degree=Sup	dema	0			rule
 ruling	0	oewn-rule-v	VerbForm=Ger	dema	1			carried
 ruling	1	oewn-ruling-a	Degree=Pos	dema	0			carried
 ruling	2	oewn-rule-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ruling	3	oewn-ruling-n	Number=Sing	dema	0			oewn_form
 ruling class	0	oewn-ruling_class-n	Number=Sing	dema	0			oewn_form
 ruling classes	0	oewn-ruling_class-n	Number=Plur	dema	0			rule
 ruling in	0	oewn-rule_in-v	VerbForm=Ger	dema	0			rule

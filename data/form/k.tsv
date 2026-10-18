@@ -2105,6 +2105,7 @@ kicker	0	oewn-kicker-n	Number=Sing	dema	0			oewn_form
 kickers	0	oewn-kicker-n	Number=Plur	dema	0			rule
 kicking	0	oewn-kick-v	VerbForm=Ger	dema	1			carried
 kicking	1	oewn-kick-n	Number=Sing+VerbForm=Ger	dema	1			carried
+kicking	2	oewn-kicking-n	Number=Sing	dema	0			oewn_form
 kicking about	0	oewn-kick_about-v	VerbForm=Ger	dema	0			rule
 kicking around	0	oewn-kick_around-v	VerbForm=Ger	dema	0			rule
 kicking ass	0	oewn-kick_ass-v	VerbForm=Ger	dema	0			rule
@@ -2791,6 +2792,7 @@ kisses of life	0	oewn-kiss_of_life-n	Number=Plur	dema	0			rule
 kisses of peace	0	oewn-kiss_of_peace-n	Number=Plur	dema	0			rule
 kissing	0	oewn-kiss-v	VerbForm=Ger	dema	1			carried
 kissing	1	oewn-kiss-n	Number=Sing+VerbForm=Ger	dema	1			carried
+kissing	2	oewn-kissing-n	Number=Sing	dema	0			oewn_form
 kissing bug	0	oewn-kissing_bug-n	Number=Sing	dema	0			oewn_form
 kissing bugs	0	oewn-kissing_bug-n	Number=Plur	dema	0			rule
 kissing cousin	0	oewn-kissing_cousin-n	Number=Sing	dema	0			oewn_form
@@ -3323,6 +3325,7 @@ knocker	0	oewn-knocker-n	Number=Sing	dema	0			oewn_form
 knockers	0	oewn-knocker-n	Number=Plur	dema	0			rule
 knocking	0	oewn-knock-v	VerbForm=Ger	dema	1			carried
 knocking	1	oewn-knock-n	Number=Sing+VerbForm=Ger	dema	1			carried
+knocking	2	oewn-knocking-n	Number=Sing	dema	0			oewn_form
 knocking about	0	oewn-knock_about-v	VerbForm=Ger	dema	0			rule
 knocking against	0	oewn-knock_against-v	VerbForm=Ger	dema	0			rule
 knocking back	0	oewn-knock_back-v	VerbForm=Ger	dema	0			rule

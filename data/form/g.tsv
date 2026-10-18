@@ -8390,6 +8390,7 @@ gossipers	0	oewn-gossiper-n	Number=Plur	dema	0			rule
 gossipiness	0		Number=Sing	dema	0	gossipiness	n	moby_reverse
 gossiping	0	oewn-gossip-v	VerbForm=Ger	dema	1			carried
 gossiping	1	oewn-gossip-n	Number=Sing+VerbForm=Ger	dema	1			carried
+gossiping	2	oewn-gossiping-n	Number=Sing	dema	0			oewn_form
 gossipingly	0		Degree=Pos	dema	0	gossipingly	r	moby_reverse
 gossipings	0	oewn-gossiping-n	Number=Plur	dema	0			rule
 gossipmonger	0	oewn-gossipmonger-n	Number=Sing	dema	0			oewn_form
@@ -9339,6 +9340,7 @@ graspers	0		Number=Plur	dema	0	grasper	n	rule
 grasping	0	oewn-grasp-v	VerbForm=Ger	dema	1			carried
 grasping	1	oewn-grasping-a	Degree=Pos	dema	0			carried
 grasping	2	oewn-grasp-n	Number=Sing+VerbForm=Ger	dema	1			carried
+grasping	3	oewn-grasping-n	Number=Sing	dema	0			oewn_form
 graspingly	0		Degree=Pos	dema	0	graspingly	r	moby_reverse
 graspingness	0		Number=Sing	dema	0	graspingness	n	moby_reverse
 graspingnesses	0		Number=Plur	dema	0	graspingness	n	rule
@@ -10656,6 +10658,7 @@ grippier	0		Degree=Cmp	dema	0	grippy	a	moby_reverse
 grippiest	0		Degree=Sup	dema	0	grippy	a	moby_reverse
 gripping	0	oewn-grip-v	VerbForm=Ger	dema	1			carried
 gripping	1	oewn-grip-n	Number=Sing+VerbForm=Ger	dema	1			carried
+gripping	2	oewn-gripping-a	Degree=Pos	dema	0			oewn_form
 grippingly	0		Degree=Pos	dema	0	grippingly	r	moby_reverse
 grippingness	0		Number=Sing	dema	0	grippingness	n	moby_reverse
 gripple	0		Degree=Pos	dema	0	gripple	a	moby_reverse
@@ -11782,6 +11785,7 @@ guideword	0	oewn-guideword-n	Number=Sing	dema	0			oewn_form
 guidewords	0	oewn-guideword-n	Number=Plur	dema	0			rule
 guiding	0	oewn-guide-v	VerbForm=Ger	dema	1			carried
 guiding	1	oewn-guide-n	Number=Sing+VerbForm=Ger	dema	1			carried
+guiding	2	oewn-guiding-a	Degree=Pos	dema	0			oewn_form
 guiding light	0	oewn-guiding_light-n	Number=Sing	dema	0			oewn_form
 guiding lights	0	oewn-guiding_light-n	Number=Plur	dema	0			rule
 guiding on	0	oewn-guide_on-v	VerbForm=Ger	dema	0			rule

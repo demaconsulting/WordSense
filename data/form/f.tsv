@@ -1166,6 +1166,7 @@ facilities	0	oewn-facility-n	Number=Plur	dema	0			rule
 facility	0	oewn-facility-n	Number=Sing	dema	0			oewn_form
 facing	0	oewn-face-v	VerbForm=Ger	dema	1			carried
 facing	1	oewn-face-n	Number=Sing+VerbForm=Ger	dema	1			carried
+facing	2	oewn-facing-n	Number=Sing	dema	0			oewn_form
 facing off	0	oewn-face_off-v	VerbForm=Ger	dema	0			rule
 facing pages	0	oewn-facing_pages-n	Number=Sing	dema	0			oewn_form
 facing the music	0	oewn-face_the_music-v	VerbForm=Ger	dema	0			rule
@@ -1456,6 +1457,8 @@ failed	0	oewn-fail-v	Tense=Past	dema	1			carried
 failing	0	oewn-fail-v	VerbForm=Ger	dema	1			carried
 failing	1	dema-failing-p		dema	0			carried
 failing	2	dema-fail-n	Number=Sing+VerbForm=Ger	dema	1			carried
+failing	3	oewn-failing-a	Degree=Pos	dema	0			oewn_form
+failing	4	oewn-failing-n	Number=Sing	dema	0			oewn_form
 failingly	0		Degree=Pos	dema	0	failingly	r	moby_reverse
 failingness	0		Number=Sing	dema	0	failingness	n	moby_reverse
 failings	0	oewn-failing-n	Number=Plur	dema	0			rule
@@ -3551,6 +3554,7 @@ feeder lines	0	oewn-feeder_line-n	Number=Plur	dema	0			rule
 feeders	0	oewn-feeder-n	Number=Plur	dema	0			rule
 feeding	0	oewn-feed-v	VerbForm=Ger	dema	1			carried
 feeding	1	oewn-feed-n	Number=Sing+VerbForm=Ger	dema	1			carried
+feeding	2	oewn-feeding-n	Number=Sing	dema	0			oewn_form
 feeding back	0	oewn-feed_back-v	VerbForm=Ger	dema	0			rule
 feeding bottle	0	oewn-feeding_bottle-n	Number=Sing	dema	0			oewn_form
 feeding bottles	0	oewn-feeding_bottle-n	Number=Plur	dema	0			rule
@@ -3589,7 +3593,8 @@ feeless	0		Degree=Pos	dema	0	feeless	a	moby_reverse
 feeling	0	oewn-feel-v	VerbForm=Ger	dema	1			carried
 feeling	1	dema-feeling-a	Degree=Pos	dema	0			carried
 feeling	2	oewn-feel-n	Number=Sing+VerbForm=Ger	dema	1			carried
-feeling	3	oewn-feeling-n	Number=Plur	dema	0			agid
+feeling	3	oewn-feeling-n	Number=Sing	dema	0			oewn_form
+feeling	4	oewn-feeling-n	Number=Plur	dema	0			agid
 feeling for	0	oewn-feel_for-v	VerbForm=Ger	dema	0			rule
 feeling like	0	oewn-feel_like-v	VerbForm=Ger	dema	0			rule
 feeling like a million	0	oewn-feel_like_a_million-v	VerbForm=Ger	dema	0			rule
@@ -5289,6 +5294,8 @@ fighter pilots	0	oewn-fighter_pilot-n	Number=Plur	dema	0			rule
 fighters	0	oewn-fighter-n	Number=Plur	dema	0			rule
 fighting	0	oewn-fight-v	VerbForm=Ger	dema	1			carried
 fighting	1	oewn-fight-n	Number=Sing+VerbForm=Ger	dema	1			carried
+fighting	2	oewn-fighting-a	Degree=Pos	dema	0			oewn_form
+fighting	3	oewn-fighting-n	Number=Sing	dema	0			oewn_form
 fighting back	0	oewn-fight_back-v	VerbForm=Ger	dema	0			rule
 fighting chair	0	oewn-fighting_chair-n	Number=Sing	dema	0			oewn_form
 fighting chairs	0	oewn-fighting_chair-n	Number=Plur	dema	0			rule
@@ -5366,6 +5373,7 @@ figurine	0	oewn-figurine-n	Number=Sing	dema	0			oewn_form
 figurines	0	oewn-figurine-n	Number=Plur	dema	0			rule
 figuring	0	oewn-figure-v	VerbForm=Ger	dema	1			carried
 figuring	1	oewn-figure-n	Number=Sing+VerbForm=Ger	dema	1			carried
+figuring	2	oewn-figuring-n	Number=Sing	dema	0			oewn_form
 figuring out	0	oewn-figure_out-v	VerbForm=Ger	dema	0			rule
 figuring skate	0	oewn-figure_skate-v	VerbForm=Ger	dema	0			rule
 figurings	0	oewn-figuring-n	Number=Plur	dema	0			rule
@@ -5517,6 +5525,7 @@ filigrees	0	oewn-filigree-n	Number=Plur	dema	0			rule
 filigrees	1	oewn-filigree-v	Person=3+Tense=Pres	dema	0			rule
 filing	0	oewn-file-v	VerbForm=Ger	dema	1			carried
 filing	1	oewn-file-n	Number=Sing+VerbForm=Ger	dema	1			carried
+filing	2	oewn-filing-n	Number=Sing	dema	0			oewn_form
 filing away	0	oewn-file_away-v	VerbForm=Ger	dema	0			rule
 filing cabinet	0	oewn-filing_cabinet-n	Number=Sing	dema	0			oewn_form
 filing cabinets	0	oewn-filing_cabinet-n	Number=Plur	dema	0			rule
@@ -5880,6 +5889,7 @@ financiers	0	oewn-financier-n	Number=Plur	dema	0			rule
 financiers	1	oewn-financier-v	Person=3+Tense=Pres	dema	0			rule
 financing	0	oewn-finance-v	VerbForm=Ger	dema	1			carried
 financing	1	oewn-finance-n	Number=Sing+VerbForm=Ger	dema	1			carried
+financing	2	oewn-financing-n	Number=Sing	dema	0			oewn_form
 financings	0	oewn-financing-n	Number=Plur	dema	0			rule
 finback	0	oewn-finback-n	Number=Sing	dema	0			oewn_form
 finback whale	0	oewn-finback_whale-n	Number=Sing	dema	0			oewn_form
@@ -7107,6 +7117,7 @@ fixes	1	oewn-fix-v	Person=3+Tense=Pres	dema	1			carried
 fixes up	0	oewn-fix_up-v	Person=3+Tense=Pres	dema	0			rule
 fixing	0	oewn-fix-v	VerbForm=Ger	dema	1			carried
 fixing	1	oewn-fix-n	Number=Sing+VerbForm=Ger	dema	1			carried
+fixing	2	oewn-fixing-n	Number=Sing	dema	0			oewn_form
 fixing agent	0	oewn-fixing_agent-n	Number=Sing	dema	0			oewn_form
 fixing agents	0	oewn-fixing_agent-n	Number=Plur	dema	0			rule
 fixing up	0	oewn-fix_up-v	VerbForm=Ger	dema	0			rule
@@ -7617,6 +7628,7 @@ flashiness	0	oewn-flashiness-n	Number=Sing	dema	0			oewn_form
 flashinesses	0	oewn-flashiness-n	Number=Plur	dema	0			rule
 flashing	0	oewn-flash-v	VerbForm=Ger	dema	1			carried
 flashing	1	oewn-flash-n	Number=Sing+VerbForm=Ger	dema	1			carried
+flashing	2	oewn-flashing-n	Number=Sing	dema	0			oewn_form
 flashing back	0	oewn-flash_back-v	VerbForm=Ger	dema	0			rule
 flashingly	0		Degree=Pos	dema	0	flashingly	r	moby_reverse
 flashings	0	oewn-flashing-n	Number=Plur	dema	0			rule
@@ -8560,6 +8572,7 @@ floodhead	0	oewn-floodhead-n	Number=Sing	dema	0			oewn_form
 floodheads	0	oewn-floodhead-n	Number=Plur	dema	0			rule
 flooding	0	oewn-flood-v	VerbForm=Ger	dema	1			carried
 flooding	1	oewn-flood-n	Number=Sing+VerbForm=Ger	dema	1			carried
+flooding	2	oewn-flooding-n	Number=Sing	dema	0			oewn_form
 flooding in	0	oewn-flood_in-v	VerbForm=Ger	dema	0			rule
 flooding out	0	oewn-flood_out-v	VerbForm=Ger	dema	0			rule
 floodings	0	oewn-flooding-n	Number=Plur	dema	0			rule
@@ -9473,6 +9486,7 @@ flying	0	oewn-fly-v	VerbForm=Ger	dema	1			carried
 flying	1	oewn-flying-a	Degree=Pos	dema	0			carried
 flying	2	dema-flying-r	Degree=Pos	dema	0			carried
 flying	3	oewn-fly-n	Number=Sing+VerbForm=Ger	dema	1			carried
+flying	4	oewn-flying-n	Number=Sing	dema	0			oewn_form
 flying bird	0	oewn-flying_bird-n	Number=Sing	dema	0			oewn_form
 flying birds	0	oewn-flying_bird-n	Number=Plur	dema	0			rule
 flying blind	0	oewn-fly_blind-v	VerbForm=Ger	dema	0			rule
@@ -9831,6 +9845,8 @@ folderols	0	oewn-folderol-n	Number=Plur	dema	0			rule
 folders	0	oewn-folder-n	Number=Plur	dema	0			rule
 folding	0	oewn-fold-v	VerbForm=Ger	dema	1			carried
 folding	1	oewn-fold-n	Number=Sing+VerbForm=Ger	dema	1			carried
+folding	2	oewn-folding-a	Degree=Pos	dema	0			oewn_form
+folding	3	oewn-folding-n	Number=Sing	dema	0			oewn_form
 folding chair	0	oewn-folding_chair-n	Number=Sing	dema	0			oewn_form
 folding chairs	0	oewn-folding_chair-n	Number=Plur	dema	0			rule
 folding door	0	oewn-folding_door-n	Number=Sing	dema	0			oewn_form
@@ -10161,6 +10177,7 @@ foolhardinesses	0	oewn-foolhardiness-n	Number=Plur	dema	0			rule
 foolhardy	0	oewn-foolhardy-a	Degree=Pos	dema	0			oewn_form
 fooling	0	oewn-fool-v	VerbForm=Ger	dema	1			carried
 fooling	1	oewn-fool-n	Number=Sing+VerbForm=Ger	dema	1			carried
+fooling	2	oewn-fooling-a	Degree=Pos	dema	0			oewn_form
 fooling around	0	oewn-fool_around-v	VerbForm=Ger	dema	0			rule
 fooling away	0	oewn-fool_away-v	VerbForm=Ger	dema	0			rule
 foolish	0	oewn-foolish-a	Degree=Pos	dema	0			oewn_form
@@ -12390,6 +12407,7 @@ framework	0	oewn-framework-n	Number=Sing	dema	0			oewn_form
 frameworks	0	oewn-framework-n	Number=Plur	dema	0			rule
 framing	0	oewn-frame-v	VerbForm=Ger	dema	1			carried
 framing	1	oewn-frame-n	Number=Sing+VerbForm=Ger	dema	1			carried
+framing	2	oewn-framing-n	Number=Sing	dema	0			oewn_form
 framing in	0	oewn-frame_in-v	VerbForm=Ger	dema	0			rule
 framing up	0	oewn-frame_up-v	VerbForm=Ger	dema	0			rule
 framings	0	oewn-framing-n	Number=Plur	dema	0			rule
@@ -14531,6 +14549,8 @@ functionary	1		Degree=Pos	dema	0	functionary	a	moby_reverse
 functioned	0	oewn-function-v	Tense=Past	dema	1			carried
 functioning	0	oewn-function-v	VerbForm=Ger	dema	1			carried
 functioning	1	oewn-function-n	Number=Sing+VerbForm=Ger	dema	1			carried
+functioning	2	oewn-functioning-a	Degree=Pos	dema	0			oewn_form
+functioning	3	oewn-functioning-n	Number=Sing	dema	0			oewn_form
 functionings	0	oewn-functioning-n	Number=Plur	dema	0			rule
 functionless	0		Degree=Pos	dema	0	functionless	a	moby_reverse
 functions	0	oewn-function-n	Number=Plur	dema	1			carried
@@ -14592,6 +14612,7 @@ fundi	0	oewn-fundus-n	Number=Plur	dema	0			oewn_form
 fundic	0		Degree=Pos	dema	0	fundic	a	moby_reverse
 funding	0	oewn-fund-v	VerbForm=Ger	dema	1			carried
 funding	1	oewn-fund-n	Number=Sing+VerbForm=Ger	dema	1			carried
+funding	2	oewn-funding-n	Number=Sing	dema	0			oewn_form
 funding raise	0	oewn-fund_raise-v	VerbForm=Ger	dema	0			rule
 fundings	0	oewn-funding-n	Number=Plur	dema	0			rule
 fundraise	0	oewn-fundraise-v	VerbForm=Inf	dema	0			oewn_form

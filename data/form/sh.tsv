@@ -410,6 +410,7 @@ shakiness	0	oewn-shakiness-n	Number=Sing	dema	0			oewn_form
 shakinesses	0	oewn-shakiness-n	Number=Plur	dema	0			rule
 shaking	0	oewn-shake-v	VerbForm=Ger	dema	1			carried
 shaking	1	oewn-shake-n	Number=Sing+VerbForm=Ger	dema	1			carried
+shaking	2	oewn-shaking-n	Number=Sing	dema	0			oewn_form
 shaking hands	0	oewn-shake_hands-v	VerbForm=Ger	dema	0			rule
 shaking off	0	oewn-shake_off-v	VerbForm=Ger	dema	0			rule
 shaking palsies	0	oewn-shaking_palsy-n	Number=Plur	dema	0			rule
@@ -1344,6 +1345,7 @@ shielder	0	oewn-shielder-n	Number=Sing	dema	0			oewn_form
 shielders	0	oewn-shielder-n	Number=Plur	dema	0			rule
 shielding	0	oewn-shield-v	VerbForm=Ger	dema	1			carried
 shielding	1	oewn-shield-n	Number=Sing+VerbForm=Ger	dema	1			carried
+shielding	2	oewn-shielding-n	Number=Sing	dema	0			oewn_form
 shieldings	0	oewn-shielding-n	Number=Plur	dema	0			rule
 shieldless	0		Degree=Pos	dema	0	shieldless	a	moby_reverse
 shieldlessly	0		Degree=Pos	dema	0	shieldlessly	r	moby_reverse
@@ -1377,6 +1379,8 @@ shiftiness	0	oewn-shiftiness-n	Number=Sing	dema	0			oewn_form
 shiftinesses	0	oewn-shiftiness-n	Number=Plur	dema	0			rule
 shifting	0	oewn-shift-v	VerbForm=Ger	dema	1			carried
 shifting	1	oewn-shift-n	Number=Sing+VerbForm=Ger	dema	1			carried
+shifting	2	oewn-shifting-a	Degree=Pos	dema	0			oewn_form
+shifting	3	oewn-shifting-n	Number=Sing	dema	0			oewn_form
 shiftingly	0		Degree=Pos	dema	0	shiftingly	r	moby_reverse
 shiftingness	0		Number=Sing	dema	0	shiftingness	n	moby_reverse
 shiftings	0	oewn-shifting-n	Number=Plur	dema	0			rule
@@ -2540,6 +2544,7 @@ shouter	0	oewn-shouter-n	Number=Sing	dema	0			oewn_form
 shouters	0	oewn-shouter-n	Number=Plur	dema	0			rule
 shouting	0	oewn-shout-v	VerbForm=Ger	dema	1			carried
 shouting	1	oewn-shout-n	Number=Sing+VerbForm=Ger	dema	1			carried
+shouting	2	oewn-shouting-n	Number=Sing	dema	0			oewn_form
 shouting down	0	oewn-shout_down-v	VerbForm=Ger	dema	0			rule
 shouting out	0	oewn-shout_out-v	VerbForm=Ger	dema	0			rule
 shoutings	0	oewn-shouting-n	Number=Plur	dema	0			rule
@@ -2684,6 +2689,7 @@ showiness	0	oewn-showiness-n	Number=Sing	dema	0			oewn_form
 showinesses	0	oewn-showiness-n	Number=Plur	dema	0			rule
 showing	0	oewn-show-v	VerbForm=Ger	dema	1			carried
 showing	1	oewn-show-n	Number=Sing+VerbForm=Ger	dema	1			carried
+showing	2	oewn-showing-n	Number=Sing	dema	0			oewn_form
 showing off	0	oewn-show_off-v	VerbForm=Ger	dema	0			rule
 showing the door	0	oewn-show_the_door-v	VerbForm=Ger	dema	0			rule
 showing up	0	oewn-show_up-v	VerbForm=Ger	dema	0			rule

@@ -689,6 +689,7 @@ plantigrade mammals	0	oewn-plantigrade_mammal-n	Number=Plur	dema	0			rule
 plantigrades	0	oewn-plantigrade-n	Number=Plur	dema	0			rule
 planting	0	oewn-plant-v	VerbForm=Ger	dema	1			carried
 planting	1	oewn-plant-n	Number=Sing+VerbForm=Ger	dema	1			carried
+planting	2	oewn-planting-n	Number=Sing	dema	0			oewn_form
 plantings	0	oewn-planting-n	Number=Plur	dema	0			rule
 plantless	0		Degree=Pos	dema	0	plantless	a	moby_reverse
 plantlet	0	oewn-plantlet-n	Number=Sing	dema	0			oewn_form
@@ -1167,6 +1168,7 @@ playhouse	0	oewn-playhouse-n	Number=Sing	dema	0			oewn_form
 playhouses	0	oewn-playhouse-n	Number=Plur	dema	0			rule
 playing	0	oewn-play-v	VerbForm=Ger	dema	1			carried
 playing	1	oewn-play-n	Number=Sing+VerbForm=Ger	dema	1			carried
+playing	2	oewn-playing-n	Number=Sing	dema	0			oewn_form
 playing a joke on	0	oewn-play_a_joke_on-v	VerbForm=Ger	dema	0			rule
 playing a trick on	0	oewn-play_a_trick_on-v	VerbForm=Ger	dema	0			rule
 playing along	0	oewn-play_along-v	VerbForm=Ger	dema	0			rule

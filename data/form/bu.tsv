@@ -222,6 +222,7 @@ bubbliness	0	oewn-bubbliness-n	Number=Sing	dema	0			oewn_form
 bubblinesses	0	oewn-bubbliness-n	Number=Plur	dema	0			rule
 bubbling	0	oewn-bubble-v	VerbForm=Ger	dema	1			carried
 bubbling	1	oewn-bubble-n	Number=Sing+VerbForm=Ger	dema	1			carried
+bubbling	2	oewn-bubbling-a	Degree=Pos	dema	0			oewn_form
 bubbling over	0	oewn-bubble_over-v	VerbForm=Ger	dema	0			rule
 bubbling up	0	oewn-bubble_up-v	VerbForm=Ger	dema	0			rule
 bubblingly	0		Degree=Pos	dema	0	bubblingly	r	moby_reverse

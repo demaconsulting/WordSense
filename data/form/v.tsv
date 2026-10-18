@@ -3595,6 +3595,7 @@ viewier	0		Degree=Cmp	dema	0	viewy	a	moby_reverse
 viewiest	0		Degree=Sup	dema	0	viewy	a	moby_reverse
 viewing	0	oewn-view-v	VerbForm=Ger	dema	1			carried
 viewing	1	oewn-view-n	Number=Sing+VerbForm=Ger	dema	1			carried
+viewing	2	oewn-viewing-n	Number=Sing	dema	0			oewn_form
 viewing as	0	oewn-view_as-v	VerbForm=Ger	dema	0			rule
 viewing audience	0	oewn-viewing_audience-n	Number=Sing	dema	0			oewn_form
 viewing audiences	0	oewn-viewing_audience-n	Number=Plur	dema	0			rule
@@ -4290,6 +4291,7 @@ visitatorial	0		Degree=Pos	dema	0	visitatorial	a	moby_reverse
 visited	0	oewn-visit-v	Tense=Past	dema	1			carried
 visiting	0	oewn-visit-v	VerbForm=Ger	dema	1			carried
 visiting	1	oewn-visit-n	Number=Sing+VerbForm=Ger	dema	1			carried
+visiting	2	oewn-visiting-n	Number=Sing	dema	0			oewn_form
 visiting card	0	oewn-visiting_card-n	Number=Sing	dema	0			oewn_form
 visiting cards	0	oewn-visiting_card-n	Number=Plur	dema	0			rule
 visiting firefighter	0	oewn-visiting_firefighter-n	Number=Sing	dema	0			oewn_form
@@ -4870,6 +4872,7 @@ voices in the wilderness	0	oewn-voice_in_the_wilderness-n	Number=Plur	dema	0			r
 voices of conscience	0	oewn-voice_of_conscience-n	Number=Plur	dema	0			rule
 voicing	0	oewn-voice-v	VerbForm=Ger	dema	1			carried
 voicing	1	oewn-voice-n	Number=Sing+VerbForm=Ger	dema	1			carried
+voicing	2	oewn-voicing-n	Number=Sing	dema	0			oewn_form
 voicings	0	oewn-voicing-n	Number=Plur	dema	0			rule
 void	0	oewn-void-a	Degree=Pos	dema	0			oewn_form
 void	1	oewn-void-n	Number=Sing	dema	0			oewn_form
@@ -5224,6 +5227,7 @@ votes of confidence	0	oewn-vote_of_confidence-n	Number=Plur	dema	0			rule
 votes out	0	oewn-vote_out-v	Person=3+Tense=Pres	dema	0			rule
 voting	0	oewn-vote-v	VerbForm=Ger	dema	1			carried
 voting	1	oewn-vote-n	Number=Sing+VerbForm=Ger	dema	1			carried
+voting	2	oewn-voting-n	Number=Sing	dema	0			oewn_form
 voting age	0	oewn-voting_age-n	Number=Sing	dema	0			oewn_form
 voting ages	0	oewn-voting_age-n	Number=Plur	dema	0			rule
 voting booth	0	oewn-voting_booth-n	Number=Sing	dema	0			oewn_form

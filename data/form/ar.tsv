@@ -1373,6 +1373,7 @@ armillas	0	oewn-armilla-n	Number=Plur	dema	0			rule
 armills	0		Number=Plur	dema	0	armill	n	rule
 arming	0	oewn-arm-v	VerbForm=Ger	dema	1			carried
 arming	1	oewn-arm-n	Number=Sing+VerbForm=Ger	dema	1			carried
+arming	2	oewn-arming-n	Number=Sing	dema	0			oewn_form
 armings	0	oewn-arming-n	Number=Plur	dema	0			rule
 armipotence	0		Number=Sing	dema	0	armipotence	n	moby_reverse
 armipotences	0		Number=Plur	dema	0	armipotence	n	rule

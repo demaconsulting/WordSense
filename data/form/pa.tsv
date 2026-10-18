@@ -604,6 +604,7 @@ pacify	0	oewn-pacify-v	VerbForm=Inf	dema	0			oewn_form
 pacifying	0	oewn-pacify-v	VerbForm=Ger	dema	0			rule
 pacing	0	oewn-pace-v	VerbForm=Ger	dema	1			carried
 pacing	1	oewn-pace-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pacing	2	oewn-pacing-n	Number=Sing	dema	0			oewn_form
 pacings	0	oewn-pacing-n	Number=Plur	dema	0			rule
 pack	0	oewn-pack-n	Number=Sing	dema	1			carried
 pack	1	oewn-pack-v	VerbForm=Inf	dema	1			carried
@@ -660,6 +661,7 @@ packhorse	0	oewn-packhorse-n	Number=Sing	dema	0			oewn_form
 packhorses	0	oewn-packhorse-n	Number=Plur	dema	0			rule
 packing	0	oewn-pack-v	VerbForm=Ger	dema	1			carried
 packing	1	oewn-pack-n	Number=Sing+VerbForm=Ger	dema	1			carried
+packing	2	oewn-packing-n	Number=Sing	dema	0			oewn_form
 packing box	0	oewn-packing_box-n	Number=Sing	dema	0			oewn_form
 packing boxes	0	oewn-packing_box-n	Number=Plur	dema	0			rule
 packing case	0	oewn-packing_case-n	Number=Sing	dema	0			oewn_form
@@ -1020,6 +1022,7 @@ painters	0	oewn-painter-n	Number=Plur	dema	0			rule
 painties	0		Number=Plur	dema	0	painty	n	rule
 painting	0	oewn-paint-v	VerbForm=Ger	dema	1			carried
 painting	1	oewn-paint-n	Number=Sing+VerbForm=Ger	dema	1			carried
+painting	2	oewn-painting-n	Number=Sing	dema	0			oewn_form
 painting a picture	0	oewn-paint_a_picture-v	VerbForm=Ger	dema	0			rule
 painting the lily	0	oewn-paint_the_lily-v	VerbForm=Ger	dema	0			rule
 paintings	0	oewn-painting-n	Number=Plur	dema	0			rule
@@ -3423,6 +3426,7 @@ parkiest	0	oewn-parky-a	Degree=Sup	dema	0			oewn_form
 parkin	0		Number=Sing	dema	0	parkin	n	moby_reverse
 parking	0	oewn-park-v	VerbForm=Ger	dema	1			carried
 parking	1	oewn-park-n	Number=Sing+VerbForm=Ger	dema	1			carried
+parking	2	oewn-parking-n	Number=Sing	dema	0			oewn_form
 parking area	0	oewn-parking_area-n	Number=Sing	dema	0			oewn_form
 parking areas	0	oewn-parking_area-n	Number=Plur	dema	0			rule
 parking brake	0	oewn-parking_brake-n	Number=Sing	dema	0			oewn_form
@@ -3923,6 +3927,7 @@ parties to the transaction	0	oewn-party_to_the_transaction-n	Number=Plur	dema	0	
 parting	0	oewn-part-v	VerbForm=Ger	dema	1			carried
 parting	1	dema-parting-a	Degree=Pos	dema	0			carried
 parting	2	oewn-part-n	Number=Sing+VerbForm=Ger	dema	1			carried
+parting	3	oewn-parting-n	Number=Sing	dema	0			oewn_form
 parting with	0	oewn-part_with-v	VerbForm=Ger	dema	0			rule
 partings	0	oewn-parting-n	Number=Plur	dema	0			rule
 partis	0		Degree=Pos	dema	0	partis	a	moby_reverse
@@ -4267,6 +4272,7 @@ passing	0	oewn-pass-v	VerbForm=Ger	dema	1			carried
 passing	1	oewn-passing-a	Degree=Pos	dema	0			carried
 passing	2	oewn-passing-r	Degree=Pos	dema	0			carried
 passing	3	oewn-pass-n	Number=Sing+VerbForm=Ger	dema	1			carried
+passing	4	oewn-passing-n	Number=Sing	dema	0			oewn_form
 passing across	0	oewn-pass_across-v	VerbForm=Ger	dema	0			rule
 passing along	0	oewn-pass_along-v	VerbForm=Ger	dema	0			rule
 passing around	0	oewn-pass_around-v	VerbForm=Ger	dema	0			rule
@@ -4577,6 +4583,7 @@ patchiness	0	oewn-patchiness-n	Number=Sing	dema	0			oewn_form
 patchinesses	0	oewn-patchiness-n	Number=Plur	dema	0			rule
 patching	0	oewn-patch-v	VerbForm=Ger	dema	1			carried
 patching	1	oewn-patch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+patching	2	oewn-patching-n	Number=Sing	dema	0			oewn_form
 patching up	0	oewn-patch_up-v	VerbForm=Ger	dema	0			rule
 patchings	0	oewn-patching-n	Number=Plur	dema	0			rule
 patchless	0		Degree=Pos	dema	0	patchless	a	moby_reverse
@@ -5190,6 +5197,7 @@ paygrade	0	oewn-paygrade-n	Number=Sing	dema	0			oewn_form
 paygrades	0	oewn-paygrade-n	Number=Plur	dema	0			rule
 paying	0	oewn-pay-v	VerbForm=Ger	dema	1			carried
 paying	1	oewn-pay-n	Number=Sing+VerbForm=Ger	dema	1			carried
+paying	2	oewn-paying-a	Degree=Pos	dema	0			oewn_form
 paying attention	0	oewn-paying_attention-n	Number=Sing	dema	0			oewn_form
 paying attention	1	oewn-paying_attention-a	Degree=Pos	dema	0			oewn_form
 paying attentions	0	oewn-paying_attention-n	Number=Plur	dema	0			rule

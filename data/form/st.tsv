@@ -960,6 +960,7 @@ standfasts	0		Number=Plur	dema	0	standfast	n	rule
 standing	0	oewn-stand-v	VerbForm=Ger	dema	1			carried
 standing	1	oewn-standing-a	Degree=Pos	dema	0			carried
 standing	2	oewn-stand-n	Number=Sing+VerbForm=Ger	dema	1			carried
+standing	3	oewn-standing-n	Number=Sing	dema	0			oewn_form
 standing armies	0	oewn-standing_army-n	Number=Plur	dema	0			rule
 standing army	0	oewn-standing_army-n	Number=Sing	dema	0			oewn_form
 standing back	0	oewn-stand_back-v	VerbForm=Ger	dema	0			rule
@@ -1244,6 +1245,7 @@ stargazing	1	oewn-stargazing-n	Number=Sing	dema	0			oewn_form
 stargazings	0	oewn-stargazing-n	Number=Plur	dema	0			rule
 staring	0	oewn-stare-v	VerbForm=Ger	dema	1			carried
 staring	1	oewn-stare-n	Number=Sing+VerbForm=Ger	dema	1			carried
+staring	2	oewn-staring-a	Degree=Pos	dema	0			oewn_form
 staring down	0	oewn-stare_down-v	VerbForm=Ger	dema	0			rule
 staringly	0		Degree=Pos	dema	0	staringly	r	moby_reverse
 stark	0	oewn-stark-a	Degree=Pos	dema	0			oewn_form
@@ -2817,6 +2819,7 @@ stickiness	0	oewn-stickiness-n	Number=Sing	dema	0			oewn_form
 stickinesses	0	oewn-stickiness-n	Number=Plur	dema	0			rule
 sticking	0	oewn-stick-v	VerbForm=Ger	dema	1			carried
 sticking	1	oewn-stick-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sticking	2	oewn-sticking-a	Degree=Pos	dema	0			oewn_form
 sticking about	0	oewn-stick_about-v	VerbForm=Ger	dema	0			rule
 sticking around	0	oewn-stick_around-v	VerbForm=Ger	dema	0			rule
 sticking by	0	oewn-stick_by-v	VerbForm=Ger	dema	0			rule
@@ -3477,6 +3480,7 @@ stockinette stitches	0	oewn-stockinette_stitch-n	Number=Plur	dema	0			rule
 stockinettes	0	oewn-stockinette-n	Number=Plur	dema	0			rule
 stocking	0	oewn-stock-v	VerbForm=Ger	dema	1			carried
 stocking	1	oewn-stock-n	Number=Sing+VerbForm=Ger	dema	1			carried
+stocking	2	oewn-stocking-n	Number=Sing	dema	0			oewn_form
 stocking cap	0	oewn-stocking_cap-n	Number=Sing	dema	0			oewn_form
 stocking caps	0	oewn-stocking_cap-n	Number=Plur	dema	0			rule
 stocking filler	0	oewn-stocking_filler-n	Number=Sing	dema	0			oewn_form
@@ -4684,6 +4688,8 @@ streamiest	0		Degree=Sup	dema	0	streamy	a	moby_reverse
 streaminess	0		Number=Sing	dema	0	streaminess	n	moby_reverse
 streaming	0	oewn-stream-v	VerbForm=Ger	dema	1			carried
 streaming	1	oewn-stream-n	Number=Sing+VerbForm=Ger	dema	1			carried
+streaming	2	oewn-streaming-a	Degree=Pos	dema	0			oewn_form
+streaming	3	oewn-streaming-n	Number=Sing	dema	0			oewn_form
 streamingly	0		Degree=Pos	dema	0	streamingly	r	moby_reverse
 streamings	0	oewn-streaming-n	Number=Plur	dema	0			rule
 streamless	0		Degree=Pos	dema	0	streamless	a	moby_reverse
@@ -4883,6 +4889,7 @@ stretchiness	0	oewn-stretchiness-n	Number=Sing	dema	0			oewn_form
 stretchinesses	0	oewn-stretchiness-n	Number=Plur	dema	0			rule
 stretching	0	oewn-stretch-v	VerbForm=Ger	dema	1			carried
 stretching	1	oewn-stretch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+stretching	2	oewn-stretching-n	Number=Sing	dema	0			oewn_form
 stretching along	0	oewn-stretch_along-v	VerbForm=Ger	dema	0			rule
 stretching forth	0	oewn-stretch_forth-v	VerbForm=Ger	dema	0			rule
 stretching out	0	oewn-stretch_out-v	VerbForm=Ger	dema	0			rule
@@ -5041,6 +5048,7 @@ strikes up	0	oewn-strike_up-v	Person=3+Tense=Pres	dema	0			rule
 striking	0	oewn-strike-v	VerbForm=Ger	dema	1			carried
 striking	1	oewn-striking-a	Degree=Pos	dema	0			carried
 striking	2	oewn-strike-n	Number=Sing+VerbForm=Ger	dema	1			carried
+striking	3	oewn-striking-n	Number=Sing	dema	0			oewn_form
 striking a blow	0	oewn-strike_a_blow-v	VerbForm=Ger	dema	0			rule
 striking a chord	0	oewn-strike_a_chord-v	VerbForm=Ger	dema	0			rule
 striking a note	0	oewn-strike_a_note-v	VerbForm=Ger	dema	0			rule
@@ -5232,6 +5240,7 @@ stripper wells	0	oewn-stripper_well-n	Number=Plur	dema	0			rule
 strippers	0	oewn-stripper-n	Number=Plur	dema	0			rule
 stripping	0	oewn-strip-v	VerbForm=Ger	dema	1			carried
 stripping	1	oewn-strip-n	Number=Sing+VerbForm=Ger	dema	1			carried
+stripping	2	oewn-stripping-n	Number=Sing	dema	0			oewn_form
 stripping down	0	oewn-strip_down-v	VerbForm=Ger	dema	0			rule
 stripping mine	0	oewn-strip_mine-v	VerbForm=Ger	dema	0			rule
 strippings	0	oewn-stripping-n	Number=Plur	dema	0			rule
@@ -5304,6 +5313,7 @@ strokes	0	oewn-stroke-n	Number=Plur	dema	1			carried
 strokes	1	oewn-stroke-v	Person=3+Tense=Pres	dema	1			carried
 stroking	0	oewn-stroke-v	VerbForm=Ger	dema	1			carried
 stroking	1	oewn-stroke-n	Number=Sing+VerbForm=Ger	dema	1			carried
+stroking	2	oewn-stroking-n	Number=Sing	dema	0			oewn_form
 strokings	0	oewn-stroking-n	Number=Plur	dema	0			rule
 stroll	0	oewn-stroll-v	VerbForm=Inf	dema	0			oewn_form
 stroll	1	oewn-stroll-n	Number=Sing	dema	0			oewn_form
@@ -5490,6 +5500,7 @@ struggles	0	oewn-struggle-n	Number=Plur	dema	1			carried
 struggles	1	oewn-struggle-v	Person=3+Tense=Pres	dema	1			carried
 struggling	0	oewn-struggle-v	VerbForm=Ger	dema	1			carried
 struggling	1	oewn-struggle-n	Number=Sing+VerbForm=Ger	dema	1			carried
+struggling	2	oewn-struggling-a	Degree=Pos	dema	0			oewn_form
 strugglingly	0		Degree=Pos	dema	0	strugglingly	r	moby_reverse
 strum	0	oewn-strum-v	VerbForm=Inf	dema	0			oewn_form
 strum	1	oewn-strum-n	Number=Sing	dema	0			oewn_form
@@ -5657,6 +5668,7 @@ study hall	0	oewn-study_hall-n	Number=Sing	dema	0			oewn_form
 study halls	0	oewn-study_hall-n	Number=Plur	dema	0			rule
 studying	0	oewn-study-v	VerbForm=Ger	dema	1			carried
 studying	1	oewn-study-n	Number=Sing+VerbForm=Ger	dema	1			carried
+studying	2	oewn-studying-n	Number=Sing	dema	0			oewn_form
 studyings	0	oewn-studying-n	Number=Plur	dema	0			rule
 stuff	0	oewn-stuff-v	VerbForm=Inf	dema	0			oewn_form
 stuff	1	oewn-stuff-n	Number=Sing	dema	0			oewn_form

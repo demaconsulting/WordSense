@@ -50,6 +50,7 @@ skates	1	oewn-skate-v	Person=3+Tense=Pres	dema	1			carried
 skates over	0	oewn-skate_over-v	Person=3+Tense=Pres	dema	0			rule
 skating	0	oewn-skate-v	VerbForm=Ger	dema	1			carried
 skating	1	oewn-skate-n	Number=Sing+VerbForm=Ger	dema	1			carried
+skating	2	oewn-skating-n	Number=Sing	dema	0			oewn_form
 skating over	0	oewn-skate_over-v	VerbForm=Ger	dema	0			rule
 skating rink	0	oewn-skating_rink-n	Number=Sing	dema	0			oewn_form
 skating rinks	0	oewn-skating_rink-n	Number=Plur	dema	0			rule

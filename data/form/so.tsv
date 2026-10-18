@@ -2208,6 +2208,7 @@ sortileges	0		Number=Plur	dema	0	sortilege	n	rule
 sortilegic	0		Degree=Pos	dema	0	sortilegic	a	moby_reverse
 sorting	0	oewn-sort-v	VerbForm=Ger	dema	1			carried
 sorting	1	oewn-sort-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sorting	2	oewn-sorting-n	Number=Sing	dema	0			oewn_form
 sorting algorithm	0	oewn-sorting_algorithm-n	Number=Sing	dema	0			oewn_form
 sorting algorithms	0	oewn-sorting_algorithm-n	Number=Plur	dema	0			rule
 sorting out	0	oewn-sort_out-v	VerbForm=Ger	dema	0			rule
@@ -2400,6 +2401,7 @@ soundest	0	oewn-sound-a	Degree=Sup	dema	0			rule
 sounding	0	oewn-sound-v	VerbForm=Ger	dema	1			carried
 sounding	1	oewn-sounding-a	Degree=Pos	dema	0			carried
 sounding	2	oewn-sound-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sounding	3	oewn-sounding-n	Number=Sing	dema	0			oewn_form
 sounding board	0	oewn-sounding_board-n	Number=Sing	dema	0			oewn_form
 sounding boards	0	oewn-sounding_board-n	Number=Plur	dema	0			rule
 sounding lead	0	oewn-sounding_lead-n	Number=Sing	dema	0			oewn_form

@@ -1004,6 +1004,7 @@ schedules	0	oewn-schedule-n	Number=Plur	dema	1			carried
 schedules	1	oewn-schedule-v	Person=3+Tense=Pres	dema	1			carried
 scheduling	0	oewn-schedule-v	VerbForm=Ger	dema	1			carried
 scheduling	1	oewn-schedule-n	Number=Sing+VerbForm=Ger	dema	1			carried
+scheduling	2	oewn-scheduling-n	Number=Sing	dema	0			oewn_form
 schedulings	0	oewn-scheduling-n	Number=Plur	dema	0			rule
 scheelite	0	oewn-scheelite-n	Number=Sing	dema	0			oewn_form
 scheelites	0	oewn-scheelite-n	Number=Plur	dema	0			rule
@@ -1855,6 +1856,7 @@ scorify	0		VerbForm=Inf	dema	0	scorify	v	moby_reverse
 scorifying	0		VerbForm=Ger	dema	0	scorify	v	rule
 scoring	0	oewn-score-v	VerbForm=Ger	dema	1			carried
 scoring	1	oewn-score-n	Number=Sing+VerbForm=Ger	dema	1			carried
+scoring	2	oewn-scoring-n	Number=Sing	dema	0			oewn_form
 scoring out	0	oewn-score_out-v	VerbForm=Ger	dema	0			rule
 scoring system	0	oewn-scoring_system-n	Number=Sing	dema	0			oewn_form
 scoring systems	0	oewn-scoring_system-n	Number=Plur	dema	0			rule
@@ -2224,6 +2226,8 @@ screamer	0	oewn-screamer-n	Number=Sing	dema	0			oewn_form
 screamers	0	oewn-screamer-n	Number=Plur	dema	0			rule
 screaming	0	oewn-scream-v	VerbForm=Ger	dema	1			carried
 screaming	1	oewn-scream-n	Number=Sing+VerbForm=Ger	dema	1			carried
+screaming	2	oewn-screaming-a	Degree=Pos	dema	0			oewn_form
+screaming	3	oewn-screaming-n	Number=Sing	dema	0			oewn_form
 screaming meemies	0	oewn-screaming_meemies-n	Number=Sing	dema	0			oewn_form
 screamingly	0	oewn-screamingly-r	Degree=Pos	dema	0			oewn_form
 screamings	0	oewn-screaming-n	Number=Plur	dema	0			rule
@@ -2275,6 +2279,7 @@ screener	0	oewn-screener-n	Number=Sing	dema	0			oewn_form
 screeners	0	oewn-screener-n	Number=Plur	dema	0			rule
 screening	0	oewn-screen-v	VerbForm=Ger	dema	1			carried
 screening	1	oewn-screen-n	Number=Sing+VerbForm=Ger	dema	1			carried
+screening	2	oewn-screening-n	Number=Sing	dema	0			oewn_form
 screening off	0	oewn-screen_off-v	VerbForm=Ger	dema	0			rule
 screening out	0	oewn-screen_out-v	VerbForm=Ger	dema	0			rule
 screenings	0	oewn-screening-n	Number=Plur	dema	0			rule
@@ -2349,6 +2354,7 @@ screwier	0	oewn-screwy-a	Degree=Cmp	dema	0			oewn_form
 screwiest	0	oewn-screwy-a	Degree=Sup	dema	0			oewn_form
 screwing	0	oewn-screw-v	VerbForm=Ger	dema	1			carried
 screwing	1	oewn-screw-n	Number=Sing+VerbForm=Ger	dema	1			carried
+screwing	2	oewn-screwing-n	Number=Sing	dema	0			oewn_form
 screwing up	0	oewn-screw_up-v	VerbForm=Ger	dema	0			rule
 screwings	0	oewn-screwing-n	Number=Plur	dema	0			rule
 screwless	0		Degree=Pos	dema	0	screwless	a	moby_reverse

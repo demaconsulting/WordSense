@@ -988,6 +988,8 @@ swingiest	0	oewn-swingy-a	Degree=Sup	dema	0			rule
 swinging	0	oewn-swing-v	VerbForm=Ger	dema	1			carried
 swinging	1	oewn-swing-n	Number=Sing+VerbForm=Ger	dema	1			carried
 swinging	2	oewn-swinge-v	VerbForm=Ger	dema	0			rule_variant
+swinging	3	oewn-swinging-a	Degree=Pos	dema	0			oewn_form
+swinging	4	oewn-swinging-n	Number=Sing	dema	0			oewn_form
 swinging about	0	oewn-swing_about-v	VerbForm=Ger	dema	0			rule
 swinging around	0	oewn-swing_around-v	VerbForm=Ger	dema	0			rule
 swinging chad	0	oewn-swinging_chad-n	Number=Sing	dema	0			oewn_form

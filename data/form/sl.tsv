@@ -693,6 +693,7 @@ slices through	0	oewn-slice_through-v	Person=3+Tense=Pres	dema	0			rule
 slices up	0	oewn-slice_up-v	Person=3+Tense=Pres	dema	0			rule
 slicing	0	oewn-slice-v	VerbForm=Ger	dema	1			carried
 slicing	1	oewn-slice-n	Number=Sing+VerbForm=Ger	dema	1			carried
+slicing	2	oewn-slicing-n	Number=Sing	dema	0			oewn_form
 slicing into	0	oewn-slice_into-v	VerbForm=Ger	dema	0			rule
 slicing through	0	oewn-slice_through-v	VerbForm=Ger	dema	0			rule
 slicing up	0	oewn-slice_up-v	VerbForm=Ger	dema	0			rule
@@ -1203,6 +1204,7 @@ sloughiest	0	oewn-sloughy-a	Degree=Sup	dema	0			rule
 sloughiness	0		Number=Sing	dema	0	sloughiness	n	moby_reverse
 sloughing	0	oewn-slough-v	VerbForm=Ger	dema	1			carried
 sloughing	1	oewn-slough-n-1	Number=Sing+VerbForm=Ger	dema	1			carried
+sloughing	2	oewn-sloughing-n	Number=Sing	dema	0			oewn_form
 sloughing off	0	oewn-slough_off-v	VerbForm=Ger	dema	0			rule
 sloughings	0	oewn-sloughing-n	Number=Plur	dema	0			rule
 sloughs	0	oewn-slough-v	Person=3+Tense=Pres	dema	1			carried

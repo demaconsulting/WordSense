@@ -1545,6 +1545,7 @@ damages	0	oewn-damage-n	Number=Plur	dema	1			carried
 damages	1	oewn-damage-v	Person=3+Tense=Pres	dema	1			carried
 damaging	0	oewn-damage-v	VerbForm=Ger	dema	1			carried
 damaging	1	oewn-damage-n	Number=Sing+VerbForm=Ger	dema	1			carried
+damaging	2	oewn-damaging-a	Degree=Pos	dema	0			oewn_form
 damagingly	0		Degree=Pos	dema	0	damagingly	r	moby_reverse
 daman	0		Number=Sing	dema	0	daman	n	moby_reverse
 damans	0		Number=Plur	dema	0	daman	n	rule
@@ -1741,6 +1742,7 @@ dancette	0		Number=Sing	dema	0	dancette	n	moby_reverse
 dancettes	0		Number=Plur	dema	0	dancette	n	rule
 dancing	0	oewn-dance-v	VerbForm=Ger	dema	1			carried
 dancing	1	oewn-dance-n	Number=Sing+VerbForm=Ger	dema	1			carried
+dancing	2	oewn-dancing-n	Number=Sing	dema	0			oewn_form
 dancing lady orchid	0	oewn-dancing_lady_orchid-n	Number=Sing	dema	0			oewn_form
 dancing lady orchids	0	oewn-dancing_lady_orchid-n	Number=Plur	dema	0			rule
 dancing partner	0	oewn-dancing_partner-n	Number=Sing	dema	0			oewn_form
@@ -2355,6 +2357,7 @@ dawn redwoods	0	oewn-dawn_redwood-n	Number=Plur	dema	0			rule
 dawned	0	oewn-dawn-v	Tense=Past	dema	1			carried
 dawning	0	oewn-dawn-v	VerbForm=Ger	dema	1			carried
 dawning	1	oewn-dawn-n	Number=Sing+VerbForm=Ger	dema	1			carried
+dawning	2	oewn-dawning-n	Number=Sing	dema	0			oewn_form
 dawnings	0	oewn-dawning-n	Number=Plur	dema	0			rule
 dawnlike	0		Degree=Pos	dema	0	dawnlike	a	moby_reverse
 dawns	0	oewn-dawn-n	Number=Plur	dema	1			carried
@@ -2814,6 +2817,7 @@ dealignment	0	oewn-dealignment-n	Number=Sing	dema	0			oewn_form
 dealignments	0	oewn-dealignment-n	Number=Plur	dema	0			rule
 dealing	0	oewn-deal-v	VerbForm=Ger	dema	1			carried
 dealing	1	oewn-deal-n	Number=Sing+VerbForm=Ger	dema	1			carried
+dealing	2	oewn-dealing-n	Number=Sing	dema	0			oewn_form
 dealing out	0	oewn-deal_out-v	VerbForm=Ger	dema	0			rule
 dealings	0	oewn-dealings-n	Number=Sing	dema	0			oewn_form
 dealings	1	oewn-dealing-n	Number=Plur	dema	0			rule
@@ -8119,6 +8123,7 @@ detailedly	0		Degree=Pos	dema	0	detailedly	r	moby_reverse
 detailedness	0		Number=Sing	dema	0	detailedness	n	moby_reverse
 detailednesses	0		Number=Plur	dema	0	detailedness	n	rule
 detailing	0	oewn-detail-v	VerbForm=Ger	dema	1			carried
+detailing	1	oewn-detailing-n	Number=Sing	dema	0			oewn_form
 detailings	0	oewn-detailing-n	Number=Plur	dema	0			rule
 details	0	oewn-detail-n	Number=Plur	dema	1			carried
 details	1	oewn-detail-v	Person=3+Tense=Pres	dema	1			carried
@@ -16887,6 +16892,7 @@ drainfield	0		Number=Sing	dema	0	drainfield	n	moby_reverse
 drainfields	0		Number=Plur	dema	0	drainfield	n	rule
 draining	0	oewn-drain-v	VerbForm=Ger	dema	1			carried
 draining	1	oewn-drain-n	Number=Sing+VerbForm=Ger	dema	1			carried
+draining	2	oewn-draining-a	Degree=Pos	dema	0			oewn_form
 draining board	0	oewn-draining_board-n	Number=Sing	dema	0			oewn_form
 draining boards	0	oewn-draining_board-n	Number=Plur	dema	0			rule
 draining the cup	0	oewn-drain_the_cup-v	VerbForm=Ger	dema	0			rule
@@ -17073,6 +17079,7 @@ drawers	0	oewn-drawers-n	Number=Sing	dema	0			oewn_form
 drawers	1	oewn-drawer-n	Number=Plur	dema	0			rule
 drawing	0	oewn-draw-v	VerbForm=Ger	dema	1			carried
 drawing	1	oewn-draw-n	Number=Sing+VerbForm=Ger	dema	1			carried
+drawing	2	oewn-drawing-n	Number=Sing	dema	0			oewn_form
 drawing a bead on	0	oewn-draw_a_bead_on-v	VerbForm=Ger	dema	0			rule
 drawing a blank	0	oewn-draw_a_blank-v	VerbForm=Ger	dema	0			rule
 drawing a line	0	oewn-draw_a_line-v	VerbForm=Ger	dema	0			rule
@@ -17512,6 +17519,7 @@ driller	0		Number=Sing	dema	0	driller	n	moby_reverse
 drillers	0		Number=Plur	dema	0	driller	n	rule
 drilling	0	oewn-drill-v	VerbForm=Ger	dema	1			carried
 drilling	1	oewn-drill-n	Number=Sing+VerbForm=Ger	dema	1			carried
+drilling	2	oewn-drilling-n	Number=Sing	dema	0			oewn_form
 drilling bit	0	oewn-drilling_bit-n	Number=Sing	dema	0			oewn_form
 drilling bits	0	oewn-drilling_bit-n	Number=Plur	dema	0			rule
 drilling fluid	0	oewn-drilling_fluid-n	Number=Sing	dema	0			oewn_form
@@ -17553,6 +17561,7 @@ drinkers	0	oewn-drinker-n	Number=Plur	dema	0			rule
 drinking	0	oewn-drink-v	VerbForm=Ger	dema	1			carried
 drinking	1	dema-drinking-a	Degree=Pos	dema	0			carried
 drinking	2	oewn-drink-n	Number=Sing+VerbForm=Ger	dema	1			carried
+drinking	3	oewn-drinking-n	Number=Sing	dema	0			oewn_form
 drinking age	0	oewn-drinking_age-n	Number=Sing	dema	0			oewn_form
 drinking ages	0	oewn-drinking_age-n	Number=Plur	dema	0			rule
 drinking bout	0	oewn-drinking_bout-n	Number=Sing	dema	0			oewn_form
@@ -17698,6 +17707,7 @@ driveways	0	oewn-driveway-n	Number=Plur	dema	0			rule
 driving	0	oewn-drive-v	VerbForm=Ger	dema	1			carried
 driving	1	oewn-driving-a	Degree=Pos	dema	0			carried
 driving	2	oewn-drive-n	Number=Sing+VerbForm=Ger	dema	1			carried
+driving	3	oewn-driving-n	Number=Sing	dema	0			oewn_form
 driving around	0	oewn-drive_around-v	VerbForm=Ger	dema	0			rule
 driving away	0	oewn-drive_away-v	VerbForm=Ger	dema	0			rule
 driving axle	0	oewn-driving_axle-n	Number=Sing	dema	0			oewn_form
@@ -18520,6 +18530,7 @@ duckies	0	oewn-ducky-n	Number=Plur	dema	0			rule
 duckiest	0		Degree=Sup	dema	0	ducky	a	moby_reverse
 ducking	0	oewn-duck-v	VerbForm=Ger	dema	1			carried
 ducking	1	oewn-duck-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ducking	2	oewn-ducking-n	Number=Sing	dema	0			oewn_form
 ducking stool	0	oewn-ducking_stool-n	Number=Sing	dema	0			oewn_form
 ducking stools	0	oewn-ducking_stool-n	Number=Plur	dema	0			rule
 duckings	0	oewn-ducking-n	Number=Plur	dema	0			rule
@@ -18824,6 +18835,7 @@ dumpiness	0	oewn-dumpiness-n	Number=Sing	dema	0			oewn_form
 dumpinesses	0	oewn-dumpiness-n	Number=Plur	dema	0			rule
 dumping	0	oewn-dump-v	VerbForm=Ger	dema	1			carried
 dumping	1	oewn-dump-n	Number=Sing+VerbForm=Ger	dema	1			carried
+dumping	2	oewn-dumping-n	Number=Sing	dema	0			oewn_form
 dumpings	0	oewn-dumping-n	Number=Plur	dema	0			rule
 dumpish	0		Degree=Pos	dema	0	dumpish	a	moby_reverse
 dumpishly	0		Degree=Pos	dema	0	dumpishly	r	moby_reverse

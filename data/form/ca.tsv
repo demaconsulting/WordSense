@@ -2175,6 +2175,7 @@ calligraphy	0	oewn-calligraphy-n	Number=Sing	dema	0			oewn_form
 calligraphy	1		Degree=Pos	dema	0	calligraphy	r	moby_reverse
 calling	0	oewn-call-v	VerbForm=Ger	dema	1			carried
 calling	1	oewn-call-n	Number=Sing+VerbForm=Ger	dema	1			carried
+calling	2	oewn-calling-n	Number=Sing	dema	0			oewn_form
 calling at	0	oewn-call_at-v	VerbForm=Ger	dema	0			rule
 calling attention	0	oewn-call_attention-v	VerbForm=Ger	dema	0			rule
 calling back	0	oewn-call_back-v	VerbForm=Ger	dema	0			rule
@@ -2708,6 +2709,7 @@ campimetries	0		Number=Plur	dema	0	campimetry	n	rule
 campimetry	0		Number=Sing	dema	0	campimetry	n	moby_reverse
 camping	0	oewn-camp-v	VerbForm=Ger	dema	1			carried
 camping	1	oewn-camp-n	Number=Sing+VerbForm=Ger	dema	1			carried
+camping	2	oewn-camping-n	Number=Sing	dema	0			oewn_form
 camping area	0	oewn-camping_area-n	Number=Sing	dema	0			oewn_form
 camping areas	0	oewn-camping_area-n	Number=Plur	dema	0			rule
 camping bus	0	oewn-camping_bus-n	Number=Sing	dema	0			oewn_form
@@ -4853,6 +4855,8 @@ carination	0		Number=Sing	dema	0	carination	n	moby_reverse
 carinations	0		Number=Plur	dema	0	carination	n	rule
 caring	0	oewn-care-v	VerbForm=Ger	dema	1			carried
 caring	1	oewn-care-n	Number=Sing+VerbForm=Ger	dema	1			carried
+caring	2	oewn-caring-a	Degree=Pos	dema	0			oewn_form
+caring	3	oewn-caring-n	Number=Sing	dema	0			oewn_form
 caring a hang	0	oewn-care_a_hang-v	VerbForm=Ger	dema	0			rule
 caring for	0	oewn-care_for-v	VerbForm=Ger	dema	0			rule
 carings	0	oewn-caring-n	Number=Plur	dema	0			rule
@@ -6000,6 +6004,7 @@ castile soap	0	oewn-castile_soap-n	Number=Sing	dema	0			oewn_form
 castile soaps	0	oewn-castile_soap-n	Number=Plur	dema	0			rule
 casting	0	oewn-cast-v	VerbForm=Ger	dema	1			carried
 casting	1	oewn-cast-n	Number=Sing+VerbForm=Ger	dema	1			carried
+casting	2	oewn-casting-n	Number=Sing	dema	0			oewn_form
 casting about	0	oewn-cast_about-v	VerbForm=Ger	dema	0			rule
 casting anchor	0	oewn-cast_anchor-v	VerbForm=Ger	dema	0			rule
 casting around	0	oewn-cast_around-v	VerbForm=Ger	dema	0			rule
@@ -7013,6 +7018,7 @@ causey	0		Number=Sing	dema	0	causey	n	moby_reverse
 causeys	0		Number=Plur	dema	0	causey	n	rule
 causing	0	oewn-cause-v	VerbForm=Ger	dema	1			carried
 causing	1	oewn-cause-n	Number=Sing+VerbForm=Ger	dema	1			carried
+causing	2	oewn-causing-n	Number=Sing	dema	0			oewn_form
 causing to be perceived	0	oewn-cause_to_be_perceived-v	VerbForm=Ger	dema	0			rule
 causing to sleep	0	oewn-cause_to_sleep-v	VerbForm=Ger	dema	0			rule
 causings	0	oewn-causing-n	Number=Plur	dema	0			rule

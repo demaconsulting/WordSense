@@ -2671,6 +2671,7 @@ landholding	1	oewn-landholding-n	Number=Sing	dema	0			oewn_form
 landholdings	0	oewn-landholding-n	Number=Plur	dema	0			rule
 landing	0	oewn-land-v	VerbForm=Ger	dema	1			carried
 landing	1	oewn-land-n	Number=Sing+VerbForm=Ger	dema	1			carried
+landing	2	oewn-landing-n	Number=Sing	dema	0			oewn_form
 landing approach	0	oewn-landing_approach-n	Number=Sing	dema	0			oewn_form
 landing approaches	0	oewn-landing_approach-n	Number=Plur	dema	0			rule
 landing craft	0	oewn-landing_craft-n	Number=Sing	dema	0			oewn_form
@@ -3853,6 +3854,7 @@ launches	0	oewn-launch-n	Number=Plur	dema	1			carried
 launches	1	oewn-launch-v	Person=3+Tense=Pres	dema	1			carried
 launching	0	oewn-launch-v	VerbForm=Ger	dema	1			carried
 launching	1	oewn-launch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+launching	2	oewn-launching-n	Number=Sing	dema	0			oewn_form
 launching pad	0	oewn-launching_pad-n	Number=Sing	dema	0			oewn_form
 launching pads	0	oewn-launching_pad-n	Number=Plur	dema	0			rule
 launching site	0	oewn-launching_site-n	Number=Sing	dema	0			oewn_form
@@ -4201,6 +4203,7 @@ laxnesses	0	oewn-laxness-n	Number=Plur	dema	0			rule
 lay	0	oewn-lay-n	Number=Sing	dema	1			carried
 lay	1	oewn-lay-v	VerbForm=Inf	dema	1			carried
 lay	2	oewn-lay-a	Degree=Pos	dema	0			carried
+lay	3	oewn-lie-v	Tense=Past+VerbForm=Part	dema	0			hand
 lay aside	0	oewn-lay_aside-v	VerbForm=Inf	dema	0			oewn_form
 lay away	0	oewn-lay_away-v	VerbForm=Inf	dema	0			oewn_form
 lay claim	0	oewn-lay_claim-v	VerbForm=Inf	dema	0			oewn_form
@@ -4252,6 +4255,7 @@ layette	0	oewn-layette-n	Number=Sing	dema	0			oewn_form
 layettes	0	oewn-layette-n	Number=Plur	dema	0			rule
 laying	0	oewn-lay-v	VerbForm=Ger	dema	1			carried
 laying	1	oewn-lay-n	Number=Sing+VerbForm=Ger	dema	1			carried
+laying	2	oewn-laying-n	Number=Sing	dema	0			oewn_form
 laying aside	0	oewn-lay_aside-v	VerbForm=Ger	dema	0			rule
 laying away	0	oewn-lay_away-v	VerbForm=Ger	dema	0			rule
 laying claim	0	oewn-laying_claim-n	Number=Sing	dema	0			oewn_form
@@ -4448,6 +4452,8 @@ leadiest	0		Degree=Sup	dema	0	leady	a	moby_reverse
 leading	0	oewn-lead-v	VerbForm=Ger	dema	1			carried
 leading	1	oewn-leading-a	Degree=Pos	dema	0			carried
 leading	2	oewn-lead-n-1	Number=Sing+VerbForm=Ger	dema	1			carried
+leading	3	oewn-leading-n-1	Number=Sing	dema	0			oewn_form
+leading	4	oewn-leading-n-2	Number=Sing	dema	0			oewn_form
 leading astray	0	oewn-leading_astray-n	Number=Sing	dema	0			oewn_form
 leading astray	1	oewn-lead_astray-v	VerbForm=Ger	dema	0			rule
 leading astrays	0	oewn-leading_astray-n	Number=Plur	dema	0			rule
@@ -4890,6 +4896,7 @@ leaver	0	oewn-leaver-n	Number=Sing	dema	0			oewn_form
 leavers	0	oewn-leaver-n	Number=Plur	dema	0			rule
 leaves	0	oewn-leave-n	Number=Plur	dema	1			carried
 leaves	1	oewn-leave-v	Person=3+Tense=Pres	dema	1			carried
+leaves	2	oewn-leaf-n	Number=Plur	dema	0			hand
 leaves alone	0	oewn-leave_alone-v	Person=3+Tense=Pres	dema	0			rule
 leaves behind	0	oewn-leave_behind-v	Person=3+Tense=Pres	dema	0			rule
 leaves no stone unturned	0	oewn-leave_no_stone_unturned-v	Person=3+Tense=Pres	dema	0			rule
@@ -4899,6 +4906,7 @@ leaves office	0	oewn-leave_office-v	Person=3+Tense=Pres	dema	0			rule
 leaves out	0	oewn-leave_out-v	Person=3+Tense=Pres	dema	0			rule
 leaving	0	oewn-leave-v	VerbForm=Ger	dema	1			carried
 leaving	1	oewn-leave-n	Number=Sing+VerbForm=Ger	dema	1			carried
+leaving	2	oewn-leaving-n	Number=Sing	dema	0			oewn_form
 leaving alone	0	oewn-leave_alone-v	VerbForm=Ger	dema	0			rule
 leaving behind	0	oewn-leave_behind-v	VerbForm=Ger	dema	0			rule
 leaving no stone unturned	0	oewn-leave_no_stone_unturned-v	VerbForm=Ger	dema	0			rule
@@ -4985,6 +4993,7 @@ lectureship	0	oewn-lectureship-n	Number=Sing	dema	0			oewn_form
 lectureships	0	oewn-lectureship-n	Number=Plur	dema	0			rule
 lecturing	0	oewn-lecture-v	VerbForm=Ger	dema	1			carried
 lecturing	1	oewn-lecture-n	Number=Sing+VerbForm=Ger	dema	1			carried
+lecturing	2	oewn-lecturing-n	Number=Sing	dema	0			oewn_form
 lecturings	0	oewn-lecturing-n	Number=Plur	dema	0			rule
 lecythoid	0		Degree=Pos	dema	0	lecythoid	a	moby_reverse
 lecythus	0		Number=Sing	dema	0	lecythus	n	moby_reverse
@@ -7432,6 +7441,7 @@ likewise	0	oewn-likewise-r	Degree=Pos	dema	0			oewn_form
 likin	0		Number=Sing	dema	0	likin	n	moby_reverse
 liking	0	oewn-like-v	VerbForm=Ger	dema	1			carried
 liking	1	oewn-like-n	Number=Sing+VerbForm=Ger	dema	1			carried
+liking	2	oewn-liking-n	Number=Sing	dema	0			oewn_form
 likings	0	oewn-liking-n	Number=Plur	dema	0			rule
 likins	0		Number=Plur	dema	0	likin	n	rule
 likker	0		Number=Sing	dema	0	likker	n	moby_reverse
@@ -7631,6 +7641,7 @@ limites	0		Number=Sing	dema	0	limites	n	moby_reverse
 limiting	0	oewn-limit-v	VerbForm=Ger	dema	1			carried
 limiting	1	oewn-limiting-a	Degree=Pos	dema	0			carried
 limiting	2	oewn-limit-n	Number=Sing+VerbForm=Ger	dema	1			carried
+limiting	3	oewn-limiting-n	Number=Sing	dema	0			oewn_form
 limitings	0	oewn-limiting-n	Number=Plur	dema	0			rule
 limitless	0	oewn-limitless-a	Degree=Pos	dema	0			oewn_form
 limitlessly	0		Degree=Pos	dema	0	limitlessly	r	moby_reverse
@@ -8091,6 +8102,7 @@ liniments	0	oewn-liniment-n	Number=Plur	dema	0			rule
 linin	0	oewn-linin-n	Number=Sing	dema	0			oewn_form
 lining	0	oewn-line-v	VerbForm=Ger	dema	1			carried
 lining	1	oewn-line-n	Number=Sing+VerbForm=Ger	dema	1			carried
+lining	2	oewn-lining-n	Number=Sing	dema	0			oewn_form
 lining one's pockets	0	oewn-line_one-ap-s_pockets-v	VerbForm=Ger	dema	0			rule
 lining up	0	oewn-line_up-v	VerbForm=Ger	dema	0			rule
 linings	0	oewn-lining-n	Number=Plur	dema	0			rule
@@ -8598,6 +8610,7 @@ listeriosis	0	oewn-listeriosis-n	Number=Sing	dema	0			oewn_form
 listers	0	oewn-lister-n	Number=Plur	dema	0			rule
 listing	0	oewn-list-v	VerbForm=Ger	dema	1			carried
 listing	1	oewn-list-n	Number=Sing+VerbForm=Ger	dema	1			carried
+listing	2	oewn-listing-n	Number=Sing	dema	0			oewn_form
 listings	0	oewn-listing-n	Number=Plur	dema	0			rule
 listless	0	oewn-listless-a	Degree=Pos	dema	0			oewn_form
 listlessly	0	oewn-listlessly-r	Degree=Pos	dema	0			oewn_form
@@ -9134,6 +9147,7 @@ liverywoman	0	oewn-liverywoman-n	Number=Sing	dema	0			oewn_form
 liverywomans	0	oewn-liverywoman-n	Number=Plur	dema	0			rule
 lives	0	oewn-live-v	Person=3+Tense=Pres	dema	1			carried
 lives	1	dema-lives-n	Number=Sing	dema	0			carried
+lives	2	oewn-life-n	Number=Plur	dema	0			hand
 lives down	0	oewn-live_down-v	Person=3+Tense=Pres	dema	0			rule
 lives in	0	oewn-live_in-v	Person=3+Tense=Pres	dema	0			rule
 lives it up	0	oewn-live_it_up-v	Person=3+Tense=Pres	dema	0			rule
@@ -9647,6 +9661,7 @@ locket	0	oewn-locket-n	Number=Sing	dema	0			oewn_form
 lockets	0	oewn-locket-n	Number=Plur	dema	0			rule
 locking	0	oewn-lock-v	VerbForm=Ger	dema	1			carried
 locking	1	oewn-lock-n	Number=Sing+VerbForm=Ger	dema	1			carried
+locking	2	oewn-locking-n	Number=Sing	dema	0			oewn_form
 locking away	0	oewn-lock_away-v	VerbForm=Ger	dema	0			rule
 locking in	0	oewn-lock_in-v	VerbForm=Ger	dema	0			rule
 locking out	0	oewn-lock_out-v	VerbForm=Ger	dema	0			rule

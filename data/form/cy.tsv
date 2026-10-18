@@ -318,6 +318,7 @@ cyclicities	0	oewn-cyclicity-n	Number=Plur	dema	0			rule
 cyclicity	0	oewn-cyclicity-n	Number=Sing	dema	0			oewn_form
 cycling	0	oewn-cycle-v	VerbForm=Ger	dema	1			carried
 cycling	1	oewn-cycle-n	Number=Sing+VerbForm=Ger	dema	1			carried
+cycling	2	oewn-cycling-n	Number=Sing	dema	0			oewn_form
 cycling on	0	oewn-cycle_on-v	VerbForm=Ger	dema	0			rule
 cyclings	0	oewn-cycling-n	Number=Plur	dema	0			rule
 cyclist	0	oewn-cyclist-n	Number=Sing	dema	0			oewn_form

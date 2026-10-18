@@ -1288,6 +1288,7 @@ breakfasts	1	oewn-breakfast-v	Person=3+Tense=Pres	dema	0			rule
 breakfront	0		Degree=Pos	dema	0	breakfront	a	moby_reverse
 breaking	0	oewn-break-v	VerbForm=Ger	dema	1			carried
 breaking	1	oewn-break-n	Number=Sing+VerbForm=Ger	dema	1			carried
+breaking	2	oewn-breaking-n	Number=Sing	dema	0			oewn_form
 breaking and entering	0	oewn-breaking_and_entering-n	Number=Sing	dema	0			oewn_form
 breaking and enterings	0	oewn-breaking_and_entering-n	Number=Plur	dema	0			rule
 breaking apart	0	oewn-break_apart-v	VerbForm=Ger	dema	0			rule
@@ -1550,6 +1551,8 @@ breeder reactors	0	oewn-breeder_reactor-n	Number=Plur	dema	0			rule
 breeders	0	oewn-breeder-n	Number=Plur	dema	0			rule
 breeding	0	oewn-breed-v	VerbForm=Ger	dema	1			carried
 breeding	1	oewn-breed-n	Number=Sing+VerbForm=Ger	dema	1			carried
+breeding	2	oewn-breeding-a	Degree=Pos	dema	0			oewn_form
+breeding	3	oewn-breeding-n	Number=Sing	dema	0			oewn_form
 breeding ground	0	oewn-breeding_ground-n	Number=Sing	dema	0			oewn_form
 breeding grounds	0	oewn-breeding_ground-n	Number=Plur	dema	0			rule
 breeding season	0	oewn-breeding_season-n	Number=Sing	dema	0			oewn_form
@@ -3080,6 +3083,7 @@ brushiness	0		Number=Sing	dema	0	brushiness	n	moby_reverse
 brushinesses	0		Number=Plur	dema	0	brushiness	n	rule
 brushing	0	oewn-brush-v	VerbForm=Ger	dema	1			carried
 brushing	1	oewn-brush-n	Number=Sing+VerbForm=Ger	dema	1			carried
+brushing	2	oewn-brushing-n	Number=Sing	dema	0			oewn_form
 brushing aside	0	oewn-brush_aside-v	VerbForm=Ger	dema	0			rule
 brushing down	0	oewn-brush_down-v	VerbForm=Ger	dema	0			rule
 brushing machine	0	oewn-brushing_machine-n	Number=Sing	dema	0			oewn_form

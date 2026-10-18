@@ -866,6 +866,7 @@ poisoner	0	oewn-poisoner-n	Number=Sing	dema	0			oewn_form
 poisoners	0	oewn-poisoner-n	Number=Plur	dema	0			rule
 poisoning	0	oewn-poison-v	VerbForm=Ger	dema	1			carried
 poisoning	1	oewn-poison-n	Number=Sing+VerbForm=Ger	dema	1			carried
+poisoning	2	oewn-poisoning-n	Number=Sing	dema	0			oewn_form
 poisonings	0	oewn-poisoning-n	Number=Plur	dema	0			rule
 poisonning	0	oewn-poison-n	Number=Sing+VerbForm=Ger	dema	1			carried
 poisonous	0	oewn-poisonous-a	Degree=Pos	dema	0			oewn_form
@@ -2396,6 +2397,7 @@ poppies	0	oewn-poppy-n	Number=Plur	dema	0			rule
 poppin	0	oewn-poppin-a	Degree=Pos	dema	0			oewn_form
 popping	0	oewn-pop-v	VerbForm=Ger	dema	1			carried
 popping	1	oewn-pop-n	Number=Sing+VerbForm=Ger	dema	1			carried
+popping	2	oewn-popping-n	Number=Sing	dema	0			oewn_form
 popping in	0	oewn-pop_in-v	VerbForm=Ger	dema	0			rule
 popping off	0	oewn-pop_off-v	VerbForm=Ger	dema	0			rule
 popping out	0	oewn-pop_out-v	VerbForm=Ger	dema	0			rule
@@ -3368,6 +3370,7 @@ postinfective	0		Degree=Pos	dema	0	postinfective	a	moby_reverse
 postinfluenzal	0		Degree=Pos	dema	0	postinfluenzal	a	moby_reverse
 posting	0	oewn-post-v	VerbForm=Ger	dema	1			carried
 posting	1	oewn-post-n	Number=Sing+VerbForm=Ger	dema	1			carried
+posting	2	oewn-posting-n	Number=Sing	dema	0			oewn_form
 postings	0	oewn-posting-n	Number=Plur	dema	0			rule
 postintestinal	0		Degree=Pos	dema	0	postintestinal	a	moby_reverse
 postjugular	0		Degree=Pos	dema	0	postjugular	a	moby_reverse

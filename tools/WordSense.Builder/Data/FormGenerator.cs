@@ -99,8 +99,13 @@ internal static partial class FormGenerator
             {
                 // A spelling that lost a frozen analysis as not derivable (moped as a form of mop) takes the generated analyses of
                 // other entries after the frozen ones, when they are corroborated (moped as the past of mope)
-                if (DroppedFrozen.Contains(item.Spelling) && item.EntryId is { } entryId && IsInflected(item) && !(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId))
-                    && Corroborated(this, item))
+                // The entry that carries an -ing spelling as its own lemma (the noun tracing beside the gerund of trace) and the forms of
+                // the irregular lists (the plural lives of life, the past lay of lie) are kept the same way: a reviewed analysis of another
+                // entry must not hide them. Other reviewed spellings stay exactly as they were reviewed (bowed is only the bend verb).
+                if (item.EntryId is { } entryId && !(FrozenEntries.TryGetValue(item.Spelling, out var have) && have.Contains(entryId))
+                    && ((DroppedFrozen.Contains(item.Spelling) && IsInflected(item) && Corroborated(this, item))
+                        || (!IsInflected(item) && item.Spelling.EndsWith("ing", StringComparison.Ordinal) && string.Equals(Entries[entryId][1], item.Spelling, StringComparison.OrdinalIgnoreCase))
+                        || item.Provenance is "hand" or "irregular_list"))
                 {
                     if (!FrozenExtras.TryGetValue(item.Spelling, out var extras))
                     {

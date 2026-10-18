@@ -778,6 +778,7 @@ alert	2	oewn-alert-a	Degree=Pos	dema	0			carried
 alerted	0	oewn-alert-v	Tense=Past	dema	1			carried
 alerting	0	oewn-alert-v	VerbForm=Ger	dema	1			carried
 alerting	1	oewn-alert-n	Number=Sing+VerbForm=Ger	dema	1			carried
+alerting	2	oewn-alerting-n	Number=Sing	dema	0			oewn_form
 alertings	0	oewn-alerting-n	Number=Plur	dema	0			rule
 alertly	0	oewn-alertly-r	Degree=Pos	dema	0			oewn_form
 alertness	0	oewn-alertness-n	Number=Sing	dema	0			oewn_form

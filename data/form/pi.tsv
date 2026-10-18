@@ -702,6 +702,7 @@ picturesqueness	0	oewn-picturesqueness-n	Number=Sing	dema	0			oewn_form
 picturesquenesses	0	oewn-picturesqueness-n	Number=Plur	dema	0			rule
 picturing	0	oewn-picture-v	VerbForm=Ger	dema	1			carried
 picturing	1	oewn-picture-n	Number=Sing+VerbForm=Ger	dema	1			carried
+picturing	2	oewn-picturing-n	Number=Sing	dema	0			oewn_form
 picturings	0	oewn-picturing-n	Number=Plur	dema	0			rule
 picturization	0		Number=Sing	dema	0	picturization	n	moby_reverse
 picturizations	0		Number=Plur	dema	0	picturization	n	rule
@@ -1166,6 +1167,7 @@ piliferous	0		Degree=Pos	dema	0	piliferous	a	moby_reverse
 piliform	0		Degree=Pos	dema	0	piliform	a	moby_reverse
 piling	0	oewn-pile-v	VerbForm=Ger	dema	1			carried
 piling	1	oewn-pile-n	Number=Sing+VerbForm=Ger	dema	1			carried
+piling	2	oewn-piling-n	Number=Sing	dema	0			oewn_form
 piling hammer	0	oewn-piling_hammer-n	Number=Sing	dema	0			oewn_form
 piling hammers	0	oewn-piling_hammer-n	Number=Plur	dema	0			rule
 piling up	0	oewn-pile_up-v	VerbForm=Ger	dema	0			rule
@@ -1721,6 +1723,7 @@ pinners	0	oewn-pinner-n	Number=Plur	dema	0			rule
 pinnies	0	oewn-pinny-n	Number=Plur	dema	0			rule
 pinning	0	oewn-pin-v	VerbForm=Ger	dema	1			carried
 pinning	1	oewn-pin-n	Number=Sing+VerbForm=Ger	dema	1			carried
+pinning	2	oewn-pinning-n	Number=Sing	dema	0			oewn_form
 pinning down	0	oewn-pin_down-v	VerbForm=Ger	dema	0			rule
 pinning on	0	oewn-pin_on-v	VerbForm=Ger	dema	0			rule
 pinning up	0	oewn-pin_up-v	VerbForm=Ger	dema	0			rule

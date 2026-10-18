@@ -2151,6 +2151,7 @@ offerer	0	oewn-offerer-n	Number=Sing	dema	0			oewn_form
 offerers	0	oewn-offerer-n	Number=Plur	dema	0			rule
 offering	0	oewn-offer-v	VerbForm=Ger	dema	1			carried
 offering	1	oewn-offer-n	Number=Sing+VerbForm=Ger	dema	1			carried
+offering	2	oewn-offering-n	Number=Sing	dema	0			oewn_form
 offering up	0	oewn-offer_up-v	VerbForm=Ger	dema	0			rule
 offerings	0	oewn-offering-n	Number=Plur	dema	0			rule
 offeror	0	oewn-offeror-n	Number=Sing	dema	0			oewn_form
@@ -4955,6 +4956,7 @@ orienteering	0		Number=Sing	dema	0	orienteering	n	moby_reverse
 orienteerings	0		Number=Plur	dema	0	orienteering	n	rule
 orienting	0	oewn-orient-v	VerbForm=Ger	dema	1			carried
 orienting	1	oewn-orient-n	Number=Sing+VerbForm=Ger	dema	1			carried
+orienting	2	oewn-orienting-a	Degree=Pos	dema	0			oewn_form
 orients	0	oewn-orient-n	Number=Plur	dema	1			carried
 orients	1	oewn-orient-v	Person=3+Tense=Pres	dema	1			carried
 orifice	0	oewn-orifice-n	Number=Sing	dema	0			oewn_form
@@ -10508,6 +10510,7 @@ overlaxly	0		Degree=Pos	dema	0	overlaxly	r	moby_reverse
 overlaxness	0		Number=Sing	dema	0	overlaxness	n	moby_reverse
 overlay	0	oewn-overlay-n	Number=Sing	dema	1			carried
 overlay	1	oewn-overlay-v	VerbForm=Inf	dema	1			carried
+overlay	2	oewn-overlie-v	Tense=Past+VerbForm=Part	dema	0			hand
 overlayer	0	oewn-overlayer-n	Number=Sing	dema	0			oewn_form
 overlayers	0	oewn-overlayer-n	Number=Plur	dema	0			rule
 overlaying	0	oewn-overlay-v	VerbForm=Ger	dema	0			rule

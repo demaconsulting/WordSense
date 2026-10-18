@@ -1601,6 +1601,7 @@ blockier	0	oewn-blocky-a	Degree=Cmp	dema	0			rule
 blockiest	0	oewn-blocky-a	Degree=Sup	dema	0			rule
 blocking	0	oewn-block-v	VerbForm=Ger	dema	1			carried
 blocking	1	oewn-block-n	Number=Sing+VerbForm=Ger	dema	1			carried
+blocking	2	oewn-blocking-n	Number=Sing	dema	0			oewn_form
 blocking agent	0	oewn-blocking_agent-n	Number=Sing	dema	0			oewn_form
 blocking agents	0	oewn-blocking_agent-n	Number=Plur	dema	0			rule
 blocking off	0	oewn-block_off-v	VerbForm=Ger	dema	0			rule
@@ -1869,6 +1870,7 @@ blooming	0	oewn-bloom-v	VerbForm=Ger	dema	1			carried
 blooming	1	dema-blooming-r	Degree=Pos	dema	0			carried
 blooming	2	oewn-blooming-a	Degree=Pos	dema	0			carried
 blooming	3	oewn-bloom-n	Number=Sing+VerbForm=Ger	dema	1			carried
+blooming	4	oewn-blooming-n	Number=Sing	dema	0			oewn_form
 blooming-fool begonia	0	oewn-blooming-fool_begonia-n	Number=Sing	dema	0			oewn_form
 blooming-fool begonias	0	oewn-blooming-fool_begonia-n	Number=Plur	dema	0			rule
 bloomingly	0		Degree=Pos	dema	0	bloomingly	r	moby_reverse

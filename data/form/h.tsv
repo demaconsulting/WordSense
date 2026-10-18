@@ -2481,6 +2481,7 @@ hammerheaded	1		VerbForm=Inf	dema	0	hammerheaded	v	moby_reverse
 hammerheads	0	oewn-hammerhead-n	Number=Plur	dema	0			rule
 hammering	0	oewn-hammer-v	VerbForm=Ger	dema	1			carried
 hammering	1	oewn-hammer-n	Number=Sing+VerbForm=Ger	dema	1			carried
+hammering	2	oewn-hammering-n	Number=Sing	dema	0			oewn_form
 hammering in	0	oewn-hammer_in-v	VerbForm=Ger	dema	0			rule
 hammering out	0	oewn-hammer_out-v	VerbForm=Ger	dema	0			rule
 hammeringly	0		Degree=Pos	dema	0	hammeringly	r	moby_reverse
@@ -2808,7 +2809,8 @@ handline	0	oewn-handline-n	Number=Sing	dema	0			oewn_form
 handlines	0	oewn-handline-n	Number=Plur	dema	0			rule
 handling	0	oewn-handle-v	VerbForm=Ger	dema	1			carried
 handling	1	oewn-handle-n	Number=Sing+VerbForm=Ger	dema	1			carried
-handling	2	oewn-handling-n	Number=Plur	dema	0			agid
+handling	2	oewn-handling-n	Number=Sing	dema	0			oewn_form
+handling	3	oewn-handling-n	Number=Plur	dema	0			agid
 handling charge	0	oewn-handling_charge-n	Number=Sing	dema	0			oewn_form
 handling charges	0	oewn-handling_charge-n	Number=Plur	dema	0			rule
 handling cost	0	oewn-handling_cost-n	Number=Sing	dema	0			oewn_form
@@ -4563,6 +4565,7 @@ headiness	0	oewn-headiness-n	Number=Sing	dema	0			oewn_form
 headinesses	0	oewn-headiness-n	Number=Plur	dema	0			rule
 heading	0	oewn-head-v	VerbForm=Ger	dema	1			carried
 heading	1	oewn-head-n	Number=Sing+VerbForm=Ger	dema	1			carried
+heading	2	oewn-heading-n	Number=Sing	dema	0			oewn_form
 heading for the hills	0	oewn-head_for_the_hills-v	VerbForm=Ger	dema	0			rule
 heading home	0	oewn-head_home-v	VerbForm=Ger	dema	0			rule
 heading off	0	oewn-head_off-v	VerbForm=Ger	dema	0			rule
@@ -10049,6 +10052,7 @@ honorifically	0		Degree=Pos	dema	0	honorifically	r	moby_reverse
 honorifics	0	oewn-honorific-n	Number=Plur	dema	0			rule
 honoring	0	oewn-honor-v	VerbForm=Ger	dema	1			carried
 honoring	1	oewn-honor-n	Number=Sing+VerbForm=Ger	dema	1			carried
+honoring	2	oewn-honoring-n	Number=Sing	dema	0			oewn_form
 honorings	0	oewn-honoring-n	Number=Plur	dema	0			rule
 honoris causa	0	oewn-honoris_causa-n	Number=Sing	dema	0			oewn_form
 honoris causas	0	oewn-honoris_causa-n	Number=Plur	dema	0			rule
@@ -10223,6 +10227,7 @@ hookies	0	oewn-hooky-n	Number=Plur	dema	0			rule
 hookiest	0		Degree=Pos	dema	0	hookiest	a	moby_reverse
 hooking	0	oewn-hook-v	VerbForm=Ger	dema	1			carried
 hooking	1	oewn-hook-n	Number=Sing+VerbForm=Ger	dema	1			carried
+hooking	2	oewn-hooking-n	Number=Sing	dema	0			oewn_form
 hooking on	0	oewn-hook_on-v	VerbForm=Ger	dema	0			rule
 hooking up	0	oewn-hook_up-v	VerbForm=Ger	dema	0			rule
 hooking up with	0	oewn-hook_up_with-v	VerbForm=Ger	dema	0			rule
@@ -12269,6 +12274,7 @@ hunterlike	0		Degree=Pos	dema	0	hunterlike	a	moby_reverse
 hunters	0	oewn-hunter-n	Number=Plur	dema	0			rule
 hunting	0	oewn-hunt-v	VerbForm=Ger	dema	1			carried
 hunting	1	oewn-hunt-n	Number=Sing+VerbForm=Ger	dema	1			carried
+hunting	2	oewn-hunting-n	Number=Sing	dema	0			oewn_form
 hunting and gathering societies	0	oewn-hunting_and_gathering_society-n	Number=Plur	dema	0			rule
 hunting and gathering society	0	oewn-hunting_and_gathering_society-n	Number=Sing	dema	0			oewn_form
 hunting and gathering tribe	0	oewn-hunting_and_gathering_tribe-n	Number=Sing	dema	0			oewn_form

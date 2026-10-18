@@ -1308,6 +1308,7 @@ spellican	0		Number=Sing	dema	0	spellican	n	moby_reverse
 spellicans	0		Number=Plur	dema	0	spellican	n	rule
 spelling	0	oewn-spell-v	VerbForm=Ger	dema	1			carried
 spelling	1	oewn-spell-n	Number=Sing+VerbForm=Ger	dema	1			carried
+spelling	2	oewn-spelling-n	Number=Sing	dema	0			oewn_form
 spelling bee	0	oewn-spelling_bee-n	Number=Sing	dema	0			oewn_form
 spelling bees	0	oewn-spelling_bee-n	Number=Plur	dema	0			rule
 spelling checker	0	oewn-spelling_checker-n	Number=Sing	dema	0			oewn_form
@@ -3196,6 +3197,7 @@ spottiness	0		Number=Sing	dema	0	spottiness	n	moby_reverse
 spottinesses	0		Number=Plur	dema	0	spottiness	n	rule
 spotting	0	oewn-spot-v	VerbForm=Ger	dema	1			carried
 spotting	1	oewn-spot-n	Number=Sing+VerbForm=Ger	dema	1			carried
+spotting	2	oewn-spotting-n	Number=Sing	dema	0			oewn_form
 spotting jam	0	oewn-spot_jam-v	VerbForm=Ger	dema	0			rule
 spotting promote	0	oewn-spot_promote-v	VerbForm=Ger	dema	0			rule
 spottings	0	oewn-spotting-n	Number=Plur	dema	0			rule
@@ -3301,6 +3303,7 @@ sprayful	0		Degree=Pos	dema	0	sprayful	a	moby_reverse
 sprayfully	0		Degree=Pos	dema	0	sprayfully	r	moby_reverse
 spraying	0	oewn-spray-v	VerbForm=Ger	dema	1			carried
 spraying	1	oewn-spray-n	Number=Sing+VerbForm=Ger	dema	1			carried
+spraying	2	oewn-spraying-n	Number=Sing	dema	0			oewn_form
 sprayings	0	oewn-spraying-n	Number=Plur	dema	0			rule
 sprayless	0		Degree=Pos	dema	0	sprayless	a	moby_reverse
 spraylike	0		Degree=Pos	dema	0	spraylike	a	moby_reverse

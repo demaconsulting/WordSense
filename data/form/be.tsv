@@ -627,6 +627,8 @@ bearer stocks	0	oewn-bearer_stock-n	Number=Plur	dema	0			rule
 bearers	0	oewn-bearer-n	Number=Plur	dema	0			rule
 bearing	0	oewn-bear-v	VerbForm=Ger	dema	1			carried
 bearing	1	oewn-bear-n	Number=Sing+VerbForm=Ger	dema	1			carried
+bearing	2	oewn-bearing-a	Degree=Pos	dema	0			oewn_form
+bearing	3	oewn-bearing-n	Number=Sing	dema	0			oewn_form
 bearing away	0	oewn-bear_away-v	VerbForm=Ger	dema	0			rule
 bearing brass	0	oewn-bearing_brass-n	Number=Sing	dema	0			oewn_form
 bearing brasses	0	oewn-bearing_brass-n	Number=Plur	dema	0			rule
@@ -728,6 +730,7 @@ beatify	0	oewn-beatify-v	VerbForm=Inf	dema	0			oewn_form
 beatifying	0	oewn-beatify-v	VerbForm=Ger	dema	0			rule
 beating	0	oewn-beat-v	VerbForm=Ger	dema	1			carried
 beating	1	oewn-beat-n	Number=Sing+VerbForm=Ger	dema	1			carried
+beating	2	oewn-beating-n	Number=Sing	dema	0			oewn_form
 beating a retreat	0	oewn-beat_a_retreat-v	VerbForm=Ger	dema	0			rule
 beating about	0	oewn-beat_about-v	VerbForm=Ger	dema	0			rule
 beating around the bush	0	oewn-beat_around_the_bush-v	VerbForm=Ger	dema	0			rule
@@ -2219,6 +2222,7 @@ benders	0	oewn-bender-n	Number=Plur	dema	0			rule
 bendies	0		Number=Sing	dema	0	bendies	n	moby_reverse
 bending	0	oewn-bend-v	VerbForm=Ger	dema	1			carried
 bending	1	oewn-bend-n	Number=Sing+VerbForm=Ger	dema	1			carried
+bending	2	oewn-bending-n	Number=Sing	dema	0			oewn_form
 bending over backwards	0	oewn-bend_over_backwards-v	VerbForm=Ger	dema	0			rule
 bendings	0	oewn-bending-n	Number=Plur	dema	0			rule
 bendlet	0		Number=Sing	dema	0	bendlet	n	moby_reverse

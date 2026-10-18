@@ -6378,6 +6378,7 @@ underlawyer	0		Number=Sing	dema	0	underlawyer	n	moby_reverse
 underlawyers	0		Number=Plur	dema	0	underlawyer	n	rule
 underlay	0	oewn-underlay-n	Number=Sing	dema	1			carried
 underlay	1	oewn-underlay-v	VerbForm=Inf	dema	1			carried
+underlay	2	oewn-underlie-v	Tense=Past+VerbForm=Part	dema	0			hand
 underlayer	0		Number=Sing	dema	0	underlayer	n	moby_reverse
 underlayers	0		Number=Plur	dema	0	underlayer	n	rule
 underlaying	0	oewn-underlay-v	VerbForm=Ger	dema	0			rule
@@ -23017,6 +23018,7 @@ updaters	0		Number=Plur	dema	0	updater	n	rule
 updates	0	oewn-update-n	Number=Plur	dema	1			carried
 updates	1	oewn-update-v	Person=3+Tense=Pres	dema	1			carried
 updating	0	oewn-update-v	VerbForm=Ger	dema	1			carried
+updating	1	oewn-updating-n	Number=Sing	dema	0			oewn_form
 updatings	0	oewn-updating-n	Number=Plur	dema	0			rule
 updo	0		VerbForm=Inf	dema	0	updo	v	moby_reverse
 updoed	0		Tense=Past+VerbForm=Part	dema	0	updo	v	rule
@@ -23622,6 +23624,7 @@ urges	1	oewn-urge-v	Person=3+Tense=Pres	dema	1			carried
 urges on	0	oewn-urge_on-v	Person=3+Tense=Pres	dema	0			rule
 urging	0	oewn-urge-v	VerbForm=Ger	dema	1			carried
 urging	1	oewn-urge-n	Number=Sing+VerbForm=Ger	dema	1			carried
+urging	2	oewn-urging-n	Number=Sing	dema	0			oewn_form
 urging on	0	oewn-urge_on-v	VerbForm=Ger	dema	0			rule
 urgingly	0		Degree=Pos	dema	0	urgingly	r	moby_reverse
 urgings	0	oewn-urging-n	Number=Plur	dema	0			rule

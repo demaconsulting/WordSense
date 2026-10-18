@@ -2494,6 +2494,7 @@ collectible	0	oewn-collectible-a	Degree=Pos	dema	0			oewn_form
 collectible	1	oewn-collectible-n	Number=Sing	dema	0			oewn_form
 collectibles	0	oewn-collectible-n	Number=Plur	dema	0			rule
 collecting	0	oewn-collect-v	VerbForm=Ger	dema	1			carried
+collecting	1	oewn-collecting-n	Number=Sing	dema	0			oewn_form
 collectings	0	oewn-collecting-n	Number=Plur	dema	0			rule
 collection	0	oewn-collection-n	Number=Sing	dema	0			oewn_form
 collection plate	0	oewn-collection_plate-n	Number=Sing	dema	0			oewn_form
@@ -3089,6 +3090,7 @@ colourfully	0		Degree=Pos	dema	0	colourfully	r	moby_reverse
 colourfulness	0		Number=Sing	dema	0	colourfulness	n	moby_reverse
 colouring	0	oewn-colour-v	VerbForm=Ger	dema	1			carried
 colouring	1	oewn-colour-n	Number=Sing+VerbForm=Ger	dema	1			carried
+colouring	2	oewn-colouring-n	Number=Sing	dema	0			oewn_form
 colouring in	0	oewn-colour_in-v	VerbForm=Ger	dema	0			rule
 colouring material	0	oewn-colouring_material-n	Number=Sing	dema	0			oewn_form
 colouring materials	0	oewn-colouring_material-n	Number=Plur	dema	0			rule
@@ -12126,6 +12128,7 @@ courtier	0	oewn-courtier-n	Number=Sing	dema	0			oewn_form
 courtiers	0	oewn-courtier-n	Number=Plur	dema	0			rule
 courting	0	oewn-court-v	VerbForm=Ger	dema	1			carried
 courting	1	oewn-court-n	Number=Sing+VerbForm=Ger	dema	1			carried
+courting	2	oewn-courting-n	Number=Sing	dema	0			oewn_form
 courting favor	0	oewn-court_favor-v	VerbForm=Ger	dema	0			rule
 courting favour	0	oewn-court_favour-v	VerbForm=Ger	dema	0			rule
 courtings	0	oewn-courting-n	Number=Plur	dema	0			rule
@@ -12280,6 +12283,7 @@ coverer	0		Number=Sing	dema	0	coverer	n	moby_reverse
 coverers	0		Number=Plur	dema	0	coverer	n	rule
 covering	0	oewn-cover-v	VerbForm=Ger	dema	1			carried
 covering	1	oewn-cover-n	Number=Sing+VerbForm=Ger	dema	1			carried
+covering	2	oewn-covering-n	Number=Sing	dema	0			oewn_form
 covering fire	0	oewn-covering_fire-n	Number=Sing	dema	0			oewn_form
 covering fires	0	oewn-covering_fire-n	Number=Plur	dema	0			rule
 covering for	0	oewn-cover_for-v	VerbForm=Ger	dema	0			rule

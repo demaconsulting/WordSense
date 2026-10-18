@@ -1045,6 +1045,7 @@ walkie-talkies	0	oewn-walkie-talkie-n	Number=Plur	dema	0			rule
 walking	0	oewn-walk-v	VerbForm=Ger	dema	1			carried
 walking	1	oewn-walking-a	Degree=Pos	dema	0			carried
 walking	2	oewn-walk-n	Number=Sing+VerbForm=Ger	dema	1			carried
+walking	3	oewn-walking-n	Number=Sing	dema	0			oewn_form
 walking about	0	oewn-walk_about-v	VerbForm=Ger	dema	0			rule
 walking around	0	oewn-walk_around-v	VerbForm=Ger	dema	0			rule
 walking away	0	oewn-walk_away-v	VerbForm=Ger	dema	0			rule
@@ -1957,6 +1958,7 @@ wasteyards	0	oewn-wasteyard-n	Number=Plur	dema	0			rule
 wasting	0	oewn-waste-v	VerbForm=Ger	dema	1			carried
 wasting	1	dema-wasting-a	Degree=Pos	dema	0			carried
 wasting	2	oewn-waste-n	Number=Sing+VerbForm=Ger	dema	1			carried
+wasting	3	oewn-wasting-n	Number=Sing	dema	0			oewn_form
 wasting away	0	oewn-wasting_away-n	Number=Sing	dema	0			oewn_form
 wasting aways	0	oewn-wasting_away-n	Number=Plur	dema	0			rule
 wasting disease	0	oewn-wasting_disease-n	Number=Sing	dema	0			oewn_form
@@ -2020,6 +2022,7 @@ watchfulness	0	oewn-watchfulness-n	Number=Sing	dema	0			oewn_form
 watchfulnesses	0	oewn-watchfulness-n	Number=Plur	dema	0			rule
 watching	0	oewn-watch-v	VerbForm=Ger	dema	1			carried
 watching	1	oewn-watch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+watching	2	oewn-watching-n	Number=Sing	dema	0			oewn_form
 watching out	0	oewn-watch_out-v	VerbForm=Ger	dema	0			rule
 watching over	0	oewn-watch_over-v	VerbForm=Ger	dema	0			rule
 watchings	0	oewn-watching-n	Number=Plur	dema	0			rule
@@ -2676,6 +2679,7 @@ waviness	0	oewn-waviness-n	Number=Sing	dema	0			oewn_form
 wavinesses	0	oewn-waviness-n	Number=Plur	dema	0			rule
 waving	0	oewn-wave-v	VerbForm=Ger	dema	1			carried
 waving	1	oewn-wave-n	Number=Sing+VerbForm=Ger	dema	1			carried
+waving	2	oewn-waving-n	Number=Sing	dema	0			oewn_form
 waving off	0	oewn-wave_off-v	VerbForm=Ger	dema	0			rule
 wavingly	0		Degree=Pos	dema	0	wavingly	r	moby_reverse
 wavings	0	oewn-waving-n	Number=Plur	dema	0			rule
@@ -2740,6 +2744,8 @@ waxiness	0	oewn-waxiness-n	Number=Sing	dema	0			oewn_form
 waxinesses	0	oewn-waxiness-n	Number=Plur	dema	0			rule
 waxing	0	oewn-wax-v	VerbForm=Ger	dema	1			carried
 waxing	1	oewn-wax-n	Number=Sing+VerbForm=Ger	dema	1			carried
+waxing	2	oewn-waxing-a	Degree=Pos	dema	0			oewn_form
+waxing	3	oewn-waxing-n	Number=Sing	dema	0			oewn_form
 waxings	0	oewn-waxing-n	Number=Plur	dema	0			rule
 waxlike	0	oewn-waxlike-a	Degree=Pos	dema	0			oewn_form
 waxmallow	0	oewn-waxmallow-n	Number=Sing	dema	0			oewn_form
@@ -4232,7 +4238,8 @@ wheelie	0		Number=Sing	dema	0	wheelie	n	moby_reverse
 wheelies	0		Number=Plur	dema	0	wheelie	n	rule
 wheeling	0	oewn-wheel-v	VerbForm=Ger	dema	1			carried
 wheeling	1	oewn-wheel-n	Number=Sing+VerbForm=Ger	dema	1			carried
-wheeling	2	oewn-wheeling-n	Number=Plur	dema	0			agid
+wheeling	2	oewn-wheeling-n	Number=Sing	dema	0			oewn_form
+wheeling	3	oewn-wheeling-n	Number=Plur	dema	0			agid
 wheeling around	0	oewn-wheel_around-v	VerbForm=Ger	dema	0			rule
 wheelless	0	oewn-wheelless-a	Degree=Pos	dema	0			oewn_form
 wheelman	0		Number=Sing	dema	0	wheelman	n	moby_reverse
@@ -4522,6 +4529,8 @@ whippier	0	oewn-whippy-a	Degree=Cmp	dema	0			rule
 whippiest	0	oewn-whippy-a	Degree=Sup	dema	0			rule
 whipping	0	oewn-whip-v	VerbForm=Ger	dema	1			carried
 whipping	1	oewn-whip-n	Number=Sing+VerbForm=Ger	dema	1			carried
+whipping	2	oewn-whipping-a	Degree=Pos	dema	0			oewn_form
+whipping	3	oewn-whipping-n	Number=Sing	dema	0			oewn_form
 whipping boy	0	oewn-whipping_boy-n	Number=Sing	dema	0			oewn_form
 whipping boys	0	oewn-whipping_boy-n	Number=Plur	dema	0			rule
 whipping cream	0	oewn-whipping_cream-n	Number=Sing	dema	0			oewn_form
@@ -4704,6 +4713,7 @@ whisperers	0	oewn-whisperer-n	Number=Plur	dema	0			rule
 whispering	0	oewn-whisper-v	VerbForm=Ger	dema	1			carried
 whispering	1	oewn-whispering-a	Degree=Pos	dema	0			carried
 whispering	2	oewn-whisper-n	Number=Sing+VerbForm=Ger	dema	1			carried
+whispering	3	oewn-whispering-n	Number=Sing	dema	0			oewn_form
 whispering bells	0	oewn-whispering_bells-n	Number=Sing	dema	0			oewn_form
 whispering campaign	0	oewn-whispering_campaign-n	Number=Sing	dema	0			oewn_form
 whispering campaigns	0	oewn-whispering_campaign-n	Number=Plur	dema	0			rule
@@ -8103,6 +8113,7 @@ workhouses	0	oewn-workhouse-n	Number=Plur	dema	0			rule
 working	0	oewn-work-v	VerbForm=Ger	dema	1			carried
 working	1	oewn-working-a	Degree=Pos	dema	0			carried
 working	2	oewn-work-n	Number=Sing+VerbForm=Ger	dema	1			carried
+working	3	oewn-working-n	Number=Sing	dema	0			oewn_form
 working agreement	0	oewn-working_agreement-n	Number=Sing	dema	0			oewn_form
 working agreements	0	oewn-working_agreement-n	Number=Plur	dema	0			rule
 working at	0	oewn-work_at-v	VerbForm=Ger	dema	0			rule
@@ -8442,6 +8453,7 @@ wouldsting	0		VerbForm=Ger	dema	0	wouldst	v	rule
 wouldsts	0		Person=3+Tense=Pres	dema	0	wouldst	v	rule
 wound	0	oewn-wound-n	Number=Sing	dema	1			carried
 wound	1	oewn-wind-v-1		dema	1			carried
+wound	2	oewn-wind-v-2	Tense=Past+VerbForm=Part	dema	0			hand
 wound tumor virus	0	oewn-wound_tumor_virus-n	Number=Sing	dema	0			oewn_form
 wound up	0	oewn-wound_up-a	Degree=Pos	dema	0			oewn_form
 wounded	0	oewn-wounded-a	Degree=Pos	dema	0			oewn_form
@@ -8566,6 +8578,7 @@ wreckfishes	0	oewn-wreckfish-n	Number=Plur	dema	0			oewn_form
 wreckful	0		Degree=Pos	dema	0	wreckful	a	moby_reverse
 wrecking	0	oewn-wreck-v	VerbForm=Ger	dema	1			carried
 wrecking	1	oewn-wreck-n	Number=Sing+VerbForm=Ger	dema	1			carried
+wrecking	2	oewn-wrecking-n	Number=Sing	dema	0			oewn_form
 wrecking bar	0	oewn-wrecking_bar-n	Number=Sing	dema	0			oewn_form
 wrecking bars	0	oewn-wrecking_bar-n	Number=Plur	dema	0			rule
 wreckings	0	oewn-wrecking-n	Number=Plur	dema	0			rule

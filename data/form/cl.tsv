@@ -2078,6 +2078,7 @@ cloudiness	0	oewn-cloudiness-n	Number=Sing	dema	0			oewn_form
 cloudinesses	0	oewn-cloudiness-n	Number=Plur	dema	0			rule
 clouding	0	oewn-cloud-v	VerbForm=Ger	dema	1			carried
 clouding	1	oewn-cloud-n	Number=Sing+VerbForm=Ger	dema	1			carried
+clouding	2	oewn-clouding-n	Number=Sing	dema	0			oewn_form
 clouding over	0	oewn-cloud_over-v	VerbForm=Ger	dema	0			rule
 clouding up	0	oewn-clouding_up-n	Number=Sing	dema	0			oewn_form
 clouding up	1	oewn-cloud_up-v	VerbForm=Ger	dema	0			rule

@@ -12202,6 +12202,7 @@ ironicalnesses	0		Number=Plur	dema	0	ironicalness	n	rule
 ironies	0	oewn-irony-n	Number=Plur	dema	0			rule
 ironing	0	oewn-iron-v	VerbForm=Ger	dema	1			carried
 ironing	1	oewn-iron-n	Number=Sing+VerbForm=Ger	dema	1			carried
+ironing	2	oewn-ironing-n	Number=Sing	dema	0			oewn_form
 ironing board	0	oewn-ironing_board-n	Number=Sing	dema	0			oewn_form
 ironing boards	0	oewn-ironing_board-n	Number=Plur	dema	0			rule
 ironing out	0	oewn-iron_out-v	VerbForm=Ger	dema	0			rule
@@ -13102,6 +13103,7 @@ issues	1	oewn-issue-v	Person=3+Tense=Pres	dema	1			carried
 issues forth	0	oewn-issue_forth-v	Person=3+Tense=Pres	dema	0			rule
 issuing	0	oewn-issue-v	VerbForm=Ger	dema	1			carried
 issuing	1	oewn-issue-n	Number=Sing+VerbForm=Ger	dema	1			carried
+issuing	2	oewn-issuing-n	Number=Sing	dema	0			oewn_form
 issuing forth	0	oewn-issue_forth-v	VerbForm=Ger	dema	0			rule
 issuing house	0	oewn-issuing_house-n	Number=Sing	dema	0			oewn_form
 issuing houses	0	oewn-issuing_house-n	Number=Plur	dema	0			rule

@@ -2571,6 +2571,7 @@ talkiest	0	oewn-talky-a	Degree=Sup	dema	0			oewn_form
 talkily	0	oewn-talkily-r	Degree=Pos	dema	0			oewn_form
 talking	0	oewn-talk-v	VerbForm=Ger	dema	1			carried
 talking	1	oewn-talk-n	Number=Sing+VerbForm=Ger	dema	1			carried
+talking	2	oewn-talking-n	Number=Sing	dema	0			oewn_form
 talking about	0	oewn-talk_about-v	VerbForm=Ger	dema	0			rule
 talking book	0	oewn-talking_book-n	Number=Sing	dema	0			oewn_form
 talking books	0	oewn-talking_book-n	Number=Plur	dema	0			rule
@@ -3241,6 +3242,7 @@ tappet wrenches	0	oewn-tappet_wrench-n	Number=Plur	dema	0			rule
 tappets	0	oewn-tappet-n	Number=Plur	dema	0			rule
 tapping	0	oewn-tap-v	VerbForm=Ger	dema	1			carried
 tapping	1	oewn-tap-n	Number=Sing+VerbForm=Ger	dema	1			carried
+tapping	2	oewn-tapping-n	Number=Sing	dema	0			oewn_form
 tapping dance	0	oewn-tap_dance-v	VerbForm=Ger	dema	0			rule
 tapping out	0	oewn-tap_out-v	VerbForm=Ger	dema	0			rule
 tappings	0	oewn-tapping-n	Number=Plur	dema	0			rule
@@ -3583,6 +3585,7 @@ tastiness	0	oewn-tastiness-n	Number=Sing	dema	0			oewn_form
 tastinesses	0	oewn-tastiness-n	Number=Plur	dema	0			rule
 tasting	0	oewn-taste-v	VerbForm=Ger	dema	1			carried
 tasting	1	oewn-taste-n	Number=Sing+VerbForm=Ger	dema	1			carried
+tasting	2	oewn-tasting-n	Number=Sing	dema	0			oewn_form
 tastings	0	oewn-tasting-n	Number=Plur	dema	0			rule
 tasty	0	oewn-tasty-a	Degree=Pos	dema	0			oewn_form
 tat	0	oewn-tat-v	VerbForm=Inf	dema	0			oewn_form
@@ -4184,6 +4187,7 @@ tearing	0	oewn-tear-v-1	VerbForm=Ger	dema	1			carried
 tearing	1	oewn-tearing-a	Degree=Pos	dema	0			carried
 tearing	2	oewn-tear-n-2	Number=Sing+VerbForm=Ger	dema	1			carried
 tearing	3	oewn-tear-v-2	VerbForm=Ger	dema	0			rule
+tearing	4	oewn-tearing-n	Number=Sing	dema	0			oewn_form
 tearing apart	0	oewn-tear_apart-v	VerbForm=Ger	dema	0			rule
 tearing away	0	oewn-tear_away-v	VerbForm=Ger	dema	0			rule
 tearing down	0	oewn-tearing_down-n	Number=Sing	dema	0			oewn_form
@@ -11478,6 +11482,7 @@ torchy	0		Degree=Pos	dema	0	torchy	a	moby_reverse
 torcs	0		Number=Plur	dema	0	torc	n	rule
 tore	0	oewn-tear-v-1		dema	1			carried
 tore	1	oewn-tore-n	Number=Sing	dema	0			carried
+tore	2	oewn-tear-v-2	Tense=Past	dema	0			hand
 toreador	0	oewn-toreador-n	Number=Sing	dema	0			oewn_form
 toreador pants	0	oewn-toreador_pants-n	Number=Sing	dema	0			oewn_form
 toreadors	0	oewn-toreador-n	Number=Plur	dema	0			rule
@@ -11505,6 +11510,7 @@ torments	0	oewn-torment-n	Number=Plur	dema	1			carried
 torments	1	oewn-torment-v	Person=3+Tense=Pres	dema	1			carried
 torn	0	oewn-tear-v-1		dema	1			carried
 torn	1	oewn-torn-a	Degree=Pos	dema	0			carried
+torn	2	oewn-tear-v-2	VerbForm=Part	dema	0			hand
 tornadic	0		Degree=Pos	dema	0	tornadic	a	moby_reverse
 tornado	0	oewn-tornado-n	Number=Sing	dema	0			oewn_form
 tornado cellar	0	oewn-tornado_cellar-n	Number=Sing	dema	0			oewn_form
@@ -11664,6 +11670,8 @@ tortures	1	oewn-torture-v	Person=3+Tense=Pres	dema	1			carried
 torturesome	0	oewn-torturesome-a	Degree=Pos	dema	0			oewn_form
 torturing	0	oewn-torture-v	VerbForm=Ger	dema	1			carried
 torturing	1	oewn-torture-n	Number=Sing+VerbForm=Ger	dema	1			carried
+torturing	2	oewn-torturing-a	Degree=Pos	dema	0			oewn_form
+torturing	3	oewn-torturing-n	Number=Sing	dema	0			oewn_form
 torturings	0	oewn-torturing-n	Number=Plur	dema	0			rule
 torturous	0	oewn-torturous-a	Degree=Pos	dema	0			oewn_form
 torturously	0	oewn-torturously-r	Degree=Pos	dema	0			oewn_form
@@ -11908,6 +11916,7 @@ touching	0	oewn-touch-v	VerbForm=Ger	dema	1			carried
 touching	1	oewn-touching-a	Degree=Pos	dema	0			carried
 touching	2	dema-touching-p		dema	0			carried
 touching	3	oewn-touch-n	Number=Sing+VerbForm=Ger	dema	1			carried
+touching	4	oewn-touching-n	Number=Sing	dema	0			oewn_form
 touching a chord	0	oewn-touch_a_chord-v	VerbForm=Ger	dema	0			rule
 touching base	0	oewn-touch_base-v	VerbForm=Ger	dema	0			rule
 touching down	0	oewn-touch_down-v	VerbForm=Ger	dema	0			rule
@@ -12408,6 +12417,7 @@ trachytic	0		Degree=Pos	dema	0	trachytic	a	moby_reverse
 trachytoid	0		Degree=Pos	dema	0	trachytoid	a	moby_reverse
 tracing	0	oewn-trace-v	VerbForm=Ger	dema	1			carried
 tracing	1	oewn-trace-n	Number=Sing+VerbForm=Ger	dema	1			carried
+tracing	2	oewn-tracing-n	Number=Sing	dema	0			oewn_form
 tracing paper	0	oewn-tracing_paper-n	Number=Sing	dema	0			oewn_form
 tracing papers	0	oewn-tracing_paper-n	Number=Plur	dema	0			rule
 tracing routine	0	oewn-tracing_routine-n	Number=Sing	dema	0			oewn_form
@@ -12439,6 +12449,7 @@ tracker	0	oewn-tracker-n	Number=Sing	dema	0			oewn_form
 trackers	0	oewn-tracker-n	Number=Plur	dema	0			rule
 tracking	0	oewn-track-v	VerbForm=Ger	dema	1			carried
 tracking	1	oewn-track-n	Number=Sing+VerbForm=Ger	dema	1			carried
+tracking	2	oewn-tracking-n	Number=Sing	dema	0			oewn_form
 tracking down	0	oewn-track_down-v	VerbForm=Ger	dema	0			rule
 trackings	0	oewn-tracking-n	Number=Plur	dema	0			rule
 tracklayer	0	oewn-tracklayer-n	Number=Sing	dema	0			oewn_form
@@ -12787,6 +12798,7 @@ trainer	0	oewn-trainer-n	Number=Sing	dema	0			oewn_form
 trainers	0	oewn-trainer-n	Number=Plur	dema	0			rule
 training	0	oewn-train-v	VerbForm=Ger	dema	1			carried
 training	1	oewn-train-n	Number=Sing+VerbForm=Ger	dema	1			carried
+training	2	oewn-training-n	Number=Sing	dema	0			oewn_form
 training college	0	oewn-training_college-n	Number=Sing	dema	0			oewn_form
 training colleges	0	oewn-training_college-n	Number=Plur	dema	0			rule
 training program	0	oewn-training_program-n	Number=Sing	dema	0			oewn_form
@@ -13999,6 +14011,7 @@ traveler's trees	0	oewn-traveler-ap-s_tree-n	Number=Plur	dema	0			rule
 travelers	0	oewn-traveler-n	Number=Plur	dema	0			rule
 traveling	0	oewn-travel-v	VerbForm=Ger	dema	1			carried
 traveling	1	oewn-travel-n	Number=Sing+VerbForm=Ger	dema	1			carried
+traveling	2	oewn-traveling-n	Number=Sing	dema	0			oewn_form
 traveling along	0	oewn-travel_along-v	VerbForm=Ger	dema	0			rule
 traveling bag	0	oewn-traveling_bag-n	Number=Sing	dema	0			oewn_form
 traveling bags	0	oewn-traveling_bag-n	Number=Plur	dema	0			rule
@@ -14026,6 +14039,7 @@ traveller's trees	0	oewn-traveller-ap-s_tree-n	Number=Plur	dema	0			rule
 travellers	0	oewn-traveller-n	Number=Plur	dema	0			rule
 travelling	0	oewn-travel-v	VerbForm=Ger	dema	1			carried
 travelling	1	oewn-travel-n	Number=Sing+VerbForm=Ger	dema	1			carried
+travelling	2	oewn-travelling-n	Number=Sing	dema	0			oewn_form
 travelling bag	0	oewn-travelling_bag-n	Number=Sing	dema	0			oewn_form
 travelling bags	0	oewn-travelling_bag-n	Number=Plur	dema	0			rule
 travelling salesman	0	oewn-travelling_salesman-n	Number=Sing	dema	0			oewn_form
@@ -17186,6 +17200,7 @@ tunicles	0		Number=Plur	dema	0	tunicle	n	rule
 tunics	0	oewn-tunic-n	Number=Plur	dema	0			rule
 tuning	0	oewn-tune-v	VerbForm=Ger	dema	1			carried
 tuning	1	oewn-tune-n	Number=Sing+VerbForm=Ger	dema	1			carried
+tuning	2	oewn-tuning-n	Number=Sing	dema	0			oewn_form
 tuning fork	0	oewn-tuning_fork-n	Number=Sing	dema	0			oewn_form
 tuning forks	0	oewn-tuning_fork-n	Number=Plur	dema	0			rule
 tuning in	0	oewn-tune_in-v	VerbForm=Ger	dema	0			rule
@@ -18293,6 +18308,7 @@ tyes	0		Number=Plur	dema	0	tye	n	rule
 tyg	0		Number=Sing	dema	0	tyg	n	moby_reverse
 tygs	0		Number=Plur	dema	0	tyg	n	rule
 tying	0	oewn-tie-v	VerbForm=Ger	dema	1			carried
+tying	1	oewn-tying-n	Number=Sing	dema	0			oewn_form
 tying arrangement	0	oewn-tying_arrangement-n	Number=Sing	dema	0			oewn_form
 tying arrangements	0	oewn-tying_arrangement-n	Number=Plur	dema	0			rule
 tying up	0	oewn-tying_up-n	Number=Sing	dema	0			oewn_form
@@ -18470,6 +18486,7 @@ typikon	0		Number=Sing	dema	0	typikon	n	moby_reverse
 typikons	0		Number=Plur	dema	0	typikon	n	rule
 typing	0	oewn-type-v	VerbForm=Ger	dema	1			carried
 typing	1	oewn-type-n	Number=Sing+VerbForm=Ger	dema	1			carried
+typing	2	oewn-typing-n	Number=Sing	dema	0			oewn_form
 typing paper	0	oewn-typing_paper-n	Number=Sing	dema	0			oewn_form
 typing papers	0	oewn-typing_paper-n	Number=Plur	dema	0			rule
 typing pool	0	oewn-typing_pool-n	Number=Sing	dema	0			oewn_form

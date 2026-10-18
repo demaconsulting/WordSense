@@ -2562,6 +2562,7 @@ bannerols	0		Number=Plur	dema	0	bannerol	n	rule
 banners	0	oewn-banner-n	Number=Plur	dema	0			rule
 banning	0	oewn-ban-v	VerbForm=Ger	dema	1			carried
 banning	1	oewn-ban-n	Number=Sing+VerbForm=Ger	dema	1			carried
+banning	2	oewn-banning-n	Number=Sing	dema	0			oewn_form
 banning-order	0	oewn-banning-order-n	Number=Sing	dema	0			oewn_form
 banning-orders	0	oewn-banning-order-n	Number=Plur	dema	0			rule
 bannings	0	oewn-banning-n	Number=Plur	dema	0			rule

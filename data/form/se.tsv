@@ -638,6 +638,7 @@ sealers	0	oewn-sealer-n	Number=Plur	dema	0			rule
 sealery	0		Number=Sing	dema	0	sealery	n	moby_reverse
 sealing	0	oewn-seal-v	VerbForm=Ger	dema	1			carried
 sealing	1	oewn-seal-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sealing	2	oewn-sealing-n	Number=Sing	dema	0			oewn_form
 sealing in	0	oewn-seal_in-v	VerbForm=Ger	dema	0			rule
 sealing material	0	oewn-sealing_material-n	Number=Sing	dema	0			oewn_form
 sealing materials	0	oewn-sealing_material-n	Number=Plur	dema	0			rule
@@ -806,6 +807,7 @@ seasoner	0	oewn-seasoner-n	Number=Sing	dema	0			oewn_form
 seasoners	0	oewn-seasoner-n	Number=Plur	dema	0			rule
 seasoning	0	oewn-season-v	VerbForm=Ger	dema	1			carried
 seasoning	1	oewn-season-n	Number=Sing+VerbForm=Ger	dema	1			carried
+seasoning	2	oewn-seasoning-n	Number=Sing	dema	0			oewn_form
 seasonings	0	oewn-seasoning-n	Number=Plur	dema	0			rule
 seasonless	0		Degree=Pos	dema	0	seasonless	a	moby_reverse
 seasonning	0	oewn-season-n	Number=Sing+VerbForm=Ger	dema	1			carried
@@ -824,6 +826,7 @@ seater	0		Number=Sing	dema	0	seater	n	moby_reverse
 seaters	0		Number=Plur	dema	0	seater	n	rule
 seating	0	oewn-seat-v	VerbForm=Ger	dema	1			carried
 seating	1	oewn-seat-n	Number=Sing+VerbForm=Ger	dema	1			carried
+seating	2	oewn-seating-n	Number=Sing	dema	0			oewn_form
 seating area	0	oewn-seating_area-n	Number=Sing	dema	0			oewn_form
 seating areas	0	oewn-seating_area-n	Number=Plur	dema	0			rule
 seating capacities	0	oewn-seating_capacity-n	Number=Plur	dema	0			rule
@@ -3729,6 +3732,7 @@ sensillumlas	0		Number=Plur	dema	0	sensillumla	n	rule
 sensillums	0		Number=Plur	dema	0	sensillum	n	rule
 sensing	0	oewn-sense-v	VerbForm=Ger	dema	1			carried
 sensing	1	oewn-sense-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sensing	2	oewn-sensing-n	Number=Sing	dema	0			oewn_form
 sensing element	0	oewn-sensing_element-n	Number=Sing	dema	0			oewn_form
 sensing elements	0	oewn-sensing_element-n	Number=Plur	dema	0			rule
 sensings	0	oewn-sensing-n	Number=Plur	dema	0			rule

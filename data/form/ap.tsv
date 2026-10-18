@@ -1126,6 +1126,8 @@ approaches	0	oewn-approach-n	Number=Plur	dema	1			carried
 approaches	1	oewn-approach-v	Person=3+Tense=Pres	dema	1			carried
 approaching	0	oewn-approach-v	VerbForm=Ger	dema	1			carried
 approaching	1	oewn-approach-n	Number=Sing+VerbForm=Ger	dema	1			carried
+approaching	2	oewn-approaching-a	Degree=Pos	dema	0			oewn_form
+approaching	3	oewn-approaching-n	Number=Sing	dema	0			oewn_form
 approachings	0	oewn-approaching-n	Number=Plur	dema	0			rule
 approachless	0		Degree=Pos	dema	0	approachless	a	moby_reverse
 approbate	0	oewn-approbate-v	VerbForm=Inf	dema	0			oewn_form

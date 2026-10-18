@@ -2511,6 +2511,7 @@ substitutes	0	oewn-substitute-n	Number=Plur	dema	1			carried
 substitutes	1	oewn-substitute-v	Person=3+Tense=Pres	dema	1			carried
 substituting	0	oewn-substitute-v	VerbForm=Ger	dema	1			carried
 substituting	1	oewn-substitute-n	Number=Sing+VerbForm=Ger	dema	1			carried
+substituting	2	oewn-substituting-n	Number=Sing	dema	0			oewn_form
 substitutings	0	oewn-substituting-n	Number=Plur	dema	0			rule
 substitution	0	oewn-substitution-n	Number=Sing	dema	0			oewn_form
 substitution class	0	oewn-substitution_class-n	Number=Sing	dema	0			oewn_form
@@ -3460,6 +3461,7 @@ suited	1	oewn-suited-a	Degree=Pos	dema	0			carried
 suites	0	oewn-suite-n	Number=Plur	dema	0			rule
 suiting	0	oewn-suit-v	VerbForm=Ger	dema	1			carried
 suiting	1	oewn-suit-n	Number=Sing+VerbForm=Ger	dema	1			carried
+suiting	2	oewn-suiting-n	Number=Sing	dema	0			oewn_form
 suitings	0	oewn-suiting-n	Number=Plur	dema	0			rule
 suitor	0	oewn-suitor-n	Number=Sing	dema	0			oewn_form
 suitors	0	oewn-suitor-n	Number=Plur	dema	0			rule
@@ -6453,6 +6455,7 @@ supply ships	0	oewn-supply_ship-n	Number=Plur	dema	0			rule
 supply-side economics	0	oewn-supply-side_economics-n	Number=Sing	dema	0			oewn_form
 supplying	0	oewn-supply-v	VerbForm=Ger	dema	1			carried
 supplying	1	oewn-supply-n	Number=Sing+VerbForm=Ger	dema	1			carried
+supplying	2	oewn-supplying-n	Number=Sing	dema	0			oewn_form
 supplyings	0	oewn-supplying-n	Number=Plur	dema	0			rule
 suppnea	0		Number=Sing	dema	0	suppnea	n	moby_reverse
 suppneas	0		Number=Plur	dema	0	suppnea	n	rule

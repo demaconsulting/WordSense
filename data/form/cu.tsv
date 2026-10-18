@@ -919,6 +919,7 @@ curie	0	oewn-curie-n	Number=Sing	dema	0			oewn_form
 curies	0	oewn-curie-n	Number=Plur	dema	0			rule
 curing	0	oewn-cure-v	VerbForm=Ger	dema	1			carried
 curing	1	oewn-cure-n	Number=Sing+VerbForm=Ger	dema	1			carried
+curing	2	oewn-curing-n	Number=Sing	dema	0			oewn_form
 curings	0	oewn-curing-n	Number=Plur	dema	0			rule
 curio	0	oewn-curio-n	Number=Sing	dema	0			oewn_form
 curios	0	oewn-curio-n	Number=Plur	dema	0			rule

@@ -305,6 +305,7 @@ boarder	0	oewn-boarder-n	Number=Sing	dema	0			oewn_form
 boarders	0	oewn-boarder-n	Number=Plur	dema	0			rule
 boarding	0	oewn-board-v	VerbForm=Ger	dema	1			carried
 boarding	1	oewn-board-n	Number=Sing+VerbForm=Ger	dema	1			carried
+boarding	2	oewn-boarding-n	Number=Sing	dema	0			oewn_form
 boarding card	0	oewn-boarding_card-n	Number=Sing	dema	0			oewn_form
 boarding cards	0	oewn-boarding_card-n	Number=Plur	dema	0			rule
 boarding house	0	oewn-boarding_house-n	Number=Sing	dema	0			oewn_form
@@ -1147,6 +1148,7 @@ bombination	0	oewn-bombination-n	Number=Sing	dema	0			oewn_form
 bombinations	0	oewn-bombination-n	Number=Plur	dema	0			rule
 bombing	0	oewn-bomb-v	VerbForm=Ger	dema	1			carried
 bombing	1	oewn-bomb-n	Number=Sing+VerbForm=Ger	dema	1			carried
+bombing	2	oewn-bombing-n	Number=Sing	dema	0			oewn_form
 bombing out	0	oewn-bomb_out-v	VerbForm=Ger	dema	0			rule
 bombing run	0	oewn-bombing_run-n	Number=Sing	dema	0			oewn_form
 bombing runs	0	oewn-bombing_run-n	Number=Plur	dema	0			rule
@@ -1567,6 +1569,7 @@ bookie	0	oewn-bookie-n	Number=Sing	dema	0			oewn_form
 bookies	0	oewn-bookie-n	Number=Plur	dema	0			rule
 booking	0	oewn-book-v	VerbForm=Ger	dema	1			carried
 booking	1	oewn-book-n	Number=Sing+VerbForm=Ger	dema	1			carried
+booking	2	oewn-booking-n	Number=Sing	dema	0			oewn_form
 booking agent	0	oewn-booking_agent-n	Number=Sing	dema	0			oewn_form
 booking agents	0	oewn-booking_agent-n	Number=Plur	dema	0			rule
 booking clerk	0	oewn-booking_clerk-n	Number=Sing	dema	0			oewn_form
@@ -2722,6 +2725,8 @@ bowheads	0	oewn-bowhead-n	Number=Plur	dema	0			rule
 bowing	0	oewn-bow-v-1	VerbForm=Ger	dema	1			carried
 bowing	1	oewn-bow-n-2	Number=Sing+VerbForm=Ger	dema	1			carried
 bowing	2	oewn-bow-v-2	VerbForm=Ger	dema	0			rule
+bowing	3	oewn-bowing-a	Degree=Pos	dema	0			oewn_form
+bowing	4	oewn-bowing-n	Number=Sing	dema	0			oewn_form
 bowing down	0	oewn-bow_down-v	VerbForm=Ger	dema	0			rule
 bowing out	0	oewn-bow_out-v	VerbForm=Ger	dema	0			rule
 bowingly	0		Degree=Pos	dema	0	bowingly	r	moby_reverse

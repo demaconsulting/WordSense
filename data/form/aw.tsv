@@ -39,6 +39,7 @@ awarder	0		Number=Sing	dema	0	awarder	n	moby_reverse
 awarders	0		Number=Plur	dema	0	awarder	n	rule
 awarding	0	oewn-award-v	VerbForm=Ger	dema	1			carried
 awarding	1	oewn-award-n	Number=Sing+VerbForm=Ger	dema	1			carried
+awarding	2	oewn-awarding-n	Number=Sing	dema	0			oewn_form
 awardings	0	oewn-awarding-n	Number=Plur	dema	0			rule
 awards	0	oewn-award-n	Number=Plur	dema	1			carried
 awards	1	oewn-award-v	Person=3+Tense=Pres	dema	1			carried

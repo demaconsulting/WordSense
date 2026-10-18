@@ -5068,6 +5068,7 @@ noddi	0		Number=Sing	dema	0	noddi	n	moby_reverse
 noddies	0		Number=Plur	dema	0	noddy	n	rule
 nodding	0	oewn-nod-v	VerbForm=Ger	dema	1			carried
 nodding	1	oewn-nod-n	Number=Sing+VerbForm=Ger	dema	1			carried
+nodding	2	oewn-nodding-a	Degree=Pos	dema	0			oewn_form
 nodding groundsel	0	oewn-nodding_groundsel-n	Number=Sing	dema	0			oewn_form
 nodding groundsels	0	oewn-nodding_groundsel-n	Number=Plur	dema	0			rule
 nodding off	0	oewn-nod_off-v	VerbForm=Ger	dema	0			rule

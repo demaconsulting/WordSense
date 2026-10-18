@@ -323,6 +323,7 @@ adduct	0	oewn-adduct-n	Number=Sing	dema	1			carried
 adduct	1	oewn-adduct-v	VerbForm=Inf	dema	1			carried
 adducted	0	oewn-adduct-v	Tense=Past	dema	1			carried
 adducting	0	oewn-adduct-v	VerbForm=Ger	dema	1			carried
+adducting	1	oewn-adducting-a	Degree=Pos	dema	0			oewn_form
 adduction	0	oewn-adduction-n	Number=Sing	dema	0			oewn_form
 adductions	0	oewn-adduction-n	Number=Plur	dema	0			rule
 adductive	0	oewn-adductive-a	Degree=Pos	dema	0			oewn_form
@@ -1052,6 +1053,7 @@ advances	0	oewn-advance-n	Number=Plur	dema	1			carried
 advances	1	oewn-advance-v	Person=3+Tense=Pres	dema	1			carried
 advancing	0	oewn-advance-v	VerbForm=Ger	dema	1			carried
 advancing	1	oewn-advance-n	Number=Sing+VerbForm=Ger	dema	1			carried
+advancing	2	oewn-advancing-a	Degree=Pos	dema	0			oewn_form
 advancingly	0		Degree=Pos	dema	0	advancingly	r	moby_reverse
 advantage	0	oewn-advantage-n	Number=Sing	dema	0			oewn_form
 advantage	1	oewn-advantage-v	VerbForm=Inf	dema	0			oewn_form

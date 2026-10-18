@@ -385,6 +385,7 @@ accent mark	0	oewn-accent_mark-n	Number=Sing	dema	0			oewn_form
 accent marks	0	oewn-accent_mark-n	Number=Plur	dema	0			rule
 accented	0	oewn-accent-v	Tense=Past	dema	1			carried
 accenting	0	oewn-accent-v	VerbForm=Ger	dema	1			carried
+accenting	1	oewn-accenting-n	Number=Sing	dema	0			oewn_form
 accentings	0	oewn-accenting-n	Number=Plur	dema	0			rule
 accentless	0		Degree=Pos	dema	0	accentless	a	moby_reverse
 accentor	0	oewn-accentor-n	Number=Sing	dema	0			oewn_form

@@ -1519,6 +1519,8 @@ jerkiness	0	oewn-jerkiness-n	Number=Sing	dema	0			oewn_form
 jerkinesses	0	oewn-jerkiness-n	Number=Plur	dema	0			rule
 jerking	0	oewn-jerk-v	VerbForm=Ger	dema	1			carried
 jerking	1	oewn-jerk-n	Number=Sing+VerbForm=Ger	dema	1			carried
+jerking	2	oewn-jerking-a	Degree=Pos	dema	0			oewn_form
+jerking	3	oewn-jerking-n	Number=Sing	dema	0			oewn_form
 jerking off	0	oewn-jerking_off-n	Number=Sing	dema	0			oewn_form
 jerking off	1	oewn-jerk_off-v	VerbForm=Ger	dema	0			rule
 jerking offs	0	oewn-jerking_off-n	Number=Plur	dema	0			rule
@@ -2160,6 +2162,7 @@ jokester	0	oewn-jokester-n	Number=Sing	dema	0			oewn_form
 jokesters	0	oewn-jokester-n	Number=Plur	dema	0			rule
 joking	0	oewn-joke-v	VerbForm=Ger	dema	1			carried
 joking	1	oewn-joke-n	Number=Sing+VerbForm=Ger	dema	1			carried
+joking	2	oewn-joking-a	Degree=Pos	dema	0			oewn_form
 jokingly	0	oewn-jokingly-r	Degree=Pos	dema	0			oewn_form
 joktaleg	0		Number=Sing	dema	0	joktaleg	n	moby_reverse
 joktalegs	0		Number=Plur	dema	0	joktaleg	n	rule
@@ -2491,6 +2494,7 @@ judgeship	0	oewn-judgeship-n	Number=Sing	dema	0			oewn_form
 judgeships	0	oewn-judgeship-n	Number=Plur	dema	0			rule
 judging	0	oewn-judge-v	VerbForm=Ger	dema	1			carried
 judging	1	oewn-judge-n	Number=Sing+VerbForm=Ger	dema	1			carried
+judging	2	oewn-judging-n	Number=Sing	dema	0			oewn_form
 judgingly	0		Degree=Pos	dema	0	judgingly	r	moby_reverse
 judgings	0	oewn-judging-n	Number=Plur	dema	0			rule
 judgmatic	0		Degree=Pos	dema	0	judgmatic	a	moby_reverse

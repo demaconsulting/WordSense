@@ -2309,6 +2309,7 @@ crossheadings	0	oewn-crossheading-n	Number=Plur	dema	0			rule
 crossheads	0	oewn-crosshead-n	Number=Plur	dema	0			rule
 crossing	0	oewn-cross-v	VerbForm=Ger	dema	1			carried
 crossing	1	oewn-cross-n	Number=Sing+VerbForm=Ger	dema	1			carried
+crossing	2	oewn-crossing-n	Number=Sing	dema	0			oewn_form
 crossing examine	0	oewn-cross_examine-v	VerbForm=Ger	dema	0			rule
 crossing guard	0	oewn-crossing_guard-n	Number=Sing	dema	0			oewn_form
 crossing guards	0	oewn-crossing_guard-n	Number=Plur	dema	0			rule
@@ -2501,6 +2502,7 @@ crowdfundings	0	oewn-crowdfunding-n	Number=Plur	dema	0			rule
 crowdies	0		Number=Plur	dema	0	crowdy	n	rule
 crowding	0	oewn-crowd-v	VerbForm=Ger	dema	1			carried
 crowding	1	oewn-crowd-n	Number=Sing+VerbForm=Ger	dema	1			carried
+crowding	2	oewn-crowding-n	Number=Sing	dema	0			oewn_form
 crowding out	0	oewn-crowd_out-v	VerbForm=Ger	dema	0			rule
 crowding together	0	oewn-crowd_together-v	VerbForm=Ger	dema	0			rule
 crowdings	0	oewn-crowding-n	Number=Plur	dema	0			rule
@@ -2893,6 +2895,7 @@ cryesthesias	0	oewn-cryesthesia-n	Number=Plur	dema	0			rule
 crying	0	oewn-cry-n	Number=Plur	dema	1			carried
 crying	1	oewn-cry-v	VerbForm=Ger	dema	1			carried
 crying	2	oewn-crying-a	Degree=Pos	dema	0			carried
+crying	3	oewn-crying-n	Number=Sing	dema	0			oewn_form
 crying for	0	oewn-cry_for-v	VerbForm=Ger	dema	0			rule
 crying out	0	oewn-cry_out-v	VerbForm=Ger	dema	0			rule
 crying out for	0	oewn-cry_out_for-v	VerbForm=Ger	dema	0			rule

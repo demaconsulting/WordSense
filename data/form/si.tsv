@@ -675,6 +675,7 @@ sidewinders	0	oewn-sidewinder-n	Number=Plur	dema	0			rule
 sidewise	0	oewn-sidewise-r	Degree=Pos	dema	0			oewn_form
 siding	0	oewn-side-v	VerbForm=Ger	dema	1			carried
 siding	1	oewn-side-n	Number=Sing+VerbForm=Ger	dema	1			carried
+siding	2	oewn-siding-n	Number=Sing	dema	0			oewn_form
 siding with	0	oewn-side_with-v	VerbForm=Ger	dema	0			rule
 sidings	0	oewn-siding-n	Number=Plur	dema	0			rule
 sidle	0	oewn-sidle-v	VerbForm=Inf	dema	0			oewn_form
@@ -994,6 +995,7 @@ signify	0	oewn-signify-v	VerbForm=Inf	dema	0			oewn_form
 signifying	0	oewn-signify-v	VerbForm=Ger	dema	0			rule
 signing	0	oewn-sign-v	VerbForm=Ger	dema	1			carried
 signing	1	oewn-sign-n	Number=Sing+VerbForm=Ger	dema	1			carried
+signing	2	oewn-signing-n	Number=Sing	dema	0			oewn_form
 signing away	0	oewn-sign_away-v	VerbForm=Ger	dema	0			rule
 signing in	0	oewn-sign_in-v	VerbForm=Ger	dema	0			rule
 signing off	0	oewn-sign_off-v	VerbForm=Ger	dema	0			rule
@@ -2056,6 +2058,8 @@ sinnet	0		Number=Sing	dema	0	sinnet	n	moby_reverse
 sinnets	0		Number=Plur	dema	0	sinnet	n	rule
 sinning	0	oewn-sin-v	VerbForm=Ger	dema	1			carried
 sinning	1	oewn-sin-n	Number=Sing+VerbForm=Ger	dema	1			carried
+sinning	2	oewn-sinning-a	Degree=Pos	dema	0			oewn_form
+sinning	3	oewn-sinning-n	Number=Sing	dema	0			oewn_form
 sinningly	0		Degree=Pos	dema	0	sinningly	r	moby_reverse
 sinningness	0		Number=Sing	dema	0	sinningness	n	moby_reverse
 sinnings	0	oewn-sinning-n	Number=Plur	dema	0			rule

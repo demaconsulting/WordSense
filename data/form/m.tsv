@@ -3359,6 +3359,7 @@ mailer	0	oewn-mailer-n	Number=Sing	dema	0			oewn_form
 mailers	0	oewn-mailer-n	Number=Plur	dema	0			rule
 mailing	0	oewn-mail-v	VerbForm=Ger	dema	1			carried
 mailing	1	oewn-mail-n	Number=Sing+VerbForm=Ger	dema	1			carried
+mailing	2	oewn-mailing-n	Number=Sing	dema	0			oewn_form
 mailing address	0	oewn-mailing_address-n	Number=Sing	dema	0			oewn_form
 mailing addresses	0	oewn-mailing_address-n	Number=Plur	dema	0			rule
 mailing list	0	oewn-mailing_list-n	Number=Sing	dema	0			oewn_form
@@ -5627,6 +5628,7 @@ markhor	0	oewn-markhor-n	Number=Sing	dema	0			oewn_form
 markhors	0	oewn-markhor-n	Number=Plur	dema	0			rule
 marking	0	oewn-mark-v	VerbForm=Ger	dema	1			carried
 marking	1	oewn-mark-n	Number=Sing+VerbForm=Ger	dema	1			carried
+marking	2	oewn-marking-n	Number=Sing	dema	0			oewn_form
 marking down	0	oewn-mark_down-v	VerbForm=Ger	dema	0			rule
 marking ink	0	oewn-marking_ink-n	Number=Sing	dema	0			oewn_form
 marking inks	0	oewn-marking_ink-n	Number=Plur	dema	0			rule
@@ -6349,6 +6351,7 @@ masterhoods	0		Number=Plur	dema	0	masterhood	n	rule
 masteries	0	oewn-mastery-n	Number=Plur	dema	0			rule
 mastering	0	oewn-master-v	VerbForm=Ger	dema	1			carried
 mastering	1	oewn-master-n	Number=Sing+VerbForm=Ger	dema	1			carried
+mastering	2	oewn-mastering-n	Number=Sing	dema	0			oewn_form
 masterings	0	oewn-mastering-n	Number=Plur	dema	0			rule
 masterless	0	oewn-masterless-a	Degree=Pos	dema	0			oewn_form
 masterliness	0		Number=Sing	dema	0	masterliness	n	moby_reverse
@@ -7303,6 +7306,7 @@ meanies	1	oewn-meany-n	Number=Plur	dema	0			rule
 meaning	0	oewn-mean-v	VerbForm=Ger	dema	1			carried
 meaning	1	oewn-meaning-a	Degree=Pos	dema	0			carried
 meaning	2	oewn-mean-n	Number=Sing+VerbForm=Ger	dema	1			carried
+meaning	3	oewn-meaning-n	Number=Sing	dema	0			oewn_form
 meaningful	0	oewn-meaningful-a	Degree=Pos	dema	0			oewn_form
 meaningfully	0	oewn-meaningfully-r	Degree=Pos	dema	0			oewn_form
 meaningfulness	0	oewn-meaningfulness-n	Number=Sing	dema	0			oewn_form
@@ -7319,6 +7323,7 @@ meanness	0	oewn-meanness-n	Number=Sing	dema	0			oewn_form
 meannesses	0	oewn-meanness-n	Number=Plur	dema	0			rule
 means	0	oewn-mean-n	Number=Plur	dema	1			carried
 means	1	oewn-mean-v	Person=3+Tense=Pres	dema	1			carried
+means	2	oewn-means-n	Number=Plur	dema	0			irregular_list
 means grass	0	oewn-means_grass-n	Number=Sing	dema	0			oewn_form
 means grasses	0	oewn-means_grass-n	Number=Plur	dema	0			rule
 means test	0	oewn-means_test-n	Number=Sing	dema	0			oewn_form
@@ -7375,6 +7380,7 @@ measures out	0	oewn-measure_out-v	Person=3+Tense=Pres	dema	0			rule
 measures up	0	oewn-measure_up-v	Person=3+Tense=Pres	dema	0			rule
 measuring	0	oewn-measure-v	VerbForm=Ger	dema	1			carried
 measuring	1	oewn-measure-n	Number=Sing+VerbForm=Ger	dema	1			carried
+measuring	2	oewn-measuring-n	Number=Sing	dema	0			oewn_form
 measuring block	0	oewn-measuring_block-n	Number=Sing	dema	0			oewn_form
 measuring blocks	0	oewn-measuring_block-n	Number=Plur	dema	0			rule
 measuring cup	0	oewn-measuring_cup-n	Number=Sing	dema	0			oewn_form
@@ -15139,6 +15145,7 @@ monitored	0	oewn-monitor-v	Tense=Past	dema	1			carried
 monitorial	0		Degree=Pos	dema	0	monitorial	a	moby_reverse
 monitoring	0	oewn-monitor-v	VerbForm=Ger	dema	1			carried
 monitoring	1	oewn-monitor-n	Number=Sing+VerbForm=Ger	dema	1			carried
+monitoring	2	oewn-monitoring-n	Number=Sing	dema	0			oewn_form
 monitoring device	0	oewn-monitoring_device-n	Number=Sing	dema	0			oewn_form
 monitoring devices	0	oewn-monitoring_device-n	Number=Plur	dema	0			rule
 monitoring program	0	oewn-monitoring_program-n	Number=Sing	dema	0			oewn_form
