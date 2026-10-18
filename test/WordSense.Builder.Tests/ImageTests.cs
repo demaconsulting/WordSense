@@ -58,7 +58,7 @@ public sealed class ImageTests
         var image = WordImage.Open(Committed.Value);
 
         var previous = Array.Empty<byte>();
-        for (var i = 0; i < image.SpellingCount; i += 7)
+        for (var i = 0; i < image.SpellingCount; i++)
         {
             var current = Encoding.UTF8.GetBytes(image.Spelling(i));
             if (i > 0)
