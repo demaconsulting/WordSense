@@ -9,9 +9,9 @@ public class WordLexiconTests
     ///     A well-known word with several parts of speech lists them under one key.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_KnownWord_ReturnsItsSenses()
+    public void WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses()
     {
-        Assert.True(WordLexicon.Words.TryGetValue("record", out var senses));
+        Assert.True(WordLexicon.TryLookup("record", out var senses));
 
         var parts = senses.Select(s => s.PartOfSpeech).ToHashSet();
         Assert.Contains(PartOfSpeech.Noun, parts);
@@ -20,14 +20,15 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     The inflected forms materialized at build time for every dictionary word resolve to the lemma of the base form.
+    ///     The inflected forms resolve to the lemma of the base form and carry grammatical features.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_InflectedForm_ReturnsSensesOfBase()
+    public void WordLexicon_Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures()
     {
-        Assert.True(WordLexicon.Words.TryGetValue("records", out var senses));
+        var senses = WordLexicon.Lookup("records");
 
-        Assert.Contains(senses, s => s.Lemma == "record");
+        Assert.Contains(senses, s => s.Lemma == "record" && s.PartOfSpeech == PartOfSpeech.Noun && s.Features == "Number=Plur");
+        Assert.Contains(senses, s => s.Lemma == "record" && s.PartOfSpeech == PartOfSpeech.Verb && s.Features == "Person=3+Tense=Pres");
     }
 
     /// <summary>
@@ -39,23 +40,23 @@ public class WordLexiconTests
     [InlineData("trees", "tree", PartOfSpeech.Noun)]
     [InlineData("knows", "know", PartOfSpeech.Verb)]
     [InlineData("having", "have", PartOfSpeech.Verb)]
-    public void WordLexicon_Words_InflectedFormOfAnyDictionaryWord_ResolvesToLemma(string form, string lemma, PartOfSpeech pos)
+    public void WordLexicon_Lookup_InflectedFormOfAnyDictionaryWord_ResolvesToLemma(string form, string lemma, PartOfSpeech pos)
     {
-        Assert.True(WordLexicon.Words.TryGetValue(form, out var senses));
+        Assert.True(WordLexicon.TryLookup(form, out var senses));
 
         Assert.Contains(senses, s => s.Lemma == lemma && s.PartOfSpeech == pos);
     }
 
     /// <summary>
-    ///     An irregular form that the dictionary already lists keeps its dictionary entry (the dictionary wins), and is known.
+    ///     An irregular form that the dictionary already lists is known.
     /// </summary>
     [Theory]
     [InlineData("went")]
     [InlineData("children")]
     [InlineData("happier")]
-    public void WordLexicon_Words_IrregularFormInDictionary_IsKnown(string form)
+    public void WordLexicon_Contains_IrregularFormInDictionary_IsKnown(string form)
     {
-        Assert.True(WordLexicon.Words.ContainsKey(form));
+        Assert.True(WordLexicon.Contains(form));
     }
 
     /// <summary>
@@ -65,30 +66,31 @@ public class WordLexiconTests
     [InlineData("goed")]
     [InlineData("childs")]
     [InlineData("knowed")]
-    public void WordLexicon_Words_WrongRegularFormOfIrregularWord_IsAbsent(string form)
+    public void WordLexicon_Contains_WrongRegularFormOfIrregularWord_IsAbsent(string form)
     {
-        Assert.False(WordLexicon.Words.ContainsKey(form));
+        Assert.False(WordLexicon.Contains(form));
     }
 
     /// <summary>
-    ///     A form that the forms file lists answers only with the senses its labels name: <c>bowed</c> only bends,
-    ///     <c>bows</c> names all three senses of <c>bow</c>.
+    ///     A form answers only with the senses it can have: <c>bowed</c> only bends, <c>bows</c> names all three senses of
+    ///     <c>bow</c>, and every sense has an id of the trained lemma.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_ListedFormOfHeteronym_HasOnlyItsLabeledSenses()
+    public void WordLexicon_Lookup_FormOfHeteronym_HasOnlyItsSenses()
     {
-        var bowed = Assert.Single(WordLexicon.Words["bowed"]);
-        Assert.Equal(new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"), bowed);
+        var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
+        Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
+        Assert.Equal("bend", WordLexicon.MeaningOf(bowed));
+        Assert.Equal("bow", WordLexicon.TrainedLemmaOf(bowed));
+        Assert.Equal("Tense=Past", bowed.Features);
 
-        var bows = WordLexicon.Words["bows"];
+        var bows = WordLexicon.Lookup("bows");
         Assert.Equal(
-            [
-                new WordDetails("bow", PartOfSpeech.Noun, "bend", "bow"),
-                new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"),
-                new WordDetails("bow", PartOfSpeech.Noun, "weapon", "boh"),
-            ],
-            bows);
-        Assert.Equal(3, WordLexicon.Words["bow"].Length);
+            [(PartOfSpeech.Noun, "bend"), (PartOfSpeech.Verb, "bend"), (PartOfSpeech.Noun, "weapon")],
+            bows.Select(b => (b.PartOfSpeech, WordLexicon.MeaningOf(b))));
+        Assert.Equal(3, bows.Select(b => b.SenseId).Distinct().Count());
+        Assert.All(bows, b => Assert.StartsWith("bow#", b.SenseId, StringComparison.Ordinal));
+        Assert.Equal(3, WordLexicon.Lookup("bow").Count(b => b.SenseId is not null));
     }
 
     /// <summary>
@@ -96,13 +98,13 @@ public class WordLexiconTests
     ///     senses.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_ReadForms_SplitByLabels()
+    public void WordLexicon_Lookup_ReadForms_SplitBySense()
     {
-        var reads = Assert.Single(WordLexicon.Words["reads"]);
-        Assert.Equal(new WordDetails("read", PartOfSpeech.Verb, "present", "reed"), reads);
+        var reads = Assert.Single(WordLexicon.Lookup("reads"));
+        Assert.Equal("present", WordLexicon.MeaningOf(reads));
 
-        var read = WordLexicon.Words["read"].Where(s => s.Meaning is not null);
-        Assert.Equal(["past", "present"], read.Select(s => s.Meaning).Order(StringComparer.Ordinal));
+        var read = WordLexicon.Lookup("read").Select(WordLexicon.MeaningOf).Where(m => m is not null);
+        Assert.Equal(["past", "present"], read.Order(StringComparer.Ordinal));
     }
 
     /// <summary>
@@ -110,29 +112,45 @@ public class WordLexiconTests
     ///     the adverb or adjective sense, <c>wounds</c> only the injury.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_RestrictedForm_NeverOffersExcludedSense()
+    public void WordLexicon_Lookup_RestrictedForm_NeverOffersExcludedSense()
     {
-        var lives = WordLexicon.Words["lives"];
-        Assert.Equal(new WordDetails("live", PartOfSpeech.Verb, "dwell", "liv"), lives[0]);
+        var lives = WordLexicon.Lookup("lives");
+        Assert.Equal(PartOfSpeech.Verb, lives[0].PartOfSpeech);
+        Assert.Equal("dwell", WordLexicon.MeaningOf(lives[0]));
         Assert.DoesNotContain(lives, s => s.PartOfSpeech is PartOfSpeech.Adjective or PartOfSpeech.Adverb);
-        Assert.DoesNotContain(lives, s => s.Respelling == "lyve");
 
-        var wounds = Assert.Single(WordLexicon.Words["wounds"]);
-        Assert.Equal(new WordDetails("wound", PartOfSpeech.Noun, "injury", "woond"), wounds);
+        var wounds = Assert.Single(WordLexicon.Lookup("wounds"));
+        Assert.Equal(PartOfSpeech.Noun, wounds.PartOfSpeech);
+        Assert.Equal("injury", WordLexicon.MeaningOf(wounds));
+    }
+
+    /// <summary>
+    ///     A form of a trained lemma that the entry lemma does not spell the same is still keyed by the trained lemma
+    ///     (<c>axes</c> is a form of the entry <c>ax</c>), and the 19 wrong-lemma forms point at the right entry.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas()
+    {
+        var wicks = WordLexicon.Lookup("wicks");
+        Assert.Contains(wicks, s => s.Lemma == "wick" && s.PartOfSpeech == PartOfSpeech.Verb);
+        Assert.DoesNotContain(wicks, s => s.Lemma == "wicked");
+
+        Assert.Contains(WordLexicon.Lookup("re-signed"), s => s.Lemma == "re-sign");
+        Assert.NotEmpty(WordLexicon.Lookup("axes"));
     }
 
     /// <summary>
     ///     Every key is a lower-case surface form.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_Keys_AreLowerCase()
+    public void WordLexicon_View_Keys_AreLowerCase()
     {
-        Assert.All(WordLexicon.Words.Keys, key => Assert.Equal(key.ToLowerInvariant(), key));
+        Assert.All(WordLexicon.View.Keys, key => Assert.Equal(key.ToLowerInvariant(), key));
     }
 
     /// <summary>
     ///     The determiners, and the words that Moby lists with another code first, are in the lexicon with their real
-    ///     parts of speech; a determiner has exactly one sense.
+    ///     parts of speech; a determiner has exactly one analysis.
     /// </summary>
     [Theory]
     [InlineData("the", PartOfSpeech.Determiner)]
@@ -141,9 +159,9 @@ public class WordLexiconTests
     [InlineData("his", PartOfSpeech.Determiner)]
     [InlineData("albeit", PartOfSpeech.Conjunction)]
     [InlineData("alas", PartOfSpeech.Interjection)]
-    public void WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone(string word, PartOfSpeech expected)
+    public void WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone(string word, PartOfSpeech expected)
     {
-        Assert.True(WordLexicon.Words.TryGetValue(word, out var senses));
+        Assert.True(WordLexicon.TryLookup(word, out var senses));
 
         Assert.Equal(expected, Assert.Single(senses).PartOfSpeech);
     }
@@ -152,102 +170,117 @@ public class WordLexiconTests
     ///     Words with several parts of speech list them all, so and will among them.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_SoAndWill_ListTheirParts()
+    public void WordLexicon_Lookup_SoAndWill_ListTheirParts()
     {
-        Assert.Contains(WordLexicon.Words["so"], s => s.PartOfSpeech == PartOfSpeech.Adverb);
-        Assert.Contains(WordLexicon.Words["so"], s => s.PartOfSpeech == PartOfSpeech.Conjunction);
-        Assert.Contains(WordLexicon.Words["will"], s => s.PartOfSpeech == PartOfSpeech.Verb);
-        Assert.Contains(WordLexicon.Words["will"], s => s.PartOfSpeech == PartOfSpeech.Noun);
+        Assert.Contains(WordLexicon.Lookup("so"), s => s.PartOfSpeech == PartOfSpeech.Adverb);
+        Assert.Contains(WordLexicon.Lookup("so"), s => s.PartOfSpeech == PartOfSpeech.Conjunction);
+        Assert.Contains(WordLexicon.Lookup("will"), s => s.PartOfSpeech == PartOfSpeech.Verb);
+        Assert.Contains(WordLexicon.Lookup("will"), s => s.PartOfSpeech == PartOfSpeech.Noun);
     }
 
     /// <summary>
-    ///     The auxiliary verbs have an Auxiliary sense after the senses they had, and their forms do not gain it.
+    ///     The auxiliary verbs have an Auxiliary analysis after the analyses they had, and their forms do not gain it.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_Auxiliaries_HaveTrailingAuxiliarySense()
+    public void WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis()
     {
         Assert.Equal(
             [PartOfSpeech.Verb, PartOfSpeech.Noun, PartOfSpeech.Auxiliary],
-            WordLexicon.Words["will"].Select(s => s.PartOfSpeech));
-        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Words["is"][^1].PartOfSpeech);
-        Assert.Equal("is", WordLexicon.Words["is"][^1].Lemma);
-        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Words["having"][^1].PartOfSpeech);
-        Assert.DoesNotContain(WordLexicon.Words["wills"], s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
-        Assert.DoesNotContain(WordLexicon.Words["record"], s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
+            WordLexicon.Lookup("will").Select(s => s.PartOfSpeech));
+        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Lookup("is")[^1].PartOfSpeech);
+        Assert.Equal(PartOfSpeech.Auxiliary, WordLexicon.Lookup("having")[^1].PartOfSpeech);
+        Assert.DoesNotContain(WordLexicon.Lookup("wills"), s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
+        Assert.DoesNotContain(WordLexicon.Lookup("record"), s => s.PartOfSpeech == PartOfSpeech.Auxiliary);
     }
 
     /// <summary>
-    ///     Every sense of a word has the lemma of its first sense, and so the weights of one lemma cover the word, or it
-    ///     is the word's own extra: a form may have several lemmas, so a sense of a part of speech that the labels of a
-    ///     form do not cover has the form itself as lemma and no meaning and no respelling (<c>drove</c> is a verb of
-    ///     <c>drive</c> and a noun of its own).
+    ///     A form may have several lemmas: <c>drove</c> is a verb of <c>drive</c> and a noun of its own.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_EverySense_SharesTheFirstLemmaOrIsTheOwnExtra()
+    public void WordLexicon_Lookup_FormWithSeveralLemmas_ListsEach()
     {
-        Assert.All(
-            WordLexicon.Words,
-            pair => Assert.All(
-                pair.Value,
-                s => Assert.True(
-                    s.Lemma == pair.Value[0].Lemma || (s.Lemma == pair.Key && s.Meaning is null && s.Respelling is null),
-                    $"{pair.Key}: {s}")));
+        var drove = WordLexicon.Lookup("drove");
 
-        var drove = WordLexicon.Words["drove"];
         Assert.Equal("drive", drove[0].Lemma);
-        Assert.Equal(new WordDetails("drove", PartOfSpeech.Noun, null, null), drove[^1]);
+        Assert.Contains(drove, s => s.Lemma == "drove" && s.PartOfSpeech == PartOfSpeech.Noun);
     }
 
     /// <summary>
-    ///     The published sense lists cannot be mutated: not even through the list interfaces, and a lookup returns the
-    ///     very same list every time (no copy).
+    ///     The exact spelling is found first, then the lower-case spelling; the curly apostrophe counts as a straight one.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_PublishedValues_CannotBeMutated()
+    public void WordLexicon_Lookup_Case_FoldsToLowerCase()
     {
-        var senses = WordLexicon.Words["record"];
-        IList<WordDetails> list = senses;
-        var first = senses[0];
+        var record = WordLexicon.Lookup("record");
 
-        Assert.True(list.IsReadOnly);
-        Assert.Throws<NotSupportedException>(() => list[0] = new WordDetails("x", PartOfSpeech.Noun, null, null));
-        Assert.Throws<NotSupportedException>(() => list.Add(first));
-        Assert.Throws<NotSupportedException>(() => list.Clear());
-        Assert.Equal(first, WordLexicon.Words["record"][0]);
-        Assert.True(senses == WordLexicon.Words["record"]);
-        Assert.All(WordLexicon.Words.Take(1000), pair => Assert.False(pair.Value.IsDefault));
+        Assert.Equal(record, WordLexicon.Lookup("Record"));
+        Assert.Equal(record, WordLexicon.Lookup("RECORD"));
+        Assert.True(WordLexicon.Contains("Record"));
+        Assert.Equal(WordLexicon.Lookup("o'clock"), WordLexicon.Lookup("o\u2019clock"));
     }
 
     /// <summary>
-    ///     A word that is not in the lexicon is absent, and so is a key that is not lower case.
+    ///     A word that is not in the lexicon has no analysis.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_UnknownWord_IsAbsent()
+    public void WordLexicon_Lookup_UnknownWord_IsAbsent()
     {
-        Assert.False(WordLexicon.Words.ContainsKey("zzqxjw"));
-        Assert.False(WordLexicon.Words.ContainsKey("Record"));
+        Assert.False(WordLexicon.TryLookup("zzqxjw", out var senses));
+        Assert.True(senses.IsDefault);
+        Assert.Empty(WordLexicon.Lookup("zzqxjw"));
+        Assert.Empty(WordLexicon.Lookup(string.Empty));
+        Assert.Empty(WordLexicon.Lookup(new string('a', 400)));
+        Assert.False(WordLexicon.View.ContainsKey("zzqxjw"));
+        Assert.Throws<KeyNotFoundException>(() => WordLexicon.View["zzqxjw"]);
     }
 
     /// <summary>
-    ///     The embedded blob loads and holds many words, each with at least one sense.
+    ///     A null word throws.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_EmbeddedBlob_LoadsAndIsNotEmpty()
+    public void WordLexicon_Lookup_NullWord_Throws()
     {
-        var words = WordLexicon.Words;
-
-        Assert.True(words.Count > 100_000);
-        Assert.All(words.Take(1000), pair => Assert.NotEmpty(pair.Value));
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.Lookup(null!));
+        Assert.Throws<ArgumentNullException>(() => WordLexicon.FormsOf(null!));
     }
 
     /// <summary>
-    ///     Concurrent access returns the same instance everywhere.
+    ///     The forms of a lemma list every spelling that is an analysis of it.
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_ConcurrentAccess_ReturnsSameInstance()
+    public void WordLexicon_FormsOf_Lemma_ListsItsForms()
     {
-        var instances = Enumerable.Range(0, 16).AsParallel().Select(_ => WordLexicon.Words).Distinct().ToList();
+        var forms = WordLexicon.FormsOf("record");
 
-        Assert.Single(instances);
+        Assert.Contains("record", forms);
+        Assert.Contains("records", forms);
+        Assert.Contains("recorded", forms);
+        Assert.Contains("recorded", forms);
+        Assert.Equal(forms.Order(StringComparer.Ordinal).Distinct(), forms);
+        Assert.Empty(WordLexicon.FormsOf("zzqxjw"));
+    }
+
+    /// <summary>
+    ///     The embedded image loads and holds many words, each with at least one analysis; the lookup returns equal arrays
+    ///     every time.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Count_EmbeddedImage_LoadsAndIsNotEmpty()
+    {
+        Assert.True(WordLexicon.Count > 300_000);
+        Assert.Equal(WordLexicon.Count, WordLexicon.View.Count);
+        Assert.All(WordLexicon.View.Take(1000), pair => Assert.NotEmpty(pair.Value));
+        Assert.Equal(WordLexicon.Lookup("record"), WordLexicon.Lookup("record"));
+    }
+
+    /// <summary>
+    ///     Concurrent lookups give the same answers.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_ConcurrentAccess_ReturnsSameAnswers()
+    {
+        var results = Enumerable.Range(0, 32).AsParallel().Select(_ => WordLexicon.Lookup("record").Length).Distinct().ToList();
+
+        Assert.Single(results);
     }
 }

@@ -40,7 +40,7 @@ public sealed class ProgramTests : IDisposable
         var (code, _, error) = await RunAsync();
 
         Assert.Equal(1, code);
-        foreach (var command in new[] { "words", "import-moby", "weights", "evaluate", "ud-counts", "ud-irregular", "coverage", "train-basic", "tune-basic", "appendix" })
+        foreach (var command in new[] { "compile-image", "import-moby", "weights", "evaluate", "ud-counts", "ud-irregular", "coverage", "train-basic", "tune-basic", "appendix" })
         {
             Assert.Contains(command, error, StringComparison.Ordinal);
         }
@@ -200,7 +200,7 @@ public sealed class ProgramTests : IDisposable
     [InlineData("corpus", "x")]
     public async Task WordSenseBuilder_Program_MalformedOptions_ReportUsage(string option, string next)
     {
-        string[] args = next.Length == 0 ? ["words", option] : ["words", option, next];
+        string[] args = next.Length == 0 ? ["compile-image", option] : ["compile-image", option, next];
 
         var (code, _, error) = await RunAsync(args);
 
@@ -223,7 +223,7 @@ public sealed class ProgramTests : IDisposable
 
         Assert.Equal(0, code);
         Assert.Empty(error);
-        Assert.Contains("| Known tokens | 1 (33.33 percent) |", output, StringComparison.Ordinal);
+        Assert.Contains("| Known tokens | 2 (66.67 percent) |", output, StringComparison.Ordinal);
         Assert.Contains("| zzqxj | 1 |", output, StringComparison.Ordinal);
         Assert.Equal(output, await File.ReadAllTextAsync(target, TestContext.Current.CancellationToken));
     }
@@ -241,37 +241,50 @@ public sealed class ProgramTests : IDisposable
     }
 
     /// <summary>
-    ///     The words command writes the table, reports the word count and the table is readable.
+    ///     The compile-image command compiles the committed data into an image that equals the committed one.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_Program_Words_WritesTable()
+    public async Task WordSenseBuilder_Program_CompileImage_WritesImage()
     {
-        var corpus = PrepareCorpus();
-        var target = Path.Combine(_dir.Root, "out", "words.bin");
+        var root = FindRepositoryRoot();
+        var target = Path.Combine(_dir.Root, "out", "wordsense.img");
 
-        var (code, output, error) = await RunAsync("words", "--corpus", corpus, "--output", target);
+        var (code, output, error) = await RunAsync("compile-image", "--data", Path.Combine(root, "data"), "--corpus", Path.Combine(root, "corpus"), "--output", target);
 
         Assert.Equal(0, code);
         Assert.Empty(error);
-        Assert.Contains("Wrote 1 words to", output, StringComparison.Ordinal);
-        var table = DemaConsulting.WordSense.WordsBlob.Read(await File.ReadAllBytesAsync(target, TestContext.Current.CancellationToken));
-        Assert.Equal(2, table["walk"].Length);
+        Assert.Contains("Wrote the word image to", output, StringComparison.Ordinal);
+        var image = DemaConsulting.WordSense.WordImage.Open(await File.ReadAllBytesAsync(target, TestContext.Current.CancellationToken));
+        Assert.Equal(DemaConsulting.WordSense.WordLexicon.Count, image.SpellingCount);
+        Assert.True(image.TryLookup("record", out var senses));
+        Assert.True(senses.Length >= 2);
     }
 
     /// <summary>
-    ///     The words command reports an inconsistent corpus with exit code 1 and writes nothing.
+    ///     The compile-image command reports missing data with exit code 1 and writes nothing.
     /// </summary>
     [Fact]
-    public async Task WordSenseBuilder_Program_Words_InconsistentCorpus_Fails()
+    public async Task WordSenseBuilder_Program_CompileImage_MissingData_Fails()
     {
-        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "walk\tnoun\tnoun\t\t\n");
-        var target = Path.Combine(_dir.Root, "out", "words.bin");
+        var target = Path.Combine(_dir.Root, "out", "wordsense.img");
 
-        var (code, _, error) = await RunAsync("words", "--corpus", Path.Combine(_dir.Root, "corpus"), "--output", target);
+        var (code, _, error) = await RunAsync("compile-image", "--data", Path.Combine(_dir.Root, "nodata"), "--corpus", Path.Combine(_dir.Root, "corpus"), "--output", target);
 
         Assert.Equal(1, code);
         Assert.NotEmpty(error);
         Assert.False(File.Exists(target));
+    }
+
+    private static string FindRepositoryRoot()
+    {
+        var root = new DirectoryInfo(AppContext.BaseDirectory);
+        while (root is not null && !File.Exists(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv")))
+        {
+            root = root.Parent;
+        }
+
+        Assert.NotNull(root);
+        return root.FullName;
     }
 
     /// <summary>

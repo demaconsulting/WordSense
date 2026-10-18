@@ -7,9 +7,9 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class CueModelTests
 {
-    private static readonly WordDetails Fish = new("bass", PartOfSpeech.Noun, "fish", null);
-    private static readonly WordDetails Music = new("bass", PartOfSpeech.Noun, "music", null);
-    private static readonly WordDetails Verb = new("bass", PartOfSpeech.Verb, null, null);
+    private static readonly WordDetails Fish = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "fish");
+    private static readonly WordDetails Music = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "music");
+    private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
 
     /// <summary>
     ///     The features are the distinct letter-bearing window tokens plus the two immediate neighbors.

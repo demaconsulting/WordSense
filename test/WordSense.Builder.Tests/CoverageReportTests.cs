@@ -95,7 +95,7 @@ public sealed class CoverageReportTests : IDisposable
             "and the kindness of the stronger neighbors was greatest. Neighbouring statesmen thought and spoke.";
         var report = new CoverageReport();
 
-        report.AddText([sample], DemaConsulting.WordSense.WordLexicon.Words.ContainsKey);
+        report.AddText([sample], DemaConsulting.WordSense.WordLexicon.Contains);
 
         Assert.True(report.Other.Count == 0 && report.Names.Count == 0, "Unknown: " + string.Join(", ", report.Other.Concat(report.Names).Select(o => o.Word)));
         Assert.Equal(report.Tokens, report.KnownTokens);

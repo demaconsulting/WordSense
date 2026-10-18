@@ -252,5 +252,5 @@ public sealed class LexiconTests : IDisposable
         Assert.Empty(TextSplitter.SplitWords("   "));
     }
 
-    private static WordDetails[] Single(string lemma, IReadOnlyList<PartOfSpeech> pos) => pos.Select(p => new WordDetails(lemma, p, null, null)).ToArray();
+    private static LegacyWord[] Single(string lemma, IReadOnlyList<PartOfSpeech> pos) => pos.Select(p => new LegacyWord(lemma, p, null, null)).ToArray();
 }

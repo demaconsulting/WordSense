@@ -7,25 +7,27 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 /// </summary>
 public class WeightedLemmaTableTests
 {
-    private static readonly WordDetails Noun = new("record", PartOfSpeech.Noun, "noun", "REK-urd");
-    private static readonly WordDetails Verb = new("record", PartOfSpeech.Verb, "verb", "rih-KORD");
+    private static readonly ImmutableArray<WordDetails> Classes = WordLexicon.ClassesOf("record");
+    private static readonly WordDetails Noun = Classes.First(c => c.PartOfSpeech == PartOfSpeech.Noun);
+    private static readonly WordDetails Verb = Classes.First(c => c.PartOfSpeech == PartOfSpeech.Verb);
+
+    private static Func<string, ImmutableArray<WordDetails>> Words(params WordDetails[] classes) =>
+        lemma => lemma == "record" ? [.. classes] : [];
 
     private static WeightedLemma Lemma(string lemma, params WordDetails[] senses) => new(
         lemma,
-        [.. senses.Select(s => new WeightedWord(s.Lemma, s.PartOfSpeech, s.Meaning))],
+        [.. senses.Select(s => new WeightedWord(s.Lemma, s.PartOfSpeech, WordLexicon.MeaningOf(s)))],
         new LemmaWeights(LemmaModelKind.Binary, [1f, 0f], [0f], 0.1f, 2));
 
     private static WeightsData Data(params WeightedLemma[] lemmas) => new("test-model", 2, [0f, 0f], lemmas);
 
     /// <summary>
-    ///     A lemma whose senses equal the lexicon's senses is kept.
+    ///     A lemma whose senses equal the lexicon's classes is kept.
     /// </summary>
     [Fact]
     public void WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma()
     {
-        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, Verb] };
-
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun, Verb));
 
         Assert.Equal(0, table.DroppedLemmas);
         Assert.NotNull(table.Find("record"));
@@ -38,7 +40,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), new Dictionary<string, ImmutableArray<WordDetails>>());
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), _ => []);
 
         Assert.Equal(["record"], table.DroppedLemmaNames);
         Assert.Null(table.Find("record"));
@@ -50,26 +52,23 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma()
     {
-        var changed = Verb with { Meaning = "changed" };
-        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, changed] };
+        var changed = Lemma("record", Noun, Verb) with { Senses = [new WeightedWord("record", PartOfSpeech.Noun, WordLexicon.MeaningOf(Noun)), new WeightedWord("record", PartOfSpeech.Verb, "changed")] };
 
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
+        var table = new WeightedLemmaTable(Data(changed), Words(Noun, Verb));
 
         Assert.Equal(1, table.DroppedLemmas);
         Assert.Empty(table.Lemmas);
     }
 
     /// <summary>
-    ///     A lemma whose trained senses are the first senses of a longer lexicon entry is kept: the lexicon may hold more
-    ///     parts of speech than were trained.
+    ///     A lemma whose trained senses are the first classes of a longer list is kept.
     /// </summary>
     [Fact]
     public void WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma()
     {
-        var extra = new WordDetails("record", PartOfSpeech.Adjective, null, null);
-        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun, Verb, extra] };
+        var extra = new WordDetails(null, "record", PartOfSpeech.Adjective, string.Empty);
 
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun, Verb, extra));
 
         Assert.Equal(0, table.DroppedLemmas);
         Assert.NotNull(table.Find("record"));
@@ -81,9 +80,7 @@ public class WeightedLemmaTableTests
     [Fact]
     public void WeightedLemmaTable_Constructor_DifferentSenseCount_DropsLemma()
     {
-        var words = new Dictionary<string, ImmutableArray<WordDetails>> { ["record"] = [Noun] };
-
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), words);
+        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun));
 
         Assert.Equal(1, table.DroppedLemmas);
     }

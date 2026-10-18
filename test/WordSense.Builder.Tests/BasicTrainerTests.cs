@@ -9,13 +9,13 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public class BasicTrainerTests
 {
-    private static readonly WordDetails Noun = new("record", PartOfSpeech.Noun, null, null);
-    private static readonly WordDetails Verb = new("record", PartOfSpeech.Verb, null, null);
+    private static readonly WordDetails Noun = new(null, "record", PartOfSpeech.Noun, string.Empty);
+    private static readonly WordDetails Verb = new(null, "record", PartOfSpeech.Verb, string.Empty);
 
     private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
         ["record"] = [Noun, Verb],
-        ["cat"] = [new("cat", PartOfSpeech.Noun, null, null)],
+        ["cat"] = [new(null, "cat", PartOfSpeech.Noun, string.Empty)],
     };
 
     private static UdCounts Counts()

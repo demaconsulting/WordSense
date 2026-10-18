@@ -33,8 +33,8 @@ public sealed class DataSchemaTests : IDisposable
         // Assert
         Assert.Equal(1, schema.Version);
         Assert.Equal("oewn-2025", schema.Release);
-        Assert.Equal(13, schema.Tables.Count());
-        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "coarse_class", "class_sense", "class_entry" })
+        Assert.Equal(15, schema.Tables.Count());
+        foreach (var name in new[] { "source", "entry", "synset", "gloss", "example", "sense", "synset_relation", "sense_relation", "pronunciation", "id_map", "coarse_class", "class_sense", "class_entry", "form", "form_sense_scope" })
         {
             Assert.True(schema.HasTable(name), name);
         }
