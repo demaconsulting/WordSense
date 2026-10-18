@@ -143,8 +143,14 @@ public static class WordLexicon
         return WordImage.Open(data);
     }
 
+    private sealed record CacheEntry(string Key, ImmutableArray<WordDetails> Senses, bool Found);
+
     private sealed class WordTable : IReadOnlyDictionary<string, ImmutableArray<WordDetails>>
     {
+        private const int CacheSize = 2048;
+
+        private readonly CacheEntry?[] _cache = new CacheEntry?[CacheSize];
+
 #pragma warning disable S3218 // Count is the member of the dictionary interface the adapter implements
         public int Count => Image.Value.SpellingCount;
 #pragma warning restore S3218
@@ -158,7 +164,22 @@ public static class WordLexicon
 
         public bool ContainsKey(string key) => TryGetValue(key, out _);
 
-        public bool TryGetValue(string key, out ImmutableArray<WordDetails> value) => Image.Value.TryLookup(key, out value);
+        public bool TryGetValue(string key, out ImmutableArray<WordDetails> value)
+        {
+            // A small direct-mapped cache of recent answers: the models ask for the same words repeatedly and a lookup
+            // decodes and allocates. Entries are immutable, so a racing writer can only replace one valid entry with another.
+            var slot = (key.GetHashCode() & int.MaxValue) % CacheSize;
+            var cached = Volatile.Read(ref _cache[slot]);
+            if (cached is not null && string.Equals(cached.Key, key, StringComparison.Ordinal))
+            {
+                value = cached.Senses;
+                return cached.Found;
+            }
+
+            var found = Image.Value.TryLookup(key, out value);
+            Volatile.Write(ref _cache[slot], new CacheEntry(key, value, found));
+            return found;
+        }
 
         public IEnumerator<KeyValuePair<string, ImmutableArray<WordDetails>>> GetEnumerator()
         {
