@@ -1,4 +1,8 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-pk-n	pk	n	0	1	1	dema
+dema-pkg-n	pkg	n	0	1	1	dema
+dema-pks-n	pks	n	0	1	1	dema
+dema-pkt-n	pkt	n	0	1	1	dema
 oewn-PKD-n	PKD	n	0	1	1	oewn
 oewn-PKU-n	PKU	n	0	1	1	oewn
 oewn-PKU_test-n	PKU test	n	0	2	2	oewn

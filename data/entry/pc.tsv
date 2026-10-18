@@ -1,4 +1,7 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-pc-n	pc	n	0	1	1	dema
+dema-pcf-n	pcf	n	0	1	1	dema
+dema-pci-n	pci	n	0	1	1	dema
 oewn-PC-n	PC	n	0	1	1	oewn
 oewn-PCP-n	PCP	n	0	1	1	oewn
 oewn-PC_board-n	PC board	n	0	2	2	oewn

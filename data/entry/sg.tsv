@@ -1,4 +1,9 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-sg-n	sg	n	0	1	1	dema
+dema-sgabelli-n	sgabelli	n	0	1	1	dema
+dema-sgabello-n	sgabello	n	0	1	1	dema
+dema-sgd-n	sgd	n	0	1	1	dema
+dema-sgraffiti-n	sgraffiti	n	0	1	1	dema
 oewn-SGA_infant-n	SGA infant	n	0	2	2	oewn
 oewn-SGML-n	SGML	n	0	1	1	oewn
 oewn-Sg-n	Sg	n	0	1	1	oewn

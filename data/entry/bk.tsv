@@ -1,2 +1,9 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-bk-n	bk	n	0	1	1	dema
+dema-bkbndr-n	bkbndr	n	0	1	1	dema
+dema-bkcy-n	bkcy	n	0	1	1	dema
+dema-bkg-n	bkg	n	0	1	1	dema
+dema-bklr-n	bklr	n	0	1	1	dema
+dema-bkpr-n	bkpr	n	0	1	1	dema
+dema-bks-n	bks	n	0	1	1	dema
 oewn-Bk-n	Bk	n	0	1	1	oewn

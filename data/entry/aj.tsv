@@ -1,4 +1,7 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-ajar-r	ajar	r	0	1	1	dema
+dema-ajee-r	ajee	r	0	1	1	dema
+dema-ajiva-n	ajiva	n	0	1	1	dema
 oewn-Ajaia_ajaja-n	Ajaia ajaja	n	0	2	2	oewn
 oewn-Ajuga_chamaepitys-n	Ajuga chamaepitys	n	0	2	2	oewn
 oewn-Ajuga_genevensis-n	Ajuga genevensis	n	0	2	2	oewn

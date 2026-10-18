@@ -1,4 +1,27 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-akala-n	akala	n	0	1	1	dema
+dema-akasha-n	akasha	n	0	1	1	dema
+dema-ake-n	ake	n	0	1	1	dema
+dema-ake-r	ake	r	0	1	1	dema
+dema-ake-v	ake	v	0	1	1	dema
+dema-akeake-n	akeake	n	0	1	1	dema
+dema-akebi-n	akebi	n	0	1	1	dema
+dema-aked-n	aked	n	0	1	1	dema
+dema-aked-r	aked	r	0	1	1	dema
+dema-aked-v	aked	v	0	1	1	dema
+dema-akela-n	akela	n	0	1	1	dema
+dema-akene-n	akene	n	0	1	1	dema
+dema-aketon-n	aketon	n	0	1	1	dema
+dema-akhara-n	akhara	n	0	1	1	dema
+dema-akin-n	akin	n	0	1	1	dema
+dema-akin-r	akin	r	0	1	1	dema
+dema-akinete-n	akinete	n	0	1	1	dema
+dema-akinetic-a	akinetic	a	0	1	1	dema
+dema-akinetic-r	akinetic	r	0	1	1	dema
+dema-aking-v	aking	v	0	1	1	dema
+dema-akroter-n	akroter	n	0	1	1	dema
+dema-akroterion-n	akroterion	n	0	1	1	dema
+dema-akrteria-n	akrteria	n	0	1	1	dema
 oewn-Akan-n	Akan	n	0	1	1	oewn
 oewn-Akan_language-n	Akan language	n	0	2	2	oewn
 oewn-Akha-n	Akha	n	0	1	1	oewn
