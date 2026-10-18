@@ -107,6 +107,58 @@ public class BasicTablesTests
     }
 
     /// <summary>
+    ///     A blob cut at any byte, so at every section boundary (header, tag counts, words, suffixes, cue tables) and
+    ///     inside every section, is rejected as corrupt data.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_TruncatedAtEveryLength_Throws()
+    {
+        // Arrange
+        var raw = TestTables.Decompress(TestTables.Default());
+
+        // Act / Assert: every proper prefix is rejected
+        for (var length = 0; length < raw.Length; length++)
+        {
+            var blob = TestTables.Compress(raw[..length]);
+            Assert.True(
+                Throws(() => BasicTables.Load(blob)),
+                $"A table cut at {length} of {raw.Length} bytes was accepted.");
+        }
+    }
+
+    /// <summary>
+    ///     An unsupported version in the magic number and a tag count that differs from the tag set are rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_WrongVersionOrTagCount_Throws()
+    {
+        // Arrange: the tag count is a single-byte varint after the magic, the hash and seven doubles
+        var version = TestTables.Decompress(TestTables.Default());
+        version[3] = (byte)'1';
+        var tags = TestTables.Decompress(TestTables.Default());
+        const int tagCountOffset = 4 + 32 + (7 * 8);
+        Assert.Equal(PosTag.Count, tags[tagCountOffset]);
+        tags[tagCountOffset]++;
+
+        // Act / Assert
+        Assert.True(Throws(() => BasicTables.Load(TestTables.Compress(version))), "Version WSB1.");
+        Assert.True(Throws(() => BasicTables.Load(TestTables.Compress(tags))), "Tag count.");
+    }
+
+    private static bool Throws(Action action)
+    {
+        try
+        {
+            action();
+            return false;
+        }
+        catch (InvalidDataException)
+        {
+            return true;
+        }
+    }
+
+    /// <summary>
     ///     A blob with extra bytes at the end is rejected.
     /// </summary>
     [Fact]

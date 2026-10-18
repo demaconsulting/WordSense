@@ -26,7 +26,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Bad magic** (`BasicTables_Load_BadMagic_Throws`): a wrong magic number throws `InvalidDataException`.
 - **Not compressed** (`BasicTables_Load_NotCompressed_Throws`): data that is not Brotli throws
   `InvalidDataException`.
-- **Truncated** (`BasicTables_Load_Truncated_Throws`): a truncated blob throws `InvalidDataException`.
+- **Truncated** (`BasicTables_Load_Truncated_Throws`, `BasicTables_Load_TruncatedAtEveryLength_Throws`): a truncated
+  blob, cut at any byte and so at every section boundary, throws `InvalidDataException`.
+- **Wrong version or tag count** (`BasicTables_Load_WrongVersionOrTagCount_Throws`): another format version in the
+  magic number, or a tag count that differs from the tag set, throws `InvalidDataException`.
 - **Trailing bytes** (`BasicTables_Load_TrailingBytes_Throws`): extra bytes at the end throw `InvalidDataException`.
 - **Unordered hashes** (`BasicTables_Load_UnorderedHashes_Throws`): feature hashes that are not ascending throw
   `InvalidDataException`.

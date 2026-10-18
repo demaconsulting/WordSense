@@ -28,6 +28,10 @@ sections:
                 tests:
                   - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
                   - ModelDownloader_EnsureModel_Timeout_FallsThrough
+                  - ModelDownloader_EnsureModel_BodyStalls_TimesOutFallsThroughAndLeavesNoPartialFile
+                  - ModelDownloader_EnsureModel_BodyCutShort_FallsThroughAndLeavesNoPartialFile
+                  - ModelDownloader_EnsureModel_BodyLargerThanPinnedSize_IsRefused
+                  - ModelDownloader_EnsureModel_RedirectToNonHttpScheme_IsRefusedAndFallsThrough
                   - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
 
               - id: WordSense-Onnx-ModelDownloader-Integrity
@@ -50,6 +54,9 @@ sections:
                 tests:
                   - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
                   - ModelDownloader_EnsureModel_Success_LeavesNoTemporaryFiles
+                  - ModelDownloader_EnsureModel_BodyCutShort_FallsThroughAndLeavesNoPartialFile
+                  - ModelDownloader_EnsureModel_BodyStalls_TimesOutFallsThroughAndLeavesNoPartialFile
+                  - ModelDownloader_EnsureModel_StalePartialFile_IsNotResumedOrReused
 
               - id: WordSense-Onnx-ModelDownloader-Location
                 title: >-
@@ -132,6 +139,7 @@ sections:
                   - ModelDownloader_EnsureModel_BasicCredentials_SentToMirror
                   - ModelDownloader_EnsureModel_MirrorRedirectsToOtherOrigin_SendsNoCredentialsThere
                   - ModelDownloader_EnsureModel_MirrorRedirectsWithinOrigin_KeepsCredentials
+                  - ModelDownloader_EnsureModel_MirrorRedirectsToDowngradedScheme_SendsNoCredentialsThere
                   - ModelDownloader_EnsureModel_RedirectLoop_FallsThrough
 
               - id: WordSense-Onnx-ModelDownloader-Options

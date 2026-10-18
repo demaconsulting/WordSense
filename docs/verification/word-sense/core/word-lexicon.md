@@ -50,5 +50,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   is sorted by UTF-8 bytes and every spelling is found at its own index.
 - **Corrupt image is rejected** (`Image_Corruption_IsRejected`): a wrong magic number, an unsupported version, a
   flipped byte and a truncated image each throw `InvalidDataException`.
+- **Image failure matrix** (`Image_TruncatedAtEverySectionBoundary_IsRejected`, `Image_WrongHash_IsRejectedByContentHashOnly`,
+  `Image_CountMismatch_IsRejected`): an image cut at the header, the directory and each section boundary is rejected
+  with and without the hash check; a wrong content hash is rejected while the source data hash is informational; a
+  section whose directory length disagrees with its content, or a directory with too many sections, is rejected.
 - **Complete dictionary**: the builder test `Words_Committed_HoldsEveryDictionaryWord` shows that no dictionary word
   is absent from the image.

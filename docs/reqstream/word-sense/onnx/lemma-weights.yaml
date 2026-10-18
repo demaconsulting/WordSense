@@ -42,7 +42,13 @@ sections:
                   - WeightsBlob_Read_MalformedUtf8Lemma_Throws
                   - WeightsBlob_Read_ZeroDimension_Throws
                   - WeightsBlob_Read_TrailingBytes_Throws
+                  - WeightsBlob_Read_TwoLemmaBlob_IsAccepted
+                  - WeightsBlob_Read_TruncatedAtEveryLength_Throws
+                  - WeightsBlob_Read_CountMismatch_Throws
+                  - WeightsBlob_Read_WrongVersionOrFlag_Throws
+                  - WeightsBlob_Read_AnyClassHash_IsReturnedUnchecked
                   - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws
+                  - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithOneSense_ThrowsAndTwoSensesAreAccepted
                   - WordSenseBuilder_WeightsBlobWriter_Write_OneVersusRestClassCountMismatch_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Match

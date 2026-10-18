@@ -114,6 +114,21 @@ public sealed class WeightsBlobWriterTests
     }
 
     /// <summary>
+    ///     A binary entry must have exactly two senses: a single class is refused as well, and two are accepted.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithOneSense_ThrowsAndTwoSensesAreAccepted()
+    {
+        var one = new WeightedLemma(
+            "bank",
+            ["bank#a"],
+            new LemmaWeights(LemmaModelKind.Binary, [0.5f, -0.25f, 1f], [0.125f], 0.75f, Dimension));
+
+        Assert.Throws<ArgumentException>(() => WeightsBlobWriter.Write(Sample(one)));
+        Assert.NotEmpty(WeightsBlobWriter.Write(Sample(Bank())));
+    }
+
+    /// <summary>
     ///     A one-versus-rest entry whose class count differs from its sense count is refused.
     /// </summary>
     [Fact]

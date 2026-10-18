@@ -37,6 +37,8 @@ sections:
                 tests:
                   - WordPieceTokenizer_Tokenize_CasedVocabulary_KeepsCase
                   - WordPieceTokenizer_Tokenize_UncasedVocabulary_LowerCases
+                  - WordPieceTokenizer_Tokenize_CasedParity_MatchesHandDerivedReference
+                  - WordPieceTokenizer_Tokenize_CasedVocabularyWithOtherCase_IsUnknown
 
               - id: WordSense-Onnx-WordPieceTokenizer-Spans
                 title: >-

@@ -270,4 +270,44 @@ public class WordPieceTokenizerTests
 
         Assert.Equal([5], tokenizer.Tokenize("Hello").Ids);
     }
+
+    /// <summary>
+    ///     A cased vocabulary gives the ids, pieces and offsets that the reference BERT cased tokenizer gives, derived by
+    ///     hand: case and accents are preserved, a word that is not covered is one [UNK] and a piece after the first
+    ///     is a <c>##</c> continuation.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_Tokenize_CasedParity_MatchesHandDerivedReference()
+    {
+        // Arrange: a cased vocabulary with accented pieces, a continuation and punctuation
+        string[] vocabulary =
+            ["[PAD]", "[UNK]", "[CLS]", "[SEP]", "The", "bank", "##s", "Bank", "Caf", "##\u00E9", "r\u00E9sum\u00E9", ",", ".", "NASA"];
+        var tokenizer = new WordPieceTokenizer(vocabulary, lowerCase: false);
+        const string text = "The banks, Caf\u00E9 r\u00E9sum\u00E9 NASA zzz.";
+
+        // Act
+        var result = tokenizer.Tokenize(text);
+
+        // Assert: ids, then the UTF-16 offsets of every piece
+        Assert.Equal([4, 5, 6, 11, 8, 9, 10, 13, 1, 12], result.Ids);
+        Assert.Equal([0, 4, 8, 9, 11, 14, 16, 23, 28, 31], result.Starts);
+        Assert.Equal([3, 8, 9, 10, 14, 15, 22, 27, 31, 32], result.Ends);
+    }
+
+    /// <summary>
+    ///     With a cased vocabulary a word whose case is not in the vocabulary is unknown, and it is not lower-cased
+    ///     into a match.
+    /// </summary>
+    [Fact]
+    public void WordPieceTokenizer_Tokenize_CasedVocabularyWithOtherCase_IsUnknown()
+    {
+        // Arrange
+        var tokenizer = new WordPieceTokenizer(["[PAD]", "[UNK]", "[CLS]", "[SEP]", "The", "bank"], lowerCase: false);
+
+        // Act
+        var result = tokenizer.Tokenize("the THE Bank bank");
+
+        // Assert: only the exact spellings match
+        Assert.Equal([1, 1, 1, 5], result.Ids);
+    }
 }

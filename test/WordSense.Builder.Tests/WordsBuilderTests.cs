@@ -43,6 +43,33 @@ public sealed class WordsBuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     A form that the expander generates for a trained lemma with several parts of speech answers with all trained
+    ///     senses of the lemma (the same array, with each sense's meaning), as the design documents it; a form that can
+    ///     only be one part of speech gets one plain sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WordsBuilder_Build_GeneratedFormOfTrainedLemma_KeepsAllTrainedSenses()
+    {
+        // Arrange: a trained noun and verb, a dictionary entry, and the plural and third-person rules
+        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\tshore\t\nbank\tverb\tverb\ttilt\t\n");
+        _dir.Write("corpus/lexicon/lexicon.tsv", "bank\tNV\n");
+        _dir.Write("corpus/lexicon/morphology.tsv", "Plural\tenabled\tevidence\nThirdPerson\tenabled\tevidence\nPastTense\tenabled\tevidence\n");
+
+        // Act
+        var table = WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"));
+
+        // Assert: "banks" is a noun and a verb, so it keeps both trained senses, with their meanings
+        Assert.Same(table["bank"], table["banks"]);
+        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], table["banks"].Select(d => d.PartOfSpeech));
+        Assert.Equal(["shore", "tilt"], table["banks"].Select(d => d.Meaning));
+        Assert.All(table["banks"], d => Assert.Equal("bank", d.Lemma));
+
+        // Assert: "banked" can only be a verb, so it has one plain sense of its base
+        var banked = Assert.Single(table["banked"]);
+        Assert.Equal((PartOfSpeech.Verb, "bank"), (banked.PartOfSpeech, banked.Lemma));
+    }
+
+    /// <summary>
     ///     A trained lemma or form keeps its trained senses first and gains the dictionary's other parts of speech in
     ///     dictionary order; a dictionary-only word, a determiner and a conjunction keep the dictionary order.
     /// </summary>

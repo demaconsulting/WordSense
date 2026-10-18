@@ -38,6 +38,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `AppliesSpellingRules`), so the shipped reader needs no morphology.
 - **Irregular forms replace the regular form** (`UsesIrregularForms`): `went`, `took` and `children` are keys and
   `goed`, `taked` and `childs` are not; an existing word is never replaced (`RespectsKnownWordsAndDisabledRules`).
+- **Generated forms of a trained lemma** (`GeneratedFormOfTrainedLemma_KeepsAllTrainedSenses`): a generated form that
+  can be several parts of speech (`banks`, noun and verb) answers with all trained senses of its lemma, meanings
+  included; a form that can only be one part of speech (`banked`) has one plain sense of its base (the known limit).
 - **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms, and the
   dictionary's other parts of speech of the same word follow them (`MergesDictionaryPartsOfSpeechAfterTrainedSenses`).
 - **Listed forms are restricted by their labels** (`ListedFormWithLabels_GetsOnlyThoseSenses`,
@@ -102,7 +105,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
   message that lists the known models (`minilm`, `bert-base-cased`); the id may be given as the second argument or with
   `--model`.
 - **Weights file round trip**: the weights writer produces a blob that `WeightsBlob` reads back with the same model id,
-  dimension, mean vector, senses and weights.
+  dimension, mean vector, senses and weights. The writer refuses a binary entry that has one or three senses
+  (`WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws`, `..._BinaryWithOneSense_ThrowsAndTwoSensesAreAccepted`).
 - **Training is deterministic**: the logistic trainer separates a small data set and gives identical weights on a repeat
   run.
 - **Weights match the lexicon**: weights trained for the committed corpus are loaded by each model package with zero

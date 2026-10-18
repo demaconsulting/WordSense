@@ -27,8 +27,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `ArgumentException`.
 - **Blob round trip**: a small valid blob read by `WeightsBlob` gives the model id, dimension, mean vector and every
   lemma with its senses and weights.
-- **Corrupt blob is rejected**: an unknown format marker, truncated data, inconsistent counts and trailing data each throw
-  `InvalidDataException`.
+- **Corrupt blob is rejected**: an unknown format marker (`WSX1`, `WSX3`), a sparse-weights flag, data cut at every
+  byte (so at every section boundary), a lemma or sense count that disagrees with the data present, and trailing data
+  each throw `InvalidDataException`. The reader does not check the class hash; it is returned as it is and
+  `WeightedLemmaTable` rejects a foreign one.
 - **Class ids and kinds are checked**: an empty or duplicate class id, a class count that does not fit the kind (a
   Binary lemma needs exactly two) and a zero dimension are rejected with `InvalidDataException`; for every model kind
   the writer refuses an entry whose class ids differ in number from the sense count of its weights (a Binary lemma with

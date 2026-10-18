@@ -24,6 +24,8 @@ sections:
                   - BasicTables_Load_BadMagic_Throws
                   - BasicTables_Load_NotCompressed_Throws
                   - BasicTables_Load_Truncated_Throws
+                  - BasicTables_Load_TruncatedAtEveryLength_Throws
+                  - BasicTables_Load_WrongVersionOrTagCount_Throws
                   - BasicTables_Load_TrailingBytes_Throws
                   - BasicTables_Load_UnorderedHashes_Throws
                   - BasicTables_Load_OtherClassHash_ThrowsNamingBothHashes

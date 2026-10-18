@@ -51,6 +51,133 @@ public class WeightsBlobTests
     }
 
     /// <summary>
+    ///     Builds the raw (uncompressed) bytes of a valid blob with a binary lemma "a" and a one-versus-rest lemma "b"
+    ///     of three classes, dimension 1.
+    /// </summary>
+    /// <returns>The raw bytes.</returns>
+    private static byte[] TwoLemmasRaw()
+    {
+        List<byte> bytes = [.. Header(), 2];
+        AddLemma(bytes, (byte)'a', 1, ["a#x", "a#y"]);
+        AddLemma(bytes, (byte)'b', 2, ["b#x", "b#y", "b#z"]);
+        return [.. bytes];
+    }
+
+    private static void AddLemma(List<byte> bytes, byte name, byte kind, string[] classIds)
+    {
+        var rows = kind == 1 ? 1 : classIds.Length;
+        bytes.AddRange([1, name, 0, 0, 0, 0, kind, (byte)classIds.Length]);
+        foreach (var id in classIds)
+        {
+            bytes.Add((byte)id.Length);
+            bytes.AddRange(Encoding.ASCII.GetBytes(id));
+        }
+
+        bytes.AddRange(new byte[4 * rows]);
+        bytes.AddRange(new byte[4 * rows]);
+    }
+
+    /// <summary>
+    ///     The valid two-lemma blob reads back, which makes the failure matrix below meaningful.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_TwoLemmaBlob_IsAccepted()
+    {
+        var data = WeightsBlob.Read(Compress(TwoLemmasRaw()));
+
+        Assert.Equal(["a", "b"], data.Lemmas.Select(l => l.Lemma));
+        Assert.Equal(["b#x", "b#y", "b#z"], data.Lemmas[1].ClassIds);
+    }
+
+    /// <summary>
+    ///     A blob cut at any byte, so at every section boundary (header, mean, lemma name, margin, kind, class ids,
+    ///     biases, weights) and inside every section, is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_TruncatedAtEveryLength_Throws()
+    {
+        // Arrange
+        var raw = TwoLemmasRaw();
+
+        // Act / Assert: every proper prefix is rejected as corrupt data
+        for (var length = 0; length < raw.Length; length++)
+        {
+            var prefix = raw[..length];
+            Assert.True(
+                Throws(() => WeightsBlob.Read(Compress(prefix))),
+                $"A blob cut at {length} of {raw.Length} bytes was accepted.");
+        }
+    }
+
+    /// <summary>
+    ///     A lemma count that is larger or smaller than the lemmas present, and a sense count that disagrees with the
+    ///     class ids present, are rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_CountMismatch_Throws()
+    {
+        // Arrange: the lemma count is the byte after the header; the first sense count is the 8th byte of the first lemma
+        var headerLength = Header().Length;
+        var tooMany = TwoLemmasRaw();
+        tooMany[headerLength] = 3;
+        var tooFew = TwoLemmasRaw();
+        tooFew[headerLength] = 1;
+        var moreSenses = TwoLemmasRaw();
+        moreSenses[headerLength + 1 + 7] = 3;
+        var fewerSenses = TwoLemmasRaw();
+        fewerSenses[headerLength + 1 + 7] = 1;
+
+        // Act / Assert
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(tooMany))), "Lemma count too large.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(tooFew))), "Lemma count too small.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(moreSenses))), "Sense count too large.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(fewerSenses))), "Sense count too small.");
+    }
+
+    /// <summary>
+    ///     A blob with an unsupported version in its magic, and a flag byte for sparse weights, is rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_WrongVersionOrFlag_Throws()
+    {
+        var version = TwoLemmasRaw();
+        version[3] = (byte)'3';
+        var sparse = TwoLemmasRaw();
+        sparse[Header().Length - 5] = 1;
+
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(version))), "Version WSX3.");
+        Assert.True(Throws(() => WeightsBlob.Read(Compress(sparse))), "Sparse flag.");
+    }
+
+    /// <summary>
+    ///     The reader does not judge the class hash: whatever the blob carries is returned, and the table that resolves
+    ///     the classes rejects a foreign hash (see <c>WeightedLemmaTableTests</c>).
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_AnyClassHash_IsReturnedUnchecked()
+    {
+        var raw = TwoLemmasRaw();
+        raw[2 + 4] = 0xEE;
+
+        var data = WeightsBlob.Read(Compress(raw));
+
+        Assert.Equal(0xEE, data.ClassHash[0]);
+    }
+
+    private static bool Throws(Action action)
+    {
+        try
+        {
+            action();
+            return false;
+        }
+        catch (InvalidDataException)
+        {
+            return true;
+        }
+    }
+
+    /// <summary>
     ///     Data that is not a compressed stream is rejected.
     /// </summary>
     [Fact]
