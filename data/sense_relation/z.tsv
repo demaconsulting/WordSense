@@ -1,0 +1,98 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-zairean__1.18.00..	derivation		oewn-zairean__3.01.00..
+oewn-zairese__1.18.00..	derivation		oewn-zairese__3.01.00..
+oewn-zambian__1.18.00..	derivation		oewn-zambian__3.01.00..
+oewn-zamboni__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zantac__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zany__1.18.00..	derivation		oewn-zany__5.00.00.foolish.00
+oewn-zany__1.18.00..	derivation		oewn-zany__5.00.00.humorous.00
+oewn-zany__1.18.01..	derivation		oewn-zany__5.00.00.foolish.00
+oewn-zany__1.18.01..	derivation		oewn-zany__5.00.00.humorous.00
+oewn-zap__2.35.00..	derivation		oewn-zapper__1.06.00..
+oewn-zap__2.35.00..	other	instrument	oewn-zapper__1.06.00..
+oewn-zapotec__3.01.00..	pertainym		oewn-zapotec__1.18.00..
+oewn-zarontin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zeal__1.12.01..	derivation		oewn-zealous__5.00.00.enthusiastic.00
+oewn-zeal__1.12.02..	derivation		oewn-zealous__5.00.00.enthusiastic.00
+oewn-zealously__4.02.00..	pertainym		oewn-zealous__5.00.00.enthusiastic.00
+oewn-zebra_crossing__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-zed__1.10.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-zee__1.10.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-zen__1.09.00..	derivation		oewn-zen_buddhist__1.18.00..
+oewn-zen__1.14.00..	derivation		oewn-zen_buddhist__1.18.00..
+oewn-zenith__1.15.01..	derivation		oewn-zenithal__3.01.00..
+oewn-zenithal__3.01.00..	pertainym		oewn-zenith__1.15.01..
+oewn-zero__1.09.00..	derivation		oewn-zero__2.30.01..
+oewn-zero__1.23.01..	derivation		oewn-zero__2.30.01..
+oewn-zero__1.23.02..	derivation		oewn-zero__2.30.01..
+oewn-zero__2.30.01..	other	result	oewn-zero__1.09.00..
+oewn-zero__2.30.01..	other	result	oewn-zero__1.23.01..
+oewn-zero__2.30.01..	other	result	oewn-zero__1.23.02..
+oewn-zero__3.01.00..	pertainym		oewn-null_set__1.14.00..
+oewn-zest__1.07.01..	derivation		oewn-zest__2.39.00..
+oewn-zest__1.07.01..	derivation		oewn-zesty__5.00.00.tasty.00
+oewn-zest__1.12.00..	derivation		oewn-zesty__5.00.00.spirited.00
+oewn-zest__2.39.00..	other	result	oewn-zest__1.07.01..
+oewn-zestful__5.00.00.spirited.00	derivation		oewn-zestfulness__1.12.00..
+oewn-zestfully__4.02.00..	pertainym		oewn-zestful__5.00.00.spirited.00
+oewn-zestily__4.02.00..	pertainym		oewn-zesty__5.00.00.spirited.00
+oewn-zestril__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zig--zag__5.00.00.crooked.01	derivation		oewn-zigzag__1.25.00..
+oewn-zigzag__1.25.00..	derivation		oewn-zigzag__2.38.00..
+oewn-zigzag__1.25.00..	derivation		oewn-zigzag__5.00.00.crooked.01
+oewn-zigzag__2.38.00..	other	event	oewn-zigzag__1.25.00..
+oewn-zimbabwean__1.18.00..	derivation		oewn-zimbabwean__3.01.00..
+oewn-zimmer__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zimmer_frame__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zionism__1.10.00..	derivation		oewn-zionist__1.18.00..
+oewn-zionism__1.14.00..	derivation		oewn-zionist__1.18.00..
+oewn-zionist__1.18.00..	derivation		oewn-zionist__3.01.00..
+oewn-zionist__3.01.00..	pertainym		oewn-zionist__1.18.00..
+oewn-zionist__3.01.01..	pertainym		oewn-zionism__1.10.00..
+oewn-zip__1.06.00..	derivation		oewn-zip__2.35.00..
+oewn-zip__1.07.00..	derivation		oewn-zippy__5.00.00.energetic.00
+oewn-zip__2.35.00..	derivation		oewn-zipper__1.06.00..
+oewn-zip__2.35.00..	other	instrument	oewn-zip__1.06.00..
+oewn-zip__2.35.00..	other	instrument	oewn-zipper__1.06.00..
+oewn-zip_code__1.10.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-zipper__1.06.00..	derivation		oewn-zipper__2.35.00..
+oewn-zipper__2.35.00..	other	instrument	oewn-zipper__1.06.00..
+oewn-zocor__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zodiac__1.06.00..	derivation		oewn-zodiacal__3.01.00..
+oewn-zodiac__1.15.00..	derivation		oewn-zodiacal__3.01.00..
+oewn-zodiacal__3.01.00..	pertainym		oewn-zodiac__1.15.00..
+oewn-zoic__3.01.00..	pertainym		oewn-animal__1.03.00..
+oewn-zoloft__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-zonal__3.01.00..	pertainym		oewn-zone__1.08.00..
+oewn-zonary__3.01.00..	derivation		oewn-zone__1.15.00..
+oewn-zonary__3.01.00..	derivation		oewn-zone__1.15.01..
+oewn-zonary__3.01.00..	derivation		oewn-zone__1.15.02..
+oewn-zone__1.15.00..	derivation		oewn-zone__2.41.00..
+oewn-zone__1.15.01..	derivation		oewn-zone__2.30.00..
+oewn-zone__2.30.00..	other	result	oewn-zone__1.15.01..
+oewn-zone__2.41.00..	other	location	oewn-zone__1.15.00..
+oewn-zoological__3.01.00..	pertainym		oewn-animal__1.03.00..
+oewn-zoological__3.01.01..	derivation		oewn-zoology__1.09.00..
+oewn-zoological__3.01.01..	pertainym		oewn-zoology__1.09.00..
+oewn-zoologist__1.18.00..	derivation		oewn-zoology__1.09.00..
+oewn-zoom__1.04.00..	derivation		oewn-zoom__2.38.03..
+oewn-zoom__1.11.00..	derivation		oewn-zoom__2.38.03..
+oewn-zoom__2.38.03..	other	event	oewn-zoom__1.04.00..
+oewn-zoom__2.38.03..	other	event	oewn-zoom__1.11.00..
+oewn-zoonosis__1.26.00..	derivation		oewn-zoonotic__3.01.00..
+oewn-zoonotic__3.01.00..	pertainym		oewn-zoonosis__1.26.00..
+oewn-zoroastrian__1.18.00..	derivation		oewn-zoroastrian__3.01.00..
+oewn-zovirax__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-zucchini__1.13.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-zygoma__1.08.00..	derivation		oewn-zygomatic__3.01.00..
+oewn-zygomatic__3.01.00..	pertainym		oewn-cheek__1.08.00..
+oewn-zygote__1.08.00..	derivation		oewn-zygotic__3.01.00..
+oewn-zygotic__3.01.00..	pertainym		oewn-zygote__1.08.00..
+oewn-zyloprim__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-zymoid__3.01.00..	pertainym		oewn-enzyme__1.27.00..
+oewn-zymolysis__1.22.00..	derivation		oewn-zymolytic__3.01.00..
+oewn-zymolytic__3.01.00..	pertainym		oewn-zymosis__1.22.01..
+oewn-zymosis__1.22.00..	derivation		oewn-zymotic__3.01.00..
+oewn-zymosis__1.22.01..	derivation		oewn-zymotic__3.01.01..
+oewn-zymotic__3.01.00..	pertainym		oewn-zymosis__1.22.00..
+oewn-zymotic__3.01.01..	pertainym		oewn-zymosis__1.22.01..

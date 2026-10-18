@@ -1,0 +1,20 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-CD-R-n	CD-R	n	0	1	1	oewn
+oewn-CD-ROM-n	CD-ROM	n	0	1	1	oewn
+oewn-CD-ROM_drive-n	CD-ROM drive	n	0	2	2	oewn
+oewn-CD-WO-n	CD-WO	n	0	1	1	oewn
+oewn-CD-n	CD	n	0	1	1	oewn
+oewn-CD4-n	CD4	n	0	1	1	oewn
+oewn-CD4_T_cell-n	CD4 T cell	n	0	3	3	oewn
+oewn-CD4_cell-n	CD4 cell	n	0	2	2	oewn
+oewn-CD8-n	CD8	n	0	1	1	oewn
+oewn-CD8_T_cell-n	CD8 T cell	n	0	3	3	oewn
+oewn-CD8_cell-n	CD8 cell	n	0	2	2	oewn
+oewn-CDC-n	CDC	n	0	1	1	oewn
+oewn-CD_burner-n	CD burner	n	0	2	2	oewn
+oewn-CD_drive-n	CD drive	n	0	2	2	oewn
+oewn-CD_player-n	CD player	n	0	2	2	oewn
+oewn-Cd-n	Cd	n	0	1	1	oewn
+oewn-cDNA-n	cDNA	n	0	1	1	oewn
+oewn-cd-a	cd	a	0	1	1	oewn
+oewn-cd-n	cd	n	0	1	1	oewn

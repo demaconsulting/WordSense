@@ -1,0 +1,31 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-C-clamp-n	C-clamp	n	0	1	1	oewn
+oewn-C-n	C	n	0	1	1	oewn
+oewn-C-ration-n	C-ration	n	0	1	1	oewn
+oewn-C-reactive_protein-n	C-reactive protein	n	0	2	2	oewn
+oewn-C-section-n	C-section	n	0	1	1	oewn
+oewn-C.E.-r	C.E.	r	0	1	1	oewn
+oewn-C.O.D.-r	C.O.D.	r	0	1	1	oewn
+oewn-C.P.U.-n	C.P.U.	n	0	1	1	oewn
+oewn-C._diphtheriae-n	C. diphtheriae	n	0	2	2	oewn
+oewn-C._psittaci-n	C. psittaci	n	0	2	2	oewn
+oewn-C._trachomatis-n	C. trachomatis	n	0	2	2	oewn
+oewn-C0-n	C0	n	0	1	1	oewn
+oewn-C1-n	C1	n	0	1	1	oewn
+oewn-C2-n	C2	n	0	1	1	oewn
+oewn-C2H6-n	C2H6	n	0	1	1	oewn
+oewn-C3-n	C3	n	0	1	1	oewn
+oewn-C4-n	C4	n	0	1	1	oewn
+oewn-C5-n	C5	n	0	1	1	oewn
+oewn-C6-n	C6	n	0	1	1	oewn
+oewn-C_and_W-n	C and W	n	0	3	3	oewn
+oewn-C_battery-n	C battery	n	0	2	2	oewn
+oewn-C_clef-n	C clef	n	0	2	2	oewn
+oewn-C_compiler-n	C compiler	n	0	2	2	oewn
+oewn-C_flute-n	C flute	n	0	2	2	oewn
+oewn-C_major-n	C major	n	0	2	2	oewn
+oewn-C_major_scale-n	C major scale	n	0	3	3	oewn
+oewn-C_program-n	C program	n	0	2	2	oewn
+oewn-c-a	c	a	0	1	1	oewn
+oewn-c-n	c	n	0	1	1	oewn
+oewn-c-note-n	c-note	n	0	1	1	oewn

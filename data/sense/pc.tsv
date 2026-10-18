@@ -1,0 +1,6 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-pc__1.06.00..	pc%1:06:00::	oewn-PC-n	oewn-03924602-n	1
+oewn-pc_board__1.06.00..	pc_board%1:06:00::	oewn-PC_board-n	oewn-03908298-n	1
+oewn-pcp__1.06.00..	pcp%1:06:00::	oewn-PCP-n	oewn-03927621-n	2
+oewn-pcp__1.18.00..	pcp%1:18:00::	oewn-PCP-n	oewn-10184702-n	1
+oewn-pct__1.24.00..	pct%1:24:00::	oewn-pct-n	oewn-13839738-n	1

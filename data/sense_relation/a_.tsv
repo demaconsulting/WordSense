@@ -1,0 +1,6 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-a_capella__4.02.00..	pertainym		oewn-a_capella__5.00.00.unaccompanied.01
+oewn-a_cappella__4.02.00..	pertainym		oewn-a_cappella__5.00.00.unaccompanied.01
+oewn-a_la_carte__3.00.00..	antonym		oewn-table_d-apos-hote__3.00.00..
+oewn-a_posteriori__3.00.00..	antonym		oewn-a_priori__3.00.00..
+oewn-a_posteriori__4.02.00..	antonym		oewn-a_priori__4.02.00..

@@ -1,0 +1,602 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-Q-n	Q	n	0	1	1	oewn
+oewn-QCD-n	QCD	n	0	1	1	oewn
+oewn-QED-n	QED	n	0	1	1	oewn
+oewn-QWERTY_keyboard-n	QWERTY keyboard	n	0	2	2	oewn
+oewn-Q_fever-n	Q fever	n	0	2	2	oewn
+oewn-Qabbala-n	Qabbala	n	0	1	1	oewn
+oewn-Qabbalah-n	Qabbalah	n	0	1	1	oewn
+oewn-Qatari-a	Qatari	a	0	1	1	oewn
+oewn-Qatari-n	Qatari	n	0	1	1	oewn
+oewn-Qatari_dirham-n	Qatari dirham	n	0	2	2	oewn
+oewn-Qatari_monetary_unit-n	Qatari monetary unit	n	0	3	3	oewn
+oewn-Qatari_riyal-n	Qatari riyal	n	0	2	2	oewn
+oewn-Qiang-n	Qiang	n	0	1	1	oewn
+oewn-Qiang_language-n	Qiang language	n	0	2	2	oewn
+oewn-Qiangic-n	Qiangic	n	0	1	1	oewn
+oewn-Qiangic_language-n	Qiangic language	n	0	2	2	oewn
+oewn-Qin-n	Qin	n	0	1	1	oewn
+oewn-Qin_dynasty-n	Qin dynasty	n	0	2	2	oewn
+oewn-Qing-n	Qing	n	0	1	1	oewn
+oewn-Qing_dynasty-n	Qing dynasty	n	0	2	2	oewn
+oewn-Quaalude-n	Quaalude	n	0	1	1	oewn
+oewn-Quadragesima-n	Quadragesima	n	0	1	1	oewn
+oewn-Quadrigesima_Sunday-n	Quadrigesima Sunday	n	0	2	2	oewn
+oewn-Quai_d-ap-Orsay-n	Quai d'Orsay	n	0	2	2	oewn
+oewn-Quaker-n	Quaker	n	0	1	1	oewn
+oewn-Quaker_gun-n	Quaker gun	n	0	2	2	oewn
+oewn-Quakerism-n	Quakerism	n	0	1	1	oewn
+oewn-Quakers-n	Quakers	n	0	1	1	oewn
+oewn-Quamoclit_pennata-n	Quamoclit pennata	n	0	2	2	oewn
+oewn-Quapaw-n	Quapaw	n	0	1	1	oewn
+oewn-Quassia_amara-n	Quassia amara	n	0	2	2	oewn
+oewn-Quebecois-a	Quebecois	a	0	1	1	oewn
+oewn-Quebecois-n	Quebecois	n	0	1	1	oewn
+oewn-Quechua-n	Quechua	n	0	1	1	oewn
+oewn-Quechua_language-n	Quechua language	n	0	2	2	oewn
+oewn-Quechuan-a	Quechuan	a	0	1	1	oewn
+oewn-Quechuan-n	Quechuan	n	0	1	1	oewn
+oewn-Quechuan_language-n	Quechuan language	n	0	2	2	oewn
+oewn-Queckenstedt-ap-s_test-n	Queckenstedt's test	n	0	2	2	oewn
+oewn-Queen-ap-s_Counsel-n	Queen's Counsel	n	0	2	2	oewn
+oewn-Queen-ap-s_English-n	Queen's English	n	0	2	2	oewn
+oewn-Queen-ap-s_crape_myrtle-n	Queen's crape myrtle	n	0	3	3	oewn
+oewn-Queen_Anne-ap-s_lace-n	Queen Anne's lace	n	0	3	3	oewn
+oewn-Queen_of_England-n	Queen of England	n	0	3	1	oewn
+oewn-Queensland_bottletree-n	Queensland bottletree	n	0	2	2	oewn
+oewn-Queensland_grass-cloth_plant-n	Queensland grass-cloth plant	n	0	3	3	oewn
+oewn-Queensland_hemp-n	Queensland hemp	n	0	2	2	oewn
+oewn-Queensland_nut-n	Queensland nut	n	0	2	2	oewn
+oewn-Quercus_agrifolia-n	Quercus agrifolia	n	0	2	2	oewn
+oewn-Quercus_alba-n	Quercus alba	n	0	2	2	oewn
+oewn-Quercus_arizonica-n	Quercus arizonica	n	0	2	2	oewn
+oewn-Quercus_bicolor-n	Quercus bicolor	n	0	2	2	oewn
+oewn-Quercus_borealis-n	Quercus borealis	n	0	2	2	oewn
+oewn-Quercus_cerris-n	Quercus cerris	n	0	2	2	oewn
+oewn-Quercus_chrysolepis-n	Quercus chrysolepis	n	0	2	2	oewn
+oewn-Quercus_coccinea-n	Quercus coccinea	n	0	2	2	oewn
+oewn-Quercus_ellipsoidalis-n	Quercus ellipsoidalis	n	0	2	2	oewn
+oewn-Quercus_falcata-n	Quercus falcata	n	0	2	2	oewn
+oewn-Quercus_garryana-n	Quercus garryana	n	0	2	2	oewn
+oewn-Quercus_grosseserrata-n	Quercus grosseserrata	n	0	2	2	oewn
+oewn-Quercus_ilex-n	Quercus ilex	n	0	2	2	oewn
+oewn-Quercus_ilicifolia-n	Quercus ilicifolia	n	0	2	2	oewn
+oewn-Quercus_imbricaria-n	Quercus imbricaria	n	0	2	2	oewn
+oewn-Quercus_incana-n	Quercus incana	n	0	2	2	oewn
+oewn-Quercus_kelloggii-n	Quercus kelloggii	n	0	2	2	oewn
+oewn-Quercus_laevis-n	Quercus laevis	n	0	2	2	oewn
+oewn-Quercus_laurifolia-n	Quercus laurifolia	n	0	2	2	oewn
+oewn-Quercus_lobata-n	Quercus lobata	n	0	2	2	oewn
+oewn-Quercus_lyrata-n	Quercus lyrata	n	0	2	2	oewn
+oewn-Quercus_macrocarpa-n	Quercus macrocarpa	n	0	2	2	oewn
+oewn-Quercus_marilandica-n	Quercus marilandica	n	0	2	2	oewn
+oewn-Quercus_michauxii-n	Quercus michauxii	n	0	2	2	oewn
+oewn-Quercus_mongolica-n	Quercus mongolica	n	0	2	2	oewn
+oewn-Quercus_montana-n	Quercus montana	n	0	2	2	oewn
+oewn-Quercus_muehlenbergii-n	Quercus muehlenbergii	n	0	2	2	oewn
+oewn-Quercus_myrtifolia-n	Quercus myrtifolia	n	0	2	2	oewn
+oewn-Quercus_nigra-n	Quercus nigra	n	0	2	2	oewn
+oewn-Quercus_nuttalli-n	Quercus nuttalli	n	0	2	2	oewn
+oewn-Quercus_palustris-n	Quercus palustris	n	0	2	2	oewn
+oewn-Quercus_petraea-n	Quercus petraea	n	0	2	2	oewn
+oewn-Quercus_phellos-n	Quercus phellos	n	0	2	2	oewn
+oewn-Quercus_prinoides-n	Quercus prinoides	n	0	2	2	oewn
+oewn-Quercus_prinus-n	Quercus prinus	n	0	2	2	oewn
+oewn-Quercus_robur-n	Quercus robur	n	0	2	2	oewn
+oewn-Quercus_rubra-n	Quercus rubra	n	0	2	2	oewn
+oewn-Quercus_sessiliflora-n	Quercus sessiliflora	n	0	2	2	oewn
+oewn-Quercus_shumardii-n	Quercus shumardii	n	0	2	2	oewn
+oewn-Quercus_stellata-n	Quercus stellata	n	0	2	2	oewn
+oewn-Quercus_suber-n	Quercus suber	n	0	2	2	oewn
+oewn-Quercus_texana-n	Quercus texana	n	0	2	2	oewn
+oewn-Quercus_vaccinifolia-n	Quercus vaccinifolia	n	0	2	2	oewn
+oewn-Quercus_variabilis-n	Quercus variabilis	n	0	2	2	oewn
+oewn-Quercus_velutina-n	Quercus velutina	n	0	2	2	oewn
+oewn-Quercus_virginiana-n	Quercus virginiana	n	0	2	2	oewn
+oewn-Quercus_wislizenii-n	Quercus wislizenii	n	0	2	2	oewn
+oewn-Quercus_wizlizenii-n	Quercus wizlizenii	n	0	2	2	oewn
+oewn-Quiche-n	Quiche	n	0	1	1	oewn
+oewn-Quiche_language-n	Quiche language	n	0	2	2	oewn
+oewn-Quidditch-n	Quidditch	n	0	1	1	oewn
+oewn-Quincke-ap-s_edema-n	Quincke's edema	n	0	2	2	oewn
+oewn-Quinidex-n	Quinidex	n	0	1	1	oewn
+oewn-Quinora-n	Quinora	n	0	1	1	oewn
+oewn-Quinquagesima-n	Quinquagesima	n	0	1	1	oewn
+oewn-Quinquagesima_Sunday-n	Quinquagesima Sunday	n	0	2	2	oewn
+oewn-Quiscalus_quiscula-n	Quiscalus quiscula	n	0	2	2	oewn
+oewn-Quonset_hut-n	Quonset hut	n	0	2	2	oewn
+oewn-Quoratean-n	Quoratean	n	0	1	1	oewn
+oewn-q-n	q	n	0	1	1	oewn
+oewn-qabala-n	qabala	n	0	1	1	oewn
+oewn-qabalah-n	qabalah	n	0	1	1	oewn
+oewn-qabalistic-a	qabalistic	a	0	1	1	oewn
+oewn-qadi-n	qadi	n	0	1	1	oewn
+oewn-qat-n	qat	n	0	1	1	oewn
+oewn-qepiq-n	qepiq	n	0	1	1	oewn
+oewn-qi-n	qi	n	0	1	1	oewn
+oewn-qibla-n	qibla	n	0	1	1	oewn
+oewn-qindarka-n	qindarka	n	0	1	1	oewn
+oewn-qintar-n	qintar	n	0	1	1	oewn
+oewn-qoph-n	qoph	n	0	1	1	oewn
+oewn-quack-a	quack	a	0	1	1	oewn
+oewn-quack-n	quack	n	0	1	1	oewn
+oewn-quack-quack-n	quack-quack	n	0	1	1	oewn
+oewn-quack-v	quack	v	0	1	1	oewn
+oewn-quack_grass-n	quack grass	n	0	2	2	oewn
+oewn-quackery-n	quackery	n	0	1	1	oewn
+oewn-quackgrass-n	quackgrass	n	0	1	1	oewn
+oewn-quad-n	quad	n	0	1	1	oewn
+oewn-quadball-n	quadball	n	0	1	1	oewn
+oewn-quadrangle-n	quadrangle	n	0	1	1	oewn
+oewn-quadrangular-a	quadrangular	a	0	1	1	oewn
+oewn-quadrangular_prism-n	quadrangular prism	n	0	2	2	oewn
+oewn-quadrant-n	quadrant	n	0	1	1	oewn
+oewn-quadrantanopia-n	quadrantanopia	n	0	1	1	oewn
+oewn-quadraphonic-a	quadraphonic	a	0	1	1	oewn
+oewn-quadraphonic_system-n	quadraphonic system	n	0	2	2	oewn
+oewn-quadraphony-n	quadraphony	n	0	1	1	oewn
+oewn-quadrasonic-a	quadrasonic	a	0	1	1	oewn
+oewn-quadrate-a	quadrate	a	0	1	1	oewn
+oewn-quadrate-n	quadrate	n	0	1	1	oewn
+oewn-quadratic-a	quadratic	a	0	1	1	oewn
+oewn-quadratic-n	quadratic	n	0	1	1	oewn
+oewn-quadratic_equation-n	quadratic equation	n	0	2	2	oewn
+oewn-quadratic_polynomial-n	quadratic polynomial	n	0	2	2	oewn
+oewn-quadratics-n	quadratics	n	0	1	1	oewn
+oewn-quadrature-n	quadrature	n	0	1	1	oewn
+oewn-quadrennium-n	quadrennium	n	0	1	1	oewn
+oewn-quadric-n	quadric	n	0	1	1	oewn
+oewn-quadric_surface-n	quadric surface	n	0	2	2	oewn
+oewn-quadriceps-n	quadriceps	n	0	1	1	oewn
+oewn-quadriceps_femoris-n	quadriceps femoris	n	0	2	2	oewn
+oewn-quadrilateral-a	quadrilateral	a	0	1	1	oewn
+oewn-quadrilateral-n	quadrilateral	n	0	1	1	oewn
+oewn-quadrille-n	quadrille	n	0	1	1	oewn
+oewn-quadrillion-n	quadrillion	n	0	1	1	oewn
+oewn-quadrillionth-a	quadrillionth	a	0	1	1	oewn
+oewn-quadrillionth-n	quadrillionth	n	0	1	1	oewn
+oewn-quadripara-n	quadripara	n	0	1	1	oewn
+oewn-quadripartite-a	quadripartite	a	0	1	1	oewn
+oewn-quadriphonic-a	quadriphonic	a	0	1	1	oewn
+oewn-quadriphonic_system-n	quadriphonic system	n	0	2	2	oewn
+oewn-quadriplegia-n	quadriplegia	n	0	1	1	oewn
+oewn-quadriplegic-n	quadriplegic	n	0	1	1	oewn
+oewn-quadrisonic-a	quadrisonic	a	0	1	1	oewn
+oewn-quadrivium-n	quadrivium	n	0	1	1	oewn
+oewn-quadroon-n	quadroon	n	0	1	1	oewn
+oewn-quadrumvirate-n	quadrumvirate	n	0	1	1	oewn
+oewn-quadruped-a	quadruped	a	0	1	1	oewn
+oewn-quadruped-n	quadruped	n	0	1	1	oewn
+oewn-quadrupedal-a	quadrupedal	a	0	1	1	oewn
+oewn-quadruple-a	quadruple	a	0	1	1	oewn
+oewn-quadruple-n	quadruple	n	0	1	1	oewn
+oewn-quadruple-v	quadruple	v	0	1	1	oewn
+oewn-quadruple_time-n	quadruple time	n	0	2	2	oewn
+oewn-quadruplet-n	quadruplet	n	0	1	1	oewn
+oewn-quadruplex-a	quadruplex	a	0	1	1	oewn
+oewn-quadruplicate-a	quadruplicate	a	0	1	1	oewn
+oewn-quadruplicate-n	quadruplicate	n	0	1	1	oewn
+oewn-quadruplicate-v	quadruplicate	v	0	1	1	oewn
+oewn-quadrupling-n	quadrupling	n	0	1	1	oewn
+oewn-quaestor-n	quaestor	n	0	1	1	oewn
+oewn-quaff-n	quaff	n	0	1	1	oewn
+oewn-quaff-v	quaff	v	0	1	1	oewn
+oewn-quaffer-n	quaffer	n	0	1	1	oewn
+oewn-quaffle-n	quaffle	n	0	1	1	oewn
+oewn-quag-n	quag	n	0	1	1	oewn
+oewn-quagga-n	quagga	n	0	1	1	oewn
+oewn-quaggy-a	quaggy	a	0	1	1	oewn
+oewn-quagmire-n	quagmire	n	0	1	1	oewn
+oewn-quahaug-n	quahaug	n	0	1	1	oewn
+oewn-quahog-n	quahog	n	0	1	1	oewn
+oewn-quail-n	quail	n	0	1	1	oewn
+oewn-quail-v	quail	v	0	1	1	oewn
+oewn-quail_at-v	quail at	v	0	2	1	oewn
+oewn-quail_brush-n	quail brush	n	0	2	2	oewn
+oewn-quail_bush-n	quail bush	n	0	2	2	oewn
+oewn-quaint-a	quaint	a	0	1	1	oewn
+oewn-quaintly-r	quaintly	r	0	1	1	oewn
+oewn-quaintness-n	quaintness	n	0	1	1	oewn
+oewn-quake-n	quake	n	0	1	1	oewn
+oewn-quake-v	quake	v	0	1	1	oewn
+oewn-quaker-n	quaker	n	0	1	1	oewn
+oewn-quaking_aspen-n	quaking aspen	n	0	2	2	oewn
+oewn-qualification-n	qualification	n	0	1	1	oewn
+oewn-qualified-a	qualified	a	0	1	1	oewn
+oewn-qualifier-n	qualifier	n	0	1	1	oewn
+oewn-qualify-v	qualify	v	0	1	1	oewn
+oewn-qualifying-n	qualifying	n	0	1	1	oewn
+oewn-qualifying_adjective-n	qualifying adjective	n	0	2	2	oewn
+oewn-qualitative-a	qualitative	a	0	1	1	oewn
+oewn-qualitative_analysis-n	qualitative analysis	n	0	2	2	oewn
+oewn-qualitatively-r	qualitatively	r	0	1	1	oewn
+oewn-quality-a	quality	a	0	1	1	oewn
+oewn-quality-n	quality	n	0	1	1	oewn
+oewn-quality_control-n	quality control	n	0	2	2	oewn
+oewn-quality_cost-n	quality cost	n	0	2	2	oewn
+oewn-quality_of_life-n	quality of life	n	0	3	1	oewn
+oewn-qualm-n	qualm	n	0	1	1	oewn
+oewn-quamash-n	quamash	n	0	1	1	oewn
+oewn-quandang-n	quandang	n	0	1	1	oewn
+oewn-quandary-n	quandary	n	0	1	1	oewn
+oewn-quandong-n	quandong	n	0	1	1	oewn
+oewn-quandong_nut-n	quandong nut	n	0	2	2	oewn
+oewn-quandong_tree-n	quandong tree	n	0	2	2	oewn
+oewn-quango-n	quango	n	0	1	1	oewn
+oewn-quantal-a	quantal	a	0	1	1	oewn
+oewn-quantic-n	quantic	n	0	1	1	oewn
+oewn-quantifiability-n	quantifiability	n	0	1	1	oewn
+oewn-quantifiable-a	quantifiable	a	0	1	1	oewn
+oewn-quantification-n	quantification	n	0	1	1	oewn
+oewn-quantifier-n	quantifier	n	0	1	1	oewn
+oewn-quantify-v	quantify	v	0	1	1	oewn
+oewn-quantisation-n	quantisation	n	0	1	1	oewn
+oewn-quantise-v	quantise	v	0	1	1	oewn
+oewn-quantitative-a	quantitative	a	0	1	1	oewn
+oewn-quantitative_analysis-n	quantitative analysis	n	0	2	2	oewn
+oewn-quantitative_chemical_analysis-n	quantitative chemical analysis	n	0	3	3	oewn
+oewn-quantitative_relation-n	quantitative relation	n	0	2	2	oewn
+oewn-quantitatively-r	quantitatively	r	0	1	1	oewn
+oewn-quantity-n	quantity	n	0	1	1	oewn
+oewn-quantity_unit-n	quantity unit	n	0	2	2	oewn
+oewn-quantization-n	quantization	n	0	1	1	oewn
+oewn-quantize-v	quantize	v	0	1	1	oewn
+oewn-quantized-a	quantized	a	0	1	1	oewn
+oewn-quantong-n	quantong	n	0	1	1	oewn
+oewn-quantum-n	quantum	n	0	1	1	oewn
+oewn-quantum_chromodynamics-n	quantum chromodynamics	n	0	2	2	oewn
+oewn-quantum_computer-n	quantum computer	n	0	2	2	oewn
+oewn-quantum_electrodynamics-n	quantum electrodynamics	n	0	2	2	oewn
+oewn-quantum_field_theory-n	quantum field theory	n	0	3	3	oewn
+oewn-quantum_jump-n	quantum jump	n	0	2	2	oewn
+oewn-quantum_leap-n	quantum leap	n	0	2	2	oewn
+oewn-quantum_mechanics-n	quantum mechanics	n	0	2	2	oewn
+oewn-quantum_physics-n	quantum physics	n	0	2	2	oewn
+oewn-quantum_theory-n	quantum theory	n	0	2	2	oewn
+oewn-quarantine-n	quarantine	n	0	1	1	oewn
+oewn-quarantine-v	quarantine	v	0	1	1	oewn
+oewn-quarantined-a	quarantined	a	0	1	1	oewn
+oewn-quark-n	quark	n	0	1	1	oewn
+oewn-quark_cheese-n	quark cheese	n	0	2	2	oewn
+oewn-quarrel-n	quarrel	n	0	1	1	oewn
+oewn-quarrel-v	quarrel	v	0	1	1	oewn
+oewn-quarreler-n	quarreler	n	0	1	1	oewn
+oewn-quarreller-n	quarreller	n	0	1	1	oewn
+oewn-quarrelsome-a	quarrelsome	a	0	1	1	oewn
+oewn-quarrelsomeness-n	quarrelsomeness	n	0	1	1	oewn
+oewn-quarrier-n	quarrier	n	0	1	1	oewn
+oewn-quarry-n	quarry	n	0	1	1	oewn
+oewn-quarry-v	quarry	v	0	1	1	oewn
+oewn-quarrying-n	quarrying	n	0	1	1	oewn
+oewn-quarryman-n	quarryman	n	0	1	1	oewn
+oewn-quart-n	quart	n	0	1	1	oewn
+oewn-quartan-a	quartan	a	0	1	1	oewn
+oewn-quartan-n	quartan	n	0	1	1	oewn
+oewn-quarter-century-n	quarter-century	n	0	1	1	oewn
+oewn-quarter-circle-n	quarter-circle	n	0	1	1	oewn
+oewn-quarter-hour-n	quarter-hour	n	0	1	1	oewn
+oewn-quarter-n	quarter	n	0	1	1	oewn
+oewn-quarter-tone-n	quarter-tone	n	0	1	1	oewn
+oewn-quarter-v	quarter	v	0	1	1	oewn
+oewn-quarter-vine-n	quarter-vine	n	0	1	1	oewn
+oewn-quarter_crack-n	quarter crack	n	0	2	2	oewn
+oewn-quarter_day-n	quarter day	n	0	2	2	oewn
+oewn-quarter_horse-n	quarter horse	n	0	2	2	oewn
+oewn-quarter_mile-n	quarter mile	n	0	2	2	oewn
+oewn-quarter_note-n	quarter note	n	0	2	2	oewn
+oewn-quarter_of_meridian-n	quarter of meridian	n	0	3	1	oewn
+oewn-quarter_plate-n	quarter plate	n	0	2	2	oewn
+oewn-quarter_pound-n	quarter pound	n	0	2	2	oewn
+oewn-quarter_rest-n	quarter rest	n	0	2	2	oewn
+oewn-quarter_round-n	quarter round	n	0	2	2	oewn
+oewn-quarter_section-n	quarter section	n	0	2	2	oewn
+oewn-quarter_sessions-n	quarter sessions	n	0	2	2	oewn
+oewn-quarter_stock-n	quarter stock	n	0	2	2	oewn
+oewn-quarter_tone-n	quarter tone	n	0	2	2	oewn
+oewn-quarterback-n	quarterback	n	0	1	1	oewn
+oewn-quarterback-v	quarterback	v	0	1	1	oewn
+oewn-quarterdeck-n	quarterdeck	n	0	1	1	oewn
+oewn-quarterfinal-n	quarterfinal	n	0	1	1	oewn
+oewn-quartering-n	quartering	n	0	1	1	oewn
+oewn-quarterlight-n	quarterlight	n	0	1	1	oewn
+oewn-quarterly-a	quarterly	a	0	1	1	oewn
+oewn-quarterly-n	quarterly	n	0	1	1	oewn
+oewn-quarterly-r	quarterly	r	0	1	1	oewn
+oewn-quartermaster-n	quartermaster	n	0	1	1	oewn
+oewn-quartermaster_general-n	quartermaster general	n	0	2	2	oewn
+oewn-quartern-n	quartern	n	0	1	1	oewn
+oewn-quarters-n	quarters	n	0	1	1	oewn
+oewn-quarterstaff-n	quarterstaff	n	0	1	1	oewn
+oewn-quartervine-n	quartervine	n	0	1	1	oewn
+oewn-quartet-n	quartet	n	0	1	1	oewn
+oewn-quartette-n	quartette	n	0	1	1	oewn
+oewn-quartic-n	quartic	n	0	1	1	oewn
+oewn-quartic_polynomial-n	quartic polynomial	n	0	2	2	oewn
+oewn-quartile-n	quartile	n	0	1	1	oewn
+oewn-quartile_deviation-n	quartile deviation	n	0	2	2	oewn
+oewn-quarto-n	quarto	n	0	1	1	oewn
+oewn-quartz-n	quartz	n	0	1	1	oewn
+oewn-quartz_battery-n	quartz battery	n	0	2	2	oewn
+oewn-quartz_crystal-n	quartz crystal	n	0	2	2	oewn
+oewn-quartz_glass-n	quartz glass	n	0	2	2	oewn
+oewn-quartz_lamp-n	quartz lamp	n	0	2	2	oewn
+oewn-quartz_mill-n	quartz mill	n	0	2	2	oewn
+oewn-quartz_oscillator-n	quartz oscillator	n	0	2	2	oewn
+oewn-quartz_sand-n	quartz sand	n	0	2	2	oewn
+oewn-quartzite-n	quartzite	n	0	1	1	oewn
+oewn-quartzose-a	quartzose	a	0	1	1	oewn
+oewn-quasar-n	quasar	n	0	1	1	oewn
+oewn-quash-v	quash	v	0	1	1	oewn
+oewn-quasi-NGO-n	quasi-NGO	n	0	1	1	oewn
+oewn-quasi-a	quasi	a	0	1	1	oewn
+oewn-quasi-religious-a	quasi-religious	a	0	1	1	oewn
+oewn-quasi-royal-a	quasi-royal	a	0	1	1	oewn
+oewn-quasi-stellar_radio_source-n	quasi-stellar radio source	n	0	3	3	oewn
+oewn-quasi_contract-n	quasi contract	n	0	2	2	oewn
+oewn-quasiparticle-n	quasiparticle	n	0	1	1	oewn
+oewn-quassia-n	quassia	n	0	1	1	oewn
+oewn-quat-n	quat	n	0	1	1	oewn
+oewn-quatercentenary-n	quatercentenary	n	0	1	1	oewn
+oewn-quatercentennial-n	quatercentennial	n	0	1	1	oewn
+oewn-quatern-n	quatern	n	0	1	1	oewn
+oewn-quaternary-a	quaternary	a	0	1	1	oewn
+oewn-quaternary-n	quaternary	n	0	1	1	oewn
+oewn-quaternary_ammonium_compound-n	quaternary ammonium compound	n	0	3	3	oewn
+oewn-quaternate-a	quaternate	a	0	1	1	oewn
+oewn-quaternion-n	quaternion	n	0	1	1	oewn
+oewn-quaternity-n	quaternity	n	0	1	1	oewn
+oewn-quatrain-n	quatrain	n	0	1	1	oewn
+oewn-quattrocento-n	quattrocento	n	0	1	1	oewn
+oewn-quaver-n	quaver	n	0	1	1	oewn
+oewn-quaver-v	quaver	v	0	1	1	oewn
+oewn-quavering-a	quavering	a	0	1	1	oewn
+oewn-quaveringly-r	quaveringly	r	0	1	1	oewn
+oewn-quay-n	quay	n	0	1	1	oewn
+oewn-quayage-n	quayage	n	0	1	1	oewn
+oewn-queasily-r	queasily	r	0	1	1	oewn
+oewn-queasiness-n	queasiness	n	0	1	1	oewn
+oewn-queasy-a	queasy	a	0	1	1	oewn
+oewn-queen-ap-s_cup-n	queen's cup	n	0	2	2	oewn
+oewn-queen-n	queen	n	0	1	1	oewn
+oewn-queen-size-a	queen-size	a	0	1	1	oewn
+oewn-queen-sized-a	queen-sized	a	0	1	1	oewn
+oewn-queen-v	queen	v	0	1	1	oewn
+oewn-queen_bee-n	queen bee	n	0	2	2	oewn
+oewn-queen_consort-n	queen consort	n	0	2	2	oewn
+oewn-queen_dowager-n	queen dowager	n	0	2	2	oewn
+oewn-queen_it_over-v	queen it over	v	0	3	1	oewn
+oewn-queen_mole_rat-n	queen mole rat	n	0	3	3	oewn
+oewn-queen_mother-n	queen mother	n	0	2	2	oewn
+oewn-queen_of_the_May-n	queen of the May	n	0	4	1	oewn
+oewn-queen_of_the_night-n	queen of the night	n	0	4	1	oewn
+oewn-queen_post-n	queen post	n	0	2	2	oewn
+oewn-queen_regent-n	queen regent	n	0	2	2	oewn
+oewn-queen_regnant-n	queen regnant	n	0	2	2	oewn
+oewn-queen_triggerfish-n	queen triggerfish	n	0	2	2	oewn
+oewn-queenfish-n	queenfish	n	0	1	1	oewn
+oewn-queenlike-a	queenlike	a	0	1	1	oewn
+oewn-queenly-a	queenly	a	0	1	1	oewn
+oewn-queensland_kauri-n	queensland kauri	n	0	2	2	oewn
+oewn-queer-a	queer	a	0	1	1	oewn
+oewn-queer-n	queer	n	0	1	1	oewn
+oewn-queer-v	queer	v	0	1	1	oewn
+oewn-queer_bird-n	queer bird	n	0	2	2	oewn
+oewn-queer_duck-n	queer duck	n	0	2	2	oewn
+oewn-queerly-r	queerly	r	0	1	1	oewn
+oewn-queerness-n	queerness	n	0	1	1	oewn
+oewn-quell-v	quell	v	0	1	1	oewn
+oewn-quelled-a	quelled	a	0	1	1	oewn
+oewn-quelling-n	quelling	n	0	1	1	oewn
+oewn-quellung-n	quellung	n	0	1	1	oewn
+oewn-quellung_reaction-n	quellung reaction	n	0	2	2	oewn
+oewn-quench-v	quench	v	0	1	1	oewn
+oewn-quenched-a	quenched	a	0	1	1	oewn
+oewn-quenched_steel-n	quenched steel	n	0	2	2	oewn
+oewn-quenching-n	quenching	n	0	1	1	oewn
+oewn-quenchless-a	quenchless	a	0	1	1	oewn
+oewn-quercitron-n	quercitron	n	0	1	1	oewn
+oewn-quercitron_oak-n	quercitron oak	n	0	2	2	oewn
+oewn-querier-n	querier	n	0	1	1	oewn
+oewn-quern-n	quern	n	0	1	1	oewn
+oewn-querulous-a	querulous	a	0	1	1	oewn
+oewn-querulously-r	querulously	r	0	1	1	oewn
+oewn-querulousness-n	querulousness	n	0	1	1	oewn
+oewn-query-n	query	n	0	1	1	oewn
+oewn-query-v	query	v	0	1	1	oewn
+oewn-query_language-n	query language	n	0	2	2	oewn
+oewn-quesadilla-n	quesadilla	n	0	1	1	oewn
+oewn-quest-n	quest	n	0	1	1	oewn
+oewn-quest-v	quest	v	0	1	1	oewn
+oewn-quest_after-v	quest after	v	0	2	1	oewn
+oewn-quest_for-v	quest for	v	0	2	1	oewn
+oewn-quester-n	quester	n	0	1	1	oewn
+oewn-question-n	question	n	0	1	1	oewn
+oewn-question-v	question	v	0	1	1	oewn
+oewn-question_mark-n	question mark	n	0	2	2	oewn
+oewn-question_master-n	question master	n	0	2	2	oewn
+oewn-question_of_fact-n	question of fact	n	0	3	1	oewn
+oewn-question_of_law-n	question of law	n	0	3	1	oewn
+oewn-question_sheet-n	question sheet	n	0	2	2	oewn
+oewn-question_time-n	question time	n	0	2	2	oewn
+oewn-questionable-a	questionable	a	0	1	1	oewn
+oewn-questionably-r	questionably	r	0	1	1	oewn
+oewn-questioner-n	questioner	n	0	1	1	oewn
+oewn-questioning-a	questioning	a	0	1	1	oewn
+oewn-questioning-n	questioning	n	0	1	1	oewn
+oewn-questioningly-r	questioningly	r	0	1	1	oewn
+oewn-questionnaire-n	questionnaire	n	0	1	1	oewn
+oewn-quetch-v	quetch	v	0	1	1	oewn
+oewn-quetzal-n	quetzal	n	0	1	1	oewn
+oewn-quetzal_bird-n	quetzal bird	n	0	2	2	oewn
+oewn-queue-n	queue	n	0	1	1	oewn
+oewn-queue-v	queue	v	0	1	1	oewn
+oewn-queue_up-v	queue up	v	0	2	1	oewn
+oewn-qui_vive-n	qui vive	n	0	2	2	oewn
+oewn-quiaquia-n	quiaquia	n	0	1	1	oewn
+oewn-quibble-n	quibble	n	0	1	1	oewn
+oewn-quibble-v	quibble	v	0	1	1	oewn
+oewn-quibbler-n	quibbler	n	0	1	1	oewn
+oewn-quiche-n	quiche	n	0	1	1	oewn
+oewn-quiche_Lorraine-n	quiche Lorraine	n	0	2	2	oewn
+oewn-quick-a	quick	a	0	1	1	oewn
+oewn-quick-change-a	quick-change	a	0	1	1	oewn
+oewn-quick-drying-a	quick-drying	a	0	1	1	oewn
+oewn-quick-eared-a	quick-eared	a	0	1	1	oewn
+oewn-quick-freeze-v	quick-freeze	v	0	1	1	oewn
+oewn-quick-frozen-a	quick-frozen	a	0	1	1	oewn
+oewn-quick-n	quick	n	0	1	1	oewn
+oewn-quick-r	quick	r	0	1	1	oewn
+oewn-quick-sighted-a	quick-sighted	a	0	1	1	oewn
+oewn-quick-tempered-a	quick-tempered	a	0	1	1	oewn
+oewn-quick-witted-a	quick-witted	a	0	1	1	oewn
+oewn-quick-wittedness-n	quick-wittedness	n	0	1	1	oewn
+oewn-quick_assets-n	quick assets	n	0	2	2	oewn
+oewn-quick_bread-n	quick bread	n	0	2	2	oewn
+oewn-quick_buck-n	quick buck	n	0	2	2	oewn
+oewn-quick_fix-n	quick fix	n	0	2	2	oewn
+oewn-quick_grass-n	quick grass	n	0	2	2	oewn
+oewn-quick_march-n	quick march	n	0	2	2	oewn
+oewn-quick_study-n	quick study	n	0	2	2	oewn
+oewn-quick_temper-n	quick temper	n	0	2	2	oewn
+oewn-quick_time-n	quick time	n	0	2	2	oewn
+oewn-quicken-v	quicken	v	0	1	1	oewn
+oewn-quickener-n	quickener	n	0	1	1	oewn
+oewn-quickening-n	quickening	n	0	1	1	oewn
+oewn-quicker-r	quicker	r	0	1	1	oewn
+oewn-quickest-r	quickest	r	0	1	1	oewn
+oewn-quickie-n	quickie	n	0	1	1	oewn
+oewn-quicklime-n	quicklime	n	0	1	1	oewn
+oewn-quickly-r	quickly	r	0	1	1	oewn
+oewn-quickness-n	quickness	n	0	1	1	oewn
+oewn-quicksand-n	quicksand	n	0	1	1	oewn
+oewn-quickset-a	quickset	a	0	1	1	oewn
+oewn-quickset-n	quickset	n	0	1	1	oewn
+oewn-quicksilver-a	quicksilver	a	0	1	1	oewn
+oewn-quicksilver-n	quicksilver	n	0	1	1	oewn
+oewn-quickstep-n	quickstep	n	0	1	1	oewn
+oewn-quickstep-v	quickstep	v	0	1	1	oewn
+oewn-quicky-n	quicky	n	0	1	1	oewn
+oewn-quid-n	quid	n	0	1	1	oewn
+oewn-quid_pro_quo-n	quid pro quo	n	0	3	3	oewn
+oewn-quidditch-n	quidditch	n	0	1	1	oewn
+oewn-quiddity-n	quiddity	n	0	1	1	oewn
+oewn-quidnunc-n	quidnunc	n	0	1	1	oewn
+oewn-quiesce-v	quiesce	v	0	1	1	oewn
+oewn-quiescence-n	quiescence	n	0	1	1	oewn
+oewn-quiescency-n	quiescency	n	0	1	1	oewn
+oewn-quiescent-a	quiescent	a	0	1	1	oewn
+oewn-quiet-a	quiet	a	0	1	1	oewn
+oewn-quiet-n	quiet	n	0	1	1	oewn
+oewn-quiet-r	quiet	r	0	1	1	oewn
+oewn-quiet-v	quiet	v	0	1	1	oewn
+oewn-quiet_down-v	quiet down	v	0	2	1	oewn
+oewn-quieten-v	quieten	v	0	1	1	oewn
+oewn-quietism-n	quietism	n	0	1	1	oewn
+oewn-quietist-n	quietist	n	0	1	1	oewn
+oewn-quietly-r	quietly	r	0	1	1	oewn
+oewn-quietness-n	quietness	n	0	1	1	oewn
+oewn-quietude-n	quietude	n	0	1	1	oewn
+oewn-quietus-n	quietus	n	0	1	1	oewn
+oewn-quiff-n	quiff	n	0	1	1	oewn
+oewn-quill-n	quill	n	0	1	1	oewn
+oewn-quill_feather-n	quill feather	n	0	2	2	oewn
+oewn-quill_pen-n	quill pen	n	0	2	2	oewn
+oewn-quillwort-n	quillwort	n	0	1	1	oewn
+oewn-quilt-n	quilt	n	0	1	1	oewn
+oewn-quilt-v	quilt	v	0	1	1	oewn
+oewn-quilted-a	quilted	a	0	1	1	oewn
+oewn-quilted_bedspread-n	quilted bedspread	n	0	2	2	oewn
+oewn-quilting-n	quilting	n	0	1	1	oewn
+oewn-quilting_bee-n	quilting bee	n	0	2	2	oewn
+oewn-quin-n	quin	n	0	1	1	oewn
+oewn-quinacrine-n	quinacrine	n	0	1	1	oewn
+oewn-quinacrine_hydrochloride-n	quinacrine hydrochloride	n	0	2	2	oewn
+oewn-quince-n	quince	n	0	1	1	oewn
+oewn-quince_bush-n	quince bush	n	0	2	2	oewn
+oewn-quince_liqueur-n	quince liqueur	n	0	2	2	oewn
+oewn-quincentenary-a	quincentenary	a	0	1	1	oewn
+oewn-quincentenary-n	quincentenary	n	0	1	1	oewn
+oewn-quincentennial-a	quincentennial	a	0	1	1	oewn
+oewn-quincentennial-n	quincentennial	n	0	1	1	oewn
+oewn-quinidine-n	quinidine	n	0	1	1	oewn
+oewn-quinine-n	quinine	n	0	1	1	oewn
+oewn-quinine_water-n	quinine water	n	0	2	2	oewn
+oewn-quinnat_salmon-n	quinnat salmon	n	0	2	2	oewn
+oewn-quinoa-n	quinoa	n	0	1	1	oewn
+oewn-quinone-n	quinone	n	0	1	1	oewn
+oewn-quinquefoliate-a	quinquefoliate	a	0	1	1	oewn
+oewn-quinquefoliate_leaf-n	quinquefoliate leaf	n	0	2	2	oewn
+oewn-quinquennium-n	quinquennium	n	0	1	1	oewn
+oewn-quinsy-n	quinsy	n	0	1	1	oewn
+oewn-quint-n	quint	n	0	1	1	oewn
+oewn-quintal-n	quintal	n	0	1	1	oewn
+oewn-quintessence-n	quintessence	n	0	1	1	oewn
+oewn-quintessential-a	quintessential	a	0	1	1	oewn
+oewn-quintet-n	quintet	n	0	1	1	oewn
+oewn-quintette-n	quintette	n	0	1	1	oewn
+oewn-quintillion-n	quintillion	n	0	1	1	oewn
+oewn-quintillionth-a	quintillionth	a	0	1	1	oewn
+oewn-quintillionth-n	quintillionth	n	0	1	1	oewn
+oewn-quintipara-n	quintipara	n	0	1	1	oewn
+oewn-quintuple-a	quintuple	a	0	1	1	oewn
+oewn-quintuple-n	quintuple	n	0	1	1	oewn
+oewn-quintuple-v	quintuple	v	0	1	1	oewn
+oewn-quintuplet-n	quintuplet	n	0	1	1	oewn
+oewn-quintupling-n	quintupling	n	0	1	1	oewn
+oewn-quip-n	quip	n	0	1	1	oewn
+oewn-quip-v	quip	v	0	1	1	oewn
+oewn-quipu-n	quipu	n	0	1	1	oewn
+oewn-quira-n	quira	n	0	1	1	oewn
+oewn-quire-n	quire	n	0	1	1	oewn
+oewn-quirk-n	quirk	n	0	1	1	oewn
+oewn-quirk-v	quirk	v	0	1	1	oewn
+oewn-quirk_bead-n	quirk bead	n	0	2	2	oewn
+oewn-quirk_molding-n	quirk molding	n	0	2	2	oewn
+oewn-quirk_moulding-n	quirk moulding	n	0	2	2	oewn
+oewn-quirkiness-n	quirkiness	n	0	1	1	oewn
+oewn-quirky-a	quirky	a	0	1	1	oewn
+oewn-quirt-n	quirt	n	0	1	1	oewn
+oewn-quisling-n	quisling	n	0	1	1	oewn
+oewn-quislingism-n	quislingism	n	0	1	1	oewn
+oewn-quit-v	quit	v	0	1	1	oewn
+oewn-quitclaim-n	quitclaim	n	0	1	1	oewn
+oewn-quitclaim_deed-n	quitclaim deed	n	0	2	2	oewn
+oewn-quite-r	quite	r	0	1	1	oewn
+oewn-quite_a-r	quite a	r	0	2	2	oewn
+oewn-quite_a_little-n	quite a little	n	0	3	3	oewn
+oewn-quite_an-r	quite an	r	0	2	2	oewn
+oewn-quits-a	quits	a	0	1	1	oewn
+oewn-quittance-n	quittance	n	0	1	1	oewn
+oewn-quitter-n	quitter	n	0	1	1	oewn
+oewn-quiver-n	quiver	n	0	1	1	oewn
+oewn-quiver-v	quiver	v	0	1	1	oewn
+oewn-quivering-n	quivering	n	0	1	1	oewn
+oewn-quixotic-a	quixotic	a	0	1	1	oewn
+oewn-quixotically-r	quixotically	r	0	1	1	oewn
+oewn-quixotism-n	quixotism	n	0	1	1	oewn
+oewn-quiz-n	quiz	n	0	1	1	oewn
+oewn-quiz-v	quiz	v	0	1	1	oewn
+oewn-quiz_program-n	quiz program	n	0	2	2	oewn
+oewn-quizmaster-n	quizmaster	n	0	1	1	oewn
+oewn-quizzer-n	quizzer	n	0	1	1	oewn
+oewn-quizzical-a	quizzical	a	0	1	1	oewn
+oewn-quizzically-r	quizzically	r	0	1	1	oewn
+oewn-quo_warranto-n	quo warranto	n	0	2	2	oewn
+oewn-quodlibet-n	quodlibet	n	0	1	1	oewn
+oewn-quoin-n	quoin	n	0	1	1	oewn
+oewn-quoit-n	quoit	n	0	1	1	oewn
+oewn-quoits-n	quoits	n	0	1	1	oewn
+oewn-quondam-a	quondam	a	0	1	1	oewn
+oewn-quorum-n	quorum	n	0	1	1	oewn
+oewn-quota-n	quota	n	0	1	1	oewn
+oewn-quotability-n	quotability	n	0	1	1	oewn
+oewn-quotable-a	quotable	a	0	1	1	oewn
+oewn-quotation-n	quotation	n	0	1	1	oewn
+oewn-quotation_mark-n	quotation mark	n	0	2	2	oewn
+oewn-quote-n	quote	n	0	1	1	oewn
+oewn-quote-v	quote	v	0	1	1	oewn
+oewn-quoter-n	quoter	n	0	1	1	oewn
+oewn-quotidian-a	quotidian	a	0	1	1	oewn
+oewn-quotient-n	quotient	n	0	1	1	oewn
+oewn-quotient_verdict-n	quotient verdict	n	0	2	2	oewn
+oewn-qurush-n	qurush	n	0	1	1	oewn

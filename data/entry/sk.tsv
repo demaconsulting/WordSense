@@ -1,0 +1,284 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-SK-Ampicillin-n	SK-Ampicillin	n	0	1	1	oewn
+oewn-Skagit-n	Skagit	n	0	1	1	oewn
+oewn-Skinnerian-a	Skinnerian	a	0	1	1	oewn
+oewn-Skinnerian-n	Skinnerian	n	0	1	1	oewn
+oewn-Skye_terrier-n	Skye terrier	n	0	2	2	oewn
+oewn-skag-n	skag	n	0	1	1	oewn
+oewn-skank-n	skank	n	0	1	1	oewn
+oewn-skank-v	skank	v	0	1	1	oewn
+oewn-skanky-a	skanky	a	0	1	1	oewn
+oewn-skate-n	skate	n	0	1	1	oewn
+oewn-skate-v	skate	v	0	1	1	oewn
+oewn-skate_over-v	skate over	v	0	2	1	oewn
+oewn-skateboard-n	skateboard	n	0	1	1	oewn
+oewn-skateboard-v	skateboard	v	0	1	1	oewn
+oewn-skateboarder-n	skateboarder	n	0	1	1	oewn
+oewn-skateboarding-n	skateboarding	n	0	1	1	oewn
+oewn-skater-n	skater	n	0	1	1	oewn
+oewn-skating-n	skating	n	0	1	1	oewn
+oewn-skating_rink-n	skating rink	n	0	2	2	oewn
+oewn-skedaddle-n	skedaddle	n	0	1	1	oewn
+oewn-skedaddle-v	skedaddle	v	0	1	1	oewn
+oewn-skeen_arch-n	skeen arch	n	0	2	2	oewn
+oewn-skeet-n	skeet	n	0	1	1	oewn
+oewn-skeet_shooting-n	skeet shooting	n	0	2	2	oewn
+oewn-skeeter_hawk-n	skeeter hawk	n	0	2	2	oewn
+oewn-skeg-n	skeg	n	0	1	1	oewn
+oewn-skein-n	skein	n	0	1	1	oewn
+oewn-skeletal-a	skeletal	a	0	1	1	oewn
+oewn-skeletal_frame-n	skeletal frame	n	0	2	2	oewn
+oewn-skeletal_muscle-n	skeletal muscle	n	0	2	2	oewn
+oewn-skeletal_structure-n	skeletal structure	n	0	2	2	oewn
+oewn-skeletal_system-n	skeletal system	n	0	2	2	oewn
+oewn-skeleton-n	skeleton	n	0	1	1	oewn
+oewn-skeleton_fork_fern-n	skeleton fork fern	n	0	3	3	oewn
+oewn-skeleton_in_the_closet-n	skeleton in the closet	n	0	4	1	oewn
+oewn-skeleton_in_the_cupboard-n	skeleton in the cupboard	n	0	4	1	oewn
+oewn-skeleton_key-n	skeleton key	n	0	2	2	oewn
+oewn-skeleton_shrimp-n	skeleton shrimp	n	0	2	2	oewn
+oewn-skene_arch-n	skene arch	n	0	2	2	oewn
+oewn-skep-n	skep	n	0	1	1	oewn
+oewn-skepful-n	skepful	n	0	1	1	oewn
+oewn-skeptic-n	skeptic	n	0	1	1	oewn
+oewn-skeptical-a	skeptical	a	0	1	1	oewn
+oewn-skeptically-r	skeptically	r	0	1	1	oewn
+oewn-skepticism-n	skepticism	n	0	1	1	oewn
+oewn-sketch-n	sketch	n	0	1	1	oewn
+oewn-sketch-v	sketch	v	0	1	1	oewn
+oewn-sketch_block-n	sketch block	n	0	2	2	oewn
+oewn-sketch_map-n	sketch map	n	0	2	2	oewn
+oewn-sketch_out-v	sketch out	v	0	2	1	oewn
+oewn-sketch_pad-n	sketch pad	n	0	2	2	oewn
+oewn-sketchbook-n	sketchbook	n	0	1	1	oewn
+oewn-sketcher-n	sketcher	n	0	1	1	oewn
+oewn-sketchily-r	sketchily	r	0	1	1	oewn
+oewn-sketchiness-n	sketchiness	n	0	1	1	oewn
+oewn-sketchy-a	sketchy	a	0	1	1	oewn
+oewn-skew-a	skew	a	0	1	1	oewn
+oewn-skew-eyed-a	skew-eyed	a	0	1	1	oewn
+oewn-skew-v	skew	v	0	1	1	oewn
+oewn-skew-whiff-a	skew-whiff	a	0	1	1	oewn
+oewn-skew-whiff-r	skew-whiff	r	0	1	1	oewn
+oewn-skew_arch-n	skew arch	n	0	2	2	oewn
+oewn-skew_correlation-n	skew correlation	n	0	2	2	oewn
+oewn-skewed-a	skewed	a	0	1	1	oewn
+oewn-skewer-n	skewer	n	0	1	1	oewn
+oewn-skewer-v	skewer	v	0	1	1	oewn
+oewn-skewness-n	skewness	n	0	1	1	oewn
+oewn-ski-n	ski	n	0	1	1	oewn
+oewn-ski-plane-n	ski-plane	n	0	1	1	oewn
+oewn-ski-v	ski	v	0	1	1	oewn
+oewn-ski_binding-n	ski binding	n	0	2	2	oewn
+oewn-ski_boot-n	ski boot	n	0	2	2	oewn
+oewn-ski_cap-n	ski cap	n	0	2	2	oewn
+oewn-ski_conditions-n	ski conditions	n	0	2	2	oewn
+oewn-ski_jacket-n	ski jacket	n	0	2	2	oewn
+oewn-ski_jump-n	ski jump	n	0	2	2	oewn
+oewn-ski_jump-v	ski jump	v	0	2	1	oewn
+oewn-ski_jumper-n	ski jumper	n	0	2	2	oewn
+oewn-ski_jumping-n	ski jumping	n	0	2	2	oewn
+oewn-ski_lift-n	ski lift	n	0	2	2	oewn
+oewn-ski_lodge-n	ski lodge	n	0	2	2	oewn
+oewn-ski_mask-n	ski mask	n	0	2	2	oewn
+oewn-ski_pants-n	ski pants	n	0	2	2	oewn
+oewn-ski_parka-n	ski parka	n	0	2	2	oewn
+oewn-ski_pole-n	ski pole	n	0	2	2	oewn
+oewn-ski_race-n	ski race	n	0	2	2	oewn
+oewn-ski_rack-n	ski rack	n	0	2	2	oewn
+oewn-ski_resort-n	ski resort	n	0	2	2	oewn
+oewn-ski_run-n	ski run	n	0	2	2	oewn
+oewn-ski_slope-n	ski slope	n	0	2	2	oewn
+oewn-ski_tow-n	ski tow	n	0	2	2	oewn
+oewn-ski_trail-n	ski trail	n	0	2	2	oewn
+oewn-ski_wax-n	ski wax	n	0	2	2	oewn
+oewn-skiagram-n	skiagram	n	0	1	1	oewn
+oewn-skiagraph-n	skiagraph	n	0	1	1	oewn
+oewn-skiagraphy-n	skiagraphy	n	0	1	1	oewn
+oewn-skibob-n	skibob	n	0	1	1	oewn
+oewn-skid-n	skid	n	0	1	1	oewn
+oewn-skid-v	skid	v	0	1	1	oewn
+oewn-skid_lid-n	skid lid	n	0	2	2	oewn
+oewn-skid_road-n	skid road	n	0	2	2	oewn
+oewn-skid_row-n	skid row	n	0	2	2	oewn
+oewn-skidder-n	skidder	n	0	1	1	oewn
+oewn-skidpan-n	skidpan	n	0	1	1	oewn
+oewn-skier-n	skier	n	0	1	1	oewn
+oewn-skiff-n	skiff	n	0	1	1	oewn
+oewn-skiffle-n	skiffle	n	0	1	1	oewn
+oewn-skiffle_group-n	skiffle group	n	0	2	2	oewn
+oewn-skiing-n	skiing	n	0	1	1	oewn
+oewn-skiing_race-n	skiing race	n	0	2	2	oewn
+oewn-skilful-a	skilful	a	0	1	1	oewn
+oewn-skilfully-r	skilfully	r	0	1	1	oewn
+oewn-skill-n	skill	n	0	1	1	oewn
+oewn-skilled-a	skilled	a	0	1	1	oewn
+oewn-skilled_worker-n	skilled worker	n	0	2	2	oewn
+oewn-skilled_workman-n	skilled workman	n	0	2	2	oewn
+oewn-skilled_workwoman-n	skilled workwoman	n	0	2	2	oewn
+oewn-skillessness-n	skillessness	n	0	1	1	oewn
+oewn-skillet-n	skillet	n	0	1	1	oewn
+oewn-skillet_bread-n	skillet bread	n	0	2	2	oewn
+oewn-skillet_cake-n	skillet cake	n	0	2	2	oewn
+oewn-skillet_corn_bread-n	skillet corn bread	n	0	3	3	oewn
+oewn-skillet_fish-n	skillet fish	n	0	2	2	oewn
+oewn-skilletfish-n	skilletfish	n	0	1	1	oewn
+oewn-skillful-a	skillful	a	0	1	1	oewn
+oewn-skillfully-r	skillfully	r	0	1	1	oewn
+oewn-skillfulness-n	skillfulness	n	0	1	1	oewn
+oewn-skilly-n	skilly	n	0	1	1	oewn
+oewn-skim-a	skim	a	0	1	1	oewn
+oewn-skim-n	skim	n	0	1	1	oewn
+oewn-skim-v	skim	v	0	1	1	oewn
+oewn-skim_milk-n	skim milk	n	0	2	2	oewn
+oewn-skim_off-v	skim off	v	0	2	1	oewn
+oewn-skim_over-v	skim over	v	0	2	1	oewn
+oewn-skimcoat-v	skimcoat	v	0	1	1	oewn
+oewn-skimmed-a	skimmed	a	0	1	1	oewn
+oewn-skimmed_milk-n	skimmed milk	n	0	2	2	oewn
+oewn-skimmer-n	skimmer	n	0	1	1	oewn
+oewn-skimming-n	skimming	n	0	1	1	oewn
+oewn-skimp-v	skimp	v	0	1	1	oewn
+oewn-skimp_over-v	skimp over	v	0	2	1	oewn
+oewn-skimpily-r	skimpily	r	0	1	1	oewn
+oewn-skimpiness-n	skimpiness	n	0	1	1	oewn
+oewn-skimpy-a	skimpy	a	0	1	1	oewn
+oewn-skin-deep-a	skin-deep	a	0	1	1	oewn
+oewn-skin-dive-n	skin-dive	n	0	1	1	oewn
+oewn-skin-dive-v	skin-dive	v	0	1	1	oewn
+oewn-skin-diver-n	skin-diver	n	0	1	1	oewn
+oewn-skin-n	skin	n	0	1	1	oewn
+oewn-skin-tight-a	skin-tight	a	0	1	1	oewn
+oewn-skin-v	skin	v	0	1	1	oewn
+oewn-skin_and_bones-n	skin and bones	n	0	3	3	oewn
+oewn-skin_cancer-n	skin cancer	n	0	2	2	oewn
+oewn-skin_care-n	skin care	n	0	2	2	oewn
+oewn-skin_cell-n	skin cell	n	0	2	2	oewn
+oewn-skin_color-n	skin color	n	0	2	2	oewn
+oewn-skin_colour-n	skin colour	n	0	2	2	oewn
+oewn-skin_disease-n	skin disease	n	0	2	2	oewn
+oewn-skin_disorder-n	skin disorder	n	0	2	2	oewn
+oewn-skin_diving-n	skin diving	n	0	2	2	oewn
+oewn-skin_doctor-n	skin doctor	n	0	2	2	oewn
+oewn-skin_effect-n	skin effect	n	0	2	2	oewn
+oewn-skin_eruption-n	skin eruption	n	0	2	2	oewn
+oewn-skin_flick-n	skin flick	n	0	2	2	oewn
+oewn-skin_graft-n	skin graft	n	0	2	2	oewn
+oewn-skin_over-v	skin over	v	0	2	1	oewn
+oewn-skin_patch-n	skin patch	n	0	2	2	oewn
+oewn-skin_perceptiveness-n	skin perceptiveness	n	0	2	2	oewn
+oewn-skin_pop-v	skin pop	v	0	2	1	oewn
+oewn-skin_rash-n	skin rash	n	0	2	2	oewn
+oewn-skin_sensation-n	skin sensation	n	0	2	2	oewn
+oewn-skin_senses-n	skin senses	n	0	2	2	oewn
+oewn-skin_test-n	skin test	n	0	2	2	oewn
+oewn-skin_tumor-n	skin tumor	n	0	2	2	oewn
+oewn-skincare-n	skincare	n	0	1	1	oewn
+oewn-skinflint-n	skinflint	n	0	1	1	oewn
+oewn-skinful-n	skinful	n	0	1	1	oewn
+oewn-skinhead-n	skinhead	n	0	1	1	oewn
+oewn-skinheads-n	skinheads	n	0	1	1	oewn
+oewn-skink-n	skink	n	0	1	1	oewn
+oewn-skinless-a	skinless	a	0	1	1	oewn
+oewn-skinned-a	skinned	a	0	1	1	oewn
+oewn-skinner-n	skinner	n	0	1	1	oewn
+oewn-skinniness-n	skinniness	n	0	1	1	oewn
+oewn-skinny-a	skinny	a	0	1	1	oewn
+oewn-skinny-dip-n	skinny-dip	n	0	1	1	oewn
+oewn-skinny-dip-v	skinny-dip	v	0	1	1	oewn
+oewn-skinny-dipper-n	skinny-dipper	n	0	1	1	oewn
+oewn-skinny-n	skinny	n	0	1	1	oewn
+oewn-skinny_tie-n	skinny tie	n	0	2	2	oewn
+oewn-skint-a	skint	a	0	1	1	oewn
+oewn-skintight-a	skintight	a	0	1	1	oewn
+oewn-skip-bomb-v	skip-bomb	v	0	1	1	oewn
+oewn-skip-n	skip	n	0	1	1	oewn
+oewn-skip-v	skip	v	0	1	1	oewn
+oewn-skip_distance-n	skip distance	n	0	2	2	oewn
+oewn-skip_over-v	skip over	v	0	2	1	oewn
+oewn-skip_rope-n	skip rope	n	0	2	2	oewn
+oewn-skip_town-v	skip town	v	0	2	1	oewn
+oewn-skipjack-n	skipjack	n	0	1	1	oewn
+oewn-skipjack_tuna-n	skipjack tuna	n	0	2	2	oewn
+oewn-skipper-n	skipper	n	0	1	1	oewn
+oewn-skipper-v	skipper	v	0	1	1	oewn
+oewn-skipping_rope-n	skipping rope	n	0	2	2	oewn
+oewn-skirl-n	skirl	n	0	1	1	oewn
+oewn-skirl-v	skirl	v	0	1	1	oewn
+oewn-skirmish-n	skirmish	n	0	1	1	oewn
+oewn-skirmish-v	skirmish	v	0	1	1	oewn
+oewn-skirmisher-n	skirmisher	n	0	1	1	oewn
+oewn-skirret-n	skirret	n	0	1	1	oewn
+oewn-skirt-n	skirt	n	0	1	1	oewn
+oewn-skirt-v	skirt	v	0	1	1	oewn
+oewn-skirt_chaser-n	skirt chaser	n	0	2	2	oewn
+oewn-skirt_of_tasses-n	skirt of tasses	n	0	3	1	oewn
+oewn-skirting-a	skirting	a	0	1	1	oewn
+oewn-skirting_board-n	skirting board	n	0	2	2	oewn
+oewn-skit-n	skit	n	0	1	1	oewn
+oewn-skitter-v	skitter	v	0	1	1	oewn
+oewn-skittish-a	skittish	a	0	1	1	oewn
+oewn-skittishly-r	skittishly	r	0	1	1	oewn
+oewn-skittishness-n	skittishness	n	0	1	1	oewn
+oewn-skittle-n	skittle	n	0	1	1	oewn
+oewn-skittle-v	skittle	v	0	1	1	oewn
+oewn-skittle_alley-n	skittle alley	n	0	2	2	oewn
+oewn-skittle_ball-n	skittle ball	n	0	2	2	oewn
+oewn-skittle_pin-n	skittle pin	n	0	2	2	oewn
+oewn-skittles-n	skittles	n	0	1	1	oewn
+oewn-skive-v	skive	v	0	1	1	oewn
+oewn-skivvies-n	skivvies	n	0	1	1	oewn
+oewn-skivvy-n	skivvy	n	0	1	1	oewn
+oewn-skreak-v	skreak	v	0	1	1	oewn
+oewn-skreigh-v	skreigh	v	0	1	1	oewn
+oewn-skua-n	skua	n	0	1	1	oewn
+oewn-skulduggery-n	skulduggery	n	0	1	1	oewn
+oewn-skulk-v	skulk	v	0	1	1	oewn
+oewn-skulker-n	skulker	n	0	1	1	oewn
+oewn-skulking-n	skulking	n	0	1	1	oewn
+oewn-skull-n	skull	n	0	1	1	oewn
+oewn-skull_and_crossbones-n	skull and crossbones	n	0	3	3	oewn
+oewn-skull_practice-n	skull practice	n	0	2	2	oewn
+oewn-skull_session-n	skull session	n	0	2	2	oewn
+oewn-skullcap-n	skullcap	n	0	1	1	oewn
+oewn-skullduggery-n	skullduggery	n	0	1	1	oewn
+oewn-skunk-n	skunk	n	0	1	1	oewn
+oewn-skunk-v	skunk	v	0	1	1	oewn
+oewn-skunk-weed-n	skunk-weed	n	0	1	1	oewn
+oewn-skunk_bear-n	skunk bear	n	0	2	2	oewn
+oewn-skunk_cabbage-n	skunk cabbage	n	0	2	2	oewn
+oewn-skunkbush-n	skunkbush	n	0	1	1	oewn
+oewn-skunkweed-n	skunkweed	n	0	1	1	oewn
+oewn-sky-blue-a	sky-blue	a	0	1	1	oewn
+oewn-sky-blue-n	sky-blue	n	0	1	1	oewn
+oewn-sky-high-r	sky-high	r	0	1	1	oewn
+oewn-sky-n	sky	n	0	1	1	oewn
+oewn-sky-v	sky	v	0	1	1	oewn
+oewn-sky_burial-n	sky burial	n	0	2	2	oewn
+oewn-sky_dive-v	sky dive	v	0	2	1	oewn
+oewn-sky_glow-n	sky glow	n	0	2	2	oewn
+oewn-sky_marshal-n	sky marshal	n	0	2	2	oewn
+oewn-sky_pilot-n	sky pilot	n	0	2	2	oewn
+oewn-sky_wave-n	sky wave	n	0	2	2	oewn
+oewn-skybox-n	skybox	n	0	1	1	oewn
+oewn-skycap-n	skycap	n	0	1	1	oewn
+oewn-skydive-v	skydive	v	0	1	1	oewn
+oewn-skydiver-n	skydiver	n	0	1	1	oewn
+oewn-skydiving-n	skydiving	n	0	1	1	oewn
+oewn-skyhook-n	skyhook	n	0	1	1	oewn
+oewn-skyjack-v	skyjack	v	0	1	1	oewn
+oewn-skylark-n	skylark	n	0	1	1	oewn
+oewn-skylark-v	skylark	v	0	1	1	oewn
+oewn-skylight-n	skylight	n	0	1	1	oewn
+oewn-skyline-n	skyline	n	0	1	1	oewn
+oewn-skype-v	skype	v	0	1	1	oewn
+oewn-skyrocket-n	skyrocket	n	0	1	1	oewn
+oewn-skyrocket-v	skyrocket	v	0	1	1	oewn
+oewn-skysail-n	skysail	n	0	1	1	oewn
+oewn-skyscraper-n	skyscraper	n	0	1	1	oewn
+oewn-skywalk-n	skywalk	n	0	1	1	oewn
+oewn-skyward-a	skyward	a	0	1	1	oewn
+oewn-skyward-r	skyward	r	0	1	1	oewn
+oewn-skywards-r	skywards	r	0	1	1	oewn
+oewn-skyway-n	skyway	n	0	1	1	oewn
+oewn-skywriting-n	skywriting	n	0	1	1	oewn

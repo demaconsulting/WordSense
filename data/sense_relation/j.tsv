@@ -1,0 +1,589 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-jab__1.04.00..	derivation		oewn-jab__2.35.01..
+oewn-jab__1.04.01..	derivation		oewn-jab__2.35.01..
+oewn-jab__1.04.02..	derivation		oewn-jab__2.35.00..
+oewn-jab__2.35.00..	derivation		oewn-jabbing__1.04.00..
+oewn-jab__2.35.00..	other	event	oewn-jab__1.04.02..
+oewn-jab__2.35.01..	other	event	oewn-jab__1.04.00..
+oewn-jab__2.35.01..	other	event	oewn-jab__1.04.01..
+oewn-jabber__1.10.00..	derivation		oewn-jabber__2.32.00..
+oewn-jabber__2.32.00..	derivation		oewn-jabberer__1.18.00..
+oewn-jabber__2.32.00..	derivation		oewn-jabbering__1.10.00..
+oewn-jabber__2.32.00..	other	agent	oewn-jabberer__1.18.00..
+oewn-jabber__2.32.00..	other	event	oewn-jabber__1.10.00..
+oewn-jack__1.06.00..	derivation		oewn-jack__2.35.00..
+oewn-jack__2.35.00..	other	instrument	oewn-jack__1.06.00..
+oewn-jacket__1.06.00..	derivation		oewn-jacket__2.29.00..
+oewn-jacket__2.29.00..	other	uses	oewn-jacket__1.06.00..
+oewn-jackknife__1.04.00..	derivation		oewn-jackknife__2.38.00..
+oewn-jackknife__2.38.00..	other	event	oewn-jackknife__1.04.00..
+oewn-jacobin__1.18.00..	derivation		oewn-jacobinic__3.01.00..
+oewn-jacobin__1.18.00..	derivation		oewn-jacobinical__3.01.00..
+oewn-jacobinic__3.01.00..	pertainym		oewn-jacobin__1.18.00..
+oewn-jacobinical__3.01.00..	pertainym		oewn-jacobin__1.18.00..
+oewn-jactitate__2.38.00..	derivation		oewn-jactitation__1.07.00..
+oewn-jactitate__2.38.00..	other	event	oewn-jactitation__1.07.00..
+oewn-jade__1.05.00..	derivation		oewn-jade__2.29.00..
+oewn-jade__1.05.00..	derivation		oewn-jade__2.29.01..
+oewn-jade__1.07.00..	derivation		oewn-jade__5.00.00.chromatic.00
+oewn-jade__2.29.01..	other	result	oewn-jade__1.05.00..
+oewn-jag__1.06.00..	derivation		oewn-jag__2.35.00..
+oewn-jag__1.06.01..	derivation		oewn-jag__2.35.00..
+oewn-jag__1.17.00..	derivation		oewn-jag__2.35.00..
+oewn-jag__1.17.00..	derivation		oewn-jaggy__5.00.00.uneven.00
+oewn-jag__2.35.00..	other	result	oewn-jag__1.17.00..
+oewn-jagged__5.00.00.rough.02	derivation		oewn-jaggedness__1.07.00..
+oewn-jagged__5.00.00.uneven.00	derivation		oewn-jaggedness__1.07.00..
+oewn-jaggedly__4.02.00..	pertainym		oewn-jagged__5.00.00.uneven.00
+oewn-jail__1.06.00..	derivation		oewn-jail__2.41.00..
+oewn-jail__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jail__2.41.00..	derivation		oewn-jailer__1.18.00..
+oewn-jail__2.41.00..	derivation		oewn-jailor__1.18.00..
+oewn-jail__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jail__2.41.00..	other	agent	oewn-jailer__1.18.00..
+oewn-jail__2.41.00..	other	agent	oewn-jailor__1.18.00..
+oewn-jail__2.41.00..	other	location	oewn-jail__1.06.00..
+oewn-jain__3.01.00..	pertainym		oewn-jainism__1.09.00..
+oewn-jainism__1.09.00..	derivation		oewn-jainist__1.18.00..
+oewn-jainism__1.14.00..	derivation		oewn-jainist__1.18.00..
+oewn-jainist__1.18.00..	derivation		oewn-jainist__3.01.00..
+oewn-jainist__3.01.00..	pertainym		oewn-jainism__1.09.00..
+oewn-jam__1.04.00..	derivation		oewn-jam__2.32.00..
+oewn-jam__1.14.00..	derivation		oewn-jam__2.35.00..
+oewn-jam__2.32.00..	derivation		oewn-jamming__1.04.00..
+oewn-jam__2.32.00..	other	event	oewn-jam__1.04.00..
+oewn-jam__2.35.00..	other	event	oewn-jam__1.14.00..
+oewn-jamaican__1.18.00..	derivation		oewn-jamaican__3.01.00..
+oewn-jangle__1.11.00..	derivation		oewn-jangle__2.39.00..
+oewn-jangle__1.11.00..	derivation		oewn-jangly__5.00.00.cacophonous.00
+oewn-jangle__2.39.00..	other	event	oewn-jangle__1.11.00..
+oewn-jansenism__1.09.00..	derivation		oewn-jansenist__1.18.00..
+oewn-japan__1.06.00..	derivation		oewn-japan__2.36.00..
+oewn-japan__1.06.01..	derivation		oewn-japan__2.36.00..
+oewn-japan__2.36.00..	other	result	oewn-japan__1.06.01..
+oewn-japan__2.36.00..	other	uses	oewn-japan__1.06.00..
+oewn-japanese__1.18.00..	derivation		oewn-japanese__3.01.00..
+oewn-jar__1.06.00..	derivation		oewn-jar__2.35.10..
+oewn-jar__1.11.00..	derivation		oewn-jar__2.38.00..
+oewn-jar__1.23.00..	derivation		oewn-jar__2.35.10..
+oewn-jar__2.35.10..	other	undergoer	oewn-jar__1.23.00..
+oewn-jar__2.38.00..	other	event	oewn-jar__1.11.00..
+oewn-jarringly__4.02.00..	pertainym		oewn-jarring__5.00.00.cacophonous.00
+oewn-jaundice__1.07.00..	derivation		oewn-jaundice__2.30.00..
+oewn-jaundice__1.26.00..	derivation		oewn-jaundice__2.29.00..
+oewn-jaundice__2.29.00..	other	event	oewn-jaundice__1.26.00..
+oewn-jaundice__2.30.00..	other	property	oewn-jaundice__1.07.00..
+oewn-jaunt__1.04.00..	derivation		oewn-jaunt__2.38.00..
+oewn-jaunt__2.38.00..	other	event	oewn-jaunt__1.04.00..
+oewn-jauntily__4.02.00..	pertainym		oewn-jaunty__5.00.00.fashionable.00
+oewn-jauntiness__1.07.01..	derivation		oewn-jaunty__5.00.00.fashionable.00
+oewn-jauntiness__1.07.02..	derivation		oewn-jaunty__5.00.00.cheerful.00
+oewn-javan__1.18.00..	derivation		oewn-javan__3.01.00..
+oewn-javanese__1.10.00..	derivation		oewn-javanese__3.01.00..
+oewn-javanese__1.18.00..	derivation		oewn-javanese__3.01.00..
+oewn-jaw__1.08.00..	derivation		oewn-jaw__2.34.00..
+oewn-jaw__1.08.01..	derivation		oewn-jaw__2.34.00..
+oewn-jaw__2.34.00..	other	by_means_of	oewn-jaw__1.08.00..
+oewn-jawed__3.00.00..	antonym		oewn-jawless__3.00.00..
+oewn-jaywalk__2.38.00..	derivation		oewn-jaywalker__1.18.00..
+oewn-jaywalk__2.38.00..	other	agent	oewn-jaywalker__1.18.00..
+oewn-jazz__1.10.00..	derivation		oewn-jazz__2.36.00..
+oewn-jazz__1.10.00..	derivation		oewn-jazzy__5.00.00.rhythmical.00
+oewn-jazz__1.10.01..	derivation		oewn-jazz__2.36.00..
+oewn-jazz__1.10.01..	derivation		oewn-jazzy__5.00.00.rhythmical.00
+oewn-jazz__2.36.00..	other	undergoer	oewn-jazz__1.10.00..
+oewn-jazz__2.36.00..	other	undergoer	oewn-jazz__1.10.01..
+oewn-jealously__4.02.00..	pertainym		oewn-jealous__5.00.00.desirous.00
+oewn-jealously__4.02.01..	pertainym		oewn-jealous__5.00.00.desirous.00
+oewn-jeer__1.10.00..	derivation		oewn-jeer__2.32.00..
+oewn-jeer__2.32.00..	derivation		oewn-jeerer__1.18.00..
+oewn-jeer__2.32.00..	derivation		oewn-jeering__1.10.00..
+oewn-jeer__2.32.00..	other	agent	oewn-jeerer__1.18.00..
+oewn-jeer__2.32.00..	other	event	oewn-jeer__1.10.00..
+oewn-jeeringly__4.02.00..	pertainym		oewn-jeering__5.00.00.disrespectful.00
+oewn-jejune__5.00.00.immature.02	derivation		oewn-jejuneness__1.26.00..
+oewn-jejune__5.00.00.immature.02	derivation		oewn-jejunity__1.07.01..
+oewn-jejune__5.00.00.insufficient.00	derivation		oewn-jejuneness__1.07.02..
+oewn-jejune__5.00.00.insufficient.00	derivation		oewn-jejunity__1.07.02..
+oewn-jejune__5.00.00.uninteresting.00	derivation		oewn-jejuneness__1.07.01..
+oewn-jejune__5.00.00.uninteresting.00	derivation		oewn-jejunity__1.07.01..
+oewn-jejunely__4.02.00..	pertainym		oewn-jejune__5.00.00.immature.02
+oewn-jell--o__1.13.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-jellify__2.30.00..	derivation		oewn-jelly__1.13.00..
+oewn-jellify__2.30.00..	derivation		oewn-jelly__1.13.01..
+oewn-jellify__2.30.00..	derivation		oewn-jelly__1.27.00..
+oewn-jellify__2.30.00..	other	result	oewn-jelly__1.13.00..
+oewn-jellify__2.30.00..	other	result	oewn-jelly__1.13.01..
+oewn-jellify__2.30.00..	other	result	oewn-jelly__1.27.00..
+oewn-jellify__2.30.01..	derivation		oewn-jelly__1.13.00..
+oewn-jellify__2.30.01..	derivation		oewn-jelly__1.13.01..
+oewn-jellify__2.30.01..	derivation		oewn-jelly__1.27.00..
+oewn-jellify__2.30.01..	other	result	oewn-jelly__1.13.00..
+oewn-jellify__2.30.01..	other	result	oewn-jelly__1.13.01..
+oewn-jellify__2.30.01..	other	result	oewn-jelly__1.27.00..
+oewn-jelly__1.27.00..	derivation		oewn-jelly__2.30.00..
+oewn-jelly__2.30.00..	other	result	oewn-jelly__1.27.00..
+oewn-jeopardise__2.42.00..	derivation		oewn-jeopardy__1.26.00..
+oewn-jeopardise__2.42.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-jeopardise__2.42.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-jeopardize__2.41.00..	derivation		oewn-jeopardy__1.26.00..
+oewn-jeopardize__2.42.00..	derivation		oewn-jeopardy__1.26.00..
+oewn-jeopardize__2.42.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jerk--off__1.18.00..	derivation		oewn-jerk_off__2.35.00..
+oewn-jerk__1.04.00..	derivation		oewn-jerk__2.29.00..
+oewn-jerk__1.04.00..	derivation		oewn-jerk__2.35.00..
+oewn-jerk__1.04.00..	derivation		oewn-jerk__2.35.01..
+oewn-jerk__1.04.00..	derivation		oewn-jerk__2.38.00..
+oewn-jerk__1.04.00..	derivation		oewn-jerk__2.38.01..
+oewn-jerk__1.04.00..	derivation		oewn-jerky__5.00.00.unsteady.00
+oewn-jerk__1.04.01..	derivation		oewn-jerk__2.35.01..
+oewn-jerk__1.04.01..	derivation		oewn-jerk__2.38.00..
+oewn-jerk__1.18.00..	derivation		oewn-jerky__5.00.00.stupid.00
+oewn-jerk__2.29.00..	derivation		oewn-jerking__1.04.00..
+oewn-jerk__2.29.00..	other	event	oewn-jerk__1.04.00..
+oewn-jerk__2.35.00..	other	event	oewn-jerk__1.04.00..
+oewn-jerk__2.35.01..	derivation		oewn-jerker__1.18.00..
+oewn-jerk__2.35.01..	other	agent	oewn-jerker__1.18.00..
+oewn-jerk__2.35.01..	other	event	oewn-jerk__1.04.00..
+oewn-jerk__2.35.01..	other	event	oewn-jerk__1.04.01..
+oewn-jerk__2.38.00..	derivation		oewn-jerking__1.04.00..
+oewn-jerk__2.38.00..	other	event	oewn-jerk__1.04.00..
+oewn-jerk__2.38.00..	other	event	oewn-jerk__1.04.01..
+oewn-jerk__2.38.01..	other	event	oewn-jerk__1.04.00..
+oewn-jerkily__4.02.01..	pertainym		oewn-jerky__5.00.00.unsteady.00
+oewn-jerkiness__1.07.00..	derivation		oewn-jerky__5.00.00.unsteady.00
+oewn-jest__1.04.00..	derivation		oewn-jest__2.29.00..
+oewn-jest__1.04.00..	derivation		oewn-jest__2.32.00..
+oewn-jest__1.10.00..	derivation		oewn-jest__2.29.00..
+oewn-jest__1.10.00..	derivation		oewn-jest__2.32.00..
+oewn-jest__2.29.00..	derivation		oewn-jester__1.18.00..
+oewn-jest__2.29.00..	other	agent	oewn-jester__1.18.00..
+oewn-jest__2.29.00..	other	event	oewn-jest__1.04.00..
+oewn-jest__2.32.00..	also		oewn-jest_at__2.32.00..
+oewn-jest__2.32.00..	derivation		oewn-jester__1.18.00..
+oewn-jest__2.32.00..	other	agent	oewn-jester__1.18.00..
+oewn-jest__2.32.00..	other	event	oewn-jest__1.04.00..
+oewn-jest__2.32.00..	other	undergoer	oewn-jest__1.10.00..
+oewn-jestingly__4.02.00..	pertainym		oewn-jesting__5.00.00.humorous.00
+oewn-jesuit__1.18.00..	derivation		oewn-jesuitic__3.01.00..
+oewn-jesuit__1.18.00..	derivation		oewn-jesuitical__3.01.00..
+oewn-jesuit__3.01.00..	pertainym		oewn-jesuit__1.18.00..
+oewn-jesuit__3.01.00..	pertainym		oewn-jesuitism__1.09.00..
+oewn-jesuitic__3.01.00..	derivation		oewn-jesuitism__1.09.00..
+oewn-jesuitic__3.01.00..	pertainym		oewn-jesuit__1.18.00..
+oewn-jesuitic__3.01.00..	pertainym		oewn-jesuitism__1.09.00..
+oewn-jesuitical__3.01.00..	pertainym		oewn-jesuit__1.18.00..
+oewn-jesuitical__3.01.00..	pertainym		oewn-jesuitism__1.09.00..
+oewn-jet--propelled__3.01.00..	pertainym		oewn-jet_propulsion__1.19.00..
+oewn-jet__1.06.00..	derivation		oewn-jet__2.38.00..
+oewn-jet__1.06.01..	derivation		oewn-jet__2.35.00..
+oewn-jet__1.11.00..	derivation		oewn-jet__2.35.00..
+oewn-jet__2.35.00..	other	event	oewn-jet__1.06.01..
+oewn-jet__2.35.00..	other	event	oewn-jet__1.11.00..
+oewn-jet__2.38.00..	other	undergoer	oewn-jet__1.06.00..
+oewn-jew__1.18.00..	derivation		oewn-judaic__3.01.00..
+oewn-jew__1.18.00..	derivation		oewn-judaic__3.01.01..
+oewn-jewel__1.06.00..	derivation		oewn-jewel__2.36.00..
+oewn-jewel__1.06.00..	derivation		oewn-jeweler__1.18.00..
+oewn-jewel__1.06.00..	derivation		oewn-jeweler__1.18.01..
+oewn-jewel__1.06.00..	derivation		oewn-jeweller__1.18.00..
+oewn-jewel__1.06.00..	derivation		oewn-jeweller__1.18.01..
+oewn-jewel__2.36.00..	derivation		oewn-jeweler__1.18.00..
+oewn-jewel__2.36.00..	derivation		oewn-jeweler__1.18.01..
+oewn-jewel__2.36.00..	derivation		oewn-jeweller__1.18.00..
+oewn-jewel__2.36.00..	derivation		oewn-jeweller__1.18.01..
+oewn-jewel__2.36.00..	derivation		oewn-jewellery__1.06.00..
+oewn-jewel__2.36.00..	derivation		oewn-jewelry__1.06.00..
+oewn-jewel__2.36.00..	other	agent	oewn-jeweler__1.18.00..
+oewn-jewel__2.36.00..	other	agent	oewn-jeweler__1.18.01..
+oewn-jewel__2.36.00..	other	agent	oewn-jeweller__1.18.00..
+oewn-jewel__2.36.00..	other	agent	oewn-jeweller__1.18.01..
+oewn-jewel__2.36.00..	other	uses	oewn-jewel__1.06.00..
+oewn-jeweled__5.00.00.adorned.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jeweler__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jeweler__1.18.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jewelled__5.00.00.adorned.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-jewelled__5.00.00.adorned.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-jeweller__1.18.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-jeweller__1.18.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-jeweller__1.18.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-jeweller__1.18.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-jewish--orthodox__3.01.00..	pertainym		oewn-judaism__1.09.00..
+oewn-jewish__3.01.01..	pertainym		oewn-jew__1.18.00..
+oewn-jib__1.06.00..	derivation		oewn-jib__2.38.00..
+oewn-jig__1.04.00..	derivation		oewn-jig__2.38.00..
+oewn-jig__1.10.00..	derivation		oewn-jig__2.38.00..
+oewn-jig__2.38.00..	other	event	oewn-jig__1.04.00..
+oewn-jig__2.38.00..	other	event	oewn-jig__1.10.00..
+oewn-jiggle__1.04.00..	derivation		oewn-jiggle__2.38.00..
+oewn-jiggle__2.38.00..	other	event	oewn-jiggle__1.04.00..
+oewn-jihad__1.04.00..	derivation		oewn-jihadist__1.18.00..
+oewn-jihadi__3.01.00..	pertainym		oewn-jihad__1.04.00..
+oewn-jilt__1.18.00..	derivation		oewn-jilt__2.31.00..
+oewn-jilt__2.31.00..	other	agent	oewn-jilt__1.18.00..
+oewn-jimmy__1.06.00..	derivation		oewn-jimmy__2.35.00..
+oewn-jimmy__2.35.00..	other	instrument	oewn-jimmy__1.06.00..
+oewn-jingle__1.11.00..	derivation		oewn-jingle__2.39.00..
+oewn-jingle__1.11.00..	derivation		oewn-jingly__5.00.00.reverberant.00
+oewn-jingle__2.39.00..	other	event	oewn-jingle__1.11.00..
+oewn-jingoism__1.07.00..	derivation		oewn-jingoist__1.18.00..
+oewn-jingoism__1.07.00..	derivation		oewn-jingoistic__5.00.00.patriotic.00
+oewn-jingoism__1.10.00..	derivation		oewn-jingoist__1.18.00..
+oewn-jingoism__1.10.00..	derivation		oewn-jingoistic__5.00.00.patriotic.00
+oewn-jinx__1.10.00..	derivation		oewn-jinx__2.32.02..
+oewn-jinx__1.18.00..	derivation		oewn-jinx__2.31.00..
+oewn-jinx__2.31.00..	other	agent	oewn-jinx__1.18.00..
+oewn-jinx__2.32.02..	other	undergoer	oewn-jinx__1.10.00..
+oewn-jitter__1.11.01..	derivation		oewn-jittery__3.01.00..
+oewn-jitterbug__1.04.00..	derivation		oewn-jitterbug__2.38.00..
+oewn-jitterbug__2.38.00..	other	event	oewn-jitterbug__1.04.00..
+oewn-jitteriness__1.12.00..	derivation		oewn-jittery__5.00.00.tense.03
+oewn-jittery__3.01.00..	pertainym		oewn-jitter__1.11.01..
+oewn-jive__1.10.00..	derivation		oewn-jive__2.36.00..
+oewn-jive__2.36.00..	other	event	oewn-jive__1.10.00..
+oewn-job__1.04.01..	derivation		oewn-job__2.41.00..
+oewn-job__1.04.01..	derivation		oewn-job__2.41.03..
+oewn-job__1.04.05..	derivation		oewn-job__2.41.00..
+oewn-job__1.04.05..	derivation		oewn-job__2.41.03..
+oewn-job__1.06.00..	derivation		oewn-job__2.41.00..
+oewn-job__1.06.00..	derivation		oewn-job__2.41.03..
+oewn-job__1.06.01..	derivation		oewn-job__2.41.00..
+oewn-job__1.06.01..	derivation		oewn-job__2.41.03..
+oewn-job__2.41.00..	other	event	oewn-job__1.04.01..
+oewn-job__2.41.00..	other	event	oewn-job__1.04.05..
+oewn-job__2.41.00..	other	location	oewn-job__1.06.00..
+oewn-job__2.41.00..	other	undergoer	oewn-job__1.06.01..
+oewn-job__2.41.03..	other	event	oewn-job__1.04.01..
+oewn-job__2.41.03..	other	event	oewn-job__1.04.05..
+oewn-job__2.41.03..	other	location	oewn-job__1.06.00..
+oewn-jockey__1.18.00..	derivation		oewn-jockey__2.33.03..
+oewn-jockey__2.33.03..	other	agent	oewn-jockey__1.18.00..
+oewn-jocose__5.00.00.humorous.00	derivation		oewn-jocoseness__1.07.00..
+oewn-jocose__5.00.00.humorous.00	derivation		oewn-jocosity__1.07.00..
+oewn-jocose__5.00.00.humorous.00	derivation		oewn-jocosity__1.10.00..
+oewn-jocosely__4.02.00..	pertainym		oewn-jocose__5.00.00.humorous.00
+oewn-jocular__4.02.00..	pertainym		oewn-jocular__5.00.00.humorous.00
+oewn-jocular__5.00.00.humorous.00	derivation		oewn-jocularity__1.04.00..
+oewn-jocular__5.00.00.humorous.00	derivation		oewn-jocularity__1.10.00..
+oewn-jocular__5.00.00.humorous.00	derivation		oewn-jocularity__1.12.00..
+oewn-jocular__5.00.00.humorous.00	derivation		oewn-joke__1.04.01..
+oewn-jocular__5.00.00.humorous.00	derivation		oewn-joke__1.10.00..
+oewn-jocund__5.00.00.joyous.00	derivation		oewn-jocundity__1.12.00..
+oewn-jog__1.04.00..	derivation		oewn-jog__2.38.00..
+oewn-jog__1.04.00..	derivation		oewn-jog__2.38.01..
+oewn-jog__1.04.01..	derivation		oewn-jog__2.35.00..
+oewn-jog__2.35.00..	other	event	oewn-jog__1.04.01..
+oewn-jog__2.38.00..	derivation		oewn-jogger__1.18.00..
+oewn-jog__2.38.00..	derivation		oewn-jogging__1.04.00..
+oewn-jog__2.38.00..	other	agent	oewn-jogger__1.18.00..
+oewn-jog__2.38.00..	other	event	oewn-jog__1.04.00..
+oewn-jog__2.38.01..	derivation		oewn-jogger__1.18.00..
+oewn-jog__2.38.01..	derivation		oewn-jogging__1.04.00..
+oewn-jog__2.38.01..	other	agent	oewn-jogger__1.18.00..
+oewn-jog__2.38.01..	other	event	oewn-jog__1.04.00..
+oewn-joggle__1.04.00..	derivation		oewn-joggle__2.38.00..
+oewn-joggle__1.06.00..	derivation		oewn-joggle__2.35.00..
+oewn-joggle__2.35.00..	other	instrument	oewn-joggle__1.06.00..
+oewn-joggle__2.38.00..	other	event	oewn-joggle__1.04.00..
+oewn-join__2.35.00..	derivation		oewn-joining__1.04.00..
+oewn-join__2.35.01..	derivation		oewn-joining__1.04.00..
+oewn-join__2.35.01..	derivation		oewn-junction__1.04.00..
+oewn-join__2.35.01..	other	event	oewn-junction__1.04.00..
+oewn-join__2.41.00..	derivation		oewn-joiner__1.18.01..
+oewn-join__2.41.00..	other	agent	oewn-joiner__1.18.01..
+oewn-join__2.42.01..	derivation		oewn-joining__1.04.00..
+oewn-join__2.42.01..	derivation		oewn-jointure__1.04.00..
+oewn-join__2.42.01..	derivation		oewn-juncture__1.25.00..
+oewn-joint__1.06.01..	derivation		oewn-joint__2.35.00..
+oewn-joint__1.06.01..	derivation		oewn-joint__2.42.00..
+oewn-joint__1.25.00..	derivation		oewn-joint__2.35.00..
+oewn-joint__1.25.00..	derivation		oewn-joint__2.40.00..
+oewn-joint__1.25.00..	derivation		oewn-joint__2.42.00..
+oewn-joint__2.35.00..	other	by_means_of	oewn-joint__1.06.01..
+oewn-joint__2.35.00..	other	by_means_of	oewn-joint__1.25.00..
+oewn-joint__2.40.00..	derivation		oewn-jointer__1.06.00..
+oewn-joint__2.40.00..	other	agent	oewn-jointer__1.06.00..
+oewn-joint__2.40.00..	other	by_means_of	oewn-joint__1.25.00..
+oewn-joint__2.42.00..	other	by_means_of	oewn-joint__1.06.01..
+oewn-joint__2.42.00..	other	by_means_of	oewn-joint__1.25.00..
+oewn-joint__3.00.00..	antonym		oewn-separate__3.00.00..
+oewn-jointly__4.02.00..	pertainym		oewn-joint__3.00.00..
+oewn-joke__1.04.00..	derivation		oewn-jokester__1.18.00..
+oewn-joke__1.04.01..	derivation		oewn-joke__2.29.00..
+oewn-joke__1.04.01..	derivation		oewn-joke__2.32.00..
+oewn-joke__1.04.01..	derivation		oewn-jokester__1.18.00..
+oewn-joke__1.10.00..	derivation		oewn-joke__2.29.00..
+oewn-joke__1.10.00..	derivation		oewn-joke__2.32.00..
+oewn-joke__1.10.00..	derivation		oewn-jokester__1.18.00..
+oewn-joke__2.29.00..	derivation		oewn-joker__1.18.00..
+oewn-joke__2.29.00..	other	agent	oewn-joker__1.18.00..
+oewn-joke__2.29.00..	other	event	oewn-joke__1.04.01..
+oewn-joke__2.32.00..	derivation		oewn-joker__1.18.00..
+oewn-joke__2.32.00..	other	agent	oewn-joker__1.18.00..
+oewn-joke__2.32.00..	other	event	oewn-joke__1.04.01..
+oewn-joke__2.32.00..	other	undergoer	oewn-joke__1.10.00..
+oewn-jokingly__4.02.00..	pertainym		oewn-joking__5.00.00.humorous.00
+oewn-jokingly__4.02.01..	pertainym		oewn-joking__5.00.00.humorous.00
+oewn-jollification__1.04.00..	derivation		oewn-jollify__2.41.00..
+oewn-jollify__2.41.00..	other	event	oewn-jollification__1.04.00..
+oewn-jolliness__1.12.00..	derivation		oewn-jolly__5.00.00.joyous.00
+oewn-jollity__1.12.00..	derivation		oewn-jolly__5.00.00.joyous.00
+oewn-jolly__1.11.00..	derivation		oewn-jolly__2.32.00..
+oewn-jolly__1.11.00..	derivation		oewn-jolly__5.00.00.joyous.00
+oewn-jolly__2.32.00..	other	event	oewn-jolly__1.11.00..
+oewn-jolt__1.04.00..	derivation		oewn-jolt__2.38.00..
+oewn-jolt__1.04.00..	derivation		oewn-jolty__3.00.00..
+oewn-jolt__1.11.00..	derivation		oewn-jolt__2.38.00..
+oewn-jolt__2.38.00..	other	event	oewn-jolt__1.04.00..
+oewn-jolt__2.38.00..	other	event	oewn-jolt__1.11.00..
+oewn-jordanian__1.18.00..	derivation		oewn-jordanian__3.01.00..
+oewn-jostle__1.04.00..	derivation		oewn-jostle__2.38.00..
+oewn-jostle__1.04.00..	derivation		oewn-jostle__2.38.02..
+oewn-jostle__2.38.00..	derivation		oewn-jostling__1.04.00..
+oewn-jostle__2.38.00..	other	event	oewn-jostle__1.04.00..
+oewn-jostle__2.38.02..	derivation		oewn-jostling__1.04.00..
+oewn-jostle__2.38.02..	other	event	oewn-jostle__1.04.00..
+oewn-jot__1.10.00..	derivation		oewn-jot__2.32.00..
+oewn-jot__2.32.00..	derivation		oewn-jotter__1.10.00..
+oewn-jot__2.32.00..	derivation		oewn-jotting__1.10.00..
+oewn-jot__2.32.00..	other	location	oewn-jotter__1.10.00..
+oewn-jot__2.32.00..	other	result	oewn-jot__1.10.00..
+oewn-journalism__1.04.00..	derivation		oewn-journalist__1.18.00..
+oewn-journalism__1.04.00..	derivation		oewn-journalistic__3.01.00..
+oewn-journalism__1.10.00..	derivation		oewn-journalist__1.18.00..
+oewn-journalism__1.10.00..	derivation		oewn-journalistic__3.01.00..
+oewn-journalistic__3.01.00..	pertainym		oewn-journalism__1.10.00..
+oewn-journalistically__4.02.00..	pertainym		oewn-journalistic__3.01.00..
+oewn-journey__1.04.00..	derivation		oewn-journey__2.38.00..
+oewn-journey__1.04.00..	derivation		oewn-journey__2.38.01..
+oewn-journey__2.38.00..	derivation		oewn-journeyer__1.18.00..
+oewn-journey__2.38.00..	derivation		oewn-journeying__1.04.00..
+oewn-journey__2.38.00..	other	agent	oewn-journeyer__1.18.00..
+oewn-journey__2.38.00..	other	event	oewn-journey__1.04.00..
+oewn-journey__2.38.01..	derivation		oewn-journeyer__1.18.00..
+oewn-journey__2.38.01..	other	agent	oewn-journeyer__1.18.00..
+oewn-journey__2.38.01..	other	event	oewn-journey__1.04.00..
+oewn-joust__1.11.00..	derivation		oewn-joust__2.33.00..
+oewn-joust__2.33.00..	other	event	oewn-joust__1.11.00..
+oewn-jousting_armor__1.06.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-jousting_armour__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-jousting_armour__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-jousting_armour__1.06.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-jovial__5.00.00.joyous.00	derivation		oewn-joviality__1.07.00..
+oewn-jovial__5.00.00.joyous.00	derivation		oewn-joviality__1.12.00..
+oewn-jovially__4.02.00..	pertainym		oewn-jovial__5.00.00.joyous.00
+oewn-jowl__1.08.01..	derivation		oewn-jowly__5.00.00.fat.01
+oewn-joy__1.09.00..	derivation		oewn-joy__2.37.01..
+oewn-joy__1.12.00..	antonym		oewn-sorrow__1.12.00..
+oewn-joy__1.12.00..	derivation		oewn-joy__2.37.00..
+oewn-joy__1.12.00..	derivation		oewn-joy__2.37.01..
+oewn-joy__1.12.00..	derivation		oewn-joyous__3.00.00..
+oewn-joy__2.37.00..	other	state	oewn-joy__1.12.00..
+oewn-joy__2.37.01..	other	by_means_of	oewn-joy__1.09.00..
+oewn-joy__2.37.01..	other	state	oewn-joy__1.12.00..
+oewn-joyful__3.00.00..	antonym		oewn-sorrowful__3.00.00..
+oewn-joyful__3.00.00..	derivation		oewn-joyfulness__1.12.00..
+oewn-joyful__5.00.00.joyous.00	derivation		oewn-joyfulness__1.12.00..
+oewn-joyfully__4.02.00..	antonym		oewn-joylessly__4.02.00..
+oewn-joyfully__4.02.00..	pertainym		oewn-joyful__5.00.00.joyous.00
+oewn-joyless__3.00.00..	antonym		oewn-joyous__3.00.00..
+oewn-joyless__3.00.00..	derivation		oewn-joylessness__1.12.00..
+oewn-joylessly__4.02.00..	pertainym		oewn-joyless__3.00.00..
+oewn-joyous__3.00.00..	derivation		oewn-joyousness__1.12.00..
+oewn-joyously__4.02.00..	pertainym		oewn-joyous__3.00.00..
+oewn-joyride__1.04.00..	derivation		oewn-joyride__2.38.00..
+oewn-joyride__2.38.00..	other	event	oewn-joyride__1.04.00..
+oewn-jubilance__1.12.00..	derivation		oewn-jubilant__5.00.00.elated.00
+oewn-jubilance__1.12.00..	derivation		oewn-jubilant__5.00.00.joyous.00
+oewn-jubilance__1.12.00..	derivation		oewn-jubilate__2.32.00..
+oewn-jubilancy__1.12.00..	derivation		oewn-jubilant__5.00.00.elated.00
+oewn-jubilancy__1.12.00..	derivation		oewn-jubilant__5.00.00.joyous.00
+oewn-jubilancy__1.12.00..	derivation		oewn-jubilate__2.32.00..
+oewn-jubilant__5.00.00.elated.00	derivation		oewn-jubilate__2.32.00..
+oewn-jubilant__5.00.00.joyous.00	derivation		oewn-jubilate__2.32.00..
+oewn-jubilantly__4.02.00..	pertainym		oewn-jubilant__5.00.00.joyous.00
+oewn-jubilate__2.32.00..	derivation		oewn-jubilation__1.10.00..
+oewn-jubilate__2.32.00..	derivation		oewn-jubilation__1.12.00..
+oewn-jubilate__2.32.00..	other	event	oewn-jubilation__1.10.00..
+oewn-jubilate__2.32.00..	other	state	oewn-jubilation__1.12.00..
+oewn-jubilate__2.32.00..	other	undergoer	oewn-jubilance__1.12.00..
+oewn-jubilate__2.41.00..	derivation		oewn-jubilation__1.11.00..
+oewn-jubilate__2.41.00..	derivation		oewn-jubilee__1.28.00..
+oewn-jubilate__2.41.00..	other	event	oewn-jubilation__1.11.00..
+oewn-jubilate__2.41.00..	other	event	oewn-jubilee__1.28.00..
+oewn-judaic__3.01.00..	pertainym		oewn-judaism__1.09.00..
+oewn-judaic__3.01.01..	pertainym		oewn-jew__1.18.00..
+oewn-judaical__3.01.00..	derivation		oewn-judaism__1.09.00..
+oewn-judaical__3.01.00..	derivation		oewn-judaism__1.14.00..
+oewn-judaical__3.01.00..	pertainym		oewn-judaism__1.09.00..
+oewn-judeo--christian__3.01.00..	pertainym		oewn-christianity__1.09.00..
+oewn-judeo--christian__3.01.00..	pertainym		oewn-judaism__1.09.00..
+oewn-judge__1.18.00..	derivation		oewn-judge__2.41.09..
+oewn-judge__1.18.00..	derivation		oewn-judgeship__1.04.00..
+oewn-judge__1.18.00..	derivation		oewn-judicial__3.01.00..
+oewn-judge__1.18.00..	derivation		oewn-judicial__3.01.02..
+oewn-judge__1.18.00..	derivation		oewn-judicial__5.00.00.legal.00
+oewn-judge__1.18.01..	derivation		oewn-judge__2.31.00..
+oewn-judge__1.18.01..	derivation		oewn-judge__2.31.01..
+oewn-judge__1.18.01..	derivation		oewn-judge__2.31.02..
+oewn-judge__1.18.01..	derivation		oewn-judgeship__1.04.00..
+oewn-judge__1.18.01..	derivation		oewn-judicial__5.00.00.critical.02
+oewn-judge__2.31.00..	derivation		oewn-judging__1.09.00..
+oewn-judge__2.31.00..	derivation		oewn-judgment__1.04.02..
+oewn-judge__2.31.00..	other	event	oewn-judge__1.18.01..
+oewn-judge__2.31.00..	other	event	oewn-judgment__1.04.02..
+oewn-judge__2.31.01..	derivation		oewn-judging__1.09.00..
+oewn-judge__2.31.01..	derivation		oewn-judgment__1.09.00..
+oewn-judge__2.31.01..	other	event	oewn-judge__1.18.01..
+oewn-judge__2.31.01..	other	event	oewn-judgment__1.09.00..
+oewn-judge__2.31.02..	derivation		oewn-judgment__1.04.02..
+oewn-judge__2.31.02..	other	event	oewn-judge__1.18.01..
+oewn-judge__2.31.02..	other	event	oewn-judgment__1.04.02..
+oewn-judge__2.32.00..	derivation		oewn-judgment__1.04.02..
+oewn-judge__2.32.00..	other	event	oewn-judgment__1.04.02..
+oewn-judge__2.41.09..	derivation		oewn-judgment__1.04.00..
+oewn-judge__2.41.09..	derivation		oewn-judgment__1.10.00..
+oewn-judge__2.41.09..	derivation		oewn-judiciary__1.14.00..
+oewn-judge__2.41.09..	other	event	oewn-judge__1.18.00..
+oewn-judge__2.41.09..	other	result	oewn-judgment__1.04.00..
+oewn-judge__2.41.09..	other	result	oewn-judgment__1.10.00..
+oewn-judgement__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.09.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.09.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.09.04..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.09.04..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgement__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-judgement__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-judgment__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.04.02..	derivation		oewn-judgmental__3.00.00..
+oewn-judgment__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.07.00..	derivation		oewn-judgmental__3.00.00..
+oewn-judgment__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.09.00..	derivation		oewn-judgmental__3.00.00..
+oewn-judgment__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.09.04..	derivation		oewn-judgmental__3.00.00..
+oewn-judgment__1.09.04..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-judgment_in_personam__1.04.00..	antonym		oewn-judgment_in_rem__1.04.00..
+oewn-judgmental__3.00.00..	antonym		oewn-nonjudgmental__3.00.00..
+oewn-judicial__3.01.00..	pertainym		oewn-justice__1.07.00..
+oewn-judicial__3.01.02..	pertainym		oewn-judge__1.18.00..
+oewn-judicially__4.02.00..	pertainym		oewn-judicial__3.01.00..
+oewn-judicially__4.02.01..	pertainym		oewn-judicial__5.00.00.legal.00
+oewn-judicious__5.00.00.prudent.00	derivation		oewn-judiciousness__1.07.00..
+oewn-judicious__5.00.00.prudent.00	derivation		oewn-judiciousness__1.09.00..
+oewn-jug__1.06.00..	derivation		oewn-jug__2.30.00..
+oewn-jug__1.23.00..	derivation		oewn-jug__2.30.00..
+oewn-jug__2.30.00..	other	undergoer	oewn-jug__1.23.00..
+oewn-juggle__1.04.00..	derivation		oewn-juggle__2.35.00..
+oewn-juggle__1.04.01..	derivation		oewn-juggle__2.41.00..
+oewn-juggle__1.04.01..	derivation		oewn-juggle__2.41.01..
+oewn-juggle__2.35.00..	derivation		oewn-juggler__1.18.00..
+oewn-juggle__2.35.00..	derivation		oewn-jugglery__1.04.00..
+oewn-juggle__2.35.00..	derivation		oewn-juggling__1.04.00..
+oewn-juggle__2.35.00..	other	agent	oewn-juggler__1.18.00..
+oewn-juggle__2.35.00..	other	event	oewn-juggle__1.04.00..
+oewn-juggle__2.41.00..	other	event	oewn-juggle__1.04.01..
+oewn-juggle__2.41.01..	derivation		oewn-juggling__1.04.01..
+oewn-juggle__2.41.01..	other	event	oewn-juggle__1.04.01..
+oewn-juggle__2.41.02..	derivation		oewn-jugglery__1.04.01..
+oewn-jugular__1.07.00..	derivation		oewn-jugular__3.01.00..
+oewn-jugular__3.01.00..	derivation		oewn-jugular_vein__1.08.00..
+oewn-jugular__3.01.00..	pertainym		oewn-neck__1.08.00..
+oewn-juice__1.13.00..	derivation		oewn-juicy__3.00.00..
+oewn-juiceless__3.00.00..	antonym		oewn-juicy__3.00.00..
+oewn-juiciness__1.07.00..	derivation		oewn-juicy__3.00.00..
+oewn-jumble__1.09.00..	derivation		oewn-jumble__2.35.00..
+oewn-jumble__1.09.00..	derivation		oewn-jumble__2.36.00..
+oewn-jumble__1.09.00..	derivation		oewn-jumble__2.42.00..
+oewn-jumble__1.26.00..	derivation		oewn-jumble__2.35.00..
+oewn-jumble__1.26.00..	derivation		oewn-jumble__2.36.00..
+oewn-jumble__1.26.00..	derivation		oewn-jumble__2.42.00..
+oewn-jumble__2.35.00..	other	event	oewn-jumble__1.26.00..
+oewn-jumble__2.35.00..	other	result	oewn-jumble__1.09.00..
+oewn-jumble__2.36.00..	other	result	oewn-jumble__1.09.00..
+oewn-jumble__2.36.00..	other	result	oewn-jumble__1.26.00..
+oewn-jumble__2.42.00..	other	result	oewn-jumble__1.09.00..
+oewn-jumble__2.42.00..	other	result	oewn-jumble__1.26.00..
+oewn-jument__1.05.00..	derivation		oewn-jumentous__3.01.00..
+oewn-jumentous__3.01.00..	pertainym		oewn-jument__1.05.00..
+oewn-jump__1.04.00..	derivation		oewn-jump__2.38.00..
+oewn-jump__1.04.01..	derivation		oewn-jump__2.38.04..
+oewn-jump__1.04.01..	derivation		oewn-jumpy__3.00.00..
+oewn-jump__1.04.02..	derivation		oewn-jump__2.38.12..
+oewn-jump__1.10.00..	derivation		oewn-jump__2.30.05..
+oewn-jump__1.11.00..	derivation		oewn-jump__2.30.01..
+oewn-jump__1.11.01..	derivation		oewn-jump__2.30.00..
+oewn-jump__2.30.00..	other	event	oewn-jump__1.11.01..
+oewn-jump__2.30.01..	other	event	oewn-jump__1.11.00..
+oewn-jump__2.30.05..	other	event	oewn-jump__1.10.00..
+oewn-jump__2.38.00..	also		oewn-jump_on__2.38.00..
+oewn-jump__2.38.00..	derivation		oewn-jumping__1.04.01..
+oewn-jump__2.38.00..	other	event	oewn-jump__1.04.00..
+oewn-jump__2.38.04..	other	event	oewn-jump__1.04.01..
+oewn-jump__2.38.12..	other	event	oewn-jump__1.04.02..
+oewn-jumper__1.06.04..	exemplifies		oewn-british_english__1.10.01..
+oewn-jumpiness__1.12.00..	derivation		oewn-jumpy__5.00.00.tense.03
+oewn-jungle__1.14.01..	derivation		oewn-jungly__5.00.00.wooded.00
+oewn-junior__1.18.00..	derivation		oewn-junior__3.00.00..
+oewn-junior__1.18.01..	derivation		oewn-junior__3.00.00..
+oewn-junior__3.00.00..	antonym		oewn-senior__3.00.00..
+oewn-junk__1.27.00..	derivation		oewn-junk__2.40.00..
+oewn-junk__2.40.00..	other	undergoer	oewn-junk__1.27.00..
+oewn-junket__1.04.00..	derivation		oewn-junket__2.38.00..
+oewn-junket__2.38.00..	derivation		oewn-junketing__1.04.00..
+oewn-junket__2.38.00..	other	event	oewn-junket__1.04.00..
+oewn-juridic__3.01.00..	pertainym		oewn-justice__1.07.00..
+oewn-juridic__3.01.02..	pertainym		oewn-law__1.09.02..
+oewn-juridical__3.01.00..	pertainym		oewn-justice__1.07.00..
+oewn-juridical__3.01.02..	pertainym		oewn-law__1.09.02..
+oewn-jurisdiction__1.15.00..	derivation		oewn-jurisdictional__5.00.00.territorial.00
+oewn-jurisprudence__1.09.00..	derivation		oewn-jurisprudential__3.01.00..
+oewn-jurisprudence__1.09.00..	derivation		oewn-jurist__1.18.00..
+oewn-jurisprudence__1.09.00..	derivation		oewn-jurist__1.18.01..
+oewn-jurisprudence__1.14.00..	derivation		oewn-jurist__1.18.00..
+oewn-jurisprudence__1.14.00..	derivation		oewn-jurist__1.18.01..
+oewn-jurisprudential__3.01.00..	pertainym		oewn-jurisprudence__1.09.00..
+oewn-jurisprudentially__4.02.00..	pertainym		oewn-jurisprudential__3.01.00..
+oewn-just__3.00.00..	antonym		oewn-unjust__3.00.00..
+oewn-just__3.00.00..	derivation		oewn-justness__1.07.00..
+oewn-just__3.00.02..	derivation		oewn-justness__1.07.00..
+oewn-just__3.00.04..	derivation		oewn-justness__1.07.00..
+oewn-just__5.00.00.righteous.00	derivation		oewn-justness__1.07.01..
+oewn-just_deserts__1.11.00..	exemplifies		oewn-plural__1.10.00..
+oewn-justifiable__5.00.00.excusable.00	derivation		oewn-justify__2.32.00..
+oewn-justifiably__4.02.00..	antonym		oewn-unjustifiably__4.02.00..
+oewn-justifiably__4.02.00..	pertainym		oewn-justifiable__5.00.00.excusable.00
+oewn-justification__1.04.00..	derivation		oewn-justify__2.32.04..
+oewn-justification__1.09.00..	derivation		oewn-justify__2.32.00..
+oewn-justification__1.10.00..	derivation		oewn-justify__2.32.00..
+oewn-justificative__5.00.00.apologetic.00	derivation		oewn-justify__2.32.00..
+oewn-justificative__5.00.00.exculpatory.00	derivation		oewn-justify__2.32.00..
+oewn-justificative__5.00.00.exculpatory.00	derivation		oewn-justify__2.32.04..
+oewn-justificatory__5.00.00.apologetic.00	derivation		oewn-justify__2.32.00..
+oewn-justificatory__5.00.00.exculpatory.00	derivation		oewn-justify__2.32.00..
+oewn-justificatory__5.00.00.exculpatory.00	derivation		oewn-justify__2.32.04..
+oewn-justifier__1.18.00..	derivation		oewn-justify__2.32.00..
+oewn-justify__2.32.00..	other	agent	oewn-justifier__1.18.00..
+oewn-justify__2.32.00..	other	by_means_of	oewn-justification__1.09.00..
+oewn-justify__2.32.00..	other	by_means_of	oewn-justification__1.10.00..
+oewn-justly__4.02.00..	pertainym		oewn-just__3.00.00..
+oewn-justly__4.02.01..	antonym		oewn-unjustly__4.02.00..
+oewn-justly__4.02.01..	pertainym		oewn-just__3.00.00..
+oewn-jut__2.42.00..	derivation		oewn-jutting__1.04.00..
+oewn-juvenile__1.18.00..	derivation		oewn-juvenile__3.01.00..
+oewn-juvenile__3.01.00..	derivation		oewn-juvenility__1.07.00..
+oewn-juvenile__3.01.00..	pertainym		oewn-youth__1.28.00..
+oewn-juvenile__5.00.00.immature.02	derivation		oewn-juvenility__1.26.00..
+oewn-juxtapose__2.35.00..	derivation		oewn-juxtaposition__1.04.00..
+oewn-juxtapose__2.35.00..	derivation		oewn-juxtaposition__1.15.00..
+oewn-juxtapose__2.35.00..	other	event	oewn-juxtaposition__1.04.00..
+oewn-juxtapose__2.35.00..	other	location	oewn-juxtaposition__1.15.00..

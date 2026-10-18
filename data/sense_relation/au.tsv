@@ -1,0 +1,261 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-aubergine__1.13.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-auction__1.04.00..	derivation		oewn-auction__2.40.00..
+oewn-auction__1.04.00..	derivation		oewn-auctioneer__1.18.00..
+oewn-auction__2.40.00..	derivation		oewn-auctioneer__1.18.00..
+oewn-auction__2.40.00..	other	agent	oewn-auctioneer__1.18.00..
+oewn-auction__2.40.00..	other	event	oewn-auction__1.04.00..
+oewn-auctioneer__1.18.00..	derivation		oewn-auctioneer__2.40.00..
+oewn-auctioneer__2.40.00..	other	agent	oewn-auctioneer__1.18.00..
+oewn-auctorial__3.01.00..	derivation		oewn-author__1.18.00..
+oewn-auctorial__3.01.00..	derivation		oewn-author__1.18.01..
+oewn-auctorial__3.01.00..	pertainym		oewn-author__1.18.00..
+oewn-audacious__5.00.00.adventurous.00	derivation		oewn-audaciousness__1.07.00..
+oewn-audacious__5.00.00.adventurous.00	derivation		oewn-audacity__1.07.00..
+oewn-audacious__5.00.00.bold.00	derivation		oewn-audaciousness__1.07.00..
+oewn-audacious__5.00.00.bold.00	derivation		oewn-audacity__1.07.00..
+oewn-audacious__5.00.00.unashamed.00	derivation		oewn-audaciousness__1.07.02..
+oewn-audacious__5.00.00.unashamed.00	derivation		oewn-audacity__1.07.02..
+oewn-audaciously__4.02.00..	pertainym		oewn-audacious__5.00.00.adventurous.00
+oewn-audibility__1.07.00..	antonym		oewn-inaudibility__1.07.00..
+oewn-audibility__1.07.00..	derivation		oewn-audible__3.00.00..
+oewn-audible__3.00.00..	antonym		oewn-inaudible__3.00.00..
+oewn-audible__3.00.00..	derivation		oewn-audibleness__1.07.00..
+oewn-audibly__4.02.00..	antonym		oewn-inaudibly__4.02.00..
+oewn-audibly__4.02.00..	pertainym		oewn-audible__3.00.00..
+oewn-audile__1.18.00..	derivation		oewn-audile__3.01.00..
+oewn-audile__3.01.00..	pertainym		oewn-hearing__1.09.00..
+oewn-audiometric__3.01.00..	derivation		oewn-audiometry__1.04.00..
+oewn-audiometric__3.01.00..	derivation		oewn-audiometry__1.09.00..
+oewn-audiometric__3.01.00..	pertainym		oewn-audiometry__1.04.00..
+oewn-audiovisual__1.06.00..	derivation		oewn-audiovisual__3.01.00..
+oewn-audiovisual__3.01.00..	pertainym		oewn-audiovisual_aid__1.06.00..
+oewn-audit__1.21.00..	derivation		oewn-audit__2.31.01..
+oewn-audit__2.31.00..	derivation		oewn-auditor__1.18.02..
+oewn-audit__2.31.00..	other	agent	oewn-auditor__1.18.02..
+oewn-audit__2.31.01..	derivation		oewn-auditor__1.18.00..
+oewn-audit__2.31.01..	other	agent	oewn-auditor__1.18.00..
+oewn-audit__2.31.01..	other	event	oewn-audit__1.21.00..
+oewn-audition__1.04.01..	derivation		oewn-audition__2.36.00..
+oewn-audition__2.36.00..	other	event	oewn-audition__1.04.01..
+oewn-auditive__3.01.00..	pertainym		oewn-hearing__1.09.00..
+oewn-auditory__3.01.00..	pertainym		oewn-hearing__1.09.00..
+oewn-augite__1.27.00..	derivation		oewn-augitic__3.01.00..
+oewn-augitic__3.01.00..	pertainym		oewn-augite__1.27.00..
+oewn-augment__2.30.00..	derivation		oewn-augmentation__1.11.00..
+oewn-augment__2.30.00..	derivation		oewn-augmentative__5.00.00.intensifying.00
+oewn-augment__2.30.00..	other	event	oewn-augmentation__1.11.00..
+oewn-augment__2.30.01..	derivation		oewn-augmentation__1.04.00..
+oewn-augment__2.30.01..	derivation		oewn-augmentation__1.11.00..
+oewn-augment__2.30.01..	derivation		oewn-augmentative__5.00.00.intensifying.00
+oewn-augment__2.30.01..	other	event	oewn-augmentation__1.04.00..
+oewn-augment__2.30.01..	other	event	oewn-augmentation__1.11.00..
+oewn-augmentation__1.10.00..	antonym		oewn-diminution__1.10.00..
+oewn-augur__1.18.00..	derivation		oewn-augur__2.32.00..
+oewn-augur__1.18.00..	derivation		oewn-augur__2.32.01..
+oewn-augur__2.32.00..	other	agent	oewn-augur__1.18.00..
+oewn-augur__2.32.01..	other	agent	oewn-augur__1.18.00..
+oewn-augury__1.11.00..	derivation		oewn-inaugurate__2.30.00..
+oewn-aunt__1.18.00..	antonym		oewn-uncle__1.18.00..
+oewn-aural__3.01.00..	pertainym		oewn-aura__1.07.01..
+oewn-aural__3.01.01..	pertainym		oewn-ear__1.08.00..
+oewn-aurally__4.02.00..	pertainym		oewn-aural__3.01.00..
+oewn-aureomycin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-auric__3.01.00..	pertainym		oewn-gold__1.27.00..
+oewn-auricle__1.08.01..	derivation		oewn-auricular__3.01.01..
+oewn-auricle__1.08.02..	derivation		oewn-auricular__3.01.02..
+oewn-auricle__1.08.02..	derivation		oewn-auriculate__5.00.00.eared.00
+oewn-auricular__3.01.00..	pertainym		oewn-auricle__1.08.02..
+oewn-auricular__3.01.01..	pertainym		oewn-auricle__1.08.01..
+oewn-auricular__3.01.02..	pertainym		oewn-auricle__1.08.02..
+oewn-auriculoventricular__3.01.00..	pertainym		oewn-auricle__1.08.01..
+oewn-auriculoventricular__3.01.00..	pertainym		oewn-ventricle__1.08.01..
+oewn-aurora__1.19.00..	derivation		oewn-auroral__3.01.02..
+oewn-aurora__1.28.00..	derivation		oewn-auroral__3.01.01..
+oewn-aurora__1.28.00..	derivation		oewn-aurorean__3.01.00..
+oewn-auroral__3.01.01..	pertainym		oewn-dawn__1.28.00..
+oewn-auroral__3.01.02..	pertainym		oewn-aurora__1.19.00..
+oewn-aurorean__3.01.00..	pertainym		oewn-dawn__1.28.00..
+oewn-aurous__3.01.00..	pertainym		oewn-gold__1.27.00..
+oewn-auscultate__2.39.00..	derivation		oewn-auscultation__1.04.00..
+oewn-auscultate__2.39.00..	other	event	oewn-auscultation__1.04.00..
+oewn-auscultatory__3.01.00..	pertainym		oewn-auscultation__1.04.00..
+oewn-auspicate__2.30.00..	derivation		oewn-auspice__1.11.00..
+oewn-auspicate__2.32.00..	derivation		oewn-auspice__1.11.00..
+oewn-auspicious__3.00.00..	antonym		oewn-inauspicious__3.00.00..
+oewn-auspicious__3.00.00..	derivation		oewn-auspiciousness__1.07.00..
+oewn-auspiciously__4.02.00..	antonym		oewn-inauspiciously__4.02.00..
+oewn-auspiciously__4.02.00..	pertainym		oewn-auspicious__3.00.00..
+oewn-auspiciousness__1.07.00..	antonym		oewn-inauspiciousness__1.07.00..
+oewn-austenite__1.27.00..	derivation		oewn-austenitic__3.01.00..
+oewn-austenitic__3.01.00..	pertainym		oewn-austenite__1.27.00..
+oewn-austere__5.00.00.abstemious.00	derivation		oewn-austerity__1.07.01..
+oewn-austere__5.00.00.nonindulgent.00	derivation		oewn-austereness__1.07.00..
+oewn-austere__5.00.00.plain.01	derivation		oewn-austereness__1.07.00..
+oewn-austerely__4.02.00..	pertainym		oewn-austere__5.00.00.plain.01
+oewn-australian__1.10.00..	derivation		oewn-australian__3.01.00..
+oewn-australian__1.18.00..	derivation		oewn-australian__3.01.00..
+oewn-australopithecine__1.05.00..	derivation		oewn-australopithecine__3.01.00..
+oewn-austrian__1.18.00..	derivation		oewn-austrian__3.01.00..
+oewn-austronesian__1.10.00..	derivation		oewn-austronesian__3.01.00..
+oewn-austronesian__1.18.00..	derivation		oewn-austronesian__3.01.00..
+oewn-autacoid__1.08.00..	derivation		oewn-autacoidal__3.01.00..
+oewn-autacoidal__3.01.00..	pertainym		oewn-autacoid__1.08.00..
+oewn-autarchic__3.01.00..	pertainym		oewn-autocracy__1.14.00..
+oewn-autarchical__3.01.00..	derivation		oewn-autarchy__1.14.00..
+oewn-autarchical__3.01.00..	derivation		oewn-autarchy__1.26.00..
+oewn-autarchical__3.01.00..	pertainym		oewn-autocracy__1.14.00..
+oewn-autarkical__3.01.00..	derivation		oewn-autarky__1.26.00..
+oewn-autarkical__3.01.00..	pertainym		oewn-autocracy__1.14.00..
+oewn-autarkical__5.00.00.independent.00	derivation		oewn-autarky__1.26.00..
+oewn-authentic__5.00.00.genuine.00	derivation		oewn-authenticity__1.07.00..
+oewn-authentic__5.00.00.trustworthy.00	derivation		oewn-authenticity__1.07.00..
+oewn-authentically__4.02.00..	pertainym		oewn-authentic__5.00.00.genuine.00
+oewn-authenticate__2.31.00..	derivation		oewn-authentication__1.04.00..
+oewn-authenticate__2.31.00..	derivation		oewn-authentication__1.10.00..
+oewn-authenticate__2.31.00..	derivation		oewn-authenticator__1.18.00..
+oewn-authenticate__2.31.00..	other	agent	oewn-authenticator__1.18.00..
+oewn-authenticate__2.31.00..	other	by_means_of	oewn-authentication__1.10.00..
+oewn-authenticate__2.31.00..	other	event	oewn-authentication__1.04.00..
+oewn-author__1.18.00..	derivation		oewn-author__2.36.00..
+oewn-author__1.18.00..	derivation		oewn-authorial__3.01.00..
+oewn-author__1.18.00..	derivation		oewn-authorship__1.04.00..
+oewn-author__1.18.01..	derivation		oewn-authorship__1.04.01..
+oewn-author__2.36.00..	other	agent	oewn-author__1.18.00..
+oewn-authorial__3.01.00..	pertainym		oewn-author__1.18.00..
+oewn-authorisation__1.04.00..	derivation		oewn-authorise__2.32.00..
+oewn-authorisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authorisation__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorisation__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authorisation__1.07.02..	derivation		oewn-authorise__2.32.00..
+oewn-authorisation__1.07.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorisation__1.07.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authorisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authorise__2.32.00..	derivation		oewn-authoriser__1.18.00..
+oewn-authorise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authorise__2.32.00..	other	agent	oewn-authoriser__1.18.00..
+oewn-authorise__2.32.00..	other	event	oewn-authorisation__1.04.00..
+oewn-authorise__2.32.00..	other	undergoer	oewn-authorisation__1.07.02..
+oewn-authorise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-authorise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-authoritatively__4.02.00..	pertainym		oewn-authoritative__5.00.00.influential.00
+oewn-authorization__1.04.00..	derivation		oewn-authorize__2.41.00..
+oewn-authorization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorization__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorization__1.07.02..	derivation		oewn-authorize__2.32.00..
+oewn-authorization__1.07.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorize__2.32.00..	derivation		oewn-authorizer__1.18.00..
+oewn-authorize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorize__2.32.00..	other	agent	oewn-authorizer__1.18.00..
+oewn-authorize__2.32.00..	other	undergoer	oewn-authorization__1.07.02..
+oewn-authorize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-authorize__2.41.00..	other	event	oewn-authorization__1.04.00..
+oewn-authorized__3.00.00..	antonym		oewn-unauthorized__3.00.00..
+oewn-autism__1.09.00..	derivation		oewn-autistic__5.00.00.ill.01
+oewn-autobiographer__1.18.00..	derivation		oewn-autobiography__1.10.00..
+oewn-autobiographic__3.01.00..	pertainym		oewn-autobiography__1.10.00..
+oewn-autobiographic__3.01.01..	pertainym		oewn-autobiographer__1.18.00..
+oewn-autobiographical__3.01.00..	derivation		oewn-autobiography__1.10.00..
+oewn-autobiographical__3.01.00..	pertainym		oewn-autobiography__1.10.00..
+oewn-autobiographical__3.01.01..	derivation		oewn-autobiography__1.10.00..
+oewn-autobiographical__3.01.01..	pertainym		oewn-autobiographer__1.18.00..
+oewn-autocatalysis__1.22.00..	derivation		oewn-autocatalytic__3.01.00..
+oewn-autocatalytic__3.01.00..	pertainym		oewn-autocatalysis__1.22.00..
+oewn-autochthonic__5.00.00.native.01	derivation		oewn-autochthony__1.07.00..
+oewn-autoclave__1.06.00..	derivation		oewn-autoclave__2.29.00..
+oewn-autoclave__2.29.00..	other	instrument	oewn-autoclave__1.06.00..
+oewn-autocrat__1.18.00..	derivation		oewn-autocratic__5.00.00.undemocratic.00
+oewn-autocratically__4.02.00..	pertainym		oewn-autocratic__5.00.00.domineering.00
+oewn-autocratically__4.02.02..	pertainym		oewn-autocratic__5.00.00.domineering.00
+oewn-autodidact__1.18.00..	derivation		oewn-autodidactic__3.01.00..
+oewn-autodidactic__3.01.00..	pertainym		oewn-autodidact__1.18.00..
+oewn-autoecious__3.00.00..	antonym		oewn-heteroecious__3.00.00..
+oewn-autoerotic__5.00.00.sexy.00	derivation		oewn-autoeroticism__1.04.00..
+oewn-autofluorescence__1.19.00..	derivation		oewn-autofluorescent__5.00.00.light.06
+oewn-autogamic__3.00.00..	derivation		oewn-autogamy__1.11.00..
+oewn-autogamous__3.00.00..	antonym		oewn-endogamous__3.00.02..
+oewn-autogamous__3.00.00..	antonym		oewn-exogamous__3.00.02..
+oewn-autogamous__3.00.00..	derivation		oewn-autogamy__1.11.00..
+oewn-autogenesis__1.19.00..	derivation		oewn-autogenetic__3.01.00..
+oewn-autogenetic__3.01.00..	pertainym		oewn-autogenesis__1.19.00..
+oewn-autogenous__3.00.00..	antonym		oewn-heterogenous__3.00.00..
+oewn-autograph__1.10.00..	derivation		oewn-autograph__2.32.00..
+oewn-autograph__1.10.02..	derivation		oewn-autograph__2.32.00..
+oewn-autograph__2.32.00..	other	uses	oewn-autograph__1.10.00..
+oewn-autograph__2.32.00..	other	uses	oewn-autograph__1.10.02..
+oewn-autographic__3.01.00..	pertainym		oewn-autograph__1.10.00..
+oewn-autoimmune__3.01.00..	derivation		oewn-autoimmunity__1.26.00..
+oewn-autoimmune__3.01.00..	pertainym		oewn-immune_response__1.04.00..
+oewn-autologous__3.00.00..	antonym		oewn-heterologous__3.00.01..
+oewn-autologous__3.00.00..	antonym		oewn-homologous__3.00.01..
+oewn-autolysis__1.22.00..	derivation		oewn-autolytic__3.01.00..
+oewn-autolytic__3.01.00..	pertainym		oewn-autolysis__1.22.00..
+oewn-automate__2.30.00..	derivation		oewn-automation__1.04.00..
+oewn-automate__2.30.00..	derivation		oewn-automation__1.26.00..
+oewn-automate__2.30.00..	other	event	oewn-automation__1.04.00..
+oewn-automate__2.30.00..	other	state	oewn-automation__1.26.00..
+oewn-automatic__1.06.01..	derivation		oewn-automatic__3.00.00..
+oewn-automatic__1.06.02..	derivation		oewn-automatic__3.00.00..
+oewn-automatic__3.00.00..	antonym		oewn-manual__3.00.00..
+oewn-automatic__3.00.00..	derivation		oewn-automatize__2.30.00..
+oewn-automatic__3.00.00..	derivation		oewn-automaton__1.06.00..
+oewn-automatic__5.00.00.mechanical.00	derivation		oewn-automatize__2.30.05..
+oewn-automatic__5.00.00.mechanical.00	derivation		oewn-automaton__1.18.01..
+oewn-automatically__4.02.00..	pertainym		oewn-automatic__5.00.00.involuntary.02
+oewn-automatically__4.02.01..	pertainym		oewn-automatic__5.00.00.mechanical.00
+oewn-automatise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-automatise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-automatise__2.30.05..	derivation		oewn-automaton__1.18.01..
+oewn-automatise__2.30.05..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-automatise__2.30.05..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-automatize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-automatize__2.30.05..	derivation		oewn-automaton__1.06.00..
+oewn-automatize__2.30.05..	derivation		oewn-automaton__1.18.01..
+oewn-automatize__2.30.05..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-automobile__1.06.00..	derivation		oewn-automobile__2.38.00..
+oewn-automobile__1.06.00..	derivation		oewn-automobilist__1.18.00..
+oewn-automobile__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-automobile__2.38.00..	other	vehicle	oewn-automobile__1.06.00..
+oewn-automotive__3.01.00..	pertainym		oewn-automobile__1.06.00..
+oewn-autonomous__5.00.00.free.00	derivation		oewn-autonomy__1.26.01..
+oewn-autonomous__5.00.01.independent.00	derivation		oewn-autonomy__1.26.02..
+oewn-autonomous__5.00.02.independent.00	derivation		oewn-autonomy__1.26.01..
+oewn-autophyte__1.20.00..	derivation		oewn-autophytic__3.01.00..
+oewn-autophytic__3.01.00..	pertainym		oewn-autophyte__1.20.00..
+oewn-autoplastic__3.01.00..	derivation		oewn-autoplasty__1.04.00..
+oewn-autoplastic__3.01.00..	derivation		oewn-autoplasty__1.08.00..
+oewn-autoplastic__3.01.00..	pertainym		oewn-autoplasty__1.04.00..
+oewn-autopsy__1.04.00..	derivation		oewn-autopsy__2.39.00..
+oewn-autopsy__2.39.00..	other	event	oewn-autopsy__1.04.00..
+oewn-autoradiographic__3.01.00..	pertainym		oewn-autoradiography__1.22.00..
+oewn-autosomal__3.01.00..	derivation		oewn-autosome__1.08.00..
+oewn-autosomal__3.01.00..	pertainym		oewn-autosome__1.08.00..
+oewn-autotelic__3.01.00..	derivation		oewn-autotelism__1.09.00..
+oewn-autotelic__3.01.00..	pertainym		oewn-autotelism__1.09.00..
+oewn-autotomic__3.01.00..	derivation		oewn-autotomy__1.04.00..
+oewn-autotomic__3.01.00..	pertainym		oewn-autotomy__1.04.00..
+oewn-autotomise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-autotomise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-autotomize__2.35.00..	derivation		oewn-autotomy__1.04.00..
+oewn-autotomize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-autotrophic__3.01.00..	antonym		oewn-heterotrophic__3.01.00..
+oewn-autotrophic__3.01.00..	pertainym		oewn-autotroph__1.20.00..
+oewn-autotype__1.06.00..	derivation		oewn-autotypic__3.01.00..
+oewn-autotype__1.22.00..	derivation		oewn-autotypic__3.01.00..
+oewn-autotypic__3.01.00..	pertainym		oewn-autotype__1.22.00..
+oewn-autumn__1.28.00..	derivation		oewn-autumnal__3.00.00..
+oewn-autumn__1.28.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-autumnal__3.00.00..	antonym		oewn-summery__3.00.00..
+oewn-autumnal__3.00.00..	antonym		oewn-vernal__3.00.00..
+oewn-autumnal__3.00.00..	antonym		oewn-wintry__3.00.00..
+oewn-autumnal_equinox__1.28.00..	antonym		oewn-vernal_equinox__1.28.00..
+oewn-auxesis__1.22.00..	derivation		oewn-auxetic__3.01.00..
+oewn-auxetic__3.01.00..	pertainym		oewn-auxesis__1.22.00..
+oewn-auxiliary__1.18.00..	derivation		oewn-auxiliary__5.00.00.secondary.01
+oewn-auxiliary__1.18.00..	derivation		oewn-auxiliary__5.00.00.supportive.00
+oewn-auxin__1.27.00..	derivation		oewn-auxinic__3.01.00..
+oewn-auxinic__3.01.00..	pertainym		oewn-auxin__1.27.00..

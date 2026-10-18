@@ -1,0 +1,10 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-S-n	S	n	0	1	1	oewn
+oewn-S-shape-n	S-shape	n	0	1	1	oewn
+oewn-S-sl-N-n	S/N	n	0	1	1	oewn
+oewn-S.U.V.-n	S.U.V.	n	0	1	1	oewn
+oewn-S_wrench-n	S wrench	n	0	2	2	oewn
+oewn-s-n	s	n	0	1	1	oewn
+oewn-s-shaped-a	s-shaped	a	0	1	1	oewn
+oewn-s.t.p.-n	s.t.p.	n	0	1	1	oewn
+oewn-s_quark-n	s quark	n	0	2	2	oewn

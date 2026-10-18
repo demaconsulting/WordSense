@@ -1,0 +1,389 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-bubaline__3.01.00..	pertainym		oewn-buffalo__1.05.02..
+oewn-bubble__1.17.00..	derivation		oewn-bubble__2.29.00..
+oewn-bubble__1.17.00..	derivation		oewn-bubble__2.30.00..
+oewn-bubble__1.17.00..	derivation		oewn-bubble__2.39.00..
+oewn-bubble__1.17.00..	derivation		oewn-bubbly__5.00.00.effervescent.00
+oewn-bubble__2.29.00..	other	result	oewn-bubble__1.17.00..
+oewn-bubble__2.30.00..	also		oewn-bubble_over__2.37.00..
+oewn-bubble__2.30.00..	other	result	oewn-bubble__1.17.00..
+oewn-bubble__2.39.00..	derivation		oewn-bubbler__1.06.00..
+oewn-bubble__2.39.00..	other	by_means_of	oewn-bubbler__1.06.00..
+oewn-bubbliness__1.07.00..	derivation		oewn-bubbly__5.00.00.effervescent.00
+oewn-bubo__1.26.00..	derivation		oewn-bubonic__3.01.00..
+oewn-bubonic__3.01.00..	pertainym		oewn-bubo__1.26.00..
+oewn-buccal__3.01.00..	pertainym		oewn-cheek__1.08.00..
+oewn-buccaneer__1.18.00..	derivation		oewn-buccaneer__2.42.00..
+oewn-buccaneer__2.42.00..	other	agent	oewn-buccaneer__1.18.00..
+oewn-buck__1.05.00..	derivation		oewn-buck__2.38.00..
+oewn-bucket__1.06.00..	derivation		oewn-bucket__2.35.00..
+oewn-bucket__1.06.00..	derivation		oewn-bucket__2.35.01..
+oewn-bucket__1.23.00..	derivation		oewn-bucket__2.35.00..
+oewn-bucket__2.35.00..	other	undergoer	oewn-bucket__1.23.00..
+oewn-buckle__1.06.00..	derivation		oewn-buckle__2.35.00..
+oewn-buckle__1.25.00..	derivation		oewn-buckle__2.30.00..
+oewn-buckle__2.30.00..	other	result	oewn-buckle__1.25.00..
+oewn-buckle__2.35.00..	antonym		oewn-unbuckle__2.35.00..
+oewn-buckle__2.35.00..	other	by_means_of	oewn-buckle__1.06.00..
+oewn-buckram__1.06.00..	derivation		oewn-buckram__2.30.00..
+oewn-buckram__2.30.00..	other	by_means_of	oewn-buckram__1.06.00..
+oewn-bucolic__3.01.00..	pertainym		oewn-shepherd__1.18.00..
+oewn-bud__1.20.00..	derivation		oewn-bud__2.30.00..
+oewn-bud__1.20.02..	derivation		oewn-bud__2.30.00..
+oewn-bud__2.30.00..	other	result	oewn-bud__1.20.00..
+oewn-bud__2.30.00..	other	result	oewn-bud__1.20.02..
+oewn-buddhism__1.09.00..	derivation		oewn-buddhist__1.18.00..
+oewn-buddhism__1.09.00..	derivation		oewn-buddhistic__3.01.00..
+oewn-buddhism__1.14.00..	derivation		oewn-buddhist__1.18.00..
+oewn-buddhism__1.14.00..	derivation		oewn-buddhistic__3.01.00..
+oewn-buddhist__3.01.00..	pertainym		oewn-buddhism__1.09.00..
+oewn-buddhistic__3.01.00..	pertainym		oewn-buddhism__1.09.00..
+oewn-budget__1.21.02..	derivation		oewn-budget__2.31.00..
+oewn-budget__1.21.02..	derivation		oewn-budgetary__3.01.00..
+oewn-budget__1.21.03..	derivation		oewn-budget__2.31.00..
+oewn-budget__1.21.03..	derivation		oewn-budgetary__3.01.00..
+oewn-budget__2.31.00..	other	result	oewn-budget__1.21.02..
+oewn-budget__2.31.00..	other	result	oewn-budget__1.21.03..
+oewn-budgetary__3.01.00..	pertainym		oewn-budget__1.21.02..
+oewn-buff__1.06.00..	derivation		oewn-buff__2.35.00..
+oewn-buff__2.35.00..	derivation		oewn-buffer__1.06.01..
+oewn-buff__2.35.00..	derivation		oewn-buffer__1.06.04..
+oewn-buff__2.35.00..	other	instrument	oewn-buff__1.06.00..
+oewn-buff__2.35.00..	other	instrument	oewn-buffer__1.06.01..
+oewn-buff__2.35.00..	other	instrument	oewn-buffer__1.06.04..
+oewn-buffer__1.06.00..	derivation		oewn-buffer__2.35.00..
+oewn-buffer__1.27.00..	derivation		oewn-buffer__2.30.00..
+oewn-buffer__2.30.00..	other	material	oewn-buffer__1.27.00..
+oewn-buffer__2.30.00..	other	uses	oewn-buffer__1.27.00..
+oewn-buffer__2.35.00..	other	instrument	oewn-buffer__1.06.00..
+oewn-bufferin__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-bufo_americanus__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-bufo_canorus__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-bufo_debilis__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-bufo_speciosus__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-bufo_viridis__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-bug__1.05.02..	derivation		oewn-buggy__5.00.00.dirty.01
+oewn-bug__1.06.00..	derivation		oewn-bug__2.39.00..
+oewn-bug__2.39.00..	other	instrument	oewn-bug__1.06.00..
+oewn-bugger__1.18.00..	derivation		oewn-bugger__2.41.00..
+oewn-bugger__2.41.00..	derivation		oewn-buggery__1.04.00..
+oewn-bugger__2.41.00..	other	agent	oewn-bugger__1.18.00..
+oewn-bugginess__1.26.00..	derivation		oewn-buggy__5.00.00.dirty.01
+oewn-bugle__1.06.00..	derivation		oewn-bugle__2.36.00..
+oewn-bugle__2.36.00..	derivation		oewn-bugler__1.18.00..
+oewn-bugle__2.36.00..	other	agent	oewn-bugler__1.18.00..
+oewn-bugle__2.36.00..	other	instrument	oewn-bugle__1.06.00..
+oewn-build__2.30.02..	derivation		oewn-builder__1.27.00..
+oewn-build__2.30.02..	other	material	oewn-builder__1.27.00..
+oewn-build__2.36.00..	derivation		oewn-builder__1.18.00..
+oewn-build__2.36.00..	derivation		oewn-building__1.04.00..
+oewn-build__2.36.00..	other	agent	oewn-builder__1.18.00..
+oewn-build__2.36.10..	derivation		oewn-building__1.04.01..
+oewn-build__2.41.00..	derivation		oewn-building__1.04.01..
+oewn-build_up__2.30.02..	derivation		oewn-buildup__1.04.00..
+oewn-bulb__1.06.01..	derivation		oewn-bulbous__5.00.00.round.00
+oewn-bulb__1.08.01..	derivation		oewn-bulbous__5.00.00.protrusive.00
+oewn-bulb__1.08.02..	derivation		oewn-bulbar__3.01.00..
+oewn-bulb__1.20.00..	derivation		oewn-bulbaceous__3.01.00..
+oewn-bulb__1.25.00..	derivation		oewn-bulblike__5.00.00.round.00
+oewn-bulbaceous__3.01.00..	pertainym		oewn-bulb__1.20.00..
+oewn-bulbar__3.01.00..	pertainym		oewn-bulb__1.08.02..
+oewn-bulbed__3.01.00..	pertainym		oewn-bulb__1.20.00..
+oewn-bulgarian__1.10.00..	derivation		oewn-bulgarian__3.01.00..
+oewn-bulgarian__1.18.00..	derivation		oewn-bulgarian__3.01.00..
+oewn-bulge__1.25.00..	derivation		oewn-bulge__2.30.00..
+oewn-bulge__1.25.00..	derivation		oewn-bulge__2.30.01..
+oewn-bulge__1.25.00..	derivation		oewn-bulge__2.38.00..
+oewn-bulge__1.25.00..	derivation		oewn-bulge__2.42.00..
+oewn-bulge__1.25.00..	derivation		oewn-bulgy__5.00.00.protrusive.00
+oewn-bulge__2.30.00..	other	undergoer	oewn-bulge__1.25.00..
+oewn-bulge__2.30.01..	other	undergoer	oewn-bulge__1.25.00..
+oewn-bulge__2.38.00..	other	undergoer	oewn-bulge__1.25.00..
+oewn-bulge__2.42.00..	other	undergoer	oewn-bulge__1.25.00..
+oewn-bulginess__1.07.00..	derivation		oewn-bulgy__5.00.00.protrusive.00
+oewn-bulimia__1.26.00..	derivation		oewn-bulimic__3.01.00..
+oewn-bulimia__1.26.01..	derivation		oewn-bulimic__3.01.00..
+oewn-bulimic__1.18.00..	derivation		oewn-bulimic__3.01.00..
+oewn-bulimic__3.01.00..	pertainym		oewn-bulimia__1.26.00..
+oewn-bulk__1.07.00..	derivation		oewn-bulky__5.00.00.large.00
+oewn-bulk__1.07.03..	derivation		oewn-bulky__5.00.00.large.00
+oewn-bulkiness__1.07.00..	derivation		oewn-bulky__5.00.00.large.00
+oewn-bull__1.10.00..	derivation		oewn-bull__2.32.00..
+oewn-bull__1.18.01..	derivation		oewn-bull__2.30.00..
+oewn-bull__1.18.01..	derivation		oewn-bull__2.40.00..
+oewn-bull__2.40.00..	other	agent	oewn-bull__1.18.01..
+oewn-bulldog__1.05.00..	derivation		oewn-bulldog__2.33.00..
+oewn-bulldoze__2.35.00..	derivation		oewn-bulldozer__1.06.00..
+oewn-bulldoze__2.35.00..	other	instrument	oewn-bulldozer__1.06.00..
+oewn-bulletin__1.10.00..	derivation		oewn-bulletin__2.32.00..
+oewn-bulletin__2.32.00..	other	by_means_of	oewn-bulletin__1.10.00..
+oewn-bulletproof__2.30.00..	derivation		oewn-bulletproof__5.00.00.armored.01
+oewn-bullheaded__5.00.00.stubborn.00	derivation		oewn-bullheadedness__1.07.00..
+oewn-bullock__1.05.02..	derivation		oewn-bullocky__5.00.00.strong.00
+oewn-bullshit__1.10.00..	derivation		oewn-bullshit__2.32.00..
+oewn-bully__1.18.00..	derivation		oewn-bully__2.32.00..
+oewn-bully__2.32.00..	other	agent	oewn-bully__1.18.00..
+oewn-bulwark__1.06.00..	derivation		oewn-bulwark__2.33.00..
+oewn-bulwark__1.06.01..	derivation		oewn-bulwark__2.33.00..
+oewn-bulwark__2.33.00..	other	by_means_of	oewn-bulwark__1.06.00..
+oewn-bulwark__2.33.00..	other	by_means_of	oewn-bulwark__1.06.01..
+oewn-bum__1.18.01..	exemplifies		oewn-american_english__1.10.00..
+oewn-bum__1.18.02..	derivation		oewn-bum__5.00.00.inferior.02
+oewn-bum__1.18.03..	derivation		oewn-bum__2.40.00..
+oewn-bum__2.40.00..	other	agent	oewn-bum__1.18.03..
+oewn-bumble__2.41.00..	derivation		oewn-bumbler__1.18.00..
+oewn-bumble__2.41.00..	other	agent	oewn-bumbler__1.18.00..
+oewn-bump__1.11.00..	derivation		oewn-bump__2.35.00..
+oewn-bump__1.11.00..	derivation		oewn-bumpy__3.00.00..
+oewn-bump__2.35.00..	also		oewn-bump_into__2.35.00..
+oewn-bump__2.35.00..	derivation		oewn-bumper__1.06.00..
+oewn-bump__2.35.00..	other	event	oewn-bump__1.11.00..
+oewn-bump__2.35.00..	other	instrument	oewn-bumper__1.06.00..
+oewn-bump__2.41.00..	also		oewn-bump_off__2.41.00..
+oewn-bumpiness__1.07.00..	derivation		oewn-bumpy__5.00.02.rough.00
+oewn-bumpkin__1.18.00..	derivation		oewn-bumpkinly__5.00.00.provincial.00
+oewn-bumptious__5.00.00.forward.02	derivation		oewn-bumptiousness__1.07.00..
+oewn-bumptiously__4.02.00..	pertainym		oewn-bumptious__5.00.00.forward.02
+oewn-bunch__1.14.00..	derivation		oewn-bunch__2.35.00..
+oewn-bunch__1.14.00..	derivation		oewn-bunch__2.38.00..
+oewn-bunch__1.14.00..	derivation		oewn-bunchy__5.00.00.concentrated.00
+oewn-bunch__2.35.00..	other	result	oewn-bunch__1.14.00..
+oewn-bunch__2.38.00..	other	result	oewn-bunch__1.14.00..
+oewn-bunco__1.04.00..	derivation		oewn-bunco__2.41.00..
+oewn-bunco__2.41.00..	other	event	oewn-bunco__1.04.00..
+oewn-bundle__1.06.00..	derivation		oewn-bundle__2.35.00..
+oewn-bundle__1.06.00..	derivation		oewn-bundle__2.35.03..
+oewn-bundle__1.14.00..	derivation		oewn-bundle__2.35.00..
+oewn-bundle__1.14.00..	derivation		oewn-bundle__2.35.03..
+oewn-bundle__2.35.00..	other	result	oewn-bundle__1.06.00..
+oewn-bundle__2.35.00..	other	result	oewn-bundle__1.14.00..
+oewn-bundle__2.35.01..	also		oewn-bundle_off__2.38.00..
+oewn-bundle__2.35.03..	other	result	oewn-bundle__1.06.00..
+oewn-bundle__2.35.03..	other	result	oewn-bundle__1.14.00..
+oewn-bung__1.06.00..	derivation		oewn-bung__2.35.00..
+oewn-bung__2.35.00..	other	instrument	oewn-bung__1.06.00..
+oewn-bungaloid__3.01.00..	pertainym		oewn-bungalow__1.06.00..
+oewn-bungle__1.04.00..	derivation		oewn-bungle__2.29.00..
+oewn-bungle__1.04.00..	derivation		oewn-bungle__2.41.00..
+oewn-bungle__2.29.00..	derivation		oewn-bungler__1.18.00..
+oewn-bungle__2.29.00..	other	agent	oewn-bungler__1.18.00..
+oewn-bungle__2.29.00..	other	event	oewn-bungle__1.04.00..
+oewn-bungle__2.41.00..	derivation		oewn-bungler__1.18.00..
+oewn-bungle__2.41.00..	other	agent	oewn-bungler__1.18.00..
+oewn-bungle__2.41.00..	other	event	oewn-bungle__1.04.00..
+oewn-bunk__1.06.02..	derivation		oewn-bunk__2.40.00..
+oewn-bunk__2.40.00..	other	uses	oewn-bunk__1.06.02..
+oewn-bunker__1.06.00..	derivation		oewn-bunker__2.35.00..
+oewn-bunker__2.35.00..	other	location	oewn-bunker__1.06.00..
+oewn-bunt__1.04.00..	derivation		oewn-bunt__2.35.01..
+oewn-bunt__2.35.01..	derivation		oewn-bunter__1.18.00..
+oewn-bunt__2.35.01..	other	agent	oewn-bunter__1.18.00..
+oewn-bunt__2.35.01..	other	event	oewn-bunt__1.04.00..
+oewn-buoy__1.10.00..	derivation		oewn-buoy__2.32.00..
+oewn-buoy__1.10.00..	derivation		oewn-buoy__2.38.00..
+oewn-buoy__2.32.00..	other	instrument	oewn-buoy__1.10.00..
+oewn-buoy__2.35.00..	derivation		oewn-buoyant__5.00.00.light.01
+oewn-buoy__2.38.00..	derivation		oewn-buoyant__5.00.00.light.01
+oewn-buoy__2.38.00..	other	by_means_of	oewn-buoy__1.10.00..
+oewn-buoyancy__1.07.00..	derivation		oewn-buoyant__5.00.00.light.01
+oewn-buoyancy__1.07.01..	derivation		oewn-buoyant__5.00.00.cheerful.00
+oewn-buoyancy__1.12.00..	derivation		oewn-buoyant__5.00.00.cheerful.00
+oewn-buoyantly__4.02.00..	pertainym		oewn-buoyant__5.00.00.cheerful.00
+oewn-bur__1.20.00..	derivation		oewn-bur__2.30.00..
+oewn-bur__2.30.00..	other	undergoer	oewn-bur__1.20.00..
+oewn-burden__1.06.01..	derivation		oewn-burden__2.35.00..
+oewn-burden__1.09.01..	derivation		oewn-burden__2.32.00..
+oewn-burden__2.32.00..	other	event	oewn-burden__1.09.01..
+oewn-burden__2.35.00..	antonym		oewn-unburden__2.35.00..
+oewn-burden__2.35.00..	other	by_means_of	oewn-burden__1.06.01..
+oewn-burdened__3.00.00..	antonym		oewn-unburdened__3.00.00..
+oewn-burdensome__5.00.00.heavy.02	derivation		oewn-burdensomeness__1.07.00..
+oewn-bureaucracy__1.14.00..	derivation		oewn-bureaucratic__3.01.00..
+oewn-bureaucracy__1.14.01..	derivation		oewn-bureaucratic__3.01.00..
+oewn-bureaucracy__1.14.02..	derivation		oewn-bureaucratic__3.01.00..
+oewn-bureaucratic__3.01.00..	pertainym		oewn-bureaucracy__1.14.00..
+oewn-bureaucratic__3.01.00..	pertainym		oewn-bureaucrat__1.18.00..
+oewn-bureaucratically__4.02.00..	pertainym		oewn-bureaucratic__3.01.00..
+oewn-bureaucratically__4.02.01..	pertainym		oewn-bureaucratic__3.01.00..
+oewn-burglar__1.18.00..	derivation		oewn-burglarise__2.41.00..
+oewn-burglarious__3.01.00..	derivation		oewn-burglary__1.04.00..
+oewn-burglarious__3.01.00..	pertainym		oewn-burglary__1.04.00..
+oewn-burglarise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-burglarise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-burglarize__2.41.00..	derivation		oewn-burglary__1.04.00..
+oewn-burglarize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-burglary__1.04.00..	derivation		oewn-burgle__2.41.00..
+oewn-burial__1.04.00..	derivation		oewn-bury__2.35.00..
+oewn-burial__1.11.00..	derivation		oewn-bury__2.41.00..
+oewn-buried__3.00.00..	antonym		oewn-unburied__3.00.00..
+oewn-burl__1.07.00..	derivation		oewn-burl__2.30.00..
+oewn-burl__2.30.00..	other	undergoer	oewn-burl__1.07.00..
+oewn-burlesque__1.10.00..	derivation		oewn-burlesque__2.32.00..
+oewn-burlesque__1.10.00..	derivation		oewn-burlesque__3.01.00..
+oewn-burlesque__1.10.01..	derivation		oewn-burlesque__2.32.00..
+oewn-burlesque__1.10.01..	derivation		oewn-burlesque__3.01.00..
+oewn-burlesque__2.32.00..	other	event	oewn-burlesque__1.10.00..
+oewn-burlesque__2.32.00..	other	event	oewn-burlesque__1.10.01..
+oewn-burlesque__3.01.00..	pertainym		oewn-burlesque__1.10.00..
+oewn-burmese__1.10.00..	derivation		oewn-burmese__3.01.00..
+oewn-burmese__1.18.00..	derivation		oewn-burmese__3.01.00..
+oewn-burn__1.04.00..	derivation		oewn-burn__2.30.00..
+oewn-burn__1.04.00..	derivation		oewn-burn__2.30.01..
+oewn-burn__1.04.00..	derivation		oewn-burn__2.30.03..
+oewn-burn__1.07.00..	derivation		oewn-burn__2.30.01..
+oewn-burn__1.07.00..	derivation		oewn-burn__2.30.02..
+oewn-burn__1.07.00..	derivation		oewn-burn__2.30.03..
+oewn-burn__1.26.00..	derivation		oewn-burn__2.39.00..
+oewn-burn__1.26.00..	derivation		oewn-burn__2.39.04..
+oewn-burn__1.26.01..	derivation		oewn-burn__2.30.08..
+oewn-burn__2.30.00..	derivation		oewn-burnable__5.00.00.combustible.00
+oewn-burn__2.30.00..	other	event	oewn-burn__1.04.00..
+oewn-burn__2.30.01..	derivation		oewn-burnable__5.00.00.combustible.00
+oewn-burn__2.30.01..	derivation		oewn-burner__1.06.00..
+oewn-burn__2.30.01..	other	event	oewn-burn__1.04.00..
+oewn-burn__2.30.01..	other	instrument	oewn-burner__1.06.00..
+oewn-burn__2.30.01..	other	location	oewn-burn__1.07.00..
+oewn-burn__2.30.02..	derivation		oewn-burnable__5.00.00.combustible.00
+oewn-burn__2.30.02..	other	location	oewn-burn__1.07.00..
+oewn-burn__2.30.03..	derivation		oewn-burnable__5.00.00.combustible.00
+oewn-burn__2.30.03..	other	event	oewn-burn__1.04.00..
+oewn-burn__2.30.03..	other	location	oewn-burn__1.07.00..
+oewn-burn__2.30.08..	other	result	oewn-burn__1.26.01..
+oewn-burn__2.39.00..	other	event	oewn-burn__1.26.00..
+oewn-burn__2.39.04..	other	event	oewn-burn__1.26.00..
+oewn-burn__2.43.02..	derivation		oewn-burnable__5.00.00.combustible.00
+oewn-burned__5.00.00.cooked.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-burned__5.00.00.destroyed.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-burned__5.00.00.treated.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-burnish__1.07.00..	derivation		oewn-burnish__2.35.00..
+oewn-burnish__2.35.00..	other	property	oewn-burnish__1.07.00..
+oewn-burnt__5.00.00.cooked.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-burnt__5.00.00.cooked.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-burnt__5.00.00.destroyed.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-burnt__5.00.00.destroyed.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-burnt__5.00.00.treated.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-burnt__5.00.00.treated.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-burp__1.04.00..	derivation		oewn-burp__2.29.00..
+oewn-burp__2.29.00..	other	event	oewn-burp__1.04.00..
+oewn-burr__1.20.00..	derivation		oewn-burr__2.30.00..
+oewn-burr__1.20.00..	derivation		oewn-burry__5.00.00.armed.02
+oewn-burr__2.30.00..	other	undergoer	oewn-burr__1.20.00..
+oewn-burrlike__3.01.00..	pertainym		oewn-burr__1.20.00..
+oewn-burrow__1.17.00..	derivation		oewn-burrow__2.38.00..
+oewn-burrow__2.38.00..	other	result	oewn-burrow__1.17.00..
+oewn-bursa__1.08.00..	derivation		oewn-bursal__3.01.00..
+oewn-bursal__3.01.00..	pertainym		oewn-bursa__1.08.00..
+oewn-burst__1.04.00..	derivation		oewn-burst__2.30.00..
+oewn-burst__1.04.00..	derivation		oewn-burst__2.30.09..
+oewn-burst__1.04.02..	derivation		oewn-burst__2.42.00..
+oewn-burst__2.30.00..	other	event	oewn-burst__1.04.00..
+oewn-burst__2.30.09..	derivation		oewn-burster__1.06.00..
+oewn-burst__2.30.09..	other	by_means_of	oewn-burster__1.06.00..
+oewn-burst__2.30.09..	other	event	oewn-burst__1.04.00..
+oewn-burst__2.42.00..	other	event	oewn-burst__1.04.02..
+oewn-burthen__1.06.00..	derivation		oewn-burthen__2.35.00..
+oewn-burthen__2.35.00..	other	by_means_of	oewn-burthen__1.06.00..
+oewn-bury__2.35.00..	other	event	oewn-burial__1.04.00..
+oewn-bury__2.41.00..	other	event	oewn-burial__1.11.00..
+oewn-bus__1.06.00..	derivation		oewn-bus__2.38.00..
+oewn-bus__1.06.00..	derivation		oewn-bus__2.38.01..
+oewn-bus__2.38.00..	other	vehicle	oewn-bus__1.06.00..
+oewn-bus__2.38.01..	other	vehicle	oewn-bus__1.06.00..
+oewn-bush__1.14.00..	derivation		oewn-bushy__5.00.00.branchy.00
+oewn-bush__1.20.00..	derivation		oewn-bushy__5.00.00.branchy.00
+oewn-bush__2.40.00..	derivation		oewn-bushing__1.06.00..
+oewn-bush__2.40.00..	derivation		oewn-bushing__1.06.01..
+oewn-bushwhack__2.33.00..	derivation		oewn-bushwhacker__1.18.01..
+oewn-bushwhack__2.42.00..	derivation		oewn-bushwhacker__1.18.01..
+oewn-busily__4.02.00..	pertainym		oewn-busy__3.00.00..
+oewn-business_organisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-business_organisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-business_organization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-buspar__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-buss__1.04.00..	derivation		oewn-buss__2.35.00..
+oewn-buss__2.35.00..	other	event	oewn-buss__1.04.00..
+oewn-bust__1.08.00..	derivation		oewn-busty__5.00.00.shapely.00
+oewn-bust__1.11.00..	derivation		oewn-bust__2.35.01..
+oewn-bust__2.35.01..	also		oewn-bust_up__2.35.00..
+oewn-bust__2.35.01..	derivation		oewn-buster__1.18.00..
+oewn-bust__2.35.01..	other	agent	oewn-buster__1.18.00..
+oewn-bust__2.35.01..	other	event	oewn-bust__1.11.00..
+oewn-bustle__1.04.00..	derivation		oewn-bustle__2.38.00..
+oewn-bustle__2.38.00..	other	event	oewn-bustle__1.04.00..
+oewn-busy__3.00.00..	antonym		oewn-idle__3.00.00..
+oewn-busy__3.00.00..	derivation		oewn-busyness__1.26.00..
+oewn-busy__5.00.00.occupied.00	derivation		oewn-busyness__1.26.00..
+oewn-busy__5.00.01.active.06	derivation		oewn-busyness__1.26.00..
+oewn-butazolidin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-butch__1.18.00..	derivation		oewn-butch__5.00.00.homosexual.00
+oewn-butcher__1.18.00..	derivation		oewn-butcher__2.35.00..
+oewn-butcher__1.18.02..	derivation		oewn-butcher__2.35.00..
+oewn-butcher__1.18.03..	derivation		oewn-butcherly__5.00.00.unskilled.00
+oewn-butcher__2.35.00..	derivation		oewn-butchery__1.04.00..
+oewn-butcher__2.35.00..	derivation		oewn-butchery__1.04.02..
+oewn-butcher__2.35.00..	derivation		oewn-butchery__1.06.00..
+oewn-butcher__2.35.00..	other	agent	oewn-butcher__1.18.00..
+oewn-butcher__2.35.00..	other	agent	oewn-butcher__1.18.02..
+oewn-buteonine__1.05.00..	derivation		oewn-buteonine__3.01.00..
+oewn-butt--weld__1.06.00..	derivation		oewn-butt--weld__2.35.00..
+oewn-butt--weld__1.06.00..	derivation		oewn-buttweld__2.35.00..
+oewn-butt--weld__2.35.00..	derivation		oewn-butt--welding__1.04.00..
+oewn-butt--weld__2.35.00..	derivation		oewn-butt_weld__1.06.00..
+oewn-butt--weld__2.35.00..	derivation		oewn-butt_welding__1.04.00..
+oewn-butt--weld__2.35.00..	other	result	oewn-butt--weld__1.06.00..
+oewn-butt--welding__1.04.00..	derivation		oewn-buttweld__2.35.00..
+oewn-butt__1.06.05..	derivation		oewn-butt__2.35.01..
+oewn-butt__1.06.05..	derivation		oewn-butt__2.35.02..
+oewn-butt__2.35.00..	also		oewn-butt_against__2.35.01..
+oewn-butt__2.35.00..	derivation		oewn-butter__1.18.00..
+oewn-butt__2.35.00..	other	agent	oewn-butter__1.18.00..
+oewn-butt_weld__1.06.00..	derivation		oewn-buttweld__2.35.00..
+oewn-butt_welding__1.04.00..	derivation		oewn-buttweld__2.35.00..
+oewn-butter__1.13.00..	derivation		oewn-butter__2.35.00..
+oewn-butter__1.13.00..	derivation		oewn-buttery__5.00.00.fatty.00
+oewn-butter__1.13.00..	derivation		oewn-butyraceous__3.01.00..
+oewn-butter__2.35.00..	other	undergoer	oewn-butter__1.13.00..
+oewn-buttocks__1.08.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-button__1.06.00..	derivation		oewn-button__2.35.00..
+oewn-button__1.06.00..	derivation		oewn-button__2.35.01..
+oewn-button__1.06.00..	derivation		oewn-buttony__5.00.00.adorned.00
+oewn-button__1.06.00..	derivation		oewn-buttony__5.00.00.bright.00
+oewn-button__2.35.00..	antonym		oewn-unbutton__2.35.00..
+oewn-button__2.35.00..	other	instrument	oewn-button__1.06.00..
+oewn-button__2.35.01..	other	uses	oewn-button__1.06.00..
+oewn-buttoned__3.00.00..	antonym		oewn-unbuttoned__3.00.00..
+oewn-buttress__1.06.00..	derivation		oewn-buttress__2.30.01..
+oewn-buttress__2.30.01..	other	by_means_of	oewn-buttress__1.06.00..
+oewn-butyl__1.27.00..	derivation		oewn-butylate__2.30.00..
+oewn-butyraceous__3.01.00..	pertainym		oewn-butterfat__1.27.00..
+oewn-butyric__3.01.00..	pertainym		oewn-butyric_acid__1.27.00..
+oewn-buxom__5.00.00.fat.01	derivation		oewn-buxomness__1.07.00..
+oewn-buxom__5.00.00.shapely.00	derivation		oewn-buxomness__1.07.00..
+oewn-buxomly__4.02.00..	pertainym		oewn-buxom__5.00.00.shapely.00
+oewn-buy__1.21.00..	derivation		oewn-buy__2.40.00..
+oewn-buy__1.21.00..	derivation		oewn-buy__2.42.00..
+oewn-buy__2.40.00..	also		oewn-buy_in__2.40.00..
+oewn-buy__2.40.00..	also		oewn-buy_out__2.40.00..
+oewn-buy__2.40.00..	also		oewn-buy_up__2.40.00..
+oewn-buy__2.40.00..	antonym		oewn-sell__2.40.00..
+oewn-buy__2.40.00..	derivation		oewn-buyer__1.18.00..
+oewn-buy__2.40.00..	derivation		oewn-buying__1.04.00..
+oewn-buy__2.40.00..	other	agent	oewn-buyer__1.18.00..
+oewn-buy__2.40.00..	other	event	oewn-buy__1.21.00..
+oewn-buy__2.42.00..	other	event	oewn-buy__1.21.00..
+oewn-buy_back__2.40.00..	derivation		oewn-buyback__1.04.00..
+oewn-buy_out__2.40.00..	derivation		oewn-buyout__1.04.00..
+oewn-buzz__1.04.00..	derivation		oewn-buzz__2.42.00..
+oewn-buzz__1.11.00..	derivation		oewn-buzz__2.32.00..
+oewn-buzz__1.11.00..	derivation		oewn-buzz__2.39.00..
+oewn-buzz__2.32.00..	derivation		oewn-buzzer__1.06.00..
+oewn-buzz__2.32.00..	derivation		oewn-buzzer__1.06.01..
+oewn-buzz__2.32.00..	other	event	oewn-buzz__1.11.00..
+oewn-buzz__2.32.00..	other	instrument	oewn-buzzer__1.06.00..
+oewn-buzz__2.32.00..	other	instrument	oewn-buzzer__1.06.01..
+oewn-buzz__2.39.00..	derivation		oewn-buzzer__1.06.00..
+oewn-buzz__2.39.00..	derivation		oewn-buzzer__1.06.01..
+oewn-buzz__2.39.00..	other	event	oewn-buzz__1.11.00..
+oewn-buzz__2.39.00..	other	instrument	oewn-buzzer__1.06.00..
+oewn-buzz__2.39.00..	other	instrument	oewn-buzzer__1.06.01..
+oewn-buzz__2.42.00..	other	event	oewn-buzz__1.04.00..

@@ -1,0 +1,1918 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-gab__1.10.00..	derivation		oewn-gabby__5.00.00.voluble.00
+oewn-gabble__1.10.00..	derivation		oewn-gabble__2.32.00..
+oewn-gabble__2.32.00..	other	event	oewn-gabble__1.10.00..
+oewn-gabled__3.00.00..	antonym		oewn-hipped__3.00.02..
+oewn-gabonese__1.18.00..	derivation		oewn-gabonese__3.01.00..
+oewn-gadget__1.06.00..	derivation		oewn-gadgeteer__1.18.00..
+oewn-gael__1.18.00..	derivation		oewn-gaelic__3.01.00..
+oewn-gaelic__1.10.00..	derivation		oewn-gaelic__3.01.00..
+oewn-gaelic__3.01.00..	pertainym		oewn-celt__1.18.00..
+oewn-gag__1.06.00..	derivation		oewn-gag__2.35.07..
+oewn-gag__1.06.00..	derivation		oewn-gag__2.39.00..
+oewn-gag__1.10.00..	derivation		oewn-gag__2.32.00..
+oewn-gag__1.10.00..	derivation		oewn-gagster__1.18.00..
+oewn-gag__2.32.00..	other	event	oewn-gag__1.10.00..
+oewn-gag__2.35.07..	other	uses	oewn-gag__1.06.00..
+oewn-gag__2.39.00..	other	by_means_of	oewn-gag__1.06.00..
+oewn-gaggle__1.14.00..	derivation		oewn-gaggle__2.32.00..
+oewn-gaily__4.02.00..	pertainym		oewn-gay__5.00.00.joyous.00
+oewn-gain__1.21.00..	antonym		oewn-loss__1.21.00..
+oewn-gain__2.29.00..	antonym		oewn-reduce__2.29.00..
+oewn-gain__2.29.00..	derivation		oewn-gainer__1.18.01..
+oewn-gain__2.29.00..	other	agent	oewn-gainer__1.18.01..
+oewn-gain__2.33.00..	derivation		oewn-gainer__1.18.00..
+oewn-gain__2.33.00..	other	agent	oewn-gainer__1.18.00..
+oewn-gain__2.40.00..	derivation		oewn-gainer__1.18.00..
+oewn-gain__2.40.00..	other	agent	oewn-gainer__1.18.00..
+oewn-gain__2.40.01..	derivation		oewn-gainer__1.18.00..
+oewn-gain__2.40.01..	other	agent	oewn-gainer__1.18.00..
+oewn-gain__2.40.02..	derivation		oewn-gainer__1.18.00..
+oewn-gain__2.40.02..	other	agent	oewn-gainer__1.18.00..
+oewn-gainfully__4.02.00..	pertainym		oewn-gainful__5.00.00.profitable.00
+oewn-galactic__3.01.00..	derivation		oewn-galaxy__1.14.00..
+oewn-galactic__3.01.00..	pertainym		oewn-galaxy__1.14.00..
+oewn-galilaean__1.18.00..	derivation		oewn-galilaean__3.01.00..
+oewn-galilaean__3.01.00..	pertainym		oewn-galilean__1.18.00..
+oewn-galilean__1.18.00..	derivation		oewn-galilean__3.01.00..
+oewn-galilean__3.01.00..	pertainym		oewn-galilean__1.18.00..
+oewn-gall__1.12.00..	derivation		oewn-gall__2.37.00..
+oewn-gall__1.26.00..	derivation		oewn-gall__2.39.00..
+oewn-gall__1.26.01..	derivation		oewn-gall__2.39.00..
+oewn-gall__2.37.00..	other	event	oewn-gall__1.12.00..
+oewn-gall__2.39.00..	other	event	oewn-gall__1.26.00..
+oewn-gall__2.39.00..	other	event	oewn-gall__1.26.01..
+oewn-gallant__1.18.00..	derivation		oewn-gallant__5.00.00.courteous.00
+oewn-gallantly__4.02.00..	pertainym		oewn-gallant__5.00.00.courteous.00
+oewn-gallic__3.01.00..	derivation		oewn-gaul__1.18.00..
+oewn-gallic__3.01.01..	derivation		oewn-gaul__1.18.01..
+oewn-gallican__3.01.00..	pertainym		oewn-gallicanism__1.14.00..
+oewn-gallinaceous__3.01.00..	pertainym		oewn-gallinacean__1.05.00..
+oewn-gallop__1.04.00..	derivation		oewn-gallop__2.38.00..
+oewn-gallop__1.04.00..	derivation		oewn-gallop__2.38.01..
+oewn-gallop__1.04.00..	derivation		oewn-gallop__2.38.03..
+oewn-gallop__2.38.00..	other	event	oewn-gallop__1.04.00..
+oewn-gallop__2.38.01..	other	event	oewn-gallop__1.04.00..
+oewn-gallop__2.38.03..	other	event	oewn-gallop__1.04.00..
+oewn-galvanic__3.01.00..	derivation		oewn-galvanism__1.19.00..
+oewn-galvanic__3.01.00..	pertainym		oewn-galvanism__1.19.00..
+oewn-galvanisation__1.04.00..	derivation		oewn-galvanise__2.35.00..
+oewn-galvanisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanisation__1.04.01..	derivation		oewn-galvanise__2.37.00..
+oewn-galvanisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanisation__1.22.00..	derivation		oewn-galvanise__2.29.02..
+oewn-galvanisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanise__2.29.02..	derivation		oewn-galvanism__1.04.00..
+oewn-galvanise__2.29.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanise__2.29.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanise__2.29.02..	other	event	oewn-galvanisation__1.22.00..
+oewn-galvanise__2.35.00..	derivation		oewn-galvaniser__1.18.00..
+oewn-galvanise__2.35.00..	derivation		oewn-galvaniser__1.18.01..
+oewn-galvanise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanise__2.35.00..	other	agent	oewn-galvaniser__1.18.01..
+oewn-galvanise__2.35.00..	other	event	oewn-galvanisation__1.04.00..
+oewn-galvanise__2.37.00..	derivation		oewn-galvaniser__1.18.00..
+oewn-galvanise__2.37.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanise__2.37.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanise__2.37.00..	other	agent	oewn-galvaniser__1.18.00..
+oewn-galvanise__2.37.00..	other	event	oewn-galvanisation__1.04.01..
+oewn-galvanising__5.00.00.exciting.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-galvanising__5.00.00.exciting.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-galvanism__1.04.00..	derivation		oewn-galvanize__2.29.02..
+oewn-galvanization__1.04.00..	derivation		oewn-galvanize__2.35.00..
+oewn-galvanization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanization__1.04.01..	derivation		oewn-galvanize__2.37.00..
+oewn-galvanization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanization__1.22.00..	derivation		oewn-galvanize__2.29.02..
+oewn-galvanization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanize__2.29.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanize__2.29.02..	other	event	oewn-galvanization__1.22.00..
+oewn-galvanize__2.35.00..	derivation		oewn-galvanizer__1.18.01..
+oewn-galvanize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanize__2.35.00..	other	agent	oewn-galvanizer__1.18.01..
+oewn-galvanize__2.35.00..	other	event	oewn-galvanization__1.04.00..
+oewn-galvanize__2.37.00..	derivation		oewn-galvanizer__1.18.00..
+oewn-galvanize__2.37.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-galvanize__2.37.00..	other	agent	oewn-galvanizer__1.18.00..
+oewn-galvanize__2.37.00..	other	event	oewn-galvanization__1.04.01..
+oewn-galvanizing__5.00.00.exciting.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gambian__1.18.00..	derivation		oewn-gambian__3.01.00..
+oewn-gamble__1.04.00..	derivation		oewn-gamble__2.41.00..
+oewn-gamble__1.21.00..	derivation		oewn-gamble__2.33.00..
+oewn-gamble__2.33.00..	derivation		oewn-gambler__1.18.00..
+oewn-gamble__2.33.00..	derivation		oewn-gambling__1.04.00..
+oewn-gamble__2.33.00..	other	agent	oewn-gambler__1.18.00..
+oewn-gamble__2.41.00..	derivation		oewn-gambler__1.18.01..
+oewn-gamble__2.41.00..	other	agent	oewn-gambler__1.18.01..
+oewn-gamble__2.41.00..	other	event	oewn-gamble__1.04.00..
+oewn-gambol__1.04.00..	derivation		oewn-gambol__2.38.00..
+oewn-gambol__2.38.00..	other	event	oewn-gambol__1.04.00..
+oewn-game__1.13.00..	derivation		oewn-gamey__5.00.00.malodorous.00
+oewn-game__1.13.00..	derivation		oewn-gamy__5.00.00.malodorous.00
+oewn-game__2.33.00..	derivation		oewn-gaming__1.04.00..
+oewn-game__5.00.00.unfit.01	derivation		oewn-gameness__1.26.00..
+oewn-gamely__4.02.00..	pertainym		oewn-game__5.00.00.brave.00
+oewn-gaminess__1.07.00..	derivation		oewn-gamy__5.00.00.sexy.00
+oewn-gang__1.14.00..	derivation		oewn-gang__2.33.00..
+oewn-gang__1.14.01..	derivation		oewn-gangdom__1.14.00..
+oewn-gang__1.14.01..	derivation		oewn-gangster__1.18.00..
+oewn-gang__1.14.02..	derivation		oewn-gang__2.33.00..
+oewn-gang__2.33.00..	other	result	oewn-gang__1.14.00..
+oewn-gangrene__1.19.00..	derivation		oewn-gangrenous__5.00.00.unhealthy.00
+oewn-gangrene__1.26.00..	derivation		oewn-gangrene__2.29.00..
+oewn-gangrene__1.26.00..	derivation		oewn-gangrenous__5.00.00.unhealthy.00
+oewn-gangrene__2.29.00..	other	result	oewn-gangrene__1.26.00..
+oewn-gantrisin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-gaol__1.06.00..	derivation		oewn-gaol__2.41.00..
+oewn-gaol__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gaol__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gaol__2.41.00..	derivation		oewn-gaoler__1.18.00..
+oewn-gaol__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gaol__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gaol__2.41.00..	other	agent	oewn-gaoler__1.18.00..
+oewn-gaol__2.41.00..	other	location	oewn-gaol__1.06.00..
+oewn-gap__1.06.00..	derivation		oewn-gap__2.35.00..
+oewn-gap__1.17.00..	derivation		oewn-gap__2.35.00..
+oewn-gap__2.35.00..	other	result	oewn-gap__1.06.00..
+oewn-gap__2.35.00..	other	result	oewn-gap__1.17.00..
+oewn-gape__1.04.01..	derivation		oewn-gape__2.39.00..
+oewn-gape__1.10.00..	derivation		oewn-gape__2.39.00..
+oewn-gape__2.39.00..	other	event	oewn-gape__1.04.01..
+oewn-gape__2.39.00..	other	event	oewn-gape__1.10.00..
+oewn-garage__1.06.00..	derivation		oewn-garage__2.40.00..
+oewn-garage__2.40.00..	other	location	oewn-garage__1.06.00..
+oewn-garamycin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-garb__1.06.00..	derivation		oewn-garb__2.29.00..
+oewn-garb__2.29.00..	other	uses	oewn-garb__1.06.00..
+oewn-garden__1.06.00..	derivation		oewn-garden__2.36.00..
+oewn-garden__1.06.01..	derivation		oewn-garden__2.36.00..
+oewn-garden__1.14.00..	derivation		oewn-garden__2.36.00..
+oewn-garden__2.36.00..	derivation		oewn-gardener__1.18.00..
+oewn-garden__2.36.00..	derivation		oewn-gardener__1.18.01..
+oewn-garden__2.36.00..	derivation		oewn-gardening__1.04.00..
+oewn-garden__2.36.00..	other	agent	oewn-gardener__1.18.00..
+oewn-garden__2.36.00..	other	agent	oewn-gardener__1.18.01..
+oewn-garden__2.36.00..	other	location	oewn-garden__1.06.00..
+oewn-garden__2.36.00..	other	location	oewn-garden__1.06.01..
+oewn-gargle__1.11.00..	derivation		oewn-gargle__2.32.00..
+oewn-gargle__1.27.00..	derivation		oewn-gargle__2.29.00..
+oewn-gargle__2.29.00..	other	uses	oewn-gargle__1.27.00..
+oewn-gargle__2.32.00..	other	event	oewn-gargle__1.11.00..
+oewn-garish__5.00.00.tasteless.02	derivation		oewn-garishness__1.07.01..
+oewn-garish__5.00.00.tasteless.02	derivation		oewn-garishness__1.07.02..
+oewn-garishly__4.02.00..	pertainym		oewn-garish__5.00.00.tasteless.02
+oewn-garland__1.06.00..	derivation		oewn-garland__2.36.00..
+oewn-garland__2.36.00..	other	uses	oewn-garland__1.06.00..
+oewn-garlic__1.13.00..	derivation		oewn-garlicky__3.01.00..
+oewn-garlic__1.20.00..	derivation		oewn-garlicky__3.01.00..
+oewn-garlicky__3.01.00..	pertainym		oewn-garlic__1.13.00..
+oewn-garment__1.06.00..	derivation		oewn-garment__2.29.00..
+oewn-garment__2.29.00..	other	uses	oewn-garment__1.06.00..
+oewn-garner__1.06.00..	derivation		oewn-garner__2.35.01..
+oewn-garner__2.35.01..	other	location	oewn-garner__1.06.00..
+oewn-garnish__1.06.00..	derivation		oewn-garnish__2.36.00..
+oewn-garnish__1.13.00..	derivation		oewn-garnish__2.36.00..
+oewn-garnish__2.36.00..	other	uses	oewn-garnish__1.06.00..
+oewn-garnish__2.36.00..	other	uses	oewn-garnish__1.13.00..
+oewn-garnish__2.40.00..	derivation		oewn-garnishment__1.10.00..
+oewn-garnish__2.40.00..	other	by_means_of	oewn-garnishment__1.10.00..
+oewn-garotte__1.06.00..	derivation		oewn-garotte__2.35.00..
+oewn-garotte__2.35.00..	other	instrument	oewn-garotte__1.06.00..
+oewn-garrison__1.06.00..	derivation		oewn-garrison__2.33.00..
+oewn-garrison__1.14.00..	derivation		oewn-garrison__2.33.00..
+oewn-garrison__2.33.00..	other	location	oewn-garrison__1.06.00..
+oewn-garrison__2.33.00..	other	undergoer	oewn-garrison__1.14.00..
+oewn-garrote__2.35.00..	derivation		oewn-garroter__1.18.00..
+oewn-garrote__2.35.00..	other	agent	oewn-garroter__1.18.00..
+oewn-garrotte__1.06.00..	derivation		oewn-garrotte__2.35.00..
+oewn-garrotte__2.35.00..	derivation		oewn-garrotter__1.18.00..
+oewn-garrotte__2.35.00..	other	agent	oewn-garrotter__1.18.00..
+oewn-garrotte__2.35.00..	other	instrument	oewn-garrotte__1.06.00..
+oewn-garrulity__1.07.00..	derivation		oewn-garrulous__5.00.00.voluble.00
+oewn-garrulous__5.00.00.voluble.00	derivation		oewn-garrulousness__1.07.00..
+oewn-garrulously__4.02.00..	pertainym		oewn-garrulous__5.00.00.voluble.00
+oewn-garter__1.06.00..	derivation		oewn-garter__2.35.00..
+oewn-garter__2.35.00..	other	by_means_of	oewn-garter__1.06.00..
+oewn-garter__2.35.00..	other	instrument	oewn-garter__1.06.00..
+oewn-gas__1.26.00..	derivation		oewn-gaseous__3.00.00..
+oewn-gas__1.26.00..	derivation		oewn-gasify__2.30.00..
+oewn-gas__1.26.00..	derivation		oewn-gassy__5.00.00.gaseous.00
+oewn-gas__1.26.01..	derivation		oewn-gassy__5.00.00.unhealthy.00
+oewn-gas__1.27.00..	derivation		oewn-gaseous__3.00.00..
+oewn-gas__1.27.00..	derivation		oewn-gasify__2.30.00..
+oewn-gas__1.27.02..	derivation		oewn-gasify__2.30.00..
+oewn-gas__1.27.02..	exemplifies		oewn-american_english__1.10.00..
+oewn-gas__1.27.03..	derivation		oewn-gasify__2.30.00..
+oewn-gas__2.33.00..	derivation		oewn-gassing__1.04.00..
+oewn-gasconade__1.10.00..	derivation		oewn-gasconade__2.32.00..
+oewn-gasconade__2.32.00..	other	event	oewn-gasconade__1.10.00..
+oewn-gaseous__3.00.00..	antonym		oewn-liquid__3.00.00..
+oewn-gaseous__3.00.00..	antonym		oewn-solid__3.00.01..
+oewn-gaseous__3.00.00..	derivation		oewn-gaseousness__1.07.00..
+oewn-gash__1.04.02..	derivation		oewn-gash__2.35.00..
+oewn-gash__1.26.00..	derivation		oewn-gash__2.35.00..
+oewn-gash__2.35.00..	other	event	oewn-gash__1.04.02..
+oewn-gash__2.35.00..	other	event	oewn-gash__1.26.00..
+oewn-gasification__1.22.00..	derivation		oewn-gasify__2.30.00..
+oewn-gasify__2.30.00..	other	event	oewn-gasification__1.22.00..
+oewn-gasify__2.30.00..	other	result	oewn-gas__1.26.00..
+oewn-gasify__2.30.00..	other	result	oewn-gas__1.27.00..
+oewn-gasify__2.30.00..	other	result	oewn-gas__1.27.03..
+oewn-gasoline__1.27.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-gasp__1.04.00..	derivation		oewn-gasp__2.29.00..
+oewn-gasp__2.29.00..	other	event	oewn-gasp__1.04.00..
+oewn-gastric__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-gastroduodenal__3.01.00..	pertainym		oewn-duodenum__1.08.00..
+oewn-gastroduodenal__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-gastroenterologist__1.18.00..	derivation		oewn-gastroenterology__1.09.00..
+oewn-gastroesophageal__3.01.00..	pertainym		oewn-esophagus__1.08.00..
+oewn-gastroesophageal__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-gastrointestinal__3.01.00..	pertainym		oewn-gastrointestinal_tract__1.08.00..
+oewn-gastronomic__3.01.00..	derivation		oewn-gastronomy__1.04.00..
+oewn-gastronomic__3.01.00..	derivation		oewn-gastronomy__1.13.02..
+oewn-gastronomic__3.01.00..	pertainym		oewn-gastronomy__1.13.02..
+oewn-gastronomical__3.01.00..	derivation		oewn-gastronomy__1.04.00..
+oewn-gastronomical__3.01.00..	pertainym		oewn-gastronomy__1.13.02..
+oewn-gate__1.06.00..	derivation		oewn-gate__2.40.00..
+oewn-gate__2.40.00..	other	uses	oewn-gate__1.06.00..
+oewn-gather__1.04.00..	derivation		oewn-gather__2.35.00..
+oewn-gather__1.04.00..	derivation		oewn-gather__2.35.04..
+oewn-gather__1.06.00..	derivation		oewn-gather__2.35.03..
+oewn-gather__2.30.00..	derivation		oewn-gathering__1.04.01..
+oewn-gather__2.35.00..	also		oewn-gather_up__2.38.00..
+oewn-gather__2.35.00..	antonym		oewn-spread__2.35.00..
+oewn-gather__2.35.00..	other	event	oewn-gather__1.04.00..
+oewn-gather__2.35.03..	derivation		oewn-gathering__1.06.00..
+oewn-gather__2.35.03..	other	result	oewn-gather__1.06.00..
+oewn-gather__2.35.04..	derivation		oewn-gatherer__1.18.01..
+oewn-gather__2.35.04..	other	agent	oewn-gatherer__1.18.01..
+oewn-gather__2.35.04..	other	event	oewn-gather__1.04.00..
+oewn-gather__2.41.00..	derivation		oewn-gathering__1.04.00..
+oewn-gather__2.41.00..	derivation		oewn-gathering__1.14.00..
+oewn-gather__2.41.02..	derivation		oewn-gathering__1.04.00..
+oewn-gather__2.41.02..	derivation		oewn-gathering__1.14.00..
+oewn-gathered__3.44.00..	antonym		oewn-ungathered__3.44.00..
+oewn-gathered__3.44.00..	participle		oewn-gather__2.35.00..
+oewn-gauche__5.00.00.inelegant.00	derivation		oewn-gaucheness__1.07.00..
+oewn-gaud__1.06.00..	derivation		oewn-gaudy__5.00.00.tasteless.02
+oewn-gaudily__4.02.00..	pertainym		oewn-gaudy__5.00.00.tasteless.02
+oewn-gaudiness__1.07.00..	derivation		oewn-gaudy__5.00.00.colorful.03
+oewn-gaudiness__1.07.00..	derivation		oewn-gaudy__5.00.00.tasteless.02
+oewn-gaudiness__1.07.01..	derivation		oewn-gaudy__5.00.00.colorful.03
+oewn-gaudiness__1.07.01..	derivation		oewn-gaudy__5.00.00.tasteless.02
+oewn-gauge__1.06.00..	derivation		oewn-gauge__2.32.00..
+oewn-gauge__1.24.00..	derivation		oewn-gauge__2.30.00..
+oewn-gauge__2.30.00..	other	event	oewn-gauge__1.24.00..
+oewn-gauge__2.32.00..	other	instrument	oewn-gauge__1.06.00..
+oewn-gaunt__5.00.00.thin.03	derivation		oewn-gauntness__1.07.00..
+oewn-gauze__1.06.00..	derivation		oewn-gauzy__5.00.00.thin.01
+oewn-gawk__1.18.00..	derivation		oewn-gawky__5.00.00.awkward.00
+oewn-gawkiness__1.07.00..	derivation		oewn-gawky__5.00.00.awkward.00
+oewn-gay__1.18.00..	derivation		oewn-gay__5.00.00.homosexual.00
+oewn-gay__5.00.00.homosexual.00	derivation		oewn-gayness__1.04.00..
+oewn-gayly__4.02.00..	pertainym		oewn-gay__5.00.02.joyous.00
+oewn-gaze__1.04.00..	derivation		oewn-gaze__2.39.00..
+oewn-gaze__2.39.00..	other	event	oewn-gaze__1.04.00..
+oewn-gazette__1.10.00..	derivation		oewn-gazette__2.36.00..
+oewn-geared__3.00.00..	antonym		oewn-ungeared__3.00.00..
+oewn-geezer__1.18.00..	derivation		oewn-geezerhood__1.28.00..
+oewn-gel__1.06.01..	derivation		oewn-gel__2.29.00..
+oewn-gel__1.27.00..	derivation		oewn-gel__2.30.00..
+oewn-gel__2.30.00..	other	result	oewn-gel__1.27.00..
+oewn-gelatin__1.27.00..	derivation		oewn-gelatinize__2.30.00..
+oewn-gelatin__1.27.00..	derivation		oewn-gelatinize__2.30.01..
+oewn-gelatin__1.27.00..	derivation		oewn-gelatinize__2.30.02..
+oewn-gelatin__1.27.00..	derivation		oewn-gelatinous__5.00.00.thick.02
+oewn-gelatine__1.27.00..	derivation		oewn-gelatinous__5.00.00.thick.02
+oewn-gelatinise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gelatinise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gelatinise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gelatinise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gelatinize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gelatinize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gelatinous__5.00.00.thick.02	derivation		oewn-gelatinousness__1.07.00..
+oewn-geld__2.29.00..	derivation		oewn-gelding__1.05.00..
+oewn-gelid__5.00.00.cold.01	derivation		oewn-gelidity__1.07.00..
+oewn-geminate__2.30.00..	derivation		oewn-gemination__1.10.00..
+oewn-geminate__2.30.00..	other	event	oewn-gemination__1.10.00..
+oewn-gemmiferous__3.01.00..	pertainym		oewn-gemma__1.20.00..
+oewn-gemonil__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-gene__1.08.00..	derivation		oewn-genetic__3.01.00..
+oewn-gene__1.08.00..	derivation		oewn-genetical__3.01.00..
+oewn-gene__1.08.00..	derivation		oewn-genetical__3.01.02..
+oewn-gene__1.08.00..	derivation		oewn-genic__3.01.00..
+oewn-genealogic__3.01.00..	derivation		oewn-genealogy__1.09.00..
+oewn-genealogic__3.01.00..	pertainym		oewn-genealogy__1.14.00..
+oewn-genealogical__3.01.00..	derivation		oewn-genealogy__1.14.00..
+oewn-genealogical__3.01.00..	pertainym		oewn-genealogy__1.14.00..
+oewn-genealogically__4.02.00..	pertainym		oewn-genealogical__3.01.00..
+oewn-genealogist__1.18.00..	derivation		oewn-genealogy__1.14.00..
+oewn-general__1.09.00..	antonym		oewn-particular__1.09.00..
+oewn-general__1.09.00..	antonym		oewn-specific__1.09.00..
+oewn-general__1.09.00..	derivation		oewn-general__3.00.00..
+oewn-general__1.09.00..	derivation		oewn-general__5.00.00.undiversified.00
+oewn-general__1.18.00..	derivation		oewn-general__2.32.00..
+oewn-general__1.18.00..	derivation		oewn-generalship__1.04.00..
+oewn-general__1.18.00..	derivation		oewn-generalship__1.09.00..
+oewn-general__1.18.01..	derivation		oewn-generalship__1.04.00..
+oewn-general__2.32.00..	other	agent	oewn-general__1.18.00..
+oewn-general__3.00.00..	antonym		oewn-specific__3.00.00..
+oewn-general__3.00.00..	derivation		oewn-generality__1.07.00..
+oewn-general__3.00.02..	antonym		oewn-local__3.00.02..
+oewn-general__3.00.02..	derivation		oewn-generality__1.07.00..
+oewn-general__3.00.02..	derivation		oewn-generality__1.09.00..
+oewn-general__5.00.00.undiversified.00	derivation		oewn-generality__1.07.00..
+oewn-general__5.00.00.undiversified.00	derivation		oewn-generality__1.09.00..
+oewn-general_agent__1.18.00..	antonym		oewn-special_agent__1.18.00..
+oewn-general_verdict__1.04.00..	antonym		oewn-special_verdict__1.04.00..
+oewn-generalisability__1.07.00..	derivation		oewn-generalise__2.32.01..
+oewn-generalisation__1.09.00..	derivation		oewn-generalise__2.32.00..
+oewn-generalisation__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalisation__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalisation__1.09.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalisation__1.09.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalisation__1.09.02..	derivation		oewn-generalise__2.32.01..
+oewn-generalisation__1.09.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalisation__1.09.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalisation__1.09.03..	derivation		oewn-generalise__2.32.01..
+oewn-generalisation__1.09.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalisation__1.09.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalise__2.32.00..	other	result	oewn-generalisation__1.09.00..
+oewn-generalise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalise__2.32.01..	other	event	oewn-generalisation__1.09.02..
+oewn-generalise__2.32.01..	other	event	oewn-generalisation__1.09.03..
+oewn-generalise__2.32.04..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-generalise__2.32.04..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-generalist__1.18.00..	antonym		oewn-specialist__1.18.00..
+oewn-generality__1.07.00..	antonym		oewn-particularity__1.07.00..
+oewn-generalizability__1.07.00..	derivation		oewn-generalize__2.32.00..
+oewn-generalization__1.09.00..	derivation		oewn-generalize__2.32.00..
+oewn-generalization__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalization__1.09.01..	derivation		oewn-generalize__2.32.01..
+oewn-generalization__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalization__1.09.02..	derivation		oewn-generalize__2.32.01..
+oewn-generalization__1.09.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalization__1.09.03..	derivation		oewn-generalize__2.32.01..
+oewn-generalization__1.09.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalize__2.32.00..	antonym		oewn-specify__2.32.00..
+oewn-generalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalize__2.32.00..	other	result	oewn-generalization__1.09.00..
+oewn-generalize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generalize__2.32.01..	other	event	oewn-generalization__1.09.02..
+oewn-generalize__2.32.01..	other	event	oewn-generalization__1.09.03..
+oewn-generalize__2.32.01..	other	result	oewn-generalization__1.09.01..
+oewn-generalize__2.32.04..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-generally__4.02.00..	pertainym		oewn-general__3.00.00..
+oewn-generally__4.02.01..	antonym		oewn-specifically__4.02.00..
+oewn-generally__4.02.01..	pertainym		oewn-general__3.00.00..
+oewn-generate__2.29.00..	derivation		oewn-generation__1.04.00..
+oewn-generate__2.29.00..	derivation		oewn-generation__1.11.00..
+oewn-generate__2.29.00..	derivation		oewn-generation__1.14.00..
+oewn-generate__2.29.00..	derivation		oewn-generative__5.00.00.fruitful.00
+oewn-generate__2.29.00..	other	event	oewn-generation__1.04.00..
+oewn-generate__2.29.00..	other	event	oewn-generation__1.11.00..
+oewn-generate__2.29.00..	other	event	oewn-generation__1.14.00..
+oewn-generate__2.36.00..	derivation		oewn-generation__1.11.00..
+oewn-generate__2.36.00..	derivation		oewn-generation__1.28.01..
+oewn-generate__2.36.00..	derivation		oewn-generative__3.00.00..
+oewn-generate__2.36.00..	derivation		oewn-generator__1.18.00..
+oewn-generate__2.36.00..	other	agent	oewn-generator__1.18.00..
+oewn-generate__2.36.00..	other	event	oewn-generation__1.11.00..
+oewn-generate__2.36.00..	other	event	oewn-generation__1.28.01..
+oewn-generate__2.36.01..	derivation		oewn-generation__1.04.01..
+oewn-generate__2.36.01..	derivation		oewn-generative__3.00.00..
+oewn-generate__2.36.01..	derivation		oewn-generator__1.06.00..
+oewn-generate__2.36.01..	other	event	oewn-generation__1.04.01..
+oewn-generate__2.36.01..	other	instrument	oewn-generator__1.06.00..
+oewn-generate__2.36.02..	derivation		oewn-generation__1.04.01..
+oewn-generate__2.36.02..	other	event	oewn-generation__1.04.01..
+oewn-generation__1.14.00..	derivation		oewn-generational__3.01.00..
+oewn-generation__1.14.01..	derivation		oewn-generational__3.01.00..
+oewn-generation__1.28.01..	derivation		oewn-generational__3.01.00..
+oewn-generational__3.01.00..	pertainym		oewn-generation__1.14.01..
+oewn-generic__1.13.00..	antonym		oewn-varietal__1.13.00..
+oewn-generic__3.01.00..	derivation		oewn-genus__1.14.00..
+oewn-generic__3.01.00..	pertainym		oewn-genus__1.14.00..
+oewn-generic__5.00.00.general.00	derivation		oewn-genus__1.09.00..
+oewn-generic_wine__1.13.00..	antonym		oewn-varietal_wine__1.13.00..
+oewn-generically__4.02.00..	pertainym		oewn-generic__3.01.00..
+oewn-generically__4.02.01..	pertainym		oewn-generic__5.00.00.nonproprietary.00
+oewn-generosity__1.04.00..	derivation		oewn-generous__3.00.01..
+oewn-generosity__1.07.00..	antonym		oewn-stinginess__1.07.00..
+oewn-generosity__1.07.00..	derivation		oewn-generous__3.00.02..
+oewn-generous__3.00.01..	antonym		oewn-stingy__3.00.00..
+oewn-generous__3.00.01..	derivation		oewn-generousness__1.07.00..
+oewn-generous__3.00.02..	antonym		oewn-ungenerous__3.00.00..
+oewn-generous__3.00.02..	derivation		oewn-generousness__1.07.00..
+oewn-generously__4.02.00..	pertainym		oewn-generous__3.00.01..
+oewn-genetic__3.01.00..	derivation		oewn-genetics__1.09.00..
+oewn-genetic__3.01.00..	pertainym		oewn-genetics__1.09.00..
+oewn-genetic__3.01.01..	pertainym		oewn-origin__1.11.00..
+oewn-genetic__3.01.02..	pertainym		oewn-gene__1.08.00..
+oewn-genetical__3.01.00..	derivation		oewn-genetics__1.09.00..
+oewn-genetical__3.01.02..	pertainym		oewn-gene__1.08.00..
+oewn-genetically__4.02.00..	pertainym		oewn-genetic__3.01.00..
+oewn-geneticist__1.18.00..	derivation		oewn-genetics__1.09.00..
+oewn-genial__3.01.00..	pertainym		oewn-chin__1.08.00..
+oewn-genial__5.00.00.friendly.01	derivation		oewn-geniality__1.07.00..
+oewn-genially__4.02.00..	pertainym		oewn-genial__5.00.00.friendly.01
+oewn-genic__3.01.00..	pertainym		oewn-gene__1.08.00..
+oewn-genital__3.01.00..	pertainym		oewn-genitals__1.08.00..
+oewn-genitive__3.01.00..	pertainym		oewn-genitive_case__1.10.00..
+oewn-genitourinary__3.01.00..	pertainym		oewn-genital_organ__1.08.00..
+oewn-genitourinary__3.01.00..	pertainym		oewn-urinary_organ__1.08.00..
+oewn-genotype__1.07.00..	derivation		oewn-genotypic__3.01.00..
+oewn-genotype__1.07.00..	derivation		oewn-genotypical__3.01.00..
+oewn-genotype__1.14.00..	derivation		oewn-genotypic__3.01.00..
+oewn-genotype__1.14.00..	derivation		oewn-genotypical__3.01.00..
+oewn-genotypic__3.01.00..	pertainym		oewn-genotype__1.07.00..
+oewn-genotypical__3.01.00..	pertainym		oewn-genotype__1.07.00..
+oewn-genteel__5.00.00.refined.01	derivation		oewn-genteelness__1.07.00..
+oewn-genteelly__4.02.00..	pertainym		oewn-genteel__5.00.00.refined.01
+oewn-gentile__1.18.00..	derivation		oewn-gentile__3.01.00..
+oewn-gentile__1.18.01..	derivation		oewn-gentile__3.01.00..
+oewn-gentile__3.01.00..	pertainym		oewn-gentile__1.18.00..
+oewn-gentility__1.07.01..	derivation		oewn-gentle__5.00.00.noble.02
+oewn-gentle__5.00.00.gradual.02	derivation		oewn-gentleness__1.07.01..
+oewn-gentle__5.00.00.light.08	derivation		oewn-gentleness__1.07.00..
+oewn-gentle__5.00.00.mild.00	derivation		oewn-gentleness__1.07.00..
+oewn-gentle__5.00.00.soft.04	derivation		oewn-gentleness__1.07.00..
+oewn-gentle__5.00.01.kind.00	derivation		oewn-gentleness__1.07.00..
+oewn-gentleman__1.18.00..	derivation		oewn-gentlemanly__5.00.00.refined.01
+oewn-gently__4.02.00..	pertainym		oewn-gentle__5.00.00.gradual.02
+oewn-gently__4.02.01..	pertainym		oewn-gentle__5.00.00.soft.04
+oewn-gently__4.02.03..	pertainym		oewn-gentle__5.00.00.light.08
+oewn-gentrification__1.04.00..	derivation		oewn-gentrify__2.30.00..
+oewn-gentrify__2.30.00..	other	event	oewn-gentrification__1.04.00..
+oewn-genuflect__2.38.00..	derivation		oewn-genuflection__1.10.00..
+oewn-genuflect__2.38.00..	derivation		oewn-genuflexion__1.10.00..
+oewn-genuflect__2.38.00..	other	event	oewn-genuflection__1.10.00..
+oewn-genuflect__2.38.00..	other	event	oewn-genuflexion__1.10.00..
+oewn-genuflect__2.38.01..	derivation		oewn-genuflection__1.10.00..
+oewn-genuflect__2.38.01..	derivation		oewn-genuflexion__1.10.00..
+oewn-genuflect__2.38.01..	other	event	oewn-genuflection__1.10.00..
+oewn-genuflect__2.38.01..	other	event	oewn-genuflexion__1.10.00..
+oewn-genuine__3.00.00..	derivation		oewn-genuineness__1.07.01..
+oewn-genuine__5.00.00.sincere.00	derivation		oewn-genuineness__1.07.01..
+oewn-genuine__5.00.00.true.00	derivation		oewn-genuineness__1.26.00..
+oewn-genuinely__4.02.00..	pertainym		oewn-genuine__5.00.00.true.00
+oewn-genuinely__4.02.01..	pertainym		oewn-genuine__3.00.00..
+oewn-genuineness__1.26.00..	antonym		oewn-spuriousness__1.26.00..
+oewn-geocentric__3.00.00..	antonym		oewn-heliocentric__3.00.00..
+oewn-geodesic__1.25.00..	derivation		oewn-geodesic__3.01.00..
+oewn-geodesic__3.01.00..	derivation		oewn-geodesy__1.09.00..
+oewn-geodesic__3.01.00..	pertainym		oewn-geodesy__1.09.00..
+oewn-geodesical__3.01.00..	derivation		oewn-geodesy__1.09.00..
+oewn-geodesical__3.01.00..	pertainym		oewn-geodesy__1.09.00..
+oewn-geodesy__1.09.00..	derivation		oewn-geodetic__3.01.00..
+oewn-geodetic__3.01.00..	pertainym		oewn-geodesy__1.09.00..
+oewn-geographer__1.18.00..	derivation		oewn-geography__1.09.00..
+oewn-geographic__3.00.00..	antonym		oewn-magnetic__3.00.01..
+oewn-geographic__3.01.00..	pertainym		oewn-geography__1.09.00..
+oewn-geographical__3.01.00..	derivation		oewn-geography__1.09.00..
+oewn-geographical__3.01.00..	pertainym		oewn-geography__1.09.00..
+oewn-geographically__4.02.00..	pertainym		oewn-geographic__3.01.00..
+oewn-geologic__3.01.00..	derivation		oewn-geology__1.09.00..
+oewn-geologic__3.01.00..	pertainym		oewn-geology__1.09.00..
+oewn-geological__3.01.00..	derivation		oewn-geology__1.09.00..
+oewn-geological__3.01.00..	pertainym		oewn-geology__1.09.00..
+oewn-geologically__4.02.00..	pertainym		oewn-geological__3.01.00..
+oewn-geologist__1.18.00..	derivation		oewn-geology__1.09.00..
+oewn-geomancer__1.18.00..	derivation		oewn-geomancy__1.09.00..
+oewn-geometric__3.01.00..	derivation		oewn-geometry__1.09.00..
+oewn-geometric__3.01.00..	pertainym		oewn-geometry__1.09.00..
+oewn-geometrical__3.01.00..	derivation		oewn-geometry__1.09.00..
+oewn-geometrical__3.01.00..	pertainym		oewn-geometry__1.09.00..
+oewn-geometrical__5.00.00.nonrepresentational.00	derivation		oewn-geometry__1.09.00..
+oewn-geometrically__4.02.00..	antonym		oewn-linearly__4.02.00..
+oewn-geometrically__4.02.00..	pertainym		oewn-geometric__3.01.00..
+oewn-geometrically__4.02.03..	pertainym		oewn-geometric__3.01.00..
+oewn-geometrician__1.18.00..	derivation		oewn-geometry__1.09.00..
+oewn-geomorphologic__3.01.00..	derivation		oewn-geomorphology__1.09.00..
+oewn-geomorphologic__3.01.00..	pertainym		oewn-geomorphology__1.09.00..
+oewn-geomorphological__3.01.00..	derivation		oewn-geomorphology__1.09.00..
+oewn-geomorphological__3.01.00..	pertainym		oewn-geomorphology__1.09.00..
+oewn-geophysical__3.01.00..	derivation		oewn-geophysics__1.09.00..
+oewn-geophysical__3.01.00..	pertainym		oewn-geophysics__1.09.00..
+oewn-geophysicist__1.18.00..	derivation		oewn-geophysics__1.09.00..
+oewn-geophyte__1.20.00..	derivation		oewn-geophytic__3.01.00..
+oewn-geophytic__3.01.00..	pertainym		oewn-geophyte__1.20.00..
+oewn-geopolitical__3.01.00..	derivation		oewn-geopolitics__1.09.00..
+oewn-geopolitical__3.01.00..	pertainym		oewn-geopolitics__1.09.00..
+oewn-georgian__1.18.00..	derivation		oewn-georgian__3.01.04..
+oewn-geostrategic__3.01.00..	derivation		oewn-geostrategy__1.09.00..
+oewn-geostrategic__3.01.00..	pertainym		oewn-geostrategy__1.09.00..
+oewn-geothermal__3.01.00..	pertainym		oewn-heat__1.19.00..
+oewn-geothermally__4.02.00..	pertainym		oewn-geothermal__3.01.00..
+oewn-geothermic__3.01.00..	pertainym		oewn-heat__1.19.00..
+oewn-geriatric__3.01.00..	derivation		oewn-geriatrics__1.09.00..
+oewn-geriatric__3.01.00..	pertainym		oewn-geriatrics__1.09.00..
+oewn-geriatric__3.01.01..	derivation		oewn-geriatrics__1.09.00..
+oewn-geriatric__3.01.01..	pertainym		oewn-aged__1.14.00..
+oewn-geriatrician__1.18.00..	derivation		oewn-geriatrics__1.09.00..
+oewn-germ__1.05.00..	derivation		oewn-germy__3.00.00..
+oewn-germ__1.08.00..	derivation		oewn-germinate__2.30.00..
+oewn-germ__1.09.00..	derivation		oewn-germinal__5.00.00.original.00
+oewn-germ__1.09.00..	derivation		oewn-germinate__2.36.00..
+oewn-german--american__3.01.00..	pertainym		oewn-german_american__1.18.00..
+oewn-german__1.10.00..	derivation		oewn-german__3.01.00..
+oewn-german__1.10.00..	derivation		oewn-germanic__3.01.00..
+oewn-german__1.10.00..	derivation		oewn-germanic__3.01.02..
+oewn-german__1.18.00..	derivation		oewn-german__3.01.00..
+oewn-germane__5.00.00.relevant.00	derivation		oewn-germaneness__1.24.00..
+oewn-germanic__1.10.00..	derivation		oewn-germanic__3.01.02..
+oewn-germanic__3.01.00..	pertainym		oewn-germanic__1.10.00..
+oewn-germanic__3.01.02..	pertainym		oewn-teuton__1.18.00..
+oewn-germfree__3.00.00..	antonym		oewn-germy__3.00.00..
+oewn-germicidal__5.00.00.antiseptic.00	derivation		oewn-germicide__1.06.00..
+oewn-germinate__2.30.00..	derivation		oewn-germination__1.22.00..
+oewn-germinate__2.30.00..	other	event	oewn-germination__1.22.00..
+oewn-germinate__2.30.01..	derivation		oewn-germination__1.11.00..
+oewn-germinate__2.30.01..	derivation		oewn-germination__1.22.00..
+oewn-germinate__2.30.01..	other	event	oewn-germination__1.11.00..
+oewn-germinate__2.30.01..	other	event	oewn-germination__1.22.00..
+oewn-gerontological__3.01.00..	derivation		oewn-gerontology__1.09.00..
+oewn-gerontological__3.01.00..	pertainym		oewn-geriatrics__1.09.00..
+oewn-gerontologist__1.18.00..	derivation		oewn-gerontology__1.09.00..
+oewn-gerrymander__1.04.00..	derivation		oewn-gerrymander__2.41.00..
+oewn-gerrymander__2.41.00..	other	event	oewn-gerrymander__1.04.00..
+oewn-gerund__1.10.00..	derivation		oewn-gerundial__3.01.00..
+oewn-gerundial__3.01.00..	pertainym		oewn-gerund__1.10.00..
+oewn-gestate__2.29.00..	derivation		oewn-gestation__1.26.00..
+oewn-gestate__2.29.00..	derivation		oewn-gestation__1.28.00..
+oewn-gestate__2.29.00..	other	event	oewn-gestation__1.28.00..
+oewn-gestate__2.29.00..	other	state	oewn-gestation__1.26.00..
+oewn-gestate__2.36.03..	derivation		oewn-gestation__1.09.00..
+oewn-gestate__2.36.03..	other	event	oewn-gestation__1.09.00..
+oewn-gestation__1.09.00..	derivation		oewn-gestational__3.01.00..
+oewn-gestation__1.26.00..	derivation		oewn-gestational__3.01.00..
+oewn-gestation__1.28.00..	derivation		oewn-gestational__3.01.00..
+oewn-gestational__3.01.00..	pertainym		oewn-gestation__1.26.00..
+oewn-gesticulate__2.32.00..	derivation		oewn-gesticulation__1.10.00..
+oewn-gesticulate__2.32.00..	derivation		oewn-gesture__1.04.00..
+oewn-gesticulate__2.32.00..	derivation		oewn-gesture__1.10.00..
+oewn-gesticulate__2.32.00..	other	event	oewn-gesticulation__1.10.00..
+oewn-gesture__1.04.00..	derivation		oewn-gesture__2.32.00..
+oewn-gesture__1.10.00..	derivation		oewn-gesture__2.32.00..
+oewn-gesture__2.32.00..	other	by_means_of	oewn-gesture__1.04.00..
+oewn-gesture__2.32.00..	other	by_means_of	oewn-gesture__1.10.00..
+oewn-get__2.29.01..	derivation		oewn-getting__1.04.00..
+oewn-get__2.30.00..	also		oewn-get_ahead__2.33.00..
+oewn-get__2.30.00..	also		oewn-get_along__2.30.00..
+oewn-get__2.30.00..	also		oewn-get_on__2.30.00..
+oewn-get__2.30.00..	also		oewn-get_over__2.33.00..
+oewn-get__2.40.00..	derivation		oewn-getting__1.04.00..
+oewn-get__2.40.13..	derivation		oewn-getting__1.04.00..
+oewn-get_away__2.38.00..	derivation		oewn-getaway__1.04.00..
+oewn-get_off__2.38.02..	antonym		oewn-get_on__2.38.03..
+oewn-get_together__1.14.00..	derivation		oewn-get_together__2.41.01..
+oewn-get_together__1.14.00..	derivation		oewn-get_together__2.41.03..
+oewn-get_together__2.41.01..	other	event	oewn-get_together__1.14.00..
+oewn-get_together__2.41.03..	other	event	oewn-get_together__1.14.00..
+oewn-get_up__2.29.00..	antonym		oewn-go_to_bed__2.29.00..
+oewn-get_up__2.29.02..	derivation		oewn-getup__1.06.00..
+oewn-get_well__2.30.00..	antonym		oewn-get_worse__2.30.00..
+oewn-geyser__1.17.00..	derivation		oewn-geyser__2.38.00..
+oewn-geyser__2.38.00..	other	by_means_of	oewn-geyser__1.17.00..
+oewn-ghanian__1.18.00..	derivation		oewn-ghanian__3.01.00..
+oewn-ghastliness__1.07.00..	derivation		oewn-ghastly__5.00.00.alarming.00
+oewn-ghastliness__1.07.00..	derivation		oewn-ghastly__5.00.00.offensive.01
+oewn-ghetto__1.15.00..	derivation		oewn-ghettoize__2.30.00..
+oewn-ghettoise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-ghettoise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-ghettoize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ghost__1.09.00..	derivation		oewn-ghost__2.37.00..
+oewn-ghost__1.18.00..	derivation		oewn-ghost__2.38.00..
+oewn-ghost__1.18.00..	derivation		oewn-ghostly__5.00.00.supernatural.00
+oewn-ghost__1.18.01..	derivation		oewn-ghost__2.36.00..
+oewn-ghost__2.36.00..	other	agent	oewn-ghost__1.18.01..
+oewn-ghostliness__1.07.00..	derivation		oewn-ghostly__5.00.00.supernatural.00
+oewn-ghostwrite__2.36.00..	derivation		oewn-ghostwriter__1.18.00..
+oewn-ghostwrite__2.36.00..	other	agent	oewn-ghostwriter__1.18.00..
+oewn-giant__1.05.00..	derivation		oewn-giant__5.00.00.large.00
+oewn-giant__1.05.00..	derivation		oewn-gigantic__5.00.01.large.00
+oewn-giant__1.14.00..	derivation		oewn-gigantic__5.00.01.large.00
+oewn-giant__1.18.00..	derivation		oewn-giant__5.00.00.large.00
+oewn-giant__1.18.00..	derivation		oewn-gigantic__5.00.01.large.00
+oewn-giant__1.18.02..	derivation		oewn-giant__5.00.00.large.00
+oewn-giant__1.18.02..	derivation		oewn-gigantic__5.00.01.large.00
+oewn-giant__1.18.03..	derivation		oewn-giant__5.00.00.large.00
+oewn-giant__1.18.03..	derivation		oewn-gigantic__5.00.01.large.00
+oewn-gibber__1.10.00..	derivation		oewn-gibber__2.32.01..
+oewn-gibber__2.32.01..	derivation		oewn-gibberish__1.10.00..
+oewn-gibber__2.32.01..	other	event	oewn-gibber__1.10.00..
+oewn-gibber__2.32.01..	other	result	oewn-gibber__1.10.00..
+oewn-gibbet__1.06.00..	derivation		oewn-gibbet__2.41.00..
+oewn-gibbet__2.41.00..	other	instrument	oewn-gibbet__1.06.00..
+oewn-gibbosity__1.25.00..	derivation		oewn-gibbous__5.00.00.unfit.01
+oewn-gibbous__5.00.00.unfit.01	derivation		oewn-gibbousness__1.25.00..
+oewn-gibe__1.10.00..	derivation		oewn-gibe__2.32.00..
+oewn-gibe__2.32.00..	other	event	oewn-gibe__1.10.00..
+oewn-gibraltarian__1.18.00..	derivation		oewn-gibraltarian__3.01.00..
+oewn-giddily__4.02.00..	pertainym		oewn-giddy__5.00.00.ill.01
+oewn-giddiness__1.07.00..	derivation		oewn-giddy__5.00.00.frivolous.00
+oewn-giddiness__1.26.00..	derivation		oewn-giddy__5.00.00.ill.01
+oewn-gift--wrap__2.35.00..	derivation		oewn-gift_wrapping__1.06.00..
+oewn-gift__1.04.00..	derivation		oewn-gift__2.40.00..
+oewn-gift__1.09.00..	derivation		oewn-gift__2.41.00..
+oewn-gift__1.21.00..	derivation		oewn-gift__2.40.00..
+oewn-gift__1.21.00..	derivation		oewn-gift__2.41.00..
+oewn-gift__2.40.00..	other	event	oewn-gift__1.04.00..
+oewn-gift__2.40.00..	other	undergoer	oewn-gift__1.21.00..
+oewn-gift__2.41.00..	other	property	oewn-gift__1.09.00..
+oewn-giggle__1.10.00..	derivation		oewn-giggle__2.29.00..
+oewn-giggle__2.29.00..	derivation		oewn-giggler__1.18.00..
+oewn-giggle__2.29.00..	other	agent	oewn-giggler__1.18.00..
+oewn-giggle__2.29.00..	other	event	oewn-giggle__1.10.00..
+oewn-gild__2.36.00..	derivation		oewn-gilder__1.18.00..
+oewn-gild__2.36.00..	derivation		oewn-gilding__1.06.00..
+oewn-gild__2.36.00..	other	agent	oewn-gilder__1.18.00..
+oewn-gilt__1.06.00..	derivation		oewn-gilt__5.00.00.chromatic.00
+oewn-gimp__1.26.00..	derivation		oewn-gimp__2.38.00..
+oewn-gimpiness__1.26.00..	derivation		oewn-gimpy__5.00.00.unfit.01
+oewn-gin__1.06.00..	derivation		oewn-gin__2.35.03..
+oewn-gin__1.06.01..	derivation		oewn-gin__2.35.00..
+oewn-gin__2.35.00..	other	by_means_of	oewn-gin__1.06.01..
+oewn-gin__2.35.03..	other	by_means_of	oewn-gin__1.06.00..
+oewn-ginger__1.13.00..	derivation		oewn-ginger__2.39.00..
+oewn-ginger__1.13.02..	derivation		oewn-ginger__2.39.00..
+oewn-ginger__2.39.00..	other	material	oewn-ginger__1.13.00..
+oewn-ginger__2.39.00..	other	material	oewn-ginger__1.13.02..
+oewn-ginger__2.39.00..	other	uses	oewn-ginger__1.13.00..
+oewn-ginger__2.39.00..	other	uses	oewn-ginger__1.13.02..
+oewn-gingerly__4.02.00..	pertainym		oewn-gingerly__5.00.00.cautious.00
+oewn-gingiva__1.08.00..	derivation		oewn-gingival__3.01.00..
+oewn-gingival__3.01.00..	pertainym		oewn-gingiva__1.08.00..
+oewn-gip__1.04.00..	derivation		oewn-gip__2.41.00..
+oewn-girdle__1.06.00..	derivation		oewn-girdle__2.35.00..
+oewn-girdle__1.08.00..	derivation		oewn-girdle__2.35.01..
+oewn-girdle__2.35.00..	other	uses	oewn-girdle__1.06.00..
+oewn-girdle__2.35.01..	other	uses	oewn-girdle__1.08.00..
+oewn-girl__1.18.00..	derivation		oewn-girlhood__1.28.00..
+oewn-girl__1.18.02..	derivation		oewn-girlhood__1.28.00..
+oewn-girlish__5.00.00.young.00	derivation		oewn-girlishness__1.07.00..
+oewn-girlishly__4.02.00..	pertainym		oewn-girlish__5.00.00.young.00
+oewn-gironde__1.14.00..	derivation		oewn-girondist__1.18.00..
+oewn-girth__1.06.00..	derivation		oewn-girth__2.35.00..
+oewn-girth__2.35.00..	other	uses	oewn-girth__1.06.00..
+oewn-give__1.07.00..	derivation		oewn-give__2.35.00..
+oewn-give__2.32.15..	derivation		oewn-giving__1.10.00..
+oewn-give__2.34.00..	derivation		oewn-giving__1.04.00..
+oewn-give__2.35.00..	also		oewn-give_in__2.32.01..
+oewn-give__2.35.00..	other	property	oewn-give__1.07.00..
+oewn-give__2.40.00..	also		oewn-give_back__2.40.00..
+oewn-give__2.40.00..	antonym		oewn-take__2.40.00..
+oewn-give__2.40.00..	derivation		oewn-giver__1.18.00..
+oewn-give__2.40.00..	derivation		oewn-giving__1.04.00..
+oewn-give__2.40.00..	derivation		oewn-giving__1.04.01..
+oewn-give__2.40.00..	other	agent	oewn-giver__1.18.00..
+oewn-give__2.40.01..	derivation		oewn-giver__1.18.00..
+oewn-give__2.40.01..	derivation		oewn-giving__1.04.01..
+oewn-give__2.40.01..	other	agent	oewn-giver__1.18.00..
+oewn-give__2.40.07..	derivation		oewn-giving__1.10.00..
+oewn-give__2.40.08..	derivation		oewn-giving__1.04.00..
+oewn-give__2.40.08..	derivation		oewn-giving__1.04.01..
+oewn-give__2.40.09..	derivation		oewn-giving__1.10.00..
+oewn-give_away__2.32.00..	derivation		oewn-giveaway__1.10.00..
+oewn-given__1.09.00..	derivation		oewn-given__5.00.00.acknowledged.00
+oewn-given__5.00.00.acknowledged.00	derivation		oewn-givenness__1.07.00..
+oewn-glabella__1.08.00..	derivation		oewn-glabellar__3.01.00..
+oewn-glabellar__3.01.00..	pertainym		oewn-glabella__1.08.00..
+oewn-glacial__3.01.00..	derivation		oewn-glaciation__1.22.00..
+oewn-glacial__3.01.00..	derivation		oewn-glaciation__1.26.00..
+oewn-glacial__3.01.00..	derivation		oewn-glacier__1.17.00..
+oewn-glacial__3.01.00..	pertainym		oewn-glacier__1.17.00..
+oewn-glacially__4.02.00..	pertainym		oewn-glacial__3.01.00..
+oewn-glaciate__2.30.00..	derivation		oewn-glaciation__1.22.00..
+oewn-glaciate__2.30.00..	derivation		oewn-glaciation__1.26.00..
+oewn-glaciate__2.30.00..	derivation		oewn-glacier__1.17.00..
+oewn-glaciate__2.30.00..	other	event	oewn-glaciation__1.22.00..
+oewn-glaciate__2.30.00..	other	result	oewn-glacier__1.17.00..
+oewn-glaciate__2.30.00..	other	state	oewn-glaciation__1.26.00..
+oewn-glaciate__2.35.00..	derivation		oewn-glaciation__1.22.00..
+oewn-glaciate__2.35.00..	derivation		oewn-glaciation__1.26.00..
+oewn-glaciate__2.35.00..	derivation		oewn-glacier__1.17.00..
+oewn-glaciate__2.35.00..	other	event	oewn-glaciation__1.22.00..
+oewn-glaciate__2.35.00..	other	result	oewn-glacier__1.17.00..
+oewn-glaciate__2.35.00..	other	state	oewn-glaciation__1.26.00..
+oewn-glad__3.00.00..	antonym		oewn-sad__3.00.00..
+oewn-glad__3.00.00..	derivation		oewn-gladness__1.12.00..
+oewn-glad__5.00.00.cheerful.00	derivation		oewn-gladness__1.12.00..
+oewn-glad__5.00.00.grateful.00	derivation		oewn-gladness__1.12.00..
+oewn-gladden__2.37.00..	antonym		oewn-sadden__2.37.00..
+oewn-gladden__2.37.01..	antonym		oewn-sadden__2.37.01..
+oewn-gladiator__1.18.00..	derivation		oewn-gladiatorial__3.01.00..
+oewn-gladiatorial__3.01.00..	pertainym		oewn-gladiator__1.18.00..
+oewn-gladly__4.02.00..	pertainym		oewn-glad__5.00.00.willing.00
+oewn-gladsome__5.00.00.glad.00	derivation		oewn-gladsomeness__1.12.00..
+oewn-glamor__1.07.00..	derivation		oewn-glamorize__2.30.00..
+oewn-glamor__1.07.00..	derivation		oewn-glamorous__5.00.00.exciting.00
+oewn-glamor__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glamorisation__1.04.00..	derivation		oewn-glamorise__2.30.00..
+oewn-glamorisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glamorisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glamorise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glamorise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glamorise__2.30.00..	other	event	oewn-glamorisation__1.04.00..
+oewn-glamorization__1.04.00..	derivation		oewn-glamorize__2.30.00..
+oewn-glamorization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glamorize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glamorize__2.30.00..	other	event	oewn-glamorization__1.04.00..
+oewn-glamorize__2.30.00..	other	state	oewn-glamor__1.07.00..
+oewn-glamour__1.07.00..	derivation		oewn-glamour__2.32.00..
+oewn-glamour__1.07.00..	derivation		oewn-glamourise__2.30.00..
+oewn-glamour__1.07.00..	derivation		oewn-glamourous__5.00.00.exciting.00
+oewn-glamour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glamour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glamour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-glamour__2.32.00..	other	property	oewn-glamour__1.07.00..
+oewn-glamourisation__1.04.00..	derivation		oewn-glamourise__2.30.00..
+oewn-glamourisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glamourisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glamourise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glamourise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glamourise__2.30.00..	other	event	oewn-glamourisation__1.04.00..
+oewn-glamourization__1.04.00..	derivation		oewn-glamourize__2.30.00..
+oewn-glamourization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glamourize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glamourize__2.30.00..	other	event	oewn-glamourization__1.04.00..
+oewn-glance__1.04.00..	derivation		oewn-glance__2.39.00..
+oewn-glance__2.39.00..	other	event	oewn-glance__1.04.00..
+oewn-gland__1.08.00..	derivation		oewn-glandular__3.01.00..
+oewn-glandular__3.01.00..	pertainym		oewn-gland__1.08.00..
+oewn-glare__1.04.00..	derivation		oewn-glare__2.29.00..
+oewn-glare__1.07.00..	derivation		oewn-glare__2.39.01..
+oewn-glare__2.29.00..	other	event	oewn-glare__1.04.00..
+oewn-glare__2.39.01..	other	event	oewn-glare__1.07.00..
+oewn-glaringly__4.02.00..	pertainym		oewn-glaring__5.00.00.conspicuous.00
+oewn-glass__1.06.00..	derivation		oewn-glass__2.30.01..
+oewn-glass__1.06.03..	derivation		oewn-glass__2.39.00..
+oewn-glass__1.06.04..	derivation		oewn-glass__2.30.01..
+oewn-glass__1.23.00..	derivation		oewn-glass__2.30.01..
+oewn-glass__1.27.00..	derivation		oewn-glass__2.35.00..
+oewn-glass__1.27.00..	derivation		oewn-glass__2.40.00..
+oewn-glass__1.27.00..	derivation		oewn-glassy__5.00.00.smooth.00
+oewn-glass__2.30.01..	other	undergoer	oewn-glass__1.23.00..
+oewn-glass__2.35.00..	other	uses	oewn-glass__1.27.00..
+oewn-glass__2.39.00..	other	instrument	oewn-glass__1.06.03..
+oewn-glass__2.40.00..	other	uses	oewn-glass__1.27.00..
+oewn-glass_fiber__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glass_fibre__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glass_fibre__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glass_fibre__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-glaswegian__1.18.00..	derivation		oewn-glaswegian__3.01.00..
+oewn-glaze__1.07.00..	derivation		oewn-glaze__2.35.00..
+oewn-glaze__1.13.00..	derivation		oewn-glaze__2.39.00..
+oewn-glaze__2.35.00..	also		oewn-glaze_over__2.39.00..
+oewn-glaze__2.35.00..	other	uses	oewn-glaze__1.07.00..
+oewn-glaze__2.39.00..	other	uses	oewn-glaze__1.13.00..
+oewn-glaze__2.40.00..	derivation		oewn-glazier__1.18.00..
+oewn-glaze__2.40.00..	other	agent	oewn-glazier__1.18.00..
+oewn-glazed__3.00.00..	antonym		oewn-unglazed__3.00.00..
+oewn-glazed__3.00.01..	antonym		oewn-unglazed__3.00.01..
+oewn-gleam__1.11.00..	derivation		oewn-gleam__2.39.00..
+oewn-gleam__2.39.00..	derivation		oewn-gleaming__1.11.00..
+oewn-gleam__2.39.00..	other	event	oewn-gleam__1.11.00..
+oewn-glean__2.35.00..	derivation		oewn-gleaner__1.18.00..
+oewn-glean__2.35.00..	other	agent	oewn-gleaner__1.18.00..
+oewn-gleeful__5.00.00.joyous.00	derivation		oewn-gleefulness__1.12.00..
+oewn-gleefully__4.02.00..	pertainym		oewn-gleeful__5.00.00.joyous.00
+oewn-glia__1.08.00..	derivation		oewn-glial__3.01.00..
+oewn-glial__3.01.00..	pertainym		oewn-glia__1.08.00..
+oewn-glib__5.00.00.persuasive.00	derivation		oewn-glibness__1.07.00..
+oewn-glib__5.00.00.plausible.00	derivation		oewn-glibness__1.07.00..
+oewn-glib__5.00.00.superficial.00	derivation		oewn-glibness__1.07.00..
+oewn-glibly__4.02.00..	pertainym		oewn-glib__5.00.00.plausible.00
+oewn-glide__1.04.00..	derivation		oewn-glide__2.38.00..
+oewn-glide__1.04.00..	derivation		oewn-glide__2.38.02..
+oewn-glide__1.04.01..	derivation		oewn-glide__2.38.01..
+oewn-glide__2.38.00..	also		oewn-glide_by__2.38.00..
+oewn-glide__2.38.00..	derivation		oewn-glider__1.06.00..
+oewn-glide__2.38.00..	other	event	oewn-glide__1.04.00..
+oewn-glide__2.38.00..	other	vehicle	oewn-glider__1.06.00..
+oewn-glide__2.38.01..	derivation		oewn-glider__1.06.00..
+oewn-glide__2.38.01..	derivation		oewn-gliding__1.04.00..
+oewn-glide__2.38.01..	other	event	oewn-glide__1.04.01..
+oewn-glide__2.38.01..	other	vehicle	oewn-glider__1.06.00..
+oewn-glide__2.38.02..	other	event	oewn-glide__1.04.00..
+oewn-glimmer__1.11.00..	derivation		oewn-glimmer__2.39.00..
+oewn-glimmer__1.11.00..	derivation		oewn-glimmery__5.00.00.bright.00
+oewn-glimmer__2.39.00..	other	event	oewn-glimmer__1.11.00..
+oewn-glimpse__1.04.00..	derivation		oewn-glimpse__2.39.00..
+oewn-glimpse__1.09.00..	derivation		oewn-glimpse__2.39.00..
+oewn-glimpse__2.39.00..	other	event	oewn-glimpse__1.04.00..
+oewn-glimpse__2.39.00..	other	event	oewn-glimpse__1.09.00..
+oewn-glint__1.11.00..	derivation		oewn-glint__2.39.00..
+oewn-glint__2.39.00..	other	event	oewn-glint__1.11.00..
+oewn-glissade__1.04.00..	derivation		oewn-glissade__2.38.00..
+oewn-glissade__2.38.00..	other	event	oewn-glissade__1.04.00..
+oewn-glisten__1.07.00..	derivation		oewn-glisten__2.39.00..
+oewn-glisten__2.39.00..	other	property	oewn-glisten__1.07.00..
+oewn-glitter__1.07.00..	derivation		oewn-glitter__2.39.00..
+oewn-glitter__1.07.00..	derivation		oewn-glittery__5.00.00.bright.00
+oewn-glitter__1.11.00..	derivation		oewn-glittery__5.00.00.bright.00
+oewn-glitter__2.39.00..	other	property	oewn-glitter__1.07.00..
+oewn-glitter__2.39.00..	other	state	oewn-glitter__1.07.00..
+oewn-gloat__1.12.00..	derivation		oewn-gloat__2.32.00..
+oewn-gloat__1.12.00..	derivation		oewn-gloat__2.39.00..
+oewn-gloat__2.32.00..	derivation		oewn-gloating__1.12.00..
+oewn-gloat__2.32.00..	other	event	oewn-gloat__1.12.00..
+oewn-gloat__2.39.00..	derivation		oewn-gloating__1.12.00..
+oewn-gloat__2.39.00..	other	event	oewn-gloat__1.12.00..
+oewn-global__5.00.00.round.00	derivation		oewn-globe__1.25.00..
+oewn-globalisation__1.22.00..	derivation		oewn-globalise__2.30.00..
+oewn-globalisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-globalisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-globalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-globalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-globalise__2.30.00..	other	event	oewn-globalisation__1.22.00..
+oewn-globalization__1.22.00..	derivation		oewn-globalize__2.30.00..
+oewn-globalization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-globalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-globalize__2.30.00..	other	event	oewn-globalization__1.22.00..
+oewn-globally__4.02.00..	pertainym		oewn-global__5.00.00.international.00
+oewn-globally__4.02.01..	pertainym		oewn-global__5.00.00.international.00
+oewn-globe__1.06.00..	derivation		oewn-globular__5.00.00.round.00
+oewn-globe__1.25.00..	derivation		oewn-globular__5.00.00.round.00
+oewn-globose__5.00.00.round.00	derivation		oewn-globosity__1.07.00..
+oewn-globular__5.00.00.round.00	derivation		oewn-globularness__1.07.00..
+oewn-glomerular__3.01.00..	derivation		oewn-glomerulus__1.08.00..
+oewn-glomerular__3.01.00..	pertainym		oewn-glomerulus__1.08.00..
+oewn-gloom__1.26.01..	derivation		oewn-gloomy__5.00.00.dark.01
+oewn-gloomily__4.02.00..	pertainym		oewn-gloomy__5.00.00.dejected.00
+oewn-gloominess__1.07.00..	derivation		oewn-gloomy__5.00.00.dark.01
+oewn-gloominess__1.07.00..	derivation		oewn-gloomy__5.00.00.dejected.00
+oewn-gloominess__1.12.00..	derivation		oewn-gloomy__5.00.00.dejected.00
+oewn-glorification__1.04.00..	derivation		oewn-glorify__2.32.00..
+oewn-glorification__1.04.01..	derivation		oewn-glorify__2.30.01..
+oewn-glorification__1.26.00..	derivation		oewn-glorify__2.30.00..
+oewn-glorification__1.26.00..	derivation		oewn-glorify__2.32.00..
+oewn-glorify__2.30.00..	derivation		oewn-glory__1.07.00..
+oewn-glorify__2.30.00..	derivation		oewn-glory__1.26.00..
+oewn-glorify__2.30.00..	other	result	oewn-glorification__1.26.00..
+oewn-glorify__2.30.00..	other	result	oewn-glory__1.26.00..
+oewn-glorify__2.30.00..	other	state	oewn-glorification__1.26.00..
+oewn-glorify__2.30.00..	other	uses	oewn-glory__1.07.00..
+oewn-glorify__2.30.01..	derivation		oewn-glory__1.07.00..
+oewn-glorify__2.30.01..	derivation		oewn-glory__1.26.00..
+oewn-glorify__2.30.01..	other	by_means_of	oewn-glorification__1.04.01..
+oewn-glorify__2.30.01..	other	event	oewn-glorification__1.04.01..
+oewn-glorify__2.30.01..	other	result	oewn-glory__1.07.00..
+oewn-glorify__2.30.01..	other	result	oewn-glory__1.26.00..
+oewn-glorify__2.32.00..	derivation		oewn-glory__1.07.00..
+oewn-glorify__2.32.00..	derivation		oewn-glory__1.26.00..
+oewn-glorify__2.32.00..	other	event	oewn-glorification__1.04.00..
+oewn-glorify__2.32.00..	other	result	oewn-glorification__1.26.00..
+oewn-glorify__2.32.00..	other	result	oewn-glory__1.26.00..
+oewn-glorify__2.32.00..	other	state	oewn-glorification__1.26.00..
+oewn-glorious__3.00.00..	antonym		oewn-inglorious__3.00.00..
+oewn-glorious__3.00.00..	derivation		oewn-glory__1.26.00..
+oewn-glorious__5.00.00.beautiful.00	derivation		oewn-glory__1.07.00..
+oewn-glorious__5.00.00.impressive.00	derivation		oewn-glory__1.07.00..
+oewn-gloriously__4.02.01..	pertainym		oewn-glorious__3.00.00..
+oewn-glory__1.26.00..	derivation		oewn-glory__2.32.00..
+oewn-glory__2.32.00..	other	state	oewn-glory__1.26.00..
+oewn-gloss__1.07.00..	derivation		oewn-gloss__2.36.00..
+oewn-gloss__1.07.01..	derivation		oewn-gloss__2.32.02..
+oewn-gloss__1.10.00..	derivation		oewn-gloss__2.32.00..
+oewn-gloss__1.10.00..	derivation		oewn-gloss__2.32.01..
+oewn-gloss__1.10.01..	derivation		oewn-gloss__2.32.00..
+oewn-gloss__1.10.01..	derivation		oewn-gloss__2.32.01..
+oewn-gloss__2.32.00..	other	uses	oewn-gloss__1.10.00..
+oewn-gloss__2.32.00..	other	uses	oewn-gloss__1.10.01..
+oewn-gloss__2.32.01..	other	uses	oewn-gloss__1.10.00..
+oewn-gloss__2.32.01..	other	uses	oewn-gloss__1.10.01..
+oewn-gloss__2.32.02..	other	event	oewn-gloss__1.07.01..
+oewn-gloss__2.36.00..	also		oewn-gloss_over__2.39.00..
+oewn-gloss__2.36.00..	also		oewn-gloss_over__2.41.00..
+oewn-gloss__2.36.00..	other	property	oewn-gloss__1.07.00..
+oewn-glossily__4.02.00..	pertainym		oewn-glossy__5.00.00.glazed.00
+oewn-glossiness__1.07.00..	derivation		oewn-glossy__5.00.00.bright.00
+oewn-glossiness__1.07.00..	derivation		oewn-glossy__5.00.00.glazed.00
+oewn-glossopharyngeal__3.01.00..	pertainym		oewn-throat__1.08.00..
+oewn-glossopharyngeal__3.01.00..	pertainym		oewn-tongue__1.08.00..
+oewn-glottal__3.01.00..	derivation		oewn-glottis__1.08.00..
+oewn-glottal__3.01.00..	pertainym		oewn-glottis__1.08.00..
+oewn-glottochronological__3.01.00..	derivation		oewn-glottochronology__1.09.00..
+oewn-glottochronological__3.01.00..	pertainym		oewn-glottochronology__1.09.00..
+oewn-gloved__3.00.00..	antonym		oewn-gloveless__3.00.00..
+oewn-glow__1.07.00..	derivation		oewn-glow__2.39.00..
+oewn-glow__1.07.01..	derivation		oewn-glow__2.39.01..
+oewn-glow__1.12.00..	derivation		oewn-glow__2.37.00..
+oewn-glow__1.19.00..	derivation		oewn-glow__2.43.00..
+oewn-glow__1.26.00..	derivation		oewn-glow__2.37.00..
+oewn-glow__1.26.00..	derivation		oewn-glow__2.37.01..
+oewn-glow__2.37.00..	other	state	oewn-glow__1.12.00..
+oewn-glow__2.37.00..	other	state	oewn-glow__1.26.00..
+oewn-glow__2.37.01..	other	state	oewn-glow__1.26.00..
+oewn-glow__2.43.00..	other	event	oewn-glow__1.19.00..
+oewn-glower__1.04.00..	derivation		oewn-glower__2.29.00..
+oewn-glower__1.04.00..	derivation		oewn-glower__2.29.01..
+oewn-glower__2.29.00..	other	event	oewn-glower__1.04.00..
+oewn-glower__2.29.01..	other	event	oewn-glower__1.04.00..
+oewn-gloweringly__4.02.00..	pertainym		oewn-glowering__5.00.00.ill-natured.00
+oewn-glowingly__4.02.00..	pertainym		oewn-glowing__5.00.00.enthusiastic.00
+oewn-glucophage__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-glucotrol__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-glue__1.27.00..	derivation		oewn-glue__2.30.00..
+oewn-glue__1.27.00..	derivation		oewn-glue__2.35.00..
+oewn-glue__1.27.00..	derivation		oewn-gluey__5.00.00.adhesive.00
+oewn-glue__2.30.00..	other	by_means_of	oewn-glue__1.27.00..
+oewn-glue__2.35.00..	other	by_means_of	oewn-glue__1.27.00..
+oewn-gluey__5.00.00.adhesive.00	derivation		oewn-glueyness__1.07.00..
+oewn-gluey__5.00.00.adhesive.00	derivation		oewn-gluiness__1.07.00..
+oewn-glum__5.00.00.dejected.00	derivation		oewn-glumness__1.12.00..
+oewn-glum__5.00.00.ill-natured.00	derivation		oewn-glumness__1.12.00..
+oewn-glumly__4.02.00..	pertainym		oewn-glum__5.00.00.ill-natured.00
+oewn-glut__1.07.00..	derivation		oewn-glut__2.40.00..
+oewn-glut__2.40.00..	other	property	oewn-glut__1.07.00..
+oewn-gluteal__3.01.00..	derivation		oewn-gluteus__1.08.00..
+oewn-gluteal__3.01.00..	pertainym		oewn-gluteus__1.08.00..
+oewn-gluten__1.13.00..	derivation		oewn-glutinous__5.00.00.adhesive.00
+oewn-glutinosity__1.07.00..	derivation		oewn-glutinous__5.00.00.adhesive.00
+oewn-glutinous__5.00.00.adhesive.00	derivation		oewn-glutinousness__1.07.00..
+oewn-glutton__1.18.00..	derivation		oewn-gluttonize__2.34.00..
+oewn-glutton__1.18.00..	derivation		oewn-gluttonous__3.00.00..
+oewn-gluttonise__2.34.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gluttonise__2.34.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gluttonize__2.34.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gluttonously__4.02.00..	pertainym		oewn-gluttonous__3.00.00..
+oewn-glycerin__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glycerine__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glycerine__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glycerol__1.27.00..	derivation		oewn-glycerolize__2.38.00..
+oewn-glycerolise__2.38.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-glycerolise__2.38.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-glycerolize__2.38.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-glycogen__1.27.00..	derivation		oewn-glycogenic__3.01.00..
+oewn-glycogenic__3.01.00..	pertainym		oewn-glycogen__1.27.00..
+oewn-gnarl__1.25.00..	derivation		oewn-gnarl__2.35.00..
+oewn-gnarl__1.25.00..	derivation		oewn-gnarly__5.00.00.crooked.01
+oewn-gnarl__2.35.00..	other	result	oewn-gnarl__1.25.00..
+oewn-gnaw__2.35.00..	derivation		oewn-gnawer__1.05.00..
+oewn-gnaw__2.35.00..	other	agent	oewn-gnawer__1.05.00..
+oewn-gnome__1.18.00..	derivation		oewn-gnomic__3.01.00..
+oewn-gnomic__3.01.00..	pertainym		oewn-gnome__1.10.00..
+oewn-gnosis__1.09.00..	derivation		oewn-gnostic__3.00.00..
+oewn-gnosis__1.09.00..	derivation		oewn-gnostic__3.01.00..
+oewn-gnostic__1.18.00..	derivation		oewn-gnostic__3.01.00..
+oewn-gnostic__3.01.00..	pertainym		oewn-gnosticism__1.09.00..
+oewn-go--ahead__1.07.00..	derivation		oewn-go_ahead__2.32.00..
+oewn-go--ahead__1.10.00..	derivation		oewn-go_ahead__2.32.00..
+oewn-go__1.28.00..	derivation		oewn-go__2.33.00..
+oewn-go__2.30.00..	derivation		oewn-going__1.11.00..
+oewn-go__2.33.00..	other	event	oewn-go__1.28.00..
+oewn-go__2.38.00..	also		oewn-go_around__2.32.00..
+oewn-go__2.38.00..	also		oewn-go_by__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_by__2.38.01..
+oewn-go__2.38.00..	also		oewn-go_down__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_down__2.38.01..
+oewn-go__2.38.00..	also		oewn-go_down__2.38.02..
+oewn-go__2.38.00..	also		oewn-go_off__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_on__2.32.00..
+oewn-go__2.38.00..	also		oewn-go_on__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_out__2.42.00..
+oewn-go__2.38.00..	also		oewn-go_under__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_up__2.38.00..
+oewn-go__2.38.00..	also		oewn-go_up__2.38.01..
+oewn-go__2.38.01..	derivation		oewn-goer__1.18.00..
+oewn-go__2.38.01..	derivation		oewn-going__1.04.01..
+oewn-go__2.38.01..	other	agent	oewn-goer__1.18.00..
+oewn-go__2.42.03..	also		oewn-go_with__2.42.00..
+oewn-go__2.42.03..	derivation		oewn-going__1.04.00..
+oewn-go__3.00.00..	antonym		oewn-no--go__3.00.00..
+oewn-go_off__2.35.00..	antonym		oewn-go_on__2.35.00..
+oewn-goad__1.06.00..	derivation		oewn-goad__2.35.00..
+oewn-goad__1.06.00..	derivation		oewn-goad__2.35.01..
+oewn-goad__1.10.00..	derivation		oewn-goad__2.32.01..
+oewn-goad__1.10.00..	derivation		oewn-goad__2.35.00..
+oewn-goad__1.10.00..	derivation		oewn-goad__2.37.00..
+oewn-goad__2.32.01..	derivation		oewn-goading__1.10.00..
+oewn-goad__2.32.01..	other	by_means_of	oewn-goad__1.10.00..
+oewn-goad__2.35.00..	derivation		oewn-goading__1.10.00..
+oewn-goad__2.35.00..	other	by_means_of	oewn-goad__1.10.00..
+oewn-goad__2.35.00..	other	instrument	oewn-goad__1.06.00..
+oewn-goad__2.35.01..	other	instrument	oewn-goad__1.06.00..
+oewn-goad__2.37.00..	other	by_means_of	oewn-goad__1.10.00..
+oewn-gobble__1.11.00..	derivation		oewn-gobble__2.32.00..
+oewn-gobble__2.32.00..	derivation		oewn-gobbler__1.05.00..
+oewn-gobble__2.32.00..	other	event	oewn-gobble__1.11.00..
+oewn-gobble__2.34.00..	also		oewn-gobble_up__2.34.00..
+oewn-gobble__2.34.00..	derivation		oewn-gobbler__1.18.00..
+oewn-gobble__2.34.00..	other	agent	oewn-gobbler__1.18.00..
+oewn-godless__5.00.00.impious.00	derivation		oewn-godlessness__1.07.00..
+oewn-godliness__1.07.00..	antonym		oewn-ungodliness__1.07.00..
+oewn-godliness__1.07.00..	derivation		oewn-godly__5.00.00.heavenly.00
+oewn-godliness__1.07.00..	derivation		oewn-godly__5.00.00.pious.00
+oewn-goiter__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-goitre__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-goitre__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-goitre__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-gold--plate__2.35.00..	derivation		oewn-gold_plate__1.06.00..
+oewn-gold--plate__2.35.00..	derivation		oewn-gold_plate__1.06.01..
+oewn-gold__1.07.00..	derivation		oewn-gold__5.00.00.chromatic.00
+oewn-gold__1.21.00..	derivation		oewn-gold__5.00.00.metallic.00
+oewn-gold__1.27.00..	derivation		oewn-gold__5.00.00.metallic.00
+oewn-gold_plate__1.06.00..	derivation		oewn-gold_plate__2.35.00..
+oewn-gold_plate__1.06.00..	derivation		oewn-goldplate__2.35.00..
+oewn-gold_plate__1.06.01..	derivation		oewn-gold_plate__2.35.00..
+oewn-gold_plate__1.06.01..	derivation		oewn-goldplate__2.35.00..
+oewn-gold_plate__2.35.00..	other	uses	oewn-gold_plate__1.06.00..
+oewn-goldbrick__2.41.00..	derivation		oewn-goldbricking__1.04.00..
+oewn-golf__1.04.00..	derivation		oewn-golf__2.33.00..
+oewn-golf__2.33.00..	derivation		oewn-golfer__1.18.00..
+oewn-golf__2.33.00..	derivation		oewn-golfing__1.04.00..
+oewn-golf__2.33.00..	other	agent	oewn-golfer__1.18.00..
+oewn-golf__2.33.00..	other	event	oewn-golf__1.04.00..
+oewn-gonad__1.08.00..	derivation		oewn-gonadal__3.01.00..
+oewn-gonadal__3.01.00..	pertainym		oewn-gonad__1.08.00..
+oewn-gonadotrophic__3.01.00..	pertainym		oewn-gonadotrophin__1.08.00..
+oewn-gonadotropic__3.01.00..	derivation		oewn-gonadotropin__1.08.00..
+oewn-gonadotropic__3.01.00..	pertainym		oewn-gonadotropin__1.08.00..
+oewn-gong__1.06.00..	derivation		oewn-gong__2.39.00..
+oewn-gong__1.06.01..	derivation		oewn-gong__2.39.00..
+oewn-gong__2.39.00..	other	undergoer	oewn-gong__1.06.00..
+oewn-gong__2.39.00..	other	undergoer	oewn-gong__1.06.01..
+oewn-goo__1.27.00..	derivation		oewn-gooey__5.00.00.adhesive.00
+oewn-good--for--naught__1.18.00..	derivation		oewn-good--for--naught__5.00.00.worthless.00
+oewn-good--for--nothing__1.18.00..	derivation		oewn-good--for--nothing__5.00.00.worthless.00
+oewn-good--humored__5.00.00.good-natured.00	derivation		oewn-good--humoredness__1.07.00..
+oewn-good--humoured__5.00.00.good-natured.00	derivation		oewn-good--humouredness__1.07.00..
+oewn-good--natured__3.00.00..	antonym		oewn-ill--natured__3.00.00..
+oewn-good--natured__3.00.00..	derivation		oewn-good--naturedness__1.07.00..
+oewn-good--naturedly__4.02.00..	pertainym		oewn-good--natured__3.00.00..
+oewn-good--tempered__5.00.00.good-natured.00	derivation		oewn-good--temperedness__1.07.00..
+oewn-good__3.00.01..	derivation		oewn-goodness__1.07.02..
+oewn-good__3.00.02..	derivation		oewn-goodness__1.07.01..
+oewn-good__5.00.00.advantageous.00	derivation		oewn-goodness__1.07.02..
+oewn-good__5.00.00.healthful.00	derivation		oewn-goodness__1.07.02..
+oewn-good__5.00.00.intellectual.00	derivation		oewn-goodness__1.07.02..
+oewn-good__5.00.00.opportune.00	derivation		oewn-goodness__1.07.02..
+oewn-good__5.00.00.reputable.00	derivation		oewn-goodness__1.07.01..
+oewn-good__5.00.00.righteous.00	derivation		oewn-goodness__1.07.01..
+oewn-good_fortune__1.26.00..	antonym		oewn-misfortune__1.26.00..
+oewn-good_health__1.26.00..	antonym		oewn-ill_health__1.26.00..
+oewn-good_humor__1.12.00..	antonym		oewn-ill_humor__1.12.00..
+oewn-good_humor__1.12.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-good_humour__1.12.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-good_humour__1.12.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-good_humour__1.12.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-good_nature__1.07.00..	antonym		oewn-ill_nature__1.07.00..
+oewn-good_part__1.07.00..	antonym		oewn-weak_part__1.07.00..
+oewn-goody--goody__1.18.00..	derivation		oewn-goody--goody__5.00.00.good.02
+oewn-goof__1.18.00..	derivation		oewn-goof__2.41.00..
+oewn-goof__1.18.00..	derivation		oewn-goofy__5.00.00.foolish.00
+oewn-goof__1.18.01..	derivation		oewn-goof__2.41.00..
+oewn-goof__1.18.01..	derivation		oewn-goofy__5.00.00.foolish.00
+oewn-goof__2.41.00..	other	agent	oewn-goof__1.18.00..
+oewn-goose__1.05.00..	derivation		oewn-gosling__1.05.00..
+oewn-goose__1.18.00..	derivation		oewn-goosey__5.00.00.stupid.00
+oewn-goose__1.18.00..	derivation		oewn-goosy__5.00.00.stupid.00
+oewn-goose_step__1.04.00..	derivation		oewn-goose_step__2.38.00..
+oewn-goose_step__2.38.00..	other	event	oewn-goose_step__1.04.00..
+oewn-gore__1.04.00..	derivation		oewn-gore__2.35.02..
+oewn-gore__1.06.00..	derivation		oewn-gore__2.35.01..
+oewn-gore__1.08.00..	derivation		oewn-gore__2.35.02..
+oewn-gore__2.35.01..	other	result	oewn-gore__1.06.00..
+oewn-gore__2.35.02..	other	event	oewn-gore__1.04.00..
+oewn-gorge__2.34.00..	derivation		oewn-gorger__1.18.00..
+oewn-gorge__2.34.00..	other	agent	oewn-gorger__1.18.00..
+oewn-gorgeously__4.02.00..	pertainym		oewn-gorgeous__5.00.00.beautiful.00
+oewn-gormandise__2.34.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gormandise__2.34.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gormandize__2.34.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gossamer__1.06.00..	derivation		oewn-gossamer__5.00.00.delicate.00
+oewn-gossamer__1.06.01..	derivation		oewn-gossamer__5.00.00.delicate.00
+oewn-gossip__1.10.00..	derivation		oewn-gossip__2.32.01..
+oewn-gossip__1.10.00..	derivation		oewn-gossipy__5.00.00.communicative.00
+oewn-gossip__1.10.01..	derivation		oewn-gossip__2.32.00..
+oewn-gossip__1.18.00..	derivation		oewn-gossip__2.32.00..
+oewn-gossip__2.32.00..	derivation		oewn-gossiper__1.18.00..
+oewn-gossip__2.32.00..	derivation		oewn-gossiping__1.10.00..
+oewn-gossip__2.32.00..	other	agent	oewn-gossip__1.18.00..
+oewn-gossip__2.32.00..	other	agent	oewn-gossiper__1.18.00..
+oewn-gossip__2.32.00..	other	event	oewn-gossip__1.10.01..
+oewn-gossip__2.32.01..	other	event	oewn-gossip__1.10.00..
+oewn-gothic__1.10.00..	derivation		oewn-gothic__3.01.01..
+oewn-gothic__1.10.01..	derivation		oewn-gothic__3.01.02..
+oewn-gothic__3.01.00..	pertainym		oewn-goth__1.18.02..
+oewn-gothic__3.01.01..	pertainym		oewn-gothic__1.10.00..
+oewn-gothic__3.01.02..	pertainym		oewn-gothic__1.10.01..
+oewn-gothic_romance__1.10.00..	derivation		oewn-gothic_romancer__1.18.00..
+oewn-gouge__1.04.00..	derivation		oewn-gouge__2.35.00..
+oewn-gouge__1.06.00..	derivation		oewn-gouge__2.35.01..
+oewn-gouge__1.07.00..	derivation		oewn-gouge__2.35.01..
+oewn-gouge__2.35.00..	also		oewn-gouge_out__2.35.00..
+oewn-gouge__2.35.00..	derivation		oewn-gouger__1.18.01..
+oewn-gouge__2.35.00..	other	agent	oewn-gouger__1.18.01..
+oewn-gouge__2.35.00..	other	event	oewn-gouge__1.04.00..
+oewn-gouge__2.35.01..	other	by_means_of	oewn-gouge__1.06.00..
+oewn-gouge__2.35.01..	other	result	oewn-gouge__1.07.00..
+oewn-gouge__2.40.00..	derivation		oewn-gouger__1.18.00..
+oewn-gouge__2.40.00..	other	agent	oewn-gouger__1.18.00..
+oewn-gourmand__1.18.00..	derivation		oewn-gourmandize__2.34.00..
+oewn-gourmandize__2.34.00..	derivation		oewn-gourmandizer__1.18.00..
+oewn-gout__1.26.00..	derivation		oewn-gouty__5.00.00.ill.01
+oewn-govern__2.41.00..	derivation		oewn-governance__1.04.00..
+oewn-govern__2.41.00..	derivation		oewn-governing__1.04.00..
+oewn-govern__2.41.00..	derivation		oewn-government__1.14.00..
+oewn-govern__2.41.00..	derivation		oewn-governor__1.18.00..
+oewn-govern__2.41.00..	other	agent	oewn-governor__1.18.00..
+oewn-govern__2.41.00..	other	by_means_of	oewn-government__1.14.00..
+oewn-govern__2.41.00..	other	event	oewn-governance__1.04.00..
+oewn-govern__2.41.01..	derivation		oewn-government__1.04.00..
+oewn-govern__2.41.01..	other	event	oewn-government__1.04.00..
+oewn-govern__2.41.02..	derivation		oewn-government__1.09.00..
+oewn-govern__2.41.02..	derivation		oewn-governor__1.06.00..
+oewn-govern__2.41.02..	other	by_means_of	oewn-government__1.09.00..
+oewn-govern__2.41.02..	other	instrument	oewn-governor__1.06.00..
+oewn-governmentally__4.02.00..	pertainym		oewn-governmental__5.00.00.political.00
+oewn-governor__1.18.00..	derivation		oewn-governorship__1.04.00..
+oewn-governor__1.18.00..	derivation		oewn-gubernatorial__3.01.00..
+oewn-gown__1.06.00..	derivation		oewn-gown__2.29.00..
+oewn-gown__1.06.01..	derivation		oewn-gown__2.29.00..
+oewn-gown__1.06.02..	derivation		oewn-gown__2.29.00..
+oewn-gown__2.29.00..	other	uses	oewn-gown__1.06.00..
+oewn-gown__2.29.00..	other	uses	oewn-gown__1.06.01..
+oewn-gown__2.29.00..	other	uses	oewn-gown__1.06.02..
+oewn-grab__1.04.00..	derivation		oewn-grab__2.35.00..
+oewn-grab__1.04.00..	derivation		oewn-grab__2.35.05..
+oewn-grab__1.04.00..	derivation		oewn-grab__2.38.02..
+oewn-grab__1.04.00..	derivation		oewn-grab__2.40.00..
+oewn-grab__2.35.00..	other	event	oewn-grab__1.04.00..
+oewn-grab__2.35.05..	other	event	oewn-grab__1.04.00..
+oewn-grab__2.38.02..	other	event	oewn-grab__1.04.00..
+oewn-grab__2.40.00..	other	event	oewn-grab__1.04.00..
+oewn-grace__1.07.00..	derivation		oewn-gracious__5.00.00.polite.00
+oewn-grace__1.07.01..	derivation		oewn-grace__2.36.00..
+oewn-grace__1.07.01..	derivation		oewn-grace__2.42.00..
+oewn-grace__1.07.01..	derivation		oewn-gracious__3.00.00..
+oewn-grace__1.07.03..	derivation		oewn-gracious__5.00.00.kind.00
+oewn-grace__2.36.00..	other	result	oewn-grace__1.07.01..
+oewn-grace__2.42.00..	other	property	oewn-grace__1.07.01..
+oewn-graceful__3.00.00..	derivation		oewn-gracefulness__1.07.00..
+oewn-gracefully__4.02.00..	antonym		oewn-gracelessly__4.02.00..
+oewn-gracefully__4.02.00..	pertainym		oewn-graceful__3.00.00..
+oewn-gracefully__4.02.01..	antonym		oewn-ungracefully__4.02.01..
+oewn-gracefully__4.02.01..	pertainym		oewn-graceful__5.00.00.gracious.00
+oewn-graceless__5.00.00.awkward.00	derivation		oewn-gracelessness__1.07.01..
+oewn-graceless__5.00.00.inelegant.00	derivation		oewn-gracelessness__1.07.01..
+oewn-gracelessly__4.02.00..	pertainym		oewn-graceless__5.00.00.ungracious.00
+oewn-gracelessly__4.02.01..	pertainym		oewn-graceless__5.00.00.inelegant.00
+oewn-gracile__5.00.00.graceful.00	derivation		oewn-gracility__1.07.00..
+oewn-gracious__3.00.00..	antonym		oewn-ungracious__3.00.00..
+oewn-gracious__3.00.00..	derivation		oewn-graciousness__1.07.00..
+oewn-gracious__5.00.00.kind.00	derivation		oewn-graciousness__1.07.01..
+oewn-gracious__5.00.00.polite.00	derivation		oewn-graciousness__1.07.00..
+oewn-gracious__5.00.00.propitious.00	derivation		oewn-graciousness__1.07.01..
+oewn-graciously__4.02.00..	antonym		oewn-ungraciously__4.02.00..
+oewn-graciously__4.02.00..	pertainym		oewn-gracious__3.00.00..
+oewn-graciousness__1.07.00..	antonym		oewn-ungraciousness__1.07.00..
+oewn-gradate__2.35.00..	derivation		oewn-gradation__1.04.00..
+oewn-gradate__2.35.00..	derivation		oewn-gradation__1.26.00..
+oewn-gradate__2.35.00..	other	event	oewn-gradation__1.04.00..
+oewn-gradate__2.35.00..	other	location	oewn-gradation__1.26.00..
+oewn-gradation__1.04.00..	derivation		oewn-gradational__5.00.00.gradual.01
+oewn-gradation__1.04.00..	derivation		oewn-grade__2.31.00..
+oewn-gradation__1.04.00..	derivation		oewn-grade__2.31.03..
+oewn-gradation__1.04.00..	derivation		oewn-grade__2.31.05..
+oewn-gradation__1.26.00..	derivation		oewn-gradational__5.00.00.gradual.01
+oewn-gradation__1.26.00..	derivation		oewn-grade__2.31.00..
+oewn-gradation__1.26.00..	derivation		oewn-grade__2.31.03..
+oewn-grade__1.07.01..	derivation		oewn-grade__2.35.00..
+oewn-grade__1.07.01..	derivation		oewn-gradual__3.00.02..
+oewn-grade__1.07.02..	derivation		oewn-grade__2.35.00..
+oewn-grade__1.09.00..	derivation		oewn-grade__2.31.00..
+oewn-grade__1.09.00..	derivation		oewn-grade__2.31.03..
+oewn-grade__1.26.00..	derivation		oewn-grade__2.31.03..
+oewn-grade__2.31.00..	derivation		oewn-grading__1.04.01..
+oewn-grade__2.31.00..	other	event	oewn-gradation__1.04.00..
+oewn-grade__2.31.00..	other	location	oewn-gradation__1.26.00..
+oewn-grade__2.31.00..	other	uses	oewn-grade__1.09.00..
+oewn-grade__2.31.03..	derivation		oewn-grader__1.18.00..
+oewn-grade__2.31.03..	derivation		oewn-grading__1.04.00..
+oewn-grade__2.31.03..	other	agent	oewn-grader__1.18.00..
+oewn-grade__2.31.03..	other	event	oewn-gradation__1.04.00..
+oewn-grade__2.31.03..	other	location	oewn-gradation__1.26.00..
+oewn-grade__2.31.03..	other	uses	oewn-grade__1.09.00..
+oewn-grade__2.31.03..	other	uses	oewn-grade__1.26.00..
+oewn-grade__2.31.05..	derivation		oewn-grader__1.18.00..
+oewn-grade__2.31.05..	derivation		oewn-grading__1.04.01..
+oewn-grade__2.31.05..	other	agent	oewn-grader__1.18.00..
+oewn-grade__2.31.05..	other	event	oewn-gradation__1.04.00..
+oewn-grade__2.35.00..	derivation		oewn-grading__1.04.02..
+oewn-grade__2.35.00..	other	property	oewn-grade__1.07.01..
+oewn-grade__2.35.00..	other	property	oewn-grade__1.07.02..
+oewn-gradual__3.00.01..	antonym		oewn-sudden__3.00.00..
+oewn-gradual__3.00.01..	derivation		oewn-graduality__1.07.00..
+oewn-gradual__3.00.01..	derivation		oewn-gradualness__1.07.00..
+oewn-gradual__3.00.02..	antonym		oewn-steep__3.00.00..
+oewn-gradual__3.00.02..	derivation		oewn-gradualness__1.07.01..
+oewn-gradually__4.02.00..	pertainym		oewn-gradual__3.00.01..
+oewn-graduate__1.06.00..	derivation		oewn-graduate__2.30.00..
+oewn-graduate__1.18.00..	derivation		oewn-graduate__2.40.00..
+oewn-graduate__1.18.00..	derivation		oewn-graduate__2.40.01..
+oewn-graduate__2.30.00..	derivation		oewn-graduation__1.10.00..
+oewn-graduate__2.30.00..	other	by_means_of	oewn-graduation__1.10.00..
+oewn-graduate__2.30.00..	other	instrument	oewn-graduate__1.06.00..
+oewn-graduate__2.40.00..	derivation		oewn-graduation__1.04.01..
+oewn-graduate__2.40.00..	derivation		oewn-graduation__1.11.01..
+oewn-graduate__2.40.00..	other	agent	oewn-graduate__1.18.00..
+oewn-graduate__2.40.00..	other	event	oewn-graduation__1.04.01..
+oewn-graduate__2.40.00..	other	event	oewn-graduation__1.11.01..
+oewn-graduate__2.40.01..	derivation		oewn-graduation__1.04.01..
+oewn-graduate__2.40.01..	derivation		oewn-graduation__1.11.01..
+oewn-graduate__2.40.01..	other	agent	oewn-graduate__1.18.00..
+oewn-graduate__2.40.01..	other	event	oewn-graduation__1.04.01..
+oewn-graduate__2.40.01..	other	event	oewn-graduation__1.11.01..
+oewn-graduated__3.44.00..	participle		oewn-calibrate__2.35.02..
+oewn-graecophile__1.18.00..	derivation		oewn-graecophile__3.01.00..
+oewn-graecophile__1.18.00..	derivation		oewn-graecophilic__3.01.00..
+oewn-graft__1.04.00..	derivation		oewn-graft__2.35.00..
+oewn-graft__1.08.00..	derivation		oewn-graft__2.35.01..
+oewn-graft__2.35.00..	derivation		oewn-grafting__1.04.00..
+oewn-graft__2.35.00..	other	event	oewn-graft__1.04.00..
+oewn-graft__2.35.01..	derivation		oewn-grafting__1.04.00..
+oewn-graft__2.35.01..	other	uses	oewn-graft__1.08.00..
+oewn-grain__1.07.00..	derivation		oewn-grain__2.35.01..
+oewn-grain__1.17.00..	derivation		oewn-grain__2.30.00..
+oewn-grain__1.17.00..	derivation		oewn-grain__2.30.01..
+oewn-grain__1.17.00..	derivation		oewn-grain__2.35.01..
+oewn-grain__1.17.00..	derivation		oewn-grainy__5.00.00.coarse.00
+oewn-grain__1.17.00..	derivation		oewn-granular__5.00.00.coarse.00
+oewn-grain__2.30.00..	other	result	oewn-grain__1.17.00..
+oewn-grain__2.30.01..	other	result	oewn-grain__1.17.00..
+oewn-grain__2.35.01..	derivation		oewn-graining__1.07.00..
+oewn-graininess__1.07.00..	derivation		oewn-grainy__5.00.00.coarse.00
+oewn-grammar__1.09.00..	derivation		oewn-grammatic__3.01.00..
+oewn-grammar__1.09.00..	derivation		oewn-grammatical__3.00.00..
+oewn-grammar__1.09.00..	derivation		oewn-grammatical__3.01.00..
+oewn-grammatic__3.01.00..	pertainym		oewn-grammar__1.09.00..
+oewn-grammatical__3.00.00..	antonym		oewn-ungrammatical__3.00.00..
+oewn-grammatical__3.01.00..	pertainym		oewn-grammar__1.09.00..
+oewn-grammatically__4.02.00..	antonym		oewn-ungrammatically__4.02.00..
+oewn-grammatically__4.02.00..	pertainym		oewn-grammatical__3.00.00..
+oewn-grand__5.00.00.dignified.00	derivation		oewn-grandness__1.07.00..
+oewn-grand__5.00.00.extraordinary.00	derivation		oewn-grandness__1.07.00..
+oewn-grand__5.00.00.important.00	derivation		oewn-grandness__1.07.02..
+oewn-grand__5.00.00.important.00	derivation		oewn-grandness__1.26.00..
+oewn-grand__5.00.00.impressive.00	derivation		oewn-grandness__1.07.01..
+oewn-grand__5.00.00.large.00	derivation		oewn-grandness__1.07.01..
+oewn-grand__5.00.00.large.00	derivation		oewn-grandness__1.07.02..
+oewn-grand__5.00.00.noble.01	derivation		oewn-grandness__1.07.00..
+oewn-grand__5.00.00.rich.03	derivation		oewn-grandness__1.07.02..
+oewn-grand_larceny__1.04.00..	antonym		oewn-petit_larceny__1.04.00..
+oewn-grandiloquence__1.10.00..	derivation		oewn-grandiloquent__5.00.00.rhetorical.00
+oewn-grandiloquently__4.02.00..	pertainym		oewn-grandiloquent__5.00.00.rhetorical.00
+oewn-grandiose__5.00.00.pretentious.00	derivation		oewn-grandiosity__1.10.00..
+oewn-grandiosely__4.02.00..	pertainym		oewn-grandiose__5.00.00.impressive.00
+oewn-grandly__4.02.00..	pertainym		oewn-grand__5.00.00.impressive.00
+oewn-grandstand__2.36.00..	derivation		oewn-grandstander__1.18.00..
+oewn-grandstand__2.36.00..	other	agent	oewn-grandstander__1.18.00..
+oewn-granite__1.07.00..	derivation		oewn-granitic__5.00.00.hardhearted.00
+oewn-granite__1.27.00..	derivation		oewn-granitic__5.00.00.hard.01
+oewn-grant__1.07.00..	derivation		oewn-grant__2.40.00..
+oewn-grant__1.07.00..	derivation		oewn-grant__2.40.01..
+oewn-grant__1.21.00..	derivation		oewn-grant__2.40.03..
+oewn-grant__1.21.02..	derivation		oewn-grant__2.40.02..
+oewn-grant__2.40.00..	other	uses	oewn-grant__1.07.00..
+oewn-grant__2.40.01..	derivation		oewn-granter__1.18.00..
+oewn-grant__2.40.01..	other	agent	oewn-granter__1.18.00..
+oewn-grant__2.40.01..	other	uses	oewn-grant__1.07.00..
+oewn-grant__2.40.02..	derivation		oewn-grantee__1.18.00..
+oewn-grant__2.40.02..	derivation		oewn-grantor__1.18.00..
+oewn-grant__2.40.02..	other	agent	oewn-grantor__1.18.00..
+oewn-grant__2.40.02..	other	destination	oewn-grantee__1.18.00..
+oewn-grant__2.40.02..	other	event	oewn-grant__1.21.02..
+oewn-grant__2.40.03..	derivation		oewn-grantee__1.18.00..
+oewn-grant__2.40.03..	other	destination	oewn-grantee__1.18.00..
+oewn-grant__2.40.03..	other	uses	oewn-grant__1.21.00..
+oewn-grant__2.40.05..	derivation		oewn-grantee__1.18.00..
+oewn-grant__2.40.05..	derivation		oewn-granter__1.18.00..
+oewn-grant__2.40.05..	other	agent	oewn-granter__1.18.00..
+oewn-grant__2.40.05..	other	destination	oewn-grantee__1.18.00..
+oewn-granter__1.18.00..	antonym		oewn-withholder__1.18.01..
+oewn-granular__5.00.00.coarse.00	derivation		oewn-granularity__1.07.00..
+oewn-granulate__2.29.00..	derivation		oewn-granulation__1.26.00..
+oewn-granulate__2.29.00..	other	result	oewn-granulation__1.26.00..
+oewn-granulate__2.30.00..	derivation		oewn-granulation__1.04.00..
+oewn-granulate__2.30.00..	other	event	oewn-granulation__1.04.00..
+oewn-granuliferous__3.01.00..	pertainym		oewn-granule__1.17.00..
+oewn-granulocyte__1.08.00..	derivation		oewn-granulocytic__3.01.00..
+oewn-granulocytic__3.01.00..	pertainym		oewn-granulocyte__1.08.00..
+oewn-granuloma__1.26.00..	derivation		oewn-granulomatous__3.01.00..
+oewn-granulomatous__3.01.00..	pertainym		oewn-granuloma__1.26.00..
+oewn-grape__1.13.00..	derivation		oewn-grapey__5.00.00.tasty.00
+oewn-grape__1.13.00..	derivation		oewn-grapy__5.00.00.tasty.00
+oewn-grape_arbor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-grape_arbour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grape_arbour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grape_arbour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-grapelike__3.01.00..	pertainym		oewn-grape__1.13.00..
+oewn-graph__1.10.00..	derivation		oewn-graph__2.36.00..
+oewn-graph__1.10.00..	derivation		oewn-graph__2.36.01..
+oewn-graph__1.10.00..	derivation		oewn-graphical__3.01.00..
+oewn-graph__1.10.01..	derivation		oewn-graph__2.36.00..
+oewn-graph__1.10.01..	derivation		oewn-graphical__3.01.00..
+oewn-graph__2.36.00..	other	result	oewn-graph__1.10.00..
+oewn-graph__2.36.01..	other	result	oewn-graph__1.10.00..
+oewn-graphic__3.01.00..	pertainym		oewn-graph__1.10.00..
+oewn-graphic__3.01.01..	pertainym		oewn-graphics__1.06.00..
+oewn-graphic_design__1.10.00..	derivation		oewn-graphic_designer__1.18.00..
+oewn-graphical__3.01.00..	pertainym		oewn-graph__1.10.00..
+oewn-graphically__4.02.00..	pertainym		oewn-graphic__3.01.00..
+oewn-graphically__4.02.02..	pertainym		oewn-graphic__3.01.01..
+oewn-graphologist__1.18.00..	derivation		oewn-graphology__1.09.00..
+oewn-grapple__1.04.00..	derivation		oewn-grapple__2.35.01..
+oewn-grapple__2.35.01..	derivation		oewn-grappler__1.18.00..
+oewn-grapple__2.35.01..	derivation		oewn-grappling__1.04.00..
+oewn-grapple__2.35.01..	derivation		oewn-grappling__1.04.01..
+oewn-grapple__2.35.01..	other	agent	oewn-grappler__1.18.00..
+oewn-grapple__2.35.01..	other	event	oewn-grapple__1.04.00..
+oewn-grasp__1.04.00..	derivation		oewn-grasp__2.35.00..
+oewn-grasp__1.09.00..	derivation		oewn-grasp__2.31.00..
+oewn-grasp__2.31.00..	derivation		oewn-grasping__1.09.00..
+oewn-grasp__2.31.00..	other	event	oewn-grasp__1.09.00..
+oewn-grasp__2.35.00..	derivation		oewn-grasping__1.04.00..
+oewn-grasp__2.35.00..	other	event	oewn-grasp__1.04.00..
+oewn-grasping__1.04.00..	derivation		oewn-grasping__5.00.00.acquisitive.00
+oewn-grass__1.20.00..	derivation		oewn-grass__2.34.00..
+oewn-grass__1.20.00..	derivation		oewn-grass__2.35.00..
+oewn-grass__1.20.00..	derivation		oewn-grassy__3.00.00..
+oewn-grass__2.34.00..	other	uses	oewn-grass__1.20.00..
+oewn-grass__2.35.00..	other	uses	oewn-grass__1.20.00..
+oewn-grassless__3.00.00..	antonym		oewn-grassy__3.00.00..
+oewn-grate__1.06.00..	derivation		oewn-grate__2.40.00..
+oewn-grate__1.06.01..	derivation		oewn-grate__2.40.00..
+oewn-grate__2.35.02..	derivation		oewn-grater__1.06.00..
+oewn-grate__2.35.02..	other	instrument	oewn-grater__1.06.00..
+oewn-grate__2.40.00..	derivation		oewn-grating__1.06.01..
+oewn-grate__2.40.00..	other	uses	oewn-grate__1.06.00..
+oewn-grate__2.40.00..	other	uses	oewn-grate__1.06.01..
+oewn-grateful__3.00.00..	antonym		oewn-ungrateful__3.00.00..
+oewn-grateful__3.00.00..	derivation		oewn-gratefulness__1.12.00..
+oewn-gratefully__4.02.00..	pertainym		oewn-grateful__3.00.00..
+oewn-gratefully__4.02.01..	antonym		oewn-ungratefully__4.02.00..
+oewn-gratefully__4.02.01..	pertainym		oewn-grateful__3.00.00..
+oewn-gratification__1.04.00..	derivation		oewn-gratify__2.34.00..
+oewn-gratification__1.04.00..	derivation		oewn-gratify__2.37.00..
+oewn-gratification__1.26.00..	derivation		oewn-gratify__2.37.00..
+oewn-gratify__2.34.00..	other	event	oewn-gratification__1.04.00..
+oewn-gratify__2.37.00..	other	event	oewn-gratification__1.04.00..
+oewn-gratify__2.37.00..	other	result	oewn-gratification__1.26.00..
+oewn-gratify__2.37.00..	other	state	oewn-gratification__1.26.00..
+oewn-gratifyingly__4.02.00..	pertainym		oewn-gratifying__5.00.00.pleasant.00
+oewn-gratingly__4.02.00..	pertainym		oewn-grating__5.00.00.cacophonous.00
+oewn-gratitude__1.12.00..	antonym		oewn-ingratitude__1.12.00..
+oewn-gratuitously__4.02.00..	pertainym		oewn-gratuitous__5.00.00.unmerited.00
+oewn-grave__5.00.00.important.00	derivation		oewn-graveness__1.07.00..
+oewn-grave__5.00.00.important.00	derivation		oewn-gravity__1.07.00..
+oewn-grave__5.00.00.serious.00	derivation		oewn-graveness__1.07.00..
+oewn-grave__5.00.00.serious.00	derivation		oewn-gravity__1.07.00..
+oewn-gravel__1.27.00..	derivation		oewn-gravel__2.35.00..
+oewn-gravel__1.27.00..	derivation		oewn-gravelly__5.00.00.rough.00
+oewn-gravel__2.35.00..	other	uses	oewn-gravel__1.27.00..
+oewn-gravely__4.02.00..	pertainym		oewn-grave__5.00.00.serious.00
+oewn-gravely__4.02.01..	pertainym		oewn-grave__5.00.00.critical.03
+oewn-gravid__5.00.00.pregnant.00	derivation		oewn-gravidity__1.26.00..
+oewn-gravid__5.00.00.pregnant.00	derivation		oewn-gravidness__1.26.00..
+oewn-gravimeter__1.06.00..	derivation		oewn-gravimetric__3.01.00..
+oewn-gravimetric__3.01.00..	derivation		oewn-gravimetry__1.04.00..
+oewn-gravimetric__3.01.00..	pertainym		oewn-hydrometry__1.04.00..
+oewn-gravitate__2.38.00..	derivation		oewn-gravitation__1.11.00..
+oewn-gravitate__2.38.00..	derivation		oewn-gravitation__1.19.00..
+oewn-gravitate__2.38.00..	derivation		oewn-gravitative__3.01.00..
+oewn-gravitate__2.38.00..	derivation		oewn-gravity__1.19.00..
+oewn-gravitate__2.38.00..	other	event	oewn-gravitation__1.11.00..
+oewn-gravitate__2.38.00..	other	event	oewn-gravitation__1.19.00..
+oewn-gravitate__2.42.00..	derivation		oewn-gravitation__1.09.00..
+oewn-gravitate__2.42.00..	other	event	oewn-gravitation__1.09.00..
+oewn-gravitate__2.42.01..	derivation		oewn-gravitation__1.09.00..
+oewn-gravitate__2.42.01..	other	event	oewn-gravitation__1.09.00..
+oewn-gravitation__1.11.00..	antonym		oewn-levitation__1.11.00..
+oewn-gravitation__1.11.00..	derivation		oewn-gravitational__3.01.00..
+oewn-gravitation__1.19.00..	derivation		oewn-gravitational__3.01.00..
+oewn-gravitational__3.01.00..	pertainym		oewn-gravitation__1.19.00..
+oewn-gravitationally__4.02.00..	pertainym		oewn-gravitational__3.01.00..
+oewn-gravitative__3.01.00..	pertainym		oewn-gravity__1.19.00..
+oewn-gravity__1.12.00..	antonym		oewn-levity__1.12.00..
+oewn-gray__1.05.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__1.07.00..	derivation		oewn-gray__2.30.00..
+oewn-gray__1.07.00..	derivation		oewn-gray__2.30.01..
+oewn-gray__1.07.00..	derivation		oewn-gray__5.00.00.achromatic.00
+oewn-gray__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__2.30.00..	other	result	oewn-gray__1.07.00..
+oewn-gray__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__2.30.01..	other	result	oewn-gray__1.07.00..
+oewn-gray__5.00.00.achromatic.00	derivation		oewn-grayness__1.07.00..
+oewn-gray__5.00.00.achromatic.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__5.00.00.intermediate.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__5.00.00.old.02	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gray__5.00.00.southern.02	exemplifies		oewn-american_spelling__1.10.01..
+oewn-grayly__4.02.00..	pertainym		oewn-gray__5.00.00.achromatic.00
+oewn-graze__1.04.00..	derivation		oewn-graze__2.34.02..
+oewn-graze__1.04.00..	derivation		oewn-graze__2.35.00..
+oewn-graze__1.04.00..	derivation		oewn-graze__2.35.01..
+oewn-graze__1.04.00..	derivation		oewn-graze__2.35.02..
+oewn-graze__1.04.00..	derivation		oewn-graze__2.35.10..
+oewn-graze__1.26.00..	derivation		oewn-graze__2.35.00..
+oewn-graze__1.26.00..	derivation		oewn-graze__2.35.02..
+oewn-graze__2.34.02..	other	event	oewn-graze__1.04.00..
+oewn-graze__2.35.00..	derivation		oewn-grazing__1.04.00..
+oewn-graze__2.35.00..	other	event	oewn-graze__1.04.00..
+oewn-graze__2.35.00..	other	event	oewn-graze__1.26.00..
+oewn-graze__2.35.01..	derivation		oewn-grazing__1.04.01..
+oewn-graze__2.35.01..	other	event	oewn-graze__1.04.00..
+oewn-graze__2.35.02..	derivation		oewn-grazing__1.04.00..
+oewn-graze__2.35.02..	other	result	oewn-graze__1.04.00..
+oewn-graze__2.35.02..	other	result	oewn-graze__1.26.00..
+oewn-graze__2.35.10..	derivation		oewn-grazier__1.18.00..
+oewn-graze__2.35.10..	derivation		oewn-grazing__1.04.01..
+oewn-graze__2.35.10..	other	agent	oewn-grazier__1.18.00..
+oewn-graze__2.35.10..	other	event	oewn-graze__1.04.00..
+oewn-grease__1.26.00..	derivation		oewn-grease__2.35.00..
+oewn-grease__1.27.00..	derivation		oewn-grease__2.35.00..
+oewn-grease__1.27.00..	derivation		oewn-greasy__5.00.00.dirty.01
+oewn-grease__2.35.00..	other	state	oewn-grease__1.26.00..
+oewn-grease__2.35.00..	other	uses	oewn-grease__1.27.00..
+oewn-greasily__4.02.00..	pertainym		oewn-greasy__5.00.00.fatty.00
+oewn-greasiness__1.07.00..	derivation		oewn-greasy__5.00.00.dirty.01
+oewn-greasiness__1.07.00..	derivation		oewn-greasy__5.00.00.fatty.00
+oewn-great__5.00.01.extraordinary.00	derivation		oewn-greatness__1.07.01..
+oewn-great__5.00.01.important.00	derivation		oewn-greatness__1.07.00..
+oewn-great__5.00.01.large.00	derivation		oewn-greatness__1.07.01..
+oewn-greater__3.00.00..	antonym		oewn-lesser__3.00.00..
+oewn-greatly__4.02.00..	pertainym		oewn-great__5.00.01.extraordinary.00
+oewn-grecian__3.01.00..	derivation		oewn-greek__1.18.00..
+oewn-greed__1.04.00..	derivation		oewn-greedy__5.00.00.acquisitive.00
+oewn-greed__1.07.00..	derivation		oewn-greedy__5.00.00.acquisitive.00
+oewn-greedily__4.02.00..	pertainym		oewn-greedy__5.00.00.acquisitive.00
+oewn-greediness__1.07.00..	derivation		oewn-greedy__5.00.00.acquisitive.00
+oewn-greediness__1.07.02..	derivation		oewn-greedy__5.00.00.gluttonous.00
+oewn-greek__1.10.00..	derivation		oewn-greek__3.01.01..
+oewn-greek__1.18.00..	derivation		oewn-greek__3.01.01..
+oewn-greek_orthodox__3.01.00..	pertainym		oewn-orthodox_church__1.14.00..
+oewn-green--blind__5.00.00.blind.00	derivation		oewn-green--blindness__1.26.00..
+oewn-green__1.07.00..	derivation		oewn-green__2.30.00..
+oewn-green__1.07.00..	derivation		oewn-green__5.00.00.chromatic.00
+oewn-green__2.30.00..	derivation		oewn-greenery__1.20.00..
+oewn-green__2.30.00..	derivation		oewn-greening__1.19.00..
+oewn-green__2.30.00..	other	property	oewn-green__1.07.00..
+oewn-green__3.00.00..	antonym		oewn-ripe__3.00.00..
+oewn-green__3.00.00..	derivation		oewn-greenness__1.26.00..
+oewn-green__3.01.00..	pertainym		oewn-green_party__1.14.00..
+oewn-green__5.00.00.chromatic.00	derivation		oewn-greenness__1.07.00..
+oewn-greenhouse__3.01.00..	pertainym		oewn-greenhouse_effect__1.19.00..
+oewn-greenish__5.00.00.chromatic.00	derivation		oewn-greenishness__1.07.00..
+oewn-greenly__4.02.00..	pertainym		oewn-green__5.00.00.chromatic.00
+oewn-greenness__1.26.00..	antonym		oewn-ripeness__1.26.00..
+oewn-greensick__3.01.00..	pertainym		oewn-greensickness__1.26.00..
+oewn-greenside__3.01.00..	pertainym		oewn-green__1.15.00..
+oewn-greet__2.32.00..	derivation		oewn-greeter__1.18.00..
+oewn-greet__2.32.00..	derivation		oewn-greeting__1.10.00..
+oewn-greet__2.32.00..	other	agent	oewn-greeter__1.18.00..
+oewn-greet__2.32.01..	derivation		oewn-greeting__1.10.00..
+oewn-gregarious__3.00.00..	antonym		oewn-ungregarious__3.00.00..
+oewn-gregarious__3.00.00..	derivation		oewn-gregariousness__1.07.00..
+oewn-gregarious__3.00.01..	antonym		oewn-ungregarious__3.00.01..
+oewn-gregarious__5.00.00.social.00	derivation		oewn-gregariousness__1.07.00..
+oewn-gregariously__4.02.00..	pertainym		oewn-gregarious__3.00.00..
+oewn-gregorian__3.01.01..	pertainym		oewn-gregorian_chant__1.10.00..
+oewn-gregorian__3.01.02..	pertainym		oewn-gregorian_calendar__1.28.00..
+oewn-grenadian__1.18.00..	derivation		oewn-grenadian__3.01.00..
+oewn-grey__1.05.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__1.05.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__1.07.00..	derivation		oewn-grey__2.30.00..
+oewn-grey__1.07.00..	derivation		oewn-grey__2.30.01..
+oewn-grey__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__2.30.00..	other	result	oewn-grey__1.07.00..
+oewn-grey__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__2.30.01..	other	result	oewn-grey__1.07.00..
+oewn-grey__5.00.00.achromatic.00	derivation		oewn-greyness__1.07.00..
+oewn-grey__5.00.00.achromatic.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__5.00.00.achromatic.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__5.00.00.intermediate.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__5.00.00.intermediate.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__5.00.00.old.02	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__5.00.00.old.02	exemplifies		oewn-british_spelling__1.10.01..
+oewn-grey__5.00.00.southern.02	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-grey__5.00.00.southern.02	exemplifies		oewn-british_spelling__1.10.01..
+oewn-greyly__4.02.00..	pertainym		oewn-grey__5.00.00.achromatic.00
+oewn-griddle__1.06.00..	derivation		oewn-griddle__2.30.00..
+oewn-griddle__2.30.00..	other	by_means_of	oewn-griddle__1.06.00..
+oewn-grieve__2.37.00..	derivation		oewn-griever__1.18.00..
+oewn-grieve__2.37.00..	other	agent	oewn-griever__1.18.00..
+oewn-grievously__4.02.00..	pertainym		oewn-grievous__5.00.00.critical.03
+oewn-grill__1.06.00..	derivation		oewn-grill__2.30.00..
+oewn-grill__1.06.01..	derivation		oewn-grill__2.30.00..
+oewn-grill__2.30.00..	derivation		oewn-grilling__1.04.00..
+oewn-grill__2.30.00..	other	by_means_of	oewn-grill__1.06.00..
+oewn-grill__2.30.00..	other	location	oewn-grill__1.06.01..
+oewn-grim__5.00.00.alarming.00	derivation		oewn-grimness__1.07.02..
+oewn-grim__5.00.00.implacable.00	derivation		oewn-grimness__1.07.01..
+oewn-grim__5.00.00.sarcastic.00	derivation		oewn-grimness__1.07.02..
+oewn-grim__5.00.01.unpleasant.00	derivation		oewn-grimness__1.07.02..
+oewn-grimace__1.10.00..	derivation		oewn-grimace__2.29.00..
+oewn-grimace__2.29.00..	other	event	oewn-grimace__1.10.00..
+oewn-grime__1.26.00..	derivation		oewn-grime__2.35.00..
+oewn-grime__1.26.00..	derivation		oewn-grimy__5.00.00.dirty.01
+oewn-grime__2.35.00..	other	state	oewn-grime__1.26.00..
+oewn-griminess__1.26.00..	derivation		oewn-grimy__5.00.00.dirty.01
+oewn-grimly__4.02.00..	pertainym		oewn-grim__5.00.00.implacable.00
+oewn-grin__1.10.00..	derivation		oewn-grin__2.29.00..
+oewn-grin__2.29.00..	derivation		oewn-grinner__1.18.00..
+oewn-grin__2.29.00..	derivation		oewn-grinning__1.10.00..
+oewn-grin__2.29.00..	other	agent	oewn-grinner__1.18.00..
+oewn-grin__2.29.00..	other	event	oewn-grin__1.10.00..
+oewn-grind__1.04.00..	derivation		oewn-grind__2.30.00..
+oewn-grind__1.04.00..	derivation		oewn-grind__2.35.00..
+oewn-grind__1.04.00..	derivation		oewn-grind__2.35.02..
+oewn-grind__1.04.01..	derivation		oewn-grind__2.41.00..
+oewn-grind__1.18.00..	derivation		oewn-grind__2.41.00..
+oewn-grind__2.30.00..	derivation		oewn-grinder__1.06.01..
+oewn-grind__2.30.00..	derivation		oewn-grinder__1.08.00..
+oewn-grind__2.30.00..	derivation		oewn-grinding__1.17.00..
+oewn-grind__2.30.00..	derivation		oewn-grinding__1.19.00..
+oewn-grind__2.30.00..	other	body_part	oewn-grinder__1.08.00..
+oewn-grind__2.30.00..	other	event	oewn-grind__1.04.00..
+oewn-grind__2.30.00..	other	instrument	oewn-grinder__1.06.01..
+oewn-grind__2.35.00..	derivation		oewn-grinding__1.11.00..
+oewn-grind__2.35.00..	other	event	oewn-grind__1.04.00..
+oewn-grind__2.35.02..	also		oewn-grind_down__2.41.00..
+oewn-grind__2.35.02..	other	event	oewn-grind__1.04.00..
+oewn-grind__2.41.00..	other	event	oewn-grind__1.04.01..
+oewn-grip__1.04.00..	derivation		oewn-grip__2.35.00..
+oewn-grip__1.04.00..	derivation		oewn-grip__2.35.03..
+oewn-grip__1.06.01..	derivation		oewn-grip__2.35.00..
+oewn-grip__1.07.00..	derivation		oewn-grip__2.37.00..
+oewn-grip__2.35.00..	other	event	oewn-grip__1.04.00..
+oewn-grip__2.35.00..	other	undergoer	oewn-grip__1.06.01..
+oewn-grip__2.35.03..	other	event	oewn-grip__1.04.00..
+oewn-grip__2.37.00..	other	by_means_of	oewn-grip__1.07.00..
+oewn-gripe__1.10.00..	derivation		oewn-gripe__2.32.00..
+oewn-gripe__2.32.00..	other	event	oewn-gripe__1.10.00..
+oewn-gristle__1.08.00..	derivation		oewn-gristly__5.00.00.tough.01
+oewn-grit__1.07.00..	derivation		oewn-gritty__5.00.00.brave.00
+oewn-grit__1.27.00..	derivation		oewn-grit__2.35.01..
+oewn-grit__1.27.00..	derivation		oewn-gritty__5.00.00.coarse.00
+oewn-grit__2.35.01..	other	uses	oewn-grit__1.27.00..
+oewn-grizzle__1.06.00..	derivation		oewn-grizzly__5.00.00.old.02
+oewn-groan__1.10.00..	derivation		oewn-groan__2.32.00..
+oewn-groan__2.32.00..	derivation		oewn-groaner__1.18.00..
+oewn-groan__2.32.00..	other	agent	oewn-groaner__1.18.00..
+oewn-groan__2.32.00..	other	event	oewn-groan__1.10.00..
+oewn-grogginess__1.26.00..	derivation		oewn-groggy__5.00.00.lethargic.00
+oewn-grogginess__1.26.01..	derivation		oewn-groggy__5.00.00.lethargic.00
+oewn-groom__1.18.01..	derivation		oewn-groom__2.29.03..
+oewn-groom__2.29.00..	derivation		oewn-grooming__1.04.00..
+oewn-groom__2.29.03..	other	agent	oewn-groom__1.18.01..
+oewn-groom__2.41.00..	derivation		oewn-grooming__1.04.01..
+oewn-groomed__3.00.00..	antonym		oewn-ungroomed__3.00.00..
+oewn-groove__1.08.00..	derivation		oewn-groove__2.35.00..
+oewn-groove__1.25.00..	derivation		oewn-groove__2.35.00..
+oewn-groove__1.25.00..	derivation		oewn-groove__2.35.02..
+oewn-groove__2.35.00..	other	result	oewn-groove__1.08.00..
+oewn-groove__2.35.00..	other	result	oewn-groove__1.25.00..
+oewn-groove__2.35.02..	derivation		oewn-groover__1.06.00..
+oewn-groove__2.35.02..	derivation		oewn-grooving__1.04.00..
+oewn-groove__2.35.02..	other	instrument	oewn-groover__1.06.00..
+oewn-groove__2.35.02..	other	result	oewn-groove__1.25.00..
+oewn-grope__1.04.00..	derivation		oewn-grope__2.35.01..
+oewn-grope__1.04.00..	derivation		oewn-grope__2.35.02..
+oewn-grope__1.04.00..	derivation		oewn-grope__2.41.00..
+oewn-grope__2.35.01..	also		oewn-grope_for__2.35.00..
+oewn-grope__2.35.01..	other	event	oewn-grope__1.04.00..
+oewn-grope__2.35.02..	other	event	oewn-grope__1.04.00..
+oewn-grope__2.41.00..	other	event	oewn-grope__1.04.00..
+oewn-gropingly__4.02.00..	pertainym		oewn-groping__5.00.00.uncertain.02
+oewn-gross__1.21.00..	derivation		oewn-gross__2.40.00..
+oewn-gross__1.21.00..	derivation		oewn-gross__3.00.00..
+oewn-gross__2.40.00..	other	undergoer	oewn-gross__1.21.00..
+oewn-gross__3.00.00..	antonym		oewn-net__3.00.00..
+oewn-gross__5.00.00.indecent.00	derivation		oewn-grossness__1.07.00..
+oewn-grossly__4.02.00..	pertainym		oewn-gross__5.00.00.conspicuous.00
+oewn-grotesque__5.00.00.strange.00	derivation		oewn-grotesqueness__1.07.00..
+oewn-grotesque__5.00.00.ugly.00	derivation		oewn-grotesqueness__1.07.00..
+oewn-grotesquely__4.02.00..	pertainym		oewn-grotesque__5.00.00.ugly.00
+oewn-grouch__1.18.00..	derivation		oewn-grouch__2.32.00..
+oewn-grouch__1.18.00..	derivation		oewn-grouchy__5.00.00.ill-natured.00
+oewn-grouch__2.32.00..	other	agent	oewn-grouch__1.18.00..
+oewn-grouchily__4.02.00..	pertainym		oewn-grouchy__5.00.00.ill-natured.00
+oewn-ground__1.06.00..	derivation		oewn-ground__2.35.03..
+oewn-ground__1.06.02..	derivation		oewn-ground__2.35.02..
+oewn-ground__1.16.00..	derivation		oewn-ground__2.31.00..
+oewn-ground__1.17.00..	derivation		oewn-ground__2.35.00..
+oewn-ground__1.17.00..	derivation		oewn-ground__2.35.01..
+oewn-ground__1.17.00..	derivation		oewn-ground__2.35.12..
+oewn-ground__1.17.00..	derivation		oewn-ground__2.38.00..
+oewn-ground__1.17.00..	derivation		oewn-ground__2.38.01..
+oewn-ground__1.17.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-ground__2.31.00..	other	by_means_of	oewn-ground__1.16.00..
+oewn-ground__2.35.00..	other	location	oewn-ground__1.17.00..
+oewn-ground__2.35.01..	other	location	oewn-ground__1.17.00..
+oewn-ground__2.35.02..	derivation		oewn-grounding__1.04.00..
+oewn-ground__2.35.02..	other	result	oewn-ground__1.06.02..
+oewn-ground__2.35.03..	other	uses	oewn-ground__1.06.00..
+oewn-ground__2.35.11..	derivation		oewn-grounder__1.04.00..
+oewn-ground__2.35.11..	other	result	oewn-grounder__1.04.00..
+oewn-ground__2.35.12..	other	location	oewn-ground__1.17.00..
+oewn-ground__2.38.00..	other	location	oewn-ground__1.17.00..
+oewn-ground__2.38.01..	other	location	oewn-ground__1.17.00..
+oewn-ground_stroke__1.04.00..	antonym		oewn-volley__1.04.01..
+oewn-grounding__1.04.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-groundnut_oil__1.13.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-group__1.03.00..	derivation		oewn-group__2.31.00..
+oewn-group__1.03.00..	derivation		oewn-group__2.33.00..
+oewn-group__2.31.00..	derivation		oewn-grouping__1.04.00..
+oewn-group__2.31.00..	other	result	oewn-group__1.03.00..
+oewn-group__2.33.00..	derivation		oewn-grouping__1.04.00..
+oewn-group__2.33.00..	other	result	oewn-group__1.03.00..
+oewn-grouse__1.05.00..	derivation		oewn-grouse__2.33.00..
+oewn-grouse__1.13.00..	derivation		oewn-grouse__2.33.00..
+oewn-grouse__2.33.00..	other	undergoer	oewn-grouse__1.05.00..
+oewn-grout__1.27.00..	derivation		oewn-grout__2.35.00..
+oewn-grout__2.35.00..	other	by_means_of	oewn-grout__1.27.00..
+oewn-grovel__2.38.00..	derivation		oewn-groveler__1.18.00..
+oewn-grovel__2.38.00..	derivation		oewn-groveller__1.18.00..
+oewn-grovel__2.38.00..	other	agent	oewn-groveler__1.18.00..
+oewn-grovel__2.38.00..	other	agent	oewn-groveller__1.18.00..
+oewn-grow__2.30.00..	also		oewn-grow_up__2.41.00..
+oewn-grow__2.30.00..	derivation		oewn-growth__1.22.02..
+oewn-grow__2.30.01..	derivation		oewn-grower__1.18.00..
+oewn-grow__2.30.01..	derivation		oewn-growing__1.22.00..
+oewn-grow__2.30.01..	derivation		oewn-growth__1.22.00..
+oewn-grow__2.30.01..	other	agent	oewn-grower__1.18.00..
+oewn-grow__2.30.02..	derivation		oewn-growing__1.22.00..
+oewn-grow__2.30.02..	derivation		oewn-growth__1.22.00..
+oewn-grow__2.30.03..	derivation		oewn-growth__1.11.01..
+oewn-grow__2.30.04..	derivation		oewn-growing__1.22.00..
+oewn-grow__2.30.04..	derivation		oewn-growth__1.22.00..
+oewn-grow__2.30.04..	derivation		oewn-growth__1.22.01..
+oewn-grow__2.36.00..	derivation		oewn-grower__1.18.00..
+oewn-grow__2.36.00..	derivation		oewn-growth__1.14.00..
+oewn-grow__2.36.00..	other	agent	oewn-grower__1.18.00..
+oewn-grow__2.42.00..	derivation		oewn-growth__1.11.01..
+oewn-growing__3.01.00..	pertainym		oewn-growth__1.22.00..
+oewn-growl__1.11.00..	derivation		oewn-growl__2.32.00..
+oewn-growl__2.32.00..	derivation		oewn-growler__1.18.00..
+oewn-growl__2.32.00..	derivation		oewn-growling__1.10.00..
+oewn-growl__2.32.00..	derivation		oewn-growling__1.11.00..
+oewn-growl__2.32.00..	other	agent	oewn-growler__1.18.00..
+oewn-growl__2.32.00..	other	event	oewn-growl__1.11.00..
+oewn-grownup__1.18.01..	derivation		oewn-grownup__5.00.00.mature.01
+oewn-grub__1.05.00..	derivation		oewn-grubby__3.01.00..
+oewn-grubbily__4.02.00..	pertainym		oewn-grubby__5.00.00.dirty.01
+oewn-grubbiness__1.26.00..	derivation		oewn-grubby__5.00.00.dirty.01
+oewn-grubby__3.01.00..	pertainym		oewn-grub__1.05.00..
+oewn-grubstake__1.21.00..	derivation		oewn-grubstake__2.40.00..
+oewn-grubstake__2.40.00..	other	uses	oewn-grubstake__1.21.00..
+oewn-grudge__1.12.00..	derivation		oewn-grudge__2.37.01..
+oewn-grudge__2.37.01..	other	event	oewn-grudge__1.12.00..
+oewn-grudgingly__4.02.00..	antonym		oewn-ungrudgingly__4.02.00..
+oewn-grudgingly__4.02.00..	pertainym		oewn-grudging__5.00.00.unwilling.00
+oewn-gruesome__5.00.00.alarming.00	derivation		oewn-gruesomeness__1.07.00..
+oewn-gruesomely__4.02.00..	pertainym		oewn-gruesome__5.00.00.alarming.00
+oewn-gruff__5.00.00.cacophonous.00	derivation		oewn-gruffness__1.07.01..
+oewn-gruff__5.00.00.ill-natured.00	derivation		oewn-gruffness__1.07.02..
+oewn-gruffly__4.02.00..	pertainym		oewn-gruff__5.00.00.ill-natured.00
+oewn-grumble__1.10.00..	derivation		oewn-grumble__2.32.00..
+oewn-grumble__1.10.00..	derivation		oewn-grumble__2.32.01..
+oewn-grumble__1.11.00..	derivation		oewn-grumble__2.32.02..
+oewn-grumble__1.11.00..	derivation		oewn-grumble__2.39.00..
+oewn-grumble__2.32.00..	derivation		oewn-grumbler__1.18.00..
+oewn-grumble__2.32.00..	derivation		oewn-grumbling__1.10.00..
+oewn-grumble__2.32.00..	other	agent	oewn-grumbler__1.18.00..
+oewn-grumble__2.32.00..	other	event	oewn-grumble__1.10.00..
+oewn-grumble__2.32.01..	derivation		oewn-grumbler__1.18.00..
+oewn-grumble__2.32.01..	other	agent	oewn-grumbler__1.18.00..
+oewn-grumble__2.32.01..	other	event	oewn-grumble__1.10.00..
+oewn-grumble__2.32.02..	derivation		oewn-grumbling__1.11.00..
+oewn-grumble__2.32.02..	other	event	oewn-grumble__1.11.00..
+oewn-grumble__2.39.00..	derivation		oewn-grumbling__1.11.00..
+oewn-grumble__2.39.00..	other	event	oewn-grumble__1.11.00..
+oewn-grume__1.08.00..	derivation		oewn-grumous__5.00.00.thick.02
+oewn-grume__1.27.00..	derivation		oewn-grumous__5.00.00.thick.02
+oewn-grump__1.18.00..	derivation		oewn-grumpy__5.00.00.ill-natured.00
+oewn-grumpily__4.02.00..	pertainym		oewn-grumpy__5.00.00.ill-natured.00
+oewn-grumpiness__1.07.00..	derivation		oewn-grumpy__5.00.00.ill-natured.00
+oewn-grunge__1.26.00..	derivation		oewn-grungy__5.00.00.dirty.01
+oewn-grungily__4.02.00..	pertainym		oewn-grungy__5.00.00.dirty.01
+oewn-grunt__1.11.00..	derivation		oewn-grunt__2.32.00..
+oewn-grunt__2.32.00..	derivation		oewn-grunter__1.05.00..
+oewn-grunt__2.32.00..	derivation		oewn-grunter__1.18.00..
+oewn-grunt__2.32.00..	other	agent	oewn-grunter__1.18.00..
+oewn-grunt__2.32.00..	other	event	oewn-grunt__1.11.00..
+oewn-guarantee__1.10.00..	derivation		oewn-guarantee__2.32.00..
+oewn-guarantee__1.10.00..	derivation		oewn-guarantee__2.32.02..
+oewn-guarantee__1.10.01..	derivation		oewn-guarantee__2.32.00..
+oewn-guarantee__1.10.01..	derivation		oewn-guarantee__2.32.01..
+oewn-guarantee__1.10.01..	derivation		oewn-guarantee__2.32.02..
+oewn-guarantee__1.10.01..	derivation		oewn-guarantee__2.32.03..
+oewn-guarantee__2.32.00..	other	by_means_of	oewn-guarantee__1.10.00..
+oewn-guarantee__2.32.00..	other	by_means_of	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.00..	other	event	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.01..	other	by_means_of	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.01..	other	event	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.02..	derivation		oewn-guarantor__1.18.00..
+oewn-guarantee__2.32.02..	other	agent	oewn-guarantor__1.18.00..
+oewn-guarantee__2.32.02..	other	by_means_of	oewn-guarantee__1.10.00..
+oewn-guarantee__2.32.02..	other	by_means_of	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.02..	other	undergoer	oewn-guarantee__1.10.00..
+oewn-guarantee__2.32.02..	other	undergoer	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.03..	other	by_means_of	oewn-guarantee__1.10.01..
+oewn-guarantee__2.32.03..	other	event	oewn-guarantee__1.10.01..
+oewn-guard__1.04.01..	derivation		oewn-guard__2.41.00..
+oewn-guard__1.14.00..	derivation		oewn-guard__2.33.00..
+oewn-guard__1.18.03..	derivation		oewn-guard__2.41.00..
+oewn-guard__2.33.00..	other	agent	oewn-guard__1.14.00..
+oewn-guard__2.41.00..	other	agent	oewn-guard__1.18.03..
+oewn-guard__2.41.00..	other	event	oewn-guard__1.04.01..
+oewn-guardedly__4.02.00..	pertainym		oewn-guarded__5.00.00.cautious.00
+oewn-guardian__1.18.00..	derivation		oewn-guardianship__1.04.00..
+oewn-guardian__1.18.00..	derivation		oewn-guardianship__1.04.01..
+oewn-guatemalan__1.18.00..	derivation		oewn-guatemalan__3.01.00..
+oewn-gubernatorial__3.01.00..	pertainym		oewn-governor__1.18.00..
+oewn-guerilla__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-guerrilla__1.18.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-guerrilla__1.18.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-guess__1.09.00..	derivation		oewn-guess__2.31.00..
+oewn-guess__1.09.00..	derivation		oewn-guess__2.32.00..
+oewn-guess__1.10.00..	derivation		oewn-guess__2.31.00..
+oewn-guess__1.10.00..	derivation		oewn-guess__2.31.01..
+oewn-guess__1.10.00..	derivation		oewn-guess__2.32.00..
+oewn-guess__2.31.00..	derivation		oewn-guesser__1.18.00..
+oewn-guess__2.31.00..	other	agent	oewn-guesser__1.18.00..
+oewn-guess__2.31.00..	other	event	oewn-guess__1.09.00..
+oewn-guess__2.31.00..	other	event	oewn-guess__1.10.00..
+oewn-guess__2.31.01..	derivation		oewn-guesser__1.18.00..
+oewn-guess__2.31.01..	other	agent	oewn-guesser__1.18.00..
+oewn-guess__2.31.01..	other	event	oewn-guess__1.10.00..
+oewn-guess__2.31.02..	derivation		oewn-guesser__1.18.00..
+oewn-guess__2.31.02..	other	agent	oewn-guesser__1.18.00..
+oewn-guess__2.32.00..	derivation		oewn-guesser__1.18.00..
+oewn-guess__2.32.00..	derivation		oewn-guessing__1.09.00..
+oewn-guess__2.32.00..	other	agent	oewn-guesser__1.18.00..
+oewn-guess__2.32.00..	other	event	oewn-guess__1.09.00..
+oewn-guess__2.32.00..	other	event	oewn-guess__1.10.00..
+oewn-guesstimate__1.09.00..	derivation		oewn-guesstimate__2.32.00..
+oewn-guesstimate__2.32.00..	other	event	oewn-guesstimate__1.09.00..
+oewn-guffaw__1.10.00..	derivation		oewn-guffaw__2.29.00..
+oewn-guffaw__2.29.00..	other	event	oewn-guffaw__1.10.00..
+oewn-guidance__1.04.01..	derivation		oewn-guide__2.41.00..
+oewn-guide__1.18.00..	derivation		oewn-guide__2.38.00..
+oewn-guide__1.18.00..	derivation		oewn-guide__2.38.01..
+oewn-guide__1.18.01..	derivation		oewn-guide__2.39.00..
+oewn-guide__1.18.02..	derivation		oewn-guide__2.38.01..
+oewn-guide__1.18.02..	derivation		oewn-guide__2.39.00..
+oewn-guide__1.18.02..	derivation		oewn-guide__2.41.00..
+oewn-guide__2.38.00..	other	agent	oewn-guide__1.18.00..
+oewn-guide__2.38.01..	other	agent	oewn-guide__1.18.00..
+oewn-guide__2.38.01..	other	agent	oewn-guide__1.18.02..
+oewn-guide__2.39.00..	other	undergoer	oewn-guide__1.18.01..
+oewn-guide__2.39.00..	other	undergoer	oewn-guide__1.18.02..
+oewn-guide__2.41.00..	other	agent	oewn-guide__1.18.02..
+oewn-guide__2.41.00..	other	event	oewn-guidance__1.04.01..
+oewn-guided__3.00.00..	antonym		oewn-unguided__3.00.00..
+oewn-guillotine__1.06.00..	derivation		oewn-guillotine__2.35.00..
+oewn-guillotine__2.35.00..	other	instrument	oewn-guillotine__1.06.00..
+oewn-guilt__1.12.00..	derivation		oewn-guilty__5.00.00.ashamed.00
+oewn-guilt__1.26.00..	antonym		oewn-innocence__1.26.00..
+oewn-guilt__1.26.00..	derivation		oewn-guilty__3.00.00..
+oewn-guiltily__4.02.00..	pertainym		oewn-guilty__5.00.00.ashamed.00
+oewn-guiltiness__1.26.00..	derivation		oewn-guilty__3.00.00..
+oewn-guiltiness__1.26.00..	derivation		oewn-guilty__5.00.00.ashamed.00
+oewn-guiltless__3.00.00..	derivation		oewn-guiltlessness__1.26.00..
+oewn-guilty__3.00.00..	antonym		oewn-innocent__3.00.00..
+oewn-guinean__1.18.00..	derivation		oewn-guinean__3.01.00..
+oewn-guitar__1.06.00..	derivation		oewn-guitarist__1.18.00..
+oewn-gull__1.18.00..	derivation		oewn-gull__2.32.00..
+oewn-gull__1.18.00..	derivation		oewn-gull__2.41.00..
+oewn-gull__2.32.00..	other	undergoer	oewn-gull__1.18.00..
+oewn-gull__2.41.00..	other	undergoer	oewn-gull__1.18.00..
+oewn-gullibility__1.07.00..	derivation		oewn-gullible__5.00.00.naive.00
+oewn-gullibility__1.07.00..	derivation		oewn-gullible__5.00.00.unwary.00
+oewn-gulp__1.04.00..	derivation		oewn-gulp__2.34.01..
+oewn-gulp__1.04.01..	derivation		oewn-gulp__2.34.01..
+oewn-gulp__2.32.00..	derivation		oewn-gulping__1.04.01..
+oewn-gulp__2.34.01..	derivation		oewn-gulper__1.18.00..
+oewn-gulp__2.34.01..	derivation		oewn-gulping__1.04.00..
+oewn-gulp__2.34.01..	other	agent	oewn-gulper__1.18.00..
+oewn-gulp__2.34.01..	other	event	oewn-gulp__1.04.00..
+oewn-gulp__2.34.01..	other	event	oewn-gulp__1.04.01..
+oewn-gum__1.08.00..	derivation		oewn-gum__2.34.00..
+oewn-gum__1.27.00..	derivation		oewn-gum__2.29.00..
+oewn-gum__1.27.01..	derivation		oewn-gum__2.35.00..
+oewn-gum__1.27.01..	derivation		oewn-gummy__5.00.00.adhesive.00
+oewn-gum__2.29.00..	other	result	oewn-gum__1.27.00..
+oewn-gum__2.34.00..	derivation		oewn-gumming__1.04.00..
+oewn-gum__2.34.00..	other	by_means_of	oewn-gum__1.08.00..
+oewn-gumminess__1.07.00..	derivation		oewn-gummy__5.00.00.adhesive.00
+oewn-gun__1.04.00..	derivation		oewn-gun__2.33.00..
+oewn-gun__1.06.00..	derivation		oewn-gun__2.33.00..
+oewn-gun__1.06.01..	derivation		oewn-gun__2.33.00..
+oewn-gun__1.18.00..	derivation		oewn-gun__2.33.00..
+oewn-gun__1.18.01..	derivation		oewn-gun__2.33.00..
+oewn-gun__2.33.00..	also		oewn-gun_down__2.33.00..
+oewn-gun__2.33.00..	derivation		oewn-gunner__1.18.00..
+oewn-gun__2.33.00..	other	agent	oewn-gun__1.18.00..
+oewn-gun__2.33.00..	other	agent	oewn-gun__1.18.01..
+oewn-gun__2.33.00..	other	agent	oewn-gunner__1.18.00..
+oewn-gun__2.33.00..	other	event	oewn-gun__1.04.00..
+oewn-gun__2.33.00..	other	instrument	oewn-gun__1.06.00..
+oewn-gun__2.33.00..	other	instrument	oewn-gun__1.06.01..
+oewn-gurgle__1.11.00..	derivation		oewn-gurgle__2.39.00..
+oewn-gurgle__1.11.00..	derivation		oewn-gurgle__2.39.02..
+oewn-gurgle__2.39.00..	other	event	oewn-gurgle__1.11.00..
+oewn-gurgle__2.39.02..	other	event	oewn-gurgle__1.11.00..
+oewn-gush__1.10.00..	derivation		oewn-gush__2.32.00..
+oewn-gush__1.10.00..	derivation		oewn-gushy__5.00.00.demonstrative.00
+oewn-gush__1.11.00..	derivation		oewn-gush__2.38.00..
+oewn-gush__2.32.00..	other	event	oewn-gush__1.10.00..
+oewn-gush__2.35.00..	derivation		oewn-gusher__1.06.00..
+oewn-gush__2.35.00..	other	by_means_of	oewn-gusher__1.06.00..
+oewn-gush__2.38.00..	derivation		oewn-gusher__1.06.00..
+oewn-gush__2.38.00..	other	by_means_of	oewn-gusher__1.06.00..
+oewn-gush__2.38.00..	other	event	oewn-gush__1.11.00..
+oewn-gushingly__4.02.00..	pertainym		oewn-gushing__5.00.00.demonstrative.00
+oewn-gusseted__3.00.00..	antonym		oewn-ungusseted__3.00.00..
+oewn-gust__1.19.00..	derivation		oewn-gusty__5.00.00.stormy.00
+oewn-gustation__1.09.00..	derivation		oewn-gustatorial__3.01.00..
+oewn-gustation__1.09.00..	derivation		oewn-gustatory__3.01.00..
+oewn-gustative__3.01.00..	pertainym		oewn-taste__1.09.02..
+oewn-gustatorial__3.01.00..	pertainym		oewn-taste__1.09.02..
+oewn-gustatory__3.01.00..	pertainym		oewn-taste__1.09.02..
+oewn-gut__1.06.00..	derivation		oewn-gut__2.35.00..
+oewn-gut__1.08.00..	derivation		oewn-gut__2.35.00..
+oewn-gut__2.35.00..	derivation		oewn-gutter__1.06.01..
+oewn-gut__2.35.00..	derivation		oewn-gutter__1.18.00..
+oewn-gut__2.35.00..	other	agent	oewn-gutter__1.18.00..
+oewn-gut__2.35.00..	other	instrument	oewn-gutter__1.06.01..
+oewn-gut__2.35.00..	other	undergoer	oewn-gut__1.06.00..
+oewn-gut__2.35.00..	other	undergoer	oewn-gut__1.08.00..
+oewn-gut__2.35.01..	derivation		oewn-gutter__1.18.00..
+oewn-gut__2.35.01..	other	agent	oewn-gutter__1.18.00..
+oewn-gutless__3.00.00..	antonym		oewn-gutsy__3.00.00..
+oewn-gutless__3.00.00..	derivation		oewn-gutlessness__1.07.00..
+oewn-gutlessness__1.07.00..	antonym		oewn-gutsiness__1.07.00..
+oewn-guts__1.07.00..	derivation		oewn-gutsy__3.00.00..
+oewn-gutsiness__1.07.00..	derivation		oewn-gutsy__3.00.00..
+oewn-gutter__1.06.00..	derivation		oewn-gutter__2.34.00..
+oewn-gutter__2.34.00..	other	by_means_of	oewn-gutter__1.06.00..
+oewn-gutter__2.34.00..	other	uses	oewn-gutter__1.06.00..
+oewn-guttural__1.10.00..	derivation		oewn-guttural__3.01.00..
+oewn-guttural__3.01.00..	pertainym		oewn-throat__1.08.00..
+oewn-gutturally__4.02.00..	pertainym		oewn-guttural__3.01.00..
+oewn-guy__1.06.00..	derivation		oewn-guy__2.30.00..
+oewn-guy__2.30.00..	other	by_means_of	oewn-guy__1.06.00..
+oewn-guyanese__1.18.00..	derivation		oewn-guyanese__3.01.00..
+oewn-guzzle__2.34.00..	derivation		oewn-guzzling__1.04.00..
+oewn-gymnastic__3.01.00..	derivation		oewn-gymnastics__1.04.00..
+oewn-gymnastic__3.01.00..	pertainym		oewn-gymnastics__1.04.00..
+oewn-gymnastic__5.00.00.active.01	derivation		oewn-gymnastics__1.04.00..
+oewn-gymnosophical__3.01.00..	derivation		oewn-gymnosophy__1.09.00..
+oewn-gymnosophical__3.01.00..	pertainym		oewn-gymnosophy__1.09.00..
+oewn-gymnosophist__1.18.00..	derivation		oewn-gymnosophy__1.09.00..
+oewn-gymnosperm__1.20.00..	derivation		oewn-gymnospermous__3.01.00..
+oewn-gynaecological__3.01.00..	derivation		oewn-gynaecology__1.09.00..
+oewn-gynaecological__3.01.00..	pertainym		oewn-gynecology__1.09.00..
+oewn-gynaecologist__1.18.00..	derivation		oewn-gynaecology__1.09.00..
+oewn-gynaecology__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-gynaecology__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-gynandromorph__1.18.00..	derivation		oewn-gynandromorphous__5.00.00.androgynous.00
+oewn-gynecologic__3.01.00..	derivation		oewn-gynecology__1.09.00..
+oewn-gynecologic__3.01.00..	pertainym		oewn-gynecology__1.09.00..
+oewn-gynecological__3.01.00..	derivation		oewn-gynecology__1.09.00..
+oewn-gynecological__3.01.00..	pertainym		oewn-gynecology__1.09.00..
+oewn-gynecologist__1.18.00..	derivation		oewn-gynecology__1.09.00..
+oewn-gynecology__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-gyp__1.04.00..	derivation		oewn-gyp__2.41.00..
+oewn-gyral__3.01.00..	pertainym		oewn-gyrus__1.08.00..
+oewn-gyrate__2.38.00..	derivation		oewn-gyration__1.04.00..
+oewn-gyrate__2.38.00..	other	event	oewn-gyration__1.04.00..
+oewn-gyrate__2.38.01..	derivation		oewn-gyration__1.04.00..
+oewn-gyrate__2.38.01..	derivation		oewn-gyration__1.11.00..
+oewn-gyrate__2.38.01..	other	event	oewn-gyration__1.04.00..
+oewn-gyrate__2.38.01..	other	event	oewn-gyration__1.11.00..
+oewn-gyroscope__1.06.00..	derivation		oewn-gyroscopic__3.01.00..
+oewn-gyroscopic__3.01.00..	pertainym		oewn-gyroscope__1.06.00..

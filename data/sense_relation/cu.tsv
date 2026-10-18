@@ -1,0 +1,307 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-cub__1.05.00..	derivation		oewn-cub__2.29.00..
+oewn-cub__2.29.00..	other	result	oewn-cub__1.05.00..
+oewn-cuban__1.18.00..	derivation		oewn-cuban__3.01.00..
+oewn-cube__1.06.00..	derivation		oewn-cubic__3.00.00..
+oewn-cube__1.06.00..	derivation		oewn-cubical__5.00.00.cubic.00
+oewn-cube__1.23.00..	derivation		oewn-cube__2.31.00..
+oewn-cube__1.23.00..	derivation		oewn-cubic__3.01.00..
+oewn-cube__1.25.00..	derivation		oewn-cube__2.35.00..
+oewn-cube__1.25.00..	derivation		oewn-cubic__3.00.00..
+oewn-cube__1.25.00..	derivation		oewn-cubical__5.00.00.cubic.00
+oewn-cube__1.25.00..	derivation		oewn-cuboidal__5.00.00.cubic.00
+oewn-cube__1.25.01..	derivation		oewn-cube__2.35.00..
+oewn-cube__1.25.01..	derivation		oewn-cubic__3.00.00..
+oewn-cube__1.25.01..	derivation		oewn-cubic__3.01.00..
+oewn-cube__1.25.01..	derivation		oewn-cubical__5.00.00.cubic.00
+oewn-cube__1.25.01..	derivation		oewn-cuboidal__5.00.00.cubic.00
+oewn-cube__2.31.00..	other	result	oewn-cube__1.23.00..
+oewn-cube__2.35.00..	other	result	oewn-cube__1.25.00..
+oewn-cube__2.35.00..	other	result	oewn-cube__1.25.01..
+oewn-cubic__3.00.00..	antonym		oewn-linear__3.00.01..
+oewn-cubic__3.00.00..	antonym		oewn-planar__3.00.00..
+oewn-cubic__3.00.00..	derivation		oewn-cubicity__1.07.00..
+oewn-cubic__3.01.00..	pertainym		oewn-cube__1.23.00..
+oewn-cubic_centimetre__1.23.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-cubic_centimetre__1.23.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-cubic_decimetre__1.23.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-cubic_decimetre__1.23.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-cubic_kilometer__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cubic_kilometre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cubic_kilometre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cubic_kilometre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-cubic_meter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cubic_metre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cubic_metre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cubic_metre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-cubic_millimeter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cubic_millimetre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cubic_millimetre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cubic_millimetre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-cubism__1.14.00..	derivation		oewn-cubist__1.18.00..
+oewn-cubism__1.14.00..	derivation		oewn-cubistic__3.01.00..
+oewn-cubist__3.01.00..	pertainym		oewn-cubism__1.14.00..
+oewn-cubistic__3.01.00..	pertainym		oewn-cubism__1.14.00..
+oewn-cubital__3.01.00..	derivation		oewn-cubitus__1.08.00..
+oewn-cubital__3.01.00..	pertainym		oewn-cubitus__1.08.00..
+oewn-cuckold__1.18.00..	derivation		oewn-cuckold__2.41.00..
+oewn-cuckoo__1.05.00..	derivation		oewn-cuckoo__2.32.00..
+oewn-cuddle__1.04.00..	derivation		oewn-cuddle__2.35.00..
+oewn-cuddle__1.04.00..	derivation		oewn-cuddle__2.35.01..
+oewn-cuddle__1.04.00..	derivation		oewn-cuddly__5.00.00.lovable.00
+oewn-cuddle__2.35.00..	derivation		oewn-cuddling__1.04.00..
+oewn-cuddle__2.35.00..	other	event	oewn-cuddle__1.04.00..
+oewn-cuddle__2.35.01..	derivation		oewn-cuddling__1.04.00..
+oewn-cuddle__2.35.01..	other	event	oewn-cuddle__1.04.00..
+oewn-cudgel__1.06.00..	derivation		oewn-cudgel__2.35.00..
+oewn-cudgel__2.35.00..	other	instrument	oewn-cudgel__1.06.00..
+oewn-cue__1.10.00..	derivation		oewn-cue__2.32.00..
+oewn-cue__2.32.00..	other	undergoer	oewn-cue__1.10.00..
+oewn-cuff__1.06.01..	derivation		oewn-cuff__2.35.01..
+oewn-cuff__2.35.01..	other	by_means_of	oewn-cuff__1.06.01..
+oewn-culinary__3.01.00..	pertainym		oewn-cuisine__1.13.00..
+oewn-cull__1.09.00..	derivation		oewn-cull__2.40.00..
+oewn-cull__2.35.00..	also		oewn-cull_out__2.31.00..
+oewn-cull__2.40.00..	other	undergoer	oewn-cull__1.09.00..
+oewn-culminate__2.30.00..	derivation		oewn-culmination__1.04.00..
+oewn-culminate__2.30.00..	derivation		oewn-culmination__1.10.00..
+oewn-culminate__2.30.00..	derivation		oewn-culmination__1.28.00..
+oewn-culminate__2.30.00..	other	event	oewn-culmination__1.04.00..
+oewn-culminate__2.30.00..	other	event	oewn-culmination__1.10.00..
+oewn-culminate__2.30.00..	other	event	oewn-culmination__1.28.00..
+oewn-culminate__2.30.03..	derivation		oewn-culmination__1.28.00..
+oewn-culminate__2.30.03..	other	event	oewn-culmination__1.28.00..
+oewn-culminate__2.38.00..	derivation		oewn-culmination__1.15.00..
+oewn-culminate__2.38.00..	other	event	oewn-culmination__1.15.00..
+oewn-culminate__2.41.00..	derivation		oewn-culmination__1.10.00..
+oewn-culminate__2.41.00..	derivation		oewn-culmination__1.28.00..
+oewn-culminate__2.41.00..	other	event	oewn-culmination__1.10.00..
+oewn-culminate__2.41.00..	other	event	oewn-culmination__1.28.00..
+oewn-culpability__1.26.00..	derivation		oewn-culpable__5.00.00.guilty.00
+oewn-culpable__5.00.00.guilty.00	derivation		oewn-culpableness__1.26.00..
+oewn-culpably__4.02.00..	pertainym		oewn-culpable__5.00.00.guilty.00
+oewn-cult__1.09.00..	derivation		oewn-cultist__1.18.00..
+oewn-cult__1.09.02..	derivation		oewn-cultist__1.18.01..
+oewn-cult__1.14.00..	derivation		oewn-cultist__1.18.00..
+oewn-cult__1.14.01..	derivation		oewn-cultist__1.18.01..
+oewn-cultism__1.04.01..	derivation		oewn-cultist__1.18.00..
+oewn-cultivate__2.36.01..	derivation		oewn-cultivation__1.04.00..
+oewn-cultivate__2.36.01..	derivation		oewn-cultivator__1.06.00..
+oewn-cultivate__2.36.01..	other	event	oewn-cultivation__1.04.00..
+oewn-cultivate__2.36.01..	other	instrument	oewn-cultivator__1.06.00..
+oewn-cultivate__2.41.00..	derivation		oewn-cultivation__1.26.00..
+oewn-cultivate__2.41.00..	other	state	oewn-cultivation__1.26.00..
+oewn-cultivate__2.41.02..	derivation		oewn-cultivation__1.04.00..
+oewn-cultivate__2.41.02..	derivation		oewn-cultivation__1.22.00..
+oewn-cultivate__2.41.02..	derivation		oewn-cultivator__1.18.00..
+oewn-cultivated__3.00.00..	antonym		oewn-uncultivated__3.00.00..
+oewn-cultivated_plant__1.20.00..	antonym		oewn-weed__1.20.00..
+oewn-cultural__3.01.00..	derivation		oewn-culture__1.09.01..
+oewn-cultural__3.01.00..	pertainym		oewn-culture__1.09.01..
+oewn-cultural__3.01.01..	derivation		oewn-culture__1.09.00..
+oewn-cultural__3.01.01..	pertainym		oewn-culture__1.09.00..
+oewn-cultural__3.01.02..	derivation		oewn-culture__1.04.00..
+oewn-cultural__3.01.02..	pertainym		oewn-culture__1.04.00..
+oewn-cultural__5.00.00.social.00	derivation		oewn-culture__1.09.00..
+oewn-cultural__5.00.00.social.00	derivation		oewn-culture__1.09.01..
+oewn-cultural_anthropologist__1.18.00..	derivation		oewn-cultural_anthropology__1.09.00..
+oewn-culturally__4.02.00..	pertainym		oewn-cultural__3.01.00..
+oewn-cum_laude__4.02.00..	pertainym		oewn-cum_laude__5.00.00.worthy.00
+oewn-cumbersome__5.00.00.unwieldy.00	derivation		oewn-cumbersomeness__1.07.00..
+oewn-cumulate__2.30.00..	derivation		oewn-cumulation__1.14.00..
+oewn-cumulate__2.30.00..	derivation		oewn-cumulative__5.00.00.additive.00
+oewn-cumulate__2.30.00..	derivation		oewn-cumulus__1.14.00..
+oewn-cumulatively__4.02.00..	pertainym		oewn-cumulative__5.00.00.additive.00
+oewn-cumulous__3.00.01..	pertainym		oewn-cumulus__1.17.00..
+oewn-cumulous__5.00.00.concentrated.00	derivation		oewn-cumulus__1.14.00..
+oewn-cumulus__3.00.01..	pertainym		oewn-cumulus__1.17.00..
+oewn-cuneiform__3.01.00..	pertainym		oewn-tarsal__1.08.00..
+oewn-cunningly__4.02.00..	pertainym		oewn-cunning__5.00.00.artful.00
+oewn-cunningly__4.02.01..	pertainym		oewn-cunning__5.00.00.attractive.01
+oewn-cup__1.06.00..	derivation		oewn-cup__2.30.01..
+oewn-cup__1.23.01..	derivation		oewn-cup__2.30.01..
+oewn-cup__2.29.00..	derivation		oewn-cupping__1.04.00..
+oewn-cup__2.30.01..	other	undergoer	oewn-cup__1.23.01..
+oewn-cupric__3.01.00..	pertainym		oewn-copper__1.27.00..
+oewn-cuprimine__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-cuprous__3.01.00..	pertainym		oewn-copper__1.27.00..
+oewn-cupular__5.00.00.concave.00	derivation		oewn-cupule__1.05.00..
+oewn-cupular__5.00.00.concave.00	derivation		oewn-cupule__1.20.00..
+oewn-curability__1.07.00..	antonym		oewn-incurability__1.07.01..
+oewn-curability__1.07.00..	derivation		oewn-curable__3.00.00..
+oewn-curable__3.00.00..	antonym		oewn-incurable__3.00.00..
+oewn-curable__3.00.00..	derivation		oewn-curableness__1.07.00..
+oewn-curable__3.00.00..	derivation		oewn-cure__2.29.00..
+oewn-curable__5.00.00.tempered.02	derivation		oewn-cure__2.30.02..
+oewn-curableness__1.07.00..	antonym		oewn-incurableness__1.07.00..
+oewn-curative__5.00.00.healthful.00	derivation		oewn-cure__2.29.00..
+oewn-curator__1.18.00..	derivation		oewn-curatorial__3.01.00..
+oewn-curator__1.18.00..	derivation		oewn-curatorship__1.04.00..
+oewn-curatorial__3.01.00..	pertainym		oewn-curator__1.18.00..
+oewn-curb__1.04.00..	derivation		oewn-curb__2.30.00..
+oewn-curb__1.04.00..	derivation		oewn-curb__2.41.00..
+oewn-curb__1.06.00..	derivation		oewn-curb__2.35.00..
+oewn-curb__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-curb__2.30.00..	other	event	oewn-curb__1.04.00..
+oewn-curb__2.35.00..	other	location	oewn-curb__1.06.00..
+oewn-curb__2.41.00..	other	event	oewn-curb__1.04.00..
+oewn-curdle__2.30.00..	antonym		oewn-homogenise__2.30.00..
+oewn-curdle__2.30.00..	antonym		oewn-homogenise__2.30.02..
+oewn-curdle__2.30.00..	antonym		oewn-homogenize__2.30.02..
+oewn-curdle__2.30.00..	derivation		oewn-curdling__1.22.00..
+oewn-curdle__2.30.01..	derivation		oewn-curdling__1.22.00..
+oewn-curdle__2.30.02..	derivation		oewn-curdling__1.22.00..
+oewn-cure__1.06.00..	derivation		oewn-cure__2.29.00..
+oewn-cure__2.29.00..	other	uses	oewn-cure__1.06.00..
+oewn-cure__2.30.00..	derivation		oewn-curing__1.22.00..
+oewn-curiosity__1.06.00..	derivation		oewn-curious__5.00.00.strange.00
+oewn-curiosity__1.09.00..	derivation		oewn-curious__3.00.00..
+oewn-curious__3.00.00..	antonym		oewn-incurious__3.00.00..
+oewn-curious__3.00.00..	derivation		oewn-curiousness__1.09.00..
+oewn-curious__5.00.00.strange.00	derivation		oewn-curiousness__1.07.00..
+oewn-curiously__4.02.00..	pertainym		oewn-curious__3.00.00..
+oewn-curiously__4.02.01..	pertainym		oewn-curious__5.00.00.strange.00
+oewn-curl__1.08.00..	derivation		oewn-curl__2.35.00..
+oewn-curl__1.08.00..	derivation		oewn-curly__3.00.00..
+oewn-curl__1.25.00..	derivation		oewn-curl__2.30.00..
+oewn-curl__1.25.00..	derivation		oewn-curl__2.35.01..
+oewn-curl__1.25.00..	derivation		oewn-curl__2.38.00..
+oewn-curl__2.30.00..	other	result	oewn-curl__1.25.00..
+oewn-curl__2.33.00..	derivation		oewn-curling__1.04.01..
+oewn-curl__2.35.00..	derivation		oewn-curler__1.06.00..
+oewn-curl__2.35.00..	other	instrument	oewn-curler__1.06.00..
+oewn-curl__2.35.01..	other	result	oewn-curl__1.25.00..
+oewn-curliness__1.07.00..	antonym		oewn-straightness__1.07.01..
+oewn-curliness__1.07.00..	derivation		oewn-curly__3.00.00..
+oewn-curly__3.00.00..	antonym		oewn-straight__3.00.03..
+oewn-curmudgeon__1.18.00..	derivation		oewn-curmudgeonly__5.00.00.ill-natured.00
+oewn-currency__1.07.01..	derivation		oewn-current__3.00.00..
+oewn-current__3.00.00..	antonym		oewn-noncurrent__3.00.00..
+oewn-current__3.00.00..	derivation		oewn-currentness__1.07.00..
+oewn-current_account__1.21.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-currently__4.02.00..	pertainym		oewn-current__3.00.00..
+oewn-curricular__3.01.00..	derivation		oewn-curriculum__1.10.00..
+oewn-curricular__3.01.00..	pertainym		oewn-curriculum__1.10.00..
+oewn-currier__1.18.00..	derivation		oewn-curry__2.30.02..
+oewn-currishly__4.02.01..	pertainym		oewn-currish__5.00.00.ignoble.01
+oewn-curry__1.13.00..	derivation		oewn-curry__2.39.00..
+oewn-curry__2.30.02..	other	agent	oewn-currier__1.18.00..
+oewn-curry_favor__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-curry_favour__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-curry_favour__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-curry_favour__2.32.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-currycomb__1.06.00..	derivation		oewn-currycomb__2.35.00..
+oewn-curse__1.10.00..	derivation		oewn-curse__2.32.00..
+oewn-curse__1.10.00..	derivation		oewn-curse__2.32.02..
+oewn-curse__1.10.01..	derivation		oewn-curse__2.32.01..
+oewn-curse__1.10.02..	derivation		oewn-curse__2.32.01..
+oewn-curse__2.32.00..	other	event	oewn-curse__1.10.00..
+oewn-curse__2.32.01..	other	event	oewn-curse__1.10.01..
+oewn-curse__2.32.01..	other	event	oewn-curse__1.10.02..
+oewn-curse__2.32.02..	other	undergoer	oewn-curse__1.10.00..
+oewn-cursedly__4.02.00..	pertainym		oewn-cursed__3.00.00..
+oewn-cursively__4.02.00..	pertainym		oewn-cursive__5.00.00.written.00
+oewn-cursorial__3.00.00..	antonym		oewn-fossorial__3.00.00..
+oewn-cursorily__4.02.00..	pertainym		oewn-cursory__5.00.00.careless.00
+oewn-curt__5.00.00.discourteous.00	derivation		oewn-curtness__1.07.00..
+oewn-curtail__2.30.01..	derivation		oewn-curtailment__1.07.00..
+oewn-curtail__2.30.01..	other	property	oewn-curtailment__1.07.00..
+oewn-curtain__1.06.00..	derivation		oewn-curtain__2.40.00..
+oewn-curtained__3.00.00..	antonym		oewn-curtainless__3.00.00..
+oewn-curtly__4.02.00..	pertainym		oewn-curt__5.00.00.discourteous.00
+oewn-curtsey__1.10.00..	derivation		oewn-curtsey__2.38.00..
+oewn-curtsey__2.38.00..	other	event	oewn-curtsey__1.10.00..
+oewn-curtsy__1.10.00..	derivation		oewn-curtsy__2.32.00..
+oewn-curtsy__1.10.00..	derivation		oewn-curtsy__2.38.00..
+oewn-curtsy__2.32.00..	other	event	oewn-curtsy__1.10.00..
+oewn-curtsy__2.38.00..	other	event	oewn-curtsy__1.10.00..
+oewn-curvaceous__5.00.00.shapely.00	derivation		oewn-curvaceousness__1.07.00..
+oewn-curvaceously__4.02.00..	pertainym		oewn-curvaceous__5.00.00.shapely.00
+oewn-curvature__1.07.01..	derivation		oewn-curve__2.38.01..
+oewn-curvature__1.26.00..	derivation		oewn-curve__2.38.01..
+oewn-curvature__1.26.00..	derivation		oewn-curve__2.38.02..
+oewn-curve__1.06.00..	derivation		oewn-curve__2.30.00..
+oewn-curve__1.06.00..	derivation		oewn-curve__2.38.00..
+oewn-curve__1.06.00..	derivation		oewn-curve__2.42.00..
+oewn-curve__1.06.00..	derivation		oewn-curvey__5.00.00.curved.00
+oewn-curve__1.06.00..	derivation		oewn-curvy__5.00.00.curved.00
+oewn-curve__1.07.00..	derivation		oewn-curve__2.38.01..
+oewn-curve__1.07.00..	derivation		oewn-curve__2.42.00..
+oewn-curve__1.07.00..	derivation		oewn-curvey__5.00.00.curved.00
+oewn-curve__1.07.00..	derivation		oewn-curvy__5.00.00.curved.00
+oewn-curve__1.25.00..	antonym		oewn-straight_line__1.25.00..
+oewn-curve__1.25.00..	derivation		oewn-curve__2.38.00..
+oewn-curve__2.30.00..	other	result	oewn-curve__1.06.00..
+oewn-curve__2.38.00..	other	result	oewn-curve__1.06.00..
+oewn-curve__2.38.01..	other	property	oewn-curve__1.07.00..
+oewn-curve__2.42.00..	other	property	oewn-curve__1.07.00..
+oewn-curve__2.42.00..	other	result	oewn-curve__1.06.00..
+oewn-curved__3.00.00..	antonym		oewn-straight__3.00.05..
+oewn-curvet__1.04.00..	derivation		oewn-curvet__2.38.00..
+oewn-curvet__2.38.00..	other	event	oewn-curvet__1.04.00..
+oewn-cushion__1.06.00..	derivation		oewn-cushiony__5.00.00.soft.01
+oewn-cushion__1.06.01..	derivation		oewn-cushion__2.35.00..
+oewn-cushion__2.35.00..	derivation		oewn-cushioning__1.06.00..
+oewn-cushion__2.35.00..	other	by_means_of	oewn-cushion__1.06.01..
+oewn-cushion__2.35.00..	other	instrument	oewn-cushion__1.06.01..
+oewn-cusp__1.06.00..	derivation		oewn-cuspidal__5.00.00.angular.00
+oewn-cuspid__1.08.00..	derivation		oewn-cuspidal__5.00.00.angular.00
+oewn-cuss__1.10.00..	derivation		oewn-cuss__2.32.00..
+oewn-cuss__2.32.00..	other	event	oewn-cuss__1.10.00..
+oewn-cussed__5.00.00.unregenerate.00	derivation		oewn-cussedness__1.07.00..
+oewn-cussedly__4.02.00..	pertainym		oewn-cussed__5.00.00.unregenerate.00
+oewn-custard--like__3.01.00..	pertainym		oewn-custard__1.13.00..
+oewn-custodial__5.00.00.protective.00	derivation		oewn-custodian__1.18.00..
+oewn-custodial__5.00.00.protective.00	derivation		oewn-custody__1.04.02..
+oewn-custodian__1.18.00..	derivation		oewn-custodianship__1.04.00..
+oewn-custom--made__1.06.00..	antonym		oewn-ready--made__1.06.00..
+oewn-custom--made__3.00.00..	antonym		oewn-ready--made__3.00.00..
+oewn-custom__1.04.00..	derivation		oewn-customary__5.00.00.usual.00
+oewn-custom__1.09.00..	derivation		oewn-customary__5.00.00.conventional.00
+oewn-customarily__4.02.00..	pertainym		oewn-customary__5.00.00.usual.00
+oewn-customise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-customise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-customise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-customise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-customize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-customize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cut__2.30.00..	also		oewn-cut_off__2.32.00..
+oewn-cut__2.30.02..	also		oewn-cut_back__2.30.00..
+oewn-cut__2.30.02..	also		oewn-cut_back__2.30.01..
+oewn-cut__2.30.02..	also		oewn-cut_out__2.30.00..
+oewn-cut__2.30.05..	derivation		oewn-cutting__1.04.04..
+oewn-cut__2.30.07..	derivation		oewn-cutting__1.04.03..
+oewn-cut__2.35.00..	also		oewn-cut_away__2.35.00..
+oewn-cut__2.35.00..	also		oewn-cut_into__2.35.01..
+oewn-cut__2.35.00..	also		oewn-cut_off__2.35.02..
+oewn-cut__2.35.00..	also		oewn-cut_out__2.35.01..
+oewn-cut__2.35.00..	also		oewn-cut_out__2.35.02..
+oewn-cut__2.35.00..	also		oewn-cut_up__2.35.00..
+oewn-cut__2.35.00..	derivation		oewn-cutter__1.06.00..
+oewn-cut__2.35.00..	derivation		oewn-cutter__1.18.00..
+oewn-cut__2.35.00..	derivation		oewn-cutting__1.04.01..
+oewn-cut__2.35.00..	other	agent	oewn-cutter__1.06.00..
+oewn-cut__2.35.00..	other	agent	oewn-cutter__1.18.00..
+oewn-cut__2.35.05..	derivation		oewn-cutting__1.04.09..
+oewn-cut__2.35.10..	derivation		oewn-cutting__1.04.01..
+oewn-cut__2.35.10..	derivation		oewn-cutting__1.04.02..
+oewn-cut__2.36.11..	derivation		oewn-cutting__1.04.00..
+oewn-cut__2.36.11..	derivation		oewn-cutting__1.04.05..
+oewn-cut__2.38.01..	also		oewn-cut_to__2.38.00..
+oewn-cut__2.38.01..	derivation		oewn-cutting__1.04.03..
+oewn-cut__3.00.01..	antonym		oewn-uncut__3.00.01..
+oewn-cut__3.00.02..	antonym		oewn-uncut__3.00.02..
+oewn-cut__3.00.03..	antonym		oewn-uncut__3.00.03..
+oewn-cut_back__2.30.01..	derivation		oewn-cutback__1.04.00..
+oewn-cut_out__2.30.00..	derivation		oewn-cutout__1.06.00..
+oewn-cut_out__2.35.02..	derivation		oewn-cutout__1.06.00..
+oewn-cutaneal__3.01.00..	derivation		oewn-cutis__1.08.00..
+oewn-cutaneal__3.01.00..	pertainym		oewn-cutis__1.08.00..
+oewn-cutaneous__3.01.00..	pertainym		oewn-cutis__1.08.00..
+oewn-cute__5.00.00.attractive.01	derivation		oewn-cuteness__1.07.00..
+oewn-cutely__4.02.00..	pertainym		oewn-cute__5.00.00.attractive.01
+oewn-cuticle__1.05.00..	derivation		oewn-cuticular__3.01.00..
+oewn-cuticula__1.05.00..	derivation		oewn-cuticular__3.01.00..
+oewn-cuticular__3.01.00..	pertainym		oewn-cuticle__1.08.00..
+oewn-cuticular__3.01.00..	pertainym		oewn-cuticula__1.05.00..
+oewn-cuttingly__4.02.00..	pertainym		oewn-cutting__5.00.00.unkind.00

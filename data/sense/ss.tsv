@@ -1,0 +1,10 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-ss__1.14.00..	ss%1:14:00::	oewn-SS-n	oewn-08228845-n	2
+oewn-ss__1.14.01..	ss%1:14:01::	oewn-SS-n	oewn-08365327-n	1
+oewn-ssa__1.14.00..	ssa%1:14:00::	oewn-SSA-n	oewn-08151631-n	1
+oewn-sse__1.24.00..	sse%1:24:00::	oewn-SSE-n	oewn-13855318-n	1
+oewn-ssmg__1.21.01..	ssmg%1:21:01::	oewn-SSMG-n	oewn-92438584-n	1
+oewn-sspe__1.26.00..	sspe%1:26:00::	oewn-SSPE-n	oewn-14367594-n	1
+oewn-ssri__1.06.00..	ssri%1:06:00::	oewn-SSRI-n	oewn-04176213-n	1
+oewn-sss__1.14.00..	sss%1:14:00::	oewn-SSS-n	oewn-08370490-n	1
+oewn-ssw__1.24.00..	ssw%1:24:00::	oewn-SSW-n	oewn-13855822-n	1

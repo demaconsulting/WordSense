@@ -1,0 +1,360 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-sybarite__1.18.00..	derivation		oewn-sybaritic__5.00.00.indulgent.00
+oewn-sycophancy__1.07.00..	derivation		oewn-sycophant__1.18.00..
+oewn-sycophant__1.18.00..	derivation		oewn-sycophantic__5.00.00.insincere.00
+oewn-sycophant__1.18.00..	derivation		oewn-sycophantic__5.00.00.servile.00
+oewn-syllabic__3.00.00..	derivation		oewn-syllable__1.10.00..
+oewn-syllabic__3.01.00..	pertainym		oewn-syllabary__1.10.00..
+oewn-syllabic__3.01.01..	derivation		oewn-syllabicity__1.10.00..
+oewn-syllabic__3.01.01..	derivation		oewn-syllable__1.10.00..
+oewn-syllabic__3.01.01..	pertainym		oewn-syllable__1.10.00..
+oewn-syllabically__4.02.00..	pertainym		oewn-syllabic__3.01.01..
+oewn-syllabicate__2.35.00..	derivation		oewn-syllabication__1.04.00..
+oewn-syllabicate__2.35.00..	derivation		oewn-syllable__1.10.00..
+oewn-syllabicate__2.35.00..	other	event	oewn-syllabication__1.04.00..
+oewn-syllabification__1.04.00..	derivation		oewn-syllabify__2.35.00..
+oewn-syllabify__2.35.00..	derivation		oewn-syllable__1.10.00..
+oewn-syllabify__2.35.00..	other	event	oewn-syllabification__1.04.00..
+oewn-syllabify__2.35.00..	other	result	oewn-syllable__1.10.00..
+oewn-syllabise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-syllabise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-syllabise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-syllabise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-syllabize__2.32.00..	derivation		oewn-syllable__1.10.00..
+oewn-syllabize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-syllabize__2.35.00..	derivation		oewn-syllable__1.10.00..
+oewn-syllabize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-syllogise__2.31.00..	derivation		oewn-syllogiser__1.18.00..
+oewn-syllogise__2.31.00..	derivation		oewn-syllogism__1.09.00..
+oewn-syllogise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-syllogise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-syllogise__2.31.00..	other	agent	oewn-syllogiser__1.18.00..
+oewn-syllogism__1.09.00..	derivation		oewn-syllogist__1.18.00..
+oewn-syllogism__1.09.00..	derivation		oewn-syllogistic__3.01.00..
+oewn-syllogism__1.09.00..	derivation		oewn-syllogize__2.31.00..
+oewn-syllogistic__3.01.00..	pertainym		oewn-syllogism__1.09.00..
+oewn-syllogize__2.31.00..	derivation		oewn-syllogizer__1.18.00..
+oewn-syllogize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-syllogize__2.31.00..	other	agent	oewn-syllogizer__1.18.00..
+oewn-sylvia_communis__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-symbiosis__1.24.00..	derivation		oewn-symbiotic__5.00.00.dependent.00
+oewn-symbiotically__4.02.00..	pertainym		oewn-symbiotic__5.00.00.dependent.00
+oewn-symbol__1.09.00..	derivation		oewn-symbolic__5.00.00.representative.00
+oewn-symbol__1.09.00..	derivation		oewn-symbolical__3.01.00..
+oewn-symbol__1.09.00..	derivation		oewn-symbolical__5.00.00.representative.00
+oewn-symbol__1.09.00..	derivation		oewn-symbolise__2.32.00..
+oewn-symbol__1.09.00..	derivation		oewn-symbolize__2.32.00..
+oewn-symbol__1.10.00..	derivation		oewn-symbolic__3.01.00..
+oewn-symbol__1.10.00..	derivation		oewn-symbolical__3.01.00..
+oewn-symbol__1.10.00..	derivation		oewn-symbolise__2.32.00..
+oewn-symbol__1.10.00..	derivation		oewn-symbolize__2.32.00..
+oewn-symbolic__3.01.00..	pertainym		oewn-symbol__1.10.00..
+oewn-symbolic__3.01.01..	pertainym		oewn-symbolism__1.10.00..
+oewn-symbolical__3.01.00..	pertainym		oewn-symbol__1.10.00..
+oewn-symbolically__4.02.00..	pertainym		oewn-symbolic__5.00.00.representative.00
+oewn-symbolically__4.02.01..	pertainym		oewn-symbolic__3.01.00..
+oewn-symbolisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolisation__1.09.00..	derivation		oewn-symbolise__2.32.00..
+oewn-symbolisation__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolisation__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolisation__1.10.00..	derivation		oewn-symbolise__2.32.01..
+oewn-symbolisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolise__2.32.00..	derivation		oewn-symboliser__1.18.00..
+oewn-symbolise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolise__2.32.00..	other	agent	oewn-symboliser__1.18.00..
+oewn-symbolise__2.32.00..	other	result	oewn-symbolisation__1.09.00..
+oewn-symbolise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolise__2.32.01..	other	event	oewn-symbolisation__1.10.00..
+oewn-symbolising__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symbolising__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symbolism__1.04.00..	derivation		oewn-symbolist__1.18.00..
+oewn-symbolism__1.04.00..	derivation		oewn-symbolist__1.18.01..
+oewn-symbolism__1.10.00..	derivation		oewn-symbolist__1.18.01..
+oewn-symbolism__1.14.00..	derivation		oewn-symbolist__1.18.00..
+oewn-symbolization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symbolization__1.09.00..	derivation		oewn-symbolize__2.32.00..
+oewn-symbolization__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symbolization__1.10.00..	derivation		oewn-symbolize__2.32.01..
+oewn-symbolization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symbolize__2.32.00..	derivation		oewn-symbolizer__1.18.00..
+oewn-symbolize__2.32.00..	derivation		oewn-symbolizing__1.04.00..
+oewn-symbolize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symbolize__2.32.00..	other	agent	oewn-symbolizer__1.18.00..
+oewn-symbolize__2.32.00..	other	result	oewn-symbolization__1.09.00..
+oewn-symbolize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symbolize__2.32.01..	other	event	oewn-symbolization__1.10.00..
+oewn-symbolizing__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symmetric__3.00.00..	derivation		oewn-symmetry__1.07.00..
+oewn-symmetric__3.00.00..	derivation		oewn-symmetry__1.25.00..
+oewn-symmetrical__3.00.00..	derivation		oewn-symmetricalness__1.07.00..
+oewn-symmetrically__4.02.00..	pertainym		oewn-symmetrical__3.00.00..
+oewn-symmetrise__2.30.00..	derivation		oewn-symmetry__1.07.00..
+oewn-symmetrise__2.30.00..	derivation		oewn-symmetry__1.25.00..
+oewn-symmetrise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symmetrise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symmetrize__2.30.00..	derivation		oewn-symmetry__1.07.00..
+oewn-symmetrize__2.30.00..	derivation		oewn-symmetry__1.25.00..
+oewn-symmetrize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sympathetic__3.00.00..	antonym		oewn-unsympathetic__3.00.00..
+oewn-sympathetic__3.00.00..	derivation		oewn-sympathy__1.09.00..
+oewn-sympathetic__3.00.00..	derivation		oewn-sympathy__1.12.00..
+oewn-sympathetic__3.00.02..	antonym		oewn-unsympathetic__3.00.02..
+oewn-sympathetic__3.01.00..	pertainym		oewn-sympathetic_nervous_system__1.08.00..
+oewn-sympathetic__5.00.00.similar.00	derivation		oewn-sympathy__1.24.00..
+oewn-sympathetically__4.02.00..	pertainym		oewn-sympathetic__3.01.00..
+oewn-sympathetically__4.02.01..	antonym		oewn-unsympathetically__4.02.00..
+oewn-sympathetically__4.02.01..	pertainym		oewn-sympathetic__3.00.00..
+oewn-sympathise__2.31.00..	derivation		oewn-sympathy__1.09.00..
+oewn-sympathise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sympathise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sympathise__2.37.00..	derivation		oewn-sympathiser__1.18.01..
+oewn-sympathise__2.37.00..	derivation		oewn-sympathy__1.12.00..
+oewn-sympathise__2.37.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sympathise__2.37.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sympathise__2.37.00..	other	agent	oewn-sympathiser__1.18.01..
+oewn-sympathise__2.37.01..	derivation		oewn-sympathiser__1.18.00..
+oewn-sympathise__2.37.01..	derivation		oewn-sympathy__1.24.00..
+oewn-sympathise__2.37.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sympathise__2.37.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sympathise__2.37.01..	other	agent	oewn-sympathiser__1.18.00..
+oewn-sympathize__2.31.00..	derivation		oewn-sympathy__1.09.00..
+oewn-sympathize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sympathize__2.37.00..	derivation		oewn-sympathizer__1.18.01..
+oewn-sympathize__2.37.00..	derivation		oewn-sympathy__1.12.00..
+oewn-sympathize__2.37.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sympathize__2.37.00..	other	agent	oewn-sympathizer__1.18.01..
+oewn-sympathize__2.37.01..	derivation		oewn-sympathizer__1.18.00..
+oewn-sympathize__2.37.01..	derivation		oewn-sympathy__1.24.00..
+oewn-sympathize__2.37.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sympathize__2.37.01..	other	agent	oewn-sympathizer__1.18.00..
+oewn-sympatric__3.00.00..	derivation		oewn-sympatry__1.26.00..
+oewn-symphonic__3.01.00..	derivation		oewn-symphony__1.10.00..
+oewn-symphonic__3.01.00..	pertainym		oewn-symphony__1.10.00..
+oewn-symphonise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-symphonise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-symphonize__2.36.00..	derivation		oewn-symphony__1.10.00..
+oewn-symphonize__2.36.00..	derivation		oewn-symphony__1.14.00..
+oewn-symphonize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-symptom__1.10.00..	derivation		oewn-symptomatic__5.00.00.characteristic.00
+oewn-symptom__1.26.00..	derivation		oewn-symptomatic__3.01.00..
+oewn-symptom__1.26.00..	derivation		oewn-symptomatic__5.00.00.characteristic.00
+oewn-symptomatic__3.01.00..	pertainym		oewn-symptom__1.26.00..
+oewn-symptomatically__4.02.00..	pertainym		oewn-symptomatic__3.01.00..
+oewn-synaesthesia__1.09.00..	derivation		oewn-synaesthetic__3.01.00..
+oewn-synaesthetic__3.01.00..	pertainym		oewn-synesthesia__1.09.00..
+oewn-synapse__1.08.00..	derivation		oewn-synaptic__3.01.00..
+oewn-synaptic__3.01.00..	pertainym		oewn-synapse__1.08.00..
+oewn-syncarp__1.20.00..	derivation		oewn-syncarpous__3.00.00..
+oewn-syncategorem__1.10.00..	derivation		oewn-syncategorematic__3.00.00..
+oewn-syncategorematic__3.00.00..	derivation		oewn-syncategoreme__1.10.00..
+oewn-synchroneity__1.24.00..	derivation		oewn-synchronous__3.00.00..
+oewn-synchronic__3.00.04..	derivation		oewn-synchronicity__1.24.00..
+oewn-synchronic__3.00.04..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronic__5.00.02.synchronous.00	derivation		oewn-synchronicity__1.24.00..
+oewn-synchronisation__1.04.00..	derivation		oewn-synchronise__2.30.00..
+oewn-synchronisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronisation__1.04.01..	derivation		oewn-synchronise__2.30.00..
+oewn-synchronisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronisation__1.24.00..	derivation		oewn-synchronise__2.42.00..
+oewn-synchronisation__1.24.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronisation__1.24.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.30.00..	derivation		oewn-synchroniser__1.06.00..
+oewn-synchronise__2.30.00..	derivation		oewn-synchronising__1.04.01..
+oewn-synchronise__2.30.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.30.00..	other	event	oewn-synchronisation__1.04.00..
+oewn-synchronise__2.30.00..	other	event	oewn-synchronisation__1.04.01..
+oewn-synchronise__2.30.00..	other	instrument	oewn-synchroniser__1.06.00..
+oewn-synchronise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.30.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.30.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.31.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.42.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronise__2.42.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronise__2.42.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronise__2.42.00..	other	result	oewn-synchronisation__1.24.00..
+oewn-synchronising__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synchronising__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synchronization__1.04.00..	derivation		oewn-synchronize__2.30.00..
+oewn-synchronization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronization__1.04.01..	derivation		oewn-synchronize__2.30.00..
+oewn-synchronization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronization__1.24.00..	derivation		oewn-synchronize__2.42.00..
+oewn-synchronization__1.24.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.30.00..	derivation		oewn-synchronizer__1.06.00..
+oewn-synchronize__2.30.00..	derivation		oewn-synchronizing__1.04.00..
+oewn-synchronize__2.30.00..	derivation		oewn-synchronizing__1.04.01..
+oewn-synchronize__2.30.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.30.00..	other	event	oewn-synchronization__1.04.00..
+oewn-synchronize__2.30.00..	other	event	oewn-synchronization__1.04.01..
+oewn-synchronize__2.30.00..	other	instrument	oewn-synchronizer__1.06.00..
+oewn-synchronize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.30.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.31.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.32.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.42.00..	derivation		oewn-synchronizing__1.24.00..
+oewn-synchronize__2.42.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronize__2.42.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronize__2.42.00..	other	result	oewn-synchronization__1.24.00..
+oewn-synchronizing__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synchronous__3.00.00..	derivation		oewn-synchrony__1.24.00..
+oewn-synchronously__4.02.00..	pertainym		oewn-synchronous__3.00.00..
+oewn-syncopate__2.30.00..	derivation		oewn-syncopation__1.10.00..
+oewn-syncopate__2.30.00..	derivation		oewn-syncopation__1.10.02..
+oewn-syncopate__2.30.00..	derivation		oewn-syncopator__1.18.00..
+oewn-syncopate__2.30.00..	other	agent	oewn-syncopator__1.18.00..
+oewn-syncopate__2.30.00..	other	result	oewn-syncopation__1.10.00..
+oewn-syncopate__2.30.00..	other	result	oewn-syncopation__1.10.02..
+oewn-syncopate__2.30.01..	derivation		oewn-syncopation__1.10.01..
+oewn-syncopate__2.30.01..	derivation		oewn-syncope__1.10.00..
+oewn-syncopate__2.30.01..	other	event	oewn-syncopation__1.10.01..
+oewn-syncretic__3.01.00..	derivation		oewn-syncretism__1.26.00..
+oewn-syncretic__3.01.00..	pertainym		oewn-syncretism__1.26.00..
+oewn-syncretic__3.01.01..	derivation		oewn-syncretism__1.22.00..
+oewn-syncretic__3.01.01..	pertainym		oewn-syncretism__1.22.00..
+oewn-syncretical__3.01.00..	derivation		oewn-syncretism__1.22.00..
+oewn-syncretical__3.01.00..	derivation		oewn-syncretism__1.26.00..
+oewn-syncretical__3.01.00..	pertainym		oewn-syncretism__1.26.00..
+oewn-syncretical__3.01.01..	derivation		oewn-syncretism__1.22.00..
+oewn-syncretical__3.01.01..	pertainym		oewn-syncretism__1.22.00..
+oewn-syncretise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-syncretise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-syncretise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-syncretise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-syncretism__1.22.00..	derivation		oewn-syncretistic__3.01.01..
+oewn-syncretism__1.22.00..	derivation		oewn-syncretistical__3.01.00..
+oewn-syncretism__1.22.00..	derivation		oewn-syncretistical__3.01.01..
+oewn-syncretism__1.22.00..	derivation		oewn-syncretize__2.30.00..
+oewn-syncretism__1.26.00..	derivation		oewn-syncretistic__3.01.00..
+oewn-syncretism__1.26.00..	derivation		oewn-syncretistical__3.01.00..
+oewn-syncretism__1.26.00..	derivation		oewn-syncretize__2.30.01..
+oewn-syncretistic__3.01.00..	pertainym		oewn-syncretism__1.26.00..
+oewn-syncretistic__3.01.01..	pertainym		oewn-syncretism__1.22.00..
+oewn-syncretistical__3.01.00..	pertainym		oewn-syncretism__1.26.00..
+oewn-syncretistical__3.01.01..	pertainym		oewn-syncretism__1.22.00..
+oewn-syncretize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-syncretize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-syndicalism__1.14.00..	derivation		oewn-syndicalist__1.18.00..
+oewn-syndicate__1.14.00..	derivation		oewn-syndicate__2.41.00..
+oewn-syndicate__1.14.00..	derivation		oewn-syndicate__2.41.01..
+oewn-syndicate__1.14.02..	derivation		oewn-syndicate__2.40.00..
+oewn-syndicate__2.40.00..	derivation		oewn-syndication__1.04.01..
+oewn-syndicate__2.40.00..	other	agent	oewn-syndicate__1.14.02..
+oewn-syndicate__2.40.00..	other	event	oewn-syndication__1.04.01..
+oewn-syndicate__2.41.00..	derivation		oewn-syndication__1.04.00..
+oewn-syndicate__2.41.00..	derivation		oewn-syndicator__1.18.00..
+oewn-syndicate__2.41.00..	other	agent	oewn-syndicator__1.18.00..
+oewn-syndicate__2.41.00..	other	event	oewn-syndication__1.04.00..
+oewn-syndicate__2.41.00..	other	result	oewn-syndicate__1.14.00..
+oewn-syndicate__2.41.01..	other	result	oewn-syndicate__1.14.00..
+oewn-synecdoche__1.10.00..	derivation		oewn-synecdochic__5.00.00.figurative.00
+oewn-synecdoche__1.10.00..	derivation		oewn-synecdochical__5.00.00.figurative.00
+oewn-synergetic__5.00.00.cooperative.00	derivation		oewn-synergy__1.22.00..
+oewn-synergism__1.09.00..	derivation		oewn-synergistic__3.01.00..
+oewn-synergism__1.22.00..	derivation		oewn-synergist__1.06.00..
+oewn-synergism__1.22.00..	derivation		oewn-synergistic__3.00.00..
+oewn-synergism__1.22.00..	derivation		oewn-synergistic__5.00.00.cooperative.00
+oewn-synergistic__3.01.00..	pertainym		oewn-synergism__1.09.00..
+oewn-synergistically__4.02.00..	pertainym		oewn-synergistic__3.00.00..
+oewn-synergistically__4.02.01..	pertainym		oewn-synergistic__5.00.00.cooperative.00
+oewn-synesthesia__1.09.00..	derivation		oewn-synesthetic__3.01.00..
+oewn-synesthetic__3.01.00..	pertainym		oewn-synesthesia__1.09.00..
+oewn-synonym__1.10.00..	derivation		oewn-synonymous__3.00.00..
+oewn-synonymist__1.18.00..	derivation		oewn-synonymy__1.24.00..
+oewn-synonymity__1.24.00..	derivation		oewn-synonymous__3.00.00..
+oewn-synonymous__3.00.00..	derivation		oewn-synonymousness__1.24.00..
+oewn-synonymously__4.02.00..	pertainym		oewn-synonymous__3.00.00..
+oewn-synopsis__1.10.00..	derivation		oewn-synoptic__3.01.00..
+oewn-synoptic__3.01.00..	pertainym		oewn-synopsis__1.10.00..
+oewn-synovia__1.08.00..	derivation		oewn-synovial__3.01.00..
+oewn-synovial__3.01.00..	pertainym		oewn-synovia__1.08.00..
+oewn-syntactic__3.01.00..	derivation		oewn-syntax__1.09.00..
+oewn-syntactic__3.01.00..	derivation		oewn-syntax__1.09.01..
+oewn-syntactic__3.01.00..	pertainym		oewn-syntax__1.09.00..
+oewn-syntactical__3.01.00..	derivation		oewn-syntax__1.09.00..
+oewn-syntactical__3.01.00..	derivation		oewn-syntax__1.09.01..
+oewn-syntactical__3.01.00..	pertainym		oewn-syntax__1.09.00..
+oewn-syntactically__4.02.00..	pertainym		oewn-syntactic__3.01.00..
+oewn-syntactician__1.18.00..	derivation		oewn-syntax__1.09.00..
+oewn-syntactician__1.18.00..	derivation		oewn-syntax__1.09.01..
+oewn-syntagm__1.10.00..	derivation		oewn-syntagmatic__3.01.00..
+oewn-syntagma__1.10.00..	derivation		oewn-syntagmatic__3.01.00..
+oewn-syntagmatic__3.01.00..	pertainym		oewn-syntagma__1.10.00..
+oewn-synthesis__1.09.00..	derivation		oewn-synthesise__2.31.00..
+oewn-synthesis__1.09.00..	derivation		oewn-synthesist__1.18.00..
+oewn-synthesis__1.09.00..	derivation		oewn-synthetic__3.00.03..
+oewn-synthesis__1.09.00..	derivation		oewn-synthetical__3.00.03..
+oewn-synthesis__1.09.01..	derivation		oewn-synthesise__2.31.00..
+oewn-synthesis__1.09.01..	derivation		oewn-synthetic__3.00.01..
+oewn-synthesis__1.09.01..	derivation		oewn-synthetical__3.00.03..
+oewn-synthesis__1.22.00..	derivation		oewn-synthesise__2.31.00..
+oewn-synthesis__1.22.00..	derivation		oewn-synthetical__3.00.03..
+oewn-synthesise__2.31.00..	derivation		oewn-synthesiser__1.06.00..
+oewn-synthesise__2.31.00..	derivation		oewn-synthesiser__1.18.00..
+oewn-synthesise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-synthesise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-synthesise__2.31.00..	other	agent	oewn-synthesiser__1.18.00..
+oewn-synthesise__2.31.00..	other	instrument	oewn-synthesiser__1.06.00..
+oewn-synthesize__2.31.00..	derivation		oewn-synthesizer__1.06.00..
+oewn-synthesize__2.31.00..	derivation		oewn-synthesizer__1.18.00..
+oewn-synthesize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-synthesize__2.31.00..	other	agent	oewn-synthesizer__1.18.00..
+oewn-synthesize__2.31.00..	other	instrument	oewn-synthesizer__1.06.00..
+oewn-synthetically__4.02.00..	pertainym		oewn-synthetic__5.00.00.artificial.00
+oewn-syphilis__1.26.00..	derivation		oewn-syphilitic__3.01.00..
+oewn-syphilitic__3.01.00..	pertainym		oewn-syphilis__1.26.00..
+oewn-syphon__1.06.00..	derivation		oewn-syphon__2.38.00..
+oewn-syphon__2.38.00..	other	instrument	oewn-syphon__1.06.00..
+oewn-syringe__1.06.00..	derivation		oewn-syringe__2.35.00..
+oewn-syringe__2.35.00..	other	instrument	oewn-syringe__1.06.00..
+oewn-system__1.07.00..	derivation		oewn-systematic__3.00.00..
+oewn-system__1.07.00..	derivation		oewn-systemise__2.30.00..
+oewn-system__1.07.00..	derivation		oewn-systemize__2.30.00..
+oewn-system__1.09.02..	derivation		oewn-systemise__2.30.00..
+oewn-system__1.09.02..	derivation		oewn-systemize__2.30.00..
+oewn-systematic__3.00.00..	antonym		oewn-unsystematic__3.00.00..
+oewn-systematic_desensitisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-systematic_desensitisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-systematic_desensitization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-systematically__4.02.00..	antonym		oewn-unsystematically__4.02.00..
+oewn-systematically__4.02.00..	pertainym		oewn-systematic__3.00.00..
+oewn-systematics__1.09.00..	derivation		oewn-systematist__1.18.00..
+oewn-systematisation__1.04.00..	derivation		oewn-systematise__2.30.00..
+oewn-systematisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-systematisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-systematise__2.30.00..	derivation		oewn-systematiser__1.18.00..
+oewn-systematise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-systematise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-systematise__2.30.00..	other	agent	oewn-systematiser__1.18.00..
+oewn-systematise__2.30.00..	other	event	oewn-systematisation__1.04.00..
+oewn-systematism__1.04.00..	derivation		oewn-systematist__1.18.00..
+oewn-systematism__1.04.00..	derivation		oewn-systematist__1.18.01..
+oewn-systematization__1.04.00..	derivation		oewn-systematize__2.30.00..
+oewn-systematization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-systematize__2.30.00..	derivation		oewn-systematizer__1.18.00..
+oewn-systematize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-systematize__2.30.00..	other	agent	oewn-systematizer__1.18.00..
+oewn-systematize__2.30.00..	other	event	oewn-systematization__1.04.00..
+oewn-systemise__2.30.00..	derivation		oewn-systemiser__1.18.00..
+oewn-systemise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-systemise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-systemise__2.30.00..	other	agent	oewn-systemiser__1.18.00..
+oewn-systemize__2.30.00..	derivation		oewn-systemizer__1.18.00..
+oewn-systemize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-systemize__2.30.00..	other	agent	oewn-systemizer__1.18.00..
+oewn-systolic__3.01.00..	pertainym		oewn-systole__1.11.00..

@@ -1,0 +1,402 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-slack__1.06.00..	derivation		oewn-slack__2.30.00..
+oewn-slack__1.06.00..	derivation		oewn-slack__5.00.00.lax.01
+oewn-slack__1.07.00..	derivation		oewn-slack__2.30.00..
+oewn-slack__1.07.00..	derivation		oewn-slack__5.00.00.lax.01
+oewn-slack__1.17.00..	derivation		oewn-slack__5.00.00.standing.02
+oewn-slack__1.22.00..	derivation		oewn-slack__2.30.03..
+oewn-slack__1.22.00..	derivation		oewn-slack__2.30.04..
+oewn-slack__1.22.00..	derivation		oewn-slack__2.30.05..
+oewn-slack__1.27.00..	derivation		oewn-slack__2.30.06..
+oewn-slack__2.30.00..	other	property	oewn-slack__1.07.00..
+oewn-slack__2.30.00..	other	result	oewn-slack__1.06.00..
+oewn-slack__2.30.03..	other	event	oewn-slack__1.22.00..
+oewn-slack__2.30.04..	other	event	oewn-slack__1.22.00..
+oewn-slack__2.30.05..	other	event	oewn-slack__1.22.00..
+oewn-slack__2.30.06..	other	result	oewn-slack__1.27.00..
+oewn-slack__2.31.00..	derivation		oewn-slacking__1.04.00..
+oewn-slack__2.41.00..	derivation		oewn-slacker__1.18.00..
+oewn-slack__2.41.00..	derivation		oewn-slacking__1.04.00..
+oewn-slack__2.41.00..	other	agent	oewn-slacker__1.18.00..
+oewn-slack__5.00.00.lax.01	derivation		oewn-slackness__1.07.00..
+oewn-slack__5.00.00.negligent.00	derivation		oewn-slackness__1.07.01..
+oewn-slacken__2.30.00..	also		oewn-slacken_off__2.30.00..
+oewn-slacken__2.30.01..	derivation		oewn-slackening__1.11.00..
+oewn-slackly__4.02.00..	pertainym		oewn-slack__5.00.00.lax.01
+oewn-slalom__1.11.00..	derivation		oewn-slalom__2.38.00..
+oewn-slalom__2.38.00..	other	event	oewn-slalom__1.11.00..
+oewn-slam--dunk__2.35.00..	derivation		oewn-slam_dunk__1.04.00..
+oewn-slam--dunk__2.41.00..	derivation		oewn-slam_dunk__1.07.00..
+oewn-slam__1.11.01..	derivation		oewn-slam__2.35.00..
+oewn-slam__1.11.01..	derivation		oewn-slam__2.35.02..
+oewn-slam__1.11.02..	derivation		oewn-slam__2.35.01..
+oewn-slam__2.35.00..	other	event	oewn-slam__1.11.01..
+oewn-slam__2.35.01..	derivation		oewn-slammer__1.18.00..
+oewn-slam__2.35.01..	other	agent	oewn-slammer__1.18.00..
+oewn-slam__2.35.01..	other	event	oewn-slam__1.11.02..
+oewn-slam__2.35.02..	other	event	oewn-slam__1.11.01..
+oewn-slam_dance__1.04.00..	derivation		oewn-slam_dance__2.38.00..
+oewn-slam_dance__2.38.00..	derivation		oewn-slam_dancing__1.04.00..
+oewn-slam_dance__2.38.00..	other	event	oewn-slam_dance__1.04.00..
+oewn-slander__1.04.01..	derivation		oewn-slander__2.32.00..
+oewn-slander__1.04.01..	derivation		oewn-slanderous__5.00.00.harmful.00
+oewn-slander__1.10.00..	derivation		oewn-slander__2.32.00..
+oewn-slander__1.10.00..	derivation		oewn-slanderous__5.00.00.harmful.00
+oewn-slander__2.32.00..	derivation		oewn-slanderer__1.18.00..
+oewn-slander__2.32.00..	other	agent	oewn-slanderer__1.18.00..
+oewn-slander__2.32.00..	other	event	oewn-slander__1.04.01..
+oewn-slander__2.32.00..	other	event	oewn-slander__1.10.00..
+oewn-slanderously__4.02.00..	pertainym		oewn-slanderous__5.00.00.harmful.00
+oewn-slang__1.10.00..	derivation		oewn-slang__2.32.02..
+oewn-slang__1.10.00..	derivation		oewn-slangy__5.00.00.informal.02
+oewn-slang__1.10.01..	derivation		oewn-slang__2.32.00..
+oewn-slang__1.10.01..	derivation		oewn-slang__2.32.02..
+oewn-slang__1.10.01..	derivation		oewn-slangy__5.00.00.informal.02
+oewn-slang__2.32.00..	other	event	oewn-slang__1.10.01..
+oewn-slang__2.32.02..	other	event	oewn-slang__1.10.00..
+oewn-slang__2.32.02..	other	event	oewn-slang__1.10.01..
+oewn-slangily__4.02.00..	pertainym		oewn-slangy__5.00.00.informal.02
+oewn-slanginess__1.07.00..	derivation		oewn-slangy__5.00.00.informal.02
+oewn-slant__1.07.00..	derivation		oewn-slant__2.38.00..
+oewn-slant__1.07.00..	derivation		oewn-slant__2.38.01..
+oewn-slant__1.07.00..	derivation		oewn-slant__2.42.00..
+oewn-slant__1.09.00..	derivation		oewn-slant__2.31.00..
+oewn-slant__2.31.00..	other	uses	oewn-slant__1.09.00..
+oewn-slant__2.38.00..	other	property	oewn-slant__1.07.00..
+oewn-slant__2.38.01..	other	property	oewn-slant__1.07.00..
+oewn-slant__2.42.00..	other	property	oewn-slant__1.07.00..
+oewn-slantingly__4.02.00..	pertainym		oewn-slanting__5.00.00.inclined.01
+oewn-slap__1.04.00..	derivation		oewn-slap__2.35.00..
+oewn-slap__1.11.00..	derivation		oewn-slap__2.35.00..
+oewn-slap__2.35.00..	derivation		oewn-slapper__1.18.00..
+oewn-slap__2.35.00..	other	agent	oewn-slapper__1.18.00..
+oewn-slap__2.35.00..	other	event	oewn-slap__1.04.00..
+oewn-slap__2.35.00..	other	event	oewn-slap__1.11.00..
+oewn-slash__1.04.00..	derivation		oewn-slash__2.35.01..
+oewn-slash__1.26.00..	derivation		oewn-slash__2.35.00..
+oewn-slash__1.26.00..	derivation		oewn-slash__2.35.01..
+oewn-slash__2.35.00..	other	event	oewn-slash__1.26.00..
+oewn-slash__2.35.01..	derivation		oewn-slasher__1.18.00..
+oewn-slash__2.35.01..	other	agent	oewn-slasher__1.18.00..
+oewn-slash__2.35.01..	other	event	oewn-slash__1.04.00..
+oewn-slash__2.35.01..	other	event	oewn-slash__1.26.00..
+oewn-slat__1.06.00..	derivation		oewn-slat__2.35.01..
+oewn-slat__1.06.00..	derivation		oewn-slat__2.40.00..
+oewn-slat__2.35.01..	other	uses	oewn-slat__1.06.00..
+oewn-slat__2.40.00..	other	uses	oewn-slat__1.06.00..
+oewn-slate__1.10.02..	derivation		oewn-slate__2.41.00..
+oewn-slate__1.27.01..	derivation		oewn-slate__2.35.00..
+oewn-slate__2.35.00..	derivation		oewn-slating__1.04.00..
+oewn-slate__2.35.00..	other	uses	oewn-slate__1.27.01..
+oewn-slattern__1.18.00..	derivation		oewn-slatternly__5.00.00.untidy.00
+oewn-slattern__1.18.01..	derivation		oewn-slatternly__5.00.00.untidy.00
+oewn-slatternliness__1.07.00..	derivation		oewn-slatternly__5.00.00.untidy.00
+oewn-slaughter__1.04.00..	derivation		oewn-slaughter__2.35.00..
+oewn-slaughter__1.04.01..	derivation		oewn-slaughter__2.30.00..
+oewn-slaughter__1.04.01..	derivation		oewn-slaughterous__5.00.00.bloody.00
+oewn-slaughter__2.30.00..	other	event	oewn-slaughter__1.04.01..
+oewn-slaughter__2.35.00..	derivation		oewn-slaughterer__1.18.00..
+oewn-slaughter__2.35.00..	other	agent	oewn-slaughterer__1.18.00..
+oewn-slaughter__2.35.00..	other	event	oewn-slaughter__1.04.00..
+oewn-slav__1.18.00..	derivation		oewn-slav__3.01.00..
+oewn-slav__1.18.00..	derivation		oewn-slavic__3.01.00..
+oewn-slav__1.18.00..	derivation		oewn-slavonic__3.01.00..
+oewn-slav__3.01.00..	pertainym		oewn-slav__1.18.00..
+oewn-slave__1.18.01..	derivation		oewn-slave__2.41.00..
+oewn-slave__2.41.00..	derivation		oewn-slavery__1.04.00..
+oewn-slave__2.41.00..	other	agent	oewn-slave__1.18.01..
+oewn-slavic__1.10.00..	derivation		oewn-slavic__3.01.00..
+oewn-slavic__3.01.00..	pertainym		oewn-slavonic__1.10.00..
+oewn-slavishly__4.02.00..	pertainym		oewn-slavish__5.00.00.servile.00
+oewn-slavonic__3.01.00..	pertainym		oewn-slavonic__1.10.00..
+oewn-slay__2.41.00..	derivation		oewn-slayer__1.18.00..
+oewn-slay__2.41.00..	derivation		oewn-slaying__1.04.00..
+oewn-slay__2.41.00..	other	agent	oewn-slayer__1.18.00..
+oewn-sleaze__1.07.00..	derivation		oewn-sleazy__5.00.00.inferior.02
+oewn-sleaziness__1.07.00..	derivation		oewn-sleazy__5.00.00.inferior.02
+oewn-sleaziness__1.07.01..	derivation		oewn-sleazy__5.00.00.disreputable.00
+oewn-sled__1.06.00..	derivation		oewn-sled__2.38.00..
+oewn-sled__2.38.00..	derivation		oewn-sledder__1.18.00..
+oewn-sled__2.38.00..	derivation		oewn-sledding__1.04.00..
+oewn-sled__2.38.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-sled__2.38.00..	other	agent	oewn-sledder__1.18.00..
+oewn-sled__2.38.00..	other	vehicle	oewn-sled__1.06.00..
+oewn-sledge__1.06.00..	derivation		oewn-sledge__2.35.00..
+oewn-sledge__1.06.01..	derivation		oewn-sledge__2.38.01..
+oewn-sledge__1.06.01..	derivation		oewn-sledge__2.38.02..
+oewn-sledge__2.35.00..	other	instrument	oewn-sledge__1.06.00..
+oewn-sledge__2.38.01..	other	vehicle	oewn-sledge__1.06.01..
+oewn-sledge__2.38.02..	other	vehicle	oewn-sledge__1.06.01..
+oewn-sledgehammer__1.06.00..	derivation		oewn-sledgehammer__2.35.00..
+oewn-sledgehammer__2.35.00..	other	instrument	oewn-sledgehammer__1.06.00..
+oewn-sleek__5.00.00.bright.00	derivation		oewn-sleekness__1.07.00..
+oewn-sleek__5.00.00.groomed.00	derivation		oewn-sleekness__1.07.01..
+oewn-sleekly__4.02.00..	pertainym		oewn-sleek__5.00.00.bright.00
+oewn-sleep__1.26.00..	derivation		oewn-sleep__2.29.00..
+oewn-sleep__1.26.00..	derivation		oewn-sleepy__5.00.00.asleep.00
+oewn-sleep__1.28.00..	derivation		oewn-sleep__2.29.00..
+oewn-sleep__1.28.00..	derivation		oewn-sleep__2.42.00..
+oewn-sleep__2.29.00..	also		oewn-sleep_in__2.29.00..
+oewn-sleep__2.29.00..	also		oewn-sleep_in__2.34.00..
+oewn-sleep__2.29.00..	also		oewn-sleep_late__2.29.00..
+oewn-sleep__2.29.00..	also		oewn-sleep_out__2.34.00..
+oewn-sleep__2.29.00..	antonym		oewn-wake__2.29.00..
+oewn-sleep__2.29.00..	derivation		oewn-sleeper__1.18.00..
+oewn-sleep__2.29.00..	derivation		oewn-sleeping__1.09.00..
+oewn-sleep__2.29.00..	other	agent	oewn-sleeper__1.18.00..
+oewn-sleep__2.29.00..	other	event	oewn-sleep__1.28.00..
+oewn-sleep__2.29.00..	other	state	oewn-sleep__1.26.00..
+oewn-sleep__2.42.00..	derivation		oewn-sleeper__1.06.00..
+oewn-sleep__2.42.00..	derivation		oewn-sleeper__1.06.02..
+oewn-sleep__2.42.00..	other	by_means_of	oewn-sleeper__1.06.00..
+oewn-sleep__2.42.00..	other	by_means_of	oewn-sleeper__1.06.02..
+oewn-sleep__2.42.00..	other	event	oewn-sleep__1.28.00..
+oewn-sleep_over__2.42.00..	derivation		oewn-sleepover__1.11.00..
+oewn-sleep_over__2.42.00..	other	event	oewn-sleepover__1.11.00..
+oewn-sleepily__4.02.00..	pertainym		oewn-sleepy__5.00.00.asleep.00
+oewn-sleepiness__1.26.00..	antonym		oewn-wakefulness__1.26.00..
+oewn-sleepiness__1.26.00..	derivation		oewn-sleepy__5.00.00.asleep.00
+oewn-sleeping__1.09.00..	antonym		oewn-waking__1.09.00..
+oewn-sleepless__5.00.00.awake.00	derivation		oewn-sleeplessness__1.26.00..
+oewn-sleeplessly__4.02.00..	pertainym		oewn-sleepless__5.00.00.awake.00
+oewn-sleepwalk__2.38.00..	derivation		oewn-sleepwalker__1.18.00..
+oewn-sleepwalk__2.38.00..	derivation		oewn-sleepwalking__1.04.00..
+oewn-sleepwalk__2.38.00..	other	agent	oewn-sleepwalker__1.18.00..
+oewn-sleet__1.19.00..	derivation		oewn-sleet__2.43.00..
+oewn-sleet__1.19.00..	derivation		oewn-sleety__5.00.00.frozen.00
+oewn-sleet__2.43.00..	other	event	oewn-sleet__1.19.00..
+oewn-sleeved__3.00.00..	antonym		oewn-sleeveless__3.00.00..
+oewn-sleigh__1.06.00..	derivation		oewn-sleigh__2.38.00..
+oewn-sleigh__2.38.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-sleigh__2.38.00..	other	vehicle	oewn-sleigh__1.06.00..
+oewn-slender__5.00.00.narrow.00	derivation		oewn-slenderness__1.07.02..
+oewn-slender__5.00.00.small.00	derivation		oewn-slenderness__1.07.00..
+oewn-slender__5.00.00.thin.01	derivation		oewn-slenderness__1.07.02..
+oewn-slender__5.00.00.thin.03	derivation		oewn-slenderness__1.07.01..
+oewn-slenderise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-slenderise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-slenderize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-slenderly__4.02.00..	pertainym		oewn-slender__5.00.00.thin.03
+oewn-slenderly__4.02.01..	pertainym		oewn-slender__5.00.00.small.00
+oewn-sleuth__1.18.00..	derivation		oewn-sleuth__2.32.00..
+oewn-sleuth__2.32.00..	derivation		oewn-sleuthing__1.04.00..
+oewn-sleuth__2.32.00..	other	agent	oewn-sleuth__1.18.00..
+oewn-slice__1.04.00..	derivation		oewn-slice__2.33.00..
+oewn-slice__1.04.00..	derivation		oewn-slice__2.35.02..
+oewn-slice__1.13.00..	derivation		oewn-slice__2.35.00..
+oewn-slice__1.17.00..	derivation		oewn-slice__2.35.00..
+oewn-slice__1.26.00..	derivation		oewn-slice__2.35.01..
+oewn-slice__2.33.00..	derivation		oewn-slicing__1.04.01..
+oewn-slice__2.33.00..	other	event	oewn-slice__1.04.00..
+oewn-slice__2.35.00..	derivation		oewn-slicer__1.06.01..
+oewn-slice__2.35.00..	derivation		oewn-slicer__1.06.02..
+oewn-slice__2.35.00..	derivation		oewn-slicing__1.04.00..
+oewn-slice__2.35.00..	other	instrument	oewn-slicer__1.06.01..
+oewn-slice__2.35.00..	other	instrument	oewn-slicer__1.06.02..
+oewn-slice__2.35.00..	other	result	oewn-slice__1.13.00..
+oewn-slice__2.35.00..	other	result	oewn-slice__1.17.00..
+oewn-slice__2.35.01..	derivation		oewn-slicer__1.06.02..
+oewn-slice__2.35.01..	other	event	oewn-slice__1.26.00..
+oewn-slice__2.35.01..	other	instrument	oewn-slicer__1.06.02..
+oewn-slice__2.35.02..	derivation		oewn-slicer__1.18.00..
+oewn-slice__2.35.02..	derivation		oewn-slicing__1.04.01..
+oewn-slice__2.35.02..	other	agent	oewn-slicer__1.18.00..
+oewn-slice__2.35.02..	other	event	oewn-slice__1.04.00..
+oewn-slick__1.07.00..	derivation		oewn-slick__2.29.00..
+oewn-slick__1.07.00..	derivation		oewn-slick__2.35.00..
+oewn-slick__2.29.00..	other	uses	oewn-slick__1.07.00..
+oewn-slick__2.35.00..	other	uses	oewn-slick__1.07.00..
+oewn-slick__5.00.00.artful.00	derivation		oewn-slickness__1.07.02..
+oewn-slick__5.00.00.artful.00	derivation		oewn-slickness__1.10.00..
+oewn-slick__5.00.00.bright.00	derivation		oewn-slickness__1.07.01..
+oewn-slick__5.00.00.plausible.00	derivation		oewn-slickness__1.07.02..
+oewn-slick__5.00.00.slippery.00	derivation		oewn-slickness__1.07.01..
+oewn-slide__1.04.00..	derivation		oewn-slide__2.38.01..
+oewn-slide__1.04.00..	derivation		oewn-slide__2.38.02..
+oewn-slide__1.06.03..	derivation		oewn-slide__2.38.01..
+oewn-slide__1.10.00..	derivation		oewn-slide__2.38.02..
+oewn-slide__1.11.00..	derivation		oewn-slide__2.38.01..
+oewn-slide__2.38.00..	also		oewn-slide_by__2.38.00..
+oewn-slide__2.38.00..	also		oewn-slide_down__2.38.00..
+oewn-slide__2.38.00..	derivation		oewn-slider__1.18.00..
+oewn-slide__2.38.00..	other	agent	oewn-slider__1.18.00..
+oewn-slide__2.38.01..	derivation		oewn-slider__1.04.00..
+oewn-slide__2.38.01..	other	by_means_of	oewn-slider__1.04.00..
+oewn-slide__2.38.01..	other	event	oewn-slide__1.04.00..
+oewn-slide__2.38.02..	other	event	oewn-slide__1.04.00..
+oewn-slide__2.38.02..	other	event	oewn-slide__1.10.00..
+oewn-slight__1.04.00..	derivation		oewn-slight__2.31.00..
+oewn-slight__2.31.00..	other	event	oewn-slight__1.04.00..
+oewn-slight__5.00.00.insignificant.00	derivation		oewn-slightness__1.07.02..
+oewn-slight__5.00.00.thin.03	derivation		oewn-slightness__1.07.00..
+oewn-slight__5.00.00.thin.03	derivation		oewn-slightness__1.07.01..
+oewn-slightingly__4.02.00..	pertainym		oewn-slighting__5.00.00.uncomplimentary.00
+oewn-slightly__4.02.02..	pertainym		oewn-slight__5.00.00.thin.03
+oewn-slim__5.00.00.small.00	derivation		oewn-slimness__1.07.01..
+oewn-slim__5.00.00.thin.03	derivation		oewn-slimness__1.07.00..
+oewn-slime__1.27.00..	derivation		oewn-slime__2.35.00..
+oewn-slime__1.27.00..	derivation		oewn-slimy__5.00.00.slippery.00
+oewn-slime__2.35.00..	other	uses	oewn-slime__1.27.00..
+oewn-sliminess__1.07.01..	derivation		oewn-slimy__5.00.00.slippery.00
+oewn-sliminess__1.07.02..	derivation		oewn-slimy__5.00.00.evil.00
+oewn-slimly__4.02.00..	pertainym		oewn-slim__5.00.00.thin.03
+oewn-sling__1.06.01..	derivation		oewn-sling__2.35.00..
+oewn-sling__2.35.00..	derivation		oewn-slinger__1.18.00..
+oewn-sling__2.35.00..	derivation		oewn-slinging__1.04.00..
+oewn-sling__2.35.00..	other	agent	oewn-slinger__1.18.00..
+oewn-sling__2.35.00..	other	instrument	oewn-sling__1.06.01..
+oewn-slip--on__1.06.00..	derivation		oewn-slip_on__2.29.00..
+oewn-slip--up__1.04.01..	derivation		oewn-slip_up__2.31.00..
+oewn-slip__1.04.00..	derivation		oewn-slip__2.38.05..
+oewn-slip__1.04.03..	derivation		oewn-slip__2.38.01..
+oewn-slip__1.04.04..	derivation		oewn-slip__2.30.03..
+oewn-slip__1.04.04..	derivation		oewn-slip__2.38.00..
+oewn-slip__1.04.04..	derivation		oewn-slip__2.38.01..
+oewn-slip__1.04.04..	derivation		oewn-slippy__3.00.00..
+oewn-slip__1.04.05..	derivation		oewn-slip__2.31.00..
+oewn-slip__1.04.05..	derivation		oewn-slip__2.31.01..
+oewn-slip__1.07.00..	derivation		oewn-slippy__3.00.00..
+oewn-slip__2.30.00..	derivation		oewn-slippage__1.22.01..
+oewn-slip__2.30.03..	derivation		oewn-slippage__1.04.00..
+oewn-slip__2.30.03..	other	event	oewn-slip__1.04.04..
+oewn-slip__2.31.00..	also		oewn-slip_up__2.31.00..
+oewn-slip__2.31.00..	other	event	oewn-slip__1.04.05..
+oewn-slip__2.31.01..	other	event	oewn-slip__1.04.05..
+oewn-slip__2.38.00..	also		oewn-slip_up__2.31.00..
+oewn-slip__2.38.00..	other	event	oewn-slip__1.04.04..
+oewn-slip__2.38.01..	also		oewn-slip_away__2.38.00..
+oewn-slip__2.38.01..	other	event	oewn-slip__1.04.03..
+oewn-slip__2.38.01..	other	event	oewn-slip__1.04.04..
+oewn-slip__2.38.05..	also		oewn-slip_away__2.38.01..
+oewn-slip__2.38.05..	also		oewn-slip_by__2.38.00..
+oewn-slip__2.38.05..	other	event	oewn-slip__1.04.00..
+oewn-slip_off__2.29.00..	antonym		oewn-slip_on__2.29.00..
+oewn-slipperiness__1.07.00..	derivation		oewn-slippery__3.00.00..
+oewn-slipperiness__1.07.01..	derivation		oewn-slippery__5.00.00.untrustworthy.00
+oewn-slit__1.06.00..	derivation		oewn-slit__2.35.00..
+oewn-slit__1.17.00..	derivation		oewn-slit__2.35.00..
+oewn-slit__1.25.00..	derivation		oewn-slit__2.35.00..
+oewn-slit__1.25.00..	derivation		oewn-slit__2.35.01..
+oewn-slit__2.35.00..	other	result	oewn-slit__1.06.00..
+oewn-slit__2.35.00..	other	result	oewn-slit__1.17.00..
+oewn-slit__2.35.00..	other	result	oewn-slit__1.25.00..
+oewn-slit__2.35.01..	other	result	oewn-slit__1.25.00..
+oewn-sliver__1.17.00..	derivation		oewn-sliver__2.30.01..
+oewn-sliver__1.17.00..	derivation		oewn-sliver__2.41.00..
+oewn-sliver__1.17.00..	derivation		oewn-slivery__3.01.00..
+oewn-sliver__1.17.01..	derivation		oewn-sliver__2.30.00..
+oewn-sliver__1.17.01..	derivation		oewn-sliver__2.30.01..
+oewn-sliver__1.17.01..	derivation		oewn-slivery__3.01.00..
+oewn-sliver__2.30.00..	other	result	oewn-sliver__1.17.01..
+oewn-sliver__2.30.01..	other	result	oewn-sliver__1.17.00..
+oewn-sliver__2.30.01..	other	result	oewn-sliver__1.17.01..
+oewn-sliver__2.41.00..	other	result	oewn-sliver__1.17.00..
+oewn-slivery__3.01.00..	pertainym		oewn-sliver__1.17.00..
+oewn-slo--bid__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-slo--bid__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-slobber__1.08.00..	derivation		oewn-slobber__2.29.00..
+oewn-slobber__2.29.00..	also		oewn-slobber_over__2.37.00..
+oewn-slobber__2.29.00..	derivation		oewn-slobberer__1.18.00..
+oewn-slobber__2.29.00..	other	agent	oewn-slobberer__1.18.00..
+oewn-slobber__2.29.00..	other	undergoer	oewn-slobber__1.08.00..
+oewn-slog__2.41.00..	derivation		oewn-slogger__1.18.01..
+oewn-slog__2.41.00..	other	agent	oewn-slogger__1.18.01..
+oewn-slogan__1.10.00..	derivation		oewn-sloganeer__1.18.00..
+oewn-sloganeer__1.18.00..	derivation		oewn-sloganeer__2.36.00..
+oewn-sloganeer__2.36.00..	derivation		oewn-sloganeering__1.10.00..
+oewn-sloganeer__2.36.00..	other	agent	oewn-sloganeer__1.18.00..
+oewn-slop__1.10.00..	derivation		oewn-sloppy__5.00.00.emotional.00
+oewn-slop__1.13.00..	derivation		oewn-slop__2.34.00..
+oewn-slop__1.13.00..	derivation		oewn-slop__2.35.01..
+oewn-slop__1.27.00..	derivation		oewn-sloppy__5.00.00.wet.01
+oewn-slop__2.34.00..	other	uses	oewn-slop__1.13.00..
+oewn-slope__1.07.00..	derivation		oewn-slope__2.38.00..
+oewn-slope__1.17.00..	derivation		oewn-slope__2.38.00..
+oewn-slope__2.38.00..	other	by_means_of	oewn-slope__1.17.00..
+oewn-slope__2.38.00..	other	property	oewn-slope__1.07.00..
+oewn-slopingly__4.02.00..	pertainym		oewn-sloping__5.00.00.inclined.01
+oewn-sloppily__4.02.00..	pertainym		oewn-sloppy__5.00.00.untidy.00
+oewn-sloppiness__1.07.00..	derivation		oewn-sloppy__5.00.00.careless.00
+oewn-sloppiness__1.07.01..	derivation		oewn-sloppy__5.00.00.emotional.00
+oewn-sloppiness__1.26.00..	derivation		oewn-sloppy__5.00.00.untidy.00
+oewn-sloppiness__1.26.01..	derivation		oewn-sloppy__5.00.00.wet.01
+oewn-sloppiness__1.26.01..	derivation		oewn-sloppy__5.00.01.wet.01
+oewn-slot__1.28.00..	derivation		oewn-slot__2.31.00..
+oewn-slot__2.31.00..	other	uses	oewn-slot__1.28.00..
+oewn-slothful__5.00.00.idle.00	derivation		oewn-slothfulness__1.07.01..
+oewn-slouch__1.07.00..	derivation		oewn-slouch__2.38.00..
+oewn-slouch__1.07.00..	derivation		oewn-slouch__2.38.01..
+oewn-slouch__1.07.00..	derivation		oewn-slouchy__5.00.00.untidy.00
+oewn-slouch__2.38.00..	other	property	oewn-slouch__1.07.00..
+oewn-slouch__2.38.01..	derivation		oewn-sloucher__1.18.00..
+oewn-slouch__2.38.01..	other	agent	oewn-sloucher__1.18.00..
+oewn-slouch__2.38.01..	other	property	oewn-slouch__1.07.00..
+oewn-slouchily__4.02.00..	pertainym		oewn-slouchy__5.00.00.untidy.00
+oewn-slough__1.17.00..	derivation		oewn-slough__2.29.00..
+oewn-slough__1.17.02..	derivation		oewn-sloughy__5.00.00.wet.01
+oewn-slough__2.29.00..	derivation		oewn-sloughing__1.22.00..
+oewn-slough__2.29.00..	other	undergoer	oewn-slough__1.17.00..
+oewn-sloven__1.18.00..	derivation		oewn-slovenly__5.00.00.untidy.00
+oewn-slovenian__1.18.00..	derivation		oewn-slovenian__3.01.00..
+oewn-slovenliness__1.07.00..	derivation		oewn-slovenly__5.00.00.untidy.00
+oewn-slovenliness__1.26.00..	derivation		oewn-slovenly__5.00.00.untidy.00
+oewn-slow--witted__5.00.00.retarded.00	derivation		oewn-slow--wittedness__1.09.00..
+oewn-slow__2.30.00..	derivation		oewn-slowing__1.07.00..
+oewn-slow__2.30.01..	derivation		oewn-slowing__1.07.00..
+oewn-slow__3.00.01..	derivation		oewn-slowness__1.07.00..
+oewn-slow__3.00.02..	derivation		oewn-slowness__1.07.00..
+oewn-slow__5.00.00.stupid.00	derivation		oewn-slowness__1.09.01..
+oewn-slow__5.00.00.stupid.00	derivation		oewn-slowness__1.09.02..
+oewn-slow_down__2.30.00..	derivation		oewn-slowdown__1.04.00..
+oewn-slow_down__2.30.01..	derivation		oewn-slowdown__1.04.00..
+oewn-slow_down__2.30.02..	derivation		oewn-slowdown__1.04.00..
+oewn-slow_down__2.30.04..	derivation		oewn-slowdown__1.04.00..
+oewn-slower__4.02.00..	pertainym		oewn-slow__3.00.01..
+oewn-slowest__4.02.00..	pertainym		oewn-slow__3.00.01..
+oewn-slowly__4.02.01..	pertainym		oewn-slow__3.00.02..
+oewn-slowly__4.02.02..	pertainym		oewn-slow__3.00.01..
+oewn-slug__1.04.00..	derivation		oewn-slug__2.35.00..
+oewn-slug__1.18.00..	derivation		oewn-slug__2.41.00..
+oewn-slug__2.35.00..	derivation		oewn-slugger__1.18.00..
+oewn-slug__2.35.00..	derivation		oewn-slugger__1.18.01..
+oewn-slug__2.35.00..	other	agent	oewn-slugger__1.18.00..
+oewn-slug__2.35.00..	other	agent	oewn-slugger__1.18.01..
+oewn-slug__2.41.00..	derivation		oewn-sluggard__1.18.00..
+oewn-slug__2.41.00..	other	agent	oewn-slug__1.18.00..
+oewn-sluggish__5.00.00.inactive.01	derivation		oewn-sluggishness__1.07.00..
+oewn-sluggish__5.00.00.inactive.03	derivation		oewn-sluggishness__1.07.01..
+oewn-sluggish__5.00.01.slow.01	derivation		oewn-sluggishness__1.07.01..
+oewn-sluggishly__4.02.00..	pertainym		oewn-sluggish__5.00.01.slow.01
+oewn-sluice__1.06.00..	derivation		oewn-sluice__2.30.01..
+oewn-sluice__1.06.00..	derivation		oewn-sluice__2.38.00..
+oewn-sluice__1.06.00..	derivation		oewn-sluice__2.38.01..
+oewn-sluice__1.06.00..	derivation		oewn-sluice__2.43.00..
+oewn-sluice__2.30.01..	other	by_means_of	oewn-sluice__1.06.00..
+oewn-sluice__2.38.00..	other	by_means_of	oewn-sluice__1.06.00..
+oewn-sluice__2.38.01..	other	by_means_of	oewn-sluice__1.06.00..
+oewn-sluice__2.43.00..	other	by_means_of	oewn-sluice__1.06.00..
+oewn-sluicing__3.44.00..	participle		oewn-sluice__2.38.00..
+oewn-slum__1.15.00..	derivation		oewn-slum__2.41.00..
+oewn-slum__1.15.00..	derivation		oewn-slummy__5.00.00.poor.03
+oewn-slum__2.41.00..	other	location	oewn-slum__1.15.00..
+oewn-slumber__1.26.00..	derivation		oewn-slumberous__5.00.00.restful.00
+oewn-slumber__1.26.00..	derivation		oewn-slumbrous__5.00.00.restful.00
+oewn-slumber__1.26.01..	derivation		oewn-slumber__2.29.00..
+oewn-slumber__1.26.01..	derivation		oewn-slumbery__5.00.00.asleep.00
+oewn-slumber__2.29.00..	derivation		oewn-slumberer__1.18.00..
+oewn-slumber__2.29.00..	other	agent	oewn-slumberer__1.18.00..
+oewn-slumber__2.29.00..	other	state	oewn-slumber__1.26.01..
+oewn-slump__1.22.00..	derivation		oewn-slump__2.30.00..
+oewn-slump__1.26.00..	derivation		oewn-slump__2.30.00..
+oewn-slump__2.30.00..	other	event	oewn-slump__1.22.00..
+oewn-slump__2.30.00..	other	event	oewn-slump__1.26.00..
+oewn-slur__1.10.00..	derivation		oewn-slur__2.32.01..
+oewn-slur__1.10.01..	derivation		oewn-slur__2.36.00..
+oewn-slur__2.30.00..	also		oewn-slur_over__2.41.00..
+oewn-slur__2.32.01..	other	event	oewn-slur__1.10.00..
+oewn-slur__2.36.00..	other	event	oewn-slur__1.10.01..
+oewn-slush__1.27.00..	derivation		oewn-slushy__5.00.00.unfrozen.00
+oewn-sluttish__5.00.00.unchaste.00	derivation		oewn-sluttishness__1.07.00..
+oewn-sluttish__5.00.00.untidy.00	derivation		oewn-sluttishness__1.07.00..
+oewn-sly__5.00.00.artful.00	derivation		oewn-slyness__1.09.00..
+oewn-slyly__4.02.00..	pertainym		oewn-sly__5.00.00.artful.00

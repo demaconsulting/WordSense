@@ -1,0 +1,30 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-Pneumovax-n	Pneumovax	n	0	1	1	oewn
+oewn-pneumatic-a	pneumatic	a	0	1	1	oewn
+oewn-pneumatic_caisson-n	pneumatic caisson	n	0	2	2	oewn
+oewn-pneumatic_drill-n	pneumatic drill	n	0	2	2	oewn
+oewn-pneumatic_hammer-n	pneumatic hammer	n	0	2	2	oewn
+oewn-pneumatic_tire-n	pneumatic tire	n	0	2	2	oewn
+oewn-pneumatic_tyre-n	pneumatic tyre	n	0	2	2	oewn
+oewn-pneumatically-r	pneumatically	r	0	1	1	oewn
+oewn-pneumatics-n	pneumatics	n	0	1	1	oewn
+oewn-pneumatophore-n	pneumatophore	n	0	1	1	oewn
+oewn-pneumococcal-a	pneumococcal	a	0	1	1	oewn
+oewn-pneumococcal_pneumonia-n	pneumococcal pneumonia	n	0	2	2	oewn
+oewn-pneumococcal_vaccine-n	pneumococcal vaccine	n	0	2	2	oewn
+oewn-pneumococcus-n	pneumococcus	n	0	1	1	oewn
+oewn-pneumoconiosis-n	pneumoconiosis	n	0	1	1	oewn
+oewn-pneumocystis_carinii_pneumonia-n	pneumocystis carinii pneumonia	n	0	3	3	oewn
+oewn-pneumocystis_pneumonia-n	pneumocystis pneumonia	n	0	2	2	oewn
+oewn-pneumocytosis-n	pneumocytosis	n	0	1	1	oewn
+oewn-pneumoencephalogram-n	pneumoencephalogram	n	0	1	1	oewn
+oewn-pneumogastric-a	pneumogastric	a	0	1	1	oewn
+oewn-pneumogastric-n	pneumogastric	n	0	1	1	oewn
+oewn-pneumogastric_nerve-n	pneumogastric nerve	n	0	2	2	oewn
+oewn-pneumonectomy-n	pneumonectomy	n	0	1	1	oewn
+oewn-pneumonia-n	pneumonia	n	0	1	1	oewn
+oewn-pneumonic-a	pneumonic	a	0	1	1	oewn
+oewn-pneumonic_plague-n	pneumonic plague	n	0	2	2	oewn
+oewn-pneumonitis-n	pneumonitis	n	0	1	1	oewn
+oewn-pneumonoconiosis-n	pneumonoconiosis	n	0	1	1	oewn
+oewn-pneumothorax-n	pneumothorax	n	0	1	1	oewn

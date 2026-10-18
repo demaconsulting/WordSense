@@ -1,0 +1,622 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-CUPAL-n	CUPAL	n	0	1	1	oewn
+oewn-Cu-n	Cu	n	0	1	1	oewn
+oewn-Cub_Scout-n	Cub Scout	n	0	2	2	oewn
+oewn-Cuban-a	Cuban	a	0	1	1	oewn
+oewn-Cuban-n	Cuban	n	0	1	1	oewn
+oewn-Cuban_bast-n	Cuban bast	n	0	2	2	oewn
+oewn-Cuban_heel-n	Cuban heel	n	0	2	2	oewn
+oewn-Cuban_itch-n	Cuban itch	n	0	2	2	oewn
+oewn-Cuban_mahogany-n	Cuban mahogany	n	0	2	2	oewn
+oewn-Cuban_monetary_unit-n	Cuban monetary unit	n	0	3	3	oewn
+oewn-Cuban_peso-n	Cuban peso	n	0	2	2	oewn
+oewn-Cuban_sandwich-n	Cuban sandwich	n	0	2	2	oewn
+oewn-Cuban_spinach-n	Cuban spinach	n	0	2	2	oewn
+oewn-Cuculus_canorus-n	Cuculus canorus	n	0	2	2	oewn
+oewn-Cucumis_melo-n	Cucumis melo	n	0	2	2	oewn
+oewn-Cucumis_melo_cantalupensis-n	Cucumis melo cantalupensis	n	0	3	3	oewn
+oewn-Cucumis_melo_inodorus-n	Cucumis melo inodorus	n	0	3	3	oewn
+oewn-Cucumis_melo_reticulatus-n	Cucumis melo reticulatus	n	0	3	3	oewn
+oewn-Cucumis_sativus-n	Cucumis sativus	n	0	2	2	oewn
+oewn-Cucurbita_argyrosperma-n	Cucurbita argyrosperma	n	0	2	2	oewn
+oewn-Cucurbita_foetidissima-n	Cucurbita foetidissima	n	0	2	2	oewn
+oewn-Cucurbita_maxima-n	Cucurbita maxima	n	0	2	2	oewn
+oewn-Cucurbita_maxima_turbaniformis-n	Cucurbita maxima turbaniformis	n	0	3	3	oewn
+oewn-Cucurbita_mixta-n	Cucurbita mixta	n	0	2	2	oewn
+oewn-Cucurbita_moschata-n	Cucurbita moschata	n	0	2	2	oewn
+oewn-Cucurbita_pepo-n	Cucurbita pepo	n	0	2	2	oewn
+oewn-Cucurbita_pepo_melopepo-n	Cucurbita pepo melopepo	n	0	3	3	oewn
+oewn-Culcita_dubia-n	Culcita dubia	n	0	2	2	oewn
+oewn-Culex_fatigans-n	Culex fatigans	n	0	2	2	oewn
+oewn-Culex_pipiens-n	Culex pipiens	n	0	2	2	oewn
+oewn-Culex_quinquefasciatus-n	Culex quinquefasciatus	n	0	2	2	oewn
+oewn-Cultural_Revolution-n	Cultural Revolution	n	0	2	2	oewn
+oewn-Cuminum_cyminum-n	Cuminum cyminum	n	0	2	2	oewn
+oewn-Cuniculus_paca-n	Cuniculus paca	n	0	2	2	oewn
+oewn-Cuon_alpinus-n	Cuon alpinus	n	0	2	2	oewn
+oewn-Cupid-ap-s_bow-n	Cupid's bow	n	0	2	2	oewn
+oewn-Cupid-ap-s_disease-n	Cupid's disease	n	0	2	2	oewn
+oewn-Cupid-ap-s_itch-n	Cupid's itch	n	0	2	2	oewn
+oewn-Cupressus_abramsiana-n	Cupressus abramsiana	n	0	2	2	oewn
+oewn-Cupressus_arizonica-n	Cupressus arizonica	n	0	2	2	oewn
+oewn-Cupressus_goveniana-n	Cupressus goveniana	n	0	2	2	oewn
+oewn-Cupressus_goveniana_abramsiana-n	Cupressus goveniana abramsiana	n	0	3	3	oewn
+oewn-Cupressus_goveniana_pigmaea-n	Cupressus goveniana pigmaea	n	0	3	3	oewn
+oewn-Cupressus_guadalupensis-n	Cupressus guadalupensis	n	0	2	2	oewn
+oewn-Cupressus_lusitanica-n	Cupressus lusitanica	n	0	2	2	oewn
+oewn-Cupressus_macrocarpa-n	Cupressus macrocarpa	n	0	2	2	oewn
+oewn-Cupressus_pigmaea-n	Cupressus pigmaea	n	0	2	2	oewn
+oewn-Cupressus_sempervirens-n	Cupressus sempervirens	n	0	2	2	oewn
+oewn-Cuprimine-n	Cuprimine	n	0	1	1	oewn
+oewn-Curcuma_domestica-n	Curcuma domestica	n	0	2	2	oewn
+oewn-Curcuma_longa-n	Curcuma longa	n	0	2	2	oewn
+oewn-Curia-n	Curia	n	0	1	1	oewn
+oewn-Curie_point-n	Curie point	n	0	2	2	oewn
+oewn-Curie_temperature-n	Curie temperature	n	0	2	2	oewn
+oewn-Curietherapy-n	Curietherapy	n	0	1	1	oewn
+oewn-Curruca_communis-n	Curruca communis	n	0	2	2	oewn
+oewn-Cursorius_cursor-n	Cursorius cursor	n	0	2	2	oewn
+oewn-Cuscuta_gronovii-n	Cuscuta gronovii	n	0	2	2	oewn
+oewn-Cushing-ap-s_disease-n	Cushing's disease	n	0	2	2	oewn
+oewn-Cushing-ap-s_syndrome-n	Cushing's syndrome	n	0	2	2	oewn
+oewn-Cushitic-n	Cushitic	n	0	1	1	oewn
+oewn-Customs_Bureau-n	Customs Bureau	n	0	2	2	oewn
+oewn-Customs_Service-n	Customs Service	n	0	2	2	oewn
+oewn-cu_ft-n	cu ft	n	0	2	2	oewn
+oewn-cu_in-n	cu in	n	0	2	1	oewn
+oewn-cub-n	cub	n	0	1	1	oewn
+oewn-cub-v	cub	v	0	1	1	oewn
+oewn-cub_shark-n	cub shark	n	0	2	2	oewn
+oewn-cubage_unit-n	cubage unit	n	0	2	2	oewn
+oewn-cubature_unit-n	cubature unit	n	0	2	2	oewn
+oewn-cubby-n	cubby	n	0	1	1	oewn
+oewn-cubbyhole-n	cubbyhole	n	0	1	1	oewn
+oewn-cube-n	cube	n	0	1	1	oewn
+oewn-cube-shaped-a	cube-shaped	a	0	1	1	oewn
+oewn-cube-v	cube	v	0	1	1	oewn
+oewn-cube_root-n	cube root	n	0	2	2	oewn
+oewn-cubeb-n	cubeb	n	0	1	1	oewn
+oewn-cubeb_cigarette-n	cubeb cigarette	n	0	2	2	oewn
+oewn-cubeb_vine-n	cubeb vine	n	0	2	2	oewn
+oewn-cubelike-a	cubelike	a	0	1	1	oewn
+oewn-cubic-a	cubic	a	0	1	1	oewn
+oewn-cubic_boron_nitride-n	cubic boron nitride	n	0	3	3	oewn
+oewn-cubic_centimeter-n	cubic centimeter	n	0	2	2	oewn
+oewn-cubic_centimetre-n	cubic centimetre	n	0	2	2	oewn
+oewn-cubic_content_unit-n	cubic content unit	n	0	3	3	oewn
+oewn-cubic_decimeter-n	cubic decimeter	n	0	2	2	oewn
+oewn-cubic_decimetre-n	cubic decimetre	n	0	2	2	oewn
+oewn-cubic_foot-n	cubic foot	n	0	2	2	oewn
+oewn-cubic_inch-n	cubic inch	n	0	2	2	oewn
+oewn-cubic_kilometer-n	cubic kilometer	n	0	2	2	oewn
+oewn-cubic_kilometre-n	cubic kilometre	n	0	2	2	oewn
+oewn-cubic_measure-n	cubic measure	n	0	2	2	oewn
+oewn-cubic_meter-n	cubic meter	n	0	2	2	oewn
+oewn-cubic_metre-n	cubic metre	n	0	2	2	oewn
+oewn-cubic_millimeter-n	cubic millimeter	n	0	2	2	oewn
+oewn-cubic_millimetre-n	cubic millimetre	n	0	2	2	oewn
+oewn-cubic_yard-n	cubic yard	n	0	2	2	oewn
+oewn-cubical-a	cubical	a	0	1	1	oewn
+oewn-cubicity-n	cubicity	n	0	1	1	oewn
+oewn-cubicle-n	cubicle	n	0	1	1	oewn
+oewn-cubiform-a	cubiform	a	0	1	1	oewn
+oewn-cubism-n	cubism	n	0	1	1	oewn
+oewn-cubist-a	cubist	a	0	1	1	oewn
+oewn-cubist-n	cubist	n	0	1	1	oewn
+oewn-cubistic-a	cubistic	a	0	1	1	oewn
+oewn-cubit-n	cubit	n	0	1	1	oewn
+oewn-cubital-a	cubital	a	0	1	1	oewn
+oewn-cubital_joint-n	cubital joint	n	0	2	2	oewn
+oewn-cubital_nerve-n	cubital nerve	n	0	2	2	oewn
+oewn-cubitiere-n	cubitiere	n	0	1	1	oewn
+oewn-cubitus-n	cubitus	n	0	1	1	oewn
+oewn-cubo-futurism-n	cubo-futurism	n	0	1	1	oewn
+oewn-cuboid-a	cuboid	a	0	1	1	oewn
+oewn-cuboid-n	cuboid	n	0	1	1	oewn
+oewn-cuboid_bone-n	cuboid bone	n	0	2	2	oewn
+oewn-cuboidal-a	cuboidal	a	0	1	1	oewn
+oewn-cuboidal_cell-n	cuboidal cell	n	0	2	2	oewn
+oewn-cuboidal_epithelial_cell-n	cuboidal epithelial cell	n	0	3	3	oewn
+oewn-cucking_stool-n	cucking stool	n	0	2	2	oewn
+oewn-cuckold-n	cuckold	n	0	1	1	oewn
+oewn-cuckold-v	cuckold	v	0	1	1	oewn
+oewn-cuckolding-n	cuckolding	n	0	1	1	oewn
+oewn-cuckoldom-n	cuckoldom	n	0	1	1	oewn
+oewn-cuckoldry-n	cuckoldry	n	0	1	1	oewn
+oewn-cuckoo-ap-s_nest-n	cuckoo's nest	n	0	2	2	oewn
+oewn-cuckoo-bumblebee-n	cuckoo-bumblebee	n	0	1	1	oewn
+oewn-cuckoo-n	cuckoo	n	0	1	1	oewn
+oewn-cuckoo-v	cuckoo	v	0	1	1	oewn
+oewn-cuckoo_bread-n	cuckoo bread	n	0	2	2	oewn
+oewn-cuckoo_clock-n	cuckoo clock	n	0	2	2	oewn
+oewn-cuckoo_flower-n	cuckoo flower	n	0	2	2	oewn
+oewn-cuckooflower-n	cuckooflower	n	0	1	1	oewn
+oewn-cuckoopint-n	cuckoopint	n	0	1	1	oewn
+oewn-cuculiform_bird-n	cuculiform bird	n	0	2	2	oewn
+oewn-cucumber-n	cucumber	n	0	1	1	oewn
+oewn-cucumber-shaped-a	cucumber-shaped	a	0	1	1	oewn
+oewn-cucumber_tree-n	cucumber tree	n	0	2	2	oewn
+oewn-cucumber_vine-n	cucumber vine	n	0	2	2	oewn
+oewn-cucurbit-n	cucurbit	n	0	1	1	oewn
+oewn-cucurbitaceous-a	cucurbitaceous	a	0	1	1	oewn
+oewn-cud-n	cud	n	0	1	1	oewn
+oewn-cudbear-n	cudbear	n	0	1	1	oewn
+oewn-cuddle-n	cuddle	n	0	1	1	oewn
+oewn-cuddle-v	cuddle	v	0	1	1	oewn
+oewn-cuddlesome-a	cuddlesome	a	0	1	1	oewn
+oewn-cuddling-n	cuddling	n	0	1	1	oewn
+oewn-cuddly-a	cuddly	a	0	1	1	oewn
+oewn-cuddy-n	cuddy	n	0	1	1	oewn
+oewn-cudgel-n	cudgel	n	0	1	1	oewn
+oewn-cudgel-v	cudgel	v	0	1	1	oewn
+oewn-cudweed-n	cudweed	n	0	1	1	oewn
+oewn-cue-n	cue	n	0	1	1	oewn
+oewn-cue-v	cue	v	0	1	1	oewn
+oewn-cue_ball-n	cue ball	n	0	2	2	oewn
+oewn-cue_stick-n	cue stick	n	0	2	2	oewn
+oewn-cuff-n	cuff	n	0	1	1	oewn
+oewn-cuff-v	cuff	v	0	1	1	oewn
+oewn-cufflink-n	cufflink	n	0	1	1	oewn
+oewn-cuirass-n	cuirass	n	0	1	1	oewn
+oewn-cuirassier-n	cuirassier	n	0	1	1	oewn
+oewn-cuisine-n	cuisine	n	0	1	1	oewn
+oewn-cuisse-n	cuisse	n	0	1	1	oewn
+oewn-cuke-n	cuke	n	0	1	1	oewn
+oewn-cul-n	cul	n	0	1	1	oewn
+oewn-cul_de_sac-n	cul de sac	n	0	3	1	oewn
+oewn-culdoscope-n	culdoscope	n	0	1	1	oewn
+oewn-culdoscopy-n	culdoscopy	n	0	1	1	oewn
+oewn-culinary-a	culinary	a	0	1	1	oewn
+oewn-culinary_art-n	culinary art	n	0	2	2	oewn
+oewn-cull-n	cull	n	0	1	1	oewn
+oewn-cull-v	cull	v	0	1	1	oewn
+oewn-cull_out-v	cull out	v	0	2	1	oewn
+oewn-cullender-n	cullender	n	0	1	1	oewn
+oewn-cullis-n	cullis	n	0	1	1	oewn
+oewn-culm-n	culm	n	0	1	1	oewn
+oewn-culminate-v	culminate	v	0	1	1	oewn
+oewn-culmination-n	culmination	n	0	1	1	oewn
+oewn-culotte-n	culotte	n	0	1	1	oewn
+oewn-culpability-n	culpability	n	0	1	1	oewn
+oewn-culpable-a	culpable	a	0	1	1	oewn
+oewn-culpable_negligence-n	culpable negligence	n	0	2	2	oewn
+oewn-culpableness-n	culpableness	n	0	1	1	oewn
+oewn-culpably-r	culpably	r	0	1	1	oewn
+oewn-culprit-n	culprit	n	0	1	1	oewn
+oewn-cult-n	cult	n	0	1	1	oewn
+oewn-cult_of_personality-n	cult of personality	n	0	3	1	oewn
+oewn-culteranismo-n	culteranismo	n	0	1	1	oewn
+oewn-cultism-n	cultism	n	0	1	1	oewn
+oewn-cultist-n	cultist	n	0	1	1	oewn
+oewn-cultivable-a	cultivable	a	0	1	1	oewn
+oewn-cultivar-n	cultivar	n	0	1	1	oewn
+oewn-cultivatable-a	cultivatable	a	0	1	1	oewn
+oewn-cultivate-v	cultivate	v	0	1	1	oewn
+oewn-cultivated-a	cultivated	a	0	1	1	oewn
+oewn-cultivated_cabbage-n	cultivated cabbage	n	0	2	2	oewn
+oewn-cultivated_carrot-n	cultivated carrot	n	0	2	2	oewn
+oewn-cultivated_celery-n	cultivated celery	n	0	2	2	oewn
+oewn-cultivated_crab_apple-n	cultivated crab apple	n	0	3	3	oewn
+oewn-cultivated_land-n	cultivated land	n	0	2	2	oewn
+oewn-cultivated_parsnip-n	cultivated parsnip	n	0	2	2	oewn
+oewn-cultivated_plant-n	cultivated plant	n	0	2	2	oewn
+oewn-cultivated_rice-n	cultivated rice	n	0	2	2	oewn
+oewn-cultivated_strawberry-n	cultivated strawberry	n	0	2	2	oewn
+oewn-cultivation-n	cultivation	n	0	1	1	oewn
+oewn-cultivator-n	cultivator	n	0	1	1	oewn
+oewn-cultural-a	cultural	a	0	1	1	oewn
+oewn-cultural_anthropologist-n	cultural anthropologist	n	0	2	2	oewn
+oewn-cultural_anthropology-n	cultural anthropology	n	0	2	2	oewn
+oewn-cultural_attache-n	cultural attache	n	0	2	2	oewn
+oewn-cultural_diffusion-n	cultural diffusion	n	0	2	2	oewn
+oewn-cultural_model-n	cultural model	n	0	2	2	oewn
+oewn-cultural_movement-n	cultural movement	n	0	2	2	oewn
+oewn-cultural_studies-n	cultural studies	n	0	2	2	oewn
+oewn-culturally-r	culturally	r	0	1	1	oewn
+oewn-culturati-n	culturati	n	0	1	1	oewn
+oewn-culture-n	culture	n	0	1	1	oewn
+oewn-culture-v	culture	v	0	1	1	oewn
+oewn-culture_medium-n	culture medium	n	0	2	2	oewn
+oewn-culture_shock-n	culture shock	n	0	2	2	oewn
+oewn-cultured-a	cultured	a	0	1	1	oewn
+oewn-cultus-n	cultus	n	0	1	1	oewn
+oewn-culverin-n	culverin	n	0	1	1	oewn
+oewn-culvert-n	culvert	n	0	1	1	oewn
+oewn-cum-n	cum	n	0	1	1	oewn
+oewn-cum_laude-a	cum laude	a	0	2	2	oewn
+oewn-cum_laude-r	cum laude	r	0	2	2	oewn
+oewn-cumarone-n	cumarone	n	0	1	1	oewn
+oewn-cumber-v	cumber	v	0	1	1	oewn
+oewn-cumbersome-a	cumbersome	a	0	1	1	oewn
+oewn-cumbersomeness-n	cumbersomeness	n	0	1	1	oewn
+oewn-cumbrous-a	cumbrous	a	0	1	1	oewn
+oewn-cumfrey-n	cumfrey	n	0	1	1	oewn
+oewn-cumin-n	cumin	n	0	1	1	oewn
+oewn-cumin_seed-n	cumin seed	n	0	2	2	oewn
+oewn-cummerbund-n	cummerbund	n	0	1	1	oewn
+oewn-cumquat-n	cumquat	n	0	1	1	oewn
+oewn-cumswallow-v	cumswallow	v	0	1	1	oewn
+oewn-cumulate-v	cumulate	v	0	1	1	oewn
+oewn-cumulation-n	cumulation	n	0	1	1	oewn
+oewn-cumulative-a	cumulative	a	0	1	1	oewn
+oewn-cumulative_preferred-n	cumulative preferred	n	0	2	2	oewn
+oewn-cumulative_preferred_stock-n	cumulative preferred stock	n	0	3	3	oewn
+oewn-cumulative_vote-n	cumulative vote	n	0	2	2	oewn
+oewn-cumulatively-r	cumulatively	r	0	1	1	oewn
+oewn-cumuliform-a	cumuliform	a	0	1	1	oewn
+oewn-cumulonimbus-n	cumulonimbus	n	0	1	1	oewn
+oewn-cumulonimbus_cloud-n	cumulonimbus cloud	n	0	2	2	oewn
+oewn-cumulous-a	cumulous	a	0	1	1	oewn
+oewn-cumulus-a	cumulus	a	0	1	1	oewn
+oewn-cumulus-n	cumulus	n	0	1	1	oewn
+oewn-cumulus_cloud-n	cumulus cloud	n	0	2	2	oewn
+oewn-cunctation-n	cunctation	n	0	1	1	oewn
+oewn-cunctator-n	cunctator	n	0	1	1	oewn
+oewn-cuneal-a	cuneal	a	0	1	1	oewn
+oewn-cuneate-a	cuneate	a	0	1	1	oewn
+oewn-cuneate_leaf-n	cuneate leaf	n	0	2	2	oewn
+oewn-cuneiform-a	cuneiform	a	0	1	1	oewn
+oewn-cuneiform-n	cuneiform	n	0	1	1	oewn
+oewn-cuneiform_bone-n	cuneiform bone	n	0	2	2	oewn
+oewn-cuneus-n	cuneus	n	0	1	1	oewn
+oewn-cunner-n	cunner	n	0	1	1	oewn
+oewn-cunnilinctus-n	cunnilinctus	n	0	1	1	oewn
+oewn-cunnilingus-n	cunnilingus	n	0	1	1	oewn
+oewn-cunning-a	cunning	a	0	1	1	oewn
+oewn-cunning-n	cunning	n	0	1	1	oewn
+oewn-cunningly-r	cunningly	r	0	1	1	oewn
+oewn-cunt-n	cunt	n	0	1	1	oewn
+oewn-cup-n	cup	n	0	1	1	oewn
+oewn-cup-v	cup	v	0	1	1	oewn
+oewn-cup_and_saucer-n	cup and saucer	n	0	3	3	oewn
+oewn-cup_final-n	cup final	n	0	2	2	oewn
+oewn-cup_fungus-n	cup fungus	n	0	2	2	oewn
+oewn-cup_hook-n	cup hook	n	0	2	2	oewn
+oewn-cup_morel-n	cup morel	n	0	2	2	oewn
+oewn-cup_of_tea-n	cup of tea	n	0	3	1	oewn
+oewn-cup_tie-n	cup tie	n	0	2	2	oewn
+oewn-cupbearer-n	cupbearer	n	0	1	1	oewn
+oewn-cupboard-n	cupboard	n	0	1	1	oewn
+oewn-cupboard_love-n	cupboard love	n	0	2	2	oewn
+oewn-cupcake-n	cupcake	n	0	1	1	oewn
+oewn-cupel-n	cupel	n	0	1	1	oewn
+oewn-cupflower-n	cupflower	n	0	1	1	oewn
+oewn-cupful-n	cupful	n	0	1	1	oewn
+oewn-cupid-ap-s_dart-n	cupid's dart	n	0	2	2	oewn
+oewn-cupid-n	cupid	n	0	1	1	oewn
+oewn-cupidity-n	cupidity	n	0	1	1	oewn
+oewn-cuplike-a	cuplike	a	0	1	1	oewn
+oewn-cupola-n	cupola	n	0	1	1	oewn
+oewn-cuppa-n	cuppa	n	0	1	1	oewn
+oewn-cupper-n	cupper	n	0	1	1	oewn
+oewn-cupping-n	cupping	n	0	1	1	oewn
+oewn-cupric-a	cupric	a	0	1	1	oewn
+oewn-cupric_acetate-n	cupric acetate	n	0	2	2	oewn
+oewn-cupric_sulfate-n	cupric sulfate	n	0	2	2	oewn
+oewn-cupric_sulphate-n	cupric sulphate	n	0	2	2	oewn
+oewn-cuprite-n	cuprite	n	0	1	1	oewn
+oewn-cupronickel-n	cupronickel	n	0	1	1	oewn
+oewn-cuprous-a	cuprous	a	0	1	1	oewn
+oewn-cupular-a	cupular	a	0	1	1	oewn
+oewn-cupulate-a	cupulate	a	0	1	1	oewn
+oewn-cupule-n	cupule	n	0	1	1	oewn
+oewn-cur-n	cur	n	0	1	1	oewn
+oewn-curability-n	curability	n	0	1	1	oewn
+oewn-curable-a	curable	a	0	1	1	oewn
+oewn-curableness-n	curableness	n	0	1	1	oewn
+oewn-curacao-n	curacao	n	0	1	1	oewn
+oewn-curacoa-n	curacoa	n	0	1	1	oewn
+oewn-curacy-n	curacy	n	0	1	1	oewn
+oewn-curandera-n	curandera	n	0	1	1	oewn
+oewn-curandero-n	curandero	n	0	1	1	oewn
+oewn-curare-n	curare	n	0	1	1	oewn
+oewn-curassow-n	curassow	n	0	1	1	oewn
+oewn-curate-n	curate	n	0	1	1	oewn
+oewn-curative-a	curative	a	0	1	1	oewn
+oewn-curative-n	curative	n	0	1	1	oewn
+oewn-curator-n	curator	n	0	1	1	oewn
+oewn-curatorial-a	curatorial	a	0	1	1	oewn
+oewn-curatorship-n	curatorship	n	0	1	1	oewn
+oewn-curb-n	curb	n	0	1	1	oewn
+oewn-curb-v	curb	v	0	1	1	oewn
+oewn-curb_bit-n	curb bit	n	0	2	2	oewn
+oewn-curb_market-n	curb market	n	0	2	2	oewn
+oewn-curb_roof-n	curb roof	n	0	2	2	oewn
+oewn-curb_service-n	curb service	n	0	2	2	oewn
+oewn-curbing-n	curbing	n	0	1	1	oewn
+oewn-curbside-n	curbside	n	0	1	1	oewn
+oewn-curbstone-n	curbstone	n	0	1	1	oewn
+oewn-curd-n	curd	n	0	1	1	oewn
+oewn-curdle-v	curdle	v	0	1	1	oewn
+oewn-curdled-a	curdled	a	0	1	1	oewn
+oewn-curdling-n	curdling	n	0	1	1	oewn
+oewn-cure-all-n	cure-all	n	0	1	1	oewn
+oewn-cure-n	cure	n	0	1	1	oewn
+oewn-cure-v	cure	v	0	1	1	oewn
+oewn-cured-a	cured	a	0	1	1	oewn
+oewn-curet-n	curet	n	0	1	1	oewn
+oewn-curettage-n	curettage	n	0	1	1	oewn
+oewn-curette-n	curette	n	0	1	1	oewn
+oewn-curettement-n	curettement	n	0	1	1	oewn
+oewn-curfew-n	curfew	n	0	1	1	oewn
+oewn-curie-n	curie	n	0	1	1	oewn
+oewn-curing-n	curing	n	0	1	1	oewn
+oewn-curio-n	curio	n	0	1	1	oewn
+oewn-curiosa-n	curiosa	n	0	1	1	oewn
+oewn-curiosity-n	curiosity	n	0	1	1	oewn
+oewn-curious-a	curious	a	0	1	1	oewn
+oewn-curiously-r	curiously	r	0	1	1	oewn
+oewn-curiousness-n	curiousness	n	0	1	1	oewn
+oewn-curium-n	curium	n	0	1	1	oewn
+oewn-curl-n	curl	n	0	1	1	oewn
+oewn-curl-v	curl	v	0	1	1	oewn
+oewn-curl_paper-n	curl paper	n	0	2	2	oewn
+oewn-curl_up-v	curl up	v	0	2	1	oewn
+oewn-curled-a	curled	a	0	1	1	oewn
+oewn-curled_leaf_pondweed-n	curled leaf pondweed	n	0	3	3	oewn
+oewn-curler-n	curler	n	0	1	1	oewn
+oewn-curlew-n	curlew	n	0	1	1	oewn
+oewn-curlew_sandpiper-n	curlew sandpiper	n	0	2	2	oewn
+oewn-curlicue-n	curlicue	n	0	1	1	oewn
+oewn-curliness-n	curliness	n	0	1	1	oewn
+oewn-curling-a	curling	a	0	1	1	oewn
+oewn-curling-n	curling	n	0	1	1	oewn
+oewn-curling_iron-n	curling iron	n	0	2	2	oewn
+oewn-curling_stone-n	curling stone	n	0	2	2	oewn
+oewn-curly-a	curly	a	0	1	1	oewn
+oewn-curly-coated-a	curly-coated	a	0	1	1	oewn
+oewn-curly-coated_retriever-n	curly-coated retriever	n	0	2	2	oewn
+oewn-curly-grained-a	curly-grained	a	0	1	1	oewn
+oewn-curly-haired-a	curly-haired	a	0	1	1	oewn
+oewn-curly-heads-n	curly-heads	n	0	1	1	oewn
+oewn-curly-leafed-a	curly-leafed	a	0	1	1	oewn
+oewn-curly-leaved-a	curly-leaved	a	0	1	1	oewn
+oewn-curly_clematis-n	curly clematis	n	0	2	2	oewn
+oewn-curly_endive-n	curly endive	n	0	2	2	oewn
+oewn-curly_grass-n	curly grass	n	0	2	2	oewn
+oewn-curly_grass_fern-n	curly grass fern	n	0	3	3	oewn
+oewn-curly_pondweed-n	curly pondweed	n	0	2	2	oewn
+oewn-curlycup_gumweed-n	curlycup gumweed	n	0	2	2	oewn
+oewn-curmudgeon-n	curmudgeon	n	0	1	1	oewn
+oewn-curmudgeonly-a	curmudgeonly	a	0	1	1	oewn
+oewn-currajong-n	currajong	n	0	1	1	oewn
+oewn-currant-n	currant	n	0	1	1	oewn
+oewn-currant_bush-n	currant bush	n	0	2	2	oewn
+oewn-currawong-n	currawong	n	0	1	1	oewn
+oewn-currency-n	currency	n	0	1	1	oewn
+oewn-current-a	current	a	0	1	1	oewn
+oewn-current-n	current	n	0	1	1	oewn
+oewn-current_account-n	current account	n	0	2	2	oewn
+oewn-current_assets-n	current assets	n	0	2	2	oewn
+oewn-current_collector-n	current collector	n	0	2	2	oewn
+oewn-current_electricity-n	current electricity	n	0	2	2	oewn
+oewn-current_intelligence-n	current intelligence	n	0	2	2	oewn
+oewn-current_of_air-n	current of air	n	0	3	1	oewn
+oewn-current_unit-n	current unit	n	0	2	2	oewn
+oewn-currently-r	currently	r	0	1	1	oewn
+oewn-currentness-n	currentness	n	0	1	1	oewn
+oewn-curricular-a	curricular	a	0	1	1	oewn
+oewn-curriculum-n	curriculum	n	0	1	1	oewn
+oewn-curriculum_vitae-n	curriculum vitae	n	0	2	2	oewn
+oewn-currier-n	currier	n	0	1	1	oewn
+oewn-currish-a	currish	a	0	1	1	oewn
+oewn-currishly-r	currishly	r	0	1	1	oewn
+oewn-curry-n	curry	n	0	1	1	oewn
+oewn-curry-v	curry	v	0	1	1	oewn
+oewn-curry_favor-v	curry favor	v	0	2	1	oewn
+oewn-curry_favour-v	curry favour	v	0	2	1	oewn
+oewn-curry_leaf-n	curry leaf	n	0	2	2	oewn
+oewn-curry_powder-n	curry powder	n	0	2	2	oewn
+oewn-curry_sauce-n	curry sauce	n	0	2	2	oewn
+oewn-currycomb-n	currycomb	n	0	1	1	oewn
+oewn-currycomb-v	currycomb	v	0	1	1	oewn
+oewn-curse-n	curse	n	0	1	1	oewn
+oewn-curse-v	curse	v	0	1	1	oewn
+oewn-curse_word-n	curse word	n	0	2	2	oewn
+oewn-cursed-a	cursed	a	0	1	1	oewn
+oewn-cursed_crowfoot-n	cursed crowfoot	n	0	2	2	oewn
+oewn-cursed_with-a	cursed with	a	0	2	2	oewn
+oewn-cursedly-r	cursedly	r	0	1	1	oewn
+oewn-cursive-a	cursive	a	0	1	1	oewn
+oewn-cursive-n	cursive	n	0	1	1	oewn
+oewn-cursive_script-n	cursive script	n	0	2	2	oewn
+oewn-cursively-r	cursively	r	0	1	1	oewn
+oewn-cursor-n	cursor	n	0	1	1	oewn
+oewn-cursorial-a	cursorial	a	0	1	1	oewn
+oewn-cursorily-r	cursorily	r	0	1	1	oewn
+oewn-cursory-a	cursory	a	0	1	1	oewn
+oewn-curst-a	curst	a	0	1	1	oewn
+oewn-curt-a	curt	a	0	1	1	oewn
+oewn-curtail-v	curtail	v	0	1	1	oewn
+oewn-curtailment-n	curtailment	n	0	1	1	oewn
+oewn-curtain-n	curtain	n	0	1	1	oewn
+oewn-curtain-v	curtain	v	0	1	1	oewn
+oewn-curtain_airbag-n	curtain airbag	n	0	2	2	oewn
+oewn-curtain_call-n	curtain call	n	0	2	2	oewn
+oewn-curtain_lecture-n	curtain lecture	n	0	2	2	oewn
+oewn-curtain_off-v	curtain off	v	0	2	1	oewn
+oewn-curtain_raiser-n	curtain raiser	n	0	2	2	oewn
+oewn-curtain_raising-n	curtain raising	n	0	2	2	oewn
+oewn-curtain_ring-n	curtain ring	n	0	2	2	oewn
+oewn-curtained-a	curtained	a	0	1	1	oewn
+oewn-curtainless-a	curtainless	a	0	1	1	oewn
+oewn-curtal-a	curtal	a	0	1	1	oewn
+oewn-curtate_cycloid-n	curtate cycloid	n	0	2	2	oewn
+oewn-curtilage-n	curtilage	n	0	1	1	oewn
+oewn-curtly-r	curtly	r	0	1	1	oewn
+oewn-curtness-n	curtness	n	0	1	1	oewn
+oewn-curtsey-n	curtsey	n	0	1	1	oewn
+oewn-curtsey-v	curtsey	v	0	1	1	oewn
+oewn-curtsy-n	curtsy	n	0	1	1	oewn
+oewn-curtsy-v	curtsy	v	0	1	1	oewn
+oewn-curvaceous-a	curvaceous	a	0	1	1	oewn
+oewn-curvaceously-r	curvaceously	r	0	1	1	oewn
+oewn-curvaceousness-n	curvaceousness	n	0	1	1	oewn
+oewn-curvature-n	curvature	n	0	1	1	oewn
+oewn-curve-n	curve	n	0	1	1	oewn
+oewn-curve-v	curve	v	0	1	1	oewn
+oewn-curve_ball-n	curve ball	n	0	2	2	oewn
+oewn-curved-a	curved	a	0	1	1	oewn
+oewn-curved_shape-n	curved shape	n	0	2	2	oewn
+oewn-curvet-n	curvet	n	0	1	1	oewn
+oewn-curvet-v	curvet	v	0	1	1	oewn
+oewn-curvey-a	curvey	a	0	1	1	oewn
+oewn-curvilineal-a	curvilineal	a	0	1	1	oewn
+oewn-curvilinear-a	curvilinear	a	0	1	1	oewn
+oewn-curvilinear_correlation-n	curvilinear correlation	n	0	2	2	oewn
+oewn-curvilinear_regression-n	curvilinear regression	n	0	2	2	oewn
+oewn-curving-a	curving	a	0	1	1	oewn
+oewn-curvy-a	curvy	a	0	1	1	oewn
+oewn-cuscus-n	cuscus	n	0	1	1	oewn
+oewn-cush-cush-n	cush-cush	n	0	1	1	oewn
+oewn-cushat-n	cushat	n	0	1	1	oewn
+oewn-cushaw-n	cushaw	n	0	1	1	oewn
+oewn-cushion-n	cushion	n	0	1	1	oewn
+oewn-cushion-v	cushion	v	0	1	1	oewn
+oewn-cushion_calamint-n	cushion calamint	n	0	2	2	oewn
+oewn-cushion_flower-n	cushion flower	n	0	2	2	oewn
+oewn-cushioned-a	cushioned	a	0	1	1	oewn
+oewn-cushioning-n	cushioning	n	0	1	1	oewn
+oewn-cushiony-a	cushiony	a	0	1	1	oewn
+oewn-cushy-a	cushy	a	0	1	1	oewn
+oewn-cusk-eel-n	cusk-eel	n	0	1	1	oewn
+oewn-cusk-n	cusk	n	0	1	1	oewn
+oewn-cusp-n	cusp	n	0	1	1	oewn
+oewn-cuspate-a	cuspate	a	0	1	1	oewn
+oewn-cuspated-a	cuspated	a	0	1	1	oewn
+oewn-cusped-a	cusped	a	0	1	1	oewn
+oewn-cuspid-n	cuspid	n	0	1	1	oewn
+oewn-cuspidal-a	cuspidal	a	0	1	1	oewn
+oewn-cuspidate-a	cuspidate	a	0	1	1	oewn
+oewn-cuspidated-a	cuspidated	a	0	1	1	oewn
+oewn-cuspidation-n	cuspidation	n	0	1	1	oewn
+oewn-cuspidor-n	cuspidor	n	0	1	1	oewn
+oewn-cuss-n	cuss	n	0	1	1	oewn
+oewn-cuss-v	cuss	v	0	1	1	oewn
+oewn-cussed-a	cussed	a	0	1	1	oewn
+oewn-cussedly-r	cussedly	r	0	1	1	oewn
+oewn-cussedness-n	cussedness	n	0	1	1	oewn
+oewn-custard-like-a	custard-like	a	0	1	1	oewn
+oewn-custard-n	custard	n	0	1	1	oewn
+oewn-custard_apple-n	custard apple	n	0	2	2	oewn
+oewn-custard_apple_tree-n	custard apple tree	n	0	3	3	oewn
+oewn-custard_pie-n	custard pie	n	0	2	2	oewn
+oewn-custodial-a	custodial	a	0	1	1	oewn
+oewn-custodial_account-n	custodial account	n	0	2	2	oewn
+oewn-custodian-n	custodian	n	0	1	1	oewn
+oewn-custodianship-n	custodianship	n	0	1	1	oewn
+oewn-custody-n	custody	n	0	1	1	oewn
+oewn-custody_battle-n	custody battle	n	0	2	2	oewn
+oewn-custody_case-n	custody case	n	0	2	2	oewn
+oewn-custom-a	custom	a	0	1	1	oewn
+oewn-custom-built-a	custom-built	a	0	1	1	oewn
+oewn-custom-built-n	custom-built	n	0	1	1	oewn
+oewn-custom-made-a	custom-made	a	0	1	1	oewn
+oewn-custom-made-n	custom-made	n	0	1	1	oewn
+oewn-custom-make-v	custom-make	v	0	1	1	oewn
+oewn-custom-n	custom	n	0	1	1	oewn
+oewn-customarily-r	customarily	r	0	1	1	oewn
+oewn-customariness-n	customariness	n	0	1	1	oewn
+oewn-customary-a	customary	a	0	1	1	oewn
+oewn-customer-ap-s_broker-n	customer's broker	n	0	2	2	oewn
+oewn-customer-ap-s_man-n	customer's man	n	0	2	2	oewn
+oewn-customer-ap-s_woman-n	customer's woman	n	0	2	2	oewn
+oewn-customer-n	customer	n	0	1	1	oewn
+oewn-customer_agent-n	customer agent	n	0	2	2	oewn
+oewn-customhouse-n	customhouse	n	0	1	1	oewn
+oewn-customise-v	customise	v	0	1	1	oewn
+oewn-customize-v	customize	v	0	1	1	oewn
+oewn-customs-n	customs	n	0	1	1	oewn
+oewn-customs_duty-n	customs duty	n	0	2	2	oewn
+oewn-customs_union-n	customs union	n	0	2	2	oewn
+oewn-customshouse-n	customshouse	n	0	1	1	oewn
+oewn-cut-a	cut	a	0	1	1	oewn
+oewn-cut-and-dried-a	cut-and-dried	a	0	1	1	oewn
+oewn-cut-and-dry-a	cut-and-dry	a	0	1	1	oewn
+oewn-cut-and-thrust-n	cut-and-thrust	n	0	1	1	oewn
+oewn-cut-in-n	cut-in	n	0	1	1	oewn
+oewn-cut-n	cut	n	0	1	1	oewn
+oewn-cut-price-a	cut-price	a	0	1	1	oewn
+oewn-cut-rate-a	cut-rate	a	0	1	1	oewn
+oewn-cut-rate_sale-n	cut-rate sale	n	0	2	2	oewn
+oewn-cut-up-n	cut-up	n	0	1	1	oewn
+oewn-cut-v	cut	v	0	1	1	oewn
+oewn-cut_across-v	cut across	v	0	2	1	oewn
+oewn-cut_away-v	cut away	v	0	2	1	oewn
+oewn-cut_back-v	cut back	v	0	2	1	oewn
+oewn-cut_corners-v	cut corners	v	0	2	1	oewn
+oewn-cut_down-v	cut down	v	0	2	1	oewn
+oewn-cut_glass-n	cut glass	n	0	2	2	oewn
+oewn-cut_in-v	cut in	v	0	2	1	oewn
+oewn-cut_into-v	cut into	v	0	2	1	oewn
+oewn-cut_of_beef-n	cut of beef	n	0	3	1	oewn
+oewn-cut_of_lamb-n	cut of lamb	n	0	3	1	oewn
+oewn-cut_of_meat-n	cut of meat	n	0	3	1	oewn
+oewn-cut_of_mutton-n	cut of mutton	n	0	3	1	oewn
+oewn-cut_of_pork-n	cut of pork	n	0	3	1	oewn
+oewn-cut_of_veal-n	cut of veal	n	0	3	1	oewn
+oewn-cut_off-a	cut off	a	0	2	2	oewn
+oewn-cut_off-v	cut off	v	0	2	1	oewn
+oewn-cut_out-a	cut out	a	0	2	2	oewn
+oewn-cut_out-v	cut out	v	0	2	1	oewn
+oewn-cut_price-n	cut price	n	0	2	2	oewn
+oewn-cut_rate-n	cut rate	n	0	2	2	oewn
+oewn-cut_short-v	cut short	v	0	2	1	oewn
+oewn-cut_through-v	cut through	v	0	2	1	oewn
+oewn-cut_to-v	cut to	v	0	2	1	oewn
+oewn-cut_to_ribbons-v	cut to ribbons	v	0	3	1	oewn
+oewn-cut_up-a	cut up	a	0	2	2	oewn
+oewn-cut_up-v	cut up	v	0	2	1	oewn
+oewn-cutaneal-a	cutaneal	a	0	1	1	oewn
+oewn-cutaneous-a	cutaneous	a	0	1	1	oewn
+oewn-cutaneous_anthrax-n	cutaneous anthrax	n	0	2	2	oewn
+oewn-cutaneous_leishmaniasis-n	cutaneous leishmaniasis	n	0	2	2	oewn
+oewn-cutaneous_sensation-n	cutaneous sensation	n	0	2	2	oewn
+oewn-cutaneous_senses-n	cutaneous senses	n	0	2	2	oewn
+oewn-cutaneous_vein-n	cutaneous vein	n	0	2	2	oewn
+oewn-cutaway-n	cutaway	n	0	1	1	oewn
+oewn-cutaway_drawing-n	cutaway drawing	n	0	2	2	oewn
+oewn-cutaway_model-n	cutaway model	n	0	2	2	oewn
+oewn-cutback-n	cutback	n	0	1	1	oewn
+oewn-cutch-n	cutch	n	0	1	1	oewn
+oewn-cute-a	cute	a	0	1	1	oewn
+oewn-cutely-r	cutely	r	0	1	1	oewn
+oewn-cuteness-n	cuteness	n	0	1	1	oewn
+oewn-cuticle-n	cuticle	n	0	1	1	oewn
+oewn-cuticula-n	cuticula	n	0	1	1	oewn
+oewn-cuticular-a	cuticular	a	0	1	1	oewn
+oewn-cutin-n	cutin	n	0	1	1	oewn
+oewn-cutinize-v	cutinize	v	0	1	1	oewn
+oewn-cutis-n	cutis	n	0	1	1	oewn
+oewn-cutlas-n	cutlas	n	0	1	1	oewn
+oewn-cutlass-n	cutlass	n	0	1	1	oewn
+oewn-cutlassfish-n	cutlassfish	n	0	1	1	oewn
+oewn-cutleaved_coneflower-n	cutleaved coneflower	n	0	2	2	oewn
+oewn-cutler-n	cutler	n	0	1	1	oewn
+oewn-cutlery-n	cutlery	n	0	1	1	oewn
+oewn-cutlet-n	cutlet	n	0	1	1	oewn
+oewn-cutoff-n	cutoff	n	0	1	1	oewn
+oewn-cutoff_saw-n	cutoff saw	n	0	2	2	oewn
+oewn-cutout-n	cutout	n	0	1	1	oewn
+oewn-cutpurse-n	cutpurse	n	0	1	1	oewn
+oewn-cuttable-a	cuttable	a	0	1	1	oewn
+oewn-cutter-n	cutter	n	0	1	1	oewn
+oewn-cutthroat-a	cutthroat	a	0	1	1	oewn
+oewn-cutthroat-n	cutthroat	n	0	1	1	oewn
+oewn-cutting-a	cutting	a	0	1	1	oewn
+oewn-cutting-edge-a	cutting-edge	a	0	1	1	oewn
+oewn-cutting-n	cutting	n	0	1	1	oewn
+oewn-cutting_angle-n	cutting angle	n	0	2	2	oewn
+oewn-cutting_board-n	cutting board	n	0	2	2	oewn
+oewn-cutting_edge-n	cutting edge	n	0	2	2	oewn
+oewn-cutting_implement-n	cutting implement	n	0	2	2	oewn
+oewn-cutting_off-n	cutting off	n	0	2	2	oewn
+oewn-cutting_out-n	cutting out	n	0	2	2	oewn
+oewn-cutting_room-n	cutting room	n	0	2	2	oewn
+oewn-cutting_tool-n	cutting tool	n	0	2	2	oewn
+oewn-cuttingly-r	cuttingly	r	0	1	1	oewn
+oewn-cuttle-n	cuttle	n	0	1	1	oewn
+oewn-cuttlefish-n	cuttlefish	n	0	1	1	oewn
+oewn-cutty_stool-n	cutty stool	n	0	2	2	oewn
+oewn-cutwork-n	cutwork	n	0	1	1	oewn
+oewn-cutworm-n	cutworm	n	0	1	1	oewn

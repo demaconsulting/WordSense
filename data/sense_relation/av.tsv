@@ -1,0 +1,84 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-avail__1.07.00..	derivation		oewn-avail__2.41.00..
+oewn-avail__2.34.04..	derivation		oewn-available__3.00.00..
+oewn-avail__2.41.00..	other	by_means_of	oewn-avail__1.07.00..
+oewn-availability__1.07.00..	antonym		oewn-unavailability__1.07.00..
+oewn-availability__1.07.00..	derivation		oewn-available__3.00.00..
+oewn-available__3.00.00..	antonym		oewn-unavailable__3.00.00..
+oewn-available__3.00.00..	derivation		oewn-availableness__1.07.00..
+oewn-available__5.00.00.disposable.02	derivation		oewn-availableness__1.07.00..
+oewn-avalanche__1.11.00..	derivation		oewn-avalanche__2.38.00..
+oewn-avalanche__2.38.00..	other	event	oewn-avalanche__1.11.00..
+oewn-avarice__1.04.00..	derivation		oewn-avaricious__5.00.00.acquisitive.00
+oewn-avarice__1.07.00..	derivation		oewn-avaricious__5.00.00.acquisitive.00
+oewn-avaricious__5.00.00.acquisitive.00	derivation		oewn-avariciousness__1.07.00..
+oewn-avariciously__4.02.00..	pertainym		oewn-avaricious__5.00.00.acquisitive.00
+oewn-avascular__3.01.00..	antonym		oewn-vascular__3.01.00..
+oewn-avellan__3.01.00..	pertainym		oewn-corylus_avellana__1.20.00..
+oewn-avellane__3.01.00..	pertainym		oewn-corylus_avellana__1.20.00..
+oewn-avenge__2.33.00..	derivation		oewn-avenger__1.18.00..
+oewn-avenge__2.33.00..	other	agent	oewn-avenger__1.18.00..
+oewn-avenged__3.44.00..	antonym		oewn-unavenged__3.44.00..
+oewn-avenged__3.44.00..	participle		oewn-avenge__2.33.00..
+oewn-aver__2.32.00..	derivation		oewn-averment__1.10.00..
+oewn-aver__2.32.00..	other	event	oewn-averment__1.10.00..
+oewn-average__1.09.00..	derivation		oewn-average__2.31.00..
+oewn-average__1.09.00..	derivation		oewn-average__2.41.00..
+oewn-average__1.09.00..	derivation		oewn-average__2.42.00..
+oewn-average__1.09.00..	derivation		oewn-average__5.00.02.normal.01
+oewn-average__2.31.00..	other	result	oewn-average__1.09.00..
+oewn-average__2.41.00..	other	result	oewn-average__1.09.00..
+oewn-average__2.42.00..	other	result	oewn-average__1.09.00..
+oewn-average__5.00.00.common.01	derivation		oewn-averageness__1.07.00..
+oewn-average__5.00.00.common.01	derivation		oewn-averageness__1.26.00..
+oewn-average__5.00.00.ordinary.00	derivation		oewn-averageness__1.07.00..
+oewn-average__5.00.00.ordinary.00	derivation		oewn-averageness__1.26.00..
+oewn-average__5.00.02.normal.01	derivation		oewn-averageness__1.26.00..
+oewn-aversion__1.04.00..	derivation		oewn-avert__2.38.00..
+oewn-aversive__3.01.00..	pertainym		oewn-aversion__1.12.00..
+oewn-avert__2.38.00..	other	event	oewn-aversion__1.04.00..
+oewn-avert__2.41.00..	derivation		oewn-avertable__3.00.00..
+oewn-avert__2.41.00..	derivation		oewn-avertible__3.00.00..
+oewn-avestan__1.10.00..	derivation		oewn-avestan__3.01.00..
+oewn-avestan__1.10.01..	derivation		oewn-avestan__3.01.00..
+oewn-avian__3.01.00..	pertainym		oewn-bird__1.05.00..
+oewn-avianise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-avianise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-avianize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aviate__2.38.00..	derivation		oewn-aviation__1.09.00..
+oewn-aviate__2.38.00..	derivation		oewn-aviation__1.14.01..
+oewn-aviate__2.38.00..	derivation		oewn-aviator__1.18.00..
+oewn-aviate__2.38.00..	other	agent	oewn-aviator__1.18.00..
+oewn-aviate__2.38.00..	other	event	oewn-aviation__1.09.00..
+oewn-aviate__2.38.00..	other	event	oewn-aviation__1.14.01..
+oewn-avid__5.00.00.enthusiastic.00	derivation		oewn-avidity__1.12.01..
+oewn-avid__5.00.00.enthusiastic.00	derivation		oewn-avidness__1.12.00..
+oewn-avidly__4.02.00..	pertainym		oewn-avid__5.00.00.desirous.00
+oewn-avifauna__1.14.00..	derivation		oewn-avifaunal__3.01.00..
+oewn-avifauna__1.14.00..	derivation		oewn-avifaunistic__3.01.00..
+oewn-avifaunal__3.01.00..	pertainym		oewn-avifauna__1.14.00..
+oewn-avifaunistic__3.01.00..	pertainym		oewn-avifauna__1.14.00..
+oewn-avionic__3.01.00..	derivation		oewn-avionics__1.09.00..
+oewn-avionic__3.01.00..	pertainym		oewn-avionics__1.09.00..
+oewn-avirulent__3.00.00..	antonym		oewn-virulent__3.00.00..
+oewn-avitaminosis__1.26.00..	derivation		oewn-avitaminotic__3.01.00..
+oewn-avitaminotic__3.01.00..	pertainym		oewn-avitaminosis__1.26.00..
+oewn-avocation__1.04.00..	derivation		oewn-avocational__3.01.00..
+oewn-avocational__3.01.00..	pertainym		oewn-avocation__1.04.00..
+oewn-avoid__2.32.00..	antonym		oewn-confront__2.32.00..
+oewn-avoid__2.32.00..	derivation		oewn-avoidance__1.04.00..
+oewn-avoid__2.32.00..	other	event	oewn-avoidance__1.04.00..
+oewn-avoid__2.41.01..	derivation		oewn-avoidable__3.00.00..
+oewn-avow__2.32.00..	derivation		oewn-avowal__1.10.00..
+oewn-avow__2.32.00..	derivation		oewn-avower__1.18.01..
+oewn-avow__2.32.00..	other	agent	oewn-avower__1.18.01..
+oewn-avow__2.32.00..	other	event	oewn-avowal__1.10.00..
+oewn-avow__2.32.01..	antonym		oewn-disavow__2.32.00..
+oewn-avow__2.32.01..	derivation		oewn-avower__1.18.00..
+oewn-avow__2.32.01..	other	agent	oewn-avower__1.18.00..
+oewn-avowedly__4.02.00..	pertainym		oewn-avowed__5.00.00.declared.00
+oewn-avulse__2.38.00..	derivation		oewn-avulsion__1.04.00..
+oewn-avulse__2.38.00..	other	event	oewn-avulsion__1.04.00..
+oewn-avuncular__3.01.00..	derivation		oewn-uncle__1.18.00..
+oewn-avuncular__3.01.00..	pertainym		oewn-uncle__1.18.00..
+oewn-avuncular__3.01.01..	pertainym		oewn-uncle__1.18.01..

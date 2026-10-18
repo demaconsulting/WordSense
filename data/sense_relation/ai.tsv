@@ -1,0 +1,55 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-aid__1.04.01..	derivation		oewn-aid__2.29.00..
+oewn-aid__1.07.00..	derivation		oewn-aid__2.41.00..
+oewn-aid__2.29.00..	other	event	oewn-aid__1.04.01..
+oewn-aid__2.41.00..	other	by_means_of	oewn-aid__1.07.00..
+oewn-ail__2.29.00..	derivation		oewn-ailment__1.26.00..
+oewn-ail__2.29.00..	other	by_means_of	oewn-ailment__1.26.00..
+oewn-ail__2.29.01..	derivation		oewn-ailment__1.26.00..
+oewn-ail__2.29.01..	other	by_means_of	oewn-ailment__1.26.00..
+oewn-aim__1.04.00..	derivation		oewn-aim__2.33.00..
+oewn-aim__1.04.00..	derivation		oewn-aim__2.33.10..
+oewn-aim__1.09.00..	derivation		oewn-aim__2.31.01..
+oewn-aim__1.09.01..	derivation		oewn-aim__2.31.01..
+oewn-aim__2.31.01..	other	event	oewn-aim__1.09.00..
+oewn-aim__2.31.01..	other	event	oewn-aim__1.09.01..
+oewn-aim__2.33.00..	other	event	oewn-aim__1.04.00..
+oewn-aim__2.33.10..	other	event	oewn-aim__1.04.00..
+oewn-aimless__5.00.00.purposeless.00	derivation		oewn-aimlessness__1.07.00..
+oewn-aimless__5.00.00.unsettled.01	derivation		oewn-aimlessness__1.07.00..
+oewn-aimlessly__4.02.00..	pertainym		oewn-aimless__5.00.00.purposeless.00
+oewn-air--breathing__3.01.00..	pertainym		oewn-breathing__1.04.00..
+oewn-air--condition__2.40.00..	derivation		oewn-air_conditioner__1.06.00..
+oewn-air--condition__2.40.00..	derivation		oewn-air_conditioning__1.06.00..
+oewn-air--condition__2.40.00..	other	instrument	oewn-air_conditioner__1.06.00..
+oewn-air--condition__2.40.01..	derivation		oewn-air_conditioner__1.06.00..
+oewn-air--condition__2.40.01..	derivation		oewn-air_conditioning__1.06.00..
+oewn-air--condition__2.40.01..	other	instrument	oewn-air_conditioner__1.06.00..
+oewn-air--to--air__3.00.00..	antonym		oewn-air--to--surface__3.00.00..
+oewn-air--to--air__3.00.00..	antonym		oewn-surface--to--air__3.00.00..
+oewn-air--to--surface__3.00.00..	antonym		oewn-surface--to--air__3.00.00..
+oewn-air__1.10.02..	derivation		oewn-air__2.32.01..
+oewn-air__1.10.02..	derivation		oewn-air__2.32.02..
+oewn-air__1.19.00..	derivation		oewn-airy__5.00.00.ventilated.00
+oewn-air__2.32.01..	other	by_means_of	oewn-air__1.10.02..
+oewn-air__2.32.02..	other	by_means_of	oewn-air__1.10.02..
+oewn-air_mail__1.10.00..	antonym		oewn-surface_mail__1.10.00..
+oewn-air_sick__5.00.00.ill.01	derivation		oewn-air_sickness__1.26.00..
+oewn-air_sickness__1.26.00..	derivation		oewn-airsick__5.00.00.ill.01
+oewn-airbrush__1.06.00..	derivation		oewn-airbrush__2.35.00..
+oewn-airbrush__2.35.00..	other	instrument	oewn-airbrush__1.06.00..
+oewn-airiness__1.07.00..	derivation		oewn-airy__5.00.00.insubstantial.00
+oewn-airiness__1.07.00..	derivation		oewn-airy__5.00.00.light.01
+oewn-airiness__1.07.01..	derivation		oewn-airy__5.00.00.ventilated.00
+oewn-airlift__1.04.00..	derivation		oewn-airlift__2.35.00..
+oewn-airlift__2.35.00..	other	event	oewn-airlift__1.04.00..
+oewn-airline__1.06.00..	derivation		oewn-airliner__1.06.00..
+oewn-airmail__1.10.00..	derivation		oewn-airmail__2.32.00..
+oewn-airmail__2.32.00..	derivation		oewn-airmailer__1.06.00..
+oewn-airmail__2.32.00..	other	agent	oewn-airmailer__1.06.00..
+oewn-airmail__2.32.00..	other	by_means_of	oewn-airmail__1.10.00..
+oewn-airman__1.18.01..	derivation		oewn-airmanship__1.09.00..
+oewn-airplane__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-airsick__5.00.00.ill.01	derivation		oewn-airsickness__1.26.00..
+oewn-airworthiness__1.26.00..	derivation		oewn-airworthy__3.00.00..
+oewn-airworthy__3.00.00..	antonym		oewn-unairworthy__3.00.00..

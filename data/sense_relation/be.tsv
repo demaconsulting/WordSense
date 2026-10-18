@@ -1,0 +1,475 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-be__2.42.00..	derivation		oewn-being__1.26.00..
+oewn-be__2.42.01..	derivation		oewn-being__1.03.00..
+oewn-be_active__2.29.00..	antonym		oewn-rest__2.29.00..
+oewn-be_born__2.30.00..	antonym		oewn-die__2.30.00..
+oewn-be_born__2.30.00..	derivation		oewn-birth__1.11.00..
+oewn-be_born__2.30.00..	derivation		oewn-birth__1.22.00..
+oewn-be_born__2.30.00..	derivation		oewn-birth__1.28.00..
+oewn-beach__1.17.00..	derivation		oewn-beach__2.38.00..
+oewn-beach__2.38.00..	other	location	oewn-beach__1.17.00..
+oewn-beacon__1.06.01..	derivation		oewn-beacon__2.38.00..
+oewn-beacon__1.06.01..	derivation		oewn-beacon__2.39.00..
+oewn-beacon__1.10.00..	derivation		oewn-beacon__2.39.00..
+oewn-beacon__2.38.00..	other	by_means_of	oewn-beacon__1.06.01..
+oewn-beacon__2.39.00..	other	by_means_of	oewn-beacon__1.06.01..
+oewn-beacon__2.39.00..	other	by_means_of	oewn-beacon__1.10.00..
+oewn-bead__1.06.00..	derivation		oewn-bead__2.35.00..
+oewn-bead__1.06.00..	derivation		oewn-bead__2.36.00..
+oewn-bead__1.06.00..	derivation		oewn-beady__5.00.00.adorned.00
+oewn-bead__1.25.00..	derivation		oewn-bead__2.42.00..
+oewn-bead__1.25.00..	derivation		oewn-beady__5.00.00.bright.00
+oewn-bead__2.35.00..	other	undergoer	oewn-bead__1.06.00..
+oewn-bead__2.36.00..	other	undergoer	oewn-bead__1.06.00..
+oewn-bead__2.42.00..	other	result	oewn-bead__1.25.00..
+oewn-beak__1.05.00..	derivation		oewn-beak__2.35.00..
+oewn-beak__1.05.01..	derivation		oewn-beak__2.35.00..
+oewn-beaked__3.00.00..	antonym		oewn-beakless__3.00.00..
+oewn-beam__1.07.00..	derivation		oewn-beamy__5.00.00.wide.00
+oewn-beam__1.10.00..	derivation		oewn-beam__2.32.00..
+oewn-beam__1.19.00..	derivation		oewn-beam__2.43.03..
+oewn-beam__1.19.00..	derivation		oewn-beamy__5.00.00.bright.00
+oewn-beam__2.32.00..	other	undergoer	oewn-beam__1.10.00..
+oewn-beam__2.43.03..	other	undergoer	oewn-beam__1.19.00..
+oewn-bean__1.08.00..	derivation		oewn-bean__2.35.00..
+oewn-bean__2.35.00..	derivation		oewn-beaner__1.04.00..
+oewn-bean__2.35.00..	other	undergoer	oewn-bean__1.08.00..
+oewn-bean__2.35.00..	other	undergoer	oewn-beaner__1.04.00..
+oewn-bear__1.18.00..	antonym		oewn-bull__1.18.01..
+oewn-bear__2.29.15..	derivation		oewn-bearing__1.07.00..
+oewn-bear__2.31.00..	derivation		oewn-bearable__5.00.00.tolerable.00
+oewn-bear__2.35.00..	derivation		oewn-bearer__1.18.00..
+oewn-bear__2.35.00..	derivation		oewn-bearer__1.18.01..
+oewn-bear__2.35.00..	derivation		oewn-bearer__1.18.03..
+oewn-bear__2.35.00..	other	agent	oewn-bearer__1.18.00..
+oewn-bear__2.35.00..	other	agent	oewn-bearer__1.18.01..
+oewn-bear__2.35.00..	other	agent	oewn-bearer__1.18.03..
+oewn-bear__2.35.00..	similar		oewn-bear__2.35.01..
+oewn-bear__2.35.01..	derivation		oewn-bearing__1.07.01..
+oewn-bear__2.36.00..	also		oewn-bear_out__2.42.00..
+oewn-bear__2.40.00..	derivation		oewn-bearer__1.18.02..
+oewn-bear__2.40.00..	other	agent	oewn-bearer__1.18.02..
+oewn-beard__1.05.01..	derivation		oewn-beard__2.42.00..
+oewn-beard__1.08.00..	derivation		oewn-beard__2.42.00..
+oewn-bearing__3.00.00..	antonym		oewn-nonbearing__3.00.00..
+oewn-beast__1.03.00..	derivation		oewn-beastly__5.00.00.inhumane.00
+oewn-beast__1.03.00..	derivation		oewn-bestial__5.00.00.inhumane.00
+oewn-beastliness__1.07.01..	derivation		oewn-beastly__5.00.00.unpleasant.00
+oewn-beastliness__1.07.02..	derivation		oewn-beastly__5.00.00.inhumane.00
+oewn-beastly__4.02.00..	pertainym		oewn-beastly__5.00.00.inhumane.00
+oewn-beat__1.04.00..	derivation		oewn-beat__2.38.01..
+oewn-beat__1.04.01..	derivation		oewn-beat__2.35.00..
+oewn-beat__1.04.01..	derivation		oewn-beat__2.36.00..
+oewn-beat__1.07.00..	derivation		oewn-beat__2.38.04..
+oewn-beat__1.10.00..	derivation		oewn-beat__2.35.10..
+oewn-beat__1.10.00..	derivation		oewn-beat__2.36.05..
+oewn-beat__1.10.00..	derivation		oewn-beat__2.38.00..
+oewn-beat__1.10.00..	derivation		oewn-beat__2.38.03..
+oewn-beat__1.10.00..	derivation		oewn-beat__2.39.00..
+oewn-beat__1.11.00..	derivation		oewn-beat__2.38.00..
+oewn-beat__1.11.01..	derivation		oewn-beat__2.35.00..
+oewn-beat__1.11.01..	derivation		oewn-beat__2.39.01..
+oewn-beat__2.33.00..	derivation		oewn-beatable__5.00.00.conquerable.00
+oewn-beat__2.33.00..	derivation		oewn-beating__1.04.01..
+oewn-beat__2.33.14..	derivation		oewn-beatable__5.00.00.conquerable.00
+oewn-beat__2.35.00..	derivation		oewn-beater__1.06.00..
+oewn-beat__2.35.00..	other	event	oewn-beat__1.04.01..
+oewn-beat__2.35.00..	other	event	oewn-beat__1.11.01..
+oewn-beat__2.35.00..	other	instrument	oewn-beater__1.06.00..
+oewn-beat__2.35.01..	derivation		oewn-beating__1.04.00..
+oewn-beat__2.35.03..	derivation		oewn-beater__1.06.00..
+oewn-beat__2.35.03..	other	instrument	oewn-beater__1.06.00..
+oewn-beat__2.36.00..	other	event	oewn-beat__1.04.01..
+oewn-beat__2.36.05..	other	result	oewn-beat__1.10.00..
+oewn-beat__2.38.00..	other	event	oewn-beat__1.11.00..
+oewn-beat__2.38.00..	other	result	oewn-beat__1.10.00..
+oewn-beat__2.38.01..	other	event	oewn-beat__1.04.00..
+oewn-beat__2.38.03..	other	result	oewn-beat__1.10.00..
+oewn-beat__2.39.00..	other	result	oewn-beat__1.10.00..
+oewn-beat__2.39.01..	other	event	oewn-beat__1.11.01..
+oewn-beaten__3.44.00..	participle		oewn-beat__2.36.00..
+oewn-beatification__1.04.00..	derivation		oewn-beatify__2.32.00..
+oewn-beatification__1.04.01..	derivation		oewn-beatify__2.37.01..
+oewn-beatification__1.04.01..	derivation		oewn-beatify__2.37.03..
+oewn-beatification__1.26.00..	derivation		oewn-beatify__2.37.01..
+oewn-beatification__1.26.00..	derivation		oewn-beatify__2.37.03..
+oewn-beatify__2.32.00..	other	event	oewn-beatification__1.04.00..
+oewn-beatify__2.37.01..	other	event	oewn-beatification__1.04.01..
+oewn-beatify__2.37.01..	other	event	oewn-beatification__1.26.00..
+oewn-beatify__2.37.01..	other	result	oewn-beatification__1.26.00..
+oewn-beatify__2.37.03..	other	event	oewn-beatification__1.04.01..
+oewn-beatify__2.37.03..	other	result	oewn-beatification__1.26.00..
+oewn-beatify__2.37.03..	other	state	oewn-beatification__1.26.00..
+oewn-beauteous__5.00.00.beautiful.00	derivation		oewn-beauteousness__1.07.00..
+oewn-beauteous__5.00.00.beautiful.00	derivation		oewn-beauty__1.07.00..
+oewn-beautician__1.18.00..	derivation		oewn-beauty__1.07.00..
+oewn-beautification__1.04.00..	derivation		oewn-beautify__2.30.00..
+oewn-beautification__1.04.00..	derivation		oewn-beautify__2.36.00..
+oewn-beautification__1.04.00..	derivation		oewn-beautify__2.42.00..
+oewn-beautiful__3.00.00..	antonym		oewn-ugly__3.00.00..
+oewn-beautifully__4.02.00..	pertainym		oewn-beautiful__3.00.00..
+oewn-beautify__2.30.00..	antonym		oewn-uglify__2.30.00..
+oewn-beautify__2.30.00..	derivation		oewn-beauty__1.07.00..
+oewn-beautify__2.30.00..	other	event	oewn-beautification__1.04.00..
+oewn-beautify__2.30.00..	other	uses	oewn-beauty__1.07.00..
+oewn-beautify__2.36.00..	derivation		oewn-beauty__1.07.00..
+oewn-beautify__2.36.00..	other	event	oewn-beautification__1.04.00..
+oewn-beautify__2.36.00..	other	uses	oewn-beauty__1.07.00..
+oewn-beautify__2.42.00..	derivation		oewn-beauty__1.07.00..
+oewn-beautify__2.42.00..	other	event	oewn-beautification__1.04.00..
+oewn-beautify__2.42.00..	other	property	oewn-beauty__1.07.00..
+oewn-beauty__1.07.00..	antonym		oewn-ugliness__1.07.00..
+oewn-beauty_parlor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-beauty_parlour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-beauty_parlour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-beauty_parlour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-beaver__1.05.00..	derivation		oewn-beaver__2.41.00..
+oewn-bebop__1.10.00..	derivation		oewn-bebop__2.38.00..
+oewn-bebop__2.38.00..	other	undergoer	oewn-bebop__1.10.00..
+oewn-becoming__5.00.00.flattering.00	derivation		oewn-becomingness__1.07.00..
+oewn-becoming__5.00.00.proper.00	derivation		oewn-becomingness__1.07.00..
+oewn-becomingly__4.02.00..	pertainym		oewn-becoming__5.00.00.flattering.00
+oewn-becomingness__1.07.00..	antonym		oewn-unbecomingness__1.07.00..
+oewn-bed__1.06.00..	derivation		oewn-bed__2.35.00..
+oewn-bed__1.06.00..	derivation		oewn-bed__2.35.01..
+oewn-bed__1.06.00..	derivation		oewn-bed__2.40.00..
+oewn-bed__2.35.01..	other	location	oewn-bed__1.06.00..
+oewn-bed__2.40.00..	other	uses	oewn-bed__1.06.00..
+oewn-bedded__3.00.00..	antonym		oewn-bedless__3.00.00..
+oewn-bedevil__2.37.00..	derivation		oewn-bedevilment__1.04.00..
+oewn-bedevil__2.37.00..	other	event	oewn-bedevilment__1.04.00..
+oewn-beef__1.10.00..	derivation		oewn-beef__2.32.00..
+oewn-beef__2.32.00..	other	event	oewn-beef__1.10.00..
+oewn-beep__1.11.00..	derivation		oewn-beep__2.32.01..
+oewn-beep__1.11.00..	derivation		oewn-beep__2.39.00..
+oewn-beep__2.32.01..	derivation		oewn-beeper__1.06.00..
+oewn-beep__2.32.01..	other	event	oewn-beep__1.11.00..
+oewn-beep__2.32.01..	other	instrument	oewn-beeper__1.06.00..
+oewn-beep__2.39.00..	derivation		oewn-beeper__1.06.00..
+oewn-beep__2.39.00..	other	event	oewn-beep__1.11.00..
+oewn-beep__2.39.00..	other	instrument	oewn-beeper__1.06.00..
+oewn-beer__1.13.00..	derivation		oewn-beery__5.00.00.intoxicated.00
+oewn-beeswax__1.27.00..	derivation		oewn-beeswax__2.35.00..
+oewn-beeswax__2.35.00..	other	uses	oewn-beeswax__1.27.00..
+oewn-beet__1.13.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-beethoven__1.10.00..	derivation		oewn-beethovenian__3.01.00..
+oewn-beetle__1.06.00..	derivation		oewn-beetle__2.35.00..
+oewn-beetle__2.35.00..	other	instrument	oewn-beetle__1.06.00..
+oewn-beetroot__1.13.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-befittingly__4.02.00..	pertainym		oewn-befitting__5.00.00.appropriate.00
+oewn-befoul__2.30.00..	derivation		oewn-befoulment__1.26.00..
+oewn-befoul__2.30.00..	other	state	oewn-befoulment__1.26.00..
+oewn-befuddle__2.31.00..	derivation		oewn-befuddlement__1.09.00..
+oewn-befuddle__2.31.00..	other	result	oewn-befuddlement__1.09.00..
+oewn-beg__2.32.00..	also		oewn-beg_off__2.32.00..
+oewn-beg__2.32.00..	derivation		oewn-beggary__1.10.00..
+oewn-beg__2.32.01..	derivation		oewn-beggary__1.10.00..
+oewn-beg__2.40.00..	derivation		oewn-beggary__1.10.00..
+oewn-beget__2.29.00..	derivation		oewn-begetter__1.18.00..
+oewn-beget__2.29.00..	other	agent	oewn-begetter__1.18.00..
+oewn-beggar--my--neighbor__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-beggar--my--neighbour__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-beggar--my--neighbour__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-beggar--my--neighbour__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-beggar__1.18.00..	derivation		oewn-beggar__2.40.00..
+oewn-beggar__1.18.00..	derivation		oewn-beggarly__5.00.00.poor.03
+oewn-beggar__2.40.00..	other	result	oewn-beggar__1.18.00..
+oewn-begin__2.30.00..	antonym		oewn-end__2.30.01..
+oewn-begin__2.30.00..	derivation		oewn-beginner__1.18.00..
+oewn-begin__2.30.00..	derivation		oewn-beginning__1.04.00..
+oewn-begin__2.30.00..	other	agent	oewn-beginner__1.18.00..
+oewn-begin__2.30.01..	antonym		oewn-end__2.30.01..
+oewn-begin__2.30.01..	derivation		oewn-beginner__1.18.01..
+oewn-begin__2.30.01..	derivation		oewn-beginning__1.11.00..
+oewn-begin__2.30.01..	other	agent	oewn-beginner__1.18.01..
+oewn-begin__2.42.00..	antonym		oewn-end__2.42.00..
+oewn-begin__2.42.02..	derivation		oewn-beginning__1.09.00..
+oewn-beginning__1.09.00..	antonym		oewn-end__1.09.00..
+oewn-beginning__1.09.00..	antonym		oewn-middle__1.09.00..
+oewn-beginning__1.11.00..	antonym		oewn-ending__1.11.00..
+oewn-beginning__1.28.00..	antonym		oewn-end__1.28.00..
+oewn-beginning__1.28.00..	antonym		oewn-middle__1.28.00..
+oewn-begrudge__2.37.00..	antonym		oewn-wish__2.37.01..
+oewn-beguile__2.37.00..	derivation		oewn-beguilement__1.07.00..
+oewn-beguile__2.37.00..	derivation		oewn-beguiler__1.18.00..
+oewn-beguile__2.37.00..	other	agent	oewn-beguiler__1.18.00..
+oewn-beguile__2.37.00..	other	property	oewn-beguilement__1.07.00..
+oewn-beguile__2.41.00..	derivation		oewn-beguiler__1.18.01..
+oewn-beguile__2.41.00..	other	agent	oewn-beguiler__1.18.01..
+oewn-behave__2.41.00..	antonym		oewn-misbehave__2.41.00..
+oewn-behavior__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-behavior__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-behavior__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-behavior__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-behavioral__3.01.00..	pertainym		oewn-behavior__1.04.00..
+oewn-behaviorism__1.09.00..	derivation		oewn-behaviorist__1.18.00..
+oewn-behaviorism__1.09.00..	derivation		oewn-behavioristic__3.01.00..
+oewn-behaviorist__1.18.00..	derivation		oewn-behaviorist__3.01.00..
+oewn-behaviorist__3.01.00..	pertainym		oewn-behaviorism__1.09.00..
+oewn-behavioristic__3.01.00..	pertainym		oewn-behaviorism__1.09.00..
+oewn-behaviour__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-behaviour__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-behaviour__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-behaviour__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-behaviour__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-behaviour__1.04.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-behaviour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-behaviour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-behaviour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-behaviour__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-behaviour__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-behaviour__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-behavioural__3.01.00..	pertainym		oewn-behavior__1.04.00..
+oewn-behaviourism__1.09.00..	derivation		oewn-behaviourist__1.18.00..
+oewn-behaviourism__1.09.00..	derivation		oewn-behaviouristic__3.01.00..
+oewn-behaviourist__1.18.00..	derivation		oewn-behaviourist__3.01.00..
+oewn-behaviourist__3.01.00..	pertainym		oewn-behaviorism__1.09.00..
+oewn-behaviouristic__3.01.00..	pertainym		oewn-behaviorism__1.09.00..
+oewn-behold__2.39.00..	derivation		oewn-beholder__1.18.00..
+oewn-behold__2.39.00..	other	agent	oewn-beholder__1.18.00..
+oewn-behoove__2.42.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-behove__2.42.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-behove__2.42.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-beige__1.07.00..	derivation		oewn-beige__5.00.00.chromatic.00
+oewn-being__1.26.00..	antonym		oewn-nonbeing__1.26.00..
+oewn-belabor__2.32.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-belabor__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-belabor__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-belabour__2.32.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-belabour__2.32.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-belabour__2.32.02..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-belabour__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-belabour__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-belabour__2.35.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-belabour__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-belabour__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-belabour__2.41.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-belarusian__1.10.00..	derivation		oewn-belarusian__3.01.00..
+oewn-belatedly__4.02.00..	pertainym		oewn-belated__5.00.00.unpunctual.00
+oewn-belay__1.17.00..	derivation		oewn-belay__2.35.00..
+oewn-belay__1.17.00..	derivation		oewn-belay__2.35.01..
+oewn-belay__2.35.00..	other	by_means_of	oewn-belay__1.17.00..
+oewn-belay__2.35.01..	other	by_means_of	oewn-belay__1.17.00..
+oewn-belch__1.04.00..	derivation		oewn-belch__2.29.00..
+oewn-belch__2.29.00..	other	event	oewn-belch__1.04.00..
+oewn-belemnite__1.05.00..	derivation		oewn-belemnitic__3.01.00..
+oewn-belemnitic__3.01.00..	pertainym		oewn-belemnite__1.05.00..
+oewn-belgian__1.18.00..	derivation		oewn-belgian__3.01.00..
+oewn-belief__1.09.00..	antonym		oewn-unbelief__1.09.00..
+oewn-belief__1.09.00..	derivation		oewn-believe__2.31.00..
+oewn-belief__1.09.01..	derivation		oewn-believe__2.31.03..
+oewn-believability__1.07.00..	derivation		oewn-believable__3.00.04..
+oewn-believable__3.00.04..	derivation		oewn-believe__2.31.00..
+oewn-believable__3.00.04..	derivation		oewn-believe__2.31.02..
+oewn-believably__4.02.00..	antonym		oewn-unbelievably__4.02.00..
+oewn-believably__4.02.00..	antonym		oewn-unbelievably__4.02.03..
+oewn-believably__4.02.00..	pertainym		oewn-believable__3.00.04..
+oewn-believably__4.02.03..	pertainym		oewn-believable__3.00.04..
+oewn-believe__2.31.00..	antonym		oewn-disbelieve__2.31.00..
+oewn-believe__2.31.00..	derivation		oewn-believer__1.18.01..
+oewn-believe__2.31.00..	other	agent	oewn-believer__1.18.01..
+oewn-believe__2.31.01..	derivation		oewn-believer__1.18.00..
+oewn-believe__2.31.01..	other	agent	oewn-believer__1.18.00..
+oewn-believingly__4.02.00..	antonym		oewn-unbelievingly__4.02.00..
+oewn-bell__1.06.00..	derivation		oewn-bell__2.35.00..
+oewn-bell__1.11.00..	derivation		oewn-bell__2.35.00..
+oewn-bell__2.35.00..	other	event	oewn-bell__1.11.00..
+oewn-bell__2.35.00..	other	uses	oewn-bell__1.06.00..
+oewn-bellied__3.00.00..	antonym		oewn-bellyless__3.00.00..
+oewn-belligerence__1.07.00..	derivation		oewn-belligerent__5.00.00.hostile.01
+oewn-belligerence__1.12.00..	derivation		oewn-belligerent__5.00.00.hostile.01
+oewn-belligerency__1.04.00..	derivation		oewn-belligerent__5.00.00.unpeaceful.00
+oewn-belligerency__1.12.00..	derivation		oewn-belligerent__5.00.00.hostile.01
+oewn-belligerent__1.18.00..	derivation		oewn-belligerent__5.00.00.hostile.01
+oewn-belligerent__1.18.00..	derivation		oewn-belligerent__5.00.00.unpeaceful.00
+oewn-belligerently__4.02.00..	pertainym		oewn-belligerent__5.00.00.hostile.01
+oewn-bellow__1.10.00..	derivation		oewn-bellow__2.32.00..
+oewn-bellow__1.10.00..	derivation		oewn-bellow__2.32.01..
+oewn-bellow__2.32.00..	derivation		oewn-bellowing__1.10.00..
+oewn-bellow__2.32.00..	other	event	oewn-bellow__1.10.00..
+oewn-bellow__2.32.01..	derivation		oewn-bellowing__1.10.00..
+oewn-bellow__2.32.01..	other	event	oewn-bellow__1.10.00..
+oewn-belly__1.08.02..	derivation		oewn-belly__2.30.00..
+oewn-belly_dance__1.04.00..	derivation		oewn-belly_dance__2.36.00..
+oewn-belly_dance__2.36.00..	other	event	oewn-belly_dance__1.04.00..
+oewn-bellyache__2.32.00..	derivation		oewn-bellyacher__1.18.00..
+oewn-bellyache__2.32.00..	other	agent	oewn-bellyacher__1.18.00..
+oewn-belong__2.40.00..	derivation		oewn-belongings__1.21.00..
+oewn-beloved__1.18.00..	derivation		oewn-beloved__5.00.00.loved.00
+oewn-belt__1.06.00..	derivation		oewn-belt__2.35.01..
+oewn-belt__1.11.00..	derivation		oewn-belt__2.35.00..
+oewn-belt__2.35.00..	other	event	oewn-belt__1.11.00..
+oewn-belt__2.35.01..	antonym		oewn-unbelt__2.35.00..
+oewn-belt__2.35.01..	other	instrument	oewn-belt__1.06.00..
+oewn-belted__3.00.00..	antonym		oewn-unbelted__3.00.00..
+oewn-bemuse__2.37.00..	derivation		oewn-bemusement__1.09.00..
+oewn-bemuse__2.37.00..	other	state	oewn-bemusement__1.09.00..
+oewn-bench__1.14.02..	derivation		oewn-bench__2.41.00..
+oewn-bend__1.06.00..	derivation		oewn-bend__2.38.01..
+oewn-bend__1.25.01..	derivation		oewn-bend__2.35.00..
+oewn-bend__1.25.01..	derivation		oewn-bend__2.38.00..
+oewn-bend__1.25.02..	derivation		oewn-bend__2.38.00..
+oewn-bend__1.25.02..	derivation		oewn-bend__2.38.01..
+oewn-bend__2.35.00..	antonym		oewn-unbend__2.35.00..
+oewn-bend__2.35.00..	derivation		oewn-bendable__5.00.00.flexible.01
+oewn-bend__2.35.00..	derivation		oewn-bender__1.06.00..
+oewn-bend__2.35.00..	other	instrument	oewn-bender__1.06.00..
+oewn-bend__2.35.00..	other	result	oewn-bend__1.25.01..
+oewn-bend__2.38.00..	antonym		oewn-straighten__2.38.00..
+oewn-bend__2.38.00..	derivation		oewn-bendable__5.00.00.flexible.01
+oewn-bend__2.38.00..	derivation		oewn-bender__1.06.00..
+oewn-bend__2.38.00..	other	instrument	oewn-bender__1.06.00..
+oewn-bend__2.38.00..	other	result	oewn-bend__1.25.01..
+oewn-bend__2.38.00..	other	result	oewn-bend__1.25.02..
+oewn-bend__2.38.01..	derivation		oewn-bender__1.04.02..
+oewn-bend__2.38.01..	other	undergoer	oewn-bender__1.04.02..
+oewn-bendability__1.07.00..	derivation		oewn-bendable__5.00.00.flexible.01
+oewn-bendopa__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-benedictine__1.18.00..	derivation		oewn-benedictine__3.01.00..
+oewn-benedictine__3.01.00..	pertainym		oewn-benedictine__1.18.00..
+oewn-benedictive__3.01.00..	pertainym		oewn-benediction__1.10.00..
+oewn-benedictory__3.01.00..	pertainym		oewn-benediction__1.10.00..
+oewn-benefact__2.41.00..	derivation		oewn-benefaction__1.04.00..
+oewn-benefact__2.41.00..	derivation		oewn-benefaction__1.21.00..
+oewn-benefact__2.41.00..	other	event	oewn-benefaction__1.04.00..
+oewn-benefact__2.41.00..	other	event	oewn-benefaction__1.21.00..
+oewn-benefice__1.21.00..	derivation		oewn-benefice__2.40.00..
+oewn-benefice__1.21.00..	derivation		oewn-beneficiary__3.01.00..
+oewn-benefice__2.40.00..	derivation		oewn-beneficiary__1.18.00..
+oewn-benefice__2.40.00..	other	undergoer	oewn-benefice__1.21.00..
+oewn-beneficed__3.00.00..	antonym		oewn-unbeneficed__3.00.00..
+oewn-beneficence__1.07.00..	antonym		oewn-maleficence__1.07.00..
+oewn-beneficence__1.07.00..	derivation		oewn-beneficent__3.00.00..
+oewn-beneficence__1.12.00..	antonym		oewn-maleficence__1.12.00..
+oewn-beneficence__1.12.00..	derivation		oewn-beneficent__3.00.00..
+oewn-beneficent__3.00.00..	antonym		oewn-maleficent__3.00.00..
+oewn-beneficent__3.00.00..	derivation		oewn-benefit__2.40.01..
+oewn-beneficial__5.00.00.advantageous.00	derivation		oewn-benefit__1.07.00..
+oewn-beneficially__4.02.00..	pertainym		oewn-beneficial__5.00.00.advantageous.00
+oewn-beneficiary__3.01.00..	pertainym		oewn-benefice__1.21.00..
+oewn-beneficiate__2.30.00..	derivation		oewn-beneficiation__1.22.00..
+oewn-beneficiate__2.30.00..	other	event	oewn-beneficiation__1.22.00..
+oewn-benefit__1.07.00..	derivation		oewn-benefit__2.40.00..
+oewn-benefit__1.07.00..	derivation		oewn-benefit__2.40.01..
+oewn-benefit__2.40.00..	other	by_means_of	oewn-benefit__1.07.00..
+oewn-benefit__2.40.01..	other	by_means_of	oewn-benefit__1.07.00..
+oewn-benevolence__1.04.00..	derivation		oewn-benevolent__3.01.00..
+oewn-benevolence__1.12.00..	antonym		oewn-malevolence__1.12.00..
+oewn-benevolent__3.01.00..	pertainym		oewn-benevolence__1.04.00..
+oewn-benevolently__4.02.00..	antonym		oewn-malevolently__4.02.00..
+oewn-benevolently__4.02.00..	pertainym		oewn-benevolent__5.00.00.kind.00
+oewn-bengali__1.10.00..	derivation		oewn-bengali__3.01.00..
+oewn-bengali__1.14.00..	derivation		oewn-bengali__3.01.00..
+oewn-bengali__1.18.00..	derivation		oewn-bengali__3.01.00..
+oewn-benign__3.00.00..	antonym		oewn-malign__3.00.00..
+oewn-benign__3.00.00..	derivation		oewn-benignancy__1.07.00..
+oewn-benign__3.00.02..	antonym		oewn-malignant__3.00.02..
+oewn-benign__5.00.00.kind.00	derivation		oewn-benignancy__1.07.00..
+oewn-benign__5.00.00.kind.00	derivation		oewn-benignity__1.07.00..
+oewn-benign_tumor__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-benign_tumour__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-benign_tumour__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-benign_tumour__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-benignancy__1.07.00..	antonym		oewn-malignancy__1.07.00..
+oewn-benignantly__4.02.00..	pertainym		oewn-benignant__3.00.04..
+oewn-benignity__1.07.00..	antonym		oewn-malignity__1.07.00..
+oewn-benignly__4.02.00..	pertainym		oewn-benign__3.00.00..
+oewn-beninese__1.18.00..	derivation		oewn-beninese__3.01.00..
+oewn-bennie__1.06.00..	exemplifies		oewn-slang__1.10.00..
+oewn-benthal__3.01.00..	derivation		oewn-benthos__1.15.00..
+oewn-benthal__3.01.00..	pertainym		oewn-benthos__1.15.00..
+oewn-benthic__3.01.00..	pertainym		oewn-benthos__1.15.00..
+oewn-benthonic__3.01.00..	derivation		oewn-benthos__1.03.00..
+oewn-benthonic__3.01.00..	derivation		oewn-benthos__1.15.00..
+oewn-benthonic__3.01.00..	pertainym		oewn-benthos__1.15.00..
+oewn-bentonite__1.27.00..	derivation		oewn-bentonitic__3.01.00..
+oewn-bentonitic__3.01.00..	pertainym		oewn-bentonite__1.27.00..
+oewn-benzedrine__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-benzenoid__3.01.00..	pertainym		oewn-benzene__1.27.00..
+oewn-benzoic__3.01.00..	pertainym		oewn-benzoic_acid__1.27.00..
+oewn-benzoic__3.01.00..	pertainym		oewn-benzoin__1.27.00..
+oewn-benzyl__1.27.00..	derivation		oewn-benzylic__3.01.00..
+oewn-benzylic__3.01.00..	pertainym		oewn-benzyl_group__1.27.00..
+oewn-bequeath__2.40.00..	antonym		oewn-disinherit__2.40.00..
+oewn-bereave__2.40.00..	derivation		oewn-bereavement__1.26.00..
+oewn-bereave__2.40.00..	other	state	oewn-bereavement__1.26.00..
+oewn-bermudan__1.18.00..	derivation		oewn-bermudan__3.01.00..
+oewn-berry__1.13.00..	derivation		oewn-berry__2.35.00..
+oewn-berry__1.20.00..	derivation		oewn-berry__2.35.00..
+oewn-berry__2.35.00..	other	undergoer	oewn-berry__1.13.00..
+oewn-berry__2.35.00..	other	undergoer	oewn-berry__1.20.00..
+oewn-berrylike__3.01.00..	pertainym		oewn-bacca__1.20.00..
+oewn-berth__1.06.00..	derivation		oewn-berth__2.40.00..
+oewn-berth__1.15.00..	derivation		oewn-berth__2.35.00..
+oewn-berth__1.15.00..	derivation		oewn-berth__2.35.03..
+oewn-berth__1.15.00..	derivation		oewn-berth__2.40.00..
+oewn-berth__2.35.00..	other	location	oewn-berth__1.15.00..
+oewn-berth__2.35.03..	other	location	oewn-berth__1.15.00..
+oewn-berth__2.40.00..	other	uses	oewn-berth__1.06.00..
+oewn-berth__2.40.00..	other	uses	oewn-berth__1.15.00..
+oewn-beseeching__3.00.00..	antonym		oewn-imperative__3.00.00..
+oewn-beseechingly__4.02.00..	pertainym		oewn-beseeching__3.00.00..
+oewn-besiege__2.33.00..	derivation		oewn-besieger__1.18.00..
+oewn-besiege__2.33.00..	other	agent	oewn-besieger__1.18.00..
+oewn-best__1.04.00..	antonym		oewn-worst__1.04.00..
+oewn-best__1.04.00..	derivation		oewn-best__3.00.00..
+oewn-best__3.00.00..	antonym		oewn-worst__3.00.00..
+oewn-bestial__5.00.00.inhumane.00	derivation		oewn-bestiality__1.07.00..
+oewn-bestial__5.00.00.inhumane.00	derivation		oewn-bestialize__2.30.00..
+oewn-bestialise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bestialise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bestialize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bestially__4.02.00..	pertainym		oewn-bestial__5.00.00.inhumane.00
+oewn-bestow__2.40.00..	derivation		oewn-bestowal__1.04.00..
+oewn-bestow__2.40.00..	derivation		oewn-bestowment__1.04.00..
+oewn-bestow__2.40.00..	other	event	oewn-bestowal__1.04.00..
+oewn-bestow__2.40.00..	other	event	oewn-bestowment__1.04.00..
+oewn-bestow__2.40.02..	derivation		oewn-bestowment__1.21.00..
+oewn-bestow__2.40.02..	other	undergoer	oewn-bestowment__1.21.00..
+oewn-bet__1.04.00..	derivation		oewn-bet__2.33.00..
+oewn-bet__1.21.00..	derivation		oewn-bet__2.33.00..
+oewn-bet__2.32.00..	also		oewn-bet_on__2.33.00..
+oewn-bet__2.33.00..	derivation		oewn-better__1.18.00..
+oewn-bet__2.33.00..	derivation		oewn-bettor__1.18.00..
+oewn-bet__2.33.00..	other	agent	oewn-better__1.18.00..
+oewn-bet__2.33.00..	other	agent	oewn-bettor__1.18.00..
+oewn-bet__2.33.00..	other	event	oewn-bet__1.04.00..
+oewn-bet__2.33.00..	other	undergoer	oewn-bet__1.21.00..
+oewn-betray__2.32.00..	derivation		oewn-betrayer__1.18.01..
+oewn-betray__2.32.00..	other	agent	oewn-betrayer__1.18.01..
+oewn-betray__2.32.03..	derivation		oewn-betrayer__1.18.00..
+oewn-betray__2.32.03..	other	agent	oewn-betrayer__1.18.00..
+oewn-betray__2.41.00..	derivation		oewn-betrayal__1.04.00..
+oewn-betray__2.41.00..	derivation		oewn-betrayer__1.18.01..
+oewn-betray__2.41.00..	other	agent	oewn-betrayer__1.18.01..
+oewn-betray__2.41.00..	other	event	oewn-betrayal__1.04.00..
+oewn-betroth__2.32.00..	derivation		oewn-betrothal__1.04.00..
+oewn-betroth__2.32.00..	other	event	oewn-betrothal__1.04.00..
+oewn-betrothed__1.18.00..	derivation		oewn-betrothed__5.00.00.attached.01
+oewn-better__1.07.01..	derivation		oewn-better__2.30.00..
+oewn-better__1.07.01..	derivation		oewn-better__2.30.01..
+oewn-better__1.07.01..	derivation		oewn-better__2.33.00..
+oewn-better__2.30.00..	antonym		oewn-worsen__2.30.00..
+oewn-better__2.30.00..	derivation		oewn-betterment__1.11.00..
+oewn-better__2.30.00..	other	event	oewn-betterment__1.11.00..
+oewn-better__2.30.00..	other	result	oewn-better__1.07.01..
+oewn-better__2.30.00..	other	state	oewn-better__1.07.01..
+oewn-better__2.30.01..	antonym		oewn-worsen__2.30.01..
+oewn-better__2.30.01..	derivation		oewn-betterment__1.04.00..
+oewn-better__2.30.01..	other	event	oewn-betterment__1.04.00..
+oewn-better__2.30.01..	other	result	oewn-better__1.07.01..
+oewn-better__2.30.01..	other	state	oewn-better__1.07.01..
+oewn-better__2.33.00..	other	by_means_of	oewn-better__1.07.01..
+oewn-better__2.33.00..	other	state	oewn-better__1.07.01..
+oewn-better__3.00.00..	antonym		oewn-worse__3.00.00..
+oewn-better__3.00.02..	antonym		oewn-worse__3.00.02..
+oewn-bettering__3.00.00..	antonym		oewn-worsening__3.00.00..
+oewn-bevel__1.06.01..	derivation		oewn-bevel__2.35.00..
+oewn-bevel__2.35.00..	other	result	oewn-bevel__1.06.01..
+oewn-bewilder__2.31.00..	derivation		oewn-bewilderment__1.09.00..
+oewn-bewilder__2.31.00..	other	result	oewn-bewilderment__1.09.00..
+oewn-bewilderedly__4.02.00..	pertainym		oewn-bewildered__5.00.00.perplexed.00
+oewn-bewitch__2.32.01..	derivation		oewn-bewitchment__1.09.00..
+oewn-bewitch__2.32.01..	other	undergoer	oewn-bewitchment__1.09.00..
+oewn-bewitch__2.37.00..	derivation		oewn-bewitchery__1.07.00..
+oewn-bewitchingly__4.02.00..	pertainym		oewn-bewitching__5.00.00.attractive.01

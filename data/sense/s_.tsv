@@ -1,0 +1,15 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-s--shape__1.25.00..	s-shape%1:25:00::	oewn-S-shape-n	oewn-13891154-n	1
+oewn-s--shaped__5.00.00.formed.00	s-shaped%5:00:00:formed:00	oewn-s-shaped-a	oewn-02157723-s	1
+oewn-s-sol-n__1.24.00..	s/n%1:24:00::	oewn-S-sl-N-n	oewn-13847877-n	1
+oewn-s.t.p.__1.23.00..	s.t.p.%1:23:00::	oewn-s.t.p.-n	oewn-13802551-n	1
+oewn-s.u.v.__1.06.00..	s.u.v.%1:06:00::	oewn-S.U.V.-n	oewn-04293103-n	1
+oewn-s__1.07.00..	s%1:07:00::	oewn-S-n	oewn-05019769-n	5
+oewn-s__1.10.00..	s%1:10:00::	oewn-S-n	oewn-06846162-n	4
+oewn-s__1.10.01..	s%1:10:01::	oewn-s-n	oewn-06846162-n	2
+oewn-s__1.23.00..	s%1:23:00::	oewn-S-n	oewn-13658719-n	3
+oewn-s__1.24.00..	s%1:24:00::	oewn-S-n	oewn-13855574-n	2
+oewn-s__1.27.00..	s%1:27:00::	oewn-S-n	oewn-14680398-n	1
+oewn-s__1.28.00..	s%1:28:00::	oewn-s-n	oewn-15259923-n	1
+oewn-s_quark__1.17.00..	s_quark%1:17:00::	oewn-s_quark-n	oewn-09471066-n	1
+oewn-s_wrench__1.06.00..	s_wrench%1:06:00::	oewn-S_wrench-n	oewn-04381608-n	1

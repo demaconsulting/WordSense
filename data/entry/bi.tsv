@@ -1,0 +1,879 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-BIN-n	BIN	n	0	1	1	oewn
+oewn-Bi-n	Bi	n	0	1	1	oewn
+oewn-Bibb_lettuce-n	Bibb lettuce	n	0	2	2	oewn
+oewn-Bible-n	Bible	n	0	1	1	oewn
+oewn-Bible_worship-n	Bible worship	n	0	2	2	oewn
+oewn-Biblical_Aramaic-n	Biblical Aramaic	n	0	2	2	oewn
+oewn-Biblical_Aramaic_language-n	Biblical Aramaic language	n	0	3	3	oewn
+oewn-Biblical_Latin-n	Biblical Latin	n	0	2	2	oewn
+oewn-Biblical_Latin_language-n	Biblical Latin language	n	0	3	3	oewn
+oewn-Bibos_frontalis-n	Bibos frontalis	n	0	2	2	oewn
+oewn-Bibos_gaurus-n	Bibos gaurus	n	0	2	2	oewn
+oewn-Bidens_bipinnata-n	Bidens bipinnata	n	0	2	2	oewn
+oewn-Bidens_connata-n	Bidens connata	n	0	2	2	oewn
+oewn-Bidens_coronata-n	Bidens coronata	n	0	2	2	oewn
+oewn-Bidens_trichosperma-n	Bidens trichosperma	n	0	2	2	oewn
+oewn-Bidens_tripartita-n	Bidens tripartita	n	0	2	2	oewn
+oewn-Biedermeier-a	Biedermeier	a	0	1	1	oewn
+oewn-Biedermeier_style-n	Biedermeier style	n	0	2	2	oewn
+oewn-Big_Blue-n	Big Blue	n	0	2	2	oewn
+oewn-Big_Brother-n	Big Brother	n	0	2	2	oewn
+oewn-Bignonia_capreolata-n	Bignonia capreolata	n	0	2	2	oewn
+oewn-Bihari-n	Bihari	n	0	1	1	oewn
+oewn-Bihari_language-n	Bihari language	n	0	2	2	oewn
+oewn-Bill_of_Rights-n	Bill of Rights	n	0	3	1	oewn
+oewn-Biloxi-n	Biloxi	n	0	1	1	oewn
+oewn-Biloxi_language-n	Biloxi language	n	0	2	2	oewn
+oewn-Binet-Simon_Scale-n	Binet-Simon Scale	n	0	2	2	oewn
+oewn-Biro-n	Biro	n	0	1	1	oewn
+oewn-Bisayan-n	Bisayan	n	0	1	1	oewn
+oewn-Biscutella_laevigata-n	Biscutella laevigata	n	0	2	2	oewn
+oewn-Bishop_of_Rome-n	Bishop of Rome	n	0	3	1	oewn
+oewn-Bismarckian-a	Bismarckian	a	0	1	1	oewn
+oewn-Bison_bison-n	Bison bison	n	0	2	2	oewn
+oewn-Bison_bonasus-n	Bison bonasus	n	0	2	2	oewn
+oewn-Bissau-Guinean_franc-n	Bissau-Guinean franc	n	0	2	2	oewn
+oewn-Bitis_arietans-n	Bitis arietans	n	0	2	2	oewn
+oewn-Bitis_gabonica-n	Bitis gabonica	n	0	2	2	oewn
+oewn-Biu-Mandara-n	Biu-Mandara	n	0	1	1	oewn
+oewn-bi-fold_door-n	bi-fold door	n	0	2	2	oewn
+oewn-bialy-n	bialy	n	0	1	1	oewn
+oewn-bialystoker-n	bialystoker	n	0	1	1	oewn
+oewn-biannual-a	biannual	a	0	1	1	oewn
+oewn-biannually-r	biannually	r	0	1	1	oewn
+oewn-bias-a	bias	a	0	1	1	oewn
+oewn-bias-n	bias	n	0	1	1	oewn
+oewn-bias-v	bias	v	0	1	1	oewn
+oewn-biased-a	biased	a	0	1	1	oewn
+oewn-biaural-a	biaural	a	0	1	1	oewn
+oewn-biauricular-a	biauricular	a	0	1	1	oewn
+oewn-biauriculate_heart-n	biauriculate heart	n	0	2	2	oewn
+oewn-biaxal-a	biaxal	a	0	1	1	oewn
+oewn-biaxate-a	biaxate	a	0	1	1	oewn
+oewn-biaxial-a	biaxial	a	0	1	1	oewn
+oewn-bib-and-tucker-n	bib-and-tucker	n	0	1	1	oewn
+oewn-bib-n	bib	n	0	1	1	oewn
+oewn-bib-v	bib	v	0	1	1	oewn
+oewn-bibbed-a	bibbed	a	0	1	1	oewn
+oewn-bible-n	bible	n	0	1	1	oewn
+oewn-bible_leaf-n	bible leaf	n	0	2	2	oewn
+oewn-bibless-a	bibless	a	0	1	1	oewn
+oewn-biblical-a	biblical	a	0	1	1	oewn
+oewn-bibliographer-n	bibliographer	n	0	1	1	oewn
+oewn-bibliographic-a	bibliographic	a	0	1	1	oewn
+oewn-bibliographical-a	bibliographical	a	0	1	1	oewn
+oewn-bibliography-n	bibliography	n	0	1	1	oewn
+oewn-bibliolatrous-a	bibliolatrous	a	0	1	1	oewn
+oewn-bibliolatry-n	bibliolatry	n	0	1	1	oewn
+oewn-bibliomania-n	bibliomania	n	0	1	1	oewn
+oewn-bibliomaniacal-a	bibliomaniacal	a	0	1	1	oewn
+oewn-bibliophile-n	bibliophile	n	0	1	1	oewn
+oewn-bibliophilic-a	bibliophilic	a	0	1	1	oewn
+oewn-bibliopole-n	bibliopole	n	0	1	1	oewn
+oewn-bibliopolic-a	bibliopolic	a	0	1	1	oewn
+oewn-bibliopolist-n	bibliopolist	n	0	1	1	oewn
+oewn-bibliothec-n	bibliothec	n	0	1	1	oewn
+oewn-bibliotheca-n	bibliotheca	n	0	1	1	oewn
+oewn-bibliothecal-a	bibliothecal	a	0	1	1	oewn
+oewn-bibliothecarial-a	bibliothecarial	a	0	1	1	oewn
+oewn-bibliotic-a	bibliotic	a	0	1	1	oewn
+oewn-bibliotics-n	bibliotics	n	0	1	1	oewn
+oewn-bibliotist-n	bibliotist	n	0	1	1	oewn
+oewn-bibulous-a	bibulous	a	0	1	1	oewn
+oewn-bicameral-a	bicameral	a	0	1	1	oewn
+oewn-bicameral_script-n	bicameral script	n	0	2	2	oewn
+oewn-bicapsular-a	bicapsular	a	0	1	1	oewn
+oewn-bicarbonate-n	bicarbonate	n	0	1	1	oewn
+oewn-bicarbonate_buffer_solution-n	bicarbonate buffer solution	n	0	3	3	oewn
+oewn-bicarbonate_of_soda-n	bicarbonate of soda	n	0	3	1	oewn
+oewn-bicentenary-a	bicentenary	a	0	1	1	oewn
+oewn-bicentenary-n	bicentenary	n	0	1	1	oewn
+oewn-bicentennial-a	bicentennial	a	0	1	1	oewn
+oewn-bicentennial-n	bicentennial	n	0	1	1	oewn
+oewn-bicentric-a	bicentric	a	0	1	1	oewn
+oewn-bicephalous-a	bicephalous	a	0	1	1	oewn
+oewn-biceps-n	biceps	n	0	1	1	oewn
+oewn-biceps_brachii-n	biceps brachii	n	0	2	2	oewn
+oewn-biceps_humeri-n	biceps humeri	n	0	2	2	oewn
+oewn-bichloride-n	bichloride	n	0	1	1	oewn
+oewn-bichloride_of_mercury-n	bichloride of mercury	n	0	3	1	oewn
+oewn-bichromate-n	bichromate	n	0	1	1	oewn
+oewn-bichromated-a	bichromated	a	0	1	1	oewn
+oewn-bichrome-a	bichrome	a	0	1	1	oewn
+oewn-bicipital-a	bicipital	a	0	1	1	oewn
+oewn-bicker-n	bicker	n	0	1	1	oewn
+oewn-bicker-v	bicker	v	0	1	1	oewn
+oewn-bickering-n	bickering	n	0	1	1	oewn
+oewn-bicolor-a	bicolor	a	0	1	1	oewn
+oewn-bicolor_lespediza-n	bicolor lespediza	n	0	2	2	oewn
+oewn-bicolored-a	bicolored	a	0	1	1	oewn
+oewn-bicolour-a	bicolour	a	0	1	1	oewn
+oewn-bicoloured-a	bicoloured	a	0	1	1	oewn
+oewn-biconcave-a	biconcave	a	0	1	1	oewn
+oewn-biconvex-a	biconvex	a	0	1	1	oewn
+oewn-bicorn-a	bicorn	a	0	1	1	oewn
+oewn-bicorn-n	bicorn	n	0	1	1	oewn
+oewn-bicornate-a	bicornate	a	0	1	1	oewn
+oewn-bicorne-n	bicorne	n	0	1	1	oewn
+oewn-bicorned-a	bicorned	a	0	1	1	oewn
+oewn-bicornuate-a	bicornuate	a	0	1	1	oewn
+oewn-bicornuous-a	bicornuous	a	0	1	1	oewn
+oewn-bicuspid-a	bicuspid	a	0	1	1	oewn
+oewn-bicuspid-n	bicuspid	n	0	1	1	oewn
+oewn-bicuspid_valve-n	bicuspid valve	n	0	2	2	oewn
+oewn-bicuspidate-a	bicuspidate	a	0	1	1	oewn
+oewn-bicycle-built-for-two-n	bicycle-built-for-two	n	0	1	1	oewn
+oewn-bicycle-n	bicycle	n	0	1	1	oewn
+oewn-bicycle-v	bicycle	v	0	1	1	oewn
+oewn-bicycle_chain-n	bicycle chain	n	0	2	2	oewn
+oewn-bicycle_clip-n	bicycle clip	n	0	2	2	oewn
+oewn-bicycle_parking_rack-n	bicycle parking rack	n	0	3	3	oewn
+oewn-bicycle_pump-n	bicycle pump	n	0	2	2	oewn
+oewn-bicycle_race-n	bicycle race	n	0	2	2	oewn
+oewn-bicycle_rack-n	bicycle rack	n	0	2	2	oewn
+oewn-bicycle_seat-n	bicycle seat	n	0	2	2	oewn
+oewn-bicycle_stand-n	bicycle stand	n	0	2	2	oewn
+oewn-bicycle_traffic-n	bicycle traffic	n	0	2	2	oewn
+oewn-bicycle_wheel-n	bicycle wheel	n	0	2	2	oewn
+oewn-bicycler-n	bicycler	n	0	1	1	oewn
+oewn-bicyclic-a	bicyclic	a	0	1	1	oewn
+oewn-bicycling-n	bicycling	n	0	1	1	oewn
+oewn-bicyclist-n	bicyclist	n	0	1	1	oewn
+oewn-bicylindrical-a	bicylindrical	a	0	1	1	oewn
+oewn-bid-n	bid	n	0	1	1	oewn
+oewn-bid-v	bid	v	0	1	1	oewn
+oewn-bid_price-n	bid price	n	0	2	2	oewn
+oewn-biddable-a	biddable	a	0	1	1	oewn
+oewn-bidder-n	bidder	n	0	1	1	oewn
+oewn-bidding-n	bidding	n	0	1	1	oewn
+oewn-bidding_contest-n	bidding contest	n	0	2	2	oewn
+oewn-biddy-n	biddy	n	0	1	1	oewn
+oewn-bide-v	bide	v	0	1	1	oewn
+oewn-bidentate-a	bidentate	a	0	1	1	oewn
+oewn-bidet-n	bidet	n	0	1	1	oewn
+oewn-bidet_tap-n	bidet tap	n	0	2	2	oewn
+oewn-bidirectional-a	bidirectional	a	0	1	1	oewn
+oewn-biennial-a	biennial	a	0	1	1	oewn
+oewn-biennial-n	biennial	n	0	1	1	oewn
+oewn-biennially-r	biennially	r	0	1	1	oewn
+oewn-bier-n	bier	n	0	1	1	oewn
+oewn-biface-a	biface	a	0	1	1	oewn
+oewn-bifacial-a	bifacial	a	0	1	1	oewn
+oewn-biff-n	biff	n	0	1	1	oewn
+oewn-biff-v	biff	v	0	1	1	oewn
+oewn-bifid-a	bifid	a	0	1	1	oewn
+oewn-bifilar-a	bifilar	a	0	1	1	oewn
+oewn-biflagellate-a	biflagellate	a	0	1	1	oewn
+oewn-bifocal-a	bifocal	a	0	1	1	oewn
+oewn-bifocals-n	bifocals	n	0	1	1	oewn
+oewn-bifoliate-a	bifoliate	a	0	1	1	oewn
+oewn-biform-a	biform	a	0	1	1	oewn
+oewn-bifurcate-a	bifurcate	a	0	1	1	oewn
+oewn-bifurcate-v	bifurcate	v	0	1	1	oewn
+oewn-bifurcated-a	bifurcated	a	0	1	1	oewn
+oewn-bifurcation-n	bifurcation	n	0	1	1	oewn
+oewn-big-a	big	a	0	1	1	oewn
+oewn-big-bang_theory-n	big-bang theory	n	0	2	2	oewn
+oewn-big-bellied-a	big-bellied	a	0	1	1	oewn
+oewn-big-boned-a	big-boned	a	0	1	1	oewn
+oewn-big-bud_hickory-n	big-bud hickory	n	0	2	2	oewn
+oewn-big-chested-a	big-chested	a	0	1	1	oewn
+oewn-big-cone_douglas_fir-n	big-cone douglas fir	n	0	3	3	oewn
+oewn-big-cone_spruce-n	big-cone spruce	n	0	2	2	oewn
+oewn-big-eared_bat-n	big-eared bat	n	0	2	2	oewn
+oewn-big-eyed_scad-n	big-eyed scad	n	0	2	2	oewn
+oewn-big-leaf_maple-n	big-leaf maple	n	0	2	2	oewn
+oewn-big-r	big	r	0	1	1	oewn
+oewn-big-shouldered-a	big-shouldered	a	0	1	1	oewn
+oewn-big-ticket-a	big-ticket	a	0	1	1	oewn
+oewn-big-toothed_aspen-n	big-toothed aspen	n	0	2	2	oewn
+oewn-big-tree_plum-n	big-tree plum	n	0	2	2	oewn
+oewn-big_H-n	big H	n	0	2	2	oewn
+oewn-big_band-n	big band	n	0	2	2	oewn
+oewn-big_bang-n	big bang	n	0	2	2	oewn
+oewn-big_bang_theory-n	big bang theory	n	0	3	3	oewn
+oewn-big_bedbug-n	big bedbug	n	0	2	2	oewn
+oewn-big_board-n	big board	n	0	2	2	oewn
+oewn-big_brother-n	big brother	n	0	2	2	oewn
+oewn-big_brown_bat-n	big brown bat	n	0	3	3	oewn
+oewn-big_bucks-n	big bucks	n	0	2	2	oewn
+oewn-big_business-n	big business	n	0	2	2	oewn
+oewn-big_businessman-n	big businessman	n	0	2	2	oewn
+oewn-big_businesswoman-n	big businesswoman	n	0	2	2	oewn
+oewn-big_cat-n	big cat	n	0	2	2	oewn
+oewn-big_cheese-n	big cheese	n	0	2	2	oewn
+oewn-big_deal-n	big deal	n	0	2	2	oewn
+oewn-big_dipper-n	big dipper	n	0	2	2	oewn
+oewn-big_enchilada-n	big enchilada	n	0	2	2	oewn
+oewn-big_fish-n	big fish	n	0	2	2	oewn
+oewn-big_game-n	big game	n	0	2	2	oewn
+oewn-big_gun-n	big gun	n	0	2	2	oewn
+oewn-big_hand-n	big hand	n	0	2	2	oewn
+oewn-big_league-n	big league	n	0	2	2	oewn
+oewn-big_leaguer-n	big leaguer	n	0	2	2	oewn
+oewn-big_marigold-n	big marigold	n	0	2	2	oewn
+oewn-big_money-n	big money	n	0	2	2	oewn
+oewn-big_sagebrush-n	big sagebrush	n	0	2	2	oewn
+oewn-big_science-n	big science	n	0	2	2	oewn
+oewn-big_shagbark-n	big shagbark	n	0	2	2	oewn
+oewn-big_shellbark-n	big shellbark	n	0	2	2	oewn
+oewn-big_shellbark_hickory-n	big shellbark hickory	n	0	3	3	oewn
+oewn-big_shot-n	big shot	n	0	2	2	oewn
+oewn-big_sister-n	big sister	n	0	2	2	oewn
+oewn-big_spender-n	big spender	n	0	2	2	oewn
+oewn-big_stick-n	big stick	n	0	2	2	oewn
+oewn-big_time-n	big time	n	0	2	2	oewn
+oewn-big_toe-n	big toe	n	0	2	2	oewn
+oewn-big_top-n	big top	n	0	2	2	oewn
+oewn-big_tree-n	big tree	n	0	2	2	oewn
+oewn-big_wheel-n	big wheel	n	0	2	2	oewn
+oewn-big_yus-n	big yus	n	0	2	2	oewn
+oewn-bigamist-n	bigamist	n	0	1	1	oewn
+oewn-bigamous-a	bigamous	a	0	1	1	oewn
+oewn-bigamy-n	bigamy	n	0	1	1	oewn
+oewn-bigarade-n	bigarade	n	0	1	1	oewn
+oewn-bigeminal-a	bigeminal	a	0	1	1	oewn
+oewn-bigeneric-a	bigeneric	a	0	1	1	oewn
+oewn-bigeye-n	bigeye	n	0	1	1	oewn
+oewn-bigeye_scad-n	bigeye scad	n	0	2	2	oewn
+oewn-bigger-a	bigger	a	0	1	1	oewn
+oewn-biggin-n	biggin	n	0	1	1	oewn
+oewn-biggish-a	biggish	a	0	1	1	oewn
+oewn-bighead-n	bighead	n	0	1	1	oewn
+oewn-bigheaded-a	bigheaded	a	0	1	1	oewn
+oewn-bighearted-a	bighearted	a	0	1	1	oewn
+oewn-bigheartedness-n	bigheartedness	n	0	1	1	oewn
+oewn-bighorn-n	bighorn	n	0	1	1	oewn
+oewn-bighorn_sheep-n	bighorn sheep	n	0	2	2	oewn
+oewn-bight-n	bight	n	0	1	1	oewn
+oewn-bight-v	bight	v	0	1	1	oewn
+oewn-bigmouthed-a	bigmouthed	a	0	1	1	oewn
+oewn-bigness-n	bigness	n	0	1	1	oewn
+oewn-bignoniaceous-a	bignoniaceous	a	0	1	1	oewn
+oewn-bignoniad-n	bignoniad	n	0	1	1	oewn
+oewn-bigos-n	bigos	n	0	1	1	oewn
+oewn-bigot-n	bigot	n	0	1	1	oewn
+oewn-bigoted-a	bigoted	a	0	1	1	oewn
+oewn-bigotry-n	bigotry	n	0	1	1	oewn
+oewn-bigram-n	bigram	n	0	1	1	oewn
+oewn-bigtooth_aspen-n	bigtooth aspen	n	0	2	2	oewn
+oewn-bigtoothed_aspen-n	bigtoothed aspen	n	0	2	2	oewn
+oewn-bigwig-n	bigwig	n	0	1	1	oewn
+oewn-bijou-n	bijou	n	0	1	1	oewn
+oewn-bijugate_leaf-n	bijugate leaf	n	0	2	2	oewn
+oewn-bijugous_leaf-n	bijugous leaf	n	0	2	2	oewn
+oewn-bike-n	bike	n	0	1	1	oewn
+oewn-bike-v	bike	v	0	1	1	oewn
+oewn-bike_parking_rack-n	bike parking rack	n	0	3	3	oewn
+oewn-bike_race-n	bike race	n	0	2	2	oewn
+oewn-bike_rack-n	bike rack	n	0	2	2	oewn
+oewn-bike_stand-n	bike stand	n	0	2	2	oewn
+oewn-biker-n	biker	n	0	1	1	oewn
+oewn-bikers-n	bikers	n	0	1	1	oewn
+oewn-bikini-n	bikini	n	0	1	1	oewn
+oewn-bikini_pants-n	bikini pants	n	0	2	2	oewn
+oewn-bilabial-a	bilabial	a	0	1	1	oewn
+oewn-bilabial-n	bilabial	n	0	1	1	oewn
+oewn-bilabiate-a	bilabiate	a	0	1	1	oewn
+oewn-bilateral-a	bilateral	a	0	1	1	oewn
+oewn-bilateral_contract-n	bilateral contract	n	0	2	2	oewn
+oewn-bilateral_descent-n	bilateral descent	n	0	2	2	oewn
+oewn-bilateral_symmetry-n	bilateral symmetry	n	0	2	2	oewn
+oewn-bilateralism-n	bilateralism	n	0	1	1	oewn
+oewn-bilaterality-n	bilaterality	n	0	1	1	oewn
+oewn-bilaterally-r	bilaterally	r	0	1	1	oewn
+oewn-bilaterally_symmetric-a	bilaterally symmetric	a	0	2	2	oewn
+oewn-bilaterally_symmetrical-a	bilaterally symmetrical	a	0	2	2	oewn
+oewn-bilberry-n	bilberry	n	0	1	1	oewn
+oewn-bilby-n	bilby	n	0	1	1	oewn
+oewn-bile-n	bile	n	0	1	1	oewn
+oewn-bile_acid-n	bile acid	n	0	2	2	oewn
+oewn-bile_duct-n	bile duct	n	0	2	2	oewn
+oewn-bile_salt-n	bile salt	n	0	2	2	oewn
+oewn-bilestone-n	bilestone	n	0	1	1	oewn
+oewn-bilevel_car-n	bilevel car	n	0	2	2	oewn
+oewn-bilevel_rail_car-n	bilevel rail car	n	0	3	3	oewn
+oewn-bilevel_railcar-n	bilevel railcar	n	0	2	2	oewn
+oewn-bilge-n	bilge	n	0	1	1	oewn
+oewn-bilge-v	bilge	v	0	1	1	oewn
+oewn-bilge_keel-n	bilge keel	n	0	2	2	oewn
+oewn-bilge_pump-n	bilge pump	n	0	2	2	oewn
+oewn-bilge_water-n	bilge water	n	0	2	2	oewn
+oewn-bilge_well-n	bilge well	n	0	2	2	oewn
+oewn-bilges-n	bilges	n	0	1	1	oewn
+oewn-bilgewater-n	bilgewater	n	0	1	1	oewn
+oewn-bilgy-a	bilgy	a	0	1	1	oewn
+oewn-bilharzia-n	bilharzia	n	0	1	1	oewn
+oewn-bilharziasis-n	bilharziasis	n	0	1	1	oewn
+oewn-biliary-a	biliary	a	0	1	1	oewn
+oewn-biliary_ductule-n	biliary ductule	n	0	2	2	oewn
+oewn-bilimbi-n	bilimbi	n	0	1	1	oewn
+oewn-bilinear-a	bilinear	a	0	1	1	oewn
+oewn-bilingual-a	bilingual	a	0	1	1	oewn
+oewn-bilingual-n	bilingual	n	0	1	1	oewn
+oewn-bilingual_dictionary-n	bilingual dictionary	n	0	2	2	oewn
+oewn-bilingualism-n	bilingualism	n	0	1	1	oewn
+oewn-bilingualist-n	bilingualist	n	0	1	1	oewn
+oewn-bilingually-r	bilingually	r	0	1	1	oewn
+oewn-bilious-a	bilious	a	0	1	1	oewn
+oewn-biliousness-n	biliousness	n	0	1	1	oewn
+oewn-bilirubin-n	bilirubin	n	0	1	1	oewn
+oewn-bilk-v	bilk	v	0	1	1	oewn
+oewn-bill-me_order-n	bill-me order	n	0	2	2	oewn
+oewn-bill-n	bill	n	0	1	1	oewn
+oewn-bill-v	bill	v	0	1	1	oewn
+oewn-bill_of_Particulars-n	bill of Particulars	n	0	3	1	oewn
+oewn-bill_of_attainder-n	bill of attainder	n	0	3	1	oewn
+oewn-bill_of_entry-n	bill of entry	n	0	3	1	oewn
+oewn-bill_of_exchange-n	bill of exchange	n	0	3	1	oewn
+oewn-bill_of_fare-n	bill of fare	n	0	3	1	oewn
+oewn-bill_of_goods-n	bill of goods	n	0	3	1	oewn
+oewn-bill_of_health-n	bill of health	n	0	3	1	oewn
+oewn-bill_of_indictment-n	bill of indictment	n	0	3	1	oewn
+oewn-bill_of_lading-n	bill of lading	n	0	3	1	oewn
+oewn-bill_of_review-n	bill of review	n	0	3	1	oewn
+oewn-bill_of_sale-n	bill of sale	n	0	3	1	oewn
+oewn-bill_poster-n	bill poster	n	0	2	2	oewn
+oewn-bill_sticker-n	bill sticker	n	0	2	2	oewn
+oewn-billabong-n	billabong	n	0	1	1	oewn
+oewn-billboard-n	billboard	n	0	1	1	oewn
+oewn-billed-a	billed	a	0	1	1	oewn
+oewn-billet-n	billet	n	0	1	1	oewn
+oewn-billet-v	billet	v	0	1	1	oewn
+oewn-billet_doux-n	billet doux	n	0	2	2	oewn
+oewn-billfish-n	billfish	n	0	1	1	oewn
+oewn-billfold-n	billfold	n	0	1	1	oewn
+oewn-billhook-n	billhook	n	0	1	1	oewn
+oewn-billiard-a	billiard	a	0	1	1	oewn
+oewn-billiard_ball-n	billiard ball	n	0	2	2	oewn
+oewn-billiard_hall-n	billiard hall	n	0	2	2	oewn
+oewn-billiard_marker-n	billiard marker	n	0	2	2	oewn
+oewn-billiard_parlor-n	billiard parlor	n	0	2	2	oewn
+oewn-billiard_parlour-n	billiard parlour	n	0	2	2	oewn
+oewn-billiard_player-n	billiard player	n	0	2	2	oewn
+oewn-billiard_room-n	billiard room	n	0	2	2	oewn
+oewn-billiard_saloon-n	billiard saloon	n	0	2	2	oewn
+oewn-billiard_table-n	billiard table	n	0	2	2	oewn
+oewn-billiards-n	billiards	n	0	1	1	oewn
+oewn-billing-n	billing	n	0	1	1	oewn
+oewn-billingsgate-n	billingsgate	n	0	1	1	oewn
+oewn-billion-a	billion	a	0	1	1	oewn
+oewn-billion-dollar_grass-n	billion-dollar grass	n	0	2	2	oewn
+oewn-billion-n	billion	n	0	1	1	oewn
+oewn-billion_floating_point_operations_per_second-n	billion floating point operations per second	n	0	6	6	oewn
+oewn-billionaire-n	billionaire	n	0	1	1	oewn
+oewn-billionth-a	billionth	a	0	1	1	oewn
+oewn-billionth-n	billionth	n	0	1	1	oewn
+oewn-billow-n	billow	n	0	1	1	oewn
+oewn-billow-v	billow	v	0	1	1	oewn
+oewn-billowing-a	billowing	a	0	1	1	oewn
+oewn-billowy-a	billowy	a	0	1	1	oewn
+oewn-billy-ho-n	billy-ho	n	0	1	1	oewn
+oewn-billy-n	billy	n	0	1	1	oewn
+oewn-billy_buttons-n	billy buttons	n	0	2	2	oewn
+oewn-billy_club-n	billy club	n	0	2	2	oewn
+oewn-billy_goat-n	billy goat	n	0	2	2	oewn
+oewn-billyo-n	billyo	n	0	1	1	oewn
+oewn-billyoh-n	billyoh	n	0	1	1	oewn
+oewn-billystick-n	billystick	n	0	1	1	oewn
+oewn-bilobate-a	bilobate	a	0	1	1	oewn
+oewn-bilobated-a	bilobated	a	0	1	1	oewn
+oewn-bilobed-a	bilobed	a	0	1	1	oewn
+oewn-bilocation-n	bilocation	n	0	1	1	oewn
+oewn-bilocular-a	bilocular	a	0	1	1	oewn
+oewn-bilocular_capsule-n	bilocular capsule	n	0	2	2	oewn
+oewn-biloculate-a	biloculate	a	0	1	1	oewn
+oewn-bilsted-n	bilsted	n	0	1	1	oewn
+oewn-biltong-n	biltong	n	0	1	1	oewn
+oewn-bimanual-a	bimanual	a	0	1	1	oewn
+oewn-bimbo-n	bimbo	n	0	1	1	oewn
+oewn-bimester-n	bimester	n	0	1	1	oewn
+oewn-bimestrial-a	bimestrial	a	0	1	1	oewn
+oewn-bimetal-a	bimetal	a	0	1	1	oewn
+oewn-bimetal-n	bimetal	n	0	1	1	oewn
+oewn-bimetallic-a	bimetallic	a	0	1	1	oewn
+oewn-bimetallic_strip-n	bimetallic strip	n	0	2	2	oewn
+oewn-bimetallism-n	bimetallism	n	0	1	1	oewn
+oewn-bimetallist-n	bimetallist	n	0	1	1	oewn
+oewn-bimetallistic-a	bimetallistic	a	0	1	1	oewn
+oewn-bimillenary-n	bimillenary	n	0	1	1	oewn
+oewn-bimillenial-a	bimillenial	a	0	1	1	oewn
+oewn-bimillennium-n	bimillennium	n	0	1	1	oewn
+oewn-bimli-n	bimli	n	0	1	1	oewn
+oewn-bimli_hemp-n	bimli hemp	n	0	2	2	oewn
+oewn-bimodal-a	bimodal	a	0	1	1	oewn
+oewn-bimolecular-a	bimolecular	a	0	1	1	oewn
+oewn-bimonthly-a	bimonthly	a	0	1	1	oewn
+oewn-bimonthly-n	bimonthly	n	0	1	1	oewn
+oewn-bimonthly-r	bimonthly	r	0	1	1	oewn
+oewn-bimorphemic-a	bimorphemic	a	0	1	1	oewn
+oewn-bimotored-a	bimotored	a	0	1	1	oewn
+oewn-bin-n	bin	n	0	1	1	oewn
+oewn-bin-v	bin	v	0	1	1	oewn
+oewn-bin_liner-n	bin liner	n	0	2	2	oewn
+oewn-binary-a	binary	a	0	1	1	oewn
+oewn-binary-n	binary	n	0	1	1	oewn
+oewn-binary_arithmetic_operation-n	binary arithmetic operation	n	0	3	3	oewn
+oewn-binary_code-n	binary code	n	0	2	2	oewn
+oewn-binary_compound-n	binary compound	n	0	2	2	oewn
+oewn-binary_digit-n	binary digit	n	0	2	2	oewn
+oewn-binary_file-n	binary file	n	0	2	2	oewn
+oewn-binary_notation-n	binary notation	n	0	2	2	oewn
+oewn-binary_number_system-n	binary number system	n	0	3	3	oewn
+oewn-binary_numeration_system-n	binary numeration system	n	0	3	3	oewn
+oewn-binary_operation-n	binary operation	n	0	2	2	oewn
+oewn-binary_program-n	binary program	n	0	2	2	oewn
+oewn-binary_star-n	binary star	n	0	2	2	oewn
+oewn-binary_system-n	binary system	n	0	2	2	oewn
+oewn-binate-a	binate	a	0	1	1	oewn
+oewn-binaural-a	binaural	a	0	1	1	oewn
+oewn-binaurally-r	binaurally	r	0	1	1	oewn
+oewn-bind-n	bind	n	0	1	1	oewn
+oewn-bind-v	bind	v	0	1	1	oewn
+oewn-bind_off-v	bind off	v	0	2	1	oewn
+oewn-bind_over-v	bind over	v	0	2	1	oewn
+oewn-bindable-a	bindable	a	0	1	1	oewn
+oewn-binder-ap-s_board-n	binder's board	n	0	2	2	oewn
+oewn-binder-n	binder	n	0	1	1	oewn
+oewn-binder_board-n	binder board	n	0	2	2	oewn
+oewn-bindery-n	bindery	n	0	1	1	oewn
+oewn-binding-a	binding	a	0	1	1	oewn
+oewn-binding-n	binding	n	0	1	1	oewn
+oewn-binding_energy-n	binding energy	n	0	2	2	oewn
+oewn-bindweed-n	bindweed	n	0	1	1	oewn
+oewn-bine-n	bine	n	0	1	1	oewn
+oewn-binful-n	binful	n	0	1	1	oewn
+oewn-bing_cherry-n	bing cherry	n	0	2	2	oewn
+oewn-binge-eating_syndrome-n	binge-eating syndrome	n	0	2	2	oewn
+oewn-binge-n	binge	n	0	1	1	oewn
+oewn-binge-purge_syndrome-n	binge-purge syndrome	n	0	2	2	oewn
+oewn-binge-v	binge	v	0	1	1	oewn
+oewn-binge-vomit_syndrome-n	binge-vomit syndrome	n	0	2	2	oewn
+oewn-binger-n	binger	n	0	1	1	oewn
+oewn-bingle-n	bingle	n	0	1	1	oewn
+oewn-bingo-n	bingo	n	0	1	1	oewn
+oewn-binnacle-n	binnacle	n	0	1	1	oewn
+oewn-binocular-a	binocular	a	0	1	1	oewn
+oewn-binocular_microscope-n	binocular microscope	n	0	2	2	oewn
+oewn-binocular_vision-n	binocular vision	n	0	2	2	oewn
+oewn-binoculars-n	binoculars	n	0	1	1	oewn
+oewn-binomial-a	binomial	a	0	1	1	oewn
+oewn-binomial-n	binomial	n	0	1	1	oewn
+oewn-binomial_distribution-n	binomial distribution	n	0	2	2	oewn
+oewn-binomial_theorem-n	binomial theorem	n	0	2	2	oewn
+oewn-binominal-a	binominal	a	0	1	1	oewn
+oewn-binturong-n	binturong	n	0	1	1	oewn
+oewn-binuclear-a	binuclear	a	0	1	1	oewn
+oewn-binucleate-a	binucleate	a	0	1	1	oewn
+oewn-binucleated-a	binucleated	a	0	1	1	oewn
+oewn-bio-assay-n	bio-assay	n	0	1	1	oewn
+oewn-bio-fertilizer-n	bio-fertilizer	n	0	1	1	oewn
+oewn-bio_fertilizer-n	bio fertilizer	n	0	2	2	oewn
+oewn-bio_lab-n	bio lab	n	0	2	2	oewn
+oewn-bioarm-n	bioarm	n	0	1	1	oewn
+oewn-bioassay-n	bioassay	n	0	1	1	oewn
+oewn-bioassay-v	bioassay	v	0	1	1	oewn
+oewn-bioattack-n	bioattack	n	0	1	1	oewn
+oewn-biocatalyst-n	biocatalyst	n	0	1	1	oewn
+oewn-biocatalytic-a	biocatalytic	a	0	1	1	oewn
+oewn-biochemical-a	biochemical	a	0	1	1	oewn
+oewn-biochemical_mechanism-n	biochemical mechanism	n	0	2	2	oewn
+oewn-biochemically-r	biochemically	r	0	1	1	oewn
+oewn-biochemist-n	biochemist	n	0	1	1	oewn
+oewn-biochemistry-n	biochemistry	n	0	1	1	oewn
+oewn-biochip-n	biochip	n	0	1	1	oewn
+oewn-bioclimatic-a	bioclimatic	a	0	1	1	oewn
+oewn-bioclimatology-n	bioclimatology	n	0	1	1	oewn
+oewn-biodefence-n	biodefence	n	0	1	1	oewn
+oewn-biodefense-n	biodefense	n	0	1	1	oewn
+oewn-biodegradable-a	biodegradable	a	0	1	1	oewn
+oewn-biodegradable_pollution-n	biodegradable pollution	n	0	2	2	oewn
+oewn-biodegrade-v	biodegrade	v	0	1	1	oewn
+oewn-biodiversity-n	biodiversity	n	0	1	1	oewn
+oewn-biodynamics-n	biodynamics	n	0	1	1	oewn
+oewn-bioelectric_potential-n	bioelectric potential	n	0	2	2	oewn
+oewn-bioelectricity-n	bioelectricity	n	0	1	1	oewn
+oewn-bioengineering-n	bioengineering	n	0	1	1	oewn
+oewn-bioethics-n	bioethics	n	0	1	1	oewn
+oewn-biofeedback-n	biofeedback	n	0	1	1	oewn
+oewn-bioflavinoid-n	bioflavinoid	n	0	1	1	oewn
+oewn-biogenesis-n	biogenesis	n	0	1	1	oewn
+oewn-biogenetic-a	biogenetic	a	0	1	1	oewn
+oewn-biogenic-a	biogenic	a	0	1	1	oewn
+oewn-biogenous-a	biogenous	a	0	1	1	oewn
+oewn-biogeny-n	biogeny	n	0	1	1	oewn
+oewn-biogeographic-a	biogeographic	a	0	1	1	oewn
+oewn-biogeographical-a	biogeographical	a	0	1	1	oewn
+oewn-biogeographical_region-n	biogeographical region	n	0	2	2	oewn
+oewn-biogeography-n	biogeography	n	0	1	1	oewn
+oewn-biographer-n	biographer	n	0	1	1	oewn
+oewn-biographic-a	biographic	a	0	1	1	oewn
+oewn-biographical-a	biographical	a	0	1	1	oewn
+oewn-biographism-n	biographism	n	0	1	1	oewn
+oewn-biography-n	biography	n	0	1	1	oewn
+oewn-biohazard-n	biohazard	n	0	1	1	oewn
+oewn-biohazard_suit-n	biohazard suit	n	0	2	2	oewn
+oewn-biologic-a	biologic	a	0	1	1	oewn
+oewn-biologic_attack-n	biologic attack	n	0	2	2	oewn
+oewn-biological-a	biological	a	0	1	1	oewn
+oewn-biological_agent-n	biological agent	n	0	2	2	oewn
+oewn-biological_attack-n	biological attack	n	0	2	2	oewn
+oewn-biological_clock-n	biological clock	n	0	2	2	oewn
+oewn-biological_defence-n	biological defence	n	0	2	2	oewn
+oewn-biological_defense-n	biological defense	n	0	2	2	oewn
+oewn-biological_group-n	biological group	n	0	2	2	oewn
+oewn-biological_process-n	biological process	n	0	2	2	oewn
+oewn-biological_research-n	biological research	n	0	2	2	oewn
+oewn-biological_science-n	biological science	n	0	2	2	oewn
+oewn-biological_terrorism-n	biological terrorism	n	0	2	2	oewn
+oewn-biological_time-n	biological time	n	0	2	2	oewn
+oewn-biological_warfare-n	biological warfare	n	0	2	2	oewn
+oewn-biological_warfare_defence-n	biological warfare defence	n	0	3	3	oewn
+oewn-biological_warfare_defense-n	biological warfare defense	n	0	3	3	oewn
+oewn-biological_weapon-n	biological weapon	n	0	2	2	oewn
+oewn-biologically-r	biologically	r	0	1	1	oewn
+oewn-biologism-n	biologism	n	0	1	1	oewn
+oewn-biologist-n	biologist	n	0	1	1	oewn
+oewn-biologistic-a	biologistic	a	0	1	1	oewn
+oewn-biology-n	biology	n	0	1	1	oewn
+oewn-biology_department-n	biology department	n	0	2	2	oewn
+oewn-biology_lab-n	biology lab	n	0	2	2	oewn
+oewn-biology_laboratory-n	biology laboratory	n	0	2	2	oewn
+oewn-bioluminescence-n	bioluminescence	n	0	1	1	oewn
+oewn-bioluminescent-a	bioluminescent	a	0	1	1	oewn
+oewn-biomass-n	biomass	n	0	1	1	oewn
+oewn-biome-n	biome	n	0	1	1	oewn
+oewn-biomedical-a	biomedical	a	0	1	1	oewn
+oewn-biomedical_cloning-n	biomedical cloning	n	0	2	2	oewn
+oewn-biomedical_science-n	biomedical science	n	0	2	2	oewn
+oewn-biomedicine-n	biomedicine	n	0	1	1	oewn
+oewn-biometric_authentication-n	biometric authentication	n	0	2	2	oewn
+oewn-biometric_identification-n	biometric identification	n	0	2	2	oewn
+oewn-biometrics-n	biometrics	n	0	1	1	oewn
+oewn-biometry-n	biometry	n	0	1	1	oewn
+oewn-bionic-a	bionic	a	0	1	1	oewn
+oewn-bionic_man-n	bionic man	n	0	2	2	oewn
+oewn-bionic_woman-n	bionic woman	n	0	2	2	oewn
+oewn-bionics-n	bionics	n	0	1	1	oewn
+oewn-bionomic-a	bionomic	a	0	1	1	oewn
+oewn-bionomical-a	bionomical	a	0	1	1	oewn
+oewn-bionomics-n	bionomics	n	0	1	1	oewn
+oewn-biont-n	biont	n	0	1	1	oewn
+oewn-biophysicist-n	biophysicist	n	0	1	1	oewn
+oewn-biophysics-n	biophysics	n	0	1	1	oewn
+oewn-biopiracy-n	biopiracy	n	0	1	1	oewn
+oewn-biopsy-n	biopsy	n	0	1	1	oewn
+oewn-bioremediation-n	bioremediation	n	0	1	1	oewn
+oewn-biosafety-n	biosafety	n	0	1	1	oewn
+oewn-biosafety_level-n	biosafety level	n	0	2	2	oewn
+oewn-biosafety_level_1-n	biosafety level 1	n	0	3	3	oewn
+oewn-biosafety_level_2-n	biosafety level 2	n	0	3	3	oewn
+oewn-biosafety_level_3-n	biosafety level 3	n	0	3	3	oewn
+oewn-biosafety_level_4-n	biosafety level 4	n	0	3	3	oewn
+oewn-bioscience-n	bioscience	n	0	1	1	oewn
+oewn-bioscope-n	bioscope	n	0	1	1	oewn
+oewn-biosphere-n	biosphere	n	0	1	1	oewn
+oewn-biostatistics-n	biostatistics	n	0	1	1	oewn
+oewn-biosynthesis-n	biosynthesis	n	0	1	1	oewn
+oewn-biosynthetic-a	biosynthetic	a	0	1	1	oewn
+oewn-biosystematic-a	biosystematic	a	0	1	1	oewn
+oewn-biosystematics-n	biosystematics	n	0	1	1	oewn
+oewn-biosystematy-n	biosystematy	n	0	1	1	oewn
+oewn-biota-n	biota	n	0	1	1	oewn
+oewn-biotech-n	biotech	n	0	1	1	oewn
+oewn-biotechnology-n	biotechnology	n	0	1	1	oewn
+oewn-bioterrorism-n	bioterrorism	n	0	1	1	oewn
+oewn-biotic-a	biotic	a	0	1	1	oewn
+oewn-biotic_community-n	biotic community	n	0	2	2	oewn
+oewn-biotin-n	biotin	n	0	1	1	oewn
+oewn-biotite-n	biotite	n	0	1	1	oewn
+oewn-biotitic-a	biotitic	a	0	1	1	oewn
+oewn-biotype-n	biotype	n	0	1	1	oewn
+oewn-biotypic-a	biotypic	a	0	1	1	oewn
+oewn-biovular-a	biovular	a	0	1	1	oewn
+oewn-bioweapon-n	bioweapon	n	0	1	1	oewn
+oewn-biparous-a	biparous	a	0	1	1	oewn
+oewn-bipartisan-a	bipartisan	a	0	1	1	oewn
+oewn-bipartite-a	bipartite	a	0	1	1	oewn
+oewn-bipartizan-a	bipartizan	a	0	1	1	oewn
+oewn-biped-a	biped	a	0	1	1	oewn
+oewn-biped-n	biped	n	0	1	1	oewn
+oewn-bipedal-a	bipedal	a	0	1	1	oewn
+oewn-bipedalism-n	bipedalism	n	0	1	1	oewn
+oewn-bipinnate-a	bipinnate	a	0	1	1	oewn
+oewn-bipinnate_leaf-n	bipinnate leaf	n	0	2	2	oewn
+oewn-bipinnatifid-a	bipinnatifid	a	0	1	1	oewn
+oewn-biplane-n	biplane	n	0	1	1	oewn
+oewn-biplane_flying_fish-n	biplane flying fish	n	0	3	3	oewn
+oewn-bipolar-a	bipolar	a	0	1	1	oewn
+oewn-bipolar_disorder-n	bipolar disorder	n	0	2	2	oewn
+oewn-biprism-n	biprism	n	0	1	1	oewn
+oewn-biquadrate-n	biquadrate	n	0	1	1	oewn
+oewn-biquadratic-a	biquadratic	a	0	1	1	oewn
+oewn-biquadratic-n	biquadratic	n	0	1	1	oewn
+oewn-biquadratic_equation-n	biquadratic equation	n	0	2	2	oewn
+oewn-biquadratic_polynomial-n	biquadratic polynomial	n	0	2	2	oewn
+oewn-biracial-a	biracial	a	0	1	1	oewn
+oewn-biradial-a	biradial	a	0	1	1	oewn
+oewn-biradially-r	biradially	r	0	1	1	oewn
+oewn-biramous-a	biramous	a	0	1	1	oewn
+oewn-birch-a	birch	a	0	1	1	oewn
+oewn-birch-n	birch	n	0	1	1	oewn
+oewn-birch-v	birch	v	0	1	1	oewn
+oewn-birch_bark-n	birch bark	n	0	2	2	oewn
+oewn-birch_beer-n	birch beer	n	0	2	2	oewn
+oewn-birch_leaf_miner-n	birch leaf miner	n	0	3	3	oewn
+oewn-birch_oil-n	birch oil	n	0	2	2	oewn
+oewn-birch_rod-n	birch rod	n	0	2	2	oewn
+oewn-birch_tree-n	birch tree	n	0	2	2	oewn
+oewn-birchbark-n	birchbark	n	0	1	1	oewn
+oewn-birchbark_canoe-n	birchbark canoe	n	0	2	2	oewn
+oewn-birchen-a	birchen	a	0	1	1	oewn
+oewn-bird-ap-s-eye-a	bird's-eye	a	0	1	1	oewn
+oewn-bird-ap-s-eye_bush-n	bird's-eye bush	n	0	2	2	oewn
+oewn-bird-ap-s-eye_maple-n	bird's-eye maple	n	0	2	2	oewn
+oewn-bird-ap-s-foot_fern-n	bird's-foot fern	n	0	2	2	oewn
+oewn-bird-ap-s-foot_violet-n	bird's-foot violet	n	0	2	2	oewn
+oewn-bird-ap-s-nest_fungus-n	bird's-nest fungus	n	0	2	2	oewn
+oewn-bird-ap-s_eye-n	bird's eye	n	0	2	2	oewn
+oewn-bird-ap-s_eye_view-n	bird's eye view	n	0	3	3	oewn
+oewn-bird-ap-s_foot-n	bird's foot	n	0	2	2	oewn
+oewn-bird-ap-s_foot_clover-n	bird's foot clover	n	0	3	3	oewn
+oewn-bird-ap-s_foot_trefoil-n	bird's foot trefoil	n	0	3	3	oewn
+oewn-bird-ap-s_nest-n	bird's nest	n	0	2	2	oewn
+oewn-bird-ap-s_nest_fern-n	bird's nest fern	n	0	3	3	oewn
+oewn-bird-footed_dinosaur-n	bird-footed dinosaur	n	0	2	2	oewn
+oewn-bird-n	bird	n	0	1	1	oewn
+oewn-bird-nest-v	bird-nest	v	0	1	1	oewn
+oewn-bird-on-the-wing-n	bird-on-the-wing	n	0	1	1	oewn
+oewn-bird-scarer-n	bird-scarer	n	0	1	1	oewn
+oewn-bird-v	bird	v	0	1	1	oewn
+oewn-bird_cherry-n	bird cherry	n	0	2	2	oewn
+oewn-bird_cherry_tree-n	bird cherry tree	n	0	3	3	oewn
+oewn-bird_dog-n	bird dog	n	0	2	2	oewn
+oewn-bird_family-n	bird family	n	0	2	2	oewn
+oewn-bird_fancier-n	bird fancier	n	0	2	2	oewn
+oewn-bird_feed-n	bird feed	n	0	2	2	oewn
+oewn-bird_feeder-n	bird feeder	n	0	2	2	oewn
+oewn-bird_food-n	bird food	n	0	2	2	oewn
+oewn-bird_genus-n	bird genus	n	0	2	2	oewn
+oewn-bird_louse-n	bird louse	n	0	2	2	oewn
+oewn-bird_nest-n	bird nest	n	0	2	2	oewn
+oewn-bird_of_Jove-n	bird of Jove	n	0	3	1	oewn
+oewn-bird_of_Juno-n	bird of Juno	n	0	3	1	oewn
+oewn-bird_of_Minerva-n	bird of Minerva	n	0	3	1	oewn
+oewn-bird_of_night-n	bird of night	n	0	3	1	oewn
+oewn-bird_of_paradise-n	bird of paradise	n	0	3	1	oewn
+oewn-bird_of_passage-n	bird of passage	n	0	3	1	oewn
+oewn-bird_of_prey-n	bird of prey	n	0	3	1	oewn
+oewn-bird_pepper-n	bird pepper	n	0	2	2	oewn
+oewn-bird_sanctuary-n	bird sanctuary	n	0	2	2	oewn
+oewn-bird_shot-n	bird shot	n	0	2	2	oewn
+oewn-bird_vetch-n	bird vetch	n	0	2	2	oewn
+oewn-bird_watcher-n	bird watcher	n	0	2	2	oewn
+oewn-birdbath-n	birdbath	n	0	1	1	oewn
+oewn-birdbrain-n	birdbrain	n	0	1	1	oewn
+oewn-birdcage-n	birdcage	n	0	1	1	oewn
+oewn-birdcage_mask-n	birdcage mask	n	0	2	2	oewn
+oewn-birdcall-n	birdcall	n	0	1	1	oewn
+oewn-birder-n	birder	n	0	1	1	oewn
+oewn-birdfeeder-n	birdfeeder	n	0	1	1	oewn
+oewn-birdhouse-n	birdhouse	n	0	1	1	oewn
+oewn-birdie-n	birdie	n	0	1	1	oewn
+oewn-birdie-v	birdie	v	0	1	1	oewn
+oewn-birdlime-n	birdlime	n	0	1	1	oewn
+oewn-birdlime-v	birdlime	v	0	1	1	oewn
+oewn-birdnest-n	birdnest	n	0	1	1	oewn
+oewn-birdnest-v	birdnest	v	0	1	1	oewn
+oewn-birdnesting-n	birdnesting	n	0	1	1	oewn
+oewn-birdseed-n	birdseed	n	0	1	1	oewn
+oewn-birdseed_grass-n	birdseed grass	n	0	2	2	oewn
+oewn-birdsong-n	birdsong	n	0	1	1	oewn
+oewn-birdwatch-v	birdwatch	v	0	1	1	oewn
+oewn-birefringence-n	birefringence	n	0	1	1	oewn
+oewn-birefringent-a	birefringent	a	0	1	1	oewn
+oewn-biretta-n	biretta	n	0	1	1	oewn
+oewn-biriani-n	biriani	n	0	1	1	oewn
+oewn-birken-a	birken	a	0	1	1	oewn
+oewn-birl-v	birl	v	0	1	1	oewn
+oewn-birle-v	birle	v	0	1	1	oewn
+oewn-birling-n	birling	n	0	1	1	oewn
+oewn-birr-n-1	birr	n	1	1	1	oewn
+oewn-birr-n-2	birr	n	2	1	1	oewn
+oewn-birr-v	birr	v	0	1	1	oewn
+oewn-birretta-n	birretta	n	0	1	1	oewn
+oewn-birth-control_campaigner-n	birth-control campaigner	n	0	2	2	oewn
+oewn-birth-control_reformer-n	birth-control reformer	n	0	2	2	oewn
+oewn-birth-n	birth	n	0	1	1	oewn
+oewn-birth-v	birth	v	0	1	1	oewn
+oewn-birth_canal-n	birth canal	n	0	2	2	oewn
+oewn-birth_certificate-n	birth certificate	n	0	2	2	oewn
+oewn-birth_control-n	birth control	n	0	2	2	oewn
+oewn-birth_control_device-n	birth control device	n	0	3	3	oewn
+oewn-birth_control_pill-n	birth control pill	n	0	3	3	oewn
+oewn-birth_defect-n	birth defect	n	0	2	2	oewn
+oewn-birth_pangs-n	birth pangs	n	0	2	2	oewn
+oewn-birth_prevention-n	birth prevention	n	0	2	2	oewn
+oewn-birth_rate-n	birth rate	n	0	2	2	oewn
+oewn-birth_trauma-n	birth trauma	n	0	2	2	oewn
+oewn-birthday-n	birthday	n	0	1	1	oewn
+oewn-birthday_cake-n	birthday cake	n	0	2	2	oewn
+oewn-birthday_card-n	birthday card	n	0	2	2	oewn
+oewn-birthday_gift-n	birthday gift	n	0	2	2	oewn
+oewn-birthday_party-n	birthday party	n	0	2	2	oewn
+oewn-birthday_present-n	birthday present	n	0	2	2	oewn
+oewn-birthday_suit-n	birthday suit	n	0	2	2	oewn
+oewn-birthing-n	birthing	n	0	1	1	oewn
+oewn-birthing_coach-n	birthing coach	n	0	2	2	oewn
+oewn-birthmark-n	birthmark	n	0	1	1	oewn
+oewn-birthplace-n	birthplace	n	0	1	1	oewn
+oewn-birthrate-n	birthrate	n	0	1	1	oewn
+oewn-birthright-n	birthright	n	0	1	1	oewn
+oewn-birthroot-n	birthroot	n	0	1	1	oewn
+oewn-birthwort-n	birthwort	n	0	1	1	oewn
+oewn-biryani-n	biryani	n	0	1	1	oewn
+oewn-biscuit-n	biscuit	n	0	1	1	oewn
+oewn-bise-n	bise	n	0	1	1	oewn
+oewn-bisect-v	bisect	v	0	1	1	oewn
+oewn-bisection-n	bisection	n	0	1	1	oewn
+oewn-bisectional-a	bisectional	a	0	1	1	oewn
+oewn-biserial_correlation-n	biserial correlation	n	0	2	2	oewn
+oewn-biserial_correlation_coefficient-n	biserial correlation coefficient	n	0	3	3	oewn
+oewn-biserrate-a	biserrate	a	0	1	1	oewn
+oewn-bisexual-a	bisexual	a	0	1	1	oewn
+oewn-bisexual-n	bisexual	n	0	1	1	oewn
+oewn-bisexual_person-n	bisexual person	n	0	2	2	oewn
+oewn-bisexuality-n	bisexuality	n	0	1	1	oewn
+oewn-bishop-ap-s_cap-n	bishop's cap	n	0	2	2	oewn
+oewn-bishop-ap-s_hat-n	bishop's hat	n	0	2	2	oewn
+oewn-bishop-ap-s_pine-n	bishop's pine	n	0	2	2	oewn
+oewn-bishop-ap-s_purple-n	bishop's purple	n	0	2	2	oewn
+oewn-bishop-ap-s_throne-n	bishop's throne	n	0	2	2	oewn
+oewn-bishop-ap-s_violet-n	bishop's violet	n	0	2	2	oewn
+oewn-bishop-n	bishop	n	0	1	1	oewn
+oewn-bishop_pine-n	bishop pine	n	0	2	2	oewn
+oewn-bishopric-n	bishopric	n	0	1	1	oewn
+oewn-bishopry-n	bishopry	n	0	1	1	oewn
+oewn-bismark-n	bismark	n	0	1	1	oewn
+oewn-bismuth-n	bismuth	n	0	1	1	oewn
+oewn-bismuthal-a	bismuthal	a	0	1	1	oewn
+oewn-bismuthic-a	bismuthic	a	0	1	1	oewn
+oewn-bison-n	bison	n	0	1	1	oewn
+oewn-bisontine-a	bisontine	a	0	1	1	oewn
+oewn-bispak-n	bispak	n	0	1	1	oewn
+oewn-bisque-n	bisque	n	0	1	1	oewn
+oewn-bissextile_day-n	bissextile day	n	0	2	2	oewn
+oewn-bissextile_year-n	bissextile year	n	0	2	2	oewn
+oewn-bistable_relay-n	bistable relay	n	0	2	2	oewn
+oewn-bister-n	bister	n	0	1	1	oewn
+oewn-bistered-a	bistered	a	0	1	1	oewn
+oewn-bistre-n	bistre	n	0	1	1	oewn
+oewn-bistred-a	bistred	a	0	1	1	oewn
+oewn-bistro-n	bistro	n	0	1	1	oewn
+oewn-bistroic-a	bistroic	a	0	1	1	oewn
+oewn-bisulcate-a	bisulcate	a	0	1	1	oewn
+oewn-bisulfate-n	bisulfate	n	0	1	1	oewn
+oewn-bit-by-bit-a	bit-by-bit	a	0	1	1	oewn
+oewn-bit-n	bit	n	0	1	1	oewn
+oewn-bit_by_bit-r	bit by bit	r	0	3	3	oewn
+oewn-bit_field-n	bit field	n	0	2	2	oewn
+oewn-bit_part-n	bit part	n	0	2	2	oewn
+oewn-bit_rate-n	bit rate	n	0	2	2	oewn
+oewn-bitartrate-n	bitartrate	n	0	1	1	oewn
+oewn-bitch-n	bitch	n	0	1	1	oewn
+oewn-bitch-v	bitch	v	0	1	1	oewn
+oewn-bitchery-n	bitchery	n	0	1	1	oewn
+oewn-bitchiness-n	bitchiness	n	0	1	1	oewn
+oewn-bitchy-a	bitchy	a	0	1	1	oewn
+oewn-bite-n	bite	n	0	1	1	oewn
+oewn-bite-v	bite	v	0	1	1	oewn
+oewn-bite_off-v	bite off	v	0	2	1	oewn
+oewn-bite_out-v	bite out	v	0	2	1	oewn
+oewn-bite_plate-n	bite plate	n	0	2	2	oewn
+oewn-biteplate-n	biteplate	n	0	1	1	oewn
+oewn-biter-n	biter	n	0	1	1	oewn
+oewn-bitewing-n	bitewing	n	0	1	1	oewn
+oewn-bitey-a	bitey	a	0	1	1	oewn
+oewn-biting-a	biting	a	0	1	1	oewn
+oewn-biting_louse-n	biting louse	n	0	2	2	oewn
+oewn-biting_midge-n	biting midge	n	0	2	2	oewn
+oewn-bitingly-r	bitingly	r	0	1	1	oewn
+oewn-bitmap-n	bitmap	n	0	1	1	oewn
+oewn-bitok-n	bitok	n	0	1	1	oewn
+oewn-bits_per_inch-n	bits per inch	n	0	3	3	oewn
+oewn-bits_per_second-n	bits per second	n	0	3	3	oewn
+oewn-bitstock-n	bitstock	n	0	1	1	oewn
+oewn-bitt-n	bitt	n	0	1	1	oewn
+oewn-bitt-v	bitt	v	0	1	1	oewn
+oewn-bitt_pin-n	bitt pin	n	0	2	2	oewn
+oewn-bitter-a	bitter	a	0	1	1	oewn
+oewn-bitter-bark-n	bitter-bark	n	0	1	1	oewn
+oewn-bitter-n	bitter	n	0	1	1	oewn
+oewn-bitter-r	bitter	r	0	1	1	oewn
+oewn-bitter-v	bitter	v	0	1	1	oewn
+oewn-bitter_almond-n	bitter almond	n	0	2	2	oewn
+oewn-bitter_almond_oil-n	bitter almond oil	n	0	3	3	oewn
+oewn-bitter_aloes-n	bitter aloes	n	0	2	2	oewn
+oewn-bitter_cassava-n	bitter cassava	n	0	2	2	oewn
+oewn-bitter_chocolate-n	bitter chocolate	n	0	2	2	oewn
+oewn-bitter_cress-n	bitter cress	n	0	2	2	oewn
+oewn-bitter_dock-n	bitter dock	n	0	2	2	oewn
+oewn-bitter_end-n	bitter end	n	0	2	2	oewn
+oewn-bitter_floom-n	bitter floom	n	0	2	2	oewn
+oewn-bitter_hickory-n	bitter hickory	n	0	2	2	oewn
+oewn-bitter_lemon-n	bitter lemon	n	0	2	2	oewn
+oewn-bitter_orange-n	bitter orange	n	0	2	2	oewn
+oewn-bitter_orange_tree-n	bitter orange tree	n	0	3	3	oewn
+oewn-bitter_pea-n	bitter pea	n	0	2	2	oewn
+oewn-bitter_pecan-n	bitter pecan	n	0	2	2	oewn
+oewn-bitter_pignut-n	bitter pignut	n	0	2	2	oewn
+oewn-bitter_principle-n	bitter principle	n	0	2	2	oewn
+oewn-bitter_salts-n	bitter salts	n	0	2	2	oewn
+oewn-bitter_spar-n	bitter spar	n	0	2	2	oewn
+oewn-bitter_vetch-n	bitter vetch	n	0	2	2	oewn
+oewn-bittercress-n	bittercress	n	0	1	1	oewn
+oewn-bitterish-a	bitterish	a	0	1	1	oewn
+oewn-bitterly-r	bitterly	r	0	1	1	oewn
+oewn-bittern-n	bittern	n	0	1	1	oewn
+oewn-bitterness-n	bitterness	n	0	1	1	oewn
+oewn-bitternut-n	bitternut	n	0	1	1	oewn
+oewn-bitternut_hickory-n	bitternut hickory	n	0	2	2	oewn
+oewn-bitterroot-n	bitterroot	n	0	1	1	oewn
+oewn-bitters-n	bitters	n	0	1	1	oewn
+oewn-bittersweet-a	bittersweet	a	0	1	1	oewn
+oewn-bittersweet-n	bittersweet	n	0	1	1	oewn
+oewn-bittersweet_chocolate-n	bittersweet chocolate	n	0	2	2	oewn
+oewn-bittersweet_nightshade-n	bittersweet nightshade	n	0	2	2	oewn
+oewn-bitterweed-n	bitterweed	n	0	1	1	oewn
+oewn-bitterwood-n	bitterwood	n	0	1	1	oewn
+oewn-bitterwood_tree-n	bitterwood tree	n	0	2	2	oewn
+oewn-bitthead-n	bitthead	n	0	1	1	oewn
+oewn-bittie-a	bittie	a	0	1	1	oewn
+oewn-bitty-a	bitty	a	0	1	1	oewn
+oewn-bitumastic-n	bitumastic	n	0	1	1	oewn
+oewn-bitumen-n	bitumen	n	0	1	1	oewn
+oewn-bitumenoid-a	bitumenoid	a	0	1	1	oewn
+oewn-bituminise-v	bituminise	v	0	1	1	oewn
+oewn-bituminize-v	bituminize	v	0	1	1	oewn
+oewn-bituminoid-a	bituminoid	a	0	1	1	oewn
+oewn-bituminous-a	bituminous	a	0	1	1	oewn
+oewn-bituminous_coal-n	bituminous coal	n	0	2	2	oewn
+oewn-bivalent-a	bivalent	a	0	1	1	oewn
+oewn-bivalve-a	bivalve	a	0	1	1	oewn
+oewn-bivalve-n	bivalve	n	0	1	1	oewn
+oewn-bivalved-a	bivalved	a	0	1	1	oewn
+oewn-bivariate-a	bivariate	a	0	1	1	oewn
+oewn-bivouac-n	bivouac	n	0	1	1	oewn
+oewn-bivouac-v	bivouac	v	0	1	1	oewn
+oewn-bivouacking-n	bivouacking	n	0	1	1	oewn
+oewn-biweekly-a	biweekly	a	0	1	1	oewn
+oewn-biweekly-n	biweekly	n	0	1	1	oewn
+oewn-biweekly-r	biweekly	r	0	1	1	oewn
+oewn-biyearly-a	biyearly	a	0	1	1	oewn
+oewn-biyearly-r	biyearly	r	0	1	1	oewn
+oewn-biz-n	biz	n	0	1	1	oewn
+oewn-bizarre-a	bizarre	a	0	1	1	oewn
+oewn-bizarreness-n	bizarreness	n	0	1	1	oewn
+oewn-bize-n	bize	n	0	1	1	oewn
+oewn-bizonal-a	bizonal	a	0	1	1	oewn

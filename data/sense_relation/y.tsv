@@ -1,0 +1,110 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-yacht__1.06.00..	derivation		oewn-yacht__2.38.00..
+oewn-yacht__2.38.00..	derivation		oewn-yachting__1.04.00..
+oewn-yacht__2.38.00..	other	vehicle	oewn-yacht__1.06.00..
+oewn-yack__1.10.00..	derivation		oewn-yack__2.32.00..
+oewn-yack__2.32.00..	other	event	oewn-yack__1.10.00..
+oewn-yang__1.09.00..	antonym		oewn-yin__1.09.00..
+oewn-yank__2.35.00..	derivation		oewn-yanker__1.18.00..
+oewn-yank__2.35.00..	other	agent	oewn-yanker__1.18.00..
+oewn-yankee__1.18.02..	derivation		oewn-yankee__5.00.00.northern.02
+oewn-yarn__1.10.00..	derivation		oewn-yarn__2.32.00..
+oewn-yarn__2.32.00..	other	event	oewn-yarn__1.10.00..
+oewn-yaw__1.11.00..	derivation		oewn-yaw__2.38.00..
+oewn-yaw__2.38.00..	other	event	oewn-yaw__1.11.00..
+oewn-yawn__1.04.00..	derivation		oewn-yawn__2.29.00..
+oewn-yawn__2.29.00..	derivation		oewn-yawner__1.18.00..
+oewn-yawn__2.29.00..	derivation		oewn-yawning__1.04.00..
+oewn-yawn__2.29.00..	other	agent	oewn-yawner__1.18.00..
+oewn-yawn__2.29.00..	other	event	oewn-yawn__1.04.00..
+oewn-year__1.28.01..	derivation		oewn-yearly__5.00.00.periodic.00
+oewn-yearn__2.37.00..	derivation		oewn-yearner__1.18.00..
+oewn-yearn__2.37.00..	derivation		oewn-yearning__1.12.00..
+oewn-yearn__2.37.00..	other	agent	oewn-yearner__1.18.00..
+oewn-yearn__2.37.01..	derivation		oewn-yearner__1.18.00..
+oewn-yearn__2.37.01..	derivation		oewn-yearning__1.12.00..
+oewn-yearn__2.37.01..	other	agent	oewn-yearner__1.18.00..
+oewn-yeast__1.20.00..	derivation		oewn-yeasty__3.01.00..
+oewn-yeast__1.27.00..	derivation		oewn-yeasty__3.01.00..
+oewn-yeastlike__3.01.00..	pertainym		oewn-yeast__1.27.00..
+oewn-yeasty__3.01.00..	pertainym		oewn-yeast__1.20.00..
+oewn-yell__1.10.00..	derivation		oewn-yell__2.32.00..
+oewn-yell__1.10.00..	derivation		oewn-yell__2.32.01..
+oewn-yell__1.10.01..	derivation		oewn-yell__2.32.01..
+oewn-yell__2.32.00..	derivation		oewn-yeller__1.18.00..
+oewn-yell__2.32.00..	other	agent	oewn-yeller__1.18.00..
+oewn-yell__2.32.00..	other	event	oewn-yell__1.10.00..
+oewn-yell__2.32.01..	derivation		oewn-yelling__1.10.00..
+oewn-yell__2.32.01..	other	event	oewn-yell__1.10.00..
+oewn-yell__2.32.01..	other	event	oewn-yell__1.10.01..
+oewn-yellow__1.07.00..	derivation		oewn-yellow__2.30.00..
+oewn-yellow__1.07.00..	derivation		oewn-yellow__5.00.00.chromatic.00
+oewn-yellow__2.30.00..	other	property	oewn-yellow__1.07.00..
+oewn-yellow__5.00.00.chromatic.00	derivation		oewn-yellowness__1.07.00..
+oewn-yellow_ocher__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-yellow_ochre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-yellow_ochre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-yellow_ochre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-yelp__1.11.00..	derivation		oewn-yelp__2.32.00..
+oewn-yelp__2.32.00..	derivation		oewn-yelping__1.11.00..
+oewn-yelp__2.32.00..	other	event	oewn-yelp__1.11.00..
+oewn-yemeni__1.18.00..	derivation		oewn-yemeni__3.01.00..
+oewn-yen__1.12.00..	derivation		oewn-yen__2.37.00..
+oewn-yen__2.37.00..	other	event	oewn-yen__1.12.00..
+oewn-yield__1.04.00..	derivation		oewn-yield__2.36.00..
+oewn-yield__1.04.00..	derivation		oewn-yield__2.40.00..
+oewn-yield__1.06.00..	derivation		oewn-yield__2.36.00..
+oewn-yield__1.06.00..	derivation		oewn-yield__2.40.00..
+oewn-yield__1.21.00..	derivation		oewn-yield__2.36.00..
+oewn-yield__1.23.00..	derivation		oewn-yield__2.36.00..
+oewn-yield__1.23.00..	derivation		oewn-yield__2.40.00..
+oewn-yield__2.32.00..	derivation		oewn-yielding__1.10.01..
+oewn-yield__2.32.01..	derivation		oewn-yielding__1.10.00..
+oewn-yield__2.33.00..	derivation		oewn-yielder__1.18.00..
+oewn-yield__2.33.00..	other	agent	oewn-yielder__1.18.00..
+oewn-yield__2.36.00..	other	uses	oewn-yield__1.04.00..
+oewn-yield__2.36.00..	other	uses	oewn-yield__1.06.00..
+oewn-yield__2.36.00..	other	uses	oewn-yield__1.21.00..
+oewn-yield__2.36.00..	other	uses	oewn-yield__1.23.00..
+oewn-yield__2.40.00..	other	event	oewn-yield__1.04.00..
+oewn-yield__2.40.00..	other	undergoer	oewn-yield__1.06.00..
+oewn-yield__2.40.00..	other	undergoer	oewn-yield__1.23.00..
+oewn-yieldingly__4.02.00..	pertainym		oewn-yielding__5.00.00.docile.00
+oewn-yodel__1.10.00..	derivation		oewn-yodel__2.32.00..
+oewn-yodel__2.32.00..	derivation		oewn-yodeling__1.04.00..
+oewn-yodel__2.32.00..	derivation		oewn-yodeller__1.18.00..
+oewn-yodel__2.32.00..	other	agent	oewn-yodeller__1.18.00..
+oewn-yodel__2.32.00..	other	event	oewn-yodel__1.10.00..
+oewn-yoga__1.04.00..	derivation		oewn-yogic__3.01.00..
+oewn-yoga__1.04.00..	derivation		oewn-yogistic__3.01.00..
+oewn-yoga__1.09.00..	derivation		oewn-yogic__3.01.00..
+oewn-yoga__1.09.00..	derivation		oewn-yogistic__3.01.00..
+oewn-yoghurt__1.13.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-yoghurt__1.13.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-yogic__3.01.00..	pertainym		oewn-yoga__1.09.00..
+oewn-yogistic__3.01.00..	pertainym		oewn-yoga__1.09.00..
+oewn-yogurt__1.13.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-yoke__1.06.00..	derivation		oewn-yoke__2.35.00..
+oewn-yoke__1.06.00..	derivation		oewn-yoke__2.35.01..
+oewn-yoke__1.06.02..	derivation		oewn-yoke__2.35.01..
+oewn-yoke__1.06.02..	derivation		oewn-yoke__2.35.02..
+oewn-yoke__1.06.03..	derivation		oewn-yoke__2.35.00..
+oewn-yoke__1.06.03..	derivation		oewn-yoke__2.35.01..
+oewn-yoke__2.35.00..	other	uses	oewn-yoke__1.06.00..
+oewn-yoke__2.35.00..	other	uses	oewn-yoke__1.06.03..
+oewn-yoke__2.35.01..	other	by_means_of	oewn-yoke__1.06.02..
+oewn-yoke__2.35.01..	other	by_means_of	oewn-yoke__1.06.03..
+oewn-yoke__2.35.01..	other	instrument	oewn-yoke__1.06.00..
+oewn-yoke__2.35.02..	other	by_means_of	oewn-yoke__1.06.02..
+oewn-young__1.14.00..	derivation		oewn-young__3.00.00..
+oewn-young__3.00.00..	derivation		oewn-youngness__1.07.00..
+oewn-young__5.00.00.new.00	derivation		oewn-youngness__1.07.00..
+oewn-youthful__5.00.00.young.00	derivation		oewn-youthfulness__1.07.00..
+oewn-youthfully__4.02.00..	pertainym		oewn-youthful__5.00.00.young.00
+oewn-yowl__1.10.00..	derivation		oewn-yowl__2.32.00..
+oewn-yowl__1.10.00..	derivation		oewn-yowl__2.32.01..
+oewn-yowl__2.32.00..	other	event	oewn-yowl__1.10.00..
+oewn-yowl__2.32.01..	other	event	oewn-yowl__1.10.00..
+oewn-yugoslav__1.18.00..	derivation		oewn-yugoslav__3.01.00..
+oewn-yugoslavian__1.18.00..	derivation		oewn-yugoslavian__3.01.00..
+oewn-yuman__3.01.00..	pertainym		oewn-yuma__1.18.00..

@@ -1,0 +1,7 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-pteridological__3.01.00..	derivation		oewn-pteridology__1.09.00..
+oewn-pteridological__3.01.00..	pertainym		oewn-pteridology__1.09.00..
+oewn-ptyalise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-ptyalise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-ptyalism__1.22.00..	derivation		oewn-ptyalize__2.29.00..
+oewn-ptyalize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..

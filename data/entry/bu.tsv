@@ -1,0 +1,997 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-BuSpar-n	BuSpar	n	0	1	1	oewn
+oewn-Bubalus_bubalis-n	Bubalus bubalis	n	0	2	2	oewn
+oewn-Bubalus_mindorensis-n	Bubalus mindorensis	n	0	2	2	oewn
+oewn-Bubo_virginianus-n	Bubo virginianus	n	0	2	2	oewn
+oewn-Bubulcus_ibis-n	Bubulcus ibis	n	0	2	2	oewn
+oewn-Bucephala_albeola-n	Bucephala albeola	n	0	2	2	oewn
+oewn-Bucephala_clangula-n	Bucephala clangula	n	0	2	2	oewn
+oewn-Bucephala_islandica-n	Bucephala islandica	n	0	2	2	oewn
+oewn-Bucephela_albeola-n	Bucephela albeola	n	0	2	2	oewn
+oewn-Bucephela_clangula-n	Bucephela clangula	n	0	2	2	oewn
+oewn-Buchloe_dactyloides-n	Buchloe dactyloides	n	0	2	2	oewn
+oewn-Buckeye-n	Buckeye	n	0	1	1	oewn
+oewn-Buckleya_distichophylla-n	Buckleya distichophylla	n	0	2	2	oewn
+oewn-Buddha-ap-s_hand-n	Buddha's hand	n	0	2	2	oewn
+oewn-Buddha-n	Buddha	n	0	1	1	oewn
+oewn-Buddhism-n	Buddhism	n	0	1	1	oewn
+oewn-Buddhist-a	Buddhist	a	0	1	1	oewn
+oewn-Buddhist-n	Buddhist	n	0	1	1	oewn
+oewn-Buddhistic-a	Buddhistic	a	0	1	1	oewn
+oewn-Budorcas_taxicolor-n	Budorcas taxicolor	n	0	2	2	oewn
+oewn-Buffalo_Bill-ap-s_Wild_West_Show-n	Buffalo Bill's Wild West Show	n	0	5	5	oewn
+oewn-Buffalo_Indian-n	Buffalo Indian	n	0	2	2	oewn
+oewn-Bufferin-n	Bufferin	n	0	1	1	oewn
+oewn-Bufo_americanus-n	Bufo americanus	n	0	2	2	oewn
+oewn-Bufo_boreas-n	Bufo boreas	n	0	2	2	oewn
+oewn-Bufo_bufo-n	Bufo bufo	n	0	2	2	oewn
+oewn-Bufo_calamita-n	Bufo calamita	n	0	2	2	oewn
+oewn-Bufo_canorus-n	Bufo canorus	n	0	2	2	oewn
+oewn-Bufo_debilis-n	Bufo debilis	n	0	2	2	oewn
+oewn-Bufo_marinus-n	Bufo marinus	n	0	2	2	oewn
+oewn-Bufo_microscaphus-n	Bufo microscaphus	n	0	2	2	oewn
+oewn-Bufo_speciosus-n	Bufo speciosus	n	0	2	2	oewn
+oewn-Bufo_viridis-n	Bufo viridis	n	0	2	2	oewn
+oewn-Bufotes_viridis-n	Bufotes viridis	n	0	2	2	oewn
+oewn-Bulgarian-a	Bulgarian	a	0	1	1	oewn
+oewn-Bulgarian-n	Bulgarian	n	0	1	1	oewn
+oewn-Bulgarian_language-n	Bulgarian language	n	0	2	2	oewn
+oewn-Bulgarian_monetary_unit-n	Bulgarian monetary unit	n	0	3	3	oewn
+oewn-Bull-n	Bull	n	0	1	1	oewn
+oewn-Bull_Moose_Party-n	Bull Moose Party	n	0	3	3	oewn
+oewn-Bullock-ap-s_oriole-n	Bullock's oriole	n	0	2	2	oewn
+oewn-Bulnesia_sarmienti-n	Bulnesia sarmienti	n	0	2	2	oewn
+oewn-Bumelia_lanuginosa-n	Bumelia lanuginosa	n	0	2	2	oewn
+oewn-Bumelia_lycioides-n	Bumelia lycioides	n	0	2	2	oewn
+oewn-Bundesbank-n	Bundesbank	n	0	1	1	oewn
+oewn-Bungarus_fasciatus-n	Bungarus fasciatus	n	0	2	2	oewn
+oewn-Bunyaviridae-n	Bunyaviridae	n	0	1	1	oewn
+oewn-Buphthalmum_salicifolium-n	Buphthalmum salicifolium	n	0	2	2	oewn
+oewn-Bura-n	Bura	n	0	1	1	oewn
+oewn-Bura_language-n	Bura language	n	0	2	2	oewn
+oewn-Burberry-n	Burberry	n	0	1	1	oewn
+oewn-Burchell-ap-s_zebra-n	Burchell's zebra	n	0	2	2	oewn
+oewn-Bureau_of_Alcohol_Tobacco_and_Firearms-n	Bureau of Alcohol Tobacco and Firearms	n	0	6	1	oewn
+oewn-Bureau_of_Customs-n	Bureau of Customs	n	0	3	1	oewn
+oewn-Bureau_of_Diplomatic_Security-n	Bureau of Diplomatic Security	n	0	4	1	oewn
+oewn-Bureau_of_Engraving_and_Printing-n	Bureau of Engraving and Printing	n	0	5	1	oewn
+oewn-Bureau_of_Intelligence_and_Research-n	Bureau of Intelligence and Research	n	0	5	1	oewn
+oewn-Bureau_of_Justice_Assistance-n	Bureau of Justice Assistance	n	0	4	1	oewn
+oewn-Bureau_of_Justice_Statistics-n	Bureau of Justice Statistics	n	0	4	1	oewn
+oewn-Bureau_of_the_Census-n	Bureau of the Census	n	0	4	1	oewn
+oewn-Burgundy-n	Burgundy	n	0	1	1	oewn
+oewn-Burgundy_sauce-n	Burgundy sauce	n	0	2	2	oewn
+oewn-Burgundy_wine-n	Burgundy wine	n	0	2	2	oewn
+oewn-Burhinus_oedicnemus-n	Burhinus oedicnemus	n	0	2	2	oewn
+oewn-Burkina_Faso_franc-n	Burkina Faso franc	n	0	3	3	oewn
+oewn-Burma_padauk-n	Burma padauk	n	0	2	2	oewn
+oewn-Burmeisteria_retusa-n	Burmeisteria retusa	n	0	2	2	oewn
+oewn-Burmese-Yi-n	Burmese-Yi	n	0	1	1	oewn
+oewn-Burmese-Yi_language-n	Burmese-Yi language	n	0	2	2	oewn
+oewn-Burmese-a	Burmese	a	0	1	1	oewn
+oewn-Burmese-n	Burmese	n	0	1	1	oewn
+oewn-Burmese_cat-n	Burmese cat	n	0	2	2	oewn
+oewn-Burmese_language-n	Burmese language	n	0	2	2	oewn
+oewn-Burmese_rosewood-n	Burmese rosewood	n	0	2	2	oewn
+oewn-Bursera_microphylla-n	Bursera microphylla	n	0	2	2	oewn
+oewn-Bursera_simaruba-n	Bursera simaruba	n	0	2	2	oewn
+oewn-Burton-n	Burton	n	0	1	1	oewn
+oewn-Burundi-a	Burundi	a	0	1	1	oewn
+oewn-Burundi_franc-n	Burundi franc	n	0	2	2	oewn
+oewn-Burundian-a	Burundian	a	0	1	1	oewn
+oewn-Burundian-n	Burundian	n	0	1	1	oewn
+oewn-Bush_administration-n	Bush administration	n	0	2	2	oewn
+oewn-Bushido-n	Bushido	n	0	1	1	oewn
+oewn-Bushman-n	Bushman	n	0	1	1	oewn
+oewn-Butazolidin-n	Butazolidin	n	0	1	1	oewn
+oewn-Butea_frondosa-n	Butea frondosa	n	0	2	2	oewn
+oewn-Butea_monosperma-n	Butea monosperma	n	0	2	2	oewn
+oewn-Buteo_buteo-n	Buteo buteo	n	0	2	2	oewn
+oewn-Buteo_jamaicensis-n	Buteo jamaicensis	n	0	2	2	oewn
+oewn-Buteo_lagopus-n	Buteo lagopus	n	0	2	2	oewn
+oewn-Buteo_lineatus-n	Buteo lineatus	n	0	2	2	oewn
+oewn-Buxus_sempervirens-n	Buxus sempervirens	n	0	2	2	oewn
+oewn-Buyi-n	Buyi	n	0	1	1	oewn
+oewn-bubaline-a	bubaline	a	0	1	1	oewn
+oewn-bubble-jet_printer-n	bubble-jet printer	n	0	2	2	oewn
+oewn-bubble-n	bubble	n	0	1	1	oewn
+oewn-bubble-v	bubble	v	0	1	1	oewn
+oewn-bubble_and_squeak-n	bubble and squeak	n	0	3	3	oewn
+oewn-bubble_bath-n	bubble bath	n	0	2	2	oewn
+oewn-bubble_chamber-n	bubble chamber	n	0	2	2	oewn
+oewn-bubble_dance-n	bubble dance	n	0	2	2	oewn
+oewn-bubble_gum-n	bubble gum	n	0	2	2	oewn
+oewn-bubble_gum_dermatitis-n	bubble gum dermatitis	n	0	3	3	oewn
+oewn-bubble_jet_printer-n	bubble jet printer	n	0	3	3	oewn
+oewn-bubble_over-v	bubble over	v	0	2	1	oewn
+oewn-bubble_pack-n	bubble pack	n	0	2	2	oewn
+oewn-bubble_shell-n	bubble shell	n	0	2	2	oewn
+oewn-bubble_up-v	bubble up	v	0	2	1	oewn
+oewn-bubblejet-n	bubblejet	n	0	1	1	oewn
+oewn-bubbler-n	bubbler	n	0	1	1	oewn
+oewn-bubbliness-n	bubbliness	n	0	1	1	oewn
+oewn-bubbling-a	bubbling	a	0	1	1	oewn
+oewn-bubbly-a	bubbly	a	0	1	1	oewn
+oewn-bubbly-n	bubbly	n	0	1	1	oewn
+oewn-bubo-n	bubo	n	0	1	1	oewn
+oewn-bubonic-a	bubonic	a	0	1	1	oewn
+oewn-bubonic_plague-n	bubonic plague	n	0	2	2	oewn
+oewn-buccal-a	buccal	a	0	1	1	oewn
+oewn-buccal_artery-n	buccal artery	n	0	2	2	oewn
+oewn-buccal_cavity-n	buccal cavity	n	0	2	2	oewn
+oewn-buccaneer-n	buccaneer	n	0	1	1	oewn
+oewn-buccaneer-v	buccaneer	v	0	1	1	oewn
+oewn-buccaneering-n	buccaneering	n	0	1	1	oewn
+oewn-buccinator_muscle-n	buccinator muscle	n	0	2	2	oewn
+oewn-buccula-n	buccula	n	0	1	1	oewn
+oewn-buck-and-wing-n	buck-and-wing	n	0	1	1	oewn
+oewn-buck-ap-s_fizz-n	buck's fizz	n	0	2	2	oewn
+oewn-buck-n	buck	n	0	1	1	oewn
+oewn-buck-toothed-a	buck-toothed	a	0	1	1	oewn
+oewn-buck-v	buck	v	0	1	1	oewn
+oewn-buck_fever-n	buck fever	n	0	2	2	oewn
+oewn-buck_private-n	buck private	n	0	2	2	oewn
+oewn-buck_sergeant-n	buck sergeant	n	0	2	2	oewn
+oewn-buck_up-v	buck up	v	0	2	1	oewn
+oewn-buckaroo-n	buckaroo	n	0	1	1	oewn
+oewn-buckbean-n	buckbean	n	0	1	1	oewn
+oewn-buckboard-n	buckboard	n	0	1	1	oewn
+oewn-bucked_up-a	bucked up	a	0	2	2	oewn
+oewn-buckeroo-n	buckeroo	n	0	1	1	oewn
+oewn-bucket-n	bucket	n	0	1	1	oewn
+oewn-bucket-v	bucket	v	0	1	1	oewn
+oewn-bucket_along-v	bucket along	v	0	2	1	oewn
+oewn-bucket_list-n	bucket list	n	0	2	2	oewn
+oewn-bucket_seat-n	bucket seat	n	0	2	2	oewn
+oewn-bucket_shop-n	bucket shop	n	0	2	2	oewn
+oewn-bucketful-n	bucketful	n	0	1	1	oewn
+oewn-buckeye-n	buckeye	n	0	1	1	oewn
+oewn-bucking_bronco-n	bucking bronco	n	0	2	2	oewn
+oewn-buckle-n	buckle	n	0	1	1	oewn
+oewn-buckle-v	buckle	v	0	1	1	oewn
+oewn-buckle_down-v	buckle down	v	0	2	1	oewn
+oewn-buckle_under-v	buckle under	v	0	2	1	oewn
+oewn-buckler-n	buckler	n	0	1	1	oewn
+oewn-buckler_fern-n	buckler fern	n	0	2	2	oewn
+oewn-buckler_mustard-n	buckler mustard	n	0	2	2	oewn
+oewn-buckleya-n	buckleya	n	0	1	1	oewn
+oewn-buckminsterfullerene-n	buckminsterfullerene	n	0	1	1	oewn
+oewn-buckram-a	buckram	a	0	1	1	oewn
+oewn-buckram-n	buckram	n	0	1	1	oewn
+oewn-buckram-v	buckram	v	0	1	1	oewn
+oewn-bucksaw-n	bucksaw	n	0	1	1	oewn
+oewn-buckshee-a	buckshee	a	0	1	1	oewn
+oewn-buckshot-n	buckshot	n	0	1	1	oewn
+oewn-buckskin-n	buckskin	n	0	1	1	oewn
+oewn-buckskins-n	buckskins	n	0	1	1	oewn
+oewn-buckthorn-n	buckthorn	n	0	1	1	oewn
+oewn-buckthorn_berry-n	buckthorn berry	n	0	2	2	oewn
+oewn-bucktooth-n	bucktooth	n	0	1	1	oewn
+oewn-buckwheat-n	buckwheat	n	0	1	1	oewn
+oewn-buckwheat_cake-n	buckwheat cake	n	0	2	2	oewn
+oewn-buckwheat_tree-n	buckwheat tree	n	0	2	2	oewn
+oewn-buckyball-n	buckyball	n	0	1	1	oewn
+oewn-bucolic-a	bucolic	a	0	1	1	oewn
+oewn-bucolic-n	bucolic	n	0	1	1	oewn
+oewn-bud-n	bud	n	0	1	1	oewn
+oewn-bud-v	bud	v	0	1	1	oewn
+oewn-bud_brush-n	bud brush	n	0	2	2	oewn
+oewn-bud_sagebrush-n	bud sagebrush	n	0	2	2	oewn
+oewn-budding-a	budding	a	0	1	1	oewn
+oewn-budding-n	budding	n	0	1	1	oewn
+oewn-buddleia-n	buddleia	n	0	1	1	oewn
+oewn-buddy-buddy-a	buddy-buddy	a	0	1	1	oewn
+oewn-buddy-n	buddy	n	0	1	1	oewn
+oewn-buddy_system-n	buddy system	n	0	2	2	oewn
+oewn-budge-v	budge	v	0	1	1	oewn
+oewn-budgereegah-n	budgereegah	n	0	1	1	oewn
+oewn-budgerigar-n	budgerigar	n	0	1	1	oewn
+oewn-budgerygah-n	budgerygah	n	0	1	1	oewn
+oewn-budget-n	budget	n	0	1	1	oewn
+oewn-budget-v	budget	v	0	1	1	oewn
+oewn-budget_cut-n	budget cut	n	0	2	2	oewn
+oewn-budget_deficit-n	budget deficit	n	0	2	2	oewn
+oewn-budget_for-v	budget for	v	0	2	1	oewn
+oewn-budget_items-n	budget items	n	0	2	2	oewn
+oewn-budgetary-a	budgetary	a	0	1	1	oewn
+oewn-budgie-n	budgie	n	0	1	1	oewn
+oewn-buff-a	buff	a	0	1	1	oewn
+oewn-buff-brown-a	buff-brown	a	0	1	1	oewn
+oewn-buff-colored-a	buff-colored	a	0	1	1	oewn
+oewn-buff-coloured-a	buff-coloured	a	0	1	1	oewn
+oewn-buff-n	buff	n	0	1	1	oewn
+oewn-buff-v	buff	v	0	1	1	oewn
+oewn-buffalo-n	buffalo	n	0	1	1	oewn
+oewn-buffalo-v	buffalo	v	0	1	1	oewn
+oewn-buffalo_bur-n	buffalo bur	n	0	2	2	oewn
+oewn-buffalo_carpet_beetle-n	buffalo carpet beetle	n	0	3	3	oewn
+oewn-buffalo_chip-n	buffalo chip	n	0	2	2	oewn
+oewn-buffalo_clover-n	buffalo clover	n	0	2	2	oewn
+oewn-buffalo_fish-n	buffalo fish	n	0	2	2	oewn
+oewn-buffalo_gnat-n	buffalo gnat	n	0	2	2	oewn
+oewn-buffalo_gourd-n	buffalo gourd	n	0	2	2	oewn
+oewn-buffalo_grass-n	buffalo grass	n	0	2	2	oewn
+oewn-buffalo_nut-n	buffalo nut	n	0	2	2	oewn
+oewn-buffalo_wing-n	buffalo wing	n	0	2	2	oewn
+oewn-buffalofish-n	buffalofish	n	0	1	1	oewn
+oewn-buffel_grass-n	buffel grass	n	0	2	2	oewn
+oewn-buffer-n	buffer	n	0	1	1	oewn
+oewn-buffer-v	buffer	v	0	1	1	oewn
+oewn-buffer_country-n	buffer country	n	0	2	2	oewn
+oewn-buffer_solution-n	buffer solution	n	0	2	2	oewn
+oewn-buffer_state-n	buffer state	n	0	2	2	oewn
+oewn-buffer_storage-n	buffer storage	n	0	2	2	oewn
+oewn-buffer_store-n	buffer store	n	0	2	2	oewn
+oewn-buffer_zone-n	buffer zone	n	0	2	2	oewn
+oewn-buffered_aspirin-n	buffered aspirin	n	0	2	2	oewn
+oewn-buffet-n	buffet	n	0	1	1	oewn
+oewn-buffet-v	buffet	v	0	1	1	oewn
+oewn-buffet_car-n	buffet car	n	0	2	2	oewn
+oewn-buffeted-a	buffeted	a	0	1	1	oewn
+oewn-buffeting-n	buffeting	n	0	1	1	oewn
+oewn-buffing_wheel-n	buffing wheel	n	0	2	2	oewn
+oewn-bufflehead-n	bufflehead	n	0	1	1	oewn
+oewn-buffoon-n	buffoon	n	0	1	1	oewn
+oewn-buffoonery-n	buffoonery	n	0	1	1	oewn
+oewn-buffoonish-a	buffoonish	a	0	1	1	oewn
+oewn-bufo-n	bufo	n	0	1	1	oewn
+oewn-bug-hunter-n	bug-hunter	n	0	1	1	oewn
+oewn-bug-n	bug	n	0	1	1	oewn
+oewn-bug-v	bug	v	0	1	1	oewn
+oewn-bug_out-v	bug out	v	0	2	1	oewn
+oewn-bugaboo-n	bugaboo	n	0	1	1	oewn
+oewn-bugbane-n	bugbane	n	0	1	1	oewn
+oewn-bugbear-n	bugbear	n	0	1	1	oewn
+oewn-bugged-a	bugged	a	0	1	1	oewn
+oewn-bugger-n	bugger	n	0	1	1	oewn
+oewn-bugger-v	bugger	v	0	1	1	oewn
+oewn-bugger_all-n	bugger all	n	0	2	2	oewn
+oewn-bugger_off-v	bugger off	v	0	2	1	oewn
+oewn-buggery-n	buggery	n	0	1	1	oewn
+oewn-bugginess-n	bugginess	n	0	1	1	oewn
+oewn-buggy-a	buggy	a	0	1	1	oewn
+oewn-buggy-n	buggy	n	0	1	1	oewn
+oewn-buggy_whip-n	buggy whip	n	0	2	2	oewn
+oewn-bugle-n	bugle	n	0	1	1	oewn
+oewn-bugle-v	bugle	v	0	1	1	oewn
+oewn-bugle_call-n	bugle call	n	0	2	2	oewn
+oewn-bugler-n	bugler	n	0	1	1	oewn
+oewn-bugleweed-n	bugleweed	n	0	1	1	oewn
+oewn-bugloss-n	bugloss	n	0	1	1	oewn
+oewn-bugologist-n	bugologist	n	0	1	1	oewn
+oewn-bugology-n	bugology	n	0	1	1	oewn
+oewn-buhl-n	buhl	n	0	1	1	oewn
+oewn-build-n	build	n	0	1	1	oewn
+oewn-build-v	build	v	0	1	1	oewn
+oewn-build_in-v	build in	v	0	2	1	oewn
+oewn-build_on-v	build on	v	0	2	1	oewn
+oewn-build_up-v	build up	v	0	2	1	oewn
+oewn-build_upon-v	build upon	v	0	2	1	oewn
+oewn-builder-n	builder	n	0	1	1	oewn
+oewn-building-n	building	n	0	1	1	oewn
+oewn-building_block-n	building block	n	0	2	2	oewn
+oewn-building_code-n	building code	n	0	2	2	oewn
+oewn-building_complex-n	building complex	n	0	2	2	oewn
+oewn-building_department-n	building department	n	0	2	2	oewn
+oewn-building_material-n	building material	n	0	2	2	oewn
+oewn-building_permit-n	building permit	n	0	2	2	oewn
+oewn-building_site-n	building site	n	0	2	2	oewn
+oewn-building_society-n	building society	n	0	2	2	oewn
+oewn-building_supply_house-n	building supply house	n	0	3	3	oewn
+oewn-building_supply_store-n	building supply store	n	0	3	3	oewn
+oewn-buildup-n	buildup	n	0	1	1	oewn
+oewn-built-a	built	a	0	1	1	oewn
+oewn-built-in-a	built-in	a	0	1	1	oewn
+oewn-built-in_bed-n	built-in bed	n	0	2	2	oewn
+oewn-built-soap_powder-n	built-soap powder	n	0	2	2	oewn
+oewn-built-up-a	built-up	a	0	1	1	oewn
+oewn-built_in_bed-n	built in bed	n	0	3	1	oewn
+oewn-buirdly-a	buirdly	a	0	1	1	oewn
+oewn-bulb-n	bulb	n	0	1	1	oewn
+oewn-bulb-shaped-a	bulb-shaped	a	0	1	1	oewn
+oewn-bulb_syringe-n	bulb syringe	n	0	2	2	oewn
+oewn-bulbaceous-a	bulbaceous	a	0	1	1	oewn
+oewn-bulbar-a	bulbar	a	0	1	1	oewn
+oewn-bulbar_conjunctiva-n	bulbar conjunctiva	n	0	2	2	oewn
+oewn-bulbed-a	bulbed	a	0	1	1	oewn
+oewn-bulbil-n	bulbil	n	0	1	1	oewn
+oewn-bulblet-n	bulblet	n	0	1	1	oewn
+oewn-bulblet_bladder_fern-n	bulblet bladder fern	n	0	3	3	oewn
+oewn-bulblet_fern-n	bulblet fern	n	0	2	2	oewn
+oewn-bulblike-a	bulblike	a	0	1	1	oewn
+oewn-bulbourethral_gland-n	bulbourethral gland	n	0	2	2	oewn
+oewn-bulbous-a	bulbous	a	0	1	1	oewn
+oewn-bulbous_iris-n	bulbous iris	n	0	2	2	oewn
+oewn-bulbous_plant-n	bulbous plant	n	0	2	2	oewn
+oewn-bulbul-n	bulbul	n	0	1	1	oewn
+oewn-bulge-n	bulge	n	0	1	1	oewn
+oewn-bulge-v	bulge	v	0	1	1	oewn
+oewn-bulge_out-v	bulge out	v	0	2	1	oewn
+oewn-bulghur-n	bulghur	n	0	1	1	oewn
+oewn-bulginess-n	bulginess	n	0	1	1	oewn
+oewn-bulging-a	bulging	a	0	1	1	oewn
+oewn-bulgur-n	bulgur	n	0	1	1	oewn
+oewn-bulgur_pilaf-n	bulgur pilaf	n	0	2	2	oewn
+oewn-bulgur_wheat-n	bulgur wheat	n	0	2	2	oewn
+oewn-bulgy-a	bulgy	a	0	1	1	oewn
+oewn-bulimarexia-n	bulimarexia	n	0	1	1	oewn
+oewn-bulimia-n	bulimia	n	0	1	1	oewn
+oewn-bulimia_nervosa-n	bulimia nervosa	n	0	2	2	oewn
+oewn-bulimic-a	bulimic	a	0	1	1	oewn
+oewn-bulimic-n	bulimic	n	0	1	1	oewn
+oewn-bulk-n	bulk	n	0	1	1	oewn
+oewn-bulk-v	bulk	v	0	1	1	oewn
+oewn-bulk_large-v	bulk large	v	0	2	1	oewn
+oewn-bulk_mail-n	bulk mail	n	0	2	2	oewn
+oewn-bulk_modulus-n	bulk modulus	n	0	2	2	oewn
+oewn-bulkhead-n	bulkhead	n	0	1	1	oewn
+oewn-bulkiness-n	bulkiness	n	0	1	1	oewn
+oewn-bulky-a	bulky	a	0	1	1	oewn
+oewn-bull-ap-s-eye-n	bull's-eye	n	0	1	1	oewn
+oewn-bull-ap-s_eye-n	bull's eye	n	0	2	2	oewn
+oewn-bull-n	bull	n	0	1	1	oewn
+oewn-bull-snake-n	bull-snake	n	0	1	1	oewn
+oewn-bull-v	bull	v	0	1	1	oewn
+oewn-bull_bay-n	bull bay	n	0	2	2	oewn
+oewn-bull_fiddle-n	bull fiddle	n	0	2	2	oewn
+oewn-bull_market-n	bull market	n	0	2	2	oewn
+oewn-bull_mastiff-n	bull mastiff	n	0	2	2	oewn
+oewn-bull_neck-n	bull neck	n	0	2	2	oewn
+oewn-bull_nettle-n	bull nettle	n	0	2	2	oewn
+oewn-bull_nose-n	bull nose	n	0	2	2	oewn
+oewn-bull_pine-n	bull pine	n	0	2	2	oewn
+oewn-bull_session-n	bull session	n	0	2	2	oewn
+oewn-bull_shark-n	bull shark	n	0	2	2	oewn
+oewn-bull_snake-n	bull snake	n	0	2	2	oewn
+oewn-bull_terrier-n	bull terrier	n	0	2	2	oewn
+oewn-bull_thistle-n	bull thistle	n	0	2	2	oewn
+oewn-bull_through-v	bull through	v	0	2	1	oewn
+oewn-bull_tongue-n	bull tongue	n	0	2	2	oewn
+oewn-bulla-n	bulla	n	0	1	1	oewn
+oewn-bullace-n	bullace	n	0	1	1	oewn
+oewn-bullace_grape-n	bullace grape	n	0	2	2	oewn
+oewn-bullate-a	bullate	a	0	1	1	oewn
+oewn-bullbat-n	bullbat	n	0	1	1	oewn
+oewn-bullbrier-n	bullbrier	n	0	1	1	oewn
+oewn-bulldog-n	bulldog	n	0	1	1	oewn
+oewn-bulldog-v	bulldog	v	0	1	1	oewn
+oewn-bulldog_ant-n	bulldog ant	n	0	2	2	oewn
+oewn-bulldog_clip-n	bulldog clip	n	0	2	2	oewn
+oewn-bulldog_wrench-n	bulldog wrench	n	0	2	2	oewn
+oewn-bulldoze-v	bulldoze	v	0	1	1	oewn
+oewn-bulldozer-n	bulldozer	n	0	1	1	oewn
+oewn-bullet-headed-a	bullet-headed	a	0	1	1	oewn
+oewn-bullet-n	bullet	n	0	1	1	oewn
+oewn-bullet_fingerprinting-n	bullet fingerprinting	n	0	2	2	oewn
+oewn-bullet_hole-n	bullet hole	n	0	2	2	oewn
+oewn-bullet_train-n	bullet train	n	0	2	2	oewn
+oewn-bullet_vote-v	bullet vote	v	0	2	1	oewn
+oewn-bullethead-n	bullethead	n	0	1	1	oewn
+oewn-bulletin-n	bulletin	n	0	1	1	oewn
+oewn-bulletin-v	bulletin	v	0	1	1	oewn
+oewn-bulletin_board-n	bulletin board	n	0	2	2	oewn
+oewn-bulletin_board_system-n	bulletin board system	n	0	3	3	oewn
+oewn-bulletproof-a	bulletproof	a	0	1	1	oewn
+oewn-bulletproof-v	bulletproof	v	0	1	1	oewn
+oewn-bulletproof_vest-n	bulletproof vest	n	0	2	2	oewn
+oewn-bullfight-n	bullfight	n	0	1	1	oewn
+oewn-bullfighter-n	bullfighter	n	0	1	1	oewn
+oewn-bullfighting-n	bullfighting	n	0	1	1	oewn
+oewn-bullfinch-n	bullfinch	n	0	1	1	oewn
+oewn-bullfrog-n	bullfrog	n	0	1	1	oewn
+oewn-bullhead-n	bullhead	n	0	1	1	oewn
+oewn-bullhead_catfish-n	bullhead catfish	n	0	2	2	oewn
+oewn-bullheaded-a	bullheaded	a	0	1	1	oewn
+oewn-bullheadedness-n	bullheadedness	n	0	1	1	oewn
+oewn-bullhorn-n	bullhorn	n	0	1	1	oewn
+oewn-bullion-n	bullion	n	0	1	1	oewn
+oewn-bullish-a	bullish	a	0	1	1	oewn
+oewn-bullnecked-a	bullnecked	a	0	1	1	oewn
+oewn-bullnose-n	bullnose	n	0	1	1	oewn
+oewn-bullnosed_plane-n	bullnosed plane	n	0	2	2	oewn
+oewn-bullock-ap-s_heart-n	bullock's heart	n	0	2	2	oewn
+oewn-bullock-ap-s_heart_tree-n	bullock's heart tree	n	0	3	3	oewn
+oewn-bullock-n	bullock	n	0	1	1	oewn
+oewn-bullock_block-n	bullock block	n	0	2	2	oewn
+oewn-bullock_heart-n	bullock heart	n	0	2	2	oewn
+oewn-bullocky-a	bullocky	a	0	1	1	oewn
+oewn-bullpen-n	bullpen	n	0	1	1	oewn
+oewn-bullring-n	bullring	n	0	1	1	oewn
+oewn-bullrush-n	bullrush	n	0	1	1	oewn
+oewn-bullshit-n	bullshit	n	0	1	1	oewn
+oewn-bullshit-v	bullshit	v	0	1	1	oewn
+oewn-bullshot-n	bullshot	n	0	1	1	oewn
+oewn-bullterrier-n	bullterrier	n	0	1	1	oewn
+oewn-bully-a	bully	a	0	1	1	oewn
+oewn-bully-n	bully	n	0	1	1	oewn
+oewn-bully-v	bully	v	0	1	1	oewn
+oewn-bully_beef-n	bully beef	n	0	2	2	oewn
+oewn-bully_off-v	bully off	v	0	2	1	oewn
+oewn-bully_pulpit-n	bully pulpit	n	0	2	2	oewn
+oewn-bully_tree-n	bully tree	n	0	2	2	oewn
+oewn-bullyboy-n	bullyboy	n	0	1	1	oewn
+oewn-bullygirl-n	bullygirl	n	0	1	1	oewn
+oewn-bullying-a	bullying	a	0	1	1	oewn
+oewn-bullying-n	bullying	n	0	1	1	oewn
+oewn-bullyrag-v	bullyrag	v	0	1	1	oewn
+oewn-bulrush-n	bulrush	n	0	1	1	oewn
+oewn-bulrush_millet-n	bulrush millet	n	0	2	2	oewn
+oewn-bulwark-n	bulwark	n	0	1	1	oewn
+oewn-bulwark-v	bulwark	v	0	1	1	oewn
+oewn-bum-a	bum	a	0	1	1	oewn
+oewn-bum-n	bum	n	0	1	1	oewn
+oewn-bum-v	bum	v	0	1	1	oewn
+oewn-bum_about-v	bum about	v	0	2	1	oewn
+oewn-bum_around-v	bum around	v	0	2	1	oewn
+oewn-bumble-v	bumble	v	0	1	1	oewn
+oewn-bumblebee-n	bumblebee	n	0	1	1	oewn
+oewn-bumbler-n	bumbler	n	0	1	1	oewn
+oewn-bumbling-a	bumbling	a	0	1	1	oewn
+oewn-bumboat-n	bumboat	n	0	1	1	oewn
+oewn-bumf-n	bumf	n	0	1	1	oewn
+oewn-bummer-n	bummer	n	0	1	1	oewn
+oewn-bump-n	bump	n	0	1	1	oewn
+oewn-bump-v	bump	v	0	1	1	oewn
+oewn-bump_around-v	bump around	v	0	2	1	oewn
+oewn-bump_into-v	bump into	v	0	2	1	oewn
+oewn-bump_off-v	bump off	v	0	2	1	oewn
+oewn-bump_up-v	bump up	v	0	2	1	oewn
+oewn-bumper-n	bumper	n	0	1	1	oewn
+oewn-bumper-to-bumper-a	bumper-to-bumper	a	0	1	1	oewn
+oewn-bumper_car-n	bumper car	n	0	2	2	oewn
+oewn-bumper_guard-n	bumper guard	n	0	2	2	oewn
+oewn-bumper_jack-n	bumper jack	n	0	2	2	oewn
+oewn-bumph-n	bumph	n	0	1	1	oewn
+oewn-bumpiness-n	bumpiness	n	0	1	1	oewn
+oewn-bumpkin-n	bumpkin	n	0	1	1	oewn
+oewn-bumpkinly-a	bumpkinly	a	0	1	1	oewn
+oewn-bumptious-a	bumptious	a	0	1	1	oewn
+oewn-bumptiously-r	bumptiously	r	0	1	1	oewn
+oewn-bumptiousness-n	bumptiousness	n	0	1	1	oewn
+oewn-bumpy-a	bumpy	a	0	1	1	oewn
+oewn-bun-fight-n	bun-fight	n	0	1	1	oewn
+oewn-bun-n	bun	n	0	1	1	oewn
+oewn-bun_divider-n	bun divider	n	0	2	2	oewn
+oewn-bun_rounder-n	bun rounder	n	0	2	2	oewn
+oewn-buna-n	buna	n	0	1	1	oewn
+oewn-buna_rubber-n	buna rubber	n	0	2	2	oewn
+oewn-bunce-n	bunce	n	0	1	1	oewn
+oewn-bunch-n	bunch	n	0	1	1	oewn
+oewn-bunch-v	bunch	v	0	1	1	oewn
+oewn-bunch_grass-n	bunch grass	n	0	2	2	oewn
+oewn-bunch_together-v	bunch together	v	0	2	1	oewn
+oewn-bunch_up-v	bunch up	v	0	2	1	oewn
+oewn-bunchberry-n	bunchberry	n	0	1	1	oewn
+oewn-bunchgrass-n	bunchgrass	n	0	1	1	oewn
+oewn-bunchy-a	bunchy	a	0	1	1	oewn
+oewn-bunco-n	bunco	n	0	1	1	oewn
+oewn-bunco-v	bunco	v	0	1	1	oewn
+oewn-bunco_game-n	bunco game	n	0	2	2	oewn
+oewn-buncombe-n	buncombe	n	0	1	1	oewn
+oewn-bundle-n	bundle	n	0	1	1	oewn
+oewn-bundle-v	bundle	v	0	1	1	oewn
+oewn-bundle_of_His-n	bundle of His	n	0	3	1	oewn
+oewn-bundle_off-v	bundle off	v	0	2	1	oewn
+oewn-bundle_up-v	bundle up	v	0	2	1	oewn
+oewn-bundled-up-a	bundled-up	a	0	1	1	oewn
+oewn-bundling-n	bundling	n	0	1	1	oewn
+oewn-bunfight-n	bunfight	n	0	1	1	oewn
+oewn-bung-n	bung	n	0	1	1	oewn
+oewn-bung-v	bung	v	0	1	1	oewn
+oewn-bungaloid-a	bungaloid	a	0	1	1	oewn
+oewn-bungalow-n	bungalow	n	0	1	1	oewn
+oewn-bungee-n	bungee	n	0	1	1	oewn
+oewn-bungee_cord-n	bungee cord	n	0	2	2	oewn
+oewn-bunghole-n	bunghole	n	0	1	1	oewn
+oewn-bungle-n	bungle	n	0	1	1	oewn
+oewn-bungle-v	bungle	v	0	1	1	oewn
+oewn-bungled-a	bungled	a	0	1	1	oewn
+oewn-bungler-n	bungler	n	0	1	1	oewn
+oewn-bunglesome-a	bunglesome	a	0	1	1	oewn
+oewn-bungling-a	bungling	a	0	1	1	oewn
+oewn-bunion-n	bunion	n	0	1	1	oewn
+oewn-bunji-bunji-n	bunji-bunji	n	0	1	1	oewn
+oewn-bunk-n	bunk	n	0	1	1	oewn
+oewn-bunk-v	bunk	v	0	1	1	oewn
+oewn-bunk_bed-n	bunk bed	n	0	2	2	oewn
+oewn-bunk_down-v	bunk down	v	0	2	1	oewn
+oewn-bunk_off-v	bunk off	v	0	2	1	oewn
+oewn-bunker-n	bunker	n	0	1	1	oewn
+oewn-bunker-v	bunker	v	0	1	1	oewn
+oewn-bunker_mentality-n	bunker mentality	n	0	2	2	oewn
+oewn-bunkmate-n	bunkmate	n	0	1	1	oewn
+oewn-bunko-n	bunko	n	0	1	1	oewn
+oewn-bunko_game-n	bunko game	n	0	2	2	oewn
+oewn-bunkum-n	bunkum	n	0	1	1	oewn
+oewn-bunny-n	bunny	n	0	1	1	oewn
+oewn-bunny_girl-n	bunny girl	n	0	2	2	oewn
+oewn-bunny_hug-n	bunny hug	n	0	2	2	oewn
+oewn-bunny_rabbit-n	bunny rabbit	n	0	2	2	oewn
+oewn-buns-n	buns	n	0	1	1	oewn
+oewn-bunsen-n	bunsen	n	0	1	1	oewn
+oewn-bunsen_burner-n	bunsen burner	n	0	2	2	oewn
+oewn-bunt-n	bunt	n	0	1	1	oewn
+oewn-bunt-v	bunt	v	0	1	1	oewn
+oewn-buntal-n	buntal	n	0	1	1	oewn
+oewn-bunter-n	bunter	n	0	1	1	oewn
+oewn-bunting-n	bunting	n	0	1	1	oewn
+oewn-buntline_coil-n	buntline coil	n	0	2	2	oewn
+oewn-bunya_bunya-n	bunya bunya	n	0	2	2	oewn
+oewn-bunya_bunya_tree-n	bunya bunya tree	n	0	3	3	oewn
+oewn-bunyavirus-n	bunyavirus	n	0	1	1	oewn
+oewn-buoy-n	buoy	n	0	1	1	oewn
+oewn-buoy-v	buoy	v	0	1	1	oewn
+oewn-buoy_up-v	buoy up	v	0	2	1	oewn
+oewn-buoyancy-n	buoyancy	n	0	1	1	oewn
+oewn-buoyant-a	buoyant	a	0	1	1	oewn
+oewn-buoyantly-r	buoyantly	r	0	1	1	oewn
+oewn-bur-n	bur	n	0	1	1	oewn
+oewn-bur-v	bur	v	0	1	1	oewn
+oewn-bur_grass-n	bur grass	n	0	2	2	oewn
+oewn-bur_marigold-n	bur marigold	n	0	2	2	oewn
+oewn-bur_oak-n	bur oak	n	0	2	2	oewn
+oewn-bur_reed-n	bur reed	n	0	2	2	oewn
+oewn-burble-v	burble	v	0	1	1	oewn
+oewn-burbling-a	burbling	a	0	1	1	oewn
+oewn-burbly-a	burbly	a	0	1	1	oewn
+oewn-burbot-n	burbot	n	0	1	1	oewn
+oewn-burden-n	burden	n	0	1	1	oewn
+oewn-burden-v	burden	v	0	1	1	oewn
+oewn-burden_of_proof-n	burden of proof	n	0	3	1	oewn
+oewn-burdened-a	burdened	a	0	1	1	oewn
+oewn-burdenless-a	burdenless	a	0	1	1	oewn
+oewn-burdensome-a	burdensome	a	0	1	1	oewn
+oewn-burdensomeness-n	burdensomeness	n	0	1	1	oewn
+oewn-burdock-n	burdock	n	0	1	1	oewn
+oewn-bureau-n	bureau	n	0	1	1	oewn
+oewn-bureau_de_change-n	bureau de change	n	0	3	1	oewn
+oewn-bureaucracy-n	bureaucracy	n	0	1	1	oewn
+oewn-bureaucrat-n	bureaucrat	n	0	1	1	oewn
+oewn-bureaucratic-a	bureaucratic	a	0	1	1	oewn
+oewn-bureaucratic_procedure-n	bureaucratic procedure	n	0	2	2	oewn
+oewn-bureaucratically-r	bureaucratically	r	0	1	1	oewn
+oewn-bureaucratism-n	bureaucratism	n	0	1	1	oewn
+oewn-buret-n	buret	n	0	1	1	oewn
+oewn-burette-n	burette	n	0	1	1	oewn
+oewn-burg-n	burg	n	0	1	1	oewn
+oewn-burgeon-v	burgeon	v	0	1	1	oewn
+oewn-burgeon_forth-v	burgeon forth	v	0	2	1	oewn
+oewn-burgeoning-a	burgeoning	a	0	1	1	oewn
+oewn-burger-n	burger	n	0	1	1	oewn
+oewn-burgess-n	burgess	n	0	1	1	oewn
+oewn-burgh-n	burgh	n	0	1	1	oewn
+oewn-burgher-n	burgher	n	0	1	1	oewn
+oewn-burglar-n	burglar	n	0	1	1	oewn
+oewn-burglar_alarm-n	burglar alarm	n	0	2	2	oewn
+oewn-burglarious-a	burglarious	a	0	1	1	oewn
+oewn-burglarise-v	burglarise	v	0	1	1	oewn
+oewn-burglarize-v	burglarize	v	0	1	1	oewn
+oewn-burglarproof-a	burglarproof	a	0	1	1	oewn
+oewn-burglary-n	burglary	n	0	1	1	oewn
+oewn-burgle-v	burgle	v	0	1	1	oewn
+oewn-burgomaster-n	burgomaster	n	0	1	1	oewn
+oewn-burgoo-n	burgoo	n	0	1	1	oewn
+oewn-burgrass-n	burgrass	n	0	1	1	oewn
+oewn-burgrave-n	burgrave	n	0	1	1	oewn
+oewn-burgundy-n	burgundy	n	0	1	1	oewn
+oewn-burial-n	burial	n	0	1	1	oewn
+oewn-burial_chamber-n	burial chamber	n	0	2	2	oewn
+oewn-burial_garment-n	burial garment	n	0	2	2	oewn
+oewn-burial_ground-n	burial ground	n	0	2	2	oewn
+oewn-burial_mound-n	burial mound	n	0	2	2	oewn
+oewn-burial_site-n	burial site	n	0	2	2	oewn
+oewn-burial_vault-n	burial vault	n	0	2	2	oewn
+oewn-buried-a	buried	a	0	1	1	oewn
+oewn-burin-n	burin	n	0	1	1	oewn
+oewn-burka-n	burka	n	0	1	1	oewn
+oewn-burke-v	burke	v	0	1	1	oewn
+oewn-burked-a	burked	a	0	1	1	oewn
+oewn-burl-n	burl	n	0	1	1	oewn
+oewn-burl-v	burl	v	0	1	1	oewn
+oewn-burlap-n	burlap	n	0	1	1	oewn
+oewn-burlap_bag-n	burlap bag	n	0	2	2	oewn
+oewn-burled-a	burled	a	0	1	1	oewn
+oewn-burlesque-a	burlesque	a	0	1	1	oewn
+oewn-burlesque-n	burlesque	n	0	1	1	oewn
+oewn-burlesque-v	burlesque	v	0	1	1	oewn
+oewn-burly-a	burly	a	0	1	1	oewn
+oewn-burn-n	burn	n	0	1	1	oewn
+oewn-burn-v	burn	v	0	1	1	oewn
+oewn-burn_bag-n	burn bag	n	0	2	2	oewn
+oewn-burn_center-n	burn center	n	0	2	2	oewn
+oewn-burn_down-v	burn down	v	0	2	1	oewn
+oewn-burn_mark-n	burn mark	n	0	2	2	oewn
+oewn-burn_off-v	burn off	v	0	2	1	oewn
+oewn-burn_out-v	burn out	v	0	2	1	oewn
+oewn-burn_plant-n	burn plant	n	0	2	2	oewn
+oewn-burn_up-v	burn up	v	0	2	1	oewn
+oewn-burnability-n	burnability	n	0	1	1	oewn
+oewn-burnable-a	burnable	a	0	1	1	oewn
+oewn-burned-a	burned	a	0	1	1	oewn
+oewn-burned-out-a	burned-out	a	0	1	1	oewn
+oewn-burned-over-a	burned-over	a	0	1	1	oewn
+oewn-burner-n	burner	n	0	1	1	oewn
+oewn-burnet_bloodwort-n	burnet bloodwort	n	0	2	2	oewn
+oewn-burning-a	burning	a	0	1	1	oewn
+oewn-burning-n	burning	n	0	1	1	oewn
+oewn-burning_at_the_stake-n	burning at the stake	n	0	4	1	oewn
+oewn-burning_bush-n	burning bush	n	0	2	2	oewn
+oewn-burnish-n	burnish	n	0	1	1	oewn
+oewn-burnish-v	burnish	v	0	1	1	oewn
+oewn-burnished-a	burnished	a	0	1	1	oewn
+oewn-burnisher-n	burnisher	n	0	1	1	oewn
+oewn-burnishing_tool-n	burnishing tool	n	0	2	2	oewn
+oewn-burnoose-n	burnoose	n	0	1	1	oewn
+oewn-burnous-n	burnous	n	0	1	1	oewn
+oewn-burnouse-n	burnouse	n	0	1	1	oewn
+oewn-burnside-n	burnside	n	0	1	1	oewn
+oewn-burnt-a	burnt	a	0	1	1	oewn
+oewn-burnt-out-a	burnt-out	a	0	1	1	oewn
+oewn-burnt_lime-n	burnt lime	n	0	2	2	oewn
+oewn-burnt_sienna-n	burnt sienna	n	0	2	2	oewn
+oewn-burnt_umber-n	burnt umber	n	0	2	2	oewn
+oewn-burnup-n	burnup	n	0	1	1	oewn
+oewn-burp-n	burp	n	0	1	1	oewn
+oewn-burp-v	burp	v	0	1	1	oewn
+oewn-burp_gun-n	burp gun	n	0	2	2	oewn
+oewn-burping-n	burping	n	0	1	1	oewn
+oewn-burqa-n	burqa	n	0	1	1	oewn
+oewn-burr-headed-a	burr-headed	a	0	1	1	oewn
+oewn-burr-n	burr	n	0	1	1	oewn
+oewn-burr-v	burr	v	0	1	1	oewn
+oewn-burr_drill-n	burr drill	n	0	2	2	oewn
+oewn-burr_marigold-n	burr marigold	n	0	2	2	oewn
+oewn-burr_oak-n	burr oak	n	0	2	2	oewn
+oewn-burrawong-n	burrawong	n	0	1	1	oewn
+oewn-burred-a	burred	a	0	1	1	oewn
+oewn-burrfish-n	burrfish	n	0	1	1	oewn
+oewn-burrito-n	burrito	n	0	1	1	oewn
+oewn-burrlike-a	burrlike	a	0	1	1	oewn
+oewn-burro-n	burro	n	0	1	1	oewn
+oewn-burro_deer-n	burro deer	n	0	2	2	oewn
+oewn-burrow-n	burrow	n	0	1	1	oewn
+oewn-burrow-v	burrow	v	0	1	1	oewn
+oewn-burry-a	burry	a	0	1	1	oewn
+oewn-bursa-n	bursa	n	0	1	1	oewn
+oewn-bursa_omentalis-n	bursa omentalis	n	0	2	2	oewn
+oewn-bursal-a	bursal	a	0	1	1	oewn
+oewn-bursar-n	bursar	n	0	1	1	oewn
+oewn-bursary-n	bursary	n	0	1	1	oewn
+oewn-bursiform-a	bursiform	a	0	1	1	oewn
+oewn-bursitis-n	bursitis	n	0	1	1	oewn
+oewn-burst-n	burst	n	0	1	1	oewn
+oewn-burst-v	burst	v	0	1	1	oewn
+oewn-burst_forth-v	burst forth	v	0	2	1	oewn
+oewn-burst_in_on-v	burst in on	v	0	3	1	oewn
+oewn-burst_out-v	burst out	v	0	2	1	oewn
+oewn-burst_upon-v	burst upon	v	0	2	1	oewn
+oewn-burster-n	burster	n	0	1	1	oewn
+oewn-bursting_charge-n	bursting charge	n	0	2	2	oewn
+oewn-bursting_explosive-n	bursting explosive	n	0	2	2	oewn
+oewn-burthen-n	burthen	n	0	1	1	oewn
+oewn-burthen-v	burthen	v	0	1	1	oewn
+oewn-burunduki-n	burunduki	n	0	1	1	oewn
+oewn-burweed_marsh_elder-n	burweed marsh elder	n	0	3	3	oewn
+oewn-bury-v	bury	v	0	1	1	oewn
+oewn-burying-n	burying	n	0	1	1	oewn
+oewn-burying_ground-n	burying ground	n	0	2	2	oewn
+oewn-bus-n	bus	n	0	1	1	oewn
+oewn-bus-v	bus	v	0	1	1	oewn
+oewn-bus_company-n	bus company	n	0	2	2	oewn
+oewn-bus_depot-n	bus depot	n	0	2	2	oewn
+oewn-bus_driver-n	bus driver	n	0	2	2	oewn
+oewn-bus_fare-n	bus fare	n	0	2	2	oewn
+oewn-bus_lane-n	bus lane	n	0	2	2	oewn
+oewn-bus_line-n	bus line	n	0	2	2	oewn
+oewn-bus_network-n	bus network	n	0	2	2	oewn
+oewn-bus_route-n	bus route	n	0	2	2	oewn
+oewn-bus_service-n	bus service	n	0	2	2	oewn
+oewn-bus_station-n	bus station	n	0	2	2	oewn
+oewn-bus_stop-n	bus stop	n	0	2	2	oewn
+oewn-bus_terminal-n	bus terminal	n	0	2	2	oewn
+oewn-bus_ticket-n	bus ticket	n	0	2	2	oewn
+oewn-bus_topology-n	bus topology	n	0	2	2	oewn
+oewn-bus_traffic-n	bus traffic	n	0	2	2	oewn
+oewn-busbar-n	busbar	n	0	1	1	oewn
+oewn-busboy-n	busboy	n	0	1	1	oewn
+oewn-busby-n	busby	n	0	1	1	oewn
+oewn-bush-a	bush	a	0	1	1	oewn
+oewn-bush-league-a	bush-league	a	0	1	1	oewn
+oewn-bush-n	bush	n	0	1	1	oewn
+oewn-bush-v	bush	v	0	1	1	oewn
+oewn-bush_baby-n	bush baby	n	0	2	2	oewn
+oewn-bush_bean-n	bush bean	n	0	2	2	oewn
+oewn-bush_clover-n	bush clover	n	0	2	2	oewn
+oewn-bush_hibiscus-n	bush hibiscus	n	0	2	2	oewn
+oewn-bush_honeysuckle-n	bush honeysuckle	n	0	2	2	oewn
+oewn-bush_jacket-n	bush jacket	n	0	2	2	oewn
+oewn-bush_lawyer-n	bush lawyer	n	0	2	2	oewn
+oewn-bush_league-n	bush league	n	0	2	2	oewn
+oewn-bush_leaguer-n	bush leaguer	n	0	2	2	oewn
+oewn-bush_nasturtium-n	bush nasturtium	n	0	2	2	oewn
+oewn-bush_out-v	bush out	v	0	2	1	oewn
+oewn-bush_pea-n	bush pea	n	0	2	2	oewn
+oewn-bush_poppy-n	bush poppy	n	0	2	2	oewn
+oewn-bush_shrike-n	bush shrike	n	0	2	2	oewn
+oewn-bush_tit-n	bush tit	n	0	2	2	oewn
+oewn-bush_vetch-n	bush vetch	n	0	2	2	oewn
+oewn-bush_violet-n	bush violet	n	0	2	2	oewn
+oewn-bush_willow-n	bush willow	n	0	2	2	oewn
+oewn-bushbaby-n	bushbaby	n	0	1	1	oewn
+oewn-bushbuck-n	bushbuck	n	0	1	1	oewn
+oewn-bushed-a	bushed	a	0	1	1	oewn
+oewn-bushel-n	bushel	n	0	1	1	oewn
+oewn-bushel-v	bushel	v	0	1	1	oewn
+oewn-bushel_basket-n	bushel basket	n	0	2	2	oewn
+oewn-bushing-n	bushing	n	0	1	1	oewn
+oewn-bushman-ap-s_poison-n	bushman's poison	n	0	2	2	oewn
+oewn-bushman-n	bushman	n	0	1	1	oewn
+oewn-bushperson-n	bushperson	n	0	1	1	oewn
+oewn-bushtit-n	bushtit	n	0	1	1	oewn
+oewn-bushwhack-v	bushwhack	v	0	1	1	oewn
+oewn-bushwhacker-n	bushwhacker	n	0	1	1	oewn
+oewn-bushwhacking-a	bushwhacking	a	0	1	1	oewn
+oewn-bushwoman-n	bushwoman	n	0	1	1	oewn
+oewn-bushy-a	bushy	a	0	1	1	oewn
+oewn-bushy_aster-n	bushy aster	n	0	2	2	oewn
+oewn-bushytail_woodrat-n	bushytail woodrat	n	0	2	2	oewn
+oewn-busily-r	busily	r	0	1	1	oewn
+oewn-business-n	business	n	0	1	1	oewn
+oewn-business_activity-n	business activity	n	0	2	2	oewn
+oewn-business_address-n	business address	n	0	2	2	oewn
+oewn-business_agent-n	business agent	n	0	2	2	oewn
+oewn-business_card-n	business card	n	0	2	2	oewn
+oewn-business_coaching-n	business coaching	n	0	2	2	oewn
+oewn-business_college-n	business college	n	0	2	2	oewn
+oewn-business_community-n	business community	n	0	2	2	oewn
+oewn-business_concern-n	business concern	n	0	2	2	oewn
+oewn-business_cycle-n	business cycle	n	0	2	2	oewn
+oewn-business_data_processing-n	business data processing	n	0	3	3	oewn
+oewn-business_deal-n	business deal	n	0	2	2	oewn
+oewn-business_deduction-n	business deduction	n	0	2	2	oewn
+oewn-business_department-n	business department	n	0	2	2	oewn
+oewn-business_district-n	business district	n	0	2	2	oewn
+oewn-business_editor-n	business editor	n	0	2	2	oewn
+oewn-business_enterprise-n	business enterprise	n	0	2	2	oewn
+oewn-business_environment_analysis-n	business environment analysis	n	0	3	3	oewn
+oewn-business_environmental_analysis-n	business environmental analysis	n	0	3	3	oewn
+oewn-business_establishment-n	business establishment	n	0	2	2	oewn
+oewn-business_executive-n	business executive	n	0	2	2	oewn
+oewn-business_expense-n	business expense	n	0	2	2	oewn
+oewn-business_firm-n	business firm	n	0	2	2	oewn
+oewn-business_index-n	business index	n	0	2	2	oewn
+oewn-business_interruption_insurance-n	business interruption insurance	n	0	3	3	oewn
+oewn-business_leader-n	business leader	n	0	2	2	oewn
+oewn-business_letter-n	business letter	n	0	2	2	oewn
+oewn-business_life-n	business life	n	0	2	2	oewn
+oewn-business_line-n	business line	n	0	2	2	oewn
+oewn-business_loan-n	business loan	n	0	2	2	oewn
+oewn-business_lunch-n	business lunch	n	0	2	2	oewn
+oewn-business_news-n	business news	n	0	2	2	oewn
+oewn-business_office-n	business office	n	0	2	2	oewn
+oewn-business_organisation-n	business organisation	n	0	2	2	oewn
+oewn-business_organization-n	business organization	n	0	2	2	oewn
+oewn-business_people-n	business people	n	0	2	2	oewn
+oewn-business_process_reengineering-n	business process reengineering	n	0	3	3	oewn
+oewn-business_relation-n	business relation	n	0	2	2	oewn
+oewn-business_relationship-n	business relationship	n	0	2	2	oewn
+oewn-business_school-n	business school	n	0	2	2	oewn
+oewn-business_sector-n	business sector	n	0	2	2	oewn
+oewn-business_suit-n	business suit	n	0	2	2	oewn
+oewn-business_traveler-n	business traveler	n	0	2	2	oewn
+oewn-businesslike-a	businesslike	a	0	1	1	oewn
+oewn-businessman-n	businessman	n	0	1	1	oewn
+oewn-businessmen-n	businessmen	n	0	1	1	oewn
+oewn-businesspeople-n	businesspeople	n	0	1	1	oewn
+oewn-businessperson-n	businessperson	n	0	1	1	oewn
+oewn-businesswoman-n	businesswoman	n	0	1	1	oewn
+oewn-busk-v	busk	v	0	1	1	oewn
+oewn-busker-n	busker	n	0	1	1	oewn
+oewn-buskin-n	buskin	n	0	1	1	oewn
+oewn-busload-n	busload	n	0	1	1	oewn
+oewn-busman-ap-s_holiday-n	busman's holiday	n	0	2	2	oewn
+oewn-busman-n	busman	n	0	1	1	oewn
+oewn-buspirone-n	buspirone	n	0	1	1	oewn
+oewn-buss-n	buss	n	0	1	1	oewn
+oewn-buss-v	buss	v	0	1	1	oewn
+oewn-bust-a	bust	a	0	1	1	oewn
+oewn-bust-n	bust	n	0	1	1	oewn
+oewn-bust-up-n	bust-up	n	0	1	1	oewn
+oewn-bust-up_takeover-n	bust-up takeover	n	0	2	2	oewn
+oewn-bust-v	bust	v	0	1	1	oewn
+oewn-bust_up-v	bust up	v	0	2	1	oewn
+oewn-bustard-n	bustard	n	0	1	1	oewn
+oewn-bustard_quail-n	bustard quail	n	0	2	2	oewn
+oewn-busted-a	busted	a	0	1	1	oewn
+oewn-buster-n	buster	n	0	1	1	oewn
+oewn-bustier-n	bustier	n	0	1	1	oewn
+oewn-bustle-n	bustle	n	0	1	1	oewn
+oewn-bustle-v	bustle	v	0	1	1	oewn
+oewn-bustle_about-v	bustle about	v	0	2	1	oewn
+oewn-bustling-a	bustling	a	0	1	1	oewn
+oewn-busty-a	busty	a	0	1	1	oewn
+oewn-busy-a	busy	a	0	1	1	oewn
+oewn-busy-v	busy	v	0	1	1	oewn
+oewn-busy_bee-n	busy bee	n	0	2	2	oewn
+oewn-busybodied-a	busybodied	a	0	1	1	oewn
+oewn-busybody-n	busybody	n	0	1	1	oewn
+oewn-busyness-n	busyness	n	0	1	1	oewn
+oewn-busywork-n	busywork	n	0	1	1	oewn
+oewn-but-r	but	r	0	1	1	oewn
+oewn-butacaine-n	butacaine	n	0	1	1	oewn
+oewn-butacaine_sulfate-n	butacaine sulfate	n	0	2	2	oewn
+oewn-butadiene-n	butadiene	n	0	1	1	oewn
+oewn-butane-n	butane	n	0	1	1	oewn
+oewn-butanoic_acid-n	butanoic acid	n	0	2	2	oewn
+oewn-butanol-n	butanol	n	0	1	1	oewn
+oewn-butanone-n	butanone	n	0	1	1	oewn
+oewn-butat-n	butat	n	0	1	1	oewn
+oewn-butch-a	butch	a	0	1	1	oewn
+oewn-butch-n	butch	n	0	1	1	oewn
+oewn-butcher-ap-s_broom-n	butcher's broom	n	0	2	2	oewn
+oewn-butcher-n	butcher	n	0	1	1	oewn
+oewn-butcher-v	butcher	v	0	1	1	oewn
+oewn-butcher_block-n	butcher block	n	0	2	2	oewn
+oewn-butcher_board-n	butcher board	n	0	2	2	oewn
+oewn-butcher_knife-n	butcher knife	n	0	2	2	oewn
+oewn-butcher_paper-n	butcher paper	n	0	2	2	oewn
+oewn-butcher_shop-n	butcher shop	n	0	2	2	oewn
+oewn-butcherbird-n	butcherbird	n	0	1	1	oewn
+oewn-butchering-n	butchering	n	0	1	1	oewn
+oewn-butcherly-a	butcherly	a	0	1	1	oewn
+oewn-butchery-n	butchery	n	0	1	1	oewn
+oewn-butea_gum-n	butea gum	n	0	2	2	oewn
+oewn-butea_kino-n	butea kino	n	0	2	2	oewn
+oewn-butene-n	butene	n	0	1	1	oewn
+oewn-buteonine-a	buteonine	a	0	1	1	oewn
+oewn-buteonine-n	buteonine	n	0	1	1	oewn
+oewn-butler-n	butler	n	0	1	1	oewn
+oewn-butt-n	butt	n	0	1	1	oewn
+oewn-butt-v	butt	v	0	1	1	oewn
+oewn-butt-weld-n	butt-weld	n	0	1	1	oewn
+oewn-butt-weld-v	butt-weld	v	0	1	1	oewn
+oewn-butt-welding-n	butt-welding	n	0	1	1	oewn
+oewn-butt_against-v	butt against	v	0	2	1	oewn
+oewn-butt_end-n	butt end	n	0	2	2	oewn
+oewn-butt_hinge-n	butt hinge	n	0	2	2	oewn
+oewn-butt_in-v	butt in	v	0	2	1	oewn
+oewn-butt_joint-n	butt joint	n	0	2	2	oewn
+oewn-butt_on-v	butt on	v	0	2	1	oewn
+oewn-butt_pack-n	butt pack	n	0	2	2	oewn
+oewn-butt_shaft-n	butt shaft	n	0	2	2	oewn
+oewn-butt_weld-n	butt weld	n	0	2	2	oewn
+oewn-butt_welding-n	butt welding	n	0	2	2	oewn
+oewn-butte-n	butte	n	0	1	1	oewn
+oewn-butter-and-eggs-n	butter-and-eggs	n	0	1	1	oewn
+oewn-butter-bean_plant-n	butter-bean plant	n	0	2	2	oewn
+oewn-butter-flower-n	butter-flower	n	0	1	1	oewn
+oewn-butter-n	butter	n	0	1	1	oewn
+oewn-butter-print-n	butter-print	n	0	1	1	oewn
+oewn-butter-v	butter	v	0	1	1	oewn
+oewn-butter_bean-n	butter bean	n	0	2	2	oewn
+oewn-butter_churn-n	butter churn	n	0	2	2	oewn
+oewn-butter_cookie-n	butter cookie	n	0	2	2	oewn
+oewn-butter_daisy-n	butter daisy	n	0	2	2	oewn
+oewn-butter_dish-n	butter dish	n	0	2	2	oewn
+oewn-butter_knife-n	butter knife	n	0	2	2	oewn
+oewn-butter_up-v	butter up	v	0	2	1	oewn
+oewn-butterball-n	butterball	n	0	1	1	oewn
+oewn-butterbean-n	butterbean	n	0	1	1	oewn
+oewn-butterbur-n	butterbur	n	0	1	1	oewn
+oewn-buttercrunch-n	buttercrunch	n	0	1	1	oewn
+oewn-buttercup-n	buttercup	n	0	1	1	oewn
+oewn-buttercup_squash-n	buttercup squash	n	0	2	2	oewn
+oewn-butterfat-n	butterfat	n	0	1	1	oewn
+oewn-butterfingered-a	butterfingered	a	0	1	1	oewn
+oewn-butterfingers-n	butterfingers	n	0	1	1	oewn
+oewn-butterfish-n	butterfish	n	0	1	1	oewn
+oewn-butterflower-n	butterflower	n	0	1	1	oewn
+oewn-butterfly-n	butterfly	n	0	1	1	oewn
+oewn-butterfly-shaped-a	butterfly-shaped	a	0	1	1	oewn
+oewn-butterfly-v	butterfly	v	0	1	1	oewn
+oewn-butterfly_bush-n	butterfly bush	n	0	2	2	oewn
+oewn-butterfly_collector-n	butterfly collector	n	0	2	2	oewn
+oewn-butterfly_effect-n	butterfly effect	n	0	2	2	oewn
+oewn-butterfly_fish-n	butterfly fish	n	0	2	2	oewn
+oewn-butterfly_flower-n	butterfly flower	n	0	2	2	oewn
+oewn-butterfly_nut-n	butterfly nut	n	0	2	2	oewn
+oewn-butterfly_orchid-n	butterfly orchid	n	0	2	2	oewn
+oewn-butterfly_orchis-n	butterfly orchis	n	0	2	2	oewn
+oewn-butterfly_pea-n	butterfly pea	n	0	2	2	oewn
+oewn-butterfly_plant-n	butterfly plant	n	0	2	2	oewn
+oewn-butterfly_ray-n	butterfly ray	n	0	2	2	oewn
+oewn-butterfly_stroke-n	butterfly stroke	n	0	2	2	oewn
+oewn-butterfly_valve-n	butterfly valve	n	0	2	2	oewn
+oewn-butterfly_weed-n	butterfly weed	n	0	2	2	oewn
+oewn-butterflyfish-n	butterflyfish	n	0	1	1	oewn
+oewn-butterhead_lettuce-n	butterhead lettuce	n	0	2	2	oewn
+oewn-buttermilk-n	buttermilk	n	0	1	1	oewn
+oewn-buttermilk_biscuit-n	buttermilk biscuit	n	0	2	2	oewn
+oewn-buttermilk_pancake-n	buttermilk pancake	n	0	2	2	oewn
+oewn-butternut-n	butternut	n	0	1	1	oewn
+oewn-butternut_squash-n	butternut squash	n	0	2	2	oewn
+oewn-butternut_tree-n	butternut tree	n	0	2	2	oewn
+oewn-butterscotch-n	butterscotch	n	0	1	1	oewn
+oewn-butterweed-n	butterweed	n	0	1	1	oewn
+oewn-butterwort-n	butterwort	n	0	1	1	oewn
+oewn-buttery-a	buttery	a	0	1	1	oewn
+oewn-buttery-n	buttery	n	0	1	1	oewn
+oewn-buttinsky-n	buttinsky	n	0	1	1	oewn
+oewn-buttock-n	buttock	n	0	1	1	oewn
+oewn-buttocks-n	buttocks	n	0	1	1	oewn
+oewn-button-down-a	button-down	a	0	1	1	oewn
+oewn-button-n	button	n	0	1	1	oewn
+oewn-button-quail-n	button-quail	n	0	1	1	oewn
+oewn-button-shaped-a	button-shaped	a	0	1	1	oewn
+oewn-button-v	button	v	0	1	1	oewn
+oewn-button_accordion-n	button accordion	n	0	2	2	oewn
+oewn-button_ad-n	button ad	n	0	2	2	oewn
+oewn-button_fern-n	button fern	n	0	2	2	oewn
+oewn-button_hole-n	button hole	n	0	2	2	oewn
+oewn-button_mangrove-n	button mangrove	n	0	2	2	oewn
+oewn-button_pink-n	button pink	n	0	2	2	oewn
+oewn-button_quail-n	button quail	n	0	2	2	oewn
+oewn-button_snakeroot-n	button snakeroot	n	0	2	2	oewn
+oewn-button_tree-n	button tree	n	0	2	2	oewn
+oewn-button_up-v	button up	v	0	2	1	oewn
+oewn-buttoned-a	buttoned	a	0	1	1	oewn
+oewn-buttoned-down-a	buttoned-down	a	0	1	1	oewn
+oewn-buttoned-up-a	buttoned-up	a	0	1	1	oewn
+oewn-buttonhole-n	buttonhole	n	0	1	1	oewn
+oewn-buttonhole-v	buttonhole	v	0	1	1	oewn
+oewn-buttonhole_machine-n	buttonhole machine	n	0	2	2	oewn
+oewn-buttonhole_stitch-n	buttonhole stitch	n	0	2	2	oewn
+oewn-buttonhook-n	buttonhook	n	0	1	1	oewn
+oewn-buttonlike-a	buttonlike	a	0	1	1	oewn
+oewn-buttonwood-n	buttonwood	n	0	1	1	oewn
+oewn-buttony-a	buttony	a	0	1	1	oewn
+oewn-buttress-n	buttress	n	0	1	1	oewn
+oewn-buttress-v	buttress	v	0	1	1	oewn
+oewn-buttressed-a	buttressed	a	0	1	1	oewn
+oewn-buttressing-n	buttressing	n	0	1	1	oewn
+oewn-buttweld-v	buttweld	v	0	1	1	oewn
+oewn-butty-n	butty	n	0	1	1	oewn
+oewn-butut-n	butut	n	0	1	1	oewn
+oewn-butyl-n	butyl	n	0	1	1	oewn
+oewn-butyl_alcohol-n	butyl alcohol	n	0	2	2	oewn
+oewn-butyl_nitrite-n	butyl nitrite	n	0	2	2	oewn
+oewn-butyl_rubber-n	butyl rubber	n	0	2	2	oewn
+oewn-butylate-v	butylate	v	0	1	1	oewn
+oewn-butylene-n	butylene	n	0	1	1	oewn
+oewn-butyraceous-a	butyraceous	a	0	1	1	oewn
+oewn-butyric-a	butyric	a	0	1	1	oewn
+oewn-butyric_acid-n	butyric acid	n	0	2	2	oewn
+oewn-butyrin-n	butyrin	n	0	1	1	oewn
+oewn-buxom-a	buxom	a	0	1	1	oewn
+oewn-buxomly-r	buxomly	r	0	1	1	oewn
+oewn-buxomness-n	buxomness	n	0	1	1	oewn
+oewn-buy-and-bust_operation-n	buy-and-bust operation	n	0	2	2	oewn
+oewn-buy-n	buy	n	0	1	1	oewn
+oewn-buy-v	buy	v	0	1	1	oewn
+oewn-buy_at-v	buy at	v	0	2	1	oewn
+oewn-buy_back-v	buy back	v	0	2	1	oewn
+oewn-buy_food-v	buy food	v	0	2	1	oewn
+oewn-buy_in-v	buy in	v	0	2	1	oewn
+oewn-buy_into-v	buy into	v	0	2	1	oewn
+oewn-buy_it-v	buy it	v	0	2	1	oewn
+oewn-buy_off-v	buy off	v	0	2	1	oewn
+oewn-buy_out-v	buy out	v	0	2	1	oewn
+oewn-buy_the_farm-v	buy the farm	v	0	3	1	oewn
+oewn-buy_time-v	buy time	v	0	2	1	oewn
+oewn-buy_up-v	buy up	v	0	2	1	oewn
+oewn-buyback-n	buyback	n	0	1	1	oewn
+oewn-buyer-ap-s_market-n	buyer's market	n	0	2	2	oewn
+oewn-buyer-n	buyer	n	0	1	1	oewn
+oewn-buyers-ap-_market-n	buyers' market	n	0	2	2	oewn
+oewn-buying-n	buying	n	0	1	1	oewn
+oewn-buyout-n	buyout	n	0	1	1	oewn
+oewn-buyout_bid-n	buyout bid	n	0	2	2	oewn
+oewn-buzz-n	buzz	n	0	1	1	oewn
+oewn-buzz-v	buzz	v	0	1	1	oewn
+oewn-buzz_bomb-n	buzz bomb	n	0	2	2	oewn
+oewn-buzz_off-v	buzz off	v	0	2	1	oewn
+oewn-buzz_saw-n	buzz saw	n	0	2	2	oewn
+oewn-buzzard-n	buzzard	n	0	1	1	oewn
+oewn-buzzer-n	buzzer	n	0	1	1	oewn
+oewn-buzzing-a	buzzing	a	0	1	1	oewn
+oewn-buzzword-n	buzzword	n	0	1	1	oewn

@@ -1,0 +1,8 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-cs__1.27.00..	cs%1:27:00::	oewn-Cs-n	oewn-14658410-n	1
+oewn-cs_gas__1.27.00..	cs_gas%1:27:00::	oewn-CS_gas-n	oewn-14627976-n	1
+oewn-csardas__1.10.01..	csardas%1:10:01::	oewn-csardas-n	oewn-92460975-n	1
+oewn-csardas__1.10.02..	csardas%1:10:02::	oewn-csardas-n	oewn-92460977-n	2
+oewn-cse__1.14.00..	cse%1:14:00::	oewn-CSE-n	oewn-08359815-n	1
+oewn-csis__1.14.00..	csis%1:14:00::	oewn-CSIS-n	oewn-08359346-n	1
+oewn-cst__1.28.00..	cst%1:28:00::	oewn-CST-n	oewn-15157153-n	1

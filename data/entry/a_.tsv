@@ -1,0 +1,54 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-A-ap-man-n	A'man	n	0	1	1	oewn
+oewn-A-bomb-n	A-bomb	n	0	1	1	oewn
+oewn-A-line-n	A-line	n	0	1	1	oewn
+oewn-A-list-n	A-list	n	0	1	1	oewn
+oewn-A-n	A	n	0	1	1	oewn
+oewn-A-one-a	A-one	a	0	1	1	oewn
+oewn-A-scan_ultrasonography-n	A-scan ultrasonography	n	0	2	2	oewn
+oewn-A-sl-C-n	A/C	n	0	1	1	oewn
+oewn-A-team-n	A-team	n	0	1	1	oewn
+oewn-A.D.-r	A.D.	r	0	1	1	oewn
+oewn-A.M.-n	A.M.	n	0	1	1	oewn
+oewn-A.M.-r	A.M.	r	0	1	1	oewn
+oewn-A._testudineus-n	A. testudineus	n	0	2	2	oewn
+oewn-A0-n	A0	n	0	1	1	oewn
+oewn-A1-n	A1	n	0	1	1	oewn
+oewn-A2-n	A2	n	0	1	1	oewn
+oewn-A4-n	A4	n	0	1	1	oewn
+oewn-A5-n	A5	n	0	1	1	oewn
+oewn-A6-n	A6	n	0	1	1	oewn
+oewn-A_battery-n	A battery	n	0	2	2	oewn
+oewn-A_level-n	A level	n	0	2	2	oewn
+oewn-a-n	a	n	0	1	1	oewn
+oewn-a-ok-a	a-ok	a	0	1	1	oewn
+oewn-a-okay-a	a-okay	a	0	1	1	oewn
+oewn-a.k.a.-r	a.k.a.	r	0	1	1	oewn
+oewn-a.m.-n	a.m.	n	0	1	1	oewn
+oewn-a.m.-r	a.m.	r	0	1	1	oewn
+oewn-a_bit-r	a bit	r	0	2	2	oewn
+oewn-a_capella-a	a capella	a	0	2	2	oewn
+oewn-a_capella-r	a capella	r	0	2	2	oewn
+oewn-a_capella_singing-n	a capella singing	n	0	3	3	oewn
+oewn-a_cappella-a	a cappella	a	0	2	2	oewn
+oewn-a_cappella-r	a cappella	r	0	2	2	oewn
+oewn-a_cappella_singing-n	a cappella singing	n	0	3	3	oewn
+oewn-a_couple_of-a	a couple of	a	0	3	3	oewn
+oewn-a_few-a	a few	a	0	2	2	oewn
+oewn-a_fortiori-r	a fortiori	r	0	2	2	oewn
+oewn-a_good_deal-r	a good deal	r	0	3	3	oewn
+oewn-a_great_deal-r	a great deal	r	0	3	3	oewn
+oewn-a_hundred_times-r	a hundred times	r	0	3	3	oewn
+oewn-a_la_carte-a	a la carte	a	0	3	3	oewn
+oewn-a_la_carte-n	a la carte	n	0	3	1	oewn
+oewn-a_la_carte-r	a la carte	r	0	3	3	oewn
+oewn-a_la_mode-a	a la mode	a	0	3	3	oewn
+oewn-a_la_mode-r	a la mode	r	0	3	3	oewn
+oewn-a_little-r	a little	r	0	2	2	oewn
+oewn-a_lot-r	a lot	r	0	2	2	oewn
+oewn-a_million_times-r	a million times	r	0	3	3	oewn
+oewn-a_posteriori-a	a posteriori	a	0	2	2	oewn
+oewn-a_posteriori-r	a posteriori	r	0	2	2	oewn
+oewn-a_priori-a	a priori	a	0	2	2	oewn
+oewn-a_priori-r	a priori	r	0	2	2	oewn
+oewn-a_trifle-r	a trifle	r	0	2	2	oewn

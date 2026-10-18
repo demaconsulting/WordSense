@@ -1,0 +1,1111 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-ubiquitous__5.00.00.present.02	derivation		oewn-ubiquitousness__1.26.00..
+oewn-ubiquitous__5.00.00.present.02	derivation		oewn-ubiquity__1.26.00..
+oewn-ugliness__1.07.00..	derivation		oewn-ugly__3.00.00..
+oewn-ugliness__1.07.01..	derivation		oewn-ugly__5.00.00.evil.00
+oewn-ulcer__1.26.00..	derivation		oewn-ulcerate__2.29.00..
+oewn-ulcer__1.26.00..	derivation		oewn-ulcerate__2.30.00..
+oewn-ulcer__1.26.00..	derivation		oewn-ulcerous__5.00.00.unhealthy.00
+oewn-ulcerate__2.29.00..	derivation		oewn-ulcerative__3.01.00..
+oewn-ulcerate__2.29.00..	other	body_part	oewn-ulcer__1.26.00..
+oewn-ulcerate__2.30.00..	derivation		oewn-ulceration__1.22.00..
+oewn-ulcerate__2.30.00..	derivation		oewn-ulcerative__3.01.00..
+oewn-ulcerate__2.30.00..	other	body_part	oewn-ulcer__1.26.00..
+oewn-ulcerate__2.30.00..	other	event	oewn-ulceration__1.22.00..
+oewn-ulcerative__3.01.00..	pertainym		oewn-ulceration__1.26.00..
+oewn-ulna__1.08.00..	derivation		oewn-ulnar__3.01.00..
+oewn-ulnar__3.01.00..	pertainym		oewn-ulna__1.08.00..
+oewn-ulteriorly__4.02.00..	pertainym		oewn-ulterior__5.00.00.covert.00
+oewn-ultimate__3.00.00..	derivation		oewn-ultimateness__1.26.00..
+oewn-ultimate__5.00.00.last.00	derivation		oewn-ultimateness__1.26.00..
+oewn-ultimately__4.02.01..	pertainym		oewn-ultimate__5.00.00.last.00
+oewn-ultracef__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-ultracentrifugation__1.22.00..	derivation		oewn-ultracentrifuge__2.38.00..
+oewn-ultracentrifuge__2.38.00..	other	event	oewn-ultracentrifugation__1.22.00..
+oewn-ultraconservative__1.18.00..	derivation		oewn-ultraconservative__5.00.00.conservative.00
+oewn-ultramarine__1.07.00..	derivation		oewn-ultramarine__5.00.00.chromatic.00
+oewn-ultramicroscope__1.06.00..	derivation		oewn-ultramicroscopic__3.01.00..
+oewn-ultramicroscopic__3.01.00..	pertainym		oewn-ultramicroscope__1.06.00..
+oewn-ultramontane__3.01.00..	pertainym		oewn-ultramontanism__1.09.00..
+oewn-ultranationalism__1.07.00..	derivation		oewn-ultranationalistic__5.00.00.patriotic.00
+oewn-ultrasonic__5.00.00.inaudible.00	derivation		oewn-ultrasound__1.19.00..
+oewn-ultrasonically__4.02.00..	pertainym		oewn-ultrasonic__5.00.00.inaudible.00
+oewn-ultraviolet__1.19.00..	derivation		oewn-ultraviolet__5.00.00.invisible.00
+oewn-ululate__2.32.00..	derivation		oewn-ululation__1.10.00..
+oewn-ululate__2.32.00..	other	event	oewn-ululation__1.10.00..
+oewn-umbel__1.20.00..	derivation		oewn-umbellar__3.01.00..
+oewn-umbellar__3.01.00..	pertainym		oewn-umbel__1.20.00..
+oewn-umbellate__3.01.00..	pertainym		oewn-umbel__1.20.00..
+oewn-umbelliform__3.01.00..	pertainym		oewn-umbel__1.20.00..
+oewn-umber__1.07.00..	derivation		oewn-umber__5.00.00.chromatic.00
+oewn-umbilical__3.01.00..	derivation		oewn-umbilicus__1.08.00..
+oewn-umbilical__3.01.00..	pertainym		oewn-umbilicus__1.08.00..
+oewn-umbrage__1.12.00..	derivation		oewn-umbrageous__5.00.00.angry.00
+oewn-umpirage__1.04.00..	derivation		oewn-umpire__2.33.00..
+oewn-umpirage__1.10.00..	derivation		oewn-umpire__2.33.00..
+oewn-umpire__1.18.00..	derivation		oewn-umpire__2.33.00..
+oewn-umpire__2.33.00..	other	agent	oewn-umpire__1.18.00..
+oewn-unabashedly__4.02.00..	pertainym		oewn-unabashed__5.00.00.unashamed.00
+oewn-unacceptability__1.07.00..	derivation		oewn-unacceptable__3.00.00..
+oewn-unacceptability__1.07.00..	derivation		oewn-unacceptable__5.00.00.intolerable.00
+oewn-unacceptable__3.00.00..	derivation		oewn-unacceptableness__1.07.00..
+oewn-unacceptable__5.00.00.intolerable.00	derivation		oewn-unacceptableness__1.07.00..
+oewn-unacceptable__5.00.00.nonstandard.03	derivation		oewn-unacceptableness__1.07.00..
+oewn-unacceptable__5.00.00.unsatisfactory.00	derivation		oewn-unacceptableness__1.07.00..
+oewn-unacceptably__4.02.00..	pertainym		oewn-acceptable__3.00.00..
+oewn-unaccompanied__4.02.00..	pertainym		oewn-unaccompanied__3.00.00..
+oewn-unaccountably__4.02.00..	pertainym		oewn-unaccountable__5.00.00.inexplicable.00
+oewn-unachievably__4.02.00..	pertainym		oewn-unachievable__5.00.00.impossible.00
+oewn-unadaptability__1.07.00..	derivation		oewn-unadaptable__3.00.00..
+oewn-unadvisedly__4.02.02..	pertainym		oewn-unadvised__3.00.02..
+oewn-unaffected__3.00.01..	derivation		oewn-unaffectedness__1.07.00..
+oewn-unalterability__1.07.00..	derivation		oewn-unalterable__3.00.00..
+oewn-unalterability__1.07.00..	derivation		oewn-unalterable__5.00.00.unchangeable.00
+oewn-unalterability__1.07.01..	derivation		oewn-unalterable__3.00.00..
+oewn-unalterability__1.07.01..	derivation		oewn-unalterable__5.00.00.unchangeable.00
+oewn-unalterably__4.02.00..	pertainym		oewn-unalterable__3.00.00..
+oewn-unambiguity__1.07.00..	derivation		oewn-unambiguous__3.00.00..
+oewn-unambiguity__1.07.00..	derivation		oewn-unambiguous__3.00.04..
+oewn-unambiguously__4.02.01..	pertainym		oewn-unambiguous__3.00.00..
+oewn-unambitiously__4.02.00..	pertainym		oewn-unambitious__3.00.00..
+oewn-unanimity__1.26.00..	derivation		oewn-unanimous__5.00.00.accordant.00
+oewn-unanimity__1.26.00..	derivation		oewn-unanimous__5.00.00.undiversified.00
+oewn-unanimously__4.02.00..	pertainym		oewn-unanimous__5.00.00.accordant.00
+oewn-unappealingly__4.02.00..	pertainym		oewn-unappealing__3.00.00..
+oewn-unappetising__3.00.00..	derivation		oewn-unappetisingness__1.07.00..
+oewn-unappetising__3.00.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unappetising__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unappetizing__3.00.00..	derivation		oewn-unappetizingness__1.07.00..
+oewn-unappetizing__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unappreciatively__4.02.00..	pertainym		oewn-unappreciative__5.00.00.ungrateful.00
+oewn-unapproachability__1.07.00..	derivation		oewn-unapproachable__3.00.00..
+oewn-unarguably__4.02.00..	pertainym		oewn-unarguable__5.00.00.incontestable.00
+oewn-unashamedly__4.02.00..	pertainym		oewn-unashamed__3.00.00..
+oewn-unassailably__4.02.00..	pertainym		oewn-unassailable__5.00.00.incontestable.00
+oewn-unassertive__3.00.00..	derivation		oewn-unassertiveness__1.12.00..
+oewn-unassertively__4.02.00..	pertainym		oewn-unassertive__3.00.00..
+oewn-unassuming__5.00.00.modest.02	derivation		oewn-unassumingness__1.07.00..
+oewn-unassumingly__4.02.00..	pertainym		oewn-unassuming__5.00.00.modest.02
+oewn-unattainable__5.00.00.impossible.00	derivation		oewn-unattainableness__1.26.00..
+oewn-unattainably__4.02.00..	pertainym		oewn-unattainable__5.00.00.impossible.00
+oewn-unattractive__3.00.00..	derivation		oewn-unattractiveness__1.07.00..
+oewn-unattractively__4.02.00..	pertainym		oewn-unattractive__3.00.00..
+oewn-unavailability__1.07.00..	derivation		oewn-unavailable__3.00.00..
+oewn-unavenged__3.44.00..	participle		oewn-avenge__2.33.00..
+oewn-unavoidably__4.02.00..	pertainym		oewn-unavoidable__5.00.00.inevitable.00
+oewn-unaware__3.00.00..	derivation		oewn-unawareness__1.09.00..
+oewn-unbalance__1.26.01..	derivation		oewn-unbalance__2.37.00..
+oewn-unbalance__2.37.00..	other	result	oewn-unbalance__1.26.01..
+oewn-unbearable__3.00.00..	derivation		oewn-unbearably__4.02.00..
+oewn-unbearably__4.02.00..	pertainym		oewn-unbearable__3.00.00..
+oewn-unbecoming__5.00.00.improper.00	derivation		oewn-unbecomingness__1.07.00..
+oewn-unbecomingly__4.02.00..	pertainym		oewn-unbecoming__5.00.00.improper.00
+oewn-unbelievably__4.02.00..	pertainym		oewn-unbelievable__3.00.04..
+oewn-unbelievably__4.02.03..	pertainym		oewn-unbelievable__3.00.04..
+oewn-unbelievingly__4.02.00..	pertainym		oewn-unbelieving__5.00.00.incredulous.00
+oewn-unblinkingly__4.02.00..	pertainym		oewn-unblinking__5.00.00.unemotional.00
+oewn-unblushingly__4.02.00..	pertainym		oewn-unblushing__5.00.00.unashamed.00
+oewn-unbounded__5.00.00.infinite.00	derivation		oewn-unboundedness__1.07.00..
+oewn-unbreakable__3.00.00..	derivation		oewn-unbreakableness__1.07.00..
+oewn-uncannily__4.02.00..	pertainym		oewn-uncanny__5.00.00.supernatural.00
+oewn-unceasingly__4.02.00..	pertainym		oewn-unceasing__5.00.00.continuous.01
+oewn-unceremonious__5.00.00.informal.01	derivation		oewn-unceremoniousness__1.07.00..
+oewn-unceremoniously__4.02.00..	pertainym		oewn-unceremonious__5.00.00.discourteous.00
+oewn-uncertain__3.00.01..	derivation		oewn-uncertainness__1.07.00..
+oewn-uncertain__3.00.02..	derivation		oewn-uncertainness__1.07.00..
+oewn-uncertain__3.00.03..	derivation		oewn-uncertainness__1.07.00..
+oewn-uncertain__3.00.05..	derivation		oewn-uncertainness__1.07.00..
+oewn-uncertain__5.00.00.unreliable.00	derivation		oewn-uncertainness__1.07.00..
+oewn-uncertainly__4.02.00..	pertainym		oewn-uncertain__3.00.02..
+oewn-uncertainly__4.02.01..	pertainym		oewn-uncertain__3.00.02..
+oewn-unchangeability__1.07.00..	derivation		oewn-unchangeable__3.00.00..
+oewn-unchangeable__3.00.00..	derivation		oewn-unchangeableness__1.07.00..
+oewn-unchangeably__4.02.00..	pertainym		oewn-unchangeable__3.00.00..
+oewn-unchanging__5.00.00.consistent.00	derivation		oewn-unchangingness__1.07.00..
+oewn-unchanging__5.00.00.unchangeable.00	derivation		oewn-unchangingness__1.07.00..
+oewn-uncharacteristically__4.02.00..	pertainym		oewn-uncharacteristic__3.00.00..
+oewn-uncheerful__3.00.04..	derivation		oewn-uncheerfulness__1.07.00..
+oewn-uncheerful__3.00.04..	derivation		oewn-uncheerfulness__1.12.00..
+oewn-unchivalrously__4.02.00..	pertainym		oewn-unchivalrous__5.00.00.discourteous.00
+oewn-uncial__1.10.00..	derivation		oewn-uncial__3.01.00..
+oewn-uncial__3.01.00..	pertainym		oewn-uncial__1.10.00..
+oewn-uncivilly__4.02.00..	pertainym		oewn-uncivil__3.00.00..
+oewn-unclean__3.00.00..	derivation		oewn-uncleanness__1.26.00..
+oewn-unclean__3.00.04..	derivation		oewn-uncleanness__1.26.00..
+oewn-uncleanliness__1.07.00..	derivation		oewn-uncleanly__5.00.00.dirty.01
+oewn-unclear__3.00.00..	derivation		oewn-unclearness__1.07.00..
+oewn-unclear__3.00.04..	derivation		oewn-unclearness__1.07.00..
+oewn-unclear__5.00.00.illegible.00	derivation		oewn-unclearness__1.07.00..
+oewn-unclearly__4.02.00..	pertainym		oewn-unclear__3.00.00..
+oewn-unclearly__4.02.00..	pertainym		oewn-unclear__3.00.04..
+oewn-unclearly__4.02.00..	pertainym		oewn-unclear__5.00.00.illegible.00
+oewn-unclouded__5.00.00.clear.02	derivation		oewn-uncloudedness__1.07.00..
+oewn-unclouded__5.00.00.clearheaded.00	derivation		oewn-uncloudedness__1.07.00..
+oewn-unclouded__5.00.00.pure.02	derivation		oewn-uncloudedness__1.07.00..
+oewn-unclouded__5.00.01.clear.03	derivation		oewn-uncloudedness__1.07.00..
+oewn-uncollected__3.44.00..	participle		oewn-collect__2.35.00..
+oewn-uncomfortable__3.00.01..	derivation		oewn-uncomfortableness__1.12.00..
+oewn-uncomfortable__3.00.01..	derivation		oewn-uncomfortableness__1.26.00..
+oewn-uncomfortably__4.02.00..	pertainym		oewn-uncomfortable__3.00.00..
+oewn-uncommon__3.00.00..	derivation		oewn-uncommonness__1.07.00..
+oewn-uncommon__5.00.00.extraordinary.00	derivation		oewn-uncommonness__1.07.01..
+oewn-uncommonly__4.02.00..	pertainym		oewn-uncommon__3.00.00..
+oewn-uncommunicative__3.00.00..	derivation		oewn-uncommunicativeness__1.07.00..
+oewn-uncomplainingly__4.02.00..	pertainym		oewn-uncomplaining__3.00.00..
+oewn-uncompromisingly__4.02.00..	pertainym		oewn-uncompromising__3.00.00..
+oewn-unconcernedly__4.02.00..	pertainym		oewn-unconcerned__3.00.00..
+oewn-unconditionally__4.02.00..	pertainym		oewn-unconditional__3.00.00..
+oewn-unconfessed__1.14.00..	derivation		oewn-unconfessed__5.00.00.unacknowledged.00
+oewn-uncongenial__3.00.00..	derivation		oewn-uncongeniality__1.07.00..
+oewn-unconnected__3.00.00..	derivation		oewn-unconnectedness__1.24.00..
+oewn-unconnected__5.00.00.unrelated.01	derivation		oewn-unconnectedness__1.24.00..
+oewn-unconscientious__3.00.00..	derivation		oewn-unconscientiousness__1.07.00..
+oewn-unconscious__3.00.00..	derivation		oewn-unconsciousness__1.09.00..
+oewn-unconscious__5.00.01.unaware.00	derivation		oewn-unconsciousness__1.09.00..
+oewn-unconsciously__4.02.00..	pertainym		oewn-unconscious__3.00.00..
+oewn-unconstitutionally__4.02.00..	pertainym		oewn-unconstitutional__3.00.00..
+oewn-uncontested__3.44.00..	participle		oewn-contest__2.32.00..
+oewn-uncontrollably__4.02.00..	pertainym		oewn-uncontrolled__3.00.00..
+oewn-uncontroversially__4.02.00..	pertainym		oewn-uncontroversial__3.00.00..
+oewn-unconventional__3.00.00..	derivation		oewn-unconventionality__1.09.00..
+oewn-unconventional__5.00.00.irregular.00	derivation		oewn-unconventionality__1.07.00..
+oewn-unconventionally__4.02.00..	pertainym		oewn-unconventional__3.00.00..
+oewn-unconvincingly__4.02.00..	pertainym		oewn-unconvincing__3.00.00..
+oewn-uncouth__5.00.00.unrefined.01	derivation		oewn-uncouthness__1.07.00..
+oewn-uncouthly__4.02.00..	pertainym		oewn-uncouth__5.00.00.unrefined.01
+oewn-uncreative__3.00.00..	derivation		oewn-uncreativeness__1.09.00..
+oewn-uncritically__4.02.00..	pertainym		oewn-uncritical__3.00.01..
+oewn-unctuous__5.00.00.insincere.00	derivation		oewn-unctuousness__1.07.00..
+oewn-unctuously__4.02.00..	pertainym		oewn-unctuous__5.00.00.insincere.00
+oewn-undecidable__5.00.00.impossible.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-undecideable__5.00.01.impossible.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-undecipherably__4.02.00..	pertainym		oewn-undecipherable__5.00.00.illegible.00
+oewn-undemocratically__4.02.00..	pertainym		oewn-undemocratic__3.00.00..
+oewn-undeniably__4.02.00..	pertainym		oewn-undeniable__3.00.00..
+oewn-undependability__1.07.00..	derivation		oewn-undependable__3.00.00..
+oewn-undependable__3.00.00..	derivation		oewn-undependableness__1.07.00..
+oewn-undependable__5.00.00.fallible.00	derivation		oewn-undependableness__1.07.00..
+oewn-undependably__4.02.00..	pertainym		oewn-undependable__3.00.00..
+oewn-under_way__4.02.00..	pertainym		oewn-moving__3.00.02..
+oewn-underachieve__2.41.00..	derivation		oewn-underachievement__1.04.00..
+oewn-underachieve__2.41.00..	derivation		oewn-underachiever__1.18.00..
+oewn-underachieve__2.41.00..	other	agent	oewn-underachiever__1.18.00..
+oewn-underachieve__2.41.00..	other	event	oewn-underachievement__1.04.00..
+oewn-undercharge__1.21.00..	derivation		oewn-undercharge__2.40.00..
+oewn-undercharge__2.40.00..	other	undergoer	oewn-undercharge__1.21.00..
+oewn-undercoat__1.06.01..	derivation		oewn-undercoat__2.35.00..
+oewn-undercoat__1.06.02..	derivation		oewn-undercoat__2.35.00..
+oewn-undercoat__2.35.00..	other	uses	oewn-undercoat__1.06.01..
+oewn-undercoat__2.35.00..	other	uses	oewn-undercoat__1.06.02..
+oewn-undercut__1.04.00..	derivation		oewn-undercut__2.35.00..
+oewn-undercut__1.04.01..	derivation		oewn-undercut__2.35.01..
+oewn-undercut__1.04.01..	derivation		oewn-undercut__2.35.02..
+oewn-undercut__1.06.00..	derivation		oewn-undercut__2.35.03..
+oewn-undercut__1.27.00..	derivation		oewn-undercut__2.35.01..
+oewn-undercut__1.27.00..	derivation		oewn-undercut__2.35.02..
+oewn-undercut__2.35.00..	other	event	oewn-undercut__1.04.00..
+oewn-undercut__2.35.01..	other	event	oewn-undercut__1.04.01..
+oewn-undercut__2.35.01..	other	undergoer	oewn-undercut__1.27.00..
+oewn-undercut__2.35.02..	other	event	oewn-undercut__1.04.01..
+oewn-undercut__2.35.02..	other	undergoer	oewn-undercut__1.27.00..
+oewn-undercut__2.35.03..	other	event	oewn-undercut__1.06.00..
+oewn-underdevelop__2.39.00..	derivation		oewn-underdevelopment__1.22.00..
+oewn-underdevelop__2.39.00..	other	event	oewn-underdevelopment__1.22.00..
+oewn-underestimate__1.09.00..	derivation		oewn-underestimate__2.31.00..
+oewn-underestimate__1.09.00..	derivation		oewn-underestimate__2.31.02..
+oewn-underestimate__2.31.00..	derivation		oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.00..	other	event	oewn-underestimate__1.09.00..
+oewn-underestimate__2.31.00..	other	event	oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.01..	derivation		oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.01..	other	event	oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.02..	derivation		oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.02..	other	event	oewn-underestimation__1.09.00..
+oewn-underestimate__2.31.02..	other	uses	oewn-underestimate__1.09.00..
+oewn-underexpose__2.39.01..	derivation		oewn-underexposure__1.04.00..
+oewn-underground__1.14.00..	derivation		oewn-underground__5.00.00.covert.00
+oewn-underhandedly__4.02.00..	pertainym		oewn-underhand__5.00.00.crooked.02
+oewn-underlay__2.35.00..	derivation		oewn-underlayment__1.06.00..
+oewn-underline__1.10.00..	derivation		oewn-underline__2.32.03..
+oewn-underline__2.32.03..	other	event	oewn-underline__1.10.00..
+oewn-undernourish__2.34.00..	derivation		oewn-undernourishment__1.26.00..
+oewn-undernourish__2.34.00..	other	state	oewn-undernourishment__1.26.00..
+oewn-underpay__2.40.00..	derivation		oewn-underpayment__1.04.00..
+oewn-underpay__2.40.00..	other	event	oewn-underpayment__1.04.00..
+oewn-underperform__2.41.00..	derivation		oewn-underperformer__1.14.00..
+oewn-underperform__2.41.00..	derivation		oewn-underperformer__1.18.00..
+oewn-underperform__2.41.00..	other	agent	oewn-underperformer__1.14.00..
+oewn-underperform__2.41.00..	other	agent	oewn-underperformer__1.18.00..
+oewn-underproduce__2.36.00..	derivation		oewn-underproduction__1.04.00..
+oewn-underproduce__2.36.00..	other	event	oewn-underproduction__1.04.00..
+oewn-underrate__2.31.00..	derivation		oewn-underrating__1.09.00..
+oewn-underscore__1.10.00..	derivation		oewn-underscore__2.32.03..
+oewn-underscore__2.32.03..	other	event	oewn-underscore__1.10.00..
+oewn-undersell__2.40.00..	derivation		oewn-underseller__1.18.00..
+oewn-undersell__2.40.00..	other	agent	oewn-underseller__1.18.00..
+oewn-undershirt__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-understand__2.31.00..	derivation		oewn-understandable__5.00.00.comprehensible.00
+oewn-understand__2.31.00..	derivation		oewn-understanding__1.09.01..
+oewn-understand__2.31.01..	derivation		oewn-understandable__5.00.00.comprehensible.00
+oewn-understand__2.31.01..	derivation		oewn-understanding__1.09.01..
+oewn-understand__2.31.03..	derivation		oewn-understandable__5.00.00.comprehensible.00
+oewn-understand__2.31.04..	derivation		oewn-understandable__5.00.00.comprehensible.00
+oewn-understand__2.31.04..	derivation		oewn-understanding__1.09.03..
+oewn-understandability__1.07.00..	derivation		oewn-understandable__5.00.00.comprehensible.00
+oewn-understandably__4.02.00..	pertainym		oewn-comprehensible__3.00.00..
+oewn-understandingly__4.02.00..	pertainym		oewn-understanding__5.00.00.perceptive.00
+oewn-understate__2.32.00..	derivation		oewn-understatement__1.10.00..
+oewn-understate__2.32.00..	other	event	oewn-understatement__1.10.00..
+oewn-understood__3.00.00..	antonym		oewn-ununderstood__3.00.00..
+oewn-understudy__1.18.00..	derivation		oewn-understudy__2.31.00..
+oewn-understudy__2.31.00..	other	agent	oewn-understudy__1.18.00..
+oewn-undertake__2.36.00..	derivation		oewn-undertaking__1.04.00..
+oewn-undervaluation__1.09.00..	derivation		oewn-undervalue__2.31.00..
+oewn-undervaluation__1.09.00..	derivation		oewn-undervalue__2.31.01..
+oewn-undervalue__2.31.00..	other	undergoer	oewn-undervaluation__1.09.00..
+oewn-undervalue__2.31.01..	other	result	oewn-undervaluation__1.09.00..
+oewn-underwrite__2.32.00..	derivation		oewn-underwriter__1.14.00..
+oewn-underwrite__2.32.00..	derivation		oewn-underwriter__1.18.01..
+oewn-underwrite__2.32.00..	other	agent	oewn-underwriter__1.14.00..
+oewn-underwrite__2.32.00..	other	agent	oewn-underwriter__1.18.01..
+oewn-undescended__3.01.00..	pertainym		oewn-undescended_testicle__1.08.00..
+oewn-undeservedly__4.02.00..	pertainym		oewn-undeserved__5.00.00.unmerited.00
+oewn-undesirability__1.07.00..	derivation		oewn-undesirable__3.00.00..
+oewn-undesirability__1.07.00..	derivation		oewn-undesirable__5.00.00.ineligible.00
+oewn-undesirable__1.18.00..	derivation		oewn-undesirable__3.00.00..
+oewn-undesirably__4.02.00..	pertainym		oewn-undesirable__3.00.00..
+oewn-undiplomatically__4.02.00..	pertainym		oewn-diplomatic__3.00.00..
+oewn-undisputedly__4.02.00..	pertainym		oewn-undisputed__5.00.00.uncontroversial.00
+oewn-undo__2.35.00..	derivation		oewn-undoing__1.04.00..
+oewn-undo__2.35.01..	derivation		oewn-undoer__1.18.01..
+oewn-undo__2.35.01..	derivation		oewn-undoing__1.04.01..
+oewn-undo__2.35.01..	other	agent	oewn-undoer__1.18.01..
+oewn-undo__2.35.03..	derivation		oewn-undoer__1.18.01..
+oewn-undo__2.35.03..	other	agent	oewn-undoer__1.18.01..
+oewn-undo__2.41.00..	derivation		oewn-undoer__1.18.00..
+oewn-undo__2.41.00..	derivation		oewn-undoer__1.18.02..
+oewn-undo__2.41.00..	other	agent	oewn-undoer__1.18.00..
+oewn-undo__2.41.00..	other	agent	oewn-undoer__1.18.02..
+oewn-undramatically__4.02.00..	pertainym		oewn-undramatic__3.00.00..
+oewn-undress__1.26.00..	derivation		oewn-undress__2.29.00..
+oewn-undress__1.26.00..	derivation		oewn-undress__2.30.00..
+oewn-undress__2.29.00..	other	event	oewn-undress__1.26.00..
+oewn-undress__2.30.00..	other	event	oewn-undress__1.26.00..
+oewn-undulant__3.01.00..	pertainym		oewn-undulation__1.11.01..
+oewn-undulate__2.38.00..	derivation		oewn-undulation__1.11.00..
+oewn-undulate__2.38.00..	derivation		oewn-undulation__1.11.01..
+oewn-undulate__2.38.00..	other	event	oewn-undulation__1.11.00..
+oewn-undulate__2.38.00..	other	event	oewn-undulation__1.11.01..
+oewn-undulatory__3.01.00..	pertainym		oewn-undulation__1.11.01..
+oewn-unduly__4.02.00..	pertainym		oewn-undue__3.00.00..
+oewn-undutiful__5.00.00.disrespectful.00	derivation		oewn-undutifulness__1.07.00..
+oewn-uneasily__4.02.00..	pertainym		oewn-uneasy__3.00.00..
+oewn-uneasiness__1.07.00..	derivation		oewn-uneasy__3.00.05..
+oewn-uneasiness__1.07.00..	derivation		oewn-uneasy__5.00.00.troubled.00
+oewn-uneasiness__1.07.02..	derivation		oewn-uneasy__5.00.00.uncomfortable.01
+oewn-uneasiness__1.12.01..	derivation		oewn-uneasy__5.00.00.uncomfortable.01
+oewn-uneasiness__1.12.02..	derivation		oewn-uneasy__3.00.00..
+oewn-uneasiness__1.26.00..	derivation		oewn-uneasy__5.00.00.uncomfortable.00
+oewn-unemotional__3.00.00..	derivation		oewn-unemotionality__1.07.00..
+oewn-unemotionally__4.02.00..	pertainym		oewn-unemotional__3.00.00..
+oewn-unendingly__4.02.00..	pertainym		oewn-unending__5.00.00.permanent.00
+oewn-unenthusiastically__4.02.00..	pertainym		oewn-unenthusiastic__3.00.00..
+oewn-unequally__4.02.02..	pertainym		oewn-unequal__3.00.00..
+oewn-unequivocal__3.00.00..	derivation		oewn-unequivocalness__1.07.00..
+oewn-unequivocal__5.00.00.explicit.00	derivation		oewn-unequivocalness__1.07.00..
+oewn-unequivocally__4.02.01..	pertainym		oewn-unequivocal__3.00.00..
+oewn-unerringly__4.02.00..	pertainym		oewn-unerring__5.00.00.infallible.00
+oewn-unethically__4.02.00..	pertainym		oewn-unethical__3.00.00..
+oewn-uneven__3.00.00..	derivation		oewn-unevenness__1.07.00..
+oewn-uneven__5.00.00.inconsistent.00	derivation		oewn-unevenness__1.07.00..
+oewn-uneven__5.00.00.unequal.00	derivation		oewn-unevenness__1.07.02..
+oewn-unevenly__4.02.00..	pertainym		oewn-uneven__3.00.00..
+oewn-unevenly__4.02.01..	pertainym		oewn-uneven__5.00.00.unequal.00
+oewn-uneventfully__4.02.00..	pertainym		oewn-uneventful__3.00.00..
+oewn-unexchangeability__1.07.00..	derivation		oewn-unexchangeable__3.00.00..
+oewn-unexchangeability__1.07.00..	derivation		oewn-unexchangeable__3.00.04..
+oewn-unexcitingly__4.02.00..	pertainym		oewn-unexciting__3.00.00..
+oewn-unexpected__3.00.00..	derivation		oewn-unexpectedness__1.07.00..
+oewn-unexpectedly__4.02.00..	pertainym		oewn-unexpected__3.00.00..
+oewn-unexpectedly__4.02.01..	pertainym		oewn-unexpected__3.00.00..
+oewn-unfailingly__4.02.00..	pertainym		oewn-unfailing__5.00.00.infallible.00
+oewn-unfair__3.00.00..	derivation		oewn-unfairness__1.04.00..
+oewn-unfair__3.00.00..	derivation		oewn-unfairness__1.07.00..
+oewn-unfair__3.00.00..	derivation		oewn-unfairness__1.09.00..
+oewn-unfairly__4.02.00..	pertainym		oewn-unfair__3.00.00..
+oewn-unfaithful__3.00.00..	derivation		oewn-unfaithfulness__1.07.00..
+oewn-unfaithful__3.00.01..	derivation		oewn-unfaithfulness__1.07.00..
+oewn-unfaithful__5.00.00.disloyal.00	derivation		oewn-unfaithfulness__1.07.00..
+oewn-unfaithfully__4.02.00..	pertainym		oewn-unfaithful__3.00.00..
+oewn-unfalteringly__4.02.00..	pertainym		oewn-unfaltering__5.00.00.resolute.00
+oewn-unfamiliar__3.00.00..	derivation		oewn-unfamiliarity__1.07.00..
+oewn-unfashionably__4.02.00..	pertainym		oewn-unfashionable__3.00.00..
+oewn-unfasten__2.35.00..	derivation		oewn-unfastening__1.04.00..
+oewn-unfasten__2.35.01..	derivation		oewn-unfastener__1.18.00..
+oewn-unfasten__2.35.01..	derivation		oewn-unfastening__1.04.00..
+oewn-unfasten__2.35.01..	other	agent	oewn-unfastener__1.18.00..
+oewn-unfavorable__3.00.01..	derivation		oewn-unfavorableness__1.07.00..
+oewn-unfavorable__3.00.02..	derivation		oewn-unfavorableness__1.07.00..
+oewn-unfavorable__3.00.03..	derivation		oewn-unfavorableness__1.07.00..
+oewn-unfavorably__4.02.00..	pertainym		oewn-unfavorable__3.00.02..
+oewn-unfavourable__3.00.01..	derivation		oewn-unfavourableness__1.07.00..
+oewn-unfavourable__3.00.02..	derivation		oewn-unfavourableness__1.07.00..
+oewn-unfavourable__3.00.03..	derivation		oewn-unfavourableness__1.07.00..
+oewn-unfeasibility__1.07.00..	derivation		oewn-unfeasible__5.00.00.impossible.00
+oewn-unfeasible__5.00.00.impossible.00	exemplifies		oewn-british_english__1.10.01..
+oewn-unfeeling__5.00.00.uncompassionate.00	derivation		oewn-unfeelingness__1.07.00..
+oewn-unfeelingly__4.02.00..	pertainym		oewn-unfeeling__5.00.00.uncompassionate.00
+oewn-unfeelingly__4.02.01..	pertainym		oewn-unfeeling__5.00.00.uncompassionate.00
+oewn-unfeignedly__4.02.00..	pertainym		oewn-unfeigned__5.00.00.sincere.00
+oewn-unfilled__3.44.00..	participle		oewn-fill__2.34.02..
+oewn-unfit__3.00.01..	derivation		oewn-unfitness__1.07.01..
+oewn-unfit__3.00.01..	derivation		oewn-unfitness__1.26.00..
+oewn-unfit__3.00.02..	derivation		oewn-unfitness__1.07.00..
+oewn-unfit__5.00.00.unhealthy.00	derivation		oewn-unfitness__1.26.00..
+oewn-unfold__2.30.00..	derivation		oewn-unfolding__1.22.00..
+oewn-unforgettably__4.02.00..	pertainym		oewn-unforgettable__3.00.00..
+oewn-unforgivably__4.02.00..	pertainym		oewn-unforgivable__5.00.00.unpardonable.00
+oewn-unforgivingly__4.02.00..	pertainym		oewn-unforgiving__3.00.00..
+oewn-unfortunate__1.18.00..	derivation		oewn-unfortunate__3.00.00..
+oewn-unfortunately__4.02.00..	pertainym		oewn-unfortunate__3.00.00..
+oewn-unfretted__3.01.00..	pertainym		oewn-fret__1.06.00..
+oewn-unfriendliness__1.07.00..	derivation		oewn-unfriendly__3.00.01..
+oewn-unfriendliness__1.12.00..	derivation		oewn-unfriendly__5.00.01.hostile.01
+oewn-ungainliness__1.07.00..	derivation		oewn-ungainly__5.00.00.awkward.00
+oewn-ungathered__3.44.00..	participle		oewn-gather__2.35.00..
+oewn-ungodliness__1.07.00..	derivation		oewn-ungodly__5.00.00.wicked.00
+oewn-ungraceful__5.00.00.awkward.00	derivation		oewn-ungracefulness__1.07.00..
+oewn-ungracefully__4.02.01..	pertainym		oewn-ungraceful__5.00.00.awkward.00
+oewn-ungracious__5.00.00.impolite.00	derivation		oewn-ungraciousness__1.07.00..
+oewn-ungrammatically__4.02.00..	pertainym		oewn-ungrammatical__3.00.00..
+oewn-ungrateful__3.00.00..	derivation		oewn-ungratefulness__1.12.00..
+oewn-ungratefully__4.02.00..	pertainym		oewn-ungrateful__3.00.00..
+oewn-ungrudgingly__4.02.00..	pertainym		oewn-ungrudging__5.00.00.generous.02
+oewn-ungual__3.01.01..	pertainym		oewn-claw__1.05.00..
+oewn-ungual__3.01.01..	pertainym		oewn-hoof__1.05.00..
+oewn-ungual__3.01.01..	pertainym		oewn-nail__1.08.00..
+oewn-unguiculate__1.05.00..	derivation		oewn-unguiculate__3.00.00..
+oewn-unguiculate__3.00.00..	antonym		oewn-ungulate__3.00.00..
+oewn-ungulate__1.05.00..	derivation		oewn-ungulate__3.00.00..
+oewn-unhappily__4.02.00..	pertainym		oewn-unhappy__5.00.00.unpleasant.00
+oewn-unhappiness__1.12.00..	derivation		oewn-unhappy__3.00.00..
+oewn-unhappiness__1.12.00..	derivation		oewn-unhappy__3.00.04..
+oewn-unhappiness__1.26.00..	derivation		oewn-unhappy__3.00.00..
+oewn-unhealthful__3.00.00..	derivation		oewn-unhealthfulness__1.07.00..
+oewn-unhealthful__3.00.02..	derivation		oewn-unhealthfulness__1.07.00..
+oewn-unhealthful__5.00.00.unwholesome.00	derivation		oewn-unhealthfulness__1.07.00..
+oewn-unhealthiness__1.26.00..	derivation		oewn-unhealthy__3.00.00..
+oewn-unhelpful__3.00.00..	derivation		oewn-unhelpfulness__1.07.00..
+oewn-unhelpfully__4.02.00..	pertainym		oewn-unhelpful__3.00.00..
+oewn-unhesitatingly__4.02.00..	pertainym		oewn-unhesitating__5.00.00.decisive.01
+oewn-unholiness__1.07.00..	derivation		oewn-unholy__3.00.00..
+oewn-unholiness__1.07.00..	derivation		oewn-unholy__5.00.00.evil.00
+oewn-unholiness__1.07.00..	derivation		oewn-unholy__5.00.00.unrighteous.00
+oewn-unhurried__3.00.00..	derivation		oewn-unhurriedness__1.07.00..
+oewn-unhurried__5.00.00.patient.00	derivation		oewn-unhurriedness__1.07.00..
+oewn-unhurriedly__4.02.00..	pertainym		oewn-unhurried__3.00.00..
+oewn-unhygienically__4.02.00..	pertainym		oewn-unhygienic__5.00.00.unsanitary.00
+oewn-uniate__3.01.00..	pertainym		oewn-uniate_church__1.14.00..
+oewn-unicellular__3.01.00..	pertainym		oewn-cell__1.03.00..
+oewn-unicycle__1.06.00..	derivation		oewn-unicycle__2.38.00..
+oewn-unicycle__1.06.00..	derivation		oewn-unicyclist__1.18.00..
+oewn-unification__1.04.00..	derivation		oewn-unify__2.30.00..
+oewn-unification__1.04.00..	derivation		oewn-unify__2.41.00..
+oewn-unification__1.11.00..	derivation		oewn-unify__2.30.00..
+oewn-unification__1.11.00..	derivation		oewn-unify__2.30.01..
+oewn-unifilar__3.01.00..	pertainym		oewn-filar__3.01.00..
+oewn-uniform__1.06.00..	derivation		oewn-uniform__2.40.00..
+oewn-uniform__2.40.00..	other	uses	oewn-uniform__1.06.00..
+oewn-uniform__3.00.00..	derivation		oewn-uniformity__1.07.00..
+oewn-uniform__3.00.00..	derivation		oewn-uniformity__1.07.01..
+oewn-uniform__3.00.00..	derivation		oewn-uniformness__1.07.00..
+oewn-uniform__3.00.04..	derivation		oewn-uniformity__1.07.00..
+oewn-uniform__3.00.04..	derivation		oewn-uniformity__1.07.01..
+oewn-uniform__3.00.04..	derivation		oewn-uniformize__2.30.00..
+oewn-uniform__5.00.00.homogeneous.00	derivation		oewn-uniformity__1.07.00..
+oewn-uniform__5.00.00.homogeneous.00	derivation		oewn-uniformity__1.07.01..
+oewn-uniform__5.00.00.homogeneous.00	derivation		oewn-uniformness__1.07.00..
+oewn-uniform__5.00.00.regular.00	derivation		oewn-uniformity__1.07.00..
+oewn-uniformise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-uniformise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-uniformize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-uniformly__4.02.00..	pertainym		oewn-uniform__5.00.00.homogeneous.00
+oewn-unify__2.30.00..	derivation		oewn-unit__1.03.00..
+oewn-unify__2.30.00..	derivation		oewn-unit__1.09.00..
+oewn-unify__2.30.00..	other	event	oewn-unification__1.04.00..
+oewn-unify__2.30.00..	other	event	oewn-unification__1.11.00..
+oewn-unify__2.30.00..	other	result	oewn-unit__1.03.00..
+oewn-unify__2.30.00..	other	result	oewn-unit__1.09.00..
+oewn-unify__2.30.01..	other	event	oewn-unification__1.11.00..
+oewn-unify__2.35.00..	derivation		oewn-unit__1.03.00..
+oewn-unify__2.35.00..	other	result	oewn-unit__1.03.00..
+oewn-unify__2.41.00..	other	event	oewn-unification__1.04.00..
+oewn-unilateralism__1.09.00..	derivation		oewn-unilateralist__1.18.00..
+oewn-unilaterally__4.02.00..	pertainym		oewn-unilateral__3.00.00..
+oewn-unimaginably__4.02.00..	pertainym		oewn-unimaginable__5.00.00.unthinkable.00
+oewn-unimaginatively__4.02.00..	pertainym		oewn-unimaginative__5.00.00.uncreative.00
+oewn-unimpeachably__4.02.00..	pertainym		oewn-unimpeachable__5.00.00.unquestionable.00
+oewn-unimportance__1.07.00..	derivation		oewn-unimportant__3.00.00..
+oewn-unimportance__1.07.00..	derivation		oewn-unimportant__3.00.04..
+oewn-unimportance__1.26.00..	derivation		oewn-unimportant__3.00.00..
+oewn-unimportance__1.26.00..	derivation		oewn-unimportant__3.00.04..
+oewn-unimpressively__4.02.00..	pertainym		oewn-unimpressive__3.00.00..
+oewn-uninformatively__4.02.00..	pertainym		oewn-uninformative__3.00.00..
+oewn-uninitiate__1.14.00..	derivation		oewn-uninitiate__5.00.00.inexperienced.00
+oewn-uninstructively__4.02.00..	pertainym		oewn-uninstructive__3.00.00..
+oewn-unintelligently__4.02.00..	pertainym		oewn-unintelligent__3.00.00..
+oewn-unintelligibility__1.07.00..	derivation		oewn-unintelligible__3.00.00..
+oewn-unintelligibility__1.10.00..	derivation		oewn-unintelligible__5.00.00.incomprehensible.00
+oewn-unintelligibly__4.02.00..	pertainym		oewn-unintelligible__3.00.00..
+oewn-unintentionally__4.02.00..	pertainym		oewn-unintentional__5.00.00.unintended.00
+oewn-uninteresting__3.00.00..	derivation		oewn-uninterestingness__1.07.00..
+oewn-uninteresting__5.00.00.institutional.00	derivation		oewn-uninterestingness__1.07.00..
+oewn-uninterestingly__4.02.00..	pertainym		oewn-uninteresting__3.00.00..
+oewn-uninterruptedly__4.02.00..	pertainym		oewn-uninterrupted__5.00.00.unbroken.02
+oewn-uninucleate__3.01.00..	pertainym		oewn-nucleus__1.08.00..
+oewn-uninvitedly__4.02.00..	pertainym		oewn-uninvited__5.00.00.unwelcome.00
+oewn-union__1.04.00..	derivation		oewn-unite__2.30.00..
+oewn-union__1.14.01..	derivation		oewn-unionize__2.41.00..
+oewn-union__1.14.01..	derivation		oewn-unionize__2.41.01..
+oewn-unionisation__1.04.00..	derivation		oewn-unionise__2.41.00..
+oewn-unionisation__1.04.00..	derivation		oewn-unionise__2.41.01..
+oewn-unionisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unionisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unionise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unionise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unionise__2.41.00..	other	event	oewn-unionisation__1.04.00..
+oewn-unionise__2.41.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unionise__2.41.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unionise__2.41.01..	other	event	oewn-unionisation__1.04.00..
+oewn-unionism__1.14.00..	derivation		oewn-unionist__1.18.00..
+oewn-unionization__1.04.00..	derivation		oewn-unionize__2.41.00..
+oewn-unionization__1.04.00..	derivation		oewn-unionize__2.41.01..
+oewn-unionization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unionize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unionize__2.41.00..	other	event	oewn-unionization__1.04.00..
+oewn-unionize__2.41.00..	other	result	oewn-union__1.14.01..
+oewn-unionize__2.41.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unionize__2.41.01..	other	event	oewn-unionization__1.04.00..
+oewn-unionize__2.41.01..	other	result	oewn-union__1.14.01..
+oewn-uniovular__3.01.00..	pertainym		oewn-ovule__1.20.00..
+oewn-uniovulate__3.01.00..	pertainym		oewn-ovule__1.20.00..
+oewn-unique__5.00.00.incomparable.00	derivation		oewn-uniqueness__1.07.00..
+oewn-unique__5.00.00.single.05	derivation		oewn-uniqueness__1.07.00..
+oewn-unique__5.00.00.specific.00	derivation		oewn-uniqueness__1.07.00..
+oewn-uniquely__4.02.00..	pertainym		oewn-unique__5.00.00.single.05
+oewn-unit__1.03.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.03.00..	derivation		oewn-unitize__2.35.00..
+oewn-unit__1.09.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.14.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.17.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.17.00..	derivation		oewn-unitize__2.35.00..
+oewn-unit__1.17.00..	derivation		oewn-unitize__2.41.00..
+oewn-unit__1.23.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.23.00..	derivation		oewn-unitize__2.41.00..
+oewn-unit__1.24.00..	derivation		oewn-unitize__2.30.00..
+oewn-unit__1.24.00..	derivation		oewn-unitize__2.41.00..
+oewn-unitarian__1.18.00..	derivation		oewn-unitarian__3.01.00..
+oewn-unitarian__3.01.00..	pertainym		oewn-unitarianism__1.09.00..
+oewn-unitary__3.01.01..	pertainym		oewn-unit__1.17.00..
+oewn-unitary__3.01.02..	pertainym		oewn-unity__1.26.00..
+oewn-unite__2.30.00..	derivation		oewn-uniting__1.04.00..
+oewn-unite__2.30.00..	other	event	oewn-union__1.04.00..
+oewn-unite__2.30.02..	derivation		oewn-uniting__1.04.01..
+oewn-unitisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitisation__1.04.02..	derivation		oewn-unitise__2.35.00..
+oewn-unitisation__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitisation__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitisation__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitisation__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitise__2.35.00..	other	event	oewn-unitisation__1.04.02..
+oewn-unitise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unitise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unitization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitization__1.04.02..	derivation		oewn-unitize__2.35.00..
+oewn-unitization__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitization__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unitize__2.35.00..	other	event	oewn-unitization__1.04.02..
+oewn-unitize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-universal__5.00.00.comprehensive.00	derivation		oewn-universality__1.07.00..
+oewn-universal__5.00.00.comprehensive.00	derivation		oewn-universalize__2.32.00..
+oewn-universal__5.00.00.comprehensive.00	derivation		oewn-universe__1.17.00..
+oewn-universal_meter__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-universal_metre__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-universal_metre__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-universal_metre__1.23.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-universalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-universalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-universalist__3.01.00..	pertainym		oewn-universalism__1.09.00..
+oewn-universalistic__3.01.00..	pertainym		oewn-universalism__1.09.00..
+oewn-universalistic__3.01.01..	pertainym		oewn-whole__1.09.00..
+oewn-universalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unjust__3.00.00..	derivation		oewn-unjustness__1.07.00..
+oewn-unjust__3.00.02..	derivation		oewn-unjustness__1.07.00..
+oewn-unjust__3.00.04..	derivation		oewn-unjustness__1.07.00..
+oewn-unjustifiably__4.02.00..	pertainym		oewn-unjustifiable__5.00.00.inexcusable.00
+oewn-unjustly__4.02.00..	pertainym		oewn-unjust__3.00.00..
+oewn-unkempt__5.00.00.uncombed.00	derivation		oewn-unkemptness__1.26.00..
+oewn-unkempt__5.00.02.untidy.00	derivation		oewn-unkemptness__1.26.00..
+oewn-unkind__3.00.00..	derivation		oewn-unkindness__1.07.00..
+oewn-unkind__5.00.00.inhumane.00	derivation		oewn-unkindness__1.07.00..
+oewn-unkindly__4.02.00..	pertainym		oewn-unkind__3.00.00..
+oewn-unknowing__1.09.00..	derivation		oewn-unknowing__5.00.00.uninformed.00
+oewn-unknowing__5.00.00.uninformed.00	derivation		oewn-unknowingness__1.09.01..
+oewn-unknown__1.10.00..	derivation		oewn-unknown__3.00.00..
+oewn-unknown__1.18.00..	derivation		oewn-unknown__3.00.00..
+oewn-unlawful__3.00.00..	derivation		oewn-unlawfulness__1.07.00..
+oewn-unlawful__5.00.00.illegal.00	derivation		oewn-unlawfulness__1.07.00..
+oewn-unlawful__5.00.00.illegitimate.00	derivation		oewn-unlawfulness__1.07.00..
+oewn-unlawful__5.00.00.irregular.00	derivation		oewn-unlawfulness__1.07.00..
+oewn-unlawfully__4.02.00..	pertainym		oewn-unlawful__5.00.00.illegal.00
+oewn-unlikable__3.00.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unlikable__5.00.00.disliked.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unlike__3.00.00..	derivation		oewn-unlikeness__1.07.00..
+oewn-unlikeable__3.00.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unlikeable__5.00.00.disliked.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unlikeliness__1.07.00..	derivation		oewn-unlikely__3.00.00..
+oewn-unlikeliness__1.07.00..	derivation		oewn-unlikely__3.00.04..
+oewn-unlikeliness__1.07.00..	derivation		oewn-unlikely__5.00.00.implausible.00
+oewn-unlivable__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unliveable__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unload__2.35.00..	derivation		oewn-unloading__1.04.00..
+oewn-unluckily__4.02.00..	pertainym		oewn-unlucky__5.00.00.unfortunate.00
+oewn-unmalleability__1.07.00..	derivation		oewn-unmalleable__5.00.00.intractable.00
+oewn-unmalted__3.44.00..	participle		oewn-malt__2.30.02..
+oewn-unmanageable__3.00.00..	derivation		oewn-unmanageableness__1.07.00..
+oewn-unmanageable__5.00.00.incorrigible.00	derivation		oewn-unmanageableness__1.07.00..
+oewn-unmanageably__4.02.00..	pertainym		oewn-unmanageable__3.00.00..
+oewn-unmanfully__4.02.00..	pertainym		oewn-unmanful__3.00.00..
+oewn-unmanliness__1.07.00..	derivation		oewn-unmanly__3.00.00..
+oewn-unmanliness__1.07.00..	derivation		oewn-unmanly__5.00.00.cowardly.00
+oewn-unmask__2.32.00..	derivation		oewn-unmasking__1.10.00..
+oewn-unmask__2.35.00..	derivation		oewn-unmasking__1.10.00..
+oewn-unmelodiously__4.02.00..	pertainym		oewn-unmelodious__3.00.00..
+oewn-unmemorably__4.02.00..	pertainym		oewn-unmemorable__5.00.00.forgettable.00
+oewn-unmerciful__3.00.04..	derivation		oewn-unmercifulness__1.07.00..
+oewn-unmercifully__4.02.00..	pertainym		oewn-unmerciful__3.00.04..
+oewn-unmindful__3.00.00..	derivation		oewn-unmindfulness__1.07.00..
+oewn-unmindful__5.00.01.unaware.00	derivation		oewn-unmindfulness__1.07.00..
+oewn-unmindfully__4.02.00..	pertainym		oewn-unmindful__3.00.00..
+oewn-unmistakably__4.02.00..	pertainym		oewn-unmistakable__5.00.00.clear.00
+oewn-unmusically__4.02.00..	pertainym		oewn-unmusical__3.00.01..
+oewn-unmyelinated__3.01.00..	pertainym		oewn-myelin__1.27.00..
+oewn-unnatural__3.00.04..	derivation		oewn-unnaturalness__1.07.00..
+oewn-unnaturally__4.02.02..	pertainym		oewn-unnatural__3.00.04..
+oewn-unnaturally__4.02.03..	pertainym		oewn-unnatural__3.00.00..
+oewn-unnecessarily__4.02.00..	pertainym		oewn-unnecessary__3.00.00..
+oewn-unnecessarily__4.02.01..	pertainym		oewn-unnecessary__3.00.00..
+oewn-unneighborliness__1.07.00..	derivation		oewn-unneighborly__5.00.00.unfriendly.01
+oewn-unnoticeable__3.00.00..	derivation		oewn-unnoticeableness__1.07.00..
+oewn-unnoticeable__5.00.00.inconspicuous.00	derivation		oewn-unnoticeableness__1.07.00..
+oewn-unnoticeably__4.02.00..	pertainym		oewn-unnoticeable__3.00.00..
+oewn-unobtrusive__5.00.00.unnoticeable.00	derivation		oewn-unobtrusiveness__1.07.00..
+oewn-unobtrusively__4.02.00..	pertainym		oewn-unobtrusive__5.00.00.unnoticeable.00
+oewn-unofficially__4.02.00..	pertainym		oewn-unofficial__3.00.00..
+oewn-unofficially__4.02.01..	pertainym		oewn-unofficial__3.00.00..
+oewn-unoriginal__3.00.00..	derivation		oewn-unoriginality__1.07.00..
+oewn-unoriginal__3.00.00..	derivation		oewn-unoriginality__1.09.00..
+oewn-unoriginally__4.02.00..	pertainym		oewn-unoriginal__3.00.00..
+oewn-unpalatability__1.07.00..	derivation		oewn-unpalatable__3.00.00..
+oewn-unpalatable__3.00.00..	derivation		oewn-unpalatableness__1.07.00..
+oewn-unpalatable__3.00.00..	derivation		oewn-unpalatableness__1.07.01..
+oewn-unpalatably__4.02.00..	pertainym		oewn-unpalatable__3.00.00..
+oewn-unpardonably__4.02.00..	pertainym		oewn-unpardonable__3.00.00..
+oewn-unpasteurised__3.44.00..	participle		oewn-pasteurise__2.30.00..
+oewn-unpasteurized__3.44.00..	participle		oewn-pasteurize__2.30.00..
+oewn-unpatriotically__4.02.00..	pertainym		oewn-unpatriotic__3.00.00..
+oewn-unperceptive__3.00.00..	derivation		oewn-unperceptiveness__1.07.00..
+oewn-unperceptive__5.00.00.undiscriminating.00	derivation		oewn-unperceptiveness__1.07.00..
+oewn-unpermissive__3.00.00..	derivation		oewn-unpermissiveness__1.07.00..
+oewn-unpersuasive__5.00.00.unconvincing.00	derivation		oewn-unpersuasiveness__1.07.00..
+oewn-unpigmented__3.01.00..	pertainym		oewn-pigmentation__1.07.00..
+oewn-unpleasant__3.00.00..	derivation		oewn-unpleasantness__1.07.00..
+oewn-unpleasant__3.00.00..	derivation		oewn-unpleasantness__1.12.00..
+oewn-unpleasantly__4.02.00..	pertainym		oewn-unpleasant__3.00.00..
+oewn-unpleasing__5.00.00.unpleasant.00	derivation		oewn-unpleasingness__1.07.00..
+oewn-unpointed__3.00.00..	derivation		oewn-unpointedness__1.07.00..
+oewn-unpopular__3.00.00..	derivation		oewn-unpopularity__1.07.00..
+oewn-unposed__3.44.00..	participle		oewn-pose__2.39.00..
+oewn-unprecedentedly__4.02.00..	pertainym		oewn-unprecedented__3.00.00..
+oewn-unpredictability__1.07.00..	derivation		oewn-unpredictable__3.00.00..
+oewn-unpredictability__1.07.00..	derivation		oewn-unpredictable__5.00.00.indeterminable.00
+oewn-unpredictably__4.02.00..	pertainym		oewn-unpredictable__3.00.00..
+oewn-unpretentious__3.00.00..	derivation		oewn-unpretentiousness__1.07.00..
+oewn-unpretentious__3.00.04..	derivation		oewn-unpretentiousness__1.07.00..
+oewn-unpretentious__5.00.00.tasteful.02	derivation		oewn-unpretentiousness__1.07.00..
+oewn-unpretentiously__4.02.00..	pertainym		oewn-unpretentious__3.00.00..
+oewn-unproductive__3.00.00..	derivation		oewn-unproductiveness__1.07.00..
+oewn-unproductive__5.00.00.ineffective.00	derivation		oewn-unproductiveness__1.07.00..
+oewn-unproductively__4.02.00..	pertainym		oewn-unproductive__3.00.00..
+oewn-unprofitability__1.07.00..	derivation		oewn-unprofitable__3.00.00..
+oewn-unprofitable__3.00.00..	derivation		oewn-unprofitableness__1.07.00..
+oewn-unprofitably__4.02.00..	pertainym		oewn-unprofitable__3.00.00..
+oewn-unprofitably__4.02.01..	pertainym		oewn-unprofitable__3.00.00..
+oewn-unpropitious__3.00.00..	derivation		oewn-unpropitiousness__1.07.00..
+oewn-unpropitiously__4.02.00..	pertainym		oewn-unpropitious__3.00.00..
+oewn-unprotected__3.00.00..	derivation		oewn-unprotectedness__1.07.00..
+oewn-unqualifiedly__4.02.00..	pertainym		oewn-unqualified__3.00.02..
+oewn-unquestionability__1.07.00..	derivation		oewn-unquestionable__3.00.00..
+oewn-unquestionable__3.00.00..	derivation		oewn-unquestionableness__1.07.00..
+oewn-unquestionable__5.00.00.genuine.00	derivation		oewn-unquestionableness__1.07.00..
+oewn-unquestionable__5.00.00.unequivocal.00	derivation		oewn-unquestionableness__1.07.00..
+oewn-unquestionably__4.02.00..	pertainym		oewn-unquestionable__3.00.00..
+oewn-unquestionably__4.02.01..	pertainym		oewn-unquestionable__3.00.00..
+oewn-unquestioningly__4.02.00..	pertainym		oewn-unquestioning__5.00.00.absolute.00
+oewn-unquietly__4.02.00..	pertainym		oewn-unquiet__3.00.00..
+oewn-unravel__2.30.01..	derivation		oewn-unraveller__1.18.00..
+oewn-unravel__2.30.01..	other	agent	oewn-unraveller__1.18.00..
+oewn-unravel__2.35.00..	derivation		oewn-unraveler__1.18.00..
+oewn-unravel__2.35.00..	other	agent	oewn-unraveler__1.18.00..
+oewn-unravel__2.35.01..	derivation		oewn-unraveler__1.18.00..
+oewn-unravel__2.35.01..	derivation		oewn-unraveller__1.18.00..
+oewn-unravel__2.35.01..	other	agent	oewn-unraveler__1.18.00..
+oewn-unravel__2.35.01..	other	agent	oewn-unraveller__1.18.00..
+oewn-unreadably__4.02.00..	pertainym		oewn-unreadable__5.00.00.illegible.00
+oewn-unreal__3.00.00..	derivation		oewn-unreality__1.07.00..
+oewn-unreal__3.00.00..	derivation		oewn-unreality__1.26.00..
+oewn-unreal__3.00.03..	derivation		oewn-unreality__1.26.00..
+oewn-unrealistically__4.02.00..	pertainym		oewn-unrealistic__3.00.00..
+oewn-unreasonably__4.02.00..	pertainym		oewn-unreasonable__5.00.00.immoderate.00
+oewn-unreasonably__4.02.01..	pertainym		oewn-unreasonable__3.00.00..
+oewn-unrecognizably__4.02.00..	pertainym		oewn-unrecognizable__5.00.00.unidentifiable.00
+oewn-unrelated__3.00.01..	derivation		oewn-unrelatedness__1.24.00..
+oewn-unrelated__3.00.02..	derivation		oewn-unrelatedness__1.24.00..
+oewn-unrelentingly__4.02.00..	pertainym		oewn-unrelenting__5.00.00.continual.00
+oewn-unreliability__1.07.00..	derivation		oewn-unreliable__3.00.00..
+oewn-unreliability__1.07.00..	derivation		oewn-unreliable__5.00.00.irresponsible.00
+oewn-unreliable__3.00.00..	derivation		oewn-unreliableness__1.07.00..
+oewn-unreliable__5.00.00.dangerous.00	derivation		oewn-unreliableness__1.07.00..
+oewn-unreliable__5.00.00.fallible.00	derivation		oewn-unreliableness__1.07.00..
+oewn-unreliable__5.00.00.irresponsible.00	derivation		oewn-unreliableness__1.07.00..
+oewn-unreliably__4.02.00..	pertainym		oewn-unreliable__3.00.00..
+oewn-unremarkably__4.02.00..	pertainym		oewn-unremarkable__5.00.00.ordinary.00
+oewn-unrepentantly__4.02.00..	pertainym		oewn-unrepentant__3.00.00..
+oewn-unreproducibly__4.02.00..	pertainym		oewn-unreproducible__3.00.00..
+oewn-unrespectability__1.07.00..	derivation		oewn-unrespectable__3.00.00..
+oewn-unresponsive__3.00.00..	derivation		oewn-unresponsiveness__1.07.00..
+oewn-unresponsive__5.00.00.cool.02	derivation		oewn-unresponsiveness__1.07.00..
+oewn-unrestrainedly__4.02.00..	pertainym		oewn-unrestrained__3.00.00..
+oewn-unrighteous__3.00.00..	derivation		oewn-unrighteousness__1.07.00..
+oewn-unrighteously__4.02.00..	pertainym		oewn-unrighteous__3.00.00..
+oewn-unruliness__1.07.00..	derivation		oewn-unruly__5.00.00.disorderly.00
+oewn-unruliness__1.07.00..	derivation		oewn-unruly__5.00.00.insubordinate.00
+oewn-unruliness__1.07.00..	derivation		oewn-unruly__5.00.00.unmanageable.00
+oewn-unsalable__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unsaleable__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unsanctification__1.07.00..	derivation		oewn-unsanctify__2.30.00..
+oewn-unsanctify__2.30.00..	other	result	oewn-unsanctification__1.07.00..
+oewn-unsanitariness__1.26.00..	derivation		oewn-unsanitary__3.00.00..
+oewn-unsaponified__3.44.00..	participle		oewn-saponify__2.30.00..
+oewn-unsatisfactorily__4.02.00..	pertainym		oewn-unsatisfactory__3.00.00..
+oewn-unsatisfactoriness__1.07.00..	derivation		oewn-unsatisfactory__3.00.00..
+oewn-unsavoriness__1.07.00..	derivation		oewn-unsavory__5.00.00.unpalatable.00
+oewn-unsavoriness__1.07.01..	derivation		oewn-unsavory__3.00.00..
+oewn-unscientifically__4.02.00..	pertainym		oewn-unscientific__3.00.00..
+oewn-unscrupulous__3.00.00..	derivation		oewn-unscrupulousness__1.07.00..
+oewn-unscrupulously__4.02.00..	pertainym		oewn-unscrupulous__3.00.00..
+oewn-unseasonable__3.00.00..	derivation		oewn-unseasonableness__1.07.00..
+oewn-unseasonable__5.00.00.inopportune.00	derivation		oewn-unseasonableness__1.07.00..
+oewn-unseasonably__4.02.00..	pertainym		oewn-unseasonable__3.00.00..
+oewn-unseemliness__1.07.00..	derivation		oewn-unseemly__5.00.00.improper.00
+oewn-unselfconscious__5.00.00.unaffected.01	derivation		oewn-unselfconsciousness__1.09.00..
+oewn-unselfconsciously__4.02.00..	pertainym		oewn-unselfconscious__5.00.00.unaffected.01
+oewn-unselfish__3.00.00..	derivation		oewn-unselfishness__1.04.00..
+oewn-unselfish__3.00.00..	derivation		oewn-unselfishness__1.07.00..
+oewn-unselfish__5.00.00.generous.01	derivation		oewn-unselfishness__1.04.00..
+oewn-unselfish__5.00.00.generous.01	derivation		oewn-unselfishness__1.07.00..
+oewn-unselfishly__4.02.00..	pertainym		oewn-unselfish__3.00.00..
+oewn-unsentimentally__4.02.00..	pertainym		oewn-unsentimental__5.00.00.tough.03
+oewn-unshakably__4.02.00..	pertainym		oewn-unshakable__5.00.00.resolute.00
+oewn-unsightliness__1.07.00..	derivation		oewn-unsightly__5.00.00.ugly.00
+oewn-unskillful__5.00.00.unskilled.00	derivation		oewn-unskillfulness__1.09.00..
+oewn-unsmilingly__4.02.00..	pertainym		oewn-unsmiling__5.00.00.joyless.00
+oewn-unsnarl__2.35.00..	derivation		oewn-unsnarling__1.04.00..
+oewn-unsociability__1.07.00..	derivation		oewn-unsociable__3.00.00..
+oewn-unsociable__3.00.00..	derivation		oewn-unsociableness__1.07.00..
+oewn-unsociably__4.02.00..	pertainym		oewn-unsociable__3.00.00..
+oewn-unsound__3.00.00..	derivation		oewn-unsoundness__1.26.00..
+oewn-unsound__3.00.01..	derivation		oewn-unsoundness__1.26.00..
+oewn-unsound__5.00.00.insane.00	derivation		oewn-unsoundness__1.07.00..
+oewn-unsound__5.00.00.invalid.00	derivation		oewn-unsoundness__1.09.00..
+oewn-unsound__5.00.00.unhealthy.00	derivation		oewn-unsoundness__1.07.00..
+oewn-unsparingly__4.02.00..	pertainym		oewn-unsparing__5.00.00.inclement.01
+oewn-unspeakably__4.02.00..	pertainym		oewn-unspeakable__5.00.00.inexpressible.00
+oewn-unsportingly__4.02.00..	pertainym		oewn-unsporting__5.00.00.unfair.00
+oewn-unstable__3.00.00..	derivation		oewn-unstableness__1.07.00..
+oewn-unstable__5.00.00.insane.00	derivation		oewn-unstableness__1.07.00..
+oewn-unstable__5.00.00.irresolute.00	derivation		oewn-unstableness__1.07.00..
+oewn-unstable__5.00.00.reactive.00	derivation		oewn-unstableness__1.07.00..
+oewn-unstable__5.00.00.uneasy.00	derivation		oewn-unstableness__1.07.00..
+oewn-unsteadily__4.02.00..	pertainym		oewn-unsteady__3.00.00..
+oewn-unsteadiness__1.07.00..	derivation		oewn-unsteady__5.00.00.unfixed.00
+oewn-unsteadiness__1.07.01..	derivation		oewn-unsteady__3.00.00..
+oewn-unstintingly__4.02.00..	pertainym		oewn-unstinting__5.00.00.generous.01
+oewn-unsubstantial__3.00.00..	derivation		oewn-unsubstantialize__2.30.00..
+oewn-unsubstantialise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unsubstantialise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unsubstantialize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unsuccessfully__4.02.00..	pertainym		oewn-unsuccessful__3.00.00..
+oewn-unsufferable__5.00.01.intolerable.00	derivation		oewn-unsufferably__4.02.00..
+oewn-unsufferably__4.02.00..	pertainym		oewn-unsufferable__5.00.01.intolerable.00
+oewn-unsuitability__1.07.00..	derivation		oewn-unsuitable__5.00.00.unfit.02
+oewn-unsuitability__1.07.00..	derivation		oewn-unsuitable__5.00.02.irrelevant.00
+oewn-unsuitable__5.00.00.bad.00	derivation		oewn-unsuitableness__1.07.00..
+oewn-unsuitable__5.00.00.ineligible.00	derivation		oewn-unsuitableness__1.07.00..
+oewn-unsuitable__5.00.00.unfit.02	derivation		oewn-unsuitableness__1.07.00..
+oewn-unsusceptibility__1.26.00..	derivation		oewn-unsusceptible__3.00.00..
+oewn-unsuspectingly__4.02.00..	pertainym		oewn-unsuspecting__5.00.00.unaware.00
+oewn-unswervingly__4.02.00..	pertainym		oewn-unswerving__5.00.00.direct.00
+oewn-unswervingly__4.02.01..	pertainym		oewn-unswerving__5.00.00.constant.00
+oewn-unsympathetically__4.02.00..	pertainym		oewn-unsympathetic__3.00.00..
+oewn-unsympathising__5.00.00.unsympathetic.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-unsympathising__5.00.00.unsympathetic.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unsympathizing__5.00.00.unsympathetic.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unsystematically__4.02.00..	pertainym		oewn-unsystematic__3.00.00..
+oewn-untangle__2.35.01..	derivation		oewn-untangling__1.04.00..
+oewn-unthematic__3.01.00..	pertainym		oewn-theme__1.10.02..
+oewn-unthinkably__4.02.00..	pertainym		oewn-unthinkable__3.00.00..
+oewn-unthinkingly__4.02.00..	pertainym		oewn-unthinking__5.00.00.thoughtless.00
+oewn-unthoughtful__5.00.00.thoughtless.00	derivation		oewn-unthoughtfulness__1.07.00..
+oewn-untidily__4.02.00..	pertainym		oewn-untidy__3.00.00..
+oewn-untidiness__1.07.00..	derivation		oewn-untidy__3.00.00..
+oewn-untidiness__1.26.00..	derivation		oewn-untidy__3.00.00..
+oewn-untie__2.35.00..	derivation		oewn-untier__1.18.00..
+oewn-untie__2.35.00..	other	agent	oewn-untier__1.18.00..
+oewn-untie__2.35.01..	derivation		oewn-untier__1.18.00..
+oewn-untie__2.35.01..	derivation		oewn-untying__1.04.00..
+oewn-untie__2.35.01..	other	agent	oewn-untier__1.18.00..
+oewn-untimeliness__1.07.00..	derivation		oewn-untimely__5.00.00.inopportune.00
+oewn-untimeliness__1.07.01..	derivation		oewn-untimely__5.00.00.early.00
+oewn-untimely__4.02.00..	pertainym		oewn-untimely__5.00.00.early.00
+oewn-untouchable__1.18.00..	derivation		oewn-untouchable__5.00.00.unclean.00
+oewn-untruly__4.02.00..	pertainym		oewn-untrue__5.00.00.false.00
+oewn-untrustiness__1.07.00..	derivation		oewn-untrusty__3.00.00..
+oewn-untrustworthiness__1.07.00..	derivation		oewn-untrustworthy__3.00.00..
+oewn-untruthful__3.00.00..	derivation		oewn-untruthfulness__1.07.00..
+oewn-untruthfully__4.02.00..	pertainym		oewn-untruthful__3.00.00..
+oewn-untypical__3.00.00..	derivation		oewn-untypicality__1.26.00..
+oewn-untypically__4.02.00..	pertainym		oewn-untypical__3.00.00..
+oewn-unusable__5.00.00.useless.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-unuseable__5.00.00.useless.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-unusual__3.00.00..	antonym		oewn-usual__3.00.00..
+oewn-unusual__3.00.00..	derivation		oewn-unusualness__1.07.00..
+oewn-unusual__3.00.02..	derivation		oewn-unusualness__1.07.00..
+oewn-unusual__5.00.00.uncommon.00	derivation		oewn-unusualness__1.07.00..
+oewn-unusually__4.02.00..	pertainym		oewn-unusual__3.00.00..
+oewn-unusualness__1.07.00..	antonym		oewn-usualness__1.07.00..
+oewn-unutterably__4.02.00..	pertainym		oewn-unutterable__5.00.00.inexpressible.00
+oewn-unvaried__3.00.00..	antonym		oewn-varied__3.00.00..
+oewn-unvaried__3.00.00..	derivation		oewn-unvariedness__1.07.00..
+oewn-unvariedness__1.07.00..	antonym		oewn-variedness__1.07.00..
+oewn-unveil__2.35.00..	antonym		oewn-veil__2.35.00..
+oewn-unveil__2.35.01..	derivation		oewn-unveiling__1.10.00..
+oewn-unveiled__3.00.00..	antonym		oewn-veiled__3.00.00..
+oewn-unventilated__3.00.00..	antonym		oewn-ventilated__3.00.00..
+oewn-unvoiced__3.00.00..	antonym		oewn-voiced__3.00.00..
+oewn-unwanted__3.00.00..	antonym		oewn-wanted__3.00.00..
+oewn-unwantedly__4.02.00..	pertainym		oewn-unwanted__3.00.00..
+oewn-unwarily__4.02.00..	antonym		oewn-warily__4.02.00..
+oewn-unwarily__4.02.00..	pertainym		oewn-unwary__3.00.00..
+oewn-unwariness__1.07.00..	antonym		oewn-wariness__1.07.00..
+oewn-unwariness__1.07.00..	derivation		oewn-unwary__3.00.00..
+oewn-unwarrantably__4.02.00..	pertainym		oewn-unwarrantable__5.00.00.inexcusable.00
+oewn-unwary__3.00.00..	antonym		oewn-wary__3.00.00..
+oewn-unwaveringly__4.02.00..	pertainym		oewn-unwavering__5.00.00.resolute.00
+oewn-unwaxed__3.00.00..	antonym		oewn-waxed__3.00.00..
+oewn-unweaned__3.00.00..	antonym		oewn-weaned__3.00.00..
+oewn-unwearable__3.00.00..	antonym		oewn-wearable__3.00.00..
+oewn-unweave__2.35.00..	antonym		oewn-weave__2.35.00..
+oewn-unwebbed__3.00.00..	antonym		oewn-webbed__3.00.00..
+oewn-unwelcome__3.00.00..	antonym		oewn-welcome__3.00.00..
+oewn-unwell__5.00.01.ill.01	derivation		oewn-unwellness__1.26.00..
+oewn-unwellness__1.26.00..	antonym		oewn-wellness__1.26.00..
+oewn-unwholesome__3.00.00..	antonym		oewn-wholesome__3.00.00..
+oewn-unwholesome__3.00.00..	derivation		oewn-unwholesomeness__1.07.00..
+oewn-unwholesomeness__1.07.00..	antonym		oewn-wholesomeness__1.07.00..
+oewn-unwieldiness__1.07.00..	derivation		oewn-unwieldy__3.00.00..
+oewn-unwieldiness__1.07.01..	derivation		oewn-unwieldy__5.00.00.impractical.00
+oewn-unwieldy__3.00.00..	antonym		oewn-wieldy__3.00.00..
+oewn-unwilling__3.00.00..	antonym		oewn-willing__3.00.00..
+oewn-unwilling__3.00.00..	derivation		oewn-unwillingness__1.07.00..
+oewn-unwilling__5.00.00.involuntary.01	derivation		oewn-unwillingness__1.07.00..
+oewn-unwillingly__4.02.00..	antonym		oewn-willingly__4.02.00..
+oewn-unwillingly__4.02.00..	pertainym		oewn-unwilling__3.00.00..
+oewn-unwillingness__1.07.00..	antonym		oewn-willingness__1.07.00..
+oewn-unwind__2.35.06..	antonym		oewn-wind__2.35.06..
+oewn-unwire__2.35.00..	antonym		oewn-wire__2.35.00..
+oewn-unwise__5.00.00.foolish.00	derivation		oewn-unwiseness__1.07.00..
+oewn-unwitting__3.00.00..	antonym		oewn-witting__3.00.00..
+oewn-unwittingly__4.02.00..	antonym		oewn-wittingly__4.02.00..
+oewn-unwittingly__4.02.00..	pertainym		oewn-unwitting__5.00.00.unintended.00
+oewn-unwomanly__3.00.00..	antonym		oewn-womanly__3.00.00..
+oewn-unwontedly__4.02.00..	pertainym		oewn-unwonted__5.00.00.uncommon.00
+oewn-unwooded__3.00.00..	antonym		oewn-wooded__3.00.00..
+oewn-unworldly__3.00.00..	antonym		oewn-worldly__3.00.00..
+oewn-unworthily__4.02.00..	pertainym		oewn-unworthy__3.00.00..
+oewn-unworthiness__1.07.00..	antonym		oewn-worthiness__1.07.00..
+oewn-unworthiness__1.07.00..	derivation		oewn-unworthy__3.00.00..
+oewn-unworthiness__1.07.00..	derivation		oewn-unworthy__5.00.00.evil.00
+oewn-unworthy__3.00.00..	antonym		oewn-worthy__3.00.00..
+oewn-unwoven__3.00.00..	antonym		oewn-woven__3.00.00..
+oewn-unwrap__2.35.00..	antonym		oewn-wrap__2.35.00..
+oewn-unwrapped__3.00.00..	antonym		oewn-wrapped__3.00.00..
+oewn-unwrinkled__3.00.00..	antonym		oewn-wrinkled__3.00.00..
+oewn-unwritten__3.00.00..	antonym		oewn-written__3.00.02..
+oewn-unyielding__5.00.00.stubborn.00	derivation		oewn-unyieldingness__1.07.00..
+oewn-unyoke__2.35.00..	antonym		oewn-yoke__2.35.00..
+oewn-unzip__2.35.00..	antonym		oewn-zip_up__2.35.00..
+oewn-up--to--date__5.00.00.current.00	derivation		oewn-up--to--dateness__1.07.00..
+oewn-up--to--date__5.00.00.fashionable.00	derivation		oewn-up--to--dateness__1.07.00..
+oewn-upbraid__2.32.00..	derivation		oewn-upbraider__1.18.00..
+oewn-upbraid__2.32.00..	derivation		oewn-upbraiding__1.10.00..
+oewn-upbraid__2.32.00..	other	agent	oewn-upbraider__1.18.00..
+oewn-upcoming__5.00.00.future.00	exemplifies		oewn-american_english__1.10.00..
+oewn-update__1.04.00..	derivation		oewn-update__2.30.00..
+oewn-update__1.04.00..	derivation		oewn-update__2.30.01..
+oewn-update__1.04.00..	derivation		oewn-update__2.32.00..
+oewn-update__1.10.00..	derivation		oewn-update__2.30.00..
+oewn-update__1.10.00..	derivation		oewn-update__2.30.01..
+oewn-update__1.10.00..	derivation		oewn-update__2.32.00..
+oewn-update__2.30.00..	derivation		oewn-updating__1.04.00..
+oewn-update__2.30.01..	derivation		oewn-updating__1.04.00..
+oewn-update__2.32.00..	derivation		oewn-updating__1.04.00..
+oewn-update__2.32.00..	other	event	oewn-update__1.10.00..
+oewn-upend__2.35.00..	derivation		oewn-upending__1.04.00..
+oewn-upend__2.38.00..	derivation		oewn-upending__1.04.00..
+oewn-upgrade__1.06.00..	derivation		oewn-upgrade__2.30.00..
+oewn-upgrade__1.09.00..	derivation		oewn-upgrade__2.30.04..
+oewn-upgrade__1.09.00..	derivation		oewn-upgrade__2.30.05..
+oewn-upgrade__1.10.00..	derivation		oewn-upgrade__2.30.00..
+oewn-upgrade__2.30.00..	other	undergoer	oewn-upgrade__1.06.00..
+oewn-upgrade__2.30.00..	other	undergoer	oewn-upgrade__1.10.00..
+oewn-upgrade__2.30.04..	other	event	oewn-upgrade__1.09.00..
+oewn-upgrade__2.30.05..	other	event	oewn-upgrade__1.09.00..
+oewn-upheaval__1.11.00..	derivation		oewn-upheave__2.35.00..
+oewn-upheave__2.35.00..	other	event	oewn-upheaval__1.11.00..
+oewn-uphold__2.32.02..	derivation		oewn-upholder__1.18.00..
+oewn-uphold__2.32.02..	other	agent	oewn-upholder__1.18.00..
+oewn-uphold__2.42.00..	derivation		oewn-upholder__1.18.00..
+oewn-uphold__2.42.00..	other	agent	oewn-upholder__1.18.00..
+oewn-upholster__2.40.00..	derivation		oewn-upholsterer__1.18.00..
+oewn-upholster__2.40.00..	derivation		oewn-upholstery__1.04.00..
+oewn-upholster__2.40.00..	derivation		oewn-upholstery__1.06.00..
+oewn-upholster__2.40.00..	other	agent	oewn-upholsterer__1.18.00..
+oewn-uplift__1.06.00..	derivation		oewn-uplift__2.38.00..
+oewn-uplift__1.11.00..	derivation		oewn-uplift__2.38.02..
+oewn-uplift__2.38.00..	derivation		oewn-uplifting__1.11.00..
+oewn-uplift__2.38.00..	other	by_means_of	oewn-uplift__1.06.00..
+oewn-uplift__2.38.02..	other	event	oewn-uplift__1.11.00..
+oewn-uppish__5.00.00.proud.00	derivation		oewn-uppishness__1.07.00..
+oewn-uppishly__4.02.00..	pertainym		oewn-uppish__5.00.00.proud.00
+oewn-uppity__5.00.00.immodest.02	derivation		oewn-uppityness__1.07.00..
+oewn-upright__3.00.02..	derivation		oewn-uprightness__1.07.03..
+oewn-upright__5.00.00.righteous.00	derivation		oewn-uprightness__1.07.01..
+oewn-upright__5.00.00.vertical.00	derivation		oewn-uprightness__1.07.02..
+oewn-uprightly__4.02.00..	pertainym		oewn-upright__5.00.00.vertical.00
+oewn-uprightly__4.02.01..	pertainym		oewn-upright__5.00.00.righteous.00
+oewn-uproar__1.11.00..	derivation		oewn-uproarious__5.00.00.noisy.00
+oewn-uproar__1.26.00..	derivation		oewn-uproarious__5.00.00.noisy.00
+oewn-uproariously__4.02.00..	pertainym		oewn-uproarious__5.00.00.humorous.00
+oewn-uproot__2.36.00..	derivation		oewn-uprooter__1.18.00..
+oewn-uproot__2.36.00..	other	agent	oewn-uprooter__1.18.00..
+oewn-upset__1.04.00..	derivation		oewn-upset__2.33.00..
+oewn-upset__1.04.01..	derivation		oewn-upset__2.37.00..
+oewn-upset__1.04.02..	derivation		oewn-upset__2.38.00..
+oewn-upset__1.06.00..	derivation		oewn-upset__2.35.00..
+oewn-upset__1.26.00..	derivation		oewn-upset__2.37.00..
+oewn-upset__1.26.00..	derivation		oewn-upset__2.37.01..
+oewn-upset__2.33.00..	derivation		oewn-upsetter__1.18.00..
+oewn-upset__2.33.00..	other	agent	oewn-upsetter__1.18.00..
+oewn-upset__2.33.00..	other	event	oewn-upset__1.04.00..
+oewn-upset__2.35.00..	other	instrument	oewn-upset__1.06.00..
+oewn-upset__2.37.00..	other	event	oewn-upset__1.04.01..
+oewn-upset__2.37.00..	other	event	oewn-upset__1.26.00..
+oewn-upset__2.37.01..	other	event	oewn-upset__1.26.00..
+oewn-upset__2.38.00..	other	event	oewn-upset__1.04.02..
+oewn-upstage__2.33.00..	derivation		oewn-upstager__1.18.00..
+oewn-upstage__2.33.00..	other	agent	oewn-upstager__1.18.00..
+oewn-upstage__2.38.00..	derivation		oewn-upstager__1.18.00..
+oewn-upstage__2.38.00..	other	agent	oewn-upstager__1.18.00..
+oewn-upward__4.02.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-upwards__4.02.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-uraemia__1.26.00..	derivation		oewn-uraemic__3.01.00..
+oewn-uranologist__1.18.00..	derivation		oewn-uranology__1.09.00..
+oewn-urban__3.00.00..	derivation		oewn-urbanity__1.07.01..
+oewn-urban__3.00.00..	derivation		oewn-urbanize__2.30.00..
+oewn-urban__3.00.00..	derivation		oewn-urbanize__2.30.01..
+oewn-urban__3.01.00..	derivation		oewn-urbanity__1.07.01..
+oewn-urban__3.01.00..	pertainym		oewn-city__1.15.00..
+oewn-urbane__5.00.00.sophisticated.00	derivation		oewn-urbanity__1.07.00..
+oewn-urbanely__4.02.00..	pertainym		oewn-urbane__5.00.00.sophisticated.00
+oewn-urbanisation__1.22.00..	derivation		oewn-urbanise__2.30.00..
+oewn-urbanisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-urbanisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-urbanisation__1.26.00..	derivation		oewn-urbanise__2.30.01..
+oewn-urbanisation__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-urbanisation__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-urbanise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-urbanise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-urbanise__2.30.00..	other	event	oewn-urbanisation__1.22.00..
+oewn-urbanise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-urbanise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-urbanise__2.30.01..	other	state	oewn-urbanisation__1.26.00..
+oewn-urbanization__1.22.00..	derivation		oewn-urbanize__2.30.00..
+oewn-urbanization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-urbanization__1.26.00..	derivation		oewn-urbanize__2.30.01..
+oewn-urbanization__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-urbanize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-urbanize__2.30.00..	other	event	oewn-urbanization__1.22.00..
+oewn-urbanize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-urbanize__2.30.01..	other	state	oewn-urbanization__1.26.00..
+oewn-urceolate__3.01.00..	pertainym		oewn-urceole__1.06.00..
+oewn-uremia__1.26.00..	derivation		oewn-uremic__3.01.00..
+oewn-uremic__3.01.00..	pertainym		oewn-uremia__1.26.00..
+oewn-urethra__1.08.00..	derivation		oewn-urethral__3.01.00..
+oewn-urethral__3.01.00..	pertainym		oewn-urethra__1.08.00..
+oewn-urex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-urge__2.32.00..	derivation		oewn-urgent__5.00.00.imperative.00
+oewn-urge__2.32.00..	derivation		oewn-urging__1.10.00..
+oewn-urge__2.32.01..	derivation		oewn-urging__1.04.00..
+oewn-urge__2.32.03..	derivation		oewn-urgency__1.10.00..
+oewn-urgency__1.07.00..	derivation		oewn-urgent__5.00.00.imperative.00
+oewn-urgency__1.26.01..	derivation		oewn-urgent__5.00.00.imperative.00
+oewn-urgently__4.02.00..	pertainym		oewn-urgent__5.00.00.imperative.00
+oewn-uric__3.01.00..	pertainym		oewn-urine__1.27.00..
+oewn-uricosuric__3.01.00..	pertainym		oewn-urine__1.27.00..
+oewn-urinary__3.01.00..	derivation		oewn-urine__1.27.00..
+oewn-urinary__3.01.00..	pertainym		oewn-urine__1.27.00..
+oewn-urinary__3.01.01..	pertainym		oewn-urinary_system__1.08.00..
+oewn-urinate__2.29.00..	derivation		oewn-urination__1.22.00..
+oewn-urinate__2.29.00..	derivation		oewn-urinator__1.18.00..
+oewn-urinate__2.29.00..	derivation		oewn-urine__1.27.00..
+oewn-urinate__2.29.00..	other	agent	oewn-urinator__1.18.00..
+oewn-urinate__2.29.00..	other	event	oewn-urination__1.22.00..
+oewn-urogenital__3.01.00..	pertainym		oewn-urogenital_system__1.08.00..
+oewn-urologist__1.18.00..	derivation		oewn-urology__1.09.00..
+oewn-ursine__3.01.00..	pertainym		oewn-bear__1.05.00..
+oewn-ursus_thibetanus__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-urticate__2.39.00..	derivation		oewn-urtication__1.09.00..
+oewn-urticate__2.39.00..	other	event	oewn-urtication__1.09.00..
+oewn-uruguayan__1.18.00..	derivation		oewn-uruguayan__3.01.00..
+oewn-usable__5.00.00.disposable.02	derivation		oewn-use__2.34.01..
+oewn-usable__5.00.00.disposable.02	exemplifies		oewn-british_spelling__1.10.01..
+oewn-usable__5.00.00.serviceable.00	derivation		oewn-usableness__1.07.00..
+oewn-usable__5.00.00.serviceable.00	derivation		oewn-use__2.34.01..
+oewn-usable__5.00.00.serviceable.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-usable__5.00.00.useful.00	derivation		oewn-usableness__1.07.00..
+oewn-usable__5.00.00.useful.00	derivation		oewn-use__2.34.01..
+oewn-usable__5.00.00.useful.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-usage__1.04.00..	derivation		oewn-use__2.34.01..
+oewn-usage__1.04.01..	derivation		oewn-use__2.41.03..
+oewn-usance__1.04.00..	derivation		oewn-use__2.41.04..
+oewn-use__1.04.00..	derivation		oewn-use__2.34.01..
+oewn-use__1.04.00..	derivation		oewn-use__2.34.02..
+oewn-use__1.04.02..	derivation		oewn-use__2.41.14..
+oewn-use__1.07.02..	derivation		oewn-use__2.41.04..
+oewn-use__1.22.00..	derivation		oewn-use__2.34.15..
+oewn-use__2.34.01..	derivation		oewn-useable__5.00.00.disposable.02
+oewn-use__2.34.01..	derivation		oewn-useable__5.00.00.serviceable.00
+oewn-use__2.34.01..	derivation		oewn-useable__5.00.00.useful.00
+oewn-use__2.34.01..	derivation		oewn-user__1.18.00..
+oewn-use__2.34.01..	other	agent	oewn-user__1.18.00..
+oewn-use__2.34.01..	other	event	oewn-use__1.04.00..
+oewn-use__2.34.02..	derivation		oewn-user__1.18.02..
+oewn-use__2.34.02..	other	agent	oewn-user__1.18.02..
+oewn-use__2.34.02..	other	event	oewn-use__1.04.00..
+oewn-use__2.34.15..	also		oewn-use_up__2.34.00..
+oewn-use__2.41.04..	other	event	oewn-usance__1.04.00..
+oewn-use__2.41.04..	other	undergoer	oewn-use__1.07.02..
+oewn-use__2.41.14..	derivation		oewn-user__1.18.01..
+oewn-use__2.41.14..	derivation		oewn-using__1.04.00..
+oewn-use__2.41.14..	other	agent	oewn-user__1.18.01..
+oewn-use__2.41.14..	other	event	oewn-use__1.04.02..
+oewn-useable__5.00.00.disposable.02	exemplifies		oewn-american_spelling__1.10.01..
+oewn-useable__5.00.00.serviceable.00	derivation		oewn-useableness__1.07.00..
+oewn-useable__5.00.00.serviceable.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-useable__5.00.00.useful.00	derivation		oewn-useableness__1.07.00..
+oewn-useable__5.00.00.useful.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-useful__3.00.00..	antonym		oewn-useless__3.00.00..
+oewn-useful__5.00.00.functional.00	derivation		oewn-usefulness__1.07.00..
+oewn-usefully__4.02.00..	antonym		oewn-uselessly__4.02.00..
+oewn-usefully__4.02.00..	pertainym		oewn-useful__3.00.00..
+oewn-usefulness__1.07.00..	antonym		oewn-uselessness__1.07.00..
+oewn-useless__3.00.00..	derivation		oewn-uselessness__1.07.00..
+oewn-uselessly__4.02.00..	pertainym		oewn-useless__3.00.00..
+oewn-usher__1.18.00..	derivation		oewn-usher__2.38.00..
+oewn-usher__1.18.00..	derivation		oewn-usherette__1.18.00..
+oewn-usher__1.18.02..	derivation		oewn-usherette__1.18.00..
+oewn-usher__2.38.00..	other	agent	oewn-usher__1.18.00..
+oewn-usual__3.00.00..	derivation		oewn-usualness__1.07.00..
+oewn-usual__5.00.00.familiar.02	derivation		oewn-usualness__1.07.00..
+oewn-usually__4.02.00..	pertainym		oewn-usual__3.00.00..
+oewn-usufruct__1.07.00..	derivation		oewn-usufructuary__3.01.00..
+oewn-usufructuary__1.18.00..	derivation		oewn-usufructuary__3.01.00..
+oewn-usufructuary__3.01.00..	pertainym		oewn-usufruct__1.07.00..
+oewn-usurious__5.00.00.immoderate.00	derivation		oewn-usury__1.21.01..
+oewn-usuriously__4.02.00..	pertainym		oewn-usurious__5.00.00.immoderate.00
+oewn-usurp__2.40.00..	derivation		oewn-usurpation__1.04.00..
+oewn-usurp__2.40.00..	derivation		oewn-usurper__1.18.00..
+oewn-usurp__2.40.00..	other	agent	oewn-usurper__1.18.00..
+oewn-usurp__2.40.00..	other	event	oewn-usurpation__1.04.00..
+oewn-uterine__3.01.00..	pertainym		oewn-uterus__1.08.00..
+oewn-utile__3.00.02..	derivation		oewn-utility__1.07.00..
+oewn-utilisation__1.04.00..	derivation		oewn-utilise__2.34.00..
+oewn-utilisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-utilisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-utilise__2.34.00..	derivation		oewn-utility__1.07.00..
+oewn-utilise__2.34.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-utilise__2.34.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-utilise__2.34.00..	other	event	oewn-utilisation__1.04.00..
+oewn-utilitarian__1.18.00..	derivation		oewn-utilitarian__5.00.00.functional.00
+oewn-utilitarian__5.00.00.functional.00	derivation		oewn-utility__1.07.00..
+oewn-utilitarian__5.00.00.useful.00	derivation		oewn-utility__1.07.00..
+oewn-utility__1.07.00..	derivation		oewn-utilize__2.34.00..
+oewn-utilizable__5.00.00.useful.00	derivation		oewn-utilize__2.34.00..
+oewn-utilization__1.04.00..	derivation		oewn-utilize__2.34.00..
+oewn-utilization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-utilize__2.34.00..	derivation		oewn-utilizer__1.18.00..
+oewn-utilize__2.34.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-utilize__2.34.00..	other	agent	oewn-utilizer__1.18.00..
+oewn-utilize__2.34.00..	other	event	oewn-utilization__1.04.00..
+oewn-utmost__1.07.00..	derivation		oewn-utmost__5.00.00.intense.00
+oewn-utopia__1.26.00..	derivation		oewn-utopian__3.00.00..
+oewn-utopian__1.18.00..	derivation		oewn-utopian__3.00.00..
+oewn-utopian__3.01.01..	pertainym		oewn-utopia__1.26.00..
+oewn-utter__2.32.00..	derivation		oewn-utterable__5.00.00.expressible.00
+oewn-utter__2.32.00..	derivation		oewn-utterance__1.10.00..
+oewn-utter__2.32.00..	derivation		oewn-utterer__1.18.00..
+oewn-utter__2.32.00..	other	agent	oewn-utterer__1.18.00..
+oewn-utter__2.32.00..	other	by_means_of	oewn-utterance__1.10.00..
+oewn-utter__2.32.01..	derivation		oewn-utterable__5.00.00.expressible.00
+oewn-utter__2.32.01..	derivation		oewn-utterance__1.10.00..
+oewn-utter__2.32.01..	derivation		oewn-utterer__1.18.02..
+oewn-utter__2.32.01..	other	agent	oewn-utterer__1.18.02..
+oewn-utter__2.32.01..	other	by_means_of	oewn-utterance__1.10.00..
+oewn-utter__2.32.02..	derivation		oewn-utterable__5.00.00.expressible.00
+oewn-utter__2.32.02..	derivation		oewn-utterance__1.10.00..
+oewn-utter__2.32.02..	derivation		oewn-utterer__1.18.02..
+oewn-utter__2.32.02..	other	agent	oewn-utterer__1.18.02..
+oewn-utter__2.32.02..	other	by_means_of	oewn-utterance__1.10.00..
+oewn-utter__2.38.00..	derivation		oewn-utterer__1.18.01..
+oewn-utter__2.38.00..	other	agent	oewn-utterer__1.18.01..
+oewn-utterly__4.02.00..	pertainym		oewn-utter__5.00.00.unmitigated.00
+oewn-uttermost__1.07.00..	derivation		oewn-uttermost__5.00.00.intense.00
+oewn-uvea__1.08.00..	derivation		oewn-uveal__3.01.00..
+oewn-uvea__1.08.00..	derivation		oewn-uveous__3.01.00..
+oewn-uveal__3.01.00..	pertainym		oewn-uvea__1.08.00..
+oewn-uveous__3.01.00..	pertainym		oewn-uvea__1.08.00..
+oewn-uvula__1.08.00..	derivation		oewn-uvular__3.01.00..
+oewn-uvular__3.01.00..	pertainym		oewn-uvula__1.08.00..
+oewn-uxor__1.18.00..	derivation		oewn-uxorial__3.00.00..
+oewn-uxorious__5.00.00.loving.00	derivation		oewn-uxoriousness__1.07.00..
+oewn-uxoriously__4.02.00..	pertainym		oewn-uxorious__5.00.00.loving.00

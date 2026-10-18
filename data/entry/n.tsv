@@ -1,0 +1,3310 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-N-n	N	n	0	1	1	oewn
+oewn-N.B.-n	N.B.	n	0	1	1	oewn
+oewn-NAC-n	NAC	n	0	1	1	oewn
+oewn-NAD-n	NAD	n	0	1	1	oewn
+oewn-NADA_daiquiri-n	NADA daiquiri	n	0	2	2	oewn
+oewn-NADP-n	NADP	n	0	1	1	oewn
+oewn-NAFTA-n	NAFTA	n	0	1	1	oewn
+oewn-NAND_circuit-n	NAND circuit	n	0	2	2	oewn
+oewn-NAND_gate-n	NAND gate	n	0	2	2	oewn
+oewn-NARA-n	NARA	n	0	1	1	oewn
+oewn-NASA-n	NASA	n	0	1	1	oewn
+oewn-NATO-n	NATO	n	0	1	1	oewn
+oewn-NAWCWPNS-n	NAWCWPNS	n	0	1	1	oewn
+oewn-NB-n	NB	n	0	1	1	oewn
+oewn-NCDC-n	NCDC	n	0	1	1	oewn
+oewn-NE-n	NE	n	0	1	1	oewn
+oewn-NEC-n	NEC	n	0	1	1	oewn
+oewn-NEbE-n	NEbE	n	0	1	1	oewn
+oewn-NEbN-n	NEbN	n	0	1	1	oewn
+oewn-NGA-n	NGA	n	0	1	1	oewn
+oewn-NGB-n	NGB	n	0	1	1	oewn
+oewn-NGF-n	NGF	n	0	1	1	oewn
+oewn-NGO-n	NGO	n	0	1	1	oewn
+oewn-NGU-n	NGU	n	0	1	1	oewn
+oewn-NICU-n	NICU	n	0	1	1	oewn
+oewn-NIDDM-n	NIDDM	n	0	1	1	oewn
+oewn-NIH-n	NIH	n	0	1	1	oewn
+oewn-NIJ-n	NIJ	n	0	1	1	oewn
+oewn-NIMBY-n	NIMBY	n	0	1	1	oewn
+oewn-NIST-n	NIST	n	0	1	1	oewn
+oewn-NLP-n	NLP	n	0	1	1	oewn
+oewn-NLRB-n	NLRB	n	0	1	1	oewn
+oewn-NMR-n	NMR	n	0	1	1	oewn
+oewn-NNE-n	NNE	n	0	1	1	oewn
+oewn-NNRTI-n	NNRTI	n	0	1	1	oewn
+oewn-NNW-n	NNW	n	0	1	1	oewn
+oewn-NOAA-n	NOAA	n	0	1	1	oewn
+oewn-NOC-n	NOC	n	0	1	1	oewn
+oewn-NP-n	NP	n	0	1	1	oewn
+oewn-NPC-n	NPC	n	0	1	1	oewn
+oewn-NRA-n	NRA	n	0	1	1	oewn
+oewn-NRC-n	NRC	n	0	1	1	oewn
+oewn-NREM-n	NREM	n	0	1	1	oewn
+oewn-NREM_sleep-n	NREM sleep	n	0	2	2	oewn
+oewn-NRO-n	NRO	n	0	1	1	oewn
+oewn-NRTI-n	NRTI	n	0	1	1	oewn
+oewn-NSA-n	NSA	n	0	1	1	oewn
+oewn-NSAID-n	NSAID	n	0	1	1	oewn
+oewn-NSC-n	NSC	n	0	1	1	oewn
+oewn-NSF-n	NSF	n	0	1	1	oewn
+oewn-NSU-n	NSU	n	0	1	1	oewn
+oewn-NSW-n	NSW	n	0	1	1	oewn
+oewn-NSWC-n	NSWC	n	0	1	1	oewn
+oewn-NT-n	NT	n	0	1	1	oewn
+oewn-NTIS-n	NTIS	n	0	1	1	oewn
+oewn-NUWC-n	NUWC	n	0	1	1	oewn
+oewn-NW-n	NW	n	0	1	1	oewn
+oewn-NWbN-n	NWbN	n	0	1	1	oewn
+oewn-NWbW-n	NWbW	n	0	1	1	oewn
+oewn-Na-Dene-n	Na-Dene	n	0	1	1	oewn
+oewn-Na-n	Na	n	0	1	1	oewn
+oewn-Nabalus_alba-n	Nabalus alba	n	0	2	2	oewn
+oewn-Nabalus_serpentarius-n	Nabalus serpentarius	n	0	2	2	oewn
+oewn-Naegele-ap-s_rule-n	Naegele's rule	n	0	2	2	oewn
+oewn-Naemorhedus_goral-n	Naemorhedus goral	n	0	2	2	oewn
+oewn-Nafcil-n	Nafcil	n	0	1	1	oewn
+oewn-Naga-n	Naga	n	0	1	1	oewn
+oewn-Naga_language-n	Naga language	n	0	2	2	oewn
+oewn-Nagari-n	Nagari	n	0	1	1	oewn
+oewn-Nagari_script-n	Nagari script	n	0	2	2	oewn
+oewn-Nageia_nagi-n	Nageia nagi	n	0	2	2	oewn
+oewn-Nahuatl-n	Nahuatl	n	0	1	1	oewn
+oewn-Nahuatl_language-n	Nahuatl language	n	0	2	2	oewn
+oewn-Naiki-n	Naiki	n	0	1	1	oewn
+oewn-Naiki_language-n	Naiki language	n	0	2	2	oewn
+oewn-Naja_haje-n	Naja haje	n	0	2	2	oewn
+oewn-Naja_hannah-n	Naja hannah	n	0	2	2	oewn
+oewn-Naja_naja-n	Naja naja	n	0	2	2	oewn
+oewn-Naja_nigricollis-n	Naja nigricollis	n	0	2	2	oewn
+oewn-Nalfon-n	Nalfon	n	0	1	1	oewn
+oewn-Nalline-n	Nalline	n	0	1	1	oewn
+oewn-Namibian-a	Namibian	a	0	1	1	oewn
+oewn-Namibian-n	Namibian	n	0	1	1	oewn
+oewn-Nancere-n	Nancere	n	0	1	1	oewn
+oewn-Nancere_language-n	Nancere language	n	0	2	2	oewn
+oewn-Nanna-n	Nanna	n	0	1	1	oewn
+oewn-Nanticoke-n	Nanticoke	n	0	1	1	oewn
+oewn-Nanticoke_language-n	Nanticoke language	n	0	2	2	oewn
+oewn-Nantua-n	Nantua	n	0	1	1	oewn
+oewn-Napaea_dioica-n	Napaea dioica	n	0	2	2	oewn
+oewn-Napier-ap-s_bones-n	Napier's bones	n	0	2	2	oewn
+oewn-Napier-ap-s_rods-n	Napier's rods	n	0	2	2	oewn
+oewn-Napierian_logarithm-n	Napierian logarithm	n	0	2	2	oewn
+oewn-Naples_garlic-n	Naples garlic	n	0	2	2	oewn
+oewn-Napoleon-n	Napoleon	n	0	1	1	oewn
+oewn-Napoleonic-a	Napoleonic	a	0	1	1	oewn
+oewn-Naprosyn-n	Naprosyn	n	0	1	1	oewn
+oewn-Naqua-n	Naqua	n	0	1	1	oewn
+oewn-Narcan-n	Narcan	n	0	1	1	oewn
+oewn-Narcissus_jonquilla-n	Narcissus jonquilla	n	0	2	2	oewn
+oewn-Narcissus_papyraceus-n	Narcissus papyraceus	n	0	2	2	oewn
+oewn-Narcissus_pseudonarcissus-n	Narcissus pseudonarcissus	n	0	2	2	oewn
+oewn-Nardil-n	Nardil	n	0	1	1	oewn
+oewn-Narthecium_americanum-n	Narthecium americanum	n	0	2	2	oewn
+oewn-Narthecium_ossifragum-n	Narthecium ossifragum	n	0	2	2	oewn
+oewn-Nasalis_larvatus-n	Nasalis larvatus	n	0	2	2	oewn
+oewn-Nash_equilibrium-n	Nash equilibrium	n	0	2	2	oewn
+oewn-Nasturtium_amphibium-n	Nasturtium amphibium	n	0	2	2	oewn
+oewn-Nasturtium_officinale-n	Nasturtium officinale	n	0	2	2	oewn
+oewn-Nasua_narica-n	Nasua narica	n	0	2	2	oewn
+oewn-Nation_of_Islam-n	Nation of Islam	n	0	3	1	oewn
+oewn-National_Academy_of_Sciences-n	National Academy of Sciences	n	0	4	2	oewn
+oewn-National_Aeronautics_and_Space_Administration-n	National Aeronautics and Space Administration	n	0	5	5	oewn
+oewn-National_Archives_and_Records_Administration-n	National Archives and Records Administration	n	0	5	5	oewn
+oewn-National_Association_of_Realtors-n	National Association of Realtors	n	0	4	2	oewn
+oewn-National_Climatic_Data_Center-n	National Climatic Data Center	n	0	4	4	oewn
+oewn-National_Geospatial-Intelligence_Agency-n	National Geospatial-Intelligence Agency	n	0	3	3	oewn
+oewn-National_Guard-n	National Guard	n	0	2	2	oewn
+oewn-National_Guard_Bureau-n	National Guard Bureau	n	0	3	3	oewn
+oewn-National_Institute_of_Justice-n	National Institute of Justice	n	0	4	2	oewn
+oewn-National_Institute_of_Standards_and_Technology-n	National Institute of Standards and Technology	n	0	6	2	oewn
+oewn-National_Institutes_of_Health-n	National Institutes of Health	n	0	4	2	oewn
+oewn-National_Intelligence_Community-n	National Intelligence Community	n	0	3	3	oewn
+oewn-National_Labor_Relations_Board-n	National Labor Relations Board	n	0	4	4	oewn
+oewn-National_Oceanic_and_Atmospheric_Administration-n	National Oceanic and Atmospheric Administration	n	0	5	5	oewn
+oewn-National_Park_Service-n	National Park Service	n	0	3	3	oewn
+oewn-National_Reconnaissance_Office-n	National Reconnaissance Office	n	0	3	3	oewn
+oewn-National_Rifle_Association-n	National Rifle Association	n	0	3	3	oewn
+oewn-National_Science_Foundation-n	National Science Foundation	n	0	3	3	oewn
+oewn-National_Security_Agency-n	National Security Agency	n	0	3	3	oewn
+oewn-National_Security_Council-n	National Security Council	n	0	3	3	oewn
+oewn-National_Socialist_German_Workers-ap-_Party-n	National Socialist German Workers' Party	n	0	5	5	oewn
+oewn-National_Technical_Information_Service-n	National Technical Information Service	n	0	4	4	oewn
+oewn-National_Trust-n	National Trust	n	0	2	2	oewn
+oewn-National_Volunteers_Association-n	National Volunteers Association	n	0	3	3	oewn
+oewn-National_Weather_Service-n	National Weather Service	n	0	3	3	oewn
+oewn-Native_Alaskan-n	Native Alaskan	n	0	2	2	oewn
+oewn-Native_American-a	Native American	a	0	2	2	oewn
+oewn-Native_American-n	Native American	n	0	2	2	oewn
+oewn-Native_Hawaiian-n	Native Hawaiian	n	0	2	2	oewn
+oewn-Nativity-n	Nativity	n	0	1	1	oewn
+oewn-Natrix_maura-n	Natrix maura	n	0	2	2	oewn
+oewn-Natrix_natrix-n	Natrix natrix	n	0	2	2	oewn
+oewn-Natrix_sipedon-n	Natrix sipedon	n	0	2	2	oewn
+oewn-Nauclea_diderrichii-n	Nauclea diderrichii	n	0	2	2	oewn
+oewn-Naucrates_ductor-n	Naucrates ductor	n	0	2	2	oewn
+oewn-Nauruan-a	Nauruan	a	0	1	1	oewn
+oewn-Nauruan-n	Nauruan	n	0	1	1	oewn
+oewn-Navaho-n	Navaho	n	0	1	1	oewn
+oewn-Navaho_language-n	Navaho language	n	0	2	2	oewn
+oewn-Navajo-n	Navajo	n	0	1	1	oewn
+oewn-Navajo_language-n	Navajo language	n	0	2	2	oewn
+oewn-Naval_Air_Warfare_Center_Weapons_Division-n	Naval Air Warfare Center Weapons Division	n	0	6	6	oewn
+oewn-Naval_Special_Warfare-n	Naval Special Warfare	n	0	3	3	oewn
+oewn-Naval_Surface_Warfare_Center-n	Naval Surface Warfare Center	n	0	4	4	oewn
+oewn-Naval_Underwater_Warfare_Center-n	Naval Underwater Warfare Center	n	0	4	4	oewn
+oewn-Navane-n	Navane	n	0	1	1	oewn
+oewn-Navy-n	Navy	n	0	1	1	oewn
+oewn-Navy_Cross-n	Navy Cross	n	0	2	2	oewn
+oewn-Navy_Department-n	Navy Department	n	0	2	2	oewn
+oewn-Navy_SEAL-n	Navy SEAL	n	0	2	2	oewn
+oewn-Navy_secretary-n	Navy secretary	n	0	2	2	oewn
+oewn-Nazarene-a	Nazarene	a	0	1	1	oewn
+oewn-Nazarene-n	Nazarene	n	0	1	1	oewn
+oewn-Nazi-a	Nazi	a	0	1	1	oewn
+oewn-Nazi-n	Nazi	n	0	1	1	oewn
+oewn-Nazi_Germany-n	Nazi Germany	n	0	2	2	oewn
+oewn-Nazi_Party-n	Nazi Party	n	0	2	2	oewn
+oewn-Nazification-n	Nazification	n	0	1	1	oewn
+oewn-Naziism-n	Naziism	n	0	1	1	oewn
+oewn-Nazism-n	Nazism	n	0	1	1	oewn
+oewn-Nb-n	Nb	n	0	1	1	oewn
+oewn-NbE-n	NbE	n	0	1	1	oewn
+oewn-NbW-n	NbW	n	0	1	1	oewn
+oewn-Nd-n	Nd	n	0	1	1	oewn
+oewn-Ndebele-n	Ndebele	n	0	1	1	oewn
+oewn-Ne-n	Ne	n	0	1	1	oewn
+oewn-Neandertal-a	Neandertal	a	0	1	1	oewn
+oewn-Neandertal-n	Neandertal	n	0	1	1	oewn
+oewn-Neandertal_man-n	Neandertal man	n	0	2	2	oewn
+oewn-Neanderthal-a	Neanderthal	a	0	1	1	oewn
+oewn-Neanderthal-n	Neanderthal	n	0	1	1	oewn
+oewn-Neanderthal_man-n	Neanderthal man	n	0	2	2	oewn
+oewn-Neanderthalian-a	Neanderthalian	a	0	1	1	oewn
+oewn-Neapolitan-a	Neapolitan	a	0	1	1	oewn
+oewn-Neapolitan-n	Neapolitan	n	0	1	1	oewn
+oewn-Neapolitan_ice_cream-n	Neapolitan ice cream	n	0	3	3	oewn
+oewn-Nebcin-n	Nebcin	n	0	1	1	oewn
+oewn-Nebraska_fern-n	Nebraska fern	n	0	2	2	oewn
+oewn-Nebraskan-n	Nebraskan	n	0	1	1	oewn
+oewn-Necturus_maculosus-n	Necturus maculosus	n	0	2	2	oewn
+oewn-NegGram-n	NegGram	n	0	1	1	oewn
+oewn-Negaprion_brevirostris-n	Negaprion brevirostris	n	0	2	2	oewn
+oewn-Negritude-n	Negritude	n	0	1	1	oewn
+oewn-Negro-n	Negro	n	0	1	1	oewn
+oewn-Negro_race-n	Negro race	n	0	2	2	oewn
+oewn-Negro_spiritual-n	Negro spiritual	n	0	2	2	oewn
+oewn-Negroid-n	Negroid	n	0	1	1	oewn
+oewn-Negroid_race-n	Negroid race	n	0	2	2	oewn
+oewn-Neisseria_gonorrhoeae-n	Neisseria gonorrhoeae	n	0	2	2	oewn
+oewn-Nelumbo_lutea-n	Nelumbo lutea	n	0	2	2	oewn
+oewn-Nelumbo_nucifera-n	Nelumbo nucifera	n	0	2	2	oewn
+oewn-Nembutal-n	Nembutal	n	0	1	1	oewn
+oewn-Nemean_Games-n	Nemean Games	n	0	2	2	oewn
+oewn-Nemean_lion-n	Nemean lion	n	0	2	2	oewn
+oewn-Nemophila_aurita-n	Nemophila aurita	n	0	2	2	oewn
+oewn-Nemophila_maculata-n	Nemophila maculata	n	0	2	2	oewn
+oewn-Nemophila_menziesii-n	Nemophila menziesii	n	0	2	2	oewn
+oewn-Nenets-n	Nenets	n	0	1	1	oewn
+oewn-Nenets_language-n	Nenets language	n	0	2	2	oewn
+oewn-Nentsi-n	Nentsi	n	0	1	1	oewn
+oewn-Nentsi_language-n	Nentsi language	n	0	2	2	oewn
+oewn-Nentsy-n	Nentsy	n	0	1	1	oewn
+oewn-Nentsy_language-n	Nentsy language	n	0	2	2	oewn
+oewn-Neo-Impressionism-n	Neo-Impressionism	n	0	1	1	oewn
+oewn-Neo-Lamarckism-n	Neo-Lamarckism	n	0	1	1	oewn
+oewn-Neo-Latin-n	Neo-Latin	n	0	1	1	oewn
+oewn-Neo-Latin_language-n	Neo-Latin language	n	0	2	2	oewn
+oewn-Neobiotic-n	Neobiotic	n	0	1	1	oewn
+oewn-Neofiber_alleni-n	Neofiber alleni	n	0	2	2	oewn
+oewn-Neohygrophorus_angelesianus-n	Neohygrophorus angelesianus	n	0	2	2	oewn
+oewn-Neolentinus_ponderosus-n	Neolentinus ponderosus	n	0	2	2	oewn
+oewn-Neomys_anomalus-n	Neomys anomalus	n	0	2	2	oewn
+oewn-Neomys_fodiens-n	Neomys fodiens	n	0	2	2	oewn
+oewn-Neophron_percnopterus-n	Neophron percnopterus	n	0	2	2	oewn
+oewn-Neoplatonism-n	Neoplatonism	n	0	1	1	oewn
+oewn-Neoplatonist-n	Neoplatonist	n	0	1	1	oewn
+oewn-Neopolitan-n	Neopolitan	n	0	1	1	oewn
+oewn-Neosporin-n	Neosporin	n	0	1	1	oewn
+oewn-Neotoma_cinerea-n	Neotoma cinerea	n	0	2	2	oewn
+oewn-Neotoma_floridana-n	Neotoma floridana	n	0	2	2	oewn
+oewn-Neotoma_fuscipes-n	Neotoma fuscipes	n	0	2	2	oewn
+oewn-Nepal_trumpet_flower-n	Nepal trumpet flower	n	0	3	3	oewn
+oewn-Nepalese-a	Nepalese	a	0	1	1	oewn
+oewn-Nepalese-n	Nepalese	n	0	1	1	oewn
+oewn-Nepalese_monetary_unit-n	Nepalese monetary unit	n	0	3	3	oewn
+oewn-Nepalese_rupee-n	Nepalese rupee	n	0	2	2	oewn
+oewn-Nepali-a	Nepali	a	0	1	1	oewn
+oewn-Nepali-n	Nepali	n	0	1	1	oewn
+oewn-Nepali_language-n	Nepali language	n	0	2	2	oewn
+oewn-Nepeta_cataria-n	Nepeta cataria	n	0	2	2	oewn
+oewn-Nepeta_hederacea-n	Nepeta hederacea	n	0	2	2	oewn
+oewn-Nepeta_hederaceae-n	Nepeta hederaceae	n	0	2	2	oewn
+oewn-Nephelium_lappaceum-n	Nephelium lappaceum	n	0	2	2	oewn
+oewn-Nephelium_litchi-n	Nephelium litchi	n	0	2	2	oewn
+oewn-Nephelium_longana-n	Nephelium longana	n	0	2	2	oewn
+oewn-Nephelium_mutabile-n	Nephelium mutabile	n	0	2	2	oewn
+oewn-Nephrolepis_exaltata-n	Nephrolepis exaltata	n	0	2	2	oewn
+oewn-Nephrolepis_exaltata_bostoniensis-n	Nephrolepis exaltata bostoniensis	n	0	3	3	oewn
+oewn-Nephrolepis_pectinata-n	Nephrolepis pectinata	n	0	2	2	oewn
+oewn-Nephrops_norvegicus-n	Nephrops norvegicus	n	0	2	2	oewn
+oewn-Nephthytis_afzelii-n	Nephthytis afzelii	n	0	2	2	oewn
+oewn-Neptunism-n	Neptunism	n	0	1	1	oewn
+oewn-Nereid-n	Nereid	n	0	1	1	oewn
+oewn-Nerita_peloronta-n	Nerita peloronta	n	0	2	2	oewn
+oewn-Nerium_oleander-n	Nerium oleander	n	0	2	2	oewn
+oewn-Nero-ap-s_crown-n	Nero's crown	n	0	2	2	oewn
+oewn-Nerodia_sipedon-n	Nerodia sipedon	n	0	2	2	oewn
+oewn-Nesselrode-n	Nesselrode	n	0	1	1	oewn
+oewn-Nesselrode_pudding-n	Nesselrode pudding	n	0	2	2	oewn
+oewn-Nestor_notabilis-n	Nestor notabilis	n	0	2	2	oewn
+oewn-Nestorian-a	Nestorian	a	0	1	1	oewn
+oewn-Nestorian-n	Nestorian	n	0	1	1	oewn
+oewn-Nestorian_Church-n	Nestorian Church	n	0	2	2	oewn
+oewn-Nestorianism-n	Nestorianism	n	0	1	1	oewn
+oewn-Netherlander-n	Netherlander	n	0	1	1	oewn
+oewn-Neurontin-n	Neurontin	n	0	1	1	oewn
+oewn-Neurotrichus_gibbsii-n	Neurotrichus gibbsii	n	0	2	2	oewn
+oewn-Nevadan-n	Nevadan	n	0	1	1	oewn
+oewn-New-a	New	a	0	1	1	oewn
+oewn-New_Caledonian-a	New Caledonian	a	0	2	2	oewn
+oewn-New_Caledonian_yew-n	New Caledonian yew	n	0	3	3	oewn
+oewn-New_Deal-n	New Deal	n	0	2	2	oewn
+oewn-New_Dealer-n	New Dealer	n	0	2	2	oewn
+oewn-New_England_aster-n	New England aster	n	0	3	3	oewn
+oewn-New_England_boiled_dinner-n	New England boiled dinner	n	0	4	4	oewn
+oewn-New_England_clam_chowder-n	New England clam chowder	n	0	4	4	oewn
+oewn-New_Englander-n	New Englander	n	0	2	2	oewn
+oewn-New_Greek-n	New Greek	n	0	2	2	oewn
+oewn-New_Greek_language-n	New Greek language	n	0	3	3	oewn
+oewn-New_Hampshirite-n	New Hampshirite	n	0	2	2	oewn
+oewn-New_Jerseyan-n	New Jerseyan	n	0	2	2	oewn
+oewn-New_Jerseyite-n	New Jerseyite	n	0	2	2	oewn
+oewn-New_Latin-n	New Latin	n	0	2	2	oewn
+oewn-New_Latin_language-n	New Latin language	n	0	3	3	oewn
+oewn-New_Look-n	New Look	n	0	2	2	oewn
+oewn-New_Mexican-n	New Mexican	n	0	2	2	oewn
+oewn-New_Norwegian-n	New Norwegian	n	0	2	2	oewn
+oewn-New_Realism-n	New Realism	n	0	2	2	oewn
+oewn-New_Scotland_Yard-n	New Scotland Yard	n	0	3	3	oewn
+oewn-New_Style_calendar-n	New Style calendar	n	0	3	3	oewn
+oewn-New_Testament-n	New Testament	n	0	2	2	oewn
+oewn-New_Wave-n	New Wave	n	0	2	2	oewn
+oewn-New_Waver-n	New Waver	n	0	2	2	oewn
+oewn-New_World-n	New World	n	0	2	2	oewn
+oewn-New_World_anteater-n	New World anteater	n	0	3	3	oewn
+oewn-New_World_beaver-n	New World beaver	n	0	3	3	oewn
+oewn-New_World_blackbird-n	New World blackbird	n	0	3	3	oewn
+oewn-New_World_chat-n	New World chat	n	0	3	3	oewn
+oewn-New_World_coral_snake-n	New World coral snake	n	0	4	4	oewn
+oewn-New_World_flycatcher-n	New World flycatcher	n	0	3	3	oewn
+oewn-New_World_goldfinch-n	New World goldfinch	n	0	3	3	oewn
+oewn-New_World_jay-n	New World jay	n	0	3	3	oewn
+oewn-New_World_least_weasel-n	New World least weasel	n	0	4	4	oewn
+oewn-New_World_leishmaniasis-n	New World leishmaniasis	n	0	3	3	oewn
+oewn-New_World_monkey-n	New World monkey	n	0	3	3	oewn
+oewn-New_World_mouse-n	New World mouse	n	0	3	3	oewn
+oewn-New_World_opah-n	New World opah	n	0	3	3	oewn
+oewn-New_World_oriole-n	New World oriole	n	0	3	3	oewn
+oewn-New_World_porcupine-n	New World porcupine	n	0	3	3	oewn
+oewn-New_World_sparrow-n	New World sparrow	n	0	3	3	oewn
+oewn-New_World_tapir-n	New World tapir	n	0	3	3	oewn
+oewn-New_World_vulture-n	New World vulture	n	0	3	3	oewn
+oewn-New_World_warbler-n	New World warbler	n	0	3	3	oewn
+oewn-New_Year-ap-s-n	New Year's	n	0	2	2	oewn
+oewn-New_Year-ap-s_Day-n	New Year's Day	n	0	3	3	oewn
+oewn-New_Year-ap-s_Eve-n	New Year's Eve	n	0	3	3	oewn
+oewn-New_Year-n	New Year	n	0	2	2	oewn
+oewn-New_York_aster-n	New York aster	n	0	3	3	oewn
+oewn-New_York_fern-n	New York fern	n	0	3	3	oewn
+oewn-New_York_minute-n	New York minute	n	0	3	3	oewn
+oewn-New_York_strip-n	New York strip	n	0	3	3	oewn
+oewn-New_Yorker-n	New Yorker	n	0	2	2	oewn
+oewn-New_Zealand_English_orthography-n	New Zealand English orthography	n	0	4	4	oewn
+oewn-New_Zealand_English_spelling-n	New Zealand English spelling	n	0	4	4	oewn
+oewn-New_Zealand_beech-n	New Zealand beech	n	0	3	3	oewn
+oewn-New_Zealand_cotton-n	New Zealand cotton	n	0	3	3	oewn
+oewn-New_Zealand_dacryberry-n	New Zealand dacryberry	n	0	3	3	oewn
+oewn-New_Zealand_daisybush-n	New Zealand daisybush	n	0	3	3	oewn
+oewn-New_Zealand_dollar-n	New Zealand dollar	n	0	3	3	oewn
+oewn-New_Zealand_honeysuckle-n	New Zealand honeysuckle	n	0	3	3	oewn
+oewn-New_Zealand_mountain_pine-n	New Zealand mountain pine	n	0	4	4	oewn
+oewn-New_Zealand_spelling-n	New Zealand spelling	n	0	3	3	oewn
+oewn-New_Zealand_spinach-n	New Zealand spinach	n	0	3	3	oewn
+oewn-New_Zealand_white_pine-n	New Zealand white pine	n	0	4	4	oewn
+oewn-New_Zealand_wine_berry-n	New Zealand wine berry	n	0	4	4	oewn
+oewn-New_Zealand_wren-n	New Zealand wren	n	0	3	3	oewn
+oewn-New_Zealander-a	New Zealander	a	0	2	2	oewn
+oewn-New_Zealander-n	New Zealander	n	0	2	2	oewn
+oewn-Newari-n	Newari	n	0	1	1	oewn
+oewn-Newari_language-n	Newari language	n	0	2	2	oewn
+oewn-Newburg_sauce-n	Newburg sauce	n	0	2	2	oewn
+oewn-Newcastle_disease-n	Newcastle disease	n	0	2	2	oewn
+oewn-Newfoundland-n	Newfoundland	n	0	1	1	oewn
+oewn-Newfoundland_dog-n	Newfoundland dog	n	0	2	2	oewn
+oewn-Newfoundland_dwarf_birch-n	Newfoundland dwarf birch	n	0	3	3	oewn
+oewn-Newmarket-n	Newmarket	n	0	1	1	oewn
+oewn-Newton-ap-s_first_law-n	Newton's first law	n	0	3	3	oewn
+oewn-Newton-ap-s_first_law_of_motion-n	Newton's first law of motion	n	0	5	3	oewn
+oewn-Newton-ap-s_law-n	Newton's law	n	0	2	2	oewn
+oewn-Newton-ap-s_law_of_gravitation-n	Newton's law of gravitation	n	0	4	2	oewn
+oewn-Newton-ap-s_law_of_motion-n	Newton's law of motion	n	0	4	2	oewn
+oewn-Newton-ap-s_second_law-n	Newton's second law	n	0	3	3	oewn
+oewn-Newton-ap-s_second_law_of_motion-n	Newton's second law of motion	n	0	5	3	oewn
+oewn-Newton-ap-s_theory_of_gravitation-n	Newton's theory of gravitation	n	0	4	2	oewn
+oewn-Newton-ap-s_third_law-n	Newton's third law	n	0	3	3	oewn
+oewn-Newton-ap-s_third_law_of_motion-n	Newton's third law of motion	n	0	5	3	oewn
+oewn-Newtonian-a	Newtonian	a	0	1	1	oewn
+oewn-Newtonian-n	Newtonian	n	0	1	1	oewn
+oewn-Newtonian_mechanics-n	Newtonian mechanics	n	0	2	2	oewn
+oewn-Newtonian_reflector-n	Newtonian reflector	n	0	2	2	oewn
+oewn-Newtonian_telescope-n	Newtonian telescope	n	0	2	2	oewn
+oewn-Newtown_Wonder-n	Newtown Wonder	n	0	2	2	oewn
+oewn-Nez_Perce-n	Nez Perce	n	0	2	2	oewn
+oewn-Nez_Perce_language-n	Nez Perce language	n	0	3	3	oewn
+oewn-Nganasan-n	Nganasan	n	0	1	1	oewn
+oewn-Nganasan_language-n	Nganasan language	n	0	2	2	oewn
+oewn-Nguni-n	Nguni	n	0	1	1	oewn
+oewn-Ni-hard-n	Ni-hard	n	0	1	1	oewn
+oewn-Ni-hard_iron-n	Ni-hard iron	n	0	2	2	oewn
+oewn-Ni-n	Ni	n	0	1	1	oewn
+oewn-Ni-resist-n	Ni-resist	n	0	1	1	oewn
+oewn-Ni-resist_iron-n	Ni-resist iron	n	0	2	2	oewn
+oewn-Nibelung-n	Nibelung	n	0	1	1	oewn
+oewn-Nicaea-n	Nicaea	n	0	1	1	oewn
+oewn-Nicaean-a	Nicaean	a	0	1	1	oewn
+oewn-Nicandra_physaloides-n	Nicandra physaloides	n	0	2	2	oewn
+oewn-Nicaraguan-a	Nicaraguan	a	0	1	1	oewn
+oewn-Nicaraguan-n	Nicaraguan	n	0	1	1	oewn
+oewn-Nicaraguan_monetary_unit-n	Nicaraguan monetary unit	n	0	3	3	oewn
+oewn-Nicene-a	Nicene	a	0	1	1	oewn
+oewn-Nicene_Creed-n	Nicene Creed	n	0	2	2	oewn
+oewn-Nichrome-n	Nichrome	n	0	1	1	oewn
+oewn-Nicol_prism-n	Nicol prism	n	0	2	2	oewn
+oewn-Nicotiana_alata-n	Nicotiana alata	n	0	2	2	oewn
+oewn-Nicotiana_glauca-n	Nicotiana glauca	n	0	2	2	oewn
+oewn-Nicotiana_rustica-n	Nicotiana rustica	n	0	2	2	oewn
+oewn-Nicotiana_tabacum-n	Nicotiana tabacum	n	0	2	2	oewn
+oewn-Niemann-Pick_disease-n	Niemann-Pick disease	n	0	2	2	oewn
+oewn-Nierembergia_frutescens-n	Nierembergia frutescens	n	0	2	2	oewn
+oewn-Nierembergia_repens-n	Nierembergia repens	n	0	2	2	oewn
+oewn-Nierembergia_rivularis-n	Nierembergia rivularis	n	0	2	2	oewn
+oewn-Nietzscheanism-n	Nietzscheanism	n	0	1	1	oewn
+oewn-Nigella_damascena-n	Nigella damascena	n	0	2	2	oewn
+oewn-Nigella_hispanica-n	Nigella hispanica	n	0	2	2	oewn
+oewn-Nigella_sativa-n	Nigella sativa	n	0	2	2	oewn
+oewn-Niger-Congo-n	Niger-Congo	n	0	1	1	oewn
+oewn-Niger-Kordofanian-n	Niger-Kordofanian	n	0	1	1	oewn
+oewn-Niger-Kordofanian_language-n	Niger-Kordofanian language	n	0	2	2	oewn
+oewn-Niger_franc-n	Niger franc	n	0	2	2	oewn
+oewn-Nigerian-a	Nigerian	a	0	1	1	oewn
+oewn-Nigerian-n	Nigerian	n	0	1	1	oewn
+oewn-Nigerian_monetary_unit-n	Nigerian monetary unit	n	0	3	3	oewn
+oewn-Nigerien-a	Nigerien	a	0	1	1	oewn
+oewn-Nigerien-n	Nigerien	n	0	1	1	oewn
+oewn-Nigroporus_vinosus-n	Nigroporus vinosus	n	0	2	2	oewn
+oewn-Nile_crocodile-n	Nile crocodile	n	0	2	2	oewn
+oewn-Nilo-Saharan-n	Nilo-Saharan	n	0	1	1	oewn
+oewn-Nilo-Saharan_language-n	Nilo-Saharan language	n	0	2	2	oewn
+oewn-Nilotic-a	Nilotic	a	0	1	1	oewn
+oewn-Nilotic-n	Nilotic	n	0	1	1	oewn
+oewn-Nilotic_language-n	Nilotic language	n	0	2	2	oewn
+oewn-Nina_from_Carolina-n	Nina from Carolina	n	0	3	3	oewn
+oewn-Ninth_of_Ab-n	Ninth of Ab	n	0	3	1	oewn
+oewn-Ninth_of_Av-n	Ninth of Av	n	0	3	1	oewn
+oewn-Nip-n	Nip	n	0	1	1	oewn
+oewn-Nipa_fruticans-n	Nipa fruticans	n	0	2	2	oewn
+oewn-Nipponese-a	Nipponese	a	0	1	1	oewn
+oewn-Nipponese-n	Nipponese	n	0	1	1	oewn
+oewn-Nisan-n	Nisan	n	0	1	1	oewn
+oewn-Nisei-n	Nisei	n	0	1	1	oewn
+oewn-Nissan-n	Nissan	n	0	1	1	oewn
+oewn-Nissen_hut-n	Nissen hut	n	0	2	2	oewn
+oewn-Nitrospan-n	Nitrospan	n	0	1	1	oewn
+oewn-Nitrostat-n	Nitrostat	n	0	1	1	oewn
+oewn-Nivose-n	Nivose	n	0	1	1	oewn
+oewn-No-n	No	n	0	1	1	oewn
+oewn-Noachian-a	Noachian	a	0	1	1	oewn
+oewn-Noachian_deluge-n	Noachian deluge	n	0	2	2	oewn
+oewn-Noah-ap-s_flood-n	Noah's flood	n	0	2	2	oewn
+oewn-Noah_and_the_Flood-n	Noah and the Flood	n	0	4	4	oewn
+oewn-Nobel_Laureate-n	Nobel Laureate	n	0	2	2	oewn
+oewn-Nobel_prize-n	Nobel prize	n	0	2	2	oewn
+oewn-Nobelist-n	Nobelist	n	0	1	1	oewn
+oewn-Nobelit-n	Nobelit	n	0	1	1	oewn
+oewn-Noctiluca_miliaris-n	Noctiluca miliaris	n	0	2	2	oewn
+oewn-Noel-n	Noel	n	0	1	1	oewn
+oewn-Nolina_microcarpa-n	Nolina microcarpa	n	0	2	2	oewn
+oewn-Nomia_melanderi-n	Nomia melanderi	n	0	2	2	oewn
+oewn-Non-Ugric-n	Non-Ugric	n	0	1	1	oewn
+oewn-Nonconformist-n	Nonconformist	n	0	1	1	oewn
+oewn-Nonproliferation_Center-n	Nonproliferation Center	n	0	2	2	oewn
+oewn-Noonan-ap-s_syndrome-n	Noonan's syndrome	n	0	2	2	oewn
+oewn-Nootka-n	Nootka	n	0	1	1	oewn
+oewn-Nootka_cypress-n	Nootka cypress	n	0	2	2	oewn
+oewn-Nootka_language-n	Nootka language	n	0	2	2	oewn
+oewn-Nor-Q-D-n	Nor-Q-D	n	0	1	1	oewn
+oewn-Nordic-a	Nordic	a	0	1	1	oewn
+oewn-Nordic-n	Nordic	n	0	1	1	oewn
+oewn-Norflex-n	Norflex	n	0	1	1	oewn
+oewn-Norfolk_jacket-n	Norfolk jacket	n	0	2	2	oewn
+oewn-Norfolk_terrier-n	Norfolk terrier	n	0	2	2	oewn
+oewn-Norfolk_wherry-n	Norfolk wherry	n	0	2	2	oewn
+oewn-Norinyl-n	Norinyl	n	0	1	1	oewn
+oewn-Norlestrin-n	Norlestrin	n	0	1	1	oewn
+oewn-Norlutin-n	Norlutin	n	0	1	1	oewn
+oewn-Norman-French-n	Norman-French	n	0	1	1	oewn
+oewn-Norman-a	Norman	a	0	1	1	oewn
+oewn-Norman-n	Norman	n	0	1	1	oewn
+oewn-Norman_French-n	Norman French	n	0	2	2	oewn
+oewn-Norman_architecture-n	Norman architecture	n	0	2	2	oewn
+oewn-Normodyne-n	Normodyne	n	0	1	1	oewn
+oewn-Norn-n	Norn	n	0	1	1	oewn
+oewn-Norse-a	Norse	a	0	1	1	oewn
+oewn-Norse-n	Norse	n	0	1	1	oewn
+oewn-Norse_deity-n	Norse deity	n	0	2	2	oewn
+oewn-Norse_mythology-n	Norse mythology	n	0	2	2	oewn
+oewn-Norseman-n	Norseman	n	0	1	1	oewn
+oewn-Norsewoman-n	Norsewoman	n	0	1	1	oewn
+oewn-North_African-a	North African	a	0	2	2	oewn
+oewn-North_America-n	North America	n	0	2	2	oewn
+oewn-North_American-a	North American	a	0	2	2	oewn
+oewn-North_American-n	North American	n	0	2	2	oewn
+oewn-North_American_Free_Trade_Agreement-n	North American Free Trade Agreement	n	0	5	5	oewn
+oewn-North_American_country-n	North American country	n	0	3	3	oewn
+oewn-North_American_nation-n	North American nation	n	0	3	3	oewn
+oewn-North_Atlantic_Council-n	North Atlantic Council	n	0	3	3	oewn
+oewn-North_Atlantic_Treaty_Organization-n	North Atlantic Treaty Organization	n	0	4	4	oewn
+oewn-North_Carolinian-n	North Carolinian	n	0	2	2	oewn
+oewn-North_Dakotan-n	North Dakotan	n	0	2	2	oewn
+oewn-North_Dravidian-n	North Dravidian	n	0	2	2	oewn
+oewn-North_Dravidian_language-n	North Dravidian language	n	0	3	3	oewn
+oewn-North_Equatorial_Current-n	North Equatorial Current	n	0	3	3	oewn
+oewn-North_Germanic-n	North Germanic	n	0	2	2	oewn
+oewn-North_Germanic_language-n	North Germanic language	n	0	3	3	oewn
+oewn-North_Korean-a	North Korean	a	0	2	2	oewn
+oewn-North_Korean-n	North Korean	n	0	2	2	oewn
+oewn-North_Korean_monetary_unit-n	North Korean monetary unit	n	0	4	4	oewn
+oewn-North_Korean_won-n	North Korean won	n	0	3	3	oewn
+oewn-North_Vietnamese-a	North Vietnamese	a	0	2	2	oewn
+oewn-Northern-n	Northern	n	0	1	1	oewn
+oewn-Northern_Alliance-n	Northern Alliance	n	0	2	2	oewn
+oewn-Northern_Baptist-n	Northern Baptist	n	0	2	2	oewn
+oewn-Northern_Baptist_Convention-n	Northern Baptist Convention	n	0	3	3	oewn
+oewn-Northern_Spy-n	Northern Spy	n	0	2	2	oewn
+oewn-Northern_bedstraw-n	Northern bedstraw	n	0	2	2	oewn
+oewn-Northern_dewberry-n	Northern dewberry	n	0	2	2	oewn
+oewn-Northern_lobster-n	Northern lobster	n	0	2	2	oewn
+oewn-Northern_snow_bedstraw-n	Northern snow bedstraw	n	0	3	3	oewn
+oewn-Northerner-n	Northerner	n	0	1	1	oewn
+oewn-Northman-n	Northman	n	0	1	1	oewn
+oewn-Northwoman-n	Northwoman	n	0	1	1	oewn
+oewn-Noruz-n	Noruz	n	0	1	1	oewn
+oewn-Norvasc-n	Norvasc	n	0	1	1	oewn
+oewn-Norvir-n	Norvir	n	0	1	1	oewn
+oewn-Norway_lobster-n	Norway lobster	n	0	2	2	oewn
+oewn-Norway_maple-n	Norway maple	n	0	2	2	oewn
+oewn-Norway_rat-n	Norway rat	n	0	2	2	oewn
+oewn-Norway_spruce-n	Norway spruce	n	0	2	2	oewn
+oewn-Norwegian-a	Norwegian	a	0	1	1	oewn
+oewn-Norwegian-n	Norwegian	n	0	1	1	oewn
+oewn-Norwegian_elkhound-n	Norwegian elkhound	n	0	2	2	oewn
+oewn-Norwegian_krone-n	Norwegian krone	n	0	2	2	oewn
+oewn-Norwegian_language-n	Norwegian language	n	0	2	2	oewn
+oewn-Norwegian_lobster-n	Norwegian lobster	n	0	2	2	oewn
+oewn-Norwegian_monetary_unit-n	Norwegian monetary unit	n	0	3	3	oewn
+oewn-Norwich_terrier-n	Norwich terrier	n	0	2	2	oewn
+oewn-Notechis_scutatus-n	Notechis scutatus	n	0	2	2	oewn
+oewn-Notemigonus_crysoleucas-n	Notemigonus crysoleucas	n	0	2	2	oewn
+oewn-Nothofagus_cunninghamii-n	Nothofagus cunninghamii	n	0	2	2	oewn
+oewn-Nothofagus_dombeyi-n	Nothofagus dombeyi	n	0	2	2	oewn
+oewn-Nothofagus_menziesii-n	Nothofagus menziesii	n	0	2	2	oewn
+oewn-Nothofagus_obliqua-n	Nothofagus obliqua	n	0	2	2	oewn
+oewn-Nothofagus_procera-n	Nothofagus procera	n	0	2	2	oewn
+oewn-Nothofagus_solanderi-n	Nothofagus solanderi	n	0	2	2	oewn
+oewn-Nothofagus_solandri-n	Nothofagus solandri	n	0	2	2	oewn
+oewn-Nothofagus_truncata-n	Nothofagus truncata	n	0	2	2	oewn
+oewn-Notonecta_undulata-n	Notonecta undulata	n	0	2	2	oewn
+oewn-Notophthalmus_viridescens-n	Notophthalmus viridescens	n	0	2	2	oewn
+oewn-Notornis_mantelli-n	Notornis mantelli	n	0	2	2	oewn
+oewn-Notoryctus_typhlops-n	Notoryctus typhlops	n	0	2	2	oewn
+oewn-Notropis_atherinoides-n	Notropis atherinoides	n	0	2	2	oewn
+oewn-Notropis_cornutus-n	Notropis cornutus	n	0	2	2	oewn
+oewn-Nouvelle_Vague-n	Nouvelle Vague	n	0	2	2	oewn
+oewn-Nov-Esperanto-n	Nov-Esperanto	n	0	1	1	oewn
+oewn-Nov-Latin-n	Nov-Latin	n	0	1	1	oewn
+oewn-Nov-n	Nov	n	0	1	1	oewn
+oewn-Nova_Scotia_lox-n	Nova Scotia lox	n	0	3	3	oewn
+oewn-Nova_Scotia_salmon-n	Nova Scotia salmon	n	0	3	3	oewn
+oewn-Nova_Scotian-n	Nova Scotian	n	0	2	2	oewn
+oewn-Nova_lox-n	Nova lox	n	0	2	2	oewn
+oewn-Nova_salmon-n	Nova salmon	n	0	2	2	oewn
+oewn-Nova_style_salmon-n	Nova style salmon	n	0	3	3	oewn
+oewn-November-n	November	n	0	1	1	oewn
+oewn-November_1-n	November 1	n	0	2	2	oewn
+oewn-November_11-n	November 11	n	0	2	2	oewn
+oewn-November_2-n	November 2	n	0	2	2	oewn
+oewn-November_5-n	November 5	n	0	2	2	oewn
+oewn-Novial-n	Novial	n	0	1	1	oewn
+oewn-Novocain-n	Novocain	n	0	1	1	oewn
+oewn-Nowrooz-n	Nowrooz	n	0	1	1	oewn
+oewn-Nowruz-n	Nowruz	n	0	1	1	oewn
+oewn-Np-n	Np	n	0	1	1	oewn
+oewn-Nubian-n	Nubian	n	0	1	1	oewn
+oewn-Nucifraga_caryocatactes-n	Nucifraga caryocatactes	n	0	2	2	oewn
+oewn-Nucifraga_columbiana-n	Nucifraga columbiana	n	0	2	2	oewn
+oewn-Nuclear_Regulatory_Commission-n	Nuclear Regulatory Commission	n	0	3	3	oewn
+oewn-Numenius_arquata-n	Numenius arquata	n	0	2	2	oewn
+oewn-Numenius_borealis-n	Numenius borealis	n	0	2	2	oewn
+oewn-Numida_meleagris-n	Numida meleagris	n	0	2	2	oewn
+oewn-Numidian-a	Numidian	a	0	1	1	oewn
+oewn-Numidian-n	Numidian	n	0	1	1	oewn
+oewn-Nung-n	Nung	n	0	1	1	oewn
+oewn-Nuphar_advena-n	Nuphar advena	n	0	2	2	oewn
+oewn-Nuphar_lutea-n	Nuphar lutea	n	0	2	2	oewn
+oewn-Nuphar_sagittifolium-n	Nuphar sagittifolium	n	0	2	2	oewn
+oewn-Nuprin-n	Nuprin	n	0	1	1	oewn
+oewn-Nuttall-ap-s_oak-n	Nuttall's oak	n	0	2	2	oewn
+oewn-Nuttall_oak-n	Nuttall oak	n	0	2	2	oewn
+oewn-Nuytsia_floribunda-n	Nuytsia floribunda	n	0	2	2	oewn
+oewn-Nyamwezi-n	Nyamwezi	n	0	1	1	oewn
+oewn-Nyamwezi_language-n	Nyamwezi language	n	0	2	2	oewn
+oewn-Nyctaginia_capitata-n	Nyctaginia capitata	n	0	2	2	oewn
+oewn-Nyctanassa_violacea-n	Nyctanassa violacea	n	0	2	2	oewn
+oewn-Nyctereutes_procyonides-n	Nyctereutes procyonides	n	0	2	2	oewn
+oewn-Nyctereutes_procyonoides-n	Nyctereutes procyonoides	n	0	2	2	oewn
+oewn-Nycticebus_pygmaeus-n	Nycticebus pygmaeus	n	0	2	2	oewn
+oewn-Nycticebus_tardigradua-n	Nycticebus tardigradua	n	0	2	2	oewn
+oewn-Nycticorax_nycticorax-n	Nycticorax nycticorax	n	0	2	2	oewn
+oewn-Nyctinomops_femorosaccus-n	Nyctinomops femorosaccus	n	0	2	2	oewn
+oewn-Nydrazid-n	Nydrazid	n	0	1	1	oewn
+oewn-Nymphaea_alba-n	Nymphaea alba	n	0	2	2	oewn
+oewn-Nymphaea_caerulea-n	Nymphaea caerulea	n	0	2	2	oewn
+oewn-Nymphaea_lotus-n	Nymphaea lotus	n	0	2	2	oewn
+oewn-Nymphaea_odorata-n	Nymphaea odorata	n	0	2	2	oewn
+oewn-Nymphaea_stellata-n	Nymphaea stellata	n	0	2	2	oewn
+oewn-Nymphalis_antiopa-n	Nymphalis antiopa	n	0	2	2	oewn
+oewn-Nymphicus_hollandicus-n	Nymphicus hollandicus	n	0	2	2	oewn
+oewn-Nynorsk-n	Nynorsk	n	0	1	1	oewn
+oewn-Nyquist_frequency-n	Nyquist frequency	n	0	2	2	oewn
+oewn-Nyquist_rate-n	Nyquist rate	n	0	2	2	oewn
+oewn-Nyssa_aquatica-n	Nyssa aquatica	n	0	2	2	oewn
+oewn-Nyssa_sylvatica-n	Nyssa sylvatica	n	0	2	2	oewn
+oewn-Nystan-n	Nystan	n	0	1	1	oewn
+oewn-n-n	n	n	0	1	1	oewn
+oewn-n-th-a	n-th	a	0	1	1	oewn
+oewn-n-type_semiconductor-n	n-type semiconductor	n	0	2	2	oewn
+oewn-nRNA-n	nRNA	n	0	1	1	oewn
+oewn-naan-n	naan	n	0	1	1	oewn
+oewn-nab-v	nab	v	0	1	1	oewn
+oewn-nabob-n	nabob	n	0	1	1	oewn
+oewn-naboom-n	naboom	n	0	1	1	oewn
+oewn-nabothian_cyst-n	nabothian cyst	n	0	2	2	oewn
+oewn-nabothian_follicle-n	nabothian follicle	n	0	2	2	oewn
+oewn-nabothian_gland-n	nabothian gland	n	0	2	2	oewn
+oewn-nabumetone-n	nabumetone	n	0	1	1	oewn
+oewn-nacelle-n	nacelle	n	0	1	1	oewn
+oewn-nacho-n	nacho	n	0	1	1	oewn
+oewn-nacre-n	nacre	n	0	1	1	oewn
+oewn-nacreous-a	nacreous	a	0	1	1	oewn
+oewn-nacreous_cloud-n	nacreous cloud	n	0	2	2	oewn
+oewn-nada-n	nada	n	0	1	1	oewn
+oewn-nadir-n	nadir	n	0	1	1	oewn
+oewn-nadolol-n	nadolol	n	0	1	1	oewn
+oewn-nafcillin-n	nafcillin	n	0	1	1	oewn
+oewn-nag-n	nag	n	0	1	1	oewn
+oewn-nag-v	nag	v	0	1	1	oewn
+oewn-nagami-n	nagami	n	0	1	1	oewn
+oewn-nagami_kumquat-n	nagami kumquat	n	0	2	2	oewn
+oewn-nagger-n	nagger	n	0	1	1	oewn
+oewn-nagging-a	nagging	a	0	1	1	oewn
+oewn-nagi-n	nagi	n	0	1	1	oewn
+oewn-naiad-n	naiad	n	0	1	1	oewn
+oewn-naiant-a	naiant	a	0	1	1	oewn
+oewn-naif-a	naif	a	0	1	1	oewn
+oewn-naif-n	naif	n	0	1	1	oewn
+oewn-nail-biting-a	nail-biting	a	0	1	1	oewn
+oewn-nail-n	nail	n	0	1	1	oewn
+oewn-nail-tailed_kangaroo-n	nail-tailed kangaroo	n	0	2	2	oewn
+oewn-nail-tailed_wallaby-n	nail-tailed wallaby	n	0	2	2	oewn
+oewn-nail-v	nail	v	0	1	1	oewn
+oewn-nail_down-v	nail down	v	0	2	1	oewn
+oewn-nail_enamel-n	nail enamel	n	0	2	2	oewn
+oewn-nail_hole-n	nail hole	n	0	2	2	oewn
+oewn-nail_polish-n	nail polish	n	0	2	2	oewn
+oewn-nail_pulling-n	nail pulling	n	0	2	2	oewn
+oewn-nail_removal-n	nail removal	n	0	2	2	oewn
+oewn-nail_varnish-n	nail varnish	n	0	2	2	oewn
+oewn-nailbrush-n	nailbrush	n	0	1	1	oewn
+oewn-nailer-n	nailer	n	0	1	1	oewn
+oewn-nailfile-n	nailfile	n	0	1	1	oewn
+oewn-nailhead-n	nailhead	n	0	1	1	oewn
+oewn-nailrod-n	nailrod	n	0	1	1	oewn
+oewn-nainsook-n	nainsook	n	0	1	1	oewn
+oewn-naira-n	naira	n	0	1	1	oewn
+oewn-naive-a	naive	a	0	1	1	oewn
+oewn-naive_Bayes_classifier-n	naive Bayes classifier	n	0	3	3	oewn
+oewn-naive_art-n	naive art	n	0	2	2	oewn
+oewn-naive_realism-n	naive realism	n	0	2	2	oewn
+oewn-naively-r	naively	r	0	1	1	oewn
+oewn-naiveness-n	naiveness	n	0	1	1	oewn
+oewn-naivete-n	naivete	n	0	1	1	oewn
+oewn-naivety-n	naivety	n	0	1	1	oewn
+oewn-naked-a	naked	a	0	1	1	oewn
+oewn-naked-muzzled-a	naked-muzzled	a	0	1	1	oewn
+oewn-naked-tailed-a	naked-tailed	a	0	1	1	oewn
+oewn-naked_as_a_jaybird-a	naked as a jaybird	a	0	4	4	oewn
+oewn-naked_as_the_day_one_was_born-a	naked as the day one was born	a	0	7	7	oewn
+oewn-naked_as_the_day_you_were_born-a	naked as the day you were born	a	0	7	7	oewn
+oewn-naked_eye-n	naked eye	n	0	2	2	oewn
+oewn-naked_lady-n	naked lady	n	0	2	2	oewn
+oewn-naked_mole_rat-n	naked mole rat	n	0	3	3	oewn
+oewn-naked_option-n	naked option	n	0	2	2	oewn
+oewn-nakedly-r	nakedly	r	0	1	1	oewn
+oewn-nakedness-n	nakedness	n	0	1	1	oewn
+oewn-nakedwood-n	nakedwood	n	0	1	1	oewn
+oewn-nalidixic_acid-n	nalidixic acid	n	0	2	2	oewn
+oewn-nalorphine-n	nalorphine	n	0	1	1	oewn
+oewn-naloxone-n	naloxone	n	0	1	1	oewn
+oewn-naltrexone-n	naltrexone	n	0	1	1	oewn
+oewn-namby-pamby-a	namby-pamby	a	0	1	1	oewn
+oewn-namby-pamby-n	namby-pamby	n	0	1	1	oewn
+oewn-name-dropping-n	name-dropping	n	0	1	1	oewn
+oewn-name-n	name	n	0	1	1	oewn
+oewn-name-v	name	v	0	1	1	oewn
+oewn-name_and_address-n	name and address	n	0	3	3	oewn
+oewn-name_calling-n	name calling	n	0	2	2	oewn
+oewn-name_day-n	name day	n	0	2	2	oewn
+oewn-name_dropper-n	name dropper	n	0	2	2	oewn
+oewn-name_part-n	name part	n	0	2	2	oewn
+oewn-name_tag-n	name tag	n	0	2	2	oewn
+oewn-namedrop-v	namedrop	v	0	1	1	oewn
+oewn-nameko-n	nameko	n	0	1	1	oewn
+oewn-nameless-a	nameless	a	0	1	1	oewn
+oewn-namelessness-n	namelessness	n	0	1	1	oewn
+oewn-namely-r	namely	r	0	1	1	oewn
+oewn-nameplate-n	nameplate	n	0	1	1	oewn
+oewn-namer-n	namer	n	0	1	1	oewn
+oewn-names-n	names	n	0	1	1	oewn
+oewn-namesake-n	namesake	n	0	1	1	oewn
+oewn-naming-a	naming	a	0	1	1	oewn
+oewn-naming-n	naming	n	0	1	1	oewn
+oewn-nammad-n	nammad	n	0	1	1	oewn
+oewn-nan-n	nan	n	0	1	1	oewn
+oewn-nan_heel-n	nan heel	n	0	2	2	oewn
+oewn-nance-n	nance	n	0	1	1	oewn
+oewn-nandrolone-n	nandrolone	n	0	1	1	oewn
+oewn-nandu-n	nandu	n	0	1	1	oewn
+oewn-nanism-n	nanism	n	0	1	1	oewn
+oewn-nankeen-n	nankeen	n	0	1	1	oewn
+oewn-nanna-n	nanna	n	0	1	1	oewn
+oewn-nanny-goat-n	nanny-goat	n	0	1	1	oewn
+oewn-nanny-n	nanny	n	0	1	1	oewn
+oewn-nanocephalic-a	nanocephalic	a	0	1	1	oewn
+oewn-nanocephaly-n	nanocephaly	n	0	1	1	oewn
+oewn-nanogram-n	nanogram	n	0	1	1	oewn
+oewn-nanomachine-n	nanomachine	n	0	1	1	oewn
+oewn-nanometer-n	nanometer	n	0	1	1	oewn
+oewn-nanometre-n	nanometre	n	0	1	1	oewn
+oewn-nanomia-n	nanomia	n	0	1	1	oewn
+oewn-nanophthalmos-n	nanophthalmos	n	0	1	1	oewn
+oewn-nanoplankton-n	nanoplankton	n	0	1	1	oewn
+oewn-nanosecond-n	nanosecond	n	0	1	1	oewn
+oewn-nanotechnology-n	nanotechnology	n	0	1	1	oewn
+oewn-nanotube-n	nanotube	n	0	1	1	oewn
+oewn-nanovolt-n	nanovolt	n	0	1	1	oewn
+oewn-nanus-n	nanus	n	0	1	1	oewn
+oewn-nap-n	nap	n	0	1	1	oewn
+oewn-nap-v	nap	v	0	1	1	oewn
+oewn-napa-n	napa	n	0	1	1	oewn
+oewn-napalm-n	napalm	n	0	1	1	oewn
+oewn-nape-n	nape	n	0	1	1	oewn
+oewn-napery-n	napery	n	0	1	1	oewn
+oewn-naphazoline-n	naphazoline	n	0	1	1	oewn
+oewn-naphtha-n	naphtha	n	0	1	1	oewn
+oewn-naphthalene-n	naphthalene	n	0	1	1	oewn
+oewn-naphthalene_poisoning-n	naphthalene poisoning	n	0	2	2	oewn
+oewn-naphthol-n	naphthol	n	0	1	1	oewn
+oewn-naphthoquinone-n	naphthoquinone	n	0	1	1	oewn
+oewn-napkin-n	napkin	n	0	1	1	oewn
+oewn-napkin_ring-n	napkin ring	n	0	2	2	oewn
+oewn-napoleon-n	napoleon	n	0	1	1	oewn
+oewn-napoleoniana-n	napoleoniana	n	0	1	1	oewn
+oewn-napped-a	napped	a	0	1	1	oewn
+oewn-napping-a	napping	a	0	1	1	oewn
+oewn-nappy-a	nappy	a	0	1	1	oewn
+oewn-nappy-n	nappy	n	0	1	1	oewn
+oewn-naprapath-n	naprapath	n	0	1	1	oewn
+oewn-naprapathy-n	naprapathy	n	0	1	1	oewn
+oewn-naproxen-n	naproxen	n	0	1	1	oewn
+oewn-naproxen_sodium-n	naproxen sodium	n	0	2	2	oewn
+oewn-napu-n	napu	n	0	1	1	oewn
+oewn-naranjilla-n	naranjilla	n	0	1	1	oewn
+oewn-narc-n	narc	n	0	1	1	oewn
+oewn-narcism-n	narcism	n	0	1	1	oewn
+oewn-narcissism-n	narcissism	n	0	1	1	oewn
+oewn-narcissist-n	narcissist	n	0	1	1	oewn
+oewn-narcissistic-a	narcissistic	a	0	1	1	oewn
+oewn-narcissistic_personality-n	narcissistic personality	n	0	2	2	oewn
+oewn-narcissus-n	narcissus	n	0	1	1	oewn
+oewn-narcist-n	narcist	n	0	1	1	oewn
+oewn-narco-dollar-n	narco-dollar	n	0	1	1	oewn
+oewn-narco-state-n	narco-state	n	0	1	1	oewn
+oewn-narcodollar-n	narcodollar	n	0	1	1	oewn
+oewn-narcolepsy-n	narcolepsy	n	0	1	1	oewn
+oewn-narcoleptic-a	narcoleptic	a	0	1	1	oewn
+oewn-narcoleptic-n	narcoleptic	n	0	1	1	oewn
+oewn-narcosis-n	narcosis	n	0	1	1	oewn
+oewn-narcoterrorism-n	narcoterrorism	n	0	1	1	oewn
+oewn-narcotic-a	narcotic	a	0	1	1	oewn
+oewn-narcotic-n	narcotic	n	0	1	1	oewn
+oewn-narcotic_antagonist-n	narcotic antagonist	n	0	2	2	oewn
+oewn-narcotics_agent-n	narcotics agent	n	0	2	2	oewn
+oewn-narcotise-v	narcotise	v	0	1	1	oewn
+oewn-narcotised-a	narcotised	a	0	1	1	oewn
+oewn-narcotising-a	narcotising	a	0	1	1	oewn
+oewn-narcotize-v	narcotize	v	0	1	1	oewn
+oewn-narcotized-a	narcotized	a	0	1	1	oewn
+oewn-narcotizing-a	narcotizing	a	0	1	1	oewn
+oewn-narcotraffic-n	narcotraffic	n	0	1	1	oewn
+oewn-nard-n	nard	n	0	1	1	oewn
+oewn-nardo-n	nardo	n	0	1	1	oewn
+oewn-nardoo-n	nardoo	n	0	1	1	oewn
+oewn-narghile-n	narghile	n	0	1	1	oewn
+oewn-nargileh-n	nargileh	n	0	1	1	oewn
+oewn-narial-a	narial	a	0	1	1	oewn
+oewn-naris-n	naris	n	0	1	1	oewn
+oewn-nark-n	nark	n	0	1	1	oewn
+oewn-nark-v	nark	v	0	1	1	oewn
+oewn-narrate-v	narrate	v	0	1	1	oewn
+oewn-narration-n	narration	n	0	1	1	oewn
+oewn-narrative-a	narrative	a	0	1	1	oewn
+oewn-narrative-n	narrative	n	0	1	1	oewn
+oewn-narrator-n	narrator	n	0	1	1	oewn
+oewn-narrow-a	narrow	a	0	1	1	oewn
+oewn-narrow-bodied-a	narrow-bodied	a	0	1	1	oewn
+oewn-narrow-body-n	narrow-body	n	0	1	1	oewn
+oewn-narrow-body_aircraft-n	narrow-body aircraft	n	0	2	2	oewn
+oewn-narrow-leaf_cattail-n	narrow-leaf cattail	n	0	2	2	oewn
+oewn-narrow-leaf_penstemon-n	narrow-leaf penstemon	n	0	2	2	oewn
+oewn-narrow-leaved_bottletree-n	narrow-leaved bottletree	n	0	2	2	oewn
+oewn-narrow-leaved_everlasting_pea-n	narrow-leaved everlasting pea	n	0	3	3	oewn
+oewn-narrow-leaved_flame_flower-n	narrow-leaved flame flower	n	0	3	3	oewn
+oewn-narrow-leaved_plantain-n	narrow-leaved plantain	n	0	2	2	oewn
+oewn-narrow-leaved_reedmace-n	narrow-leaved reedmace	n	0	2	2	oewn
+oewn-narrow-leaved_spleenwort-n	narrow-leaved spleenwort	n	0	2	2	oewn
+oewn-narrow-leaved_strap_fern-n	narrow-leaved strap fern	n	0	3	3	oewn
+oewn-narrow-leaved_water_plantain-n	narrow-leaved water plantain	n	0	3	3	oewn
+oewn-narrow-leaved_white-topped_aster-n	narrow-leaved white-topped aster	n	0	3	3	oewn
+oewn-narrow-minded-a	narrow-minded	a	0	1	1	oewn
+oewn-narrow-mindedly-r	narrow-mindedly	r	0	1	1	oewn
+oewn-narrow-mindedness-n	narrow-mindedness	n	0	1	1	oewn
+oewn-narrow-mouthed-a	narrow-mouthed	a	0	1	1	oewn
+oewn-narrow-n	narrow	n	0	1	1	oewn
+oewn-narrow-v	narrow	v	0	1	1	oewn
+oewn-narrow_beech_fern-n	narrow beech fern	n	0	3	3	oewn
+oewn-narrow_boat-n	narrow boat	n	0	2	2	oewn
+oewn-narrow_down-v	narrow down	v	0	2	1	oewn
+oewn-narrow_escape-n	narrow escape	n	0	2	2	oewn
+oewn-narrow_gauge-n	narrow gauge	n	0	2	2	oewn
+oewn-narrow_goldenrod-n	narrow goldenrod	n	0	2	2	oewn
+oewn-narrow_margin-n	narrow margin	n	0	2	2	oewn
+oewn-narrow_wale-n	narrow wale	n	0	2	2	oewn
+oewn-narrowboat-n	narrowboat	n	0	1	1	oewn
+oewn-narrowbody_aircraft-n	narrowbody aircraft	n	0	2	2	oewn
+oewn-narrowed-a	narrowed	a	0	1	1	oewn
+oewn-narrowhead_morel-n	narrowhead morel	n	0	2	2	oewn
+oewn-narrowing-a	narrowing	a	0	1	1	oewn
+oewn-narrowing-n	narrowing	n	0	1	1	oewn
+oewn-narrowly-r	narrowly	r	0	1	1	oewn
+oewn-narrowness-n	narrowness	n	0	1	1	oewn
+oewn-narthex-n	narthex	n	0	1	1	oewn
+oewn-narwal-n	narwal	n	0	1	1	oewn
+oewn-narwhal-n	narwhal	n	0	1	1	oewn
+oewn-narwhale-n	narwhale	n	0	1	1	oewn
+oewn-nary-a	nary	a	0	1	1	oewn
+oewn-nasal-a	nasal	a	0	1	1	oewn
+oewn-nasal-n	nasal	n	0	1	1	oewn
+oewn-nasal_aspirator-n	nasal aspirator	n	0	2	2	oewn
+oewn-nasal_bone-n	nasal bone	n	0	2	2	oewn
+oewn-nasal_canthus-n	nasal canthus	n	0	2	2	oewn
+oewn-nasal_cavity-n	nasal cavity	n	0	2	2	oewn
+oewn-nasal_concha-n	nasal concha	n	0	2	2	oewn
+oewn-nasal_consonant-n	nasal consonant	n	0	2	2	oewn
+oewn-nasal_decongestant-n	nasal decongestant	n	0	2	2	oewn
+oewn-nasal_meatus-n	nasal meatus	n	0	2	2	oewn
+oewn-nasal_septum-n	nasal septum	n	0	2	2	oewn
+oewn-nasal_sinus-n	nasal sinus	n	0	2	2	oewn
+oewn-nasal_syringe-n	nasal syringe	n	0	2	2	oewn
+oewn-nasal_twang-n	nasal twang	n	0	2	2	oewn
+oewn-nasal_vowel-n	nasal vowel	n	0	2	2	oewn
+oewn-nasale-v	nasale	v	0	1	1	oewn
+oewn-nasalisation-n	nasalisation	n	0	1	1	oewn
+oewn-nasalise-v	nasalise	v	0	1	1	oewn
+oewn-nasality-n	nasality	n	0	1	1	oewn
+oewn-nasalization-n	nasalization	n	0	1	1	oewn
+oewn-nasalize-v	nasalize	v	0	1	1	oewn
+oewn-nasally-r	nasally	r	0	1	1	oewn
+oewn-nascence-n	nascence	n	0	1	1	oewn
+oewn-nascency-n	nascency	n	0	1	1	oewn
+oewn-nascent-a	nascent	a	0	1	1	oewn
+oewn-nasion-n	nasion	n	0	1	1	oewn
+oewn-nasofrontal_vein-n	nasofrontal vein	n	0	2	2	oewn
+oewn-nasogastric_feeding-n	nasogastric feeding	n	0	2	2	oewn
+oewn-nasolacrimal_duct-n	nasolacrimal duct	n	0	2	2	oewn
+oewn-nasopharyngeal-a	nasopharyngeal	a	0	1	1	oewn
+oewn-nasopharyngeal_leishmaniasis-n	nasopharyngeal leishmaniasis	n	0	2	2	oewn
+oewn-nasopharynx-n	nasopharynx	n	0	1	1	oewn
+oewn-nasotracheal_tube-n	nasotracheal tube	n	0	2	2	oewn
+oewn-nastika-n	nastika	n	0	1	1	oewn
+oewn-nastily-r	nastily	r	0	1	1	oewn
+oewn-nastiness-n	nastiness	n	0	1	1	oewn
+oewn-nasturtium-n	nasturtium	n	0	1	1	oewn
+oewn-nasty-a	nasty	a	0	1	1	oewn
+oewn-natal-a	natal	a	0	1	1	oewn
+oewn-natal_day-n	natal day	n	0	2	2	oewn
+oewn-natal_plum-n	natal plum	n	0	2	2	oewn
+oewn-natality-n	natality	n	0	1	1	oewn
+oewn-natation-n	natation	n	0	1	1	oewn
+oewn-natator-n	natator	n	0	1	1	oewn
+oewn-natatorium-n	natatorium	n	0	1	1	oewn
+oewn-nates-n	nates	n	0	1	1	oewn
+oewn-nation-n	nation	n	0	1	1	oewn
+oewn-national-a	national	a	0	1	1	oewn
+oewn-national-n	national	n	0	1	1	oewn
+oewn-national_anthem-n	national anthem	n	0	2	2	oewn
+oewn-national_assistance-n	national assistance	n	0	2	2	oewn
+oewn-national_bank-n	national bank	n	0	2	2	oewn
+oewn-national_capital-n	national capital	n	0	2	2	oewn
+oewn-national_censorship-n	national censorship	n	0	2	2	oewn
+oewn-national_committee-n	national committee	n	0	2	2	oewn
+oewn-national_debt-n	national debt	n	0	2	2	oewn
+oewn-national_debt_ceiling-n	national debt ceiling	n	0	3	3	oewn
+oewn-national_flag-n	national flag	n	0	2	2	oewn
+oewn-national_holiday-n	national holiday	n	0	2	2	oewn
+oewn-national_income-n	national income	n	0	2	2	oewn
+oewn-national_insurance-n	national insurance	n	0	2	2	oewn
+oewn-national_leader-n	national leader	n	0	2	2	oewn
+oewn-national_monument-n	national monument	n	0	2	2	oewn
+oewn-national_park-n	national park	n	0	2	2	oewn
+oewn-national_service-n	national service	n	0	2	2	oewn
+oewn-national_socialism-n	national socialism	n	0	2	2	oewn
+oewn-national_socialist-a	national socialist	a	0	2	2	oewn
+oewn-national_trading_policy-n	national trading policy	n	0	3	3	oewn
+oewn-nationalisation-n	nationalisation	n	0	1	1	oewn
+oewn-nationalise-v	nationalise	v	0	1	1	oewn
+oewn-nationalism-n	nationalism	n	0	1	1	oewn
+oewn-nationalist-a	nationalist	a	0	1	1	oewn
+oewn-nationalist-n	nationalist	n	0	1	1	oewn
+oewn-nationalist_leader-n	nationalist leader	n	0	2	2	oewn
+oewn-nationalistic-a	nationalistic	a	0	1	1	oewn
+oewn-nationality-n	nationality	n	0	1	1	oewn
+oewn-nationalization-n	nationalization	n	0	1	1	oewn
+oewn-nationalize-v	nationalize	v	0	1	1	oewn
+oewn-nationally-r	nationally	r	0	1	1	oewn
+oewn-nationhood-n	nationhood	n	0	1	1	oewn
+oewn-nationwide-a	nationwide	a	0	1	1	oewn
+oewn-nationwide-r	nationwide	r	0	1	1	oewn
+oewn-native-a	native	a	0	1	1	oewn
+oewn-native-born-a	native-born	a	0	1	1	oewn
+oewn-native-n	native	n	0	1	1	oewn
+oewn-native_Australian-n	native Australian	n	0	2	2	oewn
+oewn-native_bear-n	native bear	n	0	2	2	oewn
+oewn-native_beech-n	native beech	n	0	2	2	oewn
+oewn-native_cat-n	native cat	n	0	2	2	oewn
+oewn-native_cranberry-n	native cranberry	n	0	2	2	oewn
+oewn-native_fuchsia-n	native fuchsia	n	0	2	2	oewn
+oewn-native_holly-n	native holly	n	0	2	2	oewn
+oewn-native_land-n	native land	n	0	2	2	oewn
+oewn-native_language-n	native language	n	0	2	2	oewn
+oewn-native_orange-n	native orange	n	0	2	2	oewn
+oewn-native_peach-n	native peach	n	0	2	2	oewn
+oewn-native_pear-n	native pear	n	0	2	2	oewn
+oewn-native_pomegranate-n	native pomegranate	n	0	2	2	oewn
+oewn-native_speaker-n	native speaker	n	0	2	2	oewn
+oewn-native_sulfur-n	native sulfur	n	0	2	2	oewn
+oewn-native_sulphur-n	native sulphur	n	0	2	2	oewn
+oewn-nativeness-n	nativeness	n	0	1	1	oewn
+oewn-nativism-n	nativism	n	0	1	1	oewn
+oewn-nativist-a	nativist	a	0	1	1	oewn
+oewn-nativist-n	nativist	n	0	1	1	oewn
+oewn-nativistic-a	nativistic	a	0	1	1	oewn
+oewn-nativity-n	nativity	n	0	1	1	oewn
+oewn-natriuresis-n	natriuresis	n	0	1	1	oewn
+oewn-natriuretic-a	natriuretic	a	0	1	1	oewn
+oewn-natrolite-n	natrolite	n	0	1	1	oewn
+oewn-natter-v	natter	v	0	1	1	oewn
+oewn-natterjack-n	natterjack	n	0	1	1	oewn
+oewn-nattily-r	nattily	r	0	1	1	oewn
+oewn-nattiness-n	nattiness	n	0	1	1	oewn
+oewn-natty-a	natty	a	0	1	1	oewn
+oewn-natural-a	natural	a	0	1	1	oewn
+oewn-natural-n	natural	n	0	1	1	oewn
+oewn-natural_Ems_salt-n	natural Ems salt	n	0	3	3	oewn
+oewn-natural_ability-n	natural ability	n	0	2	2	oewn
+oewn-natural_action-n	natural action	n	0	2	2	oewn
+oewn-natural_childbirth-n	natural childbirth	n	0	2	2	oewn
+oewn-natural_covering-n	natural covering	n	0	2	2	oewn
+oewn-natural_depression-n	natural depression	n	0	2	2	oewn
+oewn-natural_elevation-n	natural elevation	n	0	2	2	oewn
+oewn-natural_enclosure-n	natural enclosure	n	0	2	2	oewn
+oewn-natural_endowment-n	natural endowment	n	0	2	2	oewn
+oewn-natural_event-n	natural event	n	0	2	2	oewn
+oewn-natural_family_planning-n	natural family planning	n	0	3	3	oewn
+oewn-natural_fiber-n	natural fiber	n	0	2	2	oewn
+oewn-natural_fibre-n	natural fibre	n	0	2	2	oewn
+oewn-natural_gas-n	natural gas	n	0	2	2	oewn
+oewn-natural_glass-n	natural glass	n	0	2	2	oewn
+oewn-natural_history-n	natural history	n	0	2	2	oewn
+oewn-natural_immunity-n	natural immunity	n	0	2	2	oewn
+oewn-natural_language-n	natural language	n	0	2	2	oewn
+oewn-natural_language_processing-n	natural language processing	n	0	3	3	oewn
+oewn-natural_language_processing_application-n	natural language processing application	n	0	4	4	oewn
+oewn-natural_language_processor-n	natural language processor	n	0	3	3	oewn
+oewn-natural_law-n	natural law	n	0	2	2	oewn
+oewn-natural_logarithm-n	natural logarithm	n	0	2	2	oewn
+oewn-natural_number-n	natural number	n	0	2	2	oewn
+oewn-natural_object-n	natural object	n	0	2	2	oewn
+oewn-natural_order-n	natural order	n	0	2	2	oewn
+oewn-natural_phenomenon-n	natural phenomenon	n	0	2	2	oewn
+oewn-natural_philosophy-n	natural philosophy	n	0	2	2	oewn
+oewn-natural_process-n	natural process	n	0	2	2	oewn
+oewn-natural_resin-n	natural resin	n	0	2	2	oewn
+oewn-natural_resource-n	natural resource	n	0	2	2	oewn
+oewn-natural_resources-n	natural resources	n	0	2	2	oewn
+oewn-natural_rubber-n	natural rubber	n	0	2	2	oewn
+oewn-natural_science-n	natural science	n	0	2	2	oewn
+oewn-natural_scientist-n	natural scientist	n	0	2	2	oewn
+oewn-natural_selection-n	natural selection	n	0	2	2	oewn
+oewn-natural_shape-n	natural shape	n	0	2	2	oewn
+oewn-natural_spring-n	natural spring	n	0	2	2	oewn
+oewn-natural_state-n	natural state	n	0	2	2	oewn
+oewn-natural_theology-n	natural theology	n	0	2	2	oewn
+oewn-natural_virtue-n	natural virtue	n	0	2	2	oewn
+oewn-naturalisation-n	naturalisation	n	0	1	1	oewn
+oewn-naturalise-v	naturalise	v	0	1	1	oewn
+oewn-naturalised-a	naturalised	a	0	1	1	oewn
+oewn-naturalism-n	naturalism	n	0	1	1	oewn
+oewn-naturalist-n	naturalist	n	0	1	1	oewn
+oewn-naturalistic-a	naturalistic	a	0	1	1	oewn
+oewn-naturalization-n	naturalization	n	0	1	1	oewn
+oewn-naturalize-v	naturalize	v	0	1	1	oewn
+oewn-naturalized-a	naturalized	a	0	1	1	oewn
+oewn-naturally-r	naturally	r	0	1	1	oewn
+oewn-naturally_occurring-a	naturally occurring	a	0	2	2	oewn
+oewn-naturalness-n	naturalness	n	0	1	1	oewn
+oewn-nature-n	nature	n	0	1	1	oewn
+oewn-nature_study-n	nature study	n	0	2	2	oewn
+oewn-nature_worship-n	nature worship	n	0	2	2	oewn
+oewn-naturism-n	naturism	n	0	1	1	oewn
+oewn-naturist-n	naturist	n	0	1	1	oewn
+oewn-naturistic-a	naturistic	a	0	1	1	oewn
+oewn-naturopath-n	naturopath	n	0	1	1	oewn
+oewn-naturopathy-n	naturopathy	n	0	1	1	oewn
+oewn-nauch-n	nauch	n	0	1	1	oewn
+oewn-naught-n	naught	n	0	1	1	oewn
+oewn-naughtily-r	naughtily	r	0	1	1	oewn
+oewn-naughtiness-n	naughtiness	n	0	1	1	oewn
+oewn-naughty-a	naughty	a	0	1	1	oewn
+oewn-naumachia-n	naumachia	n	0	1	1	oewn
+oewn-naumachy-n	naumachy	n	0	1	1	oewn
+oewn-naupathia-n	naupathia	n	0	1	1	oewn
+oewn-nausea-n	nausea	n	0	1	1	oewn
+oewn-nauseant-n	nauseant	n	0	1	1	oewn
+oewn-nauseate-v	nauseate	v	0	1	1	oewn
+oewn-nauseated-a	nauseated	a	0	1	1	oewn
+oewn-nauseating-a	nauseating	a	0	1	1	oewn
+oewn-nauseatingness-n	nauseatingness	n	0	1	1	oewn
+oewn-nauseous-a	nauseous	a	0	1	1	oewn
+oewn-naut_mi-n	naut mi	n	0	2	2	oewn
+oewn-nautch-n	nautch	n	0	1	1	oewn
+oewn-nautch_dance-n	nautch dance	n	0	2	2	oewn
+oewn-nautch_girl-n	nautch girl	n	0	2	2	oewn
+oewn-nautical-a	nautical	a	0	1	1	oewn
+oewn-nautical_chain-n	nautical chain	n	0	2	2	oewn
+oewn-nautical_linear_unit-n	nautical linear unit	n	0	3	3	oewn
+oewn-nautical_mile-n	nautical mile	n	0	2	2	oewn
+oewn-nautical_signal_flag-n	nautical signal flag	n	0	3	3	oewn
+oewn-nautilus-n	nautilus	n	0	1	1	oewn
+oewn-naval-a	naval	a	0	1	1	oewn
+oewn-naval_academy-n	naval academy	n	0	2	2	oewn
+oewn-naval_attache-n	naval attache	n	0	2	2	oewn
+oewn-naval_battle-n	naval battle	n	0	2	2	oewn
+oewn-naval_blockade-n	naval blockade	n	0	2	2	oewn
+oewn-naval_brass-n	naval brass	n	0	2	2	oewn
+oewn-naval_campaign-n	naval campaign	n	0	2	2	oewn
+oewn-naval_chart-n	naval chart	n	0	2	2	oewn
+oewn-naval_commander-n	naval commander	n	0	2	2	oewn
+oewn-naval_division-n	naval division	n	0	2	2	oewn
+oewn-naval_engineer-n	naval engineer	n	0	2	2	oewn
+oewn-naval_engineering-n	naval engineering	n	0	2	2	oewn
+oewn-naval_equipment-n	naval equipment	n	0	2	2	oewn
+oewn-naval_forces-n	naval forces	n	0	2	2	oewn
+oewn-naval_gun-n	naval gun	n	0	2	2	oewn
+oewn-naval_installation-n	naval installation	n	0	2	2	oewn
+oewn-naval_missile-n	naval missile	n	0	2	2	oewn
+oewn-naval_officer-n	naval officer	n	0	2	2	oewn
+oewn-naval_radar-n	naval radar	n	0	2	2	oewn
+oewn-naval_shipyard-n	naval shipyard	n	0	2	2	oewn
+oewn-naval_tactical_data_system-n	naval tactical data system	n	0	4	4	oewn
+oewn-naval_unit-n	naval unit	n	0	2	2	oewn
+oewn-naval_weaponry-n	naval weaponry	n	0	2	2	oewn
+oewn-nave-n	nave	n	0	1	1	oewn
+oewn-navel-gazing-n	navel-gazing	n	0	1	1	oewn
+oewn-navel-n	navel	n	0	1	1	oewn
+oewn-navel_orange-n	navel orange	n	0	2	2	oewn
+oewn-navel_point-n	navel point	n	0	2	2	oewn
+oewn-navicular-a	navicular	a	0	1	1	oewn
+oewn-navicular-n	navicular	n	0	1	1	oewn
+oewn-navigability-n	navigability	n	0	1	1	oewn
+oewn-navigable-a	navigable	a	0	1	1	oewn
+oewn-navigate-v	navigate	v	0	1	1	oewn
+oewn-navigation-n	navigation	n	0	1	1	oewn
+oewn-navigation_light-n	navigation light	n	0	2	2	oewn
+oewn-navigational-a	navigational	a	0	1	1	oewn
+oewn-navigational_chart-n	navigational chart	n	0	2	2	oewn
+oewn-navigational_instrument-n	navigational instrument	n	0	2	2	oewn
+oewn-navigational_system-n	navigational system	n	0	2	2	oewn
+oewn-navigator-n	navigator	n	0	1	1	oewn
+oewn-navvy-n	navvy	n	0	1	1	oewn
+oewn-navy-n	navy	n	0	1	1	oewn
+oewn-navy_base-n	navy base	n	0	2	2	oewn
+oewn-navy_bean-n	navy bean	n	0	2	2	oewn
+oewn-navy_blue-n	navy blue	n	0	2	2	oewn
+oewn-navy_man-n	navy man	n	0	2	2	oewn
+oewn-navy_woman-n	navy woman	n	0	2	2	oewn
+oewn-navy_yard-n	navy yard	n	0	2	2	oewn
+oewn-nawab-n	nawab	n	0	1	1	oewn
+oewn-nay-n	nay	n	0	1	1	oewn
+oewn-nay-r	nay	r	0	1	1	oewn
+oewn-naysayer-n	naysayer	n	0	1	1	oewn
+oewn-naysaying-n	naysaying	n	0	1	1	oewn
+oewn-nazi-n	nazi	n	0	1	1	oewn
+oewn-nazify-v	nazify	v	0	1	1	oewn
+oewn-ne-ap-er-do-well-n	ne'er-do-well	n	0	1	1	oewn
+oewn-ne-ap-er-r	ne'er	r	0	1	1	oewn
+oewn-ne_plus_ultra-n	ne plus ultra	n	0	3	3	oewn
+oewn-neandertal-a	neandertal	a	0	1	1	oewn
+oewn-neanderthal-a	neanderthal	a	0	1	1	oewn
+oewn-neap-n	neap	n	0	1	1	oewn
+oewn-neap_tide-n	neap tide	n	0	2	2	oewn
+oewn-near-a	near	a	0	1	1	oewn
+oewn-near-blind-a	near-blind	a	0	1	1	oewn
+oewn-near-death_experience-n	near-death experience	n	0	2	2	oewn
+oewn-near-r	near	r	0	1	1	oewn
+oewn-near-v	near	v	0	1	1	oewn
+oewn-near_beer-n	near beer	n	0	2	2	oewn
+oewn-near_gale-n	near gale	n	0	2	2	oewn
+oewn-near_miss-n	near miss	n	0	2	2	oewn
+oewn-near_thing-n	near thing	n	0	2	2	oewn
+oewn-near_vision-n	near vision	n	0	2	2	oewn
+oewn-nearby-a	nearby	a	0	1	1	oewn
+oewn-nearby-r	nearby	r	0	1	1	oewn
+oewn-nearer-r	nearer	r	0	1	1	oewn
+oewn-nearest-r	nearest	r	0	1	1	oewn
+oewn-nearly-r	nearly	r	0	1	1	oewn
+oewn-nearness-n	nearness	n	0	1	1	oewn
+oewn-nearside-n	nearside	n	0	1	1	oewn
+oewn-nearsighted-a	nearsighted	a	0	1	1	oewn
+oewn-nearsightedness-n	nearsightedness	n	0	1	1	oewn
+oewn-neat-a	neat	a	0	1	1	oewn
+oewn-neat-ap-s-foot_oil-n	neat's-foot oil	n	0	2	2	oewn
+oewn-neaten-v	neaten	v	0	1	1	oewn
+oewn-neatly-r	neatly	r	0	1	1	oewn
+oewn-neatness-n	neatness	n	0	1	1	oewn
+oewn-neb-n	neb	n	0	1	1	oewn
+oewn-nebbech-n	nebbech	n	0	1	1	oewn
+oewn-nebbish-n	nebbish	n	0	1	1	oewn
+oewn-nebuchadnezzar-n	nebuchadnezzar	n	0	1	1	oewn
+oewn-nebula-n	nebula	n	0	1	1	oewn
+oewn-nebular-a	nebular	a	0	1	1	oewn
+oewn-nebular_hypothesis-n	nebular hypothesis	n	0	2	2	oewn
+oewn-nebule-n	nebule	n	0	1	1	oewn
+oewn-nebuliser-n	nebuliser	n	0	1	1	oewn
+oewn-nebulizer-n	nebulizer	n	0	1	1	oewn
+oewn-nebulose-a	nebulose	a	0	1	1	oewn
+oewn-nebulous-a	nebulous	a	0	1	1	oewn
+oewn-nebulously-r	nebulously	r	0	1	1	oewn
+oewn-necessarily-r	necessarily	r	0	1	1	oewn
+oewn-necessary-a	necessary	a	0	1	1	oewn
+oewn-necessary-n	necessary	n	0	1	1	oewn
+oewn-necessitarian-n	necessitarian	n	0	1	1	oewn
+oewn-necessitate-v	necessitate	v	0	1	1	oewn
+oewn-necessitous-a	necessitous	a	0	1	1	oewn
+oewn-necessity-n	necessity	n	0	1	1	oewn
+oewn-neck-deep-a	neck-deep	a	0	1	1	oewn
+oewn-neck-n	neck	n	0	1	1	oewn
+oewn-neck-v	neck	v	0	1	1	oewn
+oewn-neck_and_neck-a	neck and neck	a	0	3	3	oewn
+oewn-neck_and_neck-r	neck and neck	r	0	3	3	oewn
+oewn-neck_bone-n	neck bone	n	0	2	2	oewn
+oewn-neck_brace-n	neck brace	n	0	2	2	oewn
+oewn-neck_exercise-n	neck exercise	n	0	2	2	oewn
+oewn-neck_of_the_woods-n	neck of the woods	n	0	4	1	oewn
+oewn-neck_opening-n	neck opening	n	0	2	2	oewn
+oewn-neck_ruff-n	neck ruff	n	0	2	2	oewn
+oewn-neck_sweetbread-n	neck sweetbread	n	0	2	2	oewn
+oewn-neckband-n	neckband	n	0	1	1	oewn
+oewn-neckcloth-n	neckcloth	n	0	1	1	oewn
+oewn-necked-a	necked	a	0	1	1	oewn
+oewn-necker-n	necker	n	0	1	1	oewn
+oewn-neckerchief-n	neckerchief	n	0	1	1	oewn
+oewn-necking-n	necking	n	0	1	1	oewn
+oewn-necklace-n	necklace	n	0	1	1	oewn
+oewn-necklace_poplar-n	necklace poplar	n	0	2	2	oewn
+oewn-necklace_tree-n	necklace tree	n	0	2	2	oewn
+oewn-neckless-a	neckless	a	0	1	1	oewn
+oewn-necklet-n	necklet	n	0	1	1	oewn
+oewn-necklike-a	necklike	a	0	1	1	oewn
+oewn-neckline-n	neckline	n	0	1	1	oewn
+oewn-neckpiece-n	neckpiece	n	0	1	1	oewn
+oewn-necktie-n	necktie	n	0	1	1	oewn
+oewn-neckwear-n	neckwear	n	0	1	1	oewn
+oewn-necrobiosis-n	necrobiosis	n	0	1	1	oewn
+oewn-necrobiosis_lipoidica-n	necrobiosis lipoidica	n	0	2	2	oewn
+oewn-necrobiosis_lipoidica_diabeticorum-n	necrobiosis lipoidica diabeticorum	n	0	3	3	oewn
+oewn-necrolatry-n	necrolatry	n	0	1	1	oewn
+oewn-necrology-n	necrology	n	0	1	1	oewn
+oewn-necrolysis-n	necrolysis	n	0	1	1	oewn
+oewn-necromancer-n	necromancer	n	0	1	1	oewn
+oewn-necromancy-n	necromancy	n	0	1	1	oewn
+oewn-necromania-n	necromania	n	0	1	1	oewn
+oewn-necromantic-a	necromantic	a	0	1	1	oewn
+oewn-necromantical-a	necromantical	a	0	1	1	oewn
+oewn-necrophagia-n	necrophagia	n	0	1	1	oewn
+oewn-necrophagy-n	necrophagy	n	0	1	1	oewn
+oewn-necrophilia-n	necrophilia	n	0	1	1	oewn
+oewn-necrophilism-n	necrophilism	n	0	1	1	oewn
+oewn-necropolis-n	necropolis	n	0	1	1	oewn
+oewn-necropsy-n	necropsy	n	0	1	1	oewn
+oewn-necrose-v	necrose	v	0	1	1	oewn
+oewn-necrosis-n	necrosis	n	0	1	1	oewn
+oewn-necrotic-a	necrotic	a	0	1	1	oewn
+oewn-necrotizing_enteritis-n	necrotizing enteritis	n	0	2	2	oewn
+oewn-necrotizing_enterocolitis-n	necrotizing enterocolitis	n	0	2	2	oewn
+oewn-nectar-n	nectar	n	0	1	1	oewn
+oewn-nectar-rich-a	nectar-rich	a	0	1	1	oewn
+oewn-nectariferous-a	nectariferous	a	0	1	1	oewn
+oewn-nectarine-n	nectarine	n	0	1	1	oewn
+oewn-nectarine_tree-n	nectarine tree	n	0	2	2	oewn
+oewn-nectarous-a	nectarous	a	0	1	1	oewn
+oewn-nectary-n	nectary	n	0	1	1	oewn
+oewn-nee-a	nee	a	0	1	1	oewn
+oewn-need-n	need	n	0	1	1	oewn
+oewn-need-v	need	v	0	1	1	oewn
+oewn-needed-a	needed	a	0	1	1	oewn
+oewn-needer-n	needer	n	0	1	1	oewn
+oewn-needful-a	needful	a	0	1	1	oewn
+oewn-needfully-r	needfully	r	0	1	1	oewn
+oewn-neediness-n	neediness	n	0	1	1	oewn
+oewn-needle-bush-n	needle-bush	n	0	1	1	oewn
+oewn-needle-n	needle	n	0	1	1	oewn
+oewn-needle-shaped-a	needle-shaped	a	0	1	1	oewn
+oewn-needle-v	needle	v	0	1	1	oewn
+oewn-needle-wood-n	needle-wood	n	0	1	1	oewn
+oewn-needle_bar-n	needle bar	n	0	2	2	oewn
+oewn-needle_bearing-n	needle bearing	n	0	2	2	oewn
+oewn-needle_biopsy-n	needle biopsy	n	0	2	2	oewn
+oewn-needle_blight-n	needle blight	n	0	2	2	oewn
+oewn-needle_bush-n	needle bush	n	0	2	2	oewn
+oewn-needle_cast-n	needle cast	n	0	2	2	oewn
+oewn-needle_furze-n	needle furze	n	0	2	2	oewn
+oewn-needle_palm-n	needle palm	n	0	2	2	oewn
+oewn-needle_rush-n	needle rush	n	0	2	2	oewn
+oewn-needle_spike_rush-n	needle spike rush	n	0	3	3	oewn
+oewn-needle_wood-n	needle wood	n	0	2	2	oewn
+oewn-needlebush-n	needlebush	n	0	1	1	oewn
+oewn-needlecraft-n	needlecraft	n	0	1	1	oewn
+oewn-needled-a	needled	a	0	1	1	oewn
+oewn-needlefish-n	needlefish	n	0	1	1	oewn
+oewn-needlelike-a	needlelike	a	0	1	1	oewn
+oewn-needleman-n	needleman	n	0	1	1	oewn
+oewn-needlenose_pliers-n	needlenose pliers	n	0	2	2	oewn
+oewn-needlepoint-n	needlepoint	n	0	1	1	oewn
+oewn-needlepoint_embroidery-n	needlepoint embroidery	n	0	2	2	oewn
+oewn-needless-a	needless	a	0	1	1	oewn
+oewn-needlessly-r	needlessly	r	0	1	1	oewn
+oewn-needlewoman-n	needlewoman	n	0	1	1	oewn
+oewn-needlewood-n	needlewood	n	0	1	1	oewn
+oewn-needlework-n	needlework	n	0	1	1	oewn
+oewn-needleworker-n	needleworker	n	0	1	1	oewn
+oewn-needs-r	needs	r	0	1	1	oewn
+oewn-needy-a	needy	a	0	1	1	oewn
+oewn-needy-n	needy	n	0	1	1	oewn
+oewn-neem-n	neem	n	0	1	1	oewn
+oewn-neem_cake-n	neem cake	n	0	2	2	oewn
+oewn-neem_seed-n	neem seed	n	0	2	2	oewn
+oewn-neem_tree-n	neem tree	n	0	2	2	oewn
+oewn-neencephalon-n	neencephalon	n	0	1	1	oewn
+oewn-nefarious-a	nefarious	a	0	1	1	oewn
+oewn-nefariously-r	nefariously	r	0	1	1	oewn
+oewn-nefariousness-n	nefariousness	n	0	1	1	oewn
+oewn-nefazodone-n	nefazodone	n	0	1	1	oewn
+oewn-negate-v	negate	v	0	1	1	oewn
+oewn-negation-n	negation	n	0	1	1	oewn
+oewn-negative-a	negative	a	0	1	1	oewn
+oewn-negative-n	negative	n	0	1	1	oewn
+oewn-negative-v	negative	v	0	1	1	oewn
+oewn-negative_balance-n	negative balance	n	0	2	2	oewn
+oewn-negative_charge-n	negative charge	n	0	2	2	oewn
+oewn-negative_chemotaxis-n	negative chemotaxis	n	0	2	2	oewn
+oewn-negative_correlation-n	negative correlation	n	0	2	2	oewn
+oewn-negative_feedback-n	negative feedback	n	0	2	2	oewn
+oewn-negative_feedback_circuit-n	negative feedback circuit	n	0	3	3	oewn
+oewn-negative_identification-n	negative identification	n	0	2	2	oewn
+oewn-negative_magnetic_pole-n	negative magnetic pole	n	0	3	3	oewn
+oewn-negative_muon-n	negative muon	n	0	2	2	oewn
+oewn-negative_pole-n	negative pole	n	0	2	2	oewn
+oewn-negative_reinforcer-n	negative reinforcer	n	0	2	2	oewn
+oewn-negative_reinforcing_stimulus-n	negative reinforcing stimulus	n	0	3	3	oewn
+oewn-negative_stimulation-n	negative stimulation	n	0	2	2	oewn
+oewn-negative_stimulus-n	negative stimulus	n	0	2	2	oewn
+oewn-negatively-r	negatively	r	0	1	1	oewn
+oewn-negatively_charged-a	negatively charged	a	0	2	2	oewn
+oewn-negativeness-n	negativeness	n	0	1	1	oewn
+oewn-negativism-n	negativism	n	0	1	1	oewn
+oewn-negativist-n	negativist	n	0	1	1	oewn
+oewn-negativity-n	negativity	n	0	1	1	oewn
+oewn-negatron-n	negatron	n	0	1	1	oewn
+oewn-neglect-n	neglect	n	0	1	1	oewn
+oewn-neglect-v	neglect	v	0	1	1	oewn
+oewn-neglect_of_duty-n	neglect of duty	n	0	3	1	oewn
+oewn-neglected-a	neglected	a	0	1	1	oewn
+oewn-neglecter-n	neglecter	n	0	1	1	oewn
+oewn-neglectful-a	neglectful	a	0	1	1	oewn
+oewn-neglectfully-r	neglectfully	r	0	1	1	oewn
+oewn-neglectfulness-n	neglectfulness	n	0	1	1	oewn
+oewn-neglige-n	neglige	n	0	1	1	oewn
+oewn-negligee-n	negligee	n	0	1	1	oewn
+oewn-negligence-n	negligence	n	0	1	1	oewn
+oewn-negligent-a	negligent	a	0	1	1	oewn
+oewn-negligently-r	negligently	r	0	1	1	oewn
+oewn-negligible-a	negligible	a	0	1	1	oewn
+oewn-negociate-v	negociate	v	0	1	1	oewn
+oewn-negotiable-a	negotiable	a	0	1	1	oewn
+oewn-negotiable_instrument-n	negotiable instrument	n	0	2	2	oewn
+oewn-negotiant-n	negotiant	n	0	1	1	oewn
+oewn-negotiate-v	negotiate	v	0	1	1	oewn
+oewn-negotiation-n	negotiation	n	0	1	1	oewn
+oewn-negotiator-n	negotiator	n	0	1	1	oewn
+oewn-negotiatress-n	negotiatress	n	0	1	1	oewn
+oewn-negotiatrix-n	negotiatrix	n	0	1	1	oewn
+oewn-negress-n	negress	n	0	1	1	oewn
+oewn-negro-a	negro	a	0	1	1	oewn
+oewn-negro_peach-n	negro peach	n	0	2	2	oewn
+oewn-negro_pepper-n	negro pepper	n	0	2	2	oewn
+oewn-negro_vine-n	negro vine	n	0	2	2	oewn
+oewn-negus-n	negus	n	0	1	1	oewn
+oewn-neigh-n	neigh	n	0	1	1	oewn
+oewn-neigh-v	neigh	v	0	1	1	oewn
+oewn-neighbor-n	neighbor	n	0	1	1	oewn
+oewn-neighbor-v	neighbor	v	0	1	1	oewn
+oewn-neighborhood-n	neighborhood	n	0	1	1	oewn
+oewn-neighboring-a	neighboring	a	0	1	1	oewn
+oewn-neighborliness-n	neighborliness	n	0	1	1	oewn
+oewn-neighborly-a	neighborly	a	0	1	1	oewn
+oewn-neighbour-n	neighbour	n	0	1	1	oewn
+oewn-neighbour-v	neighbour	v	0	1	1	oewn
+oewn-neighbourhood-n	neighbourhood	n	0	1	1	oewn
+oewn-neighbouring-s	neighbouring	a	0	1	1	oewn
+oewn-neighbourliness-n	neighbourliness	n	0	1	1	oewn
+oewn-neighbourly-a	neighbourly	a	0	1	1	oewn
+oewn-neither-a	neither	a	0	1	1	oewn
+oewn-nekton-n	nekton	n	0	1	1	oewn
+oewn-nelfinavir-n	nelfinavir	n	0	1	1	oewn
+oewn-nelson-n	nelson	n	0	1	1	oewn
+oewn-nem_con-r	nem con	r	0	2	2	oewn
+oewn-nematode-n	nematode	n	0	1	1	oewn
+oewn-nematode_worm-n	nematode worm	n	0	2	2	oewn
+oewn-nemertean-n	nemertean	n	0	1	1	oewn
+oewn-nemertine-n	nemertine	n	0	1	1	oewn
+oewn-nemesis-n	nemesis	n	0	1	1	oewn
+oewn-nemine_contradicente-r	nemine contradicente	r	0	2	2	oewn
+oewn-nemophila-n	nemophila	n	0	1	1	oewn
+oewn-neo-Darwinian-a	neo-Darwinian	a	0	1	1	oewn
+oewn-neo-Darwinism-n	neo-Darwinism	n	0	1	1	oewn
+oewn-neo-Gothic-n	neo-Gothic	n	0	1	1	oewn
+oewn-neo-Gothic_architecture-n	neo-Gothic architecture	n	0	2	2	oewn
+oewn-neo-Kantianism-n	neo-Kantianism	n	0	1	1	oewn
+oewn-neo-Lamarckian-a	neo-Lamarckian	a	0	1	1	oewn
+oewn-neo-Marxism-n	neo-Marxism	n	0	1	1	oewn
+oewn-neo-Renaissance-n	neo-Renaissance	n	0	1	1	oewn
+oewn-neo-a	neo	a	0	1	1	oewn
+oewn-neo-baroque-n	neo-baroque	n	0	1	1	oewn
+oewn-neo-evolutionism-n	neo-evolutionism	n	0	1	1	oewn
+oewn-neo-slavism-n	neo-slavism	n	0	1	1	oewn
+oewn-neo_jazz-n	neo jazz	n	0	2	2	oewn
+oewn-neobaroque-n	neobaroque	n	0	1	1	oewn
+oewn-neobehaviorism-n	neobehaviorism	n	0	1	1	oewn
+oewn-neoclassic-a	neoclassic	a	0	1	1	oewn
+oewn-neoclassical-a	neoclassical	a	0	1	1	oewn
+oewn-neoclassicism-n	neoclassicism	n	0	1	1	oewn
+oewn-neoclassicist-a	neoclassicist	a	0	1	1	oewn
+oewn-neoclassicist-n	neoclassicist	n	0	1	1	oewn
+oewn-neoclassicistic-a	neoclassicistic	a	0	1	1	oewn
+oewn-neocolonialism-n	neocolonialism	n	0	1	1	oewn
+oewn-neocon-n	neocon	n	0	1	1	oewn
+oewn-neoconservatism-n	neoconservatism	n	0	1	1	oewn
+oewn-neoconservative-n	neoconservative	n	0	1	1	oewn
+oewn-neocortex-n	neocortex	n	0	1	1	oewn
+oewn-neocortical-a	neocortical	a	0	1	1	oewn
+oewn-neocriticism-n	neocriticism	n	0	1	1	oewn
+oewn-neodymium-n	neodymium	n	0	1	1	oewn
+oewn-neoencephalon-n	neoencephalon	n	0	1	1	oewn
+oewn-neoevolutionism-n	neoevolutionism	n	0	1	1	oewn
+oewn-neoexpressionism-n	neoexpressionism	n	0	1	1	oewn
+oewn-neoliberal-a	neoliberal	a	0	1	1	oewn
+oewn-neoliberal-n	neoliberal	n	0	1	1	oewn
+oewn-neoliberalism-n	neoliberalism	n	0	1	1	oewn
+oewn-neolith-n	neolith	n	0	1	1	oewn
+oewn-neolithic-a	neolithic	a	0	1	1	oewn
+oewn-neologism-n	neologism	n	0	1	1	oewn
+oewn-neologist-n	neologist	n	0	1	1	oewn
+oewn-neology-n	neology	n	0	1	1	oewn
+oewn-neomycin-n	neomycin	n	0	1	1	oewn
+oewn-neon-n	neon	n	0	1	1	oewn
+oewn-neon_induction_lamp-n	neon induction lamp	n	0	3	3	oewn
+oewn-neon_lamp-n	neon lamp	n	0	2	2	oewn
+oewn-neon_tube-n	neon tube	n	0	2	2	oewn
+oewn-neonatal-a	neonatal	a	0	1	1	oewn
+oewn-neonatal_death-n	neonatal death	n	0	2	2	oewn
+oewn-neonatal_hyperbilirubinemia-n	neonatal hyperbilirubinemia	n	0	2	2	oewn
+oewn-neonatal_intensive_care_unit-n	neonatal intensive care unit	n	0	4	4	oewn
+oewn-neonatal_mortality-n	neonatal mortality	n	0	2	2	oewn
+oewn-neonatal_mortality_rate-n	neonatal mortality rate	n	0	3	3	oewn
+oewn-neonatal_period-n	neonatal period	n	0	2	2	oewn
+oewn-neonate-n	neonate	n	0	1	1	oewn
+oewn-neonatology-n	neonatology	n	0	1	1	oewn
+oewn-neopallium-n	neopallium	n	0	1	1	oewn
+oewn-neophobia-n	neophobia	n	0	1	1	oewn
+oewn-neophyte-n	neophyte	n	0	1	1	oewn
+oewn-neoplasia-n	neoplasia	n	0	1	1	oewn
+oewn-neoplasm-n	neoplasm	n	0	1	1	oewn
+oewn-neoplastic-a	neoplastic	a	0	1	1	oewn
+oewn-neoplastic_cell-n	neoplastic cell	n	0	2	2	oewn
+oewn-neoprene-n	neoprene	n	0	1	1	oewn
+oewn-neoromanticism-n	neoromanticism	n	0	1	1	oewn
+oewn-neostigmine-n	neostigmine	n	0	1	1	oewn
+oewn-neotenic-a	neotenic	a	0	1	1	oewn
+oewn-neotenous-a	neotenous	a	0	1	1	oewn
+oewn-neoteny-n	neoteny	n	0	1	1	oewn
+oewn-neotony-n	neotony	n	0	1	1	oewn
+oewn-nepheline-n	nepheline	n	0	1	1	oewn
+oewn-nephelinite-n	nephelinite	n	0	1	1	oewn
+oewn-nephelite-n	nephelite	n	0	1	1	oewn
+oewn-nephew-n	nephew	n	0	1	1	oewn
+oewn-nephology-n	nephology	n	0	1	1	oewn
+oewn-nephoscope-n	nephoscope	n	0	1	1	oewn
+oewn-nephralgia-n	nephralgia	n	0	1	1	oewn
+oewn-nephrectomy-n	nephrectomy	n	0	1	1	oewn
+oewn-nephrite-n	nephrite	n	0	1	1	oewn
+oewn-nephritic-a	nephritic	a	0	1	1	oewn
+oewn-nephritis-n	nephritis	n	0	1	1	oewn
+oewn-nephroangiosclerosis-n	nephroangiosclerosis	n	0	1	1	oewn
+oewn-nephroblastoma-n	nephroblastoma	n	0	1	1	oewn
+oewn-nephrocalcinosis-n	nephrocalcinosis	n	0	1	1	oewn
+oewn-nephrogenic_diabetes_insipidus-n	nephrogenic diabetes insipidus	n	0	3	3	oewn
+oewn-nephrolith-n	nephrolith	n	0	1	1	oewn
+oewn-nephrolithiasis-n	nephrolithiasis	n	0	1	1	oewn
+oewn-nephrology-n	nephrology	n	0	1	1	oewn
+oewn-nephron-n	nephron	n	0	1	1	oewn
+oewn-nephropathy-n	nephropathy	n	0	1	1	oewn
+oewn-nephroptosia-n	nephroptosia	n	0	1	1	oewn
+oewn-nephroptosis-n	nephroptosis	n	0	1	1	oewn
+oewn-nephrosclerosis-n	nephrosclerosis	n	0	1	1	oewn
+oewn-nephrosis-n	nephrosis	n	0	1	1	oewn
+oewn-nephrotic_syndrome-n	nephrotic syndrome	n	0	2	2	oewn
+oewn-nephrotomy-n	nephrotomy	n	0	1	1	oewn
+oewn-nephrotoxic-a	nephrotoxic	a	0	1	1	oewn
+oewn-nephrotoxin-n	nephrotoxin	n	0	1	1	oewn
+oewn-nephthytis-n	nephthytis	n	0	1	1	oewn
+oewn-nepotism-n	nepotism	n	0	1	1	oewn
+oewn-nepotist-n	nepotist	n	0	1	1	oewn
+oewn-neptunium-n	neptunium	n	0	1	1	oewn
+oewn-nerd-n	nerd	n	0	1	1	oewn
+oewn-nerita-n	nerita	n	0	1	1	oewn
+oewn-neritic-a	neritic	a	0	1	1	oewn
+oewn-neritic_zone-n	neritic zone	n	0	2	2	oewn
+oewn-neritid-n	neritid	n	0	1	1	oewn
+oewn-neritid_gastropod-n	neritid gastropod	n	0	2	2	oewn
+oewn-neritina-n	neritina	n	0	1	1	oewn
+oewn-neroli_oil-n	neroli oil	n	0	2	2	oewn
+oewn-nerve-n	nerve	n	0	1	1	oewn
+oewn-nerve-racking-a	nerve-racking	a	0	1	1	oewn
+oewn-nerve-v	nerve	v	0	1	1	oewn
+oewn-nerve-wracking-a	nerve-wracking	a	0	1	1	oewn
+oewn-nerve_agent-n	nerve agent	n	0	2	2	oewn
+oewn-nerve_block_anaesthesia-n	nerve block anaesthesia	n	0	3	3	oewn
+oewn-nerve_block_anesthesia-n	nerve block anesthesia	n	0	3	3	oewn
+oewn-nerve_cell-n	nerve cell	n	0	2	2	oewn
+oewn-nerve_center-n	nerve center	n	0	2	2	oewn
+oewn-nerve_centre-n	nerve centre	n	0	2	2	oewn
+oewn-nerve_compression-n	nerve compression	n	0	2	2	oewn
+oewn-nerve_deafness-n	nerve deafness	n	0	2	2	oewn
+oewn-nerve_end-n	nerve end	n	0	2	2	oewn
+oewn-nerve_ending-n	nerve ending	n	0	2	2	oewn
+oewn-nerve_entrapment-n	nerve entrapment	n	0	2	2	oewn
+oewn-nerve_fiber-n	nerve fiber	n	0	2	2	oewn
+oewn-nerve_fibre-n	nerve fibre	n	0	2	2	oewn
+oewn-nerve_gas-n	nerve gas	n	0	2	2	oewn
+oewn-nerve_growth_factor-n	nerve growth factor	n	0	3	3	oewn
+oewn-nerve_impulse-n	nerve impulse	n	0	2	2	oewn
+oewn-nerve_pathway-n	nerve pathway	n	0	2	2	oewn
+oewn-nerve_plexus-n	nerve plexus	n	0	2	2	oewn
+oewn-nerve_tissue-n	nerve tissue	n	0	2	2	oewn
+oewn-nerve_tract-n	nerve tract	n	0	2	2	oewn
+oewn-nerveless-a	nerveless	a	0	1	1	oewn
+oewn-nervelessly-r	nervelessly	r	0	1	1	oewn
+oewn-nervelessness-n	nervelessness	n	0	1	1	oewn
+oewn-nerveroot-n	nerveroot	n	0	1	1	oewn
+oewn-nerves-n	nerves	n	0	1	1	oewn
+oewn-nerves_of_steel-n	nerves of steel	n	0	3	1	oewn
+oewn-nervii_olfactorii-n	nervii olfactorii	n	0	2	2	oewn
+oewn-nervily-r	nervily	r	0	1	1	oewn
+oewn-nervism-n	nervism	n	0	1	1	oewn
+oewn-nervous-a	nervous	a	0	1	1	oewn
+oewn-nervous_breakdown-n	nervous breakdown	n	0	2	2	oewn
+oewn-nervous_disorder-n	nervous disorder	n	0	2	2	oewn
+oewn-nervous_exhaustion-n	nervous exhaustion	n	0	2	2	oewn
+oewn-nervous_impulse-n	nervous impulse	n	0	2	2	oewn
+oewn-nervous_prostration-n	nervous prostration	n	0	2	2	oewn
+oewn-nervous_strain-n	nervous strain	n	0	2	2	oewn
+oewn-nervous_system-n	nervous system	n	0	2	2	oewn
+oewn-nervous_tissue-n	nervous tissue	n	0	2	2	oewn
+oewn-nervously-r	nervously	r	0	1	1	oewn
+oewn-nervousness-n	nervousness	n	0	1	1	oewn
+oewn-nervure-n	nervure	n	0	1	1	oewn
+oewn-nervus-n	nervus	n	0	1	1	oewn
+oewn-nervus_abducens-n	nervus abducens	n	0	2	2	oewn
+oewn-nervus_accessorius-n	nervus accessorius	n	0	2	2	oewn
+oewn-nervus_coccygeus-n	nervus coccygeus	n	0	2	2	oewn
+oewn-nervus_facialis-n	nervus facialis	n	0	2	2	oewn
+oewn-nervus_femoralis-n	nervus femoralis	n	0	2	2	oewn
+oewn-nervus_glossopharyngeus-n	nervus glossopharyngeus	n	0	2	2	oewn
+oewn-nervus_hypoglosus-n	nervus hypoglosus	n	0	2	2	oewn
+oewn-nervus_ischiadicus-n	nervus ischiadicus	n	0	2	2	oewn
+oewn-nervus_oculomotorius-n	nervus oculomotorius	n	0	2	2	oewn
+oewn-nervus_opticus-n	nervus opticus	n	0	2	2	oewn
+oewn-nervus_phrenicus-n	nervus phrenicus	n	0	2	2	oewn
+oewn-nervus_radialis-n	nervus radialis	n	0	2	2	oewn
+oewn-nervus_saphenus-n	nervus saphenus	n	0	2	2	oewn
+oewn-nervus_spinalis-n	nervus spinalis	n	0	2	2	oewn
+oewn-nervus_trigeminus-n	nervus trigeminus	n	0	2	2	oewn
+oewn-nervus_ulnaris-n	nervus ulnaris	n	0	2	2	oewn
+oewn-nervus_vagus-n	nervus vagus	n	0	2	2	oewn
+oewn-nervus_vestibulocochlearis-n	nervus vestibulocochlearis	n	0	2	2	oewn
+oewn-nervy-a	nervy	a	0	1	1	oewn
+oewn-nescience-n	nescience	n	0	1	1	oewn
+oewn-nescient-a	nescient	a	0	1	1	oewn
+oewn-ness-n	ness	n	0	1	1	oewn
+oewn-nest-n	nest	n	0	1	1	oewn
+oewn-nest-v	nest	v	0	1	1	oewn
+oewn-nest_egg-n	nest egg	n	0	2	2	oewn
+oewn-nester-n	nester	n	0	1	1	oewn
+oewn-nesting_place-n	nesting place	n	0	2	2	oewn
+oewn-nestle-n	nestle	n	0	1	1	oewn
+oewn-nestle-v	nestle	v	0	1	1	oewn
+oewn-nestled-a	nestled	a	0	1	1	oewn
+oewn-nestling-n	nestling	n	0	1	1	oewn
+oewn-net-a	net	a	0	1	1	oewn
+oewn-net-n	net	n	0	1	1	oewn
+oewn-net-v	net	v	0	1	1	oewn
+oewn-net_ball-n	net ball	n	0	2	2	oewn
+oewn-net_curtain-n	net curtain	n	0	2	2	oewn
+oewn-net_estate-n	net estate	n	0	2	2	oewn
+oewn-net_fish-v	net fish	v	0	2	1	oewn
+oewn-net_income-n	net income	n	0	2	2	oewn
+oewn-net_melon-n	net melon	n	0	2	2	oewn
+oewn-net_profit-n	net profit	n	0	2	2	oewn
+oewn-net_sales-n	net sales	n	0	2	2	oewn
+oewn-net_ton-n	net ton	n	0	2	2	oewn
+oewn-net_weight-n	net weight	n	0	2	2	oewn
+oewn-netball-n	netball	n	0	1	1	oewn
+oewn-nether-a	nether	a	0	1	1	oewn
+oewn-nether_region-n	nether region	n	0	2	2	oewn
+oewn-nethermost-a	nethermost	a	0	1	1	oewn
+oewn-netherworld-n	netherworld	n	0	1	1	oewn
+oewn-netiquette-n	netiquette	n	0	1	1	oewn
+oewn-netkeeper-n	netkeeper	n	0	1	1	oewn
+oewn-netlike-a	netlike	a	0	1	1	oewn
+oewn-netmail-v	netmail	v	0	1	1	oewn
+oewn-netminder-n	netminder	n	0	1	1	oewn
+oewn-nett-a	nett	a	0	1	1	oewn
+oewn-nett-v	nett	v	0	1	1	oewn
+oewn-netted-a	netted	a	0	1	1	oewn
+oewn-netted_melon-n	netted melon	n	0	2	2	oewn
+oewn-netting-n	netting	n	0	1	1	oewn
+oewn-nettle-leaved_bellflower-n	nettle-leaved bellflower	n	0	2	2	oewn
+oewn-nettle-leaved_goosefoot-n	nettle-leaved goosefoot	n	0	2	2	oewn
+oewn-nettle-n	nettle	n	0	1	1	oewn
+oewn-nettle-v	nettle	v	0	1	1	oewn
+oewn-nettle_rash-n	nettle rash	n	0	2	2	oewn
+oewn-nettle_tree-n	nettle tree	n	0	2	2	oewn
+oewn-nettled-a	nettled	a	0	1	1	oewn
+oewn-nettleleaf_goosefoot-n	nettleleaf goosefoot	n	0	2	2	oewn
+oewn-nettlesome-a	nettlesome	a	0	1	1	oewn
+oewn-network-n	network	n	0	1	1	oewn
+oewn-network-v	network	v	0	1	1	oewn
+oewn-network_architecture-n	network architecture	n	0	2	2	oewn
+oewn-network_army-n	network army	n	0	2	2	oewn
+oewn-network_bridge-n	network bridge	n	0	2	2	oewn
+oewn-network_programming-n	network programming	n	0	2	2	oewn
+oewn-network_topology-n	network topology	n	0	2	2	oewn
+oewn-networklike-a	networklike	a	0	1	1	oewn
+oewn-neue_wilden-n	neue wilden	n	0	2	2	oewn
+oewn-neural-a	neural	a	0	1	1	oewn
+oewn-neural_arch-n	neural arch	n	0	2	2	oewn
+oewn-neural_impulse-n	neural impulse	n	0	2	2	oewn
+oewn-neural_net-n	neural net	n	0	2	2	oewn
+oewn-neural_network-n	neural network	n	0	2	2	oewn
+oewn-neural_structure-n	neural structure	n	0	2	2	oewn
+oewn-neural_tube-n	neural tube	n	0	2	2	oewn
+oewn-neuralgia-n	neuralgia	n	0	1	1	oewn
+oewn-neuralgic-a	neuralgic	a	0	1	1	oewn
+oewn-neuralgy-n	neuralgy	n	0	1	1	oewn
+oewn-neurasthenia-n	neurasthenia	n	0	1	1	oewn
+oewn-neurasthenic-a	neurasthenic	a	0	1	1	oewn
+oewn-neurasthenic-n	neurasthenic	n	0	1	1	oewn
+oewn-neurectomy-n	neurectomy	n	0	1	1	oewn
+oewn-neurilemma-n	neurilemma	n	0	1	1	oewn
+oewn-neurilemoma-n	neurilemoma	n	0	1	1	oewn
+oewn-neurinoma-n	neurinoma	n	0	1	1	oewn
+oewn-neuritis-n	neuritis	n	0	1	1	oewn
+oewn-neuro-marketing-n	neuro-marketing	n	0	1	1	oewn
+oewn-neuroanatomic-a	neuroanatomic	a	0	1	1	oewn
+oewn-neuroanatomical-a	neuroanatomical	a	0	1	1	oewn
+oewn-neuroanatomy-n	neuroanatomy	n	0	1	1	oewn
+oewn-neurobiological-a	neurobiological	a	0	1	1	oewn
+oewn-neurobiological-r	neurobiological	r	0	1	1	oewn
+oewn-neurobiologist-n	neurobiologist	n	0	1	1	oewn
+oewn-neurobiology-n	neurobiology	n	0	1	1	oewn
+oewn-neuroblast-n	neuroblast	n	0	1	1	oewn
+oewn-neuroblastoma-n	neuroblastoma	n	0	1	1	oewn
+oewn-neurochemical-n	neurochemical	n	0	1	1	oewn
+oewn-neurodermatitis-n	neurodermatitis	n	0	1	1	oewn
+oewn-neuroendocrine-a	neuroendocrine	a	0	1	1	oewn
+oewn-neuroepithelioma-n	neuroepithelioma	n	0	1	1	oewn
+oewn-neuroepithelium-n	neuroepithelium	n	0	1	1	oewn
+oewn-neuroethics-n	neuroethics	n	0	1	1	oewn
+oewn-neurofibril-n	neurofibril	n	0	1	1	oewn
+oewn-neurofibroma-n	neurofibroma	n	0	1	1	oewn
+oewn-neurofibromatosis-n	neurofibromatosis	n	0	1	1	oewn
+oewn-neurogenesis-n	neurogenesis	n	0	1	1	oewn
+oewn-neurogenic-a	neurogenic	a	0	1	1	oewn
+oewn-neurogenic_bladder-n	neurogenic bladder	n	0	2	2	oewn
+oewn-neuroglia-n	neuroglia	n	0	1	1	oewn
+oewn-neurogliacyte-n	neurogliacyte	n	0	1	1	oewn
+oewn-neuroglial-a	neuroglial	a	0	1	1	oewn
+oewn-neuroglial_cell-n	neuroglial cell	n	0	2	2	oewn
+oewn-neurohormone-n	neurohormone	n	0	1	1	oewn
+oewn-neurohypophysis-n	neurohypophysis	n	0	1	1	oewn
+oewn-neurolemma-n	neurolemma	n	0	1	1	oewn
+oewn-neuroleptic-n	neuroleptic	n	0	1	1	oewn
+oewn-neuroleptic_agent-n	neuroleptic agent	n	0	2	2	oewn
+oewn-neuroleptic_drug-n	neuroleptic drug	n	0	2	2	oewn
+oewn-neurolinguist-n	neurolinguist	n	0	1	1	oewn
+oewn-neurolinguistics-n	neurolinguistics	n	0	1	1	oewn
+oewn-neurologic-a	neurologic	a	0	1	1	oewn
+oewn-neurological-a	neurological	a	0	1	1	oewn
+oewn-neurological_disease-n	neurological disease	n	0	2	2	oewn
+oewn-neurological_disorder-n	neurological disorder	n	0	2	2	oewn
+oewn-neurologist-n	neurologist	n	0	1	1	oewn
+oewn-neurology-n	neurology	n	0	1	1	oewn
+oewn-neurolysin-n	neurolysin	n	0	1	1	oewn
+oewn-neuroma-n	neuroma	n	0	1	1	oewn
+oewn-neuromarketing-n	neuromarketing	n	0	1	1	oewn
+oewn-neuromatous-a	neuromatous	a	0	1	1	oewn
+oewn-neuromotor-a	neuromotor	a	0	1	1	oewn
+oewn-neuromuscular-a	neuromuscular	a	0	1	1	oewn
+oewn-neuromuscular_blocking_agent-n	neuromuscular blocking agent	n	0	3	3	oewn
+oewn-neuromuscular_junction-n	neuromuscular junction	n	0	2	2	oewn
+oewn-neuron-n	neuron	n	0	1	1	oewn
+oewn-neuronal-a	neuronal	a	0	1	1	oewn
+oewn-neuronic-a	neuronic	a	0	1	1	oewn
+oewn-neuropathy-n	neuropathy	n	0	1	1	oewn
+oewn-neurophysiological-a	neurophysiological	a	0	1	1	oewn
+oewn-neurophysiology-n	neurophysiology	n	0	1	1	oewn
+oewn-neuropil-n	neuropil	n	0	1	1	oewn
+oewn-neuropile-n	neuropile	n	0	1	1	oewn
+oewn-neuroplasty-n	neuroplasty	n	0	1	1	oewn
+oewn-neuropsychiatric-a	neuropsychiatric	a	0	1	1	oewn
+oewn-neuropsychiatry-n	neuropsychiatry	n	0	1	1	oewn
+oewn-neuropsychological-a	neuropsychological	a	0	1	1	oewn
+oewn-neuropsychology-n	neuropsychology	n	0	1	1	oewn
+oewn-neuropteran-n	neuropteran	n	0	1	1	oewn
+oewn-neuropteron-n	neuropteron	n	0	1	1	oewn
+oewn-neuropterous_insect-n	neuropterous insect	n	0	2	2	oewn
+oewn-neurosarcoma-n	neurosarcoma	n	0	1	1	oewn
+oewn-neuroscience-n	neuroscience	n	0	1	1	oewn
+oewn-neuroscientist-n	neuroscientist	n	0	1	1	oewn
+oewn-neurosis-n	neurosis	n	0	1	1	oewn
+oewn-neurosurgeon-n	neurosurgeon	n	0	1	1	oewn
+oewn-neurosurgery-n	neurosurgery	n	0	1	1	oewn
+oewn-neurosyphilis-n	neurosyphilis	n	0	1	1	oewn
+oewn-neurotic-a	neurotic	a	0	1	1	oewn
+oewn-neurotic-n	neurotic	n	0	1	1	oewn
+oewn-neurotic_depression-n	neurotic depression	n	0	2	2	oewn
+oewn-neurotically-r	neurotically	r	0	1	1	oewn
+oewn-neuroticism-n	neuroticism	n	0	1	1	oewn
+oewn-neurotoxic-a	neurotoxic	a	0	1	1	oewn
+oewn-neurotoxin-n	neurotoxin	n	0	1	1	oewn
+oewn-neurotransmitter-n	neurotransmitter	n	0	1	1	oewn
+oewn-neurotropic-a	neurotropic	a	0	1	1	oewn
+oewn-neurotropism-n	neurotropism	n	0	1	1	oewn
+oewn-neuter-a	neuter	a	0	1	1	oewn
+oewn-neuter-n	neuter	n	0	1	1	oewn
+oewn-neuter-v	neuter	v	0	1	1	oewn
+oewn-neutered-a	neutered	a	0	1	1	oewn
+oewn-neutering-n	neutering	n	0	1	1	oewn
+oewn-neutral-a	neutral	a	0	1	1	oewn
+oewn-neutral-colored-a	neutral-colored	a	0	1	1	oewn
+oewn-neutral-coloured-a	neutral-coloured	a	0	1	1	oewn
+oewn-neutral-n	neutral	n	0	1	1	oewn
+oewn-neutral_spirits-n	neutral spirits	n	0	2	2	oewn
+oewn-neutralisation-n	neutralisation	n	0	1	1	oewn
+oewn-neutralisation_reaction-n	neutralisation reaction	n	0	2	2	oewn
+oewn-neutralise-v	neutralise	v	0	1	1	oewn
+oewn-neutralised-a	neutralised	a	0	1	1	oewn
+oewn-neutralism-n	neutralism	n	0	1	1	oewn
+oewn-neutralist-n	neutralist	n	0	1	1	oewn
+oewn-neutrality-n	neutrality	n	0	1	1	oewn
+oewn-neutralization-n	neutralization	n	0	1	1	oewn
+oewn-neutralization_fire-n	neutralization fire	n	0	2	2	oewn
+oewn-neutralization_reaction-n	neutralization reaction	n	0	2	2	oewn
+oewn-neutralize-v	neutralize	v	0	1	1	oewn
+oewn-neutralized-a	neutralized	a	0	1	1	oewn
+oewn-neutrino-n	neutrino	n	0	1	1	oewn
+oewn-neutron-n	neutron	n	0	1	1	oewn
+oewn-neutron_bomb-n	neutron bomb	n	0	2	2	oewn
+oewn-neutron_flux-n	neutron flux	n	0	2	2	oewn
+oewn-neutron_radiation-n	neutron radiation	n	0	2	2	oewn
+oewn-neutron_star-n	neutron star	n	0	2	2	oewn
+oewn-neutropenia-n	neutropenia	n	0	1	1	oewn
+oewn-neutrophil-n	neutrophil	n	0	1	1	oewn
+oewn-neutrophile-n	neutrophile	n	0	1	1	oewn
+oewn-neve-n	neve	n	0	1	1	oewn
+oewn-never-ending-a	never-ending	a	0	1	1	oewn
+oewn-never-never-n	never-never	n	0	1	1	oewn
+oewn-never-never_land-n	never-never land	n	0	2	2	oewn
+oewn-never-r	never	r	0	1	1	oewn
+oewn-never-say-die-a	never-say-die	a	0	1	1	oewn
+oewn-never_again-r	never again	r	0	2	2	oewn
+oewn-nevermore-r	nevermore	r	0	1	1	oewn
+oewn-nevertheless-r	nevertheless	r	0	1	1	oewn
+oewn-nevirapine-n	nevirapine	n	0	1	1	oewn
+oewn-nevoid_elephantiasis-n	nevoid elephantiasis	n	0	2	2	oewn
+oewn-nevus-n	nevus	n	0	1	1	oewn
+oewn-nevus_flammeus-n	nevus flammeus	n	0	2	2	oewn
+oewn-new-a	new	a	0	1	1	oewn
+oewn-new-fangled-a	new-fangled	a	0	1	1	oewn
+oewn-new-made-a	new-made	a	0	1	1	oewn
+oewn-new-mown-a	new-mown	a	0	1	1	oewn
+oewn-new-r	new	r	0	1	1	oewn
+oewn-new-sprung-a	new-sprung	a	0	1	1	oewn
+oewn-new_ballgame-n	new ballgame	n	0	2	2	oewn
+oewn-new_caledonian_pine-n	new caledonian pine	n	0	3	3	oewn
+oewn-new_criticism-n	new criticism	n	0	2	2	oewn
+oewn-new_deal-n	new deal	n	0	2	2	oewn
+oewn-new_edition-n	new edition	n	0	2	2	oewn
+oewn-new_evangelisation-n	new evangelisation	n	0	2	2	oewn
+oewn-new_evangelization-n	new evangelization	n	0	2	2	oewn
+oewn-new_jazz-n	new jazz	n	0	2	2	oewn
+oewn-new_line-n	new line	n	0	2	2	oewn
+oewn-new_moon-n	new moon	n	0	2	2	oewn
+oewn-new_penny-n	new penny	n	0	2	2	oewn
+oewn-new_phase_of_the_moon-n	new phase of the moon	n	0	5	2	oewn
+oewn-new_town-n	new town	n	0	2	2	oewn
+oewn-new_wave-n	new wave	n	0	2	2	oewn
+oewn-newbie-n	newbie	n	0	1	1	oewn
+oewn-newborn-a	newborn	a	0	1	1	oewn
+oewn-newborn-n	newborn	n	0	1	1	oewn
+oewn-newcomer-n	newcomer	n	0	1	1	oewn
+oewn-newel-n	newel	n	0	1	1	oewn
+oewn-newel_post-n	newel post	n	0	2	2	oewn
+oewn-newfangled-a	newfangled	a	0	1	1	oewn
+oewn-newfound-a	newfound	a	0	1	1	oewn
+oewn-newly-r	newly	r	0	1	1	oewn
+oewn-newlywed-n	newlywed	n	0	1	1	oewn
+oewn-newmarket-n	newmarket	n	0	1	1	oewn
+oewn-newness-n	newness	n	0	1	1	oewn
+oewn-news-n	news	n	0	1	1	oewn
+oewn-news_agency-n	news agency	n	0	2	2	oewn
+oewn-news_article-n	news article	n	0	2	2	oewn
+oewn-news_bulletin-n	news bulletin	n	0	2	2	oewn
+oewn-news_conference-n	news conference	n	0	2	2	oewn
+oewn-news_event-n	news event	n	0	2	2	oewn
+oewn-news_item-n	news item	n	0	2	2	oewn
+oewn-news_leak-n	news leak	n	0	2	2	oewn
+oewn-news_magazine-n	news magazine	n	0	2	2	oewn
+oewn-news_media-n	news media	n	0	2	2	oewn
+oewn-news_organisation-n	news organisation	n	0	2	2	oewn
+oewn-news_organization-n	news organization	n	0	2	2	oewn
+oewn-news_photography-n	news photography	n	0	2	2	oewn
+oewn-news_program-n	news program	n	0	2	2	oewn
+oewn-news_reader-n	news reader	n	0	2	2	oewn
+oewn-news_report-n	news report	n	0	2	2	oewn
+oewn-news_show-n	news show	n	0	2	2	oewn
+oewn-news_story-n	news story	n	0	2	2	oewn
+oewn-newsagent-n	newsagent	n	0	1	1	oewn
+oewn-newsboy-n	newsboy	n	0	1	1	oewn
+oewn-newsbreak-n	newsbreak	n	0	1	1	oewn
+oewn-newscast-n	newscast	n	0	1	1	oewn
+oewn-newscaster-n	newscaster	n	0	1	1	oewn
+oewn-newsdealer-n	newsdealer	n	0	1	1	oewn
+oewn-newsflash-n	newsflash	n	0	1	1	oewn
+oewn-newsgroup-n	newsgroup	n	0	1	1	oewn
+oewn-newsless-a	newsless	a	0	1	1	oewn
+oewn-newsletter-n	newsletter	n	0	1	1	oewn
+oewn-newsman-n	newsman	n	0	1	1	oewn
+oewn-newsmonger-n	newsmonger	n	0	1	1	oewn
+oewn-newspaper-n	newspaper	n	0	1	1	oewn
+oewn-newspaper_ad-n	newspaper ad	n	0	2	2	oewn
+oewn-newspaper_advertisement-n	newspaper advertisement	n	0	2	2	oewn
+oewn-newspaper_article-n	newspaper article	n	0	2	2	oewn
+oewn-newspaper_clipping-n	newspaper clipping	n	0	2	2	oewn
+oewn-newspaper_column-n	newspaper column	n	0	2	2	oewn
+oewn-newspaper_columnist-n	newspaper columnist	n	0	2	2	oewn
+oewn-newspaper_critic-n	newspaper critic	n	0	2	2	oewn
+oewn-newspaper_editor-n	newspaper editor	n	0	2	2	oewn
+oewn-newspaper_headline-n	newspaper headline	n	0	2	2	oewn
+oewn-newspaper_publisher-n	newspaper publisher	n	0	2	2	oewn
+oewn-newspapering-n	newspapering	n	0	1	1	oewn
+oewn-newspaperman-n	newspaperman	n	0	1	1	oewn
+oewn-newspaperwoman-n	newspaperwoman	n	0	1	1	oewn
+oewn-newspeak-n	newspeak	n	0	1	1	oewn
+oewn-newsperson-n	newsperson	n	0	1	1	oewn
+oewn-newsprint-n	newsprint	n	0	1	1	oewn
+oewn-newsreader-n	newsreader	n	0	1	1	oewn
+oewn-newsreel-n	newsreel	n	0	1	1	oewn
+oewn-newsroom-n	newsroom	n	0	1	1	oewn
+oewn-newssheet-n	newssheet	n	0	1	1	oewn
+oewn-newsstand-n	newsstand	n	0	1	1	oewn
+oewn-newsstand_operator-n	newsstand operator	n	0	2	2	oewn
+oewn-newsvendor-n	newsvendor	n	0	1	1	oewn
+oewn-newswoman-n	newswoman	n	0	1	1	oewn
+oewn-newsworthiness-n	newsworthiness	n	0	1	1	oewn
+oewn-newsworthy-a	newsworthy	a	0	1	1	oewn
+oewn-newswriter-n	newswriter	n	0	1	1	oewn
+oewn-newsy-a	newsy	a	0	1	1	oewn
+oewn-newt-n	newt	n	0	1	1	oewn
+oewn-newton-n	newton	n	0	1	1	oewn
+oewn-next-a	next	a	0	1	1	oewn
+oewn-next-r	next	r	0	1	1	oewn
+oewn-next-to-last-a	next-to-last	a	0	1	1	oewn
+oewn-next_door-r	next door	r	0	2	2	oewn
+oewn-next_friend-n	next friend	n	0	2	2	oewn
+oewn-next_of_kin-n	next of kin	n	0	3	1	oewn
+oewn-nexus-n	nexus	n	0	1	1	oewn
+oewn-ng-n	ng	n	0	1	1	oewn
+oewn-ngultrum-n	ngultrum	n	0	1	1	oewn
+oewn-ngwee-n	ngwee	n	0	1	1	oewn
+oewn-niacin-n	niacin	n	0	1	1	oewn
+oewn-nib-n	nib	n	0	1	1	oewn
+oewn-nibbed-a	nibbed	a	0	1	1	oewn
+oewn-nibble-n	nibble	n	0	1	1	oewn
+oewn-nibble-v	nibble	v	0	1	1	oewn
+oewn-nibbler-n	nibbler	n	0	1	1	oewn
+oewn-niblick-n	niblick	n	0	1	1	oewn
+oewn-nicad-n	nicad	n	0	1	1	oewn
+oewn-nice-a	nice	a	0	1	1	oewn
+oewn-nicely-r	nicely	r	0	1	1	oewn
+oewn-niceness-n	niceness	n	0	1	1	oewn
+oewn-nicety-n	nicety	n	0	1	1	oewn
+oewn-niche-n	niche	n	0	1	1	oewn
+oewn-nick-n	nick	n	0	1	1	oewn
+oewn-nick-v	nick	v	0	1	1	oewn
+oewn-nickel-and-dime-a	nickel-and-dime	a	0	1	1	oewn
+oewn-nickel-and-dime-v	nickel-and-dime	v	0	1	1	oewn
+oewn-nickel-base_alloy-n	nickel-base alloy	n	0	2	2	oewn
+oewn-nickel-cadmium_accumulator-n	nickel-cadmium accumulator	n	0	2	2	oewn
+oewn-nickel-iron_accumulator-n	nickel-iron accumulator	n	0	2	2	oewn
+oewn-nickel-iron_battery-n	nickel-iron battery	n	0	2	2	oewn
+oewn-nickel-n	nickel	n	0	1	1	oewn
+oewn-nickel-v	nickel	v	0	1	1	oewn
+oewn-nickel_alloy-n	nickel alloy	n	0	2	2	oewn
+oewn-nickel_bronze-n	nickel bronze	n	0	2	2	oewn
+oewn-nickel_note-n	nickel note	n	0	2	2	oewn
+oewn-nickel_silver-n	nickel silver	n	0	2	2	oewn
+oewn-nickel_steel-n	nickel steel	n	0	2	2	oewn
+oewn-nickelodeon-n	nickelodeon	n	0	1	1	oewn
+oewn-nicker-n	nicker	n	0	1	1	oewn
+oewn-nicker-v	nicker	v	0	1	1	oewn
+oewn-nicker_nut-n	nicker nut	n	0	2	2	oewn
+oewn-nicker_seed-n	nicker seed	n	0	2	2	oewn
+oewn-nicknack-n	nicknack	n	0	1	1	oewn
+oewn-nickname-n	nickname	n	0	1	1	oewn
+oewn-nickname-v	nickname	v	0	1	1	oewn
+oewn-nicotinamide_adenine_dinucleotide-n	nicotinamide adenine dinucleotide	n	0	3	3	oewn
+oewn-nicotinamide_adenine_dinucleotide_phosphate-n	nicotinamide adenine dinucleotide phosphate	n	0	4	4	oewn
+oewn-nicotine-n	nicotine	n	0	1	1	oewn
+oewn-nicotine_addiction-n	nicotine addiction	n	0	2	2	oewn
+oewn-nicotine_poisoning-n	nicotine poisoning	n	0	2	2	oewn
+oewn-nicotinic_acid-n	nicotinic acid	n	0	2	2	oewn
+oewn-nictate-v	nictate	v	0	1	1	oewn
+oewn-nictation-n	nictation	n	0	1	1	oewn
+oewn-nictitate-v	nictitate	v	0	1	1	oewn
+oewn-nictitating_membrane-n	nictitating membrane	n	0	2	2	oewn
+oewn-nictitation-n	nictitation	n	0	1	1	oewn
+oewn-nidation-n	nidation	n	0	1	1	oewn
+oewn-nidicolous-a	nidicolous	a	0	1	1	oewn
+oewn-nidifugous-a	nidifugous	a	0	1	1	oewn
+oewn-nidus-n	nidus	n	0	1	1	oewn
+oewn-niece-n	niece	n	0	1	1	oewn
+oewn-nierembergia-n	nierembergia	n	0	1	1	oewn
+oewn-nifedipine-n	nifedipine	n	0	1	1	oewn
+oewn-niff-n	niff	n	0	1	1	oewn
+oewn-niffy-a	niffy	a	0	1	1	oewn
+oewn-nifty-a	nifty	a	0	1	1	oewn
+oewn-nigella-n	nigella	n	0	1	1	oewn
+oewn-nigga-n	nigga	n	0	1	1	oewn
+oewn-niggard-n	niggard	n	0	1	1	oewn
+oewn-niggardliness-n	niggardliness	n	0	1	1	oewn
+oewn-niggardly-a	niggardly	a	0	1	1	oewn
+oewn-niggardness-n	niggardness	n	0	1	1	oewn
+oewn-nigger-n	nigger	n	0	1	1	oewn
+oewn-niggle-v	niggle	v	0	1	1	oewn
+oewn-niggler-n	niggler	n	0	1	1	oewn
+oewn-niggling-a	niggling	a	0	1	1	oewn
+oewn-nigh-a	nigh	a	0	1	1	oewn
+oewn-nigh-r	nigh	r	0	1	1	oewn
+oewn-nigher-r	nigher	r	0	1	1	oewn
+oewn-nighest-r	nighest	r	0	1	1	oewn
+oewn-night-blooming_cereus-n	night-blooming cereus	n	0	2	2	oewn
+oewn-night-light-n	night-light	n	0	1	1	oewn
+oewn-night-line-n	night-line	n	0	1	1	oewn
+oewn-night-n	night	n	0	1	1	oewn
+oewn-night-robe-n	night-robe	n	0	1	1	oewn
+oewn-night-sight-n	night-sight	n	0	1	1	oewn
+oewn-night-stop-n	night-stop	n	0	1	1	oewn
+oewn-night_bell-n	night bell	n	0	2	2	oewn
+oewn-night_bird-n	night bird	n	0	2	2	oewn
+oewn-night_blindness-n	night blindness	n	0	2	2	oewn
+oewn-night_club-n	night club	n	0	2	2	oewn
+oewn-night_court-n	night court	n	0	2	2	oewn
+oewn-night_game-n	night game	n	0	2	2	oewn
+oewn-night_heron-n	night heron	n	0	2	2	oewn
+oewn-night_jasmine-n	night jasmine	n	0	2	2	oewn
+oewn-night_jessamine-n	night jessamine	n	0	2	2	oewn
+oewn-night_latch-n	night latch	n	0	2	2	oewn
+oewn-night_letter-n	night letter	n	0	2	2	oewn
+oewn-night_life-n	night life	n	0	2	2	oewn
+oewn-night_lizard-n	night lizard	n	0	2	2	oewn
+oewn-night_owl-n	night owl	n	0	2	2	oewn
+oewn-night_porter-n	night porter	n	0	2	2	oewn
+oewn-night_raven-n	night raven	n	0	2	2	oewn
+oewn-night_rider-n	night rider	n	0	2	2	oewn
+oewn-night_school-n	night school	n	0	2	2	oewn
+oewn-night_shift-n	night shift	n	0	2	2	oewn
+oewn-night_snake-n	night snake	n	0	2	2	oewn
+oewn-night_soil-n	night soil	n	0	2	2	oewn
+oewn-night_terror-n	night terror	n	0	2	2	oewn
+oewn-night_vision-n	night vision	n	0	2	2	oewn
+oewn-night_watch-n	night watch	n	0	2	2	oewn
+oewn-night_watcher-n	night watcher	n	0	2	2	oewn
+oewn-night_watchman-n	night watchman	n	0	2	2	oewn
+oewn-night_watchwoman-n	night watchwoman	n	0	2	2	oewn
+oewn-nightbird-n	nightbird	n	0	1	1	oewn
+oewn-nightcap-n	nightcap	n	0	1	1	oewn
+oewn-nightclothes-n	nightclothes	n	0	1	1	oewn
+oewn-nightclub-n	nightclub	n	0	1	1	oewn
+oewn-nightcrawler-n	nightcrawler	n	0	1	1	oewn
+oewn-nightdress-n	nightdress	n	0	1	1	oewn
+oewn-nighted-a	nighted	a	0	1	1	oewn
+oewn-nightfall-n	nightfall	n	0	1	1	oewn
+oewn-nightgown-n	nightgown	n	0	1	1	oewn
+oewn-nighthawk-n	nighthawk	n	0	1	1	oewn
+oewn-nightie-n	nightie	n	0	1	1	oewn
+oewn-nightingale-n	nightingale	n	0	1	1	oewn
+oewn-nightjar-n	nightjar	n	0	1	1	oewn
+oewn-nightlife-n	nightlife	n	0	1	1	oewn
+oewn-nightlong-a	nightlong	a	0	1	1	oewn
+oewn-nightly-a	nightly	a	0	1	1	oewn
+oewn-nightly-r	nightly	r	0	1	1	oewn
+oewn-nightmare-n	nightmare	n	0	1	1	oewn
+oewn-nightmarish-a	nightmarish	a	0	1	1	oewn
+oewn-nightmarishness-n	nightmarishness	n	0	1	1	oewn
+oewn-nightrider-n	nightrider	n	0	1	1	oewn
+oewn-nightshade-n	nightshade	n	0	1	1	oewn
+oewn-nightshirt-n	nightshirt	n	0	1	1	oewn
+oewn-nightspot-n	nightspot	n	0	1	1	oewn
+oewn-nightstick-n	nightstick	n	0	1	1	oewn
+oewn-nighttime-n	nighttime	n	0	1	1	oewn
+oewn-nightwalker-n	nightwalker	n	0	1	1	oewn
+oewn-nightwear-n	nightwear	n	0	1	1	oewn
+oewn-nightwork-n	nightwork	n	0	1	1	oewn
+oewn-nigra-n	nigra	n	0	1	1	oewn
+oewn-nihil-n	nihil	n	0	1	1	oewn
+oewn-nihil_obstat-n	nihil obstat	n	0	2	2	oewn
+oewn-nihilism-n	nihilism	n	0	1	1	oewn
+oewn-nihilist-n	nihilist	n	0	1	1	oewn
+oewn-nihilistic-a	nihilistic	a	0	1	1	oewn
+oewn-nihilistic_delusion-n	nihilistic delusion	n	0	2	2	oewn
+oewn-nihility-n	nihility	n	0	1	1	oewn
+oewn-nil-n	nil	n	0	1	1	oewn
+oewn-nilgai-n	nilgai	n	0	1	1	oewn
+oewn-nilpotent-a	nilpotent	a	0	1	1	oewn
+oewn-nim-n	nim	n	0	1	1	oewn
+oewn-nim_tree-n	nim tree	n	0	2	2	oewn
+oewn-nimble-a	nimble	a	0	1	1	oewn
+oewn-nimble-fingered-a	nimble-fingered	a	0	1	1	oewn
+oewn-nimble_Will-n	nimble Will	n	0	2	2	oewn
+oewn-nimbleness-n	nimbleness	n	0	1	1	oewn
+oewn-nimblewill-n	nimblewill	n	0	1	1	oewn
+oewn-nimbly-r	nimbly	r	0	1	1	oewn
+oewn-nimbus-n	nimbus	n	0	1	1	oewn
+oewn-nimbus_cloud-n	nimbus cloud	n	0	2	2	oewn
+oewn-nimiety-n	nimiety	n	0	1	1	oewn
+oewn-niminy-piminy-a	niminy-piminy	a	0	1	1	oewn
+oewn-nin-sin-n	nin-sin	n	0	1	1	oewn
+oewn-nincompoop-n	nincompoop	n	0	1	1	oewn
+oewn-nine-a	nine	a	0	1	1	oewn
+oewn-nine-banded_armadillo-n	nine-banded armadillo	n	0	2	2	oewn
+oewn-nine-fold-a	nine-fold	a	0	1	1	oewn
+oewn-nine-membered-a	nine-membered	a	0	1	1	oewn
+oewn-nine-n	nine	n	0	1	1	oewn
+oewn-nine-sided-a	nine-sided	a	0	1	1	oewn
+oewn-nine-spot-n	nine-spot	n	0	1	1	oewn
+oewn-nine_iron-n	nine iron	n	0	2	2	oewn
+oewn-nine_times-r	nine times	r	0	2	2	oewn
+oewn-ninefold-a	ninefold	a	0	1	1	oewn
+oewn-ninefold-r	ninefold	r	0	1	1	oewn
+oewn-ninepence-n	ninepence	n	0	1	1	oewn
+oewn-ninepenny-a	ninepenny	a	0	1	1	oewn
+oewn-ninepin-n	ninepin	n	0	1	1	oewn
+oewn-ninepin_ball-n	ninepin ball	n	0	2	2	oewn
+oewn-ninepins-n	ninepins	n	0	1	1	oewn
+oewn-niner-n	niner	n	0	1	1	oewn
+oewn-nineteen-a	nineteen	a	0	1	1	oewn
+oewn-nineteen-n	nineteen	n	0	1	1	oewn
+oewn-nineteenth-a	nineteenth	a	0	1	1	oewn
+oewn-nineteenth-n	nineteenth	n	0	1	1	oewn
+oewn-nineties-n	nineties	n	0	1	1	oewn
+oewn-ninetieth-a	ninetieth	a	0	1	1	oewn
+oewn-ninetieth-n	ninetieth	n	0	1	1	oewn
+oewn-ninety-a	ninety	a	0	1	1	oewn
+oewn-ninety-eight-a	ninety-eight	a	0	1	1	oewn
+oewn-ninety-fifth-a	ninety-fifth	a	0	1	1	oewn
+oewn-ninety-five-a	ninety-five	a	0	1	1	oewn
+oewn-ninety-four-a	ninety-four	a	0	1	1	oewn
+oewn-ninety-n	ninety	n	0	1	1	oewn
+oewn-ninety-nine-a	ninety-nine	a	0	1	1	oewn
+oewn-ninety-one-a	ninety-one	a	0	1	1	oewn
+oewn-ninety-seven-a	ninety-seven	a	0	1	1	oewn
+oewn-ninety-six-a	ninety-six	a	0	1	1	oewn
+oewn-ninety-three-a	ninety-three	a	0	1	1	oewn
+oewn-ninety-two-a	ninety-two	a	0	1	1	oewn
+oewn-ninja-n	ninja	n	0	1	1	oewn
+oewn-ninjitsu-n	ninjitsu	n	0	1	1	oewn
+oewn-ninjutsu-n	ninjutsu	n	0	1	1	oewn
+oewn-ninny-n	ninny	n	0	1	1	oewn
+oewn-ninon-n	ninon	n	0	1	1	oewn
+oewn-ninth-a	ninth	a	0	1	1	oewn
+oewn-ninth-n	ninth	n	0	1	1	oewn
+oewn-ninth_cranial_nerve-n	ninth cranial nerve	n	0	3	3	oewn
+oewn-niobite-n	niobite	n	0	1	1	oewn
+oewn-niobium-n	niobium	n	0	1	1	oewn
+oewn-nip-n	nip	n	0	1	1	oewn
+oewn-nip-v	nip	v	0	1	1	oewn
+oewn-nip_and_tuck-a	nip and tuck	a	0	3	3	oewn
+oewn-nip_and_tuck-n	nip and tuck	n	0	3	3	oewn
+oewn-nip_and_tuck-r	nip and tuck	r	0	3	3	oewn
+oewn-nip_off-v	nip off	v	0	2	1	oewn
+oewn-nipa-n	nipa	n	0	1	1	oewn
+oewn-nipa_palm-n	nipa palm	n	0	2	2	oewn
+oewn-nipper-n	nipper	n	0	1	1	oewn
+oewn-nipping-a	nipping	a	0	1	1	oewn
+oewn-nipple-n	nipple	n	0	1	1	oewn
+oewn-nipple_shield-n	nipple shield	n	0	2	2	oewn
+oewn-nippy-a	nippy	a	0	1	1	oewn
+oewn-niqaabi-n	niqaabi	n	0	1	1	oewn
+oewn-niqab-n	niqab	n	0	1	1	oewn
+oewn-nirvana-n	nirvana	n	0	1	1	oewn
+oewn-nisi-a	nisi	a	0	1	1	oewn
+oewn-nisus-n	nisus	n	0	1	1	oewn
+oewn-nit-n	nit	n	0	1	1	oewn
+oewn-niter-n	niter	n	0	1	1	oewn
+oewn-nitid-a	nitid	a	0	1	1	oewn
+oewn-nitpick-v	nitpick	v	0	1	1	oewn
+oewn-nitpicker-n	nitpicker	n	0	1	1	oewn
+oewn-nitramine-n	nitramine	n	0	1	1	oewn
+oewn-nitrate-n	nitrate	n	0	1	1	oewn
+oewn-nitrate-v	nitrate	v	0	1	1	oewn
+oewn-nitrate_bacterium-n	nitrate bacterium	n	0	2	2	oewn
+oewn-nitrazepam-n	nitrazepam	n	0	1	1	oewn
+oewn-nitre-n	nitre	n	0	1	1	oewn
+oewn-nitric-a	nitric	a	0	1	1	oewn
+oewn-nitric_acid-n	nitric acid	n	0	2	2	oewn
+oewn-nitric_bacteria-n	nitric bacteria	n	0	2	2	oewn
+oewn-nitric_bacterium-n	nitric bacterium	n	0	2	2	oewn
+oewn-nitric_oxide-n	nitric oxide	n	0	2	2	oewn
+oewn-nitride-n	nitride	n	0	1	1	oewn
+oewn-nitrification-n	nitrification	n	0	1	1	oewn
+oewn-nitrify-v	nitrify	v	0	1	1	oewn
+oewn-nitrile-n	nitrile	n	0	1	1	oewn
+oewn-nitrite-n	nitrite	n	0	1	1	oewn
+oewn-nitrite_bacterium-n	nitrite bacterium	n	0	2	2	oewn
+oewn-nitro-chalk-n	nitro-chalk	n	0	1	1	oewn
+oewn-nitro_group-n	nitro group	n	0	2	2	oewn
+oewn-nitrobacteria-n	nitrobacteria	n	0	1	1	oewn
+oewn-nitrobacterium-n	nitrobacterium	n	0	1	1	oewn
+oewn-nitrobenzene-n	nitrobenzene	n	0	1	1	oewn
+oewn-nitrocalcite-n	nitrocalcite	n	0	1	1	oewn
+oewn-nitrocellulose-n	nitrocellulose	n	0	1	1	oewn
+oewn-nitrochloroform-n	nitrochloroform	n	0	1	1	oewn
+oewn-nitrochloromethane-n	nitrochloromethane	n	0	1	1	oewn
+oewn-nitrocotton-n	nitrocotton	n	0	1	1	oewn
+oewn-nitrofuran-n	nitrofuran	n	0	1	1	oewn
+oewn-nitrofurantoin-n	nitrofurantoin	n	0	1	1	oewn
+oewn-nitrogen-bearing-a	nitrogen-bearing	a	0	1	1	oewn
+oewn-nitrogen-fixing-a	nitrogen-fixing	a	0	1	1	oewn
+oewn-nitrogen-n	nitrogen	n	0	1	1	oewn
+oewn-nitrogen_balance-n	nitrogen balance	n	0	2	2	oewn
+oewn-nitrogen_cycle-n	nitrogen cycle	n	0	2	2	oewn
+oewn-nitrogen_dioxide-n	nitrogen dioxide	n	0	2	2	oewn
+oewn-nitrogen_fixation-n	nitrogen fixation	n	0	2	2	oewn
+oewn-nitrogen_mustard-n	nitrogen mustard	n	0	2	2	oewn
+oewn-nitrogen_narcosis-n	nitrogen narcosis	n	0	2	2	oewn
+oewn-nitrogen_oxide-n	nitrogen oxide	n	0	2	2	oewn
+oewn-nitrogen_trichloride-n	nitrogen trichloride	n	0	2	2	oewn
+oewn-nitrogenase-n	nitrogenase	n	0	1	1	oewn
+oewn-nitrogenise-v	nitrogenise	v	0	1	1	oewn
+oewn-nitrogenize-v	nitrogenize	v	0	1	1	oewn
+oewn-nitrogenous-a	nitrogenous	a	0	1	1	oewn
+oewn-nitroglycerin-n	nitroglycerin	n	0	1	1	oewn
+oewn-nitroglycerine-n	nitroglycerine	n	0	1	1	oewn
+oewn-nitrohydrochloric_acid-n	nitrohydrochloric acid	n	0	2	2	oewn
+oewn-nitrosobacteria-n	nitrosobacteria	n	0	1	1	oewn
+oewn-nitrous-a	nitrous	a	0	1	1	oewn
+oewn-nitrous_acid-n	nitrous acid	n	0	2	2	oewn
+oewn-nitrous_bacteria-n	nitrous bacteria	n	0	2	2	oewn
+oewn-nitrous_bacterium-n	nitrous bacterium	n	0	2	2	oewn
+oewn-nitrous_oxide-n	nitrous oxide	n	0	2	2	oewn
+oewn-nitrous_oxide_injection_system-n	nitrous oxide injection system	n	0	4	4	oewn
+oewn-nitta_tree-n	nitta tree	n	0	2	2	oewn
+oewn-nitty-gritty-n	nitty-gritty	n	0	1	1	oewn
+oewn-nitweed-n	nitweed	n	0	1	1	oewn
+oewn-nitwit-n	nitwit	n	0	1	1	oewn
+oewn-nitwitted-a	nitwitted	a	0	1	1	oewn
+oewn-nix-n	nix	n	0	1	1	oewn
+oewn-nix-v	nix	v	0	1	1	oewn
+oewn-nm-n	nm	n	0	1	1	oewn
+oewn-no-a	no	a	0	1	1	oewn
+oewn-no-account-a	no-account	a	0	1	1	oewn
+oewn-no-account-n	no-account	n	0	1	1	oewn
+oewn-no-brainer-n	no-brainer	n	0	1	1	oewn
+oewn-no-count-a	no-count	a	0	1	1	oewn
+oewn-no-frills-a	no-frills	a	0	1	1	oewn
+oewn-no-go-a	no-go	a	0	1	1	oewn
+oewn-no-go_area-n	no-go area	n	0	2	2	oewn
+oewn-no-goal-n	no-goal	n	0	1	1	oewn
+oewn-no-good-a	no-good	a	0	1	1	oewn
+oewn-no-hit-a	no-hit	a	0	1	1	oewn
+oewn-no-hit_game-n	no-hit game	n	0	2	2	oewn
+oewn-no-hitter-n	no-hitter	n	0	1	1	oewn
+oewn-no-n	no	n	0	1	1	oewn
+oewn-no-nonsense-a	no-nonsense	a	0	1	1	oewn
+oewn-no-par-value_stock-n	no-par-value stock	n	0	2	2	oewn
+oewn-no-par_stock-n	no-par stock	n	0	2	2	oewn
+oewn-no-parking_zone-n	no-parking zone	n	0	2	2	oewn
+oewn-no-r	no	r	0	1	1	oewn
+oewn-no-see-um-n	no-see-um	n	0	1	1	oewn
+oewn-no-show-n	no-show	n	0	1	1	oewn
+oewn-no-trump-n	no-trump	n	0	1	1	oewn
+oewn-no-win-a	no-win	a	0	1	1	oewn
+oewn-no-win_situation-n	no-win situation	n	0	2	2	oewn
+oewn-no.-n	no.	n	0	1	1	oewn
+oewn-no_ball-n	no ball	n	0	2	2	oewn
+oewn-no_doubt-r	no doubt	r	0	2	2	oewn
+oewn-no_end-r	no end	r	0	2	2	oewn
+oewn-no_fault_automobile_insurance-n	no fault automobile insurance	n	0	4	4	oewn
+oewn-no_fault_insurance-n	no fault insurance	n	0	3	3	oewn
+oewn-no_longer-r	no longer	r	0	2	2	oewn
+oewn-no_man-ap-s_land-n	no man's land	n	0	3	3	oewn
+oewn-no_matter-r	no matter	r	0	2	2	oewn
+oewn-no_matter_what_happens-r	no matter what happens	r	0	4	4	oewn
+oewn-no_more-r	no more	r	0	2	2	oewn
+oewn-nob-n	nob	n	0	1	1	oewn
+oewn-nobble-v	nobble	v	0	1	1	oewn
+oewn-nobelium-n	nobelium	n	0	1	1	oewn
+oewn-nobility-n	nobility	n	0	1	1	oewn
+oewn-noble-a	noble	a	0	1	1	oewn
+oewn-noble-minded-a	noble-minded	a	0	1	1	oewn
+oewn-noble-mindedness-n	noble-mindedness	n	0	1	1	oewn
+oewn-noble-n	noble	n	0	1	1	oewn
+oewn-noble_cane-n	noble cane	n	0	2	2	oewn
+oewn-noble_gas-n	noble gas	n	0	2	2	oewn
+oewn-noble_metal-n	noble metal	n	0	2	2	oewn
+oewn-nobleman-n	nobleman	n	0	1	1	oewn
+oewn-nobleness-n	nobleness	n	0	1	1	oewn
+oewn-noblesse-n	noblesse	n	0	1	1	oewn
+oewn-noblesse_oblige-n	noblesse oblige	n	0	2	2	oewn
+oewn-noblewoman-n	noblewoman	n	0	1	1	oewn
+oewn-nobly-r	nobly	r	0	1	1	oewn
+oewn-nobody-n	nobody	n	0	1	1	oewn
+oewn-nocent-a	nocent	a	0	1	1	oewn
+oewn-nociceptive-a	nociceptive	a	0	1	1	oewn
+oewn-nock-v	nock	v	0	1	1	oewn
+oewn-noctambulation-n	noctambulation	n	0	1	1	oewn
+oewn-noctambulism-n	noctambulism	n	0	1	1	oewn
+oewn-noctambulist-n	noctambulist	n	0	1	1	oewn
+oewn-noctiluca-n	noctiluca	n	0	1	1	oewn
+oewn-noctilucent-a	noctilucent	a	0	1	1	oewn
+oewn-noctuid-n	noctuid	n	0	1	1	oewn
+oewn-noctuid_moth-n	noctuid moth	n	0	2	2	oewn
+oewn-nocturia-n	nocturia	n	0	1	1	oewn
+oewn-nocturnal-a	nocturnal	a	0	1	1	oewn
+oewn-nocturnal_emission-n	nocturnal emission	n	0	2	2	oewn
+oewn-nocturnally-r	nocturnally	r	0	1	1	oewn
+oewn-nocturne-n	nocturne	n	0	1	1	oewn
+oewn-nod-n	nod	n	0	1	1	oewn
+oewn-nod-v	nod	v	0	1	1	oewn
+oewn-nod_off-v	nod off	v	0	2	1	oewn
+oewn-nodal_rhythm-n	nodal rhythm	n	0	2	2	oewn
+oewn-nodding-a	nodding	a	0	1	1	oewn
+oewn-nodding_groundsel-n	nodding groundsel	n	0	2	2	oewn
+oewn-nodding_onion-n	nodding onion	n	0	2	2	oewn
+oewn-nodding_thistle-n	nodding thistle	n	0	2	2	oewn
+oewn-nodding_wild_onion-n	nodding wild onion	n	0	3	3	oewn
+oewn-noddle-n	noddle	n	0	1	1	oewn
+oewn-node-n	node	n	0	1	1	oewn
+oewn-nodes_of_Ranvier-n	nodes of Ranvier	n	0	3	1	oewn
+oewn-nodular-a	nodular	a	0	1	1	oewn
+oewn-nodulated-a	nodulated	a	0	1	1	oewn
+oewn-nodule-n	nodule	n	0	1	1	oewn
+oewn-noduled-a	noduled	a	0	1	1	oewn
+oewn-nodulose-a	nodulose	a	0	1	1	oewn
+oewn-noesis-n	noesis	n	0	1	1	oewn
+oewn-noetic-a	noetic	a	0	1	1	oewn
+oewn-nog-n	nog	n	0	1	1	oewn
+oewn-noggin-n	noggin	n	0	1	1	oewn
+oewn-nogging-n	nogging	n	0	1	1	oewn
+oewn-nohow-r	nohow	r	0	1	1	oewn
+oewn-noise-n	noise	n	0	1	1	oewn
+oewn-noise-v	noise	v	0	1	1	oewn
+oewn-noise_conditions-n	noise conditions	n	0	2	2	oewn
+oewn-noise_level-n	noise level	n	0	2	2	oewn
+oewn-noise_pollution-n	noise pollution	n	0	2	2	oewn
+oewn-noiseless-a	noiseless	a	0	1	1	oewn
+oewn-noiselessly-r	noiselessly	r	0	1	1	oewn
+oewn-noiselessness-n	noiselessness	n	0	1	1	oewn
+oewn-noisemaker-n	noisemaker	n	0	1	1	oewn
+oewn-noisily-r	noisily	r	0	1	1	oewn
+oewn-noisiness-n	noisiness	n	0	1	1	oewn
+oewn-noisome-a	noisome	a	0	1	1	oewn
+oewn-noisomeness-n	noisomeness	n	0	1	1	oewn
+oewn-noisy-a	noisy	a	0	1	1	oewn
+oewn-nol.pros.-v	nol.pros.	v	0	1	1	oewn
+oewn-nol_pros-n	nol pros	n	0	2	2	oewn
+oewn-noli-me-tangere-n	noli-me-tangere	n	0	1	1	oewn
+oewn-nolle_pros-v	nolle pros	v	0	2	1	oewn
+oewn-nolle_prosequi-n	nolle prosequi	n	0	2	2	oewn
+oewn-nolle_prosequi-v	nolle prosequi	v	0	2	1	oewn
+oewn-nolo_contendere-n	nolo contendere	n	0	2	2	oewn
+oewn-nom_de_guerre-n	nom de guerre	n	0	3	1	oewn
+oewn-nom_de_plume-n	nom de plume	n	0	3	1	oewn
+oewn-noma-n	noma	n	0	1	1	oewn
+oewn-nomad-n	nomad	n	0	1	1	oewn
+oewn-nomadic-a	nomadic	a	0	1	1	oewn
+oewn-nomadism-n	nomadism	n	0	1	1	oewn
+oewn-nombril-n	nombril	n	0	1	1	oewn
+oewn-nomenclature-n	nomenclature	n	0	1	1	oewn
+oewn-nomenklatura-n	nomenklatura	n	0	1	1	oewn
+oewn-nominal-a	nominal	a	0	1	1	oewn
+oewn-nominal-n	nominal	n	0	1	1	oewn
+oewn-nominal_aphasia-n	nominal aphasia	n	0	2	2	oewn
+oewn-nominal_damages-n	nominal damages	n	0	2	2	oewn
+oewn-nominal_head-n	nominal head	n	0	2	2	oewn
+oewn-nominal_phrase-n	nominal phrase	n	0	2	2	oewn
+oewn-nominal_price-n	nominal price	n	0	2	2	oewn
+oewn-nominal_value-n	nominal value	n	0	2	2	oewn
+oewn-nominalism-n	nominalism	n	0	1	1	oewn
+oewn-nominalist-n	nominalist	n	0	1	1	oewn
+oewn-nominalistic-a	nominalistic	a	0	1	1	oewn
+oewn-nominally-r	nominally	r	0	1	1	oewn
+oewn-nominate-v	nominate	v	0	1	1	oewn
+oewn-nominated-a	nominated	a	0	1	1	oewn
+oewn-nominating_address-n	nominating address	n	0	2	2	oewn
+oewn-nominating_speech-n	nominating speech	n	0	2	2	oewn
+oewn-nomination-n	nomination	n	0	1	1	oewn
+oewn-nominative-a	nominative	a	0	1	1	oewn
+oewn-nominative-n	nominative	n	0	1	1	oewn
+oewn-nominative_case-n	nominative case	n	0	2	2	oewn
+oewn-nominator-n	nominator	n	0	1	1	oewn
+oewn-nominee-n	nominee	n	0	1	1	oewn
+oewn-nomogram-n	nomogram	n	0	1	1	oewn
+oewn-nomograph-n	nomograph	n	0	1	1	oewn
+oewn-nomothetic-a	nomothetic	a	0	1	1	oewn
+oewn-non-Catholic-n	non-Catholic	n	0	1	1	oewn
+oewn-non-Christian_priest-n	non-Christian priest	n	0	2	2	oewn
+oewn-non-Euclidean_geometry-n	non-Euclidean geometry	n	0	2	2	oewn
+oewn-non-Jew-n	non-Jew	n	0	1	1	oewn
+oewn-non-U-a	non-U	a	0	1	1	oewn
+oewn-non-aromatic-a	non-aromatic	a	0	1	1	oewn
+oewn-non-automatic-a	non-automatic	a	0	1	1	oewn
+oewn-non-avian-a	non-avian	a	0	1	1	oewn
+oewn-non-avian_dinosaur-n	non-avian dinosaur	n	0	2	2	oewn
+oewn-non-buoyant-a	non-buoyant	a	0	1	1	oewn
+oewn-non-canonicity-n	non-canonicity	n	0	1	1	oewn
+oewn-non-cash_expense-n	non-cash expense	n	0	2	2	oewn
+oewn-non-commercialism-n	non-commercialism	n	0	1	1	oewn
+oewn-non-conducting-a	non-conducting	a	0	1	1	oewn
+oewn-non-dedicated_file_server-n	non-dedicated file server	n	0	3	3	oewn
+oewn-non-discrimination-n	non-discrimination	n	0	1	1	oewn
+oewn-non-elective-a	non-elective	a	0	1	1	oewn
+oewn-non-engagement-n	non-engagement	n	0	1	1	oewn
+oewn-non-finite-a	non-finite	a	0	1	1	oewn
+oewn-non-flowering_plant-n	non-flowering plant	n	0	2	2	oewn
+oewn-non-insulin-dependent_diabetes-n	non-insulin-dependent diabetes	n	0	2	2	oewn
+oewn-non-insulin-dependent_diabetes_mellitus-n	non-insulin-dependent diabetes mellitus	n	0	3	3	oewn
+oewn-non-invertible-a	non-invertible	a	0	1	1	oewn
+oewn-non-involvement-n	non-involvement	n	0	1	1	oewn
+oewn-non-ionic_detergent-n	non-ionic detergent	n	0	2	2	oewn
+oewn-non-issue-n	non-issue	n	0	1	1	oewn
+oewn-non-living-a	non-living	a	0	1	1	oewn
+oewn-non-market_economy-n	non-market economy	n	0	2	2	oewn
+oewn-non-metric-a	non-metric	a	0	1	1	oewn
+oewn-non-miscible-a	non-miscible	a	0	1	1	oewn
+oewn-non-negotiable-a	non-negotiable	a	0	1	1	oewn
+oewn-non-nucleoside_reverse_transcriptase_inhibitor-n	non-nucleoside reverse transcriptase inhibitor	n	0	4	4	oewn
+oewn-non-paying-a	non-paying	a	0	1	1	oewn
+oewn-non-poisonous-a	non-poisonous	a	0	1	1	oewn
+oewn-non-profit-making-a	non-profit-making	a	0	1	1	oewn
+oewn-non-proliferation-n	non-proliferation	n	0	1	1	oewn
+oewn-non-r	non	r	0	1	1	oewn
+oewn-non-resinous-a	non-resinous	a	0	1	1	oewn
+oewn-non-resiny-a	non-resiny	a	0	1	1	oewn
+oewn-non-resistant-n	non-resistant	n	0	1	1	oewn
+oewn-non-slave-a	non-slave	a	0	1	1	oewn
+oewn-non-standard_speech-n	non-standard speech	n	0	2	2	oewn
+oewn-non-verbally-r	non-verbally	r	0	1	1	oewn
+oewn-non-volatile_storage-n	non-volatile storage	n	0	2	2	oewn
+oewn-non-water-soluble-a	non-water-soluble	a	0	1	1	oewn
+oewn-non-zero-a	non-zero	a	0	1	1	oewn
+oewn-non_compos_mentis-a	non compos mentis	a	0	3	3	oewn
+oewn-non_pros-n	non pros	n	0	2	2	oewn
+oewn-non_prosequitur-n	non prosequitur	n	0	2	2	oewn
+oewn-non_sequitur-n	non sequitur	n	0	2	2	oewn
+oewn-non_vult-n	non vult	n	0	2	2	oewn
+oewn-nonabsorbency-n	nonabsorbency	n	0	1	1	oewn
+oewn-nonabsorbent-a	nonabsorbent	a	0	1	1	oewn
+oewn-nonabsorptive-a	nonabsorptive	a	0	1	1	oewn
+oewn-nonacceptance-n	nonacceptance	n	0	1	1	oewn
+oewn-nonaccomplishment-n	nonaccomplishment	n	0	1	1	oewn
+oewn-nonachievement-n	nonachievement	n	0	1	1	oewn
+oewn-nonachiever-n	nonachiever	n	0	1	1	oewn
+oewn-nonadaptive-a	nonadaptive	a	0	1	1	oewn
+oewn-nonaddictive-a	nonaddictive	a	0	1	1	oewn
+oewn-nonadhesive-a	nonadhesive	a	0	1	1	oewn
+oewn-nonadjacent-a	nonadjacent	a	0	1	1	oewn
+oewn-nonadsorbent-a	nonadsorbent	a	0	1	1	oewn
+oewn-nonadsorptive-a	nonadsorptive	a	0	1	1	oewn
+oewn-nonage-n	nonage	n	0	1	1	oewn
+oewn-nonaged-a	nonaged	a	0	1	1	oewn
+oewn-nonagenarian-a	nonagenarian	a	0	1	1	oewn
+oewn-nonagenarian-n	nonagenarian	n	0	1	1	oewn
+oewn-nonaggression-n	nonaggression	n	0	1	1	oewn
+oewn-nonaggressive-a	nonaggressive	a	0	1	1	oewn
+oewn-nonagon-n	nonagon	n	0	1	1	oewn
+oewn-nonalcoholic-a	nonalcoholic	a	0	1	1	oewn
+oewn-nonaligned-a	nonaligned	a	0	1	1	oewn
+oewn-nonalignment-n	nonalignment	n	0	1	1	oewn
+oewn-nonalinement-n	nonalinement	n	0	1	1	oewn
+oewn-nonallele-n	nonallele	n	0	1	1	oewn
+oewn-nonappearance-n	nonappearance	n	0	1	1	oewn
+oewn-nonappointive-a	nonappointive	a	0	1	1	oewn
+oewn-nonarbitrable-a	nonarbitrable	a	0	1	1	oewn
+oewn-nonarbitrary-a	nonarbitrary	a	0	1	1	oewn
+oewn-nonarboreal-a	nonarboreal	a	0	1	1	oewn
+oewn-nonassertive-a	nonassertive	a	0	1	1	oewn
+oewn-nonassociative-a	nonassociative	a	0	1	1	oewn
+oewn-nonastringent-a	nonastringent	a	0	1	1	oewn
+oewn-nonattendance-n	nonattendance	n	0	1	1	oewn
+oewn-nonattender-n	nonattender	n	0	1	1	oewn
+oewn-nonautonomous-a	nonautonomous	a	0	1	1	oewn
+oewn-nonbearing-a	nonbearing	a	0	1	1	oewn
+oewn-nonbeing-n	nonbeing	n	0	1	1	oewn
+oewn-nonbeliever-n	nonbeliever	n	0	1	1	oewn
+oewn-nonbelligerent-a	nonbelligerent	a	0	1	1	oewn
+oewn-nonbiodegradable_pollution-n	nonbiodegradable pollution	n	0	2	2	oewn
+oewn-noncallable_bond-n	noncallable bond	n	0	2	2	oewn
+oewn-noncaloric-a	noncaloric	a	0	1	1	oewn
+oewn-noncandidate-n	noncandidate	n	0	1	1	oewn
+oewn-noncarbonated-a	noncarbonated	a	0	1	1	oewn
+oewn-noncausal-a	noncausal	a	0	1	1	oewn
+oewn-noncausative-a	noncausative	a	0	1	1	oewn
+oewn-nonce-n	nonce	n	0	1	1	oewn
+oewn-nonce_word-n	nonce word	n	0	2	2	oewn
+oewn-noncellular-a	noncellular	a	0	1	1	oewn
+oewn-nonchalance-n	nonchalance	n	0	1	1	oewn
+oewn-nonchalant-a	nonchalant	a	0	1	1	oewn
+oewn-nonchalantly-r	nonchalantly	r	0	1	1	oewn
+oewn-nonchristian-a	nonchristian	a	0	1	1	oewn
+oewn-nonchurchgoing-a	nonchurchgoing	a	0	1	1	oewn
+oewn-noncitizen-n	noncitizen	n	0	1	1	oewn
+oewn-noncivilised-a	noncivilised	a	0	1	1	oewn
+oewn-noncivilized-a	noncivilized	a	0	1	1	oewn
+oewn-nonclassical-a	nonclassical	a	0	1	1	oewn
+oewn-noncoding_DNA-n	noncoding DNA	n	0	2	2	oewn
+oewn-noncollapsable-a	noncollapsable	a	0	1	1	oewn
+oewn-noncollapsible-a	noncollapsible	a	0	1	1	oewn
+oewn-noncolumned-a	noncolumned	a	0	1	1	oewn
+oewn-noncom-n	noncom	n	0	1	1	oewn
+oewn-noncombatant-a	noncombatant	a	0	1	1	oewn
+oewn-noncombatant-n	noncombatant	n	0	1	1	oewn
+oewn-noncombinative-a	noncombinative	a	0	1	1	oewn
+oewn-noncombining-a	noncombining	a	0	1	1	oewn
+oewn-noncombustible-a	noncombustible	a	0	1	1	oewn
+oewn-noncommercial-a	noncommercial	a	0	1	1	oewn
+oewn-noncommissioned-a	noncommissioned	a	0	1	1	oewn
+oewn-noncommissioned_officer-n	noncommissioned officer	n	0	2	2	oewn
+oewn-noncommittal-a	noncommittal	a	0	1	1	oewn
+oewn-noncommunicable-a	noncommunicable	a	0	1	1	oewn
+oewn-noncompetitive-a	noncompetitive	a	0	1	1	oewn
+oewn-noncompetitively-r	noncompetitively	r	0	1	1	oewn
+oewn-noncompliance-n	noncompliance	n	0	1	1	oewn
+oewn-noncompliant-a	noncompliant	a	0	1	1	oewn
+oewn-noncompliant-n	noncompliant	n	0	1	1	oewn
+oewn-noncomprehensive-a	noncomprehensive	a	0	1	1	oewn
+oewn-noncomprehensively-r	noncomprehensively	r	0	1	1	oewn
+oewn-nonconcentric-a	nonconcentric	a	0	1	1	oewn
+oewn-nonconducting-a	nonconducting	a	0	1	1	oewn
+oewn-nonconductive-a	nonconductive	a	0	1	1	oewn
+oewn-nonconductor-n	nonconductor	n	0	1	1	oewn
+oewn-nonconformance-n	nonconformance	n	0	1	1	oewn
+oewn-nonconforming-a	nonconforming	a	0	1	1	oewn
+oewn-nonconformism-n	nonconformism	n	0	1	1	oewn
+oewn-nonconformist-a	nonconformist	a	0	1	1	oewn
+oewn-nonconformist-n	nonconformist	n	0	1	1	oewn
+oewn-nonconformity-n	nonconformity	n	0	1	1	oewn
+oewn-nonconscious-a	nonconscious	a	0	1	1	oewn
+oewn-noncontagious-a	noncontagious	a	0	1	1	oewn
+oewn-noncontentious-a	noncontentious	a	0	1	1	oewn
+oewn-noncontinuous-a	noncontinuous	a	0	1	1	oewn
+oewn-noncontroversial-a	noncontroversial	a	0	1	1	oewn
+oewn-nonconvergent-a	nonconvergent	a	0	1	1	oewn
+oewn-noncritical-a	noncritical	a	0	1	1	oewn
+oewn-noncrucial-a	noncrucial	a	0	1	1	oewn
+oewn-noncrystalline-a	noncrystalline	a	0	1	1	oewn
+oewn-noncurrent-a	noncurrent	a	0	1	1	oewn
+oewn-noncyclic-a	noncyclic	a	0	1	1	oewn
+oewn-noncyclical-a	noncyclical	a	0	1	1	oewn
+oewn-nondeductible-a	nondeductible	a	0	1	1	oewn
+oewn-nondenominational-a	nondenominational	a	0	1	1	oewn
+oewn-nondepository_financial_institution-n	nondepository financial institution	n	0	3	3	oewn
+oewn-nondescript-a	nondescript	a	0	1	1	oewn
+oewn-nondescript-n	nondescript	n	0	1	1	oewn
+oewn-nondevelopment-n	nondevelopment	n	0	1	1	oewn
+oewn-nondigestible-a	nondigestible	a	0	1	1	oewn
+oewn-nondirectional_antenna-n	nondirectional antenna	n	0	2	2	oewn
+oewn-nondiscretionary_trust-n	nondiscretionary trust	n	0	2	2	oewn
+oewn-nondisjunction-n	nondisjunction	n	0	1	1	oewn
+oewn-nondisposable-a	nondisposable	a	0	1	1	oewn
+oewn-nondrinker-n	nondrinker	n	0	1	1	oewn
+oewn-nondriver-n	nondriver	n	0	1	1	oewn
+oewn-none-a	none	a	0	1	1	oewn
+oewn-none-n	none	n	0	1	1	oewn
+oewn-none-r	none	r	0	1	1	oewn
+oewn-nonechoic-a	nonechoic	a	0	1	1	oewn
+oewn-noneffervescent-a	noneffervescent	a	0	1	1	oewn
+oewn-nonelected-a	nonelected	a	0	1	1	oewn
+oewn-nonelective-a	nonelective	a	0	1	1	oewn
+oewn-nonenterprising-a	nonenterprising	a	0	1	1	oewn
+oewn-nonentity-n	nonentity	n	0	1	1	oewn
+oewn-nonenzymatic-a	nonenzymatic	a	0	1	1	oewn
+oewn-nonequivalence-n	nonequivalence	n	0	1	1	oewn
+oewn-nonequivalent-a	nonequivalent	a	0	1	1	oewn
+oewn-nones-n	nones	n	0	1	1	oewn
+oewn-nonessential-a	nonessential	a	0	1	1	oewn
+oewn-nonessential-n	nonessential	n	0	1	1	oewn
+oewn-nonesuch-n	nonesuch	n	0	1	1	oewn
+oewn-nonesuch_clover-n	nonesuch clover	n	0	2	2	oewn
+oewn-nonetheless-r	nonetheless	r	0	1	1	oewn
+oewn-nonevent-n	nonevent	n	0	1	1	oewn
+oewn-nonexempt-a	nonexempt	a	0	1	1	oewn
+oewn-nonexistence-n	nonexistence	n	0	1	1	oewn
+oewn-nonexistent-a	nonexistent	a	0	1	1	oewn
+oewn-nonexplorative-a	nonexplorative	a	0	1	1	oewn
+oewn-nonexploratory-a	nonexploratory	a	0	1	1	oewn
+oewn-nonexplosive-a	nonexplosive	a	0	1	1	oewn
+oewn-nonextant-a	nonextant	a	0	1	1	oewn
+oewn-nonextensile-a	nonextensile	a	0	1	1	oewn
+oewn-nonfat-a	nonfat	a	0	1	1	oewn
+oewn-nonfat_dry_milk-n	nonfat dry milk	n	0	3	3	oewn
+oewn-nonfatal-a	nonfatal	a	0	1	1	oewn
+oewn-nonfeasance-n	nonfeasance	n	0	1	1	oewn
+oewn-nonfiction-n	nonfiction	n	0	1	1	oewn
+oewn-nonfictional-a	nonfictional	a	0	1	1	oewn
+oewn-nonfictional_prose-n	nonfictional prose	n	0	2	2	oewn
+oewn-nonfigurative-a	nonfigurative	a	0	1	1	oewn
+oewn-nonfinancial-a	nonfinancial	a	0	1	1	oewn
+oewn-nonfinite-a	nonfinite	a	0	1	1	oewn
+oewn-nonfissile-a	nonfissile	a	0	1	1	oewn
+oewn-nonfissionable-a	nonfissionable	a	0	1	1	oewn
+oewn-nonflammable-a	nonflammable	a	0	1	1	oewn
+oewn-nonflavored-a	nonflavored	a	0	1	1	oewn
+oewn-nonflavoured-a	nonflavoured	a	0	1	1	oewn
+oewn-nonflowering-a	nonflowering	a	0	1	1	oewn
+oewn-nonflowering_plant-n	nonflowering plant	n	0	2	2	oewn
+oewn-nonfluent_aphasia-n	nonfluent aphasia	n	0	2	2	oewn
+oewn-nonfunctional-a	nonfunctional	a	0	1	1	oewn
+oewn-nonglutinous-a	nonglutinous	a	0	1	1	oewn
+oewn-nongonococcal_urethritis-n	nongonococcal urethritis	n	0	2	2	oewn
+oewn-nongovernmental_organization-n	nongovernmental organization	n	0	2	2	oewn
+oewn-nongranular-a	nongranular	a	0	1	1	oewn
+oewn-nongregarious-a	nongregarious	a	0	1	1	oewn
+oewn-nonhairy-a	nonhairy	a	0	1	1	oewn
+oewn-nonharmonic-a	nonharmonic	a	0	1	1	oewn
+oewn-nonhereditary-a	nonhereditary	a	0	1	1	oewn
+oewn-nonheritable-a	nonheritable	a	0	1	1	oewn
+oewn-nonhierarchic-a	nonhierarchic	a	0	1	1	oewn
+oewn-nonhierarchical-a	nonhierarchical	a	0	1	1	oewn
+oewn-nonhuman-a	nonhuman	a	0	1	1	oewn
+oewn-nonidentity-n	nonidentity	n	0	1	1	oewn
+oewn-nonimitative-a	nonimitative	a	0	1	1	oewn
+oewn-nonimmune-a	nonimmune	a	0	1	1	oewn
+oewn-nonindulgence-n	nonindulgence	n	0	1	1	oewn
+oewn-nonindulgent-a	nonindulgent	a	0	1	1	oewn
+oewn-nonindustrial-a	nonindustrial	a	0	1	1	oewn
+oewn-noninfectious-a	noninfectious	a	0	1	1	oewn
+oewn-noninflammatory-a	noninflammatory	a	0	1	1	oewn
+oewn-noninheritable-a	noninheritable	a	0	1	1	oewn
+oewn-noninstitutional-a	noninstitutional	a	0	1	1	oewn
+oewn-noninstitutionalised-a	noninstitutionalised	a	0	1	1	oewn
+oewn-noninstitutionalized-a	noninstitutionalized	a	0	1	1	oewn
+oewn-nonintegrated-a	nonintegrated	a	0	1	1	oewn
+oewn-nonintellectual-a	nonintellectual	a	0	1	1	oewn
+oewn-noninterchangeable-a	noninterchangeable	a	0	1	1	oewn
+oewn-noninterference-n	noninterference	n	0	1	1	oewn
+oewn-nonintersecting-a	nonintersecting	a	0	1	1	oewn
+oewn-nonintervention-n	nonintervention	n	0	1	1	oewn
+oewn-noninvasive-a	noninvasive	a	0	1	1	oewn
+oewn-noninvasiveness-n	noninvasiveness	n	0	1	1	oewn
+oewn-nonionic-a	nonionic	a	0	1	1	oewn
+oewn-nonionised-a	nonionised	a	0	1	1	oewn
+oewn-nonionized-a	nonionized	a	0	1	1	oewn
+oewn-nonjudgmental-a	nonjudgmental	a	0	1	1	oewn
+oewn-nonkosher-a	nonkosher	a	0	1	1	oewn
+oewn-nonleaded-a	nonleaded	a	0	1	1	oewn
+oewn-nonlegal-a	nonlegal	a	0	1	1	oewn
+oewn-nonlethal-a	nonlethal	a	0	1	1	oewn
+oewn-nonlexical-a	nonlexical	a	0	1	1	oewn
+oewn-nonlexically-r	nonlexically	r	0	1	1	oewn
+oewn-nonlinear-a	nonlinear	a	0	1	1	oewn
+oewn-nonlinear_correlation-n	nonlinear correlation	n	0	2	2	oewn
+oewn-nonlinear_distortion-n	nonlinear distortion	n	0	2	2	oewn
+oewn-nonlinear_system-n	nonlinear system	n	0	2	2	oewn
+oewn-nonlinguistic-a	nonlinguistic	a	0	1	1	oewn
+oewn-nonliteral-a	nonliteral	a	0	1	1	oewn
+oewn-nonliterary-a	nonliterary	a	0	1	1	oewn
+oewn-nonliterate-a	nonliterate	a	0	1	1	oewn
+oewn-nonliving-a	nonliving	a	0	1	1	oewn
+oewn-nonmagnetic-a	nonmagnetic	a	0	1	1	oewn
+oewn-nonmalignant_neoplasm-n	nonmalignant neoplasm	n	0	2	2	oewn
+oewn-nonmalignant_tumor-n	nonmalignant tumor	n	0	2	2	oewn
+oewn-nonmalignant_tumour-n	nonmalignant tumour	n	0	2	2	oewn
+oewn-nonmandatory-a	nonmandatory	a	0	1	1	oewn
+oewn-nonmaterial-a	nonmaterial	a	0	1	1	oewn
+oewn-nonmeaningful-a	nonmeaningful	a	0	1	1	oewn
+oewn-nonmechanical-a	nonmechanical	a	0	1	1	oewn
+oewn-nonmechanistic-a	nonmechanistic	a	0	1	1	oewn
+oewn-nonmedicinal-a	nonmedicinal	a	0	1	1	oewn
+oewn-nonmember-n	nonmember	n	0	1	1	oewn
+oewn-nonmetal-a	nonmetal	a	0	1	1	oewn
+oewn-nonmetal-n	nonmetal	n	0	1	1	oewn
+oewn-nonmetallic-a	nonmetallic	a	0	1	1	oewn
+oewn-nonmetamorphic-a	nonmetamorphic	a	0	1	1	oewn
+oewn-nonmigratory-a	nonmigratory	a	0	1	1	oewn
+oewn-nonmilitary-a	nonmilitary	a	0	1	1	oewn
+oewn-nonmodern-a	nonmodern	a	0	1	1	oewn
+oewn-nonmonotonic-a	nonmonotonic	a	0	1	1	oewn
+oewn-nonmotile-a	nonmotile	a	0	1	1	oewn
+oewn-nonmoving-a	nonmoving	a	0	1	1	oewn
+oewn-nonmusical-a	nonmusical	a	0	1	1	oewn
+oewn-nonnative-a	nonnative	a	0	1	1	oewn
+oewn-nonnatural-a	nonnatural	a	0	1	1	oewn
+oewn-nonnegative-a	nonnegative	a	0	1	1	oewn
+oewn-nonnomadic-a	nonnomadic	a	0	1	1	oewn
+oewn-nonnormative-a	nonnormative	a	0	1	1	oewn
+oewn-nonobjective-a	nonobjective	a	0	1	1	oewn
+oewn-nonobligatory-a	nonobligatory	a	0	1	1	oewn
+oewn-nonobservance-n	nonobservance	n	0	1	1	oewn
+oewn-nonobservant-a	nonobservant	a	0	1	1	oewn
+oewn-nonoccurrence-n	nonoccurrence	n	0	1	1	oewn
+oewn-nonopening-a	nonopening	a	0	1	1	oewn
+oewn-nonoperational-a	nonoperational	a	0	1	1	oewn
+oewn-nonoptimality-n	nonoptimality	n	0	1	1	oewn
+oewn-nonoscillatory-a	nonoscillatory	a	0	1	1	oewn
+oewn-nonparallel-a	nonparallel	a	0	1	1	oewn
+oewn-nonparametric-a	nonparametric	a	0	1	1	oewn
+oewn-nonparametric_statistic-n	nonparametric statistic	n	0	2	2	oewn
+oewn-nonparametric_statistics-n	nonparametric statistics	n	0	2	2	oewn
+oewn-nonparasitic-a	nonparasitic	a	0	1	1	oewn
+oewn-nonpareil-a	nonpareil	a	0	1	1	oewn
+oewn-nonpareil-n	nonpareil	n	0	1	1	oewn
+oewn-nonpareille-n	nonpareille	n	0	1	1	oewn
+oewn-nonparticipant-n	nonparticipant	n	0	1	1	oewn
+oewn-nonparticipation-n	nonparticipation	n	0	1	1	oewn
+oewn-nonparticulate-a	nonparticulate	a	0	1	1	oewn
+oewn-nonparticulate_radiation-n	nonparticulate radiation	n	0	2	2	oewn
+oewn-nonpartisan-a	nonpartisan	a	0	1	1	oewn
+oewn-nonpartisan-n	nonpartisan	n	0	1	1	oewn
+oewn-nonpartisanship-n	nonpartisanship	n	0	1	1	oewn
+oewn-nonpartizan-a	nonpartizan	a	0	1	1	oewn
+oewn-nonpartizan-n	nonpartizan	n	0	1	1	oewn
+oewn-nonpasserine-a	nonpasserine	a	0	1	1	oewn
+oewn-nonpasserine_bird-n	nonpasserine bird	n	0	2	2	oewn
+oewn-nonpayment-n	nonpayment	n	0	1	1	oewn
+oewn-nonperformance-n	nonperformance	n	0	1	1	oewn
+oewn-nonperiodic-a	nonperiodic	a	0	1	1	oewn
+oewn-nonperson-n	nonperson	n	0	1	1	oewn
+oewn-nonpersonal-a	nonpersonal	a	0	1	1	oewn
+oewn-nonphotosynthetic-a	nonphotosynthetic	a	0	1	1	oewn
+oewn-nonphysical-a	nonphysical	a	0	1	1	oewn
+oewn-nonplus-v	nonplus	v	0	1	1	oewn
+oewn-nonplused-a	nonplused	a	0	1	1	oewn
+oewn-nonplussed-a	nonplussed	a	0	1	1	oewn
+oewn-nonpoisonous-a	nonpoisonous	a	0	1	1	oewn
+oewn-nonpolar-a	nonpolar	a	0	1	1	oewn
+oewn-nonpolitical-a	nonpolitical	a	0	1	1	oewn
+oewn-nonporous-a	nonporous	a	0	1	1	oewn
+oewn-nonpregnant-a	nonpregnant	a	0	1	1	oewn
+oewn-nonprehensile-a	nonprehensile	a	0	1	1	oewn
+oewn-nonprescription-a	nonprescription	a	0	1	1	oewn
+oewn-nonproductive-a	nonproductive	a	0	1	1	oewn
+oewn-nonprofessional-a	nonprofessional	a	0	1	1	oewn
+oewn-nonprofit-a	nonprofit	a	0	1	1	oewn
+oewn-nonprofit-n	nonprofit	n	0	1	1	oewn
+oewn-nonprofit_organization-n	nonprofit organization	n	0	2	2	oewn
+oewn-nonprognosticative-a	nonprognosticative	a	0	1	1	oewn
+oewn-nonprogressive-a	nonprogressive	a	0	1	1	oewn
+oewn-nonproliferation-n	nonproliferation	n	0	1	1	oewn
+oewn-nonproprietary-a	nonproprietary	a	0	1	1	oewn
+oewn-nonprotractile-a	nonprotractile	a	0	1	1	oewn
+oewn-nonpsychoactive-a	nonpsychoactive	a	0	1	1	oewn
+oewn-nonpublic-a	nonpublic	a	0	1	1	oewn
+oewn-nonpurulent-a	nonpurulent	a	0	1	1	oewn
+oewn-nonracial-a	nonracial	a	0	1	1	oewn
+oewn-nonracist-a	nonracist	a	0	1	1	oewn
+oewn-nonradioactive-a	nonradioactive	a	0	1	1	oewn
+oewn-nonrandom-a	nonrandom	a	0	1	1	oewn
+oewn-nonrapid_eye_movement-n	nonrapid eye movement	n	0	3	3	oewn
+oewn-nonrapid_eye_movement_sleep-n	nonrapid eye movement sleep	n	0	4	4	oewn
+oewn-nonrational-a	nonrational	a	0	1	1	oewn
+oewn-nonreader-n	nonreader	n	0	1	1	oewn
+oewn-nonreciprocal-a	nonreciprocal	a	0	1	1	oewn
+oewn-nonreciprocating-a	nonreciprocating	a	0	1	1	oewn
+oewn-nonrecreational-a	nonrecreational	a	0	1	1	oewn
+oewn-nonreflecting-a	nonreflecting	a	0	1	1	oewn
+oewn-nonreflective-a	nonreflective	a	0	1	1	oewn
+oewn-nonreligious_person-n	nonreligious person	n	0	2	2	oewn
+oewn-nonremittal-n	nonremittal	n	0	1	1	oewn
+oewn-nonrenewable-a	nonrenewable	a	0	1	1	oewn
+oewn-nonrepetitive-a	nonrepetitive	a	0	1	1	oewn
+oewn-nonrepresentational-a	nonrepresentational	a	0	1	1	oewn
+oewn-nonrepresentative-a	nonrepresentative	a	0	1	1	oewn
+oewn-nonresident-a	nonresident	a	0	1	1	oewn
+oewn-nonresident-n	nonresident	n	0	1	1	oewn
+oewn-nonresidential-a	nonresidential	a	0	1	1	oewn
+oewn-nonresilient-a	nonresilient	a	0	1	1	oewn
+oewn-nonresinous-a	nonresinous	a	0	1	1	oewn
+oewn-nonresiny-a	nonresiny	a	0	1	1	oewn
+oewn-nonresistance-n	nonresistance	n	0	1	1	oewn
+oewn-nonresistant-a	nonresistant	a	0	1	1	oewn
+oewn-nonresonant-a	nonresonant	a	0	1	1	oewn
+oewn-nonrestrictive-a	nonrestrictive	a	0	1	1	oewn
+oewn-nonrestrictive_clause-n	nonrestrictive clause	n	0	2	2	oewn
+oewn-nonreticulate-a	nonreticulate	a	0	1	1	oewn
+oewn-nonretractable-a	nonretractable	a	0	1	1	oewn
+oewn-nonretractile-a	nonretractile	a	0	1	1	oewn
+oewn-nonreturnable-a	nonreturnable	a	0	1	1	oewn
+oewn-nonreversible-a	nonreversible	a	0	1	1	oewn
+oewn-nonrhythmic-a	nonrhythmic	a	0	1	1	oewn
+oewn-nonrigid-a	nonrigid	a	0	1	1	oewn
+oewn-nonruminant-a	nonruminant	a	0	1	1	oewn
+oewn-nonsectarian-a	nonsectarian	a	0	1	1	oewn
+oewn-nonsegmental-a	nonsegmental	a	0	1	1	oewn
+oewn-nonsegregated-a	nonsegregated	a	0	1	1	oewn
+oewn-nonsense-a	nonsense	a	0	1	1	oewn
+oewn-nonsense-n	nonsense	n	0	1	1	oewn
+oewn-nonsense_verse-n	nonsense verse	n	0	2	2	oewn
+oewn-nonsensical-a	nonsensical	a	0	1	1	oewn
+oewn-nonsensicality-n	nonsensicality	n	0	1	1	oewn
+oewn-nonsensitive-a	nonsensitive	a	0	1	1	oewn
+oewn-nonsexual-a	nonsexual	a	0	1	1	oewn
+oewn-nonsignificant-a	nonsignificant	a	0	1	1	oewn
+oewn-nonsingular_matrix-n	nonsingular matrix	n	0	2	2	oewn
+oewn-nonskid-a	nonskid	a	0	1	1	oewn
+oewn-nonslip-a	nonslip	a	0	1	1	oewn
+oewn-nonslippery-a	nonslippery	a	0	1	1	oewn
+oewn-nonsmoker-n	nonsmoker	n	0	1	1	oewn
+oewn-nonsmoking_car-n	nonsmoking car	n	0	2	2	oewn
+oewn-nonsocial-a	nonsocial	a	0	1	1	oewn
+oewn-nonsocial_infection-n	nonsocial infection	n	0	2	2	oewn
+oewn-nonsolid_color-n	nonsolid color	n	0	2	2	oewn
+oewn-nonsolid_colour-n	nonsolid colour	n	0	2	2	oewn
+oewn-nonsovereign-a	nonsovereign	a	0	1	1	oewn
+oewn-nonspatial-a	nonspatial	a	0	1	1	oewn
+oewn-nonspeaking-a	nonspeaking	a	0	1	1	oewn
+oewn-nonspecific-a	nonspecific	a	0	1	1	oewn
+oewn-nonspecific_urethritis-n	nonspecific urethritis	n	0	2	2	oewn
+oewn-nonspecifically-r	nonspecifically	r	0	1	1	oewn
+oewn-nonspherical-a	nonspherical	a	0	1	1	oewn
+oewn-nonstandard-a	nonstandard	a	0	1	1	oewn
+oewn-nonstandardness-n	nonstandardness	n	0	1	1	oewn
+oewn-nonstarter-n	nonstarter	n	0	1	1	oewn
+oewn-nonsteroid-n	nonsteroid	n	0	1	1	oewn
+oewn-nonsteroidal-a	nonsteroidal	a	0	1	1	oewn
+oewn-nonsteroidal-n	nonsteroidal	n	0	1	1	oewn
+oewn-nonsteroidal_anti-inflammatory-n	nonsteroidal anti-inflammatory	n	0	2	2	oewn
+oewn-nonsteroidal_anti-inflammatory_drug-n	nonsteroidal anti-inflammatory drug	n	0	3	3	oewn
+oewn-nonstick-a	nonstick	a	0	1	1	oewn
+oewn-nonstop-a	nonstop	a	0	1	1	oewn
+oewn-nonstop-n	nonstop	n	0	1	1	oewn
+oewn-nonstop-r	nonstop	r	0	1	1	oewn
+oewn-nonstop_flight-n	nonstop flight	n	0	2	2	oewn
+oewn-nonstructural-a	nonstructural	a	0	1	1	oewn
+oewn-nonsubjective-a	nonsubjective	a	0	1	1	oewn
+oewn-nonsubmergible-a	nonsubmergible	a	0	1	1	oewn
+oewn-nonsubmersible-a	nonsubmersible	a	0	1	1	oewn
+oewn-nonsuch-n	nonsuch	n	0	1	1	oewn
+oewn-nonsuppurative-a	nonsuppurative	a	0	1	1	oewn
+oewn-nonsurgical-a	nonsurgical	a	0	1	1	oewn
+oewn-nonsweet-a	nonsweet	a	0	1	1	oewn
+oewn-nonsyllabic-a	nonsyllabic	a	0	1	1	oewn
+oewn-nonsymbiotic-a	nonsymbiotic	a	0	1	1	oewn
+oewn-nonsynchronous-a	nonsynchronous	a	0	1	1	oewn
+oewn-nonsynthetic-a	nonsynthetic	a	0	1	1	oewn
+oewn-nontaxable-a	nontaxable	a	0	1	1	oewn
+oewn-nontechnical-a	nontechnical	a	0	1	1	oewn
+oewn-nontelescopic-a	nontelescopic	a	0	1	1	oewn
+oewn-nontelescoping-a	nontelescoping	a	0	1	1	oewn
+oewn-nonterritorial-a	nonterritorial	a	0	1	1	oewn
+oewn-nontextual_matter-n	nontextual matter	n	0	2	2	oewn
+oewn-nonthermal-a	nonthermal	a	0	1	1	oewn
+oewn-nonthrombocytopenic_purpura-n	nonthrombocytopenic purpura	n	0	2	2	oewn
+oewn-nontoxic-a	nontoxic	a	0	1	1	oewn
+oewn-nontoxicity-n	nontoxicity	n	0	1	1	oewn
+oewn-nontraditional-a	nontraditional	a	0	1	1	oewn
+oewn-nontransferable-a	nontransferable	a	0	1	1	oewn
+oewn-nontranslational-a	nontranslational	a	0	1	1	oewn
+oewn-nontransmissible-a	nontransmissible	a	0	1	1	oewn
+oewn-nontricyclic-n	nontricyclic	n	0	1	1	oewn
+oewn-nontricyclic_antidepressant-n	nontricyclic antidepressant	n	0	2	2	oewn
+oewn-nontricyclic_antidepressant_drug-n	nontricyclic antidepressant drug	n	0	3	3	oewn
+oewn-nontricyclic_drug-n	nontricyclic drug	n	0	2	2	oewn
+oewn-nonturbulent-a	nonturbulent	a	0	1	1	oewn
+oewn-nonuniform-a	nonuniform	a	0	1	1	oewn
+oewn-nonuniformity-n	nonuniformity	n	0	1	1	oewn
+oewn-nonunion-a	nonunion	a	0	1	1	oewn
+oewn-nonunionised-a	nonunionised	a	0	1	1	oewn
+oewn-nonunionized-a	nonunionized	a	0	1	1	oewn
+oewn-nonuple-a	nonuple	a	0	1	1	oewn
+oewn-nonvascular_organism-n	nonvascular organism	n	0	2	2	oewn
+oewn-nonvascular_plant-n	nonvascular plant	n	0	2	2	oewn
+oewn-nonvenomous-a	nonvenomous	a	0	1	1	oewn
+oewn-nonverbal-a	nonverbal	a	0	1	1	oewn
+oewn-nonverbal_intelligence-n	nonverbal intelligence	n	0	2	2	oewn
+oewn-nonverbally-r	nonverbally	r	0	1	1	oewn
+oewn-nonviable-a	nonviable	a	0	1	1	oewn
+oewn-nonviolence-n	nonviolence	n	0	1	1	oewn
+oewn-nonviolent-a	nonviolent	a	0	1	1	oewn
+oewn-nonviolent_resistance-n	nonviolent resistance	n	0	2	2	oewn
+oewn-nonviolently-r	nonviolently	r	0	1	1	oewn
+oewn-nonviscid-a	nonviscid	a	0	1	1	oewn
+oewn-nonvisual-a	nonvisual	a	0	1	1	oewn
+oewn-nonvolatile-a	nonvolatile	a	0	1	1	oewn
+oewn-nonvolatile_storage-n	nonvolatile storage	n	0	2	2	oewn
+oewn-nonvolatilisable-a	nonvolatilisable	a	0	1	1	oewn
+oewn-nonvolatilizable-a	nonvolatilizable	a	0	1	1	oewn
+oewn-nonvoluntary-a	nonvoluntary	a	0	1	1	oewn
+oewn-nonwashable-a	nonwashable	a	0	1	1	oewn
+oewn-nonwoody-a	nonwoody	a	0	1	1	oewn
+oewn-nonworker-n	nonworker	n	0	1	1	oewn
+oewn-noodle-n	noodle	n	0	1	1	oewn
+oewn-nook-n	nook	n	0	1	1	oewn
+oewn-nook_and_cranny-n	nook and cranny	n	0	3	3	oewn
+oewn-nookie-n	nookie	n	0	1	1	oewn
+oewn-nooks_and_crannies-n	nooks and crannies	n	0	3	3	oewn
+oewn-nooky-n	nooky	n	0	1	1	oewn
+oewn-noon-n	noon	n	0	1	1	oewn
+oewn-noona-n	noona	n	0	1	1	oewn
+oewn-noonday-n	noonday	n	0	1	1	oewn
+oewn-noontide-n	noontide	n	0	1	1	oewn
+oewn-noose-n	noose	n	0	1	1	oewn
+oewn-noose-v	noose	v	0	1	1	oewn
+oewn-nopal-n	nopal	n	0	1	1	oewn
+oewn-nor-ap--east-n	nor'-east	n	0	1	1	oewn
+oewn-nor-ap--east-r	nor'-east	r	0	1	1	oewn
+oewn-nor-ap--nor-ap--east-n	nor'-nor'-east	n	0	1	1	oewn
+oewn-nor-ap--nor-ap--east-r	nor'-nor'-east	r	0	1	1	oewn
+oewn-nor-ap--nor-ap--west-n	nor'-nor'-west	n	0	1	1	oewn
+oewn-nor-ap--nor-ap--west-r	nor'-nor'-west	r	0	1	1	oewn
+oewn-nor-ap--west-n	nor'-west	n	0	1	1	oewn
+oewn-nor-ap--west-r	nor'-west	r	0	1	1	oewn
+oewn-noradrenaline-n	noradrenaline	n	0	1	1	oewn
+oewn-nordic-a	nordic	a	0	1	1	oewn
+oewn-noreaster-n	noreaster	n	0	1	1	oewn
+oewn-norepinephrine-n	norepinephrine	n	0	1	1	oewn
+oewn-norethandrolone-n	norethandrolone	n	0	1	1	oewn
+oewn-norethindrone-n	norethindrone	n	0	1	1	oewn
+oewn-norethindrone_acetate-n	norethindrone acetate	n	0	2	2	oewn
+oewn-norethynodrel-n	norethynodrel	n	0	1	1	oewn
+oewn-norfolk_island_pine-n	norfolk island pine	n	0	3	3	oewn
+oewn-norgestrel-n	norgestrel	n	0	1	1	oewn
+oewn-noria-n	noria	n	0	1	1	oewn
+oewn-norm-n	norm	n	0	1	1	oewn
+oewn-normal-a	normal	a	0	1	1	oewn
+oewn-normal-n	normal	n	0	1	1	oewn
+oewn-normal_curve-n	normal curve	n	0	2	2	oewn
+oewn-normal_distribution-n	normal distribution	n	0	2	2	oewn
+oewn-normal_dwarf-n	normal dwarf	n	0	2	2	oewn
+oewn-normal_fault-n	normal fault	n	0	2	2	oewn
+oewn-normal_school-n	normal school	n	0	2	2	oewn
+oewn-normal_tension_glaucoma-n	normal tension glaucoma	n	0	3	3	oewn
+oewn-normalcy-n	normalcy	n	0	1	1	oewn
+oewn-normalisation-n	normalisation	n	0	1	1	oewn
+oewn-normalise-v	normalise	v	0	1	1	oewn
+oewn-normaliser-n	normaliser	n	0	1	1	oewn
+oewn-normality-n	normality	n	0	1	1	oewn
+oewn-normalization-n	normalization	n	0	1	1	oewn
+oewn-normalize-v	normalize	v	0	1	1	oewn
+oewn-normalizer-n	normalizer	n	0	1	1	oewn
+oewn-normally-r	normally	r	0	1	1	oewn
+oewn-normative-a	normative	a	0	1	1	oewn
+oewn-normative_economics-n	normative economics	n	0	2	2	oewn
+oewn-normotensive-a	normotensive	a	0	1	1	oewn
+oewn-normothermia-n	normothermia	n	0	1	1	oewn
+oewn-north-a	north	a	0	1	1	oewn
+oewn-north-central-a	north-central	a	0	1	1	oewn
+oewn-north-east-r	north-east	r	0	1	1	oewn
+oewn-north-n	north	n	0	1	1	oewn
+oewn-north-northeast-r	north-northeast	r	0	1	1	oewn
+oewn-north-northwest-r	north-northwest	r	0	1	1	oewn
+oewn-north-polar-a	north-polar	a	0	1	1	oewn
+oewn-north-r	north	r	0	1	1	oewn
+oewn-north-seeking_pole-n	north-seeking pole	n	0	2	2	oewn
+oewn-north-south_direction-n	north-south direction	n	0	2	2	oewn
+oewn-north-west-r	north-west	r	0	1	1	oewn
+oewn-north_by_east-n	north by east	n	0	3	1	oewn
+oewn-north_by_west-n	north by west	n	0	3	1	oewn
+oewn-north_island_edelweiss-n	north island edelweiss	n	0	3	3	oewn
+oewn-north_northeast-n	north northeast	n	0	2	2	oewn
+oewn-north_northwest-n	north northwest	n	0	2	2	oewn
+oewn-north_side-n	north side	n	0	2	2	oewn
+oewn-north_wind-n	north wind	n	0	2	2	oewn
+oewn-northbound-a	northbound	a	0	1	1	oewn
+oewn-northeast-a	northeast	a	0	1	1	oewn
+oewn-northeast-n	northeast	n	0	1	1	oewn
+oewn-northeast-r	northeast	r	0	1	1	oewn
+oewn-northeast_by_east-n	northeast by east	n	0	3	1	oewn
+oewn-northeast_by_north-n	northeast by north	n	0	3	1	oewn
+oewn-northeaster-n	northeaster	n	0	1	1	oewn
+oewn-northeasterly-a	northeasterly	a	0	1	1	oewn
+oewn-northeastern-a	northeastern	a	0	1	1	oewn
+oewn-northeastward-a	northeastward	a	0	1	1	oewn
+oewn-northeastward-n	northeastward	n	0	1	1	oewn
+oewn-northeastward-r	northeastward	r	0	1	1	oewn
+oewn-northeastwardly-r	northeastwardly	r	0	1	1	oewn
+oewn-norther-n	norther	n	0	1	1	oewn
+oewn-northerly-a	northerly	a	0	1	1	oewn
+oewn-northerly-n	northerly	n	0	1	1	oewn
+oewn-northerly-r	northerly	r	0	1	1	oewn
+oewn-northern-a	northern	a	0	1	1	oewn
+oewn-northern_Europe-n	northern Europe	n	0	2	2	oewn
+oewn-northern_Jacob-ap-s_ladder-n	northern Jacob's ladder	n	0	3	3	oewn
+oewn-northern_beech_fern-n	northern beech fern	n	0	3	3	oewn
+oewn-northern_bobwhite-n	northern bobwhite	n	0	2	2	oewn
+oewn-northern_bog_lemming-n	northern bog lemming	n	0	3	3	oewn
+oewn-northern_casque-headed_frog-n	northern casque-headed frog	n	0	3	3	oewn
+oewn-northern_cricket_frog-n	northern cricket frog	n	0	3	3	oewn
+oewn-northern_dune_tansy-n	northern dune tansy	n	0	3	3	oewn
+oewn-northern_flying_squirrel-n	northern flying squirrel	n	0	3	3	oewn
+oewn-northern_harrier-n	northern harrier	n	0	2	2	oewn
+oewn-northern_holly_fern-n	northern holly fern	n	0	3	3	oewn
+oewn-northern_lights-n	northern lights	n	0	2	2	oewn
+oewn-northern_mammoth-n	northern mammoth	n	0	2	2	oewn
+oewn-northern_oak_fern-n	northern oak fern	n	0	3	3	oewn
+oewn-northern_oriole-n	northern oriole	n	0	2	2	oewn
+oewn-northern_parula-n	northern parula	n	0	2	2	oewn
+oewn-northern_phalarope-n	northern phalarope	n	0	2	2	oewn
+oewn-northern_pike-n	northern pike	n	0	2	2	oewn
+oewn-northern_pin_oak-n	northern pin oak	n	0	3	3	oewn
+oewn-northern_pitch_pine-n	northern pitch pine	n	0	3	3	oewn
+oewn-northern_pocket_gopher-n	northern pocket gopher	n	0	3	3	oewn
+oewn-northern_porgy-n	northern porgy	n	0	2	2	oewn
+oewn-northern_red_oak-n	northern red oak	n	0	3	3	oewn
+oewn-northern_scup-n	northern scup	n	0	2	2	oewn
+oewn-northern_sea_robin-n	northern sea robin	n	0	3	3	oewn
+oewn-northern_shrike-n	northern shrike	n	0	2	2	oewn
+oewn-northern_snakehead-n	northern snakehead	n	0	2	2	oewn
+oewn-northern_storm_petrel-n	northern storm petrel	n	0	3	3	oewn
+oewn-northern_white_cedar-n	northern white cedar	n	0	3	3	oewn
+oewn-northern_whiting-n	northern whiting	n	0	2	2	oewn
+oewn-northern_woodsia-n	northern woodsia	n	0	2	2	oewn
+oewn-northernmost-a	northernmost	a	0	1	1	oewn
+oewn-northernness-n	northernness	n	0	1	1	oewn
+oewn-northland-n	northland	n	0	1	1	oewn
+oewn-northmost-a	northmost	a	0	1	1	oewn
+oewn-northward-a	northward	a	0	1	1	oewn
+oewn-northward-n	northward	n	0	1	1	oewn
+oewn-northward-r	northward	r	0	1	1	oewn
+oewn-northwards-r	northwards	r	0	1	1	oewn
+oewn-northwest-a	northwest	a	0	1	1	oewn
+oewn-northwest-n	northwest	n	0	1	1	oewn
+oewn-northwest-r	northwest	r	0	1	1	oewn
+oewn-northwest_by_north-n	northwest by north	n	0	3	1	oewn
+oewn-northwest_by_west-n	northwest by west	n	0	3	1	oewn
+oewn-northwest_wind-n	northwest wind	n	0	2	2	oewn
+oewn-northwester-n	northwester	n	0	1	1	oewn
+oewn-northwesterly-a	northwesterly	a	0	1	1	oewn
+oewn-northwestern-a	northwestern	a	0	1	1	oewn
+oewn-northwestward-a	northwestward	a	0	1	1	oewn
+oewn-northwestward-n	northwestward	n	0	1	1	oewn
+oewn-northwestward-r	northwestward	r	0	1	1	oewn
+oewn-northwestwardly-r	northwestwardly	r	0	1	1	oewn
+oewn-nortriptyline-n	nortriptyline	n	0	1	1	oewn
+oewn-nose-n	nose	n	0	1	1	oewn
+oewn-nose-v	nose	v	0	1	1	oewn
+oewn-nose_candy-n	nose candy	n	0	2	2	oewn
+oewn-nose_cone-n	nose cone	n	0	2	2	oewn
+oewn-nose_count-n	nose count	n	0	2	2	oewn
+oewn-nose_dive-n	nose dive	n	0	2	2	oewn
+oewn-nose_drops-n	nose drops	n	0	2	2	oewn
+oewn-nose_flute-n	nose flute	n	0	2	2	oewn
+oewn-nose_job-n	nose job	n	0	2	2	oewn
+oewn-nose_out-v	nose out	v	0	2	1	oewn
+oewn-nose_ring-n	nose ring	n	0	2	2	oewn
+oewn-nosebag-n	nosebag	n	0	1	1	oewn
+oewn-noseband-n	noseband	n	0	1	1	oewn
+oewn-nosebleed-n	nosebleed	n	0	1	1	oewn
+oewn-nosecount-n	nosecount	n	0	1	1	oewn
+oewn-nosed-a	nosed	a	0	1	1	oewn
+oewn-nosedive-n	nosedive	n	0	1	1	oewn
+oewn-nosedive-v	nosedive	v	0	1	1	oewn
+oewn-nosegay-n	nosegay	n	0	1	1	oewn
+oewn-noseless-a	noseless	a	0	1	1	oewn
+oewn-nosepiece-n	nosepiece	n	0	1	1	oewn
+oewn-nosewheel-n	nosewheel	n	0	1	1	oewn
+oewn-nosey-a	nosey	a	0	1	1	oewn
+oewn-nosey-parker-n	nosey-parker	n	0	1	1	oewn
+oewn-nosh-n	nosh	n	0	1	1	oewn
+oewn-nosh-up-n	nosh-up	n	0	1	1	oewn
+oewn-nosh-v	nosh	v	0	1	1	oewn
+oewn-nosher-n	nosher	n	0	1	1	oewn
+oewn-nosiness-n	nosiness	n	0	1	1	oewn
+oewn-nosocomial-a	nosocomial	a	0	1	1	oewn
+oewn-nosohusial-a	nosohusial	a	0	1	1	oewn
+oewn-nosology-n	nosology	n	0	1	1	oewn
+oewn-nostalgia-n	nostalgia	n	0	1	1	oewn
+oewn-nostalgic-a	nostalgic	a	0	1	1	oewn
+oewn-nostalgically-r	nostalgically	r	0	1	1	oewn
+oewn-nostoc-n	nostoc	n	0	1	1	oewn
+oewn-nostril-n	nostril	n	0	1	1	oewn
+oewn-nostrum-n	nostrum	n	0	1	1	oewn
+oewn-nosy-a	nosy	a	0	1	1	oewn
+oewn-nosy-parker-n	nosy-parker	n	0	1	1	oewn
+oewn-not-for-profit-n	not-for-profit	n	0	1	1	oewn
+oewn-not-r	not	r	0	1	1	oewn
+oewn-not_bad-a	not bad	a	0	2	2	oewn
+oewn-not_by_a_blame_sight-r	not by a blame sight	r	0	5	5	oewn
+oewn-not_by_a_long_sight-r	not by a long sight	r	0	5	5	oewn
+oewn-not_guilty-a	not guilty	a	0	2	2	oewn
+oewn-not_intrusive-a	not intrusive	a	0	2	2	oewn
+oewn-not_surprised-a	not surprised	a	0	2	2	oewn
+oewn-not_to_mention-r	not to mention	r	0	3	3	oewn
+oewn-nota_bene-n	nota bene	n	0	2	2	oewn
+oewn-notability-n	notability	n	0	1	1	oewn
+oewn-notable-a	notable	a	0	1	1	oewn
+oewn-notable-n	notable	n	0	1	1	oewn
+oewn-notably-r	notably	r	0	1	1	oewn
+oewn-notarise-v	notarise	v	0	1	1	oewn
+oewn-notarize-v	notarize	v	0	1	1	oewn
+oewn-notary-n	notary	n	0	1	1	oewn
+oewn-notary_public-n	notary public	n	0	2	2	oewn
+oewn-notate-v	notate	v	0	1	1	oewn
+oewn-notation-n	notation	n	0	1	1	oewn
+oewn-notational_system-n	notational system	n	0	2	2	oewn
+oewn-notch-n	notch	n	0	1	1	oewn
+oewn-notch-v	notch	v	0	1	1	oewn
+oewn-notched-a	notched	a	0	1	1	oewn
+oewn-note-n	note	n	0	1	1	oewn
+oewn-note-v	note	v	0	1	1	oewn
+oewn-note_of_hand-n	note of hand	n	0	3	1	oewn
+oewn-note_payable-n	note payable	n	0	2	2	oewn
+oewn-note_receivable-n	note receivable	n	0	2	2	oewn
+oewn-note_value-n	note value	n	0	2	2	oewn
+oewn-notebook-n	notebook	n	0	1	1	oewn
+oewn-notebook_computer-n	notebook computer	n	0	2	2	oewn
+oewn-notebook_entry-n	notebook entry	n	0	2	2	oewn
+oewn-notecase-n	notecase	n	0	1	1	oewn
+oewn-noted-a	noted	a	0	1	1	oewn
+oewn-notepad-n	notepad	n	0	1	1	oewn
+oewn-notepaper-n	notepaper	n	0	1	1	oewn
+oewn-noteworthy-a	noteworthy	a	0	1	1	oewn
+oewn-nothing-n	nothing	n	0	1	1	oewn
+oewn-nothing-r	nothing	r	0	1	1	oewn
+oewn-nothingness-n	nothingness	n	0	1	1	oewn
+oewn-nothings-n	nothings	n	0	1	1	oewn
+oewn-nothosaur-n	nothosaur	n	0	1	1	oewn
+oewn-notice-n	notice	n	0	1	1	oewn
+oewn-notice-v	notice	v	0	1	1	oewn
+oewn-notice_board-n	notice board	n	0	2	2	oewn
+oewn-noticeability-n	noticeability	n	0	1	1	oewn
+oewn-noticeable-a	noticeable	a	0	1	1	oewn
+oewn-noticeableness-n	noticeableness	n	0	1	1	oewn
+oewn-noticeably-r	noticeably	r	0	1	1	oewn
+oewn-noticed-a	noticed	a	0	1	1	oewn
+oewn-noticer-n	noticer	n	0	1	1	oewn
+oewn-notifiable-a	notifiable	a	0	1	1	oewn
+oewn-notification-n	notification	n	0	1	1	oewn
+oewn-notify-v	notify	v	0	1	1	oewn
+oewn-notion-n	notion	n	0	1	1	oewn
+oewn-notional-a	notional	a	0	1	1	oewn
+oewn-notions_counter-n	notions counter	n	0	2	2	oewn
+oewn-notochord-n	notochord	n	0	1	1	oewn
+oewn-notoriety-n	notoriety	n	0	1	1	oewn
+oewn-notorious-a	notorious	a	0	1	1	oewn
+oewn-notoriously-r	notoriously	r	0	1	1	oewn
+oewn-notornis-n	notornis	n	0	1	1	oewn
+oewn-notturno-n	notturno	n	0	1	1	oewn
+oewn-notwithstanding-r	notwithstanding	r	0	1	1	oewn
+oewn-nougat-n	nougat	n	0	1	1	oewn
+oewn-nougat_bar-n	nougat bar	n	0	2	2	oewn
+oewn-nought-n	nought	n	0	1	1	oewn
+oewn-noughts_and_crosses-n	noughts and crosses	n	0	3	3	oewn
+oewn-noumenon-n	noumenon	n	0	1	1	oewn
+oewn-noun-n	noun	n	0	1	1	oewn
+oewn-noun_phrase-n	noun phrase	n	0	2	2	oewn
+oewn-nourish-v	nourish	v	0	1	1	oewn
+oewn-nourished-a	nourished	a	0	1	1	oewn
+oewn-nourishing-a	nourishing	a	0	1	1	oewn
+oewn-nourishment-n	nourishment	n	0	1	1	oewn
+oewn-nous-n	nous	n	0	1	1	oewn
+oewn-nouveau-riche-a	nouveau-riche	a	0	1	1	oewn
+oewn-nouveau-riche-n	nouveau-riche	n	0	1	1	oewn
+oewn-nouvelle_cuisine-n	nouvelle cuisine	n	0	2	2	oewn
+oewn-nova-n	nova	n	0	1	1	oewn
+oewn-novate-v	novate	v	0	1	1	oewn
+oewn-novation-n	novation	n	0	1	1	oewn
+oewn-novel-a	novel	a	0	1	1	oewn
+oewn-novel-n	novel	n	0	1	1	oewn
+oewn-novel_coronavirus_pneumonia-n	novel coronavirus pneumonia	n	0	3	3	oewn
+oewn-novelette-n	novelette	n	0	1	1	oewn
+oewn-novelisation-n	novelisation	n	0	1	1	oewn
+oewn-novelise-v	novelise	v	0	1	1	oewn
+oewn-novelist-n	novelist	n	0	1	1	oewn
+oewn-novelization-n	novelization	n	0	1	1	oewn
+oewn-novelize-v	novelize	v	0	1	1	oewn
+oewn-novella-n	novella	n	0	1	1	oewn
+oewn-novelty-n	novelty	n	0	1	1	oewn
+oewn-novelty_shop-n	novelty shop	n	0	2	2	oewn
+oewn-novena-n	novena	n	0	1	1	oewn
+oewn-novice-n	novice	n	0	1	1	oewn
+oewn-noviciate-n	noviciate	n	0	1	1	oewn
+oewn-novillada-n	novillada	n	0	1	1	oewn
+oewn-novillero-n	novillero	n	0	1	1	oewn
+oewn-novitiate-n	novitiate	n	0	1	1	oewn
+oewn-novobiocin-n	novobiocin	n	0	1	1	oewn
+oewn-novocaine-n	novocaine	n	0	1	1	oewn
+oewn-now-n	now	n	0	1	1	oewn
+oewn-now-r	now	r	0	1	1	oewn
+oewn-now_and_again-r	now and again	r	0	3	3	oewn
+oewn-now_and_then-r	now and then	r	0	3	3	oewn
+oewn-now_now-r	now now	r	0	2	2	oewn
+oewn-nowadays-n	nowadays	n	0	1	1	oewn
+oewn-nowadays-r	nowadays	r	0	1	1	oewn
+oewn-nowhere-n	nowhere	n	0	1	1	oewn
+oewn-nowhere-r	nowhere	r	0	1	1	oewn
+oewn-nowise-r	nowise	r	0	1	1	oewn
+oewn-nowness-n	nowness	n	0	1	1	oewn
+oewn-noxious-a	noxious	a	0	1	1	oewn
+oewn-noxiously-r	noxiously	r	0	1	1	oewn
+oewn-noxiousness-n	noxiousness	n	0	1	1	oewn
+oewn-nozzle-n	nozzle	n	0	1	1	oewn
+oewn-nth-a	nth	a	0	1	1	oewn
+oewn-nu-n	nu	n	0	1	1	oewn
+oewn-nuance-n	nuance	n	0	1	1	oewn
+oewn-nub-n	nub	n	0	1	1	oewn
+oewn-nubbin-n	nubbin	n	0	1	1	oewn
+oewn-nubbiness-n	nubbiness	n	0	1	1	oewn
+oewn-nubble-n	nubble	n	0	1	1	oewn
+oewn-nubbly-a	nubbly	a	0	1	1	oewn
+oewn-nubby-a	nubby	a	0	1	1	oewn
+oewn-nubile-a	nubile	a	0	1	1	oewn
+oewn-nucellus-n	nucellus	n	0	1	1	oewn
+oewn-nucha-n	nucha	n	0	1	1	oewn
+oewn-nuclear-a	nuclear	a	0	1	1	oewn
+oewn-nuclear-powered_ship-n	nuclear-powered ship	n	0	2	2	oewn
+oewn-nuclear-powered_submarine-n	nuclear-powered submarine	n	0	2	2	oewn
+oewn-nuclear_RNA-n	nuclear RNA	n	0	2	2	oewn
+oewn-nuclear_cataract-n	nuclear cataract	n	0	2	2	oewn
+oewn-nuclear_chemist-n	nuclear chemist	n	0	2	2	oewn
+oewn-nuclear_chemistry-n	nuclear chemistry	n	0	2	2	oewn
+oewn-nuclear_club-n	nuclear club	n	0	2	2	oewn
+oewn-nuclear_deterrence-n	nuclear deterrence	n	0	2	2	oewn
+oewn-nuclear_energy-n	nuclear energy	n	0	2	2	oewn
+oewn-nuclear_engineering-n	nuclear engineering	n	0	2	2	oewn
+oewn-nuclear_explosion-n	nuclear explosion	n	0	2	2	oewn
+oewn-nuclear_family-n	nuclear family	n	0	2	2	oewn
+oewn-nuclear_fission-n	nuclear fission	n	0	2	2	oewn
+oewn-nuclear_fuel-n	nuclear fuel	n	0	2	2	oewn
+oewn-nuclear_fusion-n	nuclear fusion	n	0	2	2	oewn
+oewn-nuclear_fusion_reaction-n	nuclear fusion reaction	n	0	3	3	oewn
+oewn-nuclear_magnetic_resonance-n	nuclear magnetic resonance	n	0	3	3	oewn
+oewn-nuclear_medicine-n	nuclear medicine	n	0	2	2	oewn
+oewn-nuclear_meltdown-n	nuclear meltdown	n	0	2	2	oewn
+oewn-nuclear_physicist-n	nuclear physicist	n	0	2	2	oewn
+oewn-nuclear_physics-n	nuclear physics	n	0	2	2	oewn
+oewn-nuclear_power-n	nuclear power	n	0	2	2	oewn
+oewn-nuclear_power_industry-n	nuclear power industry	n	0	3	3	oewn
+oewn-nuclear_propulsion-n	nuclear propulsion	n	0	2	2	oewn
+oewn-nuclear_reaction-n	nuclear reaction	n	0	2	2	oewn
+oewn-nuclear_reactor-n	nuclear reactor	n	0	2	2	oewn
+oewn-nuclear_resonance-n	nuclear resonance	n	0	2	2	oewn
+oewn-nuclear_rocket-n	nuclear rocket	n	0	2	2	oewn
+oewn-nuclear_submarine-n	nuclear submarine	n	0	2	2	oewn
+oewn-nuclear_terrorism-n	nuclear terrorism	n	0	2	2	oewn
+oewn-nuclear_transplantation-n	nuclear transplantation	n	0	2	2	oewn
+oewn-nuclear_warhead-n	nuclear warhead	n	0	2	2	oewn
+oewn-nuclear_weapon-n	nuclear weapon	n	0	2	2	oewn
+oewn-nuclear_winter-n	nuclear winter	n	0	2	2	oewn
+oewn-nuclease-n	nuclease	n	0	1	1	oewn
+oewn-nucleate-a	nucleate	a	0	1	1	oewn
+oewn-nucleate-v	nucleate	v	0	1	1	oewn
+oewn-nucleated-a	nucleated	a	0	1	1	oewn
+oewn-nucleic_acid-n	nucleic acid	n	0	2	2	oewn
+oewn-nucleolar_organiser-n	nucleolar organiser	n	0	2	2	oewn
+oewn-nucleolar_organizer-n	nucleolar organizer	n	0	2	2	oewn
+oewn-nucleole-n	nucleole	n	0	1	1	oewn
+oewn-nucleolus-n	nucleolus	n	0	1	1	oewn
+oewn-nucleolus_organiser-n	nucleolus organiser	n	0	2	2	oewn
+oewn-nucleolus_organizer-n	nucleolus organizer	n	0	2	2	oewn
+oewn-nucleon-n	nucleon	n	0	1	1	oewn
+oewn-nucleon_number-n	nucleon number	n	0	2	2	oewn
+oewn-nucleonics-n	nucleonics	n	0	1	1	oewn
+oewn-nucleoplasm-n	nucleoplasm	n	0	1	1	oewn
+oewn-nucleoprotein-n	nucleoprotein	n	0	1	1	oewn
+oewn-nucleoside-n	nucleoside	n	0	1	1	oewn
+oewn-nucleoside_reverse_transcriptase_inhibitor-n	nucleoside reverse transcriptase inhibitor	n	0	4	4	oewn
+oewn-nucleosynthesis-n	nucleosynthesis	n	0	1	1	oewn
+oewn-nucleotide-n	nucleotide	n	0	1	1	oewn
+oewn-nucleus-n	nucleus	n	0	1	1	oewn
+oewn-nucleus_niger-n	nucleus niger	n	0	2	2	oewn
+oewn-nude-a	nude	a	0	1	1	oewn
+oewn-nude-n	nude	n	0	1	1	oewn
+oewn-nude_dancing-n	nude dancing	n	0	2	2	oewn
+oewn-nude_mouse-n	nude mouse	n	0	2	2	oewn
+oewn-nude_painting-n	nude painting	n	0	2	2	oewn
+oewn-nude_person-n	nude person	n	0	2	2	oewn
+oewn-nude_sculpture-n	nude sculpture	n	0	2	2	oewn
+oewn-nude_statue-n	nude statue	n	0	2	2	oewn
+oewn-nudeness-n	nudeness	n	0	1	1	oewn
+oewn-nudge-n	nudge	n	0	1	1	oewn
+oewn-nudge-v	nudge	v	0	1	1	oewn
+oewn-nudger-n	nudger	n	0	1	1	oewn
+oewn-nudibranch-n	nudibranch	n	0	1	1	oewn
+oewn-nudism-n	nudism	n	0	1	1	oewn
+oewn-nudist-n	nudist	n	0	1	1	oewn
+oewn-nudity-n	nudity	n	0	1	1	oewn
+oewn-nudnick-n	nudnick	n	0	1	1	oewn
+oewn-nudnik-n	nudnik	n	0	1	1	oewn
+oewn-nugatory-a	nugatory	a	0	1	1	oewn
+oewn-nugget-n	nugget	n	0	1	1	oewn
+oewn-nuisance-n	nuisance	n	0	1	1	oewn
+oewn-nuisance_abatement-n	nuisance abatement	n	0	2	2	oewn
+oewn-nuisance_tax-n	nuisance tax	n	0	2	2	oewn
+oewn-nuisance_value-n	nuisance value	n	0	2	2	oewn
+oewn-nuke-n	nuke	n	0	1	1	oewn
+oewn-nuke-v	nuke	v	0	1	1	oewn
+oewn-null-a	null	a	0	1	1	oewn
+oewn-null-n	null	n	0	1	1	oewn
+oewn-null_set-n	null set	n	0	2	2	oewn
+oewn-null_space-n	null space	n	0	2	2	oewn
+oewn-nullah-n	nullah	n	0	1	1	oewn
+oewn-nullification-n	nullification	n	0	1	1	oewn
+oewn-nullified-a	nullified	a	0	1	1	oewn
+oewn-nullifier-n	nullifier	n	0	1	1	oewn
+oewn-nullify-v	nullify	v	0	1	1	oewn
+oewn-nullipara-n	nullipara	n	0	1	1	oewn
+oewn-nullity-n	nullity	n	0	1	1	oewn
+oewn-numb-a	numb	a	0	1	1	oewn
+oewn-numb-v	numb	v	0	1	1	oewn
+oewn-numbat-n	numbat	n	0	1	1	oewn
+oewn-number-n	number	n	0	1	1	oewn
+oewn-number-v	number	v	0	1	1	oewn
+oewn-number_1-n	number 1	n	0	2	2	oewn
+oewn-number_agreement-n	number agreement	n	0	2	2	oewn
+oewn-number_cruncher-n	number cruncher	n	0	2	2	oewn
+oewn-number_crunching-n	number crunching	n	0	2	2	oewn
+oewn-number_one-n	number one	n	0	2	2	oewn
+oewn-number_one_wood-n	number one wood	n	0	3	3	oewn
+oewn-number_representation_system-n	number representation system	n	0	3	3	oewn
+oewn-number_system-n	number system	n	0	2	2	oewn
+oewn-number_theorist-n	number theorist	n	0	2	2	oewn
+oewn-numbered-a	numbered	a	0	1	1	oewn
+oewn-numbering-n	numbering	n	0	1	1	oewn
+oewn-numberless-a	numberless	a	0	1	1	oewn
+oewn-numberplate-n	numberplate	n	0	1	1	oewn
+oewn-numbers-n	numbers	n	0	1	1	oewn
+oewn-numbers_game-n	numbers game	n	0	2	2	oewn
+oewn-numbers_pool-n	numbers pool	n	0	2	2	oewn
+oewn-numbers_racket-n	numbers racket	n	0	2	2	oewn
+oewn-numbfish-n	numbfish	n	0	1	1	oewn
+oewn-numbing-a	numbing	a	0	1	1	oewn
+oewn-numbly-r	numbly	r	0	1	1	oewn
+oewn-numbness-n	numbness	n	0	1	1	oewn
+oewn-numdah-n	numdah	n	0	1	1	oewn
+oewn-numdah_rug-n	numdah rug	n	0	2	2	oewn
+oewn-numen-n	numen	n	0	1	1	oewn
+oewn-numerable-a	numerable	a	0	1	1	oewn
+oewn-numeracy-n	numeracy	n	0	1	1	oewn
+oewn-numeral-a	numeral	a	0	1	1	oewn
+oewn-numeral-n	numeral	n	0	1	1	oewn
+oewn-numerate-a	numerate	a	0	1	1	oewn
+oewn-numerate-v	numerate	v	0	1	1	oewn
+oewn-numeration-n	numeration	n	0	1	1	oewn
+oewn-numeration_system-n	numeration system	n	0	2	2	oewn
+oewn-numerator-n	numerator	n	0	1	1	oewn
+oewn-numeric-a	numeric	a	0	1	1	oewn
+oewn-numerical-a	numerical	a	0	1	1	oewn
+oewn-numerical_analysis-n	numerical analysis	n	0	2	2	oewn
+oewn-numerical_quantity-n	numerical quantity	n	0	2	2	oewn
+oewn-numerical_value-n	numerical value	n	0	2	2	oewn
+oewn-numerically-r	numerically	r	0	1	1	oewn
+oewn-numerological-a	numerological	a	0	1	1	oewn
+oewn-numerologist-n	numerologist	n	0	1	1	oewn
+oewn-numerology-n	numerology	n	0	1	1	oewn
+oewn-numerosity-n	numerosity	n	0	1	1	oewn
+oewn-numerous-a	numerous	a	0	1	1	oewn
+oewn-numerousness-n	numerousness	n	0	1	1	oewn
+oewn-numinous-a	numinous	a	0	1	1	oewn
+oewn-numismatics-n	numismatics	n	0	1	1	oewn
+oewn-numismatist-n	numismatist	n	0	1	1	oewn
+oewn-numismatologist-n	numismatologist	n	0	1	1	oewn
+oewn-numismatology-n	numismatology	n	0	1	1	oewn
+oewn-nummulite-n	nummulite	n	0	1	1	oewn
+oewn-numskull-n	numskull	n	0	1	1	oewn
+oewn-nun-ap-s_habit-n	nun's habit	n	0	2	2	oewn
+oewn-nun-n-1	nun	n	1	1	1	oewn
+oewn-nun-n-2	nun	n	2	1	1	oewn
+oewn-nun_buoy-n	nun buoy	n	0	2	2	oewn
+oewn-nuna-n	nuna	n	0	1	1	oewn
+oewn-nuncio-n	nuncio	n	0	1	1	oewn
+oewn-nunnery-n	nunnery	n	0	1	1	oewn
+oewn-nuptial-a	nuptial	a	0	1	1	oewn
+oewn-nuptials-n	nuptials	n	0	1	1	oewn
+oewn-nurse-ap-s_aide-n	nurse's aide	n	0	2	2	oewn
+oewn-nurse-midwife-n	nurse-midwife	n	0	1	1	oewn
+oewn-nurse-n	nurse	n	0	1	1	oewn
+oewn-nurse-patient_relation-n	nurse-patient relation	n	0	2	2	oewn
+oewn-nurse-v	nurse	v	0	1	1	oewn
+oewn-nurse_clinician-n	nurse clinician	n	0	2	2	oewn
+oewn-nurse_log-n	nurse log	n	0	2	2	oewn
+oewn-nurse_practitioner-n	nurse practitioner	n	0	2	2	oewn
+oewn-nurse_shark-n	nurse shark	n	0	2	2	oewn
+oewn-nursed-a	nursed	a	0	1	1	oewn
+oewn-nurseling-n	nurseling	n	0	1	1	oewn
+oewn-nursemaid-n	nursemaid	n	0	1	1	oewn
+oewn-nurser-n	nurser	n	0	1	1	oewn
+oewn-nursery-n	nursery	n	0	1	1	oewn
+oewn-nursery_rhyme-n	nursery rhyme	n	0	2	2	oewn
+oewn-nursery_school-n	nursery school	n	0	2	2	oewn
+oewn-nurseryman-n	nurseryman	n	0	1	1	oewn
+oewn-nurserywoman-n	nurserywoman	n	0	1	1	oewn
+oewn-nursing-n	nursing	n	0	1	1	oewn
+oewn-nursing_aide-n	nursing aide	n	0	2	2	oewn
+oewn-nursing_bottle-n	nursing bottle	n	0	2	2	oewn
+oewn-nursing_care-n	nursing care	n	0	2	2	oewn
+oewn-nursing_home-n	nursing home	n	0	2	2	oewn
+oewn-nursing_school-n	nursing school	n	0	2	2	oewn
+oewn-nursling-n	nursling	n	0	1	1	oewn
+oewn-nurtural-a	nurtural	a	0	1	1	oewn
+oewn-nurturance-n	nurturance	n	0	1	1	oewn
+oewn-nurturant-a	nurturant	a	0	1	1	oewn
+oewn-nurture-n	nurture	n	0	1	1	oewn
+oewn-nurture-v	nurture	v	0	1	1	oewn
+oewn-nut-bearing-a	nut-bearing	a	0	1	1	oewn
+oewn-nut-leaved_screw_tree-n	nut-leaved screw tree	n	0	3	3	oewn
+oewn-nut-n	nut	n	0	1	1	oewn
+oewn-nut-v	nut	v	0	1	1	oewn
+oewn-nut_and_bolt-n	nut and bolt	n	0	3	3	oewn
+oewn-nut_bar-n	nut bar	n	0	2	2	oewn
+oewn-nut_bread-n	nut bread	n	0	2	2	oewn
+oewn-nut_butter-n	nut butter	n	0	2	2	oewn
+oewn-nut_case-n	nut case	n	0	2	2	oewn
+oewn-nut_grass-n	nut grass	n	0	2	2	oewn
+oewn-nut_house-n	nut house	n	0	2	2	oewn
+oewn-nut_key-n	nut key	n	0	2	2	oewn
+oewn-nut_pine-n	nut pine	n	0	2	2	oewn
+oewn-nut_sedge-n	nut sedge	n	0	2	2	oewn
+oewn-nut_tool-n	nut tool	n	0	2	2	oewn
+oewn-nut_tree-n	nut tree	n	0	2	2	oewn
+oewn-nutate-v	nutate	v	0	1	1	oewn
+oewn-nutation-n	nutation	n	0	1	1	oewn
+oewn-nutbrown-a	nutbrown	a	0	1	1	oewn
+oewn-nutcase-n	nutcase	n	0	1	1	oewn
+oewn-nutcracker-n	nutcracker	n	0	1	1	oewn
+oewn-nutgrass-n	nutgrass	n	0	1	1	oewn
+oewn-nuthatch-n	nuthatch	n	0	1	1	oewn
+oewn-nuthouse-n	nuthouse	n	0	1	1	oewn
+oewn-nutlet-n	nutlet	n	0	1	1	oewn
+oewn-nutlike-a	nutlike	a	0	1	1	oewn
+oewn-nutmeg-n	nutmeg	n	0	1	1	oewn
+oewn-nutmeg-shaped-a	nutmeg-shaped	a	0	1	1	oewn
+oewn-nutmeg-yew-n	nutmeg-yew	n	0	1	1	oewn
+oewn-nutmeg_flower-n	nutmeg flower	n	0	2	2	oewn
+oewn-nutmeg_geranium-n	nutmeg geranium	n	0	2	2	oewn
+oewn-nutmeg_hickory-n	nutmeg hickory	n	0	2	2	oewn
+oewn-nutmeg_melon-n	nutmeg melon	n	0	2	2	oewn
+oewn-nutmeg_tree-n	nutmeg tree	n	0	2	2	oewn
+oewn-nutria-n	nutria	n	0	1	1	oewn
+oewn-nutrient-a	nutrient	a	0	1	1	oewn
+oewn-nutrient-n	nutrient	n	0	1	1	oewn
+oewn-nutrient_agar-n	nutrient agar	n	0	2	2	oewn
+oewn-nutrient_artery-n	nutrient artery	n	0	2	2	oewn
+oewn-nutrify-v	nutrify	v	0	1	1	oewn
+oewn-nutriment-n	nutriment	n	0	1	1	oewn
+oewn-nutrition-n	nutrition	n	0	1	1	oewn
+oewn-nutritional-a	nutritional	a	0	1	1	oewn
+oewn-nutritionally-r	nutritionally	r	0	1	1	oewn
+oewn-nutritionary-a	nutritionary	a	0	1	1	oewn
+oewn-nutritionist-ap-s_calorie-n	nutritionist's calorie	n	0	2	2	oewn
+oewn-nutritionist-n	nutritionist	n	0	1	1	oewn
+oewn-nutritious-a	nutritious	a	0	1	1	oewn
+oewn-nutritiousness-n	nutritiousness	n	0	1	1	oewn
+oewn-nutritive-a	nutritive	a	0	1	1	oewn
+oewn-nutritiveness-n	nutritiveness	n	0	1	1	oewn
+oewn-nuts-a	nuts	a	0	1	1	oewn
+oewn-nuts_and_bolts-n	nuts and bolts	n	0	3	3	oewn
+oewn-nutsedge-n	nutsedge	n	0	1	1	oewn
+oewn-nutshell-n	nutshell	n	0	1	1	oewn
+oewn-nutter-n	nutter	n	0	1	1	oewn
+oewn-nuttily-r	nuttily	r	0	1	1	oewn
+oewn-nutty-a	nutty	a	0	1	1	oewn
+oewn-nux_vomica-n	nux vomica	n	0	2	2	oewn
+oewn-nuzzle-v	nuzzle	v	0	1	1	oewn
+oewn-nyala-n	nyala	n	0	1	1	oewn
+oewn-nybble-n	nybble	n	0	1	1	oewn
+oewn-nyctalopia-n	nyctalopia	n	0	1	1	oewn
+oewn-nyctophobia-n	nyctophobia	n	0	1	1	oewn
+oewn-nycturia-n	nycturia	n	0	1	1	oewn
+oewn-nylghai-n	nylghai	n	0	1	1	oewn
+oewn-nylghau-n	nylghau	n	0	1	1	oewn
+oewn-nylon-n	nylon	n	0	1	1	oewn
+oewn-nylon_stocking-n	nylon stocking	n	0	2	2	oewn
+oewn-nylons-n	nylons	n	0	1	1	oewn
+oewn-nymph-n	nymph	n	0	1	1	oewn
+oewn-nymphalid-n	nymphalid	n	0	1	1	oewn
+oewn-nymphalid_butterfly-n	nymphalid butterfly	n	0	2	2	oewn
+oewn-nymphet-n	nymphet	n	0	1	1	oewn
+oewn-nympho-n	nympho	n	0	1	1	oewn
+oewn-nympholepsy-n	nympholepsy	n	0	1	1	oewn
+oewn-nympholept-n	nympholept	n	0	1	1	oewn
+oewn-nymphomania-n	nymphomania	n	0	1	1	oewn
+oewn-nymphomaniac-a	nymphomaniac	a	0	1	1	oewn
+oewn-nymphomaniac-n	nymphomaniac	n	0	1	1	oewn
+oewn-nymphomaniacal-a	nymphomaniacal	a	0	1	1	oewn
+oewn-nystagmus-n	nystagmus	n	0	1	1	oewn
+oewn-nystatin-n	nystatin	n	0	1	1	oewn

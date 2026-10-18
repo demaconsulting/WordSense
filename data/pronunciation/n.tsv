@@ -1,0 +1,924 @@
+entry_id	seq	variety	text
+oewn-N-n	1		ɛn
+oewn-NE-n	1		nə
+oewn-NIMBY-n	1		ˈnɪm.bi
+oewn-NREM-n	1	GB	ˈɛnɹɛm
+oewn-NSAID-n	1	US	ˈɛnsɛd
+oewn-Nahuatl-n	1		ˈnɑːwɑːt(ə)l
+oewn-Napoleon-n	1	GB	nəˈpəʊlɪən
+oewn-Napoleon-n	2	US	nəˈpoʊli.ən
+oewn-Nativity-n	1		nəˈtɪvɪti
+oewn-Navajo-n	1	GB	ˈnæv.ə.həʊ
+oewn-Navajo-n	2	US	ˈnæv.ə.hoʊ
+oewn-Navy-n	1		ˈneɪvi
+oewn-Nazi-a	1		ˈnɑːtsi
+oewn-Nazi-n	1		ˈnɑːtsi
+oewn-Ndebele-n	1		ɛndəˈbiːliː
+oewn-Ne-n	1		nə
+oewn-Neanderthal-a	1	GB	niːˈæn.dəˌtɑːl
+oewn-Neanderthal-a	2	US	niˈæn.dɚ.θəl
+oewn-Neanderthal-n	1	GB	niːˈæn.dəˌtɑːl
+oewn-Neanderthal-n	2	US	niˈæn.dɚ.θəl
+oewn-Neapolitan-a	1		ˌniːəˈpɒlɪtən
+oewn-Neapolitan-n	1		ˌniːəˈpɒlɪtən
+oewn-Negritude-n	1	GB	ˈnɛɡɹɪtjuːd
+oewn-Negro-n	1	US	ˈniɡɹoʊ
+oewn-Negro-n	2	GB	ˈniːɡɹəʊ
+oewn-Neoplatonist-n	1	GB	niːə(ʊ)ˈpleɪtənɪst
+oewn-Nepalese-a	1	GB	nɛ.pəˈliːz
+oewn-Nepalese-n	1	GB	nɛ.pəˈliːz
+oewn-Nepali-a	1		nəˈpɔːli
+oewn-Nepali-n	1		nəˈpɔːli
+oewn-Nereid-n	1		ˈnɪəɹiɪd
+oewn-Netherlander-n	1		ˈnɛðɚˌlændɚ
+oewn-New-a	1	GB	njuː
+oewn-New-a	2	US	n(j)u
+oewn-Newfoundland-n	1	GB	ˈnjuːˌfaʊnd.lənd
+oewn-Newfoundland-n	2	US	ˈn(j)uˌfaʊnd.lənd
+oewn-Newfoundland-n	3	CA	ˈnu.fənˌlænd
+oewn-Newtonian-a	1	GB	njuːˈtəʊnɪən
+oewn-Newtonian-a	2	US	n(j)uˈtoʊniən
+oewn-Newtonian-n	1	GB	njuːˈtəʊnɪən
+oewn-Newtonian-n	2	US	n(j)uˈtoʊniən
+oewn-Nez_Perce-n	1		ˌnɛzˈpɜɹs
+oewn-Nicaean-a	1		naɪˈsi.ən
+oewn-Nicene-a	1		ˈnaɪ.siːn
+oewn-Nietzscheanism-n	1	GB	ˈniː.t͡ʃɪ.ənɪzəm
+oewn-Nietzscheanism-n	2	US	ˈni.t͡ʃi.ənɪzəm
+oewn-Nigerian-a	1		naɪˌdʒɪəɹɪən
+oewn-Nigerian-n	1		naɪˌdʒɪəɹɪən
+oewn-Nigerien-a	1		niːˈʒɛəɹi.ən
+oewn-Nigerien-n	1		niːˈʒɛəɹi.ən
+oewn-Nilotic-a	1	GB	naɪˈlɒtɪk
+oewn-Nilotic-a	2	US	naɪˈlɑtɪk
+oewn-Nilotic-n	1	GB	naɪˈlɒtɪk
+oewn-Nilotic-n	2	US	naɪˈlɑtɪk
+oewn-Nip-n	1		nɪp
+oewn-Nisei-n	1		ˈniseɪ
+oewn-Nobel_prize-n	1	US	ˈnoʊˌbɛl ˈpɹaɪz
+oewn-Noel-n	1	GB	ˈnəʊ(ə)l
+oewn-Nordic-a	1	GB	ˈnɔː(ɹ).dɪk
+oewn-Nordic-n	1	GB	ˈnɔː(ɹ).dɪk
+oewn-Norman-a	1	US	ˈnɔɹmən
+oewn-Norman-a	2	GB	ˈnɔːmən
+oewn-Norman-n	1	US	ˈnɔɹmən
+oewn-Norman-n	2	GB	ˈnɔːmən
+oewn-Norse-a	1	US	nɔɹs
+oewn-Norse-a	2	GB	nɔːs
+oewn-Norse-n	1	US	nɔɹs
+oewn-Norse-n	2	GB	nɔːs
+oewn-Northern-n	1	GB	ˈnɔːðən
+oewn-Northern-n	2	US	ˈnɔɹðɚn
+oewn-Norwegian-a	1	GB	nɔː.ˈwiː.dʒən
+oewn-Norwegian-a	2	US	nɔɹ.ˈwiː.dʒən
+oewn-Norwegian-n	1	GB	nɔː.ˈwiː.dʒən
+oewn-Norwegian-n	2	US	nɔɹ.ˈwiː.dʒən
+oewn-November-n	1	GB	nəʊˈvɛmbə
+oewn-November-n	2	US	noʊˈvɛmbəɹ
+oewn-Nynorsk-n	1	GB	ˈnjuːnɔːsk
+oewn-Nynorsk-n	2	US	ˈnunɔɹsk
+oewn-n-n	1		ɛn
+oewn-nabob-n	1	US	ˈneɪbɑb
+oewn-nabob-n	2	GB	ˈneɪbɒb
+oewn-nacelle-n	1		nəˈsɛl
+oewn-nacho-n	1	GB	ˈnæt͡ʃəʊ
+oewn-nacho-n	2	US	ˈnɑt͡ʃoʊ
+oewn-nacre-n	1	GB	ˈneɪkə
+oewn-nacre-n	2	US	ˈneɪkəɹ
+oewn-nacreous-a	1		ˈneɪ.kɹi.əs
+oewn-nadir-n	1	GB	ˈneɪˌdɪə(ɹ)
+oewn-nadir-n	2	US	ˈneɪˌdɪɚ
+oewn-nadolol-n	1	US	neɪˈdoʊˌlɔl
+oewn-nafcillin-n	1	US	næfˈsɪl.ɪn
+oewn-nagger-n	1	US	ˈnæɡɚ
+oewn-naiad-n	1		ˈneɪæd
+oewn-nailbrush-n	1		ˈneɪl.bɹʌʃ
+oewn-nailer-n	1	US	ˈneɪlɚ
+oewn-nainsook-n	1		ˈneɪnˌsʊk
+oewn-naive-a	1		naɪˈiːv
+oewn-naively-r	1		naɪˈivli
+oewn-naivety-n	1		nɑːˈiːvti
+oewn-naked-a	1		ˈneɪkɪd
+oewn-nalidixic_acid-n	1		ˌnæl.ɪˌdɪk.sɪk ˈæs.ɪd
+oewn-naloxone-n	1	GB	nəˈlɒk.səʊn
+oewn-naloxone-n	2	US	nəˈlɑkˌsoʊn
+oewn-naltrexone-n	1	GB	nælˈtɹɛk.səʊn
+oewn-naltrexone-n	2	US	nælˈtɹɛkˌsoʊn
+oewn-name-n	1		neɪm
+oewn-namely-r	1		ˈneɪmli
+oewn-namer-n	1	GB	ˈneɪm.e
+oewn-namer-n	2	US	ˈneɪm.ɚ
+oewn-names-n	1		neɪmz
+oewn-namesake-n	1		ˈneɪmseɪk
+oewn-naming-a	1		ˈneɪmɪŋ
+oewn-naming-n	1		ˈneɪmɪŋ
+oewn-nan-n	1		næn
+oewn-nandrolone-n	1	GB	ˈnan.dɹə.ləʊn
+oewn-nandrolone-n	2	US	ˈnæn.dɹəˌloʊn
+oewn-nanny-n	1		ˈnæni
+oewn-napalm-n	1		ˈneɪ.pɑːm
+oewn-naphtha-n	1		ˈnæfθə
+oewn-napkin-n	1		ˈnæp.kɪn
+oewn-napoleon-n	1	GB	nəˈpəʊlɪən
+oewn-napoleon-n	2	US	nəˈpoʊli.ən
+oewn-naproxen-n	1	GB	nəˈpɹɒksən
+oewn-naproxen-n	2	US	nəˈpɹɑksən
+oewn-narcissism-n	1	GB	ˈnɑːsəˌsɪzm
+oewn-narcissism-n	2	US	ˈnɑɹsəˌsɪzm
+oewn-narcissistic-a	1	GB	ˌnɑː.sɪˈsɪs.tɪk
+oewn-narcissistic-a	2	US	ˌnɑɹ.sɨˈsɪs.tɪk
+oewn-narcissus-n	1	US	nɑɹˈsɪsəs
+oewn-narcosis-n	1	US	nɑɹˈkoʊ.sɪs
+oewn-narcosis-n	2	GB	nɑːˈkəʊ.sɪs
+oewn-narcotize-v	1	GB	ˈnɑːkə.tʌɪz
+oewn-narcotize-v	2	US	ˈnɑɹ.kəˌtaɪz
+oewn-naris-n	1		ˈnɛə.ɹɪs
+oewn-narrate-v	1	GB	nəˈɹeɪt
+oewn-narrate-v	2	US	ˈnæɹeɪt
+oewn-narration-n	1	GB	ˌnəˈɹeɪ.ʃən
+oewn-narration-n	2	US	ˌnɛɚˈɹeɪ.ʃən
+oewn-narrative-a	1	GB	ˈnæɹətɪv
+oewn-narrative-a	2	US	ˈnæɹətɪv
+oewn-narrative-n	1	GB	ˈnæɹətɪv
+oewn-narrative-n	2	US	ˈnæɹətɪv
+oewn-narrator-n	1	GB	nəˈɹeɪtə
+oewn-narrator-n	2	US	ˈnæɹeɪtəɹ
+oewn-narrowly-r	1	US	ˈnɛɹoʊli
+oewn-narrowly-r	2	GB	ˈnæɹəʊli
+oewn-narthex-n	1	US	ˈnɑɹθɛks
+oewn-narthex-n	2	GB	ˈnɑːθɛks
+oewn-narwhal-n	1	GB	ˈnɑːʍəl
+oewn-narwhal-n	2	US	ˈnɑɹʍəl
+oewn-nary-a	1		ˈnɛəɹi
+oewn-nasal-a	1		ˈneɪ.zəl
+oewn-nasal-n	1		ˈneɪ.zəl
+oewn-nasally-r	1		ˈneɪzəli
+oewn-nascence-n	1		ˈneɪ.səns
+oewn-nascency-n	1	GB	ˈneɪsənsi
+oewn-nascent-a	1		ˈneɪ.sənt
+oewn-nasturtium-n	1	GB	nasˈtɜːʃəm
+oewn-nasturtium-n	2	US	næsˈtɝʃəm
+oewn-nasty-a	1	GB	ˈnɑː.sti
+oewn-nasty-a	2	US	ˈnæs.ti
+oewn-natation-n	1		næ.teɪ.ʃən
+oewn-natatorium-n	1	GB	neɪtəˈtɔːɹɪəm
+oewn-natatorium-n	2	US	ne͡ɪtəˈtɔːɹi.əm
+oewn-nates-n	1	GB	ˈneɪtiːz
+oewn-national-a	1	GB	ˈnaʃn̩(ə)l
+oewn-national-a	2	US	ˈnæʃən(ə)l
+oewn-national-n	1	GB	ˈnaʃn̩(ə)l
+oewn-national-n	2	US	ˈnæʃən(ə)l
+oewn-nationalism-n	1		ˈnæʃənəlɪzəm
+oewn-nationality-n	1		ˌnæ.ʃəˈnæ.lɪ.ti
+oewn-nationalize-v	1		ˈnæʃənəlaɪz
+oewn-nationwide-a	1		ˌneɪ.ʃənˈwaɪd
+oewn-nationwide-r	1		ˌneɪ.ʃənˈwaɪd
+oewn-native-a	1	GB	ˈneɪtɪv
+oewn-native-n	1	GB	ˈneɪtɪv
+oewn-nativity-n	1		nəˈtɪvɪti
+oewn-natriuresis-n	1	GB	ˌneɪ.tɹɪ.jʊ(ə)ˈɹiː.sɪs
+oewn-natriuresis-n	2	US	ˌneɪ.tɹiː.jʊˈɹiː.sɪs
+oewn-natter-v	1	US	ˈnætɚ
+oewn-natter-v	2	GB	ˈnætə
+oewn-natural-a	1	GB	ˈnætʃəɹəl
+oewn-natural-a	2	US	ˈnætʃəɹəl
+oewn-natural-n	1	GB	ˈnætʃəɹəl
+oewn-natural-n	2	US	ˈnætʃəɹəl
+oewn-naturalize-v	1		ˈnætʃəɹəˌlaɪz
+oewn-naturally-r	1		ˈnætʃ(ə)ɹəli
+oewn-nature-n	1	GB	ˈneɪ.tʃə
+oewn-nature-n	2	US	ˈneɪ.tʃɚ
+oewn-nature-n	3	AU	ˈnæɪ̯.tʃə
+oewn-nature-n	4	NZ	ˈnæe.tʃɘ
+oewn-naturism-n	1		ˈneɪ.tʃəɹˌɪz.əm
+oewn-naturist-n	1		ˈneɪtʃəɹɪst
+oewn-naught-n	1	GB	nɔːt
+oewn-naught-n	2	US	nɔt
+oewn-naught-n	3		nɑt
+oewn-naughty-a	1	GB	ˈnɔːti
+oewn-naughty-a	2	US	ˈnɔti
+oewn-nausea-n	1	GB	ˈnɔːzɪə
+oewn-nausea-n	2	US	ˈnɔzi.ə
+oewn-nauseated-a	1		ˈnɔːziˌeɪtɪd
+oewn-nauseous-a	1	GB	ˈnɔːzɪəs
+oewn-nauseous-a	2	US	ˈnɔːʃəs
+oewn-nauseous-a	3	CA	ˈnɑːʃəs
+oewn-nautch-n	1		nɔːtʃ
+oewn-nautical-a	1		ˈnɔːtɪkl̩
+oewn-nautilus-n	1	GB	ˈnɔː.tɪ.ləs
+oewn-nautilus-n	2	US	ˈnɔ.tɪ.ləs
+oewn-naval-a	1		ˈneɪvəl
+oewn-navel-gazing-n	1		ˈneɪvəlˌɡeɪzɪŋ
+oewn-navel-n	1		ˈneɪvəl
+oewn-navigable-a	1		ˈnævɪɡəbəl
+oewn-navigate-v	1	GB	ˈnæv.ɪ.ɡeɪt
+oewn-navigate-v	2	US	ˈnæv.ɪ.ɡeɪt
+oewn-navigation-n	1		nævɪˈɡeɪʃən
+oewn-navvy-n	1		ˈnævi
+oewn-navy-n	1		ˈneɪvi
+oewn-nawab-n	1		nəˈwɑːb
+oewn-nay-n	1		neɪ
+oewn-nay-r	1		neɪ
+oewn-naysayer-n	1	GB	ˈneɪ.ˌseɪ.ə(ɹ)
+oewn-naysayer-n	2	US	ˈneɪ.ˌseɪ.ɚ
+oewn-nazi-n	1		ˈnɑːtsi
+oewn-ne-ap-er-do-well-n	1	GB	ˈnɛə.duˌwɛl
+oewn-ne-ap-er-do-well-n	2	US	ˈnɛʔɚ.duˌwɛl
+oewn-ne-ap-er-r	1	GB	nɛə
+oewn-ne-ap-er-r	2	US	ˈnɛʔɚ
+oewn-neanderthal-a	1	GB	niːˈæn.dəˌtɑːl
+oewn-neanderthal-a	2	US	niˈæn.dɚ.θəl
+oewn-near-a	1	GB	nɪə(ɹ)
+oewn-near-a	2	US	nɪɹ
+oewn-near-r	1	GB	nɪə(ɹ)
+oewn-near-r	2	US	nɪɹ
+oewn-near-v	1	GB	nɪə(ɹ)
+oewn-near-v	2	US	nɪɹ
+oewn-nearby-a	1		ˌnɪə(ɹ)ˈbaɪ
+oewn-nearby-r	1		ˌnɪə(ɹ)ˈbaɪ
+oewn-nearly-r	1	GB	ˈnɪəli
+oewn-nearly-r	2	US	ˈnɪɹli
+oewn-neatly-r	1		ˈniːtli
+oewn-neb-n	1		nɛb
+oewn-nebbish-n	1		ˈnɛ.bɪʃ
+oewn-nebuchadnezzar-n	1	GB	ˌnɛbjʊkədˈnɛzə
+oewn-nebuchadnezzar-n	2	US	ˌnɛbəkədˈnɛzɚ
+oewn-nebula-n	1		ˈnɛbjʊlə
+oewn-nebule-n	1		ˈnɛbjuːl
+oewn-nebulose-a	1		ˈnɛbjʊləʊz
+oewn-nebulous-a	1		ˈnɛbjʊləs
+oewn-nebulously-r	1		ˈnɛb.jʊ.ləs.li
+oewn-necessarily-r	1		ˌnɛsəˈsɛɹəli
+oewn-necessary-a	1	US	ˈnɛsəˌsɛɹi
+oewn-necessary-a	2	GB	ˈnɛsəsɹɪ
+oewn-necessary-n	1	US	ˈnɛsəˌsɛɹi
+oewn-necessary-n	2	GB	ˈnɛsəsɹɪ
+oewn-necessitate-v	1	GB	nɪˈsɛsɪteɪt
+oewn-necessitate-v	2	US	nəˈsɛsəˌteɪt
+oewn-necessitous-a	1	US	nəˈsɛ.sə.təs
+oewn-necessity-n	1		nɪˈsɛsəti
+oewn-neck-n	1		nɛk
+oewn-neck-v	1		nɛk
+oewn-necked-a	1		nɛkt
+oewn-necklace-n	1	US	ˈnɛkləs
+oewn-necklace-n	2	GB	ˈnɛklɪs
+oewn-neckless-a	1		ˈnɛklɪs
+oewn-neckline-n	1		ˈnɛkˌlaɪn
+oewn-necktie-n	1		ˈnɛk.taɪ
+oewn-neckwear-n	1		ˈnɛk.wɛɚ
+oewn-necrology-n	1	GB	nɛˈkɹɒlədʒi
+oewn-necrolysis-n	1		nɛˈkɹɒlɪsɪs
+oewn-necromancer-n	1	GB	ˈnekɹə(ʊ)ˌmænsə
+oewn-necromancer-n	2	US	ˈnekɹəˌmænsɚ
+oewn-necromancy-n	1		ˈnɛkɹəˌmænsi
+oewn-necrophagy-n	1		nɛˈkɹɒfəd͡ʒi
+oewn-necrophilia-n	1	GB	ˌnɛkɹə(ʊ)ˈfɪlɪə
+oewn-necrophilia-n	2	US	nɛkɹoʊˈfɪli.ə
+oewn-necropolis-n	1	GB	nɛˈkɹɒpəlɪs
+oewn-necropolis-n	2	US	nɛˈkɹɑpələs
+oewn-necropsy-n	1	GB	ˈnɛkɹɒpsi
+oewn-necropsy-n	2	US	ˈnɛkɹɑpsi
+oewn-nectar-n	1	GB	ˈnɛk.tə
+oewn-nectar-n	2	US	ˈnɛk.təɹ
+oewn-nectarine-n	1		ˈnɛk.tə.ɹin
+oewn-nee-a	1		neɪ
+oewn-needed-a	1	GB	ˈniːdɪd
+oewn-needed-a	2	US	ˈnidɪd
+oewn-needful-a	1		ˈniːdfəl
+oewn-neediness-n	1		ˈniː.di.nəs
+oewn-needle-n	1		ˈniː.dl
+oewn-needle-v	1		ˈniː.dl
+oewn-needless-a	1		ˈniːdləs
+oewn-needy-a	1		ˈniːdi
+oewn-neem-n	1	GB	niːm
+oewn-nefarious-a	1		nɛˈfɛəɹi.əs
+oewn-nefazodone-n	1	US	nəˈfæz.əˌdoʊn
+oewn-negate-v	1		nɪˈɡeɪt
+oewn-negation-n	1		nəˈɡeɪʃən
+oewn-negative-a	1	GB	ˈnɛɡətɪv
+oewn-negative-a	2	US	ˈnɛɡətɪv
+oewn-negative-a	3	CA	ˈnɛ(e)ɡəˌɾɪv
+oewn-negative-n	1	GB	ˈnɛɡətɪv
+oewn-negative-n	2	US	ˈnɛɡətɪv
+oewn-negative-n	3	CA	ˈnɛ(e)ɡəˌɾɪv
+oewn-negative-v	1	GB	ˈnɛɡətɪv
+oewn-negative-v	2	US	ˈnɛɡətɪv
+oewn-negative-v	3	CA	ˈnɛ(e)ɡəˌɾɪv
+oewn-neglect-n	1		nɪˈɡlɛkt
+oewn-neglect-v	1		nɪˈɡlɛkt
+oewn-neglected-a	1		nɪˈɡlɛktɪd
+oewn-negligence-n	1		ˈnɛɡlɪd͡ʒəns
+oewn-negligent-a	1		ˈnɛɡ.lɪ.dʒənt
+oewn-negligible-a	1		ˈnɛɡlɪdʒɪbəl
+oewn-negotiable-a	1	GB	nɪˈɡəʊʃi.əbəl
+oewn-negotiable-a	2	US	nɪˈɡoʊʃi.əbəl
+oewn-negotiate-v	1	GB	nəˈɡəʊ.ʃi.eɪt
+oewn-negotiate-v	2	US	nəˈɡoʊ.ʃi.eɪt
+oewn-negotiation-n	1	US	nɪˌɡoʊʃiˈeɪʃən
+oewn-negotiation-n	2	GB	nɪˌɡəʊʃiˈeɪʃən
+oewn-negotiator-n	1		nɪˈɡoʊ.ʃi.eɪ.tɚ
+oewn-negro-a	1	US	ˈniɡɹoʊ
+oewn-negro-a	2	GB	ˈniːɡɹəʊ
+oewn-neigh-n	1		neɪ
+oewn-neigh-v	1		neɪ
+oewn-neighborhood-n	1	GB	ˈneɪbə.hʊd
+oewn-neighborhood-n	2	US	ˈneɪbɚˌhʊd
+oewn-neighboring-a	1		ˈneɪbəɹɪŋ
+oewn-neighbour-n	1	GB	ˈneɪbə
+oewn-neighbour-n	2	US	ˈneɪbɚ
+oewn-neighbour-v	1	GB	ˈneɪbə
+oewn-neighbour-v	2	US	ˈneɪbɚ
+oewn-nelfinavir-n	1	US	nɛlˈfɪn.əˌvɪɹ
+oewn-nematode-n	1	GB	ˈnɛm.ə.təʊd
+oewn-nematode-n	2	US	ˈnɛm.əˌtoʊd
+oewn-nemesis-n	1		ˈnɛməsɪs
+oewn-neo-a	1		ˈniːəʊ
+oewn-neodymium-n	1	GB	nɪə(ʊ)ˈdɪmɪəm
+oewn-neodymium-n	2	US	ˌniː.oʊˈdɪmiəm
+oewn-neolithic-a	1	GB	ˌni.əˈlɪθ.ɪk
+oewn-neolithic-a	2	US	ˌni.oʊˈlɪθ.ɪk
+oewn-neologism-n	1		niːˈɒlədʒɪzəm
+oewn-neomycin-n	1	GB	ˌniː.ə(ʊ)ˈmʌɪ.sɪn
+oewn-neomycin-n	2	US	ˌni.əˈmaɪ.sn̩
+oewn-neon-n	1		ˈni.ɒn
+oewn-neonate-n	1	GB	ˈniː.əʊ.neɪt
+oewn-neonate-n	2	US	ˈni.oʊ.neɪt
+oewn-neonatology-n	1		ˌniːəʊnəˈtɒlədʒi
+oewn-neophobia-n	1	GB	niːəˈfəʊbɪə
+oewn-neophyte-n	1	US	ˈni.əˌfaɪt
+oewn-neoplasm-n	1		ˈniːoʊˌplæzəm
+oewn-neoprene-n	1		ˈniɵpɹin
+oewn-neostigmine-n	1		ˌniː.əˈstɪɡ.miːn
+oewn-neotenous-a	1	GB	niˈɒtənəs
+oewn-neotenous-a	2	US	niˈɑːtənəs
+oewn-neoteny-n	1	GB	niˈɒtəni
+oewn-neoteny-n	2	US	niˈɑːtəni
+oewn-nephew-n	1	GB	ˈnɛf.ju
+oewn-nephew-n	2	US	ˈnɛf.ju
+oewn-nephology-n	1		nɪˈfɒlədʒi
+oewn-nepotism-n	1		ˈnɛp.ə.tɪ.zəm
+oewn-neptunium-n	1		nɛpˈtuːniəm
+oewn-nerd-n	1	GB	nɜːd
+oewn-nerd-n	2	US	nɝːd
+oewn-nerve-n	1	US	nɝv
+oewn-nerve-n	2	GB	nɜːv
+oewn-nerve-v	1	US	nɝv
+oewn-nerve-v	2	GB	nɜːv
+oewn-nerveless-a	1		ˈnɜː(ɹ)vləs
+oewn-nerves-n	1	US	nɝvz
+oewn-nerves-n	2	GB	nɜːvz
+oewn-nervous-a	1	GB	ˈnɜːvəs
+oewn-nervous-a	2	US	ˈnɝːvəs
+oewn-nervure-n	1	GB	ˈnəːvj(ʊ)ə
+oewn-nervy-a	1	GB	ˈnɜː.vi
+oewn-nervy-a	2	US	ˈnɝ.vi
+oewn-nescience-n	1	GB	ˈnɛsɪəns
+oewn-nescience-n	2	US	ˈnɛʃəns
+oewn-ness-n	1		nɛs
+oewn-nestle-v	1		ˈnɛsəl
+oewn-nestling-n	1		ˈnɛstlɪŋ
+oewn-netball-n	1	GB	ˈnɛtbɔːl
+oewn-netball-n	2	US	ˈnɛtˌbɔl
+oewn-nettle-n	1		ˈnɛt(ə)l
+oewn-nettle-v	1		ˈnɛt(ə)l
+oewn-network-n	1	GB	nɛtwɜːk
+oewn-network-n	2	US	nɛtwɝk
+oewn-network-v	1	GB	nɛtwɜːk
+oewn-network-v	2	US	nɛtwɝk
+oewn-neural-a	1	US	ˈnʊɹəl
+oewn-neural-a	2	GB	ˈnjʊəɹəl
+oewn-neural-a	3	CA	ˈnjəɹəl
+oewn-neurasthenia-n	1		ˌnjʊəɹəsˈθiːniə
+oewn-neurasthenic-a	1	US	ˌnʊɹəsˈθɛnɪk
+oewn-neurasthenic-a	2	GB	ˌnjʊəɹəsˈθɛnɪk
+oewn-neurasthenic-n	1	US	ˌnʊɹəsˈθɛnɪk
+oewn-neurasthenic-n	2	GB	ˌnjʊəɹəsˈθɛnɪk
+oewn-neuroanatomy-n	1	GB	njʊəɹəʊəˈnatəmi
+oewn-neuroepithelium-n	1	US	ˌnɝ.oʊ.ˌɛp.ɪ.ˈθi.li.əm
+oewn-neurology-n	1		n(j)uˈɹɒlədʒi
+oewn-neuron-n	1	US	ˈn(j)ʊɹɑn
+oewn-neuron-n	2	GB	ˈnjʊəɹɒn
+oewn-neuron-n	3	CA	ˈnjəɹɑn
+oewn-neurotic-a	1		njʊəˈɹɒtɪk
+oewn-neurotic-n	1		njʊəˈɹɒtɪk
+oewn-neuter-a	1	GB	ˈnjuːtə
+oewn-neuter-a	2	US	ˈn(j)uːtɚ
+oewn-neuter-n	1	GB	ˈnjuːtə
+oewn-neuter-n	2	US	ˈn(j)uːtɚ
+oewn-neuter-v	1	GB	ˈnjuːtə
+oewn-neuter-v	2	US	ˈn(j)uːtɚ
+oewn-neutral-a	1	GB	ˈnjuːtɹəl
+oewn-neutral-a	2	US	ˈnuːtɹəl
+oewn-neutral-n	1	GB	ˈnjuːtɹəl
+oewn-neutral-n	2	US	ˈnuːtɹəl
+oewn-neutrality-n	1	GB	njuːˈtɹæləti
+oewn-neutrality-n	2	US	nuˈtɹæləti
+oewn-neutrino-n	1	GB	njuːˈtɹiːnəʊ
+oewn-neutrino-n	2	US	njuːˈtɹiːnoʊ
+oewn-neutron-n	1	GB	ˈn(j)uː.tɹɒn
+oewn-neutron-n	2	US	ˈnu.tɹɑn
+oewn-neutrophil-n	1	GB	ˈnjuːtɹəfɪl
+oewn-neutrophile-n	1		ˈnuː.tɹoʊ̯ˌfaɪ̯ɫ
+oewn-neve-n	1		niːv
+oewn-never-r	1	GB	ˈnɛv.ə(ɹ)
+oewn-never-r	2	US	ˈnɛ.vɚ
+oewn-nevertheless-r	1	GB	ˈnɛvəðəlɛs
+oewn-nevertheless-r	2	US	ˈnɛvɚðəlɛs
+oewn-nevirapine-n	1	GB	nɪˈvʌɪ.ɹə.piːn
+oewn-nevirapine-n	2	US	nəˈvɪɹ.əˌpin
+oewn-new-a	1	GB	njuː
+oewn-new-a	2	US	n(j)u
+oewn-new-r	1	GB	njuː
+oewn-new-r	2	US	n(j)u
+oewn-newbie-n	1		ˈnjuːbi
+oewn-newcomer-n	1	GB	ˈnjuːkʌmə
+oewn-newcomer-n	2	US	ˈn(j)uˌkʌmɚ
+oewn-newfangled-a	1	GB	ˌnjuːˈfæŋ.ɡəɫd
+oewn-newfangled-a	2	US	ˌnuˈfæŋ.ɡəld
+oewn-newly-r	1	US	ˈnuli
+oewn-newly-r	2	GB	ˈnjuːli
+oewn-newness-n	1		ˈn(j)uːnəs
+oewn-news-n	1		n(j)uːz
+oewn-newsletter-n	1	US	ˈn(j)uzˌlɛtɚ
+oewn-newsletter-n	2	GB	ˈnjuːzˌlɛtə
+oewn-newspaper-n	1	GB	ˈnjuːsˌpeɪpə
+oewn-newspaper-n	2	US	ˈn(j)uzˌpeɪpɚ
+oewn-newspeak-n	1		ˈnjuːspiːk
+oewn-newsroom-n	1		ˈnjuːzɹuːm
+oewn-newt-n	1	GB	ˈnjuːt
+oewn-newt-n	2	US	ˈn(j)ut
+oewn-newt-n	3	AU	ˈnjʉːt
+oewn-newton-n	1		ˈn(j)uːtən
+oewn-next-a	1		nɛkst
+oewn-next-r	1		nɛkst
+oewn-nexus-n	1		ˈnɛksəs
+oewn-nib-n	1		nɪb
+oewn-nibble-n	1		ˈnɪbəl
+oewn-nibble-v	1		ˈnɪbəl
+oewn-niblick-n	1		ˈnɪblɪk
+oewn-nicely-r	1	GB	ˈnʌɪsli
+oewn-niceness-n	1		ˈnaɪsnɪs
+oewn-nicety-n	1		ˈnaɪsɪti
+oewn-niche-n	1	US	nɪt͡ʃ
+oewn-nickel-n	1		ˈnɪ.kəl
+oewn-nickel-v	1		ˈnɪ.kəl
+oewn-nickname-n	1		ˈnɪkneɪm
+oewn-nickname-v	1		ˈnɪkneɪm
+oewn-nicotine-n	1		ˈnɪkətiːn
+oewn-nictate-v	1		nɪkˈteɪt
+oewn-nictation-n	1		nɪˈkteɪʃən
+oewn-nictitate-v	1		ˈnɪktɪteɪt
+oewn-nictitation-n	1		nɪktɪˈteɪʃən
+oewn-niece-n	1	GB	niːs
+oewn-niece-n	2	US	nis
+oewn-nifedipine-n	1	GB	nʌɪˈfɛd.ɪ.piːn
+oewn-nifedipine-n	2	US	naɪˈfɛd.ɪˌpin
+oewn-nifty-a	1		ˈnɪfti
+oewn-nigella-n	1		naɪˈd͡ʒɛlə
+oewn-niggardly-a	1	GB	ˈnɪɡədli
+oewn-niggardly-a	2	US	ˈnɪɡɚdli
+oewn-niggle-v	1		ˈnɪɡəl
+oewn-nigh-a	1		naɪ
+oewn-nigh-r	1		naɪ
+oewn-night-n	1		naɪt
+oewn-night_owl-n	1	GB	ˈnaɪt aʊl
+oewn-night_owl-n	2	US	ˈnaɪt ˌaʊl
+oewn-nightcap-n	1	US	ˈnaɪtˌkæp
+oewn-nightfall-n	1		ˈnaɪtfɔːl
+oewn-nightgown-n	1		ˈnaɪtˌɡaʊn
+oewn-nighthawk-n	1	GB	ˈnʌɪthɔːk
+oewn-nighthawk-n	2	US	ˈnaɪthɑk
+oewn-nightie-n	1		ˈnaɪti
+oewn-nightjar-n	1	GB	ˈnaɪtdʒɑː
+oewn-nightjar-n	2	US	ˈnaɪtdʒɑɹ
+oewn-nightlife-n	1		ˈnaɪtˌlaɪf
+oewn-nightmare-n	1	GB	ˈnaɪt.mɛə
+oewn-nightmare-n	2	US	naɪt.mɛəɹ
+oewn-nightshade-n	1		ˈnaɪtʃeɪd
+oewn-nighttime-n	1		ˈnaɪtˌtaɪm
+oewn-nightwork-n	1	GB	ˈnʌɪtwəːk
+oewn-nihil_obstat-n	1		ˈnɪhɪl ˈɒbstæt
+oewn-nihilism-n	1	GB	ˈnaɪ.(h)ɪ.lɪ.z(ə)m
+oewn-nihilism-n	2	US	ˈnaɪ.əˌlɪ.z(ə)m
+oewn-nihilist-n	1	GB	ˈnaɪɪlɪst
+oewn-nil-n	1		nɪl
+oewn-nim-n	1		nɪm
+oewn-nimble-a	1		ˈnɪmbl̩
+oewn-nimbleness-n	1	US	ˈnɪm.bəl.nɪs
+oewn-nimbus-n	1		ˈnɪmbəs
+oewn-nimiety-n	1		nɪˈmaɪ ɪ ti
+oewn-nincompoop-n	1	GB	ˈnɪŋkəmpuːp
+oewn-nincompoop-n	2	US	ˈnɪŋkəmˌpup
+oewn-nine-a	1		naɪn
+oewn-nine-n	1		naɪn
+oewn-niner-n	1		ˈnaɪnə(ɹ)
+oewn-nineteenth-a	1		ˌnaɪnˈtiːnθ
+oewn-nineteenth-n	1		ˌnaɪnˈtiːnθ
+oewn-ninetieth-a	1		ˈnaɪn.ti.əθ
+oewn-ninetieth-n	1		ˈnaɪn.ti.əθ
+oewn-ninja-n	1		ˈnɪndʒə
+oewn-ninny-n	1		ˈnɪni
+oewn-ninth-a	1		naɪnθ
+oewn-ninth-n	1		naɪnθ
+oewn-niobium-n	1		naɪˈoʊbiəm
+oewn-nip-n	1		nɪp
+oewn-nipa-n	1		ˈniːpɑ
+oewn-nipper-n	1		ˈnɪpə(ɹ)
+oewn-nipple-n	1		ˈnɪp(ə)l
+oewn-nippy-a	1		ˈnɪpi
+oewn-niqab-n	1		nɪˈkɑːb
+oewn-nirvana-n	1	GB	nɪəˈvɑːnə
+oewn-nirvana-n	2	US	nɪɹˈvɑnə
+oewn-nitpick-v	1		ˈnɪt.pɪk
+oewn-nitpicker-n	1		ˈnɪt.pɪk.ə(ɹ)
+oewn-nitrate-n	1	US	ˈnaɪˌtɹeɪt
+oewn-nitrate-v	1	US	ˈnaɪˌtɹeɪt
+oewn-nitrazepam-n	1	GB	nʌɪˈtɹeɪ.zɪ.pam
+oewn-nitrazepam-n	2	US	naɪˈtɹæz.əˌpæm
+oewn-nitride-n	1		ˈnaɪ.tɹaɪd
+oewn-nitrile-n	1		ˈnaɪtɹaɪl
+oewn-nitrite-n	1		ˈnaɪ.tɹaɪt
+oewn-nitrofurantoin-n	1	GB	ˌnʌɪ.tɹə(ʊ).fjʊˈɹan.təʊ.ɪn
+oewn-nitrofurantoin-n	2	US	ˌnaɪ.tɹoʊ.fjʊˈɹæn.toʊ.ɪn
+oewn-nitrogen-n	1	US	ˈnaɪ.tɹə.dʒən
+oewn-nitty-gritty-n	1	GB	ˌnɪtiˈɡɹɪti
+oewn-nitty-gritty-n	2	US	ˈnɪtiˈɡɹɪti
+oewn-nitwit-n	1	US	ˈnɪtwɪt
+oewn-nix-n	1		nɪks
+oewn-nix-v	1		nɪks
+oewn-no-show-n	1	US	ˈnoʊ ˌʃoʊ
+oewn-no_man-ap-s_land-n	1	US	ˈnoʊˌmænzˌlænd
+oewn-nob-n	1	GB	nɒb
+oewn-nob-n	2	US	nɑb
+oewn-nobble-v	1	GB	ˈnɒbl̩
+oewn-nobelium-n	1		noʊˈbiːliəm
+oewn-nobility-n	1	US	noʊˈbɪlɪti
+oewn-nobility-n	2	GB	nəʊˈbɪlɪti
+oewn-noble-a	1	GB	ˈnəʊbəl
+oewn-noble-a	2	US	ˈnoʊbəl
+oewn-noble-n	1	GB	ˈnəʊbəl
+oewn-noble-n	2	US	ˈnoʊbəl
+oewn-nobleman-n	1	US	ˈnoʊbl̩mən
+oewn-nobleman-n	2	GB	ˈnəʊbl̩mən
+oewn-noblesse-n	1	GB	nə(ʊ)ˈblɛs
+oewn-noblesse_oblige-n	1	GB	nəʊˌblɛs ɒˈbliːʒ
+oewn-noblesse_oblige-n	2	US	noʊˌblɛs əˈbliʒ
+oewn-nobly-r	1	GB	ˈnəʊbli
+oewn-nobly-r	2	US	ˈnoʊbli
+oewn-nobody-n	1	GB	ˈnəʊ.bə.di
+oewn-nobody-n	2	US	ˈnoʊ.bə.di
+oewn-nociceptive-a	1	GB	ˌnəʊ.sɪˈsɛp.tɪv
+oewn-nociceptive-a	2	US	ˌnoʊ.səˈsɛp.tɪv
+oewn-noctiluca-n	1	GB	ˌnɒk.tɪˈluː.kə
+oewn-noctiluca-n	2	US	ˌnɑk.tɪˈlu.kə
+oewn-nocturnal-a	1	GB	nɒkˈtɜː(ɹ).nəl
+oewn-nocturnal-a	2	US	nɑkˈtɝ.nəl
+oewn-nocturne-n	1	GB	ˈnɒktɜːn
+oewn-nocturne-n	2	US	ˈnɑkˌtɝn
+oewn-nod-n	1	US	nɑd
+oewn-nod-v	1	US	nɑd
+oewn-nodding-a	1	US	ˈnɑdɪŋ
+oewn-nodding-a	2	GB	ˈnɒdɪŋ
+oewn-nodule-n	1	GB	ˈnɒdjuːl
+oewn-nodule-n	2	US	ˈnɑːd͡ʒuːl
+oewn-noesis-n	1	GB	nəʊˈiːsɪs
+oewn-noesis-n	2	US	noʊˈisɪs
+oewn-noetic-a	1	GB	nəʊˈɛt.ɪk
+oewn-noetic-a	2	US	noʊˈɛt.ɪk
+oewn-noggin-n	1	US	ˈnɑɡɨn
+oewn-noggin-n	2	GB	ˈnɒɡɪn
+oewn-noise-n	1		nɔɪz
+oewn-noise-v	1		nɔɪz
+oewn-noisome-a	1		ˈnɔɪ.səm
+oewn-noisy-a	1		ˈnɔɪzi
+oewn-noli-me-tangere-n	1		ˌnoʊlaɪ miː ˈtænd͡ʒəɹiː
+oewn-nolle_prosequi-n	1	GB	ˌnɒlɪ ˈpɹɒsɪkwaɪ
+oewn-nolle_prosequi-n	2	US	ˌnoʊli ˈpɹoʊsɪkwaɪ
+oewn-nolle_prosequi-v	1	GB	ˌnɒlɪ ˈpɹɒsɪkwaɪ
+oewn-nolle_prosequi-v	2	US	ˌnoʊli ˈpɹoʊsɪkwaɪ
+oewn-nom_de_plume-n	1		ˌnɒm də ˈpluːm
+oewn-nomad-n	1	GB	ˈnəʊmæd
+oewn-nomad-n	2	US	ˈnoʊmæd
+oewn-nomadic-a	1	GB	nəʊˈmæd.ɪk
+oewn-nombril-n	1	GB	ˈnɒmbɹɪl
+oewn-nombril-n	2	US	ˈnɑmbɹəl
+oewn-nomenclature-n	1	GB	nəʊˈmɛn.klətʃə
+oewn-nomenclature-n	2	US	ˈnoʊmənˌkleɪtʃəɹ
+oewn-nomenklatura-n	1	GB	nɒˌmɛnkləˈtjʊəɹə
+oewn-nominal-a	1	GB	ˈnɒm.ɪnl̩
+oewn-nominal-a	2	US	ˈnɑm.ɪnl̩
+oewn-nominal-n	1	GB	ˈnɒm.ɪnl̩
+oewn-nominal-n	2	US	ˈnɑm.ɪnl̩
+oewn-nominally-r	1	GB	ˈnɒmɪnəli
+oewn-nominally-r	2	US	ˈnɑmɪnəli
+oewn-nominate-v	1	GB	ˈnɒm.ɪ.neɪt
+oewn-nominate-v	2	US	ˈnɑm.ɪ.neɪt
+oewn-nomination-n	1	US	ˌnɑmɪˈneɪʃən
+oewn-nomination-n	2	GB	ˌnɒmɪˈneɪʃən
+oewn-nominative-a	1	GB	ˈnɒmɪnətɪv
+oewn-nominative-n	1	GB	ˈnɒmɪnətɪv
+oewn-nominee-n	1		ˌnɒmɪˈniː
+oewn-non-U-a	1	GB	nɒnˈjuː
+oewn-non-U-a	2	US	ˈnɑnˈju
+oewn-non_sequitur-n	1	GB	ˌnɒnˈsɛk.wɪ.tə
+oewn-non_sequitur-n	2	US	ˌnɑːnˈsɛk.wɪ.tɚ
+oewn-nonage-n	1	GB	ˈnəʊnɪdʒ
+oewn-nonage-n	2	US	ˈnoʊnədʒ
+oewn-nonagenarian-a	1	GB	ˌnɒnæd͡ʒɛˈnɛːɹɪən
+oewn-nonagenarian-n	1	GB	ˌnɒnæd͡ʒɛˈnɛːɹɪən
+oewn-nonagon-n	1	US	ˈnɑn.ə.ɡɑn
+oewn-nonagon-n	2	GB	ˈnɒn.ə.ɡən
+oewn-nonchalance-n	1	GB	ˈnɒnʃələns
+oewn-nonchalance-n	2	US	ˌnɑːnʃəˈlɑːns
+oewn-nonchalant-a	1	GB	ˈnɒn.ʃəl.ənt
+oewn-nonchalant-a	2	US	ˌnɑn.ʃəˈlɑnt
+oewn-nonclassical-a	1	US	nɑnˈklæsɪkəl
+oewn-nonclassical-a	2	GB	nɒnˈklæsɪkəl
+oewn-noncommittal-a	1	GB	ˌnɒnkəˈmɪtl̩
+oewn-noncommittal-a	2	US	ˌnɑnkəˈmɪtl̩
+oewn-nondescript-a	1	GB	ˈnɒndɪskɹɪpt
+oewn-nondescript-a	2	US	nɑndəsˈkɹɪpt
+oewn-nondescript-n	1	GB	ˈnɒndɪskɹɪpt
+oewn-nondescript-n	2	US	nɑndəsˈkɹɪpt
+oewn-none-a	1	GB	nəʊn
+oewn-none-a	2	US	noʊn
+oewn-none-n	1		nəʊn
+oewn-none-r	1		nʌn
+oewn-nones-n	1		nəʊnz
+oewn-nonetheless-r	1		ˌnʌnðəˈlɛs
+oewn-nonfat-a	1	GB	nɒnˈfæt
+oewn-nonfat-a	2	US	nɑnˈfæt
+oewn-nonliterary-a	1		nɒnˈlɪtəɹəɹi
+oewn-nonpareil-a	1	GB	nɒnpəˈɹeɪ(l)
+oewn-nonpareil-a	2	US	ˌnɑnpəˈɹɛl
+oewn-nonpareil-n	1	GB	nɒnpəˈɹeɪ(l)
+oewn-nonpareil-n	2	US	ˌnɑnpəˈɹɛl
+oewn-nonperson-n	1		ˈnɒnpɜː(ɹ)sən
+oewn-nonplus-v	1		nɒnˈplʌs
+oewn-nonplussed-a	1	GB	nɒnˈplʌst
+oewn-nonplussed-a	2	US	nɑnˈplʌst
+oewn-nonsense-a	1	US	ˈnɑnsɛns
+oewn-nonsense-a	2	GB	ˈnɒnsəns
+oewn-nonsense-n	1	US	ˈnɑnsɛns
+oewn-nonsense-n	2	GB	ˈnɒnsəns
+oewn-noodle-n	1		nuːdl̩
+oewn-nook-n	1		nʊk
+oewn-noose-n	1		nuːs
+oewn-noose-v	1		nuːs
+oewn-nopal-n	1	US	noʊˈpɑl
+oewn-nopal-n	2	GB	ˈnəʊpəl
+oewn-noradrenaline-n	1		nɔːɹəˈdɹɛnəlɪn
+oewn-nordic-a	1	GB	ˈnɔː(ɹ).dɪk
+oewn-norethindrone-n	1	US	nɔɹˈɛθ.ɪnˌdɹoʊn
+oewn-norgestrel-n	1	GB	nɔːˈd͡ʒɛ.stɹl̩
+oewn-norgestrel-n	2	US	nɔɹˈd͡ʒɛ.stɹəl
+oewn-noria-n	1	GB	ˈnɔː.ɹɪə
+oewn-noria-n	2	US	ˈnɔɹ.i.ə
+oewn-normal-a	1	GB	ˈnɔːməl
+oewn-normal-a	2	US	ˈnɔɹməl
+oewn-normal-n	1	GB	ˈnɔːməl
+oewn-normal-n	2	US	ˈnɔɹməl
+oewn-normalcy-n	1	US	ˈnɔɹməlsi
+oewn-normalize-v	1	GB	ˈnɔː.mə.laɪz
+oewn-normalize-v	2	US	ˈnɔɹ.mə.laɪz
+oewn-normative-a	1	US	ˈnɔɹmətɪv
+oewn-north-a	1	GB	nɔːθ
+oewn-north-a	2	US	nɔɹθ
+oewn-north-a	3	AU	noːθ
+oewn-north-n	1	GB	nɔːθ
+oewn-north-n	2	US	nɔɹθ
+oewn-north-n	3	AU	noːθ
+oewn-north-r	1	GB	nɔːθ
+oewn-north-r	2	US	nɔɹθ
+oewn-north-r	3	AU	noːθ
+oewn-northerly-a	1	US	ˈnɔɹðɚli
+oewn-northerly-a	2	GB	ˈnɔːðəli
+oewn-northerly-n	1	US	ˈnɔɹðɚli
+oewn-northerly-n	2	GB	ˈnɔːðəli
+oewn-northerly-r	1	US	ˈnɔɹðɚli
+oewn-northerly-r	2	GB	ˈnɔːðəli
+oewn-northern-a	1	GB	ˈnɔːðən
+oewn-northern-a	2	US	ˈnɔɹðɚn
+oewn-northern_pike-n	1	GB	ˈnɔːðən paɪk
+oewn-northern_pike-n	2	US	ˈnɔɹðɚn paɪk
+oewn-northernmost-a	1	GB	ˈnɔː.ðənˌməʊst
+oewn-northernmost-a	2	US	ˈnɔɹ.ðɚnˌmoʊst
+oewn-northward-a	1	US	ˈnɔɹθwɚd
+oewn-northward-a	2	GB	ˈnɔːθwəd
+oewn-northward-n	1	US	ˈnɔɹθwɚd
+oewn-northward-n	2	GB	ˈnɔːθwəd
+oewn-northward-r	1	US	ˈnɔɹθwɚd
+oewn-northward-r	2	GB	ˈnɔːθwəd
+oewn-northwest-a	1	US	nɔɹθˈwɛst
+oewn-northwest-a	2	GB	nɔːθˈwɛst
+oewn-northwest-n	1	US	nɔɹθˈwɛst
+oewn-northwest-n	2	GB	nɔːθˈwɛst
+oewn-northwestern-a	1	GB	nɔːθˈwɛstn̩
+oewn-nose-n	1	GB	nəʊz
+oewn-nose-n	2	US	noʊz
+oewn-nose-v	1	GB	nəʊz
+oewn-nose-v	2	US	noʊz
+oewn-nosebleed-n	1	GB	ˈnəʊzˌbliːd
+oewn-nosebleed-n	2	US	ˈnoʊzˌblid
+oewn-nosedive-n	1		ˈnəʊzdaɪv
+oewn-nosedive-v	1		ˈnəʊzdaɪv
+oewn-nosegay-n	1	GB	ˈnəʊzɡeɪ
+oewn-nosegay-n	2	US	ˈnoʊzˌɡeɪ
+oewn-nosh-n	1	US	nɑʃ
+oewn-nosh-n	2	GB	nɒʃ
+oewn-nosh-v	1	US	nɑʃ
+oewn-nosh-v	2	GB	nɒʃ
+oewn-nosocomial-a	1	GB	ˌnɒsəˈkəʊmi.əl
+oewn-nosocomial-a	2	US	ˌnɑsəˈkoʊmi.əl
+oewn-nostalgia-n	1	GB	nɒˈstaldʒə
+oewn-nostalgia-n	2	US	nɑˈstældʒə
+oewn-nostalgia-n	3	AU	nəˈstældʒə
+oewn-nostril-n	1		ˈnɒstɹɪl
+oewn-nostrum-n	1	GB	ˈnɒs.tɹəm
+oewn-nostrum-n	2	US	ˈnɑ.stɹəm
+oewn-nosy-a	1	GB	ˈnəʊziː
+oewn-nosy-a	2	US	ˈnoʊzi
+oewn-not-r	1		nɒt
+oewn-nota_bene-n	1	GB	ˌnəʊtə ˈbɛneɪ
+oewn-nota_bene-n	2	US	ˌnoʊ.tə ˈbeɪ.ni
+oewn-notable-a	1	GB	ˈnəʊtəbl̩
+oewn-notable-a	2	US	ˈnoʊdəbəl
+oewn-notable-n	1	GB	ˈnəʊtəbl̩
+oewn-notable-n	2	US	ˈnoʊdəbəl
+oewn-notary-n	1		ˈnoʊtəɹi
+oewn-notary_public-n	1		ˈnəʊtəɹi ˈpʌblɪk
+oewn-notation-n	1	US	noʊˈteɪʃən
+oewn-notch-n	1	GB	nɒtʃ
+oewn-notch-n	2	US	nɑtʃ
+oewn-notch-v	1	GB	nɒtʃ
+oewn-notch-v	2	US	nɑtʃ
+oewn-notebook-n	1	GB	ˈnəʊtˌbʊk
+oewn-notebook-n	2	US	ˈnoʊtˌbʊk
+oewn-noted-a	1	GB	ˈnəʊtɪd
+oewn-noted-a	2	US	ˈnoʊtɪd
+oewn-noteworthy-a	1	GB	ˈnəʊtˌwɜːði
+oewn-noteworthy-a	2	US	ˈnoʊtˌwɝði
+oewn-nothing-n	1		ˈnʌθɪŋ
+oewn-nothing-r	1		ˈnʌθɪŋ
+oewn-notice-n	1	GB	ˈnəʊtɪs
+oewn-notice-n	2	US	ˈnoʊtɪs
+oewn-notice-v	1	GB	ˈnəʊtɪs
+oewn-notice-v	2	US	ˈnoʊtɪs
+oewn-noticeable-a	1	US	ˈnoʊtɪsəbl̩
+oewn-noticeable-a	2	GB	ˈnəʊtɪsəbl̩
+oewn-notification-n	1	GB	ˌnəʊtɪfɪˈkeɪʃən
+oewn-notification-n	2	US	ˌnoʊtɪfɪˈkeɪʃən
+oewn-notify-v	1	US	ˈnoʊtɪfaɪ
+oewn-notion-n	1	GB	ˈnəʊʃən
+oewn-notion-n	2	US	ˈnoʊʃən
+oewn-notional-a	1	GB	ˈnəʊʃənəl
+oewn-notoriety-n	1	GB	nəʊ.təˈɹaɪ.ə.ti
+oewn-notoriety-n	2	US	noʊ.tɚ.aɪ.ə.ti
+oewn-notorious-a	1	US	nəˈtɔɹiəs
+oewn-notorious-a	2	GB	nəʊˈtɔːɹɪəs
+oewn-notoriously-r	1	GB	nəˈtɔːɹɪəsli
+oewn-notornis-n	1	GB	nə(ʊ)ˈtɔːnɪs
+oewn-notturno-n	1		nɒˈtʊə(ɹ)nəʊ
+oewn-notwithstanding-r	1	GB	ˌnɒtwɪðˈstændɪŋ
+oewn-notwithstanding-r	2	US	ˌnɑtwɪθˈstændɪŋ
+oewn-nougat-n	1	GB	ˈnʌɡɪt
+oewn-nougat-n	2	US	ˈnuɡət
+oewn-nought-n	1		nɔːt
+oewn-noumenon-n	1	GB	ˈnuːmənɒn
+oewn-noumenon-n	2	US	ˈnumənɑn
+oewn-noun-n	1		naʊn
+oewn-nourish-v	1	US	ˈnʌɹ.ɪʃ
+oewn-nourishment-n	1	US	ˈnɝɪʃmənt
+oewn-nous-n	1	GB	naʊs
+oewn-nous-n	2	US	nuːs
+oewn-nova-n	1	GB	ˈnəʊ.və
+oewn-nova-n	2	US	ˈnoʊ.və
+oewn-novation-n	1		noʊˈveɪʃən
+oewn-novelette-n	1	GB	nɒvəˈlɛt
+oewn-novelist-n	1	US	ˈnɑvəlɪst
+oewn-novelist-n	2	GB	ˈnɒvəlɪst
+oewn-novella-n	1	GB	nəˈvɛlə
+oewn-novella-n	2	US	nəˈvɛlə
+oewn-novelty-n	1	US	ˈnɑvəlti
+oewn-novelty-n	2	GB	ˈnɒvəlti
+oewn-novice-n	1	GB	ˈnɒvɪs
+oewn-novice-n	2	US	ˈnɑːvɪs
+oewn-novitiate-n	1		nəˈvɪʃi.ət
+oewn-now_and_then-r	1		ˌnaʊ ən(d) ˈðɛn
+oewn-nowadays-r	1		ˈnaʊ.ə.deɪz
+oewn-nowhere-n	1	US	ˈnoʊ.(h)wɛɹ
+oewn-nowhere-n	2	GB	ˈnəʊ.wɛə
+oewn-nowhere-r	1	US	ˈnoʊ.(h)wɛɹ
+oewn-nowhere-r	2	GB	ˈnəʊ.wɛə
+oewn-nowise-r	1	US	ˈnoʊwaɪz
+oewn-nowise-r	2	GB	ˈnəʊwaɪz
+oewn-noxious-a	1	GB	ˈnɒkʃəs
+oewn-nozzle-n	1		ˈnɒzəl
+oewn-nth-a	1		ɛnθ
+oewn-nu-n	1	GB	njuː
+oewn-nu-n	2	US	nu
+oewn-nuance-n	1	GB	ˈnjuː.ɑːns
+oewn-nuance-n	2	US	ˈnuː.ɑːns
+oewn-nub-n	1		nʌb
+oewn-nubbin-n	1		ˈnʌbɪn
+oewn-nubile-a	1	US	ˈnubaɪl
+oewn-nubile-a	2	GB	ˈnjuːbaɪl
+oewn-nucha-n	1	GB	ˈnjuːkə
+oewn-nucha-n	2	US	ˈn(j)ukə
+oewn-nuclear-a	1	CA	ˈn(j)ukliɚ
+oewn-nuclear-a	2	GB	ˈnjuː.klɪə
+oewn-nuclear-a	3	US	ˈn(j)ukliɚ
+oewn-nucleic_acid-n	1	GB	njuːˈkliː.ɪk ˈæsɪd
+oewn-nucleic_acid-n	2	US	nuˈkleɪ.ɪk ˈæsɪd
+oewn-nucleon-n	1		ˈn(j)uːkliɒn
+oewn-nucleus-n	1	GB	ˈnjuː.kli.əs
+oewn-nucleus-n	2	US	ˈnuːkli.əs
+oewn-nude-a	1		n(j)uːd
+oewn-nude-n	1		n(j)uːd
+oewn-nudge-n	1		nʌdʒ
+oewn-nudge-v	1		nʌdʒ
+oewn-nudibranch-n	1		ˈnjuːdɪˌbɹæŋk
+oewn-nudism-n	1	GB	njuː.dɪzəm
+oewn-nudist-n	1	US	ˈnudɪst
+oewn-nudity-n	1	GB	ˈnjudɪˌti
+oewn-nudity-n	2	US	ˈnudɪti
+oewn-nudnik-n	1		ˈnʊdnɪk
+oewn-nugatory-a	1		ˈnjuːɡətɔɹi
+oewn-nugget-n	1		ˈnʌɡət
+oewn-nuisance-n	1	US	ˈnusəns
+oewn-nuisance-n	2	GB	ˈnjuːsəns
+oewn-null-a	1		nʌl
+oewn-null-n	1		nʌl
+oewn-nullification-n	1		ˌnʌlɪfɪˈkeɪʃən
+oewn-nullify-v	1		ˈnʌlɪfaɪ
+oewn-numb-a	1		nʌm
+oewn-numb-v	1		nʌm
+oewn-number-n	1		ˈnʌmbə
+oewn-number-v	1	GB	ˈnʌmbə
+oewn-number-v	2	US	ˈnʌmbɚ
+oewn-numbers-n	1	US	ˈnʌmbɚz
+oewn-numbers-n	2	GB	ˈnʌmbəz
+oewn-numen-n	1	GB	ˈnjuː.mən
+oewn-numen-n	2	US	ˈnuː.mən
+oewn-numeral-a	1	GB	ˈnjuːməɹəl
+oewn-numeral-a	2	US	ˈnuməɹəl
+oewn-numeral-n	1	GB	ˈnjuːməɹəl
+oewn-numeral-n	2	US	ˈnuməɹəl
+oewn-numerate-a	1	GB	ˈnjuːməɹeɪt
+oewn-numerate-a	2	US	ˈnuːməɹeɪt
+oewn-numerate-v	1	GB	ˈnjuːməɹeɪt
+oewn-numerate-v	2	US	ˈnuːməɹeɪt
+oewn-numeric-a	1		n(j)uːˈmɛɹɪk
+oewn-numerical-a	1		n(j)uˈmɛɹɪkəl
+oewn-numerous-a	1	US	ˈnuməɹəs
+oewn-numerous-a	2	GB	ˈnjuːməɹəs
+oewn-numinous-a	1	GB	ˈnjuːmɪnəs
+oewn-numinous-a	2	US	ˈn(j)umənəs
+oewn-numismatics-n	1	GB	ˌnjuː.mɪzˈma.tɪks
+oewn-numismatics-n	2	US	ˌnuː.məzˈmæ.tɪks
+oewn-numismatist-n	1		njuːˈmɪzmətɪst
+oewn-nun-n-1	1		nʌn
+oewn-nun-n-2	1		nuːn
+oewn-nuncio-n	1		ˈnʌnʃiˌoʊ
+oewn-nuptial-a	1		ˈnʌp.ʃəl
+oewn-nuptials-n	1	GB	ˈnʌpʃ(ə)ls
+oewn-nuptials-n	2	US	ˈnʌp(t)ʃəls
+oewn-nurse-n	1	GB	nɜːs
+oewn-nurse-n	2	US	nɝs
+oewn-nurse-v	1	GB	nɜːs
+oewn-nurse-v	2	US	nɝs
+oewn-nursery-n	1	GB	ˈnɜːsəɹi
+oewn-nursery-n	2	US	ˈnɝsəɹi
+oewn-nurseryman-n	1	GB	ˈnəːs(ə)ɹɪmən
+oewn-nursing-n	1	US	ˈnɝsɪŋ
+oewn-nursing-n	2	GB	ˈnɜːsɪŋ
+oewn-nurturance-n	1	GB	ˈnəːtʃəɹəns
+oewn-nurturant-a	1	GB	ˈnəːtʃəɹənt
+oewn-nurture-n	1		ˈnɜːɹ.tʃəɹ
+oewn-nurture-v	1		ˈnɜːɹ.tʃəɹ
+oewn-nutcase-n	1	GB	ˈnʌtkeɪs
+oewn-nutmeg-n	1		ˈnʌt.mɛɡ
+oewn-nutrient-a	1	GB	ˈnjuː.tɹi.ənt
+oewn-nutrient-a	2	US	ˈnuː.tɹi.ənt
+oewn-nutrient-n	1	GB	ˈnjuː.tɹi.ənt
+oewn-nutrient-n	2	US	ˈnuː.tɹi.ənt
+oewn-nutrition-n	1	GB	njuːˈtɹɪ.ʃən
+oewn-nutrition-n	2	US	nuˈtɹɪ.ʃən
+oewn-nutritious-a	1	GB	njuːˈtɹɪʃəs
+oewn-nutritious-a	2	US	nuːˈtɹɪʃəs
+oewn-nutritive-a	1	GB	ˈnjuːtɹətɪv
+oewn-nuts-a	1		nʌts
+oewn-nutshell-n	1		ˈnʌt.ʃɛl
+oewn-nutty-a	1		ˈnʌti
+oewn-nuzzle-v	1		nʌzəl
+oewn-nyctalopia-n	1		nɪktəˈloʊpɪə
+oewn-nylon-n	1	GB	ˈnaɪlɒn
+oewn-nylon-n	2	US	ˈnaɪlɑn
+oewn-nymph-n	1		ˈnɪmf
+oewn-nympholepsy-n	1		ˈnɪmfəˌlɛpsi
+oewn-nymphomania-n	1	GB	nɪmfəˈmeɪnɪə
+oewn-nymphomaniac-a	1		ˈnɪɱfoʊ ˈmeɪniæk
+oewn-nymphomaniac-n	1		ˈnɪɱfoʊ ˈmeɪniæk
+oewn-nystagmus-n	1		nɪˈstæɡməs
+oewn-nystatin-n	1	GB	ˈnʌɪ.stət.ɪn
+oewn-nystatin-n	2	US	naɪˈstæt.n̩

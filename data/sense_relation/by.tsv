@@ -1,0 +1,7 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-by_all_means__4.02.00..	antonym		oewn-by_no_means__4.02.00..
+oewn-by_hand__4.02.01..	antonym		oewn-by_machine__4.02.00..
+oewn-bygone__1.28.00..	derivation		oewn-bygone__5.00.00.past.00
+oewn-bypass__1.06.00..	derivation		oewn-bypass__2.32.00..
+oewn-bypass__2.32.00..	other	by_means_of	oewn-bypass__1.06.00..
+oewn-byzantine__3.01.01..	pertainym		oewn-eastern_orthodox_church__1.14.00..

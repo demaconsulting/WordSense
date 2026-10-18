@@ -1,0 +1,573 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-clabber__1.13.00..	derivation		oewn-clabber__2.30.00..
+oewn-clabber__2.30.00..	other	result	oewn-clabber__1.13.00..
+oewn-clack__1.11.00..	derivation		oewn-clack__2.32.01..
+oewn-clack__1.11.00..	derivation		oewn-clack__2.39.00..
+oewn-clack__2.32.01..	other	event	oewn-clack__1.11.00..
+oewn-clack__2.39.00..	other	event	oewn-clack__1.11.00..
+oewn-claforan__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-claim__1.04.00..	derivation		oewn-claim__2.32.02..
+oewn-claim__1.07.02..	derivation		oewn-claim__2.32.02..
+oewn-claim__1.07.02..	derivation		oewn-claim__2.32.03..
+oewn-claim__1.10.00..	derivation		oewn-claim__2.40.00..
+oewn-claim__1.10.02..	derivation		oewn-claim__2.32.00..
+oewn-claim__2.32.00..	antonym		oewn-disclaim__2.32.00..
+oewn-claim__2.32.00..	other	event	oewn-claim__1.10.02..
+oewn-claim__2.32.02..	derivation		oewn-claimant__1.18.00..
+oewn-claim__2.32.02..	other	event	oewn-claim__1.04.00..
+oewn-claim__2.32.02..	other	event	oewn-claim__1.07.02..
+oewn-claim__2.32.03..	antonym		oewn-disclaim__2.32.01..
+oewn-claim__2.32.03..	other	event	oewn-claim__1.07.02..
+oewn-claim__2.40.00..	antonym		oewn-forfeit__2.40.00..
+oewn-claim__2.40.00..	derivation		oewn-claimant__1.18.00..
+oewn-claim__2.40.00..	other	event	oewn-claim__1.10.00..
+oewn-clairvoyance__1.10.00..	derivation		oewn-clairvoyant__5.00.00.extrasensory.00
+oewn-clairvoyance__1.10.00..	derivation		oewn-clairvoyant__5.00.00.prophetic.00
+oewn-clairvoyant__1.18.00..	derivation		oewn-clairvoyant__5.00.00.extrasensory.00
+oewn-clairvoyant__1.18.00..	derivation		oewn-clairvoyant__5.00.00.prophetic.00
+oewn-clam__1.05.00..	derivation		oewn-clam__2.35.00..
+oewn-clam__1.13.00..	derivation		oewn-clam__2.35.00..
+oewn-clam__2.35.00..	other	undergoer	oewn-clam__1.05.00..
+oewn-clamber__1.04.00..	derivation		oewn-clamber__2.38.00..
+oewn-clamber__2.38.00..	other	event	oewn-clamber__1.04.00..
+oewn-clammily__4.02.00..	pertainym		oewn-clammy__5.00.00.wet.01
+oewn-clamminess__1.26.00..	derivation		oewn-clammy__5.00.00.wet.01
+oewn-clamor__1.10.00..	derivation		oewn-clamor__2.32.00..
+oewn-clamor__1.10.00..	derivation		oewn-clamorous__5.00.00.noisy.00
+oewn-clamor__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-clamor__1.11.00..	derivation		oewn-clamorous__5.00.00.noisy.00
+oewn-clamor__2.32.00..	derivation		oewn-clamoring__1.10.00..
+oewn-clamor__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-clamor__2.32.00..	other	event	oewn-clamor__1.10.00..
+oewn-clamor__2.32.03..	derivation		oewn-clamoring__1.10.00..
+oewn-clamor__2.32.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-clamorously__4.02.00..	pertainym		oewn-clamorous__5.00.00.noisy.00
+oewn-clamour__1.10.00..	derivation		oewn-clamour__2.32.00..
+oewn-clamour__1.10.00..	derivation		oewn-clamour__2.32.03..
+oewn-clamour__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-clamour__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-clamour__1.10.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-clamour__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-clamour__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-clamour__2.32.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-clamour__2.32.00..	other	event	oewn-clamour__1.10.00..
+oewn-clamour__2.32.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-clamour__2.32.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-clamour__2.32.03..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-clamour__2.32.03..	other	event	oewn-clamour__1.10.00..
+oewn-clamp__1.06.00..	derivation		oewn-clamp__2.35.00..
+oewn-clamp__2.35.00..	other	instrument	oewn-clamp__1.06.00..
+oewn-clamp_down__2.30.10..	derivation		oewn-clampdown__1.04.00..
+oewn-clang__1.11.00..	derivation		oewn-clang__2.39.00..
+oewn-clang__2.39.00..	derivation		oewn-clanger__1.04.00..
+oewn-clang__2.39.00..	derivation		oewn-clangor__1.11.00..
+oewn-clang__2.39.00..	other	event	oewn-clang__1.11.00..
+oewn-clang__2.39.00..	other	event	oewn-clangor__1.11.00..
+oewn-clangor__1.11.00..	derivation		oewn-clangor__2.39.00..
+oewn-clangor__1.11.00..	derivation		oewn-clangor__2.39.01..
+oewn-clangor__1.11.00..	derivation		oewn-clangorous__5.00.00.noisy.00
+oewn-clangor__1.11.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-clangor__2.39.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-clangor__2.39.00..	other	event	oewn-clangor__1.11.00..
+oewn-clangor__2.39.01..	other	event	oewn-clangor__1.11.00..
+oewn-clangour__1.11.00..	derivation		oewn-clangour__2.39.00..
+oewn-clangour__1.11.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-clangour__1.11.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-clangour__1.11.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-clangour__2.39.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-clangour__2.39.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-clangour__2.39.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-clangour__2.39.00..	other	event	oewn-clangour__1.11.00..
+oewn-clank__1.11.00..	derivation		oewn-clank__2.39.00..
+oewn-clank__2.39.00..	other	event	oewn-clank__1.11.00..
+oewn-clannish__5.00.00.private.00	derivation		oewn-clannishness__1.07.00..
+oewn-clannishly__4.02.00..	pertainym		oewn-clannish__5.00.00.private.00
+oewn-clap__1.11.00..	derivation		oewn-clap__2.35.00..
+oewn-clap__1.11.01..	derivation		oewn-clap__2.35.00..
+oewn-clap__2.29.00..	derivation		oewn-clapper__1.18.00..
+oewn-clap__2.29.00..	derivation		oewn-clapping__1.10.00..
+oewn-clap__2.29.00..	other	agent	oewn-clapper__1.18.00..
+oewn-clap__2.32.00..	derivation		oewn-clapper__1.18.00..
+oewn-clap__2.32.00..	derivation		oewn-clapping__1.10.00..
+oewn-clap__2.32.00..	other	agent	oewn-clapper__1.18.00..
+oewn-clap__2.35.00..	derivation		oewn-clapper__1.06.00..
+oewn-clap__2.35.00..	other	by_means_of	oewn-clapper__1.06.00..
+oewn-clap__2.35.00..	other	event	oewn-clap__1.11.00..
+oewn-clap__2.35.00..	other	event	oewn-clap__1.11.01..
+oewn-clapboard__1.27.00..	derivation		oewn-clapboard__2.35.00..
+oewn-clapboard__2.35.00..	other	uses	oewn-clapboard__1.27.00..
+oewn-claret__1.13.00..	derivation		oewn-claret__2.34.00..
+oewn-claret__2.34.00..	other	undergoer	oewn-claret__1.13.00..
+oewn-clarification__1.04.02..	derivation		oewn-clarify__2.30.02..
+oewn-clarification__1.10.00..	derivation		oewn-clarify__2.32.00..
+oewn-clarify__2.30.02..	other	event	oewn-clarification__1.04.02..
+oewn-clarify__2.32.00..	antonym		oewn-obfuscate__2.32.00..
+oewn-clarify__2.32.00..	other	by_means_of	oewn-clarification__1.10.00..
+oewn-clarinet__1.06.00..	derivation		oewn-clarinetist__1.18.00..
+oewn-clarinet__1.06.00..	derivation		oewn-clarinettist__1.18.00..
+oewn-clarion__1.06.00..	derivation		oewn-clarion__2.32.00..
+oewn-clarion__1.06.00..	derivation		oewn-clarion__2.36.00..
+oewn-clarion__2.32.00..	other	instrument	oewn-clarion__1.06.00..
+oewn-clarion__2.32.00..	other	undergoer	oewn-clarion__1.06.00..
+oewn-clarion__2.36.00..	other	undergoer	oewn-clarion__1.06.00..
+oewn-clarity__1.07.00..	antonym		oewn-opacity__1.07.00..
+oewn-clarity__1.07.00..	derivation		oewn-clear__3.00.02..
+oewn-clarity__1.07.00..	derivation		oewn-clear__3.00.03..
+oewn-clarity__1.07.00..	derivation		oewn-clear__5.00.00.unobstructed.00
+oewn-clarity__1.07.00..	derivation		oewn-clear__5.00.01.pure.02
+oewn-clarity__1.07.01..	antonym		oewn-obscurity__1.07.02..
+oewn-clarity__1.07.01..	derivation		oewn-clear__3.00.00..
+oewn-clarity__1.07.01..	derivation		oewn-clear__3.00.04..
+oewn-clarity__1.07.01..	derivation		oewn-clear__5.00.00.legible.00
+oewn-clash__1.26.00..	derivation		oewn-clash__2.32.00..
+oewn-clash__1.26.00..	derivation		oewn-clash__2.42.00..
+oewn-clash__2.32.00..	other	state	oewn-clash__1.26.00..
+oewn-clash__2.42.00..	other	state	oewn-clash__1.26.00..
+oewn-clasp__1.04.00..	derivation		oewn-clasp__2.35.00..
+oewn-clasp__1.04.00..	derivation		oewn-clasp__2.35.01..
+oewn-clasp__1.06.00..	derivation		oewn-clasp__2.35.02..
+oewn-clasp__1.06.00..	derivation		oewn-clasp__2.35.03..
+oewn-clasp__2.35.00..	antonym		oewn-unclasp__2.35.00..
+oewn-clasp__2.35.00..	other	event	oewn-clasp__1.04.00..
+oewn-clasp__2.35.01..	antonym		oewn-unclasp__2.35.00..
+oewn-clasp__2.35.01..	other	event	oewn-clasp__1.04.00..
+oewn-clasp__2.35.02..	other	instrument	oewn-clasp__1.06.00..
+oewn-clasp__2.35.03..	other	instrument	oewn-clasp__1.06.00..
+oewn-class__1.07.00..	derivation		oewn-classy__5.00.00.stylish.00
+oewn-class__1.14.00..	derivation		oewn-class__2.31.00..
+oewn-class__1.14.00..	derivation		oewn-classify__2.31.00..
+oewn-class__1.14.00..	derivation		oewn-classify__2.31.01..
+oewn-class__1.14.01..	derivation		oewn-classify__2.31.00..
+oewn-class__1.14.01..	derivation		oewn-classify__2.31.01..
+oewn-class__1.14.02..	derivation		oewn-classify__2.31.00..
+oewn-class__1.14.02..	derivation		oewn-classify__2.31.01..
+oewn-class__1.14.05..	derivation		oewn-classify__2.31.00..
+oewn-class__1.14.05..	derivation		oewn-classify__2.31.01..
+oewn-class__2.31.00..	other	result	oewn-class__1.14.00..
+oewn-classical__3.00.00..	antonym		oewn-nonclassical__3.00.00..
+oewn-classical__3.01.00..	pertainym		oewn-classics__1.09.00..
+oewn-classically__4.02.00..	pertainym		oewn-classical__3.00.00..
+oewn-classicise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-classicise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-classicism__1.09.00..	antonym		oewn-romanticism__1.09.00..
+oewn-classicism__1.09.00..	derivation		oewn-classicist__1.18.00..
+oewn-classicism__1.09.00..	derivation		oewn-classicistic__3.01.00..
+oewn-classicist__1.18.00..	antonym		oewn-romanticist__1.18.00..
+oewn-classicist__1.18.01..	derivation		oewn-classics__1.09.00..
+oewn-classicistic__3.01.00..	pertainym		oewn-classicism__1.09.00..
+oewn-classicize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-classification__1.04.00..	derivation		oewn-classify__2.31.00..
+oewn-classification__1.04.00..	derivation		oewn-classify__2.31.01..
+oewn-classification__1.04.01..	antonym		oewn-declassification__1.04.00..
+oewn-classification__1.04.01..	derivation		oewn-classify__2.41.00..
+oewn-classification__1.09.00..	derivation		oewn-classify__2.31.00..
+oewn-classification__1.09.00..	derivation		oewn-classify__2.31.01..
+oewn-classification__1.14.00..	derivation		oewn-classify__2.31.00..
+oewn-classification__1.14.00..	derivation		oewn-classify__2.31.01..
+oewn-classificatory__3.01.00..	derivation		oewn-classify__2.31.00..
+oewn-classificatory__3.01.00..	derivation		oewn-classify__2.31.01..
+oewn-classificatory__3.01.00..	pertainym		oewn-classification__1.04.00..
+oewn-classified__3.00.01..	antonym		oewn-unclassified__3.00.01..
+oewn-classified__3.00.02..	antonym		oewn-unclassified__3.00.02..
+oewn-classifier__1.10.00..	derivation		oewn-classify__2.31.01..
+oewn-classifier__1.18.00..	derivation		oewn-classify__2.31.00..
+oewn-classifier__1.18.00..	derivation		oewn-classify__2.31.01..
+oewn-classify__2.31.00..	other	agent	oewn-classifier__1.18.00..
+oewn-classify__2.31.00..	other	destination	oewn-class__1.14.02..
+oewn-classify__2.31.00..	other	event	oewn-classification__1.04.00..
+oewn-classify__2.31.00..	other	event	oewn-classification__1.09.00..
+oewn-classify__2.31.00..	other	result	oewn-class__1.14.00..
+oewn-classify__2.31.00..	other	result	oewn-class__1.14.05..
+oewn-classify__2.31.00..	other	result	oewn-classification__1.14.00..
+oewn-classify__2.31.00..	other	undergoer	oewn-class__1.14.01..
+oewn-classify__2.31.00..	other	undergoer	oewn-classification__1.14.00..
+oewn-classify__2.31.01..	other	agent	oewn-classifier__1.18.00..
+oewn-classify__2.31.01..	other	by_means_of	oewn-classifier__1.10.00..
+oewn-classify__2.31.01..	other	destination	oewn-class__1.14.02..
+oewn-classify__2.31.01..	other	event	oewn-classification__1.04.00..
+oewn-classify__2.31.01..	other	event	oewn-classification__1.09.00..
+oewn-classify__2.31.01..	other	result	oewn-classification__1.14.00..
+oewn-classify__2.31.01..	other	undergoer	oewn-class__1.14.00..
+oewn-classify__2.31.01..	other	undergoer	oewn-class__1.14.01..
+oewn-classify__2.31.01..	other	undergoer	oewn-classification__1.14.00..
+oewn-classify__2.31.01..	other	uses	oewn-class__1.14.05..
+oewn-classify__2.41.00..	antonym		oewn-declassify__2.41.00..
+oewn-classify__2.41.00..	other	by_means_of	oewn-classification__1.04.01..
+oewn-classify__2.41.00..	other	event	oewn-classification__1.04.01..
+oewn-clast__1.17.00..	derivation		oewn-clastic__5.00.00.disintegrative.00
+oewn-clastic__5.00.00.disintegrative.00	derivation		oewn-clastic_rock__1.17.00..
+oewn-clatter__1.11.00..	derivation		oewn-clatter__2.39.00..
+oewn-clatter__2.39.00..	other	event	oewn-clatter__1.11.00..
+oewn-clausal__3.01.00..	derivation		oewn-clause__1.10.00..
+oewn-clausal__3.01.00..	pertainym		oewn-clause__1.10.00..
+oewn-claw__1.05.00..	derivation		oewn-claw__2.35.00..
+oewn-claw__1.05.01..	derivation		oewn-claw__2.35.00..
+oewn-claw__1.05.02..	derivation		oewn-claw__2.35.00..
+oewn-claw__2.35.00..	other	by_means_of	oewn-claw__1.05.00..
+oewn-claw__2.35.00..	other	by_means_of	oewn-claw__1.05.01..
+oewn-claw__2.35.00..	other	by_means_of	oewn-claw__1.05.02..
+oewn-claxon__1.06.00..	derivation		oewn-claxon__2.32.00..
+oewn-claxon__1.06.00..	derivation		oewn-claxon__2.39.00..
+oewn-claxon__2.32.00..	other	instrument	oewn-claxon__1.06.00..
+oewn-claxon__2.39.00..	other	instrument	oewn-claxon__1.06.00..
+oewn-clean__2.29.00..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__2.30.00..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__2.35.00..	antonym		oewn-dirty__2.35.00..
+oewn-clean__2.35.00..	derivation		oewn-cleaner__1.06.00..
+oewn-clean__2.35.00..	derivation		oewn-cleaner__1.18.00..
+oewn-clean__2.35.00..	derivation		oewn-cleaner__1.18.01..
+oewn-clean__2.35.00..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__2.35.00..	other	agent	oewn-cleaner__1.18.00..
+oewn-clean__2.35.00..	other	agent	oewn-cleaner__1.18.01..
+oewn-clean__2.35.00..	other	material	oewn-cleaner__1.06.00..
+oewn-clean__2.35.01..	derivation		oewn-cleaner__1.18.00..
+oewn-clean__2.35.01..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__2.35.01..	other	agent	oewn-cleaner__1.18.00..
+oewn-clean__2.35.02..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__2.42.00..	derivation		oewn-cleaning__1.04.00..
+oewn-clean__3.00.01..	antonym		oewn-dirty__3.00.01..
+oewn-clean__3.00.01..	derivation		oewn-cleanness__1.26.00..
+oewn-clean__3.00.02..	antonym		oewn-dirty__3.00.02..
+oewn-clean__3.00.03..	antonym		oewn-dirty__3.00.03..
+oewn-clean__3.00.03..	derivation		oewn-cleanness__1.26.00..
+oewn-clean__3.00.04..	antonym		oewn-unclean__3.00.00..
+oewn-clean__5.00.00.antiseptic.00	derivation		oewn-cleanness__1.26.00..
+oewn-clean__5.00.00.fair.03	derivation		oewn-cleanness__1.26.02..
+oewn-clean__5.00.00.moral.00	derivation		oewn-cleanness__1.26.02..
+oewn-clean__5.00.00.pure.02	derivation		oewn-cleanness__1.26.00..
+oewn-clean_up__2.29.00..	derivation		oewn-cleanup__1.04.00..
+oewn-clean_up__2.40.04..	derivation		oewn-cleanup__1.21.00..
+oewn-cleanliness__1.07.00..	antonym		oewn-uncleanliness__1.07.00..
+oewn-cleanliness__1.07.00..	derivation		oewn-cleanly__5.00.00.clean.01
+oewn-cleanly__4.02.00..	pertainym		oewn-clean__5.00.00.adroit.00
+oewn-cleanly__4.02.02..	pertainym		oewn-clean__3.00.01..
+oewn-cleanness__1.26.00..	antonym		oewn-dirtiness__1.26.00..
+oewn-cleanse__2.29.00..	derivation		oewn-cleanser__1.06.00..
+oewn-cleanse__2.29.00..	derivation		oewn-cleansing__1.04.00..
+oewn-cleanse__2.29.00..	other	material	oewn-cleanser__1.06.00..
+oewn-clear--cut__5.00.00.clear.00	derivation		oewn-clearcutness__1.07.00..
+oewn-clear--cut__5.00.00.distinct.00	derivation		oewn-clearcutness__1.07.00..
+oewn-clear__1.15.00..	derivation		oewn-clear__2.30.01..
+oewn-clear__1.15.00..	derivation		oewn-clear__2.30.02..
+oewn-clear__1.15.00..	derivation		oewn-clear__2.30.09..
+oewn-clear__1.15.00..	derivation		oewn-clear__5.00.00.unobstructed.00
+oewn-clear__1.26.00..	derivation		oewn-clear__2.32.00..
+oewn-clear__1.26.00..	derivation		oewn-clear__5.00.00.innocent.00
+oewn-clear__2.30.01..	derivation		oewn-clearing__1.15.00..
+oewn-clear__2.30.01..	other	location	oewn-clear__1.15.00..
+oewn-clear__2.30.02..	also		oewn-clear_away__2.30.00..
+oewn-clear__2.30.02..	also		oewn-clear_off__2.30.00..
+oewn-clear__2.30.02..	other	location	oewn-clear__1.15.00..
+oewn-clear__2.30.03..	derivation		oewn-clearing__1.04.01..
+oewn-clear__2.30.09..	derivation		oewn-clearing__1.15.00..
+oewn-clear__2.30.09..	other	location	oewn-clear__1.15.00..
+oewn-clear__2.32.00..	derivation		oewn-clearing__1.04.00..
+oewn-clear__2.32.00..	other	state	oewn-clear__1.26.00..
+oewn-clear__2.32.01..	derivation		oewn-clearance__1.04.00..
+oewn-clear__2.32.01..	other	uses	oewn-clearance__1.04.00..
+oewn-clear__2.38.00..	derivation		oewn-clearance__1.07.00..
+oewn-clear__2.38.00..	other	event	oewn-clearance__1.07.00..
+oewn-clear__2.40.12..	derivation		oewn-clearing__1.04.01..
+oewn-clear__3.00.00..	antonym		oewn-unclear__3.00.00..
+oewn-clear__3.00.00..	derivation		oewn-clearness__1.07.01..
+oewn-clear__3.00.02..	antonym		oewn-opaque__3.00.00..
+oewn-clear__3.00.02..	derivation		oewn-clearness__1.07.02..
+oewn-clear__3.00.03..	antonym		oewn-cloudy__3.00.00..
+oewn-clear__3.00.03..	derivation		oewn-clearness__1.07.02..
+oewn-clear__3.00.04..	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.clearheaded.00	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.discerning.00	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.distinct.00	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.innocent.00	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.legible.00	derivation		oewn-clearness__1.07.01..
+oewn-clear__5.00.00.perfect.00	derivation		oewn-clearness__1.07.02..
+oewn-clear__5.00.01.pure.02	derivation		oewn-clearness__1.07.02..
+oewn-clear_up__2.43.00..	antonym		oewn-overcast__2.43.00..
+oewn-cleared__3.00.00..	antonym		oewn-uncleared__3.00.00..
+oewn-clearheaded__3.00.00..	antonym		oewn-confused__3.00.00..
+oewn-clearly__4.02.00..	pertainym		oewn-clear__3.00.00..
+oewn-clearly__4.02.01..	pertainym		oewn-clear__3.00.00..
+oewn-clearly__4.02.03..	pertainym		oewn-clear__5.00.00.distinct.00
+oewn-clearness__1.07.01..	antonym		oewn-unclearness__1.07.00..
+oewn-cleat__1.06.01..	derivation		oewn-cleat__2.35.00..
+oewn-cleat__1.06.02..	derivation		oewn-cleat__2.40.00..
+oewn-cleat__2.35.00..	other	by_means_of	oewn-cleat__1.06.01..
+oewn-cleat__2.40.00..	other	uses	oewn-cleat__1.06.02..
+oewn-cleavage__1.04.00..	derivation		oewn-cleave__2.35.00..
+oewn-cleave__2.35.00..	derivation		oewn-cleaver__1.06.00..
+oewn-cleave__2.35.00..	derivation		oewn-cleft__1.25.00..
+oewn-cleave__2.35.00..	other	instrument	oewn-cleaver__1.06.00..
+oewn-cleave__2.35.01..	derivation		oewn-cleft__1.25.00..
+oewn-cleistogamic__3.01.00..	pertainym		oewn-cleistogamy__1.11.00..
+oewn-cleistogamous__3.01.00..	pertainym		oewn-cleistogamy__1.11.00..
+oewn-clemency__1.04.01..	derivation		oewn-clement__3.00.01..
+oewn-clemency__1.26.00..	derivation		oewn-clement__3.00.02..
+oewn-clement__3.00.01..	antonym		oewn-inclement__3.00.01..
+oewn-clement__3.00.02..	antonym		oewn-inclement__3.00.02..
+oewn-clench__1.04.00..	derivation		oewn-clench__2.35.01..
+oewn-clench__2.35.01..	other	event	oewn-clench__1.04.00..
+oewn-clergy__1.14.00..	antonym		oewn-laity__1.14.00..
+oewn-clergy__1.14.00..	derivation		oewn-clerical__3.01.00..
+oewn-clergyman__1.18.00..	antonym		oewn-layman__1.18.00..
+oewn-clerical__3.01.00..	pertainym		oewn-clergy__1.14.00..
+oewn-clerical__3.01.01..	derivation		oewn-clerk__1.18.00..
+oewn-clerical__3.01.01..	pertainym		oewn-clerk__1.18.00..
+oewn-clerical__5.00.00.white-collar.00	derivation		oewn-clerk__1.18.00..
+oewn-clerk__1.18.00..	derivation		oewn-clerk__2.41.00..
+oewn-clerk__1.18.00..	derivation		oewn-clerkship__1.04.00..
+oewn-clerk__1.18.01..	derivation		oewn-clerkship__1.04.00..
+oewn-clerk__2.41.00..	derivation		oewn-clerking__1.04.00..
+oewn-clerk__2.41.00..	other	agent	oewn-clerk__1.18.00..
+oewn-clever__5.00.00.adroit.00	derivation		oewn-cleverness__1.07.00..
+oewn-clever__5.00.00.intelligent.00	derivation		oewn-cleverness__1.09.00..
+oewn-cleverly__4.02.00..	pertainym		oewn-clever__5.00.00.smart.00
+oewn-clew__1.14.00..	derivation		oewn-clew__2.35.00..
+oewn-clew__2.35.00..	other	result	oewn-clew__1.14.00..
+oewn-click__1.04.00..	derivation		oewn-click__2.38.00..
+oewn-click__1.10.00..	derivation		oewn-click__2.32.01..
+oewn-click__1.11.00..	derivation		oewn-click__2.38.00..
+oewn-click__1.11.00..	derivation		oewn-click__2.39.00..
+oewn-click__2.32.01..	other	event	oewn-click__1.10.00..
+oewn-click__2.38.00..	other	event	oewn-click__1.04.00..
+oewn-click__2.38.00..	other	event	oewn-click__1.11.00..
+oewn-click__2.39.00..	other	event	oewn-click__1.11.00..
+oewn-client--server__3.01.00..	pertainym		oewn-computer_system__1.06.00..
+oewn-climactic__3.00.00..	derivation		oewn-climax__1.04.00..
+oewn-climactic__3.00.00..	derivation		oewn-climax__1.10.00..
+oewn-climactic__3.00.00..	derivation		oewn-climax__1.11.00..
+oewn-climactic__3.00.00..	derivation		oewn-climax__1.26.00..
+oewn-climate__1.26.00..	derivation		oewn-climatic__3.01.00..
+oewn-climate__1.26.00..	derivation		oewn-climatical__3.01.00..
+oewn-climatic__3.01.00..	pertainym		oewn-climate__1.26.00..
+oewn-climatical__3.01.00..	pertainym		oewn-climate__1.26.00..
+oewn-climatically__4.02.00..	pertainym		oewn-climatic__3.01.00..
+oewn-climax__1.10.00..	derivation		oewn-climax__2.30.00..
+oewn-climax__1.11.00..	derivation		oewn-climax__2.30.00..
+oewn-climax__2.30.00..	other	event	oewn-climax__1.10.00..
+oewn-climax__2.30.00..	other	event	oewn-climax__1.11.00..
+oewn-climb__1.04.00..	derivation		oewn-climb__2.38.00..
+oewn-climb__1.11.00..	derivation		oewn-climb__2.30.00..
+oewn-climb__1.17.00..	derivation		oewn-climb__2.38.00..
+oewn-climb__1.17.00..	derivation		oewn-climb__2.38.06..
+oewn-climb__2.30.00..	other	event	oewn-climb__1.11.00..
+oewn-climb__2.30.01..	derivation		oewn-climbing__1.11.00..
+oewn-climb__2.30.03..	derivation		oewn-climber__1.18.01..
+oewn-climb__2.30.03..	other	agent	oewn-climber__1.18.01..
+oewn-climb__2.38.00..	also		oewn-climb_down__2.38.00..
+oewn-climb__2.38.00..	also		oewn-climb_on__2.38.00..
+oewn-climb__2.38.00..	derivation		oewn-climber__1.06.00..
+oewn-climb__2.38.00..	derivation		oewn-climber__1.18.00..
+oewn-climb__2.38.00..	derivation		oewn-climber__1.18.02..
+oewn-climb__2.38.00..	derivation		oewn-climber__1.20.00..
+oewn-climb__2.38.00..	derivation		oewn-climbing__1.11.00..
+oewn-climb__2.38.00..	other	agent	oewn-climber__1.18.00..
+oewn-climb__2.38.00..	other	agent	oewn-climber__1.18.02..
+oewn-climb__2.38.00..	other	event	oewn-climb__1.04.00..
+oewn-climb__2.38.00..	other	instrument	oewn-climber__1.06.00..
+oewn-climb__2.38.00..	other	undergoer	oewn-climb__1.17.00..
+oewn-climb__2.38.06..	other	undergoer	oewn-climb__1.17.00..
+oewn-clinch__1.04.01..	derivation		oewn-clinch__2.35.02..
+oewn-clinch__1.06.01..	derivation		oewn-clinch__2.35.01..
+oewn-clinch__2.32.00..	derivation		oewn-clincher__1.09.00..
+oewn-clinch__2.32.00..	other	by_means_of	oewn-clincher__1.09.00..
+oewn-clinch__2.35.01..	other	by_means_of	oewn-clinch__1.06.01..
+oewn-clinch__2.35.02..	other	event	oewn-clinch__1.04.01..
+oewn-clinic__1.06.00..	derivation		oewn-clinical__3.01.00..
+oewn-clinic__1.10.00..	derivation		oewn-clinical__3.01.00..
+oewn-clinic__1.14.00..	derivation		oewn-clinical__3.01.00..
+oewn-clinical__3.01.00..	pertainym		oewn-clinic__1.14.00..
+oewn-clinically__4.02.00..	pertainym		oewn-clinical__3.01.00..
+oewn-clink__1.11.00..	derivation		oewn-clink__2.39.00..
+oewn-clink__1.11.00..	derivation		oewn-clink__2.39.01..
+oewn-clink__2.39.00..	other	event	oewn-clink__1.11.00..
+oewn-clink__2.39.01..	other	event	oewn-clink__1.11.00..
+oewn-clinker__1.17.00..	derivation		oewn-clinker__2.30.00..
+oewn-clinker__2.30.00..	other	result	oewn-clinker__1.17.00..
+oewn-clinoril__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-clip__1.04.00..	derivation		oewn-clip__2.35.03..
+oewn-clip__1.04.00..	derivation		oewn-clip__2.35.04..
+oewn-clip__1.06.01..	derivation		oewn-clip__2.35.01..
+oewn-clip__2.35.01..	antonym		oewn-unclip__2.35.00..
+oewn-clip__2.35.01..	other	instrument	oewn-clip__1.06.01..
+oewn-clip__2.35.03..	derivation		oewn-clipper__1.06.00..
+oewn-clip__2.35.03..	derivation		oewn-clipper__1.06.01..
+oewn-clip__2.35.03..	derivation		oewn-clipping__1.04.00..
+oewn-clip__2.35.03..	other	event	oewn-clip__1.04.00..
+oewn-clip__2.35.03..	other	instrument	oewn-clipper__1.06.00..
+oewn-clip__2.35.03..	other	instrument	oewn-clipper__1.06.01..
+oewn-clip__2.35.04..	derivation		oewn-clipper__1.06.01..
+oewn-clip__2.35.04..	derivation		oewn-clipping__1.04.02..
+oewn-clip__2.35.04..	other	event	oewn-clip__1.04.00..
+oewn-clip__2.35.04..	other	instrument	oewn-clipper__1.06.01..
+oewn-cliquish__5.00.00.private.00	derivation		oewn-cliquishness__1.07.00..
+oewn-cliquishly__4.02.00..	pertainym		oewn-cliquish__5.00.00.private.00
+oewn-clitoral__3.01.00..	derivation		oewn-clitoris__1.08.00..
+oewn-clitoral__3.01.00..	pertainym		oewn-clitoris__1.08.00..
+oewn-clitoric__3.01.00..	derivation		oewn-clitoris__1.08.00..
+oewn-clitoric__3.01.00..	pertainym		oewn-clitoris__1.08.00..
+oewn-cloak__1.06.01..	derivation		oewn-cloak__2.39.00..
+oewn-cloak__2.39.00..	other	by_means_of	oewn-cloak__1.06.01..
+oewn-clock__1.06.00..	derivation		oewn-clock__2.30.00..
+oewn-clock__2.30.00..	derivation		oewn-clocking__1.28.00..
+oewn-clock__2.30.00..	other	instrument	oewn-clock__1.06.00..
+oewn-clock_in__2.32.00..	antonym		oewn-clock_out__2.32.00..
+oewn-clockwise__3.00.00..	antonym		oewn-counterclockwise__3.00.00..
+oewn-clockwise__4.02.00..	antonym		oewn-counterclockwise__4.02.00..
+oewn-clockwise__4.02.00..	pertainym		oewn-clockwise__3.00.00..
+oewn-clog__1.04.00..	derivation		oewn-clog__2.36.00..
+oewn-clog__1.06.00..	derivation		oewn-clog__2.30.02..
+oewn-clog__1.06.00..	derivation		oewn-clog__2.35.00..
+oewn-clog__2.30.02..	other	by_means_of	oewn-clog__1.06.00..
+oewn-clog__2.35.00..	antonym		oewn-unclog__2.35.00..
+oewn-clog__2.35.00..	other	by_means_of	oewn-clog__1.06.00..
+oewn-clog__2.36.00..	other	event	oewn-clog__1.04.00..
+oewn-cloisonne__1.06.00..	derivation		oewn-cloisonne__5.00.00.adorned.00
+oewn-cloister__1.06.00..	derivation		oewn-cloister__2.30.00..
+oewn-cloister__1.06.00..	derivation		oewn-cloistral__5.00.00.unworldly.00
+oewn-cloister__1.06.01..	derivation		oewn-cloister__2.42.00..
+oewn-cloister__2.30.00..	other	location	oewn-cloister__1.06.00..
+oewn-cloister__2.42.00..	other	location	oewn-cloister__1.06.01..
+oewn-clomid__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-clonal__3.01.00..	pertainym		oewn-clone__1.14.00..
+oewn-clone__1.14.00..	derivation		oewn-clone__2.36.00..
+oewn-clone__2.36.00..	other	result	oewn-clone__1.14.00..
+oewn-clonic__3.01.00..	derivation		oewn-clonus__1.26.00..
+oewn-clonic__3.01.00..	pertainym		oewn-clonus__1.26.00..
+oewn-close__1.04.00..	derivation		oewn-close__2.42.00..
+oewn-close__1.28.00..	derivation		oewn-close__2.41.00..
+oewn-close__1.28.00..	derivation		oewn-close__2.41.01..
+oewn-close__1.28.00..	derivation		oewn-close__2.42.00..
+oewn-close__2.35.00..	antonym		oewn-open__2.35.00..
+oewn-close__2.35.00..	derivation		oewn-closing__1.04.01..
+oewn-close__2.35.00..	derivation		oewn-closure__1.04.01..
+oewn-close__2.35.06..	antonym		oewn-open__2.35.06..
+oewn-close__2.35.06..	derivation		oewn-closing__1.04.01..
+oewn-close__2.35.07..	derivation		oewn-closing__1.04.01..
+oewn-close__2.35.07..	derivation		oewn-closure__1.04.01..
+oewn-close__2.35.11..	derivation		oewn-closing__1.04.01..
+oewn-close__2.35.11..	derivation		oewn-closure__1.04.01..
+oewn-close__2.35.15..	derivation		oewn-closing__1.04.03..
+oewn-close__2.38.15..	derivation		oewn-closing__1.04.03..
+oewn-close__2.38.15..	derivation		oewn-closure__1.04.02..
+oewn-close__2.39.10..	antonym		oewn-open__2.39.10..
+oewn-close__2.39.10..	derivation		oewn-closing__1.04.01..
+oewn-close__2.39.10..	derivation		oewn-closure__1.04.00..
+oewn-close__2.41.00..	antonym		oewn-open__2.41.00..
+oewn-close__2.41.00..	derivation		oewn-closer__1.18.01..
+oewn-close__2.41.00..	derivation		oewn-closing__1.04.00..
+oewn-close__2.41.00..	derivation		oewn-closure__1.04.00..
+oewn-close__2.41.00..	other	agent	oewn-closer__1.18.01..
+oewn-close__2.41.00..	other	event	oewn-close__1.28.00..
+oewn-close__2.41.01..	antonym		oewn-open__2.41.01..
+oewn-close__2.41.01..	derivation		oewn-closing__1.04.02..
+oewn-close__2.41.01..	derivation		oewn-closure__1.04.00..
+oewn-close__2.41.01..	other	event	oewn-close__1.28.00..
+oewn-close__2.41.15..	derivation		oewn-closing__1.04.03..
+oewn-close__2.42.00..	derivation		oewn-closing__1.04.02..
+oewn-close__2.42.00..	derivation		oewn-closing__1.10.00..
+oewn-close__2.42.00..	other	event	oewn-close__1.04.00..
+oewn-close__2.42.00..	other	event	oewn-close__1.28.00..
+oewn-close__3.00.01..	antonym		oewn-distant__3.00.01..
+oewn-close__3.00.01..	derivation		oewn-closeness__1.07.00..
+oewn-close__3.00.02..	antonym		oewn-distant__3.00.02..
+oewn-close__3.00.02..	derivation		oewn-closeness__1.12.00..
+oewn-close__3.00.05..	derivation		oewn-closeness__1.07.00..
+oewn-close__5.00.00.stingy.00	derivation		oewn-closeness__1.07.04..
+oewn-close__5.00.00.uncommunicative.00	derivation		oewn-closeness__1.07.01..
+oewn-close_down__2.41.00..	derivation		oewn-closedown__1.04.00..
+oewn-close_out__2.40.00..	derivation		oewn-closeout__1.04.00..
+oewn-close_up__2.32.00..	antonym		oewn-open_up__2.32.00..
+oewn-closed--captioned__3.44.00..	participle		oewn-caption__2.40.00..
+oewn-closed--circuit__3.01.00..	pertainym		oewn-closed_circuit__1.06.00..
+oewn-closed__3.00.01..	antonym		oewn-open__3.00.02..
+oewn-closed__3.00.02..	antonym		oewn-open__3.00.04..
+oewn-closed__3.00.03..	antonym		oewn-open__3.00.08..
+oewn-closed_chain__1.17.00..	antonym		oewn-open_chain__1.17.00..
+oewn-closed_circuit__1.06.00..	antonym		oewn-open_circuit__1.06.00..
+oewn-closed_interval__1.09.00..	antonym		oewn-open_interval__1.09.00..
+oewn-closely__4.02.00..	pertainym		oewn-close__3.00.01..
+oewn-closely__4.02.01..	pertainym		oewn-close__3.00.02..
+oewn-closely__4.02.02..	pertainym		oewn-close__5.00.00.careful.00
+oewn-closeness__1.07.01..	antonym		oewn-openness__1.07.01..
+oewn-closet__1.06.00..	derivation		oewn-closet__2.35.00..
+oewn-closet__2.35.00..	other	location	oewn-closet__1.06.00..
+oewn-closing__1.04.01..	antonym		oewn-opening__1.04.01..
+oewn-closing__3.00.00..	antonym		oewn-opening__3.00.00..
+oewn-closure__1.10.00..	derivation		oewn-closure__2.30.00..
+oewn-closure__2.30.00..	other	by_means_of	oewn-closure__1.10.00..
+oewn-clot__1.08.00..	derivation		oewn-clot__2.30.01..
+oewn-clot__1.08.00..	derivation		oewn-clot__2.30.02..
+oewn-clot__1.08.00..	derivation		oewn-clot__2.30.04..
+oewn-clot__2.30.00..	derivation		oewn-clotting__1.22.00..
+oewn-clot__2.30.01..	derivation		oewn-clotting__1.22.00..
+oewn-clot__2.30.01..	other	result	oewn-clot__1.08.00..
+oewn-clot__2.30.02..	other	result	oewn-clot__1.08.00..
+oewn-clot__2.30.04..	derivation		oewn-clotting__1.22.00..
+oewn-clot__2.30.04..	other	result	oewn-clot__1.08.00..
+oewn-clothe__2.29.00..	derivation		oewn-clothing__1.06.00..
+oewn-clothed__3.00.00..	antonym		oewn-unclothed__3.00.00..
+oewn-clothes__1.06.00..	exemplifies		oewn-plural__1.10.00..
+oewn-cloture__1.10.00..	derivation		oewn-cloture__2.30.00..
+oewn-cloture__2.30.00..	other	by_means_of	oewn-cloture__1.10.00..
+oewn-cloud__1.17.00..	derivation		oewn-cloud__2.38.00..
+oewn-cloud__1.17.00..	derivation		oewn-cloud__2.43.00..
+oewn-cloud__1.17.00..	derivation		oewn-cloudy__3.00.00..
+oewn-cloud__1.26.00..	derivation		oewn-cloud__2.35.00..
+oewn-cloud__2.35.00..	other	event	oewn-cloud__1.26.00..
+oewn-cloud__2.43.00..	also		oewn-cloud_over__2.43.00..
+oewn-cloud__2.43.00..	also		oewn-cloud_up__2.43.00..
+oewn-cloud__2.43.00..	derivation		oewn-clouding__1.22.00..
+oewn-cloud__2.43.00..	other	by_means_of	oewn-cloud__1.17.00..
+oewn-cloudiness__1.07.00..	derivation		oewn-cloudy__5.00.00.indistinct.00
+oewn-cloudiness__1.07.00..	derivation		oewn-cloudy__5.00.00.opaque.00
+oewn-cloudiness__1.26.00..	derivation		oewn-cloudy__3.00.00..
+oewn-cloudless__5.00.00.clear.03	derivation		oewn-cloudlessness__1.07.00..
+oewn-clout__1.04.00..	derivation		oewn-clout__2.35.00..
+oewn-clout__2.35.00..	other	event	oewn-clout__1.04.00..
+oewn-cloven--footed__3.01.00..	pertainym		oewn-cloven_foot__1.05.00..
+oewn-cloven--hoofed__3.01.00..	pertainym		oewn-cloven_hoof__1.05.00..
+oewn-clown__1.18.00..	derivation		oewn-clown__2.29.00..
+oewn-clown__2.29.00..	derivation		oewn-clowning__1.04.00..
+oewn-clown__2.29.00..	derivation		oewn-clowning__1.10.00..
+oewn-clown__2.29.00..	other	agent	oewn-clown__1.18.00..
+oewn-cloyingly__4.02.00..	pertainym		oewn-cloying__5.00.00.sweet.02
+oewn-cloze__3.01.00..	pertainym		oewn-cloze_procedure__1.09.00..
+oewn-club__1.06.00..	derivation		oewn-club__2.35.00..
+oewn-club__1.06.01..	derivation		oewn-club__2.35.00..
+oewn-club__1.14.00..	derivation		oewn-club__2.41.03..
+oewn-club__1.14.00..	derivation		oewn-club__2.41.10..
+oewn-club__1.14.00..	derivation		oewn-clubby__5.00.00.private.00
+oewn-club__2.35.00..	other	instrument	oewn-club__1.06.00..
+oewn-club__2.35.00..	other	instrument	oewn-club__1.06.01..
+oewn-club__2.41.03..	other	result	oewn-club__1.14.00..
+oewn-club__2.41.10..	other	result	oewn-club__1.14.00..
+oewn-cluck__1.11.00..	derivation		oewn-cluck__2.32.00..
+oewn-cluck__2.32.00..	other	event	oewn-cluck__1.11.00..
+oewn-clump__1.11.00..	derivation		oewn-clump__2.39.00..
+oewn-clump__1.14.00..	derivation		oewn-clump__2.35.00..
+oewn-clump__1.14.00..	derivation		oewn-clump__2.38.01..
+oewn-clump__2.35.00..	other	result	oewn-clump__1.14.00..
+oewn-clump__2.38.01..	other	result	oewn-clump__1.14.00..
+oewn-clump__2.39.00..	other	event	oewn-clump__1.11.00..
+oewn-clumsily__4.02.00..	pertainym		oewn-clumsy__5.00.00.awkward.00
+oewn-clumsiness__1.07.01..	derivation		oewn-clumsy__5.00.00.awkward.00
+oewn-clumsiness__1.07.02..	derivation		oewn-clumsy__5.00.00.infelicitous.00
+oewn-clumsiness__1.09.01..	derivation		oewn-clumsy__5.00.00.unskilled.00
+oewn-clunk__1.11.00..	derivation		oewn-clunk__2.39.00..
+oewn-clunk__1.11.00..	derivation		oewn-clunky__5.00.00.audible.00
+oewn-clunk__2.39.00..	other	event	oewn-clunk__1.11.00..
+oewn-cluster__1.14.00..	derivation		oewn-cluster__2.35.00..
+oewn-cluster__1.14.00..	derivation		oewn-cluster__2.38.00..
+oewn-cluster__2.35.00..	derivation		oewn-clustering__1.14.00..
+oewn-cluster__2.35.00..	other	result	oewn-cluster__1.14.00..
+oewn-cluster__2.38.00..	derivation		oewn-clustering__1.14.00..
+oewn-cluster__2.38.00..	other	result	oewn-cluster__1.14.00..
+oewn-clutch__1.04.00..	derivation		oewn-clutch__2.35.00..
+oewn-clutch__1.04.00..	derivation		oewn-clutch__2.35.04..
+oewn-clutch__1.26.00..	derivation		oewn-clutch__2.31.04..
+oewn-clutch__2.31.04..	other	event	oewn-clutch__1.26.00..
+oewn-clutch__2.35.00..	other	event	oewn-clutch__1.04.00..
+oewn-clutch__2.35.04..	other	event	oewn-clutch__1.04.00..
+oewn-clutter__1.26.00..	derivation		oewn-clutter__2.30.00..
+oewn-clutter__2.30.00..	antonym		oewn-unclutter__2.30.00..
+oewn-clutter__2.30.00..	other	event	oewn-clutter__1.26.00..

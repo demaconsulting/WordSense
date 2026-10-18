@@ -1,0 +1,13 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-pneumatic__3.01.00..	pertainym		oewn-air__1.27.00..
+oewn-pneumatically__4.02.00..	pertainym		oewn-pneumatic__3.01.00..
+oewn-pneumococcal__3.01.00..	derivation		oewn-pneumococcus__1.05.00..
+oewn-pneumococcal__3.01.00..	pertainym		oewn-pneumococcus__1.05.00..
+oewn-pneumogastric__1.08.00..	derivation		oewn-pneumogastric__3.01.01..
+oewn-pneumogastric__3.01.00..	pertainym		oewn-lung__1.08.00..
+oewn-pneumogastric__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-pneumogastric__3.01.01..	pertainym		oewn-pneumogastric__1.08.00..
+oewn-pneumonia__1.26.00..	derivation		oewn-pneumonic__3.01.01..
+oewn-pneumonic__3.01.00..	pertainym		oewn-lung__1.08.00..
+oewn-pneumonic__3.01.01..	pertainym		oewn-pneumonia__1.26.00..
+oewn-pneumovax__1.06.00..	exemplifies		oewn-trade_name__1.10.00..

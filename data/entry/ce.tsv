@@ -1,0 +1,618 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-CE-r	CE	r	0	1	1	oewn
+oewn-CEO-n	CEO	n	0	1	1	oewn
+oewn-CER-n	CER	n	0	1	1	oewn
+oewn-Ce-n	Ce	n	0	1	1	oewn
+oewn-Cebion-n	Cebion	n	0	1	1	oewn
+oewn-Cebu_maguey-n	Cebu maguey	n	0	2	2	oewn
+oewn-Cebuan-n	Cebuan	n	0	1	1	oewn
+oewn-Cebuan_language-n	Cebuan language	n	0	2	2	oewn
+oewn-Cebuano-n	Cebuano	n	0	1	1	oewn
+oewn-Cebuano_language-n	Cebuano language	n	0	2	2	oewn
+oewn-Cebuella_pygmaea-n	Cebuella pygmaea	n	0	2	2	oewn
+oewn-Cebus_capucinus-n	Cebus capucinus	n	0	2	2	oewn
+oewn-Cecropia_peltata-n	Cecropia peltata	n	0	2	2	oewn
+oewn-Cedrela_calantas-n	Cedrela calantas	n	0	2	2	oewn
+oewn-Cedrela_odorata-n	Cedrela odorata	n	0	2	2	oewn
+oewn-Cedrus_atlantica-n	Cedrus atlantica	n	0	2	2	oewn
+oewn-Cedrus_deodara-n	Cedrus deodara	n	0	2	2	oewn
+oewn-Cedrus_libani-n	Cedrus libani	n	0	2	2	oewn
+oewn-Cefobid-n	Cefobid	n	0	1	1	oewn
+oewn-Ceftin-n	Ceftin	n	0	1	1	oewn
+oewn-Ceiba_pentandra-n	Ceiba pentandra	n	0	2	2	oewn
+oewn-Celastrus_orbiculatus-n	Celastrus orbiculatus	n	0	2	2	oewn
+oewn-Celastrus_scandens-n	Celastrus scandens	n	0	2	2	oewn
+oewn-Celebrex-n	Celebrex	n	0	1	1	oewn
+oewn-Celestial_City-n	Celestial City	n	0	2	2	oewn
+oewn-Celosia_argentea-n	Celosia argentea	n	0	2	2	oewn
+oewn-Celosia_argentea_cristata-n	Celosia argentea cristata	n	0	3	3	oewn
+oewn-Celosia_cristata-n	Celosia cristata	n	0	2	2	oewn
+oewn-Celsius_scale-n	Celsius scale	n	0	2	2	oewn
+oewn-Celt-n	Celt	n	0	1	1	oewn
+oewn-Celtic-a	Celtic	a	0	1	1	oewn
+oewn-Celtic-n	Celtic	n	0	1	1	oewn
+oewn-Celtic_cross-n	Celtic cross	n	0	2	2	oewn
+oewn-Celtic_deity-n	Celtic deity	n	0	2	2	oewn
+oewn-Celtic_language-n	Celtic language	n	0	2	2	oewn
+oewn-Celtis_australis-n	Celtis australis	n	0	2	2	oewn
+oewn-Celtis_laevigata-n	Celtis laevigata	n	0	2	2	oewn
+oewn-Celtis_occidentalis-n	Celtis occidentalis	n	0	2	2	oewn
+oewn-Cenchrus_ciliaris-n	Cenchrus ciliaris	n	0	2	2	oewn
+oewn-Cenchrus_tribuloides-n	Cenchrus tribuloides	n	0	2	2	oewn
+oewn-Cenozoic-a	Cenozoic	a	0	1	1	oewn
+oewn-Census_Bureau-n	Census Bureau	n	0	2	2	oewn
+oewn-Centaurea_americana-n	Centaurea americana	n	0	2	2	oewn
+oewn-Centaurea_calcitrapa-n	Centaurea calcitrapa	n	0	2	2	oewn
+oewn-Centaurea_cineraria-n	Centaurea cineraria	n	0	2	2	oewn
+oewn-Centaurea_cyanus-n	Centaurea cyanus	n	0	2	2	oewn
+oewn-Centaurea_gymnocarpa-n	Centaurea gymnocarpa	n	0	2	2	oewn
+oewn-Centaurea_imperialis-n	Centaurea imperialis	n	0	2	2	oewn
+oewn-Centaurea_moschata-n	Centaurea moschata	n	0	2	2	oewn
+oewn-Centaurea_nigra-n	Centaurea nigra	n	0	2	2	oewn
+oewn-Centaurea_scabiosa-n	Centaurea scabiosa	n	0	2	2	oewn
+oewn-Centaurea_solstitialis-n	Centaurea solstitialis	n	0	2	2	oewn
+oewn-Centauria_calcitrapa-n	Centauria calcitrapa	n	0	2	2	oewn
+oewn-Centaurium_calycosum-n	Centaurium calycosum	n	0	2	2	oewn
+oewn-Centaurium_minus-n	Centaurium minus	n	0	2	2	oewn
+oewn-Centaurium_scilloides-n	Centaurium scilloides	n	0	2	2	oewn
+oewn-Center_for_Disease_Control_and_Prevention-n	Center for Disease Control and Prevention	n	0	6	1	oewn
+oewn-Centigrade_thermometer-n	Centigrade thermometer	n	0	2	2	oewn
+oewn-Central_African_CFA_franc-n	Central African CFA franc	n	0	4	4	oewn
+oewn-Central_African_Republic_franc-n	Central African Republic franc	n	0	4	4	oewn
+oewn-Central_America-n	Central America	n	0	2	2	oewn
+oewn-Central_American-a	Central American	a	0	2	2	oewn
+oewn-Central_American-n	Central American	n	0	2	2	oewn
+oewn-Central_American_country-n	Central American country	n	0	3	3	oewn
+oewn-Central_American_nation-n	Central American nation	n	0	3	3	oewn
+oewn-Central_American_strap_fern-n	Central American strap fern	n	0	4	4	oewn
+oewn-Central_Dravidian-n	Central Dravidian	n	0	2	2	oewn
+oewn-Central_Dravidian_language-n	Central Dravidian language	n	0	3	3	oewn
+oewn-Central_Intelligence_Agency-n	Central Intelligence Agency	n	0	3	3	oewn
+oewn-Central_Intelligence_Machinery-n	Central Intelligence Machinery	n	0	3	3	oewn
+oewn-Central_Powers-n	Central Powers	n	0	2	2	oewn
+oewn-Central_Standard_Time-n	Central Standard Time	n	0	3	3	oewn
+oewn-Central_Thai-n	Central Thai	n	0	2	2	oewn
+oewn-Central_Time-n	Central Time	n	0	2	2	oewn
+oewn-Centranthus_ruber-n	Centranthus ruber	n	0	2	2	oewn
+oewn-Centre_for_International_Crime_Prevention-n	Centre for International Crime Prevention	n	0	5	1	oewn
+oewn-Centrocercus_urophasianus-n	Centrocercus urophasianus	n	0	2	2	oewn
+oewn-Centrolobium_robustum-n	Centrolobium robustum	n	0	2	2	oewn
+oewn-Centropristis_philadelphica-n	Centropristis philadelphica	n	0	2	2	oewn
+oewn-Centropristis_striata-n	Centropristis striata	n	0	2	2	oewn
+oewn-Centropus_phasianinus-n	Centropus phasianinus	n	0	2	2	oewn
+oewn-Centropus_sinensis-n	Centropus sinensis	n	0	2	2	oewn
+oewn-Centrosema_virginianum-n	Centrosema virginianum	n	0	2	2	oewn
+oewn-Centum_language-n	Centum language	n	0	2	2	oewn
+oewn-Cephalanthera_rubra-n	Cephalanthera rubra	n	0	2	2	oewn
+oewn-Cephalopterus_ornatus-n	Cephalopterus ornatus	n	0	2	2	oewn
+oewn-Cephalotus_follicularis-n	Cephalotus follicularis	n	0	2	2	oewn
+oewn-Cepphus_columba-n	Cepphus columba	n	0	2	2	oewn
+oewn-Cepphus_grylle-n	Cepphus grylle	n	0	2	2	oewn
+oewn-Cerapteryx_graminis-n	Cerapteryx graminis	n	0	2	2	oewn
+oewn-Cerastes_cornutus-n	Cerastes cornutus	n	0	2	2	oewn
+oewn-Cerastium_alpinum-n	Cerastium alpinum	n	0	2	2	oewn
+oewn-Cerastium_arvense-n	Cerastium arvense	n	0	2	2	oewn
+oewn-Cerastium_tomentosum-n	Cerastium tomentosum	n	0	2	2	oewn
+oewn-Ceratitis_capitata-n	Ceratitis capitata	n	0	2	2	oewn
+oewn-Ceratonia_siliqua-n	Ceratonia siliqua	n	0	2	2	oewn
+oewn-Ceratopetalum_gummiferum-n	Ceratopetalum gummiferum	n	0	2	2	oewn
+oewn-Ceratopteris_pteridioides-n	Ceratopteris pteridioides	n	0	2	2	oewn
+oewn-Ceratopteris_thalictroides-n	Ceratopteris thalictroides	n	0	2	2	oewn
+oewn-Ceratostomella_ulmi-n	Ceratostomella ulmi	n	0	2	2	oewn
+oewn-Ceratotherium_simum-n	Ceratotherium simum	n	0	2	2	oewn
+oewn-Cerberus-n	Cerberus	n	0	1	1	oewn
+oewn-Cercidiphyllum_japonicum-n	Cercidiphyllum japonicum	n	0	2	2	oewn
+oewn-Cercidium_floridum-n	Cercidium floridum	n	0	2	2	oewn
+oewn-Cercis_canadensis-n	Cercis canadensis	n	0	2	2	oewn
+oewn-Cercis_occidentalis-n	Cercis occidentalis	n	0	2	2	oewn
+oewn-Cercis_siliquastrum-n	Cercis siliquastrum	n	0	2	2	oewn
+oewn-Cercopithecus_aethiops-n	Cercopithecus aethiops	n	0	2	2	oewn
+oewn-Cercopithecus_aethiops_pygerythrus-n	Cercopithecus aethiops pygerythrus	n	0	3	3	oewn
+oewn-Cercopithecus_aethiops_sabaeus-n	Cercopithecus aethiops sabaeus	n	0	3	3	oewn
+oewn-Cercopithecus_talapoin-n	Cercopithecus talapoin	n	0	2	2	oewn
+oewn-Cercospora_kopkei-n	Cercospora kopkei	n	0	2	2	oewn
+oewn-Ceroxylon_alpinum-n	Ceroxylon alpinum	n	0	2	2	oewn
+oewn-Ceroxylon_andicola-n	Ceroxylon andicola	n	0	2	2	oewn
+oewn-Certhia_americana-n	Certhia americana	n	0	2	2	oewn
+oewn-Certhia_familiaris-n	Certhia familiaris	n	0	2	2	oewn
+oewn-Cervus_elaphus-n	Cervus elaphus	n	0	2	2	oewn
+oewn-Cervus_elaphus_canadensis-n	Cervus elaphus canadensis	n	0	3	3	oewn
+oewn-Cervus_nippon-n	Cervus nippon	n	0	2	2	oewn
+oewn-Cervus_sika-n	Cervus sika	n	0	2	2	oewn
+oewn-Cervus_unicolor-n	Cervus unicolor	n	0	2	2	oewn
+oewn-Ceryle_alcyon-n	Ceryle alcyon	n	0	2	2	oewn
+oewn-Cestrum_diurnum-n	Cestrum diurnum	n	0	2	2	oewn
+oewn-Cestrum_nocturnum-n	Cestrum nocturnum	n	0	2	2	oewn
+oewn-Cestum_veneris-n	Cestum veneris	n	0	2	2	oewn
+oewn-Ceterach_officinarum-n	Ceterach officinarum	n	0	2	2	oewn
+oewn-Cetonia_aurata-n	Cetonia aurata	n	0	2	2	oewn
+oewn-Cetorhinus_maximus-n	Cetorhinus maximus	n	0	2	2	oewn
+oewn-Cetraria_islandica-n	Cetraria islandica	n	0	2	2	oewn
+oewn-Cewa-n	Cewa	n	0	1	1	oewn
+oewn-Ceylon_bowstring_hemp-n	Ceylon bowstring hemp	n	0	3	3	oewn
+oewn-Ceylon_cinnamon-n	Ceylon cinnamon	n	0	2	2	oewn
+oewn-Ceylon_cinnamon_tree-n	Ceylon cinnamon tree	n	0	3	3	oewn
+oewn-Ceylon_gooseberry-n	Ceylon gooseberry	n	0	2	2	oewn
+oewn-Ceylonese-a	Ceylonese	a	0	1	1	oewn
+oewn-cease-fire-n	cease-fire	n	0	1	1	oewn
+oewn-cease-n	cease	n	0	1	1	oewn
+oewn-cease-v	cease	v	0	1	1	oewn
+oewn-cease_and_desist_order-n	cease and desist order	n	0	4	4	oewn
+oewn-ceaseless-a	ceaseless	a	0	1	1	oewn
+oewn-ceaselessly-r	ceaselessly	r	0	1	1	oewn
+oewn-ceaselessness-n	ceaselessness	n	0	1	1	oewn
+oewn-cecal-a	cecal	a	0	1	1	oewn
+oewn-cecal_appendage-n	cecal appendage	n	0	2	2	oewn
+oewn-cecity-n	cecity	n	0	1	1	oewn
+oewn-cecropia-n	cecropia	n	0	1	1	oewn
+oewn-cecropia_moth-n	cecropia moth	n	0	2	2	oewn
+oewn-cecum-n	cecum	n	0	1	1	oewn
+oewn-cedar-apple_rust-n	cedar-apple rust	n	0	2	2	oewn
+oewn-cedar-n	cedar	n	0	1	1	oewn
+oewn-cedar-scented-a	cedar-scented	a	0	1	1	oewn
+oewn-cedar_chest-n	cedar chest	n	0	2	2	oewn
+oewn-cedar_elm-n	cedar elm	n	0	2	2	oewn
+oewn-cedar_mahogany-n	cedar mahogany	n	0	2	2	oewn
+oewn-cedar_nut-n	cedar nut	n	0	2	2	oewn
+oewn-cedar_of_Goa-n	cedar of Goa	n	0	3	1	oewn
+oewn-cedar_of_Lebanon-n	cedar of Lebanon	n	0	3	1	oewn
+oewn-cedar_tree-n	cedar tree	n	0	2	2	oewn
+oewn-cedar_waxwing-n	cedar waxwing	n	0	2	2	oewn
+oewn-cedarbird-n	cedarbird	n	0	1	1	oewn
+oewn-cedarn-a	cedarn	a	0	1	1	oewn
+oewn-cedarwood-n	cedarwood	n	0	1	1	oewn
+oewn-cede-v	cede	v	0	1	1	oewn
+oewn-cedi-n	cedi	n	0	1	1	oewn
+oewn-cedilla-n	cedilla	n	0	1	1	oewn
+oewn-ceding-n	ceding	n	0	1	1	oewn
+oewn-ceding_back-n	ceding back	n	0	2	2	oewn
+oewn-cefadroxil-n	cefadroxil	n	0	1	1	oewn
+oewn-cefoperazone-n	cefoperazone	n	0	1	1	oewn
+oewn-cefotaxime-n	cefotaxime	n	0	1	1	oewn
+oewn-ceftazidime-n	ceftazidime	n	0	1	1	oewn
+oewn-ceftriaxone-n	ceftriaxone	n	0	1	1	oewn
+oewn-cefuroxime-n	cefuroxime	n	0	1	1	oewn
+oewn-ceiba_tree-n	ceiba tree	n	0	2	2	oewn
+oewn-ceibo-n	ceibo	n	0	1	1	oewn
+oewn-ceilidh-n	ceilidh	n	0	1	1	oewn
+oewn-ceiling-n	ceiling	n	0	1	1	oewn
+oewn-ceiling_dome-n	ceiling dome	n	0	2	2	oewn
+oewn-ceilinged-a	ceilinged	a	0	1	1	oewn
+oewn-celandine-n	celandine	n	0	1	1	oewn
+oewn-celandine_poppy-n	celandine poppy	n	0	2	2	oewn
+oewn-celebrant-n	celebrant	n	0	1	1	oewn
+oewn-celebrate-v	celebrate	v	0	1	1	oewn
+oewn-celebrated-a	celebrated	a	0	1	1	oewn
+oewn-celebrater-n	celebrater	n	0	1	1	oewn
+oewn-celebration-n	celebration	n	0	1	1	oewn
+oewn-celebrator-n	celebrator	n	0	1	1	oewn
+oewn-celebratory-a	celebratory	a	0	1	1	oewn
+oewn-celebrity-n	celebrity	n	0	1	1	oewn
+oewn-celecoxib-n	celecoxib	n	0	1	1	oewn
+oewn-celeriac-n	celeriac	n	0	1	1	oewn
+oewn-celerity-n	celerity	n	0	1	1	oewn
+oewn-celery-leaved_buttercup-n	celery-leaved buttercup	n	0	2	2	oewn
+oewn-celery-n	celery	n	0	1	1	oewn
+oewn-celery-topped_pine-n	celery-topped pine	n	0	2	2	oewn
+oewn-celery_blight-n	celery blight	n	0	2	2	oewn
+oewn-celery_cabbage-n	celery cabbage	n	0	2	2	oewn
+oewn-celery_pine-n	celery pine	n	0	2	2	oewn
+oewn-celery_root-n	celery root	n	0	2	2	oewn
+oewn-celery_salt-n	celery salt	n	0	2	2	oewn
+oewn-celery_seed-n	celery seed	n	0	2	2	oewn
+oewn-celery_stick-n	celery stick	n	0	2	2	oewn
+oewn-celery_top_pine-n	celery top pine	n	0	3	3	oewn
+oewn-celesta-n	celesta	n	0	1	1	oewn
+oewn-celestial-a	celestial	a	0	1	1	oewn
+oewn-celestial_body-n	celestial body	n	0	2	2	oewn
+oewn-celestial_equator-n	celestial equator	n	0	2	2	oewn
+oewn-celestial_globe-n	celestial globe	n	0	2	2	oewn
+oewn-celestial_guidance-n	celestial guidance	n	0	2	2	oewn
+oewn-celestial_hierarchy-n	celestial hierarchy	n	0	2	2	oewn
+oewn-celestial_horizon-n	celestial horizon	n	0	2	2	oewn
+oewn-celestial_latitude-n	celestial latitude	n	0	2	2	oewn
+oewn-celestial_longitude-n	celestial longitude	n	0	2	2	oewn
+oewn-celestial_mechanics-n	celestial mechanics	n	0	2	2	oewn
+oewn-celestial_navigation-n	celestial navigation	n	0	2	2	oewn
+oewn-celestial_orbit-n	celestial orbit	n	0	2	2	oewn
+oewn-celestial_point-n	celestial point	n	0	2	2	oewn
+oewn-celestial_pole-n	celestial pole	n	0	2	2	oewn
+oewn-celestial_sphere-n	celestial sphere	n	0	2	2	oewn
+oewn-celestite-n	celestite	n	0	1	1	oewn
+oewn-celiac-a	celiac	a	0	1	1	oewn
+oewn-celiac_artery-n	celiac artery	n	0	2	2	oewn
+oewn-celiac_disease-n	celiac disease	n	0	2	2	oewn
+oewn-celiac_trunk-n	celiac trunk	n	0	2	2	oewn
+oewn-celibacy-n	celibacy	n	0	1	1	oewn
+oewn-celibate-a	celibate	a	0	1	1	oewn
+oewn-celibate-n	celibate	n	0	1	1	oewn
+oewn-celiocentesis-n	celiocentesis	n	0	1	1	oewn
+oewn-celioma-n	celioma	n	0	1	1	oewn
+oewn-celioscopy-n	celioscopy	n	0	1	1	oewn
+oewn-cell-free-a	cell-free	a	0	1	1	oewn
+oewn-cell-like-a	cell-like	a	0	1	1	oewn
+oewn-cell-mediated_immune_response-n	cell-mediated immune response	n	0	3	3	oewn
+oewn-cell-n	cell	n	0	1	1	oewn
+oewn-cell_death-n	cell death	n	0	2	2	oewn
+oewn-cell_division-n	cell division	n	0	2	2	oewn
+oewn-cell_doctrine-n	cell doctrine	n	0	2	2	oewn
+oewn-cell_membrane-n	cell membrane	n	0	2	2	oewn
+oewn-cell_nucleus-n	cell nucleus	n	0	2	2	oewn
+oewn-cell_organ-n	cell organ	n	0	2	2	oewn
+oewn-cell_organelle-n	cell organelle	n	0	2	2	oewn
+oewn-cell_phone-v	cell phone	v	0	2	1	oewn
+oewn-cell_theory-n	cell theory	n	0	2	2	oewn
+oewn-cell_wall-n	cell wall	n	0	2	2	oewn
+oewn-cellar-n	cellar	n	0	1	1	oewn
+oewn-cellarage-n	cellarage	n	0	1	1	oewn
+oewn-cellaret-n	cellaret	n	0	1	1	oewn
+oewn-cellblock-n	cellblock	n	0	1	1	oewn
+oewn-cellist-n	cellist	n	0	1	1	oewn
+oewn-cello-n	cello	n	0	1	1	oewn
+oewn-cellophane-n	cellophane	n	0	1	1	oewn
+oewn-cellphone-n	cellphone	n	0	1	1	oewn
+oewn-cellular-a	cellular	a	0	1	1	oewn
+oewn-cellular_concrete-n	cellular concrete	n	0	2	2	oewn
+oewn-cellular_division-n	cellular division	n	0	2	2	oewn
+oewn-cellular_glass-n	cellular glass	n	0	2	2	oewn
+oewn-cellular_inclusion-n	cellular inclusion	n	0	2	2	oewn
+oewn-cellular_phone-n	cellular phone	n	0	2	2	oewn
+oewn-cellular_respiration-n	cellular respiration	n	0	2	2	oewn
+oewn-cellular_slime_mold-n	cellular slime mold	n	0	3	3	oewn
+oewn-cellular_telephone-n	cellular telephone	n	0	2	2	oewn
+oewn-cellularity-n	cellularity	n	0	1	1	oewn
+oewn-cellulite-n	cellulite	n	0	1	1	oewn
+oewn-cellulitis-n	cellulitis	n	0	1	1	oewn
+oewn-celluloid-a	celluloid	a	0	1	1	oewn
+oewn-celluloid-n	celluloid	n	0	1	1	oewn
+oewn-cellulose-n	cellulose	n	0	1	1	oewn
+oewn-cellulose_acetate-n	cellulose acetate	n	0	2	2	oewn
+oewn-cellulose_ester-n	cellulose ester	n	0	2	2	oewn
+oewn-cellulose_nitrate-n	cellulose nitrate	n	0	2	2	oewn
+oewn-cellulose_tape-n	cellulose tape	n	0	2	2	oewn
+oewn-cellulose_triacetate-n	cellulose triacetate	n	0	2	2	oewn
+oewn-cellulose_xanthate-n	cellulose xanthate	n	0	2	2	oewn
+oewn-cellulosic-a	cellulosic	a	0	1	1	oewn
+oewn-cellulosic-n	cellulosic	n	0	1	1	oewn
+oewn-celom-n	celom	n	0	1	1	oewn
+oewn-celoma-n	celoma	n	0	1	1	oewn
+oewn-celtuce-n	celtuce	n	0	1	1	oewn
+oewn-cembalo-n	cembalo	n	0	1	1	oewn
+oewn-cembra_nut-n	cembra nut	n	0	2	2	oewn
+oewn-cembra_nut_tree-n	cembra nut tree	n	0	3	3	oewn
+oewn-cement-n	cement	n	0	1	1	oewn
+oewn-cement-v	cement	v	0	1	1	oewn
+oewn-cement_mixer-n	cement mixer	n	0	2	2	oewn
+oewn-cementite-n	cementite	n	0	1	1	oewn
+oewn-cementitious-a	cementitious	a	0	1	1	oewn
+oewn-cementum-n	cementum	n	0	1	1	oewn
+oewn-cemetery-n	cemetery	n	0	1	1	oewn
+oewn-cenobite-n	cenobite	n	0	1	1	oewn
+oewn-cenobitic-a	cenobitic	a	0	1	1	oewn
+oewn-cenobitical-a	cenobitical	a	0	1	1	oewn
+oewn-cenogenesis-n	cenogenesis	n	0	1	1	oewn
+oewn-cenogenetic-a	cenogenetic	a	0	1	1	oewn
+oewn-cenotaph-n	cenotaph	n	0	1	1	oewn
+oewn-cense-v	cense	v	0	1	1	oewn
+oewn-censer-n	censer	n	0	1	1	oewn
+oewn-censitary_suffrage-n	censitary suffrage	n	0	2	2	oewn
+oewn-censor-n	censor	n	0	1	1	oewn
+oewn-censor-v	censor	v	0	1	1	oewn
+oewn-censored-a	censored	a	0	1	1	oewn
+oewn-censorial-a	censorial	a	0	1	1	oewn
+oewn-censoring-n	censoring	n	0	1	1	oewn
+oewn-censorious-a	censorious	a	0	1	1	oewn
+oewn-censorship-n	censorship	n	0	1	1	oewn
+oewn-censurable-a	censurable	a	0	1	1	oewn
+oewn-censure-n	censure	n	0	1	1	oewn
+oewn-censure-v	censure	v	0	1	1	oewn
+oewn-census-n	census	n	0	1	1	oewn
+oewn-census-v	census	v	0	1	1	oewn
+oewn-census_suffrage-n	census suffrage	n	0	2	2	oewn
+oewn-census_taker-n	census taker	n	0	2	2	oewn
+oewn-cent-n	cent	n	0	1	1	oewn
+oewn-cental-n	cental	n	0	1	1	oewn
+oewn-centare-n	centare	n	0	1	1	oewn
+oewn-centas-n	centas	n	0	1	1	oewn
+oewn-centaur-n	centaur	n	0	1	1	oewn
+oewn-centaury-n	centaury	n	0	1	1	oewn
+oewn-centavo-n	centavo	n	0	1	1	oewn
+oewn-centenarian-a	centenarian	a	0	1	1	oewn
+oewn-centenarian-n	centenarian	n	0	1	1	oewn
+oewn-centenary-a	centenary	a	0	1	1	oewn
+oewn-centenary-n	centenary	n	0	1	1	oewn
+oewn-centennial-a	centennial	a	0	1	1	oewn
+oewn-centennial-n	centennial	n	0	1	1	oewn
+oewn-centennially-r	centennially	r	0	1	1	oewn
+oewn-center-a	center	a	0	1	1	oewn
+oewn-center-n	center	n	0	1	1	oewn
+oewn-center-v	center	v	0	1	1	oewn
+oewn-center_bit-n	center bit	n	0	2	2	oewn
+oewn-center_field-n	center field	n	0	2	2	oewn
+oewn-center_fielder-n	center fielder	n	0	2	2	oewn
+oewn-center_line-n	center line	n	0	2	2	oewn
+oewn-center_of_attention-n	center of attention	n	0	3	1	oewn
+oewn-center_of_buoyancy-n	center of buoyancy	n	0	3	1	oewn
+oewn-center_of_curvature-n	center of curvature	n	0	3	1	oewn
+oewn-center_of_flotation-n	center of flotation	n	0	3	1	oewn
+oewn-center_of_gravity-n	center of gravity	n	0	3	1	oewn
+oewn-center_of_immersion-n	center of immersion	n	0	3	1	oewn
+oewn-center_of_mass-n	center of mass	n	0	3	1	oewn
+oewn-center_on-v	center on	v	0	2	1	oewn
+oewn-center_punch-n	center punch	n	0	2	2	oewn
+oewn-center_punch-v	center punch	v	0	2	1	oewn
+oewn-center_spread-n	center spread	n	0	2	2	oewn
+oewn-center_stage-n	center stage	n	0	2	2	oewn
+oewn-centerboard-n	centerboard	n	0	1	1	oewn
+oewn-centered-a	centered	a	0	1	1	oewn
+oewn-centerfield-n	centerfield	n	0	1	1	oewn
+oewn-centerfielder-n	centerfielder	n	0	1	1	oewn
+oewn-centerfold-n	centerfold	n	0	1	1	oewn
+oewn-centering-n	centering	n	0	1	1	oewn
+oewn-centerline-n	centerline	n	0	1	1	oewn
+oewn-centerpiece-n	centerpiece	n	0	1	1	oewn
+oewn-centesimal-a	centesimal	a	0	1	1	oewn
+oewn-centesimo-n	centesimo	n	0	1	1	oewn
+oewn-centesis-n	centesis	n	0	1	1	oewn
+oewn-centigrade-a	centigrade	a	0	1	1	oewn
+oewn-centigrade_scale-n	centigrade scale	n	0	2	2	oewn
+oewn-centile-n	centile	n	0	1	1	oewn
+oewn-centiliter-n	centiliter	n	0	1	1	oewn
+oewn-centilitre-n	centilitre	n	0	1	1	oewn
+oewn-centime-n	centime	n	0	1	1	oewn
+oewn-centimeter-n	centimeter	n	0	1	1	oewn
+oewn-centimetre-n	centimetre	n	0	1	1	oewn
+oewn-centimo-n	centimo	n	0	1	1	oewn
+oewn-centipede-n	centipede	n	0	1	1	oewn
+oewn-centner-n	centner	n	0	1	1	oewn
+oewn-central-a	central	a	0	1	1	oewn
+oewn-central-n	central	n	0	1	1	oewn
+oewn-central_artery_of_the_retina-n	central artery of the retina	n	0	5	2	oewn
+oewn-central_bank-n	central bank	n	0	2	2	oewn
+oewn-central_body-n	central body	n	0	2	2	oewn
+oewn-central_chimpanzee-n	central chimpanzee	n	0	2	2	oewn
+oewn-central_city-n	central city	n	0	2	2	oewn
+oewn-central_gyrus-n	central gyrus	n	0	2	2	oewn
+oewn-central_heating-n	central heating	n	0	2	2	oewn
+oewn-central_nervous_system-n	central nervous system	n	0	3	3	oewn
+oewn-central_office-n	central office	n	0	2	2	oewn
+oewn-central_processing_unit-n	central processing unit	n	0	3	3	oewn
+oewn-central_processor-n	central processor	n	0	2	2	oewn
+oewn-central_scotoma-n	central scotoma	n	0	2	2	oewn
+oewn-central_sulcus-n	central sulcus	n	0	2	2	oewn
+oewn-central_vein_of_retina-n	central vein of retina	n	0	4	2	oewn
+oewn-central_vein_of_suprarenal_gland-n	central vein of suprarenal gland	n	0	5	2	oewn
+oewn-central_veins_of_liver-n	central veins of liver	n	0	4	2	oewn
+oewn-central_vision-n	central vision	n	0	2	2	oewn
+oewn-central_vowel-n	central vowel	n	0	2	2	oewn
+oewn-centralisation-n	centralisation	n	0	1	1	oewn
+oewn-centralise-v	centralise	v	0	1	1	oewn
+oewn-centralised-a	centralised	a	0	1	1	oewn
+oewn-centralising-a	centralising	a	0	1	1	oewn
+oewn-centralism-n	centralism	n	0	1	1	oewn
+oewn-centralist-a	centralist	a	0	1	1	oewn
+oewn-centralistic-a	centralistic	a	0	1	1	oewn
+oewn-centrality-n	centrality	n	0	1	1	oewn
+oewn-centralization-n	centralization	n	0	1	1	oewn
+oewn-centralize-v	centralize	v	0	1	1	oewn
+oewn-centralized-a	centralized	a	0	1	1	oewn
+oewn-centralizing-a	centralizing	a	0	1	1	oewn
+oewn-centrally-r	centrally	r	0	1	1	oewn
+oewn-centrarchid-n	centrarchid	n	0	1	1	oewn
+oewn-centre-a	centre	a	1	1	1	oewn
+oewn-centre-n	centre	n	0	1	1	oewn
+oewn-centre-s	centre	a	2	1	1	oewn
+oewn-centre-v	centre	v	0	1	1	oewn
+oewn-centre_bit-n	centre bit	n	0	2	2	oewn
+oewn-centre_of_attention-n	centre of attention	n	0	3	1	oewn
+oewn-centre_of_buoyancy-n	centre of buoyancy	n	0	3	1	oewn
+oewn-centre_of_curvature-n	centre of curvature	n	0	3	1	oewn
+oewn-centre_of_flotation-n	centre of flotation	n	0	3	1	oewn
+oewn-centre_of_gravity-n	centre of gravity	n	0	3	1	oewn
+oewn-centre_of_immersion-n	centre of immersion	n	0	3	1	oewn
+oewn-centre_of_mass-n	centre of mass	n	0	3	1	oewn
+oewn-centre_spread-n	centre spread	n	0	2	2	oewn
+oewn-centre_stage-n	centre stage	n	0	2	2	oewn
+oewn-centreboard-n	centreboard	n	0	1	1	oewn
+oewn-centred-s	centred	a	0	1	1	oewn
+oewn-centrefold-n	centrefold	n	0	1	1	oewn
+oewn-centrepiece-n	centrepiece	n	0	1	1	oewn
+oewn-centrex-n	centrex	n	0	1	1	oewn
+oewn-centric-a	centric	a	0	1	1	oewn
+oewn-centrical-a	centrical	a	0	1	1	oewn
+oewn-centrifugal-a	centrifugal	a	0	1	1	oewn
+oewn-centrifugal_force-n	centrifugal force	n	0	2	2	oewn
+oewn-centrifugal_pump-n	centrifugal pump	n	0	2	2	oewn
+oewn-centrifugate-v	centrifugate	v	0	1	1	oewn
+oewn-centrifugation-n	centrifugation	n	0	1	1	oewn
+oewn-centrifuge-n	centrifuge	n	0	1	1	oewn
+oewn-centrifuge-v	centrifuge	v	0	1	1	oewn
+oewn-centring-n	centring	n	0	1	1	oewn
+oewn-centriole-n	centriole	n	0	1	1	oewn
+oewn-centripetal-a	centripetal	a	0	1	1	oewn
+oewn-centripetal_acceleration-n	centripetal acceleration	n	0	2	2	oewn
+oewn-centripetal_force-n	centripetal force	n	0	2	2	oewn
+oewn-centrism-n	centrism	n	0	1	1	oewn
+oewn-centrist-a	centrist	a	0	1	1	oewn
+oewn-centrist-n	centrist	n	0	1	1	oewn
+oewn-centroid-n	centroid	n	0	1	1	oewn
+oewn-centroidal-a	centroidal	a	0	1	1	oewn
+oewn-centromere-n	centromere	n	0	1	1	oewn
+oewn-centromeric-a	centromeric	a	0	1	1	oewn
+oewn-centrosome-n	centrosome	n	0	1	1	oewn
+oewn-centrosomic-a	centrosomic	a	0	1	1	oewn
+oewn-centrosymmetric-a	centrosymmetric	a	0	1	1	oewn
+oewn-centrum-n	centrum	n	0	1	1	oewn
+oewn-centurion-n	centurion	n	0	1	1	oewn
+oewn-century-n	century	n	0	1	1	oewn
+oewn-century_plant-n	century plant	n	0	2	2	oewn
+oewn-cephalalgia-n	cephalalgia	n	0	1	1	oewn
+oewn-cephalaspid-n	cephalaspid	n	0	1	1	oewn
+oewn-cephalexin-n	cephalexin	n	0	1	1	oewn
+oewn-cephalhematoma-n	cephalhematoma	n	0	1	1	oewn
+oewn-cephalic-a	cephalic	a	0	1	1	oewn
+oewn-cephalic_index-n	cephalic index	n	0	2	2	oewn
+oewn-cephalic_vein-n	cephalic vein	n	0	2	2	oewn
+oewn-cephalitis-n	cephalitis	n	0	1	1	oewn
+oewn-cephalochordate-n	cephalochordate	n	0	1	1	oewn
+oewn-cephaloglycin-n	cephaloglycin	n	0	1	1	oewn
+oewn-cephalohematoma-n	cephalohematoma	n	0	1	1	oewn
+oewn-cephalometry-n	cephalometry	n	0	1	1	oewn
+oewn-cephalopod-a	cephalopod	a	0	1	1	oewn
+oewn-cephalopod-n	cephalopod	n	0	1	1	oewn
+oewn-cephalopod_mollusk-n	cephalopod mollusk	n	0	2	2	oewn
+oewn-cephalopodan-a	cephalopodan	a	0	1	1	oewn
+oewn-cephaloridine-n	cephaloridine	n	0	1	1	oewn
+oewn-cephalosporin-n	cephalosporin	n	0	1	1	oewn
+oewn-cephalothin-n	cephalothin	n	0	1	1	oewn
+oewn-ceramic-a	ceramic	a	0	1	1	oewn
+oewn-ceramic-n	ceramic	n	0	1	1	oewn
+oewn-ceramic_ware-n	ceramic ware	n	0	2	2	oewn
+oewn-ceramicist-n	ceramicist	n	0	1	1	oewn
+oewn-ceramics-n	ceramics	n	0	1	1	oewn
+oewn-ceramist-n	ceramist	n	0	1	1	oewn
+oewn-ceras-n	ceras	n	0	1	1	oewn
+oewn-cerastes-n	cerastes	n	0	1	1	oewn
+oewn-cerate-n	cerate	n	0	1	1	oewn
+oewn-ceratin-n	ceratin	n	0	1	1	oewn
+oewn-ceratodus-n	ceratodus	n	0	1	1	oewn
+oewn-ceratopsian-n	ceratopsian	n	0	1	1	oewn
+oewn-ceratosaur-n	ceratosaur	n	0	1	1	oewn
+oewn-ceratosaurus-n	ceratosaurus	n	0	1	1	oewn
+oewn-ceratozamia-n	ceratozamia	n	0	1	1	oewn
+oewn-cercaria-n	cercaria	n	0	1	1	oewn
+oewn-cercarial-a	cercarial	a	0	1	1	oewn
+oewn-cere-n	cere	n	0	1	1	oewn
+oewn-cere-v	cere	v	0	1	1	oewn
+oewn-cereal-a	cereal	a	0	1	1	oewn
+oewn-cereal-n	cereal	n	0	1	1	oewn
+oewn-cereal_bowl-n	cereal bowl	n	0	2	2	oewn
+oewn-cereal_box-n	cereal box	n	0	2	2	oewn
+oewn-cereal_grass-n	cereal grass	n	0	2	2	oewn
+oewn-cereal_oat-n	cereal oat	n	0	2	2	oewn
+oewn-cerebellar-a	cerebellar	a	0	1	1	oewn
+oewn-cerebellar_artery-n	cerebellar artery	n	0	2	2	oewn
+oewn-cerebellar_hemisphere-n	cerebellar hemisphere	n	0	2	2	oewn
+oewn-cerebellar_vein-n	cerebellar vein	n	0	2	2	oewn
+oewn-cerebellum-n	cerebellum	n	0	1	1	oewn
+oewn-cerebral-a	cerebral	a	0	1	1	oewn
+oewn-cerebral_aneurysm-n	cerebral aneurysm	n	0	2	2	oewn
+oewn-cerebral_aqueduct-n	cerebral aqueduct	n	0	2	2	oewn
+oewn-cerebral_artery-n	cerebral artery	n	0	2	2	oewn
+oewn-cerebral_cortex-n	cerebral cortex	n	0	2	2	oewn
+oewn-cerebral_death-n	cerebral death	n	0	2	2	oewn
+oewn-cerebral_edema-n	cerebral edema	n	0	2	2	oewn
+oewn-cerebral_hemisphere-n	cerebral hemisphere	n	0	2	2	oewn
+oewn-cerebral_hemorrhage-n	cerebral hemorrhage	n	0	2	2	oewn
+oewn-cerebral_mantle-n	cerebral mantle	n	0	2	2	oewn
+oewn-cerebral_palsy-n	cerebral palsy	n	0	2	2	oewn
+oewn-cerebral_peduncle-n	cerebral peduncle	n	0	2	2	oewn
+oewn-cerebral_thrombosis-n	cerebral thrombosis	n	0	2	2	oewn
+oewn-cerebral_vein-n	cerebral vein	n	0	2	2	oewn
+oewn-cerebrally-r	cerebrally	r	0	1	1	oewn
+oewn-cerebrate-v	cerebrate	v	0	1	1	oewn
+oewn-cerebration-n	cerebration	n	0	1	1	oewn
+oewn-cerebromeningitis-n	cerebromeningitis	n	0	1	1	oewn
+oewn-cerebroside-n	cerebroside	n	0	1	1	oewn
+oewn-cerebrospinal-a	cerebrospinal	a	0	1	1	oewn
+oewn-cerebrospinal_fever-n	cerebrospinal fever	n	0	2	2	oewn
+oewn-cerebrospinal_fluid-n	cerebrospinal fluid	n	0	2	2	oewn
+oewn-cerebrospinal_meningitis-n	cerebrospinal meningitis	n	0	2	2	oewn
+oewn-cerebrovascular-a	cerebrovascular	a	0	1	1	oewn
+oewn-cerebrovascular_accident-n	cerebrovascular accident	n	0	2	2	oewn
+oewn-cerebrum-n	cerebrum	n	0	1	1	oewn
+oewn-cerecloth-n	cerecloth	n	0	1	1	oewn
+oewn-cerement-n	cerement	n	0	1	1	oewn
+oewn-ceremonial-a	ceremonial	a	0	1	1	oewn
+oewn-ceremonial-n	ceremonial	n	0	1	1	oewn
+oewn-ceremonial_dance-n	ceremonial dance	n	0	2	2	oewn
+oewn-ceremonial_occasion-n	ceremonial occasion	n	0	2	2	oewn
+oewn-ceremonially-r	ceremonially	r	0	1	1	oewn
+oewn-ceremonious-a	ceremonious	a	0	1	1	oewn
+oewn-ceremoniously-r	ceremoniously	r	0	1	1	oewn
+oewn-ceremoniousness-n	ceremoniousness	n	0	1	1	oewn
+oewn-ceremony-n	ceremony	n	0	1	1	oewn
+oewn-ceresin-n	ceresin	n	0	1	1	oewn
+oewn-ceric-a	ceric	a	0	1	1	oewn
+oewn-ceriman-n	ceriman	n	0	1	1	oewn
+oewn-cerise-a	cerise	a	0	1	1	oewn
+oewn-cerise-n	cerise	n	0	1	1	oewn
+oewn-cerium-n	cerium	n	0	1	1	oewn
+oewn-cerivastatin-n	cerivastatin	n	0	1	1	oewn
+oewn-cernuous-a	cernuous	a	0	1	1	oewn
+oewn-cero-n	cero	n	0	1	1	oewn
+oewn-cerography-n	cerography	n	0	1	1	oewn
+oewn-ceroplastics-n	ceroplastics	n	0	1	1	oewn
+oewn-cerotic_acid-n	cerotic acid	n	0	2	2	oewn
+oewn-cerous-a	cerous	a	0	1	1	oewn
+oewn-cert-n	cert	n	0	1	1	oewn
+oewn-certain-a	certain	a	0	1	1	oewn
+oewn-certainly-r	certainly	r	0	1	1	oewn
+oewn-certainty-n	certainty	n	0	1	1	oewn
+oewn-certifiable-a	certifiable	a	0	1	1	oewn
+oewn-certificate-n	certificate	n	0	1	1	oewn
+oewn-certificate-v	certificate	v	0	1	1	oewn
+oewn-certificate_of_deposit-n	certificate of deposit	n	0	3	1	oewn
+oewn-certificate_of_incorporation-n	certificate of incorporation	n	0	3	1	oewn
+oewn-certificate_of_indebtedness-n	certificate of indebtedness	n	0	3	1	oewn
+oewn-certificated-a	certificated	a	0	1	1	oewn
+oewn-certification-n	certification	n	0	1	1	oewn
+oewn-certificatory-a	certificatory	a	0	1	1	oewn
+oewn-certified-a	certified	a	0	1	1	oewn
+oewn-certified_check-n	certified check	n	0	2	2	oewn
+oewn-certified_cheque-n	certified cheque	n	0	2	2	oewn
+oewn-certified_milk-n	certified milk	n	0	2	2	oewn
+oewn-certified_public_accountant-n	certified public accountant	n	0	3	3	oewn
+oewn-certify-v	certify	v	0	1	1	oewn
+oewn-certiorari-n	certiorari	n	0	1	1	oewn
+oewn-certitude-n	certitude	n	0	1	1	oewn
+oewn-cerulean-a	cerulean	a	0	1	1	oewn
+oewn-cerulean-n	cerulean	n	0	1	1	oewn
+oewn-cerulean_blue-n	cerulean blue	n	0	2	2	oewn
+oewn-cerumen-n	cerumen	n	0	1	1	oewn
+oewn-ceruminous-a	ceruminous	a	0	1	1	oewn
+oewn-ceruse-n	ceruse	n	0	1	1	oewn
+oewn-cerussite-n	cerussite	n	0	1	1	oewn
+oewn-cervical-a	cervical	a	0	1	1	oewn
+oewn-cervical_artery-n	cervical artery	n	0	2	2	oewn
+oewn-cervical_canal-n	cervical canal	n	0	2	2	oewn
+oewn-cervical_cap-n	cervical cap	n	0	2	2	oewn
+oewn-cervical_disc_syndrome-n	cervical disc syndrome	n	0	3	3	oewn
+oewn-cervical_glands-n	cervical glands	n	0	2	2	oewn
+oewn-cervical_glands_of_the_uterus-n	cervical glands of the uterus	n	0	5	2	oewn
+oewn-cervical_nerve-n	cervical nerve	n	0	2	2	oewn
+oewn-cervical_plexus-n	cervical plexus	n	0	2	2	oewn
+oewn-cervical_root_syndrome-n	cervical root syndrome	n	0	3	3	oewn
+oewn-cervical_smear-n	cervical smear	n	0	2	2	oewn
+oewn-cervical_vein-n	cervical vein	n	0	2	2	oewn
+oewn-cervical_vertebra-n	cervical vertebra	n	0	2	2	oewn
+oewn-cervicitis-n	cervicitis	n	0	1	1	oewn
+oewn-cervicofacial_actinomycosis-n	cervicofacial actinomycosis	n	0	2	2	oewn
+oewn-cervid-n	cervid	n	0	1	1	oewn
+oewn-cervine-a	cervine	a	0	1	1	oewn
+oewn-cervix-n	cervix	n	0	1	1	oewn
+oewn-cervix_uteri-n	cervix uteri	n	0	2	2	oewn
+oewn-cesarean-a	cesarean	a	0	1	1	oewn
+oewn-cesarean-n	cesarean	n	0	1	1	oewn
+oewn-cesarean_delivery-n	cesarean delivery	n	0	2	2	oewn
+oewn-cesarean_section-n	cesarean section	n	0	2	2	oewn
+oewn-cesarian-a	cesarian	a	0	1	1	oewn
+oewn-cesarian-n	cesarian	n	0	1	1	oewn
+oewn-cesarian_section-n	cesarian section	n	0	2	2	oewn
+oewn-cesium-n	cesium	n	0	1	1	oewn
+oewn-cesium_137-n	cesium 137	n	0	2	2	oewn
+oewn-cespitose-a	cespitose	a	0	1	1	oewn
+oewn-cessation-n	cessation	n	0	1	1	oewn
+oewn-cession-n	cession	n	0	1	1	oewn
+oewn-cesspit-n	cesspit	n	0	1	1	oewn
+oewn-cesspool-n	cesspool	n	0	1	1	oewn
+oewn-cestode-n	cestode	n	0	1	1	oewn
+oewn-cetacean-a	cetacean	a	0	1	1	oewn
+oewn-cetacean-n	cetacean	n	0	1	1	oewn
+oewn-cetacean_mammal-n	cetacean mammal	n	0	2	2	oewn
+oewn-cetaceous-a	cetaceous	a	0	1	1	oewn
+oewn-cetchup-n	cetchup	n	0	1	1	oewn
+oewn-ceteris_paribus-r	ceteris paribus	r	0	2	2	oewn
+oewn-cetrimide-n	cetrimide	n	0	1	1	oewn
+oewn-ceylon_black_tea-n	ceylon black tea	n	0	3	3	oewn
+oewn-ceylonite-n	ceylonite	n	0	1	1	oewn

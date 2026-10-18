@@ -1,0 +1,2774 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-CABG-n	CABG	n	0	1	1	oewn
+oewn-CAD-n	CAD	n	0	1	1	oewn
+oewn-CAT-n	CAT	n	0	1	1	oewn
+oewn-CAT_scan-n	CAT scan	n	0	2	2	oewn
+oewn-CAT_scanner-n	CAT scanner	n	0	2	2	oewn
+oewn-Ca-n	Ca	n	0	1	1	oewn
+oewn-Cabala-n	Cabala	n	0	1	1	oewn
+oewn-Cabalism-n	Cabalism	n	0	1	1	oewn
+oewn-Cabalist-n	Cabalist	n	0	1	1	oewn
+oewn-Cabassous_unicinctus-n	Cabassous unicinctus	n	0	2	2	oewn
+oewn-Cabbala-n	Cabbala	n	0	1	1	oewn
+oewn-Cabbalah-n	Cabbalah	n	0	1	1	oewn
+oewn-Cabernet-n	Cabernet	n	0	1	1	oewn
+oewn-Cabernet_Sauvignon-n	Cabernet Sauvignon	n	0	2	2	oewn
+oewn-Cabernet_Sauvignon_grape-n	Cabernet Sauvignon grape	n	0	3	3	oewn
+oewn-Cabomba_caroliniana-n	Cabomba caroliniana	n	0	2	2	oewn
+oewn-Cacalia_javanica-n	Cacalia javanica	n	0	2	2	oewn
+oewn-Cacalia_lutea-n	Cacalia lutea	n	0	2	2	oewn
+oewn-Cacatua_galerita-n	Cacatua galerita	n	0	2	2	oewn
+oewn-Caddo-n	Caddo	n	0	1	1	oewn
+oewn-Caddoan-n	Caddoan	n	0	1	1	oewn
+oewn-Caddoan_language-n	Caddoan language	n	0	2	2	oewn
+oewn-Cadmus-n	Cadmus	n	0	1	1	oewn
+oewn-Cadra_cautella-n	Cadra cautella	n	0	2	2	oewn
+oewn-Cadra_figulilella-n	Cadra figulilella	n	0	2	2	oewn
+oewn-Caesalpinia_bonduc-n	Caesalpinia bonduc	n	0	2	2	oewn
+oewn-Caesalpinia_bonducella-n	Caesalpinia bonducella	n	0	2	2	oewn
+oewn-Caesalpinia_coriaria-n	Caesalpinia coriaria	n	0	2	2	oewn
+oewn-Caesalpinia_decapetala-n	Caesalpinia decapetala	n	0	2	2	oewn
+oewn-Caesalpinia_echinata-n	Caesalpinia echinata	n	0	2	2	oewn
+oewn-Caesalpinia_ferrea-n	Caesalpinia ferrea	n	0	2	2	oewn
+oewn-Caesalpinia_gilliesii-n	Caesalpinia gilliesii	n	0	2	2	oewn
+oewn-Caesalpinia_pulcherrima-n	Caesalpinia pulcherrima	n	0	2	2	oewn
+oewn-Caesalpinia_sepiaria-n	Caesalpinia sepiaria	n	0	2	2	oewn
+oewn-Caesar-ap-s_agaric-n	Caesar's agaric	n	0	2	2	oewn
+oewn-Caesar_salad-n	Caesar salad	n	0	2	2	oewn
+oewn-Caesarean-a	Caesarean	a	0	1	1	oewn
+oewn-Caesarian-a	Caesarian	a	0	1	1	oewn
+oewn-Caesarism-n	Caesarism	n	0	1	1	oewn
+oewn-Caesaropapism-n	Caesaropapism	n	0	1	1	oewn
+oewn-Cahita-n	Cahita	n	0	1	1	oewn
+oewn-Cahita_language-n	Cahita language	n	0	2	2	oewn
+oewn-Caiman_sclerops-n	Caiman sclerops	n	0	2	2	oewn
+oewn-Cairene-n	Cairene	n	0	1	1	oewn
+oewn-Cairina_moschata-n	Cairina moschata	n	0	2	2	oewn
+oewn-Caitra-n	Caitra	n	0	1	1	oewn
+oewn-Cajanus_cajan-n	Cajanus cajan	n	0	2	2	oewn
+oewn-Cajun-n	Cajun	n	0	1	1	oewn
+oewn-Cakchiquel-n	Cakchiquel	n	0	1	1	oewn
+oewn-Cakchiquel_language-n	Cakchiquel language	n	0	2	2	oewn
+oewn-Cakile_maritima-n	Cakile maritima	n	0	2	2	oewn
+oewn-Caladenia_cairnsiana-n	Caladenia cairnsiana	n	0	2	2	oewn
+oewn-Caladium_bicolor-n	Caladium bicolor	n	0	2	2	oewn
+oewn-Calamagrostic_quadriseta-n	Calamagrostic quadriseta	n	0	2	2	oewn
+oewn-Calamagrostis_acutiflora-n	Calamagrostis acutiflora	n	0	2	2	oewn
+oewn-Calamintha_grandiflora-n	Calamintha grandiflora	n	0	2	2	oewn
+oewn-Calamintha_nepeta-n	Calamintha nepeta	n	0	2	2	oewn
+oewn-Calamintha_nepeta_glantulosa-n	Calamintha nepeta glantulosa	n	0	3	3	oewn
+oewn-Calamintha_sylvatica-n	Calamintha sylvatica	n	0	2	2	oewn
+oewn-Calamus_australis-n	Calamus australis	n	0	2	2	oewn
+oewn-Calamus_penna-n	Calamus penna	n	0	2	2	oewn
+oewn-Calamus_rotang-n	Calamus rotang	n	0	2	2	oewn
+oewn-Calan-n	Calan	n	0	1	1	oewn
+oewn-Calandrinia_ciliata-n	Calandrinia ciliata	n	0	2	2	oewn
+oewn-Calapooya-n	Calapooya	n	0	1	1	oewn
+oewn-Calapuya-n	Calapuya	n	0	1	1	oewn
+oewn-Calcuttan-a	Calcuttan	a	0	1	1	oewn
+oewn-Calendula_officinalis-n	Calendula officinalis	n	0	2	2	oewn
+oewn-Caley_pea-n	Caley pea	n	0	2	2	oewn
+oewn-Calidris_canutus-n	Calidris canutus	n	0	2	2	oewn
+oewn-Calidris_ferruginea-n	Calidris ferruginea	n	0	2	2	oewn
+oewn-Calidris_melanotos-n	Calidris melanotos	n	0	2	2	oewn
+oewn-California_Personality_Inventory-n	California Personality Inventory	n	0	3	3	oewn
+oewn-California_allspice-n	California allspice	n	0	2	2	oewn
+oewn-California_bay_tree-n	California bay tree	n	0	3	3	oewn
+oewn-California_beauty-n	California beauty	n	0	2	2	oewn
+oewn-California_black_oak-n	California black oak	n	0	3	3	oewn
+oewn-California_black_walnut-n	California black walnut	n	0	3	3	oewn
+oewn-California_bluebell-n	California bluebell	n	0	2	2	oewn
+oewn-California_box_elder-n	California box elder	n	0	3	3	oewn
+oewn-California_buckthorn-n	California buckthorn	n	0	2	2	oewn
+oewn-California_buckwheat-n	California buckwheat	n	0	2	2	oewn
+oewn-California_coffee-n	California coffee	n	0	2	2	oewn
+oewn-California_condor-n	California condor	n	0	2	2	oewn
+oewn-California_dandelion-n	California dandelion	n	0	2	2	oewn
+oewn-California_false_morel-n	California false morel	n	0	3	3	oewn
+oewn-California_fern-n	California fern	n	0	2	2	oewn
+oewn-California_four_o-ap-clock-n	California four o'clock	n	0	3	3	oewn
+oewn-California_fuchsia-n	California fuchsia	n	0	2	2	oewn
+oewn-California_lady-ap-s_slipper-n	California lady's slipper	n	0	3	3	oewn
+oewn-California_laurel-n	California laurel	n	0	2	2	oewn
+oewn-California_live_oak-n	California live oak	n	0	3	3	oewn
+oewn-California_newt-n	California newt	n	0	2	2	oewn
+oewn-California_nutmeg-n	California nutmeg	n	0	2	2	oewn
+oewn-California_olive-n	California olive	n	0	2	2	oewn
+oewn-California_pitcher_plant-n	California pitcher plant	n	0	3	3	oewn
+oewn-California_pompano-n	California pompano	n	0	2	2	oewn
+oewn-California_poppy-n	California poppy	n	0	2	2	oewn
+oewn-California_privet-n	California privet	n	0	2	2	oewn
+oewn-California_quail-n	California quail	n	0	2	2	oewn
+oewn-California_redbud-n	California redbud	n	0	2	2	oewn
+oewn-California_redwood-n	California redwood	n	0	2	2	oewn
+oewn-California_romero-n	California romero	n	0	2	2	oewn
+oewn-California_sage-n	California sage	n	0	2	2	oewn
+oewn-California_sagebrush-n	California sagebrush	n	0	2	2	oewn
+oewn-California_sea_lion-n	California sea lion	n	0	3	3	oewn
+oewn-California_single-leaf_pinyon-n	California single-leaf pinyon	n	0	3	3	oewn
+oewn-California_sycamore-n	California sycamore	n	0	2	2	oewn
+oewn-California_tree_poppy-n	California tree poppy	n	0	3	3	oewn
+oewn-California_whipsnake-n	California whipsnake	n	0	2	2	oewn
+oewn-California_white_fir-n	California white fir	n	0	3	3	oewn
+oewn-California_white_oak-n	California white oak	n	0	3	3	oewn
+oewn-California_wine-n	California wine	n	0	2	2	oewn
+oewn-California_yellow_bells-n	California yellow bells	n	0	3	3	oewn
+oewn-California_yew-n	California yew	n	0	2	2	oewn
+oewn-Californian-a	Californian	a	0	1	1	oewn
+oewn-Californian-n	Californian	n	0	1	1	oewn
+oewn-Calla_palustris-n	Calla palustris	n	0	2	2	oewn
+oewn-Callimorpha_jacobeae-n	Callimorpha jacobeae	n	0	2	2	oewn
+oewn-Callinectes_sapidus-n	Callinectes sapidus	n	0	2	2	oewn
+oewn-Calliphora_vicina-n	Calliphora vicina	n	0	2	2	oewn
+oewn-Callirhoe_digitata-n	Callirhoe digitata	n	0	2	2	oewn
+oewn-Callirhoe_involucrata-n	Callirhoe involucrata	n	0	2	2	oewn
+oewn-Callirhoe_triangulata-n	Callirhoe triangulata	n	0	2	2	oewn
+oewn-Callisaurus_draconoides-n	Callisaurus draconoides	n	0	2	2	oewn
+oewn-Callistephus_chinensis-n	Callistephus chinensis	n	0	2	2	oewn
+oewn-Callitris_calcarata-n	Callitris calcarata	n	0	2	2	oewn
+oewn-Callitris_cupressiformis-n	Callitris cupressiformis	n	0	2	2	oewn
+oewn-Callitris_endlicheri-n	Callitris endlicheri	n	0	2	2	oewn
+oewn-Callitris_glauca-n	Callitris glauca	n	0	2	2	oewn
+oewn-Callitris_glaucophylla-n	Callitris glaucophylla	n	0	2	2	oewn
+oewn-Callitris_parlatorei-n	Callitris parlatorei	n	0	2	2	oewn
+oewn-Callitris_quadrivalvis-n	Callitris quadrivalvis	n	0	2	2	oewn
+oewn-Callorhinus_ursinus-n	Callorhinus ursinus	n	0	2	2	oewn
+oewn-Calluna_vulgaris-n	Calluna vulgaris	n	0	2	2	oewn
+oewn-Calnada_pea-n	Calnada pea	n	0	2	2	oewn
+oewn-Calocarpum_zapota-n	Calocarpum zapota	n	0	2	2	oewn
+oewn-Calocedrus_decurrens-n	Calocedrus decurrens	n	0	2	2	oewn
+oewn-Calochortus_albus-n	Calochortus albus	n	0	2	2	oewn
+oewn-Calochortus_amabilis-n	Calochortus amabilis	n	0	2	2	oewn
+oewn-Calochortus_amoenus-n	Calochortus amoenus	n	0	2	2	oewn
+oewn-Calochortus_elegans-n	Calochortus elegans	n	0	2	2	oewn
+oewn-Calochortus_kennedyi-n	Calochortus kennedyi	n	0	2	2	oewn
+oewn-Calochortus_luteus-n	Calochortus luteus	n	0	2	2	oewn
+oewn-Calochortus_macrocarpus-n	Calochortus macrocarpus	n	0	2	2	oewn
+oewn-Calochortus_nuttallii-n	Calochortus nuttallii	n	0	2	2	oewn
+oewn-Calophyllum_calaba-n	Calophyllum calaba	n	0	2	2	oewn
+oewn-Calophyllum_candidissimum-n	Calophyllum candidissimum	n	0	2	2	oewn
+oewn-Calophyllum_inophyllum-n	Calophyllum inophyllum	n	0	2	2	oewn
+oewn-Calophyllum_longifolium-n	Calophyllum longifolium	n	0	2	2	oewn
+oewn-Calopogon_pulchellum-n	Calopogon pulchellum	n	0	2	2	oewn
+oewn-Calopogon_tuberosum-n	Calopogon tuberosum	n	0	2	2	oewn
+oewn-Caloscypha_fulgens-n	Caloscypha fulgens	n	0	2	2	oewn
+oewn-Calosoma_scrutator-n	Calosoma scrutator	n	0	2	2	oewn
+oewn-Calostoma_cinnabarina-n	Calostoma cinnabarina	n	0	2	2	oewn
+oewn-Calostoma_lutescens-n	Calostoma lutescens	n	0	2	2	oewn
+oewn-Calostoma_ravenelii-n	Calostoma ravenelii	n	0	2	2	oewn
+oewn-Caltha_palustris-n	Caltha palustris	n	0	2	2	oewn
+oewn-Calvados-n	Calvados	n	0	1	1	oewn
+oewn-Calvary_clover-n	Calvary clover	n	0	2	2	oewn
+oewn-Calvary_cross-n	Calvary cross	n	0	2	2	oewn
+oewn-Calvatia_gigantea-n	Calvatia gigantea	n	0	2	2	oewn
+oewn-Calvinism-n	Calvinism	n	0	1	1	oewn
+oewn-Calvinist-a	Calvinist	a	0	1	1	oewn
+oewn-Calvinist-n	Calvinist	n	0	1	1	oewn
+oewn-Calvinistic-a	Calvinistic	a	0	1	1	oewn
+oewn-Calvinistic_Baptist-n	Calvinistic Baptist	n	0	2	2	oewn
+oewn-Calvinistical-a	Calvinistical	a	0	1	1	oewn
+oewn-Calycanthus_floridus-n	Calycanthus floridus	n	0	2	2	oewn
+oewn-Calycanthus_occidentalis-n	Calycanthus occidentalis	n	0	2	2	oewn
+oewn-Calycophyllum_candidissimum-n	Calycophyllum candidissimum	n	0	2	2	oewn
+oewn-Calymmatobacterium-n	Calymmatobacterium	n	0	1	1	oewn
+oewn-Calypso-n	Calypso	n	0	1	1	oewn
+oewn-Calypso_bulbosa-n	Calypso bulbosa	n	0	2	2	oewn
+oewn-Calyptridium_umbellatum-n	Calyptridium umbellatum	n	0	2	2	oewn
+oewn-Calystegia_sepium-n	Calystegia sepium	n	0	2	2	oewn
+oewn-Camassia_leichtlinii-n	Camassia leichtlinii	n	0	2	2	oewn
+oewn-Camassia_quamash-n	Camassia quamash	n	0	2	2	oewn
+oewn-Camassia_scilloides-n	Camassia scilloides	n	0	2	2	oewn
+oewn-Camberwell_beauty-n	Camberwell beauty	n	0	2	2	oewn
+oewn-Cambodian-a	Cambodian	a	0	1	1	oewn
+oewn-Cambodian-n	Cambodian	n	0	1	1	oewn
+oewn-Cambodian_monetary_unit-n	Cambodian monetary unit	n	0	3	3	oewn
+oewn-Cambrian-a	Cambrian	a	0	1	1	oewn
+oewn-Cambrian-n	Cambrian	n	0	1	1	oewn
+oewn-Camelina_sativa-n	Camelina sativa	n	0	2	2	oewn
+oewn-Camellia_japonica-n	Camellia japonica	n	0	2	2	oewn
+oewn-Camellia_sinensis-n	Camellia sinensis	n	0	2	2	oewn
+oewn-Camelus_bactrianus-n	Camelus bactrianus	n	0	2	2	oewn
+oewn-Camelus_dromedarius-n	Camelus dromedarius	n	0	2	2	oewn
+oewn-Camembert-n	Camembert	n	0	1	1	oewn
+oewn-Cameroon_franc-n	Cameroon franc	n	0	2	2	oewn
+oewn-Cameroonian-a	Cameroonian	a	0	1	1	oewn
+oewn-Cameroonian-n	Cameroonian	n	0	1	1	oewn
+oewn-Camorra-n	Camorra	n	0	1	1	oewn
+oewn-Campanula_americana-n	Campanula americana	n	0	2	2	oewn
+oewn-Campanula_aparinoides-n	Campanula aparinoides	n	0	2	2	oewn
+oewn-Campanula_carpatica-n	Campanula carpatica	n	0	2	2	oewn
+oewn-Campanula_divaricata-n	Campanula divaricata	n	0	2	2	oewn
+oewn-Campanula_glomerata-n	Campanula glomerata	n	0	2	2	oewn
+oewn-Campanula_medium-n	Campanula medium	n	0	2	2	oewn
+oewn-Campanula_persicifolia-n	Campanula persicifolia	n	0	2	2	oewn
+oewn-Campanula_pyramidalis-n	Campanula pyramidalis	n	0	2	2	oewn
+oewn-Campanula_rapunculoides-n	Campanula rapunculoides	n	0	2	2	oewn
+oewn-Campanula_rapunculus-n	Campanula rapunculus	n	0	2	2	oewn
+oewn-Campanula_rotundifolia-n	Campanula rotundifolia	n	0	2	2	oewn
+oewn-Campanula_trachelium-n	Campanula trachelium	n	0	2	2	oewn
+oewn-Campephilus_principalis-n	Campephilus principalis	n	0	2	2	oewn
+oewn-Campfire_Girl-n	Campfire Girl	n	0	2	2	oewn
+oewn-Camptosorus_rhizophyllus-n	Camptosorus rhizophyllus	n	0	2	2	oewn
+oewn-Campyloneurum_augustifolium-n	Campyloneurum augustifolium	n	0	2	2	oewn
+oewn-Canaanite-n	Canaanite	n	0	1	1	oewn
+oewn-Canaanite_language-n	Canaanite language	n	0	2	2	oewn
+oewn-Canaanitic-n	Canaanitic	n	0	1	1	oewn
+oewn-Canaanitic_language-n	Canaanitic language	n	0	2	2	oewn
+oewn-Canachites_canadensis-n	Canachites canadensis	n	0	2	2	oewn
+oewn-Canada_anemone-n	Canada anemone	n	0	2	2	oewn
+oewn-Canada_balsam-n	Canada balsam	n	0	2	2	oewn
+oewn-Canada_garlic-n	Canada garlic	n	0	2	2	oewn
+oewn-Canada_ginger-n	Canada ginger	n	0	2	2	oewn
+oewn-Canada_goose-n	Canada goose	n	0	2	2	oewn
+oewn-Canada_jay-n	Canada jay	n	0	2	2	oewn
+oewn-Canada_lily-n	Canada lily	n	0	2	2	oewn
+oewn-Canada_lynx-n	Canada lynx	n	0	2	2	oewn
+oewn-Canada_moonseed-n	Canada moonseed	n	0	2	2	oewn
+oewn-Canada_plum-n	Canada plum	n	0	2	2	oewn
+oewn-Canada_porcupine-n	Canada porcupine	n	0	2	2	oewn
+oewn-Canada_thistle-n	Canada thistle	n	0	2	2	oewn
+oewn-Canada_violet-n	Canada violet	n	0	2	2	oewn
+oewn-Canada_wild_rye-n	Canada wild rye	n	0	3	3	oewn
+oewn-Canadian-a	Canadian	a	0	1	1	oewn
+oewn-Canadian-n	Canadian	n	0	1	1	oewn
+oewn-Canadian_English-n	Canadian English	n	0	2	2	oewn
+oewn-Canadian_English_orthography-n	Canadian English orthography	n	0	3	3	oewn
+oewn-Canadian_English_spelling-n	Canadian English spelling	n	0	3	3	oewn
+oewn-Canadian_French-n	Canadian French	n	0	2	2	oewn
+oewn-Canadian_French_language-n	Canadian French language	n	0	3	3	oewn
+oewn-Canadian_Security_Intelligence_Service-n	Canadian Security Intelligence Service	n	0	4	4	oewn
+oewn-Canadian_aspen-n	Canadian aspen	n	0	2	2	oewn
+oewn-Canadian_bacon-n	Canadian bacon	n	0	2	2	oewn
+oewn-Canadian_dollar-n	Canadian dollar	n	0	2	2	oewn
+oewn-Canadian_fleabane-n	Canadian fleabane	n	0	2	2	oewn
+oewn-Canadian_goldenrod-n	Canadian goldenrod	n	0	2	2	oewn
+oewn-Canadian_goose-n	Canadian goose	n	0	2	2	oewn
+oewn-Canadian_hemlock-n	Canadian hemlock	n	0	2	2	oewn
+oewn-Canadian_pondweed-n	Canadian pondweed	n	0	2	2	oewn
+oewn-Canadian_province-n	Canadian province	n	0	2	2	oewn
+oewn-Canadian_red_pine-n	Canadian red pine	n	0	3	3	oewn
+oewn-Canadian_spelling-n	Canadian spelling	n	0	2	2	oewn
+oewn-Cananga_odorata-n	Cananga odorata	n	0	2	2	oewn
+oewn-Canarese-n	Canarese	n	0	1	1	oewn
+oewn-Canary_Island_hare-ap-s_foot_fern-n	Canary Island hare's foot fern	n	0	5	5	oewn
+oewn-Canary_wine-n	Canary wine	n	0	2	2	oewn
+oewn-Canavalia_ensiformis-n	Canavalia ensiformis	n	0	2	2	oewn
+oewn-Canavalia_gladiata-n	Canavalia gladiata	n	0	2	2	oewn
+oewn-Cancer-n	Cancer	n	0	1	1	oewn
+oewn-Cancer_borealis-n	Cancer borealis	n	0	2	2	oewn
+oewn-Cancer_irroratus-n	Cancer irroratus	n	0	2	2	oewn
+oewn-Cancer_magister-n	Cancer magister	n	0	2	2	oewn
+oewn-Candida_albicans-n	Candida albicans	n	0	2	2	oewn
+oewn-Candlemas-n	Candlemas	n	0	1	1	oewn
+oewn-Candlemas_Day-n	Candlemas Day	n	0	2	2	oewn
+oewn-Canella_alba-n	Canella alba	n	0	2	2	oewn
+oewn-Canella_winterana-n	Canella winterana	n	0	2	2	oewn
+oewn-Canis_adustus-n	Canis adustus	n	0	2	2	oewn
+oewn-Canis_anthus-n	Canis anthus	n	0	2	2	oewn
+oewn-Canis_aureus-n	Canis aureus	n	0	2	2	oewn
+oewn-Canis_dingo-n	Canis dingo	n	0	2	2	oewn
+oewn-Canis_familiaris-n	Canis familiaris	n	0	2	2	oewn
+oewn-Canis_latrans-n	Canis latrans	n	0	2	2	oewn
+oewn-Canis_lupus-n	Canis lupus	n	0	2	2	oewn
+oewn-Canis_lupus_arctos-n	Canis lupus arctos	n	0	3	3	oewn
+oewn-Canis_mesomelas-n	Canis mesomelas	n	0	2	2	oewn
+oewn-Canis_niger-n	Canis niger	n	0	2	2	oewn
+oewn-Canis_rufus-n	Canis rufus	n	0	2	2	oewn
+oewn-Canna_edulis-n	Canna edulis	n	0	2	2	oewn
+oewn-Canna_generalis-n	Canna generalis	n	0	2	2	oewn
+oewn-Canna_indica-n	Canna indica	n	0	2	2	oewn
+oewn-Cannabis_indica-n	Cannabis indica	n	0	2	2	oewn
+oewn-Cannabis_sativa-n	Cannabis sativa	n	0	2	2	oewn
+oewn-Cantabrigian-a	Cantabrigian	a	0	1	1	oewn
+oewn-Cantabrigian-n	Cantabrigian	n	0	1	1	oewn
+oewn-Canterbury_bell-n	Canterbury bell	n	0	2	2	oewn
+oewn-Cantharellus_cibarius-n	Cantharellus cibarius	n	0	2	2	oewn
+oewn-Cantharellus_cinnabarinus-n	Cantharellus cinnabarinus	n	0	2	2	oewn
+oewn-Cantharellus_clavatus-n	Cantharellus clavatus	n	0	2	2	oewn
+oewn-Cantharellus_floccosus-n	Cantharellus floccosus	n	0	2	2	oewn
+oewn-Canton_crepe-n	Canton crepe	n	0	2	2	oewn
+oewn-Canton_flannel-n	Canton flannel	n	0	2	2	oewn
+oewn-Canton_ginger-n	Canton ginger	n	0	2	2	oewn
+oewn-Cantonese-n	Cantonese	n	0	1	1	oewn
+oewn-Cantonese_dialect-n	Cantonese dialect	n	0	2	2	oewn
+oewn-Canuck-n	Canuck	n	0	1	1	oewn
+oewn-Cape_May_warbler-n	Cape May warbler	n	0	3	3	oewn
+oewn-Cape_Verde_escudo-n	Cape Verde escudo	n	0	3	3	oewn
+oewn-Cape_Verde_monetary_unit-n	Cape Verde monetary unit	n	0	4	4	oewn
+oewn-Cape_buffalo-n	Cape buffalo	n	0	2	2	oewn
+oewn-Cape_dagga-n	Cape dagga	n	0	2	2	oewn
+oewn-Cape_hunting_dog-n	Cape hunting dog	n	0	3	3	oewn
+oewn-Cape_kafferboom-n	Cape kafferboom	n	0	2	2	oewn
+oewn-Cape_lobster-n	Cape lobster	n	0	2	2	oewn
+oewn-Cape_periwinkle-n	Cape periwinkle	n	0	2	2	oewn
+oewn-Cape_primrose-n	Cape primrose	n	0	2	2	oewn
+oewn-Cape_tulip-n	Cape tulip	n	0	2	2	oewn
+oewn-Capetian-a	Capetian	a	0	1	1	oewn
+oewn-Capetian-n	Capetian	n	0	1	1	oewn
+oewn-Capetian_dynasty-n	Capetian dynasty	n	0	2	2	oewn
+oewn-Capoten-n	Capoten	n	0	1	1	oewn
+oewn-Cappadocian-a	Cappadocian	a	0	1	1	oewn
+oewn-Capparis_arborea-n	Capparis arborea	n	0	2	2	oewn
+oewn-Capparis_cynophallophora-n	Capparis cynophallophora	n	0	2	2	oewn
+oewn-Capparis_flexuosa-n	Capparis flexuosa	n	0	2	2	oewn
+oewn-Capparis_mitchellii-n	Capparis mitchellii	n	0	2	2	oewn
+oewn-Capparis_spinosa-n	Capparis spinosa	n	0	2	2	oewn
+oewn-Capra_aegagrus-n	Capra aegagrus	n	0	2	2	oewn
+oewn-Capra_falconeri-n	Capra falconeri	n	0	2	2	oewn
+oewn-Capra_hircus-n	Capra hircus	n	0	2	2	oewn
+oewn-Capra_ibex-n	Capra ibex	n	0	2	2	oewn
+oewn-Capreolus_capreolus-n	Capreolus capreolus	n	0	2	2	oewn
+oewn-Capricorn-n	Capricorn	n	0	1	1	oewn
+oewn-Caprimulgus_carolinensis-n	Caprimulgus carolinensis	n	0	2	2	oewn
+oewn-Caprimulgus_europaeus-n	Caprimulgus europaeus	n	0	2	2	oewn
+oewn-Caprimulgus_vociferus-n	Caprimulgus vociferus	n	0	2	2	oewn
+oewn-Capros_aper-n	Capros aper	n	0	2	2	oewn
+oewn-Capsella_bursa-pastoris-n	Capsella bursa-pastoris	n	0	2	2	oewn
+oewn-Capsicum_annuum_cerasiforme-n	Capsicum annuum cerasiforme	n	0	3	3	oewn
+oewn-Capsicum_annuum_conoides-n	Capsicum annuum conoides	n	0	3	3	oewn
+oewn-Capsicum_annuum_grossum-n	Capsicum annuum grossum	n	0	3	3	oewn
+oewn-Capsicum_annuum_longum-n	Capsicum annuum longum	n	0	3	3	oewn
+oewn-Capsicum_baccatum-n	Capsicum baccatum	n	0	2	2	oewn
+oewn-Capsicum_frutescens-n	Capsicum frutescens	n	0	2	2	oewn
+oewn-Capsicum_frutescens_baccatum-n	Capsicum frutescens baccatum	n	0	3	3	oewn
+oewn-Captain_Hicks-n	Captain Hicks	n	0	2	2	oewn
+oewn-Carafate-n	Carafate	n	0	1	1	oewn
+oewn-Caragana_arborescens-n	Caragana arborescens	n	0	2	2	oewn
+oewn-Caragana_sinica-n	Caragana sinica	n	0	2	2	oewn
+oewn-Caranx_bartholomaei-n	Caranx bartholomaei	n	0	2	2	oewn
+oewn-Caranx_crysos-n	Caranx crysos	n	0	2	2	oewn
+oewn-Caranx_hippos-n	Caranx hippos	n	0	2	2	oewn
+oewn-Carassius_auratus-n	Carassius auratus	n	0	2	2	oewn
+oewn-Carassius_carassius-n	Carassius carassius	n	0	2	2	oewn
+oewn-Carassius_vulgaris-n	Carassius vulgaris	n	0	2	2	oewn
+oewn-Caravaggism-n	Caravaggism	n	0	1	1	oewn
+oewn-Carboloy-n	Carboloy	n	0	1	1	oewn
+oewn-Carbonarism-n	Carbonarism	n	0	1	1	oewn
+oewn-Carcharhinus_leucas-n	Carcharhinus leucas	n	0	2	2	oewn
+oewn-Carcharhinus_limbatus-n	Carcharhinus limbatus	n	0	2	2	oewn
+oewn-Carcharhinus_longimanus-n	Carcharhinus longimanus	n	0	2	2	oewn
+oewn-Carcharhinus_obscurus-n	Carcharhinus obscurus	n	0	2	2	oewn
+oewn-Carcharhinus_plumbeus-n	Carcharhinus plumbeus	n	0	2	2	oewn
+oewn-Carcharias_taurus-n	Carcharias taurus	n	0	2	2	oewn
+oewn-Carcharinus_longimanus-n	Carcharinus longimanus	n	0	2	2	oewn
+oewn-Carcharodon_carcharias-n	Carcharodon carcharias	n	0	2	2	oewn
+oewn-Cardamine_bulbifera-n	Cardamine bulbifera	n	0	2	2	oewn
+oewn-Cardamine_bulbosa-n	Cardamine bulbosa	n	0	2	2	oewn
+oewn-Cardamine_diphylla-n	Cardamine diphylla	n	0	2	2	oewn
+oewn-Cardamine_douglasii-n	Cardamine douglasii	n	0	2	2	oewn
+oewn-Cardamine_pratensis-n	Cardamine pratensis	n	0	2	2	oewn
+oewn-Cardamine_rotundifolia-n	Cardamine rotundifolia	n	0	2	2	oewn
+oewn-Cardigan-n	Cardigan	n	0	1	1	oewn
+oewn-Cardigan_Welsh_corgi-n	Cardigan Welsh corgi	n	0	3	3	oewn
+oewn-Cardinalis_cardinalis-n	Cardinalis cardinalis	n	0	2	2	oewn
+oewn-Cardiospermum_grandiflorum-n	Cardiospermum grandiflorum	n	0	2	2	oewn
+oewn-Cardiospermum_halicacabum-n	Cardiospermum halicacabum	n	0	2	2	oewn
+oewn-Cardium_edule-n	Cardium edule	n	0	2	2	oewn
+oewn-Cardizem-n	Cardizem	n	0	1	1	oewn
+oewn-Carduelis_cannabina-n	Carduelis cannabina	n	0	2	2	oewn
+oewn-Carduelis_carduelis-n	Carduelis carduelis	n	0	2	2	oewn
+oewn-Carduelis_cucullata-n	Carduelis cucullata	n	0	2	2	oewn
+oewn-Carduelis_flammea-n	Carduelis flammea	n	0	2	2	oewn
+oewn-Carduelis_hornemanni-n	Carduelis hornemanni	n	0	2	2	oewn
+oewn-Carduelis_spinus-n	Carduelis spinus	n	0	2	2	oewn
+oewn-Cardura-n	Cardura	n	0	1	1	oewn
+oewn-Carduus_crispus-n	Carduus crispus	n	0	2	2	oewn
+oewn-Carduus_nutans-n	Carduus nutans	n	0	2	2	oewn
+oewn-Carelian-n	Carelian	n	0	1	1	oewn
+oewn-Carelian_language-n	Carelian language	n	0	2	2	oewn
+oewn-Caretta_caretta-n	Caretta caretta	n	0	2	2	oewn
+oewn-Carex_arenaria-n	Carex arenaria	n	0	2	2	oewn
+oewn-Carex_pseudocyperus-n	Carex pseudocyperus	n	0	2	2	oewn
+oewn-Cariama_cristata-n	Cariama cristata	n	0	2	2	oewn
+oewn-Carib-n	Carib	n	0	1	1	oewn
+oewn-Carib_Indian-n	Carib Indian	n	0	2	2	oewn
+oewn-Caribbean_island-n	Caribbean island	n	0	2	2	oewn
+oewn-Caribbean_language-n	Caribbean language	n	0	2	2	oewn
+oewn-Carica_papaya-n	Carica papaya	n	0	2	2	oewn
+oewn-Carioca-n	Carioca	n	0	1	1	oewn
+oewn-Carissa_bispinosa-n	Carissa bispinosa	n	0	2	2	oewn
+oewn-Carissa_grandiflora-n	Carissa grandiflora	n	0	2	2	oewn
+oewn-Carissa_macrocarpa-n	Carissa macrocarpa	n	0	2	2	oewn
+oewn-Carlina_acaulis-n	Carlina acaulis	n	0	2	2	oewn
+oewn-Carlina_vulgaris-n	Carlina vulgaris	n	0	2	2	oewn
+oewn-Carling_float-n	Carling float	n	0	2	2	oewn
+oewn-Carlovingian-n	Carlovingian	n	0	1	1	oewn
+oewn-Carlovingian_dynasty-n	Carlovingian dynasty	n	0	2	2	oewn
+oewn-Carmelite-a	Carmelite	a	0	1	1	oewn
+oewn-Carmelite-n	Carmelite	n	0	1	1	oewn
+oewn-Carmelite_order-n	Carmelite order	n	0	2	2	oewn
+oewn-Carnegiea_gigantea-n	Carnegiea gigantea	n	0	2	2	oewn
+oewn-Carniolan_bee-n	Carniolan bee	n	0	2	2	oewn
+oewn-Carnot-ap-s_ideal_cycle-n	Carnot's ideal cycle	n	0	3	3	oewn
+oewn-Carnot_cycle-n	Carnot cycle	n	0	2	2	oewn
+oewn-Carolean-a	Carolean	a	0	1	1	oewn
+oewn-Carolina_allspice-n	Carolina allspice	n	0	2	2	oewn
+oewn-Carolina_buckthorn-n	Carolina buckthorn	n	0	2	2	oewn
+oewn-Carolina_chickadee-n	Carolina chickadee	n	0	2	2	oewn
+oewn-Carolina_hemlock-n	Carolina hemlock	n	0	2	2	oewn
+oewn-Carolina_jasmine-n	Carolina jasmine	n	0	2	2	oewn
+oewn-Carolina_lupine-n	Carolina lupine	n	0	2	2	oewn
+oewn-Carolina_moonseed-n	Carolina moonseed	n	0	2	2	oewn
+oewn-Carolina_parakeet-n	Carolina parakeet	n	0	2	2	oewn
+oewn-Carolina_pond_fern-n	Carolina pond fern	n	0	3	3	oewn
+oewn-Carolina_spring_beauty-n	Carolina spring beauty	n	0	3	3	oewn
+oewn-Carolina_wren-n	Carolina wren	n	0	2	2	oewn
+oewn-Caroline-a	Caroline	a	0	1	1	oewn
+oewn-Carolingian-a	Carolingian	a	0	1	1	oewn
+oewn-Carolingian-n	Carolingian	n	0	1	1	oewn
+oewn-Carolingian_dynasty-n	Carolingian dynasty	n	0	2	2	oewn
+oewn-Carolinian-n	Carolinian	n	0	1	1	oewn
+oewn-Carpenteria_californica-n	Carpenteria californica	n	0	2	2	oewn
+oewn-Carphophis_amoenus-n	Carphophis amoenus	n	0	2	2	oewn
+oewn-Carpinus_betulus-n	Carpinus betulus	n	0	2	2	oewn
+oewn-Carpinus_caroliniana-n	Carpinus caroliniana	n	0	2	2	oewn
+oewn-Carpobrotus_edulis-n	Carpobrotus edulis	n	0	2	2	oewn
+oewn-Carpocapsa_pomonella-n	Carpocapsa pomonella	n	0	2	2	oewn
+oewn-Carpodacus_mexicanus-n	Carpodacus mexicanus	n	0	2	2	oewn
+oewn-Carpodacus_purpureus-n	Carpodacus purpureus	n	0	2	2	oewn
+oewn-Cartagena_bark-n	Cartagena bark	n	0	2	2	oewn
+oewn-Carter_administration-n	Carter administration	n	0	2	2	oewn
+oewn-Cartesian-a	Cartesian	a	0	1	1	oewn
+oewn-Cartesian-n	Cartesian	n	0	1	1	oewn
+oewn-Cartesian_coordinate-n	Cartesian coordinate	n	0	2	2	oewn
+oewn-Cartesian_coordinate_system-n	Cartesian coordinate system	n	0	3	3	oewn
+oewn-Cartesian_plane-n	Cartesian plane	n	0	2	2	oewn
+oewn-Cartesian_product-n	Cartesian product	n	0	2	2	oewn
+oewn-Carthaginian-a	Carthaginian	a	0	1	1	oewn
+oewn-Carthaginian-n	Carthaginian	n	0	1	1	oewn
+oewn-Carthamus_tinctorius-n	Carthamus tinctorius	n	0	2	2	oewn
+oewn-Carthusian-a	Carthusian	a	0	1	1	oewn
+oewn-Carthusian-n	Carthusian	n	0	1	1	oewn
+oewn-Carthusian_order-n	Carthusian order	n	0	2	2	oewn
+oewn-Carum_carvi-n	Carum carvi	n	0	2	2	oewn
+oewn-Carya_aquatica-n	Carya aquatica	n	0	2	2	oewn
+oewn-Carya_cordiformis-n	Carya cordiformis	n	0	2	2	oewn
+oewn-Carya_glabra-n	Carya glabra	n	0	2	2	oewn
+oewn-Carya_illinoensis-n	Carya illinoensis	n	0	2	2	oewn
+oewn-Carya_illinoinsis-n	Carya illinoinsis	n	0	2	2	oewn
+oewn-Carya_laciniosa-n	Carya laciniosa	n	0	2	2	oewn
+oewn-Carya_myristicaeformis-n	Carya myristicaeformis	n	0	2	2	oewn
+oewn-Carya_myristiciformis-n	Carya myristiciformis	n	0	2	2	oewn
+oewn-Carya_ovata-n	Carya ovata	n	0	2	2	oewn
+oewn-Carya_tomentosa-n	Carya tomentosa	n	0	2	2	oewn
+oewn-Caryocar_nuciferum-n	Caryocar nuciferum	n	0	2	2	oewn
+oewn-Caryota_urens-n	Caryota urens	n	0	2	2	oewn
+oewn-Casanova-n	Casanova	n	0	1	1	oewn
+oewn-Cashmere_goat-n	Cashmere goat	n	0	2	2	oewn
+oewn-Casmerodius_albus-n	Casmerodius albus	n	0	2	2	oewn
+oewn-Cassegrainian_telescope-n	Cassegrainian telescope	n	0	2	2	oewn
+oewn-Cassia_acutifolia-n	Cassia acutifolia	n	0	2	2	oewn
+oewn-Cassia_alata-n	Cassia alata	n	0	2	2	oewn
+oewn-Cassia_augustifolia-n	Cassia augustifolia	n	0	2	2	oewn
+oewn-Cassia_auriculata-n	Cassia auriculata	n	0	2	2	oewn
+oewn-Cassia_fasciculata-n	Cassia fasciculata	n	0	2	2	oewn
+oewn-Cassia_fistula-n	Cassia fistula	n	0	2	2	oewn
+oewn-Cassia_grandis-n	Cassia grandis	n	0	2	2	oewn
+oewn-Cassia_javonica-n	Cassia javonica	n	0	2	2	oewn
+oewn-Cassia_marginata-n	Cassia marginata	n	0	2	2	oewn
+oewn-Cassia_marilandica-n	Cassia marilandica	n	0	2	2	oewn
+oewn-Cassia_occidentalis-n	Cassia occidentalis	n	0	2	2	oewn
+oewn-Cassia_roxburghii-n	Cassia roxburghii	n	0	2	2	oewn
+oewn-Cassia_tora-n	Cassia tora	n	0	2	2	oewn
+oewn-Cassin-ap-s_kingbird-n	Cassin's kingbird	n	0	2	2	oewn
+oewn-Cassiope_mertensiana-n	Cassiope mertensiana	n	0	2	2	oewn
+oewn-Cassite-n	Cassite	n	0	1	1	oewn
+oewn-Cassite_language-n	Cassite language	n	0	2	2	oewn
+oewn-Castanea_chrysophylla-n	Castanea chrysophylla	n	0	2	2	oewn
+oewn-Castanea_crenata-n	Castanea crenata	n	0	2	2	oewn
+oewn-Castanea_dentata-n	Castanea dentata	n	0	2	2	oewn
+oewn-Castanea_mollissima-n	Castanea mollissima	n	0	2	2	oewn
+oewn-Castanea_ozarkensis-n	Castanea ozarkensis	n	0	2	2	oewn
+oewn-Castanea_pumila-n	Castanea pumila	n	0	2	2	oewn
+oewn-Castanea_sativa-n	Castanea sativa	n	0	2	2	oewn
+oewn-Castanopsis_chrysophylla-n	Castanopsis chrysophylla	n	0	2	2	oewn
+oewn-Castilian-n	Castilian	n	0	1	1	oewn
+oewn-Castilian_language-n	Castilian language	n	0	2	2	oewn
+oewn-Castilleja_chromosa-n	Castilleja chromosa	n	0	2	2	oewn
+oewn-Castilleja_miniata-n	Castilleja miniata	n	0	2	2	oewn
+oewn-Castilleja_sessiliflora-n	Castilleja sessiliflora	n	0	2	2	oewn
+oewn-Castilleja_sulphurea-n	Castilleja sulphurea	n	0	2	2	oewn
+oewn-Castor_canadensis-n	Castor canadensis	n	0	2	2	oewn
+oewn-Castor_fiber-n	Castor fiber	n	0	2	2	oewn
+oewn-Castroism-n	Castroism	n	0	1	1	oewn
+oewn-Casualty_Care_Research_Center-n	Casualty Care Research Center	n	0	4	4	oewn
+oewn-Casuarina_equisetfolia-n	Casuarina equisetfolia	n	0	2	2	oewn
+oewn-Cataflam-n	Cataflam	n	0	1	1	oewn
+oewn-Catalan-a	Catalan	a	0	1	1	oewn
+oewn-Catalan-n	Catalan	n	0	1	1	oewn
+oewn-Catalan_language-n	Catalan language	n	0	2	2	oewn
+oewn-Catalina_cherry-n	Catalina cherry	n	0	2	2	oewn
+oewn-Catalpa_bignioides-n	Catalpa bignioides	n	0	2	2	oewn
+oewn-Catalpa_speciosa-n	Catalpa speciosa	n	0	2	2	oewn
+oewn-Catananche_caerulea-n	Catananche caerulea	n	0	2	2	oewn
+oewn-Catapres-n	Catapres	n	0	1	1	oewn
+oewn-Catasetum_macrocarpum-n	Catasetum macrocarpum	n	0	2	2	oewn
+oewn-Catawba-n	Catawba	n	0	1	1	oewn
+oewn-Catawba_language-n	Catawba language	n	0	2	2	oewn
+oewn-Caterpillar-n	Caterpillar	n	0	1	1	oewn
+oewn-Catha_edulis-n	Catha edulis	n	0	2	2	oewn
+oewn-Catharacta_skua-n	Catharacta skua	n	0	2	2	oewn
+oewn-Catharanthus_roseus-n	Catharanthus roseus	n	0	2	2	oewn
+oewn-Cathari-n	Cathari	n	0	1	1	oewn
+oewn-Catharism-n	Catharism	n	0	1	1	oewn
+oewn-Cathars-n	Cathars	n	0	1	1	oewn
+oewn-Cathartes_aura-n	Cathartes aura	n	0	2	2	oewn
+oewn-Cathaya-n	Cathaya	n	0	1	1	oewn
+oewn-Catholic-a	Catholic	a	0	1	1	oewn
+oewn-Catholic-n	Catholic	n	0	1	1	oewn
+oewn-Catholic_Church-n	Catholic Church	n	0	2	2	oewn
+oewn-Catholic_Pope-n	Catholic Pope	n	0	2	2	oewn
+oewn-Catholic_school-n	Catholic school	n	0	2	2	oewn
+oewn-Catholicism-n	Catholicism	n	0	1	1	oewn
+oewn-Catholicity-n	Catholicity	n	0	1	1	oewn
+oewn-Catholicos-n	Catholicos	n	0	1	1	oewn
+oewn-Catocala_nupta-n	Catocala nupta	n	0	2	2	oewn
+oewn-Catoptrophorus_semipalmatus-n	Catoptrophorus semipalmatus	n	0	2	2	oewn
+oewn-Cattleya_citrina-n	Cattleya citrina	n	0	2	2	oewn
+oewn-Caucasian-a	Caucasian	a	0	1	1	oewn
+oewn-Caucasian-n	Caucasian	n	0	1	1	oewn
+oewn-Caucasian_language-n	Caucasian language	n	0	2	2	oewn
+oewn-Caucasian_race-n	Caucasian race	n	0	2	2	oewn
+oewn-Caucasian_walnut-n	Caucasian walnut	n	0	2	2	oewn
+oewn-Caucasic-a	Caucasic	a	0	1	1	oewn
+oewn-Caucasoid-a	Caucasoid	a	0	1	1	oewn
+oewn-Caucasoid_race-n	Caucasoid race	n	0	2	2	oewn
+oewn-Caulophyllum_thalictrioides-n	Caulophyllum thalictrioides	n	0	2	2	oewn
+oewn-Caulophyllum_thalictroides-n	Caulophyllum thalictroides	n	0	2	2	oewn
+oewn-Cavalier-n	Cavalier	n	0	1	1	oewn
+oewn-Cavia_cobaya-n	Cavia cobaya	n	0	2	2	oewn
+oewn-Cavia_porcellus-n	Cavia porcellus	n	0	2	2	oewn
+oewn-Cayman_Islands_dollar-n	Cayman Islands dollar	n	0	3	3	oewn
+oewn-Cayuga-n	Cayuga	n	0	1	1	oewn
+oewn-Cayuga_language-n	Cayuga language	n	0	2	2	oewn
+oewn-ca-ca-v	ca-ca	v	0	1	1	oewn
+oewn-cab-n	cab	n	0	1	1	oewn
+oewn-cab-v	cab	v	0	1	1	oewn
+oewn-cab_fare-n	cab fare	n	0	2	2	oewn
+oewn-cabal-n	cabal	n	0	1	1	oewn
+oewn-cabal-v	cabal	v	0	1	1	oewn
+oewn-cabala-n	cabala	n	0	1	1	oewn
+oewn-cabalism-n	cabalism	n	0	1	1	oewn
+oewn-cabalist-n	cabalist	n	0	1	1	oewn
+oewn-cabalistic-a	cabalistic	a	0	1	1	oewn
+oewn-cabana-n	cabana	n	0	1	1	oewn
+oewn-cabaret-n	cabaret	n	0	1	1	oewn
+oewn-cabasset-n	cabasset	n	0	1	1	oewn
+oewn-cabassous-n	cabassous	n	0	1	1	oewn
+oewn-cabbage-bark_tree-n	cabbage-bark tree	n	0	2	2	oewn
+oewn-cabbage-n	cabbage	n	0	1	1	oewn
+oewn-cabbage-v	cabbage	v	0	1	1	oewn
+oewn-cabbage_bark-n	cabbage bark	n	0	2	2	oewn
+oewn-cabbage_butterfly-n	cabbage butterfly	n	0	2	2	oewn
+oewn-cabbage_palm-n	cabbage palm	n	0	2	2	oewn
+oewn-cabbage_palmetto-n	cabbage palmetto	n	0	2	2	oewn
+oewn-cabbage_tree-n	cabbage tree	n	0	2	2	oewn
+oewn-cabbageworm-n	cabbageworm	n	0	1	1	oewn
+oewn-cabbala-n	cabbala	n	0	1	1	oewn
+oewn-cabbalah-n	cabbalah	n	0	1	1	oewn
+oewn-cabby-n	cabby	n	0	1	1	oewn
+oewn-cabdriver-n	cabdriver	n	0	1	1	oewn
+oewn-caber-n	caber	n	0	1	1	oewn
+oewn-cabin-n	cabin	n	0	1	1	oewn
+oewn-cabin-v	cabin	v	0	1	1	oewn
+oewn-cabin_boy-n	cabin boy	n	0	2	2	oewn
+oewn-cabin_car-n	cabin car	n	0	2	2	oewn
+oewn-cabin_class-n	cabin class	n	0	2	2	oewn
+oewn-cabin_cruiser-n	cabin cruiser	n	0	2	2	oewn
+oewn-cabin_girl-n	cabin girl	n	0	2	2	oewn
+oewn-cabin_liner-n	cabin liner	n	0	2	2	oewn
+oewn-cabinet-n	cabinet	n	0	1	1	oewn
+oewn-cabinet_minister-n	cabinet minister	n	0	2	2	oewn
+oewn-cabinet_wood-n	cabinet wood	n	0	2	2	oewn
+oewn-cabinetmaker-n	cabinetmaker	n	0	1	1	oewn
+oewn-cabinetmaking-n	cabinetmaking	n	0	1	1	oewn
+oewn-cabinetry-n	cabinetry	n	0	1	1	oewn
+oewn-cabinetwork-n	cabinetwork	n	0	1	1	oewn
+oewn-cable-ap-s_length-n	cable's length	n	0	2	2	oewn
+oewn-cable-n	cable	n	0	1	1	oewn
+oewn-cable-v	cable	v	0	1	1	oewn
+oewn-cable_car-n	cable car	n	0	2	2	oewn
+oewn-cable_length-n	cable length	n	0	2	2	oewn
+oewn-cable_radio-n	cable radio	n	0	2	2	oewn
+oewn-cable_railway-n	cable railway	n	0	2	2	oewn
+oewn-cable_system-n	cable system	n	0	2	2	oewn
+oewn-cable_television-n	cable television	n	0	2	2	oewn
+oewn-cable_television_service-n	cable television service	n	0	3	3	oewn
+oewn-cable_tramway-n	cable tramway	n	0	2	2	oewn
+oewn-cablegram-n	cablegram	n	0	1	1	oewn
+oewn-cabman-n	cabman	n	0	1	1	oewn
+oewn-cabochon-n	cabochon	n	0	1	1	oewn
+oewn-caboodle-n	caboodle	n	0	1	1	oewn
+oewn-caboose-n	caboose	n	0	1	1	oewn
+oewn-cabotage-n	cabotage	n	0	1	1	oewn
+oewn-cabriolet-n	cabriolet	n	0	1	1	oewn
+oewn-cabstand-n	cabstand	n	0	1	1	oewn
+oewn-cacao-n	cacao	n	0	1	1	oewn
+oewn-cacao_bean-n	cacao bean	n	0	2	2	oewn
+oewn-cacao_moth-n	cacao moth	n	0	2	2	oewn
+oewn-cacao_tree-n	cacao tree	n	0	2	2	oewn
+oewn-cachalot-n	cachalot	n	0	1	1	oewn
+oewn-cache-n	cache	n	0	1	1	oewn
+oewn-cache-v	cache	v	0	1	1	oewn
+oewn-cachectic-a	cachectic	a	0	1	1	oewn
+oewn-cachet-n	cachet	n	0	1	1	oewn
+oewn-cachexia-n	cachexia	n	0	1	1	oewn
+oewn-cachexy-n	cachexy	n	0	1	1	oewn
+oewn-cachinnate-v	cachinnate	v	0	1	1	oewn
+oewn-cachinnation-n	cachinnation	n	0	1	1	oewn
+oewn-cachou-n	cachou	n	0	1	1	oewn
+oewn-cacique-n	cacique	n	0	1	1	oewn
+oewn-cackle-n	cackle	n	0	1	1	oewn
+oewn-cackle-v	cackle	v	0	1	1	oewn
+oewn-cackler-n	cackler	n	0	1	1	oewn
+oewn-cackly-a	cackly	a	0	1	1	oewn
+oewn-cacodaemon-n	cacodaemon	n	0	1	1	oewn
+oewn-cacodaemonic-a	cacodaemonic	a	0	1	1	oewn
+oewn-cacodemon-n	cacodemon	n	0	1	1	oewn
+oewn-cacodemonic-a	cacodemonic	a	0	1	1	oewn
+oewn-cacodyl-n	cacodyl	n	0	1	1	oewn
+oewn-cacodyl_group-n	cacodyl group	n	0	2	2	oewn
+oewn-cacodyl_radical-n	cacodyl radical	n	0	2	2	oewn
+oewn-cacodylic-a	cacodylic	a	0	1	1	oewn
+oewn-cacoethes-n	cacoethes	n	0	1	1	oewn
+oewn-cacogenesis-n	cacogenesis	n	0	1	1	oewn
+oewn-cacogenic-a	cacogenic	a	0	1	1	oewn
+oewn-cacogenics-n	cacogenics	n	0	1	1	oewn
+oewn-cacography-n	cacography	n	0	1	1	oewn
+oewn-cacomistle-n	cacomistle	n	0	1	1	oewn
+oewn-cacomixle-n	cacomixle	n	0	1	1	oewn
+oewn-cacophonic-a	cacophonic	a	0	1	1	oewn
+oewn-cacophonous-a	cacophonous	a	0	1	1	oewn
+oewn-cacophony-n	cacophony	n	0	1	1	oewn
+oewn-cactus-n	cactus	n	0	1	1	oewn
+oewn-cactus_euphorbia-n	cactus euphorbia	n	0	2	2	oewn
+oewn-cactus_mouse-n	cactus mouse	n	0	2	2	oewn
+oewn-cactus_wren-n	cactus wren	n	0	2	2	oewn
+oewn-cacuminal-a	cacuminal	a	0	1	1	oewn
+oewn-cad-n	cad	n	0	1	1	oewn
+oewn-cadaster-n	cadaster	n	0	1	1	oewn
+oewn-cadastral-a	cadastral	a	0	1	1	oewn
+oewn-cadastral_value-n	cadastral value	n	0	2	2	oewn
+oewn-cadastre-n	cadastre	n	0	1	1	oewn
+oewn-cadaver-n	cadaver	n	0	1	1	oewn
+oewn-cadaveric-a	cadaveric	a	0	1	1	oewn
+oewn-cadaverine-n	cadaverine	n	0	1	1	oewn
+oewn-cadaverous-a	cadaverous	a	0	1	1	oewn
+oewn-caddice-fly-n	caddice-fly	n	0	1	1	oewn
+oewn-caddice_fly-n	caddice fly	n	0	2	2	oewn
+oewn-caddie-n	caddie	n	0	1	1	oewn
+oewn-caddie-v	caddie	v	0	1	1	oewn
+oewn-caddis-fly-n	caddis-fly	n	0	1	1	oewn
+oewn-caddis_fly-n	caddis fly	n	0	2	2	oewn
+oewn-caddish-a	caddish	a	0	1	1	oewn
+oewn-caddisworm-n	caddisworm	n	0	1	1	oewn
+oewn-caddy-n	caddy	n	0	1	1	oewn
+oewn-caddy-v	caddy	v	0	1	1	oewn
+oewn-cadence-n	cadence	n	0	1	1	oewn
+oewn-cadenced-a	cadenced	a	0	1	1	oewn
+oewn-cadency-n	cadency	n	0	1	1	oewn
+oewn-cadent-a	cadent	a	0	1	1	oewn
+oewn-cadenza-n	cadenza	n	0	1	1	oewn
+oewn-cadet-n	cadet	n	0	1	1	oewn
+oewn-cadetship-n	cadetship	n	0	1	1	oewn
+oewn-cadge-v	cadge	v	0	1	1	oewn
+oewn-cadger-n	cadger	n	0	1	1	oewn
+oewn-cadmium-n	cadmium	n	0	1	1	oewn
+oewn-cadmium_cell-n	cadmium cell	n	0	2	2	oewn
+oewn-cadmium_orange-n	cadmium orange	n	0	2	2	oewn
+oewn-cadmium_sulfide-n	cadmium sulfide	n	0	2	2	oewn
+oewn-cadmium_sulphide-n	cadmium sulphide	n	0	2	2	oewn
+oewn-cadmium_yellow-n	cadmium yellow	n	0	2	2	oewn
+oewn-cadmium_yellow_pale-n	cadmium yellow pale	n	0	3	3	oewn
+oewn-cadre-n	cadre	n	0	1	1	oewn
+oewn-caducean-a	caducean	a	0	1	1	oewn
+oewn-caduceus-n	caduceus	n	0	1	1	oewn
+oewn-caducous-a	caducous	a	0	1	1	oewn
+oewn-caecal-a	caecal	a	0	1	1	oewn
+oewn-caecilian-a	caecilian	a	0	1	1	oewn
+oewn-caecilian-n	caecilian	n	0	1	1	oewn
+oewn-caecum-n	caecum	n	0	1	1	oewn
+oewn-caenogenesis-n	caenogenesis	n	0	1	1	oewn
+oewn-caesarean-a	caesarean	a	0	1	1	oewn
+oewn-caesarean-n	caesarean	n	0	1	1	oewn
+oewn-caesarean_delivery-n	caesarean delivery	n	0	2	2	oewn
+oewn-caesarean_section-n	caesarean section	n	0	2	2	oewn
+oewn-caesarian-a	caesarian	a	0	1	1	oewn
+oewn-caesarian-n	caesarian	n	0	1	1	oewn
+oewn-caesarian_delivery-n	caesarian delivery	n	0	2	2	oewn
+oewn-caesarian_section-n	caesarian section	n	0	2	2	oewn
+oewn-caesium-n	caesium	n	0	1	1	oewn
+oewn-caesium_clock-n	caesium clock	n	0	2	2	oewn
+oewn-caespitose-a	caespitose	a	0	1	1	oewn
+oewn-caesura-n	caesura	n	0	1	1	oewn
+oewn-caesural-a	caesural	a	0	1	1	oewn
+oewn-cafe-n	cafe	n	0	1	1	oewn
+oewn-cafe_au_lait-n	cafe au lait	n	0	3	3	oewn
+oewn-cafe_curtain-n	cafe curtain	n	0	2	2	oewn
+oewn-cafe_noir-n	cafe noir	n	0	2	2	oewn
+oewn-cafe_royale-n	cafe royale	n	0	2	2	oewn
+oewn-cafeteria-n	cafeteria	n	0	1	1	oewn
+oewn-cafeteria_facility-n	cafeteria facility	n	0	2	2	oewn
+oewn-cafeteria_tray-n	cafeteria tray	n	0	2	2	oewn
+oewn-caff-n	caff	n	0	1	1	oewn
+oewn-caffe_latte-n	caffe latte	n	0	2	2	oewn
+oewn-caffein-n	caffein	n	0	1	1	oewn
+oewn-caffein_addict-n	caffein addict	n	0	2	2	oewn
+oewn-caffein_addiction-n	caffein addiction	n	0	2	2	oewn
+oewn-caffeine-n	caffeine	n	0	1	1	oewn
+oewn-caffeine_addict-n	caffeine addict	n	0	2	2	oewn
+oewn-caffeine_intoxication-n	caffeine intoxication	n	0	2	2	oewn
+oewn-caffeinic-a	caffeinic	a	0	1	1	oewn
+oewn-caffeinism-n	caffeinism	n	0	1	1	oewn
+oewn-caffer-n	caffer	n	0	1	1	oewn
+oewn-caffer_cat-n	caffer cat	n	0	2	2	oewn
+oewn-caffre-n	caffre	n	0	1	1	oewn
+oewn-caftan-n	caftan	n	0	1	1	oewn
+oewn-cage-n	cage	n	0	1	1	oewn
+oewn-cage-v	cage	v	0	1	1	oewn
+oewn-cage_in-v	cage in	v	0	2	1	oewn
+oewn-cager-n	cager	n	0	1	1	oewn
+oewn-cagey-a	cagey	a	0	1	1	oewn
+oewn-cagily-r	cagily	r	0	1	1	oewn
+oewn-cagoule-n	cagoule	n	0	1	1	oewn
+oewn-cagy-a	cagy	a	0	1	1	oewn
+oewn-cahoot-n	cahoot	n	0	1	1	oewn
+oewn-caiman-n	caiman	n	0	1	1	oewn
+oewn-caiman_lizard-n	caiman lizard	n	0	2	2	oewn
+oewn-caimitillo-n	caimitillo	n	0	1	1	oewn
+oewn-caimito-n	caimito	n	0	1	1	oewn
+oewn-cainogenesis-n	cainogenesis	n	0	1	1	oewn
+oewn-caipiblack-n	caipiblack	n	0	1	1	oewn
+oewn-cairn-n	cairn	n	0	1	1	oewn
+oewn-cairn_terrier-n	cairn terrier	n	0	2	2	oewn
+oewn-cairned-a	cairned	a	0	1	1	oewn
+oewn-cairngorm-n	cairngorm	n	0	1	1	oewn
+oewn-caisson-n	caisson	n	0	1	1	oewn
+oewn-caisson_disease-n	caisson disease	n	0	2	2	oewn
+oewn-caitiff-a	caitiff	a	0	1	1	oewn
+oewn-caitiff-n	caitiff	n	0	1	1	oewn
+oewn-cajan_pea-n	cajan pea	n	0	2	2	oewn
+oewn-cajole-v	cajole	v	0	1	1	oewn
+oewn-cajolery-n	cajolery	n	0	1	1	oewn
+oewn-cajolingly-r	cajolingly	r	0	1	1	oewn
+oewn-cake-n	cake	n	0	1	1	oewn
+oewn-cake-v	cake	v	0	1	1	oewn
+oewn-cake_mix-n	cake mix	n	0	2	2	oewn
+oewn-cake_mold-n	cake mold	n	0	2	2	oewn
+oewn-cake_mould-n	cake mould	n	0	2	2	oewn
+oewn-cake_tin-n	cake tin	n	0	2	2	oewn
+oewn-cakehole-n	cakehole	n	0	1	1	oewn
+oewn-cakewalk-n	cakewalk	n	0	1	1	oewn
+oewn-cakewalk-v	cakewalk	v	0	1	1	oewn
+oewn-calaba-n	calaba	n	0	1	1	oewn
+oewn-calabar-bean_vine-n	calabar-bean vine	n	0	2	2	oewn
+oewn-calabar_bean-n	calabar bean	n	0	2	2	oewn
+oewn-calabash-n	calabash	n	0	1	1	oewn
+oewn-calabash_pipe-n	calabash pipe	n	0	2	2	oewn
+oewn-calabash_tree-n	calabash tree	n	0	2	2	oewn
+oewn-calabazilla-n	calabazilla	n	0	1	1	oewn
+oewn-calabur_tree-n	calabur tree	n	0	2	2	oewn
+oewn-calabura-n	calabura	n	0	1	1	oewn
+oewn-caladenia-n	caladenia	n	0	1	1	oewn
+oewn-caladium-n	caladium	n	0	1	1	oewn
+oewn-calamari-n	calamari	n	0	1	1	oewn
+oewn-calamary-n	calamary	n	0	1	1	oewn
+oewn-calamine-n	calamine	n	0	1	1	oewn
+oewn-calamine_lotion-n	calamine lotion	n	0	2	2	oewn
+oewn-calamint-n	calamint	n	0	1	1	oewn
+oewn-calamitous-a	calamitous	a	0	1	1	oewn
+oewn-calamity-n	calamity	n	0	1	1	oewn
+oewn-calamondin-n	calamondin	n	0	1	1	oewn
+oewn-calamus-n	calamus	n	0	1	1	oewn
+oewn-calamus_oil-n	calamus oil	n	0	2	2	oewn
+oewn-calando-a	calando	a	0	1	1	oewn
+oewn-calanthe-n	calanthe	n	0	1	1	oewn
+oewn-calash-n	calash	n	0	1	1	oewn
+oewn-calash_top-n	calash top	n	0	2	2	oewn
+oewn-calathian_violet-n	calathian violet	n	0	2	2	oewn
+oewn-calc-tufa-n	calc-tufa	n	0	1	1	oewn
+oewn-calcaneal-a	calcaneal	a	0	1	1	oewn
+oewn-calcaneus-n	calcaneus	n	0	1	1	oewn
+oewn-calcareous-a	calcareous	a	0	1	1	oewn
+oewn-calcarine_fissure-n	calcarine fissure	n	0	2	2	oewn
+oewn-calcarine_sulcus-n	calcarine sulcus	n	0	2	2	oewn
+oewn-calced-a	calced	a	0	1	1	oewn
+oewn-calcedony-n	calcedony	n	0	1	1	oewn
+oewn-calceiform-a	calceiform	a	0	1	1	oewn
+oewn-calceolaria-n	calceolaria	n	0	1	1	oewn
+oewn-calceolate-a	calceolate	a	0	1	1	oewn
+oewn-calceus-n	calceus	n	0	1	1	oewn
+oewn-calcic-a	calcic	a	0	1	1	oewn
+oewn-calcicolous-a	calcicolous	a	0	1	1	oewn
+oewn-calciferol-n	calciferol	n	0	1	1	oewn
+oewn-calciferous-a	calciferous	a	0	1	1	oewn
+oewn-calcific-a	calcific	a	0	1	1	oewn
+oewn-calcification-n	calcification	n	0	1	1	oewn
+oewn-calcifugous-a	calcifugous	a	0	1	1	oewn
+oewn-calcify-v	calcify	v	0	1	1	oewn
+oewn-calcimine-n	calcimine	n	0	1	1	oewn
+oewn-calcimine-v	calcimine	v	0	1	1	oewn
+oewn-calcination-n	calcination	n	0	1	1	oewn
+oewn-calcine-v	calcine	v	0	1	1	oewn
+oewn-calcined_lime-n	calcined lime	n	0	2	2	oewn
+oewn-calcite-n	calcite	n	0	1	1	oewn
+oewn-calcitic-a	calcitic	a	0	1	1	oewn
+oewn-calcitonin-n	calcitonin	n	0	1	1	oewn
+oewn-calcium-channel_blocker-n	calcium-channel blocker	n	0	2	2	oewn
+oewn-calcium-cyanamide-n	calcium-cyanamide	n	0	1	1	oewn
+oewn-calcium-n	calcium	n	0	1	1	oewn
+oewn-calcium-silicate_brick-n	calcium-silicate brick	n	0	2	2	oewn
+oewn-calcium_bicarbonate-n	calcium bicarbonate	n	0	2	2	oewn
+oewn-calcium_blocker-n	calcium blocker	n	0	2	2	oewn
+oewn-calcium_carbide-n	calcium carbide	n	0	2	2	oewn
+oewn-calcium_carbonate-n	calcium carbonate	n	0	2	2	oewn
+oewn-calcium_chloride-n	calcium chloride	n	0	2	2	oewn
+oewn-calcium_hydrate-n	calcium hydrate	n	0	2	2	oewn
+oewn-calcium_hydride-n	calcium hydride	n	0	2	2	oewn
+oewn-calcium_hydroxide-n	calcium hydroxide	n	0	2	2	oewn
+oewn-calcium_hypochlorite-n	calcium hypochlorite	n	0	2	2	oewn
+oewn-calcium_ion-n	calcium ion	n	0	2	2	oewn
+oewn-calcium_lactate-n	calcium lactate	n	0	2	2	oewn
+oewn-calcium_light-n	calcium light	n	0	2	2	oewn
+oewn-calcium_nitrate-n	calcium nitrate	n	0	2	2	oewn
+oewn-calcium_octadecanoate-n	calcium octadecanoate	n	0	2	2	oewn
+oewn-calcium_oxide-n	calcium oxide	n	0	2	2	oewn
+oewn-calcium_phosphate-n	calcium phosphate	n	0	2	2	oewn
+oewn-calcium_stearate-n	calcium stearate	n	0	2	2	oewn
+oewn-calcium_sulfate-n	calcium sulfate	n	0	2	2	oewn
+oewn-calcium_sulphate-n	calcium sulphate	n	0	2	2	oewn
+oewn-calculability-n	calculability	n	0	1	1	oewn
+oewn-calculable-a	calculable	a	0	1	1	oewn
+oewn-calculate-v	calculate	v	0	1	1	oewn
+oewn-calculated-a	calculated	a	0	1	1	oewn
+oewn-calculating-a	calculating	a	0	1	1	oewn
+oewn-calculating_machine-n	calculating machine	n	0	2	2	oewn
+oewn-calculatingly-r	calculatingly	r	0	1	1	oewn
+oewn-calculation-n	calculation	n	0	1	1	oewn
+oewn-calculative-a	calculative	a	0	1	1	oewn
+oewn-calculator-n	calculator	n	0	1	1	oewn
+oewn-calculous-a	calculous	a	0	1	1	oewn
+oewn-calculus-n	calculus	n	0	1	1	oewn
+oewn-calculus_of_variations-n	calculus of variations	n	0	3	1	oewn
+oewn-caldera-n	caldera	n	0	1	1	oewn
+oewn-caldron-n	caldron	n	0	1	1	oewn
+oewn-calean-n	calean	n	0	1	1	oewn
+oewn-caleche-n	caleche	n	0	1	1	oewn
+oewn-calefacient-a	calefacient	a	0	1	1	oewn
+oewn-calefaction-n	calefaction	n	0	1	1	oewn
+oewn-calefactive-a	calefactive	a	0	1	1	oewn
+oewn-calefactory-a	calefactory	a	0	1	1	oewn
+oewn-calendar-n	calendar	n	0	1	1	oewn
+oewn-calendar-v	calendar	v	0	1	1	oewn
+oewn-calendar_day-n	calendar day	n	0	2	2	oewn
+oewn-calendar_method-n	calendar method	n	0	2	2	oewn
+oewn-calendar_method_of_birth_control-n	calendar method of birth control	n	0	5	2	oewn
+oewn-calendar_month-n	calendar month	n	0	2	2	oewn
+oewn-calendar_week-n	calendar week	n	0	2	2	oewn
+oewn-calendar_year-n	calendar year	n	0	2	2	oewn
+oewn-calender-n	calender	n	0	1	1	oewn
+oewn-calender-v	calender	v	0	1	1	oewn
+oewn-calendered-a	calendered	a	0	1	1	oewn
+oewn-calendric-a	calendric	a	0	1	1	oewn
+oewn-calendrical-a	calendrical	a	0	1	1	oewn
+oewn-calendula-n	calendula	n	0	1	1	oewn
+oewn-calf-ap-s-foot_jelly-n	calf's-foot jelly	n	0	2	2	oewn
+oewn-calf-ap-s_brain-n	calf's brain	n	0	2	2	oewn
+oewn-calf-ap-s_liver-n	calf's liver	n	0	2	2	oewn
+oewn-calf-ap-s_tongue-n	calf's tongue	n	0	2	2	oewn
+oewn-calf-n	calf	n	0	1	1	oewn
+oewn-calf_bone-n	calf bone	n	0	2	2	oewn
+oewn-calf_love-n	calf love	n	0	2	2	oewn
+oewn-calf_roping-n	calf roping	n	0	2	2	oewn
+oewn-calfskin-n	calfskin	n	0	1	1	oewn
+oewn-caliber-n	caliber	n	0	1	1	oewn
+oewn-calibrate-v	calibrate	v	0	1	1	oewn
+oewn-calibrated-a	calibrated	a	0	1	1	oewn
+oewn-calibration-n	calibration	n	0	1	1	oewn
+oewn-calibre-n	calibre	n	0	1	1	oewn
+oewn-caliche-n	caliche	n	0	1	1	oewn
+oewn-caliche-topped-a	caliche-topped	a	0	1	1	oewn
+oewn-calico-a	calico	a	0	1	1	oewn
+oewn-calico-n	calico	n	0	1	1	oewn
+oewn-calico_aster-n	calico aster	n	0	2	2	oewn
+oewn-calico_bush-n	calico bush	n	0	2	2	oewn
+oewn-calico_cat-n	calico cat	n	0	2	2	oewn
+oewn-calico_crab-n	calico crab	n	0	2	2	oewn
+oewn-calicular-a	calicular	a	0	1	1	oewn
+oewn-caliculus-n	caliculus	n	0	1	1	oewn
+oewn-calif-n	calif	n	0	1	1	oewn
+oewn-californium-n	californium	n	0	1	1	oewn
+oewn-caliginous-a	caliginous	a	0	1	1	oewn
+oewn-caliper-n	caliper	n	0	1	1	oewn
+oewn-caliper-v	caliper	v	0	1	1	oewn
+oewn-caliph-n	caliph	n	0	1	1	oewn
+oewn-caliphate-n	caliphate	n	0	1	1	oewn
+oewn-calisaya-n	calisaya	n	0	1	1	oewn
+oewn-calisthenic-a	calisthenic	a	0	1	1	oewn
+oewn-calisthenics-n	calisthenics	n	0	1	1	oewn
+oewn-calk-n	calk	n	0	1	1	oewn
+oewn-calk-v	calk	v	0	1	1	oewn
+oewn-calkin-n	calkin	n	0	1	1	oewn
+oewn-call-back-n	call-back	n	0	1	1	oewn
+oewn-call-board-n	call-board	n	0	1	1	oewn
+oewn-call-in-n	call-in	n	0	1	1	oewn
+oewn-call-n	call	n	0	1	1	oewn
+oewn-call-out-n	call-out	n	0	1	1	oewn
+oewn-call-v	call	v	0	1	1	oewn
+oewn-call_at-v	call at	v	0	2	1	oewn
+oewn-call_attention-v	call attention	v	0	2	1	oewn
+oewn-call_back-v	call back	v	0	2	1	oewn
+oewn-call_box-n	call box	n	0	2	2	oewn
+oewn-call_center-n	call center	n	0	2	2	oewn
+oewn-call_centre-n	call centre	n	0	2	2	oewn
+oewn-call_down-v	call down	v	0	2	1	oewn
+oewn-call_fire-n	call fire	n	0	2	2	oewn
+oewn-call_for-v	call for	v	0	2	1	oewn
+oewn-call_forth-v	call forth	v	0	2	1	oewn
+oewn-call_forwarding-n	call forwarding	n	0	2	2	oewn
+oewn-call_girl-n	call girl	n	0	2	2	oewn
+oewn-call_in-v	call in	v	0	2	1	oewn
+oewn-call_into_question-v	call into question	v	0	3	1	oewn
+oewn-call_it_a_day-v	call it a day	v	0	4	1	oewn
+oewn-call_it_quits-v	call it quits	v	0	3	1	oewn
+oewn-call_loan-n	call loan	n	0	2	2	oewn
+oewn-call_mark-n	call mark	n	0	2	2	oewn
+oewn-call_number-n	call number	n	0	2	2	oewn
+oewn-call_off-v	call off	v	0	2	1	oewn
+oewn-call_on-v	call on	v	0	2	1	oewn
+oewn-call_on_the_carpet-v	call on the carpet	v	0	4	1	oewn
+oewn-call_one-ap-s_bluff-v	call one's bluff	v	0	3	1	oewn
+oewn-call_option-n	call option	n	0	2	2	oewn
+oewn-call_out-v	call out	v	0	2	1	oewn
+oewn-call_the_shots-v	call the shots	v	0	3	1	oewn
+oewn-call_the_tune-v	call the tune	v	0	3	1	oewn
+oewn-call_to_order-v	call to order	v	0	3	1	oewn
+oewn-call_up-n	call up	n	0	2	2	oewn
+oewn-call_up-v	call up	v	0	2	1	oewn
+oewn-call_waiting-n	call waiting	n	0	2	2	oewn
+oewn-calla-n	calla	n	0	1	1	oewn
+oewn-calla_lily-n	calla lily	n	0	2	2	oewn
+oewn-callable-a	callable	a	0	1	1	oewn
+oewn-callathump-n	callathump	n	0	1	1	oewn
+oewn-callback-n	callback	n	0	1	1	oewn
+oewn-caller-a	caller	a	0	1	1	oewn
+oewn-caller-n	caller	n	0	1	1	oewn
+oewn-caller-out-n	caller-out	n	0	1	1	oewn
+oewn-caller-up-n	caller-up	n	0	1	1	oewn
+oewn-caller_ID-n	caller ID	n	0	2	2	oewn
+oewn-calliandra-n	calliandra	n	0	1	1	oewn
+oewn-calligraph-v	calligraph	v	0	1	1	oewn
+oewn-calligrapher-n	calligrapher	n	0	1	1	oewn
+oewn-calligraphic-a	calligraphic	a	0	1	1	oewn
+oewn-calligraphical-a	calligraphical	a	0	1	1	oewn
+oewn-calligraphist-n	calligraphist	n	0	1	1	oewn
+oewn-calligraphy-n	calligraphy	n	0	1	1	oewn
+oewn-calling-n	calling	n	0	1	1	oewn
+oewn-calling_card-n	calling card	n	0	2	2	oewn
+oewn-calling_into_question-n	calling into question	n	0	3	3	oewn
+oewn-calling_together-n	calling together	n	0	2	2	oewn
+oewn-calliope-n	calliope	n	0	1	1	oewn
+oewn-calliopsis-n	calliopsis	n	0	1	1	oewn
+oewn-calliper-n	calliper	n	0	1	1	oewn
+oewn-calliper-v	calliper	v	0	1	1	oewn
+oewn-callipygian-a	callipygian	a	0	1	1	oewn
+oewn-callipygous-a	callipygous	a	0	1	1	oewn
+oewn-callisthenics-n	callisthenics	n	0	1	1	oewn
+oewn-callithump-n	callithump	n	0	1	1	oewn
+oewn-callithump_parade-n	callithump parade	n	0	2	2	oewn
+oewn-callithumpian-a	callithumpian	a	0	1	1	oewn
+oewn-callosectomy-n	callosectomy	n	0	1	1	oewn
+oewn-callosity-n	callosity	n	0	1	1	oewn
+oewn-callosotomy-n	callosotomy	n	0	1	1	oewn
+oewn-callous-a	callous	a	0	1	1	oewn
+oewn-callous-v	callous	v	0	1	1	oewn
+oewn-calloused-a	calloused	a	0	1	1	oewn
+oewn-callously-r	callously	r	0	1	1	oewn
+oewn-callousness-n	callousness	n	0	1	1	oewn
+oewn-callow-a	callow	a	0	1	1	oewn
+oewn-callowness-n	callowness	n	0	1	1	oewn
+oewn-callus-n	callus	n	0	1	1	oewn
+oewn-callus-v	callus	v	0	1	1	oewn
+oewn-calm-a	calm	a	0	1	1	oewn
+oewn-calm-n	calm	n	0	1	1	oewn
+oewn-calm-v	calm	v	0	1	1	oewn
+oewn-calm_air-n	calm air	n	0	2	2	oewn
+oewn-calm_down-v	calm down	v	0	2	1	oewn
+oewn-calming-n	calming	n	0	1	1	oewn
+oewn-calmly-r	calmly	r	0	1	1	oewn
+oewn-calmness-n	calmness	n	0	1	1	oewn
+oewn-calomel-n	calomel	n	0	1	1	oewn
+oewn-caloric-a	caloric	a	0	1	1	oewn
+oewn-calorie-free-a	calorie-free	a	0	1	1	oewn
+oewn-calorie-n	calorie	n	0	1	1	oewn
+oewn-calorie_chart-n	calorie chart	n	0	2	2	oewn
+oewn-calorifacient-a	calorifacient	a	0	1	1	oewn
+oewn-calorific-a	calorific	a	0	1	1	oewn
+oewn-calorimeter-n	calorimeter	n	0	1	1	oewn
+oewn-calorimetric-a	calorimetric	a	0	1	1	oewn
+oewn-calorimetry-n	calorimetry	n	0	1	1	oewn
+oewn-calorisator-n	calorisator	n	0	1	1	oewn
+oewn-calorizator-n	calorizator	n	0	1	1	oewn
+oewn-calosoma-n	calosoma	n	0	1	1	oewn
+oewn-calpac-n	calpac	n	0	1	1	oewn
+oewn-calpack-n	calpack	n	0	1	1	oewn
+oewn-calque-n	calque	n	0	1	1	oewn
+oewn-calque_formation-n	calque formation	n	0	2	2	oewn
+oewn-caltrop-n	caltrop	n	0	1	1	oewn
+oewn-calumet-n	calumet	n	0	1	1	oewn
+oewn-calumniate-v	calumniate	v	0	1	1	oewn
+oewn-calumniation-n	calumniation	n	0	1	1	oewn
+oewn-calumniatory-a	calumniatory	a	0	1	1	oewn
+oewn-calumnious-a	calumnious	a	0	1	1	oewn
+oewn-calumniously-r	calumniously	r	0	1	1	oewn
+oewn-calumny-n	calumny	n	0	1	1	oewn
+oewn-calvaria-n	calvaria	n	0	1	1	oewn
+oewn-calvary-n	calvary	n	0	1	1	oewn
+oewn-calve-v	calve	v	0	1	1	oewn
+oewn-calves-ap-_feet-n	calves' feet	n	0	2	2	oewn
+oewn-calves-ap-_liver-n	calves' liver	n	0	2	2	oewn
+oewn-calving-n	calving	n	0	1	1	oewn
+oewn-calx-n	calx	n	0	1	1	oewn
+oewn-calyceal-a	calyceal	a	0	1	1	oewn
+oewn-calycinal-a	calycinal	a	0	1	1	oewn
+oewn-calycine-a	calycine	a	0	1	1	oewn
+oewn-calycle-n	calycle	n	0	1	1	oewn
+oewn-calycled-a	calycled	a	0	1	1	oewn
+oewn-calycular-a	calycular	a	0	1	1	oewn
+oewn-calyculate-a	calyculate	a	0	1	1	oewn
+oewn-calyculus-n	calyculus	n	0	1	1	oewn
+oewn-calypso-n	calypso	n	0	1	1	oewn
+oewn-calypter-n	calypter	n	0	1	1	oewn
+oewn-calyptra-n	calyptra	n	0	1	1	oewn
+oewn-calyptrate-a	calyptrate	a	0	1	1	oewn
+oewn-calyx-n	calyx	n	0	1	1	oewn
+oewn-calyx_tube-n	calyx tube	n	0	2	2	oewn
+oewn-cam-n	cam	n	0	1	1	oewn
+oewn-cam_stroke-n	cam stroke	n	0	2	2	oewn
+oewn-camachile-n	camachile	n	0	1	1	oewn
+oewn-camail-n	camail	n	0	1	1	oewn
+oewn-camaraderie-n	camaraderie	n	0	1	1	oewn
+oewn-camarilla-n	camarilla	n	0	1	1	oewn
+oewn-camas-n	camas	n	0	1	1	oewn
+oewn-camash-n	camash	n	0	1	1	oewn
+oewn-camass-n	camass	n	0	1	1	oewn
+oewn-camber-n	camber	n	0	1	1	oewn
+oewn-camber-v	camber	v	0	1	1	oewn
+oewn-camber_arch-n	camber arch	n	0	2	2	oewn
+oewn-cambial-a	cambial	a	0	1	1	oewn
+oewn-cambium-n	cambium	n	0	1	1	oewn
+oewn-cambric-n	cambric	n	0	1	1	oewn
+oewn-cambric_tea-n	cambric tea	n	0	2	2	oewn
+oewn-camcorder-n	camcorder	n	0	1	1	oewn
+oewn-camel-ap-s_hair-n	camel's hair	n	0	2	2	oewn
+oewn-camel-n	camel	n	0	1	1	oewn
+oewn-camel_cavalry-n	camel cavalry	n	0	2	2	oewn
+oewn-camel_flu-n	camel flu	n	0	2	2	oewn
+oewn-camel_racing-n	camel racing	n	0	2	2	oewn
+oewn-camelhair-n	camelhair	n	0	1	1	oewn
+oewn-camelia-n	camelia	n	0	1	1	oewn
+oewn-camellia-n	camellia	n	0	1	1	oewn
+oewn-camelopard-n	camelopard	n	0	1	1	oewn
+oewn-camelpox-n	camelpox	n	0	1	1	oewn
+oewn-cameo-n	cameo	n	0	1	1	oewn
+oewn-camera-n	camera	n	0	1	1	oewn
+oewn-camera_angle-n	camera angle	n	0	2	2	oewn
+oewn-camera_care-n	camera care	n	0	2	2	oewn
+oewn-camera_lens-n	camera lens	n	0	2	2	oewn
+oewn-camera_lucida-n	camera lucida	n	0	2	2	oewn
+oewn-camera_obscura-n	camera obscura	n	0	2	2	oewn
+oewn-camera_operator-n	camera operator	n	0	2	2	oewn
+oewn-camera_tripod-n	camera tripod	n	0	2	2	oewn
+oewn-cameraman-n	cameraman	n	0	1	1	oewn
+oewn-camerawoman-n	camerawoman	n	0	1	1	oewn
+oewn-camgirl-n	camgirl	n	0	1	1	oewn
+oewn-camion-n	camion	n	0	1	1	oewn
+oewn-camise-n	camise	n	0	1	1	oewn
+oewn-camisole-n	camisole	n	0	1	1	oewn
+oewn-camlet-n	camlet	n	0	1	1	oewn
+oewn-camo-n	camo	n	0	1	1	oewn
+oewn-camomile-n	camomile	n	0	1	1	oewn
+oewn-camomile_tea-n	camomile tea	n	0	2	2	oewn
+oewn-camosh-n	camosh	n	0	1	1	oewn
+oewn-camouflage-n	camouflage	n	0	1	1	oewn
+oewn-camouflage-v	camouflage	v	0	1	1	oewn
+oewn-camouflaged-a	camouflaged	a	0	1	1	oewn
+oewn-camp-a	camp	a	0	1	1	oewn
+oewn-camp-made-a	camp-made	a	0	1	1	oewn
+oewn-camp-n	camp	n	0	1	1	oewn
+oewn-camp-v	camp	v	0	1	1	oewn
+oewn-camp_bed-n	camp bed	n	0	2	2	oewn
+oewn-camp_chair-n	camp chair	n	0	2	2	oewn
+oewn-camp_down-v	camp down	v	0	2	1	oewn
+oewn-camp_follower-n	camp follower	n	0	2	2	oewn
+oewn-camp_meeting-n	camp meeting	n	0	2	2	oewn
+oewn-camp_out-v	camp out	v	0	2	1	oewn
+oewn-camp_robber-n	camp robber	n	0	2	2	oewn
+oewn-campaign-n	campaign	n	0	1	1	oewn
+oewn-campaign-v	campaign	v	0	1	1	oewn
+oewn-campaign_for_governor-n	campaign for governor	n	0	3	1	oewn
+oewn-campaign_hat-n	campaign hat	n	0	2	2	oewn
+oewn-campaigner-n	campaigner	n	0	1	1	oewn
+oewn-campaigning-n	campaigning	n	0	1	1	oewn
+oewn-campana-n	campana	n	0	1	1	oewn
+oewn-campanile-n	campanile	n	0	1	1	oewn
+oewn-campanula-n	campanula	n	0	1	1	oewn
+oewn-campanular-a	campanular	a	0	1	1	oewn
+oewn-campanulate-a	campanulate	a	0	1	1	oewn
+oewn-campanulated-a	campanulated	a	0	1	1	oewn
+oewn-campeachy-n	campeachy	n	0	1	1	oewn
+oewn-camper-n	camper	n	0	1	1	oewn
+oewn-camper_trailer-n	camper trailer	n	0	2	2	oewn
+oewn-campestral-a	campestral	a	0	1	1	oewn
+oewn-campfire-n	campfire	n	0	1	1	oewn
+oewn-campground-n	campground	n	0	1	1	oewn
+oewn-camphor-n	camphor	n	0	1	1	oewn
+oewn-camphor_ball-n	camphor ball	n	0	2	2	oewn
+oewn-camphor_daisy-n	camphor daisy	n	0	2	2	oewn
+oewn-camphor_dune_tansy-n	camphor dune tansy	n	0	3	3	oewn
+oewn-camphor_ice-n	camphor ice	n	0	2	2	oewn
+oewn-camphor_oil-n	camphor oil	n	0	2	2	oewn
+oewn-camphor_spirit-n	camphor spirit	n	0	2	2	oewn
+oewn-camphor_tree-n	camphor tree	n	0	2	2	oewn
+oewn-camphoraceous-a	camphoraceous	a	0	1	1	oewn
+oewn-camphorate-v	camphorate	v	0	1	1	oewn
+oewn-camphorated-a	camphorated	a	0	1	1	oewn
+oewn-camphorated_phenol-n	camphorated phenol	n	0	2	2	oewn
+oewn-camphorated_tincture_of_opium-n	camphorated tincture of opium	n	0	4	2	oewn
+oewn-camphoric-a	camphoric	a	0	1	1	oewn
+oewn-camphorweed-n	camphorweed	n	0	1	1	oewn
+oewn-camping-n	camping	n	0	1	1	oewn
+oewn-camping_area-n	camping area	n	0	2	2	oewn
+oewn-camping_bus-n	camping bus	n	0	2	2	oewn
+oewn-camping_ground-n	camping ground	n	0	2	2	oewn
+oewn-camping_site-n	camping site	n	0	2	2	oewn
+oewn-campion-n	campion	n	0	1	1	oewn
+oewn-campmate-n	campmate	n	0	1	1	oewn
+oewn-campong-n	campong	n	0	1	1	oewn
+oewn-campsite-n	campsite	n	0	1	1	oewn
+oewn-campstool-n	campstool	n	0	1	1	oewn
+oewn-campus-n	campus	n	0	1	1	oewn
+oewn-campy-a	campy	a	0	1	1	oewn
+oewn-campylotropous-a	campylotropous	a	0	1	1	oewn
+oewn-campylotropous_ovule-n	campylotropous ovule	n	0	2	2	oewn
+oewn-camshaft-n	camshaft	n	0	1	1	oewn
+oewn-camwood-n	camwood	n	0	1	1	oewn
+oewn-can-do-a	can-do	a	0	1	1	oewn
+oewn-can-n	can	n	0	1	1	oewn
+oewn-can-v	can	v	0	1	1	oewn
+oewn-can_buoy-n	can buoy	n	0	2	2	oewn
+oewn-can_of_worms-n	can of worms	n	0	3	1	oewn
+oewn-can_opener-n	can opener	n	0	2	2	oewn
+oewn-canafistola-n	canafistola	n	0	1	1	oewn
+oewn-canafistula-n	canafistula	n	0	1	1	oewn
+oewn-canal-n	canal	n	0	1	1	oewn
+oewn-canal-v	canal	v	0	1	1	oewn
+oewn-canal_boat-n	canal boat	n	0	2	2	oewn
+oewn-canal_of_Schlemm-n	canal of Schlemm	n	0	3	1	oewn
+oewn-canalicular-a	canalicular	a	0	1	1	oewn
+oewn-canaliculate-a	canaliculate	a	0	1	1	oewn
+oewn-canaliculus-n	canaliculus	n	0	1	1	oewn
+oewn-canalis_cervicis_uteri-n	canalis cervicis uteri	n	0	3	3	oewn
+oewn-canalis_inguinalis-n	canalis inguinalis	n	0	2	2	oewn
+oewn-canalis_vertebralis-n	canalis vertebralis	n	0	2	2	oewn
+oewn-canalisation-n	canalisation	n	0	1	1	oewn
+oewn-canalise-v	canalise	v	0	1	1	oewn
+oewn-canalization-n	canalization	n	0	1	1	oewn
+oewn-canalize-v	canalize	v	0	1	1	oewn
+oewn-canape-n	canape	n	0	1	1	oewn
+oewn-canard-n	canard	n	0	1	1	oewn
+oewn-canary-a	canary	a	0	1	1	oewn
+oewn-canary-n	canary	n	0	1	1	oewn
+oewn-canary-yellow-a	canary-yellow	a	0	1	1	oewn
+oewn-canary_bird-n	canary bird	n	0	2	2	oewn
+oewn-canary_creeper-n	canary creeper	n	0	2	2	oewn
+oewn-canary_grass-n	canary grass	n	0	2	2	oewn
+oewn-canary_seed-n	canary seed	n	0	2	2	oewn
+oewn-canary_whitewood-n	canary whitewood	n	0	2	2	oewn
+oewn-canary_yellow-n	canary yellow	n	0	2	2	oewn
+oewn-canarybird_flower-n	canarybird flower	n	0	2	2	oewn
+oewn-canarybird_vine-n	canarybird vine	n	0	2	2	oewn
+oewn-canasta-n	canasta	n	0	1	1	oewn
+oewn-canavanine-n	canavanine	n	0	1	1	oewn
+oewn-cancan-n	cancan	n	0	1	1	oewn
+oewn-cancel-n	cancel	n	0	1	1	oewn
+oewn-cancel-v	cancel	v	0	1	1	oewn
+oewn-cancel_out-v	cancel out	v	0	2	1	oewn
+oewn-cancellate-a	cancellate	a	0	1	1	oewn
+oewn-cancellated-a	cancellated	a	0	1	1	oewn
+oewn-cancellation-n	cancellation	n	0	1	1	oewn
+oewn-cancelled-a	cancelled	a	0	1	1	oewn
+oewn-cancellous-a	cancellous	a	0	1	1	oewn
+oewn-cancer-n	cancer	n	0	1	1	oewn
+oewn-cancer_body-n	cancer body	n	0	2	2	oewn
+oewn-cancer_cell-n	cancer cell	n	0	2	2	oewn
+oewn-cancer_drug-n	cancer drug	n	0	2	2	oewn
+oewn-cancer_juice-n	cancer juice	n	0	2	2	oewn
+oewn-cancer_of_the_blood-n	cancer of the blood	n	0	4	1	oewn
+oewn-cancer_of_the_liver-n	cancer of the liver	n	0	4	1	oewn
+oewn-cancer_weed-n	cancer weed	n	0	2	2	oewn
+oewn-cancerous-a	cancerous	a	0	1	1	oewn
+oewn-cancerweed-n	cancerweed	n	0	1	1	oewn
+oewn-cancroid-a	cancroid	a	0	1	1	oewn
+oewn-cancroid-n	cancroid	n	0	1	1	oewn
+oewn-candela-n	candela	n	0	1	1	oewn
+oewn-candelabra-n	candelabra	n	0	1	1	oewn
+oewn-candelabrum-n	candelabrum	n	0	1	1	oewn
+oewn-candelilla-n	candelilla	n	0	1	1	oewn
+oewn-candelilla_wax-n	candelilla wax	n	0	2	2	oewn
+oewn-candent-a	candent	a	0	1	1	oewn
+oewn-candescent-a	candescent	a	0	1	1	oewn
+oewn-candid-a	candid	a	0	1	1	oewn
+oewn-candid_camera-n	candid camera	n	0	2	2	oewn
+oewn-candida-n	candida	n	0	1	1	oewn
+oewn-candidacy-n	candidacy	n	0	1	1	oewn
+oewn-candidate-n	candidate	n	0	1	1	oewn
+oewn-candidature-n	candidature	n	0	1	1	oewn
+oewn-candidiasis-n	candidiasis	n	0	1	1	oewn
+oewn-candidly-r	candidly	r	0	1	1	oewn
+oewn-candidness-n	candidness	n	0	1	1	oewn
+oewn-candied-a	candied	a	0	1	1	oewn
+oewn-candied_apple-n	candied apple	n	0	2	2	oewn
+oewn-candied_citrus_peel-n	candied citrus peel	n	0	3	3	oewn
+oewn-candied_fruit-n	candied fruit	n	0	2	2	oewn
+oewn-candle-n	candle	n	0	1	1	oewn
+oewn-candle-v	candle	v	0	1	1	oewn
+oewn-candle_flame-n	candle flame	n	0	2	2	oewn
+oewn-candle_holder-n	candle holder	n	0	2	2	oewn
+oewn-candleberry-n	candleberry	n	0	1	1	oewn
+oewn-candlelight-n	candlelight	n	0	1	1	oewn
+oewn-candlemaker-n	candlemaker	n	0	1	1	oewn
+oewn-candlenut-n	candlenut	n	0	1	1	oewn
+oewn-candlepin-n	candlepin	n	0	1	1	oewn
+oewn-candlepin_bowling-n	candlepin bowling	n	0	2	2	oewn
+oewn-candlepins-n	candlepins	n	0	1	1	oewn
+oewn-candlepower-n	candlepower	n	0	1	1	oewn
+oewn-candlepower_unit-n	candlepower unit	n	0	2	2	oewn
+oewn-candlesnuffer-n	candlesnuffer	n	0	1	1	oewn
+oewn-candlestick-n	candlestick	n	0	1	1	oewn
+oewn-candlestick_tulip-n	candlestick tulip	n	0	2	2	oewn
+oewn-candlewick-n	candlewick	n	0	1	1	oewn
+oewn-candlewood-n	candlewood	n	0	1	1	oewn
+oewn-candor-n	candor	n	0	1	1	oewn
+oewn-candour-n	candour	n	0	1	1	oewn
+oewn-candy-like-a	candy-like	a	0	1	1	oewn
+oewn-candy-n	candy	n	0	1	1	oewn
+oewn-candy-scented-a	candy-scented	a	0	1	1	oewn
+oewn-candy-v	candy	v	0	1	1	oewn
+oewn-candy_apple-n	candy apple	n	0	2	2	oewn
+oewn-candy_bar-n	candy bar	n	0	2	2	oewn
+oewn-candy_cane-n	candy cane	n	0	2	2	oewn
+oewn-candy_corn-n	candy corn	n	0	2	2	oewn
+oewn-candy_egg-n	candy egg	n	0	2	2	oewn
+oewn-candy_kiss-n	candy kiss	n	0	2	2	oewn
+oewn-candy_store-n	candy store	n	0	2	2	oewn
+oewn-candy_striper-n	candy striper	n	0	2	2	oewn
+oewn-candy_thermometer-n	candy thermometer	n	0	2	2	oewn
+oewn-candyfloss-n	candyfloss	n	0	1	1	oewn
+oewn-candymaker-n	candymaker	n	0	1	1	oewn
+oewn-candytuft-n	candytuft	n	0	1	1	oewn
+oewn-candyweed-n	candyweed	n	0	1	1	oewn
+oewn-cane-n	cane	n	0	1	1	oewn
+oewn-cane-v	cane	v	0	1	1	oewn
+oewn-cane_blight-n	cane blight	n	0	2	2	oewn
+oewn-cane_reed-n	cane reed	n	0	2	2	oewn
+oewn-cane_sugar-n	cane sugar	n	0	2	2	oewn
+oewn-canebrake-n	canebrake	n	0	1	1	oewn
+oewn-canebrake_rattler-n	canebrake rattler	n	0	2	2	oewn
+oewn-canebrake_rattlesnake-n	canebrake rattlesnake	n	0	2	2	oewn
+oewn-canecutter-n	canecutter	n	0	1	1	oewn
+oewn-canella-n	canella	n	0	1	1	oewn
+oewn-canella_bark-n	canella bark	n	0	2	2	oewn
+oewn-canescent-a	canescent	a	0	1	1	oewn
+oewn-canfield-n	canfield	n	0	1	1	oewn
+oewn-canful-n	canful	n	0	1	1	oewn
+oewn-cangue-n	cangue	n	0	1	1	oewn
+oewn-canicola_fever-n	canicola fever	n	0	2	2	oewn
+oewn-canicular-a	canicular	a	0	1	1	oewn
+oewn-canicular_days-n	canicular days	n	0	2	2	oewn
+oewn-canicule-n	canicule	n	0	1	1	oewn
+oewn-canid-n	canid	n	0	1	1	oewn
+oewn-canine-a	canine	a	0	1	1	oewn
+oewn-canine-n	canine	n	0	1	1	oewn
+oewn-canine_chorea-n	canine chorea	n	0	2	2	oewn
+oewn-canine_distemper-n	canine distemper	n	0	2	2	oewn
+oewn-canine_tooth-n	canine tooth	n	0	2	2	oewn
+oewn-caning-n	caning	n	0	1	1	oewn
+oewn-canistel-n	canistel	n	0	1	1	oewn
+oewn-canistel_tree-n	canistel tree	n	0	2	2	oewn
+oewn-canister-n	canister	n	0	1	1	oewn
+oewn-canister_shot-n	canister shot	n	0	2	2	oewn
+oewn-canker-n	canker	n	0	1	1	oewn
+oewn-canker-v	canker	v	0	1	1	oewn
+oewn-canker_brake-n	canker brake	n	0	2	2	oewn
+oewn-canker_sore-n	canker sore	n	0	2	2	oewn
+oewn-cankerous-a	cankerous	a	0	1	1	oewn
+oewn-cankerweed-n	cankerweed	n	0	1	1	oewn
+oewn-cankerworm-n	cankerworm	n	0	1	1	oewn
+oewn-canna-n	canna	n	0	1	1	oewn
+oewn-canna_lily-n	canna lily	n	0	2	2	oewn
+oewn-cannabin-n	cannabin	n	0	1	1	oewn
+oewn-cannabis-n	cannabis	n	0	1	1	oewn
+oewn-cannabis_resin-n	cannabis resin	n	0	2	2	oewn
+oewn-canned-a	canned	a	0	1	1	oewn
+oewn-canned_food-n	canned food	n	0	2	2	oewn
+oewn-canned_foods-n	canned foods	n	0	2	2	oewn
+oewn-canned_goods-n	canned goods	n	0	2	2	oewn
+oewn-canned_hunt-n	canned hunt	n	0	2	2	oewn
+oewn-canned_meat-n	canned meat	n	0	2	2	oewn
+oewn-cannel_coal-n	cannel coal	n	0	2	2	oewn
+oewn-cannelloni-n	cannelloni	n	0	1	1	oewn
+oewn-cannery-n	cannery	n	0	1	1	oewn
+oewn-cannibal-n	cannibal	n	0	1	1	oewn
+oewn-cannibal_mound-n	cannibal mound	n	0	2	2	oewn
+oewn-cannibalic-a	cannibalic	a	0	1	1	oewn
+oewn-cannibalise-v	cannibalise	v	0	1	1	oewn
+oewn-cannibalism-n	cannibalism	n	0	1	1	oewn
+oewn-cannibalistic-a	cannibalistic	a	0	1	1	oewn
+oewn-cannibalize-v	cannibalize	v	0	1	1	oewn
+oewn-cannikin-n	cannikin	n	0	1	1	oewn
+oewn-cannily-r	cannily	r	0	1	1	oewn
+oewn-cannister-n	cannister	n	0	1	1	oewn
+oewn-cannon-n	cannon	n	0	1	1	oewn
+oewn-cannon-v	cannon	v	0	1	1	oewn
+oewn-cannon_ball-n	cannon ball	n	0	2	2	oewn
+oewn-cannon_bone-n	cannon bone	n	0	2	2	oewn
+oewn-cannon_cracker-n	cannon cracker	n	0	2	2	oewn
+oewn-cannon_fire-n	cannon fire	n	0	2	2	oewn
+oewn-cannon_fodder-n	cannon fodder	n	0	2	2	oewn
+oewn-cannonade-n	cannonade	n	0	1	1	oewn
+oewn-cannonade-v	cannonade	v	0	1	1	oewn
+oewn-cannonball-n	cannonball	n	0	1	1	oewn
+oewn-cannonball_along-v	cannonball along	v	0	2	1	oewn
+oewn-cannoneer-n	cannoneer	n	0	1	1	oewn
+oewn-cannula-n	cannula	n	0	1	1	oewn
+oewn-cannular-a	cannular	a	0	1	1	oewn
+oewn-cannulate-v	cannulate	v	0	1	1	oewn
+oewn-cannulation-n	cannulation	n	0	1	1	oewn
+oewn-cannulisation-n	cannulisation	n	0	1	1	oewn
+oewn-cannulise-v	cannulise	v	0	1	1	oewn
+oewn-cannulization-n	cannulization	n	0	1	1	oewn
+oewn-cannulize-v	cannulize	v	0	1	1	oewn
+oewn-canny-a	canny	a	0	1	1	oewn
+oewn-canoe-n	canoe	n	0	1	1	oewn
+oewn-canoe-v	canoe	v	0	1	1	oewn
+oewn-canoe_birch-n	canoe birch	n	0	2	2	oewn
+oewn-canoe_cedar-n	canoe cedar	n	0	2	2	oewn
+oewn-canoeist-n	canoeist	n	0	1	1	oewn
+oewn-canola-n	canola	n	0	1	1	oewn
+oewn-canola_oil-n	canola oil	n	0	2	2	oewn
+oewn-canon-n	canon	n	0	1	1	oewn
+oewn-canon_law-n	canon law	n	0	2	2	oewn
+oewn-canonic-a	canonic	a	0	1	1	oewn
+oewn-canonical-a	canonical	a	0	1	1	oewn
+oewn-canonical_hour-n	canonical hour	n	0	2	2	oewn
+oewn-canonically-r	canonically	r	0	1	1	oewn
+oewn-canonisation-n	canonisation	n	0	1	1	oewn
+oewn-canonise-v	canonise	v	0	1	1	oewn
+oewn-canonised-a	canonised	a	0	1	1	oewn
+oewn-canonist-a	canonist	a	0	1	1	oewn
+oewn-canonist-n	canonist	n	0	1	1	oewn
+oewn-canonization-n	canonization	n	0	1	1	oewn
+oewn-canonize-v	canonize	v	0	1	1	oewn
+oewn-canonized-a	canonized	a	0	1	1	oewn
+oewn-canoodle-v	canoodle	v	0	1	1	oewn
+oewn-canopic_jar-n	canopic jar	n	0	2	2	oewn
+oewn-canopic_vase-n	canopic vase	n	0	2	2	oewn
+oewn-canopied-a	canopied	a	0	1	1	oewn
+oewn-canopy-n	canopy	n	0	1	1	oewn
+oewn-canopy-v	canopy	v	0	1	1	oewn
+oewn-canorous-a	canorous	a	0	1	1	oewn
+oewn-cant-n	cant	n	0	1	1	oewn
+oewn-cant-v	cant	v	0	1	1	oewn
+oewn-cant_dog-n	cant dog	n	0	2	2	oewn
+oewn-cant_hook-n	cant hook	n	0	2	2	oewn
+oewn-cant_over-v	cant over	v	0	2	1	oewn
+oewn-cantabile-a	cantabile	a	0	1	1	oewn
+oewn-cantala-n	cantala	n	0	1	1	oewn
+oewn-cantaloup-n	cantaloup	n	0	1	1	oewn
+oewn-cantaloup_vine-n	cantaloup vine	n	0	2	2	oewn
+oewn-cantaloupe-n	cantaloupe	n	0	1	1	oewn
+oewn-cantaloupe_vine-n	cantaloupe vine	n	0	2	2	oewn
+oewn-cantankerous-a	cantankerous	a	0	1	1	oewn
+oewn-cantankerously-r	cantankerously	r	0	1	1	oewn
+oewn-cantata-n	cantata	n	0	1	1	oewn
+oewn-canted-a	canted	a	0	1	1	oewn
+oewn-canteen-n	canteen	n	0	1	1	oewn
+oewn-canter-n	canter	n	0	1	1	oewn
+oewn-canter-v	canter	v	0	1	1	oewn
+oewn-cantering-a	cantering	a	0	1	1	oewn
+oewn-cantering_rhythm-n	cantering rhythm	n	0	2	2	oewn
+oewn-canthus-n	canthus	n	0	1	1	oewn
+oewn-canticle-n	canticle	n	0	1	1	oewn
+oewn-cantilever-n	cantilever	n	0	1	1	oewn
+oewn-cantilever-v	cantilever	v	0	1	1	oewn
+oewn-cantilever_bridge-n	cantilever bridge	n	0	2	2	oewn
+oewn-cantillate-v	cantillate	v	0	1	1	oewn
+oewn-cantillation-n	cantillation	n	0	1	1	oewn
+oewn-cantle-n	cantle	n	0	1	1	oewn
+oewn-canto-n	canto	n	0	1	1	oewn
+oewn-canton-n	canton	n	0	1	1	oewn
+oewn-canton-v	canton	v	0	1	1	oewn
+oewn-cantonal-a	cantonal	a	0	1	1	oewn
+oewn-cantonment-n	cantonment	n	0	1	1	oewn
+oewn-cantor-n	cantor	n	0	1	1	oewn
+oewn-cantus_firmus-n	cantus firmus	n	0	2	2	oewn
+oewn-canty-a	canty	a	0	1	1	oewn
+oewn-canulate-v	canulate	v	0	1	1	oewn
+oewn-canulation-n	canulation	n	0	1	1	oewn
+oewn-canulisation-n	canulisation	n	0	1	1	oewn
+oewn-canulization-n	canulization	n	0	1	1	oewn
+oewn-canvas-n	canvas	n	0	1	1	oewn
+oewn-canvas-v	canvas	v	0	1	1	oewn
+oewn-canvas_tent-n	canvas tent	n	0	2	2	oewn
+oewn-canvasback-n	canvasback	n	0	1	1	oewn
+oewn-canvasback_duck-n	canvasback duck	n	0	2	2	oewn
+oewn-canvass-n	canvass	n	0	1	1	oewn
+oewn-canvass-v	canvass	v	0	1	1	oewn
+oewn-canvasser-n	canvasser	n	0	1	1	oewn
+oewn-canvassing-n	canvassing	n	0	1	1	oewn
+oewn-canyon-n	canyon	n	0	1	1	oewn
+oewn-canyon_live_oak-n	canyon live oak	n	0	3	3	oewn
+oewn-canyon_oak-n	canyon oak	n	0	2	2	oewn
+oewn-canyon_treefrog-n	canyon treefrog	n	0	2	2	oewn
+oewn-canyonside-n	canyonside	n	0	1	1	oewn
+oewn-caoutchouc-n	caoutchouc	n	0	1	1	oewn
+oewn-caoutchouc_tree-n	caoutchouc tree	n	0	2	2	oewn
+oewn-cap-a-pie-r	cap-a-pie	r	0	1	1	oewn
+oewn-cap-n	cap	n	0	1	1	oewn
+oewn-cap-v	cap	v	0	1	1	oewn
+oewn-cap_band-n	cap band	n	0	2	2	oewn
+oewn-cap_off-v	cap off	v	0	2	1	oewn
+oewn-cap_opener-n	cap opener	n	0	2	2	oewn
+oewn-cap_screw-n	cap screw	n	0	2	2	oewn
+oewn-cap_shroud-n	cap shroud	n	0	2	2	oewn
+oewn-capability-n	capability	n	0	1	1	oewn
+oewn-capable-a	capable	a	0	1	1	oewn
+oewn-capableness-n	capableness	n	0	1	1	oewn
+oewn-capably-r	capably	r	0	1	1	oewn
+oewn-capacious-a	capacious	a	0	1	1	oewn
+oewn-capaciousness-n	capaciousness	n	0	1	1	oewn
+oewn-capacitance-n	capacitance	n	0	1	1	oewn
+oewn-capacitance_unit-n	capacitance unit	n	0	2	2	oewn
+oewn-capacitate-v	capacitate	v	0	1	1	oewn
+oewn-capacitive-a	capacitive	a	0	1	1	oewn
+oewn-capacitive_sensor-n	capacitive sensor	n	0	2	2	oewn
+oewn-capacitor-n	capacitor	n	0	1	1	oewn
+oewn-capacitor_microphone-n	capacitor microphone	n	0	2	2	oewn
+oewn-capacitor_mike-n	capacitor mike	n	0	2	2	oewn
+oewn-capacity-n	capacity	n	0	1	1	oewn
+oewn-capacity_measure-n	capacity measure	n	0	2	2	oewn
+oewn-capacity_unit-n	capacity unit	n	0	2	2	oewn
+oewn-caparison-n	caparison	n	0	1	1	oewn
+oewn-caparison-v	caparison	v	0	1	1	oewn
+oewn-caparisoned-a	caparisoned	a	0	1	1	oewn
+oewn-cape-n	cape	n	0	1	1	oewn
+oewn-cape_aloe-n	cape aloe	n	0	2	2	oewn
+oewn-cape_forget-me-not-n	cape forget-me-not	n	0	2	2	oewn
+oewn-cape_gooseberry-n	cape gooseberry	n	0	2	2	oewn
+oewn-cape_hyacinth-n	cape hyacinth	n	0	2	2	oewn
+oewn-cape_jasmine-n	cape jasmine	n	0	2	2	oewn
+oewn-cape_jessamine-n	cape jessamine	n	0	2	2	oewn
+oewn-cape_marigold-n	cape marigold	n	0	2	2	oewn
+oewn-cape_yellowwood-n	cape yellowwood	n	0	2	2	oewn
+oewn-capelan-n	capelan	n	0	1	1	oewn
+oewn-capelet-n	capelet	n	0	1	1	oewn
+oewn-capelin-n	capelin	n	0	1	1	oewn
+oewn-capeline_bandage-n	capeline bandage	n	0	2	2	oewn
+oewn-caper-n	caper	n	0	1	1	oewn
+oewn-caper-v	caper	v	0	1	1	oewn
+oewn-caper_sauce-n	caper sauce	n	0	2	2	oewn
+oewn-caper_spurge-n	caper spurge	n	0	2	2	oewn
+oewn-caper_tree-n	caper tree	n	0	2	2	oewn
+oewn-capercaillie-n	capercaillie	n	0	1	1	oewn
+oewn-capercailzie-n	capercailzie	n	0	1	1	oewn
+oewn-capeweed-n	capeweed	n	0	1	1	oewn
+oewn-capful-n	capful	n	0	1	1	oewn
+oewn-capibara-n	capibara	n	0	1	1	oewn
+oewn-capillarity-n	capillarity	n	0	1	1	oewn
+oewn-capillary-a	capillary	a	0	1	1	oewn
+oewn-capillary-n	capillary	n	0	1	1	oewn
+oewn-capillary_action-n	capillary action	n	0	2	2	oewn
+oewn-capillary_artery-n	capillary artery	n	0	2	2	oewn
+oewn-capillary_bed-n	capillary bed	n	0	2	2	oewn
+oewn-capillary_fracture-n	capillary fracture	n	0	2	2	oewn
+oewn-capillary_tube-n	capillary tube	n	0	2	2	oewn
+oewn-capillary_tubing-n	capillary tubing	n	0	2	2	oewn
+oewn-capillary_vein-n	capillary vein	n	0	2	2	oewn
+oewn-capillary_vessel-n	capillary vessel	n	0	2	2	oewn
+oewn-capillary_water-n	capillary water	n	0	2	2	oewn
+oewn-capital-a	capital	a	0	1	1	oewn
+oewn-capital-n	capital	n	0	1	1	oewn
+oewn-capital_account-n	capital account	n	0	2	2	oewn
+oewn-capital_cost-n	capital cost	n	0	2	2	oewn
+oewn-capital_expenditure-n	capital expenditure	n	0	2	2	oewn
+oewn-capital_gain-n	capital gain	n	0	2	2	oewn
+oewn-capital_gains_tax-n	capital gains tax	n	0	3	3	oewn
+oewn-capital_letter-n	capital letter	n	0	2	2	oewn
+oewn-capital_levy-n	capital levy	n	0	2	2	oewn
+oewn-capital_loss-n	capital loss	n	0	2	2	oewn
+oewn-capital_offense-n	capital offense	n	0	2	2	oewn
+oewn-capital_punishment-n	capital punishment	n	0	2	2	oewn
+oewn-capital_reserve-n	capital reserve	n	0	2	2	oewn
+oewn-capital_ship-n	capital ship	n	0	2	2	oewn
+oewn-capital_stock-n	capital stock	n	0	2	2	oewn
+oewn-capitalisation-n	capitalisation	n	0	1	1	oewn
+oewn-capitalise-v	capitalise	v	0	1	1	oewn
+oewn-capitalism-n	capitalism	n	0	1	1	oewn
+oewn-capitalist-a	capitalist	a	0	1	1	oewn
+oewn-capitalist-n	capitalist	n	0	1	1	oewn
+oewn-capitalist_economy-n	capitalist economy	n	0	2	2	oewn
+oewn-capitalistic-a	capitalistic	a	0	1	1	oewn
+oewn-capitalization-n	capitalization	n	0	1	1	oewn
+oewn-capitalize-v	capitalize	v	0	1	1	oewn
+oewn-capitate-a	capitate	a	0	1	1	oewn
+oewn-capitate-n	capitate	n	0	1	1	oewn
+oewn-capitate_bone-n	capitate bone	n	0	2	2	oewn
+oewn-capitation-n	capitation	n	0	1	1	oewn
+oewn-capitol-n	capitol	n	0	1	1	oewn
+oewn-capitula-n	capitula	n	0	1	1	oewn
+oewn-capitular-a	capitular	a	0	1	1	oewn
+oewn-capitulary-a	capitulary	a	0	1	1	oewn
+oewn-capitulate-v	capitulate	v	0	1	1	oewn
+oewn-capitulation-n	capitulation	n	0	1	1	oewn
+oewn-capitulum-n	capitulum	n	0	1	1	oewn
+oewn-capiz-n	capiz	n	0	1	1	oewn
+oewn-caplin-n	caplin	n	0	1	1	oewn
+oewn-capo-n	capo	n	0	1	1	oewn
+oewn-capon-n	capon	n	0	1	1	oewn
+oewn-caponise-v	caponise	v	0	1	1	oewn
+oewn-caponize-v	caponize	v	0	1	1	oewn
+oewn-capote-n	capote	n	0	1	1	oewn
+oewn-capped-a	capped	a	0	1	1	oewn
+oewn-capped_macaque-n	capped macaque	n	0	2	2	oewn
+oewn-cappelletti-n	cappelletti	n	0	1	1	oewn
+oewn-capping_machine-n	capping machine	n	0	2	2	oewn
+oewn-cappuccino-n	cappuccino	n	0	1	1	oewn
+oewn-cappuccino_coffee-n	cappuccino coffee	n	0	2	2	oewn
+oewn-capric_acid-n	capric acid	n	0	2	2	oewn
+oewn-capriccio-n	capriccio	n	0	1	1	oewn
+oewn-caprice-n	caprice	n	0	1	1	oewn
+oewn-capricious-a	capricious	a	0	1	1	oewn
+oewn-capriciously-r	capriciously	r	0	1	1	oewn
+oewn-capriciousness-n	capriciousness	n	0	1	1	oewn
+oewn-caprifig-n	caprifig	n	0	1	1	oewn
+oewn-caprimulgid-n	caprimulgid	n	0	1	1	oewn
+oewn-caprimulgiform_bird-n	caprimulgiform bird	n	0	2	2	oewn
+oewn-caprine-a	caprine	a	0	1	1	oewn
+oewn-caprine_animal-n	caprine animal	n	0	2	2	oewn
+oewn-capriole-n	capriole	n	0	1	1	oewn
+oewn-capriole-v	capriole	v	0	1	1	oewn
+oewn-caproic_acid-n	caproic acid	n	0	2	2	oewn
+oewn-caprylic_acid-n	caprylic acid	n	0	2	2	oewn
+oewn-capsaicin-n	capsaicin	n	0	1	1	oewn
+oewn-capsicum-n	capsicum	n	0	1	1	oewn
+oewn-capsicum_pepper_plant-n	capsicum pepper plant	n	0	3	3	oewn
+oewn-capsid-n	capsid	n	0	1	1	oewn
+oewn-capsize-v	capsize	v	0	1	1	oewn
+oewn-capsizing-n	capsizing	n	0	1	1	oewn
+oewn-capstan-n	capstan	n	0	1	1	oewn
+oewn-capstone-n	capstone	n	0	1	1	oewn
+oewn-capsula_glomeruli-n	capsula glomeruli	n	0	2	2	oewn
+oewn-capsular-a	capsular	a	0	1	1	oewn
+oewn-capsulate-a	capsulate	a	0	1	1	oewn
+oewn-capsulate-v	capsulate	v	0	1	1	oewn
+oewn-capsulated-a	capsulated	a	0	1	1	oewn
+oewn-capsule-n	capsule	n	0	1	1	oewn
+oewn-capsule-v	capsule	v	0	1	1	oewn
+oewn-capsulise-v	capsulise	v	0	1	1	oewn
+oewn-capsulize-v	capsulize	v	0	1	1	oewn
+oewn-captain-ap-s_chair-n	captain's chair	n	0	2	2	oewn
+oewn-captain-n	captain	n	0	1	1	oewn
+oewn-captain-v	captain	v	0	1	1	oewn
+oewn-captaincy-n	captaincy	n	0	1	1	oewn
+oewn-captainship-n	captainship	n	0	1	1	oewn
+oewn-caption-n	caption	n	0	1	1	oewn
+oewn-caption-v	caption	v	0	1	1	oewn
+oewn-captious-a	captious	a	0	1	1	oewn
+oewn-captiously-r	captiously	r	0	1	1	oewn
+oewn-captivate-v	captivate	v	0	1	1	oewn
+oewn-captivated-a	captivated	a	0	1	1	oewn
+oewn-captivating-a	captivating	a	0	1	1	oewn
+oewn-captivatingly-r	captivatingly	r	0	1	1	oewn
+oewn-captivation-n	captivation	n	0	1	1	oewn
+oewn-captive-a	captive	a	0	1	1	oewn
+oewn-captive-n	captive	n	0	1	1	oewn
+oewn-captive_finance_company-n	captive finance company	n	0	3	3	oewn
+oewn-captivity-n	captivity	n	0	1	1	oewn
+oewn-captopril-n	captopril	n	0	1	1	oewn
+oewn-captor-n	captor	n	0	1	1	oewn
+oewn-capture-n	capture	n	0	1	1	oewn
+oewn-capture-v	capture	v	0	1	1	oewn
+oewn-capturer-n	capturer	n	0	1	1	oewn
+oewn-capuchin-n	capuchin	n	0	1	1	oewn
+oewn-capulin-n	capulin	n	0	1	1	oewn
+oewn-capulin_tree-n	capulin tree	n	0	2	2	oewn
+oewn-caput-n	caput	n	0	1	1	oewn
+oewn-capybara-n	capybara	n	0	1	1	oewn
+oewn-car-ferry-n	car-ferry	n	0	1	1	oewn
+oewn-car-mechanic-n	car-mechanic	n	0	1	1	oewn
+oewn-car-n	car	n	0	1	1	oewn
+oewn-car_battery-n	car battery	n	0	2	2	oewn
+oewn-car_bomb-n	car bomb	n	0	2	2	oewn
+oewn-car_boot_sale-n	car boot sale	n	0	3	3	oewn
+oewn-car_care-n	car care	n	0	2	2	oewn
+oewn-car_carrier-n	car carrier	n	0	2	2	oewn
+oewn-car_company-n	car company	n	0	2	2	oewn
+oewn-car_dealer-n	car dealer	n	0	2	2	oewn
+oewn-car_door-n	car door	n	0	2	2	oewn
+oewn-car_factory-n	car factory	n	0	2	2	oewn
+oewn-car_horn-n	car horn	n	0	2	2	oewn
+oewn-car_insurance-n	car insurance	n	0	2	2	oewn
+oewn-car_loan-n	car loan	n	0	2	2	oewn
+oewn-car_maker-n	car maker	n	0	2	2	oewn
+oewn-car_manufacturer-n	car manufacturer	n	0	2	2	oewn
+oewn-car_mirror-n	car mirror	n	0	2	2	oewn
+oewn-car_park-n	car park	n	0	2	2	oewn
+oewn-car_part-n	car part	n	0	2	2	oewn
+oewn-car_pool-n	car pool	n	0	2	2	oewn
+oewn-car_port-n	car port	n	0	2	2	oewn
+oewn-car_race-n	car race	n	0	2	2	oewn
+oewn-car_racing-n	car racing	n	0	2	2	oewn
+oewn-car_rental-n	car rental	n	0	2	2	oewn
+oewn-car_seat-n	car seat	n	0	2	2	oewn
+oewn-car_sickness-n	car sickness	n	0	2	2	oewn
+oewn-car_tire-n	car tire	n	0	2	2	oewn
+oewn-car_traffic-n	car traffic	n	0	2	2	oewn
+oewn-car_train-n	car train	n	0	2	2	oewn
+oewn-car_transporter-n	car transporter	n	0	2	2	oewn
+oewn-car_wheel-n	car wheel	n	0	2	2	oewn
+oewn-car_window-n	car window	n	0	2	2	oewn
+oewn-carabao-n	carabao	n	0	1	1	oewn
+oewn-carabid_beetle-n	carabid beetle	n	0	2	2	oewn
+oewn-carabineer-n	carabineer	n	0	1	1	oewn
+oewn-carabiner-n	carabiner	n	0	1	1	oewn
+oewn-carabinier-n	carabinier	n	0	1	1	oewn
+oewn-caracal-n	caracal	n	0	1	1	oewn
+oewn-caracara-n	caracara	n	0	1	1	oewn
+oewn-carack-n	carack	n	0	1	1	oewn
+oewn-caracole-v	caracole	v	0	1	1	oewn
+oewn-caracolito-n	caracolito	n	0	1	1	oewn
+oewn-caracul-n	caracul	n	0	1	1	oewn
+oewn-carafe-n	carafe	n	0	1	1	oewn
+oewn-caragana-n	caragana	n	0	1	1	oewn
+oewn-carageen-n	carageen	n	0	1	1	oewn
+oewn-carambola-n	carambola	n	0	1	1	oewn
+oewn-carambola_tree-n	carambola tree	n	0	2	2	oewn
+oewn-caramel-a	caramel	a	0	1	1	oewn
+oewn-caramel-n	caramel	n	0	1	1	oewn
+oewn-caramel_apple-n	caramel apple	n	0	2	2	oewn
+oewn-caramel_brown-a	caramel brown	a	0	2	2	oewn
+oewn-caramel_brown-n	caramel brown	n	0	2	2	oewn
+oewn-caramel_bun-n	caramel bun	n	0	2	2	oewn
+oewn-caramelise-v	caramelise	v	0	1	1	oewn
+oewn-caramelize-v	caramelize	v	0	1	1	oewn
+oewn-caramelized_sugar-n	caramelized sugar	n	0	2	2	oewn
+oewn-carancha-n	carancha	n	0	1	1	oewn
+oewn-caranda-n	caranda	n	0	1	1	oewn
+oewn-caranda_palm-n	caranda palm	n	0	2	2	oewn
+oewn-caranday-n	caranday	n	0	1	1	oewn
+oewn-carangid-a	carangid	a	0	1	1	oewn
+oewn-carangid-n	carangid	n	0	1	1	oewn
+oewn-carangid_fish-n	carangid fish	n	0	2	2	oewn
+oewn-carapace-n	carapace	n	0	1	1	oewn
+oewn-carat-n	carat	n	0	1	1	oewn
+oewn-caravan-n	caravan	n	0	1	1	oewn
+oewn-caravan-v	caravan	v	0	1	1	oewn
+oewn-caravan_inn-n	caravan inn	n	0	2	2	oewn
+oewn-caravanning-n	caravanning	n	0	1	1	oewn
+oewn-caravansary-n	caravansary	n	0	1	1	oewn
+oewn-caravanserai-n	caravanserai	n	0	1	1	oewn
+oewn-caraway-n	caraway	n	0	1	1	oewn
+oewn-caraway_seed-n	caraway seed	n	0	2	2	oewn
+oewn-caraway_seed_bread-n	caraway seed bread	n	0	3	3	oewn
+oewn-carbamate-n	carbamate	n	0	1	1	oewn
+oewn-carbamic_acid-n	carbamic acid	n	0	2	2	oewn
+oewn-carbamide-n	carbamide	n	0	1	1	oewn
+oewn-carbide-n	carbide	n	0	1	1	oewn
+oewn-carbine-n	carbine	n	0	1	1	oewn
+oewn-carbineer-n	carbineer	n	0	1	1	oewn
+oewn-carbo_loading-n	carbo loading	n	0	2	2	oewn
+oewn-carbocyclic-a	carbocyclic	a	0	1	1	oewn
+oewn-carbohydrate-n	carbohydrate	n	0	1	1	oewn
+oewn-carbohydrate_loading-n	carbohydrate loading	n	0	2	2	oewn
+oewn-carbolated-a	carbolated	a	0	1	1	oewn
+oewn-carbolic_acid-n	carbolic acid	n	0	2	2	oewn
+oewn-carbomycin-n	carbomycin	n	0	1	1	oewn
+oewn-carbon-14_dating-n	carbon-14 dating	n	0	2	2	oewn
+oewn-carbon-n	carbon	n	0	1	1	oewn
+oewn-carbon_14-n	carbon 14	n	0	2	2	oewn
+oewn-carbon_arc-n	carbon arc	n	0	2	2	oewn
+oewn-carbon_arc_lamp-n	carbon arc lamp	n	0	3	3	oewn
+oewn-carbon_atom-n	carbon atom	n	0	2	2	oewn
+oewn-carbon_black-n	carbon black	n	0	2	2	oewn
+oewn-carbon_copy-n	carbon copy	n	0	2	2	oewn
+oewn-carbon_cycle-n	carbon cycle	n	0	2	2	oewn
+oewn-carbon_dating-n	carbon dating	n	0	2	2	oewn
+oewn-carbon_dichloride-n	carbon dichloride	n	0	2	2	oewn
+oewn-carbon_dioxide-n	carbon dioxide	n	0	2	2	oewn
+oewn-carbon_dioxide_acidosis-n	carbon dioxide acidosis	n	0	3	3	oewn
+oewn-carbon_disulfide-n	carbon disulfide	n	0	2	2	oewn
+oewn-carbon_filter-n	carbon filter	n	0	2	2	oewn
+oewn-carbon_group_element-n	carbon group element	n	0	3	3	oewn
+oewn-carbon_monoxide-n	carbon monoxide	n	0	2	2	oewn
+oewn-carbon_monoxide_gas-n	carbon monoxide gas	n	0	3	3	oewn
+oewn-carbon_monoxide_poisoning-n	carbon monoxide poisoning	n	0	3	3	oewn
+oewn-carbon_nanotube-n	carbon nanotube	n	0	2	2	oewn
+oewn-carbon_paper-n	carbon paper	n	0	2	2	oewn
+oewn-carbon_process-n	carbon process	n	0	2	2	oewn
+oewn-carbon_steel-n	carbon steel	n	0	2	2	oewn
+oewn-carbon_tet-n	carbon tet	n	0	2	2	oewn
+oewn-carbon_tetrachloride-n	carbon tetrachloride	n	0	2	2	oewn
+oewn-carbon_tetrahalide-n	carbon tetrahalide	n	0	2	2	oewn
+oewn-carbonaceous-a	carbonaceous	a	0	1	1	oewn
+oewn-carbonado-n	carbonado	n	0	1	1	oewn
+oewn-carbonara-n	carbonara	n	0	1	1	oewn
+oewn-carbonate-n	carbonate	n	0	1	1	oewn
+oewn-carbonate-v	carbonate	v	0	1	1	oewn
+oewn-carbonated-a	carbonated	a	0	1	1	oewn
+oewn-carbonated_water-n	carbonated water	n	0	2	2	oewn
+oewn-carbonation-n	carbonation	n	0	1	1	oewn
+oewn-carbonation_system-n	carbonation system	n	0	2	2	oewn
+oewn-carbonator-n	carbonator	n	0	1	1	oewn
+oewn-carbonic-a	carbonic	a	0	1	1	oewn
+oewn-carbonic_acid-n	carbonic acid	n	0	2	2	oewn
+oewn-carbonic_acid_gas-n	carbonic acid gas	n	0	3	3	oewn
+oewn-carboniferous-a	carboniferous	a	0	1	1	oewn
+oewn-carbonisation-n	carbonisation	n	0	1	1	oewn
+oewn-carbonise-v	carbonise	v	0	1	1	oewn
+oewn-carbonization-n	carbonization	n	0	1	1	oewn
+oewn-carbonize-v	carbonize	v	0	1	1	oewn
+oewn-carbonnade_flamande-n	carbonnade flamande	n	0	2	2	oewn
+oewn-carbonous-a	carbonous	a	0	1	1	oewn
+oewn-carbonyl-a	carbonyl	a	0	1	1	oewn
+oewn-carbonyl-n	carbonyl	n	0	1	1	oewn
+oewn-carbonyl_group-n	carbonyl group	n	0	2	2	oewn
+oewn-carbonylic-a	carbonylic	a	0	1	1	oewn
+oewn-carborundum-n	carborundum	n	0	1	1	oewn
+oewn-carboxyl-a	carboxyl	a	0	1	1	oewn
+oewn-carboxyl-n	carboxyl	n	0	1	1	oewn
+oewn-carboxyl_group-n	carboxyl group	n	0	2	2	oewn
+oewn-carboxylate-v	carboxylate	v	0	1	1	oewn
+oewn-carboxylic-a	carboxylic	a	0	1	1	oewn
+oewn-carboxylic_acid-n	carboxylic acid	n	0	2	2	oewn
+oewn-carboxymethyl_cellulose-n	carboxymethyl cellulose	n	0	2	2	oewn
+oewn-carboy-n	carboy	n	0	1	1	oewn
+oewn-carbuncle-n	carbuncle	n	0	1	1	oewn
+oewn-carbuncled-a	carbuncled	a	0	1	1	oewn
+oewn-carbuncular-a	carbuncular	a	0	1	1	oewn
+oewn-carburet-v	carburet	v	0	1	1	oewn
+oewn-carburetor-n	carburetor	n	0	1	1	oewn
+oewn-carburettor-n	carburettor	n	0	1	1	oewn
+oewn-carburise-v	carburise	v	0	1	1	oewn
+oewn-carburize-v	carburize	v	0	1	1	oewn
+oewn-carcajou-n	carcajou	n	0	1	1	oewn
+oewn-carcase-n	carcase	n	0	1	1	oewn
+oewn-carcass-n	carcass	n	0	1	1	oewn
+oewn-carcinogen-n	carcinogen	n	0	1	1	oewn
+oewn-carcinogenic-a	carcinogenic	a	0	1	1	oewn
+oewn-carcinoid-n	carcinoid	n	0	1	1	oewn
+oewn-carcinoma-n	carcinoma	n	0	1	1	oewn
+oewn-carcinoma_in_situ-n	carcinoma in situ	n	0	3	1	oewn
+oewn-carcinomatous-a	carcinomatous	a	0	1	1	oewn
+oewn-carcinomatous_myopathy-n	carcinomatous myopathy	n	0	2	2	oewn
+oewn-carcinosarcoma-n	carcinosarcoma	n	0	1	1	oewn
+oewn-card-house-n	card-house	n	0	1	1	oewn
+oewn-card-n	card	n	0	1	1	oewn
+oewn-card-playing-a	card-playing	a	0	1	1	oewn
+oewn-card-v	card	v	0	1	1	oewn
+oewn-card_catalog-n	card catalog	n	0	2	2	oewn
+oewn-card_catalogue-n	card catalogue	n	0	2	2	oewn
+oewn-card_game-n	card game	n	0	2	2	oewn
+oewn-card_index-n	card index	n	0	2	2	oewn
+oewn-card_player-n	card player	n	0	2	2	oewn
+oewn-card_shark-n	card shark	n	0	2	2	oewn
+oewn-card_sharp-n	card sharp	n	0	2	2	oewn
+oewn-card_sharper-n	card sharper	n	0	2	2	oewn
+oewn-card_table-n	card table	n	0	2	2	oewn
+oewn-card_trick-n	card trick	n	0	2	2	oewn
+oewn-cardamom-n	cardamom	n	0	1	1	oewn
+oewn-cardamon-n	cardamon	n	0	1	1	oewn
+oewn-cardamum-n	cardamum	n	0	1	1	oewn
+oewn-cardboard-a	cardboard	a	0	1	1	oewn
+oewn-cardboard-n	cardboard	n	0	1	1	oewn
+oewn-cardcase-n	cardcase	n	0	1	1	oewn
+oewn-cardcastle-n	cardcastle	n	0	1	1	oewn
+oewn-carded_yarn-n	carded yarn	n	0	2	2	oewn
+oewn-cardholder-n	cardholder	n	0	1	1	oewn
+oewn-cardhouse-n	cardhouse	n	0	1	1	oewn
+oewn-cardia-n	cardia	n	0	1	1	oewn
+oewn-cardiac-a	cardiac	a	0	1	1	oewn
+oewn-cardiac_arrest-n	cardiac arrest	n	0	2	2	oewn
+oewn-cardiac_arrhythmia-n	cardiac arrhythmia	n	0	2	2	oewn
+oewn-cardiac_cycle-n	cardiac cycle	n	0	2	2	oewn
+oewn-cardiac_glucoside-n	cardiac glucoside	n	0	2	2	oewn
+oewn-cardiac_glycoside-n	cardiac glycoside	n	0	2	2	oewn
+oewn-cardiac_insufficiency-n	cardiac insufficiency	n	0	2	2	oewn
+oewn-cardiac_massage-n	cardiac massage	n	0	2	2	oewn
+oewn-cardiac_monitor-n	cardiac monitor	n	0	2	2	oewn
+oewn-cardiac_murmur-n	cardiac murmur	n	0	2	2	oewn
+oewn-cardiac_muscle-n	cardiac muscle	n	0	2	2	oewn
+oewn-cardiac_output-n	cardiac output	n	0	2	2	oewn
+oewn-cardiac_pacemaker-n	cardiac pacemaker	n	0	2	2	oewn
+oewn-cardiac_plexus-n	cardiac plexus	n	0	2	2	oewn
+oewn-cardiac_resuscitation-n	cardiac resuscitation	n	0	2	2	oewn
+oewn-cardiac_rhythm-n	cardiac rhythm	n	0	2	2	oewn
+oewn-cardiac_sphincter-n	cardiac sphincter	n	0	2	2	oewn
+oewn-cardiac_tamponade-n	cardiac tamponade	n	0	2	2	oewn
+oewn-cardiac_valve-n	cardiac valve	n	0	2	2	oewn
+oewn-cardigan-n	cardigan	n	0	1	1	oewn
+oewn-cardinal-a	cardinal	a	0	1	1	oewn
+oewn-cardinal-n	cardinal	n	0	1	1	oewn
+oewn-cardinal_compass_point-n	cardinal compass point	n	0	3	3	oewn
+oewn-cardinal_flower-n	cardinal flower	n	0	2	2	oewn
+oewn-cardinal_grosbeak-n	cardinal grosbeak	n	0	2	2	oewn
+oewn-cardinal_number-n	cardinal number	n	0	2	2	oewn
+oewn-cardinal_numeral-n	cardinal numeral	n	0	2	2	oewn
+oewn-cardinal_tetra-n	cardinal tetra	n	0	2	2	oewn
+oewn-cardinal_vein-n	cardinal vein	n	0	2	2	oewn
+oewn-cardinal_virtue-n	cardinal virtue	n	0	2	2	oewn
+oewn-cardinalate-n	cardinalate	n	0	1	1	oewn
+oewn-cardinalfish-n	cardinalfish	n	0	1	1	oewn
+oewn-cardinality-n	cardinality	n	0	1	1	oewn
+oewn-cardinalship-n	cardinalship	n	0	1	1	oewn
+oewn-cardiogenic_shock-n	cardiogenic shock	n	0	2	2	oewn
+oewn-cardiogram-n	cardiogram	n	0	1	1	oewn
+oewn-cardiograph-n	cardiograph	n	0	1	1	oewn
+oewn-cardiographic-a	cardiographic	a	0	1	1	oewn
+oewn-cardiography-n	cardiography	n	0	1	1	oewn
+oewn-cardioid-n	cardioid	n	0	1	1	oewn
+oewn-cardioid_microphone-n	cardioid microphone	n	0	2	2	oewn
+oewn-cardioid_mike-n	cardioid mike	n	0	2	2	oewn
+oewn-cardiologic-a	cardiologic	a	0	1	1	oewn
+oewn-cardiologist-n	cardiologist	n	0	1	1	oewn
+oewn-cardiology-n	cardiology	n	0	1	1	oewn
+oewn-cardiomegaly-n	cardiomegaly	n	0	1	1	oewn
+oewn-cardiomyopathy-n	cardiomyopathy	n	0	1	1	oewn
+oewn-cardiopathy-n	cardiopathy	n	0	1	1	oewn
+oewn-cardiopulmonary-a	cardiopulmonary	a	0	1	1	oewn
+oewn-cardiopulmonary_arrest-n	cardiopulmonary arrest	n	0	2	2	oewn
+oewn-cardiopulmonary_exercise-n	cardiopulmonary exercise	n	0	2	2	oewn
+oewn-cardiopulmonary_resuscitation-n	cardiopulmonary resuscitation	n	0	2	2	oewn
+oewn-cardiorespiratory-a	cardiorespiratory	a	0	1	1	oewn
+oewn-cardiospasm-n	cardiospasm	n	0	1	1	oewn
+oewn-cardiovascular-a	cardiovascular	a	0	1	1	oewn
+oewn-cardiovascular_disease-n	cardiovascular disease	n	0	2	2	oewn
+oewn-cardiovascular_system-n	cardiovascular system	n	0	2	2	oewn
+oewn-carditis-n	carditis	n	0	1	1	oewn
+oewn-cardoon-n	cardoon	n	0	1	1	oewn
+oewn-cardroom-n	cardroom	n	0	1	1	oewn
+oewn-cards-n	cards	n	0	1	1	oewn
+oewn-cardsharp-n	cardsharp	n	0	1	1	oewn
+oewn-cardsharper-n	cardsharper	n	0	1	1	oewn
+oewn-care-laden-a	care-laden	a	0	1	1	oewn
+oewn-care-n	care	n	0	1	1	oewn
+oewn-care-v	care	v	0	1	1	oewn
+oewn-care_a_hang-v	care a hang	v	0	3	1	oewn
+oewn-care_delivery-n	care delivery	n	0	2	2	oewn
+oewn-care_for-v	care for	v	0	2	1	oewn
+oewn-cared-for-a	cared-for	a	0	1	1	oewn
+oewn-careen-n	careen	n	0	1	1	oewn
+oewn-careen-v	careen	v	0	1	1	oewn
+oewn-career-n	career	n	0	1	1	oewn
+oewn-career-v	career	v	0	1	1	oewn
+oewn-career_counseling-n	career counseling	n	0	2	2	oewn
+oewn-career_girl-n	career girl	n	0	2	2	oewn
+oewn-career_man-n	career man	n	0	2	2	oewn
+oewn-career_woman-n	career woman	n	0	2	2	oewn
+oewn-careerism-n	careerism	n	0	1	1	oewn
+oewn-careerist-n	careerist	n	0	1	1	oewn
+oewn-carefree-a	carefree	a	0	1	1	oewn
+oewn-carefreeness-n	carefreeness	n	0	1	1	oewn
+oewn-careful-a	careful	a	0	1	1	oewn
+oewn-carefully-r	carefully	r	0	1	1	oewn
+oewn-carefulness-n	carefulness	n	0	1	1	oewn
+oewn-caregiver-n	caregiver	n	0	1	1	oewn
+oewn-careless-a	careless	a	0	1	1	oewn
+oewn-carelessly-r	carelessly	r	0	1	1	oewn
+oewn-carelessness-n	carelessness	n	0	1	1	oewn
+oewn-caress-n	caress	n	0	1	1	oewn
+oewn-caress-v	caress	v	0	1	1	oewn
+oewn-caressing-n	caressing	n	0	1	1	oewn
+oewn-caret-n	caret	n	0	1	1	oewn
+oewn-caretaker-n	caretaker	n	0	1	1	oewn
+oewn-careworn-a	careworn	a	0	1	1	oewn
+oewn-carfare-n	carfare	n	0	1	1	oewn
+oewn-carful-n	carful	n	0	1	1	oewn
+oewn-cargo-n	cargo	n	0	1	1	oewn
+oewn-cargo_area-n	cargo area	n	0	2	2	oewn
+oewn-cargo_container-n	cargo container	n	0	2	2	oewn
+oewn-cargo_cult-n	cargo cult	n	0	2	2	oewn
+oewn-cargo_deck-n	cargo deck	n	0	2	2	oewn
+oewn-cargo_door-n	cargo door	n	0	2	2	oewn
+oewn-cargo_hatch-n	cargo hatch	n	0	2	2	oewn
+oewn-cargo_helicopter-n	cargo helicopter	n	0	2	2	oewn
+oewn-cargo_hold-n	cargo hold	n	0	2	2	oewn
+oewn-cargo_liner-n	cargo liner	n	0	2	2	oewn
+oewn-cargo_ship-n	cargo ship	n	0	2	2	oewn
+oewn-cargo_ships-n	cargo ships	n	0	2	2	oewn
+oewn-cargo_vessel-n	cargo vessel	n	0	2	2	oewn
+oewn-carhop-n	carhop	n	0	1	1	oewn
+oewn-carib_wood-n	carib wood	n	0	2	2	oewn
+oewn-caribe-n	caribe	n	0	1	1	oewn
+oewn-caribou-n	caribou	n	0	1	1	oewn
+oewn-caricature-n	caricature	n	0	1	1	oewn
+oewn-caricature-v	caricature	v	0	1	1	oewn
+oewn-caricature_plant-n	caricature plant	n	0	2	2	oewn
+oewn-caricaturist-n	caricaturist	n	0	1	1	oewn
+oewn-caries-n	caries	n	0	1	1	oewn
+oewn-carillon-n	carillon	n	0	1	1	oewn
+oewn-carillon_playing-n	carillon playing	n	0	2	2	oewn
+oewn-carillonneur-n	carillonneur	n	0	1	1	oewn
+oewn-carina-n	carina	n	0	1	1	oewn
+oewn-carina_fornicis-n	carina fornicis	n	0	2	2	oewn
+oewn-carinal-a	carinal	a	0	1	1	oewn
+oewn-carinate-a	carinate	a	0	1	1	oewn
+oewn-carinate-n	carinate	n	0	1	1	oewn
+oewn-carinate_bird-n	carinate bird	n	0	2	2	oewn
+oewn-carinated-a	carinated	a	0	1	1	oewn
+oewn-caring-a	caring	a	0	1	1	oewn
+oewn-caring-n	caring	n	0	1	1	oewn
+oewn-carioca-n	carioca	n	0	1	1	oewn
+oewn-carious-a	carious	a	0	1	1	oewn
+oewn-carissa-n	carissa	n	0	1	1	oewn
+oewn-carissa_plum-n	carissa plum	n	0	2	2	oewn
+oewn-carjack-v	carjack	v	0	1	1	oewn
+oewn-carjacking-n	carjacking	n	0	1	1	oewn
+oewn-cark-v	cark	v	0	1	1	oewn
+oewn-carline_thistle-n	carline thistle	n	0	2	2	oewn
+oewn-carload-n	carload	n	0	1	1	oewn
+oewn-carmaker-n	carmaker	n	0	1	1	oewn
+oewn-carminative-a	carminative	a	0	1	1	oewn
+oewn-carminative-n	carminative	n	0	1	1	oewn
+oewn-carmine-a	carmine	a	0	1	1	oewn
+oewn-carmine-n	carmine	n	0	1	1	oewn
+oewn-carmine-v	carmine	v	0	1	1	oewn
+oewn-carnage-n	carnage	n	0	1	1	oewn
+oewn-carnal-a	carnal	a	0	1	1	oewn
+oewn-carnal_abuse-n	carnal abuse	n	0	2	2	oewn
+oewn-carnal_knowledge-n	carnal knowledge	n	0	2	2	oewn
+oewn-carnalise-v	carnalise	v	0	1	1	oewn
+oewn-carnality-n	carnality	n	0	1	1	oewn
+oewn-carnalize-v	carnalize	v	0	1	1	oewn
+oewn-carnallite-n	carnallite	n	0	1	1	oewn
+oewn-carnally-r	carnally	r	0	1	1	oewn
+oewn-carnassial-a	carnassial	a	0	1	1	oewn
+oewn-carnassial_tooth-n	carnassial tooth	n	0	2	2	oewn
+oewn-carnation-a	carnation	a	0	1	1	oewn
+oewn-carnation-n	carnation	n	0	1	1	oewn
+oewn-carnauba-n	carnauba	n	0	1	1	oewn
+oewn-carnauba_palm-n	carnauba palm	n	0	2	2	oewn
+oewn-carnauba_wax-n	carnauba wax	n	0	2	2	oewn
+oewn-carnelian-n	carnelian	n	0	1	1	oewn
+oewn-carnify-v	carnify	v	0	1	1	oewn
+oewn-carnival-n	carnival	n	0	1	1	oewn
+oewn-carnivore-n	carnivore	n	0	1	1	oewn
+oewn-carnivorous-a	carnivorous	a	0	1	1	oewn
+oewn-carnivorous_bat-n	carnivorous bat	n	0	2	2	oewn
+oewn-carnivorous_plant-n	carnivorous plant	n	0	2	2	oewn
+oewn-carnivorousness-n	carnivorousness	n	0	1	1	oewn
+oewn-carnosaur-n	carnosaur	n	0	1	1	oewn
+oewn-carnotite-n	carnotite	n	0	1	1	oewn
+oewn-carob-n	carob	n	0	1	1	oewn
+oewn-carob_bar-n	carob bar	n	0	2	2	oewn
+oewn-carob_bean-n	carob bean	n	0	2	2	oewn
+oewn-carob_bean_tree-n	carob bean tree	n	0	3	3	oewn
+oewn-carob_powder-n	carob powder	n	0	2	2	oewn
+oewn-carob_tree-n	carob tree	n	0	2	2	oewn
+oewn-caroche-n	caroche	n	0	1	1	oewn
+oewn-carol-n	carol	n	0	1	1	oewn
+oewn-carol-v	carol	v	0	1	1	oewn
+oewn-caroler-n	caroler	n	0	1	1	oewn
+oewn-caroling-n	caroling	n	0	1	1	oewn
+oewn-caroller-n	caroller	n	0	1	1	oewn
+oewn-carom-n	carom	n	0	1	1	oewn
+oewn-carom-v	carom	v	0	1	1	oewn
+oewn-carotene-n	carotene	n	0	1	1	oewn
+oewn-carotenemia-n	carotenemia	n	0	1	1	oewn
+oewn-carotenoid-n	carotenoid	n	0	1	1	oewn
+oewn-carotid-a	carotid	a	0	1	1	oewn
+oewn-carotid_artery-n	carotid artery	n	0	2	2	oewn
+oewn-carotid_body-n	carotid body	n	0	2	2	oewn
+oewn-carotid_plexus-n	carotid plexus	n	0	2	2	oewn
+oewn-carotin-n	carotin	n	0	1	1	oewn
+oewn-carousal-n	carousal	n	0	1	1	oewn
+oewn-carouse-n	carouse	n	0	1	1	oewn
+oewn-carouse-v	carouse	v	0	1	1	oewn
+oewn-carousel-n	carousel	n	0	1	1	oewn
+oewn-carouser-n	carouser	n	0	1	1	oewn
+oewn-carousing-a	carousing	a	0	1	1	oewn
+oewn-carp-n	carp	n	0	1	1	oewn
+oewn-carp-v	carp	v	0	1	1	oewn
+oewn-carpal-a	carpal	a	0	1	1	oewn
+oewn-carpal-n	carpal	n	0	1	1	oewn
+oewn-carpal_bone-n	carpal bone	n	0	2	2	oewn
+oewn-carpal_tunnel-n	carpal tunnel	n	0	2	2	oewn
+oewn-carpal_tunnel_syndrome-n	carpal tunnel syndrome	n	0	3	3	oewn
+oewn-carpel-n	carpel	n	0	1	1	oewn
+oewn-carpellary-a	carpellary	a	0	1	1	oewn
+oewn-carpellate-a	carpellate	a	0	1	1	oewn
+oewn-carpenter-ap-s_hammer-n	carpenter's hammer	n	0	2	2	oewn
+oewn-carpenter-ap-s_kit-n	carpenter's kit	n	0	2	2	oewn
+oewn-carpenter-ap-s_level-n	carpenter's level	n	0	2	2	oewn
+oewn-carpenter-ap-s_mallet-n	carpenter's mallet	n	0	2	2	oewn
+oewn-carpenter-ap-s_plane-n	carpenter's plane	n	0	2	2	oewn
+oewn-carpenter-ap-s_rule-n	carpenter's rule	n	0	2	2	oewn
+oewn-carpenter-ap-s_saw-n	carpenter's saw	n	0	2	2	oewn
+oewn-carpenter-ap-s_square-n	carpenter's square	n	0	2	2	oewn
+oewn-carpenter-n	carpenter	n	0	1	1	oewn
+oewn-carpenter-v	carpenter	v	0	1	1	oewn
+oewn-carpenter_ant-n	carpenter ant	n	0	2	2	oewn
+oewn-carpenter_bee-n	carpenter bee	n	0	2	2	oewn
+oewn-carpenteria-n	carpenteria	n	0	1	1	oewn
+oewn-carpentry-n	carpentry	n	0	1	1	oewn
+oewn-carper-n	carper	n	0	1	1	oewn
+oewn-carpet-n	carpet	n	0	1	1	oewn
+oewn-carpet-v	carpet	v	0	1	1	oewn
+oewn-carpet-weaving-n	carpet-weaving	n	0	1	1	oewn
+oewn-carpet_beater-n	carpet beater	n	0	2	2	oewn
+oewn-carpet_beetle-n	carpet beetle	n	0	2	2	oewn
+oewn-carpet_bomb-v	carpet bomb	v	0	2	1	oewn
+oewn-carpet_bombing-n	carpet bombing	n	0	2	2	oewn
+oewn-carpet_bug-n	carpet bug	n	0	2	2	oewn
+oewn-carpet_grass-n	carpet grass	n	0	2	2	oewn
+oewn-carpet_knight-n	carpet knight	n	0	2	2	oewn
+oewn-carpet_loom-n	carpet loom	n	0	2	2	oewn
+oewn-carpet_moth-n	carpet moth	n	0	2	2	oewn
+oewn-carpet_pad-n	carpet pad	n	0	2	2	oewn
+oewn-carpet_shark-n	carpet shark	n	0	2	2	oewn
+oewn-carpet_slipper-n	carpet slipper	n	0	2	2	oewn
+oewn-carpet_snake-n	carpet snake	n	0	2	2	oewn
+oewn-carpet_sweeper-n	carpet sweeper	n	0	2	2	oewn
+oewn-carpet_tack-n	carpet tack	n	0	2	2	oewn
+oewn-carpetbag-a	carpetbag	a	0	1	1	oewn
+oewn-carpetbag-n	carpetbag	n	0	1	1	oewn
+oewn-carpetbagger-n	carpetbagger	n	0	1	1	oewn
+oewn-carpetbagging-a	carpetbagging	a	0	1	1	oewn
+oewn-carpeted-a	carpeted	a	0	1	1	oewn
+oewn-carpeting-n	carpeting	n	0	1	1	oewn
+oewn-carpetweed-n	carpetweed	n	0	1	1	oewn
+oewn-carping-n	carping	n	0	1	1	oewn
+oewn-carpophagous-a	carpophagous	a	0	1	1	oewn
+oewn-carpophore-n	carpophore	n	0	1	1	oewn
+oewn-carport-n	carport	n	0	1	1	oewn
+oewn-carpospore-n	carpospore	n	0	1	1	oewn
+oewn-carposporic-a	carposporic	a	0	1	1	oewn
+oewn-carposporous-a	carposporous	a	0	1	1	oewn
+oewn-carpus-n	carpus	n	0	1	1	oewn
+oewn-carrack-n	carrack	n	0	1	1	oewn
+oewn-carrageen-n	carrageen	n	0	1	1	oewn
+oewn-carrageenan-n	carrageenan	n	0	1	1	oewn
+oewn-carrageenin-n	carrageenin	n	0	1	1	oewn
+oewn-carragheen-n	carragheen	n	0	1	1	oewn
+oewn-carrefour-n	carrefour	n	0	1	1	oewn
+oewn-carrel-n	carrel	n	0	1	1	oewn
+oewn-carrell-n	carrell	n	0	1	1	oewn
+oewn-carriage-n	carriage	n	0	1	1	oewn
+oewn-carriage_bolt-n	carriage bolt	n	0	2	2	oewn
+oewn-carriage_dog-n	carriage dog	n	0	2	2	oewn
+oewn-carriage_house-n	carriage house	n	0	2	2	oewn
+oewn-carriage_return-n	carriage return	n	0	2	2	oewn
+oewn-carriage_trade-n	carriage trade	n	0	2	2	oewn
+oewn-carriage_wrench-n	carriage wrench	n	0	2	2	oewn
+oewn-carriageway-n	carriageway	n	0	1	1	oewn
+oewn-carrick_bend-n	carrick bend	n	0	2	2	oewn
+oewn-carrick_bitt-n	carrick bitt	n	0	2	2	oewn
+oewn-carrier-n	carrier	n	0	1	1	oewn
+oewn-carrier_bag-n	carrier bag	n	0	2	2	oewn
+oewn-carrier_electrophoresis-n	carrier electrophoresis	n	0	2	2	oewn
+oewn-carrier_pigeon-n	carrier pigeon	n	0	2	2	oewn
+oewn-carrier_wave-n	carrier wave	n	0	2	2	oewn
+oewn-carrion-n	carrion	n	0	1	1	oewn
+oewn-carrion_crow-n	carrion crow	n	0	2	2	oewn
+oewn-carrion_flower-n	carrion flower	n	0	2	2	oewn
+oewn-carrion_fungus-n	carrion fungus	n	0	2	2	oewn
+oewn-carrizo-n	carrizo	n	0	1	1	oewn
+oewn-carron_oil-n	carron oil	n	0	2	2	oewn
+oewn-carrot-n	carrot	n	0	1	1	oewn
+oewn-carrot_juice-n	carrot juice	n	0	2	2	oewn
+oewn-carrot_pudding-n	carrot pudding	n	0	2	2	oewn
+oewn-carrot_soup-n	carrot soup	n	0	2	2	oewn
+oewn-carrot_stick-n	carrot stick	n	0	2	2	oewn
+oewn-carrottop-n	carrottop	n	0	1	1	oewn
+oewn-carroty-a	carroty	a	0	1	1	oewn
+oewn-carrousel-n	carrousel	n	0	1	1	oewn
+oewn-carry-forward-n	carry-forward	n	0	1	1	oewn
+oewn-carry-n	carry	n	0	1	1	oewn
+oewn-carry-on-n	carry-on	n	0	1	1	oewn
+oewn-carry-over-n	carry-over	n	0	1	1	oewn
+oewn-carry-v	carry	v	0	1	1	oewn
+oewn-carry_away-v	carry away	v	0	2	1	oewn
+oewn-carry_back-v	carry back	v	0	2	1	oewn
+oewn-carry_forward-v	carry forward	v	0	2	1	oewn
+oewn-carry_off-v	carry off	v	0	2	1	oewn
+oewn-carry_on-v	carry on	v	0	2	1	oewn
+oewn-carry_out-v	carry out	v	0	2	1	oewn
+oewn-carry_over-v	carry over	v	0	2	1	oewn
+oewn-carry_the_can-v	carry the can	v	0	3	1	oewn
+oewn-carry_through-v	carry through	v	0	2	1	oewn
+oewn-carry_to_term-v	carry to term	v	0	3	1	oewn
+oewn-carry_weight-v	carry weight	v	0	2	1	oewn
+oewn-carryall-n	carryall	n	0	1	1	oewn
+oewn-carrycot-n	carrycot	n	0	1	1	oewn
+oewn-carrying_charge-n	carrying charge	n	0	2	2	oewn
+oewn-carrying_cost-n	carrying cost	n	0	2	2	oewn
+oewn-carrying_into_action-n	carrying into action	n	0	3	3	oewn
+oewn-carrying_out-n	carrying out	n	0	2	2	oewn
+oewn-carsick-a	carsick	a	0	1	1	oewn
+oewn-cart-n	cart	n	0	1	1	oewn
+oewn-cart-track_plant-n	cart-track plant	n	0	2	2	oewn
+oewn-cart-v	cart	v	0	1	1	oewn
+oewn-cart_away-v	cart away	v	0	2	1	oewn
+oewn-cart_horse-n	cart horse	n	0	2	2	oewn
+oewn-cart_off-v	cart off	v	0	2	1	oewn
+oewn-cart_track-n	cart track	n	0	2	2	oewn
+oewn-cartage-n	cartage	n	0	1	1	oewn
+oewn-carte-n	carte	n	0	1	1	oewn
+oewn-carte_blanche-n	carte blanche	n	0	2	2	oewn
+oewn-carte_du_jour-n	carte du jour	n	0	3	1	oewn
+oewn-cartel-n	cartel	n	0	1	1	oewn
+oewn-cartelization-n	cartelization	n	0	1	1	oewn
+oewn-carter-n	carter	n	0	1	1	oewn
+oewn-carthorse-n	carthorse	n	0	1	1	oewn
+oewn-cartilage-n	cartilage	n	0	1	1	oewn
+oewn-cartilage_bone-n	cartilage bone	n	0	2	2	oewn
+oewn-cartilaginification-n	cartilaginification	n	0	1	1	oewn
+oewn-cartilaginous-a	cartilaginous	a	0	1	1	oewn
+oewn-cartilaginous_fish-n	cartilaginous fish	n	0	2	2	oewn
+oewn-cartilaginous_structure-n	cartilaginous structure	n	0	2	2	oewn
+oewn-cartilaginous_tube-n	cartilaginous tube	n	0	2	2	oewn
+oewn-carting-n	carting	n	0	1	1	oewn
+oewn-cartload-n	cartload	n	0	1	1	oewn
+oewn-cartographer-n	cartographer	n	0	1	1	oewn
+oewn-cartographic-a	cartographic	a	0	1	1	oewn
+oewn-cartographical-a	cartographical	a	0	1	1	oewn
+oewn-cartography-n	cartography	n	0	1	1	oewn
+oewn-carton-n	carton	n	0	1	1	oewn
+oewn-cartonful-n	cartonful	n	0	1	1	oewn
+oewn-cartoon-n	cartoon	n	0	1	1	oewn
+oewn-cartoon-v	cartoon	v	0	1	1	oewn
+oewn-cartoon_strip-n	cartoon strip	n	0	2	2	oewn
+oewn-cartoonist-n	cartoonist	n	0	1	1	oewn
+oewn-cartouch-n	cartouch	n	0	1	1	oewn
+oewn-cartouche-n	cartouche	n	0	1	1	oewn
+oewn-cartridge-n	cartridge	n	0	1	1	oewn
+oewn-cartridge_belt-n	cartridge belt	n	0	2	2	oewn
+oewn-cartridge_brass-n	cartridge brass	n	0	2	2	oewn
+oewn-cartridge_clip-n	cartridge clip	n	0	2	2	oewn
+oewn-cartridge_ejector-n	cartridge ejector	n	0	2	2	oewn
+oewn-cartridge_extractor-n	cartridge extractor	n	0	2	2	oewn
+oewn-cartridge_font-n	cartridge font	n	0	2	2	oewn
+oewn-cartridge_fuse-n	cartridge fuse	n	0	2	2	oewn
+oewn-cartridge_holder-n	cartridge holder	n	0	2	2	oewn
+oewn-cartridge_paper-n	cartridge paper	n	0	2	2	oewn
+oewn-cartridge_remover-n	cartridge remover	n	0	2	2	oewn
+oewn-cartroad-n	cartroad	n	0	1	1	oewn
+oewn-cartwheel-n	cartwheel	n	0	1	1	oewn
+oewn-cartwheel-v	cartwheel	v	0	1	1	oewn
+oewn-cartwright-n	cartwright	n	0	1	1	oewn
+oewn-caruncle-n	caruncle	n	0	1	1	oewn
+oewn-caruncula-n	caruncula	n	0	1	1	oewn
+oewn-caruncular-a	caruncular	a	0	1	1	oewn
+oewn-carunculate-a	carunculate	a	0	1	1	oewn
+oewn-carunculated-a	carunculated	a	0	1	1	oewn
+oewn-carunculous-a	carunculous	a	0	1	1	oewn
+oewn-carve-v	carve	v	0	1	1	oewn
+oewn-carve_out-v	carve out	v	0	2	1	oewn
+oewn-carve_up-v	carve up	v	0	2	1	oewn
+oewn-carved-a	carved	a	0	1	1	oewn
+oewn-carved_in_stone-a	carved in stone	a	0	3	3	oewn
+oewn-carvedilol-n	carvedilol	n	0	1	1	oewn
+oewn-carvel-built-a	carvel-built	a	0	1	1	oewn
+oewn-carven-a	carven	a	0	1	1	oewn
+oewn-carver-n	carver	n	0	1	1	oewn
+oewn-carving-n	carving	n	0	1	1	oewn
+oewn-carving_fork-n	carving fork	n	0	2	2	oewn
+oewn-carving_knife-n	carving knife	n	0	2	2	oewn
+oewn-carwash-n	carwash	n	0	1	1	oewn
+oewn-caryatid-n	caryatid	n	0	1	1	oewn
+oewn-caryophyllaceous-a	caryophyllaceous	a	0	1	1	oewn
+oewn-caryophyllaceous_plant-n	caryophyllaceous plant	n	0	2	2	oewn
+oewn-caryophylloid_dicot_family-n	caryophylloid dicot family	n	0	3	3	oewn
+oewn-caryophylloid_dicot_genus-n	caryophylloid dicot genus	n	0	3	3	oewn
+oewn-caryopsis-n	caryopsis	n	0	1	1	oewn
+oewn-casaba-n	casaba	n	0	1	1	oewn
+oewn-casaba_melon-n	casaba melon	n	0	2	2	oewn
+oewn-casava-n	casava	n	0	1	1	oewn
+oewn-casbah-n	casbah	n	0	1	1	oewn
+oewn-cascabel-n	cascabel	n	0	1	1	oewn
+oewn-cascade-n	cascade	n	0	1	1	oewn
+oewn-cascade-v	cascade	v	0	1	1	oewn
+oewn-cascade_down-v	cascade down	v	0	2	1	oewn
+oewn-cascade_everlasting-n	cascade everlasting	n	0	2	2	oewn
+oewn-cascade_liquefier-n	cascade liquefier	n	0	2	2	oewn
+oewn-cascade_penstemon-n	cascade penstemon	n	0	2	2	oewn
+oewn-cascade_transformer-n	cascade transformer	n	0	2	2	oewn
+oewn-cascades_frog-n	cascades frog	n	0	2	2	oewn
+oewn-cascading_menu-n	cascading menu	n	0	2	2	oewn
+oewn-cascara-n	cascara	n	0	1	1	oewn
+oewn-cascara_buckthorn-n	cascara buckthorn	n	0	2	2	oewn
+oewn-cascara_sagrada-n	cascara sagrada	n	0	2	2	oewn
+oewn-cascarilla-n	cascarilla	n	0	1	1	oewn
+oewn-cascarilla_bark-n	cascarilla bark	n	0	2	2	oewn
+oewn-case-by-case-a	case-by-case	a	0	1	1	oewn
+oewn-case-fatality_proportion-n	case-fatality proportion	n	0	2	2	oewn
+oewn-case-hardened-a	case-hardened	a	0	1	1	oewn
+oewn-case-hardened_steel-n	case-hardened steel	n	0	2	2	oewn
+oewn-case-n	case	n	0	1	1	oewn
+oewn-case-to-infection_proportion-n	case-to-infection proportion	n	0	2	2	oewn
+oewn-case-to-infection_ratio-n	case-to-infection ratio	n	0	2	2	oewn
+oewn-case-v	case	v	0	1	1	oewn
+oewn-case_agreement-n	case agreement	n	0	2	2	oewn
+oewn-case_history-n	case history	n	0	2	2	oewn
+oewn-case_in_point-n	case in point	n	0	3	1	oewn
+oewn-case_knife-n	case knife	n	0	2	2	oewn
+oewn-case_law-n	case law	n	0	2	2	oewn
+oewn-case_load-n	case load	n	0	2	2	oewn
+oewn-case_officer-n	case officer	n	0	2	2	oewn
+oewn-case_shot-n	case shot	n	0	2	2	oewn
+oewn-case_study-n	case study	n	0	2	2	oewn
+oewn-caseate-v	caseate	v	0	1	1	oewn
+oewn-casebook-a	casebook	a	0	1	1	oewn
+oewn-casebook-n	casebook	n	0	1	1	oewn
+oewn-cased-a	cased	a	0	1	1	oewn
+oewn-caseful-n	caseful	n	0	1	1	oewn
+oewn-casein-n	casein	n	0	1	1	oewn
+oewn-casein_glue-n	casein glue	n	0	2	2	oewn
+oewn-casein_paint-n	casein paint	n	0	2	2	oewn
+oewn-casemaking_clothes_moth-n	casemaking clothes moth	n	0	3	3	oewn
+oewn-casement-n	casement	n	0	1	1	oewn
+oewn-casement_window-n	casement window	n	0	2	2	oewn
+oewn-caseous-a	caseous	a	0	1	1	oewn
+oewn-casern-n	casern	n	0	1	1	oewn
+oewn-casework-n	casework	n	0	1	1	oewn
+oewn-caseworker-n	caseworker	n	0	1	1	oewn
+oewn-caseworm-n	caseworm	n	0	1	1	oewn
+oewn-cash-and-carry-a	cash-and-carry	a	0	1	1	oewn
+oewn-cash-n	cash	n	0	1	1	oewn
+oewn-cash-v	cash	v	0	1	1	oewn
+oewn-cash_account-n	cash account	n	0	2	2	oewn
+oewn-cash_advance-n	cash advance	n	0	2	2	oewn
+oewn-cash_bar-n	cash bar	n	0	2	2	oewn
+oewn-cash_basis-n	cash basis	n	0	2	2	oewn
+oewn-cash_card-n	cash card	n	0	2	2	oewn
+oewn-cash_cow-n	cash cow	n	0	2	2	oewn
+oewn-cash_crop-n	cash crop	n	0	2	2	oewn
+oewn-cash_dispenser-n	cash dispenser	n	0	2	2	oewn
+oewn-cash_equivalent-n	cash equivalent	n	0	2	2	oewn
+oewn-cash_flow-n	cash flow	n	0	2	2	oewn
+oewn-cash_in-v	cash in	v	0	2	1	oewn
+oewn-cash_in_hand-n	cash in hand	n	0	3	1	oewn
+oewn-cash_in_on-v	cash in on	v	0	3	1	oewn
+oewn-cash_in_one-ap-s_chips-v	cash in one's chips	v	0	4	1	oewn
+oewn-cash_machine-n	cash machine	n	0	2	2	oewn
+oewn-cash_on_delivery-r	cash on delivery	r	0	3	3	oewn
+oewn-cash_out-v	cash out	v	0	2	1	oewn
+oewn-cash_price-n	cash price	n	0	2	2	oewn
+oewn-cash_register-n	cash register	n	0	2	2	oewn
+oewn-cash_reserve_ratio-n	cash reserve ratio	n	0	3	3	oewn
+oewn-cash_surrender_value-n	cash surrender value	n	0	3	3	oewn
+oewn-cashable-a	cashable	a	0	1	1	oewn
+oewn-cashbox-n	cashbox	n	0	1	1	oewn
+oewn-cashcard-n	cashcard	n	0	1	1	oewn
+oewn-cashed-a	cashed	a	0	1	1	oewn
+oewn-cashew-n	cashew	n	0	1	1	oewn
+oewn-cashew_nut-n	cashew nut	n	0	2	2	oewn
+oewn-cashew_tree-n	cashew tree	n	0	2	2	oewn
+oewn-cashier-ap-s_check-n	cashier's check	n	0	2	2	oewn
+oewn-cashier-ap-s_cheque-n	cashier's cheque	n	0	2	2	oewn
+oewn-cashier-n	cashier	n	0	1	1	oewn
+oewn-cashier-v	cashier	v	0	1	1	oewn
+oewn-cashmere-n	cashmere	n	0	1	1	oewn
+oewn-casing-n	casing	n	0	1	1	oewn
+oewn-casino-hotel-n	casino-hotel	n	0	1	1	oewn
+oewn-casino-n	casino	n	0	1	1	oewn
+oewn-cask-n	cask	n	0	1	1	oewn
+oewn-casket-n	casket	n	0	1	1	oewn
+oewn-casket-v	casket	v	0	1	1	oewn
+oewn-caskful-n	caskful	n	0	1	1	oewn
+oewn-caspase-mediated_cell_death-n	caspase-mediated cell death	n	0	3	3	oewn
+oewn-caspase-n	caspase	n	0	1	1	oewn
+oewn-casque-n	casque	n	0	1	1	oewn
+oewn-casquet-n	casquet	n	0	1	1	oewn
+oewn-casquetel-n	casquetel	n	0	1	1	oewn
+oewn-cassareep-n	cassareep	n	0	1	1	oewn
+oewn-cassava-n	cassava	n	0	1	1	oewn
+oewn-cassava_starch-n	cassava starch	n	0	2	2	oewn
+oewn-casserole-n	casserole	n	0	1	1	oewn
+oewn-cassette-n	cassette	n	0	1	1	oewn
+oewn-cassette_deck-n	cassette deck	n	0	2	2	oewn
+oewn-cassette_player-n	cassette player	n	0	2	2	oewn
+oewn-cassette_recorder-n	cassette recorder	n	0	2	2	oewn
+oewn-cassette_tape-n	cassette tape	n	0	2	2	oewn
+oewn-cassia-bark_tree-n	cassia-bark tree	n	0	2	2	oewn
+oewn-cassia-n	cassia	n	0	1	1	oewn
+oewn-cassia_bark-n	cassia bark	n	0	2	2	oewn
+oewn-cassie-n	cassie	n	0	1	1	oewn
+oewn-cassino-n	cassino	n	0	1	1	oewn
+oewn-cassiri-n	cassiri	n	0	1	1	oewn
+oewn-cassiterite-n	cassiterite	n	0	1	1	oewn
+oewn-cassock-n	cassock	n	0	1	1	oewn
+oewn-cassocked-a	cassocked	a	0	1	1	oewn
+oewn-cassowary-n	cassowary	n	0	1	1	oewn
+oewn-cast-iron-a	cast-iron	a	0	1	1	oewn
+oewn-cast-iron_plant-n	cast-iron plant	n	0	2	2	oewn
+oewn-cast-n	cast	n	0	1	1	oewn
+oewn-cast-off-a	cast-off	a	0	1	1	oewn
+oewn-cast-v	cast	v	0	1	1	oewn
+oewn-cast_about-v	cast about	v	0	2	1	oewn
+oewn-cast_anchor-v	cast anchor	v	0	2	1	oewn
+oewn-cast_around-v	cast around	v	0	2	1	oewn
+oewn-cast_aside-v	cast aside	v	0	2	1	oewn
+oewn-cast_away-v	cast away	v	0	2	1	oewn
+oewn-cast_down-v	cast down	v	0	2	1	oewn
+oewn-cast_iron-n	cast iron	n	0	2	2	oewn
+oewn-cast_of_characters-n	cast of characters	n	0	3	1	oewn
+oewn-cast_off-v	cast off	v	0	2	1	oewn
+oewn-cast_on-v	cast on	v	0	2	1	oewn
+oewn-cast_out-v	cast out	v	0	2	1	oewn
+oewn-castanets-n	castanets	n	0	1	1	oewn
+oewn-castaway-n	castaway	n	0	1	1	oewn
+oewn-caste-n	caste	n	0	1	1	oewn
+oewn-caste_system-n	caste system	n	0	2	2	oewn
+oewn-casteless-a	casteless	a	0	1	1	oewn
+oewn-castellated-a	castellated	a	0	1	1	oewn
+oewn-caster-n	caster	n	0	1	1	oewn
+oewn-caster_sugar-n	caster sugar	n	0	2	2	oewn
+oewn-castigate-v	castigate	v	0	1	1	oewn
+oewn-castigation-n	castigation	n	0	1	1	oewn
+oewn-castile_soap-n	castile soap	n	0	2	2	oewn
+oewn-casting-n	casting	n	0	1	1	oewn
+oewn-casting_lots-n	casting lots	n	0	2	2	oewn
+oewn-casting_vote-n	casting vote	n	0	2	2	oewn
+oewn-castle-n	castle	n	0	1	1	oewn
+oewn-castle-v	castle	v	0	1	1	oewn
+oewn-castle_in_Spain-n	castle in Spain	n	0	3	1	oewn
+oewn-castle_in_the_air-n	castle in the air	n	0	4	1	oewn
+oewn-castled-a	castled	a	0	1	1	oewn
+oewn-castling-n	castling	n	0	1	1	oewn
+oewn-castling_long-n	castling long	n	0	2	2	oewn
+oewn-castling_short-n	castling short	n	0	2	2	oewn
+oewn-castor-n	castor	n	0	1	1	oewn
+oewn-castor-oil_plant-n	castor-oil plant	n	0	2	2	oewn
+oewn-castor_bean-n	castor bean	n	0	2	2	oewn
+oewn-castor_bean_plant-n	castor bean plant	n	0	3	3	oewn
+oewn-castor_oil-n	castor oil	n	0	2	2	oewn
+oewn-castor_sugar-n	castor sugar	n	0	2	2	oewn
+oewn-castrate-n	castrate	n	0	1	1	oewn
+oewn-castrate-v	castrate	v	0	1	1	oewn
+oewn-castrated-a	castrated	a	0	1	1	oewn
+oewn-castration-n	castration	n	0	1	1	oewn
+oewn-castration_anxiety-n	castration anxiety	n	0	2	2	oewn
+oewn-castrato-n	castrato	n	0	1	1	oewn
+oewn-casual-a	casual	a	0	1	1	oewn
+oewn-casually-r	casually	r	0	1	1	oewn
+oewn-casualness-n	casualness	n	0	1	1	oewn
+oewn-casualty-n	casualty	n	0	1	1	oewn
+oewn-casuarina-n	casuarina	n	0	1	1	oewn
+oewn-casuist-n	casuist	n	0	1	1	oewn
+oewn-casuistic-a	casuistic	a	0	1	1	oewn
+oewn-casuistical-a	casuistical	a	0	1	1	oewn
+oewn-casuistry-n	casuistry	n	0	1	1	oewn
+oewn-casus_belli-n	casus belli	n	0	2	2	oewn
+oewn-cat-ap-s-claw-n	cat's-claw	n	0	1	1	oewn
+oewn-cat-ap-s-ear-n	cat's-ear	n	0	1	1	oewn
+oewn-cat-ap-s-paw-n	cat's-paw	n	0	1	1	oewn
+oewn-cat-ap-s-tail-n	cat's-tail	n	0	1	1	oewn
+oewn-cat-ap-s_cradle-n	cat's cradle	n	0	2	2	oewn
+oewn-cat-ap-s_eye-n	cat's eye	n	0	2	2	oewn
+oewn-cat-ap-s_feet-n	cat's feet	n	0	2	2	oewn
+oewn-cat-ap-s_foot-n	cat's foot	n	0	2	2	oewn
+oewn-cat-n	cat	n	0	1	1	oewn
+oewn-cat-o-ap--nine-tails-n	cat-o'-nine-tails	n	0	1	1	oewn
+oewn-cat-v	cat	v	0	1	1	oewn
+oewn-cat_and_mouse-n	cat and mouse	n	0	3	3	oewn
+oewn-cat_and_rat-n	cat and rat	n	0	3	3	oewn
+oewn-cat_bear-n	cat bear	n	0	2	2	oewn
+oewn-cat_box-n	cat box	n	0	2	2	oewn
+oewn-cat_burglar-n	cat burglar	n	0	2	2	oewn
+oewn-cat_cracker-n	cat cracker	n	0	2	2	oewn
+oewn-cat_fancier-n	cat fancier	n	0	2	2	oewn
+oewn-cat_flea-n	cat flea	n	0	2	2	oewn
+oewn-cat_food-n	cat food	n	0	2	2	oewn
+oewn-cat_rig-n	cat rig	n	0	2	2	oewn
+oewn-cat_scratch_disease-n	cat scratch disease	n	0	3	3	oewn
+oewn-cat_shark-n	cat shark	n	0	2	2	oewn
+oewn-cat_squirrel-n	cat squirrel	n	0	2	2	oewn
+oewn-cat_suit-n	cat suit	n	0	2	2	oewn
+oewn-cat_thyme-n	cat thyme	n	0	2	2	oewn
+oewn-cat_valium-n	cat valium	n	0	2	2	oewn
+oewn-cata-cornered-a	cata-cornered	a	0	1	1	oewn
+oewn-catabatic-a	catabatic	a	0	1	1	oewn
+oewn-catabatic_wind-n	catabatic wind	n	0	2	2	oewn
+oewn-catabiosis-n	catabiosis	n	0	1	1	oewn
+oewn-catabolic-a	catabolic	a	0	1	1	oewn
+oewn-catabolise-v	catabolise	v	0	1	1	oewn
+oewn-catabolism-n	catabolism	n	0	1	1	oewn
+oewn-catabolize-v	catabolize	v	0	1	1	oewn
+oewn-catacaustic-n	catacaustic	n	0	1	1	oewn
+oewn-catachresis-n	catachresis	n	0	1	1	oewn
+oewn-catachrestic-a	catachrestic	a	0	1	1	oewn
+oewn-catachrestical-a	catachrestical	a	0	1	1	oewn
+oewn-cataclinal-a	cataclinal	a	0	1	1	oewn
+oewn-cataclysm-n	cataclysm	n	0	1	1	oewn
+oewn-cataclysmal-a	cataclysmal	a	0	1	1	oewn
+oewn-cataclysmic-a	cataclysmic	a	0	1	1	oewn
+oewn-catacomb-n	catacomb	n	0	1	1	oewn
+oewn-catacorner-a	catacorner	a	0	1	1	oewn
+oewn-catadromous-a	catadromous	a	0	1	1	oewn
+oewn-catafalque-n	catafalque	n	0	1	1	oewn
+oewn-catalase-n	catalase	n	0	1	1	oewn
+oewn-catalatic-a	catalatic	a	0	1	1	oewn
+oewn-catalectic-a	catalectic	a	0	1	1	oewn
+oewn-catalectic-n	catalectic	n	0	1	1	oewn
+oewn-catalepsy-n	catalepsy	n	0	1	1	oewn
+oewn-cataleptic-a	cataleptic	a	0	1	1	oewn
+oewn-cataleptic-n	cataleptic	n	0	1	1	oewn
+oewn-catalexis-n	catalexis	n	0	1	1	oewn
+oewn-catalog-n	catalog	n	0	1	1	oewn
+oewn-catalog-v	catalog	v	0	1	1	oewn
+oewn-catalog_buying-n	catalog buying	n	0	2	2	oewn
+oewn-cataloged_procedure-n	cataloged procedure	n	0	2	2	oewn
+oewn-cataloger-n	cataloger	n	0	1	1	oewn
+oewn-catalogue-n	catalogue	n	0	1	1	oewn
+oewn-catalogue-v	catalogue	v	0	1	1	oewn
+oewn-cataloguer-n	cataloguer	n	0	1	1	oewn
+oewn-catalpa-n	catalpa	n	0	1	1	oewn
+oewn-catalufa-n	catalufa	n	0	1	1	oewn
+oewn-catalyse-v	catalyse	v	0	1	1	oewn
+oewn-catalysis-n	catalysis	n	0	1	1	oewn
+oewn-catalyst-n	catalyst	n	0	1	1	oewn
+oewn-catalytic-a	catalytic	a	0	1	1	oewn
+oewn-catalytic_converter-n	catalytic converter	n	0	2	2	oewn
+oewn-catalytic_cracker-n	catalytic cracker	n	0	2	2	oewn
+oewn-catalytically-r	catalytically	r	0	1	1	oewn
+oewn-catalyze-v	catalyze	v	0	1	1	oewn
+oewn-catamaran-n	catamaran	n	0	1	1	oewn
+oewn-catamenia-n	catamenia	n	0	1	1	oewn
+oewn-catamenial-a	catamenial	a	0	1	1	oewn
+oewn-catamite-n	catamite	n	0	1	1	oewn
+oewn-catamount-n	catamount	n	0	1	1	oewn
+oewn-catamountain-n	catamountain	n	0	1	1	oewn
+oewn-catananche-n	catananche	n	0	1	1	oewn
+oewn-cataphasia-n	cataphasia	n	0	1	1	oewn
+oewn-cataphatic-a	cataphatic	a	0	1	1	oewn
+oewn-cataphatism-n	cataphatism	n	0	1	1	oewn
+oewn-cataphoresis-n	cataphoresis	n	0	1	1	oewn
+oewn-cataphoretic-a	cataphoretic	a	0	1	1	oewn
+oewn-cataphract-n	cataphract	n	0	1	1	oewn
+oewn-cataphyll-n	cataphyll	n	0	1	1	oewn
+oewn-cataplasia-n	cataplasia	n	0	1	1	oewn
+oewn-cataplasm-n	cataplasm	n	0	1	1	oewn
+oewn-cataplastic-a	cataplastic	a	0	1	1	oewn
+oewn-catapult-n	catapult	n	0	1	1	oewn
+oewn-catapult-v	catapult	v	0	1	1	oewn
+oewn-catapultian-a	catapultian	a	0	1	1	oewn
+oewn-catapultic-a	catapultic	a	0	1	1	oewn
+oewn-cataract-n	cataract	n	0	1	1	oewn
+oewn-cataract_surgery-n	cataract surgery	n	0	2	2	oewn
+oewn-catarrh-n	catarrh	n	0	1	1	oewn
+oewn-catarrhal-a	catarrhal	a	0	1	1	oewn
+oewn-catarrhal_fever-n	catarrhal fever	n	0	2	2	oewn
+oewn-catarrhine-a	catarrhine	a	0	1	1	oewn
+oewn-catarrhine-n	catarrhine	n	0	1	1	oewn
+oewn-catarrhinian-a	catarrhinian	a	0	1	1	oewn
+oewn-catastrophe-n	catastrophe	n	0	1	1	oewn
+oewn-catastrophic-a	catastrophic	a	0	1	1	oewn
+oewn-catastrophic_illness-n	catastrophic illness	n	0	2	2	oewn
+oewn-catastrophically-r	catastrophically	r	0	1	1	oewn
+oewn-catathymia-n	catathymia	n	0	1	1	oewn
+oewn-catatonia-n	catatonia	n	0	1	1	oewn
+oewn-catatonic-a	catatonic	a	0	1	1	oewn
+oewn-catatonic_schizophrenia-n	catatonic schizophrenia	n	0	2	2	oewn
+oewn-catatonic_type_schizophrenia-n	catatonic type schizophrenia	n	0	3	3	oewn
+oewn-catbird-n	catbird	n	0	1	1	oewn
+oewn-catboat-n	catboat	n	0	1	1	oewn
+oewn-catbrier-n	catbrier	n	0	1	1	oewn
+oewn-catcall-n	catcall	n	0	1	1	oewn
+oewn-catcall-v	catcall	v	0	1	1	oewn
+oewn-catch-n	catch	n	0	1	1	oewn
+oewn-catch-v	catch	v	0	1	1	oewn
+oewn-catch_a_glimpse-v	catch a glimpse	v	0	3	1	oewn
+oewn-catch_a_wink-v	catch a wink	v	0	3	1	oewn
+oewn-catch_cold-v	catch cold	v	0	2	1	oewn
+oewn-catch_crop-n	catch crop	n	0	2	2	oewn
+oewn-catch_fire-v	catch fire	v	0	2	1	oewn
+oewn-catch_it-v	catch it	v	0	2	1	oewn
+oewn-catch_on-v	catch on	v	0	2	1	oewn
+oewn-catch_one-ap-s_breath-v	catch one's breath	v	0	3	1	oewn
+oewn-catch_out-v	catch out	v	0	2	1	oewn
+oewn-catch_pen-n	catch pen	n	0	2	2	oewn
+oewn-catch_phrase-n	catch phrase	n	0	2	2	oewn
+oewn-catch_sight-v	catch sight	v	0	2	1	oewn
+oewn-catch_some_Z-ap-s-v	catch some Z's	v	0	3	1	oewn
+oewn-catch_up-v	catch up	v	0	2	1	oewn
+oewn-catch_up_with-v	catch up with	v	0	3	1	oewn
+oewn-catchall-n	catchall	n	0	1	1	oewn
+oewn-catcher-ap-s_mask-n	catcher's mask	n	0	2	2	oewn
+oewn-catcher-n	catcher	n	0	1	1	oewn
+oewn-catchfly-n	catchfly	n	0	1	1	oewn
+oewn-catching-a	catching	a	0	1	1	oewn
+oewn-catching-n	catching	n	0	1	1	oewn
+oewn-catching_pen-n	catching pen	n	0	2	2	oewn
+oewn-catchment-n	catchment	n	0	1	1	oewn
+oewn-catchment_area-n	catchment area	n	0	2	2	oewn
+oewn-catchment_basin-n	catchment basin	n	0	2	2	oewn
+oewn-catchpenny-a	catchpenny	a	0	1	1	oewn
+oewn-catchphrase-n	catchphrase	n	0	1	1	oewn
+oewn-catchweed-n	catchweed	n	0	1	1	oewn
+oewn-catchword-n	catchword	n	0	1	1	oewn
+oewn-catchy-a	catchy	a	0	1	1	oewn
+oewn-catclaw-n	catclaw	n	0	1	1	oewn
+oewn-catechesis-n	catechesis	n	0	1	1	oewn
+oewn-catechetic-a	catechetic	a	0	1	1	oewn
+oewn-catechetical-a	catechetical	a	0	1	1	oewn
+oewn-catechetical_instruction-n	catechetical instruction	n	0	2	2	oewn
+oewn-catechin-n	catechin	n	0	1	1	oewn
+oewn-catechise-v	catechise	v	0	1	1	oewn
+oewn-catechism-n	catechism	n	0	1	1	oewn
+oewn-catechismal-a	catechismal	a	0	1	1	oewn
+oewn-catechist-n	catechist	n	0	1	1	oewn
+oewn-catechistic-a	catechistic	a	0	1	1	oewn
+oewn-catechize-v	catechize	v	0	1	1	oewn
+oewn-catecholamine-n	catecholamine	n	0	1	1	oewn
+oewn-catechu-n	catechu	n	0	1	1	oewn
+oewn-catechumen-n	catechumen	n	0	1	1	oewn
+oewn-categorem-n	categorem	n	0	1	1	oewn
+oewn-categorematic-a	categorematic	a	0	1	1	oewn
+oewn-categoreme-n	categoreme	n	0	1	1	oewn
+oewn-categorial-a	categorial	a	0	1	1	oewn
+oewn-categoric-a	categoric	a	0	1	1	oewn
+oewn-categorical-a	categorical	a	0	1	1	oewn
+oewn-categorical_imperative-n	categorical imperative	n	0	2	2	oewn
+oewn-categorically-r	categorically	r	0	1	1	oewn
+oewn-categorisation-n	categorisation	n	0	1	1	oewn
+oewn-categorise-v	categorise	v	0	1	1	oewn
+oewn-categorised-a	categorised	a	0	1	1	oewn
+oewn-categorization-n	categorization	n	0	1	1	oewn
+oewn-categorize-v	categorize	v	0	1	1	oewn
+oewn-categorized-a	categorized	a	0	1	1	oewn
+oewn-category-n	category	n	0	1	1	oewn
+oewn-catena-n	catena	n	0	1	1	oewn
+oewn-catenary-n	catenary	n	0	1	1	oewn
+oewn-catenate-v	catenate	v	0	1	1	oewn
+oewn-catenulate-a	catenulate	a	0	1	1	oewn
+oewn-catenulate-v	catenulate	v	0	1	1	oewn
+oewn-cater-cornered-a	cater-cornered	a	0	1	1	oewn
+oewn-cater-v	cater	v	0	1	1	oewn
+oewn-catercorner-a	catercorner	a	0	1	1	oewn
+oewn-caterer-n	caterer	n	0	1	1	oewn
+oewn-catering-n	catering	n	0	1	1	oewn
+oewn-caterpillar-n	caterpillar	n	0	1	1	oewn
+oewn-caterpillar-tracked-a	caterpillar-tracked	a	0	1	1	oewn
+oewn-caterpillar_track-n	caterpillar track	n	0	2	2	oewn
+oewn-caterpillar_tread-n	caterpillar tread	n	0	2	2	oewn
+oewn-caterwaul-n	caterwaul	n	0	1	1	oewn
+oewn-caterwaul-v	caterwaul	v	0	1	1	oewn
+oewn-catfish-n	catfish	n	0	1	1	oewn
+oewn-catfish-v	catfish	v	0	1	1	oewn
+oewn-catgut-n	catgut	n	0	1	1	oewn
+oewn-catharsis-n	catharsis	n	0	1	1	oewn
+oewn-cathartic-a	cathartic	a	0	1	1	oewn
+oewn-cathartic-n	cathartic	n	0	1	1	oewn
+oewn-cathartid-n	cathartid	n	0	1	1	oewn
+oewn-cathect-v	cathect	v	0	1	1	oewn
+oewn-cathectic-a	cathectic	a	0	1	1	oewn
+oewn-cathedra-n	cathedra	n	0	1	1	oewn
+oewn-cathedral-a	cathedral	a	0	1	1	oewn
+oewn-cathedral-n	cathedral	n	0	1	1	oewn
+oewn-catherine_wheel-n	catherine wheel	n	0	2	2	oewn
+oewn-catheter-n	catheter	n	0	1	1	oewn
+oewn-catheterisation-n	catheterisation	n	0	1	1	oewn
+oewn-catheterise-v	catheterise	v	0	1	1	oewn
+oewn-catheterization-n	catheterization	n	0	1	1	oewn
+oewn-catheterize-v	catheterize	v	0	1	1	oewn
+oewn-cathexis-n	cathexis	n	0	1	1	oewn
+oewn-cathode-n	cathode	n	0	1	1	oewn
+oewn-cathode-ray_oscilloscope-n	cathode-ray oscilloscope	n	0	2	2	oewn
+oewn-cathode-ray_tube-n	cathode-ray tube	n	0	2	2	oewn
+oewn-cathode_ray-n	cathode ray	n	0	2	2	oewn
+oewn-cathodic-a	cathodic	a	0	1	1	oewn
+oewn-catholic-a	catholic	a	0	1	1	oewn
+oewn-catholic_meter-n	catholic meter	n	0	2	2	oewn
+oewn-catholic_metre-n	catholic metre	n	0	2	2	oewn
+oewn-catholicise-v	catholicise	v	0	1	1	oewn
+oewn-catholicity-n	catholicity	n	0	1	1	oewn
+oewn-catholicize-v	catholicize	v	0	1	1	oewn
+oewn-catholicon-n	catholicon	n	0	1	1	oewn
+oewn-cathouse-n	cathouse	n	0	1	1	oewn
+oewn-cation-exchange_resin-n	cation-exchange resin	n	0	2	2	oewn
+oewn-cation-n	cation	n	0	1	1	oewn
+oewn-cationic-a	cationic	a	0	1	1	oewn
+oewn-cationic_detergent-n	cationic detergent	n	0	2	2	oewn
+oewn-catjang_pea-n	catjang pea	n	0	2	2	oewn
+oewn-catkin-n	catkin	n	0	1	1	oewn
+oewn-catkinate-a	catkinate	a	0	1	1	oewn
+oewn-catling-n	catling	n	0	1	1	oewn
+oewn-catmint-n	catmint	n	0	1	1	oewn
+oewn-catnap-n	catnap	n	0	1	1	oewn
+oewn-catnap-v	catnap	v	0	1	1	oewn
+oewn-catnip-n	catnip	n	0	1	1	oewn
+oewn-catoptric-a	catoptric	a	0	1	1	oewn
+oewn-catoptrical-a	catoptrical	a	0	1	1	oewn
+oewn-catoptrics-n	catoptrics	n	0	1	1	oewn
+oewn-catostomid-n	catostomid	n	0	1	1	oewn
+oewn-catsup-n	catsup	n	0	1	1	oewn
+oewn-catsup_bottle-n	catsup bottle	n	0	2	2	oewn
+oewn-cattail-n	cattail	n	0	1	1	oewn
+oewn-cattail_millet-n	cattail millet	n	0	2	2	oewn
+oewn-cattalo-n	cattalo	n	0	1	1	oewn
+oewn-cattie-n	cattie	n	0	1	1	oewn
+oewn-cattiness-n	cattiness	n	0	1	1	oewn
+oewn-cattish-a	cattish	a	0	1	1	oewn
+oewn-cattle-n	cattle	n	0	1	1	oewn
+oewn-cattle_boat-n	cattle boat	n	0	2	2	oewn
+oewn-cattle_breeding-n	cattle breeding	n	0	2	2	oewn
+oewn-cattle_brush-n	cattle brush	n	0	2	2	oewn
+oewn-cattle_cake-n	cattle cake	n	0	2	2	oewn
+oewn-cattle_car-n	cattle car	n	0	2	2	oewn
+oewn-cattle_drive-n	cattle drive	n	0	2	2	oewn
+oewn-cattle_egret-n	cattle egret	n	0	2	2	oewn
+oewn-cattle_farm-n	cattle farm	n	0	2	2	oewn
+oewn-cattle_grid-n	cattle grid	n	0	2	2	oewn
+oewn-cattle_guard-n	cattle guard	n	0	2	2	oewn
+oewn-cattle_pen-n	cattle pen	n	0	2	2	oewn
+oewn-cattle_plague-n	cattle plague	n	0	2	2	oewn
+oewn-cattle_ranch-n	cattle ranch	n	0	2	2	oewn
+oewn-cattle_thief-n	cattle thief	n	0	2	2	oewn
+oewn-cattle_trail-n	cattle trail	n	0	2	2	oewn
+oewn-cattleman-n	cattleman	n	0	1	1	oewn
+oewn-cattleship-n	cattleship	n	0	1	1	oewn
+oewn-cattlewoman-n	cattlewoman	n	0	1	1	oewn
+oewn-cattley_guava-n	cattley guava	n	0	2	2	oewn
+oewn-cattleya-n	cattleya	n	0	1	1	oewn
+oewn-catty-a	catty	a	0	1	1	oewn
+oewn-catty-corner-a	catty-corner	a	0	1	1	oewn
+oewn-catty-cornered-a	catty-cornered	a	0	1	1	oewn
+oewn-catty-n	catty	n	0	1	1	oewn
+oewn-catwalk-n	catwalk	n	0	1	1	oewn
+oewn-caucus-n	caucus	n	0	1	1	oewn
+oewn-caucus-v	caucus	v	0	1	1	oewn
+oewn-cauda-n	cauda	n	0	1	1	oewn
+oewn-caudal-a	caudal	a	0	1	1	oewn
+oewn-caudal-r	caudal	r	0	1	1	oewn
+oewn-caudal_anaesthesia-n	caudal anaesthesia	n	0	2	2	oewn
+oewn-caudal_anesthesia-n	caudal anesthesia	n	0	2	2	oewn
+oewn-caudal_appendage-n	caudal appendage	n	0	2	2	oewn
+oewn-caudal_block-n	caudal block	n	0	2	2	oewn
+oewn-caudal_fin-n	caudal fin	n	0	2	2	oewn
+oewn-caudal_vertebra-n	caudal vertebra	n	0	2	2	oewn
+oewn-caudally-r	caudally	r	0	1	1	oewn
+oewn-caudate-a	caudate	a	0	1	1	oewn
+oewn-caudate-n	caudate	n	0	1	1	oewn
+oewn-caudate_nucleus-n	caudate nucleus	n	0	2	2	oewn
+oewn-caudated-a	caudated	a	0	1	1	oewn
+oewn-caudex-n	caudex	n	0	1	1	oewn
+oewn-caught_up-a	caught up	a	0	2	2	oewn
+oewn-caul-n	caul	n	0	1	1	oewn
+oewn-cauldron-n	cauldron	n	0	1	1	oewn
+oewn-caulescent-a	caulescent	a	0	1	1	oewn
+oewn-cauliflower-n	cauliflower	n	0	1	1	oewn
+oewn-cauliflower_ear-n	cauliflower ear	n	0	2	2	oewn
+oewn-cauliflower_soup-n	cauliflower soup	n	0	2	2	oewn
+oewn-cauline-a	cauline	a	0	1	1	oewn
+oewn-caulk-n	caulk	n	0	1	1	oewn
+oewn-caulk-v	caulk	v	0	1	1	oewn
+oewn-caulked-a	caulked	a	0	1	1	oewn
+oewn-caulking-n	caulking	n	0	1	1	oewn
+oewn-causa-n	causa	n	0	1	1	oewn
+oewn-causal-a	causal	a	0	1	1	oewn
+oewn-causal_agency-n	causal agency	n	0	2	2	oewn
+oewn-causal_agent-n	causal agent	n	0	2	2	oewn
+oewn-causal_factor-n	causal factor	n	0	2	2	oewn
+oewn-causalgia-n	causalgia	n	0	1	1	oewn
+oewn-causality-n	causality	n	0	1	1	oewn
+oewn-causally-r	causally	r	0	1	1	oewn
+oewn-causation-n	causation	n	0	1	1	oewn
+oewn-causative-a	causative	a	0	1	1	oewn
+oewn-cause-n	cause	n	0	1	1	oewn
+oewn-cause-v	cause	v	0	1	1	oewn
+oewn-cause_celebre-n	cause celebre	n	0	2	2	oewn
+oewn-cause_of_action-n	cause of action	n	0	3	1	oewn
+oewn-cause_of_death-n	cause of death	n	0	3	1	oewn
+oewn-cause_to_be_perceived-v	cause to be perceived	v	0	4	1	oewn
+oewn-cause_to_sleep-v	cause to sleep	v	0	3	1	oewn
+oewn-causeless-a	causeless	a	0	1	1	oewn
+oewn-causerie-n	causerie	n	0	1	1	oewn
+oewn-causeway-n	causeway	n	0	1	1	oewn
+oewn-causeway-v	causeway	v	0	1	1	oewn
+oewn-causing-n	causing	n	0	1	1	oewn
+oewn-caustic-a	caustic	a	0	1	1	oewn
+oewn-caustic-n	caustic	n	0	1	1	oewn
+oewn-caustic_lime-n	caustic lime	n	0	2	2	oewn
+oewn-caustic_potash-n	caustic potash	n	0	2	2	oewn
+oewn-caustic_remark-n	caustic remark	n	0	2	2	oewn
+oewn-caustic_soda-n	caustic soda	n	0	2	2	oewn
+oewn-caustically-r	caustically	r	0	1	1	oewn
+oewn-cauterant-n	cauterant	n	0	1	1	oewn
+oewn-cauterisation-n	cauterisation	n	0	1	1	oewn
+oewn-cauterise-v	cauterise	v	0	1	1	oewn
+oewn-cauterization-n	cauterization	n	0	1	1	oewn
+oewn-cauterize-v	cauterize	v	0	1	1	oewn
+oewn-cautery-n	cautery	n	0	1	1	oewn
+oewn-caution-n	caution	n	0	1	1	oewn
+oewn-caution-v	caution	v	0	1	1	oewn
+oewn-cautionary-a	cautionary	a	0	1	1	oewn
+oewn-cautious-a	cautious	a	0	1	1	oewn
+oewn-cautious-n	cautious	n	0	1	1	oewn
+oewn-cautious_statement-n	cautious statement	n	0	2	2	oewn
+oewn-cautiously-r	cautiously	r	0	1	1	oewn
+oewn-cautiousness-n	cautiousness	n	0	1	1	oewn
+oewn-cavalcade-n	cavalcade	n	0	1	1	oewn
+oewn-cavalier-a	cavalier	a	0	1	1	oewn
+oewn-cavalier-n	cavalier	n	0	1	1	oewn
+oewn-cavalier_hat-n	cavalier hat	n	0	2	2	oewn
+oewn-cavalierly-r	cavalierly	r	0	1	1	oewn
+oewn-cavalla-n	cavalla	n	0	1	1	oewn
+oewn-cavalry-n	cavalry	n	0	1	1	oewn
+oewn-cavalry_horse-n	cavalry horse	n	0	2	2	oewn
+oewn-cavalry_soldier-n	cavalry soldier	n	0	2	2	oewn
+oewn-cavalry_sword-n	cavalry sword	n	0	2	2	oewn
+oewn-cavalryman-n	cavalryman	n	0	1	1	oewn
+oewn-cavalrywoman-n	cavalrywoman	n	0	1	1	oewn
+oewn-cave-n	cave	n	0	1	1	oewn
+oewn-cave-v	cave	v	0	1	1	oewn
+oewn-cave_bat-n	cave bat	n	0	2	2	oewn
+oewn-cave_dweller-n	cave dweller	n	0	2	2	oewn
+oewn-cave_in-n	cave in	n	0	2	1	oewn
+oewn-cave_in-v	cave in	v	0	2	1	oewn
+oewn-cave_man-n	cave man	n	0	2	2	oewn
+oewn-cave_myotis-n	cave myotis	n	0	2	2	oewn
+oewn-cave_woman-n	cave woman	n	0	2	2	oewn
+oewn-caveat-n	caveat	n	0	1	1	oewn
+oewn-caveat_emptor-n	caveat emptor	n	0	2	2	oewn
+oewn-caveman-n	caveman	n	0	1	1	oewn
+oewn-cavern-n	cavern	n	0	1	1	oewn
+oewn-cavern-v	cavern	v	0	1	1	oewn
+oewn-cavern_out-v	cavern out	v	0	2	1	oewn
+oewn-cavernous-a	cavernous	a	0	1	1	oewn
+oewn-cavernous_sinus-n	cavernous sinus	n	0	2	2	oewn
+oewn-cavetto-n	cavetto	n	0	1	1	oewn
+oewn-cavewoman-n	cavewoman	n	0	1	1	oewn
+oewn-caviar-n	caviar	n	0	1	1	oewn
+oewn-caviare-n	caviare	n	0	1	1	oewn
+oewn-cavil-n	cavil	n	0	1	1	oewn
+oewn-cavil-v	cavil	v	0	1	1	oewn
+oewn-caviler-n	caviler	n	0	1	1	oewn
+oewn-caviller-n	caviller	n	0	1	1	oewn
+oewn-cavitied-a	cavitied	a	0	1	1	oewn
+oewn-cavity-n	cavity	n	0	1	1	oewn
+oewn-cavity_resonator-n	cavity resonator	n	0	2	2	oewn
+oewn-cavity_wall-n	cavity wall	n	0	2	2	oewn
+oewn-caviuna_wood-n	caviuna wood	n	0	2	2	oewn
+oewn-cavort-v	cavort	v	0	1	1	oewn
+oewn-cavum-n	cavum	n	0	1	1	oewn
+oewn-cavy-n	cavy	n	0	1	1	oewn
+oewn-caw-n	caw	n	0	1	1	oewn
+oewn-caw-v	caw	v	0	1	1	oewn
+oewn-cay-n	cay	n	0	1	1	oewn
+oewn-cayenne-n	cayenne	n	0	1	1	oewn
+oewn-cayenne_jasmine-n	cayenne jasmine	n	0	2	2	oewn
+oewn-cayenne_pepper-n	cayenne pepper	n	0	2	2	oewn
+oewn-cayman-n	cayman	n	0	1	1	oewn
+oewn-cayuse-n	cayuse	n	0	1	1	oewn
+oewn-cazique-n	cazique	n	0	1	1	oewn

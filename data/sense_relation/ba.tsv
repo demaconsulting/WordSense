@@ -1,0 +1,613 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-baa__1.11.00..	derivation		oewn-baa__2.32.00..
+oewn-baa__2.32.00..	other	event	oewn-baa__1.11.00..
+oewn-babbitt__1.27.00..	derivation		oewn-babbitt__2.35.00..
+oewn-babbitt__2.35.00..	other	uses	oewn-babbitt__1.27.00..
+oewn-babble__1.10.00..	derivation		oewn-babble__2.32.00..
+oewn-babble__1.10.00..	derivation		oewn-babble__2.32.02..
+oewn-babble__2.32.00..	derivation		oewn-babbler__1.18.00..
+oewn-babble__2.32.00..	derivation		oewn-babbling__1.10.00..
+oewn-babble__2.32.00..	other	agent	oewn-babbler__1.18.00..
+oewn-babble__2.32.00..	other	result	oewn-babble__1.10.00..
+oewn-babble__2.32.02..	derivation		oewn-babbler__1.18.00..
+oewn-babble__2.32.02..	derivation		oewn-babbling__1.10.00..
+oewn-babble__2.32.02..	other	agent	oewn-babbler__1.18.00..
+oewn-babble__2.32.02..	other	result	oewn-babble__1.10.00..
+oewn-baboonish__3.01.00..	pertainym		oewn-baboon__1.05.00..
+oewn-baby--sit__2.41.00..	derivation		oewn-baby--sitter__1.18.00..
+oewn-baby--sit__2.41.00..	derivation		oewn-babysitter__1.18.00..
+oewn-baby--sit__2.41.00..	other	agent	oewn-baby--sitter__1.18.00..
+oewn-baby--sit__2.41.00..	other	agent	oewn-babysitter__1.18.00..
+oewn-baby__1.05.00..	derivation		oewn-babyhood__1.26.00..
+oewn-baby__1.05.00..	derivation		oewn-babyhood__1.28.00..
+oewn-baby__1.18.00..	derivation		oewn-baby__2.41.00..
+oewn-baby__1.18.00..	derivation		oewn-babyhood__1.26.00..
+oewn-baby__1.18.00..	derivation		oewn-babyhood__1.28.00..
+oewn-baby__1.18.03..	derivation		oewn-babyhood__1.26.00..
+oewn-baccate__3.01.00..	pertainym		oewn-bacca__1.20.00..
+oewn-bacchanal__1.04.00..	derivation		oewn-bacchanal__5.00.00.intoxicated.00
+oewn-bacchanal__1.04.00..	derivation		oewn-bacchanalian__5.00.00.intoxicated.00
+oewn-bacchant__1.18.01..	derivation		oewn-bacchantic__3.01.00..
+oewn-bacchantic__3.01.00..	pertainym		oewn-bacchant__1.18.01..
+oewn-bachelor__1.18.00..	derivation		oewn-bachelor__2.42.00..
+oewn-bachelor__1.18.00..	derivation		oewn-bachelorhood__1.26.00..
+oewn-bachelor__1.18.00..	derivation		oewn-bachelorhood__1.28.00..
+oewn-bachelor__2.42.00..	other	agent	oewn-bachelor__1.18.00..
+oewn-bacillar__3.01.00..	pertainym		oewn-bacillus__1.05.00..
+oewn-bacillary__3.01.00..	derivation		oewn-bacillus__1.05.00..
+oewn-bacillary__3.01.00..	pertainym		oewn-bacillus__1.05.00..
+oewn-bacillary__5.00.00.formed.00	derivation		oewn-bacillus__1.05.00..
+oewn-back--channel__3.01.00..	pertainym		oewn-back_channel__1.10.00..
+oewn-back__1.06.00..	derivation		oewn-back__2.42.00..
+oewn-back__1.06.03..	derivation		oewn-back__2.30.01..
+oewn-back__1.15.02..	antonym		oewn-front__1.15.02..
+oewn-back__2.30.01..	derivation		oewn-backing__1.06.00..
+oewn-back__2.30.01..	other	uses	oewn-back__1.06.03..
+oewn-back__2.30.03..	antonym		oewn-veer__2.30.03..
+oewn-back__2.38.00..	also		oewn-back_down__2.38.00..
+oewn-back__2.38.00..	also		oewn-back_off__2.38.00..
+oewn-back__2.38.00..	also		oewn-back_out__2.38.00..
+oewn-back__2.38.00..	also		oewn-back_up__2.38.00..
+oewn-back__2.40.00..	derivation		oewn-backer__1.18.00..
+oewn-back__2.40.00..	derivation		oewn-backing__1.04.00..
+oewn-back__2.40.00..	derivation		oewn-backing__1.21.00..
+oewn-back__2.40.00..	other	agent	oewn-backer__1.18.00..
+oewn-back__2.41.00..	derivation		oewn-backing__1.04.00..
+oewn-back__2.41.01..	derivation		oewn-backing__1.04.00..
+oewn-back__2.42.00..	antonym		oewn-front__2.42.00..
+oewn-back__2.42.00..	other	location	oewn-back__1.06.00..
+oewn-back__3.00.00..	antonym		oewn-front__3.00.00..
+oewn-back_burner__1.26.00..	antonym		oewn-front_burner__1.26.00..
+oewn-back_down__2.38.00..	derivation		oewn-backdown__1.10.00..
+oewn-back_up__2.35.00..	derivation		oewn-backup__1.22.00..
+oewn-back_up__2.36.00..	derivation		oewn-backup__1.06.00..
+oewn-back_up__2.41.00..	derivation		oewn-backup__1.04.00..
+oewn-backbench__1.06.00..	derivation		oewn-backbencher__1.18.00..
+oewn-backbite__2.32.00..	derivation		oewn-backbiter__1.18.00..
+oewn-backbite__2.32.00..	other	agent	oewn-backbiter__1.18.00..
+oewn-backed__3.00.00..	antonym		oewn-backless__3.00.00..
+oewn-backfire__1.04.00..	derivation		oewn-backfire__2.41.00..
+oewn-backfire__1.11.00..	derivation		oewn-backfire__2.39.00..
+oewn-backfire__2.39.00..	other	event	oewn-backfire__1.11.00..
+oewn-backfire__2.41.00..	other	event	oewn-backfire__1.04.00..
+oewn-background__1.09.01..	derivation		oewn-backgrounder__1.10.00..
+oewn-background__1.11.01..	derivation		oewn-background__2.30.00..
+oewn-background__2.30.00..	antonym		oewn-foreground__2.30.00..
+oewn-background__2.30.00..	other	event	oewn-background__1.11.01..
+oewn-backhand__1.04.00..	derivation		oewn-backhand__2.35.00..
+oewn-backhand__2.35.00..	other	event	oewn-backhand__1.04.00..
+oewn-backhand__3.00.00..	antonym		oewn-forehand__3.00.00..
+oewn-backlash__1.04.00..	derivation		oewn-backlash__2.41.00..
+oewn-backlash__2.41.00..	other	event	oewn-backlash__1.04.00..
+oewn-backlog__1.14.00..	derivation		oewn-backlog__2.30.00..
+oewn-backlog__1.21.00..	derivation		oewn-backlog__2.30.00..
+oewn-backlog__2.30.00..	other	result	oewn-backlog__1.14.00..
+oewn-backlog__2.30.00..	other	result	oewn-backlog__1.21.00..
+oewn-backpack__1.06.00..	derivation		oewn-backpack__2.38.00..
+oewn-backpack__1.06.00..	derivation		oewn-backpacker__1.18.00..
+oewn-backslap__2.41.00..	derivation		oewn-backslapper__1.18.00..
+oewn-backslap__2.41.00..	other	agent	oewn-backslapper__1.18.00..
+oewn-backslide__2.30.00..	derivation		oewn-backslider__1.18.00..
+oewn-backslide__2.30.00..	other	agent	oewn-backslider__1.18.00..
+oewn-backspace__2.32.00..	derivation		oewn-backspacer__1.06.00..
+oewn-backspace__2.32.00..	other	instrument	oewn-backspacer__1.06.00..
+oewn-backstage__4.02.01..	pertainym		oewn-backstage__5.00.00.private.00
+oewn-backstitch__1.06.00..	derivation		oewn-backstitch__2.35.00..
+oewn-backstitch__2.35.00..	other	result	oewn-backstitch__1.06.00..
+oewn-backstop__1.06.00..	derivation		oewn-backstop__2.33.00..
+oewn-backstroke__2.38.00..	derivation		oewn-backstroker__1.18.00..
+oewn-backstroke__2.38.00..	other	agent	oewn-backstroker__1.18.00..
+oewn-backward__3.00.01..	antonym		oewn-forward__3.00.01..
+oewn-backward__3.00.02..	antonym		oewn-forward__3.00.02..
+oewn-backward__4.02.02..	antonym		oewn-forward__4.02.02..
+oewn-backward__4.02.03..	antonym		oewn-forward__4.02.00..
+oewn-backward__4.02.03..	exemplifies		oewn-american_english__1.10.00..
+oewn-backward__5.00.00.retarded.00	derivation		oewn-backwardness__1.09.00..
+oewn-backwards__4.02.03..	exemplifies		oewn-british_english__1.10.01..
+oewn-bacteremia__1.26.00..	derivation		oewn-bacteremic__3.01.00..
+oewn-bacteremic__3.01.00..	pertainym		oewn-bacteremia__1.26.00..
+oewn-bacteria__1.05.00..	derivation		oewn-bacterial__3.01.00..
+oewn-bacterial__3.01.00..	derivation		oewn-bacterium__1.05.00..
+oewn-bacterial__3.01.00..	pertainym		oewn-bacteria__1.05.00..
+oewn-bacterially__4.02.00..	pertainym		oewn-bacterial__3.01.00..
+oewn-bactericidal__5.00.00.antiseptic.00	derivation		oewn-bactericide__1.06.00..
+oewn-bactericidal__5.00.00.antiseptic.00	derivation		oewn-bactericide__1.27.00..
+oewn-bacterioid__3.01.00..	pertainym		oewn-bacteria__1.05.00..
+oewn-bacterioidal__3.01.00..	derivation		oewn-bacterium__1.05.00..
+oewn-bacterioidal__3.01.00..	pertainym		oewn-bacteria__1.05.00..
+oewn-bacteriologic__3.01.00..	derivation		oewn-bacteriology__1.09.00..
+oewn-bacteriologic__3.01.00..	pertainym		oewn-bacteriology__1.09.00..
+oewn-bacteriological__3.01.00..	derivation		oewn-bacteriology__1.09.00..
+oewn-bacteriological__3.01.00..	pertainym		oewn-bacteriology__1.09.00..
+oewn-bacteriologist__1.18.00..	derivation		oewn-bacteriology__1.09.00..
+oewn-bacteriolysis__1.22.00..	derivation		oewn-bacteriolytic__3.01.00..
+oewn-bacteriolytic__3.01.00..	pertainym		oewn-bacteriolysis__1.22.00..
+oewn-bacteriophage__1.05.00..	derivation		oewn-bacteriophagic__3.01.00..
+oewn-bacteriophage__1.05.00..	derivation		oewn-bacteriophagous__3.01.00..
+oewn-bacteriophagic__3.01.00..	pertainym		oewn-bacteriophage__1.05.00..
+oewn-bacteriophagous__3.01.00..	pertainym		oewn-bacteriophage__1.05.00..
+oewn-bacteriostasis__1.22.00..	derivation		oewn-bacteriostatic__3.01.00..
+oewn-bacteriostatic__3.01.00..	pertainym		oewn-bacteriostasis__1.22.00..
+oewn-bacterise__2.30.00..	derivation		oewn-bacterium__1.05.00..
+oewn-bacterise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bacterise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bacterium__1.05.00..	derivation		oewn-bacterize__2.30.00..
+oewn-bacterize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bacteroid__1.05.00..	derivation		oewn-bacteroid__3.01.00..
+oewn-bacteroid__1.05.00..	derivation		oewn-bacteroidal__3.01.00..
+oewn-bacteroid__3.01.00..	pertainym		oewn-bacteria__1.05.00..
+oewn-bacteroidal__3.01.00..	pertainym		oewn-bacteria__1.05.00..
+oewn-bad__1.07.00..	antonym		oewn-good__1.07.02..
+oewn-bad__3.00.00..	antonym		oewn-good__3.00.01..
+oewn-bad__3.00.00..	derivation		oewn-badness__1.07.00..
+oewn-bad__5.00.00.evil.00	derivation		oewn-badness__1.07.00..
+oewn-bad__5.00.00.inferior.02	derivation		oewn-badness__1.07.00..
+oewn-bad__5.00.00.intense.00	derivation		oewn-badness__1.07.01..
+oewn-bad__5.00.00.uncomfortable.00	derivation		oewn-badness__1.07.01..
+oewn-bad_egg__1.18.00..	antonym		oewn-good_egg__1.18.00..
+oewn-bad_guy__1.18.00..	antonym		oewn-good_guy__1.18.00..
+oewn-bad_luck__1.26.00..	antonym		oewn-good_luck__1.26.00..
+oewn-bad_person__1.18.00..	antonym		oewn-good_person__1.18.00..
+oewn-bad_weather__1.26.00..	antonym		oewn-good_weather__1.26.00..
+oewn-baddie__1.18.00..	exemplifies		oewn-slang__1.10.00..
+oewn-badge__1.10.00..	derivation		oewn-badge__2.35.00..
+oewn-badge__2.35.00..	other	uses	oewn-badge__1.10.00..
+oewn-badger__2.37.00..	derivation		oewn-badgerer__1.18.00..
+oewn-badger__2.37.00..	other	agent	oewn-badgerer__1.18.00..
+oewn-badly__4.02.04..	pertainym		oewn-bad__5.00.00.intense.00
+oewn-badly__4.02.06..	pertainym		oewn-bad__5.00.00.evil.00
+oewn-badly__4.02.07..	pertainym		oewn-bad__3.00.00..
+oewn-badly__4.02.08..	antonym		oewn-well__4.02.01..
+oewn-badly__4.02.10..	antonym		oewn-well__4.02.10..
+oewn-badly__4.02.12..	antonym		oewn-well__4.02.12..
+oewn-badness__1.07.00..	antonym		oewn-goodness__1.07.02..
+oewn-baffle__1.06.00..	derivation		oewn-baffle__2.30.00..
+oewn-baffle__2.30.00..	other	instrument	oewn-baffle__1.06.00..
+oewn-baffle__2.31.00..	derivation		oewn-bafflement__1.09.00..
+oewn-baffle__2.31.00..	other	result	oewn-bafflement__1.09.00..
+oewn-bag__1.06.02..	derivation		oewn-bag__2.35.00..
+oewn-bag__1.23.01..	derivation		oewn-bag__2.35.01..
+oewn-bag__2.35.00..	derivation		oewn-bagger__1.06.00..
+oewn-bag__2.35.00..	derivation		oewn-bagger__1.18.00..
+oewn-bag__2.35.00..	derivation		oewn-bagging__1.06.00..
+oewn-bag__2.35.00..	other	agent	oewn-bagger__1.18.00..
+oewn-bag__2.35.00..	other	instrument	oewn-bagger__1.06.00..
+oewn-bag__2.35.01..	other	event	oewn-bag__1.23.01..
+oewn-bag__2.42.01..	derivation		oewn-bagging__1.06.00..
+oewn-bahai__3.01.00..	pertainym		oewn-bahaism__1.09.00..
+oewn-bahamian__1.18.00..	derivation		oewn-bahamian__3.01.00..
+oewn-bahraini__1.18.00..	derivation		oewn-bahraini__3.01.00..
+oewn-bail__1.09.00..	derivation		oewn-bail__2.32.00..
+oewn-bail__1.09.00..	derivation		oewn-bail__2.41.00..
+oewn-bail__1.21.00..	derivation		oewn-bail__2.41.00..
+oewn-bail__2.32.00..	derivation		oewn-bailable__5.00.00.permissive.02
+oewn-bail__2.32.00..	derivation		oewn-bailor__1.18.00..
+oewn-bail__2.32.00..	other	agent	oewn-bailor__1.18.00..
+oewn-bail__2.32.00..	other	by_means_of	oewn-bail__1.09.00..
+oewn-bail__2.40.00..	derivation		oewn-bailee__1.18.00..
+oewn-bail__2.40.00..	derivation		oewn-bailment__1.04.00..
+oewn-bail__2.40.00..	other	event	oewn-bailment__1.04.00..
+oewn-bail__2.40.00..	other	undergoer	oewn-bailee__1.18.00..
+oewn-bail__2.41.00..	derivation		oewn-bailable__5.00.00.permissive.02
+oewn-bail__2.41.00..	other	by_means_of	oewn-bail__1.09.00..
+oewn-bail__2.41.00..	other	by_means_of	oewn-bail__1.21.00..
+oewn-bailiff__1.18.00..	derivation		oewn-bailiffship__1.04.00..
+oewn-bait__1.06.00..	derivation		oewn-bait__2.41.00..
+oewn-bait__1.09.00..	derivation		oewn-bait__2.41.00..
+oewn-bait__2.41.00..	other	by_means_of	oewn-bait__1.06.00..
+oewn-bait__2.41.00..	other	by_means_of	oewn-bait__1.09.00..
+oewn-bake__2.30.00..	derivation		oewn-baking__1.04.00..
+oewn-bake__2.36.00..	derivation		oewn-baker__1.18.00..
+oewn-bake__2.36.00..	derivation		oewn-baker__1.18.01..
+oewn-bake__2.36.00..	derivation		oewn-baking__1.04.01..
+oewn-bake__2.36.00..	other	agent	oewn-baker__1.18.00..
+oewn-bake__2.36.00..	other	agent	oewn-baker__1.18.01..
+oewn-baking_tray__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-balance__1.21.00..	derivation		oewn-balance__2.40.00..
+oewn-balance__1.26.00..	antonym		oewn-imbalance__1.26.00..
+oewn-balance__1.26.00..	derivation		oewn-balance__2.35.00..
+oewn-balance__1.26.00..	derivation		oewn-balance__2.42.00..
+oewn-balance__1.26.00..	derivation		oewn-balance__2.42.01..
+oewn-balance__2.35.00..	derivation		oewn-balancer__1.05.00..
+oewn-balance__2.35.00..	derivation		oewn-balancer__1.18.00..
+oewn-balance__2.35.00..	other	agent	oewn-balancer__1.18.00..
+oewn-balance__2.35.00..	other	body_part	oewn-balancer__1.05.00..
+oewn-balance__2.35.00..	other	state	oewn-balance__1.26.00..
+oewn-balance__2.40.00..	other	result	oewn-balance__1.21.00..
+oewn-balance__2.42.00..	antonym		oewn-unbalance__2.42.00..
+oewn-balance__2.42.00..	other	result	oewn-balance__1.26.00..
+oewn-balance__2.42.00..	other	state	oewn-balance__1.26.00..
+oewn-balance__2.42.01..	derivation		oewn-balancer__1.05.00..
+oewn-balance__2.42.01..	derivation		oewn-balancer__1.18.00..
+oewn-balance__2.42.01..	other	agent	oewn-balancer__1.18.00..
+oewn-balance__2.42.01..	other	body_part	oewn-balancer__1.05.00..
+oewn-balance__2.42.01..	other	state	oewn-balance__1.26.00..
+oewn-balanced__3.00.00..	antonym		oewn-unbalanced__3.00.00..
+oewn-balconied__3.00.00..	antonym		oewn-unbalconied__3.00.00..
+oewn-bald__5.00.00.hairless.00	derivation		oewn-baldness__1.26.00..
+oewn-baldly__4.02.00..	pertainym		oewn-bald__5.00.00.overt.00
+oewn-bale__1.06.00..	derivation		oewn-bale__2.35.00..
+oewn-bale__2.35.00..	other	result	oewn-bale__1.06.00..
+oewn-baleful__5.00.00.alarming.00	derivation		oewn-balefulness__1.07.00..
+oewn-baleful__5.00.00.maleficent.00	derivation		oewn-balefulness__1.07.00..
+oewn-balefully__4.02.00..	pertainym		oewn-baleful__5.00.00.alarming.00
+oewn-balk__1.04.00..	derivation		oewn-balky__5.00.00.intractable.00
+oewn-balk__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-balk__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-balk__1.15.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-balk__2.41.00..	derivation		oewn-balker__1.18.00..
+oewn-balk__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-balk__2.41.00..	other	agent	oewn-balker__1.18.00..
+oewn-balkanise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-balkanise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-balkanize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-balkiness__1.07.00..	derivation		oewn-balky__5.00.00.intractable.00
+oewn-ball__1.04.01..	derivation		oewn-ball__1.06.01..
+oewn-ball__1.08.00..	derivation		oewn-ball__2.35.00..
+oewn-ball__2.35.00..	other	result	oewn-ball__1.08.00..
+oewn-ball_up__2.41.00..	derivation		oewn-ballup__1.04.00..
+oewn-ballad__1.10.00..	derivation		oewn-balladeer__1.18.00..
+oewn-ballad__1.10.01..	derivation		oewn-balladeer__1.18.00..
+oewn-ballast__1.06.00..	derivation		oewn-ballast__2.30.00..
+oewn-ballast__2.30.00..	other	instrument	oewn-ballast__1.06.00..
+oewn-ballet__1.04.00..	derivation		oewn-balletic__3.01.00..
+oewn-ballet__1.10.00..	derivation		oewn-balletic__3.01.00..
+oewn-balletic__3.01.00..	pertainym		oewn-ballet__1.10.00..
+oewn-ballistic__3.01.00..	derivation		oewn-ballistics__1.09.00..
+oewn-ballistic__3.01.00..	derivation		oewn-ballistics__1.19.00..
+oewn-ballistic__3.01.00..	pertainym		oewn-ballistics__1.19.00..
+oewn-balloon__1.06.00..	derivation		oewn-balloon__2.38.00..
+oewn-balloon__1.06.00..	derivation		oewn-balloonist__1.18.00..
+oewn-balloon__2.38.00..	derivation		oewn-balloonist__1.18.00..
+oewn-balloon__2.38.00..	other	vehicle	oewn-balloon__1.06.00..
+oewn-ballot__1.04.00..	derivation		oewn-ballot__2.41.00..
+oewn-ballot__1.10.00..	derivation		oewn-ballot__2.41.00..
+oewn-ballot__2.41.00..	other	by_means_of	oewn-ballot__1.10.00..
+oewn-ballot__2.41.00..	other	event	oewn-ballot__1.04.00..
+oewn-ballyhoo__1.10.00..	derivation		oewn-ballyhoo__2.32.00..
+oewn-ballyhoo__2.32.00..	other	event	oewn-ballyhoo__1.10.00..
+oewn-balm__1.27.01..	derivation		oewn-balmy__5.00.00.clement.02
+oewn-balmily__4.02.00..	pertainym		oewn-balmy__5.00.00.insane.00
+oewn-balsam__1.06.00..	derivation		oewn-balsamic__3.01.00..
+oewn-balsam__1.20.00..	derivation		oewn-balsamic__3.01.00..
+oewn-balsam__1.27.00..	derivation		oewn-balsamic__3.01.00..
+oewn-balsam__1.27.00..	derivation		oewn-balsamy__3.01.00..
+oewn-balsamic__3.01.00..	pertainym		oewn-balsam__1.27.00..
+oewn-balsamy__3.01.00..	pertainym		oewn-balsam__1.27.00..
+oewn-baltic__1.10.00..	derivation		oewn-baltic__3.01.01..
+oewn-ban__1.10.00..	derivation		oewn-ban__2.32.00..
+oewn-ban__1.10.00..	derivation		oewn-ban__2.41.00..
+oewn-ban__1.10.01..	derivation		oewn-ban__2.32.00..
+oewn-ban__1.10.01..	derivation		oewn-ban__2.41.00..
+oewn-ban__2.32.00..	other	by_means_of	oewn-ban__1.10.00..
+oewn-ban__2.32.00..	other	event	oewn-ban__1.10.01..
+oewn-ban__2.41.00..	other	by_means_of	oewn-ban__1.10.00..
+oewn-ban__2.41.00..	other	event	oewn-ban__1.10.01..
+oewn-banal__5.00.01.unoriginal.00	derivation		oewn-banality__1.10.00..
+oewn-band__1.06.02..	derivation		oewn-band__2.35.00..
+oewn-band__2.35.00..	other	by_means_of	oewn-band__1.06.02..
+oewn-bandage__1.06.00..	derivation		oewn-bandage__2.29.00..
+oewn-bandage__2.29.00..	other	by_means_of	oewn-bandage__1.06.00..
+oewn-banded__3.00.00..	antonym		oewn-unbanded__3.00.00..
+oewn-banefully__4.02.00..	pertainym		oewn-baneful__5.00.00.noxious.00
+oewn-bang__1.11.00..	derivation		oewn-bang__2.38.00..
+oewn-bang__1.11.00..	derivation		oewn-bang__2.39.00..
+oewn-bang__1.11.01..	derivation		oewn-bang__2.35.00..
+oewn-bang__2.35.00..	other	event	oewn-bang__1.11.01..
+oewn-bang__2.38.00..	other	event	oewn-bang__1.11.00..
+oewn-bang__2.39.00..	derivation		oewn-banger__1.06.00..
+oewn-bang__2.39.00..	other	by_means_of	oewn-banger__1.06.00..
+oewn-bang__2.39.00..	other	event	oewn-bang__1.11.00..
+oewn-bangladeshi__1.18.00..	derivation		oewn-bangladeshi__3.01.00..
+oewn-banish__2.41.00..	derivation		oewn-banishment__1.04.00..
+oewn-banish__2.41.00..	other	event	oewn-banishment__1.04.00..
+oewn-banish__2.41.01..	derivation		oewn-banishment__1.26.00..
+oewn-banish__2.41.01..	other	state	oewn-banishment__1.26.00..
+oewn-bank__1.04.00..	derivation		oewn-bank__2.38.00..
+oewn-bank__1.06.00..	derivation		oewn-bank__2.40.00..
+oewn-bank__1.06.00..	derivation		oewn-bank__2.40.01..
+oewn-bank__1.06.00..	derivation		oewn-bank__2.40.02..
+oewn-bank__1.14.00..	derivation		oewn-bank__2.40.00..
+oewn-bank__1.14.00..	derivation		oewn-bank__2.40.01..
+oewn-bank__1.14.00..	derivation		oewn-bank__2.40.02..
+oewn-bank__1.17.01..	derivation		oewn-bank__2.35.00..
+oewn-bank__2.35.00..	other	uses	oewn-bank__1.17.01..
+oewn-bank__2.38.00..	other	event	oewn-bank__1.04.00..
+oewn-bank__2.40.00..	derivation		oewn-bankable__5.00.00.acceptable.00
+oewn-bank__2.40.00..	derivation		oewn-banking__1.04.00..
+oewn-bank__2.40.00..	other	location	oewn-bank__1.06.00..
+oewn-bank__2.40.01..	derivation		oewn-bankable__5.00.00.acceptable.00
+oewn-bank__2.40.01..	derivation		oewn-banker__1.18.00..
+oewn-bank__2.40.01..	derivation		oewn-banking__1.04.01..
+oewn-bank__2.40.01..	other	agent	oewn-bank__1.14.00..
+oewn-bank__2.40.01..	other	agent	oewn-banker__1.18.00..
+oewn-bank__2.40.01..	other	location	oewn-bank__1.06.00..
+oewn-bank__2.40.02..	derivation		oewn-bankable__5.00.00.acceptable.00
+oewn-bank__2.40.02..	derivation		oewn-banking__1.04.00..
+oewn-bank__2.40.02..	other	agent	oewn-bank__1.14.00..
+oewn-bank__2.40.02..	other	location	oewn-bank__1.06.00..
+oewn-bankrupt__1.18.00..	derivation		oewn-bankrupt__5.00.00.insolvent.00
+oewn-bankrupt__2.40.00..	derivation		oewn-bankruptcy__1.26.00..
+oewn-banquet__1.13.00..	derivation		oewn-banquet__2.34.01..
+oewn-banquet__1.14.00..	derivation		oewn-banquet__2.34.01..
+oewn-banquet__2.34.01..	other	uses	oewn-banquet__1.13.00..
+oewn-banquet__2.34.01..	other	uses	oewn-banquet__1.14.00..
+oewn-banter__1.10.00..	derivation		oewn-banter__2.32.00..
+oewn-banter__2.32.00..	other	event	oewn-banter__1.10.00..
+oewn-banteringly__4.02.00..	pertainym		oewn-bantering__5.00.00.humorous.00
+oewn-bantoid__3.01.00..	pertainym		oewn-bantu__1.10.00..
+oewn-bantu--speaking__3.01.00..	pertainym		oewn-bantu__1.10.00..
+oewn-bantu__1.10.00..	derivation		oewn-bantu__3.01.00..
+oewn-bantu__1.18.00..	derivation		oewn-bantu__3.01.00..
+oewn-bantu__3.01.00..	pertainym		oewn-bantu__1.18.00..
+oewn-baptise__2.32.00..	derivation		oewn-baptism__1.04.00..
+oewn-baptise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baptise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baptism__1.04.00..	derivation		oewn-baptismal__3.01.00..
+oewn-baptism__1.04.00..	derivation		oewn-baptist__1.18.00..
+oewn-baptism__1.04.00..	derivation		oewn-baptize__2.32.00..
+oewn-baptismal__3.01.00..	pertainym		oewn-baptism__1.04.00..
+oewn-baptist__1.18.00..	derivation		oewn-baptistic__3.01.00..
+oewn-baptistic__3.01.00..	pertainym		oewn-baptist_church__1.14.00..
+oewn-baptize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-baptized__3.00.00..	antonym		oewn-unbaptized__3.00.00..
+oewn-bar__1.04.00..	derivation		oewn-bar__2.32.00..
+oewn-bar__1.06.00..	derivation		oewn-bar__2.35.01..
+oewn-bar__1.06.02..	derivation		oewn-bar__2.35.00..
+oewn-bar__1.06.02..	derivation		oewn-bar__2.35.01..
+oewn-bar__2.32.00..	other	event	oewn-bar__1.04.00..
+oewn-bar__2.35.00..	other	by_means_of	oewn-bar__1.06.02..
+oewn-bar__2.35.01..	antonym		oewn-unbar__2.35.00..
+oewn-bar__2.35.01..	other	by_means_of	oewn-bar__1.06.00..
+oewn-bar__2.35.01..	other	by_means_of	oewn-bar__1.06.02..
+oewn-bar_mitzvah__1.11.00..	derivation		oewn-bar_mitzvah__2.41.00..
+oewn-bar_mitzvah__2.41.00..	other	event	oewn-bar_mitzvah__1.11.00..
+oewn-barb__1.06.01..	derivation		oewn-barb__2.35.00..
+oewn-barb__2.35.00..	other	uses	oewn-barb__1.06.01..
+oewn-barbadian__1.18.00..	derivation		oewn-barbadian__3.01.00..
+oewn-barbarian__1.18.00..	derivation		oewn-barbarian__5.00.00.noncivilized.00
+oewn-barbarian__1.18.01..	derivation		oewn-barbarian__5.00.00.noncivilized.00
+oewn-barbaric__5.00.00.noncivilized.00	derivation		oewn-barbarity__1.04.00..
+oewn-barbarisation__1.04.00..	derivation		oewn-barbarise__2.30.00..
+oewn-barbarisation__1.04.00..	derivation		oewn-barbarise__2.30.01..
+oewn-barbarisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-barbarisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-barbarise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-barbarise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-barbarise__2.30.00..	other	event	oewn-barbarisation__1.04.00..
+oewn-barbarise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-barbarise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-barbarise__2.30.01..	other	event	oewn-barbarisation__1.04.00..
+oewn-barbarization__1.04.00..	derivation		oewn-barbarize__2.30.00..
+oewn-barbarization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-barbarize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-barbarize__2.30.00..	other	event	oewn-barbarization__1.04.00..
+oewn-barbarize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-barbarous__5.00.00.inhumane.00	derivation		oewn-barbarousness__1.07.00..
+oewn-barbarously__4.02.00..	pertainym		oewn-barbarous__5.00.00.inhumane.00
+oewn-barbecue__1.06.00..	derivation		oewn-barbecue__2.30.00..
+oewn-barbecue__1.13.00..	derivation		oewn-barbecue__2.30.00..
+oewn-barbecue__1.13.02..	derivation		oewn-barbecue__2.30.00..
+oewn-barbecue__2.30.00..	other	event	oewn-barbecue__1.13.00..
+oewn-barbecue__2.30.00..	other	result	oewn-barbecue__1.13.02..
+oewn-barbel__1.05.00..	derivation		oewn-barbellate__5.00.00.armed.02
+oewn-barber__1.18.00..	derivation		oewn-barber__2.29.00..
+oewn-barber__2.29.00..	other	agent	oewn-barber__1.18.00..
+oewn-bard__1.06.00..	derivation		oewn-bard__2.36.00..
+oewn-bard__2.36.00..	other	uses	oewn-bard__1.06.00..
+oewn-bardic__3.01.00..	pertainym		oewn-bard__1.18.00..
+oewn-bare__3.00.00..	antonym		oewn-covered__3.00.00..
+oewn-bare__3.00.00..	derivation		oewn-bareness__1.07.00..
+oewn-bare__3.00.04..	derivation		oewn-bareness__1.07.00..
+oewn-bare__5.00.00.empty.00	derivation		oewn-bareness__1.07.00..
+oewn-bare__5.00.00.inhospitable.00	derivation		oewn-bareness__1.07.00..
+oewn-bare__5.00.00.unclothed.00	derivation		oewn-bareness__1.26.00..
+oewn-bare__5.00.00.unpainted.00	derivation		oewn-bareness__1.07.00..
+oewn-barefacedly__4.02.00..	pertainym		oewn-barefaced__5.00.00.unashamed.00
+oewn-bargain__1.10.00..	derivation		oewn-bargain__2.40.00..
+oewn-bargain__1.21.01..	derivation		oewn-bargain__2.40.00..
+oewn-bargain__2.32.00..	derivation		oewn-bargainer__1.18.01..
+oewn-bargain__2.32.00..	other	agent	oewn-bargainer__1.18.01..
+oewn-bargain__2.40.00..	derivation		oewn-bargainer__1.18.01..
+oewn-bargain__2.40.00..	derivation		oewn-bargaining__1.10.00..
+oewn-bargain__2.40.00..	other	agent	oewn-bargainer__1.18.01..
+oewn-bargain__2.40.00..	other	result	oewn-bargain__1.10.00..
+oewn-bargain__2.40.00..	other	result	oewn-bargain__1.21.01..
+oewn-barge__1.06.00..	derivation		oewn-barge__2.38.01..
+oewn-barge__2.38.00..	also		oewn-barge_in__2.32.00..
+oewn-barge__2.38.01..	derivation		oewn-bargee__1.18.00..
+oewn-barge__2.38.01..	other	agent	oewn-bargee__1.18.00..
+oewn-barge__2.38.01..	other	vehicle	oewn-barge__1.06.00..
+oewn-baric__3.01.00..	derivation		oewn-barium__1.27.00..
+oewn-baric__3.01.00..	pertainym		oewn-barium__1.27.00..
+oewn-bark__1.11.00..	derivation		oewn-bark__2.32.00..
+oewn-bark__1.11.02..	derivation		oewn-bark__2.32.01..
+oewn-bark__1.20.00..	derivation		oewn-bark__2.35.00..
+oewn-bark__1.20.00..	derivation		oewn-bark__2.35.01..
+oewn-bark__1.20.00..	derivation		oewn-barky__5.00.00.rough.00
+oewn-bark__2.32.00..	derivation		oewn-barker__1.05.00..
+oewn-bark__2.32.00..	derivation		oewn-barker__1.18.00..
+oewn-bark__2.32.00..	other	agent	oewn-barker__1.05.00..
+oewn-bark__2.32.00..	other	event	oewn-bark__1.11.00..
+oewn-bark__2.32.01..	other	event	oewn-bark__1.11.02..
+oewn-bark__2.35.00..	other	undergoer	oewn-bark__1.20.00..
+oewn-bark__2.35.01..	other	uses	oewn-bark__1.20.00..
+oewn-barnstorm__2.33.01..	derivation		oewn-barnstormer__1.18.00..
+oewn-barnstorm__2.33.01..	other	agent	oewn-barnstormer__1.18.00..
+oewn-barographic__3.01.00..	pertainym		oewn-barograph__1.06.00..
+oewn-barometer__1.06.00..	derivation		oewn-barometric__3.01.00..
+oewn-barometer__1.06.00..	derivation		oewn-barometrical__3.01.00..
+oewn-barometric__3.01.00..	pertainym		oewn-barometer__1.06.00..
+oewn-barometrical__3.01.00..	pertainym		oewn-barometer__1.06.00..
+oewn-baron__1.18.02..	derivation		oewn-baronial__5.00.00.impressive.00
+oewn-baronet__1.18.00..	derivation		oewn-baronetize__2.41.00..
+oewn-baronetise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baronetise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baronetize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-baroque__5.00.00.fancy.00	derivation		oewn-baroqueness__1.07.00..
+oewn-barrack__1.06.00..	derivation		oewn-barrack__2.42.00..
+oewn-barrack__2.42.00..	other	location	oewn-barrack__1.06.00..
+oewn-barrage__1.10.00..	derivation		oewn-barrage__2.32.00..
+oewn-barrage__2.32.00..	other	event	oewn-barrage__1.10.00..
+oewn-barrel__1.06.00..	derivation		oewn-barrel__2.35.00..
+oewn-barrel__1.23.04..	derivation		oewn-barrel__2.35.00..
+oewn-barrel__2.35.00..	other	location	oewn-barrel__1.06.00..
+oewn-barrel__2.35.00..	other	undergoer	oewn-barrel__1.23.04..
+oewn-barreled__3.00.00..	antonym		oewn-unbarreled__3.00.00..
+oewn-barren__1.15.00..	derivation		oewn-barren__5.00.00.inhospitable.00
+oewn-barren__5.00.00.inhospitable.00	derivation		oewn-barrenness__1.07.00..
+oewn-barren__5.00.00.sterile.00	derivation		oewn-barrenness__1.26.00..
+oewn-barricade__1.06.00..	derivation		oewn-barricade__2.33.00..
+oewn-barricade__1.06.00..	derivation		oewn-barricade__2.33.01..
+oewn-barricade__1.06.00..	derivation		oewn-barricade__2.35.00..
+oewn-barricade__1.06.01..	derivation		oewn-barricade__2.33.00..
+oewn-barricade__1.06.01..	derivation		oewn-barricade__2.33.01..
+oewn-barricade__1.06.01..	derivation		oewn-barricade__2.35.00..
+oewn-barricade__2.33.00..	other	by_means_of	oewn-barricade__1.06.00..
+oewn-barricade__2.33.01..	other	by_means_of	oewn-barricade__1.06.00..
+oewn-barricade__2.35.00..	other	by_means_of	oewn-barricade__1.06.00..
+oewn-barter__1.04.00..	derivation		oewn-barter__2.40.00..
+oewn-barter__2.40.00..	derivation		oewn-barterer__1.18.00..
+oewn-barter__2.40.00..	other	agent	oewn-barterer__1.18.00..
+oewn-barter__2.40.00..	other	event	oewn-barter__1.04.00..
+oewn-baryta__1.27.00..	derivation		oewn-barytic__3.01.00..
+oewn-barytic__3.01.00..	pertainym		oewn-baryta__1.27.00..
+oewn-basal__3.00.02..	derivation		oewn-base__1.15.00..
+oewn-basal__5.00.00.basic.00	derivation		oewn-base__1.06.01..
+oewn-basal__5.00.00.basic.00	derivation		oewn-base__1.09.00..
+oewn-basalt__1.27.00..	derivation		oewn-basaltic__3.01.00..
+oewn-basaltic__3.01.00..	pertainym		oewn-basalt__1.27.00..
+oewn-base__1.06.07..	derivation		oewn-base__2.34.00..
+oewn-base__1.09.00..	derivation		oewn-base__2.31.00..
+oewn-base__1.15.00..	derivation		oewn-basilary__3.01.00..
+oewn-base__1.17.00..	derivation		oewn-basilar__3.01.00..
+oewn-base__1.27.00..	derivation		oewn-base__2.34.00..
+oewn-base__1.27.00..	derivation		oewn-basify__2.30.00..
+oewn-base__2.31.00..	other	by_means_of	oewn-base__1.09.00..
+oewn-base__5.00.00.ignoble.01	derivation		oewn-baseness__1.07.00..
+oewn-base__5.00.00.wrong.01	derivation		oewn-baseness__1.07.00..
+oewn-basely__4.02.00..	pertainym		oewn-base__5.00.00.ignoble.01
+oewn-bash__1.11.00..	derivation		oewn-bash__2.35.00..
+oewn-bash__2.35.00..	other	event	oewn-bash__1.11.00..
+oewn-bashful__5.00.00.timid.00	derivation		oewn-bashfulness__1.12.00..
+oewn-bashfully__4.02.00..	pertainym		oewn-bashful__5.00.00.timid.00
+oewn-basic__3.00.00..	antonym		oewn-incidental__3.00.00..
+oewn-basic_color__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-basic_colour__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-basic_colour__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-basic_colour__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-basidial__3.01.00..	derivation		oewn-basidium__1.20.00..
+oewn-basidial__3.01.00..	pertainym		oewn-basidium__1.20.00..
+oewn-basidiomycete__1.20.00..	derivation		oewn-basidiomycetous__3.01.00..
+oewn-basidiomycetous__3.01.00..	pertainym		oewn-basidiomycete__1.20.00..
+oewn-basidiospore__1.20.00..	derivation		oewn-basidiosporous__3.01.00..
+oewn-basidiosporous__3.01.00..	pertainym		oewn-basidiospore__1.20.00..
+oewn-basify__2.30.00..	other	by_means_of	oewn-base__1.27.00..
+oewn-basilar__3.01.00..	pertainym		oewn-base__1.15.00..
+oewn-basilary__3.01.00..	pertainym		oewn-base__1.15.00..
+oewn-basilica__1.06.01..	derivation		oewn-basilican__3.01.00..
+oewn-basilica__1.06.02..	derivation		oewn-basilican__3.01.00..
+oewn-basilican__3.01.00..	pertainym		oewn-basilica__1.06.01..
+oewn-basinal__3.01.00..	pertainym		oewn-basin__1.17.00..
+oewn-basket__1.04.00..	derivation		oewn-basketeer__1.18.00..
+oewn-basket__1.06.01..	derivation		oewn-basketeer__1.18.00..
+oewn-basophilia__1.07.00..	derivation		oewn-basophilic__3.01.00..
+oewn-basophilic__3.01.00..	pertainym		oewn-basophilia__1.07.00..
+oewn-bassoon__1.06.00..	derivation		oewn-bassoonist__1.18.00..
+oewn-bastard__1.06.00..	derivation		oewn-bastard__5.00.00.counterfeit.00
+oewn-bastard__1.06.00..	derivation		oewn-bastardise__2.41.00..
+oewn-bastard__1.06.00..	derivation		oewn-bastardize__2.41.00..
+oewn-bastard__1.06.00..	derivation		oewn-bastardly__5.00.00.contemptible.00
+oewn-bastard__1.18.01..	derivation		oewn-bastardise__2.32.00..
+oewn-bastard__1.18.01..	derivation		oewn-bastardize__2.32.00..
+oewn-bastard__1.18.01..	derivation		oewn-bastardly__5.00.00.illegitimate.00
+oewn-bastardisation__1.04.00..	derivation		oewn-bastardise__2.41.00..
+oewn-bastardisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bastardisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bastardise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bastardise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bastardise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bastardise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bastardise__2.41.00..	other	event	oewn-bastardisation__1.04.00..
+oewn-bastardization__1.04.00..	derivation		oewn-bastardize__2.41.00..
+oewn-bastardization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bastardization__1.10.00..	derivation		oewn-bastardize__2.32.00..
+oewn-bastardize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bastardize__2.32.00..	other	event	oewn-bastardization__1.10.00..
+oewn-bastardize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bastardize__2.41.00..	other	event	oewn-bastardization__1.04.00..
+oewn-baste__1.06.00..	derivation		oewn-baste__2.35.00..
+oewn-baste__2.35.00..	other	result	oewn-baste__1.06.00..
+oewn-bastinado__1.06.00..	derivation		oewn-bastinado__2.35.00..
+oewn-bastinado__2.35.00..	other	instrument	oewn-bastinado__1.06.00..
+oewn-bat__1.06.00..	derivation		oewn-bat__2.35.01..
+oewn-bat__1.06.03..	derivation		oewn-bat__2.35.01..
+oewn-bat__2.35.01..	derivation		oewn-batter__1.18.00..
+oewn-bat__2.35.01..	derivation		oewn-batting__1.04.00..
+oewn-bat__2.35.01..	other	agent	oewn-batter__1.18.00..
+oewn-bat__2.35.01..	other	instrument	oewn-bat__1.06.00..
+oewn-bat__2.35.01..	other	instrument	oewn-bat__1.06.03..
+oewn-bat_mitzvah__1.11.00..	derivation		oewn-bat_mitzvah__2.41.00..
+oewn-bat_mitzvah__2.41.00..	other	event	oewn-bat_mitzvah__1.11.00..
+oewn-batch__1.14.00..	derivation		oewn-batch__2.35.00..
+oewn-batch__2.35.00..	other	result	oewn-batch__1.14.00..
+oewn-bathe__1.04.00..	derivation		oewn-bathe__2.38.00..
+oewn-bathe__1.04.00..	derivation		oewn-bather__1.18.00..
+oewn-bathe__2.29.00..	derivation		oewn-bather__1.18.01..
+oewn-bathe__2.29.00..	derivation		oewn-bathing__1.04.01..
+oewn-bathe__2.29.00..	other	agent	oewn-bather__1.18.01..
+oewn-bathe__2.29.00..	other	event	oewn-bathe__1.04.00..
+oewn-bathe__2.38.00..	derivation		oewn-bather__1.18.00..
+oewn-batholite__1.27.00..	derivation		oewn-batholitic__3.01.00..
+oewn-batholith__1.27.00..	derivation		oewn-batholithic__3.01.00..
+oewn-batholithic__3.01.00..	pertainym		oewn-batholith__1.27.00..
+oewn-batholitic__3.01.00..	pertainym		oewn-batholith__1.27.00..
+oewn-bathroom__1.06.01..	exemplifies		oewn-american_english__1.10.00..
+oewn-bathyal__3.01.00..	pertainym		oewn-bathyal_zone__1.17.00..
+oewn-bathymeter__1.06.00..	derivation		oewn-bathymetrical__3.01.00..
+oewn-bathymetric__3.01.00..	derivation		oewn-bathymetry__1.04.00..
+oewn-bathymetric__3.01.00..	pertainym		oewn-bathymetry__1.04.00..
+oewn-bathymetrical__3.01.00..	derivation		oewn-bathymetry__1.04.00..
+oewn-bathymetrical__3.01.00..	pertainym		oewn-bathymetry__1.04.00..
+oewn-batik__1.06.00..	derivation		oewn-batik__2.30.00..
+oewn-batik__2.30.00..	other	result	oewn-batik__1.06.00..
+oewn-batrachian__1.05.00..	derivation		oewn-batrachian__3.01.00..
+oewn-batten__1.06.00..	derivation		oewn-batten__2.35.00..
+oewn-batten__1.06.00..	derivation		oewn-batten__2.35.01..
+oewn-batten__2.35.00..	other	instrument	oewn-batten__1.06.00..
+oewn-batten__2.35.01..	other	uses	oewn-batten__1.06.00..
+oewn-battle__1.04.00..	derivation		oewn-battle__2.33.00..
+oewn-battle__1.04.02..	derivation		oewn-battle__2.33.00..
+oewn-battle__2.33.00..	derivation		oewn-battler__1.18.00..
+oewn-battle__2.33.00..	other	agent	oewn-battler__1.18.00..
+oewn-battle__2.33.00..	other	event	oewn-battle__1.04.00..
+oewn-battle__2.33.00..	other	event	oewn-battle__1.04.02..
+oewn-baulk__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baulk__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baulk__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baulk__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baulk__1.15.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baulk__1.15.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baulk__2.41.00..	derivation		oewn-baulker__1.18.00..
+oewn-baulk__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-baulk__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-baulk__2.41.00..	other	agent	oewn-baulker__1.18.00..
+oewn-bauxite__1.27.00..	derivation		oewn-bauxitic__3.01.00..
+oewn-bauxitic__3.01.00..	pertainym		oewn-bauxite__1.27.00..
+oewn-bawd__1.18.00..	derivation		oewn-bawdy__5.00.00.dirty.02
+oewn-bawdily__4.02.00..	pertainym		oewn-bawdy__5.00.00.dirty.02
+oewn-bawdiness__1.07.00..	derivation		oewn-bawdy__5.00.00.dirty.02
+oewn-bawdy__1.10.00..	derivation		oewn-bawdy__5.00.00.dirty.02
+oewn-bawl__2.29.00..	derivation		oewn-bawler__1.18.01..
+oewn-bawl__2.29.00..	other	agent	oewn-bawler__1.18.01..
+oewn-bawl__2.32.01..	derivation		oewn-bawler__1.18.00..
+oewn-bawl__2.32.01..	other	agent	oewn-bawler__1.18.00..
+oewn-bay__1.05.00..	derivation		oewn-bay__5.00.00.colored.00
+oewn-bay__1.11.00..	derivation		oewn-bay__2.32.00..
+oewn-bay__2.32.00..	other	event	oewn-bay__1.11.00..
+oewn-baycol__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-bayer__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-bayer__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-bayesian__3.01.00..	pertainym		oewn-bayes-apos-_theorem__1.09.00..
+oewn-bayonet__1.06.00..	derivation		oewn-bayonet__2.35.00..
+oewn-bayonet__2.35.00..	other	instrument	oewn-bayonet__1.06.00..

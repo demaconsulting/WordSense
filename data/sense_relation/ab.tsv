@@ -1,0 +1,382 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-abactinal__3.00.00..	antonym		oewn-actinal__3.00.00..
+oewn-abandon__2.31.00..	derivation		oewn-abandonment__1.04.01..
+oewn-abandon__2.31.00..	other	event	oewn-abandonment__1.04.01..
+oewn-abandon__2.31.01..	derivation		oewn-abandonment__1.04.03..
+oewn-abandon__2.31.01..	other	event	oewn-abandonment__1.04.03..
+oewn-abandon__2.40.00..	derivation		oewn-abandonment__1.04.02..
+oewn-abandon__2.40.00..	other	event	oewn-abandonment__1.04.02..
+oewn-abandon__2.40.01..	derivation		oewn-abandonment__1.04.03..
+oewn-abandon__2.40.01..	other	event	oewn-abandonment__1.04.03..
+oewn-abase__2.37.00..	derivation		oewn-abasement__1.04.00..
+oewn-abase__2.37.00..	other	state	oewn-abasement__1.04.00..
+oewn-abash__2.37.00..	derivation		oewn-abashment__1.12.00..
+oewn-abash__2.37.00..	other	state	oewn-abashment__1.12.00..
+oewn-abasia__1.26.00..	derivation		oewn-abasic__3.01.00..
+oewn-abasia__1.26.00..	derivation		oewn-abatic__3.01.00..
+oewn-abasic__3.01.00..	pertainym		oewn-abasia__1.26.00..
+oewn-abatable__5.00.00.stoppable.00	derivation		oewn-abate__2.30.01..
+oewn-abate__2.30.00..	derivation		oewn-abatement__1.11.01..
+oewn-abate__2.30.00..	other	event	oewn-abatement__1.11.01..
+oewn-abate__2.30.01..	derivation		oewn-abator__1.18.00..
+oewn-abatic__3.01.00..	pertainym		oewn-abasia__1.26.00..
+oewn-abaxial__3.00.00..	antonym		oewn-adaxial__3.00.00..
+oewn-abaxially__4.02.00..	antonym		oewn-adaxially__4.02.00..
+oewn-abaxially__4.02.00..	pertainym		oewn-abaxial__3.00.00..
+oewn-abbatial__3.01.00..	derivation		oewn-abbess__1.18.00..
+oewn-abbatial__3.01.00..	derivation		oewn-abbey__1.06.00..
+oewn-abbatial__3.01.00..	derivation		oewn-abbey__1.06.01..
+oewn-abbatial__3.01.00..	derivation		oewn-abbey__1.06.02..
+oewn-abbatial__3.01.00..	derivation		oewn-abbot__1.18.00..
+oewn-abbatial__3.01.00..	pertainym		oewn-abbey__1.06.00..
+oewn-abbreviate__2.30.00..	derivation		oewn-abbreviation__1.10.00..
+oewn-abbreviate__2.30.00..	derivation		oewn-abbreviator__1.18.00..
+oewn-abbreviate__2.30.00..	other	agent	oewn-abbreviator__1.18.00..
+oewn-abbreviate__2.30.00..	other	result	oewn-abbreviation__1.10.00..
+oewn-abbreviate__2.30.01..	derivation		oewn-abbreviator__1.18.00..
+oewn-abbreviate__2.30.01..	other	agent	oewn-abbreviator__1.18.00..
+oewn-abdicable__5.00.00.unwanted.00	derivation		oewn-abdicate__2.41.00..
+oewn-abdicate__2.41.00..	derivation		oewn-abdication__1.10.00..
+oewn-abdicate__2.41.00..	derivation		oewn-abdication__1.10.01..
+oewn-abdicate__2.41.00..	derivation		oewn-abdicator__1.18.00..
+oewn-abdicate__2.41.00..	other	agent	oewn-abdicator__1.18.00..
+oewn-abdicate__2.41.00..	other	event	oewn-abdication__1.10.00..
+oewn-abdicate__2.41.00..	other	event	oewn-abdication__1.10.01..
+oewn-abdomen__1.08.00..	derivation		oewn-abdominal__3.01.00..
+oewn-abdomen__1.08.01..	derivation		oewn-abdominal__3.01.00..
+oewn-abdominal__3.01.00..	pertainym		oewn-abdomen__1.08.00..
+oewn-abdominous__5.00.00.fat.01	derivation		oewn-abdominousness__1.07.00..
+oewn-abdominovesical__3.01.00..	pertainym		oewn-abdomen__1.08.00..
+oewn-abdominovesical__3.01.00..	pertainym		oewn-urinary_bladder__1.08.00..
+oewn-abducent__3.00.00..	antonym		oewn-adducent__3.00.00..
+oewn-abduct__2.35.00..	antonym		oewn-adduct__2.35.00..
+oewn-abduct__2.35.00..	derivation		oewn-abduction__1.04.01..
+oewn-abduct__2.35.00..	derivation		oewn-abductor__1.08.00..
+oewn-abduct__2.35.00..	other	body_part	oewn-abductor__1.08.00..
+oewn-abduct__2.35.00..	other	event	oewn-abduction__1.04.01..
+oewn-abduct__2.35.02..	derivation		oewn-abduction__1.04.00..
+oewn-abduct__2.35.02..	derivation		oewn-abductor__1.18.00..
+oewn-abduct__2.35.02..	other	agent	oewn-abductor__1.18.00..
+oewn-abduct__2.35.02..	other	event	oewn-abduction__1.04.00..
+oewn-aberrance__1.26.00..	derivation		oewn-aberrant__5.00.00.abnormal.00
+oewn-aberrance__1.26.00..	derivation		oewn-aberrate__2.42.00..
+oewn-aberrance__1.26.00..	derivation		oewn-aberrate__2.42.01..
+oewn-aberrancy__1.26.00..	derivation		oewn-aberrant__5.00.00.abnormal.00
+oewn-aberrant__1.18.00..	derivation		oewn-aberrant__5.00.00.abnormal.00
+oewn-aberrant__1.18.00..	derivation		oewn-aberrate__2.42.01..
+oewn-aberrate__2.42.00..	derivation		oewn-aberration__1.19.00..
+oewn-aberrate__2.42.00..	derivation		oewn-aberration__1.26.01..
+oewn-aberrate__2.42.00..	other	event	oewn-aberrance__1.26.00..
+oewn-aberrate__2.42.00..	other	event	oewn-aberration__1.19.00..
+oewn-aberrate__2.42.00..	other	state	oewn-aberration__1.26.01..
+oewn-aberrate__2.42.01..	derivation		oewn-aberration__1.26.00..
+oewn-aberrate__2.42.01..	derivation		oewn-aberration__1.26.01..
+oewn-aberrate__2.42.01..	other	event	oewn-aberrance__1.26.00..
+oewn-aberrate__2.42.01..	other	state	oewn-aberration__1.26.01..
+oewn-abet__2.41.00..	derivation		oewn-abetment__1.10.00..
+oewn-abet__2.41.00..	derivation		oewn-abettal__1.10.00..
+oewn-abet__2.41.00..	derivation		oewn-abetter__1.18.00..
+oewn-abet__2.41.00..	derivation		oewn-abettor__1.18.00..
+oewn-abet__2.41.00..	other	agent	oewn-abetter__1.18.00..
+oewn-abet__2.41.00..	other	agent	oewn-abettor__1.18.00..
+oewn-abet__2.41.00..	other	event	oewn-abetment__1.10.00..
+oewn-abeyance__1.26.00..	derivation		oewn-abeyant__5.00.00.inactive.01
+oewn-abhor__2.37.00..	derivation		oewn-abhorrence__1.12.00..
+oewn-abhor__2.37.00..	derivation		oewn-abhorrent__5.00.00.offensive.01
+oewn-abhor__2.37.00..	derivation		oewn-abhorrer__1.18.00..
+oewn-abhor__2.37.00..	other	state	oewn-abhorrence__1.12.00..
+oewn-abhorrence__1.12.00..	derivation		oewn-abhorrent__5.00.00.offensive.01
+oewn-abidance__1.04.00..	derivation		oewn-abide__2.31.00..
+oewn-abidance__1.04.01..	derivation		oewn-abide__2.42.01..
+oewn-abide__2.31.00..	other	event	oewn-abidance__1.04.00..
+oewn-abide__2.42.01..	other	event	oewn-abidance__1.04.01..
+oewn-abience__1.16.00..	antonym		oewn-adience__1.16.00..
+oewn-abience__1.16.00..	derivation		oewn-abient__3.01.00..
+oewn-abient__3.01.00..	antonym		oewn-adient__3.01.00..
+oewn-abient__3.01.00..	pertainym		oewn-abience__1.16.00..
+oewn-ability__1.07.00..	antonym		oewn-inability__1.07.00..
+oewn-ability__1.07.00..	derivation		oewn-able__3.00.00..
+oewn-ability__1.07.00..	derivation		oewn-able__5.00.00.capable.00
+oewn-ability__1.07.00..	derivation		oewn-able__5.00.00.competent.00
+oewn-ability__1.09.00..	antonym		oewn-inability__1.09.00..
+oewn-ability__1.09.00..	derivation		oewn-able__3.00.00..
+oewn-ability__1.09.00..	derivation		oewn-able__5.00.00.capable.00
+oewn-ability__1.09.00..	derivation		oewn-able__5.00.00.competent.00
+oewn-abiogenesis__1.19.00..	derivation		oewn-abiogenetic__3.01.00..
+oewn-abiogenesis__1.19.00..	derivation		oewn-abiogenist__1.18.00..
+oewn-abiogenetic__3.01.00..	pertainym		oewn-abiogenesis__1.19.00..
+oewn-abjectly__4.02.00..	pertainym		oewn-abject__5.00.00.hopeless.00
+oewn-abjuration__1.10.00..	derivation		oewn-abjure__2.32.00..
+oewn-abjure__2.32.00..	derivation		oewn-abjurer__1.18.00..
+oewn-abjure__2.32.00..	other	event	oewn-abjuration__1.10.00..
+oewn-ablate__2.30.00..	derivation		oewn-ablation__1.22.00..
+oewn-ablate__2.30.00..	derivation		oewn-ablative__5.00.00.subtractive.00
+oewn-ablate__2.30.00..	other	event	oewn-ablation__1.22.00..
+oewn-ablate__2.30.10..	derivation		oewn-ablation__1.04.00..
+oewn-ablate__2.30.10..	other	event	oewn-ablation__1.04.00..
+oewn-ablative__3.01.00..	pertainym		oewn-ablative__1.10.00..
+oewn-able__3.00.00..	antonym		oewn-unable__3.00.00..
+oewn-ablution__1.04.00..	derivation		oewn-ablutionary__5.00.00.purifying.00
+oewn-ably__4.02.00..	pertainym		oewn-able__5.00.00.competent.00
+oewn-abnaki__3.01.00..	pertainym		oewn-abnaki__1.18.00..
+oewn-abnegate__2.32.00..	derivation		oewn-abnegation__1.10.00..
+oewn-abnegate__2.32.00..	derivation		oewn-abnegator__1.18.00..
+oewn-abnegate__2.32.00..	other	agent	oewn-abnegator__1.18.00..
+oewn-abnegate__2.32.00..	other	event	oewn-abnegation__1.10.00..
+oewn-abnegate__2.33.00..	derivation		oewn-abnegator__1.18.00..
+oewn-abnegate__2.33.00..	other	agent	oewn-abnegator__1.18.00..
+oewn-abnegate__2.40.00..	derivation		oewn-abnegation__1.04.00..
+oewn-abnegate__2.40.00..	other	event	oewn-abnegation__1.04.00..
+oewn-abnormal__3.00.00..	antonym		oewn-normal__3.00.01..
+oewn-abnormal__3.00.00..	derivation		oewn-abnormality__1.04.00..
+oewn-abnormal__3.00.00..	derivation		oewn-abnormality__1.26.00..
+oewn-abnormal__3.00.03..	antonym		oewn-normal__3.00.03..
+oewn-abnormal__3.00.03..	derivation		oewn-abnormality__1.09.01..
+oewn-abnormality__1.26.00..	antonym		oewn-normality__1.26.00..
+oewn-abnormally__4.02.00..	pertainym		oewn-abnormal__3.00.00..
+oewn-abolish__2.41.00..	antonym		oewn-establish__2.41.00..
+oewn-abolish__2.41.00..	derivation		oewn-abolishable__5.00.00.destructible.00
+oewn-abolish__2.41.00..	derivation		oewn-abolishment__1.04.00..
+oewn-abolish__2.41.00..	derivation		oewn-abolition__1.04.00..
+oewn-abolish__2.41.00..	other	event	oewn-abolishment__1.04.00..
+oewn-abolish__2.41.00..	other	event	oewn-abolition__1.04.00..
+oewn-abolition__1.04.00..	derivation		oewn-abolitionary__3.01.00..
+oewn-abolitionary__3.01.00..	pertainym		oewn-abolition__1.04.00..
+oewn-abolitionism__1.09.00..	derivation		oewn-abolitionist__1.18.00..
+oewn-abomasal__3.01.00..	derivation		oewn-abomasum__1.05.00..
+oewn-abomasal__3.01.00..	pertainym		oewn-abomasum__1.05.00..
+oewn-abominable__5.00.00.hateful.00	derivation		oewn-abominate__2.37.00..
+oewn-abominably__4.02.01..	pertainym		oewn-abominable__5.00.00.hateful.00
+oewn-abominate__2.37.00..	derivation		oewn-abomination__1.04.00..
+oewn-abominate__2.37.00..	derivation		oewn-abomination__1.12.00..
+oewn-abominate__2.37.00..	derivation		oewn-abomination__1.18.00..
+oewn-abominate__2.37.00..	derivation		oewn-abominator__1.18.00..
+oewn-abominate__2.37.00..	other	agent	oewn-abominator__1.18.00..
+oewn-abominate__2.37.00..	other	event	oewn-abomination__1.04.00..
+oewn-abominate__2.37.00..	other	result	oewn-abomination__1.12.00..
+oewn-abominate__2.37.00..	other	undergoer	oewn-abomination__1.18.00..
+oewn-aborad__4.02.00..	antonym		oewn-orad__4.02.00..
+oewn-aborad__4.02.00..	pertainym		oewn-aboral__3.00.00..
+oewn-aboral__3.00.00..	antonym		oewn-oral__3.00.00..
+oewn-aboriginal__1.18.01..	derivation		oewn-aboriginal__3.00.00..
+oewn-aboriginal__3.00.00..	derivation		oewn-aborigine__1.18.00..
+oewn-abort__2.29.00..	derivation		oewn-abortion__1.04.00..
+oewn-abort__2.29.00..	other	event	oewn-abortion__1.04.00..
+oewn-abort__2.30.00..	derivation		oewn-abortion__1.11.00..
+oewn-abort__2.30.00..	derivation		oewn-abortive__5.00.00.unfruitful.00
+oewn-abort__2.30.00..	other	event	oewn-abortion__1.11.00..
+oewn-abortifacient__1.06.00..	derivation		oewn-abortifacient__5.00.00.causative.00
+oewn-abortion__1.04.00..	derivation		oewn-abortionist__1.18.00..
+oewn-abortively__4.02.00..	pertainym		oewn-abortive__5.00.00.unfruitful.00
+oewn-aboulia__1.26.00..	derivation		oewn-aboulic__5.00.00.neurotic.00
+oewn-abound__2.42.00..	also		oewn-abound_in__2.42.00..
+oewn-abound__2.42.00..	derivation		oewn-abundance__1.07.00..
+oewn-abound__2.42.00..	derivation		oewn-abundant__3.00.00..
+oewn-abound__2.42.00..	other	property	oewn-abundance__1.07.00..
+oewn-about--face__1.04.01..	derivation		oewn-about--face__2.31.00..
+oewn-about--face__1.04.02..	derivation		oewn-about--face__2.38.00..
+oewn-about--face__2.31.00..	other	event	oewn-about--face__1.04.01..
+oewn-about--face__2.38.00..	other	event	oewn-about--face__1.04.02..
+oewn-above__4.02.00..	antonym		oewn-below__4.02.00..
+oewn-above__4.02.01..	antonym		oewn-below__4.02.01..
+oewn-abradant__1.06.00..	derivation		oewn-abrade__2.35.00..
+oewn-abradant__1.27.00..	derivation		oewn-abrade__2.35.00..
+oewn-abrade__2.35.00..	derivation		oewn-abrader__1.06.00..
+oewn-abrade__2.35.00..	derivation		oewn-abrasion__1.19.00..
+oewn-abrade__2.35.00..	derivation		oewn-abrasion__1.22.00..
+oewn-abrade__2.35.00..	derivation		oewn-abrasion__1.26.00..
+oewn-abrade__2.35.00..	derivation		oewn-abrasive__5.00.00.rough.00
+oewn-abrade__2.35.00..	other	agent	oewn-abrader__1.06.00..
+oewn-abrade__2.35.00..	other	event	oewn-abrasion__1.19.00..
+oewn-abrade__2.35.00..	other	event	oewn-abrasion__1.22.00..
+oewn-abrade__2.35.00..	other	location	oewn-abrasion__1.26.00..
+oewn-abrade__2.35.01..	derivation		oewn-abrader__1.06.00..
+oewn-abrade__2.35.01..	derivation		oewn-abrasive__5.00.00.rough.00
+oewn-abrade__2.35.01..	other	agent	oewn-abrader__1.06.00..
+oewn-abranchiate__3.00.00..	antonym		oewn-branchiate__3.00.00..
+oewn-abrasive__1.27.00..	derivation		oewn-abrasive__5.00.00.rough.00
+oewn-abrasive__5.00.00.disagreeable.00	derivation		oewn-abrasiveness__1.07.01..
+oewn-abrasive__5.00.00.rough.00	derivation		oewn-abrasiveness__1.07.00..
+oewn-abreact__2.37.00..	derivation		oewn-abreaction__1.04.00..
+oewn-abreact__2.37.00..	other	event	oewn-abreaction__1.04.00..
+oewn-abridge__2.30.00..	derivation		oewn-abridgement__1.10.00..
+oewn-abridge__2.30.00..	derivation		oewn-abridger__1.18.00..
+oewn-abridge__2.30.00..	other	agent	oewn-abridger__1.18.00..
+oewn-abridge__2.30.00..	other	result	oewn-abridgement__1.10.00..
+oewn-abridged__3.00.00..	antonym		oewn-unabridged__3.00.00..
+oewn-abrogate__2.41.00..	derivation		oewn-abrogation__1.04.00..
+oewn-abrogate__2.41.00..	derivation		oewn-abrogator__1.18.00..
+oewn-abrogate__2.41.00..	other	agent	oewn-abrogator__1.18.00..
+oewn-abrogate__2.41.00..	other	event	oewn-abrogation__1.04.00..
+oewn-abrupt__5.00.00.discourteous.00	derivation		oewn-abruptness__1.07.02..
+oewn-abrupt__5.00.00.steep.00	derivation		oewn-abruptness__1.07.01..
+oewn-abrupt__5.00.00.sudden.00	derivation		oewn-abruptness__1.07.00..
+oewn-abruptly__4.02.01..	pertainym		oewn-abrupt__5.00.00.sudden.00
+oewn-abruptness__1.07.01..	antonym		oewn-gradualness__1.07.01..
+oewn-abscise__2.35.00..	derivation		oewn-abscission__1.04.00..
+oewn-abscise__2.35.00..	other	event	oewn-abscission__1.04.00..
+oewn-abscond__2.38.00..	derivation		oewn-absconder__1.18.00..
+oewn-abscond__2.38.00..	derivation		oewn-abscondment__1.04.00..
+oewn-abscond__2.38.00..	other	agent	oewn-absconder__1.18.00..
+oewn-abscond__2.38.00..	other	event	oewn-abscondment__1.04.00..
+oewn-abseil__2.38.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-absence__1.04.00..	antonym		oewn-presence__1.04.00..
+oewn-absence__1.04.00..	derivation		oewn-absent__2.30.00..
+oewn-absence__1.04.00..	derivation		oewn-absent__3.00.00..
+oewn-absence__1.26.00..	antonym		oewn-presence__1.26.00..
+oewn-absence__1.26.00..	derivation		oewn-absent__3.00.00..
+oewn-absent__2.30.00..	derivation		oewn-absentee__1.18.00..
+oewn-absent__2.30.00..	other	agent	oewn-absentee__1.18.00..
+oewn-absent__2.30.00..	other	event	oewn-absence__1.04.00..
+oewn-absent__3.00.00..	antonym		oewn-present__3.00.02..
+oewn-absently__4.02.00..	pertainym		oewn-absent__5.00.00.inattentive.00
+oewn-absentminded__5.00.00.inattentive.00	derivation		oewn-absentmindedness__1.09.00..
+oewn-absentmindedly__4.02.00..	pertainym		oewn-absentminded__5.00.00.inattentive.00
+oewn-absolute__1.09.00..	derivation		oewn-absolute__3.00.00..
+oewn-absolute__1.09.00..	derivation		oewn-absolute__5.00.00.unequivocal.00
+oewn-absolute__3.00.00..	antonym		oewn-relative__3.00.00..
+oewn-absolute__3.00.00..	derivation		oewn-absoluteness__1.07.00..
+oewn-absolute__5.00.00.arbitrary.00	derivation		oewn-absoluteness__1.07.00..
+oewn-absolute__5.00.00.inalienable.00	derivation		oewn-absoluteness__1.07.00..
+oewn-absolute__5.00.00.unequivocal.00	derivation		oewn-absoluteness__1.07.00..
+oewn-absolute__5.00.01.complete.00	derivation		oewn-absoluteness__1.07.00..
+oewn-absolutely__4.02.00..	pertainym		oewn-absolute__5.00.01.complete.00
+oewn-absolutely__4.02.01..	pertainym		oewn-absolute__3.00.00..
+oewn-absolution__1.04.00..	derivation		oewn-absolve__2.32.02..
+oewn-absolution__1.26.00..	derivation		oewn-absolve__2.32.02..
+oewn-absolutisation__1.09.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-absolutisation__1.09.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-absolutism__1.09.01..	derivation		oewn-absolutist__1.18.00..
+oewn-absolutism__1.09.01..	derivation		oewn-absolutistic__3.01.00..
+oewn-absolutism__1.14.00..	derivation		oewn-absolutist__1.18.00..
+oewn-absolutism__1.14.00..	derivation		oewn-absolutistic__3.01.00..
+oewn-absolutism__1.26.00..	derivation		oewn-absolutist__1.18.00..
+oewn-absolutist__1.18.00..	derivation		oewn-absolutist__3.01.00..
+oewn-absolutist__3.01.00..	pertainym		oewn-absolutism__1.09.01..
+oewn-absolutistic__3.01.00..	pertainym		oewn-absolutism__1.09.01..
+oewn-absolutization__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-absolve__2.32.00..	antonym		oewn-blame__2.32.00..
+oewn-absolve__2.32.00..	derivation		oewn-absolvitory__5.00.00.exculpatory.00
+oewn-absolve__2.32.02..	derivation		oewn-absolver__1.18.00..
+oewn-absolve__2.32.02..	derivation		oewn-absolvitory__5.00.00.exculpatory.00
+oewn-absolve__2.32.02..	other	agent	oewn-absolver__1.18.00..
+oewn-absolve__2.32.02..	other	event	oewn-absolution__1.04.00..
+oewn-absolve__2.32.02..	other	state	oewn-absolution__1.26.00..
+oewn-absorb__2.31.00..	derivation		oewn-absorption__1.22.03..
+oewn-absorb__2.31.00..	other	event	oewn-absorption__1.22.03..
+oewn-absorb__2.31.03..	derivation		oewn-absorption__1.09.00..
+oewn-absorb__2.31.03..	other	state	oewn-absorption__1.09.00..
+oewn-absorb__2.31.06..	derivation		oewn-absorption__1.09.01..
+oewn-absorb__2.31.06..	other	result	oewn-absorption__1.09.01..
+oewn-absorb__2.35.00..	derivation		oewn-absorber__1.27.00..
+oewn-absorb__2.35.00..	derivation		oewn-absorption__1.22.00..
+oewn-absorb__2.35.00..	other	agent	oewn-absorber__1.27.00..
+oewn-absorb__2.35.00..	other	event	oewn-absorption__1.22.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorbate__1.27.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorbent__1.27.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorbent__3.00.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorber__1.27.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorption__1.22.00..
+oewn-absorb__2.35.01..	derivation		oewn-absorptive__3.00.00..
+oewn-absorb__2.35.01..	other	agent	oewn-absorber__1.27.00..
+oewn-absorb__2.35.01..	other	event	oewn-absorption__1.22.00..
+oewn-absorb__2.43.00..	antonym		oewn-emit__2.43.00..
+oewn-absorb__2.43.00..	derivation		oewn-absorbable__3.00.00..
+oewn-absorb__2.43.00..	derivation		oewn-absorbent__3.00.00..
+oewn-absorb__2.43.00..	derivation		oewn-absorption__1.22.02..
+oewn-absorb__2.43.00..	derivation		oewn-absorptive__3.00.00..
+oewn-absorb__2.43.00..	other	event	oewn-absorption__1.22.02..
+oewn-absorbable__3.00.00..	antonym		oewn-adsorbable__3.00.00..
+oewn-absorbency__1.07.00..	antonym		oewn-nonabsorbency__1.07.00..
+oewn-absorbency__1.07.00..	derivation		oewn-absorbent__3.00.00..
+oewn-absorbent__3.00.00..	antonym		oewn-nonabsorbent__3.00.00..
+oewn-absorptive__3.00.00..	derivation		oewn-absorptivity__1.07.00..
+oewn-abstain__2.34.00..	antonym		oewn-consume__2.34.00..
+oewn-abstain__2.34.00..	derivation		oewn-abstainer__1.18.00..
+oewn-abstain__2.34.00..	derivation		oewn-abstainer__1.18.01..
+oewn-abstain__2.34.00..	derivation		oewn-abstention__1.07.00..
+oewn-abstain__2.34.00..	derivation		oewn-abstinence__1.07.00..
+oewn-abstain__2.34.00..	derivation		oewn-abstinent__1.18.00..
+oewn-abstain__2.34.00..	derivation		oewn-abstinent__5.00.00.abstemious.00
+oewn-abstain__2.34.00..	other	agent	oewn-abstainer__1.18.00..
+oewn-abstain__2.34.00..	other	agent	oewn-abstainer__1.18.01..
+oewn-abstain__2.34.00..	other	property	oewn-abstention__1.07.00..
+oewn-abstain__2.34.00..	other	property	oewn-abstinence__1.07.00..
+oewn-abstemious__3.00.00..	antonym		oewn-gluttonous__3.00.00..
+oewn-abstemious__3.00.00..	derivation		oewn-abstemiousness__1.07.00..
+oewn-abstemious__5.00.00.temperate.00	derivation		oewn-abstemiousness__1.07.01..
+oewn-abstemiously__4.02.00..	pertainym		oewn-abstemious__3.00.00..
+oewn-abstention__1.07.00..	derivation		oewn-abstentious__5.00.00.abstemious.00
+oewn-abstinence__1.04.00..	derivation		oewn-abstinent__5.00.00.abstemious.00
+oewn-abstinence__1.07.00..	derivation		oewn-abstinent__5.00.00.abstemious.00
+oewn-abstinent__1.18.00..	derivation		oewn-abstinent__5.00.00.abstemious.00
+oewn-abstract__1.09.00..	derivation		oewn-abstract__2.31.00..
+oewn-abstract__1.09.00..	derivation		oewn-abstract__2.31.01..
+oewn-abstract__1.09.00..	derivation		oewn-abstract__3.00.00..
+oewn-abstract__1.10.00..	derivation		oewn-abstract__2.32.00..
+oewn-abstract__2.31.00..	derivation		oewn-abstraction__1.03.00..
+oewn-abstract__2.31.00..	derivation		oewn-abstraction__1.09.00..
+oewn-abstract__2.31.00..	derivation		oewn-abstraction__1.09.02..
+oewn-abstract__2.31.00..	derivation		oewn-abstractive__5.00.00.theoretical.00
+oewn-abstract__2.31.00..	other	event	oewn-abstraction__1.09.02..
+oewn-abstract__2.31.00..	other	undergoer	oewn-abstract__1.09.00..
+oewn-abstract__2.31.00..	other	undergoer	oewn-abstraction__1.03.00..
+oewn-abstract__2.31.00..	other	undergoer	oewn-abstraction__1.09.00..
+oewn-abstract__2.31.01..	derivation		oewn-abstractive__5.00.00.theoretical.00
+oewn-abstract__2.31.01..	other	undergoer	oewn-abstract__1.09.00..
+oewn-abstract__2.32.00..	derivation		oewn-abstracter__1.18.00..
+oewn-abstract__2.32.00..	derivation		oewn-abstractor__1.18.00..
+oewn-abstract__2.32.00..	other	agent	oewn-abstracter__1.18.00..
+oewn-abstract__2.32.00..	other	agent	oewn-abstractor__1.18.00..
+oewn-abstract__2.32.00..	other	undergoer	oewn-abstract__1.10.00..
+oewn-abstract__3.00.00..	antonym		oewn-concrete__3.00.00..
+oewn-abstract__3.00.00..	derivation		oewn-abstractness__1.07.00..
+oewn-abstract__5.00.00.nonrepresentational.00	derivation		oewn-abstractness__1.07.00..
+oewn-abstract__5.00.00.theoretical.01	derivation		oewn-abstractness__1.07.00..
+oewn-abstracted__5.00.00.inattentive.00	derivation		oewn-abstractedness__1.09.00..
+oewn-abstractedly__4.02.00..	pertainym		oewn-abstracted__5.00.00.inattentive.00
+oewn-abstractionism__1.06.00..	derivation		oewn-abstractionist__1.18.00..
+oewn-abstractionism__1.09.00..	derivation		oewn-abstractionist__1.18.00..
+oewn-abstractionist__1.18.00..	derivation		oewn-abstractionist__5.00.00.nonrepresentational.00
+oewn-abstractly__4.02.00..	antonym		oewn-concretely__4.02.00..
+oewn-abstractly__4.02.00..	pertainym		oewn-abstract__3.00.00..
+oewn-abstractness__1.07.00..	antonym		oewn-concreteness__1.07.00..
+oewn-abstruse__5.00.00.esoteric.00	derivation		oewn-abstruseness__1.07.00..
+oewn-abstruse__5.00.00.esoteric.00	derivation		oewn-abstruseness__1.09.00..
+oewn-abstruse__5.00.00.esoteric.00	derivation		oewn-abstrusity__1.09.00..
+oewn-abstrusely__4.02.00..	pertainym		oewn-abstruse__5.00.00.esoteric.00
+oewn-absurd__5.00.00.foolish.00	derivation		oewn-absurdity__1.07.01..
+oewn-absurd__5.00.00.foolish.00	derivation		oewn-absurdness__1.10.00..
+oewn-absurd__5.00.00.illogical.00	derivation		oewn-absurdity__1.10.00..
+oewn-absurd__5.00.00.illogical.00	derivation		oewn-absurdness__1.10.00..
+oewn-absurdist_humor__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-absurdist_humour__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-absurdist_humour__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-absurdist_humour__1.10.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-absurdly__4.02.00..	pertainym		oewn-absurd__5.00.00.illogical.00
+oewn-abulia__1.26.00..	derivation		oewn-abulic__5.00.00.neurotic.00
+oewn-abundance__1.07.00..	antonym		oewn-scarcity__1.07.00..
+oewn-abundance__1.07.00..	derivation		oewn-abundant__3.00.00..
+oewn-abundant__3.00.00..	antonym		oewn-scarce__3.00.00..
+oewn-abundantly__4.02.00..	pertainym		oewn-abundant__3.00.00..
+oewn-abuse__1.04.01..	derivation		oewn-abuse__2.30.00..
+oewn-abuse__1.04.02..	derivation		oewn-abuse__2.41.00..
+oewn-abuse__1.10.00..	derivation		oewn-abuse__2.32.00..
+oewn-abuse__2.30.00..	other	by_means_of	oewn-abuse__1.04.01..
+oewn-abuse__2.32.00..	derivation		oewn-abuser__1.18.00..
+oewn-abuse__2.32.00..	derivation		oewn-abusive__5.00.00.offensive.02
+oewn-abuse__2.32.00..	other	agent	oewn-abuser__1.18.00..
+oewn-abuse__2.32.00..	other	by_means_of	oewn-abuse__1.10.00..
+oewn-abuse__2.41.00..	derivation		oewn-abuser__1.18.00..
+oewn-abuse__2.41.00..	derivation		oewn-abusive__5.00.00.harmful.00
+oewn-abuse__2.41.00..	other	agent	oewn-abuser__1.18.00..
+oewn-abuse__2.41.00..	other	event	oewn-abuse__1.04.02..
+oewn-abused__3.00.01..	antonym		oewn-unabused__3.00.01..
+oewn-abusively__4.02.00..	pertainym		oewn-abusive__5.00.00.harmful.00
+oewn-abut__2.35.00..	derivation		oewn-abutment__1.15.00..
+oewn-abut__2.35.00..	derivation		oewn-abutter__1.18.00..
+oewn-abut__2.35.00..	other	agent	oewn-abutter__1.18.00..
+oewn-abut__2.35.00..	other	location	oewn-abutment__1.15.00..
+oewn-abysm__1.17.00..	derivation		oewn-abysmal__5.00.00.deep.01
+oewn-abyss__1.17.00..	derivation		oewn-abyssal__5.00.00.deep.01
+oewn-abyssal__3.01.00..	pertainym		oewn-abyssal_zone__1.17.00..

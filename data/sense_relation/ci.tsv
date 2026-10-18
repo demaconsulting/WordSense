@@ -1,0 +1,214 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-cialis__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-cicatrise__2.35.00..	derivation		oewn-cicatrix__1.26.00..
+oewn-cicatrise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cicatrise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cicatrix__1.26.00..	derivation		oewn-cicatrize__2.35.00..
+oewn-cicatrize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cilial__3.01.00..	derivation		oewn-cilium__1.05.00..
+oewn-cilial__3.01.00..	pertainym		oewn-cilium__1.05.00..
+oewn-ciliary__3.01.00..	pertainym		oewn-ciliary_body__1.08.00..
+oewn-ciliary__3.01.01..	derivation		oewn-cilium__1.05.00..
+oewn-ciliary__3.01.01..	pertainym		oewn-cilium__1.05.00..
+oewn-ciliary__3.01.02..	derivation		oewn-cilium__1.08.00..
+oewn-ciliary__3.01.02..	pertainym		oewn-cilium__1.08.00..
+oewn-ciliate__3.01.00..	pertainym		oewn-cilium__1.08.00..
+oewn-ciliate__3.01.01..	pertainym		oewn-cilium__1.05.00..
+oewn-cinch__1.04.01..	derivation		oewn-cinch__2.31.00..
+oewn-cinch__1.06.00..	derivation		oewn-cinch__2.35.00..
+oewn-cinch__2.31.00..	other	event	oewn-cinch__1.04.01..
+oewn-cinch__2.35.00..	other	undergoer	oewn-cinch__1.06.00..
+oewn-cinema__1.10.00..	derivation		oewn-cinematic__3.01.00..
+oewn-cinematic__3.01.00..	pertainym		oewn-cinema__1.10.00..
+oewn-cinematise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cinematise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cinematize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cinematographer__1.18.00..	derivation		oewn-cinematography__1.04.00..
+oewn-cinerary__3.01.00..	pertainym		oewn-cinerarium__1.06.00..
+oewn-cipher__1.10.00..	derivation		oewn-cipher__2.32.00..
+oewn-cipher__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__1.10.01..	derivation		oewn-cipher__2.32.00..
+oewn-cipher__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__1.23.01..	derivation		oewn-cipher__2.31.00..
+oewn-cipher__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__2.31.00..	other	by_means_of	oewn-cipher__1.23.01..
+oewn-cipher__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cipher__2.32.00..	other	agent	oewn-cipher__1.10.01..
+oewn-cipher__2.32.00..	other	by_means_of	oewn-cipher__1.10.00..
+oewn-cipher__2.32.00..	other	result	oewn-cipher__1.10.01..
+oewn-cipro__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-circadian__3.01.00..	pertainym		oewn-day__1.28.00..
+oewn-circle__1.04.00..	derivation		oewn-circle__2.38.00..
+oewn-circle__1.04.00..	derivation		oewn-circle__2.38.01..
+oewn-circle__1.04.00..	derivation		oewn-circular__5.00.00.cyclic.01
+oewn-circle__1.06.00..	derivation		oewn-circle__2.38.00..
+oewn-circle__1.06.00..	derivation		oewn-circular__5.00.00.cyclic.01
+oewn-circle__1.25.00..	derivation		oewn-circular__3.00.00..
+oewn-circle__1.25.01..	derivation		oewn-circle__2.35.12..
+oewn-circle__2.35.12..	other	result	oewn-circle__1.25.01..
+oewn-circle__2.38.00..	other	event	oewn-circle__1.04.00..
+oewn-circle__2.38.01..	other	event	oewn-circle__1.04.00..
+oewn-circuit__1.04.00..	derivation		oewn-circuit__2.38.00..
+oewn-circuit__1.15.00..	derivation		oewn-circuit__2.38.00..
+oewn-circuit__2.38.00..	other	event	oewn-circuit__1.04.00..
+oewn-circuit__2.38.00..	other	event	oewn-circuit__1.15.00..
+oewn-circular__1.10.00..	derivation		oewn-circularise__2.32.00..
+oewn-circular__1.10.00..	derivation		oewn-circularise__2.38.00..
+oewn-circular__1.10.00..	derivation		oewn-circularise__2.41.00..
+oewn-circular__1.10.00..	derivation		oewn-circularize__2.38.00..
+oewn-circular__1.10.00..	derivation		oewn-circularize__2.41.00..
+oewn-circular__1.10.00..	derivation		oewn-circulate__2.38.03..
+oewn-circular__3.00.00..	derivation		oewn-circularity__1.07.00..
+oewn-circular__3.00.00..	derivation		oewn-circularize__2.30.00..
+oewn-circularisation__1.04.00..	derivation		oewn-circularise__2.38.00..
+oewn-circularisation__1.04.00..	derivation		oewn-circularise__2.41.00..
+oewn-circularisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-circularisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-circularise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-circularise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-circularise__2.38.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-circularise__2.38.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-circularise__2.38.00..	other	event	oewn-circularisation__1.04.00..
+oewn-circularise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-circularise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-circularise__2.41.00..	other	event	oewn-circularisation__1.04.00..
+oewn-circularization__1.04.00..	derivation		oewn-circularize__2.38.00..
+oewn-circularization__1.04.00..	derivation		oewn-circularize__2.41.00..
+oewn-circularization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-circularize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-circularize__2.38.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-circularize__2.38.00..	other	event	oewn-circularization__1.04.00..
+oewn-circularize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-circularize__2.41.00..	other	event	oewn-circularization__1.04.00..
+oewn-circularly__4.02.00..	pertainym		oewn-circular__5.00.00.cyclic.01
+oewn-circulate__2.32.00..	derivation		oewn-circulation__1.04.00..
+oewn-circulate__2.32.00..	other	event	oewn-circulation__1.04.00..
+oewn-circulate__2.38.01..	derivation		oewn-circulation__1.19.00..
+oewn-circulate__2.38.01..	derivation		oewn-circulative__3.01.00..
+oewn-circulate__2.38.01..	other	event	oewn-circulation__1.19.00..
+oewn-circulate__2.38.03..	derivation		oewn-circulation__1.04.00..
+oewn-circulate__2.38.03..	derivation		oewn-circulation__1.10.00..
+oewn-circulate__2.38.03..	derivation		oewn-circulation__1.23.00..
+oewn-circulate__2.38.03..	other	event	oewn-circulation__1.04.00..
+oewn-circulate__2.38.03..	other	event	oewn-circulation__1.10.00..
+oewn-circulate__2.38.03..	other	event	oewn-circulation__1.23.00..
+oewn-circulate__2.38.04..	derivation		oewn-circulation__1.11.00..
+oewn-circulate__2.38.04..	derivation		oewn-circulation__1.19.00..
+oewn-circulate__2.38.04..	other	event	oewn-circulation__1.11.00..
+oewn-circulate__2.38.04..	other	event	oewn-circulation__1.19.00..
+oewn-circulative__3.01.00..	pertainym		oewn-circulation__1.11.00..
+oewn-circulatory__3.01.01..	pertainym		oewn-circulatory_system__1.08.00..
+oewn-circulatory__3.01.02..	pertainym		oewn-circulation__1.11.00..
+oewn-circumcise__2.35.00..	derivation		oewn-circumcision__1.04.00..
+oewn-circumcise__2.35.00..	derivation		oewn-circumcision__1.04.01..
+oewn-circumcise__2.35.00..	other	event	oewn-circumcision__1.04.00..
+oewn-circumcise__2.35.00..	other	event	oewn-circumcision__1.04.01..
+oewn-circumference__1.15.00..	derivation		oewn-circumferent__5.00.00.close.01
+oewn-circumference__1.15.00..	derivation		oewn-circumferential__5.00.00.peripheral.00
+oewn-circumlocution__1.10.00..	derivation		oewn-circumlocutious__5.00.00.indirect.02
+oewn-circumlocution__1.10.01..	derivation		oewn-circumlocutious__5.00.00.indirect.02
+oewn-circumnavigate__2.38.00..	derivation		oewn-circumnavigation__1.04.00..
+oewn-circumnavigate__2.38.00..	other	event	oewn-circumnavigation__1.04.00..
+oewn-circumscribe__2.30.00..	derivation		oewn-circumscription__1.04.00..
+oewn-circumscribe__2.30.00..	other	event	oewn-circumscription__1.04.00..
+oewn-circumscribe__2.35.00..	derivation		oewn-circumscription__1.04.00..
+oewn-circumscribe__2.35.00..	other	event	oewn-circumscription__1.04.00..
+oewn-circumscribe__2.35.01..	derivation		oewn-circumscription__1.04.00..
+oewn-circumscribe__2.35.01..	other	event	oewn-circumscription__1.04.00..
+oewn-circumspectly__4.02.00..	pertainym		oewn-circumspect__5.00.00.prudent.00
+oewn-circumstance__1.26.02..	derivation		oewn-circumstantial__5.00.00.specific.00
+oewn-circumstantial_evidence__1.10.00..	antonym		oewn-direct_evidence__1.10.00..
+oewn-circumstantially__4.02.02..	pertainym		oewn-circumstantial__5.00.00.specific.00
+oewn-circumvent__2.32.00..	derivation		oewn-circumvention__1.04.00..
+oewn-circumvent__2.32.00..	other	event	oewn-circumvention__1.04.00..
+oewn-circumvolution__1.04.00..	derivation		oewn-circumvolve__2.38.00..
+oewn-circumvolve__2.38.00..	other	event	oewn-circumvolution__1.04.00..
+oewn-cisc__1.07.00..	antonym		oewn-risc__1.07.00..
+oewn-cismontane__3.00.00..	antonym		oewn-tramontane__3.00.00..
+oewn-citation__1.10.00..	derivation		oewn-cite__2.32.01..
+oewn-citation__1.10.01..	derivation		oewn-cite__2.32.00..
+oewn-citation__1.10.01..	derivation		oewn-cite__2.32.02..
+oewn-citation__1.10.01..	derivation		oewn-cite__2.32.06..
+oewn-citation__1.10.01..	derivation		oewn-cite__2.36.00..
+oewn-citation__1.10.02..	derivation		oewn-cite__2.32.07..
+oewn-citation__1.10.03..	derivation		oewn-cite__2.32.00..
+oewn-citation__1.10.03..	derivation		oewn-cite__2.32.02..
+oewn-citation__1.10.03..	derivation		oewn-cite__2.32.06..
+oewn-citation__1.10.03..	derivation		oewn-cite__2.36.00..
+oewn-citation__1.10.04..	derivation		oewn-cite__2.32.00..
+oewn-citation__1.10.04..	derivation		oewn-cite__2.32.02..
+oewn-citation__1.10.04..	derivation		oewn-cite__2.36.00..
+oewn-cite__2.32.00..	other	event	oewn-citation__1.10.04..
+oewn-cite__2.32.00..	other	undergoer	oewn-citation__1.10.01..
+oewn-cite__2.32.00..	other	undergoer	oewn-citation__1.10.03..
+oewn-cite__2.32.01..	other	result	oewn-citation__1.10.00..
+oewn-cite__2.32.02..	other	event	oewn-citation__1.10.04..
+oewn-cite__2.32.02..	other	undergoer	oewn-citation__1.10.01..
+oewn-cite__2.32.02..	other	undergoer	oewn-citation__1.10.03..
+oewn-cite__2.32.06..	other	undergoer	oewn-citation__1.10.01..
+oewn-cite__2.32.06..	other	undergoer	oewn-citation__1.10.03..
+oewn-cite__2.32.07..	other	by_means_of	oewn-citation__1.10.02..
+oewn-cite__2.36.00..	other	event	oewn-citation__1.10.04..
+oewn-cite__2.36.00..	other	undergoer	oewn-citation__1.10.01..
+oewn-cite__2.36.00..	other	undergoer	oewn-citation__1.10.03..
+oewn-citify__2.30.00..	derivation		oewn-city__1.14.00..
+oewn-citify__2.30.00..	derivation		oewn-city__1.15.00..
+oewn-citizen__1.18.00..	antonym		oewn-noncitizen__1.18.00..
+oewn-citizen__1.18.00..	derivation		oewn-citizenship__1.07.00..
+oewn-citizen__1.18.00..	derivation		oewn-citizenship__1.26.00..
+oewn-citrate__2.30.00..	derivation		oewn-citric_acid__1.27.00..
+oewn-citric__3.01.00..	pertainym		oewn-citric_acid__1.27.00..
+oewn-citrous__3.01.00..	derivation		oewn-citrus__1.13.00..
+oewn-citrous__3.01.00..	pertainym		oewn-citrus__1.13.00..
+oewn-citrous__3.01.01..	derivation		oewn-citrus__1.20.00..
+oewn-citrous__3.01.01..	pertainym		oewn-citrus__1.20.00..
+oewn-city_center__1.15.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-city_centre__1.15.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-city_centre__1.15.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-city_centre__1.15.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-civic__3.01.00..	pertainym		oewn-city__1.15.01..
+oewn-civic__3.01.02..	pertainym		oewn-citizen__1.18.00..
+oewn-civil--libertarian__5.00.00.liberal.00	derivation		oewn-civil_liberty__1.07.00..
+oewn-civil__3.00.00..	antonym		oewn-uncivil__3.00.00..
+oewn-civil__3.00.00..	derivation		oewn-civility__1.04.00..
+oewn-civil__3.00.00..	derivation		oewn-civility__1.07.00..
+oewn-civil__3.00.01..	antonym		oewn-sidereal__3.00.00..
+oewn-civil__3.01.00..	pertainym		oewn-citizen__1.18.00..
+oewn-civil__3.01.01..	pertainym		oewn-state__1.14.00..
+oewn-civil_law__1.14.00..	antonym		oewn-international_law__1.14.00..
+oewn-civilian__1.18.00..	antonym		oewn-serviceman__1.18.00..
+oewn-civilian__1.18.00..	derivation		oewn-civilian__3.00.00..
+oewn-civilian__3.00.00..	antonym		oewn-military__3.00.01..
+oewn-civilisation__1.07.00..	derivation		oewn-civilise__2.41.00..
+oewn-civilisation__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilisation__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilisation__1.14.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilisation__1.14.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilisation__1.22.00..	derivation		oewn-civilise__2.30.01..
+oewn-civilisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilise__2.30.01..	other	event	oewn-civilisation__1.22.00..
+oewn-civilise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-civilise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-civilise__2.41.00..	other	property	oewn-civilisation__1.07.00..
+oewn-civility__1.07.00..	antonym		oewn-incivility__1.07.00..
+oewn-civilization__1.07.00..	derivation		oewn-civilize__2.41.00..
+oewn-civilization__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilization__1.14.00..	derivation		oewn-civilize__2.30.01..
+oewn-civilization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilization__1.14.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilize__2.30.01..	other	result	oewn-civilization__1.14.00..
+oewn-civilize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-civilize__2.41.00..	other	property	oewn-civilization__1.07.00..
+oewn-civilized__3.00.00..	antonym		oewn-noncivilized__3.00.00..
+oewn-civilly__4.02.00..	antonym		oewn-uncivilly__4.02.00..
+oewn-civilly__4.02.00..	pertainym		oewn-civil__3.00.00..

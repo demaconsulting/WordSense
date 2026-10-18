@@ -1,0 +1,695 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-crab__1.05.00..	derivation		oewn-crab__2.33.00..
+oewn-crab__1.13.00..	derivation		oewn-crab__2.33.00..
+oewn-crab__1.18.00..	derivation		oewn-crab__2.32.00..
+oewn-crab__1.18.00..	derivation		oewn-crabby__5.00.00.ill-natured.00
+oewn-crab__2.32.00..	other	agent	oewn-crab__1.18.00..
+oewn-crab__2.33.00..	other	undergoer	oewn-crab__1.05.00..
+oewn-crabbed__5.00.00.ill-natured.00	derivation		oewn-crabbedness__1.07.00..
+oewn-crabbiness__1.07.00..	derivation		oewn-crabby__5.00.00.ill-natured.00
+oewn-crack--up__1.26.00..	derivation		oewn-crack_up__2.37.00..
+oewn-crack__1.10.00..	derivation		oewn-crack__2.32.00..
+oewn-crack__1.17.00..	derivation		oewn-crack__2.30.02..
+oewn-crack__2.30.02..	other	location	oewn-crack__1.17.00..
+oewn-crack__2.30.07..	derivation		oewn-cracking__1.22.00..
+oewn-crack__2.30.08..	derivation		oewn-cracking__1.22.00..
+oewn-crack__2.32.00..	other	event	oewn-crack__1.10.00..
+oewn-crack__2.35.00..	derivation		oewn-cracking__1.04.00..
+oewn-crack__2.39.00..	derivation		oewn-cracker__1.06.00..
+oewn-crack__2.39.00..	other	by_means_of	oewn-cracker__1.06.00..
+oewn-crack__2.39.01..	derivation		oewn-cracker__1.06.01..
+oewn-crack__2.39.01..	derivation		oewn-cracking__1.11.00..
+oewn-crack__2.39.01..	other	by_means_of	oewn-cracker__1.06.01..
+oewn-crack__2.41.00..	derivation		oewn-cracker__1.18.01..
+oewn-crack_down__2.30.10..	derivation		oewn-crackdown__1.04.00..
+oewn-crackle__1.11.00..	derivation		oewn-crackle__2.39.00..
+oewn-crackle__2.39.00..	derivation		oewn-crackling__1.11.00..
+oewn-crackle__2.39.00..	other	event	oewn-crackle__1.11.00..
+oewn-cradle__1.06.00..	derivation		oewn-cradle__2.35.00..
+oewn-cradle__1.06.00..	derivation		oewn-cradle__2.38.00..
+oewn-cradle__1.06.01..	derivation		oewn-cradle__2.35.01..
+oewn-cradle__2.35.01..	other	instrument	oewn-cradle__1.06.01..
+oewn-craft__1.04.00..	derivation		oewn-craft__2.36.00..
+oewn-craft__1.09.00..	derivation		oewn-crafty__5.00.00.artful.00
+oewn-craft__1.09.01..	derivation		oewn-craft__2.36.00..
+oewn-craft__1.14.00..	derivation		oewn-craft__2.36.00..
+oewn-craft__2.36.00..	derivation		oewn-crafter__1.18.00..
+oewn-craft__2.36.00..	other	agent	oewn-craft__1.14.00..
+oewn-craft__2.36.00..	other	agent	oewn-crafter__1.18.00..
+oewn-craftily__4.02.00..	pertainym		oewn-crafty__5.00.00.artful.00
+oewn-craftiness__1.09.00..	derivation		oewn-crafty__5.00.00.artful.00
+oewn-craftsman__1.18.01..	derivation		oewn-craftsmanship__1.09.00..
+oewn-craftsman__1.18.02..	derivation		oewn-craftsmanship__1.09.00..
+oewn-cram__2.30.00..	derivation		oewn-crammer__1.10.00..
+oewn-cram__2.30.00..	derivation		oewn-crammer__1.14.00..
+oewn-cram__2.30.00..	derivation		oewn-crammer__1.18.01..
+oewn-cram__2.30.00..	other	agent	oewn-crammer__1.18.01..
+oewn-cram__2.30.00..	other	instrument	oewn-crammer__1.10.00..
+oewn-cram__2.30.00..	other	location	oewn-crammer__1.14.00..
+oewn-cram__2.31.00..	derivation		oewn-crammer__1.10.00..
+oewn-cram__2.31.00..	derivation		oewn-crammer__1.18.00..
+oewn-cram__2.31.00..	other	agent	oewn-crammer__1.18.00..
+oewn-cram__2.31.00..	other	instrument	oewn-crammer__1.10.00..
+oewn-cramp__1.06.00..	derivation		oewn-cramp__2.35.00..
+oewn-cramp__1.06.01..	derivation		oewn-cramp__2.35.00..
+oewn-cramp__2.35.00..	other	instrument	oewn-cramp__1.06.00..
+oewn-cramp__2.35.00..	other	instrument	oewn-cramp__1.06.01..
+oewn-crane__1.05.00..	derivation		oewn-crane__2.29.00..
+oewn-cranial__3.01.00..	derivation		oewn-cranium__1.08.00..
+oewn-cranial__3.01.00..	pertainym		oewn-cranium__1.08.00..
+oewn-craniologist__1.18.00..	derivation		oewn-craniology__1.09.00..
+oewn-craniometric__3.01.00..	derivation		oewn-craniometry__1.09.00..
+oewn-craniometric__3.01.00..	pertainym		oewn-craniometry__1.09.00..
+oewn-craniometrical__3.01.00..	derivation		oewn-craniometry__1.09.00..
+oewn-craniometrical__3.01.00..	pertainym		oewn-craniometry__1.09.00..
+oewn-crank__1.06.00..	derivation		oewn-crank__2.35.00..
+oewn-crank__1.06.00..	derivation		oewn-crank__2.35.01..
+oewn-crank__1.18.00..	derivation		oewn-cranky__5.00.00.ill-natured.00
+oewn-crank__2.35.00..	other	by_means_of	oewn-crank__1.06.00..
+oewn-crankiness__1.07.00..	derivation		oewn-cranky__5.00.00.ill-natured.00
+oewn-crannied__3.00.00..	antonym		oewn-uncrannied__3.00.00..
+oewn-crap__1.10.00..	derivation		oewn-crappy__5.00.00.bad.00
+oewn-crap__1.27.00..	derivation		oewn-crap__2.29.00..
+oewn-crap__2.29.00..	derivation		oewn-crapper__1.06.00..
+oewn-crap__2.29.00..	other	location	oewn-crapper__1.06.00..
+oewn-crap__2.29.00..	other	result	oewn-crap__1.27.00..
+oewn-crape__1.06.00..	derivation		oewn-crape__2.35.02..
+oewn-crape__2.35.02..	other	uses	oewn-crape__1.06.00..
+oewn-crapulence__1.04.00..	derivation		oewn-crapulent__5.00.00.gluttonous.00
+oewn-crapulence__1.04.00..	derivation		oewn-crapulous__5.00.01.gluttonous.00
+oewn-crapulence__1.04.00..	derivation		oewn-crapulous__5.00.02.gluttonous.00
+oewn-crash__1.04.00..	derivation		oewn-crash__2.35.00..
+oewn-crash__1.11.00..	derivation		oewn-crash__2.35.00..
+oewn-crash__1.11.01..	derivation		oewn-crash__2.38.01..
+oewn-crash__1.11.02..	derivation		oewn-crash__2.30.11..
+oewn-crash__1.11.03..	derivation		oewn-crash__2.30.10..
+oewn-crash__2.30.10..	other	event	oewn-crash__1.11.03..
+oewn-crash__2.30.11..	other	event	oewn-crash__1.11.02..
+oewn-crash__2.35.00..	other	event	oewn-crash__1.04.00..
+oewn-crash__2.35.00..	other	event	oewn-crash__1.11.00..
+oewn-crash__2.38.00..	derivation		oewn-crasher__1.18.00..
+oewn-crash__2.38.00..	other	agent	oewn-crasher__1.18.00..
+oewn-crash__2.38.01..	other	event	oewn-crash__1.11.01..
+oewn-crass__5.00.00.unrefined.01	derivation		oewn-crassness__1.07.00..
+oewn-crate__1.06.00..	derivation		oewn-crate__2.35.00..
+oewn-crate__2.35.00..	antonym		oewn-uncrate__2.35.00..
+oewn-crave__2.34.00..	derivation		oewn-craving__1.12.00..
+oewn-craven__5.00.00.cowardly.00	derivation		oewn-cravenness__1.07.00..
+oewn-crawl__1.04.01..	derivation		oewn-crawl__2.38.00..
+oewn-crawl__1.04.02..	derivation		oewn-crawl__2.38.01..
+oewn-crawl__1.04.03..	derivation		oewn-crawl__2.38.00..
+oewn-crawl__2.38.00..	derivation		oewn-crawler__1.05.00..
+oewn-crawl__2.38.00..	derivation		oewn-crawler__1.18.01..
+oewn-crawl__2.38.00..	derivation		oewn-crawling__1.04.00..
+oewn-crawl__2.38.00..	other	agent	oewn-crawler__1.05.00..
+oewn-crawl__2.38.00..	other	agent	oewn-crawler__1.18.01..
+oewn-crawl__2.38.00..	other	event	oewn-crawl__1.04.01..
+oewn-crawl__2.38.00..	other	event	oewn-crawl__1.04.03..
+oewn-crawl__2.38.01..	other	event	oewn-crawl__1.04.02..
+oewn-crawl__2.38.03..	derivation		oewn-crawler__1.18.00..
+oewn-crawl__2.38.03..	other	agent	oewn-crawler__1.18.00..
+oewn-crayon__1.06.00..	derivation		oewn-crayon__2.36.00..
+oewn-crayon__2.36.00..	other	instrument	oewn-crayon__1.06.00..
+oewn-craze__1.07.00..	derivation		oewn-craze__2.30.00..
+oewn-craze__1.09.00..	derivation		oewn-crazy__5.00.00.enthusiastic.00
+oewn-craze__1.26.00..	derivation		oewn-craze__2.37.00..
+oewn-craze__1.26.00..	derivation		oewn-crazy__5.00.00.insane.00
+oewn-craze__2.30.00..	other	result	oewn-craze__1.07.00..
+oewn-craze__2.37.00..	other	state	oewn-craze__1.26.00..
+oewn-crazily__4.02.00..	pertainym		oewn-crazy__5.00.00.insane.00
+oewn-craziness__1.04.00..	derivation		oewn-crazy__5.00.00.excited.00
+oewn-craziness__1.04.00..	derivation		oewn-crazy__5.00.00.impractical.00
+oewn-craziness__1.09.00..	derivation		oewn-crazy__5.00.00.enthusiastic.00
+oewn-craziness__1.26.00..	derivation		oewn-crazy__5.00.00.insane.00
+oewn-creak__1.11.00..	derivation		oewn-creak__2.39.00..
+oewn-creak__1.11.00..	derivation		oewn-creaky__5.00.00.noisy.00
+oewn-creak__2.39.00..	derivation		oewn-creaking__1.11.00..
+oewn-creak__2.39.00..	other	event	oewn-creak__1.11.00..
+oewn-creakily__4.02.00..	pertainym		oewn-creaky__5.00.00.noisy.00
+oewn-cream__1.06.00..	derivation		oewn-cream__2.35.02..
+oewn-cream__1.13.00..	derivation		oewn-cream__2.30.00..
+oewn-cream__1.13.00..	derivation		oewn-cream__2.35.00..
+oewn-cream__1.13.00..	derivation		oewn-creamy__5.00.00.thick.02
+oewn-cream__2.30.00..	other	uses	oewn-cream__1.13.00..
+oewn-cream__2.35.00..	other	result	oewn-cream__1.13.00..
+oewn-cream__2.35.01..	also		oewn-cream_off__2.31.00..
+oewn-cream__2.35.02..	other	uses	oewn-cream__1.06.00..
+oewn-creaminess__1.07.00..	derivation		oewn-creamy__5.00.00.thick.02
+oewn-crease--resistant__3.01.00..	pertainym		oewn-crease__1.25.01..
+oewn-crease__1.25.01..	derivation		oewn-crease__2.30.10..
+oewn-crease__1.25.01..	derivation		oewn-crease__2.35.00..
+oewn-crease__1.25.01..	derivation		oewn-crease__2.35.01..
+oewn-crease__2.30.10..	other	by_means_of	oewn-crease__1.25.01..
+oewn-crease__2.30.10..	other	result	oewn-crease__1.25.01..
+oewn-crease__2.35.00..	other	by_means_of	oewn-crease__1.25.01..
+oewn-crease__2.35.00..	other	result	oewn-crease__1.25.01..
+oewn-crease__2.35.01..	other	by_means_of	oewn-crease__1.25.01..
+oewn-crease__2.35.01..	other	result	oewn-crease__1.25.01..
+oewn-creaseproof__3.01.00..	pertainym		oewn-crease__1.25.01..
+oewn-create__2.36.00..	derivation		oewn-creature__1.03.00..
+oewn-create__2.36.00..	derivation		oewn-creature__1.18.01..
+oewn-create__2.36.01..	derivation		oewn-creation__1.04.00..
+oewn-create__2.36.01..	derivation		oewn-creative__3.00.00..
+oewn-create__2.36.01..	derivation		oewn-creative__5.00.00.constructive.00
+oewn-create__2.36.01..	derivation		oewn-creator__1.18.00..
+oewn-create__2.36.01..	other	agent	oewn-creator__1.18.00..
+oewn-create__2.36.01..	other	event	oewn-creation__1.04.00..
+oewn-create__2.36.02..	derivation		oewn-creation__1.04.00..
+oewn-create__2.36.02..	derivation		oewn-creation__1.04.01..
+oewn-create__2.36.02..	derivation		oewn-creation__1.06.00..
+oewn-create__2.36.02..	derivation		oewn-creation__1.11.00..
+oewn-create__2.36.02..	derivation		oewn-creative__5.00.00.constructive.00
+oewn-create__2.36.02..	other	event	oewn-creation__1.04.00..
+oewn-create__2.36.02..	other	event	oewn-creation__1.04.01..
+oewn-create__2.36.02..	other	event	oewn-creation__1.11.00..
+oewn-create__2.36.02..	other	result	oewn-creation__1.06.00..
+oewn-create__2.36.03..	derivation		oewn-creation__1.04.00..
+oewn-create__2.36.03..	derivation		oewn-creation__1.06.00..
+oewn-create__2.36.03..	other	event	oewn-creation__1.04.00..
+oewn-create__2.36.03..	other	result	oewn-creation__1.06.00..
+oewn-create__2.36.13..	derivation		oewn-creation__1.11.00..
+oewn-create__2.36.13..	derivation		oewn-creative__3.00.00..
+oewn-create__2.36.13..	derivation		oewn-creative__5.00.00.constructive.00
+oewn-create__2.36.13..	other	event	oewn-creation__1.11.00..
+oewn-creative__3.00.00..	antonym		oewn-uncreative__3.00.00..
+oewn-creative__3.00.00..	derivation		oewn-creativeness__1.09.00..
+oewn-creative__3.00.00..	derivation		oewn-creativity__1.09.00..
+oewn-creative__5.00.00.constructive.00	derivation		oewn-creativeness__1.09.00..
+oewn-creative__5.00.00.constructive.00	derivation		oewn-creativity__1.09.00..
+oewn-creatively__4.02.00..	pertainym		oewn-creative__3.00.00..
+oewn-creativeness__1.09.00..	antonym		oewn-uncreativeness__1.09.00..
+oewn-credal__3.01.00..	derivation		oewn-creed__1.09.00..
+oewn-credal__3.01.00..	derivation		oewn-creed__1.10.00..
+oewn-credal__3.01.00..	pertainym		oewn-creed__1.10.00..
+oewn-credibility__1.07.00..	antonym		oewn-incredibility__1.07.00..
+oewn-credibility__1.07.00..	derivation		oewn-credible__3.00.00..
+oewn-credibility__1.07.00..	derivation		oewn-credible__5.00.00.convincing.00
+oewn-credible__3.00.00..	antonym		oewn-incredible__3.00.00..
+oewn-credible__3.00.00..	derivation		oewn-credibleness__1.07.00..
+oewn-credible__5.00.00.convincing.00	derivation		oewn-credibleness__1.07.00..
+oewn-credible__5.00.00.credulous.00	derivation		oewn-credibleness__1.07.00..
+oewn-credibly__4.02.00..	antonym		oewn-incredibly__4.02.00..
+oewn-credibly__4.02.00..	pertainym		oewn-credible__3.00.00..
+oewn-credit__1.10.00..	derivation		oewn-credit__2.31.01..
+oewn-credit__1.10.01..	derivation		oewn-credit__2.31.12..
+oewn-credit__1.10.02..	derivation		oewn-credit__2.31.12..
+oewn-credit__1.21.01..	antonym		oewn-debit__1.21.01..
+oewn-credit__1.21.01..	derivation		oewn-credit__2.40.00..
+oewn-credit__2.31.01..	other	event	oewn-credit__1.10.00..
+oewn-credit__2.31.12..	other	event	oewn-credit__1.10.01..
+oewn-credit__2.40.00..	antonym		oewn-debit__2.40.00..
+oewn-credit__2.40.00..	derivation		oewn-creditor__1.18.00..
+oewn-credit__2.40.00..	other	agent	oewn-creditor__1.18.00..
+oewn-creditably__4.02.00..	pertainym		oewn-creditable__5.00.00.worthy.00
+oewn-creditor__1.18.00..	antonym		oewn-debtor__1.18.00..
+oewn-creditworthiness__1.07.00..	derivation		oewn-creditworthy__5.00.00.trustworthy.00
+oewn-credulity__1.07.00..	derivation		oewn-credulous__3.00.00..
+oewn-credulity__1.07.00..	derivation		oewn-credulous__5.00.00.naive.00
+oewn-credulous__3.00.00..	antonym		oewn-incredulous__3.00.00..
+oewn-credulous__3.00.00..	derivation		oewn-credulousness__1.07.00..
+oewn-credulous__5.00.00.naive.00	derivation		oewn-credulousness__1.07.00..
+oewn-credulously__4.02.00..	antonym		oewn-incredulously__4.02.00..
+oewn-credulously__4.02.00..	pertainym		oewn-credulous__3.00.00..
+oewn-creed__1.09.00..	derivation		oewn-creedal__3.01.00..
+oewn-creed__1.10.00..	derivation		oewn-creedal__3.01.00..
+oewn-creedal__3.01.00..	pertainym		oewn-creed__1.10.00..
+oewn-creep__1.04.00..	derivation		oewn-creep__2.38.00..
+oewn-creep__1.11.00..	derivation		oewn-creep__2.38.00..
+oewn-creep__1.18.00..	derivation		oewn-creep__2.38.04..
+oewn-creep__1.18.00..	derivation		oewn-creepy__5.00.00.offensive.01
+oewn-creep__2.38.00..	derivation		oewn-creeper__1.18.00..
+oewn-creep__2.38.00..	derivation		oewn-creeping__1.04.00..
+oewn-creep__2.38.00..	other	agent	oewn-creeper__1.18.00..
+oewn-creep__2.38.00..	other	event	oewn-creep__1.04.00..
+oewn-creep__2.38.00..	other	event	oewn-creep__1.11.00..
+oewn-creep__2.38.04..	derivation		oewn-creeper__1.18.00..
+oewn-creep__2.38.04..	other	agent	oewn-creeper__1.18.00..
+oewn-creep__2.38.06..	derivation		oewn-creeper__1.20.00..
+oewn-creep__2.38.06..	other	agent	oewn-creeper__1.20.00..
+oewn-creepiness__1.09.00..	derivation		oewn-creepy__5.00.00.alarming.00
+oewn-cremate__2.30.00..	derivation		oewn-cremation__1.04.00..
+oewn-cremate__2.30.00..	other	event	oewn-cremation__1.04.00..
+oewn-crenel__1.06.00..	derivation		oewn-crenelate__2.40.00..
+oewn-crenel__1.06.00..	derivation		oewn-crenellate__2.40.00..
+oewn-crenelate__2.40.00..	derivation		oewn-crenelation__1.04.00..
+oewn-crenelate__2.40.00..	derivation		oewn-crenelation__1.06.00..
+oewn-crenelate__2.40.00..	derivation		oewn-crenelle__1.06.00..
+oewn-crenelate__2.40.00..	other	event	oewn-crenelation__1.04.00..
+oewn-crenelate__2.40.00..	other	uses	oewn-crenelation__1.06.00..
+oewn-crenellate__2.40.00..	derivation		oewn-crenellation__1.04.00..
+oewn-crenellate__2.40.00..	derivation		oewn-crenellation__1.06.00..
+oewn-crenellate__2.40.00..	derivation		oewn-crenelle__1.06.00..
+oewn-crenellate__2.40.00..	other	event	oewn-crenellation__1.04.00..
+oewn-creole__1.10.00..	derivation		oewn-creolize__2.30.00..
+oewn-creole__3.01.01..	pertainym		oewn-creole__1.18.01..
+oewn-creole__3.01.02..	pertainym		oewn-creole__1.10.00..
+oewn-creosote__1.27.01..	derivation		oewn-creosote__2.30.00..
+oewn-creosote__2.30.00..	other	uses	oewn-creosote__1.27.01..
+oewn-crepe__1.06.00..	derivation		oewn-crepe__2.35.00..
+oewn-crepe__1.27.02..	derivation		oewn-crepe__2.35.00..
+oewn-crepe__2.35.00..	other	uses	oewn-crepe__1.06.00..
+oewn-crepe__2.35.00..	other	uses	oewn-crepe__1.27.02..
+oewn-crepitate__2.39.00..	derivation		oewn-crepitation__1.11.00..
+oewn-crepitate__2.39.00..	other	event	oewn-crepitation__1.11.00..
+oewn-crepuscle__1.28.00..	derivation		oewn-crepuscular__5.00.00.dark.01
+oewn-crepuscular__5.00.00.dark.01	derivation		oewn-crepuscule__1.28.00..
+oewn-crescendo__1.07.00..	derivation		oewn-crescendo__2.30.00..
+oewn-crescendo__1.07.00..	derivation		oewn-crescendo__5.00.00.increasing.02
+oewn-crescendo__2.30.00..	antonym		oewn-decrescendo__2.30.00..
+oewn-crescendo__2.30.00..	other	event	oewn-crescendo__1.07.00..
+oewn-crescent__1.25.00..	derivation		oewn-crescent__5.00.00.rounded.00
+oewn-crest__1.15.00..	derivation		oewn-crest__2.42.00..
+oewn-crest__1.15.01..	derivation		oewn-crest__2.42.00..
+oewn-crest__2.42.00..	other	location	oewn-crest__1.15.00..
+oewn-crest__2.42.00..	other	location	oewn-crest__1.15.01..
+oewn-cretaceous__3.01.01..	pertainym		oewn-chalk__1.27.00..
+oewn-cretin__1.18.00..	derivation		oewn-cretinous__5.00.00.retarded.00
+oewn-cretinism__1.26.00..	derivation		oewn-cretinous__5.00.00.retarded.00
+oewn-crew__1.14.01..	derivation		oewn-crew__2.33.00..
+oewn-crew__1.14.02..	derivation		oewn-crew__2.33.00..
+oewn-crew__2.33.00..	other	agent	oewn-crew__1.14.01..
+oewn-crew__2.33.00..	other	agent	oewn-crew__1.14.02..
+oewn-crib__1.10.00..	derivation		oewn-crib__2.41.00..
+oewn-crib__2.41.00..	other	undergoer	oewn-crib__1.10.00..
+oewn-crick__1.26.00..	derivation		oewn-crick__2.29.00..
+oewn-crick__2.29.00..	other	event	oewn-crick__1.26.00..
+oewn-cricket__1.04.00..	derivation		oewn-cricket__2.33.00..
+oewn-cricket__2.33.00..	derivation		oewn-cricketer__1.18.00..
+oewn-cricket__2.33.00..	other	agent	oewn-cricketer__1.18.00..
+oewn-cricket__2.33.00..	other	event	oewn-cricket__1.04.00..
+oewn-crier__1.18.00..	derivation		oewn-cry__2.32.02..
+oewn-crier__1.18.01..	derivation		oewn-cry__2.29.00..
+oewn-crier__1.18.02..	derivation		oewn-cry__2.32.02..
+oewn-crime__1.04.00..	derivation		oewn-criminal__5.00.00.illegal.00
+oewn-crime__1.04.00..	derivation		oewn-criminalise__2.41.00..
+oewn-crime__1.04.00..	derivation		oewn-criminate__2.32.00..
+oewn-crime__1.04.00..	derivation		oewn-incriminate__2.32.00..
+oewn-crime__1.04.00..	derivation		oewn-incriminate__2.42.00..
+oewn-crime__1.04.01..	derivation		oewn-criminal__5.00.00.illegal.00
+oewn-crime__1.04.01..	derivation		oewn-incriminate__2.42.00..
+oewn-criminal__1.18.00..	derivation		oewn-criminalize__2.41.02..
+oewn-criminal__5.00.00.guilty.00	derivation		oewn-criminality__1.26.00..
+oewn-criminal__5.00.00.guilty.00	derivation		oewn-criminalness__1.26.00..
+oewn-criminal__5.00.00.illegal.00	derivation		oewn-criminalness__1.26.00..
+oewn-criminal_offence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-criminal_offence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-criminal_offence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-criminal_offense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-criminalisation__1.04.00..	antonym		oewn-decriminalisation__1.04.00..
+oewn-criminalisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-criminalisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-criminalise__2.41.00..	antonym		oewn-decriminalise__2.41.00..
+oewn-criminalise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-criminalise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-criminalization__1.04.00..	antonym		oewn-decriminalization__1.04.00..
+oewn-criminalization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-criminalize__2.41.00..	antonym		oewn-decriminalize__2.41.00..
+oewn-criminalize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-criminally__4.02.00..	pertainym		oewn-criminal__5.00.00.guilty.00
+oewn-criminally__4.02.01..	pertainym		oewn-criminal__5.00.00.wrong.01
+oewn-criminate__2.32.00..	derivation		oewn-criminative__5.00.00.inculpatory.00
+oewn-criminate__2.32.00..	derivation		oewn-criminatory__5.00.00.inculpatory.00
+oewn-criminological__3.01.00..	derivation		oewn-criminology__1.09.00..
+oewn-criminological__3.01.00..	pertainym		oewn-criminology__1.09.00..
+oewn-criminologist__1.18.00..	derivation		oewn-criminology__1.09.00..
+oewn-crimp__1.08.01..	derivation		oewn-crimp__2.35.00..
+oewn-crimp__1.25.00..	derivation		oewn-crimp__2.35.01..
+oewn-crimp__2.35.00..	other	undergoer	oewn-crimp__1.08.01..
+oewn-crimp__2.35.01..	other	result	oewn-crimp__1.25.00..
+oewn-crimping_pliers__1.06.01..	exemplifies		oewn-plural__1.10.00..
+oewn-crimson__1.07.00..	derivation		oewn-crimson__2.29.00..
+oewn-crimson__1.07.00..	derivation		oewn-crimson__5.00.00.chromatic.00
+oewn-crimson__2.29.00..	other	result	oewn-crimson__1.07.00..
+oewn-crinkle__1.25.00..	derivation		oewn-crinkle__2.30.10..
+oewn-crinkle__1.25.00..	derivation		oewn-crinkle__2.35.00..
+oewn-crinkle__1.25.00..	derivation		oewn-crinkly__5.00.00.uneven.00
+oewn-crinkle__2.30.10..	other	result	oewn-crinkle__1.25.00..
+oewn-crinkle__2.35.00..	other	result	oewn-crinkle__1.25.00..
+oewn-crinoid__1.05.00..	derivation		oewn-crinoid__3.01.00..
+oewn-cripple__1.18.00..	derivation		oewn-cripple__2.29.00..
+oewn-cripple__2.29.00..	other	agent	oewn-cripple__1.18.00..
+oewn-crisis__1.11.00..	derivation		oewn-critical__5.00.00.crucial.00
+oewn-crisis__1.26.00..	derivation		oewn-critical__5.00.00.crucial.00
+oewn-crisp__1.13.00..	derivation		oewn-crisp__2.30.00..
+oewn-crisp__1.13.00..	derivation		oewn-crisp__5.00.00.tender.01
+oewn-crisp__1.13.00..	derivation		oewn-crispy__5.00.00.tender.01
+oewn-crisp__5.00.00.concise.00	derivation		oewn-crispness__1.10.00..
+oewn-crisp__5.00.00.fresh.01	derivation		oewn-crispness__1.07.02..
+oewn-crisp__5.00.00.tender.01	derivation		oewn-crispness__1.07.01..
+oewn-crispiness__1.07.00..	derivation		oewn-crispy__5.00.00.tender.01
+oewn-crisply__4.02.00..	pertainym		oewn-crisp__5.00.00.distinct.00
+oewn-crisscross__1.07.00..	derivation		oewn-crisscross__2.30.00..
+oewn-crisscross__1.07.00..	derivation		oewn-crisscross__2.35.00..
+oewn-crisscross__1.07.00..	derivation		oewn-crisscross__2.38.00..
+oewn-crisscross__2.30.00..	other	result	oewn-crisscross__1.07.00..
+oewn-crisscross__2.35.00..	other	result	oewn-crisscross__1.07.00..
+oewn-crisscross__2.38.00..	other	result	oewn-crisscross__1.07.00..
+oewn-criterial__5.00.00.standard.01	derivation		oewn-criterion__1.09.00..
+oewn-criterial__5.00.00.standard.01	derivation		oewn-criterion__1.10.00..
+oewn-criterion__1.10.00..	derivation		oewn-criterional__5.00.00.standard.01
+oewn-critic__1.18.00..	derivation		oewn-critical__3.01.00..
+oewn-critic__1.18.00..	derivation		oewn-criticize__2.32.00..
+oewn-critic__1.18.00..	derivation		oewn-criticize__2.33.00..
+oewn-critic__1.18.01..	derivation		oewn-critical__3.00.02..
+oewn-critic__1.18.01..	derivation		oewn-critical__3.01.00..
+oewn-critic__1.18.01..	derivation		oewn-criticize__2.32.00..
+oewn-critic__1.18.01..	derivation		oewn-criticize__2.33.00..
+oewn-critic__1.18.02..	derivation		oewn-critical__3.00.01..
+oewn-critic__1.18.02..	derivation		oewn-critical__3.01.00..
+oewn-critic__1.18.02..	derivation		oewn-criticize__2.32.00..
+oewn-critic__1.18.02..	derivation		oewn-criticize__2.33.00..
+oewn-critical__3.00.01..	antonym		oewn-uncritical__3.00.01..
+oewn-critical__3.00.01..	derivation		oewn-criticism__1.10.00..
+oewn-critical__3.00.02..	antonym		oewn-uncritical__3.00.02..
+oewn-critical__3.00.02..	derivation		oewn-criticism__1.09.00..
+oewn-critical__3.00.03..	antonym		oewn-noncritical__3.00.01..
+oewn-critical__3.00.03..	derivation		oewn-criticality__1.26.00..
+oewn-critical__3.00.03..	derivation		oewn-criticalness__1.26.00..
+oewn-critical__3.00.04..	antonym		oewn-noncritical__3.00.02..
+oewn-critical__3.00.04..	derivation		oewn-criticality__1.26.01..
+oewn-critical__3.01.00..	derivation		oewn-criticism__1.10.01..
+oewn-critical__3.01.00..	pertainym		oewn-criticism__1.09.00..
+oewn-critical__5.00.00.crucial.00	derivation		oewn-criticalness__1.26.00..
+oewn-critical__5.00.00.indispensable.00	derivation		oewn-criticality__1.26.00..
+oewn-critical__5.00.00.indispensable.00	derivation		oewn-criticalness__1.26.00..
+oewn-critically__4.02.00..	antonym		oewn-uncritically__4.02.00..
+oewn-critically__4.02.00..	pertainym		oewn-critical__3.00.02..
+oewn-criticise__2.32.00..	derivation		oewn-criticism__1.09.00..
+oewn-criticise__2.32.00..	derivation		oewn-criticism__1.10.00..
+oewn-criticise__2.32.00..	derivation		oewn-criticism__1.10.01..
+oewn-criticise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-criticise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-criticise__2.33.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-criticise__2.33.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-criticize__2.32.00..	antonym		oewn-praise__2.32.00..
+oewn-criticize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-criticize__2.33.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-critique__1.09.00..	derivation		oewn-critique__2.32.00..
+oewn-critique__1.10.00..	derivation		oewn-critique__2.32.00..
+oewn-critique__2.32.00..	other	by_means_of	oewn-critique__1.10.00..
+oewn-critique__2.32.00..	other	event	oewn-critique__1.09.00..
+oewn-croak__1.10.00..	derivation		oewn-croak__2.32.01..
+oewn-croak__1.10.00..	derivation		oewn-croaky__5.00.00.cacophonous.00
+oewn-croak__2.32.01..	derivation		oewn-croaker__1.05.00..
+oewn-croak__2.32.01..	derivation		oewn-croaking__1.10.00..
+oewn-croak__2.32.01..	other	agent	oewn-croaker__1.05.00..
+oewn-croak__2.32.01..	other	event	oewn-croak__1.10.00..
+oewn-croatian__1.18.00..	derivation		oewn-croatian__3.01.00..
+oewn-crochet__1.06.00..	derivation		oewn-crochet__2.36.01..
+oewn-crochet__2.36.00..	derivation		oewn-crocheting__1.06.00..
+oewn-crochet__2.36.01..	derivation		oewn-crocheting__1.04.00..
+oewn-crochet__2.36.01..	other	result	oewn-crochet__1.06.00..
+oewn-crock__1.06.00..	derivation		oewn-crock__2.35.00..
+oewn-crook__1.25.00..	derivation		oewn-crook__2.38.00..
+oewn-crook__2.38.00..	other	result	oewn-crook__1.25.00..
+oewn-crookback__1.18.00..	derivation		oewn-crookback__5.00.00.unfit.01
+oewn-crooked__3.00.01..	antonym		oewn-straight__3.00.01..
+oewn-crooked__3.00.01..	derivation		oewn-crookedness__1.07.00..
+oewn-crooked__3.00.02..	antonym		oewn-straight__3.00.04..
+oewn-crooked__3.00.02..	derivation		oewn-crookedness__1.07.01..
+oewn-crookedly__4.02.00..	pertainym		oewn-crooked__3.00.01..
+oewn-crookedness__1.07.00..	antonym		oewn-straightness__1.07.00..
+oewn-croon__2.32.00..	derivation		oewn-crooner__1.18.00..
+oewn-croon__2.32.00..	derivation		oewn-crooning__1.04.00..
+oewn-croon__2.32.00..	derivation		oewn-crooning__1.04.01..
+oewn-croon__2.32.00..	other	agent	oewn-crooner__1.18.00..
+oewn-crop__1.20.00..	derivation		oewn-crop__2.35.00..
+oewn-crop__1.20.00..	derivation		oewn-crop__2.36.00..
+oewn-crop__1.20.00..	derivation		oewn-crop__2.36.01..
+oewn-crop__2.35.00..	other	event	oewn-crop__1.20.00..
+oewn-crop__2.36.00..	other	event	oewn-crop__1.20.00..
+oewn-crop__2.36.01..	other	event	oewn-crop__1.20.00..
+oewn-croquet__1.04.00..	derivation		oewn-croquet__2.33.00..
+oewn-croquet__2.33.00..	other	event	oewn-croquet__1.04.00..
+oewn-cross--cultural__3.01.00..	pertainym		oewn-culture__1.14.00..
+oewn-cross--dress__2.29.00..	derivation		oewn-cross--dresser__1.18.00..
+oewn-cross--dress__2.29.00..	other	agent	oewn-cross--dresser__1.18.00..
+oewn-cross--examination__1.10.00..	derivation		oewn-cross_examine__2.32.00..
+oewn-cross--examiner__1.18.00..	derivation		oewn-cross_examine__2.32.00..
+oewn-cross--eyed__3.00.00..	antonym		oewn-walleyed__3.00.00..
+oewn-cross--fertilisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cross--fertilisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cross--fertilisation__1.11.00..	derivation		oewn-cross--fertilise__2.29.00..
+oewn-cross--fertilisation__1.11.00..	derivation		oewn-cross--fertilise__2.29.01..
+oewn-cross--fertilisation__1.11.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cross--fertilisation__1.11.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cross--fertilise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cross--fertilise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cross--fertilise__2.29.00..	other	event	oewn-cross--fertilisation__1.11.00..
+oewn-cross--fertilise__2.29.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cross--fertilise__2.29.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cross--fertilise__2.29.01..	other	event	oewn-cross--fertilisation__1.11.00..
+oewn-cross--fertilization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cross--fertilization__1.11.00..	antonym		oewn-self--fertilization__1.11.00..
+oewn-cross--fertilization__1.11.00..	derivation		oewn-cross--fertilize__2.29.00..
+oewn-cross--fertilization__1.11.00..	derivation		oewn-cross--fertilize__2.29.01..
+oewn-cross--fertilization__1.11.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cross--fertilize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cross--fertilize__2.29.00..	other	event	oewn-cross--fertilization__1.11.00..
+oewn-cross--fertilize__2.29.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cross--fertilize__2.29.01..	other	event	oewn-cross--fertilization__1.11.00..
+oewn-cross--index__1.10.00..	derivation		oewn-cross--index__2.41.00..
+oewn-cross--index__2.41.00..	other	by_means_of	oewn-cross--index__1.10.00..
+oewn-cross--linguistic__3.01.00..	pertainym		oewn-language__1.10.00..
+oewn-cross--linguistically__4.02.00..	pertainym		oewn-cross--linguistic__3.01.00..
+oewn-cross--link__1.19.00..	derivation		oewn-cross--link__2.35.00..
+oewn-cross--link__2.35.00..	derivation		oewn-cross--linkage__1.19.00..
+oewn-cross--link__2.35.00..	other	by_means_of	oewn-cross--link__1.19.00..
+oewn-cross--modal__3.01.00..	pertainym		oewn-modality__1.09.00..
+oewn-cross--ply__3.01.00..	pertainym		oewn-pneumatic_tire__1.06.00..
+oewn-cross--pollinate__2.29.00..	derivation		oewn-cross--pollination__1.11.00..
+oewn-cross--pollinate__2.29.00..	other	event	oewn-cross--pollination__1.11.00..
+oewn-cross--pollinating__3.01.00..	pertainym		oewn-cross--pollination__1.11.00..
+oewn-cross--pollination__1.11.00..	antonym		oewn-self--pollination__1.11.00..
+oewn-cross--question__1.10.00..	derivation		oewn-cross_question__2.32.00..
+oewn-cross--questioner__1.18.00..	derivation		oewn-cross_question__2.32.00..
+oewn-cross--sectional__3.01.00..	derivation		oewn-cross_section__1.09.00..
+oewn-cross--sectional__3.01.00..	pertainym		oewn-cross_section__1.15.00..
+oewn-cross--sectional__5.00.00.crosswise.00	derivation		oewn-cross_section__1.15.00..
+oewn-cross--sentential__3.01.00..	pertainym		oewn-sentential__3.01.00..
+oewn-cross__1.04.00..	derivation		oewn-cross__2.35.00..
+oewn-cross__1.05.00..	derivation		oewn-cross__2.35.00..
+oewn-cross__1.07.00..	derivation		oewn-cross__2.36.09..
+oewn-cross__1.26.00..	derivation		oewn-cross__2.41.00..
+oewn-cross__2.35.00..	derivation		oewn-crossing__1.04.02..
+oewn-cross__2.35.00..	other	event	oewn-cross__1.04.00..
+oewn-cross__2.35.00..	other	result	oewn-cross__1.05.00..
+oewn-cross__2.36.09..	other	result	oewn-cross__1.07.00..
+oewn-cross__2.38.00..	derivation		oewn-crossing__1.04.00..
+oewn-cross__2.38.00..	derivation		oewn-crossing__1.04.01..
+oewn-cross__2.38.00..	derivation		oewn-crossing__1.06.00..
+oewn-cross__2.38.03..	derivation		oewn-crossing__1.06.01..
+oewn-cross__2.38.03..	derivation		oewn-crossing__1.15.00..
+oewn-cross__2.38.04..	antonym		oewn-uncross__2.38.00..
+oewn-cross__2.41.00..	also		oewn-double_cross__2.41.00..
+oewn-cross__2.41.00..	other	event	oewn-cross__1.26.00..
+oewn-cross__5.00.00.ill-natured.00	derivation		oewn-crossness__1.07.00..
+oewn-cross_examine__2.32.00..	other	agent	oewn-cross--examiner__1.18.00..
+oewn-cross_examine__2.32.00..	other	event	oewn-cross--examination__1.10.00..
+oewn-cross_question__2.32.00..	other	agent	oewn-cross--questioner__1.18.00..
+oewn-cross_question__2.32.00..	other	event	oewn-cross--question__1.10.00..
+oewn-crossbred__3.00.00..	antonym		oewn-purebred__3.00.00..
+oewn-crossbreed__1.05.00..	derivation		oewn-crossbreed__2.35.00..
+oewn-crossbreed__2.35.00..	other	result	oewn-crossbreed__1.05.00..
+oewn-crosscut__1.15.00..	derivation		oewn-crosscut__2.35.00..
+oewn-crosscut__2.35.00..	other	location	oewn-crosscut__1.15.00..
+oewn-crossed__3.00.01..	antonym		oewn-uncrossed__3.00.01..
+oewn-crossed__3.00.02..	antonym		oewn-uncrossed__3.00.02..
+oewn-crosshatch__1.07.00..	derivation		oewn-crosshatch__2.36.00..
+oewn-crosshatch__2.36.00..	other	result	oewn-crosshatch__1.07.00..
+oewn-crossly__4.02.00..	pertainym		oewn-cross__5.00.00.ill-natured.00
+oewn-crosstown__4.02.00..	pertainym		oewn-crosstown__5.00.00.crossed.01
+oewn-crosswise__3.00.00..	antonym		oewn-lengthwise__3.00.00..
+oewn-crotchet__1.07.00..	derivation		oewn-crotchety__5.00.00.ill-natured.00
+oewn-crotchetiness__1.07.00..	derivation		oewn-crotchety__5.00.00.ill-natured.00
+oewn-crouch__1.04.00..	derivation		oewn-crouch__2.38.00..
+oewn-crouch__2.38.00..	other	event	oewn-crouch__1.04.00..
+oewn-croup__1.26.00..	derivation		oewn-croupy__3.01.00..
+oewn-croupy__3.01.00..	pertainym		oewn-croup__1.26.00..
+oewn-crow__1.10.00..	derivation		oewn-crow__2.32.00..
+oewn-crow__1.11.00..	derivation		oewn-crow__2.32.02..
+oewn-crow__2.32.00..	derivation		oewn-crowing__1.10.00..
+oewn-crow__2.32.00..	other	event	oewn-crow__1.10.00..
+oewn-crow__2.32.01..	derivation		oewn-crowing__1.10.00..
+oewn-crow__2.32.02..	other	event	oewn-crow__1.11.00..
+oewn-crowd__1.14.00..	derivation		oewn-crowd__2.38.00..
+oewn-crowd__1.14.00..	derivation		oewn-crowd__2.38.01..
+oewn-crowd__1.14.00..	derivation		oewn-crowd__2.42.00..
+oewn-crowd__2.38.00..	derivation		oewn-crowding__1.26.00..
+oewn-crowd__2.38.00..	other	result	oewn-crowd__1.14.00..
+oewn-crowd__2.38.01..	derivation		oewn-crowding__1.26.00..
+oewn-crowd__2.38.01..	other	result	oewn-crowd__1.14.00..
+oewn-crowd__2.42.00..	derivation		oewn-crowding__1.26.00..
+oewn-crowd__2.42.00..	other	event	oewn-crowd__1.14.00..
+oewn-crowded__3.00.00..	antonym		oewn-uncrowded__3.00.00..
+oewn-crown__1.06.01..	derivation		oewn-crown__2.41.00..
+oewn-crown__1.08.00..	derivation		oewn-crown__2.35.00..
+oewn-crown__1.10.01..	derivation		oewn-crown__2.41.00..
+oewn-crown__2.35.00..	other	uses	oewn-crown__1.08.00..
+oewn-crowned__3.00.00..	antonym		oewn-uncrowned__3.00.00..
+oewn-crowned__3.00.02..	antonym		oewn-uncrowned__3.00.02..
+oewn-crucial__3.00.00..	antonym		oewn-noncrucial__3.00.00..
+oewn-crucial__3.00.00..	derivation		oewn-cruciality__1.26.00..
+oewn-crucial__5.00.00.important.00	derivation		oewn-cruciality__1.26.00..
+oewn-crucially__4.02.00..	pertainym		oewn-crucial__3.00.00..
+oewn-crucifix__1.06.00..	derivation		oewn-crucify__2.41.00..
+oewn-crucifixion__1.04.00..	derivation		oewn-crucify__2.41.00..
+oewn-crucifixion__1.04.01..	derivation		oewn-crucify__2.37.00..
+oewn-crucify__2.37.00..	other	event	oewn-crucifixion__1.04.01..
+oewn-crucify__2.41.00..	other	event	oewn-crucifixion__1.04.00..
+oewn-crude__3.00.02..	derivation		oewn-crudeness__1.07.02..
+oewn-crude__3.00.02..	derivation		oewn-crudity__1.26.00..
+oewn-crude__5.00.00.early.02	derivation		oewn-crudeness__1.26.00..
+oewn-crude__5.00.00.early.02	derivation		oewn-crudity__1.26.00..
+oewn-crude__5.00.00.indecent.00	derivation		oewn-crudeness__1.07.00..
+oewn-crude__5.00.00.indecent.00	derivation		oewn-crudity__1.07.00..
+oewn-crude__5.00.00.unanalyzed.00	derivation		oewn-crudity__1.26.00..
+oewn-crude__5.00.01.unskilled.00	derivation		oewn-crudeness__1.07.02..
+oewn-crudely__4.02.00..	pertainym		oewn-crude__3.00.02..
+oewn-crudely__4.02.01..	pertainym		oewn-crude__5.00.01.unskilled.00
+oewn-cruel__5.00.01.inhumane.00	derivation		oewn-cruelness__1.07.00..
+oewn-cruelly__4.02.01..	pertainym		oewn-cruel__5.00.01.inhumane.00
+oewn-cruise__1.04.00..	derivation		oewn-cruise__2.38.01..
+oewn-cruise__2.38.01..	derivation		oewn-cruiser__1.06.01..
+oewn-cruise__2.38.01..	other	event	oewn-cruise__1.04.00..
+oewn-cruise__2.38.01..	other	vehicle	oewn-cruiser__1.06.01..
+oewn-cruise__2.38.02..	derivation		oewn-cruiser__1.06.02..
+oewn-cruise__2.38.02..	other	vehicle	oewn-cruiser__1.06.02..
+oewn-crumb__1.13.00..	derivation		oewn-crumb__2.30.00..
+oewn-crumb__1.13.00..	derivation		oewn-crumb__2.30.01..
+oewn-crumb__1.13.00..	derivation		oewn-crumb__2.35.00..
+oewn-crumb__1.13.00..	derivation		oewn-crumbly__5.00.00.breakable.00
+oewn-crumb__2.30.00..	other	undergoer	oewn-crumb__1.13.00..
+oewn-crumb__2.30.01..	other	result	oewn-crumb__1.13.00..
+oewn-crumb__2.35.00..	other	uses	oewn-crumb__1.13.00..
+oewn-crumbliness__1.07.00..	derivation		oewn-crumbly__5.00.00.breakable.00
+oewn-crunch__1.04.00..	derivation		oewn-crunch__2.30.00..
+oewn-crunch__1.11.00..	derivation		oewn-crunch__2.32.00..
+oewn-crunch__2.30.00..	other	event	oewn-crunch__1.04.00..
+oewn-crunch__2.32.00..	other	event	oewn-crunch__1.11.00..
+oewn-crural__3.01.00..	derivation		oewn-crus__1.08.00..
+oewn-crural__3.01.00..	pertainym		oewn-crus__1.08.00..
+oewn-crusade__1.04.00..	derivation		oewn-crusade__2.41.10..
+oewn-crusade__1.04.01..	derivation		oewn-crusade__2.33.00..
+oewn-crusade__2.33.00..	derivation		oewn-crusader__1.18.01..
+oewn-crusade__2.33.00..	other	agent	oewn-crusader__1.18.01..
+oewn-crusade__2.41.10..	derivation		oewn-crusader__1.18.00..
+oewn-crusade__2.41.10..	other	agent	oewn-crusader__1.18.00..
+oewn-crusade__2.41.10..	other	event	oewn-crusade__1.04.00..
+oewn-crush__1.04.00..	derivation		oewn-crush__2.30.00..
+oewn-crush__1.04.00..	derivation		oewn-crush__2.35.00..
+oewn-crush__2.30.00..	derivation		oewn-crusher__1.06.00..
+oewn-crush__2.30.00..	other	event	oewn-crush__1.04.00..
+oewn-crush__2.30.00..	other	instrument	oewn-crusher__1.06.00..
+oewn-crush__2.35.00..	derivation		oewn-crusher__1.06.00..
+oewn-crush__2.35.00..	other	event	oewn-crush__1.04.00..
+oewn-crush__2.35.00..	other	instrument	oewn-crusher__1.06.00..
+oewn-crush__2.41.00..	derivation		oewn-crushing__1.04.00..
+oewn-crushingly__4.02.00..	pertainym		oewn-crushing__5.00.00.destructive.00
+oewn-crust__1.07.00..	derivation		oewn-crusty__5.00.00.ill-natured.00
+oewn-crust__1.17.01..	derivation		oewn-crust__2.30.00..
+oewn-crust__1.17.01..	derivation		oewn-crusty__5.00.00.covered.00
+oewn-crust__2.30.00..	other	result	oewn-crust__1.17.01..
+oewn-crustaceous__3.01.00..	pertainym		oewn-crust__1.17.01..
+oewn-crustal__3.01.00..	pertainym		oewn-crust__1.17.00..
+oewn-crustose__3.01.00..	pertainym		oewn-crust__1.17.01..
+oewn-cry__1.10.00..	derivation		oewn-cry__2.32.01..
+oewn-cry__1.10.02..	derivation		oewn-cry__2.29.00..
+oewn-cry__1.10.04..	derivation		oewn-cry__2.32.01..
+oewn-cry__1.11.00..	derivation		oewn-cry__2.32.03..
+oewn-cry__2.29.00..	antonym		oewn-laugh__2.29.00..
+oewn-cry__2.29.00..	derivation		oewn-crying__1.04.00..
+oewn-cry__2.29.00..	other	agent	oewn-crier__1.18.01..
+oewn-cry__2.29.00..	other	event	oewn-cry__1.10.02..
+oewn-cry__2.29.02..	derivation		oewn-crying__1.04.00..
+oewn-cry__2.32.01..	also		oewn-cry_out__2.32.00..
+oewn-cry__2.32.01..	other	event	oewn-cry__1.10.00..
+oewn-cry__2.32.01..	other	event	oewn-cry__1.10.04..
+oewn-cry__2.32.02..	other	agent	oewn-crier__1.18.00..
+oewn-cry__2.32.02..	other	agent	oewn-crier__1.18.02..
+oewn-cry__2.32.03..	other	event	oewn-cry__1.11.00..
+oewn-cryogenic__3.01.00..	derivation		oewn-cryogenics__1.09.00..
+oewn-cryogenic__3.01.00..	pertainym		oewn-cryogen__1.27.00..
+oewn-cryonic__3.01.00..	derivation		oewn-cryonics__1.09.00..
+oewn-cryonic__3.01.00..	pertainym		oewn-cryonics__1.09.00..
+oewn-cryptanalysis__1.09.00..	derivation		oewn-cryptanalytic__3.01.00..
+oewn-cryptanalytic__3.01.00..	pertainym		oewn-cryptanalysis__1.09.00..
+oewn-cryptically__4.02.00..	pertainym		oewn-cryptic__5.00.00.inexplicable.00
+oewn-cryptobiosis__1.26.00..	derivation		oewn-cryptobiotic__3.01.00..
+oewn-cryptobiotic__3.01.00..	pertainym		oewn-cryptobiosis__1.26.00..
+oewn-cryptogam__1.20.00..	derivation		oewn-cryptogamic__3.01.00..
+oewn-cryptogam__1.20.00..	derivation		oewn-cryptogamous__3.01.00..
+oewn-cryptogamic__3.01.00..	pertainym		oewn-cryptogam__1.20.00..
+oewn-cryptogamous__3.01.00..	pertainym		oewn-cryptogam__1.20.00..
+oewn-cryptographer__1.18.00..	derivation		oewn-cryptography__1.04.00..
+oewn-cryptographer__1.18.00..	derivation		oewn-cryptography__1.09.00..
+oewn-cryptographic__3.01.00..	pertainym		oewn-cryptography__1.09.00..
+oewn-cryptographical__3.01.00..	derivation		oewn-cryptography__1.04.00..
+oewn-cryptographical__3.01.00..	derivation		oewn-cryptography__1.09.00..
+oewn-cryptographical__3.01.00..	pertainym		oewn-cryptography__1.09.00..
+oewn-cryptographically__4.02.00..	pertainym		oewn-cryptographic__3.01.00..
+oewn-cryptologic__3.01.00..	derivation		oewn-cryptology__1.09.00..
+oewn-cryptologic__3.01.00..	pertainym		oewn-cryptology__1.09.00..
+oewn-cryptological__3.01.00..	derivation		oewn-cryptology__1.09.00..
+oewn-cryptological__3.01.00..	pertainym		oewn-cryptology__1.09.00..
+oewn-cryptologist__1.18.00..	derivation		oewn-cryptology__1.09.00..
+oewn-crystal__1.17.00..	derivation		oewn-crystalize__2.30.00..
+oewn-crystal__1.17.00..	derivation		oewn-crystalize__2.30.01..
+oewn-crystal__1.27.00..	derivation		oewn-crystalize__2.30.00..
+oewn-crystal__1.27.00..	derivation		oewn-crystalize__2.30.01..
+oewn-crystal__1.27.00..	derivation		oewn-crystallize__2.30.00..
+oewn-crystal__1.27.00..	derivation		oewn-crystallize__2.30.01..
+oewn-crystal__1.27.01..	derivation		oewn-crystalize__2.30.00..
+oewn-crystal__1.27.01..	derivation		oewn-crystalize__2.30.01..
+oewn-crystal__1.27.01..	derivation		oewn-crystallize__2.30.00..
+oewn-crystal__1.27.01..	derivation		oewn-crystallize__2.30.01..
+oewn-crystalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystalise__2.30.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystalise__2.30.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystalise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystalise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystalize__2.30.00..	other	result	oewn-crystal__1.17.00..
+oewn-crystalize__2.30.00..	other	result	oewn-crystal__1.27.00..
+oewn-crystalize__2.30.00..	other	result	oewn-crystal__1.27.01..
+oewn-crystalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystalize__2.30.01..	other	result	oewn-crystal__1.17.00..
+oewn-crystalize__2.30.01..	other	result	oewn-crystal__1.27.00..
+oewn-crystalize__2.30.01..	other	result	oewn-crystal__1.27.01..
+oewn-crystalize__2.30.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystalize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystalline__3.00.00..	antonym		oewn-noncrystalline__3.00.00..
+oewn-crystallisation__1.19.00..	derivation		oewn-crystallise__2.30.01..
+oewn-crystallisation__1.19.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystallisation__1.19.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystallise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystallise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystallise__2.30.01..	other	event	oewn-crystallisation__1.19.00..
+oewn-crystallise__2.30.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystallise__2.30.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystallise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-crystallise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-crystallization__1.09.00..	derivation		oewn-crystallize__2.30.02..
+oewn-crystallization__1.17.00..	derivation		oewn-crystallize__2.30.00..
+oewn-crystallization__1.17.00..	derivation		oewn-crystallize__2.30.01..
+oewn-crystallization__1.19.00..	derivation		oewn-crystallize__2.30.00..
+oewn-crystallization__1.19.00..	derivation		oewn-crystallize__2.30.01..
+oewn-crystallization__1.19.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystallize__2.30.00..	derivation		oewn-crystallizing__1.19.00..
+oewn-crystallize__2.30.00..	other	event	oewn-crystallization__1.19.00..
+oewn-crystallize__2.30.00..	other	result	oewn-crystal__1.27.00..
+oewn-crystallize__2.30.00..	other	result	oewn-crystal__1.27.01..
+oewn-crystallize__2.30.00..	other	result	oewn-crystallization__1.17.00..
+oewn-crystallize__2.30.01..	derivation		oewn-crystallizing__1.19.00..
+oewn-crystallize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystallize__2.30.01..	other	event	oewn-crystallization__1.19.00..
+oewn-crystallize__2.30.01..	other	result	oewn-crystal__1.27.00..
+oewn-crystallize__2.30.01..	other	result	oewn-crystal__1.27.01..
+oewn-crystallize__2.30.01..	other	result	oewn-crystallization__1.17.00..
+oewn-crystallize__2.30.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystallize__2.30.02..	other	by_means_of	oewn-crystallization__1.09.00..
+oewn-crystallize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-crystallized__3.00.00..	antonym		oewn-uncrystallized__3.00.00..

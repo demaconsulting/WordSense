@@ -1,0 +1,315 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-pianissimo__1.07.00..	derivation		oewn-pianissimo__5.00.00.piano.00
+oewn-pianissimo__4.02.00..	pertainym		oewn-pianissimo__5.00.00.piano.00
+oewn-pianist__1.18.00..	derivation		oewn-piano__1.06.00..
+oewn-pianistic__3.01.00..	derivation		oewn-piano__1.06.00..
+oewn-pianistic__3.01.00..	pertainym		oewn-pianist__1.18.00..
+oewn-pianistic__3.01.01..	derivation		oewn-piano__1.06.00..
+oewn-pianistic__3.01.01..	pertainym		oewn-piano__1.06.00..
+oewn-piano__4.02.00..	pertainym		oewn-piano__3.00.00..
+oewn-piaster__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-piaster__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-piastre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-piastre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-piastre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-piastre__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-piastre__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-piastre__1.23.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pick__1.04.00..	derivation		oewn-pick__2.31.00..
+oewn-pick__1.06.00..	derivation		oewn-pick__2.35.02..
+oewn-pick__1.06.01..	derivation		oewn-pick__2.30.00..
+oewn-pick__1.06.03..	derivation		oewn-pick__2.35.05..
+oewn-pick__1.09.00..	derivation		oewn-pick__2.31.00..
+oewn-pick__1.14.00..	derivation		oewn-pick__2.31.00..
+oewn-pick__1.23.00..	derivation		oewn-pick__2.35.01..
+oewn-pick__2.31.00..	derivation		oewn-picker__1.18.01..
+oewn-pick__2.31.00..	other	agent	oewn-picker__1.18.01..
+oewn-pick__2.31.00..	other	event	oewn-pick__1.04.00..
+oewn-pick__2.31.00..	other	undergoer	oewn-pick__1.09.00..
+oewn-pick__2.31.00..	other	undergoer	oewn-pick__1.14.00..
+oewn-pick__2.35.01..	also		oewn-pick_off__2.35.00..
+oewn-pick__2.35.01..	also		oewn-pick_over__2.31.00..
+oewn-pick__2.35.01..	also		oewn-pick_up__2.31.00..
+oewn-pick__2.35.01..	also		oewn-pick_up__2.38.00..
+oewn-pick__2.35.01..	also		oewn-pick_up__2.39.00..
+oewn-pick__2.35.01..	also		oewn-pick_up__2.39.01..
+oewn-pick__2.35.01..	derivation		oewn-picker__1.18.00..
+oewn-pick__2.35.01..	derivation		oewn-picking__1.04.00..
+oewn-pick__2.35.01..	other	agent	oewn-picker__1.18.00..
+oewn-pick__2.35.01..	other	undergoer	oewn-pick__1.23.00..
+oewn-pick__2.35.02..	other	instrument	oewn-pick__1.06.00..
+oewn-pick__2.35.05..	other	instrument	oewn-pick__1.06.03..
+oewn-pick__2.40.01..	derivation		oewn-pickings__1.04.00..
+oewn-pick_up__2.29.00..	derivation		oewn-pickup__1.06.03..
+oewn-pick_up__2.35.00..	derivation		oewn-pickup__1.10.00..
+oewn-pick_up__2.38.00..	derivation		oewn-pickup__1.04.01..
+oewn-pick_up__2.40.00..	derivation		oewn-pickup__1.04.00..
+oewn-pick_up__2.40.01..	derivation		oewn-pickup__1.04.00..
+oewn-pick_up__2.41.00..	derivation		oewn-pickup__1.18.00..
+oewn-picket__1.06.00..	derivation		oewn-picket__2.35.00..
+oewn-picket__1.18.00..	derivation		oewn-picket__2.41.00..
+oewn-picket__2.35.00..	other	instrument	oewn-picket__1.06.00..
+oewn-picket__2.41.00..	other	agent	oewn-picket__1.18.00..
+oewn-pickle__1.13.00..	derivation		oewn-pickle__2.30.00..
+oewn-pickle__2.30.00..	other	undergoer	oewn-pickle__1.13.00..
+oewn-picknicker__1.18.00..	derivation		oewn-picnic__2.34.00..
+oewn-picnic__1.13.00..	derivation		oewn-picnic__2.34.00..
+oewn-picnic__2.34.00..	derivation		oewn-picnicker__1.18.00..
+oewn-picnic__2.34.00..	other	agent	oewn-picknicker__1.18.00..
+oewn-picnic__2.34.00..	other	agent	oewn-picnicker__1.18.00..
+oewn-picnic__2.34.00..	other	event	oewn-picnic__1.13.00..
+oewn-picometer__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-picometre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-picometre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-picometre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pictograph__1.10.00..	derivation		oewn-pictographic__3.01.00..
+oewn-pictographic__3.01.00..	pertainym		oewn-pictograph__1.10.00..
+oewn-pictorial__1.10.00..	derivation		oewn-pictorial__3.01.00..
+oewn-pictorial__3.01.00..	pertainym		oewn-picture__1.10.00..
+oewn-pictorially__4.02.00..	pertainym		oewn-pictorial__3.01.00..
+oewn-pictural__3.01.00..	derivation		oewn-picture__1.06.00..
+oewn-pictural__3.01.00..	derivation		oewn-picture__1.06.01..
+oewn-pictural__3.01.00..	derivation		oewn-picture__1.10.00..
+oewn-pictural__3.01.00..	pertainym		oewn-picture__1.10.00..
+oewn-picture__1.06.00..	derivation		oewn-picture__2.36.00..
+oewn-picture__1.06.01..	derivation		oewn-picture__2.36.00..
+oewn-picture__1.09.00..	derivation		oewn-picture__2.36.01..
+oewn-picture__1.10.00..	derivation		oewn-picture__2.36.00..
+oewn-picture__2.36.00..	derivation		oewn-picturing__1.04.00..
+oewn-picture__2.36.00..	other	by_means_of	oewn-picture__1.06.00..
+oewn-picture__2.36.00..	other	by_means_of	oewn-picture__1.06.01..
+oewn-picture__2.36.00..	other	by_means_of	oewn-picture__1.10.00..
+oewn-picture__2.36.01..	derivation		oewn-picturing__1.09.00..
+oewn-picture__2.36.01..	other	by_means_of	oewn-picture__1.09.00..
+oewn-picturesque__5.00.00.beautiful.00	derivation		oewn-picturesqueness__1.07.00..
+oewn-picturesque__5.00.00.colorful.03	derivation		oewn-picturesqueness__1.07.01..
+oewn-picturesquely__4.02.00..	pertainym		oewn-picturesque__5.00.00.beautiful.00
+oewn-piddle__1.27.00..	derivation		oewn-piddle__2.29.00..
+oewn-piddle__2.29.00..	other	undergoer	oewn-piddle__1.27.00..
+oewn-piece__1.06.00..	derivation		oewn-piece__2.30.00..
+oewn-piece__1.06.00..	derivation		oewn-piece__2.35.02..
+oewn-piece__1.06.00..	derivation		oewn-piece__2.36.00..
+oewn-piece__1.13.00..	derivation		oewn-piece__2.34.00..
+oewn-piece__2.30.00..	other	undergoer	oewn-piece__1.06.00..
+oewn-piece__2.35.02..	other	undergoer	oewn-piece__1.06.00..
+oewn-piece__2.36.00..	other	undergoer	oewn-piece__1.06.00..
+oewn-piercingly__4.02.00..	pertainym		oewn-piercing__5.00.00.sharp.04
+oewn-pietism__1.07.01..	derivation		oewn-pietistic__5.00.00.pious.00
+oewn-pietism__1.07.01..	derivation		oewn-pietistical__5.00.00.pious.00
+oewn-pietism__1.14.00..	derivation		oewn-pietistic__3.01.00..
+oewn-pietism__1.14.00..	derivation		oewn-pietistical__3.01.00..
+oewn-pietistic__3.01.00..	pertainym		oewn-pietism__1.14.00..
+oewn-pietistical__3.01.00..	pertainym		oewn-pietism__1.14.00..
+oewn-piezoelectric__3.01.00..	derivation		oewn-piezoelectricity__1.19.00..
+oewn-piezoelectric__3.01.00..	pertainym		oewn-piezoelectricity__1.19.00..
+oewn-piffle__1.10.00..	derivation		oewn-piffle__2.29.00..
+oewn-piffle__1.10.00..	derivation		oewn-piffle__2.32.00..
+oewn-piffle__2.29.00..	other	event	oewn-piffle__1.10.00..
+oewn-piffle__2.32.00..	other	event	oewn-piffle__1.10.00..
+oewn-pig--headedly__4.02.00..	pertainym		oewn-pigheaded__5.00.00.stubborn.00
+oewn-pig__1.05.00..	derivation		oewn-pig__2.29.00..
+oewn-pig__1.05.00..	derivation		oewn-pig__2.42.00..
+oewn-pig__1.05.00..	derivation		oewn-piglet__1.05.00..
+oewn-pig__1.18.00..	derivation		oewn-pig__2.34.00..
+oewn-pig__1.18.00..	derivation		oewn-pig__2.42.00..
+oewn-pig__1.18.00..	derivation		oewn-piggy__5.00.00.gluttonous.00
+oewn-pig__2.34.00..	other	agent	oewn-pig__1.18.00..
+oewn-pig__2.42.00..	other	agent	oewn-pig__1.18.00..
+oewn-pigeon--toed__3.00.00..	antonym		oewn-splayfooted__3.00.00..
+oewn-pigeonhole__1.06.00..	derivation		oewn-pigeonhole__2.35.00..
+oewn-pigeonhole__1.09.00..	derivation		oewn-pigeonhole__2.31.00..
+oewn-pigeonhole__2.31.00..	derivation		oewn-pigeonholing__1.09.00..
+oewn-pigeonhole__2.31.00..	other	by_means_of	oewn-pigeonhole__1.09.00..
+oewn-piggish__5.00.00.gluttonous.00	derivation		oewn-piggishness__1.07.00..
+oewn-piggishly__4.02.00..	pertainym		oewn-piggish__5.00.00.gluttonous.00
+oewn-piggy__1.05.00..	derivation		oewn-piggy__5.00.00.gluttonous.00
+oewn-pigheaded__5.00.00.stubborn.00	derivation		oewn-pigheadedness__1.07.00..
+oewn-pigment__1.27.00..	derivation		oewn-pigment__2.30.00..
+oewn-pigment__1.27.00..	derivation		oewn-pigment__2.30.01..
+oewn-pigment__2.30.00..	other	by_means_of	oewn-pigment__1.27.00..
+oewn-pigment__2.30.01..	derivation		oewn-pigmentation__1.07.00..
+oewn-pigment__2.30.01..	derivation		oewn-pigmentation__1.22.00..
+oewn-pigment__2.30.01..	other	event	oewn-pigmentation__1.07.00..
+oewn-pigment__2.30.01..	other	event	oewn-pigmentation__1.22.00..
+oewn-pigment__2.30.01..	other	undergoer	oewn-pigment__1.27.00..
+oewn-pilar__3.01.00..	derivation		oewn-pilus__1.08.00..
+oewn-pilar__3.01.00..	pertainym		oewn-pilus__1.08.00..
+oewn-pilary__5.00.00.hairy.00	derivation		oewn-pile__1.08.00..
+oewn-pile__1.08.00..	derivation		oewn-pilous__5.00.00.hairy.00
+oewn-pile__1.14.00..	derivation		oewn-pile__2.35.00..
+oewn-pile__1.14.00..	derivation		oewn-pile__2.35.03..
+oewn-pile__1.14.00..	derivation		oewn-pile__2.38.00..
+oewn-pile__1.23.00..	derivation		oewn-pile__2.38.00..
+oewn-pile__2.35.00..	also		oewn-pile_up__2.35.00..
+oewn-pile__2.35.00..	other	undergoer	oewn-pile__1.14.00..
+oewn-pile__2.35.03..	other	undergoer	oewn-pile__1.14.00..
+oewn-pile__2.38.00..	other	undergoer	oewn-pile__1.14.00..
+oewn-pile__2.38.00..	other	undergoer	oewn-pile__1.23.00..
+oewn-pilfer__2.40.00..	derivation		oewn-pilferage__1.04.00..
+oewn-pilfer__2.40.00..	derivation		oewn-pilferer__1.18.00..
+oewn-pilfer__2.40.00..	other	agent	oewn-pilferer__1.18.00..
+oewn-pillage__1.21.00..	derivation		oewn-pillage__2.40.00..
+oewn-pillage__2.40.00..	derivation		oewn-pillager__1.18.00..
+oewn-pillage__2.40.00..	derivation		oewn-pillaging__1.04.00..
+oewn-pillage__2.40.00..	other	agent	oewn-pillager__1.18.00..
+oewn-pillage__2.40.00..	other	undergoer	oewn-pillage__1.21.00..
+oewn-pillory__1.06.00..	derivation		oewn-pillory__2.41.00..
+oewn-pillow__1.06.00..	derivation		oewn-pillow__2.35.00..
+oewn-pilosebaceous__3.01.00..	pertainym		oewn-hair_follicle__1.08.00..
+oewn-pilosebaceous__3.01.00..	pertainym		oewn-sebaceous_gland__1.08.00..
+oewn-pilot__1.18.00..	derivation		oewn-pilot__2.38.00..
+oewn-pilot__1.18.01..	derivation		oewn-pilot__2.38.01..
+oewn-pilot__2.38.00..	derivation		oewn-pilotage__1.04.00..
+oewn-pilot__2.38.00..	derivation		oewn-pilotage__1.04.01..
+oewn-pilot__2.38.00..	derivation		oewn-piloting__1.04.00..
+oewn-pilot__2.38.00..	derivation		oewn-piloting__1.04.01..
+oewn-pilot__2.38.00..	other	agent	oewn-pilot__1.18.00..
+oewn-pilot__2.38.01..	derivation		oewn-pilotage__1.04.00..
+oewn-pilot__2.38.01..	derivation		oewn-pilotage__1.04.01..
+oewn-pilot__2.38.01..	derivation		oewn-piloting__1.04.00..
+oewn-pilot__2.38.01..	derivation		oewn-piloting__1.04.01..
+oewn-pilot__2.38.01..	other	agent	oewn-pilot__1.18.01..
+oewn-pimp__1.18.00..	derivation		oewn-pimp__2.34.00..
+oewn-pimp__2.34.00..	other	agent	oewn-pimp__1.18.00..
+oewn-pimple__1.26.00..	derivation		oewn-pimply__5.00.00.blemished.00
+oewn-pin__1.06.00..	derivation		oewn-pin__2.35.01..
+oewn-pin__1.06.00..	derivation		oewn-pin__2.35.02..
+oewn-pin__2.35.01..	antonym		oewn-unpin__2.35.00..
+oewn-pin__2.35.01..	other	instrument	oewn-pin__1.06.00..
+oewn-pin__2.35.02..	other	instrument	oewn-pin__1.06.00..
+oewn-pinch__1.04.00..	derivation		oewn-pinch__2.30.00..
+oewn-pinch__1.04.00..	derivation		oewn-pinch__2.35.00..
+oewn-pinch__1.04.00..	derivation		oewn-pinch__2.35.01..
+oewn-pinch__1.04.03..	derivation		oewn-pinch__2.30.00..
+oewn-pinch__2.30.00..	other	event	oewn-pinch__1.04.00..
+oewn-pinch__2.30.00..	other	event	oewn-pinch__1.04.03..
+oewn-pinch__2.35.00..	other	event	oewn-pinch__1.04.00..
+oewn-pinch__2.35.01..	other	event	oewn-pinch__1.04.00..
+oewn-pine__2.37.00..	derivation		oewn-pining__1.12.00..
+oewn-pineal__3.01.00..	pertainym		oewn-pineal_body__1.08.00..
+oewn-ping--pong__1.04.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-ping__1.11.00..	derivation		oewn-ping__2.35.00..
+oewn-ping__1.11.00..	derivation		oewn-ping__2.39.00..
+oewn-ping__1.11.00..	derivation		oewn-ping__2.39.01..
+oewn-ping__2.35.00..	other	event	oewn-ping__1.11.00..
+oewn-ping__2.39.00..	other	event	oewn-ping__1.11.00..
+oewn-ping__2.39.01..	other	event	oewn-ping__1.11.00..
+oewn-pinion__1.05.01..	derivation		oewn-pinion__2.30.00..
+oewn-pinion__1.05.02..	derivation		oewn-pinion__2.30.00..
+oewn-pinion__2.30.00..	other	undergoer	oewn-pinion__1.05.01..
+oewn-pinion__2.30.00..	other	undergoer	oewn-pinion__1.05.02..
+oewn-pink__1.07.00..	derivation		oewn-pink__5.00.00.chromatic.00
+oewn-pink__1.07.00..	derivation		oewn-pinkify__2.30.00..
+oewn-pinkify__2.30.00..	other	result	oewn-pink__1.07.00..
+oewn-pinnacle__1.06.00..	derivation		oewn-pinnacle__2.38.00..
+oewn-pinnacle__1.06.00..	derivation		oewn-pinnacle__2.42.00..
+oewn-pinnacle__2.42.00..	other	uses	oewn-pinnacle__1.06.00..
+oewn-pinnately__4.02.00..	pertainym		oewn-pinnate__5.00.00.compound.00
+oewn-pinpoint__1.07.00..	derivation		oewn-pinpoint__2.40.00..
+oewn-pioneer__1.18.00..	derivation		oewn-pioneer__2.31.00..
+oewn-pioneer__1.18.01..	derivation		oewn-pioneer__2.36.00..
+oewn-pioneer__1.18.01..	derivation		oewn-pioneer__2.36.01..
+oewn-pioneer__2.31.00..	other	agent	oewn-pioneer__1.18.00..
+oewn-pioneer__2.36.00..	other	agent	oewn-pioneer__1.18.01..
+oewn-pioneer__2.36.01..	other	agent	oewn-pioneer__1.18.01..
+oewn-pious__3.00.00..	derivation		oewn-piousness__1.07.00..
+oewn-piously__4.02.01..	pertainym		oewn-pious__3.00.00..
+oewn-pipage__1.06.00..	derivation		oewn-pipe__2.38.00..
+oewn-pipage__1.21.00..	derivation		oewn-pipe__2.38.00..
+oewn-pipe__1.06.00..	derivation		oewn-pipe__2.38.00..
+oewn-pipe__1.06.04..	derivation		oewn-pipe__2.36.00..
+oewn-pipe__2.36.00..	also		oewn-pipe_up__2.32.00..
+oewn-pipe__2.36.00..	derivation		oewn-piper__1.18.00..
+oewn-pipe__2.36.00..	derivation		oewn-piping__1.04.00..
+oewn-pipe__2.36.00..	other	agent	oewn-piper__1.18.00..
+oewn-pipe__2.36.01..	derivation		oewn-piping__1.06.01..
+oewn-pipe__2.38.00..	derivation		oewn-piping__1.06.00..
+oewn-pipe__2.38.00..	other	by_means_of	oewn-pipe__1.06.00..
+oewn-pipracil__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-piquantly__4.02.00..	pertainym		oewn-piquant__5.00.00.tasty.00
+oewn-pique__1.12.00..	derivation		oewn-pique__2.37.00..
+oewn-pique__2.37.00..	other	event	oewn-pique__1.12.00..
+oewn-piracy__1.04.00..	derivation		oewn-pirate__2.35.00..
+oewn-piracy__1.04.01..	derivation		oewn-pirate__2.40.00..
+oewn-piracy__1.04.01..	derivation		oewn-piratical__3.01.01..
+oewn-pirate__1.06.00..	derivation		oewn-pirate__2.35.00..
+oewn-pirate__1.06.00..	derivation		oewn-piratical__3.01.00..
+oewn-pirate__1.18.00..	derivation		oewn-piratical__3.01.00..
+oewn-pirate__1.18.01..	derivation		oewn-pirate__2.40.00..
+oewn-pirate__1.18.01..	derivation		oewn-piratical__3.01.00..
+oewn-pirate__2.40.00..	other	agent	oewn-pirate__1.18.01..
+oewn-piratical__3.01.00..	pertainym		oewn-pirate__1.18.00..
+oewn-piratical__3.01.01..	pertainym		oewn-piracy__1.04.01..
+oewn-piratically__4.02.00..	pertainym		oewn-piratical__3.01.01..
+oewn-pirouette__1.04.00..	derivation		oewn-pirouette__2.38.00..
+oewn-piscatorial__3.01.00..	pertainym		oewn-fishing__1.04.01..
+oewn-piscatory__3.01.00..	pertainym		oewn-fishing__1.04.01..
+oewn-piscine__3.01.00..	pertainym		oewn-fish__1.05.00..
+oewn-piss__1.22.00..	derivation		oewn-piss__2.29.00..
+oewn-piss__1.27.00..	derivation		oewn-piss__2.29.00..
+oewn-piss__2.29.00..	derivation		oewn-pisser__1.18.00..
+oewn-piss__2.29.00..	derivation		oewn-pissing__1.22.00..
+oewn-piss__2.29.00..	other	agent	oewn-pisser__1.18.00..
+oewn-piss__2.29.00..	other	undergoer	oewn-piss__1.27.00..
+oewn-pistol__1.06.00..	derivation		oewn-pistoleer__1.18.00..
+oewn-pit__1.20.00..	derivation		oewn-pit__2.30.00..
+oewn-pit__1.25.00..	derivation		oewn-pit__2.35.00..
+oewn-pit__2.30.00..	other	undergoer	oewn-pit__1.20.00..
+oewn-pit__2.35.00..	derivation		oewn-pitting__1.22.00..
+oewn-pit__2.35.00..	other	uses	oewn-pit__1.25.00..
+oewn-pitch--black__5.00.00.dark.01	derivation		oewn-pitch_blackness__1.26.00..
+oewn-pitch__1.04.00..	derivation		oewn-pitch__2.35.00..
+oewn-pitch__1.04.01..	derivation		oewn-pitch__2.33.04..
+oewn-pitch__1.04.02..	derivation		oewn-pitch__2.35.04..
+oewn-pitch__1.04.03..	derivation		oewn-pitch__2.35.13..
+oewn-pitch__1.04.04..	derivation		oewn-pitch__2.38.03..
+oewn-pitch__1.07.00..	derivation		oewn-pitch__2.30.00..
+oewn-pitch__1.07.01..	derivation		oewn-pitch__2.38.01..
+oewn-pitch__1.07.01..	derivation		oewn-pitch__2.38.02..
+oewn-pitch__1.10.00..	derivation		oewn-pitch__2.40.00..
+oewn-pitch__1.15.00..	derivation		oewn-pitch__2.40.00..
+oewn-pitch__1.27.00..	derivation		oewn-pitchy__5.00.00.achromatic.00
+oewn-pitch__1.27.00..	derivation		oewn-pitchy__5.00.00.adhesive.00
+oewn-pitch__2.30.00..	other	property	oewn-pitch__1.07.00..
+oewn-pitch__2.33.04..	other	event	oewn-pitch__1.04.01..
+oewn-pitch__2.35.00..	other	event	oewn-pitch__1.04.00..
+oewn-pitch__2.35.04..	other	event	oewn-pitch__1.04.02..
+oewn-pitch__2.35.13..	derivation		oewn-pitcher__1.18.00..
+oewn-pitch__2.35.13..	other	agent	oewn-pitcher__1.18.00..
+oewn-pitch__2.35.13..	other	event	oewn-pitch__1.04.03..
+oewn-pitch__2.38.01..	other	property	oewn-pitch__1.07.01..
+oewn-pitch__2.38.02..	other	property	oewn-pitch__1.07.01..
+oewn-pitch__2.38.03..	derivation		oewn-pitching__1.04.01..
+oewn-pitch__2.38.03..	other	event	oewn-pitch__1.04.04..
+oewn-pitch__2.40.00..	other	event	oewn-pitch__1.10.00..
+oewn-pitched__3.44.00..	participle		oewn-pitch__2.30.00..
+oewn-pitchfork__1.06.00..	derivation		oewn-pitchfork__2.35.00..
+oewn-pitchfork__2.35.00..	other	instrument	oewn-pitchfork__1.06.00..
+oewn-piteous__5.00.00.unfortunate.00	derivation		oewn-pity__1.11.00..
+oewn-piteous__5.00.00.unfortunate.00	derivation		oewn-pity__1.12.00..
+oewn-piteously__4.02.00..	pertainym		oewn-piteous__5.00.00.unfortunate.00
+oewn-pith__1.09.00..	derivation		oewn-pithy__5.00.00.concise.00
+oewn-pith__1.20.00..	derivation		oewn-pith__2.40.00..
+oewn-pithily__4.02.00..	pertainym		oewn-pithy__5.00.00.concise.00
+oewn-pithiness__1.10.00..	derivation		oewn-pithy__5.00.00.concise.00
+oewn-pitiably__4.02.00..	pertainym		oewn-pitiable__5.00.00.unfortunate.00
+oewn-pitifully__4.02.00..	pertainym		oewn-pitiful__5.00.00.contemptible.00
+oewn-pitiless__5.00.00.inhumane.00	derivation		oewn-pitilessness__1.07.00..
+oewn-pitiless__5.00.00.inhumane.00	derivation		oewn-pitilessness__1.12.00..
+oewn-pitiless__5.00.00.merciless.00	derivation		oewn-pitilessness__1.07.00..
+oewn-pitilessly__4.02.00..	pertainym		oewn-pitiless__5.00.00.merciless.00
+oewn-pitocin__1.08.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-pitressin__1.08.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-pitter--patter__1.11.00..	derivation		oewn-pitter--patter__2.39.00..
+oewn-pitter--patter__2.39.00..	other	event	oewn-pitter--patter__1.11.00..
+oewn-pituitary__1.08.00..	derivation		oewn-pituitary__3.01.00..
+oewn-pituitary__3.01.00..	pertainym		oewn-pituitary__1.08.00..
+oewn-pity__1.07.00..	derivation		oewn-pity__2.37.00..
+oewn-pity__1.12.00..	derivation		oewn-pity__2.37.00..
+oewn-pity__2.37.00..	other	state	oewn-pity__1.07.00..
+oewn-pity__2.37.00..	other	state	oewn-pity__1.12.00..
+oewn-pivot__1.04.00..	derivation		oewn-pivot__2.38.00..
+oewn-pivot__1.06.00..	derivation		oewn-pivot__2.38.00..
+oewn-pivot__1.18.00..	derivation		oewn-pivotal__5.00.00.crucial.00
+oewn-pivot__2.38.00..	other	by_means_of	oewn-pivot__1.06.00..
+oewn-pivot__2.38.00..	other	event	oewn-pivot__1.04.00..
