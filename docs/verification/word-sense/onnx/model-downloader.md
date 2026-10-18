@@ -38,10 +38,17 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Credentials only to the mirror**: a bearer token or Basic credentials are sent to the mirror and never to GitHub
   LFS.
 - **Same-origin credentials**: a mirror redirect to another origin is followed without credentials, a redirect within the
-  origin keeps them, a redirect loop falls through, and a redirect to a non-http(s) location is refused.
-- **Timeouts and cancellation**: a slow source times out and falls through; an invalid timeout (zero, negative,
+  origin keeps them, a redirect from `https` to `http` on the same host and port (a scheme downgrade, tested with a
+  stub transport) is followed without credentials, a redirect loop falls through, and a redirect to a non-http(s)
+  location is refused and falls through.
+- **Timeouts and cancellation**: a slow source times out and falls through, also when it stalls after the headers
+  (the limit covers the body); an invalid timeout (zero, negative,
   oversized) throws before any request; an infinite timeout succeeds; a cancelled caller throws
   `OperationCanceledException`.
+- **Partial downloads**: a body that ends before its declared length, or stalls, falls through to the next source and
+  leaves no temporary file; a body larger than the pinned size is refused with or without a declared length. The
+  downloader does not resume: each attempt writes a new temporary file, and a stale `.part` file of an earlier run is
+  neither used nor removed.
 - **Explicit directory**: `Verify` of a model directory throws for a missing file (`FileNotFoundException`) and for an
   altered file (`InvalidDataException`).
 - **Default store root**: the default store is beneath the user's local application data, in

@@ -23,6 +23,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **WordPieceTokenizer_Tokenize_CasedVocabulary_KeepsCase** and
   **WordPieceTokenizer_Tokenize_UncasedVocabulary_LowerCases**: the cased setting keeps case and accents, the uncased
   setting lower-cases the text.
+- **WordPieceTokenizer_Tokenize_CasedParity_MatchesHandDerivedReference**: with a cased vocabulary the ids and offsets
+  equal those of the BERT cased algorithm derived by hand for a short text (case and accents kept, `##` continuation,
+  `[UNK]` for an uncovered word, punctuation), without a large fixture.
+- **WordPieceTokenizer_Tokenize_CasedVocabularyWithOtherCase_IsUnknown**: a spelling in another case than the
+  vocabulary is `[UNK]`.
 - **WordPieceTokenizer_Tokenize_SmallVocabulary_SplitsIntoWordPieces**: greedy longest match with `##`.
 - **WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens**: empty text gives no tokens.
 - **WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord** and

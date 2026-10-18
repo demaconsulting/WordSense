@@ -34,6 +34,10 @@ sections:
               - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
               - WordSenseBuilder_Image_Find_ReturnsOwnIndex
               - WordSenseBuilder_Image_Corruption_IsRejected
+              - WordSenseBuilder_Image_TruncatedAtEverySectionBoundary_IsRejected
+              - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
+              - WordSenseBuilder_Image_CountMismatch_IsRejected
+              - WordSenseBuilder_WordsBuilder_Build_GeneratedFormOfTrainedLemma_KeepsAllTrainedSenses
               - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
               - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
               - WordSenseBuilder_WordsBuilder_Build_AppendsAuxiliarySenseLast

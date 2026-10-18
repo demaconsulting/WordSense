@@ -1,6 +1,7 @@
 using System.Net;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
@@ -467,6 +468,213 @@ public sealed class ModelDownloaderTests : IDisposable
             () => ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
 
         Assert.Equal("corrupt", await File.ReadAllTextAsync(vocabulary, TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     A redirect from the mirror's https origin to plain http on the same host and port is a downgrade: it is
+    ///     followed, but without the credentials.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_MirrorRedirectsToDowngradedScheme_SendsNoCredentialsThere()
+    {
+        // Arrange: a fake transport, so no TLS is needed; https answers with a redirect to http on the same host and port
+        var seen = new List<(Uri Uri, string? Authorization)>();
+        var tokenHash = Convert.ToHexString(SHA256.HashData("tok-123"u8));
+        using var handler = new StubHandler(request =>
+        {
+            // Record only the scheme and a hash of the parameter, never the credential itself
+            var auth = request.Headers.Authorization;
+            seen.Add((request.RequestUri!, auth is null ? null : auth.Scheme + ":" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(auth.Parameter ?? string.Empty)))));
+            var file = Path.GetFileName(request.RequestUri!.AbsolutePath);
+            if (request.RequestUri.Scheme == Uri.UriSchemeHttps && request.RequestUri.AbsolutePath.StartsWith("/mirror/", StringComparison.Ordinal))
+            {
+                var redirect = new HttpResponseMessage(HttpStatusCode.Found);
+                redirect.Headers.Location = new Uri("http://mirror.test:8443/moved/" + file);
+                return redirect;
+            }
+
+            return new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent(file == "model.onnx" ? OnnxText : VocabText) };
+        });
+        using var client = new HttpClient(handler);
+        var options = new MirrorOptions(new Uri("https://mirror.test:8443/mirror/"), BearerToken: "tok-123", StoreRoot: _store, Timeout: TimeSpan.FromSeconds(30));
+
+        // Act
+        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, client, new Uri("https://lfs.test/lfs/"), _ => null);
+
+        // Assert: the https hops carried the token, the http hops did not
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal(4, seen.Count);
+        Assert.All(seen.Where(r => r.Uri.Scheme == Uri.UriSchemeHttps), r => Assert.Equal("Bearer:" + tokenHash, r.Authorization));
+        Assert.All(seen.Where(r => r.Uri.Scheme == Uri.UriSchemeHttp), r => Assert.Null(r.Authorization));
+    }
+
+    /// <summary>
+    ///     A redirect to a location that is not http or https is refused, and the next source is used.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_RedirectToNonHttpScheme_IsRefusedAndFallsThrough()
+    {
+        // Arrange
+        using var server = new LocalServer(context =>
+        {
+            if (IsMirror(context))
+            {
+                context.Response.StatusCode = 302;
+                context.Response.Headers["Location"] = "ftp://example.test/" + FileOf(context);
+                return Task.CompletedTask;
+            }
+
+            return Serve(context);
+        });
+
+        // Act
+        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+
+        // Assert
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal(["/mirror/test-model/model.onnx", "/lfs/main/model/test-model/model.onnx", "/mirror/test-model/vocab.txt", "/lfs/main/model/test-model/vocab.txt"], Paths(server));
+    }
+
+    /// <summary>
+    ///     A body that ends before its declared length is a failed attempt: the next source is used and no partial
+    ///     file is left behind.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_BodyCutShort_FallsThroughAndLeavesNoPartialFile()
+    {
+        // Arrange: the mirror declares 500 bytes, sends 10 and drops the connection
+        using var server = new LocalServer(async context =>
+        {
+            if (IsMirror(context))
+            {
+                context.Response.ContentLength64 = 500;
+                await context.Response.OutputStream.WriteAsync(new byte[10]);
+                await context.Response.OutputStream.FlushAsync();
+                context.Response.Abort();
+                return;
+            }
+
+            await Serve(context);
+        });
+
+        // Act
+        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+
+        // Assert
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Equal(["model.onnx", "vocab.txt"], Directory.GetFiles(directory).Select(f => Path.GetFileName(f)).Order(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    ///     A source that starts to answer and then stalls is abandoned when the per-request time limit expires, which
+    ///     covers the body as well as the headers; no partial file is left behind.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_BodyStalls_TimesOutFallsThroughAndLeavesNoPartialFile()
+    {
+        // Arrange: the mirror sends the headers and 10 bytes of 500, then stalls
+        using var server = new LocalServer(async context =>
+        {
+            if (IsMirror(context))
+            {
+                context.Response.ContentLength64 = 500;
+                await context.Response.OutputStream.WriteAsync(new byte[10]);
+                await context.Response.OutputStream.FlushAsync();
+                await Task.Delay(TimeSpan.FromSeconds(15));
+                return;
+            }
+
+            await Serve(context);
+        });
+        var options = Mirror(server) with { Timeout = TimeSpan.FromSeconds(1) };
+
+        // Act
+        var directory = await ModelDownloader.EnsureAsync(Spec, options, TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+
+        // Assert
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Contains("/lfs/main/model/test-model/model.onnx", Paths(server));
+        Assert.Equal(["model.onnx", "vocab.txt"], Directory.GetFiles(directory).Select(f => Path.GetFileName(f)).Order(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    ///     A body that is larger than the pinned size of the file is refused whether or not the server declares its
+    ///     length, and the failure says so for every source.
+    /// </summary>
+    /// <param name="chunked">True to send the body without a declared length.</param>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task ModelDownloader_EnsureModel_BodyLargerThanPinnedSize_IsRefused(bool chunked)
+    {
+        // Arrange: a spec that pins the sizes and a server that sends one byte too many
+        var pinned = Spec with
+        {
+            Files = [new ModelFile("model.onnx", Sha(OnnxText), OnnxText.Length), new ModelFile("vocab.txt", Sha(VocabText), VocabText.Length)],
+        };
+        using var server = new LocalServer(async context =>
+        {
+            var body = Encoding.UTF8.GetBytes((Path.GetFileName(context.Request.Url!.AbsolutePath) == "model.onnx" ? OnnxText : VocabText) + "!");
+            if (chunked)
+            {
+                context.Response.SendChunked = true;
+            }
+            else
+            {
+                context.Response.ContentLength64 = body.Length;
+            }
+
+            await context.Response.OutputStream.WriteAsync(body);
+        });
+
+        // Act
+        var ex = await Assert.ThrowsAsync<HttpRequestException>(
+            () => ModelDownloader.EnsureAsync(pinned, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null));
+
+        // Assert: both sources were tried and refused for their size
+        Assert.Equal(2, Regex.Matches(ex.Message, "larger than the pinned size").Count);
+        Assert.False(File.Exists(Path.Combine(_store, ModelId, "model.onnx")));
+    }
+
+    /// <summary>
+    ///     The downloader does not resume: a partial file left by an earlier run is neither read nor appended to nor
+    ///     removed, and the download starts afresh into its own temporary file.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task ModelDownloader_EnsureModel_StalePartialFile_IsNotResumedOrReused()
+    {
+        // Arrange: a leftover partial file of an earlier run
+        var folder = Path.Combine(_store, ModelId);
+        Directory.CreateDirectory(folder);
+        var stale = Path.Combine(folder, "model.onnx.0123456789abcdef0123456789abcdef.part");
+        await File.WriteAllTextAsync(stale, "pretend", TestContext.Current.CancellationToken);
+        using var server = new LocalServer(Serve);
+
+        // Act
+        var directory = await ModelDownloader.EnsureAsync(Spec, Mirror(server), TestContext.Current.CancellationToken, null, Lfs(server), _ => null);
+
+        // Assert: the whole file was requested and verified; the stale file is untouched
+        ModelDownloader.Verify(Spec, directory);
+        Assert.Equal("pretend", await File.ReadAllTextAsync(stale, TestContext.Current.CancellationToken));
+        Assert.Equal(OnnxText, await File.ReadAllTextAsync(Path.Combine(folder, "model.onnx"), TestContext.Current.CancellationToken));
+    }
+
+    /// <summary>
+    ///     A transport that answers each request from a function, so that schemes and hosts need no real network.
+    /// </summary>
+    /// <param name="respond">Creates the response of a request.</param>
+    private sealed class StubHandler(Func<HttpRequestMessage, HttpResponseMessage> respond) : HttpMessageHandler
+    {
+        /// <inheritdoc />
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) =>
+            Task.FromResult(respond(request));
     }
 
     /// <summary>

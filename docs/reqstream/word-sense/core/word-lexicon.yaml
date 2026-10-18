@@ -86,3 +86,6 @@ sections:
                   A damaged image must fail loudly instead of producing wrong senses.
                 tests:
                   - WordSenseBuilder_Image_Corruption_IsRejected
+                  - WordSenseBuilder_Image_TruncatedAtEverySectionBoundary_IsRejected
+                  - WordSenseBuilder_Image_WrongHash_IsRejectedByContentHashOnly
+                  - WordSenseBuilder_Image_CountMismatch_IsRejected
