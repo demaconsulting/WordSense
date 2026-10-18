@@ -46,9 +46,9 @@ internal static class WeightsBlobWriter
         foreach (var entry in lemmas)
         {
             var w = entry.Weights;
-            if (w.Kind == LemmaModelKind.Binary && entry.ClassIds.Count != 2)
+            if (entry.ClassIds.Count != w.SenseCount)
             {
-                throw new ArgumentException($"The binary weights of '{entry.Lemma}' need exactly two senses.", nameof(data));
+                throw new ArgumentException($"The weights of '{entry.Lemma}' have {w.SenseCount} senses but name {entry.ClassIds.Count} classes.", nameof(data));
             }
 
             WriteString(raw, entry.Lemma);

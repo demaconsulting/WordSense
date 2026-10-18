@@ -30,8 +30,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Corrupt blob is rejected**: an unknown format marker, truncated data, inconsistent counts and trailing data each throw
   `InvalidDataException`.
 - **Class ids and kinds are checked**: an empty or duplicate class id, a class count that does not fit the kind (a
-  Binary lemma needs exactly two) and a zero dimension are rejected with `InvalidDataException`; the writer refuses a
-  Binary lemma with three senses.
+  Binary lemma needs exactly two) and a zero dimension are rejected with `InvalidDataException`; for every model kind
+  the writer refuses an entry whose class ids differ in number from the sense count of its weights (a Binary lemma with
+  three classes, a one-versus-rest lemma with a class count that does not fit its weights), and the reader applies the
+  same rule.
 - **Resolution at load**: every class of the weights is found in the word image by id (`KnownClasses_AreFoundById`);
   another class hash, an unknown class, a duplicate class or lemma and a class count mismatch each throw.
 - **Embedded weights are checked on load**: weights trained for another model id, another dimension or another class

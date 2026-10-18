@@ -112,4 +112,15 @@ public sealed class WeightsBlobWriterTests
 
         Assert.Throws<ArgumentException>(() => WeightsBlobWriter.Write(Sample(bad)));
     }
+
+    /// <summary>
+    ///     A one-versus-rest entry whose class count differs from its sense count is refused.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_WeightsBlobWriter_Write_OneVersusRestClassCountMismatch_Throws()
+    {
+        var bad = new WeightedLemma("bow", ["bow#a", "bow#b"], Bow().Weights);
+
+        Assert.Throws<ArgumentException>(() => WeightsBlobWriter.Write(Sample(bad)));
+    }
 }

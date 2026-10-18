@@ -3,8 +3,8 @@
 #### Verification Approach
 
 The unit is verified with the real embedded word image. Tests in
-`test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs` use the public `WordLexicon` lookup and the internal bridge
-members. The image format itself (determinism, UTF-8 ordering,
+`test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs` use the public `WordLexicon` lookup APIs (word lookup, sense
+enumeration and class-id resolution). The image format itself (determinism, UTF-8 ordering,
 corruption) is verified in the builder test project (`ImageTests.cs`) because the compiler lives in the builder, so the
 shipped assembly has no writer. The committed image is compared with a fresh compilation of `data/` and with the
 legacy word table (`BuilderTests.Words_Committed_*`). Nothing is mocked.
@@ -36,9 +36,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `Lookup_ReadForms_SplitBySense`, `Lookup_RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb
   (plus an untrained own extra of the form), `bows` its labeled senses, `reads` the present verb, and `read` the past
   and present verbs; no sense outside the labels appears.
-- **Trained lemma bridge** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas`): a form whose
-  trained lemma differs from its entry lemma (`axes`) resolves through the class id prefix, and the 19 corrected forms
-  have the fixed lemma.
+- **Public lookup of forms with a different entry lemma** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas`):
+  `Lookup("wicks")` gives the verb lemma `wick` and never `wicked`, `Lookup("re-signed")` gives the lemma `re-sign` and
+  `Lookup("axes")` is found; only the public lookup APIs are used.
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).

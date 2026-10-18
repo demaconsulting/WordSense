@@ -9,11 +9,13 @@ the lexicon, computes the feature of a pooled vector and scores the senses of a 
 
 #### Data Model
 
-- `WeightsData(ModelId, Dimension, Mean, Lemmas)`: the decoded blob; `Mean` is the global mean of the training
+- `WeightsData(ModelId, ClassHash, Dimension, Mean, Lemmas)`: the decoded blob; `ClassHash` is the 32-byte
+  class-inventory hash of the word image the weights were trained for, `Mean` is the global mean of the training
   vectors.
-- `WeightedLemma(Lemma, Senses, Weights)` with `WeightedWord(Lemma, PartOfSpeech, Meaning)` senses, and the weights of
-  one lemma: kind (`Binary` or `OneVersusRest`), abstain margin (not negative), biases and the row-major weight
-  matrix.
+- `WeightedLemma(Lemma, ClassIds, Weights)`: one lemma; `ClassIds` are the class ids (`lemma#label`, the sense ids of
+  the public API) in score order, so column `i` of the weights scores class `i`. The weights of one lemma are: kind
+  (`Binary` or `OneVersusRest`), abstain margin (not negative), biases and the row-major weight matrix. For every kind
+  the number of `ClassIds` equals the sense count of the weights; reader and writer reject any other entry.
 - `WeightedLemmaTable`: the lemmas of the weights, found by lemma name, each with the indexes of its classes in the
   word image.
 - Blob format `WSX2` (Brotli): model id, the 32-byte class-inventory hash of the word image, dimension, a flag byte

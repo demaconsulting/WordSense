@@ -53,6 +53,8 @@ sections:
                   - WordLexicon_Lookup_FormOfHeteronym_HasOnlyItsSenses
                   - WordLexicon_Lookup_ReadForms_SplitBySense
                   - WordLexicon_Lookup_RestrictedForm_NeverOffersExcludedSense
+                  - WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas
+                  - WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis
                   - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
                   - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
                   - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra

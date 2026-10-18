@@ -27,7 +27,8 @@ sections:
                 title: >-
                   The weights reader shall reject a corrupt, truncated or foreign blob, a lemma whose class count does
                   not fit its kind (a Binary lemma needs exactly two classes), an empty or duplicate class id, a zero
-                  dimension and trailing bytes, and the writer shall refuse a Binary lemma without exactly two senses.
+                  dimension and trailing bytes, and the reader and the writer shall reject any lemma, of every model
+                  kind, whose number of class ids differs from the sense count of its weights.
                 tags: [unit]
                 justification: |
                   A damaged blob must fail loudly instead of producing silently wrong answers.
@@ -42,6 +43,7 @@ sections:
                   - WeightsBlob_Read_ZeroDimension_Throws
                   - WeightsBlob_Read_TrailingBytes_Throws
                   - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws
+                  - WordSenseBuilder_WeightsBlobWriter_Write_OneVersusRestClassCountMismatch_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Match
                 title: >-

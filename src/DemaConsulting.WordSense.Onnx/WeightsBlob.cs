@@ -129,7 +129,13 @@ internal static class WeightsBlob
                 var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
                 var bias = ReadFloats(span, ref p, rows);
                 var weights = ReadFloats(span, ref p, checked(rows * dimension));
-                lemmas.Add(new WeightedLemma(lemma, classIds, new LemmaWeights(kind, weights, bias, abstain, dimension)));
+                var lemmaWeights = new LemmaWeights(kind, weights, bias, abstain, dimension);
+                if (classIds.Count != lemmaWeights.SenseCount)
+                {
+                    throw new InvalidDataException($"The weights of '{lemma}' have {lemmaWeights.SenseCount} senses but name {classIds.Count} classes.");
+                }
+
+                lemmas.Add(new WeightedLemma(lemma, classIds, lemmaWeights));
             }
         }
         catch (Exception ex) when (ex is ArgumentException or OverflowException)
