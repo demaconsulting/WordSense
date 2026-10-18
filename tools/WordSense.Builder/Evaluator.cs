@@ -158,7 +158,7 @@ internal sealed record EvaluationResult(
     private static readonly (string Name, string Holdout, string Real)[] References =
     [
         ("Statistical tagger spike (reference)", "91.4%", "81.9%"),
-        ("MiniLM", "96.87%", "92.60%"),
+        ("MiniLM", "96.91%", "92.60%"),
         ("BertBaseCased", "99.05%", "97.39%"),
     ];
 

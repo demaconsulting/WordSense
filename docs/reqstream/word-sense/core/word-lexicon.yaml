@@ -42,6 +42,9 @@ sections:
                   - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
                   - WordLexicon_Words_SoAndWill_ListTheirParts
                   - WordLexicon_Words_EverySense_SharesTheLemma
+                  - WordLexicon_Words_ListedFormOfHeteronym_HasOnlyItsLabeledSenses
+                  - WordLexicon_Words_ReadForms_SplitByLabels
+                  - WordLexicon_Words_RestrictedForm_NeverOffersExcludedSense
                   - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
 
               - id: WordSense-Core-WordLexicon-Embedded

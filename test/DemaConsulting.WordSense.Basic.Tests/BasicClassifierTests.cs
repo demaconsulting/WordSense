@@ -121,6 +121,47 @@ public class BasicClassifierTests
     }
 
     /// <summary>
+    ///     A form that lists a non-prefix subset of the senses of its lemma is scored over that subset only, matched
+    ///     by identity: a cue that prefers a sense the form lacks does not win, and a single listed sense is answered
+    ///     directly with full confidence.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicClassifier_ClassifyAsync_NonPrefixSubset_IsScoredOverItsOwnSenses()
+    {
+        var voice = new WordDetails("bass", PartOfSpeech.Noun, "voice", null);
+        var hashes = TestTables.HeteronymHashes();
+        var river = new FeatureRef(CueModel.Window, "river").Hash;
+        sbyte[] riverRow = [-2, -40, -40];
+        sbyte[] guitarRow = [-40, -2, -6];
+        var tables = BasicTables.Load(TestTables.Build(
+            [("the", 1 << PosTag.Determiner, new int[PosTag.Count])],
+            [],
+            [(
+                "bass",
+                [new CueSense(PartOfSpeech.Noun, "fish", -8), new CueSense(PartOfSpeech.Noun, "music", -8), new CueSense(PartOfSpeech.Noun, "voice", -8)],
+                hashes,
+                hashes[0] == river ? [.. riverRow, .. guitarRow] : [.. guitarRow, .. riverRow])]));
+        var lexicon = new Dictionary<string, ImmutableArray<WordDetails>>(StringComparer.Ordinal)
+        {
+            ["bass"] = [Fish, Music, voice],
+            ["basses"] = [Fish, voice],
+            ["bassist"] = [voice],
+        };
+        var classifier = new BasicClassifier(tables, lexicon);
+
+        var whole = await classifier.ClassifyAsync(["the", "guitar", "bass"], TestContext.Current.CancellationToken);
+        var subset = await classifier.ClassifyAsync(["the", "guitar", "basses"], TestContext.Current.CancellationToken);
+        var riverSubset = await classifier.ClassifyAsync(["the", "river", "basses"], TestContext.Current.CancellationToken);
+        var single = await classifier.ClassifyAsync(["the", "guitar", "bassist"], TestContext.Current.CancellationToken);
+
+        Assert.Equal("music", whole[2].Details?.Meaning);
+        Assert.Equal(voice, subset[2].Details);
+        Assert.Equal(Fish, riverSubset[2].Details);
+        Assert.Equal(new WordSense("bassist", voice, 1.0), single[2]);
+    }
+
+    /// <summary>
     ///     Lookup ignores case and reads the curly apostrophe as a straight one.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

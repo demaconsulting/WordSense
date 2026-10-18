@@ -16,7 +16,9 @@ sections:
               and trained lemma (regular and irregular, with the spelling rules of English), and shall write it in
               the compact binary format that the core package reads. A word that a trained lemma or form also
               spells, and a dictionary word, shall never be replaced by a generated form; a trained lemma shall keep
-              the trained senses first and gain the other parts of speech of the dictionary. A modal or primary
+              the trained senses first and gain the other parts of speech of the dictionary. A listed form of a
+              trained lemma shall have only the senses its labels name, and an unknown, duplicate or empty label, or
+              a restricted row for the lemma itself, shall fail the build. A modal or primary
               auxiliary listed in the committed auxiliary list shall gain an Auxiliary sense after all its other
               senses, and an Auxiliary sense shall never be trained.
             tags: [unit]
@@ -38,6 +40,17 @@ sections:
               - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
               - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
               - WordSenseBuilder_Words_Committed_MatchesCorpus
+              - WordSenseBuilder_Words_Committed_NoExplicitFormHasSenseOutsideItsLabels
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithLabels_GetsOnlyThoseSenses
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormLabelsOutOfOrder_UsesLemmaOrder
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithAllLabels_ReusesLemmaSenses
+              - WordSenseBuilder_WordsBuilder_Build_RestrictedFormWithDictionaryPos_AppendsUntrainedExtraAfterSubset
+              - WordSenseBuilder_WordsBuilder_Build_InvalidFormLabels_ThrowsListingAllErrors
+              - WordSenseBuilder_WordsBuilder_Build_SelfRowWithAllLabels_IsAccepted
+              - WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation
+              - WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder
+              - WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported
+              - WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent
               - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
 
           - id: WordSense-WordSenseBuilder-Coverage

@@ -174,6 +174,57 @@ public class OnnxClassifierTests
         }
     }
     /// <summary>
+    ///     A form whose senses are a non-prefix subset of the senses of its lemma is ranked only among those senses,
+    ///     matched by identity, and never answers a sense it does not list; a single listed sense answers with full
+    ///     confidence.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_Pick_NonPrefixSubset_IsRankedByIdentity()
+    {
+        var lemma = Embedded().Find("bow")!;
+        var all = WordLexicon.Words["bows"];
+        Assert.Equal(3, all.Length);
+        ImmutableArray<WordDetails> subset = [all[0], all[2]];
+        var random = new Random(7);
+
+        for (var round = 0; round < 20; round++)
+        {
+            var feature = new float[lemma.Weights.Dimension];
+            for (var i = 0; i < feature.Length; i++)
+            {
+                feature[i] = (float)(random.NextDouble() - 0.5);
+            }
+
+            var (details, confidence) = OnnxClassifier.Pick(lemma, subset, feature);
+
+            Assert.Contains(details, subset);
+            Assert.NotEqual(all[1], details);
+            Assert.InRange(confidence, 0.0, 1.0);
+
+            var (single, certain) = OnnxClassifier.Pick(lemma, [all[2]], feature);
+            Assert.Equal(all[2], single);
+            Assert.Equal(1.0, certain);
+        }
+    }
+
+    /// <summary>
+    ///     A listed form with a single sense needs no model: <c>bowed</c> answers its one sense with confidence 1 even
+    ///     though its lemma has weights.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task OnnxClassifier_ClassifyAsync_FormWithSingleListedSense_ReturnsItWithFullConfidence()
+    {
+        var encoder = Open();
+        var classifier = new OnnxClassifier(encoder, Embedded());
+        encoder.Dispose();
+
+        var result = await classifier.ClassifyAsync(["bowed"], TestContext.Current.CancellationToken);
+
+        Assert.Equal(new WordSense("bowed", new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"), 1), result[0]);
+    }
+
+    /// <summary>
     ///     Larger weights give a larger margin and so a higher confidence, for the same text.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

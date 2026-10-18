@@ -36,6 +36,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
   none.
 - **Complete dictionary**: the builder test `Words_Committed_HoldsEveryDictionaryWord` shows that no dictionary word
   is absent from `Words`.
+- **Listed forms have only their labeled senses** (`ListedFormOfHeteronym_HasOnlyItsLabeledSenses`,
+  `ReadForms_SplitByLabels`, `RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb (plus an
+  untrained dictionary extra), `bows` its three labeled senses in lemma order, `reads` the present verb, `read` the
+  past and present verbs, and `lives` and `wounds` only their labeled senses; no sense outside the labels appears.
 - **Unknown or mixed-case key is absent**: a made-up word and an upper-case spelling of a known word are not found,
   because lookup is ordinal on lower-case keys.
 - **Lazy loading**: the lexicon is not loaded until the first access of `Words`, and later accesses return the same

@@ -308,6 +308,118 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
+    ///     The labels of the explicit forms are checked: unknown, repeated and missing labels and a restricted row for the
+    ///     lemma itself are reported, and forms of untrained lemmas are ignored.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation()
+    {
+        var inventory = new SenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
+        var forms = new List<(string Form, string Lemma, string[] Labels)>
+        {
+            ("banks", "bank", ["noun", "money"]),
+            ("banked", "bank", ["verb", "verb"]),
+            ("banker", "bank", []),
+            ("bank", "bank", ["noun"]),
+            ("other", "other", ["whatever"]),
+            ("bankers", "bank", ["verb", "noun"]),
+            ("bank", "bank", ["verb", "noun"]),
+        };
+
+        var errors = inventory.CheckForms(forms);
+
+        Assert.Equal(4, errors.Count);
+        Assert.Contains(errors, e => e.Contains("form 'banks' of lemma 'bank' lists label 'money'", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("form 'banked' of lemma 'bank' lists label 'verb' more than once", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("form 'banker' of lemma 'bank' lists no labels", StringComparison.Ordinal));
+        Assert.Contains(errors, e => e.Contains("the row of lemma 'bank' for itself must list every sense", StringComparison.Ordinal));
+        Assert.DoesNotContain(errors, e => e.Contains("whatever", StringComparison.Ordinal));
+    }
+
+    /// <summary>
+    ///     The senses a form names are the positions of its labels in the order of the lemma's labels.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder()
+    {
+        var inventory = new SenseInventory([Inv("bow", "weapon"), Inv("bow", "bend-noun"), Inv("bow", "bend-verb", PartOfSpeech.Verb)]);
+
+        Assert.Equal([0, 2], inventory.FormSenseIndexes("bow", ["weapon", "bend-noun"]));
+        Assert.Equal([1], inventory.FormSenseIndexes("bow", ["bend-verb"]));
+        Assert.Equal([0, 1, 2], inventory.FormSenseIndexes("bow", ["weapon", "bend-verb", "bend-noun"]));
+        Assert.Empty(inventory.FormSenseIndexes("bow", ["unknown"]));
+    }
+
+    /// <summary>
+    ///     A sentence of the anchors or the holdout that uses a listed form as a sense the form's labels do not name is
+    ///     reported; a self row and a form of another lemma are not.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported()
+    {
+        var inventory = new SenseInventory([Inv("bank", "noun"), Inv("bank", "verb", PartOfSpeech.Verb)]);
+        var anchors = new[]
+        {
+            Row("bank", "noun", "A {bank}.", "a.tsv"),
+            Row("bank", "verb", "They {banks} it.", "a.tsv"),
+            Row("bank", "verb", "He {Banks} here.", "a.tsv"),
+            Row("bank", "noun", "Two {banks}.", "a.tsv"),
+        };
+        var holdout = new[] { Row("bank", "verb", "She {banks} early.", "h.tsv") };
+        var forms = new List<(string Form, string Lemma, string[] Labels)> { ("banks", "bank", ["noun"]), ("bank", "bank", ["noun", "verb"]) };
+
+        var ex = Assert.Throws<InvalidDataException>(() => inventory.Validate(anchors, holdout, forms));
+
+        Assert.Contains("anchors/a.tsv: 2 sentence(s) use the form 'banks' as sense 'bank/verb'", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("holdout/h.tsv: 1 sentence(s) use the form 'banks' as sense 'bank/verb'", ex.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("bank/noun", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     The committed corpus is consistent: every form row is valid and no anchor or holdout sentence uses a listed
+    ///     form as a sense outside its labels.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent()
+    {
+        var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
+
+        inventory.Validate(Corpus.ReadDirectory(Path.Combine(corpus, "anchors")), Corpus.ReadDirectory(Path.Combine(corpus, "holdout")), forms);
+    }
+
+    /// <summary>
+    ///     In the committed word table no explicit form has a trained sense outside its labels: its labeled senses come
+    ///     first, in the order of the lemma, and the entry of a lemma keeps every trained sense.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_NoExplicitFormHasSenseOutsideItsLabels()
+    {
+        var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
+        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
+        var words = DemaConsulting.WordSense.WordLexicon.Words;
+        var problems = new List<string>();
+
+        foreach (var (form, lemma, labels) in forms.Where(f => inventory.ContainsLemma(f.Lemma)))
+        {
+            var trained = words[lemma].Take(inventory.LabelsOf(lemma).Length).ToArray();
+            var indexes = inventory.FormSenseIndexes(lemma, labels);
+            var expected = indexes.Select(i => trained[i]).ToArray();
+            var actual = words[form];
+            var excluded = trained.Except(expected).ToArray();
+            if (!actual.Take(expected.Length).SequenceEqual(expected) || actual.Skip(expected.Length).Any(d => excluded.Contains(d)))
+            {
+                problems.Add(form);
+            }
+        }
+
+        Assert.True(problems.Count == 0, "Forms with a sense outside their labels: " + string.Join(", ", problems.Take(10)));
+        Assert.True(forms.Count > 2000);
+    }
+
+    /// <summary>
     ///     A consistent corpus passes validation.
     /// </summary>
     [Fact]
@@ -588,9 +700,13 @@ public sealed class BuilderTests : IDisposable
         Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from words.bin: " + string.Join(", ", missing));
         Assert.True(lexicon.Count > 143_000);
 
-        // Every part of speech the dictionary lists for a word is among the senses of that word
+        // Every part of speech the dictionary lists for a word is among the senses of that word, except one that the
+        // labels of a restricted form exclude on purpose (the lemma then has a sense of that part of speech)
         var lost = lexicon
-            .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))))
+            .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))
+                && !(table[w.Word][0].Lemma != w.Word
+                    && table.TryGetValue(table[w.Word][0].Lemma, out var lemmaSenses)
+                    && lemmaSenses.Any(d => (int)d.PartOfSpeech == LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal)))))
             .Select(w => w.Word)
             .Take(10)
             .ToList();

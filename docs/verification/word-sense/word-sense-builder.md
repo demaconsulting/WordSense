@@ -37,6 +37,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `goed`, `taked` and `childs` are not; an existing word is never replaced (`RespectsKnownWordsAndDisabledRules`).
 - **Precedence of sources**: a lemma's own senses win over forms, dictionary words and generated forms, and the
   dictionary's other parts of speech of the same word follow them (`MergesDictionaryPartsOfSpeechAfterTrainedSenses`).
+- **Listed forms are restricted by their labels** (`ListedFormWithLabels_GetsOnlyThoseSenses`,
+  `ListedFormLabelsOutOfOrder_UsesLemmaOrder`, `ListedFormWithAllLabels_ReusesLemmaSenses`,
+  `RestrictedFormWithDictionaryPos_AppendsUntrainedExtraAfterSubset`, `SelfRowWithAllLabels_IsAccepted`): a form gets
+  only the named senses in lemma order and the same `WordDetails` instances; an all-labels row shares the lemma's
+  array. Unknown, duplicate and empty labels and a restricted self row fail the build and every error is listed
+  (`InvalidFormLabels_ThrowsListingAllErrors`, `CheckForms_ReportsEveryViolation`). `FormSenseIndexes_FollowsLemmaOrder`,
+  `Validate_SentenceWithSenseOutsideFormLabels_IsReported`, `Validate_CommittedCorpus_IsConsistent` and
+  `Words_Committed_NoExplicitFormHasSenseOutsideItsLabels` show that the anchors, holdout and committed lexicon agree
+  with the labels.
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
   word of the committed dictionary with each of its parts of speech.
 - **Output is deterministic**: two runs on the same corpus give byte-identical files.

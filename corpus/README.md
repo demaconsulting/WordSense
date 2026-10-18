@@ -30,9 +30,11 @@ builder's `import-batches` command. A file under `anchors/` has a matching file 
 ## Forms File
 
 `forms/speech.tsv` has the header `form`, `lemma`, `labels` (tab-separated). `labels` is the comma-separated list of
-senses that the form can take, for example `abstracts -> abstract : noun,verb`. The builder keeps only the
-form-to-lemma mapping for lemmas that have a trained classifier. Every label must be a sense of the trained lemma
-(from the inventory); a label without a sense is a build error.
+senses that the form can take, for example `abstracts -> abstract : noun,verb`. The builder keeps the form-to-lemma
+mapping for lemmas that have a trained classifier, and a listed form answers with only the senses its labels name (in
+the order of the lemma). Every label must be a sense of the trained lemma (from the inventory); an unknown, duplicate
+or empty label is a build error, and so is a row for the lemma itself (form equals lemma) that does not list every
+sense (omit such a row instead). A row that lists all senses reuses the lemma's senses.
 
 Completeness rule: every braced target word in `anchors/`, `holdout/` and `realtext/` must appear in this file (or be
 a trained lemma itself) and map to the lemma of its row, otherwise the classifier cannot find the lemma and the row
@@ -122,5 +124,7 @@ retired, and `real-import` still reads `relabel-decisions.tsv`. See `docs/build_
 
 ## Label Reconciliation
 
-The sense labels of a lemma come from its anchor sentences. Where the forms file disagrees (for example a form whose
-label list contains a sense the anchors lack), the forms file is normalized rather than the anchors.
+The sense labels of a lemma come from its anchor sentences. The labels of a listed form are authoritative for that
+form: every anchor, holdout and real-text sentence whose braced form is listed must carry a sense that the labels
+name, otherwise the build fails. Where they disagree, widen the labels of the form (the forms file) rather than
+dropping the sentence.

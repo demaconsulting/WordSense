@@ -282,4 +282,59 @@ public class BasicWordSenseModelTests
 
         await Assert.ThrowsAnyAsync<OperationCanceledException>(() => model.ClassifyAsync(["record"], cts.Token));
     }
+
+    /// <summary>
+    ///     A form that names a single sense answers it with full confidence: <c>bowed</c> is only the bend verb.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_BowedIsOnlyTheBendVerb()
+    {
+        using var model = new BasicWordSenseModel();
+
+        var senses = await model.ClassifyAsync(["He", "bowed", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
+
+        Assert.Equal(new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"), senses[1].Details);
+        Assert.Equal(1.0, senses[1].Confidence);
+    }
+
+    /// <summary>
+    ///     <c>bows</c> keeps all three senses of <c>bow</c> and the context picks among them.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_BowsIsResolvedAmongItsThreeSenses()
+    {
+        using var model = new BasicWordSenseModel();
+
+        var actors = await model.ClassifyAsync(["The", "actors", "took", "their", "bows", "."], TestContext.Current.CancellationToken);
+        var queen = await model.ClassifyAsync(["He", "bows", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
+        var archer = await model.ClassifyAsync(["She", "drew", "back", "the", "bows", "."], TestContext.Current.CancellationToken);
+
+        var senses = WordLexicon.Words["bows"];
+        Assert.Equal(3, senses.Length);
+        Assert.Contains(actors[4].Details, senses);
+        Assert.Contains(queen[1].Details, senses);
+        Assert.Contains(archer[4].Details, senses);
+        Assert.Equal(PartOfSpeech.Verb, queen[1].Details?.PartOfSpeech);
+        Assert.Equal("weapon", archer[4].Details?.Meaning);
+    }
+
+    /// <summary>
+    ///     <c>reads</c> is always the present tense, while <c>read</c> is told apart by its context.
+    /// </summary>
+    /// <returns>A task that completes when the check has run.</returns>
+    [Fact]
+    public async Task BasicWordSenseModel_ClassifyAsync_ReadsIsPresentAndReadSplitsByContext()
+    {
+        using var model = new BasicWordSenseModel();
+
+        var reads = await model.ClassifyAsync(["She", "reads", "a", "book", "every", "night", "."], TestContext.Current.CancellationToken);
+        var past = await model.ClassifyAsync(["Yesterday", "he", "read", "the", "report", "and", "sent", "comments", "."], TestContext.Current.CancellationToken);
+        var present = await model.ClassifyAsync(["She", "loves", "to", "read", "before", "bed", "."], TestContext.Current.CancellationToken);
+
+        Assert.Equal(new WordDetails("read", PartOfSpeech.Verb, "present", "reed"), reads[1].Details);
+        Assert.Equal("past", past[2].Details?.Meaning);
+        Assert.Equal("present", present[3].Details?.Meaning);
+    }
 }

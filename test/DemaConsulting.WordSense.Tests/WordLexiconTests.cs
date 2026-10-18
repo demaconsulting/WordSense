@@ -71,6 +71,57 @@ public class WordLexiconTests
     }
 
     /// <summary>
+    ///     A form that the forms file lists answers only with the senses its labels name: <c>bowed</c> only bends,
+    ///     <c>bows</c> names all three senses of <c>bow</c>.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_ListedFormOfHeteronym_HasOnlyItsLabeledSenses()
+    {
+        var bowed = Assert.Single(WordLexicon.Words["bowed"]);
+        Assert.Equal(new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"), bowed);
+
+        var bows = WordLexicon.Words["bows"];
+        Assert.Equal(
+            [
+                new WordDetails("bow", PartOfSpeech.Noun, "bend", "bow"),
+                new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"),
+                new WordDetails("bow", PartOfSpeech.Noun, "weapon", "boh"),
+            ],
+            bows);
+        Assert.Equal(3, WordLexicon.Words["bow"].Length);
+    }
+
+    /// <summary>
+    ///     The present-tense <c>reads</c> has only the present sense, while <c>read</c> keeps both its past and present
+    ///     senses.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_ReadForms_SplitByLabels()
+    {
+        var reads = Assert.Single(WordLexicon.Words["reads"]);
+        Assert.Equal(new WordDetails("read", PartOfSpeech.Verb, "present", "reed"), reads);
+
+        var read = WordLexicon.Words["read"].Where(s => s.Meaning is not null);
+        Assert.Equal(["past", "present"], read.Select(s => s.Meaning).Order(StringComparer.Ordinal));
+    }
+
+    /// <summary>
+    ///     The trained senses of a restricted form come first; <c>lives</c> starts with the verb sense and never offers
+    ///     the adverb or adjective sense, <c>wounds</c> only the injury.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Words_RestrictedForm_NeverOffersExcludedSense()
+    {
+        var lives = WordLexicon.Words["lives"];
+        Assert.Equal(new WordDetails("live", PartOfSpeech.Verb, "dwell", "liv"), lives[0]);
+        Assert.DoesNotContain(lives, s => s.PartOfSpeech is PartOfSpeech.Adjective or PartOfSpeech.Adverb);
+        Assert.DoesNotContain(lives, s => s.Respelling == "lyve");
+
+        var wounds = Assert.Single(WordLexicon.Words["wounds"]);
+        Assert.Equal(new WordDetails("wound", PartOfSpeech.Noun, "injury", "woond"), wounds);
+    }
+
+    /// <summary>
     ///     Every key is a lower-case surface form.
     /// </summary>
     [Fact]

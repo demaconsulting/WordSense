@@ -56,13 +56,7 @@ internal static class AppendixGenerator
 
         var forms = Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal)
             .SelectMany(Corpus.ReadForms).ToList();
-        foreach (var (form, lemma, labels) in forms.Where(f => inventory.ContainsLemma(f.Lemma)))
-        {
-            foreach (var label in labels.Where(l => !inventory.Contains(lemma, l)))
-            {
-                errors.Add($"forms: form '{form}' of lemma '{lemma}' lists label '{label}', which is not a sense of the lemma.");
-            }
-        }
+        errors.AddRange(inventory.CheckForms(forms));
 
         var examples = FindExamples(Corpus.ReadDirectory(anchorsDirectory));
         errors.AddRange(rows.Where(r => !examples.ContainsKey((r.Lemma, r.Label)))

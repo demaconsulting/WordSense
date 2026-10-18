@@ -677,7 +677,8 @@ repository layout.
 - `senses/*.tsv` is the inventory of the senses, with the header `lemma`, `label`, `pos`, `meaning` and
   `respelling`: the part of speech of the label and, for a heteronym only, its pronunciation `meaning` id and plain
   `respelling`.
-- `forms/speech.tsv` maps inflected forms to lemmas (`form`, `lemma`, `labels`).
+- `forms/speech.tsv` maps inflected forms to lemmas (`form`, `lemma`, `labels`); a form answers with only the senses
+  its labels name.
 - `provenance/*.tsv` has one row per sentence: `id` (first 12 hex characters of the SHA-256 of `lemma|sentence`),
   `lemma`, `sense`, `split`, `source`, `licence`, `source_key`, `url`, `contributor` and `origin`.
 - `realtext/eval-seed.tsv` holds real sentences that are used for evaluation only and never for training.

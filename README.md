@@ -160,9 +160,9 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 89.05% | 85.63% | 90.12% / 90.42% | 89.72% / 87.86% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
-| MiniLM | 96.87% | 92.60% | 97.22% / 95.36% | 96.41% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
-| BERT base cased | 99.05% | 97.39% | 99.22% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
+| Basic | 91.17% | 85.49% | 92.20% / 90.28% | 90.32% / 87.71% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
+| MiniLM | 96.91% | 92.60% | 97.25% / 95.36% | 96.46% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
+| BERT base cased | 99.05% | 97.39% | 99.23% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
 <!-- model-table:end -->
 
 <!-- markdownlint-enable MD013 -->

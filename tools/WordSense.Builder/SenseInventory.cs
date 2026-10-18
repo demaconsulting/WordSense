@@ -241,19 +241,96 @@ internal sealed class SenseInventory
             errors.Add($"holdout/{group.First().Source}: sense '{group.Key.Lemma}/{group.Key.Sense}' is not in the sense inventory.");
         }
 
-        // Forms of untrained lemmas are ignored by the build, so only trained lemmas are checked
-        foreach (var (form, lemma, labels) in forms.Where(f => ContainsLemma(f.Lemma)))
-        {
-            foreach (var label in labels.Where(l => !Contains(lemma, l)))
-            {
-                errors.Add($"forms: form '{form}' of lemma '{lemma}' lists label '{label}', which is not a sense of the lemma.");
-            }
-        }
+        errors.AddRange(CheckForms(forms));
+        errors.AddRange(CheckSentencesAgainstForms("anchors", anchors, forms));
+        errors.AddRange(CheckSentencesAgainstForms("holdout", holdout, forms));
 
         if (errors.Count > 0)
         {
             throw new InvalidDataException(string.Join(Environment.NewLine, errors));
         }
+    }
+
+    /// <summary>
+    ///     Checks the labels of the explicit forms: a listed form answers with exactly the senses its labels name, so every
+    ///     row must name at least one sense, name no sense twice, name only senses of its lemma, and a row for the lemma
+    ///     itself (form equal to lemma) must name every sense because the entry of a trained lemma always keeps them all.
+    /// </summary>
+    /// <remarks>
+    ///     Forms of lemmas without trained senses are ignored by the build and therefore not checked.
+    /// </remarks>
+    /// <param name="forms">The forms rows.</param>
+    /// <returns>One message per violation, in row order.</returns>
+    public List<string> CheckForms(IEnumerable<(string Form, string Lemma, string[] Labels)> forms)
+    {
+        var errors = new List<string>();
+        foreach (var (form, lemma, labels) in forms.Where(f => ContainsLemma(f.Lemma)))
+        {
+            if (labels.Length == 0)
+            {
+                errors.Add($"forms: form '{form}' of lemma '{lemma}' lists no labels; a listed form names the senses it answers with.");
+                continue;
+            }
+
+            foreach (var label in labels.Where(l => !Contains(lemma, l)))
+            {
+                errors.Add($"forms: form '{form}' of lemma '{lemma}' lists label '{label}', which is not a sense of the lemma.");
+            }
+
+            foreach (var label in labels.GroupBy(l => l, StringComparer.Ordinal).Where(g => g.Count() > 1).Select(g => g.Key))
+            {
+                errors.Add($"forms: form '{form}' of lemma '{lemma}' lists label '{label}' more than once.");
+            }
+
+            if (form == lemma && !LabelsOf(lemma).All(l => labels.Contains(l, StringComparer.Ordinal)))
+            {
+                errors.Add($"forms: the row of lemma '{lemma}' for itself must list every sense of the lemma ('{string.Join(",", LabelsOf(lemma))}') because the entry of a trained lemma always keeps them all; delete the row or list every label.");
+            }
+        }
+
+        return errors;
+    }
+
+    /// <summary>
+    ///     Gets the positions, in the ordinal order of the labels of a lemma, of the senses that a form's labels name.
+    /// </summary>
+    /// <param name="lemma">The lemma.</param>
+    /// <param name="labels">The labels of the form, in any order.</param>
+    /// <returns>The ascending sense positions; labels that are no sense of the lemma name nothing.</returns>
+    public int[] FormSenseIndexes(string lemma, IReadOnlyCollection<string> labels)
+    {
+        var all = LabelsOf(lemma);
+        return Enumerable.Range(0, all.Length).Where(i => labels.Contains(all[i], StringComparer.Ordinal)).ToArray();
+    }
+
+    /// <summary>
+    ///     Checks that no sentence uses a listed form of a lemma as a sense that the labels of the form do not name.
+    /// </summary>
+    /// <param name="set">The name of the sentence set, for the messages.</param>
+    /// <param name="rows">The sentences.</param>
+    /// <param name="forms">The forms rows.</param>
+    /// <returns>One message per form and sense.</returns>
+    private List<string> CheckSentencesAgainstForms(string set, IReadOnlyList<CorpusRow> rows, IReadOnlyList<(string Form, string Lemma, string[] Labels)> forms)
+    {
+        // A row for the lemma itself is checked by CheckForms: it must list every sense
+        var listed = new Dictionary<(string Form, string Lemma), string[]>();
+        foreach (var (form, lemma, labels) in forms.Where(f => f.Form != f.Lemma && ContainsLemma(f.Lemma)))
+        {
+            listed.TryAdd((form, lemma), labels);
+        }
+
+        var errors = new List<string>();
+        var groups = rows
+            .Select(r => (Row: r, Form: r.Words[r.TargetWordIndex].ToLowerInvariant()))
+            .Where(x => listed.TryGetValue((x.Form, x.Row.Lemma), out var labels) && !labels.Contains(x.Row.Sense, StringComparer.Ordinal))
+            .GroupBy(x => (x.Form, x.Row.Lemma, x.Row.Sense))
+            .OrderBy(g => g.Key.Lemma, StringComparer.Ordinal).ThenBy(g => g.Key.Form, StringComparer.Ordinal).ThenBy(g => g.Key.Sense, StringComparer.Ordinal);
+        foreach (var group in groups)
+        {
+            errors.Add($"{set}/{group.First().Row.Source}: {group.Count()} sentence(s) use the form '{group.Key.Form}' as sense '{group.Key.Lemma}/{group.Key.Sense}', which the labels of the form do not list.");
+        }
+
+        return errors;
     }
 
     /// <summary>

@@ -97,10 +97,14 @@ The lexicon entries come from four sources, in decreasing priority for the train
 removes a sense:
 
 1. The sense inventory: every trained lemma answers with all of its senses, in label order.
-2. The form lists: each form of a trained lemma answers with the lemma's senses.
+2. The form lists: each form of a trained lemma answers with only the senses its labels name, in the order of the
+   lemma and with the same `WordDetails` instances (a row that names every sense reuses the lemma's array). An
+   unknown, duplicate or empty label, or a self row (form equals lemma) that does not name every sense, fails the
+   build with an error that lists all of them. The anchor, holdout and real-text sentences must agree with the labels.
 3. The dictionary word list: each word answers with one sense per part of speech and no meaning. When a trained
    lemma or form spells the same word, its trained senses stay first and the dictionary's other parts of speech are
-   appended, so no part of speech of the dictionary is lost. Every sense of an entry has the lemma of its first sense.
+   appended (except one that equals a sense a restricted form's labels excluded), so no part of speech of the
+   dictionary is lost. Every sense of an entry has the lemma of its first sense.
 4. Generated inflections: `MorphologyExpander` adds the forms of every dictionary word and trained lemma from the
    enabled rules (noun plural, verb third person, past and -ing, adjective comparative and superlative, adverb, and
    the derived forms), with the spelling rules and the irregular entries (an irregular form replaces the regular

@@ -181,7 +181,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   stress-last), accenting (verb stress-last), accents
   - `noun`; meaning: `stress-first`; respelling: `AK-sent`; example: Tom has a thick Scottish **accent**.
   - `verb`; meaning: `stress-last`; respelling: `ak-SENT`; example: His bushy brows **accented** his face.
-- **access**; parts of speech: noun, verb; forms: accessed (verb), accesses, accessing (verb)
+- **access**; parts of speech: noun, verb; forms: accessed (verb), accesses, accessing
   - `noun`; example: This door gives **access** to the garden.
   - `verb`; example: Mary can't seem to **access** her data.
 - **addict**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: addicts
@@ -200,7 +200,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `adjective`; meaning: `adjective`; respelling: `uh-DUL-tur-it`; example: An **adulterate** drug is dangerous to
     take.
   - `verb`; meaning: `verb`; respelling: `uh-DUL-tur-ayt`; example: The farmer **adulterates** the milk with water.
-- **advance**; parts of speech: noun, verb; forms: advanced (verb), advances, advancing (verb)
+- **advance**; parts of speech: noun, verb; forms: advanced (verb), advances, advancing
   - `noun`; example: Payment must be made in **advance**.
   - `verb`; example: The boss had to **advance** him some money.
 - **advert**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: adverted (verb
@@ -229,13 +229,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **aggregate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: aggregates
   - `noun`; meaning: `noun`; respelling: `AG-rih-git`; example: Sand is a common fine **aggregate**.
   - `verb`; meaning: `verb`; respelling: `AG-rih-gayt`; example: Platelets **aggregate** to seal the wound.
-- **aid**; parts of speech: noun, verb; forms: aided (verb), aiding (verb), aids
+- **aid**; parts of speech: noun, verb; forms: aided (verb), aiding, aids
   - `noun`; example: It was a mistake to refuse his **aid**.
   - `verb`; example: We **aided** him in his business.
-- **aim**; parts of speech: noun, verb; forms: aimed (verb), aiming (verb), aims
+- **aim**; parts of speech: noun, verb; forms: aimed (verb), aiming, aims
   - `noun`; example: "What was the **aim** of that visit?"
   - `verb`; example: She **aimed** carefully at the target.
-- **alert**; parts of speech: noun, verb; forms: alerted (verb), alerting (verb), alerts
+- **alert**; parts of speech: noun, verb; forms: alerted (verb), alerting, alerts
   - `noun`; example: I was constantly on the **alert**.
   - `verb`; example: We need to **alert** a bomb squad.
 - **alloy**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: alloyed (verb
@@ -254,14 +254,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `graduate`; respelling: `uh-LUM`; example: As a proud **alum**, he still wears the school
     sweatshirt to every football game.
   - `noun`; meaning: `mineral`; respelling: `AL-um`; example: Both native and imported potassium **alum** was used.
-- **amount**; parts of speech: noun, verb; forms: amounted (verb), amounting (verb), amounts
+- **amount**; parts of speech: noun, verb; forms: amounted (verb), amounting, amounts
   - `noun`; example: "Any **amount** of 'em," sobbed Toad.
   - `verb`; example: Figure up how much it **amounts** to.
 - **analyses**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
   - `noun`; meaning: `noun`; respelling: `uh-NAL-uh-seez`; example: We compared the **analyses** line by line.
   - `verb`; meaning: `verb`; respelling: `AN-uh-ly-ziz`; example: The critic **analyses** each poem line by line.
-- **anger**; parts of speech: noun, verb; forms: angered (verb), angering (verb), angerred (verb), angerring (verb),
-  angers
+- **anger**; parts of speech: noun, verb; forms: angered (verb), angering, angerred (verb), angerring, angers
   - `noun`; example: I could not control my **anger**.
   - `verb`; example: We should not have **angered** Tom.
 - **animate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: animates (verb verb)
@@ -271,10 +270,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   stress-last), annexes, annexing (verb stress-last)
   - `noun`; meaning: `stress-first`; respelling: `AN-eks`; example: In this **annex** are 10 passenger exits.
   - `verb`; meaning: `stress-last`; respelling: `uh-NEKS`; example: China will occupy and **annex** Taiwan.
-- **appeal**; parts of speech: noun, verb; forms: appealed (verb), appealing (verb), appeals
+- **appeal**; parts of speech: noun, verb; forms: appealed (verb), appealing, appeals
   - `noun`; example: I'm going to prepare an **appeal**.
   - `verb`; example: You can **appeal** to the court.
-- **approach**; parts of speech: noun, verb; forms: approached (verb), approaches, approaching (verb)
+- **approach**; parts of speech: noun, verb; forms: approached (verb), approaches, approaching
   - `noun`; example: A laidback **approach** may work best.
   - `verb`; example: I'm often told that I'm hard to **approach**.
 - **appropriate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: appropriates (verb
@@ -289,10 +288,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `adjective`; meaning: `adjective`; respelling: `ar-ith-MET-ik`; example: An **arithmetic** error led to the wrong
     total.
   - `noun`; meaning: `noun`; respelling: `uh-RITH-muh-tik`; example: He was never good at mental **arithmetic**.
-- **arm**; parts of speech: noun, verb; forms: armed (verb), arming (verb), arms
+- **arm**; parts of speech: noun, verb; forms: armed (verb), arming, arms
   - `noun`; example: In your **arms** my soul finds peace.
   - `verb`; example: Tom was **armed** with a kitchen knife.
-- **arrest**; parts of speech: noun, verb; forms: arrested (verb), arresting (verb), arrests
+- **arrest**; parts of speech: noun, verb; forms: arrested (verb), arresting, arrests
   - `noun`; example: "Nor running a chance of **arrest**?"
   - `verb`; example: "Are you **arrested** for much, sir?
 - **arsenic**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
@@ -323,7 +322,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `adjective`; meaning: `adjective`; respelling: `aw-GUST`; example: This aged man is **august** in the eyes of his
     country.
   - `noun`; meaning: `month`; respelling: `AW-gust`; example: **August** is named after Augustus.
-- **award**; parts of speech: noun, verb; forms: awarded (verb), awarding (verb), awards
+- **award**; parts of speech: noun, verb; forms: awarded (verb), awarding, awards
   - `noun`; example: The **award** was not given last year.
   - `verb`; example: I was **awarded** an honor prize.
 - **axes**; parts of speech: noun, verb; heteronym, meanings: noun, verb; no other forms
@@ -332,10 +331,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With B
 
-- **ban**; parts of speech: noun, verb; forms: banned (verb), banning (verb), bans
+- **ban**; parts of speech: noun, verb; forms: banned (verb), banning, bans
   - `noun`; example: A wheat import **ban** was enacted.
   - `verb`; example: Ziri was **banned** from the Olympics.
-- **base**; parts of speech: noun, verb; forms: based (verb), basing (verb)
+- **base**; parts of speech: noun, verb; forms: based (verb), basing
   - `noun`; example: What does "getting to first **base**" mean?
   - `verb`; example: Sami's company is **based** in Egypt.
 - **bases**; parts of speech: noun, verb; heteronym, meanings: base, basis; no other forms
@@ -347,51 +346,50 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **bass**; parts of speech: noun; heteronym, meanings: fish, music; no other forms
   - `noun`; meaning: `fish`; respelling: `bas`; example: He hooked a huge **bass** on a lure.
   - `noun`; meaning: `music`; respelling: `bays`; example: She sang in a deep **bass** voice.
-- **beam**; parts of speech: noun, verb; forms: beamed (verb), beaming (verb), beams
+- **beam**; parts of speech: noun, verb; forms: beamed (verb), beaming, beams
   - `noun`; example: Is the **beam** solid or hollow?
   - `verb`; example: The girl was **beaming** with joy.
-- **bear**; parts of speech: noun, verb; forms: beared (verb), bearing (verb), bears
+- **bear**; parts of speech: noun, verb; forms: beared (verb), bearing, bears
   - `noun`; example: Are there **bears** in this park?
   - `verb`; example: The data doesn't **bear** this out.
-- **beat**; parts of speech: noun, verb; forms: beated (verb), beating (verb), beats
+- **beat**; parts of speech: noun, verb; forms: beated (verb), beating, beats
   - `noun`; example: He produces **beats** for local artists.
   - `verb`; example: She **beat** the shit out of Tom.
-- **bend**; parts of speech: noun, verb; forms: bended (verb), bending (verb), bends, bent (verb)
+- **bend**; parts of speech: noun, verb; forms: bended (verb), bending, bends, bent (verb)
   - `noun`; example: His car skidded on the **bend**.
   - `verb`; example: I can't **bend** him to my will.
 - **bifurcate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: bifurcates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `BY-fur-kit`; example: The beetle has a **bifurcate** horn.
   - `verb`; meaning: `verb`; respelling: `BY-fur-kayt`; example: The party may **bifurcate** into two camps.
-- **bite**; parts of speech: noun, verb; forms: bited (verb), bites, biting (verb)
+- **bite**; parts of speech: noun, verb; forms: bited (verb), bites, biting
   - `noun`; example: There was a **bite** in his remark.
   - `verb`; example: Ziri's dog tried to **bite** him.
 - **blessed**; parts of speech: verb, adjective; heteronym, meanings: two-syllable, one-syllable; forms: blesses (verb
   one-syllable), blessing (verb one-syllable)
   - `adjective`; meaning: `two-syllable`; respelling: `BLES-id`; example: **Blessed** are those who come back.
   - `verb`; meaning: `one-syllable`; respelling: `blest`; example: In going by he had **blessed** us.
-- **block**; parts of speech: noun, verb; forms: blocked (verb), blocking (verb), blocks
+- **block**; parts of speech: noun, verb; forms: blocked (verb), blocking, blocks
   - `noun`; example: We've each got a stumbling **block**.
   - `verb`; example: The bridge is **blocked** for traffic.
-- **bloom**; parts of speech: noun, verb; forms: bloomed (verb), blooming (verb), blooms
+- **bloom**; parts of speech: noun, verb; forms: bloomed (verb), blooming, blooms
   - `noun`; example: Cherry blossoms are in full **bloom**.
   - `verb`; example: A lot of flowers have **bloomed**.
-- **board**; parts of speech: noun, verb; forms: boarded (verb), boarding (verb), boards
+- **board**; parts of speech: noun, verb; forms: boarded (verb), boarding, boards
   - `noun`; example: Let's play a **board** game tomorrow!
   - `verb`; example: All the windows were **boarded** up.
-- **bolt**; parts of speech: noun, verb; forms: bolted (verb), bolting (verb), bolts
+- **bolt**; parts of speech: noun, verb; forms: bolted (verb), bolting, bolts
   - `noun`; example: The **bolt** is all the way screwed in.
   - `verb`; example: She **bolted** the doors and windows.
-- **bomb**; parts of speech: noun, verb; forms: bombed (verb), bombing (verb), bombs
+- **bomb**; parts of speech: noun, verb; forms: bombed (verb), bombing, bombs
   - `noun`; example: The atom **bomb** is an awful weapon.
   - `verb`; example: Aart tried to **bomb** Layla's job.
 - **bombard**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: bombards
   - `noun`; meaning: `noun`; respelling: `BOM-bard`; example: The **bombard** was an early cannon.
   - `verb`; meaning: `verb`; respelling: `bom-BARD`; example: The media **bombards** us with bad news.
-- **book**; parts of speech: noun, verb; forms: booked (verb), booking (verb), books
+- **book**; parts of speech: noun, verb; forms: booked (verb), booking, books
   - `noun`; example: How much does this **book** cost?
   - `verb`; example: I **booked** a flight to New York.
-- **border**; parts of speech: noun, verb; forms: bordered (verb), bordering (verb), borderred (verb), borderring
-  (verb), borders
+- **border**; parts of speech: noun, verb; forms: bordered (verb), bordering, borderred (verb), borderring, borders
   - `noun`; example: Do we have to get off the train at the **border**?
   - `verb`; example: Ziri purchased a cabin **bordering** a thick forest.
 - **bow**; parts of speech: noun, verb; heteronym, meanings: bend, weapon; forms: bowed (verb bend), bowing (noun bend,
@@ -399,71 +397,70 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `bend`; respelling: `bow`; example: The custom of **bowing** is peculiar to the islanders.
   - `verb`; meaning: `bend`; respelling: `bow`; example: He **bowed** low before Her Majesty.
   - `noun`; meaning: `weapon`; respelling: `boh`; example: The archer drew the **bow** and took aim.
-- **break**; parts of speech: noun, verb; forms: breaked (verb), breaking (verb), breaks, broke (verb), broken (verb)
+- **break**; parts of speech: noun, verb; forms: breaked (verb), breaking, breaks, broke (verb), broken (verb)
   - `noun`; example: Mary says she needs a **break**, too.
   - `verb`; example: Tom helped **break** up the fight.
 - **breed**; parts of speech: noun, verb; forms: breeded (verb), breeding, breeds
   - `noun`; example: What's the most popular dog **breed**?
   - `verb`; example: He learned how to **breed** cattle.
-- **brush**; parts of speech: noun, verb; forms: brushed (verb), brushes, brushing (verb)
+- **brush**; parts of speech: noun, verb; forms: brushed (verb), brushes, brushing
   - `noun`; example: He swept his **brush** across the canvas.
   - `verb`; example: He **brushed** her hand with his.
-- **bubble**; parts of speech: noun, verb; forms: bubbled (verb), bubbles, bubbling (verb)
+- **bubble**; parts of speech: noun, verb; forms: bubbled (verb), bubbles, bubbling
   - `noun`; example: Want to get some **bubble** tea?
   - `verb`; example: The coffee **bubbled** in the pot.
 - **buffet**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: buffets
   - `noun`; meaning: `noun`; respelling: `buh-FAY`; example: We had lunch at a hotel **buffet**.
   - `verb`; meaning: `verb`; respelling: `BUF-it`; example: Hail can **buffet** the crops badly.
-- **bump**; parts of speech: noun, verb; forms: bumped (verb), bumping (verb), bumps
+- **bump**; parts of speech: noun, verb; forms: bumped (verb), bumping, bumps
   - `noun`; example: The truck drove over a **bump**.
   - `verb`; example: Sami **bumped** into an old friend.
-- **button**; parts of speech: noun, verb; forms: buttoned (verb), buttoning (verb), buttonned (verb), buttonning
-  (verb), buttons
+- **button**; parts of speech: noun, verb; forms: buttoned (verb), buttoning, buttonned (verb), buttonning, buttons
   - `noun`; example: Tatoeba has a "Log out" **button**.
   - `verb`; example: I need to **button** up my jacket.
 
 ### Lemmas Starting With C
 
-- **call**; parts of speech: noun, verb; forms: called (verb), calling (verb), calls
+- **call**; parts of speech: noun, verb; forms: called (verb), calling, calls
   - `noun`; example: Mary knows that it's her **call**.
   - `verb`; example: I **call** the girl, and she comes.
-- **camp**; parts of speech: noun, verb; forms: camped (verb), camping (verb), camps
+- **camp**; parts of speech: noun, verb; forms: camped (verb), camping, camps
   - `noun`; example: The children are singing around the **camp** fire.
   - `verb`; example: We took our cat Mitten **camping**.
 - **carbonate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: carbonates
   - `noun`; meaning: `noun`; respelling: `KAR-buh-nit`; example: Pure **carbonate** is a white powder.
   - `verb`; meaning: `verb`; respelling: `KAR-buh-nayt`; example: You can **carbonate** tap water at home.
-- **care**; parts of speech: noun, verb; forms: cared (verb), cares, caring (verb)
+- **care**; parts of speech: noun, verb; forms: cared (verb), cares, caring
   - `noun`; example: "The car will be my next **care**.
   - `verb`; example: How should I **care** for my stitches?
-- **cash**; parts of speech: noun, verb; forms: cashed (verb), cashes, cashing (verb)
+- **cash**; parts of speech: noun, verb; forms: cashed (verb), cashes, cashing
   - `noun`; example: He told me he needed some **cash**.
   - `verb`; example: He came to **cash** in the check.
-- **cast**; parts of speech: noun, verb; forms: casted (verb), casting (verb), casts
+- **cast**; parts of speech: noun, verb; forms: casted (verb), casting, casts
   - `noun`; example: It was not of a gloomy **cast**.
   - `verb`; example: He **cast** a vote for the proposition.
-- **cause**; parts of speech: noun, verb; forms: caused (verb), causes, causing (verb)
+- **cause**; parts of speech: noun, verb; forms: caused (verb), causes, causing
   - `noun`; example: She is working for a good **cause**.
   - `verb`; example: Can reheating rice **cause** food poisoning?
 - **certificate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: certificates
   - `noun`; meaning: `noun`; respelling: `sur-TIF-ih-kit`; example: The bank holds the stock **certificate**.
   - `verb`; meaning: `verb`; respelling: `sur-TIF-ih-kayt`; example: They did not **certificate** the course.
-- **chain**; parts of speech: noun, verb; forms: chained (verb), chaining (verb), chains
+- **chain**; parts of speech: noun, verb; forms: chained (verb), chaining, chains
   - `noun`; example: He had no snow **chains** with him.
   - `verb`; example: Ziri is locked up and **chained**.
-- **chance**; parts of speech: noun, verb; forms: chanced (verb), chances, chancing (verb)
+- **chance**; parts of speech: noun, verb; forms: chanced (verb), chances, chancing
   - `noun`; example: I didn't even stand a **chance**.
   - `verb`; example: We didn't want to **chance** it.
-- **change**; parts of speech: noun, verb; forms: changed (verb), changes, changing (verb)
+- **change**; parts of speech: noun, verb; forms: changed (verb), changes, changing
   - `noun`; example: It's time for a **change** of scenery.
   - `verb`; example: You have not **changed** at all.
-- **charm**; parts of speech: noun, verb; forms: charmed (verb), charming (verb), charms
+- **charm**; parts of speech: noun, verb; forms: charmed (verb), charming, charms
   - `noun`; example: The third time is the **charm**.
   - `verb`; example: He knows how to **charm** this audience.
-- **chase**; parts of speech: noun, verb; forms: chased (verb), chases, chasing (verb)
+- **chase**; parts of speech: noun, verb; forms: chased (verb), chases, chasing
   - `noun`; example: I think it's a wild goose **chase**.
   - `verb`; example: My only concern is **chasing** money.
-- **check**; parts of speech: noun, verb; forms: checked (verb), checking (verb), checks
+- **check**; parts of speech: noun, verb; forms: checked (verb), checking, checks
   - `noun`; example: Ziri and Rima paid the **check**.
   - `verb`; example: How should I **check** my breasts?
 - **cleanly**; parts of speech: adjective, adverb; heteronym, meanings: adjective, adverb; no other forms
@@ -477,7 +474,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `adjective`; meaning: `nearer`; respelling: `KLOH-sur`; example: Are they **closer** to agreement?
   - `adverb`; meaning: `nearer`; respelling: `KLOH-sur`; example: The cub cowered **closer** to the ground.
   - `noun`; meaning: `noun`; respelling: `KLOH-zur`; example: Familia began the season as the Mets **closer**.
-- **cloud**; parts of speech: noun, verb; forms: clouded (verb), clouding (verb), clouds
+- **cloud**; parts of speech: noun, verb; forms: clouded (verb), clouding, clouds
   - `noun`; example: Black **clouds** began to come up.
   - `verb`; example: Her vision was **clouded** by tears.
 - **collect**; parts of speech: noun, verb; heteronym, meanings: prayer, gather; forms: collected (verb gather),
@@ -499,7 +496,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **combine**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: combines
   - `noun`; meaning: `noun`; respelling: `KOM-byne`; example: He parked the **combine** in the barn.
   - `verb`; meaning: `verb`; respelling: `kum-BYNE`; example: Oil and water do not **combine** easily.
-- **comment**; parts of speech: noun, verb; forms: commented (verb), commenting (verb), comments
+- **comment**; parts of speech: noun, verb; forms: commented (verb), commenting, comments
   - `noun`; example: I wish I hadn't read the **comments**.
   - `verb`; example: Sami **commented** on his own posts.
 - **commune**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: communes
@@ -620,33 +617,31 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `noun`; respelling: `KOUN-tur-bal-uns`; example: A stone **counterbalance** held the gate in place.
   - `verb`; meaning: `verb`; respelling: `koun-tur-BAL-uns`; example: Does the benefit really **counterbalance** the
     cost?
-- **court**; parts of speech: noun, verb; forms: courted (verb), courting (verb), courts
+- **court**; parts of speech: noun, verb; forms: courted (verb), courting, courts
   - `noun`; example: Turn that Dormouse out of **court**!
   - `verb`; example: He **courted** disaster by reckless driving.
-- **cover**; parts of speech: noun, verb; forms: covered (verb), covering (verb), coverred (verb), coverring (verb),
-  covers
+- **cover**; parts of speech: noun, verb; forms: covered (verb), covering, coverred (verb), coverring, covers
   - `noun`; example: He did **covers** of famous songs.
   - `verb`; example: The plan **covered** all the risks.
-- **crash**; parts of speech: noun, verb; forms: crashed (verb), crashes, crashing (verb)
+- **crash**; parts of speech: noun, verb; forms: crashed (verb), crashes, crashing
   - `noun`; example: With a loud **crash**, he broke them.
   - `verb`; example: The car **crashed** into the truck.
-- **credit**; parts of speech: noun, verb; forms: credited (verb), crediting (verb), credits, creditted (verb),
-  creditting (verb)
+- **credit**; parts of speech: noun, verb; forms: credited (verb), crediting, credits, creditted (verb), creditting
   - `noun`; example: We bought a house on **credit**.
   - `verb`; example: He could not **credit** her story.
 - **crooked**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `KROOK-id`; example: That **crooked** fence leans toward the road.
   - `verb`; meaning: `verb`; respelling: `krookt`; example: He **crooked** his arm so she could take it.
-- **cross**; parts of speech: noun, verb; forms: crossed (verb), crosses, crossing (verb)
+- **cross**; parts of speech: noun, verb; forms: crossed (verb), crosses, crossing
   - `noun`; example: It's a map, and here's a **cross** on it.
   - `verb`; example: I helped him **cross** the street.
-- **crowd**; parts of speech: noun, verb; forms: crowded (verb), crowding (verb), crowds
+- **crowd**; parts of speech: noun, verb; forms: crowded (verb), crowding, crowds
   - `noun`; example: Tom performed and the **crowd** applauded.
   - `verb`; example: It being Sunday, the park was **crowded**.
-- **crown**; parts of speech: noun, verb; forms: crowned (verb), crowning (verb), crowns
+- **crown**; parts of speech: noun, verb; forms: crowned (verb), crowning, crowns
   - `noun`; example: The king had a weird blue **crown**!
   - `verb`; example: He was **crowned** with eternal victory.
-- **cry**; parts of speech: noun, verb; forms: cried (verb), cries, crying (verb)
+- **cry**; parts of speech: noun, verb; forms: cried (verb), cries, crying
   - `noun`; example: Sure enough it ended in a **cry**.
   - `verb`; example: What makes you **cry** like that?
 - **curate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: curates
@@ -655,31 +650,31 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **cure**; parts of speech: noun, verb; forms: cured (verb), cures, curing
   - `noun`; example: His illness is without a **cure**.
   - `verb`; example: Love is a sickness **cured** by time.
-- **cycle**; parts of speech: noun, verb; forms: cycled (verb), cycles, cycling (verb)
+- **cycle**; parts of speech: noun, verb; forms: cycled (verb), cycles, cycling
   - `noun`; example: He was doomed to repeat the **cycle**.
   - `verb`; example: He came **cycling** down the hill.
 
 ### Lemmas Starting With D
 
-- **damage**; parts of speech: noun, verb; forms: damaged (verb), damages, damaging (verb)
+- **damage**; parts of speech: noun, verb; forms: damaged (verb), damages, damaging
   - `noun`; example: What sort of **damage** did he cause?
   - `verb`; example: This plastic is not **damaged** by fire.
-- **dance**; parts of speech: noun, verb; forms: danced (verb), dances, dancing (verb)
+- **dance**; parts of speech: noun, verb; forms: danced (verb), dances, dancing
   - `noun`; example: A **dance** will be held on Friday.
   - `verb`; example: The fairies **danced** in wispy gowns.
-- **dawn**; parts of speech: noun, verb; forms: dawned (verb), dawning (verb), dawns
+- **dawn**; parts of speech: noun, verb; forms: dawned (verb), dawning, dawns
   - `noun`; example: He emerged from sleep at **dawn**.
   - `verb`; example: The truth began to **dawn** on Tom.
-- **deal**; parts of speech: noun, verb; forms: dealed (verb), dealing (verb), deals, dealt (verb)
+- **deal**; parts of speech: noun, verb; forms: dealed (verb), dealing, deals, dealt (verb)
   - `noun`; example: Is it really such a big **deal**?
   - `verb`; example: Pierre **dealt** cards to all the players.
-- **decline**; parts of speech: noun, verb; forms: declined (verb), declines, declining (verb)
+- **decline**; parts of speech: noun, verb; forms: declined (verb), declines, declining
   - `noun`; example: Algeria's economy is experiencing a sharp **decline**.
   - `verb`; example: I'm positive you won't be **declined**.
 - **decrease**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: decreases
   - `noun`; meaning: `noun`; respelling: `DEE-krees`; example: That **decrease** in rainfall hurt the harvest.
   - `verb`; meaning: `verb`; respelling: `dih-KREES`; example: Her fever did not **decrease** overnight.
-- **defeat**; parts of speech: noun, verb; forms: defeated (verb), defeating (verb), defeats
+- **defeat**; parts of speech: noun, verb; forms: defeated (verb), defeating, defeats
   - `noun`; example: Every life is a string of **defeats**.
   - `verb`; example: That kind of **defeats** the purpose.
 - **defect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: defects
@@ -691,7 +686,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **degenerate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: degenerates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `dih-JEN-ur-it`; example: The **degenerate** triangle had zero area.
   - `verb`; meaning: `verb`; respelling: `dih-JEN-ur-ayt`; example: Healthy cells can **degenerate** slowly with age.
-- **delay**; parts of speech: noun, verb; forms: delayed (verb), delaying (verb), delays
+- **delay**; parts of speech: noun, verb; forms: delayed (verb), delaying, delays
   - `noun`; example: What’s the reason for the **delay**?
   - `verb`; example: Let us not **delay** any further.
 - **delegate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: delegates
@@ -700,20 +695,20 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **deliberate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: deliberates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `dih-LIB-ur-it`; example: He spoke in a calm, **deliberate** voice.
   - `verb`; meaning: `verb`; respelling: `dih-LIB-ur-ayt`; example: The board **deliberates** behind closed doors.
-- **delight**; parts of speech: noun, verb; forms: delighted (verb), delighting (verb), delights
+- **delight**; parts of speech: noun, verb; forms: delighted (verb), delighting, delights
   - `noun`; example: Neither **delight** nor sorrow is permanent.
   - `verb`; example: Ivan was **delighted** by the result.
-- **demand**; parts of speech: noun, verb; forms: demanded (verb), demanding (verb), demands
+- **demand**; parts of speech: noun, verb; forms: demanded (verb), demanding, demands
   - `noun`; example: Did they agree to all the **demands**?
   - `verb`; example: I **demand** to speak with my lawyer.
-- **deposit**; parts of speech: noun, verb; forms: deposited (verb), depositing (verb), deposits, depositted (verb),
-  depositting (verb)
+- **deposit**; parts of speech: noun, verb; forms: deposited (verb), depositing, deposits, depositted (verb),
+  depositting
   - `noun`; example: I need to go make a **deposit**.
   - `verb`; example: I've **deposited** the papers with him.
 - **desert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: deserts
   - `noun`; meaning: `noun`; respelling: `DEZ-urt`; example: Cacti grow well in the **desert**.
   - `verb`; meaning: `verb`; respelling: `dih-ZURT`; example: Many soldiers **desert** when food runs out.
-- **desire**; parts of speech: noun, verb; forms: desired (verb), desires, desiring (verb)
+- **desire**; parts of speech: noun, verb; forms: desired (verb), desires, desiring
   - `noun`; example: I've no **desire** to defend myself.
   - `verb`; example: We soon believe what we **desire**.
 - **desolate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: desolates (verb verb)
@@ -760,10 +755,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **discourse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: discourses
   - `noun`; meaning: `noun`; respelling: `DIS-kors`; example: Civil **discourse** is rare on the internet.
   - `verb`; meaning: `verb`; respelling: `dis-KORS`; example: Would you care to **discourse** on that subject?
-- **dispute**; parts of speech: noun, verb; forms: disputed (verb), disputes, disputing (verb)
+- **dispute**; parts of speech: noun, verb; forms: disputed (verb), disputes, disputing
   - `noun`; example: The **dispute** has finally been settled.
   - `verb`; example: I don't want to **dispute** that.
-- **divorce**; parts of speech: noun, verb; forms: divorced (verb), divorces, divorcing (verb)
+- **divorce**; parts of speech: noun, verb; forms: divorced (verb), divorces, divorcing
   - `noun`; example: Do you want to get a **divorce**?
   - `verb`; example: I think she will **divorce** him.
 - **document**; parts of speech: noun, verb; forms: documents
@@ -775,43 +770,43 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **dove**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: doves (noun noun)
   - `noun`; meaning: `noun`; respelling: `duv`; example: The **dove** is a symbol of peace.
   - `verb`; meaning: `verb`; respelling: `dohv`; example: He **dove** headfirst into the pool.
-- **drag**; parts of speech: noun, verb; forms: dragged (verb), dragging (verb), drags
+- **drag**; parts of speech: noun, verb; forms: dragged (verb), dragging, drags
   - `noun`; example: Tom is Mary's **drag** king name.
   - `verb`; example: He was **dragged** to the bottom.
-- **drain**; parts of speech: noun, verb; forms: drained (verb), draining (verb), drains
+- **drain**; parts of speech: noun, verb; forms: drained (verb), draining, drains
   - `noun`; example: That is money down the **drain**.
   - `verb`; example: This business **drained** my bank account.
-- **draw**; parts of speech: noun, verb; forms: drawed (verb), drawing (verb), drawn (verb), draws, drew (verb)
+- **draw**; parts of speech: noun, verb; forms: drawed (verb), drawing, drawn (verb), draws, drew (verb)
   - `noun`; example: The movie was a big **draw** at the box office.
   - `verb`; example: She **drew** a line in the dirt.
 - **drill**; parts of speech: noun, verb; forms: drilled (verb), drilling, drills
   - `noun`; example: Make a hole in the bone with a **drill**.
   - `verb`; example: They intended to **drill** for oil.
-- **drink**; parts of speech: noun, verb; forms: drinked (verb), drinking (verb), drinks
+- **drink**; parts of speech: noun, verb; forms: drinked (verb), drinking, drinks
   - `noun`; example: 'Number one may take a **drink**.'
   - `verb`; example: I want to **drink** coconut milk.
-- **drive**; parts of speech: noun, verb; forms: drived (verb), driven (verb), drives, driving (verb), drove (verb)
+- **drive**; parts of speech: noun, verb; forms: drived (verb), driven (verb), drives, driving, drove (verb)
   - `noun`; example: Tom put the vehicle in **drive**.
   - `verb`; example: He is not able to **drive** a car.
-- **duck**; parts of speech: noun, verb; forms: ducked (verb), ducking (verb), ducks
+- **duck**; parts of speech: noun, verb; forms: ducked (verb), ducking, ducks
   - `noun`; example: My son's rubber **duck** is yellow.
   - `verb`; example: Tom **ducked** down behind his desk.
-- **dump**; parts of speech: noun, verb; forms: dumped (verb), dumping (verb), dumps
+- **dump**; parts of speech: noun, verb; forms: dumped (verb), dumping, dumps
   - `noun`; example: He might need a bigger **dump**.
   - `verb`; example: He **dumped** me over the phone.
 - **duplicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: duplicates
   - `noun`; meaning: `noun`; respelling: `DOO-plih-kit`; example: Delete each **duplicate** to save disk space.
   - `verb`; meaning: `verb`; respelling: `DOO-plih-kayt`; example: He **duplicates** each form by hand.
-- **dust**; parts of speech: noun, verb; forms: dusted (verb), dusting (verb), dusts
+- **dust**; parts of speech: noun, verb; forms: dusted (verb), dusting, dusts
   - `noun`; example: These desks are covered in **dust**.
   - `verb`; example: Someone needs to **dust** this room.
 
 ### Lemmas Starting With E
 
-- **ease**; parts of speech: noun, verb; forms: eased (verb), eases, easing (verb)
+- **ease**; parts of speech: noun, verb; forms: eased (verb), eases, easing
   - `noun`; example: He made her laugh with **ease**.
   - `verb`; example: These pills will **ease** the pain.
-- **effect**; parts of speech: noun, verb; forms: effected (verb), effecting (verb), effects
+- **effect**; parts of speech: noun, verb; forms: effected (verb), effecting, effects
   - `noun`; example: The **effect** of this drug was immediate.
   - `verb`; example: I hope to **effect** positive change in the world.
 - **egress**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: egressed (verb
@@ -831,14 +826,14 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `ellipse`; respelling: `ih-LIP-siz`; example: For the simple two-body problem, all orbits are
     **ellipses**.
   - `noun`; meaning: `ellipsis`; respelling: `ih-LIP-seez`; example: Before the **ellipses**, you need a space.
-- **embrace**; parts of speech: noun, verb; forms: embraced (verb), embraces, embracing (verb)
+- **embrace**; parts of speech: noun, verb; forms: embraced (verb), embraces, embracing
   - `noun`; example: I miss the warmth of his **embraces**.
   - `verb`; example: They **embrace** change with open minds.
-- **encounter**; parts of speech: noun, verb; forms: encountered (verb), encountering (verb), encounterred (verb),
-  encounterring (verb), encounters
+- **encounter**; parts of speech: noun, verb; forms: encountered (verb), encountering, encounterred (verb),
+  encounterring, encounters
   - `noun`; example: In spring, I await many **encounters**!
   - `verb`; example: In my dream, I **encountered** a wolf.
-- **end**; parts of speech: noun, verb; forms: ended (verb), ending (verb), ends
+- **end**; parts of speech: noun, verb; forms: ended (verb), ending, ends
   - `noun`; example: Is there an **end** to knowledge?
   - `verb`; example: The race seemed to never **end**.
 - **enervate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: enervates (verb verb)
@@ -850,7 +845,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **entrance**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: entrances
   - `noun`; meaning: `noun`; respelling: `EN-truns`; example: A narrow **entrance** led into the cave.
   - `verb`; meaning: `verb`; respelling: `en-TRANS`; example: The dancer's grace will **entrance** you.
-- **escape**; parts of speech: noun, verb; forms: escaped (verb), escapes, escaping (verb)
+- **escape**; parts of speech: noun, verb; forms: escaped (verb), escapes, escaping
   - `noun`; example: Tom pointed to the fire **escape**.
   - `verb`; example: One could not **escape** from them.
 - **escort**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: escorts
@@ -882,14 +877,14 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **excuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: excuses
   - `noun`; meaning: `noun`; respelling: `ik-SKYOOS`; example: "I forgot" is not a valid **excuse**.
   - `verb`; meaning: `verb`; respelling: `ik-SKYOOZ`; example: **Excuse** me, is this seat taken?
-- **exit**; parts of speech: noun, verb; forms: exited (verb), exiting (verb), exits, exitted (verb), exitting (verb)
+- **exit**; parts of speech: noun, verb; forms: exited (verb), exiting, exits, exitted (verb), exitting
   - `noun`; example: They turned off at the wrong **exit**.
   - `verb`; example: Tap to **exit** full screen mode.
 - **expatriate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: expatriates
   - `noun`; meaning: `noun`; respelling: `eks-PAY-tree-it`; example: He lived for decades as an **expatriate** in
     Mexico.
   - `verb`; meaning: `verb`; respelling: `eks-PAY-tree-ayt`; example: The regime tried to **expatriate** its critics.
-- **experience**; parts of speech: noun, verb; forms: experienced (verb), experiences, experiencing (verb)
+- **experience**; parts of speech: noun, verb; forms: experienced (verb), experiences, experiencing
   - `noun`; example: I was very pleased with my **experience** here.
   - `verb`; example: I have never **experienced** anything like it.
 - **explant**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: explants
@@ -905,74 +900,73 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **extract**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: extracts
   - `noun`; meaning: `noun`; respelling: `EK-strakt`; example: Beef **extract** makes the soup richer.
   - `verb`; meaning: `verb`; respelling: `ik-STRAKT`; example: Use pliers to **extract** the rusty nail.
-- **eye**; parts of speech: noun, verb; forms: eyed (verb), eyeing (verb), eyes
+- **eye**; parts of speech: noun, verb; forms: eyed (verb), eyeing, eyes
   - `noun`; example: He kept an **eye** on Christopher.
   - `verb`; example: They **eyed** each other in silence.
 
 ### Lemmas Starting With F
 
-- **face**; parts of speech: noun, verb; forms: faced (verb), faces, facing (verb)
+- **face**; parts of speech: noun, verb; forms: faced (verb), faces, facing
   - `noun`; example: I put the mask close to my **face**.
   - `verb`; example: The barcode has to be **facing** up.
-- **fail**; parts of speech: noun, verb; forms: failed (verb), failing (verb), fails
+- **fail**; parts of speech: noun, verb; forms: failed (verb), failing, fails
   - `noun`; example: I will call you without **fail**.
   - `verb`; example: I shall not **fail** to correspond.
-- **favor**; parts of speech: noun, verb; forms: favored (verb), favoring (verb), favorred (verb), favorring (verb),
-  favors
+- **favor**; parts of speech: noun, verb; forms: favored (verb), favoring, favorred (verb), favorring, favors
   - `noun`; example: We didn't ask for any **favors**.
   - `verb`; example: I always try to **favor** my bad knee.
-- **favour**; parts of speech: noun, verb; forms: favoured (verb), favouring (verb), favours
+- **favour**; parts of speech: noun, verb; forms: favoured (verb), favouring, favours
   - `noun`; example: I have a **favour** to ask of you.
   - `verb`; example: If you endeavour, fate will **favour** you.
-- **feature**; parts of speech: noun, verb; forms: featured (verb), features, featuring (verb)
+- **feature**; parts of speech: noun, verb; forms: featured (verb), features, featuring
   - `noun`; example: Just previews and the main **feature**.
   - `verb`; example: The air show **features** various warplanes.
 - **federate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `FED-er-it`; example: Is the committee **federate** or centralized?
   - `verb`; meaning: `verb`; respelling: `FED-uh-rayt`; example: Cities often **federate** to share resources.
-- **feed**; parts of speech: noun, verb; forms: feeded (verb), feeding (verb), feeds
+- **feed**; parts of speech: noun, verb; forms: feeded (verb), feeding, feeds
   - `noun`; example: I'll offer some **feed** to the hens.
   - `verb`; example: The vixen is **feeding** her cubs.
-- **feel**; parts of speech: noun, verb; forms: feeled (verb), feeling (verb), feels
+- **feel**; parts of speech: noun, verb; forms: feeled (verb), feeling, feels
   - `noun`; example: The room had a nice cosy **feel**.
   - `verb`; example: Ziri is **feeling** a lot worse.
 - **ferment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: ferments
   - `noun`; meaning: `noun`; respelling: `FUR-ment`; example: A **ferment** of new ideas filled the age.
   - `verb`; meaning: `verb`; respelling: `fer-MENT`; example: How long does tea take to **ferment**?
-- **fight**; parts of speech: noun, verb; forms: fighted (verb), fighting (verb), fights
+- **fight**; parts of speech: noun, verb; forms: fighted (verb), fighting, fights
   - `noun`; example: They had a **fight** last night.
   - `verb`; example: Freedom is what we're **fighting** for.
-- **figure**; parts of speech: noun, verb; forms: figured (verb), figures, figuring (verb)
+- **figure**; parts of speech: noun, verb; forms: figured (verb), figures, figuring
   - `noun`; example: It was a human **figure** running.
   - `verb`; example: Did you **figure** out what was wrong?
-- **file**; parts of speech: noun, verb; forms: filed (verb), files, filing (verb)
+- **file**; parts of speech: noun, verb; forms: filed (verb), files, filing
   - `noun`; example: Send it to me as a compressed **file**.
   - `verb`; example: We can **file** charges against Tom.
-- **finance**; parts of speech: noun, verb; forms: financed (verb), finances, financing (verb)
+- **finance**; parts of speech: noun, verb; forms: financed (verb), finances, financing
   - `noun`; example: Tom has a degree in **finance**.
   - `verb`; example: They'll **finance** your trip to Algeria.
-- **fix**; parts of speech: noun, verb; forms: fixed (verb), fixes, fixing (verb)
+- **fix**; parts of speech: noun, verb; forms: fixed (verb), fixes, fixing
   - `noun`; example: He will wriggle out of the **fix**.
   - `verb`; example: Can you **fix** the flat tire now?
-- **flash**; parts of speech: noun, verb; forms: flashed (verb), flashes, flashing (verb)
+- **flash**; parts of speech: noun, verb; forms: flashed (verb), flashes, flashing
   - `noun`; example: Have you seen my **flash** drive?
   - `verb`; example: Tom **flashed** his headlights at Mary.
 - **flood**; parts of speech: noun, verb; forms: flooded (verb), flooding, floods
   - `noun`; example: I was not affected by the **flood**.
   - `verb`; example: Her soul was **flooded** with happiness.
-- **flush**; parts of speech: noun, verb; forms: flushed (verb), flushes, flushing (verb)
+- **flush**; parts of speech: noun, verb; forms: flushed (verb), flushes, flushing
   - `noun`; example: Can you beat a straight **flush**?
   - `verb`; example: Push the lever down to **flush**.
-- **fly**; parts of speech: noun, verb; forms: flew (verb), flied (verb), flies, flown (verb), flying (verb)
+- **fly**; parts of speech: noun, verb; forms: flew (verb), flied (verb), flies, flown (verb), flying
   - `noun`; example: A **fly** fell into my cup of coffee.
   - `verb`; example: He really doesn't like to **fly**.
-- **fold**; parts of speech: noun, verb; forms: folded (verb), folding (verb), folds
+- **fold**; parts of speech: noun, verb; forms: folded (verb), folding, folds
   - `noun`; example: China wants Taiwan to return to its **fold**.
   - `verb`; example: **Fold** the paper in the middle.
 - **foliate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `FOH-lee-it`; example: A **foliate** ornament framed the doorway.
   - `verb`; meaning: `verb`; respelling: `FOH-lee-ayt`; example: Slates **foliate** along neat planes.
-- **fool**; parts of speech: noun, verb; forms: fooled (verb), fooling (verb), fools
+- **fool**; parts of speech: noun, verb; forms: fooled (verb), fooling, fools
   - `noun`; example: Tom won't suffer a **fool** gladly.
   - `verb`; example: They **fooled** a lot of people.
 - **forbear**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: forbears, forbore
@@ -980,7 +974,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `stress-first`; respelling: `FOR-bair`; example: Do you ever wonder what your distant **forbears**
     would think of the way you live now?
   - `verb`; meaning: `stress-last`; respelling: `for-BAIR`; example: The Pilgrim could not **forbear** smiling.
-- **force**; parts of speech: noun, verb; forms: forced (verb), forces, forcing (verb)
+- **force**; parts of speech: noun, verb; forms: forced (verb), forces, forcing
   - `noun`; example: They dragged us away by **force**.
   - `verb`; example: Gabor **forced** his daugther to leave Uni.
 - **forearm**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: forearmed (verb
@@ -994,10 +988,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **fragment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: fragments
   - `noun`; meaning: `noun`; respelling: `FRAG-munt`; example: A **fragment** of glass cut his hand.
   - `verb`; meaning: `verb`; respelling: `FRAG-ment`; example: The glass will **fragment** if you drop it.
-- **frame**; parts of speech: noun, verb; forms: framed (verb), frames, framing (verb)
+- **frame**; parts of speech: noun, verb; forms: framed (verb), frames, framing
   - `noun`; example: She put the slat down on the bed **frame**.
   - `verb`; example: Tom **framed** the picture of Mary.
-- **freak**; parts of speech: noun, verb; forms: freaked (verb), freaking (verb), freaks
+- **freak**; parts of speech: noun, verb; forms: freaked (verb), freaking, freaks
   - `noun`; example: I didn't want to be a **freak**.
   - `verb`; example: He said that he **freaked** out.
 - **frequent**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: frequented (verb verb),
@@ -1008,13 +1002,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **function**; parts of speech: noun, verb; forms: functioned (verb), functioning, functions
   - `noun`; example: The search **function** has too few options.
   - `verb`; example: The liver is no longer **functioning**.
-- **fund**; parts of speech: noun, verb; forms: funded (verb), funding (verb), funds
+- **fund**; parts of speech: noun, verb; forms: funded (verb), funding, funds
   - `noun`; example: I don't have any source of **funds**.
   - `verb`; example: His project was **funded** by grants.
 
 ### Lemmas Starting With G
 
-- **gain**; parts of speech: noun, verb; forms: gained (verb), gaining (verb), gains
+- **gain**; parts of speech: noun, verb; forms: gained (verb), gaining, gains
   - `noun`; example: "Do we not all work for **gain**?
   - `verb`; example: I want to **gain** thirty pounds.
 - **gallant**; parts of speech: noun, adjective; heteronym, meanings: brave, courtly; forms: gallantly (adjective
@@ -1029,67 +1023,64 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **gift**; parts of speech: noun, verb; forms: gifted (verb), gifting, gifts
   - `noun`; example: He came to give Brandon a **gift**.
   - `verb`; example: He **gifted** her a box of chocolates.
-- **glance**; parts of speech: noun, verb; forms: glanced (verb), glances, glancing (verb)
+- **glance**; parts of speech: noun, verb; forms: glanced (verb), glances, glancing
   - `noun`; example: She took a casual **glance** at her watch.
   - `verb`; example: She **glanced** at the clock nervously.
-- **gossip**; parts of speech: noun, verb; forms: gossiped (verb), gossiping, gossipped (verb), gossipping (verb),
-  gossips
+- **gossip**; parts of speech: noun, verb; forms: gossiped (verb), gossiping, gossipped (verb), gossipping, gossips
   - `noun`; example: Avoid negative **gossip** like the plague.
   - `verb`; example: Why do you **gossip** about her?
 - **graduate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: graduates
   - `noun`; meaning: `noun`; respelling: `GRAJ-oo-it`; example: A Harvard **graduate** led the research team.
   - `verb`; meaning: `verb`; respelling: `GRAJ-oo-ayt`; example: She did not **graduate** on time.
-- **grasp**; parts of speech: noun, verb; forms: grasped (verb), grasping (verb), grasps
+- **grasp**; parts of speech: noun, verb; forms: grasped (verb), grasping, grasps
   - `noun`; example: He has a good **grasp** of English.
   - `verb`; example: The drowning man **grasped** at the rope.
-- **grip**; parts of speech: noun, verb; forms: gripped (verb), gripping (verb), grips
+- **grip**; parts of speech: noun, verb; forms: gripped (verb), gripping, grips
   - `noun`; example: in the **grip** of a blackmailer
   - `verb`; example: Dread **gripped** each and every one.
-- **guard**; parts of speech: noun, verb; forms: guarded (verb), guarding (verb), guards
+- **guard**; parts of speech: noun, verb; forms: guarded (verb), guarding, guards
   - `noun`; example: Mary is a security **guard**, isn't she?
   - `verb`; example: I choose to keep my heart **guarded**.
 - **guesstimate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: guesstimates
   - `noun`; meaning: `noun`; respelling: `GES-tuh-mit`; example: A wild **guesstimate** won't help the budget.
   - `verb`; meaning: `verb`; respelling: `GES-tuh-mayt`; example: Don't just **guesstimate**; measure it.
-- **guide**; parts of speech: noun, verb; forms: guided (verb), guides, guiding (verb)
+- **guide**; parts of speech: noun, verb; forms: guided (verb), guides, guiding
   - `noun`; example: I looked for a map in the **guide**.
   - `verb`; example: Do the stars **guide** your way?
 
 ### Lemmas Starting With H
 
-- **halt**; parts of speech: noun, verb; forms: halted (verb), halting (verb), halts
+- **halt**; parts of speech: noun, verb; forms: halted (verb), halting, halts
   - `noun`; example: Production came grinding to a **halt**.
   - `verb`; example: The soldiers **halted** at the entrance to the town.
-- **hammer**; parts of speech: noun, verb; forms: hammered (verb), hammering (verb), hammerred (verb), hammerring
-  (verb), hammers
+- **hammer**; parts of speech: noun, verb; forms: hammered (verb), hammering, hammerred (verb), hammerring, hammers
   - `noun`; example: I whacked my finger with a **hammer**.
   - `verb`; example: Six years I **hammered** at the fiddle.
-- **hand**; parts of speech: noun, verb; forms: handed (verb), handing (verb), hands
+- **hand**; parts of speech: noun, verb; forms: handed (verb), handing, hands
   - `noun`; example: The pencil fell out of my **hand**.
   - `verb`; example: Could you **hand** me that wrench?
-- **handle**; parts of speech: noun, verb; forms: handled (verb), handles, handling (verb)
+- **handle**; parts of speech: noun, verb; forms: handled (verb), handles, handling
   - `noun`; example: I've put a new **handle** on the door.
   - `verb`; example: Mary knows how to **handle** herself.
-- **harm**; parts of speech: noun, verb; forms: harmed (verb), harming (verb), harms
+- **harm**; parts of speech: noun, verb; forms: harmed (verb), harming, harms
   - `noun`; example: Do no **harm**, but take no shit.
   - `verb`; example: Do not hit, yell, or **harm** them.
-- **hate**; parts of speech: noun, verb; forms: hated (verb), hates, hating (verb)
+- **hate**; parts of speech: noun, verb; forms: hated (verb), hates, hating
   - `noun`; example: Love is blind. **Hate** is also blind.
   - `verb`; example: I **hate** living in a big city.
-- **head**; parts of speech: noun, verb; forms: headed (verb), heading (verb), heads
+- **head**; parts of speech: noun, verb; forms: headed (verb), heading, heads
   - `noun`; example: A great thought came to my **head**.
   - `verb`; example: Tom **headed** back to the office.
-- **honor**; parts of speech: noun, verb; forms: honored (verb), honoring (verb), honorred (verb), honorring (verb),
-  honors
+- **honor**; parts of speech: noun, verb; forms: honored (verb), honoring, honorred (verb), honorring, honors
   - `noun`; example: It's an **honor** to be with you.
   - `verb`; example: I'm **honored** to work with Tom.
-- **hook**; parts of speech: noun, verb; forms: hooked (verb), hooking (verb), hooks
+- **hook**; parts of speech: noun, verb; forms: hooked (verb), hooking, hooks
   - `noun`; example: Tom can use a grappling **hook**.
   - `verb`; example: Tom is **hooked** up to a respirator.
-- **hope**; parts of speech: noun, verb; forms: hoped (verb), hopes, hoping (verb)
+- **hope**; parts of speech: noun, verb; forms: hoped (verb), hopes, hoping
   - `noun`; example: You were making Tom lose **hope**.
   - `verb`; example: I **hope** you live a long life.
-- **host**; parts of speech: noun, verb; forms: hosted (verb), hosting (verb), hosts
+- **host**; parts of speech: noun, verb; forms: hosted (verb), hosting, hosts
   - `noun`; example: My **host** family often advises me.
   - `verb`; example: The city is **hosting** the fair.
 - **house**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: houses
@@ -1156,7 +1147,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **infix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: infixes
   - `noun`; meaning: `noun`; respelling: `IN-fiks`; example: English has few true **infixes**.
   - `verb`; meaning: `verb`; respelling: `in-FIKS`; example: The language does not **infix** nouns.
-- **influence**; parts of speech: noun, verb; forms: influenced (verb), influences, influencing (verb)
+- **influence**; parts of speech: noun, verb; forms: influenced (verb), influences, influencing
   - `noun`; example: He has great **influence** in his country.
   - `verb`; example: I admit that it **influenced** me.
 - **initiate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: initiates
@@ -1204,7 +1195,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `verb`; meaning: `long-ending`; respelling: `in-tur-MEE-dee-ayt`; example: An elder was asked to **intermediate**
     between the striking workers and the owners of the mill.
 - **intern**; parts of speech: noun, verb; heteronym, meanings: confine, trainee; forms: interned (verb confine, verb
-  trainee), interning (verb confine, verb trainee), interns
+  trainee), interning, interns
   - `verb`; meaning: `confine`; respelling: `in-TURN`; example: They were **interned** at Copieweg internment camp.
   - `noun`; meaning: `trainee`; respelling: `IN-turn`; example: I feel like an **intern** again.
   - `verb`; meaning: `trainee`; respelling: `IN-turn`; example: They started **interning** at Dad's company.
@@ -1226,13 +1217,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **invite**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: invites
   - `noun`; meaning: `noun`; respelling: `IN-vyte`; example: She declined the **invite** politely.
   - `verb`; meaning: `verb`; respelling: `in-VYTE`; example: Can we **invite** the neighbors, too?
-- **iron**; parts of speech: noun, verb; forms: ironed (verb), ironing (verb), ironned (verb), ironning (verb), irons
+- **iron**; parts of speech: noun, verb; forms: ironed (verb), ironing, ironned (verb), ironning, irons
   - `noun`; example: You have too many **irons** in the fire.
   - `verb`; example: He watches TV while he **irons**.
 - **isolate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: isolates
   - `noun`; meaning: `noun`; respelling: `EYE-suh-lit`; example: That **isolate** may represent a new species.
   - `verb`; meaning: `verb`; respelling: `EYE-suh-layt`; example: We need to **isolate** the cause of the leak.
-- **issue**; parts of speech: noun, verb; forms: issued (verb), issues, issuing (verb)
+- **issue**; parts of speech: noun, verb; forms: issued (verb), issues, issuing
   - `noun`; example: He focuses on human rights **issues**.
   - `verb`; example: Governments borrow money by **issuing** bonds.
 
@@ -1241,28 +1232,28 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **jagged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `JAG-id`; example: The coastline looks **jagged** from the air.
   - `verb`; meaning: `verb`; respelling: `jagd`; example: The fence line **jagged** toward the barn.
-- **jerk**; parts of speech: noun, verb; forms: jerked (verb), jerking (verb), jerks
+- **jerk**; parts of speech: noun, verb; forms: jerked (verb), jerking, jerks
   - `noun`; example: How could I have been such a **jerk**?
   - `verb`; example: He **jerked** his arm out of my grasp.
-- **joke**; parts of speech: noun, verb; forms: joked (verb), jokes, joking (verb)
+- **joke**; parts of speech: noun, verb; forms: joked (verb), jokes, joking
   - `noun`; example: The child laughed at the **joke**.
   - `verb`; example: I hope Mary was just **joking**.
-- **judge**; parts of speech: noun, verb; forms: judged (verb), judges, judging (verb)
+- **judge**; parts of speech: noun, verb; forms: judged (verb), judges, judging
   - `noun`; example: Tom is a good **judge** of character.
   - `verb`; example: Don't **judge** people by their looks.
 
 ### Lemmas Starting With K
 
-- **kick**; parts of speech: noun, verb; forms: kicked (verb), kicking (verb), kicks
+- **kick**; parts of speech: noun, verb; forms: kicked (verb), kicking, kicks
   - `noun`; example: Did you do it just for **kicks**?
   - `verb`; example: It's hard to **kick** a bad habit.
-- **kid**; parts of speech: noun, verb; forms: kidded (verb), kidding (verb), kids
+- **kid**; parts of speech: noun, verb; forms: kidded (verb), kidding, kids
   - `noun`; example: Let Grandma take care of the **kid**.
   - `verb`; example: You have got to be **kidding** me.
 - **kiss**; parts of speech: noun, verb; forms: kissed (verb), kisses, kissing
   - `noun`; example: I gave him a **kiss** on the cheek.
   - `verb`; example: Tom **kissed** Cookie on the head.
-- **knock**; parts of speech: noun, verb; forms: knocked (verb), knocking (verb), knocks
+- **knock**; parts of speech: noun, verb; forms: knocked (verb), knocking, knocks
   - `noun`; example: We heard a **knock** on the door.
   - `verb`; example: Médus is **knocking** on the door.
 
@@ -1271,13 +1262,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **laminate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: laminates
   - `noun`; meaning: `noun`; respelling: `LAM-uh-nit`; example: The sample was a thin plastic **laminate**.
   - `verb`; meaning: `verb`; respelling: `LAM-uh-nayt`; example: Does your office **laminate** badges?
-- **land**; parts of speech: noun, verb; forms: landed (verb), landing (verb), lands
+- **land**; parts of speech: noun, verb; forms: landed (verb), landing, lands
   - `noun`; example: I am benefiting from that **land**.
   - `verb`; example: Tomorrow he **lands** on the moon.
-- **launch**; parts of speech: noun, verb; forms: launched (verb), launches, launching (verb)
+- **launch**; parts of speech: noun, verb; forms: launched (verb), launches, launching
   - `noun`; example: I'm looking forward to the **launch**.
   - `verb`; example: She **launched** herself into her work.
-- **lay**; parts of speech: noun, verb; forms: laid (verb), laying (verb), lays
+- **lay**; parts of speech: noun, verb; forms: laid (verb), laying, lays
   - `noun`; example: What was her line or her **lay**?
   - `verb`; example: You're **laying** it on too thick.
 - **lead**; parts of speech: noun, verb; heteronym, meanings: guide, metal; forms: leading (noun guide, verb guide),
@@ -1285,48 +1276,47 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `guide`; respelling: `leed`; example: Our band needs a **lead** guitarist.
   - `verb`; meaning: `guide`; respelling: `leed`; example: He **led** the posse through the mountains.
   - `noun`; meaning: `metal`; respelling: `led`; example: I measured it with the **lead** line.
-- **leak**; parts of speech: noun, verb; forms: leaked (verb), leaking (verb), leaks
+- **leak**; parts of speech: noun, verb; forms: leaked (verb), leaking, leaks
   - `noun`; example: There's a **leak** in that pipe.
   - `verb`; example: The source code had been **leaked**.
 - **learned**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `LUR-nid`; example: He seemed **learned** beyond his years.
   - `verb`; meaning: `verb`; respelling: `lurnd`; example: She never **learned** how to drive.
-- **leave**; parts of speech: noun, verb; forms: leaved (verb), leaves, leaving (verb)
+- **leave**; parts of speech: noun, verb; forms: leaved (verb), leaves, leaving
   - `noun`; example: Might I beg **leave** to accompany you?
   - `verb`; example: The train **leaves** at 6 o'clock.
-- **lecture**; parts of speech: noun, verb; forms: lectured (verb), lectures, lecturing (verb)
+- **lecture**; parts of speech: noun, verb; forms: lectured (verb), lectures, lecturing
   - `noun`; example: Did you take notes during the **lecture**?
   - `verb`; example: I don't need to be **lectured** by you.
 - **legitimate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: legitimates
   - `adjective`; meaning: `adjective`; respelling: `luh-JIT-uh-mit`; example: Is this website **legitimate** or a scam?
   - `verb`; meaning: `verb`; respelling: `luh-JIT-uh-mayt`; example: They did not **legitimate** the treaty.
-- **lift**; parts of speech: noun, verb; forms: lifted (verb), lifting (verb), lifts
+- **lift**; parts of speech: noun, verb; forms: lifted (verb), lifting, lifts
   - `noun`; example: He gave me a **lift** in his cart.
   - `verb`; example: I hope that the fog will **lift** soon.
-- **like**; parts of speech: noun, verb; forms: liked (verb), likes, liking (verb)
+- **like**; parts of speech: noun, verb; forms: liked (verb), likes, liking
   - `noun`; example: Tell me your **likes** and dislikes.
   - `verb`; example: I would **like** to write a book.
-- **limit**; parts of speech: noun, verb; forms: limited (verb), limiting (verb), limits, limitted (verb), limitting
-  (verb)
+- **limit**; parts of speech: noun, verb; forms: limited (verb), limiting, limits, limitted (verb), limitting
   - `noun`; example: Tom was over the legal **limit**.
   - `verb`; example: Try to **limit** your sugar intake.
-- **line**; parts of speech: noun, verb; forms: lined (verb), lines, lining (verb)
+- **line**; parts of speech: noun, verb; forms: lined (verb), lines, lining
   - `noun`; example: Tom works in the front **lines**.
   - `verb`; example: He told the boys to **line** up.
-- **link**; parts of speech: noun, verb; forms: linked (verb), linking (verb), links
+- **link**; parts of speech: noun, verb; forms: linked (verb), linking, links
   - `noun`; example: Thanks for the **link** you sent me.
   - `verb`; example: How can I **link** or unlink sentences?
-- **list**; parts of speech: noun, verb; forms: listed (verb), listing (verb), lists
+- **list**; parts of speech: noun, verb; forms: listed (verb), listing, lists
   - `noun`; example: Did you discuss any of the issues on our **list**?
   - `verb`; example: She has too many hobbies to **list**.
 - **live**; parts of speech: verb, adjective, adverb; heteronym, meanings: alive, dwell; forms: lives (verb dwell)
   - `adjective`; meaning: `alive`; respelling: `lyve`; example: Be careful, that is a **live** wire.
   - `adverb`; meaning: `alive`; respelling: `lyve`; example: The show was broadcast **live**.
   - `verb`; meaning: `dwell`; respelling: `liv`; example: He **lives** alone in a tiny cabin.
-- **lock**; parts of speech: noun, verb; forms: locked (verb), locking (verb), locks
+- **lock**; parts of speech: noun, verb; forms: locked (verb), locking, locks
   - `noun`; example: Give me the key to this **lock**!
   - `verb`; example: Mary said her house was **locked**.
-- **lounge**; parts of speech: noun, verb; forms: lounged (verb), lounges, lounging (verb)
+- **lounge**; parts of speech: noun, verb; forms: lounged (verb), lounges, lounging
   - `noun`; example: Our **lounge** is lovely and sunny.
   - `verb`; example: She was **lounging** on the sofa.
 - **lunged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
@@ -1335,29 +1325,28 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With M
 
-- **mail**; parts of speech: noun, verb; forms: mailed (verb), mailing (verb), mails
+- **mail**; parts of speech: noun, verb; forms: mailed (verb), mailing, mails
   - `noun`; example: Did you already get my **mail**?
   - `verb`; example: I'm going to **mail** this letter.
 - **marginate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `MAR-juh-nit`; example: The **marginate** shell has a thickened rim.
   - `verb`; meaning: `verb`; respelling: `MAR-juh-nayt`; example: Editors **marginate** proofs with corrections.
-- **mark**; parts of speech: noun, verb; forms: marked (verb), marking (verb), marks
+- **mark**; parts of speech: noun, verb; forms: marked (verb), marking, marks
   - `noun`; example: Don't assume a pockmarked face has no **marks**.
   - `verb`; example: I will manage. **Mark** my words.
-- **master**; parts of speech: noun, verb; forms: mastered (verb), mastering (verb), masterred (verb), masterring
-  (verb), masters
+- **master**; parts of speech: noun, verb; forms: mastered (verb), mastering, masterred (verb), masterring, masters
   - `noun`; example: As is the **master**, so is the servant.
   - `verb`; example: She works hard to **master** her skills.
-- **mean**; parts of speech: noun, verb; forms: meaned (verb), meaning (verb), means, meant (verb)
+- **mean**; parts of speech: noun, verb; forms: meaned (verb), meaning, means, meant (verb)
   - `noun`; example: I'm a person of little **means**.
   - `verb`; example: I **mean** those of the 10th of June.
-- **measure**; parts of speech: noun, verb; forms: measured (verb), measures, measuring (verb)
+- **measure**; parts of speech: noun, verb; forms: measured (verb), measures, measuring
   - `noun`; example: He did not it with half **measures** with him.
   - `verb`; example: How can I **measure** my Berber fluency?
 - **mediate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: mediates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `MEE-dee-it`; example: Such a **mediate** relation is hard to prove.
   - `verb`; meaning: `verb`; respelling: `MEE-dee-ayt`; example: She was asked to **mediate** the talks.
-- **mention**; parts of speech: noun, verb; forms: mentioned (verb), mentioning (verb), mentions
+- **mention**; parts of speech: noun, verb; forms: mentioned (verb), mentioning, mentions
   - `noun`; example: No **mention** is made of that fact.
   - `verb`; example: Why didn't you **mention** that before?
 - **merchandise**; parts of speech: noun, verb; forms: merchandises
@@ -1366,7 +1355,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **milk**; parts of speech: noun, verb; forms: milked (verb), milking, milks
   - `noun`; example: I like **milk** more than juice.
   - `verb`; example: I am going to **milk** the cows.
-- **mind**; parts of speech: noun, verb; forms: minded (verb), minding (verb), minds
+- **mind**; parts of speech: noun, verb; forms: minded (verb), minding, minds
   - `noun`; example: He has lost his frigging **mind**.
   - `verb`; example: You **mind** if I smoke a joint?
 - **minute**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; forms: minutes (noun noun)
@@ -1399,7 +1388,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **moderate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: moderates
   - `noun`; meaning: `noun`; respelling: `MOD-er-it`; example: **Moderates** praised the budget deal.
   - `verb`; meaning: `verb`; respelling: `MOD-uh-rayt`; example: Their anger will **moderate** with time.
-- **monitor**; parts of speech: noun, verb; forms: monitored (verb), monitoring, monitorred (verb), monitorring (verb),
+- **monitor**; parts of speech: noun, verb; forms: monitored (verb), monitoring, monitorred (verb), monitorring,
   monitors
   - `noun`; example: Tom is hooked up to **monitors**.
   - `verb`; example: He was **monitored** by the FBI.
@@ -1409,7 +1398,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **mouth**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: mouths
   - `noun`; meaning: `noun`; respelling: `mowth`; example: He had a smile on his **mouth**.
   - `verb`; meaning: `verb`; respelling: `mowthe`; example: **Mouth** the answer to me quietly.
-- **move**; parts of speech: noun, verb; forms: moved (verb), moves, moving (verb)
+- **move**; parts of speech: noun, verb; forms: moved (verb), moves, moving
   - `noun`; example: It's your **move**! Roll the dice!
   - `verb`; example: I will be **moving** on tomorrow.
 - **mow**; parts of speech: noun, verb; heteronym, meanings: cut, hay; forms: mowed (verb cut), mowing (verb cut), mown
@@ -1425,22 +1414,22 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With N
 
-- **nail**; parts of speech: noun, verb; forms: nailed (verb), nailing (verb), nails
+- **nail**; parts of speech: noun, verb; forms: nailed (verb), nailing, nails
   - `noun`; example: This affair was a **nail** in my coffin.
   - `verb`; example: I **nailed** the sign to the door.
 - **nearby**; parts of speech: adjective, adverb; no other forms
   - `adjective`; example: We stayed at a **nearby** hotel.
   - `adverb`; example: We found a quiet cafe **nearby**.
-- **nod**; parts of speech: noun, verb; forms: nodded (verb), nodding (verb), nods
+- **nod**; parts of speech: noun, verb; forms: nodded (verb), nodding, nods
   - `noun`; example: Mary gave me a friendly **nod**.
   - `verb`; example: He **nodded** his head in approval.
 - **nominate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: nominates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `NOM-uh-nit`; example: Field guides list the **nominate** form first.
   - `verb`; meaning: `verb`; respelling: `NOM-uh-nayt`; example: Will you **nominate** me for the board?
-- **note**; parts of speech: noun, verb; forms: noted (verb), notes, noting (verb)
+- **note**; parts of speech: noun, verb; forms: noted (verb), notes, noting
   - `noun`; example: I'm going to write him a **note** now.
   - `verb`; example: **Note** down what I'm going to say.
-- **notice**; parts of speech: noun, verb; forms: noticed (verb), notices, noticing (verb)
+- **notice**; parts of speech: noun, verb; forms: noticed (verb), notices, noticing
   - `noun`; example: He certainly acted on very short **notice**."
   - `verb`; example: I **noticed** she was wearing my slippers.
 - **nucleate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
@@ -1458,11 +1447,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **obverse**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
   - `adjective`; meaning: `adjective`; respelling: `ob-VURS`; example: The **obverse** angle gave a clearer look.
   - `noun`; meaning: `noun`; respelling: `OB-vurs`; example: Fear is the **obverse** of courage.
-- **occasion**; parts of speech: noun, verb; forms: occasioned (verb), occasioning (verb), occasions
+- **occasion**; parts of speech: noun, verb; forms: occasioned (verb), occasioning, occasions
   - `noun`; example: I hate his talking big on every **occasion**.
   - `verb`; example: Over-feeding, if persisted in, may **occasion** indigestion.
-- **offer**; parts of speech: noun, verb; forms: offered (verb), offering (verb), offerred (verb), offerring (verb),
-  offers
+- **offer**; parts of speech: noun, verb; forms: offered (verb), offering, offerred (verb), offerring, offers
   - `noun`; example: What do you think of my **offer**?
   - `verb`; example: They **offered** to teach kids to play guitar.
 - **offset**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: offsets
@@ -1471,11 +1459,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **opiate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: opiates
   - `noun`; meaning: `noun`; respelling: `OH-pee-it`; example: The clinic treats **opiate** addiction.
   - `verb`; meaning: `verb`; respelling: `OH-pee-ayt`; example: The tincture will **opiate** the pain away.
-- **orbit**; parts of speech: noun, verb; forms: orbited (verb), orbiting (verb), orbits, orbitted (verb), orbitting
-  (verb)
+- **orbit**; parts of speech: noun, verb; forms: orbited (verb), orbiting, orbits, orbitted (verb), orbitting
   - `noun`; example: The satellite is now in **orbit**.
   - `verb`; example: A great many satellites **orbit** the Earth.
-- **orient**; parts of speech: noun, verb; forms: oriented (verb), orienting (verb), orients
+- **orient**; parts of speech: noun, verb; forms: oriented (verb), orienting, orients
   - `noun`; example: He sailed east, toward the fabled **orient**.
   - `verb`; example: We have to re-**orient** ourselves.
 - **ornament**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: ornaments
@@ -1583,41 +1570,40 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With P
 
-- **pace**; parts of speech: noun, verb; forms: paced (verb), paces, pacing (verb)
+- **pace**; parts of speech: noun, verb; forms: paced (verb), paces, pacing
   - `noun`; example: I can't keep **pace** with your plan.
   - `verb`; example: You distract me by **pacing** up and down.
-- **pack**; parts of speech: noun, verb; forms: packed (verb), packing (verb), packs
+- **pack**; parts of speech: noun, verb; forms: packed (verb), packing, packs
   - `noun`; example: A group of wolves is a **pack**.
   - `verb`; example: So don't **pack** your bags ,yet.
-- **pain**; parts of speech: noun, verb; forms: pained (verb), paining (verb), pains
+- **pain**; parts of speech: noun, verb; forms: pained (verb), paining, pains
   - `noun`; example: Mary felt a **pain** in her chest.
   - `verb`; example: It **pains** me to believe that.
-- **paint**; parts of speech: noun, verb; forms: painted (verb), painting (verb), paints
+- **paint**; parts of speech: noun, verb; forms: painted (verb), painting, paints
   - `noun`; example: The wall had fresh **paint** on it.
   - `verb`; example: Who was this picture **painted** by?
-- **pardon**; parts of speech: noun, verb; forms: pardoned (verb), pardoning (verb), pardonned (verb), pardonning
-  (verb), pardons
+- **pardon**; parts of speech: noun, verb; forms: pardoned (verb), pardoning, pardonned (verb), pardonning, pardons
   - `noun`; example: "I beg your **pardon**, Mr Carker.
   - `verb`; example: "**Pardon** me," said a frigid voice.
-- **park**; parts of speech: noun, verb; forms: parked (verb), parking (verb), parks
+- **park**; parts of speech: noun, verb; forms: parked (verb), parking, parks
   - `noun`; example: Are there bears in this **park**?
   - `verb`; example: You can **park** at the trailhead.
-- **part**; parts of speech: noun, verb; forms: parted (verb), parting (verb), parts
+- **part**; parts of speech: noun, verb; forms: parted (verb), parting, parts
   - `noun`; example: Music constitutes a **part** of me.
   - `verb`; example: Nothing in the world can **part** us.
-- **pass**; parts of speech: noun, verb; forms: passed (verb), passes, passing (verb)
+- **pass**; parts of speech: noun, verb; forms: passed (verb), passes, passing
   - `noun`; example: How had he come to such a **pass**?
   - `verb`; example: Not many students **passed** the exam.
 - **pasty**; parts of speech: noun, adjective; heteronym, meanings: adjective, noun; no other forms
   - `adjective`; meaning: `adjective`; respelling: `PAY-stee`; example: The oatmeal was **pasty** and bland.
   - `noun`; meaning: `noun`; respelling: `PAS-tee`; example: The local **pasty** won an award.
-- **patch**; parts of speech: noun, verb; forms: patched (verb), patches, patching (verb)
+- **patch**; parts of speech: noun, verb; forms: patched (verb), patches, patching
   - `noun`; example: My people are working on a **patch**.
   - `verb`; example: My mother had to **patch** my pants.
-- **pause**; parts of speech: noun, verb; forms: paused (verb), pauses, pausing (verb)
+- **pause**; parts of speech: noun, verb; forms: paused (verb), pauses, pausing
   - `noun`; example: Martino put the machine on **pause**.
   - `verb`; example: Tom **paused** to have a cigarette.
-- **pay**; parts of speech: noun, verb; forms: paying (verb), pays
+- **pay**; parts of speech: noun, verb; forms: paying, pays
   - `noun`; example: I'd like a week off with **pay**.
   - `verb`; example: I don't mind **paying** you back.
 - **perfect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: perfects
@@ -1637,38 +1623,37 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **pervert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: perverts
   - `noun`; meaning: `noun`; respelling: `PUR-vurt`; example: Why would anyone hire a known **pervert** as a tutor?
   - `verb`; meaning: `verb`; respelling: `pur-VURT`; example: How can anyone **pervert** such a simple rule?
-- **picture**; parts of speech: noun, verb; forms: pictured (verb), pictures, picturing (verb)
+- **picture**; parts of speech: noun, verb; forms: pictured (verb), pictures, picturing
   - `noun`; example: She's as pretty as a **picture**.
   - `verb`; example: How do you have to **picture** that?
 - **pigment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: pigments
   - `noun`; meaning: `noun`; respelling: `PIG-munt`; example: A bright **pigment** was mixed into the wet plaster.
   - `verb`; meaning: `verb`; respelling: `PIG-ment`; example: The chemical **pigments** the glass as it cools.
-- **pile**; parts of speech: noun, verb; forms: piled (verb), piles, piling (verb)
+- **pile**; parts of speech: noun, verb; forms: piled (verb), piles, piling
   - `noun`; example: Put a card back in the **pile**.
   - `verb`; example: Problems are **piling** up on me.
-- **pin**; parts of speech: noun, verb; forms: pinned (verb), pinning (verb), pins
+- **pin**; parts of speech: noun, verb; forms: pinned (verb), pinning, pins
   - `noun`; example: Tom only knocked down one **pin**.
   - `verb`; example: He wanted to **pin** the blame on me.
-- **pinch**; parts of speech: noun, verb; forms: pinched (verb), pinches, pinching (verb)
+- **pinch**; parts of speech: noun, verb; forms: pinched (verb), pinches, pinching
   - `noun`; example: We add a **pinch** of salt for taste.
   - `verb`; example: He **pinched** some cash off me.
-- **place**; parts of speech: noun, verb; forms: placed (verb), places, placing (verb)
+- **place**; parts of speech: noun, verb; forms: placed (verb), places, placing
   - `noun`; example: This is a great **place** to shop.
   - `verb`; example: The company **places** its main focus on innovation.
-- **plague**; parts of speech: noun, verb; forms: plagued (verb), plagues, plaguing (verb)
+- **plague**; parts of speech: noun, verb; forms: plagued (verb), plagues, plaguing
   - `noun`; example: The **plague** does not touch him.
   - `verb`; example: I was **plagued** by dark thoughts.
-- **plant**; parts of speech: noun, verb; forms: planted (verb), planting (verb), plants
+- **plant**; parts of speech: noun, verb; forms: planted (verb), planting, plants
   - `noun`; example: Do you know what kind of **plant** this is?
   - `verb`; example: Ziri has to **plant** some trees.
-- **play**; parts of speech: noun, verb; forms: played (verb), playing (verb), plays
+- **play**; parts of speech: noun, verb; forms: played (verb), playing, plays
   - `noun`; example: Why are Chekhov's **plays** so popular?
   - `verb`; example: Arthur is **playing** the bad guy.
-- **point**; parts of speech: noun, verb; forms: pointed (verb), pointing (verb), points
+- **point**; parts of speech: noun, verb; forms: pointed (verb), pointing, points
   - `noun`; example: Every man has his weak **points**.
   - `verb`; example: Don't **point** at me with your finger.
-- **poison**; parts of speech: noun, verb; forms: poisoned (verb), poisoning (verb), poisonned (verb), poisonning
-  (verb), poisons
+- **poison**; parts of speech: noun, verb; forms: poisoned (verb), poisoning, poisonned (verb), poisonning, poisons
   - `noun`; example: Socrates happily drank up the **poison**.
   - `verb`; example: He was **poisoned** by mercury vapor.
 - **polish**; parts of speech: noun, verb, adjective; heteronym, meanings: nationality, shine; forms: polishes (noun
@@ -1680,10 +1665,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **pontificate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: pontificates
   - `noun`; meaning: `noun`; respelling: `pon-TIF-ih-kit`; example: A brief **pontificate** left few lasting records.
   - `verb`; meaning: `verb`; respelling: `pon-TIF-ih-kayt`; example: Don't **pontificate**; just tell us what you found.
-- **pop**; parts of speech: noun, verb; forms: popped (verb), popping (verb), pops
+- **pop**; parts of speech: noun, verb; forms: popped (verb), popping, pops
   - `noun`; example: Young people all like **pop** music.
   - `verb`; example: Where the deuce did he **pop** out of?
-- **post**; parts of speech: noun, verb; forms: posted (verb), posting (verb), posts
+- **post**; parts of speech: noun, verb; forms: posted (verb), posting, posts
   - `noun`; example: Tom is going to the **post** office.
   - `verb`; example: Click here to **post** a comment.
 - **postfix**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: postfixes
@@ -1692,8 +1677,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **postulate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: postulates
   - `noun`; meaning: `noun`; respelling: `POS-chuh-lit`; example: Her argument depends on an unstated **postulate**.
   - `verb`; meaning: `verb`; respelling: `POS-chuh-layt`; example: Do you **postulate** that the effect is permanent?
-- **power**; parts of speech: noun, verb; forms: powered (verb), powering (verb), powerred (verb), powerring (verb),
-  powers
+- **power**; parts of speech: noun, verb; forms: powered (verb), powering, powerred (verb), powerring, powers
   - `noun`; example: Another beadle had come into **power**.
   - `verb`; example: The car is **powered** by electricity.
 - **precipitate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: precipitates
@@ -1731,13 +1715,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
     better than marriage.
   - `noun`; meaning: `noun`; respelling: `PREZ-ent`; example: At **present** you are a perfect type.
   - `verb`; meaning: `verb`; respelling: `prih-ZENT`; example: You must **present** your ticket at the gate.
-- **press**; parts of speech: noun, verb; forms: pressed (verb), presses, pressing (verb)
+- **press**; parts of speech: noun, verb; forms: pressed (verb), presses, pressing
   - `noun`; example: He works for a newspaper printing **press**.
   - `verb`; example: 'Do not **press** me,' she replied.
-- **pressure**; parts of speech: noun, verb; forms: pressured (verb), pressures, pressuring (verb)
+- **pressure**; parts of speech: noun, verb; forms: pressured (verb), pressures, pressuring
   - `noun`; example: I will measure your blood **pressure**.
   - `verb`; example: Tom **pressured** me to do that.
-- **pride**; parts of speech: noun, verb; forms: prided (verb), prides, priding (verb)
+- **pride**; parts of speech: noun, verb; forms: prided (verb), prides, priding
   - `noun`; example: She is the **pride** of her class.
   - `verb`; example: She **prides** herself on her talent.
 - **primer**; parts of speech: noun; heteronym, meanings: paint, textbook; forms: primers
@@ -1763,19 +1747,19 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   stress-last), protesting (verb stress-last), protests
   - `noun`; meaning: `stress-first`; respelling: `PROH-test`; example: They support peaceful **protests**.
   - `verb`; meaning: `stress-last`; respelling: `pruh-TEST`; example: "And what can you **protest** about?
-- **pull**; parts of speech: noun, verb; forms: pulled (verb), pulling (verb), pulls
+- **pull**; parts of speech: noun, verb; forms: pulled (verb), pulling, pulls
   - `noun`; example: Get the **pull** over him that way.
   - `verb`; example: Sami **pulled** up to a hospital.
-- **pump**; parts of speech: noun, verb; forms: pumped (verb), pumping (verb), pumps
+- **pump**; parts of speech: noun, verb; forms: pumped (verb), pumping, pumps
   - `noun`; example: Can I get 20 dollars on **pump** 3?
   - `verb`; example: The heart serves to **pump** blood.
-- **punch**; parts of speech: noun, verb; forms: punched (verb), punches, punching (verb)
+- **punch**; parts of speech: noun, verb; forms: punched (verb), punches, punching
   - `noun`; example: Tom is not pulling any **punches**.
   - `verb`; example: I ought to **punch** him in the face.
 - **purport**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: purports
   - `noun`; meaning: `noun`; respelling: `PUR-port`; example: The **purport** of the treaty was peace.
   - `verb`; meaning: `verb`; respelling: `pur-PORT`; example: He does not **purport** to be an expert.
-- **push**; parts of speech: noun, verb; forms: pushed (verb), pushes, pushing (verb)
+- **push**; parts of speech: noun, verb; forms: pushed (verb), pushes, pushing
   - `noun`; example: We might need a little **push**.
   - `verb`; example: A young father **pushed** a pram.
 - **pustulate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: pustulates (verb verb)
@@ -1797,13 +1781,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `adjective`; meaning: `adjective`; respelling: `kwin-TOO-plih-kit`; example: His **quintuplicate** report weighed a
     pound.
   - `verb`; meaning: `verb`; respelling: `kwin-TOO-plih-kayt`; example: Why **quintuplicate** a note this small?
-- **quote**; parts of speech: noun, verb; forms: quoted (verb), quotes, quoting (verb)
+- **quote**; parts of speech: noun, verb; forms: quoted (verb), quotes, quoting
   - `noun`; example: End of **quote**. Repeat the line.
   - `verb`; example: He **quoted** a passage from the Bible.
 
 ### Lemmas Starting With R
 
-- **rack**; parts of speech: noun, verb; forms: racked (verb), racking (verb), racks
+- **rack**; parts of speech: noun, verb; forms: racked (verb), racking, racks
   - `noun`; example: Put our bags up on the **rack**.
   - `verb`; example: I'm **racking** my brain to remember.
 - **radiate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: radiates (verb verb)
@@ -1812,13 +1796,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **ragged**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; no other forms
   - `adjective`; meaning: `adjective`; respelling: `RAG-id`; example: The old book had **ragged** pages.
   - `verb`; meaning: `verb`; respelling: `ragd`; example: He **ragged** on the project all week.
-- **rain**; parts of speech: noun, verb; forms: rained (verb), raining (verb), rains
+- **rain**; parts of speech: noun, verb; forms: rained (verb), raining, rains
   - `noun`; example: She said that she liked **rain**.
   - `verb`; example: Why does it **rain** so much here?
-- **range**; parts of speech: noun, verb; forms: ranged (verb), ranges, ranging (verb)
+- **range**; parts of speech: noun, verb; forms: ranged (verb), ranges, ranging
   - `noun`; example: It was out of my price **range**.
   - `verb`; example: Only a few of the deck chairs **ranged** around the bandstand were occupied.
-- **reach**; parts of speech: noun, verb; forms: reached (verb), reaches, reaching (verb)
+- **reach**; parts of speech: noun, verb; forms: reached (verb), reaches, reaching
   - `noun`; example: The fruit is beyond my **reach**.
   - `verb`; example: We couldn't **reach** the initial goal.
 - **read**; parts of speech: verb; heteronym, meanings: past, present; forms: reads (verb present)
@@ -1827,8 +1811,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **rear**; parts of speech: noun, verb; forms: reared (verb), rearing, rears
   - `noun`; example: He attacked me from the **rear**.
   - `verb`; example: He **reared** me in the country.
-- **reason**; parts of speech: noun, verb; forms: reasoned (verb), reasoning (verb), reasonned (verb), reasonning
-  (verb), reasons
+- **reason**; parts of speech: noun, verb; forms: reasoned (verb), reasoning, reasonned (verb), reasonning, reasons
   - `noun`; example: For some **reason** I can relate.
   - `verb`; example: Maybe I can **reason** with her.
 - **rebel**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rebels
@@ -1886,7 +1869,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **refit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refits
   - `noun`; meaning: `noun`; respelling: `REE-fit`; example: Dry dock is booked for the **refit**.
   - `verb`; meaning: `verb`; respelling: `ree-FIT`; example: He **refits** the boots with new soles.
-- **reform**; parts of speech: noun, verb; forms: reformed (verb), reforming (verb), reforms
+- **reform**; parts of speech: noun, verb; forms: reformed (verb), reforming, reforms
   - `noun`; example: The time is ripe for a drastic **reform**.
   - `verb`; example: Don't try to **reform** everyone you meet.
 - **refresh**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: refreshes
@@ -1907,8 +1890,8 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **regiment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: regiments
   - `noun`; meaning: `noun`; respelling: `REJ-uh-munt`; example: A cavalry **regiment** guarded the pass.
   - `verb`; meaning: `verb`; respelling: `REJ-uh-ment`; example: The coach **regiments** the team's diet.
-- **register**; parts of speech: noun, verb; forms: registered (verb), registering (verb), registerred (verb),
-  registerring (verb), registers
+- **register**; parts of speech: noun, verb; forms: registered (verb), registering, registerred (verb), registerring,
+  registers
   - `noun`; example: Yanni was waiting at the **register**.
   - `verb`; example: The thermometer **registers** 37 degrees Celsius.
 - **regress**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: regresses
@@ -1958,7 +1941,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **remount**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: remounts
   - `noun`; meaning: `noun`; respelling: `REE-mount`; example: A **remount** stood ready behind the lines.
   - `verb`; meaning: `verb`; respelling: `ree-MOUNT`; example: He **remounts** his horse and rides on.
-- **rent**; parts of speech: noun, verb; forms: rented (verb), renting (verb), rents
+- **rent**; parts of speech: noun, verb; forms: rented (verb), renting, rents
   - `noun`; example: I hope the **rent** is reasonable.
   - `verb`; example: I **rented** a tux for a wedding.
 - **renunciate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: renunciates
@@ -1974,13 +1957,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `noun`; respelling: `REE-pohst`; example: Every **repost** spread the rumor further.
   - `verb`; meaning: `verb`; respelling: `ree-POHST`; example: **Repost** the photo if you enjoyed it.
 - **reprimand**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: reprimanded (verb
-  stress-last), reprimanding (verb stress-last), reprimands
+  stress-last), reprimanding, reprimands
   - `noun`; meaning: `stress-first`; respelling: `REP-ruh-mand`; example: We'll get off with a **reprimand**.
   - `verb`; meaning: `stress-last`; respelling: `rep-ruh-MAND`; example: The director **reprimanded** you.
 - **reprint**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reprints
   - `noun`; meaning: `noun`; respelling: `REE-print`; example: Each **reprint** sold out within days.
   - `verb`; meaning: `verb`; respelling: `ree-PRINT`; example: **Reprint** the form on thicker paper.
-- **request**; parts of speech: noun, verb; forms: requested (verb), requesting (verb), requests
+- **request**; parts of speech: noun, verb; forms: requested (verb), requesting, requests
   - `noun`; example: He flatly turned down our **request**.
   - `verb`; example: It was not Tom who **requested** that I do this.
 - **reread**; parts of speech: verb; heteronym, meanings: past, present; forms: rereads (verb present)
@@ -1992,7 +1975,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **rerun**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reruns
   - `noun`; meaning: `noun`; respelling: `REE-run`; example: Summer television is full of **reruns**.
   - `verb`; meaning: `verb`; respelling: `ree-RUN`; example: We had to **rerun** the whole analysis.
-- **reserve**; parts of speech: noun, verb; forms: reserved (verb), reserves, reserving (verb)
+- **reserve**; parts of speech: noun, verb; forms: reserved (verb), reserves, reserving
   - `noun`; example: Ziri went to a nature **reserve**.
   - `verb`; example: He **reserved** a table at the restaurant.
 - **reset**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: resets, resetting (verb
@@ -2010,13 +1993,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **resit**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resits
   - `noun`; meaning: `noun`; respelling: `REE-sit`; example: The student dreaded the **resit**.
   - `verb`; meaning: `verb`; respelling: `ree-SIT`; example: He hopes to **resit** in the spring.
-- **resort**; parts of speech: noun, verb; forms: resorted (verb), resorting (verb), resorts
+- **resort**; parts of speech: noun, verb; forms: resorted (verb), resorting, resorts
   - `noun`; example: Use this key as a last **resort**.
   - `verb`; example: We should not **resort** to violence.
 - **respawn**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: respawns
   - `noun`; meaning: `noun`; respelling: `REE-spawn`; example: Each **respawn** restores full health.
   - `verb`; meaning: `verb`; respelling: `ree-SPAWN`; example: **Respawn** at the base and heal up.
-- **respect**; parts of speech: noun, verb; forms: respected (verb), respecting (verb), respects
+- **respect**; parts of speech: noun, verb; forms: respected (verb), respecting, respects
   - `noun`; example: He has no **respect** for his parents.
   - `verb`; example: Privacy should be **respected** by all.
 - **respray**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resprays
@@ -2028,7 +2011,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **restyle**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: restyles
   - `noun`; meaning: `noun`; respelling: `REE-stighl`; example: **Restyle** of the old sofa took a week.
   - `verb`; meaning: `verb`; respelling: `ree-STIGHL`; example: We might **restyle** the logo next year.
-- **result**; parts of speech: noun, verb; forms: resulted (verb), resulting (verb), results
+- **result**; parts of speech: noun, verb; forms: resulted (verb), resulting, results
   - `noun`; example: Are you pleased with the **results**?
   - `verb`; example: Her diet **resulted** in weight loss.
 - **resume**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: resumes
@@ -2052,16 +2035,16 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **retread**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: retreads
   - `noun`; meaning: `noun`; respelling: `REE-tred`; example: A **retread** blew out on the highway.
   - `verb`; meaning: `verb`; respelling: `ree-TRED`; example: He did not **retread** the worn casing.
-- **retreat**; parts of speech: noun, verb; forms: retreated (verb), retreating (verb), retreats
+- **retreat**; parts of speech: noun, verb; forms: retreated (verb), retreating, retreats
   - `noun`; example: The balcony was Ziri’s peaceful **retreat**.
   - `verb`; example: You have gone too far to **retreat**.
 - **retrofit**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: retrofits,
-  retrofitted (verb stress-last), retrofitting (verb stress-last)
+  retrofitted (verb stress-last), retrofitting
   - `noun`; meaning: `stress-first`; respelling: `RET-roh-fit`; example: Tom refused to allow the robot to return a
     change in the **retrofit** frame.
   - `verb`; meaning: `stress-last`; respelling: `ret-roh-FIT`; example: It is going to be **retrofitted** into a
     wood-fired power station.
-- **return**; parts of speech: noun, verb; forms: returned (verb), returning (verb), returns
+- **return**; parts of speech: noun, verb; forms: returned (verb), returning, returns
   - `noun`; example: A service requires a service in **return**.
   - `verb`; example: He always asks when you will **return**.
 - **reuse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reuses
@@ -2073,7 +2056,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **revert**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: reverts
   - `noun`; meaning: `noun`; respelling: `REE-vurt`; example: The **revert** was merged within an hour.
   - `verb`; meaning: `verb`; respelling: `rih-VURT`; example: Please **revert** the last change.
-- **reward**; parts of speech: noun, verb; forms: rewarded (verb), rewarding (verb), rewards
+- **reward**; parts of speech: noun, verb; forms: rewarded (verb), rewarding, rewards
   - `noun`; example: A good deed is its own **reward**.
   - `verb`; example: I was well **rewarded** for my efforts.
 - **rewatch**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rewatches
@@ -2085,19 +2068,19 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **rewrite**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: rewrites
   - `noun`; meaning: `noun`; respelling: `REE-right`; example: The code needs a total **rewrite**.
   - `verb`; meaning: `verb`; respelling: `ree-RIGHT`; example: She did not **rewrite** the speech.
-- **ride**; parts of speech: noun, verb; forms: ridden (verb), rided (verb), rides, riding (verb), rode (verb)
+- **ride**; parts of speech: noun, verb; forms: ridden (verb), rided (verb), rides, riding, rode (verb)
   - `noun`; example: This is going to be a long bus **ride**.
   - `verb`; example: Have you ever **ridden** a mule?
-- **rise**; parts of speech: noun, verb; forms: rised (verb), rises, rising (verb)
+- **rise**; parts of speech: noun, verb; forms: rised (verb), rises, rising
   - `noun`; example: Why did you turn down his request for a pay **rise**?
   - `verb`; example: Prices **rise** from day to day.
-- **risk**; parts of speech: noun, verb; forms: risked (verb), risking (verb), risks
+- **risk**; parts of speech: noun, verb; forms: risked (verb), risking, risks
   - `noun`; example: I'm not willing to take that **risk**.
   - `verb`; example: To win is to **risk** everything.
 - **rock**; parts of speech: noun, verb; forms: rocked (verb), rocking, rocks
   - `noun`; example: Abranis is a Kabyle **rock** band.
   - `verb`; example: I was **rocking** the baby to sleep.
-- **roll**; parts of speech: noun, verb; forms: rolled (verb), rolling (verb), rolls
+- **roll**; parts of speech: noun, verb; forms: rolled (verb), rolling, rolls
   - `noun`; example: Tom gave Mary a **roll** of film.
   - `verb`; example: A single tear **rolled** down her cheek.
 - **romance**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: romanced (verb
@@ -2105,7 +2088,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `stress-first`; respelling: `ROH-mans`; example: What a **romance** it had all been!
   - `verb`; meaning: `stress-last`; respelling: `roh-MANS`; example: The count set out to **romance** the heiress at
     every ball of the season.
-- **root**; parts of speech: noun, verb; forms: rooted (verb), rooting (verb), roots
+- **root**; parts of speech: noun, verb; forms: rooted (verb), rooting, roots
   - `noun`; example: The tree **roots** are warping the pavement.
   - `verb`; example: We were all **rooting** for her.
 - **row**; parts of speech: noun, verb; heteronym, meanings: rhymes-cow, rhymes-go; no other forms
@@ -2116,48 +2099,48 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `argument`; respelling: `rouz`; example: Those noisy **rows** had to stop.
   - `noun`; meaning: `line`; respelling: `rohz`; example: The tulips grew in straight **rows**.
   - `verb`; meaning: `line`; respelling: `rohz`; example: Solo woman **rows** the Atlantic: Part 1
-- **ruin**; parts of speech: noun, verb; forms: ruined (verb), ruining (verb), ruins
+- **ruin**; parts of speech: noun, verb; forms: ruined (verb), ruining, ruins
   - `noun`; example: The war left the city in **ruins**.
   - `verb`; example: My old tools were **ruined** by rust.
-- **rule**; parts of speech: noun, verb; forms: ruled (verb), rules, ruling (verb)
+- **rule**; parts of speech: noun, verb; forms: ruled (verb), rules, ruling
   - `noun`; example: The **rules** of this game are simple.
   - `verb`; example: The king **rules** over his subjects.
 
 ### Lemmas Starting With S
 
-- **sail**; parts of speech: noun, verb; forms: sailed (verb), sailing (verb), sails
+- **sail**; parts of speech: noun, verb; forms: sailed (verb), sailing, sails
   - `noun`; example: A gust of wind swelled the **sails**.
   - `verb`; example: The ship **sailed** into the storm.
 - **saturate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: saturates
   - `noun`; meaning: `noun`; respelling: `SACH-uh-rit`; example: Is a fully hydrogenated oil really a **saturate**?
   - `verb`; meaning: `verb`; respelling: `SACH-uh-rayt`; example: Gently **saturate** the bandage with clean water.
-- **schedule**; parts of speech: noun, verb; forms: scheduled (verb), schedules, scheduling (verb)
+- **schedule**; parts of speech: noun, verb; forms: scheduled (verb), schedules, scheduling
   - `noun`; example: I often have a busy **schedule**.
   - `verb`; example: When was the trip **scheduled** to happen?
-- **score**; parts of speech: noun, verb; forms: scored (verb), scores, scoring (verb)
+- **score**; parts of speech: noun, verb; forms: scored (verb), scores, scoring
   - `noun`; example: He had a **score** to settle with her.
   - `verb`; example: He **scored** excellently in all tests.
 - **scream**; parts of speech: noun, verb; forms: screamed (verb), screaming, screams
   - `noun`; example: The **screams** echoed in the woods.
   - `verb`; example: I always **scream** when I get angry.
-- **screen**; parts of speech: noun, verb; forms: screened (verb), screening (verb), screens
+- **screen**; parts of speech: noun, verb; forms: screened (verb), screening, screens
   - `noun`; example: This new **screen** is much brighter.
   - `verb`; example: Tom and Mary often **screen** their calls.
-- **screw**; parts of speech: noun, verb; forms: screwed (verb), screwing (verb), screws
+- **screw**; parts of speech: noun, verb; forms: screwed (verb), screwing, screws
   - `noun`; example: Our **screw** really wore me out.
   - `verb`; example: The waiter **screwed** up my order.
-- **seal**; parts of speech: noun, verb; forms: sealed (verb), sealing (verb), seals
+- **seal**; parts of speech: noun, verb; forms: sealed (verb), sealing, seals
   - `noun`; example: Is a manatee a type of **seal**?
   - `verb`; example: Their fate seems to be **sealed**.
-- **season**; parts of speech: noun, verb; forms: seasoned (verb), seasoning (verb), seasonned (verb), seasonning
-  (verb), seasons
+- **season**; parts of speech: noun, verb; forms: seasoned (verb), seasoning, seasonned (verb), seasonning, seasons
   - `noun`; example: Which **season** do you like best?
   - `verb`; example: Salt is used to **season** food.
-- **seat**; parts of speech: noun, verb; forms: seated (verb), seating (verb), seats
+- **seat**; parts of speech: noun, verb; forms: seated (verb), seating, seats
   - `noun`; example: I'm saving this **seat** for them.
   - `verb`; example: You are **seated** between Tom and John.
 - **second**; parts of speech: noun, verb, adjective; heteronym, meanings: ordinal, secondment; forms: seconded (verb
-  ordinal), seconding (verb ordinal), seconds (noun ordinal, verb ordinal)
+  ordinal, verb secondment), seconding (noun ordinal, verb ordinal, verb secondment), seconds (noun ordinal, verb
+  ordinal)
   - `noun`; meaning: `ordinal`; respelling: `SEK-und`; example: Impressions are formed in **seconds**.
   - `adjective`; meaning: `ordinal`; respelling: `SEK-und`; example: The director has asked the board to nominate him
     for a **second** term.
@@ -2170,10 +2153,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **segregate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: segregated (verb verb), segregates
   - `noun`; meaning: `noun`; respelling: `SEG-rih-git`; example: Every **segregate** was grown in a separate pot.
   - `verb`; meaning: `verb`; respelling: `SEG-rih-gayt`; example: Do not **segregate** the data by gender.
-- **sense**; parts of speech: noun, verb; forms: sensed (verb), senses, sensing (verb)
+- **sense**; parts of speech: noun, verb; forms: sensed (verb), senses, sensing
   - `noun`; example: She is lacking in **sense** of beauty.
   - `verb`; example: Tom **sensed** he'd hit a nerve.
-- **sentence**; parts of speech: noun, verb; forms: sentenced (verb), sentences, sentencing (verb)
+- **sentence**; parts of speech: noun, verb; forms: sentenced (verb), sentences, sentencing
   - `noun`; example: There is an error in the **sentence**.
   - `verb`; example: He was **sentenced** to life in prison.
 - **separate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: separates (verb verb)
@@ -2186,40 +2169,40 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `drain`; respelling: `SOO-ur`; example: Some one has passed through the **sewer**.
   - `noun`; meaning: `sews`; respelling: `SOH-ur`; example: The tailor hired a new **sewer** to take in the hems and sew
     buttons onto the coats.
-- **shake**; parts of speech: noun, verb; forms: shaked (verb), shaken (verb), shakes, shaking (verb), shook (verb)
+- **shake**; parts of speech: noun, verb; forms: shaked (verb), shaken (verb), shakes, shaking, shook (verb)
   - `noun`; example: Do fries go with that **shake**?
   - `verb`; example: His body was **shaking** in anger.
-- **shield**; parts of speech: noun, verb; forms: shielded (verb), shielding (verb), shields
+- **shield**; parts of speech: noun, verb; forms: shielded (verb), shielding, shields
   - `noun`; example: He used the book as a **shield**.
   - `verb`; example: I opt to **shield** my emotions.
-- **shift**; parts of speech: noun, verb; forms: shifted (verb), shifting (verb), shifts
+- **shift**; parts of speech: noun, verb; forms: shifted (verb), shifting, shifts
   - `noun`; example: She writes a paper on cultural **shifts**.
   - `verb`; example: Changes are **shifting** outside the word.
-- **shock**; parts of speech: noun, verb; forms: shocked (verb), shocking (verb), shocks
+- **shock**; parts of speech: noun, verb; forms: shocked (verb), shocking, shocks
   - `noun`; example: It must have been a **shock** to you.
   - `verb`; example: I was **shocked** at the sad news.
-- **shout**; parts of speech: noun, verb; forms: shouted (verb), shouting (verb), shouts
+- **shout**; parts of speech: noun, verb; forms: shouted (verb), shouting, shouts
   - `noun`; example: He heard **shouts** in the house.
   - `verb`; example: I **shout** but no one hears me.
-- **show**; parts of speech: noun, verb; forms: showed (verb), showing (verb), shows
+- **show**; parts of speech: noun, verb; forms: showed (verb), showing, shows
   - `noun`; example: Boris worked as a **show** actor.
   - `verb`; example: Tom has been **showing** a lot of promise.
 - **shower**; parts of speech: noun, verb; heteronym, meanings: rain, shows; forms: showered (verb rain), showering
-  (verb rain), showers (noun rain, verb rain)
+  (noun rain, verb rain), showers
   - `noun`; meaning: `rain`; respelling: `SHOW-ur`; example: Can I get my stitches wet in the bath or **shower**?
   - `noun`; meaning: `shows`; respelling: `SHOH-ur`; example: I am no **shower** of my feelings, so you will rarely see
     me weep in public.
   - `verb`; meaning: `rain`; respelling: `SHOW-ur`; example: I usually **shower** before bed.
-- **side**; parts of speech: noun, verb; forms: sided (verb), sides, siding (verb)
+- **side**; parts of speech: noun, verb; forms: sided (verb), sides, siding
   - `noun`; example: On which **side** do I have to put the fork?
   - `verb`; example: Why are you **siding** with him?
-- **sigh**; parts of speech: noun, verb; forms: sighed (verb), sighing (verb), sighs
+- **sigh**; parts of speech: noun, verb; forms: sighed (verb), sighing, sighs
   - `noun`; example: At this **sigh** Felton turned round.
   - `verb`; example: They **sighed** and shook their heads.
-- **sign**; parts of speech: noun, verb; forms: signed (verb), signing (verb), signs
+- **sign**; parts of speech: noun, verb; forms: signed (verb), signing, signs
   - `noun`; example: The house shows **signs** of neglect.
   - `verb`; example: He **signed** a lease for ten years.
-- **silence**; parts of speech: noun, verb; forms: silenced (verb), silences, silencing (verb)
+- **silence**; parts of speech: noun, verb; forms: silenced (verb), silences, silencing
   - `noun`; example: He bore his grief in **silence**.
   - `verb`; example: "How do you propose to **silence** him?"
 - **sin**; parts of speech: noun, verb; forms: sinned (verb), sinning, sins
@@ -2235,108 +2218,107 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **sketch**; parts of speech: noun, verb; forms: sketched (verb), sketches, sketching
   - `noun`; example: Make a **sketch** of your house.
   - `verb`; example: Now he is **sketching** an apple.
-- **slice**; parts of speech: noun, verb; forms: sliced (verb), slices, slicing (verb)
+- **slice**; parts of speech: noun, verb; forms: sliced (verb), slices, slicing
   - `noun`; example: Cut the meat into thin **slices**.
   - `verb`; example: We use a knife to **slice** food.
-- **slide**; parts of speech: noun, verb; forms: slid (verb), slided (verb), slides, sliding (verb)
+- **slide**; parts of speech: noun, verb; forms: slid (verb), slided (verb), slides, sliding
   - `noun`; example: He went fast down the **slide**.
   - `verb`; example: I'll let it **slide** this time.
 - **slough**; parts of speech: noun, verb; heteronym, meanings: shed, swamp; forms: sloughed (verb shed), sloughing
-  (verb shed), sloughs (verb shed, noun swamp)
+  (verb shed, noun shed), sloughs
   - `verb`; meaning: `shed`; respelling: `sluf`; example: The wound slowly **sloughed** the dead tissue as new skin
     formed beneath it.
   - `noun`; meaning: `shed`; respelling: `sluf`; example: A thin, dry **slough** peeled from his sunburned shoulder in
     the shower.
   - `noun`; meaning: `swamp`; respelling: `sloo`; example: The name of the **slough** was Despond." - BUNYAN.
-- **smell**; parts of speech: noun, verb; forms: smelled (verb), smelling (verb), smells
+- **smell**; parts of speech: noun, verb; forms: smelled (verb), smelling, smells
   - `noun`; example: I like the **smell** of old books.
   - `verb`; example: You **smell** like a rotten egg.
 - **smoke**; parts of speech: noun, verb; forms: smoked (verb), smokes, smoking
   - `noun`; example: I might go to the **smoke** shop today.
   - `verb`; example: You mind if I **smoke** a joint?
-- **snap**; parts of speech: noun, verb; forms: snapped (verb), snapping (verb), snaps
+- **snap**; parts of speech: noun, verb; forms: snapped (verb), snapping, snaps
   - `noun`; example: It was the **snap** of the whip.
   - `verb`; example: I'm sorry for **snapping** at you.
 - **sophisticate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: sophisticates
   - `noun`; meaning: `noun`; respelling: `suh-FIS-tih-kit`; example: The novel's hero is a jaded **sophisticate**.
   - `verb`; meaning: `verb`; respelling: `suh-FIS-tih-kayt`; example: Time and money can **sophisticate** any hobby.
-- **sort**; parts of speech: noun, verb; forms: sorted (verb), sorting (verb), sorts
+- **sort**; parts of speech: noun, verb; forms: sorted (verb), sorting, sorts
   - `noun`; example: What **sort** of infection is this?
   - `verb`; example: It took a while to **sort** things out.
-- **sound**; parts of speech: noun, verb; forms: sounded (verb), sounding (verb), sounds
+- **sound**; parts of speech: noun, verb; forms: sounded (verb), sounding, sounds
   - `noun`; example: I like the **sound** of that bell!
   - `verb`; example: It kinda **sounds** like a scam.
 - **sow**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: sows
   - `noun`; meaning: `noun`; respelling: `sou`; example: The pen held two **sows** and a boar.
   - `verb`; meaning: `verb`; respelling: `soh`; example: Farmers **sow** wheat in the fall.
-- **spark**; parts of speech: noun, verb; forms: sparked (verb), sparking (verb), sparks
+- **spark**; parts of speech: noun, verb; forms: sparked (verb), sparking, sparks
   - `noun`; example: There was a tiny **spark** in the east.
   - `verb`; example: Mixing things up can **spark** creativity.
-- **spell**; parts of speech: noun, verb; forms: spelled (verb), spelling (verb), spells
+- **spell**; parts of speech: noun, verb; forms: spelled (verb), spelling, spells
   - `noun`; example: Her beauty cast a **spell** over him.
   - `verb`; example: Listen! How do you **spell** it?
-- **spot**; parts of speech: noun, verb; forms: spots, spotted (verb), spotting (verb)
+- **spot**; parts of speech: noun, verb; forms: spots, spotted (verb), spotting
   - `noun`; example: I fact-checked Tom on the **spot**.
   - `verb`; example: The fakes are very easy to **spot**.
-- **spray**; parts of speech: noun, verb; forms: sprayed (verb), spraying (verb), sprays
+- **spray**; parts of speech: noun, verb; forms: sprayed (verb), spraying, sprays
   - `noun`; example: Can you hand me that bug **spray**?
   - `verb`; example: They are **spraying** the fruit trees.
-- **spring**; parts of speech: noun, verb; forms: springed (verb), springing (verb), springs
+- **spring**; parts of speech: noun, verb; forms: springed (verb), springing, springs
   - `noun`; example: This is a tree in the **spring**.
   - `verb`; example: I **spring** out of the darkness.
-- **stack**; parts of speech: noun, verb; forms: stacked (verb), stacking (verb), stacks
+- **stack**; parts of speech: noun, verb; forms: stacked (verb), stacking, stacks
   - `noun`; example: Tom gave Mary a **stack** of money.
   - `verb`; example: The odds are **stacked** against us.
-- **stamp**; parts of speech: noun, verb; forms: stamped (verb), stamping (verb), stamps
+- **stamp**; parts of speech: noun, verb; forms: stamped (verb), stamping, stamps
   - `noun`; example: I didn't know you collected **stamps**.
   - `verb`; example: He **stamped** his foot three times.
-- **stand**; parts of speech: noun, verb; forms: standed (verb), standing (verb), stands
+- **stand**; parts of speech: noun, verb; forms: standed (verb), standing, stands
   - `noun`; example: A brawl is breaking out in the **stands**.
   - `verb`; example: Ken **stands** on the diving board.
-- **stare**; parts of speech: noun, verb; forms: stared (verb), stares, staring (verb)
+- **stare**; parts of speech: noun, verb; forms: stared (verb), stares, staring
   - `noun`; example: She threw him an insolent **stare**.
   - `verb`; example: They stopped to **stare** at him.
-- **state**; parts of speech: noun, verb; forms: stated (verb), states, stating (verb)
+- **state**; parts of speech: noun, verb; forms: stated (verb), states, stating
   - `noun`; example: There are still some dry **states** in the U.S.
   - `verb`; example: We all have views. That's **stating** the obvious.
-- **station**; parts of speech: noun, verb; forms: stationed (verb), stationing (verb), stations
+- **station**; parts of speech: noun, verb; forms: stationed (verb), stationing, stations
   - `noun`; example: How do I get to the bus **station**?
   - `verb`; example: I was **stationed** on the pier.
-- **stem**; parts of speech: noun, verb; forms: stemmed (verb), stemming (verb), stems
+- **stem**; parts of speech: noun, verb; forms: stemmed (verb), stemming, stems
   - `noun`; example: A rose has thorns on its **stem**.
   - `verb`; example: Many English words **stem** from Latin.
 - **stick**; parts of speech: noun, verb; forms: sticked (verb), sticking, sticks, stuck (verb)
   - `noun`; example: She got the short end of the **stick**.
   - `verb`; example: My pickup is **stuck** in the mud.
-- **stock**; parts of speech: noun, verb; forms: stocked (verb), stocking (verb), stocks
+- **stock**; parts of speech: noun, verb; forms: stocked (verb), stocking, stocks
   - `noun`; example: On the **stock** was engraved 'SS.
   - `verb`; example: to **stock** a warehouse with goods
-- **store**; parts of speech: noun, verb; forms: stored (verb), stores, storing (verb)
+- **store**; parts of speech: noun, verb; forms: stored (verb), stores, storing
   - `noun`; example: I've never been to this **store**.
   - `verb`; example: I'll **store** these books in the attic.
-- **storm**; parts of speech: noun, verb; forms: stormed (verb), storming (verb), storms
+- **storm**; parts of speech: noun, verb; forms: stormed (verb), storming, storms
   - `noun`; example: Last night there was a **storm**.
   - `verb`; example: Tom **stormed** out of the house.
-- **stream**; parts of speech: noun, verb; forms: streamed (verb), streaming (verb), streams
+- **stream**; parts of speech: noun, verb; forms: streamed (verb), streaming, streams
   - `noun`; example: Has Don provided the fixed payment **stream**?
   - `verb`; example: Why, the water **streams** from them!
-- **stretch**; parts of speech: noun, verb; forms: stretched (verb), stretches, stretching (verb)
+- **stretch**; parts of speech: noun, verb; forms: stretched (verb), stretches, stretching
   - `noun`; example: This **stretch** of road is very dangerous.
   - `verb`; example: The road **stretched** on for miles.
-- **strike**; parts of speech: noun, verb; forms: stricken (verb), striked (verb), strikes, striking (verb), struck
-  (verb)
+- **strike**; parts of speech: noun, verb; forms: stricken (verb), striked (verb), strikes, striking, struck (verb)
   - `noun`; example: I'm going on a hunger **strike**.
   - `verb`; example: He was **struck** by lightning and died.
-- **strip**; parts of speech: noun, verb; forms: stripped (verb), stripping (verb), strips
+- **strip**; parts of speech: noun, verb; forms: stripped (verb), stripping, strips
   - `noun`; example: Cut the meat into thin **strips**.
   - `verb`; example: Maria is **stripping** in a pub.
-- **stroke**; parts of speech: noun, verb; forms: stroked (verb), strokes, stroking (verb)
+- **stroke**; parts of speech: noun, verb; forms: stroked (verb), strokes, stroking
   - `noun`; example: Here is a sharp **stroke** or two.
   - `verb`; example: Tom **stroked** the cat's soft fur.
-- **struggle**; parts of speech: noun, verb; forms: struggled (verb), struggles, struggling (verb)
+- **struggle**; parts of speech: noun, verb; forms: struggled (verb), struggles, struggling
   - `noun`; example: Had they been killed in the **struggle**?
   - `verb`; example: I **struggled** against it, but in vain.
-- **study**; parts of speech: noun, verb; forms: studied (verb), studies, studying (verb)
+- **study**; parts of speech: noun, verb; forms: studied (verb), studies, studying
   - `noun`; example: Campanology is the **study** of bells.
   - `verb`; example: The more you **study**, the better.
 - **subject**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: subjects
@@ -2353,7 +2335,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **subordinate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: subordinates
   - `noun`; meaning: `noun`; respelling: `suh-BOR-dih-nit`; example: She is my **subordinate**, not my equal.
   - `verb`; meaning: `verb`; respelling: `suh-BOR-dih-nayt`; example: Do not **subordinate** safety to speed.
-- **substitute**; parts of speech: noun, verb; forms: substituted (verb), substitutes, substituting (verb)
+- **substitute**; parts of speech: noun, verb; forms: substituted (verb), substitutes, substituting
   - `noun`; example: Perhaps we could find a **substitute**.
   - `verb`; example: He was **substituted** for his father.
 - **suffix**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: suffixed (verb
@@ -2361,13 +2343,13 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `stress-first`; respelling: `SUF-iks`; example: The -s was reanalyzed as a plural **suffix**.
   - `verb`; meaning: `stress-last`; respelling: `suh-FIKS`; example: She **suffixed** the product code with a letter to
     show the color, so red items ended with R.
-- **suit**; parts of speech: noun, verb; forms: suited (verb), suiting (verb), suits
+- **suit**; parts of speech: noun, verb; forms: suited (verb), suiting, suits
   - `noun`; example: Logic is not his strong **suit**.
   - `verb`; example: Which day **suits** you this week?
 - **supplement**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: supplements
   - `noun`; meaning: `noun`; respelling: `SUP-luh-munt`; example: Is this **supplement** safe for children?
   - `verb`; meaning: `verb`; respelling: `SUP-luh-ment`; example: Photos **supplement** the text nicely.
-- **supply**; parts of speech: noun, verb; forms: supplied (verb), supplies, supplying (verb)
+- **supply**; parts of speech: noun, verb; forms: supplied (verb), supplies, supplying
   - `noun`; example: Tom is high on his own **supply**.
   - `verb`; example: That store **supplies** us with coffee.
 - **supposed**; parts of speech: verb, adjective; heteronym, meanings: voiced, unvoiced; forms: supposedly (adjective
@@ -2376,7 +2358,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
     (**supposed**) father.
   - `verb`; meaning: `voiced`; respelling: `suh-POHZD`; example: "Harder than I could have **supposed** you would be."
   - `adjective`; meaning: `unvoiced`; respelling: `suh-POHST`; example: How was I **supposed** to help Tom?
-- **surprise**; parts of speech: noun, verb; forms: surprised (verb), surprises, surprising (verb)
+- **surprise**; parts of speech: noun, verb; forms: surprised (verb), surprises, surprising
   - `noun`; example: The book is full of **surprises**.
   - `verb`; example: We were **surprised** by the big lion.
 - **survey**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: surveys
@@ -2385,10 +2367,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **suspect**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: suspects
   - `noun`; meaning: `noun`; respelling: `SUS-pekt`; example: The main **suspect** denied everything.
   - `verb`; meaning: `verb`; respelling: `suh-SPEKT`; example: They did not **suspect** a thing.
-- **swallow**; parts of speech: noun, verb; forms: swallowed (verb), swallowing (verb), swallows
+- **swallow**; parts of speech: noun, verb; forms: swallowed (verb), swallowing, swallows
   - `noun`; example: The **swallow** is a sign of summer.
   - `verb`; example: It's a tough pill to **swallow**.
-- **swing**; parts of speech: noun, verb; forms: swinged (verb), swinging (verb), swings
+- **swing**; parts of speech: noun, verb; forms: swinged (verb), swinging, swings
   - `noun`; example: Ziri cut the rope of the **swing**.
   - `verb`; example: **Swing** your arm back and forth.
 - **syndicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: syndicates
@@ -2397,17 +2379,16 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With T
 
-- **tag**; parts of speech: noun, verb; forms: tagged (verb), tagging (verb), tags
+- **tag**; parts of speech: noun, verb; forms: tagged (verb), tagging, tags
   - `noun`; example: Tom wasn't wearing a name **tag**.
   - `verb`; example: Don't you want to **tag** along?
-- **talk**; parts of speech: noun, verb; forms: talked (verb), talking (verb), talks
+- **talk**; parts of speech: noun, verb; forms: talked (verb), talking, talks
   - `noun`; example: You are the **talk** of the whole town.
   - `verb`; example: Kaci was **talking** to his mother.
-- **tap**; parts of speech: noun, verb; forms: tapped (verb), tapping (verb), taps
+- **tap**; parts of speech: noun, verb; forms: tapped (verb), tapping, taps
   - `noun`; example: There was a **tap** at the door.
   - `verb`; example: Bill **tapped** me on the shoulder.
-- **target**; parts of speech: noun, verb; forms: targeted (verb), targeting (verb), targets, targetted (verb),
-  targetting (verb)
+- **target**; parts of speech: noun, verb; forms: targeted (verb), targeting, targets, targetted (verb), targetting
   - `noun`; example: Not a single arrow hit the **target**.
   - `verb`; example: Its metadata can be used to track and **target** you.
 - **tarry**; parts of speech: verb, adjective; heteronym, meanings: linger, tar; forms: tarried (verb linger), tarries
@@ -2415,19 +2396,19 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `verb`; meaning: `linger`; respelling: `TAIR-ee`; example: Clement! false-hearted, knaves, where **tarry** ye?"
   - `adjective`; meaning: `tar`; respelling: `TAH-ree`; example: A **tarry** sludge at the bottom of the barrel showed
     that it once held pitch.
-- **taste**; parts of speech: noun, verb; forms: tasted (verb), tastes, tasting (verb)
+- **taste**; parts of speech: noun, verb; forms: tasted (verb), tastes, tasting
   - `noun`; example: It's too sweet for my **taste**.
   - `verb`; example: The fish **tastes** like the sea.
-- **tear**; parts of speech: noun, verb; heteronym, meanings: drop, rip; forms: tearing (verb rip), tears, tore (verb
-  rip), torn (verb rip)
+- **tear**; parts of speech: noun, verb; heteronym, meanings: drop, rip; forms: tearing (noun rip, verb rip), tears,
+  tore (verb rip), torn (verb rip)
   - `noun`; meaning: `drop`; respelling: `teer`; example: The procurator's wife shed a **tear**.
   - `noun`; meaning: `rip`; respelling: `tair`; example: And the cut - a positive **tear**, I see.
   - `verb`; meaning: `rip`; respelling: `tair`; example: They will **tear** you to pieces!
-- **thunder**; parts of speech: noun, verb; forms: thundered (verb), thundering (verb), thunderred (verb), thunderring
-  (verb), thunders
+- **thunder**; parts of speech: noun, verb; forms: thundered (verb), thundering, thunderred (verb), thunderring,
+  thunders
   - `noun`; example: My dog is scared of the **thunder**.
   - `verb`; example: I heard it **thunder** in the distance.
-- **tie**; parts of speech: noun, verb; forms: tied (verb), ties, tying (verb)
+- **tie**; parts of speech: noun, verb; forms: tied (verb), ties, tying
   - `noun`; example: The **tie** doesn't fit with my suit.
   - `verb`; example: He bent over to **tie** his shoe.
 - **tier**; parts of speech: noun, verb; heteronym, meanings: row, ties; forms: tiered (verb row), tiers
@@ -2435,20 +2416,20 @@ Rules disabled because they did not reach 95 percent precision on real text: non
   - `noun`; meaning: `ties`; respelling: `TY-ur`; example: Bailey became known as one of the most innovative fly
     **tiers** in the West.
   - `verb`; meaning: `row`; respelling: `teer`; example: We're approaching a two-**tiered** medical system.
-- **tip**; parts of speech: noun, verb; forms: tipped (verb), tipping (verb), tips
+- **tip**; parts of speech: noun, verb; forms: tipped (verb), tipping, tips
   - `noun`; example: Before eating here's a small **tip**.
   - `verb`; example: Tom must have been **tipped** off.
 - **torment**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: torments
   - `noun`; meaning: `noun`; respelling: `TOR-ment`; example: The long wait was pure **torment**.
   - `verb`; meaning: `verb`; respelling: `tor-MENT`; example: Guilt will **torment** him forever.
-- **torture**; parts of speech: noun, verb; forms: tortured (verb), tortures, torturing (verb)
+- **torture**; parts of speech: noun, verb; forms: tortured (verb), tortures, torturing
   - `noun`; example: Do you know what **torture** is?
   - `verb`; example: Are you trying to **torture** me?
-- **touch**; parts of speech: noun, verb; forms: touched (verb), touches, touching (verb)
+- **touch**; parts of speech: noun, verb; forms: touched (verb), touches, touching
   - `noun`; example: I felt a **touch** of pain in my head.
   - `verb`; example: I am **touched** by their kindness.
 - **tower**; parts of speech: noun, verb; heteronym, meanings: structure, tows; forms: towered (verb structure),
-  towering (verb structure), towers (noun structure, verb structure)
+  towering (noun structure, verb structure), towers
   - `noun`; meaning: `structure`; respelling: `TOW-ur`; example: "Show me the North **Tower**!" said Defarge.
   - `noun`; meaning: `tows`; respelling: `TOH-ur`; example: With both of the **towers** on duty, the highway crash was
     cleared within the hour.
@@ -2456,10 +2437,10 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **trace**; parts of speech: noun, verb; forms: traced (verb), traces, tracing
   - `noun`; example: There is no **trace** of him, he disappeared.
   - `verb`; example: The FBI **traced** the coupons back to Leonid.
-- **track**; parts of speech: noun, verb; forms: tracked (verb), tracking (verb), tracks
+- **track**; parts of speech: noun, verb; forms: tracked (verb), tracking, tracks
   - `noun`; example: The path leads to the **tracks**.
   - `verb`; example: I'm afraid they've **tracked** me down.
-- **train**; parts of speech: noun, verb; forms: trained (verb), training (verb), trains
+- **train**; parts of speech: noun, verb; forms: trained (verb), training, trains
   - `noun`; example: I will catch the 9:00 **train**.
   - `verb`; example: Tom is **training** a guide dog.
 - **transfer**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: transferred (verb
@@ -2475,8 +2456,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **transport**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: transports
   - `noun`; meaning: `noun`; respelling: `TRANZ-port`; example: A military **transport** landed at dawn.
   - `verb`; meaning: `verb`; respelling: `tranz-PORT`; example: The ship will **transport** cars to Europe.
-- **travel**; parts of speech: noun, verb; forms: traveled (verb), traveling (verb), travelled (verb), travelling
-  (verb), travels
+- **travel**; parts of speech: noun, verb; forms: traveled (verb), traveling, travelled (verb), travelling, travels
   - `noun`; example: I have not had good experience with **travel** agents.
   - `verb`; example: He likes to **travel**. I do, too.
 - **traverse**; parts of speech: noun, verb; heteronym, meanings: stress-first, stress-last; forms: traversed (verb
@@ -2485,26 +2465,26 @@ Rules disabled because they did not reach 95 percent precision on real text: non
     walls of the loft, and the cat likes to nap upon them.
   - `verb`; meaning: `stress-last`; respelling: `truh-VURS`; example: He **traversed** a corridor and came upon a
     staircase.
-- **treat**; parts of speech: noun, verb; forms: treated (verb), treating (verb), treats
+- **treat**; parts of speech: noun, verb; forms: treated (verb), treating, treats
   - `noun`; example: It's been a real **treat** for me.
   - `verb`; example: Don't **treat** me as common people.
 - **trifurcate**; parts of speech: verb, adjective; heteronym, meanings: adjective, verb; forms: trifurcates (verb verb)
   - `adjective`; meaning: `adjective`; respelling: `TRIGH-fur-kit`; example: Its antlers were oddly **trifurcate**.
   - `verb`; meaning: `verb`; respelling: `TRIGH-fur-kayt`; example: Roots often **trifurcate** in rocky soil.
-- **trigger**; parts of speech: noun, verb; forms: triggered (verb), triggering (verb), triggerred (verb), triggerring
-  (verb), triggers
+- **trigger**; parts of speech: noun, verb; forms: triggered (verb), triggering, triggerred (verb), triggerring,
+  triggers
   - `noun`; example: His finger was on the **trigger**.
   - `verb`; example: Laughter **triggers** the release of endorphins.
 - **triplicate**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: triplicates
   - `noun`; meaning: `noun`; respelling: `TRIP-lih-kit`; example: The treaty exists in **triplicate**.
   - `verb`; meaning: `verb`; respelling: `TRIP-lih-kayt`; example: Can you **triplicate** these pages quickly?
-- **trust**; parts of speech: noun, verb; forms: trusted (verb), trusting (verb), trusts
+- **trust**; parts of speech: noun, verb; forms: trusted (verb), trusting, trusts
   - `noun`; example: I want to put my **trust** in you.
   - `verb`; example: I wouldn't **trust** Mary an inch.
-- **tune**; parts of speech: noun, verb; forms: tuned (verb), tunes, tuning (verb)
+- **tune**; parts of speech: noun, verb; forms: tuned (verb), tunes, tuning
   - `noun`; example: The third string is out of **tune**.
   - `verb`; example: She **tuned** his guitar for him.
-- **type**; parts of speech: noun, verb; forms: typed (verb), types, typing (verb)
+- **type**; parts of speech: noun, verb; forms: typed (verb), types, typing
   - `noun`; example: What **type** of work did he do?
   - `verb`; example: I'll **type** more about it later.
 
@@ -2593,7 +2573,7 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **upturn**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: upturns
   - `noun`; meaning: `noun`; respelling: `UP-turn`; example: A modest **upturn** in hiring followed.
   - `verb`; meaning: `verb`; respelling: `up-TURN`; example: Storms can **upturn** small boats.
-- **urge**; parts of speech: noun, verb; forms: urged (verb), urges, urging (verb)
+- **urge**; parts of speech: noun, verb; forms: urged (verb), urges, urging
   - `noun`; example: I can't resist the **urge** to cry.
   - `verb`; example: I **urged** Mary to do what she wanted.
 - **use**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: uses
@@ -2605,57 +2585,56 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 
 ### Lemmas Starting With V
 
-- **value**; parts of speech: noun, verb; forms: valued (verb), values, valuing (verb)
+- **value**; parts of speech: noun, verb; forms: valued (verb), values, valuing
   - `noun`; example: Earth reflects the **values** of humans.
   - `verb`; example: How much do you **value** your health?
-- **venture**; parts of speech: noun, verb; forms: ventured (verb), ventures, venturing (verb)
+- **venture**; parts of speech: noun, verb; forms: ventured (verb), ventures, venturing
   - `noun`; example: Who will provide capital for the **venture**?
   - `verb`; example: The explorers **ventured** inside the caverns.
-- **view**; parts of speech: noun, verb; forms: viewed (verb), viewing (verb), views
+- **view**; parts of speech: noun, verb; forms: viewed (verb), viewing, views
   - `noun`; example: I know this was Cornelius's **view**.
   - `verb`; example: Her family **views** her as crazy and unstable.
-- **visit**; parts of speech: noun, verb; forms: visited (verb), visiting (verb), visits, visitted (verb), visitting
-  (verb)
+- **visit**; parts of speech: noun, verb; forms: visited (verb), visiting, visits, visitted (verb), visitting
   - `noun`; example: He'll pay the kids a little **visit**.
   - `verb`; example: I've never **visited** Boston with Tom.
-- **voice**; parts of speech: noun, verb; forms: voiced (verb), voices, voicing (verb)
+- **voice**; parts of speech: noun, verb; forms: voiced (verb), voices, voicing
   - `noun`; example: I wish I had a **voice** like his!
   - `verb`; example: He **voiced** the sentiments of the nation.
-- **vote**; parts of speech: noun, verb; forms: voted (verb), votes, voting (verb)
+- **vote**; parts of speech: noun, verb; forms: voted (verb), votes, voting
   - `noun`; example: There will be a **vote** on Sunday.
   - `verb`; example: I know which party to **vote** for.
 
 ### Lemmas Starting With W
 
-- **walk**; parts of speech: noun, verb; forms: walked (verb), walking (verb), walks
+- **walk**; parts of speech: noun, verb; forms: walked (verb), walking, walks
   - `noun`; example: She likes to go for **walks** alone.
   - `verb`; example: I am **walking** to the restroom.
 - **warehouse**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: warehouses
   - `noun`; meaning: `noun`; respelling: `WAIR-hous`; example: He works nights at a **warehouse**.
   - `verb`; meaning: `verb`; respelling: `WAIR-houz`; example: Don't **warehouse** food in a damp room.
-- **warrant**; parts of speech: noun, verb; forms: warranted (verb), warranting (verb), warrants
+- **warrant**; parts of speech: noun, verb; forms: warranted (verb), warranting, warrants
   - `noun`; example: It is a death **warrant** for me.
   - `verb`; example: Such a response is not **warranted**.
-- **waste**; parts of speech: noun, verb; forms: wasted (verb), wastes, wasting (verb)
+- **waste**; parts of speech: noun, verb; forms: wasted (verb), wastes, wasting
   - `noun`; example: Social media is a **waste** of time.
   - `verb`; example: There is no more time to **waste**.
-- **watch**; parts of speech: noun, verb; forms: watched (verb), watches, watching (verb)
+- **watch**; parts of speech: noun, verb; forms: watched (verb), watches, watching
   - `noun`; example: The spring in my **watch** is broken.
   - `verb`; example: Did you **watch** the match of yesterday?
-- **wave**; parts of speech: noun, verb; forms: waved (verb), waves, waving (verb)
+- **wave**; parts of speech: noun, verb; forms: waved (verb), waves, waving
   - `noun`; example: She moves like the ocean’s **waves**.
   - `verb`; example: Tom and I **waved** to each other.
 - **wax**; parts of speech: noun, verb; forms: waxed (verb), waxes, waxing
   - `noun`; example: It was like a dreadful **wax** image.
   - `verb`; example: It was Tom who **waxed** the car.
-- **wheel**; parts of speech: noun, verb; forms: wheeled (verb), wheeling (verb), wheels
+- **wheel**; parts of speech: noun, verb; forms: wheeled (verb), wheeling, wheels
   - `noun`; example: Bad **wheels** will squeal a lot.
   - `verb`; example: "**Wheel** me over there!" he commanded.
-- **whip**; parts of speech: noun, verb; forms: whipped (verb), whipping (verb), whips
+- **whip**; parts of speech: noun, verb; forms: whipped (verb), whipping, whips
   - `noun`; example: The driver pointed with his **whip**.
   - `verb`; example: Tom **whipped** Mary with his belt.
-- **whisper**; parts of speech: noun, verb; forms: whispered (verb), whispering (verb), whisperred (verb), whisperring
-  (verb), whispers
+- **whisper**; parts of speech: noun, verb; forms: whispered (verb), whispering, whisperred (verb), whisperring,
+  whispers
   - `noun`; example: "I wonder," said Tom in a **whisper**.
   - `verb`; example: She **whispered**, but no one heard.
 - **wicked**; parts of speech: verb, adjective; heteronym, meanings: evil, wick; forms: wick (verb wick), wickedly
@@ -2666,15 +2645,15 @@ Rules disabled because they did not reach 95 percent precision on real text: non
 - **wind**; parts of speech: noun, verb; heteronym, meanings: noun, verb; forms: winds
   - `noun`; meaning: `noun`; respelling: `wind`; example: The kite rose with the **wind**.
   - `verb`; meaning: `verb`; respelling: `wynd`; example: Vines **wind** around the old oak.
-- **work**; parts of speech: noun, verb; forms: worked (verb), working (verb), works
+- **work**; parts of speech: noun, verb; forms: worked (verb), working, works
   - `noun`; example: I have taken on too much **work**.
   - `verb`; example: You know how the system **works**.
 - **wound**; parts of speech: noun, verb; heteronym, meanings: injury, past; forms: wounds (noun injury)
   - `noun`; meaning: `injury`; respelling: `woond`; example: The **wound** bled for a long time.
   - `verb`; meaning: `past`; respelling: `wound`; example: The path **wound** up the mountain.
-- **wreck**; parts of speech: noun, verb; forms: wrecked (verb), wrecking (verb), wrecks
+- **wreck**; parts of speech: noun, verb; forms: wrecked (verb), wrecking, wrecks
   - `noun`; example: She wasn't injured in the train **wreck**.
   - `verb`; example: "Tax him with having **wrecked** you?
-- **wrong**; parts of speech: noun, verb; forms: wronged (verb), wronging (verb), wrongs
+- **wrong**; parts of speech: noun, verb; forms: wronged (verb), wronging, wrongs
   - `noun`; example: Can you tell right from **wrong**?
   - `verb`; example: He accused us of **wronging** him.
