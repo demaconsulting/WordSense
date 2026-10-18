@@ -33,6 +33,31 @@ sections:
                   - WordSenseBuilder_FormGenerator_Data_IngForm_LeadsWithVerb
                   - WordSenseBuilder_FormGenerator_Data_IngForm_IsNotPluralNoun
 
+              - id: WordSense-WordData-FormGenerator-OwnEntries
+                title: >-
+                  FormGenerator shall give every spelling the analysis of each dictionary entry whose lemma is that
+                  spelling and the forms of the irregular lists, also when an earlier reviewed analysis of another
+                  entry carries the spelling.
+                tags: [unit]
+                justification: |
+                  An entry whose analysis is missing has senses that no word can reach; a noun such as tracing must
+                  keep its own analysis beside the gerund of the verb.
+                tests:
+                  - WordSenseBuilder_FactGenerator_Check_AllFactsAndIngEntriesHold
+
+              - id: WordSense-WordData-FormGenerator-Facts
+                title: >-
+                  FormGenerator shall provide a repeatable command that derives lexicon facts from the irregular
+                  lists, a seeded sample of the regular verbs and nouns, the contractions and the entries spelled like
+                  -ing forms, so that the fact set does not depend on the words seen failing in an evaluation.
+                tags: [unit]
+                justification: |
+                  A fact set chosen from observed failures rewards tuning to those words; a mechanical, seeded
+                  derivation is independent of them and can be regenerated.
+                tests:
+                  - WordSenseBuilder_FactGenerator_Generate_IsDeterministicForSeed
+                  - WordSenseBuilder_FactGenerator_Generate_MatchesCommittedFile
+
               - id: WordSense-WordData-FormGenerator-Rules
                 title: >-
                   FormGenerator shall derive regular noun plurals, third-person verb forms, past and gerund forms and

@@ -40,9 +40,13 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `Lookup("wicks")` gives the verb lemma `wick` and never `wicked`, `Lookup("re-signed")` gives the lemma `re-sign` and
   `Lookup("axes")` is found; only the public lookup APIs are used.
 - **Possessives and facts** (`Lookup_PossessiveOfKnownWord_AddsPossessiveFeature`,
-  `Lookup_StoredContractionOrUnknownStem_IsNotPossessive`, `Lookup_Fact_Holds`, `LexiconFacts_File_CoversEveryCategory`,
+  `Lookup_StoredContractionOrUnknownStem_IsNotPossessive`, `Lookup_Fact_Holds`, `LexiconFacts_Files_CoverEveryCategoryAndMode`,
   `Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma`): the fallback, and the fixed fact set in
-  `Fixtures/lexicon-facts.tsv` (irregulars, participles and gerunds, possessives, contractions, lost words).
+  `Fixtures/lexicon-facts.tsv` (hand-observed rows) and `Fixtures/lexicon-facts-generated.tsv` (rows derived
+  mechanically from the sources with a fixed seed: irregular lists, sampled regular verbs and nouns, possessives,
+  contractions, -ing entries). A fact asserts that an analysis exists; the order of the analyses is not asserted.
+  `Lookup_GerundWithOwnEntry_HasBothAnalyses` checks that a gerund has the verb analysis and the analysis of its own
+  noun or adjective entry.
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).

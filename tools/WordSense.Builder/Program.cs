@@ -33,7 +33,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, rebuild-forms, audit-forms, generate-facts, import-agid, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
 
     /// <summary>
     ///     Runs the builder.
@@ -147,6 +147,8 @@ internal static class Program
                     var generated = Data.FormGenerator.Run(formsData, corpus, options.TryGetValue("oewn", out var ow) ? Path.GetFullPath(ow) : null, formsOverwrite, options.TryGetValue("agid", out var ag) ? Path.GetFullPath(ag) : null);
                     output.Write(generated.Render());
                     return 0;
+                case "generate-facts":
+                    return RunGenerateFacts(options, repository, corpus, output, error);
                 case "audit-forms":
                     return RunAuditForms(options, repository, output, error);
                 case "import-agid":
@@ -189,6 +191,31 @@ internal static class Program
         var result = Data.OewnImporter.Import(Require(options, "input"), data, Path.Combine(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
         output.Write(result.Render());
         return 0;
+    }
+
+    private static int RunGenerateFacts(Dictionary<string, string> options, string repository, string corpus, TextWriter output, TextWriter error)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Combine(repository, "data");
+        var sample = options.TryGetValue("sample", out var sm) ? int.Parse(sm, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSample;
+        var seed = options.TryGetValue("seed", out var sd) ? int.Parse(sd, CultureInfo.InvariantCulture) : Data.FactGenerator.DefaultSeed;
+        var generated = Data.FactGenerator.Generate(data, corpus, seed, sample);
+        var failures = Data.FactGenerator.Check(generated.Facts);
+        var (checkedCount, withGerund, missing) = Data.FactGenerator.CheckIngEntries(data);
+        output.WriteLine($"Seed {seed.ToString(CultureInfo.InvariantCulture)}, sample {sample.ToString(CultureInfo.InvariantCulture)}: {generated.Facts.Count.ToString(CultureInfo.InvariantCulture)} facts ({string.Join(", ", generated.Summary.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}).");
+        output.WriteLine($"{failures.Count.ToString(CultureInfo.InvariantCulture)} fact(s) do not hold in the shipped word table.");
+        output.WriteLine($"Regular forms derived by rule but not shipped (uncorroborated, not asserted): {string.Join(", ", generated.NotShipped.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}.");
+        output.WriteLine($"-ing noun and adjective entries: {checkedCount.ToString(CultureInfo.InvariantCulture)} checked, {withGerund.ToString(CultureInfo.InvariantCulture)} also have the verb gerund analysis, {missing.Count.ToString(CultureInfo.InvariantCulture)} lack the entry analysis.");
+        foreach (var line in failures.Concat(missing.Select(m => "ing-missing\t" + m)))
+        {
+            error.WriteLine(line);
+        }
+
+        if (options.TryGetValue("output", out var file))
+        {
+            File.WriteAllText(file, Data.FactGenerator.Render(generated.Facts), new System.Text.UTF8Encoding(false));
+        }
+
+        return failures.Count == 0 && missing.Count == 0 ? 0 : 1;
     }
 
     private static int RunAuditForms(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)

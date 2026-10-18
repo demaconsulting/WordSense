@@ -660,6 +660,7 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
 | `rebuild-forms --agid FILE --oewn FILE` | Regenerates the inflected-form tables from two independent sources |
 | `audit-forms [--seed N]` | Audits a seeded stratified sample of generated forms against a checker; fails at 1% error |
+| `generate-facts [--seed N]` | Derives the source-derived lexicon facts and checks them against the word table |
 | `import-agid --input FILE` | Derives the irregular forms of dictionary words from the inflection database `infl.txt` |
 | `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR` and the top unknown words |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |

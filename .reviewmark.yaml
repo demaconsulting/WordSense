@@ -219,10 +219,12 @@ reviews:
       - "docs/design/word-sense/word-data/form-generator.md"
       - "docs/verification/word-sense/word-data/form-generator.md"
       - "tools/WordSense.Builder/Data/FormGenerator.cs"
+      - "tools/WordSense.Builder/Data/FactGenerator.cs"
       - "tools/WordSense.Builder/Data/InflectionRules.cs"
       - "tools/WordSense.Builder/Data/AgidImporter.cs"
       - "tools/WordSense.Builder/Data/IrregularSources.cs"
       - "test/WordSense.Builder.Tests/Data/FormGeneratorDataTests.cs"
+      - "test/WordSense.Builder.Tests/Data/FactGeneratorTests.cs"
       - "test/WordSense.Builder.Tests/Data/InflectionRulesTests.cs"
       - "test/DemaConsulting.WordSense.Tests/LexiconFactTests.cs"
 

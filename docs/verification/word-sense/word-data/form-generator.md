@@ -21,5 +21,9 @@ All scenarios pass.
 - **Provenance** (`Data_Provenance_IsKnown`): every row has a known source.
 - **Regular forms** (`Data_RegularInflection_IsResolved`): tossed, brothers, spilled, others.
 - **Gerunds** (`Data_IngForm_LeadsWithVerb`, `Data_IngForm_IsNotPluralNoun`).
+- **Own entries kept** (`Check_AllFactsAndIngEntriesHold`): every generated fact holds and every -ing noun or
+  adjective entry of the dictionary has its own analysis.
+- **Fact generation** (`Generate_IsDeterministicForSeed`, `Generate_MatchesCommittedFile`): the same seed gives the same
+  facts and the committed generated fact file is the output of the command.
 - **Rules** (`NounPlural_Regular_AddsSuffix`, `VerbThirdPerson_Regular_AddsSuffix`, `VerbRegular_Spellings`,
   `AdjectiveDegrees_ShortAndLong`, `ReverseCandidates_Plural_ContainsSingular`).

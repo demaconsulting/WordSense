@@ -49,16 +49,18 @@ sections:
 
               - id: WordSense-Core-WordLexicon-Facts
                 title: >-
-                  WordLexicon shall resolve the linguistic facts of a fixed test set derived from dictionary sources
-                  (irregular forms, participles and gerunds, possessives, contractions and words an earlier rebuild
-                  lost) to the lemma, part of speech and features the set lists.
+                  WordLexicon shall resolve the linguistic facts of a fixed test set, hand-observed and derived
+                  mechanically from dictionary sources (irregular forms, regular inflections, possessives,
+                  contractions and the entries spelled like -ing forms), to the lemma, part of speech and features
+                  the set lists, and shall give a gerund the analysis of its own noun or adjective entry as well.
                 tags: [unit]
                 justification: |
                   The facts are independent of any evaluation sentence, so they guard the lexicon without rewarding
                   tuning to a score.
                 tests:
                   - WordLexicon_Lookup_Fact_Holds
-                  - LexiconFacts_File_CoversEveryCategory
+                  - LexiconFacts_Files_CoverEveryCategoryAndMode
+                  - WordLexicon_Lookup_GerundWithOwnEntry_HasBothAnalyses
                   - WordLexicon_Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma
 
               - id: WordSense-Core-WordLexicon-Complete

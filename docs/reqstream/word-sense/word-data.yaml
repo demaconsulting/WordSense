@@ -69,6 +69,8 @@ sections:
             children:
               - WordSense-WordData-FormGenerator-Corroboration
               - WordSense-WordData-FormGenerator-Gerunds
+              - WordSense-WordData-FormGenerator-OwnEntries
+              - WordSense-WordData-FormGenerator-Facts
               - WordSense-WordData-FormGenerator-Rules
               - WordSense-WordData-FormAuditor-Interval
               - WordSense-WordData-FormAuditor-Gate
