@@ -21,17 +21,17 @@ internal sealed class WeightedLemmaTable
     ///     Initializes a new instance of the <see cref="WeightedLemmaTable"/> class.
     /// </summary>
     /// <param name="data">The trained weights.</param>
-    /// <param name="words">The word lexicon to match against.</param>
-    public WeightedLemmaTable(WeightsData data, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> words)
+    /// <param name="classesOf">Gives the classes (one analysis each, in class order) of a trained lemma; empty when it has none.</param>
+    public WeightedLemmaTable(WeightsData data, Func<string, ImmutableArray<WordDetails>> classesOf)
     {
         ArgumentNullException.ThrowIfNull(data);
-        ArgumentNullException.ThrowIfNull(words);
+        ArgumentNullException.ThrowIfNull(classesOf);
         Data = data;
         var kept = new Dictionary<string, WeightedLemma>(StringComparer.Ordinal);
         var dropped = new List<string>();
         foreach (var entry in data.Lemmas)
         {
-            if (words.TryGetValue(entry.Lemma, out var details) && Matches(entry, details))
+            if (Matches(entry, classesOf(entry.Lemma)))
             {
                 kept[entry.Lemma] = entry;
             }
@@ -88,7 +88,7 @@ internal sealed class WeightedLemmaTable
         }
 
         return data.Dimension == hiddenSize
-            ? new WeightedLemmaTable(data, WordLexicon.Words)
+            ? new WeightedLemmaTable(data, WordLexicon.ClassesOf)
             : throw new InvalidDataException($"The embedded weights have dimension {data.Dimension}, not {hiddenSize}.");
     }
 
@@ -100,11 +100,11 @@ internal sealed class WeightedLemmaTable
     public WeightedLemma? Find(string lemma) => Lemmas.GetValueOrDefault(lemma);
 
     /// <summary>
-    ///     Checks whether the senses of a weights entry are the first senses of the word lexicon entry.
+    ///     Checks whether the senses of a weights entry are the classes of the lexicon for the lemma.
     /// </summary>
     /// <param name="entry">The weights entry.</param>
-    /// <param name="details">The senses from the word lexicon.</param>
-    /// <returns>True when the trained senses are identical in content and order to the first lexicon senses.</returns>
+    /// <param name="details">The classes from the word lexicon.</param>
+    /// <returns>True when the trained senses are identical in content and order to the first classes.</returns>
     private static bool Matches(WeightedLemma entry, ImmutableArray<WordDetails> details)
     {
         if (details.Length < entry.Senses.Count || entry.Senses.Count != entry.Weights.SenseCount)
@@ -112,12 +112,12 @@ internal sealed class WeightedLemmaTable
             return false;
         }
 
-        // The trained senses are a prefix of the lexicon senses; the lexicon may append senses the model has no weights for
+        // The trained senses are a prefix of the classes
         for (var i = 0; i < entry.Senses.Count; i++)
         {
             if (details[i].Lemma != entry.Senses[i].Lemma ||
                 details[i].PartOfSpeech != entry.Senses[i].PartOfSpeech ||
-                details[i].Meaning != entry.Senses[i].Meaning)
+                WordLexicon.MeaningOf(details[i]) != entry.Senses[i].Meaning)
             {
                 return false;
             }

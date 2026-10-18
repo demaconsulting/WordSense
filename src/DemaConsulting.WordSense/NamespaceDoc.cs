@@ -7,8 +7,8 @@ namespace DemaConsulting.WordSense;
 /// <remarks>
 ///     <para>
 ///     Package: the NuGet package <c>DemaConsulting.WordSense</c>, which targets <c>net8.0</c>, <c>net9.0</c> and
-///     <c>net10.0</c> and has no dependencies. It holds <see cref="WordLexicon"/> (every known word with its lemma, part
-///     of speech, meaning and respelling, loaded from an embedded table on first use), the types
+///     <c>net10.0</c> and has no dependencies. It holds <see cref="WordLexicon"/> (every known written form with its
+///     lemma, part of speech, sense id and grammatical features, opened in place from an embedded image on first use), the types
 ///     <see cref="WordDetails"/> and <see cref="PartOfSpeech"/>, the model interface <see cref="IWordSenseModel"/>
 ///     and the types <see cref="MirrorOptions"/> and <see cref="WordSense"/>. It cannot
 ///     disambiguate a word in context by itself: add one of the model packages for that.
@@ -30,7 +30,7 @@ namespace DemaConsulting.WordSense;
 ///     machine, so treat them as approximate. "Real text" means sentences from openly licensed or public-domain
 ///     sources and is the realistic expectation; the holdout was written together with the training sentences and
 ///     is optimistic. All sizes are in MiB (1 MiB = 1,048,576 bytes). The memory figure is what the model adds to the
-///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 43 MiB, once per process, shared
+///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 20 MiB, once per process, shared
 ///     by every model) is not included, so add it to the figure of the model you use. The memory figure is measured as
 ///     the growth of the private memory of the process (<c>Process.PrivateMemorySize64</c>, after a full garbage
 ///     collection) from before the model was created to after it has classified a number of warm-up sentences, so it
@@ -140,8 +140,8 @@ namespace DemaConsulting.WordSense;
 ///     ambiguous words on real text (about 85% best-sense accuracy), possibly filtered by a confidence threshold.
 ///     </para>
 ///     <para>
-///     First-use costs (approximate, machine dependent): the lexicon loads on first use of <see cref="WordLexicon"/>
-///     (about 120 ms, about 43 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
+///     First-use costs (approximate, machine dependent): the lexicon opens on first use of <see cref="WordLexicon"/>
+///     (about 50 ms, about 20 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
 ///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
 ///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
@@ -163,8 +163,8 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     What the lookup does with typical tokens (the same for all three models, because the lexicon lookup comes
-///     first; the models lower-case the word for you, but the dictionary <see cref="WordLexicon.Words"/> itself is
-///     case-sensitive, so look up lower-case keys there; null means <see cref="WordSense.Details"/> is null and the confidence is 0):
+///     first; the models lower-case the word for you, and <see cref="WordLexicon.Lookup"/> finds a word by its exact
+///     spelling first and then without regard to case; null means <see cref="WordSense.Details"/> is null and the confidence is 0):
 ///     </para>
 ///     <list type="table">
 ///     <listheader>
@@ -238,9 +238,9 @@ namespace DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense;
 ///     using DemaConsulting.WordSense.Basic;
 ///
-///     foreach (WordDetails sense in WordLexicon.Words["record"])
+///     foreach (WordDetails sense in WordLexicon.Lookup("record"))
 ///     {
-///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}");
+///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech} {sense.Features}");
 ///     }
 ///
 ///     using IWordSenseModel model = new BasicWordSenseModel();

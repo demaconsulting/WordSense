@@ -121,12 +121,12 @@ internal static class MorphologyExpander
     /// <param name="irregular">The irregular entries.</param>
     /// <param name="answer">Gives the answer of a generated form from its lemma and its parts of speech.</param>
     /// <returns>The generated forms and their answers, in ordinal order.</returns>
-    public static SortedDictionary<string, WordDetails[]> Expand(
+    public static SortedDictionary<string, LegacyWord[]> Expand(
         IReadOnlyList<(string Word, ushort Mask, string Letters)> bases,
         Func<string, bool> known,
         IReadOnlySet<string> enabled,
         IReadOnlyList<IrregularEntry> irregular,
-        Func<string, IReadOnlyList<PartOfSpeech>, WordDetails[]> answer)
+        Func<string, IReadOnlyList<PartOfSpeech>, LegacyWord[]> answer)
     {
         var masks = new Dictionary<string, ushort>(bases.Count, StringComparer.Ordinal);
         var letters = new Dictionary<string, string>(bases.Count, StringComparer.Ordinal);
@@ -242,7 +242,7 @@ internal static class MorphologyExpander
             }
         }
 
-        var result = new SortedDictionary<string, WordDetails[]>(StringComparer.Ordinal);
+        var result = new SortedDictionary<string, LegacyWord[]>(StringComparer.Ordinal);
         foreach (var (form, (lemma, pos)) in candidates)
         {
             if (form.Length < MinFormLength || known(form))

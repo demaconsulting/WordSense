@@ -33,7 +33,7 @@ internal sealed class BasicClassifier
     ///     lexicon of the core library.
     /// </summary>
     public BasicClassifier()
-        : this(null, WordLexicon.Words)
+        : this(null, WordLexicon.View)
     {
     }
 
@@ -196,7 +196,7 @@ internal sealed class BasicClassifier
         Span<double> probabilities = count <= 32 ? stackalloc double[32] : new double[count];
         cues = cues[..count];
         probabilities = probabilities[..count];
-        if (tables.Cues.TryGetValue(senses[0].Lemma, out var cue))
+        if (tables.Cues.TryGetValue(WordLexicon.TrainedLemmaOf(senses[0]), out var cue))
         {
             CueModel.Score(cue, features, senses, cues);
         }

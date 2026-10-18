@@ -38,7 +38,7 @@ internal static class BasicTuner
 
         UdSource.Verify(devPath, UdSource.Files[devName]);
         var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
-        var lexicon = WordLexicon.Words;
+        var lexicon = WordLexicon.View;
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
         var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Combine(corpus, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
@@ -184,7 +184,7 @@ internal static class BasicTuner
             var expected = gold[(row.Lemma, row.Sense)];
             var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var details = senses[row.TargetWordIndex].Details;
-            correct += details is not null && details.PartOfSpeech == expected.Pos && string.Equals(details.Meaning, expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
+            correct += details is not null && details.PartOfSpeech == expected.Pos && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
         }
 
         return (rows.Count, correct);

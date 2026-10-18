@@ -72,7 +72,7 @@ internal static class BasicModelBuilder
         Corpus.EnsureDisjoint(anchors, holdout);
         inventory.Validate(anchors, holdout, forms);
 
-        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), WordLexicon.Words, anchors, inventory, BasicHyperparameters.Default);
+        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), WordLexicon.View, anchors, inventory, BasicHyperparameters.Default);
         var blob = BasicTablesWriter.Write(data);
         _ = BasicTables.Load(blob);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Combine(repository, outputPath);
