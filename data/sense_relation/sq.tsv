@@ -1,0 +1,126 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-squabble__1.10.00..	derivation		oewn-squabble__2.32.00..
+oewn-squabble__2.32.00..	other	event	oewn-squabble__1.10.00..
+oewn-squalid__5.00.00.dirty.01	derivation		oewn-squalidness__1.26.00..
+oewn-squalid__5.00.00.disreputable.00	derivation		oewn-squalidness__1.26.00..
+oewn-squalidly__4.02.00..	pertainym		oewn-squalid__5.00.00.dirty.01
+oewn-squall__1.19.00..	derivation		oewn-squall__2.43.00..
+oewn-squall__1.19.00..	derivation		oewn-squally__5.00.00.stormy.00
+oewn-squall__2.43.00..	other	event	oewn-squall__1.19.00..
+oewn-squander__2.34.00..	derivation		oewn-squanderer__1.18.00..
+oewn-squander__2.34.00..	derivation		oewn-squandering__1.04.00..
+oewn-squander__2.34.00..	other	agent	oewn-squanderer__1.18.00..
+oewn-squander__2.40.01..	derivation		oewn-squanderer__1.18.00..
+oewn-squander__2.40.01..	other	agent	oewn-squanderer__1.18.00..
+oewn-square__1.06.01..	derivation		oewn-square__2.30.00..
+oewn-square__1.06.01..	derivation		oewn-square__2.38.00..
+oewn-square__1.23.00..	derivation		oewn-square__2.31.00..
+oewn-square__1.25.00..	derivation		oewn-square__2.30.00..
+oewn-square__2.31.00..	other	result	oewn-square__1.23.00..
+oewn-square__3.00.00..	derivation		oewn-squareness__1.07.00..
+oewn-square_centimeter__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-square_centimetre__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-square_centimetre__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-square_centimetre__1.23.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-square_dance__1.04.00..	derivation		oewn-square_dance__2.38.00..
+oewn-square_dance__2.38.00..	derivation		oewn-square_dancer__1.18.00..
+oewn-square_dance__2.38.00..	other	agent	oewn-square_dancer__1.18.00..
+oewn-square_dance__2.38.00..	other	event	oewn-square_dance__1.04.00..
+oewn-square_kilometer__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-square_kilometre__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-square_kilometre__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-square_kilometre__1.23.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-square_meter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-square_metre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-square_metre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-square_metre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-square_millimeter__1.23.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-square_millimetre__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-square_millimetre__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-square_millimetre__1.23.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-squarely__4.02.02..	pertainym		oewn-square__3.00.00..
+oewn-squarely__4.02.03..	pertainym		oewn-square__5.00.00.direct.02
+oewn-squashed__3.44.00..	participle		oewn-squash__2.35.00..
+oewn-squat__1.04.00..	derivation		oewn-squat__2.35.00..
+oewn-squat__1.04.01..	derivation		oewn-squat__2.35.00..
+oewn-squat__2.35.00..	derivation		oewn-squatting__1.04.00..
+oewn-squat__2.35.00..	other	event	oewn-squat__1.04.00..
+oewn-squat__2.35.00..	other	event	oewn-squat__1.04.01..
+oewn-squat__2.42.00..	derivation		oewn-squatter__1.18.01..
+oewn-squat__2.42.00..	other	agent	oewn-squatter__1.18.01..
+oewn-squat__5.00.00.low.01	derivation		oewn-squatness__1.07.00..
+oewn-squat__5.00.00.short.03	derivation		oewn-squatness__1.07.00..
+oewn-squattiness__1.07.00..	derivation		oewn-squatty__5.00.00.short.03
+oewn-squawk__1.10.00..	derivation		oewn-squawk__2.32.00..
+oewn-squawk__1.11.00..	derivation		oewn-squawk__2.32.01..
+oewn-squawk__1.11.00..	derivation		oewn-squawky__5.00.00.cacophonous.00
+oewn-squawk__2.32.00..	derivation		oewn-squawker__1.18.00..
+oewn-squawk__2.32.00..	other	agent	oewn-squawker__1.18.00..
+oewn-squawk__2.32.00..	other	event	oewn-squawk__1.10.00..
+oewn-squawk__2.32.01..	derivation		oewn-squawker__1.18.00..
+oewn-squawk__2.32.01..	other	agent	oewn-squawker__1.18.00..
+oewn-squawk__2.32.01..	other	event	oewn-squawk__1.11.00..
+oewn-squeak__1.11.00..	derivation		oewn-squeak__2.39.00..
+oewn-squeak__1.11.00..	derivation		oewn-squeaky__5.00.00.high.03
+oewn-squeak__2.39.00..	derivation		oewn-squeaker__1.06.00..
+oewn-squeak__2.39.00..	other	by_means_of	oewn-squeaker__1.06.00..
+oewn-squeak__2.39.00..	other	event	oewn-squeak__1.11.00..
+oewn-squeal__1.11.00..	derivation		oewn-squeal__2.32.01..
+oewn-squeal__2.32.00..	derivation		oewn-squealer__1.18.00..
+oewn-squeal__2.32.00..	other	agent	oewn-squealer__1.18.00..
+oewn-squeal__2.32.01..	derivation		oewn-squealer__1.05.00..
+oewn-squeal__2.32.01..	other	event	oewn-squeal__1.11.00..
+oewn-squeamish__5.00.00.fastidious.00	derivation		oewn-squeamishness__1.07.00..
+oewn-squeamish__5.00.00.fastidious.00	derivation		oewn-squeamishness__1.26.00..
+oewn-squeamishly__4.02.00..	pertainym		oewn-squeamish__5.00.00.fastidious.00
+oewn-squeegee__1.06.00..	derivation		oewn-squeegee__2.35.00..
+oewn-squeegee__2.35.00..	other	by_means_of	oewn-squeegee__1.06.00..
+oewn-squeegee__2.35.00..	other	instrument	oewn-squeegee__1.06.00..
+oewn-squeezability__1.07.00..	derivation		oewn-squeezable__5.00.00.soft.01
+oewn-squeeze__1.04.00..	derivation		oewn-squeeze__2.35.00..
+oewn-squeeze__1.04.00..	derivation		oewn-squeeze__2.35.02..
+oewn-squeeze__1.04.01..	derivation		oewn-squeeze__2.40.03..
+oewn-squeeze__1.04.01..	derivation		oewn-squeeze__2.41.01..
+oewn-squeeze__1.11.00..	derivation		oewn-squeeze__2.35.02..
+oewn-squeeze__1.11.00..	derivation		oewn-squeeze__2.35.05..
+oewn-squeeze__2.35.00..	also		oewn-squeeze_out__2.35.00..
+oewn-squeeze__2.35.00..	also		oewn-squeeze_out__2.35.01..
+oewn-squeeze__2.35.00..	also		oewn-squeeze_out__2.36.00..
+oewn-squeeze__2.35.00..	derivation		oewn-squeezing__1.04.00..
+oewn-squeeze__2.35.00..	other	event	oewn-squeeze__1.04.00..
+oewn-squeeze__2.35.02..	other	event	oewn-squeeze__1.04.00..
+oewn-squeeze__2.35.02..	other	event	oewn-squeeze__1.11.00..
+oewn-squeeze__2.35.05..	derivation		oewn-squeezer__1.06.00..
+oewn-squeeze__2.35.05..	other	event	oewn-squeeze__1.11.00..
+oewn-squeeze__2.35.05..	other	instrument	oewn-squeezer__1.06.00..
+oewn-squeeze__2.40.03..	other	event	oewn-squeeze__1.04.01..
+oewn-squeeze__2.41.01..	other	event	oewn-squeeze__1.04.01..
+oewn-squelch__1.10.00..	derivation		oewn-squelch__2.30.00..
+oewn-squelch__2.30.00..	derivation		oewn-squelcher__1.06.00..
+oewn-squelch__2.30.00..	derivation		oewn-squelcher__1.10.00..
+oewn-squelch__2.30.00..	other	by_means_of	oewn-squelcher__1.06.00..
+oewn-squelch__2.30.00..	other	by_means_of	oewn-squelcher__1.10.00..
+oewn-squelch__2.30.00..	other	event	oewn-squelch__1.10.00..
+oewn-squiggle__1.10.00..	derivation		oewn-squiggly__5.00.00.crooked.01
+oewn-squiggle__1.10.01..	derivation		oewn-squiggly__5.00.00.crooked.01
+oewn-squint--eyed__3.01.00..	pertainym		oewn-squint__1.26.00..
+oewn-squint__1.04.00..	derivation		oewn-squint__2.29.00..
+oewn-squint__1.26.00..	derivation		oewn-squint__2.39.00..
+oewn-squint__2.29.00..	derivation		oewn-squinter__1.18.00..
+oewn-squint__2.29.00..	other	agent	oewn-squinter__1.18.00..
+oewn-squint__2.39.00..	other	event	oewn-squint__1.26.00..
+oewn-squinty__3.01.00..	pertainym		oewn-squint__1.04.00..
+oewn-squire__1.18.01..	derivation		oewn-squire__2.38.00..
+oewn-squire__2.38.00..	other	agent	oewn-squire__1.18.01..
+oewn-squirm__1.04.00..	derivation		oewn-squirm__2.38.00..
+oewn-squirm__2.38.00..	derivation		oewn-squirmer__1.18.00..
+oewn-squirm__2.38.00..	other	agent	oewn-squirmer__1.18.00..
+oewn-squirm__2.38.00..	other	event	oewn-squirm__1.04.00..
+oewn-squirt__1.11.00..	derivation		oewn-squirt__2.35.00..
+oewn-squirt__1.11.00..	derivation		oewn-squirt__2.35.10..
+oewn-squirt__2.35.00..	derivation		oewn-squirter__1.06.00..
+oewn-squirt__2.35.00..	other	by_means_of	oewn-squirter__1.06.00..
+oewn-squirt__2.35.00..	other	event	oewn-squirt__1.11.00..
+oewn-squirt__2.35.10..	derivation		oewn-squirter__1.06.00..
+oewn-squirt__2.35.10..	other	by_means_of	oewn-squirter__1.06.00..
+oewn-squirt__2.35.10..	other	event	oewn-squirt__1.11.00..

@@ -1,0 +1,539 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-sabbatarian__3.01.00..	derivation		oewn-sabbath__1.28.00..
+oewn-sabbatarian__3.01.00..	pertainym		oewn-sabbath__1.28.00..
+oewn-sabbath__1.28.00..	derivation		oewn-sabbatical__3.01.01..
+oewn-sabbatic__3.01.00..	pertainym		oewn-sabbath__1.28.00..
+oewn-sabbatical__3.01.00..	pertainym		oewn-sabbatical_leave__1.28.00..
+oewn-sabbatical__3.01.01..	pertainym		oewn-sabbath__1.28.00..
+oewn-saber__1.06.00..	derivation		oewn-saber__2.35.00..
+oewn-saber__1.06.00..	derivation		oewn-saber__2.35.01..
+oewn-saber__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saber__1.06.01..	derivation		oewn-saber__2.35.00..
+oewn-saber__1.06.01..	derivation		oewn-saber__2.35.01..
+oewn-saber__1.06.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saber__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saber__2.35.00..	other	instrument	oewn-saber__1.06.00..
+oewn-saber__2.35.00..	other	instrument	oewn-saber__1.06.01..
+oewn-saber__2.35.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saber__2.35.01..	other	instrument	oewn-saber__1.06.00..
+oewn-saber__2.35.01..	other	instrument	oewn-saber__1.06.01..
+oewn-sabine__3.01.00..	pertainym		oewn-sabine__1.18.00..
+oewn-sabotage__1.04.00..	derivation		oewn-sabotage__2.41.00..
+oewn-sabotage__2.41.00..	other	event	oewn-sabotage__1.04.00..
+oewn-sabre__1.06.00..	derivation		oewn-sabre__2.35.00..
+oewn-sabre__1.06.00..	derivation		oewn-sabre__2.35.01..
+oewn-sabre__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sabre__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sabre__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-sabre__1.06.01..	derivation		oewn-sabre__2.35.00..
+oewn-sabre__1.06.01..	derivation		oewn-sabre__2.35.01..
+oewn-sabre__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sabre__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sabre__1.06.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-sabre__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sabre__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sabre__2.35.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-sabre__2.35.00..	other	instrument	oewn-sabre__1.06.00..
+oewn-sabre__2.35.00..	other	instrument	oewn-sabre__1.06.01..
+oewn-sabre__2.35.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sabre__2.35.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sabre__2.35.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-sabre__2.35.01..	other	instrument	oewn-sabre__1.06.00..
+oewn-sabre__2.35.01..	other	instrument	oewn-sabre__1.06.01..
+oewn-saccade__1.04.00..	derivation		oewn-saccadic__3.01.00..
+oewn-saccadic__3.01.00..	pertainym		oewn-saccade__1.04.00..
+oewn-saccharine__5.00.00.sweet.02	derivation		oewn-saccharinity__1.07.00..
+oewn-sacculate__3.01.00..	pertainym		oewn-saccule__1.08.00..
+oewn-sacculated__3.01.00..	pertainym		oewn-saccule__1.08.00..
+oewn-sacerdotal__3.01.00..	pertainym		oewn-priesthood__1.14.00..
+oewn-sacerdotal__3.01.02..	derivation		oewn-sacerdotalism__1.09.00..
+oewn-sacerdotal__3.01.02..	pertainym		oewn-sacerdotalism__1.09.00..
+oewn-sack__1.04.00..	derivation		oewn-sack__2.41.00..
+oewn-sack__1.04.01..	derivation		oewn-sack__2.40.00..
+oewn-sack__1.06.00..	derivation		oewn-sack__2.35.00..
+oewn-sack__1.23.00..	derivation		oewn-sack__2.35.00..
+oewn-sack__2.35.00..	also		oewn-sack_up__2.40.00..
+oewn-sack__2.35.00..	other	undergoer	oewn-sack__1.23.00..
+oewn-sack__2.40.00..	other	event	oewn-sack__1.04.01..
+oewn-sack__2.41.00..	derivation		oewn-sacking__1.04.00..
+oewn-sack__2.41.00..	other	event	oewn-sack__1.04.00..
+oewn-sacral__3.01.00..	derivation		oewn-sacrum__1.08.00..
+oewn-sacral__3.01.00..	pertainym		oewn-sacrum__1.08.00..
+oewn-sacrament__1.04.00..	derivation		oewn-sacramental__3.01.00..
+oewn-sacramental__3.01.00..	pertainym		oewn-sacrament__1.04.00..
+oewn-sacred__3.00.00..	derivation		oewn-sacredness__1.07.00..
+oewn-sacred__5.00.00.dedicated.00	derivation		oewn-sacredness__1.07.00..
+oewn-sacred__5.00.00.holy.00	derivation		oewn-sacredness__1.07.00..
+oewn-sacred__5.00.00.worthy.00	derivation		oewn-sacredness__1.07.00..
+oewn-sacred__5.00.02.holy.00	derivation		oewn-sacredness__1.07.00..
+oewn-sacredly__4.02.00..	pertainym		oewn-sacred__3.00.00..
+oewn-sacrifice__1.04.00..	derivation		oewn-sacrifice__2.35.00..
+oewn-sacrifice__1.04.00..	derivation		oewn-sacrifice__2.40.01..
+oewn-sacrifice__1.04.00..	derivation		oewn-sacrificial__3.01.00..
+oewn-sacrifice__1.04.01..	derivation		oewn-sacrifice__2.40.00..
+oewn-sacrifice__1.21.00..	derivation		oewn-sacrifice__2.40.02..
+oewn-sacrifice__2.35.00..	other	event	oewn-sacrifice__1.04.00..
+oewn-sacrifice__2.40.00..	other	event	oewn-sacrifice__1.04.01..
+oewn-sacrifice__2.40.01..	derivation		oewn-sacrificer__1.18.00..
+oewn-sacrifice__2.40.01..	other	agent	oewn-sacrificer__1.18.00..
+oewn-sacrifice__2.40.01..	other	event	oewn-sacrifice__1.04.00..
+oewn-sacrifice__2.40.02..	other	event	oewn-sacrifice__1.21.00..
+oewn-sacrificial__3.01.00..	pertainym		oewn-sacrifice__1.04.00..
+oewn-sacrilege__1.04.00..	derivation		oewn-sacrilegious__5.00.00.irreverent.00
+oewn-sacrilegious__5.00.00.irreverent.00	derivation		oewn-sacrilegiousness__1.07.00..
+oewn-sacrilegiously__4.02.00..	pertainym		oewn-sacrilegious__5.00.00.irreverent.00
+oewn-sad__3.00.00..	derivation		oewn-sadness__1.12.00..
+oewn-sad__3.00.00..	derivation		oewn-sadness__1.26.00..
+oewn-sad__5.00.00.bad.00	derivation		oewn-sadness__1.07.00..
+oewn-sad__5.00.00.sorrowful.00	derivation		oewn-sadness__1.07.00..
+oewn-saddle__1.06.00..	derivation		oewn-saddle__2.35.01..
+oewn-saddle__2.35.01..	antonym		oewn-unsaddle__2.35.00..
+oewn-saddle__2.35.01..	derivation		oewn-saddlery__1.06.00..
+oewn-saddle__2.35.01..	other	uses	oewn-saddle__1.06.00..
+oewn-saddled__3.00.00..	antonym		oewn-unsaddled__3.00.00..
+oewn-sadducean__3.01.00..	derivation		oewn-sadducee__1.18.00..
+oewn-sadducean__3.01.00..	pertainym		oewn-sadducee__1.18.00..
+oewn-sadism__1.12.00..	derivation		oewn-sadist__1.18.00..
+oewn-sadism__1.12.00..	derivation		oewn-sadistic__3.00.00..
+oewn-sadly__4.02.00..	pertainym		oewn-sad__3.00.00..
+oewn-sadly__4.02.01..	pertainym		oewn-sad__5.00.00.bad.00
+oewn-sadly__4.02.03..	pertainym		oewn-sad__5.00.00.sorrowful.00
+oewn-sadomasochism__1.12.00..	derivation		oewn-sadomasochist__1.18.00..
+oewn-sadomasochism__1.12.00..	derivation		oewn-sadomasochistic__3.01.00..
+oewn-sadomasochistic__3.01.00..	pertainym		oewn-sadomasochism__1.12.00..
+oewn-safe__3.00.01..	derivation		oewn-safeness__1.07.00..
+oewn-safe__5.00.00.sound.00	derivation		oewn-safeness__1.07.00..
+oewn-safe__5.00.00.unadventurous.00	derivation		oewn-safeness__1.07.00..
+oewn-safeguard__1.04.00..	derivation		oewn-safeguard__2.33.00..
+oewn-safeguard__1.10.00..	derivation		oewn-safeguard__2.38.00..
+oewn-safeguard__2.33.00..	other	by_means_of	oewn-safeguard__1.04.00..
+oewn-sag__1.25.00..	derivation		oewn-sag__2.38.00..
+oewn-sag__1.25.00..	derivation		oewn-sag__2.38.01..
+oewn-sag__2.38.00..	other	result	oewn-sag__1.25.00..
+oewn-sag__2.38.01..	other	result	oewn-sag__1.25.00..
+oewn-sagacious__5.00.00.politic.00	derivation		oewn-sagaciousness__1.07.00..
+oewn-sagacious__5.00.00.politic.00	derivation		oewn-sagacity__1.09.00..
+oewn-sagacious__5.00.00.wise.00	derivation		oewn-sagaciousness__1.09.00..
+oewn-sagaciously__4.02.00..	pertainym		oewn-sagacious__5.00.00.wise.00
+oewn-sagely__4.02.00..	pertainym		oewn-sage__5.00.00.wise.00
+oewn-sail__1.04.00..	derivation		oewn-sail__2.38.00..
+oewn-sail__1.04.00..	derivation		oewn-sail__2.38.02..
+oewn-sail__1.04.00..	derivation		oewn-sail__2.38.03..
+oewn-sail__1.06.00..	derivation		oewn-sail__2.38.00..
+oewn-sail__1.06.00..	derivation		oewn-sail__2.38.03..
+oewn-sail__2.38.00..	derivation		oewn-sailing__1.04.00..
+oewn-sail__2.38.00..	other	event	oewn-sail__1.04.00..
+oewn-sail__2.38.01..	also		oewn-sail_through__2.41.00..
+oewn-sail__2.38.02..	other	event	oewn-sail__1.04.00..
+oewn-sail__2.38.03..	derivation		oewn-sailor__1.18.00..
+oewn-sail__2.38.03..	derivation		oewn-sailor__1.18.01..
+oewn-sail__2.38.03..	other	agent	oewn-sailor__1.18.00..
+oewn-sail__2.38.03..	other	agent	oewn-sailor__1.18.01..
+oewn-sail__2.38.03..	other	event	oewn-sail__1.04.00..
+oewn-sailboat__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-sailing_boat__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-sailplane__1.06.00..	derivation		oewn-sailplane__2.38.00..
+oewn-sailplane__2.38.00..	derivation		oewn-sailplaning__1.04.00..
+oewn-sailplane__2.38.00..	other	undergoer	oewn-sailplane__1.06.00..
+oewn-saint__1.18.00..	derivation		oewn-sainthood__1.04.00..
+oewn-saint__1.18.00..	derivation		oewn-sainthood__1.14.00..
+oewn-saint__1.18.00..	derivation		oewn-saintly__5.00.00.good.02
+oewn-saint__1.18.00..	derivation		oewn-sanctify__2.30.00..
+oewn-saint__1.18.00..	derivation		oewn-sanctify__2.32.00..
+oewn-saint__1.18.01..	derivation		oewn-sainthood__1.04.00..
+oewn-saint__1.18.01..	derivation		oewn-sanctify__2.30.00..
+oewn-saint__1.18.03..	derivation		oewn-saint__2.32.00..
+oewn-saint__1.18.03..	derivation		oewn-sainthood__1.04.00..
+oewn-saint__1.18.03..	derivation		oewn-sainthood__1.14.00..
+oewn-saint__1.18.03..	derivation		oewn-saintly__5.00.00.good.02
+oewn-saint__1.18.03..	derivation		oewn-sanctify__2.32.00..
+oewn-saint__2.32.00..	other	undergoer	oewn-saint__1.18.03..
+oewn-saintliness__1.07.00..	derivation		oewn-saintly__5.00.00.good.02
+oewn-saktism__1.09.00..	derivation		oewn-shaktist__1.18.00..
+oewn-saktism__1.14.00..	derivation		oewn-shaktist__1.18.00..
+oewn-salaam__1.10.00..	derivation		oewn-salaam__2.32.00..
+oewn-salaam__2.32.00..	other	event	oewn-salaam__1.10.00..
+oewn-salability__1.07.00..	derivation		oewn-salable__3.00.00..
+oewn-salable__3.00.00..	antonym		oewn-unsalable__3.00.00..
+oewn-salable__3.00.00..	derivation		oewn-salableness__1.07.00..
+oewn-salable__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-salacious__5.00.00.dirty.02	derivation		oewn-salaciousness__1.07.00..
+oewn-salacious__5.00.00.dirty.02	derivation		oewn-salacity__1.07.00..
+oewn-salacious__5.00.00.sexy.00	derivation		oewn-salaciousness__1.07.00..
+oewn-salacious__5.00.00.sexy.00	derivation		oewn-salacity__1.07.00..
+oewn-salaciously__4.02.00..	pertainym		oewn-salacious__5.00.00.sexy.00
+oewn-salamandriform__3.01.00..	pertainym		oewn-salamander__1.05.00..
+oewn-saleable__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-salesman__1.18.00..	derivation		oewn-salesmanship__1.09.00..
+oewn-salience__1.26.00..	derivation		oewn-salient__5.00.00.conspicuous.00
+oewn-saliency__1.26.00..	derivation		oewn-salient__5.00.00.conspicuous.00
+oewn-salinate__2.30.00..	derivation		oewn-saline__1.27.00..
+oewn-saline__5.00.00.salty.00	derivation		oewn-salinity__1.07.00..
+oewn-saliva__1.08.00..	derivation		oewn-salivary__3.01.00..
+oewn-saliva__1.08.00..	derivation		oewn-salivate__2.29.00..
+oewn-salivary__3.01.00..	pertainym		oewn-saliva__1.08.00..
+oewn-salivate__2.29.00..	derivation		oewn-salivation__1.22.00..
+oewn-salivate__2.29.00..	other	event	oewn-salivation__1.22.00..
+oewn-sallow__5.00.00.unhealthy.00	derivation		oewn-sallowness__1.07.00..
+oewn-salopettes__1.06.01..	exemplifies		oewn-plural__1.10.00..
+oewn-salt__1.09.00..	derivation		oewn-salt__2.30.00..
+oewn-salt__1.09.00..	derivation		oewn-salt__2.39.00..
+oewn-salt__1.09.00..	derivation		oewn-salty__5.00.00.tasty.00
+oewn-salt__1.13.00..	derivation		oewn-salt__2.30.00..
+oewn-salt__1.13.00..	derivation		oewn-salt__2.39.00..
+oewn-salt__1.13.00..	derivation		oewn-salty__3.00.00..
+oewn-salt__1.27.00..	derivation		oewn-salty__3.00.00..
+oewn-salt__2.30.00..	derivation		oewn-salter__1.18.01..
+oewn-salt__2.30.00..	other	agent	oewn-salter__1.18.01..
+oewn-salt__2.30.00..	other	by_means_of	oewn-salt__1.13.00..
+oewn-salt__2.39.00..	derivation		oewn-salter__1.18.01..
+oewn-salt__2.39.00..	derivation		oewn-salting__1.04.00..
+oewn-salt__2.39.00..	other	agent	oewn-salter__1.18.01..
+oewn-salt__2.39.00..	other	uses	oewn-salt__1.13.00..
+oewn-saltate__2.38.00..	derivation		oewn-saltation__1.04.00..
+oewn-saltate__2.38.00..	derivation		oewn-saltation__1.04.01..
+oewn-saltate__2.38.00..	other	event	oewn-saltation__1.04.00..
+oewn-saltate__2.38.00..	other	event	oewn-saltation__1.04.01..
+oewn-saltate__2.38.01..	derivation		oewn-saltation__1.22.00..
+oewn-saltate__2.38.01..	other	event	oewn-saltation__1.22.00..
+oewn-saltiness__1.07.00..	derivation		oewn-salty__3.00.00..
+oewn-saltiness__1.09.00..	derivation		oewn-salty__5.00.00.tasty.00
+oewn-saltiness__1.10.00..	derivation		oewn-salty__5.00.00.stimulating.00
+oewn-saltpeter__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saltpetre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-saltpetre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-saltpetre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-salubrious__5.00.00.wholesome.00	derivation		oewn-salubriousness__1.07.00..
+oewn-salubrious__5.00.00.wholesome.00	derivation		oewn-salubrity__1.07.00..
+oewn-salubrious__5.00.02.wholesome.00	derivation		oewn-salubrity__1.07.00..
+oewn-salutation__1.10.00..	derivation		oewn-salute__2.32.00..
+oewn-salutation__1.10.01..	derivation		oewn-salute__2.32.02..
+oewn-salutation__1.10.01..	derivation		oewn-salute__2.34.00..
+oewn-salutation__1.10.02..	derivation		oewn-salute__2.32.00..
+oewn-salute__1.10.00..	derivation		oewn-salute__2.34.00..
+oewn-salute__1.10.01..	derivation		oewn-salute__2.32.01..
+oewn-salute__1.10.01..	derivation		oewn-salute__2.32.02..
+oewn-salute__1.10.02..	derivation		oewn-salute__2.32.00..
+oewn-salute__2.32.00..	derivation		oewn-saluter__1.18.00..
+oewn-salute__2.32.00..	other	agent	oewn-saluter__1.18.00..
+oewn-salute__2.32.00..	other	by_means_of	oewn-salutation__1.10.00..
+oewn-salute__2.32.00..	other	by_means_of	oewn-salutation__1.10.02..
+oewn-salute__2.32.00..	other	event	oewn-salute__1.10.02..
+oewn-salute__2.32.01..	other	event	oewn-salute__1.10.01..
+oewn-salute__2.32.02..	other	event	oewn-salutation__1.10.01..
+oewn-salute__2.32.02..	other	event	oewn-salute__1.10.01..
+oewn-salute__2.34.00..	other	event	oewn-salutation__1.10.01..
+oewn-salute__2.34.00..	other	event	oewn-salute__1.10.00..
+oewn-salvage__1.04.01..	derivation		oewn-salvage__2.41.00..
+oewn-salvage__1.04.01..	derivation		oewn-salve__2.41.00..
+oewn-salvage__1.21.00..	derivation		oewn-salvage__2.41.00..
+oewn-salvage__1.21.00..	derivation		oewn-salve__2.41.00..
+oewn-salvage__2.35.00..	derivation		oewn-salvager__1.18.00..
+oewn-salvage__2.35.00..	other	agent	oewn-salvager__1.18.00..
+oewn-salvage__2.41.00..	derivation		oewn-salvager__1.18.00..
+oewn-salvage__2.41.00..	other	agent	oewn-salvager__1.18.00..
+oewn-salvage__2.41.00..	other	event	oewn-salvage__1.04.01..
+oewn-salvage__2.41.00..	other	undergoer	oewn-salvage__1.21.00..
+oewn-salvation__1.04.02..	derivation		oewn-salve__2.41.00..
+oewn-salve__1.04.00..	derivation		oewn-salve__2.29.00..
+oewn-salve__1.06.00..	derivation		oewn-salve__2.29.00..
+oewn-salve__2.29.00..	other	uses	oewn-salve__1.04.00..
+oewn-salve__2.29.00..	other	uses	oewn-salve__1.06.00..
+oewn-salve__2.41.00..	other	event	oewn-salvation__1.04.02..
+oewn-salvific__3.01.00..	pertainym		oewn-salvation__1.04.00..
+oewn-samba__1.04.00..	derivation		oewn-samba__2.38.00..
+oewn-samba__1.10.00..	derivation		oewn-samba__2.38.00..
+oewn-samba__2.38.00..	other	event	oewn-samba__1.04.00..
+oewn-samba__2.38.00..	other	event	oewn-samba__1.10.00..
+oewn-same__3.00.00..	derivation		oewn-sameness__1.07.00..
+oewn-same__5.00.00.unchanged.00	derivation		oewn-sameness__1.07.02..
+oewn-sample__1.09.00..	derivation		oewn-sample__2.34.00..
+oewn-sample__2.34.00..	derivation		oewn-sampler__1.06.00..
+oewn-sample__2.34.00..	derivation		oewn-sampler__1.14.00..
+oewn-sample__2.34.00..	derivation		oewn-sampler__1.18.00..
+oewn-sample__2.34.00..	other	agent	oewn-sampler__1.18.00..
+oewn-sample__2.34.00..	other	event	oewn-sample__1.09.00..
+oewn-sample__2.34.00..	other	result	oewn-sampler__1.06.00..
+oewn-sample__2.34.00..	other	result	oewn-sampler__1.14.00..
+oewn-san_marinese__1.18.00..	derivation		oewn-san_marinese__3.01.00..
+oewn-sanatorium__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-sanctification__1.04.00..	derivation		oewn-sanctify__2.30.00..
+oewn-sanctification__1.04.00..	derivation		oewn-sanctify__2.32.00..
+oewn-sanctify__2.30.00..	other	event	oewn-sanctification__1.04.00..
+oewn-sanctify__2.30.00..	other	result	oewn-saint__1.18.00..
+oewn-sanctify__2.30.00..	other	result	oewn-saint__1.18.01..
+oewn-sanctify__2.32.00..	other	event	oewn-sanctification__1.04.00..
+oewn-sanctify__2.32.00..	other	result	oewn-saint__1.18.00..
+oewn-sanctify__2.32.00..	other	result	oewn-saint__1.18.03..
+oewn-sanctimonious__5.00.00.pious.00	derivation		oewn-sanctimoniousness__1.07.00..
+oewn-sanctimonious__5.00.00.pious.00	derivation		oewn-sanctimony__1.07.00..
+oewn-sanctimoniously__4.02.00..	pertainym		oewn-sanctimonious__5.00.00.pious.00
+oewn-sanction__1.04.01..	derivation		oewn-sanction__2.41.01..
+oewn-sanction__1.04.02..	derivation		oewn-sanction__2.32.02..
+oewn-sanction__1.07.00..	derivation		oewn-sanction__2.41.01..
+oewn-sanction__1.10.00..	derivation		oewn-sanction__2.32.01..
+oewn-sanction__1.10.00..	derivation		oewn-sanction__2.41.01..
+oewn-sanction__2.32.01..	other	uses	oewn-sanction__1.10.00..
+oewn-sanction__2.32.02..	other	uses	oewn-sanction__1.04.02..
+oewn-sanction__2.41.01..	derivation		oewn-sanctionative__5.00.00.enabling.00
+oewn-sanction__2.41.01..	other	event	oewn-sanction__1.04.01..
+oewn-sanction__2.41.01..	other	uses	oewn-sanction__1.07.00..
+oewn-sanction__2.41.01..	other	uses	oewn-sanction__1.10.00..
+oewn-sand__1.27.00..	derivation		oewn-sandy__3.00.02..
+oewn-sand__2.35.00..	derivation		oewn-sander__1.06.00..
+oewn-sand__2.35.00..	other	instrument	oewn-sander__1.06.00..
+oewn-sandbag__1.06.00..	derivation		oewn-sandbag__2.30.00..
+oewn-sandbag__1.06.00..	derivation		oewn-sandbag__2.35.00..
+oewn-sandbag__2.30.00..	other	by_means_of	oewn-sandbag__1.06.00..
+oewn-sandbag__2.32.02..	derivation		oewn-sandbagger__1.18.00..
+oewn-sandbag__2.32.02..	other	agent	oewn-sandbagger__1.18.00..
+oewn-sandbag__2.35.00..	other	instrument	oewn-sandbag__1.06.00..
+oewn-sandblast__1.19.00..	derivation		oewn-sandblast__2.35.00..
+oewn-sandblast__2.35.00..	derivation		oewn-sandblaster__1.06.00..
+oewn-sandblast__2.35.00..	other	instrument	oewn-sandblast__1.19.00..
+oewn-sandblast__2.35.00..	other	instrument	oewn-sandblaster__1.06.00..
+oewn-sandiness__1.07.00..	derivation		oewn-sandy__3.00.02..
+oewn-sandpaper__1.27.00..	derivation		oewn-sandpaper__2.35.00..
+oewn-sandpaper__1.27.00..	derivation		oewn-sandpapery__5.00.00.rough.00
+oewn-sandpaper__2.35.00..	other	instrument	oewn-sandpaper__1.27.00..
+oewn-sandpit__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-sandril__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-sandwich__1.13.00..	derivation		oewn-sandwich__2.36.00..
+oewn-sandwich__2.36.00..	other	result	oewn-sandwich__1.13.00..
+oewn-sane__3.00.00..	derivation		oewn-saneness__1.26.00..
+oewn-sane__3.00.00..	derivation		oewn-sanity__1.26.00..
+oewn-sane__5.00.00.rational.00	derivation		oewn-saneness__1.26.00..
+oewn-sanely__4.02.00..	pertainym		oewn-sane__5.00.00.rational.00
+oewn-sanely__4.02.01..	pertainym		oewn-sane__3.00.00..
+oewn-sanguine__1.07.00..	derivation		oewn-sanguineous__5.00.00.bloody.00
+oewn-sanguine__5.00.00.optimistic.00	derivation		oewn-sanguineness__1.12.00..
+oewn-sanguine__5.00.00.optimistic.00	derivation		oewn-sanguinity__1.12.00..
+oewn-sanies__1.08.00..	derivation		oewn-sanious__3.01.00..
+oewn-sanious__3.01.00..	pertainym		oewn-sanies__1.08.00..
+oewn-sanitariness__1.26.00..	antonym		oewn-unsanitariness__1.26.00..
+oewn-sanitariness__1.26.00..	derivation		oewn-sanitary__3.00.00..
+oewn-sanitarium__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-sanitary__3.00.00..	antonym		oewn-unsanitary__3.00.00..
+oewn-sanitary_towel__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-sanitate__2.40.00..	derivation		oewn-sanitation__1.26.00..
+oewn-sanitate__2.40.00..	other	state	oewn-sanitation__1.26.00..
+oewn-sanitisation__1.04.00..	derivation		oewn-sanitise__2.35.00..
+oewn-sanitisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sanitisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sanitise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sanitise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sanitise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sanitise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sanitise__2.35.00..	other	event	oewn-sanitisation__1.04.00..
+oewn-sanitised__3.44.00..	participle		oewn-sanitise__2.30.00..
+oewn-sanitization__1.04.00..	derivation		oewn-sanitize__2.35.00..
+oewn-sanitization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sanitize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sanitize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sanitize__2.35.00..	other	event	oewn-sanitization__1.04.00..
+oewn-sanitized__3.44.00..	participle		oewn-sanitize__2.30.00..
+oewn-sap__1.27.00..	derivation		oewn-sappy__5.00.00.juicy.00
+oewn-sap__2.35.00..	derivation		oewn-sapper__1.18.01..
+oewn-sap__2.35.00..	other	agent	oewn-sapper__1.18.01..
+oewn-sap__2.40.00..	derivation		oewn-sapper__1.18.01..
+oewn-sapid__5.00.00.tasty.00	derivation		oewn-sapidness__1.07.00..
+oewn-sapience__1.09.00..	derivation		oewn-sapient__5.00.00.wise.00
+oewn-sapiens__3.01.00..	pertainym		oewn-homo_sapiens__1.05.00..
+oewn-sapiently__4.02.00..	pertainym		oewn-sapient__5.00.00.wise.00
+oewn-saponaceous__3.01.00..	pertainym		oewn-soap__1.06.00..
+oewn-saponification__1.22.00..	derivation		oewn-saponify__2.30.00..
+oewn-saponification__1.22.00..	derivation		oewn-saponify__2.30.01..
+oewn-saponified__3.44.00..	antonym		oewn-unsaponified__3.44.00..
+oewn-saponified__3.44.00..	participle		oewn-saponify__2.30.00..
+oewn-saponify__2.30.00..	derivation		oewn-soap__1.06.00..
+oewn-saponify__2.30.00..	other	event	oewn-saponification__1.22.00..
+oewn-saponify__2.30.00..	other	result	oewn-saponification__1.22.00..
+oewn-saponify__2.30.00..	other	result	oewn-soap__1.06.00..
+oewn-saponify__2.30.01..	other	event	oewn-saponification__1.22.00..
+oewn-saponify__2.30.01..	other	result	oewn-saponification__1.22.00..
+oewn-sapphire__1.07.00..	derivation		oewn-sapphire__5.00.00.chromatic.00
+oewn-sapphirine__3.01.00..	pertainym		oewn-sapphire__1.27.00..
+oewn-saprobe__1.20.00..	derivation		oewn-saprobic__3.01.00..
+oewn-saprobic__3.01.00..	pertainym		oewn-saprobe__1.20.00..
+oewn-saprophyte__1.20.00..	derivation		oewn-saprophytic__3.01.00..
+oewn-saprophyte__1.20.00..	derivation		oewn-saprophytic__5.00.00.herbivorous.00
+oewn-saprophytic__3.01.00..	pertainym		oewn-saprophyte__1.20.00..
+oewn-sarafem__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-saran_wrap__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-sarawakian__1.18.00..	derivation		oewn-sarawakian__3.01.00..
+oewn-sarcasm__1.10.00..	derivation		oewn-sarcastic__3.00.00..
+oewn-sarcastic__3.00.00..	antonym		oewn-unsarcastic__3.00.00..
+oewn-sarcastically__4.02.00..	pertainym		oewn-sarcastic__3.00.00..
+oewn-sarcolemma__1.08.00..	derivation		oewn-sarcolemmal__3.01.00..
+oewn-sarcolemma__1.08.00..	derivation		oewn-sarcolemmic__3.01.00..
+oewn-sarcolemmal__3.01.00..	pertainym		oewn-sarcolemma__1.08.00..
+oewn-sarcolemmic__3.01.00..	pertainym		oewn-sarcolemma__1.08.00..
+oewn-sarcolemnous__3.01.00..	pertainym		oewn-sarcolemma__1.08.00..
+oewn-sarcosomal__3.01.00..	derivation		oewn-sarcosome__1.08.00..
+oewn-sarcosomal__3.01.00..	pertainym		oewn-sarcosome__1.08.00..
+oewn-sardinian__1.10.00..	derivation		oewn-sardinian__3.01.00..
+oewn-sardinian__1.18.00..	derivation		oewn-sardinian__3.01.00..
+oewn-sardonically__4.02.00..	pertainym		oewn-sardonic__5.00.00.sarcastic.00
+oewn-sartor__1.18.00..	derivation		oewn-sartorial__3.01.00..
+oewn-sartorial__3.01.00..	pertainym		oewn-tailor__1.18.00..
+oewn-sartorial__3.01.00..	pertainym		oewn-tailoring__1.04.00..
+oewn-sartorial__3.01.01..	derivation		oewn-sartorius__1.08.00..
+oewn-sartorial__3.01.01..	pertainym		oewn-sartorius__1.08.00..
+oewn-sashay__1.04.00..	derivation		oewn-sashay__2.38.01..
+oewn-sashay__1.04.00..	derivation		oewn-sashay__2.38.02..
+oewn-sashay__2.38.01..	other	event	oewn-sashay__1.04.00..
+oewn-sashay__2.38.02..	other	event	oewn-sashay__1.04.00..
+oewn-sass__1.10.00..	derivation		oewn-sassy__5.00.00.forward.02
+oewn-sass__2.32.00..	derivation		oewn-sassing__1.10.00..
+oewn-satanism__1.09.00..	derivation		oewn-satanist__1.18.00..
+oewn-satellite__1.06.00..	derivation		oewn-satellite__2.32.00..
+oewn-satellite__2.32.00..	other	instrument	oewn-satellite__1.06.00..
+oewn-satiate__2.34.00..	derivation		oewn-satiation__1.04.00..
+oewn-satiate__2.34.00..	other	event	oewn-satiation__1.04.00..
+oewn-satin__1.06.00..	derivation		oewn-satiny__5.00.00.bright.00
+oewn-satire__1.10.00..	derivation		oewn-satiric__5.00.00.sarcastic.00
+oewn-satire__1.10.00..	derivation		oewn-satirical__5.00.00.sarcastic.00
+oewn-satire__1.10.00..	derivation		oewn-satirise__2.32.00..
+oewn-satire__1.10.00..	derivation		oewn-satirist__1.18.00..
+oewn-satire__1.10.00..	derivation		oewn-satirize__2.32.00..
+oewn-satirically__4.02.00..	pertainym		oewn-satirical__5.00.00.sarcastic.00
+oewn-satirise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-satirise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-satirize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-satisfaction__1.04.00..	derivation		oewn-satisfy__2.34.01..
+oewn-satisfaction__1.04.00..	derivation		oewn-satisfy__2.42.00..
+oewn-satisfactorily__4.02.00..	antonym		oewn-unsatisfactorily__4.02.00..
+oewn-satisfactorily__4.02.00..	pertainym		oewn-satisfactory__3.00.00..
+oewn-satisfactoriness__1.07.00..	antonym		oewn-unsatisfactoriness__1.07.00..
+oewn-satisfactoriness__1.07.00..	derivation		oewn-satisfactory__3.00.00..
+oewn-satisfactoriness__1.07.00..	derivation		oewn-satisfactory__5.00.00.good.01
+oewn-satisfactory__3.00.00..	antonym		oewn-unsatisfactory__3.00.00..
+oewn-satisfactory__3.00.00..	derivation		oewn-satisfy__2.34.01..
+oewn-satisfactory__3.00.00..	derivation		oewn-satisfy__2.42.00..
+oewn-satisfactory__5.00.00.good.01	derivation		oewn-satisfy__2.34.01..
+oewn-satisfactory__5.00.00.good.01	derivation		oewn-satisfy__2.42.00..
+oewn-satisfice__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-satisfice__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-satisfice__2.41.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-satisfier__1.17.00..	derivation		oewn-satisfy__2.34.01..
+oewn-satisfier__1.17.00..	derivation		oewn-satisfy__2.37.00..
+oewn-satisfier__1.17.00..	derivation		oewn-satisfy__2.42.00..
+oewn-satisfise__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-satisfy__2.37.00..	other	by_means_of	oewn-satisfier__1.17.00..
+oewn-satisfy__2.42.00..	other	by_means_of	oewn-satisfier__1.17.00..
+oewn-satisfy__2.42.00..	other	event	oewn-satisfaction__1.04.00..
+oewn-saturate__2.30.01..	derivation		oewn-saturation__1.04.00..
+oewn-saturate__2.30.01..	other	event	oewn-saturation__1.04.00..
+oewn-saturated__3.00.00..	antonym		oewn-unsaturated__3.00.00..
+oewn-saturated__3.00.01..	antonym		oewn-unsaturated__3.00.01..
+oewn-saturated__3.00.03..	antonym		oewn-unsaturated__3.00.03..
+oewn-satyr__1.18.00..	derivation		oewn-satyric__3.01.00..
+oewn-satyr__1.18.00..	derivation		oewn-satyrical__3.01.00..
+oewn-satyr__1.18.01..	derivation		oewn-satyric__3.01.00..
+oewn-satyr__1.18.01..	derivation		oewn-satyrical__3.01.00..
+oewn-satyric__3.01.00..	pertainym		oewn-satyr__1.18.00..
+oewn-satyrical__3.01.00..	pertainym		oewn-satyr__1.18.00..
+oewn-sauce__1.13.00..	derivation		oewn-sauce__2.30.00..
+oewn-sauce__1.13.00..	derivation		oewn-sauce__2.35.00..
+oewn-sauce__2.30.00..	other	uses	oewn-sauce__1.13.00..
+oewn-sauce__2.35.00..	other	uses	oewn-sauce__1.13.00..
+oewn-saucily__4.02.01..	pertainym		oewn-saucy__5.00.00.forward.02
+oewn-sauciness__1.07.00..	derivation		oewn-saucy__5.00.00.forward.02
+oewn-saudi__1.18.00..	derivation		oewn-saudi__3.01.00..
+oewn-saunter__1.04.00..	derivation		oewn-saunter__2.38.00..
+oewn-saunter__1.04.01..	derivation		oewn-saunter__2.38.00..
+oewn-saunter__2.38.00..	derivation		oewn-saunterer__1.18.00..
+oewn-saunter__2.38.00..	other	agent	oewn-saunterer__1.18.00..
+oewn-saunter__2.38.00..	other	event	oewn-saunter__1.04.00..
+oewn-saunter__2.38.00..	other	event	oewn-saunter__1.04.01..
+oewn-saurian__1.05.00..	derivation		oewn-saurian__3.01.00..
+oewn-saurian__3.01.00..	pertainym		oewn-lizard__1.05.00..
+oewn-saute__2.30.00..	derivation		oewn-sauteing__1.04.00..
+oewn-savage__1.18.00..	derivation		oewn-savage__5.00.00.noncivilized.00
+oewn-savage__1.18.01..	derivation		oewn-savage__2.33.00..
+oewn-savage__1.18.01..	derivation		oewn-savage__5.00.00.inhumane.00
+oewn-savage__2.33.00..	derivation		oewn-savagery__1.04.00..
+oewn-savage__2.33.00..	other	agent	oewn-savage__1.18.01..
+oewn-savage__5.00.00.inhumane.00	derivation		oewn-savageness__1.07.00..
+oewn-savage__5.00.00.noncivilized.00	derivation		oewn-savageness__1.07.00..
+oewn-savage__5.00.00.violent.00	derivation		oewn-savageness__1.07.00..
+oewn-savage__5.00.00.wild.01	derivation		oewn-savageness__1.07.00..
+oewn-savagely__4.02.00..	pertainym		oewn-savage__5.00.00.inhumane.00
+oewn-savagely__4.02.02..	pertainym		oewn-savage__5.00.00.wild.01
+oewn-save__2.40.00..	derivation		oewn-saver__1.18.00..
+oewn-save__2.40.00..	other	agent	oewn-saver__1.18.00..
+oewn-save__2.40.01..	derivation		oewn-savings__1.21.00..
+oewn-save__2.40.02..	derivation		oewn-saver__1.18.00..
+oewn-save__2.40.02..	other	agent	oewn-saver__1.18.00..
+oewn-save__2.40.04..	derivation		oewn-saver__1.18.00..
+oewn-save__2.40.04..	other	agent	oewn-saver__1.18.00..
+oewn-save__2.41.00..	derivation		oewn-savior__1.18.00..
+oewn-save__2.41.00..	other	agent	oewn-savior__1.18.00..
+oewn-save__2.41.01..	derivation		oewn-saver__1.18.01..
+oewn-save__2.41.01..	other	agent	oewn-saver__1.18.01..
+oewn-savior__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-saviour__1.18.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-saviour__1.18.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-saviour__1.18.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-savor__1.09.00..	derivation		oewn-savor__2.39.01..
+oewn-savor__1.09.00..	derivation		oewn-savor__2.39.02..
+oewn-savor__2.37.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-savor__2.39.00..	derivation		oewn-savoring__1.04.00..
+oewn-savor__2.39.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-savor__2.39.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-savor__2.39.01..	other	event	oewn-savor__1.09.00..
+oewn-savor__2.39.01..	other	uses	oewn-savor__1.09.00..
+oewn-savor__2.39.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-savor__2.39.02..	other	event	oewn-savor__1.09.00..
+oewn-savoriness__1.07.00..	derivation		oewn-savory__5.00.00.appetizing.00
+oewn-savoriness__1.07.00..	derivation		oewn-savory__5.00.00.tasty.00
+oewn-savorless__5.00.01.tasteless.01	derivation		oewn-savorlessness__1.07.00..
+oewn-savory__1.13.01..	derivation		oewn-savory__5.00.00.appetizing.00
+oewn-savory__1.13.01..	derivation		oewn-savory__5.00.00.tasty.00
+oewn-savory__3.00.00..	antonym		oewn-unsavory__3.00.00..
+oewn-savour__1.09.00..	derivation		oewn-savour__2.39.00..
+oewn-savour__1.09.00..	derivation		oewn-savour__2.39.01..
+oewn-savour__1.09.00..	derivation		oewn-savour__2.39.02..
+oewn-savour__1.09.00..	derivation		oewn-savoury__5.00.00.appetizing.00
+oewn-savour__1.09.00..	derivation		oewn-savoury__5.00.00.tasty.00
+oewn-savour__2.37.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-savour__2.37.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-savour__2.37.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-savour__2.39.00..	derivation		oewn-savouring__1.04.00..
+oewn-savour__2.39.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-savour__2.39.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-savour__2.39.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-savour__2.39.00..	other	event	oewn-savour__1.09.00..
+oewn-savour__2.39.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-savour__2.39.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-savour__2.39.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-savour__2.39.01..	other	uses	oewn-savour__1.09.00..
+oewn-savour__2.39.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-savour__2.39.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-savour__2.39.02..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-savour__2.39.02..	other	event	oewn-savour__1.09.00..
+oewn-savourless__5.00.01.tasteless.01	derivation		oewn-savourlessness__1.07.00..
+oewn-savoury__1.13.01..	derivation		oewn-savoury__5.00.00.appetizing.00
+oewn-savoury__1.13.01..	derivation		oewn-savoury__5.00.00.tasty.00
+oewn-savvy__1.09.00..	derivation		oewn-savvy__2.31.00..
+oewn-savvy__2.31.00..	other	event	oewn-savvy__1.09.00..
+oewn-saw__1.06.00..	derivation		oewn-saw__2.35.00..
+oewn-saw__1.06.01..	derivation		oewn-saw__2.35.00..
+oewn-saw__2.35.00..	derivation		oewn-sawyer__1.18.00..
+oewn-saw__2.35.00..	other	agent	oewn-sawyer__1.18.00..
+oewn-saw__2.35.00..	other	instrument	oewn-saw__1.06.00..
+oewn-saw__2.35.00..	other	instrument	oewn-saw__1.06.01..
+oewn-saxatile__3.01.00..	pertainym		oewn-saxicolous_plant__1.20.00..
+oewn-saxicoline__3.01.00..	pertainym		oewn-saxicolous_plant__1.20.00..
+oewn-saxicolous__3.01.00..	pertainym		oewn-saxicolous_plant__1.20.00..
+oewn-saxon__1.18.00..	derivation		oewn-saxon__3.01.00..
+oewn-saxon__3.01.00..	pertainym		oewn-saxon__1.18.00..
+oewn-saxophone__1.06.00..	derivation		oewn-saxophonist__1.18.00..
+oewn-say__1.26.00..	derivation		oewn-say__2.32.00..
+oewn-say__1.26.00..	derivation		oewn-say__2.32.01..
+oewn-say__1.26.00..	derivation		oewn-say__2.32.13..
+oewn-say__2.32.00..	other	event	oewn-say__1.26.00..
+oewn-say__2.32.01..	other	event	oewn-say__1.26.00..
+oewn-say__2.32.08..	derivation		oewn-saying__1.10.00..
+oewn-say__2.32.13..	other	event	oewn-say__1.26.00..
+oewn-say_farewell__2.32.00..	antonym		oewn-welcome__2.32.00..

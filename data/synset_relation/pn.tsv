@@ -1,0 +1,17 @@
+from_synset	rel	to_synset
+oewn-00688388-n	hypernym	oewn-00394177-n
+oewn-02832994-a	domain_topic	oewn-06088528-n
+oewn-03977679-n	hypernym	oewn-04001730-n
+oewn-03977780-n	hypernym	oewn-04447883-n
+oewn-03977780-n	mero_part	oewn-02981281-n
+oewn-03977780-n	mero_part	oewn-03578156-n
+oewn-03977780-n	mero_part	oewn-04484326-n
+oewn-03978129-n	hypernym	oewn-04524830-n
+oewn-06122777-n	hypernym	oewn-06109843-n
+oewn-13146641-n	hypernym	oewn-13145876-n
+oewn-14171109-n	hypernym	oewn-14168577-n
+oewn-14172649-n	hypernym	oewn-14171109-n
+oewn-14173018-n	hypernym	oewn-14525310-n
+oewn-14173445-n	hypernym	oewn-14168577-n
+oewn-14173445-n	mero_part	oewn-14231291-n
+oewn-14377400-n	hypernym	oewn-14359944-n

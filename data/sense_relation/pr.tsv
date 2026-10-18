@@ -1,0 +1,1626 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-practicability__1.07.00..	derivation		oewn-practicable__5.00.00.practical.00
+oewn-practicable__5.00.00.possible.00	derivation		oewn-practicableness__1.07.00..
+oewn-practicable__5.00.00.practical.00	derivation		oewn-practicableness__1.07.00..
+oewn-practicably__4.02.00..	pertainym		oewn-practicable__5.00.00.possible.00
+oewn-practical__3.00.00..	derivation		oewn-practicality__1.07.00..
+oewn-practical__3.00.00..	derivation		oewn-practice__1.04.00..
+oewn-practical__5.00.01.realistic.00	derivation		oewn-practicality__1.07.00..
+oewn-practical__5.00.01.realistic.00	derivation		oewn-practice__1.04.00..
+oewn-practically__4.02.01..	pertainym		oewn-practical__3.00.00..
+oewn-practice__1.04.00..	derivation		oewn-practice__2.41.01..
+oewn-practice__1.04.02..	derivation		oewn-practice__2.31.00..
+oewn-practice__1.04.02..	derivation		oewn-practice__2.36.00..
+oewn-practice__1.04.03..	derivation		oewn-practice__2.41.00..
+oewn-practice__1.04.03..	derivation		oewn-practice__2.41.01..
+oewn-practice__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-practice__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-practice__2.31.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-practice__2.31.00..	other	event	oewn-practice__1.04.02..
+oewn-practice__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-practice__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-practice__2.36.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-practice__2.36.00..	other	event	oewn-practice__1.04.02..
+oewn-practice__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-practice__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-practice__2.41.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-practice__2.41.00..	other	event	oewn-practice__1.04.03..
+oewn-practice__2.41.01..	other	event	oewn-practice__1.04.00..
+oewn-practice__2.41.01..	other	event	oewn-practice__1.04.03..
+oewn-practise__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-practise__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-practise__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-praetor__1.18.00..	derivation		oewn-praetorial__3.01.00..
+oewn-praetor__1.18.00..	derivation		oewn-praetorian__3.01.00..
+oewn-praetor__1.18.00..	derivation		oewn-praetorship__1.04.00..
+oewn-praetor__1.18.00..	derivation		oewn-pretorial__3.01.00..
+oewn-praetor__1.18.00..	derivation		oewn-pretorian__3.01.00..
+oewn-praetorial__3.01.00..	pertainym		oewn-praetor__1.18.00..
+oewn-praetorian__3.01.00..	pertainym		oewn-praetor__1.18.00..
+oewn-pragmatic__3.01.00..	derivation		oewn-pragmatism__1.09.00..
+oewn-pragmatic__3.01.00..	pertainym		oewn-pragmatism__1.09.00..
+oewn-pragmatic__5.00.00.practical.00	derivation		oewn-pragmatism__1.07.00..
+oewn-pragmatic__5.00.00.realistic.00	derivation		oewn-pragmatism__1.07.00..
+oewn-pragmatical__3.01.00..	derivation		oewn-pragmatism__1.09.00..
+oewn-pragmatical__3.01.00..	pertainym		oewn-pragmatism__1.09.00..
+oewn-pragmatical__5.00.00.practical.00	derivation		oewn-pragmatism__1.07.00..
+oewn-pragmatically__4.02.00..	pertainym		oewn-pragmatic__5.00.00.realistic.00
+oewn-pragmatism__1.07.00..	derivation		oewn-pragmatist__1.18.00..
+oewn-pragmatism__1.07.00..	derivation		oewn-pragmatist__1.18.01..
+oewn-pragmatism__1.09.00..	derivation		oewn-pragmatist__1.18.01..
+oewn-praise__1.10.00..	derivation		oewn-praise__2.32.00..
+oewn-praise__2.32.00..	other	event	oewn-praise__1.10.00..
+oewn-praiseworthily__4.02.00..	pertainym		oewn-praiseworthy__5.00.00.worthy.00
+oewn-praiseworthiness__1.07.00..	derivation		oewn-praiseworthy__5.00.00.worthy.00
+oewn-prakrit__1.10.00..	derivation		oewn-prakritic__3.01.00..
+oewn-prakritic__3.01.00..	pertainym		oewn-prakrit__1.10.00..
+oewn-pram__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-prance__1.04.00..	derivation		oewn-prance__2.38.00..
+oewn-prance__2.38.00..	derivation		oewn-prancer__1.05.00..
+oewn-prance__2.38.00..	other	agent	oewn-prancer__1.05.00..
+oewn-prance__2.38.00..	other	event	oewn-prance__1.04.00..
+oewn-prandial__3.01.00..	pertainym		oewn-meal__1.13.00..
+oewn-prank__1.04.00..	derivation		oewn-prankster__1.18.00..
+oewn-prankish__5.00.00.playful.00	derivation		oewn-prankishness__1.07.00..
+oewn-prate__1.10.00..	derivation		oewn-prate__2.32.00..
+oewn-prate__2.32.00..	derivation		oewn-prater__1.18.00..
+oewn-prate__2.32.00..	other	agent	oewn-prater__1.18.00..
+oewn-prate__2.32.00..	other	event	oewn-prate__1.10.00..
+oewn-prattle__1.10.00..	derivation		oewn-prattle__2.32.00..
+oewn-prattle__2.32.00..	derivation		oewn-prattler__1.18.00..
+oewn-prattle__2.32.00..	other	agent	oewn-prattler__1.18.00..
+oewn-prattle__2.32.00..	other	event	oewn-prattle__1.10.00..
+oewn-pravachol__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prawn__1.05.00..	derivation		oewn-prawn__2.35.00..
+oewn-prawn__1.13.00..	derivation		oewn-prawn__2.35.00..
+oewn-prawn__2.35.00..	other	undergoer	oewn-prawn__1.05.00..
+oewn-prawn__2.35.00..	other	undergoer	oewn-prawn__1.13.00..
+oewn-pray__2.32.00..	derivation		oewn-prayer__1.04.00..
+oewn-pray__2.32.00..	derivation		oewn-prayer__1.10.01..
+oewn-pray__2.32.00..	derivation		oewn-prayer__1.10.02..
+oewn-pray__2.32.00..	derivation		oewn-prayer__1.18.00..
+oewn-pray__2.32.00..	other	agent	oewn-prayer__1.18.00..
+oewn-pray__2.32.00..	other	event	oewn-prayer__1.04.00..
+oewn-pray__2.32.00..	other	event	oewn-prayer__1.10.02..
+oewn-pray__2.32.00..	other	undergoer	oewn-prayer__1.10.01..
+oewn-pre--columbian__3.01.00..	pertainym		oewn-columbian__3.01.00..
+oewn-pre--emptive__5.00.00.preventive.00	derivation		oewn-preempt__2.40.00..
+oewn-pre--emptive__5.00.00.preventive.00	derivation		oewn-preempt__2.40.01..
+oewn-pre--existent__5.00.00.antecedent.00	derivation		oewn-preexist__2.42.00..
+oewn-pre--raphaelite__1.18.00..	derivation		oewn-pre--raphaelite__3.01.00..
+oewn-pre--raphaelite__3.01.00..	pertainym		oewn-pre--raphaelite__1.18.00..
+oewn-preach__2.32.00..	derivation		oewn-preaching__1.10.01..
+oewn-preach__2.32.02..	derivation		oewn-preacher__1.18.00..
+oewn-preach__2.32.02..	derivation		oewn-preaching__1.10.00..
+oewn-preach__2.32.02..	derivation		oewn-preachment__1.10.00..
+oewn-preach__2.32.02..	other	agent	oewn-preacher__1.18.00..
+oewn-preach__2.32.02..	other	undergoer	oewn-preachment__1.10.00..
+oewn-preachification__1.10.00..	derivation		oewn-preachify__2.32.00..
+oewn-preachify__2.32.00..	other	event	oewn-preachification__1.10.00..
+oewn-preamble__1.10.00..	derivation		oewn-preamble__2.32.00..
+oewn-preamble__2.32.00..	other	event	oewn-preamble__1.10.00..
+oewn-preanal__3.01.00..	pertainym		oewn-anus__1.08.00..
+oewn-prearrange__2.36.00..	derivation		oewn-prearrangement__1.09.00..
+oewn-prearrange__2.36.00..	other	undergoer	oewn-prearrangement__1.09.00..
+oewn-precancerous__3.01.00..	pertainym		oewn-cancer__1.26.00..
+oewn-precarious__5.00.00.dangerous.00	derivation		oewn-precariousness__1.07.00..
+oewn-precarious__5.00.00.insecure.02	derivation		oewn-precariousness__1.07.01..
+oewn-precarious__5.00.00.uneasy.00	derivation		oewn-precariousness__1.07.01..
+oewn-precariously__4.02.00..	pertainym		oewn-precarious__5.00.00.dangerous.00
+oewn-precaution__1.04.00..	derivation		oewn-precautionary__5.00.00.preventive.00
+oewn-precede__2.38.00..	derivation		oewn-precedency__1.04.00..
+oewn-precede__2.41.00..	antonym		oewn-succeed__2.41.01..
+oewn-precede__2.41.00..	derivation		oewn-precedence__1.04.00..
+oewn-precede__2.41.00..	derivation		oewn-precession__1.04.00..
+oewn-precede__2.41.00..	derivation		oewn-predecessor__1.18.00..
+oewn-precede__2.41.00..	other	agent	oewn-predecessor__1.18.00..
+oewn-precede__2.41.00..	other	event	oewn-precedence__1.04.00..
+oewn-precede__2.41.00..	other	event	oewn-precession__1.04.00..
+oewn-precede__2.42.00..	derivation		oewn-precedence__1.07.00..
+oewn-precede__2.42.00..	derivation		oewn-precedency__1.07.00..
+oewn-precede__2.42.00..	derivation		oewn-precedent__1.09.00..
+oewn-precede__2.42.00..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precede__2.42.00..	derivation		oewn-precession__1.04.00..
+oewn-precede__2.42.00..	other	event	oewn-precedence__1.07.00..
+oewn-precede__2.42.00..	other	event	oewn-precession__1.04.00..
+oewn-precede__2.42.01..	derivation		oewn-precedent__1.10.02..
+oewn-precede__2.42.01..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precede__2.42.01..	derivation		oewn-precession__1.04.00..
+oewn-precede__2.42.01..	other	event	oewn-precession__1.04.00..
+oewn-precedence__1.04.00..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precedence__1.07.00..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precedence__1.26.00..	derivation		oewn-precedential__5.00.00.senior.00
+oewn-precedency__1.04.00..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precedent__1.10.02..	derivation		oewn-precedent__5.00.00.preceding.00
+oewn-precedented__3.00.00..	antonym		oewn-unprecedented__3.00.00..
+oewn-precedentedly__4.02.00..	antonym		oewn-unprecedentedly__4.02.00..
+oewn-precedentedly__4.02.00..	pertainym		oewn-precedented__3.00.00..
+oewn-preceding__3.00.00..	antonym		oewn-succeeding__3.00.00..
+oewn-precentor__1.18.00..	derivation		oewn-precentorship__1.04.00..
+oewn-preceptor__1.18.00..	derivation		oewn-preceptorship__1.04.00..
+oewn-preciosity__1.07.00..	derivation		oewn-precious__5.00.00.artful.00
+oewn-precious__5.00.00.artful.00	derivation		oewn-preciousness__1.07.01..
+oewn-precious__5.00.00.loved.00	derivation		oewn-preciousness__1.07.00..
+oewn-precious__5.00.00.valuable.00	derivation		oewn-preciousness__1.07.02..
+oewn-precipice__1.17.00..	derivation		oewn-precipitous__5.00.00.steep.00
+oewn-precipitance__1.07.00..	derivation		oewn-precipitant__5.00.00.hurried.00
+oewn-precipitancy__1.07.00..	derivation		oewn-precipitant__5.00.00.hurried.00
+oewn-precipitant__1.27.00..	derivation		oewn-precipitate__2.30.00..
+oewn-precipitant__5.00.00.hurried.00	derivation		oewn-precipitate__2.36.00..
+oewn-precipitate__1.27.00..	derivation		oewn-precipitate__2.30.00..
+oewn-precipitate__2.30.00..	derivation		oewn-precipitation__1.22.00..
+oewn-precipitate__2.30.00..	derivation		oewn-precipitator__1.06.00..
+oewn-precipitate__2.30.00..	other	event	oewn-precipitation__1.22.00..
+oewn-precipitate__2.30.00..	other	instrument	oewn-precipitator__1.06.00..
+oewn-precipitate__2.30.00..	other	result	oewn-precipitate__1.27.00..
+oewn-precipitate__2.35.00..	derivation		oewn-precipitation__1.07.00..
+oewn-precipitate__2.35.00..	derivation		oewn-precipitation__1.11.00..
+oewn-precipitate__2.35.00..	other	event	oewn-precipitation__1.07.00..
+oewn-precipitate__2.35.00..	other	event	oewn-precipitation__1.11.00..
+oewn-precipitate__2.36.00..	derivation		oewn-precipitation__1.07.00..
+oewn-precipitate__2.36.00..	other	event	oewn-precipitation__1.07.00..
+oewn-precipitate__2.38.01..	derivation		oewn-precipitation__1.11.00..
+oewn-precipitate__2.38.01..	other	event	oewn-precipitation__1.11.00..
+oewn-precipitate__2.43.00..	derivation		oewn-precipitation__1.19.00..
+oewn-precipitate__2.43.00..	derivation		oewn-precipitation__1.23.00..
+oewn-precipitate__2.43.00..	other	event	oewn-precipitation__1.19.00..
+oewn-precipitate__2.43.00..	other	event	oewn-precipitation__1.23.00..
+oewn-precipitate__5.00.00.hurried.00	derivation		oewn-precipitateness__1.07.00..
+oewn-precipitately__4.02.00..	pertainym		oewn-precipitate__5.00.00.hurried.00
+oewn-precipitous__5.00.00.hurried.00	derivation		oewn-precipitousness__1.07.01..
+oewn-precipitous__5.00.00.steep.00	derivation		oewn-precipitousness__1.07.00..
+oewn-precipitously__4.02.00..	pertainym		oewn-precipitous__5.00.00.steep.00
+oewn-precis__1.10.00..	derivation		oewn-precis__2.32.00..
+oewn-precis__2.32.00..	other	event	oewn-precis__1.10.00..
+oewn-precise__3.00.00..	derivation		oewn-preciseness__1.07.01..
+oewn-precise__5.00.00.correct.00	derivation		oewn-preciseness__1.07.00..
+oewn-precisely__4.02.00..	pertainym		oewn-precise__3.00.00..
+oewn-precisely__4.02.01..	pertainym		oewn-exact__5.00.00.correct.00
+oewn-preclinical__3.01.00..	pertainym		oewn-medical_diagnosis__1.04.00..
+oewn-preclude__2.41.00..	derivation		oewn-preclusion__1.04.00..
+oewn-preclude__2.41.00..	other	event	oewn-preclusion__1.04.00..
+oewn-preclude__2.42.00..	derivation		oewn-preclusive__5.00.00.preventive.00
+oewn-precocious__3.00.00..	antonym		oewn-retarded__3.00.00..
+oewn-precocious__3.00.00..	derivation		oewn-precociousness__1.09.00..
+oewn-precocious__3.00.00..	derivation		oewn-precocity__1.09.00..
+oewn-precociously__4.02.00..	pertainym		oewn-precocious__3.00.00..
+oewn-preconceive__2.36.00..	derivation		oewn-preconception__1.09.00..
+oewn-preconceive__2.36.00..	other	undergoer	oewn-preconception__1.09.00..
+oewn-preconceived__3.44.00..	participle		oewn-conceive__2.36.00..
+oewn-precondition__1.09.00..	derivation		oewn-precondition__2.30.00..
+oewn-precondition__2.30.00..	other	event	oewn-precondition__1.09.00..
+oewn-precondition__2.30.00..	other	state	oewn-precondition__1.09.00..
+oewn-precordial__3.01.00..	derivation		oewn-precordium__1.08.00..
+oewn-precordial__3.01.00..	pertainym		oewn-precordium__1.08.00..
+oewn-predate__2.34.00..	derivation		oewn-predation__1.04.00..
+oewn-predate__2.34.00..	derivation		oewn-predation__1.04.01..
+oewn-predate__2.34.00..	other	event	oewn-predation__1.04.00..
+oewn-predate__2.34.00..	other	event	oewn-predation__1.04.01..
+oewn-predestinarian__3.01.00..	derivation		oewn-predestination__1.09.00..
+oewn-predestinarian__3.01.00..	pertainym		oewn-predestination__1.09.00..
+oewn-predestination__1.09.00..	derivation		oewn-predestinationist__1.18.00..
+oewn-predestination__1.09.00..	derivation		oewn-predestine__2.31.01..
+oewn-predestination__1.11.00..	derivation		oewn-predestinationist__1.18.00..
+oewn-predestination__1.11.00..	derivation		oewn-predestine__2.31.00..
+oewn-predestination__1.11.00..	derivation		oewn-predestine__2.32.00..
+oewn-predestine__2.31.00..	other	event	oewn-predestination__1.11.00..
+oewn-predestine__2.31.01..	other	event	oewn-predestination__1.09.00..
+oewn-predestine__2.32.00..	other	event	oewn-predestination__1.11.00..
+oewn-predetermination__1.04.00..	derivation		oewn-predetermine__2.31.00..
+oewn-predetermination__1.09.00..	derivation		oewn-predetermine__2.31.00..
+oewn-predetermination__1.09.01..	derivation		oewn-predetermine__2.31.00..
+oewn-predetermine__2.31.00..	other	event	oewn-predetermination__1.04.00..
+oewn-predetermine__2.31.00..	other	event	oewn-predetermination__1.09.00..
+oewn-predicate__1.10.00..	derivation		oewn-predicate__2.32.02..
+oewn-predicate__1.10.01..	derivation		oewn-predicate__2.32.02..
+oewn-predicate__2.32.00..	derivation		oewn-predication__1.10.00..
+oewn-predicate__2.32.00..	other	event	oewn-predication__1.10.00..
+oewn-predicate__2.32.01..	derivation		oewn-predication__1.10.00..
+oewn-predicate__2.32.01..	other	event	oewn-predication__1.10.00..
+oewn-predicate__2.32.02..	derivation		oewn-predicative__3.00.00..
+oewn-predicate__2.32.02..	derivation		oewn-predicator__1.10.00..
+oewn-predicate__2.32.02..	other	agent	oewn-predicator__1.10.00..
+oewn-predicate__2.32.02..	other	undergoer	oewn-predicate__1.10.00..
+oewn-predicate__2.32.02..	other	undergoer	oewn-predicate__1.10.01..
+oewn-predicatively__4.02.00..	pertainym		oewn-predicative__3.00.00..
+oewn-predict__2.32.00..	derivation		oewn-prediction__1.09.00..
+oewn-predict__2.32.00..	derivation		oewn-predictive__5.00.00.prophetic.00
+oewn-predict__2.32.00..	derivation		oewn-predictor__1.18.00..
+oewn-predict__2.32.00..	other	agent	oewn-predictor__1.18.00..
+oewn-predict__2.32.00..	other	event	oewn-prediction__1.09.00..
+oewn-predict__2.32.01..	derivation		oewn-predictive__5.00.00.prophetic.00
+oewn-predictability__1.07.00..	antonym		oewn-unpredictability__1.07.00..
+oewn-predictability__1.07.00..	derivation		oewn-predictable__3.00.00..
+oewn-predictable__3.00.00..	antonym		oewn-unpredictable__3.00.00..
+oewn-predictably__4.02.00..	pertainym		oewn-predictable__3.00.00..
+oewn-predispose__2.31.00..	derivation		oewn-predisposition__1.09.00..
+oewn-predispose__2.31.00..	other	by_means_of	oewn-predisposition__1.09.00..
+oewn-predominance__1.07.00..	derivation		oewn-predominant__5.00.00.frequent.00
+oewn-predominance__1.26.00..	derivation		oewn-predominant__5.00.00.dominant.01
+oewn-predominance__1.26.00..	derivation		oewn-predominate__2.42.00..
+oewn-predominant__5.00.00.frequent.00	derivation		oewn-predominate__2.42.00..
+oewn-predominantly__4.02.00..	pertainym		oewn-predominant__5.00.00.frequent.00
+oewn-predominate__2.42.00..	derivation		oewn-predomination__1.26.00..
+oewn-predominate__2.42.00..	other	event	oewn-predominance__1.26.00..
+oewn-predominate__2.42.00..	other	state	oewn-predomination__1.26.00..
+oewn-predominate__2.42.01..	derivation		oewn-predomination__1.07.00..
+oewn-predominate__2.42.01..	other	property	oewn-predomination__1.07.00..
+oewn-preeminence__1.26.00..	derivation		oewn-preeminent__5.00.00.superior.01
+oewn-preeminently__4.02.00..	pertainym		oewn-preeminent__5.00.00.superior.01
+oewn-preempt__2.40.00..	derivation		oewn-preemption__1.04.00..
+oewn-preempt__2.40.00..	derivation		oewn-preemption__1.07.00..
+oewn-preempt__2.40.00..	derivation		oewn-preemptive__5.00.00.preventive.00
+oewn-preempt__2.40.00..	derivation		oewn-preemptor__1.18.01..
+oewn-preempt__2.40.00..	other	agent	oewn-preemptor__1.18.01..
+oewn-preempt__2.40.00..	other	event	oewn-preemption__1.04.00..
+oewn-preempt__2.40.00..	other	event	oewn-preemption__1.07.00..
+oewn-preempt__2.40.01..	derivation		oewn-preemptive__5.00.00.preventive.00
+oewn-preempt__2.40.01..	derivation		oewn-preemptor__1.18.00..
+oewn-preempt__2.40.01..	other	agent	oewn-preemptor__1.18.00..
+oewn-preexist__2.42.00..	derivation		oewn-preexistence__1.26.00..
+oewn-preexist__2.42.00..	derivation		oewn-preexistent__5.00.00.antecedent.00
+oewn-preexist__2.42.00..	other	event	oewn-preexistence__1.26.00..
+oewn-preexistence__1.26.00..	derivation		oewn-preexistent__5.00.00.antecedent.00
+oewn-prefab__1.06.00..	derivation		oewn-prefab__5.00.00.ready-made.00
+oewn-prefabricate__2.36.00..	derivation		oewn-prefabrication__1.04.00..
+oewn-prefabricate__2.36.00..	other	event	oewn-prefabrication__1.04.00..
+oewn-preface__1.10.00..	derivation		oewn-preface__2.32.00..
+oewn-preface__1.10.00..	derivation		oewn-prefatorial__5.00.00.preceding.00
+oewn-preface__2.32.00..	other	uses	oewn-preface__1.10.00..
+oewn-prefectural__3.01.00..	derivation		oewn-prefecture__1.04.00..
+oewn-prefectural__3.01.00..	derivation		oewn-prefecture__1.15.00..
+oewn-prefectural__3.01.00..	pertainym		oewn-prefecture__1.15.00..
+oewn-prefer__2.31.00..	derivation		oewn-preference__1.09.01..
+oewn-prefer__2.31.00..	derivation		oewn-preferment__1.04.00..
+oewn-prefer__2.31.00..	other	event	oewn-preferment__1.04.00..
+oewn-prefer__2.31.00..	other	property	oewn-preference__1.09.01..
+oewn-prefer__2.37.00..	derivation		oewn-preference__1.12.00..
+oewn-prefer__2.37.00..	other	event	oewn-preference__1.12.00..
+oewn-prefer__2.41.00..	derivation		oewn-preferment__1.04.00..
+oewn-prefer__2.41.00..	other	event	oewn-preferment__1.04.00..
+oewn-preference__1.09.01..	derivation		oewn-preferent__5.00.00.loved.00
+oewn-preference__1.09.01..	derivation		oewn-preferential__5.00.00.advantageous.00
+oewn-preferentially__4.02.00..	pertainym		oewn-preferential__5.00.00.advantageous.00
+oewn-prefiguration__1.09.00..	derivation		oewn-prefigure__2.36.01..
+oewn-prefiguration__1.09.01..	derivation		oewn-prefigure__2.36.01..
+oewn-prefigurative__5.00.00.prophetic.00	derivation		oewn-prefigure__2.32.00..
+oewn-prefigure__2.36.01..	other	event	oewn-prefiguration__1.09.00..
+oewn-prefigure__2.36.01..	other	undergoer	oewn-prefiguration__1.09.01..
+oewn-prefix__1.10.00..	derivation		oewn-prefix__2.35.00..
+oewn-prefix__2.35.00..	antonym		oewn-suffix__2.35.00..
+oewn-prefix__2.35.00..	derivation		oewn-prefixation__1.04.00..
+oewn-prefix__2.35.00..	other	event	oewn-prefixation__1.04.00..
+oewn-prefix__2.35.00..	other	uses	oewn-prefix__1.10.00..
+oewn-preform__2.36.00..	derivation		oewn-preformation__1.09.00..
+oewn-pregnancy__1.26.00..	derivation		oewn-pregnant__3.00.00..
+oewn-prehend__2.35.00..	derivation		oewn-prehension__1.04.00..
+oewn-prehend__2.35.00..	other	event	oewn-prehension__1.04.00..
+oewn-prehistoric__3.01.00..	derivation		oewn-prehistory__1.28.00..
+oewn-prehistoric__3.01.00..	pertainym		oewn-prehistory__1.28.00..
+oewn-prehistoric__5.00.00.past.00	derivation		oewn-prehistory__1.28.00..
+oewn-prejudge__2.31.00..	derivation		oewn-prejudgement__1.09.00..
+oewn-prejudge__2.31.00..	other	event	oewn-prejudgement__1.09.00..
+oewn-prejudice__1.09.01..	derivation		oewn-prejudice__2.31.00..
+oewn-prejudice__1.09.01..	derivation		oewn-prejudice__2.41.00..
+oewn-prejudice__1.09.01..	derivation		oewn-prejudicial__3.01.00..
+oewn-prejudice__1.09.01..	derivation		oewn-prejudicious__3.01.00..
+oewn-prejudice__2.31.00..	other	by_means_of	oewn-prejudice__1.09.01..
+oewn-prejudice__2.41.00..	other	by_means_of	oewn-prejudice__1.09.01..
+oewn-prejudiced__3.00.00..	antonym		oewn-unprejudiced__3.00.00..
+oewn-prejudicial__3.01.00..	pertainym		oewn-prejudice__1.09.01..
+oewn-prejudicious__3.01.00..	pertainym		oewn-prejudice__1.09.01..
+oewn-prelapsarian__3.01.00..	pertainym		oewn-fall__1.11.00..
+oewn-preliminary__1.11.00..	derivation		oewn-preliminary__5.00.00.exploratory.00
+oewn-preliminary__1.11.02..	derivation		oewn-preliminary__5.00.00.exploratory.00
+oewn-prelone__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prelude__1.10.00..	derivation		oewn-prelude__2.36.00..
+oewn-prelude__1.11.00..	derivation		oewn-prelude__2.42.00..
+oewn-prelude__2.36.00..	other	uses	oewn-prelude__1.10.00..
+oewn-prelude__2.42.00..	other	by_means_of	oewn-prelude__1.11.00..
+oewn-premarital__3.01.00..	pertainym		oewn-wedding__1.11.00..
+oewn-premature__3.00.00..	derivation		oewn-prematureness__1.26.00..
+oewn-premature__3.00.00..	derivation		oewn-prematurity__1.26.00..
+oewn-premature__5.00.00.early.00	derivation		oewn-prematureness__1.26.00..
+oewn-premature__5.00.02.early.00	derivation		oewn-prematureness__1.26.00..
+oewn-premature_labor__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-premature_labour__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-premature_labour__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-premature_labour__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-prematurely__4.02.00..	pertainym		oewn-premature__5.00.00.early.00
+oewn-prematurely__4.02.01..	pertainym		oewn-premature__3.00.00..
+oewn-premedical__3.01.00..	pertainym		oewn-medicine__1.04.00..
+oewn-premeditate__2.31.00..	derivation		oewn-premeditation__1.09.00..
+oewn-premeditate__2.31.00..	derivation		oewn-premeditation__1.09.01..
+oewn-premeditate__2.31.00..	other	event	oewn-premeditation__1.09.00..
+oewn-premeditate__2.31.00..	other	event	oewn-premeditation__1.09.01..
+oewn-premeditated__3.00.00..	antonym		oewn-unpremeditated__3.00.00..
+oewn-premenopausal__3.01.00..	pertainym		oewn-menopause__1.28.00..
+oewn-premenstrual__3.01.00..	pertainym		oewn-menstruation__1.22.00..
+oewn-premier__1.18.00..	derivation		oewn-premier__5.00.02.first.00
+oewn-premier__1.18.00..	derivation		oewn-premiership__1.04.00..
+oewn-premier__1.18.01..	derivation		oewn-premier__5.00.02.first.00
+oewn-premier__1.18.01..	derivation		oewn-premiership__1.04.00..
+oewn-premiere__1.10.00..	derivation		oewn-premiere__2.36.00..
+oewn-premiere__1.10.00..	derivation		oewn-premiere__2.36.01..
+oewn-premiere__1.10.00..	derivation		oewn-premiere__5.00.00.first.00
+oewn-premiere__2.36.00..	other	event	oewn-premiere__1.10.00..
+oewn-premiere__2.36.01..	other	event	oewn-premiere__1.10.00..
+oewn-premise__1.10.00..	derivation		oewn-premise__2.31.00..
+oewn-premise__2.31.00..	other	undergoer	oewn-premise__1.10.00..
+oewn-premiss__1.10.00..	derivation		oewn-premiss__2.31.00..
+oewn-premiss__2.31.00..	other	undergoer	oewn-premiss__1.10.00..
+oewn-prenuptial__3.01.00..	pertainym		oewn-wedding__1.11.00..
+oewn-preoccupancy__1.09.00..	derivation		oewn-preoccupied__5.00.00.concerned.00
+oewn-preoccupancy__1.09.00..	derivation		oewn-preoccupied__5.00.00.thoughtful.00
+oewn-preoccupancy__1.09.00..	derivation		oewn-preoccupy__2.37.00..
+oewn-preoccupation__1.04.00..	derivation		oewn-preoccupy__2.40.00..
+oewn-preoccupation__1.09.00..	derivation		oewn-preoccupy__2.37.00..
+oewn-preoccupation__1.09.02..	derivation		oewn-preoccupy__2.37.00..
+oewn-preoccupy__2.37.00..	other	by_means_of	oewn-preoccupation__1.09.02..
+oewn-preoccupy__2.37.00..	other	state	oewn-preoccupation__1.09.00..
+oewn-preoccupy__2.40.00..	other	event	oewn-preoccupation__1.04.00..
+oewn-preordain__2.31.00..	derivation		oewn-preordination__1.09.00..
+oewn-preparation__1.04.00..	derivation		oewn-prepare__2.31.01..
+oewn-preparation__1.04.00..	derivation		oewn-prepare__2.41.00..
+oewn-preparation__1.04.01..	derivation		oewn-prepare__2.31.00..
+oewn-preparation__1.04.02..	derivation		oewn-prepare__2.30.00..
+oewn-preparation__1.04.03..	derivation		oewn-prepare__2.36.01..
+oewn-preparation__1.10.00..	antonym		oewn-resolution__1.10.02..
+oewn-preparation__1.10.00..	derivation		oewn-prepare__2.39.00..
+oewn-preparation__1.26.00..	derivation		oewn-prepare__2.30.00..
+oewn-preparative__5.00.00.preceding.00	derivation		oewn-prepare__2.30.00..
+oewn-preparative__5.00.00.preceding.00	derivation		oewn-prepare__2.36.00..
+oewn-preparative__5.00.00.preceding.00	derivation		oewn-prepare__2.41.00..
+oewn-preparatory__5.00.00.preceding.00	derivation		oewn-prepare__2.30.00..
+oewn-preparatory__5.00.00.preceding.00	derivation		oewn-prepare__2.31.00..
+oewn-preparatory__5.00.00.preceding.00	derivation		oewn-prepare__2.31.01..
+oewn-preparatory__5.00.00.preceding.00	derivation		oewn-prepare__2.41.00..
+oewn-prepare__2.30.00..	other	event	oewn-preparation__1.04.02..
+oewn-prepare__2.30.00..	other	state	oewn-preparation__1.26.00..
+oewn-prepare__2.31.00..	other	event	oewn-preparation__1.04.01..
+oewn-prepare__2.31.01..	other	event	oewn-preparation__1.04.00..
+oewn-prepare__2.36.01..	other	event	oewn-preparation__1.04.03..
+oewn-prepare__2.41.00..	other	by_means_of	oewn-preparation__1.04.00..
+oewn-prepared__3.00.00..	antonym		oewn-unprepared__3.00.00..
+oewn-prepared__3.00.00..	derivation		oewn-preparedness__1.26.00..
+oewn-prepared__5.00.00.willing.00	derivation		oewn-preparedness__1.26.00..
+oewn-prepay__2.40.00..	derivation		oewn-prepayment__1.04.00..
+oewn-prepay__2.40.00..	other	event	oewn-prepayment__1.04.00..
+oewn-preponderance__1.07.00..	derivation		oewn-preponderate__2.42.00..
+oewn-preponderance__1.07.01..	derivation		oewn-preponderate__2.42.00..
+oewn-preponderance__1.07.02..	derivation		oewn-preponderant__5.00.00.dominant.01
+oewn-preponderance__1.07.02..	derivation		oewn-preponderate__2.42.00..
+oewn-preponderant__5.00.00.dominant.01	derivation		oewn-preponderate__2.42.00..
+oewn-preponderantly__4.02.00..	pertainym		oewn-preponderant__5.00.00.dominant.01
+oewn-preponderate__2.42.00..	other	property	oewn-preponderance__1.07.00..
+oewn-preponderate__2.42.00..	other	property	oewn-preponderance__1.07.01..
+oewn-preponderate__2.42.00..	other	property	oewn-preponderance__1.07.02..
+oewn-prepose__2.35.00..	derivation		oewn-preposition__1.10.01..
+oewn-prepose__2.35.00..	other	event	oewn-preposition__1.10.01..
+oewn-prepositional__3.01.00..	pertainym		oewn-preposition__1.10.00..
+oewn-prepositionally__4.02.00..	pertainym		oewn-prepositional__3.01.00..
+oewn-prepossess__2.31.00..	derivation		oewn-prepossession__1.09.00..
+oewn-prepossess__2.31.00..	other	event	oewn-prepossession__1.09.00..
+oewn-prepubertal__5.00.00.immature.01	derivation		oewn-prepuberty__1.28.00..
+oewn-prerequisite__1.09.00..	derivation		oewn-prerequisite__5.00.00.obligatory.00
+oewn-presage__1.11.00..	derivation		oewn-presage__2.32.00..
+oewn-presage__2.32.00..	other	by_means_of	oewn-presage__1.11.00..
+oewn-presbyopia__1.26.00..	derivation		oewn-presbyopic__3.00.00..
+oewn-prescience__1.09.00..	derivation		oewn-prescient__5.00.00.discerning.00
+oewn-presciently__4.02.00..	pertainym		oewn-prescient__5.00.00.discerning.00
+oewn-prescribe__2.32.00..	derivation		oewn-prescription__1.10.00..
+oewn-prescribe__2.32.00..	derivation		oewn-prescriptive__3.00.00..
+oewn-prescribe__2.32.00..	other	undergoer	oewn-prescription__1.10.00..
+oewn-presence__1.04.00..	derivation		oewn-present__3.00.02..
+oewn-presence__1.09.00..	derivation		oewn-present__3.00.02..
+oewn-presence__1.15.00..	derivation		oewn-present__3.00.02..
+oewn-presence__1.26.00..	derivation		oewn-present__3.00.02..
+oewn-present__1.10.00..	derivation		oewn-present__3.00.01..
+oewn-present__1.21.00..	derivation		oewn-present__2.40.01..
+oewn-present__1.21.00..	derivation		oewn-present__3.00.02..
+oewn-present__1.28.00..	derivation		oewn-present__3.00.01..
+oewn-present__2.32.00..	derivation		oewn-presentation__1.10.00..
+oewn-present__2.32.00..	other	event	oewn-presentation__1.10.00..
+oewn-present__2.32.01..	derivation		oewn-presentation__1.10.02..
+oewn-present__2.32.01..	derivation		oewn-presenter__1.18.01..
+oewn-present__2.32.01..	other	agent	oewn-presenter__1.18.01..
+oewn-present__2.32.01..	other	event	oewn-presentation__1.10.02..
+oewn-present__2.32.02..	derivation		oewn-presentation__1.10.00..
+oewn-present__2.32.02..	derivation		oewn-presentation__1.10.01..
+oewn-present__2.32.02..	other	event	oewn-presentation__1.10.00..
+oewn-present__2.32.02..	other	event	oewn-presentation__1.10.01..
+oewn-present__2.32.04..	derivation		oewn-presentation__1.10.02..
+oewn-present__2.32.04..	other	event	oewn-presentation__1.10.02..
+oewn-present__2.36.00..	derivation		oewn-presentment__1.04.02..
+oewn-present__2.36.00..	other	event	oewn-presentment__1.04.02..
+oewn-present__2.36.08..	derivation		oewn-presentation__1.06.00..
+oewn-present__2.36.08..	derivation		oewn-presentment__1.04.02..
+oewn-present__2.36.08..	other	event	oewn-presentation__1.06.00..
+oewn-present__2.36.08..	other	event	oewn-presentment__1.04.02..
+oewn-present__2.39.00..	derivation		oewn-presentation__1.04.00..
+oewn-present__2.39.00..	derivation		oewn-presentation__1.10.00..
+oewn-present__2.39.00..	derivation		oewn-presentation__1.10.01..
+oewn-present__2.39.00..	derivation		oewn-presentment__1.04.02..
+oewn-present__2.39.00..	other	event	oewn-presentation__1.04.00..
+oewn-present__2.39.00..	other	event	oewn-presentation__1.10.00..
+oewn-present__2.39.00..	other	event	oewn-presentation__1.10.01..
+oewn-present__2.39.00..	other	event	oewn-presentment__1.04.02..
+oewn-present__2.40.00..	derivation		oewn-presenter__1.18.00..
+oewn-present__2.40.00..	other	agent	oewn-presenter__1.18.00..
+oewn-present__2.40.01..	derivation		oewn-presentation__1.04.01..
+oewn-present__2.40.01..	derivation		oewn-presenter__1.18.02..
+oewn-present__2.40.01..	other	agent	oewn-presenter__1.18.02..
+oewn-present__2.40.01..	other	event	oewn-presentation__1.04.01..
+oewn-present__2.40.01..	other	undergoer	oewn-present__1.21.00..
+oewn-present__2.40.02..	derivation		oewn-presentation__1.04.01..
+oewn-present__2.40.02..	other	event	oewn-presentation__1.04.01..
+oewn-present__3.00.01..	derivation		oewn-presentness__1.07.00..
+oewn-presentably__4.02.00..	pertainym		oewn-presentable__5.00.00.respectable.00
+oewn-presentational__3.01.00..	pertainym		oewn-presentation__1.10.00..
+oewn-presently__4.02.00..	pertainym		oewn-present__3.00.01..
+oewn-preservation__1.04.00..	derivation		oewn-preserve__2.40.00..
+oewn-preservation__1.04.00..	derivation		oewn-preserve__2.42.01..
+oewn-preservation__1.26.00..	derivation		oewn-preserve__2.42.00..
+oewn-preservative__1.27.00..	derivation		oewn-preservative__5.00.00.protective.00
+oewn-preservative__5.00.00.protective.00	derivation		oewn-preserve__2.30.00..
+oewn-preservative__5.00.00.protective.00	derivation		oewn-preserve__2.40.00..
+oewn-preserve__1.13.00..	derivation		oewn-preserve__2.30.00..
+oewn-preserve__1.15.00..	derivation		oewn-preserve__2.42.01..
+oewn-preserve__1.26.00..	derivation		oewn-preserve__2.40.01..
+oewn-preserve__2.30.00..	derivation		oewn-preserver__1.18.02..
+oewn-preserve__2.30.00..	other	agent	oewn-preserver__1.18.02..
+oewn-preserve__2.30.00..	other	result	oewn-preserve__1.13.00..
+oewn-preserve__2.40.00..	other	event	oewn-preservation__1.04.00..
+oewn-preserve__2.40.01..	other	undergoer	oewn-preserve__1.26.00..
+oewn-preserve__2.42.00..	other	state	oewn-preservation__1.26.00..
+oewn-preserve__2.42.01..	derivation		oewn-preserver__1.18.01..
+oewn-preserve__2.42.01..	other	agent	oewn-preserver__1.18.01..
+oewn-preserve__2.42.01..	other	event	oewn-preservation__1.04.00..
+oewn-preserve__2.42.01..	other	location	oewn-preserve__1.15.00..
+oewn-preside__2.41.00..	derivation		oewn-president__1.04.04..
+oewn-preside__2.41.00..	derivation		oewn-president__1.18.00..
+oewn-preside__2.41.00..	derivation		oewn-president__1.18.01..
+oewn-preside__2.41.00..	derivation		oewn-president__1.18.02..
+oewn-preside__2.41.00..	derivation		oewn-president__1.18.03..
+oewn-presidency__1.04.00..	derivation		oewn-president__1.04.04..
+oewn-presidency__1.04.00..	derivation		oewn-president__1.18.00..
+oewn-presidency__1.04.00..	derivation		oewn-president__1.18.01..
+oewn-presidency__1.04.00..	derivation		oewn-president__1.18.02..
+oewn-presidency__1.04.00..	derivation		oewn-president__1.18.03..
+oewn-presidency__1.04.00..	derivation		oewn-presidential__3.01.00..
+oewn-presidency__1.28.00..	derivation		oewn-president__1.04.04..
+oewn-presidency__1.28.00..	derivation		oewn-president__1.18.00..
+oewn-presidency__1.28.00..	derivation		oewn-president__1.18.01..
+oewn-presidency__1.28.00..	derivation		oewn-president__1.18.02..
+oewn-presidency__1.28.00..	derivation		oewn-president__1.18.03..
+oewn-president__1.04.04..	derivation		oewn-presidentship__1.04.00..
+oewn-president__1.18.00..	derivation		oewn-presidential__3.01.00..
+oewn-president__1.18.00..	derivation		oewn-presidentship__1.04.00..
+oewn-president__1.18.01..	derivation		oewn-presidential__3.01.00..
+oewn-president__1.18.01..	derivation		oewn-presidentship__1.04.00..
+oewn-president__1.18.02..	derivation		oewn-presidential__3.01.00..
+oewn-president__1.18.02..	derivation		oewn-presidentship__1.04.00..
+oewn-president__1.18.03..	derivation		oewn-presidentship__1.04.00..
+oewn-presidential__3.00.00..	antonym		oewn-unpresidential__3.00.00..
+oewn-presidential__3.01.00..	pertainym		oewn-president__1.18.00..
+oewn-presidentially__4.02.00..	pertainym		oewn-presidential__3.00.00..
+oewn-press__1.04.00..	derivation		oewn-press__2.35.00..
+oewn-press__1.04.00..	derivation		oewn-press__2.35.01..
+oewn-press__1.04.00..	derivation		oewn-press__2.35.02..
+oewn-press__1.04.00..	derivation		oewn-press__2.35.06..
+oewn-press__1.04.00..	derivation		oewn-press__2.36.01..
+oewn-press__1.04.02..	derivation		oewn-press__2.33.00..
+oewn-press__1.06.00..	derivation		oewn-press__2.36.00..
+oewn-press__1.06.00..	derivation		oewn-press__2.36.01..
+oewn-press__1.14.01..	derivation		oewn-press__2.38.00..
+oewn-press__2.32.00..	derivation		oewn-pressure__1.07.00..
+oewn-press__2.33.00..	other	event	oewn-press__1.04.02..
+oewn-press__2.35.00..	derivation		oewn-pressing__1.04.00..
+oewn-press__2.35.00..	derivation		oewn-pressure__1.04.00..
+oewn-press__2.35.00..	derivation		oewn-pressure__1.19.00..
+oewn-press__2.35.00..	other	event	oewn-press__1.04.00..
+oewn-press__2.35.01..	derivation		oewn-pressing__1.04.00..
+oewn-press__2.35.01..	other	event	oewn-press__1.04.00..
+oewn-press__2.35.02..	derivation		oewn-pressing__1.04.00..
+oewn-press__2.35.02..	other	event	oewn-press__1.04.00..
+oewn-press__2.35.06..	other	event	oewn-press__1.04.00..
+oewn-press__2.36.00..	derivation		oewn-pressing__1.06.00..
+oewn-press__2.36.00..	other	instrument	oewn-press__1.06.00..
+oewn-press__2.36.01..	other	event	oewn-press__1.04.00..
+oewn-press__2.36.01..	other	instrument	oewn-press__1.06.00..
+oewn-press__2.38.00..	other	event	oewn-press__1.14.01..
+oewn-press__2.42.00..	derivation		oewn-pressure__1.26.00..
+oewn-pressingly__4.02.00..	pertainym		oewn-pressing__5.00.00.imperative.00
+oewn-pressor__3.01.00..	pertainym		oewn-blood_pressure__1.19.00..
+oewn-pressure__1.07.00..	derivation		oewn-pressure__2.41.00..
+oewn-pressure__1.07.00..	derivation		oewn-pressure__2.41.01..
+oewn-pressure__1.19.00..	derivation		oewn-pressurise__2.30.00..
+oewn-pressure__1.19.00..	derivation		oewn-pressurise__2.30.01..
+oewn-pressure__1.19.00..	derivation		oewn-pressurise__2.30.02..
+oewn-pressure__1.19.00..	derivation		oewn-pressurize__2.30.00..
+oewn-pressure__1.19.00..	derivation		oewn-pressurize__2.30.01..
+oewn-pressure__1.19.00..	derivation		oewn-pressurize__2.30.02..
+oewn-pressure__1.26.00..	derivation		oewn-pressure__2.41.00..
+oewn-pressure__1.26.00..	derivation		oewn-pressure__2.41.01..
+oewn-pressure__2.41.00..	other	by_means_of	oewn-pressure__1.07.00..
+oewn-pressure__2.41.00..	other	by_means_of	oewn-pressure__1.26.00..
+oewn-pressure__2.41.01..	other	by_means_of	oewn-pressure__1.07.00..
+oewn-pressure__2.41.01..	other	event	oewn-pressure__1.26.00..
+oewn-pressurise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pressurise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pressurise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pressurise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pressurise__2.30.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pressurise__2.30.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pressurize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pressurize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pressurize__2.30.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prestige__1.26.00..	derivation		oewn-prestigious__5.00.00.reputable.00
+oewn-prestigious__5.00.00.reputable.00	derivation		oewn-prestigiousness__1.26.00..
+oewn-presumably__4.02.00..	pertainym		oewn-presumable__5.00.00.thinkable.00
+oewn-presume__2.29.00..	derivation		oewn-presumption__1.04.00..
+oewn-presume__2.29.00..	derivation		oewn-presumption__1.07.00..
+oewn-presume__2.29.00..	other	event	oewn-presumption__1.04.00..
+oewn-presume__2.29.00..	other	event	oewn-presumption__1.07.00..
+oewn-presume__2.31.00..	derivation		oewn-presumption__1.04.00..
+oewn-presume__2.31.00..	derivation		oewn-presumption__1.09.00..
+oewn-presume__2.31.00..	derivation		oewn-presumption__1.09.01..
+oewn-presume__2.31.00..	derivation		oewn-presumptive__5.00.00.credible.00
+oewn-presume__2.31.00..	derivation		oewn-presumptive__5.00.00.probable.00
+oewn-presume__2.31.00..	other	event	oewn-presumption__1.04.00..
+oewn-presume__2.31.00..	other	result	oewn-presumption__1.09.00..
+oewn-presume__2.31.00..	other	result	oewn-presumption__1.09.01..
+oewn-presume__2.32.00..	derivation		oewn-presumptive__5.00.00.credible.00
+oewn-presume__2.32.00..	derivation		oewn-presumptive__5.00.00.probable.00
+oewn-presume__2.41.00..	derivation		oewn-presumption__1.04.00..
+oewn-presume__2.41.00..	other	event	oewn-presumption__1.04.00..
+oewn-presumption__1.04.00..	derivation		oewn-presumptuous__5.00.00.forward.02
+oewn-presumption__1.07.00..	derivation		oewn-presumptuous__5.00.00.forward.02
+oewn-presumptuous__5.00.00.forward.02	derivation		oewn-presumptuousness__1.07.00..
+oewn-presumptuously__4.02.00..	pertainym		oewn-presumptuous__5.00.00.forward.02
+oewn-presuppose__2.31.01..	derivation		oewn-presupposition__1.09.00..
+oewn-presuppose__2.31.01..	other	event	oewn-presupposition__1.09.00..
+oewn-presymptomatic__3.01.00..	pertainym		oewn-medical_diagnosis__1.04.00..
+oewn-preteen__1.18.00..	derivation		oewn-preteen__5.00.00.young.00
+oewn-pretence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pretence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pretence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pretence__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pretence__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pretence__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pretence__1.07.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pretence__1.07.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pretence__1.07.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pretence__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pretence__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pretence__1.09.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pretence__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pretence__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pretence__1.10.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-pretend__1.04.00..	derivation		oewn-pretend__2.32.01..
+oewn-pretend__2.32.00..	derivation		oewn-pretender__1.18.00..
+oewn-pretend__2.32.00..	derivation		oewn-pretending__1.04.00..
+oewn-pretend__2.32.00..	derivation		oewn-pretense__1.04.00..
+oewn-pretend__2.32.00..	derivation		oewn-pretense__1.10.00..
+oewn-pretend__2.32.00..	other	agent	oewn-pretender__1.18.00..
+oewn-pretend__2.32.01..	other	event	oewn-pretend__1.04.00..
+oewn-pretend__2.36.00..	derivation		oewn-pretender__1.18.00..
+oewn-pretend__2.36.00..	other	agent	oewn-pretender__1.18.00..
+oewn-pretend__2.40.03..	derivation		oewn-pretense__1.07.00..
+oewn-pretend__2.40.03..	derivation		oewn-pretension__1.10.00..
+oewn-pretend__2.40.03..	other	event	oewn-pretension__1.10.00..
+oewn-pretense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pretense__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pretense__1.07.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pretense__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pretense__1.10.00..	derivation		oewn-pretentious__3.00.00..
+oewn-pretense__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pretentious__3.00.00..	antonym		oewn-unpretentious__3.00.00..
+oewn-pretentious__3.00.00..	derivation		oewn-pretentiousness__1.07.00..
+oewn-pretentious__3.00.04..	derivation		oewn-pretentiousness__1.07.01..
+oewn-pretentious__5.00.00.tasteless.02	derivation		oewn-pretentiousness__1.07.01..
+oewn-pretentiously__4.02.00..	antonym		oewn-unpretentiously__4.02.00..
+oewn-pretentiously__4.02.00..	pertainym		oewn-pretentious__3.00.00..
+oewn-pretentiousness__1.07.00..	antonym		oewn-unpretentiousness__1.07.00..
+oewn-pretermission__1.09.00..	derivation		oewn-pretermit__2.31.00..
+oewn-pretermission__1.09.00..	derivation		oewn-pretermit__2.31.01..
+oewn-pretermit__2.31.00..	other	event	oewn-pretermission__1.09.00..
+oewn-pretermit__2.31.01..	other	event	oewn-pretermission__1.09.00..
+oewn-preternaturally__4.02.00..	pertainym		oewn-preternatural__5.00.00.supernatural.00
+oewn-pretor__1.18.00..	derivation		oewn-pretorian__3.01.00..
+oewn-pretorial__3.01.00..	pertainym		oewn-praetor__1.18.00..
+oewn-pretorian__3.01.00..	pertainym		oewn-praetor__1.18.00..
+oewn-prettily__4.02.00..	pertainym		oewn-pretty__5.00.00.beautiful.00
+oewn-prettiness__1.07.00..	derivation		oewn-pretty__5.00.00.beautiful.00
+oewn-prevacid__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prevail__2.42.00..	derivation		oewn-prevalence__1.07.00..
+oewn-prevail__2.42.00..	derivation		oewn-prevalent__5.00.00.frequent.00
+oewn-prevail__2.42.00..	other	property	oewn-prevalence__1.07.00..
+oewn-prevail__2.42.02..	derivation		oewn-prevalence__1.07.01..
+oewn-prevail__2.42.02..	other	property	oewn-prevalence__1.07.01..
+oewn-prevalence__1.07.00..	derivation		oewn-prevalent__5.00.00.frequent.00
+oewn-prevaricate__2.32.00..	derivation		oewn-prevarication__1.04.00..
+oewn-prevaricate__2.32.00..	derivation		oewn-prevarication__1.07.00..
+oewn-prevaricate__2.32.00..	derivation		oewn-prevarication__1.10.00..
+oewn-prevaricate__2.32.00..	derivation		oewn-prevaricator__1.18.00..
+oewn-prevaricate__2.32.00..	other	agent	oewn-prevaricator__1.18.00..
+oewn-prevaricate__2.32.00..	other	by_means_of	oewn-prevarication__1.10.00..
+oewn-prevaricate__2.32.00..	other	event	oewn-prevarication__1.04.00..
+oewn-prevaricate__2.32.00..	other	event	oewn-prevarication__1.07.00..
+oewn-prevent__2.41.00..	derivation		oewn-preventative__3.00.00..
+oewn-prevent__2.41.00..	derivation		oewn-prevention__1.04.00..
+oewn-prevent__2.41.00..	derivation		oewn-preventive__3.00.00..
+oewn-prevent__2.41.00..	other	event	oewn-prevention__1.04.00..
+oewn-prevent__2.41.01..	derivation		oewn-preventative__3.00.00..
+oewn-prevent__2.41.01..	derivation		oewn-preventive__3.00.00..
+oewn-preventable__3.00.00..	antonym		oewn-unpreventable__3.00.00..
+oewn-preventive__1.06.01..	derivation		oewn-preventive__5.00.00.healthful.00
+oewn-preventive__1.06.02..	derivation		oewn-preventive__3.00.00..
+oewn-preventive__1.06.03..	derivation		oewn-preventive__3.00.00..
+oewn-preview__1.10.00..	derivation		oewn-preview__2.39.00..
+oewn-preview__2.39.00..	other	event	oewn-preview__1.10.00..
+oewn-previously__4.02.00..	pertainym		oewn-previous__5.00.00.preceding.00
+oewn-previse__2.31.00..	derivation		oewn-prevision__1.09.02..
+oewn-previse__2.31.00..	other	event	oewn-prevision__1.09.02..
+oewn-prey__1.05.00..	derivation		oewn-prey__2.34.10..
+oewn-prey__1.18.00..	derivation		oewn-prey__2.34.01..
+oewn-prey__2.34.01..	other	agent	oewn-prey__1.18.00..
+oewn-prey__2.34.10..	other	undergoer	oewn-prey__1.05.00..
+oewn-price__1.07.01..	derivation		oewn-pricey__5.00.00.expensive.00
+oewn-price__1.07.01..	derivation		oewn-pricy__5.00.00.expensive.00
+oewn-price__1.21.00..	derivation		oewn-price__2.31.00..
+oewn-price__1.21.00..	derivation		oewn-price__2.40.00..
+oewn-price__1.21.00..	derivation		oewn-pricey__5.00.00.expensive.00
+oewn-price__1.21.00..	derivation		oewn-pricy__5.00.00.expensive.00
+oewn-price__2.31.00..	derivation		oewn-pricing__1.09.00..
+oewn-price__2.31.00..	other	undergoer	oewn-price__1.21.00..
+oewn-price__2.40.00..	derivation		oewn-pricing__1.09.00..
+oewn-price__2.40.00..	other	undergoer	oewn-price__1.21.00..
+oewn-priceless__5.00.00.valuable.00	derivation		oewn-pricelessness__1.07.00..
+oewn-prick__1.04.00..	derivation		oewn-prick__2.35.00..
+oewn-prick__1.25.00..	derivation		oewn-prick__2.35.00..
+oewn-prick__2.35.00..	derivation		oewn-pricker__1.06.00..
+oewn-prick__2.35.00..	derivation		oewn-pricker__1.20.00..
+oewn-prick__2.35.00..	derivation		oewn-pricking__1.04.00..
+oewn-prick__2.35.00..	other	event	oewn-prick__1.04.00..
+oewn-prick__2.35.00..	other	instrument	oewn-pricker__1.06.00..
+oewn-prick__2.35.00..	other	result	oewn-prick__1.25.00..
+oewn-prickle__1.20.00..	derivation		oewn-prickly__5.00.00.armed.02
+oewn-prickle__2.39.00..	derivation		oewn-prickling__1.09.00..
+oewn-prickle__2.39.01..	derivation		oewn-prickling__1.09.00..
+oewn-prickliness__1.07.00..	derivation		oewn-prickly__5.00.00.armed.02
+oewn-pride__1.12.01..	derivation		oewn-pride__2.37.00..
+oewn-pride__2.37.00..	other	event	oewn-pride__1.12.01..
+oewn-prideful__5.00.00.elated.00	derivation		oewn-pridefulness__1.12.00..
+oewn-priest__1.18.00..	derivation		oewn-priesthood__1.14.00..
+oewn-priest__1.18.00..	derivation		oewn-priestly__3.00.00..
+oewn-priest__1.18.01..	derivation		oewn-priesthood__1.14.00..
+oewn-priestly__3.00.00..	antonym		oewn-unpriestly__3.00.00..
+oewn-priestly__3.01.00..	pertainym		oewn-priesthood__1.14.00..
+oewn-priggish__5.00.00.proper.00	derivation		oewn-priggishness__1.07.00..
+oewn-priggishly__4.02.00..	pertainym		oewn-priggish__5.00.00.proper.00
+oewn-prilosec__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prim__5.00.00.proper.00	derivation		oewn-primness__1.07.00..
+oewn-prim__5.00.00.proper.00	derivation		oewn-primness__1.07.01..
+oewn-prim__5.00.00.refined.01	derivation		oewn-primness__1.07.01..
+oewn-primarily__4.02.00..	antonym		oewn-secondarily__4.02.00..
+oewn-primarily__4.02.00..	pertainym		oewn-primary__3.00.00..
+oewn-primarily__4.02.01..	pertainym		oewn-primary__3.00.00..
+oewn-primary__3.00.00..	antonym		oewn-secondary__3.00.01..
+oewn-primary_color__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-primary_colour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-primary_colour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-primary_colour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-primate__1.18.00..	derivation		oewn-primateship__1.04.00..
+oewn-prime__2.30.00..	derivation		oewn-primer__1.06.00..
+oewn-prime__2.30.00..	other	material	oewn-primer__1.06.00..
+oewn-prime__2.35.00..	derivation		oewn-primer__1.06.01..
+oewn-prime__2.35.00..	other	material	oewn-primer__1.06.01..
+oewn-prime__3.01.00..	pertainym		oewn-prime_number__1.23.00..
+oewn-primipara__1.18.00..	derivation		oewn-primiparous__3.01.00..
+oewn-primiparous__3.01.00..	pertainym		oewn-primipara__1.18.00..
+oewn-primitive__1.18.00..	derivation		oewn-primitive__5.00.00.noncivilized.00
+oewn-primitive__1.18.00..	derivation		oewn-primitive__5.00.01.early.02
+oewn-primitive__5.00.00.noncivilized.00	derivation		oewn-primitiveness__1.26.00..
+oewn-primitive__5.00.01.early.02	derivation		oewn-primitiveness__1.26.00..
+oewn-primitive__5.00.02.early.02	derivation		oewn-primitiveness__1.26.00..
+oewn-primitively__4.02.00..	pertainym		oewn-primitive__5.00.02.early.02
+oewn-primly__4.02.00..	pertainym		oewn-prim__5.00.00.proper.00
+oewn-primp__2.29.00..	derivation		oewn-primping__1.04.00..
+oewn-prince__1.18.00..	derivation		oewn-princedom__1.15.00..
+oewn-prince__1.18.00..	derivation		oewn-princedom__1.26.00..
+oewn-prince__1.18.00..	derivation		oewn-princely__5.00.00.noble.02
+oewn-principal__1.18.00..	derivation		oewn-principalship__1.04.00..
+oewn-principally__4.02.00..	pertainym		oewn-principal__5.00.00.important.00
+oewn-principen__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-principen__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-principled__3.00.00..	antonym		oewn-unprincipled__3.00.00..
+oewn-prinivil__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-print__1.06.02..	derivation		oewn-print__2.36.01..
+oewn-print__1.10.00..	derivation		oewn-print__2.36.00..
+oewn-print__1.10.00..	derivation		oewn-print__2.36.02..
+oewn-print__2.36.00..	derivation		oewn-printer__1.06.00..
+oewn-print__2.36.00..	derivation		oewn-printer__1.06.01..
+oewn-print__2.36.00..	derivation		oewn-printer__1.18.00..
+oewn-print__2.36.00..	derivation		oewn-printing__1.10.00..
+oewn-print__2.36.00..	other	agent	oewn-printer__1.18.00..
+oewn-print__2.36.00..	other	instrument	oewn-printer__1.06.00..
+oewn-print__2.36.00..	other	instrument	oewn-printer__1.06.01..
+oewn-print__2.36.00..	other	result	oewn-print__1.10.00..
+oewn-print__2.36.01..	other	result	oewn-print__1.06.02..
+oewn-print__2.36.02..	derivation		oewn-printer__1.06.00..
+oewn-print__2.36.02..	derivation		oewn-printer__1.06.01..
+oewn-print__2.36.02..	derivation		oewn-printer__1.18.00..
+oewn-print__2.36.02..	derivation		oewn-printing__1.10.00..
+oewn-print__2.36.02..	other	agent	oewn-printer__1.18.00..
+oewn-print__2.36.02..	other	instrument	oewn-printer__1.06.00..
+oewn-print__2.36.02..	other	instrument	oewn-printer__1.06.01..
+oewn-print__2.36.02..	other	result	oewn-print__1.10.00..
+oewn-printable__3.00.00..	antonym		oewn-unprintable__3.00.00..
+oewn-prior__1.18.00..	derivation		oewn-priorship__1.04.00..
+oewn-prior__5.00.00.antecedent.00	derivation		oewn-priority__1.07.00..
+oewn-prioritise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-prioritise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-prioritize__2.31.00..	derivation		oewn-priority__1.07.00..
+oewn-prioritize__2.31.00..	derivation		oewn-priority__1.26.00..
+oewn-prioritize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-prise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-prise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-prise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-prise__2.36.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-prism__1.06.00..	derivation		oewn-prismatic__3.01.00..
+oewn-prism__1.06.00..	derivation		oewn-prismatic__5.00.00.colorful.00
+oewn-prism__1.25.00..	derivation		oewn-prismatic__3.01.00..
+oewn-prismatic__3.01.00..	pertainym		oewn-prism__1.06.00..
+oewn-prissily__4.02.00..	pertainym		oewn-prissy__5.00.00.proper.00
+oewn-private__3.00.00..	antonym		oewn-public__3.00.00..
+oewn-private__3.00.00..	derivation		oewn-privateness__1.07.00..
+oewn-private__5.00.00.inward.00	derivation		oewn-privateness__1.26.00..
+oewn-private__5.00.02.personal.00	derivation		oewn-privateness__1.07.00..
+oewn-private__5.00.02.personal.00	derivation		oewn-privateness__1.26.00..
+oewn-privately__4.02.00..	antonym		oewn-publicly__4.02.00..
+oewn-privately__4.02.00..	pertainym		oewn-private__3.00.00..
+oewn-privately__4.02.01..	antonym		oewn-publicly__4.02.01..
+oewn-privatisation__1.04.00..	derivation		oewn-privatise__2.30.00..
+oewn-privatisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-privatisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-privatise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-privatise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-privatization__1.04.00..	derivation		oewn-privatize__2.30.00..
+oewn-privatization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-privatize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-privilege__1.07.00..	derivation		oewn-privilege__2.41.00..
+oewn-privilege__1.07.02..	derivation		oewn-privilege__2.41.00..
+oewn-privilege__2.41.00..	other	uses	oewn-privilege__1.07.00..
+oewn-privilege__2.41.00..	other	uses	oewn-privilege__1.07.02..
+oewn-privileged__3.00.00..	antonym		oewn-underprivileged__3.00.00..
+oewn-privine__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prize_fight__1.11.00..	derivation		oewn-prizefight__2.35.00..
+oewn-prizefight__1.11.00..	derivation		oewn-prizefight__2.35.00..
+oewn-prizefight__2.35.00..	derivation		oewn-prizefighter__1.18.01..
+oewn-prizefight__2.35.00..	other	agent	oewn-prizefighter__1.18.01..
+oewn-prizefight__2.35.00..	other	event	oewn-prizefight__1.11.00..
+oewn-pro--choice__3.00.00..	antonym		oewn-pro--life__3.00.00..
+oewn-proactive__3.00.00..	antonym		oewn-retroactive__3.00.00..
+oewn-probabilism__1.09.00..	derivation		oewn-probabilistic__3.01.00..
+oewn-probabilism__1.09.01..	derivation		oewn-probabilistic__3.01.01..
+oewn-probabilistic__3.01.00..	derivation		oewn-probability__1.07.00..
+oewn-probabilistic__3.01.00..	derivation		oewn-probability__1.07.01..
+oewn-probabilistic__3.01.00..	pertainym		oewn-probability__1.07.01..
+oewn-probabilistic__3.01.01..	pertainym		oewn-probabilism__1.09.01..
+oewn-probabilistically__4.02.00..	pertainym		oewn-probabilistic__3.01.00..
+oewn-probability__1.07.00..	derivation		oewn-probable__5.00.00.likely.00
+oewn-probability__1.07.01..	derivation		oewn-probable__3.00.00..
+oewn-probably__4.02.00..	pertainym		oewn-probable__3.00.00..
+oewn-probably__4.02.01..	pertainym		oewn-probable__3.00.00..
+oewn-probate__1.04.00..	derivation		oewn-probate__2.41.00..
+oewn-probate__1.10.00..	derivation		oewn-probate__2.41.00..
+oewn-probate__2.41.00..	derivation		oewn-probative__5.00.00.significant.00
+oewn-probate__2.41.00..	other	by_means_of	oewn-probate__1.10.00..
+oewn-probate__2.41.00..	other	event	oewn-probate__1.04.00..
+oewn-probate__2.42.00..	derivation		oewn-probation__1.04.00..
+oewn-probate__2.42.00..	derivation		oewn-probation__1.28.00..
+oewn-probate__2.42.00..	other	event	oewn-probation__1.04.00..
+oewn-probate__2.42.00..	other	event	oewn-probation__1.28.00..
+oewn-probation__1.28.00..	derivation		oewn-probationary__5.00.00.conditional.00
+oewn-probation__1.28.01..	derivation		oewn-probationary__5.00.00.conditional.00
+oewn-probe__1.04.01..	derivation		oewn-probe__2.35.00..
+oewn-probe__1.06.00..	derivation		oewn-probe__2.35.00..
+oewn-probe__1.09.00..	derivation		oewn-probe__2.32.00..
+oewn-probe__2.32.00..	other	event	oewn-probe__1.09.00..
+oewn-probe__2.35.00..	other	event	oewn-probe__1.04.01..
+oewn-probe__2.35.00..	other	instrument	oewn-probe__1.06.00..
+oewn-problem__1.09.00..	derivation		oewn-problematical__5.00.00.questionable.00
+oewn-problem__1.26.00..	derivation		oewn-problematic__5.00.00.difficult.00
+oewn-problem__1.26.00..	derivation		oewn-problematical__5.00.00.difficult.00
+oewn-problematically__4.02.00..	pertainym		oewn-problematic__5.00.00.difficult.00
+oewn-procardia__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-procaryote__1.05.00..	derivation		oewn-procaryotic__3.01.00..
+oewn-procaryotic__3.01.00..	pertainym		oewn-prokaryote__1.05.00..
+oewn-procedural__3.00.00..	derivation		oewn-procedure__1.04.01..
+oewn-procedural__3.01.00..	derivation		oewn-procedure__1.04.00..
+oewn-procedural__3.01.00..	derivation		oewn-procedure__1.04.01..
+oewn-procedural__3.01.00..	derivation		oewn-procedure__1.04.02..
+oewn-procedural__3.01.00..	derivation		oewn-procedure__1.10.00..
+oewn-procedural__3.01.00..	pertainym		oewn-procedure__1.04.01..
+oewn-procedure__1.04.00..	derivation		oewn-proceed__2.41.00..
+oewn-proceed__2.38.00..	derivation		oewn-procession__1.04.01..
+oewn-proceed__2.38.00..	other	event	oewn-procession__1.04.01..
+oewn-proceed__2.41.00..	derivation		oewn-proceeding__1.04.00..
+oewn-proceed__2.41.00..	derivation		oewn-proceedings__1.04.00..
+oewn-process__1.04.00..	derivation		oewn-process__2.36.00..
+oewn-process__1.04.00..	derivation		oewn-process__2.41.01..
+oewn-process__1.10.00..	derivation		oewn-process__2.35.00..
+oewn-process__1.10.00..	derivation		oewn-process__2.41.00..
+oewn-process__2.30.00..	derivation		oewn-processing__1.22.00..
+oewn-process__2.30.00..	derivation		oewn-processor__1.14.00..
+oewn-process__2.30.00..	derivation		oewn-processor__1.18.00..
+oewn-process__2.30.00..	other	agent	oewn-processor__1.14.00..
+oewn-process__2.30.00..	other	agent	oewn-processor__1.18.00..
+oewn-process__2.31.00..	derivation		oewn-processor__1.06.00..
+oewn-process__2.31.00..	other	instrument	oewn-processor__1.06.00..
+oewn-process__2.35.00..	other	uses	oewn-process__1.10.00..
+oewn-process__2.36.00..	other	event	oewn-process__1.04.00..
+oewn-process__2.41.00..	other	by_means_of	oewn-process__1.10.00..
+oewn-process__2.41.01..	derivation		oewn-processing__1.22.00..
+oewn-process__2.41.01..	other	event	oewn-process__1.04.00..
+oewn-processed__3.00.00..	antonym		oewn-unprocessed__3.00.00..
+oewn-processional__3.01.00..	pertainym		oewn-procession__1.04.00..
+oewn-processional__3.01.01..	pertainym		oewn-procession__1.04.00..
+oewn-proclaim__2.32.00..	derivation		oewn-proclamation__1.04.00..
+oewn-proclaim__2.32.00..	other	event	oewn-proclamation__1.04.00..
+oewn-proclaim__2.32.02..	derivation		oewn-proclamation__1.04.00..
+oewn-proclaim__2.32.02..	derivation		oewn-proclamation__1.10.00..
+oewn-proclaim__2.32.02..	other	event	oewn-proclamation__1.04.00..
+oewn-proclaim__2.32.02..	other	event	oewn-proclamation__1.10.00..
+oewn-proconsul__1.18.00..	derivation		oewn-proconsular__3.01.00..
+oewn-proconsul__1.18.00..	derivation		oewn-proconsulship__1.04.00..
+oewn-proconsul__1.18.02..	derivation		oewn-proconsular__3.01.00..
+oewn-proconsul__1.18.02..	derivation		oewn-proconsulship__1.04.00..
+oewn-proconsular__3.01.00..	pertainym		oewn-proconsul__1.18.02..
+oewn-procrastinate__2.42.00..	derivation		oewn-procrastination__1.04.00..
+oewn-procrastinate__2.42.00..	derivation		oewn-procrastinator__1.18.00..
+oewn-procrastinate__2.42.00..	other	agent	oewn-procrastinator__1.18.00..
+oewn-procrastinate__2.42.00..	other	event	oewn-procrastination__1.04.00..
+oewn-procrastinate__2.42.01..	derivation		oewn-procrastination__1.07.00..
+oewn-procrastinate__2.42.01..	other	event	oewn-procrastination__1.07.00..
+oewn-procreate__2.29.00..	derivation		oewn-procreation__1.04.00..
+oewn-procreate__2.29.00..	derivation		oewn-procreative__5.00.00.fruitful.00
+oewn-procreate__2.29.00..	other	event	oewn-procreation__1.04.00..
+oewn-proctologist__1.18.00..	derivation		oewn-proctology__1.09.00..
+oewn-proctor__1.18.00..	derivation		oewn-proctor__2.41.00..
+oewn-proctor__1.18.00..	derivation		oewn-proctorship__1.04.00..
+oewn-proctor__2.41.00..	other	agent	oewn-proctor__1.18.00..
+oewn-procural__1.04.00..	derivation		oewn-procure__2.40.00..
+oewn-procurance__1.04.00..	derivation		oewn-procure__2.40.00..
+oewn-procure__2.34.00..	derivation		oewn-procurer__1.18.00..
+oewn-procure__2.34.00..	other	agent	oewn-procurer__1.18.00..
+oewn-procure__2.40.00..	derivation		oewn-procurement__1.04.00..
+oewn-procure__2.40.00..	derivation		oewn-procurer__1.18.01..
+oewn-procure__2.40.00..	other	agent	oewn-procurer__1.18.01..
+oewn-procure__2.40.00..	other	event	oewn-procural__1.04.00..
+oewn-procure__2.40.00..	other	event	oewn-procurance__1.04.00..
+oewn-procure__2.40.00..	other	event	oewn-procurement__1.04.00..
+oewn-prod__1.06.00..	derivation		oewn-prod__2.35.01..
+oewn-prod__1.06.00..	derivation		oewn-prod__2.35.02..
+oewn-prod__1.10.00..	derivation		oewn-prod__2.35.00..
+oewn-prod__2.35.00..	derivation		oewn-prodding__1.10.00..
+oewn-prod__2.35.00..	other	by_means_of	oewn-prod__1.10.00..
+oewn-prod__2.35.01..	other	instrument	oewn-prod__1.06.00..
+oewn-prodigal__1.18.00..	derivation		oewn-prodigal__5.00.00.wasteful.00
+oewn-prodigal__5.00.00.wasteful.00	derivation		oewn-prodigality__1.04.00..
+oewn-prodigal__5.00.00.wasteful.00	derivation		oewn-prodigality__1.07.00..
+oewn-prodigally__4.02.01..	pertainym		oewn-prodigal__5.00.00.wasteful.00
+oewn-prodigious__5.00.00.large.00	derivation		oewn-prodigy__1.09.00..
+oewn-prodigious__5.00.00.significant.00	derivation		oewn-prodigy__1.11.00..
+oewn-prodigiously__4.02.00..	pertainym		oewn-prodigious__5.00.00.extraordinary.00
+oewn-prodromal__3.01.00..	derivation		oewn-prodrome__1.26.00..
+oewn-prodromal__3.01.00..	pertainym		oewn-prodrome__1.26.00..
+oewn-prodrome__1.26.00..	derivation		oewn-prodromic__3.01.00..
+oewn-prodromic__3.01.00..	pertainym		oewn-prodrome__1.26.00..
+oewn-produce__1.13.00..	derivation		oewn-produce__2.36.05..
+oewn-produce__2.36.00..	derivation		oewn-producer__1.18.01..
+oewn-produce__2.36.00..	derivation		oewn-product__1.06.00..
+oewn-produce__2.36.00..	derivation		oewn-product__1.06.01..
+oewn-produce__2.36.00..	other	agent	oewn-producer__1.18.01..
+oewn-produce__2.36.02..	derivation		oewn-producer__1.11.00..
+oewn-produce__2.36.02..	other	by_means_of	oewn-producer__1.11.00..
+oewn-produce__2.36.03..	derivation		oewn-product__1.19.00..
+oewn-produce__2.36.05..	other	result	oewn-produce__1.13.00..
+oewn-produce__2.39.00..	derivation		oewn-producer__1.18.02..
+oewn-produce__2.39.00..	derivation		oewn-production__1.04.00..
+oewn-produce__2.39.00..	derivation		oewn-production__1.10.00..
+oewn-produce__2.39.00..	other	agent	oewn-producer__1.18.02..
+oewn-produce__2.39.00..	other	event	oewn-production__1.04.00..
+oewn-produce__2.39.00..	other	event	oewn-production__1.10.00..
+oewn-produce__2.39.01..	derivation		oewn-production__1.04.01..
+oewn-produce__2.39.01..	other	event	oewn-production__1.04.01..
+oewn-productive__3.00.00..	antonym		oewn-unproductive__3.00.00..
+oewn-productive__3.00.00..	derivation		oewn-productiveness__1.07.01..
+oewn-productive__3.00.00..	derivation		oewn-productivity__1.07.00..
+oewn-productive__3.00.04..	derivation		oewn-productiveness__1.07.01..
+oewn-productive__5.00.00.fruitful.00	derivation		oewn-productiveness__1.07.01..
+oewn-productive__5.00.00.successful.00	derivation		oewn-productiveness__1.07.01..
+oewn-productive__5.00.00.successful.00	derivation		oewn-productivity__1.07.00..
+oewn-productively__4.02.00..	antonym		oewn-unproductively__4.02.00..
+oewn-productively__4.02.00..	pertainym		oewn-productive__3.00.00..
+oewn-productiveness__1.07.01..	antonym		oewn-unproductiveness__1.07.00..
+oewn-profanation__1.04.00..	derivation		oewn-profane__2.41.00..
+oewn-profanation__1.04.01..	derivation		oewn-profane__2.41.01..
+oewn-profane__2.41.00..	other	event	oewn-profanation__1.04.00..
+oewn-profane__2.41.01..	other	event	oewn-profanation__1.04.01..
+oewn-profane__3.00.00..	antonym		oewn-sacred__3.00.00..
+oewn-profane__3.00.00..	derivation		oewn-profaneness__1.09.00..
+oewn-profane__5.00.00.dirty.02	derivation		oewn-profaneness__1.07.00..
+oewn-profane__5.00.00.dirty.02	derivation		oewn-profanity__1.10.00..
+oewn-profane__5.00.00.irreverent.00	derivation		oewn-profaneness__1.09.00..
+oewn-profanely__4.02.00..	pertainym		oewn-profane__5.00.00.irreverent.00
+oewn-profanely__4.02.01..	pertainym		oewn-profane__5.00.00.dirty.02
+oewn-profess__2.32.01..	derivation		oewn-profession__1.10.01..
+oewn-profess__2.32.01..	other	event	oewn-profession__1.10.01..
+oewn-profess__2.32.02..	derivation		oewn-profession__1.10.00..
+oewn-profess__2.32.02..	other	event	oewn-profession__1.10.00..
+oewn-profess__2.32.03..	derivation		oewn-professing__1.10.00..
+oewn-professedly__4.02.00..	pertainym		oewn-professed__5.00.01.declared.00
+oewn-professedly__4.02.01..	pertainym		oewn-professed__5.00.00.declared.00
+oewn-professional__3.00.02..	antonym		oewn-unprofessional__3.00.00..
+oewn-professional__3.01.00..	pertainym		oewn-profession__1.04.00..
+oewn-professional__3.01.01..	pertainym		oewn-profession__1.14.00..
+oewn-professional_organisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-professional_organisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-professional_organization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-professionalisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-professionalisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-professionalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-professionalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-professionalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-professionalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-professionalization__1.22.00..	derivation		oewn-professionalize__2.30.00..
+oewn-professionalization__1.22.00..	derivation		oewn-professionalize__2.30.01..
+oewn-professionalization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-professionalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-professionalize__2.30.00..	other	event	oewn-professionalization__1.22.00..
+oewn-professionalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-professionalize__2.30.01..	other	event	oewn-professionalization__1.22.00..
+oewn-professionally__4.02.00..	pertainym		oewn-professional__3.01.00..
+oewn-professor__1.18.00..	derivation		oewn-professorial__3.01.00..
+oewn-professor__1.18.00..	derivation		oewn-professorship__1.04.00..
+oewn-professorial__3.01.00..	pertainym		oewn-professor__1.18.00..
+oewn-professorially__4.02.00..	pertainym		oewn-professorial__3.01.00..
+oewn-proffer__1.10.00..	derivation		oewn-proffer__2.40.00..
+oewn-proffer__2.40.00..	other	event	oewn-proffer__1.10.00..
+oewn-proffer__2.40.00..	other	undergoer	oewn-proffer__1.10.00..
+oewn-proficiency__1.07.00..	derivation		oewn-proficient__5.00.00.skilled.00
+oewn-proficiency__1.09.00..	derivation		oewn-proficient__5.00.00.skilled.00
+oewn-proficient__3.01.00..	pertainym		oewn-proficiency__1.09.00..
+oewn-proficiently__4.02.00..	pertainym		oewn-proficient__5.00.00.skilled.00
+oewn-profile__1.10.00..	derivation		oewn-profile__2.36.01..
+oewn-profile__1.15.01..	derivation		oewn-profile__2.36.00..
+oewn-profile__2.36.00..	other	result	oewn-profile__1.15.01..
+oewn-profile__2.36.01..	other	result	oewn-profile__1.10.00..
+oewn-profit--maximising__5.00.00.increasing.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-profit--maximising__5.00.00.increasing.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-profit--maximizing__5.00.00.increasing.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-profit__1.07.00..	derivation		oewn-profit__2.40.02..
+oewn-profit__1.21.00..	derivation		oewn-profit__2.40.00..
+oewn-profit__1.21.00..	derivation		oewn-profiteer__1.18.00..
+oewn-profit__2.40.00..	other	event	oewn-profit__1.21.00..
+oewn-profit__2.40.02..	other	property	oewn-profit__1.07.00..
+oewn-profitability__1.07.00..	antonym		oewn-unprofitability__1.07.00..
+oewn-profitability__1.07.00..	derivation		oewn-profitable__3.00.00..
+oewn-profitable__3.00.00..	antonym		oewn-unprofitable__3.00.00..
+oewn-profitable__3.00.00..	derivation		oewn-profitableness__1.07.00..
+oewn-profitable__3.00.00..	derivation		oewn-profitableness__1.07.01..
+oewn-profitableness__1.07.00..	antonym		oewn-unprofitableness__1.07.00..
+oewn-profitably__4.02.00..	antonym		oewn-unprofitably__4.02.00..
+oewn-profiteer__1.18.00..	derivation		oewn-profiteer__2.40.00..
+oewn-profiteer__2.40.00..	other	agent	oewn-profiteer__1.18.00..
+oewn-profitlessly__4.02.00..	pertainym		oewn-profitless__5.00.00.unrewarding.00
+oewn-profligate__1.18.00..	derivation		oewn-profligate__5.00.00.immoral.00
+oewn-profligate__1.18.01..	derivation		oewn-profligate__5.00.00.wasteful.00
+oewn-profligately__4.02.00..	pertainym		oewn-profligate__5.00.00.immoral.00
+oewn-profound__3.00.00..	antonym		oewn-superficial__3.00.00..
+oewn-profound__3.00.00..	derivation		oewn-profoundness__1.07.01..
+oewn-profound__3.00.00..	derivation		oewn-profoundness__1.09.00..
+oewn-profound__3.00.00..	derivation		oewn-profoundness__1.26.00..
+oewn-profound__3.00.00..	derivation		oewn-profundity__1.07.01..
+oewn-profound__3.00.00..	derivation		oewn-profundity__1.09.00..
+oewn-profound__3.00.00..	derivation		oewn-profundity__1.09.01..
+oewn-profound__5.00.00.deep.01	derivation		oewn-profoundness__1.07.00..
+oewn-profound__5.00.00.deep.01	derivation		oewn-profundity__1.07.00..
+oewn-profound__5.00.00.deep.02	derivation		oewn-profoundness__1.26.00..
+oewn-profound__5.00.00.intense.00	derivation		oewn-profoundness__1.26.00..
+oewn-profound__5.00.00.significant.00	derivation		oewn-profoundness__1.09.01..
+oewn-profound__5.00.00.significant.00	derivation		oewn-profundity__1.09.01..
+oewn-profound__5.00.02.deep.02	derivation		oewn-profoundness__1.26.00..
+oewn-profoundly__4.02.00..	pertainym		oewn-profound__5.00.02.deep.02
+oewn-profundity__1.07.01..	antonym		oewn-superficiality__1.07.01..
+oewn-profuse__5.00.00.abundant.00	derivation		oewn-profuseness__1.07.00..
+oewn-progestational__3.01.00..	pertainym		oewn-gestation__1.26.00..
+oewn-progestational__3.01.01..	pertainym		oewn-progesterone__1.27.00..
+oewn-prognathic__3.00.00..	derivation		oewn-prognathism__1.26.00..
+oewn-prognosis__1.04.00..	derivation		oewn-prognostic__5.00.00.prophetic.00
+oewn-prognosis__1.10.00..	derivation		oewn-prognostic__5.00.00.prophetic.00
+oewn-prognosis__1.10.00..	derivation		oewn-prognosticate__2.32.00..
+oewn-prognosis__1.10.00..	derivation		oewn-prognosticate__2.32.01..
+oewn-prognostic__1.11.00..	derivation		oewn-prognostic__5.00.00.prophetic.00
+oewn-prognosticate__2.32.00..	derivation		oewn-prognostication__1.09.00..
+oewn-prognosticate__2.32.00..	derivation		oewn-prognostication__1.10.00..
+oewn-prognosticate__2.32.00..	derivation		oewn-prognosticative__5.00.00.prophetic.00
+oewn-prognosticate__2.32.00..	derivation		oewn-prognosticator__1.18.00..
+oewn-prognosticate__2.32.00..	other	agent	oewn-prognosticator__1.18.00..
+oewn-prognosticate__2.32.00..	other	event	oewn-prognostication__1.09.00..
+oewn-prognosticate__2.32.00..	other	event	oewn-prognostication__1.10.00..
+oewn-prognosticate__2.32.01..	derivation		oewn-prognostication__1.11.00..
+oewn-prognosticate__2.32.01..	other	event	oewn-prognostication__1.11.00..
+oewn-program__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.09.00..	derivation		oewn-program__2.32.00..
+oewn-program__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.10.02..	derivation		oewn-program__2.36.00..
+oewn-program__1.10.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__1.10.05..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__2.32.00..	derivation		oewn-programing__1.04.01..
+oewn-program__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__2.32.00..	other	result	oewn-program__1.09.00..
+oewn-program__2.36.00..	derivation		oewn-programing__1.04.00..
+oewn-program__2.36.00..	derivation		oewn-programmer__1.18.00..
+oewn-program__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-program__2.36.00..	other	agent	oewn-programmer__1.18.00..
+oewn-program__2.36.00..	other	result	oewn-program__1.10.02..
+oewn-program_optimisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-program_optimisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-program_optimization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-programme__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.09.00..	derivation		oewn-programme__2.32.00..
+oewn-programme__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.09.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.09.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.10.02..	derivation		oewn-programme__2.36.00..
+oewn-programme__1.10.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.10.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__1.10.05..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__1.10.05..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__2.32.00..	derivation		oewn-programming__1.04.01..
+oewn-programme__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__2.32.00..	other	result	oewn-programme__1.09.00..
+oewn-programme__2.36.00..	derivation		oewn-programming__1.04.00..
+oewn-programme__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-programme__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-programme__2.36.00..	other	result	oewn-programme__1.10.02..
+oewn-progress__1.04.00..	derivation		oewn-progress__2.38.00..
+oewn-progress__1.04.01..	derivation		oewn-progress__2.30.00..
+oewn-progress__1.04.01..	derivation		oewn-progress__2.30.01..
+oewn-progress__1.11.00..	derivation		oewn-progress__2.38.00..
+oewn-progress__2.30.00..	antonym		oewn-regress__2.30.00..
+oewn-progress__2.30.00..	other	event	oewn-progress__1.04.01..
+oewn-progress__2.30.01..	other	event	oewn-progress__1.04.01..
+oewn-progress__2.38.00..	derivation		oewn-progression__1.04.00..
+oewn-progress__2.38.00..	other	event	oewn-progress__1.04.00..
+oewn-progress__2.38.00..	other	event	oewn-progress__1.11.00..
+oewn-progress__2.38.00..	other	event	oewn-progression__1.04.00..
+oewn-progressive__1.18.00..	derivation		oewn-progressive__3.00.01..
+oewn-progressive__1.18.00..	derivation		oewn-progressive__5.00.00.liberal.00
+oewn-progressive__3.00.01..	antonym		oewn-regressive__3.00.01..
+oewn-progressive__3.00.01..	derivation		oewn-progressiveness__1.07.00..
+oewn-progressive__3.00.02..	antonym		oewn-regressive__3.00.02..
+oewn-progressive__5.00.00.liberal.00	derivation		oewn-progressiveness__1.07.00..
+oewn-progressive__5.00.00.liberal.00	derivation		oewn-progressivity__1.07.00..
+oewn-progressively__4.02.01..	pertainym		oewn-progressive__5.00.00.increasing.00
+oewn-prohibit__2.32.00..	derivation		oewn-prohibition__1.04.00..
+oewn-prohibit__2.32.00..	other	event	oewn-prohibition__1.04.00..
+oewn-prohibition__1.10.02..	derivation		oewn-prohibitionist__1.18.00..
+oewn-prohibition__1.28.00..	derivation		oewn-prohibitionist__1.18.00..
+oewn-prohibitively__4.02.00..	pertainym		oewn-prohibitive__5.00.00.preventive.00
+oewn-project__1.04.00..	derivation		oewn-project__2.36.01..
+oewn-project__1.09.00..	derivation		oewn-project__2.36.01..
+oewn-project__2.36.01..	other	event	oewn-project__1.04.00..
+oewn-project__2.36.01..	other	event	oewn-project__1.09.00..
+oewn-project__2.39.00..	derivation		oewn-projection__1.19.00..
+oewn-project__2.39.00..	other	event	oewn-projection__1.19.00..
+oewn-project__2.39.01..	derivation		oewn-projection__1.10.00..
+oewn-project__2.39.01..	derivation		oewn-projector__1.06.00..
+oewn-project__2.39.01..	other	event	oewn-projection__1.10.00..
+oewn-project__2.39.01..	other	instrument	oewn-projector__1.06.00..
+oewn-project__2.42.00..	derivation		oewn-projection__1.04.02..
+oewn-project__2.42.00..	other	event	oewn-projection__1.04.02..
+oewn-projectile__1.06.00..	derivation		oewn-projectile__5.00.00.dynamic.00
+oewn-projectile__1.06.01..	derivation		oewn-projectile__5.00.00.dynamic.00
+oewn-projectionist__1.18.00..	derivation		oewn-projector__1.06.00..
+oewn-projectionist__1.18.00..	derivation		oewn-projector__1.06.01..
+oewn-prokaryote__1.05.00..	derivation		oewn-prokaryotic__3.01.00..
+oewn-prokaryotic__3.01.00..	pertainym		oewn-prokaryote__1.05.00..
+oewn-prolapse__1.26.00..	derivation		oewn-prolapse__2.38.00..
+oewn-prolapse__2.38.00..	other	event	oewn-prolapse__1.26.00..
+oewn-proletarian__1.18.00..	derivation		oewn-proletarian__5.00.00.lower-class.00
+oewn-proletarian__5.00.00.lower-class.00	derivation		oewn-proletariat__1.14.00..
+oewn-proliferate__2.30.00..	derivation		oewn-proliferation__1.22.00..
+oewn-proliferate__2.30.00..	derivation		oewn-proliferation__1.22.01..
+oewn-proliferate__2.30.00..	other	event	oewn-proliferation__1.22.00..
+oewn-proliferate__2.30.00..	other	event	oewn-proliferation__1.22.01..
+oewn-proliferate__2.30.01..	derivation		oewn-proliferation__1.22.00..
+oewn-proliferate__2.30.01..	derivation		oewn-proliferation__1.22.01..
+oewn-proliferate__2.30.01..	other	event	oewn-proliferation__1.22.00..
+oewn-proliferate__2.30.01..	other	event	oewn-proliferation__1.22.01..
+oewn-prolix__3.00.00..	derivation		oewn-prolixity__1.10.00..
+oewn-prolix__3.00.00..	derivation		oewn-prolixness__1.10.00..
+oewn-prologise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-prologise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-prologize__2.32.00..	derivation		oewn-prologue__1.10.00..
+oewn-prologize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prolong__2.30.00..	derivation		oewn-prolongation__1.04.00..
+oewn-prolong__2.30.00..	derivation		oewn-prolongation__1.07.00..
+oewn-prolong__2.30.00..	derivation		oewn-prolongation__1.07.01..
+oewn-prolong__2.30.00..	other	event	oewn-prolongation__1.04.00..
+oewn-prolong__2.30.00..	other	property	oewn-prolongation__1.07.00..
+oewn-prolong__2.30.00..	other	result	oewn-prolongation__1.07.01..
+oewn-prolong__2.42.00..	derivation		oewn-prolongation__1.04.00..
+oewn-prolong__2.42.00..	derivation		oewn-prolongation__1.07.01..
+oewn-prolong__2.42.00..	other	event	oewn-prolongation__1.04.00..
+oewn-prolong__2.42.00..	other	result	oewn-prolongation__1.07.01..
+oewn-prolusory__3.01.00..	pertainym		oewn-prolusion__1.10.00..
+oewn-promenade__1.04.00..	derivation		oewn-promenade__2.38.00..
+oewn-promenade__1.06.00..	derivation		oewn-promenade__2.38.00..
+oewn-promenade__2.38.00..	other	event	oewn-promenade__1.04.00..
+oewn-promenade__2.38.00..	other	location	oewn-promenade__1.06.00..
+oewn-prominence__1.07.00..	derivation		oewn-prominent__5.00.02.conspicuous.00
+oewn-prominence__1.26.00..	derivation		oewn-prominent__5.00.02.conspicuous.00
+oewn-prominently__4.02.00..	pertainym		oewn-prominent__5.00.00.conspicuous.00
+oewn-promiscuity__1.04.00..	derivation		oewn-promiscuous__5.00.00.unchaste.00
+oewn-promiscuous__5.00.00.unchaste.00	derivation		oewn-promiscuousness__1.04.00..
+oewn-promiscuously__4.02.00..	pertainym		oewn-promiscuous__5.00.00.unchaste.00
+oewn-promiscuously__4.02.01..	pertainym		oewn-promiscuous__5.00.00.indiscriminate.00
+oewn-promise__1.09.00..	derivation		oewn-promise__2.32.01..
+oewn-promise__1.09.00..	derivation		oewn-promise__2.42.00..
+oewn-promise__1.10.00..	derivation		oewn-promise__2.32.00..
+oewn-promise__1.10.00..	derivation		oewn-promise__2.32.01..
+oewn-promise__2.32.00..	derivation		oewn-promisee__1.18.00..
+oewn-promise__2.32.00..	derivation		oewn-promiser__1.18.00..
+oewn-promise__2.32.00..	derivation		oewn-promisor__1.18.00..
+oewn-promise__2.32.00..	derivation		oewn-promissory__3.01.00..
+oewn-promise__2.32.00..	other	agent	oewn-promiser__1.18.00..
+oewn-promise__2.32.00..	other	agent	oewn-promisor__1.18.00..
+oewn-promise__2.32.00..	other	destination	oewn-promisee__1.18.00..
+oewn-promise__2.32.00..	other	event	oewn-promise__1.10.00..
+oewn-promise__2.32.01..	derivation		oewn-promisee__1.18.00..
+oewn-promise__2.32.01..	derivation		oewn-promisor__1.18.00..
+oewn-promise__2.32.01..	derivation		oewn-promissory__3.01.00..
+oewn-promise__2.32.01..	other	agent	oewn-promisor__1.18.00..
+oewn-promise__2.32.01..	other	destination	oewn-promisee__1.18.00..
+oewn-promise__2.32.01..	other	event	oewn-promise__1.10.00..
+oewn-promise__2.32.01..	other	uses	oewn-promise__1.09.00..
+oewn-promise__2.42.00..	other	uses	oewn-promise__1.09.00..
+oewn-promisingly__4.02.00..	pertainym		oewn-promising__5.00.00.auspicious.00
+oewn-promissory__3.01.00..	pertainym		oewn-promise__1.10.00..
+oewn-promote__2.32.00..	derivation		oewn-promoter__1.18.00..
+oewn-promote__2.32.00..	derivation		oewn-promotion__1.10.00..
+oewn-promote__2.32.00..	other	agent	oewn-promoter__1.18.00..
+oewn-promote__2.32.00..	other	by_means_of	oewn-promotion__1.10.00..
+oewn-promote__2.41.00..	derivation		oewn-promotion__1.04.00..
+oewn-promote__2.41.00..	other	event	oewn-promotion__1.04.00..
+oewn-promote__2.41.01..	derivation		oewn-promotion__1.04.02..
+oewn-promote__2.41.01..	derivation		oewn-promotion__1.10.01..
+oewn-promote__2.41.01..	derivation		oewn-promotive__5.00.00.encouraging.00
+oewn-promote__2.41.01..	other	event	oewn-promotion__1.04.02..
+oewn-promote__2.41.01..	other	event	oewn-promotion__1.10.01..
+oewn-promotional__3.01.00..	pertainym		oewn-promotion__1.10.00..
+oewn-promotional__3.01.01..	pertainym		oewn-promotion__1.10.01..
+oewn-prompt__1.10.00..	derivation		oewn-prompt__2.32.01..
+oewn-prompt__2.32.00..	derivation		oewn-prompting__1.10.00..
+oewn-prompt__2.32.01..	derivation		oewn-prompter__1.06.00..
+oewn-prompt__2.32.01..	derivation		oewn-prompter__1.18.00..
+oewn-prompt__2.32.01..	derivation		oewn-prompting__1.10.01..
+oewn-prompt__2.32.01..	other	agent	oewn-prompter__1.18.00..
+oewn-prompt__2.32.01..	other	event	oewn-prompt__1.10.00..
+oewn-prompt__2.32.01..	other	instrument	oewn-prompter__1.06.00..
+oewn-prompt__5.00.00.fast.01	derivation		oewn-promptness__1.07.00..
+oewn-prompt__5.00.00.punctual.00	derivation		oewn-promptness__1.07.01..
+oewn-prompt__5.00.00.ready.00	derivation		oewn-promptness__1.07.00..
+oewn-promptly__4.02.00..	pertainym		oewn-prompt__5.00.00.punctual.00
+oewn-promptly__4.02.02..	pertainym		oewn-prompt__5.00.00.ready.00
+oewn-promulgate__2.32.00..	derivation		oewn-promulgation__1.04.00..
+oewn-promulgate__2.32.00..	derivation		oewn-promulgation__1.10.00..
+oewn-promulgate__2.32.00..	derivation		oewn-promulgation__1.10.01..
+oewn-promulgate__2.32.00..	other	event	oewn-promulgation__1.04.00..
+oewn-promulgate__2.32.00..	other	event	oewn-promulgation__1.10.00..
+oewn-promulgate__2.32.00..	other	event	oewn-promulgation__1.10.01..
+oewn-promulgate__2.32.01..	derivation		oewn-promulgation__1.04.00..
+oewn-promulgate__2.32.01..	derivation		oewn-promulgation__1.10.01..
+oewn-promulgate__2.32.01..	derivation		oewn-promulgator__1.18.00..
+oewn-promulgate__2.32.01..	other	agent	oewn-promulgator__1.18.00..
+oewn-promulgate__2.32.01..	other	event	oewn-promulgation__1.04.00..
+oewn-promulgate__2.32.01..	other	event	oewn-promulgation__1.10.01..
+oewn-pronate__2.38.00..	derivation		oewn-pronation__1.04.00..
+oewn-pronate__2.38.00..	derivation		oewn-pronator__1.08.00..
+oewn-pronate__2.38.00..	other	body_part	oewn-pronator__1.08.00..
+oewn-pronate__2.38.00..	other	event	oewn-pronation__1.04.00..
+oewn-pronation__1.04.00..	antonym		oewn-supination__1.04.00..
+oewn-prone__5.00.00.inclined.02	derivation		oewn-proneness__1.07.00..
+oewn-prong__1.06.00..	derivation		oewn-prongy__5.00.00.divided.00
+oewn-pronominal__3.01.00..	pertainym		oewn-pronoun__1.10.00..
+oewn-pronounce__2.32.00..	derivation		oewn-pronouncement__1.10.00..
+oewn-pronounce__2.32.00..	other	event	oewn-pronouncement__1.10.00..
+oewn-pronounce__2.32.01..	derivation		oewn-pronunciation__1.10.00..
+oewn-pronounce__2.32.01..	derivation		oewn-pronunciation__1.10.01..
+oewn-pronounce__2.32.01..	other	property	oewn-pronunciation__1.10.00..
+oewn-pronounce__2.32.01..	other	property	oewn-pronunciation__1.10.01..
+oewn-pronounceable__3.00.00..	antonym		oewn-unpronounceable__3.00.00..
+oewn-proof__1.06.00..	derivation		oewn-proof__2.36.00..
+oewn-proof__1.10.01..	derivation		oewn-proof__2.31.00..
+oewn-proof__1.10.01..	derivation		oewn-proof__2.36.00..
+oewn-proof__2.31.00..	other	undergoer	oewn-proof__1.10.01..
+oewn-proof__2.36.00..	other	result	oewn-proof__1.06.00..
+oewn-proof__2.36.00..	other	result	oewn-proof__1.10.01..
+oewn-proofread__2.31.00..	derivation		oewn-proofreader__1.18.00..
+oewn-proofread__2.31.00..	other	agent	oewn-proofreader__1.18.00..
+oewn-prop__1.06.00..	derivation		oewn-prop__2.35.00..
+oewn-prop__2.35.00..	other	by_means_of	oewn-prop__1.06.00..
+oewn-propaedeutic__1.04.00..	derivation		oewn-propaedeutic__5.00.00.preceding.00
+oewn-propaedeutic__5.00.00.preceding.00	derivation		oewn-propaedeutics__1.04.00..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandise__2.32.00..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandise__2.32.01..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandist__1.18.00..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandistic__3.01.00..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandize__2.32.00..
+oewn-propaganda__1.10.00..	derivation		oewn-propagandize__2.32.01..
+oewn-propagandise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-propagandise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-propagandise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-propagandise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-propagandist__1.18.00..	derivation		oewn-propagandist__3.01.00..
+oewn-propagandist__3.01.00..	pertainym		oewn-propagandist__1.18.00..
+oewn-propagandistic__3.01.00..	pertainym		oewn-propagandist__1.18.00..
+oewn-propagandize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-propagandize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-propagate__2.29.00..	derivation		oewn-propagation__1.04.00..
+oewn-propagate__2.29.00..	derivation		oewn-propagative__3.01.00..
+oewn-propagate__2.29.00..	other	event	oewn-propagation__1.04.00..
+oewn-propagate__2.29.01..	derivation		oewn-propagation__1.04.00..
+oewn-propagate__2.29.01..	derivation		oewn-propagative__3.01.00..
+oewn-propagate__2.29.01..	derivation		oewn-propagator__1.18.01..
+oewn-propagate__2.29.01..	other	agent	oewn-propagator__1.18.01..
+oewn-propagate__2.29.01..	other	event	oewn-propagation__1.04.00..
+oewn-propagate__2.32.00..	derivation		oewn-propagation__1.10.00..
+oewn-propagate__2.32.00..	derivation		oewn-propagator__1.18.00..
+oewn-propagate__2.32.00..	other	agent	oewn-propagator__1.18.00..
+oewn-propagate__2.32.00..	other	event	oewn-propagation__1.10.00..
+oewn-propagate__2.35.00..	derivation		oewn-propagation__1.19.00..
+oewn-propagate__2.35.00..	other	event	oewn-propagation__1.19.00..
+oewn-propagate__2.35.01..	derivation		oewn-propagation__1.10.00..
+oewn-propagate__2.35.01..	other	event	oewn-propagation__1.10.00..
+oewn-propagate__2.38.01..	derivation		oewn-propagation__1.19.00..
+oewn-propagate__2.38.01..	other	event	oewn-propagation__1.19.00..
+oewn-propagate__2.40.00..	derivation		oewn-propagation__1.04.00..
+oewn-propagate__2.40.00..	other	event	oewn-propagation__1.04.00..
+oewn-propagative__3.01.00..	pertainym		oewn-propagation__1.04.00..
+oewn-propel__2.35.00..	derivation		oewn-propellant__1.27.00..
+oewn-propel__2.35.00..	derivation		oewn-propellant__5.00.00.dynamic.00
+oewn-propel__2.35.00..	derivation		oewn-propellent__1.27.00..
+oewn-propel__2.35.00..	derivation		oewn-propellent__5.00.00.dynamic.00
+oewn-propel__2.35.00..	derivation		oewn-propeller__1.06.00..
+oewn-propel__2.35.00..	derivation		oewn-propellor__1.06.00..
+oewn-propel__2.35.00..	derivation		oewn-propulsion__1.04.00..
+oewn-propel__2.35.00..	derivation		oewn-propulsive__5.00.00.dynamic.00
+oewn-propel__2.35.00..	other	event	oewn-propulsion__1.04.00..
+oewn-propel__2.35.00..	other	instrument	oewn-propeller__1.06.00..
+oewn-propel__2.35.00..	other	instrument	oewn-propellor__1.06.00..
+oewn-propel__2.36.00..	derivation		oewn-propulsion__1.04.00..
+oewn-propel__2.36.00..	other	event	oewn-propulsion__1.04.00..
+oewn-propellant__1.27.00..	derivation		oewn-propellant__5.00.00.dynamic.00
+oewn-propellent__1.27.00..	derivation		oewn-propellent__5.00.00.dynamic.00
+oewn-proper__3.00.00..	derivation		oewn-properness__1.07.00..
+oewn-proper__5.00.00.appropriate.00	derivation		oewn-properness__1.07.00..
+oewn-properly__4.02.00..	pertainym		oewn-proper__3.00.00..
+oewn-properly__4.02.00..	pertainym		oewn-proper__5.00.00.appropriate.00
+oewn-properly__4.02.02..	pertainym		oewn-proper__3.00.00..
+oewn-properly__4.02.02..	pertainym		oewn-proper__5.00.00.appropriate.00
+oewn-prophecy__1.09.00..	derivation		oewn-prophetic__3.00.00..
+oewn-prophecy__1.09.00..	derivation		oewn-prophetical__3.00.00..
+oewn-prophecy__1.10.00..	derivation		oewn-prophetic__3.00.00..
+oewn-prophecy__1.10.00..	derivation		oewn-prophetical__3.00.00..
+oewn-prophet__1.18.00..	derivation		oewn-prophetic__3.00.00..
+oewn-prophet__1.18.01..	derivation		oewn-prophetic__3.00.00..
+oewn-prophet__1.18.01..	derivation		oewn-prophetical__3.00.00..
+oewn-prophetic__3.00.00..	antonym		oewn-unprophetic__3.00.00..
+oewn-prophetically__4.02.00..	pertainym		oewn-prophetic__3.00.00..
+oewn-prophylactic__1.06.00..	derivation		oewn-prophylactic__5.00.02.protective.00
+oewn-prophylactic__1.06.01..	derivation		oewn-prophylactic__5.00.00.healthful.00
+oewn-prophylactic__5.00.00.healthful.00	derivation		oewn-prophylaxis__1.04.00..
+oewn-propitiate__2.32.00..	derivation		oewn-propitiation__1.04.00..
+oewn-propitiate__2.32.00..	derivation		oewn-propitiative__5.00.00.conciliatory.00
+oewn-propitiate__2.32.00..	derivation		oewn-propitiatory__5.00.00.conciliatory.00
+oewn-propitiate__2.32.00..	other	event	oewn-propitiation__1.04.00..
+oewn-propitious__3.00.00..	antonym		oewn-unpropitious__3.00.00..
+oewn-propitious__3.00.00..	derivation		oewn-propitiousness__1.07.00..
+oewn-propitiously__4.02.00..	antonym		oewn-unpropitiously__4.02.00..
+oewn-propitiously__4.02.00..	pertainym		oewn-propitious__3.00.00..
+oewn-propitiousness__1.07.00..	antonym		oewn-unpropitiousness__1.07.00..
+oewn-proponent__1.18.00..	derivation		oewn-propound__2.32.00..
+oewn-proportion__1.07.01..	derivation		oewn-proportion__2.30.01..
+oewn-proportion__1.24.00..	derivation		oewn-proportion__2.30.00..
+oewn-proportion__1.25.00..	derivation		oewn-proportion__2.30.01..
+oewn-proportion__2.30.00..	other	result	oewn-proportion__1.24.00..
+oewn-proportion__2.30.01..	other	result	oewn-proportion__1.07.01..
+oewn-proportion__2.30.01..	other	result	oewn-proportion__1.25.00..
+oewn-proportion__2.30.01..	other	uses	oewn-proportion__1.07.01..
+oewn-proportion__2.30.01..	other	uses	oewn-proportion__1.25.00..
+oewn-proportional__5.00.01.proportionate.00	derivation		oewn-proportionality__1.24.00..
+oewn-proportionally__4.02.00..	pertainym		oewn-proportional__5.00.00.proportionate.00
+oewn-proportionate__3.00.00..	derivation		oewn-proportionateness__1.24.00..
+oewn-proportionate__5.00.00.balanced.00	derivation		oewn-proportionateness__1.24.00..
+oewn-proportionate__5.00.00.commensurate.00	derivation		oewn-proportionateness__1.24.00..
+oewn-proportionately__4.02.00..	pertainym		oewn-proportionate__5.00.00.commensurate.00
+oewn-proportionately__4.02.01..	pertainym		oewn-proportionate__5.00.00.balanced.00
+oewn-proportionately__4.02.03..	pertainym		oewn-proportionate__5.00.00.commensurate.00
+oewn-proposal__1.10.01..	derivation		oewn-propose__2.32.00..
+oewn-proposal__1.10.02..	derivation		oewn-propose__2.32.01..
+oewn-propose__2.31.00..	derivation		oewn-proposer__1.18.00..
+oewn-propose__2.31.00..	derivation		oewn-proposition__1.10.01..
+oewn-propose__2.31.00..	other	agent	oewn-proposer__1.18.00..
+oewn-propose__2.31.00..	other	event	oewn-proposition__1.10.01..
+oewn-propose__2.32.00..	derivation		oewn-proposer__1.18.01..
+oewn-propose__2.32.00..	derivation		oewn-proposition__1.10.02..
+oewn-propose__2.32.00..	other	agent	oewn-proposer__1.18.01..
+oewn-propose__2.32.00..	other	event	oewn-proposal__1.10.01..
+oewn-propose__2.32.00..	other	event	oewn-proposition__1.10.02..
+oewn-propose__2.32.01..	other	event	oewn-proposal__1.10.02..
+oewn-proposition__1.10.03..	derivation		oewn-proposition__2.32.00..
+oewn-proposition__2.32.00..	other	event	oewn-proposition__1.10.03..
+oewn-proprietary__3.00.00..	derivation		oewn-proprietor__1.18.00..
+oewn-proprietor__1.18.00..	derivation		oewn-proprietorship__1.21.00..
+oewn-proprioceptive__3.01.00..	pertainym		oewn-proprioception__1.09.00..
+oewn-propulsive__3.01.00..	pertainym		oewn-propulsion__1.19.00..
+oewn-prorate__2.31.00..	derivation		oewn-proration__1.04.00..
+oewn-prorate__2.31.00..	other	event	oewn-proration__1.04.00..
+oewn-prorate__2.31.01..	derivation		oewn-proration__1.04.00..
+oewn-prorate__2.31.01..	other	event	oewn-proration__1.04.00..
+oewn-prorogation__1.04.00..	derivation		oewn-prorogue__2.41.00..
+oewn-prorogation__1.04.00..	derivation		oewn-prorogue__2.42.00..
+oewn-prorogue__2.41.00..	other	event	oewn-prorogation__1.04.00..
+oewn-prorogue__2.42.00..	other	event	oewn-prorogation__1.04.00..
+oewn-prosaic__5.00.00.unexciting.00	derivation		oewn-prosaicness__1.07.00..
+oewn-prosaic__5.00.00.unexciting.00	derivation		oewn-prose__1.10.01..
+oewn-prosaic__5.00.00.uninteresting.00	derivation		oewn-prosaicness__1.07.00..
+oewn-prosaic__5.00.00.uninteresting.00	derivation		oewn-prose__1.10.01..
+oewn-prosaic__5.00.00.unrhetorical.00	derivation		oewn-prosaicness__1.07.00..
+oewn-prosaic__5.00.00.unrhetorical.00	derivation		oewn-prose__1.10.01..
+oewn-prosaically__4.02.00..	pertainym		oewn-prosaic__5.00.00.unexciting.00
+oewn-proscribe__2.32.00..	derivation		oewn-proscription__1.04.00..
+oewn-proscribe__2.32.00..	derivation		oewn-proscription__1.10.00..
+oewn-proscribe__2.32.00..	other	by_means_of	oewn-proscription__1.10.00..
+oewn-proscribe__2.32.00..	other	event	oewn-proscription__1.04.00..
+oewn-prosecute__2.41.00..	derivation		oewn-prosecution__1.04.00..
+oewn-prosecute__2.41.00..	derivation		oewn-prosecutor__1.18.00..
+oewn-prosecute__2.41.00..	other	agent	oewn-prosecutor__1.18.00..
+oewn-prosecute__2.41.00..	other	event	oewn-prosecution__1.04.00..
+oewn-prosecute__2.41.01..	derivation		oewn-prosecution__1.04.00..
+oewn-prosecute__2.41.01..	derivation		oewn-prosecutor__1.18.00..
+oewn-prosecute__2.41.01..	other	agent	oewn-prosecutor__1.18.00..
+oewn-prosecute__2.41.01..	other	event	oewn-prosecution__1.04.00..
+oewn-prosecute__2.41.02..	derivation		oewn-prosecution__1.04.01..
+oewn-prosecute__2.41.02..	other	event	oewn-prosecution__1.04.01..
+oewn-proselyte__1.18.00..	derivation		oewn-proselytize__2.32.00..
+oewn-proselytise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-proselytise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-proselytize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-prosily__4.02.00..	pertainym		oewn-prosy__5.00.00.uninteresting.00
+oewn-prosiness__1.07.01..	derivation		oewn-prosy__5.00.00.uninteresting.00
+oewn-prosodic__3.01.00..	pertainym		oewn-prosody__1.10.00..
+oewn-prosom__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prospect__1.26.00..	derivation		oewn-prospect__2.39.00..
+oewn-prospect__2.31.00..	derivation		oewn-prospector__1.18.00..
+oewn-prospect__2.31.00..	other	agent	oewn-prospector__1.18.00..
+oewn-prospect__2.39.00..	other	event	oewn-prospect__1.26.00..
+oewn-prospective__3.00.00..	antonym		oewn-retrospective__3.00.00..
+oewn-prosperity__1.26.00..	derivation		oewn-prosperous__5.00.00.rich.00
+oewn-prosperity__1.26.02..	derivation		oewn-prosperous__5.00.00.successful.00
+oewn-prosperously__4.02.01..	pertainym		oewn-prosperous__5.00.00.rich.00
+oewn-prospicience__1.09.00..	derivation		oewn-prospicient__5.00.00.provident.00
+oewn-prostate__1.08.00..	derivation		oewn-prostatic__3.01.00..
+oewn-prostate__3.01.00..	pertainym		oewn-prostate_gland__1.08.00..
+oewn-prostatic__3.01.00..	pertainym		oewn-prostate_gland__1.08.00..
+oewn-prosthesis__1.06.00..	derivation		oewn-prosthetic__3.01.00..
+oewn-prosthesis__1.06.00..	derivation		oewn-prosthetic__3.01.01..
+oewn-prosthesis__1.06.00..	derivation		oewn-prosthetist__1.18.00..
+oewn-prosthetic__3.01.00..	pertainym		oewn-prosthesis__1.06.00..
+oewn-prosthetic__3.01.01..	derivation		oewn-prosthetics__1.09.00..
+oewn-prosthetic__3.01.01..	pertainym		oewn-prosthetics__1.09.00..
+oewn-prosthodontia__1.09.00..	derivation		oewn-prosthodontist__1.18.00..
+oewn-prosthodontic__3.01.00..	derivation		oewn-prosthodontics__1.09.00..
+oewn-prosthodontic__3.01.00..	pertainym		oewn-prosthodontics__1.09.00..
+oewn-prosthodontics__1.09.00..	derivation		oewn-prosthodontist__1.18.00..
+oewn-prostigmin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prostitute__1.18.00..	derivation		oewn-prostitute__2.41.00..
+oewn-prostitute__2.41.00..	derivation		oewn-prostitution__1.04.00..
+oewn-prostitute__2.41.00..	other	agent	oewn-prostitute__1.18.00..
+oewn-prostitute__2.41.00..	other	event	oewn-prostitution__1.04.00..
+oewn-prostrate__2.30.00..	derivation		oewn-prostration__1.04.01..
+oewn-prostrate__2.30.00..	other	event	oewn-prostration__1.04.01..
+oewn-prostrate__2.35.00..	derivation		oewn-prostration__1.04.00..
+oewn-prostrate__2.35.00..	other	event	oewn-prostration__1.04.00..
+oewn-prostrate__2.38.00..	derivation		oewn-prostration__1.04.00..
+oewn-prostrate__2.38.00..	derivation		oewn-prostration__1.04.01..
+oewn-prostrate__2.38.00..	other	event	oewn-prostration__1.04.00..
+oewn-prostrate__2.38.00..	other	event	oewn-prostration__1.04.01..
+oewn-protanopia__1.26.00..	derivation		oewn-protanopic__5.00.00.blind.00
+oewn-protect__2.33.00..	derivation		oewn-protection__1.04.00..
+oewn-protect__2.33.00..	derivation		oewn-protection__1.06.00..
+oewn-protect__2.33.00..	derivation		oewn-protective__3.00.00..
+oewn-protect__2.33.00..	derivation		oewn-protector__1.18.00..
+oewn-protect__2.33.00..	other	agent	oewn-protector__1.18.00..
+oewn-protect__2.33.00..	other	by_means_of	oewn-protection__1.06.00..
+oewn-protect__2.33.00..	other	event	oewn-protection__1.04.00..
+oewn-protect__2.33.01..	derivation		oewn-protection__1.04.03..
+oewn-protect__2.33.01..	derivation		oewn-protective__3.00.00..
+oewn-protect__2.33.01..	other	event	oewn-protection__1.04.03..
+oewn-protected__3.00.00..	antonym		oewn-unprotected__3.00.00..
+oewn-protectionism__1.10.00..	derivation		oewn-protectionist__1.18.00..
+oewn-protective__3.00.00..	antonym		oewn-unprotective__3.00.00..
+oewn-protective__3.00.00..	derivation		oewn-protectiveness__1.07.00..
+oewn-protective__5.00.00.tender.03	derivation		oewn-protectiveness__1.12.00..
+oewn-protective__5.00.01.careful.00	derivation		oewn-protectiveness__1.07.00..
+oewn-protectively__4.02.00..	pertainym		oewn-protective__5.00.00.tender.03
+oewn-protector__1.18.00..	derivation		oewn-protectorship__1.04.00..
+oewn-protein__1.27.00..	derivation		oewn-proteinaceous__3.01.00..
+oewn-proteinaceous__3.01.00..	pertainym		oewn-protein__1.27.00..
+oewn-proteolysis__1.22.00..	derivation		oewn-proteolytic__3.01.00..
+oewn-proteolytic__3.01.00..	pertainym		oewn-proteolysis__1.22.00..
+oewn-protest__1.04.00..	derivation		oewn-protest__2.41.00..
+oewn-protest__1.10.00..	derivation		oewn-protest__2.32.00..
+oewn-protest__1.10.00..	derivation		oewn-protest__2.32.01..
+oewn-protest__1.10.01..	derivation		oewn-protest__2.32.00..
+oewn-protest__2.32.00..	derivation		oewn-protestant__5.00.00.complaining.00
+oewn-protest__2.32.00..	derivation		oewn-protestation__1.10.00..
+oewn-protest__2.32.00..	derivation		oewn-protester__1.18.00..
+oewn-protest__2.32.00..	derivation		oewn-protester__1.18.01..
+oewn-protest__2.32.00..	other	agent	oewn-protester__1.18.00..
+oewn-protest__2.32.00..	other	agent	oewn-protester__1.18.01..
+oewn-protest__2.32.00..	other	event	oewn-protest__1.10.00..
+oewn-protest__2.32.00..	other	event	oewn-protest__1.10.01..
+oewn-protest__2.32.00..	other	event	oewn-protestation__1.10.00..
+oewn-protest__2.32.01..	derivation		oewn-protestation__1.10.01..
+oewn-protest__2.32.01..	other	event	oewn-protest__1.10.00..
+oewn-protest__2.32.01..	other	event	oewn-protestation__1.10.01..
+oewn-protest__2.41.00..	derivation		oewn-protestant__5.00.00.complaining.00
+oewn-protest__2.41.00..	derivation		oewn-protester__1.18.00..
+oewn-protest__2.41.00..	derivation		oewn-protester__1.18.01..
+oewn-protest__2.41.00..	other	agent	oewn-protester__1.18.00..
+oewn-protest__2.41.00..	other	agent	oewn-protester__1.18.01..
+oewn-protest__2.41.00..	other	event	oewn-protest__1.04.00..
+oewn-protestant__3.01.00..	pertainym		oewn-protestant__1.18.00..
+oewn-protestant__3.01.00..	pertainym		oewn-protestantism__1.09.00..
+oewn-prototypal__5.00.00.first.00	derivation		oewn-prototype__1.09.00..
+oewn-prototype__1.09.00..	derivation		oewn-prototypic__5.00.00.first.00
+oewn-prototype__1.09.00..	derivation		oewn-prototypical__5.00.00.first.00
+oewn-protozoan__3.01.00..	derivation		oewn-protozoon__1.05.00..
+oewn-protozoological__3.01.00..	derivation		oewn-protozoology__1.09.00..
+oewn-protozoological__3.01.00..	pertainym		oewn-zoological__3.01.00..
+oewn-protozoologist__1.18.00..	derivation		oewn-protozoology__1.09.00..
+oewn-protract__2.30.00..	derivation		oewn-protraction__1.04.00..
+oewn-protract__2.30.00..	derivation		oewn-protraction__1.07.00..
+oewn-protract__2.30.00..	other	event	oewn-protraction__1.04.00..
+oewn-protract__2.30.00..	other	result	oewn-protraction__1.07.00..
+oewn-protractedly__4.02.00..	pertainym		oewn-protracted__5.00.00.long.02
+oewn-protrude__2.30.00..	derivation		oewn-protrusible__5.00.00.extensile.00
+oewn-protrude__2.30.00..	derivation		oewn-protrusion__1.25.00..
+oewn-protrude__2.30.00..	derivation		oewn-protrusive__3.00.00..
+oewn-protrude__2.30.00..	other	undergoer	oewn-protrusion__1.25.00..
+oewn-protrude__2.38.00..	derivation		oewn-protrusible__5.00.00.extensile.00
+oewn-protrude__2.38.00..	derivation		oewn-protrusion__1.25.00..
+oewn-protrude__2.38.00..	derivation		oewn-protrusive__3.00.00..
+oewn-protrude__2.38.00..	other	undergoer	oewn-protrusion__1.25.00..
+oewn-protrude__2.42.00..	derivation		oewn-protrusible__5.00.00.extensile.00
+oewn-protrude__2.42.00..	derivation		oewn-protrusion__1.04.00..
+oewn-protrude__2.42.00..	derivation		oewn-protrusive__3.00.00..
+oewn-protrude__2.42.00..	other	event	oewn-protrusion__1.04.00..
+oewn-protuberance__1.25.00..	derivation		oewn-protuberant__5.00.00.protrusive.00
+oewn-protuberance__1.25.00..	derivation		oewn-protuberate__2.42.01..
+oewn-protuberance__1.26.00..	derivation		oewn-protuberant__5.00.00.protrusive.00
+oewn-protuberance__1.26.00..	derivation		oewn-protuberate__2.42.00..
+oewn-protuberant__5.00.00.protrusive.00	derivation		oewn-protuberate__2.42.00..
+oewn-protuberant__5.00.00.protrusive.00	derivation		oewn-protuberate__2.42.01..
+oewn-protuberate__2.42.00..	other	property	oewn-protuberance__1.26.00..
+oewn-protuberate__2.42.01..	other	result	oewn-protuberance__1.25.00..
+oewn-proudly__4.02.00..	pertainym		oewn-proud__3.00.00..
+oewn-provability__1.07.00..	derivation		oewn-provable__5.00.00.obvious.00
+oewn-provably__4.02.00..	pertainym		oewn-provable__5.00.00.obvious.00
+oewn-proved__3.00.00..	antonym		oewn-unproved__3.00.00..
+oewn-proved__3.00.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-proven__3.00.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-proventil__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-provera__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-proverb__1.10.00..	derivation		oewn-proverbial__3.01.00..
+oewn-proverbial__3.01.00..	pertainym		oewn-proverb__1.10.00..
+oewn-proverbially__4.02.00..	pertainym		oewn-proverbial__5.00.00.known.00
+oewn-provide__2.30.05..	derivation		oewn-provident__3.00.00..
+oewn-provide__2.32.00..	derivation		oewn-provision__1.10.00..
+oewn-provide__2.32.00..	other	state	oewn-provision__1.10.00..
+oewn-provide__2.34.00..	derivation		oewn-provider__1.18.01..
+oewn-provide__2.34.00..	derivation		oewn-provision__1.04.01..
+oewn-provide__2.34.00..	other	agent	oewn-provider__1.18.01..
+oewn-provide__2.34.00..	other	event	oewn-provision__1.04.01..
+oewn-provide__2.40.00..	derivation		oewn-provider__1.18.00..
+oewn-provide__2.40.00..	derivation		oewn-provision__1.04.01..
+oewn-provide__2.40.00..	other	agent	oewn-provider__1.18.00..
+oewn-provide__2.40.00..	other	event	oewn-provision__1.04.01..
+oewn-provide__2.40.08..	derivation		oewn-provision__1.04.01..
+oewn-provide__2.40.08..	other	event	oewn-provision__1.04.01..
+oewn-providence__1.04.00..	derivation		oewn-providential__5.00.00.heavenly.00
+oewn-providence__1.07.00..	derivation		oewn-provident__3.00.00..
+oewn-providence__1.07.00..	derivation		oewn-provident__5.00.00.prudent.00
+oewn-providence__1.26.00..	derivation		oewn-providential__5.00.00.heavenly.00
+oewn-providential__3.01.00..	pertainym		oewn-providence__1.26.00..
+oewn-providentially__4.02.00..	pertainym		oewn-providential__3.01.00..
+oewn-providentially__4.02.01..	pertainym		oewn-providential__5.00.00.fortunate.00
+oewn-providently__4.02.00..	pertainym		oewn-provident__3.00.00..
+oewn-province__1.15.00..	derivation		oewn-provincial__3.00.00..
+oewn-province__1.15.00..	derivation		oewn-provincial__3.01.00..
+oewn-provincial__3.01.00..	pertainym		oewn-province__1.15.00..
+oewn-provincially__4.02.00..	pertainym		oewn-provincial__3.01.00..
+oewn-provision__1.04.01..	derivation		oewn-provision__2.40.00..
+oewn-provision__1.10.00..	derivation		oewn-provisionary__5.00.00.conditional.00
+oewn-provision__1.21.00..	derivation		oewn-provision__2.40.00..
+oewn-provision__2.40.00..	derivation		oewn-provisioner__1.18.00..
+oewn-provision__2.40.00..	other	agent	oewn-provisioner__1.18.00..
+oewn-provision__2.40.00..	other	event	oewn-provision__1.04.01..
+oewn-provision__2.40.00..	other	uses	oewn-provision__1.21.00..
+oewn-provisionally__4.02.00..	pertainym		oewn-provisional__5.00.00.conditional.00
+oewn-provocation__1.04.00..	derivation		oewn-provoke__2.37.01..
+oewn-provocation__1.10.00..	derivation		oewn-provoke__2.32.00..
+oewn-provocation__1.16.00..	derivation		oewn-provoke__2.32.00..
+oewn-provocation__1.16.00..	derivation		oewn-provoke__2.36.00..
+oewn-provocation__1.16.00..	derivation		oewn-provoke__2.37.00..
+oewn-provocative__3.00.00..	antonym		oewn-unprovocative__3.00.00..
+oewn-provocative__3.00.00..	derivation		oewn-provoke__2.32.00..
+oewn-provocative__3.00.00..	derivation		oewn-provoke__2.37.00..
+oewn-provocative__3.00.00..	derivation		oewn-provoke__2.37.01..
+oewn-provocatively__4.02.00..	pertainym		oewn-provocative__3.00.00..
+oewn-provoke__2.32.00..	other	by_means_of	oewn-provocation__1.10.00..
+oewn-provoke__2.32.00..	other	by_means_of	oewn-provocation__1.16.00..
+oewn-provoke__2.36.00..	other	by_means_of	oewn-provocation__1.16.00..
+oewn-provoke__2.37.00..	other	by_means_of	oewn-provocation__1.16.00..
+oewn-provoke__2.37.01..	derivation		oewn-provoker__1.18.00..
+oewn-provoke__2.37.01..	other	agent	oewn-provoker__1.18.00..
+oewn-provoke__2.37.01..	other	event	oewn-provocation__1.04.00..
+oewn-provokingly__4.02.00..	pertainym		oewn-provoking__5.00.00.provocative.00
+oewn-prowl__1.04.00..	derivation		oewn-prowl__2.38.00..
+oewn-prowl__1.04.00..	derivation		oewn-prowl__2.42.00..
+oewn-prowl__2.38.00..	derivation		oewn-prowler__1.18.00..
+oewn-prowl__2.38.00..	other	agent	oewn-prowler__1.18.00..
+oewn-prowl__2.38.00..	other	event	oewn-prowl__1.04.00..
+oewn-prowl__2.42.00..	other	event	oewn-prowl__1.04.00..
+oewn-proximal__3.00.00..	derivation		oewn-proximity__1.07.00..
+oewn-proximate__3.00.00..	antonym		oewn-ultimate__3.00.00..
+oewn-prozac__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-prudence__1.07.00..	derivation		oewn-prudential__5.00.00.prudent.00
+oewn-prudence__1.09.00..	derivation		oewn-prudent__3.00.00..
+oewn-prudently__4.02.00..	pertainym		oewn-prudent__3.00.00..
+oewn-prudish__5.00.00.proper.00	derivation		oewn-prudishness__1.07.00..
+oewn-prudishly__4.02.00..	pertainym		oewn-prudish__5.00.00.proper.00
+oewn-prune__2.35.00..	derivation		oewn-pruner__1.06.00..
+oewn-prune__2.35.00..	derivation		oewn-pruner__1.18.00..
+oewn-prune__2.35.00..	derivation		oewn-pruning__1.04.00..
+oewn-prune__2.35.00..	other	agent	oewn-pruner__1.18.00..
+oewn-prune__2.35.00..	other	instrument	oewn-pruner__1.06.00..
+oewn-prurience__1.12.00..	derivation		oewn-prurient__5.00.00.sexy.00
+oewn-pruriency__1.12.00..	derivation		oewn-prurient__5.00.00.sexy.00
+oewn-pruriently__4.02.00..	pertainym		oewn-prurient__5.00.00.sexy.00
+oewn-pry__1.06.00..	derivation		oewn-pry__2.35.00..
+oewn-pry__2.32.00..	derivation		oewn-prying__1.09.00..
+oewn-pry__2.35.00..	other	instrument	oewn-pry__1.06.00..
+oewn-pry__2.36.00..	derivation		oewn-prying__1.09.00..
+oewn-pry__2.36.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-pry__2.39.00..	derivation		oewn-prying__1.09.00..
+oewn-pryingly__4.02.00..	pertainym		oewn-prying__5.00.00.curious.00

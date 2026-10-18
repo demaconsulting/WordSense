@@ -1,0 +1,51 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-Axis-n	Axis	n	0	1	1	oewn
+oewn-ax-n	ax	n	0	1	1	oewn
+oewn-ax-v	ax	v	0	1	1	oewn
+oewn-ax_handle-n	ax handle	n	0	2	2	oewn
+oewn-ax_head-n	ax head	n	0	2	2	oewn
+oewn-axe-hammer-n	axe-hammer	n	0	1	1	oewn
+oewn-axe-n	axe	n	0	1	1	oewn
+oewn-axe-v	axe	v	0	1	1	oewn
+oewn-axe_handle-n	axe handle	n	0	2	2	oewn
+oewn-axe_head-n	axe head	n	0	2	2	oewn
+oewn-axenic-a	axenic	a	0	1	1	oewn
+oewn-axerophthol-n	axerophthol	n	0	1	1	oewn
+oewn-axial-a	axial	a	0	1	1	oewn
+oewn-axial_flow_turbine-n	axial flow turbine	n	0	3	3	oewn
+oewn-axial_motion-n	axial motion	n	0	2	2	oewn
+oewn-axial_muscle-n	axial muscle	n	0	2	2	oewn
+oewn-axial_rotation-n	axial rotation	n	0	2	2	oewn
+oewn-axial_skeleton-n	axial skeleton	n	0	2	2	oewn
+oewn-axial_turbine-n	axial turbine	n	0	2	2	oewn
+oewn-axially-r	axially	r	0	1	1	oewn
+oewn-axil-n	axil	n	0	1	1	oewn
+oewn-axile-a	axile	a	0	1	1	oewn
+oewn-axile_placentation-n	axile placentation	n	0	2	2	oewn
+oewn-axilla-n	axilla	n	0	1	1	oewn
+oewn-axillary-a	axillary	a	0	1	1	oewn
+oewn-axillary_artery-n	axillary artery	n	0	2	2	oewn
+oewn-axillary_cavity-n	axillary cavity	n	0	2	2	oewn
+oewn-axillary_fossa-n	axillary fossa	n	0	2	2	oewn
+oewn-axillary_node-n	axillary node	n	0	2	2	oewn
+oewn-axillary_vein-n	axillary vein	n	0	2	2	oewn
+oewn-axiological-a	axiological	a	0	1	1	oewn
+oewn-axiology-n	axiology	n	0	1	1	oewn
+oewn-axiom-n	axiom	n	0	1	1	oewn
+oewn-axiomatic-a	axiomatic	a	0	1	1	oewn
+oewn-axiomatic_system-n	axiomatic system	n	0	2	2	oewn
+oewn-axiomatical-a	axiomatical	a	0	1	1	oewn
+oewn-axiomatically-r	axiomatically	r	0	1	1	oewn
+oewn-axis-n	axis	n	0	1	1	oewn
+oewn-axis_of_rotation-n	axis of rotation	n	0	3	1	oewn
+oewn-axis_vertebra-n	axis vertebra	n	0	2	2	oewn
+oewn-axle-n	axle	n	0	1	1	oewn
+oewn-axle_bar-n	axle bar	n	0	2	2	oewn
+oewn-axle_grease-n	axle grease	n	0	2	2	oewn
+oewn-axletree-n	axletree	n	0	1	1	oewn
+oewn-axolemma-n	axolemma	n	0	1	1	oewn
+oewn-axolotl-n	axolotl	n	0	1	1	oewn
+oewn-axon-n	axon	n	0	1	1	oewn
+oewn-axonal-a	axonal	a	0	1	1	oewn
+oewn-axone-n	axone	n	0	1	1	oewn
+oewn-axseed-n	axseed	n	0	1	1	oewn

@@ -1,0 +1,11 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-ct__1.04.00..	ct%1:04:00::	oewn-CT-n	oewn-00903174-n	1
+oewn-ctc__1.14.00..	ctc%1:14:00::	oewn-CTC-n	oewn-08142402-n	1
+oewn-ctene__1.05.00..	ctene%1:05:00::	oewn-ctene-n	oewn-01921226-n	1
+oewn-ctenidium__1.05.00..	ctenidium%1:05:00::	oewn-ctenidium-n	oewn-01956518-n	1
+oewn-ctenocephalides_canis__1.05.00..	ctenocephalides_canis%1:05:00::	oewn-Ctenocephalides_canis-n	oewn-02189802-n	1
+oewn-ctenocephalides_felis__1.05.00..	ctenocephalides_felis%1:05:00::	oewn-Ctenocephalides_felis-n	oewn-02189931-n	1
+oewn-ctenoid__3.01.00..	ctenoid%3:01:00::	oewn-ctenoid-a	oewn-02718019-a	1
+oewn-ctenophore__1.05.00..	ctenophore%1:05:00::	oewn-ctenophore-n	oewn-01921385-n	1
+oewn-ctenophore_family__1.05.00..	ctenophore_family%1:05:00::	oewn-ctenophore_family-n	oewn-01920651-n	1
+oewn-ctenophore_genus__1.05.00..	ctenophore_genus%1:05:00::	oewn-ctenophore_genus-n	oewn-01920793-n	1

@@ -1,0 +1,9 @@
+class_id	lemma	label	pos	kind
+appeal#noun	appeal	noun	n	sense_group
+appeal#verb	appeal	verb	v	sense_group
+approach#noun	approach	noun	n	sense_group
+approach#verb	approach	verb	v	sense_group
+appropriate#adj	appropriate	adj	a	sense_group
+appropriate#verb	appropriate	verb	v	sense_group
+approximate#adj	approximate	adj	a	sense_group
+approximate#verb	approximate	verb	v	sense_group

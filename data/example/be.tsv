@@ -1,0 +1,743 @@
+synset_id	seq	sense_id	text
+oewn-00003443-v	1		Please don't burp at the table
+oewn-00011354-v	1		She falls over backwards when she sees her mother-in-law
+oewn-00014542-v	1		she is always moving
+oewn-00017524-v	1		We bedded down at midnight
+oewn-00017858-v	1		I usually turn in at midnight
+oewn-00017858-v	2		He goes to bed at the crack of dawn
+oewn-00029433-r	1		I don't want to go to a restaurant; besides, we can't afford it
+oewn-00029433-r	2		she couldn't shelter behind him all the time and in any case he wasn't always with her
+oewn-00034309-r	1		the doctor will soon be here
+oewn-00034309-r	2		the book will appear shortly
+oewn-00034309-r	3		she will arrive presently
+oewn-00034309-r	4		we should have news before long
+oewn-00037020-n	1		the town became a beachhead in the campaign to ban smoking outdoors
+oewn-00037020-n	2		they are presently attempting to gain a foothold in the Russian market
+oewn-00046047-r	1		agreed to provide essentials but nothing beyond
+oewn-00046144-r	1		through the valley and beyond
+oewn-00046144-r	2		to the eighth grade but not beyond
+oewn-00046144-r	3		will be influential in the 1990s and beyond
+oewn-00046337-r	1		a pond with a hayfield beyond
+oewn-00047083-r	1		amazed beyond measure
+oewn-00047462-v	1		He wore a red ribbon
+oewn-00047462-v	2		bear a scar
+oewn-00054345-v	1		Abraham begot Isaac
+oewn-00054345-v	2		John fathered four daughters
+oewn-00056644-v	1		My wife had twins yesterday!
+oewn-00057183-s	1		a bespectacled grandmother
+oewn-00057183-s	2		the monocled gentleman
+oewn-00058790-v	1		She is bearing his child
+oewn-00058790-v	2		They are expecting another child in January
+oewn-00058790-v	3		I am carrying his child
+oewn-00060145-r	1		She had never sung better
+oewn-00060145-r	2		a deed better left undone
+oewn-00060145-r	3		better suited to the job
+oewn-00061477-r	1		I had known her before
+oewn-00061477-r	2		as I said before
+oewn-00061477-r	3		he called me the day before but your call had come even earlier
+oewn-00061477-r	4		her parents had died four years earlier
+oewn-00061477-r	5		I mentioned that problem earlier
+oewn-00065107-s	1		an arms limitation agreement beneficial to all countries
+oewn-00065107-s	2		the beneficial effects of a temperate climate
+oewn-00065107-s	3		the experience was good for her
+oewn-00065609-n	1		the new advertising campaign was a bell ringer
+oewn-00065609-n	2		scored a bull's eye
+oewn-00065609-n	3		hit the mark
+oewn-00065609-n	4		the president's speech was a home run
+oewn-00067988-s	1		it would be better to speak to him
+oewn-00067988-s	2		the White House thought it best not to respond
+oewn-00075174-v	1		This kind of work exhausts me
+oewn-00075174-v	2		I'm beat
+oewn-00075174-v	3		He was all washed up after the exam
+oewn-00080132-r	1		see below
+oewn-00080132-r	2		vide infra
+oewn-00094946-r	1		the tenants live downstairs
+oewn-00100817-r	1		the train arrived late
+oewn-00100817-r	2		we awoke late
+oewn-00100817-r	3		the children came late to school
+oewn-00100817-r	4		notice came so tardily that we almost missed the deadline
+oewn-00100817-r	5		I belatedly wished her a happy birthday
+oewn-00101142-r	1		he awoke betimes that morning
+oewn-00118630-n	1		the belching of smoke from factory chimneys
+oewn-00128351-n	1		they did their best
+oewn-00134158-n	1		he gave the table a whack
+oewn-00136163-s	1		behavior befitting a father
+oewn-00139421-r	1		He is probably out of the country
+oewn-00139421-r	2		in all likelihood we are headed for war
+oewn-00149403-v	1		He became annoyed when he heard the bad news
+oewn-00149403-v	2		It must be getting more serious
+oewn-00149403-v	3		her face went red with anger
+oewn-00149403-v	4		She went into ecstasy
+oewn-00149403-v	5		Get going!
+oewn-00149480-r	1		the riots got out of hand
+oewn-00159375-s	1		the engaged couple
+oewn-00168015-s	1		bewitching smile
+oewn-00168015-s	2		Roosevelt was a captivating speaker
+oewn-00168015-s	3		enchanting music
+oewn-00168015-s	4		an enthralling book
+oewn-00168015-s	5		antique papers of entrancing design
+oewn-00168015-s	6		a fascinating woman
+oewn-00189465-r	1		best of all, we don't have any homework!
+oewn-00189569-r	1		you'd best stay at home
+oewn-00189649-r	1		he played best after a couple of martinis
+oewn-00208219-s	1		a grizzled man with a beaklike nose
+oewn-00209553-a	1		the cell was bedless
+oewn-00209644-a	1		a beneficed clergyman
+oewn-00209821-a	1		stratified rock
+oewn-00210536-r	1		her situation was bewilderingly unclear
+oewn-00212684-s	1		a smooth-faced boy of 14 years
+oewn-00218667-s	1		bearded wheatgrass
+oewn-00219320-a	1		a beautiful child
+oewn-00219320-a	2		beautiful country
+oewn-00219320-a	3		a beautiful painting
+oewn-00219320-a	4		a beautiful theory
+oewn-00219320-a	5		a beautiful party
+oewn-00220542-s	1		a fine-looking woman
+oewn-00220542-s	2		a good-looking man
+oewn-00220542-s	3		better-looking than her sister
+oewn-00220542-s	4		very pretty but not so extraordinarily handsome
+oewn-00220542-s	5		our southern women are well-favored
+oewn-00221295-v	1		This exercise will strengthen your upper body
+oewn-00221295-v	2		strengthen the relations between the two countries
+oewn-00223465-r	1		he followed behind
+oewn-00223465-r	2		seen from behind, the house is more imposing than it is from the front
+oewn-00223465-r	3		the final runners were far behind
+oewn-00223660-r	1		when he died he left much unfinished work behind
+oewn-00223660-r	2		left a large family behind
+oewn-00223660-r	3		the children left their books behind
+oewn-00223660-r	4		he took off with a squeal of tires and left the other cars far behind
+oewn-00223959-r	1		he fell behind with his mortgage payments
+oewn-00223959-r	2		a month behind in the rent
+oewn-00223959-r	3		a company that has been run behindhand for years
+oewn-00223959-r	4		in arrears with their utility bills
+oewn-00224193-r	1		fell behind in his studies
+oewn-00224193-r	2		their business was lagging behind in the competition for customers
+oewn-00224359-r	1		the clock is almost an hour slow
+oewn-00224359-r	2		my watch is running behind
+oewn-00224812-a	1		a belted dress
+oewn-00225275-a	1		unbelted jackets are in this season
+oewn-00225394-a	1		the most beneficent regime in history
+oewn-00225623-s	1		a benefic star
+oewn-00225623-s	2		a benefic force
+oewn-00228210-a	1		a benign smile
+oewn-00228210-a	2		the benign sky
+oewn-00228210-a	3		the benign influence of pure air
+oewn-00229081-v	1		Sprinkle the lawn
+oewn-00229099-a	1		the best film of the year
+oewn-00229099-a	2		the best solution
+oewn-00229099-a	3		the best time for planting
+oewn-00229099-a	4		wore his best suit
+oewn-00231927-a	1		You're a better man than I am, Gunga Din
+oewn-00231927-a	2		a better coat
+oewn-00231927-a	3		a better type of car
+oewn-00231927-a	4		a suit with a better fit
+oewn-00231927-a	5		a better chance of success
+oewn-00231927-a	6		produced a better mousetrap
+oewn-00231927-a	7		she's better in math than in history
+oewn-00233353-a	1		her health is better now
+oewn-00233353-a	2		I feel better
+oewn-00236302-n	1		he was responsible for the beginning of negotiations
+oewn-00239141-v	1		benficiate ores
+oewn-00243937-r	1		he pushed her against the wall belligerently
+oewn-00246100-r	1		he acted believably sincere
+oewn-00270463-r	1		she behaved beastly toward her mother-in-law
+oewn-00279689-r	1		she was becomingly dressed
+oewn-00279796-r	1		this medicine will act beneficially on you
+oewn-00279923-r	1		this drug is benignly soporific
+oewn-00280063-r	1		‘You must help me,’ she said imploringly
+oewn-00280264-r	1		she was bewitchingly beautiful
+oewn-00281111-s	1		bright beady eyes
+oewn-00281111-s	2		black buttony eyes
+oewn-00281329-s	1		the beaming sun
+oewn-00281329-s	2		the effulgent daffodils
+oewn-00281329-s	3		a radiant sunrise
+oewn-00281329-s	4		a refulgent sunset
+oewn-00281857-r	1		she treated her husband bestially
+oewn-00286695-r	1		they dealt with him unfairly
+oewn-00286695-r	2		their accusations hit below the belt
+oewn-00293616-s	1		most of his friends are now belowground
+oewn-00297385-r	1		he talked plausibly before the committee
+oewn-00297385-r	2		he will probably win the election
+oewn-00297912-r	1		the children followed the teacher credulously
+oewn-00308350-v	1		Vesuvius erupts once in a while
+oewn-00314513-v	1		The distinction was obscured
+oewn-00345297-v	1		It happens that today is my birthday
+oewn-00345297-v	2		These things befell
+oewn-00345654-v	1		He promised that no harm would befall her
+oewn-00345654-v	2		What has become of my children?
+oewn-00346415-v	1		We began working at dawn
+oewn-00346415-v	2		Who will start?
+oewn-00346415-v	3		Get working as soon as the sun rises!
+oewn-00346415-v	4		The first tourists began to arrive in Cambodia
+oewn-00346415-v	5		He began early in the day
+oewn-00346415-v	6		Let's get down to work now
+oewn-00349195-v	1		Get cracking, please!
+oewn-00349400-v	1		The U.S. started a war in the Middle East
+oewn-00349400-v	2		The Iraqis began hostilities
+oewn-00349400-v	3		begin a new chapter in your life
+oewn-00360725-s	1		a benevolent contributor
+oewn-00360725-s	2		eleemosynary relief
+oewn-00360725-s	3		philanthropic contributions
+oewn-00361585-v	1		She was born on a farm
+oewn-00363972-s	1		a beaming smile
+oewn-00363972-s	2		a glad May morning
+oewn-00364111-s	1		Come to my arms, my beamish boy!
+oewn-00364111-s	2		a room of smiling faces
+oewn-00364111-s	3		a round red twinkly Santa Claus
+oewn-00375046-r	1		it was immediately and indubitably apparent that I had interrupted a scene of lovers
+oewn-00375046-r	2		his guilt was established beyond a shadow of a doubt
+oewn-00396497-r	1		she looked on benevolently
+oewn-00417496-v	1		steady yourself
+oewn-00421806-s	1		the beggar's bedraggled clothes
+oewn-00421806-s	2		scarecrows in battered hats or draggled skirts
+oewn-00421999-s	1		a building befouled with soot
+oewn-00421999-s	2		breathing air fouled and darkened with factory soot
+oewn-00422169-s	1		a miner's begrimed face
+oewn-00422169-s	2		dingy linen
+oewn-00422169-s	3		grimy hands
+oewn-00422169-s	4		grubby little fingers
+oewn-00422169-s	5		a grungy kitchen
+oewn-00425290-v	1		The news won't be on tonight
+oewn-00438100-s	1		the wino's poor befuddled mind
+oewn-00438100-s	2		a mind befogged with drink
+oewn-00442836-v	1		don't belittle your colleagues
+oewn-00488265-r	1		see under for further discussion
+oewn-00493346-v	1		The townspeople defiled the river by emptying raw sewage into it
+oewn-00500585-r	1		dancing all the dances with little rest between
+oewn-00507669-n	1		he did it on a bet
+oewn-00512379-r	1		father knows best
+oewn-00512379-r	2		I know better.
+oewn-00539403-v	1		wine and beer can pall
+oewn-00548653-n	1		the signal was two beats on the steam pipe
+oewn-00587299-n	1		he occupied a post in the treasury
+oewn-00621541-v	1		Don't misinterpret my comments as criticism
+oewn-00621541-v	2		She misconstrued my remarks
+oewn-00623406-v	1		These questions confuse even the experts
+oewn-00623406-v	2		This question completely threw me
+oewn-00623406-v	3		This question befuddled even the teacher
+oewn-00647861-a	1		completely credible testimony
+oewn-00647861-a	2		credible information
+oewn-00671161-v	1		She bore up under the enormous strain
+oewn-00682984-s	1		a street of bedraggled tenements
+oewn-00682984-s	2		a broken-down fence
+oewn-00682984-s	3		a ramshackle old pier
+oewn-00682984-s	4		a tumble-down shack
+oewn-00683272-s	1		bent nails
+oewn-00683272-s	2		a car with a crumpled front end
+oewn-00683272-s	3		dented fenders
+oewn-00685046-v	1		She bethought her of their predicament
+oewn-00685199-v	1		I believed his report
+oewn-00685199-v	2		We didn't believe his stories from the War
+oewn-00685199-v	3		She believes in spirits
+oewn-00685987-v	1		You cannot believe this man
+oewn-00685987-v	2		Should we believe a publication like the National Enquirer?
+oewn-00686192-v	1		When you hear his sermons, you will be able to believe, too
+oewn-00691086-v	1		I think he is very smart
+oewn-00691086-v	2		I believe her to be very smart
+oewn-00691086-v	3		I think that he is her boyfriend
+oewn-00691086-v	4		The racist conceives such people to be inferior
+oewn-00691692-v	1		she looked on this affair as a joke
+oewn-00691692-v	2		He thinks of himself as a brilliant musician
+oewn-00691692-v	3		He is reputed to be intelligent
+oewn-00706993-v	1		He plans to be in graduate school next year
+oewn-00706993-v	2		The rebels had planned turmoil and confusion
+oewn-00722912-n	1		the guardian signed the contract on behalf of the minor child
+oewn-00722912-n	2		this letter is written on behalf of my client
+oewn-00723022-v	1		I believe that he will come back from the war
+oewn-00726626-v	1		Beware of telephone salesmen
+oewn-00735918-v	1		John believes in oat bran
+oewn-00749644-v	1		‘Now listen, friends’, he began
+oewn-00752985-v	1		This tax bears down on the lower middle class
+oewn-00761314-v	1		I beg you to stop!
+oewn-00768022-v	1		He pushed her to finish her doctorate
+oewn-00779567-v	1		She magnetized the audience with her tricks
+oewn-00780167-v	1		The press photographers besieged the movie star
+oewn-00784104-v	1		Henry IV solicited the Pope for a divorce
+oewn-00784104-v	2		My neighbor keeps soliciting money for different charities
+oewn-00785098-s	1		a sun bedimmed by clouds
+oewn-00811888-v	1		beg the question
+oewn-00811888-v	2		beg the point in the discussion
+oewn-00824573-v	1		On Sunday, the martyr will be beatified by the Vatican
+oewn-00828963-v	1		She was belabored by her fellow students
+oewn-00838384-v	1		This statement misrepresents my intentions
+oewn-00842659-v	1		The lectures bore down on the political background
+oewn-00843665-v	1		He told on his classmate who had cheated on the exam
+oewn-00847588-v	1		She disparaged her student's efforts
+oewn-00850760-v	1		The new constitution mocks all democratic principles
+oewn-00856102-v	1		The insurance company deceived me when they told me they were covering my house
+oewn-00856586-v	1		The immigrant was duped because he trusted everyone
+oewn-00856586-v	2		You can't fool me!
+oewn-00866139-v	1		Don't belittle his influence
+oewn-00881247-s	1		a beta version
+oewn-00881247-s	2		beta software
+oewn-00885822-s	1		her comments made me feel small
+oewn-00887743-s	1		this benighted country
+oewn-00887743-s	2		benighted ages of barbarism and superstition
+oewn-00887743-s	3		the dark ages
+oewn-00887743-s	4		a dark age in the history of education
+oewn-00909877-s	1		belittling comments
+oewn-00909877-s	2		managed a deprecating smile at the compliment
+oewn-00909877-s	3		deprecatory remarks about the book
+oewn-00909877-s	4		a slighting remark
+oewn-00911194-s	1		a becoming new shade of rose
+oewn-00911194-s	2		a becoming portrait
+oewn-00912926-v	1		What was he hollering about?
+oewn-00913303-v	1		I deplore this hostile action
+oewn-00913303-v	2		we lamented the loss of benefits
+oewn-00920551-v	1		I bet she will be there!
+oewn-00923271-v	1		These symptoms indicate a serious illness
+oewn-00923271-v	2		Her behavior points to a severe neurosis
+oewn-00923271-v	3		The economic indicators signal that the euro is undervalued
+oewn-00938362-v	1		Her smile betrayed her true feelings
+oewn-00960741-s	1		her accusations were below the belt
+oewn-00966892-n	1		the outbreak of hostilities
+oewn-00969226-s	1		did not stray from the beaten path
+oewn-01012803-s	1		the beginning canto of the poem
+oewn-01012803-s	2		the first verse
+oewn-01017253-v	1		The blood test showed that he was the father
+oewn-01017253-v	2		Her behavior testified to her incompetence
+oewn-01025983-s	1		a flexible wire
+oewn-01025983-s	2		a pliant young tree
+oewn-01030757-v	1		They named their son David
+oewn-01030757-v	2		The new school was named after the famous Civil Rights leader
+oewn-01042933-v	1		The children shut up when their father approached
+oewn-01043287-v	1		She waved to her friends
+oewn-01043287-v	2		He waved his hand hospitably
+oewn-01050590-v	1		The bull bellowed
+oewn-01051901-s	1		she would have been better off if she had stuck with teaching
+oewn-01051901-s	2		is better off than his classmate
+oewn-01069402-v	1		he beamed his approval
+oewn-01072799-v	1		She began Russian at an early age
+oewn-01072799-v	2		we began French in fourth grade
+oewn-01084416-v	1		The pitcher bore down
+oewn-01104324-v	1		Agassi beat Becker in the tennis championship
+oewn-01104324-v	2		We beat the competition
+oewn-01104324-v	3		Harvard defeated Yale in the last football game
+oewn-01107263-v	1		I beat the traffic
+oewn-01107263-v	2		She outfoxed her competitors
+oewn-01109275-v	1		She bettered her own record
+oewn-01109275-v	2		break a record
+oewn-01111670-v	1		the goal was to best the competition
+oewn-01124145-v	1		he saw Jess charging at him with a pitchfork
+oewn-01129837-v	1		The Turks besieged Vienna
+oewn-01141811-n	1		they are living together without benefit of clergy
+oewn-01158153-v	1		I bet $100 on that new horse
+oewn-01158153-v	2		She played all her money on the dark horse
+oewn-01188127-s	1		the beheaded prisoners
+oewn-01204994-v	1		He downed three martinis before dinner
+oewn-01204994-v	2		She killed a bottle of brandy that night
+oewn-01204994-v	3		They popped a few beers after work
+oewn-01226470-s	1		taken in by beguiling tales of overnight fortunes
+oewn-01241216-s	1		on bended knee
+oewn-01241216-s	2		with bent (or bended) back
+oewn-01266555-s	1		beastly desires
+oewn-01266555-s	2		a bestial nature
+oewn-01266555-s	3		brute force
+oewn-01266555-s	4		a dull and brutish man
+oewn-01266555-s	5		bestial treatment of prisoners
+oewn-01271434-v	1		Chris beeswaxed the kitchen table
+oewn-01279803-s	1		the candidate, considered a beta male, was perceived to be unable to lead his party to victory
+oewn-01282617-v	1		bend the rod
+oewn-01282617-v	2		twist the dough into a braid
+oewn-01282617-v	3		the strong man could turn an iron bar
+oewn-01283091-v	1		flex your wrists
+oewn-01283091-v	2		bend your knees
+oewn-01299860-v	1		bell cows
+oewn-01300894-s	1		led a dissipated life
+oewn-01300894-s	2		a betting man
+oewn-01300894-s	3		a card-playing son of a bitch
+oewn-01300894-s	4		a gambling fool
+oewn-01300894-s	5		sporting gents and their ladies
+oewn-01308021-v	1		the big ship wharfed in the evening
+oewn-01308202-v	1		tie up the boat
+oewn-01346527-s	1		the mind of the audience is becoming dulled
+oewn-01346527-s	2		the benumbed intellectual faculties can no longer respond
+oewn-01356364-s	1		beetle brows
+oewn-01366740-s	1		beatific peace
+oewn-01367733-s	1		bereft of hope
+oewn-01368764-v	1		belt your trousers
+oewn-01375495-s	1		our benignant king
+oewn-01375700-s	1		the benign ruler of millions
+oewn-01375700-s	2		benign intentions
+oewn-01375875-s	1		was charitable in his opinions of others
+oewn-01375875-s	2		kindly criticism
+oewn-01375875-s	3		a kindly act
+oewn-01375875-s	4		sympathetic words
+oewn-01375875-s	5		a large-hearted mentor
+oewn-01378472-s	1		Stevenson's best-known work is probably ‘Treasure Island’
+oewn-01378615-s	1		the better-known book of the two
+oewn-01383148-v	1		The benighted peoples of this area
+oewn-01386756-v	1		We went berrying in the summer
+oewn-01388297-v	1		drum up support
+oewn-01399864-v	1		Thugs beat him up when he walked down the street late at night
+oewn-01399864-v	2		The teacher used to beat the students
+oewn-01401573-v	1		beat on the door
+oewn-01401573-v	2		beat the table with his shoe
+oewn-01402230-v	1		beat one's breast
+oewn-01402230-v	2		beat one's foot rhythmically
+oewn-01409113-s	1		naturally begotten child
+oewn-01417816-v	1		He belted his opponent
+oewn-01420833-v	1		beat the egg whites
+oewn-01420833-v	2		beat the cream
+oewn-01435234-v	1		Bear gifts
+oewn-01435234-v	2		bear a heavy load
+oewn-01435234-v	3		bear news
+oewn-01435234-v	4		bearing orders
+oewn-01436911-v	1		Their dreams carried the Romantics away into distant lands
+oewn-01436911-v	2		The car carried us off to the meeting
+oewn-01436911-v	3		I'll take you away on a holiday
+oewn-01436911-v	4		I got carried away when I saw the dead man and I started to cry
+oewn-01465804-s	1		the favored child
+oewn-01474175-s	1		argued for the better part of an hour
+oewn-01502721-v	1		The children were bedded at ten o'clock
+oewn-01508789-v	1		repel the enemy
+oewn-01508789-v	2		push back the urge to smoke
+oewn-01508789-v	3		beat back the invaders
+oewn-01536935-v	1		don't soil your clothes when you play outside!
+oewn-01541098-v	1		speckle the wall with tiny yellow spots
+oewn-01541417-v	1		The baby spattered the bib with food
+oewn-01574185-v	1		the French King was beheaded during the Revolution
+oewn-01586914-v	1		bevel the surface
+oewn-01600017-v	1		The snow bore down on the roof
+oewn-01604155-v	1		She holds her head high
+oewn-01604155-v	2		He carried himself upright
+oewn-01615868-v	1		The demonstrators plastered the hallways with posters
+oewn-01615868-v	2		She let the walls of the apartment be beplastered with stucco
+oewn-01627934-v	1		beat swords into ploughshares
+oewn-01655681-v	1		The apple tree bore delicious apples this year
+oewn-01655681-v	2		The unidentified plant bore gorgeous flowers
+oewn-01661555-s	1		the besieged town
+oewn-01673801-v	1		the star-spangled banner
+oewn-01674406-v	1		bead the wedding gown
+oewn-01682580-v	1		jeweled dresses
+oewn-01683875-v	1		deck the halls with holly
+oewn-01699613-s	1		a face beaded with sweat
+oewn-01711984-s	1		a sub-rosa report
+oewn-01711984-s	2		has their under-the-table backing
+oewn-01730756-v	1		beat the drum
+oewn-01746786-s	1		belligerent (or warring) nations
+oewn-01759850-v	1		beat a path through the forest
+oewn-01777051-v	1		bear a grudge
+oewn-01777051-v	2		entertain interesting notions
+oewn-01777051-v	3		harbor a resentment
+oewn-01793315-v	1		He is known to harry his staff when he is overworked
+oewn-01793315-v	2		This man harasses his female co-workers
+oewn-01802298-v	1		She was besieged by so many problems that she got discouraged
+oewn-01803246-v	1		His sense of smell failed him this time
+oewn-01803246-v	2		His strength finally failed him
+oewn-01803246-v	3		His children failed him in the crisis
+oewn-01805768-s	1		what a beautiful day
+oewn-01806967-v	1		The children tormented the stuttering teacher
+oewn-01807949-s	1		hellish weather
+oewn-01807949-s	2		stop that god-awful racket
+oewn-01810472-v	1		She captured all the men's hearts
+oewn-01811018-v	1		The shop window decorations beckoned
+oewn-01816291-v	1		The children were thrilled at the prospect of going to the movies
+oewn-01816291-v	2		He was inebriated by his phenomenal success
+oewn-01821480-s	1		a best-selling novel
+oewn-01833689-v	1		She was beaming with joy
+oewn-01833689-v	2		Her face radiated with happiness
+oewn-01883572-v	1		the city pulsated with music and excitement
+oewn-01884106-v	1		Her heart was beating fast
+oewn-01884666-v	1		Beat the rhythm
+oewn-01884969-s	1		her becoming modesty
+oewn-01884969-s	2		comely behavior
+oewn-01884969-s	3		it is not comme il faut for a gentleman to be constantly asking for money
+oewn-01884969-s	4		seemly behavior
+oewn-01887543-v	1		She beat the dealer down to a much better price
+oewn-01896164-s	1		beaming parents
+oewn-01906776-v	1		The leaves were blowing in the wind
+oewn-01906776-v	2		the boat drifted on the lake
+oewn-01906776-v	3		The sailboat was adrift on the open sea
+oewn-01906776-v	4		the shipwrecked boat drifted away from the shore
+oewn-01907194-s	1		was behindhand with the rent
+oewn-01907298-s	1		a belated birthday card
+oewn-01907298-s	2		I'm late for the plane
+oewn-01907298-s	3		the train is late
+oewn-01907298-s	4		tardy children are sent to the principal
+oewn-01907298-s	5		always tardy in making dental appointments
+oewn-01907608-s	1		benighted (or nighted) travelers hurrying toward home
+oewn-01927367-v	1		mount a horse
+oewn-01949797-v	1		The boat beat in the strong wind
+oewn-01982961-v	1		the ship beached near the port
+oewn-01997254-s	1		bent on going to the theater
+oewn-01997254-s	2		dead set against intervening
+oewn-01997254-s	3		out to win every event
+oewn-02014892-v	1		The listeners bolted when he discussed his strange ideas
+oewn-02014892-v	2		When she started to tell silly stories, I ran out
+oewn-02033096-s	1		a beggarly existence in the slums
+oewn-02033096-s	2		a mean hut
+oewn-02036982-v	1		The road bends
+oewn-02039764-v	1		The stick does not bend
+oewn-02045533-s	1		a beefy wrestler
+oewn-02045533-s	2		had a tall burly frame
+oewn-02045533-s	3		clothing sizes for husky boys
+oewn-02045533-s	4		a strapping boy of eighteen
+oewn-02045533-s	5		‘buirdly’ is a Scottish term
+oewn-02062918-v	1		He rushed down the hall to receive his guests
+oewn-02062918-v	2		The cars raced down the street
+oewn-02066560-v	1		he crouched down
+oewn-02066560-v	2		She bowed before the Queen
+oewn-02066560-v	3		The young man stooped to pick up the girl's purse
+oewn-02088053-v	1		He finally bestirred himself
+oewn-02097668-v	1		The bird's wings were flapping
+oewn-02097888-v	1		The bird flapped its wings
+oewn-02097888-v	2		The eagle beat its wings and soared high into the sky
+oewn-02099668-v	1		His wife bed hops
+oewn-02107890-v	1		He beetled up the staircase
+oewn-02107890-v	2		They beetled off home
+oewn-02119756-v	1		The shock numbed her senses
+oewn-02119913-v	1		The news stunned her
+oewn-02134625-v	1		behold Christ!
+oewn-02146195-v	1		bench the poodles at the dog show
+oewn-02161533-s	1		his stubbled chin
+oewn-02162161-v	1		The stars are obscured by the clouds
+oewn-02162161-v	2		the big elm tree obscures our view of the valley
+oewn-02164751-v	1		The sun beat down on the hikers
+oewn-02165960-v	1		Her face glowed when she came out of the sauna
+oewn-02166865-v	1		She was dazzled by the bright headlights
+oewn-02167246-v	1		The sun was beating down on us
+oewn-02179274-v	1		Rain drummed against the windshield
+oewn-02179274-v	2		He drummed his fingers on the table
+oewn-02180022-v	1		the clocks were ticking
+oewn-02180022-v	2		the grandfather clock beat midnight
+oewn-02187621-v	1		The horns of the taxis blared
+oewn-02233837-v	1		My aunt bequeathed me all her jewelry
+oewn-02233837-v	2		My grandfather left me his entire estate
+oewn-02268154-v	1		The university conferred a degree on its most famous former student, who never graduated
+oewn-02268154-v	2		bestow an honor on someone
+oewn-02273091-v	1		I may be an hour
+oewn-02275660-v	1		beg money and food
+oewn-02295422-v	1		She profited from his vast experience
+oewn-02295917-v	1		This will do you good
+oewn-02296669-v	1		interest-bearing accounts
+oewn-02296669-v	2		How much does this savings certificate pay annually?
+oewn-02306641-v	1		This book belongs to me
+oewn-02307200-v	1		She bears the title of Duchess
+oewn-02307200-v	2		He held the governorship for almost a decade
+oewn-02329347-s	1		his beardown performance in the exhibition game
+oewn-02329474-s	1		beefed-up sales efforts
+oewn-02337169-v	1		a whiskered jersey
+oewn-02342062-v	1		The inn keeper could bed all the new arrivals
+oewn-02420395-v	1		belabor the obvious
+oewn-02427955-s	1		as distant and bemused as a professor listening to the prattling of his freshman class
+oewn-02427955-s	2		lost in thought
+oewn-02427955-s	3		a preoccupied frown
+oewn-02444024-s	1		sufferable punishment
+oewn-02450790-v	1		He is a herpetologist
+oewn-02450790-v	2		She is our resident philosopher
+oewn-02451627-s	1		bell-bottomed trousers
+oewn-02481459-s	1		belowground storage areas
+oewn-02481459-s	2		underground caverns
+oewn-02502061-s	1		behind by two points
+oewn-02502061-s	2		the 8th inning found the home team trailing
+oewn-02525332-v	1		The children must learn to behave
+oewn-02532175-v	1		This economic measure doesn't even begin to deal with the problem of inflation
+oewn-02532175-v	2		You cannot even begin to understand the problem we had to deal with during the war
+oewn-02543073-v	1		Judas sold Jesus
+oewn-02543073-v	2		The spy betrayed his country
+oewn-02551636-v	1		Who is going to bell the cat?
+oewn-02553916-v	1		The father benefacted his daughter in more ways than she was aware of
+oewn-02558723-s	1		glistening grass besprent with raindrops
+oewn-02571744-s	1		a beamy cargo ship
+oewn-02579928-v	1		beat the subway fare
+oewn-02582588-v	1		She cheats on her husband
+oewn-02582588-v	2		Might her husband be wandering?
+oewn-02594833-v	1		John and Eric soon became friends
+oewn-02594833-v	2		Have you made friends yet in your new environment?
+oewn-02606945-v	1		begin a cigar
+oewn-02606945-v	2		She started the soup while it was still hot
+oewn-02606945-v	3		We started physics in 10th grade
+oewn-02609706-v	1		Is there a God?
+oewn-02610777-v	1		John is rich
+oewn-02610777-v	2		This is not a good answer
+oewn-02614382-v	1		The DMZ begins right over the hill
+oewn-02614382-v	2		The second movement begins after the Allegro
+oewn-02614382-v	3		Prices for these homes start at $250,000
+oewn-02614858-v	1		The novel begins with a murder
+oewn-02614858-v	2		My property begins with the three maple trees
+oewn-02614858-v	3		Her day begins with a workout
+oewn-02614858-v	4		The semester begins with a convocation ceremony
+oewn-02615238-v	1		WW II began in 1939 when Hitler marched into Poland
+oewn-02615238-v	2		The company's Asia tour begins next month
+oewn-02620216-v	1		Our great leader is no more
+oewn-02620216-v	2		My grandfather lived until the end of war
+oewn-02622439-v	1		The president of the company is John Smith
+oewn-02622439-v	2		This is my house
+oewn-02626667-v	1		This money is my only income
+oewn-02626667-v	2		The stone wall was the backdrop for the performance
+oewn-02626667-v	3		These constitute my entire belonging
+oewn-02626667-v	4		The children made up the chorus
+oewn-02626667-v	5		This sum represents my entire income for a year
+oewn-02626667-v	6		These few men comprise his entire army
+oewn-02629610-v	1		What becomes has duration
+oewn-02632685-v	1		The water turned into ice
+oewn-02632685-v	2		Her former friend became her worst enemy
+oewn-02632685-v	3		He turned traitor
+oewn-02636952-v	1		bear a resemblance
+oewn-02636952-v	2		bear a signature
+oewn-02661230-v	1		Where is my umbrella?
+oewn-02661230-v	2		The toolshed is in the back
+oewn-02661230-v	3		What is behind this behavior?
+oewn-02669418-v	1		The stories and claims were born out by the evidence
+oewn-02670846-v	1		One dollar equals 1,000 rubles these days!
+oewn-02671356-a	1		behavioristic psychology
+oewn-02672019-a	1		a beneficiary baron
+oewn-02672151-a	1		a benevolent society
+oewn-02674167-v	1		It behooves us to reflect on this matter
+oewn-02681865-v	1		There were lots of questions referring to her talk
+oewn-02681865-v	2		My remark pertained to your earlier comments
+oewn-02685037-v	1		The number ‘one’ begins the sequence
+oewn-02685037-v	2		A terrible murder begins the novel
+oewn-02685037-v	3		The convocation ceremony officially begins the semester
+oewn-02685709-v	1		preserve the peace in the family
+oewn-02685709-v	2		continue the family tradition
+oewn-02685709-v	3		Carry on the old traditions
+oewn-02693572-v	1		Houses bearded the top of the heights
+oewn-02703277-v	1		This huge rock beetles over the edge of the town
+oewn-02703567-v	1		Derek Jacobi was Hamlet
+oewn-02705783-v	1		This kind of behavior does not suit a young woman!
+oewn-02706727-v	1		The jar carries wine
+oewn-02706727-v	2		The canteen holds fresh water
+oewn-02706727-v	3		This can contains water
+oewn-02708368-v	1		These shoes cost $100
+oewn-02713541-v	1		This beggars description!
+oewn-02725274-v	1		She tends to be nervous before her lectures
+oewn-02725274-v	2		These dresses run small
+oewn-02725274-v	3		He inclined to corpulence
+oewn-02725805-v	1		the uniform looks like it belonged to a museum collection
+oewn-02725805-v	2		These pages don't belong
+oewn-02730133-v	1		Mourning becomes Electra
+oewn-02730133-v	2		This behavior doesn't suit you!
+oewn-02743444-v	1		The whales belong among the mammals
+oewn-02743599-v	1		This student somehow doesn't belong
+oewn-02743751-v	1		Where do these books belong?
+oewn-02743751-v	2		Let's put health care where it belongs — under the control of the government
+oewn-02743751-v	3		Where do these books go?
+oewn-02750695-v	1		let her be
+oewn-02752015-v	1		Reading beats watching television
+oewn-02752015-v	2		This sure beats work!
+oewn-02762234-v	1		They belong to the same political party
+oewn-02769698-v	1		The sun shone bright that day
+oewn-02769698-v	2		The fire beamed on their faces
+oewn-02819516-n	1		they sighted land on the port beam
+oewn-02821967-n	1		he sat on the edge of the bed
+oewn-02821967-n	2		the room had only a bed and chair
+oewn-02822609-n	1		the gardener planted a bed of roses
+oewn-02822832-n	1		the track bed had washed away
+oewn-02833341-n	1		he used pliers as a bender
+oewn-02833614-n	1		bentwood chairs
+oewn-02952989-a	1		behavioral sciences
+oewn-02972052-a	1		the Belgian Queen
+oewn-03059100-a	1		Bengali hills
+oewn-03059284-a	1		Benin bronzes
+oewn-03059432-a	1		Bermudan beaches
+oewn-03159554-a	1		beaten gold
+oewn-03655499-n	1		slices of hard-boiled egg on a bed of spinach
+oewn-04214015-n	1		the car pulled off onto the shoulder
+oewn-05009987-n	1		stood with good posture
+oewn-05066044-n	1		the cox raised the beat
+oewn-05127300-n	1		a bellyful of your complaints
+oewn-05149888-n	1		for the benefit of all
+oewn-05150547-n	1		in your behalf
+oewn-05150547-n	2		campaigning in his own behalf
+oewn-05150547-n	3		spoke a good word in his friend's behalf
+oewn-05150805-n	1		a change for the better
+oewn-05150937-n	1		chose the better of the two
+oewn-05564228-n	1		you were not supposed to show your navel on television
+oewn-05564228-n	2		they argued whether or not Adam had a navel
+oewn-05564228-n	3		she had a tattoo just above her bellybutton
+oewn-05632037-n	1		he had a bent for it
+oewn-05632037-n	2		he had a special knack for getting into trouble
+oewn-05632037-n	3		he couldn't get the hang of it
+oewn-05734038-n	1		seeing is believing
+oewn-05874038-n	1		profit is the be-all and end-all of business
+oewn-05876673-n	1		‘It was a dark and stormy night’ is a hackneyed beginning for a story
+oewn-05883999-n	1		Benford's law holds that 30% of the time the first non-zero digit of a derived number will be 1 and it will be 9 only 4.6% of the time
+oewn-05910608-n	1		the United States has pursued a beggar-my-neighbor policy
+oewn-05925333-n	1		his impression of her was favorable
+oewn-05925333-n	2		what are your feelings about the crisis?
+oewn-05925333-n	3		it strengthened my belief in his sincerity
+oewn-05925333-n	4		I had a feeling that she was lying
+oewn-05934334-n	1		his roses were beauties
+oewn-05934334-n	2		when I make a mistake it's a beaut
+oewn-06209437-n	1		the set of his mind was obvious
+oewn-06312002-n	1		her favorite Beatitude is ‘Blessed are the meek for they shall inherit the earth’
+oewn-06579319-n	1		beta software is usually available only to particular users who will test it
+oewn-06726316-n	1		he deserved the berating that the coach gave him
+oewn-07100710-n	1		the piece has a fast rhythm
+oewn-07100710-n	2		the conductor set the beat
+oewn-07136069-n	1		his bellow filled the hallway
+oewn-07224625-n	1		I have a gripe about the service here
+oewn-07275811-n	1		his painting sets the benchmark of quality
+oewn-07292719-n	1		he enjoyed Beethoven most of all
+oewn-07305628-n	1		the beginning of the war
+oewn-07391537-n	1		he heard the beat of a drum
+oewn-07391844-n	1		saved by the bell
+oewn-07391844-n	2		she heard the distant toll of church bells
+oewn-07415506-n	1		he could feel the beat of her heart
+oewn-07545205-n	1		with his classmates he felt a sense of belonging
+oewn-07897775-n	1		may I take your beverage order?
+oewn-08008021-n	1		we were visited at breakfast by a bevy of excited ducks
+oewn-08226440-n	1		our team has a strong bench
+oewn-08432731-n	1		he was surrounded by a bevy of beauties in bathing attire
+oewn-08432731-n	2		a bevy of young beach boys swarmed around him
+oewn-08524402-n	1		in the old days a policeman walked a beat and knew all his people by name
+oewn-08524579-n	1		the Italian beginning of the Renaissance
+oewn-08524579-n	2		Jupiter was the origin of the radiation
+oewn-08524579-n	3		Pittsburgh is the source of the Ohio River
+oewn-08524579-n	4		communism's Russian root
+oewn-08526807-n	1		a belt of high pressure
+oewn-08528089-n	1		‘on her beam-ends’ means heeled over on the side so that the deck is almost vertical
+oewn-08606041-n	1		in the belly of the ship
+oewn-08634447-n	1		he made a beeline for the bathroom
+oewn-08667286-n	1		the doctor stood at her bedside
+oewn-08676707-n	1		he worked in the coal beds
+oewn-08707187-n	1		the Germans were desperately trying to contain the Anzio beachhead
+oewn-09240545-n	1		he searched for treasure on the ocean bed
+oewn-09240774-n	1		they found a bed of sandstone
+oewn-09241548-n	1		they were climbing the ben
+oewn-09865763-n	1		politics makes strange bedfellows
+oewn-09868420-n	1		she was the belle of the ball
+oewn-09869865-n	1		the bereaved do not always need to be taken care of
+oewn-09870573-n	1		he could beat the best of them
+oewn-09871127-n	1		the common man has been kept in his place by his betters
+oewn-09871697-n	1		he introduced me to Ahmet Bey
+oewn-09890770-n	1		if I'd known he was her boyfriend, I wouldn't have asked
+oewn-09890770-n	2		When the law changed, Pet could finally marry his long-time boyfriend Jim
+oewn-09917148-n	1		the bonds were transmitted by carrier
+oewn-10100638-n	1		his father was born in Atlanta
+oewn-10127072-n	1		George Washington is the father of his country
+oewn-10199542-n	1		the bond was marked ‘payable to bearer’
+oewn-10330910-n	1		a bearer of good tidings
+oewn-13265007-n	1		that hat is my property
+oewn-13265007-n	2		he is a man of property
+oewn-13817907-n	1		those issues have no bearing on our situation
+oewn-13845695-n	1		he offered odds of two to one
+oewn-13891966-n	1		a bend in the road
+oewn-13891966-n	2		a crook in the path
+oewn-13917955-n	1		the belly of a sail
+oewn-13924278-n	1		he studied the shapes of low-viscosity drops
+oewn-13924278-n	2		beads of sweat on his forehead
+oewn-13930429-n	1		a fold in the napkin
+oewn-13930429-n	2		a crease in his trousers
+oewn-13930429-n	3		a plication on her blouse
+oewn-13930429-n	4		a flexure of the colon
+oewn-13930429-n	5		a bend of his elbow
+oewn-13977471-n	1		a point of view gradually coming into being
+oewn-13977471-n	2		laws in existence for centuries
+oewn-13977471-n	3		he appeared on the face of the earth one day
+oewn-14031827-n	1		the behavior of small particles can be studied in experiments
+oewn-14517616-n	1		they were reduced to mendicancy
+oewn-15290329-n	1		they got an early start
+oewn-15290329-n	2		she knew from the get-go that he was the man for her
+oewn-92418293-n	1		The extreme and plaintive beseechingness of Irving's address to the Ghost is the distinctive novelty of his reading.
+oewn-92423545-n	1		In this scene, the penetrated partner's head is stretched awkwardly out on the floor — placing further emphasis on his beardedness.
+oewn-92427707-n	1		Benzoin Sumatra is used in pharmaceutical preparations.
+oewn-92437391-n	1		The Bermudan option is somewhat American and somewhat European — in terms of both option style and physical location.
+oewn-92439656-n	1		Bearer shares are banned in some countries, because of their potential for abuse.
+oewn-92447434-n	1		Given that there was a Bergsonism of the political right and left, a Bergsonism of the aesthetic establishment and the avant-garde, and even a Bergsonism for French pioneers in advertising psychology and cellular theory, it is not so strange that there might be a Bergsonism for financiers, especially those of a utopian persuasion.
+oewn-92447444-n	1		an unconscionable belittlement of his spouse in public
+oewn-92460922-n	1		Beat music declined in popularity in the UK around 1967 with the emergence of various Psychedelic Rock and Progressive Rock styles.
+oewn-92463146-n	1		We sent our best wishes for a speedy recovery.
+oewn-92464701-n	1		β-Terpinene has no known natural source, but has been prepared synthetically from sabinene.

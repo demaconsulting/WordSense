@@ -1,0 +1,174 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-smack__1.04.00..	derivation		oewn-smack__2.35.02..
+oewn-smack__1.04.01..	derivation		oewn-smack__2.35.01..
+oewn-smack__1.09.00..	derivation		oewn-smack__2.39.12..
+oewn-smack__1.11.00..	derivation		oewn-smack__2.35.02..
+oewn-smack__2.35.01..	other	event	oewn-smack__1.04.01..
+oewn-smack__2.35.02..	derivation		oewn-smacker__1.04.01..
+oewn-smack__2.35.02..	derivation		oewn-smacking__1.04.00..
+oewn-smack__2.35.02..	other	event	oewn-smack__1.04.00..
+oewn-smack__2.35.02..	other	event	oewn-smack__1.11.00..
+oewn-smack__2.35.02..	other	event	oewn-smacker__1.04.01..
+oewn-smack__2.39.12..	other	event	oewn-smack__1.09.00..
+oewn-small--cap__3.01.00..	pertainym		oewn-market_capitalization__1.04.00..
+oewn-small--capitalisation__3.01.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-small--capitalisation__3.01.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-small--capitalisation__3.01.00..	pertainym		oewn-market_capitalisation__1.04.00..
+oewn-small--capitalization__3.01.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-small--capitalization__3.01.00..	pertainym		oewn-market_capitalization__1.04.00..
+oewn-small--mindedly__4.02.00..	pertainym		oewn-small--minded__5.00.00.narrow-minded.00
+oewn-small__3.00.00..	derivation		oewn-smallness__1.07.00..
+oewn-small__3.00.00..	derivation		oewn-smallness__1.07.02..
+oewn-small__5.00.00.limited.00	derivation		oewn-smallness__1.07.00..
+oewn-small__5.00.00.moderate.00	derivation		oewn-smallness__1.07.02..
+oewn-small__5.00.00.soft.04	derivation		oewn-smallness__1.07.03..
+oewn-smarm__1.10.00..	derivation		oewn-smarmy__5.00.00.insincere.00
+oewn-smarmily__4.02.00..	pertainym		oewn-smarmy__5.00.00.insincere.00
+oewn-smarminess__1.07.00..	derivation		oewn-smarmy__5.00.00.insincere.00
+oewn-smart__1.26.00..	derivation		oewn-smart__2.39.00..
+oewn-smart__1.26.00..	derivation		oewn-smart__5.00.00.intense.00
+oewn-smart__2.39.00..	derivation		oewn-smarting__1.26.00..
+oewn-smart__2.39.00..	other	event	oewn-smart__1.26.00..
+oewn-smart__3.00.00..	antonym		oewn-stupid__3.00.00..
+oewn-smart__3.00.00..	derivation		oewn-smartness__1.09.01..
+oewn-smart__5.00.00.fast.01	derivation		oewn-smartness__1.07.01..
+oewn-smart__5.00.00.intelligent.00	derivation		oewn-smartness__1.09.01..
+oewn-smart__5.00.00.intense.00	derivation		oewn-smartness__1.26.00..
+oewn-smart__5.00.00.stylish.00	derivation		oewn-smartness__1.07.00..
+oewn-smartly__4.02.00..	pertainym		oewn-smart__5.00.00.stylish.00
+oewn-smartly__4.02.01..	pertainym		oewn-vigorous__5.00.00.energetic.00
+oewn-smartly__4.02.02..	pertainym		oewn-clever__5.00.00.smart.00
+oewn-smash__1.04.02..	derivation		oewn-smash__2.35.06..
+oewn-smash__1.11.00..	derivation		oewn-smash__2.35.05..
+oewn-smash__1.11.01..	derivation		oewn-smash__2.30.00..
+oewn-smash__1.11.01..	derivation		oewn-smash__2.35.00..
+oewn-smash__1.11.01..	derivation		oewn-smash__2.35.08..
+oewn-smash__2.30.00..	derivation		oewn-smasher__1.18.01..
+oewn-smash__2.30.00..	derivation		oewn-smashing__1.04.00..
+oewn-smash__2.30.00..	other	agent	oewn-smasher__1.18.01..
+oewn-smash__2.30.00..	other	event	oewn-smash__1.11.01..
+oewn-smash__2.35.00..	derivation		oewn-smasher__1.18.01..
+oewn-smash__2.35.00..	other	agent	oewn-smasher__1.18.01..
+oewn-smash__2.35.00..	other	event	oewn-smash__1.11.01..
+oewn-smash__2.35.05..	other	event	oewn-smash__1.11.00..
+oewn-smash__2.35.06..	other	event	oewn-smash__1.04.02..
+oewn-smash__2.35.08..	derivation		oewn-smasher__1.18.01..
+oewn-smash__2.35.08..	other	agent	oewn-smasher__1.18.01..
+oewn-smash__2.35.08..	other	event	oewn-smash__1.11.01..
+oewn-smatter__2.32.00..	derivation		oewn-smattering__1.09.00..
+oewn-smear__1.07.00..	derivation		oewn-smear__2.35.01..
+oewn-smear__1.07.00..	derivation		oewn-smear__2.35.02..
+oewn-smear__1.10.00..	derivation		oewn-smear__2.32.00..
+oewn-smear__2.32.00..	other	event	oewn-smear__1.10.00..
+oewn-smear__2.35.01..	other	result	oewn-smear__1.07.00..
+oewn-smear__2.35.02..	other	result	oewn-smear__1.07.00..
+oewn-smell__1.04.00..	derivation		oewn-smell__2.39.00..
+oewn-smell__1.04.00..	derivation		oewn-smell__2.39.01..
+oewn-smell__1.07.00..	derivation		oewn-smell__2.39.00..
+oewn-smell__1.07.00..	derivation		oewn-smell__2.39.01..
+oewn-smell__1.07.00..	derivation		oewn-smelly__5.00.00.malodorous.00
+oewn-smell__1.09.01..	derivation		oewn-smell__2.39.00..
+oewn-smell__1.09.01..	derivation		oewn-smell__2.39.01..
+oewn-smell__1.09.02..	derivation		oewn-smell__2.39.00..
+oewn-smell__1.09.02..	derivation		oewn-smell__2.39.01..
+oewn-smell__1.09.02..	derivation		oewn-smell__2.39.02..
+oewn-smell__2.39.00..	also		oewn-smell_up__2.39.00..
+oewn-smell__2.39.00..	other	event	oewn-smell__1.04.00..
+oewn-smell__2.39.00..	other	result	oewn-smell__1.07.00..
+oewn-smell__2.39.01..	derivation		oewn-smelling__1.04.00..
+oewn-smell__2.39.01..	other	by_means_of	oewn-smell__1.09.01..
+oewn-smell__2.39.01..	other	event	oewn-smell__1.04.00..
+oewn-smell__2.39.01..	other	event	oewn-smell__1.09.02..
+oewn-smell__2.39.01..	other	undergoer	oewn-smell__1.07.00..
+oewn-smell__2.39.02..	other	event	oewn-smell__1.09.02..
+oewn-smelt__2.36.00..	derivation		oewn-smelter__1.06.00..
+oewn-smelt__2.36.00..	other	by_means_of	oewn-smelter__1.06.00..
+oewn-smile__1.10.00..	derivation		oewn-smile__2.29.00..
+oewn-smile__1.10.00..	derivation		oewn-smile__2.32.00..
+oewn-smile__2.29.00..	derivation		oewn-smiler__1.08.00..
+oewn-smile__2.29.00..	derivation		oewn-smiler__1.18.00..
+oewn-smile__2.29.00..	derivation		oewn-smiling__1.10.00..
+oewn-smile__2.29.00..	other	agent	oewn-smiler__1.18.00..
+oewn-smile__2.29.00..	other	event	oewn-smile__1.10.00..
+oewn-smile__2.32.00..	derivation		oewn-smiler__1.18.00..
+oewn-smile__2.32.00..	other	agent	oewn-smiler__1.18.00..
+oewn-smile__2.32.00..	other	event	oewn-smile__1.10.00..
+oewn-smiling__1.10.00..	derivation		oewn-smiling__5.00.00.cheerful.00
+oewn-smilingly__4.02.00..	antonym		oewn-unsmilingly__4.02.00..
+oewn-smirch__1.04.00..	derivation		oewn-smirch__2.32.00..
+oewn-smirch__1.07.00..	derivation		oewn-smirch__2.35.01..
+oewn-smirch__2.32.00..	other	event	oewn-smirch__1.04.00..
+oewn-smirch__2.35.01..	other	event	oewn-smirch__1.07.00..
+oewn-smirk__1.10.00..	derivation		oewn-smirk__2.29.00..
+oewn-smirk__2.29.00..	derivation		oewn-smirker__1.18.00..
+oewn-smirk__2.29.00..	other	agent	oewn-smirker__1.18.00..
+oewn-smirk__2.29.00..	other	event	oewn-smirk__1.10.00..
+oewn-smock__1.06.00..	derivation		oewn-smock__2.36.00..
+oewn-smock__2.36.00..	derivation		oewn-smocking__1.06.00..
+oewn-smog__1.26.00..	derivation		oewn-smoggy__5.00.00.cloudy.00
+oewn-smogginess__1.26.00..	derivation		oewn-smoggy__5.00.00.cloudy.00
+oewn-smoke__1.04.00..	derivation		oewn-smoke__2.34.00..
+oewn-smoke__1.06.00..	derivation		oewn-smoke__2.34.00..
+oewn-smoke__1.06.01..	derivation		oewn-smoke__2.34.00..
+oewn-smoke__1.19.00..	derivation		oewn-smoke__2.43.00..
+oewn-smoke__1.19.00..	derivation		oewn-smoky__3.00.00..
+oewn-smoke__1.22.00..	derivation		oewn-smoke__2.43.00..
+oewn-smoke__1.22.00..	derivation		oewn-smoky__3.00.00..
+oewn-smoke__2.34.00..	derivation		oewn-smoker__1.18.00..
+oewn-smoke__2.34.00..	derivation		oewn-smoking__1.04.00..
+oewn-smoke__2.34.00..	other	agent	oewn-smoker__1.18.00..
+oewn-smoke__2.34.00..	other	event	oewn-smoke__1.04.00..
+oewn-smoke__2.43.00..	derivation		oewn-smoking__1.22.00..
+oewn-smoke__2.43.00..	other	event	oewn-smoke__1.19.00..
+oewn-smoke__2.43.00..	other	event	oewn-smoke__1.22.00..
+oewn-smokeless__3.00.00..	antonym		oewn-smoky__3.00.00..
+oewn-smolderingly__4.02.00..	pertainym		oewn-smoldering__5.00.00.angry.00
+oewn-smooch__1.04.00..	derivation		oewn-smooch__2.35.00..
+oewn-smooch__2.35.00..	derivation		oewn-smooching__1.04.00..
+oewn-smooch__2.35.00..	other	event	oewn-smooch__1.04.00..
+oewn-smooth__1.04.00..	derivation		oewn-smooth__2.35.00..
+oewn-smooth__2.35.00..	also		oewn-smooth_over__2.41.00..
+oewn-smooth__2.35.00..	derivation		oewn-smoother__1.06.00..
+oewn-smooth__2.35.00..	other	event	oewn-smooth__1.04.00..
+oewn-smooth__2.35.00..	other	instrument	oewn-smoother__1.06.00..
+oewn-smooth__3.00.00..	derivation		oewn-smoothness__1.07.00..
+oewn-smooth__3.00.02..	derivation		oewn-smoothness__1.07.01..
+oewn-smooth__3.00.03..	derivation		oewn-smoothness__1.07.02..
+oewn-smooth__3.00.04..	derivation		oewn-smoothness__1.07.02..
+oewn-smooth__5.00.00.calm.00	derivation		oewn-smoothness__1.07.01..
+oewn-smooth__5.00.00.diplomatic.00	derivation		oewn-smoothness__1.07.03..
+oewn-smooth__5.00.00.easy.01	derivation		oewn-smoothness__1.07.02..
+oewn-smooth__5.00.00.graceful.00	derivation		oewn-smoothness__1.07.02..
+oewn-smoothly__4.02.00..	pertainym		oewn-smooth__5.00.00.easy.01
+oewn-smoothly__4.02.01..	pertainym		oewn-smooth__5.00.00.diplomatic.00
+oewn-smother__2.35.01..	derivation		oewn-smotherer__1.18.00..
+oewn-smother__2.35.01..	other	agent	oewn-smotherer__1.18.00..
+oewn-smoulder__1.11.00..	derivation		oewn-smoulder__2.30.00..
+oewn-smoulder__2.30.00..	other	by_means_of	oewn-smoulder__1.11.00..
+oewn-smoulder__2.30.00..	other	event	oewn-smoulder__1.11.00..
+oewn-smoulderingly__4.02.00..	pertainym		oewn-smouldering__5.00.00.angry.00
+oewn-smudge__1.07.00..	derivation		oewn-smudge__2.35.00..
+oewn-smudge__1.07.00..	derivation		oewn-smudgy__5.00.00.dirty.01
+oewn-smudge__2.35.00..	other	event	oewn-smudge__1.07.00..
+oewn-smug__5.00.00.contented.00	derivation		oewn-smugness__1.12.00..
+oewn-smuggle__2.40.00..	derivation		oewn-smuggler__1.18.00..
+oewn-smuggle__2.40.00..	derivation		oewn-smuggling__1.04.00..
+oewn-smuggle__2.40.00..	other	agent	oewn-smuggler__1.18.00..
+oewn-smugly__4.02.00..	pertainym		oewn-smug__5.00.00.contented.00
+oewn-smut__1.04.00..	derivation		oewn-smut__2.30.02..
+oewn-smut__1.04.00..	derivation		oewn-smutty__5.00.00.dirty.02
+oewn-smut__1.10.00..	derivation		oewn-smutty__5.00.00.dirty.02
+oewn-smut__1.20.00..	derivation		oewn-smut__2.29.00..
+oewn-smut__1.20.00..	derivation		oewn-smut__2.30.01..
+oewn-smut__1.26.00..	derivation		oewn-smut__2.29.00..
+oewn-smut__1.26.00..	derivation		oewn-smut__2.30.01..
+oewn-smut__1.27.00..	derivation		oewn-smut__2.30.00..
+oewn-smut__2.29.00..	other	by_means_of	oewn-smut__1.20.00..
+oewn-smut__2.29.00..	other	by_means_of	oewn-smut__1.26.00..
+oewn-smut__2.30.00..	other	uses	oewn-smut__1.27.00..
+oewn-smut__2.30.01..	other	by_means_of	oewn-smut__1.20.00..
+oewn-smut__2.30.01..	other	event	oewn-smut__1.26.00..
+oewn-smut__2.30.02..	other	event	oewn-smut__1.04.00..
+oewn-smuttily__4.02.00..	pertainym		oewn-smutty__5.00.00.dirty.02
+oewn-smuttiness__1.07.00..	derivation		oewn-smutty__5.00.00.dirty.02
+oewn-smuttiness__1.26.00..	derivation		oewn-smutty__5.00.00.dirty.01

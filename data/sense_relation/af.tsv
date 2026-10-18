@@ -1,0 +1,98 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-afebrile__3.01.00..	antonym		oewn-febrile__3.01.00..
+oewn-afebrile__3.01.00..	pertainym		oewn-fever__1.26.00..
+oewn-affability__1.07.00..	derivation		oewn-affable__5.00.00.friendly.01
+oewn-affable__5.00.00.friendly.01	derivation		oewn-affableness__1.07.00..
+oewn-affably__4.02.00..	pertainym		oewn-affable__5.00.00.friendly.01
+oewn-affect__1.12.00..	derivation		oewn-affect__2.37.00..
+oewn-affect__1.12.00..	derivation		oewn-affectional__5.00.00.emotional.00
+oewn-affect__2.37.00..	derivation		oewn-affective__5.00.00.emotional.00
+oewn-affect__2.37.00..	other	event	oewn-affect__1.12.00..
+oewn-affected__3.00.00..	antonym		oewn-unaffected__3.00.00..
+oewn-affected__3.00.01..	antonym		oewn-unaffected__3.00.01..
+oewn-affected__3.00.01..	derivation		oewn-affectedness__1.07.00..
+oewn-affectedly__4.02.00..	pertainym		oewn-affected__3.00.01..
+oewn-affectedness__1.07.00..	antonym		oewn-unaffectedness__1.07.00..
+oewn-affectingly__4.02.00..	pertainym		oewn-affecting__5.00.00.moving.01
+oewn-affection__1.12.00..	derivation		oewn-affectionate__5.00.00.loving.00
+oewn-affectionate__5.00.00.loving.00	derivation		oewn-affectionateness__1.07.00..
+oewn-affectionate__5.00.00.loving.00	derivation		oewn-affectionateness__1.12.00..
+oewn-affectionately__4.02.00..	pertainym		oewn-affectionate__5.00.00.loving.00
+oewn-afferent__1.08.00..	derivation		oewn-afferent__3.00.00..
+oewn-afferent__3.00.00..	antonym		oewn-efferent__3.00.00..
+oewn-affiliate__1.14.00..	derivation		oewn-affiliate__2.41.00..
+oewn-affiliate__1.18.00..	derivation		oewn-affiliate__2.41.00..
+oewn-affiliate__2.41.00..	derivation		oewn-affiliation__1.04.00..
+oewn-affiliate__2.41.00..	derivation		oewn-affiliation__1.26.00..
+oewn-affiliate__2.41.00..	other	agent	oewn-affiliate__1.14.00..
+oewn-affiliate__2.41.00..	other	agent	oewn-affiliate__1.18.00..
+oewn-affiliate__2.41.00..	other	event	oewn-affiliation__1.04.00..
+oewn-affiliate__2.41.00..	other	event	oewn-affiliation__1.26.00..
+oewn-affinal__5.00.00.related.01	derivation		oewn-affine__1.18.00..
+oewn-affine__3.01.00..	pertainym		oewn-affine_transformation__1.24.00..
+oewn-affine__5.00.00.related.01	derivation		oewn-affinity__1.24.01..
+oewn-affinity__1.24.01..	antonym		oewn-consanguinity__1.24.00..
+oewn-affirm__2.31.00..	antonym		oewn-negate__2.31.00..
+oewn-affirm__2.31.00..	derivation		oewn-affirmable__5.00.00.possible.00
+oewn-affirm__2.31.00..	derivation		oewn-affirmation__1.04.00..
+oewn-affirm__2.31.00..	other	event	oewn-affirmation__1.04.00..
+oewn-affirm__2.32.00..	derivation		oewn-affirmation__1.10.00..
+oewn-affirm__2.32.00..	derivation		oewn-affirmation__1.10.02..
+oewn-affirm__2.32.00..	derivation		oewn-affirmer__1.18.00..
+oewn-affirm__2.32.00..	other	agent	oewn-affirmer__1.18.00..
+oewn-affirm__2.32.00..	other	event	oewn-affirmation__1.10.00..
+oewn-affirm__2.32.00..	other	event	oewn-affirmation__1.10.02..
+oewn-affirm__2.32.01..	derivation		oewn-affirmation__1.10.02..
+oewn-affirm__2.32.01..	derivation		oewn-affirmative__3.00.00..
+oewn-affirm__2.32.01..	derivation		oewn-affirmatory__3.00.00..
+oewn-affirm__2.32.01..	other	event	oewn-affirmation__1.10.02..
+oewn-affirmation__1.04.00..	antonym		oewn-reversal__1.04.06..
+oewn-affirmative__1.10.00..	antonym		oewn-negative__1.10.00..
+oewn-affirmative__1.10.00..	derivation		oewn-affirmative__3.00.00..
+oewn-affirmative__3.00.00..	antonym		oewn-negative__3.00.01..
+oewn-affirmative__5.00.00.positive.01	derivation		oewn-affirmativeness__1.07.00..
+oewn-affirmatively__4.02.00..	pertainym		oewn-affirmative__3.00.00..
+oewn-affix__1.10.00..	derivation		oewn-affix__2.35.02..
+oewn-affix__1.10.00..	derivation		oewn-affixal__3.01.00..
+oewn-affix__1.10.00..	derivation		oewn-affixial__3.01.00..
+oewn-affix__2.35.01..	derivation		oewn-affixation__1.04.01..
+oewn-affix__2.35.01..	other	event	oewn-affixation__1.04.01..
+oewn-affix__2.35.02..	derivation		oewn-affixation__1.04.00..
+oewn-affix__2.35.02..	derivation		oewn-affixation__1.09.00..
+oewn-affix__2.35.02..	other	event	oewn-affixation__1.04.00..
+oewn-affix__2.35.02..	other	result	oewn-affixation__1.09.00..
+oewn-affix__2.35.02..	other	undergoer	oewn-affix__1.10.00..
+oewn-affixal__3.01.00..	pertainym		oewn-affix__1.10.00..
+oewn-affixed__3.00.00..	antonym		oewn-unaffixed__3.00.00..
+oewn-affixial__3.01.00..	pertainym		oewn-affix__1.10.00..
+oewn-afflict__2.30.00..	derivation		oewn-affliction__1.26.02..
+oewn-afflict__2.30.00..	derivation		oewn-afflictive__5.00.00.unpleasant.00
+oewn-afflict__2.30.00..	other	state	oewn-affliction__1.26.02..
+oewn-afflict__2.37.00..	derivation		oewn-affliction__1.11.00..
+oewn-afflict__2.37.00..	derivation		oewn-affliction__1.26.02..
+oewn-afflict__2.37.00..	derivation		oewn-afflictive__5.00.00.unpleasant.00
+oewn-afflict__2.37.00..	other	by_means_of	oewn-affliction__1.11.00..
+oewn-afflict__2.37.00..	other	state	oewn-affliction__1.26.02..
+oewn-affluence__1.26.00..	derivation		oewn-affluent__5.00.00.rich.00
+oewn-affluent__1.18.00..	derivation		oewn-affluent__5.00.00.rich.00
+oewn-afford__2.42.00..	derivation		oewn-affordable__5.00.00.cheap.00
+oewn-afforest__2.35.00..	derivation		oewn-afforestation__1.04.00..
+oewn-afforest__2.35.00..	other	event	oewn-afforestation__1.04.00..
+oewn-affright__1.12.00..	derivation		oewn-affright__2.37.00..
+oewn-affront__1.04.00..	derivation		oewn-affront__2.32.00..
+oewn-affront__2.32.00..	other	event	oewn-affront__1.04.00..
+oewn-afghan__1.10.00..	derivation		oewn-afghan__3.01.00..
+oewn-afghan__1.18.00..	derivation		oewn-afghan__3.01.00..
+oewn-afghani__1.10.00..	derivation		oewn-afghani__3.01.00..
+oewn-afghanistani__1.18.00..	derivation		oewn-afghanistani__3.01.00..
+oewn-aflaxen__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-afloat__3.00.00..	antonym		oewn-aground__3.00.00..
+oewn-afoot__4.02.01..	pertainym		oewn-afoot__5.00.00.moving.02
+oewn-afraid__3.00.00..	antonym		oewn-unafraid__3.00.00..
+oewn-african--american__1.18.00..	derivation		oewn-african--american__5.00.00.black.02
+oewn-african__1.18.00..	derivation		oewn-african__3.01.00..
+oewn-afrikaans__1.10.00..	derivation		oewn-afrikaans__3.01.00..
+oewn-afrikaner__1.18.00..	derivation		oewn-afrikaner__3.01.00..
+oewn-afro--american__1.18.00..	derivation		oewn-afro--american__5.00.00.black.02
+oewn-aft__3.00.00..	antonym		oewn-fore__3.00.00..
+oewn-aft__4.02.00..	antonym		oewn-fore__4.02.00..

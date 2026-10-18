@@ -1,0 +1,512 @@
+entry_id	seq	variety	text
+oewn-Polish-a	1	GB	ˈpəʊlɪʃ
+oewn-Polish-a	2	US	ˈpoʊlɪʃ
+oewn-Polish-n	1	GB	ˈpəʊlɪʃ
+oewn-Polish-n	2	US	ˈpoʊlɪʃ
+oewn-Pomeranian-n	1		ˌpɒməˈɹeɪniən
+oewn-Portuguese-a	1	GB	ˌpɔː.t͡ʃəˈɡiːz
+oewn-Portuguese-a	2	US	ˈpɔɹ.t͡ʃə.ɡiz
+oewn-Portuguese-n	1	GB	ˌpɔː.t͡ʃəˈɡiːz
+oewn-Portuguese-n	2	US	ˈpɔɹ.t͡ʃə.ɡiz
+oewn-Post_Office-n	1	GB	ˈpəʊst ˌɒfɪs
+oewn-Powhatan-n	1		paʊəˈtæn
+oewn-po-faced-a	1		ˈpəʊ.feɪst
+oewn-poached-a	1	GB	pəʊtʃt
+oewn-poached-a	2	US	poʊtʃt
+oewn-poacher-n	1	US	ˈpoʊ.tʃɚ
+oewn-poacher-n	2	GB	ˈpəʊ.tʃə
+oewn-pochard-n	1	GB	ˈpəʊtʃəd
+oewn-pock-n	1	GB	pɒk
+oewn-pock-n	2	US	pɑk
+oewn-pock-v	1	GB	pɒk
+oewn-pock-v	2	US	pɑk
+oewn-pocket-n	1	US	ˈpɑkɪt
+oewn-pocket-n	2	GB	ˈpɒkɪt
+oewn-pocket-v	1	US	ˈpɑkɪt
+oewn-pocket-v	2	GB	ˈpɒkɪt
+oewn-pod-n	1	GB	ˈpɒd
+oewn-pod-n	2	US	ˈpɑd
+oewn-pod-v	1	GB	ˈpɒd
+oewn-pod-v	2	US	ˈpɑd
+oewn-podcast-v	1	GB	ˈpɒdkɑːst
+oewn-podcast-v	2	US	ˈpɔdkæst
+oewn-podiatrist-n	1		pəˈdaɪətɹɪst
+oewn-podiatry-n	1		pəˈdaɪətɹi
+oewn-podium-n	1	GB	ˈpəʊ.dɪi.ʌm
+oewn-poem-n	1	GB	ˈpəʊ̯ɪm
+oewn-poem-n	2	US	ˈpoʊ̯əm
+oewn-poesy-n	1	GB	ˈpəʊɪzi
+oewn-poesy-n	2	US	ˈpoʊɪzi
+oewn-poet-n	1	GB	ˈpəʊɪt
+oewn-poet-n	2	US	ˈpoʊət
+oewn-poetess-n	1	GB	ˌpəʊ.ɪˈtɛs
+oewn-poetess-n	2	US	ˈpoʊ.ɪˌtɛs
+oewn-poetic-a	1	US	poʊˈɛtɪk
+oewn-poetical-a	1	US	poʊˈɛtɪkl̩
+oewn-poetical-a	2	GB	pəʊˈɛtɪkl̩
+oewn-poetry-n	1	GB	ˈpəʊɪtɹi
+oewn-poetry-n	2	US	ˈpoʊətɹi
+oewn-pogey-n	1		ˈpəʊɡi
+oewn-pogge-n	1	GB	pɒɡ
+oewn-pogge-n	2	US	pɑɡ
+oewn-pogrom-n	1	GB	ˈpɒɡɹəm
+oewn-pogrom-n	2	US	ˈpoʊɡɹəm
+oewn-poignance-n	1	GB	ˈpɔɪnjəns
+oewn-poignant-a	1		ˈpɔɪn.jənt
+oewn-poinsettia-n	1	GB	ˌpɔɪnˈsɛ.tɪə
+oewn-poinsettia-n	2	US	ˌpɔɪnˈsɛ.ɾ(i)ə
+oewn-pointed-a	1		ˈpɔɪntɪd
+oewn-pointer-n	1		ˈpɔɪntə
+oewn-pointless-a	1		ˈpɔɪntləs
+oewn-poise-n	1		pɔɪz
+oewn-poise-v	1		pɔɪz
+oewn-poised-a	1		pɔɪzd
+oewn-poison-n	1		ˈpɔɪz(ə)n
+oewn-poison-v	1		ˈpɔɪz(ə)n
+oewn-poisonous-a	1		ˈpɔɪzənəs
+oewn-poke-n	1		ˈpoʊ.keɪ
+oewn-poke-v	1		ˈpoʊ.keɪ
+oewn-pokey-a	1	US	ˈpoʊ.ki
+oewn-pokey-n	1	US	ˈpoʊ.ki
+oewn-poking-n	1	GB	ˈpəʊkɪŋ
+oewn-poking-n	2	US	ˈpoʊkɪŋ
+oewn-pol-n	1	US	pɑl
+oewn-pol-n	2	GB	pɒl
+oewn-polack-n	1	US	ˈpoʊlɑk
+oewn-polack-n	2	GB	ˈpəʊlæk
+oewn-polar-a	1	GB	ˈpəʊ̯lə(ɹ)
+oewn-polar-a	2	US	ˈpoʊ̯lɚ
+oewn-polarity-n	1		pəˈlærɪti
+oewn-polarization-n	1		ˌpoʊlərɪˈzeɪʃən
+oewn-polarize-v	1	US	ˈpoʊləɹaɪz
+oewn-polder-n	1	GB	ˈpəʊldə
+oewn-polecat-n	1		ˈpəʊlkæt
+oewn-polemic-a	1		pəˈlɛmɪk
+oewn-polemic-n	1		pəˈlɛmɪk
+oewn-polemical-a	1		pəˈlɛmɪkəl
+oewn-polenta-n	1		pəˈlɛntə
+oewn-policeman-n	1		pəˈliːsmən
+oewn-polio-n	1	GB	ˈpəʊljəʊ
+oewn-polio-n	2	US	ˈpoʊlioʊ
+oewn-poliomyelitis-n	1	GB	ˌpɒlɪəʊmaɪəˈlaɪtɪs
+oewn-polish-n	1	GB	ˈpəʊlɪʃ
+oewn-polish-n	2	US	ˈpoʊlɪʃ
+oewn-polish-v	1	GB	ˈpɒlɪʃ
+oewn-polish-v	2	US	ˈpɑlɪʃ
+oewn-polished-a	1	US	ˈpɑlɪʃt
+oewn-polished-a	2	GB	ˈpɒlɪʃt
+oewn-politburo-n	1	GB	ˈpɒlɪtˌbjʊəɹəʊ
+oewn-politburo-n	2	US	ˈpɑlətˌbjʊɹoʊ
+oewn-polite-a	1		pəˈlaɪt
+oewn-politely-r	1		pəˈlaɪtli
+oewn-politeness-n	1		pəˈlaɪtnəs
+oewn-politesse-n	1	GB	pɒlɪˈtɛs
+oewn-politesse-n	2	US	pɑləˈtɛs
+oewn-politic-a	1	GB	ˈpɒlətɪk
+oewn-politic-a	2	US	ˈpɑlətɪk
+oewn-political-a	1		pəˈlɪtɪkəl
+oewn-politician-n	1	GB	ˈpɒl.ɪ.tɪʃ.ən
+oewn-politician-n	2	US	pɑl.ɪˈtɪʃ.ən
+oewn-politicize-v	1		pəˈlɪtɪˌsaɪz
+oewn-politico-n	1	GB	pəˈlɪtɪkəʊ
+oewn-politics-n	1	US	ˈpɑl.ɪˌtɪks
+oewn-politics-n	2	GB	ˈpɒl.ɪ.tɪks
+oewn-polity-n	1	GB	ˈpɒ.lɪ.tɪ
+oewn-polity-n	2	US	ˈpɑ.lɪ.ti
+oewn-polka-n	1	GB	ˈpɒl.kə
+oewn-polka-n	2	US	ˈpoʊ(l)kə
+oewn-polka-v	1	GB	ˈpɒl.kə
+oewn-polka-v	2	US	ˈpoʊ(l)kə
+oewn-polka_dot-n	1	GB	ˈpɒl.kə ˌdɒt
+oewn-polka_dot-n	2	US	ˈpoʊ.kə ˌdɑt
+oewn-poll-n-1	1		pɔl
+oewn-poll-n-2	1		pɒl
+oewn-poll-v	1	AU	pɔl
+oewn-poll-v	2	GB	pəʊl
+oewn-poll-v	3	US	poʊl
+oewn-pollard-n	1	GB	ˈpɒl.əd
+oewn-pollard-n	2	US	ˈpɑ.lɚd
+oewn-pollard-v	1	GB	ˈpɒl.əd
+oewn-pollard-v	2	US	ˈpɑ.lɚd
+oewn-pollen-n	1	GB	ˈpɒlən
+oewn-pollen-n	2	US	ˈpɑlən
+oewn-pollinator-n	1		ˈpɒlɪˌneɪtə(ɹ)
+oewn-pollinosis-n	1	GB	ˌpɒləˈnəʊsɪs
+oewn-pollinosis-n	2	US	ˌpɑləˈnoʊsɪs
+oewn-pollutant-n	1		pəˈl(j)uːtənt
+oewn-pollute-v	1		pəˈluːt
+oewn-pollution-n	1	GB	pəˈl(j)uːʃən
+oewn-pollution-n	2	US	pəˈluʃən
+oewn-polo-neck-n	1	GB	ˈpəʊləʊ ˌnɛk
+oewn-polo-neck-n	2	US	ˈpoʊloʊ ˌnɛk
+oewn-polo_shirt-n	1	GB	ˈpəʊləʊ ˌʃɜːt
+oewn-polo_shirt-n	2	US	ˈpoʊloʊ ˌʃɝt
+oewn-polonaise-n	1		ˌpɒləˈneɪz
+oewn-polonium-n	1	GB	pəˈləʊni.əm
+oewn-polonium-n	2	US	pəˈloʊni.əm
+oewn-poltergeist-n	1	US	ˈpoʊl.tɚˌɡaɪst
+oewn-poltergeist-n	2	GB	ˈpɒl.tə.ɡaɪst
+oewn-poltroon-a	1	GB	pɒlˈtɹuːn
+oewn-poltroon-a	2	US	pɑlˈtɹun
+oewn-poltroon-n	1	GB	pɒlˈtɹuːn
+oewn-poltroon-n	2	US	pɑlˈtɹun
+oewn-polychaete-n	1		ˈpɒlɪkiːt
+oewn-polychromatic-a	1	US	ˌpɑlikɹəˈmætɪk
+oewn-polychromatic-a	2	GB	ˌpɒlikɹəʊˈmætɪk
+oewn-polycythemia-n	1		ˌpɒlɪsaɪˈθiːmɪə
+oewn-polydactyly-n	1	GB	ˌpɒl.ɪˈdak.tɪl.i
+oewn-polydactyly-n	2	US	ˌpɑl.iˈdæk.təl.i
+oewn-polygamist-n	1		pəˈlɪɡəmɪst
+oewn-polygamous-a	1		pəˈlɪɡəməs
+oewn-polygamy-n	1		pəˈlɪɡəmi
+oewn-polyglot-a	1		ˈpɒliːɡlɒt
+oewn-polyglot-n	1		ˈpɒliːɡlɒt
+oewn-polygon-n	1	GB	ˈpɒlɪɡən
+oewn-polygon-n	2	US	ˈpɑliɡɑn
+oewn-polygonal-a	1	GB	pəˈlɪɡənəl
+oewn-polygraph-n	1		ˈpɒliɡɹæf
+oewn-polygynist-n	1		pəˈlɪdʒɪnɪst
+oewn-polygynous-a	1		pəˈlɪdʒɪnəs
+oewn-polygyny-n	1		pəˈlɪdʒɪnɪ
+oewn-polyhedron-n	1	GB	pɒliˈhiːdɹən
+oewn-polymath-n	1	GB	ˈpɒlɪmæθ
+oewn-polymath-n	2	US	ˈpɑliˌmæθ
+oewn-polymer-n	1	GB	ˈpɒl.ɨ.mə
+oewn-polymer-n	2	US	ˈpɑ.lɪ.mɚ
+oewn-polymeric-a	1	GB	ˌpɒlɪˈmɛɹɪk
+oewn-polymeric-a	2	US	ˌpɑliˈmɛɹɪk
+oewn-polymerization-n	1	GB	ˌpɒl.ɪ.məɹ.aɪˈzeɪ.ʃən
+oewn-polymerize-v	1	GB	ˈpɒlɨməɹʌɪz
+oewn-polymerize-v	2	US	ˈpɑləməˌɹaɪz
+oewn-polymorphic-a	1	US	ˌpɑliˈmɔɹfɪk
+oewn-polymorphism-n	1	GB	pɒlɪˈmɔːfɪz(ə)m
+oewn-polymorphism-n	2	US	pɑliˈmɔɹfɪz(ə)m
+oewn-polynya-n	1	GB	pə(ʊ)ˈlɪnjə
+oewn-polynya-n	2	US	pəˈlɪnjə
+oewn-polyp-n	1	US	ˈpɑlɪp
+oewn-polyp-n	2	GB	ˈpɒlɪp
+oewn-polyphony-n	1	GB	pəˈlɪfəni
+oewn-polyploidy-n	1	GB	ˈpɒlɪplɔɪdi
+oewn-polypody-n	1	GB	ˈpɒlɪpəʊdi
+oewn-polyptoton-n	1	US	ˌpɑ.ləpˈtoʊ.tɑn
+oewn-polypus-n	1	US	ˈpɑlɪpəs
+oewn-polypus-n	2	GB	ˈpɒlɪpəs
+oewn-polysemous-a	1	GB	pəˈlɪs.ɪ.məs
+oewn-polysemous-a	2	US	ˌpɑːl.iˈsiː.məs
+oewn-polysemy-n	1	GB	ˈpɒ.lɪ.siː.mi
+oewn-polysyllabic-a	1	GB	ˌpɒ.lɪ.sɪˈlæ.bɪk
+oewn-polysyllabic-a	2	AU	ˌpɔ.lɪ.sɪˈlæ.bɪk
+oewn-polysyllabic-a	3	US	ˌpɑ.li.sɪˈlæ.bɪk
+oewn-polysynthetic-a	1		ˌpɒlisɪnˈθɛtɪk
+oewn-polytetrafluoroethylene-n	1	US	ˌpɑlitɛtɹəˌflɔɹoʊˈɛθɪlin
+oewn-polytetrafluoroethylene-n	2	GB	ˌpɒlitɛtɹəˌflɔːɹəʊˈɛθɪliːn
+oewn-polytheism-n	1		pɒl.ɪˈθiː.ɪz.əm
+oewn-polytheist-n	1		pɒlɪˈθiːɪst
+oewn-polytheistic-a	1		ˌpɒlɪθiːˈɪstɪk
+oewn-polytonal-a	1	US	ˌpɑliˈtoʊnəl
+oewn-polytonal-a	2	GB	ˌpɒliˈtəʊnəl
+oewn-polyzoan-n	1		pɒliˈzəʊ.ən
+oewn-pomegranate-n	1	GB	ˈpɒmɪ(ˌ)ɡɹænɪt
+oewn-pomegranate-n	2	US	ˈpɑmɪˌɡɹænɪt
+oewn-pomelo-n	1	GB	ˈpɒmɪləʊ
+oewn-pomelo-n	2	US	ˈpɑməloʊ
+oewn-pomfret-n	1	GB	ˈpɒm.fɹɪt
+oewn-pommel-n	1	GB	ˈpɒ.məl
+oewn-pommel-n	2	US	ˈpɑ.məl
+oewn-pommel-v	1	GB	ˈpɒ.məl
+oewn-pommel-v	2	US	ˈpɑ.məl
+oewn-pommy-n	1		ˈpɒmi
+oewn-pomp-n	1	GB	ˈpɒmp
+oewn-pomp-n	2	US	ˈpɑːmp
+oewn-pompadour-n	1	GB	ˈpɒmpədʊə
+oewn-pompadour-n	2	US	ˈpɑːmpədɔːɹ
+oewn-pompadour-v	1	GB	ˈpɒmpədʊə
+oewn-pompadour-v	2	US	ˈpɑːmpədɔːɹ
+oewn-pompano-n	1	GB	ˈpɒmpənəʊ
+oewn-pompous-a	1	GB	ˈpɒmpəs
+oewn-pompous-a	2	US	ˈpɑmpəs
+oewn-ponce-n	1		pɒns
+oewn-poncho-n	1	GB	ˈpɒn.tʃəʊ
+oewn-poncho-n	2	US	ˈpɑn.tʃoʊ
+oewn-ponder-v	1	GB	ˈpɒn.də(ɹ)
+oewn-ponder-v	2	US	ˈpɑn.dɚ
+oewn-ponderosity-n	1		ˌpɒndəˈɹɒsɪti
+oewn-ponderous-a	1	GB	ˈpɒn.dəɹ.əs
+oewn-ponderous-a	2	US	ˈpɑn.dɚ.əs
+oewn-pone-n	1		pəʊn
+oewn-pongee-n	1	US	ˈpɑndʒi
+oewn-poniard-n	1	GB	ˈpɒnjəd
+oewn-poniard-v	1	GB	ˈpɒnjəd
+oewn-pons-n	1		pɒnz
+oewn-pontifex-n	1	US	ˈpɒn.təˌfɛks
+oewn-pontiff-n	1	GB	ˈpɒntɪf
+oewn-pontificate-n	1	GB	pɒnˈtɪfɪkət
+oewn-pontificate-n	2	US	pɑːnˈtɪfɪkət
+oewn-pontificate-v	1	GB	pɒnˈtɪfɪkeɪt
+oewn-pontificate-v	2	US	pɑːnˈtɪfɪkeɪt
+oewn-pony-trekking-n	1	GB	ˈpəʊniˌtɹɛkɪŋ
+oewn-pony-trekking-n	2	US	ˈpoʊniˌtɹɛkɪŋ
+oewn-ponytail-n	1	US	ˈpoʊniˌteɪl
+oewn-poodle-n	1		ˈpuː.dəl
+oewn-poof-n	1		pʊf
+oewn-pooh-bah-n	1		ˈpuːbɑː
+oewn-pooh-pooh-v	1	GB	ˌpuːˈpuː
+oewn-pooh-pooh-v	2	US	ˈpuˈpu
+oewn-poor-a	1	CA	pʊɹ
+oewn-poor-a	2		pʊə(ɹ)
+oewn-poor-n	1	CA	pʊɹ
+oewn-poor-n	2		pʊə(ɹ)
+oewn-popcorn-n	1	GB	ˈpɒp.kɔː(ɹ)n
+oewn-popcorn-n	2	US	ˈpɑp.kɔɹn
+oewn-popinjay-n	1	GB	ˈpɒpɪndʒeɪ
+oewn-popinjay-n	2	US	ˈpɑpənˌdʒeɪ
+oewn-popish-a	1	GB	ˈpəʊpɪʃ
+oewn-popish-a	2	US	ˈpoʊpɪʃ
+oewn-poplar-n	1		ˈpɒplə(ɹ)
+oewn-poplin-n	1		ˈpɒplɪn
+oewn-popliteal-a	1	GB	pɒˈplɪtɪ.əl
+oewn-poppet-n	1		ˈpɒ.pɪt
+oewn-popping-n	1	GB	ˈpɒpɪŋ
+oewn-popping-n	2	US	ˈpɑpɪŋ
+oewn-popsicle-n	1	GB	ˈpɒpsɪkl̩
+oewn-popsicle-n	2	US	ˈpɑpsɪkl̩
+oewn-populace-n	1	GB	ˈpɒpjʊləs
+oewn-populace-n	2	US	ˈpɑpjələs
+oewn-popular-a	1	GB	ˈpɒpjʊlə
+oewn-popular-a	2	US	ˈpɑpjələɹ
+oewn-popularity-n	1	US	ˌpɒp.jəˈlæɹ.ɪ.ti
+oewn-populate-v	1	GB	ˈpɒp.jʊˌleɪt
+oewn-populate-v	2	US	ˈpɑp.jəˌleɪt
+oewn-population-n	1	GB	ˌpɒpjʊˈleɪʃən
+oewn-population-n	2		pɒpjuːˈleɪʃən
+oewn-populous-a	1	GB	ˈpɒpjʊləs
+oewn-populous-a	2	US	ˈpɑpjələs
+oewn-porcelain-n	1	GB	ˈpɔːsəlɪn
+oewn-porcelain-n	2	US	ˈpɔɹsəlɪn
+oewn-porcelain-n	3	NZ	ˈpoːslɘn
+oewn-porch-n	1	GB	pɔːtʃ
+oewn-porch-n	2	US	pɔɹtʃ
+oewn-porcine-a	1	US	ˈpoʊɹ.saɪn
+oewn-porcine-a	2		ˈpoʊɹ.sin
+oewn-porcupine-n	1		ˈpɔː(ɹ)kjʊˌpaɪn
+oewn-pork-n	1	GB	pɔːk
+oewn-pork-n	2	US	pɔɹk
+oewn-pork_barrel-n	1	GB	ˈpɔːkˌbaɹəl
+oewn-porker-n	1	GB	ˈpɔːkə
+oewn-porker-n	2	US	ˈpɔɹkɚ
+oewn-porn-n	1	GB	pɔːn
+oewn-porn-n	2	US	pɔɹn
+oewn-porno-n	1	GB	ˈpɔːnəʊ
+oewn-pornography-n	1	GB	pɔː(ɹ)ˈnɒɡ.ɹə.fi
+oewn-pornography-n	2	US	pɔɹˈnɑ.ɡɹə.fi
+oewn-porous-a	1		ˈpɔːɹəs
+oewn-porphyria-n	1		pɔː(ɹ)ˈfɪɹɪə
+oewn-porphyrin-n	1	GB	ˈpɔːfɪɹɪn
+oewn-porphyrin-n	2	US	ˈpɔɹfəɹɪn
+oewn-porphyry-n	1		ˈpɔɹfɪɹi
+oewn-porpoise-n	1	GB	ˈpɔːpəs
+oewn-porpoise-n	2	US	ˈpɔːɹpəs
+oewn-porridge-n	1	GB	ˈpɒɹ.ɪd͡ʒ
+oewn-porridge-n	2	US	ˈpɔɹɪd͡ʒ
+oewn-portable-a	1	GB	ˈpɔː(ɹ)təbəl
+oewn-portable-a	2	US	ˈpɔɹtəbəl
+oewn-portable-n	1	GB	ˈpɔː(ɹ)təbəl
+oewn-portable-n	2	US	ˈpɔɹtəbəl
+oewn-portage-n	1		ˈpɔː(ɹ)tɪdʒ
+oewn-portal-n	1	GB	ˈpɔːtəl
+oewn-portal-n	2	US	ˈpɔːɹtəl
+oewn-portcullis-n	1	GB	pɔːtˈkʌlɪs
+oewn-portend-v	1	GB	pɔːˈtɛnd
+oewn-portend-v	2	US	pɔɹˈtɛnd
+oewn-portent-n	1	GB	ˈpɔːtɛnt
+oewn-portent-n	2	US	ˈpɔɹtɛnt
+oewn-portentous-a	1		pɔː(ɹ)ˈtɛntəs
+oewn-portentously-r	1		pɔːˈten.təs.li
+oewn-porterage-n	1		ˈpɔː(ɹ)təɹɪd͡ʒ
+oewn-portfolio-n	1	US	pɔɹtˈfoʊ.liˌoʊ
+oewn-portfolio-n	2	GB	pɔːtˈfəʊ.liˌəʊ
+oewn-porthole-n	1		ˈpɔː(ɹ)t.həʊl
+oewn-portico-n	1	GB	ˈpɔːtɪkəʊ
+oewn-portion-n	1	US	ˈpɔɹʃən
+oewn-portion-n	2	GB	ˈpɔːʃən
+oewn-portion-v	1	US	ˈpɔɹʃən
+oewn-portion-v	2	GB	ˈpɔːʃən
+oewn-portly-a	1	GB	ˈpɔːtli
+oewn-portly-a	2	US	ˈpɔɹtli
+oewn-portrait-n	1	GB	ˈpɔːtɹeɪt
+oewn-portrait-n	2	US	ˈpɔɹtɹeɪt
+oewn-portraiture-n	1		ˈpɔː(ɹ)tɹɪtjʊə(ɹ)
+oewn-portray-v	1	US	pɔɹˈtɹeɪ
+oewn-portrayal-n	1	US	ˌpɔɹˈtɹeɪ.əl
+oewn-posed-a	1	GB	pəʊzd
+oewn-posed-a	2	US	poʊzd
+oewn-poser-n	1	GB	ˈpəʊzə(ɹ)
+oewn-poser-n	2	US	ˈpoʊzɚ
+oewn-poseur-n	1		poʊˈzʊəɹ
+oewn-posh-a	1	US	pɑʃ
+oewn-posh-a	2	GB	pəʊʃ
+oewn-posing-n	1	GB	ˈpəʊzɪŋ
+oewn-posing-n	2	US	ˈpoʊzɪŋ
+oewn-posit-n	1	GB	ˈpɒzɪt
+oewn-posit-n	2	US	ˈpɑzɪt
+oewn-posit-v	1	GB	ˈpɒzɪt
+oewn-posit-v	2	US	ˈpɑzɪt
+oewn-position-n	1	GB	pəˈzɪ.ʃ(ə)n
+oewn-position-n	2	US	pəˈzɪ.ʃ(ə)n
+oewn-position-v	1	GB	pəˈzɪ.ʃ(ə)n
+oewn-position-v	2	US	pəˈzɪ.ʃ(ə)n
+oewn-positive-a	1	GB	ˈpɒzɪ̈tɪv
+oewn-positive-a	2	US	ˈpɑzɪ̈tɪv
+oewn-positive-n	1	GB	ˈpɒzɪ̈tɪv
+oewn-positive-n	2	US	ˈpɑzɪ̈tɪv
+oewn-positively-r	1		ˈpɒzɪtɪvli
+oewn-positiveness-n	1	GB	ˈpɒzɪtɪvnɪs
+oewn-positiveness-n	2	US	ˈpɑzɪtɪvnɪs
+oewn-positivism-n	1	GB	ˈpɒzɪtɪvˌɪzm
+oewn-positivism-n	2	US	ˈpɑzɪtɪvˌɪzm
+oewn-positivity-n	1		ˌpɒzɪˈtɪvɪti
+oewn-positron-n	1	GB	ˈpɒz.ɪ.tɹɒn
+oewn-positron-n	2	US	ˈpɑ.zɪ.tɹɑn
+oewn-posology-n	1	GB	pəʊˈsɒ.lə.dʒi
+oewn-posology-n	2	US	pəˈzɑ.lə.dʒi
+oewn-posse-n	1	GB	ˈpɒ.si
+oewn-posse-n	2	US	ˈpɑ.si
+oewn-possess-v	1		pəˈzɛs
+oewn-possessed-a	1		pəˈzɛst
+oewn-possession-n	1		pəˈzɛʃən
+oewn-possessive-a	1		pəˈzɛsɪv
+oewn-possessive-n	1		pəˈzɛsɪv
+oewn-possessor-n	1	GB	pɒˈzɛsɔː
+oewn-posset-n	1	GB	ˈpɒsɪt
+oewn-posset-n	2	US	ˈpɑsɪt
+oewn-possibility-n	1	US	ˌpɑsɪˈbɪliti
+oewn-possibility-n	2	GB	ˌpɒsɪˈbɪliti
+oewn-possible-a	1	GB	ˈpɒsɪbl̩
+oewn-possible-a	2	US	ˈpɑsəbl̩
+oewn-possible-n	1	GB	ˈpɒsɪbl̩
+oewn-possible-n	2	US	ˈpɑsəbl̩
+oewn-possibly-r	1	US	ˈpɑsəbli
+oewn-possibly-r	2	GB	ˈpɒsɪbli
+oewn-possum-n	1		ˈpɒsəm
+oewn-post-haste-r	1	GB	ˌpəʊstˈheɪst
+oewn-post-haste-r	2	US	ˌpoʊstˈheɪst
+oewn-post_chaise-n	1		ˈpəʊstʃeɪz
+oewn-post_office-n	1	GB	ˈpəʊst ˌɒfɪs
+oewn-postage-n	1	GB	ˈpəʊstɪdʒ
+oewn-postage-n	2	US	ˈpoʊstɪdʒ
+oewn-postalveolar-n	1	GB	ˌpəʊstælviˈəʊlə(ɹ)
+oewn-postalveolar-n	2	US	ˌpoʊstælˈviələɹ
+oewn-postcard-n	1	US	ˈpoʊstˌkɑɹd
+oewn-postcode-n	1	GB	ˈpəʊs(t)kəʊd
+oewn-postcode-n	2	US	ˈpoʊs(t)ˌkoʊd
+oewn-postdate-v	1	GB	ˈpəʊstˌdeɪt
+oewn-postdoc-n	1		ˈpoʊstˌdɒk
+oewn-postdoctoral-a	1	GB	pəʊs(t)ˈdɒkt(ə)r(ə)l
+oewn-posterior-a	1	GB	pɒˈstɪə.ɹi.ə
+oewn-posterior-a	2	US	poʊˈstɪɹ.i.ɚ
+oewn-posterior-n	1	GB	pɒˈstɪə.ɹi.ə
+oewn-posterior-n	2	US	poʊˈstɪɹ.i.ɚ
+oewn-posterity-n	1	GB	pɒˈstɛɹɪti
+oewn-postern-n	1	GB	ˈpɒst(ə)n
+oewn-postern-n	2	US	ˈpɑstɚn
+oewn-postfix-n	1	GB	ˈpəʊst.fɪks
+oewn-postfix-n	2	US	ˈpoʊstfɪks
+oewn-posthitis-n	1	GB	pɒsˈθʌɪ.tɪs
+oewn-posthitis-n	2	US	pɑsˈθaɪ.tɪs
+oewn-posthumous-a	1		ˈpɒs.tʃə.məs
+oewn-postiche-n	1	GB	pɒsˈtiːʃ
+oewn-postiche-n	2	US	pɑˈstiʃ
+oewn-postilion-n	1	GB	pɒˈstɪlɪən
+oewn-postilion-n	2	US	pəˈstɪljən
+oewn-posting-n	1	GB	ˈpəʊstɪŋ
+oewn-posting-n	2	US	ˈpoʊstɪŋ
+oewn-postlude-n	1	GB	ˈpəʊstluːd
+oewn-postman-n	1	GB	ˈpəʊsmən
+oewn-postmodernism-n	1	US	pəʊstˈmɑdɚnɪzəm
+oewn-postoperative-a	1	US	poʊstˈɑpəɹətɪv
+oewn-postoperative-a	2	GB	pəʊstˈɒpəɹətɪv
+oewn-postpone-v	1	US	poʊstˈpoʊn
+oewn-postprandial-a	1	GB	ˌpəʊs(t)ˈpɹan.dɪ.əl
+oewn-postprandial-a	2	US	ˌpoʊs(t)ˈpɹæn.di.əl
+oewn-postscript-n	1	US	ˈpoʊst.skɹɪpt
+oewn-postulant-n	1	GB	ˈpɒstjʊlənt
+oewn-postulate-n	1	GB	ˈpɒstjʊlət
+oewn-postulate-n	2	US	ˈpɑstʃələt
+oewn-postulate-v	1	GB	ˈpɒstjʊlət
+oewn-postulate-v	2	US	ˈpɑstʃələt
+oewn-postural-a	1	GB	ˈpɒstʃəɹəl
+oewn-postural-a	2	US	ˈpɑstʃəɹəl
+oewn-posture-n	1	GB	ˈpɒstʃə
+oewn-posture-n	2	US	ˈpɑːstʃɚ
+oewn-posture-v	1	GB	ˈpɒstʃə
+oewn-posture-v	2	US	ˈpɑːstʃɚ
+oewn-posy-n	1	GB	ˈpəʊzi
+oewn-posy-n	2	US	ˈpoʊzi
+oewn-potable-a	1	GB	ˈpəʊtəbəl
+oewn-potable-a	2	US	ˈpoʊtəbəl
+oewn-potable-n	1	GB	ˈpəʊtəbəl
+oewn-potable-n	2	US	ˈpoʊtəbəl
+oewn-potash-n	1	US	ˈpɒt.æʃ
+oewn-potassium-n	1		pəˈtæsiəm
+oewn-potato-n	1	GB	pəˈteɪ.təʊ
+oewn-potato-n	2	US	pəˈteɪ.toʊ
+oewn-poteen-n	1		pəˈtʃiːn
+oewn-potent-a	1	GB	ˈpəʊt(ə)nt
+oewn-potent-a	2	US	ˈpoʊt(ə)nt
+oewn-potentate-n	1	GB	ˈpəʊ.tən.teɪt
+oewn-potentate-n	2	US	ˈpoʊ.tən.teɪt
+oewn-potential-a	1		pəˈtɛnʃəl
+oewn-potential-n	1		pəˈtɛnʃəl
+oewn-potentially-r	1	GB	pəˈtɛnʃ(ə)li
+oewn-pother-n	1		ˈpʌðə
+oewn-pother-v	1		ˈpʌðə
+oewn-potherb-n	1		ˈpɒt.hɜː(ɹ)b
+oewn-potion-n	1	GB	pəʊ.ʃən
+oewn-potion-n	2	US	ˈpoʊ.ʃən
+oewn-potlatch-n	1	GB	ˈpɒtlætʃ
+oewn-potlatch-n	2	US	ˈpɑtˌlætʃ
+oewn-potluck-n	1	GB	ˌpɒtˈlʌk
+oewn-potluck-n	2	US	ˈpɑtˌlʌk
+oewn-potpourri-n	1	GB	ˌpəʊpəˈɹiː
+oewn-potsherd-n	1	GB	ˈpɒt.ʃɜːd
+oewn-potsherd-n	2	US	ˈpɑt.ʃəɹd
+oewn-pottage-n	1	US	ˈpɑtədʒ
+oewn-pottery-n	1	GB	ˈpɒtəɹi
+oewn-pottery-n	2	US	ˈpɑtəɹi
+oewn-pottle-n	1		ˈpɒtəl
+oewn-potto-n	1	GB	ˈpɒtəʊ
+oewn-pouch-n	1		paʊt͡ʃ
+oewn-pouch-v	1		paʊt͡ʃ
+oewn-pouched-a	1		paʊt͡ʃt
+oewn-poulterer-n	1	US	ˈpoʊltəɹɚ
+oewn-poulterer-n	2	GB	ˈpəʊltəɹə
+oewn-poultice-n	1	US	ˈpoʊltɪs
+oewn-poultice-v	1	US	ˈpoʊltɪs
+oewn-poultry-n	1	GB	ˈpɒltɹi
+oewn-poultry-n	2	US	ˈpoʊltɹi
+oewn-pound_sterling-n	1	GB	paʊnd ˈstɜː(ɹ).lɪŋ
+oewn-pounding-n	1		ˈpaʊndɪŋ
+oewn-poverty-n	1	GB	ˈpɒvəti
+oewn-poverty-n	2	US	ˈpɑːvɚti
+oewn-powder-n	1	GB	ˈpaʊ.də(ɹ)
+oewn-powder-v	1	GB	ˈpaʊ.də(ɹ)
+oewn-powdered-a	1	US	ˈpaʊdɚd
+oewn-powdered-a	2	GB	ˈpaʊdəd
+oewn-powdered_sugar-n	1	GB	ˈpaʊ.dəd ˈʃʊɡ.ə
+oewn-powdered_sugar-n	2	US	ˈpaʊ.dɚd ˈʃʊɡ.ɚ
+oewn-powdery-a	1	US	ˈpaʊdəɹi
+oewn-power-n	1	GB	ˈpaʊə(ɹ)
+oewn-power-n	2	US	ˈpaʊ.ɚ
+oewn-power-v	1	GB	ˈpaʊə(ɹ)
+oewn-power-v	2	US	ˈpaʊ.ɚ
+oewn-power_of_attorney-n	1		ˌpaʊə əv əˈtəːni
+oewn-power_plant-n	1		ˈpaʊə(ɹ) ˌplænt
+oewn-powerful-a	1	US	ˈpaʊɚfəl
+oewn-powerful-a	2	GB	ˈpaʊəfəl
+oewn-powerful-r	1	US	ˈpaʊɚfəl
+oewn-powerful-r	2	GB	ˈpaʊəfəl
+oewn-powerfully-r	1	US	ˈpaʊɚf(ə)li
+oewn-powerfully-r	2	GB	ˈpaʊəf(ə)li
+oewn-powerless-a	1	US	ˈpaʊɚləs
+oewn-powerless-a	2	GB	ˈpaʊələs
+oewn-pox-n	1	US	pɑks

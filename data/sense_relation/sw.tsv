@@ -1,0 +1,215 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-swab__1.06.00..	derivation		oewn-swab__2.35.00..
+oewn-swab__1.06.01..	derivation		oewn-swab__2.35.01..
+oewn-swab__2.35.00..	derivation		oewn-swabbing__1.04.00..
+oewn-swab__2.35.00..	other	instrument	oewn-swab__1.06.00..
+oewn-swab__2.35.01..	other	instrument	oewn-swab__1.06.01..
+oewn-swagger__1.04.00..	derivation		oewn-swagger__2.38.00..
+oewn-swagger__2.29.00..	derivation		oewn-swaggerer__1.18.00..
+oewn-swagger__2.29.00..	other	agent	oewn-swaggerer__1.18.00..
+oewn-swagger__2.38.00..	derivation		oewn-swaggerer__1.18.00..
+oewn-swagger__2.38.00..	other	agent	oewn-swaggerer__1.18.00..
+oewn-swagger__2.38.00..	other	event	oewn-swagger__1.04.00..
+oewn-swallow__1.04.00..	derivation		oewn-swallow__2.34.00..
+oewn-swallow__2.34.00..	other	event	oewn-swallow__1.04.00..
+oewn-swamp__1.17.00..	derivation		oewn-swamp__2.43.00..
+oewn-swamp__1.17.00..	derivation		oewn-swampy__5.00.00.wet.01
+oewn-swamp__2.43.00..	other	location	oewn-swamp__1.17.00..
+oewn-swank__1.07.00..	derivation		oewn-swanky__5.00.00.fashionable.00
+oewn-swap__1.04.00..	derivation		oewn-swap__2.40.00..
+oewn-swap__2.40.00..	other	event	oewn-swap__1.04.00..
+oewn-swarm__1.14.00..	derivation		oewn-swarm__2.42.00..
+oewn-swarm__1.14.01..	derivation		oewn-swarm__2.38.00..
+oewn-swarm__1.14.01..	derivation		oewn-swarm__2.42.00..
+oewn-swarm__2.38.00..	other	agent	oewn-swarm__1.14.01..
+oewn-swarm__2.42.00..	other	agent	oewn-swarm__1.14.00..
+oewn-swarm__2.42.00..	other	agent	oewn-swarm__1.14.01..
+oewn-swarthiness__1.07.00..	derivation		oewn-swarthy__5.00.00.brunet.00
+oewn-swash__1.11.00..	derivation		oewn-swash__2.35.00..
+oewn-swash__2.35.00..	other	event	oewn-swash__1.11.00..
+oewn-swat__1.04.00..	derivation		oewn-swat__2.35.00..
+oewn-swat__2.35.00..	derivation		oewn-swatter__1.06.00..
+oewn-swat__2.35.00..	other	event	oewn-swat__1.04.00..
+oewn-swat__2.35.00..	other	instrument	oewn-swatter__1.06.00..
+oewn-swathe__1.06.00..	derivation		oewn-swathe__2.35.00..
+oewn-swathe__2.35.00..	derivation		oewn-swathing__1.06.00..
+oewn-swathe__2.35.00..	other	uses	oewn-swathe__1.06.00..
+oewn-swatter__1.06.00..	derivation		oewn-swatter__2.35.01..
+oewn-swatter__2.35.01..	other	instrument	oewn-swatter__1.06.00..
+oewn-sway__1.04.01..	derivation		oewn-sway__2.38.00..
+oewn-sway__1.04.01..	derivation		oewn-sway__2.38.01..
+oewn-sway__1.04.01..	derivation		oewn-sway__2.38.06..
+oewn-sway__1.07.00..	derivation		oewn-sway__2.38.00..
+oewn-sway__1.07.00..	derivation		oewn-sway__2.41.00..
+oewn-sway__2.38.00..	other	by_means_of	oewn-sway__1.07.00..
+oewn-sway__2.38.00..	other	event	oewn-sway__1.04.01..
+oewn-sway__2.38.01..	other	event	oewn-sway__1.04.01..
+oewn-sway__2.38.06..	other	event	oewn-sway__1.04.01..
+oewn-sway__2.41.00..	other	by_means_of	oewn-sway__1.07.00..
+oewn-swear__2.32.00..	derivation		oewn-swearing__1.10.01..
+oewn-swear__2.32.01..	derivation		oewn-swearer__1.18.01..
+oewn-swear__2.32.01..	derivation		oewn-swearing__1.10.02..
+oewn-swear__2.32.01..	other	agent	oewn-swearer__1.18.01..
+oewn-swear__2.32.02..	also		oewn-swear_off__2.32.00..
+oewn-swear__2.32.02..	derivation		oewn-swearer__1.18.00..
+oewn-swear__2.32.02..	other	agent	oewn-swearer__1.18.00..
+oewn-swear__2.32.03..	derivation		oewn-swearer__1.18.00..
+oewn-swear__2.32.03..	derivation		oewn-swearing__1.10.01..
+oewn-swear__2.32.03..	other	agent	oewn-swearer__1.18.00..
+oewn-sweat__1.08.00..	derivation		oewn-sweat__2.29.00..
+oewn-sweat__2.29.00..	also		oewn-sweat_off__2.29.00..
+oewn-sweat__2.29.00..	derivation		oewn-sweater__1.18.00..
+oewn-sweat__2.29.00..	derivation		oewn-sweating__1.22.00..
+oewn-sweat__2.29.00..	other	agent	oewn-sweater__1.18.00..
+oewn-sweat__2.29.00..	other	undergoer	oewn-sweat__1.08.00..
+oewn-sweater__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-sweep__1.04.01..	derivation		oewn-sweep__2.35.03..
+oewn-sweep__1.04.01..	derivation		oewn-sweep__2.38.00..
+oewn-sweep__1.04.01..	derivation		oewn-sweep__2.38.01..
+oewn-sweep__1.07.00..	derivation		oewn-sweep__2.42.03..
+oewn-sweep__1.07.00..	derivation		oewn-sweep__2.42.10..
+oewn-sweep__1.18.00..	derivation		oewn-sweep__2.35.01..
+oewn-sweep__2.35.00..	derivation		oewn-sweeper__1.06.00..
+oewn-sweep__2.35.00..	derivation		oewn-sweeper__1.18.00..
+oewn-sweep__2.35.00..	derivation		oewn-sweeping__1.04.00..
+oewn-sweep__2.35.00..	other	agent	oewn-sweeper__1.18.00..
+oewn-sweep__2.35.00..	other	instrument	oewn-sweeper__1.06.00..
+oewn-sweep__2.35.01..	derivation		oewn-sweeper__1.06.00..
+oewn-sweep__2.35.01..	derivation		oewn-sweeper__1.18.00..
+oewn-sweep__2.35.01..	derivation		oewn-sweeping__1.04.00..
+oewn-sweep__2.35.01..	other	agent	oewn-sweep__1.18.00..
+oewn-sweep__2.35.01..	other	agent	oewn-sweeper__1.18.00..
+oewn-sweep__2.35.01..	other	instrument	oewn-sweeper__1.06.00..
+oewn-sweep__2.35.03..	other	event	oewn-sweep__1.04.01..
+oewn-sweep__2.38.00..	also		oewn-sweep_through__2.41.00..
+oewn-sweep__2.38.00..	other	event	oewn-sweep__1.04.01..
+oewn-sweep__2.38.01..	other	event	oewn-sweep__1.04.01..
+oewn-sweep__2.42.03..	other	undergoer	oewn-sweep__1.07.00..
+oewn-sweep__2.42.10..	other	undergoer	oewn-sweep__1.07.00..
+oewn-sweepingly__4.02.00..	pertainym		oewn-sweeping__5.00.00.indiscriminate.00
+oewn-sweet__3.00.01..	derivation		oewn-sweetness__1.07.00..
+oewn-sweet__3.00.02..	derivation		oewn-sweetness__1.07.00..
+oewn-sweet__3.00.02..	derivation		oewn-sweetness__1.09.00..
+oewn-sweet__5.00.00.fragrant.00	derivation		oewn-sweetness__1.07.01..
+oewn-sweet__5.00.00.lovable.00	derivation		oewn-sweetness__1.07.03..
+oewn-sweet__5.00.00.melodious.00	derivation		oewn-sweetness__1.07.03..
+oewn-sweet__5.00.00.sugary.00	derivation		oewn-sweetness__1.07.00..
+oewn-sweet__5.00.01.pleasing.00	derivation		oewn-sweetness__1.07.03..
+oewn-sweet__5.00.02.pleasing.00	derivation		oewn-sweetness__1.07.03..
+oewn-sweeten__2.30.00..	derivation		oewn-sweetener__1.09.00..
+oewn-sweeten__2.30.00..	derivation		oewn-sweetening__1.04.02..
+oewn-sweeten__2.30.00..	other	by_means_of	oewn-sweetener__1.09.00..
+oewn-sweeten__2.39.00..	derivation		oewn-sweetener__1.13.00..
+oewn-sweeten__2.39.00..	derivation		oewn-sweetening__1.04.00..
+oewn-sweeten__2.39.00..	derivation		oewn-sweetening__1.13.00..
+oewn-sweeten__2.39.00..	other	material	oewn-sweetener__1.13.00..
+oewn-sweetly__4.02.00..	pertainym		oewn-sweet__5.00.00.lovable.00
+oewn-swell__2.30.00..	derivation		oewn-swelling__1.26.00..
+oewn-swept__3.00.00..	antonym		oewn-unswept__3.00.00..
+oewn-swerve__1.04.00..	derivation		oewn-swerve__2.38.00..
+oewn-swerve__1.11.00..	derivation		oewn-swerve__2.38.00..
+oewn-swerve__2.38.00..	derivation		oewn-swerving__1.04.00..
+oewn-swerve__2.38.00..	other	event	oewn-swerve__1.04.00..
+oewn-swerve__2.38.00..	other	event	oewn-swerve__1.11.00..
+oewn-swift__1.05.00..	derivation		oewn-swiftlet__1.05.00..
+oewn-swift__5.00.00.fast.01	derivation		oewn-swiftness__1.07.00..
+oewn-swiftly__4.02.00..	pertainym		oewn-swift__5.00.00.fast.01
+oewn-swig__1.04.00..	derivation		oewn-swig__2.34.00..
+oewn-swig__2.34.00..	other	event	oewn-swig__1.04.00..
+oewn-swill__1.13.00..	derivation		oewn-swill__2.34.01..
+oewn-swill__2.34.00..	derivation		oewn-swilling__1.04.00..
+oewn-swill__2.34.01..	other	uses	oewn-swill__1.13.00..
+oewn-swim__1.04.00..	derivation		oewn-swim__2.38.00..
+oewn-swim__1.04.00..	derivation		oewn-swim__2.38.01..
+oewn-swim__2.38.00..	derivation		oewn-swimmer__1.18.00..
+oewn-swim__2.38.00..	derivation		oewn-swimmer__1.18.01..
+oewn-swim__2.38.00..	derivation		oewn-swimming__1.04.00..
+oewn-swim__2.38.00..	other	agent	oewn-swimmer__1.18.00..
+oewn-swim__2.38.00..	other	agent	oewn-swimmer__1.18.01..
+oewn-swim__2.38.00..	other	event	oewn-swim__1.04.00..
+oewn-swim__2.38.01..	other	event	oewn-swim__1.04.00..
+oewn-swindle__1.04.00..	derivation		oewn-swindle__2.41.00..
+oewn-swindle__2.41.00..	derivation		oewn-swindler__1.18.00..
+oewn-swindle__2.41.00..	other	agent	oewn-swindler__1.18.00..
+oewn-swindle__2.41.00..	other	event	oewn-swindle__1.04.00..
+oewn-swing__1.04.00..	derivation		oewn-swing__2.38.00..
+oewn-swing__1.04.00..	derivation		oewn-swing__2.38.03..
+oewn-swing__1.04.03..	derivation		oewn-swing__2.38.02..
+oewn-swing__1.04.06..	derivation		oewn-swing__2.33.00..
+oewn-swing__1.04.06..	derivation		oewn-swing__2.35.00..
+oewn-swing__1.04.06..	derivation		oewn-swing__2.38.02..
+oewn-swing__1.06.00..	derivation		oewn-swing__2.42.00..
+oewn-swing__1.07.00..	derivation		oewn-swing__2.36.03..
+oewn-swing__1.07.00..	derivation		oewn-swing__2.42.10..
+oewn-swing__1.07.00..	derivation		oewn-swingy__5.00.00.rhythmical.00
+oewn-swing__1.10.01..	derivation		oewn-swing__2.42.10..
+oewn-swing__1.10.01..	derivation		oewn-swingy__5.00.00.rhythmical.00
+oewn-swing__2.33.00..	other	event	oewn-swing__1.04.06..
+oewn-swing__2.35.00..	other	event	oewn-swing__1.04.06..
+oewn-swing__2.35.08..	derivation		oewn-swinger__1.18.00..
+oewn-swing__2.35.08..	other	agent	oewn-swinger__1.18.00..
+oewn-swing__2.36.03..	other	event	oewn-swing__1.07.00..
+oewn-swing__2.38.00..	derivation		oewn-swinger__1.18.01..
+oewn-swing__2.38.00..	other	agent	oewn-swinger__1.18.01..
+oewn-swing__2.38.00..	other	event	oewn-swing__1.04.00..
+oewn-swing__2.38.02..	derivation		oewn-swinger__1.18.01..
+oewn-swing__2.38.02..	other	agent	oewn-swinger__1.18.01..
+oewn-swing__2.38.02..	other	event	oewn-swing__1.04.03..
+oewn-swing__2.38.02..	other	event	oewn-swing__1.04.06..
+oewn-swing__2.38.03..	other	event	oewn-swing__1.04.00..
+oewn-swing__2.42.00..	derivation		oewn-swinging__1.04.00..
+oewn-swing__2.42.00..	other	by_means_of	oewn-swing__1.06.00..
+oewn-swing__2.42.10..	other	event	oewn-swing__1.07.00..
+oewn-swing__2.42.10..	other	event	oewn-swing__1.10.01..
+oewn-swipe__1.04.00..	derivation		oewn-swipe__2.35.00..
+oewn-swipe__2.35.00..	other	event	oewn-swipe__1.04.00..
+oewn-swirl__1.25.00..	derivation		oewn-swirl__2.38.00..
+oewn-swirl__1.25.00..	derivation		oewn-swirl__2.38.01..
+oewn-swirl__2.38.00..	other	event	oewn-swirl__1.25.00..
+oewn-swirl__2.38.01..	other	event	oewn-swirl__1.25.00..
+oewn-swish__1.11.00..	derivation		oewn-swish__2.39.00..
+oewn-swish__1.11.00..	derivation		oewn-swishy__5.00.00.noisy.00
+oewn-swish__2.39.00..	other	event	oewn-swish__1.11.00..
+oewn-switch--hit__2.35.00..	derivation		oewn-switch--hitter__1.18.00..
+oewn-switch--hit__2.35.00..	other	agent	oewn-switch--hitter__1.18.00..
+oewn-switch__1.04.00..	derivation		oewn-switch__2.30.00..
+oewn-switch__1.04.00..	derivation		oewn-switch__2.30.01..
+oewn-switch__1.04.00..	derivation		oewn-switch__2.30.02..
+oewn-switch__1.04.00..	derivation		oewn-switch__2.30.03..
+oewn-switch__1.06.00..	derivation		oewn-switch__2.35.03..
+oewn-switch__1.06.01..	derivation		oewn-switch__2.35.00..
+oewn-switch__1.11.00..	derivation		oewn-switch__2.30.00..
+oewn-switch__1.11.00..	derivation		oewn-switch__2.30.03..
+oewn-switch__1.11.00..	derivation		oewn-switch__2.40.00..
+oewn-switch__2.30.00..	other	event	oewn-switch__1.04.00..
+oewn-switch__2.30.00..	other	event	oewn-switch__1.11.00..
+oewn-switch__2.30.01..	derivation		oewn-switching__1.04.00..
+oewn-switch__2.30.01..	other	event	oewn-switch__1.04.00..
+oewn-switch__2.30.02..	other	event	oewn-switch__1.04.00..
+oewn-switch__2.30.03..	other	event	oewn-switch__1.04.00..
+oewn-switch__2.30.03..	other	event	oewn-switch__1.11.00..
+oewn-switch__2.35.00..	other	by_means_of	oewn-switch__1.06.01..
+oewn-switch__2.35.03..	derivation		oewn-switcher__1.18.00..
+oewn-switch__2.35.03..	other	agent	oewn-switcher__1.18.00..
+oewn-switch__2.35.03..	other	instrument	oewn-switch__1.06.00..
+oewn-switch__2.40.00..	derivation		oewn-switching__1.04.00..
+oewn-switch__2.40.00..	other	event	oewn-switch__1.11.00..
+oewn-switch_off__2.35.00..	antonym		oewn-switch_on__2.35.00..
+oewn-swivel__1.06.00..	derivation		oewn-swivel__2.38.00..
+oewn-swivel__2.38.00..	other	by_means_of	oewn-swivel__1.06.00..
+oewn-swob__1.06.00..	derivation		oewn-swob__2.35.00..
+oewn-swob__2.35.00..	other	instrument	oewn-swob__1.06.00..
+oewn-swoon__1.11.00..	derivation		oewn-swoon__2.29.00..
+oewn-swoon__2.29.00..	other	event	oewn-swoon__1.11.00..
+oewn-swoop__1.04.00..	derivation		oewn-swoop__2.38.00..
+oewn-swoop__1.04.01..	derivation		oewn-swoop__2.35.00..
+oewn-swoop__1.10.00..	derivation		oewn-swoop__2.38.01..
+oewn-swoop__2.35.00..	other	event	oewn-swoop__1.04.01..
+oewn-swoop__2.38.00..	other	event	oewn-swoop__1.04.00..
+oewn-swoop__2.38.01..	other	event	oewn-swoop__1.10.00..
+oewn-swop__1.04.00..	derivation		oewn-swop__2.40.00..
+oewn-swop__2.40.00..	other	event	oewn-swop__1.04.00..
+oewn-swordsman__1.18.00..	derivation		oewn-swordsmanship__1.09.00..
+oewn-sworn__3.00.00..	antonym		oewn-unsworn__3.00.00..
+oewn-swot__1.18.00..	derivation		oewn-swot__2.31.00..
+oewn-swot__2.31.00..	other	agent	oewn-swot__1.18.00..

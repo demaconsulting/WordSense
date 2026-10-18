@@ -1,0 +1,16 @@
+class_id	lemma	label	pos	kind
+shake#noun	shake	noun	n	sense_group
+shake#verb	shake	verb	v	sense_group
+shield#noun	shield	noun	n	sense_group
+shield#verb	shield	verb	v	sense_group
+shift#noun	shift	noun	n	sense_group
+shift#verb	shift	verb	v	sense_group
+shock#noun	shock	noun	n	sense_group
+shock#verb	shock	verb	v	sense_group
+shout#noun	shout	noun	n	sense_group
+shout#verb	shout	verb	v	sense_group
+show#noun	show	noun	n	sense_group
+show#verb	show	verb	v	sense_group
+shower#shower-noun	shower	shower-noun	n	sense_group
+shower#shower-one-who-shows	shower	shower-one-who-shows	n	sense_group
+shower#shower-verb	shower	shower-verb	v	sense_group

@@ -1,0 +1,522 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-ATF-n	ATF	n	0	1	1	oewn
+oewn-ATM-n	ATM	n	0	1	1	oewn
+oewn-ATP-n	ATP	n	0	1	1	oewn
+oewn-At-n	At	n	0	1	1	oewn
+oewn-Atabrine-n	Atabrine	n	0	1	1	oewn
+oewn-Atakapa-n	Atakapa	n	0	1	1	oewn
+oewn-Atakapa_language-n	Atakapa language	n	0	2	2	oewn
+oewn-Atakapan-n	Atakapan	n	0	1	1	oewn
+oewn-Atakapan_language-n	Atakapan language	n	0	2	2	oewn
+oewn-Atarax-n	Atarax	n	0	1	1	oewn
+oewn-Atayalic-n	Atayalic	n	0	1	1	oewn
+oewn-Atayalic_language-n	Atayalic language	n	0	2	2	oewn
+oewn-Ateles_geoffroyi-n	Ateles geoffroyi	n	0	2	2	oewn
+oewn-Athabascan-n	Athabascan	n	0	1	1	oewn
+oewn-Athabaskan-n	Athabaskan	n	0	1	1	oewn
+oewn-Athanasian_Creed-n	Athanasian Creed	n	0	2	2	oewn
+oewn-Athanasianism-n	Athanasianism	n	0	1	1	oewn
+oewn-Athapascan-n	Athapascan	n	0	1	1	oewn
+oewn-Athapaskan-n	Athapaskan	n	0	1	1	oewn
+oewn-Athapaskan_language-n	Athapaskan language	n	0	2	2	oewn
+oewn-Athene_noctua-n	Athene noctua	n	0	2	2	oewn
+oewn-Athenian-a	Athenian	a	0	1	1	oewn
+oewn-Athenian-n	Athenian	n	0	1	1	oewn
+oewn-Atherinopsis_californiensis-n	Atherinopsis californiensis	n	0	2	2	oewn
+oewn-Athrotaxis_selaginoides-n	Athrotaxis selaginoides	n	0	2	2	oewn
+oewn-Athyrium_distentifolium-n	Athyrium distentifolium	n	0	2	2	oewn
+oewn-Athyrium_filix-femina-n	Athyrium filix-femina	n	0	2	2	oewn
+oewn-Athyrium_pycnocarpon-n	Athyrium pycnocarpon	n	0	2	2	oewn
+oewn-Athyrium_thelypteroides-n	Athyrium thelypteroides	n	0	2	2	oewn
+oewn-Ativan-n	Ativan	n	0	1	1	oewn
+oewn-Atlantic-a	Atlantic	a	0	1	1	oewn
+oewn-Atlantic_Standard_Time-n	Atlantic Standard Time	n	0	3	3	oewn
+oewn-Atlantic_Time-n	Atlantic Time	n	0	2	2	oewn
+oewn-Atlantic_bonito-n	Atlantic bonito	n	0	2	2	oewn
+oewn-Atlantic_bottlenose_dolphin-n	Atlantic bottlenose dolphin	n	0	3	3	oewn
+oewn-Atlantic_cod-n	Atlantic cod	n	0	2	2	oewn
+oewn-Atlantic_croaker-n	Atlantic croaker	n	0	2	2	oewn
+oewn-Atlantic_halibut-n	Atlantic halibut	n	0	2	2	oewn
+oewn-Atlantic_herring-n	Atlantic herring	n	0	2	2	oewn
+oewn-Atlantic_manta-n	Atlantic manta	n	0	2	2	oewn
+oewn-Atlantic_moonfish-n	Atlantic moonfish	n	0	2	2	oewn
+oewn-Atlantic_puffin-n	Atlantic puffin	n	0	2	2	oewn
+oewn-Atlantic_ridley-n	Atlantic ridley	n	0	2	2	oewn
+oewn-Atlantic_sailfish-n	Atlantic sailfish	n	0	2	2	oewn
+oewn-Atlantic_salmon-n	Atlantic salmon	n	0	2	2	oewn
+oewn-Atlantic_sea_bream-n	Atlantic sea bream	n	0	3	3	oewn
+oewn-Atlantic_spiny_dogfish-n	Atlantic spiny dogfish	n	0	3	3	oewn
+oewn-Atlantic_tripletail-n	Atlantic tripletail	n	0	2	2	oewn
+oewn-Atlantic_walrus-n	Atlantic walrus	n	0	2	2	oewn
+oewn-Atlantic_white_cedar-n	Atlantic white cedar	n	0	3	3	oewn
+oewn-Atlantides-n	Atlantides	n	0	1	1	oewn
+oewn-Atlantis-n	Atlantis	n	0	1	1	oewn
+oewn-Atlas_cedar-n	Atlas cedar	n	0	2	2	oewn
+oewn-Atomic_Energy_Commission-n	Atomic Energy Commission	n	0	3	3	oewn
+oewn-Atriplex_hortensis-n	Atriplex hortensis	n	0	2	2	oewn
+oewn-Atriplex_hymenelytra-n	Atriplex hymenelytra	n	0	2	2	oewn
+oewn-Atriplex_lentiformis-n	Atriplex lentiformis	n	0	2	2	oewn
+oewn-Atriplex_mexicana-n	Atriplex mexicana	n	0	2	2	oewn
+oewn-Atromid-S-n	Atromid-S	n	0	1	1	oewn
+oewn-Atropa_belladonna-n	Atropa belladonna	n	0	2	2	oewn
+oewn-Atrovent-n	Atrovent	n	0	1	1	oewn
+oewn-Atsina-n	Atsina	n	0	1	1	oewn
+oewn-Atsugewi-n	Atsugewi	n	0	1	1	oewn
+oewn-Atsugewi_language-n	Atsugewi language	n	0	2	2	oewn
+oewn-Attacapa-n	Attacapa	n	0	1	1	oewn
+oewn-Attacapa_language-n	Attacapa language	n	0	2	2	oewn
+oewn-Attacapan-n	Attacapan	n	0	1	1	oewn
+oewn-Attacapan_language-n	Attacapan language	n	0	2	2	oewn
+oewn-Attalea_funifera-n	Attalea funifera	n	0	2	2	oewn
+oewn-Attic-a	Attic	a	0	1	1	oewn
+oewn-Attic-n	Attic	n	0	1	1	oewn
+oewn-Atticus_atlas-n	Atticus atlas	n	0	2	2	oewn
+oewn-Attilio-n	Attilio	n	0	1	1	oewn
+oewn-at-bat-n	at-bat	n	0	1	1	oewn
+oewn-at-n	at	n	0	1	1	oewn
+oewn-at_a_loss-a	at a loss	a	0	3	3	oewn
+oewn-at_a_loss-r	at a loss	r	0	3	3	oewn
+oewn-at_a_low_price-r	at a low price	r	0	4	4	oewn
+oewn-at_a_lower_place-r	at a lower place	r	0	4	4	oewn
+oewn-at_a_time-r	at a time	r	0	3	3	oewn
+oewn-at_all-r	at all	r	0	2	2	oewn
+oewn-at_all_costs-r	at all costs	r	0	3	3	oewn
+oewn-at_an_equal_rate-r	at an equal rate	r	0	4	4	oewn
+oewn-at_any_cost-r	at any cost	r	0	3	3	oewn
+oewn-at_any_expense-r	at any expense	r	0	3	3	oewn
+oewn-at_any_rate-r	at any rate	r	0	3	3	oewn
+oewn-at_arm-ap-s_length-r	at arm's length	r	0	3	3	oewn
+oewn-at_bay-a	at bay	a	0	2	2	oewn
+oewn-at_best-r	at best	r	0	2	2	oewn
+oewn-at_bottom-r	at bottom	r	0	2	2	oewn
+oewn-at_close_range-r	at close range	r	0	3	3	oewn
+oewn-at_fault-a	at fault	a	0	2	2	oewn
+oewn-at_first-r	at first	r	0	2	2	oewn
+oewn-at_first_blush-r	at first blush	r	0	3	3	oewn
+oewn-at_first_glance-r	at first glance	r	0	3	3	oewn
+oewn-at_first_hand-r	at first hand	r	0	3	3	oewn
+oewn-at_first_sight-r	at first sight	r	0	3	3	oewn
+oewn-at_hand-a	at hand	a	0	2	2	oewn
+oewn-at_heart-r	at heart	r	0	2	2	oewn
+oewn-at_home-n	at home	n	0	2	2	oewn
+oewn-at_home-r	at home	r	0	2	2	oewn
+oewn-at_large-a	at large	a	0	2	2	oewn
+oewn-at_large-r	at large	r	0	2	2	oewn
+oewn-at_last-r	at last	r	0	2	2	oewn
+oewn-at_least-r	at least	r	0	2	2	oewn
+oewn-at_leisure-r	at leisure	r	0	2	2	oewn
+oewn-at_length-r	at length	r	0	2	2	oewn
+oewn-at_loggerheads-a	at loggerheads	a	0	2	2	oewn
+oewn-at_long_last-r	at long last	r	0	3	3	oewn
+oewn-at_most-r	at most	r	0	2	2	oewn
+oewn-at_odds-a	at odds	a	0	2	2	oewn
+oewn-at_once-r	at once	r	0	2	2	oewn
+oewn-at_one_time-r	at one time	r	0	3	3	oewn
+oewn-at_peace-a	at peace	a	0	2	2	oewn
+oewn-at_present-r	at present	r	0	2	2	oewn
+oewn-at_random-r	at random	r	0	2	2	oewn
+oewn-at_rest-a	at rest	a	0	2	2	oewn
+oewn-at_sea-a	at sea	a	0	2	2	oewn
+oewn-at_stake-r	at stake	r	0	2	2	oewn
+oewn-at_the_best-r	at the best	r	0	3	3	oewn
+oewn-at_the_least-r	at the least	r	0	3	3	oewn
+oewn-at_the_most-r	at the most	r	0	3	3	oewn
+oewn-at_the_ready-a	at the ready	a	0	3	3	oewn
+oewn-at_the_same_time-r	at the same time	r	0	4	4	oewn
+oewn-at_the_worst-r	at the worst	r	0	3	3	oewn
+oewn-at_times-r	at times	r	0	2	2	oewn
+oewn-at_variance-a	at variance	a	0	2	2	oewn
+oewn-at_will-r	at will	r	0	2	2	oewn
+oewn-at_work-a	at work	a	0	2	2	oewn
+oewn-at_worst-r	at worst	r	0	2	2	oewn
+oewn-atactic-a	atactic	a	0	1	1	oewn
+oewn-atactic_abasia-n	atactic abasia	n	0	2	2	oewn
+oewn-atar-n	atar	n	0	1	1	oewn
+oewn-ataractic-a	ataractic	a	0	1	1	oewn
+oewn-ataractic-n	ataractic	n	0	1	1	oewn
+oewn-ataractic_agent-n	ataractic agent	n	0	2	2	oewn
+oewn-ataractic_drug-n	ataractic drug	n	0	2	2	oewn
+oewn-ataraxia-n	ataraxia	n	0	1	1	oewn
+oewn-ataraxic-a	ataraxic	a	0	1	1	oewn
+oewn-ataraxis-n	ataraxis	n	0	1	1	oewn
+oewn-atavism-n	atavism	n	0	1	1	oewn
+oewn-atavist-n	atavist	n	0	1	1	oewn
+oewn-atavistic-a	atavistic	a	0	1	1	oewn
+oewn-ataxia-n	ataxia	n	0	1	1	oewn
+oewn-ataxic-a	ataxic	a	0	1	1	oewn
+oewn-ataxic_abasia-n	ataxic abasia	n	0	2	2	oewn
+oewn-ataxic_aphasia-n	ataxic aphasia	n	0	2	2	oewn
+oewn-ataxy-n	ataxy	n	0	1	1	oewn
+oewn-atelectasis-n	atelectasis	n	0	1	1	oewn
+oewn-ateleiosis-n	ateleiosis	n	0	1	1	oewn
+oewn-ateleiotic-a	ateleiotic	a	0	1	1	oewn
+oewn-atelier-n	atelier	n	0	1	1	oewn
+oewn-ateliosis-n	ateliosis	n	0	1	1	oewn
+oewn-atenolol-n	atenolol	n	0	1	1	oewn
+oewn-athanor-n	athanor	n	0	1	1	oewn
+oewn-athar-n	athar	n	0	1	1	oewn
+oewn-atheism-n	atheism	n	0	1	1	oewn
+oewn-atheist-a	atheist	a	0	1	1	oewn
+oewn-atheist-n	atheist	n	0	1	1	oewn
+oewn-atheistic-a	atheistic	a	0	1	1	oewn
+oewn-atheistical-a	atheistical	a	0	1	1	oewn
+oewn-athenaeum-n	athenaeum	n	0	1	1	oewn
+oewn-atheneum-n	atheneum	n	0	1	1	oewn
+oewn-atherodyde-n	atherodyde	n	0	1	1	oewn
+oewn-atherogenesis-n	atherogenesis	n	0	1	1	oewn
+oewn-atheroma-n	atheroma	n	0	1	1	oewn
+oewn-atheromatic-a	atheromatic	a	0	1	1	oewn
+oewn-atheromatous-a	atheromatous	a	0	1	1	oewn
+oewn-atherosclerosis-n	atherosclerosis	n	0	1	1	oewn
+oewn-atherosclerotic-a	atherosclerotic	a	0	1	1	oewn
+oewn-athetosis-n	athetosis	n	0	1	1	oewn
+oewn-athirst-a	athirst	a	0	1	1	oewn
+oewn-athlete-ap-s_foot-n	athlete's foot	n	0	2	2	oewn
+oewn-athlete-ap-s_heart-n	athlete's heart	n	0	2	2	oewn
+oewn-athlete-n	athlete	n	0	1	1	oewn
+oewn-athletic-a	athletic	a	0	1	1	oewn
+oewn-athletic_competition-n	athletic competition	n	0	2	2	oewn
+oewn-athletic_contest-n	athletic contest	n	0	2	2	oewn
+oewn-athletic_facility-n	athletic facility	n	0	2	2	oewn
+oewn-athletic_field-n	athletic field	n	0	2	2	oewn
+oewn-athletic_game-n	athletic game	n	0	2	2	oewn
+oewn-athletic_sock-n	athletic sock	n	0	2	2	oewn
+oewn-athletic_supporter-n	athletic supporter	n	0	2	2	oewn
+oewn-athletic_training-n	athletic training	n	0	2	2	oewn
+oewn-athletic_type-n	athletic type	n	0	2	2	oewn
+oewn-athletic_wear-n	athletic wear	n	0	2	2	oewn
+oewn-athleticism-n	athleticism	n	0	1	1	oewn
+oewn-athletics-n	athletics	n	0	1	1	oewn
+oewn-athodyd-n	athodyd	n	0	1	1	oewn
+oewn-athwart-r	athwart	r	0	1	1	oewn
+oewn-atilt-a	atilt	a	0	1	1	oewn
+oewn-atlas-n	atlas	n	0	1	1	oewn
+oewn-atlas_moth-n	atlas moth	n	0	2	2	oewn
+oewn-atlas_vertebra-n	atlas vertebra	n	0	2	2	oewn
+oewn-atm-n	atm	n	0	1	1	oewn
+oewn-atmometer-n	atmometer	n	0	1	1	oewn
+oewn-atmoradiograph-n	atmoradiograph	n	0	1	1	oewn
+oewn-atmosphere-n	atmosphere	n	0	1	1	oewn
+oewn-atmospheric-a	atmospheric	a	0	1	1	oewn
+oewn-atmospheric_condition-n	atmospheric condition	n	0	2	2	oewn
+oewn-atmospheric_electricity-n	atmospheric electricity	n	0	2	2	oewn
+oewn-atmospheric_phenomenon-n	atmospheric phenomenon	n	0	2	2	oewn
+oewn-atmospheric_pressure-n	atmospheric pressure	n	0	2	2	oewn
+oewn-atmospheric_state-n	atmospheric state	n	0	2	2	oewn
+oewn-atmospheric_static-n	atmospheric static	n	0	2	2	oewn
+oewn-atmospherical-a	atmospherical	a	0	1	1	oewn
+oewn-atmospherics-n	atmospherics	n	0	1	1	oewn
+oewn-atole-n	atole	n	0	1	1	oewn
+oewn-atoll-n	atoll	n	0	1	1	oewn
+oewn-atom-bomb-v	atom-bomb	v	0	1	1	oewn
+oewn-atom-n	atom	n	0	1	1	oewn
+oewn-atom_bomb-n	atom bomb	n	0	2	2	oewn
+oewn-atom_smasher-n	atom smasher	n	0	2	2	oewn
+oewn-atomic-a	atomic	a	0	1	1	oewn
+oewn-atomic_bomb-n	atomic bomb	n	0	2	2	oewn
+oewn-atomic_clock-n	atomic clock	n	0	2	2	oewn
+oewn-atomic_cocktail-n	atomic cocktail	n	0	2	2	oewn
+oewn-atomic_energy-n	atomic energy	n	0	2	2	oewn
+oewn-atomic_explosion-n	atomic explosion	n	0	2	2	oewn
+oewn-atomic_mass-n	atomic mass	n	0	2	2	oewn
+oewn-atomic_mass_unit-n	atomic mass unit	n	0	3	3	oewn
+oewn-atomic_number-n	atomic number	n	0	2	2	oewn
+oewn-atomic_number_1-n	atomic number 1	n	0	3	3	oewn
+oewn-atomic_number_10-n	atomic number 10	n	0	3	3	oewn
+oewn-atomic_number_100-n	atomic number 100	n	0	3	3	oewn
+oewn-atomic_number_101-n	atomic number 101	n	0	3	3	oewn
+oewn-atomic_number_102-n	atomic number 102	n	0	3	3	oewn
+oewn-atomic_number_103-n	atomic number 103	n	0	3	3	oewn
+oewn-atomic_number_104-n	atomic number 104	n	0	3	3	oewn
+oewn-atomic_number_105-n	atomic number 105	n	0	3	3	oewn
+oewn-atomic_number_106-n	atomic number 106	n	0	3	3	oewn
+oewn-atomic_number_107-n	atomic number 107	n	0	3	3	oewn
+oewn-atomic_number_108-n	atomic number 108	n	0	3	3	oewn
+oewn-atomic_number_109-n	atomic number 109	n	0	3	3	oewn
+oewn-atomic_number_11-n	atomic number 11	n	0	3	3	oewn
+oewn-atomic_number_110-n	atomic number 110	n	0	3	3	oewn
+oewn-atomic_number_111-n	atomic number 111	n	0	3	3	oewn
+oewn-atomic_number_112-n	atomic number 112	n	0	3	3	oewn
+oewn-atomic_number_113-n	atomic number 113	n	0	3	3	oewn
+oewn-atomic_number_114-n	atomic number 114	n	0	3	3	oewn
+oewn-atomic_number_115-n	atomic number 115	n	0	3	3	oewn
+oewn-atomic_number_116-n	atomic number 116	n	0	3	3	oewn
+oewn-atomic_number_12-n	atomic number 12	n	0	3	3	oewn
+oewn-atomic_number_13-n	atomic number 13	n	0	3	3	oewn
+oewn-atomic_number_14-n	atomic number 14	n	0	3	3	oewn
+oewn-atomic_number_15-n	atomic number 15	n	0	3	3	oewn
+oewn-atomic_number_16-n	atomic number 16	n	0	3	3	oewn
+oewn-atomic_number_17-n	atomic number 17	n	0	3	3	oewn
+oewn-atomic_number_18-n	atomic number 18	n	0	3	3	oewn
+oewn-atomic_number_19-n	atomic number 19	n	0	3	3	oewn
+oewn-atomic_number_2-n	atomic number 2	n	0	3	3	oewn
+oewn-atomic_number_20-n	atomic number 20	n	0	3	3	oewn
+oewn-atomic_number_21-n	atomic number 21	n	0	3	3	oewn
+oewn-atomic_number_22-n	atomic number 22	n	0	3	3	oewn
+oewn-atomic_number_23-n	atomic number 23	n	0	3	3	oewn
+oewn-atomic_number_24-n	atomic number 24	n	0	3	3	oewn
+oewn-atomic_number_25-n	atomic number 25	n	0	3	3	oewn
+oewn-atomic_number_26-n	atomic number 26	n	0	3	3	oewn
+oewn-atomic_number_27-n	atomic number 27	n	0	3	3	oewn
+oewn-atomic_number_28-n	atomic number 28	n	0	3	3	oewn
+oewn-atomic_number_29-n	atomic number 29	n	0	3	3	oewn
+oewn-atomic_number_3-n	atomic number 3	n	0	3	3	oewn
+oewn-atomic_number_30-n	atomic number 30	n	0	3	3	oewn
+oewn-atomic_number_31-n	atomic number 31	n	0	3	3	oewn
+oewn-atomic_number_32-n	atomic number 32	n	0	3	3	oewn
+oewn-atomic_number_33-n	atomic number 33	n	0	3	3	oewn
+oewn-atomic_number_34-n	atomic number 34	n	0	3	3	oewn
+oewn-atomic_number_35-n	atomic number 35	n	0	3	3	oewn
+oewn-atomic_number_36-n	atomic number 36	n	0	3	3	oewn
+oewn-atomic_number_37-n	atomic number 37	n	0	3	3	oewn
+oewn-atomic_number_38-n	atomic number 38	n	0	3	3	oewn
+oewn-atomic_number_39-n	atomic number 39	n	0	3	3	oewn
+oewn-atomic_number_4-n	atomic number 4	n	0	3	3	oewn
+oewn-atomic_number_40-n	atomic number 40	n	0	3	3	oewn
+oewn-atomic_number_41-n	atomic number 41	n	0	3	3	oewn
+oewn-atomic_number_42-n	atomic number 42	n	0	3	3	oewn
+oewn-atomic_number_43-n	atomic number 43	n	0	3	3	oewn
+oewn-atomic_number_44-n	atomic number 44	n	0	3	3	oewn
+oewn-atomic_number_45-n	atomic number 45	n	0	3	3	oewn
+oewn-atomic_number_46-n	atomic number 46	n	0	3	3	oewn
+oewn-atomic_number_47-n	atomic number 47	n	0	3	3	oewn
+oewn-atomic_number_48-n	atomic number 48	n	0	3	3	oewn
+oewn-atomic_number_49-n	atomic number 49	n	0	3	3	oewn
+oewn-atomic_number_5-n	atomic number 5	n	0	3	3	oewn
+oewn-atomic_number_50-n	atomic number 50	n	0	3	3	oewn
+oewn-atomic_number_51-n	atomic number 51	n	0	3	3	oewn
+oewn-atomic_number_52-n	atomic number 52	n	0	3	3	oewn
+oewn-atomic_number_53-n	atomic number 53	n	0	3	3	oewn
+oewn-atomic_number_54-n	atomic number 54	n	0	3	3	oewn
+oewn-atomic_number_55-n	atomic number 55	n	0	3	3	oewn
+oewn-atomic_number_56-n	atomic number 56	n	0	3	3	oewn
+oewn-atomic_number_57-n	atomic number 57	n	0	3	3	oewn
+oewn-atomic_number_58-n	atomic number 58	n	0	3	3	oewn
+oewn-atomic_number_59-n	atomic number 59	n	0	3	3	oewn
+oewn-atomic_number_6-n	atomic number 6	n	0	3	3	oewn
+oewn-atomic_number_60-n	atomic number 60	n	0	3	3	oewn
+oewn-atomic_number_61-n	atomic number 61	n	0	3	3	oewn
+oewn-atomic_number_62-n	atomic number 62	n	0	3	3	oewn
+oewn-atomic_number_63-n	atomic number 63	n	0	3	3	oewn
+oewn-atomic_number_64-n	atomic number 64	n	0	3	3	oewn
+oewn-atomic_number_65-n	atomic number 65	n	0	3	3	oewn
+oewn-atomic_number_66-n	atomic number 66	n	0	3	3	oewn
+oewn-atomic_number_67-n	atomic number 67	n	0	3	3	oewn
+oewn-atomic_number_68-n	atomic number 68	n	0	3	3	oewn
+oewn-atomic_number_69-n	atomic number 69	n	0	3	3	oewn
+oewn-atomic_number_7-n	atomic number 7	n	0	3	3	oewn
+oewn-atomic_number_70-n	atomic number 70	n	0	3	3	oewn
+oewn-atomic_number_71-n	atomic number 71	n	0	3	3	oewn
+oewn-atomic_number_72-n	atomic number 72	n	0	3	3	oewn
+oewn-atomic_number_73-n	atomic number 73	n	0	3	3	oewn
+oewn-atomic_number_74-n	atomic number 74	n	0	3	3	oewn
+oewn-atomic_number_75-n	atomic number 75	n	0	3	3	oewn
+oewn-atomic_number_76-n	atomic number 76	n	0	3	3	oewn
+oewn-atomic_number_77-n	atomic number 77	n	0	3	3	oewn
+oewn-atomic_number_78-n	atomic number 78	n	0	3	3	oewn
+oewn-atomic_number_79-n	atomic number 79	n	0	3	3	oewn
+oewn-atomic_number_8-n	atomic number 8	n	0	3	3	oewn
+oewn-atomic_number_80-n	atomic number 80	n	0	3	3	oewn
+oewn-atomic_number_81-n	atomic number 81	n	0	3	3	oewn
+oewn-atomic_number_82-n	atomic number 82	n	0	3	3	oewn
+oewn-atomic_number_83-n	atomic number 83	n	0	3	3	oewn
+oewn-atomic_number_84-n	atomic number 84	n	0	3	3	oewn
+oewn-atomic_number_85-n	atomic number 85	n	0	3	3	oewn
+oewn-atomic_number_86-n	atomic number 86	n	0	3	3	oewn
+oewn-atomic_number_87-n	atomic number 87	n	0	3	3	oewn
+oewn-atomic_number_88-n	atomic number 88	n	0	3	3	oewn
+oewn-atomic_number_89-n	atomic number 89	n	0	3	3	oewn
+oewn-atomic_number_9-n	atomic number 9	n	0	3	3	oewn
+oewn-atomic_number_90-n	atomic number 90	n	0	3	3	oewn
+oewn-atomic_number_91-n	atomic number 91	n	0	3	3	oewn
+oewn-atomic_number_92-n	atomic number 92	n	0	3	3	oewn
+oewn-atomic_number_93-n	atomic number 93	n	0	3	3	oewn
+oewn-atomic_number_94-n	atomic number 94	n	0	3	3	oewn
+oewn-atomic_number_95-n	atomic number 95	n	0	3	3	oewn
+oewn-atomic_number_96-n	atomic number 96	n	0	3	3	oewn
+oewn-atomic_number_97-n	atomic number 97	n	0	3	3	oewn
+oewn-atomic_number_98-n	atomic number 98	n	0	3	3	oewn
+oewn-atomic_number_99-n	atomic number 99	n	0	3	3	oewn
+oewn-atomic_physics-n	atomic physics	n	0	2	2	oewn
+oewn-atomic_pile-n	atomic pile	n	0	2	2	oewn
+oewn-atomic_power-n	atomic power	n	0	2	2	oewn
+oewn-atomic_reactor-n	atomic reactor	n	0	2	2	oewn
+oewn-atomic_spectrum-n	atomic spectrum	n	0	2	2	oewn
+oewn-atomic_theory-n	atomic theory	n	0	2	2	oewn
+oewn-atomic_warhead-n	atomic warhead	n	0	2	2	oewn
+oewn-atomic_weapon-n	atomic weapon	n	0	2	2	oewn
+oewn-atomic_weight-n	atomic weight	n	0	2	2	oewn
+oewn-atomisation-n	atomisation	n	0	1	1	oewn
+oewn-atomise-v	atomise	v	0	1	1	oewn
+oewn-atomiser-n	atomiser	n	0	1	1	oewn
+oewn-atomism-n	atomism	n	0	1	1	oewn
+oewn-atomist_theory-n	atomist theory	n	0	2	2	oewn
+oewn-atomistic-a	atomistic	a	0	1	1	oewn
+oewn-atomistic_theory-n	atomistic theory	n	0	2	2	oewn
+oewn-atomistical-a	atomistical	a	0	1	1	oewn
+oewn-atomization-n	atomization	n	0	1	1	oewn
+oewn-atomize-v	atomize	v	0	1	1	oewn
+oewn-atomizer-n	atomizer	n	0	1	1	oewn
+oewn-atonal-a	atonal	a	0	1	1	oewn
+oewn-atonalism-n	atonalism	n	0	1	1	oewn
+oewn-atonalistic-a	atonalistic	a	0	1	1	oewn
+oewn-atonality-n	atonality	n	0	1	1	oewn
+oewn-atonally-r	atonally	r	0	1	1	oewn
+oewn-atone-v	atone	v	0	1	1	oewn
+oewn-atonement-n	atonement	n	0	1	1	oewn
+oewn-atonia-n	atonia	n	0	1	1	oewn
+oewn-atonic-a	atonic	a	0	1	1	oewn
+oewn-atonicity-n	atonicity	n	0	1	1	oewn
+oewn-atony-n	atony	n	0	1	1	oewn
+oewn-atop-r	atop	r	0	1	1	oewn
+oewn-atopic_allergy-n	atopic allergy	n	0	2	2	oewn
+oewn-atopic_dermatitis-n	atopic dermatitis	n	0	2	2	oewn
+oewn-atopic_eczema-n	atopic eczema	n	0	2	2	oewn
+oewn-atopognosia-n	atopognosia	n	0	1	1	oewn
+oewn-atopognosis-n	atopognosis	n	0	1	1	oewn
+oewn-atopy-n	atopy	n	0	1	1	oewn
+oewn-atorvastatin-n	atorvastatin	n	0	1	1	oewn
+oewn-atoxic-a	atoxic	a	0	1	1	oewn
+oewn-atrabilious-a	atrabilious	a	0	1	1	oewn
+oewn-atrazine-n	atrazine	n	0	1	1	oewn
+oewn-atresia-n	atresia	n	0	1	1	oewn
+oewn-atrial-a	atrial	a	0	1	1	oewn
+oewn-atrial_artery-n	atrial artery	n	0	2	2	oewn
+oewn-atrial_auricle-n	atrial auricle	n	0	2	2	oewn
+oewn-atrial_fibrillation-n	atrial fibrillation	n	0	2	2	oewn
+oewn-atrial_septal_defect-n	atrial septal defect	n	0	3	3	oewn
+oewn-atrioventricular-a	atrioventricular	a	0	1	1	oewn
+oewn-atrioventricular_block-n	atrioventricular block	n	0	2	2	oewn
+oewn-atrioventricular_bundle-n	atrioventricular bundle	n	0	2	2	oewn
+oewn-atrioventricular_nodal_rhythm-n	atrioventricular nodal rhythm	n	0	3	3	oewn
+oewn-atrioventricular_node-n	atrioventricular node	n	0	2	2	oewn
+oewn-atrioventricular_trunk-n	atrioventricular trunk	n	0	2	2	oewn
+oewn-atrioventricular_valve-n	atrioventricular valve	n	0	2	2	oewn
+oewn-atrip-a	atrip	a	0	1	1	oewn
+oewn-atrium-n	atrium	n	0	1	1	oewn
+oewn-atrium_cordis-n	atrium cordis	n	0	2	2	oewn
+oewn-atrium_dextrum-n	atrium dextrum	n	0	2	2	oewn
+oewn-atrium_of_the_heart-n	atrium of the heart	n	0	4	1	oewn
+oewn-atrium_sinistrum-n	atrium sinistrum	n	0	2	2	oewn
+oewn-atrocious-a	atrocious	a	0	1	1	oewn
+oewn-atrociously-r	atrociously	r	0	1	1	oewn
+oewn-atrociousness-n	atrociousness	n	0	1	1	oewn
+oewn-atrocity-n	atrocity	n	0	1	1	oewn
+oewn-atrophedema-n	atrophedema	n	0	1	1	oewn
+oewn-atrophic-a	atrophic	a	0	1	1	oewn
+oewn-atrophic_arthritis-n	atrophic arthritis	n	0	2	2	oewn
+oewn-atrophied-a	atrophied	a	0	1	1	oewn
+oewn-atrophy-n	atrophy	n	0	1	1	oewn
+oewn-atrophy-v	atrophy	v	0	1	1	oewn
+oewn-atropine-n	atropine	n	0	1	1	oewn
+oewn-attach-v	attach	v	0	1	1	oewn
+oewn-attach_to-v	attach to	v	0	2	1	oewn
+oewn-attachable-a	attachable	a	0	1	1	oewn
+oewn-attache-n	attache	n	0	1	1	oewn
+oewn-attache_case-n	attache case	n	0	2	2	oewn
+oewn-attached-a	attached	a	0	1	1	oewn
+oewn-attachment-n	attachment	n	0	1	1	oewn
+oewn-attack-n	attack	n	0	1	1	oewn
+oewn-attack-v	attack	v	0	1	1	oewn
+oewn-attack_aircraft-n	attack aircraft	n	0	2	2	oewn
+oewn-attack_aircraft_carrier-n	attack aircraft carrier	n	0	3	3	oewn
+oewn-attack_dog-n	attack dog	n	0	2	2	oewn
+oewn-attack_submarine-n	attack submarine	n	0	2	2	oewn
+oewn-attacker-n	attacker	n	0	1	1	oewn
+oewn-attacking-a	attacking	a	0	1	1	oewn
+oewn-attain-v	attain	v	0	1	1	oewn
+oewn-attainability-n	attainability	n	0	1	1	oewn
+oewn-attainable-a	attainable	a	0	1	1	oewn
+oewn-attainableness-n	attainableness	n	0	1	1	oewn
+oewn-attainder-n	attainder	n	0	1	1	oewn
+oewn-attained-a	attained	a	0	1	1	oewn
+oewn-attainment-n	attainment	n	0	1	1	oewn
+oewn-attaint-v	attaint	v	0	1	1	oewn
+oewn-attar-n	attar	n	0	1	1	oewn
+oewn-attar_of_roses-n	attar of roses	n	0	3	1	oewn
+oewn-attemper-v	attemper	v	0	1	1	oewn
+oewn-attempt-n	attempt	n	0	1	1	oewn
+oewn-attempt-v	attempt	v	0	1	1	oewn
+oewn-attempted-a	attempted	a	0	1	1	oewn
+oewn-attempter-n	attempter	n	0	1	1	oewn
+oewn-attend-v	attend	v	0	1	1	oewn
+oewn-attend_to-v	attend to	v	0	2	1	oewn
+oewn-attendance-n	attendance	n	0	1	1	oewn
+oewn-attendance_check-n	attendance check	n	0	2	2	oewn
+oewn-attendant-a	attendant	a	0	1	1	oewn
+oewn-attendant-n	attendant	n	0	1	1	oewn
+oewn-attended-a	attended	a	0	1	1	oewn
+oewn-attendee-n	attendee	n	0	1	1	oewn
+oewn-attender-n	attender	n	0	1	1	oewn
+oewn-attending-a	attending	a	0	1	1	oewn
+oewn-attending-n	attending	n	0	1	1	oewn
+oewn-attention-getting-a	attention-getting	a	0	1	1	oewn
+oewn-attention-n	attention	n	0	1	1	oewn
+oewn-attention_deficit_disorder-n	attention deficit disorder	n	0	3	3	oewn
+oewn-attention_deficit_hyperactivity_disorder-n	attention deficit hyperactivity disorder	n	0	4	4	oewn
+oewn-attention_span-n	attention span	n	0	2	2	oewn
+oewn-attentional-a	attentional	a	0	1	1	oewn
+oewn-attentive-a	attentive	a	0	1	1	oewn
+oewn-attentively-r	attentively	r	0	1	1	oewn
+oewn-attentiveness-n	attentiveness	n	0	1	1	oewn
+oewn-attenuate-a	attenuate	a	0	1	1	oewn
+oewn-attenuate-v	attenuate	v	0	1	1	oewn
+oewn-attenuated-a	attenuated	a	0	1	1	oewn
+oewn-attenuation-n	attenuation	n	0	1	1	oewn
+oewn-attenuator-n	attenuator	n	0	1	1	oewn
+oewn-attest-v	attest	v	0	1	1	oewn
+oewn-attestant-n	attestant	n	0	1	1	oewn
+oewn-attestation-n	attestation	n	0	1	1	oewn
+oewn-attestation_report-n	attestation report	n	0	2	2	oewn
+oewn-attestation_service-n	attestation service	n	0	2	2	oewn
+oewn-attestator-n	attestator	n	0	1	1	oewn
+oewn-attested-a	attested	a	0	1	1	oewn
+oewn-attester-n	attester	n	0	1	1	oewn
+oewn-attestor-n	attestor	n	0	1	1	oewn
+oewn-attic-n	attic	n	0	1	1	oewn
+oewn-attic_fan-n	attic fan	n	0	2	2	oewn
+oewn-attire-n	attire	n	0	1	1	oewn
+oewn-attire-v	attire	v	0	1	1	oewn
+oewn-attired-a	attired	a	0	1	1	oewn
+oewn-attitude-n	attitude	n	0	1	1	oewn
+oewn-attitudinal-a	attitudinal	a	0	1	1	oewn
+oewn-attitudinise-v	attitudinise	v	0	1	1	oewn
+oewn-attitudinize-v	attitudinize	v	0	1	1	oewn
+oewn-attorn-v	attorn	v	0	1	1	oewn
+oewn-attorney-client_privilege-n	attorney-client privilege	n	0	2	2	oewn
+oewn-attorney-client_relation-n	attorney-client relation	n	0	2	2	oewn
+oewn-attorney-n	attorney	n	0	1	1	oewn
+oewn-attorney_general-n	attorney general	n	0	2	2	oewn
+oewn-attorney_general_of_the_United_States-n	attorney general of the United States	n	0	6	2	oewn
+oewn-attorneyship-n	attorneyship	n	0	1	1	oewn
+oewn-attosecond-n	attosecond	n	0	1	1	oewn
+oewn-attract-v	attract	v	0	1	1	oewn
+oewn-attractable-a	attractable	a	0	1	1	oewn
+oewn-attracter-n	attracter	n	0	1	1	oewn
+oewn-attraction-n	attraction	n	0	1	1	oewn
+oewn-attractive-a	attractive	a	0	1	1	oewn
+oewn-attractive_feature-n	attractive feature	n	0	2	2	oewn
+oewn-attractive_force-n	attractive force	n	0	2	2	oewn
+oewn-attractive_nuisance-n	attractive nuisance	n	0	2	2	oewn
+oewn-attractively-r	attractively	r	0	1	1	oewn
+oewn-attractiveness-n	attractiveness	n	0	1	1	oewn
+oewn-attractor-n	attractor	n	0	1	1	oewn
+oewn-attributable-a	attributable	a	0	1	1	oewn
+oewn-attribute-n	attribute	n	0	1	1	oewn
+oewn-attribute-v	attribute	v	0	1	1	oewn
+oewn-attribution-n	attribution	n	0	1	1	oewn
+oewn-attributive-a	attributive	a	0	1	1	oewn
+oewn-attributive_genitive-a	attributive genitive	a	0	2	2	oewn
+oewn-attributive_genitive-n	attributive genitive	n	0	2	2	oewn
+oewn-attributive_genitive_case-n	attributive genitive case	n	0	3	3	oewn
+oewn-attributively-r	attributively	r	0	1	1	oewn
+oewn-attrited-a	attrited	a	0	1	1	oewn
+oewn-attrition-n	attrition	n	0	1	1	oewn
+oewn-attrition_rate-n	attrition rate	n	0	2	2	oewn
+oewn-attritional-a	attritional	a	0	1	1	oewn
+oewn-attune-v	attune	v	0	1	1	oewn
+oewn-atypic-a	atypic	a	0	1	1	oewn
+oewn-atypical-a	atypical	a	0	1	1	oewn
+oewn-atypical_pneumonia-n	atypical pneumonia	n	0	2	2	oewn
+oewn-atypicality-n	atypicality	n	0	1	1	oewn
+oewn-atypically-r	atypically	r	0	1	1	oewn

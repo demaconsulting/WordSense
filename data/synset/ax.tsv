@@ -1,0 +1,44 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00077086-r	r		adv.all
+oewn-00122541-r	r		adv.all
+oewn-00354971-v	v		verb.change
+oewn-01260517-v	v		verb.contact
+oewn-01447954-s	s	oewn-01447704-a	adj.all
+oewn-01623076-s	s	oewn-01622205-a	adj.all
+oewn-01912370-s	s	oewn-01911832-a	adj.all
+oewn-02124063-s	s	oewn-02123898-a	adj.all
+oewn-02664090-a	a		adj.pert
+oewn-02665599-a	a		adj.pert
+oewn-02665720-a	a		adj.pert
+oewn-02665885-a	a		adj.pert
+oewn-02666023-a	a		adj.pert
+oewn-02666136-a	a		adj.pert
+oewn-02767049-n	n		noun.artifact
+oewn-02767403-n	n		noun.artifact
+oewn-02767510-n	n		noun.artifact
+oewn-02767619-n	n		noun.artifact
+oewn-02767784-n	n		noun.artifact
+oewn-02767940-n	n		noun.artifact
+oewn-02768033-n	n		noun.artifact
+oewn-05293666-n	n		noun.body
+oewn-05365893-n	n		noun.body
+oewn-05437877-n	n		noun.body
+oewn-05476501-n	n		noun.body
+oewn-05594938-n	n		noun.body
+oewn-05595181-n	n		noun.body
+oewn-05596490-n	n		noun.body
+oewn-06017958-n	n		noun.cognition
+oewn-06171322-n	n		noun.cognition
+oewn-06766264-n	n		noun.communication
+oewn-07167656-n	n		noun.communication
+oewn-07456219-n	n		noun.event
+oewn-08187993-n	n		noun.group
+oewn-08188691-n	n		noun.group
+oewn-11701862-n	n		noun.plant
+oewn-12539594-n	n		noun.plant
+oewn-13149530-n	n		noun.plant
+oewn-13151182-n	n		noun.plant
+oewn-14794307-n	n		noun.substance
+oewn-92447049-n	n		noun.cognition
+oewn-92448436-n	n		noun.artifact
+oewn-92459902-n	n		noun.artifact

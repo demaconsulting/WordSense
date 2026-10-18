@@ -1,0 +1,692 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-PHS-n	PHS	n	0	1	1	oewn
+oewn-Ph.D.-n	Ph.D.	n	0	1	1	oewn
+oewn-PhD-n	PhD	n	0	1	1	oewn
+oewn-Phacelia_campanularia-n	Phacelia campanularia	n	0	2	2	oewn
+oewn-Phacelia_minor-n	Phacelia minor	n	0	2	2	oewn
+oewn-Phacelia_tanacetifolia-n	Phacelia tanacetifolia	n	0	2	2	oewn
+oewn-Phacelia_whitlavia-n	Phacelia whitlavia	n	0	2	2	oewn
+oewn-Phaeophyta-n	Phaeophyta	n	0	1	1	oewn
+oewn-Phagun-n	Phagun	n	0	1	1	oewn
+oewn-Phalacrocorax_carbo-n	Phalacrocorax carbo	n	0	2	2	oewn
+oewn-Phalaenopsis_amabilis-n	Phalaenopsis amabilis	n	0	2	2	oewn
+oewn-Phalaenoptilus_nuttallii-n	Phalaenoptilus nuttallii	n	0	2	2	oewn
+oewn-Phalangium_opilio-n	Phalangium opilio	n	0	2	2	oewn
+oewn-Phalaris_aquatica-n	Phalaris aquatica	n	0	2	2	oewn
+oewn-Phalaris_arundinacea-n	Phalaris arundinacea	n	0	2	2	oewn
+oewn-Phalaris_canariensis-n	Phalaris canariensis	n	0	2	2	oewn
+oewn-Phalaris_tuberosa-n	Phalaris tuberosa	n	0	2	2	oewn
+oewn-Phalaropus_fulicarius-n	Phalaropus fulicarius	n	0	2	2	oewn
+oewn-Phalaropus_tricolor-n	Phalaropus tricolor	n	0	2	2	oewn
+oewn-Phalguna-n	Phalguna	n	0	1	1	oewn
+oewn-Phallus_impudicus-n	Phallus impudicus	n	0	2	2	oewn
+oewn-Phallus_ravenelii-n	Phallus ravenelii	n	0	2	2	oewn
+oewn-Pharaoh-ap-s_chicken-n	Pharaoh's chicken	n	0	2	2	oewn
+oewn-Pharaonic-a	Pharaonic	a	0	1	1	oewn
+oewn-Pharisee-n	Pharisee	n	0	1	1	oewn
+oewn-Pharomacrus_mocino-n	Pharomacrus mocino	n	0	2	2	oewn
+oewn-Phascolarctos_cinereus-n	Phascolarctos cinereus	n	0	2	2	oewn
+oewn-Phaseolus_aconitifolius-n	Phaseolus aconitifolius	n	0	2	2	oewn
+oewn-Phaseolus_acutifolius_latifolius-n	Phaseolus acutifolius latifolius	n	0	3	3	oewn
+oewn-Phaseolus_angularis-n	Phaseolus angularis	n	0	2	2	oewn
+oewn-Phaseolus_aureus-n	Phaseolus aureus	n	0	2	2	oewn
+oewn-Phaseolus_caracalla-n	Phaseolus caracalla	n	0	2	2	oewn
+oewn-Phaseolus_coccineus-n	Phaseolus coccineus	n	0	2	2	oewn
+oewn-Phaseolus_limensis-n	Phaseolus limensis	n	0	2	2	oewn
+oewn-Phaseolus_lunatus-n	Phaseolus lunatus	n	0	2	2	oewn
+oewn-Phaseolus_multiflorus-n	Phaseolus multiflorus	n	0	2	2	oewn
+oewn-Phaseolus_vulgaris-n	Phaseolus vulgaris	n	0	2	2	oewn
+oewn-Phasianus_colchicus-n	Phasianus colchicus	n	0	2	2	oewn
+oewn-Phegopteris_connectilis-n	Phegopteris connectilis	n	0	2	2	oewn
+oewn-Phegopteris_hexagonoptera-n	Phegopteris hexagonoptera	n	0	2	2	oewn
+oewn-Phellodendron_amurense-n	Phellodendron amurense	n	0	2	2	oewn
+oewn-Phenaphen-n	Phenaphen	n	0	1	1	oewn
+oewn-Phenergan-n	Phenergan	n	0	1	1	oewn
+oewn-Philadelphia_fleabane-n	Philadelphia fleabane	n	0	2	2	oewn
+oewn-Philadelphia_pepper_pot-n	Philadelphia pepper pot	n	0	3	3	oewn
+oewn-Philadelphus_coronarius-n	Philadelphus coronarius	n	0	2	2	oewn
+oewn-Philaenus_spumarius-n	Philaenus spumarius	n	0	2	2	oewn
+oewn-Philippian-n	Philippian	n	0	1	1	oewn
+oewn-Philippine-a	Philippine	a	0	1	1	oewn
+oewn-Philippine-n	Philippine	n	0	1	1	oewn
+oewn-Philippine_cedar-n	Philippine cedar	n	0	2	2	oewn
+oewn-Philippine_language-n	Philippine language	n	0	2	2	oewn
+oewn-Philippine_mahogany-n	Philippine mahogany	n	0	2	2	oewn
+oewn-Philippine_monetary_unit-n	Philippine monetary unit	n	0	3	3	oewn
+oewn-Philippine_peso-n	Philippine peso	n	0	2	2	oewn
+oewn-Philistine-a	Philistine	a	0	1	1	oewn
+oewn-Philistine-n	Philistine	n	0	1	1	oewn
+oewn-Phillips_screw-n	Phillips screw	n	0	2	2	oewn
+oewn-Phillips_screwdriver-n	Phillips screwdriver	n	0	2	2	oewn
+oewn-Philohela_minor-n	Philohela minor	n	0	2	2	oewn
+oewn-Philomachus_pugnax-n	Philomachus pugnax	n	0	2	2	oewn
+oewn-Phlebodium_aureum-n	Phlebodium aureum	n	0	2	2	oewn
+oewn-Phlebotomus_papatasii-n	Phlebotomus papatasii	n	0	2	2	oewn
+oewn-Phleum_pratense-n	Phleum pratense	n	0	2	2	oewn
+oewn-Phlomis_fruticosa-n	Phlomis fruticosa	n	0	2	2	oewn
+oewn-Phlox_bifida-n	Phlox bifida	n	0	2	2	oewn
+oewn-Phlox_stellaria-n	Phlox stellaria	n	0	2	2	oewn
+oewn-Phlox_subulata-n	Phlox subulata	n	0	2	2	oewn
+oewn-Phoca_vitulina-n	Phoca vitulina	n	0	2	2	oewn
+oewn-Phocoena_phocoena-n	Phocoena phocoena	n	0	2	2	oewn
+oewn-Phocoena_sinus-n	Phocoena sinus	n	0	2	2	oewn
+oewn-Phoebe-n	Phoebe	n	0	1	1	oewn
+oewn-Phoenician-a	Phoenician	a	0	1	1	oewn
+oewn-Phoenician-n	Phoenician	n	0	1	1	oewn
+oewn-Phoenician_language-n	Phoenician language	n	0	2	2	oewn
+oewn-Phoenix_dactylifera-n	Phoenix dactylifera	n	0	2	2	oewn
+oewn-Pholiota_astragalina-n	Pholiota astragalina	n	0	2	2	oewn
+oewn-Pholiota_aurea-n	Pholiota aurea	n	0	2	2	oewn
+oewn-Pholiota_destruens-n	Pholiota destruens	n	0	2	2	oewn
+oewn-Pholiota_flammans-n	Pholiota flammans	n	0	2	2	oewn
+oewn-Pholiota_flavida-n	Pholiota flavida	n	0	2	2	oewn
+oewn-Pholiota_nameko-n	Pholiota nameko	n	0	2	2	oewn
+oewn-Pholiota_squarrosa-adiposa-n	Pholiota squarrosa-adiposa	n	0	2	2	oewn
+oewn-Pholiota_squarrosa-n	Pholiota squarrosa	n	0	2	2	oewn
+oewn-Pholiota_squarrosoides-n	Pholiota squarrosoides	n	0	2	2	oewn
+oewn-Pholis_gunnellus-n	Pholis gunnellus	n	0	2	2	oewn
+oewn-Pholistoma_auritum-n	Pholistoma auritum	n	0	2	2	oewn
+oewn-Phoradendron_flavescens-n	Phoradendron flavescens	n	0	2	2	oewn
+oewn-Phoradendron_serotinum-n	Phoradendron serotinum	n	0	2	2	oewn
+oewn-Phosphorus-n	Phosphorus	n	0	1	1	oewn
+oewn-Photinia_arbutifolia-n	Photinia arbutifolia	n	0	2	2	oewn
+oewn-Photoblepharon_palpebratus-n	Photoblepharon palpebratus	n	0	2	2	oewn
+oewn-Photostat-n	Photostat	n	0	1	1	oewn
+oewn-Photostat_machine-n	Photostat machine	n	0	2	2	oewn
+oewn-Phoxinus_phoxinus-n	Phoxinus phoxinus	n	0	2	2	oewn
+oewn-Phragmites_communis-n	Phragmites communis	n	0	2	2	oewn
+oewn-Phrygian-n	Phrygian	n	0	1	1	oewn
+oewn-Phrygian_deity-n	Phrygian deity	n	0	2	2	oewn
+oewn-Phrygian_language-n	Phrygian language	n	0	2	2	oewn
+oewn-Phrynosoma_cornutum-n	Phrynosoma cornutum	n	0	2	2	oewn
+oewn-Phthirius_pubis-n	Phthirius pubis	n	0	2	2	oewn
+oewn-Phthorimaea_operculella-n	Phthorimaea operculella	n	0	2	2	oewn
+oewn-Phyllitis_scolopendrium-n	Phyllitis scolopendrium	n	0	2	2	oewn
+oewn-Phyllocladus_alpinus-n	Phyllocladus alpinus	n	0	2	2	oewn
+oewn-Phyllocladus_asplenifolius-n	Phyllocladus asplenifolius	n	0	2	2	oewn
+oewn-Phyllocladus_trichomanoides-n	Phyllocladus trichomanoides	n	0	2	2	oewn
+oewn-Phyllodoce_breweri-n	Phyllodoce breweri	n	0	2	2	oewn
+oewn-Phyllodoce_caerulea-n	Phyllodoce caerulea	n	0	2	2	oewn
+oewn-Phylloporus_boletinoides-n	Phylloporus boletinoides	n	0	2	2	oewn
+oewn-Phylloscopus_sibilatrix-n	Phylloscopus sibilatrix	n	0	2	2	oewn
+oewn-Phyllostachys_aurea-n	Phyllostachys aurea	n	0	2	2	oewn
+oewn-Phyllostachys_bambusoides-n	Phyllostachys bambusoides	n	0	2	2	oewn
+oewn-Phyllostachys_nigra-n	Phyllostachys nigra	n	0	2	2	oewn
+oewn-Phyllostomus_hastatus-n	Phyllostomus hastatus	n	0	2	2	oewn
+oewn-Phylloxera_vitifoleae-n	Phylloxera vitifoleae	n	0	2	2	oewn
+oewn-Physalis_alkekengi-n	Physalis alkekengi	n	0	2	2	oewn
+oewn-Physalis_ixocarpa-n	Physalis ixocarpa	n	0	2	2	oewn
+oewn-Physalis_peruviana-n	Physalis peruviana	n	0	2	2	oewn
+oewn-Physalis_philadelphica-n	Physalis philadelphica	n	0	2	2	oewn
+oewn-Physalis_pruinosa-n	Physalis pruinosa	n	0	2	2	oewn
+oewn-Physalis_pubescens-n	Physalis pubescens	n	0	2	2	oewn
+oewn-Physalis_viscosa-n	Physalis viscosa	n	0	2	2	oewn
+oewn-Physeter_catodon-n	Physeter catodon	n	0	2	2	oewn
+oewn-Physostegia_virginiana-n	Physostegia virginiana	n	0	2	2	oewn
+oewn-Physostigma_venenosum-n	Physostigma venenosum	n	0	2	2	oewn
+oewn-Phytelephas_macrocarpa-n	Phytelephas macrocarpa	n	0	2	2	oewn
+oewn-Phytolacca_acinosa-n	Phytolacca acinosa	n	0	2	2	oewn
+oewn-Phytolacca_americana-n	Phytolacca americana	n	0	2	2	oewn
+oewn-Phytolacca_dioica-n	Phytolacca dioica	n	0	2	2	oewn
+oewn-Phytophthora_citrophthora-n	Phytophthora citrophthora	n	0	2	2	oewn
+oewn-Phytophthora_infestans-n	Phytophthora infestans	n	0	2	2	oewn
+oewn-pH-n	pH	n	0	1	1	oewn
+oewn-pH_scale-n	pH scale	n	0	2	2	oewn
+oewn-phacelia-n	phacelia	n	0	1	1	oewn
+oewn-phacoemulsification-n	phacoemulsification	n	0	1	1	oewn
+oewn-phaeochromocytoma-n	phaeochromocytoma	n	0	1	1	oewn
+oewn-phaeton-n	phaeton	n	0	1	1	oewn
+oewn-phage-n	phage	n	0	1	1	oewn
+oewn-phagocyte-n	phagocyte	n	0	1	1	oewn
+oewn-phagocytic-a	phagocytic	a	0	1	1	oewn
+oewn-phagocytosis-n	phagocytosis	n	0	1	1	oewn
+oewn-phaius-n	phaius	n	0	1	1	oewn
+oewn-phalacrosis-n	phalacrosis	n	0	1	1	oewn
+oewn-phalangeal-a	phalangeal	a	0	1	1	oewn
+oewn-phalanger-n	phalanger	n	0	1	1	oewn
+oewn-phalangist-n	phalangist	n	0	1	1	oewn
+oewn-phalangitis-n	phalangitis	n	0	1	1	oewn
+oewn-phalanx-n	phalanx	n	0	1	1	oewn
+oewn-phalarope-n	phalarope	n	0	1	1	oewn
+oewn-phallic-a	phallic	a	0	1	1	oewn
+oewn-phallic_phase-n	phallic phase	n	0	2	2	oewn
+oewn-phallic_stage-n	phallic stage	n	0	2	2	oewn
+oewn-phalloidin-n	phalloidin	n	0	1	1	oewn
+oewn-phalloplasty-n	phalloplasty	n	0	1	1	oewn
+oewn-phallus-n	phallus	n	0	1	1	oewn
+oewn-phalsa-n	phalsa	n	0	1	1	oewn
+oewn-phanerogam-n	phanerogam	n	0	1	1	oewn
+oewn-phaneromania-n	phaneromania	n	0	1	1	oewn
+oewn-phantasm-n	phantasm	n	0	1	1	oewn
+oewn-phantasma-n	phantasma	n	0	1	1	oewn
+oewn-phantasmagoria-n	phantasmagoria	n	0	1	1	oewn
+oewn-phantasmagoric-a	phantasmagoric	a	0	1	1	oewn
+oewn-phantasmagorical-a	phantasmagorical	a	0	1	1	oewn
+oewn-phantasmal-a	phantasmal	a	0	1	1	oewn
+oewn-phantasy-n	phantasy	n	0	1	1	oewn
+oewn-phantasy_life-n	phantasy life	n	0	2	2	oewn
+oewn-phantasy_world-n	phantasy world	n	0	2	2	oewn
+oewn-phantom-a	phantom	a	0	1	1	oewn
+oewn-phantom-n	phantom	n	0	1	1	oewn
+oewn-phantom_limb-n	phantom limb	n	0	2	2	oewn
+oewn-phantom_limb_pain-n	phantom limb pain	n	0	3	3	oewn
+oewn-phantom_limb_syndrome-n	phantom limb syndrome	n	0	3	3	oewn
+oewn-phantom_orchid-n	phantom orchid	n	0	2	2	oewn
+oewn-pharaoh-ap-s_ant-n	pharaoh's ant	n	0	2	2	oewn
+oewn-pharaoh-n	pharaoh	n	0	1	1	oewn
+oewn-pharaoh_ant-n	pharaoh ant	n	0	2	2	oewn
+oewn-pharaoh_of_Egypt-n	pharaoh of Egypt	n	0	3	1	oewn
+oewn-pharisaic-a	pharisaic	a	0	1	1	oewn
+oewn-pharisaical-a	pharisaical	a	0	1	1	oewn
+oewn-pharisee-n	pharisee	n	0	1	1	oewn
+oewn-pharma-n	pharma	n	0	1	1	oewn
+oewn-pharmaceutic-a	pharmaceutic	a	0	1	1	oewn
+oewn-pharmaceutic-n	pharmaceutic	n	0	1	1	oewn
+oewn-pharmaceutical-a	pharmaceutical	a	0	1	1	oewn
+oewn-pharmaceutical-n	pharmaceutical	n	0	1	1	oewn
+oewn-pharmaceutical_chemist-n	pharmaceutical chemist	n	0	2	2	oewn
+oewn-pharmaceutical_company-n	pharmaceutical company	n	0	2	2	oewn
+oewn-pharmaceutics-n	pharmaceutics	n	0	1	1	oewn
+oewn-pharmacist-n	pharmacist	n	0	1	1	oewn
+oewn-pharmacogenetics-n	pharmacogenetics	n	0	1	1	oewn
+oewn-pharmacokinetics-n	pharmacokinetics	n	0	1	1	oewn
+oewn-pharmacologic-a	pharmacologic	a	0	1	1	oewn
+oewn-pharmacological-a	pharmacological	a	0	1	1	oewn
+oewn-pharmacological_medicine-n	pharmacological medicine	n	0	2	2	oewn
+oewn-pharmacologically-r	pharmacologically	r	0	1	1	oewn
+oewn-pharmacologist-n	pharmacologist	n	0	1	1	oewn
+oewn-pharmacology-n	pharmacology	n	0	1	1	oewn
+oewn-pharmacopeia-n	pharmacopeia	n	0	1	1	oewn
+oewn-pharmacopoeia-n	pharmacopoeia	n	0	1	1	oewn
+oewn-pharmacy-n	pharmacy	n	0	1	1	oewn
+oewn-pharos-n	pharos	n	0	1	1	oewn
+oewn-pharyngeal-a	pharyngeal	a	0	1	1	oewn
+oewn-pharyngeal-n	pharyngeal	n	0	1	1	oewn
+oewn-pharyngeal_consonant-n	pharyngeal consonant	n	0	2	2	oewn
+oewn-pharyngeal_recess-n	pharyngeal recess	n	0	2	2	oewn
+oewn-pharyngeal_reflex-n	pharyngeal reflex	n	0	2	2	oewn
+oewn-pharyngeal_tonsil-n	pharyngeal tonsil	n	0	2	2	oewn
+oewn-pharyngeal_vein-n	pharyngeal vein	n	0	2	2	oewn
+oewn-pharyngitis-n	pharyngitis	n	0	1	1	oewn
+oewn-pharynx-n	pharynx	n	0	1	1	oewn
+oewn-phase-n	phase	n	0	1	1	oewn
+oewn-phase-out-n	phase-out	n	0	1	1	oewn
+oewn-phase-v	phase	v	0	1	1	oewn
+oewn-phase_I-n	phase I	n	0	2	2	oewn
+oewn-phase_II-n	phase II	n	0	2	2	oewn
+oewn-phase_III-n	phase III	n	0	2	2	oewn
+oewn-phase_III_clinical_trial-n	phase III clinical trial	n	0	4	4	oewn
+oewn-phase_II_clinical_trial-n	phase II clinical trial	n	0	4	4	oewn
+oewn-phase_IV-n	phase IV	n	0	2	2	oewn
+oewn-phase_IV_clinical_trial-n	phase IV clinical trial	n	0	4	4	oewn
+oewn-phase_I_clinical_trial-n	phase I clinical trial	n	0	4	4	oewn
+oewn-phase_angle-n	phase angle	n	0	2	2	oewn
+oewn-phase_change-n	phase change	n	0	2	2	oewn
+oewn-phase_in-v	phase in	v	0	2	1	oewn
+oewn-phase_modulation-n	phase modulation	n	0	2	2	oewn
+oewn-phase_of_cell_division-n	phase of cell division	n	0	4	1	oewn
+oewn-phase_of_the_moon-n	phase of the moon	n	0	4	1	oewn
+oewn-phase_out-v	phase out	v	0	2	1	oewn
+oewn-phase_space-n	phase space	n	0	2	2	oewn
+oewn-phase_transition-n	phase transition	n	0	2	2	oewn
+oewn-phasianid-n	phasianid	n	0	1	1	oewn
+oewn-phasmid-n	phasmid	n	0	1	1	oewn
+oewn-phasmid_insect-n	phasmid insect	n	0	2	2	oewn
+oewn-phatic_communication-n	phatic communication	n	0	2	2	oewn
+oewn-phatic_speech-n	phatic speech	n	0	2	2	oewn
+oewn-pheasant-ap-s-eye-n	pheasant's-eye	n	0	1	1	oewn
+oewn-pheasant-n	pheasant	n	0	1	1	oewn
+oewn-pheasant_coucal-n	pheasant coucal	n	0	2	2	oewn
+oewn-pheasant_cuckoo-n	pheasant cuckoo	n	0	2	2	oewn
+oewn-pheasant_under_glass-n	pheasant under glass	n	0	3	3	oewn
+oewn-phellem-n	phellem	n	0	1	1	oewn
+oewn-phenacetin-n	phenacetin	n	0	1	1	oewn
+oewn-phenacomys-n	phenacomys	n	0	1	1	oewn
+oewn-phenazopyridine-n	phenazopyridine	n	0	1	1	oewn
+oewn-phencyclidine-n	phencyclidine	n	0	1	1	oewn
+oewn-phencyclidine_hydrochloride-n	phencyclidine hydrochloride	n	0	2	2	oewn
+oewn-phenelzine-n	phenelzine	n	0	1	1	oewn
+oewn-pheniramine-n	pheniramine	n	0	1	1	oewn
+oewn-pheno-safranine-n	pheno-safranine	n	0	1	1	oewn
+oewn-phenobarbital-n	phenobarbital	n	0	1	1	oewn
+oewn-phenobarbitone-n	phenobarbitone	n	0	1	1	oewn
+oewn-phenol-n	phenol	n	0	1	1	oewn
+oewn-phenolic-n	phenolic	n	0	1	1	oewn
+oewn-phenolic_glycoside-n	phenolic glycoside	n	0	2	2	oewn
+oewn-phenolic_plastic-n	phenolic plastic	n	0	2	2	oewn
+oewn-phenolic_resin-n	phenolic resin	n	0	2	2	oewn
+oewn-phenolic_urea-n	phenolic urea	n	0	2	2	oewn
+oewn-phenolphthalein-n	phenolphthalein	n	0	1	1	oewn
+oewn-phenomenal-a	phenomenal	a	0	1	1	oewn
+oewn-phenomenality-n	phenomenality	n	0	1	1	oewn
+oewn-phenomenally-r	phenomenally	r	0	1	1	oewn
+oewn-phenomenology-n	phenomenology	n	0	1	1	oewn
+oewn-phenomenon-n	phenomenon	n	0	1	1	oewn
+oewn-phenoplast-n	phenoplast	n	0	1	1	oewn
+oewn-phenothiazine-n	phenothiazine	n	0	1	1	oewn
+oewn-phenotype-n	phenotype	n	0	1	1	oewn
+oewn-phenotypic-a	phenotypic	a	0	1	1	oewn
+oewn-phenotypical-a	phenotypical	a	0	1	1	oewn
+oewn-phenoxymethyl_penicillin-n	phenoxymethyl penicillin	n	0	2	2	oewn
+oewn-phensuximide-n	phensuximide	n	0	1	1	oewn
+oewn-phentolamine-n	phentolamine	n	0	1	1	oewn
+oewn-phenyl_salicylate-n	phenyl salicylate	n	0	2	2	oewn
+oewn-phenylacetamide-n	phenylacetamide	n	0	1	1	oewn
+oewn-phenylalanine-n	phenylalanine	n	0	1	1	oewn
+oewn-phenylamine-n	phenylamine	n	0	1	1	oewn
+oewn-phenylbutazone-n	phenylbutazone	n	0	1	1	oewn
+oewn-phenylephrine-n	phenylephrine	n	0	1	1	oewn
+oewn-phenylethylene-n	phenylethylene	n	0	1	1	oewn
+oewn-phenylic_acid-n	phenylic acid	n	0	2	2	oewn
+oewn-phenylketonuria-n	phenylketonuria	n	0	1	1	oewn
+oewn-phenylpropanolamine-n	phenylpropanolamine	n	0	1	1	oewn
+oewn-phenyltoloxamine-n	phenyltoloxamine	n	0	1	1	oewn
+oewn-phenytoin-n	phenytoin	n	0	1	1	oewn
+oewn-pheochromocytoma-n	pheochromocytoma	n	0	1	1	oewn
+oewn-pheresis-n	pheresis	n	0	1	1	oewn
+oewn-pheromone-n	pheromone	n	0	1	1	oewn
+oewn-phi-n	phi	n	0	1	1	oewn
+oewn-phi_coefficient-n	phi coefficient	n	0	2	2	oewn
+oewn-phi_correlation-n	phi correlation	n	0	2	2	oewn
+oewn-phial-n	phial	n	0	1	1	oewn
+oewn-philadelphus-n	philadelphus	n	0	1	1	oewn
+oewn-philander-v	philander	v	0	1	1	oewn
+oewn-philanderer-n	philanderer	n	0	1	1	oewn
+oewn-philanthropic-a	philanthropic	a	0	1	1	oewn
+oewn-philanthropic_foundation-n	philanthropic foundation	n	0	2	2	oewn
+oewn-philanthropic_gift-n	philanthropic gift	n	0	2	2	oewn
+oewn-philanthropically-r	philanthropically	r	0	1	1	oewn
+oewn-philanthropist-n	philanthropist	n	0	1	1	oewn
+oewn-philanthropy-n	philanthropy	n	0	1	1	oewn
+oewn-philatelic-a	philatelic	a	0	1	1	oewn
+oewn-philatelical-a	philatelical	a	0	1	1	oewn
+oewn-philatelically-r	philatelically	r	0	1	1	oewn
+oewn-philatelist-n	philatelist	n	0	1	1	oewn
+oewn-philately-n	philately	n	0	1	1	oewn
+oewn-philharmonic-a	philharmonic	a	0	1	1	oewn
+oewn-philharmonic-n	philharmonic	n	0	1	1	oewn
+oewn-philharmonic_pitch-n	philharmonic pitch	n	0	2	2	oewn
+oewn-philhellene-a	philhellene	a	0	1	1	oewn
+oewn-philhellene-n	philhellene	n	0	1	1	oewn
+oewn-philhellenic-a	philhellenic	a	0	1	1	oewn
+oewn-philhellenism-n	philhellenism	n	0	1	1	oewn
+oewn-philhellenist-n	philhellenist	n	0	1	1	oewn
+oewn-philia-n	philia	n	0	1	1	oewn
+oewn-philippic-n	philippic	n	0	1	1	oewn
+oewn-philistine-a	philistine	a	0	1	1	oewn
+oewn-philistine-n	philistine	n	0	1	1	oewn
+oewn-philistinism-n	philistinism	n	0	1	1	oewn
+oewn-phillipsite-n	phillipsite	n	0	1	1	oewn
+oewn-philodendron-n	philodendron	n	0	1	1	oewn
+oewn-philogyny-n	philogyny	n	0	1	1	oewn
+oewn-philological-a	philological	a	0	1	1	oewn
+oewn-philologist-n	philologist	n	0	1	1	oewn
+oewn-philologue-n	philologue	n	0	1	1	oewn
+oewn-philology-n	philology	n	0	1	1	oewn
+oewn-philomath-n	philomath	n	0	1	1	oewn
+oewn-philosopher-ap-s_stone-n	philosopher's stone	n	0	2	2	oewn
+oewn-philosopher-ap-s_wool-n	philosopher's wool	n	0	2	2	oewn
+oewn-philosopher-n	philosopher	n	0	1	1	oewn
+oewn-philosophers-ap-_stone-n	philosophers' stone	n	0	2	2	oewn
+oewn-philosophers-ap-_wool-n	philosophers' wool	n	0	2	2	oewn
+oewn-philosophic-a	philosophic	a	0	1	1	oewn
+oewn-philosophical-a	philosophical	a	0	1	1	oewn
+oewn-philosophical_doctrine-n	philosophical doctrine	n	0	2	2	oewn
+oewn-philosophical_system-n	philosophical system	n	0	2	2	oewn
+oewn-philosophical_theory-n	philosophical theory	n	0	2	2	oewn
+oewn-philosophically-r	philosophically	r	0	1	1	oewn
+oewn-philosophicalness-n	philosophicalness	n	0	1	1	oewn
+oewn-philosophise-v	philosophise	v	0	1	1	oewn
+oewn-philosophiser-n	philosophiser	n	0	1	1	oewn
+oewn-philosophize-v	philosophize	v	0	1	1	oewn
+oewn-philosophizer-n	philosophizer	n	0	1	1	oewn
+oewn-philosophizing-n	philosophizing	n	0	1	1	oewn
+oewn-philosophy-n	philosophy	n	0	1	1	oewn
+oewn-philosophy_department-n	philosophy department	n	0	2	2	oewn
+oewn-philter-n	philter	n	0	1	1	oewn
+oewn-philtre-n	philtre	n	0	1	1	oewn
+oewn-phimosis-n	phimosis	n	0	1	1	oewn
+oewn-phiz-n	phiz	n	0	1	1	oewn
+oewn-phlebectomy-n	phlebectomy	n	0	1	1	oewn
+oewn-phlebitis-n	phlebitis	n	0	1	1	oewn
+oewn-phlebogram-n	phlebogram	n	0	1	1	oewn
+oewn-phlebothrombosis-n	phlebothrombosis	n	0	1	1	oewn
+oewn-phlebotomise-v	phlebotomise	v	0	1	1	oewn
+oewn-phlebotomist-n	phlebotomist	n	0	1	1	oewn
+oewn-phlebotomize-v	phlebotomize	v	0	1	1	oewn
+oewn-phlebotomus-n	phlebotomus	n	0	1	1	oewn
+oewn-phlebotomy-n	phlebotomy	n	0	1	1	oewn
+oewn-phlegm-n	phlegm	n	0	1	1	oewn
+oewn-phlegmasia_alba_dolens-n	phlegmasia alba dolens	n	0	3	3	oewn
+oewn-phlegmatic-a	phlegmatic	a	0	1	1	oewn
+oewn-phlegmatical-a	phlegmatical	a	0	1	1	oewn
+oewn-phlegmatically-r	phlegmatically	r	0	1	1	oewn
+oewn-phlegmatizer-n	phlegmatizer	n	0	1	1	oewn
+oewn-phlegmy-a	phlegmy	a	0	1	1	oewn
+oewn-phloem-n	phloem	n	0	1	1	oewn
+oewn-phlogiston-n	phlogiston	n	0	1	1	oewn
+oewn-phlogopite-n	phlogopite	n	0	1	1	oewn
+oewn-phlomis-n	phlomis	n	0	1	1	oewn
+oewn-phlox-n	phlox	n	0	1	1	oewn
+oewn-phobia-n	phobia	n	0	1	1	oewn
+oewn-phobic-a	phobic	a	0	1	1	oewn
+oewn-phobic_disorder-n	phobic disorder	n	0	2	2	oewn
+oewn-phobic_neurosis-n	phobic neurosis	n	0	2	2	oewn
+oewn-phobophobia-n	phobophobia	n	0	1	1	oewn
+oewn-phocine-a	phocine	a	0	1	1	oewn
+oewn-phocomelia-n	phocomelia	n	0	1	1	oewn
+oewn-phoebe-n	phoebe	n	0	1	1	oewn
+oewn-phoebe_bird-n	phoebe bird	n	0	2	2	oewn
+oewn-phoenix-n	phoenix	n	0	1	1	oewn
+oewn-phoenix_tree-n	phoenix tree	n	0	2	2	oewn
+oewn-phon-n	phon	n	0	1	1	oewn
+oewn-phonate-v	phonate	v	0	1	1	oewn
+oewn-phonation-n	phonation	n	0	1	1	oewn
+oewn-phone-in-n	phone-in	n	0	1	1	oewn
+oewn-phone-n	phone	n	0	1	1	oewn
+oewn-phone-v	phone	v	0	1	1	oewn
+oewn-phone_bill-n	phone bill	n	0	2	2	oewn
+oewn-phone_book-n	phone book	n	0	2	2	oewn
+oewn-phone_booth-n	phone booth	n	0	2	2	oewn
+oewn-phone_call-n	phone call	n	0	2	2	oewn
+oewn-phone_card-n	phone card	n	0	2	2	oewn
+oewn-phone_company-n	phone company	n	0	2	2	oewn
+oewn-phone_cord-n	phone cord	n	0	2	2	oewn
+oewn-phone_jack-n	phone jack	n	0	2	2	oewn
+oewn-phone_line-n	phone line	n	0	2	2	oewn
+oewn-phone_message-n	phone message	n	0	2	2	oewn
+oewn-phone_number-n	phone number	n	0	2	2	oewn
+oewn-phone_plug-n	phone plug	n	0	2	2	oewn
+oewn-phone_service-n	phone service	n	0	2	2	oewn
+oewn-phone_system-n	phone system	n	0	2	2	oewn
+oewn-phone_tapper-n	phone tapper	n	0	2	2	oewn
+oewn-phonebook-n	phonebook	n	0	1	1	oewn
+oewn-phoneme-n	phoneme	n	0	1	1	oewn
+oewn-phonemic-a	phonemic	a	0	1	1	oewn
+oewn-phonemic-r	phonemic	r	0	1	1	oewn
+oewn-phonemic_system-n	phonemic system	n	0	2	2	oewn
+oewn-phonemically-r	phonemically	r	0	1	1	oewn
+oewn-phonemics-n	phonemics	n	0	1	1	oewn
+oewn-phoner-n	phoner	n	0	1	1	oewn
+oewn-phonetic-a	phonetic	a	0	1	1	oewn
+oewn-phonetic_alphabet-n	phonetic alphabet	n	0	2	2	oewn
+oewn-phonetic_property-n	phonetic property	n	0	2	2	oewn
+oewn-phonetic_symbol-n	phonetic symbol	n	0	2	2	oewn
+oewn-phonetic_transcription-n	phonetic transcription	n	0	2	2	oewn
+oewn-phonetically-r	phonetically	r	0	1	1	oewn
+oewn-phonetician-n	phonetician	n	0	1	1	oewn
+oewn-phonetics-n	phonetics	n	0	1	1	oewn
+oewn-phoney-a	phoney	a	0	1	1	oewn
+oewn-phoney-n	phoney	n	0	1	1	oewn
+oewn-phonic-a	phonic	a	0	1	1	oewn
+oewn-phonics-n	phonics	n	0	1	1	oewn
+oewn-phonogram-n	phonogram	n	0	1	1	oewn
+oewn-phonogramic-a	phonogramic	a	0	1	1	oewn
+oewn-phonograph-n	phonograph	n	0	1	1	oewn
+oewn-phonograph_album-n	phonograph album	n	0	2	2	oewn
+oewn-phonograph_needle-n	phonograph needle	n	0	2	2	oewn
+oewn-phonograph_record-n	phonograph record	n	0	2	2	oewn
+oewn-phonograph_recording-n	phonograph recording	n	0	2	2	oewn
+oewn-phonograph_recording_disk-n	phonograph recording disk	n	0	3	3	oewn
+oewn-phonologic-a	phonologic	a	0	1	1	oewn
+oewn-phonologic_system-n	phonologic system	n	0	2	2	oewn
+oewn-phonological-a	phonological	a	0	1	1	oewn
+oewn-phonological_system-n	phonological system	n	0	2	2	oewn
+oewn-phonologist-n	phonologist	n	0	1	1	oewn
+oewn-phonology-n	phonology	n	0	1	1	oewn
+oewn-phonophobia-n	phonophobia	n	0	1	1	oewn
+oewn-phony-a	phony	a	0	1	1	oewn
+oewn-phony-n	phony	n	0	1	1	oewn
+oewn-phoronid-n	phoronid	n	0	1	1	oewn
+oewn-phosgene-n	phosgene	n	0	1	1	oewn
+oewn-phosphatase-n	phosphatase	n	0	1	1	oewn
+oewn-phosphate-n	phosphate	n	0	1	1	oewn
+oewn-phosphate_buffer_solution-n	phosphate buffer solution	n	0	3	3	oewn
+oewn-phosphine-n	phosphine	n	0	1	1	oewn
+oewn-phosphocreatine-n	phosphocreatine	n	0	1	1	oewn
+oewn-phospholipid-n	phospholipid	n	0	1	1	oewn
+oewn-phosphoprotein-n	phosphoprotein	n	0	1	1	oewn
+oewn-phosphor-n	phosphor	n	0	1	1	oewn
+oewn-phosphor_bronze-n	phosphor bronze	n	0	2	2	oewn
+oewn-phosphoresce-v	phosphoresce	v	0	1	1	oewn
+oewn-phosphorescence-n	phosphorescence	n	0	1	1	oewn
+oewn-phosphorescent-a	phosphorescent	a	0	1	1	oewn
+oewn-phosphoric-a	phosphoric	a	0	1	1	oewn
+oewn-phosphoric_acid-n	phosphoric acid	n	0	2	2	oewn
+oewn-phosphorous-a	phosphorous	a	0	1	1	oewn
+oewn-phosphorous_acid-n	phosphorous acid	n	0	2	2	oewn
+oewn-phosphorus-n	phosphorus	n	0	1	1	oewn
+oewn-phot-n	phot	n	0	1	1	oewn
+oewn-photalgia-n	photalgia	n	0	1	1	oewn
+oewn-photic-a	photic	a	0	1	1	oewn
+oewn-photo-n	photo	n	0	1	1	oewn
+oewn-photo-offset-n	photo-offset	n	0	1	1	oewn
+oewn-photo-offset_printing-n	photo-offset printing	n	0	2	2	oewn
+oewn-photo_credit-n	photo credit	n	0	2	2	oewn
+oewn-photo_finish-n	photo finish	n	0	2	2	oewn
+oewn-photo_mural-n	photo mural	n	0	2	2	oewn
+oewn-photo_op-n	photo op	n	0	2	2	oewn
+oewn-photo_opportunity-n	photo opportunity	n	0	2	2	oewn
+oewn-photo_wallpaper-n	photo wallpaper	n	0	2	2	oewn
+oewn-photobomb-v	photobomb	v	0	1	1	oewn
+oewn-photocathode-n	photocathode	n	0	1	1	oewn
+oewn-photocell-n	photocell	n	0	1	1	oewn
+oewn-photochemical-a	photochemical	a	0	1	1	oewn
+oewn-photochemical_exchange-n	photochemical exchange	n	0	2	2	oewn
+oewn-photochemical_reaction-n	photochemical reaction	n	0	2	2	oewn
+oewn-photochemistry-n	photochemistry	n	0	1	1	oewn
+oewn-photochromic_eyeglasses-n	photochromic eyeglasses	n	0	2	2	oewn
+oewn-photochromic_eyewear-n	photochromic eyewear	n	0	2	2	oewn
+oewn-photochromic_glasses-n	photochromic glasses	n	0	2	2	oewn
+oewn-photocoagulation-n	photocoagulation	n	0	1	1	oewn
+oewn-photocoagulator-n	photocoagulator	n	0	1	1	oewn
+oewn-photoconduction-n	photoconduction	n	0	1	1	oewn
+oewn-photoconductive-a	photoconductive	a	0	1	1	oewn
+oewn-photoconductive_cell-n	photoconductive cell	n	0	2	2	oewn
+oewn-photoconductivity-n	photoconductivity	n	0	1	1	oewn
+oewn-photocopier-n	photocopier	n	0	1	1	oewn
+oewn-photocopy-n	photocopy	n	0	1	1	oewn
+oewn-photocopy-v	photocopy	v	0	1	1	oewn
+oewn-photoelectric-a	photoelectric	a	0	1	1	oewn
+oewn-photoelectric_cell-n	photoelectric cell	n	0	2	2	oewn
+oewn-photoelectric_emission-n	photoelectric emission	n	0	2	2	oewn
+oewn-photoelectrical-a	photoelectrical	a	0	1	1	oewn
+oewn-photoelectrically-r	photoelectrically	r	0	1	1	oewn
+oewn-photoelectricity-n	photoelectricity	n	0	1	1	oewn
+oewn-photoelectron-n	photoelectron	n	0	1	1	oewn
+oewn-photoemission-n	photoemission	n	0	1	1	oewn
+oewn-photoemissive-a	photoemissive	a	0	1	1	oewn
+oewn-photoengraving-n	photoengraving	n	0	1	1	oewn
+oewn-photoflash-n	photoflash	n	0	1	1	oewn
+oewn-photoflood-n	photoflood	n	0	1	1	oewn
+oewn-photogelatin_process-n	photogelatin process	n	0	2	2	oewn
+oewn-photogenic-a	photogenic	a	0	1	1	oewn
+oewn-photogenic_epilepsy-n	photogenic epilepsy	n	0	2	2	oewn
+oewn-photograph-n	photograph	n	0	1	1	oewn
+oewn-photograph-v	photograph	v	0	1	1	oewn
+oewn-photograph_album-n	photograph album	n	0	2	2	oewn
+oewn-photographer-ap-s_model-n	photographer's model	n	0	2	2	oewn
+oewn-photographer-n	photographer	n	0	1	1	oewn
+oewn-photographic-a	photographic	a	0	1	1	oewn
+oewn-photographic_camera-n	photographic camera	n	0	2	2	oewn
+oewn-photographic_density-n	photographic density	n	0	2	2	oewn
+oewn-photographic_emulsion-n	photographic emulsion	n	0	2	2	oewn
+oewn-photographic_equipment-n	photographic equipment	n	0	2	2	oewn
+oewn-photographic_film-n	photographic film	n	0	2	2	oewn
+oewn-photographic_material-n	photographic material	n	0	2	2	oewn
+oewn-photographic_paper-n	photographic paper	n	0	2	2	oewn
+oewn-photographic_plate-n	photographic plate	n	0	2	2	oewn
+oewn-photographic_print-n	photographic print	n	0	2	2	oewn
+oewn-photographically-r	photographically	r	0	1	1	oewn
+oewn-photography-n	photography	n	0	1	1	oewn
+oewn-photogravure-n	photogravure	n	0	1	1	oewn
+oewn-photoheliograph-n	photoheliograph	n	0	1	1	oewn
+oewn-photojournalism-n	photojournalism	n	0	1	1	oewn
+oewn-photojournalist-n	photojournalist	n	0	1	1	oewn
+oewn-photolithograph-n	photolithograph	n	0	1	1	oewn
+oewn-photolithography-n	photolithography	n	0	1	1	oewn
+oewn-photomechanical-a	photomechanical	a	0	1	1	oewn
+oewn-photomechanics-n	photomechanics	n	0	1	1	oewn
+oewn-photometer-n	photometer	n	0	1	1	oewn
+oewn-photometric-a	photometric	a	0	1	1	oewn
+oewn-photometrical-a	photometrical	a	0	1	1	oewn
+oewn-photometrically-r	photometrically	r	0	1	1	oewn
+oewn-photometrician-n	photometrician	n	0	1	1	oewn
+oewn-photometrist-n	photometrist	n	0	1	1	oewn
+oewn-photometry-n	photometry	n	0	1	1	oewn
+oewn-photomicrograph-n	photomicrograph	n	0	1	1	oewn
+oewn-photomontage-n	photomontage	n	0	1	1	oewn
+oewn-photomosaic-n	photomosaic	n	0	1	1	oewn
+oewn-photon-n	photon	n	0	1	1	oewn
+oewn-photophobia-n	photophobia	n	0	1	1	oewn
+oewn-photopic_vision-n	photopic vision	n	0	2	2	oewn
+oewn-photopigment-n	photopigment	n	0	1	1	oewn
+oewn-photoplate_making-n	photoplate making	n	0	2	2	oewn
+oewn-photoretinitis-n	photoretinitis	n	0	1	1	oewn
+oewn-photosensitise-v	photosensitise	v	0	1	1	oewn
+oewn-photosensitive-a	photosensitive	a	0	1	1	oewn
+oewn-photosensitivity-n	photosensitivity	n	0	1	1	oewn
+oewn-photosensitize-v	photosensitize	v	0	1	1	oewn
+oewn-photoshop-v	photoshop	v	0	1	1	oewn
+oewn-photosphere-n	photosphere	n	0	1	1	oewn
+oewn-photostat-n	photostat	n	0	1	1	oewn
+oewn-photostat-v	photostat	v	0	1	1	oewn
+oewn-photosynthesis-n	photosynthesis	n	0	1	1	oewn
+oewn-photosynthetic-a	photosynthetic	a	0	1	1	oewn
+oewn-phototelegraph-n	phototelegraph	n	0	1	1	oewn
+oewn-phototelegraphy-n	phototelegraphy	n	0	1	1	oewn
+oewn-phototherapy-n	phototherapy	n	0	1	1	oewn
+oewn-phototrophic_bacteria-n	phototrophic bacteria	n	0	2	2	oewn
+oewn-phototropic_bacteria-n	phototropic bacteria	n	0	2	2	oewn
+oewn-phototropism-n	phototropism	n	0	1	1	oewn
+oewn-photovoltaic-a	photovoltaic	a	0	1	1	oewn
+oewn-photovoltaic_cell-n	photovoltaic cell	n	0	2	2	oewn
+oewn-phragmacone-n	phragmacone	n	0	1	1	oewn
+oewn-phragmocone-n	phragmocone	n	0	1	1	oewn
+oewn-phrasal-a	phrasal	a	0	1	1	oewn
+oewn-phrasal_idiom-n	phrasal idiom	n	0	2	2	oewn
+oewn-phrasal_verb-n	phrasal verb	n	0	2	2	oewn
+oewn-phrase-n	phrase	n	0	1	1	oewn
+oewn-phrase-v	phrase	v	0	1	1	oewn
+oewn-phrase_book-n	phrase book	n	0	2	2	oewn
+oewn-phrase_structure-n	phrase structure	n	0	2	2	oewn
+oewn-phraseology-n	phraseology	n	0	1	1	oewn
+oewn-phrasing-n	phrasing	n	0	1	1	oewn
+oewn-phratry-n	phratry	n	0	1	1	oewn
+oewn-phreatic-a	phreatic	a	0	1	1	oewn
+oewn-phrenetic-a	phrenetic	a	0	1	1	oewn
+oewn-phrenic-a	phrenic	a	0	1	1	oewn
+oewn-phrenic_nerve-n	phrenic nerve	n	0	2	2	oewn
+oewn-phrenic_vein-n	phrenic vein	n	0	2	2	oewn
+oewn-phrenitis-n	phrenitis	n	0	1	1	oewn
+oewn-phrenological-a	phrenological	a	0	1	1	oewn
+oewn-phrenologist-n	phrenologist	n	0	1	1	oewn
+oewn-phrenology-n	phrenology	n	0	1	1	oewn
+oewn-phrontistery-n	phrontistery	n	0	1	1	oewn
+oewn-phthalic_acid-n	phthalic acid	n	0	2	2	oewn
+oewn-phthalic_anhydride-n	phthalic anhydride	n	0	2	2	oewn
+oewn-phthisis-n	phthisis	n	0	1	1	oewn
+oewn-phycobilin-n	phycobilin	n	0	1	1	oewn
+oewn-phycocyanin-n	phycocyanin	n	0	1	1	oewn
+oewn-phycoerythrin-n	phycoerythrin	n	0	1	1	oewn
+oewn-phycology-n	phycology	n	0	1	1	oewn
+oewn-phycomycosis-n	phycomycosis	n	0	1	1	oewn
+oewn-phylactery-n	phylactery	n	0	1	1	oewn
+oewn-phyle-n	phyle	n	0	1	1	oewn
+oewn-phyletic-a	phyletic	a	0	1	1	oewn
+oewn-phylliform-a	phylliform	a	0	1	1	oewn
+oewn-phyllo-n	phyllo	n	0	1	1	oewn
+oewn-phylloclad-n	phylloclad	n	0	1	1	oewn
+oewn-phylloclade-n	phylloclade	n	0	1	1	oewn
+oewn-phyllode-n	phyllode	n	0	1	1	oewn
+oewn-phyllodial-a	phyllodial	a	0	1	1	oewn
+oewn-phylloquinone-n	phylloquinone	n	0	1	1	oewn
+oewn-phylogenesis-n	phylogenesis	n	0	1	1	oewn
+oewn-phylogenetic-a	phylogenetic	a	0	1	1	oewn
+oewn-phylogenetic_relation-n	phylogenetic relation	n	0	2	2	oewn
+oewn-phylogenetically-r	phylogenetically	r	0	1	1	oewn
+oewn-phylogeny-n	phylogeny	n	0	1	1	oewn
+oewn-phylum-n	phylum	n	0	1	1	oewn
+oewn-physa-n	physa	n	0	1	1	oewn
+oewn-physiatrics-n	physiatrics	n	0	1	1	oewn
+oewn-physic-n	physic	n	0	1	1	oewn
+oewn-physic_nut-n	physic nut	n	0	2	2	oewn
+oewn-physical-a	physical	a	0	1	1	oewn
+oewn-physical_ability-n	physical ability	n	0	2	2	oewn
+oewn-physical_anthropology-n	physical anthropology	n	0	2	2	oewn
+oewn-physical_attraction-n	physical attraction	n	0	2	2	oewn
+oewn-physical_body-n	physical body	n	0	2	2	oewn
+oewn-physical_change-n	physical change	n	0	2	2	oewn
+oewn-physical_chemistry-n	physical chemistry	n	0	2	2	oewn
+oewn-physical_composition-n	physical composition	n	0	2	2	oewn
+oewn-physical_condition-n	physical condition	n	0	2	2	oewn
+oewn-physical_contact-n	physical contact	n	0	2	2	oewn
+oewn-physical_distancing-n	physical distancing	n	0	2	2	oewn
+oewn-physical_education-n	physical education	n	0	2	2	oewn
+oewn-physical_entity-n	physical entity	n	0	2	2	oewn
+oewn-physical_exercise-n	physical exercise	n	0	2	2	oewn
+oewn-physical_exertion-n	physical exertion	n	0	2	2	oewn
+oewn-physical_fitness-n	physical fitness	n	0	2	2	oewn
+oewn-physical_geography-n	physical geography	n	0	2	2	oewn
+oewn-physical_goods-n	physical goods	n	0	2	2	oewn
+oewn-physical_impossibility-n	physical impossibility	n	0	2	2	oewn
+oewn-physical_object-n	physical object	n	0	2	2	oewn
+oewn-physical_pendulum-n	physical pendulum	n	0	2	2	oewn
+oewn-physical_phenomenon-n	physical phenomenon	n	0	2	2	oewn
+oewn-physical_process-n	physical process	n	0	2	2	oewn
+oewn-physical_property-n	physical property	n	0	2	2	oewn
+oewn-physical_rehabilitation-n	physical rehabilitation	n	0	2	2	oewn
+oewn-physical_restoration-n	physical restoration	n	0	2	2	oewn
+oewn-physical_science-n	physical science	n	0	2	2	oewn
+oewn-physical_therapist-n	physical therapist	n	0	2	2	oewn
+oewn-physical_therapy-n	physical therapy	n	0	2	2	oewn
+oewn-physical_topology-n	physical topology	n	0	2	2	oewn
+oewn-physical_value-n	physical value	n	0	2	2	oewn
+oewn-physicalism-n	physicalism	n	0	1	1	oewn
+oewn-physicality-n	physicality	n	0	1	1	oewn
+oewn-physically-r	physically	r	0	1	1	oewn
+oewn-physicalness-n	physicalness	n	0	1	1	oewn
+oewn-physician-assisted_suicide-n	physician-assisted suicide	n	0	2	2	oewn
+oewn-physician-n	physician	n	0	1	1	oewn
+oewn-physician-patient_privilege-n	physician-patient privilege	n	0	2	2	oewn
+oewn-physicist-n	physicist	n	0	1	1	oewn
+oewn-physicochemical-a	physicochemical	a	0	1	1	oewn
+oewn-physics-n	physics	n	0	1	1	oewn
+oewn-physics_department-n	physics department	n	0	2	2	oewn
+oewn-physics_lab-n	physics lab	n	0	2	2	oewn
+oewn-physics_laboratory-n	physics laboratory	n	0	2	2	oewn
+oewn-physiognomy-n	physiognomy	n	0	1	1	oewn
+oewn-physiography-n	physiography	n	0	1	1	oewn
+oewn-physiologic-a	physiologic	a	0	1	1	oewn
+oewn-physiological-a	physiological	a	0	1	1	oewn
+oewn-physiological_anatomy-n	physiological anatomy	n	0	2	2	oewn
+oewn-physiological_condition-n	physiological condition	n	0	2	2	oewn
+oewn-physiological_jaundice_of_the_newborn-n	physiological jaundice of the newborn	n	0	5	2	oewn
+oewn-physiological_nystagmus-n	physiological nystagmus	n	0	2	2	oewn
+oewn-physiological_property-n	physiological property	n	0	2	2	oewn
+oewn-physiological_psychology-n	physiological psychology	n	0	2	2	oewn
+oewn-physiological_reaction-n	physiological reaction	n	0	2	2	oewn
+oewn-physiological_sphincter-n	physiological sphincter	n	0	2	2	oewn
+oewn-physiological_state-n	physiological state	n	0	2	2	oewn
+oewn-physiologically-r	physiologically	r	0	1	1	oewn
+oewn-physiologist-n	physiologist	n	0	1	1	oewn
+oewn-physiology-n	physiology	n	0	1	1	oewn
+oewn-physiotherapeutic-a	physiotherapeutic	a	0	1	1	oewn
+oewn-physiotherapist-n	physiotherapist	n	0	1	1	oewn
+oewn-physiotherapy-n	physiotherapy	n	0	1	1	oewn
+oewn-physique-n	physique	n	0	1	1	oewn
+oewn-physostegia-n	physostegia	n	0	1	1	oewn
+oewn-physostigmine-n	physostigmine	n	0	1	1	oewn
+oewn-phytochemical-n	phytochemical	n	0	1	1	oewn
+oewn-phytochemist-n	phytochemist	n	0	1	1	oewn
+oewn-phytochemistry-n	phytochemistry	n	0	1	1	oewn
+oewn-phytohormone-n	phytohormone	n	0	1	1	oewn
+oewn-phytologist-n	phytologist	n	0	1	1	oewn
+oewn-phytology-n	phytology	n	0	1	1	oewn
+oewn-phytonadione-n	phytonadione	n	0	1	1	oewn
+oewn-phytophagic-a	phytophagic	a	0	1	1	oewn
+oewn-phytophagous-a	phytophagous	a	0	1	1	oewn
+oewn-phytophilous-a	phytophilous	a	0	1	1	oewn
+oewn-phytoplankton-n	phytoplankton	n	0	1	1	oewn
+oewn-phytotherapy-n	phytotherapy	n	0	1	1	oewn
+oewn-phytotoxin-n	phytotoxin	n	0	1	1	oewn

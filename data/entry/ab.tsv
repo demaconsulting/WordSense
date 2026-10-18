@@ -1,0 +1,475 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-AB-n	AB	n	0	1	1	oewn
+oewn-ABA_transit_number-n	ABA transit number	n	0	3	3	oewn
+oewn-ABC-ap-s-n	ABC's	n	0	1	1	oewn
+oewn-ABC-n	ABC	n	0	1	1	oewn
+oewn-ABCs-n	ABCs	n	0	1	1	oewn
+oewn-ABLS-n	ABLS	n	0	1	1	oewn
+oewn-ABM-n	ABM	n	0	1	1	oewn
+oewn-ABO_antibodies-n	ABO antibodies	n	0	2	2	oewn
+oewn-ABO_blood_group_system-n	ABO blood group system	n	0	4	4	oewn
+oewn-ABO_group-n	ABO group	n	0	2	2	oewn
+oewn-ABO_system-n	ABO system	n	0	2	2	oewn
+oewn-ABS-n	ABS	n	0	1	1	oewn
+oewn-Ab-n	Ab	n	0	1	1	oewn
+oewn-Abbe_condenser-n	Abbe condenser	n	0	2	2	oewn
+oewn-Abbe_vertical_metroscope-n	Abbe vertical metroscope	n	0	3	3	oewn
+oewn-Abecedarian-n	Abecedarian	n	0	1	1	oewn
+oewn-Abelian_group-n	Abelian group	n	0	2	2	oewn
+oewn-Abelmoschus_esculentus-n	Abelmoschus esculentus	n	0	2	2	oewn
+oewn-Abelmoschus_moschatus-n	Abelmoschus moschatus	n	0	2	2	oewn
+oewn-Abenaki-n	Abenaki	n	0	1	1	oewn
+oewn-Aberdeen_Angus-n	Aberdeen Angus	n	0	2	2	oewn
+oewn-Aberdonian-a	Aberdonian	a	0	1	1	oewn
+oewn-Abies_alba-n	Abies alba	n	0	2	2	oewn
+oewn-Abies_amabilis-n	Abies amabilis	n	0	2	2	oewn
+oewn-Abies_balsamea-n	Abies balsamea	n	0	2	2	oewn
+oewn-Abies_bracteata-n	Abies bracteata	n	0	2	2	oewn
+oewn-Abies_concolor-n	Abies concolor	n	0	2	2	oewn
+oewn-Abies_fraseri-n	Abies fraseri	n	0	2	2	oewn
+oewn-Abies_grandis-n	Abies grandis	n	0	2	2	oewn
+oewn-Abies_lasiocarpa-n	Abies lasiocarpa	n	0	2	2	oewn
+oewn-Abies_lowiana-n	Abies lowiana	n	0	2	2	oewn
+oewn-Abies_venusta-n	Abies venusta	n	0	2	2	oewn
+oewn-Abkhas-n	Abkhas	n	0	1	1	oewn
+oewn-Abkhasian-n	Abkhasian	n	0	1	1	oewn
+oewn-Abkhasian_language-n	Abkhasian language	n	0	2	2	oewn
+oewn-Abkhaz-a	Abkhaz	a	0	1	1	oewn
+oewn-Abkhaz-n	Abkhaz	n	0	1	1	oewn
+oewn-Abkhazian-a	Abkhazian	a	0	1	1	oewn
+oewn-Abkhazian-n	Abkhazian	n	0	1	1	oewn
+oewn-Abkhazian_language-n	Abkhazian language	n	0	2	2	oewn
+oewn-Abnaki-a	Abnaki	a	0	1	1	oewn
+oewn-Abnaki-n	Abnaki	n	0	1	1	oewn
+oewn-Abnaki_language-n	Abnaki language	n	0	2	2	oewn
+oewn-Abney_level-n	Abney level	n	0	2	2	oewn
+oewn-Abo-n	Abo	n	0	1	1	oewn
+oewn-Abor-n	Abor	n	0	1	1	oewn
+oewn-Abor_language-n	Abor language	n	0	2	2	oewn
+oewn-Aboriginal_Australian-n	Aboriginal Australian	n	0	2	2	oewn
+oewn-Aboriginal_Australian_language-n	Aboriginal Australian language	n	0	3	3	oewn
+oewn-Aborigine-n	Aborigine	n	0	1	1	oewn
+oewn-Abraham-ap-s_bosom-n	Abraham's bosom	n	0	2	2	oewn
+oewn-Abramis_brama-n	Abramis brama	n	0	2	2	oewn
+oewn-Abronia_elliptica-n	Abronia elliptica	n	0	2	2	oewn
+oewn-Abronia_fragrans-n	Abronia fragrans	n	0	2	2	oewn
+oewn-Abronia_latifolia-n	Abronia latifolia	n	0	2	2	oewn
+oewn-Abronia_maritima-n	Abronia maritima	n	0	2	2	oewn
+oewn-Abronia_umbellata-n	Abronia umbellata	n	0	2	2	oewn
+oewn-Abronia_villosa-n	Abronia villosa	n	0	2	2	oewn
+oewn-Abstract_Expressionism-n	Abstract Expressionism	n	0	2	2	oewn
+oewn-Abudefduf_saxatilis-n	Abudefduf saxatilis	n	0	2	2	oewn
+oewn-Abutilon_theophrasti-n	Abutilon theophrasti	n	0	2	2	oewn
+oewn-Abyssinian-n	Abyssinian	n	0	1	1	oewn
+oewn-Abyssinian_banana-n	Abyssinian banana	n	0	2	2	oewn
+oewn-Abyssinian_cat-n	Abyssinian cat	n	0	2	2	oewn
+oewn-ab-n	ab	n	0	1	1	oewn
+oewn-ab_initio-r	ab initio	r	0	2	2	oewn
+oewn-aba-n	aba	n	0	1	1	oewn
+oewn-abaca-n	abaca	n	0	1	1	oewn
+oewn-abacinate-v	abacinate	v	0	1	1	oewn
+oewn-aback-r	aback	r	0	1	1	oewn
+oewn-abactinal-a	abactinal	a	0	1	1	oewn
+oewn-abacus-n	abacus	n	0	1	1	oewn
+oewn-abaft-r	abaft	r	0	1	1	oewn
+oewn-abalone-n	abalone	n	0	1	1	oewn
+oewn-abamp-n	abamp	n	0	1	1	oewn
+oewn-abampere-n	abampere	n	0	1	1	oewn
+oewn-abandon-n	abandon	n	0	1	1	oewn
+oewn-abandon-v	abandon	v	0	1	1	oewn
+oewn-abandoned-a	abandoned	a	0	1	1	oewn
+oewn-abandoned_infant-n	abandoned infant	n	0	2	2	oewn
+oewn-abandoned_person-n	abandoned person	n	0	2	2	oewn
+oewn-abandoned_ship-n	abandoned ship	n	0	2	2	oewn
+oewn-abandonment-n	abandonment	n	0	1	1	oewn
+oewn-abarticulation-n	abarticulation	n	0	1	1	oewn
+oewn-abase-v	abase	v	0	1	1	oewn
+oewn-abasement-n	abasement	n	0	1	1	oewn
+oewn-abash-v	abash	v	0	1	1	oewn
+oewn-abashed-a	abashed	a	0	1	1	oewn
+oewn-abashment-n	abashment	n	0	1	1	oewn
+oewn-abasia-n	abasia	n	0	1	1	oewn
+oewn-abasia_trepidans-n	abasia trepidans	n	0	2	2	oewn
+oewn-abasic-a	abasic	a	0	1	1	oewn
+oewn-abatable-a	abatable	a	0	1	1	oewn
+oewn-abatable_nuisance-n	abatable nuisance	n	0	2	2	oewn
+oewn-abate-v	abate	v	0	1	1	oewn
+oewn-abatement-n	abatement	n	0	1	1	oewn
+oewn-abatement_of_a_nuisance-n	abatement of a nuisance	n	0	4	1	oewn
+oewn-abatic-a	abatic	a	0	1	1	oewn
+oewn-abatis-n	abatis	n	0	1	1	oewn
+oewn-abator-n	abator	n	0	1	1	oewn
+oewn-abattis-n	abattis	n	0	1	1	oewn
+oewn-abattoir-n	abattoir	n	0	1	1	oewn
+oewn-abaxial-a	abaxial	a	0	1	1	oewn
+oewn-abaxially-r	abaxially	r	0	1	1	oewn
+oewn-abaya-n	abaya	n	0	1	1	oewn
+oewn-abbacy-n	abbacy	n	0	1	1	oewn
+oewn-abbatial-a	abbatial	a	0	1	1	oewn
+oewn-abbe-n	abbe	n	0	1	1	oewn
+oewn-abbess-n	abbess	n	0	1	1	oewn
+oewn-abbey-n	abbey	n	0	1	1	oewn
+oewn-abbot-n	abbot	n	0	1	1	oewn
+oewn-abbreviate-v	abbreviate	v	0	1	1	oewn
+oewn-abbreviated-a	abbreviated	a	0	1	1	oewn
+oewn-abbreviation-n	abbreviation	n	0	1	1	oewn
+oewn-abbreviator-n	abbreviator	n	0	1	1	oewn
+oewn-abcoulomb-n	abcoulomb	n	0	1	1	oewn
+oewn-abdicable-a	abdicable	a	0	1	1	oewn
+oewn-abdicate-v	abdicate	v	0	1	1	oewn
+oewn-abdication-n	abdication	n	0	1	1	oewn
+oewn-abdicator-n	abdicator	n	0	1	1	oewn
+oewn-abdomen-n	abdomen	n	0	1	1	oewn
+oewn-abdominal-a	abdominal	a	0	1	1	oewn
+oewn-abdominal-n	abdominal	n	0	1	1	oewn
+oewn-abdominal_actinomycosis-n	abdominal actinomycosis	n	0	2	2	oewn
+oewn-abdominal_aorta-n	abdominal aorta	n	0	2	2	oewn
+oewn-abdominal_aortic_aneurysm-n	abdominal aortic aneurysm	n	0	3	3	oewn
+oewn-abdominal_breathing-n	abdominal breathing	n	0	2	2	oewn
+oewn-abdominal_cavity-n	abdominal cavity	n	0	2	2	oewn
+oewn-abdominal_delivery-n	abdominal delivery	n	0	2	2	oewn
+oewn-abdominal_external_oblique_muscle-n	abdominal external oblique muscle	n	0	4	4	oewn
+oewn-abdominal_muscle-n	abdominal muscle	n	0	2	2	oewn
+oewn-abdominal_nerve_plexus-n	abdominal nerve plexus	n	0	3	3	oewn
+oewn-abdominal_pregnancy-n	abdominal pregnancy	n	0	2	2	oewn
+oewn-abdominal_wall-n	abdominal wall	n	0	2	2	oewn
+oewn-abdominocentesis-n	abdominocentesis	n	0	1	1	oewn
+oewn-abdominoplasty-n	abdominoplasty	n	0	1	1	oewn
+oewn-abdominous-a	abdominous	a	0	1	1	oewn
+oewn-abdominousness-n	abdominousness	n	0	1	1	oewn
+oewn-abdominovesical-a	abdominovesical	a	0	1	1	oewn
+oewn-abduce-v	abduce	v	0	1	1	oewn
+oewn-abducens-n	abducens	n	0	1	1	oewn
+oewn-abducens_muscle-n	abducens muscle	n	0	2	2	oewn
+oewn-abducens_nerve-n	abducens nerve	n	0	2	2	oewn
+oewn-abducent-a	abducent	a	0	1	1	oewn
+oewn-abducent-n	abducent	n	0	1	1	oewn
+oewn-abducent_nerve-n	abducent nerve	n	0	2	2	oewn
+oewn-abduct-v	abduct	v	0	1	1	oewn
+oewn-abducting-a	abducting	a	0	1	1	oewn
+oewn-abduction-n	abduction	n	0	1	1	oewn
+oewn-abductor-n	abductor	n	0	1	1	oewn
+oewn-abductor_muscle-n	abductor muscle	n	0	2	2	oewn
+oewn-abeam-r	abeam	r	0	1	1	oewn
+oewn-abecedarian-a	abecedarian	a	0	1	1	oewn
+oewn-abecedarian-n	abecedarian	n	0	1	1	oewn
+oewn-abecedarius-n	abecedarius	n	0	1	1	oewn
+oewn-abed-r	abed	r	0	1	1	oewn
+oewn-abele-n	abele	n	0	1	1	oewn
+oewn-abelia-n	abelia	n	0	1	1	oewn
+oewn-abelmosk-n	abelmosk	n	0	1	1	oewn
+oewn-aberrance-n	aberrance	n	0	1	1	oewn
+oewn-aberrancy-n	aberrancy	n	0	1	1	oewn
+oewn-aberrant-a	aberrant	a	0	1	1	oewn
+oewn-aberrant-n	aberrant	n	0	1	1	oewn
+oewn-aberrate-v	aberrate	v	0	1	1	oewn
+oewn-aberration-n	aberration	n	0	1	1	oewn
+oewn-abet-v	abet	v	0	1	1	oewn
+oewn-abetalipoproteinemia-n	abetalipoproteinemia	n	0	1	1	oewn
+oewn-abetment-n	abetment	n	0	1	1	oewn
+oewn-abettal-n	abettal	n	0	1	1	oewn
+oewn-abetter-n	abetter	n	0	1	1	oewn
+oewn-abettor-n	abettor	n	0	1	1	oewn
+oewn-abeyance-n	abeyance	n	0	1	1	oewn
+oewn-abeyant-a	abeyant	a	0	1	1	oewn
+oewn-abfarad-n	abfarad	n	0	1	1	oewn
+oewn-abhenry-n	abhenry	n	0	1	1	oewn
+oewn-abhor-v	abhor	v	0	1	1	oewn
+oewn-abhorrence-n	abhorrence	n	0	1	1	oewn
+oewn-abhorrent-a	abhorrent	a	0	1	1	oewn
+oewn-abhorrer-n	abhorrer	n	0	1	1	oewn
+oewn-abidance-n	abidance	n	0	1	1	oewn
+oewn-abide-v	abide	v	0	1	1	oewn
+oewn-abide_by-v	abide by	v	0	2	1	oewn
+oewn-abiding-a	abiding	a	0	1	1	oewn
+oewn-abience-n	abience	n	0	1	1	oewn
+oewn-abient-a	abient	a	0	1	1	oewn
+oewn-ability-n	ability	n	0	1	1	oewn
+oewn-abiogenesis-n	abiogenesis	n	0	1	1	oewn
+oewn-abiogenetic-a	abiogenetic	a	0	1	1	oewn
+oewn-abiogenist-n	abiogenist	n	0	1	1	oewn
+oewn-abiotrophy-n	abiotrophy	n	0	1	1	oewn
+oewn-abject-a	abject	a	0	1	1	oewn
+oewn-abjection-n	abjection	n	0	1	1	oewn
+oewn-abjectly-r	abjectly	r	0	1	1	oewn
+oewn-abjuration-n	abjuration	n	0	1	1	oewn
+oewn-abjure-v	abjure	v	0	1	1	oewn
+oewn-abjurer-n	abjurer	n	0	1	1	oewn
+oewn-ablactate-v	ablactate	v	0	1	1	oewn
+oewn-ablactation-n	ablactation	n	0	1	1	oewn
+oewn-ablate-v	ablate	v	0	1	1	oewn
+oewn-ablated-a	ablated	a	0	1	1	oewn
+oewn-ablation-n	ablation	n	0	1	1	oewn
+oewn-ablation_moraine-n	ablation moraine	n	0	2	2	oewn
+oewn-ablative-a	ablative	a	0	1	1	oewn
+oewn-ablative-n	ablative	n	0	1	1	oewn
+oewn-ablative_absolute-n	ablative absolute	n	0	2	2	oewn
+oewn-ablative_case-n	ablative case	n	0	2	2	oewn
+oewn-ablaut-n	ablaut	n	0	1	1	oewn
+oewn-ablaze-a	ablaze	a	0	1	1	oewn
+oewn-able-a	able	a	0	1	1	oewn
+oewn-able-bodied-a	able-bodied	a	0	1	1	oewn
+oewn-able-bodied_sailor-n	able-bodied sailor	n	0	2	2	oewn
+oewn-able-bodied_seaman-n	able-bodied seaman	n	0	2	2	oewn
+oewn-able-bodied_seawoman-n	able-bodied seawoman	n	0	2	2	oewn
+oewn-able-bodiedism-n	able-bodiedism	n	0	1	1	oewn
+oewn-able-bodism-n	able-bodism	n	0	1	1	oewn
+oewn-able_seaman-n	able seaman	n	0	2	2	oewn
+oewn-able_seawoman-n	able seawoman	n	0	2	2	oewn
+oewn-ableism-n	ableism	n	0	1	1	oewn
+oewn-ablepharia-n	ablepharia	n	0	1	1	oewn
+oewn-ablism-n	ablism	n	0	1	1	oewn
+oewn-abloom-a	abloom	a	0	1	1	oewn
+oewn-ablution-n	ablution	n	0	1	1	oewn
+oewn-ablutionary-a	ablutionary	a	0	1	1	oewn
+oewn-ably-r	ably	r	0	1	1	oewn
+oewn-abnegate-v	abnegate	v	0	1	1	oewn
+oewn-abnegation-n	abnegation	n	0	1	1	oewn
+oewn-abnegator-n	abnegator	n	0	1	1	oewn
+oewn-abnormal-a	abnormal	a	0	1	1	oewn
+oewn-abnormal_psychology-n	abnormal psychology	n	0	2	2	oewn
+oewn-abnormalcy-n	abnormalcy	n	0	1	1	oewn
+oewn-abnormality-n	abnormality	n	0	1	1	oewn
+oewn-abnormally-r	abnormally	r	0	1	1	oewn
+oewn-aboard-r	aboard	r	0	1	1	oewn
+oewn-abocclusion-n	abocclusion	n	0	1	1	oewn
+oewn-abode-n	abode	n	0	1	1	oewn
+oewn-abohm-n	abohm	n	0	1	1	oewn
+oewn-abolish-v	abolish	v	0	1	1	oewn
+oewn-abolishable-a	abolishable	a	0	1	1	oewn
+oewn-abolishment-n	abolishment	n	0	1	1	oewn
+oewn-abolition-n	abolition	n	0	1	1	oewn
+oewn-abolitionary-a	abolitionary	a	0	1	1	oewn
+oewn-abolitionism-n	abolitionism	n	0	1	1	oewn
+oewn-abolitionist-n	abolitionist	n	0	1	1	oewn
+oewn-abomasal-a	abomasal	a	0	1	1	oewn
+oewn-abomasum-n	abomasum	n	0	1	1	oewn
+oewn-abominable-a	abominable	a	0	1	1	oewn
+oewn-abominable_snowman-n	abominable snowman	n	0	2	2	oewn
+oewn-abominably-r	abominably	r	0	1	1	oewn
+oewn-abominate-v	abominate	v	0	1	1	oewn
+oewn-abomination-n	abomination	n	0	1	1	oewn
+oewn-abominator-n	abominator	n	0	1	1	oewn
+oewn-aborad-r	aborad	r	0	1	1	oewn
+oewn-aboral-a	aboral	a	0	1	1	oewn
+oewn-aboriginal-a	aboriginal	a	0	1	1	oewn
+oewn-aboriginal-n	aboriginal	n	0	1	1	oewn
+oewn-aborigine-n	aborigine	n	0	1	1	oewn
+oewn-abort-n	abort	n	0	1	1	oewn
+oewn-abort-v	abort	v	0	1	1	oewn
+oewn-aborticide-n	aborticide	n	0	1	1	oewn
+oewn-abortifacient-a	abortifacient	a	0	1	1	oewn
+oewn-abortifacient-n	abortifacient	n	0	1	1	oewn
+oewn-abortion-inducing_drug-n	abortion-inducing drug	n	0	2	2	oewn
+oewn-abortion-n	abortion	n	0	1	1	oewn
+oewn-abortion_pill-n	abortion pill	n	0	2	2	oewn
+oewn-abortionist-n	abortionist	n	0	1	1	oewn
+oewn-abortive-a	abortive	a	0	1	1	oewn
+oewn-abortively-r	abortively	r	0	1	1	oewn
+oewn-abortus-n	abortus	n	0	1	1	oewn
+oewn-aboulia-n	aboulia	n	0	1	1	oewn
+oewn-aboulic-a	aboulic	a	0	1	1	oewn
+oewn-abound-v	abound	v	0	1	1	oewn
+oewn-abound_in-v	abound in	v	0	2	1	oewn
+oewn-abounding-a	abounding	a	0	1	1	oewn
+oewn-about-a	about	a	0	1	1	oewn
+oewn-about-face-n	about-face	n	0	1	1	oewn
+oewn-about-face-v	about-face	v	0	1	1	oewn
+oewn-about-r	about	r	0	1	1	oewn
+oewn-about_turn-n	about turn	n	0	2	2	oewn
+oewn-above-a	above	a	0	1	1	oewn
+oewn-above-mentioned-a	above-mentioned	a	0	1	1	oewn
+oewn-above-n	above	n	0	1	1	oewn
+oewn-above-named-a	above-named	a	0	1	1	oewn
+oewn-above-r	above	r	0	1	1	oewn
+oewn-above_all-r	above all	r	0	2	2	oewn
+oewn-aboveboard-a	aboveboard	a	0	1	1	oewn
+oewn-aboveboard-r	aboveboard	r	0	1	1	oewn
+oewn-aboveground-a	aboveground	a	0	1	1	oewn
+oewn-abracadabra-n	abracadabra	n	0	1	1	oewn
+oewn-abrachia-n	abrachia	n	0	1	1	oewn
+oewn-abradant-n	abradant	n	0	1	1	oewn
+oewn-abrade-v	abrade	v	0	1	1	oewn
+oewn-abrader-n	abrader	n	0	1	1	oewn
+oewn-abrading_stone-n	abrading stone	n	0	2	2	oewn
+oewn-abranchial-a	abranchial	a	0	1	1	oewn
+oewn-abranchiate-a	abranchiate	a	0	1	1	oewn
+oewn-abranchious-a	abranchious	a	0	1	1	oewn
+oewn-abrase-v	abrase	v	0	1	1	oewn
+oewn-abrasion-n	abrasion	n	0	1	1	oewn
+oewn-abrasive-a	abrasive	a	0	1	1	oewn
+oewn-abrasive-n	abrasive	n	0	1	1	oewn
+oewn-abrasive_material-n	abrasive material	n	0	2	2	oewn
+oewn-abrasiveness-n	abrasiveness	n	0	1	1	oewn
+oewn-abreact-v	abreact	v	0	1	1	oewn
+oewn-abreaction-n	abreaction	n	0	1	1	oewn
+oewn-abreast-a	abreast	a	0	1	1	oewn
+oewn-abreast-r	abreast	r	0	1	1	oewn
+oewn-abridge-v	abridge	v	0	1	1	oewn
+oewn-abridged-a	abridged	a	0	1	1	oewn
+oewn-abridgement-n	abridgement	n	0	1	1	oewn
+oewn-abridger-n	abridger	n	0	1	1	oewn
+oewn-abridgment-n	abridgment	n	0	1	1	oewn
+oewn-abroach-a	abroach	a	0	1	1	oewn
+oewn-abroad-a	abroad	a	0	1	1	oewn
+oewn-abroad-r	abroad	r	0	1	1	oewn
+oewn-abrocome-n	abrocome	n	0	1	1	oewn
+oewn-abrogate-v	abrogate	v	0	1	1	oewn
+oewn-abrogation-n	abrogation	n	0	1	1	oewn
+oewn-abrogator-n	abrogator	n	0	1	1	oewn
+oewn-abrupt-a	abrupt	a	0	1	1	oewn
+oewn-abruptio_placentae-n	abruptio placentae	n	0	2	2	oewn
+oewn-abruption-n	abruption	n	0	1	1	oewn
+oewn-abruptly-pinnate-a	abruptly-pinnate	a	0	1	1	oewn
+oewn-abruptly-pinnate_leaf-n	abruptly-pinnate leaf	n	0	2	2	oewn
+oewn-abruptly-r	abruptly	r	0	1	1	oewn
+oewn-abruptness-n	abruptness	n	0	1	1	oewn
+oewn-abscess-n	abscess	n	0	1	1	oewn
+oewn-abscessed-a	abscessed	a	0	1	1	oewn
+oewn-abscessed_tooth-n	abscessed tooth	n	0	2	2	oewn
+oewn-abscise-v	abscise	v	0	1	1	oewn
+oewn-abscissa-n	abscissa	n	0	1	1	oewn
+oewn-abscission-n	abscission	n	0	1	1	oewn
+oewn-abscond-v	abscond	v	0	1	1	oewn
+oewn-absconder-n	absconder	n	0	1	1	oewn
+oewn-abscondment-n	abscondment	n	0	1	1	oewn
+oewn-abseil-n	abseil	n	0	1	1	oewn
+oewn-abseil-v	abseil	v	0	1	1	oewn
+oewn-abseiler-n	abseiler	n	0	1	1	oewn
+oewn-absence-n	absence	n	0	1	1	oewn
+oewn-absence_seizure-n	absence seizure	n	0	2	2	oewn
+oewn-absence_without_leave-n	absence without leave	n	0	3	3	oewn
+oewn-absent-a	absent	a	0	1	1	oewn
+oewn-absent-v	absent	v	0	1	1	oewn
+oewn-absentee-n	absentee	n	0	1	1	oewn
+oewn-absentee_ballot-n	absentee ballot	n	0	2	2	oewn
+oewn-absentee_rate-n	absentee rate	n	0	2	2	oewn
+oewn-absenteeism-n	absenteeism	n	0	1	1	oewn
+oewn-absently-r	absently	r	0	1	1	oewn
+oewn-absentminded-a	absentminded	a	0	1	1	oewn
+oewn-absentmindedly-r	absentmindedly	r	0	1	1	oewn
+oewn-absentmindedness-n	absentmindedness	n	0	1	1	oewn
+oewn-absinth-n	absinth	n	0	1	1	oewn
+oewn-absinthe-n	absinthe	n	0	1	1	oewn
+oewn-absinthe_oil-n	absinthe oil	n	0	2	2	oewn
+oewn-absolute-a	absolute	a	0	1	1	oewn
+oewn-absolute-n	absolute	n	0	1	1	oewn
+oewn-absolute_alcohol-n	absolute alcohol	n	0	2	2	oewn
+oewn-absolute_ceiling-n	absolute ceiling	n	0	2	2	oewn
+oewn-absolute_deviation-n	absolute deviation	n	0	2	2	oewn
+oewn-absolute_encoder-n	absolute encoder	n	0	2	2	oewn
+oewn-absolute_frequency-n	absolute frequency	n	0	2	2	oewn
+oewn-absolute_magnitude-n	absolute magnitude	n	0	2	2	oewn
+oewn-absolute_majority-n	absolute majority	n	0	2	2	oewn
+oewn-absolute_music-n	absolute music	n	0	2	2	oewn
+oewn-absolute_pitch-n	absolute pitch	n	0	2	2	oewn
+oewn-absolute_scale-n	absolute scale	n	0	2	2	oewn
+oewn-absolute_space-n	absolute space	n	0	2	2	oewn
+oewn-absolute_temperature-n	absolute temperature	n	0	2	2	oewn
+oewn-absolute_threshold-n	absolute threshold	n	0	2	2	oewn
+oewn-absolute_value-n	absolute value	n	0	2	2	oewn
+oewn-absolute_viscosity-n	absolute viscosity	n	0	2	2	oewn
+oewn-absolute_zero-n	absolute zero	n	0	2	2	oewn
+oewn-absolutely-r	absolutely	r	0	1	1	oewn
+oewn-absoluteness-n	absoluteness	n	0	1	1	oewn
+oewn-absolution-n	absolution	n	0	1	1	oewn
+oewn-absolutisation-n	absolutisation	n	0	1	1	oewn
+oewn-absolutism-n	absolutism	n	0	1	1	oewn
+oewn-absolutist-a	absolutist	a	0	1	1	oewn
+oewn-absolutist-n	absolutist	n	0	1	1	oewn
+oewn-absolutistic-a	absolutistic	a	0	1	1	oewn
+oewn-absolutization-n	absolutization	n	0	1	1	oewn
+oewn-absolve-v	absolve	v	0	1	1	oewn
+oewn-absolved-a	absolved	a	0	1	1	oewn
+oewn-absolver-n	absolver	n	0	1	1	oewn
+oewn-absolvitory-a	absolvitory	a	0	1	1	oewn
+oewn-absorb-v	absorb	v	0	1	1	oewn
+oewn-absorbable-a	absorbable	a	0	1	1	oewn
+oewn-absorbance-n	absorbance	n	0	1	1	oewn
+oewn-absorbate-n	absorbate	n	0	1	1	oewn
+oewn-absorbed-a	absorbed	a	0	1	1	oewn
+oewn-absorbefacient-a	absorbefacient	a	0	1	1	oewn
+oewn-absorbency-n	absorbency	n	0	1	1	oewn
+oewn-absorbent-a	absorbent	a	0	1	1	oewn
+oewn-absorbent-n	absorbent	n	0	1	1	oewn
+oewn-absorbent_cotton-n	absorbent cotton	n	0	2	2	oewn
+oewn-absorbent_material-n	absorbent material	n	0	2	2	oewn
+oewn-absorber-n	absorber	n	0	1	1	oewn
+oewn-absorbing-a	absorbing	a	0	1	1	oewn
+oewn-absorptance-n	absorptance	n	0	1	1	oewn
+oewn-absorption-n	absorption	n	0	1	1	oewn
+oewn-absorption_band-n	absorption band	n	0	2	2	oewn
+oewn-absorption_coefficient-n	absorption coefficient	n	0	2	2	oewn
+oewn-absorption_factor-n	absorption factor	n	0	2	2	oewn
+oewn-absorption_indicator-n	absorption indicator	n	0	2	2	oewn
+oewn-absorption_spectrum-n	absorption spectrum	n	0	2	2	oewn
+oewn-absorption_unit-n	absorption unit	n	0	2	2	oewn
+oewn-absorptive-a	absorptive	a	0	1	1	oewn
+oewn-absorptivity-n	absorptivity	n	0	1	1	oewn
+oewn-absquatulate-v	absquatulate	v	0	1	1	oewn
+oewn-abstain-v	abstain	v	0	1	1	oewn
+oewn-abstainer-n	abstainer	n	0	1	1	oewn
+oewn-abstemious-a	abstemious	a	0	1	1	oewn
+oewn-abstemiously-r	abstemiously	r	0	1	1	oewn
+oewn-abstemiousness-n	abstemiousness	n	0	1	1	oewn
+oewn-abstention-n	abstention	n	0	1	1	oewn
+oewn-abstentious-a	abstentious	a	0	1	1	oewn
+oewn-abstinence-n	abstinence	n	0	1	1	oewn
+oewn-abstinent-a	abstinent	a	0	1	1	oewn
+oewn-abstinent-n	abstinent	n	0	1	1	oewn
+oewn-abstract-a	abstract	a	0	1	1	oewn
+oewn-abstract-n	abstract	n	0	1	1	oewn
+oewn-abstract-v	abstract	v	0	1	1	oewn
+oewn-abstract_art-n	abstract art	n	0	2	2	oewn
+oewn-abstract_artist-n	abstract artist	n	0	2	2	oewn
+oewn-abstract_entity-n	abstract entity	n	0	2	2	oewn
+oewn-abstract_thought-n	abstract thought	n	0	2	2	oewn
+oewn-abstracted-a	abstracted	a	0	1	1	oewn
+oewn-abstractedly-r	abstractedly	r	0	1	1	oewn
+oewn-abstractedness-n	abstractedness	n	0	1	1	oewn
+oewn-abstracter-n	abstracter	n	0	1	1	oewn
+oewn-abstraction-n	abstraction	n	0	1	1	oewn
+oewn-abstractionism-n	abstractionism	n	0	1	1	oewn
+oewn-abstractionist-a	abstractionist	a	0	1	1	oewn
+oewn-abstractionist-n	abstractionist	n	0	1	1	oewn
+oewn-abstractive-a	abstractive	a	0	1	1	oewn
+oewn-abstractly-r	abstractly	r	0	1	1	oewn
+oewn-abstractness-n	abstractness	n	0	1	1	oewn
+oewn-abstractor-n	abstractor	n	0	1	1	oewn
+oewn-abstruse-a	abstruse	a	0	1	1	oewn
+oewn-abstrusely-r	abstrusely	r	0	1	1	oewn
+oewn-abstruseness-n	abstruseness	n	0	1	1	oewn
+oewn-abstrusity-n	abstrusity	n	0	1	1	oewn
+oewn-absurd-a	absurd	a	0	1	1	oewn
+oewn-absurd-n	absurd	n	0	1	1	oewn
+oewn-absurdist_humor-n	absurdist humor	n	0	2	2	oewn
+oewn-absurdist_humour-n	absurdist humour	n	0	2	2	oewn
+oewn-absurdity-n	absurdity	n	0	1	1	oewn
+oewn-absurdly-r	absurdly	r	0	1	1	oewn
+oewn-absurdness-n	absurdness	n	0	1	1	oewn
+oewn-abulia-n	abulia	n	0	1	1	oewn
+oewn-abulic-a	abulic	a	0	1	1	oewn
+oewn-abundance-n	abundance	n	0	1	1	oewn
+oewn-abundant-a	abundant	a	0	1	1	oewn
+oewn-abundantly-r	abundantly	r	0	1	1	oewn
+oewn-abuse-n	abuse	n	0	1	1	oewn
+oewn-abuse-v	abuse	v	0	1	1	oewn
+oewn-abused-a	abused	a	0	1	1	oewn
+oewn-abuser-n	abuser	n	0	1	1	oewn
+oewn-abusive-a	abusive	a	0	1	1	oewn
+oewn-abusively-r	abusively	r	0	1	1	oewn
+oewn-abut-v	abut	v	0	1	1	oewn
+oewn-abutment-n	abutment	n	0	1	1	oewn
+oewn-abutment_arch-n	abutment arch	n	0	2	2	oewn
+oewn-abutter-n	abutter	n	0	1	1	oewn
+oewn-abuzz-a	abuzz	a	0	1	1	oewn
+oewn-abvolt-n	abvolt	n	0	1	1	oewn
+oewn-abwatt-n	abwatt	n	0	1	1	oewn
+oewn-aby-v	aby	v	0	1	1	oewn
+oewn-abye-v	abye	v	0	1	1	oewn
+oewn-abysm-n	abysm	n	0	1	1	oewn
+oewn-abysmal-a	abysmal	a	0	1	1	oewn
+oewn-abysmally-r	abysmally	r	0	1	1	oewn
+oewn-abyss-n	abyss	n	0	1	1	oewn
+oewn-abyssal-a	abyssal	a	0	1	1	oewn
+oewn-abyssal_zone-n	abyssal zone	n	0	2	2	oewn

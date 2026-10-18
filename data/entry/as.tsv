@@ -1,0 +1,618 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-aspirate-a	aspirate	a	0	1	1	dema
+oewn-ASAP-r	ASAP	r	0	1	1	oewn
+oewn-ASAT-a	ASAT	a	0	1	1	oewn
+oewn-ASCII-n	ASCII	n	0	1	1	oewn
+oewn-ASCII_character-n	ASCII character	n	0	2	2	oewn
+oewn-ASCII_control_character-n	ASCII control character	n	0	3	3	oewn
+oewn-ASCII_text_file-n	ASCII text file	n	0	3	3	oewn
+oewn-ASD-n	ASD	n	0	1	1	oewn
+oewn-ASEAN-n	ASEAN	n	0	1	1	oewn
+oewn-ASL-n	ASL	n	0	1	1	oewn
+oewn-ASMR-n	ASMR	n	0	1	1	oewn
+oewn-As-n	As	n	0	1	1	oewn
+oewn-Asadha-n	Asadha	n	0	1	1	oewn
+oewn-Asamiya-n	Asamiya	n	0	1	1	oewn
+oewn-Asamiya_language-n	Asamiya language	n	0	2	2	oewn
+oewn-Asarh-n	Asarh	n	0	1	1	oewn
+oewn-Asarum_canadense-n	Asarum canadense	n	0	2	2	oewn
+oewn-Asarum_europaeum-n	Asarum europaeum	n	0	2	2	oewn
+oewn-Asarum_shuttleworthii-n	Asarum shuttleworthii	n	0	2	2	oewn
+oewn-Asarum_virginicum-n	Asarum virginicum	n	0	2	2	oewn
+oewn-Ascaphus_trui-n	Ascaphus trui	n	0	2	2	oewn
+oewn-Ascaridia_galli-n	Ascaridia galli	n	0	2	2	oewn
+oewn-Ascaris_lumbricoides-n	Ascaris lumbricoides	n	0	2	2	oewn
+oewn-Ascension-n	Ascension	n	0	1	1	oewn
+oewn-Ascension_Day-n	Ascension Day	n	0	2	2	oewn
+oewn-Ascension_of_the_Lord-n	Ascension of the Lord	n	0	4	1	oewn
+oewn-Asclepia_meadii-n	Asclepia meadii	n	0	2	2	oewn
+oewn-Asclepias_albicans-n	Asclepias albicans	n	0	2	2	oewn
+oewn-Asclepias_curassavica-n	Asclepias curassavica	n	0	2	2	oewn
+oewn-Asclepias_exaltata-n	Asclepias exaltata	n	0	2	2	oewn
+oewn-Asclepias_incarnata-n	Asclepias incarnata	n	0	2	2	oewn
+oewn-Asclepias_meadii-n	Asclepias meadii	n	0	2	2	oewn
+oewn-Asclepias_purpurascens-n	Asclepias purpurascens	n	0	2	2	oewn
+oewn-Asclepias_speciosa-n	Asclepias speciosa	n	0	2	2	oewn
+oewn-Asclepias_subverticillata-n	Asclepias subverticillata	n	0	2	2	oewn
+oewn-Asclepias_tuberosa-n	Asclepias tuberosa	n	0	2	2	oewn
+oewn-Asclepias_verticillata-n	Asclepias verticillata	n	0	2	2	oewn
+oewn-Ascophyllum_nodosum-n	Ascophyllum nodosum	n	0	2	2	oewn
+oewn-Asgard-n	Asgard	n	0	1	1	oewn
+oewn-Ash-ap-arism-n	Ash'arism	n	0	1	1	oewn
+oewn-Ash_Can-n	Ash Can	n	0	2	2	oewn
+oewn-Ash_Wednesday-n	Ash Wednesday	n	0	2	2	oewn
+oewn-Ashcan_School-n	Ashcan School	n	0	2	2	oewn
+oewn-Ashcan_school-n	Ashcan school	n	0	2	2	oewn
+oewn-Ashkenazi-n	Ashkenazi	n	0	1	1	oewn
+oewn-Asia-n	Asia	n	0	1	1	oewn
+oewn-Asian-a	Asian	a	0	1	1	oewn
+oewn-Asian-n	Asian	n	0	1	1	oewn
+oewn-Asian_American-n	Asian American	n	0	2	2	oewn
+oewn-Asian_black_grouse-n	Asian black grouse	n	0	3	3	oewn
+oewn-Asian_coral_snake-n	Asian coral snake	n	0	3	3	oewn
+oewn-Asian_country-n	Asian country	n	0	2	2	oewn
+oewn-Asian_crocodile-n	Asian crocodile	n	0	2	2	oewn
+oewn-Asian_horseshoe_crab-n	Asian horseshoe crab	n	0	3	3	oewn
+oewn-Asian_influenza-n	Asian influenza	n	0	2	2	oewn
+oewn-Asian_longhorned_beetle-n	Asian longhorned beetle	n	0	3	3	oewn
+oewn-Asian_nation-n	Asian nation	n	0	2	2	oewn
+oewn-Asian_shamanism-n	Asian shamanism	n	0	2	2	oewn
+oewn-Asian_tiger_mosquito-n	Asian tiger mosquito	n	0	3	3	oewn
+oewn-Asian_wild_ox-n	Asian wild ox	n	0	3	3	oewn
+oewn-Asiatic-a	Asiatic	a	0	1	1	oewn
+oewn-Asiatic-n	Asiatic	n	0	1	1	oewn
+oewn-Asiatic_beetle-n	Asiatic beetle	n	0	2	2	oewn
+oewn-Asiatic_black_bear-n	Asiatic black bear	n	0	3	3	oewn
+oewn-Asiatic_buffalo-n	Asiatic buffalo	n	0	2	2	oewn
+oewn-Asiatic_cholera-n	Asiatic cholera	n	0	2	2	oewn
+oewn-Asiatic_cockroach-n	Asiatic cockroach	n	0	2	2	oewn
+oewn-Asiatic_flu-n	Asiatic flu	n	0	2	2	oewn
+oewn-Asiatic_flying_squirrel-n	Asiatic flying squirrel	n	0	3	3	oewn
+oewn-Asiatic_shrew_mole-n	Asiatic shrew mole	n	0	3	3	oewn
+oewn-Asiatic_sweetleaf-n	Asiatic sweetleaf	n	0	2	2	oewn
+oewn-Asimina_triloba-n	Asimina triloba	n	0	2	2	oewn
+oewn-Asin-n	Asin	n	0	1	1	oewn
+oewn-Asio_otus-n	Asio otus	n	0	2	2	oewn
+oewn-Aspalathus_cedcarbergensis-n	Aspalathus cedcarbergensis	n	0	2	2	oewn
+oewn-Aspalathus_linearis-n	Aspalathus linearis	n	0	2	2	oewn
+oewn-Asparagus_asparagoides-n	Asparagus asparagoides	n	0	2	2	oewn
+oewn-Asparagus_officinalis-n	Asparagus officinalis	n	0	2	2	oewn
+oewn-Asparagus_plumosus-n	Asparagus plumosus	n	0	2	2	oewn
+oewn-Asparagus_setaceous-n	Asparagus setaceous	n	0	2	2	oewn
+oewn-Asperger-ap-s_syndrome-n	Asperger's syndrome	n	0	2	2	oewn
+oewn-Aspergillus_fumigatus-n	Aspergillus fumigatus	n	0	2	2	oewn
+oewn-Asperula_odorata-n	Asperula odorata	n	0	2	2	oewn
+oewn-Asperula_tinctoria-n	Asperula tinctoria	n	0	2	2	oewn
+oewn-Asphodeline_lutea-n	Asphodeline lutea	n	0	2	2	oewn
+oewn-Aspidelaps_lubricus-n	Aspidelaps lubricus	n	0	2	2	oewn
+oewn-Aspidiotus_perniciosus-n	Aspidiotus perniciosus	n	0	2	2	oewn
+oewn-Aspidistra_elatio-n	Aspidistra elatio	n	0	2	2	oewn
+oewn-Aspidistra_elatior-n	Aspidistra elatior	n	0	2	2	oewn
+oewn-Aspidophoroides_monopterygius-n	Aspidophoroides monopterygius	n	0	2	2	oewn
+oewn-Asplenium_adiantum-nigrum-n	Asplenium adiantum-nigrum	n	0	2	2	oewn
+oewn-Asplenium_billotii-n	Asplenium billotii	n	0	2	2	oewn
+oewn-Asplenium_bradleyi-n	Asplenium bradleyi	n	0	2	2	oewn
+oewn-Asplenium_ceterach-n	Asplenium ceterach	n	0	2	2	oewn
+oewn-Asplenium_montanum-n	Asplenium montanum	n	0	2	2	oewn
+oewn-Asplenium_nidus-n	Asplenium nidus	n	0	2	2	oewn
+oewn-Asplenium_nigripes-n	Asplenium nigripes	n	0	2	2	oewn
+oewn-Asplenium_pinnatifidum-n	Asplenium pinnatifidum	n	0	2	2	oewn
+oewn-Asplenium_platyneuron-n	Asplenium platyneuron	n	0	2	2	oewn
+oewn-Asplenium_rhizophyllum-n	Asplenium rhizophyllum	n	0	2	2	oewn
+oewn-Asplenium_ruta-muraria-n	Asplenium ruta-muraria	n	0	2	2	oewn
+oewn-Asplenium_scolopendrium-n	Asplenium scolopendrium	n	0	2	2	oewn
+oewn-Asplenium_trichomanes-n	Asplenium trichomanes	n	0	2	2	oewn
+oewn-Asplenium_viride-n	Asplenium viride	n	0	2	2	oewn
+oewn-Assam_fever-n	Assam fever	n	0	2	2	oewn
+oewn-Assam_rubber-n	Assam rubber	n	0	2	2	oewn
+oewn-Assamese-a	Assamese	a	0	1	1	oewn
+oewn-Assamese-n	Assamese	n	0	1	1	oewn
+oewn-Assamese_language-n	Assamese language	n	0	2	2	oewn
+oewn-Assemblies_of_God-n	Assemblies of God	n	0	3	1	oewn
+oewn-Associate_in_Applied_Science-n	Associate in Applied Science	n	0	4	1	oewn
+oewn-Associate_in_Arts-n	Associate in Arts	n	0	3	1	oewn
+oewn-Associate_in_Nursing-n	Associate in Nursing	n	0	3	1	oewn
+oewn-Association_for_the_Advancement_of_Retired_Persons-n	Association for the Advancement of Retired Persons	n	0	7	1	oewn
+oewn-Association_of_Orangemen-n	Association of Orangemen	n	0	3	1	oewn
+oewn-Association_of_Southeast_Asian_Nations-n	Association of Southeast Asian Nations	n	0	5	1	oewn
+oewn-Assumption-n	Assumption	n	0	1	1	oewn
+oewn-Assumption_of_Mary-n	Assumption of Mary	n	0	3	1	oewn
+oewn-Assyrian-n	Assyrian	n	0	1	1	oewn
+oewn-Assyrian_Akkadian-n	Assyrian Akkadian	n	0	2	2	oewn
+oewn-Assyrian_Akkadian_language-n	Assyrian Akkadian language	n	0	3	3	oewn
+oewn-Assyrian_Neo-Aramaic-n	Assyrian Neo-Aramaic	n	0	2	2	oewn
+oewn-Assyrian_Neo-Aramaic_language-n	Assyrian Neo-Aramaic language	n	0	3	3	oewn
+oewn-Assyrian_language-n	Assyrian language	n	0	2	2	oewn
+oewn-Assyriology-n	Assyriology	n	0	1	1	oewn
+oewn-Aster_acuminatus-n	Aster acuminatus	n	0	2	2	oewn
+oewn-Aster_arenosus-n	Aster arenosus	n	0	2	2	oewn
+oewn-Aster_cordifolius-n	Aster cordifolius	n	0	2	2	oewn
+oewn-Aster_divaricatus-n	Aster divaricatus	n	0	2	2	oewn
+oewn-Aster_dumosus-n	Aster dumosus	n	0	2	2	oewn
+oewn-Aster_ericoides-n	Aster ericoides	n	0	2	2	oewn
+oewn-Aster_falcatus-n	Aster falcatus	n	0	2	2	oewn
+oewn-Aster_linarifolius-n	Aster linarifolius	n	0	2	2	oewn
+oewn-Aster_linosyris-n	Aster linosyris	n	0	2	2	oewn
+oewn-Aster_macrophyllus-n	Aster macrophyllus	n	0	2	2	oewn
+oewn-Aster_novae-angliae-n	Aster novae-angliae	n	0	2	2	oewn
+oewn-Aster_novi-belgii-n	Aster novi-belgii	n	0	2	2	oewn
+oewn-Aster_ptarmicoides-n	Aster ptarmicoides	n	0	2	2	oewn
+oewn-Aster_shortii-n	Aster shortii	n	0	2	2	oewn
+oewn-Aster_tripolium-n	Aster tripolium	n	0	2	2	oewn
+oewn-Aster_turbinellis-n	Aster turbinellis	n	0	2	2	oewn
+oewn-Asterope-n	Asterope	n	0	1	1	oewn
+oewn-Astilbe_biternata-n	Astilbe biternata	n	0	2	2	oewn
+oewn-Astilbe_chinensis_pumila-n	Astilbe chinensis pumila	n	0	3	3	oewn
+oewn-Astilbe_japonica-n	Astilbe japonica	n	0	2	2	oewn
+oewn-Astragalus_alpinus-n	Astragalus alpinus	n	0	2	2	oewn
+oewn-Astragalus_danicus-n	Astragalus danicus	n	0	2	2	oewn
+oewn-Astragalus_glycyphyllos-n	Astragalus glycyphyllos	n	0	2	2	oewn
+oewn-Astrantia_major-n	Astrantia major	n	0	2	2	oewn
+oewn-Astreus_hygrometricus-n	Astreus hygrometricus	n	0	2	2	oewn
+oewn-Astreus_pteridis-n	Astreus pteridis	n	0	2	2	oewn
+oewn-Astroloma_humifusum-n	Astroloma humifusum	n	0	2	2	oewn
+oewn-Astronium_fraxinifolium-n	Astronium fraxinifolium	n	0	2	2	oewn
+oewn-Astronomical_Unit-n	Astronomical Unit	n	0	2	2	oewn
+oewn-Astrophyton_muricatum-n	Astrophyton muricatum	n	0	2	2	oewn
+oewn-Astropogon_stellatus-n	Astropogon stellatus	n	0	2	2	oewn
+oewn-Asvina-n	Asvina	n	0	1	1	oewn
+oewn-Asvins-n	Asvins	n	0	1	1	oewn
+oewn-as-r	as	r	0	1	1	oewn
+oewn-as_a_group-r	as a group	r	0	3	3	oewn
+oewn-as_a_matter_of_fact-r	as a matter of fact	r	0	5	5	oewn
+oewn-as_far_as_possible-r	as far as possible	r	0	4	4	oewn
+oewn-as_follows-r	as follows	r	0	2	2	oewn
+oewn-as_if_by_magic-r	as if by magic	r	0	4	4	oewn
+oewn-as_it_is-r	as it is	r	0	3	3	oewn
+oewn-as_it_were-r	as it were	r	0	3	3	oewn
+oewn-as_luck_would_have_it-r	as luck would have it	r	0	5	5	oewn
+oewn-as_much_as_possible-r	as much as possible	r	0	4	4	oewn
+oewn-as_needed-r	as needed	r	0	2	2	oewn
+oewn-as_required-r	as required	r	0	2	2	oewn
+oewn-as_the_crow_flies-r	as the crow flies	r	0	4	4	oewn
+oewn-as_usual-r	as usual	r	0	2	2	oewn
+oewn-as_we_say-r	as we say	r	0	3	3	oewn
+oewn-as_well-r	as well	r	0	2	2	oewn
+oewn-as_yet-r	as yet	r	0	2	2	oewn
+oewn-asa_dulcis-n	asa dulcis	n	0	2	2	oewn
+oewn-asafetida-n	asafetida	n	0	1	1	oewn
+oewn-asafoetida-n	asafoetida	n	0	1	1	oewn
+oewn-asana-n	asana	n	0	1	1	oewn
+oewn-asarabacca-n	asarabacca	n	0	1	1	oewn
+oewn-asbestos-n	asbestos	n	0	1	1	oewn
+oewn-asbestos_abatement-n	asbestos abatement	n	0	2	2	oewn
+oewn-asbestosis-n	asbestosis	n	0	1	1	oewn
+oewn-ascariasis-n	ascariasis	n	0	1	1	oewn
+oewn-ascend-v	ascend	v	0	1	1	oewn
+oewn-ascendable-a	ascendable	a	0	1	1	oewn
+oewn-ascendance-n	ascendance	n	0	1	1	oewn
+oewn-ascendancy-n	ascendancy	n	0	1	1	oewn
+oewn-ascendant-a	ascendant	a	0	1	1	oewn
+oewn-ascendant-n	ascendant	n	0	1	1	oewn
+oewn-ascendence-n	ascendence	n	0	1	1	oewn
+oewn-ascendency-n	ascendency	n	0	1	1	oewn
+oewn-ascendent-a	ascendent	a	0	1	1	oewn
+oewn-ascendent-n	ascendent	n	0	1	1	oewn
+oewn-ascender-n	ascender	n	0	1	1	oewn
+oewn-ascendible-a	ascendible	a	0	1	1	oewn
+oewn-ascending-a	ascending	a	0	1	1	oewn
+oewn-ascending-n	ascending	n	0	1	1	oewn
+oewn-ascending_aorta-n	ascending aorta	n	0	2	2	oewn
+oewn-ascending_artery-n	ascending artery	n	0	2	2	oewn
+oewn-ascending_colon-n	ascending colon	n	0	2	2	oewn
+oewn-ascending_node-n	ascending node	n	0	2	2	oewn
+oewn-ascension-n	ascension	n	0	1	1	oewn
+oewn-ascensional-a	ascensional	a	0	1	1	oewn
+oewn-ascensive-a	ascensive	a	0	1	1	oewn
+oewn-ascent-n	ascent	n	0	1	1	oewn
+oewn-ascertain-v	ascertain	v	0	1	1	oewn
+oewn-ascertainable-a	ascertainable	a	0	1	1	oewn
+oewn-ascertained-a	ascertained	a	0	1	1	oewn
+oewn-ascesis-n	ascesis	n	0	1	1	oewn
+oewn-ascetic-a	ascetic	a	0	1	1	oewn
+oewn-ascetic-n	ascetic	n	0	1	1	oewn
+oewn-ascetical-a	ascetical	a	0	1	1	oewn
+oewn-ascetically-r	ascetically	r	0	1	1	oewn
+oewn-asceticism-n	asceticism	n	0	1	1	oewn
+oewn-ascidian-n	ascidian	n	0	1	1	oewn
+oewn-ascidian_tadpole-n	ascidian tadpole	n	0	2	2	oewn
+oewn-ascites-n	ascites	n	0	1	1	oewn
+oewn-ascitic-a	ascitic	a	0	1	1	oewn
+oewn-asclepiad-n	asclepiad	n	0	1	1	oewn
+oewn-asclepiadaceous-a	asclepiadaceous	a	0	1	1	oewn
+oewn-ascocarp-n	ascocarp	n	0	1	1	oewn
+oewn-ascocarpous-a	ascocarpous	a	0	1	1	oewn
+oewn-ascolichen-n	ascolichen	n	0	1	1	oewn
+oewn-ascoma-n	ascoma	n	0	1	1	oewn
+oewn-ascomycete-n	ascomycete	n	0	1	1	oewn
+oewn-ascomycetous-a	ascomycetous	a	0	1	1	oewn
+oewn-ascomycetous_fungus-n	ascomycetous fungus	n	0	2	2	oewn
+oewn-ascorbic_acid-n	ascorbic acid	n	0	2	2	oewn
+oewn-ascospore-n	ascospore	n	0	1	1	oewn
+oewn-ascosporic-a	ascosporic	a	0	1	1	oewn
+oewn-ascosporous-a	ascosporous	a	0	1	1	oewn
+oewn-ascot-n	ascot	n	0	1	1	oewn
+oewn-ascribable-a	ascribable	a	0	1	1	oewn
+oewn-ascribe-v	ascribe	v	0	1	1	oewn
+oewn-ascription-n	ascription	n	0	1	1	oewn
+oewn-ascus-n	ascus	n	0	1	1	oewn
+oewn-asdic-n	asdic	n	0	1	1	oewn
+oewn-asea-r	asea	r	0	1	1	oewn
+oewn-asepsis-n	asepsis	n	0	1	1	oewn
+oewn-aseptic-a	aseptic	a	0	1	1	oewn
+oewn-asexual-a	asexual	a	0	1	1	oewn
+oewn-asexual_reproduction-n	asexual reproduction	n	0	2	2	oewn
+oewn-asexuality-n	asexuality	n	0	1	1	oewn
+oewn-asexually-r	asexually	r	0	1	1	oewn
+oewn-ash-bin-n	ash-bin	n	0	1	1	oewn
+oewn-ash-blonde-a	ash-blonde	a	0	1	1	oewn
+oewn-ash-gray-a	ash-gray	a	0	1	1	oewn
+oewn-ash-grey-a	ash-grey	a	0	1	1	oewn
+oewn-ash-key-n	ash-key	n	0	1	1	oewn
+oewn-ash-leaved_maple-n	ash-leaved maple	n	0	2	2	oewn
+oewn-ash-n	ash	n	0	1	1	oewn
+oewn-ash-pan-n	ash-pan	n	0	1	1	oewn
+oewn-ash-v	ash	v	0	1	1	oewn
+oewn-ash_bin-n	ash bin	n	0	2	2	oewn
+oewn-ash_cake-n	ash cake	n	0	2	2	oewn
+oewn-ash_gray-n	ash gray	n	0	2	2	oewn
+oewn-ash_grey-n	ash grey	n	0	2	2	oewn
+oewn-ash_tree-n	ash tree	n	0	2	2	oewn
+oewn-ashamed-a	ashamed	a	0	1	1	oewn
+oewn-ashamedly-r	ashamedly	r	0	1	1	oewn
+oewn-ashanti_pepper-n	ashanti pepper	n	0	2	2	oewn
+oewn-ashbin-n	ashbin	n	0	1	1	oewn
+oewn-ashcake-n	ashcake	n	0	1	1	oewn
+oewn-ashcan-n	ashcan	n	0	1	1	oewn
+oewn-ashen-a	ashen	a	0	1	1	oewn
+oewn-ashlar-n	ashlar	n	0	1	1	oewn
+oewn-ashore-r	ashore	r	0	1	1	oewn
+oewn-ashram-n	ashram	n	0	1	1	oewn
+oewn-ashtray-n	ashtray	n	0	1	1	oewn
+oewn-ashy-a	ashy	a	0	1	1	oewn
+oewn-aside-n	aside	n	0	1	1	oewn
+oewn-aside-r	aside	r	0	1	1	oewn
+oewn-asigmatic_aorist-n	asigmatic aorist	n	0	2	2	oewn
+oewn-asinine-a	asinine	a	0	1	1	oewn
+oewn-asininity-n	asininity	n	0	1	1	oewn
+oewn-ask-v	ask	v	0	1	1	oewn
+oewn-ask_for-v	ask for	v	0	2	1	oewn
+oewn-ask_for_it-v	ask for it	v	0	3	1	oewn
+oewn-ask_for_trouble-v	ask for trouble	v	0	3	1	oewn
+oewn-ask_in-v	ask in	v	0	2	1	oewn
+oewn-ask_out-v	ask out	v	0	2	1	oewn
+oewn-ask_over-v	ask over	v	0	2	1	oewn
+oewn-ask_round-v	ask round	v	0	2	1	oewn
+oewn-askance-a	askance	a	0	1	1	oewn
+oewn-askance-r	askance	r	0	1	1	oewn
+oewn-askant-a	askant	a	0	1	1	oewn
+oewn-asker-n	asker	n	0	1	1	oewn
+oewn-askew-a	askew	a	0	1	1	oewn
+oewn-askew-r	askew	r	0	1	1	oewn
+oewn-asking-n	asking	n	0	1	1	oewn
+oewn-asking_price-n	asking price	n	0	2	2	oewn
+oewn-aslant-a	aslant	a	0	1	1	oewn
+oewn-aslant-r	aslant	r	0	1	1	oewn
+oewn-asleep-a	asleep	a	0	1	1	oewn
+oewn-asleep-r	asleep	r	0	1	1	oewn
+oewn-aslope-a	aslope	a	0	1	1	oewn
+oewn-asocial-a	asocial	a	0	1	1	oewn
+oewn-asp-n	asp	n	0	1	1	oewn
+oewn-asp_viper-n	asp viper	n	0	2	2	oewn
+oewn-asparaginase-n	asparaginase	n	0	1	1	oewn
+oewn-asparagine-n	asparagine	n	0	1	1	oewn
+oewn-asparagus-n	asparagus	n	0	1	1	oewn
+oewn-asparagus_bean-n	asparagus bean	n	0	2	2	oewn
+oewn-asparagus_bed-n	asparagus bed	n	0	2	2	oewn
+oewn-asparagus_fern-n	asparagus fern	n	0	2	2	oewn
+oewn-asparagus_pea-n	asparagus pea	n	0	2	2	oewn
+oewn-aspartame-n	aspartame	n	0	1	1	oewn
+oewn-aspartic_acid-n	aspartic acid	n	0	2	2	oewn
+oewn-aspect-n	aspect	n	0	1	1	oewn
+oewn-aspect_ratio-n	aspect ratio	n	0	2	2	oewn
+oewn-aspectual-a	aspectual	a	0	1	1	oewn
+oewn-aspen-n	aspen	n	0	1	1	oewn
+oewn-aspen_poplar-n	aspen poplar	n	0	2	2	oewn
+oewn-asper-n	asper	n	0	1	1	oewn
+oewn-aspergill-n	aspergill	n	0	1	1	oewn
+oewn-aspergillosis-n	aspergillosis	n	0	1	1	oewn
+oewn-asperity-n	asperity	n	0	1	1	oewn
+oewn-asperse-v	asperse	v	0	1	1	oewn
+oewn-aspersion-n	aspersion	n	0	1	1	oewn
+oewn-aspersorium-n	aspersorium	n	0	1	1	oewn
+oewn-asphalt-n	asphalt	n	0	1	1	oewn
+oewn-asphalt-v	asphalt	v	0	1	1	oewn
+oewn-asphaltic-a	asphaltic	a	0	1	1	oewn
+oewn-aspheric-a	aspheric	a	0	1	1	oewn
+oewn-aspherical-a	aspherical	a	0	1	1	oewn
+oewn-asphodel-n	asphodel	n	0	1	1	oewn
+oewn-asphyxia-n	asphyxia	n	0	1	1	oewn
+oewn-asphyxiate-v	asphyxiate	v	0	1	1	oewn
+oewn-asphyxiated-a	asphyxiated	a	0	1	1	oewn
+oewn-asphyxiating-a	asphyxiating	a	0	1	1	oewn
+oewn-asphyxiation-n	asphyxiation	n	0	1	1	oewn
+oewn-asphyxiator-n	asphyxiator	n	0	1	1	oewn
+oewn-aspic-n	aspic	n	0	1	1	oewn
+oewn-aspidistra-n	aspidistra	n	0	1	1	oewn
+oewn-aspirant-a	aspirant	a	0	1	1	oewn
+oewn-aspirant-n	aspirant	n	0	1	1	oewn
+oewn-aspirate-n	aspirate	n	0	1	1	oewn
+oewn-aspirate-v	aspirate	v	0	1	1	oewn
+oewn-aspiration-n	aspiration	n	0	1	1	oewn
+oewn-aspiration_pneumonia-n	aspiration pneumonia	n	0	2	2	oewn
+oewn-aspirator-n	aspirator	n	0	1	1	oewn
+oewn-aspire-v	aspire	v	0	1	1	oewn
+oewn-aspirer-n	aspirer	n	0	1	1	oewn
+oewn-aspirin-n	aspirin	n	0	1	1	oewn
+oewn-aspirin_powder-n	aspirin powder	n	0	2	2	oewn
+oewn-aspiring-a	aspiring	a	0	1	1	oewn
+oewn-asquint-a	asquint	a	0	1	1	oewn
+oewn-ass-kisser-n	ass-kisser	n	0	1	1	oewn
+oewn-ass-n	ass	n	0	1	1	oewn
+oewn-assagai-n	assagai	n	0	1	1	oewn
+oewn-assail-v	assail	v	0	1	1	oewn
+oewn-assailability-n	assailability	n	0	1	1	oewn
+oewn-assailable-a	assailable	a	0	1	1	oewn
+oewn-assailant-n	assailant	n	0	1	1	oewn
+oewn-assassin-n	assassin	n	0	1	1	oewn
+oewn-assassin_bug-n	assassin bug	n	0	2	2	oewn
+oewn-assassinate-v	assassinate	v	0	1	1	oewn
+oewn-assassinated-a	assassinated	a	0	1	1	oewn
+oewn-assassination-n	assassination	n	0	1	1	oewn
+oewn-assassinator-n	assassinator	n	0	1	1	oewn
+oewn-assault-n	assault	n	0	1	1	oewn
+oewn-assault-v	assault	v	0	1	1	oewn
+oewn-assault_and_battery-n	assault and battery	n	0	3	3	oewn
+oewn-assault_gun-n	assault gun	n	0	2	2	oewn
+oewn-assault_rifle-n	assault rifle	n	0	2	2	oewn
+oewn-assaulter-n	assaulter	n	0	1	1	oewn
+oewn-assaultive-a	assaultive	a	0	1	1	oewn
+oewn-assay-mark-n	assay-mark	n	0	1	1	oewn
+oewn-assay-n	assay	n	0	1	1	oewn
+oewn-assay-v	assay	v	0	1	1	oewn
+oewn-assayer-n	assayer	n	0	1	1	oewn
+oewn-assegai-n	assegai	n	0	1	1	oewn
+oewn-assemblage-n	assemblage	n	0	1	1	oewn
+oewn-assemble-v	assemble	v	0	1	1	oewn
+oewn-assembler-n	assembler	n	0	1	1	oewn
+oewn-assembling-n	assembling	n	0	1	1	oewn
+oewn-assembly-n	assembly	n	0	1	1	oewn
+oewn-assembly_hall-n	assembly hall	n	0	2	2	oewn
+oewn-assembly_language-n	assembly language	n	0	2	2	oewn
+oewn-assembly_line-n	assembly line	n	0	2	2	oewn
+oewn-assembly_plant-n	assembly plant	n	0	2	2	oewn
+oewn-assembly_program-n	assembly program	n	0	2	2	oewn
+oewn-assemblyman-n	assemblyman	n	0	1	1	oewn
+oewn-assemblywoman-n	assemblywoman	n	0	1	1	oewn
+oewn-assent-n	assent	n	0	1	1	oewn
+oewn-assent-v	assent	v	0	1	1	oewn
+oewn-assenter-n	assenter	n	0	1	1	oewn
+oewn-assentient-a	assentient	a	0	1	1	oewn
+oewn-assenting-a	assenting	a	0	1	1	oewn
+oewn-assenting-n	assenting	n	0	1	1	oewn
+oewn-assert-v	assert	v	0	1	1	oewn
+oewn-assert_oneself-v	assert oneself	v	0	2	1	oewn
+oewn-assertable-a	assertable	a	0	1	1	oewn
+oewn-asserted-a	asserted	a	0	1	1	oewn
+oewn-asserter-n	asserter	n	0	1	1	oewn
+oewn-asserting-a	asserting	a	0	1	1	oewn
+oewn-assertion-n	assertion	n	0	1	1	oewn
+oewn-assertive-a	assertive	a	0	1	1	oewn
+oewn-assertively-r	assertively	r	0	1	1	oewn
+oewn-assertiveness-n	assertiveness	n	0	1	1	oewn
+oewn-assertiveness_training-n	assertiveness training	n	0	2	2	oewn
+oewn-assess-v	assess	v	0	1	1	oewn
+oewn-assessable-a	assessable	a	0	1	1	oewn
+oewn-assessee-n	assessee	n	0	1	1	oewn
+oewn-assessment-n	assessment	n	0	1	1	oewn
+oewn-assessor-n	assessor	n	0	1	1	oewn
+oewn-asset-n	asset	n	0	1	1	oewn
+oewn-assets-n	assets	n	0	1	1	oewn
+oewn-asseverate-v	asseverate	v	0	1	1	oewn
+oewn-asseveration-n	asseveration	n	0	1	1	oewn
+oewn-asseverator-n	asseverator	n	0	1	1	oewn
+oewn-asshole-n	asshole	n	0	1	1	oewn
+oewn-assibilate-v	assibilate	v	0	1	1	oewn
+oewn-assibilation-n	assibilation	n	0	1	1	oewn
+oewn-assiduity-n	assiduity	n	0	1	1	oewn
+oewn-assiduous-a	assiduous	a	0	1	1	oewn
+oewn-assiduously-r	assiduously	r	0	1	1	oewn
+oewn-assiduousness-n	assiduousness	n	0	1	1	oewn
+oewn-assign-v	assign	v	0	1	1	oewn
+oewn-assignable-a	assignable	a	0	1	1	oewn
+oewn-assignation-n	assignation	n	0	1	1	oewn
+oewn-assigned-a	assigned	a	0	1	1	oewn
+oewn-assignee-n	assignee	n	0	1	1	oewn
+oewn-assigning-n	assigning	n	0	1	1	oewn
+oewn-assignment-n	assignment	n	0	1	1	oewn
+oewn-assignor-n	assignor	n	0	1	1	oewn
+oewn-assimilability-n	assimilability	n	0	1	1	oewn
+oewn-assimilable-a	assimilable	a	0	1	1	oewn
+oewn-assimilate-v	assimilate	v	0	1	1	oewn
+oewn-assimilating-a	assimilating	a	0	1	1	oewn
+oewn-assimilation-n	assimilation	n	0	1	1	oewn
+oewn-assimilative-a	assimilative	a	0	1	1	oewn
+oewn-assimilator-n	assimilator	n	0	1	1	oewn
+oewn-assimilatory-a	assimilatory	a	0	1	1	oewn
+oewn-assist-n	assist	n	0	1	1	oewn
+oewn-assist-v	assist	v	0	1	1	oewn
+oewn-assistance-n	assistance	n	0	1	1	oewn
+oewn-assistant-a	assistant	a	0	1	1	oewn
+oewn-assistant-n	assistant	n	0	1	1	oewn
+oewn-assistant_foreman-n	assistant foreman	n	0	2	2	oewn
+oewn-assistant_professor-n	assistant professor	n	0	2	2	oewn
+oewn-assistant_referee-n	assistant referee	n	0	2	2	oewn
+oewn-assisted-a	assisted	a	0	1	1	oewn
+oewn-assisted_suicide-n	assisted suicide	n	0	2	2	oewn
+oewn-assistive-a	assistive	a	0	1	1	oewn
+oewn-assize-n	assize	n	0	1	1	oewn
+oewn-assizes-n	assizes	n	0	1	1	oewn
+oewn-associability-n	associability	n	0	1	1	oewn
+oewn-associable-a	associable	a	0	1	1	oewn
+oewn-associableness-n	associableness	n	0	1	1	oewn
+oewn-associate-a	associate	a	0	1	1	oewn
+oewn-associate-n	associate	n	0	1	1	oewn
+oewn-associate-v	associate	v	0	1	1	oewn
+oewn-associate_degree-n	associate degree	n	0	2	2	oewn
+oewn-associate_professor-n	associate professor	n	0	2	2	oewn
+oewn-associated_state-n	associated state	n	0	2	2	oewn
+oewn-associateship-n	associateship	n	0	1	1	oewn
+oewn-association-n	association	n	0	1	1	oewn
+oewn-association_area-n	association area	n	0	2	2	oewn
+oewn-association_cortex-n	association cortex	n	0	2	2	oewn
+oewn-association_football-n	association football	n	0	2	2	oewn
+oewn-association_theory-n	association theory	n	0	2	2	oewn
+oewn-associational-a	associational	a	0	1	1	oewn
+oewn-associationism-n	associationism	n	0	1	1	oewn
+oewn-associative-a	associative	a	0	1	1	oewn
+oewn-associative_aphasia-n	associative aphasia	n	0	2	2	oewn
+oewn-associatory-a	associatory	a	0	1	1	oewn
+oewn-assoil-v	assoil	v	0	1	1	oewn
+oewn-assonance-n	assonance	n	0	1	1	oewn
+oewn-assonant-a	assonant	a	0	1	1	oewn
+oewn-assonate-v	assonate	v	0	1	1	oewn
+oewn-assort-v	assort	v	0	1	1	oewn
+oewn-assortative_mating-n	assortative mating	n	0	2	2	oewn
+oewn-assorted-a	assorted	a	0	1	1	oewn
+oewn-assortment-n	assortment	n	0	1	1	oewn
+oewn-assuage-v	assuage	v	0	1	1	oewn
+oewn-assuagement-n	assuagement	n	0	1	1	oewn
+oewn-assuasive-a	assuasive	a	0	1	1	oewn
+oewn-assume-v	assume	v	0	1	1	oewn
+oewn-assumed-a	assumed	a	0	1	1	oewn
+oewn-assumed_name-n	assumed name	n	0	2	2	oewn
+oewn-assuming-a	assuming	a	0	1	1	oewn
+oewn-assumption-n	assumption	n	0	1	1	oewn
+oewn-assumptive-a	assumptive	a	0	1	1	oewn
+oewn-assurance-n	assurance	n	0	1	1	oewn
+oewn-assure-v	assure	v	0	1	1	oewn
+oewn-assured-a	assured	a	0	1	1	oewn
+oewn-assuredly-r	assuredly	r	0	1	1	oewn
+oewn-assuredness-n	assuredness	n	0	1	1	oewn
+oewn-assurgent-a	assurgent	a	0	1	1	oewn
+oewn-assuring-a	assuring	a	0	1	1	oewn
+oewn-astasia-n	astasia	n	0	1	1	oewn
+oewn-astatic-a	astatic	a	0	1	1	oewn
+oewn-astatic_coils-n	astatic coils	n	0	2	2	oewn
+oewn-astatic_galvanometer-n	astatic galvanometer	n	0	2	2	oewn
+oewn-astatine-n	astatine	n	0	1	1	oewn
+oewn-aster-n	aster	n	0	1	1	oewn
+oewn-astereognosis-n	astereognosis	n	0	1	1	oewn
+oewn-asteriated-a	asteriated	a	0	1	1	oewn
+oewn-asterid_dicot_family-n	asterid dicot family	n	0	3	3	oewn
+oewn-asterid_dicot_genus-n	asterid dicot genus	n	0	3	3	oewn
+oewn-asterion-n	asterion	n	0	1	1	oewn
+oewn-asterisk-n	asterisk	n	0	1	1	oewn
+oewn-asterisk-v	asterisk	v	0	1	1	oewn
+oewn-asterisked-a	asterisked	a	0	1	1	oewn
+oewn-asterism-n	asterism	n	0	1	1	oewn
+oewn-asterismal-a	asterismal	a	0	1	1	oewn
+oewn-astern-r	astern	r	0	1	1	oewn
+oewn-asternal-a	asternal	a	0	1	1	oewn
+oewn-asteroid-a	asteroid	a	0	1	1	oewn
+oewn-asteroid-n	asteroid	n	0	1	1	oewn
+oewn-asteroid_belt-n	asteroid belt	n	0	2	2	oewn
+oewn-asteroidal-a	asteroidal	a	0	1	1	oewn
+oewn-asthenia-n	asthenia	n	0	1	1	oewn
+oewn-asthenic-a	asthenic	a	0	1	1	oewn
+oewn-asthenic_type-n	asthenic type	n	0	2	2	oewn
+oewn-asthenopia-n	asthenopia	n	0	1	1	oewn
+oewn-asthenosphere-n	asthenosphere	n	0	1	1	oewn
+oewn-astheny-n	astheny	n	0	1	1	oewn
+oewn-asthma-n	asthma	n	0	1	1	oewn
+oewn-asthma_attack-n	asthma attack	n	0	2	2	oewn
+oewn-asthmatic-a	asthmatic	a	0	1	1	oewn
+oewn-asthmatic-n	asthmatic	n	0	1	1	oewn
+oewn-astigmatic-a	astigmatic	a	0	1	1	oewn
+oewn-astigmatism-n	astigmatism	n	0	1	1	oewn
+oewn-astigmia-n	astigmia	n	0	1	1	oewn
+oewn-astilbe-n	astilbe	n	0	1	1	oewn
+oewn-astir-a	astir	a	0	1	1	oewn
+oewn-astomatal-a	astomatal	a	0	1	1	oewn
+oewn-astomatous-a	astomatous	a	0	1	1	oewn
+oewn-astonied-a	astonied	a	0	1	1	oewn
+oewn-astonish-v	astonish	v	0	1	1	oewn
+oewn-astonished-a	astonished	a	0	1	1	oewn
+oewn-astonishing-a	astonishing	a	0	1	1	oewn
+oewn-astonishingly-r	astonishingly	r	0	1	1	oewn
+oewn-astonishment-n	astonishment	n	0	1	1	oewn
+oewn-astound-v	astound	v	0	1	1	oewn
+oewn-astounded-a	astounded	a	0	1	1	oewn
+oewn-astounding-a	astounding	a	0	1	1	oewn
+oewn-astraddle-r	astraddle	r	0	1	1	oewn
+oewn-astragal-n	astragal	n	0	1	1	oewn
+oewn-astragalar-a	astragalar	a	0	1	1	oewn
+oewn-astragalus-n	astragalus	n	0	1	1	oewn
+oewn-astrakhan-n	astrakhan	n	0	1	1	oewn
+oewn-astral-a	astral	a	0	1	1	oewn
+oewn-astrantia-n	astrantia	n	0	1	1	oewn
+oewn-astraphobia-n	astraphobia	n	0	1	1	oewn
+oewn-astray-r	astray	r	0	1	1	oewn
+oewn-astride-r	astride	r	0	1	1	oewn
+oewn-astringe-v	astringe	v	0	1	1	oewn
+oewn-astringence-n	astringence	n	0	1	1	oewn
+oewn-astringency-n	astringency	n	0	1	1	oewn
+oewn-astringent-a	astringent	a	0	1	1	oewn
+oewn-astringent-n	astringent	n	0	1	1	oewn
+oewn-astringent_drug-n	astringent drug	n	0	2	2	oewn
+oewn-astrobiology-n	astrobiology	n	0	1	1	oewn
+oewn-astrocyte-n	astrocyte	n	0	1	1	oewn
+oewn-astrocytic-a	astrocytic	a	0	1	1	oewn
+oewn-astrodome-n	astrodome	n	0	1	1	oewn
+oewn-astrodynamics-n	astrodynamics	n	0	1	1	oewn
+oewn-astrogate-v	astrogate	v	0	1	1	oewn
+oewn-astrogator-n	astrogator	n	0	1	1	oewn
+oewn-astroglia-n	astroglia	n	0	1	1	oewn
+oewn-astrolabe-n	astrolabe	n	0	1	1	oewn
+oewn-astrolatry-n	astrolatry	n	0	1	1	oewn
+oewn-astrologer-n	astrologer	n	0	1	1	oewn
+oewn-astrological-a	astrological	a	0	1	1	oewn
+oewn-astrologist-n	astrologist	n	0	1	1	oewn
+oewn-astrology-n	astrology	n	0	1	1	oewn
+oewn-astrometry-n	astrometry	n	0	1	1	oewn
+oewn-astronaut-n	astronaut	n	0	1	1	oewn
+oewn-astronautic-a	astronautic	a	0	1	1	oewn
+oewn-astronautical-a	astronautical	a	0	1	1	oewn
+oewn-astronautics-n	astronautics	n	0	1	1	oewn
+oewn-astronavigation-n	astronavigation	n	0	1	1	oewn
+oewn-astronomer-n	astronomer	n	0	1	1	oewn
+oewn-astronomic-a	astronomic	a	0	1	1	oewn
+oewn-astronomical-a	astronomical	a	0	1	1	oewn
+oewn-astronomical_telescope-n	astronomical telescope	n	0	2	2	oewn
+oewn-astronomical_year-n	astronomical year	n	0	2	2	oewn
+oewn-astronomically-r	astronomically	r	0	1	1	oewn
+oewn-astronomy-n	astronomy	n	0	1	1	oewn
+oewn-astronomy_satellite-n	astronomy satellite	n	0	2	2	oewn
+oewn-astronomy_unit-n	astronomy unit	n	0	2	2	oewn
+oewn-astrophysical-a	astrophysical	a	0	1	1	oewn
+oewn-astrophysicist-n	astrophysicist	n	0	1	1	oewn
+oewn-astrophysics-n	astrophysics	n	0	1	1	oewn
+oewn-astute-a	astute	a	0	1	1	oewn
+oewn-astutely-r	astutely	r	0	1	1	oewn
+oewn-astuteness-n	astuteness	n	0	1	1	oewn
+oewn-astylar-a	astylar	a	0	1	1	oewn
+oewn-asunder-a	asunder	a	0	1	1	oewn
+oewn-asunder-r	asunder	r	0	1	1	oewn
+oewn-asylum-n	asylum	n	0	1	1	oewn
+oewn-asymmetric-a	asymmetric	a	0	1	1	oewn
+oewn-asymmetrical-a	asymmetrical	a	0	1	1	oewn
+oewn-asymmetrically-r	asymmetrically	r	0	1	1	oewn
+oewn-asymmetry-n	asymmetry	n	0	1	1	oewn
+oewn-asymptomatic-a	asymptomatic	a	0	1	1	oewn
+oewn-asymptote-n	asymptote	n	0	1	1	oewn
+oewn-asymptotic-a	asymptotic	a	0	1	1	oewn
+oewn-asymptotically-r	asymptotically	r	0	1	1	oewn
+oewn-asynchronism-n	asynchronism	n	0	1	1	oewn
+oewn-asynchronous-a	asynchronous	a	0	1	1	oewn
+oewn-asynchronous_motor-n	asynchronous motor	n	0	2	2	oewn
+oewn-asynchronous_nasalization-n	asynchronous nasalization	n	0	2	2	oewn
+oewn-asynchronous_operation-n	asynchronous operation	n	0	2	2	oewn
+oewn-asynchronous_transfer_mode-n	asynchronous transfer mode	n	0	3	3	oewn
+oewn-asynchrony-n	asynchrony	n	0	1	1	oewn
+oewn-asynclitism-n	asynclitism	n	0	1	1	oewn
+oewn-asyndetic-a	asyndetic	a	0	1	1	oewn
+oewn-asyndeton-n	asyndeton	n	0	1	1	oewn
+oewn-asynergia-n	asynergia	n	0	1	1	oewn
+oewn-asynergic-a	asynergic	a	0	1	1	oewn
+oewn-asynergy-n	asynergy	n	0	1	1	oewn
+oewn-asystole-n	asystole	n	0	1	1	oewn

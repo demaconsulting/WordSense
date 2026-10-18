@@ -1,0 +1,435 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-apathetic__5.00.00.spiritless.00	derivation		oewn-apathy__1.07.01..
+oewn-apathetic__5.00.00.spiritless.00	derivation		oewn-apathy__1.12.00..
+oewn-apathetic__5.00.00.uninterested.00	derivation		oewn-apathy__1.07.01..
+oewn-apathetic__5.00.00.uninterested.00	derivation		oewn-apathy__1.12.00..
+oewn-apathetically__4.02.00..	pertainym		oewn-apathetic__5.00.00.uninterested.00
+oewn-ape__1.18.01..	derivation		oewn-ape__2.42.00..
+oewn-ape__2.42.00..	derivation		oewn-aper__1.18.00..
+oewn-ape__2.42.00..	derivation		oewn-apery__1.04.00..
+oewn-ape__2.42.00..	other	agent	oewn-ape__1.18.01..
+oewn-ape__2.42.00..	other	agent	oewn-aper__1.18.00..
+oewn-aperient__1.06.00..	derivation		oewn-aperient__5.00.00.laxative.00
+oewn-aperiodic__3.00.00..	antonym		oewn-periodic__3.00.00..
+oewn-apetalous__3.00.00..	antonym		oewn-petalous__3.00.00..
+oewn-apex__1.15.00..	derivation		oewn-apical__5.00.00.top.00
+oewn-apex__1.15.01..	derivation		oewn-apical__5.00.00.top.00
+oewn-aphaeresis__1.22.00..	derivation		oewn-aphaeretic__3.01.00..
+oewn-aphaeretic__3.01.00..	pertainym		oewn-aphaeresis__1.22.00..
+oewn-aphakic__1.18.00..	derivation		oewn-aphakic__3.01.00..
+oewn-aphakic__3.01.00..	pertainym		oewn-aphakia__1.26.00..
+oewn-aphanite__1.27.00..	derivation		oewn-aphanitic__3.01.00..
+oewn-aphanitic__3.01.00..	pertainym		oewn-aphanite__1.27.00..
+oewn-aphasia__1.26.00..	derivation		oewn-aphasic__3.01.00..
+oewn-aphasia__1.26.00..	derivation		oewn-aphasic__5.00.00.inarticulate.00
+oewn-aphasic__1.18.00..	derivation		oewn-aphasic__3.01.00..
+oewn-aphasic__1.18.00..	derivation		oewn-aphasic__5.00.00.inarticulate.00
+oewn-aphasic__3.01.00..	pertainym		oewn-aphasia__1.26.00..
+oewn-aphelion__1.15.00..	antonym		oewn-perihelion__1.15.00..
+oewn-apheresis__1.04.00..	derivation		oewn-apheretic__3.01.00..
+oewn-apheresis__1.22.00..	derivation		oewn-apheretic__3.01.00..
+oewn-apheretic__3.01.00..	pertainym		oewn-aphaeresis__1.22.00..
+oewn-aphesis__1.22.00..	derivation		oewn-aphetic__3.01.00..
+oewn-aphetic__3.01.00..	pertainym		oewn-aphesis__1.22.00..
+oewn-aphonia__1.26.00..	derivation		oewn-aphonic__5.00.00.inarticulate.00
+oewn-aphorise__2.32.00..	derivation		oewn-aphorism__1.10.00..
+oewn-aphorise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-aphorise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-aphorism__1.10.00..	derivation		oewn-aphorist__1.18.00..
+oewn-aphorism__1.10.00..	derivation		oewn-aphoristic__3.01.00..
+oewn-aphorism__1.10.00..	derivation		oewn-aphoristic__5.00.00.concise.00
+oewn-aphorism__1.10.00..	derivation		oewn-aphorize__2.32.00..
+oewn-aphorize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aphrodisiac__1.06.00..	derivation		oewn-aphrodisiac__3.00.00..
+oewn-aphrodisiac__1.06.00..	derivation		oewn-aphrodisiacal__3.00.00..
+oewn-apian__3.01.00..	pertainym		oewn-bee__1.05.00..
+oewn-apiarian__3.01.00..	derivation		oewn-apiary__1.06.00..
+oewn-apiarian__3.01.00..	pertainym		oewn-apiarist__1.18.00..
+oewn-apicultural__3.01.00..	derivation		oewn-apiculture__1.04.00..
+oewn-apicultural__3.01.00..	pertainym		oewn-apiculture__1.04.00..
+oewn-apiculture__1.04.00..	derivation		oewn-apiculturist__1.18.00..
+oewn-aplacental__3.00.00..	antonym		oewn-placental__3.00.00..
+oewn-aplite__1.27.00..	derivation		oewn-aplitic__3.01.00..
+oewn-aplitic__3.01.00..	pertainym		oewn-aplite__1.27.00..
+oewn-apneic__3.01.00..	pertainym		oewn-apnea__1.26.00..
+oewn-apnoeic__3.01.00..	pertainym		oewn-apnea__1.26.00..
+oewn-apoapsis__1.15.00..	antonym		oewn-periapsis__1.15.00..
+oewn-apocalypse__1.11.00..	derivation		oewn-apocalyptic__3.01.00..
+oewn-apocalypse__1.11.00..	derivation		oewn-apocalyptical__5.00.00.prophetic.00
+oewn-apocalyptic__3.01.00..	pertainym		oewn-apocalypse__1.11.00..
+oewn-apocarpous__3.00.00..	antonym		oewn-syncarpous__3.00.00..
+oewn-apocrine__3.00.00..	antonym		oewn-eccrine__3.00.00..
+oewn-apocrypha__1.10.00..	derivation		oewn-apocryphal__3.01.00..
+oewn-apocryphal__3.01.00..	pertainym		oewn-apocrypha__1.10.00..
+oewn-apogametic__3.01.00..	pertainym		oewn-apogamy__1.22.00..
+oewn-apogamic__3.01.00..	derivation		oewn-apogamy__1.22.00..
+oewn-apogamic__3.01.00..	pertainym		oewn-apogamy__1.22.00..
+oewn-apogamous__3.01.00..	derivation		oewn-apogamy__1.22.00..
+oewn-apogamous__3.01.00..	pertainym		oewn-apogamy__1.22.00..
+oewn-apogean__3.01.00..	derivation		oewn-apogee__1.15.00..
+oewn-apogean__3.01.00..	pertainym		oewn-apogee__1.15.00..
+oewn-apogee__1.15.00..	antonym		oewn-perigee__1.15.00..
+oewn-apojove__1.15.00..	antonym		oewn-perijove__1.15.00..
+oewn-apologetic__3.00.00..	antonym		oewn-unapologetic__3.00.00..
+oewn-apologetic__3.00.00..	derivation		oewn-apology__1.10.00..
+oewn-apologetic__3.00.00..	derivation		oewn-apology__1.10.02..
+oewn-apologetically__4.02.00..	pertainym		oewn-apologetic__3.00.00..
+oewn-apologise__2.32.00..	derivation		oewn-apology__1.10.00..
+oewn-apologise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apologise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apologise__2.32.01..	derivation		oewn-apology__1.10.00..
+oewn-apologise__2.32.01..	derivation		oewn-apology__1.10.02..
+oewn-apologise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apologise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apologist__1.18.00..	derivation		oewn-apology__1.10.02..
+oewn-apologize__2.32.00..	derivation		oewn-apology__1.10.00..
+oewn-apologize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apologize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apolune__1.15.00..	antonym		oewn-perilune__1.15.00..
+oewn-apomictic__3.01.00..	derivation		oewn-apomixis__1.22.00..
+oewn-apomictic__3.01.00..	pertainym		oewn-apomict__1.20.00..
+oewn-apomictic__5.00.00.asexual.00	derivation		oewn-apomixis__1.22.00..
+oewn-apomictical__3.01.00..	derivation		oewn-apomixis__1.22.00..
+oewn-apomictical__3.01.00..	pertainym		oewn-apomict__1.20.00..
+oewn-aponeurosis__1.08.00..	derivation		oewn-aponeurotic__3.01.00..
+oewn-aponeurotic__3.01.00..	pertainym		oewn-aponeurosis__1.08.00..
+oewn-apopemptic__3.01.00..	pertainym		oewn-farewell__1.04.00..
+oewn-apophasis__1.10.00..	derivation		oewn-apophatic__3.01.00..
+oewn-apophatic__3.01.00..	pertainym		oewn-apophatism__1.09.00..
+oewn-apophatism__1.09.00..	antonym		oewn-cataphatism__1.09.00..
+oewn-apophatism__1.09.00..	antonym		oewn-doctrine_of_analogy__1.09.00..
+oewn-apophyseal__3.01.01..	derivation		oewn-apophysis__1.08.00..
+oewn-apophyseal__3.01.01..	derivation		oewn-apophysis__1.20.00..
+oewn-apophyseal__3.01.01..	pertainym		oewn-apophysis__1.08.00..
+oewn-apophyseal__3.01.01..	pertainym		oewn-apophysis__1.20.00..
+oewn-apoplectic__3.01.00..	derivation		oewn-apoplexy__1.26.00..
+oewn-apoplectic__3.01.00..	pertainym		oewn-apoplexy__1.26.00..
+oewn-apoplectiform__3.01.00..	pertainym		oewn-apoplexy__1.26.00..
+oewn-apoplectoid__3.01.00..	pertainym		oewn-apoplexy__1.26.00..
+oewn-aposelene__1.15.00..	antonym		oewn-periselene__1.15.00..
+oewn-aposiopesis__1.10.00..	derivation		oewn-aposiopetic__3.01.00..
+oewn-aposiopetic__3.01.00..	pertainym		oewn-aposiopesis__1.10.00..
+oewn-apostate__1.18.00..	derivation		oewn-apostate__5.00.00.unfaithful.00
+oewn-apostate__1.18.00..	derivation		oewn-apostatise__2.32.00..
+oewn-apostate__1.18.00..	derivation		oewn-apostatize__2.32.00..
+oewn-apostatise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apostatise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apostatize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apostle__1.18.00..	derivation		oewn-apostleship__1.04.00..
+oewn-apostle__1.18.00..	derivation		oewn-apostolic__3.01.00..
+oewn-apostle__1.18.00..	derivation		oewn-apostolical__3.01.00..
+oewn-apostle__1.18.01..	derivation		oewn-apostolic__3.01.00..
+oewn-apostle__1.18.02..	derivation		oewn-apostleship__1.04.00..
+oewn-apostolic__3.01.00..	pertainym		oewn-apostle__1.18.00..
+oewn-apostolic__3.01.01..	pertainym		oewn-pope__1.18.00..
+oewn-apostolical__3.01.00..	pertainym		oewn-apostle__1.18.00..
+oewn-apostolical__3.01.01..	pertainym		oewn-pope__1.18.00..
+oewn-apostrophe__1.10.01..	derivation		oewn-apostrophise__2.32.00..
+oewn-apostrophe__1.10.01..	derivation		oewn-apostrophize__2.32.00..
+oewn-apostrophic__3.01.00..	pertainym		oewn-apostrophe__1.10.00..
+oewn-apostrophise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apostrophise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apostrophize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apothecial__3.01.00..	derivation		oewn-apothecium__1.20.00..
+oewn-apothecial__3.01.00..	pertainym		oewn-apothecium__1.20.00..
+oewn-apothegm__1.10.00..	derivation		oewn-apothegmatic__3.01.00..
+oewn-apothegm__1.10.00..	derivation		oewn-apothegmatic__5.00.00.concise.00
+oewn-apothegm__1.10.00..	derivation		oewn-apothegmatical__3.01.00..
+oewn-apothegmatic__3.01.00..	pertainym		oewn-apothegm__1.10.00..
+oewn-apothegmatical__3.01.00..	pertainym		oewn-apothegm__1.10.00..
+oewn-apotheosis__1.18.00..	derivation		oewn-apotheosise__2.31.00..
+oewn-apotheosis__1.18.00..	derivation		oewn-apotheosize__2.31.00..
+oewn-apotheosise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apotheosise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apotheosize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-appal__2.37.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-appal__2.37.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-appal__2.37.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-appal__2.37.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-appall__2.37.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-appall__2.37.10..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-appallingly__4.02.00..	pertainym		oewn-appalling__5.00.00.alarming.00
+oewn-apparel__1.06.00..	derivation		oewn-apparel__2.29.00..
+oewn-apparel__2.29.00..	other	uses	oewn-apparel__1.06.00..
+oewn-apparency__1.07.00..	derivation		oewn-apparent__5.00.00.obvious.00
+oewn-apparent__5.00.00.obvious.00	derivation		oewn-apparentness__1.07.01..
+oewn-apparent__5.00.00.obvious.00	derivation		oewn-appear__2.30.00..
+oewn-apparent__5.00.00.obvious.00	derivation		oewn-appear__2.39.01..
+oewn-apparent__5.00.00.superficial.00	derivation		oewn-apparentness__1.07.01..
+oewn-apparent__5.00.00.superficial.00	derivation		oewn-appear__2.39.01..
+oewn-apparently__4.02.00..	pertainym		oewn-apparent__5.00.00.superficial.00
+oewn-apparently__4.02.01..	pertainym		oewn-apparent__5.00.00.obvious.00
+oewn-apparition__1.04.00..	derivation		oewn-appear__2.30.00..
+oewn-apparition__1.04.00..	derivation		oewn-appear__2.30.02..
+oewn-appeal__1.04.00..	derivation		oewn-appeal__2.41.00..
+oewn-appeal__1.04.00..	derivation		oewn-appeal__2.41.04..
+oewn-appeal__1.07.00..	derivation		oewn-appeal__2.37.00..
+oewn-appeal__1.10.00..	derivation		oewn-appeal__2.32.00..
+oewn-appeal__2.32.00..	other	event	oewn-appeal__1.10.00..
+oewn-appeal__2.37.00..	other	property	oewn-appeal__1.07.00..
+oewn-appeal__2.41.00..	derivation		oewn-appealable__3.00.00..
+oewn-appeal__2.41.00..	derivation		oewn-appellant__1.18.00..
+oewn-appeal__2.41.00..	derivation		oewn-appellant__3.01.00..
+oewn-appeal__2.41.00..	other	event	oewn-appeal__1.04.00..
+oewn-appeal__2.41.04..	derivation		oewn-appealable__3.00.00..
+oewn-appeal__2.41.04..	derivation		oewn-appellant__3.01.00..
+oewn-appeal__2.41.04..	other	event	oewn-appeal__1.04.00..
+oewn-appealable__3.00.00..	antonym		oewn-unappealable__3.00.00..
+oewn-appealing__3.00.00..	antonym		oewn-unappealing__3.00.00..
+oewn-appealing__3.00.00..	derivation		oewn-appealingness__1.07.00..
+oewn-appealing__3.00.02..	derivation		oewn-appealingness__1.07.00..
+oewn-appealingly__4.02.00..	antonym		oewn-unappealingly__4.02.00..
+oewn-appealingly__4.02.00..	pertainym		oewn-appealing__3.00.00..
+oewn-appear__2.30.00..	antonym		oewn-disappear__2.30.00..
+oewn-appear__2.30.00..	derivation		oewn-appearance__1.07.00..
+oewn-appear__2.30.00..	derivation		oewn-appearance__1.11.00..
+oewn-appear__2.30.00..	other	event	oewn-apparition__1.04.00..
+oewn-appear__2.30.00..	other	event	oewn-appearance__1.11.00..
+oewn-appear__2.30.00..	other	property	oewn-appearance__1.07.00..
+oewn-appear__2.30.02..	antonym		oewn-disappear__2.30.02..
+oewn-appear__2.30.02..	other	event	oewn-apparition__1.04.00..
+oewn-appear__2.36.00..	derivation		oewn-appearance__1.04.00..
+oewn-appear__2.36.00..	other	event	oewn-appearance__1.04.00..
+oewn-appear__2.39.00..	derivation		oewn-appearance__1.09.00..
+oewn-appear__2.39.00..	other	event	oewn-appearance__1.09.00..
+oewn-appear__2.41.03..	derivation		oewn-appearance__1.04.01..
+oewn-appear__2.41.03..	other	event	oewn-appearance__1.04.01..
+oewn-appearance__1.04.00..	antonym		oewn-disappearance__1.04.00..
+oewn-appearance__1.11.00..	antonym		oewn-disappearance__1.11.00..
+oewn-appeasable__5.00.00.placable.00	derivation		oewn-appease__2.32.00..
+oewn-appeasable__5.00.00.placable.00	derivation		oewn-appease__2.37.00..
+oewn-appease__2.32.00..	derivation		oewn-appeaser__1.18.00..
+oewn-appease__2.32.00..	other	agent	oewn-appeaser__1.18.00..
+oewn-appellant__1.18.00..	derivation		oewn-appellant__3.01.00..
+oewn-appellant__3.01.00..	pertainym		oewn-appeal__1.04.00..
+oewn-appellate__3.01.00..	pertainym		oewn-appeal__1.04.00..
+oewn-appellative__1.10.00..	derivation		oewn-appellative__5.00.00.denotative.00
+oewn-appellative__3.01.00..	pertainym		oewn-noun__1.10.00..
+oewn-append__2.35.00..	derivation		oewn-appendage__1.06.00..
+oewn-append__2.35.01..	derivation		oewn-appendage__1.06.00..
+oewn-append__2.35.01..	derivation		oewn-appendant__5.00.00.affixed.00
+oewn-appendaged__3.00.00..	antonym		oewn-unappendaged__3.00.00..
+oewn-appendicle__1.06.00..	derivation		oewn-appendicular__3.01.00..
+oewn-appendicular__3.01.00..	pertainym		oewn-appendage__1.08.00..
+oewn-apperceive__2.39.00..	derivation		oewn-apperception__1.09.00..
+oewn-apperceive__2.39.00..	other	event	oewn-apperception__1.09.00..
+oewn-appertain__2.42.00..	derivation		oewn-appurtenance__1.06.00..
+oewn-appertain__2.42.00..	derivation		oewn-appurtenant__5.00.00.supportive.00
+oewn-appertain__2.42.00..	other	by_means_of	oewn-appurtenance__1.06.00..
+oewn-appetence__1.12.00..	derivation		oewn-appetent__5.00.00.desirous.00
+oewn-appetency__1.12.00..	derivation		oewn-appetent__5.00.00.desirous.00
+oewn-appetising__3.00.00..	derivation		oewn-appetisingness__1.07.00..
+oewn-appetising__3.00.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-appetising__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-appetitive__3.01.00..	pertainym		oewn-appetite__1.12.00..
+oewn-appetizing__3.00.00..	antonym		oewn-unappetizing__3.00.00..
+oewn-appetizing__3.00.00..	derivation		oewn-appetizingness__1.07.00..
+oewn-appetizing__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-appetizingness__1.07.00..	antonym		oewn-unappetizingness__1.07.00..
+oewn-applaud__2.32.00..	derivation		oewn-applaudable__5.00.00.worthy.00
+oewn-applaud__2.32.00..	derivation		oewn-applauder__1.18.00..
+oewn-applaud__2.32.00..	other	agent	oewn-applauder__1.18.00..
+oewn-applaud__2.32.01..	antonym		oewn-boo__2.32.00..
+oewn-applaud__2.32.01..	derivation		oewn-applauder__1.18.00..
+oewn-applaud__2.32.01..	other	agent	oewn-applauder__1.18.00..
+oewn-applicability__1.24.00..	antonym		oewn-inapplicability__1.24.00..
+oewn-applicability__1.24.00..	derivation		oewn-applicable__5.00.00.relevant.00
+oewn-applicable__5.00.00.relevant.00	derivation		oewn-apply__2.41.01..
+oewn-applicable__5.00.00.relevant.00	derivation		oewn-apply__2.42.00..
+oewn-applicable__5.00.00.relevant.00	derivation		oewn-apply__2.42.01..
+oewn-applicant__1.18.00..	derivation		oewn-apply__2.32.00..
+oewn-application__1.04.01..	derivation		oewn-apply__2.41.09..
+oewn-application__1.04.02..	derivation		oewn-apply__2.32.01..
+oewn-application__1.04.02..	derivation		oewn-apply__2.34.00..
+oewn-application__1.04.02..	derivation		oewn-apply__2.41.01..
+oewn-application__1.04.02..	derivation		oewn-apply__2.42.01..
+oewn-application__1.04.03..	derivation		oewn-apply__2.35.00..
+oewn-application__1.06.00..	derivation		oewn-apply__2.35.00..
+oewn-application__1.10.00..	derivation		oewn-apply__2.32.00..
+oewn-applicative__5.00.00.practical.00	derivation		oewn-apply__2.34.00..
+oewn-applicative__5.00.00.practical.00	derivation		oewn-apply__2.41.06..
+oewn-applicative__5.00.00.practical.00	derivation		oewn-apply__2.42.00..
+oewn-applicative__5.00.00.practical.00	derivation		oewn-apply__2.42.01..
+oewn-applicatory__5.00.00.practical.00	derivation		oewn-apply__2.34.00..
+oewn-applicatory__5.00.00.practical.00	derivation		oewn-apply__2.42.01..
+oewn-applied__3.00.00..	antonym		oewn-theoretical__3.00.01..
+oewn-applier__1.06.00..	derivation		oewn-apply__2.35.00..
+oewn-applier__1.18.00..	derivation		oewn-apply__2.32.00..
+oewn-applique__1.06.00..	derivation		oewn-applique__2.36.00..
+oewn-applique__2.36.00..	other	undergoer	oewn-applique__1.06.00..
+oewn-apply__2.32.00..	other	agent	oewn-applier__1.18.00..
+oewn-apply__2.32.00..	other	event	oewn-application__1.10.00..
+oewn-apply__2.32.01..	other	event	oewn-application__1.04.02..
+oewn-apply__2.34.00..	other	event	oewn-application__1.04.02..
+oewn-apply__2.35.00..	other	event	oewn-application__1.04.03..
+oewn-apply__2.35.00..	other	instrument	oewn-applier__1.06.00..
+oewn-apply__2.35.00..	other	material	oewn-application__1.06.00..
+oewn-apply__2.41.01..	other	event	oewn-application__1.04.02..
+oewn-apply__2.41.09..	other	event	oewn-application__1.04.01..
+oewn-apply__2.42.01..	other	event	oewn-application__1.04.02..
+oewn-appoint__2.41.00..	derivation		oewn-appointee__1.18.00..
+oewn-appoint__2.41.00..	derivation		oewn-appointee__1.18.01..
+oewn-appoint__2.41.00..	derivation		oewn-appointive__3.00.00..
+oewn-appoint__2.41.00..	derivation		oewn-appointive__3.01.00..
+oewn-appoint__2.41.00..	other	undergoer	oewn-appointee__1.18.00..
+oewn-appoint__2.41.00..	other	undergoer	oewn-appointee__1.18.01..
+oewn-appoint__2.41.01..	derivation		oewn-appointee__1.18.00..
+oewn-appoint__2.41.01..	derivation		oewn-appointee__1.18.01..
+oewn-appoint__2.41.01..	derivation		oewn-appointive__3.00.00..
+oewn-appoint__2.41.01..	derivation		oewn-appointive__3.01.00..
+oewn-appoint__2.41.01..	other	undergoer	oewn-appointee__1.18.00..
+oewn-appoint__2.41.01..	other	undergoer	oewn-appointee__1.18.01..
+oewn-appointive__3.00.00..	antonym		oewn-elective__3.00.00..
+oewn-appointive__3.01.00..	pertainym		oewn-appointment__1.04.00..
+oewn-apportion__2.40.00..	derivation		oewn-apportionable__5.00.00.distributive.00
+oewn-apportion__2.40.01..	derivation		oewn-apportionable__5.00.00.distributive.00
+oewn-apportion__2.40.01..	derivation		oewn-apportionment__1.04.00..
+oewn-apportion__2.40.01..	other	event	oewn-apportionment__1.04.00..
+oewn-apposable__3.00.00..	derivation		oewn-appose__2.35.00..
+oewn-appose__2.35.00..	derivation		oewn-apposition__1.04.00..
+oewn-appose__2.35.00..	derivation		oewn-appositive__3.01.00..
+oewn-appose__2.35.00..	other	event	oewn-apposition__1.04.00..
+oewn-apposite__5.00.00.apropos.00	derivation		oewn-appositeness__1.07.00..
+oewn-appositeness__1.07.00..	antonym		oewn-inappositeness__1.07.00..
+oewn-apposition__1.24.00..	derivation		oewn-appositional__3.01.00..
+oewn-appositional__3.01.00..	pertainym		oewn-apposition__1.24.00..
+oewn-appositive__3.01.00..	pertainym		oewn-apposition__1.24.00..
+oewn-appositively__4.02.00..	pertainym		oewn-appositive__3.01.00..
+oewn-appraisal__1.09.00..	derivation		oewn-appraise__2.31.01..
+oewn-appraise__2.31.01..	derivation		oewn-appraiser__1.18.01..
+oewn-appraise__2.31.01..	derivation		oewn-appraiser__1.18.02..
+oewn-appraise__2.31.01..	other	agent	oewn-appraiser__1.18.01..
+oewn-appraise__2.31.01..	other	agent	oewn-appraiser__1.18.02..
+oewn-appraise__2.31.01..	other	event	oewn-appraisal__1.09.00..
+oewn-appreciably__4.02.01..	pertainym		oewn-appreciable__5.00.00.considerable.00
+oewn-appreciate__2.30.00..	antonym		oewn-depreciate__2.30.00..
+oewn-appreciate__2.30.01..	antonym		oewn-depreciate__2.30.01..
+oewn-appreciate__2.31.00..	derivation		oewn-appreciator__1.18.00..
+oewn-appreciate__2.31.00..	other	agent	oewn-appreciator__1.18.00..
+oewn-appreciate__2.37.00..	derivation		oewn-appreciative__5.00.00.grateful.00
+oewn-appreciate__2.40.00..	derivation		oewn-appreciative__5.00.00.discriminating.00
+oewn-appreciation__1.04.01..	antonym		oewn-depreciation__1.04.00..
+oewn-appreciative__5.00.00.grateful.00	derivation		oewn-appreciativeness__1.12.00..
+oewn-appreciatively__4.02.00..	antonym		oewn-unappreciatively__4.02.00..
+oewn-appreciatively__4.02.00..	pertainym		oewn-appreciative__5.00.00.grateful.00
+oewn-apprehend__2.31.00..	derivation		oewn-apprehender__1.18.01..
+oewn-apprehend__2.31.00..	derivation		oewn-apprehensible__5.00.00.comprehensible.00
+oewn-apprehend__2.31.00..	derivation		oewn-apprehension__1.09.00..
+oewn-apprehend__2.31.00..	derivation		oewn-apprehensive__5.00.00.perceptive.00
+oewn-apprehend__2.31.00..	other	agent	oewn-apprehender__1.18.01..
+oewn-apprehend__2.31.00..	other	state	oewn-apprehension__1.09.00..
+oewn-apprehend__2.35.00..	derivation		oewn-apprehender__1.18.00..
+oewn-apprehend__2.35.00..	derivation		oewn-apprehension__1.04.00..
+oewn-apprehend__2.35.00..	other	agent	oewn-apprehender__1.18.00..
+oewn-apprehend__2.35.00..	other	event	oewn-apprehension__1.04.00..
+oewn-apprehend__2.37.00..	derivation		oewn-apprehender__1.18.01..
+oewn-apprehend__2.37.00..	derivation		oewn-apprehension__1.09.01..
+oewn-apprehend__2.37.00..	derivation		oewn-apprehension__1.12.00..
+oewn-apprehend__2.37.00..	derivation		oewn-apprehensive__5.00.00.afraid.00
+oewn-apprehend__2.37.00..	derivation		oewn-apprehensive__5.00.00.uneasy.00
+oewn-apprehend__2.37.00..	other	agent	oewn-apprehender__1.18.01..
+oewn-apprehend__2.37.00..	other	state	oewn-apprehension__1.09.01..
+oewn-apprehend__2.37.00..	other	state	oewn-apprehension__1.12.00..
+oewn-apprehensive__5.00.00.afraid.00	derivation		oewn-apprehensiveness__1.12.00..
+oewn-apprehensive__5.00.00.uneasy.00	derivation		oewn-apprehensiveness__1.12.00..
+oewn-apprehensively__4.02.00..	pertainym		oewn-apprehensive__5.00.00.afraid.00
+oewn-apprentice__1.18.00..	derivation		oewn-apprentice__2.31.00..
+oewn-apprentice__1.18.00..	derivation		oewn-apprenticeship__1.04.00..
+oewn-apprentice__2.31.00..	other	agent	oewn-apprentice__1.18.00..
+oewn-apprisal__1.10.00..	derivation		oewn-apprise__2.32.00..
+oewn-apprise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apprise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apprise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apprise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apprise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apprise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apprise__2.32.00..	other	event	oewn-apprisal__1.10.00..
+oewn-apprise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-apprise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-apprize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apprize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apprize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-apprize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-approach__1.04.00..	derivation		oewn-approach__2.38.00..
+oewn-approach__1.04.02..	derivation		oewn-approach__2.41.00..
+oewn-approach__1.07.00..	derivation		oewn-approach__2.38.01..
+oewn-approach__1.07.01..	derivation		oewn-approach__2.42.00..
+oewn-approach__1.10.00..	derivation		oewn-approach__2.32.00..
+oewn-approach__1.11.00..	derivation		oewn-approach__2.38.00..
+oewn-approach__2.32.00..	derivation		oewn-approachable__3.00.00..
+oewn-approach__2.32.00..	other	by_means_of	oewn-approach__1.10.00..
+oewn-approach__2.38.00..	derivation		oewn-approachable__5.00.00.accessible.00
+oewn-approach__2.38.00..	other	event	oewn-approach__1.04.00..
+oewn-approach__2.38.00..	other	event	oewn-approach__1.11.00..
+oewn-approach__2.38.01..	other	property	oewn-approach__1.07.00..
+oewn-approach__2.41.00..	other	event	oewn-approach__1.04.02..
+oewn-approach__2.42.00..	other	event	oewn-approach__1.07.01..
+oewn-approachability__1.07.00..	antonym		oewn-unapproachability__1.07.00..
+oewn-approachability__1.07.00..	derivation		oewn-approachable__3.00.00..
+oewn-approachable__3.00.00..	antonym		oewn-unapproachable__3.00.00..
+oewn-approbate__2.31.00..	antonym		oewn-reprobate__2.31.00..
+oewn-approbate__2.31.00..	derivation		oewn-approbation__1.10.00..
+oewn-approbate__2.31.00..	derivation		oewn-approbation__1.12.00..
+oewn-approbate__2.31.00..	other	event	oewn-approbation__1.10.00..
+oewn-approbate__2.31.00..	other	event	oewn-approbation__1.12.00..
+oewn-approbate__2.32.00..	derivation		oewn-approbation__1.10.00..
+oewn-approbate__2.32.00..	derivation		oewn-approbation__1.12.00..
+oewn-approbate__2.32.00..	derivation		oewn-approval__1.04.02..
+oewn-approbate__2.32.00..	derivation		oewn-approval__1.10.00..
+oewn-approbate__2.32.00..	derivation		oewn-approval__1.26.00..
+oewn-approbate__2.32.00..	other	by_means_of	oewn-approval__1.10.00..
+oewn-approbate__2.32.00..	other	event	oewn-approbation__1.10.00..
+oewn-approbate__2.32.00..	other	event	oewn-approbation__1.12.00..
+oewn-approbate__2.32.00..	other	event	oewn-approval__1.04.02..
+oewn-approbate__2.32.00..	other	event	oewn-approval__1.26.00..
+oewn-approbation__1.10.00..	antonym		oewn-disapprobation__1.10.00..
+oewn-approbation__1.10.00..	derivation		oewn-approve__2.31.00..
+oewn-approbation__1.10.00..	derivation		oewn-approve__2.32.00..
+oewn-approbation__1.12.00..	derivation		oewn-approve__2.31.00..
+oewn-approbative__5.00.00.favorable.02	derivation		oewn-approve__2.31.00..
+oewn-approbative__5.00.00.favorable.02	derivation		oewn-approve__2.32.00..
+oewn-approbatory__5.00.00.favorable.02	derivation		oewn-approve__2.31.00..
+oewn-appropriable__5.00.00.alienable.00	derivation		oewn-appropriate__2.31.00..
+oewn-appropriate__2.40.00..	derivation		oewn-appropriative__3.01.00..
+oewn-appropriate__2.40.00..	derivation		oewn-appropriator__1.18.00..
+oewn-appropriate__2.40.00..	other	agent	oewn-appropriator__1.18.00..
+oewn-appropriate__3.00.00..	antonym		oewn-inappropriate__3.00.00..
+oewn-appropriate__3.00.00..	derivation		oewn-appropriateness__1.07.00..
+oewn-appropriately__4.02.00..	antonym		oewn-inappropriately__4.02.00..
+oewn-appropriately__4.02.00..	pertainym		oewn-appropriate__3.00.00..
+oewn-appropriateness__1.07.00..	antonym		oewn-inappropriateness__1.07.00..
+oewn-appropriateness__1.07.01..	antonym		oewn-inappropriateness__1.07.01..
+oewn-appropriative__3.01.00..	pertainym		oewn-appropriation__1.04.00..
+oewn-approval__1.04.02..	antonym		oewn-disapproval__1.04.00..
+oewn-approval__1.04.02..	derivation		oewn-approve__2.32.00..
+oewn-approval__1.10.00..	antonym		oewn-disapproval__1.10.00..
+oewn-approval__1.12.00..	antonym		oewn-disapproval__1.12.00..
+oewn-approval__1.12.00..	derivation		oewn-approve__2.31.00..
+oewn-approve__2.31.00..	antonym		oewn-disapprove__2.31.00..
+oewn-approve__2.31.00..	other	event	oewn-approbation__1.10.00..
+oewn-approve__2.31.00..	other	event	oewn-approbation__1.12.00..
+oewn-approve__2.31.00..	other	state	oewn-approval__1.12.00..
+oewn-approve__2.32.00..	antonym		oewn-disapprove__2.32.00..
+oewn-approve__2.32.00..	derivation		oewn-approver__1.18.00..
+oewn-approve__2.32.00..	other	agent	oewn-approver__1.18.00..
+oewn-approve__2.32.00..	other	event	oewn-approbation__1.10.00..
+oewn-approve__2.32.00..	other	event	oewn-approval__1.04.02..
+oewn-approvingly__4.02.00..	antonym		oewn-disapprovingly__4.02.00..
+oewn-approvingly__4.02.00..	pertainym		oewn-approving__5.00.00.favorable.02
+oewn-approximate__2.31.00..	derivation		oewn-approximative__5.00.00.inexact.00
+oewn-approximate__2.42.00..	derivation		oewn-approximative__5.00.00.inexact.00
+oewn-appurtenance__1.06.00..	derivation		oewn-appurtenant__5.00.00.supportive.00
+oewn-apractic__5.00.00.unfit.01	derivation		oewn-apraxia__1.26.00..
+oewn-apraxia__1.26.00..	derivation		oewn-apraxic__5.00.00.unfit.01
+oewn-apropos__3.00.00..	antonym		oewn-malapropos__3.00.00..
+oewn-apse__1.06.00..	derivation		oewn-apsidal__3.01.00..
+oewn-apsidal__3.01.00..	pertainym		oewn-apse__1.06.00..
+oewn-apt__5.00.00.apropos.00	derivation		oewn-aptness__1.07.00..
+oewn-apt__5.00.00.inclined.02	derivation		oewn-aptness__1.07.01..
+oewn-apt__5.00.00.likely.00	derivation		oewn-aptness__1.07.01..
+oewn-apteral__3.00.00..	antonym		oewn-peripteral__3.00.00..
+oewn-aptitude__1.09.00..	antonym		oewn-inaptitude__1.09.00..
+oewn-aptitude__1.09.00..	derivation		oewn-aptitudinal__3.01.00..
+oewn-aptitudinal__3.01.00..	pertainym		oewn-aptitude__1.09.00..
+oewn-aptly__4.02.00..	pertainym		oewn-apt__5.00.00.intelligent.00
+oewn-aptness__1.07.00..	antonym		oewn-inaptness__1.07.00..

@@ -1,0 +1,8 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-cpa__1.18.00..	cpa%1:18:00::	oewn-CPA-n	oewn-09924638-n	1
+oewn-cpi__1.10.00..	cpi%1:10:00::	oewn-CPI-n	oewn-06654303-n	1
+oewn-cpi__1.10.01..	cpi%1:10:01::	oewn-CPI-n	oewn-06486643-n	2
+oewn-cpr__1.04.00..	cpr%1:04:00::	oewn-CPR-n	oewn-00834287-n	1
+oewn-cps__1.28.00..	cps%1:28:00::	oewn-cps-n	oewn-15304090-n	1
+oewn-cpu__1.06.00..	cpu%1:06:00::	oewn-CPU-n	oewn-02998952-n	1
+oewn-cpu_board__1.06.00..	cpu_board%1:06:00::	oewn-CPU_board-n	oewn-03129708-n	1

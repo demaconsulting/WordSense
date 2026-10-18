@@ -1,0 +1,1493 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-st._joseph__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-st._joseph__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-stab__1.04.00..	derivation		oewn-stab__2.35.00..
+oewn-stab__1.04.00..	derivation		oewn-stab__2.35.02..
+oewn-stab__2.35.00..	derivation		oewn-stabber__1.18.00..
+oewn-stab__2.35.00..	other	agent	oewn-stabber__1.18.00..
+oewn-stab__2.35.00..	other	event	oewn-stab__1.04.00..
+oewn-stab__2.35.02..	derivation		oewn-stabber__1.18.00..
+oewn-stab__2.35.02..	other	agent	oewn-stabber__1.18.00..
+oewn-stab__2.35.02..	other	event	oewn-stab__1.04.00..
+oewn-stabilisation__1.04.00..	derivation		oewn-stabilise__2.30.00..
+oewn-stabilisation__1.04.00..	derivation		oewn-stabilise__2.30.01..
+oewn-stabilisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stabilisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stabilise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stabilise__2.30.00..	other	event	oewn-stabilisation__1.04.00..
+oewn-stabilise__2.30.01..	derivation		oewn-stabiliser__1.06.00..
+oewn-stabilise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stabilise__2.30.01..	other	event	oewn-stabilisation__1.04.00..
+oewn-stabilise__2.30.01..	other	instrument	oewn-stabiliser__1.06.00..
+oewn-stabilise__2.35.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilise__2.35.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stabilising__5.00.00.helpful.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stabilising__5.00.00.helpful.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stability__1.07.00..	derivation		oewn-stable__5.00.00.sound.00
+oewn-stability__1.07.01..	derivation		oewn-stable__3.00.00..
+oewn-stability__1.07.01..	derivation		oewn-stable__5.00.00.unchangeable.00
+oewn-stabilization__1.04.00..	derivation		oewn-stabilize__2.30.01..
+oewn-stabilization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stabilization__1.04.01..	derivation		oewn-stabilize__2.35.02..
+oewn-stabilization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stabilize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stabilize__2.30.01..	derivation		oewn-stabilizer__1.06.00..
+oewn-stabilize__2.30.01..	derivation		oewn-stabilizer__1.06.01..
+oewn-stabilize__2.30.01..	derivation		oewn-stabilizer__1.27.00..
+oewn-stabilize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stabilize__2.30.01..	other	by_means_of	oewn-stabilizer__1.06.01..
+oewn-stabilize__2.30.01..	other	event	oewn-stabilization__1.04.00..
+oewn-stabilize__2.30.01..	other	instrument	oewn-stabilizer__1.06.00..
+oewn-stabilize__2.30.01..	other	material	oewn-stabilizer__1.27.00..
+oewn-stabilize__2.35.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stabilize__2.35.02..	other	event	oewn-stabilization__1.04.01..
+oewn-stabilizing__5.00.00.helpful.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stable__1.06.00..	derivation		oewn-stable__2.41.00..
+oewn-stable__2.41.00..	derivation		oewn-stabling__1.06.00..
+oewn-stable__3.00.00..	antonym		oewn-unstable__3.00.00..
+oewn-stable__3.00.00..	derivation		oewn-stableness__1.07.00..
+oewn-stable__5.00.00.sound.00	derivation		oewn-stableness__1.07.00..
+oewn-stable__5.00.00.unchangeable.00	derivation		oewn-stableness__1.07.00..
+oewn-stableness__1.07.00..	antonym		oewn-unstableness__1.07.00..
+oewn-stably__4.02.00..	pertainym		oewn-stable__5.00.00.unchangeable.00
+oewn-stably__4.02.01..	pertainym		oewn-stable__3.00.00..
+oewn-stack__1.14.00..	derivation		oewn-stack__2.35.00..
+oewn-stack__1.14.00..	derivation		oewn-stack__2.35.01..
+oewn-stack__2.35.00..	also		oewn-stack_up__2.35.00..
+oewn-stack__2.35.00..	derivation		oewn-stacker__1.18.00..
+oewn-stack__2.35.00..	other	agent	oewn-stacker__1.18.00..
+oewn-stack__2.35.00..	other	result	oewn-stack__1.14.00..
+oewn-stack__2.35.01..	also		oewn-stack_away__2.40.00..
+oewn-stack__2.35.01..	derivation		oewn-stacker__1.18.00..
+oewn-stack__2.35.01..	other	agent	oewn-stacker__1.18.00..
+oewn-stack__2.35.01..	other	result	oewn-stack__1.14.00..
+oewn-stacked__3.44.00..	participle		oewn-stack__2.35.00..
+oewn-staff__1.14.00..	derivation		oewn-staff__2.33.00..
+oewn-staff__1.14.00..	derivation		oewn-staff__2.33.01..
+oewn-staff__1.14.01..	derivation		oewn-staff__2.33.00..
+oewn-staff__1.14.01..	derivation		oewn-staff__2.33.01..
+oewn-staff__2.33.00..	other	uses	oewn-staff__1.14.00..
+oewn-staff__2.33.00..	other	uses	oewn-staff__1.14.01..
+oewn-staff__2.33.01..	other	agent	oewn-staff__1.14.01..
+oewn-stage__1.06.00..	derivation		oewn-stage__2.36.00..
+oewn-stage__1.10.00..	derivation		oewn-stage__2.36.00..
+oewn-stage__1.10.00..	derivation		oewn-stagey__5.00.00.theatrical.00
+oewn-stage__1.10.00..	derivation		oewn-stagy__5.00.00.theatrical.00
+oewn-stage__1.15.00..	derivation		oewn-stage__2.36.01..
+oewn-stage__2.36.00..	derivation		oewn-stager__1.18.00..
+oewn-stage__2.36.00..	derivation		oewn-staging__1.10.00..
+oewn-stage__2.36.00..	other	agent	oewn-stager__1.18.00..
+oewn-stage__2.36.00..	other	location	oewn-stage__1.06.00..
+oewn-stage__2.36.01..	derivation		oewn-stager__1.18.00..
+oewn-stage__2.36.01..	other	agent	oewn-stager__1.18.00..
+oewn-stage__2.36.01..	other	undergoer	oewn-stage__1.15.00..
+oewn-staged__3.00.00..	antonym		oewn-unstaged__3.00.00..
+oewn-stagflation__1.22.00..	derivation		oewn-stagflationary__3.01.00..
+oewn-stagflationary__3.01.00..	pertainym		oewn-stagflation__1.22.00..
+oewn-stagger__1.04.00..	derivation		oewn-stagger__2.38.00..
+oewn-stagger__1.04.00..	derivation		oewn-stagger__2.38.01..
+oewn-stagger__2.38.00..	derivation		oewn-staggerer__1.18.00..
+oewn-stagger__2.38.00..	other	agent	oewn-staggerer__1.18.00..
+oewn-stagger__2.38.00..	other	event	oewn-stagger__1.04.00..
+oewn-stagger__2.38.00..	other	result	oewn-stagger__1.04.00..
+oewn-stagger__2.38.01..	other	event	oewn-stagger__1.04.00..
+oewn-stagger__2.38.01..	other	result	oewn-stagger__1.04.00..
+oewn-stagily__4.02.00..	pertainym		oewn-stagy__5.00.00.theatrical.00
+oewn-staginess__1.07.00..	derivation		oewn-stagy__5.00.00.theatrical.00
+oewn-stagnancy__1.26.00..	derivation		oewn-stagnant__5.00.00.undynamic.00
+oewn-stagnancy__1.26.00..	derivation		oewn-stagnate__2.41.00..
+oewn-stagnancy__1.26.01..	derivation		oewn-stagnant__5.00.00.standing.02
+oewn-stagnancy__1.26.01..	derivation		oewn-stagnate__2.42.00..
+oewn-stagnancy__1.26.01..	derivation		oewn-stagnate__2.42.02..
+oewn-stagnant__5.00.00.standing.02	derivation		oewn-stagnate__2.42.00..
+oewn-stagnant__5.00.00.standing.02	derivation		oewn-stagnate__2.42.02..
+oewn-stagnant__5.00.00.undynamic.00	derivation		oewn-stagnate__2.42.01..
+oewn-stagnate__2.41.00..	derivation		oewn-stagnation__1.26.00..
+oewn-stagnate__2.41.00..	other	state	oewn-stagnation__1.26.00..
+oewn-stagnate__2.42.00..	derivation		oewn-stagnation__1.26.01..
+oewn-stagnate__2.42.00..	other	event	oewn-stagnation__1.26.01..
+oewn-stagnate__2.42.01..	derivation		oewn-stagnation__1.26.00..
+oewn-stagnate__2.42.01..	other	state	oewn-stagnation__1.26.00..
+oewn-stagnate__2.42.02..	derivation		oewn-stagnation__1.26.00..
+oewn-stagnate__2.42.02..	derivation		oewn-stagnation__1.26.01..
+oewn-stagnate__2.42.02..	other	event	oewn-stagnation__1.26.01..
+oewn-stagnate__2.42.02..	other	state	oewn-stagnation__1.26.00..
+oewn-staid__5.00.00.decorous.00	derivation		oewn-staidness__1.07.00..
+oewn-staidly__4.02.00..	pertainym		oewn-staid__5.00.00.decorous.00
+oewn-stain__1.04.00..	derivation		oewn-stain__2.35.05..
+oewn-stain__1.07.00..	derivation		oewn-stain__2.30.00..
+oewn-stain__1.10.00..	derivation		oewn-stain__2.35.05..
+oewn-stain__1.26.00..	derivation		oewn-stain__2.30.00..
+oewn-stain__1.27.00..	derivation		oewn-stain__2.30.04..
+oewn-stain__2.30.00..	other	result	oewn-stain__1.07.00..
+oewn-stain__2.30.01..	derivation		oewn-stainer__1.18.00..
+oewn-stain__2.30.01..	other	agent	oewn-stainer__1.18.00..
+oewn-stain__2.30.04..	derivation		oewn-staining__1.04.00..
+oewn-stain__2.30.04..	other	by_means_of	oewn-stain__1.27.00..
+oewn-stain__2.35.05..	other	event	oewn-stain__1.04.00..
+oewn-stainability__1.07.00..	derivation		oewn-stainable__3.01.00..
+oewn-stainable__3.01.00..	pertainym		oewn-stainability__1.07.00..
+oewn-stained__3.00.00..	antonym		oewn-unstained__3.00.00..
+oewn-stake__1.06.01..	derivation		oewn-stake__2.35.02..
+oewn-stake__1.10.00..	derivation		oewn-stake__2.35.00..
+oewn-stake__1.10.00..	derivation		oewn-stake__2.35.01..
+oewn-stake__1.21.00..	derivation		oewn-stake__2.33.00..
+oewn-stake__1.21.00..	derivation		oewn-stake__2.41.00..
+oewn-stake__2.33.00..	other	undergoer	oewn-stake__1.21.00..
+oewn-stake__2.35.00..	other	uses	oewn-stake__1.10.00..
+oewn-stake__2.35.02..	other	instrument	oewn-stake__1.06.01..
+oewn-stake__2.41.00..	other	undergoer	oewn-stake__1.21.00..
+oewn-stale__3.00.00..	derivation		oewn-staleness__1.07.01..
+oewn-stale__5.00.00.unoriginal.00	derivation		oewn-staleness__1.09.00..
+oewn-stalemate__1.11.00..	derivation		oewn-stalemate__2.33.00..
+oewn-stalemate__2.33.00..	other	event	oewn-stalemate__1.11.00..
+oewn-stalinisation__1.22.00..	derivation		oewn-stalinise__2.30.00..
+oewn-stalinisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stalinisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stalinise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stalinise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stalinise__2.30.00..	other	event	oewn-stalinisation__1.22.00..
+oewn-stalinism__1.14.00..	derivation		oewn-stalinist__1.18.00..
+oewn-stalinization__1.22.00..	derivation		oewn-stalinize__2.30.00..
+oewn-stalinization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stalinize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stalinize__2.30.00..	other	event	oewn-stalinization__1.22.00..
+oewn-stalk__1.04.00..	derivation		oewn-stalk__2.38.00..
+oewn-stalk__1.04.01..	derivation		oewn-stalk__2.38.01..
+oewn-stalk__1.04.02..	derivation		oewn-stalk__2.38.03..
+oewn-stalk__2.38.00..	derivation		oewn-stalker__1.18.01..
+oewn-stalk__2.38.00..	other	agent	oewn-stalker__1.18.01..
+oewn-stalk__2.38.00..	other	event	oewn-stalk__1.04.00..
+oewn-stalk__2.38.01..	other	event	oewn-stalk__1.04.01..
+oewn-stalk__2.38.03..	derivation		oewn-stalker__1.18.00..
+oewn-stalk__2.38.03..	derivation		oewn-stalker__1.18.02..
+oewn-stalk__2.38.03..	derivation		oewn-stalking__1.04.02..
+oewn-stalk__2.38.03..	other	agent	oewn-stalker__1.18.00..
+oewn-stalk__2.38.03..	other	agent	oewn-stalker__1.18.02..
+oewn-stalk__2.38.03..	other	event	oewn-stalk__1.04.02..
+oewn-stall__1.04.00..	derivation		oewn-stall__2.30.00..
+oewn-stall__1.04.00..	derivation		oewn-stall__2.42.00..
+oewn-stall__1.06.03..	derivation		oewn-stall__2.41.00..
+oewn-stall__1.11.00..	derivation		oewn-stall__2.38.00..
+oewn-stall__1.11.00..	derivation		oewn-stall__2.38.02..
+oewn-stall__1.11.00..	derivation		oewn-stall__2.38.04..
+oewn-stall__2.30.00..	derivation		oewn-stalling__1.04.00..
+oewn-stall__2.30.00..	other	by_means_of	oewn-stall__1.04.00..
+oewn-stall__2.38.00..	other	event	oewn-stall__1.11.00..
+oewn-stall__2.38.02..	other	event	oewn-stall__1.11.00..
+oewn-stall__2.38.04..	other	event	oewn-stall__1.11.00..
+oewn-stall__2.42.00..	other	by_means_of	oewn-stall__1.04.00..
+oewn-stalwart__5.00.00.resolute.00	derivation		oewn-stalwartness__1.07.00..
+oewn-stammer__1.26.00..	derivation		oewn-stammer__2.32.00..
+oewn-stammer__2.32.00..	derivation		oewn-stammerer__1.18.00..
+oewn-stammer__2.32.00..	other	agent	oewn-stammerer__1.18.00..
+oewn-stammer__2.32.00..	other	by_means_of	oewn-stammer__1.26.00..
+oewn-stammer__2.32.00..	other	event	oewn-stammer__1.26.00..
+oewn-stamp__1.06.00..	derivation		oewn-stamp__2.35.03..
+oewn-stamp__1.06.02..	derivation		oewn-stamp__2.35.03..
+oewn-stamp__1.06.03..	derivation		oewn-stamp__2.35.04..
+oewn-stamp__1.10.00..	derivation		oewn-stamp__2.35.01..
+oewn-stamp__1.10.00..	derivation		oewn-stamp__2.35.03..
+oewn-stamp__1.10.01..	derivation		oewn-stamp__2.35.02..
+oewn-stamp__1.14.00..	derivation		oewn-stamp__2.31.00..
+oewn-stamp__1.14.00..	derivation		oewn-stamp__2.39.00..
+oewn-stamp__1.25.00..	derivation		oewn-stamp__2.36.00..
+oewn-stamp__1.25.00..	derivation		oewn-stamp__2.39.00..
+oewn-stamp__2.31.00..	other	uses	oewn-stamp__1.14.00..
+oewn-stamp__2.35.01..	other	uses	oewn-stamp__1.10.00..
+oewn-stamp__2.35.02..	other	uses	oewn-stamp__1.10.01..
+oewn-stamp__2.35.03..	other	instrument	oewn-stamp__1.06.00..
+oewn-stamp__2.35.03..	other	instrument	oewn-stamp__1.06.02..
+oewn-stamp__2.35.03..	other	result	oewn-stamp__1.10.00..
+oewn-stamp__2.35.04..	other	instrument	oewn-stamp__1.06.03..
+oewn-stamp__2.36.00..	derivation		oewn-stamper__1.06.00..
+oewn-stamp__2.36.00..	derivation		oewn-stamper__1.18.01..
+oewn-stamp__2.36.00..	other	agent	oewn-stamper__1.18.01..
+oewn-stamp__2.36.00..	other	instrument	oewn-stamper__1.06.00..
+oewn-stamp__2.36.00..	other	property	oewn-stamp__1.25.00..
+oewn-stamp__2.38.00..	derivation		oewn-stamper__1.18.00..
+oewn-stamp__2.38.00..	other	agent	oewn-stamper__1.18.00..
+oewn-stamp__2.39.00..	other	property	oewn-stamp__1.14.00..
+oewn-stamp__2.39.00..	other	property	oewn-stamp__1.25.00..
+oewn-stampede__1.04.00..	derivation		oewn-stampede__2.38.00..
+oewn-stampede__1.11.00..	derivation		oewn-stampede__2.38.01..
+oewn-stampede__2.38.00..	other	event	oewn-stampede__1.04.00..
+oewn-stampede__2.38.01..	other	event	oewn-stampede__1.11.00..
+oewn-stance__1.07.00..	derivation		oewn-stand__2.35.00..
+oewn-stance__1.09.00..	derivation		oewn-stand__2.31.01..
+oewn-stand--in__1.18.00..	derivation		oewn-stand_in__2.40.00..
+oewn-stand__1.04.00..	derivation		oewn-stand__2.33.00..
+oewn-stand__1.09.00..	derivation		oewn-stand__2.31.01..
+oewn-stand__1.09.00..	derivation		oewn-stand__2.42.00..
+oewn-stand__1.09.00..	derivation		oewn-stand__2.42.03..
+oewn-stand__1.09.00..	derivation		oewn-stand__2.42.04..
+oewn-stand__1.11.00..	derivation		oewn-stand__2.42.06..
+oewn-stand__1.15.00..	derivation		oewn-stand__2.35.00..
+oewn-stand__1.15.00..	derivation		oewn-stand__2.35.01..
+oewn-stand__1.15.00..	derivation		oewn-stand__2.42.01..
+oewn-stand__2.31.01..	other	event	oewn-stance__1.09.00..
+oewn-stand__2.31.01..	other	undergoer	oewn-stand__1.09.00..
+oewn-stand__2.33.00..	other	by_means_of	oewn-stand__1.04.00..
+oewn-stand__2.35.00..	also		oewn-stand_up__2.38.00..
+oewn-stand__2.35.00..	derivation		oewn-standee__1.18.00..
+oewn-stand__2.35.00..	derivation		oewn-stander__1.18.00..
+oewn-stand__2.35.00..	derivation		oewn-standing__1.04.00..
+oewn-stand__2.35.00..	other	agent	oewn-standee__1.18.00..
+oewn-stand__2.35.00..	other	agent	oewn-stander__1.18.00..
+oewn-stand__2.35.00..	other	event	oewn-stance__1.07.00..
+oewn-stand__2.35.00..	other	result	oewn-stand__1.15.00..
+oewn-stand__2.35.01..	derivation		oewn-standard__1.06.02..
+oewn-stand__2.35.01..	other	result	oewn-stand__1.15.00..
+oewn-stand__2.42.00..	antonym		oewn-yield__2.42.00..
+oewn-stand__2.42.00..	other	event	oewn-stand__1.09.00..
+oewn-stand__2.42.03..	other	event	oewn-stand__1.09.00..
+oewn-stand__2.42.04..	also		oewn-stand_by__2.42.00..
+oewn-stand__2.42.04..	also		oewn-stand_by__2.42.01..
+oewn-stand__2.42.04..	also		oewn-stand_firm__2.33.00..
+oewn-stand__2.42.04..	also		oewn-stand_for__2.42.00..
+oewn-stand__2.42.04..	also		oewn-stand_out__2.42.00..
+oewn-stand__2.42.04..	also		oewn-stand_out__2.42.02..
+oewn-stand__2.42.04..	other	event	oewn-stand__1.09.00..
+oewn-stand__2.42.06..	other	event	oewn-stand__1.11.00..
+oewn-stand_by__2.42.02..	derivation		oewn-standby__1.06.00..
+oewn-stand_by__2.42.02..	derivation		oewn-standby__1.18.00..
+oewn-stand_still__2.38.00..	derivation		oewn-standstill__1.26.00..
+oewn-standard__1.09.00..	derivation		oewn-standardise__2.30.00..
+oewn-standard__1.09.00..	derivation		oewn-standardize__2.30.00..
+oewn-standard__1.10.00..	derivation		oewn-standardise__2.30.00..
+oewn-standard__1.10.00..	derivation		oewn-standardize__2.30.00..
+oewn-standard__1.21.00..	derivation		oewn-standardise__2.30.00..
+oewn-standard__1.21.00..	derivation		oewn-standardize__2.30.00..
+oewn-standard__1.23.00..	derivation		oewn-standardise__2.30.00..
+oewn-standard__1.23.00..	derivation		oewn-standardize__2.30.00..
+oewn-standardisation__1.04.00..	derivation		oewn-standardise__2.31.00..
+oewn-standardisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-standardisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-standardisation__1.04.01..	derivation		oewn-standardise__2.30.00..
+oewn-standardisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-standardisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-standardisation__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-standardisation__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-standardise__2.30.00..	derivation		oewn-standardiser__1.18.00..
+oewn-standardise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-standardise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-standardise__2.30.00..	other	agent	oewn-standardiser__1.18.00..
+oewn-standardise__2.30.00..	other	event	oewn-standardisation__1.04.01..
+oewn-standardise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-standardise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-standardise__2.31.00..	other	event	oewn-standardisation__1.04.00..
+oewn-standardization__1.04.00..	derivation		oewn-standardize__2.30.00..
+oewn-standardization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-standardization__1.04.01..	derivation		oewn-standardize__2.31.00..
+oewn-standardization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-standardization__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-standardize__2.30.00..	derivation		oewn-standardizer__1.18.00..
+oewn-standardize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-standardize__2.30.00..	other	agent	oewn-standardizer__1.18.00..
+oewn-standardize__2.30.00..	other	event	oewn-standardization__1.04.00..
+oewn-standardize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-standardize__2.31.00..	other	event	oewn-standardization__1.04.01..
+oewn-standoffish__5.00.00.unapproachable.00	derivation		oewn-standoffishness__1.07.00..
+oewn-standoffishly__4.02.00..	pertainym		oewn-standoffish__5.00.00.unapproachable.00
+oewn-stannic__3.01.00..	pertainym		oewn-tin__1.27.00..
+oewn-stannous__3.01.00..	pertainym		oewn-tin__1.27.00..
+oewn-staphylococcal__3.01.00..	derivation		oewn-staphylococcus__1.05.00..
+oewn-staphylococcal__3.01.00..	pertainym		oewn-staphylococcus__1.05.00..
+oewn-staple__1.06.02..	derivation		oewn-staple__2.35.00..
+oewn-staple__2.35.00..	antonym		oewn-unstaple__2.35.00..
+oewn-staple__2.35.00..	derivation		oewn-stapler__1.06.00..
+oewn-staple__2.35.00..	other	instrument	oewn-staple__1.06.02..
+oewn-staple__2.35.00..	other	instrument	oewn-stapler__1.06.00..
+oewn-staple_fiber__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-staple_fibre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-staple_fibre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-staple_fibre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-star__1.10.00..	derivation		oewn-star__2.30.00..
+oewn-star__1.17.00..	derivation		oewn-starry__3.00.00..
+oewn-star__1.17.01..	derivation		oewn-starry__3.00.00..
+oewn-star__1.18.00..	derivation		oewn-star__2.36.00..
+oewn-star__1.18.00..	derivation		oewn-star__2.42.00..
+oewn-star__1.18.01..	derivation		oewn-star__2.36.00..
+oewn-star__1.18.02..	derivation		oewn-star__2.36.00..
+oewn-star__1.18.02..	derivation		oewn-star__2.42.00..
+oewn-star__1.18.02..	derivation		oewn-stardom__1.26.00..
+oewn-star__2.30.00..	other	uses	oewn-star__1.10.00..
+oewn-star__2.36.00..	other	agent	oewn-star__1.18.00..
+oewn-star__2.36.00..	other	agent	oewn-star__1.18.01..
+oewn-star__2.36.00..	other	agent	oewn-star__1.18.02..
+oewn-star__2.42.00..	other	agent	oewn-star__1.18.00..
+oewn-star__2.42.00..	other	undergoer	oewn-star__1.18.02..
+oewn-starboard__1.06.00..	derivation		oewn-starboard__2.38.00..
+oewn-starboard__2.38.00..	other	undergoer	oewn-starboard__1.06.00..
+oewn-starch__1.27.00..	derivation		oewn-starch__2.30.00..
+oewn-starch__1.27.00..	derivation		oewn-starchy__3.00.00..
+oewn-starch__2.30.00..	other	by_means_of	oewn-starch__1.27.00..
+oewn-starchless__3.00.00..	antonym		oewn-starchy__3.00.00..
+oewn-stare__1.04.00..	derivation		oewn-stare__2.29.00..
+oewn-stare__1.04.00..	derivation		oewn-stare__2.39.00..
+oewn-stare__2.29.00..	derivation		oewn-starer__1.18.00..
+oewn-stare__2.29.00..	other	agent	oewn-starer__1.18.00..
+oewn-stare__2.29.00..	other	event	oewn-stare__1.04.00..
+oewn-stare__2.39.00..	derivation		oewn-starer__1.18.00..
+oewn-stare__2.39.00..	other	agent	oewn-starer__1.18.00..
+oewn-stare__2.39.00..	other	event	oewn-stare__1.04.00..
+oewn-stargaze__2.36.00..	derivation		oewn-stargazer__1.18.01..
+oewn-stargaze__2.36.00..	other	agent	oewn-stargazer__1.18.01..
+oewn-stargaze__2.39.00..	derivation		oewn-stargazer__1.18.00..
+oewn-stargaze__2.39.00..	derivation		oewn-stargazing__1.04.00..
+oewn-stargaze__2.39.00..	other	agent	oewn-stargazer__1.18.00..
+oewn-stark__5.00.00.immoderate.00	derivation		oewn-starkness__1.07.01..
+oewn-stark__5.00.00.inhospitable.00	derivation		oewn-starkness__1.07.00..
+oewn-stark__5.00.00.plain.01	derivation		oewn-starkness__1.07.00..
+oewn-stark__5.00.00.unconditional.00	derivation		oewn-starkness__1.07.01..
+oewn-starkly__4.02.00..	pertainym		oewn-stark__5.00.00.unconditional.00
+oewn-starkly__4.02.01..	pertainym		oewn-stark__5.00.00.plain.01
+oewn-starkly__4.02.02..	pertainym		oewn-stark__5.00.00.unmitigated.00
+oewn-starless__3.00.00..	antonym		oewn-starry__3.00.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.30.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.30.01..
+oewn-start__1.04.00..	derivation		oewn-start__2.33.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.36.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.36.01..
+oewn-start__1.04.00..	derivation		oewn-start__2.41.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.41.04..
+oewn-start__1.04.00..	derivation		oewn-start__2.42.00..
+oewn-start__1.04.00..	derivation		oewn-start__2.42.03..
+oewn-start__1.04.01..	derivation		oewn-start__2.38.04..
+oewn-start__1.04.02..	derivation		oewn-start__2.33.00..
+oewn-start__1.11.00..	derivation		oewn-start__2.30.00..
+oewn-start__1.11.00..	derivation		oewn-start__2.30.01..
+oewn-start__1.11.00..	derivation		oewn-start__2.36.00..
+oewn-start__1.11.00..	derivation		oewn-start__2.36.01..
+oewn-start__1.11.00..	derivation		oewn-start__2.41.00..
+oewn-start__1.11.00..	derivation		oewn-start__2.41.04..
+oewn-start__1.11.00..	derivation		oewn-start__2.42.00..
+oewn-start__1.11.00..	derivation		oewn-start__2.42.03..
+oewn-start__1.28.00..	derivation		oewn-start__2.30.00..
+oewn-start__1.28.00..	derivation		oewn-start__2.30.01..
+oewn-start__1.28.00..	derivation		oewn-start__2.36.00..
+oewn-start__1.28.00..	derivation		oewn-start__2.36.01..
+oewn-start__1.28.00..	derivation		oewn-start__2.41.00..
+oewn-start__1.28.00..	derivation		oewn-start__2.42.00..
+oewn-start__2.30.00..	derivation		oewn-starter__1.18.01..
+oewn-start__2.30.00..	other	agent	oewn-starter__1.18.01..
+oewn-start__2.30.00..	other	event	oewn-start__1.04.00..
+oewn-start__2.30.00..	other	event	oewn-start__1.11.00..
+oewn-start__2.30.00..	other	event	oewn-start__1.28.00..
+oewn-start__2.30.01..	other	event	oewn-start__1.04.00..
+oewn-start__2.30.01..	other	event	oewn-start__1.11.00..
+oewn-start__2.30.01..	other	event	oewn-start__1.28.00..
+oewn-start__2.33.00..	derivation		oewn-starting__1.04.00..
+oewn-start__2.33.00..	other	event	oewn-start__1.04.00..
+oewn-start__2.33.00..	other	event	oewn-start__1.04.02..
+oewn-start__2.36.00..	derivation		oewn-starter__1.18.01..
+oewn-start__2.36.00..	other	event	oewn-start__1.04.00..
+oewn-start__2.36.00..	other	event	oewn-start__1.11.00..
+oewn-start__2.36.00..	other	event	oewn-start__1.28.00..
+oewn-start__2.36.01..	other	event	oewn-start__1.04.00..
+oewn-start__2.36.01..	other	event	oewn-start__1.11.00..
+oewn-start__2.36.01..	other	event	oewn-start__1.28.00..
+oewn-start__2.38.00..	antonym		oewn-stop__2.38.00..
+oewn-start__2.38.01..	antonym		oewn-stop__2.38.01..
+oewn-start__2.38.04..	other	event	oewn-start__1.04.01..
+oewn-start__2.41.00..	other	event	oewn-start__1.04.00..
+oewn-start__2.41.00..	other	event	oewn-start__1.11.00..
+oewn-start__2.41.00..	other	event	oewn-start__1.28.00..
+oewn-start__2.41.04..	other	event	oewn-start__1.04.00..
+oewn-start__2.41.04..	other	event	oewn-start__1.11.00..
+oewn-start__2.42.00..	other	event	oewn-start__1.04.00..
+oewn-start__2.42.00..	other	event	oewn-start__1.11.00..
+oewn-start__2.42.00..	other	event	oewn-start__1.28.00..
+oewn-start__2.42.03..	other	event	oewn-start__1.04.00..
+oewn-start__2.42.03..	other	event	oewn-start__1.11.00..
+oewn-start_up__2.36.00..	derivation		oewn-startup__1.04.00..
+oewn-start_up__2.38.00..	derivation		oewn-startup__1.04.01..
+oewn-startle__1.04.00..	derivation		oewn-startle__2.38.00..
+oewn-startle__2.38.00..	other	event	oewn-startle__1.04.00..
+oewn-startlingly__4.02.00..	pertainym		oewn-startling__5.00.00.surprising.00
+oewn-starvation__1.04.00..	derivation		oewn-starve__2.34.03..
+oewn-starvation__1.26.00..	derivation		oewn-starve__2.34.00..
+oewn-starve__2.34.00..	other	state	oewn-starvation__1.26.00..
+oewn-starve__2.34.03..	derivation		oewn-starving__1.04.00..
+oewn-starve__2.34.03..	other	event	oewn-starvation__1.04.00..
+oewn-stash__1.21.00..	derivation		oewn-stash__2.40.00..
+oewn-stash__2.40.00..	other	undergoer	oewn-stash__1.21.00..
+oewn-state__2.32.00..	derivation		oewn-statement__1.10.00..
+oewn-state__2.32.00..	derivation		oewn-statement__1.10.06..
+oewn-state__2.32.00..	other	event	oewn-statement__1.10.06..
+oewn-state__2.32.00..	other	undergoer	oewn-statement__1.10.00..
+oewn-state__2.32.01..	derivation		oewn-statement__1.10.02..
+oewn-state__2.32.01..	derivation		oewn-statement__1.10.06..
+oewn-state__2.32.01..	other	event	oewn-statement__1.10.06..
+oewn-state__2.32.01..	other	undergoer	oewn-statement__1.10.02..
+oewn-stateliness__1.07.01..	derivation		oewn-stately__5.00.00.dignified.00
+oewn-stateliness__1.07.02..	derivation		oewn-stately__5.00.00.impressive.00
+oewn-stateliness__1.07.02..	derivation		oewn-stately__5.00.00.tall.00
+oewn-statesman__1.18.01..	derivation		oewn-statesmanly__3.00.00..
+oewn-statesman__1.18.01..	derivation		oewn-statesmanship__1.07.00..
+oewn-statesmanlike__3.00.00..	antonym		oewn-unstatesmanlike__3.00.00..
+oewn-static__3.01.00..	pertainym		oewn-static_electricity__1.19.00..
+oewn-station__1.15.00..	derivation		oewn-station__2.33.00..
+oewn-station__1.15.01..	derivation		oewn-station__2.33.00..
+oewn-station__2.33.00..	other	location	oewn-station__1.15.00..
+oewn-station__2.33.00..	other	location	oewn-station__1.15.01..
+oewn-stationariness__1.26.00..	derivation		oewn-stationary__5.00.00.fixed.00
+oewn-stationariness__1.26.00..	derivation		oewn-stationary__5.00.00.nonmoving.00
+oewn-statistical__3.01.00..	derivation		oewn-statistics__1.09.00..
+oewn-statistical__3.01.00..	pertainym		oewn-statistics__1.09.00..
+oewn-statistically__4.02.00..	pertainym		oewn-statistical__3.01.00..
+oewn-statistician__1.18.00..	derivation		oewn-statistics__1.09.00..
+oewn-statistician__1.18.01..	derivation		oewn-statistics__1.09.00..
+oewn-statuary__3.01.00..	derivation		oewn-statue__1.06.00..
+oewn-statuary__3.01.00..	pertainym		oewn-statue__1.06.00..
+oewn-statue__1.06.00..	derivation		oewn-statuette__1.06.00..
+oewn-statutorily__4.02.00..	pertainym		oewn-statutory__5.00.00.legal.00
+oewn-statutory__3.01.00..	pertainym		oewn-statute__1.10.00..
+oewn-statutory_offence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-statutory_offence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-statutory_offence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-statutory_offense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-staunch__5.00.00.constant.00	derivation		oewn-staunchness__1.07.00..
+oewn-staunchly__4.02.00..	pertainym		oewn-staunch__5.00.00.constant.00
+oewn-stave__1.06.02..	derivation		oewn-stave__2.40.00..
+oewn-stave__2.40.00..	other	uses	oewn-stave__1.06.02..
+oewn-stay__1.04.00..	derivation		oewn-stay__2.30.00..
+oewn-stay__1.04.00..	derivation		oewn-stay__2.38.00..
+oewn-stay__1.04.00..	derivation		oewn-stay__2.42.01..
+oewn-stay__1.04.00..	derivation		oewn-stay__2.42.02..
+oewn-stay__1.06.01..	derivation		oewn-stay__2.35.00..
+oewn-stay__1.10.00..	derivation		oewn-stay__2.30.01..
+oewn-stay__1.10.00..	derivation		oewn-stay__2.41.00..
+oewn-stay__2.30.00..	other	event	oewn-stay__1.04.00..
+oewn-stay__2.30.01..	other	by_means_of	oewn-stay__1.10.00..
+oewn-stay__2.35.00..	other	instrument	oewn-stay__1.06.01..
+oewn-stay__2.38.00..	other	event	oewn-stay__1.04.00..
+oewn-stay__2.41.00..	other	by_means_of	oewn-stay__1.10.00..
+oewn-stay__2.42.01..	other	event	oewn-stay__1.04.00..
+oewn-stay__2.42.02..	other	event	oewn-stay__1.04.00..
+oewn-stay__2.42.03..	derivation		oewn-stayer__1.05.00..
+oewn-stay__2.42.03..	other	agent	oewn-stayer__1.05.00..
+oewn-stay_in_place__2.38.00..	antonym		oewn-travel__2.38.00..
+oewn-steadfast__5.00.00.constant.00	derivation		oewn-steadfastness__1.07.01..
+oewn-steadfast__5.00.00.resolute.00	derivation		oewn-steadfastness__1.07.02..
+oewn-steadfastly__4.02.00..	pertainym		oewn-steadfast__5.00.00.resolute.00
+oewn-steadily__4.02.00..	antonym		oewn-unsteadily__4.02.00..
+oewn-steadily__4.02.00..	pertainym		oewn-steady__3.00.00..
+oewn-steadily__4.02.01..	pertainym		oewn-steady__3.00.00..
+oewn-steadiness__1.07.00..	antonym		oewn-unsteadiness__1.07.00..
+oewn-steadiness__1.07.00..	derivation		oewn-steady__5.00.00.secure.03
+oewn-steadiness__1.07.01..	antonym		oewn-unsteadiness__1.07.01..
+oewn-steadiness__1.07.01..	derivation		oewn-steady__3.00.00..
+oewn-steadiness__1.07.02..	derivation		oewn-steady__5.00.00.resolute.00
+oewn-steady__3.00.00..	antonym		oewn-unsteady__3.00.00..
+oewn-steal__1.04.00..	derivation		oewn-steal__2.33.00..
+oewn-steal__2.33.00..	other	event	oewn-steal__1.04.00..
+oewn-steal__2.38.00..	also		oewn-steal_away__2.38.00..
+oewn-steal__2.38.00..	derivation		oewn-stealing__1.04.01..
+oewn-steal__2.40.00..	derivation		oewn-stealer__1.18.00..
+oewn-steal__2.40.00..	derivation		oewn-stealing__1.04.00..
+oewn-steal__2.40.00..	other	agent	oewn-stealer__1.18.00..
+oewn-stealth__1.04.00..	derivation		oewn-stealthy__5.00.00.concealed.00
+oewn-stealthily__4.02.00..	pertainym		oewn-stealthy__5.00.00.concealed.00
+oewn-stealthiness__1.07.00..	derivation		oewn-stealthy__5.00.00.concealed.00
+oewn-steam__1.27.00..	derivation		oewn-steam__2.30.00..
+oewn-steam__1.27.00..	derivation		oewn-steam__2.35.00..
+oewn-steam__2.30.00..	derivation		oewn-steamer__1.06.01..
+oewn-steam__2.30.00..	derivation		oewn-steamer__1.13.00..
+oewn-steam__2.30.00..	other	by_means_of	oewn-steam__1.27.00..
+oewn-steam__2.30.00..	other	instrument	oewn-steamer__1.06.01..
+oewn-steam__2.30.00..	other	undergoer	oewn-steamer__1.13.00..
+oewn-steam__2.35.00..	other	by_means_of	oewn-steam__1.27.00..
+oewn-steam__2.38.02..	derivation		oewn-steamer__1.06.00..
+oewn-steam__2.38.02..	other	vehicle	oewn-steamer__1.06.00..
+oewn-steamer__1.06.00..	derivation		oewn-steamer__2.38.00..
+oewn-steaminess__1.07.00..	derivation		oewn-steamy__5.00.01.wet.01
+oewn-steamroll__2.33.00..	derivation		oewn-steamroller__1.18.00..
+oewn-steamroll__2.33.00..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-steamroll__2.41.00..	derivation		oewn-steamroller__1.18.00..
+oewn-steamroll__2.41.00..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-steamroll__2.41.01..	derivation		oewn-steamroller__1.18.00..
+oewn-steamroll__2.41.01..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-steamroller__1.06.00..	derivation		oewn-steamroller__2.30.00..
+oewn-steamroller__1.06.00..	derivation		oewn-steamroller__2.35.00..
+oewn-steamroller__1.18.00..	derivation		oewn-steamroller__2.33.00..
+oewn-steamroller__1.18.00..	derivation		oewn-steamroller__2.41.00..
+oewn-steamroller__1.18.00..	derivation		oewn-steamroller__2.41.01..
+oewn-steamroller__2.30.00..	other	instrument	oewn-steamroller__1.06.00..
+oewn-steamroller__2.30.00..	other	vehicle	oewn-steamroller__1.06.00..
+oewn-steamroller__2.33.00..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-steamroller__2.35.00..	other	instrument	oewn-steamroller__1.06.00..
+oewn-steamroller__2.35.00..	other	vehicle	oewn-steamroller__1.06.00..
+oewn-steamroller__2.41.00..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-steamroller__2.41.01..	other	by_means_of	oewn-steamroller__1.18.00..
+oewn-stearic__3.01.00..	derivation		oewn-stearin__1.27.00..
+oewn-stearic__3.01.00..	pertainym		oewn-fat__1.27.00..
+oewn-steel__1.27.00..	derivation		oewn-steel__2.35.00..
+oewn-steel__1.27.00..	derivation		oewn-steely__5.00.00.hard.01
+oewn-steel__2.35.00..	other	uses	oewn-steel__1.27.00..
+oewn-steep__2.30.00..	derivation		oewn-steeper__1.06.00..
+oewn-steep__2.30.00..	other	instrument	oewn-steeper__1.06.00..
+oewn-steep__3.00.00..	derivation		oewn-steepness__1.07.00..
+oewn-steep__5.00.00.high.01	derivation		oewn-steepness__1.07.00..
+oewn-steeply__4.02.00..	pertainym		oewn-steep__3.00.00..
+oewn-steer__1.10.00..	derivation		oewn-steer__2.41.00..
+oewn-steer__2.38.00..	derivation		oewn-steerage__1.04.00..
+oewn-steer__2.38.00..	derivation		oewn-steerer__1.18.01..
+oewn-steer__2.38.00..	derivation		oewn-steering__1.04.01..
+oewn-steer__2.38.00..	derivation		oewn-steering__1.04.02..
+oewn-steer__2.38.00..	other	agent	oewn-steerer__1.18.01..
+oewn-steer__2.41.00..	derivation		oewn-steering__1.04.00..
+oewn-steer__2.41.00..	other	by_means_of	oewn-steer__1.10.00..
+oewn-steganopus_tricolor__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-stellar__3.01.00..	pertainym		oewn-star__1.17.00..
+oewn-stellite__1.27.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-stem__1.04.00..	derivation		oewn-stem__2.42.03..
+oewn-stem__1.10.01..	derivation		oewn-stem__2.30.01..
+oewn-stem__1.10.01..	derivation		oewn-stem__2.42.00..
+oewn-stem__2.30.01..	derivation		oewn-stemmer__1.09.00..
+oewn-stem__2.30.01..	other	instrument	oewn-stemmer__1.09.00..
+oewn-stem__2.30.01..	other	result	oewn-stem__1.10.01..
+oewn-stem__2.42.03..	other	event	oewn-stem__1.04.00..
+oewn-stemless__3.00.00..	antonym		oewn-stemmed__3.00.00..
+oewn-stemmatic__3.01.00..	pertainym		oewn-stemma__1.25.00..
+oewn-stencil__1.06.00..	derivation		oewn-stencil__2.36.00..
+oewn-stencil__2.36.00..	other	instrument	oewn-stencil__1.06.00..
+oewn-stenographer__1.18.00..	derivation		oewn-stenography__1.04.00..
+oewn-stenographer__1.18.00..	derivation		oewn-stenography__1.10.00..
+oewn-stenographic__3.01.00..	derivation		oewn-stenography__1.04.00..
+oewn-stenographic__3.01.00..	pertainym		oewn-stenography__1.10.00..
+oewn-stenographical__3.01.00..	derivation		oewn-stenography__1.04.00..
+oewn-stenographical__3.01.00..	derivation		oewn-stenography__1.10.00..
+oewn-stenographical__3.01.00..	pertainym		oewn-stenography__1.10.00..
+oewn-stenosis__1.26.00..	derivation		oewn-stenotic__5.00.00.constricted.00
+oewn-stentor__1.18.00..	derivation		oewn-stentorian__5.00.00.full.01
+oewn-step--down__1.04.00..	derivation		oewn-step_down__2.30.04..
+oewn-step--up__1.04.00..	derivation		oewn-step_up__2.30.00..
+oewn-step__1.04.00..	derivation		oewn-step__2.30.00..
+oewn-step__1.04.00..	derivation		oewn-step__2.38.00..
+oewn-step__1.04.00..	derivation		oewn-step__2.38.01..
+oewn-step__1.04.00..	derivation		oewn-step__2.38.03..
+oewn-step__1.04.00..	derivation		oewn-step__2.38.04..
+oewn-step__1.06.00..	derivation		oewn-step__2.40.00..
+oewn-step__1.06.01..	derivation		oewn-step__2.35.00..
+oewn-step__1.10.02..	derivation		oewn-step__2.38.01..
+oewn-step__1.11.00..	derivation		oewn-step__2.38.00..
+oewn-step__1.11.00..	derivation		oewn-step__2.38.04..
+oewn-step__1.23.00..	derivation		oewn-step__2.30.00..
+oewn-step__1.23.00..	derivation		oewn-step__2.38.00..
+oewn-step__1.23.00..	derivation		oewn-step__2.38.01..
+oewn-step__1.23.00..	derivation		oewn-step__2.38.03..
+oewn-step__1.23.01..	derivation		oewn-step__2.30.00..
+oewn-step__2.30.00..	other	event	oewn-step__1.04.00..
+oewn-step__2.30.00..	other	event	oewn-step__1.23.00..
+oewn-step__2.30.00..	other	event	oewn-step__1.23.01..
+oewn-step__2.38.00..	also		oewn-step_out__2.38.00..
+oewn-step__2.38.00..	other	event	oewn-step__1.04.00..
+oewn-step__2.38.00..	other	event	oewn-step__1.11.00..
+oewn-step__2.38.00..	other	event	oewn-step__1.23.00..
+oewn-step__2.38.01..	other	event	oewn-step__1.04.00..
+oewn-step__2.38.01..	other	event	oewn-step__1.10.02..
+oewn-step__2.38.01..	other	event	oewn-step__1.23.00..
+oewn-step__2.38.03..	other	event	oewn-step__1.04.00..
+oewn-step__2.38.03..	other	event	oewn-step__1.23.00..
+oewn-step__2.38.04..	other	event	oewn-step__1.04.00..
+oewn-step__2.38.04..	other	event	oewn-step__1.11.00..
+oewn-step__2.40.00..	other	uses	oewn-step__1.06.00..
+oewn-stereophonic__5.00.00.binaural.00	derivation		oewn-stereophony__1.06.00..
+oewn-stereoscope__1.06.00..	derivation		oewn-stereoscopic__3.01.00..
+oewn-stereoscope__1.06.00..	derivation		oewn-stereoscopic__3.01.01..
+oewn-stereoscopic__3.01.00..	derivation		oewn-stereoscopy__1.09.00..
+oewn-stereoscopic__3.01.00..	pertainym		oewn-stereoscopy__1.09.00..
+oewn-stereoscopic__3.01.01..	pertainym		oewn-stereoscope__1.06.00..
+oewn-stereotype__1.09.00..	derivation		oewn-stereotype__2.31.00..
+oewn-stereotype__1.09.00..	derivation		oewn-stereotypic__5.00.00.conventional.01
+oewn-stereotype__1.09.00..	derivation		oewn-stereotypical__5.00.00.conventional.01
+oewn-stereotype__2.31.00..	other	property	oewn-stereotype__1.09.00..
+oewn-stereotypically__4.02.00..	pertainym		oewn-stereotypical__5.00.00.conventional.01
+oewn-sterile__3.00.00..	derivation		oewn-sterility__1.26.00..
+oewn-sterile__5.00.00.antiseptic.00	derivation		oewn-sterileness__1.26.00..
+oewn-sterile__5.00.00.antiseptic.00	derivation		oewn-sterility__1.26.01..
+oewn-sterilisation__1.04.00..	derivation		oewn-sterilise__2.29.00..
+oewn-sterilisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sterilisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sterilisation__1.04.01..	derivation		oewn-sterilise__2.29.01..
+oewn-sterilisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sterilisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sterilise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sterilise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sterilise__2.29.00..	other	event	oewn-sterilisation__1.04.00..
+oewn-sterilise__2.29.01..	derivation		oewn-steriliser__1.06.00..
+oewn-sterilise__2.29.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sterilise__2.29.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sterilise__2.29.01..	other	event	oewn-sterilisation__1.04.01..
+oewn-sterilise__2.29.01..	other	instrument	oewn-steriliser__1.06.00..
+oewn-sterilization__1.04.00..	derivation		oewn-sterilize__2.29.00..
+oewn-sterilization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sterilization__1.04.01..	derivation		oewn-sterilize__2.29.01..
+oewn-sterilization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sterilize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sterilize__2.29.00..	other	event	oewn-sterilization__1.04.00..
+oewn-sterilize__2.29.01..	derivation		oewn-sterilizer__1.06.00..
+oewn-sterilize__2.29.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sterilize__2.29.01..	other	event	oewn-sterilization__1.04.01..
+oewn-sterilize__2.29.01..	other	instrument	oewn-sterilizer__1.06.00..
+oewn-stern__5.00.00.demanding.01	derivation		oewn-sternness__1.07.00..
+oewn-stern__5.00.00.implacable.00	derivation		oewn-sternness__1.07.00..
+oewn-stern__5.00.00.plain.01	derivation		oewn-sternness__1.07.01..
+oewn-sternal__3.01.00..	derivation		oewn-sternum__1.08.00..
+oewn-sternal__3.01.00..	pertainym		oewn-sternum__1.08.00..
+oewn-sternly__4.02.00..	pertainym		oewn-stern__5.00.00.nonindulgent.00
+oewn-sternutatory__3.01.00..	pertainym		oewn-sternutator__1.27.00..
+oewn-steroid__1.27.00..	derivation		oewn-steroidal__3.01.00..
+oewn-steroid__1.27.02..	derivation		oewn-steroidal__3.01.00..
+oewn-steroidal__3.01.00..	pertainym		oewn-steroid_hormone__1.27.00..
+oewn-stertor__1.04.00..	derivation		oewn-stertorous__5.00.00.noisy.00
+oewn-stertorously__4.02.00..	pertainym		oewn-stertorous__5.00.00.noisy.00
+oewn-stew__1.13.00..	derivation		oewn-stew__2.30.00..
+oewn-stew__1.26.00..	derivation		oewn-stew__2.37.01..
+oewn-stew__2.30.00..	derivation		oewn-stewing__1.04.00..
+oewn-stew__2.30.00..	other	result	oewn-stew__1.13.00..
+oewn-stew__2.37.01..	other	event	oewn-stew__1.26.00..
+oewn-steward__1.18.00..	derivation		oewn-stewardship__1.04.00..
+oewn-steward__1.18.01..	derivation		oewn-stewardship__1.04.00..
+oewn-steward__1.18.02..	derivation		oewn-stewardship__1.04.00..
+oewn-steward__1.18.03..	derivation		oewn-stewardship__1.04.00..
+oewn-steward__1.18.04..	derivation		oewn-stewardship__1.04.00..
+oewn-stick__2.35.00..	derivation		oewn-sticker__1.10.00..
+oewn-stick__2.35.00..	other	instrument	oewn-sticker__1.10.00..
+oewn-stick__2.35.02..	also		oewn-stick_out__2.42.01..
+oewn-stick__2.35.03..	derivation		oewn-sticker__1.06.00..
+oewn-stick__2.35.03..	other	instrument	oewn-sticker__1.06.00..
+oewn-stick__2.35.04..	derivation		oewn-sticker__1.06.00..
+oewn-stick__2.35.04..	derivation		oewn-sticker__1.20.00..
+oewn-stick__2.35.04..	other	instrument	oewn-sticker__1.06.00..
+oewn-stick_up__2.40.00..	derivation		oewn-stickup__1.04.00..
+oewn-stickily__4.02.00..	pertainym		oewn-sticky__5.00.00.adhesive.00
+oewn-stickiness__1.07.00..	derivation		oewn-sticky__5.00.00.adhesive.00
+oewn-stickiness__1.07.00..	derivation		oewn-sticky__5.00.01.adhesive.00
+oewn-stickiness__1.07.00..	derivation		oewn-sticky__5.00.02.wet.01
+oewn-stickle__2.32.00..	derivation		oewn-stickler__1.18.00..
+oewn-stickle__2.32.00..	other	agent	oewn-stickler__1.18.00..
+oewn-stiff__1.08.00..	exemplifies		oewn-slang__1.10.00..
+oewn-stiff__5.00.00.formal.01	derivation		oewn-stiffness__1.07.02..
+oewn-stiff__5.00.00.immobile.00	derivation		oewn-stiffness__1.07.00..
+oewn-stiff__5.00.00.resolute.00	derivation		oewn-stiffness__1.07.04..
+oewn-stiff__5.00.01.inflexible.01	derivation		oewn-stiffness__1.07.00..
+oewn-stiff__5.00.01.inflexible.01	derivation		oewn-stiffness__1.07.01..
+oewn-stiffen__2.30.00..	derivation		oewn-stiffening__1.04.00..
+oewn-stiffen__2.30.01..	derivation		oewn-stiffener__1.27.00..
+oewn-stiffen__2.30.01..	derivation		oewn-stiffening__1.22.00..
+oewn-stiffen__2.30.01..	other	material	oewn-stiffener__1.27.00..
+oewn-stiffly__4.02.00..	pertainym		oewn-stiff__5.00.00.immobile.00
+oewn-stiffly__4.02.01..	pertainym		oewn-stiff__5.00.01.inflexible.01
+oewn-stifle__2.30.00..	antonym		oewn-stimulate__2.30.00..
+oewn-stifle__2.30.00..	derivation		oewn-stifler__1.18.00..
+oewn-stifle__2.30.00..	other	agent	oewn-stifler__1.18.00..
+oewn-stifle__2.35.00..	derivation		oewn-stifler__1.18.00..
+oewn-stifle__2.35.00..	derivation		oewn-stifling__1.04.00..
+oewn-stifle__2.35.00..	other	agent	oewn-stifler__1.18.00..
+oewn-stigma__1.10.00..	derivation		oewn-stigmatic__3.01.01..
+oewn-stigma__1.10.00..	derivation		oewn-stigmatize__2.41.00..
+oewn-stigmatic__1.18.00..	derivation		oewn-stigmatic__3.01.01..
+oewn-stigmatic__3.00.00..	derivation		oewn-stigmatism__1.09.00..
+oewn-stigmatic__3.01.00..	derivation		oewn-stigmatism__1.26.00..
+oewn-stigmatic__3.01.00..	pertainym		oewn-stigmatism__1.26.00..
+oewn-stigmatic__3.01.01..	derivation		oewn-stigmatism__1.26.01..
+oewn-stigmatic__3.01.01..	pertainym		oewn-stigma__1.10.00..
+oewn-stigmatisation__1.04.00..	derivation		oewn-stigmatise__2.30.00..
+oewn-stigmatisation__1.04.00..	derivation		oewn-stigmatise__2.41.00..
+oewn-stigmatisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stigmatisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stigmatise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stigmatise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stigmatise__2.30.00..	other	event	oewn-stigmatisation__1.04.00..
+oewn-stigmatise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stigmatise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stigmatise__2.41.00..	other	event	oewn-stigmatisation__1.04.00..
+oewn-stigmatism__1.26.01..	derivation		oewn-stigmatist__1.18.00..
+oewn-stigmatization__1.04.00..	derivation		oewn-stigmatize__2.30.00..
+oewn-stigmatization__1.04.00..	derivation		oewn-stigmatize__2.41.00..
+oewn-stigmatization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stigmatize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stigmatize__2.30.00..	other	event	oewn-stigmatization__1.04.00..
+oewn-stigmatize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stigmatize__2.41.00..	other	event	oewn-stigmatization__1.04.00..
+oewn-still__1.07.00..	derivation		oewn-still__2.30.00..
+oewn-still__1.07.00..	derivation		oewn-still__2.37.00..
+oewn-still__1.07.00..	derivation		oewn-still__2.37.01..
+oewn-still__2.30.00..	other	event	oewn-still__1.07.00..
+oewn-still__2.37.00..	other	event	oewn-still__1.07.00..
+oewn-still__2.37.01..	other	event	oewn-still__1.07.00..
+oewn-still__3.00.03..	derivation		oewn-stillness__1.26.01..
+oewn-still__4.02.02..	pertainym		oewn-still__5.00.01.nonmoving.00
+oewn-still__5.00.00.calm.00	derivation		oewn-stillness__1.26.00..
+oewn-still__5.00.00.quiet.01	derivation		oewn-stillness__1.07.00..
+oewn-still__5.00.01.nonmoving.00	derivation		oewn-stillness__1.26.01..
+oewn-still__5.00.02.standing.02	derivation		oewn-stillness__1.26.00..
+oewn-still__5.00.02.standing.02	derivation		oewn-stillness__1.26.01..
+oewn-stiltedly__4.02.00..	pertainym		oewn-stilted__5.00.00.affected.01
+oewn-stimulant__1.06.00..	derivation		oewn-stimulate__2.29.00..
+oewn-stimulant__1.09.00..	derivation		oewn-stimulate__2.30.00..
+oewn-stimulant__5.00.00.stimulative.00	derivation		oewn-stimulate__2.30.00..
+oewn-stimulant__5.00.00.stimulative.00	derivation		oewn-stimulate__2.32.00..
+oewn-stimulant__5.00.00.stimulative.00	derivation		oewn-stimulate__2.39.00..
+oewn-stimulate__2.29.00..	derivation		oewn-stimulative__3.00.00..
+oewn-stimulate__2.30.00..	derivation		oewn-stimulative__3.00.00..
+oewn-stimulate__2.30.00..	derivation		oewn-stimulus__1.09.00..
+oewn-stimulate__2.32.00..	derivation		oewn-stimulus__1.09.00..
+oewn-stimulate__2.32.01..	derivation		oewn-stimulation__1.04.00..
+oewn-stimulate__2.32.01..	derivation		oewn-stimulation__1.09.00..
+oewn-stimulate__2.32.01..	derivation		oewn-stimulus__1.09.00..
+oewn-stimulate__2.32.01..	other	event	oewn-stimulation__1.04.00..
+oewn-stimulate__2.32.01..	other	event	oewn-stimulation__1.09.00..
+oewn-stimulate__2.39.00..	derivation		oewn-stimulative__3.00.00..
+oewn-stimulate__2.39.00..	derivation		oewn-stimulus__1.09.00..
+oewn-stimulating__3.00.00..	antonym		oewn-unstimulating__3.00.00..
+oewn-stimulus_generalisation__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stimulus_generalisation__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stimulus_generalization__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sting__1.26.00..	derivation		oewn-sting__2.39.00..
+oewn-sting__1.26.00..	derivation		oewn-sting__2.39.02..
+oewn-sting__1.26.01..	derivation		oewn-sting__2.35.01..
+oewn-sting__1.26.02..	derivation		oewn-sting__2.37.00..
+oewn-sting__2.35.01..	derivation		oewn-stinger__1.05.00..
+oewn-sting__2.35.01..	other	body_part	oewn-stinger__1.05.00..
+oewn-sting__2.35.01..	other	uses	oewn-sting__1.26.01..
+oewn-sting__2.37.00..	derivation		oewn-stinger__1.10.00..
+oewn-sting__2.37.00..	derivation		oewn-stinging__1.26.00..
+oewn-sting__2.37.00..	other	event	oewn-sting__1.26.02..
+oewn-sting__2.37.00..	other	event	oewn-stinger__1.10.00..
+oewn-sting__2.39.00..	derivation		oewn-stinger__1.04.00..
+oewn-sting__2.39.00..	derivation		oewn-stinger__1.05.00..
+oewn-sting__2.39.00..	derivation		oewn-stinging__1.26.00..
+oewn-sting__2.39.00..	other	body_part	oewn-stinger__1.05.00..
+oewn-sting__2.39.00..	other	event	oewn-sting__1.26.00..
+oewn-sting__2.39.00..	other	event	oewn-stinger__1.04.00..
+oewn-sting__2.39.02..	derivation		oewn-stinger__1.04.00..
+oewn-sting__2.39.02..	derivation		oewn-stinger__1.05.00..
+oewn-sting__2.39.02..	other	body_part	oewn-stinger__1.05.00..
+oewn-sting__2.39.02..	other	event	oewn-sting__1.26.00..
+oewn-sting__2.39.02..	other	event	oewn-stinger__1.04.00..
+oewn-stingily__4.02.00..	pertainym		oewn-stingy__3.00.00..
+oewn-stinginess__1.07.00..	derivation		oewn-stingy__3.00.00..
+oewn-stingless__3.01.00..	pertainym		oewn-sting__1.26.00..
+oewn-stink__1.09.00..	derivation		oewn-stink__2.39.00..
+oewn-stink__1.09.00..	derivation		oewn-stinky__3.00.00..
+oewn-stink__2.39.00..	also		oewn-stink_out__2.39.00..
+oewn-stink__2.39.00..	also		oewn-stink_up__2.39.00..
+oewn-stink__2.39.00..	derivation		oewn-stinker__1.06.01..
+oewn-stink__2.39.00..	other	by_means_of	oewn-stinker__1.06.01..
+oewn-stink__2.39.00..	other	event	oewn-stink__1.09.00..
+oewn-stink__2.42.01..	derivation		oewn-stinker__1.06.00..
+oewn-stink__2.42.01..	other	result	oewn-stinker__1.06.00..
+oewn-stinkiness__1.07.00..	derivation		oewn-stinky__3.00.00..
+oewn-stint__2.40.00..	derivation		oewn-stinter__1.18.00..
+oewn-stint__2.40.00..	other	agent	oewn-stinter__1.18.00..
+oewn-stint__2.40.01..	derivation		oewn-stinter__1.18.00..
+oewn-stint__2.40.01..	other	agent	oewn-stinter__1.18.00..
+oewn-stipend__1.21.00..	derivation		oewn-stipendiary__3.01.00..
+oewn-stipendiary__3.01.00..	pertainym		oewn-stipend__1.21.00..
+oewn-stipple__2.36.01..	derivation		oewn-stippler__1.18.00..
+oewn-stipple__2.36.01..	other	agent	oewn-stippler__1.18.00..
+oewn-stipple__2.36.02..	derivation		oewn-stippler__1.18.00..
+oewn-stipple__2.36.02..	other	agent	oewn-stippler__1.18.00..
+oewn-stipulate__2.32.00..	derivation		oewn-stipulation__1.04.00..
+oewn-stipulate__2.32.00..	derivation		oewn-stipulatory__5.00.00.uncontroversial.00
+oewn-stipulate__2.32.00..	other	event	oewn-stipulation__1.04.00..
+oewn-stir__1.12.00..	derivation		oewn-stir__2.37.00..
+oewn-stir__1.12.00..	derivation		oewn-stir__2.37.01..
+oewn-stir__1.12.00..	derivation		oewn-stir__2.39.00..
+oewn-stir__2.37.00..	also		oewn-stir_up__2.37.00..
+oewn-stir__2.37.00..	derivation		oewn-stirring__1.04.01..
+oewn-stir__2.37.00..	other	event	oewn-stir__1.12.00..
+oewn-stir__2.37.01..	also		oewn-stir_up__2.41.00..
+oewn-stir__2.37.01..	derivation		oewn-stirrer__1.18.00..
+oewn-stir__2.37.01..	other	agent	oewn-stirrer__1.18.00..
+oewn-stir__2.37.01..	other	event	oewn-stir__1.12.00..
+oewn-stir__2.38.01..	derivation		oewn-stirrer__1.06.00..
+oewn-stir__2.38.01..	other	instrument	oewn-stirrer__1.06.00..
+oewn-stir__2.39.00..	other	event	oewn-stir__1.12.00..
+oewn-stirringly__4.02.00..	pertainym		oewn-stirring__5.00.00.moving.01
+oewn-stitch__1.06.00..	derivation		oewn-stitch__2.35.00..
+oewn-stitch__2.35.00..	derivation		oewn-stitcher__1.18.00..
+oewn-stitch__2.35.00..	derivation		oewn-stitchery__1.06.00..
+oewn-stitch__2.35.00..	derivation		oewn-stitching__1.04.00..
+oewn-stitch__2.35.00..	other	agent	oewn-stitcher__1.18.00..
+oewn-stitch__2.35.00..	other	by_means_of	oewn-stitch__1.06.00..
+oewn-stochastically__4.02.00..	pertainym		oewn-stochastic__5.00.00.random.00
+oewn-stock__1.05.00..	derivation		oewn-stocker__1.05.00..
+oewn-stock__1.06.00..	derivation		oewn-stock__2.40.00..
+oewn-stock__1.06.00..	derivation		oewn-stock__2.40.01..
+oewn-stock__1.06.00..	derivation		oewn-stockist__1.18.00..
+oewn-stock__1.06.02..	derivation		oewn-stock__2.40.07..
+oewn-stock__1.14.00..	derivation		oewn-stock__2.40.05..
+oewn-stock__1.20.03..	derivation		oewn-stock__2.29.03..
+oewn-stock__1.21.01..	derivation		oewn-stock__2.40.00..
+oewn-stock__1.21.01..	derivation		oewn-stock__2.40.01..
+oewn-stock__1.21.01..	derivation		oewn-stock__2.40.02..
+oewn-stock__1.21.01..	derivation		oewn-stock__2.40.06..
+oewn-stock__1.21.01..	derivation		oewn-stocker__1.05.00..
+oewn-stock__1.21.01..	derivation		oewn-stockist__1.18.00..
+oewn-stock__2.40.00..	derivation		oewn-stockist__1.18.00..
+oewn-stock__2.40.00..	other	undergoer	oewn-stock__1.06.00..
+oewn-stock__2.40.00..	other	undergoer	oewn-stock__1.21.01..
+oewn-stock__2.40.01..	derivation		oewn-stockist__1.18.00..
+oewn-stock__2.40.01..	other	uses	oewn-stock__1.06.00..
+oewn-stock__2.40.01..	other	uses	oewn-stock__1.21.01..
+oewn-stock__2.40.02..	derivation		oewn-stocking__1.04.00..
+oewn-stock__2.40.02..	derivation		oewn-stockist__1.18.00..
+oewn-stock__2.40.02..	other	uses	oewn-stock__1.21.01..
+oewn-stock__2.40.05..	other	uses	oewn-stock__1.14.00..
+oewn-stock__2.40.06..	other	uses	oewn-stock__1.21.01..
+oewn-stock__2.40.07..	other	uses	oewn-stock__1.06.02..
+oewn-stockade__1.06.01..	derivation		oewn-stockade__2.33.00..
+oewn-stockade__2.33.00..	other	uses	oewn-stockade__1.06.01..
+oewn-stockily__4.02.00..	pertainym		oewn-stocky__5.00.00.short.03
+oewn-stockpile__1.14.00..	derivation		oewn-stockpile__2.40.00..
+oewn-stockpile__1.21.00..	derivation		oewn-stockpile__2.40.00..
+oewn-stockpile__2.40.00..	derivation		oewn-stockpiling__1.04.00..
+oewn-stockpile__2.40.00..	other	undergoer	oewn-stockpile__1.14.00..
+oewn-stockpile__2.40.00..	other	undergoer	oewn-stockpile__1.21.00..
+oewn-stodgily__4.02.00..	pertainym		oewn-stodgy__5.00.00.conventional.00
+oewn-stodginess__1.07.00..	derivation		oewn-stodgy__5.00.00.conventional.00
+oewn-stodginess__1.07.00..	derivation		oewn-stodgy__5.00.00.unfashionable.00
+oewn-stoic__1.18.00..	derivation		oewn-stoic__5.00.00.unemotional.00
+oewn-stoic__1.18.00..	derivation		oewn-stoical__5.00.00.unemotional.00
+oewn-stoic__1.18.01..	derivation		oewn-stoic__3.01.00..
+oewn-stoic__3.01.00..	pertainym		oewn-stoicism__1.09.00..
+oewn-stoical__5.00.00.unemotional.00	derivation		oewn-stoicism__1.07.00..
+oewn-stoically__4.02.00..	pertainym		oewn-stoic__5.00.00.unemotional.00
+oewn-stoichiometric__3.01.00..	derivation		oewn-stoichiometry__1.24.00..
+oewn-stoichiometric__3.01.00..	pertainym		oewn-stoichiometry__1.24.00..
+oewn-stoke__2.41.00..	derivation		oewn-stoker__1.06.00..
+oewn-stoke__2.41.00..	derivation		oewn-stoker__1.18.00..
+oewn-stoke__2.41.00..	other	agent	oewn-stoker__1.18.00..
+oewn-stoke__2.41.00..	other	instrument	oewn-stoker__1.06.00..
+oewn-stolid__5.00.00.unemotional.00	derivation		oewn-stolidity__1.07.00..
+oewn-stolid__5.00.00.unemotional.00	derivation		oewn-stolidity__1.12.00..
+oewn-stolid__5.00.00.unemotional.00	derivation		oewn-stolidness__1.07.00..
+oewn-stolidly__4.02.00..	pertainym		oewn-stolid__5.00.00.unemotional.00
+oewn-stoloniferous__3.01.00..	pertainym		oewn-stolon__1.20.00..
+oewn-stoma__1.08.00..	derivation		oewn-stomatal__3.01.02..
+oewn-stoma__1.08.00..	derivation		oewn-stomatous__3.00.00..
+oewn-stoma__1.08.00..	derivation		oewn-stomatous__3.01.02..
+oewn-stoma__1.20.01..	derivation		oewn-stomatal__3.01.01..
+oewn-stoma__1.20.01..	derivation		oewn-stomatous__3.01.01..
+oewn-stomach__1.08.00..	derivation		oewn-stomachic__3.01.00..
+oewn-stomach__1.08.01..	derivation		oewn-stomachal__3.01.00..
+oewn-stomach__1.12.00..	derivation		oewn-stomach__2.34.00..
+oewn-stomachal__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-stomachic__3.01.00..	pertainym		oewn-stomach__1.08.00..
+oewn-stomatal__3.01.01..	pertainym		oewn-stoma__1.20.01..
+oewn-stomatal__3.01.02..	pertainym		oewn-stoma__1.08.00..
+oewn-stomatous__3.01.01..	pertainym		oewn-stoma__1.20.01..
+oewn-stomatous__3.01.02..	pertainym		oewn-stoma__1.08.00..
+oewn-stomp__1.04.00..	derivation		oewn-stomp__2.38.00..
+oewn-stomp__2.38.00..	derivation		oewn-stomper__1.18.00..
+oewn-stomp__2.38.00..	other	agent	oewn-stomper__1.18.00..
+oewn-stomp__2.38.00..	other	event	oewn-stomp__1.04.00..
+oewn-stone__1.07.00..	derivation		oewn-stony__5.00.00.hardhearted.00
+oewn-stone__1.17.00..	derivation		oewn-stone__2.35.00..
+oewn-stone__1.17.00..	derivation		oewn-stony__5.00.00.rough.00
+oewn-stone__1.20.00..	derivation		oewn-stone__2.30.00..
+oewn-stone__1.20.00..	derivation		oewn-stony__5.00.00.hardhearted.00
+oewn-stone__1.27.00..	derivation		oewn-stone__2.35.00..
+oewn-stone__2.30.00..	other	undergoer	oewn-stone__1.20.00..
+oewn-stone__2.35.00..	derivation		oewn-stoner__1.18.00..
+oewn-stone__2.35.00..	derivation		oewn-stoning__1.04.00..
+oewn-stone__2.35.00..	other	agent	oewn-stoner__1.18.00..
+oewn-stone__2.35.00..	other	by_means_of	oewn-stone__1.17.00..
+oewn-stone__2.35.00..	other	by_means_of	oewn-stone__1.27.00..
+oewn-stonewall__2.30.00..	derivation		oewn-stonewaller__1.18.00..
+oewn-stonewall__2.30.00..	other	agent	oewn-stonewaller__1.18.00..
+oewn-stonewall__2.32.00..	derivation		oewn-stonewaller__1.18.00..
+oewn-stonewall__2.32.00..	derivation		oewn-stonewalling__1.04.00..
+oewn-stonewall__2.32.00..	other	agent	oewn-stonewaller__1.18.00..
+oewn-stonily__4.02.00..	pertainym		oewn-stony__5.00.00.hardhearted.00
+oewn-stooge__1.18.00..	derivation		oewn-stooge__2.29.00..
+oewn-stooge__1.18.01..	derivation		oewn-stooge__2.36.00..
+oewn-stooge__2.29.00..	other	agent	oewn-stooge__1.18.00..
+oewn-stooge__2.36.00..	other	agent	oewn-stooge__1.18.01..
+oewn-stool__1.06.01..	derivation		oewn-stool__2.29.00..
+oewn-stool__1.20.00..	derivation		oewn-stool__2.29.01..
+oewn-stool__1.27.00..	derivation		oewn-stool__2.29.00..
+oewn-stool__2.29.00..	other	result	oewn-stool__1.27.00..
+oewn-stoop__1.04.00..	derivation		oewn-stoop__2.35.02..
+oewn-stoop__1.04.00..	derivation		oewn-stoop__2.38.00..
+oewn-stoop__2.35.02..	derivation		oewn-stooper__1.18.00..
+oewn-stoop__2.35.02..	other	agent	oewn-stooper__1.18.00..
+oewn-stoop__2.35.02..	other	event	oewn-stoop__1.04.00..
+oewn-stoop__2.38.00..	also		oewn-stoop_to__2.32.00..
+oewn-stoop__2.38.00..	derivation		oewn-stooper__1.18.00..
+oewn-stoop__2.38.00..	other	agent	oewn-stooper__1.18.00..
+oewn-stoop__2.38.00..	other	event	oewn-stoop__1.04.00..
+oewn-stoop__2.38.05..	derivation		oewn-stooper__1.18.00..
+oewn-stoop__2.38.05..	other	agent	oewn-stooper__1.18.00..
+oewn-stop__1.04.00..	derivation		oewn-stop__2.41.00..
+oewn-stop__1.04.00..	derivation		oewn-stop__2.42.00..
+oewn-stop__1.04.02..	derivation		oewn-stop__2.38.02..
+oewn-stop__1.04.02..	derivation		oewn-stop__2.42.00..
+oewn-stop__1.06.00..	derivation		oewn-stop__2.33.00..
+oewn-stop__1.06.00..	derivation		oewn-stop__2.35.00..
+oewn-stop__1.06.00..	derivation		oewn-stop__2.35.12..
+oewn-stop__1.11.00..	derivation		oewn-stop__2.38.00..
+oewn-stop__1.11.00..	derivation		oewn-stop__2.38.01..
+oewn-stop__1.11.00..	derivation		oewn-stop__2.42.00..
+oewn-stop__1.15.00..	derivation		oewn-stop__2.38.02..
+oewn-stop__1.26.00..	derivation		oewn-stop__2.30.12..
+oewn-stop__2.30.12..	derivation		oewn-stoppage__1.26.00..
+oewn-stop__2.30.12..	other	event	oewn-stop__1.26.00..
+oewn-stop__2.33.00..	other	by_means_of	oewn-stop__1.06.00..
+oewn-stop__2.35.00..	other	by_means_of	oewn-stop__1.06.00..
+oewn-stop__2.35.12..	derivation		oewn-stopper__1.06.00..
+oewn-stop__2.35.12..	other	by_means_of	oewn-stop__1.06.00..
+oewn-stop__2.35.12..	other	by_means_of	oewn-stopper__1.06.00..
+oewn-stop__2.38.00..	other	event	oewn-stop__1.11.00..
+oewn-stop__2.38.01..	derivation		oewn-stoppage__1.04.00..
+oewn-stop__2.38.01..	other	event	oewn-stop__1.11.00..
+oewn-stop__2.38.02..	other	event	oewn-stop__1.04.02..
+oewn-stop__2.38.02..	other	location	oewn-stop__1.15.00..
+oewn-stop__2.41.00..	other	event	oewn-stop__1.04.00..
+oewn-stop__2.42.00..	derivation		oewn-stoppage__1.04.00..
+oewn-stop__2.42.00..	other	event	oewn-stop__1.04.00..
+oewn-stop__2.42.00..	other	event	oewn-stop__1.04.02..
+oewn-stop__2.42.00..	other	event	oewn-stop__1.11.00..
+oewn-stop_over__2.42.00..	derivation		oewn-stopover__1.04.00..
+oewn-stop_over__2.42.00..	other	event	oewn-stopover__1.04.00..
+oewn-stoppable__3.00.00..	antonym		oewn-unstoppable__3.00.00..
+oewn-stopper__1.06.00..	derivation		oewn-stopper__2.35.00..
+oewn-stopper__2.35.00..	other	by_means_of	oewn-stopper__1.06.00..
+oewn-stopple__1.06.00..	derivation		oewn-stopple__2.35.00..
+oewn-stopple__2.35.00..	other	by_means_of	oewn-stopple__1.06.00..
+oewn-storage__1.04.01..	derivation		oewn-store__2.40.00..
+oewn-storage__1.04.01..	derivation		oewn-store__2.40.02..
+oewn-store__1.06.01..	derivation		oewn-store__2.40.02..
+oewn-store__1.21.00..	derivation		oewn-store__2.40.00..
+oewn-store__2.40.00..	other	undergoer	oewn-store__1.21.00..
+oewn-stored--program__3.01.00..	pertainym		oewn-stored_program__1.10.00..
+oewn-storey__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-storey__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-storm__1.04.00..	derivation		oewn-storm__2.33.00..
+oewn-storm__1.04.00..	derivation		oewn-storm__2.35.00..
+oewn-storm__1.19.00..	derivation		oewn-storm__2.43.00..
+oewn-storm__1.19.00..	derivation		oewn-storm__2.43.01..
+oewn-storm__1.19.00..	derivation		oewn-stormy__3.00.00..
+oewn-storm__1.26.00..	derivation		oewn-storm__2.42.00..
+oewn-storm__1.26.00..	derivation		oewn-stormy__5.00.00.unpeaceful.00
+oewn-storm__2.33.00..	other	event	oewn-storm__1.04.00..
+oewn-storm__2.35.00..	other	event	oewn-storm__1.04.00..
+oewn-storm__2.42.00..	other	event	oewn-storm__1.26.00..
+oewn-storm__2.43.00..	other	event	oewn-storm__1.19.00..
+oewn-storm__2.43.01..	other	event	oewn-storm__1.19.00..
+oewn-storm_center__1.15.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-storm_center__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-storm_centre__1.15.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-storm_centre__1.15.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-storm_centre__1.15.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-storm_centre__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-storm_centre__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-storm_centre__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-stormily__4.02.00..	pertainym		oewn-stormy__5.00.00.unpeaceful.00
+oewn-storminess__1.12.00..	derivation		oewn-stormy__5.00.00.unpeaceful.00
+oewn-storminess__1.26.00..	derivation		oewn-stormy__3.00.00..
+oewn-story__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stout__1.07.00..	derivation		oewn-stout__5.00.00.fat.01
+oewn-stout__5.00.00.fat.01	derivation		oewn-stoutness__1.07.01..
+oewn-stout__5.00.00.resolute.00	derivation		oewn-stoutness__1.07.02..
+oewn-stout__5.00.00.robust.00	derivation		oewn-stoutness__1.07.02..
+oewn-stouthearted__5.00.00.brave.00	derivation		oewn-stoutheartedness__1.07.00..
+oewn-stoutly__4.02.00..	pertainym		oewn-stout__5.00.00.resolute.00
+oewn-stovepiped__3.01.00..	pertainym		oewn-stovepiping__1.22.00..
+oewn-stow__2.35.01..	derivation		oewn-stowage__1.04.00..
+oewn-stow__2.35.01..	derivation		oewn-stowing__1.04.00..
+oewn-stow_away__2.39.00..	derivation		oewn-stowaway__1.18.00..
+oewn-straddle__1.04.00..	derivation		oewn-straddle__2.42.01..
+oewn-straddle__1.04.02..	derivation		oewn-straddle__2.42.01..
+oewn-straddle__1.09.00..	derivation		oewn-straddle__2.42.00..
+oewn-straddle__2.42.00..	other	event	oewn-straddle__1.09.00..
+oewn-straddle__2.42.01..	other	event	oewn-straddle__1.04.00..
+oewn-straddle__2.42.01..	other	event	oewn-straddle__1.04.02..
+oewn-strafe__1.04.00..	derivation		oewn-strafe__2.33.00..
+oewn-strafe__2.33.00..	derivation		oewn-strafer__1.18.00..
+oewn-strafe__2.33.00..	other	agent	oewn-strafer__1.18.00..
+oewn-strafe__2.33.00..	other	event	oewn-strafe__1.04.00..
+oewn-straggle__1.14.00..	derivation		oewn-straggle__2.38.00..
+oewn-straggle__1.14.00..	derivation		oewn-straggle__2.38.01..
+oewn-straggle__1.14.00..	derivation		oewn-straggly__5.00.00.untidy.00
+oewn-straggle__2.38.00..	derivation		oewn-straggler__1.18.00..
+oewn-straggle__2.38.00..	other	agent	oewn-straggler__1.18.00..
+oewn-straggle__2.38.00..	other	event	oewn-straggle__1.14.00..
+oewn-straggle__2.38.01..	other	event	oewn-straggle__1.14.00..
+oewn-straight__1.06.00..	derivation		oewn-straight__3.00.05..
+oewn-straight__1.18.00..	derivation		oewn-straight__5.00.00.heterosexual.00
+oewn-straight__3.00.01..	derivation		oewn-straightness__1.07.00..
+oewn-straight__3.00.03..	derivation		oewn-straightness__1.07.01..
+oewn-straight__3.00.04..	derivation		oewn-straightness__1.07.02..
+oewn-straight__3.00.05..	derivation		oewn-straightness__1.07.00..
+oewn-straight__4.02.05..	pertainym		oewn-straight__3.00.01..
+oewn-straight__5.00.00.correct.00	derivation		oewn-straightness__1.07.03..
+oewn-straight__5.00.00.direct.02	derivation		oewn-straightness__1.07.02..
+oewn-straight__5.00.00.heterosexual.00	derivation		oewn-straightness__1.04.00..
+oewn-straight_up__5.00.00.pure.02	exemplifies		oewn-colloquialism__1.10.00..
+oewn-straighten__2.30.02..	also		oewn-straighten_out__2.31.00..
+oewn-straighten__2.30.02..	also		oewn-straighten_out__2.35.01..
+oewn-straighten__2.35.00..	derivation		oewn-straightener__1.06.00..
+oewn-straighten__2.35.00..	other	instrument	oewn-straightener__1.06.00..
+oewn-straightforward__5.00.00.direct.02	derivation		oewn-straightforwardness__1.07.01..
+oewn-straightforward__5.00.00.direct.02	derivation		oewn-straightforwardness__1.07.02..
+oewn-straightforward__5.00.00.straight.04	derivation		oewn-straightforwardness__1.07.01..
+oewn-straightforward__5.00.00.unequivocal.00	derivation		oewn-straightforwardness__1.07.01..
+oewn-straightforwardly__4.02.01..	pertainym		oewn-straightforward__5.00.00.direct.02
+oewn-strain__1.04.00..	derivation		oewn-strain__2.33.00..
+oewn-strain__1.04.00..	derivation		oewn-strain__2.34.00..
+oewn-strain__1.04.00..	derivation		oewn-strenuous__5.00.00.effortful.00
+oewn-strain__1.04.02..	derivation		oewn-strain__2.33.00..
+oewn-strain__1.04.02..	derivation		oewn-strain__2.34.00..
+oewn-strain__1.04.02..	derivation		oewn-strain__2.37.00..
+oewn-strain__1.04.02..	derivation		oewn-strenuous__5.00.00.energetic.00
+oewn-strain__1.19.00..	derivation		oewn-strain__2.29.00..
+oewn-strain__1.19.00..	derivation		oewn-strain__2.35.02..
+oewn-strain__1.26.00..	derivation		oewn-strain__2.30.00..
+oewn-strain__2.29.00..	antonym		oewn-unstrain__2.29.00..
+oewn-strain__2.29.00..	other	event	oewn-strain__1.19.00..
+oewn-strain__2.30.00..	other	event	oewn-strain__1.26.00..
+oewn-strain__2.33.00..	other	event	oewn-strain__1.04.00..
+oewn-strain__2.33.00..	other	event	oewn-strain__1.04.02..
+oewn-strain__2.34.00..	derivation		oewn-straining__1.04.01..
+oewn-strain__2.34.00..	other	event	oewn-strain__1.04.00..
+oewn-strain__2.34.00..	other	event	oewn-strain__1.04.02..
+oewn-strain__2.35.00..	derivation		oewn-strainer__1.06.00..
+oewn-strain__2.35.00..	other	instrument	oewn-strainer__1.06.00..
+oewn-strain__2.35.01..	derivation		oewn-strainer__1.06.00..
+oewn-strain__2.35.01..	other	instrument	oewn-strainer__1.06.00..
+oewn-strain__2.35.02..	other	event	oewn-strain__1.19.00..
+oewn-strain__2.37.00..	other	event	oewn-strain__1.04.02..
+oewn-strange__3.00.00..	derivation		oewn-strangeness__1.07.00..
+oewn-strange__5.00.01.unfamiliar.00	derivation		oewn-strangeness__1.07.00..
+oewn-strangely__4.02.01..	pertainym		oewn-strange__3.00.00..
+oewn-strangle__2.29.02..	derivation		oewn-strangulation__1.26.00..
+oewn-strangle__2.29.02..	other	state	oewn-strangulation__1.26.00..
+oewn-strangle__2.30.06..	derivation		oewn-strangulation__1.26.00..
+oewn-strangle__2.30.06..	other	state	oewn-strangulation__1.26.00..
+oewn-strangle__2.35.00..	derivation		oewn-strangler__1.18.00..
+oewn-strangle__2.35.00..	derivation		oewn-strangler__1.20.00..
+oewn-strangle__2.35.00..	derivation		oewn-strangling__1.04.00..
+oewn-strangle__2.35.00..	derivation		oewn-strangulation__1.04.01..
+oewn-strangle__2.35.00..	other	agent	oewn-strangler__1.18.00..
+oewn-strangle__2.35.00..	other	event	oewn-strangulation__1.04.01..
+oewn-strangulate__2.35.00..	derivation		oewn-strangulation__1.04.01..
+oewn-strangulate__2.35.00..	other	event	oewn-strangulation__1.04.01..
+oewn-strangulate__2.35.01..	derivation		oewn-strangulation__1.04.02..
+oewn-strangulate__2.35.01..	other	event	oewn-strangulation__1.04.02..
+oewn-strap__1.06.00..	derivation		oewn-strap__2.35.01..
+oewn-strap__1.06.01..	derivation		oewn-strap__2.29.00..
+oewn-strap__1.06.01..	derivation		oewn-strap__2.35.00..
+oewn-strap__2.29.00..	other	instrument	oewn-strap__1.06.01..
+oewn-strap__2.35.00..	antonym		oewn-unstrap__2.35.00..
+oewn-strap__2.35.00..	other	instrument	oewn-strap__1.06.01..
+oewn-strap__2.35.01..	other	instrument	oewn-strap__1.06.00..
+oewn-strategic__3.01.00..	derivation		oewn-strategy__1.09.00..
+oewn-strategic__3.01.00..	derivation		oewn-strategy__1.09.01..
+oewn-strategic__3.01.00..	pertainym		oewn-strategy__1.09.00..
+oewn-strategic__5.00.00.important.00	derivation		oewn-strategy__1.09.01..
+oewn-strategical__3.01.00..	derivation		oewn-strategy__1.09.00..
+oewn-strategical__3.01.00..	derivation		oewn-strategy__1.09.01..
+oewn-strategical__3.01.00..	pertainym		oewn-strategy__1.09.00..
+oewn-strategically__4.02.00..	pertainym		oewn-strategic__3.01.00..
+oewn-strategist__1.18.00..	derivation		oewn-strategy__1.09.00..
+oewn-strategist__1.18.00..	derivation		oewn-strategy__1.09.01..
+oewn-stratification__1.04.00..	derivation		oewn-stratify__2.41.00..
+oewn-stratification__1.04.00..	derivation		oewn-stratify__2.41.01..
+oewn-stratification__1.04.01..	derivation		oewn-stratify__2.29.00..
+oewn-stratification__1.22.00..	derivation		oewn-stratify__2.30.00..
+oewn-stratification__1.22.00..	derivation		oewn-stratify__2.35.00..
+oewn-stratification__1.26.00..	derivation		oewn-stratify__2.41.00..
+oewn-stratification__1.26.00..	derivation		oewn-stratify__2.41.01..
+oewn-stratified__3.00.00..	antonym		oewn-unstratified__3.00.00..
+oewn-stratified_language__1.10.00..	antonym		oewn-unstratified_language__1.10.00..
+oewn-stratify__2.29.00..	other	event	oewn-stratification__1.04.01..
+oewn-stratify__2.30.00..	derivation		oewn-stratum__1.15.00..
+oewn-stratify__2.30.00..	other	event	oewn-stratification__1.22.00..
+oewn-stratify__2.30.00..	other	result	oewn-stratum__1.15.00..
+oewn-stratify__2.35.00..	other	event	oewn-stratification__1.22.00..
+oewn-stratify__2.41.00..	derivation		oewn-stratum__1.15.00..
+oewn-stratify__2.41.00..	other	event	oewn-stratification__1.04.00..
+oewn-stratify__2.41.00..	other	result	oewn-stratification__1.04.00..
+oewn-stratify__2.41.00..	other	result	oewn-stratification__1.26.00..
+oewn-stratify__2.41.01..	other	event	oewn-stratification__1.04.00..
+oewn-stratify__2.41.01..	other	result	oewn-stratification__1.26.00..
+oewn-stravinsky__1.10.00..	derivation		oewn-stravinskyan__3.01.00..
+oewn-straw__1.07.00..	derivation		oewn-straw__5.00.00.chromatic.00
+oewn-straw__1.27.00..	derivation		oewn-straw__2.35.01..
+oewn-straw__2.35.01..	other	uses	oewn-straw__1.27.00..
+oewn-stray__1.05.00..	derivation		oewn-stray__2.38.01..
+oewn-stray__1.05.00..	derivation		oewn-stray__5.00.00.lost.01
+oewn-stray__2.38.00..	derivation		oewn-strayer__1.18.00..
+oewn-stray__2.38.00..	other	agent	oewn-strayer__1.18.00..
+oewn-stray__2.38.01..	derivation		oewn-strayer__1.18.00..
+oewn-stray__2.38.01..	other	agent	oewn-stray__1.05.00..
+oewn-stray__2.38.01..	other	agent	oewn-strayer__1.18.00..
+oewn-streak__1.07.00..	derivation		oewn-streak__2.36.00..
+oewn-streak__1.07.00..	derivation		oewn-streaky__5.00.00.patterned.00
+oewn-streak__2.36.00..	other	uses	oewn-streak__1.07.00..
+oewn-streak__2.38.01..	derivation		oewn-streaker__1.18.00..
+oewn-streak__2.38.01..	other	agent	oewn-streaker__1.18.00..
+oewn-stream__1.04.00..	derivation		oewn-stream__2.38.00..
+oewn-stream__1.11.00..	derivation		oewn-stream__2.38.00..
+oewn-stream__1.17.00..	derivation		oewn-stream__2.38.00..
+oewn-stream__1.17.00..	derivation		oewn-streamlet__1.17.00..
+oewn-stream__1.26.00..	derivation		oewn-stream__2.38.01..
+oewn-stream__1.26.00..	derivation		oewn-stream__2.38.03..
+oewn-stream__2.38.00..	other	by_means_of	oewn-stream__1.17.00..
+oewn-stream__2.38.00..	other	event	oewn-stream__1.04.00..
+oewn-stream__2.38.00..	other	event	oewn-stream__1.11.00..
+oewn-stream__2.38.01..	other	by_means_of	oewn-stream__1.26.00..
+oewn-stream__2.38.03..	other	event	oewn-stream__1.26.00..
+oewn-streaming__3.44.00..	participle		oewn-stream__2.29.00..
+oewn-streamline__2.36.00..	derivation		oewn-streamliner__1.06.00..
+oewn-streamline__2.36.00..	other	vehicle	oewn-streamliner__1.06.00..
+oewn-streetcar__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-streetwalk__2.41.00..	derivation		oewn-streetwalker__1.18.00..
+oewn-streetwalk__2.41.00..	other	agent	oewn-streetwalker__1.18.00..
+oewn-strength__1.07.00..	antonym		oewn-weakness__1.07.00..
+oewn-strength__1.26.01..	antonym		oewn-weakness__1.26.01..
+oewn-strengthen__2.30.00..	antonym		oewn-weaken__2.30.00..
+oewn-strengthen__2.30.00..	derivation		oewn-strengthening__1.11.00..
+oewn-strengthen__2.30.01..	antonym		oewn-weaken__2.30.01..
+oewn-strengthen__2.30.01..	derivation		oewn-strengthener__1.06.00..
+oewn-strengthen__2.30.01..	derivation		oewn-strengthening__1.04.00..
+oewn-strengthen__2.30.01..	other	instrument	oewn-strengthener__1.06.00..
+oewn-strengthening__1.04.00..	antonym		oewn-weakening__1.04.00..
+oewn-strengthening__1.11.00..	antonym		oewn-weakening__1.11.00..
+oewn-strenuosity__1.07.00..	derivation		oewn-strenuous__5.00.00.energetic.00
+oewn-strenuous__5.00.00.effortful.00	derivation		oewn-strenuousness__1.07.00..
+oewn-strenuous__5.00.00.energetic.00	derivation		oewn-strenuousness__1.07.00..
+oewn-strenuously__4.02.01..	pertainym		oewn-strenuous__5.00.00.energetic.00
+oewn-strep__1.05.00..	derivation		oewn-strep__3.01.00..
+oewn-strep__3.01.00..	pertainym		oewn-streptococcus__1.05.00..
+oewn-streptococcal__3.01.00..	derivation		oewn-streptococcus__1.05.00..
+oewn-streptococcal__3.01.00..	pertainym		oewn-streptococcus__1.05.00..
+oewn-streptococcic__3.01.00..	pertainym		oewn-streptococcus__1.05.00..
+oewn-stress__1.10.01..	derivation		oewn-stress__2.32.01..
+oewn-stress__1.26.01..	derivation		oewn-stress__2.37.00..
+oewn-stress__1.26.02..	derivation		oewn-stress__2.37.00..
+oewn-stress__1.26.03..	derivation		oewn-stress__2.32.00..
+oewn-stress__2.32.00..	other	event	oewn-stress__1.26.03..
+oewn-stress__2.32.01..	other	uses	oewn-stress__1.10.01..
+oewn-stress__2.37.00..	derivation		oewn-stressor__1.17.00..
+oewn-stress__2.37.00..	other	by_means_of	oewn-stressor__1.17.00..
+oewn-stress__2.37.00..	other	event	oewn-stress__1.26.01..
+oewn-stress__2.37.00..	other	event	oewn-stress__1.26.02..
+oewn-stressed__3.00.00..	antonym		oewn-unstressed__3.00.00..
+oewn-stretch__1.04.00..	derivation		oewn-stretch__2.29.01..
+oewn-stretch__1.04.01..	derivation		oewn-stretch__2.29.02..
+oewn-stretch__1.04.02..	derivation		oewn-stretch__2.30.00..
+oewn-stretch__1.04.02..	derivation		oewn-stretch__2.30.04..
+oewn-stretch__1.04.02..	derivation		oewn-stretch__2.30.05..
+oewn-stretch__1.07.00..	derivation		oewn-stretch__2.30.00..
+oewn-stretch__1.07.00..	derivation		oewn-stretchy__5.00.00.elastic.00
+oewn-stretch__1.17.00..	derivation		oewn-stretch__2.42.00..
+oewn-stretch__2.29.01..	derivation		oewn-stretching__1.04.00..
+oewn-stretch__2.29.01..	other	event	oewn-stretch__1.04.00..
+oewn-stretch__2.29.02..	other	event	oewn-stretch__1.04.01..
+oewn-stretch__2.30.00..	other	event	oewn-stretch__1.04.02..
+oewn-stretch__2.30.00..	other	property	oewn-stretch__1.07.00..
+oewn-stretch__2.30.04..	derivation		oewn-stretcher__1.06.02..
+oewn-stretch__2.30.04..	derivation		oewn-stretching__1.04.02..
+oewn-stretch__2.30.04..	other	event	oewn-stretch__1.04.02..
+oewn-stretch__2.30.04..	other	instrument	oewn-stretcher__1.06.02..
+oewn-stretch__2.30.05..	other	event	oewn-stretch__1.04.02..
+oewn-stretch__2.42.00..	other	by_means_of	oewn-stretch__1.17.00..
+oewn-stretchability__1.07.00..	derivation		oewn-stretchable__5.00.00.elastic.00
+oewn-stretchiness__1.07.00..	derivation		oewn-stretchy__5.00.00.elastic.00
+oewn-strew__2.35.00..	derivation		oewn-strewing__1.04.00..
+oewn-stria__1.07.00..	derivation		oewn-striate__2.30.00..
+oewn-stria__1.25.00..	derivation		oewn-striate__2.30.00..
+oewn-striate__2.30.00..	derivation		oewn-striation__1.07.00..
+oewn-striate__2.30.00..	derivation		oewn-striation__1.25.00..
+oewn-striate__2.30.00..	other	result	oewn-striation__1.07.00..
+oewn-striate__2.30.00..	other	result	oewn-striation__1.25.00..
+oewn-striate__3.01.00..	pertainym		oewn-stria__1.25.00..
+oewn-strict__3.00.00..	derivation		oewn-strictness__1.07.01..
+oewn-strict__5.00.00.demanding.01	derivation		oewn-strictness__1.07.01..
+oewn-strict__5.00.00.exact.00	derivation		oewn-strictness__1.07.02..
+oewn-strict__5.00.00.intolerant.00	derivation		oewn-strictness__1.07.01..
+oewn-strict__5.00.00.invariable.00	derivation		oewn-strictness__1.07.02..
+oewn-strictly__4.02.01..	pertainym		oewn-strict__5.00.00.exact.00
+oewn-strictly__4.02.02..	pertainym		oewn-strict__5.00.00.exact.00
+oewn-stride__1.04.00..	derivation		oewn-stride__2.38.00..
+oewn-stride__1.23.00..	derivation		oewn-stride__2.38.00..
+oewn-stride__2.38.00..	derivation		oewn-strider__1.18.00..
+oewn-stride__2.38.00..	other	agent	oewn-strider__1.18.00..
+oewn-stride__2.38.00..	other	event	oewn-stride__1.04.00..
+oewn-stride__2.38.00..	other	event	oewn-stride__1.23.00..
+oewn-stridence__1.07.00..	derivation		oewn-strident__5.00.00.cacophonous.00
+oewn-stridence__1.07.00..	derivation		oewn-strident__5.00.00.noisy.00
+oewn-stridency__1.07.00..	derivation		oewn-strident__5.00.00.noisy.00
+oewn-stridently__4.02.00..	pertainym		oewn-strident__5.00.00.cacophonous.00
+oewn-stridulate__2.39.00..	derivation		oewn-stridulation__1.11.00..
+oewn-stridulate__2.39.00..	other	event	oewn-stridulation__1.11.00..
+oewn-strike__1.04.00..	derivation		oewn-strike__2.41.00..
+oewn-strike__1.04.02..	derivation		oewn-strike__2.33.00..
+oewn-strike__1.04.05..	derivation		oewn-strike__2.33.00..
+oewn-strike__1.11.00..	derivation		oewn-strike__2.35.00..
+oewn-strike__1.11.00..	derivation		oewn-strike__2.35.01..
+oewn-strike__2.33.00..	other	event	oewn-strike__1.04.02..
+oewn-strike__2.33.00..	other	event	oewn-strike__1.04.05..
+oewn-strike__2.35.00..	also		oewn-strike_down__2.35.00..
+oewn-strike__2.35.00..	derivation		oewn-striker__1.06.00..
+oewn-strike__2.35.00..	derivation		oewn-striker__1.18.03..
+oewn-strike__2.35.00..	derivation		oewn-striking__1.04.00..
+oewn-strike__2.35.00..	other	agent	oewn-striker__1.18.03..
+oewn-strike__2.35.00..	other	by_means_of	oewn-striker__1.06.00..
+oewn-strike__2.35.00..	other	event	oewn-strike__1.11.00..
+oewn-strike__2.35.01..	derivation		oewn-striker__1.06.00..
+oewn-strike__2.35.01..	derivation		oewn-striker__1.18.03..
+oewn-strike__2.35.01..	derivation		oewn-striking__1.11.00..
+oewn-strike__2.35.01..	other	agent	oewn-striker__1.18.03..
+oewn-strike__2.35.01..	other	by_means_of	oewn-striker__1.06.00..
+oewn-strike__2.35.01..	other	event	oewn-strike__1.11.00..
+oewn-strike__2.41.00..	derivation		oewn-striker__1.18.00..
+oewn-strike__2.41.00..	other	agent	oewn-striker__1.18.00..
+oewn-strike__2.41.00..	other	event	oewn-strike__1.04.00..
+oewn-strike_out__2.33.00..	derivation		oewn-strikeout__1.04.00..
+oewn-striking__5.00.00.conspicuous.00	derivation		oewn-strikingness__1.26.00..
+oewn-striking__5.00.00.impressive.00	derivation		oewn-strikingness__1.07.00..
+oewn-strikingly__4.02.00..	pertainym		oewn-striking__5.00.00.impressive.00
+oewn-string__1.06.00..	derivation		oewn-string__2.35.02..
+oewn-string__1.06.00..	derivation		oewn-string__2.35.04..
+oewn-string__1.06.02..	derivation		oewn-string__2.35.02..
+oewn-string__1.06.03..	derivation		oewn-string__2.35.00..
+oewn-string__1.06.04..	derivation		oewn-string__2.35.02..
+oewn-string__1.06.04..	derivation		oewn-string__2.35.05..
+oewn-string__1.06.05..	derivation		oewn-string__2.35.00..
+oewn-string__1.14.00..	derivation		oewn-string__2.30.00..
+oewn-string__2.30.00..	other	undergoer	oewn-string__1.14.00..
+oewn-string__2.35.00..	antonym		oewn-unstring__2.35.00..
+oewn-string__2.35.00..	other	uses	oewn-string__1.06.03..
+oewn-string__2.35.00..	other	uses	oewn-string__1.06.05..
+oewn-string__2.35.02..	derivation		oewn-stringer__1.18.00..
+oewn-string__2.35.02..	other	agent	oewn-stringer__1.18.00..
+oewn-string__2.35.02..	other	result	oewn-string__1.06.02..
+oewn-string__2.35.02..	other	result	oewn-string__1.06.04..
+oewn-string__2.35.04..	other	instrument	oewn-string__1.06.00..
+oewn-string__2.35.05..	also		oewn-string_out__2.35.00..
+oewn-string__2.35.05..	other	result	oewn-string__1.06.04..
+oewn-stringency__1.07.00..	derivation		oewn-stringent__5.00.00.demanding.01
+oewn-stringently__4.02.00..	pertainym		oewn-stringent__5.00.00.demanding.01
+oewn-strip__1.04.00..	derivation		oewn-strip__2.29.01..
+oewn-strip__1.04.00..	derivation		oewn-strip__2.30.12..
+oewn-strip__2.29.01..	derivation		oewn-stripper__1.18.00..
+oewn-strip__2.29.01..	other	agent	oewn-stripper__1.18.00..
+oewn-strip__2.29.01..	other	event	oewn-strip__1.04.00..
+oewn-strip__2.30.02..	derivation		oewn-stripper__1.27.00..
+oewn-strip__2.30.02..	derivation		oewn-stripping__1.04.00..
+oewn-strip__2.30.02..	other	material	oewn-stripper__1.27.00..
+oewn-strip__2.30.12..	other	event	oewn-strip__1.04.00..
+oewn-strip__2.35.01..	derivation		oewn-stripper__1.18.01..
+oewn-strip__2.35.01..	other	agent	oewn-stripper__1.18.01..
+oewn-strip_mine__1.06.00..	derivation		oewn-strip_mine__2.34.00..
+oewn-strip_mine__2.34.00..	derivation		oewn-strip_miner__1.18.00..
+oewn-strip_mine__2.34.00..	other	agent	oewn-strip_miner__1.18.00..
+oewn-strip_mine__2.34.00..	other	location	oewn-strip_mine__1.06.00..
+oewn-stripe__1.06.00..	derivation		oewn-stripe__2.35.00..
+oewn-stripe__1.06.00..	derivation		oewn-stripy__5.00.00.patterned.00
+oewn-stripe__1.07.00..	derivation		oewn-stripe__2.35.00..
+oewn-stripe__1.07.00..	derivation		oewn-stripy__5.00.00.patterned.00
+oewn-stripe__2.35.00..	derivation		oewn-striping__1.04.00..
+oewn-stripe__2.35.00..	other	uses	oewn-stripe__1.06.00..
+oewn-stripe__2.35.00..	other	uses	oewn-stripe__1.07.00..
+oewn-striptease__1.04.00..	derivation		oewn-stripteaser__1.18.00..
+oewn-striptease__1.18.00..	derivation		oewn-stripteaser__1.18.00..
+oewn-strive__2.41.00..	derivation		oewn-striving__1.04.00..
+oewn-stroke__1.04.00..	derivation		oewn-stroke__2.33.00..
+oewn-stroke__1.04.01..	derivation		oewn-stroke__2.35.00..
+oewn-stroke__1.11.01..	derivation		oewn-stroke__2.35.00..
+oewn-stroke__1.18.00..	derivation		oewn-stroke__2.33.01..
+oewn-stroke__2.33.00..	other	event	oewn-stroke__1.04.00..
+oewn-stroke__2.33.01..	other	agent	oewn-stroke__1.18.00..
+oewn-stroke__2.35.00..	derivation		oewn-stroking__1.04.00..
+oewn-stroke__2.35.00..	other	event	oewn-stroke__1.04.01..
+oewn-stroke__2.35.00..	other	event	oewn-stroke__1.11.01..
+oewn-stroll__1.04.00..	derivation		oewn-stroll__2.38.00..
+oewn-stroll__2.38.00..	derivation		oewn-stroller__1.18.00..
+oewn-stroll__2.38.00..	other	agent	oewn-stroller__1.18.00..
+oewn-stroll__2.38.00..	other	event	oewn-stroll__1.04.00..
+oewn-stroller__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-strombus_gigas__1.05.00..	exemplifies		oewn-protonym__1.10.00..
+oewn-strong--arm__2.35.00..	derivation		oewn-strong--armer__1.18.00..
+oewn-strong--arm__2.35.00..	other	agent	oewn-strong--armer__1.18.00..
+oewn-strong--arm__2.41.00..	derivation		oewn-strong--armer__1.18.00..
+oewn-strong__3.00.00..	antonym		oewn-weak__3.00.00..
+oewn-strong_point__1.07.00..	antonym		oewn-weak_point__1.07.00..
+oewn-strongly__4.02.00..	antonym		oewn-weakly__4.02.01..
+oewn-strongly__4.02.00..	pertainym		oewn-strong__3.00.00..
+oewn-strongly__4.02.01..	pertainym		oewn-strong__3.00.00..
+oewn-strop__1.06.00..	derivation		oewn-strop__2.35.00..
+oewn-strop__2.35.00..	other	instrument	oewn-strop__1.06.00..
+oewn-structural__3.01.00..	pertainym		oewn-structure__1.07.00..
+oewn-structural__3.01.01..	pertainym		oewn-structure__1.09.00..
+oewn-structurally__4.02.00..	pertainym		oewn-structural__3.01.01..
+oewn-structure__1.07.00..	derivation		oewn-structure__2.30.00..
+oewn-structure__1.09.00..	derivation		oewn-structure__2.30.00..
+oewn-structure__2.30.00..	other	uses	oewn-structure__1.07.00..
+oewn-structure__2.30.00..	other	uses	oewn-structure__1.09.00..
+oewn-structured__3.00.00..	antonym		oewn-unstructured__3.00.00..
+oewn-struggle__1.04.00..	derivation		oewn-struggle__2.35.00..
+oewn-struggle__1.04.00..	derivation		oewn-struggle__2.38.00..
+oewn-struggle__1.04.00..	derivation		oewn-struggle__2.41.00..
+oewn-struggle__1.04.01..	derivation		oewn-struggle__2.41.00..
+oewn-struggle__1.04.02..	derivation		oewn-struggle__2.33.00..
+oewn-struggle__2.33.00..	other	event	oewn-struggle__1.04.02..
+oewn-struggle__2.35.00..	derivation		oewn-struggler__1.18.00..
+oewn-struggle__2.35.00..	other	agent	oewn-struggler__1.18.00..
+oewn-struggle__2.35.00..	other	event	oewn-struggle__1.04.00..
+oewn-struggle__2.38.00..	other	event	oewn-struggle__1.04.00..
+oewn-struggle__2.41.00..	derivation		oewn-struggler__1.18.00..
+oewn-struggle__2.41.00..	other	agent	oewn-struggler__1.18.00..
+oewn-struggle__2.41.00..	other	event	oewn-struggle__1.04.00..
+oewn-struggle__2.41.00..	other	event	oewn-struggle__1.04.01..
+oewn-strum__1.11.00..	derivation		oewn-strum__2.39.00..
+oewn-strum__2.39.00..	other	event	oewn-strum__1.11.00..
+oewn-strung__3.44.00..	participle		oewn-string__2.35.02..
+oewn-strut__1.04.00..	derivation		oewn-strut__2.38.00..
+oewn-strut__2.38.00..	other	event	oewn-strut__1.04.00..
+oewn-stubbiness__1.07.00..	derivation		oewn-stubby__5.00.00.short.01
+oewn-stubborn__3.00.00..	derivation		oewn-stubbornness__1.07.01..
+oewn-stubborn__5.00.00.intractable.00	derivation		oewn-stubbornness__1.07.00..
+oewn-stubbornly__4.02.00..	pertainym		oewn-stubborn__3.00.00..
+oewn-stucco__1.27.00..	derivation		oewn-stucco__2.35.00..
+oewn-stucco__1.27.00..	derivation		oewn-stucco__2.36.00..
+oewn-stucco__2.35.00..	other	uses	oewn-stucco__1.27.00..
+oewn-stucco__2.36.00..	other	uses	oewn-stucco__1.27.00..
+oewn-stuck__3.00.00..	antonym		oewn-unstuck__3.00.00..
+oewn-stud__1.06.00..	derivation		oewn-stud__2.35.00..
+oewn-stud__1.06.01..	derivation		oewn-stud__2.42.00..
+oewn-stud__2.35.00..	other	uses	oewn-stud__1.06.00..
+oewn-stud__2.42.00..	other	uses	oewn-stud__1.06.01..
+oewn-student__1.18.00..	derivation		oewn-studentship__1.04.00..
+oewn-student__1.18.00..	derivation		oewn-study__2.31.03..
+oewn-studied__3.00.00..	antonym		oewn-unstudied__3.00.00..
+oewn-studious__5.00.00.careful.00	derivation		oewn-studiousness__1.07.00..
+oewn-studious__5.00.00.scholarly.00	derivation		oewn-studiousness__1.07.00..
+oewn-studious__5.00.00.scholarly.00	derivation		oewn-study__1.09.03..
+oewn-studiously__4.02.00..	pertainym		oewn-studious__5.00.00.careful.00
+oewn-study__1.04.00..	derivation		oewn-study__2.31.02..
+oewn-study__1.04.00..	derivation		oewn-study__2.39.00..
+oewn-study__1.09.01..	derivation		oewn-study__2.31.04..
+oewn-study__1.09.01..	derivation		oewn-study__2.39.00..
+oewn-study__1.09.02..	derivation		oewn-study__2.31.00..
+oewn-study__1.09.02..	derivation		oewn-study__2.31.03..
+oewn-study__1.09.03..	derivation		oewn-study__2.31.00..
+oewn-study__1.09.03..	derivation		oewn-study__2.31.01..
+oewn-study__1.09.03..	derivation		oewn-study__2.31.03..
+oewn-study__1.09.04..	derivation		oewn-study__2.31.04..
+oewn-study__2.31.00..	derivation		oewn-studying__1.10.01..
+oewn-study__2.31.00..	other	event	oewn-study__1.09.03..
+oewn-study__2.31.00..	other	undergoer	oewn-study__1.09.02..
+oewn-study__2.31.01..	derivation		oewn-studying__1.10.01..
+oewn-study__2.31.01..	other	event	oewn-study__1.09.03..
+oewn-study__2.31.02..	other	event	oewn-study__1.04.00..
+oewn-study__2.31.03..	other	event	oewn-study__1.09.03..
+oewn-study__2.31.03..	other	undergoer	oewn-study__1.09.02..
+oewn-study__2.31.04..	other	event	oewn-study__1.09.01..
+oewn-study__2.31.04..	other	state	oewn-study__1.09.04..
+oewn-study__2.39.00..	other	uses	oewn-study__1.04.00..
+oewn-study__2.39.00..	other	uses	oewn-study__1.09.01..
+oewn-stuff__2.30.00..	derivation		oewn-stuffing__1.13.00..
+oewn-stuff__2.30.02..	derivation		oewn-stuffer__1.18.00..
+oewn-stuff__2.30.02..	other	agent	oewn-stuffer__1.18.00..
+oewn-stuff__2.35.01..	antonym		oewn-unstuff__2.35.00..
+oewn-stuffily__4.02.00..	pertainym		oewn-stuffy__5.00.00.conventional.00
+oewn-stuffiness__1.07.00..	derivation		oewn-stuffy__5.00.00.conventional.00
+oewn-stuffiness__1.07.01..	derivation		oewn-stuffy__5.00.00.unventilated.00
+oewn-stuffiness__1.26.00..	derivation		oewn-stuffy__5.00.00.obstructed.00
+oewn-stultification__1.10.00..	derivation		oewn-stultify__2.32.00..
+oewn-stultification__1.10.00..	derivation		oewn-stultify__2.37.00..
+oewn-stultify__2.32.00..	other	event	oewn-stultification__1.10.00..
+oewn-stultify__2.37.00..	other	event	oewn-stultification__1.10.00..
+oewn-stumble__1.04.00..	derivation		oewn-stumble__2.38.01..
+oewn-stumble__1.04.01..	derivation		oewn-stumble__2.31.00..
+oewn-stumble__2.31.00..	derivation		oewn-stumbler__1.18.01..
+oewn-stumble__2.31.00..	other	agent	oewn-stumbler__1.18.01..
+oewn-stumble__2.31.00..	other	event	oewn-stumble__1.04.01..
+oewn-stumble__2.38.00..	derivation		oewn-stumbler__1.18.00..
+oewn-stumble__2.38.00..	other	agent	oewn-stumbler__1.18.00..
+oewn-stumble__2.38.01..	other	event	oewn-stumble__1.04.00..
+oewn-stump__1.20.00..	derivation		oewn-stump__2.30.00..
+oewn-stump__2.30.00..	other	undergoer	oewn-stump__1.20.00..
+oewn-stump__2.31.00..	derivation		oewn-stumper__1.10.00..
+oewn-stump__2.31.00..	other	by_means_of	oewn-stumper__1.10.00..
+oewn-stun__2.39.00..	derivation		oewn-stunner__1.18.00..
+oewn-stun__2.39.00..	other	agent	oewn-stunner__1.18.00..
+oewn-stunningly__4.02.00..	pertainym		oewn-stunning__5.00.00.impressive.00
+oewn-stunt__1.04.00..	derivation		oewn-stunt__2.36.00..
+oewn-stunt__1.05.00..	derivation		oewn-stunt__2.41.00..
+oewn-stunt__2.36.00..	derivation		oewn-stunting__1.04.00..
+oewn-stunt__2.36.00..	other	event	oewn-stunt__1.04.00..
+oewn-stunt__2.41.00..	other	undergoer	oewn-stunt__1.05.00..
+oewn-stunted__5.00.00.inferior.02	derivation		oewn-stuntedness__1.07.00..
+oewn-stupefaction__1.04.00..	derivation		oewn-stupefy__2.30.00..
+oewn-stupefaction__1.04.00..	derivation		oewn-stupefy__2.39.00..
+oewn-stupefaction__1.12.00..	derivation		oewn-stupefy__2.31.00..
+oewn-stupefy__2.30.00..	other	event	oewn-stupefaction__1.04.00..
+oewn-stupefy__2.31.00..	other	state	oewn-stupefaction__1.12.00..
+oewn-stupefy__2.39.00..	other	event	oewn-stupefaction__1.04.00..
+oewn-stupendously__4.02.00..	pertainym		oewn-stupendous__5.00.00.large.00
+oewn-stupid__1.18.00..	derivation		oewn-stupid__3.00.00..
+oewn-stupid__1.18.00..	derivation		oewn-stupid__3.00.02..
+oewn-stupid__3.00.00..	derivation		oewn-stupidity__1.09.00..
+oewn-stupid__3.00.02..	derivation		oewn-stupidity__1.09.00..
+oewn-stupidly__4.02.00..	pertainym		oewn-stupid__3.00.00..
+oewn-stupor__1.09.00..	derivation		oewn-stuporous__5.00.00.lethargic.00
+oewn-sturdily__4.02.00..	pertainym		oewn-sturdy__5.00.00.robust.00
+oewn-sturdiness__1.07.00..	derivation		oewn-sturdy__5.00.00.rugged.00
+oewn-sturdiness__1.07.01..	derivation		oewn-sturdy__3.00.00..
+oewn-sturdiness__1.26.00..	derivation		oewn-sturdy__5.00.00.robust.00
+oewn-stutter__1.26.00..	derivation		oewn-stutter__2.32.00..
+oewn-stutter__2.32.00..	derivation		oewn-stutterer__1.18.00..
+oewn-stutter__2.32.00..	other	agent	oewn-stutterer__1.18.00..
+oewn-stutter__2.32.00..	other	by_means_of	oewn-stutter__1.26.00..
+oewn-stutter__2.32.00..	other	event	oewn-stutter__1.26.00..
+oewn-style__1.07.00..	derivation		oewn-stylist__1.18.01..
+oewn-style__1.07.00..	derivation		oewn-stylize__2.36.00..
+oewn-style__1.07.01..	derivation		oewn-stylistic__5.00.00.rhetorical.00
+oewn-style__1.09.00..	derivation		oewn-stylist__1.18.01..
+oewn-style__1.09.00..	derivation		oewn-stylize__2.36.00..
+oewn-style__1.09.01..	derivation		oewn-style__2.36.00..
+oewn-style__1.09.01..	derivation		oewn-stylist__1.18.01..
+oewn-style__1.09.01..	derivation		oewn-stylize__2.36.00..
+oewn-style__1.10.00..	derivation		oewn-stylist__1.18.00..
+oewn-style__1.10.00..	derivation		oewn-stylist__1.18.01..
+oewn-style__1.10.00..	derivation		oewn-stylistic__5.00.00.rhetorical.00
+oewn-style__1.10.00..	derivation		oewn-stylize__2.36.00..
+oewn-style__1.10.01..	derivation		oewn-style__2.32.04..
+oewn-style__1.10.01..	derivation		oewn-stylistic__5.00.00.rhetorical.00
+oewn-style__2.32.04..	other	by_means_of	oewn-style__1.10.01..
+oewn-style__2.36.00..	derivation		oewn-styler__1.18.00..
+oewn-style__2.36.00..	derivation		oewn-stylist__1.18.01..
+oewn-style__2.36.00..	other	agent	oewn-styler__1.18.00..
+oewn-style__2.36.00..	other	property	oewn-style__1.09.01..
+oewn-styleless__3.00.00..	antonym		oewn-stylish__3.00.00..
+oewn-stylisation__1.04.00..	derivation		oewn-stylise__2.36.00..
+oewn-stylisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stylisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stylise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-stylise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-stylise__2.36.00..	other	event	oewn-stylisation__1.04.00..
+oewn-stylish__3.00.00..	derivation		oewn-stylishness__1.07.00..
+oewn-stylish__3.00.02..	derivation		oewn-stylishness__1.07.00..
+oewn-stylishly__4.02.00..	pertainym		oewn-stylish__3.00.00..
+oewn-stylistically__4.02.00..	pertainym		oewn-stylistic__5.00.00.rhetorical.00
+oewn-stylization__1.04.00..	derivation		oewn-stylize__2.36.00..
+oewn-stylization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stylize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-stylize__2.36.00..	other	event	oewn-stylization__1.04.00..
+oewn-stymie__1.09.00..	derivation		oewn-stymie__2.41.00..
+oewn-stymie__2.41.00..	other	event	oewn-stymie__1.09.00..
+oewn-stypsis__1.07.00..	derivation		oewn-styptic__5.00.00.astringent.00
+oewn-styptic__1.06.00..	derivation		oewn-styptic__5.00.00.astringent.00

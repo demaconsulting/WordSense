@@ -1,0 +1,5 @@
+class_id	lemma	label	pos	kind
+accent#accent-noun	accent	accent-noun	n	sense_group
+accent#accent-verb	accent	accent-verb	v	sense_group
+access#noun	access	noun	n	sense_group
+access#verb	access	verb	v	sense_group

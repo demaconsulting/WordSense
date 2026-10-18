@@ -1,0 +1,44 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00285718-v	v		verb.change
+oewn-00371329-s	s	oewn-00367771-a	adj.all
+oewn-00818037-s	s	oewn-00816521-a	adj.all
+oewn-02222035-s	s	oewn-02221616-a	adj.all
+oewn-02600372-a	a		adj.all
+oewn-02600483-s	s	oewn-02600372-a	adj.all
+oewn-02666265-a	a		adj.pert
+oewn-02666428-a	a		adj.pert
+oewn-02666543-a	a		adj.pert
+oewn-02666648-a	a		adj.pert
+oewn-02666923-a	a		adj.pert
+oewn-02768252-n	n		noun.artifact
+oewn-02768434-n	n		noun.artifact
+oewn-02768661-n	n		noun.artifact
+oewn-02768873-n	n		noun.artifact
+oewn-03103454-a	a		adj.pert
+oewn-04976419-n	n		noun.attribute
+oewn-05366055-n	n		noun.body
+oewn-06931510-n	n		noun.communication
+oewn-06939784-n	n		noun.communication
+oewn-08500276-n	n		noun.group
+oewn-09668616-n	n		noun.person
+oewn-09754974-n	n		noun.person
+oewn-11956346-n	n		noun.plant
+oewn-12265836-n	n		noun.plant
+oewn-12443064-n	n		noun.plant
+oewn-12716736-n	n		noun.plant
+oewn-12980298-n	n		noun.plant
+oewn-13721717-n	n		noun.quantity
+oewn-13916195-n	n		noun.shape
+oewn-14133628-n	n		noun.state
+oewn-14234453-n	n		noun.state
+oewn-14234694-n	n		noun.state
+oewn-14636942-n	n		noun.substance
+oewn-14645372-n	n		noun.substance
+oewn-14645497-n	n		noun.substance
+oewn-14671801-n	n		noun.substance
+oewn-14692016-n	n		noun.substance
+oewn-14763450-n	n		noun.substance
+oewn-14794409-n	n		noun.substance
+oewn-14794661-n	n		noun.substance
+oewn-92438024-n	n		noun.communication
+oewn-92466740-n	n		noun.substance

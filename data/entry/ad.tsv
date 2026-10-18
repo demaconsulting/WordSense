@@ -1,0 +1,531 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-AD-r	AD	r	0	1	1	oewn
+oewn-ADA-SCID-n	ADA-SCID	n	0	1	1	oewn
+oewn-ADA-n	ADA	n	0	1	1	oewn
+oewn-ADD-n	ADD	n	0	1	1	oewn
+oewn-ADH-n	ADH	n	0	1	1	oewn
+oewn-ADHD-n	ADHD	n	0	1	1	oewn
+oewn-ADP-n	ADP	n	0	1	1	oewn
+oewn-ADPS-n	ADPS	n	0	1	1	oewn
+oewn-ADP_system-n	ADP system	n	0	2	2	oewn
+oewn-Adalia_bipunctata-n	Adalia bipunctata	n	0	2	2	oewn
+oewn-Adam-ap-s_apple-n	Adam's apple	n	0	2	2	oewn
+oewn-Adam-ap-s_needle-and-thread-n	Adam's needle-and-thread	n	0	2	2	oewn
+oewn-Adam-ap-s_needle-n	Adam's needle	n	0	2	2	oewn
+oewn-Adam-n	Adam	n	0	1	1	oewn
+oewn-Adams-Stokes_syndrome-n	Adams-Stokes syndrome	n	0	2	2	oewn
+oewn-Adansonia_digitata-n	Adansonia digitata	n	0	2	2	oewn
+oewn-Adansonia_gregorii-n	Adansonia gregorii	n	0	2	2	oewn
+oewn-Adapin-n	Adapin	n	0	1	1	oewn
+oewn-Adar-n	Adar	n	0	1	1	oewn
+oewn-Adar_Sheni-n	Adar Sheni	n	0	2	2	oewn
+oewn-Addax_nasomaculatus-n	Addax nasomaculatus	n	0	2	2	oewn
+oewn-Addison-ap-s_disease-n	Addison's disease	n	0	2	2	oewn
+oewn-Addison-ap-s_syndrome-n	Addison's syndrome	n	0	2	2	oewn
+oewn-Addressograph-n	Addressograph	n	0	1	1	oewn
+oewn-Adelges_abietis-n	Adelges abietis	n	0	2	2	oewn
+oewn-Adelges_piceae-n	Adelges piceae	n	0	2	2	oewn
+oewn-Adelie-n	Adelie	n	0	1	1	oewn
+oewn-Adelie_penguin-n	Adelie penguin	n	0	2	2	oewn
+oewn-Adenanthera_pavonina-n	Adenanthera pavonina	n	0	2	2	oewn
+oewn-Adenium_multiflorum-n	Adenium multiflorum	n	0	2	2	oewn
+oewn-Adenium_obesum-n	Adenium obesum	n	0	2	2	oewn
+oewn-Adenota_vardoni-n	Adenota vardoni	n	0	2	2	oewn
+oewn-Adiantum_bellum-n	Adiantum bellum	n	0	2	2	oewn
+oewn-Adiantum_capillus-veneris-n	Adiantum capillus-veneris	n	0	2	2	oewn
+oewn-Adiantum_pedatum-n	Adiantum pedatum	n	0	2	2	oewn
+oewn-Adiantum_tenerum-n	Adiantum tenerum	n	0	2	2	oewn
+oewn-Adiantum_tenerum_farleyense-n	Adiantum tenerum farleyense	n	0	3	3	oewn
+oewn-Aditya-n	Aditya	n	0	1	1	oewn
+oewn-Adlerian_psychology-n	Adlerian psychology	n	0	2	2	oewn
+oewn-Adlumia_fungosa-n	Adlumia fungosa	n	0	2	2	oewn
+oewn-Admiralty_brass-n	Admiralty brass	n	0	2	2	oewn
+oewn-Admiralty_metal-n	Admiralty metal	n	0	2	2	oewn
+oewn-Admiralty_mile-n	Admiralty mile	n	0	2	2	oewn
+oewn-Admission_Day-n	Admission Day	n	0	2	2	oewn
+oewn-Adonic-a	Adonic	a	0	1	1	oewn
+oewn-Adonic-n	Adonic	n	0	1	1	oewn
+oewn-Adonic_line-n	Adonic line	n	0	2	2	oewn
+oewn-Adonis-n	Adonis	n	0	1	1	oewn
+oewn-Adonis_annua-n	Adonis annua	n	0	2	2	oewn
+oewn-Adrenalin-n	Adrenalin	n	0	1	1	oewn
+oewn-Advanced_Research_and_Development_Activity-n	Advanced Research and Development Activity	n	0	5	5	oewn
+oewn-Advent-n	Advent	n	0	1	1	oewn
+oewn-Advent_Sunday-n	Advent Sunday	n	0	2	2	oewn
+oewn-Adventism-n	Adventism	n	0	1	1	oewn
+oewn-Adventist-n	Adventist	n	0	1	1	oewn
+oewn-Advil-n	Advil	n	0	1	1	oewn
+oewn-ad-lib-a	ad-lib	a	0	1	1	oewn
+oewn-ad-lib-n	ad-lib	n	0	1	1	oewn
+oewn-ad-lib-v	ad-lib	v	0	1	1	oewn
+oewn-ad-n	ad	n	0	1	1	oewn
+oewn-ad_agency-n	ad agency	n	0	2	2	oewn
+oewn-ad_blitz-n	ad blitz	n	0	2	2	oewn
+oewn-ad_campaign-n	ad campaign	n	0	2	2	oewn
+oewn-ad_hoc-a	ad hoc	a	0	2	2	oewn
+oewn-ad_hoc-r	ad hoc	r	0	2	2	oewn
+oewn-ad_hominem-a	ad hominem	a	0	2	2	oewn
+oewn-ad_infinitum-r	ad infinitum	r	0	2	2	oewn
+oewn-ad_interim-r	ad interim	r	0	2	2	oewn
+oewn-ad_lib-r	ad lib	r	0	2	2	oewn
+oewn-ad_libitum-r	ad libitum	r	0	2	2	oewn
+oewn-ad_nauseam-r	ad nauseam	r	0	2	2	oewn
+oewn-ad_val-r	ad val	r	0	2	2	oewn
+oewn-ad_valorem-r	ad valorem	r	0	2	2	oewn
+oewn-ad_valorem_tax-n	ad valorem tax	n	0	3	3	oewn
+oewn-adactylia-n	adactylia	n	0	1	1	oewn
+oewn-adactylism-n	adactylism	n	0	1	1	oewn
+oewn-adactylous-a	adactylous	a	0	1	1	oewn
+oewn-adactyly-n	adactyly	n	0	1	1	oewn
+oewn-adage-n	adage	n	0	1	1	oewn
+oewn-adagio-a	adagio	a	0	1	1	oewn
+oewn-adagio-n	adagio	n	0	1	1	oewn
+oewn-adagio-r	adagio	r	0	1	1	oewn
+oewn-adam-and-eve-n	adam-and-eve	n	0	1	1	oewn
+oewn-adamance-n	adamance	n	0	1	1	oewn
+oewn-adamant-a	adamant	a	0	1	1	oewn
+oewn-adamant-n	adamant	n	0	1	1	oewn
+oewn-adamantine-a	adamantine	a	0	1	1	oewn
+oewn-adamantly-r	adamantly	r	0	1	1	oewn
+oewn-adapt-v	adapt	v	0	1	1	oewn
+oewn-adaptability-n	adaptability	n	0	1	1	oewn
+oewn-adaptable-a	adaptable	a	0	1	1	oewn
+oewn-adaptation-n	adaptation	n	0	1	1	oewn
+oewn-adaptational-a	adaptational	a	0	1	1	oewn
+oewn-adaptative-a	adaptative	a	0	1	1	oewn
+oewn-adapted-a	adapted	a	0	1	1	oewn
+oewn-adapter-n	adapter	n	0	1	1	oewn
+oewn-adaption-n	adaption	n	0	1	1	oewn
+oewn-adaptive-a	adaptive	a	0	1	1	oewn
+oewn-adaptive_radiation-n	adaptive radiation	n	0	2	2	oewn
+oewn-adaptor-n	adaptor	n	0	1	1	oewn
+oewn-adaxial-a	adaxial	a	0	1	1	oewn
+oewn-adaxially-r	adaxially	r	0	1	1	oewn
+oewn-add-in-n	add-in	n	0	1	1	oewn
+oewn-add-on-n	add-on	n	0	1	1	oewn
+oewn-add-v	add	v	0	1	1	oewn
+oewn-add_on-v	add on	v	0	2	1	oewn
+oewn-add_to-v	add to	v	0	2	1	oewn
+oewn-add_together-v	add together	v	0	2	1	oewn
+oewn-add_up-v	add up	v	0	2	1	oewn
+oewn-addable-a	addable	a	0	1	1	oewn
+oewn-addax-n	addax	n	0	1	1	oewn
+oewn-addend-n	addend	n	0	1	1	oewn
+oewn-addendum-n	addendum	n	0	1	1	oewn
+oewn-adder-ap-s_fern-n	adder's fern	n	0	2	2	oewn
+oewn-adder-ap-s_tongue-n	adder's tongue	n	0	2	2	oewn
+oewn-adder-ap-s_tongue_fern-n	adder's tongue fern	n	0	3	3	oewn
+oewn-adder-n	adder	n	0	1	1	oewn
+oewn-addible-a	addible	a	0	1	1	oewn
+oewn-addict-n	addict	n	0	1	1	oewn
+oewn-addict-v	addict	v	0	1	1	oewn
+oewn-addicted-a	addicted	a	0	1	1	oewn
+oewn-addiction-n	addiction	n	0	1	1	oewn
+oewn-addiction_studies-n	addiction studies	n	0	2	2	oewn
+oewn-addictive-a	addictive	a	0	1	1	oewn
+oewn-adding_machine-n	adding machine	n	0	2	2	oewn
+oewn-addition-n	addition	n	0	1	1	oewn
+oewn-addition_reaction-n	addition reaction	n	0	2	2	oewn
+oewn-additional-a	additional	a	0	1	1	oewn
+oewn-additionally-r	additionally	r	0	1	1	oewn
+oewn-additive-a	additive	a	0	1	1	oewn
+oewn-additive-n	additive	n	0	1	1	oewn
+oewn-additive_inverse-n	additive inverse	n	0	2	2	oewn
+oewn-addle-head-n	addle-head	n	0	1	1	oewn
+oewn-addle-v	addle	v	0	1	1	oewn
+oewn-addlebrained-a	addlebrained	a	0	1	1	oewn
+oewn-addled-a	addled	a	0	1	1	oewn
+oewn-addlehead-n	addlehead	n	0	1	1	oewn
+oewn-addlepated-a	addlepated	a	0	1	1	oewn
+oewn-address-n	address	n	0	1	1	oewn
+oewn-address-v	address	v	0	1	1	oewn
+oewn-addressable-a	addressable	a	0	1	1	oewn
+oewn-addressed-a	addressed	a	0	1	1	oewn
+oewn-addressee-n	addressee	n	0	1	1	oewn
+oewn-addressing_machine-n	addressing machine	n	0	2	2	oewn
+oewn-adduce-v	adduce	v	0	1	1	oewn
+oewn-adducent-a	adducent	a	0	1	1	oewn
+oewn-adducer-n	adducer	n	0	1	1	oewn
+oewn-adducing-n	adducing	n	0	1	1	oewn
+oewn-adduct-n	adduct	n	0	1	1	oewn
+oewn-adduct-v	adduct	v	0	1	1	oewn
+oewn-adducting-a	adducting	a	0	1	1	oewn
+oewn-adduction-n	adduction	n	0	1	1	oewn
+oewn-adductive-a	adductive	a	0	1	1	oewn
+oewn-adductor-n	adductor	n	0	1	1	oewn
+oewn-adductor_muscle-n	adductor muscle	n	0	2	2	oewn
+oewn-ade-n	ade	n	0	1	1	oewn
+oewn-adelgid-n	adelgid	n	0	1	1	oewn
+oewn-adenine-n	adenine	n	0	1	1	oewn
+oewn-adenitis-n	adenitis	n	0	1	1	oewn
+oewn-adenocarcinoma-n	adenocarcinoma	n	0	1	1	oewn
+oewn-adenocarcinomatous-a	adenocarcinomatous	a	0	1	1	oewn
+oewn-adenohypophysis-n	adenohypophysis	n	0	1	1	oewn
+oewn-adenoid-a	adenoid	a	0	1	1	oewn
+oewn-adenoid-n	adenoid	n	0	1	1	oewn
+oewn-adenoidal-a	adenoidal	a	0	1	1	oewn
+oewn-adenoidectomy-n	adenoidectomy	n	0	1	1	oewn
+oewn-adenoma-n	adenoma	n	0	1	1	oewn
+oewn-adenomatous_polyp-n	adenomatous polyp	n	0	2	2	oewn
+oewn-adenomegaly-n	adenomegaly	n	0	1	1	oewn
+oewn-adenomyosarcoma-n	adenomyosarcoma	n	0	1	1	oewn
+oewn-adenomyosis-n	adenomyosis	n	0	1	1	oewn
+oewn-adenopathy-n	adenopathy	n	0	1	1	oewn
+oewn-adenosine-n	adenosine	n	0	1	1	oewn
+oewn-adenosine_deaminase-n	adenosine deaminase	n	0	2	2	oewn
+oewn-adenosine_diphosphate-n	adenosine diphosphate	n	0	2	2	oewn
+oewn-adenosine_monophosphate-n	adenosine monophosphate	n	0	2	2	oewn
+oewn-adenosine_triphosphate-n	adenosine triphosphate	n	0	2	2	oewn
+oewn-adenosis-n	adenosis	n	0	1	1	oewn
+oewn-adenovirus-n	adenovirus	n	0	1	1	oewn
+oewn-adenylic_acid-n	adenylic acid	n	0	2	2	oewn
+oewn-adept-a	adept	a	0	1	1	oewn
+oewn-adept-n	adept	n	0	1	1	oewn
+oewn-adeptness-n	adeptness	n	0	1	1	oewn
+oewn-adequacy-n	adequacy	n	0	1	1	oewn
+oewn-adequate-a	adequate	a	0	1	1	oewn
+oewn-adequate_to-a	adequate to	a	0	2	2	oewn
+oewn-adequately-r	adequately	r	0	1	1	oewn
+oewn-adequateness-n	adequateness	n	0	1	1	oewn
+oewn-ader_wax-n	ader wax	n	0	2	2	oewn
+oewn-adermin-n	adermin	n	0	1	1	oewn
+oewn-adesite-n	adesite	n	0	1	1	oewn
+oewn-adhere-v	adhere	v	0	1	1	oewn
+oewn-adherence-n	adherence	n	0	1	1	oewn
+oewn-adherent-a	adherent	a	0	1	1	oewn
+oewn-adherent-n	adherent	n	0	1	1	oewn
+oewn-adhesion-n	adhesion	n	0	1	1	oewn
+oewn-adhesion_contract-n	adhesion contract	n	0	2	2	oewn
+oewn-adhesive-a	adhesive	a	0	1	1	oewn
+oewn-adhesive-n	adhesive	n	0	1	1	oewn
+oewn-adhesive_agent-n	adhesive agent	n	0	2	2	oewn
+oewn-adhesive_bandage-n	adhesive bandage	n	0	2	2	oewn
+oewn-adhesive_friction-n	adhesive friction	n	0	2	2	oewn
+oewn-adhesive_material-n	adhesive material	n	0	2	2	oewn
+oewn-adhesive_plaster-n	adhesive plaster	n	0	2	2	oewn
+oewn-adhesive_tape-n	adhesive tape	n	0	2	2	oewn
+oewn-adhesiveness-n	adhesiveness	n	0	1	1	oewn
+oewn-adhocracy-n	adhocracy	n	0	1	1	oewn
+oewn-adiabatic-a	adiabatic	a	0	1	1	oewn
+oewn-adiabatic_index-n	adiabatic index	n	0	2	2	oewn
+oewn-adiabatic_process-n	adiabatic process	n	0	2	2	oewn
+oewn-adiabaticity-n	adiabaticity	n	0	1	1	oewn
+oewn-adiaphoron-n	adiaphoron	n	0	1	1	oewn
+oewn-adience-n	adience	n	0	1	1	oewn
+oewn-adient-a	adient	a	0	1	1	oewn
+oewn-adieu-n	adieu	n	0	1	1	oewn
+oewn-adios-n	adios	n	0	1	1	oewn
+oewn-adipic_acid-n	adipic acid	n	0	2	2	oewn
+oewn-adipose-a	adipose	a	0	1	1	oewn
+oewn-adipose_cell-n	adipose cell	n	0	2	2	oewn
+oewn-adipose_tissue-n	adipose tissue	n	0	2	2	oewn
+oewn-adipose_tumor-n	adipose tumor	n	0	2	2	oewn
+oewn-adiposeness-n	adiposeness	n	0	1	1	oewn
+oewn-adiposis-n	adiposis	n	0	1	1	oewn
+oewn-adiposity-n	adiposity	n	0	1	1	oewn
+oewn-adit-n	adit	n	0	1	1	oewn
+oewn-adjacency-n	adjacency	n	0	1	1	oewn
+oewn-adjacent-a	adjacent	a	0	1	1	oewn
+oewn-adjectival-a	adjectival	a	0	1	1	oewn
+oewn-adjectivally-r	adjectivally	r	0	1	1	oewn
+oewn-adjective-a	adjective	a	0	1	1	oewn
+oewn-adjective-n	adjective	n	0	1	1	oewn
+oewn-adjective_pronoun-n	adjective pronoun	n	0	2	2	oewn
+oewn-adjectively-r	adjectively	r	0	1	1	oewn
+oewn-adjoin-v	adjoin	v	0	1	1	oewn
+oewn-adjoining_room-n	adjoining room	n	0	2	2	oewn
+oewn-adjourn-v	adjourn	v	0	1	1	oewn
+oewn-adjournment-n	adjournment	n	0	1	1	oewn
+oewn-adjudge-v	adjudge	v	0	1	1	oewn
+oewn-adjudicate-v	adjudicate	v	0	1	1	oewn
+oewn-adjudication-n	adjudication	n	0	1	1	oewn
+oewn-adjudicative-a	adjudicative	a	0	1	1	oewn
+oewn-adjudicator-n	adjudicator	n	0	1	1	oewn
+oewn-adjudicatory-a	adjudicatory	a	0	1	1	oewn
+oewn-adjunct-a	adjunct	a	0	1	1	oewn
+oewn-adjunct-n	adjunct	n	0	1	1	oewn
+oewn-adjunction-n	adjunction	n	0	1	1	oewn
+oewn-adjunctive-a	adjunctive	a	0	1	1	oewn
+oewn-adjuration-n	adjuration	n	0	1	1	oewn
+oewn-adjuratory-a	adjuratory	a	0	1	1	oewn
+oewn-adjure-v	adjure	v	0	1	1	oewn
+oewn-adjust-v	adjust	v	0	1	1	oewn
+oewn-adjustable-a	adjustable	a	0	1	1	oewn
+oewn-adjustable_spanner-n	adjustable spanner	n	0	2	2	oewn
+oewn-adjustable_wrench-n	adjustable wrench	n	0	2	2	oewn
+oewn-adjusted-a	adjusted	a	0	1	1	oewn
+oewn-adjuster-n	adjuster	n	0	1	1	oewn
+oewn-adjusting_entry-n	adjusting entry	n	0	2	2	oewn
+oewn-adjustive-a	adjustive	a	0	1	1	oewn
+oewn-adjustment-n	adjustment	n	0	1	1	oewn
+oewn-adjustor-n	adjustor	n	0	1	1	oewn
+oewn-adjutant-n	adjutant	n	0	1	1	oewn
+oewn-adjutant_bird-n	adjutant bird	n	0	2	2	oewn
+oewn-adjutant_general-n	adjutant general	n	0	2	2	oewn
+oewn-adjutant_stork-n	adjutant stork	n	0	2	2	oewn
+oewn-adjuvant-a	adjuvant	a	0	1	1	oewn
+oewn-adjuvant-n	adjuvant	n	0	1	1	oewn
+oewn-adman-n	adman	n	0	1	1	oewn
+oewn-admass-n	admass	n	0	1	1	oewn
+oewn-admeasure-v	admeasure	v	0	1	1	oewn
+oewn-administer-v	administer	v	0	1	1	oewn
+oewn-administered_price-n	administered price	n	0	2	2	oewn
+oewn-administrable-a	administrable	a	0	1	1	oewn
+oewn-administrate-v	administrate	v	0	1	1	oewn
+oewn-administration-n	administration	n	0	1	1	oewn
+oewn-administrative-a	administrative	a	0	1	1	oewn
+oewn-administrative_body-n	administrative body	n	0	2	2	oewn
+oewn-administrative_data_processing-n	administrative data processing	n	0	3	3	oewn
+oewn-administrative_district-n	administrative district	n	0	2	2	oewn
+oewn-administrative_division-n	administrative division	n	0	2	2	oewn
+oewn-administrative_hearing-n	administrative hearing	n	0	2	2	oewn
+oewn-administrative_law-n	administrative law	n	0	2	2	oewn
+oewn-administrative_official-n	administrative official	n	0	2	2	oewn
+oewn-administrative_unit-n	administrative unit	n	0	2	2	oewn
+oewn-administratively-r	administratively	r	0	1	1	oewn
+oewn-administrator-n	administrator	n	0	1	1	oewn
+oewn-administrivia-n	administrivia	n	0	1	1	oewn
+oewn-admirability-n	admirability	n	0	1	1	oewn
+oewn-admirable-a	admirable	a	0	1	1	oewn
+oewn-admirableness-n	admirableness	n	0	1	1	oewn
+oewn-admirably-r	admirably	r	0	1	1	oewn
+oewn-admiral-n	admiral	n	0	1	1	oewn
+oewn-admiralty-n	admiralty	n	0	1	1	oewn
+oewn-admiralty_law-n	admiralty law	n	0	2	2	oewn
+oewn-admiration-n	admiration	n	0	1	1	oewn
+oewn-admire-v	admire	v	0	1	1	oewn
+oewn-admired-a	admired	a	0	1	1	oewn
+oewn-admirer-n	admirer	n	0	1	1	oewn
+oewn-admiringly-r	admiringly	r	0	1	1	oewn
+oewn-admissibility-n	admissibility	n	0	1	1	oewn
+oewn-admissible-a	admissible	a	0	1	1	oewn
+oewn-admission-n	admission	n	0	1	1	oewn
+oewn-admission_charge-n	admission charge	n	0	2	2	oewn
+oewn-admission_fee-n	admission fee	n	0	2	2	oewn
+oewn-admission_price-n	admission price	n	0	2	2	oewn
+oewn-admissive-a	admissive	a	0	1	1	oewn
+oewn-admit-v	admit	v	0	1	1	oewn
+oewn-admittable-a	admittable	a	0	1	1	oewn
+oewn-admittance-n	admittance	n	0	1	1	oewn
+oewn-admittedly-r	admittedly	r	0	1	1	oewn
+oewn-admittible-a	admittible	a	0	1	1	oewn
+oewn-admix-v	admix	v	0	1	1	oewn
+oewn-admixture-n	admixture	n	0	1	1	oewn
+oewn-admonish-v	admonish	v	0	1	1	oewn
+oewn-admonisher-n	admonisher	n	0	1	1	oewn
+oewn-admonishing-a	admonishing	a	0	1	1	oewn
+oewn-admonishment-n	admonishment	n	0	1	1	oewn
+oewn-admonition-n	admonition	n	0	1	1	oewn
+oewn-admonitory-a	admonitory	a	0	1	1	oewn
+oewn-adnate-a	adnate	a	0	1	1	oewn
+oewn-adnexa-n	adnexa	n	0	1	1	oewn
+oewn-adnexal-a	adnexal	a	0	1	1	oewn
+oewn-adnoun-n	adnoun	n	0	1	1	oewn
+oewn-ado-n	ado	n	0	1	1	oewn
+oewn-adobe-n	adobe	n	0	1	1	oewn
+oewn-adobe_brick-n	adobe brick	n	0	2	2	oewn
+oewn-adobe_house-n	adobe house	n	0	2	2	oewn
+oewn-adobe_lily-n	adobe lily	n	0	2	2	oewn
+oewn-adobo-n	adobo	n	0	1	1	oewn
+oewn-adolesce-v	adolesce	v	0	1	1	oewn
+oewn-adolescence-n	adolescence	n	0	1	1	oewn
+oewn-adolescent-a	adolescent	a	0	1	1	oewn
+oewn-adolescent-n	adolescent	n	0	1	1	oewn
+oewn-adonis-n	adonis	n	0	1	1	oewn
+oewn-adopt-v	adopt	v	0	1	1	oewn
+oewn-adoptable-a	adoptable	a	0	1	1	oewn
+oewn-adopted-a	adopted	a	0	1	1	oewn
+oewn-adoptee-n	adoptee	n	0	1	1	oewn
+oewn-adopter-n	adopter	n	0	1	1	oewn
+oewn-adoption-n	adoption	n	0	1	1	oewn
+oewn-adoptive-a	adoptive	a	0	1	1	oewn
+oewn-adoptive_parent-n	adoptive parent	n	0	2	2	oewn
+oewn-adorability-n	adorability	n	0	1	1	oewn
+oewn-adorable-a	adorable	a	0	1	1	oewn
+oewn-adorableness-n	adorableness	n	0	1	1	oewn
+oewn-adorably-r	adorably	r	0	1	1	oewn
+oewn-adoration-n	adoration	n	0	1	1	oewn
+oewn-adore-v	adore	v	0	1	1	oewn
+oewn-adored-a	adored	a	0	1	1	oewn
+oewn-adorer-n	adorer	n	0	1	1	oewn
+oewn-adoring-a	adoring	a	0	1	1	oewn
+oewn-adoringly-r	adoringly	r	0	1	1	oewn
+oewn-adorn-v	adorn	v	0	1	1	oewn
+oewn-adorned-a	adorned	a	0	1	1	oewn
+oewn-adornment-n	adornment	n	0	1	1	oewn
+oewn-adoxography-n	adoxography	n	0	1	1	oewn
+oewn-adpressed-a	adpressed	a	0	1	1	oewn
+oewn-adrenal-a	adrenal	a	0	1	1	oewn
+oewn-adrenal-n	adrenal	n	0	1	1	oewn
+oewn-adrenal_cortex-n	adrenal cortex	n	0	2	2	oewn
+oewn-adrenal_cortical_steroid-n	adrenal cortical steroid	n	0	3	3	oewn
+oewn-adrenal_gland-n	adrenal gland	n	0	2	2	oewn
+oewn-adrenal_medulla-n	adrenal medulla	n	0	2	2	oewn
+oewn-adrenalectomy-n	adrenalectomy	n	0	1	1	oewn
+oewn-adrenaline-n	adrenaline	n	0	1	1	oewn
+oewn-adrenarche-n	adrenarche	n	0	1	1	oewn
+oewn-adrenergic-a	adrenergic	a	0	1	1	oewn
+oewn-adrenergic-n	adrenergic	n	0	1	1	oewn
+oewn-adrenergic_agonist_eyedrop-n	adrenergic agonist eyedrop	n	0	3	3	oewn
+oewn-adrenergic_drug-n	adrenergic drug	n	0	2	2	oewn
+oewn-adrenocortical-a	adrenocortical	a	0	1	1	oewn
+oewn-adrenocorticotrophic-a	adrenocorticotrophic	a	0	1	1	oewn
+oewn-adrenocorticotrophic_hormone-n	adrenocorticotrophic hormone	n	0	2	2	oewn
+oewn-adrenocorticotrophin-n	adrenocorticotrophin	n	0	1	1	oewn
+oewn-adrenocorticotropic-a	adrenocorticotropic	a	0	1	1	oewn
+oewn-adrenocorticotropic_hormone-n	adrenocorticotropic hormone	n	0	2	2	oewn
+oewn-adrenocorticotropin-n	adrenocorticotropin	n	0	1	1	oewn
+oewn-adrenosterone-n	adrenosterone	n	0	1	1	oewn
+oewn-adrift-a	adrift	a	0	1	1	oewn
+oewn-adrift-r	adrift	r	0	1	1	oewn
+oewn-adroit-a	adroit	a	0	1	1	oewn
+oewn-adroitly-r	adroitly	r	0	1	1	oewn
+oewn-adroitness-n	adroitness	n	0	1	1	oewn
+oewn-adscititious-a	adscititious	a	0	1	1	oewn
+oewn-adscript-a	adscript	a	0	1	1	oewn
+oewn-adscripted-a	adscripted	a	0	1	1	oewn
+oewn-adsorb-v	adsorb	v	0	1	1	oewn
+oewn-adsorbable-a	adsorbable	a	0	1	1	oewn
+oewn-adsorbate-a	adsorbate	a	0	1	1	oewn
+oewn-adsorbate-n	adsorbate	n	0	1	1	oewn
+oewn-adsorbent-a	adsorbent	a	0	1	1	oewn
+oewn-adsorbent-n	adsorbent	n	0	1	1	oewn
+oewn-adsorbent_material-n	adsorbent material	n	0	2	2	oewn
+oewn-adsorber-n	adsorber	n	0	1	1	oewn
+oewn-adsorption-n	adsorption	n	0	1	1	oewn
+oewn-adsorptive-a	adsorptive	a	0	1	1	oewn
+oewn-adsuki_bean-n	adsuki bean	n	0	2	2	oewn
+oewn-adulate-v	adulate	v	0	1	1	oewn
+oewn-adulation-n	adulation	n	0	1	1	oewn
+oewn-adulator-n	adulator	n	0	1	1	oewn
+oewn-adulatory-a	adulatory	a	0	1	1	oewn
+oewn-adult-a	adult	a	0	1	1	oewn
+oewn-adult-n	adult	n	0	1	1	oewn
+oewn-adult-onset_diabetes-n	adult-onset diabetes	n	0	2	2	oewn
+oewn-adult-onset_diabetes_mellitus-n	adult-onset diabetes mellitus	n	0	3	3	oewn
+oewn-adult_body-n	adult body	n	0	2	2	oewn
+oewn-adult_education-n	adult education	n	0	2	2	oewn
+oewn-adult_female-n	adult female	n	0	2	2	oewn
+oewn-adult_female_body-n	adult female body	n	0	3	3	oewn
+oewn-adult_intelligence-n	adult intelligence	n	0	2	2	oewn
+oewn-adult_male-n	adult male	n	0	2	2	oewn
+oewn-adult_male_body-n	adult male body	n	0	3	3	oewn
+oewn-adult_respiratory_distress_syndrome-n	adult respiratory distress syndrome	n	0	4	4	oewn
+oewn-adult_tooth-n	adult tooth	n	0	2	2	oewn
+oewn-adult_toy-n	adult toy	n	0	2	2	oewn
+oewn-adulterant-a	adulterant	a	0	1	1	oewn
+oewn-adulterant-n	adulterant	n	0	1	1	oewn
+oewn-adulterate-a	adulterate	a	0	1	1	oewn
+oewn-adulterate-v	adulterate	v	0	1	1	oewn
+oewn-adulterated-a	adulterated	a	0	1	1	oewn
+oewn-adulterating-a	adulterating	a	0	1	1	oewn
+oewn-adulteration-n	adulteration	n	0	1	1	oewn
+oewn-adulterator-n	adulterator	n	0	1	1	oewn
+oewn-adulterer-n	adulterer	n	0	1	1	oewn
+oewn-adulteress-n	adulteress	n	0	1	1	oewn
+oewn-adulterine-a	adulterine	a	0	1	1	oewn
+oewn-adulterous-a	adulterous	a	0	1	1	oewn
+oewn-adulterously-r	adulterously	r	0	1	1	oewn
+oewn-adulterousness-n	adulterousness	n	0	1	1	oewn
+oewn-adultery-n	adultery	n	0	1	1	oewn
+oewn-adulthood-n	adulthood	n	0	1	1	oewn
+oewn-adulting-n	adulting	n	0	1	1	oewn
+oewn-adumbrate-v	adumbrate	v	0	1	1	oewn
+oewn-adumbration-n	adumbration	n	0	1	1	oewn
+oewn-adumbrative-a	adumbrative	a	0	1	1	oewn
+oewn-adust-a	adust	a	0	1	1	oewn
+oewn-advance-a	advance	a	0	1	1	oewn
+oewn-advance-n	advance	n	0	1	1	oewn
+oewn-advance-v	advance	v	0	1	1	oewn
+oewn-advance_death_benefit-n	advance death benefit	n	0	3	3	oewn
+oewn-advanced-a	advanced	a	0	1	1	oewn
+oewn-advancement-n	advancement	n	0	1	1	oewn
+oewn-advancer-n	advancer	n	0	1	1	oewn
+oewn-advancing-a	advancing	a	0	1	1	oewn
+oewn-advantage-n	advantage	n	0	1	1	oewn
+oewn-advantage-v	advantage	v	0	1	1	oewn
+oewn-advantageous-a	advantageous	a	0	1	1	oewn
+oewn-advantageously-r	advantageously	r	0	1	1	oewn
+oewn-advantageousness-n	advantageousness	n	0	1	1	oewn
+oewn-advect-v	advect	v	0	1	1	oewn
+oewn-advection-n	advection	n	0	1	1	oewn
+oewn-advective-a	advective	a	0	1	1	oewn
+oewn-advent-n	advent	n	0	1	1	oewn
+oewn-adventitia-n	adventitia	n	0	1	1	oewn
+oewn-adventitial-a	adventitial	a	0	1	1	oewn
+oewn-adventitious-a	adventitious	a	0	1	1	oewn
+oewn-adventitious_root-n	adventitious root	n	0	2	2	oewn
+oewn-adventive-a	adventive	a	0	1	1	oewn
+oewn-adventure-n	adventure	n	0	1	1	oewn
+oewn-adventure-v	adventure	v	0	1	1	oewn
+oewn-adventure_story-n	adventure story	n	0	2	2	oewn
+oewn-adventurer-n	adventurer	n	0	1	1	oewn
+oewn-adventuresome-a	adventuresome	a	0	1	1	oewn
+oewn-adventuress-n	adventuress	n	0	1	1	oewn
+oewn-adventurism-n	adventurism	n	0	1	1	oewn
+oewn-adventuristic-a	adventuristic	a	0	1	1	oewn
+oewn-adventurous-a	adventurous	a	0	1	1	oewn
+oewn-adventurousness-n	adventurousness	n	0	1	1	oewn
+oewn-adverb-n	adverb	n	0	1	1	oewn
+oewn-adverb_of_manner-n	adverb of manner	n	0	3	1	oewn
+oewn-adverbial-a	adverbial	a	0	1	1	oewn
+oewn-adverbial-n	adverbial	n	0	1	1	oewn
+oewn-adverbial_of_cause-n	adverbial of cause	n	0	3	1	oewn
+oewn-adverbial_of_condition-n	adverbial of condition	n	0	3	1	oewn
+oewn-adverbial_of_reason-n	adverbial of reason	n	0	3	1	oewn
+oewn-adverbially-r	adverbially	r	0	1	1	oewn
+oewn-adversary-n	adversary	n	0	1	1	oewn
+oewn-adversative-a	adversative	a	0	1	1	oewn
+oewn-adversative_conjunction-n	adversative conjunction	n	0	2	2	oewn
+oewn-adverse-a	adverse	a	0	1	1	oewn
+oewn-adverse_opinion-n	adverse opinion	n	0	2	2	oewn
+oewn-adverse_selection-n	adverse selection	n	0	2	2	oewn
+oewn-adverse_witness-n	adverse witness	n	0	2	2	oewn
+oewn-adversely-r	adversely	r	0	1	1	oewn
+oewn-adversity-n	adversity	n	0	1	1	oewn
+oewn-advert-n	advert	n	0	1	1	oewn
+oewn-advert-v	advert	v	0	1	1	oewn
+oewn-advertence-n	advertence	n	0	1	1	oewn
+oewn-advertency-n	advertency	n	0	1	1	oewn
+oewn-advertent-a	advertent	a	0	1	1	oewn
+oewn-advertently-r	advertently	r	0	1	1	oewn
+oewn-advertise-v	advertise	v	0	1	1	oewn
+oewn-advertised-a	advertised	a	0	1	1	oewn
+oewn-advertisement-n	advertisement	n	0	1	1	oewn
+oewn-advertiser-n	advertiser	n	0	1	1	oewn
+oewn-advertising-n	advertising	n	0	1	1	oewn
+oewn-advertising_agency-n	advertising agency	n	0	2	2	oewn
+oewn-advertising_campaign-n	advertising campaign	n	0	2	2	oewn
+oewn-advertising_department-n	advertising department	n	0	2	2	oewn
+oewn-advertising_division-n	advertising division	n	0	2	2	oewn
+oewn-advertize-v	advertize	v	0	1	1	oewn
+oewn-advertizement-n	advertizement	n	0	1	1	oewn
+oewn-advertizer-n	advertizer	n	0	1	1	oewn
+oewn-advertizing-n	advertizing	n	0	1	1	oewn
+oewn-advertorial-n	advertorial	n	0	1	1	oewn
+oewn-advice-n	advice	n	0	1	1	oewn
+oewn-advice_and_consent-n	advice and consent	n	0	3	3	oewn
+oewn-advisability-n	advisability	n	0	1	1	oewn
+oewn-advisable-a	advisable	a	0	1	1	oewn
+oewn-advise-v	advise	v	0	1	1	oewn
+oewn-advised-a	advised	a	0	1	1	oewn
+oewn-advisedly-r	advisedly	r	0	1	1	oewn
+oewn-advisee-n	advisee	n	0	1	1	oewn
+oewn-advisement-n	advisement	n	0	1	1	oewn
+oewn-adviser-n	adviser	n	0	1	1	oewn
+oewn-advisor-n	advisor	n	0	1	1	oewn
+oewn-advisory-a	advisory	a	0	1	1	oewn
+oewn-advisory-n	advisory	n	0	1	1	oewn
+oewn-advisory_board-n	advisory board	n	0	2	2	oewn
+oewn-advisory_service-n	advisory service	n	0	2	2	oewn
+oewn-advocacy-n	advocacy	n	0	1	1	oewn
+oewn-advocacy_group-n	advocacy group	n	0	2	2	oewn
+oewn-advocate-n	advocate	n	0	1	1	oewn
+oewn-advocate-v	advocate	v	0	1	1	oewn
+oewn-advocator-n	advocator	n	0	1	1	oewn
+oewn-advowson-n	advowson	n	0	1	1	oewn
+oewn-adynamia-n	adynamia	n	0	1	1	oewn
+oewn-adynamic-a	adynamic	a	0	1	1	oewn
+oewn-adz-n	adz	n	0	1	1	oewn
+oewn-adze-n	adze	n	0	1	1	oewn
+oewn-adzuki_bean-n	adzuki bean	n	0	2	2	oewn

@@ -18,6 +18,7 @@
 
 ```text
 ├── corpus/                     (training anchors, holdout sentences, form maps)
+├── data/                       (word data TSV tables from Open English WordNet, schema.yaml)
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/

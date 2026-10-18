@@ -1,0 +1,5 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-BW-n	BW	n	0	1	1	oewn
+oewn-BWR-n	BWR	n	0	1	1	oewn
+oewn-BW_defence-n	BW defence	n	0	2	2	oewn
+oewn-BW_defense-n	BW defense	n	0	2	2	oewn

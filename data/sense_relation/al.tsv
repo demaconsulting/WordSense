@@ -1,0 +1,437 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-ala__1.05.01..	derivation		oewn-alary__5.00.00.winged.00
+oewn-ala__1.05.01..	derivation		oewn-alate__5.00.00.winged.00
+oewn-ala__1.08.00..	derivation		oewn-alary__5.00.00.winged.00
+oewn-ala__1.08.00..	derivation		oewn-alate__5.00.00.winged.00
+oewn-alabaster__3.01.00..	pertainym		oewn-alabaster__1.27.00..
+oewn-alabastrine__3.01.00..	pertainym		oewn-alabaster__1.27.00..
+oewn-alacritous__5.00.00.fast.01	derivation		oewn-alacrity__1.07.01..
+oewn-alar__1.27.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-alarm__1.12.00..	derivation		oewn-alarm__2.32.00..
+oewn-alarm__1.12.00..	derivation		oewn-alarm__2.37.00..
+oewn-alarm__2.32.00..	other	result	oewn-alarm__1.12.00..
+oewn-alarm__2.37.00..	derivation		oewn-alarmist__1.18.00..
+oewn-alarm__2.37.00..	other	result	oewn-alarm__1.12.00..
+oewn-alarming__3.00.00..	antonym		oewn-unalarming__3.00.00..
+oewn-alarmingly__4.02.00..	pertainym		oewn-alarming__3.00.00..
+oewn-alarmism__1.10.00..	derivation		oewn-alarmist__1.18.00..
+oewn-alaskan__1.18.00..	derivation		oewn-alaskan__3.01.00..
+oewn-alaskan__3.01.00..	pertainym		oewn-alaskan__1.18.00..
+oewn-albanian__1.10.00..	derivation		oewn-albanian__3.01.00..
+oewn-albanian__1.18.00..	derivation		oewn-albanian__3.01.00..
+oewn-albigenses__1.14.00..	derivation		oewn-albigensian__3.01.00..
+oewn-albigensian__3.01.00..	pertainym		oewn-albigenses__1.14.00..
+oewn-albigensian__3.01.00..	pertainym		oewn-albigensianism__1.09.00..
+oewn-albinal__3.01.00..	derivation		oewn-albinism__1.26.00..
+oewn-albinal__3.01.00..	pertainym		oewn-albinism__1.26.00..
+oewn-albinic__3.01.00..	derivation		oewn-albinism__1.26.00..
+oewn-albinic__3.01.00..	pertainym		oewn-albinism__1.26.00..
+oewn-albinism__1.26.00..	derivation		oewn-albinistic__3.01.00..
+oewn-albinism__1.26.00..	derivation		oewn-albinotic__3.01.00..
+oewn-albinistic__3.01.00..	derivation		oewn-albino__1.18.00..
+oewn-albinistic__3.01.00..	pertainym		oewn-albinism__1.26.00..
+oewn-albino__1.05.01..	derivation		oewn-albino__3.00.01..
+oewn-albino__1.18.00..	derivation		oewn-albino__3.00.01..
+oewn-albinotic__3.01.00..	pertainym		oewn-albinism__1.26.00..
+oewn-albite__1.27.00..	derivation		oewn-albitic__3.01.00..
+oewn-albitic__3.01.00..	pertainym		oewn-albite__1.27.00..
+oewn-albumin__1.27.00..	derivation		oewn-albuminous__3.01.00..
+oewn-albuminous__3.01.00..	pertainym		oewn-albumin__1.27.00..
+oewn-albuminuria__1.26.00..	derivation		oewn-albuminuric__3.01.00..
+oewn-albuminuric__3.01.00..	pertainym		oewn-albuminuria__1.26.00..
+oewn-alchemic__3.01.00..	derivation		oewn-alchemy__1.09.00..
+oewn-alchemic__3.01.00..	pertainym		oewn-alchemy__1.09.00..
+oewn-alchemical__3.01.00..	derivation		oewn-alchemy__1.09.00..
+oewn-alchemical__3.01.00..	pertainym		oewn-alchemy__1.09.00..
+oewn-alchemise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alchemise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alchemist__1.18.00..	derivation		oewn-alchemistic__3.01.00..
+oewn-alchemist__1.18.00..	derivation		oewn-alchemistical__3.01.00..
+oewn-alchemist__1.18.00..	derivation		oewn-alchemy__1.09.00..
+oewn-alchemistic__3.01.00..	pertainym		oewn-alchemist__1.18.00..
+oewn-alchemistical__3.01.00..	pertainym		oewn-alchemist__1.18.00..
+oewn-alchemize__2.30.00..	derivation		oewn-alchemy__1.09.00..
+oewn-alchemize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alcohol__1.13.00..	derivation		oewn-alcoholic__3.00.00..
+oewn-alcohol__1.13.00..	derivation		oewn-alcoholize__2.30.00..
+oewn-alcohol__1.13.00..	derivation		oewn-alcoholize__2.30.01..
+oewn-alcohol__1.27.00..	derivation		oewn-alcoholic__3.00.00..
+oewn-alcoholic__1.18.00..	derivation		oewn-alcoholic__5.00.00.addicted.00
+oewn-alcoholic__3.00.00..	antonym		oewn-nonalcoholic__3.00.00..
+oewn-alcoholise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alcoholise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alcoholise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alcoholise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alcoholize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alcoholize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aldactone__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-aldehydic__3.01.00..	pertainym		oewn-aldehyde__1.27.00..
+oewn-alderman__1.18.00..	derivation		oewn-aldermanic__3.01.00..
+oewn-alderman__1.18.00..	derivation		oewn-aldermanly__3.01.00..
+oewn-aldermanic__3.01.00..	pertainym		oewn-alderman__1.18.00..
+oewn-aldermanly__3.01.00..	pertainym		oewn-alderman__1.18.00..
+oewn-aldomet__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-alert__1.10.00..	derivation		oewn-alert__2.32.00..
+oewn-alert__1.10.01..	derivation		oewn-alert__2.32.00..
+oewn-alert__1.26.00..	derivation		oewn-alert__2.32.00..
+oewn-alert__1.26.00..	derivation		oewn-alert__3.00.00..
+oewn-alert__2.32.00..	other	by_means_of	oewn-alert__1.10.01..
+oewn-alert__2.32.00..	other	event	oewn-alert__1.10.00..
+oewn-alert__2.32.00..	other	state	oewn-alert__1.26.00..
+oewn-alert__3.00.00..	antonym		oewn-unalert__3.00.00..
+oewn-alert__3.00.00..	derivation		oewn-alertness__1.07.00..
+oewn-alert__5.00.00.aware.00	derivation		oewn-alertness__1.09.00..
+oewn-alertly__4.02.00..	pertainym		oewn-alert__5.00.00.aware.00
+oewn-aleurone__1.27.00..	derivation		oewn-aleuronic__3.01.00..
+oewn-aleuronic__3.01.00..	pertainym		oewn-aleurone__1.27.00..
+oewn-aleutian__3.01.00..	pertainym		oewn-aleut__1.14.00..
+oewn-aleve__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-alexic__1.18.00..	derivation		oewn-alexic__3.01.00..
+oewn-alexic__3.01.00..	pertainym		oewn-alexia__1.26.00..
+oewn-alga__1.05.00..	derivation		oewn-algal__3.01.00..
+oewn-algal__3.01.00..	pertainym		oewn-alga__1.05.00..
+oewn-algebra__1.09.00..	derivation		oewn-algebraic__3.01.00..
+oewn-algebra__1.09.00..	derivation		oewn-algebraical__3.01.00..
+oewn-algebra__1.09.00..	derivation		oewn-algebraist__1.18.00..
+oewn-algebraic__3.01.00..	pertainym		oewn-algebra__1.09.00..
+oewn-algebraical__3.01.00..	pertainym		oewn-algebra__1.09.00..
+oewn-algebraically__4.02.00..	pertainym		oewn-algebraic__3.01.00..
+oewn-algerian__1.18.00..	derivation		oewn-algerian__3.01.00..
+oewn-algid__5.00.00.cold.01	derivation		oewn-algidity__1.26.00..
+oewn-algoid__3.01.00..	pertainym		oewn-alga__1.05.00..
+oewn-algolagnia__1.12.00..	derivation		oewn-algolagnic__3.01.00..
+oewn-algolagnic__3.01.00..	pertainym		oewn-algolagnia__1.12.00..
+oewn-algometric__3.01.00..	derivation		oewn-algometry__1.04.00..
+oewn-algometric__3.01.00..	pertainym		oewn-algometry__1.04.00..
+oewn-algometrical__3.01.00..	derivation		oewn-algometry__1.04.00..
+oewn-algometrical__3.01.00..	pertainym		oewn-algometry__1.04.00..
+oewn-algonkian__1.10.00..	derivation		oewn-algonkian__3.01.00..
+oewn-algonkian__1.18.00..	derivation		oewn-algonkian__3.01.00..
+oewn-algonkian__3.01.00..	pertainym		oewn-algonquian__1.18.00..
+oewn-algonquian__1.18.00..	derivation		oewn-algonquian__3.01.00..
+oewn-algonquian__3.01.00..	pertainym		oewn-algonquian__1.18.00..
+oewn-algonquin__1.10.00..	derivation		oewn-algonquin__3.01.00..
+oewn-algonquin__3.01.00..	pertainym		oewn-algonquian__1.18.00..
+oewn-algophobia__1.26.00..	derivation		oewn-algophobic__5.00.00.afraid.00
+oewn-algorithm__1.09.00..	derivation		oewn-algorithmic__3.00.00..
+oewn-algorithmic__3.00.00..	antonym		oewn-heuristic__3.00.00..
+oewn-alibi__1.10.00..	derivation		oewn-alibi__2.32.00..
+oewn-alibi__1.10.01..	derivation		oewn-alibi__2.32.00..
+oewn-alibi__2.32.00..	other	by_means_of	oewn-alibi__1.10.00..
+oewn-alibi__2.32.00..	other	by_means_of	oewn-alibi__1.10.01..
+oewn-alien__1.18.00..	derivation		oewn-alien__5.00.00.foreign.01
+oewn-alien__1.18.01..	derivation		oewn-alien__5.00.00.foreign.01
+oewn-alien__1.18.02..	derivation		oewn-alien__5.00.00.foreign.01
+oewn-alienable__3.00.00..	antonym		oewn-inalienable__3.00.00..
+oewn-alienable__3.00.00..	derivation		oewn-alienate__2.40.00..
+oewn-alienate__2.37.00..	derivation		oewn-alienator__1.18.00..
+oewn-alienate__2.37.00..	other	agent	oewn-alienator__1.18.00..
+oewn-align__2.30.00..	antonym		oewn-skew__2.30.00..
+oewn-align__2.30.00..	derivation		oewn-alignment__1.07.00..
+oewn-align__2.30.00..	other	property	oewn-alignment__1.07.00..
+oewn-align__2.30.01..	derivation		oewn-alignment__1.04.00..
+oewn-align__2.30.01..	other	event	oewn-alignment__1.04.00..
+oewn-align__2.31.00..	derivation		oewn-alignment__1.14.00..
+oewn-align__2.42.00..	derivation		oewn-alignment__1.04.00..
+oewn-align__2.42.00..	other	event	oewn-alignment__1.04.00..
+oewn-aligned__3.00.01..	antonym		oewn-nonaligned__3.00.00..
+oewn-alignment__1.14.00..	antonym		oewn-nonalignment__1.14.00..
+oewn-alike__3.00.00..	antonym		oewn-unalike__3.00.00..
+oewn-alike__3.00.00..	derivation		oewn-alikeness__1.07.00..
+oewn-aliment__1.13.00..	derivation		oewn-aliment__2.34.00..
+oewn-aliment__1.13.00..	derivation		oewn-alimentary__5.00.00.wholesome.00
+oewn-aliment__2.34.00..	derivation		oewn-alimentation__1.04.00..
+oewn-aliment__2.34.00..	derivation		oewn-alimentation__1.13.00..
+oewn-aliment__2.34.00..	derivation		oewn-alimentative__3.01.00..
+oewn-aliment__2.34.00..	other	by_means_of	oewn-aliment__1.13.00..
+oewn-aliment__2.34.00..	other	by_means_of	oewn-alimentation__1.13.00..
+oewn-aliment__2.34.00..	other	event	oewn-alimentation__1.04.00..
+oewn-alimentative__3.01.00..	pertainym		oewn-alimentation__1.04.00..
+oewn-aliquant__1.23.00..	antonym		oewn-aliquot__1.23.00..
+oewn-aliquot__1.23.00..	derivation		oewn-aliquot__5.00.00.fractional.00
+oewn-alive__3.00.01..	antonym		oewn-dead__3.00.01..
+oewn-alive__3.00.01..	derivation		oewn-aliveness__1.07.00..
+oewn-alive__3.00.04..	derivation		oewn-aliveness__1.07.00..
+oewn-alive__5.00.00.aware.00	derivation		oewn-aliveness__1.26.00..
+oewn-alive__5.00.00.existent.00	derivation		oewn-aliveness__1.26.00..
+oewn-alive__5.00.00.lively.00	derivation		oewn-aliveness__1.07.00..
+oewn-alive__5.00.00.sensitive.02	derivation		oewn-aliveness__1.26.00..
+oewn-alkahest__1.27.00..	derivation		oewn-alkahestic__3.01.00..
+oewn-alkahestic__3.01.00..	pertainym		oewn-alkahest__1.27.00..
+oewn-alkali__1.27.00..	derivation		oewn-alkalify__2.30.00..
+oewn-alkali__1.27.00..	derivation		oewn-alkalize__2.30.00..
+oewn-alkali__1.27.01..	derivation		oewn-alkalic__3.00.00..
+oewn-alkali__1.27.01..	derivation		oewn-alkalify__2.30.00..
+oewn-alkalify__2.30.00..	other	by_means_of	oewn-alkali__1.27.00..
+oewn-alkalify__2.30.00..	other	by_means_of	oewn-alkali__1.27.01..
+oewn-alkaline__3.00.00..	antonym		oewn-amphoteric__3.00.00..
+oewn-alkaline__3.00.00..	derivation		oewn-alkalinity__1.07.00..
+oewn-alkalinise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alkalinise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alkalinise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alkalinise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alkalinize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alkalinize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alkalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alkalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alkalize__2.30.00..	derivation		oewn-alkalizer__1.27.00..
+oewn-alkalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alkalize__2.30.00..	other	agent	oewn-alkalizer__1.27.00..
+oewn-alkaloid__1.27.00..	derivation		oewn-alkaloidal__3.01.00..
+oewn-alkaloidal__3.01.00..	pertainym		oewn-alkaloid__1.27.00..
+oewn-alkalosis__1.26.00..	derivation		oewn-alkalotic__3.01.00..
+oewn-alkalotic__3.01.00..	pertainym		oewn-alkalosis__1.26.00..
+oewn-alkeran__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-alkyl__1.27.00..	derivation		oewn-alkylic__3.01.00..
+oewn-alkylic__3.01.00..	pertainym		oewn-alkyl_group__1.27.00..
+oewn-all--fired__4.02.00..	pertainym		oewn-all--fired__5.00.00.immoderate.00
+oewn-all--firedly__4.02.00..	pertainym		oewn-all--fired__5.00.00.immoderate.00
+oewn-all__3.00.00..	antonym		oewn-no__3.00.00..
+oewn-all__3.00.00..	antonym		oewn-some__3.00.00..
+oewn-allantoic__3.01.00..	pertainym		oewn-allantois__1.05.00..
+oewn-allay__2.37.00..	derivation		oewn-allayer__1.18.00..
+oewn-allay__2.37.00..	other	agent	oewn-allayer__1.18.00..
+oewn-allege__2.32.00..	derivation		oewn-allegement__1.10.00..
+oewn-allege__2.32.00..	other	event	oewn-allegement__1.10.00..
+oewn-allegedly__4.02.00..	pertainym		oewn-alleged__5.00.00.declared.00
+oewn-allegiance__1.04.00..	derivation		oewn-allegiant__5.00.00.loyal.00
+oewn-allegiance__1.07.00..	derivation		oewn-allegiant__5.00.00.loyal.00
+oewn-allegoric__5.00.00.representative.00	derivation		oewn-allegory__1.10.01..
+oewn-allegorical__5.00.00.representative.00	derivation		oewn-allegory__1.10.00..
+oewn-allegorical__5.00.00.representative.00	derivation		oewn-allegory__1.10.01..
+oewn-allegorical__5.00.00.representative.00	derivation		oewn-allegory__1.10.02..
+oewn-allegorically__4.02.00..	pertainym		oewn-allegorical__5.00.00.representative.00
+oewn-allegorise__2.30.00..	derivation		oewn-allegoriser__1.18.00..
+oewn-allegorise__2.30.00..	derivation		oewn-allegory__1.10.00..
+oewn-allegorise__2.30.00..	derivation		oewn-allegory__1.10.01..
+oewn-allegorise__2.30.00..	derivation		oewn-allegory__1.10.02..
+oewn-allegorise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-allegorise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-allegorise__2.30.00..	other	agent	oewn-allegoriser__1.18.00..
+oewn-allegorise__2.31.00..	derivation		oewn-allegory__1.10.00..
+oewn-allegorise__2.31.00..	derivation		oewn-allegory__1.10.01..
+oewn-allegorise__2.31.00..	derivation		oewn-allegory__1.10.02..
+oewn-allegorise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-allegorise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-allegorize__2.30.00..	derivation		oewn-allegorizer__1.18.00..
+oewn-allegorize__2.30.00..	derivation		oewn-allegory__1.10.00..
+oewn-allegorize__2.30.00..	derivation		oewn-allegory__1.10.01..
+oewn-allegorize__2.30.00..	derivation		oewn-allegory__1.10.02..
+oewn-allegorize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-allegorize__2.30.00..	other	agent	oewn-allegorizer__1.18.00..
+oewn-allegorize__2.31.00..	derivation		oewn-allegory__1.10.00..
+oewn-allegorize__2.31.00..	derivation		oewn-allegory__1.10.01..
+oewn-allegorize__2.31.00..	derivation		oewn-allegory__1.10.02..
+oewn-allegorize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-allegretto__1.28.00..	derivation		oewn-allegretto__5.00.00.fast.02
+oewn-allegretto__4.02.00..	pertainym		oewn-allegretto__5.00.00.fast.02
+oewn-allegro__1.10.00..	derivation		oewn-allegro__5.00.00.fast.02
+oewn-allegro__1.28.00..	derivation		oewn-allegro__5.00.00.fast.02
+oewn-allegro__4.02.00..	pertainym		oewn-allegro__5.00.00.fast.02
+oewn-allele__1.08.00..	derivation		oewn-allelic__3.01.00..
+oewn-allelic__3.01.00..	pertainym		oewn-allele__1.08.00..
+oewn-allelomorphic__3.01.00..	pertainym		oewn-allelomorph__1.08.00..
+oewn-allergen__1.27.00..	derivation		oewn-allergenic__3.01.00..
+oewn-allergenic__3.01.00..	pertainym		oewn-allergen__1.27.00..
+oewn-allergic__3.01.00..	derivation		oewn-allergy__1.26.00..
+oewn-allergic__3.01.00..	pertainym		oewn-allergy__1.26.00..
+oewn-allergic__5.00.00.susceptible.00	derivation		oewn-allergy__1.26.00..
+oewn-allergist__1.18.00..	derivation		oewn-allergy__1.26.00..
+oewn-alleviant__1.06.00..	derivation		oewn-alleviate__2.29.00..
+oewn-alleviate__2.29.00..	derivation		oewn-alleviation__1.04.00..
+oewn-alleviate__2.29.00..	derivation		oewn-alleviation__1.12.00..
+oewn-alleviate__2.29.00..	derivation		oewn-alleviative__5.00.00.moderating.00
+oewn-alleviate__2.29.00..	derivation		oewn-alleviator__1.06.00..
+oewn-alleviate__2.29.00..	derivation		oewn-alleviator__1.18.00..
+oewn-alleviate__2.29.00..	derivation		oewn-alleviatory__5.00.00.moderating.00
+oewn-alleviate__2.29.00..	other	agent	oewn-alleviator__1.18.00..
+oewn-alleviate__2.29.00..	other	event	oewn-alleviation__1.04.00..
+oewn-alleviate__2.29.00..	other	instrument	oewn-alleviator__1.06.00..
+oewn-alleviate__2.29.00..	other	result	oewn-alleviation__1.12.00..
+oewn-alliance__1.04.00..	derivation		oewn-ally__2.41.00..
+oewn-allied__3.01.01..	pertainym		oewn-allies__1.14.01..
+oewn-allied__3.01.02..	pertainym		oewn-allies__1.14.02..
+oewn-alligator__1.27.00..	derivation		oewn-alligator__2.30.00..
+oewn-alliterate__2.36.00..	derivation		oewn-alliteration__1.10.00..
+oewn-alliterate__2.36.00..	derivation		oewn-alliterative__5.00.00.rhymed.00
+oewn-alliterate__2.36.00..	derivation		oewn-alliterator__1.18.00..
+oewn-alliterate__2.36.00..	other	agent	oewn-alliterator__1.18.00..
+oewn-alliterate__2.36.00..	other	event	oewn-alliteration__1.10.00..
+oewn-alliteratively__4.02.00..	pertainym		oewn-alliterative__5.00.00.rhymed.00
+oewn-allocable__5.00.00.distributive.00	derivation		oewn-allocate__2.40.00..
+oewn-allocatable__5.00.00.distributive.00	derivation		oewn-allocate__2.40.00..
+oewn-allocate__2.40.00..	derivation		oewn-allocation__1.04.00..
+oewn-allocate__2.40.00..	derivation		oewn-allocation__1.04.01..
+oewn-allocate__2.40.00..	derivation		oewn-allocation__1.21.00..
+oewn-allocate__2.40.00..	derivation		oewn-allocator__1.18.00..
+oewn-allocate__2.40.00..	other	agent	oewn-allocator__1.18.00..
+oewn-allocate__2.40.00..	other	event	oewn-allocation__1.04.00..
+oewn-allocate__2.40.00..	other	event	oewn-allocation__1.04.01..
+oewn-allocate__2.40.00..	other	undergoer	oewn-allocation__1.21.00..
+oewn-allochthonous__3.00.00..	antonym		oewn-autochthonous__3.00.00..
+oewn-allogamous__3.01.00..	derivation		oewn-allogamy__1.11.00..
+oewn-allogamous__3.01.00..	pertainym		oewn-allogamy__1.11.00..
+oewn-allogamy__1.11.00..	antonym		oewn-autogamy__1.11.00..
+oewn-allogeneic__3.00.00..	antonym		oewn-xenogeneic__3.00.00..
+oewn-allographic__3.01.00..	pertainym		oewn-allograph__1.10.00..
+oewn-allomerism__1.11.00..	derivation		oewn-allomerous__3.01.00..
+oewn-allomerous__3.01.00..	pertainym		oewn-allomerism__1.11.00..
+oewn-allometric__3.01.00..	derivation		oewn-allometry__1.09.00..
+oewn-allometric__3.01.00..	pertainym		oewn-allometry__1.09.00..
+oewn-allomorphic__3.01.00..	pertainym		oewn-allomorph__1.10.00..
+oewn-allopathic__3.01.00..	antonym		oewn-homeopathic__3.01.00..
+oewn-allopathic__3.01.00..	pertainym		oewn-allopathy__1.04.00..
+oewn-allopathy__1.04.00..	antonym		oewn-homeopathy__1.04.00..
+oewn-allopatric__3.00.00..	antonym		oewn-sympatric__3.00.00..
+oewn-allopatric__3.00.00..	derivation		oewn-allopatry__1.26.00..
+oewn-allopatry__1.26.00..	antonym		oewn-sympatry__1.26.00..
+oewn-allophone__1.10.00..	derivation		oewn-allophonic__3.01.00..
+oewn-allophonic__3.01.00..	pertainym		oewn-allophone__1.10.00..
+oewn-allot__2.40.02..	derivation		oewn-allotment__1.04.00..
+oewn-allot__2.40.02..	other	event	oewn-allotment__1.04.00..
+oewn-allotrope__1.27.00..	derivation		oewn-allotropic__3.01.00..
+oewn-allotropic__3.01.00..	derivation		oewn-allotropism__1.19.00..
+oewn-allotropic__3.01.00..	derivation		oewn-allotropy__1.19.00..
+oewn-allotropic__3.01.00..	pertainym		oewn-allotropy__1.19.00..
+oewn-allotropical__3.01.00..	derivation		oewn-allotropism__1.19.00..
+oewn-allotropical__3.01.00..	derivation		oewn-allotropy__1.19.00..
+oewn-allotropical__3.01.00..	pertainym		oewn-allotropy__1.19.00..
+oewn-allow__2.31.00..	derivation		oewn-allowable__5.00.00.admissible.00
+oewn-allow__2.31.01..	derivation		oewn-allowance__1.21.00..
+oewn-allow__2.31.01..	other	undergoer	oewn-allowance__1.21.00..
+oewn-allow__2.32.00..	antonym		oewn-disallow__2.32.00..
+oewn-allow__2.32.00..	derivation		oewn-allowable__5.00.00.admissible.00
+oewn-allow__2.32.06..	derivation		oewn-allowance__1.04.00..
+oewn-allow__2.32.06..	derivation		oewn-allowance__1.07.00..
+oewn-allow__2.32.06..	other	event	oewn-allowance__1.04.00..
+oewn-allow__2.32.06..	other	event	oewn-allowance__1.07.00..
+oewn-allow__2.40.00..	antonym		oewn-deny__2.40.00..
+oewn-allow__2.42.07..	derivation		oewn-allowable__5.00.00.admissible.00
+oewn-allowance__1.21.00..	derivation		oewn-allowance__2.40.00..
+oewn-allowance__2.40.00..	other	result	oewn-allowance__1.21.00..
+oewn-allowance__2.40.00..	other	undergoer	oewn-allowance__1.21.00..
+oewn-alloy__1.27.00..	derivation		oewn-alloy__2.30.00..
+oewn-alloy__2.30.00..	other	material	oewn-alloy__1.27.00..
+oewn-alloy__2.30.00..	other	result	oewn-alloy__1.27.00..
+oewn-allude__2.32.00..	derivation		oewn-allusion__1.10.00..
+oewn-allude__2.32.00..	derivation		oewn-allusive__5.00.00.indirect.02
+oewn-allude__2.32.00..	other	event	oewn-allusion__1.10.00..
+oewn-allure__1.07.00..	derivation		oewn-allure__2.32.00..
+oewn-allure__2.32.00..	derivation		oewn-allurement__1.04.00..
+oewn-allure__2.32.00..	derivation		oewn-allurement__1.07.00..
+oewn-allure__2.32.00..	other	by_means_of	oewn-allure__1.07.00..
+oewn-allure__2.32.00..	other	by_means_of	oewn-allurement__1.07.00..
+oewn-allure__2.32.00..	other	event	oewn-allurement__1.04.00..
+oewn-allusive__5.00.00.indirect.02	derivation		oewn-allusiveness__1.07.00..
+oewn-alluvial__3.01.00..	derivation		oewn-alluvium__1.17.00..
+oewn-alluvial__3.01.00..	pertainym		oewn-alluvium__1.17.00..
+oewn-ally__1.14.00..	derivation		oewn-ally__2.41.00..
+oewn-ally__1.18.00..	derivation		oewn-ally__2.41.00..
+oewn-ally__2.41.00..	other	agent	oewn-ally__1.14.00..
+oewn-ally__2.41.00..	other	agent	oewn-ally__1.18.00..
+oewn-ally__2.41.00..	other	event	oewn-alliance__1.04.00..
+oewn-allyl__1.27.00..	derivation		oewn-allylic__3.01.00..
+oewn-allylic__3.01.00..	pertainym		oewn-allyl_group__1.27.00..
+oewn-alone__4.02.01..	pertainym		oewn-alone__5.00.00.unaccompanied.00
+oewn-alone__5.00.00.unaccompanied.00	derivation		oewn-aloneness__1.07.00..
+oewn-alone__5.00.00.unsocial.00	derivation		oewn-aloneness__1.07.00..
+oewn-aloof__4.02.00..	pertainym		oewn-aloof__5.00.00.reserved.01
+oewn-aloof__5.00.00.reserved.01	derivation		oewn-aloofness__1.07.00..
+oewn-alopecic__3.01.00..	pertainym		oewn-alopecia__1.26.00..
+oewn-alpha__1.11.00..	derivation		oewn-alpha__5.00.00.important.00
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetic__3.01.00..
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetical__3.00.00..
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetical__3.01.00..
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetise__2.30.00..
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetize__2.30.00..
+oewn-alphabet__1.10.00..	derivation		oewn-alphabetize__2.40.00..
+oewn-alphabetic__3.00.00..	antonym		oewn-analphabetic__3.00.00..
+oewn-alphabetic__3.01.00..	antonym		oewn-analphabetic__3.01.00..
+oewn-alphabetic__3.01.00..	pertainym		oewn-alphabet__1.10.00..
+oewn-alphabetical__3.01.00..	pertainym		oewn-alphabet__1.10.00..
+oewn-alphabetically__4.02.00..	pertainym		oewn-alphabetical__3.01.00..
+oewn-alphabetisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alphabetisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alphabetise__2.30.00..	derivation		oewn-alphabetiser__1.18.00..
+oewn-alphabetise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-alphabetise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-alphabetise__2.30.00..	other	agent	oewn-alphabetiser__1.18.00..
+oewn-alphabetization__1.04.00..	derivation		oewn-alphabetize__2.30.00..
+oewn-alphabetization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alphabetize__2.30.00..	derivation		oewn-alphabetizer__1.18.00..
+oewn-alphabetize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-alphabetize__2.30.00..	other	agent	oewn-alphabetizer__1.18.00..
+oewn-alphabetize__2.30.00..	other	event	oewn-alphabetization__1.04.00..
+oewn-alphameric__3.01.00..	pertainym		oewn-alphanumerics__1.10.00..
+oewn-alphamerical__3.01.00..	derivation		oewn-alphanumerics__1.10.00..
+oewn-alphamerical__3.01.00..	pertainym		oewn-alphanumerics__1.10.00..
+oewn-alphanumeric__3.01.00..	pertainym		oewn-alphanumerics__1.10.00..
+oewn-alphanumerical__3.01.00..	derivation		oewn-alphanumerics__1.10.00..
+oewn-alphanumerical__3.01.00..	pertainym		oewn-alphanumerics__1.10.00..
+oewn-alpine__3.01.01..	pertainym		oewn-alp__1.17.00..
+oewn-alpinism__1.04.00..	derivation		oewn-alpinist__1.18.00..
+oewn-alsatian__1.18.00..	derivation		oewn-alsatian__3.01.00..
+oewn-altace__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-altaic__1.10.00..	derivation		oewn-altaic__3.01.00..
+oewn-altaic__1.18.00..	derivation		oewn-altaic__3.01.00..
+oewn-altaic__3.01.00..	pertainym		oewn-altaic__1.10.00..
+oewn-alter__2.30.01..	derivation		oewn-alterable__3.00.00..
+oewn-alter__2.30.01..	derivation		oewn-alteration__1.04.01..
+oewn-alter__2.30.01..	derivation		oewn-alteration__1.11.00..
+oewn-alter__2.30.01..	other	event	oewn-alteration__1.04.01..
+oewn-alter__2.30.01..	other	event	oewn-alteration__1.11.00..
+oewn-alter__2.36.00..	derivation		oewn-alterable__3.00.00..
+oewn-alter__2.36.00..	derivation		oewn-alteration__1.04.01..
+oewn-alter__2.36.00..	other	event	oewn-alteration__1.04.01..
+oewn-alterability__1.07.00..	antonym		oewn-unalterability__1.07.00..
+oewn-alterability__1.07.00..	derivation		oewn-alterable__3.00.00..
+oewn-alterable__3.00.00..	antonym		oewn-unalterable__3.00.00..
+oewn-altered__3.00.00..	antonym		oewn-unaltered__3.00.00..
+oewn-alternate__1.18.00..	derivation		oewn-alternate__2.31.00..
+oewn-alternate__1.18.00..	derivation		oewn-alternate__2.41.00..
+oewn-alternate__1.18.00..	derivation		oewn-alternate__5.00.00.secondary.01
+oewn-alternate__2.30.00..	derivation		oewn-alternation__1.04.00..
+oewn-alternate__2.30.00..	other	event	oewn-alternation__1.04.00..
+oewn-alternate__2.30.01..	derivation		oewn-alternation__1.04.00..
+oewn-alternate__2.30.01..	other	event	oewn-alternation__1.04.00..
+oewn-alternate__2.31.00..	other	agent	oewn-alternate__1.18.00..
+oewn-alternate__2.41.00..	other	agent	oewn-alternate__1.18.00..
+oewn-alternate__3.00.00..	antonym		oewn-opposite__3.00.00..
+oewn-alternately__4.02.00..	pertainym		oewn-alternate__5.00.01.cyclic.01
+oewn-alternating__3.00.00..	antonym		oewn-direct__3.00.01..
+oewn-alternating_current__1.19.00..	antonym		oewn-direct_current__1.19.00..
+oewn-alternative__1.09.00..	derivation		oewn-alternative__5.00.00.disjunctive.00
+oewn-alternatively__4.02.00..	pertainym		oewn-alternative__5.00.00.disjunctive.00
+oewn-altitude__1.07.00..	derivation		oewn-altitudinal__3.01.00..
+oewn-altitude__1.07.00..	derivation		oewn-altitudinous__5.00.00.high.01
+oewn-altitude__1.24.00..	derivation		oewn-altitudinal__3.01.00..
+oewn-altitude__1.25.00..	derivation		oewn-altitudinal__3.01.00..
+oewn-altitudinal__3.01.00..	pertainym		oewn-altitude__1.07.00..
+oewn-alto__1.07.00..	derivation		oewn-alto__5.00.03.low.03
+oewn-alto__1.07.01..	derivation		oewn-alto__5.00.01.high.03
+oewn-alto__1.10.00..	derivation		oewn-alto__5.00.03.low.03
+oewn-alto__1.10.01..	derivation		oewn-alto__5.00.02.high.03
+oewn-altricial__3.00.00..	antonym		oewn-precocial__3.00.00..
+oewn-altruism__1.07.00..	antonym		oewn-egoism__1.07.00..
+oewn-altruism__1.07.00..	derivation		oewn-altruist__1.18.00..
+oewn-altruist__1.18.00..	derivation		oewn-altruistic__3.00.00..
+oewn-altruistic__3.00.00..	antonym		oewn-egoistic__3.00.01..
+oewn-altruistically__4.02.00..	pertainym		oewn-altruistic__3.00.00..
+oewn-alula__1.05.00..	derivation		oewn-alular__3.01.00..
+oewn-alula__1.05.02..	derivation		oewn-alular__3.01.00..
+oewn-alular__3.01.00..	pertainym		oewn-alula__1.05.00..
+oewn-aluminise__2.35.00..	derivation		oewn-aluminum__1.27.00..
+oewn-aluminise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-aluminise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-aluminium__1.27.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-aluminize__2.35.00..	derivation		oewn-aluminum__1.27.00..
+oewn-aluminize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aluminous__3.01.00..	derivation		oewn-aluminum__1.27.00..
+oewn-aluminous__3.01.00..	pertainym		oewn-aluminum__1.27.00..
+oewn-aluminum__1.27.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-alupent__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-alveolar__1.10.00..	derivation		oewn-alveolar__3.01.02..
+oewn-alveolar__3.01.00..	pertainym		oewn-alveolus__1.08.00..
+oewn-alveolar__3.01.02..	pertainym		oewn-alveolar_ridge__1.08.00..
+oewn-alveolate__5.00.00.cellular.00	derivation		oewn-alveolus__1.08.00..
+oewn-alvine__3.01.00..	pertainym		oewn-intestine__1.08.00..

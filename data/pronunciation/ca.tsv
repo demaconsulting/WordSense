@@ -1,0 +1,854 @@
+entry_id	seq	variety	text
+oewn-CABG-n	1		ˈkæbɪdʒ
+oewn-CAD-n	1		kæd
+oewn-Cabernet_Sauvignon-n	1		kæbə(ɹ)ˈneɪ səʊvɪˈnjɒn
+oewn-Caddo-n	1		ˈkædəʊ
+oewn-Caesaropapism-n	1		ˌsiːzəɹəʊˈpeɪpɪzəm
+oewn-Cajun-n	1		ˈkeɪdʒən
+oewn-Calvinist-a	1		ˈkælvənɪst
+oewn-Calvinist-n	1		ˈkælvənɪst
+oewn-Cambrian-a	1	GB	ˈkam.bɹɪ.ən
+oewn-Cambrian-a	2	US	ˈkæm.bɹi.ən
+oewn-Cambrian-a	3	CA	ˈkeɪm.bɹi.ən
+oewn-Cambrian-n	1	GB	ˈkam.bɹɪ.ən
+oewn-Cambrian-n	2	US	ˈkæm.bɹi.ən
+oewn-Cambrian-n	3	CA	ˈkeɪm.bɹi.ən
+oewn-Camembert-n	1	GB	ˈkæmɒmˌbeə(ɹ)
+oewn-Camembert-n	2	AU	ˈkæməmˌbeː
+oewn-Canaanite-n	1		ˈkeɪnənaɪt
+oewn-Cancer-n	1	GB	ˈkænsə
+oewn-Cancer-n	2	AU	ˈkæːnsə
+oewn-Cancer-n	3	US	ˈkænsɚ
+oewn-Candlemas-n	1		ˈkæn.dəl.məs
+oewn-Cantabrigian-a	1		kæntəˈbɹɪd͡ʒɪən
+oewn-Cantabrigian-n	1		kæntəˈbɹɪd͡ʒɪən
+oewn-Cantonese-n	1	GB	kæn.təˈniːz
+oewn-Canuck-n	1		kə.ˈnʌk
+oewn-Cappadocian-a	1		kæpəˈdəʊʃi.ən
+oewn-Capricorn-n	1	GB	ˈkæpɹɪkɔːn
+oewn-Capricorn-n	2	US	ˈkæpɹɪkɔːɹn
+oewn-Carbonarism-n	1	GB	ˌkɑːbəˈnɑːɹɪzəm
+oewn-Carbonarism-n	2	US	ˌkɑɹbəˈnɑɹɪzəm
+oewn-Cardigan-n	1	GB	ˈkɑːdɪɡən
+oewn-Caroline-a	1	GB	ˈkæ.ɹəˌlaɪn
+oewn-Caroline-a	2	US	ˈkɛɹ.əˌlaɪn
+oewn-Cartesian-a	1	GB	kɑːɹ ˈtiːziən
+oewn-Cartesian-a	2	US	kɑɹˈti.ʒən
+oewn-Cartesian-n	1	GB	kɑːɹ ˈtiːziən
+oewn-Cartesian-n	2	US	kɑɹˈti.ʒən
+oewn-Carthusian-a	1	US	kɑɹˈθuʒən
+oewn-Carthusian-a	2	GB	kɑːˈθjuːzi.ən
+oewn-Carthusian-n	1	US	kɑɹˈθuʒən
+oewn-Carthusian-n	2	GB	kɑːˈθjuːzi.ən
+oewn-Casanova-n	1		kæsəˈnoʊvə
+oewn-Castilian-n	1		kəˈstɪljən
+oewn-Catalan-a	1		ˈkæ.tə.ˌlæn
+oewn-Catalan-n	1		ˈkæ.tə.ˌlæn
+oewn-Caterpillar-n	1	GB	ˈkætəˌpɪlə
+oewn-Caterpillar-n	2	US	ˈkætɚˌpɪlɚ
+oewn-Catholic-a	1	GB	ˈkaθ(ə)lɪk
+oewn-Catholic-a	2	US	ˈkæθ(ə)lɪk
+oewn-Catholic-a	3		ˈkæθ(ə)lɪk
+oewn-Catholic-n	1		ˈkæθ(ə)lɪk
+oewn-Catholicism-n	1		kəˈθɒlɪsɪzm
+oewn-Catholicos-n	1	GB	kəˈθɒlɪkəs
+oewn-Caucasian-a	1	GB	kɔːˈkeɪ.ʒən
+oewn-Caucasian-a	2	US	kɔːˈkeɪ.ʒən
+oewn-Caucasian-n	1	GB	kɔːˈkeɪ.ʒən
+oewn-Caucasian-n	2	US	kɔːˈkeɪ.ʒən
+oewn-Cavalier-n	1		ˌkævəˈlɪəɹ
+oewn-Cayuga-n	1		kəˈjuːɡə
+oewn-cabal-n	1		kəˈbɑːl
+oewn-cabal-v	1		kəˈbɑːl
+oewn-cabana-n	1		kəˈbænə
+oewn-cabaret-n	1		kæbəˈreɪ
+oewn-cabby-n	1		ˈkæ.bi
+oewn-caber-n	1	GB	ˈkeɪbə
+oewn-caber-n	2	US	ˈkeɪbɚ
+oewn-cabin-n	1		ˈkæbɪn
+oewn-cabin-v	1		ˈkæbɪn
+oewn-cabinet-n	1	GB	ˈkæ.bɪ.nɪt
+oewn-cabinet-n	2	US	ˈkæ.bɪ.nɪt
+oewn-cable-n	1		keɪ.bl
+oewn-cable-v	1		keɪ.bl
+oewn-caboose-n	1		kəˈbuːs
+oewn-cabotage-n	1		ˈkæbətɪdʒ
+oewn-cabriolet-n	1		kæ.bɹi.əˈleɪ
+oewn-cacao-n	1	GB	kəˈkɑːəʊ̯
+oewn-cacao-n	2	US	kəˈkaʊ̯
+oewn-cachalot-n	1	GB	ˈkaʃəlɒt
+oewn-cachalot-n	2	US	ˈkæ.ʃə.ˌlɑt
+oewn-cache-n	1	US	kæʃ
+oewn-cache-n	2	AU	kæɪʃ
+oewn-cache-v	1	US	kæʃ
+oewn-cache-v	2	AU	kæɪʃ
+oewn-cachectic-a	1		kəˈkɛktɪk
+oewn-cachet-n	1		kæˈʃeɪ
+oewn-cachexia-n	1	GB	kəˈkɛksɪə
+oewn-cachexia-n	2	US	kəˈkɛksiə
+oewn-cachinnate-v	1		ˈkækɪneɪt
+oewn-cachinnation-n	1		kakɪˈneɪʃ(ə)n
+oewn-cachou-n	1		ˈkæʃuː
+oewn-cackle-n	1		ˈkækəl
+oewn-cackle-v	1		ˈkækəl
+oewn-cacodaemon-n	1		kækəˈdiːmən
+oewn-cacodemon-n	1		kækəˈdiːmən
+oewn-cacoethes-n	1		ˌkakəʊˈiːθiːz
+oewn-cacogenic-a	1		ˌkækəˈdʒɛnɪk
+oewn-cacography-n	1	GB	kaˈkɒɡɹəfi
+oewn-cacophonous-a	1	US	kəˈkɑfənəs
+oewn-cacophonous-a	2	GB	kəˈkɒfənəs
+oewn-cacophony-n	1	GB	kəˈkɒfəni
+oewn-cacophony-n	2	US	kəˈkɑfəni
+oewn-cactus-n	1		ˈkæktəs
+oewn-cad-n	1		kæd
+oewn-cadaver-n	1	GB	kəˈdæv.ə(ɹ)
+oewn-cadaver-n	2	US	kəˈdævɚ
+oewn-cadaveric-a	1	GB	kadəˈvɛɹɪk
+oewn-cadaveric-a	2	US	kəˈdavəɹɪk
+oewn-cadence-n	1		ˈkeɪ.dn̩s
+oewn-cadet-n	1		kəˈdɛt
+oewn-cadge-v	1		kædʒ
+oewn-cadger-n	1		ˈkædʒə(ɹ)
+oewn-cadmium-n	1		ˈkædmiəm
+oewn-cadre-n	1	GB	ˈkɑː.də
+oewn-cadre-n	2	US	ˈkɑ.dɹeɪ
+oewn-caduceus-n	1	US	kəˈdu.si.əs
+oewn-caducous-a	1		kəˈdjuːkəs
+oewn-caecilian-n	1	GB	sɪˈsɪlɪən
+oewn-caecum-n	1		ˈsiː.kəm
+oewn-caesium-n	1		ˈsiːzi.əm
+oewn-caesura-n	1	GB	sɪˈzjʊəɹə
+oewn-caesura-n	2	US	sɪˈʒʊɹə
+oewn-cafe-n	1	US	ˌkæˈfeɪ
+oewn-cafe-n	2	GB	ˈkæfeɪ
+oewn-cafe-n	3	ZA	kæˈfiː
+oewn-caff-n	1	GB	kæf
+oewn-caffeine-n	1		ˈkæfiːn
+oewn-cage-n	1		keɪdʒ
+oewn-cage-v	1		keɪdʒ
+oewn-cagey-a	1		ˈkeɪdʒi
+oewn-cagoule-n	1	GB	kəˈɡuːl
+oewn-cahoot-n	1		kəˈhuːt
+oewn-caiman-n	1		ˈkeɪ.mən
+oewn-cairn-n	1	GB	kɛən
+oewn-cairn-n	2	US	kɛəɹn
+oewn-cairned-a	1	GB	kɛɜːnt
+oewn-caisson-n	1	GB	ˈkeɪs(ə)n
+oewn-caitiff-a	1		ˈkeɪtɪf
+oewn-caitiff-n	1		ˈkeɪtɪf
+oewn-cajole-v	1	GB	kəˈdʒəʊl
+oewn-cajole-v	2	US	kəˈdʒoʊl
+oewn-cake-n	1		keɪk
+oewn-cake-v	1		keɪk
+oewn-cakehole-n	1		keɪkhoʊl
+oewn-cakewalk-n	1	US	ˈkeɪk.wɔk
+oewn-cakewalk-v	1	US	ˈkeɪk.wɔk
+oewn-calabash-n	1	GB	ˈkaləbaʃ
+oewn-calabash-n	2	US	ˈkæləˌbæʃ
+oewn-calamari-n	1		kæləˈmɑːɹi
+oewn-calamitous-a	1		kəˈlæmɪtəs
+oewn-calamity-n	1		kəˈlæmɪti
+oewn-calamondin-n	1		ˌkæləˈmɒndɪn
+oewn-calced-a	1		ˈkælst
+oewn-calcification-n	1		ˌkælsɪfɪˈkeɪʃən
+oewn-calcify-v	1	US	ˈkælsɪfaɪ
+oewn-calcine-v	1		ˈkælsɪn
+oewn-calcite-n	1		ˈkæl.saɪt
+oewn-calcitonin-n	1	GB	ˌkæl.sɪˈtəʊ.nɪn
+oewn-calcitonin-n	2	US	ˌkæl.sɪˈtoʊ.nɪn
+oewn-calcium-n	1	US	ˈkælsi.əm
+oewn-calculate-v	1		ˈkælkjʊleɪt
+oewn-calculated-a	1		ˈkælkjʊleɪtɪd
+oewn-calculation-n	1	GB	kælkjuˈleɪʃən
+oewn-calculation-n	2	US	kælkjəˈleɪʃən
+oewn-calculator-n	1		ˈkæl.kjə.leɪ.tə(ɹ)
+oewn-calculus-n	1	GB	ˈkæl.kjʊ.ləs
+oewn-calculus-n	2	US	ˈkæl.kjə.ləs
+oewn-caldera-n	1	GB	kælˈdɛə.ɹə
+oewn-caldera-n	2	US	kælˈdɛɹ.ə
+oewn-calendar-n	1	GB	ˈkæl.ən.də
+oewn-calendar-n	2	US	ˈkæl.ən.dɚ
+oewn-calendar-v	1	GB	ˈkæl.ən.də
+oewn-calendar-v	2	US	ˈkæl.ən.dɚ
+oewn-calendrical-a	1		kəˈlɛndɹɪkl̩
+oewn-caliber-n	1	GB	ˈkæl.ɪ.bə(ɹ)
+oewn-caliber-n	2	US	ˈkæl.ɪ.bɚ
+oewn-calibrate-v	1		ˈkælɪbɹeɪt
+oewn-calibration-n	1	US	kælɪˈbɹeɪʃən
+oewn-calibre-n	1	US	ˈkæl.ə.bɚ
+oewn-caliche-n	1		kəˈlitʃi
+oewn-calico-a	1		ˈkælɪkəʊ
+oewn-calico-n	1		ˈkælɪkəʊ
+oewn-californium-n	1	US	ˌkælɪˈfɔɹniəm
+oewn-californium-n	2	GB	ˌkælɪˈfɔːniəm
+oewn-caliginous-a	1	GB	kəˈlɪdʒɪnəs
+oewn-caliginous-a	2	US	kəˈlɪdʒənəs
+oewn-caliper-n	1	US	ˈkælɪpɚ
+oewn-caliph-n	1		ˈkeɪ̪lɪf
+oewn-caliphate-n	1		ˈkælɪfeɪt
+oewn-calisthenics-n	1	GB	ˌkæl.ɪsˈθɛn.ɪks
+oewn-calk-n	1		kælk
+oewn-calk-v	1		kælk
+oewn-call-n	1	GB	kɔːl
+oewn-call-n	2	US	kɔl
+oewn-call-v	1	GB	kɔːl
+oewn-call-v	2	US	kɔl
+oewn-caller-a	1	GB	ˈkɔːlə
+oewn-caller-a	2	US	ˈkɔlɚ
+oewn-caller-n	1	GB	ˈkɔːlə
+oewn-caller-n	2	US	ˈkɔlɚ
+oewn-calligraph-v	1		ˈkælɪɡɹæf
+oewn-calligrapher-n	1		kəˈlɪɡɹəfə(ɹ)
+oewn-calligraphic-a	1		ˌkælɪˈɡɹæfɪk
+oewn-calligraphy-n	1		kəˈlɪɡɹəfi
+oewn-calling-n	1		ˈkɔːlɪŋ
+oewn-calliope-n	1		kəˈlaɪə.pi
+oewn-callipygian-a	1	US	ˌkæ.ləˈpɪ.dʒi.ən
+oewn-callipygian-a	2	CA	ˌkælɪˈpɪdʒi.ən
+oewn-callipygous-a	1	GB	kalɪˈpɪdʒəs
+oewn-callipygous-a	2	US	ˌkæl.ɪˈpɪ.dʒəs
+oewn-callithump-n	1		ˈkæ.lɪ.θʌmp
+oewn-callous-a	1		ˈkæləs
+oewn-callow-a	1	US	ˈkæloʊ
+oewn-callow-a	2	GB	ˈkaləʊ
+oewn-calm-a	1	GB	kɑːm
+oewn-calm-a	2	US	kɑm
+oewn-calm-n	1	GB	kɑːm
+oewn-calm-n	2	US	kɑm
+oewn-calm-v	1	GB	kɑːm
+oewn-calm-v	2	US	kɑm
+oewn-calmly-r	1	GB	ˈkɑː(ɹ)m.li
+oewn-calmness-n	1	US	ˈkɑ(l)mnəs
+oewn-calmness-n	2	GB	ˈkɑːmnəs
+oewn-caloric-a	1		kəˈlɒɹɪk
+oewn-calorie-n	1		ˈkæləɹi
+oewn-calque-n	1		kælk
+oewn-caltrop-n	1	US	ˈkæltɹəp
+oewn-caltrop-n	2	GB	ˈkɔːltɹəp
+oewn-calumet-n	1		ˈkæljʊmɛt
+oewn-calumniate-v	1		kəˈlʌmni.eɪt
+oewn-calumniatory-a	1	GB	kəˈlʌmnɪətəɹi
+oewn-calumniatory-a	2	US	kəˈlʌmnjəˌtɔɹi
+oewn-calumny-n	1		ˈkæləmni
+oewn-calve-v	1	GB	kɑːv
+oewn-calve-v	2	US	kæv
+oewn-calx-n	1		kælks
+oewn-calyculus-n	1		kəˈlɪkjələs
+oewn-calyx-n	1		ˈkæ.lɪks
+oewn-camaraderie-n	1	US	ˌkɑməˈɹɑdəɹi
+oewn-camaraderie-n	2	GB	ˌkæməˈɹɑːdəɹi
+oewn-camber-n	1	GB	ˈkæm.bə
+oewn-camber-n	2	US	ˈkæm.bɚ
+oewn-camber-v	1	GB	ˈkæm.bə
+oewn-camber-v	2	US	ˈkæm.bɚ
+oewn-cambium-n	1	GB	ˈkambɪəm
+oewn-cambium-n	2	US	ˈkeə̯m.biˌəm
+oewn-camcorder-n	1		ˈkæmˌkɔɹdɚ
+oewn-camellia-n	1		kəˈmɛlɪ.ə
+oewn-camelopard-n	1	GB	ˈkæ.mə.lə.pɑːd
+oewn-camelopard-n	2	US	kəˈmɛ.lə.pɑɹd
+oewn-cameo-n	1	GB	ˈkæm.iː.əʊ
+oewn-cameo-n	2	US	ˈkæm.i.oʊ
+oewn-camera-n	1		ˈkæməɹə
+oewn-camera_obscura-n	1	GB	ˈkam(ə)ɹə əbˌskjʊəɹə
+oewn-camera_obscura-n	2	US	ˈkæm(ə)ɹə əbˌskjʊɹə
+oewn-camion-n	1	GB	ˈkamɪən
+oewn-camisole-n	1	GB	ˈkamɪsəʊl
+oewn-camo-n	1	US	ˈkæ.moʊ
+oewn-camomile-n	1	GB	ˈkæ.məˌmaɪl
+oewn-camomile-n	2	US	ˈkæ.məˌmaɪl
+oewn-camouflage-n	1		ˈkæ.məˌflɑːʒ
+oewn-camouflage-v	1		ˈkæ.məˌflɑːʒ
+oewn-campaign-n	1		kæmˈpeɪn
+oewn-campaign-v	1		kæmˈpeɪn
+oewn-campanile-n	1	GB	kæmpəˈniːleɪ
+oewn-campanile-n	2	US	ˌkæmpəˈnili
+oewn-camper-n	1		ˈkæmpə(ɹ)
+oewn-campestral-a	1		kæmˈpɛstɹəl
+oewn-camphor-n	1	US	ˈkæmfɚ
+oewn-camphor-n	2	GB	ˈkæmfə
+oewn-camping-n	1		ˈkæmp.ɪŋ
+oewn-campion-n	1		ˈkæmpiən
+oewn-campus-n	1	GB	ˈkæmpəs
+oewn-campus-n	2	US	ˈkæmpəs
+oewn-campy-a	1	US	ˈkæmpi
+oewn-can-n	1		ˈkæn
+oewn-can-v	1		ˈkæn
+oewn-canal-n	1		kəˈnæl
+oewn-canal-v	1		kəˈnæl
+oewn-canaliculus-n	1	US	ˌkænəˈlɪkjələs
+oewn-canalisation-n	1		ˌkænələˈzeɪʃən
+oewn-canalise-v	1		ˈkæn.ə.laɪz
+oewn-canard-n	1	US	kəˈnɑɹd
+oewn-canard-n	2	GB	kəˈnɑːd
+oewn-canary-a	1	GB	kəˈnɛəɹi
+oewn-canary-a	2	US	kəˈnɛəɹi
+oewn-canary-n	1	GB	kəˈnɛəɹi
+oewn-canary-n	2	US	kəˈnɛəɹi
+oewn-canasta-n	1		kəˈnæstə
+oewn-cancel-n	1		ˈkænsl̩
+oewn-cancel-v	1		ˈkænsl̩
+oewn-cancellation-n	1	US	kænsəˈleɪʃən
+oewn-cancer-n	1	GB	ˈkænsə
+oewn-cancer-n	2	AU	ˈkæːnsə
+oewn-cancer-n	3	US	ˈkænsɚ
+oewn-cancerous-a	1		kænsəɹəs
+oewn-candela-n	1	GB	kænˈdɛlə
+oewn-candela-n	2	US	kænˈdēlə
+oewn-candelabrum-n	1	GB	kændɪˈlɑːbɹəm
+oewn-candelabrum-n	2		kændɪˈleɪbɹəm
+oewn-candid-a	1		ˈkæn.dɪd
+oewn-candidate-n	1	GB	ˈkæn.dɪdət
+oewn-candidate-n	2	US	ˈkæn.dɪ.deɪt
+oewn-candidiasis-n	1		ˌkændɪˈdaɪəsɪs
+oewn-candidly-r	1		ˈkændɪdli
+oewn-candied-a	1	GB	ˈkæn.diːd
+oewn-candle-n	1		ˈkændəl
+oewn-candle-v	1		ˈkændəl
+oewn-candlelight-n	1		ˈkændllaɪt
+oewn-candlestick-n	1		ˈkændəlˌstɪk
+oewn-candor-n	1	GB	ˈkæn.də(ɹ)
+oewn-candor-n	2	US	ˈkæn.dɚ
+oewn-candy_cane-n	1		ˈkændi ˌkeɪn
+oewn-canella-n	1		kəˈnɛlə
+oewn-canescent-a	1	GB	kəˈnɛsənt
+oewn-cangue-n	1		kæŋ
+oewn-canicule-n	1		ˈkanɪkjuːl
+oewn-canid-n	1		ˈkeɪnəd
+oewn-canine-a	1	GB	ˈkeɪnaɪn
+oewn-canine-a	2	US	ˈkeɪˌnaɪn
+oewn-canine-n	1	GB	ˈkeɪnaɪn
+oewn-canine-n	2	US	ˈkeɪˌnaɪn
+oewn-caning-n	1		ˈkeɪnɪŋ
+oewn-canistel-n	1		ˈkænɪstəl
+oewn-canister-n	1	US	ˈkænɪstɚ
+oewn-cannabis-n	1		ˈkænəbɪs
+oewn-canned-a	1		kænd
+oewn-cannibal-n	1		ˈkænɪbəl
+oewn-cannibalistic-a	1	GB	kan.ɪ.bəˈlɪs.tɪk
+oewn-cannibalistic-a	2	US	kæn.ə.bəˈlɪs.tɪk
+oewn-cannon-n	1		ˈkæn.ən
+oewn-cannon-v	1		ˈkæn.ən
+oewn-cannonade-n	1		ˌkænəˈneɪd
+oewn-cannonade-v	1		ˌkænəˈneɪd
+oewn-cannonball-n	1		ˈkænənˌbɔːl
+oewn-cannula-n	1		ˈkænjʊlə
+oewn-canoe-n	1		kəˈnuː
+oewn-canoe-v	1		kəˈnuː
+oewn-canola-n	1		kəˈnoʊlə
+oewn-canon-n	1		ˈkæn.ən
+oewn-canonical-a	1	GB	kə.ˈnɒn.ɪ.kl̩
+oewn-canonize-v	1	GB	ˈkænənaɪz
+oewn-canonize-v	2	US	ˈkænəˌnaɪz
+oewn-canoodle-v	1		kəˈnuːdl̩
+oewn-canopy-n	1	GB	ˈkæ.nə.pi
+oewn-canopy-v	1	GB	ˈkæ.nə.pi
+oewn-cantaloupe-n	1	GB	ˈkæn.tə.luːp
+oewn-cantaloupe-n	2	US	ˈkæn.tə.loʊp
+oewn-cantankerous-a	1		kænˈtæŋkəɹəs
+oewn-cantata-n	1		kənˈtɑːtə
+oewn-canteen-n	1		kænˈtiːn
+oewn-canthus-n	1		ˈkænθəs
+oewn-cantilever-n	1	GB	ˈkantɪliːvə
+oewn-cantilever-v	1	GB	ˈkantɪliːvə
+oewn-cantle-n	1	GB	ˈkantəl
+oewn-cantle-n	2	US	ˈkæntəl
+oewn-canto-n	1	GB	ˈkæntəʊ
+oewn-canto-n	2	US	ˈkæntoʊ
+oewn-canton-n	1		ˈkæntn̩
+oewn-canton-v	1		ˈkæntn̩
+oewn-cantonment-n	1	GB	kanˈtuːnmənt
+oewn-cantor-n	1		ˈkæntɔː(ɹ)
+oewn-cantus_firmus-n	1	US	ˈkæntəs ˈfɝməs
+oewn-cantus_firmus-n	2	GB	ˈkæntəs ˈfɜːməs
+oewn-canvas-n	1		ˈkæn.vəs
+oewn-canvas-v	1		ˈkæn.vəs
+oewn-canvasser-n	1	GB	ˈkæn.vəs.ə(ɹ)
+oewn-canyon-n	1		ˈkænjən
+oewn-caoutchouc-n	1		ˈkaʊtʃʊk
+oewn-capability-n	1		keɪpəˈbɪləti
+oewn-capable-a	1		ˈkeɪpəbl̩
+oewn-capacious-a	1		kəˈpeɪʃəs
+oewn-capacitate-v	1		kəˈpæsɪteɪt
+oewn-capacity-n	1		kəˈpæsɪti
+oewn-capercaillie-n	1	GB	kæpəˈkeɪli
+oewn-capercaillie-n	2	US	kæpɚˈkeɪli
+oewn-capful-n	1		ˈkæpfʊl
+oewn-capillary-a	1	CA	kəˈpɪ.lə.ɹi
+oewn-capillary-a	2	US	ˈkæpɪˌlɛɹi
+oewn-capillary-n	1	CA	kəˈpɪ.lə.ɹi
+oewn-capillary-n	2	US	ˈkæpɪˌlɛɹi
+oewn-capital-a	1		ˈkæ.pɪ.təl
+oewn-capital-n	1		ˈkæ.pɪ.təl
+oewn-capitalism-n	1	GB	ˈkapɪt(ə)lɪz(ə)m
+oewn-capitalism-n	2	US	ˈkæpɪ̈tl̩ˌɪzm̩
+oewn-capitalize-v	1		ˈkæpətəˌlaɪz
+oewn-capitation-n	1		kapɪˈteɪʃən
+oewn-capitol-n	1		ˈkæp.ɪ.təl
+oewn-capitulate-v	1	GB	kəˈpɪ.tjʊ.leɪt
+oewn-capitulate-v	2	US	kəˈpɪt͡ʃ.jʊ.leɪt
+oewn-capon-n	1		ˈkeɪpən
+oewn-cappuccino-n	1	US	ˌkæpəˈtʃinoʊ
+oewn-cappuccino-n	2	GB	ˌkæpəˈtʃiːnəʊ
+oewn-capriccio-n	1		kəˈpriːchoʊ
+oewn-caprice-n	1		kəˈpɹis
+oewn-capricious-a	1		kəˈpɹɪʃəs
+oewn-caprifig-n	1		ˈkæpɹəˌfɪɡ
+oewn-capsaicin-n	1		kæpˈseɪəsən
+oewn-capsicum-n	1		ˈkæpsɪkəm
+oewn-capsize-v	1		kæpˈsaɪz
+oewn-capstan-n	1		ˈkap.stən
+oewn-capsule-n	1	US	ˈkæps(ə)l
+oewn-capsule-v	1	US	ˈkæps(ə)l
+oewn-captain-n	1	GB	ˈkæp.tɪn
+oewn-captain-n	2	US	ˈkæp.tən
+oewn-captain-v	1	GB	ˈkæp.tɪn
+oewn-captain-v	2	US	ˈkæp.tən
+oewn-caption-n	1		ˈkæp.ʃən
+oewn-caption-v	1		ˈkæp.ʃən
+oewn-captious-a	1		ˈkæpʃəs
+oewn-captivate-v	1	GB	ˈkæptɪveɪt
+oewn-captivate-v	2	US	ˈkæptəˌveɪt
+oewn-captivating-a	1		ˈkæptɪveɪtɪŋ
+oewn-captive-a	1		ˈkæptɪv
+oewn-captive-n	1		ˈkæptɪv
+oewn-captivity-n	1		kæpˈtɪvɪti
+oewn-captopril-n	1	US	ˈkæp.təˌpɹɪl
+oewn-capture-n	1	US	ˈkæp.t͡ʃɚ
+oewn-capture-n	2	GB	ˈkæp.t͡ʃə
+oewn-capture-v	1	US	ˈkæp.t͡ʃɚ
+oewn-capture-v	2	GB	ˈkæp.t͡ʃə
+oewn-capuchin-n	1		ˈkæpət͡ʃɪn
+oewn-caput-n	1		ˈkæp.ət
+oewn-capybara-n	1	GB	kapɪˈbɑːɹə
+oewn-capybara-n	2	US	ˌkæpiˈbɛɹə
+oewn-car_park-n	1	GB	ˈkɑːpɑːk
+oewn-car_park-n	2	US	ˈkɑɹ ˌpɑːɹk
+oewn-carabao-n	1		kæɹəˈbeɪəʊ
+oewn-carabiner-n	1	CA	ˈkɛ.ɹəˌbi.nɚ
+oewn-caracal-n	1	GB	ˈkaɹəkal
+oewn-caracal-n	2	US	ˈkæɹəkæl
+oewn-caracara-n	1		ˈkæ.ɹəˌkɑ.ɹə
+oewn-caracole-v	1		ˈkæɹəkəʊl
+oewn-carafe-n	1		kəˈɹæf
+oewn-caragana-n	1		ˌkæɹəˈɡɑːnə
+oewn-caramel-a	1	US	ˈkæ.ɹə.məl
+oewn-caramel-n	1	US	ˈkæ.ɹə.məl
+oewn-carapace-n	1		ˈkɛɹ.əˌpeɪs
+oewn-carat-n	1		ˈkæɹ.ət
+oewn-caravan-n	1		ˈkæɹəvæn
+oewn-caravan-v	1		ˈkæɹəvæn
+oewn-caravanserai-n	1	GB	kaɹəˈvansəɹʌɪ
+oewn-caravanserai-n	2	US	kɑɹəˈvænsəɹaɪ
+oewn-caraway-n	1		ˈkæɹəˌweɪ
+oewn-carbine-n	1		ˈkɑɹbiːn
+oewn-carbohydrate-n	1	GB	kɑːbəʊˈhaɪdɹeɪt
+oewn-carbohydrate-n	2	US	kɑːɹboʊˈhaɪdɹeɪt
+oewn-carbon-n	1	US	ˈkɑɹbən
+oewn-carbon-n	2	GB	ˈkɑːbən
+oewn-carbonara-n	1	GB	ˌkɑːbəˈnɑːɹə
+oewn-carbonara-n	2	US	ˌkɑɹbəˈnɑɹə
+oewn-carbonate-n	1	GB	ˈkɑː(ɹ).bə.nət
+oewn-carbonate-n	2	US	ˈkɑɹbənət
+oewn-carbonate-v	1	GB	ˈkɑː(ɹ).bə.nət
+oewn-carbonate-v	2	US	ˈkɑɹbənət
+oewn-carbonated-a	1	GB	ˈkɑː(ɹ)bɒneɪtəd
+oewn-carbonated-a	2	US	ˈkɑɹ.bəˌneɪ.təd
+oewn-carbonic-a	1		kɑɹˈbɒnɪk
+oewn-carborundum-n	1		ˌkɑɹ.bəˈɹʌn.dəm
+oewn-carboy-n	1	GB	ˈkɑː.bɔɪ
+oewn-carboy-n	2	US	ˈkɑɹ.bɔɪ
+oewn-carbuncle-n	1	GB	ˈkɑː.bʌŋ.kl̩
+oewn-carbuncle-n	2	US	ˈkɑɹˌbʌŋ.kl̩
+oewn-carburetor-n	1	GB	ˈkɑːb(j)əˌɹɛtə
+oewn-carburetor-n	2	US	ˈkɑɹb(j)əˌɹeɪtəɹ
+oewn-carcajou-n	1		ˈkɑːkəˌʒu
+oewn-carcass-n	1	US	ˈkɑɹkəs
+oewn-carcass-n	2	GB	ˈkɑːkəs
+oewn-carcinogen-n	1		kɑɹˈsɪnədʒən
+oewn-carcinogenic-a	1		ˌkɑː(ɹ)sɪnəˈdʒɛnɪk
+oewn-carcinoma-n	1	US	ˌkɑɹsɪˈnoʊmə
+oewn-cardamom-n	1	GB	ˈkɑː.də.məm
+oewn-cardamom-n	2	US	ˈkɑɹ.də.məm
+oewn-cardboard-a	1	GB	ˈkɑːdbɔːd
+oewn-cardboard-a	2	US	ˈkɑɹdbɔɹd
+oewn-cardboard-n	1	GB	ˈkɑːdbɔːd
+oewn-cardboard-n	2	US	ˈkɑɹdbɔɹd
+oewn-cardiac-a	1	GB	ˈkɑːdɪæk
+oewn-cardiac-a	2	US	ˈkɑɹdiˌæk
+oewn-cardigan-n	1	GB	ˈkɑːdɪɡən
+oewn-cardinal-a	1	GB	ˈkɑː.dɪ.nəl
+oewn-cardinal-a	2	US	ˈkɑɹdɪnəl
+oewn-cardinal-n	1	GB	ˈkɑː.dɪ.nəl
+oewn-cardinal-n	2	US	ˈkɑɹdɪnəl
+oewn-cardinal_numeral-n	1	GB	ˈkɑːdɪnəl ˈnjuːməɹəl
+oewn-cardinal_numeral-n	2	US	ˈkɑɹdɪnəl ˈnumɜɹəl
+oewn-cardoon-n	1		kɑː(ɹ)ˈduːn
+oewn-cardsharp-n	1	GB	ˈkɑːdʃɑːp
+oewn-cardsharp-n	2	US	ˈkɑɹdʃɑɹp
+oewn-careen-n	1		kəˈɹiːn
+oewn-careen-v	1		kəˈɹiːn
+oewn-career-n	1	US	kəˈɹɪɹ
+oewn-career-n	2	GB	kəˈɹɪə
+oewn-career-v	1	US	kəˈɹɪɹ
+oewn-career-v	2	GB	kəˈɹɪə
+oewn-carefree-a	1	GB	ˈkɛəfɹiː
+oewn-carefree-a	2	US	kɛɹˈfɹi
+oewn-careful-a	1	GB	ˈkɛːfəl
+oewn-careful-a	2	US	ˈkɛ(ə)ɹfəl
+oewn-carefully-r	1	GB	ˈkɛːfəli
+oewn-carefully-r	2	US	ˈkɛɹfəli
+oewn-careless-a	1	GB	ˈkɛəlɪs
+oewn-careless-a	2	US	ˈkɛɹləs
+oewn-carelessly-r	1	US	ˈkɛɹləsli
+oewn-carelessly-r	2	GB	ˈkɛələsli
+oewn-carelessness-n	1	US	ˈkɛɹləsnəs
+oewn-carelessness-n	2	GB	ˈkɛələsnəs
+oewn-caress-n	1		kəˈɹɛs
+oewn-caress-v	1		kəˈɹɛs
+oewn-caressing-n	1		kəˈɹɛsɪŋ
+oewn-caretaker-n	1	US	ˈkɛɹˌteɪ.kɚ
+oewn-caretaker-n	2	GB	ˈkɛəˌteɪ.kə
+oewn-careworn-a	1	GB	ˈkɛːwɔːn
+oewn-careworn-a	2	US	ˈkɛəɹˌwɔɹn
+oewn-cargo-n	1	GB	ˈkɑːɡəʊ
+oewn-cargo-n	2	US	ˈkɑɹɡoʊ
+oewn-caribou-n	1	US	ˈkɛɹəbu
+oewn-caricature-n	1	US	ˈkæɹɪkətʃʊɚ
+oewn-caricature-n	2	GB	ˈkæɹɪkətʃʊə
+oewn-caricature-v	1	US	ˈkæɹɪkətʃʊɚ
+oewn-caricature-v	2	GB	ˈkæɹɪkətʃʊə
+oewn-caricaturist-n	1		ˈkæɹɪkəˌt͡ʃʊəɹɪst
+oewn-caries-n	1	GB	ˈkɛə.ɹiːz
+oewn-caries-n	2	US	ˈkɛ.ɹiz
+oewn-carillon-n	1	US	ˈkɛɹɪˌlɑn
+oewn-carillon-n	2	GB	kəˈrɪljən
+oewn-caring-a	1	GB	ˈkɛə.ɹɪŋ
+oewn-caring-a	2	US	ˈkɛɹ.ɪŋ
+oewn-caring-n	1	GB	ˈkɛə.ɹɪŋ
+oewn-caring-n	2	US	ˈkɛɹ.ɪŋ
+oewn-carious-a	1	GB	ˈkɛə.ɹi.əs
+oewn-carjack-v	1	GB	ˈkɑː(ɹ).dʒæk
+oewn-carjack-v	2	US	ˈkɑɹ.dʒæk
+oewn-carload-n	1	GB	ˈkɑːləʊd
+oewn-carload-n	2	US	ˈkɑɹloʊd
+oewn-carminative-a	1		ˈkɑː(ɹ)mɪnətɪv
+oewn-carminative-n	1		ˈkɑː(ɹ)mɪnətɪv
+oewn-carnage-n	1	GB	ˈkɑː.nɪdʒ
+oewn-carnage-n	2	US	ˈkɑɹ.nɪdʒ
+oewn-carnal-a	1	US	ˈkɑɹnəl
+oewn-carnation-a	1	GB	kɑːˈneɪ.ʃən
+oewn-carnation-a	2	US	kɑɹˈneɪ.ʃən
+oewn-carnation-n	1	GB	kɑːˈneɪ.ʃən
+oewn-carnation-n	2	US	kɑɹˈneɪ.ʃən
+oewn-carnelian-n	1	US	kɑɹˈnil.jən
+oewn-carnival-n	1	US	ˈkæɹnɪvəl
+oewn-carnivore-n	1		ˈkɑːnɪvɔː
+oewn-carnivorous-a	1	US	kɑɹˈnɪv.əɹ.əs
+oewn-carol-n	1	GB	ˈkæɹəl
+oewn-carol-n	2	US	ˈkæɹəl
+oewn-carol-v	1	GB	ˈkæɹəl
+oewn-carol-v	2	US	ˈkæɹəl
+oewn-carom-n	1		ˈkæɹəm
+oewn-carom-v	1		ˈkæɹəm
+oewn-carotid-a	1	GB	kəˈɹɒt.ɪd
+oewn-carotid-a	2	US	kəˈɹɑt.ɪd
+oewn-carousal-n	1		kəˈɹaʊzəl
+oewn-carouse-n	1		kəˈɹaʊz
+oewn-carouse-v	1		kəˈɹaʊz
+oewn-carousel-n	1	GB	ˌkærəˈsɛl
+oewn-carousel-n	2	US	ˌkærəˈzɛl
+oewn-carpal-a	1		ˈkɑː(ɹ)pəl
+oewn-carpal-n	1		ˈkɑː(ɹ)pəl
+oewn-carpel-n	1		ˈkɑː(ɹ)pəl
+oewn-carpenter-n	1	GB	ˈkɑː.pən.tə
+oewn-carpenter-n	2	US	ˈkɑɹpəntɚ
+oewn-carpenter-v	1	GB	ˈkɑː.pən.tə
+oewn-carpenter-v	2	US	ˈkɑɹpəntɚ
+oewn-carper-n	1	GB	kɑː(ɹ)pə(ɹ)
+oewn-carpet-n	1	GB	ˈkɑː(ɹ)pɪt
+oewn-carpet-n	2	US	ˈkɑɹpət
+oewn-carpet-v	1	GB	ˈkɑː(ɹ)pɪt
+oewn-carpet-v	2	US	ˈkɑɹpət
+oewn-carpetbagger-n	1	US	ˈkɑɹpɪtˌbæɡɚ
+oewn-carpetbagger-n	2	GB	ˈkɑːpɪtˌbaɡə
+oewn-carport-n	1	GB	kɑː(ɹ).pɔːt
+oewn-carpus-n	1	GB	ˈkɑː.pəs
+oewn-carpus-n	2	US	ˈkɑɹ.pəs
+oewn-carrageen-n	1	GB	ˌkæɹəˈɡiːn
+oewn-carrageen-n	2	US	ˌkɛɹəˈɡin
+oewn-carrageenan-n	1	US	ˌkɛɹəˈɡinən
+oewn-carrageenan-n	2	GB	ˌkæɹəˈɡiːnən
+oewn-carriage-n	1	US	ˈkæɹɪdʒ
+oewn-carriage-n	2	GB	ˈkæɹɪdʒ
+oewn-carrier-n	1	GB	ˈkæ.ɹɪ.ə
+oewn-carrier-n	2	US	ˈkæ.ɹɪ.ɚ
+oewn-carrier_wave-n	1	GB	ˈkæ.ɹɪ.ə weɪv
+oewn-carrier_wave-n	2	US	ˈkæ.ɹɪ.ɚ weɪv
+oewn-carrion-n	1		ˈkæ.ɹi.ən
+oewn-carrot-n	1	US	ˈkɛɹ.ət
+oewn-carrot-n	2	GB	ˈkæɹ.ət
+oewn-carry-n	1		ˈkɛ.ɹi
+oewn-carry-v	1		ˈkɛ.ɹi
+oewn-carry_on-v	1	US	ˈkæɹi ˈɑn
+oewn-carte_blanche-n	1		kɑɹtˈblɑnʃ
+oewn-cartel-n	1	GB	kɑːˈtɛl
+oewn-cartel-n	2	US	kɑɹˈtɛl
+oewn-carter-n	1	US	ˈkɑɹtɚ
+oewn-carter-n	2	GB	ˈkɑːtə
+oewn-cartilage-n	1	GB	ˈkɑː.tɪl.ɪd͡ʒ
+oewn-cartilage-n	2	US	ˈkɑɹ.təl.ɪd͡ʒ
+oewn-cartilaginous-a	1	GB	ˌkɑː.tɪˈlad͡ʒ.ɪn.əs
+oewn-cartilaginous-a	2	US	ˌkɑɹ.təˈlæd͡ʒ.ən.əs
+oewn-carting-n	1	GB	ˈkɑːtɪŋ
+oewn-cartload-n	1	GB	ˈkɑːt.ləʊd
+oewn-cartload-n	2	US	ˈkɑɹt.loʊd
+oewn-cartographic-a	1	GB	ˌkɑː.təʊˈɡɹæf.ɪk
+oewn-cartographic-a	2	US	ˌkɑɹ.təˈɡɹæf.ɪk
+oewn-cartography-n	1	AU	kɐː(ɹ)ˈtɔɡɹəfɪi̯
+oewn-cartography-n	2	CA	kɐɹˈtɒɡɹəfi
+oewn-cartography-n	3	NZ	kɐː(ɹ)ˈtɔɡɹɘfɪi̯
+oewn-cartography-n	4	GB	kɑːˈtɒɡɹəfi
+oewn-cartography-n	5	US	kɑɹˈtɑɡɹəfi
+oewn-carton-n	1	GB	ˈkɑːtən
+oewn-carton-n	2	US	ˈkɑɹtn̩
+oewn-cartoon-n	1	US	kɑɹˈtuːn
+oewn-cartoon-n	2	GB	kɑːˈtuːn
+oewn-cartoon-v	1	US	kɑɹˈtuːn
+oewn-cartoon-v	2	GB	kɑːˈtuːn
+oewn-cartouche-n	1	GB	kɑːˈtuːʃ
+oewn-cartouche-n	2	US	kɑɹˈtuʃ
+oewn-cartridge-n	1	GB	ˈkɑːtɹɪdʒ
+oewn-cartridge-n	2	US	ˈkɑɹtɹɪdʒ
+oewn-cartwheel-n	1	GB	ˈkɑːtˌwiːl
+oewn-cartwheel-n	2	US	ˈkɑɹtˌwil
+oewn-cartwheel-v	1	GB	ˈkɑːtˌwiːl
+oewn-cartwheel-v	2	US	ˈkɑɹtˌwil
+oewn-caruncle-n	1	GB	ˈka.ɹəŋ.kəl
+oewn-caruncle-n	2	US	ˈkɛɹˌʌŋ.kəl
+oewn-caruncula-n	1	US	kəˈɹʌŋ.kjəl.ə
+oewn-carve-v	1	US	kɑɹv
+oewn-carve-v	2	GB	kɑːv
+oewn-carved-a	1	US	kɑɹvd
+oewn-carved-a	2	GB	kɑːvd
+oewn-carvedilol-n	1	US	ˈkɑɹ.vəˌdɪl.ɔl
+oewn-carver-n	1	US	ˈkɑɹvɚ
+oewn-carver-n	2	GB	ˈkɑːvə
+oewn-casbah-n	1	GB	ˈkaz.bɑː
+oewn-casbah-n	2	US	ˈkæz.bɑ
+oewn-cascabel-n	1		ˈkæskəbɛl
+oewn-cascade-n	1		kæsˈkeɪd
+oewn-cascade-v	1		kæsˈkeɪd
+oewn-cascara_sagrada-n	1	GB	kaˌskɑː.ɹə səˈɡɹɑː.də
+oewn-cascara_sagrada-n	2	US	kæˌskɛɹ.ə səˈɡɹɑ.də
+oewn-case_in_point-n	1		keɪs ɪn pɔɪnt
+oewn-cased-a	1		keɪst
+oewn-casein-n	1		ˈkeɪ.siː.ɪn
+oewn-casern-n	1		kəˈzɝn
+oewn-cashed-a	1		kæʃt
+oewn-cashew-n	1		ˈkæʃuː
+oewn-cashier-n	1	GB	kaˈʃɪə
+oewn-cashier-v	1		kəˈʃɪə
+oewn-cashmere-n	1	GB	ˈkæʃ.mɪə
+oewn-cashmere-n	2	US	kæʒˈmiɹ
+oewn-casing-n	1		ˈkeɪsɪŋ
+oewn-casino-n	1		kæˈsinoʊ
+oewn-cask-n	1	GB	kɑːsk
+oewn-cask-n	2	US	kæsk
+oewn-casket-n	1	GB	ˈkæs.kɪt
+oewn-casket-n	2	US	ˈkæs.kɪt
+oewn-casket-v	1	GB	ˈkæs.kɪt
+oewn-casket-v	2	US	ˈkæs.kɪt
+oewn-cassava-n	1		kəˈsɑːvə
+oewn-casserole-n	1		ˈkæs.əˌɹoʊl
+oewn-cassette-n	1		kəˈsɛt
+oewn-cassia-n	1		ˈkæsiə
+oewn-cassock-n	1	GB	ˈkasək
+oewn-cassock-n	2	US	ˈkæsək
+oewn-cassowary-n	1	US	ˈkæs.ə.ˌwɛɹ.i
+oewn-cast-n	1	GB	kɑːst
+oewn-cast-n	2		kast
+oewn-cast-v	1	GB	kɑːst
+oewn-cast-v	2		kast
+oewn-castanets-n	1	GB	ˌkæs.tə.ˈnɛts
+oewn-castaway-n	1		ˈkæ.stə.weɪ
+oewn-caste-n	1	GB	kɑːst
+oewn-caste-n	2	US	kæst
+oewn-casteless-a	1	US	ˈkæstləs
+oewn-caster-n	1	US	ˈkæstər
+oewn-castigate-v	1		ˈkæs.tɪ.ɡeɪt
+oewn-castle-n	1	GB	ˈkɑːsəl
+oewn-castle-n	2	US	ˈkæsəl
+oewn-castle-v	1	GB	ˈkɑːsəl
+oewn-castle-v	2	US	ˈkæsəl
+oewn-castle_in_the_air-n	1	GB	ˈkɑːs(ə)l ɪn ðiː ˈɛə
+oewn-castle_in_the_air-n	2	US	ˈkæs(ə)l ɪn ði ˈɛəɹ
+oewn-castling-n	1		ˈkɑːsəlɪŋ
+oewn-castor-n	1	GB	ˈkɑːs.tə
+oewn-castor_oil-n	1	GB	ˈkɑː.stə ˌɔɪl
+oewn-castor_oil-n	2	US	ˈkæ.stɚ ˌɔɪl
+oewn-castrate-n	1	GB	ˈkæs.tɹeɪt
+oewn-castrate-v	1	GB	ˈkæs.tɹeɪt
+oewn-castration-n	1		kæˈstɹeɪʃən
+oewn-castrato-n	1		kæsˈtɹɑː.təʊ
+oewn-casual-a	1	GB	ˈkaʒuəl
+oewn-casual-a	2	US	ˈkæʒuəl
+oewn-casual-a	3	NZ	ˈkɛʒʉɘl
+oewn-casually-r	1	US	ˈkæʒuəli
+oewn-casually-r	2	GB	ˈkæʒ(j)ʊəli
+oewn-casualty-n	1	GB	ˈkaʒ(ʊ)əlti
+oewn-casuist-n	1		ˈkæzjuːɪst
+oewn-casuistic-a	1		ˌkæzjuˈɪstɪk
+oewn-casuistry-n	1		ˈkæʒuːɪstɹi
+oewn-casus_belli-n	1		ˈkeɪsəs ˈbɛli
+oewn-cat_burglar-n	1	GB	kæt ˈbɜːɡlə
+oewn-cat_burglar-n	2	US	ˈkæt ˌbɝɡlɚ
+oewn-catachresis-n	1	GB	ˌkæt.əˈkɹiː.sɪs
+oewn-cataclysm-n	1		ˈkætəˌklɪzm̩
+oewn-catacomb-n	1	US	ˈkætakoʊm
+oewn-catafalque-n	1	GB	ˈkatəfalk
+oewn-catalogue-n	1	GB	ˈkæt.əˌlɒɡ
+oewn-catalogue-n	2	US	ˈkæɾ.əˌlɔɡ
+oewn-catalogue-v	1	GB	ˈkæt.əˌlɒɡ
+oewn-catalogue-v	2	US	ˈkæɾ.əˌlɔɡ
+oewn-catalpa-n	1		kəˈtælpə
+oewn-catalysis-n	1		kəˈtæləsɪs
+oewn-catalyst-n	1	GB	ˈkæt.əl.ɪst
+oewn-catalyst-n	2	US	ˈkæt.ə.lɪst
+oewn-catalytic-a	1		ˌkætəˈlɪtɪk
+oewn-catalyze-v	1		ˈkætəˌlaɪz
+oewn-catamaran-n	1	US	ˌkæ.tə.məˈɹæn
+oewn-catamaran-n	2	GB	ˌkæ.tə.məˈɹæn
+oewn-catamenia-n	1		kætəˈmiːnɪə
+oewn-catamenial-a	1		kætəˈmiːnɪəl
+oewn-catamite-n	1		ˈkætəmaɪt
+oewn-catamount-n	1	GB	ˈkætəmaʊnt
+oewn-catamount-n	2	US	ˈkætəˌmaʊnt
+oewn-catamountain-n	1	GB	kætəˈmaʊntɪn
+oewn-catamountain-n	2	US	kætəˈmaʊnt(ə)n
+oewn-catapult-n	1		ˈkæ.tə.pʌlt
+oewn-catapult-v	1		ˈkæ.tə.pʌlt
+oewn-cataract-n	1		ˈkætəɹækt
+oewn-catarrh-n	1		kəˈtɑɹ
+oewn-catastrophe-n	1		kəˈtæstɹəfi
+oewn-catastrophic-a	1		kætəˈstɹɒfɪk
+oewn-catatonic-a	1		kæ.təˈtɑn.ɪk
+oewn-catbird-n	1	GB	ˈkatbəːd
+oewn-catch-n	1		kæt͡ʃ
+oewn-catch-v	1		kæt͡ʃ
+oewn-catcher-n	1	GB	ˈkætʃ.ə(ɹ)
+oewn-catcher-n	2	US	ˈkætʃ.ɚ
+oewn-catching-a	1		ˈkætʃɪŋ
+oewn-catching-n	1		ˈkætʃɪŋ
+oewn-catchment-n	1	GB	ˈkatʃmənt
+oewn-catchment-n	2	US	ˈkætʃmənt
+oewn-catchword-n	1	GB	ˈkætʃwɜːd
+oewn-catchy-a	1		ˈkætʃi
+oewn-catechetic-a	1	GB	ˌkatiːˈkiːtɪk
+oewn-catechism-n	1		ˈkætɪˌkɪzəm
+oewn-catechize-v	1	US	ˈkætɪkaɪz
+oewn-catechize-v	2	GB	ˈkatɪkaɪz
+oewn-catecholamine-n	1	GB	katəˈkəʊləmiːn
+oewn-catechu-n	1	GB	ˈkæt.ɪt͡ʃ.uː
+oewn-catechu-n	2	US	ˈkæt.əˌt͡ʃuː
+oewn-catechumen-n	1	GB	ˌkæt.ɪˈkjuː.mɛn
+oewn-catechumen-n	2	US	ˌkæt.əˈkju.mən
+oewn-categorical-a	1	US	ˌkætəˈɡɔɹɪk(ə)l
+oewn-categorically-r	1	GB	ˈkæt.ə.ɡɒ.ɹɪk.li
+oewn-category-n	1	US	ˈkætəˌɡɔɹi
+oewn-category-n	2	GB	ˈkætɪɡ(ə)ɹi
+oewn-category-n	3	NZ	ˈkɛtɘɡ(ɘ)ɹi
+oewn-catena-n	1		kəˈtiːnə
+oewn-catenate-v	1	GB	ˈkæt.ən.eɪt
+oewn-cater-v	1	GB	ˈkeɪtə
+oewn-cater-v	2	US	ˈkeɪdɚ
+oewn-caterer-n	1	US	ˈkeɪtəɹəɹ
+oewn-catering-n	1		ˈkeɪt(ə)ɹɪŋ
+oewn-caterpillar-n	1	GB	ˈkætəˌpɪlə
+oewn-caterpillar-n	2	US	ˈkætɚˌpɪlɚ
+oewn-caterwaul-n	1	GB	ˈkæt.ə.wɔːl
+oewn-caterwaul-n	2	US	ˈkæt.ɚ.wɔl
+oewn-caterwaul-v	1	GB	ˈkæt.ə.wɔːl
+oewn-caterwaul-v	2	US	ˈkæt.ɚ.wɔl
+oewn-catgut-n	1		ˈkætˌɡʌt
+oewn-catharsis-n	1	GB	kəˈθɑːsɪs
+oewn-catharsis-n	2	US	kəˈθɑːɹˌsɪs
+oewn-cathect-v	1		kəˈθɛkt
+oewn-cathectic-a	1		kəˈθɛktɪk
+oewn-catheter-n	1	GB	ˈkæθɪtə(ɹ)
+oewn-catheter-n	2	US	ˈkæθɪt̬ɚ
+oewn-catheterize-v	1		ˈkæθətəɹaɪz
+oewn-cathexis-n	1	GB	kəˈθɛk sɪs
+oewn-cathode-n	1		ˈkæθ.oʊd
+oewn-catholic-a	1	GB	ˈkaθ(ə)lɪk
+oewn-catholic-a	2	US	ˈkæθ(ə)lɪk
+oewn-catholic-a	3		ˈkæθ(ə)lɪk
+oewn-catholicon-n	1		kəˈθɒlɪkɒn
+oewn-cathouse-n	1		ˈkathaʊs
+oewn-cation-n	1		ˈkætˌaɪ.ən
+oewn-catling-n	1		ˈkætlɪŋ
+oewn-catmint-n	1		ˈkætmɪnt
+oewn-catnip-n	1		ˈkatnɪp
+oewn-catoptric-a	1	GB	kaˈtɒptɹɪk
+oewn-cattail-n	1		ˈkæt.teɪl
+oewn-cattle-n	1		ˈkæt(ə)l
+oewn-cattleya-n	1	GB	ˈkatlɪə
+oewn-catty-a	1	US	ˈkæti
+oewn-caucus-n	1	GB	ˈkɔː.kəs
+oewn-caucus-n	2	US	ˈkɔ(ː).kəs
+oewn-caucus-v	1	GB	ˈkɔː.kəs
+oewn-caucus-v	2	US	ˈkɔ(ː).kəs
+oewn-caudal-a	1		ˈkɔːdəl
+oewn-caudate-a	1		ˈkɔːdeɪt
+oewn-caudate-n	1		ˈkɔːdeɪt
+oewn-caudex-n	1	GB	ˈkɔːdɛks
+oewn-caul-n	1	GB	kɔːl
+oewn-cauldron-n	1		ˈkɔːl.dɹən
+oewn-cauliflower-n	1	GB	ˈkɒl.i.flaʊ.ə
+oewn-cauliflower-n	2	US	ˈkɔl.ɪˌflaʊ.ɚ
+oewn-caulk-n	1		kɔːk
+oewn-caulk-v	1		kɔːk
+oewn-causal-a	1	GB	ˈkɔːz.əl
+oewn-causative-a	1	GB	ˈkɔːzətɪv
+oewn-causative-a	2	US	ˈkɔzətɪv
+oewn-cause-n	1	GB	kɔːz
+oewn-cause-n	2	US	kɔz
+oewn-cause-v	1	GB	kɔːz
+oewn-cause-v	2	US	kɔz
+oewn-causeless-a	1		ˈkɔːzləs
+oewn-causeway-n	1		ˈkɔːz.weɪ
+oewn-causeway-v	1		ˈkɔːz.weɪ
+oewn-caustic-a	1		ˈkɔːstɪk
+oewn-caustic-n	1		ˈkɔːstɪk
+oewn-cauterize-v	1		ˈkɔːtəɹaɪz
+oewn-caution-n	1	GB	ˈkɔːʃ(ə)n
+oewn-caution-n	2	US	ˈkɑːʃ(ə)n
+oewn-caution-n	3		ˈkɑʃn̩
+oewn-caution-v	1	GB	ˈkɔːʃ(ə)n
+oewn-caution-v	2	US	ˈkɑːʃ(ə)n
+oewn-caution-v	3		ˈkɑʃn̩
+oewn-cautious-a	1		ˈkɔːʃəs
+oewn-cautiously-r	1		ˈkɔːʃəsli
+oewn-cavalcade-n	1		ˈkævəlˌkeɪd
+oewn-cavalier-a	1		ˌkævəˈlɪəɹ
+oewn-cavalier-n	1		ˌkævəˈlɪəɹ
+oewn-cavalry-n	1		ˈkævəlɹi
+oewn-cave-n	1		keɪv
+oewn-cave-v	1		keɪv
+oewn-caveat-n	1	GB	ˈkævɪæt
+oewn-caveat-n	2	US	ˈkæviɑt
+oewn-cavern-n	1	GB	ˈkæv.ən
+oewn-cavern-n	2	US	ˈkæv.ɚn
+oewn-cavern-v	1	GB	ˈkæv.ən
+oewn-cavern-v	2	US	ˈkæv.ɚn
+oewn-cavil-n	1		ˈkæv.əl
+oewn-cavil-v	1		ˈkæv.əl
+oewn-cavity-n	1		ˈkævɪti
+oewn-cavort-v	1	GB	kəˈvɔːt
+oewn-cavort-v	2	US	kəˈvɔɹt
+oewn-cavy-n	1		ˈkeɪ.vi
+oewn-caw-n	1		kɔː
+oewn-caw-v	1		kɔː
+oewn-cay-n	1		kiː
+oewn-cayenne-n	1		kaɪˈɛn

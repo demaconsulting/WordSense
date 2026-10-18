@@ -1,0 +1,986 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-PI-n	PI	n	0	1	1	oewn
+oewn-PID-n	PID	n	0	1	1	oewn
+oewn-PIE-n	PIE	n	0	1	1	oewn
+oewn-PIM-n	PIM	n	0	1	1	oewn
+oewn-PIM_tool-n	PIM tool	n	0	2	2	oewn
+oewn-PIN-n	PIN	n	0	1	1	oewn
+oewn-PIN_number-n	PIN number	n	0	2	2	oewn
+oewn-PiB-n	PiB	n	0	1	1	oewn
+oewn-Piagetian-a	Piagetian	a	0	1	1	oewn
+oewn-Pianola-n	Pianola	n	0	1	1	oewn
+oewn-Pibit-n	Pibit	n	0	1	1	oewn
+oewn-Pica_pica-n	Pica pica	n	0	2	2	oewn
+oewn-Pica_pica_hudsonia-n	Pica pica hudsonia	n	0	3	3	oewn
+oewn-Picea_abies-n	Picea abies	n	0	2	2	oewn
+oewn-Picea_breweriana-n	Picea breweriana	n	0	2	2	oewn
+oewn-Picea_engelmannii-n	Picea engelmannii	n	0	2	2	oewn
+oewn-Picea_glauca-n	Picea glauca	n	0	2	2	oewn
+oewn-Picea_mariana-n	Picea mariana	n	0	2	2	oewn
+oewn-Picea_obovata-n	Picea obovata	n	0	2	2	oewn
+oewn-Picea_orientalis-n	Picea orientalis	n	0	2	2	oewn
+oewn-Picea_pungens-n	Picea pungens	n	0	2	2	oewn
+oewn-Picea_rubens-n	Picea rubens	n	0	2	2	oewn
+oewn-Picea_sitchensis-n	Picea sitchensis	n	0	2	2	oewn
+oewn-Pick-ap-s_disease-n	Pick's disease	n	0	2	2	oewn
+oewn-Pickeringia_montana-n	Pickeringia montana	n	0	2	2	oewn
+oewn-Picrasma_excelsa-n	Picrasma excelsa	n	0	2	2	oewn
+oewn-Picrasma_excelsum-n	Picrasma excelsum	n	0	2	2	oewn
+oewn-Picris_echioides-n	Picris echioides	n	0	2	2	oewn
+oewn-Picus_viridis-n	Picus viridis	n	0	2	2	oewn
+oewn-Pidlimdi-n	Pidlimdi	n	0	1	1	oewn
+oewn-Pidlimdi_language-n	Pidlimdi language	n	0	2	2	oewn
+oewn-Piedmont_glacier-n	Piedmont glacier	n	0	2	2	oewn
+oewn-Piedmont_type_of_glacier-n	Piedmont type of glacier	n	0	4	2	oewn
+oewn-Pieris_brassicae-n	Pieris brassicae	n	0	2	2	oewn
+oewn-Pieris_floribunda-n	Pieris floribunda	n	0	2	2	oewn
+oewn-Pieris_japonica-n	Pieris japonica	n	0	2	2	oewn
+oewn-Pieris_protodice-n	Pieris protodice	n	0	2	2	oewn
+oewn-Pieris_rapae-n	Pieris rapae	n	0	2	2	oewn
+oewn-Pietism-n	Pietism	n	0	1	1	oewn
+oewn-Pilate-n	Pilate	n	0	1	1	oewn
+oewn-Pilea_involucrata-n	Pilea involucrata	n	0	2	2	oewn
+oewn-Pilea_microphylla-n	Pilea microphylla	n	0	2	2	oewn
+oewn-Pilea_pumilla-n	Pilea pumilla	n	0	2	2	oewn
+oewn-Pilgrim-n	Pilgrim	n	0	1	1	oewn
+oewn-Pilgrim_Father-n	Pilgrim Father	n	0	2	2	oewn
+oewn-Pilosella_aurantiaca-n	Pilosella aurantiaca	n	0	2	2	oewn
+oewn-Pilosella_officinarum-n	Pilosella officinarum	n	0	2	2	oewn
+oewn-Pilsener-n	Pilsener	n	0	1	1	oewn
+oewn-Pilsner-n	Pilsner	n	0	1	1	oewn
+oewn-Piltdown_hoax-n	Piltdown hoax	n	0	2	2	oewn
+oewn-Piltdown_man-n	Piltdown man	n	0	2	2	oewn
+oewn-Pilularia_globulifera-n	Pilularia globulifera	n	0	2	2	oewn
+oewn-Pima-n	Pima	n	0	1	1	oewn
+oewn-Pima_language-n	Pima language	n	0	2	2	oewn
+oewn-Pimenta_acris-n	Pimenta acris	n	0	2	2	oewn
+oewn-Pimenta_dioica-n	Pimenta dioica	n	0	2	2	oewn
+oewn-Pimenta_officinalis-n	Pimenta officinalis	n	0	2	2	oewn
+oewn-Pimpinella_anisum-n	Pimpinella anisum	n	0	2	2	oewn
+oewn-Pinckneya_pubens-n	Pinckneya pubens	n	0	2	2	oewn
+oewn-Pinctada_margaritifera-n	Pinctada margaritifera	n	0	2	2	oewn
+oewn-Pindaric-n	Pindaric	n	0	1	1	oewn
+oewn-Pindaric_ode-n	Pindaric ode	n	0	2	2	oewn
+oewn-Pineus_pinifoliae-n	Pineus pinifoliae	n	0	2	2	oewn
+oewn-Ping-Pong-n	Ping-Pong	n	0	1	1	oewn
+oewn-Pinguinus_impennis-n	Pinguinus impennis	n	0	2	2	oewn
+oewn-Pinicola_enucleator-n	Pinicola enucleator	n	0	2	2	oewn
+oewn-Pinnotheres_ostreum-n	Pinnotheres ostreum	n	0	2	2	oewn
+oewn-Pinot-n	Pinot	n	0	1	1	oewn
+oewn-Pinot_Chardonnay-n	Pinot Chardonnay	n	0	2	2	oewn
+oewn-Pinot_blanc-n	Pinot blanc	n	0	2	2	oewn
+oewn-Pinot_grape-n	Pinot grape	n	0	2	2	oewn
+oewn-Pinot_noir-n	Pinot noir	n	0	2	2	oewn
+oewn-Pinus_albicaulis-n	Pinus albicaulis	n	0	2	2	oewn
+oewn-Pinus_aristata-n	Pinus aristata	n	0	2	2	oewn
+oewn-Pinus_attenuata-n	Pinus attenuata	n	0	2	2	oewn
+oewn-Pinus_banksiana-n	Pinus banksiana	n	0	2	2	oewn
+oewn-Pinus_californiarum-n	Pinus californiarum	n	0	2	2	oewn
+oewn-Pinus_cembra-n	Pinus cembra	n	0	2	2	oewn
+oewn-Pinus_cembroides-n	Pinus cembroides	n	0	2	2	oewn
+oewn-Pinus_contorta-n	Pinus contorta	n	0	2	2	oewn
+oewn-Pinus_contorta_murrayana-n	Pinus contorta murrayana	n	0	3	3	oewn
+oewn-Pinus_densiflora-n	Pinus densiflora	n	0	2	2	oewn
+oewn-Pinus_echinata-n	Pinus echinata	n	0	2	2	oewn
+oewn-Pinus_edulis-n	Pinus edulis	n	0	2	2	oewn
+oewn-Pinus_flexilis-n	Pinus flexilis	n	0	2	2	oewn
+oewn-Pinus_glabra-n	Pinus glabra	n	0	2	2	oewn
+oewn-Pinus_jeffreyi-n	Pinus jeffreyi	n	0	2	2	oewn
+oewn-Pinus_longaeva-n	Pinus longaeva	n	0	2	2	oewn
+oewn-Pinus_monophylla-n	Pinus monophylla	n	0	2	2	oewn
+oewn-Pinus_monticola-n	Pinus monticola	n	0	2	2	oewn
+oewn-Pinus_mugo-n	Pinus mugo	n	0	2	2	oewn
+oewn-Pinus_muricata-n	Pinus muricata	n	0	2	2	oewn
+oewn-Pinus_nigra-n	Pinus nigra	n	0	2	2	oewn
+oewn-Pinus_palustris-n	Pinus palustris	n	0	2	2	oewn
+oewn-Pinus_parryana-n	Pinus parryana	n	0	2	2	oewn
+oewn-Pinus_pinea-n	Pinus pinea	n	0	2	2	oewn
+oewn-Pinus_ponderosa-n	Pinus ponderosa	n	0	2	2	oewn
+oewn-Pinus_pungens-n	Pinus pungens	n	0	2	2	oewn
+oewn-Pinus_quadrifolia-n	Pinus quadrifolia	n	0	2	2	oewn
+oewn-Pinus_radiata-n	Pinus radiata	n	0	2	2	oewn
+oewn-Pinus_resinosa-n	Pinus resinosa	n	0	2	2	oewn
+oewn-Pinus_rigida-n	Pinus rigida	n	0	2	2	oewn
+oewn-Pinus_serotina-n	Pinus serotina	n	0	2	2	oewn
+oewn-Pinus_strobiformis-n	Pinus strobiformis	n	0	2	2	oewn
+oewn-Pinus_strobus-n	Pinus strobus	n	0	2	2	oewn
+oewn-Pinus_sylvestris-n	Pinus sylvestris	n	0	2	2	oewn
+oewn-Pinus_taeda-n	Pinus taeda	n	0	2	2	oewn
+oewn-Pinus_thunbergii-n	Pinus thunbergii	n	0	2	2	oewn
+oewn-Pinus_torreyana-n	Pinus torreyana	n	0	2	2	oewn
+oewn-Pinus_virginiana-n	Pinus virginiana	n	0	2	2	oewn
+oewn-Pinyin-n	Pinyin	n	0	1	1	oewn
+oewn-Pipa_americana-n	Pipa americana	n	0	2	2	oewn
+oewn-Pipa_pipa-n	Pipa pipa	n	0	2	2	oewn
+oewn-Piper_betel-n	Piper betel	n	0	2	2	oewn
+oewn-Piper_cubeba-n	Piper cubeba	n	0	2	2	oewn
+oewn-Piper_longum-n	Piper longum	n	0	2	2	oewn
+oewn-Piper_nigrum-n	Piper nigrum	n	0	2	2	oewn
+oewn-Pipilo_erythrophthalmus-n	Pipilo erythrophthalmus	n	0	2	2	oewn
+oewn-Pipistrellus_hesperus-n	Pipistrellus hesperus	n	0	2	2	oewn
+oewn-Pipistrellus_pipistrellus-n	Pipistrellus pipistrellus	n	0	2	2	oewn
+oewn-Pipistrellus_subflavus-n	Pipistrellus subflavus	n	0	2	2	oewn
+oewn-Pippin-n	Pippin	n	0	1	1	oewn
+oewn-Pipracil-n	Pipracil	n	0	1	1	oewn
+oewn-Piptadenia_macrocarpa-n	Piptadenia macrocarpa	n	0	2	2	oewn
+oewn-Pipturus_albidus-n	Pipturus albidus	n	0	2	2	oewn
+oewn-Pipturus_argenteus-n	Pipturus argenteus	n	0	2	2	oewn
+oewn-Piranga_flava_hepatica-n	Piranga flava hepatica	n	0	3	3	oewn
+oewn-Piranga_ludoviciana-n	Piranga ludoviciana	n	0	2	2	oewn
+oewn-Piranga_olivacea-n	Piranga olivacea	n	0	2	2	oewn
+oewn-Piranga_rubra-n	Piranga rubra	n	0	2	2	oewn
+oewn-Pisces-n	Pisces	n	0	1	1	oewn
+oewn-Piscidia_erythrina-n	Piscidia erythrina	n	0	2	2	oewn
+oewn-Piscidia_piscipula-n	Piscidia piscipula	n	0	2	2	oewn
+oewn-Pisonia_aculeata-n	Pisonia aculeata	n	0	2	2	oewn
+oewn-Pistacia_lentiscus-n	Pistacia lentiscus	n	0	2	2	oewn
+oewn-Pistacia_terebinthus-n	Pistacia terebinthus	n	0	2	2	oewn
+oewn-Pistacia_vera-n	Pistacia vera	n	0	2	2	oewn
+oewn-Pistia_stratiotes-n	Pistia stratiotes	n	0	2	2	oewn
+oewn-Pistia_stratoites-n	Pistia stratoites	n	0	2	2	oewn
+oewn-Pisum_arvense-n	Pisum arvense	n	0	2	2	oewn
+oewn-Pisum_sativum-n	Pisum sativum	n	0	2	2	oewn
+oewn-Pisum_sativum_arvense-n	Pisum sativum arvense	n	0	3	3	oewn
+oewn-Pisum_sativum_macrocarpon-n	Pisum sativum macrocarpon	n	0	3	3	oewn
+oewn-Pithecanthropus-n	Pithecanthropus	n	0	1	1	oewn
+oewn-Pithecanthropus_erectus-n	Pithecanthropus erectus	n	0	2	2	oewn
+oewn-Pithecellobium_dulce-n	Pithecellobium dulce	n	0	2	2	oewn
+oewn-Pithecellobium_unguis-cati-n	Pithecellobium unguis-cati	n	0	2	2	oewn
+oewn-Pitocin-n	Pitocin	n	0	1	1	oewn
+oewn-Pitot-n	Pitot	n	0	1	1	oewn
+oewn-Pitot-static_tube-n	Pitot-static tube	n	0	2	2	oewn
+oewn-Pitot_head-n	Pitot head	n	0	2	2	oewn
+oewn-Pitot_tube-n	Pitot tube	n	0	2	2	oewn
+oewn-Pitressin-n	Pitressin	n	0	1	1	oewn
+oewn-Pituophis_melanoleucus-n	Pituophis melanoleucus	n	0	2	2	oewn
+oewn-Pitymys_pinetorum-n	Pitymys pinetorum	n	0	2	2	oewn
+oewn-Pityrogramma_argentea-n	Pityrogramma argentea	n	0	2	2	oewn
+oewn-Pityrogramma_calomelanos-n	Pityrogramma calomelanos	n	0	2	2	oewn
+oewn-Pityrogramma_calomelanos_aureoflava-n	Pityrogramma calomelanos aureoflava	n	0	3	3	oewn
+oewn-Pityrogramma_chrysophylla-n	Pityrogramma chrysophylla	n	0	2	2	oewn
+oewn-Piute-n	Piute	n	0	1	1	oewn
+oewn-pi-meson-n	pi-meson	n	0	1	1	oewn
+oewn-pi-n	pi	n	0	1	1	oewn
+oewn-pia-n	pia	n	0	1	1	oewn
+oewn-pia_mater-n	pia mater	n	0	2	2	oewn
+oewn-piaffe-n	piaffe	n	0	1	1	oewn
+oewn-pianism-n	pianism	n	0	1	1	oewn
+oewn-pianissimo-a	pianissimo	a	0	1	1	oewn
+oewn-pianissimo-n	pianissimo	n	0	1	1	oewn
+oewn-pianissimo-r	pianissimo	r	0	1	1	oewn
+oewn-pianissimo_assai-a	pianissimo assai	a	0	2	2	oewn
+oewn-pianist-n	pianist	n	0	1	1	oewn
+oewn-pianistic-a	pianistic	a	0	1	1	oewn
+oewn-piano-a	piano	a	0	1	1	oewn
+oewn-piano-n	piano	n	0	1	1	oewn
+oewn-piano-r	piano	r	0	1	1	oewn
+oewn-piano_accordion-n	piano accordion	n	0	2	2	oewn
+oewn-piano_action-n	piano action	n	0	2	2	oewn
+oewn-piano_damper-n	piano damper	n	0	2	2	oewn
+oewn-piano_keyboard-n	piano keyboard	n	0	2	2	oewn
+oewn-piano_lesson-n	piano lesson	n	0	2	2	oewn
+oewn-piano_maker-n	piano maker	n	0	2	2	oewn
+oewn-piano_music-n	piano music	n	0	2	2	oewn
+oewn-piano_player-n	piano player	n	0	2	2	oewn
+oewn-piano_quartet-n	piano quartet	n	0	2	2	oewn
+oewn-piano_reduction-n	piano reduction	n	0	2	2	oewn
+oewn-piano_sonata-n	piano sonata	n	0	2	2	oewn
+oewn-piano_stool-n	piano stool	n	0	2	2	oewn
+oewn-piano_teacher-n	piano teacher	n	0	2	2	oewn
+oewn-piano_transcription-n	piano transcription	n	0	2	2	oewn
+oewn-piano_tuner-n	piano tuner	n	0	2	2	oewn
+oewn-piano_wire-n	piano wire	n	0	2	2	oewn
+oewn-pianoforte-n	pianoforte	n	0	1	1	oewn
+oewn-piassava_palm-n	piassava palm	n	0	2	2	oewn
+oewn-piaster-n	piaster	n	0	1	1	oewn
+oewn-piastre-n	piastre	n	0	1	1	oewn
+oewn-piazza-n	piazza	n	0	1	1	oewn
+oewn-pibgorn-n	pibgorn	n	0	1	1	oewn
+oewn-pibroch-n	pibroch	n	0	1	1	oewn
+oewn-pic-n	pic	n	0	1	1	oewn
+oewn-pica-n	pica	n	0	1	1	oewn
+oewn-pica-pica-n	pica-pica	n	0	1	1	oewn
+oewn-pica_em-n	pica em	n	0	2	2	oewn
+oewn-picador-n	picador	n	0	1	1	oewn
+oewn-picaninny-n	picaninny	n	0	1	1	oewn
+oewn-picaresque-a	picaresque	a	0	1	1	oewn
+oewn-picayune-a	picayune	a	0	1	1	oewn
+oewn-piccalilli-n	piccalilli	n	0	1	1	oewn
+oewn-piccaninny-n	piccaninny	n	0	1	1	oewn
+oewn-piccolo-n	piccolo	n	0	1	1	oewn
+oewn-pichi-n	pichi	n	0	1	1	oewn
+oewn-pichiciago-n	pichiciago	n	0	1	1	oewn
+oewn-pichiciego-n	pichiciego	n	0	1	1	oewn
+oewn-piciform_bird-n	piciform bird	n	0	2	2	oewn
+oewn-pick-mattock-n	pick-mattock	n	0	1	1	oewn
+oewn-pick-me-up-n	pick-me-up	n	0	1	1	oewn
+oewn-pick-n	pick	n	0	1	1	oewn
+oewn-pick-off-n	pick-off	n	0	1	1	oewn
+oewn-pick-v	pick	v	0	1	1	oewn
+oewn-pick_apart-v	pick apart	v	0	2	1	oewn
+oewn-pick_at-v	pick at	v	0	2	1	oewn
+oewn-pick_mattock-n	pick mattock	n	0	2	2	oewn
+oewn-pick_off-v	pick off	v	0	2	1	oewn
+oewn-pick_out-v	pick out	v	0	2	1	oewn
+oewn-pick_over-v	pick over	v	0	2	1	oewn
+oewn-pick_up-v	pick up	v	0	2	1	oewn
+oewn-pick_up_the_gauntlet-v	pick up the gauntlet	v	0	4	1	oewn
+oewn-pickaback-r	pickaback	r	0	1	1	oewn
+oewn-pickaback_plant-n	pickaback plant	n	0	2	2	oewn
+oewn-pickaninny-n	pickaninny	n	0	1	1	oewn
+oewn-pickax-n	pickax	n	0	1	1	oewn
+oewn-pickaxe-n	pickaxe	n	0	1	1	oewn
+oewn-pickelhaube-n	pickelhaube	n	0	1	1	oewn
+oewn-picker-n	picker	n	0	1	1	oewn
+oewn-pickerel-n	pickerel	n	0	1	1	oewn
+oewn-pickerel_frog-n	pickerel frog	n	0	2	2	oewn
+oewn-pickerel_weed-n	pickerel weed	n	0	2	2	oewn
+oewn-pickerelweed-n	pickerelweed	n	0	1	1	oewn
+oewn-picket-n	picket	n	0	1	1	oewn
+oewn-picket-v	picket	v	0	1	1	oewn
+oewn-picket_boat-n	picket boat	n	0	2	2	oewn
+oewn-picket_fence-n	picket fence	n	0	2	2	oewn
+oewn-picket_line-n	picket line	n	0	2	2	oewn
+oewn-picket_ship-n	picket ship	n	0	2	2	oewn
+oewn-picking-n	picking	n	0	1	1	oewn
+oewn-pickings-n	pickings	n	0	1	1	oewn
+oewn-pickle-n	pickle	n	0	1	1	oewn
+oewn-pickle-v	pickle	v	0	1	1	oewn
+oewn-pickle_barrel-n	pickle barrel	n	0	2	2	oewn
+oewn-pickle_relish-n	pickle relish	n	0	2	2	oewn
+oewn-pickled-a	pickled	a	0	1	1	oewn
+oewn-pickled_herring-n	pickled herring	n	0	2	2	oewn
+oewn-picklepuss-n	picklepuss	n	0	1	1	oewn
+oewn-picknicker-n	picknicker	n	0	1	1	oewn
+oewn-pickpocket-n	pickpocket	n	0	1	1	oewn
+oewn-pickup-n	pickup	n	0	1	1	oewn
+oewn-pickup_arm-n	pickup arm	n	0	2	2	oewn
+oewn-pickup_truck-n	pickup truck	n	0	2	2	oewn
+oewn-picky-a	picky	a	0	1	1	oewn
+oewn-picnic-n	picnic	n	0	1	1	oewn
+oewn-picnic-v	picnic	v	0	1	1	oewn
+oewn-picnic_area-n	picnic area	n	0	2	2	oewn
+oewn-picnic_ground-n	picnic ground	n	0	2	2	oewn
+oewn-picnic_ham-n	picnic ham	n	0	2	2	oewn
+oewn-picnic_shoulder-n	picnic shoulder	n	0	2	2	oewn
+oewn-picnicker-n	picnicker	n	0	1	1	oewn
+oewn-picofarad-n	picofarad	n	0	1	1	oewn
+oewn-picometer-n	picometer	n	0	1	1	oewn
+oewn-picometre-n	picometre	n	0	1	1	oewn
+oewn-picornavirus-n	picornavirus	n	0	1	1	oewn
+oewn-picosecond-n	picosecond	n	0	1	1	oewn
+oewn-picot-n	picot	n	0	1	1	oewn
+oewn-picovolt-n	picovolt	n	0	1	1	oewn
+oewn-picric_acid-n	picric acid	n	0	2	2	oewn
+oewn-pictograph-n	pictograph	n	0	1	1	oewn
+oewn-pictographic-a	pictographic	a	0	1	1	oewn
+oewn-pictorial-a	pictorial	a	0	1	1	oewn
+oewn-pictorial-n	pictorial	n	0	1	1	oewn
+oewn-pictorial_matter-n	pictorial matter	n	0	2	2	oewn
+oewn-pictorial_representation-n	pictorial representation	n	0	2	2	oewn
+oewn-pictorially-r	pictorially	r	0	1	1	oewn
+oewn-pictural-a	pictural	a	0	1	1	oewn
+oewn-picture-n	picture	n	0	1	1	oewn
+oewn-picture-v	picture	v	0	1	1	oewn
+oewn-picture_book-n	picture book	n	0	2	2	oewn
+oewn-picture_card-n	picture card	n	0	2	2	oewn
+oewn-picture_element-n	picture element	n	0	2	2	oewn
+oewn-picture_frame-n	picture frame	n	0	2	2	oewn
+oewn-picture_gallery-n	picture gallery	n	0	2	2	oewn
+oewn-picture_hat-n	picture hat	n	0	2	2	oewn
+oewn-picture_palace-n	picture palace	n	0	2	2	oewn
+oewn-picture_plane-n	picture plane	n	0	2	2	oewn
+oewn-picture_postcard-n	picture postcard	n	0	2	2	oewn
+oewn-picture_rail-n	picture rail	n	0	2	2	oewn
+oewn-picture_show-n	picture show	n	0	2	2	oewn
+oewn-picture_taking-n	picture taking	n	0	2	2	oewn
+oewn-picture_tube-n	picture tube	n	0	2	2	oewn
+oewn-picture_window-n	picture window	n	0	2	2	oewn
+oewn-picture_writing-n	picture writing	n	0	2	2	oewn
+oewn-pictured-a	pictured	a	0	1	1	oewn
+oewn-picturesque-a	picturesque	a	0	1	1	oewn
+oewn-picturesquely-r	picturesquely	r	0	1	1	oewn
+oewn-picturesqueness-n	picturesqueness	n	0	1	1	oewn
+oewn-picturing-n	picturing	n	0	1	1	oewn
+oewn-picul-n	picul	n	0	1	1	oewn
+oewn-piculet-n	piculet	n	0	1	1	oewn
+oewn-piddle-n	piddle	n	0	1	1	oewn
+oewn-piddle-v	piddle	v	0	1	1	oewn
+oewn-piddle_away-v	piddle away	v	0	2	1	oewn
+oewn-piddling-a	piddling	a	0	1	1	oewn
+oewn-piddock-n	piddock	n	0	1	1	oewn
+oewn-pidgin-n	pidgin	n	0	1	1	oewn
+oewn-pie-dog-n	pie-dog	n	0	1	1	oewn
+oewn-pie-eyed-a	pie-eyed	a	0	1	1	oewn
+oewn-pie-n	pie	n	0	1	1	oewn
+oewn-pie_chart-n	pie chart	n	0	2	2	oewn
+oewn-pie_crust-n	pie crust	n	0	2	2	oewn
+oewn-pie_plant-n	pie plant	n	0	2	2	oewn
+oewn-pie_shell-n	pie shell	n	0	2	2	oewn
+oewn-piebald-a	piebald	a	0	1	1	oewn
+oewn-piece-dye-v	piece-dye	v	0	1	1	oewn
+oewn-piece-n	piece	n	0	1	1	oewn
+oewn-piece-v	piece	v	0	1	1	oewn
+oewn-piece_de_resistance-n	piece de resistance	n	0	3	1	oewn
+oewn-piece_goods-n	piece goods	n	0	2	2	oewn
+oewn-piece_of_ass-n	piece of ass	n	0	3	1	oewn
+oewn-piece_of_cake-n	piece of cake	n	0	3	1	oewn
+oewn-piece_of_cloth-n	piece of cloth	n	0	3	1	oewn
+oewn-piece_of_eight-n	piece of eight	n	0	3	1	oewn
+oewn-piece_of_furniture-n	piece of furniture	n	0	3	1	oewn
+oewn-piece_of_ground-n	piece of ground	n	0	3	1	oewn
+oewn-piece_of_land-n	piece of land	n	0	3	1	oewn
+oewn-piece_of_leather-n	piece of leather	n	0	3	1	oewn
+oewn-piece_of_material-n	piece of material	n	0	3	1	oewn
+oewn-piece_of_music-n	piece of music	n	0	3	1	oewn
+oewn-piece_of_paper-n	piece of paper	n	0	3	1	oewn
+oewn-piece_of_tail-n	piece of tail	n	0	3	1	oewn
+oewn-piece_of_work-n	piece of work	n	0	3	1	oewn
+oewn-piece_of_writing-n	piece of writing	n	0	3	1	oewn
+oewn-piece_rate-n	piece rate	n	0	2	2	oewn
+oewn-piecemeal-a	piecemeal	a	0	1	1	oewn
+oewn-piecemeal-r	piecemeal	r	0	1	1	oewn
+oewn-piecework-n	piecework	n	0	1	1	oewn
+oewn-pied-a	pied	a	0	1	1	oewn
+oewn-pied-a-terre-n	pied-a-terre	n	0	1	1	oewn
+oewn-pied-billed_grebe-n	pied-billed grebe	n	0	2	2	oewn
+oewn-pied_lemming-n	pied lemming	n	0	2	2	oewn
+oewn-pied_piper-n	pied piper	n	0	2	2	oewn
+oewn-piedmont-n	piedmont	n	0	1	1	oewn
+oewn-pieplant-n	pieplant	n	0	1	1	oewn
+oewn-pier-n	pier	n	0	1	1	oewn
+oewn-pier_arch-n	pier arch	n	0	2	2	oewn
+oewn-pier_glass-n	pier glass	n	0	2	2	oewn
+oewn-pier_mirror-n	pier mirror	n	0	2	2	oewn
+oewn-pier_table-n	pier table	n	0	2	2	oewn
+oewn-pierce-v	pierce	v	0	1	1	oewn
+oewn-pierced-a	pierced	a	0	1	1	oewn
+oewn-piercing-a	piercing	a	0	1	1	oewn
+oewn-piercingly-r	piercingly	r	0	1	1	oewn
+oewn-pierid-n	pierid	n	0	1	1	oewn
+oewn-pierid_butterfly-n	pierid butterfly	n	0	2	2	oewn
+oewn-pieta-n	pieta	n	0	1	1	oewn
+oewn-pietism-n	pietism	n	0	1	1	oewn
+oewn-pietistic-a	pietistic	a	0	1	1	oewn
+oewn-pietistical-a	pietistical	a	0	1	1	oewn
+oewn-piety-n	piety	n	0	1	1	oewn
+oewn-piezo_effect-n	piezo effect	n	0	2	2	oewn
+oewn-piezoelectric-a	piezoelectric	a	0	1	1	oewn
+oewn-piezoelectric_crystal-n	piezoelectric crystal	n	0	2	2	oewn
+oewn-piezoelectric_effect-n	piezoelectric effect	n	0	2	2	oewn
+oewn-piezoelectric_material-n	piezoelectric material	n	0	2	2	oewn
+oewn-piezoelectricity-n	piezoelectricity	n	0	1	1	oewn
+oewn-piezometer-n	piezometer	n	0	1	1	oewn
+oewn-piffle-n	piffle	n	0	1	1	oewn
+oewn-piffle-v	piffle	v	0	1	1	oewn
+oewn-piffling-a	piffling	a	0	1	1	oewn
+oewn-pig-a-back-r	pig-a-back	r	0	1	1	oewn
+oewn-pig-ap-s_ears-n	pig's ears	n	0	2	2	oewn
+oewn-pig-headedly-r	pig-headedly	r	0	1	1	oewn
+oewn-pig-n	pig	n	0	1	1	oewn
+oewn-pig-sized-a	pig-sized	a	0	1	1	oewn
+oewn-pig-v	pig	v	0	1	1	oewn
+oewn-pig_bed-n	pig bed	n	0	2	2	oewn
+oewn-pig_farm-n	pig farm	n	0	2	2	oewn
+oewn-pig_iron-n	pig iron	n	0	2	2	oewn
+oewn-pig_it-v	pig it	v	0	2	1	oewn
+oewn-pig_laurel-n	pig laurel	n	0	2	2	oewn
+oewn-pig_lead-n	pig lead	n	0	2	2	oewn
+oewn-pig_out-v	pig out	v	0	2	1	oewn
+oewn-pigboat-n	pigboat	n	0	1	1	oewn
+oewn-pigeon-breasted-a	pigeon-breasted	a	0	1	1	oewn
+oewn-pigeon-n	pigeon	n	0	1	1	oewn
+oewn-pigeon-pea_plant-n	pigeon-pea plant	n	0	2	2	oewn
+oewn-pigeon-toed-a	pigeon-toed	a	0	1	1	oewn
+oewn-pigeon_berry-n	pigeon berry	n	0	2	2	oewn
+oewn-pigeon_breast-n	pigeon breast	n	0	2	2	oewn
+oewn-pigeon_droppings-n	pigeon droppings	n	0	2	2	oewn
+oewn-pigeon_guillemot-n	pigeon guillemot	n	0	2	2	oewn
+oewn-pigeon_hawk-n	pigeon hawk	n	0	2	2	oewn
+oewn-pigeon_keeping-n	pigeon keeping	n	0	2	2	oewn
+oewn-pigeon_loft-n	pigeon loft	n	0	2	2	oewn
+oewn-pigeon_pea-n	pigeon pea	n	0	2	2	oewn
+oewn-pigeon_toes-n	pigeon toes	n	0	2	2	oewn
+oewn-pigeonhole-n	pigeonhole	n	0	1	1	oewn
+oewn-pigeonhole-v	pigeonhole	v	0	1	1	oewn
+oewn-pigeonholing-n	pigeonholing	n	0	1	1	oewn
+oewn-pigfish-n	pigfish	n	0	1	1	oewn
+oewn-piggery-n	piggery	n	0	1	1	oewn
+oewn-piggish-a	piggish	a	0	1	1	oewn
+oewn-piggishly-r	piggishly	r	0	1	1	oewn
+oewn-piggishness-n	piggishness	n	0	1	1	oewn
+oewn-piggy-a	piggy	a	0	1	1	oewn
+oewn-piggy-n	piggy	n	0	1	1	oewn
+oewn-piggy_bank-n	piggy bank	n	0	2	2	oewn
+oewn-piggyback-n	piggyback	n	0	1	1	oewn
+oewn-piggyback-r	piggyback	r	0	1	1	oewn
+oewn-piggyback-v	piggyback	v	0	1	1	oewn
+oewn-piggyback_plant-n	piggyback plant	n	0	2	2	oewn
+oewn-pigheaded-a	pigheaded	a	0	1	1	oewn
+oewn-pigheadedness-n	pigheadedness	n	0	1	1	oewn
+oewn-piglet-n	piglet	n	0	1	1	oewn
+oewn-pigman-n	pigman	n	0	1	1	oewn
+oewn-pigment-n	pigment	n	0	1	1	oewn
+oewn-pigment-v	pigment	v	0	1	1	oewn
+oewn-pigmentation-n	pigmentation	n	0	1	1	oewn
+oewn-pigmy-n	pigmy	n	0	1	1	oewn
+oewn-pigmy_talinum-n	pigmy talinum	n	0	2	2	oewn
+oewn-pignolia-n	pignolia	n	0	1	1	oewn
+oewn-pignut-n	pignut	n	0	1	1	oewn
+oewn-pignut_hickory-n	pignut hickory	n	0	2	2	oewn
+oewn-pigpen-n	pigpen	n	0	1	1	oewn
+oewn-pigs-ap-_feet-n	pigs' feet	n	0	2	2	oewn
+oewn-pigs-ap-_knuckles-n	pigs' knuckles	n	0	2	2	oewn
+oewn-pigs_in_blankets-n	pigs in blankets	n	0	3	1	oewn
+oewn-pigskin-n	pigskin	n	0	1	1	oewn
+oewn-pigsticking-n	pigsticking	n	0	1	1	oewn
+oewn-pigsty-n	pigsty	n	0	1	1	oewn
+oewn-pigswill-n	pigswill	n	0	1	1	oewn
+oewn-pigtail-n	pigtail	n	0	1	1	oewn
+oewn-pigwash-n	pigwash	n	0	1	1	oewn
+oewn-pigweed-n	pigweed	n	0	1	1	oewn
+oewn-pika-n	pika	n	0	1	1	oewn
+oewn-pike-n	pike	n	0	1	1	oewn
+oewn-pike-perch-n	pike-perch	n	0	1	1	oewn
+oewn-pike_perch-n	pike perch	n	0	2	2	oewn
+oewn-pikeblenny-n	pikeblenny	n	0	1	1	oewn
+oewn-piked_reverse_hang-n	piked reverse hang	n	0	3	3	oewn
+oewn-piked_whale-n	piked whale	n	0	2	2	oewn
+oewn-pikestaff-n	pikestaff	n	0	1	1	oewn
+oewn-pilaf-n	pilaf	n	0	1	1	oewn
+oewn-pilaff-n	pilaff	n	0	1	1	oewn
+oewn-pilar-a	pilar	a	0	1	1	oewn
+oewn-pilar_cyst-n	pilar cyst	n	0	2	2	oewn
+oewn-pilary-a	pilary	a	0	1	1	oewn
+oewn-pilaster-n	pilaster	n	0	1	1	oewn
+oewn-pilau-n	pilau	n	0	1	1	oewn
+oewn-pilaw-n	pilaw	n	0	1	1	oewn
+oewn-pilchard-n	pilchard	n	0	1	1	oewn
+oewn-pile-n	pile	n	0	1	1	oewn
+oewn-pile-v	pile	v	0	1	1	oewn
+oewn-pile_driver-n	pile driver	n	0	2	2	oewn
+oewn-pile_dwelling-n	pile dwelling	n	0	2	2	oewn
+oewn-pile_up-v	pile up	v	0	2	1	oewn
+oewn-piles-n	piles	n	0	1	1	oewn
+oewn-pileup-n	pileup	n	0	1	1	oewn
+oewn-pileus-n	pileus	n	0	1	1	oewn
+oewn-pilewort-n	pilewort	n	0	1	1	oewn
+oewn-pilfer-v	pilfer	v	0	1	1	oewn
+oewn-pilferage-n	pilferage	n	0	1	1	oewn
+oewn-pilferer-n	pilferer	n	0	1	1	oewn
+oewn-pilgrim-ap-s_journey-n	pilgrim's journey	n	0	2	2	oewn
+oewn-pilgrim-n	pilgrim	n	0	1	1	oewn
+oewn-pilgrimage-n	pilgrimage	n	0	1	1	oewn
+oewn-piling-n	piling	n	0	1	1	oewn
+oewn-piling_hammer-n	piling hammer	n	0	2	2	oewn
+oewn-pill-n	pill	n	0	1	1	oewn
+oewn-pill_bottle-n	pill bottle	n	0	2	2	oewn
+oewn-pill_bug-n	pill bug	n	0	2	2	oewn
+oewn-pill_head-n	pill head	n	0	2	2	oewn
+oewn-pill_pusher-n	pill pusher	n	0	2	2	oewn
+oewn-pill_roller-n	pill roller	n	0	2	2	oewn
+oewn-pillage-n	pillage	n	0	1	1	oewn
+oewn-pillage-v	pillage	v	0	1	1	oewn
+oewn-pillaged-a	pillaged	a	0	1	1	oewn
+oewn-pillager-n	pillager	n	0	1	1	oewn
+oewn-pillaging-n	pillaging	n	0	1	1	oewn
+oewn-pillar-n	pillar	n	0	1	1	oewn
+oewn-pillar-shaped-a	pillar-shaped	a	0	1	1	oewn
+oewn-pillar_box-n	pillar box	n	0	2	2	oewn
+oewn-pillar_of_Islam-n	pillar of Islam	n	0	3	1	oewn
+oewn-pillar_of_strength-n	pillar of strength	n	0	3	1	oewn
+oewn-pillared-a	pillared	a	0	1	1	oewn
+oewn-pillbox-n	pillbox	n	0	1	1	oewn
+oewn-pillion-n	pillion	n	0	1	1	oewn
+oewn-pillock-n	pillock	n	0	1	1	oewn
+oewn-pillory-n	pillory	n	0	1	1	oewn
+oewn-pillory-v	pillory	v	0	1	1	oewn
+oewn-pillow-n	pillow	n	0	1	1	oewn
+oewn-pillow-v	pillow	v	0	1	1	oewn
+oewn-pillow_block-n	pillow block	n	0	2	2	oewn
+oewn-pillow_fight-n	pillow fight	n	0	2	2	oewn
+oewn-pillow_lace-n	pillow lace	n	0	2	2	oewn
+oewn-pillow_lava-n	pillow lava	n	0	2	2	oewn
+oewn-pillow_sham-n	pillow sham	n	0	2	2	oewn
+oewn-pillow_slip-n	pillow slip	n	0	2	2	oewn
+oewn-pillow_talk-n	pillow talk	n	0	2	2	oewn
+oewn-pillowcase-n	pillowcase	n	0	1	1	oewn
+oewn-pillwort-n	pillwort	n	0	1	1	oewn
+oewn-pilocarpine-n	pilocarpine	n	0	1	1	oewn
+oewn-pilomotor_reflex-n	pilomotor reflex	n	0	2	2	oewn
+oewn-pilose-a	pilose	a	0	1	1	oewn
+oewn-pilosebaceous-a	pilosebaceous	a	0	1	1	oewn
+oewn-pilosity-n	pilosity	n	0	1	1	oewn
+oewn-pilot-n	pilot	n	0	1	1	oewn
+oewn-pilot-v	pilot	v	0	1	1	oewn
+oewn-pilot_balloon-n	pilot balloon	n	0	2	2	oewn
+oewn-pilot_biscuit-n	pilot biscuit	n	0	2	2	oewn
+oewn-pilot_bit-n	pilot bit	n	0	2	2	oewn
+oewn-pilot_blacksnake-n	pilot blacksnake	n	0	2	2	oewn
+oewn-pilot_boat-n	pilot boat	n	0	2	2	oewn
+oewn-pilot_bread-n	pilot bread	n	0	2	2	oewn
+oewn-pilot_burner-n	pilot burner	n	0	2	2	oewn
+oewn-pilot_chart-n	pilot chart	n	0	2	2	oewn
+oewn-pilot_cloth-n	pilot cloth	n	0	2	2	oewn
+oewn-pilot_engine-n	pilot engine	n	0	2	2	oewn
+oewn-pilot_experiment-n	pilot experiment	n	0	2	2	oewn
+oewn-pilot_film-n	pilot film	n	0	2	2	oewn
+oewn-pilot_ladder-n	pilot ladder	n	0	2	2	oewn
+oewn-pilot_lamp-n	pilot lamp	n	0	2	2	oewn
+oewn-pilot_light-n	pilot light	n	0	2	2	oewn
+oewn-pilot_program-n	pilot program	n	0	2	2	oewn
+oewn-pilot_project-n	pilot project	n	0	2	2	oewn
+oewn-pilot_whale-n	pilot whale	n	0	2	2	oewn
+oewn-pilotage-n	pilotage	n	0	1	1	oewn
+oewn-pilotfish-n	pilotfish	n	0	1	1	oewn
+oewn-pilothouse-n	pilothouse	n	0	1	1	oewn
+oewn-piloting-n	piloting	n	0	1	1	oewn
+oewn-pilotless-a	pilotless	a	0	1	1	oewn
+oewn-pilotless_aircraft-n	pilotless aircraft	n	0	2	2	oewn
+oewn-pilous-a	pilous	a	0	1	1	oewn
+oewn-pilus-n	pilus	n	0	1	1	oewn
+oewn-pimento-n	pimento	n	0	1	1	oewn
+oewn-pimento_butter-n	pimento butter	n	0	2	2	oewn
+oewn-pimento_tree-n	pimento tree	n	0	2	2	oewn
+oewn-pimiento-n	pimiento	n	0	1	1	oewn
+oewn-pimozide-n	pimozide	n	0	1	1	oewn
+oewn-pimp-n	pimp	n	0	1	1	oewn
+oewn-pimp-v	pimp	v	0	1	1	oewn
+oewn-pimpernel-n	pimpernel	n	0	1	1	oewn
+oewn-pimple-n	pimple	n	0	1	1	oewn
+oewn-pimpled-a	pimpled	a	0	1	1	oewn
+oewn-pimply-a	pimply	a	0	1	1	oewn
+oewn-pin-n	pin	n	0	1	1	oewn
+oewn-pin-tailed_duck-n	pin-tailed duck	n	0	2	2	oewn
+oewn-pin-tailed_grouse-n	pin-tailed grouse	n	0	2	2	oewn
+oewn-pin-tailed_sandgrouse-n	pin-tailed sandgrouse	n	0	2	2	oewn
+oewn-pin-up-n	pin-up	n	0	1	1	oewn
+oewn-pin-v	pin	v	0	1	1	oewn
+oewn-pin_bone-n	pin bone	n	0	2	2	oewn
+oewn-pin_cherry-n	pin cherry	n	0	2	2	oewn
+oewn-pin_clover-n	pin clover	n	0	2	2	oewn
+oewn-pin_curl-n	pin curl	n	0	2	2	oewn
+oewn-pin_down-v	pin down	v	0	2	1	oewn
+oewn-pin_grass-n	pin grass	n	0	2	2	oewn
+oewn-pin_money-n	pin money	n	0	2	2	oewn
+oewn-pin_oak-n	pin oak	n	0	2	2	oewn
+oewn-pin_on-v	pin on	v	0	2	1	oewn
+oewn-pin_table-n	pin table	n	0	2	2	oewn
+oewn-pin_tumbler-n	pin tumbler	n	0	2	2	oewn
+oewn-pin_up-v	pin up	v	0	2	1	oewn
+oewn-pin_wrench-n	pin wrench	n	0	2	2	oewn
+oewn-pina_cloth-n	pina cloth	n	0	2	2	oewn
+oewn-pina_colada-n	pina colada	n	0	2	2	oewn
+oewn-pinafore-n	pinafore	n	0	1	1	oewn
+oewn-pinata-n	pinata	n	0	1	1	oewn
+oewn-pinball-n	pinball	n	0	1	1	oewn
+oewn-pinball_game-n	pinball game	n	0	2	2	oewn
+oewn-pinball_machine-n	pinball machine	n	0	2	2	oewn
+oewn-pince-nez-n	pince-nez	n	0	1	1	oewn
+oewn-pincer-n	pincer	n	0	1	1	oewn
+oewn-pinch-n	pinch	n	0	1	1	oewn
+oewn-pinch-v	pinch	v	0	1	1	oewn
+oewn-pinch_bar-n	pinch bar	n	0	2	2	oewn
+oewn-pinch_hitter-n	pinch hitter	n	0	2	2	oewn
+oewn-pinchbeck-a	pinchbeck	a	0	1	1	oewn
+oewn-pinchbeck-n	pinchbeck	n	0	1	1	oewn
+oewn-pinche-n	pinche	n	0	1	1	oewn
+oewn-pinched-a	pinched	a	0	1	1	oewn
+oewn-pinchgut-n	pinchgut	n	0	1	1	oewn
+oewn-pincurl_clip-n	pincurl clip	n	0	2	2	oewn
+oewn-pincushion-n	pincushion	n	0	1	1	oewn
+oewn-pincushion_flower-n	pincushion flower	n	0	2	2	oewn
+oewn-pincushion_hakea-n	pincushion hakea	n	0	2	2	oewn
+oewn-pindolol-n	pindolol	n	0	1	1	oewn
+oewn-pine-barren_sandwort-n	pine-barren sandwort	n	0	2	2	oewn
+oewn-pine-n	pine	n	0	1	1	oewn
+oewn-pine-tar_rag-n	pine-tar rag	n	0	2	2	oewn
+oewn-pine-v	pine	v	0	1	1	oewn
+oewn-pine-weed-n	pine-weed	n	0	1	1	oewn
+oewn-pine_away-v	pine away	v	0	2	1	oewn
+oewn-pine_fern-n	pine fern	n	0	2	2	oewn
+oewn-pine_finch-n	pine finch	n	0	2	2	oewn
+oewn-pine_grosbeak-n	pine grosbeak	n	0	2	2	oewn
+oewn-pine_hyacinth-n	pine hyacinth	n	0	2	2	oewn
+oewn-pine_knot-n	pine knot	n	0	2	2	oewn
+oewn-pine_leaf_aphid-n	pine leaf aphid	n	0	3	3	oewn
+oewn-pine_lily-n	pine lily	n	0	2	2	oewn
+oewn-pine_lizard-n	pine lizard	n	0	2	2	oewn
+oewn-pine_marten-n	pine marten	n	0	2	2	oewn
+oewn-pine_mouse-n	pine mouse	n	0	2	2	oewn
+oewn-pine_nut-n	pine nut	n	0	2	2	oewn
+oewn-pine_sawyer-n	pine sawyer	n	0	2	2	oewn
+oewn-pine_siskin-n	pine siskin	n	0	2	2	oewn
+oewn-pine_snake-n	pine snake	n	0	2	2	oewn
+oewn-pine_spittlebug-n	pine spittlebug	n	0	2	2	oewn
+oewn-pine_tar-n	pine tar	n	0	2	2	oewn
+oewn-pine_tree-n	pine tree	n	0	2	2	oewn
+oewn-pine_vole-n	pine vole	n	0	2	2	oewn
+oewn-pineal-a	pineal	a	0	1	1	oewn
+oewn-pineal_body-n	pineal body	n	0	2	2	oewn
+oewn-pineal_eye-n	pineal eye	n	0	2	2	oewn
+oewn-pineal_gland-n	pineal gland	n	0	2	2	oewn
+oewn-pinealoma-n	pinealoma	n	0	1	1	oewn
+oewn-pineapple-n	pineapple	n	0	1	1	oewn
+oewn-pineapple_guava-n	pineapple guava	n	0	2	2	oewn
+oewn-pineapple_juice-n	pineapple juice	n	0	2	2	oewn
+oewn-pineapple_plant-n	pineapple plant	n	0	2	2	oewn
+oewn-pineapple_weed-n	pineapple weed	n	0	2	2	oewn
+oewn-pinecone-n	pinecone	n	0	1	1	oewn
+oewn-pinesap-n	pinesap	n	0	1	1	oewn
+oewn-pinetum-n	pinetum	n	0	1	1	oewn
+oewn-pineweed-n	pineweed	n	0	1	1	oewn
+oewn-pinfish-n	pinfish	n	0	1	1	oewn
+oewn-pinfold-n	pinfold	n	0	1	1	oewn
+oewn-ping-n	ping	n	0	1	1	oewn
+oewn-ping-pong_ball-n	ping-pong ball	n	0	2	2	oewn
+oewn-ping-pong_table-n	ping-pong table	n	0	2	2	oewn
+oewn-ping-v	ping	v	0	1	1	oewn
+oewn-ping_pong-n	ping pong	n	0	2	2	oewn
+oewn-pinger-n	pinger	n	0	1	1	oewn
+oewn-pingpong_paddle-n	pingpong paddle	n	0	2	2	oewn
+oewn-pingpong_table-n	pingpong table	n	0	2	2	oewn
+oewn-pinguecula-n	pinguecula	n	0	1	1	oewn
+oewn-pinhead-n	pinhead	n	0	1	1	oewn
+oewn-pinhole-n	pinhole	n	0	1	1	oewn
+oewn-pining-n	pining	n	0	1	1	oewn
+oewn-pinion-n	pinion	n	0	1	1	oewn
+oewn-pinion-v	pinion	v	0	1	1	oewn
+oewn-pinion_and_crown_wheel-n	pinion and crown wheel	n	0	4	4	oewn
+oewn-pinion_and_ring_gear-n	pinion and ring gear	n	0	4	4	oewn
+oewn-pinioned-a	pinioned	a	0	1	1	oewn
+oewn-pinite-n	pinite	n	0	1	1	oewn
+oewn-pink-a	pink	a	0	1	1	oewn
+oewn-pink-and-white_everlasting-n	pink-and-white everlasting	n	0	2	2	oewn
+oewn-pink-collar-a	pink-collar	a	0	1	1	oewn
+oewn-pink-lavender-a	pink-lavender	a	0	1	1	oewn
+oewn-pink-n	pink	n	0	1	1	oewn
+oewn-pink-orange-a	pink-orange	a	0	1	1	oewn
+oewn-pink-purple-a	pink-purple	a	0	1	1	oewn
+oewn-pink-red-a	pink-red	a	0	1	1	oewn
+oewn-pink-slipped-a	pink-slipped	a	0	1	1	oewn
+oewn-pink-tinged-a	pink-tinged	a	0	1	1	oewn
+oewn-pink-tipped-a	pink-tipped	a	0	1	1	oewn
+oewn-pink-v	pink	v	0	1	1	oewn
+oewn-pink_bollworm-n	pink bollworm	n	0	2	2	oewn
+oewn-pink_calla-n	pink calla	n	0	2	2	oewn
+oewn-pink_cockatoo-n	pink cockatoo	n	0	2	2	oewn
+oewn-pink_disease-n	pink disease	n	0	2	2	oewn
+oewn-pink_disease_fungus-n	pink disease fungus	n	0	3	3	oewn
+oewn-pink_elephants-n	pink elephants	n	0	2	2	oewn
+oewn-pink_fivecorner-n	pink fivecorner	n	0	2	2	oewn
+oewn-pink_fritillary-n	pink fritillary	n	0	2	2	oewn
+oewn-pink_lady-n	pink lady	n	0	2	2	oewn
+oewn-pink_of_my_John-n	pink of my John	n	0	4	1	oewn
+oewn-pink_paper_daisy-n	pink paper daisy	n	0	3	3	oewn
+oewn-pink_sand_verbena-n	pink sand verbena	n	0	3	3	oewn
+oewn-pink_shower-n	pink shower	n	0	2	2	oewn
+oewn-pink_shower_tree-n	pink shower tree	n	0	3	3	oewn
+oewn-pink_slip-n	pink slip	n	0	2	2	oewn
+oewn-pink_wine-n	pink wine	n	0	2	2	oewn
+oewn-pinkeye-n	pinkeye	n	0	1	1	oewn
+oewn-pinkie-n	pinkie	n	0	1	1	oewn
+oewn-pinkify-v	pinkify	v	0	1	1	oewn
+oewn-pinkish-a	pinkish	a	0	1	1	oewn
+oewn-pinkish-lavender-a	pinkish-lavender	a	0	1	1	oewn
+oewn-pinkish-orange-a	pinkish-orange	a	0	1	1	oewn
+oewn-pinkish-purple-a	pinkish-purple	a	0	1	1	oewn
+oewn-pinkish-white-a	pinkish-white	a	0	1	1	oewn
+oewn-pinkness-n	pinkness	n	0	1	1	oewn
+oewn-pinko-n	pinko	n	0	1	1	oewn
+oewn-pinkroot-n	pinkroot	n	0	1	1	oewn
+oewn-pinky-n	pinky	n	0	1	1	oewn
+oewn-pinna-n	pinna	n	0	1	1	oewn
+oewn-pinnace-n	pinnace	n	0	1	1	oewn
+oewn-pinnacle-n	pinnacle	n	0	1	1	oewn
+oewn-pinnacle-v	pinnacle	v	0	1	1	oewn
+oewn-pinnate-a	pinnate	a	0	1	1	oewn
+oewn-pinnate-leafed-a	pinnate-leafed	a	0	1	1	oewn
+oewn-pinnate-leaved-a	pinnate-leaved	a	0	1	1	oewn
+oewn-pinnate_leaf-n	pinnate leaf	n	0	2	2	oewn
+oewn-pinnated-a	pinnated	a	0	1	1	oewn
+oewn-pinnately-r	pinnately	r	0	1	1	oewn
+oewn-pinnatifid-a	pinnatifid	a	0	1	1	oewn
+oewn-pinnatiped-n	pinnatiped	n	0	1	1	oewn
+oewn-pinnatisect-a	pinnatisect	a	0	1	1	oewn
+oewn-pinner-n	pinner	n	0	1	1	oewn
+oewn-pinning-n	pinning	n	0	1	1	oewn
+oewn-pinniped-n	pinniped	n	0	1	1	oewn
+oewn-pinniped_mammal-n	pinniped mammal	n	0	2	2	oewn
+oewn-pinnule-n	pinnule	n	0	1	1	oewn
+oewn-pinny-n	pinny	n	0	1	1	oewn
+oewn-pinochle-n	pinochle	n	0	1	1	oewn
+oewn-pinocle-n	pinocle	n	0	1	1	oewn
+oewn-pinocytosis-n	pinocytosis	n	0	1	1	oewn
+oewn-pinole-n	pinole	n	0	1	1	oewn
+oewn-pinon-n	pinon	n	0	1	1	oewn
+oewn-pinon_nut-n	pinon nut	n	0	2	2	oewn
+oewn-pinon_pine-n	pinon pine	n	0	2	2	oewn
+oewn-pinpoint-n	pinpoint	n	0	1	1	oewn
+oewn-pinpoint-v	pinpoint	v	0	1	1	oewn
+oewn-pinprick-n	pinprick	n	0	1	1	oewn
+oewn-pins_and_needles-n	pins and needles	n	0	3	3	oewn
+oewn-pinscher-n	pinscher	n	0	1	1	oewn
+oewn-pinstripe-n	pinstripe	n	0	1	1	oewn
+oewn-pinstriped-a	pinstriped	a	0	1	1	oewn
+oewn-pint-n	pint	n	0	1	1	oewn
+oewn-pint-size-a	pint-size	a	0	1	1	oewn
+oewn-pint-sized-a	pint-sized	a	0	1	1	oewn
+oewn-pintado-n	pintado	n	0	1	1	oewn
+oewn-pintail-n	pintail	n	0	1	1	oewn
+oewn-pintle-n	pintle	n	0	1	1	oewn
+oewn-pinto-n	pinto	n	0	1	1	oewn
+oewn-pinto_bean-n	pinto bean	n	0	2	2	oewn
+oewn-pinwheel-n	pinwheel	n	0	1	1	oewn
+oewn-pinwheel-shaped-a	pinwheel-shaped	a	0	1	1	oewn
+oewn-pinwheel_flower-n	pinwheel flower	n	0	2	2	oewn
+oewn-pinwheel_roll-n	pinwheel roll	n	0	2	2	oewn
+oewn-pinwheel_wind_collector-n	pinwheel wind collector	n	0	3	3	oewn
+oewn-pinworm-n	pinworm	n	0	1	1	oewn
+oewn-pinyon-n	pinyon	n	0	1	1	oewn
+oewn-piolet-n	piolet	n	0	1	1	oewn
+oewn-pion-n	pion	n	0	1	1	oewn
+oewn-pioneer-n	pioneer	n	0	1	1	oewn
+oewn-pioneer-v	pioneer	v	0	1	1	oewn
+oewn-pious-a	pious	a	0	1	1	oewn
+oewn-pious_platitude-n	pious platitude	n	0	2	2	oewn
+oewn-piously-r	piously	r	0	1	1	oewn
+oewn-piousness-n	piousness	n	0	1	1	oewn
+oewn-pip-n	pip	n	0	1	1	oewn
+oewn-pip-squeak-n	pip-squeak	n	0	1	1	oewn
+oewn-pip-v	pip	v	0	1	1	oewn
+oewn-pip_out-v	pip out	v	0	2	1	oewn
+oewn-pipage-n	pipage	n	0	1	1	oewn
+oewn-pipal-n	pipal	n	0	1	1	oewn
+oewn-pipal_tree-n	pipal tree	n	0	2	2	oewn
+oewn-pipe-clay-v	pipe-clay	v	0	1	1	oewn
+oewn-pipe-n	pipe	n	0	1	1	oewn
+oewn-pipe-v	pipe	v	0	1	1	oewn
+oewn-pipe_bomb-n	pipe bomb	n	0	2	2	oewn
+oewn-pipe_bowl-n	pipe bowl	n	0	2	2	oewn
+oewn-pipe_clamp-n	pipe clamp	n	0	2	2	oewn
+oewn-pipe_cleaner-n	pipe cleaner	n	0	2	2	oewn
+oewn-pipe_cutter-n	pipe cutter	n	0	2	2	oewn
+oewn-pipe_down-v	pipe down	v	0	2	1	oewn
+oewn-pipe_dream-n	pipe dream	n	0	2	2	oewn
+oewn-pipe_fitter-n	pipe fitter	n	0	2	2	oewn
+oewn-pipe_fitting-n	pipe fitting	n	0	2	2	oewn
+oewn-pipe_in-v	pipe in	v	0	2	1	oewn
+oewn-pipe_major-n	pipe major	n	0	2	2	oewn
+oewn-pipe_of_peace-n	pipe of peace	n	0	3	1	oewn
+oewn-pipe_organ-n	pipe organ	n	0	2	2	oewn
+oewn-pipe_rack-n	pipe rack	n	0	2	2	oewn
+oewn-pipe_smoker-n	pipe smoker	n	0	2	2	oewn
+oewn-pipe_up-v	pipe up	v	0	2	1	oewn
+oewn-pipe_vine-n	pipe vine	n	0	2	2	oewn
+oewn-pipe_vise-n	pipe vise	n	0	2	2	oewn
+oewn-pipe_wrench-n	pipe wrench	n	0	2	2	oewn
+oewn-pipeclay-n	pipeclay	n	0	1	1	oewn
+oewn-pipefish-n	pipefish	n	0	1	1	oewn
+oewn-pipefitting-n	pipefitting	n	0	1	1	oewn
+oewn-pipeful-n	pipeful	n	0	1	1	oewn
+oewn-pipeline-n	pipeline	n	0	1	1	oewn
+oewn-pipeline_company-n	pipeline company	n	0	2	2	oewn
+oewn-piper-n	piper	n	0	1	1	oewn
+oewn-piperacillin-n	piperacillin	n	0	1	1	oewn
+oewn-piperazine-n	piperazine	n	0	1	1	oewn
+oewn-piperin-n	piperin	n	0	1	1	oewn
+oewn-piperine-n	piperine	n	0	1	1	oewn
+oewn-piperocaine-n	piperocaine	n	0	1	1	oewn
+oewn-piperocaine_hydrochloride-n	piperocaine hydrochloride	n	0	2	2	oewn
+oewn-pipestem_clematis-n	pipestem clematis	n	0	2	2	oewn
+oewn-pipet-n	pipet	n	0	1	1	oewn
+oewn-pipette-n	pipette	n	0	1	1	oewn
+oewn-pipework-n	pipework	n	0	1	1	oewn
+oewn-pipewort-n	pipewort	n	0	1	1	oewn
+oewn-piping-n	piping	n	0	1	1	oewn
+oewn-piping-r	piping	r	0	1	1	oewn
+oewn-piping_crow-n	piping crow	n	0	2	2	oewn
+oewn-piping_crow-shrike-n	piping crow-shrike	n	0	2	2	oewn
+oewn-piping_guan-n	piping guan	n	0	2	2	oewn
+oewn-piping_plover-n	piping plover	n	0	2	2	oewn
+oewn-pipistrel-n	pipistrel	n	0	1	1	oewn
+oewn-pipistrelle-n	pipistrelle	n	0	1	1	oewn
+oewn-pipit-n	pipit	n	0	1	1	oewn
+oewn-pipsissewa-n	pipsissewa	n	0	1	1	oewn
+oewn-pipul-n	pipul	n	0	1	1	oewn
+oewn-piquance-n	piquance	n	0	1	1	oewn
+oewn-piquancy-n	piquancy	n	0	1	1	oewn
+oewn-piquant-a	piquant	a	0	1	1	oewn
+oewn-piquantly-r	piquantly	r	0	1	1	oewn
+oewn-piquantness-n	piquantness	n	0	1	1	oewn
+oewn-pique-n	pique	n	0	1	1	oewn
+oewn-pique-v	pique	v	0	1	1	oewn
+oewn-piquet-n	piquet	n	0	1	1	oewn
+oewn-piracy-n	piracy	n	0	1	1	oewn
+oewn-pirana-n	pirana	n	0	1	1	oewn
+oewn-piranha-n	piranha	n	0	1	1	oewn
+oewn-pirate-n	pirate	n	0	1	1	oewn
+oewn-pirate-v	pirate	v	0	1	1	oewn
+oewn-pirate_flag-n	pirate flag	n	0	2	2	oewn
+oewn-pirate_ship-n	pirate ship	n	0	2	2	oewn
+oewn-piratical-a	piratical	a	0	1	1	oewn
+oewn-piratically-r	piratically	r	0	1	1	oewn
+oewn-piriform_area-n	piriform area	n	0	2	2	oewn
+oewn-piriform_lobe-n	piriform lobe	n	0	2	2	oewn
+oewn-pirogi-n	pirogi	n	0	1	1	oewn
+oewn-pirogue-n	pirogue	n	0	1	1	oewn
+oewn-piroplasm-n	piroplasm	n	0	1	1	oewn
+oewn-piroshki-n	piroshki	n	0	1	1	oewn
+oewn-pirouette-n	pirouette	n	0	1	1	oewn
+oewn-pirouette-v	pirouette	v	0	1	1	oewn
+oewn-piroxicam-n	piroxicam	n	0	1	1	oewn
+oewn-pirozhki-n	pirozhki	n	0	1	1	oewn
+oewn-pis_aller-n	pis aller	n	0	2	2	oewn
+oewn-pisang_wax-n	pisang wax	n	0	2	2	oewn
+oewn-pisanosaur-n	pisanosaur	n	0	1	1	oewn
+oewn-pisanosaurus-n	pisanosaurus	n	0	1	1	oewn
+oewn-piscary-n	piscary	n	0	1	1	oewn
+oewn-piscatorial-a	piscatorial	a	0	1	1	oewn
+oewn-piscatory-a	piscatory	a	0	1	1	oewn
+oewn-piscine-a	piscine	a	0	1	1	oewn
+oewn-piscivorous-a	piscivorous	a	0	1	1	oewn
+oewn-pisha_paysha-n	pisha paysha	n	0	2	2	oewn
+oewn-pisiform-n	pisiform	n	0	1	1	oewn
+oewn-pisiform_bone-n	pisiform bone	n	0	2	2	oewn
+oewn-pismire-n	pismire	n	0	1	1	oewn
+oewn-piss-n	piss	n	0	1	1	oewn
+oewn-piss-up-n	piss-up	n	0	1	1	oewn
+oewn-piss-v	piss	v	0	1	1	oewn
+oewn-pissaba_palm-n	pissaba palm	n	0	2	2	oewn
+oewn-pissed-a	pissed	a	0	1	1	oewn
+oewn-pissed_off-a	pissed off	a	0	2	2	oewn
+oewn-pisser-n	pisser	n	0	1	1	oewn
+oewn-pissing-n	pissing	n	0	1	1	oewn
+oewn-pistachio-n	pistachio	n	0	1	1	oewn
+oewn-pistachio_green-n	pistachio green	n	0	2	2	oewn
+oewn-pistachio_nut-n	pistachio nut	n	0	2	2	oewn
+oewn-pistachio_tree-n	pistachio tree	n	0	2	2	oewn
+oewn-piste-n	piste	n	0	1	1	oewn
+oewn-pistia-n	pistia	n	0	1	1	oewn
+oewn-pistil-n	pistil	n	0	1	1	oewn
+oewn-pistillate-a	pistillate	a	0	1	1	oewn
+oewn-pistillode-n	pistillode	n	0	1	1	oewn
+oewn-pistol-n	pistol	n	0	1	1	oewn
+oewn-pistol-whip-v	pistol-whip	v	0	1	1	oewn
+oewn-pistol_grip-n	pistol grip	n	0	2	2	oewn
+oewn-pistol_shrimp-n	pistol shrimp	n	0	2	2	oewn
+oewn-pistoleer-n	pistoleer	n	0	1	1	oewn
+oewn-piston-n	piston	n	0	1	1	oewn
+oewn-piston_chamber-n	piston chamber	n	0	2	2	oewn
+oewn-piston_ring-n	piston ring	n	0	2	2	oewn
+oewn-piston_rod-n	piston rod	n	0	2	2	oewn
+oewn-pistonphone-n	pistonphone	n	0	1	1	oewn
+oewn-pit-a-pat-r	pit-a-pat	r	0	1	1	oewn
+oewn-pit-house-n	pit-house	n	0	1	1	oewn
+oewn-pit-n	pit	n	0	1	1	oewn
+oewn-pit-run_gravel-n	pit-run gravel	n	0	2	2	oewn
+oewn-pit-v	pit	v	0	1	1	oewn
+oewn-pit_bull_terrier-n	pit bull terrier	n	0	3	3	oewn
+oewn-pit_of_the_stomach-n	pit of the stomach	n	0	4	1	oewn
+oewn-pit_run-n	pit run	n	0	2	2	oewn
+oewn-pit_stop-n	pit stop	n	0	2	2	oewn
+oewn-pit_viper-n	pit viper	n	0	2	2	oewn
+oewn-pita-n	pita	n	0	1	1	oewn
+oewn-pitahaya-n	pitahaya	n	0	1	1	oewn
+oewn-pitahaya_cactus-n	pitahaya cactus	n	0	2	2	oewn
+oewn-pitanga-n	pitanga	n	0	1	1	oewn
+oewn-pitch-black-a	pitch-black	a	0	1	1	oewn
+oewn-pitch-dark-a	pitch-dark	a	0	1	1	oewn
+oewn-pitch-n	pitch	n	0	1	1	oewn
+oewn-pitch-v	pitch	v	0	1	1	oewn
+oewn-pitch_accent-n	pitch accent	n	0	2	2	oewn
+oewn-pitch_apple-n	pitch apple	n	0	2	2	oewn
+oewn-pitch_black-n	pitch black	n	0	2	2	oewn
+oewn-pitch_blackness-n	pitch blackness	n	0	2	2	oewn
+oewn-pitch_contour-n	pitch contour	n	0	2	2	oewn
+oewn-pitch_in-v	pitch in	v	0	2	1	oewn
+oewn-pitch_into-v	pitch into	v	0	2	1	oewn
+oewn-pitch_pine-n	pitch pine	n	0	2	2	oewn
+oewn-pitch_pipe-n	pitch pipe	n	0	2	2	oewn
+oewn-pitch_shot-n	pitch shot	n	0	2	2	oewn
+oewn-pitchblende-n	pitchblende	n	0	1	1	oewn
+oewn-pitched-a	pitched	a	0	1	1	oewn
+oewn-pitched_battle-n	pitched battle	n	0	2	2	oewn
+oewn-pitcher-ap-s_mound-n	pitcher's mound	n	0	2	2	oewn
+oewn-pitcher-n	pitcher	n	0	1	1	oewn
+oewn-pitcher-shaped-a	pitcher-shaped	a	0	1	1	oewn
+oewn-pitcher_plant-n	pitcher plant	n	0	2	2	oewn
+oewn-pitcher_sage-n	pitcher sage	n	0	2	2	oewn
+oewn-pitcherful-n	pitcherful	n	0	1	1	oewn
+oewn-pitchfork-n	pitchfork	n	0	1	1	oewn
+oewn-pitchfork-v	pitchfork	v	0	1	1	oewn
+oewn-pitching-n	pitching	n	0	1	1	oewn
+oewn-pitching_change-n	pitching change	n	0	2	2	oewn
+oewn-pitching_coach-n	pitching coach	n	0	2	2	oewn
+oewn-pitching_wedge-n	pitching wedge	n	0	2	2	oewn
+oewn-pitchman-n	pitchman	n	0	1	1	oewn
+oewn-pitchstone-n	pitchstone	n	0	1	1	oewn
+oewn-pitchy-a	pitchy	a	0	1	1	oewn
+oewn-piteous-a	piteous	a	0	1	1	oewn
+oewn-piteously-r	piteously	r	0	1	1	oewn
+oewn-pitfall-n	pitfall	n	0	1	1	oewn
+oewn-pith-n	pith	n	0	1	1	oewn
+oewn-pith-v	pith	v	0	1	1	oewn
+oewn-pith_hat-n	pith hat	n	0	2	2	oewn
+oewn-pith_helmet-n	pith helmet	n	0	2	2	oewn
+oewn-pithead-n	pithead	n	0	1	1	oewn
+oewn-pithily-r	pithily	r	0	1	1	oewn
+oewn-pithiness-n	pithiness	n	0	1	1	oewn
+oewn-pithouse-n	pithouse	n	0	1	1	oewn
+oewn-pithy-a	pithy	a	0	1	1	oewn
+oewn-pitiable-a	pitiable	a	0	1	1	oewn
+oewn-pitiably-r	pitiably	r	0	1	1	oewn
+oewn-pitiful-a	pitiful	a	0	1	1	oewn
+oewn-pitifully-r	pitifully	r	0	1	1	oewn
+oewn-pitiless-a	pitiless	a	0	1	1	oewn
+oewn-pitilessly-r	pitilessly	r	0	1	1	oewn
+oewn-pitilessness-n	pitilessness	n	0	1	1	oewn
+oewn-pitman-n	pitman	n	0	1	1	oewn
+oewn-piton-n	piton	n	0	1	1	oewn
+oewn-pitprop-n	pitprop	n	0	1	1	oewn
+oewn-pitsaw-n	pitsaw	n	0	1	1	oewn
+oewn-pitta-n	pitta	n	0	1	1	oewn
+oewn-pittance-n	pittance	n	0	1	1	oewn
+oewn-pitted-a	pitted	a	0	1	1	oewn
+oewn-pitter-patter-n	pitter-patter	n	0	1	1	oewn
+oewn-pitter-patter-r	pitter-patter	r	0	1	1	oewn
+oewn-pitter-patter-v	pitter-patter	v	0	1	1	oewn
+oewn-pitting-n	pitting	n	0	1	1	oewn
+oewn-pitty-pat-r	pitty-pat	r	0	1	1	oewn
+oewn-pitty-patty-r	pitty-patty	r	0	1	1	oewn
+oewn-pituitary-a	pituitary	a	0	1	1	oewn
+oewn-pituitary-n	pituitary	n	0	1	1	oewn
+oewn-pituitary_body-n	pituitary body	n	0	2	2	oewn
+oewn-pituitary_dwarf-n	pituitary dwarf	n	0	2	2	oewn
+oewn-pituitary_gland-n	pituitary gland	n	0	2	2	oewn
+oewn-pitwoman-n	pitwoman	n	0	1	1	oewn
+oewn-pity-n	pity	n	0	1	1	oewn
+oewn-pity-v	pity	v	0	1	1	oewn
+oewn-pityingly-r	pityingly	r	0	1	1	oewn
+oewn-pityriasis-n	pityriasis	n	0	1	1	oewn
+oewn-pityriasis_alba-n	pityriasis alba	n	0	2	2	oewn
+oewn-pityriasis_rosea-n	pityriasis rosea	n	0	2	2	oewn
+oewn-pivot-n	pivot	n	0	1	1	oewn
+oewn-pivot-v	pivot	v	0	1	1	oewn
+oewn-pivot_joint-n	pivot joint	n	0	2	2	oewn
+oewn-pivot_man-n	pivot man	n	0	2	2	oewn
+oewn-pivot_shot-n	pivot shot	n	0	2	2	oewn
+oewn-pivotal-a	pivotal	a	0	1	1	oewn
+oewn-pivoting_window-n	pivoting window	n	0	2	2	oewn
+oewn-pix-n	pix	n	0	1	1	oewn
+oewn-pix_chest-n	pix chest	n	0	2	2	oewn
+oewn-pixel-n	pixel	n	0	1	1	oewn
+oewn-pixie-n	pixie	n	0	1	1	oewn
+oewn-pixilated-a	pixilated	a	0	1	1	oewn
+oewn-pixy-n	pixy	n	0	1	1	oewn
+oewn-pizza-n	pizza	n	0	1	1	oewn
+oewn-pizza_parlor-n	pizza parlor	n	0	2	2	oewn
+oewn-pizza_pie-n	pizza pie	n	0	2	2	oewn
+oewn-pizza_shop-n	pizza shop	n	0	2	2	oewn
+oewn-pizzaz-n	pizzaz	n	0	1	1	oewn
+oewn-pizzazz-n	pizzazz	n	0	1	1	oewn
+oewn-pizzeria-n	pizzeria	n	0	1	1	oewn
+oewn-pizzicato-a	pizzicato	a	0	1	1	oewn
+oewn-pizzicato-n	pizzicato	n	0	1	1	oewn
+oewn-pizzicato-r	pizzicato	r	0	1	1	oewn

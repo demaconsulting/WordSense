@@ -1,0 +1,5 @@
+class_id	lemma	label	pos	kind
+curate#noun	curate	noun	n	sense_group
+curate#verb	curate	verb	v	no_oewn
+cure#noun	cure	noun	n	sense_group
+cure#verb	cure	verb	v	sense_group

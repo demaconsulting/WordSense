@@ -1,0 +1,9 @@
+from_synset	rel	to_synset
+oewn-06802658-n	domain_topic	oewn-06246956-n
+oewn-06802658-n	domain_topic	oewn-06249785-n
+oewn-06802658-n	domain_topic	oewn-06250374-n
+oewn-06802658-n	hypernym	oewn-06802268-n
+oewn-07141229-n	hypernym	oewn-07124555-n
+oewn-09547690-n	domain_topic	oewn-06254279-n
+oewn-09547690-n	hypernym	oewn-09546113-n
+oewn-11663073-n	hypernym	oewn-85319713-n

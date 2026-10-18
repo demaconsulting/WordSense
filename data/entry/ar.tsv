@@ -1,0 +1,1045 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-arsenic-a	arsenic	a	0	1	1	dema
+oewn-ARDA-n	ARDA	n	0	1	1	oewn
+oewn-ARDS-n	ARDS	n	0	1	1	oewn
+oewn-ARNG-n	ARNG	n	0	1	1	oewn
+oewn-Ar-n	Ar	n	0	1	1	oewn
+oewn-Arab-Berbers-n	Arab-Berbers	n	0	1	1	oewn
+oewn-Arab-n	Arab	n	0	1	1	oewn
+oewn-Arab_League-n	Arab League	n	0	2	2	oewn
+oewn-Arab_chief-n	Arab chief	n	0	2	2	oewn
+oewn-Arabian-a	Arabian	a	0	1	1	oewn
+oewn-Arabian-n	Arabian	n	0	1	1	oewn
+oewn-Arabian_camel-n	Arabian camel	n	0	2	2	oewn
+oewn-Arabian_coffee-n	Arabian coffee	n	0	2	2	oewn
+oewn-Arabian_jasmine-n	Arabian jasmine	n	0	2	2	oewn
+oewn-Arabian_tea-n	Arabian tea	n	0	2	2	oewn
+oewn-Arabic-a	Arabic	a	0	1	1	oewn
+oewn-Arabic-n	Arabic	n	0	1	1	oewn
+oewn-Arabic_alphabet-n	Arabic alphabet	n	0	2	2	oewn
+oewn-Arabic_language-n	Arabic language	n	0	2	2	oewn
+oewn-Arabic_numeral-n	Arabic numeral	n	0	2	2	oewn
+oewn-Arabidopsis_lyrata-n	Arabidopsis lyrata	n	0	2	2	oewn
+oewn-Arabidopsis_thaliana-n	Arabidopsis thaliana	n	0	2	2	oewn
+oewn-Arabis_Canadensis-n	Arabis Canadensis	n	0	2	2	oewn
+oewn-Arabis_glabra-n	Arabis glabra	n	0	2	2	oewn
+oewn-Arabis_turrita-n	Arabis turrita	n	0	2	2	oewn
+oewn-Arabist-n	Arabist	n	0	1	1	oewn
+oewn-Arachis_hypogaea-n	Arachis hypogaea	n	0	2	2	oewn
+oewn-Aralia_elata-n	Aralia elata	n	0	2	2	oewn
+oewn-Aralia_hispida-n	Aralia hispida	n	0	2	2	oewn
+oewn-Aralia_nudicaulis-n	Aralia nudicaulis	n	0	2	2	oewn
+oewn-Aralia_racemosa-n	Aralia racemosa	n	0	2	2	oewn
+oewn-Aralia_spinosa-n	Aralia spinosa	n	0	2	2	oewn
+oewn-Aralia_stipulata-n	Aralia stipulata	n	0	2	2	oewn
+oewn-Aramaean-a	Aramaean	a	0	1	1	oewn
+oewn-Aramaean-n	Aramaean	n	0	1	1	oewn
+oewn-Aramaic-a	Aramaic	a	0	1	1	oewn
+oewn-Aramaic-n	Aramaic	n	0	1	1	oewn
+oewn-Aramaic_language-n	Aramaic language	n	0	2	2	oewn
+oewn-Aramaic_script-n	Aramaic script	n	0	2	2	oewn
+oewn-Aramaicism-n	Aramaicism	n	0	1	1	oewn
+oewn-Aramaism-n	Aramaism	n	0	1	1	oewn
+oewn-Aramean-a	Aramean	a	0	1	1	oewn
+oewn-Aramean-n	Aramean	n	0	1	1	oewn
+oewn-Aramus_guarauna-n	Aramus guarauna	n	0	2	2	oewn
+oewn-Aramus_pictus-n	Aramus pictus	n	0	2	2	oewn
+oewn-Aranea_diademata-n	Aranea diademata	n	0	2	2	oewn
+oewn-Araneus_cavaticus-n	Araneus cavaticus	n	0	2	2	oewn
+oewn-Arapaho-n	Arapaho	n	0	1	1	oewn
+oewn-Arapaho_language-n	Arapaho language	n	0	2	2	oewn
+oewn-Arapahoe-n	Arapahoe	n	0	1	1	oewn
+oewn-Arapahoe_language-n	Arapahoe language	n	0	2	2	oewn
+oewn-Araucaria_araucana-n	Araucaria araucana	n	0	2	2	oewn
+oewn-Araucaria_bidwillii-n	Araucaria bidwillii	n	0	2	2	oewn
+oewn-Araucaria_columnaris-n	Araucaria columnaris	n	0	2	2	oewn
+oewn-Araucaria_cunninghamii-n	Araucaria cunninghamii	n	0	2	2	oewn
+oewn-Araucaria_excelsa-n	Araucaria excelsa	n	0	2	2	oewn
+oewn-Araucaria_heterophylla-n	Araucaria heterophylla	n	0	2	2	oewn
+oewn-Araujia_sericofera-n	Araujia sericofera	n	0	2	2	oewn
+oewn-Arava-n	Arava	n	0	1	1	oewn
+oewn-Arawak-n	Arawak	n	0	1	1	oewn
+oewn-Arawakan-a	Arawakan	a	0	1	1	oewn
+oewn-Arawakan-n	Arawakan	n	0	1	1	oewn
+oewn-Arbor_Day-n	Arbor Day	n	0	2	2	oewn
+oewn-Arbutus_menziesii-n	Arbutus menziesii	n	0	2	2	oewn
+oewn-Arbutus_unedo-n	Arbutus unedo	n	0	2	2	oewn
+oewn-Arcadian-n	Arcadian	n	0	1	1	oewn
+oewn-Arcadic-n	Arcadic	n	0	1	1	oewn
+oewn-Arcadic_dialect-n	Arcadic dialect	n	0	2	2	oewn
+oewn-Arcado-Cyprians-n	Arcado-Cyprians	n	0	1	1	oewn
+oewn-Arceuthobium_pusillum-n	Arceuthobium pusillum	n	0	2	2	oewn
+oewn-Archaeopteryx_lithographica-n	Archaeopteryx lithographica	n	0	2	2	oewn
+oewn-Archer-n	Archer	n	0	1	1	oewn
+oewn-Archidiskidon_imperator-n	Archidiskidon imperator	n	0	2	2	oewn
+oewn-Archilochus_colubris-n	Archilochus colubris	n	0	2	2	oewn
+oewn-Archimedean_drill-n	Archimedean drill	n	0	2	2	oewn
+oewn-Archimedes-ap-_principle-n	Archimedes' principle	n	0	2	2	oewn
+oewn-Archosargus_probatocephalus-n	Archosargus probatocephalus	n	0	2	2	oewn
+oewn-Archosargus_rhomboidalis-n	Archosargus rhomboidalis	n	0	2	2	oewn
+oewn-Arctic-a	Arctic	a	0	1	1	oewn
+oewn-Arctic_char-n	Arctic char	n	0	2	2	oewn
+oewn-Arctic_fox-n	Arctic fox	n	0	2	2	oewn
+oewn-Arctic_ground_squirrel-n	Arctic ground squirrel	n	0	3	3	oewn
+oewn-Arctic_hare-n	Arctic hare	n	0	2	2	oewn
+oewn-Arctic_mouse-ear-n	Arctic mouse-ear	n	0	2	2	oewn
+oewn-Arctic_wolf-n	Arctic wolf	n	0	2	2	oewn
+oewn-Arcticonus_thibetanus-n	Arcticonus thibetanus	n	0	2	2	oewn
+oewn-Arctictis_bintourong-n	Arctictis bintourong	n	0	2	2	oewn
+oewn-Arctictis_binturong-n	Arctictis binturong	n	0	2	2	oewn
+oewn-Arctium_lappa-n	Arctium lappa	n	0	2	2	oewn
+oewn-Arctium_minus-n	Arctium minus	n	0	2	2	oewn
+oewn-Arctocebus_calabarensis-n	Arctocebus calabarensis	n	0	2	2	oewn
+oewn-Arctocephalus_townsendi-n	Arctocephalus townsendi	n	0	2	2	oewn
+oewn-Arctonyx_collaris-n	Arctonyx collaris	n	0	2	2	oewn
+oewn-Arctostaphylos_alpina-n	Arctostaphylos alpina	n	0	2	2	oewn
+oewn-Arctostaphylos_andersonii-n	Arctostaphylos andersonii	n	0	2	2	oewn
+oewn-Arctostaphylos_manzanita-n	Arctostaphylos manzanita	n	0	2	2	oewn
+oewn-Arctostaphylos_tomentosa-n	Arctostaphylos tomentosa	n	0	2	2	oewn
+oewn-Arctostaphylos_uva-ursi-n	Arctostaphylos uva-ursi	n	0	2	2	oewn
+oewn-Arctotis_stoechadifolia-n	Arctotis stoechadifolia	n	0	2	2	oewn
+oewn-Arctotis_venusta-n	Arctotis venusta	n	0	2	2	oewn
+oewn-Ardea_herodia-n	Ardea herodia	n	0	2	2	oewn
+oewn-Ardea_herodius-n	Ardea herodius	n	0	2	2	oewn
+oewn-Ardea_occidentalis-n	Ardea occidentalis	n	0	2	2	oewn
+oewn-Ardisia_crenata-n	Ardisia crenata	n	0	2	2	oewn
+oewn-Ardisia_escallonoides-n	Ardisia escallonoides	n	0	2	2	oewn
+oewn-Ardisia_paniculata-n	Ardisia paniculata	n	0	2	2	oewn
+oewn-Areca_catechu-n	Areca catechu	n	0	2	2	oewn
+oewn-Areca_palm-n	Areca palm	n	0	2	2	oewn
+oewn-Arenaria_caroliniana-n	Arenaria caroliniana	n	0	2	2	oewn
+oewn-Arenaria_groenlandica-n	Arenaria groenlandica	n	0	2	2	oewn
+oewn-Arenaria_interpres-n	Arenaria interpres	n	0	2	2	oewn
+oewn-Arenaria_melanocephala-n	Arenaria melanocephala	n	0	2	2	oewn
+oewn-Arenaria_peploides-n	Arenaria peploides	n	0	2	2	oewn
+oewn-Arenaria_serpyllifolia-n	Arenaria serpyllifolia	n	0	2	2	oewn
+oewn-Arenaria_stricta-n	Arenaria stricta	n	0	2	2	oewn
+oewn-Arenaviridae-n	Arenaviridae	n	0	1	1	oewn
+oewn-Arenga_pinnata-n	Arenga pinnata	n	0	2	2	oewn
+oewn-Areopagite-n	Areopagite	n	0	1	1	oewn
+oewn-Areopagus-n	Areopagus	n	0	1	1	oewn
+oewn-Arethusa_bulbosa-n	Arethusa bulbosa	n	0	2	2	oewn
+oewn-Argemone_mexicana-n	Argemone mexicana	n	0	2	2	oewn
+oewn-Argentine-a	Argentine	a	0	1	1	oewn
+oewn-Argentine_hemorrhagic_fever-n	Argentine hemorrhagic fever	n	0	3	3	oewn
+oewn-Argentine_monetary_unit-n	Argentine monetary unit	n	0	3	3	oewn
+oewn-Argentineness-n	Argentineness	n	0	1	1	oewn
+oewn-Argentinian-a	Argentinian	a	0	1	1	oewn
+oewn-Argentinian-n	Argentinian	n	0	1	1	oewn
+oewn-Argiope_aurantia-n	Argiope aurantia	n	0	2	2	oewn
+oewn-Argive-a	Argive	a	0	1	1	oewn
+oewn-Argive-n	Argive	n	0	1	1	oewn
+oewn-Argonauta_argo-n	Argonauta argo	n	0	2	2	oewn
+oewn-Argus-n	Argus	n	0	1	1	oewn
+oewn-Argyranthemum_frutescens-n	Argyranthemum frutescens	n	0	2	2	oewn
+oewn-Argyrol-n	Argyrol	n	0	1	1	oewn
+oewn-Argyrotaenia_citrana-n	Argyrotaenia citrana	n	0	2	2	oewn
+oewn-Argyroxiphium_sandwicense-n	Argyroxiphium sandwicense	n	0	2	2	oewn
+oewn-Arhant-n	Arhant	n	0	1	1	oewn
+oewn-Arhat-n	Arhat	n	0	1	1	oewn
+oewn-Arianism-n	Arianism	n	0	1	1	oewn
+oewn-Arianist-n	Arianist	n	0	1	1	oewn
+oewn-Aricara-n	Aricara	n	0	1	1	oewn
+oewn-Aricara_language-n	Aricara language	n	0	2	2	oewn
+oewn-Aries-n	Aries	n	0	1	1	oewn
+oewn-Arikara-n	Arikara	n	0	1	1	oewn
+oewn-Arikara_language-n	Arikara language	n	0	2	2	oewn
+oewn-Arilus_cristatus-n	Arilus cristatus	n	0	2	2	oewn
+oewn-Ariocarpus_fissuratus-n	Ariocarpus fissuratus	n	0	2	2	oewn
+oewn-Arisaema_atrorubens-n	Arisaema atrorubens	n	0	2	2	oewn
+oewn-Arisaema_dracontium-n	Arisaema dracontium	n	0	2	2	oewn
+oewn-Arisaema_triphyllum-n	Arisaema triphyllum	n	0	2	2	oewn
+oewn-Arisarum_vulgare-n	Arisarum vulgare	n	0	2	2	oewn
+oewn-Aristocort-n	Aristocort	n	0	1	1	oewn
+oewn-Aristolochia_clematitis-n	Aristolochia clematitis	n	0	2	2	oewn
+oewn-Aristolochia_durior-n	Aristolochia durior	n	0	2	2	oewn
+oewn-Aristolochia_macrophylla-n	Aristolochia macrophylla	n	0	2	2	oewn
+oewn-Aristolochia_serpentaria-n	Aristolochia serpentaria	n	0	2	2	oewn
+oewn-Aristopak-n	Aristopak	n	0	1	1	oewn
+oewn-Aristotelean-a	Aristotelean	a	0	1	1	oewn
+oewn-Aristotelean-n	Aristotelean	n	0	1	1	oewn
+oewn-Aristotelia_racemosa-n	Aristotelia racemosa	n	0	2	2	oewn
+oewn-Aristotelia_serrata-n	Aristotelia serrata	n	0	2	2	oewn
+oewn-Aristotelian-a	Aristotelian	a	0	1	1	oewn
+oewn-Aristotelian-n	Aristotelian	n	0	1	1	oewn
+oewn-Aristotelian_logic-n	Aristotelian logic	n	0	2	2	oewn
+oewn-Aristotelianism-n	Aristotelianism	n	0	1	1	oewn
+oewn-Aristotelic-a	Aristotelic	a	0	1	1	oewn
+oewn-Arizona_ash-n	Arizona ash	n	0	2	2	oewn
+oewn-Arizona_cypress-n	Arizona cypress	n	0	2	2	oewn
+oewn-Arizona_elegans-n	Arizona elegans	n	0	2	2	oewn
+oewn-Arizona_sycamore-n	Arizona sycamore	n	0	2	2	oewn
+oewn-Arizona_white_oak-n	Arizona white oak	n	0	3	3	oewn
+oewn-Arizona_wild_cotton-n	Arizona wild cotton	n	0	3	3	oewn
+oewn-Arizonan-n	Arizonan	n	0	1	1	oewn
+oewn-Arizonian-n	Arizonian	n	0	1	1	oewn
+oewn-Arkansan-n	Arkansan	n	0	1	1	oewn
+oewn-Arkansas_kingbird-n	Arkansas kingbird	n	0	2	2	oewn
+oewn-Arkansawyer-n	Arkansawyer	n	0	1	1	oewn
+oewn-Arlêng-n	Arlêng	n	0	1	1	oewn
+oewn-Arlêng_language-n	Arlêng language	n	0	2	2	oewn
+oewn-Armagnac-n	Armagnac	n	0	1	1	oewn
+oewn-Armed_Forces_Day-n	Armed Forces Day	n	0	3	3	oewn
+oewn-Armenian-a	Armenian	a	0	1	1	oewn
+oewn-Armenian-n	Armenian	n	0	1	1	oewn
+oewn-Armenian_Apostolic_Orthodox_Church-n	Armenian Apostolic Orthodox Church	n	0	4	4	oewn
+oewn-Armenian_Church-n	Armenian Church	n	0	2	2	oewn
+oewn-Armenian_alphabet-n	Armenian alphabet	n	0	2	2	oewn
+oewn-Armenian_language-n	Armenian language	n	0	2	2	oewn
+oewn-Armenian_monetary_unit-n	Armenian monetary unit	n	0	3	3	oewn
+oewn-Armeria_maritima-n	Armeria maritima	n	0	2	2	oewn
+oewn-Armerican_cheddar-n	Armerican cheddar	n	0	2	2	oewn
+oewn-Armillaria_caligata-n	Armillaria caligata	n	0	2	2	oewn
+oewn-Armillaria_ponderosa-n	Armillaria ponderosa	n	0	2	2	oewn
+oewn-Armillaria_zelleri-n	Armillaria zelleri	n	0	2	2	oewn
+oewn-Armillariella_mellea-n	Armillariella mellea	n	0	2	2	oewn
+oewn-Arminian-a	Arminian	a	0	1	1	oewn
+oewn-Arminian-n	Arminian	n	0	1	1	oewn
+oewn-Arminian_Baptist-n	Arminian Baptist	n	0	2	2	oewn
+oewn-Arminian_Church-n	Arminian Church	n	0	2	2	oewn
+oewn-Arminianism-n	Arminianism	n	0	1	1	oewn
+oewn-Armistice_Day-n	Armistice Day	n	0	2	2	oewn
+oewn-Armoracia_rusticana-n	Armoracia rusticana	n	0	2	2	oewn
+oewn-Army-n	Army	n	0	1	1	oewn
+oewn-Army_Intelligence-n	Army Intelligence	n	0	2	2	oewn
+oewn-Army_National_Guard-n	Army National Guard	n	0	3	3	oewn
+oewn-Army_of_the_Confederacy-n	Army of the Confederacy	n	0	4	1	oewn
+oewn-Arnica_cordifolia-n	Arnica cordifolia	n	0	2	2	oewn
+oewn-Arnica_montana-n	Arnica montana	n	0	2	2	oewn
+oewn-Arnold-Chiari_deformity-n	Arnold-Chiari deformity	n	0	2	2	oewn
+oewn-Arnoseris_minima-n	Arnoseris minima	n	0	2	2	oewn
+oewn-Arrhenatherum_elatius-n	Arrhenatherum elatius	n	0	2	2	oewn
+oewn-Arrhenius_theory_of_dissociation-n	Arrhenius theory of dissociation	n	0	4	2	oewn
+oewn-Art_Informel-n	Art Informel	n	0	2	2	oewn
+oewn-Artemia_salina-n	Artemia salina	n	0	2	2	oewn
+oewn-Artemis_pontica-n	Artemis pontica	n	0	2	2	oewn
+oewn-Artemisia_abrotanum-n	Artemisia abrotanum	n	0	2	2	oewn
+oewn-Artemisia_absinthium-n	Artemisia absinthium	n	0	2	2	oewn
+oewn-Artemisia_annua-n	Artemisia annua	n	0	2	2	oewn
+oewn-Artemisia_californica-n	Artemisia californica	n	0	2	2	oewn
+oewn-Artemisia_campestris-n	Artemisia campestris	n	0	2	2	oewn
+oewn-Artemisia_cana-n	Artemisia cana	n	0	2	2	oewn
+oewn-Artemisia_dracunculus-n	Artemisia dracunculus	n	0	2	2	oewn
+oewn-Artemisia_filifolia-n	Artemisia filifolia	n	0	2	2	oewn
+oewn-Artemisia_frigida-n	Artemisia frigida	n	0	2	2	oewn
+oewn-Artemisia_gnaphalodes-n	Artemisia gnaphalodes	n	0	2	2	oewn
+oewn-Artemisia_ludoviciana-n	Artemisia ludoviciana	n	0	2	2	oewn
+oewn-Artemisia_maritima-n	Artemisia maritima	n	0	2	2	oewn
+oewn-Artemisia_spinescens-n	Artemisia spinescens	n	0	2	2	oewn
+oewn-Artemisia_stelleriana-n	Artemisia stelleriana	n	0	2	2	oewn
+oewn-Artemisia_tridentata-n	Artemisia tridentata	n	0	2	2	oewn
+oewn-Artemisia_vulgaris-n	Artemisia vulgaris	n	0	2	2	oewn
+oewn-Arthurian-a	Arthurian	a	0	1	1	oewn
+oewn-Arthurian_legend-n	Arthurian legend	n	0	2	2	oewn
+oewn-Artium_Baccalaurens-n	Artium Baccalaurens	n	0	2	2	oewn
+oewn-Artium_Magister-n	Artium Magister	n	0	2	2	oewn
+oewn-Artocarpus_altilis-n	Artocarpus altilis	n	0	2	2	oewn
+oewn-Artocarpus_communis-n	Artocarpus communis	n	0	2	2	oewn
+oewn-Artocarpus_heterophyllus-n	Artocarpus heterophyllus	n	0	2	2	oewn
+oewn-Artocarpus_odoratissima-n	Artocarpus odoratissima	n	0	2	2	oewn
+oewn-ArtsD-n	ArtsD	n	0	1	1	oewn
+oewn-Aruban_monetary_unit-n	Aruban monetary unit	n	0	3	3	oewn
+oewn-Arulo-n	Arulo	n	0	1	1	oewn
+oewn-Arum_maculatum-n	Arum maculatum	n	0	2	2	oewn
+oewn-Arum_palaestinum-n	Arum palaestinum	n	0	2	2	oewn
+oewn-Arundinaria_gigantea-n	Arundinaria gigantea	n	0	2	2	oewn
+oewn-Arundinaria_tecta-n	Arundinaria tecta	n	0	2	2	oewn
+oewn-Arundo_conspicua-n	Arundo conspicua	n	0	2	2	oewn
+oewn-Arundo_donax-n	Arundo donax	n	0	2	2	oewn
+oewn-Arundo_richardii-n	Arundo richardii	n	0	2	2	oewn
+oewn-Arvicola_amphibius-n	Arvicola amphibius	n	0	2	2	oewn
+oewn-Aryan-a	Aryan	a	0	1	1	oewn
+oewn-Aryan-n	Aryan	n	0	1	1	oewn
+oewn-ar-n	ar	n	0	1	1	oewn
+oewn-arabesque-n	arabesque	n	0	1	1	oewn
+oewn-arability-n	arability	n	0	1	1	oewn
+oewn-arable-a	arable	a	0	1	1	oewn
+oewn-araceous-a	araceous	a	0	1	1	oewn
+oewn-arachnid-n	arachnid	n	0	1	1	oewn
+oewn-arachnidian-a	arachnidian	a	0	1	1	oewn
+oewn-arachnoid-a	arachnoid	a	0	1	1	oewn
+oewn-arachnoid-n	arachnoid	n	0	1	1	oewn
+oewn-arachnoid_membrane-n	arachnoid membrane	n	0	2	2	oewn
+oewn-arachnophobia-n	arachnophobia	n	0	1	1	oewn
+oewn-aragonite-n	aragonite	n	0	1	1	oewn
+oewn-arak-n	arak	n	0	1	1	oewn
+oewn-aralia-n	aralia	n	0	1	1	oewn
+oewn-arame-n	arame	n	0	1	1	oewn
+oewn-araneidal-a	araneidal	a	0	1	1	oewn
+oewn-araneidan-a	araneidan	a	0	1	1	oewn
+oewn-arariba-n	arariba	n	0	1	1	oewn
+oewn-araroba-n	araroba	n	0	1	1	oewn
+oewn-araucaria-n	araucaria	n	0	1	1	oewn
+oewn-arb-n	arb	n	0	1	1	oewn
+oewn-arbalest-n	arbalest	n	0	1	1	oewn
+oewn-arbalist-n	arbalist	n	0	1	1	oewn
+oewn-arbiter-n	arbiter	n	0	1	1	oewn
+oewn-arbitrable-a	arbitrable	a	0	1	1	oewn
+oewn-arbitrage-n	arbitrage	n	0	1	1	oewn
+oewn-arbitrage-v	arbitrage	v	0	1	1	oewn
+oewn-arbitrager-n	arbitrager	n	0	1	1	oewn
+oewn-arbitrageur-n	arbitrageur	n	0	1	1	oewn
+oewn-arbitral-a	arbitral	a	0	1	1	oewn
+oewn-arbitrament-n	arbitrament	n	0	1	1	oewn
+oewn-arbitrarily-r	arbitrarily	r	0	1	1	oewn
+oewn-arbitrariness-n	arbitrariness	n	0	1	1	oewn
+oewn-arbitrary-a	arbitrary	a	0	1	1	oewn
+oewn-arbitrate-v	arbitrate	v	0	1	1	oewn
+oewn-arbitration-n	arbitration	n	0	1	1	oewn
+oewn-arbitration_clause-n	arbitration clause	n	0	2	2	oewn
+oewn-arbitrational-a	arbitrational	a	0	1	1	oewn
+oewn-arbitrative-a	arbitrative	a	0	1	1	oewn
+oewn-arbitrator-n	arbitrator	n	0	1	1	oewn
+oewn-arbitrement-n	arbitrement	n	0	1	1	oewn
+oewn-arbor-n	arbor	n	0	1	1	oewn
+oewn-arboraceous-a	arboraceous	a	0	1	1	oewn
+oewn-arborary-a	arborary	a	0	1	1	oewn
+oewn-arboreal-a	arboreal	a	0	1	1	oewn
+oewn-arboreal_salamander-n	arboreal salamander	n	0	2	2	oewn
+oewn-arboreous-a	arboreous	a	0	1	1	oewn
+oewn-arborescent-a	arborescent	a	0	1	1	oewn
+oewn-arborescent_plant-n	arborescent plant	n	0	2	2	oewn
+oewn-arboresque-a	arboresque	a	0	1	1	oewn
+oewn-arboretum-n	arboretum	n	0	1	1	oewn
+oewn-arborical-a	arborical	a	0	1	1	oewn
+oewn-arboriculture-n	arboriculture	n	0	1	1	oewn
+oewn-arboriculturist-n	arboriculturist	n	0	1	1	oewn
+oewn-arboriform-a	arboriform	a	0	1	1	oewn
+oewn-arborise-v	arborise	v	0	1	1	oewn
+oewn-arborist-n	arborist	n	0	1	1	oewn
+oewn-arborize-v	arborize	v	0	1	1	oewn
+oewn-arborolatry-n	arborolatry	n	0	1	1	oewn
+oewn-arborous-a	arborous	a	0	1	1	oewn
+oewn-arborvirus-n	arborvirus	n	0	1	1	oewn
+oewn-arborvitae-n	arborvitae	n	0	1	1	oewn
+oewn-arbour-n	arbour	n	0	1	1	oewn
+oewn-arbovirus-n	arbovirus	n	0	1	1	oewn
+oewn-arbutus-n	arbutus	n	0	1	1	oewn
+oewn-arc-boutant-n	arc-boutant	n	0	1	1	oewn
+oewn-arc-n	arc	n	0	1	1	oewn
+oewn-arc-v	arc	v	0	1	1	oewn
+oewn-arc_cosecant-n	arc cosecant	n	0	2	2	oewn
+oewn-arc_cosine-n	arc cosine	n	0	2	2	oewn
+oewn-arc_cotangent-n	arc cotangent	n	0	2	2	oewn
+oewn-arc_lamp-n	arc lamp	n	0	2	2	oewn
+oewn-arc_light-n	arc light	n	0	2	2	oewn
+oewn-arc_secant-n	arc secant	n	0	2	2	oewn
+oewn-arc_sine-n	arc sine	n	0	2	2	oewn
+oewn-arc_tangent-n	arc tangent	n	0	2	2	oewn
+oewn-arcade-n	arcade	n	0	1	1	oewn
+oewn-arcade_game-n	arcade game	n	0	2	2	oewn
+oewn-arcade_video_game-n	arcade video game	n	0	3	3	oewn
+oewn-arcadian-a	arcadian	a	0	1	1	oewn
+oewn-arcane-a	arcane	a	0	1	1	oewn
+oewn-arcanum-n	arcanum	n	0	1	1	oewn
+oewn-arccos-n	arccos	n	0	1	1	oewn
+oewn-arccosecant-n	arccosecant	n	0	1	1	oewn
+oewn-arccosine-n	arccosine	n	0	1	1	oewn
+oewn-arccotangent-n	arccotangent	n	0	1	1	oewn
+oewn-arcdegree-n	arcdegree	n	0	1	1	oewn
+oewn-arced-a	arced	a	0	1	1	oewn
+oewn-arcella-n	arcella	n	0	1	1	oewn
+oewn-arch-a	arch	a	0	1	1	oewn
+oewn-arch-n	arch	n	0	1	1	oewn
+oewn-arch-v	arch	v	0	1	1	oewn
+oewn-arch_over-v	arch over	v	0	2	1	oewn
+oewn-arch_support-n	arch support	n	0	2	2	oewn
+oewn-archaean-a	archaean	a	0	1	1	oewn
+oewn-archaebacteria-n	archaebacteria	n	0	1	1	oewn
+oewn-archaebacterium-n	archaebacterium	n	0	1	1	oewn
+oewn-archaeobacteria-n	archaeobacteria	n	0	1	1	oewn
+oewn-archaeologic-a	archaeologic	a	0	1	1	oewn
+oewn-archaeological-a	archaeological	a	0	1	1	oewn
+oewn-archaeological_planning_frame-n	archaeological planning frame	n	0	3	3	oewn
+oewn-archaeologist-n	archaeologist	n	0	1	1	oewn
+oewn-archaeology-n	archaeology	n	0	1	1	oewn
+oewn-archaeopteryx-n	archaeopteryx	n	0	1	1	oewn
+oewn-archaeornis-n	archaeornis	n	0	1	1	oewn
+oewn-archaeozoic-a	archaeozoic	a	0	1	1	oewn
+oewn-archaic-a	archaic	a	0	1	1	oewn
+oewn-archaicism-n	archaicism	n	0	1	1	oewn
+oewn-archaise-v	archaise	v	0	1	1	oewn
+oewn-archaism-n	archaism	n	0	1	1	oewn
+oewn-archaist-n	archaist	n	0	1	1	oewn
+oewn-archaistic-a	archaistic	a	0	1	1	oewn
+oewn-archaize-v	archaize	v	0	1	1	oewn
+oewn-archangel-n	archangel	n	0	1	1	oewn
+oewn-archangelic-a	archangelic	a	0	1	1	oewn
+oewn-archangelical-a	archangelical	a	0	1	1	oewn
+oewn-archbishop-n	archbishop	n	0	1	1	oewn
+oewn-archbishopric-n	archbishopric	n	0	1	1	oewn
+oewn-archdeacon-n	archdeacon	n	0	1	1	oewn
+oewn-archdeaconry-n	archdeaconry	n	0	1	1	oewn
+oewn-archdiocesan-a	archdiocesan	a	0	1	1	oewn
+oewn-archdiocese-n	archdiocese	n	0	1	1	oewn
+oewn-archducal-a	archducal	a	0	1	1	oewn
+oewn-archduchess-n	archduchess	n	0	1	1	oewn
+oewn-archduchy-n	archduchy	n	0	1	1	oewn
+oewn-archduke-n	archduke	n	0	1	1	oewn
+oewn-archean-a	archean	a	0	1	1	oewn
+oewn-arched-a	arched	a	0	1	1	oewn
+oewn-archegonial-a	archegonial	a	0	1	1	oewn
+oewn-archegoniate-a	archegoniate	a	0	1	1	oewn
+oewn-archegonium-n	archegonium	n	0	1	1	oewn
+oewn-archenteron-n	archenteron	n	0	1	1	oewn
+oewn-archeobacteria-n	archeobacteria	n	0	1	1	oewn
+oewn-archeologic-a	archeologic	a	0	1	1	oewn
+oewn-archeological-a	archeological	a	0	1	1	oewn
+oewn-archeological_remains-n	archeological remains	n	0	2	2	oewn
+oewn-archeological_site-n	archeological site	n	0	2	2	oewn
+oewn-archeologist-n	archeologist	n	0	1	1	oewn
+oewn-archeology-n	archeology	n	0	1	1	oewn
+oewn-archeopteryx-n	archeopteryx	n	0	1	1	oewn
+oewn-archeozoic-a	archeozoic	a	0	1	1	oewn
+oewn-archepiscopal-a	archepiscopal	a	0	1	1	oewn
+oewn-archer-n	archer	n	0	1	1	oewn
+oewn-archerfish-n	archerfish	n	0	1	1	oewn
+oewn-archery-n	archery	n	0	1	1	oewn
+oewn-archespore-n	archespore	n	0	1	1	oewn
+oewn-archesporial-a	archesporial	a	0	1	1	oewn
+oewn-archesporium-n	archesporium	n	0	1	1	oewn
+oewn-archetypal-a	archetypal	a	0	1	1	oewn
+oewn-archetype-n	archetype	n	0	1	1	oewn
+oewn-archetypical-a	archetypical	a	0	1	1	oewn
+oewn-archiannelid-n	archiannelid	n	0	1	1	oewn
+oewn-archidiaconal-a	archidiaconal	a	0	1	1	oewn
+oewn-archidiaconate-n	archidiaconate	n	0	1	1	oewn
+oewn-archiepiscopal-a	archiepiscopal	a	0	1	1	oewn
+oewn-archil-n	archil	n	0	1	1	oewn
+oewn-archimandrite-n	archimandrite	n	0	1	1	oewn
+oewn-archine-n	archine	n	0	1	1	oewn
+oewn-arching-a	arching	a	0	1	1	oewn
+oewn-archipallium-n	archipallium	n	0	1	1	oewn
+oewn-archipelagic-a	archipelagic	a	0	1	1	oewn
+oewn-archipelago-n	archipelago	n	0	1	1	oewn
+oewn-architect-n	architect	n	0	1	1	oewn
+oewn-architectonic-a	architectonic	a	0	1	1	oewn
+oewn-architectonics-n	architectonics	n	0	1	1	oewn
+oewn-architectural-a	architectural	a	0	1	1	oewn
+oewn-architectural_engineering-n	architectural engineering	n	0	2	2	oewn
+oewn-architectural_ornament-n	architectural ornament	n	0	2	2	oewn
+oewn-architectural_plan-n	architectural plan	n	0	2	2	oewn
+oewn-architectural_style-n	architectural style	n	0	2	2	oewn
+oewn-architecturally-r	architecturally	r	0	1	1	oewn
+oewn-architecture-n	architecture	n	0	1	1	oewn
+oewn-architeuthis-n	architeuthis	n	0	1	1	oewn
+oewn-architrave-n	architrave	n	0	1	1	oewn
+oewn-archival-a	archival	a	0	1	1	oewn
+oewn-archive-n	archive	n	0	1	1	oewn
+oewn-archive-v	archive	v	0	1	1	oewn
+oewn-archives-n	archives	n	0	1	1	oewn
+oewn-archivist-n	archivist	n	0	1	1	oewn
+oewn-archly-r	archly	r	0	1	1	oewn
+oewn-archness-n	archness	n	0	1	1	oewn
+oewn-archosaur-n	archosaur	n	0	1	1	oewn
+oewn-archosaurian-a	archosaurian	a	0	1	1	oewn
+oewn-archosaurian-n	archosaurian	n	0	1	1	oewn
+oewn-archosaurian_reptile-n	archosaurian reptile	n	0	2	2	oewn
+oewn-archpriest-n	archpriest	n	0	1	1	oewn
+oewn-archway-n	archway	n	0	1	1	oewn
+oewn-arciform-a	arciform	a	0	1	1	oewn
+oewn-arcminute-n	arcminute	n	0	1	1	oewn
+oewn-arco-a	arco	a	0	1	1	oewn
+oewn-arcsec-n	arcsec	n	0	1	1	oewn
+oewn-arcsecant-n	arcsecant	n	0	1	1	oewn
+oewn-arcsecond-n	arcsecond	n	0	1	1	oewn
+oewn-arcsin-n	arcsin	n	0	1	1	oewn
+oewn-arcsine-n	arcsine	n	0	1	1	oewn
+oewn-arctan-n	arctan	n	0	1	1	oewn
+oewn-arctangent-n	arctangent	n	0	1	1	oewn
+oewn-arctic-a	arctic	a	0	1	1	oewn
+oewn-arctic-n	arctic	n	0	1	1	oewn
+oewn-arctic_moss-n	arctic moss	n	0	2	2	oewn
+oewn-arctic_poppy-n	arctic poppy	n	0	2	2	oewn
+oewn-arctic_skua-n	arctic skua	n	0	2	2	oewn
+oewn-arctic_willow-n	arctic willow	n	0	2	2	oewn
+oewn-arctiid-n	arctiid	n	0	1	1	oewn
+oewn-arctiid_moth-n	arctiid moth	n	0	2	2	oewn
+oewn-arcuate-a	arcuate	a	0	1	1	oewn
+oewn-arcuate_artery-n	arcuate artery	n	0	2	2	oewn
+oewn-arcuate_artery_of_the_kidney-n	arcuate artery of the kidney	n	0	5	2	oewn
+oewn-arcuate_vein_of_the_kidney-n	arcuate vein of the kidney	n	0	5	2	oewn
+oewn-arcus-n	arcus	n	0	1	1	oewn
+oewn-arcus_senilis-n	arcus senilis	n	0	2	2	oewn
+oewn-arcus_zygomaticus-n	arcus zygomaticus	n	0	2	2	oewn
+oewn-ard-n	ard	n	0	1	1	oewn
+oewn-ard_plough-n	ard plough	n	0	2	2	oewn
+oewn-ardeb-n	ardeb	n	0	1	1	oewn
+oewn-ardent-a	ardent	a	0	1	1	oewn
+oewn-ardent_spirits-n	ardent spirits	n	0	2	2	oewn
+oewn-ardently-r	ardently	r	0	1	1	oewn
+oewn-ardor-n	ardor	n	0	1	1	oewn
+oewn-ardour-n	ardour	n	0	1	1	oewn
+oewn-arduous-a	arduous	a	0	1	1	oewn
+oewn-arduously-r	arduously	r	0	1	1	oewn
+oewn-arduousness-n	arduousness	n	0	1	1	oewn
+oewn-are-n	are	n	0	1	1	oewn
+oewn-area-n	area	n	0	1	1	oewn
+oewn-area_17_of_Brodmann-n	area 17 of Brodmann	n	0	4	2	oewn
+oewn-area_bombing-n	area bombing	n	0	2	2	oewn
+oewn-area_code-n	area code	n	0	2	2	oewn
+oewn-area_of_cardiac_dullness-n	area of cardiac dullness	n	0	4	1	oewn
+oewn-area_studies-n	area studies	n	0	2	2	oewn
+oewn-area_unit-n	area unit	n	0	2	2	oewn
+oewn-areal-a	areal	a	0	1	1	oewn
+oewn-areaway-n	areaway	n	0	1	1	oewn
+oewn-areca-n	areca	n	0	1	1	oewn
+oewn-areca_nut-n	areca nut	n	0	2	2	oewn
+oewn-areflexia-n	areflexia	n	0	1	1	oewn
+oewn-arena-n	arena	n	0	1	1	oewn
+oewn-arena_theater-n	arena theater	n	0	2	2	oewn
+oewn-arenaceous-a	arenaceous	a	0	1	1	oewn
+oewn-arenaceous_rock-n	arenaceous rock	n	0	2	2	oewn
+oewn-arenavirus-n	arenavirus	n	0	1	1	oewn
+oewn-arenicolous-a	arenicolous	a	0	1	1	oewn
+oewn-areola-n	areola	n	0	1	1	oewn
+oewn-areolar-a	areolar	a	0	1	1	oewn
+oewn-areolar_tissue-n	areolar tissue	n	0	2	2	oewn
+oewn-areolate-a	areolate	a	0	1	1	oewn
+oewn-arere-n	arere	n	0	1	1	oewn
+oewn-arete-n	arete	n	0	1	1	oewn
+oewn-arethusa-n	arethusa	n	0	1	1	oewn
+oewn-argal-n	argal	n	0	1	1	oewn
+oewn-argali-n	argali	n	0	1	1	oewn
+oewn-argasid-n	argasid	n	0	1	1	oewn
+oewn-argemone-n	argemone	n	0	1	1	oewn
+oewn-argent-a	argent	a	0	1	1	oewn
+oewn-argent-n	argent	n	0	1	1	oewn
+oewn-argentic-a	argentic	a	0	1	1	oewn
+oewn-argentiferous-a	argentiferous	a	0	1	1	oewn
+oewn-argentine-n	argentine	n	0	1	1	oewn
+oewn-argentinosaur-n	argentinosaur	n	0	1	1	oewn
+oewn-argentite-n	argentite	n	0	1	1	oewn
+oewn-argentous-a	argentous	a	0	1	1	oewn
+oewn-argil-n	argil	n	0	1	1	oewn
+oewn-argillaceous-a	argillaceous	a	0	1	1	oewn
+oewn-argillaceous_rock-n	argillaceous rock	n	0	2	2	oewn
+oewn-argillite-n	argillite	n	0	1	1	oewn
+oewn-arginine-n	arginine	n	0	1	1	oewn
+oewn-argle-bargle-n	argle-bargle	n	0	1	1	oewn
+oewn-argon-n	argon	n	0	1	1	oewn
+oewn-argonaut-n	argonaut	n	0	1	1	oewn
+oewn-argonon-n	argonon	n	0	1	1	oewn
+oewn-argosy-n	argosy	n	0	1	1	oewn
+oewn-argot-n	argot	n	0	1	1	oewn
+oewn-arguable-a	arguable	a	0	1	1	oewn
+oewn-arguably-r	arguably	r	0	1	1	oewn
+oewn-argue-v	argue	v	0	1	1	oewn
+oewn-arguer-n	arguer	n	0	1	1	oewn
+oewn-argufy-v	argufy	v	0	1	1	oewn
+oewn-arguing-n	arguing	n	0	1	1	oewn
+oewn-argument-n	argument	n	0	1	1	oewn
+oewn-argumentation-n	argumentation	n	0	1	1	oewn
+oewn-argumentative-a	argumentative	a	0	1	1	oewn
+oewn-argumentatively-r	argumentatively	r	0	1	1	oewn
+oewn-argus-eyed-a	argus-eyed	a	0	1	1	oewn
+oewn-argus-n	argus	n	0	1	1	oewn
+oewn-argus_pheasant-n	argus pheasant	n	0	2	2	oewn
+oewn-argy-bargy-n	argy-bargy	n	0	1	1	oewn
+oewn-argyle-n	argyle	n	0	1	1	oewn
+oewn-argyll-n	argyll	n	0	1	1	oewn
+oewn-argyrodite-n	argyrodite	n	0	1	1	oewn
+oewn-aria-n	aria	n	0	1	1	oewn
+oewn-arid-a	arid	a	0	1	1	oewn
+oewn-aridity-n	aridity	n	0	1	1	oewn
+oewn-aridness-n	aridness	n	0	1	1	oewn
+oewn-arietta-n	arietta	n	0	1	1	oewn
+oewn-aright-r	aright	r	0	1	1	oewn
+oewn-aril-n	aril	n	0	1	1	oewn
+oewn-ariled-a	ariled	a	0	1	1	oewn
+oewn-arillate-a	arillate	a	0	1	1	oewn
+oewn-ariose-a	ariose	a	0	1	1	oewn
+oewn-arioso-n	arioso	n	0	1	1	oewn
+oewn-arise-v	arise	v	0	1	1	oewn
+oewn-arishth-n	arishth	n	0	1	1	oewn
+oewn-arista-n	arista	n	0	1	1	oewn
+oewn-aristocracy-n	aristocracy	n	0	1	1	oewn
+oewn-aristocrat-n	aristocrat	n	0	1	1	oewn
+oewn-aristocratic-a	aristocratic	a	0	1	1	oewn
+oewn-aristocratical-a	aristocratical	a	0	1	1	oewn
+oewn-aristocratically-r	aristocratically	r	0	1	1	oewn
+oewn-aristocratism-n	aristocratism	n	0	1	1	oewn
+oewn-arithmancy-n	arithmancy	n	0	1	1	oewn
+oewn-arithmetic-a	arithmetic	a	0	1	1	oewn
+oewn-arithmetic-n	arithmetic	n	0	1	1	oewn
+oewn-arithmetic_mean-n	arithmetic mean	n	0	2	2	oewn
+oewn-arithmetic_operation-n	arithmetic operation	n	0	2	2	oewn
+oewn-arithmetic_progression-n	arithmetic progression	n	0	2	2	oewn
+oewn-arithmetical-a	arithmetical	a	0	1	1	oewn
+oewn-arithmetically-r	arithmetically	r	0	1	1	oewn
+oewn-arithmetician-n	arithmetician	n	0	1	1	oewn
+oewn-arity-n	arity	n	0	1	1	oewn
+oewn-ark-n	ark	n	0	1	1	oewn
+oewn-ark_shell-n	ark shell	n	0	2	2	oewn
+oewn-arles-n	arles	n	0	1	1	oewn
+oewn-arm-ap-s_length-n	arm's length	n	0	2	2	oewn
+oewn-arm-n	arm	n	0	1	1	oewn
+oewn-arm-twisting-n	arm-twisting	n	0	1	1	oewn
+oewn-arm-v	arm	v	0	1	1	oewn
+oewn-arm_band-n	arm band	n	0	2	2	oewn
+oewn-arm_bone-n	arm bone	n	0	2	2	oewn
+oewn-arm_exercise-n	arm exercise	n	0	2	2	oewn
+oewn-arm_guard-n	arm guard	n	0	2	2	oewn
+oewn-arm_pad-n	arm pad	n	0	2	2	oewn
+oewn-armada-n	armada	n	0	1	1	oewn
+oewn-armadillo-n	armadillo	n	0	1	1	oewn
+oewn-armageddon-n	armageddon	n	0	1	1	oewn
+oewn-armament-n	armament	n	0	1	1	oewn
+oewn-armamentarium-n	armamentarium	n	0	1	1	oewn
+oewn-armature-n	armature	n	0	1	1	oewn
+oewn-armband-n	armband	n	0	1	1	oewn
+oewn-armchair-n	armchair	n	0	1	1	oewn
+oewn-armchair_liberal-n	armchair liberal	n	0	2	2	oewn
+oewn-armed-a	armed	a	0	1	1	oewn
+oewn-armed_bullhead-n	armed bullhead	n	0	2	2	oewn
+oewn-armed_combat-n	armed combat	n	0	2	2	oewn
+oewn-armed_forces-n	armed forces	n	0	2	2	oewn
+oewn-armed_forces_censorship-n	armed forces censorship	n	0	3	3	oewn
+oewn-armed_robbery-n	armed robbery	n	0	2	2	oewn
+oewn-armed_service-n	armed service	n	0	2	2	oewn
+oewn-armed_services-n	armed services	n	0	2	2	oewn
+oewn-armet-n	armet	n	0	1	1	oewn
+oewn-armful-n	armful	n	0	1	1	oewn
+oewn-armguard-n	armguard	n	0	1	1	oewn
+oewn-armhole-n	armhole	n	0	1	1	oewn
+oewn-armiger-n	armiger	n	0	1	1	oewn
+oewn-armilla-n	armilla	n	0	1	1	oewn
+oewn-armillary-a	armillary	a	0	1	1	oewn
+oewn-armillary_sphere-n	armillary sphere	n	0	2	2	oewn
+oewn-arming-n	arming	n	0	1	1	oewn
+oewn-armistice-n	armistice	n	0	1	1	oewn
+oewn-armless-a	armless	a	0	1	1	oewn
+oewn-armlet-n	armlet	n	0	1	1	oewn
+oewn-armlike-a	armlike	a	0	1	1	oewn
+oewn-armoire-n	armoire	n	0	1	1	oewn
+oewn-armor-bearer-n	armor-bearer	n	0	1	1	oewn
+oewn-armor-clad-a	armor-clad	a	0	1	1	oewn
+oewn-armor-n	armor	n	0	1	1	oewn
+oewn-armor-plated-a	armor-plated	a	0	1	1	oewn
+oewn-armor-v	armor	v	0	1	1	oewn
+oewn-armor_plate-n	armor plate	n	0	2	2	oewn
+oewn-armor_plating-n	armor plating	n	0	2	2	oewn
+oewn-armored-a	armored	a	0	1	1	oewn
+oewn-armored_car-n	armored car	n	0	2	2	oewn
+oewn-armored_catfish-n	armored catfish	n	0	2	2	oewn
+oewn-armored_combat_vehicle-n	armored combat vehicle	n	0	3	3	oewn
+oewn-armored_dinosaur-n	armored dinosaur	n	0	2	2	oewn
+oewn-armored_personnel_carrier-n	armored personnel carrier	n	0	3	3	oewn
+oewn-armored_scale-n	armored scale	n	0	2	2	oewn
+oewn-armored_sea_robin-n	armored sea robin	n	0	3	3	oewn
+oewn-armored_searobin-n	armored searobin	n	0	2	2	oewn
+oewn-armored_vehicle-n	armored vehicle	n	0	2	2	oewn
+oewn-armorer-n	armorer	n	0	1	1	oewn
+oewn-armorial-a	armorial	a	0	1	1	oewn
+oewn-armorial_bearing-n	armorial bearing	n	0	2	2	oewn
+oewn-armory-n	armory	n	0	1	1	oewn
+oewn-armour-clad-a	armour-clad	a	0	1	1	oewn
+oewn-armour-n	armour	n	0	1	1	oewn
+oewn-armour-plated-a	armour-plated	a	0	1	1	oewn
+oewn-armour-v	armour	v	0	1	1	oewn
+oewn-armour_plate-n	armour plate	n	0	2	2	oewn
+oewn-armoured-a	armoured	a	0	1	1	oewn
+oewn-armoured_car-n	armoured car	n	0	2	2	oewn
+oewn-armoured_combat_vehicle-n	armoured combat vehicle	n	0	3	3	oewn
+oewn-armoured_personnel_carrier-n	armoured personnel carrier	n	0	3	3	oewn
+oewn-armoured_vehicle-n	armoured vehicle	n	0	2	2	oewn
+oewn-armourer-n	armourer	n	0	1	1	oewn
+oewn-armoury-n	armoury	n	0	1	1	oewn
+oewn-armpit-n	armpit	n	0	1	1	oewn
+oewn-armrest-n	armrest	n	0	1	1	oewn
+oewn-arms-n	arms	n	0	1	1	oewn
+oewn-arms-runner-n	arms-runner	n	0	1	1	oewn
+oewn-arms_control-n	arms control	n	0	2	2	oewn
+oewn-arms_deal-n	arms deal	n	0	2	2	oewn
+oewn-arms_industry-n	arms industry	n	0	2	2	oewn
+oewn-arms_manufacturer-n	arms manufacturer	n	0	2	2	oewn
+oewn-arms_race-n	arms race	n	0	2	2	oewn
+oewn-army-n	army	n	0	1	1	oewn
+oewn-army_ant-n	army ant	n	0	2	2	oewn
+oewn-army_attache-n	army attache	n	0	2	2	oewn
+oewn-army_base-n	army base	n	0	2	2	oewn
+oewn-army_brat-n	army brat	n	0	2	2	oewn
+oewn-army_corps-n	army corps	n	0	2	2	oewn
+oewn-army_cutworm-n	army cutworm	n	0	2	2	oewn
+oewn-army_engineer-n	army engineer	n	0	2	2	oewn
+oewn-army_hut-n	army hut	n	0	2	2	oewn
+oewn-army_officer-n	army officer	n	0	2	2	oewn
+oewn-army_tank-n	army tank	n	0	2	2	oewn
+oewn-army_unit-n	army unit	n	0	2	2	oewn
+oewn-army_worm-n	army worm	n	0	2	2	oewn
+oewn-armyworm-n	armyworm	n	0	1	1	oewn
+oewn-arnica-n	arnica	n	0	1	1	oewn
+oewn-arnica_bud-n	arnica bud	n	0	2	2	oewn
+oewn-aroeira_blanca-n	aroeira blanca	n	0	2	2	oewn
+oewn-aroid-a	aroid	a	0	1	1	oewn
+oewn-aroid-n	aroid	n	0	1	1	oewn
+oewn-arolla_pine-n	arolla pine	n	0	2	2	oewn
+oewn-aroma-n	aroma	n	0	1	1	oewn
+oewn-aromatherapy-n	aromatherapy	n	0	1	1	oewn
+oewn-aromatic-a	aromatic	a	0	1	1	oewn
+oewn-aromatic_aster-n	aromatic aster	n	0	2	2	oewn
+oewn-aromatic_compound-n	aromatic compound	n	0	2	2	oewn
+oewn-aromatic_hydrocarbon-n	aromatic hydrocarbon	n	0	2	2	oewn
+oewn-aromaticity-n	aromaticity	n	0	1	1	oewn
+oewn-aromatise-v	aromatise	v	0	1	1	oewn
+oewn-aromatize-v	aromatize	v	0	1	1	oewn
+oewn-aronia_berry_liqueur-n	aronia berry liqueur	n	0	3	3	oewn
+oewn-aronia_liqueur-n	aronia liqueur	n	0	2	2	oewn
+oewn-around-r	around	r	0	1	1	oewn
+oewn-around-the-clock-a	around-the-clock	a	0	1	1	oewn
+oewn-around_the_bend-a	around the bend	a	0	3	3	oewn
+oewn-around_the_clock-r	around the clock	r	0	3	3	oewn
+oewn-arousal-n	arousal	n	0	1	1	oewn
+oewn-arouse-v	arouse	v	0	1	1	oewn
+oewn-aroused-a	aroused	a	0	1	1	oewn
+oewn-arouser-n	arouser	n	0	1	1	oewn
+oewn-arpeggio-n	arpeggio	n	0	1	1	oewn
+oewn-arpent-n	arpent	n	0	1	1	oewn
+oewn-arquebus-n	arquebus	n	0	1	1	oewn
+oewn-arrack-n	arrack	n	0	1	1	oewn
+oewn-arraign-v	arraign	v	0	1	1	oewn
+oewn-arraignment-n	arraignment	n	0	1	1	oewn
+oewn-arrange-v	arrange	v	0	1	1	oewn
+oewn-arranged-a	arranged	a	0	1	1	oewn
+oewn-arrangement-n	arrangement	n	0	1	1	oewn
+oewn-arranger-n	arranger	n	0	1	1	oewn
+oewn-arranging-n	arranging	n	0	1	1	oewn
+oewn-arrant-a	arrant	a	0	1	1	oewn
+oewn-arras-n	arras	n	0	1	1	oewn
+oewn-array-n	array	n	0	1	1	oewn
+oewn-array-v	array	v	0	1	1	oewn
+oewn-arrayed-a	arrayed	a	0	1	1	oewn
+oewn-arrears-n	arrears	n	0	1	1	oewn
+oewn-arrest-n	arrest	n	0	1	1	oewn
+oewn-arrest-v	arrest	v	0	1	1	oewn
+oewn-arrest_warrant-n	arrest warrant	n	0	2	2	oewn
+oewn-arrested_development-n	arrested development	n	0	2	2	oewn
+oewn-arrester-n	arrester	n	0	1	1	oewn
+oewn-arrester_hook-n	arrester hook	n	0	2	2	oewn
+oewn-arresting-a	arresting	a	0	1	1	oewn
+oewn-arrhythmia-n	arrhythmia	n	0	1	1	oewn
+oewn-arrhythmic-a	arrhythmic	a	0	1	1	oewn
+oewn-arrhythmical-a	arrhythmical	a	0	1	1	oewn
+oewn-arriere_pensee-n	arriere pensee	n	0	2	2	oewn
+oewn-arrival-n	arrival	n	0	1	1	oewn
+oewn-arrival_gate-n	arrival gate	n	0	2	2	oewn
+oewn-arrival_time-n	arrival time	n	0	2	2	oewn
+oewn-arrive-v	arrive	v	0	1	1	oewn
+oewn-arrive_at-v	arrive at	v	0	2	1	oewn
+oewn-arrivederci-n	arrivederci	n	0	1	1	oewn
+oewn-arriver-n	arriver	n	0	1	1	oewn
+oewn-arriviste-n	arriviste	n	0	1	1	oewn
+oewn-arroba-n	arroba	n	0	1	1	oewn
+oewn-arrogance-n	arrogance	n	0	1	1	oewn
+oewn-arrogant-a	arrogant	a	0	1	1	oewn
+oewn-arrogantly-r	arrogantly	r	0	1	1	oewn
+oewn-arrogate-v	arrogate	v	0	1	1	oewn
+oewn-arrogation-n	arrogation	n	0	1	1	oewn
+oewn-arrogator-n	arrogator	n	0	1	1	oewn
+oewn-arrow-n	arrow	n	0	1	1	oewn
+oewn-arrow-shaped-a	arrow-shaped	a	0	1	1	oewn
+oewn-arrow_arum-n	arrow arum	n	0	2	2	oewn
+oewn-arrow_grass-n	arrow grass	n	0	2	2	oewn
+oewn-arrow_leaved_aster-n	arrow leaved aster	n	0	3	3	oewn
+oewn-arrow_wood-n	arrow wood	n	0	2	2	oewn
+oewn-arrowhead-n	arrowhead	n	0	1	1	oewn
+oewn-arrowleaf_groundsel-n	arrowleaf groundsel	n	0	2	2	oewn
+oewn-arrowroot-n	arrowroot	n	0	1	1	oewn
+oewn-arrowsmith-n	arrowsmith	n	0	1	1	oewn
+oewn-arrowworm-n	arrowworm	n	0	1	1	oewn
+oewn-arroyo-n	arroyo	n	0	1	1	oewn
+oewn-arroyo_willow-n	arroyo willow	n	0	2	2	oewn
+oewn-arroz_con_pollo-n	arroz con pollo	n	0	3	3	oewn
+oewn-arse-n	arse	n	0	1	1	oewn
+oewn-arse_about-v	arse about	v	0	2	1	oewn
+oewn-arse_around-v	arse around	v	0	2	1	oewn
+oewn-arsehole-n	arsehole	n	0	1	1	oewn
+oewn-arsenal-n	arsenal	n	0	1	1	oewn
+oewn-arsenate-n	arsenate	n	0	1	1	oewn
+oewn-arsenic-n	arsenic	n	0	1	1	oewn
+oewn-arsenic_acid-n	arsenic acid	n	0	2	2	oewn
+oewn-arsenic_group-n	arsenic group	n	0	2	2	oewn
+oewn-arsenic_trioxide-n	arsenic trioxide	n	0	2	2	oewn
+oewn-arsenical-a	arsenical	a	0	1	1	oewn
+oewn-arsenical-n	arsenical	n	0	1	1	oewn
+oewn-arsenide-n	arsenide	n	0	1	1	oewn
+oewn-arsenious-a	arsenious	a	0	1	1	oewn
+oewn-arsenopyrite-n	arsenopyrite	n	0	1	1	oewn
+oewn-arsenous_anhydride-n	arsenous anhydride	n	0	2	2	oewn
+oewn-arsenous_oxide-n	arsenous oxide	n	0	2	2	oewn
+oewn-arsine-n	arsine	n	0	1	1	oewn
+oewn-arson-n	arson	n	0	1	1	oewn
+oewn-arsonist-n	arsonist	n	0	1	1	oewn
+oewn-art-n	art	n	0	1	1	oewn
+oewn-art_class-n	art class	n	0	2	2	oewn
+oewn-art_collection-n	art collection	n	0	2	2	oewn
+oewn-art_critic-n	art critic	n	0	2	2	oewn
+oewn-art_dealer-n	art dealer	n	0	2	2	oewn
+oewn-art_deco-n	art deco	n	0	2	2	oewn
+oewn-art_department-n	art department	n	0	2	2	oewn
+oewn-art_director-n	art director	n	0	2	2	oewn
+oewn-art_editor-n	art editor	n	0	2	2	oewn
+oewn-art_exhibition-n	art exhibition	n	0	2	2	oewn
+oewn-art_form-n	art form	n	0	2	2	oewn
+oewn-art_gallery-n	art gallery	n	0	2	2	oewn
+oewn-art_historian-n	art historian	n	0	2	2	oewn
+oewn-art_history-n	art history	n	0	2	2	oewn
+oewn-art_movement-n	art movement	n	0	2	2	oewn
+oewn-art_nouveau-n	art nouveau	n	0	2	2	oewn
+oewn-art_object-n	art object	n	0	2	2	oewn
+oewn-art_paper-n	art paper	n	0	2	2	oewn
+oewn-art_rock-n	art rock	n	0	2	2	oewn
+oewn-art_school-n	art school	n	0	2	2	oewn
+oewn-art_student-n	art student	n	0	2	2	oewn
+oewn-art_teacher-n	art teacher	n	0	2	2	oewn
+oewn-artefact-n	artefact	n	0	1	1	oewn
+oewn-artefactual-a	artefactual	a	0	1	1	oewn
+oewn-artemisia-n	artemisia	n	0	1	1	oewn
+oewn-arteria-n	arteria	n	0	1	1	oewn
+oewn-arteria_alveolaris-n	arteria alveolaris	n	0	2	2	oewn
+oewn-arteria_alveolaris_inferior-n	arteria alveolaris inferior	n	0	3	3	oewn
+oewn-arteria_alveolaris_superior-n	arteria alveolaris superior	n	0	3	3	oewn
+oewn-arteria_angularis-n	arteria angularis	n	0	2	2	oewn
+oewn-arteria_appendicularis-n	arteria appendicularis	n	0	2	2	oewn
+oewn-arteria_arcuata-n	arteria arcuata	n	0	2	2	oewn
+oewn-arteria_ascendens-n	arteria ascendens	n	0	2	2	oewn
+oewn-arteria_auricularis-n	arteria auricularis	n	0	2	2	oewn
+oewn-arteria_axillaris-n	arteria axillaris	n	0	2	2	oewn
+oewn-arteria_basilaris-n	arteria basilaris	n	0	2	2	oewn
+oewn-arteria_brachialis-n	arteria brachialis	n	0	2	2	oewn
+oewn-arteria_buccalis-n	arteria buccalis	n	0	2	2	oewn
+oewn-arteria_bulbi_penis-n	arteria bulbi penis	n	0	3	3	oewn
+oewn-arteria_bulbi_vestibuli-n	arteria bulbi vestibuli	n	0	3	3	oewn
+oewn-arteria_carotis-n	arteria carotis	n	0	2	2	oewn
+oewn-arteria_celiaca-n	arteria celiaca	n	0	2	2	oewn
+oewn-arteria_centralis_retinae-n	arteria centralis retinae	n	0	3	3	oewn
+oewn-arteria_cerebelli-n	arteria cerebelli	n	0	2	2	oewn
+oewn-arteria_cerebri-n	arteria cerebri	n	0	2	2	oewn
+oewn-arteria_cervicalis-n	arteria cervicalis	n	0	2	2	oewn
+oewn-arteria_choroidea-n	arteria choroidea	n	0	2	2	oewn
+oewn-arteria_ciliaris-n	arteria ciliaris	n	0	2	2	oewn
+oewn-arteria_circumflexa_femoris-n	arteria circumflexa femoris	n	0	3	3	oewn
+oewn-arteria_circumflexa_humeri-n	arteria circumflexa humeri	n	0	3	3	oewn
+oewn-arteria_circumflexa_ilium-n	arteria circumflexa ilium	n	0	3	3	oewn
+oewn-arteria_circumflexa_scapulae-n	arteria circumflexa scapulae	n	0	3	3	oewn
+oewn-arteria_colica-n	arteria colica	n	0	2	2	oewn
+oewn-arteria_communicans-n	arteria communicans	n	0	2	2	oewn
+oewn-arteria_coronaria-n	arteria coronaria	n	0	2	2	oewn
+oewn-arteria_cystica-n	arteria cystica	n	0	2	2	oewn
+oewn-arteria_digitalis-n	arteria digitalis	n	0	2	2	oewn
+oewn-arteria_epigastrica-n	arteria epigastrica	n	0	2	2	oewn
+oewn-arteria_ethmoidalis-n	arteria ethmoidalis	n	0	2	2	oewn
+oewn-arteria_facialis-n	arteria facialis	n	0	2	2	oewn
+oewn-arteria_femoralis-n	arteria femoralis	n	0	2	2	oewn
+oewn-arteria_gastrica-n	arteria gastrica	n	0	2	2	oewn
+oewn-arteria_gastrica_breves-n	arteria gastrica breves	n	0	3	3	oewn
+oewn-arteria_gastrica_dextra-n	arteria gastrica dextra	n	0	3	3	oewn
+oewn-arteria_gastrica_sinistra-n	arteria gastrica sinistra	n	0	3	3	oewn
+oewn-arteria_glutea-n	arteria glutea	n	0	2	2	oewn
+oewn-arteria_glutes-n	arteria glutes	n	0	2	2	oewn
+oewn-arteria_hepatica-n	arteria hepatica	n	0	2	2	oewn
+oewn-arteria_ilealis-n	arteria ilealis	n	0	2	2	oewn
+oewn-arteria_ileocolica-n	arteria ileocolica	n	0	2	2	oewn
+oewn-arteria_iliaca-n	arteria iliaca	n	0	2	2	oewn
+oewn-arteria_iliolumbalis-n	arteria iliolumbalis	n	0	2	2	oewn
+oewn-arteria_infraorbitalis-n	arteria infraorbitalis	n	0	2	2	oewn
+oewn-arteria_intercostalis-n	arteria intercostalis	n	0	2	2	oewn
+oewn-arteria_labialis-n	arteria labialis	n	0	2	2	oewn
+oewn-arteria_labialis_inferior-n	arteria labialis inferior	n	0	3	3	oewn
+oewn-arteria_labialis_superior-n	arteria labialis superior	n	0	3	3	oewn
+oewn-arteria_lacrimalis-n	arteria lacrimalis	n	0	2	2	oewn
+oewn-arteria_laryngea-n	arteria laryngea	n	0	2	2	oewn
+oewn-arteria_lienalis-n	arteria lienalis	n	0	2	2	oewn
+oewn-arteria_lingualis-n	arteria lingualis	n	0	2	2	oewn
+oewn-arteria_lumbalis-n	arteria lumbalis	n	0	2	2	oewn
+oewn-arteria_maxillaris-n	arteria maxillaris	n	0	2	2	oewn
+oewn-arteria_meningea-n	arteria meningea	n	0	2	2	oewn
+oewn-arteria_mesenterica-n	arteria mesenterica	n	0	2	2	oewn
+oewn-arteria_metacarpea-n	arteria metacarpea	n	0	2	2	oewn
+oewn-arteria_metatarsea-n	arteria metatarsea	n	0	2	2	oewn
+oewn-arteria_musculophrenica-n	arteria musculophrenica	n	0	2	2	oewn
+oewn-arteria_nutricia-n	arteria nutricia	n	0	2	2	oewn
+oewn-arteria_ophthalmica-n	arteria ophthalmica	n	0	2	2	oewn
+oewn-arteria_ovarica-n	arteria ovarica	n	0	2	2	oewn
+oewn-arteria_palatina-n	arteria palatina	n	0	2	2	oewn
+oewn-arteria_pancreatica-n	arteria pancreatica	n	0	2	2	oewn
+oewn-arteria_perinealis-n	arteria perinealis	n	0	2	2	oewn
+oewn-arteria_poplitea-n	arteria poplitea	n	0	2	2	oewn
+oewn-arteria_pudenda-n	arteria pudenda	n	0	2	2	oewn
+oewn-arteria_pulmonalis-n	arteria pulmonalis	n	0	2	2	oewn
+oewn-arteria_radialis-n	arteria radialis	n	0	2	2	oewn
+oewn-arteria_rectalis-n	arteria rectalis	n	0	2	2	oewn
+oewn-arteria_renalis-n	arteria renalis	n	0	2	2	oewn
+oewn-arteria_subclavia-n	arteria subclavia	n	0	2	2	oewn
+oewn-arteria_temporalis_anterior-n	arteria temporalis anterior	n	0	3	3	oewn
+oewn-arteria_temporalis_intermedia-n	arteria temporalis intermedia	n	0	3	3	oewn
+oewn-arteria_temporalis_posterior-n	arteria temporalis posterior	n	0	3	3	oewn
+oewn-arteria_testicularis-n	arteria testicularis	n	0	2	2	oewn
+oewn-arteria_ulnaris-n	arteria ulnaris	n	0	2	2	oewn
+oewn-arteria_uterina-n	arteria uterina	n	0	2	2	oewn
+oewn-arteria_vaginalis-n	arteria vaginalis	n	0	2	2	oewn
+oewn-arteria_vertebralis-n	arteria vertebralis	n	0	2	2	oewn
+oewn-arterial-a	arterial	a	0	1	1	oewn
+oewn-arterial_blood-n	arterial blood	n	0	2	2	oewn
+oewn-arterial_blood_gases-n	arterial blood gases	n	0	3	3	oewn
+oewn-arterial_blood_vessel-n	arterial blood vessel	n	0	3	3	oewn
+oewn-arterial_plaque-n	arterial plaque	n	0	2	2	oewn
+oewn-arterial_pressure-n	arterial pressure	n	0	2	2	oewn
+oewn-arterial_road-n	arterial road	n	0	2	2	oewn
+oewn-arterial_sclerosis-n	arterial sclerosis	n	0	2	2	oewn
+oewn-arterialise-v	arterialise	v	0	1	1	oewn
+oewn-arterialize-v	arterialize	v	0	1	1	oewn
+oewn-arteriectasia-n	arteriectasia	n	0	1	1	oewn
+oewn-arteriectasis-n	arteriectasis	n	0	1	1	oewn
+oewn-arteriogram-n	arteriogram	n	0	1	1	oewn
+oewn-arteriography-n	arteriography	n	0	1	1	oewn
+oewn-arteriola-n	arteriola	n	0	1	1	oewn
+oewn-arteriolar-a	arteriolar	a	0	1	1	oewn
+oewn-arteriole-n	arteriole	n	0	1	1	oewn
+oewn-arteriolosclerosis-n	arteriolosclerosis	n	0	1	1	oewn
+oewn-arteriosclerosis-n	arteriosclerosis	n	0	1	1	oewn
+oewn-arteriosclerosis_obliterans-n	arteriosclerosis obliterans	n	0	2	2	oewn
+oewn-arteriosclerotic-a	arteriosclerotic	a	0	1	1	oewn
+oewn-arteriovenous-a	arteriovenous	a	0	1	1	oewn
+oewn-arteritis-n	arteritis	n	0	1	1	oewn
+oewn-artery-n	artery	n	0	1	1	oewn
+oewn-artery_of_the_labyrinth-n	artery of the labyrinth	n	0	4	1	oewn
+oewn-artery_of_the_penis_bulb-n	artery of the penis bulb	n	0	5	1	oewn
+oewn-artery_of_the_vestibule_bulb-n	artery of the vestibule bulb	n	0	5	1	oewn
+oewn-artesian-a	artesian	a	0	1	1	oewn
+oewn-artesian_well-n	artesian well	n	0	2	2	oewn
+oewn-artful-a	artful	a	0	1	1	oewn
+oewn-artfully-r	artfully	r	0	1	1	oewn
+oewn-artfulness-n	artfulness	n	0	1	1	oewn
+oewn-arthralgia-n	arthralgia	n	0	1	1	oewn
+oewn-arthralgic-a	arthralgic	a	0	1	1	oewn
+oewn-arthritic-a	arthritic	a	0	1	1	oewn
+oewn-arthritic-n	arthritic	n	0	1	1	oewn
+oewn-arthritis-n	arthritis	n	0	1	1	oewn
+oewn-arthrocentesis-n	arthrocentesis	n	0	1	1	oewn
+oewn-arthrodesis-n	arthrodesis	n	0	1	1	oewn
+oewn-arthrogram-n	arthrogram	n	0	1	1	oewn
+oewn-arthrography-n	arthrography	n	0	1	1	oewn
+oewn-arthromere-n	arthromere	n	0	1	1	oewn
+oewn-arthromeric-a	arthromeric	a	0	1	1	oewn
+oewn-arthropathy-n	arthropathy	n	0	1	1	oewn
+oewn-arthroplasty-n	arthroplasty	n	0	1	1	oewn
+oewn-arthropod-n	arthropod	n	0	1	1	oewn
+oewn-arthropod_family-n	arthropod family	n	0	2	2	oewn
+oewn-arthropod_genus-n	arthropod genus	n	0	2	2	oewn
+oewn-arthropodal-a	arthropodal	a	0	1	1	oewn
+oewn-arthropodan-a	arthropodan	a	0	1	1	oewn
+oewn-arthropodous-a	arthropodous	a	0	1	1	oewn
+oewn-arthroscope-n	arthroscope	n	0	1	1	oewn
+oewn-arthroscopy-n	arthroscopy	n	0	1	1	oewn
+oewn-arthrospore-n	arthrospore	n	0	1	1	oewn
+oewn-arthrosporic-a	arthrosporic	a	0	1	1	oewn
+oewn-arthrosporous-a	arthrosporous	a	0	1	1	oewn
+oewn-artichoke-n	artichoke	n	0	1	1	oewn
+oewn-artichoke_heart-n	artichoke heart	n	0	2	2	oewn
+oewn-artichoke_plant-n	artichoke plant	n	0	2	2	oewn
+oewn-article-n	article	n	0	1	1	oewn
+oewn-article-v	article	v	0	1	1	oewn
+oewn-article_of_clothing-n	article of clothing	n	0	3	1	oewn
+oewn-article_of_commerce-n	article of commerce	n	0	3	1	oewn
+oewn-article_of_faith-n	article of faith	n	0	3	1	oewn
+oewn-article_of_furniture-n	article of furniture	n	0	3	1	oewn
+oewn-articled-a	articled	a	0	1	1	oewn
+oewn-articles_of_agreement-n	articles of agreement	n	0	3	1	oewn
+oewn-articles_of_incorporation-n	articles of incorporation	n	0	3	1	oewn
+oewn-articular-a	articular	a	0	1	1	oewn
+oewn-articular_muscle-n	articular muscle	n	0	2	2	oewn
+oewn-articulary-a	articulary	a	0	1	1	oewn
+oewn-articulate-a	articulate	a	0	1	1	oewn
+oewn-articulate-v	articulate	v	0	1	1	oewn
+oewn-articulated-a	articulated	a	0	1	1	oewn
+oewn-articulated_ladder-n	articulated ladder	n	0	2	2	oewn
+oewn-articulated_lorry-n	articulated lorry	n	0	2	2	oewn
+oewn-articulately-r	articulately	r	0	1	1	oewn
+oewn-articulateness-n	articulateness	n	0	1	1	oewn
+oewn-articulatio-n	articulatio	n	0	1	1	oewn
+oewn-articulatio_coxae-n	articulatio coxae	n	0	2	2	oewn
+oewn-articulatio_cubiti-n	articulatio cubiti	n	0	2	2	oewn
+oewn-articulatio_genus-n	articulatio genus	n	0	2	2	oewn
+oewn-articulatio_humeri-n	articulatio humeri	n	0	2	2	oewn
+oewn-articulatio_plana-n	articulatio plana	n	0	2	2	oewn
+oewn-articulatio_radiocarpea-n	articulatio radiocarpea	n	0	2	2	oewn
+oewn-articulatio_spheroidea-n	articulatio spheroidea	n	0	2	2	oewn
+oewn-articulatio_synovialis-n	articulatio synovialis	n	0	2	2	oewn
+oewn-articulatio_talocruralis-n	articulatio talocruralis	n	0	2	2	oewn
+oewn-articulatio_temporomandibularis-n	articulatio temporomandibularis	n	0	2	2	oewn
+oewn-articulatio_trochoidea-n	articulatio trochoidea	n	0	2	2	oewn
+oewn-articulation-n	articulation	n	0	1	1	oewn
+oewn-articulative-a	articulative	a	0	1	1	oewn
+oewn-articulator-n	articulator	n	0	1	1	oewn
+oewn-articulatory-a	articulatory	a	0	1	1	oewn
+oewn-articulatory_system-n	articulatory system	n	0	2	2	oewn
+oewn-artifact-n	artifact	n	0	1	1	oewn
+oewn-artifactual-a	artifactual	a	0	1	1	oewn
+oewn-artifice-n	artifice	n	0	1	1	oewn
+oewn-artificer-n	artificer	n	0	1	1	oewn
+oewn-artificial-a	artificial	a	0	1	1	oewn
+oewn-artificial_additive-n	artificial additive	n	0	2	2	oewn
+oewn-artificial_blood-n	artificial blood	n	0	2	2	oewn
+oewn-artificial_flower-n	artificial flower	n	0	2	2	oewn
+oewn-artificial_heart-n	artificial heart	n	0	2	2	oewn
+oewn-artificial_horizon-n	artificial horizon	n	0	2	2	oewn
+oewn-artificial_insemination-n	artificial insemination	n	0	2	2	oewn
+oewn-artificial_intelligence-n	artificial intelligence	n	0	2	2	oewn
+oewn-artificial_joint-n	artificial joint	n	0	2	2	oewn
+oewn-artificial_kidney-n	artificial kidney	n	0	2	2	oewn
+oewn-artificial_lake-n	artificial lake	n	0	2	2	oewn
+oewn-artificial_language-n	artificial language	n	0	2	2	oewn
+oewn-artificial_pacemaker-n	artificial pacemaker	n	0	2	2	oewn
+oewn-artificial_respiration-n	artificial respiration	n	0	2	2	oewn
+oewn-artificial_satellite-n	artificial satellite	n	0	2	2	oewn
+oewn-artificial_script-n	artificial script	n	0	2	2	oewn
+oewn-artificial_skin-n	artificial skin	n	0	2	2	oewn
+oewn-artificialism-n	artificialism	n	0	1	1	oewn
+oewn-artificiality-n	artificiality	n	0	1	1	oewn
+oewn-artificially-r	artificially	r	0	1	1	oewn
+oewn-artillery-n	artillery	n	0	1	1	oewn
+oewn-artillery_fire-n	artillery fire	n	0	2	2	oewn
+oewn-artillery_plant-n	artillery plant	n	0	2	2	oewn
+oewn-artillery_shell-n	artillery shell	n	0	2	2	oewn
+oewn-artillery_unit-n	artillery unit	n	0	2	2	oewn
+oewn-artilleryman-n	artilleryman	n	0	1	1	oewn
+oewn-artillerywoman-n	artillerywoman	n	0	1	1	oewn
+oewn-artiodactyl-a	artiodactyl	a	0	1	1	oewn
+oewn-artiodactyl-n	artiodactyl	n	0	1	1	oewn
+oewn-artiodactyl_mammal-n	artiodactyl mammal	n	0	2	2	oewn
+oewn-artiodactylous-a	artiodactylous	a	0	1	1	oewn
+oewn-artisan-ap-s_lien-n	artisan's lien	n	0	2	2	oewn
+oewn-artisan-n	artisan	n	0	1	1	oewn
+oewn-artist-ap-s_loft-n	artist's loft	n	0	2	2	oewn
+oewn-artist-ap-s_model-n	artist's model	n	0	2	2	oewn
+oewn-artist-ap-s_workroom-n	artist's workroom	n	0	2	2	oewn
+oewn-artist-n	artist	n	0	1	1	oewn
+oewn-artiste-n	artiste	n	0	1	1	oewn
+oewn-artistic-a	artistic	a	0	1	1	oewn
+oewn-artistic_creation-n	artistic creation	n	0	2	2	oewn
+oewn-artistic_language-n	artistic language	n	0	2	2	oewn
+oewn-artistic_movement-n	artistic movement	n	0	2	2	oewn
+oewn-artistic_production-n	artistic production	n	0	2	2	oewn
+oewn-artistic_style-n	artistic style	n	0	2	2	oewn
+oewn-artistically-r	artistically	r	0	1	1	oewn
+oewn-artistry-n	artistry	n	0	1	1	oewn
+oewn-artlang-n	artlang	n	0	1	1	oewn
+oewn-artless-a	artless	a	0	1	1	oewn
+oewn-artlessly-r	artlessly	r	0	1	1	oewn
+oewn-artlessness-n	artlessness	n	0	1	1	oewn
+oewn-arts-n	arts	n	0	1	1	oewn
+oewn-arts_and_crafts-n	arts and crafts	n	0	3	3	oewn
+oewn-artsy-craftsy-a	artsy-craftsy	a	0	1	1	oewn
+oewn-artwork-n	artwork	n	0	1	1	oewn
+oewn-artworld-n	artworld	n	0	1	1	oewn
+oewn-arty-a	arty	a	0	1	1	oewn
+oewn-arty-crafty-a	arty-crafty	a	0	1	1	oewn
+oewn-arugula-n	arugula	n	0	1	1	oewn
+oewn-arui-n	arui	n	0	1	1	oewn
+oewn-arum-n	arum	n	0	1	1	oewn
+oewn-arum_lily-n	arum lily	n	0	2	2	oewn
+oewn-arundinaceous-a	arundinaceous	a	0	1	1	oewn
+oewn-arytaenoid-n	arytaenoid	n	0	1	1	oewn
+oewn-arytenoid-n	arytenoid	n	0	1	1	oewn
+oewn-arytenoid_cartilage-n	arytenoid cartilage	n	0	2	2	oewn

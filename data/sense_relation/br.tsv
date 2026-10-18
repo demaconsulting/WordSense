@@ -1,0 +1,500 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-brace__1.06.00..	derivation		oewn-brace__2.35.00..
+oewn-brace__1.06.04..	derivation		oewn-brace__2.35.00..
+oewn-brace__1.06.04..	derivation		oewn-brace__2.35.01..
+oewn-brace__2.29.00..	derivation		oewn-bracer__1.06.00..
+oewn-brace__2.29.00..	other	material	oewn-bracer__1.06.00..
+oewn-brace__2.35.00..	derivation		oewn-bracing__1.06.00..
+oewn-brace__2.35.00..	other	by_means_of	oewn-brace__1.06.00..
+oewn-brace__2.35.00..	other	by_means_of	oewn-brace__1.06.04..
+oewn-brace__2.35.01..	other	by_means_of	oewn-brace__1.06.04..
+oewn-brachial__3.01.00..	pertainym		oewn-arm__1.08.00..
+oewn-brachiate__2.38.00..	derivation		oewn-brachiation__1.04.00..
+oewn-brachiate__2.38.00..	other	event	oewn-brachiation__1.04.00..
+oewn-brachycephalic__3.00.00..	antonym		oewn-dolichocephalic__3.00.00..
+oewn-brachycephalic__3.00.00..	derivation		oewn-brachycephaly__1.07.00..
+oewn-brachydactylic__5.00.00.abnormal.00	derivation		oewn-brachydactyly__1.26.00..
+oewn-bracket__1.06.00..	derivation		oewn-bracket__2.35.00..
+oewn-bracket__1.10.00..	derivation		oewn-bracket__2.32.00..
+oewn-bracket__1.10.01..	derivation		oewn-bracket__2.32.00..
+oewn-bracket__1.14.00..	derivation		oewn-bracket__2.31.00..
+oewn-bracket__2.31.00..	other	result	oewn-bracket__1.14.00..
+oewn-bracket__2.32.00..	other	by_means_of	oewn-bracket__1.10.00..
+oewn-bracket__2.32.00..	other	by_means_of	oewn-bracket__1.10.01..
+oewn-bracket__2.35.00..	other	by_means_of	oewn-bracket__1.06.00..
+oewn-brackish__5.00.00.salty.00	derivation		oewn-brackishness__1.07.00..
+oewn-bract__1.20.00..	derivation		oewn-bracteal__3.01.00..
+oewn-bracteal__3.01.00..	pertainym		oewn-bract__1.20.00..
+oewn-bracteate__3.01.00..	antonym		oewn-ebracteate__3.01.00..
+oewn-bracteate__3.01.00..	pertainym		oewn-bract__1.20.00..
+oewn-bracted__3.01.00..	pertainym		oewn-bract__1.20.00..
+oewn-bracteolate__3.01.00..	pertainym		oewn-bracteole__1.20.00..
+oewn-brad__1.06.00..	derivation		oewn-brad__2.35.00..
+oewn-brad__2.35.00..	other	instrument	oewn-brad__1.06.00..
+oewn-brag__1.10.00..	derivation		oewn-brag__2.32.00..
+oewn-brag__1.10.00..	derivation		oewn-braggy__5.00.00.proud.00
+oewn-brag__2.32.00..	derivation		oewn-braggart__1.18.00..
+oewn-brag__2.32.00..	derivation		oewn-bragger__1.18.00..
+oewn-brag__2.32.00..	other	agent	oewn-bragger__1.18.00..
+oewn-brag__2.32.00..	other	event	oewn-brag__1.10.00..
+oewn-brahmin__1.14.00..	derivation		oewn-brahminic__3.01.00..
+oewn-brahmin__1.14.00..	derivation		oewn-brahminical__3.01.00..
+oewn-brahmin__1.18.00..	derivation		oewn-brahminic__3.01.00..
+oewn-brahmin__1.18.00..	derivation		oewn-brahminical__3.01.00..
+oewn-brahmin__1.18.03..	derivation		oewn-brahminic__3.01.00..
+oewn-brahmin__1.18.03..	derivation		oewn-brahminical__3.01.00..
+oewn-brahminic__3.01.00..	pertainym		oewn-brahmin__1.18.03..
+oewn-brahminical__3.01.00..	pertainym		oewn-brahmin__1.18.03..
+oewn-braid__1.06.00..	derivation		oewn-braid__2.35.01..
+oewn-braid__1.06.00..	derivation		oewn-braid__2.36.00..
+oewn-braid__1.08.00..	derivation		oewn-braid__2.35.00..
+oewn-braid__2.35.00..	antonym		oewn-unbraid__2.35.00..
+oewn-braid__2.35.00..	other	result	oewn-braid__1.08.00..
+oewn-braid__2.35.01..	other	uses	oewn-braid__1.06.00..
+oewn-braid__2.36.00..	other	result	oewn-braid__1.06.00..
+oewn-braille__1.10.00..	derivation		oewn-braille__2.32.00..
+oewn-brain__1.08.00..	derivation		oewn-brain__2.35.00..
+oewn-brain__1.08.00..	derivation		oewn-brain__2.35.01..
+oewn-brain__1.09.00..	derivation		oewn-brainy__5.00.00.intelligent.00
+oewn-brain__1.18.00..	derivation		oewn-brainy__5.00.00.intelligent.00
+oewn-brain_tumor__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brain_tumour__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brain_tumour__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brain_tumour__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-brainstorm__1.09.00..	derivation		oewn-brainstorm__2.31.00..
+oewn-brainstorm__2.31.00..	derivation		oewn-brainstorming__1.04.00..
+oewn-brainwashed__3.00.00..	antonym		oewn-unbrainwashed__3.00.00..
+oewn-brake__1.06.00..	derivation		oewn-brake__2.38.00..
+oewn-brake__1.06.00..	derivation		oewn-brake__2.38.01..
+oewn-brake__1.14.00..	derivation		oewn-braky__5.00.00.wooded.00
+oewn-brake__1.20.01..	derivation		oewn-braky__5.00.00.ferned.00
+oewn-brake__2.38.00..	other	instrument	oewn-brake__1.06.00..
+oewn-brake__2.38.01..	other	instrument	oewn-brake__1.06.00..
+oewn-bramble__1.20.02..	derivation		oewn-brambly__5.00.00.wooded.00
+oewn-branch__1.17.01..	derivation		oewn-branch__2.30.00..
+oewn-branch__1.20.00..	derivation		oewn-branchy__3.00.00..
+oewn-branch__1.25.00..	derivation		oewn-branch__2.30.00..
+oewn-branch__1.25.00..	derivation		oewn-branchy__3.00.00..
+oewn-branch__2.30.00..	also		oewn-branch_out__2.30.00..
+oewn-branch__2.30.00..	other	result	oewn-branch__1.25.00..
+oewn-branchia__1.05.00..	derivation		oewn-branchial__3.01.00..
+oewn-branchial__3.01.00..	pertainym		oewn-branchia__1.05.00..
+oewn-branchless__3.00.00..	antonym		oewn-branchy__3.00.00..
+oewn-brand--name_drug__1.06.00..	antonym		oewn-generic_drug__1.06.00..
+oewn-brand--new__5.00.00.new.00	derivation		oewn-brand--newness__1.07.00..
+oewn-brand__1.10.01..	derivation		oewn-brand__2.32.00..
+oewn-brand__1.10.01..	derivation		oewn-brand__2.41.00..
+oewn-brand__1.10.02..	derivation		oewn-brand__2.41.01..
+oewn-brand__2.32.00..	other	by_means_of	oewn-brand__1.10.01..
+oewn-brand__2.41.00..	other	by_means_of	oewn-brand__1.10.01..
+oewn-brand__2.41.01..	other	result	oewn-brand__1.10.02..
+oewn-branded__3.00.00..	antonym		oewn-unbranded__3.00.00..
+oewn-brandish__1.10.00..	derivation		oewn-brandish__2.35.00..
+oewn-brandish__2.35.00..	other	event	oewn-brandish__1.10.00..
+oewn-brash__5.00.00.forward.02	derivation		oewn-brashness__1.07.00..
+oewn-brashly__4.02.00..	pertainym		oewn-brash__5.00.00.forward.02
+oewn-brass__1.06.00..	derivation		oewn-brassy__3.01.00..
+oewn-brass__1.07.00..	derivation		oewn-brassy__5.00.00.unashamed.00
+oewn-brass__1.14.01..	derivation		oewn-brassy__3.01.00..
+oewn-brasslike__3.01.00..	pertainym		oewn-brass__1.06.00..
+oewn-brassy__3.01.00..	pertainym		oewn-brass__1.06.00..
+oewn-brat__1.18.00..	derivation		oewn-bratty__5.00.00.impolite.00
+oewn-brave__1.14.00..	antonym		oewn-timid__1.14.00..
+oewn-brave__1.14.00..	derivation		oewn-brave__2.42.00..
+oewn-brave__2.42.00..	other	agent	oewn-brave__1.14.00..
+oewn-brave__3.00.00..	antonym		oewn-cowardly__3.00.00..
+oewn-brave__3.00.00..	derivation		oewn-braveness__1.07.00..
+oewn-brave__5.00.00.bold.00	derivation		oewn-braveness__1.07.00..
+oewn-bravely__4.02.00..	pertainym		oewn-brave__3.00.00..
+oewn-bravo__1.10.00..	derivation		oewn-bravo__2.32.00..
+oewn-bravo__2.32.00..	other	event	oewn-bravo__1.10.00..
+oewn-braw__5.00.00.colorful.03	exemplifies		oewn-scots_english__1.10.00..
+oewn-brawl__1.04.00..	derivation		oewn-brawl__2.32.00..
+oewn-brawl__2.32.00..	derivation		oewn-brawler__1.18.00..
+oewn-brawl__2.32.00..	other	agent	oewn-brawler__1.18.00..
+oewn-brawl__2.32.00..	other	event	oewn-brawl__1.04.00..
+oewn-brawn__1.07.00..	derivation		oewn-brawny__5.00.00.strong.00
+oewn-brawniness__1.07.00..	derivation		oewn-brawny__5.00.00.strong.00
+oewn-bray__1.11.00..	derivation		oewn-bray__2.29.00..
+oewn-bray__1.11.00..	derivation		oewn-bray__2.32.00..
+oewn-bray__2.29.00..	other	event	oewn-bray__1.11.00..
+oewn-bray__2.32.00..	other	event	oewn-bray__1.11.00..
+oewn-brazen__3.01.00..	pertainym		oewn-brass__1.27.00..
+oewn-brazen__5.00.00.unashamed.00	derivation		oewn-brazenness__1.07.00..
+oewn-brazenly__4.02.00..	pertainym		oewn-brazen__5.00.00.unashamed.00
+oewn-breach__1.04.01..	derivation		oewn-breach__2.41.00..
+oewn-breach__1.17.00..	derivation		oewn-breach__2.35.00..
+oewn-breach__2.35.00..	other	result	oewn-breach__1.17.00..
+oewn-breach__2.41.00..	other	event	oewn-breach__1.04.01..
+oewn-bread__1.13.00..	derivation		oewn-bread__2.35.00..
+oewn-bread__2.35.00..	other	uses	oewn-bread__1.13.00..
+oewn-break--in__1.04.00..	derivation		oewn-break_in__2.41.00..
+oewn-break__1.04.00..	derivation		oewn-break__2.30.00..
+oewn-break__1.04.00..	derivation		oewn-break__2.30.10..
+oewn-break__1.04.03..	derivation		oewn-break__2.35.14..
+oewn-break__1.04.04..	derivation		oewn-break__2.38.02..
+oewn-break__1.04.05..	derivation		oewn-break__2.32.04..
+oewn-break__1.11.00..	derivation		oewn-break__2.42.05..
+oewn-break__1.11.02..	derivation		oewn-break__2.30.00..
+oewn-break__1.11.03..	derivation		oewn-break__2.41.13..
+oewn-break__1.17.00..	derivation		oewn-break__2.30.00..
+oewn-break__1.26.00..	derivation		oewn-break__2.29.04..
+oewn-break__1.26.00..	derivation		oewn-break__2.30.15..
+oewn-break__1.28.00..	derivation		oewn-break__2.41.01..
+oewn-break__2.29.04..	other	event	oewn-break__1.26.00..
+oewn-break__2.30.00..	also		oewn-break_up__2.30.02..
+oewn-break__2.30.00..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.30.00..	other	event	oewn-break__1.04.00..
+oewn-break__2.30.00..	other	event	oewn-break__1.11.02..
+oewn-break__2.30.00..	other	result	oewn-break__1.17.00..
+oewn-break__2.30.01..	also		oewn-break_out__2.30.04..
+oewn-break__2.30.01..	also		oewn-break_through__2.30.00..
+oewn-break__2.30.05..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.30.06..	derivation		oewn-breakage__1.04.00..
+oewn-break__2.30.10..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.30.10..	derivation		oewn-breakage__1.04.00..
+oewn-break__2.30.10..	derivation		oewn-breaker__1.18.00..
+oewn-break__2.30.10..	other	agent	oewn-breaker__1.18.00..
+oewn-break__2.30.10..	other	event	oewn-break__1.04.00..
+oewn-break__2.30.15..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.30.15..	other	event	oewn-break__1.26.00..
+oewn-break__2.32.04..	other	event	oewn-break__1.04.05..
+oewn-break__2.32.13..	derivation		oewn-breaker__1.06.00..
+oewn-break__2.32.13..	other	instrument	oewn-breaker__1.06.00..
+oewn-break__2.35.00..	also		oewn-break_apart__2.35.00..
+oewn-break__2.35.00..	also		oewn-break_away__2.35.00..
+oewn-break__2.35.00..	also		oewn-break_off__2.35.01..
+oewn-break__2.35.00..	also		oewn-break_up__2.35.02..
+oewn-break__2.35.00..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.35.01..	also		oewn-break_apart__2.36.00..
+oewn-break__2.35.01..	also		oewn-break_down__2.31.00..
+oewn-break__2.35.01..	also		oewn-break_off__2.35.00..
+oewn-break__2.35.01..	also		oewn-break_up__2.35.01..
+oewn-break__2.35.01..	also		oewn-break_up__2.36.00..
+oewn-break__2.35.01..	antonym		oewn-repair__2.30.00..
+oewn-break__2.35.01..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.35.01..	derivation		oewn-breakage__1.04.00..
+oewn-break__2.35.05..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.35.05..	derivation		oewn-breakage__1.04.00..
+oewn-break__2.35.05..	derivation		oewn-breaker__1.18.00..
+oewn-break__2.35.05..	other	agent	oewn-breaker__1.18.00..
+oewn-break__2.35.10..	derivation		oewn-breakable__3.00.00..
+oewn-break__2.35.14..	other	event	oewn-break__1.04.03..
+oewn-break__2.38.01..	derivation		oewn-breaker__1.11.00..
+oewn-break__2.38.01..	other	by_means_of	oewn-breaker__1.11.00..
+oewn-break__2.38.02..	other	event	oewn-break__1.04.04..
+oewn-break__2.41.00..	antonym		oewn-keep__2.41.03..
+oewn-break__2.41.01..	other	event	oewn-break__1.28.00..
+oewn-break__2.41.09..	antonym		oewn-make__2.32.14..
+oewn-break__2.41.13..	other	event	oewn-break__1.11.03..
+oewn-break__2.42.05..	other	event	oewn-break__1.11.00..
+oewn-break_away__2.41.00..	derivation		oewn-breakaway__1.04.00..
+oewn-break_dance__1.04.00..	derivation		oewn-break_dance__2.38.00..
+oewn-break_dance__2.38.00..	other	event	oewn-break_dance__1.04.00..
+oewn-break_down__2.29.00..	derivation		oewn-breakdown__1.26.01..
+oewn-break_down__2.30.00..	derivation		oewn-breakdown__1.11.01..
+oewn-break_down__2.30.09..	derivation		oewn-breakdown__1.22.00..
+oewn-break_down__2.31.00..	derivation		oewn-breakdown__1.09.00..
+oewn-break_down__2.33.00..	derivation		oewn-breakdown__1.04.02..
+oewn-break_down__2.37.00..	derivation		oewn-breakdown__1.26.01..
+oewn-break_even__2.40.00..	antonym		oewn-lose__2.40.06..
+oewn-break_even__2.40.00..	antonym		oewn-profit__2.40.00..
+oewn-break_out__2.38.00..	derivation		oewn-breakout__1.04.00..
+oewn-break_through__2.30.00..	derivation		oewn-breakthrough__1.04.01..
+oewn-break_up__2.38.00..	derivation		oewn-breakup__1.11.00..
+oewn-break_up__2.41.00..	derivation		oewn-breakup__1.04.00..
+oewn-break_up__2.41.00..	derivation		oewn-breakup__1.11.00..
+oewn-breakability__1.07.00..	derivation		oewn-breakable__3.00.00..
+oewn-breakable__3.00.00..	antonym		oewn-unbreakable__3.00.00..
+oewn-breakable__3.00.00..	derivation		oewn-breakableness__1.07.00..
+oewn-breakableness__1.07.00..	antonym		oewn-unbreakableness__1.07.00..
+oewn-breakfast__1.13.00..	derivation		oewn-breakfast__2.34.00..
+oewn-breakfast__1.13.00..	derivation		oewn-breakfast__2.34.01..
+oewn-breakfast__2.34.00..	other	event	oewn-breakfast__1.13.00..
+oewn-breakfast__2.34.01..	other	uses	oewn-breakfast__1.13.00..
+oewn-breast__1.08.01..	derivation		oewn-breast__2.42.00..
+oewn-breasted__3.00.00..	antonym		oewn-breastless__3.00.00..
+oewn-breaststroke__1.04.00..	derivation		oewn-breaststroker__1.18.00..
+oewn-breaststroke__2.38.00..	derivation		oewn-breaststroker__1.18.00..
+oewn-breaststroke__2.38.00..	other	agent	oewn-breaststroker__1.18.00..
+oewn-breathalyse__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-breathalyse__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-breathalyze__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-breathe__2.29.00..	also		oewn-breathe_in__2.29.00..
+oewn-breathe__2.29.00..	also		oewn-breathe_out__2.29.00..
+oewn-breathe__2.29.00..	derivation		oewn-breather__1.06.00..
+oewn-breathe__2.29.00..	derivation		oewn-breathing__1.04.00..
+oewn-breathe__2.32.00..	derivation		oewn-breather__1.28.00..
+oewn-breathe__2.32.00..	derivation		oewn-breathing__1.04.00..
+oewn-breathe__2.32.00..	other	event	oewn-breather__1.28.00..
+oewn-breathing__3.00.00..	antonym		oewn-breathless__3.00.00..
+oewn-breathless__3.00.00..	derivation		oewn-breathlessness__1.26.00..
+oewn-breathless__5.00.00.dead.01	derivation		oewn-breathlessness__1.26.00..
+oewn-breathlessly__4.02.00..	pertainym		oewn-breathless__3.00.00..
+oewn-breccia__1.27.00..	derivation		oewn-brecciate__2.30.00..
+oewn-breccia__1.27.00..	derivation		oewn-brecciate__2.35.00..
+oewn-breech--loading__3.01.00..	pertainym		oewn-breechloader__1.06.00..
+oewn-breed__1.14.00..	derivation		oewn-breed__2.29.00..
+oewn-breed__1.14.00..	derivation		oewn-breed__2.35.01..
+oewn-breed__2.29.00..	derivation		oewn-breeding__1.04.00..
+oewn-breed__2.35.01..	derivation		oewn-breeder__1.18.00..
+oewn-breed__2.35.01..	derivation		oewn-breeding__1.04.02..
+oewn-breed__2.35.01..	other	agent	oewn-breeder__1.18.00..
+oewn-breeze__1.04.00..	derivation		oewn-breeze__2.38.00..
+oewn-breeze__1.19.00..	derivation		oewn-breeze__2.43.00..
+oewn-breeze__1.19.00..	derivation		oewn-breezy__5.00.00.stormy.00
+oewn-breeze__2.38.00..	also		oewn-breeze_through__2.41.00..
+oewn-breeze__2.38.00..	other	event	oewn-breeze__1.04.00..
+oewn-breeze__2.43.00..	other	event	oewn-breeze__1.19.00..
+oewn-breezily__4.02.00..	pertainym		oewn-breezy__5.00.00.lively.00
+oewn-breeziness__1.07.00..	derivation		oewn-breezy__5.00.00.lively.00
+oewn-breeziness__1.26.00..	derivation		oewn-breezy__5.00.00.stormy.00
+oewn-bregma__1.08.00..	derivation		oewn-bregmatic__3.01.00..
+oewn-bregmatic__3.01.00..	pertainym		oewn-bregma__1.08.00..
+oewn-brevet__1.10.00..	derivation		oewn-brevet__2.41.00..
+oewn-brevet__2.41.00..	other	by_means_of	oewn-brevet__1.10.00..
+oewn-brevibloc__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-brevity__1.07.00..	derivation		oewn-brief__5.00.00.short.02
+oewn-brevity__1.10.00..	derivation		oewn-brief__5.00.00.concise.00
+oewn-brew__1.13.00..	derivation		oewn-brew__2.30.00..
+oewn-brew__1.13.00..	derivation		oewn-brew__2.36.00..
+oewn-brew__2.30.00..	other	result	oewn-brew__1.13.00..
+oewn-brew__2.36.00..	derivation		oewn-brewage__1.13.00..
+oewn-brew__2.36.00..	derivation		oewn-brewer__1.18.00..
+oewn-brew__2.36.00..	derivation		oewn-brewer__1.18.01..
+oewn-brew__2.36.00..	derivation		oewn-brewery__1.06.00..
+oewn-brew__2.36.00..	other	agent	oewn-brewer__1.18.00..
+oewn-brew__2.36.00..	other	agent	oewn-brewer__1.18.01..
+oewn-brew__2.36.00..	other	result	oewn-brew__1.13.00..
+oewn-briar__1.20.02..	derivation		oewn-briary__5.00.00.armed.02
+oewn-bribable__5.00.00.corrupt.00	derivation		oewn-bribe__2.40.00..
+oewn-bribe__1.21.00..	derivation		oewn-bribe__2.40.00..
+oewn-bribe__2.40.00..	derivation		oewn-briber__1.18.00..
+oewn-bribe__2.40.00..	derivation		oewn-bribery__1.04.00..
+oewn-bribe__2.40.00..	other	agent	oewn-briber__1.18.00..
+oewn-bribe__2.40.00..	other	undergoer	oewn-bribe__1.21.00..
+oewn-bridal__3.01.00..	derivation		oewn-bride__1.18.01..
+oewn-bridal__3.01.00..	pertainym		oewn-bride__1.18.01..
+oewn-bridal__3.01.01..	pertainym		oewn-bridal__1.04.00..
+oewn-bridge__1.06.00..	derivation		oewn-bridge__2.35.00..
+oewn-bridge__1.06.00..	derivation		oewn-bridge__2.38.00..
+oewn-bridge__1.24.00..	derivation		oewn-bridge__2.42.00..
+oewn-bridge__2.35.00..	derivation		oewn-bridgeable__3.00.00..
+oewn-bridge__2.35.00..	other	by_means_of	oewn-bridge__1.06.00..
+oewn-bridge__2.38.00..	derivation		oewn-bridgeable__3.00.00..
+oewn-bridge__2.38.00..	other	by_means_of	oewn-bridge__1.06.00..
+oewn-bridge__2.42.00..	also		oewn-bridge_over__2.42.01..
+oewn-bridge__2.42.00..	other	by_means_of	oewn-bridge__1.24.00..
+oewn-bridgeable__3.00.00..	antonym		oewn-unbridgeable__3.00.00..
+oewn-bridle__1.06.00..	derivation		oewn-bridle__2.32.00..
+oewn-bridle__1.06.00..	derivation		oewn-bridle__2.35.00..
+oewn-bridle__2.35.00..	antonym		oewn-unbridle__2.40.00..
+oewn-bridle__2.35.00..	other	uses	oewn-bridle__1.06.00..
+oewn-brief__1.10.00..	derivation		oewn-brief__2.32.00..
+oewn-brief__2.32.00..	derivation		oewn-briefing__1.10.00..
+oewn-brief__2.32.00..	other	undergoer	oewn-brief__1.10.00..
+oewn-brief__5.00.00.concise.00	derivation		oewn-briefness__1.07.00..
+oewn-brief__5.00.00.short.02	derivation		oewn-briefness__1.07.01..
+oewn-briefly__4.02.00..	pertainym		oewn-brief__5.00.00.short.02
+oewn-briefly__4.02.03..	pertainym		oewn-brief__5.00.00.concise.00
+oewn-brigade__1.14.00..	derivation		oewn-brigade__2.33.00..
+oewn-brigade__2.33.00..	other	result	oewn-brigade__1.14.00..
+oewn-bright__3.00.00..	antonym		oewn-dull__3.00.02..
+oewn-bright__3.00.00..	derivation		oewn-brightness__1.07.00..
+oewn-bright__3.00.02..	derivation		oewn-brightness__1.07.02..
+oewn-bright__5.00.00.auspicious.00	derivation		oewn-brightness__1.09.00..
+oewn-bright__5.00.00.colorful.00	derivation		oewn-brightness__1.07.00..
+oewn-bright__5.00.00.intelligent.00	derivation		oewn-brightness__1.09.00..
+oewn-bright__5.00.00.light.06	derivation		oewn-brightness__1.07.02..
+oewn-bright__5.00.00.polished.00	derivation		oewn-brightness__1.07.02..
+oewn-brighten__2.30.01..	antonym		oewn-darken__2.30.01..
+oewn-brightly__4.02.00..	pertainym		oewn-bright__3.00.00..
+oewn-brightness__1.07.00..	antonym		oewn-dullness__1.07.03..
+oewn-brilliance__1.07.00..	derivation		oewn-brilliant__5.00.00.bright.00
+oewn-brilliance__1.07.01..	derivation		oewn-brilliant__5.00.00.impressive.00
+oewn-brilliance__1.07.01..	derivation		oewn-brilliant__5.00.00.superior.02
+oewn-brilliance__1.09.00..	derivation		oewn-brilliant__5.00.00.intelligent.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.bright.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.colorful.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.impressive.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.intelligent.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.reverberant.00
+oewn-brilliancy__1.07.00..	derivation		oewn-brilliant__5.00.00.superior.02
+oewn-brilliantly__4.02.00..	pertainym		oewn-brilliant__5.00.00.intelligent.00
+oewn-brilliantly__4.02.01..	pertainym		oewn-brilliant__5.00.00.bright.00
+oewn-brim__1.06.01..	derivation		oewn-brim__2.30.00..
+oewn-brimless__3.01.00..	pertainym		oewn-brim__1.06.00..
+oewn-brine__1.13.00..	derivation		oewn-brine__2.30.00..
+oewn-brine__1.13.00..	derivation		oewn-briny__5.00.00.salty.00
+oewn-brine__1.27.00..	derivation		oewn-brine__2.30.00..
+oewn-brine__1.27.00..	derivation		oewn-briny__5.00.00.salty.00
+oewn-brine__2.30.00..	other	uses	oewn-brine__1.13.00..
+oewn-brine__2.30.00..	other	uses	oewn-brine__1.27.00..
+oewn-bring__2.30.00..	also		oewn-bring_down__2.30.00..
+oewn-bring__2.30.00..	also		oewn-bring_up__2.41.00..
+oewn-bring__2.35.00..	antonym		oewn-take_away__2.35.00..
+oewn-bring__2.35.04..	also		oewn-bring_out__2.32.00..
+oewn-bring__2.36.00..	also		oewn-bring_off__2.41.00..
+oewn-bring__2.36.00..	also		oewn-bring_on__2.36.00..
+oewn-bring__2.36.00..	also		oewn-bring_up__2.36.00..
+oewn-bring__2.38.00..	also		oewn-bring_down__2.38.00..
+oewn-bring__2.38.00..	also		oewn-bring_down__2.38.01..
+oewn-bring__2.38.00..	also		oewn-bring_forward__2.38.00..
+oewn-bring__2.38.00..	also		oewn-bring_on__2.39.00..
+oewn-bring__2.38.00..	also		oewn-bring_out__2.39.01..
+oewn-bring__2.38.00..	also		oewn-bring_up__2.38.00..
+oewn-brininess__1.07.00..	derivation		oewn-briny__5.00.00.salty.00
+oewn-briny__1.17.00..	derivation		oewn-briny__5.00.00.salty.00
+oewn-brisance__1.19.00..	derivation		oewn-brisant__3.01.00..
+oewn-brisant__3.01.00..	pertainym		oewn-brisance__1.19.00..
+oewn-brisk__5.00.00.energetic.00	derivation		oewn-briskness__1.07.00..
+oewn-briskly__4.02.00..	pertainym		oewn-brisk__5.00.00.energetic.00
+oewn-bristle__1.05.00..	derivation		oewn-bristle__2.38.00..
+oewn-bristle__1.06.00..	derivation		oewn-bristly__5.00.00.armed.02
+oewn-bristliness__1.07.00..	derivation		oewn-bristly__5.00.00.armed.02
+oewn-britannic__3.01.00..	pertainym		oewn-british__1.18.00..
+oewn-british__1.18.00..	derivation		oewn-british__3.01.00..
+oewn-briton__1.18.01..	derivation		oewn-briton__3.01.00..
+oewn-briton__3.01.00..	pertainym		oewn-briton__1.18.00..
+oewn-brittle__5.00.00.breakable.00	derivation		oewn-brittleness__1.07.00..
+oewn-brittle__5.00.00.untempered.02	derivation		oewn-brittleness__1.07.00..
+oewn-broad--minded__3.00.00..	antonym		oewn-narrow--minded__3.00.00..
+oewn-broad--minded__3.00.00..	derivation		oewn-broad--mindedness__1.09.00..
+oewn-broad--minded__3.00.04..	derivation		oewn-broad--mindedness__1.09.00..
+oewn-broad--mindedly__4.02.00..	antonym		oewn-narrow--mindedly__4.02.00..
+oewn-broad--mindedly__4.02.00..	pertainym		oewn-broad--minded__3.00.00..
+oewn-broad--mindedness__1.09.00..	antonym		oewn-narrow--mindedness__1.09.00..
+oewn-broad__3.00.04..	derivation		oewn-broadness__1.07.00..
+oewn-broad__5.00.00.large.00	derivation		oewn-broadness__1.07.00..
+oewn-broadband__3.01.00..	pertainym		oewn-frequency_band__1.10.00..
+oewn-broadband__3.01.01..	pertainym		oewn-network__1.06.02..
+oewn-broadcast__1.10.00..	derivation		oewn-broadcast__2.32.00..
+oewn-broadcast__1.10.00..	derivation		oewn-broadcast__2.32.01..
+oewn-broadcast__1.10.01..	derivation		oewn-broadcast__2.32.00..
+oewn-broadcast__1.10.01..	derivation		oewn-broadcast__2.32.01..
+oewn-broadcast__2.32.01..	derivation		oewn-broadcaster__1.18.00..
+oewn-broadcast__2.32.01..	other	agent	oewn-broadcaster__1.18.00..
+oewn-broadcast__2.32.01..	other	undergoer	oewn-broadcast__1.10.01..
+oewn-broadcast__2.35.00..	derivation		oewn-broadcaster__1.06.00..
+oewn-broadcast__2.35.00..	other	instrument	oewn-broadcaster__1.06.00..
+oewn-broadly__4.02.00..	antonym		oewn-narrowly__4.02.00..
+oewn-broadly__4.02.00..	pertainym		oewn-broad__5.00.00.general.00
+oewn-broadly__4.02.01..	pertainym		oewn-broad__3.00.04..
+oewn-broadside__1.06.00..	derivation		oewn-broadside__2.35.00..
+oewn-brobdingnag__1.09.00..	derivation		oewn-brobdingnagian__3.01.00..
+oewn-brobdingnagian__3.01.00..	pertainym		oewn-brobdingnag__1.09.00..
+oewn-brocade__1.06.00..	derivation		oewn-brocade__2.36.00..
+oewn-brocade__2.36.00..	other	undergoer	oewn-brocade__1.06.00..
+oewn-brocadopa__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-broil__1.04.00..	derivation		oewn-broil__2.30.00..
+oewn-broil__2.30.00..	derivation		oewn-broiler__1.06.00..
+oewn-broil__2.30.00..	derivation		oewn-broiler__1.13.00..
+oewn-broil__2.30.00..	other	event	oewn-broil__1.04.00..
+oewn-broil__2.30.00..	other	instrument	oewn-broiler__1.06.00..
+oewn-broil__2.30.00..	other	undergoer	oewn-broiler__1.13.00..
+oewn-broken__3.00.01..	antonym		oewn-unbroken__3.00.01..
+oewn-broken__3.00.02..	antonym		oewn-unbroken__3.00.02..
+oewn-broken__3.00.03..	antonym		oewn-unbroken__3.00.03..
+oewn-brokenhearted__5.00.00.sorrowful.00	derivation		oewn-brokenheartedness__1.12.00..
+oewn-broker__1.18.00..	derivation		oewn-broker__2.40.00..
+oewn-broker__2.40.00..	derivation		oewn-brokerage__1.06.00..
+oewn-broker__2.40.00..	derivation		oewn-brokerage__1.14.00..
+oewn-broker__2.40.00..	derivation		oewn-brokerage__1.14.01..
+oewn-broker__2.40.00..	other	agent	oewn-broker__1.18.00..
+oewn-bromate__2.30.00..	derivation		oewn-bromine__1.27.00..
+oewn-bromate__2.30.01..	derivation		oewn-bromine__1.27.00..
+oewn-bromic__3.01.00..	derivation		oewn-bromine__1.27.00..
+oewn-bromic__3.01.00..	pertainym		oewn-bromine__1.27.00..
+oewn-bromidic__3.01.00..	pertainym		oewn-bromide__1.10.00..
+oewn-brominate__2.30.00..	derivation		oewn-bromine__1.27.00..
+oewn-brominate__2.30.01..	derivation		oewn-bromine__1.27.00..
+oewn-bronchial__3.01.00..	derivation		oewn-bronchus__1.08.00..
+oewn-bronchial__3.01.00..	pertainym		oewn-bronchus__1.08.00..
+oewn-bronchiolar__3.01.00..	derivation		oewn-bronchiole__1.08.00..
+oewn-bronchiolar__3.01.00..	pertainym		oewn-bronchiole__1.08.00..
+oewn-bronchitic__5.00.00.ill.01	derivation		oewn-bronchitis__1.26.00..
+oewn-bronchoscope__1.06.00..	derivation		oewn-bronchoscopic__3.01.00..
+oewn-bronchoscopic__3.01.00..	pertainym		oewn-bronchoscope__1.06.00..
+oewn-bronze__1.27.00..	derivation		oewn-bronze__2.30.00..
+oewn-bronze__2.30.00..	other	material	oewn-bronze__1.27.00..
+oewn-brooch__1.06.00..	derivation		oewn-brooch__2.35.00..
+oewn-brooch__2.35.00..	other	by_means_of	oewn-brooch__1.06.00..
+oewn-brood__1.14.00..	derivation		oewn-brood__2.29.00..
+oewn-brood__2.29.00..	derivation		oewn-brooder__1.06.00..
+oewn-brood__2.29.00..	other	instrument	oewn-brooder__1.06.00..
+oewn-broom__1.06.00..	derivation		oewn-broom__2.35.00..
+oewn-broom__2.35.00..	other	instrument	oewn-broom__1.06.00..
+oewn-brother__1.18.00..	antonym		oewn-sister__1.18.00..
+oewn-brother__1.18.00..	derivation		oewn-brotherly__3.00.00..
+oewn-brother__1.18.01..	derivation		oewn-brotherhood__1.14.00..
+oewn-brotherly__3.00.00..	antonym		oewn-sisterly__3.00.00..
+oewn-brotherly__4.02.00..	pertainym		oewn-brotherly__3.00.00..
+oewn-brown__1.07.00..	derivation		oewn-brown__2.30.00..
+oewn-brown__5.00.00.chromatic.00	derivation		oewn-brownness__1.07.00..
+oewn-browse__1.04.00..	derivation		oewn-browse__2.34.00..
+oewn-browse__1.04.00..	derivation		oewn-browse__2.35.01..
+oewn-browse__2.34.00..	other	event	oewn-browse__1.04.00..
+oewn-browse__2.35.00..	derivation		oewn-browser__1.10.00..
+oewn-browse__2.35.00..	derivation		oewn-browser__1.18.00..
+oewn-browse__2.35.00..	other	agent	oewn-browser__1.18.00..
+oewn-browse__2.35.00..	other	instrument	oewn-browser__1.10.00..
+oewn-browse__2.35.01..	other	event	oewn-browse__1.04.00..
+oewn-browse__2.40.00..	derivation		oewn-browser__1.18.00..
+oewn-browse__2.40.00..	other	agent	oewn-browser__1.18.00..
+oewn-bruise__1.26.00..	derivation		oewn-bruise__2.35.00..
+oewn-bruise__2.35.00..	derivation		oewn-bruiser__1.18.01..
+oewn-bruise__2.35.00..	other	event	oewn-bruise__1.26.00..
+oewn-brunch__1.13.00..	derivation		oewn-brunch__2.34.00..
+oewn-brunch__2.34.00..	other	event	oewn-brunch__1.13.00..
+oewn-brush--off__1.04.00..	derivation		oewn-brush_off__2.32.01..
+oewn-brush__1.06.00..	derivation		oewn-brush__2.30.00..
+oewn-brush__1.06.00..	derivation		oewn-brush__2.35.01..
+oewn-brush__1.06.00..	derivation		oewn-brush__2.35.02..
+oewn-brush__1.11.00..	derivation		oewn-brush__2.35.00..
+oewn-brush__1.14.00..	derivation		oewn-brushy__5.00.00.wooded.00
+oewn-brush__2.30.00..	other	instrument	oewn-brush__1.06.00..
+oewn-brush__2.35.00..	other	event	oewn-brush__1.11.00..
+oewn-brush__2.35.01..	other	instrument	oewn-brush__1.06.00..
+oewn-brush__2.35.02..	other	instrument	oewn-brush__1.06.00..
+oewn-brush_up__2.31.00..	derivation		oewn-brushup__1.04.00..
+oewn-brusque__5.00.00.discourteous.00	derivation		oewn-brusqueness__1.07.00..
+oewn-brusquely__4.02.00..	pertainym		oewn-brusque__5.00.00.discourteous.00
+oewn-brutal__5.00.00.inhumane.00	derivation		oewn-brutalize__2.30.00..
+oewn-brutal__5.00.00.inhumane.00	derivation		oewn-brutalize__2.30.01..
+oewn-brutal__5.00.01.inhumane.00	derivation		oewn-brutality__1.07.00..
+oewn-brutalisation__1.04.00..	derivation		oewn-brutalise__2.30.00..
+oewn-brutalisation__1.04.00..	derivation		oewn-brutalise__2.30.01..
+oewn-brutalisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalisation__1.04.01..	derivation		oewn-brutalise__2.41.00..
+oewn-brutalisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalisation__1.26.00..	derivation		oewn-brutalise__2.41.00..
+oewn-brutalisation__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalisation__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalise__2.30.00..	other	event	oewn-brutalisation__1.04.00..
+oewn-brutalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalise__2.30.01..	other	event	oewn-brutalisation__1.04.00..
+oewn-brutalise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-brutalise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-brutalise__2.41.00..	other	event	oewn-brutalisation__1.04.01..
+oewn-brutalise__2.41.00..	other	state	oewn-brutalisation__1.26.00..
+oewn-brutalization__1.04.00..	derivation		oewn-brutalize__2.30.00..
+oewn-brutalization__1.04.00..	derivation		oewn-brutalize__2.30.01..
+oewn-brutalization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalization__1.04.01..	derivation		oewn-brutalize__2.41.00..
+oewn-brutalization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalization__1.26.00..	derivation		oewn-brutalize__2.41.00..
+oewn-brutalization__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalize__2.30.00..	other	event	oewn-brutalization__1.04.00..
+oewn-brutalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalize__2.30.01..	other	event	oewn-brutalization__1.04.00..
+oewn-brutalize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-brutalize__2.41.00..	other	event	oewn-brutalization__1.04.01..
+oewn-brutalize__2.41.00..	other	state	oewn-brutalization__1.26.00..
+oewn-brutishly__4.02.00..	pertainym		oewn-brutish__5.00.00.inhumane.00
+oewn-bryophytic__3.01.00..	pertainym		oewn-bryophyte__1.20.00..

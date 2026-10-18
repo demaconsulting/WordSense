@@ -1,0 +1,533 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-placard__1.10.00..	derivation		oewn-placard__2.32.00..
+oewn-placard__1.10.00..	derivation		oewn-placard__2.35.01..
+oewn-placard__2.32.00..	other	by_means_of	oewn-placard__1.10.00..
+oewn-placard__2.35.01..	other	undergoer	oewn-placard__1.10.00..
+oewn-placate__2.37.00..	derivation		oewn-placation__1.04.00..
+oewn-placate__2.37.00..	derivation		oewn-placative__5.00.00.conciliatory.00
+oewn-placate__2.37.00..	derivation		oewn-placatory__5.00.00.conciliatory.00
+oewn-placate__2.37.00..	other	event	oewn-placation__1.04.00..
+oewn-placatingly__4.02.00..	pertainym		oewn-placating__5.00.00.conciliatory.00
+oewn-place--kick__2.33.00..	derivation		oewn-place--kicking__1.04.00..
+oewn-place--kick__2.35.00..	derivation		oewn-place--kicker__1.18.00..
+oewn-place--kick__2.35.00..	derivation		oewn-place--kicking__1.04.00..
+oewn-place--kick__2.35.00..	other	agent	oewn-place--kicker__1.18.00..
+oewn-place__1.04.00..	derivation		oewn-place__2.33.00..
+oewn-place__1.04.00..	derivation		oewn-place__2.40.00..
+oewn-place__1.04.00..	derivation		oewn-place__2.41.00..
+oewn-place__1.09.00..	derivation		oewn-place__2.41.01..
+oewn-place__1.10.01..	derivation		oewn-place__2.35.00..
+oewn-place__1.10.02..	derivation		oewn-place__2.31.01..
+oewn-place__1.10.02..	derivation		oewn-place__2.31.03..
+oewn-place__1.10.02..	derivation		oewn-place__2.33.02..
+oewn-place__1.15.00..	derivation		oewn-place__2.33.03..
+oewn-place__1.15.00..	derivation		oewn-place__2.35.00..
+oewn-place__1.15.00..	derivation		oewn-place__2.36.00..
+oewn-place__1.15.04..	derivation		oewn-place__2.40.00..
+oewn-place__1.15.05..	derivation		oewn-place__2.35.00..
+oewn-place__1.15.06..	derivation		oewn-place__2.41.00..
+oewn-place__1.26.01..	derivation		oewn-place__2.41.01..
+oewn-place__1.26.02..	derivation		oewn-place__2.41.01..
+oewn-place__2.31.01..	other	undergoer	oewn-place__1.10.02..
+oewn-place__2.33.00..	other	event	oewn-place__1.04.00..
+oewn-place__2.35.00..	derivation		oewn-placement__1.07.00..
+oewn-place__2.35.00..	other	property	oewn-placement__1.07.00..
+oewn-place__2.36.00..	derivation		oewn-placement__1.07.00..
+oewn-place__2.36.00..	other	location	oewn-place__1.15.00..
+oewn-place__2.36.00..	other	property	oewn-placement__1.07.00..
+oewn-place__2.40.00..	derivation		oewn-placement__1.07.00..
+oewn-place__2.40.00..	other	location	oewn-place__1.15.04..
+oewn-place__2.40.00..	other	property	oewn-placement__1.07.00..
+oewn-place__2.41.00..	other	event	oewn-place__1.04.00..
+oewn-place__2.41.00..	other	location	oewn-place__1.15.06..
+oewn-place__2.42.00..	derivation		oewn-placement__1.07.00..
+oewn-place__2.42.00..	other	property	oewn-placement__1.07.00..
+oewn-placenta__1.08.00..	derivation		oewn-placental__3.00.00..
+oewn-placenta__1.20.00..	derivation		oewn-placental__3.00.00..
+oewn-placental__1.05.00..	derivation		oewn-placental__3.00.00..
+oewn-placid__5.00.00.calm.00	derivation		oewn-placidness__1.12.00..
+oewn-placid__5.00.00.good-natured.00	derivation		oewn-placidity__1.07.00..
+oewn-placid__5.00.00.good-natured.00	derivation		oewn-placidness__1.12.00..
+oewn-placidly__4.02.00..	pertainym		oewn-placid__5.00.00.good-natured.00
+oewn-placidly__4.02.01..	pertainym		oewn-placid__5.00.00.calm.00
+oewn-placidyl__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-plagiarisation__1.04.00..	derivation		oewn-plagiarise__2.40.00..
+oewn-plagiarisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plagiarisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plagiarise__2.40.00..	derivation		oewn-plagiariser__1.18.00..
+oewn-plagiarise__2.40.00..	derivation		oewn-plagiarism__1.04.00..
+oewn-plagiarise__2.40.00..	derivation		oewn-plagiarism__1.10.00..
+oewn-plagiarise__2.40.00..	derivation		oewn-plagiarist__1.18.00..
+oewn-plagiarise__2.40.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plagiarise__2.40.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plagiarise__2.40.00..	other	agent	oewn-plagiariser__1.18.00..
+oewn-plagiarise__2.40.00..	other	event	oewn-plagiarisation__1.04.00..
+oewn-plagiarism__1.04.00..	derivation		oewn-plagiarist__1.18.00..
+oewn-plagiarism__1.04.00..	derivation		oewn-plagiaristic__5.00.00.derived.00
+oewn-plagiarism__1.04.00..	derivation		oewn-plagiarize__2.40.00..
+oewn-plagiarism__1.10.00..	derivation		oewn-plagiarist__1.18.00..
+oewn-plagiarism__1.10.00..	derivation		oewn-plagiaristic__5.00.00.derived.00
+oewn-plagiarism__1.10.00..	derivation		oewn-plagiarize__2.40.00..
+oewn-plagiarist__1.18.00..	derivation		oewn-plagiarize__2.40.00..
+oewn-plagiarization__1.04.00..	derivation		oewn-plagiarize__2.40.00..
+oewn-plagiarization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plagiarize__2.40.00..	derivation		oewn-plagiarizer__1.18.00..
+oewn-plagiarize__2.40.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plagiarize__2.40.00..	other	agent	oewn-plagiarizer__1.18.00..
+oewn-plagiarize__2.40.00..	other	event	oewn-plagiarization__1.04.00..
+oewn-plagioclase__1.27.00..	derivation		oewn-plagioclastic__3.01.00..
+oewn-plagioclastic__3.01.00..	pertainym		oewn-plagioclase__1.27.00..
+oewn-plague__1.09.00..	derivation		oewn-plague__2.37.00..
+oewn-plague__1.09.00..	derivation		oewn-plaguey__5.00.00.disagreeable.00
+oewn-plague__1.09.00..	derivation		oewn-plaguy__5.00.00.disagreeable.00
+oewn-plague__1.14.00..	derivation		oewn-plague__2.43.00..
+oewn-plague__1.26.00..	derivation		oewn-plague__2.43.00..
+oewn-plague__1.26.01..	derivation		oewn-plague__2.43.00..
+oewn-plague__1.26.01..	derivation		oewn-plaguey__5.00.00.epidemic.00
+oewn-plague__2.37.00..	other	event	oewn-plague__1.09.00..
+oewn-plague__2.43.00..	other	event	oewn-plague__1.14.00..
+oewn-plague__2.43.00..	other	event	oewn-plague__1.26.00..
+oewn-plague__2.43.00..	other	event	oewn-plague__1.26.01..
+oewn-plaguily__4.02.00..	pertainym		oewn-plaguy__5.00.00.disagreeable.00
+oewn-plain__5.00.00.obvious.00	derivation		oewn-plainness__1.07.03..
+oewn-plain__5.00.00.pure.02	derivation		oewn-plainness__1.26.00..
+oewn-plain__5.00.00.unadorned.00	derivation		oewn-plainness__1.07.00..
+oewn-plain__5.00.00.unattractive.00	derivation		oewn-plainness__1.07.02..
+oewn-plainly__4.02.00..	pertainym		oewn-plain__5.00.00.obvious.00
+oewn-plaintive__5.00.00.sorrowful.00	derivation		oewn-plaintiveness__1.12.00..
+oewn-plaintively__4.02.00..	pertainym		oewn-plaintive__5.00.00.sorrowful.00
+oewn-plait__1.06.00..	derivation		oewn-plait__2.36.00..
+oewn-plait__1.08.00..	derivation		oewn-plait__2.35.00..
+oewn-plait__2.35.00..	derivation		oewn-plaiter__1.18.00..
+oewn-plait__2.35.00..	other	agent	oewn-plaiter__1.18.00..
+oewn-plait__2.35.00..	other	result	oewn-plait__1.08.00..
+oewn-plait__2.36.00..	derivation		oewn-plaiter__1.18.00..
+oewn-plait__2.36.00..	other	agent	oewn-plaiter__1.18.00..
+oewn-plait__2.36.00..	other	result	oewn-plait__1.06.00..
+oewn-plan__1.09.00..	derivation		oewn-plan__2.31.00..
+oewn-plan__1.09.00..	derivation		oewn-plan__2.36.00..
+oewn-plan__1.09.01..	derivation		oewn-plan__2.31.00..
+oewn-plan__1.09.01..	derivation		oewn-plan__2.36.00..
+oewn-plan__2.31.00..	derivation		oewn-planner__1.06.00..
+oewn-plan__2.31.00..	derivation		oewn-planner__1.18.00..
+oewn-plan__2.31.00..	derivation		oewn-planning__1.04.00..
+oewn-plan__2.31.00..	other	agent	oewn-planner__1.18.00..
+oewn-plan__2.31.00..	other	instrument	oewn-planner__1.06.00..
+oewn-plan__2.31.00..	other	result	oewn-plan__1.09.00..
+oewn-plan__2.31.00..	other	result	oewn-plan__1.09.01..
+oewn-plan__2.36.00..	derivation		oewn-planner__1.18.00..
+oewn-plan__2.36.00..	derivation		oewn-planning__1.09.00..
+oewn-plan__2.36.00..	other	agent	oewn-planner__1.18.00..
+oewn-plan__2.36.00..	other	result	oewn-plan__1.09.00..
+oewn-plan__2.36.00..	other	result	oewn-plan__1.09.01..
+oewn-planar__3.00.00..	derivation		oewn-plane__1.25.00..
+oewn-planation__1.22.00..	derivation		oewn-plane__2.35.03..
+oewn-plane--polarized__3.01.00..	pertainym		oewn-polarization__1.19.00..
+oewn-plane__1.06.00..	derivation		oewn-plane__2.35.00..
+oewn-plane__1.06.00..	derivation		oewn-plane__2.35.03..
+oewn-plane__1.06.02..	derivation		oewn-plane__2.35.00..
+oewn-plane__1.06.02..	derivation		oewn-plane__2.35.03..
+oewn-plane__1.25.00..	derivation		oewn-plane__5.00.00.even.01
+oewn-plane__2.35.00..	derivation		oewn-planer__1.06.00..
+oewn-plane__2.35.00..	other	instrument	oewn-plane__1.06.00..
+oewn-plane__2.35.00..	other	instrument	oewn-plane__1.06.02..
+oewn-plane__2.35.00..	other	instrument	oewn-planer__1.06.00..
+oewn-plane__2.35.03..	derivation		oewn-planer__1.06.00..
+oewn-plane__2.35.03..	other	event	oewn-planation__1.22.00..
+oewn-plane__2.35.03..	other	instrument	oewn-plane__1.06.00..
+oewn-plane__2.35.03..	other	instrument	oewn-plane__1.06.02..
+oewn-plane__2.35.03..	other	instrument	oewn-planer__1.06.00..
+oewn-plane__5.00.00.even.01	derivation		oewn-planeness__1.07.00..
+oewn-planet__1.17.00..	derivation		oewn-planetal__3.01.00..
+oewn-planet__1.17.00..	derivation		oewn-planetary__3.01.00..
+oewn-planet__1.17.01..	derivation		oewn-planetal__3.01.00..
+oewn-planetal__3.01.00..	pertainym		oewn-planet__1.17.00..
+oewn-planetary__3.01.00..	pertainym		oewn-planet__1.17.00..
+oewn-plangency__1.07.00..	derivation		oewn-plangent__5.00.00.full.01
+oewn-plank__1.27.00..	derivation		oewn-plank__2.34.00..
+oewn-plank__1.27.00..	derivation		oewn-plank__2.35.00..
+oewn-plank__2.35.00..	derivation		oewn-planking__1.04.00..
+oewn-plank__2.35.00..	derivation		oewn-planking__1.06.00..
+oewn-plank__2.35.00..	other	uses	oewn-plank__1.27.00..
+oewn-plankton__1.05.00..	derivation		oewn-planktonic__3.01.00..
+oewn-planktonic__3.01.00..	pertainym		oewn-plankton__1.05.00..
+oewn-planned__3.00.00..	antonym		oewn-unplanned__3.00.00..
+oewn-planographic__3.01.00..	derivation		oewn-planography__1.10.00..
+oewn-planographic__3.01.00..	pertainym		oewn-planography__1.10.00..
+oewn-plant__1.03.00..	derivation		oewn-plant__2.35.00..
+oewn-plant__1.03.00..	derivation		oewn-plantal__3.01.00..
+oewn-plant__1.03.00..	derivation		oewn-plantlet__1.20.00..
+oewn-plant__1.09.00..	derivation		oewn-plant__2.35.06..
+oewn-plant__2.35.00..	derivation		oewn-planter__1.06.00..
+oewn-plant__2.35.00..	derivation		oewn-planting__1.04.01..
+oewn-plant__2.35.00..	other	location	oewn-planter__1.06.00..
+oewn-plant__2.35.00..	other	undergoer	oewn-plant__1.03.00..
+oewn-plant__2.35.01..	derivation		oewn-planting__1.04.00..
+oewn-plant__2.35.06..	other	undergoer	oewn-plant__1.09.00..
+oewn-plant_fiber__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plant_fibre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plant_fibre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plant_fibre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-plantal__3.01.00..	pertainym		oewn-plant__1.03.00..
+oewn-plantar__3.01.00..	pertainym		oewn-sole__1.08.00..
+oewn-planted__3.00.00..	antonym		oewn-unplanted__3.00.00..
+oewn-plaquenil__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-plash__1.11.00..	derivation		oewn-plash__2.35.00..
+oewn-plash__2.35.00..	other	event	oewn-plash__1.11.00..
+oewn-plaster__1.06.01..	derivation		oewn-plaster__2.35.00..
+oewn-plaster__1.06.02..	derivation		oewn-plaster__2.29.00..
+oewn-plaster__1.27.00..	derivation		oewn-plaster__2.35.00..
+oewn-plaster__1.27.00..	derivation		oewn-plaster__2.35.02..
+oewn-plaster__1.27.01..	derivation		oewn-plaster__2.35.02..
+oewn-plaster__2.29.00..	derivation		oewn-plastering__1.04.00..
+oewn-plaster__2.29.00..	other	material	oewn-plaster__1.06.02..
+oewn-plaster__2.29.00..	other	uses	oewn-plaster__1.06.02..
+oewn-plaster__2.35.00..	derivation		oewn-plasterer__1.18.00..
+oewn-plaster__2.35.00..	derivation		oewn-plastering__1.04.00..
+oewn-plaster__2.35.00..	other	agent	oewn-plasterer__1.18.00..
+oewn-plaster__2.35.00..	other	material	oewn-plaster__1.06.01..
+oewn-plaster__2.35.00..	other	material	oewn-plaster__1.27.00..
+oewn-plaster__2.35.00..	other	uses	oewn-plaster__1.06.01..
+oewn-plaster__2.35.00..	other	uses	oewn-plaster__1.27.00..
+oewn-plaster__2.35.01..	derivation		oewn-plastering__1.04.00..
+oewn-plaster__2.35.02..	derivation		oewn-plastering__1.04.00..
+oewn-plaster__2.35.02..	other	material	oewn-plaster__1.27.00..
+oewn-plaster__2.35.02..	other	material	oewn-plaster__1.27.01..
+oewn-plaster__2.35.02..	other	uses	oewn-plaster__1.27.00..
+oewn-plaster__2.35.02..	other	uses	oewn-plaster__1.27.01..
+oewn-plastic__5.00.00.elastic.00	derivation		oewn-plasticity__1.07.00..
+oewn-plastically__4.02.00..	pertainym		oewn-plastic__5.00.00.elastic.00
+oewn-plasticise__2.30.00..	derivation		oewn-plasticiser__1.27.00..
+oewn-plasticise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plasticise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plasticise__2.30.00..	other	material	oewn-plasticiser__1.27.00..
+oewn-plasticise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plasticise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plasticize__2.30.00..	derivation		oewn-plasticizer__1.27.00..
+oewn-plasticize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plasticize__2.30.00..	other	material	oewn-plasticizer__1.27.00..
+oewn-plasticize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plastinate__2.40.00..	derivation		oewn-plastination__1.22.00..
+oewn-plastinate__2.40.00..	other	event	oewn-plastination__1.22.00..
+oewn-plate__1.06.02..	derivation		oewn-plate__2.35.00..
+oewn-plate__2.35.00..	derivation		oewn-plater__1.18.00..
+oewn-plate__2.35.00..	derivation		oewn-plating__1.04.00..
+oewn-plate__2.35.00..	derivation		oewn-plating__1.06.00..
+oewn-plate__2.35.00..	other	agent	oewn-plater__1.18.00..
+oewn-plate__2.35.00..	other	uses	oewn-plate__1.06.02..
+oewn-plate_armor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plate_armor__1.06.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plate_armour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plate_armour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plate_armour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-plate_armour__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plate_armour__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plate_armour__1.06.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-platitude__1.10.00..	derivation		oewn-platitudinous__5.00.00.unoriginal.00
+oewn-platonism__1.09.00..	derivation		oewn-platonist__1.18.00..
+oewn-platonism__1.09.00..	derivation		oewn-platonistic__3.01.00..
+oewn-platonistic__3.01.00..	pertainym		oewn-platonism__1.09.00..
+oewn-platyrhinian__3.00.00..	derivation		oewn-platyrrhine__1.05.00..
+oewn-platyrrhine__1.05.00..	derivation		oewn-platyrrhinian__3.00.00..
+oewn-platyrrhine__1.05.00..	derivation		oewn-platyrrhinic__3.00.00..
+oewn-plausibility__1.07.00..	derivation		oewn-plausible__3.00.00..
+oewn-plausible__3.00.00..	derivation		oewn-plausibleness__1.07.00..
+oewn-plausibly__4.02.00..	pertainym		oewn-plausible__3.00.00..
+oewn-plavix__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-play__1.04.00..	derivation		oewn-play__2.41.00..
+oewn-play__1.04.00..	derivation		oewn-play__2.41.03..
+oewn-play__1.04.02..	derivation		oewn-play__2.33.01..
+oewn-play__1.04.02..	derivation		oewn-play__2.33.03..
+oewn-play__1.04.02..	derivation		oewn-play__2.33.07..
+oewn-play__1.04.02..	derivation		oewn-play__2.33.08..
+oewn-play__1.04.04..	derivation		oewn-play__2.33.09..
+oewn-play__1.04.04..	derivation		oewn-play__2.34.13..
+oewn-play__1.04.05..	derivation		oewn-play__2.33.00..
+oewn-play__1.04.05..	derivation		oewn-play__2.33.12..
+oewn-play__1.04.05..	derivation		oewn-play__2.33.13..
+oewn-play__1.04.06..	derivation		oewn-play__2.41.03..
+oewn-play__1.04.08..	derivation		oewn-play__2.41.12..
+oewn-play__1.07.00..	derivation		oewn-play__2.38.03..
+oewn-play__1.10.01..	derivation		oewn-play__2.36.02..
+oewn-play__1.10.01..	derivation		oewn-play__2.36.03..
+oewn-play__1.10.01..	derivation		oewn-play__2.36.04..
+oewn-play__1.10.01..	derivation		oewn-play__2.36.10..
+oewn-play__1.10.01..	derivation		oewn-playlet__1.10.00..
+oewn-play__1.10.03..	derivation		oewn-play__2.36.02..
+oewn-play__1.10.03..	derivation		oewn-play__2.36.03..
+oewn-play__1.10.03..	derivation		oewn-play__2.36.04..
+oewn-play__1.10.03..	derivation		oewn-play__2.36.10..
+oewn-play__1.10.03..	derivation		oewn-playlet__1.10.00..
+oewn-play__1.11.00..	derivation		oewn-play__2.38.00..
+oewn-play__1.26.00..	derivation		oewn-play__2.41.12..
+oewn-play__1.28.00..	derivation		oewn-play__2.33.00..
+oewn-play__1.28.00..	derivation		oewn-play__2.33.02..
+oewn-play__2.29.00..	derivation		oewn-playing__1.04.00..
+oewn-play__2.33.00..	also		oewn-play_out__2.33.00..
+oewn-play__2.33.00..	derivation		oewn-player__1.18.01..
+oewn-play__2.33.00..	derivation		oewn-playing__1.04.00..
+oewn-play__2.33.00..	other	agent	oewn-player__1.18.01..
+oewn-play__2.33.01..	other	event	oewn-play__1.04.02..
+oewn-play__2.33.02..	derivation		oewn-playing__1.04.00..
+oewn-play__2.33.03..	other	event	oewn-play__1.04.02..
+oewn-play__2.33.07..	other	event	oewn-play__1.04.02..
+oewn-play__2.33.08..	other	event	oewn-play__1.04.02..
+oewn-play__2.33.09..	other	event	oewn-play__1.04.04..
+oewn-play__2.34.13..	other	event	oewn-play__1.04.04..
+oewn-play__2.36.00..	derivation		oewn-playing__1.04.01..
+oewn-play__2.36.01..	derivation		oewn-playing__1.04.01..
+oewn-play__2.36.02..	derivation		oewn-player__1.18.00..
+oewn-play__2.36.02..	derivation		oewn-playing__1.04.02..
+oewn-play__2.36.02..	other	agent	oewn-player__1.18.00..
+oewn-play__2.36.02..	other	event	oewn-play__1.10.01..
+oewn-play__2.36.02..	other	event	oewn-play__1.10.03..
+oewn-play__2.36.03..	other	event	oewn-play__1.10.01..
+oewn-play__2.36.03..	other	event	oewn-play__1.10.03..
+oewn-play__2.36.04..	other	event	oewn-play__1.10.01..
+oewn-play__2.36.04..	other	event	oewn-play__1.10.03..
+oewn-play__2.36.10..	derivation		oewn-player__1.18.00..
+oewn-play__2.36.10..	derivation		oewn-playing__1.04.02..
+oewn-play__2.36.10..	other	agent	oewn-player__1.18.00..
+oewn-play__2.36.10..	other	event	oewn-play__1.10.01..
+oewn-play__2.36.10..	other	event	oewn-play__1.10.03..
+oewn-play__2.36.12..	derivation		oewn-player__1.18.02..
+oewn-play__2.36.12..	derivation		oewn-playing__1.04.01..
+oewn-play__2.36.12..	other	agent	oewn-player__1.18.02..
+oewn-play__2.38.00..	other	event	oewn-play__1.11.00..
+oewn-play__2.38.03..	other	location	oewn-play__1.07.00..
+oewn-play__2.41.00..	derivation		oewn-playing__1.04.00..
+oewn-play__2.41.00..	other	event	oewn-play__1.04.00..
+oewn-play__2.41.03..	derivation		oewn-playing__1.04.00..
+oewn-play__2.41.03..	other	event	oewn-play__1.04.00..
+oewn-play__2.41.03..	other	event	oewn-play__1.04.06..
+oewn-play__2.41.12..	other	event	oewn-play__1.04.08..
+oewn-play_back__2.36.00..	derivation		oewn-playback__1.04.00..
+oewn-play_back__2.36.00..	derivation		oewn-playback__1.06.00..
+oewn-play_down__2.30.00..	antonym		oewn-play_up__2.30.00..
+oewn-play_off__2.33.00..	derivation		oewn-playoff__1.11.00..
+oewn-playable__3.00.00..	antonym		oewn-unplayable__3.00.00..
+oewn-playact__2.36.00..	derivation		oewn-playacting__1.04.00..
+oewn-playact__2.36.00..	derivation		oewn-playactor__1.18.00..
+oewn-playact__2.36.00..	other	agent	oewn-playactor__1.18.00..
+oewn-played__3.44.00..	participle		oewn-play__2.33.00..
+oewn-playful__3.00.00..	antonym		oewn-unplayful__3.00.00..
+oewn-playful__3.00.00..	derivation		oewn-playfulness__1.12.00..
+oewn-playfully__4.02.00..	pertainym		oewn-playful__3.00.00..
+oewn-plea--bargain__2.32.00..	derivation		oewn-plea_bargain__1.10.00..
+oewn-plea--bargain__2.32.00..	derivation		oewn-plea_bargaining__1.10.00..
+oewn-plead__2.32.01..	derivation		oewn-pleading__1.10.00..
+oewn-plead__2.32.03..	derivation		oewn-pleader__1.18.00..
+oewn-plead__2.32.03..	derivation		oewn-pleading__1.10.00..
+oewn-plead__2.32.03..	other	agent	oewn-pleader__1.18.00..
+oewn-pleasance__1.12.00..	derivation		oewn-pleasant__3.00.00..
+oewn-pleasant__3.00.00..	antonym		oewn-unpleasant__3.00.00..
+oewn-pleasant__3.00.00..	derivation		oewn-pleasantness__1.07.00..
+oewn-pleasant__3.00.00..	derivation		oewn-please__2.37.00..
+oewn-pleasant__5.00.00.nice.00	derivation		oewn-pleasantness__1.12.00..
+oewn-pleasant__5.00.00.nice.00	derivation		oewn-please__2.37.03..
+oewn-pleasantly__4.02.00..	antonym		oewn-unpleasantly__4.02.00..
+oewn-pleasantly__4.02.00..	pertainym		oewn-pleasant__3.00.00..
+oewn-pleasantly__4.02.01..	pertainym		oewn-pleasant__5.00.00.nice.00
+oewn-pleasantness__1.07.00..	antonym		oewn-unpleasantness__1.07.00..
+oewn-pleasantness__1.12.00..	antonym		oewn-unpleasantness__1.12.00..
+oewn-please__2.37.00..	derivation		oewn-pleaser__1.18.00..
+oewn-please__2.37.00..	derivation		oewn-pleasing__1.04.00..
+oewn-please__2.37.00..	derivation		oewn-pleasure__1.04.02..
+oewn-please__2.37.00..	derivation		oewn-pleasure__1.09.00..
+oewn-please__2.37.00..	derivation		oewn-pleasure__1.12.00..
+oewn-please__2.37.00..	other	agent	oewn-pleaser__1.18.00..
+oewn-please__2.37.01..	derivation		oewn-pleasure__1.04.02..
+oewn-pleasing__5.00.00.pleasant.00	derivation		oewn-pleasingness__1.07.00..
+oewn-pleasingly__4.02.00..	pertainym		oewn-pleasing__3.00.00..
+oewn-pleasingness__1.07.00..	antonym		oewn-unpleasingness__1.07.00..
+oewn-pleasurably__4.02.00..	pertainym		oewn-pleasurable__5.00.00.pleasant.00
+oewn-pleasure_principle__1.09.00..	antonym		oewn-reality_principle__1.09.00..
+oewn-pleat__1.06.00..	derivation		oewn-pleat__2.35.00..
+oewn-pleat__2.35.00..	derivation		oewn-pleating__1.04.00..
+oewn-pleat__2.35.00..	other	result	oewn-pleat__1.06.00..
+oewn-pleb__1.18.00..	derivation		oewn-plebeian__5.00.00.lowborn.00
+oewn-plebeian__1.18.00..	derivation		oewn-plebeian__5.00.00.lowborn.00
+oewn-pledge__1.10.00..	derivation		oewn-pledge__2.32.00..
+oewn-pledge__1.10.00..	derivation		oewn-pledge__2.32.01..
+oewn-pledge__1.13.00..	derivation		oewn-pledge__2.34.00..
+oewn-pledge__1.21.02..	derivation		oewn-pledge__2.32.02..
+oewn-pledge__2.32.00..	derivation		oewn-pledger__1.18.00..
+oewn-pledge__2.32.00..	other	agent	oewn-pledger__1.18.00..
+oewn-pledge__2.32.00..	other	event	oewn-pledge__1.10.00..
+oewn-pledge__2.32.01..	other	by_means_of	oewn-pledge__1.10.00..
+oewn-pledge__2.32.02..	other	undergoer	oewn-pledge__1.21.02..
+oewn-pledge__2.34.00..	other	event	oewn-pledge__1.13.00..
+oewn-pledge__2.40.04..	derivation		oewn-pledger__1.18.00..
+oewn-pledge__2.40.04..	other	agent	oewn-pledger__1.18.00..
+oewn-plenarily__4.02.00..	pertainym		oewn-plenary__5.00.00.comprehensive.00
+oewn-plenary__5.00.00.comprehensive.00	derivation		oewn-plenum__1.14.00..
+oewn-plenteous__5.00.00.abundant.00	derivation		oewn-plenteousness__1.07.00..
+oewn-plenteous__5.00.00.abundant.00	derivation		oewn-plenty__1.07.00..
+oewn-plenteous__5.00.00.abundant.00	derivation		oewn-plenty__1.23.00..
+oewn-plenteously__4.02.00..	pertainym		oewn-plenteous__5.00.00.abundant.00
+oewn-plentiful__5.00.01.abundant.00	derivation		oewn-plentifulness__1.07.00..
+oewn-plentiful__5.00.02.abundant.00	derivation		oewn-plentifulness__1.07.00..
+oewn-plentifully__4.02.00..	pertainym		oewn-plentiful__5.00.00.fruitful.00
+oewn-pleochroic__3.01.00..	pertainym		oewn-pleochroism__1.19.00..
+oewn-pleomorphic__3.01.00..	derivation		oewn-pleomorphism__1.19.00..
+oewn-pleomorphic__3.01.00..	derivation		oewn-pleomorphism__1.19.01..
+oewn-pleomorphic__3.01.00..	pertainym		oewn-pleomorphism__1.19.00..
+oewn-pleonasm__1.10.00..	derivation		oewn-pleonastic__5.00.00.prolix.00
+oewn-plethora__1.07.00..	derivation		oewn-plethoric__5.00.00.abundant.00
+oewn-pleura__1.08.00..	derivation		oewn-pleural__3.01.00..
+oewn-pleural__3.01.00..	pertainym		oewn-pleura__1.08.00..
+oewn-pleurocarp__1.20.00..	derivation		oewn-pleurocarpous__3.00.00..
+oewn-plexiglas__1.27.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-pliability__1.07.01..	derivation		oewn-pliable__5.00.00.adaptable.00
+oewn-pliability__1.07.02..	derivation		oewn-pliable__5.00.00.flexible.01
+oewn-pliability__1.07.02..	derivation		oewn-pliable__5.00.00.formed.00
+oewn-pliancy__1.07.00..	derivation		oewn-pliant__5.00.00.adaptable.00
+oewn-pliancy__1.07.00..	derivation		oewn-pliant__5.00.00.impressionable.00
+oewn-pliancy__1.07.01..	derivation		oewn-pliant__5.00.00.flexible.01
+oewn-pliancy__1.07.01..	derivation		oewn-pliant__5.00.00.formed.00
+oewn-pliant__5.00.00.adaptable.00	derivation		oewn-pliantness__1.07.00..
+oewn-pliant__5.00.00.flexible.01	derivation		oewn-pliantness__1.07.01..
+oewn-pliant__5.00.00.formed.00	derivation		oewn-pliantness__1.07.01..
+oewn-pliant__5.00.00.impressionable.00	derivation		oewn-pliantness__1.07.00..
+oewn-plicate__2.35.00..	derivation		oewn-plication__1.04.00..
+oewn-plicate__2.35.00..	derivation		oewn-plication__1.25.00..
+oewn-plicate__2.35.00..	other	event	oewn-plication__1.04.00..
+oewn-plicate__2.35.00..	other	result	oewn-plication__1.25.00..
+oewn-plier__1.18.00..	derivation		oewn-ply__2.38.00..
+oewn-plier__1.18.00..	derivation		oewn-ply__2.41.00..
+oewn-plight__1.10.00..	derivation		oewn-plight__2.32.00..
+oewn-plight__2.32.00..	other	event	oewn-plight__1.10.00..
+oewn-plod__2.38.00..	derivation		oewn-plodder__1.18.00..
+oewn-plod__2.38.00..	derivation		oewn-plodder__1.18.01..
+oewn-plod__2.38.00..	derivation		oewn-plodder__1.18.02..
+oewn-plod__2.38.00..	derivation		oewn-plodding__1.04.01..
+oewn-plod__2.38.00..	other	agent	oewn-plodder__1.18.00..
+oewn-plod__2.38.00..	other	agent	oewn-plodder__1.18.01..
+oewn-plod__2.38.00..	other	agent	oewn-plodder__1.18.02..
+oewn-ploddingly__4.02.00..	pertainym		oewn-plodding__5.00.00.effortful.00
+oewn-plonk__1.11.00..	derivation		oewn-plonk__2.35.00..
+oewn-plonk__2.35.00..	other	event	oewn-plonk__1.11.00..
+oewn-plop__1.11.00..	derivation		oewn-plop__2.38.00..
+oewn-plop__1.11.00..	derivation		oewn-plop__2.38.01..
+oewn-plop__2.38.00..	other	event	oewn-plop__1.11.00..
+oewn-plop__2.38.01..	other	event	oewn-plop__1.11.00..
+oewn-plot__1.09.00..	derivation		oewn-plot__2.31.00..
+oewn-plot__1.10.01..	derivation		oewn-plot__2.31.01..
+oewn-plot__2.31.00..	derivation		oewn-plotter__1.18.01..
+oewn-plot__2.31.00..	other	agent	oewn-plotter__1.18.01..
+oewn-plot__2.31.00..	other	event	oewn-plot__1.09.00..
+oewn-plot__2.31.01..	other	result	oewn-plot__1.10.01..
+oewn-plot__2.36.00..	derivation		oewn-plotter__1.06.00..
+oewn-plot__2.36.00..	derivation		oewn-plotter__1.18.02..
+oewn-plot__2.36.00..	other	agent	oewn-plotter__1.18.02..
+oewn-plot__2.36.00..	other	instrument	oewn-plotter__1.06.00..
+oewn-plough__1.06.00..	derivation		oewn-plough__2.36.00..
+oewn-plough__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plough__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plough__2.36.00..	derivation		oewn-ploughing__1.04.00..
+oewn-plough__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plough__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plough__2.36.00..	other	instrument	oewn-plough__1.06.00..
+oewn-plough__2.38.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-plough__2.38.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-plow__1.06.00..	derivation		oewn-plow__2.36.00..
+oewn-plow__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plow__2.36.00..	derivation		oewn-plower__1.18.00..
+oewn-plow__2.36.00..	derivation		oewn-plowing__1.04.00..
+oewn-plow__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plow__2.36.00..	other	agent	oewn-plower__1.18.00..
+oewn-plow__2.36.00..	other	instrument	oewn-plow__1.06.00..
+oewn-plow__2.38.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plowed__3.00.00..	antonym		oewn-unplowed__3.00.00..
+oewn-pluck__1.04.00..	derivation		oewn-pluck__2.35.02..
+oewn-pluck__1.07.00..	derivation		oewn-plucky__3.00.00..
+oewn-pluck__1.07.00..	derivation		oewn-plucky__5.00.00.spirited.00
+oewn-pluck__2.35.02..	other	event	oewn-pluck__1.04.00..
+oewn-pluckily__4.02.00..	pertainym		oewn-plucky__5.00.00.spirited.00
+oewn-pluckiness__1.07.00..	derivation		oewn-plucky__5.00.00.spirited.00
+oewn-plug__1.06.00..	derivation		oewn-plug__2.35.01..
+oewn-plug__1.10.00..	derivation		oewn-plug__2.32.00..
+oewn-plug__2.32.00..	derivation		oewn-plugger__1.18.00..
+oewn-plug__2.32.00..	other	agent	oewn-plugger__1.18.00..
+oewn-plug__2.32.00..	other	event	oewn-plug__1.10.00..
+oewn-plug__2.35.01..	other	instrument	oewn-plug__1.06.00..
+oewn-plug_in__2.35.00..	antonym		oewn-unplug__2.35.00..
+oewn-plugged__3.44.00..	participle		oewn-plug__2.30.04..
+oewn-plumb__1.06.00..	derivation		oewn-plumb__2.30.00..
+oewn-plumb__1.06.00..	derivation		oewn-plumb__2.35.00..
+oewn-plumb__2.30.00..	other	instrument	oewn-plumb__1.06.00..
+oewn-plumb__2.31.00..	derivation		oewn-plumbing__1.04.00..
+oewn-plumb__2.35.00..	other	instrument	oewn-plumb__1.06.00..
+oewn-plumbic__3.01.00..	pertainym		oewn-lead__1.27.00..
+oewn-plumbous__3.01.00..	pertainym		oewn-lead__1.27.00..
+oewn-plume__1.05.00..	derivation		oewn-plume__2.35.00..
+oewn-plume__1.05.00..	derivation		oewn-plume__2.36.00..
+oewn-plume__1.06.00..	derivation		oewn-plume__2.36.00..
+oewn-plume__2.35.00..	other	uses	oewn-plume__1.05.00..
+oewn-plume__2.36.00..	other	uses	oewn-plume__1.05.00..
+oewn-plume__2.36.00..	other	uses	oewn-plume__1.06.00..
+oewn-plump__1.11.00..	derivation		oewn-plump__2.38.01..
+oewn-plump__2.38.01..	other	event	oewn-plump__1.11.00..
+oewn-plump__5.00.00.fat.01	derivation		oewn-plumpness__1.07.00..
+oewn-plunder__1.21.00..	derivation		oewn-plunder__2.40.00..
+oewn-plunder__1.21.00..	derivation		oewn-plunder__2.40.01..
+oewn-plunder__1.21.00..	derivation		oewn-plunder__2.40.02..
+oewn-plunder__2.35.01..	derivation		oewn-plundering__1.04.00..
+oewn-plunder__2.40.00..	derivation		oewn-plunderer__1.18.00..
+oewn-plunder__2.40.00..	derivation		oewn-plundering__1.04.00..
+oewn-plunder__2.40.00..	other	agent	oewn-plunderer__1.18.00..
+oewn-plunder__2.40.00..	other	undergoer	oewn-plunder__1.21.00..
+oewn-plunder__2.40.01..	derivation		oewn-plunderage__1.04.00..
+oewn-plunder__2.40.01..	derivation		oewn-plunderer__1.18.00..
+oewn-plunder__2.40.01..	derivation		oewn-plundering__1.04.00..
+oewn-plunder__2.40.01..	other	agent	oewn-plunderer__1.18.00..
+oewn-plunder__2.40.01..	other	undergoer	oewn-plunder__1.21.00..
+oewn-plunder__2.40.02..	other	undergoer	oewn-plunder__1.21.00..
+oewn-plunge__1.04.00..	derivation		oewn-plunge__2.35.00..
+oewn-plunge__1.04.00..	derivation		oewn-plunge__2.35.01..
+oewn-plunge__1.11.00..	derivation		oewn-plunge__2.38.00..
+oewn-plunge__1.11.00..	derivation		oewn-plunge__2.38.01..
+oewn-plunge__2.35.00..	derivation		oewn-plunger__1.06.01..
+oewn-plunge__2.35.00..	other	agent	oewn-plunger__1.06.01..
+oewn-plunge__2.35.00..	other	event	oewn-plunge__1.04.00..
+oewn-plunge__2.35.01..	derivation		oewn-plunger__1.06.00..
+oewn-plunge__2.35.01..	derivation		oewn-plunger__1.06.01..
+oewn-plunge__2.35.01..	derivation		oewn-plunger__1.18.01..
+oewn-plunge__2.35.01..	other	agent	oewn-plunger__1.18.01..
+oewn-plunge__2.35.01..	other	event	oewn-plunge__1.04.00..
+oewn-plunge__2.35.01..	other	instrument	oewn-plunger__1.06.00..
+oewn-plunge__2.35.01..	other	instrument	oewn-plunger__1.06.01..
+oewn-plunge__2.38.00..	derivation		oewn-plunger__1.18.01..
+oewn-plunge__2.38.00..	other	agent	oewn-plunger__1.18.01..
+oewn-plunge__2.38.00..	other	event	oewn-plunge__1.11.00..
+oewn-plunge__2.38.01..	other	event	oewn-plunge__1.11.00..
+oewn-plunk__1.11.00..	derivation		oewn-plunk__2.39.00..
+oewn-plunk__2.39.00..	other	event	oewn-plunk__1.11.00..
+oewn-plural__1.10.00..	antonym		oewn-singular__1.10.00..
+oewn-plural__3.00.00..	antonym		oewn-singular__3.00.00..
+oewn-plural__3.00.00..	derivation		oewn-plurality__1.26.00..
+oewn-plural__3.00.01..	antonym		oewn-singular__3.00.01..
+oewn-pluralisation__1.24.00..	derivation		oewn-pluralise__2.32.00..
+oewn-pluralisation__1.24.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pluralisation__1.24.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pluralise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pluralise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pluralism__1.04.00..	derivation		oewn-pluralist__1.18.02..
+oewn-pluralism__1.09.00..	derivation		oewn-pluralist__1.18.01..
+oewn-pluralism__1.09.00..	derivation		oewn-pluralistic__3.01.00..
+oewn-pluralism__1.14.00..	derivation		oewn-pluralist__1.18.00..
+oewn-pluralism__1.14.00..	derivation		oewn-pluralistic__3.01.00..
+oewn-pluralistic__3.01.00..	pertainym		oewn-pluralism__1.09.00..
+oewn-pluralization__1.24.00..	derivation		oewn-pluralize__2.32.00..
+oewn-pluralization__1.24.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pluralize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-plush__1.06.00..	derivation		oewn-plushy__5.00.00.coarse.00
+oewn-plutocracy__1.14.00..	derivation		oewn-plutocratic__3.01.00..
+oewn-plutocracy__1.14.00..	derivation		oewn-plutocratical__3.01.00..
+oewn-plutocratic__3.01.00..	pertainym		oewn-plutocrat__1.18.00..
+oewn-plutocratical__3.01.00..	pertainym		oewn-plutocrat__1.18.00..
+oewn-pluton__1.27.00..	derivation		oewn-plutonic__5.00.00.intrusive.03
+oewn-ply__2.38.00..	other	agent	oewn-plier__1.18.00..
+oewn-ply__2.41.00..	derivation		oewn-plyer__1.18.00..
+oewn-ply__2.41.00..	other	agent	oewn-plier__1.18.00..
+oewn-ply__2.41.00..	other	agent	oewn-plyer__1.18.00..

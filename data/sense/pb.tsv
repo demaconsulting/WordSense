@@ -1,0 +1,7 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-pb__1.23.00..	pb%1:23:00::	oewn-PB-n	oewn-13651674-n	2
+oewn-pb__1.23.01..	pb%1:23:01::	oewn-PB-n	oewn-13651848-n	1
+oewn-pb__1.23.02..	pb%1:23:02::	oewn-Pb-n	oewn-13652006-n	2
+oewn-pb__1.27.00..	pb%1:27:00::	oewn-Pb-n	oewn-14667645-n	1
+oewn-pbit__1.23.00..	pbit%1:23:00::	oewn-Pbit-n	oewn-13652006-n	1
+oewn-pbs__1.27.00..	pbs%1:27:00::	oewn-PBS-n	oewn-14810520-n	1

@@ -1,0 +1,5 @@
+class_id	lemma	label	pos	kind
+smell#noun	smell	noun	n	sense_group
+smell#verb	smell	verb	v	sense_group
+smoke#noun	smoke	noun	n	sense_group
+smoke#verb	smoke	verb	v	sense_group

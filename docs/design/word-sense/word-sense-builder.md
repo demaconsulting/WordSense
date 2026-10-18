@@ -90,6 +90,10 @@ Options are `--name value` pairs; every path defaults to the repository layout b
 - `tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]`: scores the hyper-parameter grid and prints a table; it
   writes nothing.
 - `appendix [--corpus DIR] [--output FILE]`: writes the senses appendix of the user guide.
+- `import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]`: imports the
+  pinned Open English WordNet file into the tables of `data/` (see the WordData subsystem); it prints the counts.
+- `validate-data [--data DIR]`: validates the tables of `data/` against `data/schema.yaml`, lists the violations and
+  exits with a failure when there is one.
 
 #### Lexicon build (`WordsBuilder.Build`)
 

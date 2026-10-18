@@ -1,0 +1,207 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-Squalus_acanthias-n	Squalus acanthias	n	0	2	2	oewn
+oewn-Squalus_suckleyi-n	Squalus suckleyi	n	0	2	2	oewn
+oewn-Squatina_squatina-n	Squatina squatina	n	0	2	2	oewn
+oewn-sq_ft-n	sq ft	n	0	2	2	oewn
+oewn-sq_in-n	sq in	n	0	2	1	oewn
+oewn-sq_yd-n	sq yd	n	0	2	2	oewn
+oewn-squab-a	squab	a	0	1	1	oewn
+oewn-squab-n	squab	n	0	1	1	oewn
+oewn-squabble-n	squabble	n	0	1	1	oewn
+oewn-squabble-v	squabble	v	0	1	1	oewn
+oewn-squabbler-n	squabbler	n	0	1	1	oewn
+oewn-squabby-a	squabby	a	0	1	1	oewn
+oewn-squad-n	squad	n	0	1	1	oewn
+oewn-squad_car-n	squad car	n	0	2	2	oewn
+oewn-squad_room-n	squad room	n	0	2	2	oewn
+oewn-squadron-n	squadron	n	0	1	1	oewn
+oewn-squalid-a	squalid	a	0	1	1	oewn
+oewn-squalidly-r	squalidly	r	0	1	1	oewn
+oewn-squalidness-n	squalidness	n	0	1	1	oewn
+oewn-squall-n	squall	n	0	1	1	oewn
+oewn-squall-v	squall	v	0	1	1	oewn
+oewn-squall_line-n	squall line	n	0	2	2	oewn
+oewn-squalling-a	squalling	a	0	1	1	oewn
+oewn-squally-a	squally	a	0	1	1	oewn
+oewn-squalor-n	squalor	n	0	1	1	oewn
+oewn-squama-n	squama	n	0	1	1	oewn
+oewn-squamous_cell-n	squamous cell	n	0	2	2	oewn
+oewn-squamous_cell_carcinoma-n	squamous cell carcinoma	n	0	3	3	oewn
+oewn-squamule-n	squamule	n	0	1	1	oewn
+oewn-squamulose-a	squamulose	a	0	1	1	oewn
+oewn-squander-v	squander	v	0	1	1	oewn
+oewn-squandered-a	squandered	a	0	1	1	oewn
+oewn-squanderer-n	squanderer	n	0	1	1	oewn
+oewn-squandering-n	squandering	n	0	1	1	oewn
+oewn-squandermania-n	squandermania	n	0	1	1	oewn
+oewn-square-a	square	a	0	1	1	oewn
+oewn-square-bashing-n	square-bashing	n	0	1	1	oewn
+oewn-square-built-a	square-built	a	0	1	1	oewn
+oewn-square-dance_music-n	square-dance music	n	0	2	2	oewn
+oewn-square-jawed-a	square-jawed	a	0	1	1	oewn
+oewn-square-n	square	n	0	1	1	oewn
+oewn-square-r	square	r	0	1	1	oewn
+oewn-square-rigged-a	square-rigged	a	0	1	1	oewn
+oewn-square-rigger-n	square-rigger	n	0	1	1	oewn
+oewn-square-shaped-a	square-shaped	a	0	1	1	oewn
+oewn-square-shouldered-a	square-shouldered	a	0	1	1	oewn
+oewn-square-tailed-a	square-tailed	a	0	1	1	oewn
+oewn-square-toed-a	square-toed	a	0	1	1	oewn
+oewn-square-v	square	v	0	1	1	oewn
+oewn-square_and_rabbet-n	square and rabbet	n	0	3	3	oewn
+oewn-square_away-v	square away	v	0	2	1	oewn
+oewn-square_block-n	square block	n	0	2	2	oewn
+oewn-square_bracket-n	square bracket	n	0	2	2	oewn
+oewn-square_capitals-n	square capitals	n	0	2	2	oewn
+oewn-square_centimeter-n	square centimeter	n	0	2	2	oewn
+oewn-square_centimetre-n	square centimetre	n	0	2	2	oewn
+oewn-square_dance-n	square dance	n	0	2	2	oewn
+oewn-square_dance-v	square dance	v	0	2	1	oewn
+oewn-square_dancer-n	square dancer	n	0	2	2	oewn
+oewn-square_dancing-n	square dancing	n	0	2	2	oewn
+oewn-square_deal-n	square deal	n	0	2	2	oewn
+oewn-square_fathom-n	square fathom	n	0	2	2	oewn
+oewn-square_flipper-n	square flipper	n	0	2	2	oewn
+oewn-square_flipper_seal-n	square flipper seal	n	0	3	3	oewn
+oewn-square_foot-n	square foot	n	0	2	2	oewn
+oewn-square_inch-n	square inch	n	0	2	2	oewn
+oewn-square_kilometer-n	square kilometer	n	0	2	2	oewn
+oewn-square_kilometre-n	square kilometre	n	0	2	2	oewn
+oewn-square_knot-n	square knot	n	0	2	2	oewn
+oewn-square_matrix-n	square matrix	n	0	2	2	oewn
+oewn-square_meal-n	square meal	n	0	2	2	oewn
+oewn-square_measure-n	square measure	n	0	2	2	oewn
+oewn-square_meter-n	square meter	n	0	2	2	oewn
+oewn-square_metre-n	square metre	n	0	2	2	oewn
+oewn-square_mile-n	square mile	n	0	2	2	oewn
+oewn-square_millimeter-n	square millimeter	n	0	2	2	oewn
+oewn-square_millimetre-n	square millimetre	n	0	2	2	oewn
+oewn-square_nut-n	square nut	n	0	2	2	oewn
+oewn-square_off-v	square off	v	0	2	1	oewn
+oewn-square_one-n	square one	n	0	2	2	oewn
+oewn-square_pyramid-n	square pyramid	n	0	2	2	oewn
+oewn-square_root-n	square root	n	0	2	2	oewn
+oewn-square_sail-n	square sail	n	0	2	2	oewn
+oewn-square_shooter-n	square shooter	n	0	2	2	oewn
+oewn-square_toes-n	square toes	n	0	2	2	oewn
+oewn-square_up-v	square up	v	0	2	1	oewn
+oewn-square_yard-n	square yard	n	0	2	2	oewn
+oewn-squared-a	squared	a	0	1	1	oewn
+oewn-squared-toe-a	squared-toe	a	0	1	1	oewn
+oewn-squareflipper-n	squareflipper	n	0	1	1	oewn
+oewn-squarely-r	squarely	r	0	1	1	oewn
+oewn-squareness-n	squareness	n	0	1	1	oewn
+oewn-squaretail-n	squaretail	n	0	1	1	oewn
+oewn-squarish-a	squarish	a	0	1	1	oewn
+oewn-squash-n	squash	n	0	1	1	oewn
+oewn-squash-v	squash	v	0	1	1	oewn
+oewn-squash_ball-n	squash ball	n	0	2	2	oewn
+oewn-squash_bug-n	squash bug	n	0	2	2	oewn
+oewn-squash_court-n	squash court	n	0	2	2	oewn
+oewn-squash_pie-n	squash pie	n	0	2	2	oewn
+oewn-squash_racket-n	squash racket	n	0	2	2	oewn
+oewn-squash_rackets-n	squash rackets	n	0	2	2	oewn
+oewn-squash_racquet-n	squash racquet	n	0	2	2	oewn
+oewn-squash_racquets-n	squash racquets	n	0	2	2	oewn
+oewn-squash_vine-n	squash vine	n	0	2	2	oewn
+oewn-squashed-a	squashed	a	0	1	1	oewn
+oewn-squashy-a	squashy	a	0	1	1	oewn
+oewn-squat-a	squat	a	0	1	1	oewn
+oewn-squat-n	squat	n	0	1	1	oewn
+oewn-squat-v	squat	v	0	1	1	oewn
+oewn-squatness-n	squatness	n	0	1	1	oewn
+oewn-squatter-n	squatter	n	0	1	1	oewn
+oewn-squattiness-n	squattiness	n	0	1	1	oewn
+oewn-squatting-n	squatting	n	0	1	1	oewn
+oewn-squatty-a	squatty	a	0	1	1	oewn
+oewn-squaw-bush-n	squaw-bush	n	0	1	1	oewn
+oewn-squaw-n	squaw	n	0	1	1	oewn
+oewn-squaw_corn-n	squaw corn	n	0	2	2	oewn
+oewn-squaw_grass-n	squaw grass	n	0	2	2	oewn
+oewn-squaw_huckleberry-n	squaw huckleberry	n	0	2	2	oewn
+oewn-squaw_man-n	squaw man	n	0	2	2	oewn
+oewn-squaw_root-n	squaw root	n	0	2	2	oewn
+oewn-squawbush-n	squawbush	n	0	1	1	oewn
+oewn-squawk-n	squawk	n	0	1	1	oewn
+oewn-squawk-v	squawk	v	0	1	1	oewn
+oewn-squawk_box-n	squawk box	n	0	2	2	oewn
+oewn-squawker-n	squawker	n	0	1	1	oewn
+oewn-squawky-a	squawky	a	0	1	1	oewn
+oewn-squawroot-n	squawroot	n	0	1	1	oewn
+oewn-squeak-n	squeak	n	0	1	1	oewn
+oewn-squeak-v	squeak	v	0	1	1	oewn
+oewn-squeak_by-v	squeak by	v	0	2	1	oewn
+oewn-squeak_through-v	squeak through	v	0	2	1	oewn
+oewn-squeaker-n	squeaker	n	0	1	1	oewn
+oewn-squeakiness-n	squeakiness	n	0	1	1	oewn
+oewn-squeaking-a	squeaking	a	0	1	1	oewn
+oewn-squeaky-a	squeaky	a	0	1	1	oewn
+oewn-squeal-n	squeal	n	0	1	1	oewn
+oewn-squeal-v	squeal	v	0	1	1	oewn
+oewn-squealer-n	squealer	n	0	1	1	oewn
+oewn-squealing-a	squealing	a	0	1	1	oewn
+oewn-squeamish-a	squeamish	a	0	1	1	oewn
+oewn-squeamishly-r	squeamishly	r	0	1	1	oewn
+oewn-squeamishness-n	squeamishness	n	0	1	1	oewn
+oewn-squeegee-n	squeegee	n	0	1	1	oewn
+oewn-squeegee-v	squeegee	v	0	1	1	oewn
+oewn-squeezability-n	squeezability	n	0	1	1	oewn
+oewn-squeezable-a	squeezable	a	0	1	1	oewn
+oewn-squeeze-n	squeeze	n	0	1	1	oewn
+oewn-squeeze-v	squeeze	v	0	1	1	oewn
+oewn-squeeze_box-n	squeeze box	n	0	2	2	oewn
+oewn-squeeze_by-v	squeeze by	v	0	2	1	oewn
+oewn-squeeze_for-v	squeeze for	v	0	2	1	oewn
+oewn-squeeze_out-v	squeeze out	v	0	2	1	oewn
+oewn-squeeze_play-n	squeeze play	n	0	2	2	oewn
+oewn-squeezer-n	squeezer	n	0	1	1	oewn
+oewn-squeezing-n	squeezing	n	0	1	1	oewn
+oewn-squelch-n	squelch	n	0	1	1	oewn
+oewn-squelch-v	squelch	v	0	1	1	oewn
+oewn-squelch_circuit-n	squelch circuit	n	0	2	2	oewn
+oewn-squelched-a	squelched	a	0	1	1	oewn
+oewn-squelcher-n	squelcher	n	0	1	1	oewn
+oewn-squib-n	squib	n	0	1	1	oewn
+oewn-squid-n	squid	n	0	1	1	oewn
+oewn-squiffy-a	squiffy	a	0	1	1	oewn
+oewn-squiggle-n	squiggle	n	0	1	1	oewn
+oewn-squiggly-a	squiggly	a	0	1	1	oewn
+oewn-squill-n	squill	n	0	1	1	oewn
+oewn-squilla-n	squilla	n	0	1	1	oewn
+oewn-squinch-n	squinch	n	0	1	1	oewn
+oewn-squinch-v	squinch	v	0	1	1	oewn
+oewn-squinched-a	squinched	a	0	1	1	oewn
+oewn-squint-a	squint	a	0	1	1	oewn
+oewn-squint-eye-n	squint-eye	n	0	1	1	oewn
+oewn-squint-eyed-a	squint-eyed	a	0	1	1	oewn
+oewn-squint-n	squint	n	0	1	1	oewn
+oewn-squint-v	squint	v	0	1	1	oewn
+oewn-squinter-n	squinter	n	0	1	1	oewn
+oewn-squinting-a	squinting	a	0	1	1	oewn
+oewn-squinty-a	squinty	a	0	1	1	oewn
+oewn-squire-n	squire	n	0	1	1	oewn
+oewn-squire-v	squire	v	0	1	1	oewn
+oewn-squirearchy-n	squirearchy	n	0	1	1	oewn
+oewn-squirm-n	squirm	n	0	1	1	oewn
+oewn-squirm-v	squirm	v	0	1	1	oewn
+oewn-squirmer-n	squirmer	n	0	1	1	oewn
+oewn-squirrel-ap-s-foot_fern-n	squirrel's-foot fern	n	0	2	2	oewn
+oewn-squirrel-cage_motor-n	squirrel-cage motor	n	0	2	2	oewn
+oewn-squirrel-n	squirrel	n	0	1	1	oewn
+oewn-squirrel-sized-a	squirrel-sized	a	0	1	1	oewn
+oewn-squirrel_away-v	squirrel away	v	0	2	1	oewn
+oewn-squirrel_cage-n	squirrel cage	n	0	2	2	oewn
+oewn-squirrel_corn-n	squirrel corn	n	0	2	2	oewn
+oewn-squirrel_monkey-n	squirrel monkey	n	0	2	2	oewn
+oewn-squirrelfish-n	squirrelfish	n	0	1	1	oewn
+oewn-squirreltail_barley-n	squirreltail barley	n	0	2	2	oewn
+oewn-squirreltail_grass-n	squirreltail grass	n	0	2	2	oewn
+oewn-squirt-n	squirt	n	0	1	1	oewn
+oewn-squirt-v	squirt	v	0	1	1	oewn
+oewn-squirt_gun-n	squirt gun	n	0	2	2	oewn
+oewn-squirter-n	squirter	n	0	1	1	oewn
+oewn-squirting-a	squirting	a	0	1	1	oewn
+oewn-squirting_cucumber-n	squirting cucumber	n	0	2	2	oewn
+oewn-squish-n	squish	n	0	1	1	oewn
+oewn-squish-v	squish	v	0	1	1	oewn
+oewn-squishy-a	squishy	a	0	1	1	oewn

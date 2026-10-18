@@ -1,0 +1,8 @@
+class_id	lemma	label	pos	kind
+absent#adj	absent	adj	a	sense_group
+absent#verb	absent	verb	v	sense_group
+abstract#adj	abstract	adj	a	sense_group
+abstract#unmapped-n	abstract	unmapped-n	n	unmapped
+abstract#verb	abstract	verb	v	sense_group
+abuse#noun	abuse	noun	n	sense_group
+abuse#verb	abuse	verb	v	sense_group

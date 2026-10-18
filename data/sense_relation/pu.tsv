@@ -1,0 +1,518 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-pubertal__3.01.00..	derivation		oewn-puberty__1.28.00..
+oewn-pubertal__3.01.00..	pertainym		oewn-puberty__1.28.00..
+oewn-pubescence__1.28.00..	derivation		oewn-pubescent__5.00.00.immature.01
+oewn-pubic__3.01.00..	derivation		oewn-pubis__1.08.00..
+oewn-pubic__3.01.00..	pertainym		oewn-pubis__1.08.00..
+oewn-public__3.00.00..	derivation		oewn-publicity__1.07.00..
+oewn-publically__4.02.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-publically__4.02.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-publication__1.04.00..	derivation		oewn-publish__2.32.00..
+oewn-publication__1.04.00..	derivation		oewn-publish__2.36.01..
+oewn-publication__1.04.01..	derivation		oewn-publish__2.32.00..
+oewn-publication__1.04.01..	derivation		oewn-publish__2.36.01..
+oewn-publication__1.10.00..	derivation		oewn-publish__2.32.00..
+oewn-publication__1.10.00..	derivation		oewn-publish__2.36.00..
+oewn-publication__1.10.00..	derivation		oewn-publish__2.36.01..
+oewn-publicise__2.32.00..	derivation		oewn-publiciser__1.18.00..
+oewn-publicise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-publicise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-publicise__2.32.00..	other	agent	oewn-publiciser__1.18.00..
+oewn-publicise__2.32.01..	derivation		oewn-publiciser__1.18.00..
+oewn-publicise__2.32.01..	derivation		oewn-publicist__1.18.00..
+oewn-publicise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-publicise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-publicise__2.32.01..	other	agent	oewn-publiciser__1.18.00..
+oewn-publicist__1.18.00..	derivation		oewn-publicize__2.32.01..
+oewn-publicize__2.32.00..	derivation		oewn-publicizer__1.18.00..
+oewn-publicize__2.32.00..	derivation		oewn-publicizing__1.04.00..
+oewn-publicize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-publicize__2.32.00..	other	agent	oewn-publicizer__1.18.00..
+oewn-publicize__2.32.01..	derivation		oewn-publicizer__1.18.00..
+oewn-publicize__2.32.01..	derivation		oewn-publicizing__1.04.00..
+oewn-publicize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-publicize__2.32.01..	other	agent	oewn-publicizer__1.18.00..
+oewn-publicized__3.00.00..	antonym		oewn-suppressed__3.00.00..
+oewn-publicly__4.02.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-publicly__4.02.00..	pertainym		oewn-public__3.00.00..
+oewn-publicly__4.02.01..	pertainym		oewn-public__5.00.00.common.02
+oewn-publish__2.32.00..	derivation		oewn-publisher__1.14.00..
+oewn-publish__2.32.00..	derivation		oewn-publisher__1.18.00..
+oewn-publish__2.32.00..	derivation		oewn-publisher__1.18.01..
+oewn-publish__2.32.00..	derivation		oewn-publishing__1.04.00..
+oewn-publish__2.32.00..	other	agent	oewn-publisher__1.14.00..
+oewn-publish__2.32.00..	other	agent	oewn-publisher__1.18.00..
+oewn-publish__2.32.00..	other	agent	oewn-publisher__1.18.01..
+oewn-publish__2.32.00..	other	event	oewn-publication__1.04.00..
+oewn-publish__2.32.00..	other	event	oewn-publication__1.04.01..
+oewn-publish__2.32.00..	other	result	oewn-publication__1.10.00..
+oewn-publish__2.36.00..	other	result	oewn-publication__1.10.00..
+oewn-publish__2.36.01..	derivation		oewn-publisher__1.14.00..
+oewn-publish__2.36.01..	derivation		oewn-publisher__1.18.00..
+oewn-publish__2.36.01..	derivation		oewn-publisher__1.18.01..
+oewn-publish__2.36.01..	other	agent	oewn-publisher__1.14.00..
+oewn-publish__2.36.01..	other	agent	oewn-publisher__1.18.00..
+oewn-publish__2.36.01..	other	agent	oewn-publisher__1.18.01..
+oewn-publish__2.36.01..	other	event	oewn-publication__1.04.00..
+oewn-publish__2.36.01..	other	event	oewn-publication__1.04.01..
+oewn-publish__2.36.01..	other	result	oewn-publication__1.10.00..
+oewn-publishable__3.00.00..	antonym		oewn-unpublishable__3.00.00..
+oewn-published__3.00.00..	antonym		oewn-unpublished__3.00.00..
+oewn-pucker__1.25.00..	derivation		oewn-pucker__2.35.01..
+oewn-pucker__1.25.00..	derivation		oewn-pucker__2.35.02..
+oewn-pucker__2.35.01..	other	result	oewn-pucker__1.25.00..
+oewn-pucker__2.35.02..	other	result	oewn-pucker__1.25.00..
+oewn-puckish__5.00.00.playful.00	derivation		oewn-puckishness__1.07.00..
+oewn-puckishly__4.02.00..	pertainym		oewn-puckish__5.00.00.playful.00
+oewn-puddle__1.17.00..	derivation		oewn-puddle__2.35.03..
+oewn-puddle__1.17.00..	derivation		oewn-puddle__2.38.00..
+oewn-puddle__1.27.00..	derivation		oewn-puddle__2.35.02..
+oewn-puddle__1.27.00..	derivation		oewn-puddle__2.36.00..
+oewn-puddle__2.35.02..	other	undergoer	oewn-puddle__1.27.00..
+oewn-puddle__2.35.03..	other	result	oewn-puddle__1.17.00..
+oewn-puddle__2.36.00..	derivation		oewn-puddler__1.18.00..
+oewn-puddle__2.36.00..	other	agent	oewn-puddler__1.18.00..
+oewn-puddle__2.38.00..	other	location	oewn-puddle__1.17.00..
+oewn-pudendal__3.01.00..	derivation		oewn-pudendum__1.08.00..
+oewn-pudendal__3.01.00..	pertainym		oewn-pudendum__1.08.00..
+oewn-pudge__1.18.00..	derivation		oewn-pudgy__5.00.00.fat.01
+oewn-pudginess__1.07.00..	derivation		oewn-pudgy__5.00.00.fat.01
+oewn-puerile__3.01.00..	derivation		oewn-puerility__1.07.00..
+oewn-puerile__3.01.00..	pertainym		oewn-child__1.18.01..
+oewn-puerile__5.00.00.immature.02	derivation		oewn-puerility__1.26.00..
+oewn-puerpera__1.18.00..	derivation		oewn-puerperal__3.01.00..
+oewn-puerperal__3.01.00..	derivation		oewn-puerperium__1.28.00..
+oewn-puerperal__3.01.00..	pertainym		oewn-childbirth__1.22.00..
+oewn-puerperal__3.01.00..	pertainym		oewn-puerpera__1.18.00..
+oewn-puerperal__3.01.00..	pertainym		oewn-puerperium__1.28.00..
+oewn-puff__1.04.00..	derivation		oewn-puff__2.34.00..
+oewn-puff__1.04.00..	derivation		oewn-puff__2.34.01..
+oewn-puff__1.04.01..	derivation		oewn-puff__2.29.00..
+oewn-puff__1.04.01..	derivation		oewn-puff__2.29.01..
+oewn-puff__1.10.00..	derivation		oewn-puff__2.32.01..
+oewn-puff__1.19.00..	derivation		oewn-puffy__5.00.00.stormy.00
+oewn-puff__2.29.00..	derivation		oewn-puffing__1.04.01..
+oewn-puff__2.29.00..	other	event	oewn-puff__1.04.01..
+oewn-puff__2.29.01..	derivation		oewn-puffing__1.04.01..
+oewn-puff__2.29.01..	other	event	oewn-puff__1.04.01..
+oewn-puff__2.30.00..	derivation		oewn-puffer__1.05.00..
+oewn-puff__2.30.00..	other	agent	oewn-puffer__1.05.00..
+oewn-puff__2.32.01..	other	event	oewn-puff__1.10.00..
+oewn-puff__2.34.00..	other	event	oewn-puff__1.04.00..
+oewn-puff__2.34.01..	derivation		oewn-puffing__1.04.02..
+oewn-puff__2.34.01..	other	event	oewn-puff__1.04.00..
+oewn-puffiness__1.26.00..	derivation		oewn-puffy__5.00.00.unhealthy.00
+oewn-pugilism__1.04.00..	derivation		oewn-pugilist__1.18.00..
+oewn-pugilism__1.04.00..	derivation		oewn-pugilistic__3.01.00..
+oewn-pugilistic__3.01.00..	pertainym		oewn-pugilism__1.04.00..
+oewn-pugilistic__3.01.00..	pertainym		oewn-pugilist__1.18.00..
+oewn-pugnacious__5.00.00.aggressive.00	derivation		oewn-pugnacity__1.07.00..
+oewn-pugnaciously__4.02.00..	pertainym		oewn-pugnacious__5.00.00.aggressive.00
+oewn-puissance__1.07.00..	derivation		oewn-puissant__5.00.00.powerful.00
+oewn-puke__1.27.00..	derivation		oewn-puke__2.29.00..
+oewn-puke__2.29.00..	derivation		oewn-puking__1.04.00..
+oewn-puke__2.29.00..	other	undergoer	oewn-puke__1.27.00..
+oewn-pulchritude__1.07.00..	derivation		oewn-pulchritudinous__5.00.00.beautiful.00
+oewn-pull--up__1.04.00..	derivation		oewn-pull_up__2.38.03..
+oewn-pull__1.04.00..	derivation		oewn-pull__2.35.00..
+oewn-pull__1.04.00..	derivation		oewn-pull__2.35.02..
+oewn-pull__1.04.00..	derivation		oewn-pull__2.35.04..
+oewn-pull__1.04.02..	derivation		oewn-pull__2.41.00..
+oewn-pull__1.06.01..	derivation		oewn-pull__2.35.02..
+oewn-pull__1.19.00..	derivation		oewn-pull__2.35.02..
+oewn-pull__1.19.00..	derivation		oewn-pull__2.35.04..
+oewn-pull__1.26.00..	derivation		oewn-pull__2.29.00..
+oewn-pull__2.29.00..	other	event	oewn-pull__1.26.00..
+oewn-pull__2.35.00..	also		oewn-pull_along__2.35.00..
+oewn-pull__2.35.00..	also		oewn-pull_back__2.35.00..
+oewn-pull__2.35.00..	also		oewn-pull_down__2.36.00..
+oewn-pull__2.35.00..	also		oewn-pull_in__2.35.00..
+oewn-pull__2.35.00..	also		oewn-pull_off__2.35.00..
+oewn-pull__2.35.00..	also		oewn-pull_out__2.35.00..
+oewn-pull__2.35.00..	also		oewn-pull_up__2.35.00..
+oewn-pull__2.35.00..	antonym		oewn-push__2.38.00..
+oewn-pull__2.35.00..	derivation		oewn-puller__1.18.00..
+oewn-pull__2.35.00..	derivation		oewn-pulling__1.04.00..
+oewn-pull__2.35.00..	other	agent	oewn-puller__1.18.00..
+oewn-pull__2.35.00..	other	event	oewn-pull__1.04.00..
+oewn-pull__2.35.02..	other	by_means_of	oewn-pull__1.19.00..
+oewn-pull__2.35.02..	other	event	oewn-pull__1.04.00..
+oewn-pull__2.35.04..	derivation		oewn-puller__1.18.01..
+oewn-pull__2.35.04..	derivation		oewn-pulling__1.04.00..
+oewn-pull__2.35.04..	other	agent	oewn-puller__1.18.01..
+oewn-pull__2.35.04..	other	event	oewn-pull__1.04.00..
+oewn-pull__2.35.04..	other	event	oewn-pull__1.19.00..
+oewn-pull__2.41.00..	other	event	oewn-pull__1.04.02..
+oewn-pull_back__2.38.00..	derivation		oewn-pullback__1.04.00..
+oewn-pull_in__2.38.00..	antonym		oewn-pull_out__2.38.00..
+oewn-pull_out__2.38.00..	derivation		oewn-pullout__1.04.00..
+oewn-pullulate__2.30.00..	derivation		oewn-pullulation__1.22.01..
+oewn-pullulate__2.30.00..	other	event	oewn-pullulation__1.22.01..
+oewn-pullulate__2.30.01..	derivation		oewn-pullulation__1.22.00..
+oewn-pullulate__2.30.01..	other	event	oewn-pullulation__1.22.00..
+oewn-pulmonary__3.01.00..	pertainym		oewn-lung__1.08.00..
+oewn-pulmonic__3.01.00..	pertainym		oewn-lung__1.08.00..
+oewn-pulp__1.17.00..	derivation		oewn-pulp__2.30.00..
+oewn-pulp__1.17.00..	derivation		oewn-pulpy__5.00.00.nonwoody.00
+oewn-pulp__1.20.00..	derivation		oewn-pulp__2.35.01..
+oewn-pulp__2.30.00..	other	result	oewn-pulp__1.17.00..
+oewn-pulp__2.35.01..	other	undergoer	oewn-pulp__1.20.00..
+oewn-pulpiness__1.07.00..	derivation		oewn-pulpy__5.00.00.nonwoody.00
+oewn-pulsate__2.36.00..	derivation		oewn-pulsation__1.11.00..
+oewn-pulsate__2.36.00..	derivation		oewn-pulse__1.11.01..
+oewn-pulsate__2.36.00..	other	event	oewn-pulsation__1.11.00..
+oewn-pulsate__2.38.00..	derivation		oewn-pulsation__1.11.02..
+oewn-pulsate__2.38.00..	derivation		oewn-pulse__1.11.00..
+oewn-pulsate__2.38.00..	derivation		oewn-pulse__1.28.00..
+oewn-pulsate__2.38.00..	other	event	oewn-pulsation__1.11.02..
+oewn-pulse__1.11.00..	derivation		oewn-pulse__2.38.00..
+oewn-pulse__1.11.01..	derivation		oewn-pulse__2.36.00..
+oewn-pulse__1.28.00..	derivation		oewn-pulse__2.38.00..
+oewn-pulse__2.36.00..	derivation		oewn-pulsing__1.11.00..
+oewn-pulse__2.36.00..	other	event	oewn-pulse__1.11.01..
+oewn-pulse__2.38.00..	other	event	oewn-pulse__1.11.00..
+oewn-pulse__2.38.00..	other	event	oewn-pulse__1.28.00..
+oewn-pulverisation__1.04.00..	derivation		oewn-pulverise__2.30.00..
+oewn-pulverisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverisation__1.04.01..	derivation		oewn-pulverise__2.36.00..
+oewn-pulverisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverisation__1.27.00..	derivation		oewn-pulverise__2.30.01..
+oewn-pulverisation__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverisation__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverise__2.30.00..	other	event	oewn-pulverisation__1.04.00..
+oewn-pulverise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverise__2.30.01..	other	result	oewn-pulverisation__1.27.00..
+oewn-pulverise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-pulverise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-pulverise__2.36.00..	other	event	oewn-pulverisation__1.04.01..
+oewn-pulverization__1.04.00..	derivation		oewn-pulverize__2.30.00..
+oewn-pulverization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverization__1.04.01..	derivation		oewn-pulverize__2.36.00..
+oewn-pulverization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverization__1.27.00..	derivation		oewn-pulverize__2.30.01..
+oewn-pulverization__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverize__2.30.00..	other	event	oewn-pulverization__1.04.00..
+oewn-pulverize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverize__2.30.01..	other	result	oewn-pulverization__1.27.00..
+oewn-pulverize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-pulverize__2.36.00..	other	event	oewn-pulverization__1.04.01..
+oewn-pumice__1.27.00..	derivation		oewn-pumice__2.35.00..
+oewn-pump__1.06.00..	derivation		oewn-pump__2.35.00..
+oewn-pump__1.06.00..	derivation		oewn-pump__2.38.00..
+oewn-pump__1.06.00..	derivation		oewn-pump__2.38.01..
+oewn-pun__1.10.00..	derivation		oewn-pun__2.36.00..
+oewn-pun__1.10.00..	derivation		oewn-punster__1.18.00..
+oewn-pun__2.36.00..	derivation		oewn-punning__1.10.00..
+oewn-pun__2.36.00..	other	event	oewn-pun__1.10.00..
+oewn-punch__1.04.00..	derivation		oewn-punch__2.35.00..
+oewn-punch__1.06.00..	derivation		oewn-punch__2.35.01..
+oewn-punch__2.35.00..	derivation		oewn-puncher__1.18.01..
+oewn-punch__2.35.00..	other	agent	oewn-puncher__1.18.01..
+oewn-punch__2.35.00..	other	event	oewn-punch__1.04.00..
+oewn-punch__2.35.01..	derivation		oewn-puncher__1.06.00..
+oewn-punch__2.35.01..	other	instrument	oewn-punch__1.06.00..
+oewn-punch__2.35.01..	other	instrument	oewn-puncher__1.06.00..
+oewn-punch_in__2.32.00..	antonym		oewn-punch_out__2.32.00..
+oewn-punctilious__5.00.00.precise.00	derivation		oewn-punctiliousness__1.07.00..
+oewn-punctiliously__4.02.00..	pertainym		oewn-punctilious__5.00.00.precise.00
+oewn-punctual__3.00.00..	antonym		oewn-unpunctual__3.00.00..
+oewn-punctual__3.00.00..	derivation		oewn-punctuality__1.07.00..
+oewn-punctuality__1.07.00..	antonym		oewn-tardiness__1.07.00..
+oewn-punctuate__2.30.00..	derivation		oewn-punctuation__1.04.00..
+oewn-punctuate__2.30.00..	derivation		oewn-punctuation__1.10.00..
+oewn-punctuate__2.30.00..	other	event	oewn-punctuation__1.04.00..
+oewn-punctuate__2.30.00..	other	uses	oewn-punctuation__1.10.00..
+oewn-puncturable__3.00.00..	antonym		oewn-punctureless__3.00.00..
+oewn-puncture__1.04.00..	derivation		oewn-puncture__2.30.03..
+oewn-puncture__1.04.00..	derivation		oewn-puncture__2.35.00..
+oewn-puncture__1.06.00..	derivation		oewn-puncture__2.30.03..
+oewn-puncture__1.06.00..	derivation		oewn-puncture__2.35.00..
+oewn-puncture__1.06.00..	derivation		oewn-puncture__2.35.02..
+oewn-puncture__1.11.00..	derivation		oewn-puncture__2.30.00..
+oewn-puncture__1.11.00..	derivation		oewn-puncture__2.30.03..
+oewn-puncture__1.11.00..	derivation		oewn-puncture__2.35.00..
+oewn-puncture__2.30.00..	other	event	oewn-puncture__1.11.00..
+oewn-puncture__2.30.03..	other	event	oewn-puncture__1.04.00..
+oewn-puncture__2.30.03..	other	event	oewn-puncture__1.11.00..
+oewn-puncture__2.30.03..	other	result	oewn-puncture__1.06.00..
+oewn-puncture__2.35.00..	other	event	oewn-puncture__1.04.00..
+oewn-puncture__2.35.00..	other	event	oewn-puncture__1.11.00..
+oewn-puncture__2.35.00..	other	result	oewn-puncture__1.06.00..
+oewn-puncture__2.35.02..	other	result	oewn-puncture__1.06.00..
+oewn-pungency__1.07.00..	derivation		oewn-pungent__5.00.00.tasty.00
+oewn-pungency__1.10.00..	derivation		oewn-pungent__5.00.00.sarcastic.00
+oewn-pungently__4.02.00..	pertainym		oewn-pungent__5.00.00.tasty.00
+oewn-pungently__4.02.01..	pertainym		oewn-pungent__5.00.00.sarcastic.00
+oewn-punic__1.10.00..	derivation		oewn-punic__3.01.00..
+oewn-punily__4.02.00..	pertainym		oewn-puny__5.00.00.weak.00
+oewn-puniness__1.07.00..	derivation		oewn-puny__5.00.00.small.00
+oewn-puniness__1.07.01..	derivation		oewn-puny__5.00.00.weak.00
+oewn-punish__2.41.00..	derivation		oewn-punishment__1.04.00..
+oewn-punish__2.41.00..	derivation		oewn-punitive__3.00.00..
+oewn-punish__2.41.00..	derivation		oewn-punitory__3.00.00..
+oewn-punish__2.41.00..	other	event	oewn-punishment__1.04.00..
+oewn-punished__3.00.00..	antonym		oewn-unpunished__3.00.00..
+oewn-punishing__3.44.00..	participle		oewn-punish__2.41.00..
+oewn-punishingly__4.02.00..	pertainym		oewn-punishing__3.44.00..
+oewn-punitive__3.00.00..	antonym		oewn-rehabilitative__3.00.00..
+oewn-punitively__4.02.00..	pertainym		oewn-punitive__3.00.00..
+oewn-punitorily__4.02.00..	pertainym		oewn-punitory__3.00.00..
+oewn-punt__1.04.00..	derivation		oewn-punt__2.35.01..
+oewn-punt__1.06.00..	derivation		oewn-punt__2.35.00..
+oewn-punt__2.33.00..	derivation		oewn-punter__1.18.01..
+oewn-punt__2.33.00..	other	agent	oewn-punter__1.18.01..
+oewn-punt__2.35.00..	derivation		oewn-punter__1.18.02..
+oewn-punt__2.35.00..	other	agent	oewn-punter__1.18.02..
+oewn-punt__2.35.00..	other	vehicle	oewn-punt__1.06.00..
+oewn-punt__2.35.01..	derivation		oewn-punter__1.18.00..
+oewn-punt__2.35.01..	derivation		oewn-punting__1.04.00..
+oewn-punt__2.35.01..	other	agent	oewn-punter__1.18.00..
+oewn-punt__2.35.01..	other	event	oewn-punt__1.04.00..
+oewn-pup__1.05.00..	derivation		oewn-pup__2.29.00..
+oewn-pup__2.29.00..	other	result	oewn-pup__1.05.00..
+oewn-pupa__1.05.00..	derivation		oewn-pupal__5.00.00.immature.01
+oewn-pupa__1.05.00..	derivation		oewn-pupate__2.29.00..
+oewn-pupil__1.08.00..	derivation		oewn-pupillary__3.01.00..
+oewn-pupillary__3.01.00..	pertainym		oewn-pupil__1.08.00..
+oewn-puppet__1.06.00..	derivation		oewn-puppeteer__1.18.00..
+oewn-puppet__1.06.01..	derivation		oewn-puppeteer__1.18.00..
+oewn-purana__1.10.00..	derivation		oewn-puranic__3.01.00..
+oewn-puranic__3.01.00..	pertainym		oewn-purana__1.10.00..
+oewn-purchase__1.04.00..	derivation		oewn-purchase__2.40.00..
+oewn-purchase__1.21.00..	derivation		oewn-purchase__2.40.00..
+oewn-purchase__2.40.00..	derivation		oewn-purchaser__1.18.00..
+oewn-purchase__2.40.00..	derivation		oewn-purchasing__1.04.00..
+oewn-purchase__2.40.00..	other	agent	oewn-purchaser__1.18.00..
+oewn-purchase__2.40.00..	other	event	oewn-purchase__1.04.00..
+oewn-purchase__2.40.00..	other	undergoer	oewn-purchase__1.21.00..
+oewn-pure__3.00.01..	derivation		oewn-pureness__1.26.01..
+oewn-pure__3.00.01..	derivation		oewn-purity__1.26.02..
+oewn-pure__3.00.02..	derivation		oewn-pureness__1.26.00..
+oewn-pure__3.00.02..	derivation		oewn-purity__1.26.00..
+oewn-pure__3.00.04..	derivation		oewn-pureness__1.26.00..
+oewn-pure__5.00.00.chaste.00	derivation		oewn-pureness__1.07.00..
+oewn-pure__5.00.00.chaste.00	derivation		oewn-pureness__1.26.01..
+oewn-pure__5.00.00.chaste.00	derivation		oewn-purity__1.07.00..
+oewn-pureblood__1.05.00..	derivation		oewn-pureblood__5.00.00.purebred.00
+oewn-purebred__1.05.00..	derivation		oewn-purebred__3.00.00..
+oewn-puree__1.13.00..	derivation		oewn-puree__2.35.00..
+oewn-puree__2.35.00..	other	result	oewn-puree__1.13.00..
+oewn-purgation__1.04.00..	derivation		oewn-purge__2.29.00..
+oewn-purgation__1.04.01..	derivation		oewn-purge__2.32.00..
+oewn-purgation__1.04.02..	derivation		oewn-purge__2.30.04..
+oewn-purgative__1.06.00..	derivation		oewn-purgative__5.00.00.laxative.00
+oewn-purgative__5.00.00.laxative.00	derivation		oewn-purge__2.29.00..
+oewn-purgatorial__3.01.00..	derivation		oewn-purgatory__1.09.00..
+oewn-purgatorial__3.01.00..	derivation		oewn-purgatory__1.26.00..
+oewn-purgatorial__3.01.00..	pertainym		oewn-purgatory__1.09.00..
+oewn-purgatorial__3.01.01..	pertainym		oewn-purgation__1.04.01..
+oewn-purge__1.04.00..	derivation		oewn-purge__2.30.00..
+oewn-purge__1.04.00..	derivation		oewn-purge__2.30.03..
+oewn-purge__1.04.01..	derivation		oewn-purge__2.30.04..
+oewn-purge__1.04.01..	derivation		oewn-purge__2.32.00..
+oewn-purge__1.04.02..	derivation		oewn-purge__2.41.00..
+oewn-purge__2.29.00..	other	event	oewn-purgation__1.04.00..
+oewn-purge__2.30.00..	derivation		oewn-purging__1.04.00..
+oewn-purge__2.30.00..	derivation		oewn-purging__1.04.01..
+oewn-purge__2.30.00..	other	event	oewn-purge__1.04.00..
+oewn-purge__2.30.03..	other	event	oewn-purge__1.04.00..
+oewn-purge__2.30.04..	other	event	oewn-purgation__1.04.02..
+oewn-purge__2.30.04..	other	event	oewn-purge__1.04.01..
+oewn-purge__2.32.00..	other	event	oewn-purgation__1.04.01..
+oewn-purge__2.32.00..	other	event	oewn-purge__1.04.01..
+oewn-purge__2.41.00..	antonym		oewn-rehabilitate__2.41.01..
+oewn-purging__3.01.01..	pertainym		oewn-purgation__1.04.01..
+oewn-purification__1.04.00..	derivation		oewn-purify__2.30.00..
+oewn-purification__1.04.01..	derivation		oewn-purify__2.30.02..
+oewn-purification__1.04.02..	derivation		oewn-purify__2.30.01..
+oewn-purification__1.22.00..	derivation		oewn-purify__2.30.00..
+oewn-purifier__1.06.00..	derivation		oewn-purify__2.30.00..
+oewn-purify__2.30.00..	derivation		oewn-purity__1.26.00..
+oewn-purify__2.30.00..	other	by_means_of	oewn-purifier__1.06.00..
+oewn-purify__2.30.00..	other	event	oewn-purification__1.04.00..
+oewn-purify__2.30.00..	other	event	oewn-purification__1.22.00..
+oewn-purify__2.30.00..	other	instrument	oewn-purifier__1.06.00..
+oewn-purify__2.30.00..	other	result	oewn-purity__1.26.00..
+oewn-purify__2.30.01..	derivation		oewn-purity__1.26.02..
+oewn-purify__2.30.01..	other	event	oewn-purification__1.04.02..
+oewn-purify__2.30.01..	other	result	oewn-purity__1.26.02..
+oewn-purify__2.30.02..	other	event	oewn-purification__1.04.01..
+oewn-purifying__3.01.00..	pertainym		oewn-purgation__1.04.01..
+oewn-purinethol__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-purism__1.10.00..	derivation		oewn-purist__1.18.00..
+oewn-puritan__1.18.00..	derivation		oewn-puritanic__5.00.00.nonindulgent.00
+oewn-puritan__1.18.00..	derivation		oewn-puritanical__5.00.00.nonindulgent.00
+oewn-puritan__1.18.01..	derivation		oewn-puritanic__5.00.00.nonindulgent.00
+oewn-puritan__1.18.01..	derivation		oewn-puritanical__5.00.00.proper.00
+oewn-puritanical__3.01.00..	pertainym		oewn-puritan__1.18.00..
+oewn-puritanical__3.01.00..	pertainym		oewn-puritanism__1.09.00..
+oewn-puritanically__4.02.00..	pertainym		oewn-puritanical__5.00.00.proper.00
+oewn-purl__1.06.00..	derivation		oewn-purl__2.36.02..
+oewn-purl__1.06.01..	derivation		oewn-purl__2.36.00..
+oewn-purl__1.06.01..	derivation		oewn-purl__2.36.01..
+oewn-purl__2.36.00..	other	uses	oewn-purl__1.06.01..
+oewn-purl__2.36.01..	other	uses	oewn-purl__1.06.01..
+oewn-purl__2.36.02..	other	event	oewn-purl__1.06.00..
+oewn-purl_stitch__1.06.00..	derivation		oewn-purl_stitch__2.36.00..
+oewn-purl_stitch__2.36.00..	other	by_means_of	oewn-purl_stitch__1.06.00..
+oewn-purple__1.07.00..	derivation		oewn-purple__2.30.00..
+oewn-purple__1.07.00..	derivation		oewn-purple__2.30.01..
+oewn-purple__1.07.00..	derivation		oewn-purple__5.00.00.chromatic.00
+oewn-purple__1.07.00..	derivation		oewn-purpurate__2.30.00..
+oewn-purple__1.26.00..	derivation		oewn-purple__5.00.00.noble.02
+oewn-purple__2.30.00..	other	uses	oewn-purple__1.07.00..
+oewn-purple__2.30.01..	other	result	oewn-purple__1.07.00..
+oewn-purple__5.00.00.chromatic.00	derivation		oewn-purpleness__1.07.00..
+oewn-purport__1.10.00..	derivation		oewn-purport__2.31.00..
+oewn-purport__2.31.00..	other	undergoer	oewn-purport__1.10.00..
+oewn-purpose__1.07.01..	derivation		oewn-purpose__2.31.00..
+oewn-purpose__1.07.01..	derivation		oewn-purpose__2.31.01..
+oewn-purpose__1.09.00..	derivation		oewn-purpose__2.31.01..
+oewn-purpose__2.31.00..	other	property	oewn-purpose__1.07.01..
+oewn-purpose__2.31.01..	other	event	oewn-purpose__1.09.00..
+oewn-purpose__2.31.01..	other	property	oewn-purpose__1.07.01..
+oewn-purposeful__3.00.00..	antonym		oewn-purposeless__3.00.00..
+oewn-purposeful__3.00.00..	derivation		oewn-purposefulness__1.07.00..
+oewn-purposeful__5.00.00.meaningful.00	derivation		oewn-purposefulness__1.07.00..
+oewn-purposefully__4.02.00..	pertainym		oewn-purposeful__3.00.00..
+oewn-purposefulness__1.07.00..	antonym		oewn-purposelessness__1.07.00..
+oewn-purposeless__3.00.00..	derivation		oewn-purposelessness__1.07.00..
+oewn-purposeless__5.00.00.worthless.00	derivation		oewn-purposelessness__1.07.00..
+oewn-purposelessly__4.02.00..	pertainym		oewn-purposeless__3.00.00..
+oewn-purr__1.11.00..	derivation		oewn-purr__2.32.00..
+oewn-purr__2.32.00..	other	event	oewn-purr__1.11.00..
+oewn-pursuance__1.04.00..	derivation		oewn-pursue__2.41.01..
+oewn-pursuance__1.09.00..	derivation		oewn-pursue__2.35.00..
+oewn-pursuant__5.00.00.consistent.00	derivation		oewn-pursue__2.41.01..
+oewn-pursue__2.35.00..	derivation		oewn-pursuit__1.09.00..
+oewn-pursue__2.35.00..	other	event	oewn-pursuance__1.09.00..
+oewn-pursue__2.38.00..	derivation		oewn-pursuer__1.18.00..
+oewn-pursue__2.38.00..	derivation		oewn-pursuit__1.04.00..
+oewn-pursue__2.38.00..	other	agent	oewn-pursuer__1.18.00..
+oewn-pursue__2.41.00..	derivation		oewn-pursuer__1.18.01..
+oewn-pursue__2.41.00..	derivation		oewn-pursuit__1.04.01..
+oewn-pursue__2.41.00..	other	agent	oewn-pursuer__1.18.01..
+oewn-pursue__2.41.01..	other	event	oewn-pursuance__1.04.00..
+oewn-pursued__3.44.00..	participle		oewn-pursue__2.38.00..
+oewn-purulence__1.26.00..	derivation		oewn-purulent__5.00.00.septic.00
+oewn-purulency__1.26.00..	derivation		oewn-purulent__5.00.00.septic.00
+oewn-purvey__2.40.00..	derivation		oewn-purveyance__1.04.00..
+oewn-purvey__2.40.00..	derivation		oewn-purveyor__1.18.00..
+oewn-purvey__2.40.00..	other	agent	oewn-purveyor__1.18.00..
+oewn-purvey__2.40.00..	other	event	oewn-purveyance__1.04.00..
+oewn-push__1.04.00..	derivation		oewn-push__2.35.06..
+oewn-push__1.04.00..	derivation		oewn-push__2.38.00..
+oewn-push__1.04.00..	derivation		oewn-push__2.38.02..
+oewn-push__1.04.00..	derivation		oewn-push__2.38.08..
+oewn-push__1.04.01..	derivation		oewn-push__2.32.01..
+oewn-push__1.07.00..	derivation		oewn-push__2.32.01..
+oewn-push__1.07.00..	derivation		oewn-push__2.41.00..
+oewn-push__1.07.00..	derivation		oewn-push__2.41.10..
+oewn-push__1.07.00..	derivation		oewn-pushy__5.00.00.ambitious.00
+oewn-push__1.19.00..	derivation		oewn-push__2.35.06..
+oewn-push__1.19.00..	derivation		oewn-push__2.38.00..
+oewn-push__2.32.01..	other	by_means_of	oewn-push__1.04.01..
+oewn-push__2.32.01..	other	by_means_of	oewn-push__1.07.00..
+oewn-push__2.35.06..	other	by_means_of	oewn-push__1.19.00..
+oewn-push__2.35.06..	other	event	oewn-push__1.04.00..
+oewn-push__2.38.00..	derivation		oewn-pusher__1.06.00..
+oewn-push__2.38.00..	derivation		oewn-pushing__1.04.00..
+oewn-push__2.38.00..	other	by_means_of	oewn-push__1.19.00..
+oewn-push__2.38.00..	other	event	oewn-push__1.04.00..
+oewn-push__2.38.00..	other	vehicle	oewn-pusher__1.06.00..
+oewn-push__2.38.02..	other	event	oewn-push__1.04.00..
+oewn-push__2.38.08..	other	event	oewn-push__1.04.00..
+oewn-push__2.40.00..	derivation		oewn-pusher__1.18.01..
+oewn-push__2.40.00..	other	agent	oewn-pusher__1.18.01..
+oewn-push__2.41.00..	also		oewn-push_on__2.38.00..
+oewn-push__2.41.00..	other	by_means_of	oewn-push__1.07.00..
+oewn-push__2.41.10..	other	by_means_of	oewn-push__1.07.00..
+oewn-push_back__1.04.00..	derivation		oewn-push_back__2.35.00..
+oewn-push_back__2.35.00..	other	event	oewn-push_back__1.04.00..
+oewn-pushiness__1.07.00..	derivation		oewn-pushy__5.00.00.ambitious.00
+oewn-pusillanimity__1.07.00..	derivation		oewn-pusillanimous__5.00.00.cowardly.00
+oewn-pusillanimous__5.00.00.cowardly.00	derivation		oewn-pusillanimousness__1.07.00..
+oewn-pusillanimously__4.02.00..	pertainym		oewn-pusillanimous__5.00.00.cowardly.00
+oewn-pustulate__5.00.00.blemished.00	derivation		oewn-pustule__1.26.00..
+oewn-put--down__1.10.00..	derivation		oewn-put_down__2.37.00..
+oewn-put--on__1.04.00..	derivation		oewn-put_on__2.32.00..
+oewn-put__2.35.00..	also		oewn-put_across__2.32.00..
+oewn-put__2.35.00..	also		oewn-put_away__2.41.00..
+oewn-put__2.35.00..	also		oewn-put_back__2.35.00..
+oewn-put__2.35.00..	also		oewn-put_back__2.42.00..
+oewn-put__2.35.00..	also		oewn-put_down__2.35.00..
+oewn-put__2.35.00..	also		oewn-put_down__2.38.00..
+oewn-put__2.35.00..	also		oewn-put_off__2.42.00..
+oewn-put__2.35.00..	also		oewn-put_on__2.35.00..
+oewn-put__2.35.00..	also		oewn-put_over__2.42.00..
+oewn-put__2.35.00..	also		oewn-put_together__2.36.00..
+oewn-put__2.35.00..	also		oewn-put_up__2.35.00..
+oewn-put__2.35.05..	also		oewn-put_away__2.35.00..
+oewn-put__2.35.05..	also		oewn-put_down__2.37.00..
+oewn-put__2.35.05..	also		oewn-put_off__2.37.00..
+oewn-put__2.35.05..	also		oewn-put_off__2.37.02..
+oewn-put__2.35.05..	also		oewn-put_out__2.29.00..
+oewn-put__2.35.05..	also		oewn-put_out__2.35.00..
+oewn-put__2.35.05..	also		oewn-put_out__2.43.00..
+oewn-put__2.35.05..	also		oewn-put_through__2.30.00..
+oewn-put__2.35.05..	also		oewn-put_through__2.35.00..
+oewn-put__2.35.05..	also		oewn-put_to_sleep__2.35.01..
+oewn-put__2.35.05..	also		oewn-put_under__2.29.00..
+oewn-put__2.35.05..	also		oewn-put_up__2.30.00..
+oewn-put_off__2.42.00..	derivation		oewn-putoff__1.10.00..
+oewn-put_out__2.33.00..	derivation		oewn-putout__1.04.00..
+oewn-put_out__2.35.01..	derivation		oewn-putout__1.04.00..
+oewn-putrefacient__5.00.00.septic.00	derivation		oewn-putrefy__2.30.00..
+oewn-putrefaction__1.22.00..	derivation		oewn-putrefy__2.30.00..
+oewn-putrefaction__1.26.00..	derivation		oewn-putrefy__2.30.00..
+oewn-putrefactive__5.00.00.septic.00	derivation		oewn-putrefy__2.30.00..
+oewn-putrefy__2.30.00..	other	event	oewn-putrefaction__1.22.00..
+oewn-putrefy__2.30.00..	other	result	oewn-putrefaction__1.26.00..
+oewn-putrescence__1.07.00..	derivation		oewn-putrescent__5.00.00.stale.00
+oewn-putrescence__1.07.00..	derivation		oewn-putrid__5.00.00.stale.00
+oewn-putrescence__1.26.00..	derivation		oewn-putrescent__5.00.00.stale.00
+oewn-putrid__3.01.00..	derivation		oewn-putridity__1.26.00..
+oewn-putrid__3.01.00..	derivation		oewn-putridness__1.26.00..
+oewn-putrid__3.01.00..	pertainym		oewn-putrefaction__1.26.00..
+oewn-putrid__5.00.00.stale.00	derivation		oewn-putridity__1.26.00..
+oewn-putrid__5.00.00.stale.00	derivation		oewn-putridness__1.26.00..
+oewn-putt__1.04.00..	derivation		oewn-putt__2.35.00..
+oewn-putt__1.04.00..	derivation		oewn-putt__2.35.01..
+oewn-putt__2.35.00..	derivation		oewn-putter__1.06.00..
+oewn-putt__2.35.00..	derivation		oewn-putter__1.18.00..
+oewn-putt__2.35.00..	derivation		oewn-putting__1.04.00..
+oewn-putt__2.35.00..	other	agent	oewn-putter__1.18.00..
+oewn-putt__2.35.00..	other	event	oewn-putt__1.04.00..
+oewn-putt__2.35.00..	other	instrument	oewn-putter__1.06.00..
+oewn-putt__2.35.01..	derivation		oewn-putter__1.06.00..
+oewn-putt__2.35.01..	derivation		oewn-putter__1.18.00..
+oewn-putt__2.35.01..	derivation		oewn-putting__1.04.00..
+oewn-putt__2.35.01..	other	agent	oewn-putter__1.18.00..
+oewn-putt__2.35.01..	other	event	oewn-putt__1.04.00..
+oewn-putt__2.35.01..	other	instrument	oewn-putter__1.06.00..
+oewn-putter__2.35.00..	derivation		oewn-putterer__1.18.00..
+oewn-putter__2.35.00..	other	agent	oewn-putterer__1.18.00..
+oewn-putter__2.35.01..	derivation		oewn-putterer__1.18.00..
+oewn-putter__2.35.01..	other	agent	oewn-putterer__1.18.00..
+oewn-putter__2.41.00..	derivation		oewn-putterer__1.18.00..
+oewn-putter__2.41.00..	other	agent	oewn-putterer__1.18.00..
+oewn-putty__1.27.00..	derivation		oewn-putty__2.35.00..
+oewn-putty__2.35.00..	other	uses	oewn-putty__1.27.00..
+oewn-puzzle__1.10.00..	derivation		oewn-puzzle__2.31.00..
+oewn-puzzle__1.10.00..	derivation		oewn-puzzle__2.37.03..
+oewn-puzzle__2.31.00..	also		oewn-puzzle_out__2.31.00..
+oewn-puzzle__2.31.00..	also		oewn-puzzle_over__2.31.00..
+oewn-puzzle__2.31.00..	derivation		oewn-puzzlement__1.09.00..
+oewn-puzzle__2.31.00..	derivation		oewn-puzzler__1.10.00..
+oewn-puzzle__2.31.00..	other	by_means_of	oewn-puzzler__1.10.00..
+oewn-puzzle__2.31.00..	other	event	oewn-puzzle__1.10.00..
+oewn-puzzle__2.31.00..	other	result	oewn-puzzlement__1.09.00..
+oewn-puzzle__2.37.03..	derivation		oewn-puzzlement__1.09.00..
+oewn-puzzle__2.37.03..	other	event	oewn-puzzle__1.10.00..
+oewn-puzzle__2.37.03..	other	result	oewn-puzzlement__1.09.00..

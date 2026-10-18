@@ -1,0 +1,384 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-biannually__4.02.00..	pertainym		oewn-biannual__5.00.00.periodic.00
+oewn-bias__1.09.00..	derivation		oewn-bias__2.31.00..
+oewn-bias__1.09.00..	derivation		oewn-bias__2.33.00..
+oewn-bias__2.31.00..	other	by_means_of	oewn-bias__1.09.00..
+oewn-bias__2.33.00..	other	by_means_of	oewn-bias__1.09.00..
+oewn-biauricular__3.01.00..	pertainym		oewn-auricular__3.01.02..
+oewn-biaxal__3.01.00..	pertainym		oewn-axis__1.09.00..
+oewn-biaxate__3.01.00..	pertainym		oewn-axis__1.09.00..
+oewn-biaxial__3.01.00..	pertainym		oewn-axis__1.09.00..
+oewn-bibbed__3.00.00..	antonym		oewn-bibless__3.00.00..
+oewn-bible__1.10.00..	derivation		oewn-biblical__3.01.00..
+oewn-bible__1.10.00..	derivation		oewn-biblical__3.01.02..
+oewn-biblical__3.01.00..	pertainym		oewn-bible__1.10.00..
+oewn-biblical__3.01.02..	pertainym		oewn-bible__1.10.00..
+oewn-bibliographer__1.18.00..	derivation		oewn-bibliography__1.10.00..
+oewn-bibliographic__3.01.00..	pertainym		oewn-bibliography__1.10.00..
+oewn-bibliographical__3.01.00..	derivation		oewn-bibliography__1.10.00..
+oewn-bibliographical__3.01.00..	pertainym		oewn-bibliography__1.10.00..
+oewn-bibliolatrous__3.01.00..	derivation		oewn-bibliolatry__1.04.00..
+oewn-bibliolatrous__3.01.00..	pertainym		oewn-bibliolatry__1.04.00..
+oewn-bibliomania__1.07.00..	derivation		oewn-bibliomaniacal__3.01.00..
+oewn-bibliomaniacal__3.01.00..	pertainym		oewn-bibliomania__1.07.00..
+oewn-bibliophile__1.18.00..	derivation		oewn-bibliophilic__3.01.00..
+oewn-bibliophilic__3.01.00..	pertainym		oewn-bibliophile__1.18.00..
+oewn-bibliopole__1.18.00..	derivation		oewn-bibliopolic__3.01.00..
+oewn-bibliopolic__3.01.00..	pertainym		oewn-bibliopole__1.18.00..
+oewn-bibliotheca__1.14.00..	derivation		oewn-bibliothecal__3.01.00..
+oewn-bibliotheca__1.14.00..	derivation		oewn-bibliothecarial__3.01.00..
+oewn-bibliothecal__3.01.00..	pertainym		oewn-bibliotheca__1.14.00..
+oewn-bibliothecarial__3.01.00..	pertainym		oewn-bibliotheca__1.14.00..
+oewn-bibliothecarial__3.01.00..	pertainym		oewn-librarian__1.18.00..
+oewn-bibliotic__3.01.00..	derivation		oewn-bibliotics__1.09.00..
+oewn-bibliotic__3.01.00..	pertainym		oewn-bibliotics__1.09.00..
+oewn-bibliotics__1.09.00..	derivation		oewn-bibliotist__1.18.00..
+oewn-bicameral__3.00.00..	antonym		oewn-unicameral__3.00.00..
+oewn-bicapsular__3.01.00..	pertainym		oewn-capsule__1.20.00..
+oewn-bicentenary__1.28.00..	derivation		oewn-bicentenary__3.01.00..
+oewn-bicentenary__3.01.00..	pertainym		oewn-bicentenary__1.28.00..
+oewn-bicentennial__1.28.00..	derivation		oewn-bicentennial__3.01.00..
+oewn-bicentennial__3.01.00..	pertainym		oewn-bicentennial__1.28.00..
+oewn-biceps__1.08.00..	derivation		oewn-bicipital__3.01.00..
+oewn-bichromated__3.01.00..	pertainym		oewn-bichromate__1.27.00..
+oewn-bicipital__3.01.00..	pertainym		oewn-biceps__1.08.00..
+oewn-bicker__1.10.00..	derivation		oewn-bicker__2.32.00..
+oewn-bicker__2.32.00..	other	event	oewn-bicker__1.10.00..
+oewn-bicolor__5.00.00.colored.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bicolour__5.00.00.colored.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bicolour__5.00.00.colored.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bicolour__5.00.00.colored.00	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-bicorn__1.06.00..	derivation		oewn-bicorn__5.00.00.horned.00
+oewn-bicuspid__1.08.00..	derivation		oewn-bicuspid__5.00.00.angular.00
+oewn-bicycle__1.06.00..	derivation		oewn-bicycle__2.38.00..
+oewn-bicycle__1.06.00..	derivation		oewn-bicyclist__1.18.00..
+oewn-bicycle__2.38.00..	derivation		oewn-bicycler__1.18.00..
+oewn-bicycle__2.38.00..	derivation		oewn-bicyclist__1.18.00..
+oewn-bicycle__2.38.00..	other	agent	oewn-bicycler__1.18.00..
+oewn-bicycle__2.38.00..	other	vehicle	oewn-bicycle__1.06.00..
+oewn-bicylindrical__3.01.00..	pertainym		oewn-cylinder__1.25.00..
+oewn-bid__1.04.00..	derivation		oewn-bid__2.40.04..
+oewn-bid__1.10.00..	derivation		oewn-bid__2.40.00..
+oewn-bid__1.10.00..	derivation		oewn-bid__2.40.04..
+oewn-bid__1.10.01..	derivation		oewn-bid__2.40.01..
+oewn-bid__1.10.03..	derivation		oewn-bid__2.32.02..
+oewn-bid__2.32.00..	derivation		oewn-biddable__5.00.00.obedient.00
+oewn-bid__2.32.00..	derivation		oewn-bidding__1.10.00..
+oewn-bid__2.32.02..	derivation		oewn-biddable__5.00.00.obedient.00
+oewn-bid__2.32.02..	derivation		oewn-bidding__1.10.02..
+oewn-bid__2.32.02..	other	event	oewn-bid__1.10.03..
+oewn-bid__2.40.00..	derivation		oewn-bidder__1.18.00..
+oewn-bid__2.40.00..	other	agent	oewn-bidder__1.18.00..
+oewn-bid__2.40.00..	other	event	oewn-bid__1.10.00..
+oewn-bid__2.40.01..	derivation		oewn-bidder__1.18.01..
+oewn-bid__2.40.01..	derivation		oewn-bidding__1.10.01..
+oewn-bid__2.40.01..	other	agent	oewn-bidder__1.18.01..
+oewn-bid__2.40.04..	other	event	oewn-bid__1.04.00..
+oewn-bid__2.40.04..	other	event	oewn-bid__1.10.00..
+oewn-bidirectional__3.00.00..	antonym		oewn-unidirectional__3.00.00..
+oewn-biedermeier__3.01.00..	pertainym		oewn-furniture__1.06.00..
+oewn-biennial__1.20.00..	derivation		oewn-biennial__3.00.00..
+oewn-biennial__3.00.00..	antonym		oewn-perennial__3.00.00..
+oewn-biennially__4.02.00..	pertainym		oewn-biennial__5.00.00.periodic.00
+oewn-biff__1.04.00..	derivation		oewn-biff__2.35.00..
+oewn-biff__2.35.00..	other	event	oewn-biff__1.04.00..
+oewn-bifilar__3.01.00..	pertainym		oewn-filar__3.01.00..
+oewn-biflagellate__3.01.00..	pertainym		oewn-flagellate__3.01.00..
+oewn-bifocals__1.06.00..	exemplifies		oewn-plural__1.10.00..
+oewn-bifurcate__2.30.00..	derivation		oewn-bifurcation__1.04.00..
+oewn-bifurcate__2.30.00..	derivation		oewn-bifurcation__1.25.00..
+oewn-bifurcate__2.30.00..	derivation		oewn-bifurcation__1.25.01..
+oewn-bifurcate__2.30.00..	derivation		oewn-fork__1.04.00..
+oewn-bifurcate__2.30.00..	other	event	oewn-bifurcation__1.04.00..
+oewn-bifurcate__2.30.00..	other	location	oewn-bifurcation__1.25.00..
+oewn-bifurcate__2.30.00..	other	result	oewn-bifurcation__1.25.01..
+oewn-bifurcate__2.42.00..	derivation		oewn-bifurcation__1.04.00..
+oewn-bifurcate__2.42.00..	derivation		oewn-bifurcation__1.25.01..
+oewn-bifurcate__2.42.00..	derivation		oewn-fork__1.04.00..
+oewn-bifurcate__2.42.00..	other	event	oewn-bifurcation__1.04.00..
+oewn-bifurcate__2.42.00..	other	result	oewn-bifurcation__1.25.01..
+oewn-big__3.00.01..	antonym		oewn-little__3.00.01..
+oewn-big__3.00.01..	derivation		oewn-bigness__1.07.00..
+oewn-big__4.02.02..	antonym		oewn-small__4.02.00..
+oewn-bigamist__1.18.00..	derivation		oewn-bigamy__1.04.00..
+oewn-bigamist__1.18.00..	derivation		oewn-bigamy__1.26.00..
+oewn-bigamous__5.00.00.polygamous.00	derivation		oewn-bigamy__1.04.00..
+oewn-bighearted__5.00.00.generous.01	derivation		oewn-bigheartedness__1.07.00..
+oewn-bight__1.25.01..	derivation		oewn-bight__2.35.00..
+oewn-bight__2.35.00..	other	by_means_of	oewn-bight__1.25.01..
+oewn-bigness__1.07.00..	antonym		oewn-littleness__1.07.00..
+oewn-bike__1.06.00..	derivation		oewn-bike__2.38.00..
+oewn-bike__1.06.02..	derivation		oewn-bike__2.38.00..
+oewn-bike__2.38.00..	other	vehicle	oewn-bike__1.06.00..
+oewn-bilabial__1.10.00..	derivation		oewn-bilabial__3.01.00..
+oewn-bilabial__3.01.00..	pertainym		oewn-labial__3.01.01..
+oewn-bilateral__5.00.00.symmetrical.00	derivation		oewn-bilaterality__1.07.00..
+oewn-bilaterally__4.02.00..	pertainym		oewn-bilateral__5.00.00.reciprocal.00
+oewn-bilaterally__4.02.01..	pertainym		oewn-bilateral__5.00.00.multilateral.00
+oewn-bile__1.08.00..	derivation		oewn-biliary__3.01.00..
+oewn-bile__1.08.00..	derivation		oewn-biliary__3.01.02..
+oewn-bile__1.08.00..	derivation		oewn-bilious__3.01.00..
+oewn-bilge__1.06.00..	derivation		oewn-bilge__2.30.00..
+oewn-bilge__1.27.00..	derivation		oewn-bilge__2.30.00..
+oewn-bilge__1.27.00..	derivation		oewn-bilgy__5.00.00.malodorous.00
+oewn-bilge__2.30.00..	other	location	oewn-bilge__1.06.00..
+oewn-bilge__2.30.00..	other	result	oewn-bilge__1.27.00..
+oewn-biliary__3.01.00..	pertainym		oewn-gallbladder__1.08.00..
+oewn-biliary__3.01.02..	pertainym		oewn-bile__1.08.00..
+oewn-bilingual__1.18.00..	derivation		oewn-bilingual__5.00.00.multilingual.00
+oewn-bilingually__4.02.00..	pertainym		oewn-bilingual__5.00.00.multilingual.00
+oewn-bilious__3.01.00..	pertainym		oewn-bile__1.08.00..
+oewn-bilious__5.00.00.ill-natured.00	derivation		oewn-biliousness__1.26.00..
+oewn-bilious__5.00.00.ill.01	derivation		oewn-biliousness__1.26.00..
+oewn-bill__1.10.00..	derivation		oewn-bill__2.32.00..
+oewn-bill__1.10.00..	derivation		oewn-bill__2.32.01..
+oewn-bill__1.10.01..	derivation		oewn-bill__2.40.00..
+oewn-bill__1.21.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-bill__2.32.00..	other	by_means_of	oewn-bill__1.10.00..
+oewn-bill__2.32.01..	other	by_means_of	oewn-bill__1.10.00..
+oewn-bill__2.40.00..	other	by_means_of	oewn-bill__1.10.01..
+oewn-billet__1.06.00..	derivation		oewn-billet__2.42.00..
+oewn-billet__2.42.00..	other	uses	oewn-billet__1.06.00..
+oewn-billiard__3.01.00..	pertainym		oewn-billiards__1.04.00..
+oewn-billiard_parlor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-billiard_parlour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-billiard_parlour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-billiard_parlour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-billion__1.23.00..	derivation		oewn-billion__5.00.00.cardinal.00
+oewn-billion__1.23.01..	derivation		oewn-billion__5.00.01.cardinal.00
+oewn-billow__1.11.00..	derivation		oewn-billow__2.38.00..
+oewn-billow__1.11.00..	derivation		oewn-billowy__5.00.00.stormy.00
+oewn-billow__2.38.00..	other	event	oewn-billow__1.11.00..
+oewn-bimester__1.28.00..	derivation		oewn-bimestrial__5.00.00.long.02
+oewn-bimester__1.28.00..	derivation		oewn-bimestrial__5.00.00.periodic.00
+oewn-bimetal__1.27.00..	derivation		oewn-bimetal__5.00.00.metallic.00
+oewn-bimetal__1.27.00..	derivation		oewn-bimetallic__5.00.00.metallic.00
+oewn-bimetallic__3.01.02..	pertainym		oewn-bimetallism__1.21.00..
+oewn-bimetallism__1.21.00..	derivation		oewn-bimetallist__1.18.00..
+oewn-bimetallism__1.21.00..	derivation		oewn-bimetallistic__3.01.00..
+oewn-bimetallistic__3.01.00..	pertainym		oewn-bimetallism__1.21.00..
+oewn-bimillenial__3.01.00..	derivation		oewn-bimillennium__1.28.00..
+oewn-bimillenial__3.01.00..	pertainym		oewn-bimillennium__1.28.00..
+oewn-bimodal__3.00.00..	antonym		oewn-unimodal__3.00.00..
+oewn-bimolecular__3.01.00..	pertainym		oewn-molecule__1.27.00..
+oewn-bimonthly__4.02.00..	pertainym		oewn-bimonthly__5.00.00.periodic.00
+oewn-bimonthly__4.02.01..	pertainym		oewn-bimonthly__5.00.01.periodic.00
+oewn-bimorphemic__3.01.00..	pertainym		oewn-morphemic__3.01.00..
+oewn-bin__1.06.00..	derivation		oewn-bin__2.35.00..
+oewn-binary__3.01.00..	pertainym		oewn-binary_numeration_system__1.10.00..
+oewn-binaural__3.00.00..	antonym		oewn-monaural__3.00.00..
+oewn-binaurally__4.02.00..	antonym		oewn-monaurally__4.02.00..
+oewn-binaurally__4.02.00..	pertainym		oewn-binaural__3.00.00..
+oewn-bind__1.09.00..	derivation		oewn-bind__2.32.00..
+oewn-bind__2.30.09..	derivation		oewn-binder__1.27.01..
+oewn-bind__2.30.09..	derivation		oewn-binding__1.07.00..
+oewn-bind__2.30.09..	other	instrument	oewn-binder__1.27.01..
+oewn-bind__2.32.00..	other	by_means_of	oewn-bind__1.09.00..
+oewn-bind__2.35.00..	antonym		oewn-unbind__2.35.00..
+oewn-bind__2.35.00..	derivation		oewn-bindable__5.00.00.attachable.00
+oewn-bind__2.35.00..	derivation		oewn-binder__1.06.00..
+oewn-bind__2.35.00..	derivation		oewn-binder__1.06.03..
+oewn-bind__2.35.00..	other	instrument	oewn-binder__1.06.00..
+oewn-bind__2.35.00..	other	instrument	oewn-binder__1.06.03..
+oewn-bind__2.35.01..	derivation		oewn-bindable__5.00.00.attachable.00
+oewn-bind__2.35.01..	derivation		oewn-binder__1.06.03..
+oewn-bind__2.35.01..	other	instrument	oewn-binder__1.06.03..
+oewn-bind__2.35.02..	derivation		oewn-binder__1.06.01..
+oewn-bind__2.35.02..	derivation		oewn-bindery__1.06.00..
+oewn-bind__2.35.02..	derivation		oewn-binding__1.06.00..
+oewn-bind__2.35.02..	derivation		oewn-binding__1.06.01..
+oewn-bind__2.35.02..	other	instrument	oewn-binder__1.06.01..
+oewn-bind__2.35.06..	derivation		oewn-binder__1.27.01..
+oewn-bind__2.35.06..	derivation		oewn-binding__1.07.00..
+oewn-bind__2.35.06..	other	instrument	oewn-binder__1.27.01..
+oewn-bind__2.35.07..	derivation		oewn-bindable__5.00.00.attachable.00
+oewn-bind__2.35.08..	derivation		oewn-bindable__5.00.00.attachable.00
+oewn-bind__2.35.08..	derivation		oewn-binding__1.04.00..
+oewn-binge__1.04.00..	derivation		oewn-binge__2.34.00..
+oewn-binge__2.34.00..	other	event	oewn-binge__1.04.00..
+oewn-binocular__3.01.00..	pertainym		oewn-eye__1.08.00..
+oewn-binomial__3.01.00..	pertainym		oewn-binomial__1.09.00..
+oewn-binucleate__3.00.00..	antonym		oewn-mononuclear__3.00.00..
+oewn-binucleate__3.00.00..	antonym		oewn-trinucleate__3.00.00..
+oewn-bioassay__1.09.00..	derivation		oewn-bioassay__2.31.00..
+oewn-bioassay__2.31.00..	other	event	oewn-bioassay__1.09.00..
+oewn-biocatalyst__1.27.00..	derivation		oewn-biocatalytic__3.01.00..
+oewn-biocatalytic__3.01.00..	pertainym		oewn-biocatalyst__1.27.00..
+oewn-biochemical__3.01.00..	derivation		oewn-biochemistry__1.09.00..
+oewn-biochemical__3.01.00..	pertainym		oewn-biochemistry__1.09.00..
+oewn-biochemically__4.02.00..	pertainym		oewn-biochemical__3.01.00..
+oewn-biochemist__1.18.00..	derivation		oewn-biochemistry__1.09.00..
+oewn-bioclimatic__3.01.00..	pertainym		oewn-bioclimatology__1.09.00..
+oewn-biodefence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-biodefence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-biodefence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-biodefense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-biodegradable_pollution__1.26.00..	antonym		oewn-nonbiodegradable_pollution__1.26.00..
+oewn-biogenesis__1.04.00..	derivation		oewn-biogenetic__3.01.00..
+oewn-biogenesis__1.04.00..	derivation		oewn-biogenous__3.01.00..
+oewn-biogenesis__1.22.00..	derivation		oewn-biogenous__3.01.00..
+oewn-biogenetic__3.01.00..	pertainym		oewn-biogenesis__1.04.00..
+oewn-biogenic__3.01.00..	pertainym		oewn-biology__1.19.00..
+oewn-biogenous__3.01.00..	pertainym		oewn-biogenesis__1.04.00..
+oewn-biogeographic__3.01.00..	pertainym		oewn-biogeography__1.09.00..
+oewn-biogeographical__3.01.00..	derivation		oewn-biogeography__1.09.00..
+oewn-biogeographical__3.01.00..	pertainym		oewn-biogeography__1.09.00..
+oewn-biographer__1.18.00..	derivation		oewn-biography__1.10.00..
+oewn-biographic__3.01.00..	pertainym		oewn-biography__1.10.00..
+oewn-biographical__3.01.00..	derivation		oewn-biography__1.10.00..
+oewn-biographical__3.01.00..	pertainym		oewn-biography__1.10.00..
+oewn-biologic__3.01.00..	derivation		oewn-biology__1.09.00..
+oewn-biologic__3.01.00..	derivation		oewn-biology__1.19.00..
+oewn-biologic__3.01.00..	pertainym		oewn-biology__1.19.00..
+oewn-biological__3.01.00..	derivation		oewn-biology__1.09.00..
+oewn-biological__3.01.00..	derivation		oewn-biology__1.14.00..
+oewn-biological__3.01.00..	derivation		oewn-biology__1.19.00..
+oewn-biological__3.01.00..	pertainym		oewn-biology__1.19.00..
+oewn-biological_defence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-biological_defence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-biological_defence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-biological_defense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-biological_warfare_defence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-biological_warfare_defence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-biological_warfare_defence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-biological_warfare_defense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-biologically__4.02.00..	pertainym		oewn-biological__3.01.00..
+oewn-biologism__1.04.00..	derivation		oewn-biologistic__3.01.00..
+oewn-biologist__1.18.00..	derivation		oewn-biology__1.09.00..
+oewn-biologist__1.18.00..	derivation		oewn-biology__1.19.00..
+oewn-biologistic__3.01.00..	pertainym		oewn-biologism__1.04.00..
+oewn-bioluminescence__1.19.00..	derivation		oewn-bioluminescent__5.00.00.light.06
+oewn-biomedical__3.01.00..	derivation		oewn-biomedicine__1.09.01..
+oewn-biomedical__3.01.00..	pertainym		oewn-biomedicine__1.09.01..
+oewn-bionic__3.01.00..	derivation		oewn-bionics__1.09.00..
+oewn-bionic__3.01.00..	pertainym		oewn-bionics__1.09.00..
+oewn-bionomic__3.01.00..	derivation		oewn-bionomics__1.09.00..
+oewn-bionomic__3.01.00..	pertainym		oewn-bionomics__1.09.00..
+oewn-bionomical__3.01.00..	derivation		oewn-bionomics__1.09.00..
+oewn-bionomical__3.01.00..	pertainym		oewn-bionomics__1.09.00..
+oewn-biophysicist__1.18.00..	derivation		oewn-biophysics__1.09.00..
+oewn-biosynthesis__1.22.00..	derivation		oewn-biosynthetic__3.01.00..
+oewn-biosynthetic__3.01.00..	pertainym		oewn-biosynthesis__1.22.00..
+oewn-biosystematic__3.01.00..	derivation		oewn-biosystematics__1.09.00..
+oewn-biosystematic__3.01.00..	pertainym		oewn-biosystematics__1.09.00..
+oewn-biotic__3.01.00..	pertainym		oewn-life__1.19.00..
+oewn-biotite__1.27.00..	derivation		oewn-biotitic__3.01.00..
+oewn-biotitic__3.01.00..	pertainym		oewn-biotite__1.27.00..
+oewn-biotype__1.14.00..	derivation		oewn-biotypic__3.01.00..
+oewn-biotypic__3.01.00..	pertainym		oewn-biotype__1.14.00..
+oewn-biped__1.05.00..	derivation		oewn-biped__3.00.00..
+oewn-biped__1.05.00..	derivation		oewn-bipedal__3.00.00..
+oewn-biped__3.00.00..	antonym		oewn-quadruped__3.00.00..
+oewn-bipedal__3.00.00..	antonym		oewn-quadrupedal__3.00.00..
+oewn-bipolar__3.00.00..	antonym		oewn-unipolar__3.00.00..
+oewn-bipolar__3.01.00..	pertainym		oewn-polar__3.01.00..
+oewn-bipolar__3.01.01..	pertainym		oewn-manic_depressive_illness__1.26.00..
+oewn-biquadrate__1.23.00..	derivation		oewn-biquadratic__3.01.00..
+oewn-biquadratic__1.09.00..	derivation		oewn-biquadratic__3.01.00..
+oewn-biquadratic__1.10.00..	derivation		oewn-biquadratic__3.01.00..
+oewn-biquadratic__1.23.00..	derivation		oewn-biquadratic__3.01.00..
+oewn-biquadratic__3.01.00..	pertainym		oewn-quartic__1.23.00..
+oewn-biradially__4.02.00..	pertainym		oewn-biradial__5.00.00.symmetrical.00
+oewn-birch__1.06.00..	derivation		oewn-birch__2.35.00..
+oewn-birch__2.35.00..	other	instrument	oewn-birch__1.06.00..
+oewn-bird__1.05.00..	derivation		oewn-bird__2.33.00..
+oewn-bird__2.33.00..	derivation		oewn-birder__1.18.00..
+oewn-bird__2.33.00..	other	agent	oewn-birder__1.18.00..
+oewn-bird__2.33.00..	other	undergoer	oewn-bird__1.05.00..
+oewn-bird_watcher__1.18.00..	derivation		oewn-birdwatch__2.33.00..
+oewn-bird_watcher__1.18.01..	derivation		oewn-birdwatch__2.33.00..
+oewn-birdie__1.23.00..	derivation		oewn-birdie__2.35.00..
+oewn-birdie__2.35.00..	other	event	oewn-birdie__1.23.00..
+oewn-birdlime__1.27.00..	derivation		oewn-birdlime__2.38.00..
+oewn-birdlime__2.38.00..	other	undergoer	oewn-birdlime__1.27.00..
+oewn-birdwatch__2.33.00..	other	agent	oewn-bird_watcher__1.18.00..
+oewn-birdwatch__2.33.00..	other	agent	oewn-bird_watcher__1.18.01..
+oewn-birefringence__1.19.00..	derivation		oewn-birefringent__3.01.00..
+oewn-birefringent__3.01.00..	pertainym		oewn-birefringence__1.19.00..
+oewn-birr__1.11.00..	derivation		oewn-birr__2.39.00..
+oewn-birr__2.39.00..	other	event	oewn-birr__1.11.00..
+oewn-birth__1.11.00..	antonym		oewn-death__1.11.00..
+oewn-birth__1.11.00..	derivation		oewn-birth__2.29.00..
+oewn-birth__1.22.00..	derivation		oewn-birth__2.29.00..
+oewn-birth__1.28.00..	antonym		oewn-death__1.28.00..
+oewn-birth__1.28.00..	derivation		oewn-birth__2.29.00..
+oewn-birth__2.29.00..	other	event	oewn-birth__1.11.00..
+oewn-birth__2.29.00..	other	event	oewn-birth__1.22.00..
+oewn-birth__2.29.00..	other	event	oewn-birth__1.28.00..
+oewn-biscuit__1.13.02..	exemplifies		oewn-british_english__1.10.01..
+oewn-bise__1.19.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bise__1.19.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bisect__2.35.00..	derivation		oewn-bisection__1.04.00..
+oewn-bisect__2.35.00..	other	event	oewn-bisection__1.04.00..
+oewn-bisectional__3.01.00..	pertainym		oewn-bisection__1.04.00..
+oewn-bisexual__1.18.00..	derivation		oewn-bisexual__3.00.00..
+oewn-bisexual__3.00.00..	antonym		oewn-heterosexual__3.00.00..
+oewn-bisexual__3.00.00..	antonym		oewn-homosexual__3.00.00..
+oewn-bisexual__3.00.00..	derivation		oewn-bisexuality__1.04.00..
+oewn-bisexual__5.00.00.androgynous.00	derivation		oewn-bisexuality__1.07.00..
+oewn-bishop__1.18.00..	derivation		oewn-episcopal__3.01.00..
+oewn-bismuth__1.27.00..	derivation		oewn-bismuthal__3.01.00..
+oewn-bismuthal__3.01.00..	pertainym		oewn-bismuth__1.27.00..
+oewn-bismuthic__3.01.00..	pertainym		oewn-bismuth__1.27.00..
+oewn-bisontine__3.01.00..	pertainym		oewn-bison__1.05.00..
+oewn-bister__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bistered__3.01.00..	pertainym		oewn-bister__1.27.00..
+oewn-bistre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bistre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bistre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-bistred__3.01.00..	pertainym		oewn-bister__1.27.00..
+oewn-bistroic__3.01.00..	pertainym		oewn-bistro__1.06.00..
+oewn-bit__1.23.01..	derivation		oewn-bitty__5.00.00.small.00
+oewn-bitch__1.10.00..	derivation		oewn-bitch__2.32.00..
+oewn-bitch__1.10.00..	derivation		oewn-bitchy__5.00.00.malicious.00
+oewn-bitch__2.32.00..	derivation		oewn-bitchery__1.04.00..
+oewn-bitch__2.32.00..	other	event	oewn-bitch__1.10.00..
+oewn-bitchiness__1.07.00..	derivation		oewn-bitchy__5.00.00.malicious.00
+oewn-bite__1.04.00..	derivation		oewn-bite__2.35.00..
+oewn-bite__1.26.00..	derivation		oewn-bite__2.35.00..
+oewn-bite__1.26.01..	derivation		oewn-bite__2.35.02..
+oewn-bite__2.35.00..	also		oewn-bite_off__2.35.00..
+oewn-bite__2.35.00..	derivation		oewn-biter__1.18.00..
+oewn-bite__2.35.00..	other	agent	oewn-biter__1.18.00..
+oewn-bite__2.35.00..	other	event	oewn-bite__1.04.00..
+oewn-bite__2.35.00..	other	result	oewn-bite__1.26.00..
+oewn-bite__2.35.02..	other	result	oewn-bite__1.26.01..
+oewn-bitingly__4.02.00..	pertainym		oewn-biting__5.00.00.painful.00
+oewn-bitt__1.06.00..	derivation		oewn-bitt__2.35.00..
+oewn-bitt__2.35.00..	other	by_means_of	oewn-bitt__1.06.00..
+oewn-bitter__1.07.00..	derivation		oewn-bitter__2.39.00..
+oewn-bitter__1.07.00..	derivation		oewn-bitter__5.00.00.tasty.00
+oewn-bitter__1.09.00..	derivation		oewn-bitter__5.00.00.tasty.00
+oewn-bitter__1.13.00..	derivation		oewn-bitter__5.00.00.tasty.00
+oewn-bitter__2.39.00..	other	by_means_of	oewn-bitter__1.07.00..
+oewn-bitter__2.39.00..	other	property	oewn-bitter__1.07.00..
+oewn-bitter__5.00.00.hostile.01	derivation		oewn-bitterness__1.12.00..
+oewn-bitter__5.00.00.resentful.00	derivation		oewn-bitterness__1.07.01..
+oewn-bitter__5.00.00.unpleasant.00	derivation		oewn-bitterness__1.07.01..
+oewn-bitterly__4.02.00..	pertainym		oewn-bitter__5.00.00.resentful.00
+oewn-bitterly__4.02.01..	pertainym		oewn-bitter__5.00.00.intolerable.00
+oewn-bitterly__4.02.02..	pertainym		oewn-bitter__5.00.00.painful.00
+oewn-bitumen__1.27.00..	derivation		oewn-bituminize__2.30.00..
+oewn-bitumen__1.27.00..	derivation		oewn-bituminous__3.01.00..
+oewn-bitumenoid__3.01.00..	pertainym		oewn-bitumen__1.27.00..
+oewn-bituminise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-bituminise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-bituminize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bituminoid__3.01.00..	pertainym		oewn-bitumen__1.27.00..
+oewn-bituminous__3.01.00..	pertainym		oewn-bitumen__1.27.00..
+oewn-bivalent__3.00.02..	antonym		oewn-multivalent__3.00.00..
+oewn-bivalent__3.00.02..	antonym		oewn-univalent__3.00.02..
+oewn-bivalent__3.01.01..	pertainym		oewn-valence__1.07.01..
+oewn-bivalve__1.05.00..	derivation		oewn-bivalve__3.00.00..
+oewn-bivalve__3.00.00..	antonym		oewn-univalve__3.00.00..
+oewn-bivariate__3.01.00..	pertainym		oewn-variable__1.09.00..
+oewn-bivouac__1.06.00..	derivation		oewn-bivouac__2.42.00..
+oewn-bivouac__1.15.00..	derivation		oewn-bivouac__2.42.00..
+oewn-bivouac__2.42.00..	other	location	oewn-bivouac__1.06.00..
+oewn-bivouac__2.42.00..	other	location	oewn-bivouac__1.15.00..
+oewn-biweekly__4.02.00..	pertainym		oewn-biweekly__5.00.00.periodic.00
+oewn-biweekly__4.02.01..	pertainym		oewn-biweekly__5.00.01.periodic.00
+oewn-biyearly__4.02.01..	pertainym		oewn-biyearly__5.00.01.periodic.00
+oewn-bizarre__5.00.00.unconventional.01	derivation		oewn-bizarreness__1.07.00..
+oewn-bize__1.19.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-bizonal__3.01.00..	pertainym		oewn-zone__1.15.01..

@@ -1,0 +1,258 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-snack__1.13.00..	derivation		oewn-snack__2.34.00..
+oewn-snack__2.34.00..	derivation		oewn-snacker__1.18.00..
+oewn-snack__2.34.00..	other	agent	oewn-snacker__1.18.00..
+oewn-snack__2.34.00..	other	event	oewn-snack__1.13.00..
+oewn-snaffle__1.06.00..	derivation		oewn-snaffle__2.35.00..
+oewn-snaffle__2.35.00..	other	uses	oewn-snaffle__1.06.00..
+oewn-snafu__1.04.00..	derivation		oewn-snafu__2.30.00..
+oewn-snafu__1.04.00..	derivation		oewn-snafu__5.00.00.disorganized.00
+oewn-snafu__2.30.00..	other	event	oewn-snafu__1.04.00..
+oewn-snag__1.25.00..	derivation		oewn-snag__2.35.00..
+oewn-snag__1.25.00..	derivation		oewn-snag__2.35.01..
+oewn-snag__2.35.00..	other	by_means_of	oewn-snag__1.25.00..
+oewn-snag__2.35.01..	other	result	oewn-snag__1.25.00..
+oewn-snail__1.05.00..	derivation		oewn-snail__2.35.00..
+oewn-snail__1.13.00..	derivation		oewn-snail__2.35.00..
+oewn-snail__2.35.00..	other	undergoer	oewn-snail__1.05.00..
+oewn-snail__2.35.00..	other	undergoer	oewn-snail__1.13.00..
+oewn-snake__1.05.00..	derivation		oewn-snaky__5.00.00.curved.00
+oewn-snake__1.06.00..	derivation		oewn-snake__2.38.01..
+oewn-snake__1.06.00..	derivation		oewn-snake__2.42.00..
+oewn-snake__2.42.00..	other	result	oewn-snake__1.06.00..
+oewn-snap__1.04.00..	derivation		oewn-snap__2.35.00..
+oewn-snap__1.04.01..	derivation		oewn-snap__2.35.03..
+oewn-snap__1.04.03..	derivation		oewn-snap__2.35.02..
+oewn-snap__1.04.03..	derivation		oewn-snap__2.39.00..
+oewn-snap__1.04.03..	derivation		oewn-snappy__5.00.00.cold.01
+oewn-snap__1.06.01..	derivation		oewn-snap__2.32.01..
+oewn-snap__1.11.00..	derivation		oewn-snap__2.30.01..
+oewn-snap__1.11.00..	derivation		oewn-snap__2.38.00..
+oewn-snap__1.11.00..	derivation		oewn-snap__2.38.01..
+oewn-snap__1.11.01..	derivation		oewn-snap__2.30.00..
+oewn-snap__1.11.01..	derivation		oewn-snap__2.35.01..
+oewn-snap__1.11.02..	derivation		oewn-snap__2.35.02..
+oewn-snap__1.11.02..	derivation		oewn-snap__2.39.00..
+oewn-snap__1.28.00..	derivation		oewn-snappy__5.00.00.cold.01
+oewn-snap__2.30.00..	other	event	oewn-snap__1.11.01..
+oewn-snap__2.30.01..	other	event	oewn-snap__1.11.00..
+oewn-snap__2.32.01..	other	result	oewn-snap__1.06.01..
+oewn-snap__2.35.00..	also		oewn-snap_up__2.40.00..
+oewn-snap__2.35.00..	other	event	oewn-snap__1.04.00..
+oewn-snap__2.35.01..	other	event	oewn-snap__1.11.01..
+oewn-snap__2.35.02..	derivation		oewn-snapper__1.06.00..
+oewn-snap__2.35.02..	other	by_means_of	oewn-snapper__1.06.00..
+oewn-snap__2.35.02..	other	event	oewn-snap__1.04.03..
+oewn-snap__2.35.02..	other	event	oewn-snap__1.11.02..
+oewn-snap__2.35.03..	derivation		oewn-snapper__1.18.00..
+oewn-snap__2.35.03..	other	agent	oewn-snapper__1.18.00..
+oewn-snap__2.35.03..	other	event	oewn-snap__1.04.01..
+oewn-snap__2.38.00..	other	event	oewn-snap__1.11.00..
+oewn-snap__2.38.01..	other	event	oewn-snap__1.11.00..
+oewn-snap__2.39.00..	other	event	oewn-snap__1.04.03..
+oewn-snap__2.39.00..	other	event	oewn-snap__1.11.02..
+oewn-snappish__5.00.00.ill-natured.00	derivation		oewn-snappishness__1.07.00..
+oewn-snappishly__4.02.00..	pertainym		oewn-snappish__5.00.00.ill-natured.00
+oewn-snare__1.06.00..	derivation		oewn-snare__2.35.00..
+oewn-snare__1.09.00..	derivation		oewn-snare__2.32.00..
+oewn-snare__2.32.00..	other	by_means_of	oewn-snare__1.09.00..
+oewn-snare__2.35.00..	derivation		oewn-snarer__1.18.00..
+oewn-snare__2.35.00..	other	agent	oewn-snarer__1.18.00..
+oewn-snare__2.35.00..	other	by_means_of	oewn-snare__1.06.00..
+oewn-snarl__1.09.00..	derivation		oewn-snarl__2.30.00..
+oewn-snarl__1.09.00..	derivation		oewn-snarl__2.35.00..
+oewn-snarl__1.09.00..	derivation		oewn-snarly__5.00.00.tangled.00
+oewn-snarl__1.10.00..	derivation		oewn-snarl__2.32.00..
+oewn-snarl__1.10.00..	derivation		oewn-snarl__2.32.01..
+oewn-snarl__1.10.01..	derivation		oewn-snarl__2.32.00..
+oewn-snarl__2.30.00..	other	event	oewn-snarl__1.09.00..
+oewn-snarl__2.32.00..	other	result	oewn-snarl__1.10.00..
+oewn-snarl__2.32.00..	other	result	oewn-snarl__1.10.01..
+oewn-snarl__2.32.01..	other	result	oewn-snarl__1.10.00..
+oewn-snarl__2.35.00..	antonym		oewn-unsnarl__2.35.00..
+oewn-snarl__2.35.00..	other	result	oewn-snarl__1.09.00..
+oewn-snatch__1.04.00..	derivation		oewn-snatch__2.35.00..
+oewn-snatch__1.04.00..	derivation		oewn-snatch__2.35.02..
+oewn-snatch__1.04.02..	derivation		oewn-snatch__2.35.01..
+oewn-snatch__2.35.00..	derivation		oewn-snatcher__1.18.01..
+oewn-snatch__2.35.00..	other	agent	oewn-snatcher__1.18.01..
+oewn-snatch__2.35.00..	other	event	oewn-snatch__1.04.00..
+oewn-snatch__2.35.01..	derivation		oewn-snatcher__1.18.00..
+oewn-snatch__2.35.01..	other	agent	oewn-snatcher__1.18.00..
+oewn-snatch__2.35.01..	other	event	oewn-snatch__1.04.02..
+oewn-snatch__2.35.02..	other	event	oewn-snatch__1.04.00..
+oewn-sneak__1.18.01..	derivation		oewn-sneak__2.38.00..
+oewn-sneak__1.18.01..	derivation		oewn-sneak__5.00.00.concealed.00
+oewn-sneak__1.18.01..	derivation		oewn-sneaky__5.00.00.concealed.00
+oewn-sneak__1.18.02..	derivation		oewn-sneak__5.00.00.concealed.00
+oewn-sneak__1.18.02..	derivation		oewn-sneaky__5.00.00.crooked.02
+oewn-sneak__2.38.00..	also		oewn-sneak_away__2.38.00..
+oewn-sneak__2.38.00..	also		oewn-sneak_out__2.38.00..
+oewn-sneak__2.38.00..	other	agent	oewn-sneak__1.18.01..
+oewn-sneakily__4.02.00..	pertainym		oewn-sneaky__5.00.00.concealed.00
+oewn-sneakiness__1.07.00..	derivation		oewn-sneaky__5.00.00.concealed.00
+oewn-sneakiness__1.07.00..	derivation		oewn-sneaky__5.00.00.crooked.02
+oewn-sneakingly__4.02.00..	pertainym		oewn-sneaking__5.00.00.concealed.00
+oewn-sneer__1.10.00..	derivation		oewn-sneer__2.29.00..
+oewn-sneer__1.10.00..	derivation		oewn-sneer__2.29.01..
+oewn-sneer__1.10.01..	derivation		oewn-sneer__2.29.00..
+oewn-sneer__1.10.01..	derivation		oewn-sneer__2.29.01..
+oewn-sneer__2.29.00..	derivation		oewn-sneerer__1.18.00..
+oewn-sneer__2.29.00..	other	agent	oewn-sneerer__1.18.00..
+oewn-sneer__2.29.00..	other	event	oewn-sneer__1.10.00..
+oewn-sneer__2.29.00..	other	event	oewn-sneer__1.10.01..
+oewn-sneer__2.29.01..	derivation		oewn-sneerer__1.18.00..
+oewn-sneer__2.29.01..	other	agent	oewn-sneerer__1.18.00..
+oewn-sneer__2.29.01..	other	event	oewn-sneer__1.10.00..
+oewn-sneer__2.29.01..	other	event	oewn-sneer__1.10.01..
+oewn-sneeringly__4.02.00..	pertainym		oewn-sneering__5.00.00.uncomplimentary.00
+oewn-sneeze__1.26.00..	derivation		oewn-sneeze__2.29.00..
+oewn-sneeze__1.26.00..	derivation		oewn-sneezy__5.00.00.ill.01
+oewn-sneeze__2.29.00..	derivation		oewn-sneezer__1.18.00..
+oewn-sneeze__2.29.00..	derivation		oewn-sneezing__1.26.00..
+oewn-sneeze__2.29.00..	other	agent	oewn-sneezer__1.18.00..
+oewn-sneeze__2.29.00..	other	event	oewn-sneeze__1.26.00..
+oewn-snick__1.04.00..	derivation		oewn-snick__2.35.00..
+oewn-snick__1.04.01..	derivation		oewn-snick__2.35.02..
+oewn-snick__2.35.00..	other	event	oewn-snick__1.04.00..
+oewn-snick__2.35.02..	other	event	oewn-snick__1.04.01..
+oewn-snicker__1.10.00..	derivation		oewn-snicker__2.29.00..
+oewn-snicker__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-snicker__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-snicker__2.29.00..	other	event	oewn-snicker__1.10.00..
+oewn-snidely__4.02.00..	pertainym		oewn-snide__5.00.00.uncomplimentary.00
+oewn-sniff__1.04.00..	derivation		oewn-sniff__2.39.00..
+oewn-sniff__2.29.00..	derivation		oewn-sniffer__1.18.00..
+oewn-sniff__2.29.00..	other	agent	oewn-sniffer__1.18.00..
+oewn-sniff__2.39.00..	also		oewn-sniff_out__2.39.00..
+oewn-sniff__2.39.00..	derivation		oewn-sniffer__1.18.00..
+oewn-sniff__2.39.00..	other	agent	oewn-sniffer__1.18.00..
+oewn-sniff__2.39.00..	other	event	oewn-sniff__1.04.00..
+oewn-sniffle__1.04.00..	derivation		oewn-sniffle__2.29.00..
+oewn-sniffle__1.04.00..	derivation		oewn-sniffly__5.00.00.tearful.00
+oewn-sniffle__2.29.00..	other	event	oewn-sniffle__1.04.00..
+oewn-snigger__1.10.00..	derivation		oewn-snigger__2.29.00..
+oewn-snigger__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-snigger__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-snigger__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-snigger__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-snigger__2.29.00..	other	event	oewn-snigger__1.10.00..
+oewn-snip__1.04.00..	derivation		oewn-snip__2.35.00..
+oewn-snip__1.04.00..	derivation		oewn-snip__2.35.07..
+oewn-snip__1.06.00..	derivation		oewn-snip__2.35.00..
+oewn-snip__1.06.00..	derivation		oewn-snip__2.35.07..
+oewn-snip__2.35.00..	other	event	oewn-snip__1.04.00..
+oewn-snip__2.35.00..	other	undergoer	oewn-snip__1.06.00..
+oewn-snip__2.35.07..	derivation		oewn-snipping__1.06.00..
+oewn-snip__2.35.07..	other	event	oewn-snip__1.04.00..
+oewn-snip__2.35.07..	other	undergoer	oewn-snip__1.06.00..
+oewn-snipe__1.04.00..	derivation		oewn-snipe__2.33.00..
+oewn-snipe__1.05.00..	derivation		oewn-snipe__2.33.01..
+oewn-snipe__2.33.00..	derivation		oewn-sniper__1.18.00..
+oewn-snipe__2.33.00..	other	agent	oewn-sniper__1.18.00..
+oewn-snipe__2.33.00..	other	event	oewn-snipe__1.04.00..
+oewn-snipe__2.33.01..	other	undergoer	oewn-snipe__1.05.00..
+oewn-snitch__1.18.00..	derivation		oewn-snitch__2.32.09..
+oewn-snitch__2.32.09..	derivation		oewn-snitcher__1.18.00..
+oewn-snitch__2.32.09..	other	agent	oewn-snitch__1.18.00..
+oewn-snitch__2.32.09..	other	agent	oewn-snitcher__1.18.00..
+oewn-snitch__2.40.00..	derivation		oewn-snitcher__1.18.01..
+oewn-snitch__2.40.00..	other	agent	oewn-snitcher__1.18.01..
+oewn-snivel__1.04.00..	derivation		oewn-snivel__2.29.01..
+oewn-snivel__1.04.00..	derivation		oewn-snivel__2.32.00..
+oewn-snivel__1.04.01..	derivation		oewn-snivel__2.29.00..
+oewn-snivel__2.29.00..	derivation		oewn-sniveller__1.18.00..
+oewn-snivel__2.29.00..	other	agent	oewn-sniveller__1.18.00..
+oewn-snivel__2.29.00..	other	event	oewn-snivel__1.04.01..
+oewn-snivel__2.29.01..	derivation		oewn-sniveling__1.04.00..
+oewn-snivel__2.29.01..	derivation		oewn-sniveller__1.18.00..
+oewn-snivel__2.29.01..	other	agent	oewn-sniveller__1.18.00..
+oewn-snivel__2.29.01..	other	event	oewn-snivel__1.04.00..
+oewn-snivel__2.32.00..	derivation		oewn-sniveller__1.18.00..
+oewn-snivel__2.32.00..	other	agent	oewn-sniveller__1.18.00..
+oewn-snivel__2.32.00..	other	event	oewn-snivel__1.04.00..
+oewn-snob__1.18.00..	derivation		oewn-snobby__5.00.00.private.00
+oewn-snobbish__5.00.00.private.00	derivation		oewn-snobbishness__1.07.00..
+oewn-snobbishly__4.02.00..	pertainym		oewn-snobbish__5.00.00.private.00
+oewn-snog__2.35.00..	derivation		oewn-snogging__1.04.00..
+oewn-snooker__1.04.00..	derivation		oewn-snooker__2.33.00..
+oewn-snooker__2.33.00..	other	event	oewn-snooker__1.04.00..
+oewn-snoop__1.18.00..	derivation		oewn-snoop__2.32.00..
+oewn-snoop__1.18.00..	derivation		oewn-snoopy__5.00.00.curious.00
+oewn-snoop__2.32.00..	derivation		oewn-snooper__1.18.00..
+oewn-snoop__2.32.00..	other	agent	oewn-snoop__1.18.00..
+oewn-snoop__2.32.00..	other	agent	oewn-snooper__1.18.00..
+oewn-snoopiness__1.09.00..	derivation		oewn-snoopy__5.00.00.curious.00
+oewn-snoot__1.18.00..	derivation		oewn-snooty__5.00.00.proud.00
+oewn-snootily__4.02.00..	pertainym		oewn-snooty__5.00.00.proud.00
+oewn-snooze__1.04.00..	derivation		oewn-snooze__2.29.00..
+oewn-snooze__1.04.00..	exemplifies		oewn-colloquialism__1.10.00..
+oewn-snooze__2.29.00..	other	event	oewn-snooze__1.04.00..
+oewn-snore__1.04.00..	derivation		oewn-snore__2.29.00..
+oewn-snore__1.11.00..	derivation		oewn-snore__2.29.00..
+oewn-snore__2.29.00..	derivation		oewn-snorer__1.18.00..
+oewn-snore__2.29.00..	derivation		oewn-snoring__1.04.00..
+oewn-snore__2.29.00..	other	agent	oewn-snorer__1.18.00..
+oewn-snore__2.29.00..	other	event	oewn-snore__1.04.00..
+oewn-snore__2.29.00..	other	event	oewn-snore__1.11.00..
+oewn-snorkel__1.06.01..	derivation		oewn-snorkel__2.38.00..
+oewn-snorkel__2.38.00..	derivation		oewn-snorkeling__1.04.00..
+oewn-snort__1.10.00..	derivation		oewn-snort__2.32.00..
+oewn-snort__1.10.01..	derivation		oewn-snort__2.32.00..
+oewn-snort__1.10.01..	derivation		oewn-snorty__5.00.00.ill-natured.00
+oewn-snort__2.29.00..	derivation		oewn-snorter__1.18.00..
+oewn-snort__2.29.00..	derivation		oewn-snorting__1.04.00..
+oewn-snort__2.29.00..	other	agent	oewn-snorter__1.18.00..
+oewn-snort__2.32.00..	derivation		oewn-snorter__1.18.00..
+oewn-snort__2.32.00..	other	agent	oewn-snorter__1.18.00..
+oewn-snort__2.32.00..	other	event	oewn-snort__1.10.00..
+oewn-snort__2.32.00..	other	event	oewn-snort__1.10.01..
+oewn-snot__1.08.00..	derivation		oewn-snotty__5.00.00.dirty.01
+oewn-snot__1.18.00..	derivation		oewn-snotty__5.00.00.proud.00
+oewn-snow--blind__5.00.00.blind.00	derivation		oewn-snowblindness__1.26.00..
+oewn-snow--capped__3.01.00..	pertainym		oewn-snowcap__1.17.00..
+oewn-snow__1.19.00..	derivation		oewn-snow__2.43.00..
+oewn-snow__1.27.00..	derivation		oewn-snow__2.43.00..
+oewn-snow__1.27.00..	derivation		oewn-snowy__5.00.00.covered.00
+oewn-snow__1.27.00..	derivation		oewn-snowy__5.00.02.covered.00
+oewn-snow__2.43.00..	other	event	oewn-snow__1.19.00..
+oewn-snow__2.43.00..	other	result	oewn-snow__1.27.00..
+oewn-snowball__1.06.00..	derivation		oewn-snowball__2.35.00..
+oewn-snowball__2.35.00..	other	undergoer	oewn-snowball__1.06.00..
+oewn-snowboard__1.06.00..	derivation		oewn-snowboard__2.38.00..
+oewn-snowboard__2.38.00..	derivation		oewn-snowboarder__1.18.00..
+oewn-snowboard__2.38.00..	derivation		oewn-snowboarding__1.04.00..
+oewn-snowmobile__1.06.00..	derivation		oewn-snowmobile__2.38.00..
+oewn-snowmobile__2.38.00..	other	vehicle	oewn-snowmobile__1.06.00..
+oewn-snub__1.04.00..	derivation		oewn-snub__2.32.01..
+oewn-snub__1.10.00..	derivation		oewn-snub__2.32.00..
+oewn-snub__2.32.00..	other	event	oewn-snub__1.10.00..
+oewn-snub__2.32.01..	other	event	oewn-snub__1.04.00..
+oewn-snuff--color__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-snuff--colour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-snuff--colour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-snuff--colour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-snuff__1.04.00..	derivation		oewn-snuff__2.29.02..
+oewn-snuff__1.04.00..	derivation		oewn-snuff__2.39.00..
+oewn-snuff__2.29.02..	other	event	oewn-snuff__1.04.00..
+oewn-snuff__2.39.00..	other	event	oewn-snuff__1.04.00..
+oewn-snuff_out__2.30.00..	derivation		oewn-snuffer__1.06.01..
+oewn-snuff_out__2.30.00..	derivation		oewn-snuffer__1.18.01..
+oewn-snuff_out__2.30.00..	other	agent	oewn-snuffer__1.18.01..
+oewn-snuff_out__2.30.00..	other	instrument	oewn-snuffer__1.06.01..
+oewn-snuffle__1.04.00..	derivation		oewn-snuffle__2.29.00..
+oewn-snuffle__1.04.00..	derivation		oewn-snuffle__2.29.01..
+oewn-snuffle__1.04.00..	derivation		oewn-snuffly__5.00.00.tearful.00
+oewn-snuffle__2.29.00..	derivation		oewn-snuffler__1.18.00..
+oewn-snuffle__2.29.00..	other	agent	oewn-snuffler__1.18.00..
+oewn-snuffle__2.29.00..	other	event	oewn-snuffle__1.04.00..
+oewn-snuffle__2.29.01..	other	event	oewn-snuffle__1.04.00..
+oewn-snug__1.06.00..	derivation		oewn-snug__5.00.00.tight.02
+oewn-snug__5.00.00.comfortable.00	derivation		oewn-snugness__1.26.00..
+oewn-snug__5.00.00.protected.00	derivation		oewn-snugness__1.26.00..
+oewn-snuggle__1.04.00..	derivation		oewn-snuggle__2.35.00..
+oewn-snuggle__2.35.00..	derivation		oewn-snuggling__1.04.00..
+oewn-snuggle__2.35.00..	other	event	oewn-snuggle__1.04.00..
+oewn-snugly__4.02.00..	pertainym		oewn-snug__5.00.00.tight.01
+oewn-snugly__4.02.01..	pertainym		oewn-snug__5.00.00.protected.00
+oewn-snugly__4.02.02..	pertainym		oewn-snug__5.00.00.comfortable.00

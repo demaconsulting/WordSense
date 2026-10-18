@@ -1,0 +1,4 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-PKD-n	PKD	n	0	1	1	oewn
+oewn-PKU-n	PKU	n	0	1	1	oewn
+oewn-PKU_test-n	PKU test	n	0	2	2	oewn

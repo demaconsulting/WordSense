@@ -1,0 +1,14 @@
+class_id	lemma	label	pos	kind
+chain#noun	chain	noun	n	sense_group
+chain#verb	chain	verb	v	sense_group
+chance#noun	chance	noun	n	sense_group
+chance#unmapped-a	chance	unmapped-a	a	unmapped
+chance#verb	chance	verb	v	sense_group
+change#noun	change	noun	n	sense_group
+change#verb	change	verb	v	sense_group
+charm#noun	charm	noun	n	sense_group
+charm#verb	charm	verb	v	sense_group
+chase#noun	chase	noun	n	sense_group
+chase#verb	chase	verb	v	sense_group
+check#noun	check	noun	n	sense_group
+check#verb	check	verb	v	sense_group

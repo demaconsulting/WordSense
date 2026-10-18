@@ -1,0 +1,9 @@
+class_id	lemma	label	pos	kind
+analyses#noun	analyses	noun	n	lemma_split
+analyses#verb	analyses	verb	v	lemma_split
+anger#noun	anger	noun	n	sense_group
+anger#verb	anger	verb	v	sense_group
+animate#adj	animate	adj	a	sense_group
+animate#verb	animate	verb	v	sense_group
+annex#annex-noun	annex	annex-noun	n	sense_group
+annex#annex-verb	annex	annex-verb	v	sense_group

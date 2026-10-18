@@ -1,0 +1,410 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-asat__3.01.00..	pertainym		oewn-satellite__1.06.00..
+oewn-ascend__2.38.01..	derivation		oewn-ascendant__5.00.00.ascending.00
+oewn-ascend__2.38.01..	derivation		oewn-ascendent__5.00.00.ascending.00
+oewn-ascend__2.38.01..	derivation		oewn-ascender__1.10.01..
+oewn-ascend__2.38.01..	derivation		oewn-ascensive__5.00.00.ascending.00
+oewn-ascend__2.38.01..	derivation		oewn-ascent__1.17.00..
+oewn-ascend__2.38.01..	other	undergoer	oewn-ascender__1.10.01..
+oewn-ascend__2.38.02..	antonym		oewn-descend__2.38.00..
+oewn-ascend__2.38.02..	derivation		oewn-ascendable__5.00.00.scalable.00
+oewn-ascend__2.38.02..	derivation		oewn-ascendant__5.00.00.ascending.00
+oewn-ascend__2.38.02..	derivation		oewn-ascender__1.18.00..
+oewn-ascend__2.38.02..	derivation		oewn-ascension__1.04.00..
+oewn-ascend__2.38.02..	derivation		oewn-ascension__1.11.00..
+oewn-ascend__2.38.02..	derivation		oewn-ascensive__5.00.00.ascending.00
+oewn-ascend__2.38.02..	derivation		oewn-ascent__1.04.00..
+oewn-ascend__2.38.02..	derivation		oewn-ascent__1.11.00..
+oewn-ascend__2.38.02..	other	agent	oewn-ascender__1.18.00..
+oewn-ascend__2.38.02..	other	event	oewn-ascension__1.04.00..
+oewn-ascend__2.38.02..	other	event	oewn-ascension__1.11.00..
+oewn-ascend__2.38.03..	derivation		oewn-ascendent__5.00.00.ascending.00
+oewn-ascend__2.38.03..	derivation		oewn-ascension__1.11.01..
+oewn-ascend__2.38.03..	other	event	oewn-ascension__1.11.01..
+oewn-ascend__2.41.00..	derivation		oewn-ascendancy__1.26.00..
+oewn-ascendance__1.26.00..	derivation		oewn-ascendant__5.00.00.dominant.01
+oewn-ascendancy__1.26.00..	derivation		oewn-ascendant__5.00.00.dominant.01
+oewn-ascendant__1.26.00..	derivation		oewn-ascendant__5.00.00.dominant.01
+oewn-ascendence__1.26.00..	derivation		oewn-ascendent__5.00.00.dominant.01
+oewn-ascendency__1.26.00..	derivation		oewn-ascendent__5.00.00.dominant.01
+oewn-ascending__3.00.00..	antonym		oewn-descending__3.00.00..
+oewn-ascending_node__1.15.00..	antonym		oewn-descending_node__1.15.00..
+oewn-ascension__1.04.00..	derivation		oewn-ascensional__3.01.00..
+oewn-ascension__1.11.00..	derivation		oewn-ascensional__3.01.00..
+oewn-ascension__1.11.01..	derivation		oewn-ascensional__3.01.00..
+oewn-ascensional__3.01.00..	pertainym		oewn-ascension__1.04.00..
+oewn-ascent__1.17.00..	antonym		oewn-descent__1.17.00..
+oewn-ascertain__2.31.01..	derivation		oewn-ascertainable__5.00.00.determinable.00
+oewn-ascertain__2.32.00..	derivation		oewn-ascertainable__5.00.00.determinable.00
+oewn-ascertain__2.32.01..	derivation		oewn-ascertainable__5.00.00.determinable.00
+oewn-ascetic__1.18.00..	derivation		oewn-ascetic__3.01.00..
+oewn-ascetic__1.18.00..	derivation		oewn-ascetic__5.00.00.abstemious.00
+oewn-ascetic__1.18.00..	derivation		oewn-ascetical__3.01.00..
+oewn-ascetic__1.18.00..	derivation		oewn-ascetical__5.00.00.abstemious.00
+oewn-ascetic__3.01.00..	pertainym		oewn-ascetic__1.18.00..
+oewn-ascetical__3.01.00..	pertainym		oewn-ascetic__1.18.00..
+oewn-ascetically__4.02.00..	pertainym		oewn-ascetic__5.00.00.abstemious.00
+oewn-ascites__1.26.00..	derivation		oewn-ascitic__3.01.00..
+oewn-ascitic__3.01.00..	pertainym		oewn-ascites__1.26.00..
+oewn-ascocarp__1.20.00..	derivation		oewn-ascocarpous__3.01.00..
+oewn-ascocarpous__3.01.00..	pertainym		oewn-ascocarp__1.20.00..
+oewn-ascomycete__1.20.00..	derivation		oewn-ascomycetous__3.01.00..
+oewn-ascomycetous__3.01.00..	pertainym		oewn-ascomycete__1.20.00..
+oewn-ascospore__1.20.00..	derivation		oewn-ascosporic__3.01.00..
+oewn-ascospore__1.20.00..	derivation		oewn-ascosporous__3.01.00..
+oewn-ascosporic__3.01.00..	pertainym		oewn-ascospore__1.20.00..
+oewn-ascosporous__3.01.00..	pertainym		oewn-ascospore__1.20.00..
+oewn-ascribable__5.00.00.attributable.00	derivation		oewn-ascribe__2.31.00..
+oewn-ascribe__2.31.00..	derivation		oewn-ascription__1.09.00..
+oewn-ascribe__2.31.00..	other	event	oewn-ascription__1.09.00..
+oewn-asepsis__1.22.00..	derivation		oewn-aseptic__5.00.00.antiseptic.00
+oewn-asepsis__1.26.00..	derivation		oewn-aseptic__5.00.00.antiseptic.00
+oewn-asexual__3.00.00..	antonym		oewn-sexual__3.00.00..
+oewn-asexual__3.00.00..	derivation		oewn-asexuality__1.07.00..
+oewn-asexually__4.02.00..	pertainym		oewn-asexual__3.00.00..
+oewn-ash__1.27.01..	derivation		oewn-ash__2.30.00..
+oewn-ash__1.27.01..	derivation		oewn-ashy__5.00.00.achromatic.00
+oewn-ash__2.30.00..	other	result	oewn-ash__1.27.01..
+oewn-ashamed__3.00.00..	antonym		oewn-unashamed__3.00.00..
+oewn-ashamedly__4.02.00..	antonym		oewn-unashamedly__4.02.00..
+oewn-ashamedly__4.02.00..	pertainym		oewn-ashamed__3.00.00..
+oewn-asia__1.14.00..	derivation		oewn-asian__3.01.00..
+oewn-asia__1.14.00..	derivation		oewn-asiatic__3.01.00..
+oewn-asian__1.18.00..	derivation		oewn-asian__3.01.00..
+oewn-asiatic__1.18.00..	derivation		oewn-asiatic__3.01.00..
+oewn-asinine__5.00.00.stupid.00	derivation		oewn-asininity__1.07.00..
+oewn-ask__2.32.01..	also		oewn-ask_in__2.35.00..
+oewn-ask__2.32.01..	also		oewn-ask_out__2.41.00..
+oewn-ask__2.32.01..	also		oewn-ask_over__2.41.00..
+oewn-ask__2.32.01..	also		oewn-ask_round__2.41.00..
+oewn-ask__2.32.02..	derivation		oewn-asker__1.18.00..
+oewn-ask__2.32.02..	other	agent	oewn-asker__1.18.00..
+oewn-ask__2.32.04..	derivation		oewn-asker__1.18.00..
+oewn-ask__2.32.04..	other	agent	oewn-asker__1.18.00..
+oewn-asleep__3.00.00..	antonym		oewn-awake__3.00.00..
+oewn-asleep__4.02.00..	pertainym		oewn-asleep__3.00.00..
+oewn-asleep__4.02.01..	pertainym		oewn-asleep__5.00.00.dead.01
+oewn-aspect__1.24.00..	derivation		oewn-aspectual__3.01.00..
+oewn-aspectual__3.01.00..	pertainym		oewn-aspect__1.24.00..
+oewn-asperse__2.32.00..	derivation		oewn-aspersion__1.04.00..
+oewn-asperse__2.32.00..	derivation		oewn-aspersion__1.10.00..
+oewn-asperse__2.32.00..	other	event	oewn-aspersion__1.04.00..
+oewn-asperse__2.32.00..	other	event	oewn-aspersion__1.10.00..
+oewn-asphalt__1.27.02..	derivation		oewn-asphalt__2.35.00..
+oewn-asphalt__2.35.00..	other	uses	oewn-asphalt__1.27.02..
+oewn-asphaltic__3.01.00..	pertainym		oewn-asphalt__1.27.02..
+oewn-asphyxia__1.26.00..	derivation		oewn-asphyxiate__2.30.00..
+oewn-asphyxia__1.26.00..	derivation		oewn-asphyxiate__2.35.00..
+oewn-asphyxia__1.26.00..	derivation		oewn-asphyxiate__2.35.01..
+oewn-asphyxiate__2.30.00..	derivation		oewn-asphyxiation__1.04.00..
+oewn-asphyxiate__2.30.00..	derivation		oewn-asphyxiation__1.26.00..
+oewn-asphyxiate__2.30.00..	other	event	oewn-asphyxiation__1.04.00..
+oewn-asphyxiate__2.30.00..	other	state	oewn-asphyxiation__1.26.00..
+oewn-asphyxiate__2.35.00..	derivation		oewn-asphyxiation__1.04.00..
+oewn-asphyxiate__2.35.00..	derivation		oewn-asphyxiation__1.26.00..
+oewn-asphyxiate__2.35.00..	other	event	oewn-asphyxiation__1.04.00..
+oewn-asphyxiate__2.35.00..	other	state	oewn-asphyxiation__1.26.00..
+oewn-asphyxiate__2.35.01..	derivation		oewn-asphyxiation__1.26.00..
+oewn-asphyxiate__2.35.01..	other	state	oewn-asphyxiation__1.26.00..
+oewn-asphyxiated__3.01.00..	pertainym		oewn-asphyxia__1.26.00..
+oewn-aspirant__1.18.00..	derivation		oewn-aspirant__5.00.00.ambitious.00
+oewn-aspirant__1.18.00..	derivation		oewn-aspire__2.31.00..
+oewn-aspirant__5.00.00.ambitious.00	derivation		oewn-aspire__2.31.00..
+oewn-aspirate__1.10.00..	derivation		oewn-aspirate__2.32.00..
+oewn-aspirate__2.29.00..	derivation		oewn-aspiration__1.04.00..
+oewn-aspirate__2.29.00..	derivation		oewn-aspirator__1.06.00..
+oewn-aspirate__2.29.00..	other	event	oewn-aspiration__1.04.00..
+oewn-aspirate__2.29.00..	other	instrument	oewn-aspirator__1.06.00..
+oewn-aspirate__2.32.00..	derivation		oewn-aspiration__1.10.00..
+oewn-aspirate__2.32.00..	other	event	oewn-aspiration__1.10.00..
+oewn-aspirate__2.32.00..	other	result	oewn-aspirate__1.10.00..
+oewn-aspiration__1.07.00..	derivation		oewn-aspire__2.31.00..
+oewn-aspiration__1.12.00..	derivation		oewn-aspire__2.31.00..
+oewn-aspire__2.31.00..	derivation		oewn-aspirer__1.18.00..
+oewn-aspire__2.31.00..	other	agent	oewn-aspirer__1.18.00..
+oewn-aspire__2.31.00..	other	undergoer	oewn-aspiration__1.07.00..
+oewn-aspire__2.31.00..	other	undergoer	oewn-aspiration__1.12.00..
+oewn-ass__1.08.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-assail__2.32.00..	derivation		oewn-assailant__1.18.00..
+oewn-assail__2.33.00..	derivation		oewn-assailant__1.18.00..
+oewn-assail__2.33.01..	derivation		oewn-assailable__5.00.00.vulnerable.00
+oewn-assail__2.33.01..	derivation		oewn-assailant__1.18.00..
+oewn-assailability__1.07.00..	derivation		oewn-assailable__5.00.00.vulnerable.00
+oewn-assamese__1.10.00..	derivation		oewn-assamese__3.01.00..
+oewn-assamese__1.18.00..	derivation		oewn-assamese__3.01.00..
+oewn-assassin__1.18.00..	derivation		oewn-assassinate__2.41.00..
+oewn-assassinate__2.32.00..	derivation		oewn-assassination__1.10.01..
+oewn-assassinate__2.32.00..	other	event	oewn-assassination__1.10.01..
+oewn-assassinate__2.41.00..	derivation		oewn-assassination__1.04.00..
+oewn-assassinate__2.41.00..	derivation		oewn-assassinator__1.18.00..
+oewn-assassinate__2.41.00..	other	agent	oewn-assassinator__1.18.00..
+oewn-assassinate__2.41.00..	other	event	oewn-assassination__1.04.00..
+oewn-assault__1.04.01..	derivation		oewn-assault__2.33.00..
+oewn-assault__1.04.02..	derivation		oewn-assault__2.33.00..
+oewn-assault__2.32.00..	derivation		oewn-assaulter__1.18.00..
+oewn-assault__2.32.00..	derivation		oewn-assaultive__5.00.00.offensive.03
+oewn-assault__2.32.00..	other	agent	oewn-assaulter__1.18.00..
+oewn-assault__2.33.00..	derivation		oewn-assaulter__1.18.00..
+oewn-assault__2.33.00..	derivation		oewn-assaultive__5.00.00.offensive.03
+oewn-assault__2.33.00..	other	agent	oewn-assaulter__1.18.00..
+oewn-assault__2.33.00..	other	event	oewn-assault__1.04.01..
+oewn-assault__2.33.00..	other	event	oewn-assault__1.04.02..
+oewn-assault__2.41.03..	derivation		oewn-assaultive__5.00.00.offensive.03
+oewn-assay__1.04.00..	derivation		oewn-assay__2.31.00..
+oewn-assay__2.31.00..	derivation		oewn-assayer__1.18.00..
+oewn-assay__2.31.00..	other	agent	oewn-assayer__1.18.00..
+oewn-assay__2.31.00..	other	event	oewn-assay__1.04.00..
+oewn-assemblage__1.04.00..	derivation		oewn-assemble__2.41.00..
+oewn-assemblage__1.04.00..	derivation		oewn-assemble__2.41.03..
+oewn-assemblage__1.06.00..	derivation		oewn-assemble__2.36.00..
+oewn-assemblage__1.14.00..	derivation		oewn-assemble__2.41.00..
+oewn-assemblage__1.14.00..	derivation		oewn-assemble__2.41.03..
+oewn-assemblage__1.14.01..	derivation		oewn-assemble__2.36.00..
+oewn-assemble__2.36.00..	antonym		oewn-disassemble__2.36.00..
+oewn-assembly__1.04.00..	antonym		oewn-disassembly__1.04.00..
+oewn-assembly__1.04.01..	antonym		oewn-disassembly__1.04.00..
+oewn-assent__1.10.00..	derivation		oewn-assent__2.32.00..
+oewn-assent__2.32.00..	antonym		oewn-dissent__2.32.00..
+oewn-assent__2.32.00..	derivation		oewn-assenter__1.18.00..
+oewn-assent__2.32.00..	derivation		oewn-assentient__5.00.00.affirmative.00
+oewn-assent__2.32.00..	other	event	oewn-assent__1.10.00..
+oewn-assert__2.31.00..	derivation		oewn-assertable__5.00.00.possible.00
+oewn-assert__2.31.00..	derivation		oewn-assertion__1.10.01..
+oewn-assert__2.31.00..	other	event	oewn-assertion__1.10.01..
+oewn-assert__2.32.00..	derivation		oewn-assertable__5.00.00.possible.00
+oewn-assert__2.32.00..	derivation		oewn-asserter__1.18.00..
+oewn-assert__2.32.00..	derivation		oewn-assertion__1.10.01..
+oewn-assert__2.32.00..	other	agent	oewn-asserter__1.18.00..
+oewn-assert__2.32.00..	other	event	oewn-assertion__1.10.01..
+oewn-assert__2.32.01..	derivation		oewn-assertable__5.00.00.possible.00
+oewn-assert__2.32.01..	derivation		oewn-assertion__1.10.00..
+oewn-assert__2.32.01..	other	event	oewn-assertion__1.10.00..
+oewn-assert__2.41.00..	derivation		oewn-assertive__3.00.00..
+oewn-assertive__3.00.00..	antonym		oewn-unassertive__3.00.00..
+oewn-assertive__3.00.00..	derivation		oewn-assertiveness__1.07.00..
+oewn-assertively__4.02.00..	antonym		oewn-unassertively__4.02.00..
+oewn-assertively__4.02.00..	pertainym		oewn-assertive__3.00.00..
+oewn-assess__2.31.00..	derivation		oewn-assessable__5.00.00.taxable.00
+oewn-assess__2.31.00..	derivation		oewn-assessment__1.09.00..
+oewn-assess__2.31.00..	derivation		oewn-assessor__1.18.00..
+oewn-assess__2.31.00..	other	agent	oewn-assessor__1.18.00..
+oewn-assess__2.31.00..	other	event	oewn-assessment__1.09.00..
+oewn-assess__2.31.01..	derivation		oewn-assessable__5.00.00.taxable.00
+oewn-assess__2.31.01..	derivation		oewn-assessment__1.07.00..
+oewn-assess__2.31.01..	other	result	oewn-assessment__1.07.00..
+oewn-assess__2.40.00..	derivation		oewn-assessment__1.21.00..
+oewn-assess__2.40.00..	other	undergoer	oewn-assessment__1.21.00..
+oewn-assess__2.40.01..	derivation		oewn-assessee__1.18.00..
+oewn-assess__2.40.01..	derivation		oewn-assessment__1.21.00..
+oewn-assess__2.40.01..	other	undergoer	oewn-assessment__1.21.00..
+oewn-asset__1.07.00..	antonym		oewn-liability__1.07.00..
+oewn-asseverate__2.32.00..	derivation		oewn-asseveration__1.10.00..
+oewn-asseverate__2.32.00..	derivation		oewn-asseverator__1.18.00..
+oewn-asseverate__2.32.00..	other	agent	oewn-asseverator__1.18.00..
+oewn-asseverate__2.32.00..	other	event	oewn-asseveration__1.10.00..
+oewn-assibilate__2.30.00..	derivation		oewn-assibilation__1.10.00..
+oewn-assibilate__2.30.00..	derivation		oewn-assibilation__1.22.00..
+oewn-assibilate__2.30.00..	derivation		oewn-sibilant__1.10.00..
+oewn-assibilate__2.30.00..	other	event	oewn-assibilation__1.10.00..
+oewn-assibilate__2.30.00..	other	event	oewn-assibilation__1.22.00..
+oewn-assibilate__2.32.00..	derivation		oewn-assibilation__1.10.00..
+oewn-assibilate__2.32.00..	derivation		oewn-sibilant__1.10.00..
+oewn-assibilate__2.32.00..	other	event	oewn-assibilation__1.10.00..
+oewn-assiduity__1.07.00..	derivation		oewn-assiduous__5.00.00.diligent.00
+oewn-assiduous__5.00.00.diligent.00	derivation		oewn-assiduousness__1.07.00..
+oewn-assiduously__4.02.00..	pertainym		oewn-assiduous__5.00.00.diligent.00
+oewn-assign__2.31.00..	derivation		oewn-assignment__1.04.03..
+oewn-assign__2.31.00..	other	event	oewn-assignment__1.04.03..
+oewn-assign__2.31.03..	derivation		oewn-assignment__1.04.02..
+oewn-assign__2.31.03..	other	event	oewn-assignment__1.04.02..
+oewn-assign__2.40.00..	derivation		oewn-assignable__5.00.00.alienable.00
+oewn-assign__2.40.00..	derivation		oewn-assignee__1.18.00..
+oewn-assign__2.40.00..	derivation		oewn-assignment__1.10.02..
+oewn-assign__2.40.00..	derivation		oewn-assignment__1.21.02..
+oewn-assign__2.40.00..	other	by_means_of	oewn-assignment__1.10.02..
+oewn-assign__2.40.00..	other	event	oewn-assignment__1.21.02..
+oewn-assign__2.40.00..	other	undergoer	oewn-assignee__1.18.00..
+oewn-assign__2.40.01..	derivation		oewn-assignation__1.04.01..
+oewn-assign__2.40.01..	other	event	oewn-assignation__1.04.01..
+oewn-assign__2.41.00..	derivation		oewn-assignment__1.04.00..
+oewn-assign__2.41.00..	derivation		oewn-assignment__1.04.01..
+oewn-assign__2.41.00..	other	event	oewn-assignment__1.04.00..
+oewn-assign__2.41.00..	other	event	oewn-assignment__1.04.01..
+oewn-assigned__3.00.00..	antonym		oewn-unassigned__3.00.00..
+oewn-assimilate__2.30.00..	antonym		oewn-dissimilate__2.30.00..
+oewn-assimilate__2.30.00..	derivation		oewn-assimilation__1.22.02..
+oewn-assimilate__2.30.00..	derivation		oewn-assimilation__1.26.00..
+oewn-assimilate__2.30.00..	other	event	oewn-assimilation__1.22.02..
+oewn-assimilate__2.30.00..	other	state	oewn-assimilation__1.26.00..
+oewn-assimilate__2.30.01..	antonym		oewn-dissimilate__2.30.01..
+oewn-assimilate__2.30.01..	derivation		oewn-assimilation__1.22.02..
+oewn-assimilate__2.30.01..	derivation		oewn-assimilation__1.26.00..
+oewn-assimilate__2.30.01..	other	event	oewn-assimilation__1.22.02..
+oewn-assimilate__2.30.01..	other	state	oewn-assimilation__1.26.00..
+oewn-assimilate__2.30.02..	antonym		oewn-dissimilate__2.30.02..
+oewn-assimilate__2.30.02..	derivation		oewn-assimilation__1.22.00..
+oewn-assimilate__2.30.02..	other	event	oewn-assimilation__1.22.00..
+oewn-assimilate__2.31.00..	derivation		oewn-assimilation__1.09.00..
+oewn-assimilate__2.31.00..	derivation		oewn-assimilation__1.09.01..
+oewn-assimilate__2.31.00..	derivation		oewn-assimilator__1.18.00..
+oewn-assimilate__2.31.00..	other	agent	oewn-assimilator__1.18.00..
+oewn-assimilate__2.31.00..	other	event	oewn-assimilation__1.09.00..
+oewn-assimilate__2.31.00..	other	event	oewn-assimilation__1.09.01..
+oewn-assimilate__2.35.00..	derivation		oewn-assimilation__1.22.01..
+oewn-assimilate__2.35.00..	derivation		oewn-assimilative__5.00.00.absorbent.00
+oewn-assimilate__2.35.00..	derivation		oewn-assimilatory__5.00.00.absorbent.00
+oewn-assimilate__2.35.00..	other	event	oewn-assimilation__1.22.01..
+oewn-assist__1.04.01..	derivation		oewn-assist__2.41.01..
+oewn-assist__1.04.01..	derivation		oewn-assist__2.41.02..
+oewn-assist__2.41.00..	derivation		oewn-assistant__1.18.00..
+oewn-assist__2.41.00..	derivation		oewn-assistant__5.00.00.subordinate.01
+oewn-assist__2.41.01..	other	event	oewn-assist__1.04.01..
+oewn-assist__2.41.02..	derivation		oewn-assistance__1.04.00..
+oewn-assist__2.41.02..	derivation		oewn-assistant__1.18.00..
+oewn-assist__2.41.02..	derivation		oewn-assistive__5.00.00.helpful.00
+oewn-assist__2.41.02..	other	event	oewn-assist__1.04.01..
+oewn-assist__2.41.02..	other	event	oewn-assistance__1.04.00..
+oewn-assistant__1.18.00..	derivation		oewn-assistant__5.00.00.subordinate.01
+oewn-assisted__3.00.00..	antonym		oewn-unassisted__3.00.00..
+oewn-associability__1.07.00..	derivation		oewn-associable__5.00.00.associative.00
+oewn-associable__5.00.00.associative.00	derivation		oewn-associableness__1.07.00..
+oewn-associable__5.00.00.associative.00	derivation		oewn-associate__2.31.00..
+oewn-associable__5.00.00.associative.00	derivation		oewn-associate__2.41.00..
+oewn-associate__1.18.00..	derivation		oewn-associate__2.41.00..
+oewn-associate__1.18.01..	derivation		oewn-associate__2.41.02..
+oewn-associate__2.31.00..	antonym		oewn-dissociate__2.31.00..
+oewn-associate__2.31.00..	derivation		oewn-association__1.09.00..
+oewn-associate__2.31.00..	derivation		oewn-association__1.26.02..
+oewn-associate__2.31.00..	derivation		oewn-associative__3.00.00..
+oewn-associate__2.31.00..	derivation		oewn-associatory__3.00.00..
+oewn-associate__2.31.00..	other	event	oewn-association__1.09.00..
+oewn-associate__2.31.00..	other	state	oewn-association__1.26.02..
+oewn-associate__2.41.00..	derivation		oewn-association__1.04.00..
+oewn-associate__2.41.00..	derivation		oewn-association__1.14.00..
+oewn-associate__2.41.00..	derivation		oewn-association__1.14.01..
+oewn-associate__2.41.00..	derivation		oewn-association__1.24.00..
+oewn-associate__2.41.00..	derivation		oewn-association__1.26.00..
+oewn-associate__2.41.00..	other	agent	oewn-associate__1.18.00..
+oewn-associate__2.41.00..	other	event	oewn-association__1.04.00..
+oewn-associate__2.41.00..	other	event	oewn-association__1.26.00..
+oewn-associate__2.41.00..	other	result	oewn-association__1.14.00..
+oewn-associate__2.41.00..	other	result	oewn-association__1.24.00..
+oewn-associate__2.41.02..	derivation		oewn-association__1.04.00..
+oewn-associate__2.41.02..	derivation		oewn-association__1.14.00..
+oewn-associate__2.41.02..	other	agent	oewn-associate__1.18.01..
+oewn-associate__2.41.02..	other	event	oewn-association__1.04.00..
+oewn-association__1.26.02..	antonym		oewn-disassociation__1.26.01..
+oewn-associational__3.01.00..	pertainym		oewn-association__1.09.00..
+oewn-associational__3.01.00..	pertainym		oewn-associationism__1.09.00..
+oewn-associative__3.00.00..	antonym		oewn-nonassociative__3.00.00..
+oewn-assonance__1.10.00..	derivation		oewn-assonant__5.00.00.rhymed.00
+oewn-assonance__1.10.00..	derivation		oewn-assonant__5.00.00.same.00
+oewn-assonance__1.10.00..	derivation		oewn-assonate__2.42.00..
+oewn-assonant__5.00.00.rhymed.00	derivation		oewn-assonate__2.42.00..
+oewn-assonant__5.00.00.same.00	derivation		oewn-assonate__2.42.00..
+oewn-assonate__2.42.00..	other	event	oewn-assonance__1.10.00..
+oewn-assort__2.31.00..	derivation		oewn-assortment__1.04.00..
+oewn-assort__2.31.00..	other	event	oewn-assortment__1.04.00..
+oewn-assortative_mating__1.04.00..	antonym		oewn-disassortative_mating__1.04.00..
+oewn-assuage__2.29.00..	derivation		oewn-assuagement__1.12.00..
+oewn-assuage__2.29.00..	other	state	oewn-assuagement__1.12.00..
+oewn-assume__2.31.00..	derivation		oewn-assumption__1.04.01..
+oewn-assume__2.31.00..	derivation		oewn-assumption__1.09.00..
+oewn-assume__2.31.00..	derivation		oewn-assumption__1.10.00..
+oewn-assume__2.31.00..	derivation		oewn-assumptive__5.00.00.acknowledged.00
+oewn-assume__2.31.00..	other	event	oewn-assumption__1.04.01..
+oewn-assume__2.31.00..	other	event	oewn-assumption__1.09.00..
+oewn-assume__2.31.00..	other	event	oewn-assumption__1.10.00..
+oewn-assume__2.35.00..	derivation		oewn-assumption__1.11.00..
+oewn-assume__2.35.00..	other	event	oewn-assumption__1.11.00..
+oewn-assume__2.40.00..	derivation		oewn-assumption__1.04.00..
+oewn-assume__2.40.00..	other	event	oewn-assumption__1.04.00..
+oewn-assume__2.40.01..	derivation		oewn-assumption__1.04.00..
+oewn-assume__2.40.01..	other	event	oewn-assumption__1.04.00..
+oewn-assume__2.41.00..	derivation		oewn-assumption__1.04.00..
+oewn-assume__2.41.00..	other	event	oewn-assumption__1.04.00..
+oewn-assurance__1.10.00..	derivation		oewn-assure__2.32.01..
+oewn-assurance__1.10.01..	derivation		oewn-assure__2.32.02..
+oewn-assure__2.32.01..	other	event	oewn-assurance__1.10.00..
+oewn-assure__2.32.02..	other	event	oewn-assurance__1.10.01..
+oewn-assured__5.00.00.secure.02	derivation		oewn-assuredness__1.07.00..
+oewn-assuredly__4.02.00..	pertainym		oewn-assured__5.00.00.confident.00
+oewn-asteriated__3.01.00..	pertainym		oewn-asterism__1.25.00..
+oewn-asterisk__1.10.00..	derivation		oewn-asterisk__2.30.00..
+oewn-asterisk__2.30.00..	other	uses	oewn-asterisk__1.10.00..
+oewn-asterism__1.17.00..	derivation		oewn-asterismal__3.01.00..
+oewn-asterismal__3.01.00..	pertainym		oewn-asterism__1.17.00..
+oewn-asteroid__1.17.00..	derivation		oewn-asteroid__5.00.00.angular.00
+oewn-asteroid__1.17.00..	derivation		oewn-asteroidal__3.01.00..
+oewn-asteroidal__3.01.00..	pertainym		oewn-asteroid__1.17.00..
+oewn-asthenia__1.26.00..	derivation		oewn-asthenic__5.00.00.weak.00
+oewn-asthenic__5.00.00.weak.00	derivation		oewn-astheny__1.26.00..
+oewn-asthma__1.26.00..	derivation		oewn-asthmatic__5.00.00.unhealthy.00
+oewn-astigmatic__3.00.00..	derivation		oewn-astigmatism__1.26.01..
+oewn-astigmatic__3.00.00..	derivation		oewn-astigmatism__1.26.02..
+oewn-astigmatic__3.00.00..	derivation		oewn-astigmia__1.26.01..
+oewn-astigmatic__3.00.00..	derivation		oewn-astigmia__1.26.02..
+oewn-astigmatism__1.26.01..	antonym		oewn-stigmatism__1.26.00..
+oewn-astomatal__3.01.00..	antonym		oewn-stomatal__3.01.01..
+oewn-astomatal__3.01.00..	derivation		oewn-stoma__1.20.01..
+oewn-astomatal__3.01.00..	pertainym		oewn-stoma__1.20.01..
+oewn-astomatous__3.00.00..	antonym		oewn-stomatous__3.00.00..
+oewn-astonish__2.31.00..	derivation		oewn-astonishment__1.12.00..
+oewn-astonish__2.31.00..	other	state	oewn-astonishment__1.12.00..
+oewn-astonishingly__4.02.00..	pertainym		oewn-astonishing__5.00.00.surprising.00
+oewn-astragal__1.08.00..	derivation		oewn-astragalar__3.01.00..
+oewn-astragalar__3.01.00..	derivation		oewn-astragalus__1.08.00..
+oewn-astragalar__3.01.00..	pertainym		oewn-astragal__1.08.00..
+oewn-astral__3.01.00..	pertainym		oewn-star__1.17.00..
+oewn-astringe__2.30.00..	derivation		oewn-astringent__1.06.00..
+oewn-astringe__2.30.00..	derivation		oewn-astringent__3.00.00..
+oewn-astringe__2.35.00..	derivation		oewn-astringent__1.06.00..
+oewn-astringe__2.35.00..	derivation		oewn-astringent__3.00.00..
+oewn-astringence__1.09.00..	derivation		oewn-astringent__5.00.00.sour.00
+oewn-astringency__1.07.00..	derivation		oewn-astringent__3.00.00..
+oewn-astringency__1.09.00..	derivation		oewn-astringent__5.00.00.sour.00
+oewn-astringent__1.06.00..	derivation		oewn-astringent__3.00.00..
+oewn-astringent__3.00.00..	antonym		oewn-nonastringent__3.00.00..
+oewn-astrocyte__1.08.00..	derivation		oewn-astrocytic__3.01.00..
+oewn-astrocytic__3.01.00..	pertainym		oewn-astrocyte__1.08.00..
+oewn-astrogate__2.38.00..	derivation		oewn-astrogator__1.18.00..
+oewn-astrogate__2.38.00..	other	agent	oewn-astrogator__1.18.00..
+oewn-astrogate__2.38.01..	derivation		oewn-astrogator__1.18.00..
+oewn-astrogate__2.38.01..	other	agent	oewn-astrogator__1.18.00..
+oewn-astrologer__1.18.00..	derivation		oewn-astrology__1.09.00..
+oewn-astrological__3.01.00..	derivation		oewn-astrology__1.09.00..
+oewn-astrological__3.01.00..	pertainym		oewn-astrology__1.09.00..
+oewn-astrologist__1.18.00..	derivation		oewn-astrology__1.09.00..
+oewn-astronaut__1.18.00..	derivation		oewn-astronautic__3.01.00..
+oewn-astronaut__1.18.00..	derivation		oewn-astronautical__3.01.00..
+oewn-astronautic__3.01.00..	pertainym		oewn-astronaut__1.18.00..
+oewn-astronautic__3.01.00..	pertainym		oewn-astronautics__1.09.00..
+oewn-astronautical__3.01.00..	pertainym		oewn-astronaut__1.18.00..
+oewn-astronautical__3.01.00..	pertainym		oewn-astronautics__1.09.00..
+oewn-astronomic__3.01.00..	derivation		oewn-astronomy__1.09.00..
+oewn-astronomic__3.01.00..	pertainym		oewn-astronomy__1.09.00..
+oewn-astronomical__3.01.00..	derivation		oewn-astronomy__1.09.00..
+oewn-astronomical__3.01.00..	pertainym		oewn-astronomy__1.09.00..
+oewn-astronomically__4.02.00..	pertainym		oewn-astronomic__5.00.00.large.00
+oewn-astrophysical__3.01.00..	derivation		oewn-astrophysics__1.09.00..
+oewn-astrophysical__3.01.00..	pertainym		oewn-astrophysics__1.09.00..
+oewn-astrophysicist__1.18.00..	derivation		oewn-astrophysics__1.09.00..
+oewn-astute__5.00.00.smart.00	derivation		oewn-astuteness__1.09.00..
+oewn-astutely__4.02.00..	pertainym		oewn-astute__5.00.00.smart.00
+oewn-asymmetric__3.00.00..	derivation		oewn-asymmetry__1.07.00..
+oewn-asymmetrical__3.00.00..	antonym		oewn-symmetrical__3.00.00..
+oewn-asymmetrical__3.00.00..	derivation		oewn-asymmetry__1.07.00..
+oewn-asymmetrically__4.02.00..	antonym		oewn-symmetrically__4.02.00..
+oewn-asymmetry__1.07.00..	antonym		oewn-symmetry__1.07.00..
+oewn-asymptote__1.25.00..	derivation		oewn-asymptotic__3.01.00..
+oewn-asymptotic__3.01.00..	pertainym		oewn-asymptote__1.25.00..
+oewn-asymptotically__4.02.00..	pertainym		oewn-asymptotic__3.01.00..
+oewn-asynchronism__1.24.00..	antonym		oewn-synchronism__1.24.00..
+oewn-asynchronous__3.00.00..	antonym		oewn-synchronous__3.00.00..
+oewn-asynchronous__3.00.01..	antonym		oewn-synchronous__3.00.01..
+oewn-asynchronous_operation__1.22.00..	antonym		oewn-synchronous_operation__1.22.00..
+oewn-asyndetic__3.00.00..	antonym		oewn-syndetic__3.00.00..
+oewn-asyndetic__3.00.00..	derivation		oewn-asyndeton__1.10.00..
+oewn-asynergia__1.26.00..	derivation		oewn-asynergic__3.01.00..
+oewn-asynergic__3.01.00..	derivation		oewn-asynergy__1.26.00..
+oewn-asynergic__3.01.00..	pertainym		oewn-asynergy__1.26.00..

@@ -1,0 +1,292 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-amalgam__1.14.00..	derivation		oewn-amalgamate__2.35.00..
+oewn-amalgamate__2.35.00..	derivation		oewn-amalgamative__3.01.00..
+oewn-amalgamate__2.35.00..	derivation		oewn-amalgamator__1.18.00..
+oewn-amalgamate__2.35.00..	other	agent	oewn-amalgamator__1.18.00..
+oewn-amalgamative__3.01.00..	pertainym		oewn-amalgamation__1.04.00..
+oewn-amaranthine__3.01.00..	pertainym		oewn-amaranth__1.20.01..
+oewn-amateur__1.18.00..	derivation		oewn-amateur__5.00.00.nonprofessional.00
+oewn-amateur__1.18.01..	antonym		oewn-professional__1.18.02..
+oewn-amateur__1.18.01..	derivation		oewn-amateur__5.00.00.nonprofessional.00
+oewn-amateur__1.18.01..	derivation		oewn-amateur__5.00.01.unprofessional.00
+oewn-amateurish__5.00.00.unprofessional.00	derivation		oewn-amateurishness__1.09.00..
+oewn-amateurishly__4.02.00..	antonym		oewn-expertly__4.02.00..
+oewn-amative__5.00.00.loving.00	derivation		oewn-amativeness__1.12.00..
+oewn-amaurosis__1.26.00..	derivation		oewn-amaurotic__3.01.00..
+oewn-amaurotic__3.01.00..	pertainym		oewn-amaurosis__1.26.00..
+oewn-amaze__2.31.00..	derivation		oewn-amazement__1.12.00..
+oewn-amaze__2.31.00..	other	state	oewn-amazement__1.12.00..
+oewn-amazingly__4.02.00..	pertainym		oewn-amazing__5.00.00.surprising.00
+oewn-ambage__1.10.00..	derivation		oewn-ambagious__5.00.00.indirect.02
+oewn-ambagious__5.00.00.indirect.02	exemplifies		oewn-archaism__1.10.00..
+oewn-ambassador__1.18.00..	derivation		oewn-ambassadorial__3.01.00..
+oewn-ambassador__1.18.00..	derivation		oewn-ambassadorship__1.04.00..
+oewn-ambassadorial__3.01.00..	pertainym		oewn-ambassador__1.18.00..
+oewn-amber__1.07.00..	derivation		oewn-amber__5.00.00.chromatic.00
+oewn-ambidexterity__1.07.00..	derivation		oewn-ambidextrous__3.00.00..
+oewn-ambidextrous__3.00.00..	antonym		oewn-left--handed__3.00.00..
+oewn-ambidextrous__3.00.00..	antonym		oewn-right--handed__3.00.00..
+oewn-ambidextrous__3.00.00..	derivation		oewn-ambidextrousness__1.07.00..
+oewn-ambience__1.26.00..	derivation		oewn-ambient__5.00.01.close.01
+oewn-ambiguity__1.07.00..	antonym		oewn-unambiguity__1.07.00..
+oewn-ambiguity__1.07.00..	derivation		oewn-ambiguous__3.00.00..
+oewn-ambiguity__1.07.00..	derivation		oewn-ambiguous__3.00.04..
+oewn-ambiguity__1.10.00..	derivation		oewn-ambiguous__3.00.04..
+oewn-ambiguity__1.10.00..	derivation		oewn-ambiguous__5.00.00.unstructured.00
+oewn-ambiguous__3.00.00..	antonym		oewn-unambiguous__3.00.00..
+oewn-ambiguously__4.02.00..	antonym		oewn-unambiguously__4.02.01..
+oewn-ambiguously__4.02.00..	pertainym		oewn-ambiguous__3.00.00..
+oewn-ambition__1.07.00..	derivation		oewn-ambition__2.37.00..
+oewn-ambition__1.07.00..	derivation		oewn-ambitious__3.00.00..
+oewn-ambition__1.12.00..	derivation		oewn-ambition__2.37.00..
+oewn-ambition__1.12.00..	derivation		oewn-ambitious__5.00.00.difficult.00
+oewn-ambition__2.37.00..	other	by_means_of	oewn-ambition__1.07.00..
+oewn-ambition__2.37.00..	other	undergoer	oewn-ambition__1.07.00..
+oewn-ambition__2.37.00..	other	undergoer	oewn-ambition__1.12.00..
+oewn-ambitious__3.00.00..	antonym		oewn-unambitious__3.00.00..
+oewn-ambitious__3.00.00..	derivation		oewn-ambitiousness__1.07.00..
+oewn-ambitiously__4.02.00..	antonym		oewn-unambitiously__4.02.00..
+oewn-ambitiously__4.02.00..	pertainym		oewn-ambitious__3.00.00..
+oewn-ambivalence__1.12.00..	derivation		oewn-ambivalent__5.00.00.uncertain.02
+oewn-ambiversion__1.07.00..	antonym		oewn-extraversion__1.07.00..
+oewn-ambiversion__1.07.00..	antonym		oewn-introversion__1.07.00..
+oewn-ambiversive__3.00.00..	antonym		oewn-extroversive__3.00.00..
+oewn-ambiversive__3.00.00..	antonym		oewn-introversive__3.00.00..
+oewn-amble__1.04.00..	derivation		oewn-amble__2.38.00..
+oewn-amble__1.04.00..	derivation		oewn-ambulate__2.38.00..
+oewn-amble__1.04.00..	derivation		oewn-perambulate__2.38.00..
+oewn-amble__2.38.00..	derivation		oewn-ambler__1.18.00..
+oewn-amble__2.38.00..	other	agent	oewn-ambler__1.18.00..
+oewn-amble__2.38.00..	other	event	oewn-amble__1.04.00..
+oewn-amblyopia__1.26.00..	derivation		oewn-amblyopic__3.01.00..
+oewn-amblyopic__3.01.00..	pertainym		oewn-amblyopia__1.26.00..
+oewn-ambrosia__1.13.01..	derivation		oewn-ambrosial__5.00.00.heavenly.00
+oewn-ambulacral__3.01.00..	derivation		oewn-ambulacrum__1.05.00..
+oewn-ambulacral__3.01.00..	pertainym		oewn-ambulacrum__1.05.00..
+oewn-ambulant__5.00.00.mobile.00	derivation		oewn-ambulate__2.38.00..
+oewn-ambulate__2.38.00..	derivation		oewn-ambulation__1.04.00..
+oewn-ambulate__2.38.00..	derivation		oewn-ambulatory__5.00.00.mobile.00
+oewn-ambulate__2.38.00..	other	event	oewn-ambulation__1.04.00..
+oewn-ambulation__1.04.00..	derivation		oewn-ambulatory__3.01.00..
+oewn-ambulatory__3.01.00..	pertainym		oewn-ambulation__1.04.00..
+oewn-ambuscade__1.04.00..	derivation		oewn-ambuscade__2.33.00..
+oewn-ambuscade__2.33.00..	other	event	oewn-ambuscade__1.04.00..
+oewn-ambush__1.04.00..	derivation		oewn-ambush__2.33.00..
+oewn-ambush__1.04.00..	derivation		oewn-ambush__2.33.01..
+oewn-ambush__2.33.00..	derivation		oewn-ambusher__1.18.00..
+oewn-ambush__2.33.00..	other	agent	oewn-ambusher__1.18.00..
+oewn-ambush__2.33.00..	other	event	oewn-ambush__1.04.00..
+oewn-ambush__2.33.01..	derivation		oewn-ambusher__1.18.00..
+oewn-ambush__2.33.01..	other	agent	oewn-ambusher__1.18.00..
+oewn-ambush__2.33.01..	other	event	oewn-ambush__1.04.00..
+oewn-ameba__1.05.00..	derivation		oewn-ameban__3.01.00..
+oewn-ameba__1.05.00..	derivation		oewn-amebic__3.01.00..
+oewn-ameba__1.05.00..	derivation		oewn-amebous__3.01.00..
+oewn-ameban__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-amebic__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-ameboid__3.01.00..	pertainym		oewn-ameba__1.05.00..
+oewn-amebous__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-ameliorate__2.30.00..	derivation		oewn-amelioration__1.04.00..
+oewn-ameliorate__2.30.00..	derivation		oewn-ameliorative__5.00.00.bettering.00
+oewn-ameliorate__2.30.00..	derivation		oewn-amelioratory__5.00.00.bettering.00
+oewn-ameliorate__2.30.00..	other	event	oewn-amelioration__1.04.00..
+oewn-ameliorate__2.30.01..	derivation		oewn-amelioration__1.04.00..
+oewn-ameliorate__2.30.01..	derivation		oewn-ameliorative__5.00.00.bettering.00
+oewn-ameliorate__2.30.01..	derivation		oewn-amelioratory__5.00.00.bettering.00
+oewn-ameliorate__2.30.01..	other	event	oewn-amelioration__1.04.00..
+oewn-amenability__1.07.00..	derivation		oewn-amenable__5.00.00.compliant.00
+oewn-amenability__1.07.00..	derivation		oewn-amenable__5.00.00.susceptible.00
+oewn-amenable__5.00.00.compliant.00	derivation		oewn-amenableness__1.07.00..
+oewn-amenable__5.00.00.responsible.00	derivation		oewn-amenableness__1.07.00..
+oewn-amenable__5.00.00.susceptible.00	derivation		oewn-amenableness__1.07.00..
+oewn-amend__2.30.00..	derivation		oewn-amendable__5.00.00.corrigible.00
+oewn-amend__2.30.01..	derivation		oewn-amendable__5.00.00.corrigible.00
+oewn-amend__2.32.00..	derivation		oewn-amendatory__5.00.00.bettering.00
+oewn-amend__2.32.00..	derivation		oewn-amendment__1.04.00..
+oewn-amend__2.32.00..	derivation		oewn-amendment__1.10.00..
+oewn-amend__2.32.00..	other	event	oewn-amendment__1.04.00..
+oewn-amend__2.32.00..	other	event	oewn-amendment__1.10.00..
+oewn-amended__3.00.00..	antonym		oewn-unamended__3.00.00..
+oewn-amenorrhea__1.26.00..	derivation		oewn-amenorrheal__3.01.00..
+oewn-amenorrheal__3.01.00..	pertainym		oewn-amenorrhea__1.26.00..
+oewn-amenorrheic__3.01.00..	pertainym		oewn-amenorrhea__1.26.00..
+oewn-amenorrhoea__1.26.00..	derivation		oewn-amenorrhoeal__3.01.00..
+oewn-amenorrhoeal__3.01.00..	pertainym		oewn-amenorrhea__1.26.00..
+oewn-amenorrhoeic__3.01.00..	pertainym		oewn-amenorrhea__1.26.00..
+oewn-ament__1.20.00..	derivation		oewn-amentaceous__5.00.00.productive.00
+oewn-amerce__2.41.00..	derivation		oewn-amerciable__5.00.00.illegal.00
+oewn-amerce__2.41.01..	derivation		oewn-amercement__1.21.00..
+oewn-amerce__2.41.01..	derivation		oewn-amerciable__5.00.00.illegal.00
+oewn-amerce__2.41.01..	other	result	oewn-amercement__1.21.00..
+oewn-american__1.10.00..	derivation		oewn-american__3.01.01..
+oewn-american__1.18.00..	derivation		oewn-american__3.01.01..
+oewn-american__1.18.00..	derivation		oewn-americanize__2.30.01..
+oewn-american__3.01.01..	derivation		oewn-americanize__2.30.00..
+oewn-american__3.01.01..	derivation		oewn-americanize__2.30.01..
+oewn-americanisation__1.22.00..	derivation		oewn-americanise__2.30.00..
+oewn-americanisation__1.22.00..	derivation		oewn-americanise__2.30.01..
+oewn-americanisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-americanisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-americanise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-americanise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-americanise__2.30.00..	other	event	oewn-americanisation__1.22.00..
+oewn-americanise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-americanise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-americanise__2.30.01..	other	event	oewn-americanisation__1.22.00..
+oewn-americanization__1.22.00..	derivation		oewn-americanize__2.30.00..
+oewn-americanization__1.22.00..	derivation		oewn-americanize__2.30.01..
+oewn-americanization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-americanize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-americanize__2.30.00..	other	event	oewn-americanization__1.22.00..
+oewn-americanize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-americanize__2.30.01..	other	event	oewn-americanization__1.22.00..
+oewn-amerind__1.10.00..	derivation		oewn-amerind__3.01.00..
+oewn-amerind__3.01.00..	pertainym		oewn-native_american__1.18.00..
+oewn-amerindic__3.01.00..	pertainym		oewn-native_american__1.18.00..
+oewn-ametabolic__3.00.00..	antonym		oewn-metabolic__3.00.00..
+oewn-amethyst__1.27.00..	derivation		oewn-amethyst__5.00.00.chromatic.00
+oewn-amethystine__3.01.00..	pertainym		oewn-amethyst__1.27.00..
+oewn-ametropia__1.26.00..	derivation		oewn-ametropic__3.00.00..
+oewn-ametropic__3.00.00..	antonym		oewn-emmetropic__3.00.00..
+oewn-amharic__1.10.00..	derivation		oewn-amharic__3.01.00..
+oewn-amharic__3.01.00..	pertainym		oewn-amharic__1.10.00..
+oewn-amiability__1.07.00..	derivation		oewn-amiable__5.00.00.friendly.01
+oewn-amiability__1.07.00..	derivation		oewn-amiable__5.00.00.good-natured.00
+oewn-amiability__1.12.00..	derivation		oewn-amiable__5.00.00.friendly.01
+oewn-amiability__1.12.00..	derivation		oewn-amiable__5.00.00.good-natured.00
+oewn-amiable__5.00.00.friendly.01	derivation		oewn-amity__1.26.00..
+oewn-amiable__5.00.00.good-natured.00	derivation		oewn-amiableness__1.07.00..
+oewn-amiably__4.02.00..	pertainym		oewn-amiable__5.00.00.friendly.01
+oewn-amicability__1.07.00..	derivation		oewn-amicable__3.00.00..
+oewn-amicable__3.00.00..	antonym		oewn-hostile__3.00.01..
+oewn-amicable__3.00.00..	derivation		oewn-amicableness__1.07.00..
+oewn-amicably__4.02.00..	pertainym		oewn-amicable__3.00.00..
+oewn-amine__1.27.00..	derivation		oewn-aminic__3.01.00..
+oewn-aminic__3.01.00..	pertainym		oewn-amine__1.27.00..
+oewn-amino__1.27.00..	derivation		oewn-amino__3.01.00..
+oewn-amino__3.01.00..	pertainym		oewn-amine__1.27.00..
+oewn-amitosis__1.22.00..	derivation		oewn-amitotic__3.01.00..
+oewn-amitotic__3.01.00..	pertainym		oewn-amitosis__1.22.00..
+oewn-ammino__3.01.00..	pertainym		oewn-ammine__1.27.00..
+oewn-ammonia__1.27.00..	derivation		oewn-ammoniate__2.30.00..
+oewn-ammonia__1.27.01..	derivation		oewn-ammoniate__2.30.00..
+oewn-ammoniac__1.27.00..	derivation		oewn-ammoniac__3.01.00..
+oewn-ammoniac__1.27.00..	derivation		oewn-ammoniacal__3.01.00..
+oewn-ammoniac__3.01.00..	pertainym		oewn-ammonia__1.27.00..
+oewn-ammoniacal__3.01.00..	pertainym		oewn-ammonia__1.27.00..
+oewn-ammoniated__3.01.00..	pertainym		oewn-ammonium__1.27.00..
+oewn-ammonification__1.22.00..	derivation		oewn-ammonify__2.30.00..
+oewn-ammonify__2.30.00..	derivation		oewn-ammonium__1.27.00..
+oewn-ammonify__2.30.00..	other	event	oewn-ammonification__1.22.00..
+oewn-ammonify__2.30.00..	other	uses	oewn-ammonium__1.27.00..
+oewn-ammonite__1.17.00..	derivation		oewn-ammonitic__3.01.00..
+oewn-ammonitic__3.01.00..	pertainym		oewn-ammonite__1.17.00..
+oewn-amnesia__1.09.00..	derivation		oewn-amnesic__3.01.00..
+oewn-amnesia__1.09.00..	derivation		oewn-amnesic__5.00.00.unmindful.00
+oewn-amnesia__1.09.00..	derivation		oewn-amnestic__3.01.00..
+oewn-amnesiac__1.18.00..	derivation		oewn-amnesiac__5.00.00.unmindful.00
+oewn-amnesic__1.18.00..	derivation		oewn-amnesic__3.01.00..
+oewn-amnesic__1.18.00..	derivation		oewn-amnesic__5.00.00.unmindful.00
+oewn-amnesic__3.01.00..	pertainym		oewn-amnesia__1.09.00..
+oewn-amnestic__3.01.00..	pertainym		oewn-amnesia__1.09.00..
+oewn-amnesty__1.04.00..	derivation		oewn-amnesty__2.32.00..
+oewn-amnesty__1.10.00..	derivation		oewn-amnesty__2.32.00..
+oewn-amnesty__1.26.00..	derivation		oewn-amnesty__2.32.00..
+oewn-amnesty__2.32.00..	other	by_means_of	oewn-amnesty__1.10.00..
+oewn-amnesty__2.32.00..	other	event	oewn-amnesty__1.04.00..
+oewn-amnesty__2.32.00..	other	event	oewn-amnesty__1.26.00..
+oewn-amnic__3.01.00..	derivation		oewn-amnion__1.05.00..
+oewn-amnic__3.01.00..	pertainym		oewn-amnion__1.05.00..
+oewn-amnion__1.05.00..	derivation		oewn-amnionic__3.01.00..
+oewn-amnion__1.05.00..	derivation		oewn-amniotic__3.01.00..
+oewn-amnionic__3.01.00..	pertainym		oewn-amnion__1.05.00..
+oewn-amniotic__3.01.00..	pertainym		oewn-amnion__1.05.00..
+oewn-amoeba__1.05.00..	derivation		oewn-amoeban__3.01.00..
+oewn-amoeba__1.05.00..	derivation		oewn-amoebic__3.01.00..
+oewn-amoeba__1.05.00..	derivation		oewn-amoebous__3.01.00..
+oewn-amoeban__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-amoebic__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-amoeboid__3.01.00..	pertainym		oewn-ameba__1.05.00..
+oewn-amoebous__3.01.00..	pertainym		oewn-amoeba__1.05.00..
+oewn-amok__4.02.00..	pertainym		oewn-amok__5.00.00.agitated.00
+oewn-amoralism__1.09.00..	derivation		oewn-amoralist__1.18.00..
+oewn-amorist__1.18.00..	derivation		oewn-amoristic__3.01.00..
+oewn-amoristic__3.01.00..	pertainym		oewn-amorist__1.18.00..
+oewn-amorous__5.00.01.loving.00	derivation		oewn-amorousness__1.12.01..
+oewn-amorous__5.00.02.loving.00	derivation		oewn-amorousness__1.12.02..
+oewn-amorously__4.02.00..	pertainym		oewn-amorous__5.00.01.loving.00
+oewn-amortisation__1.04.00..	derivation		oewn-amortise__2.40.00..
+oewn-amortisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-amortisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-amortisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-amortisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-amortise__2.40.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-amortise__2.40.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-amortise__2.40.00..	other	event	oewn-amortisation__1.04.00..
+oewn-amortization__1.04.00..	derivation		oewn-amortize__2.40.00..
+oewn-amortization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-amortization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-amortize__2.40.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-amortize__2.40.00..	other	event	oewn-amortization__1.04.00..
+oewn-amount__1.03.00..	derivation		oewn-amount__2.42.01..
+oewn-amount__1.09.00..	derivation		oewn-amount__2.42.01..
+oewn-amount__2.42.01..	other	result	oewn-amount__1.09.00..
+oewn-amount__2.42.01..	other	undergoer	oewn-amount__1.03.00..
+oewn-amphibian__1.05.00..	derivation		oewn-amphibian__3.01.00..
+oewn-amphibious__3.00.00..	antonym		oewn-aquatic__3.00.00..
+oewn-amphibious__3.00.00..	antonym		oewn-terrestrial__3.00.00..
+oewn-amphitheater__1.06.00..	derivation		oewn-amphitheatric__3.01.00..
+oewn-amphitheater__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-amphitheater__1.06.01..	derivation		oewn-amphitheatric__3.01.00..
+oewn-amphitheater__1.06.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-amphitheatre__1.06.00..	derivation		oewn-amphitheatrical__3.01.00..
+oewn-amphitheatre__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-amphitheatre__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-amphitheatre__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-amphitheatre__1.06.01..	derivation		oewn-amphitheatrical__3.01.00..
+oewn-amphitheatre__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-amphitheatre__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-amphitheatre__1.06.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-amphitheatric__3.01.00..	pertainym		oewn-amphitheater__1.06.00..
+oewn-amphitheatrical__3.01.00..	pertainym		oewn-amphitheater__1.06.00..
+oewn-amphitropous__3.00.00..	antonym		oewn-anatropous__3.00.00..
+oewn-amphoric__3.01.00..	pertainym		oewn-auscultation__1.04.00..
+oewn-ample__3.00.00..	antonym		oewn-meager__3.00.00..
+oewn-ample__3.00.00..	derivation		oewn-ampleness__1.07.01..
+oewn-ample__5.00.00.abundant.00	derivation		oewn-ampleness__1.07.01..
+oewn-ample__5.00.00.large.00	derivation		oewn-ampleness__1.07.00..
+oewn-amplifier__1.06.00..	derivation		oewn-amplify__2.30.00..
+oewn-amplifier__1.06.00..	derivation		oewn-amplify__2.30.01..
+oewn-amplify__2.30.00..	other	instrument	oewn-amplifier__1.06.00..
+oewn-amplify__2.30.01..	other	by_means_of	oewn-amplifier__1.06.00..
+oewn-amplify__2.30.01..	other	instrument	oewn-amplifier__1.06.00..
+oewn-amply__4.02.00..	antonym		oewn-meagerly__4.02.00..
+oewn-amply__4.02.00..	pertainym		oewn-ample__3.00.00..
+oewn-amply__4.02.01..	antonym		oewn-meagerly__4.02.00..
+oewn-amply__4.02.01..	pertainym		oewn-ample__3.00.00..
+oewn-ampulla__1.06.00..	derivation		oewn-ampullar__3.01.00..
+oewn-ampulla__1.06.00..	derivation		oewn-ampullary__3.01.00..
+oewn-ampulla__1.08.00..	derivation		oewn-ampullar__3.01.00..
+oewn-ampulla__1.08.00..	derivation		oewn-ampullary__3.01.00..
+oewn-ampullar__3.01.00..	pertainym		oewn-ampulla__1.08.00..
+oewn-ampullary__3.01.00..	pertainym		oewn-ampulla__1.08.00..
+oewn-amputate__2.35.00..	derivation		oewn-amputation__1.04.00..
+oewn-amputate__2.35.00..	derivation		oewn-amputation__1.26.00..
+oewn-amputate__2.35.00..	derivation		oewn-amputator__1.18.00..
+oewn-amputate__2.35.00..	other	agent	oewn-amputator__1.18.00..
+oewn-amputate__2.35.00..	other	event	oewn-amputation__1.04.00..
+oewn-amputate__2.35.00..	other	state	oewn-amputation__1.26.00..
+oewn-amuck__4.02.00..	pertainym		oewn-amuck__5.00.00.agitated.00
+oewn-amuse__2.32.00..	derivation		oewn-amusement__1.12.00..
+oewn-amuse__2.32.00..	derivation		oewn-amusive__5.00.00.interesting.00
+oewn-amuse__2.32.00..	other	state	oewn-amusement__1.12.00..
+oewn-amuse__2.41.00..	derivation		oewn-amusement__1.04.00..
+oewn-amuse__2.41.00..	derivation		oewn-amusive__5.00.00.interesting.00
+oewn-amuse__2.41.00..	other	event	oewn-amusement__1.04.00..
+oewn-amusingly__4.02.00..	pertainym		oewn-amusing__5.00.00.interesting.00
+oewn-amygdaline__3.01.00..	pertainym		oewn-almond__1.13.00..
+oewn-amyloid__1.27.01..	derivation		oewn-amyloidal__5.00.00.starchy.00
+oewn-amyloid__1.27.02..	derivation		oewn-amyloid__5.00.00.starchy.00
+oewn-amyloid__1.27.02..	derivation		oewn-amyloidal__5.00.00.starchy.00
+oewn-amylolysis__1.22.00..	derivation		oewn-amylolytic__3.01.00..
+oewn-amylolytic__3.01.00..	pertainym		oewn-amylolysis__1.22.00..

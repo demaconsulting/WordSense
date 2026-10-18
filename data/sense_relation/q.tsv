@@ -1,0 +1,300 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-qabala__1.10.00..	derivation		oewn-qabalistic__5.00.00.esoteric.00
+oewn-qatari__1.18.00..	derivation		oewn-qatari__3.01.00..
+oewn-quaalude__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-quack__1.11.00..	derivation		oewn-quack__2.32.00..
+oewn-quack__1.18.00..	derivation		oewn-quack__2.29.00..
+oewn-quack__2.29.00..	derivation		oewn-quackery__1.04.00..
+oewn-quack__2.29.00..	other	agent	oewn-quack__1.18.00..
+oewn-quack__2.32.00..	other	event	oewn-quack__1.11.00..
+oewn-quadrangle__1.06.00..	derivation		oewn-quadrangular__3.01.00..
+oewn-quadrangle__1.25.00..	derivation		oewn-quadrangular__3.01.00..
+oewn-quadrangular__3.01.00..	pertainym		oewn-quadrangle__1.25.00..
+oewn-quadraphonic__3.01.00..	derivation		oewn-quadraphony__1.06.00..
+oewn-quadraphonic__3.01.00..	pertainym		oewn-quadraphony__1.06.00..
+oewn-quadrasonic__3.01.00..	pertainym		oewn-quadraphony__1.06.00..
+oewn-quadrate__1.25.01..	derivation		oewn-quadratic__3.01.00..
+oewn-quadratic__3.01.00..	pertainym		oewn-square__1.23.00..
+oewn-quadriphonic__3.01.00..	pertainym		oewn-quadraphony__1.06.00..
+oewn-quadrisonic__3.01.00..	pertainym		oewn-quadraphony__1.06.00..
+oewn-quadruped__1.05.00..	derivation		oewn-quadrupedal__3.00.00..
+oewn-quadruple__1.09.00..	derivation		oewn-quadruple__2.30.00..
+oewn-quadruple__1.09.00..	derivation		oewn-quadruplicate__2.36.00..
+oewn-quadruple__2.30.00..	derivation		oewn-quadruplicate__1.06.00..
+oewn-quadruple__2.30.00..	derivation		oewn-quadrupling__1.22.00..
+oewn-quadruple__2.30.00..	other	result	oewn-quadruple__1.09.00..
+oewn-quadruplicate__1.06.00..	derivation		oewn-quadruplicate__2.36.00..
+oewn-quadruplicate__2.36.00..	other	result	oewn-quadruplicate__1.06.00..
+oewn-quaff__1.13.00..	derivation		oewn-quaff__2.34.00..
+oewn-quaff__2.34.00..	derivation		oewn-quaffer__1.18.00..
+oewn-quaff__2.34.00..	other	agent	oewn-quaffer__1.18.00..
+oewn-quaff__2.34.00..	other	event	oewn-quaff__1.13.00..
+oewn-quag__1.17.00..	derivation		oewn-quaggy__5.00.00.wet.01
+oewn-quaint__5.00.00.fashionable.00	derivation		oewn-quaintness__1.07.02..
+oewn-quaint__5.00.00.strange.00	derivation		oewn-quaintness__1.07.01..
+oewn-quaintly__4.02.00..	pertainym		oewn-quaint__5.00.00.fashionable.00
+oewn-quaintly__4.02.01..	pertainym		oewn-quaint__5.00.00.strange.00
+oewn-quake__1.11.00..	derivation		oewn-quake__2.38.02..
+oewn-quake__2.38.01..	derivation		oewn-quaker__1.18.01..
+oewn-quake__2.38.01..	other	agent	oewn-quaker__1.18.01..
+oewn-quake__2.38.02..	other	event	oewn-quake__1.11.00..
+oewn-qualification__1.04.00..	derivation		oewn-qualify__2.30.02..
+oewn-qualification__1.07.00..	derivation		oewn-qualify__2.32.00..
+oewn-qualification__1.07.00..	derivation		oewn-qualify__2.32.02..
+oewn-qualification__1.07.00..	derivation		oewn-qualify__2.42.00..
+oewn-qualification__1.10.00..	derivation		oewn-qualify__2.30.02..
+oewn-qualified__3.00.01..	antonym		oewn-unqualified__3.00.01..
+oewn-qualified__3.00.02..	antonym		oewn-unqualified__3.00.02..
+oewn-qualifier__1.10.00..	derivation		oewn-qualify__2.30.01..
+oewn-qualifier__1.18.00..	derivation		oewn-qualify__2.42.00..
+oewn-qualify__2.30.00..	derivation		oewn-quality__1.07.02..
+oewn-qualify__2.30.00..	other	result	oewn-quality__1.07.02..
+oewn-qualify__2.30.01..	derivation		oewn-qualifying__1.24.00..
+oewn-qualify__2.30.01..	other	agent	oewn-qualifier__1.10.00..
+oewn-qualify__2.30.01..	other	uses	oewn-qualifier__1.10.00..
+oewn-qualify__2.30.01..	other	uses	oewn-qualifying__1.24.00..
+oewn-qualify__2.30.02..	derivation		oewn-quality__1.09.00..
+oewn-qualify__2.30.02..	other	by_means_of	oewn-qualification__1.10.00..
+oewn-qualify__2.30.02..	other	by_means_of	oewn-quality__1.09.00..
+oewn-qualify__2.30.02..	other	event	oewn-qualification__1.04.00..
+oewn-qualify__2.32.00..	other	property	oewn-qualification__1.07.00..
+oewn-qualify__2.32.00..	other	undergoer	oewn-qualification__1.07.00..
+oewn-qualify__2.32.01..	derivation		oewn-quality__1.07.00..
+oewn-qualify__2.32.01..	derivation		oewn-quality__1.09.00..
+oewn-qualify__2.32.01..	other	undergoer	oewn-quality__1.07.00..
+oewn-qualify__2.32.01..	other	undergoer	oewn-quality__1.09.00..
+oewn-qualify__2.32.02..	derivation		oewn-quality__1.07.02..
+oewn-qualify__2.32.02..	other	by_means_of	oewn-qualification__1.07.00..
+oewn-qualify__2.32.02..	other	by_means_of	oewn-quality__1.07.02..
+oewn-qualify__2.32.02..	other	property	oewn-qualification__1.07.00..
+oewn-qualify__2.42.00..	derivation		oewn-qualifying__1.04.00..
+oewn-qualify__2.42.00..	derivation		oewn-quality__1.07.02..
+oewn-qualify__2.42.00..	derivation		oewn-quality__1.26.00..
+oewn-qualify__2.42.00..	other	agent	oewn-qualifier__1.18.00..
+oewn-qualify__2.42.00..	other	by_means_of	oewn-qualification__1.07.00..
+oewn-qualify__2.42.00..	other	by_means_of	oewn-quality__1.07.02..
+oewn-qualify__2.42.00..	other	by_means_of	oewn-quality__1.26.00..
+oewn-qualify__2.42.00..	other	event	oewn-qualifying__1.04.00..
+oewn-qualify__2.42.00..	other	property	oewn-qualification__1.07.00..
+oewn-qualitative__3.00.00..	antonym		oewn-quantitative__3.00.00..
+oewn-qualitative__3.01.00..	pertainym		oewn-qualitative_analysis__1.04.00..
+oewn-qualitatively__4.02.00..	pertainym		oewn-qualitative__3.01.00..
+oewn-quantal__3.01.00..	derivation		oewn-quantum__1.09.00..
+oewn-quantal__3.01.00..	derivation		oewn-quantum__1.09.01..
+oewn-quantal__3.01.00..	pertainym		oewn-quantum__1.09.00..
+oewn-quantifiability__1.07.00..	derivation		oewn-quantifiable__5.00.00.quantitative.00
+oewn-quantification__1.04.00..	derivation		oewn-quantify__2.30.00..
+oewn-quantification__1.09.00..	derivation		oewn-quantify__2.30.01..
+oewn-quantify__2.30.00..	derivation		oewn-quantity__1.09.01..
+oewn-quantify__2.30.00..	other	event	oewn-quantification__1.04.00..
+oewn-quantify__2.30.00..	other	undergoer	oewn-quantity__1.09.01..
+oewn-quantify__2.30.01..	other	by_means_of	oewn-quantification__1.09.00..
+oewn-quantisation__1.04.00..	derivation		oewn-quantise__2.31.00..
+oewn-quantisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-quantisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-quantise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-quantise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-quantise__2.31.00..	other	event	oewn-quantisation__1.04.00..
+oewn-quantise__2.31.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-quantise__2.31.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-quantitative__3.00.01..	antonym		oewn-syllabic__3.00.01..
+oewn-quantitative__3.01.00..	pertainym		oewn-quantity__1.07.00..
+oewn-quantitatively__4.02.00..	pertainym		oewn-quantitative__3.01.00..
+oewn-quantization__1.04.00..	derivation		oewn-quantize__2.31.00..
+oewn-quantization__1.04.00..	derivation		oewn-quantize__2.31.01..
+oewn-quantization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-quantize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-quantize__2.31.00..	other	event	oewn-quantization__1.04.00..
+oewn-quantize__2.31.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-quantize__2.31.01..	other	event	oewn-quantization__1.04.00..
+oewn-quantized__3.01.00..	pertainym		oewn-quantum__1.09.00..
+oewn-quarantine__1.04.00..	derivation		oewn-quarantine__2.30.00..
+oewn-quarantine__1.26.00..	derivation		oewn-quarantine__2.30.00..
+oewn-quarantine__2.30.00..	other	event	oewn-quarantine__1.04.00..
+oewn-quarantine__2.30.00..	other	event	oewn-quarantine__1.26.00..
+oewn-quarrel__1.10.00..	derivation		oewn-quarrel__2.32.00..
+oewn-quarrel__2.32.00..	derivation		oewn-quarreler__1.18.00..
+oewn-quarrel__2.32.00..	derivation		oewn-quarreller__1.18.00..
+oewn-quarrel__2.32.00..	other	agent	oewn-quarreler__1.18.00..
+oewn-quarrel__2.32.00..	other	agent	oewn-quarreller__1.18.00..
+oewn-quarrel__2.32.00..	other	event	oewn-quarrel__1.10.00..
+oewn-quarrelsome__5.00.00.argumentative.00	derivation		oewn-quarrelsomeness__1.07.00..
+oewn-quarrier__1.18.00..	derivation		oewn-quarry__2.34.00..
+oewn-quarry__1.06.00..	derivation		oewn-quarry__2.34.00..
+oewn-quarry__2.34.00..	derivation		oewn-quarrying__1.04.00..
+oewn-quarry__2.34.00..	other	agent	oewn-quarrier__1.18.00..
+oewn-quartan__3.01.00..	pertainym		oewn-time_period__1.28.00..
+oewn-quarter__1.23.01..	derivation		oewn-quarter__2.35.01..
+oewn-quarter__1.23.01..	derivation		oewn-quarter__2.41.00..
+oewn-quarter__1.23.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-quarter__1.28.02..	derivation		oewn-quarterly__3.01.00..
+oewn-quarter__2.31.00..	derivation		oewn-quartering__1.04.00..
+oewn-quarter__2.35.01..	derivation		oewn-quartering__1.04.00..
+oewn-quarter__2.35.01..	other	result	oewn-quarter__1.23.01..
+oewn-quarter__2.41.00..	other	result	oewn-quarter__1.23.01..
+oewn-quarter__2.42.00..	derivation		oewn-quartering__1.06.00..
+oewn-quarter__2.42.00..	derivation		oewn-quarters__1.06.00..
+oewn-quarterback__1.04.00..	derivation		oewn-quarterback__2.33.00..
+oewn-quarterback__1.18.00..	derivation		oewn-quarterback__2.33.00..
+oewn-quarterback__2.33.00..	other	agent	oewn-quarterback__1.18.00..
+oewn-quarterback__2.33.00..	other	undergoer	oewn-quarterback__1.04.00..
+oewn-quarterly__3.01.00..	pertainym		oewn-quarter__1.28.02..
+oewn-quarterly__4.02.00..	pertainym		oewn-quarterly__3.01.00..
+oewn-quartzose__3.01.00..	pertainym		oewn-quartz__1.27.00..
+oewn-quaver__1.10.00..	derivation		oewn-quaver__2.32.00..
+oewn-quaver__1.11.00..	derivation		oewn-quaver__2.32.01..
+oewn-quaver__2.32.00..	other	event	oewn-quaver__1.10.00..
+oewn-quaver__2.32.01..	other	event	oewn-quaver__1.11.00..
+oewn-quaveringly__4.02.00..	pertainym		oewn-quavering__5.00.00.unsteady.00
+oewn-queasily__4.02.00..	pertainym		oewn-queasy__5.00.00.ill.01
+oewn-queasiness__1.07.00..	derivation		oewn-queasy__5.00.00.troubled.00
+oewn-queasiness__1.26.00..	derivation		oewn-queasy__5.00.00.ill.01
+oewn-quechua__1.10.00..	derivation		oewn-quechuan__3.01.00..
+oewn-quechua__1.18.00..	derivation		oewn-quechuan__3.01.00..
+oewn-quechuan__3.01.00..	pertainym		oewn-quechua__1.10.00..
+oewn-quechuan__3.01.00..	pertainym		oewn-quechua__1.18.00..
+oewn-queen__1.06.00..	derivation		oewn-queen__2.38.00..
+oewn-queen__1.06.00..	derivation		oewn-queen__2.41.00..
+oewn-queen__1.18.00..	derivation		oewn-queenly__5.00.00.noble.02
+oewn-queen__1.18.01..	derivation		oewn-queenly__5.00.00.noble.02
+oewn-queen__2.38.00..	other	result	oewn-queen__1.06.00..
+oewn-queen__2.41.00..	other	result	oewn-queen__1.06.00..
+oewn-queer__5.00.00.homosexual.00	derivation		oewn-queerness__1.04.00..
+oewn-queer__5.00.00.strange.00	derivation		oewn-queerness__1.07.00..
+oewn-queerly__4.02.01..	pertainym		oewn-queer__5.00.00.strange.00
+oewn-quell__2.30.00..	derivation		oewn-quelling__1.04.00..
+oewn-quench__2.43.00..	derivation		oewn-quenching__1.04.00..
+oewn-querier__1.18.00..	derivation		oewn-query__2.32.00..
+oewn-querulous__5.00.00.complaining.00	derivation		oewn-querulousness__1.07.00..
+oewn-querulously__4.02.00..	pertainym		oewn-querulous__5.00.00.complaining.00
+oewn-query__1.10.00..	derivation		oewn-query__2.32.00..
+oewn-query__2.32.00..	other	agent	oewn-querier__1.18.00..
+oewn-query__2.32.00..	other	event	oewn-query__1.10.00..
+oewn-quest__1.04.00..	derivation		oewn-quest__2.40.00..
+oewn-quest__2.40.00..	derivation		oewn-quester__1.18.00..
+oewn-quest__2.40.00..	other	agent	oewn-quester__1.18.00..
+oewn-quest__2.40.00..	other	event	oewn-quest__1.04.00..
+oewn-question__1.07.00..	derivation		oewn-question__2.32.01..
+oewn-question__1.07.00..	derivation		oewn-question__2.32.02..
+oewn-question__1.10.00..	derivation		oewn-question__2.32.00..
+oewn-question__1.10.00..	derivation		oewn-question__2.32.03..
+oewn-question__1.10.00..	derivation		oewn-question__2.32.09..
+oewn-question__1.10.03..	derivation		oewn-question__2.32.00..
+oewn-question__1.10.03..	derivation		oewn-question__2.32.03..
+oewn-question__2.32.00..	derivation		oewn-questioner__1.18.00..
+oewn-question__2.32.00..	derivation		oewn-questioning__1.10.00..
+oewn-question__2.32.00..	other	agent	oewn-questioner__1.18.00..
+oewn-question__2.32.00..	other	event	oewn-question__1.10.00..
+oewn-question__2.32.00..	other	event	oewn-question__1.10.03..
+oewn-question__2.32.01..	other	event	oewn-question__1.07.00..
+oewn-question__2.32.01..	other	result	oewn-question__1.07.00..
+oewn-question__2.32.02..	other	event	oewn-question__1.07.00..
+oewn-question__2.32.02..	other	result	oewn-question__1.07.00..
+oewn-question__2.32.03..	derivation		oewn-questioning__1.10.00..
+oewn-question__2.32.03..	other	event	oewn-question__1.10.00..
+oewn-question__2.32.03..	other	event	oewn-question__1.10.03..
+oewn-question__2.32.09..	other	event	oewn-question__1.10.00..
+oewn-questionable__3.00.00..	antonym		oewn-unquestionable__3.00.00..
+oewn-questionably__4.02.00..	pertainym		oewn-questionable__3.00.00..
+oewn-questioningly__4.02.00..	pertainym		oewn-questioning__5.00.00.curious.00
+oewn-questioningly__4.02.01..	pertainym		oewn-questioning__5.00.00.perplexed.00
+oewn-queue__1.14.00..	derivation		oewn-queue__2.38.00..
+oewn-queue__2.38.00..	other	result	oewn-queue__1.14.00..
+oewn-quibble__1.10.00..	derivation		oewn-quibble__2.32.01..
+oewn-quibble__2.32.00..	derivation		oewn-quibbler__1.18.00..
+oewn-quibble__2.32.00..	other	agent	oewn-quibbler__1.18.00..
+oewn-quibble__2.32.01..	derivation		oewn-quibbler__1.18.00..
+oewn-quibble__2.32.01..	other	agent	oewn-quibbler__1.18.00..
+oewn-quibble__2.32.01..	other	event	oewn-quibble__1.10.00..
+oewn-quick--witted__5.00.00.adroit.00	derivation		oewn-quick--wittedness__1.09.00..
+oewn-quick__5.00.00.active.01	derivation		oewn-quickness__1.07.00..
+oewn-quick__5.00.00.active.01	derivation		oewn-quickness__1.09.01..
+oewn-quick__5.00.00.excitable.00	derivation		oewn-quickness__1.07.00..
+oewn-quick__5.00.00.fast.01	derivation		oewn-quickness__1.07.00..
+oewn-quick__5.00.00.hurried.00	derivation		oewn-quickness__1.07.00..
+oewn-quick__5.00.00.intelligent.00	derivation		oewn-quickness__1.09.00..
+oewn-quick__5.00.02.fast.01	derivation		oewn-quickness__1.07.00..
+oewn-quicken__2.29.00..	derivation		oewn-quickener__1.17.00..
+oewn-quicken__2.29.00..	other	by_means_of	oewn-quickener__1.17.00..
+oewn-quicken__2.29.02..	derivation		oewn-quickening__1.26.00..
+oewn-quicken__2.30.00..	derivation		oewn-quickener__1.17.00..
+oewn-quicken__2.30.00..	other	by_means_of	oewn-quickener__1.17.00..
+oewn-quicken__2.30.01..	derivation		oewn-quickening__1.04.00..
+oewn-quicker__4.02.00..	pertainym		oewn-quick__5.00.00.fast.01
+oewn-quickest__4.02.00..	pertainym		oewn-quick__5.00.00.fast.01
+oewn-quickly__4.02.00..	antonym		oewn-slowly__4.02.02..
+oewn-quickly__4.02.00..	pertainym		oewn-quick__5.00.00.fast.01
+oewn-quickly__4.02.02..	pertainym		oewn-quick__5.00.00.fast.01
+oewn-quickly__4.02.03..	pertainym		oewn-quick__5.00.00.hurried.00
+oewn-quickstep__1.04.01..	derivation		oewn-quickstep__2.38.00..
+oewn-quickstep__2.38.00..	other	event	oewn-quickstep__1.04.01..
+oewn-quiesce__2.39.00..	derivation		oewn-quiescent__5.00.00.dormant.00
+oewn-quiescence__1.04.00..	derivation		oewn-quiescent__5.00.00.quiet.02
+oewn-quiescence__1.26.00..	derivation		oewn-quiescent__5.00.00.dormant.00
+oewn-quiescence__1.26.00..	derivation		oewn-quiescent__5.00.00.inactive.07
+oewn-quiescency__1.04.00..	derivation		oewn-quiescent__5.00.00.quiet.02
+oewn-quiescency__1.26.00..	derivation		oewn-quiescent__5.00.00.dormant.00
+oewn-quiescency__1.26.00..	derivation		oewn-quiescent__5.00.00.inactive.07
+oewn-quiet__1.07.00..	derivation		oewn-quiet__2.37.00..
+oewn-quiet__1.07.02..	derivation		oewn-quiet__2.39.00..
+oewn-quiet__2.37.00..	other	result	oewn-quiet__1.07.00..
+oewn-quiet__2.39.00..	other	event	oewn-quiet__1.07.02..
+oewn-quiet__3.00.01..	derivation		oewn-quietness__1.07.00..
+oewn-quiet__3.00.02..	antonym		oewn-unquiet__3.00.00..
+oewn-quiet__3.00.02..	derivation		oewn-quietness__1.12.00..
+oewn-quiet__5.00.00.calm.00	derivation		oewn-quietness__1.12.00..
+oewn-quietism__1.09.00..	derivation		oewn-quietist__1.18.00..
+oewn-quietly__4.02.01..	pertainym		oewn-quiet__3.00.01..
+oewn-quietly__4.02.02..	antonym		oewn-unquietly__4.02.00..
+oewn-quietly__4.02.02..	pertainym		oewn-quiet__3.00.02..
+oewn-quilt__1.06.00..	derivation		oewn-quilt__2.36.00..
+oewn-quilt__1.06.00..	derivation		oewn-quilt__2.36.01..
+oewn-quilt__2.36.00..	derivation		oewn-quilting__1.06.01..
+oewn-quilt__2.36.00..	other	result	oewn-quilt__1.06.00..
+oewn-quilt__2.36.01..	derivation		oewn-quilting__1.06.01..
+oewn-quilt__2.36.01..	other	result	oewn-quilt__1.06.00..
+oewn-quin__1.18.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-quincentenary__3.01.00..	pertainym		oewn-quincentenary__1.28.00..
+oewn-quincentennial__3.01.00..	pertainym		oewn-quincentennial__1.28.00..
+oewn-quinidex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-quinora__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-quint__1.18.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-quintessence__1.09.00..	derivation		oewn-quintessential__3.01.00..
+oewn-quintessence__1.09.01..	derivation		oewn-quintessential__3.01.00..
+oewn-quintessence__1.27.00..	derivation		oewn-quintessential__3.01.00..
+oewn-quintessential__3.01.00..	pertainym		oewn-quintessence__1.09.01..
+oewn-quintuple__2.30.00..	derivation		oewn-quintupling__1.22.00..
+oewn-quip__1.10.00..	derivation		oewn-quip__2.32.00..
+oewn-quip__1.10.01..	derivation		oewn-quip__2.32.00..
+oewn-quip__2.32.00..	other	event	oewn-quip__1.10.00..
+oewn-quip__2.32.00..	other	event	oewn-quip__1.10.01..
+oewn-quirk__1.07.00..	derivation		oewn-quirky__5.00.00.unconventional.01
+oewn-quirkiness__1.07.00..	derivation		oewn-quirky__5.00.00.unconventional.01
+oewn-quit__2.33.05..	derivation		oewn-quitter__1.18.00..
+oewn-quit__2.33.05..	other	agent	oewn-quitter__1.18.00..
+oewn-quiver__1.04.00..	derivation		oewn-quiver__2.38.00..
+oewn-quiver__1.26.00..	derivation		oewn-quiver__2.38.00..
+oewn-quiver__2.38.00..	derivation		oewn-quivering__1.26.00..
+oewn-quiver__2.38.00..	other	event	oewn-quiver__1.04.00..
+oewn-quiver__2.38.00..	other	event	oewn-quiver__1.26.00..
+oewn-quixotically__4.02.00..	pertainym		oewn-quixotic__5.00.00.impractical.00
+oewn-quiz__1.10.00..	derivation		oewn-quiz__2.32.00..
+oewn-quiz__2.32.00..	derivation		oewn-quizzer__1.18.00..
+oewn-quiz__2.32.00..	other	agent	oewn-quizzer__1.18.00..
+oewn-quiz__2.32.00..	other	event	oewn-quiz__1.10.00..
+oewn-quizzically__4.02.00..	pertainym		oewn-quizzical__5.00.00.perplexed.00
+oewn-quotability__1.07.00..	derivation		oewn-quotable__3.00.00..
+oewn-quotability__1.07.00..	derivation		oewn-quotable__5.00.00.worthy.00
+oewn-quotable__3.00.00..	antonym		oewn-unquotable__3.00.00..
+oewn-quotation__1.04.00..	derivation		oewn-quote__2.32.00..
+oewn-quotation__1.10.00..	derivation		oewn-quote__2.32.00..
+oewn-quotation__1.10.02..	derivation		oewn-quote__2.32.13..
+oewn-quote__1.10.00..	derivation		oewn-quote__2.32.07..
+oewn-quote__1.10.01..	derivation		oewn-quote__2.32.00..
+oewn-quote__2.32.00..	derivation		oewn-quoter__1.18.00..
+oewn-quote__2.32.00..	other	agent	oewn-quoter__1.18.00..
+oewn-quote__2.32.00..	other	event	oewn-quotation__1.04.00..
+oewn-quote__2.32.00..	other	event	oewn-quote__1.10.01..
+oewn-quote__2.32.00..	other	undergoer	oewn-quotation__1.10.00..
+oewn-quote__2.32.07..	other	uses	oewn-quote__1.10.00..
+oewn-quote__2.32.13..	other	by_means_of	oewn-quotation__1.10.02..

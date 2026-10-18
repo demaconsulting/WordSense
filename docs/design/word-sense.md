@@ -24,6 +24,9 @@ layered NuGet packages, each modeled as a subsystem, plus a non-shipped build-ti
   embedded weights. See _BertBaseCased Design_.
 - **WordSenseBuilder** (unit, `tools/WordSense.Builder`): builds the lexicon blob, trains the weights of each encoder
   model and measures the models. It is never shipped. See _WordSenseBuilder Unit Design_.
+- **WordData** (`data/` and `tools/WordSense.Builder/Data`): the TSV word data imported from Open English WordNet
+  (CC BY 4.0) with its schema, and the builder code that imports and validates it. Data only; no package reads it
+  yet. See _WordData Subsystem Design_.
 
 The layering is strict. Core references nothing. Basic and Onnx reference only core. MiniLM and BertBaseCased
 reference only Onnx and, through it, core. Model packages never reference each other, so a consumer installs only the

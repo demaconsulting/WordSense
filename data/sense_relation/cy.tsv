@@ -1,0 +1,119 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-cyan__1.07.00..	derivation		oewn-cyan__5.00.00.chromatic.00
+oewn-cyanobacteria__1.05.00..	derivation		oewn-cyanobacterial__3.01.00..
+oewn-cyanogen__1.27.00..	derivation		oewn-cyanogenetic__5.00.00.toxic.00
+oewn-cyanogen__1.27.00..	derivation		oewn-cyanogenic__5.00.00.toxic.00
+oewn-cyanophyte__3.01.00..	pertainym		oewn-cyanophyta__1.05.00..
+oewn-cyber--terrorism__1.04.00..	derivation		oewn-cyber--terrorist__1.18.00..
+oewn-cybernate__2.36.00..	derivation		oewn-cybernation__1.04.00..
+oewn-cybernate__2.36.00..	other	event	oewn-cybernation__1.04.00..
+oewn-cybernetic__3.01.00..	derivation		oewn-cybernetics__1.09.00..
+oewn-cybernetic__3.01.00..	pertainym		oewn-cybernetics__1.09.00..
+oewn-cycladic_civilisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cycladic_civilisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cycladic_civilization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cycle__1.06.00..	derivation		oewn-cyclist__1.18.00..
+oewn-cycle__1.11.02..	derivation		oewn-cycle__2.30.00..
+oewn-cycle__1.11.02..	derivation		oewn-cycle__2.38.02..
+oewn-cycle__1.11.02..	derivation		oewn-cycle__2.38.03..
+oewn-cycle__1.11.02..	derivation		oewn-cyclic__3.00.01..
+oewn-cycle__1.11.02..	derivation		oewn-cyclic__5.00.00.periodic.00
+oewn-cycle__1.11.02..	derivation		oewn-cyclical__3.00.00..
+oewn-cycle__1.28.00..	derivation		oewn-cycle__2.30.00..
+oewn-cycle__1.28.00..	derivation		oewn-cycle__2.38.02..
+oewn-cycle__1.28.00..	derivation		oewn-cycle__2.38.03..
+oewn-cycle__1.28.00..	derivation		oewn-cyclic__3.00.01..
+oewn-cycle__2.30.00..	other	event	oewn-cycle__1.11.02..
+oewn-cycle__2.30.00..	other	event	oewn-cycle__1.28.00..
+oewn-cycle__2.38.00..	derivation		oewn-cycling__1.04.00..
+oewn-cycle__2.38.01..	derivation		oewn-cycling__1.04.00..
+oewn-cycle__2.38.01..	derivation		oewn-cyclist__1.18.00..
+oewn-cycle__2.38.02..	other	event	oewn-cycle__1.11.02..
+oewn-cycle__2.38.02..	other	event	oewn-cycle__1.28.00..
+oewn-cycle__2.38.03..	other	event	oewn-cycle__1.11.02..
+oewn-cycle__2.38.03..	other	event	oewn-cycle__1.28.00..
+oewn-cyclic__3.00.01..	antonym		oewn-noncyclic__3.00.00..
+oewn-cyclic__3.00.01..	derivation		oewn-cyclicity__1.07.00..
+oewn-cyclic__3.01.00..	pertainym		oewn-carnot_cycle__1.11.00..
+oewn-cyclic__5.00.00.periodic.00	derivation		oewn-cyclicity__1.07.00..
+oewn-cycloid__1.25.00..	derivation		oewn-cycloidal__5.00.00.rounded.00
+oewn-cyclonal__3.01.00..	derivation		oewn-cyclone__1.19.00..
+oewn-cyclonal__3.01.00..	pertainym		oewn-cyclone__1.19.00..
+oewn-cyclonal__3.01.01..	derivation		oewn-cyclone__1.26.00..
+oewn-cyclone__1.19.00..	derivation		oewn-cyclonic__3.01.00..
+oewn-cyclone__1.19.00..	derivation		oewn-cyclonic__3.01.01..
+oewn-cyclone__1.19.00..	derivation		oewn-cyclonical__3.01.00..
+oewn-cyclone__1.26.00..	derivation		oewn-cyclonic__3.01.00..
+oewn-cyclone__1.26.00..	derivation		oewn-cyclonic__3.01.01..
+oewn-cyclone__1.26.00..	derivation		oewn-cyclonical__3.01.01..
+oewn-cyclonic__3.01.00..	pertainym		oewn-cyclone__1.19.00..
+oewn-cyclonic__3.01.01..	pertainym		oewn-cyclone__1.26.00..
+oewn-cyclonical__3.01.00..	pertainym		oewn-cyclone__1.19.00..
+oewn-cyclopean__3.01.00..	derivation		oewn-cyclops__1.18.00..
+oewn-cyclopean__3.01.00..	pertainym		oewn-cyclops__1.18.00..
+oewn-cyclostyle__1.06.00..	derivation		oewn-cyclostyle__2.36.00..
+oewn-cyclostyle__2.36.00..	other	instrument	oewn-cyclostyle__1.06.00..
+oewn-cyclothymia__1.26.00..	derivation		oewn-cyclothymic__3.01.00..
+oewn-cyclothymic__3.01.00..	pertainym		oewn-cyclothymia__1.26.00..
+oewn-cylinder__1.25.00..	derivation		oewn-cylindric__5.00.00.rounded.00
+oewn-cylinder__1.25.02..	derivation		oewn-cylindric__5.00.00.rounded.00
+oewn-cylindrical__5.00.00.rounded.00	derivation		oewn-cylindricality__1.07.00..
+oewn-cylindrical__5.00.00.rounded.00	derivation		oewn-cylindricalness__1.07.00..
+oewn-cynic__1.18.00..	derivation		oewn-cynical__5.00.00.distrustful.00
+oewn-cynically__4.02.00..	pertainym		oewn-cynical__5.00.00.distrustful.00
+oewn-cypher__1.10.00..	derivation		oewn-cypher__2.32.00..
+oewn-cypher__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__1.10.01..	derivation		oewn-cypher__2.32.00..
+oewn-cypher__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__1.18.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__1.18.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__1.23.01..	derivation		oewn-cypher__2.31.00..
+oewn-cypher__1.23.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__1.23.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__2.31.00..	other	by_means_of	oewn-cypher__1.23.01..
+oewn-cypher__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cypher__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cypher__2.32.00..	other	by_means_of	oewn-cypher__1.10.00..
+oewn-cypher__2.32.00..	other	result	oewn-cypher__1.10.01..
+oewn-cyprian__1.18.00..	derivation		oewn-cyprian__3.01.00..
+oewn-cyprinid__1.05.00..	derivation		oewn-cyprinid__3.01.00..
+oewn-cypriot__1.18.00..	derivation		oewn-cypriot__3.01.00..
+oewn-cypriote__1.18.00..	derivation		oewn-cypriote__3.01.00..
+oewn-cyrillic__1.10.00..	derivation		oewn-cyrillic__3.01.00..
+oewn-cyrillic__3.01.00..	pertainym		oewn-cyrillic__1.10.00..
+oewn-cyst__1.08.00..	derivation		oewn-cystic__3.01.01..
+oewn-cyst__1.26.00..	derivation		oewn-cystic__3.01.00..
+oewn-cystic__3.01.00..	pertainym		oewn-cyst__1.26.00..
+oewn-cystic__3.01.01..	pertainym		oewn-cyst__1.08.00..
+oewn-cytoarchitectonic__3.01.00..	derivation		oewn-cytoarchitecture__1.07.00..
+oewn-cytoarchitectonic__3.01.00..	pertainym		oewn-cytoarchitectonics__1.07.00..
+oewn-cytoarchitectural__3.01.00..	derivation		oewn-cytoarchitecture__1.07.00..
+oewn-cytoarchitectural__3.01.00..	pertainym		oewn-cytoarchitecture__1.07.00..
+oewn-cytogenesis__1.22.00..	derivation		oewn-cytogenetic__3.01.00..
+oewn-cytogenetic__3.01.00..	pertainym		oewn-cytogenetics__1.09.00..
+oewn-cytogenetical__3.01.00..	derivation		oewn-cytogenetics__1.09.00..
+oewn-cytogenetical__3.01.00..	pertainym		oewn-cytogenetics__1.09.00..
+oewn-cytokinetic__3.01.00..	pertainym		oewn-cytokinesis__1.22.00..
+oewn-cytologic__3.01.00..	derivation		oewn-cytology__1.09.00..
+oewn-cytologic__3.01.00..	pertainym		oewn-cytology__1.09.00..
+oewn-cytological__3.01.00..	derivation		oewn-cytology__1.09.00..
+oewn-cytological__3.01.00..	pertainym		oewn-cytology__1.09.00..
+oewn-cytolysis__1.22.00..	derivation		oewn-cytolytic__3.01.00..
+oewn-cytolytic__3.01.00..	pertainym		oewn-cytolysis__1.22.00..
+oewn-cytophotometric__3.01.00..	pertainym		oewn-cytophotometry__1.04.00..
+oewn-cytophotometrically__4.02.00..	pertainym		oewn-cytophotometric__3.01.00..
+oewn-cytoplasm__1.08.00..	derivation		oewn-cytoplasmatic__3.01.00..
+oewn-cytoplasm__1.08.00..	derivation		oewn-cytoplasmic__3.01.00..
+oewn-cytoplasm__1.08.00..	derivation		oewn-cytoplastic__3.01.00..
+oewn-cytoplasmatic__3.01.00..	pertainym		oewn-cytoplasm__1.08.00..
+oewn-cytoplasmic__3.01.00..	pertainym		oewn-cytoplasm__1.08.00..
+oewn-cytoplasmically__4.02.00..	pertainym		oewn-cytoplasmic__3.01.00..
+oewn-cytoplastic__3.01.00..	pertainym		oewn-cytoplast__1.08.00..
+oewn-cytotoxic__3.01.00..	derivation		oewn-cytotoxin__1.27.00..
+oewn-cytotoxic__3.01.00..	pertainym		oewn-cytotoxin__1.27.00..

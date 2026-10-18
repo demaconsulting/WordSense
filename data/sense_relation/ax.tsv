@@ -1,0 +1,37 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-ax__1.06.00..	derivation		oewn-ax__2.35.00..
+oewn-ax__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ax__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ax__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ax__2.35.00..	other	instrument	oewn-ax__1.06.00..
+oewn-axe__1.06.00..	derivation		oewn-axe__2.35.00..
+oewn-axe__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-axe__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-axe__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-axe__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-axe__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-axe__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-axe__2.35.00..	other	instrument	oewn-axe__1.06.00..
+oewn-axial__3.01.00..	derivation		oewn-axis__1.06.00..
+oewn-axial__3.01.00..	pertainym		oewn-axis__1.06.00..
+oewn-axial__3.01.02..	derivation		oewn-axis__1.09.00..
+oewn-axial__3.01.02..	pertainym		oewn-axis__1.20.00..
+oewn-axial__5.00.00.lengthwise.00	derivation		oewn-axis__1.09.00..
+oewn-axially__4.02.00..	pertainym		oewn-axial__3.01.00..
+oewn-axil__1.20.00..	derivation		oewn-axillary__3.01.02..
+oewn-axile__3.01.00..	pertainym		oewn-axis__1.20.00..
+oewn-axilla__1.08.00..	derivation		oewn-axillary__3.01.01..
+oewn-axillary__3.01.01..	pertainym		oewn-armpit__1.08.00..
+oewn-axillary__3.01.02..	pertainym		oewn-axil__1.20.00..
+oewn-axiological__3.01.00..	derivation		oewn-axiology__1.09.00..
+oewn-axiological__3.01.00..	pertainym		oewn-axiology__1.09.00..
+oewn-axiom__1.10.00..	derivation		oewn-axiomatic__3.01.02..
+oewn-axiom__1.10.01..	derivation		oewn-axiomatic__3.01.00..
+oewn-axiom__1.10.01..	derivation		oewn-axiomatic__5.00.00.obvious.00
+oewn-axiom__1.10.01..	derivation		oewn-axiomatical__3.01.00..
+oewn-axiomatic__3.01.00..	pertainym		oewn-axiom__1.10.01..
+oewn-axiomatic__3.01.02..	pertainym		oewn-axiom__1.10.00..
+oewn-axiomatical__3.01.00..	pertainym		oewn-axiom__1.10.01..
+oewn-axiomatically__4.02.00..	pertainym		oewn-axiomatic__3.01.00..
+oewn-axon__1.08.00..	derivation		oewn-axonal__3.01.00..
+oewn-axonal__3.01.00..	pertainym		oewn-axon__1.08.00..

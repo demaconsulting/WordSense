@@ -1,0 +1,374 @@
+---
+# WordSense data schema, version 1.
+#
+# The committed tables under data/ are the authoritative word data: they are validated by `validate-data`, never
+# regenerated over edits. This file is a restricted YAML subset (block mappings, block sequences, flow sequences of
+# scalars, comments); see data/README.md and docs/design/word-sense/word-data/data-schema.md.
+#
+# Column types: text, id (no white space), int (canonical non-negative decimal), enum:<vocabulary>, features
+# (set of Feature=Value items joined by '+'). A trailing '?' allows an empty cell (NULL). An empty cell in a primary
+# key column is allowed only for a nullable column and sorts first.
+# Rows are sorted by the primary key columns in the order listed, by UTF-8 bytes (int columns numerically).
+schema_version: 1
+data_release: oewn-2025
+
+# First letters whose files are split by the first two letters of the lemma (data/<table>/sa.tsv, s_.tsv, ...).
+# Written by `import-oewn`; the validator checks placement against this plan and never infers it.
+file_split: [a, b, c, p, s]
+
+vocabularies:
+  pos:
+    n: noun
+    v: verb
+    a: adjective
+    r: adverb
+  synset_pos:
+    n: noun
+    v: verb
+    a: adjective
+    r: adverb
+    s: adjective satellite
+  relation_subtype:
+    agent: the agent of an event
+    body_part: a body part
+    by_means_of: the means by which something is done
+    destination: the destination of an event
+    event: the event of an agent, state or result
+    instrument: the instrument of an event
+    location: the location of an event
+    material: the material something is made of
+    property: the property of a state or attribute
+    result: the result of an event
+    state: the state of a property
+    undergoer: the undergoer of an event
+    uses: what something is used for
+    vehicle: the vehicle of an event
+  class_kind:
+    sense_group: a group of senses of one lemma
+    no_oewn: a class that has no sense in OEWN, covered by a supplementary entry
+    lemma_split: a class whose lemma is an inflected form of other entries
+    feature_only: a class that is a grammatical feature of an entry, not a sense
+    unmapped: the senses of a lemma and part of speech that no class covers
+  synset_relation_type:
+    hypernym:
+      inverse: hyponym
+      symmetric: false
+      stored: true
+    hyponym:
+      inverse: hypernym
+      symmetric: false
+      stored: false
+    mero_member:
+      inverse: holo_member
+      symmetric: false
+      stored: true
+    holo_member:
+      inverse: mero_member
+      symmetric: false
+      stored: false
+    mero_part:
+      inverse: holo_part
+      symmetric: false
+      stored: true
+    holo_part:
+      inverse: mero_part
+      symmetric: false
+      stored: false
+    mero_substance:
+      inverse: holo_substance
+      symmetric: false
+      stored: true
+    holo_substance:
+      inverse: mero_substance
+      symmetric: false
+      stored: false
+    domain_topic:
+      inverse: has_domain_topic
+      symmetric: false
+      stored: true
+    has_domain_topic:
+      inverse: domain_topic
+      symmetric: false
+      stored: false
+    domain_region:
+      inverse: has_domain_region
+      symmetric: false
+      stored: true
+    has_domain_region:
+      inverse: domain_region
+      symmetric: false
+      stored: false
+    exemplifies:
+      inverse: is_exemplified_by
+      symmetric: false
+      stored: true
+    is_exemplified_by:
+      inverse: exemplifies
+      symmetric: false
+      stored: false
+    entails:
+      inverse: is_entailed_by
+      symmetric: false
+      stored: true
+    is_entailed_by:
+      inverse: entails
+      symmetric: false
+      stored: false
+    causes:
+      inverse: is_caused_by
+      symmetric: false
+      stored: true
+    is_caused_by:
+      inverse: causes
+      symmetric: false
+      stored: false
+    similar:
+      inverse: similar
+      symmetric: true
+      stored: true
+    also:
+      inverse: also
+      symmetric: true
+      stored: true
+    attribute:
+      inverse: attribute
+      symmetric: true
+      stored: true
+  sense_relation_type:
+    antonym:
+      inverse: antonym
+      symmetric: true
+      stored: true
+    derivation:
+      inverse: derivation
+      symmetric: true
+      stored: true
+    also:
+      inverse: also
+      symmetric: true
+      stored: true
+    similar:
+      inverse: similar
+      symmetric: true
+      stored: true
+    exemplifies:
+      inverse: is_exemplified_by
+      symmetric: false
+      stored: true
+    is_exemplified_by:
+      inverse: exemplifies
+      symmetric: false
+      stored: false
+    pertainym:
+      inverse: ""
+      symmetric: false
+      stored: true
+    participle:
+      inverse: ""
+      symmetric: false
+      stored: true
+    other:
+      inverse: ""
+      symmetric: false
+      stored: true
+
+# The closed feature vocabulary of the analysis (forms) table of a later release; class_entry already uses it.
+features:
+  Number: [Sing, Plur]
+  Tense: [Pres, Past]
+  VerbForm: [Inf, Fin, Part, Ger]
+  Person: ["3"]
+  Degree: [Pos, Cmp, Sup]
+  Poss: ["Yes"]
+  Contraction: ["Yes"]
+  Capitalization: [Lower, Title, Upper, Exact]
+
+tables:
+  source:
+    description: The origin of rows (a word-data release or a supplementary source).
+    columns:
+      source_id: id
+      name: text
+      license: text
+      url: text
+      version: text
+    primary_key: [source_id]
+    partition:
+      by: none
+
+  entry:
+    description: A lemma with a part of speech and a homograph number (OEWN lexical entry).
+    columns:
+      entry_id: id
+      lemma: text
+      pos: enum:pos
+      homograph_no: int
+      token_count: int
+      head_idx: int
+      source_id: id
+    primary_key: [entry_id]
+    unique:
+      - [lemma, pos, homograph_no]
+    foreign_keys:
+      source_id: source.source_id
+    partition:
+      by: lemma
+      column: lemma
+
+  synset:
+    description: A set of senses with one meaning (OEWN synset).
+    columns:
+      synset_id: id
+      pos: enum:synset_pos
+      head_synset_id: id?
+      lexfile: text?
+    primary_key: [synset_id]
+    foreign_keys:
+      head_synset_id: synset.synset_id
+    partition:
+      by: synset
+      column: synset_id
+
+  gloss:
+    description: The definition text of a synset (one row per definition).
+    columns:
+      synset_id: id
+      seq: int
+      text: text
+    primary_key: [synset_id, seq]
+    foreign_keys:
+      synset_id: synset.synset_id
+    partition:
+      by: synset
+      column: synset_id
+
+  example:
+    description: An example phrase of a synset.
+    columns:
+      synset_id: id
+      seq: int
+      sense_id: id?
+      text: text
+    primary_key: [synset_id, seq]
+    foreign_keys:
+      synset_id: synset.synset_id
+      sense_id: sense.sense_id
+    partition:
+      by: synset
+      column: synset_id
+
+  sense:
+    description: A lemma-in-a-synset (OEWN sense); its part of speech comes from the synset.
+    columns:
+      sense_id: id
+      sense_key: text?
+      entry_id: id
+      synset_id: id
+      position: int
+    primary_key: [sense_id]
+    unique:
+      - [entry_id, position]
+      - [sense_key]
+    foreign_keys:
+      entry_id: entry.entry_id
+      synset_id: synset.synset_id
+    partition:
+      by: entry
+      column: entry_id
+
+  synset_relation:
+    description: A relation between synsets, stored in one direction; the inverse is derived.
+    columns:
+      from_synset: id
+      rel: enum:synset_relation_type
+      to_synset: id
+    primary_key: [from_synset, rel, to_synset]
+    foreign_keys:
+      from_synset: synset.synset_id
+      to_synset: synset.synset_id
+    partition:
+      by: synset
+      column: from_synset
+
+  sense_relation:
+    description: A relation between senses, stored in one direction; the inverse is derived.
+    columns:
+      from_sense: id
+      rel: enum:sense_relation_type
+      rel_subtype: enum:relation_subtype?
+      to_sense: id
+    primary_key: [from_sense, rel, rel_subtype, to_sense]
+    foreign_keys:
+      from_sense: sense.sense_id
+      to_sense: sense.sense_id
+    partition:
+      by: sense
+      column: from_sense
+
+  pronunciation:
+    description: A pronunciation (IPA) of an entry as given by the source; a hint, not a decision.
+    columns:
+      entry_id: id
+      seq: int
+      variety: text?
+      text: text
+    primary_key: [entry_id, seq]
+    foreign_keys:
+      entry_id: entry.entry_id
+    partition:
+      by: entry
+      column: entry_id
+
+  id_map:
+    description: Maps an identifier of an earlier release to the identifier of a later one.
+    columns:
+      old_id: id
+      new_id: id
+      release: text
+    primary_key: [old_id, release]
+    partition:
+      by: none
+
+  coarse_class:
+    description: A class of the coarse sense inventory of the shipped models, as a group of senses.
+    columns:
+      class_id: id
+      lemma: text
+      label: text
+      pos: enum:pos
+      kind: enum:class_kind
+    primary_key: [class_id]
+    unique:
+      - [lemma, label]
+    partition:
+      by: lemma
+      column: lemma
+
+  class_sense:
+    description: Assigns a sense to a coarse class; every sense is in at most one class.
+    columns:
+      class_id: id
+      sense_id: id
+    primary_key: [class_id, sense_id]
+    unique:
+      - [sense_id]
+    foreign_keys:
+      class_id: coarse_class.class_id
+      sense_id: sense.sense_id
+    partition:
+      by: class
+      column: class_id
+
+  class_entry:
+    description: Links a class that is an inflected form or a feature to the entry it stands for.
+    columns:
+      class_id: id
+      entry_id: id
+      features: features?
+    primary_key: [class_id, entry_id, features]
+    foreign_keys:
+      class_id: coarse_class.class_id
+      entry_id: entry.entry_id
+    partition:
+      by: class
+      column: class_id

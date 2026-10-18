@@ -1,0 +1,411 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-cease__1.28.00..	derivation		oewn-cease__2.42.00..
+oewn-cease__2.42.00..	derivation		oewn-cessation__1.11.00..
+oewn-cease__2.42.00..	other	event	oewn-cease__1.28.00..
+oewn-cease__2.42.00..	other	event	oewn-cessation__1.11.00..
+oewn-ceaseless__5.00.00.continuous.01	derivation		oewn-ceaselessness__1.07.00..
+oewn-ceaselessly__4.02.00..	pertainym		oewn-ceaseless__5.00.00.continuous.01
+oewn-cebion__1.06.01..	exemplifies		oewn-trademark__1.10.00..
+oewn-cecal__3.01.00..	derivation		oewn-cecum__1.08.00..
+oewn-cecal__3.01.00..	pertainym		oewn-cecum__1.08.00..
+oewn-cede__2.40.00..	derivation		oewn-cession__1.04.00..
+oewn-cede__2.40.00..	other	event	oewn-cession__1.04.00..
+oewn-cede__2.40.01..	derivation		oewn-cession__1.04.00..
+oewn-cede__2.40.01..	other	event	oewn-cession__1.04.00..
+oewn-cefobid__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-ceilinged__3.00.00..	antonym		oewn-floored__3.00.00..
+oewn-celebrant__1.18.01..	derivation		oewn-celebrate__2.41.00..
+oewn-celebrant__1.18.01..	derivation		oewn-celebrate__2.41.01..
+oewn-celebrate__2.41.00..	derivation		oewn-celebration__1.04.00..
+oewn-celebrate__2.41.00..	derivation		oewn-celebration__1.11.00..
+oewn-celebrate__2.41.00..	derivation		oewn-celebrator__1.18.00..
+oewn-celebrate__2.41.00..	derivation		oewn-celebratory__3.01.00..
+oewn-celebrate__2.41.00..	other	agent	oewn-celebrator__1.18.00..
+oewn-celebrate__2.41.00..	other	event	oewn-celebration__1.04.00..
+oewn-celebrate__2.41.00..	other	event	oewn-celebration__1.11.00..
+oewn-celebrate__2.41.01..	derivation		oewn-celebration__1.04.00..
+oewn-celebrate__2.41.01..	derivation		oewn-celebration__1.04.01..
+oewn-celebrate__2.41.01..	derivation		oewn-celebration__1.11.00..
+oewn-celebrate__2.41.01..	derivation		oewn-celebrator__1.18.00..
+oewn-celebrate__2.41.01..	other	agent	oewn-celebrator__1.18.00..
+oewn-celebrate__2.41.01..	other	event	oewn-celebration__1.04.00..
+oewn-celebrate__2.41.01..	other	event	oewn-celebration__1.04.01..
+oewn-celebrate__2.41.01..	other	event	oewn-celebration__1.11.00..
+oewn-celebratory__3.01.00..	pertainym		oewn-celebration__1.11.00..
+oewn-celebrex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-celestial__3.01.00..	pertainym		oewn-heaven__1.09.00..
+oewn-celestial__3.01.01..	pertainym		oewn-sky__1.17.00..
+oewn-celiac__3.01.00..	pertainym		oewn-abdominal_cavity__1.08.00..
+oewn-celiac__3.01.01..	pertainym		oewn-celiac_disease__1.26.00..
+oewn-celibate__1.18.00..	derivation		oewn-celibate__5.00.00.chaste.00
+oewn-cell__1.03.00..	derivation		oewn-cellular__3.00.00..
+oewn-cell__1.03.00..	derivation		oewn-cellular__3.01.00..
+oewn-cell__1.06.00..	derivation		oewn-cellular__3.01.00..
+oewn-cell__1.06.01..	derivation		oewn-cellular__3.01.00..
+oewn-cell__1.06.02..	derivation		oewn-cellular__3.01.00..
+oewn-cell__1.06.03..	derivation		oewn-cellular__3.00.00..
+oewn-cell__1.06.03..	derivation		oewn-cellular__3.01.00..
+oewn-cell__1.14.00..	derivation		oewn-cellular__3.00.00..
+oewn-cell__1.14.00..	derivation		oewn-cellular__3.01.00..
+oewn-cell_phone__2.32.00..	derivation		oewn-cellphone__1.06.00..
+oewn-cellist__1.18.00..	derivation		oewn-cello__1.06.00..
+oewn-cellular__3.00.00..	antonym		oewn-noncellular__3.00.00..
+oewn-cellular__3.00.00..	derivation		oewn-cellularity__1.26.00..
+oewn-cellular__3.01.00..	pertainym		oewn-cell__1.03.00..
+oewn-celt__1.18.00..	derivation		oewn-celtic__3.01.00..
+oewn-celtic__1.10.00..	derivation		oewn-celtic__3.01.00..
+oewn-celtic__3.01.00..	pertainym		oewn-celt__1.18.00..
+oewn-cement__1.27.00..	derivation		oewn-cement__2.35.00..
+oewn-cement__1.27.00..	derivation		oewn-cement__2.35.02..
+oewn-cement__1.27.00..	derivation		oewn-cementitious__3.01.00..
+oewn-cement__1.27.01..	derivation		oewn-cementitious__3.01.00..
+oewn-cement__1.27.04..	derivation		oewn-cement__2.35.00..
+oewn-cement__1.27.04..	derivation		oewn-cement__2.35.02..
+oewn-cement__2.35.00..	other	by_means_of	oewn-cement__1.27.00..
+oewn-cement__2.35.00..	other	by_means_of	oewn-cement__1.27.04..
+oewn-cement__2.35.02..	other	by_means_of	oewn-cement__1.27.00..
+oewn-cement__2.35.02..	other	by_means_of	oewn-cement__1.27.04..
+oewn-cement__2.35.02..	other	uses	oewn-cement__1.27.00..
+oewn-cement__2.35.02..	other	uses	oewn-cement__1.27.04..
+oewn-cementitious__3.01.00..	pertainym		oewn-cement__1.27.00..
+oewn-cenobite__1.18.00..	antonym		oewn-eremite__1.18.00..
+oewn-cenobite__1.18.00..	derivation		oewn-cenobitic__3.01.00..
+oewn-cenobite__1.18.00..	derivation		oewn-cenobitical__3.01.00..
+oewn-cenobitic__3.01.00..	antonym		oewn-eremitic__3.01.00..
+oewn-cenobitic__3.01.00..	pertainym		oewn-cenobite__1.18.00..
+oewn-cenobitical__3.01.00..	pertainym		oewn-cenobite__1.18.00..
+oewn-cenogenesis__1.22.00..	antonym		oewn-palingenesis__1.22.00..
+oewn-cenogenesis__1.22.00..	derivation		oewn-cenogenetic__3.01.00..
+oewn-cenogenetic__3.01.00..	antonym		oewn-palingenetic__3.01.00..
+oewn-cenogenetic__3.01.00..	pertainym		oewn-cenogenesis__1.22.00..
+oewn-censor__1.18.00..	derivation		oewn-censor__2.31.00..
+oewn-censor__1.18.00..	derivation		oewn-censorial__3.01.00..
+oewn-censor__1.18.00..	derivation		oewn-censorship__1.04.00..
+oewn-censor__1.18.01..	derivation		oewn-censorial__3.01.00..
+oewn-censor__1.18.01..	derivation		oewn-censorious__5.00.00.critical.01
+oewn-censor__2.31.00..	other	agent	oewn-censor__1.18.00..
+oewn-censored__3.00.00..	antonym		oewn-uncensored__3.00.00..
+oewn-censorial__3.01.00..	pertainym		oewn-censor__1.18.00..
+oewn-censure__1.10.00..	derivation		oewn-censure__2.32.00..
+oewn-censure__2.32.00..	other	event	oewn-censure__1.10.00..
+oewn-census__1.04.00..	derivation		oewn-census__2.32.00..
+oewn-census__2.32.00..	other	event	oewn-census__1.04.00..
+oewn-centenarian__1.18.00..	derivation		oewn-centenarian__5.00.00.old.02
+oewn-centenary__1.28.00..	derivation		oewn-centenary__3.01.00..
+oewn-centenary__3.01.00..	pertainym		oewn-century__1.28.00..
+oewn-centennial__1.28.00..	derivation		oewn-centennial__3.01.00..
+oewn-centennial__3.01.00..	pertainym		oewn-century__1.28.00..
+oewn-centennially__4.02.00..	pertainym		oewn-centennial__3.01.00..
+oewn-center__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.04.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.06.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.06.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.08.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.09.00..	derivation		oewn-central__5.00.00.important.00
+oewn-center__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.09.01..	derivation		oewn-center__2.31.00..
+oewn-center__1.09.01..	derivation		oewn-center__2.42.00..
+oewn-center__1.09.01..	derivation		oewn-central__5.00.00.important.00
+oewn-center__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.13.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.14.00..	derivation		oewn-center__3.00.00..
+oewn-center__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.14.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.15.00..	derivation		oewn-center__2.38.00..
+oewn-center__1.15.00..	derivation		oewn-center__5.00.00.central.01
+oewn-center__1.15.00..	derivation		oewn-central__3.00.01..
+oewn-center__1.15.00..	derivation		oewn-centric__5.00.00.central.01
+oewn-center__1.15.00..	derivation		oewn-centrical__5.00.00.central.01
+oewn-center__1.15.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.15.01..	derivation		oewn-central__3.00.01..
+oewn-center__1.15.01..	derivation		oewn-centric__5.00.00.central.01
+oewn-center__1.15.01..	derivation		oewn-centrical__5.00.00.central.01
+oewn-center__1.15.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.15.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.18.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__1.18.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__2.31.00..	derivation		oewn-centering__1.09.00..
+oewn-center__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__2.31.00..	other	undergoer	oewn-center__1.09.01..
+oewn-center__2.38.00..	also		oewn-center_on__2.42.00..
+oewn-center__2.38.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__2.38.00..	other	location	oewn-center__1.15.00..
+oewn-center__2.42.00..	derivation		oewn-centering__1.09.00..
+oewn-center__2.42.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__2.42.00..	other	undergoer	oewn-center__1.09.01..
+oewn-center__3.00.00..	antonym		oewn-left__3.00.02..
+oewn-center__3.00.00..	antonym		oewn-right__3.00.03..
+oewn-center__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-center__5.00.00.central.01	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centered__5.00.00.central.01	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centering__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centering__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centesimal__3.01.00..	pertainym		oewn-hundredth__1.23.00..
+oewn-centigrade__3.01.00..	pertainym		oewn-centigrade_scale__1.24.00..
+oewn-centiliter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centilitre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centilitre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centilitre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centimeter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centimetre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centimetre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centimetre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-central__1.06.00..	derivation		oewn-central__3.00.01..
+oewn-central__3.00.01..	antonym		oewn-peripheral__3.00.00..
+oewn-central__3.00.01..	derivation		oewn-centrality__1.07.00..
+oewn-central_american__1.18.00..	derivation		oewn-central_american__3.01.00..
+oewn-centralisation__1.04.00..	derivation		oewn-centralise__2.30.00..
+oewn-centralisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centralisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centralisation__1.04.01..	derivation		oewn-centralise__2.30.00..
+oewn-centralisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centralisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centralise__2.30.00..	antonym		oewn-decentralise__2.30.00..
+oewn-centralise__2.30.00..	antonym		oewn-decentralize__2.30.00..
+oewn-centralise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centralise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centralise__2.30.00..	other	event	oewn-centralisation__1.04.00..
+oewn-centralise__2.30.00..	other	event	oewn-centralisation__1.04.01..
+oewn-centralising__3.00.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centralising__3.00.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centralist__3.01.00..	pertainym		oewn-centralization__1.04.00..
+oewn-centralistic__3.01.00..	pertainym		oewn-centralization__1.04.00..
+oewn-centrality__1.07.00..	antonym		oewn-marginality__1.07.00..
+oewn-centralization__1.04.00..	antonym		oewn-decentralization__1.04.00..
+oewn-centralization__1.04.00..	derivation		oewn-centralize__2.30.00..
+oewn-centralization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centralization__1.04.01..	derivation		oewn-centralize__2.30.00..
+oewn-centralization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centralize__2.30.00..	antonym		oewn-decentralize__2.30.00..
+oewn-centralize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centralize__2.30.00..	other	event	oewn-centralization__1.04.00..
+oewn-centralize__2.30.00..	other	event	oewn-centralization__1.04.01..
+oewn-centralized__3.00.00..	antonym		oewn-decentralized__3.00.00..
+oewn-centralizing__3.00.00..	antonym		oewn-decentralizing__3.00.00..
+oewn-centralizing__3.00.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-centrally__4.02.00..	antonym		oewn-peripherally__4.02.00..
+oewn-centrally__4.02.00..	pertainym		oewn-central__3.00.01..
+oewn-centre__1.04.04..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.04.04..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.04.04..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.04.05..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.04.05..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.04.05..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.04.06..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.04.06..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.04.06..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.06.12..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.06.12..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.06.12..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.06.13..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.06.13..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.06.13..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.08.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.08.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.08.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.09.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.09.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.09.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.09.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.13.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.13.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.13.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.14.07..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.14.07..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.14.07..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.14.08..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.14.08..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.14.08..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.15.00..	derivation		oewn-centre__2.38.00..
+oewn-centre__1.15.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.15.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.15.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.15.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.15.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.15.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.15.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.15.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.15.03..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.18.09..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.18.09..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.18.09..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.18.10..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.18.10..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.18.10..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__1.18.11..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__1.18.11..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__1.18.11..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__2.31.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__2.38.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__2.38.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__2.38.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__2.38.00..	other	location	oewn-centre__1.15.00..
+oewn-centre__2.42.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__2.42.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__2.42.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__3.00.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__3.00.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__3.00.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre__5.00.01.central.01	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centre__5.00.01.central.01	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centre__5.00.01.central.01	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centre_bit__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_bit__1.06.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_attention__1.09.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_attention__1.09.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_buoyancy__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_buoyancy__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_curvature__1.07.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_curvature__1.07.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_flotation__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_flotation__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_gravity__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_gravity__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_immersion__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_immersion__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_of_mass__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_of_mass__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_spread__1.10.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_spread__1.10.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_stage__1.15.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_stage__1.15.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centre_stage__1.26.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centre_stage__1.26.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centreboard__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centreboard__1.06.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centred__5.00.01.central.01	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centred__5.00.01.central.01	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centred__5.00.01.central.01	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centrefold__1.10.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centrefold__1.10.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centrepiece__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centrepiece__1.06.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centrepiece__1.09.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-centrepiece__1.09.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-centrifugal__3.00.00..	antonym		oewn-centripetal__3.00.00..
+oewn-centrifugal_force__1.19.00..	antonym		oewn-centripetal_force__1.19.00..
+oewn-centrifugate__2.38.00..	derivation		oewn-centrifuge__1.06.00..
+oewn-centrifugation__1.22.00..	derivation		oewn-centrifuge__2.38.00..
+oewn-centrifuge__1.06.00..	derivation		oewn-centrifuge__2.38.00..
+oewn-centrifuge__2.38.00..	other	event	oewn-centrifugation__1.22.00..
+oewn-centrifuge__2.38.00..	other	instrument	oewn-centrifuge__1.06.00..
+oewn-centring__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centring__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centring__1.04.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centring__1.09.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-centring__1.09.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-centring__1.09.02..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-centrism__1.09.00..	derivation		oewn-centrist__1.18.00..
+oewn-centrist__1.18.00..	derivation		oewn-centrist__5.00.00.center.00
+oewn-centroid__1.15.00..	derivation		oewn-centroidal__3.01.00..
+oewn-centroidal__3.01.00..	pertainym		oewn-centroid__1.15.00..
+oewn-centromere__1.08.00..	derivation		oewn-centromeric__3.01.00..
+oewn-centromeric__3.01.00..	pertainym		oewn-centromere__1.08.00..
+oewn-centrosome__1.08.00..	derivation		oewn-centrosomic__3.01.00..
+oewn-centrosomic__3.01.00..	pertainym		oewn-centrosome__1.08.00..
+oewn-cephalic__3.01.00..	pertainym		oewn-head__1.08.00..
+oewn-cephalopod__1.05.00..	derivation		oewn-cephalopod__3.01.00..
+oewn-ceramic__1.06.00..	derivation		oewn-ceramic__3.01.00..
+oewn-ceramic__3.01.00..	derivation		oewn-ceramics__1.04.00..
+oewn-ceramic__3.01.00..	pertainym		oewn-ceramic__1.06.00..
+oewn-ceramicist__1.18.00..	derivation		oewn-ceramics__1.04.00..
+oewn-ceramics__1.04.00..	derivation		oewn-ceramist__1.18.00..
+oewn-cercaria__1.05.00..	derivation		oewn-cercarial__3.01.00..
+oewn-cercarial__3.01.00..	pertainym		oewn-cercaria__1.05.00..
+oewn-cereal__1.13.00..	derivation		oewn-cereal__3.01.00..
+oewn-cereal__1.13.01..	derivation		oewn-cereal__3.01.00..
+oewn-cereal__1.20.00..	derivation		oewn-cereal__3.01.00..
+oewn-cereal__3.01.00..	pertainym		oewn-grain__1.20.00..
+oewn-cerebellar__3.01.00..	derivation		oewn-cerebellum__1.08.00..
+oewn-cerebellar__3.01.00..	pertainym		oewn-cerebellum__1.08.00..
+oewn-cerebral__3.00.00..	antonym		oewn-emotional__3.00.02..
+oewn-cerebral__3.01.00..	pertainym		oewn-cerebrum__1.08.00..
+oewn-cerebrally__4.02.00..	pertainym		oewn-cerebral__3.01.00..
+oewn-cerebrally__4.02.01..	pertainym		oewn-cerebral__3.00.00..
+oewn-cerebrate__2.31.00..	derivation		oewn-cerebration__1.09.00..
+oewn-cerebrate__2.31.00..	other	event	oewn-cerebration__1.09.00..
+oewn-cerebrospinal__3.01.00..	pertainym		oewn-brain__1.08.00..
+oewn-cerebrospinal__3.01.00..	pertainym		oewn-spinal_cord__1.08.00..
+oewn-cerebrovascular__3.01.00..	pertainym		oewn-blood_vessel__1.08.00..
+oewn-cerebrovascular__3.01.00..	pertainym		oewn-brain__1.08.00..
+oewn-ceremonial__1.11.00..	derivation		oewn-ceremonial__5.00.00.formal.01
+oewn-ceremonial__5.00.00.formal.01	derivation		oewn-ceremony__1.04.00..
+oewn-ceremonial__5.00.00.formal.01	derivation		oewn-ceremony__1.04.01..
+oewn-ceremonial__5.00.00.formal.01	derivation		oewn-ceremony__1.11.00..
+oewn-ceremonially__4.02.00..	pertainym		oewn-ceremonial__5.00.00.formal.01
+oewn-ceremonious__3.01.00..	pertainym		oewn-ceremony__1.04.01..
+oewn-ceremonious__5.00.00.formal.01	derivation		oewn-ceremoniousness__1.07.00..
+oewn-ceremonious__5.00.00.formal.01	derivation		oewn-ceremony__1.04.00..
+oewn-ceremonious__5.00.00.formal.01	derivation		oewn-ceremony__1.04.01..
+oewn-ceremoniously__4.02.00..	antonym		oewn-unceremoniously__4.02.00..
+oewn-ceremoniously__4.02.00..	pertainym		oewn-ceremonious__5.00.00.formal.01
+oewn-ceremoniousness__1.07.00..	antonym		oewn-unceremoniousness__1.07.00..
+oewn-ceric__3.01.00..	pertainym		oewn-cerium__1.27.00..
+oewn-cerise__1.07.00..	derivation		oewn-cerise__5.00.00.chromatic.00
+oewn-cerium__1.27.00..	derivation		oewn-cerous__3.01.00..
+oewn-cerous__3.01.00..	pertainym		oewn-cerium__1.27.00..
+oewn-certain__3.00.01..	antonym		oewn-uncertain__3.00.01..
+oewn-certain__3.00.02..	antonym		oewn-uncertain__3.00.02..
+oewn-certain__3.00.03..	antonym		oewn-uncertain__3.00.03..
+oewn-certainly__4.02.00..	pertainym		oewn-certain__3.00.01..
+oewn-certainty__1.07.00..	antonym		oewn-uncertainty__1.07.00..
+oewn-certainty__1.09.00..	antonym		oewn-uncertainty__1.09.00..
+oewn-certifiable__5.00.00.certified.00	derivation		oewn-certify__2.41.00..
+oewn-certifiable__5.00.00.insane.00	derivation		oewn-certify__2.32.01..
+oewn-certificate__1.10.00..	derivation		oewn-certificate__2.32.00..
+oewn-certificate__1.10.00..	derivation		oewn-certificate__2.40.00..
+oewn-certificate__1.10.00..	derivation		oewn-certify__2.41.00..
+oewn-certificate__1.21.00..	derivation		oewn-certificate__2.32.00..
+oewn-certificate__1.21.00..	derivation		oewn-certificate__2.40.00..
+oewn-certificate__1.21.00..	derivation		oewn-certify__2.40.02..
+oewn-certificate__2.32.00..	other	by_means_of	oewn-certificate__1.10.00..
+oewn-certificate__2.32.00..	other	by_means_of	oewn-certificate__1.21.00..
+oewn-certificate__2.40.00..	other	uses	oewn-certificate__1.10.00..
+oewn-certificate__2.40.00..	other	uses	oewn-certificate__1.21.00..
+oewn-certification__1.04.00..	derivation		oewn-certify__2.41.00..
+oewn-certification__1.04.00..	derivation		oewn-certify__2.41.02..
+oewn-certification__1.04.01..	derivation		oewn-certify__2.40.02..
+oewn-certification__1.04.01..	derivation		oewn-certify__2.41.00..
+oewn-certification__1.04.01..	derivation		oewn-certify__2.41.02..
+oewn-certification__1.10.00..	derivation		oewn-certify__2.32.00..
+oewn-certification__1.10.01..	derivation		oewn-certify__2.41.00..
+oewn-certification__1.10.01..	derivation		oewn-certify__2.41.02..
+oewn-certificatory__5.00.00.supportive.00	derivation		oewn-certify__2.41.02..
+oewn-certified__3.00.00..	antonym		oewn-uncertified__3.00.00..
+oewn-certify__2.32.00..	other	event	oewn-certification__1.10.00..
+oewn-certify__2.32.00..	other	result	oewn-certification__1.10.00..
+oewn-certify__2.40.02..	other	by_means_of	oewn-certificate__1.21.00..
+oewn-certify__2.40.02..	other	event	oewn-certification__1.04.01..
+oewn-certify__2.41.00..	other	by_means_of	oewn-certification__1.10.01..
+oewn-certify__2.41.00..	other	event	oewn-certification__1.04.00..
+oewn-certify__2.41.00..	other	event	oewn-certification__1.04.01..
+oewn-certify__2.41.00..	other	uses	oewn-certificate__1.10.00..
+oewn-certify__2.41.00..	other	uses	oewn-certification__1.10.01..
+oewn-certify__2.41.02..	antonym		oewn-decertify__2.41.00..
+oewn-certify__2.41.02..	other	by_means_of	oewn-certification__1.10.01..
+oewn-certify__2.41.02..	other	event	oewn-certification__1.04.00..
+oewn-certify__2.41.02..	other	event	oewn-certification__1.04.01..
+oewn-cerulean__1.07.00..	derivation		oewn-cerulean__5.00.00.chromatic.00
+oewn-cerumen__1.27.00..	derivation		oewn-ceruminous__3.01.00..
+oewn-ceruminous__3.01.00..	pertainym		oewn-cerumen__1.27.00..
+oewn-cervical__3.01.00..	derivation		oewn-cervix__1.08.01..
+oewn-cervical__3.01.00..	pertainym		oewn-neck__1.08.00..
+oewn-cervical__3.01.01..	derivation		oewn-cervix__1.08.02..
+oewn-cervical__3.01.01..	pertainym		oewn-cervix__1.08.02..
+oewn-cervine__3.01.00..	pertainym		oewn-deer__1.05.00..
+oewn-cesarean__1.04.00..	derivation		oewn-cesarean__3.01.00..
+oewn-cesarean__3.01.00..	pertainym		oewn-cesarean__1.04.00..
+oewn-cesarian__1.04.00..	derivation		oewn-cesarian__3.01.00..
+oewn-cesarian__3.01.00..	pertainym		oewn-cesarian__1.04.00..
+oewn-cesium__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-cetacean__1.05.00..	derivation		oewn-cetacean__3.01.00..

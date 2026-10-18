@@ -1,0 +1,560 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-SLE-n	SLE	n	0	1	1	oewn
+oewn-SLS-n	SLS	n	0	1	1	oewn
+oewn-Slav-a	Slav	a	0	1	1	oewn
+oewn-Slav-n	Slav	n	0	1	1	oewn
+oewn-Slavic-a	Slavic	a	0	1	1	oewn
+oewn-Slavic-n	Slavic	n	0	1	1	oewn
+oewn-Slavic_language-n	Slavic language	n	0	2	2	oewn
+oewn-Slavic_people-n	Slavic people	n	0	2	2	oewn
+oewn-Slavicness-n	Slavicness	n	0	1	1	oewn
+oewn-Slavonic-a	Slavonic	a	0	1	1	oewn
+oewn-Slavonic-n	Slavonic	n	0	1	1	oewn
+oewn-Slavonic_language-n	Slavonic language	n	0	2	2	oewn
+oewn-Slavophilia-n	Slavophilia	n	0	1	1	oewn
+oewn-Slavophilism-n	Slavophilism	n	0	1	1	oewn
+oewn-Slo-Bid-n	Slo-Bid	n	0	1	1	oewn
+oewn-Sloanea_jamaicensis-n	Sloanea jamaicensis	n	0	2	2	oewn
+oewn-Sloppy_Joe-n	Sloppy Joe	n	0	2	2	oewn
+oewn-Slovak-n	Slovak	n	0	1	1	oewn
+oewn-Slovak_language-n	Slovak language	n	0	2	2	oewn
+oewn-Slovakian-a	Slovakian	a	0	1	1	oewn
+oewn-Slovakian_monetary_unit-n	Slovakian monetary unit	n	0	3	3	oewn
+oewn-Slovene-n	Slovene	n	0	1	1	oewn
+oewn-Slovene_language-n	Slovene language	n	0	2	2	oewn
+oewn-Slovenian-a	Slovenian	a	0	1	1	oewn
+oewn-Slovenian-n	Slovenian	n	0	1	1	oewn
+oewn-Slovenian_language-n	Slovenian language	n	0	2	2	oewn
+oewn-Slovenian_monetary_unit-n	Slovenian monetary unit	n	0	3	3	oewn
+oewn-Sluzhba_Vneshney_Razvedki-n	Sluzhba Vneshney Razvedki	n	0	3	3	oewn
+oewn-slab-n	slab	n	0	1	1	oewn
+oewn-slabber-v	slabber	v	0	1	1	oewn
+oewn-slabbing_mill-n	slabbing mill	n	0	2	2	oewn
+oewn-slack-a	slack	a	0	1	1	oewn
+oewn-slack-n	slack	n	0	1	1	oewn
+oewn-slack-v	slack	v	0	1	1	oewn
+oewn-slack_off-v	slack off	v	0	2	1	oewn
+oewn-slack_suit-n	slack suit	n	0	2	2	oewn
+oewn-slack_tide-n	slack tide	n	0	2	2	oewn
+oewn-slack_up-v	slack up	v	0	2	1	oewn
+oewn-slack_water-n	slack water	n	0	2	2	oewn
+oewn-slacken-v	slacken	v	0	1	1	oewn
+oewn-slacken_off-v	slacken off	v	0	2	1	oewn
+oewn-slackening-n	slackening	n	0	1	1	oewn
+oewn-slacker-n	slacker	n	0	1	1	oewn
+oewn-slacking-n	slacking	n	0	1	1	oewn
+oewn-slackline-n	slackline	n	0	1	1	oewn
+oewn-slackly-r	slackly	r	0	1	1	oewn
+oewn-slackness-n	slackness	n	0	1	1	oewn
+oewn-slacks-n	slacks	n	0	1	1	oewn
+oewn-slag-n	slag	n	0	1	1	oewn
+oewn-slag-v	slag	v	0	1	1	oewn
+oewn-slag_code-n	slag code	n	0	2	2	oewn
+oewn-slagheap-n	slagheap	n	0	1	1	oewn
+oewn-slain-a	slain	a	0	1	1	oewn
+oewn-slain-n	slain	n	0	1	1	oewn
+oewn-slake-v	slake	v	0	1	1	oewn
+oewn-slaked-a	slaked	a	0	1	1	oewn
+oewn-slaked_lime-n	slaked lime	n	0	2	2	oewn
+oewn-slalom-n	slalom	n	0	1	1	oewn
+oewn-slalom-v	slalom	v	0	1	1	oewn
+oewn-slam-bang-a	slam-bang	a	0	1	1	oewn
+oewn-slam-bang-r	slam-bang	r	0	1	1	oewn
+oewn-slam-dunk-v	slam-dunk	v	0	1	1	oewn
+oewn-slam-n	slam	n	0	1	1	oewn
+oewn-slam-v	slam	v	0	1	1	oewn
+oewn-slam_dance-n	slam dance	n	0	2	2	oewn
+oewn-slam_dance-v	slam dance	v	0	2	1	oewn
+oewn-slam_dancing-n	slam dancing	n	0	2	2	oewn
+oewn-slam_dunk-n	slam dunk	n	0	2	2	oewn
+oewn-slam_on-v	slam on	v	0	2	1	oewn
+oewn-slammer-n	slammer	n	0	1	1	oewn
+oewn-slander-n	slander	n	0	1	1	oewn
+oewn-slander-v	slander	v	0	1	1	oewn
+oewn-slanderer-n	slanderer	n	0	1	1	oewn
+oewn-slanderous-a	slanderous	a	0	1	1	oewn
+oewn-slanderously-r	slanderously	r	0	1	1	oewn
+oewn-slanderousness-n	slanderousness	n	0	1	1	oewn
+oewn-slang-n	slang	n	0	1	1	oewn
+oewn-slang-v	slang	v	0	1	1	oewn
+oewn-slang_expression-n	slang expression	n	0	2	2	oewn
+oewn-slang_term-n	slang term	n	0	2	2	oewn
+oewn-slang_word-n	slang word	n	0	2	2	oewn
+oewn-slangily-r	slangily	r	0	1	1	oewn
+oewn-slanginess-n	slanginess	n	0	1	1	oewn
+oewn-slanguage-n	slanguage	n	0	1	1	oewn
+oewn-slangy-a	slangy	a	0	1	1	oewn
+oewn-slant-eye-n	slant-eye	n	0	1	1	oewn
+oewn-slant-n	slant	n	0	1	1	oewn
+oewn-slant-v	slant	v	0	1	1	oewn
+oewn-slanted-a	slanted	a	0	1	1	oewn
+oewn-slanting-a	slanting	a	0	1	1	oewn
+oewn-slantingly-r	slantingly	r	0	1	1	oewn
+oewn-slantways-r	slantways	r	0	1	1	oewn
+oewn-slantwise-r	slantwise	r	0	1	1	oewn
+oewn-slap-bang-r	slap-bang	r	0	1	1	oewn
+oewn-slap-n	slap	n	0	1	1	oewn
+oewn-slap-r	slap	r	0	1	1	oewn
+oewn-slap-up-a	slap-up	a	0	1	1	oewn
+oewn-slap-v	slap	v	0	1	1	oewn
+oewn-slap_on-v	slap on	v	0	2	1	oewn
+oewn-slap_together-v	slap together	v	0	2	1	oewn
+oewn-slapdash-a	slapdash	a	0	1	1	oewn
+oewn-slapdash-r	slapdash	r	0	1	1	oewn
+oewn-slaphappy-a	slaphappy	a	0	1	1	oewn
+oewn-slapper-n	slapper	n	0	1	1	oewn
+oewn-slapshot-n	slapshot	n	0	1	1	oewn
+oewn-slapstick-a	slapstick	a	0	1	1	oewn
+oewn-slapstick-n	slapstick	n	0	1	1	oewn
+oewn-slash-n	slash	n	0	1	1	oewn
+oewn-slash-v	slash	v	0	1	1	oewn
+oewn-slash_pocket-n	slash pocket	n	0	2	2	oewn
+oewn-slashed-a	slashed	a	0	1	1	oewn
+oewn-slasher-n	slasher	n	0	1	1	oewn
+oewn-slashing-a	slashing	a	0	1	1	oewn
+oewn-slat-n	slat	n	0	1	1	oewn
+oewn-slat-v	slat	v	0	1	1	oewn
+oewn-slate-black-a	slate-black	a	0	1	1	oewn
+oewn-slate-colored_junco-n	slate-colored junco	n	0	2	2	oewn
+oewn-slate-gray-a	slate-gray	a	0	1	1	oewn
+oewn-slate-grey-a	slate-grey	a	0	1	1	oewn
+oewn-slate-n	slate	n	0	1	1	oewn
+oewn-slate-v	slate	v	0	1	1	oewn
+oewn-slate_club-n	slate club	n	0	2	2	oewn
+oewn-slate_fence-n	slate fence	n	0	2	2	oewn
+oewn-slate_pencil-n	slate pencil	n	0	2	2	oewn
+oewn-slate_roof-n	slate roof	n	0	2	2	oewn
+oewn-slater-n	slater	n	0	1	1	oewn
+oewn-slatey-a	slatey	a	0	1	1	oewn
+oewn-slather-v	slather	v	0	1	1	oewn
+oewn-slatiness-n	slatiness	n	0	1	1	oewn
+oewn-slating-n	slating	n	0	1	1	oewn
+oewn-slattern-n	slattern	n	0	1	1	oewn
+oewn-slatternliness-n	slatternliness	n	0	1	1	oewn
+oewn-slatternly-a	slatternly	a	0	1	1	oewn
+oewn-slaty-a	slaty	a	0	1	1	oewn
+oewn-slaty-gray-a	slaty-gray	a	0	1	1	oewn
+oewn-slaty-grey-a	slaty-grey	a	0	1	1	oewn
+oewn-slaughter-n	slaughter	n	0	1	1	oewn
+oewn-slaughter-v	slaughter	v	0	1	1	oewn
+oewn-slaughterer-n	slaughterer	n	0	1	1	oewn
+oewn-slaughterhouse-n	slaughterhouse	n	0	1	1	oewn
+oewn-slaughterous-a	slaughterous	a	0	1	1	oewn
+oewn-slave-maker-n	slave-maker	n	0	1	1	oewn
+oewn-slave-making_ant-n	slave-making ant	n	0	2	2	oewn
+oewn-slave-n	slave	n	0	1	1	oewn
+oewn-slave-v	slave	v	0	1	1	oewn
+oewn-slave_ant-n	slave ant	n	0	2	2	oewn
+oewn-slave_dealer-n	slave dealer	n	0	2	2	oewn
+oewn-slave_driver-n	slave driver	n	0	2	2	oewn
+oewn-slave_market-n	slave market	n	0	2	2	oewn
+oewn-slave_owner-n	slave owner	n	0	2	2	oewn
+oewn-slave_ship-n	slave ship	n	0	2	2	oewn
+oewn-slave_state-n	slave state	n	0	2	2	oewn
+oewn-slave_trade-n	slave trade	n	0	2	2	oewn
+oewn-slave_trader-n	slave trader	n	0	2	2	oewn
+oewn-slave_traffic-n	slave traffic	n	0	2	2	oewn
+oewn-slaveholder-n	slaveholder	n	0	1	1	oewn
+oewn-slaveholding-a	slaveholding	a	0	1	1	oewn
+oewn-slaveholding-n	slaveholding	n	0	1	1	oewn
+oewn-slaveless-a	slaveless	a	0	1	1	oewn
+oewn-slavelike-a	slavelike	a	0	1	1	oewn
+oewn-slaver-n	slaver	n	0	1	1	oewn
+oewn-slaver-v	slaver	v	0	1	1	oewn
+oewn-slavery-n	slavery	n	0	1	1	oewn
+oewn-slavey-n	slavey	n	0	1	1	oewn
+oewn-slavish-a	slavish	a	0	1	1	oewn
+oewn-slavishly-r	slavishly	r	0	1	1	oewn
+oewn-slaw-n	slaw	n	0	1	1	oewn
+oewn-slay-v	slay	v	0	1	1	oewn
+oewn-slayer-n	slayer	n	0	1	1	oewn
+oewn-slaying-n	slaying	n	0	1	1	oewn
+oewn-sleaze-n	sleaze	n	0	1	1	oewn
+oewn-sleaziness-n	sleaziness	n	0	1	1	oewn
+oewn-sleazy-a	sleazy	a	0	1	1	oewn
+oewn-sled-n	sled	n	0	1	1	oewn
+oewn-sled-v	sled	v	0	1	1	oewn
+oewn-sled_dog-n	sled dog	n	0	2	2	oewn
+oewn-sledder-n	sledder	n	0	1	1	oewn
+oewn-sledding-n	sledding	n	0	1	1	oewn
+oewn-sledge-n	sledge	n	0	1	1	oewn
+oewn-sledge-v	sledge	v	0	1	1	oewn
+oewn-sledge_dog-n	sledge dog	n	0	2	2	oewn
+oewn-sledgehammer-n	sledgehammer	n	0	1	1	oewn
+oewn-sledgehammer-v	sledgehammer	v	0	1	1	oewn
+oewn-sleek-a	sleek	a	0	1	1	oewn
+oewn-sleek-v	sleek	v	0	1	1	oewn
+oewn-sleek_down-v	sleek down	v	0	2	1	oewn
+oewn-sleek_over-v	sleek over	v	0	2	1	oewn
+oewn-sleekly-r	sleekly	r	0	1	1	oewn
+oewn-sleekness-n	sleekness	n	0	1	1	oewn
+oewn-sleep-learning-n	sleep-learning	n	0	1	1	oewn
+oewn-sleep-n	sleep	n	0	1	1	oewn
+oewn-sleep-v	sleep	v	0	1	1	oewn
+oewn-sleep_apnea-n	sleep apnea	n	0	2	2	oewn
+oewn-sleep_around-v	sleep around	v	0	2	1	oewn
+oewn-sleep_deprivation-n	sleep deprivation	n	0	2	2	oewn
+oewn-sleep_disorder-n	sleep disorder	n	0	2	2	oewn
+oewn-sleep_in-v	sleep in	v	0	2	1	oewn
+oewn-sleep_late-v	sleep late	v	0	2	1	oewn
+oewn-sleep_off-v	sleep off	v	0	2	1	oewn
+oewn-sleep_out-v	sleep out	v	0	2	1	oewn
+oewn-sleep_over-v	sleep over	v	0	2	1	oewn
+oewn-sleep_talking-n	sleep talking	n	0	2	2	oewn
+oewn-sleep_terror_disorder-n	sleep terror disorder	n	0	3	3	oewn
+oewn-sleep_together-v	sleep together	v	0	2	1	oewn
+oewn-sleep_with-v	sleep with	v	0	2	1	oewn
+oewn-sleeper-n	sleeper	n	0	1	1	oewn
+oewn-sleeper_cell-n	sleeper cell	n	0	2	2	oewn
+oewn-sleeper_goby-n	sleeper goby	n	0	2	2	oewn
+oewn-sleeper_nest-n	sleeper nest	n	0	2	2	oewn
+oewn-sleepily-r	sleepily	r	0	1	1	oewn
+oewn-sleepiness-n	sleepiness	n	0	1	1	oewn
+oewn-sleeping-a	sleeping	a	0	1	1	oewn
+oewn-sleeping-n	sleeping	n	0	1	1	oewn
+oewn-sleeping_accommodation-n	sleeping accommodation	n	0	2	2	oewn
+oewn-sleeping_around-n	sleeping around	n	0	2	2	oewn
+oewn-sleeping_bag-n	sleeping bag	n	0	2	2	oewn
+oewn-sleeping_beauty-n	sleeping beauty	n	0	2	2	oewn
+oewn-sleeping_capsule-n	sleeping capsule	n	0	2	2	oewn
+oewn-sleeping_car-n	sleeping car	n	0	2	2	oewn
+oewn-sleeping_draught-n	sleeping draught	n	0	2	2	oewn
+oewn-sleeping_hibiscus-n	sleeping hibiscus	n	0	2	2	oewn
+oewn-sleeping_partner-n	sleeping partner	n	0	2	2	oewn
+oewn-sleeping_pill-n	sleeping pill	n	0	2	2	oewn
+oewn-sleeping_room-n	sleeping room	n	0	2	2	oewn
+oewn-sleeping_sickness-n	sleeping sickness	n	0	2	2	oewn
+oewn-sleeping_tablet-n	sleeping tablet	n	0	2	2	oewn
+oewn-sleepless-a	sleepless	a	0	1	1	oewn
+oewn-sleepless_person-n	sleepless person	n	0	2	2	oewn
+oewn-sleeplessly-r	sleeplessly	r	0	1	1	oewn
+oewn-sleeplessness-n	sleeplessness	n	0	1	1	oewn
+oewn-sleepover-n	sleepover	n	0	1	1	oewn
+oewn-sleepwalk-v	sleepwalk	v	0	1	1	oewn
+oewn-sleepwalker-n	sleepwalker	n	0	1	1	oewn
+oewn-sleepwalking-n	sleepwalking	n	0	1	1	oewn
+oewn-sleepwear-n	sleepwear	n	0	1	1	oewn
+oewn-sleepy-a	sleepy	a	0	1	1	oewn
+oewn-sleepy-eyed-a	sleepy-eyed	a	0	1	1	oewn
+oewn-sleepy_dick-n	sleepy dick	n	0	2	2	oewn
+oewn-sleepy_sickness-n	sleepy sickness	n	0	2	2	oewn
+oewn-sleepyhead-n	sleepyhead	n	0	1	1	oewn
+oewn-sleepyheaded-a	sleepyheaded	a	0	1	1	oewn
+oewn-sleet-n	sleet	n	0	1	1	oewn
+oewn-sleet-v	sleet	v	0	1	1	oewn
+oewn-sleety-a	sleety	a	0	1	1	oewn
+oewn-sleeve-n	sleeve	n	0	1	1	oewn
+oewn-sleeved-a	sleeved	a	0	1	1	oewn
+oewn-sleeveless-a	sleeveless	a	0	1	1	oewn
+oewn-sleigh-n	sleigh	n	0	1	1	oewn
+oewn-sleigh-v	sleigh	v	0	1	1	oewn
+oewn-sleigh_bed-n	sleigh bed	n	0	2	2	oewn
+oewn-sleigh_bell-n	sleigh bell	n	0	2	2	oewn
+oewn-sleight-n	sleight	n	0	1	1	oewn
+oewn-sleight_of_hand-n	sleight of hand	n	0	3	1	oewn
+oewn-slender-a	slender	a	0	1	1	oewn
+oewn-slender-bodied-a	slender-bodied	a	0	1	1	oewn
+oewn-slender-tailed_meerkat-n	slender-tailed meerkat	n	0	2	2	oewn
+oewn-slender-waisted-a	slender-waisted	a	0	1	1	oewn
+oewn-slender-winged-a	slender-winged	a	0	1	1	oewn
+oewn-slender_centaury-n	slender centaury	n	0	2	2	oewn
+oewn-slender_knapweed-n	slender knapweed	n	0	2	2	oewn
+oewn-slender_lady_palm-n	slender lady palm	n	0	3	3	oewn
+oewn-slender_loris-n	slender loris	n	0	2	2	oewn
+oewn-slender_rush-n	slender rush	n	0	2	2	oewn
+oewn-slender_salamander-n	slender salamander	n	0	2	2	oewn
+oewn-slender_spike_rush-n	slender spike rush	n	0	3	3	oewn
+oewn-slender_wheatgrass-n	slender wheatgrass	n	0	2	2	oewn
+oewn-slender_wild_oat-n	slender wild oat	n	0	3	3	oewn
+oewn-slenderise-v	slenderise	v	0	1	1	oewn
+oewn-slenderize-v	slenderize	v	0	1	1	oewn
+oewn-slenderly-r	slenderly	r	0	1	1	oewn
+oewn-slenderness-n	slenderness	n	0	1	1	oewn
+oewn-sleuth-n	sleuth	n	0	1	1	oewn
+oewn-sleuth-v	sleuth	v	0	1	1	oewn
+oewn-sleuthhound-n	sleuthhound	n	0	1	1	oewn
+oewn-sleuthing-n	sleuthing	n	0	1	1	oewn
+oewn-slew-n	slew	n	0	1	1	oewn
+oewn-slew-v	slew	v	0	1	1	oewn
+oewn-slews-n	slews	n	0	1	1	oewn
+oewn-slice-n	slice	n	0	1	1	oewn
+oewn-slice-v	slice	v	0	1	1	oewn
+oewn-slice_bar-n	slice bar	n	0	2	2	oewn
+oewn-slice_into-v	slice into	v	0	2	1	oewn
+oewn-slice_through-v	slice through	v	0	2	1	oewn
+oewn-slice_up-v	slice up	v	0	2	1	oewn
+oewn-sliced-a	sliced	a	0	1	1	oewn
+oewn-slicer-n	slicer	n	0	1	1	oewn
+oewn-slicing-n	slicing	n	0	1	1	oewn
+oewn-slick-a	slick	a	0	1	1	oewn
+oewn-slick-n	slick	n	0	1	1	oewn
+oewn-slick-v	slick	v	0	1	1	oewn
+oewn-slick_down-v	slick down	v	0	2	1	oewn
+oewn-slick_magazine-n	slick magazine	n	0	2	2	oewn
+oewn-slick_up-v	slick up	v	0	2	1	oewn
+oewn-slicked-a	slicked	a	0	1	1	oewn
+oewn-slicked_up-a	slicked up	a	0	2	2	oewn
+oewn-slicker-n	slicker	n	0	1	1	oewn
+oewn-slickly-r	slickly	r	0	1	1	oewn
+oewn-slickness-n	slickness	n	0	1	1	oewn
+oewn-slide-n	slide	n	0	1	1	oewn
+oewn-slide-v	slide	v	0	1	1	oewn
+oewn-slide_action-n	slide action	n	0	2	2	oewn
+oewn-slide_bolt-n	slide bolt	n	0	2	2	oewn
+oewn-slide_by-v	slide by	v	0	2	1	oewn
+oewn-slide_chart-n	slide chart	n	0	2	2	oewn
+oewn-slide_down-v	slide down	v	0	2	1	oewn
+oewn-slide_fastener-n	slide fastener	n	0	2	2	oewn
+oewn-slide_projector-n	slide projector	n	0	2	2	oewn
+oewn-slide_rule-n	slide rule	n	0	2	2	oewn
+oewn-slide_valve-n	slide valve	n	0	2	2	oewn
+oewn-slider-n	slider	n	0	1	1	oewn
+oewn-slideway-n	slideway	n	0	1	1	oewn
+oewn-sliding-a	sliding	a	0	1	1	oewn
+oewn-sliding_board-n	sliding board	n	0	2	2	oewn
+oewn-sliding_bolt-n	sliding bolt	n	0	2	2	oewn
+oewn-sliding_door-n	sliding door	n	0	2	2	oewn
+oewn-sliding_keel-n	sliding keel	n	0	2	2	oewn
+oewn-sliding_scale-n	sliding scale	n	0	2	2	oewn
+oewn-sliding_seat-n	sliding seat	n	0	2	2	oewn
+oewn-sliding_window-n	sliding window	n	0	2	2	oewn
+oewn-slight-a	slight	a	0	1	1	oewn
+oewn-slight-n	slight	n	0	1	1	oewn
+oewn-slight-v	slight	v	0	1	1	oewn
+oewn-slight_care-n	slight care	n	0	2	2	oewn
+oewn-slighting-a	slighting	a	0	1	1	oewn
+oewn-slightingly-r	slightingly	r	0	1	1	oewn
+oewn-slightly-r	slightly	r	0	1	1	oewn
+oewn-slightness-n	slightness	n	0	1	1	oewn
+oewn-slim-a	slim	a	0	1	1	oewn
+oewn-slim-bodied-a	slim-bodied	a	0	1	1	oewn
+oewn-slim-v	slim	v	0	1	1	oewn
+oewn-slim-waisted-a	slim-waisted	a	0	1	1	oewn
+oewn-slim_chance-n	slim chance	n	0	2	2	oewn
+oewn-slim_down-v	slim down	v	0	2	1	oewn
+oewn-slim_thick-a	slim thick	a	0	2	2	oewn
+oewn-slime-n	slime	n	0	1	1	oewn
+oewn-slime-v	slime	v	0	1	1	oewn
+oewn-slime_bacteria-n	slime bacteria	n	0	2	2	oewn
+oewn-slime_eels-n	slime eels	n	0	2	2	oewn
+oewn-slime_mold-n	slime mold	n	0	2	2	oewn
+oewn-slime_mould-n	slime mould	n	0	2	2	oewn
+oewn-slime_mushroom-n	slime mushroom	n	0	2	2	oewn
+oewn-slimed-a	slimed	a	0	1	1	oewn
+oewn-sliminess-n	sliminess	n	0	1	1	oewn
+oewn-slimly-r	slimly	r	0	1	1	oewn
+oewn-slimness-n	slimness	n	0	1	1	oewn
+oewn-slimy-a	slimy	a	0	1	1	oewn
+oewn-sling-n	sling	n	0	1	1	oewn
+oewn-sling-v	sling	v	0	1	1	oewn
+oewn-slingback-n	slingback	n	0	1	1	oewn
+oewn-slinger-n	slinger	n	0	1	1	oewn
+oewn-slinger_ring-n	slinger ring	n	0	2	2	oewn
+oewn-slinging-n	slinging	n	0	1	1	oewn
+oewn-slingshot-n	slingshot	n	0	1	1	oewn
+oewn-slink-v	slink	v	0	1	1	oewn
+oewn-slip-joint_pliers-n	slip-joint pliers	n	0	2	2	oewn
+oewn-slip-n	slip	n	0	1	1	oewn
+oewn-slip-on-n	slip-on	n	0	1	1	oewn
+oewn-slip-tongue_log_skidder-n	slip-tongue log skidder	n	0	3	3	oewn
+oewn-slip-tongue_wheels-n	slip-tongue wheels	n	0	2	2	oewn
+oewn-slip-up-n	slip-up	n	0	1	1	oewn
+oewn-slip-v	slip	v	0	1	1	oewn
+oewn-slip_away-v	slip away	v	0	2	1	oewn
+oewn-slip_by-v	slip by	v	0	2	1	oewn
+oewn-slip_carriage-n	slip carriage	n	0	2	2	oewn
+oewn-slip_clutch-n	slip clutch	n	0	2	2	oewn
+oewn-slip_coach-n	slip coach	n	0	2	2	oewn
+oewn-slip_friction_clutch-n	slip friction clutch	n	0	3	3	oewn
+oewn-slip_in-v	slip in	v	0	2	1	oewn
+oewn-slip_noose-n	slip noose	n	0	2	2	oewn
+oewn-slip_of_paper-n	slip of paper	n	0	3	1	oewn
+oewn-slip_of_the_tongue-n	slip of the tongue	n	0	4	1	oewn
+oewn-slip_off-v	slip off	v	0	2	1	oewn
+oewn-slip_on-v	slip on	v	0	2	1	oewn
+oewn-slip_one-ap-s_mind-v	slip one's mind	v	0	3	1	oewn
+oewn-slip_out-v	slip out	v	0	2	1	oewn
+oewn-slip_ring-n	slip ring	n	0	2	2	oewn
+oewn-slip_road-n	slip road	n	0	2	2	oewn
+oewn-slip_stitch-n	slip stitch	n	0	2	2	oewn
+oewn-slip_tongue_log_skidder-n	slip tongue log skidder	n	0	4	4	oewn
+oewn-slip_up-v	slip up	v	0	2	1	oewn
+oewn-slipcover-n	slipcover	n	0	1	1	oewn
+oewn-slipknot-n	slipknot	n	0	1	1	oewn
+oewn-slipover-n	slipover	n	0	1	1	oewn
+oewn-slippage-n	slippage	n	0	1	1	oewn
+oewn-slipped_disc-n	slipped disc	n	0	2	2	oewn
+oewn-slipper-n	slipper	n	0	1	1	oewn
+oewn-slipper-shaped-a	slipper-shaped	a	0	1	1	oewn
+oewn-slipper_orchid-n	slipper orchid	n	0	2	2	oewn
+oewn-slipper_plant-n	slipper plant	n	0	2	2	oewn
+oewn-slipper_spurge-n	slipper spurge	n	0	2	2	oewn
+oewn-slippered-a	slippered	a	0	1	1	oewn
+oewn-slipperiness-n	slipperiness	n	0	1	1	oewn
+oewn-slipperwort-n	slipperwort	n	0	1	1	oewn
+oewn-slippery-a	slippery	a	0	1	1	oewn
+oewn-slippery_dick-n	slippery dick	n	0	2	2	oewn
+oewn-slippery_elm-n	slippery elm	n	0	2	2	oewn
+oewn-slipping-a	slipping	a	0	1	1	oewn
+oewn-slippy-a	slippy	a	0	1	1	oewn
+oewn-slipshod-a	slipshod	a	0	1	1	oewn
+oewn-slipskin_grape-n	slipskin grape	n	0	2	2	oewn
+oewn-slipstick-n	slipstick	n	0	1	1	oewn
+oewn-slipstream-n	slipstream	n	0	1	1	oewn
+oewn-slipway-n	slipway	n	0	1	1	oewn
+oewn-slit-n	slit	n	0	1	1	oewn
+oewn-slit-v	slit	v	0	1	1	oewn
+oewn-slit_lamp-n	slit lamp	n	0	2	2	oewn
+oewn-slit_trench-n	slit trench	n	0	2	2	oewn
+oewn-slither-v	slither	v	0	1	1	oewn
+oewn-slithering-a	slithering	a	0	1	1	oewn
+oewn-slithery-a	slithery	a	0	1	1	oewn
+oewn-sliver-n	sliver	n	0	1	1	oewn
+oewn-sliver-v	sliver	v	0	1	1	oewn
+oewn-slivery-a	slivery	a	0	1	1	oewn
+oewn-slivovitz-n	slivovitz	n	0	1	1	oewn
+oewn-slob-n	slob	n	0	1	1	oewn
+oewn-slobber-n	slobber	n	0	1	1	oewn
+oewn-slobber-v	slobber	v	0	1	1	oewn
+oewn-slobber_over-v	slobber over	v	0	2	1	oewn
+oewn-slobberer-n	slobberer	n	0	1	1	oewn
+oewn-sloe-n	sloe	n	0	1	1	oewn
+oewn-sloe_gin-n	sloe gin	n	0	2	2	oewn
+oewn-slog-v	slog	v	0	1	1	oewn
+oewn-slogan-n	slogan	n	0	1	1	oewn
+oewn-sloganeer-n	sloganeer	n	0	1	1	oewn
+oewn-sloganeer-v	sloganeer	v	0	1	1	oewn
+oewn-sloganeering-n	sloganeering	n	0	1	1	oewn
+oewn-slogger-n	slogger	n	0	1	1	oewn
+oewn-sloop-n	sloop	n	0	1	1	oewn
+oewn-sloop_of_war-n	sloop of war	n	0	3	1	oewn
+oewn-slop-n	slop	n	0	1	1	oewn
+oewn-slop-seller-n	slop-seller	n	0	1	1	oewn
+oewn-slop-v	slop	v	0	1	1	oewn
+oewn-slop_basin-n	slop basin	n	0	2	2	oewn
+oewn-slop_bowl-n	slop bowl	n	0	2	2	oewn
+oewn-slop_chest-n	slop chest	n	0	2	2	oewn
+oewn-slop_jar-n	slop jar	n	0	2	2	oewn
+oewn-slop_pail-n	slop pail	n	0	2	2	oewn
+oewn-slope-n	slope	n	0	1	1	oewn
+oewn-slope-v	slope	v	0	1	1	oewn
+oewn-sloped-a	sloped	a	0	1	1	oewn
+oewn-sloping-a	sloping	a	0	1	1	oewn
+oewn-sloping_trough-n	sloping trough	n	0	2	2	oewn
+oewn-slopingly-r	slopingly	r	0	1	1	oewn
+oewn-slopped-a	slopped	a	0	1	1	oewn
+oewn-sloppily-r	sloppily	r	0	1	1	oewn
+oewn-sloppiness-n	sloppiness	n	0	1	1	oewn
+oewn-sloppy-a	sloppy	a	0	1	1	oewn
+oewn-slops-n	slops	n	0	1	1	oewn
+oewn-slopseller-ap-s_shop-n	slopseller's shop	n	0	2	2	oewn
+oewn-slopseller-n	slopseller	n	0	1	1	oewn
+oewn-slopshop-n	slopshop	n	0	1	1	oewn
+oewn-slosh-v	slosh	v	0	1	1	oewn
+oewn-slosh_around-v	slosh around	v	0	2	1	oewn
+oewn-sloshed-a	sloshed	a	0	1	1	oewn
+oewn-slot-n	slot	n	0	1	1	oewn
+oewn-slot-v	slot	v	0	1	1	oewn
+oewn-slot_machine-n	slot machine	n	0	2	2	oewn
+oewn-sloth-n	sloth	n	0	1	1	oewn
+oewn-sloth_bear-n	sloth bear	n	0	2	2	oewn
+oewn-slothful-a	slothful	a	0	1	1	oewn
+oewn-slothfulness-n	slothfulness	n	0	1	1	oewn
+oewn-slouch-n	slouch	n	0	1	1	oewn
+oewn-slouch-v	slouch	v	0	1	1	oewn
+oewn-slouch_hat-n	slouch hat	n	0	2	2	oewn
+oewn-sloucher-n	sloucher	n	0	1	1	oewn
+oewn-slouchily-r	slouchily	r	0	1	1	oewn
+oewn-slouchingly-r	slouchingly	r	0	1	1	oewn
+oewn-slouchy-a	slouchy	a	0	1	1	oewn
+oewn-slough-n-1	slough	n	1	1	1	oewn
+oewn-slough-n-2	slough	n	2	1	1	oewn
+oewn-slough-v	slough	v	0	1	1	oewn
+oewn-slough_grass-n	slough grass	n	0	2	2	oewn
+oewn-slough_of_despond-n	slough of despond	n	0	3	1	oewn
+oewn-slough_off-v	slough off	v	0	2	1	oewn
+oewn-sloughing-n	sloughing	n	0	1	1	oewn
+oewn-sloughy-a	sloughy	a	0	1	1	oewn
+oewn-sloven-n	sloven	n	0	1	1	oewn
+oewn-slovenliness-n	slovenliness	n	0	1	1	oewn
+oewn-slovenly-a	slovenly	a	0	1	1	oewn
+oewn-slovenly_person-n	slovenly person	n	0	2	2	oewn
+oewn-slow-a	slow	a	0	1	1	oewn
+oewn-slow-burning_stove-n	slow-burning stove	n	0	2	2	oewn
+oewn-slow-moving-a	slow-moving	a	0	1	1	oewn
+oewn-slow-r	slow	r	0	1	1	oewn
+oewn-slow-v	slow	v	0	1	1	oewn
+oewn-slow-witted-a	slow-witted	a	0	1	1	oewn
+oewn-slow-wittedness-n	slow-wittedness	n	0	1	1	oewn
+oewn-slow_down-v	slow down	v	0	2	1	oewn
+oewn-slow_lane-n	slow lane	n	0	2	2	oewn
+oewn-slow_loris-n	slow loris	n	0	2	2	oewn
+oewn-slow_match-n	slow match	n	0	2	2	oewn
+oewn-slow_motion-n	slow motion	n	0	2	2	oewn
+oewn-slow_time_scale-n	slow time scale	n	0	3	3	oewn
+oewn-slow_up-v	slow up	v	0	2	1	oewn
+oewn-slow_virus-n	slow virus	n	0	2	2	oewn
+oewn-slowcoach-n	slowcoach	n	0	1	1	oewn
+oewn-slowdown-n	slowdown	n	0	1	1	oewn
+oewn-slower-r	slower	r	0	1	1	oewn
+oewn-slowest-r	slowest	r	0	1	1	oewn
+oewn-slowgoing-a	slowgoing	a	0	1	1	oewn
+oewn-slowing-n	slowing	n	0	1	1	oewn
+oewn-slowly-r	slowly	r	0	1	1	oewn
+oewn-slowness-n	slowness	n	0	1	1	oewn
+oewn-slowpoke-n	slowpoke	n	0	1	1	oewn
+oewn-slowworm-n	slowworm	n	0	1	1	oewn
+oewn-slub-n	slub	n	0	1	1	oewn
+oewn-slubbed-a	slubbed	a	0	1	1	oewn
+oewn-sludge-n	sludge	n	0	1	1	oewn
+oewn-slue-v	slue	v	0	1	1	oewn
+oewn-slug-n	slug	n	0	1	1	oewn
+oewn-slug-v	slug	v	0	1	1	oewn
+oewn-slug_cutter-n	slug cutter	n	0	2	2	oewn
+oewn-slugabed-n	slugabed	n	0	1	1	oewn
+oewn-slugfest-n	slugfest	n	0	1	1	oewn
+oewn-sluggard-n	sluggard	n	0	1	1	oewn
+oewn-slugger-n	slugger	n	0	1	1	oewn
+oewn-sluggish-a	sluggish	a	0	1	1	oewn
+oewn-sluggishly-r	sluggishly	r	0	1	1	oewn
+oewn-sluggishness-n	sluggishness	n	0	1	1	oewn
+oewn-sluice-n	sluice	n	0	1	1	oewn
+oewn-sluice-v	sluice	v	0	1	1	oewn
+oewn-sluice_down-v	sluice down	v	0	2	1	oewn
+oewn-sluice_valve-n	sluice valve	n	0	2	2	oewn
+oewn-sluicegate-n	sluicegate	n	0	1	1	oewn
+oewn-sluiceway-n	sluiceway	n	0	1	1	oewn
+oewn-sluicing-a	sluicing	a	0	1	1	oewn
+oewn-slum-n	slum	n	0	1	1	oewn
+oewn-slum-v	slum	v	0	1	1	oewn
+oewn-slum_area-n	slum area	n	0	2	2	oewn
+oewn-slumber-n	slumber	n	0	1	1	oewn
+oewn-slumber-v	slumber	v	0	1	1	oewn
+oewn-slumber_party-n	slumber party	n	0	2	2	oewn
+oewn-slumberer-n	slumberer	n	0	1	1	oewn
+oewn-slumberous-a	slumberous	a	0	1	1	oewn
+oewn-slumbery-a	slumbery	a	0	1	1	oewn
+oewn-slumbrous-a	slumbrous	a	0	1	1	oewn
+oewn-slumgullion-n	slumgullion	n	0	1	1	oewn
+oewn-slummy-a	slummy	a	0	1	1	oewn
+oewn-slump-n	slump	n	0	1	1	oewn
+oewn-slump-v	slump	v	0	1	1	oewn
+oewn-slumpflation-n	slumpflation	n	0	1	1	oewn
+oewn-slur-n	slur	n	0	1	1	oewn
+oewn-slur-v	slur	v	0	1	1	oewn
+oewn-slur_over-v	slur over	v	0	2	1	oewn
+oewn-slurp-v	slurp	v	0	1	1	oewn
+oewn-slurred-a	slurred	a	0	1	1	oewn
+oewn-slurry-n	slurry	n	0	1	1	oewn
+oewn-slush-n	slush	n	0	1	1	oewn
+oewn-slush-v	slush	v	0	1	1	oewn
+oewn-slush_around-v	slush around	v	0	2	1	oewn
+oewn-slush_fund-n	slush fund	n	0	2	2	oewn
+oewn-slushy-a	slushy	a	0	1	1	oewn
+oewn-slut-n	slut	n	0	1	1	oewn
+oewn-sluttish-a	sluttish	a	0	1	1	oewn
+oewn-sluttishness-n	sluttishness	n	0	1	1	oewn
+oewn-sly-a	sly	a	0	1	1	oewn
+oewn-slyboots-n	slyboots	n	0	1	1	oewn
+oewn-slyly-r	slyly	r	0	1	1	oewn
+oewn-slyness-n	slyness	n	0	1	1	oewn

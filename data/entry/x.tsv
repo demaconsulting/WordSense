@@ -1,0 +1,192 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-X-OR_circuit-n	X-OR circuit	n	0	2	2	oewn
+oewn-X-SCID-n	X-SCID	n	0	1	1	oewn
+oewn-X-linked-a	X-linked	a	0	1	1	oewn
+oewn-X-linked_SCID-n	X-linked SCID	n	0	2	2	oewn
+oewn-X-linked_dominant_inheritance-n	X-linked dominant inheritance	n	0	3	3	oewn
+oewn-X-linked_gene-n	X-linked gene	n	0	2	2	oewn
+oewn-X-linked_recessive_inheritance-n	X-linked recessive inheritance	n	0	3	3	oewn
+oewn-X-n	X	n	0	1	1	oewn
+oewn-X-radiation-n	X-radiation	n	0	1	1	oewn
+oewn-X-ray-n	X-ray	n	0	1	1	oewn
+oewn-X-ray_diffraction-n	X-ray diffraction	n	0	2	2	oewn
+oewn-X-ray_film-n	X-ray film	n	0	2	2	oewn
+oewn-X-ray_machine-n	X-ray machine	n	0	2	2	oewn
+oewn-X-ray_photograph-n	X-ray photograph	n	0	2	2	oewn
+oewn-X-ray_photography-n	X-ray photography	n	0	2	2	oewn
+oewn-X-ray_picture-n	X-ray picture	n	0	2	2	oewn
+oewn-X-ray_therapy-n	X-ray therapy	n	0	2	2	oewn
+oewn-X-ray_tube-n	X-ray tube	n	0	2	2	oewn
+oewn-X-raying-n	X-raying	n	0	1	1	oewn
+oewn-X-tail-n	X-tail	n	0	1	1	oewn
+oewn-XC-n	XC	n	0	1	1	oewn
+oewn-XI-n	XI	n	0	1	1	oewn
+oewn-XII-n	XII	n	0	1	1	oewn
+oewn-XIII-n	XIII	n	0	1	1	oewn
+oewn-XIV-n	XIV	n	0	1	1	oewn
+oewn-XIX-n	XIX	n	0	1	1	oewn
+oewn-XL-n	XL	n	0	1	1	oewn
+oewn-XOR_circuit-n	XOR circuit	n	0	2	2	oewn
+oewn-XOR_gate-n	XOR gate	n	0	2	2	oewn
+oewn-XT-n	XT	n	0	1	1	oewn
+oewn-XTC-n	XTC	n	0	1	1	oewn
+oewn-XV-n	XV	n	0	1	1	oewn
+oewn-XVI-n	XVI	n	0	1	1	oewn
+oewn-XVII-n	XVII	n	0	1	1	oewn
+oewn-XVIII-n	XVIII	n	0	1	1	oewn
+oewn-XX-n	XX	n	0	1	1	oewn
+oewn-XXI-n	XXI	n	0	1	1	oewn
+oewn-XXII-n	XXII	n	0	1	1	oewn
+oewn-XXIII-n	XXIII	n	0	1	1	oewn
+oewn-XXIV-n	XXIV	n	0	1	1	oewn
+oewn-XXIX-n	XXIX	n	0	1	1	oewn
+oewn-XXV-n	XXV	n	0	1	1	oewn
+oewn-XXVI-n	XXVI	n	0	1	1	oewn
+oewn-XXVII-n	XXVII	n	0	1	1	oewn
+oewn-XXVIII-n	XXVIII	n	0	1	1	oewn
+oewn-XXX-n	XXX	n	0	1	1	oewn
+oewn-XXY-n	XXY	n	0	1	1	oewn
+oewn-XXY-syndrome-n	XXY-syndrome	n	0	1	1	oewn
+oewn-XY-n	XY	n	0	1	1	oewn
+oewn-XYY-n	XYY	n	0	1	1	oewn
+oewn-X_chromosome-n	X chromosome	n	0	2	2	oewn
+oewn-X_ray-n	X ray	n	0	2	2	oewn
+oewn-Xanax-n	Xanax	n	0	1	1	oewn
+oewn-Xanthosoma_atrovirens-n	Xanthosoma atrovirens	n	0	2	2	oewn
+oewn-Xanthosoma_sagittifolium-n	Xanthosoma sagittifolium	n	0	2	2	oewn
+oewn-Xe-n	Xe	n	0	1	1	oewn
+oewn-Xenicus_gilviventris-n	Xenicus gilviventris	n	0	2	2	oewn
+oewn-Xenopus_laevis-n	Xenopus laevis	n	0	2	2	oewn
+oewn-Xenorhyncus_asiaticus-n	Xenorhyncus asiaticus	n	0	2	2	oewn
+oewn-Xeranthemum_annuum-n	Xeranthemum annuum	n	0	2	2	oewn
+oewn-Xerophyllum_tenax-n	Xerophyllum tenax	n	0	2	2	oewn
+oewn-Xerox-n	Xerox	n	0	1	1	oewn
+oewn-Xerox_machine-n	Xerox machine	n	0	2	2	oewn
+oewn-Xestobium_rufovillosum-n	Xestobium rufovillosum	n	0	2	2	oewn
+oewn-Xhosa-n	Xhosa	n	0	1	1	oewn
+oewn-Xhosa_language-n	Xhosa language	n	0	2	2	oewn
+oewn-Ximenesia_encelioides-n	Ximenesia encelioides	n	0	2	2	oewn
+oewn-Xiphias_gladius-n	Xiphias gladius	n	0	2	2	oewn
+oewn-Xiphosurus_polyphemus-n	Xiphosurus polyphemus	n	0	2	2	oewn
+oewn-Xishuangbanna_Dai-n	Xishuangbanna Dai	n	0	2	2	oewn
+oewn-Xmas-n	Xmas	n	0	1	1	oewn
+oewn-Xylaria_mali-n	Xylaria mali	n	0	2	2	oewn
+oewn-Xylaria_polymorpha-n	Xylaria polymorpha	n	0	2	2	oewn
+oewn-Xylocaine-n	Xylocaine	n	0	1	1	oewn
+oewn-Xylomelum_pyriforme-n	Xylomelum pyriforme	n	0	2	2	oewn
+oewn-Xylopia_aethiopica-n	Xylopia aethiopica	n	0	2	2	oewn
+oewn-Xylosma_congestum-n	Xylosma congestum	n	0	2	2	oewn
+oewn-Xyphophorus_helleri-n	Xyphophorus helleri	n	0	2	2	oewn
+oewn-Xyris_operculata-n	Xyris operculata	n	0	2	2	oewn
+oewn-x-a	x	a	0	1	1	oewn
+oewn-x-axis-n	x-axis	n	0	1	1	oewn
+oewn-x-n	x	n	0	1	1	oewn
+oewn-x-ray-v	x-ray	v	0	1	1	oewn
+oewn-x64-n	x64	n	0	1	1	oewn
+oewn-x86-n	x86	n	0	1	1	oewn
+oewn-xanthate-n	xanthate	n	0	1	1	oewn
+oewn-xanthelasma-n	xanthelasma	n	0	1	1	oewn
+oewn-xanthemia-n	xanthemia	n	0	1	1	oewn
+oewn-xanthic_acid-n	xanthic acid	n	0	2	2	oewn
+oewn-xanthine-n	xanthine	n	0	1	1	oewn
+oewn-xanthoma-n	xanthoma	n	0	1	1	oewn
+oewn-xanthoma_disseminatum-n	xanthoma disseminatum	n	0	2	2	oewn
+oewn-xanthoma_multiplex-n	xanthoma multiplex	n	0	2	2	oewn
+oewn-xanthomatosis-n	xanthomatosis	n	0	1	1	oewn
+oewn-xanthomonad-n	xanthomonad	n	0	1	1	oewn
+oewn-xanthophyl-n	xanthophyl	n	0	1	1	oewn
+oewn-xanthophyll-n	xanthophyll	n	0	1	1	oewn
+oewn-xanthopsia-n	xanthopsia	n	0	1	1	oewn
+oewn-xanthosis-n	xanthosis	n	0	1	1	oewn
+oewn-xanthous-a	xanthous	a	0	1	1	oewn
+oewn-xc-a	xc	a	0	1	1	oewn
+oewn-xci-a	xci	a	0	1	1	oewn
+oewn-xcii-a	xcii	a	0	1	1	oewn
+oewn-xciii-a	xciii	a	0	1	1	oewn
+oewn-xciv-a	xciv	a	0	1	1	oewn
+oewn-xcl-a	xcl	a	0	1	1	oewn
+oewn-xcv-a	xcv	a	0	1	1	oewn
+oewn-xcvi-a	xcvi	a	0	1	1	oewn
+oewn-xcvii-a	xcvii	a	0	1	1	oewn
+oewn-xcviii-a	xcviii	a	0	1	1	oewn
+oewn-xenogeneic-a	xenogeneic	a	0	1	1	oewn
+oewn-xenogenesis-n	xenogenesis	n	0	1	1	oewn
+oewn-xenograft-n	xenograft	n	0	1	1	oewn
+oewn-xenolith-n	xenolith	n	0	1	1	oewn
+oewn-xenon-n	xenon	n	0	1	1	oewn
+oewn-xenophobia-n	xenophobia	n	0	1	1	oewn
+oewn-xenophobic-a	xenophobic	a	0	1	1	oewn
+oewn-xenotime-n	xenotime	n	0	1	1	oewn
+oewn-xenotransplant-n	xenotransplant	n	0	1	1	oewn
+oewn-xenotransplantation-n	xenotransplantation	n	0	1	1	oewn
+oewn-xeranthemum-n	xeranthemum	n	0	1	1	oewn
+oewn-xeric-a	xeric	a	0	1	1	oewn
+oewn-xeroderma-n	xeroderma	n	0	1	1	oewn
+oewn-xeroderma_pigmentosum-n	xeroderma pigmentosum	n	0	2	2	oewn
+oewn-xerodermia-n	xerodermia	n	0	1	1	oewn
+oewn-xerographic-a	xerographic	a	0	1	1	oewn
+oewn-xerographic_copier-n	xerographic copier	n	0	2	2	oewn
+oewn-xerographic_printer-n	xerographic printer	n	0	2	2	oewn
+oewn-xerography-n	xerography	n	0	1	1	oewn
+oewn-xeroma-n	xeroma	n	0	1	1	oewn
+oewn-xerophile-n	xerophile	n	0	1	1	oewn
+oewn-xerophilous_plant-n	xerophilous plant	n	0	2	2	oewn
+oewn-xerophthalmia-n	xerophthalmia	n	0	1	1	oewn
+oewn-xerophthalmus-n	xerophthalmus	n	0	1	1	oewn
+oewn-xerophyte-n	xerophyte	n	0	1	1	oewn
+oewn-xerophytic-a	xerophytic	a	0	1	1	oewn
+oewn-xerophytic_plant-n	xerophytic plant	n	0	2	2	oewn
+oewn-xeroradiography-n	xeroradiography	n	0	1	1	oewn
+oewn-xerostomia-n	xerostomia	n	0	1	1	oewn
+oewn-xerotes-n	xerotes	n	0	1	1	oewn
+oewn-xerox-n	xerox	n	0	1	1	oewn
+oewn-xerox-v	xerox	v	0	1	1	oewn
+oewn-xerox_copy-n	xerox copy	n	0	2	2	oewn
+oewn-xi-a	xi	a	0	1	1	oewn
+oewn-xi-n	xi	n	0	1	1	oewn
+oewn-xii-a	xii	a	0	1	1	oewn
+oewn-xiii-a	xiii	a	0	1	1	oewn
+oewn-xiphium_iris-n	xiphium iris	n	0	2	2	oewn
+oewn-xiphoid_process-n	xiphoid process	n	0	2	2	oewn
+oewn-xiv-a	xiv	a	0	1	1	oewn
+oewn-xix-a	xix	a	0	1	1	oewn
+oewn-xl-a	xl	a	0	1	1	oewn
+oewn-xli-a	xli	a	0	1	1	oewn
+oewn-xlii-a	xlii	a	0	1	1	oewn
+oewn-xliii-a	xliii	a	0	1	1	oewn
+oewn-xliv-a	xliv	a	0	1	1	oewn
+oewn-xlv-a	xlv	a	0	1	1	oewn
+oewn-xlvi-a	xlvi	a	0	1	1	oewn
+oewn-xlvii-a	xlvii	a	0	1	1	oewn
+oewn-xlviii-a	xlviii	a	0	1	1	oewn
+oewn-xv-a	xv	a	0	1	1	oewn
+oewn-xvi-a	xvi	a	0	1	1	oewn
+oewn-xvii-a	xvii	a	0	1	1	oewn
+oewn-xviii-a	xviii	a	0	1	1	oewn
+oewn-xx-a	xx	a	0	1	1	oewn
+oewn-xxi-a	xxi	a	0	1	1	oewn
+oewn-xxii-a	xxii	a	0	1	1	oewn
+oewn-xxiii-a	xxiii	a	0	1	1	oewn
+oewn-xxiv-a	xxiv	a	0	1	1	oewn
+oewn-xxix-a	xxix	a	0	1	1	oewn
+oewn-xxv-a	xxv	a	0	1	1	oewn
+oewn-xxvi-a	xxvi	a	0	1	1	oewn
+oewn-xxvii-a	xxvii	a	0	1	1	oewn
+oewn-xxviii-a	xxviii	a	0	1	1	oewn
+oewn-xxx-a	xxx	a	0	1	1	oewn
+oewn-xxxi-a	xxxi	a	0	1	1	oewn
+oewn-xxxii-a	xxxii	a	0	1	1	oewn
+oewn-xxxiii-a	xxxiii	a	0	1	1	oewn
+oewn-xxxiv-a	xxxiv	a	0	1	1	oewn
+oewn-xxxv-a	xxxv	a	0	1	1	oewn
+oewn-xxxvi-a	xxxvi	a	0	1	1	oewn
+oewn-xxxvii-a	xxxvii	a	0	1	1	oewn
+oewn-xxxviii-a	xxxviii	a	0	1	1	oewn
+oewn-xylem-n	xylem	n	0	1	1	oewn
+oewn-xylene-n	xylene	n	0	1	1	oewn
+oewn-xylol-n	xylol	n	0	1	1	oewn
+oewn-xylometer-n	xylometer	n	0	1	1	oewn
+oewn-xylophone-n	xylophone	n	0	1	1	oewn
+oewn-xylophonist-n	xylophonist	n	0	1	1	oewn
+oewn-xylose-n	xylose	n	0	1	1	oewn
+oewn-xylosma-n	xylosma	n	0	1	1	oewn

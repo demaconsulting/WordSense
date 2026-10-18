@@ -1,0 +1,1266 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-vac__1.28.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-vacancy__1.25.00..	derivation		oewn-vacant__5.00.01.empty.00
+oewn-vacancy__1.26.00..	derivation		oewn-vacant__5.00.01.empty.00
+oewn-vacant__5.00.01.empty.00	derivation		oewn-vacate__2.38.00..
+oewn-vacant__5.00.01.empty.00	derivation		oewn-vacate__2.41.00..
+oewn-vacantly__4.02.00..	pertainym		oewn-vacant__5.00.02.foolish.00
+oewn-vacate__2.32.00..	derivation		oewn-vacation__1.04.01..
+oewn-vacate__2.32.00..	other	event	oewn-vacation__1.04.01..
+oewn-vacation__1.28.00..	derivation		oewn-vacation__2.42.00..
+oewn-vacation__1.28.00..	derivation		oewn-vacationist__1.18.00..
+oewn-vacation__2.42.00..	derivation		oewn-vacationer__1.18.00..
+oewn-vacation__2.42.00..	derivation		oewn-vacationing__1.04.00..
+oewn-vacation__2.42.00..	derivation		oewn-vacationist__1.18.00..
+oewn-vacation__2.42.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-vacation__2.42.00..	other	agent	oewn-vacationer__1.18.00..
+oewn-vacation__2.42.00..	other	event	oewn-vacation__1.28.00..
+oewn-vaccinate__2.29.00..	derivation		oewn-vaccinating__1.04.00..
+oewn-vaccinate__2.29.00..	derivation		oewn-vaccination__1.04.00..
+oewn-vaccinate__2.29.00..	derivation		oewn-vaccination__1.26.00..
+oewn-vaccinate__2.29.00..	derivation		oewn-vaccinator__1.18.00..
+oewn-vaccinate__2.29.00..	derivation		oewn-vaccine__1.06.00..
+oewn-vaccinate__2.29.00..	other	agent	oewn-vaccinator__1.18.00..
+oewn-vaccinate__2.29.00..	other	event	oewn-vaccination__1.04.00..
+oewn-vaccinate__2.29.00..	other	result	oewn-vaccination__1.26.00..
+oewn-vacillant__5.00.00.irresolute.00	derivation		oewn-vacillate__2.42.00..
+oewn-vacillate__2.38.00..	derivation		oewn-vacillation__1.04.00..
+oewn-vacillate__2.38.00..	other	event	oewn-vacillation__1.04.00..
+oewn-vacillate__2.42.00..	derivation		oewn-vacillation__1.09.00..
+oewn-vacillate__2.42.00..	derivation		oewn-vacillator__1.18.00..
+oewn-vacillate__2.42.00..	other	agent	oewn-vacillator__1.18.00..
+oewn-vacillate__2.42.00..	other	event	oewn-vacillation__1.09.00..
+oewn-vacuity__1.07.00..	derivation		oewn-vacuous__5.00.00.foolish.00
+oewn-vacuity__1.07.00..	derivation		oewn-vacuous__5.00.00.meaningless.00
+oewn-vacuolate__3.01.00..	pertainym		oewn-vacuole__1.08.00..
+oewn-vacuolated__3.01.00..	pertainym		oewn-vacuole__1.08.00..
+oewn-vacuolisation__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vacuolisation__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vacuolization__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vacuous__5.00.00.foolish.00	derivation		oewn-vacuousness__1.09.00..
+oewn-vacuously__4.02.00..	pertainym		oewn-vacuous__5.00.00.meaningless.00
+oewn-vacuum__1.06.00..	derivation		oewn-vacuum__2.35.00..
+oewn-vacuum__2.35.00..	other	instrument	oewn-vacuum__1.06.00..
+oewn-vagabond__1.17.00..	derivation		oewn-vagabond__2.38.00..
+oewn-vagabond__1.17.00..	derivation		oewn-vagabond__5.00.01.unsettled.01
+oewn-vagabond__1.17.00..	derivation		oewn-vagabond__5.00.02.unsettled.01
+oewn-vagabond__1.18.01..	derivation		oewn-vagabond__2.38.00..
+oewn-vagabond__1.18.01..	derivation		oewn-vagabond__5.00.01.unsettled.01
+oewn-vagabond__2.38.00..	derivation		oewn-vagabondage__1.04.00..
+oewn-vagabond__2.38.00..	other	agent	oewn-vagabond__1.18.01..
+oewn-vagabond__2.38.00..	other	by_means_of	oewn-vagabond__1.17.00..
+oewn-vagal__3.01.00..	derivation		oewn-vagus__1.08.00..
+oewn-vagal__3.01.00..	pertainym		oewn-vagus__1.08.00..
+oewn-vagina__1.08.00..	derivation		oewn-vaginal__3.01.00..
+oewn-vaginal__3.01.00..	pertainym		oewn-vagina__1.08.00..
+oewn-vagrancy__1.26.00..	derivation		oewn-vagrant__5.00.00.unsettled.01
+oewn-vagrant__1.18.00..	derivation		oewn-vagrant__5.00.00.unsettled.01
+oewn-vague__3.00.04..	derivation		oewn-vagueness__1.07.00..
+oewn-vague__5.00.00.indistinct.00	derivation		oewn-vagueness__1.07.01..
+oewn-vague__5.00.00.unclear.00	derivation		oewn-vagueness__1.07.00..
+oewn-vaguely__4.02.00..	pertainym		oewn-vague__5.00.00.unclear.00
+oewn-vain__5.00.00.proud.00	derivation		oewn-vanity__1.07.00..
+oewn-vain__5.00.00.proud.00	derivation		oewn-vanity__1.07.01..
+oewn-vain__5.00.00.proud.00	derivation		oewn-vanity__1.12.00..
+oewn-vainglorious__5.00.00.proud.00	derivation		oewn-vainglory__1.07.00..
+oewn-vainly__4.02.00..	pertainym		oewn-vain__5.00.00.unproductive.00
+oewn-valedictory__1.10.00..	derivation		oewn-valedictory__3.01.00..
+oewn-valedictory__1.10.00..	derivation		oewn-valedictory__5.00.00.exaugural.00
+oewn-valedictory__3.01.00..	pertainym		oewn-valediction__1.04.00..
+oewn-valency__1.07.01..	derivation		oewn-valent__3.01.00..
+oewn-valent__3.01.00..	pertainym		oewn-valence__1.07.01..
+oewn-valet__1.18.00..	derivation		oewn-valet__2.41.00..
+oewn-valet__2.41.00..	other	agent	oewn-valet__1.18.00..
+oewn-valetudinarian__1.18.00..	derivation		oewn-valetudinarian__3.01.00..
+oewn-valetudinarian__3.01.00..	pertainym		oewn-valetudinarian__1.18.00..
+oewn-valetudinary__3.01.00..	pertainym		oewn-valetudinarian__1.18.00..
+oewn-valgus__1.26.00..	antonym		oewn-varus__1.26.00..
+oewn-valiancy__1.07.00..	derivation		oewn-valiant__5.00.00.brave.00
+oewn-valiantly__4.02.00..	pertainym		oewn-valiant__5.00.00.brave.00
+oewn-valid__3.00.00..	derivation		oewn-validity__1.07.01..
+oewn-valid__3.00.00..	derivation		oewn-validness__1.07.00..
+oewn-valid__5.00.00.unexpired.00	derivation		oewn-validity__1.07.00..
+oewn-valid__5.00.00.unexpired.00	derivation		oewn-validness__1.07.00..
+oewn-validate__2.31.00..	derivation		oewn-validation__1.04.00..
+oewn-validate__2.31.00..	derivation		oewn-validation__1.09.00..
+oewn-validate__2.31.00..	derivation		oewn-validatory__5.00.00.supportive.00
+oewn-validate__2.31.00..	other	event	oewn-validation__1.04.00..
+oewn-validate__2.31.00..	other	event	oewn-validation__1.09.00..
+oewn-validate__2.32.00..	derivation		oewn-validation__1.04.00..
+oewn-validate__2.32.00..	derivation		oewn-validation__1.09.00..
+oewn-validate__2.32.00..	derivation		oewn-validatory__5.00.00.supportive.00
+oewn-validate__2.32.00..	other	event	oewn-validation__1.04.00..
+oewn-validate__2.32.00..	other	event	oewn-validation__1.09.00..
+oewn-validly__4.02.00..	pertainym		oewn-valid__3.00.00..
+oewn-valium__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-valor__1.07.00..	derivation		oewn-valorous__5.00.00.brave.00
+oewn-valor__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-valorous__5.00.00.brave.00	derivation		oewn-valorousness__1.07.00..
+oewn-valorously__4.02.00..	pertainym		oewn-valorous__5.00.00.brave.00
+oewn-valour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-valour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-valour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-valuable__1.21.00..	derivation		oewn-valuable__3.00.00..
+oewn-valuable__3.00.00..	antonym		oewn-worthless__3.00.00..
+oewn-valuable__3.00.00..	derivation		oewn-valuableness__1.07.00..
+oewn-valuable__3.00.00..	derivation		oewn-value__2.40.00..
+oewn-valuable__5.00.00.worthy.00	derivation		oewn-valuableness__1.07.00..
+oewn-valuable__5.00.00.worthy.00	derivation		oewn-value__2.31.01..
+oewn-valuable__5.00.00.worthy.00	derivation		oewn-value__2.40.00..
+oewn-valuate__2.31.00..	derivation		oewn-valuation__1.09.00..
+oewn-valuate__2.31.00..	derivation		oewn-valuator__1.18.00..
+oewn-valuate__2.31.00..	derivation		oewn-value__1.07.00..
+oewn-valuate__2.31.00..	derivation		oewn-value__1.21.00..
+oewn-valuate__2.31.00..	other	agent	oewn-valuator__1.18.00..
+oewn-valuate__2.31.00..	other	event	oewn-valuation__1.09.00..
+oewn-value__1.09.01..	derivation		oewn-value__2.31.01..
+oewn-value__1.21.00..	derivation		oewn-value__2.31.00..
+oewn-value__1.21.00..	derivation		oewn-value__2.31.03..
+oewn-value__2.31.00..	derivation		oewn-valuer__1.18.00..
+oewn-value__2.31.00..	other	agent	oewn-valuer__1.18.00..
+oewn-value__2.31.00..	other	uses	oewn-value__1.21.00..
+oewn-value__2.31.01..	other	undergoer	oewn-value__1.09.01..
+oewn-value__2.31.03..	derivation		oewn-valuer__1.18.00..
+oewn-value__2.31.03..	other	agent	oewn-valuer__1.18.00..
+oewn-value__2.31.03..	other	uses	oewn-value__1.21.00..
+oewn-valueless__5.00.00.worthless.00	derivation		oewn-valuelessness__1.07.00..
+oewn-valve__1.06.00..	derivation		oewn-valvelet__1.08.00..
+oewn-valve__1.06.00..	derivation		oewn-valvular__3.01.00..
+oewn-valve__1.06.01..	derivation		oewn-valvelet__1.08.00..
+oewn-valve__1.08.00..	derivation		oewn-valvelet__1.08.00..
+oewn-valve__1.08.00..	derivation		oewn-valvular__3.01.00..
+oewn-valved__3.01.00..	pertainym		oewn-valve__1.06.01..
+oewn-valvular__3.01.00..	pertainym		oewn-valve__1.06.00..
+oewn-vamp__1.06.00..	derivation		oewn-vamp__2.30.00..
+oewn-vamp__1.18.00..	derivation		oewn-vamp__2.32.00..
+oewn-vamp__2.30.00..	other	uses	oewn-vamp__1.06.00..
+oewn-vamp__2.32.00..	derivation		oewn-vamper__1.18.00..
+oewn-vamp__2.32.00..	other	agent	oewn-vamp__1.18.00..
+oewn-vamp__2.32.00..	other	agent	oewn-vamper__1.18.00..
+oewn-vancocin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-vandal__1.18.00..	derivation		oewn-vandalise__2.35.00..
+oewn-vandal__1.18.00..	derivation		oewn-vandalize__2.35.00..
+oewn-vandalise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vandalise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vandalise__2.35.00..	other	agent	oewn-vandal__1.18.00..
+oewn-vandalize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vandalize__2.35.00..	other	agent	oewn-vandal__1.18.00..
+oewn-vanilla__3.01.00..	pertainym		oewn-vanilla__1.13.00..
+oewn-vanish__2.30.00..	derivation		oewn-vanisher__1.18.00..
+oewn-vanish__2.30.00..	derivation		oewn-vanishing__1.11.00..
+oewn-vanish__2.30.00..	other	undergoer	oewn-vanisher__1.18.00..
+oewn-vanish__2.39.00..	derivation		oewn-vanisher__1.18.00..
+oewn-vanish__2.39.00..	derivation		oewn-vanishing__1.04.00..
+oewn-vanish__2.39.00..	other	agent	oewn-vanisher__1.18.00..
+oewn-vanquish__2.33.00..	derivation		oewn-vanquishable__5.00.00.conquerable.00
+oewn-vanquish__2.33.00..	derivation		oewn-vanquisher__1.18.00..
+oewn-vanquish__2.33.00..	other	agent	oewn-vanquisher__1.18.00..
+oewn-vapid__5.00.00.unstimulating.00	derivation		oewn-vapidity__1.07.00..
+oewn-vapid__5.00.00.unstimulating.00	derivation		oewn-vapidness__1.07.00..
+oewn-vapidly__4.02.00..	pertainym		oewn-vapid__5.00.00.unstimulating.00
+oewn-vapor__1.22.00..	derivation		oewn-vaporise__2.30.00..
+oewn-vapor__1.22.00..	derivation		oewn-vaporise__2.30.01..
+oewn-vapor__1.22.00..	derivation		oewn-vaporize__2.30.00..
+oewn-vapor__1.22.00..	derivation		oewn-vaporize__2.30.01..
+oewn-vapor__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vapor__1.27.01..	derivation		oewn-vaporise__2.30.00..
+oewn-vapor__1.27.01..	derivation		oewn-vaporise__2.30.01..
+oewn-vapor__1.27.01..	derivation		oewn-vaporize__2.30.00..
+oewn-vapor__1.27.01..	derivation		oewn-vaporize__2.30.01..
+oewn-vapor__1.27.01..	derivation		oewn-vaporous__5.00.00.cloudy.00
+oewn-vapor__1.27.01..	derivation		oewn-vaporous__5.00.00.gaseous.00
+oewn-vapor__1.27.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaporisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vaporisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vaporisation__1.22.00..	derivation		oewn-vaporise__2.30.00..
+oewn-vaporisation__1.22.00..	derivation		oewn-vaporise__2.30.01..
+oewn-vaporisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vaporisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vaporise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vaporise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vaporise__2.30.00..	other	event	oewn-vapor__1.22.00..
+oewn-vaporise__2.30.00..	other	event	oewn-vaporisation__1.22.00..
+oewn-vaporise__2.30.00..	other	result	oewn-vapor__1.27.01..
+oewn-vaporise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vaporise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vaporise__2.30.01..	other	event	oewn-vapor__1.22.00..
+oewn-vaporise__2.30.01..	other	event	oewn-vaporisation__1.22.00..
+oewn-vaporise__2.30.01..	other	result	oewn-vapor__1.27.01..
+oewn-vaporizable__5.00.00.volatile.00	derivation		oewn-vaporize__2.30.00..
+oewn-vaporizable__5.00.00.volatile.00	derivation		oewn-vaporize__2.30.01..
+oewn-vaporization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaporization__1.22.00..	derivation		oewn-vaporize__2.30.00..
+oewn-vaporization__1.22.00..	derivation		oewn-vaporize__2.30.01..
+oewn-vaporization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaporize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaporize__2.30.00..	other	event	oewn-vapor__1.22.00..
+oewn-vaporize__2.30.00..	other	event	oewn-vaporization__1.22.00..
+oewn-vaporize__2.30.00..	other	result	oewn-vapor__1.27.01..
+oewn-vaporize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaporize__2.30.01..	other	agent	oewn-vapor__1.22.00..
+oewn-vaporize__2.30.01..	other	event	oewn-vaporization__1.22.00..
+oewn-vaporize__2.30.01..	other	result	oewn-vapor__1.27.01..
+oewn-vapour__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vapour__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vapour__1.22.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vapour__1.27.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vapour__1.27.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vapour__1.27.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-variability__1.07.00..	derivation		oewn-variable__3.00.00..
+oewn-variability__1.07.00..	derivation		oewn-variable__5.00.00.adaptable.00
+oewn-variability__1.07.01..	derivation		oewn-variable__5.00.00.varied.00
+oewn-variable__1.17.00..	derivation		oewn-variable__3.00.00..
+oewn-variable__3.00.00..	derivation		oewn-variableness__1.07.00..
+oewn-variable__3.00.00..	derivation		oewn-vary__2.30.01..
+oewn-variable__3.00.00..	derivation		oewn-vary__2.42.01..
+oewn-variable__5.00.00.adaptable.00	derivation		oewn-variableness__1.07.00..
+oewn-variable__5.00.00.varied.00	derivation		oewn-variableness__1.07.00..
+oewn-variable__5.00.00.varied.00	derivation		oewn-variance__1.07.01..
+oewn-variable__5.00.00.varied.00	derivation		oewn-vary__2.30.01..
+oewn-variable__5.00.00.varied.00	derivation		oewn-vary__2.30.04..
+oewn-variable__5.00.00.varied.00	derivation		oewn-vary__2.42.01..
+oewn-variably__4.02.00..	pertainym		oewn-variable__3.00.00..
+oewn-variance__1.04.00..	derivation		oewn-variant__5.00.00.different.00
+oewn-variance__1.04.00..	derivation		oewn-vary__2.42.00..
+oewn-variance__1.07.01..	derivation		oewn-variant__5.00.00.variable.00
+oewn-variant__1.09.01..	derivation		oewn-variant__5.00.00.variable.00
+oewn-variant__1.09.01..	derivation		oewn-vary__2.30.01..
+oewn-variant__1.11.00..	derivation		oewn-variant__5.00.00.different.00
+oewn-variant__1.11.00..	derivation		oewn-vary__2.42.00..
+oewn-variant__1.14.00..	derivation		oewn-variant__5.00.00.variable.00
+oewn-variant__5.00.00.different.00	derivation		oewn-vary__2.30.01..
+oewn-variant__5.00.00.different.00	derivation		oewn-vary__2.42.00..
+oewn-variant__5.00.00.different.00	derivation		oewn-vary__2.42.01..
+oewn-variant__5.00.00.variable.00	derivation		oewn-vary__2.30.04..
+oewn-variant__5.00.00.variable.00	derivation		oewn-vary__2.42.01..
+oewn-variate__1.09.00..	derivation		oewn-vary__2.42.01..
+oewn-variation__1.04.00..	derivation		oewn-vary__2.42.00..
+oewn-variation__1.04.01..	derivation		oewn-vary__2.30.04..
+oewn-variation__1.09.01..	derivation		oewn-vary__2.30.01..
+oewn-variation__1.11.01..	derivation		oewn-vary__2.42.01..
+oewn-variation__1.18.00..	derivation		oewn-vary__2.42.00..
+oewn-variation__1.19.00..	derivation		oewn-vary__2.42.00..
+oewn-variation__1.19.00..	derivation		oewn-vary__2.42.01..
+oewn-variation__1.25.00..	derivation		oewn-vary__2.42.01..
+oewn-varicelliform__3.01.00..	pertainym		oewn-varicella__1.26.00..
+oewn-varicose__5.00.00.unhealthy.00	derivation		oewn-varicosity__1.26.00..
+oewn-varied__3.00.00..	derivation		oewn-variedness__1.07.00..
+oewn-varied__5.00.00.changed.00	derivation		oewn-variedness__1.07.00..
+oewn-varied__5.00.00.diversified.00	derivation		oewn-variedness__1.07.00..
+oewn-variegate__2.30.00..	derivation		oewn-variegation__1.04.00..
+oewn-variegate__2.30.00..	other	event	oewn-variegation__1.04.00..
+oewn-variegate__2.30.01..	derivation		oewn-variegation__1.07.00..
+oewn-variegate__2.30.01..	other	event	oewn-variegation__1.07.00..
+oewn-variolar__3.01.00..	pertainym		oewn-variola__1.26.00..
+oewn-variolic__3.01.00..	pertainym		oewn-variola__1.26.00..
+oewn-variolous__3.01.00..	pertainym		oewn-variola__1.26.00..
+oewn-variously__4.02.00..	pertainym		oewn-various__5.00.00.different.00
+oewn-varnish__1.06.00..	derivation		oewn-varnish__2.35.00..
+oewn-varnish__2.35.00..	derivation		oewn-varnisher__1.18.00..
+oewn-varnish__2.35.00..	other	agent	oewn-varnisher__1.18.00..
+oewn-varnish__2.35.00..	other	uses	oewn-varnish__1.06.00..
+oewn-vary__2.30.01..	other	result	oewn-variation__1.09.01..
+oewn-vary__2.30.04..	other	event	oewn-variation__1.04.01..
+oewn-vary__2.42.00..	other	agent	oewn-variation__1.18.00..
+oewn-vary__2.42.00..	other	event	oewn-variance__1.04.00..
+oewn-vary__2.42.00..	other	event	oewn-variation__1.04.00..
+oewn-vary__2.42.00..	other	event	oewn-variation__1.19.00..
+oewn-vary__2.42.01..	other	event	oewn-variation__1.11.01..
+oewn-vary__2.42.01..	other	event	oewn-variation__1.19.00..
+oewn-vascular__3.01.00..	derivation		oewn-vascularity__1.07.00..
+oewn-vascular__3.01.00..	derivation		oewn-vascularize__2.30.00..
+oewn-vascular__3.01.00..	derivation		oewn-vascularize__2.30.01..
+oewn-vascular__3.01.00..	pertainym		oewn-vessel__1.08.00..
+oewn-vascularisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vascularisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vascularise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vascularise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vascularise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vascularise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vascularization__1.22.00..	derivation		oewn-vascularize__2.30.00..
+oewn-vascularization__1.22.00..	derivation		oewn-vascularize__2.30.01..
+oewn-vascularization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vascularize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vascularize__2.30.00..	other	event	oewn-vascularization__1.22.00..
+oewn-vascularize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vascularize__2.30.01..	other	event	oewn-vascularization__1.22.00..
+oewn-vasectomise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vasectomise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vasectomize__2.29.00..	derivation		oewn-vasectomy__1.04.00..
+oewn-vasectomize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vasomax__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-vasomotor__3.01.00..	pertainym		oewn-vasoconstriction__1.04.00..
+oewn-vasomotor__3.01.00..	pertainym		oewn-vasodilation__1.04.00..
+oewn-vasotec__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-vast__5.00.00.large.00	derivation		oewn-vastness__1.07.00..
+oewn-vastly__4.02.00..	pertainym		oewn-vast__5.00.00.large.00
+oewn-vaticinate__2.32.00..	derivation		oewn-vaticination__1.09.00..
+oewn-vaticinate__2.32.00..	derivation		oewn-vaticinator__1.18.00..
+oewn-vaticinate__2.32.00..	other	agent	oewn-vaticinator__1.18.00..
+oewn-vaticinate__2.32.00..	other	event	oewn-vaticination__1.09.00..
+oewn-vaticinate__2.32.01..	derivation		oewn-vaticination__1.09.00..
+oewn-vaticinate__2.32.01..	derivation		oewn-vaticinator__1.18.00..
+oewn-vaticinate__2.32.01..	other	agent	oewn-vaticinator__1.18.00..
+oewn-vaticinate__2.32.01..	other	event	oewn-vaticination__1.09.00..
+oewn-vaudeville_theater__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vaudeville_theatre__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vaudeville_theatre__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vaudeville_theatre__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vault__1.04.00..	derivation		oewn-vault__2.38.01..
+oewn-vault__2.38.00..	derivation		oewn-vaulter__1.18.00..
+oewn-vault__2.38.00..	other	agent	oewn-vaulter__1.18.00..
+oewn-vault__2.38.01..	derivation		oewn-vaulter__1.18.00..
+oewn-vault__2.38.01..	derivation		oewn-vaulting__1.04.00..
+oewn-vault__2.38.01..	other	agent	oewn-vaulter__1.18.00..
+oewn-vault__2.38.01..	other	event	oewn-vault__1.04.00..
+oewn-vaunt__1.10.00..	derivation		oewn-vaunt__2.32.00..
+oewn-vaunt__2.32.00..	derivation		oewn-vaunter__1.18.00..
+oewn-vaunt__2.32.00..	other	agent	oewn-vaunter__1.18.00..
+oewn-vaunt__2.32.00..	other	event	oewn-vaunt__1.10.00..
+oewn-veda__1.10.00..	derivation		oewn-vedist__1.18.00..
+oewn-vedic__3.01.00..	pertainym		oewn-veda__1.10.00..
+oewn-vedism__1.09.00..	derivation		oewn-vedist__1.18.00..
+oewn-veer__2.38.00..	derivation		oewn-veering__1.04.00..
+oewn-veg__1.13.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-vegetal__3.01.00..	pertainym		oewn-vegetation__1.14.00..
+oewn-vegetate__2.29.00..	derivation		oewn-vegetation__1.04.00..
+oewn-vegetate__2.29.00..	derivation		oewn-vegetative__3.01.01..
+oewn-vegetate__2.29.00..	other	event	oewn-vegetation__1.04.00..
+oewn-vegetate__2.29.01..	derivation		oewn-vegetative__5.00.00.asexual.00
+oewn-vegetate__2.30.00..	derivation		oewn-vegetation__1.22.00..
+oewn-vegetate__2.30.00..	other	event	oewn-vegetation__1.22.00..
+oewn-vegetate__2.30.01..	derivation		oewn-vegetation__1.22.00..
+oewn-vegetate__2.30.01..	other	event	oewn-vegetation__1.22.00..
+oewn-vegetate__2.30.02..	derivation		oewn-vegetation__1.14.00..
+oewn-vegetate__2.30.02..	other	undergoer	oewn-vegetation__1.14.00..
+oewn-vegetate__2.30.04..	derivation		oewn-vegetation__1.08.00..
+oewn-vegetate__2.30.04..	other	event	oewn-vegetation__1.08.00..
+oewn-vegetate__2.42.00..	derivation		oewn-vegetation__1.04.00..
+oewn-vegetate__2.42.00..	derivation		oewn-vegetative__3.01.01..
+oewn-vegetate__2.42.00..	other	event	oewn-vegetation__1.04.00..
+oewn-vegetative__3.01.01..	pertainym		oewn-vegetation__1.04.00..
+oewn-vegetive__3.01.01..	pertainym		oewn-vegetation__1.04.00..
+oewn-vehemence__1.07.00..	derivation		oewn-vehement__5.00.00.strong.00
+oewn-vehemently__4.02.00..	pertainym		oewn-vehement__5.00.00.intense.00
+oewn-vehicle__1.06.00..	derivation		oewn-vehicular__3.01.00..
+oewn-vehicular__3.01.00..	pertainym		oewn-vehicle__1.06.00..
+oewn-veil__1.06.00..	derivation		oewn-veil__2.35.00..
+oewn-veil__1.06.01..	derivation		oewn-veil__2.35.00..
+oewn-veil__2.35.00..	other	by_means_of	oewn-veil__1.06.00..
+oewn-veil__2.35.00..	other	by_means_of	oewn-veil__1.06.01..
+oewn-vein__1.08.00..	derivation		oewn-venous__3.01.00..
+oewn-vein__1.20.00..	derivation		oewn-veinal__3.01.00..
+oewn-veinal__3.01.00..	pertainym		oewn-vein__1.20.00..
+oewn-velar__3.01.00..	derivation		oewn-velum__1.08.00..
+oewn-velar__3.01.00..	pertainym		oewn-velum__1.08.00..
+oewn-velban__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-velcro__1.06.00..	derivation		oewn-velcro__2.35.00..
+oewn-vellicate__2.39.00..	derivation		oewn-vellication__1.26.00..
+oewn-vellicate__2.39.00..	other	event	oewn-vellication__1.26.00..
+oewn-velvet__1.06.00..	derivation		oewn-velvet__5.00.00.smooth.00
+oewn-velvet__1.06.00..	derivation		oewn-velvet__5.00.00.soft.01
+oewn-velvet__1.06.00..	derivation		oewn-velvety__5.00.00.soft.01
+oewn-venal__5.00.00.corrupt.00	derivation		oewn-venality__1.07.00..
+oewn-venally__4.02.00..	pertainym		oewn-venal__5.00.00.corrupt.00
+oewn-vend__2.40.00..	derivation		oewn-vendable__5.00.00.salable.00
+oewn-vend__2.40.00..	derivation		oewn-vender__1.18.00..
+oewn-vend__2.40.00..	derivation		oewn-vendible__5.00.00.salable.00
+oewn-vend__2.40.00..	derivation		oewn-vending__1.04.00..
+oewn-vend__2.40.00..	derivation		oewn-vendition__1.04.00..
+oewn-vend__2.40.00..	derivation		oewn-vendor__1.18.00..
+oewn-vend__2.40.00..	other	agent	oewn-vender__1.18.00..
+oewn-vend__2.40.00..	other	agent	oewn-vendor__1.18.00..
+oewn-vend__2.40.00..	other	event	oewn-vendition__1.04.00..
+oewn-veneer__1.06.01..	derivation		oewn-veneer__2.35.00..
+oewn-veneer__2.35.00..	derivation		oewn-veneering__1.04.00..
+oewn-veneer__2.35.00..	other	undergoer	oewn-veneer__1.06.01..
+oewn-veneer__2.35.00..	other	uses	oewn-veneer__1.06.01..
+oewn-venerability__1.07.00..	derivation		oewn-venerable__5.00.00.honorable.00
+oewn-venerable__5.00.00.honorable.00	derivation		oewn-venerableness__1.07.00..
+oewn-venerable__5.00.00.old.02	derivation		oewn-venerableness__1.07.00..
+oewn-venerate__2.37.00..	derivation		oewn-veneration__1.12.00..
+oewn-venerate__2.37.00..	derivation		oewn-venerator__1.18.00..
+oewn-venerate__2.37.00..	other	agent	oewn-venerator__1.18.00..
+oewn-venerate__2.37.00..	other	event	oewn-veneration__1.12.00..
+oewn-venesect__2.29.00..	derivation		oewn-venesection__1.04.00..
+oewn-venesect__2.29.00..	other	event	oewn-venesection__1.04.00..
+oewn-venetian__1.18.00..	derivation		oewn-venetian__3.01.00..
+oewn-venezuelan__1.18.00..	derivation		oewn-venezuelan__3.01.00..
+oewn-vengeful__5.00.00.unforgiving.00	derivation		oewn-vengefulness__1.12.00..
+oewn-vengefully__4.02.00..	pertainym		oewn-vengeful__5.00.00.unforgiving.00
+oewn-venom__1.12.00..	derivation		oewn-venomous__5.00.00.malicious.00
+oewn-venom__1.27.00..	derivation		oewn-venomous__5.00.00.toxic.00
+oewn-venomously__4.02.00..	pertainym		oewn-venomous__5.00.00.malicious.00
+oewn-venous__3.01.00..	pertainym		oewn-vein__1.08.00..
+oewn-vent__1.04.00..	derivation		oewn-vent__2.32.00..
+oewn-vent__1.06.00..	derivation		oewn-ventilate__2.30.00..
+oewn-vent__2.30.00..	derivation		oewn-venting__1.04.00..
+oewn-vent__2.32.00..	derivation		oewn-venter__1.18.00..
+oewn-vent__2.32.00..	other	agent	oewn-venter__1.18.00..
+oewn-vent__2.32.00..	other	event	oewn-vent__1.04.00..
+oewn-venter__1.08.00..	derivation		oewn-ventral__3.00.00..
+oewn-venter__1.08.01..	derivation		oewn-ventral__3.00.00..
+oewn-venter__1.08.02..	derivation		oewn-ventral__3.00.00..
+oewn-ventilate__2.30.00..	derivation		oewn-ventilator__1.06.00..
+oewn-ventilate__2.30.00..	other	instrument	oewn-ventilator__1.06.00..
+oewn-ventilate__2.30.01..	derivation		oewn-ventilation__1.04.00..
+oewn-ventilate__2.30.01..	derivation		oewn-ventilator__1.06.00..
+oewn-ventilate__2.30.01..	derivation		oewn-ventilatory__3.01.00..
+oewn-ventilate__2.30.01..	other	event	oewn-ventilation__1.04.00..
+oewn-ventilate__2.30.01..	other	instrument	oewn-ventilator__1.06.00..
+oewn-ventilate__2.32.00..	derivation		oewn-ventilation__1.10.00..
+oewn-ventilate__2.32.00..	other	event	oewn-ventilation__1.10.00..
+oewn-ventilate__2.38.00..	derivation		oewn-ventilation__1.04.00..
+oewn-ventilate__2.38.00..	derivation		oewn-ventilation__1.06.00..
+oewn-ventilate__2.38.00..	other	event	oewn-ventilation__1.04.00..
+oewn-ventilate__2.38.00..	other	event	oewn-ventilation__1.06.00..
+oewn-ventilate__2.39.00..	derivation		oewn-ventilation__1.06.00..
+oewn-ventilate__2.39.00..	derivation		oewn-ventilator__1.06.00..
+oewn-ventilate__2.39.00..	other	event	oewn-ventilation__1.06.00..
+oewn-ventilate__2.39.00..	other	instrument	oewn-ventilator__1.06.00..
+oewn-ventilatory__3.01.00..	pertainym		oewn-ventilation__1.04.00..
+oewn-ventolin__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-ventrally__4.02.00..	pertainym		oewn-ventral__3.00.00..
+oewn-ventricle__1.08.01..	derivation		oewn-ventricular__3.01.01..
+oewn-ventricle__1.08.02..	derivation		oewn-ventricular__3.01.01..
+oewn-ventricular__3.01.01..	pertainym		oewn-ventricle__1.08.01..
+oewn-ventricular__3.01.01..	pertainym		oewn-ventricle__1.08.02..
+oewn-ventriloquism__1.09.00..	derivation		oewn-ventriloquist__1.18.00..
+oewn-ventriloquist__1.18.00..	derivation		oewn-ventriloquy__1.09.00..
+oewn-venture__1.04.00..	derivation		oewn-venture__2.41.01..
+oewn-venture__1.04.01..	derivation		oewn-venture__2.41.00..
+oewn-venture__1.04.01..	derivation		oewn-venturous__5.00.00.adventurous.00
+oewn-venture__1.21.00..	derivation		oewn-venture__2.41.00..
+oewn-venture__1.21.00..	derivation		oewn-venturous__5.00.00.adventurous.00
+oewn-venture__2.41.00..	derivation		oewn-venturer__1.18.00..
+oewn-venture__2.41.00..	other	agent	oewn-venturer__1.18.00..
+oewn-venture__2.41.00..	other	by_means_of	oewn-venture__1.04.01..
+oewn-venture__2.41.00..	other	by_means_of	oewn-venture__1.21.00..
+oewn-venture__2.41.01..	derivation		oewn-venturer__1.18.00..
+oewn-venture__2.41.01..	other	agent	oewn-venturer__1.18.00..
+oewn-venture__2.41.01..	other	event	oewn-venture__1.04.00..
+oewn-venture_capital__1.21.00..	derivation		oewn-venture_capitalist__1.18.00..
+oewn-venturesome__5.00.00.adventurous.00	derivation		oewn-venturesomeness__1.07.00..
+oewn-veracious__5.00.00.truthful.00	derivation		oewn-veracity__1.07.00..
+oewn-verb__1.10.00..	derivation		oewn-verbal__3.01.00..
+oewn-verb__1.10.00..	derivation		oewn-verbify__2.30.00..
+oewn-verb__1.10.01..	derivation		oewn-verbal__3.01.00..
+oewn-verb__1.10.01..	derivation		oewn-verbify__2.30.00..
+oewn-verbal__3.01.00..	pertainym		oewn-verb__1.10.01..
+oewn-verbal__3.01.01..	pertainym		oewn-word__1.10.00..
+oewn-verbalisation__1.10.00..	derivation		oewn-verbalise__2.32.00..
+oewn-verbalisation__1.10.00..	derivation		oewn-verbalise__2.32.03..
+oewn-verbalisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalisation__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalisation__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalise__2.32.00..	other	event	oewn-verbalisation__1.10.00..
+oewn-verbalise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalise__2.32.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-verbalise__2.32.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-verbalise__2.32.03..	other	event	oewn-verbalisation__1.10.00..
+oewn-verbalization__1.10.00..	derivation		oewn-verbalize__2.32.00..
+oewn-verbalization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbalization__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbalize__2.32.00..	derivation		oewn-verbalizer__1.18.00..
+oewn-verbalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbalize__2.32.00..	other	agent	oewn-verbalizer__1.18.00..
+oewn-verbalize__2.32.00..	other	event	oewn-verbalization__1.10.00..
+oewn-verbalize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbalize__2.32.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-verbally__4.02.00..	pertainym		oewn-verbal__3.01.00..
+oewn-verbally__4.02.01..	pertainym		oewn-verbal__5.00.00.communicative.00
+oewn-verbify__2.30.00..	other	result	oewn-verb__1.10.00..
+oewn-verbify__2.30.00..	other	result	oewn-verb__1.10.01..
+oewn-verbose__5.00.00.prolix.00	derivation		oewn-verboseness__1.10.00..
+oewn-verbose__5.00.00.prolix.00	derivation		oewn-verbosity__1.10.00..
+oewn-verbosely__4.02.00..	pertainym		oewn-verbose__5.00.00.prolix.00
+oewn-verdancy__1.07.00..	derivation		oewn-verdant__5.00.00.abundant.00
+oewn-verdigris__1.27.00..	derivation		oewn-verdigris__2.30.00..
+oewn-verdigris__2.30.00..	other	uses	oewn-verdigris__1.27.00..
+oewn-verge__1.07.00..	derivation		oewn-verge__2.42.01..
+oewn-verge__1.25.00..	derivation		oewn-verge__2.42.01..
+oewn-verge__2.42.01..	other	undergoer	oewn-verge__1.07.00..
+oewn-verge__2.42.01..	other	undergoer	oewn-verge__1.25.00..
+oewn-verifiable__5.00.00.empirical.00	derivation		oewn-verify__2.31.01..
+oewn-verifiable__5.00.00.objective.00	derivation		oewn-verify__2.31.01..
+oewn-verification__1.09.00..	derivation		oewn-verify__2.31.01..
+oewn-verification__1.10.00..	derivation		oewn-verify__2.32.04..
+oewn-verificatory__5.00.00.supportive.00	derivation		oewn-verify__2.31.01..
+oewn-verifier__1.18.00..	derivation		oewn-verify__2.31.01..
+oewn-verify__2.31.01..	other	agent	oewn-verifier__1.18.00..
+oewn-verify__2.31.01..	other	by_means_of	oewn-verification__1.09.00..
+oewn-verify__2.32.04..	other	undergoer	oewn-verification__1.10.00..
+oewn-verify__2.32.04..	other	uses	oewn-verification__1.10.00..
+oewn-vermiculate__2.36.00..	derivation		oewn-vermiculation__1.06.00..
+oewn-vermiculate__2.36.00..	other	undergoer	oewn-vermiculation__1.06.00..
+oewn-vermilion__1.07.00..	derivation		oewn-vermilion__2.30.00..
+oewn-vermilion__1.07.00..	derivation		oewn-vermilion__5.00.00.chromatic.00
+oewn-vermilion__2.30.00..	other	result	oewn-vermilion__1.07.00..
+oewn-vermilion__2.30.00..	other	uses	oewn-vermilion__1.07.00..
+oewn-vermin__1.05.00..	derivation		oewn-verminous__5.00.00.offensive.01
+oewn-vermin__1.18.00..	derivation		oewn-verminous__5.00.00.offensive.01
+oewn-vernacular__1.10.00..	derivation		oewn-vernacular__5.00.00.informal.02
+oewn-vernal__3.00.00..	antonym		oewn-wintry__3.00.00..
+oewn-versatile__5.00.00.skilled.00	derivation		oewn-versatility__1.09.00..
+oewn-versatile__5.00.00.varied.00	derivation		oewn-versatility__1.09.00..
+oewn-verse__1.10.00..	derivation		oewn-verse__2.36.00..
+oewn-verse__1.10.00..	derivation		oewn-versify__2.36.00..
+oewn-verse__1.10.01..	derivation		oewn-verse__2.36.00..
+oewn-verse__1.10.01..	derivation		oewn-versify__2.36.00..
+oewn-verse__1.10.02..	derivation		oewn-verse__2.36.00..
+oewn-verse__1.10.02..	derivation		oewn-versify__2.36.00..
+oewn-verse__2.36.00..	other	result	oewn-verse__1.10.00..
+oewn-verse__2.36.00..	other	result	oewn-verse__1.10.01..
+oewn-verse__2.36.00..	other	result	oewn-verse__1.10.02..
+oewn-versed__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-versification__1.10.00..	derivation		oewn-versify__2.36.00..
+oewn-versification__1.10.01..	derivation		oewn-versify__2.36.00..
+oewn-versification__1.10.02..	derivation		oewn-versify__2.36.00..
+oewn-versifier__1.18.00..	derivation		oewn-versify__2.36.00..
+oewn-versify__2.36.00..	other	agent	oewn-versifier__1.18.00..
+oewn-versify__2.36.00..	other	event	oewn-versification__1.10.00..
+oewn-versify__2.36.00..	other	result	oewn-verse__1.10.00..
+oewn-versify__2.36.00..	other	result	oewn-verse__1.10.01..
+oewn-versify__2.36.00..	other	result	oewn-verse__1.10.02..
+oewn-versify__2.36.00..	other	result	oewn-versification__1.10.01..
+oewn-versify__2.36.00..	other	result	oewn-versification__1.10.02..
+oewn-vertebra__1.08.00..	derivation		oewn-vertebral__3.01.00..
+oewn-vertebral__3.01.00..	pertainym		oewn-vertebra__1.08.00..
+oewn-vertebrate__1.05.00..	derivation		oewn-vertebrate__3.00.00..
+oewn-vertical__1.06.00..	derivation		oewn-vertical__3.00.00..
+oewn-vertical__1.06.00..	derivation		oewn-vertical__3.00.02..
+oewn-vertical__1.24.00..	derivation		oewn-vertical__3.00.00..
+oewn-vertical__3.00.00..	derivation		oewn-verticality__1.07.00..
+oewn-vertical__3.00.00..	derivation		oewn-verticalness__1.07.00..
+oewn-vertical__3.00.02..	derivation		oewn-verticalness__1.07.00..
+oewn-vertical__3.01.00..	derivation		oewn-vertical_integration__1.04.00..
+oewn-vertical__3.01.00..	pertainym		oewn-vertical_integration__1.04.00..
+oewn-vertically__4.02.00..	pertainym		oewn-vertical__3.00.00..
+oewn-vertiginous__5.00.00.ill.01	derivation		oewn-vertigo__1.26.00..
+oewn-vesica__1.08.00..	derivation		oewn-vesical__3.01.00..
+oewn-vesical__3.01.00..	pertainym		oewn-vesica__1.08.00..
+oewn-vesicant__1.27.00..	derivation		oewn-vesicant__5.00.00.noxious.00
+oewn-vesicant__5.00.00.noxious.00	derivation		oewn-vesicate__2.30.00..
+oewn-vesicate__2.30.00..	derivation		oewn-vesication__1.22.00..
+oewn-vesicate__2.30.00..	derivation		oewn-vesicatory__5.00.00.noxious.00
+oewn-vesicate__2.30.00..	other	event	oewn-vesication__1.22.00..
+oewn-vesicatory__1.27.00..	derivation		oewn-vesicatory__5.00.00.noxious.00
+oewn-vesicular__3.01.00..	pertainym		oewn-vesicle__1.08.00..
+oewn-vesiculate__2.30.00..	derivation		oewn-vesiculation__1.22.00..
+oewn-vesiculate__2.30.00..	other	event	oewn-vesiculation__1.22.00..
+oewn-vesiculate__2.30.01..	derivation		oewn-vesiculation__1.22.00..
+oewn-vesiculate__2.30.01..	other	event	oewn-vesiculation__1.22.00..
+oewn-vest__2.29.00..	derivation		oewn-vestment__1.06.00..
+oewn-vest__2.29.00..	derivation		oewn-vesture__1.06.00..
+oewn-vestal__1.18.00..	derivation		oewn-vestal__5.00.00.chaste.00
+oewn-vestiary__3.01.00..	derivation		oewn-vesture__1.06.00..
+oewn-vestiary__3.01.00..	pertainym		oewn-clothing__1.06.00..
+oewn-vestibular__3.01.00..	derivation		oewn-vestibule__1.08.00..
+oewn-vestibular__3.01.00..	pertainym		oewn-vestibular_sense__1.09.00..
+oewn-vestment__1.06.00..	derivation		oewn-vestmental__3.01.00..
+oewn-vestmental__3.01.00..	pertainym		oewn-vestment__1.06.00..
+oewn-vesture__1.06.00..	derivation		oewn-vesture__2.29.00..
+oewn-vesture__2.29.00..	other	uses	oewn-vesture__1.06.00..
+oewn-vet__1.18.00..	derivation		oewn-vet__2.29.00..
+oewn-vet__1.18.00..	derivation		oewn-vet__2.41.00..
+oewn-vet__2.29.00..	other	agent	oewn-vet__1.18.00..
+oewn-vet__2.41.00..	other	agent	oewn-vet__1.18.00..
+oewn-veteran__1.18.00..	derivation		oewn-veteran__5.00.00.experienced.00
+oewn-veteran__1.18.02..	derivation		oewn-veteran__5.00.00.experienced.00
+oewn-veterinary__1.18.00..	derivation		oewn-veterinary__3.01.00..
+oewn-veterinary__3.01.00..	pertainym		oewn-veterinarian__1.18.00..
+oewn-veterinary__3.01.00..	pertainym		oewn-veterinary_medicine__1.09.00..
+oewn-veto__1.04.00..	derivation		oewn-veto__2.32.00..
+oewn-veto__1.04.00..	derivation		oewn-veto__2.41.00..
+oewn-veto__1.07.00..	derivation		oewn-veto__2.41.00..
+oewn-veto__2.32.00..	other	by_means_of	oewn-veto__1.04.00..
+oewn-veto__2.41.00..	other	event	oewn-veto__1.04.00..
+oewn-veto__2.41.00..	other	event	oewn-veto__1.07.00..
+oewn-vex__2.37.00..	derivation		oewn-vexation__1.04.00..
+oewn-vex__2.37.00..	derivation		oewn-vexation__1.26.00..
+oewn-vex__2.37.00..	derivation		oewn-vexer__1.18.00..
+oewn-vex__2.37.00..	other	agent	oewn-vexer__1.18.00..
+oewn-vex__2.37.00..	other	event	oewn-vexation__1.04.00..
+oewn-vex__2.37.00..	other	state	oewn-vexation__1.26.00..
+oewn-vex__2.37.02..	derivation		oewn-vexation__1.09.00..
+oewn-vex__2.37.02..	other	by_means_of	oewn-vexation__1.09.00..
+oewn-vexatiously__4.02.00..	pertainym		oewn-vexatious__5.00.00.disagreeable.00
+oewn-viability__1.07.00..	derivation		oewn-viable__5.00.00.alive.01
+oewn-viability__1.07.01..	derivation		oewn-viable__5.00.00.possible.00
+oewn-viagra__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-viatical__3.01.00..	derivation		oewn-viatication__1.04.00..
+oewn-viatical__3.01.00..	derivation		oewn-viaticus__1.04.00..
+oewn-viatical__3.01.00..	pertainym		oewn-viatication__1.04.00..
+oewn-vibrancy__1.07.00..	derivation		oewn-vibrate__2.39.00..
+oewn-vibrant__5.00.00.reverberant.00	derivation		oewn-vibrate__2.39.00..
+oewn-vibrate__2.38.00..	derivation		oewn-vibration__1.26.01..
+oewn-vibrate__2.38.00..	derivation		oewn-vibrator__1.06.00..
+oewn-vibrate__2.38.00..	other	event	oewn-vibration__1.26.01..
+oewn-vibrate__2.38.00..	other	instrument	oewn-vibrator__1.06.00..
+oewn-vibrate__2.38.01..	derivation		oewn-vibration__1.04.00..
+oewn-vibrate__2.38.01..	derivation		oewn-vibration__1.11.00..
+oewn-vibrate__2.38.01..	derivation		oewn-vibrator__1.06.01..
+oewn-vibrate__2.38.01..	other	event	oewn-vibration__1.04.00..
+oewn-vibrate__2.38.01..	other	event	oewn-vibration__1.11.00..
+oewn-vibrate__2.38.01..	other	instrument	oewn-vibrator__1.06.01..
+oewn-vibrate__2.39.00..	derivation		oewn-vibratory__5.00.00.moving.02
+oewn-vibration__1.04.00..	derivation		oewn-vibrational__3.01.00..
+oewn-vibration__1.26.01..	derivation		oewn-vibrational__3.01.00..
+oewn-vibrational__3.01.00..	pertainym		oewn-vibration__1.11.00..
+oewn-vibrio__1.05.00..	derivation		oewn-vibrionic__3.01.00..
+oewn-vicar__1.18.00..	derivation		oewn-vicarial__3.01.00..
+oewn-vicar__1.18.00..	derivation		oewn-vicarship__1.14.00..
+oewn-vicar__1.18.01..	derivation		oewn-vicarial__3.01.00..
+oewn-vicar__1.18.01..	derivation		oewn-vicarship__1.14.00..
+oewn-vicar__1.18.02..	derivation		oewn-vicarial__3.01.00..
+oewn-vicar__1.18.02..	derivation		oewn-vicarship__1.14.00..
+oewn-vicarial__3.01.00..	pertainym		oewn-vicar__1.18.00..
+oewn-vicariously__4.02.00..	pertainym		oewn-vicarious__5.00.00.secondary.01
+oewn-vice--presidential__3.01.00..	derivation		oewn-vice_president__1.18.00..
+oewn-vice--presidential__3.01.00..	pertainym		oewn-vice_president__1.18.00..
+oewn-vice__1.04.00..	derivation		oewn-vicious__5.00.00.wicked.00
+oewn-vice__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vice__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vice__1.06.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vicennial__3.01.00..	pertainym		oewn-twenty__1.23.00..
+oewn-viceregal__3.01.00..	derivation		oewn-viceroy__1.18.00..
+oewn-viceregal__3.01.00..	pertainym		oewn-viceroy__1.18.00..
+oewn-viceroy__1.18.00..	derivation		oewn-viceroyship__1.04.00..
+oewn-vicinal__3.01.00..	derivation		oewn-vicinity__1.15.00..
+oewn-vicinal__3.01.00..	pertainym		oewn-vicinity__1.15.00..
+oewn-vicious__5.00.00.inhumane.00	derivation		oewn-viciousness__1.07.00..
+oewn-vicious__5.00.00.malicious.00	derivation		oewn-viciousness__1.07.00..
+oewn-vicious__5.00.00.wicked.00	derivation		oewn-viciousness__1.07.00..
+oewn-viciously__4.02.00..	pertainym		oewn-vicious__5.00.00.inhumane.00
+oewn-victim__1.18.00..	derivation		oewn-victimise__2.41.00..
+oewn-victim__1.18.00..	derivation		oewn-victimise__2.41.01..
+oewn-victim__1.18.00..	derivation		oewn-victimize__2.41.00..
+oewn-victim__1.18.00..	derivation		oewn-victimize__2.41.01..
+oewn-victim__1.18.01..	derivation		oewn-victimise__2.41.01..
+oewn-victim__1.18.01..	derivation		oewn-victimize__2.41.00..
+oewn-victim__1.18.01..	derivation		oewn-victimize__2.41.01..
+oewn-victimisation__1.04.00..	derivation		oewn-victimise__2.41.01..
+oewn-victimisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-victimisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-victimise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-victimise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-victimise__2.41.01..	derivation		oewn-victimiser__1.18.00..
+oewn-victimise__2.41.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-victimise__2.41.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-victimise__2.41.01..	other	agent	oewn-victimiser__1.18.00..
+oewn-victimise__2.41.01..	other	event	oewn-victimisation__1.04.00..
+oewn-victimization__1.04.00..	derivation		oewn-victimize__2.41.03..
+oewn-victimization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-victimization__1.26.00..	derivation		oewn-victimize__2.41.01..
+oewn-victimize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-victimize__2.41.01..	derivation		oewn-victimizer__1.18.00..
+oewn-victimize__2.41.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-victimize__2.41.01..	other	agent	oewn-victimizer__1.18.00..
+oewn-victimize__2.41.01..	other	result	oewn-victimization__1.26.00..
+oewn-victimize__2.41.03..	other	event	oewn-victimization__1.04.00..
+oewn-victorian__1.18.00..	derivation		oewn-victorian__3.01.00..
+oewn-victorious__5.00.00.successful.00	derivation		oewn-victory__1.11.00..
+oewn-victorious__5.00.00.undefeated.00	derivation		oewn-victory__1.11.00..
+oewn-victoriously__4.02.00..	pertainym		oewn-victorious__5.00.00.undefeated.00
+oewn-victual__1.13.00..	derivation		oewn-victual__2.34.00..
+oewn-victual__1.13.00..	derivation		oewn-victual__2.40.00..
+oewn-victual__1.13.00..	derivation		oewn-victual__2.40.02..
+oewn-victual__2.34.00..	other	material	oewn-victual__1.13.00..
+oewn-victual__2.34.00..	other	undergoer	oewn-victual__1.13.00..
+oewn-victual__2.40.00..	other	material	oewn-victual__1.13.00..
+oewn-victual__2.40.00..	other	undergoer	oewn-victual__1.13.00..
+oewn-victual__2.40.02..	derivation		oewn-victualer__1.18.01..
+oewn-victual__2.40.02..	derivation		oewn-victualer__1.18.02..
+oewn-victual__2.40.02..	derivation		oewn-victualler__1.18.01..
+oewn-victual__2.40.02..	derivation		oewn-victualler__1.18.02..
+oewn-victual__2.40.02..	other	agent	oewn-victualer__1.18.01..
+oewn-victual__2.40.02..	other	agent	oewn-victualer__1.18.02..
+oewn-victual__2.40.02..	other	agent	oewn-victualler__1.18.01..
+oewn-victual__2.40.02..	other	agent	oewn-victualler__1.18.02..
+oewn-victual__2.40.02..	other	material	oewn-victual__1.13.00..
+oewn-victual__2.40.02..	other	uses	oewn-victual__1.13.00..
+oewn-videotape__1.06.00..	derivation		oewn-videotape__2.32.00..
+oewn-videotape__1.06.01..	derivation		oewn-videotape__2.32.00..
+oewn-videotape__2.32.00..	other	instrument	oewn-videotape__1.06.00..
+oewn-videotape__2.32.00..	other	result	oewn-videotape__1.06.01..
+oewn-vietnamese__1.18.00..	derivation		oewn-vietnamese__3.01.00..
+oewn-vietnamese__3.01.00..	pertainym		oewn-vietnamese__1.10.00..
+oewn-vietnamese__3.01.00..	pertainym		oewn-vietnamese__1.18.00..
+oewn-view__1.04.00..	derivation		oewn-view__2.39.02..
+oewn-view__1.09.01..	derivation		oewn-view__2.39.02..
+oewn-view__1.09.02..	derivation		oewn-view__2.31.00..
+oewn-view__1.09.02..	derivation		oewn-view__2.39.00..
+oewn-view__1.09.04..	derivation		oewn-view__2.31.00..
+oewn-view__1.10.00..	derivation		oewn-view__2.31.00..
+oewn-view__1.15.00..	derivation		oewn-view__2.39.02..
+oewn-view__2.31.00..	other	event	oewn-view__1.09.02..
+oewn-view__2.31.00..	other	event	oewn-view__1.09.04..
+oewn-view__2.31.00..	other	event	oewn-view__1.10.00..
+oewn-view__2.39.00..	derivation		oewn-viewer__1.06.00..
+oewn-view__2.39.00..	other	event	oewn-view__1.09.02..
+oewn-view__2.39.00..	other	instrument	oewn-viewer__1.06.00..
+oewn-view__2.39.02..	derivation		oewn-viewable__5.00.00.visible.00
+oewn-view__2.39.02..	derivation		oewn-viewer__1.18.01..
+oewn-view__2.39.02..	other	agent	oewn-viewer__1.18.01..
+oewn-view__2.39.02..	other	by_means_of	oewn-view__1.15.00..
+oewn-view__2.39.02..	other	event	oewn-view__1.04.00..
+oewn-view__2.39.02..	other	event	oewn-view__1.09.01..
+oewn-vigesimal__3.01.00..	pertainym		oewn-twenty__1.23.00..
+oewn-vigilance__1.07.00..	derivation		oewn-vigilant__5.00.00.alert.00
+oewn-vigilance__1.09.00..	derivation		oewn-vigilant__5.00.00.alert.00
+oewn-vigilantly__4.02.00..	pertainym		oewn-vigilant__5.00.00.alert.00
+oewn-vigor__1.07.00..	derivation		oewn-vigorous__5.00.00.energetic.00
+oewn-vigor__1.07.00..	derivation		oewn-vigorous__5.00.00.robust.00
+oewn-vigor__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vigor__1.07.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vigor__1.07.02..	derivation		oewn-vigorous__5.00.00.energetic.00
+oewn-vigor__1.07.02..	derivation		oewn-vigorous__5.00.00.robust.00
+oewn-vigor__1.07.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vigorously__4.02.00..	pertainym		oewn-vigorous__5.00.00.energetic.00
+oewn-vigour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vigour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vigour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vigour__1.07.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vigour__1.07.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vigour__1.07.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vigour__1.07.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vigour__1.07.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vigour__1.07.02..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vile__5.00.00.unwholesome.00	derivation		oewn-vileness__1.07.01..
+oewn-vilely__4.02.00..	pertainym		oewn-vile__5.00.00.evil.00
+oewn-vilification__1.10.00..	derivation		oewn-vilify__2.32.00..
+oewn-vilification__1.10.01..	derivation		oewn-vilify__2.32.00..
+oewn-vilifier__1.18.00..	derivation		oewn-vilify__2.32.00..
+oewn-vilify__2.32.00..	other	agent	oewn-vilifier__1.18.00..
+oewn-vilify__2.32.00..	other	by_means_of	oewn-vilification__1.10.00..
+oewn-vilify__2.32.00..	other	by_means_of	oewn-vilification__1.10.01..
+oewn-vilify__2.32.00..	other	event	oewn-vilification__1.10.00..
+oewn-vilify__2.32.00..	other	event	oewn-vilification__1.10.01..
+oewn-villain__1.18.00..	derivation		oewn-villainous__5.00.00.wicked.00
+oewn-villainous__5.00.00.wicked.00	derivation		oewn-villainousness__1.07.00..
+oewn-vinaceous__3.01.00..	derivation		oewn-wine__1.13.00..
+oewn-vinaceous__3.01.00..	pertainym		oewn-wine__1.13.00..
+oewn-vinaceous__5.00.00.chromatic.00	derivation		oewn-wine__1.07.00..
+oewn-vindicate__2.32.00..	derivation		oewn-vindication__1.10.00..
+oewn-vindicate__2.32.00..	derivation		oewn-vindicator__1.18.00..
+oewn-vindicate__2.32.00..	derivation		oewn-vindicatory__5.00.00.exculpatory.00
+oewn-vindicate__2.32.00..	other	agent	oewn-vindicator__1.18.00..
+oewn-vindicate__2.32.00..	other	uses	oewn-vindication__1.10.00..
+oewn-vindicate__2.32.02..	derivation		oewn-vindication__1.04.01..
+oewn-vindicate__2.32.02..	derivation		oewn-vindication__1.10.00..
+oewn-vindicate__2.32.02..	derivation		oewn-vindicator__1.18.00..
+oewn-vindicate__2.32.02..	other	agent	oewn-vindicator__1.18.00..
+oewn-vindicate__2.32.02..	other	by_means_of	oewn-vindication__1.10.00..
+oewn-vindicate__2.32.02..	other	event	oewn-vindication__1.04.01..
+oewn-vindictive__5.00.00.malicious.00	derivation		oewn-vindictiveness__1.12.00..
+oewn-vindictive__5.00.00.unforgiving.00	derivation		oewn-vindictiveness__1.12.00..
+oewn-vindictively__4.02.00..	pertainym		oewn-vindictive__5.00.00.unforgiving.00
+oewn-vinegariness__1.07.00..	derivation		oewn-vinegary__5.00.00.sour.00
+oewn-vinegarish__5.00.00.sour.00	derivation		oewn-vinegarishness__1.07.00..
+oewn-vinification__1.22.00..	derivation		oewn-vinify__2.30.00..
+oewn-vinify__2.30.00..	derivation		oewn-wine__1.13.00..
+oewn-vinify__2.30.00..	other	event	oewn-vinification__1.22.00..
+oewn-vinify__2.30.00..	other	result	oewn-wine__1.13.00..
+oewn-vinous__3.01.00..	derivation		oewn-wine__1.13.00..
+oewn-vinous__3.01.00..	pertainym		oewn-wine__1.13.00..
+oewn-violable__3.00.00..	derivation		oewn-violate__2.41.00..
+oewn-violable__3.00.00..	derivation		oewn-violate__2.42.00..
+oewn-violate__2.41.00..	derivation		oewn-violative__5.00.00.offending.00
+oewn-violate__2.41.00..	derivation		oewn-violator__1.18.01..
+oewn-violate__2.41.00..	other	agent	oewn-violator__1.18.01..
+oewn-violate__2.41.01..	derivation		oewn-violation__1.04.02..
+oewn-violate__2.41.01..	derivation		oewn-violator__1.18.00..
+oewn-violate__2.41.01..	other	agent	oewn-violator__1.18.00..
+oewn-violate__2.41.01..	other	event	oewn-violation__1.04.02..
+oewn-violate__2.41.02..	derivation		oewn-violation__1.04.01..
+oewn-violate__2.41.02..	derivation		oewn-violation__1.04.03..
+oewn-violate__2.41.02..	derivation		oewn-violative__5.00.00.offending.00
+oewn-violate__2.41.02..	other	event	oewn-violation__1.04.01..
+oewn-violate__2.41.02..	other	event	oewn-violation__1.04.03..
+oewn-violate__2.42.00..	derivation		oewn-violation__1.04.04..
+oewn-violate__2.42.00..	derivation		oewn-violative__5.00.00.offending.00
+oewn-violate__2.42.00..	other	event	oewn-violation__1.04.04..
+oewn-violence__1.04.01..	derivation		oewn-violent__5.00.00.unnatural.00
+oewn-violence__1.07.00..	derivation		oewn-violent__3.00.00..
+oewn-violence__1.26.00..	derivation		oewn-violent__5.00.00.bloody.00
+oewn-violently__4.02.00..	pertainym		oewn-violent__3.00.00..
+oewn-violet__1.07.00..	derivation		oewn-violet__5.00.00.chromatic.00
+oewn-violin__1.06.00..	derivation		oewn-violinist__1.18.00..
+oewn-vioxx__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-viral__3.01.00..	derivation		oewn-virus__1.05.00..
+oewn-viral__3.01.00..	pertainym		oewn-virus__1.05.00..
+oewn-virazole__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-virgin__1.18.00..	derivation		oewn-virgin__5.00.00.chaste.00
+oewn-virgin__1.18.00..	derivation		oewn-virginal__3.01.00..
+oewn-virgin__1.18.00..	derivation		oewn-virginal__5.00.00.chaste.00
+oewn-virgin__5.00.00.chaste.00	derivation		oewn-virginity__1.26.00..
+oewn-virginal__3.01.00..	pertainym		oewn-virginity__1.26.00..
+oewn-viricidal__3.01.00..	derivation		oewn-viricide__1.27.00..
+oewn-viricidal__3.01.00..	pertainym		oewn-viricide__1.27.00..
+oewn-virile__3.00.00..	derivation		oewn-virility__1.07.01..
+oewn-virile__5.00.00.masculine.01	derivation		oewn-virility__1.07.00..
+oewn-virilisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-virilisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-virilise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-virilise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-virilization__1.22.00..	derivation		oewn-virilize__2.30.00..
+oewn-virilization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-virilize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-virilize__2.30.00..	other	event	oewn-virilization__1.22.00..
+oewn-virological__3.01.00..	derivation		oewn-virology__1.09.00..
+oewn-virological__3.01.00..	pertainym		oewn-virology__1.09.00..
+oewn-virologist__1.18.00..	derivation		oewn-virology__1.09.00..
+oewn-virtually__4.02.01..	pertainym		oewn-virtual__5.00.00.essential.00
+oewn-virtue__1.07.01..	derivation		oewn-virtuous__3.00.00..
+oewn-virtue__1.07.02..	derivation		oewn-virtuous__5.00.00.chaste.00
+oewn-virtue__1.07.04..	derivation		oewn-virtuous__3.00.00..
+oewn-virtuoso__1.18.00..	derivation		oewn-virtuoso__5.00.00.skilled.00
+oewn-virtuoso__1.18.01..	derivation		oewn-virtuoso__5.00.00.skilled.00
+oewn-virtuous__3.00.00..	antonym		oewn-wicked__3.00.00..
+oewn-virtuous__3.00.00..	derivation		oewn-virtuousness__1.07.00..
+oewn-virtuously__4.02.00..	pertainym		oewn-virtuous__5.00.00.chaste.00
+oewn-virtuously__4.02.01..	pertainym		oewn-virtuous__3.00.00..
+oewn-virucidal__3.01.00..	derivation		oewn-virucide__1.27.00..
+oewn-virucidal__3.01.00..	pertainym		oewn-virucide__1.27.00..
+oewn-virulence__1.07.00..	derivation		oewn-virulent__3.00.00..
+oewn-virulence__1.07.00..	derivation		oewn-virulent__5.00.00.toxic.00
+oewn-virulence__1.07.01..	derivation		oewn-virulent__5.00.00.unpleasant.00
+oewn-virulency__1.07.00..	derivation		oewn-virulent__3.00.00..
+oewn-virulency__1.07.00..	derivation		oewn-virulent__5.00.00.toxic.00
+oewn-virulency__1.07.01..	derivation		oewn-virulent__5.00.00.unpleasant.00
+oewn-virulently__4.02.00..	pertainym		oewn-virulent__5.00.00.unpleasant.00
+oewn-visa__1.10.00..	derivation		oewn-visa__2.32.00..
+oewn-visa__2.32.00..	other	uses	oewn-visa__1.10.00..
+oewn-visceral__3.01.00..	pertainym		oewn-viscera__1.08.00..
+oewn-viscerally__4.02.00..	pertainym		oewn-visceral__3.01.00..
+oewn-viscerally__4.02.01..	pertainym		oewn-visceral__5.00.00.illogical.00
+oewn-viscid__5.00.00.adhesive.00	derivation		oewn-viscidity__1.07.00..
+oewn-viscid__5.00.00.adhesive.00	derivation		oewn-viscidness__1.07.00..
+oewn-viscidly__4.02.00..	pertainym		oewn-viscid__5.00.00.adhesive.00
+oewn-viscometer__1.06.00..	derivation		oewn-viscometric__3.01.00..
+oewn-viscometric__3.01.00..	derivation		oewn-viscometry__1.04.00..
+oewn-viscometric__3.01.00..	pertainym		oewn-viscometer__1.06.00..
+oewn-viscosimeter__1.06.00..	derivation		oewn-viscosimetric__3.01.00..
+oewn-viscosimetric__3.01.00..	derivation		oewn-viscosimetry__1.04.00..
+oewn-viscosimetric__3.01.00..	pertainym		oewn-viscosimeter__1.06.00..
+oewn-viscosity__1.07.00..	derivation		oewn-viscous__5.00.00.thick.02
+oewn-viscous__5.00.00.thick.02	derivation		oewn-viscousness__1.07.00..
+oewn-vise__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-visibility__1.07.00..	derivation		oewn-visible__3.00.00..
+oewn-visibility__1.07.00..	derivation		oewn-visible__5.00.00.overt.00
+oewn-visible__3.00.00..	derivation		oewn-visibleness__1.07.00..
+oewn-visible__5.00.00.overt.00	derivation		oewn-visibleness__1.07.00..
+oewn-visibly__4.02.00..	pertainym		oewn-visible__3.00.00..
+oewn-visibly__4.02.01..	pertainym		oewn-visible__3.00.00..
+oewn-vision__1.09.03..	derivation		oewn-visionary__5.00.00.utopian.00
+oewn-visionary__1.18.01..	derivation		oewn-visionary__5.00.00.utopian.00
+oewn-visit__1.04.02..	derivation		oewn-visit__2.41.00..
+oewn-visit__1.04.03..	derivation		oewn-visit__2.42.04..
+oewn-visit__1.14.00..	derivation		oewn-visit__2.38.01..
+oewn-visit__2.30.00..	derivation		oewn-visitation__1.11.01..
+oewn-visit__2.30.00..	other	event	oewn-visitation__1.11.01..
+oewn-visit__2.32.00..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.32.00..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.32.01..	derivation		oewn-visitation__1.11.00..
+oewn-visit__2.32.01..	other	event	oewn-visitation__1.11.00..
+oewn-visit__2.38.00..	derivation		oewn-visiting__1.04.00..
+oewn-visit__2.38.00..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.38.00..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.38.01..	derivation		oewn-visitation__1.04.00..
+oewn-visit__2.38.01..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.38.01..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.38.01..	other	event	oewn-visit__1.14.00..
+oewn-visit__2.38.01..	other	event	oewn-visitation__1.04.00..
+oewn-visit__2.41.00..	derivation		oewn-visitant__1.18.00..
+oewn-visit__2.41.00..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.41.00..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.41.00..	other	event	oewn-visit__1.04.02..
+oewn-visit__2.41.02..	derivation		oewn-visitant__1.18.00..
+oewn-visit__2.41.02..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.41.02..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.42.04..	derivation		oewn-visitor__1.18.00..
+oewn-visit__2.42.04..	other	agent	oewn-visitor__1.18.00..
+oewn-visit__2.42.04..	other	event	oewn-visit__1.04.03..
+oewn-visken__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-vistaril__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-visual__3.01.04..	pertainym		oewn-sight__1.09.00..
+oewn-visualisation__1.09.00..	derivation		oewn-visualise__2.36.02..
+oewn-visualisation__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-visualisation__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-visualise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-visualise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-visualise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-visualise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-visualise__2.36.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-visualise__2.36.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-visualise__2.36.02..	other	result	oewn-visualisation__1.09.00..
+oewn-visualise__2.39.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-visualise__2.39.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-visualization__1.09.00..	derivation		oewn-visualize__2.36.00..
+oewn-visualization__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-visualize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-visualize__2.36.00..	derivation		oewn-visualizer__1.18.00..
+oewn-visualize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-visualize__2.36.00..	other	agent	oewn-visualizer__1.18.00..
+oewn-visualize__2.36.00..	other	result	oewn-visualization__1.09.00..
+oewn-visualize__2.36.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-visualize__2.39.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vital__5.00.00.alive.01	derivation		oewn-vitality__1.07.00..
+oewn-vital__5.00.00.alive.01	derivation		oewn-vitalize__2.30.01..
+oewn-vital__5.00.00.alive.01	derivation		oewn-vitalness__1.07.00..
+oewn-vital__5.00.00.animated.00	derivation		oewn-vitality__1.07.00..
+oewn-vital__5.00.00.animated.00	derivation		oewn-vitality__1.07.01..
+oewn-vital__5.00.00.animated.00	derivation		oewn-vitality__1.26.00..
+oewn-vital__5.00.00.animated.00	derivation		oewn-vitalize__2.30.00..
+oewn-vital__5.00.00.essential.00	derivation		oewn-vitality__1.19.00..
+oewn-vital__5.00.00.essential.00	derivation		oewn-vitalness__1.07.00..
+oewn-vital__5.00.00.essential.00	derivation		oewn-vitalness__1.07.01..
+oewn-vital__5.00.00.indispensable.00	derivation		oewn-vitalness__1.07.01..
+oewn-vitalisation__1.26.00..	derivation		oewn-vitalise__2.30.00..
+oewn-vitalisation__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vitalisation__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vitalise__2.30.00..	derivation		oewn-vitaliser__1.18.00..
+oewn-vitalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vitalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vitalise__2.30.00..	other	agent	oewn-vitaliser__1.18.00..
+oewn-vitalise__2.30.00..	other	state	oewn-vitalisation__1.26.00..
+oewn-vitalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vitalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vitalism__1.09.00..	derivation		oewn-vitalist__1.18.00..
+oewn-vitalization__1.26.00..	derivation		oewn-vitalize__2.30.00..
+oewn-vitalization__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vitalize__2.30.00..	derivation		oewn-vitalizer__1.18.00..
+oewn-vitalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vitalize__2.30.00..	other	agent	oewn-vitalizer__1.18.00..
+oewn-vitalize__2.30.00..	other	state	oewn-vitalization__1.26.00..
+oewn-vitalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vitally__4.02.00..	pertainym		oewn-vital__5.00.00.essential.00
+oewn-vitamin__1.27.00..	derivation		oewn-vitaminize__2.40.00..
+oewn-vitaminise__2.40.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vitaminise__2.40.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vitaminize__2.40.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vitiate__2.30.00..	derivation		oewn-vitiation__1.04.00..
+oewn-vitiate__2.30.00..	other	event	oewn-vitiation__1.04.00..
+oewn-vitiliginous__3.01.00..	derivation		oewn-vitiligo__1.26.00..
+oewn-vitiliginous__3.01.00..	pertainym		oewn-vitiligo__1.26.00..
+oewn-vitreous__3.01.00..	pertainym		oewn-glass__1.27.00..
+oewn-vitreous__3.01.01..	pertainym		oewn-vitreous_humor__1.08.00..
+oewn-vitreous_humor__1.08.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vitreous_humour__1.08.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vitreous_humour__1.08.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vitreous_humour__1.08.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-vitrification__1.22.00..	derivation		oewn-vitrify__2.30.00..
+oewn-vitrification__1.27.00..	derivation		oewn-vitrify__2.30.01..
+oewn-vitrify__2.30.00..	other	event	oewn-vitrification__1.22.00..
+oewn-vitrify__2.30.01..	other	result	oewn-vitrification__1.27.00..
+oewn-vitriol__1.10.00..	derivation		oewn-vitriolic__5.00.00.unpleasant.00
+oewn-vitriol__1.27.00..	derivation		oewn-vitriolic__5.00.00.destructive.00
+oewn-vitriolically__4.02.00..	pertainym		oewn-vitriolic__5.00.00.unpleasant.00
+oewn-vituperate__2.32.00..	derivation		oewn-vituperation__1.10.00..
+oewn-vituperate__2.32.00..	derivation		oewn-vituperative__5.00.00.critical.01
+oewn-vituperate__2.32.00..	other	event	oewn-vituperation__1.10.00..
+oewn-vivacious__5.00.00.spirited.00	derivation		oewn-vivacity__1.07.00..
+oewn-vivaciously__4.02.00..	pertainym		oewn-vivacious__5.00.00.spirited.00
+oewn-vivid__5.00.00.clear.00	derivation		oewn-vividness__1.07.01..
+oewn-vivid__5.00.00.colorful.00	derivation		oewn-vividness__1.07.00..
+oewn-vivid__5.00.00.realistic.00	derivation		oewn-vividness__1.07.01..
+oewn-vivid__5.00.00.saturated.03	derivation		oewn-vividness__1.07.00..
+oewn-vividly__4.02.00..	pertainym		oewn-vivid__5.00.00.realistic.00
+oewn-vivification__1.04.00..	derivation		oewn-vivify__2.29.00..
+oewn-vivification__1.07.00..	derivation		oewn-vivify__2.30.01..
+oewn-vivify__2.29.00..	other	event	oewn-vivification__1.04.00..
+oewn-vivify__2.30.01..	other	property	oewn-vivification__1.07.00..
+oewn-vivisect__2.35.00..	derivation		oewn-vivisection__1.04.00..
+oewn-vivisect__2.35.00..	other	event	oewn-vivisection__1.04.00..
+oewn-vivisection__1.04.00..	derivation		oewn-vivisectionist__1.18.00..
+oewn-vizier__1.18.00..	derivation		oewn-viziership__1.04.00..
+oewn-vocal__3.01.00..	derivation		oewn-vocalize__2.32.04..
+oewn-vocal__3.01.00..	pertainym		oewn-voice__1.10.00..
+oewn-vocal__3.01.02..	derivation		oewn-vocalize__2.36.00..
+oewn-vocal__3.01.02..	pertainym		oewn-voice__1.10.00..
+oewn-vocalic__3.00.02..	derivation		oewn-vowel__1.10.00..
+oewn-vocalic__3.00.02..	derivation		oewn-vowel__1.10.01..
+oewn-vocalic__3.01.00..	derivation		oewn-vowel__1.10.00..
+oewn-vocalic__3.01.00..	derivation		oewn-vowel__1.10.01..
+oewn-vocalic__3.01.00..	pertainym		oewn-vowel__1.10.00..
+oewn-vocalisation__1.10.00..	derivation		oewn-vocalise__2.32.02..
+oewn-vocalisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.32.02..	derivation		oewn-vocaliser__1.18.01..
+oewn-vocalise__2.32.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalise__2.32.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.32.02..	other	agent	oewn-vocaliser__1.18.01..
+oewn-vocalise__2.32.02..	other	result	oewn-vocalisation__1.10.00..
+oewn-vocalise__2.32.05..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalise__2.32.05..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.36.00..	derivation		oewn-vocaliser__1.18.00..
+oewn-vocalise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vocalise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vocalise__2.36.00..	other	agent	oewn-vocaliser__1.18.00..
+oewn-vocalism__1.10.00..	derivation		oewn-vocalist__1.18.00..
+oewn-vocalization__1.10.00..	derivation		oewn-vocalize__2.32.02..
+oewn-vocalization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalization__1.10.01..	derivation		oewn-vocalize__2.32.04..
+oewn-vocalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalize__2.32.02..	derivation		oewn-vocalizer__1.18.00..
+oewn-vocalize__2.32.02..	derivation		oewn-vocalizer__1.18.01..
+oewn-vocalize__2.32.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalize__2.32.02..	other	agent	oewn-vocalizer__1.18.00..
+oewn-vocalize__2.32.02..	other	agent	oewn-vocalizer__1.18.01..
+oewn-vocalize__2.32.02..	other	result	oewn-vocalization__1.10.00..
+oewn-vocalize__2.32.04..	derivation		oewn-vocalizer__1.18.01..
+oewn-vocalize__2.32.04..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalize__2.32.04..	other	agent	oewn-vocalizer__1.18.01..
+oewn-vocalize__2.32.04..	other	event	oewn-vocalization__1.10.01..
+oewn-vocalize__2.36.00..	derivation		oewn-vocalizer__1.18.00..
+oewn-vocalize__2.36.00..	derivation		oewn-vocalizing__1.04.00..
+oewn-vocalize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vocalize__2.36.00..	other	agent	oewn-vocalizer__1.18.00..
+oewn-vocally__4.02.00..	pertainym		oewn-vocal__5.00.00.communicative.00
+oewn-vocational__3.01.00..	pertainym		oewn-vocation__1.04.00..
+oewn-vocationally__4.02.00..	pertainym		oewn-vocational__3.01.00..
+oewn-vocative__1.10.00..	derivation		oewn-vocative__3.01.00..
+oewn-vocative__3.01.00..	pertainym		oewn-vocative__1.10.00..
+oewn-vociferate__2.32.01..	derivation		oewn-vociferator__1.18.00..
+oewn-vociferate__2.32.01..	other	agent	oewn-vociferator__1.18.00..
+oewn-vociferously__4.02.00..	pertainym		oewn-vociferous__5.00.00.noisy.00
+oewn-voice__1.04.00..	derivation		oewn-voice__2.32.00..
+oewn-voice__1.07.01..	derivation		oewn-voice__2.32.01..
+oewn-voice__1.10.00..	derivation		oewn-voice__2.32.01..
+oewn-voice__1.10.01..	derivation		oewn-voice__2.32.00..
+oewn-voice__2.32.00..	derivation		oewn-voicer__1.18.00..
+oewn-voice__2.32.00..	other	agent	oewn-voicer__1.18.00..
+oewn-voice__2.32.00..	other	uses	oewn-voice__1.04.00..
+oewn-voice__2.32.00..	other	uses	oewn-voice__1.10.01..
+oewn-voice__2.32.01..	other	by_means_of	oewn-voice__1.07.01..
+oewn-voice__2.32.01..	other	event	oewn-voice__1.10.00..
+oewn-voiceless__3.00.00..	derivation		oewn-voicelessness__1.07.00..
+oewn-voiceless__3.00.04..	derivation		oewn-voicelessness__1.10.00..
+oewn-voiceless__5.00.00.inarticulate.00	derivation		oewn-voicelessness__1.26.00..
+oewn-void__1.25.00..	derivation		oewn-void__2.30.04..
+oewn-void__1.25.00..	derivation		oewn-void__5.00.00.empty.00
+oewn-void__1.26.00..	derivation		oewn-void__2.41.00..
+oewn-void__2.29.00..	derivation		oewn-voidance__1.04.00..
+oewn-void__2.29.00..	derivation		oewn-voider__1.18.01..
+oewn-void__2.29.00..	derivation		oewn-voiding__1.22.00..
+oewn-void__2.29.00..	other	agent	oewn-voider__1.18.01..
+oewn-void__2.29.00..	other	event	oewn-voidance__1.04.00..
+oewn-void__2.30.00..	derivation		oewn-voidable__5.00.00.revocable.00
+oewn-void__2.30.04..	other	result	oewn-void__1.25.00..
+oewn-void__2.41.00..	derivation		oewn-voidable__5.00.00.revocable.00
+oewn-void__2.41.00..	derivation		oewn-voider__1.18.00..
+oewn-void__2.41.00..	other	agent	oewn-voider__1.18.00..
+oewn-void__2.41.00..	other	event	oewn-void__1.26.00..
+oewn-volar__3.01.00..	pertainym		oewn-palm__1.08.00..
+oewn-volar__3.01.00..	pertainym		oewn-sole__1.08.00..
+oewn-volatile__1.27.00..	derivation		oewn-volatile__3.00.00..
+oewn-volatile__3.00.00..	derivation		oewn-volatility__1.07.02..
+oewn-volatile__3.00.00..	derivation		oewn-volatilize__2.30.00..
+oewn-volatile__5.00.00.changeable.00	derivation		oewn-volatility__1.07.01..
+oewn-volatile__5.00.00.unstable.00	derivation		oewn-volatility__1.07.00..
+oewn-volatilisable__5.00.00.volatile.00	derivation		oewn-volatilise__2.30.00..
+oewn-volatilise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-volatilise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-volatilizable__5.00.00.volatile.00	derivation		oewn-volatilize__2.30.00..
+oewn-volatilize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-volcanic__3.01.00..	derivation		oewn-volcano__1.17.00..
+oewn-volcanic__3.01.00..	pertainym		oewn-volcano__1.17.00..
+oewn-volcanically__4.02.00..	pertainym		oewn-volcanic__3.01.00..
+oewn-volition__1.04.00..	derivation		oewn-volitional__5.00.00.willing.00
+oewn-volition__1.09.00..	derivation		oewn-volitional__5.00.00.willing.00
+oewn-volitionally__4.02.00..	pertainym		oewn-volitional__5.00.00.willing.00
+oewn-volley__1.04.00..	derivation		oewn-volley__2.35.00..
+oewn-volley__1.04.00..	derivation		oewn-volley__2.38.01..
+oewn-volley__1.04.01..	derivation		oewn-volley__2.33.00..
+oewn-volley__1.04.01..	derivation		oewn-volley__2.35.01..
+oewn-volley__2.33.00..	other	event	oewn-volley__1.04.01..
+oewn-volley__2.35.00..	other	event	oewn-volley__1.04.00..
+oewn-volley__2.35.01..	other	event	oewn-volley__1.04.01..
+oewn-volley__2.38.01..	other	event	oewn-volley__1.04.00..
+oewn-volt__1.23.00..	derivation		oewn-voltaic__3.01.00..
+oewn-voltaic__3.01.00..	pertainym		oewn-voltage__1.19.02..
+oewn-voltaren__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-volubility__1.07.00..	derivation		oewn-voluble__3.00.00..
+oewn-volubly__4.02.00..	pertainym		oewn-voluble__3.00.00..
+oewn-volume__1.07.03..	derivation		oewn-voluminous__5.00.00.large.00
+oewn-volume__1.23.00..	derivation		oewn-voluminous__5.00.00.large.00
+oewn-volumed__3.01.00..	pertainym		oewn-volume__1.10.00..
+oewn-volumeter__1.06.00..	derivation		oewn-volumetric__3.01.00..
+oewn-volumeter__1.06.00..	derivation		oewn-volumetrical__3.01.00..
+oewn-volumetric__3.01.00..	pertainym		oewn-volumeter__1.06.00..
+oewn-volumetrical__3.01.00..	pertainym		oewn-volumeter__1.06.00..
+oewn-volumetrically__4.02.00..	pertainym		oewn-volumetric__3.01.00..
+oewn-voluminosity__1.07.00..	derivation		oewn-voluminous__5.00.00.abundant.00
+oewn-voluminosity__1.07.00..	derivation		oewn-voluminous__5.00.00.large.00
+oewn-voluminous__5.00.00.abundant.00	derivation		oewn-voluminously__4.02.00..
+oewn-voluminous__5.00.00.abundant.00	derivation		oewn-voluminousness__1.07.00..
+oewn-voluminous__5.00.00.large.00	derivation		oewn-voluminously__4.02.00..
+oewn-voluminous__5.00.00.large.00	derivation		oewn-voluminousness__1.07.00..
+oewn-voluminously__4.02.00..	pertainym		oewn-voluminous__5.00.00.abundant.00
+oewn-voluminously__4.02.00..	pertainym		oewn-voluminous__5.00.00.large.00
+oewn-voluntarily__4.02.00..	pertainym		oewn-voluntary__3.00.01..
+oewn-voluntary__1.18.00..	derivation		oewn-voluntary__3.00.01..
+oewn-voluntary__1.18.00..	derivation		oewn-volunteer__2.41.00..
+oewn-volunteer__1.18.00..	derivation		oewn-volunteer__2.41.00..
+oewn-volunteer__2.41.00..	other	agent	oewn-volunteer__1.18.00..
+oewn-voluptuary__1.18.00..	derivation		oewn-voluptuary__5.00.00.indulgent.00
+oewn-voluptuous__5.00.00.indulgent.00	derivation		oewn-voluptuousness__1.07.01..
+oewn-voluptuous__5.00.00.sexy.00	derivation		oewn-voluptuousness__1.07.02..
+oewn-voluptuous__5.00.00.shapely.00	derivation		oewn-voluptuousness__1.07.00..
+oewn-voluptuously__4.02.00..	pertainym		oewn-voluptuous__5.00.00.indulgent.00
+oewn-voluptuously__4.02.01..	pertainym		oewn-voluptuous__5.00.00.shapely.00
+oewn-volute__1.06.00..	derivation		oewn-volute__5.00.00.coiled.00
+oewn-volute__1.06.01..	derivation		oewn-volute__5.00.00.coiled.00
+oewn-vomit__1.04.00..	derivation		oewn-vomit__2.29.00..
+oewn-vomit__1.06.00..	derivation		oewn-vomit__2.29.00..
+oewn-vomit__1.27.00..	derivation		oewn-vomit__2.29.00..
+oewn-vomit__2.29.00..	derivation		oewn-vomiter__1.18.00..
+oewn-vomit__2.29.00..	derivation		oewn-vomiting__1.04.00..
+oewn-vomit__2.29.00..	other	agent	oewn-vomiter__1.18.00..
+oewn-vomit__2.29.00..	other	by_means_of	oewn-vomit__1.06.00..
+oewn-vomit__2.29.00..	other	event	oewn-vomit__1.04.00..
+oewn-vomit__2.29.00..	other	undergoer	oewn-vomit__1.27.00..
+oewn-voodoo__1.06.00..	derivation		oewn-voodoo__2.32.00..
+oewn-voodoo__1.09.00..	derivation		oewn-voodoo__2.32.00..
+oewn-voodoo__2.32.00..	other	by_means_of	oewn-voodoo__1.06.00..
+oewn-voodoo__2.32.00..	other	by_means_of	oewn-voodoo__1.09.00..
+oewn-voracious__5.00.00.acquisitive.00	derivation		oewn-voraciousness__1.07.01..
+oewn-voracious__5.00.00.gluttonous.00	derivation		oewn-voraciousness__1.07.00..
+oewn-voracious__5.00.00.gluttonous.00	derivation		oewn-voraciousness__1.26.00..
+oewn-voracious__5.00.00.gluttonous.00	derivation		oewn-voracity__1.07.00..
+oewn-voracious__5.00.00.gluttonous.00	derivation		oewn-voracity__1.26.00..
+oewn-voraciously__4.02.00..	pertainym		oewn-voracious__5.00.00.gluttonous.00
+oewn-vote__1.04.00..	derivation		oewn-vote__2.41.10..
+oewn-vote__1.04.00..	derivation		oewn-vote__2.41.13..
+oewn-vote__1.04.01..	derivation		oewn-vote__2.41.10..
+oewn-vote__1.04.01..	derivation		oewn-vote__2.41.13..
+oewn-vote__1.07.00..	derivation		oewn-vote__2.41.13..
+oewn-vote__1.09.00..	derivation		oewn-vote__2.41.10..
+oewn-vote__1.09.00..	derivation		oewn-vote__2.41.13..
+oewn-vote__1.14.00..	derivation		oewn-vote__2.41.10..
+oewn-vote__1.14.00..	derivation		oewn-vote__2.41.13..
+oewn-vote__2.41.10..	derivation		oewn-voter__1.18.00..
+oewn-vote__2.41.10..	derivation		oewn-voting__1.04.00..
+oewn-vote__2.41.10..	other	agent	oewn-voter__1.18.00..
+oewn-vote__2.41.10..	other	by_means_of	oewn-vote__1.14.00..
+oewn-vote__2.41.10..	other	event	oewn-vote__1.04.00..
+oewn-vote__2.41.10..	other	event	oewn-vote__1.04.01..
+oewn-vote__2.41.12..	derivation		oewn-voter__1.18.00..
+oewn-vote__2.41.12..	other	agent	oewn-voter__1.18.00..
+oewn-vote__2.41.13..	also		oewn-vote_in__2.41.00..
+oewn-vote__2.41.13..	also		oewn-vote_out__2.41.00..
+oewn-vote__2.41.13..	derivation		oewn-voter__1.18.00..
+oewn-vote__2.41.13..	derivation		oewn-voting__1.04.00..
+oewn-vote__2.41.13..	other	agent	oewn-voter__1.18.00..
+oewn-vote__2.41.13..	other	by_means_of	oewn-vote__1.07.00..
+oewn-vote__2.41.13..	other	by_means_of	oewn-vote__1.14.00..
+oewn-vote__2.41.13..	other	event	oewn-vote__1.04.00..
+oewn-vote__2.41.13..	other	event	oewn-vote__1.04.01..
+oewn-vote__2.41.13..	other	result	oewn-vote__1.09.00..
+oewn-vouch__2.32.00..	derivation		oewn-vouchee__1.18.00..
+oewn-vouch__2.32.00..	other	undergoer	oewn-vouchee__1.18.00..
+oewn-vouch__2.32.01..	derivation		oewn-voucher__1.18.00..
+oewn-vouch__2.32.01..	other	agent	oewn-voucher__1.18.00..
+oewn-vouch__2.32.12..	derivation		oewn-voucher__1.18.00..
+oewn-vouch__2.32.12..	other	agent	oewn-voucher__1.18.00..
+oewn-vow__1.10.00..	derivation		oewn-vow__2.32.00..
+oewn-vow__1.10.00..	derivation		oewn-vow__2.32.01..
+oewn-vow__2.32.00..	derivation		oewn-vower__1.18.00..
+oewn-vow__2.32.00..	other	agent	oewn-vower__1.18.00..
+oewn-vow__2.32.00..	other	event	oewn-vow__1.10.00..
+oewn-vow__2.32.01..	other	event	oewn-vow__1.10.00..
+oewn-vowel__1.10.00..	derivation		oewn-vowelize__2.32.00..
+oewn-vowelise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vowelise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vowelize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-voyage__1.04.00..	derivation		oewn-voyage__2.38.00..
+oewn-voyage__1.04.01..	derivation		oewn-voyage__2.38.00..
+oewn-voyage__2.38.00..	derivation		oewn-voyager__1.18.00..
+oewn-voyage__2.38.00..	other	agent	oewn-voyager__1.18.00..
+oewn-voyage__2.38.00..	other	event	oewn-voyage__1.04.00..
+oewn-voyage__2.38.00..	other	event	oewn-voyage__1.04.01..
+oewn-voyeur__1.18.00..	derivation		oewn-voyeuristic__3.01.00..
+oewn-voyeur__1.18.00..	derivation		oewn-voyeuristical__3.01.00..
+oewn-voyeurism__1.04.00..	derivation		oewn-voyeuristic__3.01.00..
+oewn-voyeurism__1.04.00..	derivation		oewn-voyeuristical__3.01.00..
+oewn-voyeuristic__3.01.00..	pertainym		oewn-voyeur__1.18.00..
+oewn-voyeuristic__3.01.00..	pertainym		oewn-voyeurism__1.04.00..
+oewn-voyeuristical__3.01.00..	pertainym		oewn-voyeur__1.18.00..
+oewn-voyeuristical__3.01.00..	pertainym		oewn-voyeurism__1.04.00..
+oewn-voyeuristically__4.02.00..	pertainym		oewn-voyeuristic__3.01.00..
+oewn-vulcanisation__1.22.00..	derivation		oewn-vulcanise__2.30.00..
+oewn-vulcanisation__1.22.00..	derivation		oewn-vulcanise__2.30.01..
+oewn-vulcanisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulcanisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulcanise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulcanise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulcanise__2.30.00..	other	event	oewn-vulcanisation__1.22.00..
+oewn-vulcanise__2.30.01..	derivation		oewn-vulcaniser__1.18.00..
+oewn-vulcanise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulcanise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulcanise__2.30.01..	other	agent	oewn-vulcaniser__1.18.00..
+oewn-vulcanise__2.30.01..	other	event	oewn-vulcanisation__1.22.00..
+oewn-vulcanization__1.22.00..	derivation		oewn-vulcanize__2.30.00..
+oewn-vulcanization__1.22.00..	derivation		oewn-vulcanize__2.30.01..
+oewn-vulcanization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulcanize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulcanize__2.30.00..	other	event	oewn-vulcanization__1.22.00..
+oewn-vulcanize__2.30.01..	derivation		oewn-vulcanizer__1.18.00..
+oewn-vulcanize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulcanize__2.30.01..	other	agent	oewn-vulcanizer__1.18.00..
+oewn-vulcanize__2.30.01..	other	event	oewn-vulcanization__1.22.00..
+oewn-vulgar__5.00.00.indecent.00	derivation		oewn-vulgarity__1.07.01..
+oewn-vulgar__5.00.00.lowborn.00	derivation		oewn-vulgarize__2.32.00..
+oewn-vulgar__5.00.00.unrefined.01	derivation		oewn-vulgarity__1.07.01..
+oewn-vulgar__5.00.00.unrefined.01	derivation		oewn-vulgarize__2.29.00..
+oewn-vulgar__5.00.00.unrefined.01	derivation		oewn-vulgarize__2.30.01..
+oewn-vulgarisation__1.04.00..	derivation		oewn-vulgarise__2.32.00..
+oewn-vulgarisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulgarisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulgarisation__1.04.01..	derivation		oewn-vulgarise__2.30.01..
+oewn-vulgarisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulgarisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulgarise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulgarise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulgarise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulgarise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulgarise__2.30.01..	other	event	oewn-vulgarisation__1.04.01..
+oewn-vulgarise__2.32.00..	derivation		oewn-vulgariser__1.18.01..
+oewn-vulgarise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-vulgarise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-vulgarise__2.32.00..	other	agent	oewn-vulgariser__1.18.01..
+oewn-vulgarise__2.32.00..	other	event	oewn-vulgarisation__1.04.00..
+oewn-vulgarization__1.04.00..	derivation		oewn-vulgarize__2.32.00..
+oewn-vulgarization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulgarization__1.04.01..	derivation		oewn-vulgarize__2.30.01..
+oewn-vulgarization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulgarize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulgarize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulgarize__2.30.01..	other	event	oewn-vulgarization__1.04.01..
+oewn-vulgarize__2.32.00..	derivation		oewn-vulgarizer__1.18.01..
+oewn-vulgarize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-vulgarize__2.32.00..	other	agent	oewn-vulgarizer__1.18.01..
+oewn-vulgarize__2.32.00..	other	event	oewn-vulgarization__1.04.00..
+oewn-vulgarly__4.02.00..	pertainym		oewn-vulgar__5.00.00.indecent.00
+oewn-vulnerability__1.07.00..	derivation		oewn-vulnerable__3.00.00..
+oewn-vulnerability__1.26.00..	derivation		oewn-vulnerable__5.00.00.susceptible.00
+oewn-vulnerability__1.26.00..	derivation		oewn-vulnerable__5.00.00.weak.00
+oewn-vulnerably__4.02.00..	pertainym		oewn-vulnerable__3.00.00..
+oewn-vulpecular__3.01.00..	pertainym		oewn-fox__1.05.00..
+oewn-vulpine__3.01.00..	pertainym		oewn-fox__1.05.00..
+oewn-vulture__1.05.00..	derivation		oewn-vulturous__5.00.00.aggressive.00
+oewn-vulva__1.08.00..	derivation		oewn-vulval__3.01.00..
+oewn-vulval__3.01.00..	pertainym		oewn-vulva__1.08.00..
+oewn-vulvar__3.01.00..	pertainym		oewn-vulva__1.08.00..

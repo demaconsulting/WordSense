@@ -1,0 +1,404 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-blab__2.32.00..	derivation		oewn-blabber__1.18.00..
+oewn-blab__2.32.00..	other	agent	oewn-blabber__1.18.00..
+oewn-blabber__1.18.00..	derivation		oewn-blabber__2.32.00..
+oewn-blabber__2.32.00..	other	agent	oewn-blabber__1.18.00..
+oewn-black--and--white__3.00.00..	antonym		oewn-color__3.00.00..
+oewn-black--and--white__3.01.00..	pertainym		oewn-achromaticity__1.07.00..
+oewn-black__1.06.01..	antonym		oewn-white__1.06.01..
+oewn-black__1.07.00..	antonym		oewn-white__1.07.00..
+oewn-black__1.07.00..	derivation		oewn-black__2.30.00..
+oewn-black__2.30.00..	other	property	oewn-black__1.07.00..
+oewn-black__3.00.01..	antonym		oewn-white__3.00.01..
+oewn-black__3.00.01..	derivation		oewn-blackness__1.07.00..
+oewn-black__3.00.02..	antonym		oewn-white__3.00.02..
+oewn-black__5.00.00.dark.01	derivation		oewn-blackness__1.26.00..
+oewn-black__5.00.00.dirty.01	derivation		oewn-blackness__1.07.00..
+oewn-black__5.00.00.undiluted.00	derivation		oewn-blackness__1.07.00..
+oewn-black_humor__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-black_humour__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-black_humour__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-black_humour__1.10.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-black_market__1.04.00..	derivation		oewn-black_market__2.40.00..
+oewn-black_market__1.14.00..	derivation		oewn-black_market__2.40.00..
+oewn-black_market__2.40.00..	other	agent	oewn-black_market__1.14.00..
+oewn-black_market__2.40.00..	other	event	oewn-black_market__1.04.00..
+oewn-black_marketeer__1.18.00..	derivation		oewn-black_marketeer__2.40.00..
+oewn-black_marketeer__2.40.00..	other	agent	oewn-black_marketeer__1.18.00..
+oewn-black_out__2.29.00..	derivation		oewn-blackout__1.09.00..
+oewn-black_out__2.30.00..	derivation		oewn-blackout__1.28.00..
+oewn-black_out__2.30.01..	derivation		oewn-blackout__1.11.00..
+oewn-black_out__2.30.01..	derivation		oewn-blackout__1.26.00..
+oewn-blackamoor__1.18.00..	exemplifies		oewn-archaism__1.10.00..
+oewn-blackamoor__1.18.00..	exemplifies		oewn-ethnic_slur__1.10.00..
+oewn-blackball__1.04.00..	derivation		oewn-blackball__2.41.00..
+oewn-blackball__2.41.00..	other	event	oewn-blackball__1.04.00..
+oewn-blackberry__1.13.00..	derivation		oewn-blackberry__2.35.00..
+oewn-blackberry__2.35.00..	other	undergoer	oewn-blackberry__1.13.00..
+oewn-blacken__2.30.00..	antonym		oewn-whiten__2.30.00..
+oewn-blackguard__1.18.00..	derivation		oewn-blackguardly__5.00.00.dishonest.00
+oewn-blackleg__1.18.00..	derivation		oewn-blackleg__2.41.00..
+oewn-blackleg__2.41.00..	other	agent	oewn-blackleg__1.18.00..
+oewn-blacklist__1.10.00..	derivation		oewn-blacklist__2.41.00..
+oewn-blacklist__2.41.00..	other	undergoer	oewn-blacklist__1.10.00..
+oewn-blackmail__1.04.00..	derivation		oewn-blackmail__2.40.00..
+oewn-blackmail__1.04.00..	derivation		oewn-blackmail__2.41.00..
+oewn-blackmail__2.40.00..	derivation		oewn-blackmailer__1.18.00..
+oewn-blackmail__2.40.00..	other	agent	oewn-blackmailer__1.18.00..
+oewn-blackmail__2.40.00..	other	event	oewn-blackmail__1.04.00..
+oewn-blackmail__2.41.00..	derivation		oewn-blackmailer__1.18.00..
+oewn-blackmail__2.41.00..	other	agent	oewn-blackmailer__1.18.00..
+oewn-blackmail__2.41.00..	other	event	oewn-blackmail__1.04.00..
+oewn-blacktop__1.27.00..	derivation		oewn-blacktop__2.35.00..
+oewn-blacktop__2.35.00..	derivation		oewn-blacktopping__1.27.00..
+oewn-blacktop__2.35.00..	other	uses	oewn-blacktop__1.27.00..
+oewn-bladder__1.08.00..	derivation		oewn-bladdery__3.01.00..
+oewn-bladderlike__3.01.00..	pertainym		oewn-bladder__1.06.00..
+oewn-bladdery__3.01.00..	pertainym		oewn-bladder__1.06.00..
+oewn-bladed__3.01.01..	pertainym		oewn-blade__1.06.01..
+oewn-bladed__3.01.02..	pertainym		oewn-blade__1.20.00..
+oewn-blamable__5.00.00.guilty.00	derivation		oewn-blame__2.31.00..
+oewn-blamable__5.00.00.guilty.00	derivation		oewn-blame__2.32.00..
+oewn-blamable__5.00.00.guilty.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-blame__1.10.00..	derivation		oewn-blame__2.32.01..
+oewn-blame__1.10.00..	derivation		oewn-blameworthy__5.00.00.guilty.00
+oewn-blame__1.10.01..	derivation		oewn-blame__2.31.00..
+oewn-blame__1.10.01..	derivation		oewn-blame__2.32.00..
+oewn-blame__2.31.00..	derivation		oewn-blameable__5.00.00.guilty.00
+oewn-blame__2.31.00..	other	event	oewn-blame__1.10.01..
+oewn-blame__2.32.00..	derivation		oewn-blameable__5.00.00.guilty.00
+oewn-blame__2.32.00..	other	event	oewn-blame__1.10.01..
+oewn-blame__2.32.01..	other	event	oewn-blame__1.10.00..
+oewn-blameable__5.00.00.guilty.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-blameless__5.00.00.innocent.00	derivation		oewn-blamelessness__1.26.00..
+oewn-blamelessly__4.02.00..	pertainym		oewn-blameless__5.00.00.innocent.00
+oewn-blameworthiness__1.26.00..	derivation		oewn-blameworthy__5.00.00.guilty.00
+oewn-bland__5.00.00.diplomatic.00	derivation		oewn-blandness__1.07.01..
+oewn-bland__5.00.00.diplomatic.00	derivation		oewn-blandness__1.07.02..
+oewn-bland__5.00.00.tasteless.01	derivation		oewn-blandness__1.07.00..
+oewn-blandish__2.32.00..	derivation		oewn-blandishment__1.04.00..
+oewn-blandish__2.32.00..	derivation		oewn-blandishment__1.10.00..
+oewn-blandish__2.32.00..	other	event	oewn-blandishment__1.04.00..
+oewn-blandish__2.32.00..	other	event	oewn-blandishment__1.10.00..
+oewn-blandly__4.02.00..	pertainym		oewn-bland__5.00.00.unstimulating.00
+oewn-blank__5.00.00.empty.00	derivation		oewn-blankness__1.26.00..
+oewn-blanket__1.17.00..	derivation		oewn-blanket__2.35.00..
+oewn-blanket__1.17.00..	derivation		oewn-blanket__2.42.00..
+oewn-blanket__2.35.00..	other	by_means_of	oewn-blanket__1.17.00..
+oewn-blanket__2.42.00..	other	by_means_of	oewn-blanket__1.17.00..
+oewn-blankly__4.02.00..	pertainym		oewn-blank__5.00.05.unperceptive.00
+oewn-blare__1.11.00..	derivation		oewn-blare__2.39.01..
+oewn-blare__2.39.01..	other	event	oewn-blare__1.11.00..
+oewn-blarney__1.10.00..	derivation		oewn-blarney__2.32.00..
+oewn-blarney__2.32.00..	other	by_means_of	oewn-blarney__1.10.00..
+oewn-blaspheme__2.32.01..	derivation		oewn-blasphemer__1.18.00..
+oewn-blaspheme__2.32.01..	other	agent	oewn-blasphemer__1.18.00..
+oewn-blasphemous__5.00.00.dirty.02	derivation		oewn-blasphemy__1.10.00..
+oewn-blasphemous__5.00.00.irreverent.00	derivation		oewn-blasphemy__1.04.00..
+oewn-blasphemously__4.02.00..	pertainym		oewn-blasphemous__5.00.00.dirty.02
+oewn-blast__1.04.00..	derivation		oewn-blast__2.35.00..
+oewn-blast__1.11.00..	derivation		oewn-blast__2.33.00..
+oewn-blast__1.11.01..	derivation		oewn-blast__2.39.00..
+oewn-blast__2.33.00..	derivation		oewn-blaster__1.18.00..
+oewn-blast__2.33.00..	other	agent	oewn-blaster__1.18.00..
+oewn-blast__2.33.00..	other	event	oewn-blast__1.11.00..
+oewn-blast__2.35.00..	other	event	oewn-blast__1.04.00..
+oewn-blast__2.39.00..	other	event	oewn-blast__1.11.01..
+oewn-blast_off__2.35.00..	derivation		oewn-blastoff__1.04.00..
+oewn-blastema__1.08.00..	derivation		oewn-blastemal__3.01.00..
+oewn-blastema__1.08.00..	derivation		oewn-blastematic__3.01.00..
+oewn-blastema__1.08.00..	derivation		oewn-blastemic__3.01.00..
+oewn-blastemal__3.01.00..	pertainym		oewn-blastema__1.08.00..
+oewn-blastematic__3.01.00..	pertainym		oewn-blastema__1.08.00..
+oewn-blastemic__3.01.00..	pertainym		oewn-blastema__1.08.00..
+oewn-blastocele__1.05.00..	derivation		oewn-blastocoelic__3.01.00..
+oewn-blastocoel__1.05.00..	derivation		oewn-blastocoelic__3.01.00..
+oewn-blastocoele__1.05.00..	derivation		oewn-blastocoelic__3.01.00..
+oewn-blastocoelic__3.01.00..	pertainym		oewn-blastocoel__1.05.00..
+oewn-blastoderm__1.05.00..	derivation		oewn-blastodermatic__3.01.00..
+oewn-blastoderm__1.05.00..	derivation		oewn-blastodermic__3.01.00..
+oewn-blastodermatic__3.01.00..	pertainym		oewn-blastoderm__1.05.00..
+oewn-blastodermic__3.01.00..	pertainym		oewn-blastoderm__1.05.00..
+oewn-blastogenesis__1.09.00..	derivation		oewn-blastogenetic__3.01.00..
+oewn-blastogenesis__1.22.00..	derivation		oewn-blastogenetic__3.01.00..
+oewn-blastogenetic__3.01.00..	pertainym		oewn-blastogenesis__1.22.00..
+oewn-blastomere__1.05.00..	derivation		oewn-blastomeric__3.01.00..
+oewn-blastomeric__3.01.00..	pertainym		oewn-blastomere__1.05.00..
+oewn-blastomycosis__1.26.00..	derivation		oewn-blastomycotic__3.01.00..
+oewn-blastomycotic__3.01.00..	pertainym		oewn-blastomycosis__1.26.00..
+oewn-blastoporal__3.01.00..	derivation		oewn-blastopore__1.05.00..
+oewn-blastoporal__3.01.00..	pertainym		oewn-blastopore__1.05.00..
+oewn-blastopore__1.05.00..	derivation		oewn-blastoporic__3.01.00..
+oewn-blastoporic__3.01.00..	pertainym		oewn-blastopore__1.05.00..
+oewn-blastosphere__1.05.00..	derivation		oewn-blastospheric__3.01.00..
+oewn-blastospheric__3.01.00..	pertainym		oewn-blastosphere__1.05.00..
+oewn-blastula__1.05.00..	derivation		oewn-blastular__3.01.00..
+oewn-blastular__3.01.00..	pertainym		oewn-blastula__1.05.00..
+oewn-blatancy__1.07.00..	derivation		oewn-blatant__5.00.00.noisy.00
+oewn-blatancy__1.07.00..	derivation		oewn-blatant__5.00.00.unconcealed.00
+oewn-blatantly__4.02.00..	pertainym		oewn-blatant__5.00.00.unconcealed.00
+oewn-blather__1.10.00..	derivation		oewn-blather__2.32.00..
+oewn-blather__2.32.00..	other	event	oewn-blather__1.10.00..
+oewn-blaze__1.07.00..	derivation		oewn-blaze__2.43.01..
+oewn-blaze__1.22.00..	derivation		oewn-blaze__2.43.00..
+oewn-blaze__2.43.00..	also		oewn-blaze_up__2.43.00..
+oewn-blaze__2.43.00..	other	by_means_of	oewn-blaze__1.22.00..
+oewn-blaze__2.43.01..	other	event	oewn-blaze__1.07.00..
+oewn-blazon__1.06.00..	derivation		oewn-blazon__2.36.00..
+oewn-blazon__2.36.00..	derivation		oewn-blazonry__1.06.00..
+oewn-blazon__2.36.00..	other	uses	oewn-blazon__1.06.00..
+oewn-bleach__1.04.00..	derivation		oewn-bleach__2.30.00..
+oewn-bleach__1.07.00..	derivation		oewn-bleach__2.30.01..
+oewn-bleach__1.27.00..	derivation		oewn-bleach__2.30.00..
+oewn-bleach__2.30.00..	derivation		oewn-bleacher__1.18.00..
+oewn-bleach__2.30.00..	other	agent	oewn-bleacher__1.18.00..
+oewn-bleach__2.30.00..	other	by_means_of	oewn-bleach__1.27.00..
+oewn-bleach__2.30.00..	other	event	oewn-bleach__1.04.00..
+oewn-bleach__2.30.01..	derivation		oewn-bleacher__1.18.00..
+oewn-bleach__2.30.01..	other	agent	oewn-bleacher__1.18.00..
+oewn-bleach__2.30.01..	other	result	oewn-bleach__1.07.00..
+oewn-bleak__5.00.00.cold.01	derivation		oewn-bleakness__1.26.01..
+oewn-bleak__5.00.00.hopeless.00	derivation		oewn-bleakness__1.26.01..
+oewn-bleak__5.00.00.inhospitable.00	derivation		oewn-bleakness__1.26.01..
+oewn-bleakly__4.02.00..	pertainym		oewn-bleak__5.00.00.hopeless.00
+oewn-bleat__1.11.00..	derivation		oewn-bleat__2.32.00..
+oewn-bleat__2.32.00..	other	event	oewn-bleat__1.11.00..
+oewn-bleb__1.08.00..	derivation		oewn-blebby__5.00.00.unhealthy.00
+oewn-bleed__2.29.00..	derivation		oewn-bleeder__1.18.00..
+oewn-bleed__2.29.00..	derivation		oewn-bleeding__1.26.00..
+oewn-bleed__2.29.00..	other	agent	oewn-bleeder__1.18.00..
+oewn-bleep__1.11.00..	derivation		oewn-bleep__2.39.00..
+oewn-bleep__2.39.00..	other	event	oewn-bleep__1.11.00..
+oewn-blemish__1.07.00..	derivation		oewn-blemish__2.30.00..
+oewn-blemish__1.07.00..	derivation		oewn-blemish__2.35.00..
+oewn-blemish__1.07.00..	derivation		oewn-blemish__2.35.01..
+oewn-blemish__2.30.00..	other	by_means_of	oewn-blemish__1.07.00..
+oewn-blemish__2.35.00..	other	by_means_of	oewn-blemish__1.07.00..
+oewn-blemish__2.35.01..	other	by_means_of	oewn-blemish__1.07.00..
+oewn-blemished__3.00.00..	antonym		oewn-unblemished__3.00.00..
+oewn-blend__1.04.00..	derivation		oewn-blend__2.30.00..
+oewn-blend__1.04.00..	derivation		oewn-blend__2.35.00..
+oewn-blend__1.11.00..	derivation		oewn-blend__2.30.00..
+oewn-blend__1.11.00..	derivation		oewn-blend__2.35.00..
+oewn-blend__2.30.00..	other	event	oewn-blend__1.04.00..
+oewn-blend__2.30.00..	other	event	oewn-blend__1.11.00..
+oewn-blend__2.35.00..	derivation		oewn-blender__1.06.00..
+oewn-blend__2.35.00..	other	event	oewn-blend__1.04.00..
+oewn-blend__2.35.00..	other	event	oewn-blend__1.11.00..
+oewn-blend__2.35.00..	other	instrument	oewn-blender__1.06.00..
+oewn-blended__3.00.00..	antonym		oewn-unblended__3.00.00..
+oewn-bless__2.32.00..	antonym		oewn-curse__2.32.01..
+oewn-bless__2.32.00..	derivation		oewn-blessing__1.04.00..
+oewn-bless__2.32.00..	derivation		oewn-blessing__1.10.00..
+oewn-blessed__3.00.00..	antonym		oewn-cursed__3.00.00..
+oewn-blessed__5.00.00.happy.00	derivation		oewn-blessedness__1.26.00..
+oewn-blessedly__4.02.00..	pertainym		oewn-blessed__3.00.00..
+oewn-blether__1.10.00..	derivation		oewn-blether__2.32.00..
+oewn-blether__2.32.00..	other	event	oewn-blether__1.10.00..
+oewn-blight__1.26.00..	derivation		oewn-blight__2.43.00..
+oewn-blight__1.26.01..	derivation		oewn-blight__2.43.00..
+oewn-blight__2.43.00..	other	event	oewn-blight__1.26.01..
+oewn-blight__2.43.00..	other	state	oewn-blight__1.26.00..
+oewn-blind__1.14.00..	derivation		oewn-blind__2.39.00..
+oewn-blind__1.14.00..	derivation		oewn-blind__2.39.01..
+oewn-blind__2.39.00..	other	result	oewn-blind__1.14.00..
+oewn-blind__2.39.01..	derivation		oewn-blinder__1.06.00..
+oewn-blind__2.39.01..	other	instrument	oewn-blinder__1.06.00..
+oewn-blind__2.39.01..	other	result	oewn-blind__1.14.00..
+oewn-blind__3.00.00..	antonym		oewn-sighted__3.00.00..
+oewn-blind__3.00.00..	derivation		oewn-blindness__1.26.00..
+oewn-blindfold__1.06.00..	derivation		oewn-blindfold__2.35.00..
+oewn-blindly__4.02.00..	pertainym		oewn-blind__3.00.00..
+oewn-blindly__4.02.01..	pertainym		oewn-blind__5.00.00.irrational.00
+oewn-blink__1.04.00..	derivation		oewn-blink__2.29.00..
+oewn-blink__1.04.00..	derivation		oewn-blink__2.29.01..
+oewn-blink__2.29.00..	derivation		oewn-blinking__1.04.00..
+oewn-blink__2.29.00..	other	event	oewn-blink__1.04.00..
+oewn-blink__2.29.01..	other	event	oewn-blink__1.04.00..
+oewn-blink__2.39.00..	derivation		oewn-blinker__1.06.00..
+oewn-blink__2.39.00..	derivation		oewn-blinker__1.10.00..
+oewn-blink__2.39.00..	other	instrument	oewn-blinker__1.06.00..
+oewn-blink__2.39.00..	other	instrument	oewn-blinker__1.10.00..
+oewn-blinker__1.06.01..	derivation		oewn-blinker__2.35.00..
+oewn-blinker__2.35.00..	other	instrument	oewn-blinker__1.06.01..
+oewn-blinker__2.35.00..	other	uses	oewn-blinker__1.06.01..
+oewn-blissful__5.00.00.happy.00	derivation		oewn-blissfulness__1.26.00..
+oewn-blissfully__4.02.00..	pertainym		oewn-blissful__5.00.00.happy.00
+oewn-blister__1.08.00..	derivation		oewn-blister__2.30.00..
+oewn-blister__1.08.00..	derivation		oewn-blistery__5.00.00.unhealthy.00
+oewn-blister__2.30.00..	other	body_part	oewn-blister__1.08.00..
+oewn-blister__2.30.00..	other	result	oewn-blister__1.08.00..
+oewn-blithe__5.00.00.cheerful.00	derivation		oewn-blitheness__1.12.00..
+oewn-blithely__4.02.00..	pertainym		oewn-blithe__5.00.00.cheerful.00
+oewn-blitz__1.04.00..	derivation		oewn-blitz__2.33.00..
+oewn-blitz__2.33.00..	other	event	oewn-blitz__1.04.00..
+oewn-bloat__1.26.00..	derivation		oewn-bloat__2.30.00..
+oewn-bloat__1.26.00..	derivation		oewn-bloat__2.30.01..
+oewn-bloat__2.30.00..	other	event	oewn-bloat__1.26.00..
+oewn-bloat__2.30.01..	other	event	oewn-bloat__1.26.00..
+oewn-blob__1.25.00..	derivation		oewn-blob__2.35.00..
+oewn-blob__2.35.00..	other	result	oewn-blob__1.25.00..
+oewn-blocadren__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-block__1.04.00..	derivation		oewn-block__2.33.00..
+oewn-block__1.06.00..	derivation		oewn-blocky__5.00.00.cubic.00
+oewn-block__1.06.01..	derivation		oewn-block__2.35.02..
+oewn-block__1.09.00..	derivation		oewn-block__2.31.00..
+oewn-block__1.25.01..	derivation		oewn-block__2.30.01..
+oewn-block__1.25.01..	derivation		oewn-blocky__5.00.00.cubic.00
+oewn-block__2.30.01..	other	instrument	oewn-block__1.25.01..
+oewn-block__2.30.02..	antonym		oewn-unblock__2.30.00..
+oewn-block__2.31.00..	other	event	oewn-block__1.09.00..
+oewn-block__2.33.00..	derivation		oewn-blockage__1.04.00..
+oewn-block__2.33.00..	derivation		oewn-blocker__1.18.00..
+oewn-block__2.33.00..	derivation		oewn-blocking__1.04.00..
+oewn-block__2.33.00..	other	agent	oewn-blocker__1.18.00..
+oewn-block__2.33.00..	other	event	oewn-block__1.04.00..
+oewn-block__2.35.00..	derivation		oewn-blockage__1.04.00..
+oewn-block__2.35.00..	derivation		oewn-blocking__1.04.00..
+oewn-block__2.35.02..	derivation		oewn-blockage__1.06.00..
+oewn-block__2.35.02..	other	event	oewn-block__1.06.01..
+oewn-block__2.35.12..	derivation		oewn-blocking__1.04.00..
+oewn-block__2.39.00..	derivation		oewn-blockage__1.04.00..
+oewn-block__2.39.05..	derivation		oewn-blocker__1.06.00..
+oewn-block__2.39.05..	other	by_means_of	oewn-blocker__1.06.00..
+oewn-block__2.41.00..	derivation		oewn-blockage__1.04.00..
+oewn-block__2.41.00..	derivation		oewn-blockage__1.26.00..
+oewn-block__2.41.01..	derivation		oewn-blockage__1.04.00..
+oewn-blockade__1.04.00..	derivation		oewn-blockade__2.33.00..
+oewn-blockade__1.06.00..	derivation		oewn-blockade__2.33.01..
+oewn-blockade__1.06.00..	derivation		oewn-blockade__2.35.00..
+oewn-blockade__2.33.00..	other	event	oewn-blockade__1.04.00..
+oewn-blockade__2.33.01..	other	by_means_of	oewn-blockade__1.06.00..
+oewn-blockade__2.35.00..	other	by_means_of	oewn-blockade__1.06.00..
+oewn-blockhead__1.18.00..	derivation		oewn-blockheaded__5.00.00.stupid.00
+oewn-blond__3.00.00..	antonym		oewn-brunet__3.00.00..
+oewn-blond__3.00.00..	derivation		oewn-blondness__1.07.00..
+oewn-blood__1.08.00..	derivation		oewn-blood__2.35.00..
+oewn-blood__1.08.00..	derivation		oewn-bloody__3.00.00..
+oewn-blood__2.35.00..	other	material	oewn-blood__1.08.00..
+oewn-blood__2.35.00..	other	uses	oewn-blood__1.08.00..
+oewn-bloodguilt__1.26.00..	derivation		oewn-bloodguilty__5.00.00.guilty.00
+oewn-bloodily__4.02.00..	antonym		oewn-bloodlessly__4.02.00..
+oewn-bloodily__4.02.00..	pertainym		oewn-bloody__3.00.00..
+oewn-bloodiness__1.07.00..	derivation		oewn-bloody__3.00.00..
+oewn-bloodiness__1.26.00..	derivation		oewn-bloody__3.00.00..
+oewn-bloodless__3.00.00..	antonym		oewn-bloody__3.00.00..
+oewn-bloodlessly__4.02.00..	pertainym		oewn-bloodless__3.00.00..
+oewn-bloodthirstiness__1.07.00..	derivation		oewn-bloodthirsty__5.00.00.bloody.00
+oewn-bloom__1.20.00..	derivation		oewn-bloom__2.30.00..
+oewn-bloom__1.22.00..	derivation		oewn-bloom__2.30.00..
+oewn-bloom__2.30.00..	derivation		oewn-bloomer__1.20.00..
+oewn-bloom__2.30.00..	other	agent	oewn-bloomer__1.20.00..
+oewn-bloom__2.30.00..	other	event	oewn-bloom__1.22.00..
+oewn-bloom__2.30.00..	other	result	oewn-bloom__1.20.00..
+oewn-blossom__1.20.00..	derivation		oewn-blossom__2.30.01..
+oewn-blossom__1.28.00..	derivation		oewn-blossom__2.30.00..
+oewn-blossom__2.30.00..	other	event	oewn-blossom__1.28.00..
+oewn-blossom__2.30.01..	other	result	oewn-blossom__1.20.00..
+oewn-blot__1.07.00..	derivation		oewn-blot__2.35.00..
+oewn-blot__1.07.00..	derivation		oewn-blot__2.35.01..
+oewn-blot__2.35.00..	derivation		oewn-blotter__1.27.00..
+oewn-blot__2.35.00..	other	instrument	oewn-blotter__1.27.00..
+oewn-blotch__1.07.00..	derivation		oewn-blotch__2.36.00..
+oewn-blotch__1.07.00..	derivation		oewn-blotchy__5.00.00.blemished.00
+oewn-blotch__1.07.00..	derivation		oewn-blotchy__5.00.00.patterned.00
+oewn-blotch__2.36.00..	other	result	oewn-blotch__1.07.00..
+oewn-blow__1.04.02..	derivation		oewn-blow__2.29.00..
+oewn-blow__1.04.02..	derivation		oewn-blow__2.29.01..
+oewn-blow__1.04.02..	derivation		oewn-blow__2.30.08..
+oewn-blow__1.04.02..	derivation		oewn-blow__2.38.12..
+oewn-blow__1.04.02..	derivation		oewn-blow__2.39.01..
+oewn-blow__1.19.00..	derivation		oewn-blow__2.38.00..
+oewn-blow__1.19.00..	derivation		oewn-blow__2.38.03..
+oewn-blow__1.19.00..	derivation		oewn-blow__2.43.00..
+oewn-blow__1.19.00..	derivation		oewn-blowy__5.00.00.stormy.00
+oewn-blow__2.29.00..	other	event	oewn-blow__1.04.02..
+oewn-blow__2.29.01..	other	event	oewn-blow__1.04.02..
+oewn-blow__2.30.08..	derivation		oewn-blowing__1.22.00..
+oewn-blow__2.30.08..	other	event	oewn-blow__1.04.02..
+oewn-blow__2.38.00..	other	event	oewn-blow__1.19.00..
+oewn-blow__2.38.03..	derivation		oewn-blower__1.06.00..
+oewn-blow__2.38.03..	derivation		oewn-blower__1.06.02..
+oewn-blow__2.38.03..	other	event	oewn-blow__1.19.00..
+oewn-blow__2.38.03..	other	instrument	oewn-blower__1.06.00..
+oewn-blow__2.38.03..	other	instrument	oewn-blower__1.06.02..
+oewn-blow__2.38.09..	derivation		oewn-blower__1.06.00..
+oewn-blow__2.38.09..	derivation		oewn-blower__1.06.02..
+oewn-blow__2.38.09..	other	instrument	oewn-blower__1.06.00..
+oewn-blow__2.38.09..	other	instrument	oewn-blower__1.06.02..
+oewn-blow__2.38.12..	other	event	oewn-blow__1.04.02..
+oewn-blow__2.39.01..	other	event	oewn-blow__1.04.02..
+oewn-blow__2.43.00..	other	event	oewn-blow__1.19.00..
+oewn-blow_out__2.30.00..	derivation		oewn-blowout__1.11.00..
+oewn-blow_up__2.30.00..	antonym		oewn-reduce__2.30.04..
+oewn-blow_up__2.30.00..	derivation		oewn-blowup__1.06.00..
+oewn-blow_up__2.30.03..	derivation		oewn-blowup__1.11.00..
+oewn-blow_up__2.37.00..	derivation		oewn-blowup__1.10.00..
+oewn-blubber__1.07.00..	derivation		oewn-blubbery__5.00.00.fat.01
+oewn-blubber__2.29.00..	derivation		oewn-blubberer__1.18.00..
+oewn-blubber__2.29.00..	other	agent	oewn-blubberer__1.18.00..
+oewn-bludgeon__1.06.00..	derivation		oewn-bludgeon__2.35.00..
+oewn-bludgeon__1.06.00..	derivation		oewn-bludgeon__2.41.00..
+oewn-bludgeon__2.35.00..	derivation		oewn-bludgeoner__1.18.00..
+oewn-bludgeon__2.35.00..	other	agent	oewn-bludgeoner__1.18.00..
+oewn-bludgeon__2.35.00..	other	instrument	oewn-bludgeon__1.06.00..
+oewn-blue--blind__5.00.00.blind.00	derivation		oewn-blue--blindness__1.26.00..
+oewn-blue--collar__3.00.00..	antonym		oewn-white--collar__3.00.00..
+oewn-blue__1.07.00..	derivation		oewn-blue__2.30.00..
+oewn-blue__2.30.00..	derivation		oewn-bluing__1.22.00..
+oewn-blue__2.30.00..	other	result	oewn-blue__1.07.00..
+oewn-blue__5.00.00.chromatic.00	derivation		oewn-blueness__1.07.00..
+oewn-blueprint__1.06.00..	derivation		oewn-blueprint__2.36.00..
+oewn-blueprint__1.09.00..	derivation		oewn-blueprint__2.36.00..
+oewn-blueprint__2.36.00..	other	result	oewn-blueprint__1.06.00..
+oewn-blueprint__2.36.00..	other	result	oewn-blueprint__1.09.00..
+oewn-bluff__1.04.00..	derivation		oewn-bluff__2.33.00..
+oewn-bluff__1.10.00..	derivation		oewn-bluff__2.32.00..
+oewn-bluff__2.32.00..	derivation		oewn-bluffer__1.18.00..
+oewn-bluff__2.32.00..	other	agent	oewn-bluffer__1.18.00..
+oewn-bluff__2.32.00..	other	event	oewn-bluff__1.10.00..
+oewn-bluff__2.33.00..	derivation		oewn-bluffer__1.18.00..
+oewn-bluff__2.33.00..	other	agent	oewn-bluffer__1.18.00..
+oewn-bluff__2.33.00..	other	event	oewn-bluff__1.04.00..
+oewn-bluff__5.00.01.direct.02	derivation		oewn-bluffness__1.07.00..
+oewn-bluffly__4.02.00..	pertainym		oewn-bluff__5.00.01.direct.02
+oewn-blunder__1.04.00..	derivation		oewn-blunder__2.41.00..
+oewn-blunder__2.41.00..	derivation		oewn-blunderer__1.18.00..
+oewn-blunder__2.41.00..	other	agent	oewn-blunderer__1.18.00..
+oewn-blunder__2.41.00..	other	event	oewn-blunder__1.04.00..
+oewn-blunt__5.00.00.direct.02	derivation		oewn-bluntness__1.07.02..
+oewn-blunt__5.00.00.dull.01	derivation		oewn-bluntness__1.07.01..
+oewn-blunt__5.00.00.pointless.00	derivation		oewn-bluntness__1.07.01..
+oewn-blunt_file__1.06.00..	antonym		oewn-taper_file__1.06.00..
+oewn-bluntly__4.02.00..	pertainym		oewn-blunt__5.00.00.direct.02
+oewn-blur__1.09.00..	derivation		oewn-blur__2.30.00..
+oewn-blur__1.09.00..	derivation		oewn-blur__2.30.01..
+oewn-blur__1.09.00..	derivation		oewn-blur__2.39.00..
+oewn-blur__1.09.00..	derivation		oewn-blur__2.39.01..
+oewn-blur__1.09.00..	derivation		oewn-blurry__5.00.00.indistinct.00
+oewn-blur__2.30.00..	antonym		oewn-focus__2.30.00..
+oewn-blur__2.30.00..	other	result	oewn-blur__1.09.00..
+oewn-blur__2.30.01..	antonym		oewn-focus__2.30.01..
+oewn-blur__2.30.01..	other	result	oewn-blur__1.09.00..
+oewn-blur__2.39.00..	antonym		oewn-focus__2.39.00..
+oewn-blur__2.39.00..	other	result	oewn-blur__1.09.00..
+oewn-blur__2.39.01..	other	result	oewn-blur__1.09.00..
+oewn-blurriness__1.07.00..	derivation		oewn-blurry__5.00.00.indistinct.00
+oewn-blush__1.04.00..	derivation		oewn-blush__2.29.00..
+oewn-blush__2.29.00..	derivation		oewn-blusher__1.06.00..
+oewn-blush__2.29.00..	derivation		oewn-blusher__1.20.00..
+oewn-blush__2.29.00..	other	event	oewn-blush__1.04.00..
+oewn-blush__2.29.00..	other	material	oewn-blusher__1.06.00..
+oewn-blush__2.29.00..	other	material	oewn-blusher__1.20.00..
+oewn-bluster__1.10.00..	derivation		oewn-bluster__2.32.00..
+oewn-bluster__1.10.01..	derivation		oewn-bluster__2.32.00..
+oewn-bluster__1.19.00..	derivation		oewn-bluster__2.43.00..
+oewn-bluster__1.19.00..	derivation		oewn-blusterous__5.00.00.stormy.00
+oewn-bluster__1.19.00..	derivation		oewn-blustery__5.00.00.stormy.00
+oewn-bluster__2.29.00..	derivation		oewn-blusterer__1.18.00..
+oewn-bluster__2.29.00..	other	agent	oewn-blusterer__1.18.00..
+oewn-bluster__2.32.00..	derivation		oewn-blusterer__1.18.00..
+oewn-bluster__2.32.00..	other	agent	oewn-blusterer__1.18.00..
+oewn-bluster__2.32.00..	other	event	oewn-bluster__1.10.00..
+oewn-bluster__2.32.00..	other	event	oewn-bluster__1.10.01..
+oewn-bluster__2.43.00..	other	event	oewn-bluster__1.19.00..

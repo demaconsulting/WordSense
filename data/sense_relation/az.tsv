@@ -1,0 +1,16 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-azactam__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-azerbaijani__1.10.00..	derivation		oewn-azerbaijani__3.01.00..
+oewn-azerbaijani__1.18.00..	derivation		oewn-azerbaijani__3.01.00..
+oewn-azido__3.01.00..	pertainym		oewn-azido_group__1.27.00..
+oewn-azimuth__1.25.00..	derivation		oewn-azimuthal__3.01.00..
+oewn-azimuthal__3.01.00..	pertainym		oewn-azimuth__1.25.00..
+oewn-azo__3.01.00..	pertainym		oewn-azo_group__1.27.00..
+oewn-azonal__3.00.00..	antonym		oewn-zonal__3.00.00..
+oewn-azote__1.27.00..	derivation		oewn-azotic__3.01.00..
+oewn-azotemia__1.26.00..	derivation		oewn-azotemic__3.01.00..
+oewn-azotemic__3.01.00..	pertainym		oewn-azotemia__1.26.00..
+oewn-azotic__3.01.00..	pertainym		oewn-azote__1.27.00..
+oewn-azure__1.07.00..	derivation		oewn-azure__2.30.00..
+oewn-azure__1.07.00..	derivation		oewn-azure__5.00.00.chromatic.00
+oewn-azure__2.30.00..	other	result	oewn-azure__1.07.00..

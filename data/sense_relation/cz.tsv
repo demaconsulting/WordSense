@@ -1,0 +1,8 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-czar__1.18.01..	derivation		oewn-czaristic__3.01.00..
+oewn-czarist__3.01.00..	pertainym		oewn-czar__1.18.00..
+oewn-czaristic__3.01.00..	pertainym		oewn-czar__1.18.00..
+oewn-czech__1.10.00..	derivation		oewn-czech__3.01.00..
+oewn-czech__1.18.00..	derivation		oewn-czech__3.01.00..
+oewn-czech__1.18.01..	derivation		oewn-czech__3.01.00..
+oewn-czechoslovakian__1.18.00..	derivation		oewn-czechoslovakian__3.01.00..

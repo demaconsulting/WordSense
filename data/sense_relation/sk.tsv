@@ -1,0 +1,152 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-sk--ampicillin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-sk--ampicillin__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-skank__1.04.00..	derivation		oewn-skank__2.38.00..
+oewn-skank__1.27.00..	derivation		oewn-skanky__5.00.00.offensive.01
+oewn-skate__1.06.00..	derivation		oewn-skate__2.38.00..
+oewn-skate__2.38.00..	derivation		oewn-skater__1.18.00..
+oewn-skate__2.38.00..	derivation		oewn-skating__1.04.00..
+oewn-skate__2.38.00..	other	agent	oewn-skater__1.18.00..
+oewn-skate__2.38.00..	other	vehicle	oewn-skate__1.06.00..
+oewn-skateboard__1.06.00..	derivation		oewn-skateboard__2.38.00..
+oewn-skateboard__2.38.00..	derivation		oewn-skateboarder__1.18.00..
+oewn-skateboard__2.38.00..	derivation		oewn-skateboarding__1.04.00..
+oewn-skateboard__2.38.00..	other	agent	oewn-skateboarder__1.18.00..
+oewn-skateboard__2.38.00..	other	vehicle	oewn-skateboard__1.06.00..
+oewn-skeletal__3.01.00..	derivation		oewn-skeleton__1.08.00..
+oewn-skeletal__3.01.00..	pertainym		oewn-skeleton__1.08.00..
+oewn-skeptic__1.18.00..	derivation		oewn-skeptical__5.00.00.distrustful.00
+oewn-skeptic__1.18.00..	derivation		oewn-skeptical__5.00.00.incredulous.00
+oewn-skeptic__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-skeptical__5.00.00.distrustful.00	derivation		oewn-skepticism__1.09.00..
+oewn-skeptical__5.00.00.distrustful.00	derivation		oewn-skepticism__1.09.01..
+oewn-skeptical__5.00.00.distrustful.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-skeptical__5.00.00.incredulous.00	derivation		oewn-skepticism__1.09.00..
+oewn-skeptical__5.00.00.incredulous.00	derivation		oewn-skepticism__1.09.01..
+oewn-skeptical__5.00.00.incredulous.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-skepticism__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-skepticism__1.09.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sketch__1.06.00..	derivation		oewn-sketch__2.36.00..
+oewn-sketch__1.10.00..	derivation		oewn-sketch__2.32.00..
+oewn-sketch__1.10.00..	derivation		oewn-sketchy__5.00.00.incomplete.00
+oewn-sketch__1.10.03..	derivation		oewn-sketch__2.32.00..
+oewn-sketch__2.32.00..	other	event	oewn-sketch__1.10.00..
+oewn-sketch__2.32.00..	other	event	oewn-sketch__1.10.03..
+oewn-sketch__2.36.00..	derivation		oewn-sketcher__1.06.00..
+oewn-sketch__2.36.00..	derivation		oewn-sketcher__1.18.00..
+oewn-sketch__2.36.00..	other	agent	oewn-sketcher__1.18.00..
+oewn-sketch__2.36.00..	other	event	oewn-sketch__1.06.00..
+oewn-sketch__2.36.00..	other	instrument	oewn-sketcher__1.06.00..
+oewn-sketchily__4.02.00..	pertainym		oewn-sketchy__5.00.00.incomplete.00
+oewn-sketchiness__1.26.00..	derivation		oewn-sketchy__5.00.00.incomplete.00
+oewn-skew__5.00.00.inclined.01	derivation		oewn-skewness__1.07.00..
+oewn-skewer__1.06.00..	derivation		oewn-skewer__2.35.00..
+oewn-skewer__2.35.00..	other	instrument	oewn-skewer__1.06.00..
+oewn-ski__1.06.00..	derivation		oewn-ski__2.38.00..
+oewn-ski__2.38.00..	derivation		oewn-skier__1.18.00..
+oewn-ski__2.38.00..	derivation		oewn-skiing__1.04.00..
+oewn-ski__2.38.00..	other	agent	oewn-skier__1.18.00..
+oewn-ski__2.38.00..	other	vehicle	oewn-ski__1.06.00..
+oewn-ski_jump__1.06.00..	derivation		oewn-ski_jump__2.38.00..
+oewn-ski_jump__2.38.00..	derivation		oewn-ski_jumping__1.04.00..
+oewn-ski_jump__2.38.00..	other	location	oewn-ski_jump__1.06.00..
+oewn-ski_pants__1.06.01..	exemplifies		oewn-plural__1.10.00..
+oewn-skid__1.04.00..	derivation		oewn-skid__2.38.00..
+oewn-skid__1.04.00..	derivation		oewn-skid__2.38.03..
+oewn-skid__1.06.00..	derivation		oewn-skid__2.38.02..
+oewn-skid__1.06.01..	derivation		oewn-skid__2.38.01..
+oewn-skid__2.38.00..	other	event	oewn-skid__1.04.00..
+oewn-skid__2.38.01..	other	uses	oewn-skid__1.06.01..
+oewn-skid__2.38.02..	derivation		oewn-skidder__1.18.00..
+oewn-skid__2.38.02..	other	agent	oewn-skidder__1.18.00..
+oewn-skid__2.38.02..	other	location	oewn-skid__1.06.00..
+oewn-skid__2.38.03..	derivation		oewn-skidder__1.18.01..
+oewn-skid__2.38.03..	other	agent	oewn-skidder__1.18.01..
+oewn-skid__2.38.03..	other	event	oewn-skid__1.04.00..
+oewn-skilled__3.00.00..	antonym		oewn-unskilled__3.00.00..
+oewn-skillful__5.00.00.skilled.00	derivation		oewn-skillfulness__1.09.00..
+oewn-skillfully__4.02.00..	pertainym		oewn-skillful__5.00.00.skilled.00
+oewn-skillfulness__1.09.00..	antonym		oewn-unskillfulness__1.09.00..
+oewn-skim__1.10.00..	derivation		oewn-skim__2.31.00..
+oewn-skim__1.10.00..	derivation		oewn-skim__2.39.00..
+oewn-skim__1.17.00..	derivation		oewn-skim__2.35.01..
+oewn-skim__1.17.00..	derivation		oewn-skim__2.35.03..
+oewn-skim__2.31.00..	derivation		oewn-skimmer__1.18.00..
+oewn-skim__2.31.00..	derivation		oewn-skimming__1.10.00..
+oewn-skim__2.31.00..	other	agent	oewn-skimmer__1.18.00..
+oewn-skim__2.31.00..	other	event	oewn-skim__1.10.00..
+oewn-skim__2.35.01..	also		oewn-skim_off__2.31.00..
+oewn-skim__2.35.01..	derivation		oewn-skimmer__1.06.01..
+oewn-skim__2.35.01..	derivation		oewn-skimming__1.04.00..
+oewn-skim__2.35.01..	other	instrument	oewn-skimmer__1.06.01..
+oewn-skim__2.35.01..	other	undergoer	oewn-skim__1.17.00..
+oewn-skim__2.35.03..	other	uses	oewn-skim__1.17.00..
+oewn-skim__2.39.00..	derivation		oewn-skimming__1.10.00..
+oewn-skim__2.39.00..	other	event	oewn-skim__1.10.00..
+oewn-skim_milk__1.13.00..	antonym		oewn-whole_milk__1.13.00..
+oewn-skimp__2.41.00..	also		oewn-skimp_over__2.41.00..
+oewn-skimpily__4.02.00..	pertainym		oewn-skimpy__5.00.00.revealing.00
+oewn-skin--dive__1.04.00..	derivation		oewn-skin--dive__2.38.00..
+oewn-skin--dive__2.38.00..	derivation		oewn-skin--diver__1.18.00..
+oewn-skin--dive__2.38.00..	other	agent	oewn-skin--diver__1.18.00..
+oewn-skin--dive__2.38.00..	other	event	oewn-skin--dive__1.04.00..
+oewn-skin__1.05.01..	derivation		oewn-skin__2.35.02..
+oewn-skin__1.08.00..	derivation		oewn-skin__2.35.02..
+oewn-skin__1.08.00..	derivation		oewn-skinny__3.01.00..
+oewn-skin__1.13.00..	derivation		oewn-skin__2.35.00..
+oewn-skin__2.35.00..	derivation		oewn-skinner__1.18.03..
+oewn-skin__2.35.00..	other	agent	oewn-skinner__1.18.03..
+oewn-skin__2.35.00..	other	undergoer	oewn-skin__1.13.00..
+oewn-skin__2.35.02..	other	undergoer	oewn-skin__1.05.01..
+oewn-skin__2.35.02..	other	undergoer	oewn-skin__1.08.00..
+oewn-skin_color__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-skin_colour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-skin_colour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-skin_colour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-skinless__3.00.00..	antonym		oewn-skinned__3.00.00..
+oewn-skinnerian__1.18.00..	derivation		oewn-skinnerian__3.01.00..
+oewn-skinniness__1.07.00..	derivation		oewn-skinny__5.00.00.thin.03
+oewn-skinny--dip__1.04.00..	derivation		oewn-skinny--dip__2.38.00..
+oewn-skinny--dip__1.04.00..	derivation		oewn-skinny--dipper__1.18.00..
+oewn-skinny--dip__2.38.00..	derivation		oewn-skinny--dipper__1.18.00..
+oewn-skinny__3.01.00..	pertainym		oewn-skin__1.08.00..
+oewn-skip__1.04.00..	derivation		oewn-skip__2.42.00..
+oewn-skip__1.04.01..	derivation		oewn-skip__2.38.00..
+oewn-skip__2.38.00..	also		oewn-skip_over__2.31.00..
+oewn-skip__2.38.00..	other	event	oewn-skip__1.04.01..
+oewn-skip__2.38.02..	exemplifies		oewn-colloquialism__1.10.00..
+oewn-skip__2.42.00..	derivation		oewn-skipper__1.18.02..
+oewn-skip__2.42.00..	other	agent	oewn-skipper__1.18.02..
+oewn-skip__2.42.00..	other	event	oewn-skip__1.04.00..
+oewn-skipper__1.18.00..	derivation		oewn-skipper__2.41.00..
+oewn-skipper__1.18.01..	derivation		oewn-skipper__2.41.00..
+oewn-skipper__2.41.00..	other	agent	oewn-skipper__1.18.00..
+oewn-skipper__2.41.00..	other	agent	oewn-skipper__1.18.01..
+oewn-skirl__1.11.00..	derivation		oewn-skirl__2.36.00..
+oewn-skirl__1.11.00..	derivation		oewn-skirl__2.39.00..
+oewn-skirl__2.36.00..	other	event	oewn-skirl__1.11.00..
+oewn-skirl__2.39.00..	other	event	oewn-skirl__1.11.00..
+oewn-skirmish__1.04.00..	derivation		oewn-skirmish__2.33.00..
+oewn-skirmish__2.33.00..	derivation		oewn-skirmisher__1.18.00..
+oewn-skirmish__2.33.00..	other	agent	oewn-skirmisher__1.18.00..
+oewn-skirmish__2.33.00..	other	event	oewn-skirmish__1.04.00..
+oewn-skittish__5.00.00.excitable.00	derivation		oewn-skittishness__1.07.00..
+oewn-skittishly__4.02.00..	pertainym		oewn-skittish__5.00.00.excitable.00
+oewn-skittle__1.06.00..	derivation		oewn-skittle__2.33.00..
+oewn-skulk__2.41.00..	derivation		oewn-skulker__1.18.01..
+oewn-skulk__2.41.00..	derivation		oewn-skulking__1.04.00..
+oewn-skulk__2.41.00..	other	agent	oewn-skulker__1.18.01..
+oewn-skulk__2.42.00..	derivation		oewn-skulker__1.18.00..
+oewn-skulk__2.42.00..	other	agent	oewn-skulker__1.18.00..
+oewn-skunk__1.11.00..	derivation		oewn-skunk__2.33.00..
+oewn-skunk__2.33.00..	other	event	oewn-skunk__1.11.00..
+oewn-sky_dive__2.38.00..	derivation		oewn-skydiver__1.18.00..
+oewn-sky_dive__2.38.00..	derivation		oewn-skydiving__1.04.00..
+oewn-sky_dive__2.38.00..	other	agent	oewn-skydiver__1.18.00..
+oewn-skydive__2.38.00..	derivation		oewn-skydiver__1.18.00..
+oewn-skydive__2.38.00..	derivation		oewn-skydiving__1.04.00..
+oewn-skydive__2.38.00..	other	agent	oewn-skydiver__1.18.00..
+oewn-skyrocket__1.06.00..	derivation		oewn-skyrocket__2.38.00..
+oewn-skyrocket__1.10.00..	derivation		oewn-skyrocket__2.38.00..
+oewn-skyrocket__2.38.00..	other	by_means_of	oewn-skyrocket__1.10.00..
+oewn-skyrocket__2.38.00..	other	undergoer	oewn-skyrocket__1.06.00..

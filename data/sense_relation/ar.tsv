@@ -1,0 +1,426 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-arabian__1.05.00..	derivation		oewn-arabian__3.01.00..
+oewn-arabian__1.18.00..	derivation		oewn-arabian__3.01.01..
+oewn-arabian__3.01.00..	pertainym		oewn-arab__1.05.00..
+oewn-arabic__1.10.00..	derivation		oewn-arabic__3.01.00..
+oewn-arabic__3.01.00..	pertainym		oewn-arab__1.18.00..
+oewn-arabic_numeral__1.10.00..	antonym		oewn-roman_numeral__1.10.00..
+oewn-arability__1.07.00..	derivation		oewn-arable__5.00.00.productive.00
+oewn-arachnoid__1.05.00..	derivation		oewn-arachnoid__3.01.00..
+oewn-aramaic__1.10.00..	derivation		oewn-aramaic__3.01.00..
+oewn-aramaic__3.01.00..	pertainym		oewn-aramaic__1.10.00..
+oewn-arava__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-arawak__1.10.00..	derivation		oewn-arawakan__3.01.00..
+oewn-arawak__1.18.00..	derivation		oewn-arawakan__3.01.00..
+oewn-arawakan__1.18.00..	derivation		oewn-arawakan__3.01.00..
+oewn-arawakan__3.01.00..	pertainym		oewn-arawak__1.10.00..
+oewn-arawakan__3.01.00..	pertainym		oewn-arawak__1.18.00..
+oewn-arbiter__1.18.00..	derivation		oewn-arbitrate__2.32.00..
+oewn-arbitrable__3.00.00..	antonym		oewn-nonarbitrable__3.00.00..
+oewn-arbitrable__3.00.00..	derivation		oewn-arbitrate__2.32.00..
+oewn-arbitrage__1.04.00..	derivation		oewn-arbitrage__2.40.00..
+oewn-arbitrage__2.40.00..	derivation		oewn-arbitrager__1.18.00..
+oewn-arbitrage__2.40.00..	other	agent	oewn-arbitrager__1.18.00..
+oewn-arbitrage__2.40.00..	other	event	oewn-arbitrage__1.04.00..
+oewn-arbitral__3.01.00..	pertainym		oewn-arbitration__1.10.00..
+oewn-arbitrament__1.04.00..	derivation		oewn-arbitrate__2.32.00..
+oewn-arbitrariness__1.07.00..	derivation		oewn-arbitrary__3.00.00..
+oewn-arbitrary__3.00.00..	antonym		oewn-nonarbitrary__3.00.00..
+oewn-arbitrate__2.32.00..	derivation		oewn-arbitration__1.04.00..
+oewn-arbitrate__2.32.00..	derivation		oewn-arbitration__1.10.00..
+oewn-arbitrate__2.32.00..	derivation		oewn-arbitrative__3.01.00..
+oewn-arbitrate__2.32.00..	derivation		oewn-arbitrator__1.18.00..
+oewn-arbitrate__2.32.00..	derivation		oewn-arbitrement__1.04.00..
+oewn-arbitrate__2.32.00..	other	agent	oewn-arbiter__1.18.00..
+oewn-arbitrate__2.32.00..	other	agent	oewn-arbitrator__1.18.00..
+oewn-arbitrate__2.32.00..	other	event	oewn-arbitrament__1.04.00..
+oewn-arbitrate__2.32.00..	other	event	oewn-arbitration__1.04.00..
+oewn-arbitrate__2.32.00..	other	event	oewn-arbitration__1.10.00..
+oewn-arbitrate__2.32.00..	other	event	oewn-arbitrement__1.04.00..
+oewn-arbitration__1.04.00..	derivation		oewn-arbitrational__3.01.00..
+oewn-arbitration__1.10.00..	derivation		oewn-arbitrational__3.01.00..
+oewn-arbitrational__3.01.00..	pertainym		oewn-arbitration__1.10.00..
+oewn-arbitrative__3.01.00..	pertainym		oewn-arbitration__1.10.00..
+oewn-arbor__1.06.00..	derivation		oewn-arboreal__5.00.00.branchy.00
+oewn-arbor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-arbor__1.20.00..	derivation		oewn-arborary__3.01.00..
+oewn-arbor__1.20.00..	derivation		oewn-arboreal__3.01.00..
+oewn-arbor__1.20.00..	derivation		oewn-arboreal__5.00.00.branchy.00
+oewn-arbor__1.20.00..	derivation		oewn-arboreous__5.00.00.branchy.00
+oewn-arbor__1.20.00..	derivation		oewn-arborical__3.01.00..
+oewn-arbor__1.20.00..	derivation		oewn-arborise__2.30.00..
+oewn-arbor__1.20.00..	derivation		oewn-arborist__1.18.00..
+oewn-arbor__1.20.00..	derivation		oewn-arborize__2.30.00..
+oewn-arbor__1.20.00..	derivation		oewn-arborous__3.01.00..
+oewn-arborary__3.01.00..	pertainym		oewn-tree__1.20.00..
+oewn-arboreal__3.00.00..	antonym		oewn-nonarboreal__3.00.00..
+oewn-arboreal__3.01.00..	pertainym		oewn-tree__1.20.00..
+oewn-arborical__3.01.00..	pertainym		oewn-tree__1.20.00..
+oewn-arboriculture__1.04.00..	derivation		oewn-arboriculturist__1.18.00..
+oewn-arborise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-arborise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-arborize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-arborous__3.01.00..	pertainym		oewn-tree__1.20.00..
+oewn-arbour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-arbour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-arbour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-arc__1.25.00..	derivation		oewn-arc__2.38.00..
+oewn-arc__1.25.00..	derivation		oewn-arcuate__5.00.00.curved.00
+oewn-arc__1.25.01..	derivation		oewn-arc__2.38.00..
+oewn-arc__2.38.00..	other	result	oewn-arc__1.25.00..
+oewn-arc__2.38.00..	other	result	oewn-arc__1.25.01..
+oewn-arcadian__1.18.00..	derivation		oewn-arcadian__5.00.00.rural.00
+oewn-arch__1.06.00..	derivation		oewn-arch__2.38.00..
+oewn-arch__1.06.01..	derivation		oewn-arch__2.38.00..
+oewn-arch__1.08.00..	derivation		oewn-arch__2.38.00..
+oewn-arch__1.25.00..	derivation		oewn-arch__2.38.00..
+oewn-arch__2.38.00..	other	result	oewn-arch__1.06.00..
+oewn-arch__2.38.00..	other	result	oewn-arch__1.06.01..
+oewn-arch__2.38.00..	other	result	oewn-arch__1.08.00..
+oewn-arch__2.38.00..	other	result	oewn-arch__1.25.00..
+oewn-archaeologic__3.01.00..	derivation		oewn-archaeology__1.09.00..
+oewn-archaeologic__3.01.00..	pertainym		oewn-archeology__1.09.00..
+oewn-archaeological__3.01.00..	derivation		oewn-archaeology__1.09.00..
+oewn-archaeological__3.01.00..	pertainym		oewn-archeology__1.09.00..
+oewn-archaeologist__1.18.00..	derivation		oewn-archaeology__1.09.00..
+oewn-archaeology__1.09.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-archaeology__1.09.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-archaicism__1.10.00..	derivation		oewn-archaistic__3.01.00..
+oewn-archaise__2.30.00..	derivation		oewn-archaism__1.10.00..
+oewn-archaise__2.30.00..	derivation		oewn-archaist__1.18.01..
+oewn-archaise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-archaise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-archaism__1.10.00..	derivation		oewn-archaistic__3.01.00..
+oewn-archaism__1.10.00..	derivation		oewn-archaize__2.30.00..
+oewn-archaist__1.18.01..	derivation		oewn-archaize__2.30.00..
+oewn-archaistic__3.01.00..	pertainym		oewn-archaism__1.10.00..
+oewn-archaize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-archangel__1.18.00..	derivation		oewn-archangelic__3.01.00..
+oewn-archangel__1.18.00..	derivation		oewn-archangelical__3.01.00..
+oewn-archangelic__3.01.00..	pertainym		oewn-archangel__1.18.00..
+oewn-archangelical__3.01.00..	pertainym		oewn-archangel__1.18.00..
+oewn-archbishop__1.18.00..	derivation		oewn-archepiscopal__3.01.00..
+oewn-archbishop__1.18.00..	derivation		oewn-archiepiscopal__3.01.00..
+oewn-archdeacon__1.18.00..	derivation		oewn-archidiaconal__3.01.00..
+oewn-archdiocesan__3.01.00..	derivation		oewn-archdiocese__1.15.00..
+oewn-archdiocesan__3.01.00..	pertainym		oewn-archdiocese__1.15.00..
+oewn-archducal__3.01.00..	derivation		oewn-archduke__1.18.00..
+oewn-archducal__3.01.00..	pertainym		oewn-archduke__1.18.00..
+oewn-arched__3.01.00..	pertainym		oewn-arch__1.06.00..
+oewn-archegonial__3.01.00..	derivation		oewn-archegonium__1.20.00..
+oewn-archegonial__3.01.00..	pertainym		oewn-archegonium__1.20.00..
+oewn-archegoniate__3.01.00..	pertainym		oewn-archegonium__1.20.00..
+oewn-archeologic__3.01.00..	derivation		oewn-archeology__1.09.00..
+oewn-archeologic__3.01.00..	pertainym		oewn-archeology__1.09.00..
+oewn-archeological__3.01.00..	derivation		oewn-archeology__1.09.00..
+oewn-archeological__3.01.00..	pertainym		oewn-archeology__1.09.00..
+oewn-archeologist__1.18.00..	derivation		oewn-archeology__1.09.00..
+oewn-archeology__1.09.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-archepiscopal__3.01.00..	pertainym		oewn-archbishop__1.18.00..
+oewn-archespore__1.20.00..	derivation		oewn-archesporial__3.01.00..
+oewn-archesporial__3.01.00..	derivation		oewn-archesporium__1.20.00..
+oewn-archesporial__3.01.00..	pertainym		oewn-archespore__1.20.00..
+oewn-archetypal__5.00.00.first.00	derivation		oewn-archetype__1.09.00..
+oewn-archetype__1.09.00..	derivation		oewn-archetypical__5.00.00.first.00
+oewn-archidiaconal__3.01.00..	pertainym		oewn-archdeacon__1.18.00..
+oewn-archiepiscopal__3.01.00..	pertainym		oewn-archbishop__1.18.00..
+oewn-archipelagic__3.01.00..	derivation		oewn-archipelago__1.17.00..
+oewn-archipelagic__3.01.00..	pertainym		oewn-archipelago__1.17.00..
+oewn-architectonic__3.01.00..	derivation		oewn-architectonics__1.09.00..
+oewn-architectonic__3.01.00..	pertainym		oewn-tectonics__1.09.01..
+oewn-architectural__3.01.00..	pertainym		oewn-architecture__1.09.00..
+oewn-architecturally__4.02.00..	pertainym		oewn-architectural__3.01.00..
+oewn-archival__3.01.00..	derivation		oewn-archive__1.06.00..
+oewn-archival__3.01.00..	pertainym		oewn-archive__1.06.00..
+oewn-archive__1.06.00..	derivation		oewn-archive__2.35.00..
+oewn-archive__1.06.00..	derivation		oewn-archivist__1.18.00..
+oewn-archive__2.35.00..	other	result	oewn-archive__1.06.00..
+oewn-archly__4.02.00..	pertainym		oewn-arch__5.00.00.playful.00
+oewn-archosaur__1.05.00..	derivation		oewn-archosaurian__3.01.00..
+oewn-archosaurian__1.05.00..	derivation		oewn-archosaurian__3.01.00..
+oewn-ardently__4.02.00..	pertainym		oewn-ardent__5.00.00.passionate.00
+oewn-ardor__1.12.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ardor__1.12.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ardor__1.12.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-ardour__1.12.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-ardour__1.12.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-ardour__1.12.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-ardour__1.12.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-ardour__1.12.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-ardour__1.12.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-ardour__1.12.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-ardour__1.12.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-ardour__1.12.02..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-arduous__5.00.00.difficult.00	derivation		oewn-arduousness__1.07.00..
+oewn-arduous__5.00.00.effortful.00	derivation		oewn-arduousness__1.07.00..
+oewn-arduous__5.00.02.effortful.00	derivation		oewn-arduousness__1.07.00..
+oewn-arduously__4.02.00..	pertainym		oewn-arduous__5.00.00.effortful.00
+oewn-area__1.07.00..	derivation		oewn-areal__3.01.00..
+oewn-area__1.15.01..	derivation		oewn-areal__3.01.00..
+oewn-areal__3.01.00..	pertainym		oewn-area__1.15.01..
+oewn-arenaceous__3.00.00..	antonym		oewn-argillaceous__3.00.00..
+oewn-arenicolous__3.01.00..	pertainym		oewn-sand__1.27.00..
+oewn-areola__1.08.01..	derivation		oewn-areolar__3.01.00..
+oewn-areolar__3.01.00..	pertainym		oewn-areola__1.08.02..
+oewn-areolate__3.01.00..	pertainym		oewn-areola__1.08.02..
+oewn-argent__1.27.00..	derivation		oewn-argent__5.00.00.achromatic.00
+oewn-argentic__3.01.00..	pertainym		oewn-silver__1.27.00..
+oewn-argentinian__1.18.00..	derivation		oewn-argentinian__3.01.00..
+oewn-argentous__3.01.00..	pertainym		oewn-silver__1.27.00..
+oewn-argil__1.27.00..	derivation		oewn-argillaceous__3.00.00..
+oewn-arguable__5.00.00.plausible.00	derivation		oewn-argue__2.32.02..
+oewn-arguably__4.02.00..	pertainym		oewn-arguable__5.00.00.controversial.00
+oewn-argue__2.32.00..	derivation		oewn-arguer__1.18.00..
+oewn-argue__2.32.00..	derivation		oewn-argument__1.10.03..
+oewn-argue__2.32.00..	derivation		oewn-argumentative__3.00.00..
+oewn-argue__2.32.00..	other	agent	oewn-arguer__1.18.00..
+oewn-argue__2.32.00..	other	event	oewn-argument__1.10.03..
+oewn-argue__2.32.01..	derivation		oewn-argument__1.10.02..
+oewn-argue__2.32.01..	derivation		oewn-argumentation__1.09.00..
+oewn-argue__2.32.01..	derivation		oewn-argumentation__1.10.00..
+oewn-argue__2.32.01..	other	by_means_of	oewn-argument__1.10.02..
+oewn-argue__2.32.01..	other	event	oewn-argumentation__1.09.00..
+oewn-argue__2.32.01..	other	event	oewn-argumentation__1.10.00..
+oewn-argue__2.32.02..	derivation		oewn-arguer__1.18.00..
+oewn-argue__2.32.02..	derivation		oewn-argument__1.10.00..
+oewn-argue__2.32.02..	derivation		oewn-argumentation__1.09.00..
+oewn-argue__2.32.02..	derivation		oewn-argumentation__1.10.00..
+oewn-argue__2.32.02..	other	agent	oewn-arguer__1.18.00..
+oewn-argue__2.32.02..	other	event	oewn-argument__1.10.00..
+oewn-argue__2.32.02..	other	event	oewn-argumentation__1.09.00..
+oewn-argue__2.32.02..	other	event	oewn-argumentation__1.10.00..
+oewn-argumentative__3.00.00..	antonym		oewn-unargumentative__3.00.00..
+oewn-argumentatively__4.02.00..	pertainym		oewn-argumentative__3.00.00..
+oewn-argyrol__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-arianism__1.09.00..	antonym		oewn-athanasianism__1.09.00..
+oewn-arianism__1.09.00..	derivation		oewn-arianist__1.18.00..
+oewn-arid__5.00.00.dry.01	derivation		oewn-aridity__1.26.00..
+oewn-arid__5.00.00.dry.01	derivation		oewn-aridness__1.26.00..
+oewn-arise__2.38.00..	antonym		oewn-lie_down__2.38.00..
+oewn-arise__2.38.00..	antonym		oewn-sit_down__2.38.00..
+oewn-aristocort__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-aristocracy__1.14.01..	derivation		oewn-aristocratic__5.00.01.noble.02
+oewn-aristocracy__1.14.02..	derivation		oewn-aristocratic__5.00.01.noble.02
+oewn-aristocrat__1.18.00..	derivation		oewn-aristocratical__5.00.00.noble.02
+oewn-aristocratically__4.02.00..	pertainym		oewn-aristocratic__5.00.01.noble.02
+oewn-aristopak__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-aristotelean__1.18.00..	derivation		oewn-aristotelean__3.01.00..
+oewn-aristotelean__1.18.00..	derivation		oewn-aristotelianism__1.09.00..
+oewn-aristotelian__1.18.00..	derivation		oewn-aristotelian__3.01.00..
+oewn-aristotelian__1.18.00..	derivation		oewn-aristotelianism__1.09.00..
+oewn-arithmetic__1.09.00..	derivation		oewn-arithmetic__3.01.00..
+oewn-arithmetic__1.09.00..	derivation		oewn-arithmetical__3.01.00..
+oewn-arithmetic__1.09.00..	derivation		oewn-arithmetician__1.18.00..
+oewn-arithmetic__3.01.00..	pertainym		oewn-arithmetic__1.09.00..
+oewn-arithmetical__3.01.00..	pertainym		oewn-arithmetic__1.09.00..
+oewn-arithmetically__4.02.00..	pertainym		oewn-arithmetic__3.01.00..
+oewn-arm__1.06.01..	derivation		oewn-arm__2.33.00..
+oewn-arm__1.06.01..	derivation		oewn-arm__2.40.00..
+oewn-arm__1.08.00..	derivation		oewn-armlet__1.06.00..
+oewn-arm__2.33.00..	antonym		oewn-disarm__2.33.00..
+oewn-arm__2.33.00..	derivation		oewn-armament__1.04.00..
+oewn-arm__2.33.00..	derivation		oewn-armor__1.14.00..
+oewn-arm__2.33.00..	other	event	oewn-armament__1.04.00..
+oewn-arm__2.33.00..	other	instrument	oewn-arm__1.06.01..
+oewn-arm__2.40.00..	derivation		oewn-armament__1.06.00..
+oewn-arm__2.40.00..	other	instrument	oewn-arm__1.06.01..
+oewn-arm__2.40.00..	other	uses	oewn-armament__1.06.00..
+oewn-armament__1.04.00..	antonym		oewn-disarmament__1.04.00..
+oewn-armed__3.00.01..	antonym		oewn-unarmed__3.00.01..
+oewn-armed__3.00.02..	antonym		oewn-unarmed__3.00.02..
+oewn-armed__3.00.03..	antonym		oewn-armless__3.00.00..
+oewn-armed_services__1.14.00..	exemplifies		oewn-plural_form__1.10.00..
+oewn-armenian__1.10.00..	derivation		oewn-armenian__3.01.00..
+oewn-armenian__1.10.01..	derivation		oewn-armenian__3.01.00..
+oewn-armenian__1.18.00..	derivation		oewn-armenian__3.01.00..
+oewn-armillary__3.01.00..	pertainym		oewn-bracelet__1.06.00..
+oewn-arming__1.04.00..	antonym		oewn-disarming__1.04.00..
+oewn-arminian__3.01.00..	derivation		oewn-arminianism__1.09.00..
+oewn-arminian__3.01.00..	pertainym		oewn-arminianism__1.09.00..
+oewn-armor__1.05.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-armor__1.06.00..	derivation		oewn-armor__2.40.00..
+oewn-armor__1.06.00..	derivation		oewn-armorer__1.18.01..
+oewn-armor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-armor__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-armor__2.40.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-armor__2.40.00..	other	by_means_of	oewn-armor__1.06.00..
+oewn-armor__2.40.00..	other	uses	oewn-armor__1.06.00..
+oewn-armored__3.00.01..	antonym		oewn-unarmored__3.00.01..
+oewn-armored__3.00.02..	antonym		oewn-unarmored__3.00.02..
+oewn-armorial__3.01.00..	pertainym		oewn-arms__1.06.01..
+oewn-armour__1.05.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-armour__1.05.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-armour__1.05.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-armour__1.06.00..	derivation		oewn-armour__2.40.00..
+oewn-armour__1.06.00..	derivation		oewn-armourer__1.18.01..
+oewn-armour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-armour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-armour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-armour__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-armour__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-armour__1.14.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-armour__2.40.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-armour__2.40.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-armour__2.40.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-armour__2.40.00..	other	uses	oewn-armour__1.06.00..
+oewn-aroid__1.20.00..	derivation		oewn-aroid__3.01.00..
+oewn-aroma__1.07.00..	derivation		oewn-aromatic__3.01.00..
+oewn-aroma__1.07.00..	derivation		oewn-aromatise__2.39.00..
+oewn-aroma__1.07.00..	derivation		oewn-aromatize__2.39.00..
+oewn-aroma__1.09.01..	derivation		oewn-aromatic__5.00.00.fragrant.00
+oewn-aroma__1.09.01..	derivation		oewn-aromatise__2.39.00..
+oewn-aroma__1.09.01..	derivation		oewn-aromatize__2.39.00..
+oewn-aromatic__3.01.00..	pertainym		oewn-aromatic_compound__1.27.00..
+oewn-aromatise__2.39.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-aromatise__2.39.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-aromatize__2.39.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-arousal__1.04.00..	derivation		oewn-arouse__2.37.00..
+oewn-arousal__1.09.00..	derivation		oewn-arouse__2.29.01..
+oewn-arousal__1.09.00..	derivation		oewn-arouse__2.29.05..
+oewn-arouse__2.29.01..	derivation		oewn-arouser__1.18.00..
+oewn-arouse__2.29.01..	other	agent	oewn-arouser__1.18.00..
+oewn-arouse__2.29.01..	other	event	oewn-arousal__1.09.00..
+oewn-arouse__2.29.05..	other	event	oewn-arousal__1.09.00..
+oewn-arouse__2.37.00..	other	event	oewn-arousal__1.04.00..
+oewn-arraign__2.41.00..	derivation		oewn-arraignment__1.10.00..
+oewn-arraign__2.41.00..	other	by_means_of	oewn-arraignment__1.10.00..
+oewn-arrange__2.29.00..	derivation		oewn-arrangement__1.14.00..
+oewn-arrange__2.29.00..	other	result	oewn-arrangement__1.14.00..
+oewn-arrange__2.32.04..	derivation		oewn-arrangement__1.09.01..
+oewn-arrange__2.32.04..	derivation		oewn-arranger__1.18.00..
+oewn-arrange__2.32.04..	other	agent	oewn-arranger__1.18.00..
+oewn-arrange__2.32.04..	other	result	oewn-arrangement__1.09.01..
+oewn-arrange__2.35.00..	antonym		oewn-disarrange__2.35.00..
+oewn-arrange__2.35.00..	derivation		oewn-arrangement__1.07.00..
+oewn-arrange__2.35.00..	derivation		oewn-arranger__1.18.00..
+oewn-arrange__2.35.00..	other	agent	oewn-arranger__1.18.00..
+oewn-arrange__2.35.00..	other	property	oewn-arrangement__1.07.00..
+oewn-arrange__2.36.00..	derivation		oewn-arranger__1.18.01..
+oewn-arrange__2.36.00..	other	agent	oewn-arranger__1.18.01..
+oewn-arranged__3.00.00..	antonym		oewn-disarranged__3.00.00..
+oewn-array__1.14.00..	derivation		oewn-array__2.35.00..
+oewn-array__2.35.00..	other	result	oewn-array__1.14.00..
+oewn-arrest__1.04.00..	derivation		oewn-arrest__2.35.00..
+oewn-arrest__2.35.00..	other	event	oewn-arrest__1.04.00..
+oewn-arrest__2.38.00..	derivation		oewn-arrester__1.06.00..
+oewn-arrest__2.38.00..	other	instrument	oewn-arrester__1.06.00..
+oewn-arrhythmia__1.26.00..	derivation		oewn-arrhythmic__5.00.00.unsteady.00
+oewn-arrival__1.04.01..	derivation		oewn-arrive__2.38.00..
+oewn-arrive__2.38.00..	antonym		oewn-leave__2.38.01..
+oewn-arrive__2.38.00..	derivation		oewn-arriver__1.18.00..
+oewn-arrive__2.38.00..	other	agent	oewn-arriver__1.18.00..
+oewn-arrive__2.38.00..	other	event	oewn-arrival__1.04.01..
+oewn-arrogance__1.07.00..	derivation		oewn-arrogant__5.00.00.proud.00
+oewn-arrogantly__4.02.00..	pertainym		oewn-arrogant__5.00.00.proud.00
+oewn-arrogate__2.40.00..	derivation		oewn-arrogation__1.04.00..
+oewn-arrogate__2.40.00..	derivation		oewn-arrogator__1.18.00..
+oewn-arrogate__2.40.00..	other	agent	oewn-arrogator__1.18.00..
+oewn-arrogate__2.40.00..	other	event	oewn-arrogation__1.04.00..
+oewn-arrogate__2.40.01..	derivation		oewn-arrogator__1.18.00..
+oewn-arrogate__2.40.01..	other	agent	oewn-arrogator__1.18.00..
+oewn-arrogate__2.40.02..	derivation		oewn-arrogator__1.18.00..
+oewn-arrogate__2.40.02..	other	agent	oewn-arrogator__1.18.00..
+oewn-arse__1.08.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-arsenic__1.27.00..	derivation		oewn-arsenical__3.01.00..
+oewn-arsenic__1.27.00..	derivation		oewn-arsenious__3.01.00..
+oewn-arsenic__1.27.01..	derivation		oewn-arsenical__3.01.00..
+oewn-arsenical__1.27.00..	derivation		oewn-arsenical__3.01.00..
+oewn-arsenical__3.01.00..	pertainym		oewn-arsenical__1.27.00..
+oewn-arsenious__3.01.00..	pertainym		oewn-arsenic__1.27.00..
+oewn-arson__1.04.00..	derivation		oewn-arsonist__1.18.00..
+oewn-art__1.04.00..	derivation		oewn-artist__1.18.00..
+oewn-art__1.06.00..	derivation		oewn-artist__1.18.00..
+oewn-art__1.06.00..	derivation		oewn-artistic__3.01.00..
+oewn-art__1.06.00..	derivation		oewn-artistic__5.00.00.aesthetic.00
+oewn-art__1.06.00..	derivation		oewn-arty__5.00.00.pretentious.00
+oewn-art__1.09.00..	derivation		oewn-artist__1.18.00..
+oewn-art__1.10.00..	derivation		oewn-artist__1.18.00..
+oewn-artefact__1.03.00..	derivation		oewn-artefactual__3.01.00..
+oewn-artefact__1.03.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-artefact__1.03.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-artefactual__3.01.00..	pertainym		oewn-artefact__1.03.00..
+oewn-arterial__3.01.00..	derivation		oewn-artery__1.08.00..
+oewn-arterial__3.01.00..	pertainym		oewn-artery__1.08.00..
+oewn-arterialise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-arterialise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-arterialize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-arteriola__1.08.00..	derivation		oewn-arteriolar__3.01.00..
+oewn-arteriolar__3.01.00..	derivation		oewn-arteriole__1.08.00..
+oewn-arteriolar__3.01.00..	pertainym		oewn-arteriole__1.08.00..
+oewn-arteriosclerosis__1.26.00..	derivation		oewn-arteriosclerotic__3.01.00..
+oewn-arteriosclerotic__3.01.00..	pertainym		oewn-arteriosclerosis__1.26.00..
+oewn-arteriovenous__3.01.00..	pertainym		oewn-artery__1.08.00..
+oewn-arteriovenous__3.01.00..	pertainym		oewn-vein__1.08.00..
+oewn-artesian__3.00.00..	antonym		oewn-subartesian__3.00.00..
+oewn-artful__3.00.00..	antonym		oewn-artless__3.00.00..
+oewn-artful__3.00.00..	derivation		oewn-artfulness__1.07.00..
+oewn-artful__3.00.02..	derivation		oewn-artfulness__1.07.00..
+oewn-artfully__4.02.00..	pertainym		oewn-artful__3.00.00..
+oewn-artfully__4.02.01..	pertainym		oewn-artful__3.00.02..
+oewn-artfully__4.02.02..	pertainym		oewn-artful__3.00.00..
+oewn-artfulness__1.07.00..	antonym		oewn-artlessness__1.07.00..
+oewn-arthralgia__1.26.00..	derivation		oewn-arthralgic__3.01.00..
+oewn-arthralgic__3.01.00..	pertainym		oewn-arthralgia__1.26.00..
+oewn-arthritic__1.18.00..	derivation		oewn-arthritis__1.26.00..
+oewn-arthritic__5.00.00.unhealthy.00	derivation		oewn-arthritis__1.26.00..
+oewn-arthromere__1.08.00..	derivation		oewn-arthromeric__3.01.00..
+oewn-arthromeric__3.01.00..	pertainym		oewn-arthromere__1.08.00..
+oewn-arthropod__1.05.00..	derivation		oewn-arthropodal__3.01.00..
+oewn-arthrospore__1.20.01..	derivation		oewn-arthrosporic__3.01.00..
+oewn-arthrospore__1.20.02..	derivation		oewn-arthrosporic__3.01.00..
+oewn-arthrospore__1.20.02..	derivation		oewn-arthrosporous__3.01.00..
+oewn-arthrosporic__3.01.00..	pertainym		oewn-arthrospore__1.20.01..
+oewn-arthrosporous__3.01.00..	pertainym		oewn-arthrospore__1.20.01..
+oewn-article__1.10.02..	derivation		oewn-article__2.32.00..
+oewn-articular__3.01.00..	derivation		oewn-articulation__1.08.00..
+oewn-articular__3.01.00..	pertainym		oewn-articulation__1.08.00..
+oewn-articulary__3.01.00..	derivation		oewn-articulation__1.08.00..
+oewn-articulary__3.01.00..	pertainym		oewn-articulation__1.08.00..
+oewn-articulate__2.32.00..	derivation		oewn-articulation__1.10.00..
+oewn-articulate__2.32.00..	derivation		oewn-articulation__1.10.01..
+oewn-articulate__2.32.00..	derivation		oewn-articulative__3.01.00..
+oewn-articulate__2.32.00..	derivation		oewn-articulator__1.18.00..
+oewn-articulate__2.32.00..	derivation		oewn-articulatory__3.01.00..
+oewn-articulate__2.32.00..	other	agent	oewn-articulator__1.18.00..
+oewn-articulate__2.32.00..	other	event	oewn-articulation__1.10.01..
+oewn-articulate__2.32.00..	other	property	oewn-articulation__1.10.00..
+oewn-articulate__2.32.01..	derivation		oewn-articulation__1.10.01..
+oewn-articulate__2.32.01..	derivation		oewn-articulative__3.01.00..
+oewn-articulate__2.32.01..	other	event	oewn-articulation__1.10.01..
+oewn-articulate__2.32.02..	derivation		oewn-articulation__1.10.01..
+oewn-articulate__2.32.02..	other	event	oewn-articulation__1.10.01..
+oewn-articulate__2.40.00..	derivation		oewn-articulation__1.04.00..
+oewn-articulate__2.40.00..	derivation		oewn-articulation__1.08.00..
+oewn-articulate__2.40.00..	derivation		oewn-articulation__1.25.00..
+oewn-articulate__2.40.00..	other	event	oewn-articulation__1.04.00..
+oewn-articulate__2.40.00..	other	uses	oewn-articulation__1.08.00..
+oewn-articulate__2.40.00..	other	uses	oewn-articulation__1.25.00..
+oewn-articulate__3.00.00..	antonym		oewn-inarticulate__3.00.00..
+oewn-articulate__3.00.00..	derivation		oewn-articulateness__1.07.00..
+oewn-articulated__3.00.00..	antonym		oewn-unarticulated__3.00.00..
+oewn-articulately__4.02.00..	antonym		oewn-inarticulately__4.02.00..
+oewn-articulately__4.02.00..	pertainym		oewn-articulate__3.00.00..
+oewn-articulately__4.02.03..	antonym		oewn-inarticulately__4.02.03..
+oewn-articulately__4.02.03..	pertainym		oewn-articulate__3.00.00..
+oewn-articulative__3.01.00..	pertainym		oewn-articulation__1.10.00..
+oewn-articulatory__3.01.00..	pertainym		oewn-articulation__1.10.00..
+oewn-artifact__1.03.00..	antonym		oewn-natural_object__1.03.00..
+oewn-artifact__1.03.00..	derivation		oewn-artifactual__3.01.00..
+oewn-artifact__1.03.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-artifactual__3.01.00..	pertainym		oewn-artefact__1.03.00..
+oewn-artificial__3.00.00..	antonym		oewn-natural__3.00.02..
+oewn-artificial__3.00.00..	derivation		oewn-artificiality__1.07.00..
+oewn-artificial__5.00.00.inorganic.02	derivation		oewn-artificiality__1.07.00..
+oewn-artificial_language__1.10.00..	antonym		oewn-natural_language__1.10.00..
+oewn-artificially__4.02.00..	antonym		oewn-naturally__4.02.01..
+oewn-artificially__4.02.00..	pertainym		oewn-artificial__3.00.00..
+oewn-artist__1.18.00..	derivation		oewn-artistic__3.01.00..
+oewn-artist__1.18.00..	derivation		oewn-artistic__5.00.00.aesthetic.00
+oewn-artistic__3.01.00..	pertainym		oewn-artist__1.18.00..
+oewn-artistically__4.02.00..	pertainym		oewn-artistic__5.00.00.aesthetic.00
+oewn-artless__3.00.00..	derivation		oewn-artlessness__1.07.00..
+oewn-artless__3.00.02..	derivation		oewn-artlessness__1.07.01..
+oewn-artlessly__4.02.00..	pertainym		oewn-artless__3.00.02..
+oewn-artlessly__4.02.01..	pertainym		oewn-artless__5.00.00.unskilled.00
+oewn-aryan__1.18.00..	derivation		oewn-aryan__3.01.00..
+oewn-aryan__3.01.00..	pertainym		oewn-indo--european__1.18.00..

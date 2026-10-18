@@ -1,0 +1,176 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-agamete__1.20.00..	derivation		oewn-agamic__5.00.00.asexual.00
+oewn-agamogenesis__1.22.00..	derivation		oewn-agamogenetic__5.00.00.asexual.00
+oewn-age__1.28.00..	derivation		oewn-age__2.30.00..
+oewn-age__1.28.01..	derivation		oewn-age__2.30.00..
+oewn-age__1.28.01..	derivation		oewn-age__2.30.02..
+oewn-age__2.30.00..	other	event	oewn-age__1.28.00..
+oewn-age__2.30.00..	other	event	oewn-age__1.28.01..
+oewn-age__2.30.02..	antonym		oewn-rejuvenate__2.30.00..
+oewn-age__2.30.02..	other	event	oewn-age__1.28.01..
+oewn-aged__1.14.00..	antonym		oewn-young__1.14.00..
+oewn-aged__1.14.00..	derivation		oewn-aged__5.00.01.old.02
+oewn-aged__5.00.00.ripe.00	derivation		oewn-agedness__1.07.00..
+oewn-aged__5.00.01.old.02	derivation		oewn-agedness__1.07.00..
+oewn-ageless__5.00.00.permanent.00	derivation		oewn-agelessness__1.07.00..
+oewn-agency__1.04.00..	derivation		oewn-agential__3.01.00..
+oewn-agency__1.26.00..	derivation		oewn-agent__1.18.02..
+oewn-agency__1.26.01..	derivation		oewn-agent__1.17.00..
+oewn-agency__1.26.01..	derivation		oewn-agential__3.01.00..
+oewn-agene__1.27.00..	derivation		oewn-agenise__2.30.00..
+oewn-agene__1.27.00..	derivation		oewn-agenize__2.30.00..
+oewn-agene__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-agenise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-agenise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-agenize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-agent__1.18.01..	derivation		oewn-agential__3.01.00..
+oewn-agent__1.18.02..	derivation		oewn-agential__3.01.00..
+oewn-agent__1.18.03..	derivation		oewn-agential__3.01.00..
+oewn-agential__3.01.00..	pertainym		oewn-agent__1.18.02..
+oewn-agglomerate__1.14.00..	derivation		oewn-agglomerate__2.35.00..
+oewn-agglomerate__1.14.00..	derivation		oewn-agglomerate__5.00.00.collective.00
+oewn-agglomerate__1.27.00..	derivation		oewn-agglomerate__2.35.00..
+oewn-agglomerate__1.27.00..	derivation		oewn-agglomerate__5.00.00.collective.00
+oewn-agglomerate__2.35.00..	derivation		oewn-agglomerative__5.00.00.collective.00
+oewn-agglomerate__2.35.00..	derivation		oewn-agglomerator__1.06.00..
+oewn-agglomerate__2.35.00..	other	instrument	oewn-agglomerator__1.06.00..
+oewn-agglutinate__2.35.00..	derivation		oewn-agglutination__1.22.01..
+oewn-agglutinate__2.35.00..	other	event	oewn-agglutination__1.22.01..
+oewn-agglutinate__2.35.01..	derivation		oewn-agglutination__1.22.00..
+oewn-agglutinate__2.35.01..	derivation		oewn-agglutinative__5.00.00.synthetic.02
+oewn-agglutinate__2.35.01..	other	event	oewn-agglutination__1.22.00..
+oewn-aggrade__2.35.00..	antonym		oewn-degrade__2.35.00..
+oewn-aggrandise__2.32.00..	derivation		oewn-aggrandisement__1.04.00..
+oewn-aggrandise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-aggrandise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-aggrandise__2.32.00..	other	event	oewn-aggrandisement__1.04.00..
+oewn-aggrandize__2.32.00..	derivation		oewn-aggrandizement__1.04.00..
+oewn-aggrandize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aggrandize__2.32.00..	other	event	oewn-aggrandizement__1.04.00..
+oewn-aggravate__2.30.00..	derivation		oewn-aggravation__1.04.01..
+oewn-aggravate__2.30.00..	other	event	oewn-aggravation__1.04.01..
+oewn-aggravate__2.37.00..	derivation		oewn-aggravation__1.04.00..
+oewn-aggravate__2.37.00..	derivation		oewn-aggravation__1.12.00..
+oewn-aggravate__2.37.00..	derivation		oewn-aggravator__1.18.00..
+oewn-aggravate__2.37.00..	other	agent	oewn-aggravator__1.18.00..
+oewn-aggravate__2.37.00..	other	event	oewn-aggravation__1.04.00..
+oewn-aggravate__2.37.00..	other	state	oewn-aggravation__1.12.00..
+oewn-aggravatingly__4.02.00..	pertainym		oewn-aggravating__5.00.00.intensifying.00
+oewn-aggregate__1.06.00..	derivation		oewn-aggregate__2.35.00..
+oewn-aggregate__1.06.00..	derivation		oewn-aggregate__2.42.00..
+oewn-aggregate__1.06.00..	derivation		oewn-aggregate__5.00.01.collective.00
+oewn-aggregate__1.14.00..	derivation		oewn-aggregate__5.00.01.collective.00
+oewn-aggregate__2.35.00..	derivation		oewn-aggregative__5.00.00.collective.00
+oewn-aggregate__2.35.00..	derivation		oewn-aggregator__1.18.00..
+oewn-aggregate__2.35.00..	other	agent	oewn-aggregator__1.18.00..
+oewn-aggregate__2.35.00..	other	result	oewn-aggregate__1.06.00..
+oewn-aggregate__2.42.00..	other	result	oewn-aggregate__1.06.00..
+oewn-aggress__2.33.00..	derivation		oewn-aggression__1.04.00..
+oewn-aggress__2.33.00..	derivation		oewn-aggression__1.04.02..
+oewn-aggress__2.33.00..	derivation		oewn-aggressive__5.00.00.hostile.01
+oewn-aggress__2.33.00..	derivation		oewn-aggressor__1.18.00..
+oewn-aggress__2.33.00..	other	agent	oewn-aggressor__1.18.00..
+oewn-aggress__2.33.00..	other	event	oewn-aggression__1.04.00..
+oewn-aggress__2.33.00..	other	event	oewn-aggression__1.04.02..
+oewn-aggressive__3.00.00..	antonym		oewn-unaggressive__3.00.00..
+oewn-aggressive__3.00.00..	derivation		oewn-aggressiveness__1.07.00..
+oewn-aggressive__5.00.00.hostile.01	derivation		oewn-aggressiveness__1.07.01..
+oewn-aggressively__4.02.00..	pertainym		oewn-aggressive__3.00.00..
+oewn-agile__5.00.00.active.01	derivation		oewn-agility__1.07.00..
+oewn-agilely__4.02.00..	pertainym		oewn-agile__5.00.00.active.01
+oewn-agitate__2.37.00..	antonym		oewn-calm__2.37.00..
+oewn-agitate__2.37.00..	derivation		oewn-agitative__5.00.00.provocative.00
+oewn-agitate__2.41.00..	derivation		oewn-agitator__1.18.00..
+oewn-agitate__2.41.00..	other	agent	oewn-agitator__1.18.00..
+oewn-agitated__3.00.00..	antonym		oewn-unagitated__3.00.00..
+oewn-agitated__3.00.02..	antonym		oewn-unagitated__3.00.02..
+oewn-agitation__1.12.00..	antonym		oewn-calmness__1.12.00..
+oewn-agnate__1.18.00..	derivation		oewn-agnate__5.00.00.related.01
+oewn-agnate__1.18.00..	derivation		oewn-agnatic__5.00.00.related.01
+oewn-agnise__2.31.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-agnise__2.31.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-agnize__2.31.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-agnostic__1.18.00..	derivation		oewn-agnostical__3.00.00..
+oewn-agnostic__1.18.01..	derivation		oewn-agnostical__3.00.00..
+oewn-agnostic__3.00.00..	antonym		oewn-gnostic__3.00.00..
+oewn-agnostic__3.01.00..	pertainym		oewn-agnostic__1.18.00..
+oewn-agnostic__3.01.00..	pertainym		oewn-agnosticism__1.09.00..
+oewn-agonadal__3.01.00..	pertainym		oewn-gonad__1.08.00..
+oewn-agonal__3.01.00..	derivation		oewn-agony__1.12.00..
+oewn-agonal__3.01.00..	derivation		oewn-agony__1.26.00..
+oewn-agonal__3.01.00..	pertainym		oewn-agony__1.12.00..
+oewn-agonise__2.37.00..	derivation		oewn-agony__1.12.00..
+oewn-agonise__2.37.00..	derivation		oewn-agony__1.26.00..
+oewn-agonise__2.37.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-agonise__2.37.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-agonise__2.37.01..	derivation		oewn-agony__1.12.00..
+oewn-agonise__2.37.01..	derivation		oewn-agony__1.26.00..
+oewn-agonise__2.37.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-agonise__2.37.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-agonising__5.00.00.painful.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-agonising__5.00.00.painful.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-agonist__1.18.00..	antonym		oewn-antagonist__1.18.00..
+oewn-agonist__1.18.00..	derivation		oewn-agonistic__3.01.00..
+oewn-agonist__1.18.00..	derivation		oewn-agony__1.12.00..
+oewn-agonist__1.18.00..	derivation		oewn-agony__1.26.00..
+oewn-agonist__1.18.01..	derivation		oewn-agony__1.12.00..
+oewn-agonistic__3.01.00..	pertainym		oewn-agon__1.04.00..
+oewn-agonize__2.37.00..	derivation		oewn-agony__1.26.00..
+oewn-agonize__2.37.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-agonize__2.37.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-agonizing__5.00.00.painful.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-agonizingly__4.02.00..	pertainym		oewn-agonizing__5.00.00.painful.00
+oewn-agoraphobia__1.26.00..	derivation		oewn-agoraphobic__5.00.00.afraid.00
+oewn-agranulocytic__3.01.00..	derivation		oewn-agranulocytosis__1.26.00..
+oewn-agranulocytic__3.01.00..	pertainym		oewn-agranulocytosis__1.26.00..
+oewn-agraphic__3.01.00..	pertainym		oewn-agraphia__1.26.00..
+oewn-agree__2.32.00..	antonym		oewn-disagree__2.32.00..
+oewn-agree__2.32.00..	derivation		oewn-agreeable__5.00.00.accordant.00
+oewn-agree__2.32.00..	derivation		oewn-agreement__1.10.00..
+oewn-agree__2.32.00..	other	event	oewn-agreement__1.10.00..
+oewn-agree__2.32.01..	derivation		oewn-agreeable__5.00.00.accordant.00
+oewn-agree__2.32.01..	derivation		oewn-agreement__1.10.00..
+oewn-agree__2.32.01..	derivation		oewn-agreement__1.10.01..
+oewn-agree__2.32.01..	other	event	oewn-agreement__1.10.00..
+oewn-agree__2.32.01..	other	event	oewn-agreement__1.10.01..
+oewn-agree__2.32.04..	derivation		oewn-agreeable__5.00.00.accordant.00
+oewn-agree__2.32.04..	derivation		oewn-agreement__1.10.00..
+oewn-agree__2.32.04..	derivation		oewn-agreement__1.26.01..
+oewn-agree__2.32.04..	other	event	oewn-agreement__1.10.00..
+oewn-agree__2.32.04..	other	event	oewn-agreement__1.26.01..
+oewn-agree__2.42.00..	antonym		oewn-disagree__2.42.00..
+oewn-agree__2.42.00..	derivation		oewn-agreeable__5.00.00.consistent.00
+oewn-agree__2.42.00..	derivation		oewn-agreement__1.07.00..
+oewn-agree__2.42.00..	other	event	oewn-agreement__1.07.00..
+oewn-agree__2.42.01..	derivation		oewn-agreeable__5.00.00.consistent.00
+oewn-agree__2.42.03..	derivation		oewn-agreement__1.24.03..
+oewn-agree__2.42.03..	other	result	oewn-agreement__1.24.03..
+oewn-agreeability__1.07.00..	derivation		oewn-agreeable__3.00.00..
+oewn-agreeability__1.07.00..	derivation		oewn-agreeable__5.00.00.accordant.00
+oewn-agreeable__3.00.00..	antonym		oewn-disagreeable__3.00.00..
+oewn-agreeable__3.00.00..	derivation		oewn-agreeableness__1.07.01..
+oewn-agreeable__5.00.00.accordant.00	derivation		oewn-agreeableness__1.07.00..
+oewn-agreeableness__1.07.00..	antonym		oewn-disagreeableness__1.07.00..
+oewn-agreeableness__1.07.01..	antonym		oewn-disagreeableness__1.07.01..
+oewn-agreeably__4.02.00..	antonym		oewn-disagreeably__4.02.00..
+oewn-agreeably__4.02.00..	pertainym		oewn-agreeable__3.00.00..
+oewn-agreement__1.10.00..	antonym		oewn-disagreement__1.10.00..
+oewn-agreement__1.26.01..	antonym		oewn-disagreement__1.26.00..
+oewn-agricultural__3.01.00..	pertainym		oewn-agriculture__1.04.00..
+oewn-agriculture__1.04.00..	derivation		oewn-agriculturist__1.18.00..
+oewn-agriculture__1.04.01..	derivation		oewn-agriculturist__1.18.00..
+oewn-agrobiologic__3.01.00..	derivation		oewn-agrobiology__1.09.00..
+oewn-agrobiologic__3.01.00..	pertainym		oewn-agrobiology__1.09.00..
+oewn-agrobiological__3.01.00..	derivation		oewn-agrobiology__1.09.00..
+oewn-agrobiological__3.01.00..	pertainym		oewn-agrobiology__1.09.00..
+oewn-agrologic__3.01.00..	derivation		oewn-agrology__1.09.00..
+oewn-agrologic__3.01.00..	pertainym		oewn-agrology__1.09.00..
+oewn-agrological__3.01.00..	derivation		oewn-agrology__1.09.00..
+oewn-agrological__3.01.00..	pertainym		oewn-agrology__1.09.00..
+oewn-agronomic__3.01.00..	derivation		oewn-agronomy__1.09.00..
+oewn-agronomic__3.01.00..	pertainym		oewn-agronomy__1.09.00..
+oewn-agronomical__3.01.00..	derivation		oewn-agronomy__1.09.00..
+oewn-agronomical__3.01.00..	pertainym		oewn-agronomy__1.09.00..
+oewn-agronomist__1.18.00..	derivation		oewn-agronomy__1.09.00..
+oewn-agrypnia__1.04.00..	derivation		oewn-agrypnotic__3.01.00..
+oewn-agrypnotic__3.01.00..	pertainym		oewn-agrypnia__1.04.00..

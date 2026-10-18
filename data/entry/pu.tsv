@@ -1,0 +1,784 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-pustulate-v	pustulate	v	0	1	1	dema
+oewn-PU-n	PU	n	0	1	1	oewn
+oewn-PUR-n	PUR	n	0	1	1	oewn
+oewn-Pu-n	Pu	n	0	1	1	oewn
+oewn-Puccinia_graminis-n	Puccinia graminis	n	0	2	2	oewn
+oewn-Puck-n	Puck	n	0	1	1	oewn
+oewn-Pueblo-n	Pueblo	n	0	1	1	oewn
+oewn-Puebloan_person-n	Puebloan person	n	0	2	2	oewn
+oewn-Pueraria_lobata-n	Pueraria lobata	n	0	2	2	oewn
+oewn-Puerto_Rican-n	Puerto Rican	n	0	2	2	oewn
+oewn-Puffinus_puffinus-n	Puffinus puffinus	n	0	2	2	oewn
+oewn-Pujunan-n	Pujunan	n	0	1	1	oewn
+oewn-Pujunan_language-n	Pujunan language	n	0	2	2	oewn
+oewn-Pulex_irritans-n	Pulex irritans	n	0	2	2	oewn
+oewn-Pulicaria_dysenterica-n	Pulicaria dysenterica	n	0	2	2	oewn
+oewn-Pullman-n	Pullman	n	0	1	1	oewn
+oewn-Pullman_car-n	Pullman car	n	0	2	2	oewn
+oewn-Pullman_porter-n	Pullman porter	n	0	2	2	oewn
+oewn-Pulsatilla_occidentalis-n	Pulsatilla occidentalis	n	0	2	2	oewn
+oewn-Pulsatilla_patens-n	Pulsatilla patens	n	0	2	2	oewn
+oewn-Pulsatilla_vulgaris-n	Pulsatilla vulgaris	n	0	2	2	oewn
+oewn-Punic-a	Punic	a	0	1	1	oewn
+oewn-Punic-n	Punic	n	0	1	1	oewn
+oewn-Punica_granatum-n	Punica granatum	n	0	2	2	oewn
+oewn-Punjabi-n	Punjabi	n	0	1	1	oewn
+oewn-Punjabi_language-n	Punjabi language	n	0	2	2	oewn
+oewn-Purana-n	Purana	n	0	1	1	oewn
+oewn-Puranic-a	Puranic	a	0	1	1	oewn
+oewn-Purim-n	Purim	n	0	1	1	oewn
+oewn-Purinethol-n	Purinethol	n	0	1	1	oewn
+oewn-Puritan-n	Puritan	n	0	1	1	oewn
+oewn-Puritanism-n	Puritanism	n	0	1	1	oewn
+oewn-Purkinje-ap-s_system-n	Purkinje's system	n	0	2	2	oewn
+oewn-Purkinje-ap-s_tissue-n	Purkinje's tissue	n	0	2	2	oewn
+oewn-Purkinje_cell-n	Purkinje cell	n	0	2	2	oewn
+oewn-Purkinje_fiber-n	Purkinje fiber	n	0	2	2	oewn
+oewn-Purkinje_network-n	Purkinje network	n	0	2	2	oewn
+oewn-Purple_Heart-n	Purple Heart	n	0	2	2	oewn
+oewn-Pus-n	Pus	n	0	1	1	oewn
+oewn-Puseyism-n	Puseyism	n	0	1	1	oewn
+oewn-Pushtun-n	Pushtun	n	0	1	1	oewn
+oewn-pub-crawl-v	pub-crawl	v	0	1	1	oewn
+oewn-pub-n	pub	n	0	1	1	oewn
+oewn-pub_crawl-n	pub crawl	n	0	2	2	oewn
+oewn-pubertal-a	pubertal	a	0	1	1	oewn
+oewn-puberty-n	puberty	n	0	1	1	oewn
+oewn-puberulent-a	puberulent	a	0	1	1	oewn
+oewn-pubes-n	pubes	n	0	1	1	oewn
+oewn-pubescence-n	pubescence	n	0	1	1	oewn
+oewn-pubescent-a	pubescent	a	0	1	1	oewn
+oewn-pubic-a	pubic	a	0	1	1	oewn
+oewn-pubic_bone-n	pubic bone	n	0	2	2	oewn
+oewn-pubic_hair-n	pubic hair	n	0	2	2	oewn
+oewn-pubic_louse-n	pubic louse	n	0	2	2	oewn
+oewn-pubic_region-n	pubic region	n	0	2	2	oewn
+oewn-pubis-n	pubis	n	0	1	1	oewn
+oewn-public-a	public	a	0	1	1	oewn
+oewn-public-n	public	n	0	1	1	oewn
+oewn-public-relations_campaign-n	public-relations campaign	n	0	2	2	oewn
+oewn-public-service_corporation-n	public-service corporation	n	0	2	2	oewn
+oewn-public-spirited-a	public-spirited	a	0	1	1	oewn
+oewn-public_address_system-n	public address system	n	0	3	3	oewn
+oewn-public_assistance-n	public assistance	n	0	2	2	oewn
+oewn-public_charity-n	public charity	n	0	2	2	oewn
+oewn-public_convenience-n	public convenience	n	0	2	2	oewn
+oewn-public_debate-n	public debate	n	0	2	2	oewn
+oewn-public_debt-n	public debt	n	0	2	2	oewn
+oewn-public_defender-n	public defender	n	0	2	2	oewn
+oewn-public_discussion-n	public discussion	n	0	2	2	oewn
+oewn-public_domain-n	public domain	n	0	2	2	oewn
+oewn-public_easement-n	public easement	n	0	2	2	oewn
+oewn-public_executioner-n	public executioner	n	0	2	2	oewn
+oewn-public_exposure-n	public exposure	n	0	2	2	oewn
+oewn-public_eye-n	public eye	n	0	2	2	oewn
+oewn-public_figure-n	public figure	n	0	2	2	oewn
+oewn-public_holiday-n	public holiday	n	0	2	2	oewn
+oewn-public_house-n	public house	n	0	2	2	oewn
+oewn-public_housing-n	public housing	n	0	2	2	oewn
+oewn-public_knowledge-n	public knowledge	n	0	2	2	oewn
+oewn-public_lavatory-n	public lavatory	n	0	2	2	oewn
+oewn-public_law-n	public law	n	0	2	2	oewn
+oewn-public_lecture-n	public lecture	n	0	2	2	oewn
+oewn-public_library-n	public library	n	0	2	2	oewn
+oewn-public_mover-n	public mover	n	0	2	2	oewn
+oewn-public_nudity-n	public nudity	n	0	2	2	oewn
+oewn-public_nuisance-n	public nuisance	n	0	2	2	oewn
+oewn-public_office-n	public office	n	0	2	2	oewn
+oewn-public_opinion-n	public opinion	n	0	2	2	oewn
+oewn-public_opinion_poll-n	public opinion poll	n	0	3	3	oewn
+oewn-public_presentation-n	public presentation	n	0	2	2	oewn
+oewn-public_press-n	public press	n	0	2	2	oewn
+oewn-public_property-n	public property	n	0	2	2	oewn
+oewn-public_prosecutor-n	public prosecutor	n	0	2	2	oewn
+oewn-public_record-n	public record	n	0	2	2	oewn
+oewn-public_relations-n	public relations	n	0	2	2	oewn
+oewn-public_relations_man-n	public relations man	n	0	3	3	oewn
+oewn-public_relations_person-n	public relations person	n	0	3	3	oewn
+oewn-public_relations_woman-n	public relations woman	n	0	3	3	oewn
+oewn-public_school-n	public school	n	0	2	2	oewn
+oewn-public_security-n	public security	n	0	2	2	oewn
+oewn-public_servant-n	public servant	n	0	2	2	oewn
+oewn-public_service-n	public service	n	0	2	2	oewn
+oewn-public_speaker-n	public speaker	n	0	2	2	oewn
+oewn-public_speaking-n	public speaking	n	0	2	2	oewn
+oewn-public_square-n	public square	n	0	2	2	oewn
+oewn-public_toilet-n	public toilet	n	0	2	2	oewn
+oewn-public_transit-n	public transit	n	0	2	2	oewn
+oewn-public_transport-n	public transport	n	0	2	2	oewn
+oewn-public_treasury-n	public treasury	n	0	2	2	oewn
+oewn-public_trust-n	public trust	n	0	2	2	oewn
+oewn-public_utility-n	public utility	n	0	2	2	oewn
+oewn-public_utility_company-n	public utility company	n	0	3	3	oewn
+oewn-public_violence-n	public violence	n	0	2	2	oewn
+oewn-public_works-n	public works	n	0	2	2	oewn
+oewn-publically-r	publically	r	0	1	1	oewn
+oewn-publican-n	publican	n	0	1	1	oewn
+oewn-publication-n	publication	n	0	1	1	oewn
+oewn-publicise-v	publicise	v	0	1	1	oewn
+oewn-publicised-a	publicised	a	0	1	1	oewn
+oewn-publiciser-n	publiciser	n	0	1	1	oewn
+oewn-publicist-n	publicist	n	0	1	1	oewn
+oewn-publicity-n	publicity	n	0	1	1	oewn
+oewn-publicity_man-n	publicity man	n	0	2	2	oewn
+oewn-publicity_woman-n	publicity woman	n	0	2	2	oewn
+oewn-publicize-v	publicize	v	0	1	1	oewn
+oewn-publicized-a	publicized	a	0	1	1	oewn
+oewn-publicizer-n	publicizer	n	0	1	1	oewn
+oewn-publicizing-n	publicizing	n	0	1	1	oewn
+oewn-publicly-r	publicly	r	0	1	1	oewn
+oewn-publish-v	publish	v	0	1	1	oewn
+oewn-publishable-a	publishable	a	0	1	1	oewn
+oewn-published-a	published	a	0	1	1	oewn
+oewn-publisher-n	publisher	n	0	1	1	oewn
+oewn-publishing-n	publishing	n	0	1	1	oewn
+oewn-publishing_company-n	publishing company	n	0	2	2	oewn
+oewn-publishing_conglomerate-n	publishing conglomerate	n	0	2	2	oewn
+oewn-publishing_empire-n	publishing empire	n	0	2	2	oewn
+oewn-publishing_firm-n	publishing firm	n	0	2	2	oewn
+oewn-publishing_house-n	publishing house	n	0	2	2	oewn
+oewn-pubococcygeus_exercises-n	pubococcygeus exercises	n	0	2	2	oewn
+oewn-puccoon-n	puccoon	n	0	1	1	oewn
+oewn-puce-n	puce	n	0	1	1	oewn
+oewn-puck-n	puck	n	0	1	1	oewn
+oewn-pucka-a	pucka	a	0	1	1	oewn
+oewn-pucker-n	pucker	n	0	1	1	oewn
+oewn-pucker-v	pucker	v	0	1	1	oewn
+oewn-puckerbush-n	puckerbush	n	0	1	1	oewn
+oewn-puckish-a	puckish	a	0	1	1	oewn
+oewn-puckishly-r	puckishly	r	0	1	1	oewn
+oewn-puckishness-n	puckishness	n	0	1	1	oewn
+oewn-pud-n	pud	n	0	1	1	oewn
+oewn-pudden-head-n	pudden-head	n	0	1	1	oewn
+oewn-pudding-face-n	pudding-face	n	0	1	1	oewn
+oewn-pudding-n	pudding	n	0	1	1	oewn
+oewn-pudding-wife-n	pudding-wife	n	0	1	1	oewn
+oewn-pudding_berry-n	pudding berry	n	0	2	2	oewn
+oewn-pudding_face-n	pudding face	n	0	2	2	oewn
+oewn-pudding_head-n	pudding head	n	0	2	2	oewn
+oewn-pudding_pipe_tree-n	pudding pipe tree	n	0	3	3	oewn
+oewn-pudding_stone-n	pudding stone	n	0	2	2	oewn
+oewn-puddingheaded-a	puddingheaded	a	0	1	1	oewn
+oewn-puddingwife-n	puddingwife	n	0	1	1	oewn
+oewn-puddle-n	puddle	n	0	1	1	oewn
+oewn-puddle-v	puddle	v	0	1	1	oewn
+oewn-puddler-n	puddler	n	0	1	1	oewn
+oewn-pudendal-a	pudendal	a	0	1	1	oewn
+oewn-pudendal_artery-n	pudendal artery	n	0	2	2	oewn
+oewn-pudendal_block-n	pudendal block	n	0	2	2	oewn
+oewn-pudendal_cleavage-n	pudendal cleavage	n	0	2	2	oewn
+oewn-pudendal_cleft-n	pudendal cleft	n	0	2	2	oewn
+oewn-pudendal_slit-n	pudendal slit	n	0	2	2	oewn
+oewn-pudendal_vein-n	pudendal vein	n	0	2	2	oewn
+oewn-pudendum-n	pudendum	n	0	1	1	oewn
+oewn-pudge-n	pudge	n	0	1	1	oewn
+oewn-pudginess-n	pudginess	n	0	1	1	oewn
+oewn-pudgy-a	pudgy	a	0	1	1	oewn
+oewn-pueblo-n	pueblo	n	0	1	1	oewn
+oewn-puerile-a	puerile	a	0	1	1	oewn
+oewn-puerility-n	puerility	n	0	1	1	oewn
+oewn-puerpera-n	puerpera	n	0	1	1	oewn
+oewn-puerperal-a	puerperal	a	0	1	1	oewn
+oewn-puerperal_fever-n	puerperal fever	n	0	2	2	oewn
+oewn-puerperium-n	puerperium	n	0	1	1	oewn
+oewn-puff-a	puff	a	0	1	1	oewn
+oewn-puff-n	puff	n	0	1	1	oewn
+oewn-puff-v	puff	v	0	1	1	oewn
+oewn-puff_adder-n	puff adder	n	0	2	2	oewn
+oewn-puff_batter-n	puff batter	n	0	2	2	oewn
+oewn-puff_of_air-n	puff of air	n	0	3	1	oewn
+oewn-puff_out-v	puff out	v	0	2	1	oewn
+oewn-puff_paste-n	puff paste	n	0	2	2	oewn
+oewn-puff_up-v	puff up	v	0	2	1	oewn
+oewn-puffball-n	puffball	n	0	1	1	oewn
+oewn-puffbird-n	puffbird	n	0	1	1	oewn
+oewn-puffed-a	puffed	a	0	1	1	oewn
+oewn-puffed_rice-n	puffed rice	n	0	2	2	oewn
+oewn-puffed_wheat-n	puffed wheat	n	0	2	2	oewn
+oewn-puffer-n	puffer	n	0	1	1	oewn
+oewn-pufferfish-n	pufferfish	n	0	1	1	oewn
+oewn-puffery-n	puffery	n	0	1	1	oewn
+oewn-puffin-n	puffin	n	0	1	1	oewn
+oewn-puffiness-n	puffiness	n	0	1	1	oewn
+oewn-puffing-n	puffing	n	0	1	1	oewn
+oewn-puffy-a	puffy	a	0	1	1	oewn
+oewn-pug-dog-n	pug-dog	n	0	1	1	oewn
+oewn-pug-faced-a	pug-faced	a	0	1	1	oewn
+oewn-pug-n	pug	n	0	1	1	oewn
+oewn-pug-nose-a	pug-nose	a	0	1	1	oewn
+oewn-pug-nosed-a	pug-nosed	a	0	1	1	oewn
+oewn-pug_nose-n	pug nose	n	0	2	2	oewn
+oewn-pugilism-n	pugilism	n	0	1	1	oewn
+oewn-pugilist-n	pugilist	n	0	1	1	oewn
+oewn-pugilistic-a	pugilistic	a	0	1	1	oewn
+oewn-pugnacious-a	pugnacious	a	0	1	1	oewn
+oewn-pugnaciously-r	pugnaciously	r	0	1	1	oewn
+oewn-pugnacity-n	pugnacity	n	0	1	1	oewn
+oewn-puissance-n	puissance	n	0	1	1	oewn
+oewn-puissant-a	puissant	a	0	1	1	oewn
+oewn-puka-n	puka	n	0	1	1	oewn
+oewn-puke-n	puke	n	0	1	1	oewn
+oewn-puke-v	puke	v	0	1	1	oewn
+oewn-puking-n	puking	n	0	1	1	oewn
+oewn-pukka-a	pukka	a	0	1	1	oewn
+oewn-puku-n	puku	n	0	1	1	oewn
+oewn-pul-n	pul	n	0	1	1	oewn
+oewn-pula-n	pula	n	0	1	1	oewn
+oewn-pulasan-n	pulasan	n	0	1	1	oewn
+oewn-pulasan_tree-n	pulasan tree	n	0	2	2	oewn
+oewn-pulassan-n	pulassan	n	0	1	1	oewn
+oewn-pulchritude-n	pulchritude	n	0	1	1	oewn
+oewn-pulchritudinous-a	pulchritudinous	a	0	1	1	oewn
+oewn-pule-v	pule	v	0	1	1	oewn
+oewn-pull-in-n	pull-in	n	0	1	1	oewn
+oewn-pull-n	pull	n	0	1	1	oewn
+oewn-pull-off-n	pull-off	n	0	1	1	oewn
+oewn-pull-through-n	pull-through	n	0	1	1	oewn
+oewn-pull-up-n	pull-up	n	0	1	1	oewn
+oewn-pull-v	pull	v	0	1	1	oewn
+oewn-pull_a_face-v	pull a face	v	0	3	1	oewn
+oewn-pull_a_fast_one_on-v	pull a fast one on	v	0	5	1	oewn
+oewn-pull_ahead-v	pull ahead	v	0	2	1	oewn
+oewn-pull_along-v	pull along	v	0	2	1	oewn
+oewn-pull_at-v	pull at	v	0	2	1	oewn
+oewn-pull_away-v	pull away	v	0	2	1	oewn
+oewn-pull_back-v	pull back	v	0	2	1	oewn
+oewn-pull_chain-n	pull chain	n	0	2	2	oewn
+oewn-pull_down-v	pull down	v	0	2	1	oewn
+oewn-pull_in-v	pull in	v	0	2	1	oewn
+oewn-pull_in_one-ap-s_horns-v	pull in one's horns	v	0	4	1	oewn
+oewn-pull_off-v	pull off	v	0	2	1	oewn
+oewn-pull_one-ap-s_weight-v	pull one's weight	v	0	3	1	oewn
+oewn-pull_out-v	pull out	v	0	2	1	oewn
+oewn-pull_out_all_the_stops-v	pull out all the stops	v	0	5	1	oewn
+oewn-pull_over-v	pull over	v	0	2	1	oewn
+oewn-pull_round-v	pull round	v	0	2	1	oewn
+oewn-pull_someone-ap-s_leg-v	pull someone's leg	v	0	3	1	oewn
+oewn-pull_strings-v	pull strings	v	0	2	1	oewn
+oewn-pull_the_leg_of-v	pull the leg of	v	0	4	1	oewn
+oewn-pull_the_plug-v	pull the plug	v	0	3	1	oewn
+oewn-pull_the_wool_over_someone-ap-s_eyes-v	pull the wool over someone's eyes	v	0	6	1	oewn
+oewn-pull_through-v	pull through	v	0	2	1	oewn
+oewn-pull_together-v	pull together	v	0	2	1	oewn
+oewn-pull_up-v	pull up	v	0	2	1	oewn
+oewn-pull_up_short-v	pull up short	v	0	3	1	oewn
+oewn-pull_up_stakes-v	pull up stakes	v	0	3	1	oewn
+oewn-pull_wires-v	pull wires	v	0	2	1	oewn
+oewn-pullback-n	pullback	n	0	1	1	oewn
+oewn-puller-n	puller	n	0	1	1	oewn
+oewn-pullet-n	pullet	n	0	1	1	oewn
+oewn-pulley-block-n	pulley-block	n	0	1	1	oewn
+oewn-pulley-n	pulley	n	0	1	1	oewn
+oewn-pulley_block-n	pulley block	n	0	2	2	oewn
+oewn-pulling-n	pulling	n	0	1	1	oewn
+oewn-pulling_out-n	pulling out	n	0	2	2	oewn
+oewn-pullorum_disease-n	pullorum disease	n	0	2	2	oewn
+oewn-pullout-n	pullout	n	0	1	1	oewn
+oewn-pullover-n	pullover	n	0	1	1	oewn
+oewn-pullulate-v	pullulate	v	0	1	1	oewn
+oewn-pullulate_with-v	pullulate with	v	0	2	1	oewn
+oewn-pullulation-n	pullulation	n	0	1	1	oewn
+oewn-pulmonary-a	pulmonary	a	0	1	1	oewn
+oewn-pulmonary_anthrax-n	pulmonary anthrax	n	0	2	2	oewn
+oewn-pulmonary_artery-n	pulmonary artery	n	0	2	2	oewn
+oewn-pulmonary_circulation-n	pulmonary circulation	n	0	2	2	oewn
+oewn-pulmonary_congestion-n	pulmonary congestion	n	0	2	2	oewn
+oewn-pulmonary_embolism-n	pulmonary embolism	n	0	2	2	oewn
+oewn-pulmonary_emphysema-n	pulmonary emphysema	n	0	2	2	oewn
+oewn-pulmonary_plexus-n	pulmonary plexus	n	0	2	2	oewn
+oewn-pulmonary_reserve-n	pulmonary reserve	n	0	2	2	oewn
+oewn-pulmonary_stenosis-n	pulmonary stenosis	n	0	2	2	oewn
+oewn-pulmonary_trunk-n	pulmonary trunk	n	0	2	2	oewn
+oewn-pulmonary_tuberculosis-n	pulmonary tuberculosis	n	0	2	2	oewn
+oewn-pulmonary_valve-n	pulmonary valve	n	0	2	2	oewn
+oewn-pulmonary_vein-n	pulmonary vein	n	0	2	2	oewn
+oewn-pulmonic-a	pulmonic	a	0	1	1	oewn
+oewn-pulmonic_plague-n	pulmonic plague	n	0	2	2	oewn
+oewn-pulp-n	pulp	n	0	1	1	oewn
+oewn-pulp-v	pulp	v	0	1	1	oewn
+oewn-pulp_cavity-n	pulp cavity	n	0	2	2	oewn
+oewn-pulp_magazine-n	pulp magazine	n	0	2	2	oewn
+oewn-pulpiness-n	pulpiness	n	0	1	1	oewn
+oewn-pulpit-n	pulpit	n	0	1	1	oewn
+oewn-pulpwood-n	pulpwood	n	0	1	1	oewn
+oewn-pulpy-a	pulpy	a	0	1	1	oewn
+oewn-pulque-n	pulque	n	0	1	1	oewn
+oewn-pulsar-n	pulsar	n	0	1	1	oewn
+oewn-pulsate-v	pulsate	v	0	1	1	oewn
+oewn-pulsation-n	pulsation	n	0	1	1	oewn
+oewn-pulse-n	pulse	n	0	1	1	oewn
+oewn-pulse-time_modulation-n	pulse-time modulation	n	0	2	2	oewn
+oewn-pulse-v	pulse	v	0	1	1	oewn
+oewn-pulse_counter-n	pulse counter	n	0	2	2	oewn
+oewn-pulse_generator-n	pulse generator	n	0	2	2	oewn
+oewn-pulse_height_analyzer-n	pulse height analyzer	n	0	3	3	oewn
+oewn-pulse_modulation-n	pulse modulation	n	0	2	2	oewn
+oewn-pulse_oximeter-n	pulse oximeter	n	0	2	2	oewn
+oewn-pulse_rate-n	pulse rate	n	0	2	2	oewn
+oewn-pulse_timing_circuit-n	pulse timing circuit	n	0	3	3	oewn
+oewn-pulseless-a	pulseless	a	0	1	1	oewn
+oewn-pulseless_disease-n	pulseless disease	n	0	2	2	oewn
+oewn-pulsing-n	pulsing	n	0	1	1	oewn
+oewn-pulverisation-n	pulverisation	n	0	1	1	oewn
+oewn-pulverise-v	pulverise	v	0	1	1	oewn
+oewn-pulverised-a	pulverised	a	0	1	1	oewn
+oewn-pulverization-n	pulverization	n	0	1	1	oewn
+oewn-pulverize-v	pulverize	v	0	1	1	oewn
+oewn-pulverized-a	pulverized	a	0	1	1	oewn
+oewn-puma-n	puma	n	0	1	1	oewn
+oewn-pumice-n	pumice	n	0	1	1	oewn
+oewn-pumice-v	pumice	v	0	1	1	oewn
+oewn-pumice_stone-n	pumice stone	n	0	2	2	oewn
+oewn-pummel-v	pummel	v	0	1	1	oewn
+oewn-pummelo-n	pummelo	n	0	1	1	oewn
+oewn-pump-and-dump_scheme-n	pump-and-dump scheme	n	0	2	2	oewn
+oewn-pump-n	pump	n	0	1	1	oewn
+oewn-pump-type_pliers-n	pump-type pliers	n	0	2	2	oewn
+oewn-pump-v	pump	v	0	1	1	oewn
+oewn-pump_action-n	pump action	n	0	2	2	oewn
+oewn-pump_house-n	pump house	n	0	2	2	oewn
+oewn-pump_priming-n	pump priming	n	0	2	2	oewn
+oewn-pump_room-n	pump room	n	0	2	2	oewn
+oewn-pump_well-n	pump well	n	0	2	2	oewn
+oewn-pumped-a	pumped	a	0	1	1	oewn
+oewn-pumped-up-a	pumped-up	a	0	1	1	oewn
+oewn-pumped_up-a	pumped up	a	0	2	2	oewn
+oewn-pumpernickel-n	pumpernickel	n	0	1	1	oewn
+oewn-pumping_station-n	pumping station	n	0	2	2	oewn
+oewn-pumpkin-n	pumpkin	n	0	1	1	oewn
+oewn-pumpkin-shaped-a	pumpkin-shaped	a	0	1	1	oewn
+oewn-pumpkin_ash-n	pumpkin ash	n	0	2	2	oewn
+oewn-pumpkin_pie-n	pumpkin pie	n	0	2	2	oewn
+oewn-pumpkin_seed-n	pumpkin seed	n	0	2	2	oewn
+oewn-pumpkin_vine-n	pumpkin vine	n	0	2	2	oewn
+oewn-pumpkinseed-n	pumpkinseed	n	0	1	1	oewn
+oewn-pun-n	pun	n	0	1	1	oewn
+oewn-pun-v	pun	v	0	1	1	oewn
+oewn-punch-drunk-a	punch-drunk	a	0	1	1	oewn
+oewn-punch-n	punch	n	0	1	1	oewn
+oewn-punch-up-n	punch-up	n	0	1	1	oewn
+oewn-punch-v	punch	v	0	1	1	oewn
+oewn-punch_bag-n	punch bag	n	0	2	2	oewn
+oewn-punch_bowl-n	punch bowl	n	0	2	2	oewn
+oewn-punch_card-n	punch card	n	0	2	2	oewn
+oewn-punch_in-v	punch in	v	0	2	1	oewn
+oewn-punch_line-n	punch line	n	0	2	2	oewn
+oewn-punch_out-v	punch out	v	0	2	1	oewn
+oewn-punch_pliers-n	punch pliers	n	0	2	2	oewn
+oewn-punch_press-n	punch press	n	0	2	2	oewn
+oewn-punchable-a	punchable	a	0	1	1	oewn
+oewn-punchayet-n	punchayet	n	0	1	1	oewn
+oewn-punchball-n	punchball	n	0	1	1	oewn
+oewn-punchboard-n	punchboard	n	0	1	1	oewn
+oewn-punched_card-n	punched card	n	0	2	2	oewn
+oewn-punched_paper_tape_reader-n	punched paper tape reader	n	0	4	4	oewn
+oewn-punched_tape_reader-n	punched tape reader	n	0	3	3	oewn
+oewn-puncher-n	puncher	n	0	1	1	oewn
+oewn-punching_bag-n	punching bag	n	0	2	2	oewn
+oewn-punching_ball-n	punching ball	n	0	2	2	oewn
+oewn-punchline-n	punchline	n	0	1	1	oewn
+oewn-punctilio-n	punctilio	n	0	1	1	oewn
+oewn-punctilious-a	punctilious	a	0	1	1	oewn
+oewn-punctiliously-r	punctiliously	r	0	1	1	oewn
+oewn-punctiliousness-n	punctiliousness	n	0	1	1	oewn
+oewn-punctual-a	punctual	a	0	1	1	oewn
+oewn-punctuality-n	punctuality	n	0	1	1	oewn
+oewn-punctually-r	punctually	r	0	1	1	oewn
+oewn-punctuate-v	punctuate	v	0	1	1	oewn
+oewn-punctuated_equilibrium-n	punctuated equilibrium	n	0	2	2	oewn
+oewn-punctuation-n	punctuation	n	0	1	1	oewn
+oewn-punctuation_mark-n	punctuation mark	n	0	2	2	oewn
+oewn-punctum-n	punctum	n	0	1	1	oewn
+oewn-puncturable-a	puncturable	a	0	1	1	oewn
+oewn-puncture-n	puncture	n	0	1	1	oewn
+oewn-puncture-v	puncture	v	0	1	1	oewn
+oewn-punctured-a	punctured	a	0	1	1	oewn
+oewn-punctureless-a	punctureless	a	0	1	1	oewn
+oewn-pundit-n	pundit	n	0	1	1	oewn
+oewn-pung-n	pung	n	0	1	1	oewn
+oewn-pungapung-n	pungapung	n	0	1	1	oewn
+oewn-pungency-n	pungency	n	0	1	1	oewn
+oewn-pungent-a	pungent	a	0	1	1	oewn
+oewn-pungently-r	pungently	r	0	1	1	oewn
+oewn-punic-a	punic	a	0	1	1	oewn
+oewn-punily-r	punily	r	0	1	1	oewn
+oewn-puniness-n	puniness	n	0	1	1	oewn
+oewn-punish-v	punish	v	0	1	1	oewn
+oewn-punishable-a	punishable	a	0	1	1	oewn
+oewn-punished-a	punished	a	0	1	1	oewn
+oewn-punishing-a	punishing	a	0	1	1	oewn
+oewn-punishingly-r	punishingly	r	0	1	1	oewn
+oewn-punishment-n	punishment	n	0	1	1	oewn
+oewn-punitive-a	punitive	a	0	1	1	oewn
+oewn-punitive_damages-n	punitive damages	n	0	2	2	oewn
+oewn-punitively-r	punitively	r	0	1	1	oewn
+oewn-punitorily-r	punitorily	r	0	1	1	oewn
+oewn-punitory-a	punitory	a	0	1	1	oewn
+oewn-punk-a	punk	a	0	1	1	oewn
+oewn-punk-n	punk	n	0	1	1	oewn
+oewn-punk_rock-n	punk rock	n	0	2	2	oewn
+oewn-punk_rocker-n	punk rocker	n	0	2	2	oewn
+oewn-punkah-n	punkah	n	0	1	1	oewn
+oewn-punkey-n	punkey	n	0	1	1	oewn
+oewn-punkie-n	punkie	n	0	1	1	oewn
+oewn-punks-n	punks	n	0	1	1	oewn
+oewn-punky-n	punky	n	0	1	1	oewn
+oewn-punnet-n	punnet	n	0	1	1	oewn
+oewn-punning-n	punning	n	0	1	1	oewn
+oewn-punny-a	punny	a	0	1	1	oewn
+oewn-punster-n	punster	n	0	1	1	oewn
+oewn-punt-n-1	punt	n	1	1	1	oewn
+oewn-punt-n-2	punt	n	2	1	1	oewn
+oewn-punt-v	punt	v	0	1	1	oewn
+oewn-punter-n	punter	n	0	1	1	oewn
+oewn-punting-n	punting	n	0	1	1	oewn
+oewn-puny-a	puny	a	0	1	1	oewn
+oewn-pup-n	pup	n	0	1	1	oewn
+oewn-pup-v	pup	v	0	1	1	oewn
+oewn-pup_tent-n	pup tent	n	0	2	2	oewn
+oewn-pupa-n	pupa	n	0	1	1	oewn
+oewn-pupal-a	pupal	a	0	1	1	oewn
+oewn-pupate-v	pupate	v	0	1	1	oewn
+oewn-pupil-n	pupil	n	0	1	1	oewn
+oewn-pupillary-a	pupillary	a	0	1	1	oewn
+oewn-pupillary_reflex-n	pupillary reflex	n	0	2	2	oewn
+oewn-pupillary_sphincter-n	pupillary sphincter	n	0	2	2	oewn
+oewn-puppet-n	puppet	n	0	1	1	oewn
+oewn-puppet_government-n	puppet government	n	0	2	2	oewn
+oewn-puppet_leader-n	puppet leader	n	0	2	2	oewn
+oewn-puppet_play-n	puppet play	n	0	2	2	oewn
+oewn-puppet_regime-n	puppet regime	n	0	2	2	oewn
+oewn-puppet_ruler-n	puppet ruler	n	0	2	2	oewn
+oewn-puppet_show-n	puppet show	n	0	2	2	oewn
+oewn-puppet_state-n	puppet state	n	0	2	2	oewn
+oewn-puppeteer-n	puppeteer	n	0	1	1	oewn
+oewn-puppetry-n	puppetry	n	0	1	1	oewn
+oewn-puppy-n	puppy	n	0	1	1	oewn
+oewn-puppy_fat-n	puppy fat	n	0	2	2	oewn
+oewn-puppy_love-n	puppy love	n	0	2	2	oewn
+oewn-puppyish-a	puppyish	a	0	1	1	oewn
+oewn-puppylike-a	puppylike	a	0	1	1	oewn
+oewn-purau-n	purau	n	0	1	1	oewn
+oewn-purblind-a	purblind	a	0	1	1	oewn
+oewn-purchasable-a	purchasable	a	0	1	1	oewn
+oewn-purchase-n	purchase	n	0	1	1	oewn
+oewn-purchase-v	purchase	v	0	1	1	oewn
+oewn-purchase_agreement-n	purchase agreement	n	0	2	2	oewn
+oewn-purchase_contract-n	purchase contract	n	0	2	2	oewn
+oewn-purchase_order-n	purchase order	n	0	2	2	oewn
+oewn-purchase_price-n	purchase price	n	0	2	2	oewn
+oewn-purchaser-n	purchaser	n	0	1	1	oewn
+oewn-purchasing-n	purchasing	n	0	1	1	oewn
+oewn-purchasing_agent-n	purchasing agent	n	0	2	2	oewn
+oewn-purchasing_department-n	purchasing department	n	0	2	2	oewn
+oewn-purdah-n	purdah	n	0	1	1	oewn
+oewn-pure-a	pure	a	0	1	1	oewn
+oewn-pure_absence-n	pure absence	n	0	2	2	oewn
+oewn-pure_binary_numeration_system-n	pure binary numeration system	n	0	4	4	oewn
+oewn-pure_gold-n	pure gold	n	0	2	2	oewn
+oewn-pure_iambic_trimeter-n	pure iambic trimeter	n	0	3	3	oewn
+oewn-pure_imaginary_number-n	pure imaginary number	n	0	3	3	oewn
+oewn-pure_mathematics-n	pure mathematics	n	0	2	2	oewn
+oewn-pure_tone-n	pure tone	n	0	2	2	oewn
+oewn-pureblood-a	pureblood	a	0	1	1	oewn
+oewn-pureblood-n	pureblood	n	0	1	1	oewn
+oewn-pureblooded-a	pureblooded	a	0	1	1	oewn
+oewn-purebred-a	purebred	a	0	1	1	oewn
+oewn-purebred-n	purebred	n	0	1	1	oewn
+oewn-puree-n	puree	n	0	1	1	oewn
+oewn-puree-v	puree	v	0	1	1	oewn
+oewn-purely-r	purely	r	0	1	1	oewn
+oewn-pureness-n	pureness	n	0	1	1	oewn
+oewn-purgation-n	purgation	n	0	1	1	oewn
+oewn-purgative-a	purgative	a	0	1	1	oewn
+oewn-purgative-n	purgative	n	0	1	1	oewn
+oewn-purgatorial-a	purgatorial	a	0	1	1	oewn
+oewn-purgatory-n	purgatory	n	0	1	1	oewn
+oewn-purge-n	purge	n	0	1	1	oewn
+oewn-purge-v	purge	v	0	1	1	oewn
+oewn-purging-a	purging	a	0	1	1	oewn
+oewn-purging-n	purging	n	0	1	1	oewn
+oewn-purging_cassia-n	purging cassia	n	0	2	2	oewn
+oewn-purification-n	purification	n	0	1	1	oewn
+oewn-purificator-n	purificator	n	0	1	1	oewn
+oewn-purificatorium-n	purificatorium	n	0	1	1	oewn
+oewn-purifier-n	purifier	n	0	1	1	oewn
+oewn-purify-v	purify	v	0	1	1	oewn
+oewn-purifying-a	purifying	a	0	1	1	oewn
+oewn-purine-n	purine	n	0	1	1	oewn
+oewn-purism-n	purism	n	0	1	1	oewn
+oewn-purist-n	purist	n	0	1	1	oewn
+oewn-puritan-n	puritan	n	0	1	1	oewn
+oewn-puritanic-a	puritanic	a	0	1	1	oewn
+oewn-puritanical-a	puritanical	a	0	1	1	oewn
+oewn-puritanically-r	puritanically	r	0	1	1	oewn
+oewn-puritanism-n	puritanism	n	0	1	1	oewn
+oewn-purity-n	purity	n	0	1	1	oewn
+oewn-purl-n	purl	n	0	1	1	oewn
+oewn-purl-v	purl	v	0	1	1	oewn
+oewn-purl_stitch-n	purl stitch	n	0	2	2	oewn
+oewn-purl_stitch-v	purl stitch	v	0	2	1	oewn
+oewn-purlieu-n	purlieu	n	0	1	1	oewn
+oewn-purloin-v	purloin	v	0	1	1	oewn
+oewn-purloo-n	purloo	n	0	1	1	oewn
+oewn-purple-a	purple	a	0	1	1	oewn
+oewn-purple-black-a	purple-black	a	0	1	1	oewn
+oewn-purple-blue-a	purple-blue	a	0	1	1	oewn
+oewn-purple-brown-a	purple-brown	a	0	1	1	oewn
+oewn-purple-eyed-a	purple-eyed	a	0	1	1	oewn
+oewn-purple-flowered-a	purple-flowered	a	0	1	1	oewn
+oewn-purple-flowering_raspberry-n	purple-flowering raspberry	n	0	2	2	oewn
+oewn-purple-fringed_orchid-n	purple-fringed orchid	n	0	2	2	oewn
+oewn-purple-fringed_orchis-n	purple-fringed orchis	n	0	2	2	oewn
+oewn-purple-green-a	purple-green	a	0	1	1	oewn
+oewn-purple-hooded_orchis-n	purple-hooded orchis	n	0	2	2	oewn
+oewn-purple-lilac-a	purple-lilac	a	0	1	1	oewn
+oewn-purple-n	purple	n	0	1	1	oewn
+oewn-purple-red-a	purple-red	a	0	1	1	oewn
+oewn-purple-spotted-a	purple-spotted	a	0	1	1	oewn
+oewn-purple-staining_Cortinarius-n	purple-staining Cortinarius	n	0	2	2	oewn
+oewn-purple-stemmed_aster-n	purple-stemmed aster	n	0	2	2	oewn
+oewn-purple-tinged-a	purple-tinged	a	0	1	1	oewn
+oewn-purple-tinted-a	purple-tinted	a	0	1	1	oewn
+oewn-purple-v	purple	v	0	1	1	oewn
+oewn-purple-veined-a	purple-veined	a	0	1	1	oewn
+oewn-purple-white-a	purple-white	a	0	1	1	oewn
+oewn-purple_amaranth-n	purple amaranth	n	0	2	2	oewn
+oewn-purple_anise-n	purple anise	n	0	2	2	oewn
+oewn-purple_apricot-n	purple apricot	n	0	2	2	oewn
+oewn-purple_avens-n	purple avens	n	0	2	2	oewn
+oewn-purple_bacteria-n	purple bacteria	n	0	2	2	oewn
+oewn-purple_beech-n	purple beech	n	0	2	2	oewn
+oewn-purple_boneset-n	purple boneset	n	0	2	2	oewn
+oewn-purple_chinese_houses-n	purple chinese houses	n	0	3	3	oewn
+oewn-purple_clematis-n	purple clematis	n	0	2	2	oewn
+oewn-purple_clover-n	purple clover	n	0	2	2	oewn
+oewn-purple_cress-n	purple cress	n	0	2	2	oewn
+oewn-purple_emperor-n	purple emperor	n	0	2	2	oewn
+oewn-purple_finch-n	purple finch	n	0	2	2	oewn
+oewn-purple_fringeless_orchid-n	purple fringeless orchid	n	0	3	3	oewn
+oewn-purple_fringeless_orchis-n	purple fringeless orchis	n	0	3	3	oewn
+oewn-purple_gallinule-n	purple gallinule	n	0	2	2	oewn
+oewn-purple_grackle-n	purple grackle	n	0	2	2	oewn
+oewn-purple_granadillo-n	purple granadillo	n	0	2	2	oewn
+oewn-purple_ground_cherry-n	purple ground cherry	n	0	3	3	oewn
+oewn-purple_heart-n	purple heart	n	0	2	2	oewn
+oewn-purple_heather-n	purple heather	n	0	2	2	oewn
+oewn-purple_loco-n	purple loco	n	0	2	2	oewn
+oewn-purple_locoweed-n	purple locoweed	n	0	2	2	oewn
+oewn-purple_loosestrife-n	purple loosestrife	n	0	2	2	oewn
+oewn-purple_martin-n	purple martin	n	0	2	2	oewn
+oewn-purple_milk_vetch-n	purple milk vetch	n	0	3	3	oewn
+oewn-purple_mullein-n	purple mullein	n	0	2	2	oewn
+oewn-purple_nightshade-n	purple nightshade	n	0	2	2	oewn
+oewn-purple_onion-n	purple onion	n	0	2	2	oewn
+oewn-purple_orchis-n	purple orchis	n	0	2	2	oewn
+oewn-purple_osier-n	purple osier	n	0	2	2	oewn
+oewn-purple_passage-n	purple passage	n	0	2	2	oewn
+oewn-purple_pea-n	purple pea	n	0	2	2	oewn
+oewn-purple_poppy_mallow-n	purple poppy mallow	n	0	3	3	oewn
+oewn-purple_rock_brake-n	purple rock brake	n	0	3	3	oewn
+oewn-purple_sage-n	purple sage	n	0	2	2	oewn
+oewn-purple_sanicle-n	purple sanicle	n	0	2	2	oewn
+oewn-purple_saxifrage-n	purple saxifrage	n	0	2	2	oewn
+oewn-purple_silkweed-n	purple silkweed	n	0	2	2	oewn
+oewn-purple_strawberry_guava-n	purple strawberry guava	n	0	3	3	oewn
+oewn-purple_trillium-n	purple trillium	n	0	2	2	oewn
+oewn-purple_velvet_plant-n	purple velvet plant	n	0	3	3	oewn
+oewn-purple_virgin-ap-s_bower-n	purple virgin's bower	n	0	3	3	oewn
+oewn-purple_willow-n	purple willow	n	0	2	2	oewn
+oewn-purpleness-n	purpleness	n	0	1	1	oewn
+oewn-purplish-a	purplish	a	0	1	1	oewn
+oewn-purplish-black-a	purplish-black	a	0	1	1	oewn
+oewn-purplish-blue-a	purplish-blue	a	0	1	1	oewn
+oewn-purplish-brown-a	purplish-brown	a	0	1	1	oewn
+oewn-purplish-green-a	purplish-green	a	0	1	1	oewn
+oewn-purplish-lilac-a	purplish-lilac	a	0	1	1	oewn
+oewn-purplish-red-a	purplish-red	a	0	1	1	oewn
+oewn-purplish-red-n	purplish-red	n	0	1	1	oewn
+oewn-purplish-white-a	purplish-white	a	0	1	1	oewn
+oewn-purplish_blue-n	purplish blue	n	0	2	2	oewn
+oewn-purplish_pink-n	purplish pink	n	0	2	2	oewn
+oewn-purplish_red-n	purplish red	n	0	2	2	oewn
+oewn-purport-n	purport	n	0	1	1	oewn
+oewn-purport-v	purport	v	0	1	1	oewn
+oewn-purportedly-r	purportedly	r	0	1	1	oewn
+oewn-purpose-built-a	purpose-built	a	0	1	1	oewn
+oewn-purpose-made-a	purpose-made	a	0	1	1	oewn
+oewn-purpose-n	purpose	n	0	1	1	oewn
+oewn-purpose-v	purpose	v	0	1	1	oewn
+oewn-purposeful-a	purposeful	a	0	1	1	oewn
+oewn-purposefully-r	purposefully	r	0	1	1	oewn
+oewn-purposefulness-n	purposefulness	n	0	1	1	oewn
+oewn-purposeless-a	purposeless	a	0	1	1	oewn
+oewn-purposelessly-r	purposelessly	r	0	1	1	oewn
+oewn-purposelessness-n	purposelessness	n	0	1	1	oewn
+oewn-purposely-r	purposely	r	0	1	1	oewn
+oewn-purposive-a	purposive	a	0	1	1	oewn
+oewn-purpura-n	purpura	n	0	1	1	oewn
+oewn-purpura_hemorrhagica-n	purpura hemorrhagica	n	0	2	2	oewn
+oewn-purpurate-v	purpurate	v	0	1	1	oewn
+oewn-purr-n	purr	n	0	1	1	oewn
+oewn-purr-v	purr	v	0	1	1	oewn
+oewn-purse-n	purse	n	0	1	1	oewn
+oewn-purse-proud-a	purse-proud	a	0	1	1	oewn
+oewn-purse-string_operation-n	purse-string operation	n	0	2	2	oewn
+oewn-purse-v	purse	v	0	1	1	oewn
+oewn-purse_seine-n	purse seine	n	0	2	2	oewn
+oewn-purse_string-n	purse string	n	0	2	2	oewn
+oewn-purse_strings-n	purse strings	n	0	2	2	oewn
+oewn-purser-n	purser	n	0	1	1	oewn
+oewn-purslane-n	purslane	n	0	1	1	oewn
+oewn-purslane_speedwell-n	purslane speedwell	n	0	2	2	oewn
+oewn-pursual-n	pursual	n	0	1	1	oewn
+oewn-pursuance-n	pursuance	n	0	1	1	oewn
+oewn-pursuant-a	pursuant	a	0	1	1	oewn
+oewn-pursue-v	pursue	v	0	1	1	oewn
+oewn-pursued-a	pursued	a	0	1	1	oewn
+oewn-pursued-n	pursued	n	0	1	1	oewn
+oewn-pursuer-n	pursuer	n	0	1	1	oewn
+oewn-pursuing-a	pursuing	a	0	1	1	oewn
+oewn-pursuit-n	pursuit	n	0	1	1	oewn
+oewn-pursy-a	pursy	a	0	1	1	oewn
+oewn-purulence-n	purulence	n	0	1	1	oewn
+oewn-purulency-n	purulency	n	0	1	1	oewn
+oewn-purulent-a	purulent	a	0	1	1	oewn
+oewn-purulent_pleurisy-n	purulent pleurisy	n	0	2	2	oewn
+oewn-purvey-v	purvey	v	0	1	1	oewn
+oewn-purveyance-n	purveyance	n	0	1	1	oewn
+oewn-purveyor-n	purveyor	n	0	1	1	oewn
+oewn-purview-n	purview	n	0	1	1	oewn
+oewn-pus-forming_bacteria-n	pus-forming bacteria	n	0	2	2	oewn
+oewn-pus-n	pus	n	0	1	1	oewn
+oewn-push-bike-n	push-bike	n	0	1	1	oewn
+oewn-push-button_radio-n	push-button radio	n	0	2	2	oewn
+oewn-push-down_list-n	push-down list	n	0	2	2	oewn
+oewn-push-down_queue-n	push-down queue	n	0	2	2	oewn
+oewn-push-down_stack-n	push-down stack	n	0	2	2	oewn
+oewn-push-down_storage-n	push-down storage	n	0	2	2	oewn
+oewn-push-down_store-n	push-down store	n	0	2	2	oewn
+oewn-push-n	push	n	0	1	1	oewn
+oewn-push-v	push	v	0	1	1	oewn
+oewn-push_around-v	push around	v	0	2	1	oewn
+oewn-push_aside-v	push aside	v	0	2	1	oewn
+oewn-push_away-v	push away	v	0	2	1	oewn
+oewn-push_back-n	push back	n	0	2	2	oewn
+oewn-push_back-v	push back	v	0	2	1	oewn
+oewn-push_broom-n	push broom	n	0	2	2	oewn
+oewn-push_button-n	push button	n	0	2	2	oewn
+oewn-push_down-v	push down	v	0	2	1	oewn
+oewn-push_forward-v	push forward	v	0	2	1	oewn
+oewn-push_on-v	push on	v	0	2	1	oewn
+oewn-push_out-v	push out	v	0	2	1	oewn
+oewn-push_through-v	push through	v	0	2	1	oewn
+oewn-push_up-v	push up	v	0	2	1	oewn
+oewn-pushball-n	pushball	n	0	1	1	oewn
+oewn-pushcart-n	pushcart	n	0	1	1	oewn
+oewn-pushchair-n	pushchair	n	0	1	1	oewn
+oewn-pusher-n	pusher	n	0	1	1	oewn
+oewn-pushful-a	pushful	a	0	1	1	oewn
+oewn-pushiness-n	pushiness	n	0	1	1	oewn
+oewn-pushing-n	pushing	n	0	1	1	oewn
+oewn-pushover-n	pushover	n	0	1	1	oewn
+oewn-pushpin-n	pushpin	n	0	1	1	oewn
+oewn-pushup-n	pushup	n	0	1	1	oewn
+oewn-pushy-a	pushy	a	0	1	1	oewn
+oewn-pusillanimity-n	pusillanimity	n	0	1	1	oewn
+oewn-pusillanimous-a	pusillanimous	a	0	1	1	oewn
+oewn-pusillanimously-r	pusillanimously	r	0	1	1	oewn
+oewn-pusillanimousness-n	pusillanimousness	n	0	1	1	oewn
+oewn-puss-n	puss	n	0	1	1	oewn
+oewn-pussley-n	pussley	n	0	1	1	oewn
+oewn-pussly-n	pussly	n	0	1	1	oewn
+oewn-pussy-a	pussy	a	0	1	1	oewn
+oewn-pussy-ap-s-paw-n	pussy's-paw	n	0	1	1	oewn
+oewn-pussy-n	pussy	n	0	1	1	oewn
+oewn-pussy-paw-n	pussy-paw	n	0	1	1	oewn
+oewn-pussy-paws-n	pussy-paws	n	0	1	1	oewn
+oewn-pussy_willow-n	pussy willow	n	0	2	2	oewn
+oewn-pussycat-n	pussycat	n	0	1	1	oewn
+oewn-pussyfoot-v	pussyfoot	v	0	1	1	oewn
+oewn-pussyfuck-v	pussyfuck	v	0	1	1	oewn
+oewn-pussytoes-n	pussytoes	n	0	1	1	oewn
+oewn-pustulate-a	pustulate	a	0	1	1	oewn
+oewn-pustule-n	pustule	n	0	1	1	oewn
+oewn-put-down-n	put-down	n	0	1	1	oewn
+oewn-put-n	put	n	0	1	1	oewn
+oewn-put-on-n	put-on	n	0	1	1	oewn
+oewn-put-put-n	put-put	n	0	1	1	oewn
+oewn-put-up-a	put-up	a	0	1	1	oewn
+oewn-put-upon-a	put-upon	a	0	1	1	oewn
+oewn-put-v	put	v	0	1	1	oewn
+oewn-put_across-v	put across	v	0	2	1	oewn
+oewn-put_aside-v	put aside	v	0	2	1	oewn
+oewn-put_away-v	put away	v	0	2	1	oewn
+oewn-put_back-v	put back	v	0	2	1	oewn
+oewn-put_behind_bars-v	put behind bars	v	0	3	1	oewn
+oewn-put_differently-r	put differently	r	0	2	2	oewn
+oewn-put_down-v	put down	v	0	2	1	oewn
+oewn-put_forward-v	put forward	v	0	2	1	oewn
+oewn-put_in-v	put in	v	0	2	1	oewn
+oewn-put_off-v	put off	v	0	2	1	oewn
+oewn-put_on-a	put on	a	0	2	2	oewn
+oewn-put_on-v	put on	v	0	2	1	oewn
+oewn-put_on_airs-v	put on airs	v	0	3	1	oewn
+oewn-put_on_the_line-v	put on the line	v	0	4	1	oewn
+oewn-put_one_across-v	put one across	v	0	3	1	oewn
+oewn-put_one_over-v	put one over	v	0	3	1	oewn
+oewn-put_option-n	put option	n	0	2	2	oewn
+oewn-put_out-v	put out	v	0	2	1	oewn
+oewn-put_out_feelers-v	put out feelers	v	0	3	1	oewn
+oewn-put_over-v	put over	v	0	2	1	oewn
+oewn-put_right-v	put right	v	0	2	1	oewn
+oewn-put_through-v	put through	v	0	2	1	oewn
+oewn-put_to_death-v	put to death	v	0	3	1	oewn
+oewn-put_to_sleep-v	put to sleep	v	0	3	1	oewn
+oewn-put_to_work-v	put to work	v	0	3	1	oewn
+oewn-put_together-v	put together	v	0	2	1	oewn
+oewn-put_under-v	put under	v	0	2	1	oewn
+oewn-put_up-v	put up	v	0	2	1	oewn
+oewn-putamen-n	putamen	n	0	1	1	oewn
+oewn-putative-a	putative	a	0	1	1	oewn
+oewn-putdownable-a	putdownable	a	0	1	1	oewn
+oewn-putoff-n	putoff	n	0	1	1	oewn
+oewn-putout-n	putout	n	0	1	1	oewn
+oewn-putrefacient-a	putrefacient	a	0	1	1	oewn
+oewn-putrefaction-n	putrefaction	n	0	1	1	oewn
+oewn-putrefactive-a	putrefactive	a	0	1	1	oewn
+oewn-putrefiable-a	putrefiable	a	0	1	1	oewn
+oewn-putrefy-v	putrefy	v	0	1	1	oewn
+oewn-putrescence-n	putrescence	n	0	1	1	oewn
+oewn-putrescent-a	putrescent	a	0	1	1	oewn
+oewn-putrescible-a	putrescible	a	0	1	1	oewn
+oewn-putrescine-n	putrescine	n	0	1	1	oewn
+oewn-putrid-a	putrid	a	0	1	1	oewn
+oewn-putrid-smelling-a	putrid-smelling	a	0	1	1	oewn
+oewn-putridity-n	putridity	n	0	1	1	oewn
+oewn-putridness-n	putridness	n	0	1	1	oewn
+oewn-putsch-n	putsch	n	0	1	1	oewn
+oewn-putt-n	putt	n	0	1	1	oewn
+oewn-putt-v	putt	v	0	1	1	oewn
+oewn-puttee-n	puttee	n	0	1	1	oewn
+oewn-putter-n	putter	n	0	1	1	oewn
+oewn-putter-v	putter	v	0	1	1	oewn
+oewn-putter_around-v	putter around	v	0	2	1	oewn
+oewn-putterer-n	putterer	n	0	1	1	oewn
+oewn-putting-n	putting	n	0	1	1	oewn
+oewn-putting_green-n	putting green	n	0	2	2	oewn
+oewn-putting_iron-n	putting iron	n	0	2	2	oewn
+oewn-putting_surface-n	putting surface	n	0	2	2	oewn
+oewn-putting_to_death-n	putting to death	n	0	3	1	oewn
+oewn-putty-n	putty	n	0	1	1	oewn
+oewn-putty-v	putty	v	0	1	1	oewn
+oewn-putty_knife-n	putty knife	n	0	2	2	oewn
+oewn-puttyroot-n	puttyroot	n	0	1	1	oewn
+oewn-putz-n	putz	n	0	1	1	oewn
+oewn-puzzle-n	puzzle	n	0	1	1	oewn
+oewn-puzzle-v	puzzle	v	0	1	1	oewn
+oewn-puzzle_out-v	puzzle out	v	0	2	1	oewn
+oewn-puzzle_over-v	puzzle over	v	0	2	1	oewn
+oewn-puzzled-a	puzzled	a	0	1	1	oewn
+oewn-puzzlement-n	puzzlement	n	0	1	1	oewn
+oewn-puzzler-n	puzzler	n	0	1	1	oewn
+oewn-puzzling-a	puzzling	a	0	1	1	oewn

@@ -1,0 +1,7 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-aorist__1.10.00..	derivation		oewn-aoristic__3.01.00..
+oewn-aoristic__3.01.00..	pertainym		oewn-aorist__1.10.00..
+oewn-aorta__1.08.00..	derivation		oewn-aortal__3.01.00..
+oewn-aorta__1.08.00..	derivation		oewn-aortic__3.01.00..
+oewn-aortal__3.01.00..	pertainym		oewn-aorta__1.08.00..
+oewn-aortic__3.01.00..	pertainym		oewn-aorta__1.08.00..

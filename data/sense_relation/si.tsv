@@ -1,0 +1,418 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-siamese__1.10.00..	derivation		oewn-siamese__3.01.01..
+oewn-siamese__1.18.00..	derivation		oewn-siamese__3.01.02..
+oewn-siamese__3.01.01..	pertainym		oewn-thai__1.10.00..
+oewn-siamese__3.01.02..	pertainym		oewn-siamese__1.18.00..
+oewn-siberian__1.18.00..	derivation		oewn-siberian__3.01.00..
+oewn-sibilant__1.10.00..	derivation		oewn-sibilant__5.00.00.soft.03
+oewn-sibilant__1.10.00..	derivation		oewn-sibilate__2.32.01..
+oewn-sibilant__1.10.00..	derivation		oewn-sibilate__2.32.02..
+oewn-sibilant__1.10.00..	derivation		oewn-sibilate__2.32.03..
+oewn-sibilant__5.00.00.soft.03	derivation		oewn-sibilate__2.32.00..
+oewn-sibilant__5.00.00.soft.03	derivation		oewn-sibilate__2.32.02..
+oewn-sibilant__5.00.00.soft.03	derivation		oewn-sibilate__2.32.03..
+oewn-sibilate__2.32.00..	derivation		oewn-sibilation__1.11.00..
+oewn-sibilate__2.32.00..	other	event	oewn-sibilation__1.11.00..
+oewn-sibilate__2.32.01..	derivation		oewn-sibilation__1.10.00..
+oewn-sibilate__2.32.01..	other	event	oewn-sibilation__1.10.00..
+oewn-sibilate__2.32.02..	derivation		oewn-sibilation__1.10.00..
+oewn-sibilate__2.32.02..	other	event	oewn-sibilation__1.10.00..
+oewn-sibilate__2.32.03..	derivation		oewn-sibilation__1.10.00..
+oewn-sibilate__2.32.03..	other	event	oewn-sibilation__1.10.00..
+oewn-sibyl__1.18.00..	derivation		oewn-sibyllic__5.00.00.prophetic.00
+oewn-sibyl__1.18.02..	derivation		oewn-sibyllic__5.00.00.prophetic.00
+oewn-sicilian__1.18.00..	derivation		oewn-sicilian__3.01.00..
+oewn-sick__1.14.00..	derivation		oewn-sick__2.29.00..
+oewn-sick__1.14.00..	derivation		oewn-sick__3.00.01..
+oewn-sick__1.14.00..	derivation		oewn-sick__5.00.00.insane.00
+oewn-sick__3.00.01..	derivation		oewn-sickness__1.26.00..
+oewn-sick__5.00.02.ill.01	derivation		oewn-sickness__1.26.01..
+oewn-sickening__5.00.00.unwholesome.00	derivation		oewn-sickeningness__1.07.00..
+oewn-sickeningly__4.02.00..	pertainym		oewn-sickening__5.00.00.unwholesome.00
+oewn-side--to--side__3.01.00..	pertainym		oewn-side__1.08.00..
+oewn-side__3.00.00..	antonym		oewn-top__3.00.00..
+oewn-sidearm__3.01.00..	pertainym		oewn-pitch__1.04.03..
+oewn-sidearm__4.02.00..	pertainym		oewn-sidearm__3.01.00..
+oewn-sidereal__3.01.00..	pertainym		oewn-constellation__1.17.00..
+oewn-sidesplittingly__4.02.00..	pertainym		oewn-sidesplitting__5.00.00.humorous.00
+oewn-sideswipe__2.35.00..	also		oewn-swipe__2.35.00..
+oewn-sidewalk__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-sieve__1.06.00..	derivation		oewn-sieve__2.35.00..
+oewn-sieve__1.06.00..	derivation		oewn-sift__2.35.00..
+oewn-sieve__2.35.00..	also		oewn-sieve_out__2.31.00..
+oewn-sieve__2.35.00..	other	instrument	oewn-sieve__1.06.00..
+oewn-sift__2.35.00..	derivation		oewn-sifter__1.06.00..
+oewn-sift__2.35.00..	derivation		oewn-sifting__1.04.00..
+oewn-sift__2.35.00..	other	instrument	oewn-sifter__1.06.00..
+oewn-sigh__1.10.00..	derivation		oewn-sigh__2.29.00..
+oewn-sigh__1.10.00..	derivation		oewn-sigh__2.32.01..
+oewn-sigh__1.11.00..	derivation		oewn-sigh__2.29.00..
+oewn-sigh__1.11.00..	derivation		oewn-sigh__2.32.01..
+oewn-sigh__2.29.00..	other	event	oewn-sigh__1.10.00..
+oewn-sigh__2.29.00..	other	event	oewn-sigh__1.11.00..
+oewn-sigh__2.32.01..	other	event	oewn-sigh__1.10.00..
+oewn-sigh__2.32.01..	other	event	oewn-sigh__1.11.00..
+oewn-sight__1.04.00..	derivation		oewn-sight__2.39.00..
+oewn-sight__1.09.00..	derivation		oewn-sight__2.39.00..
+oewn-sight__1.09.01..	derivation		oewn-sight__2.39.00..
+oewn-sight__1.09.02..	derivation		oewn-sight__2.39.00..
+oewn-sight__1.10.00..	derivation		oewn-sight__2.39.00..
+oewn-sight__2.39.00..	derivation		oewn-sighting__1.04.00..
+oewn-sight__2.39.00..	other	by_means_of	oewn-sight__1.09.00..
+oewn-sight__2.39.00..	other	event	oewn-sight__1.04.00..
+oewn-sight__2.39.00..	other	event	oewn-sight__1.09.01..
+oewn-sight__2.39.00..	other	property	oewn-sight__1.09.02..
+oewn-sight__2.39.00..	other	undergoer	oewn-sight__1.10.00..
+oewn-sighted__3.00.00..	derivation		oewn-sightedness__1.09.00..
+oewn-sightless__5.00.00.blind.00	derivation		oewn-sightlessness__1.26.00..
+oewn-sightread__2.36.00..	derivation		oewn-sightreader__1.18.00..
+oewn-sightread__2.36.00..	other	agent	oewn-sightreader__1.18.00..
+oewn-sightsee__2.38.00..	derivation		oewn-sightseeing__1.04.00..
+oewn-sightsee__2.38.00..	derivation		oewn-sightseer__1.18.00..
+oewn-sightsee__2.38.00..	other	agent	oewn-sightseer__1.18.00..
+oewn-sigmoid__3.01.00..	pertainym		oewn-sigmoid_flexure__1.08.00..
+oewn-sigmoid__3.01.01..	pertainym		oewn-curve__1.25.00..
+oewn-sigmoidal__3.01.00..	pertainym		oewn-sigmoid_flexure__1.08.00..
+oewn-sign__1.06.01..	derivation		oewn-sign__2.35.02..
+oewn-sign__1.10.00..	derivation		oewn-sign__2.35.02..
+oewn-sign__1.10.01..	derivation		oewn-sign__2.32.01..
+oewn-sign__1.10.01..	derivation		oewn-sign__2.32.04..
+oewn-sign__1.10.01..	derivation		oewn-signify__2.32.00..
+oewn-sign__1.10.03..	derivation		oewn-sign__2.32.01..
+oewn-sign__1.10.03..	derivation		oewn-sign__2.32.03..
+oewn-sign__1.10.03..	derivation		oewn-signify__2.32.00..
+oewn-sign__1.10.04..	derivation		oewn-signify__2.32.00..
+oewn-sign__1.10.04..	derivation		oewn-signify__2.32.02..
+oewn-sign__1.10.05..	derivation		oewn-signify__2.32.00..
+oewn-sign__2.32.00..	derivation		oewn-signer__1.18.00..
+oewn-sign__2.32.00..	other	agent	oewn-signer__1.18.00..
+oewn-sign__2.32.01..	derivation		oewn-signer__1.18.01..
+oewn-sign__2.32.01..	derivation		oewn-signing__1.10.00..
+oewn-sign__2.32.01..	other	agent	oewn-signer__1.18.01..
+oewn-sign__2.32.01..	other	event	oewn-sign__1.10.01..
+oewn-sign__2.32.01..	other	event	oewn-sign__1.10.03..
+oewn-sign__2.32.02..	also		oewn-sign_away__2.40.00..
+oewn-sign__2.32.02..	also		oewn-sign_in__2.32.00..
+oewn-sign__2.32.02..	also		oewn-sign_over__2.40.00..
+oewn-sign__2.32.02..	derivation		oewn-signature__1.10.00..
+oewn-sign__2.32.02..	derivation		oewn-signer__1.18.00..
+oewn-sign__2.32.02..	other	agent	oewn-signer__1.18.00..
+oewn-sign__2.32.04..	derivation		oewn-signer__1.18.01..
+oewn-sign__2.32.04..	other	agent	oewn-signer__1.18.01..
+oewn-sign__2.32.04..	other	event	oewn-sign__1.10.01..
+oewn-sign__2.35.02..	other	uses	oewn-sign__1.06.01..
+oewn-sign__2.35.02..	other	uses	oewn-sign__1.10.00..
+oewn-sign__2.41.00..	derivation		oewn-signer__1.18.00..
+oewn-sign__2.41.00..	other	agent	oewn-signer__1.18.00..
+oewn-sign__2.41.01..	derivation		oewn-signer__1.18.00..
+oewn-sign__2.41.01..	other	agent	oewn-signer__1.18.00..
+oewn-signal__1.10.00..	derivation		oewn-signal__2.32.00..
+oewn-signal__1.10.00..	derivation		oewn-signal__2.32.01..
+oewn-signal__1.10.00..	derivation		oewn-signalize__2.32.00..
+oewn-signal__1.10.00..	derivation		oewn-signalize__2.32.01..
+oewn-signal__1.10.00..	derivation		oewn-signalize__2.32.02..
+oewn-signal__1.10.00..	derivation		oewn-signalize__2.40.00..
+oewn-signal__2.32.00..	derivation		oewn-signaler__1.18.00..
+oewn-signal__2.32.00..	derivation		oewn-signaling__1.10.00..
+oewn-signal__2.32.00..	derivation		oewn-signaller__1.18.00..
+oewn-signal__2.32.00..	other	agent	oewn-signaler__1.18.00..
+oewn-signal__2.32.00..	other	agent	oewn-signaller__1.18.00..
+oewn-signal__2.32.00..	other	by_means_of	oewn-signal__1.10.00..
+oewn-signal__2.32.00..	other	event	oewn-signal__1.10.00..
+oewn-signal__2.32.01..	other	by_means_of	oewn-signal__1.10.00..
+oewn-signal_tower__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-signaling__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalisation__1.10.00..	derivation		oewn-signalise__2.32.00..
+oewn-signalisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signalise__2.32.00..	other	event	oewn-signalisation__1.10.00..
+oewn-signalise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signalise__2.32.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalise__2.32.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signalise__2.40.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalise__2.40.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signalization__1.10.00..	derivation		oewn-signalize__2.32.00..
+oewn-signalization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalize__2.32.00..	other	by_means_of	oewn-signal__1.10.00..
+oewn-signalize__2.32.00..	other	event	oewn-signalization__1.10.00..
+oewn-signalize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalize__2.32.01..	other	by_means_of	oewn-signal__1.10.00..
+oewn-signalize__2.32.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalize__2.32.02..	other	by_means_of	oewn-signal__1.10.00..
+oewn-signalize__2.40.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-signalize__2.40.00..	other	uses	oewn-signal__1.10.00..
+oewn-signalling__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-signalling__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-signally__4.02.00..	pertainym		oewn-signal__5.00.00.impressive.00
+oewn-signed__3.00.00..	antonym		oewn-unsigned__3.00.00..
+oewn-significance__1.07.00..	derivation		oewn-significant__3.00.00..
+oewn-significance__1.09.01..	derivation		oewn-significant__5.00.00.meaningful.00
+oewn-significance__1.10.00..	derivation		oewn-significant__5.00.00.meaningful.00
+oewn-significance__1.10.00..	derivation		oewn-signify__2.32.00..
+oewn-significant__5.00.00.meaningful.00	derivation		oewn-signify__2.32.00..
+oewn-significant__5.00.00.meaningful.00	derivation		oewn-signify__2.32.01..
+oewn-significantly__4.02.02..	pertainym		oewn-significant__3.00.00..
+oewn-significantly__4.02.03..	pertainym		oewn-significant__3.00.00..
+oewn-significantly__4.02.03..	pertainym		oewn-significant__5.00.00.considerable.00
+oewn-significantly__4.02.04..	pertainym		oewn-significant__3.00.01..
+oewn-signification__1.10.00..	derivation		oewn-signify__2.32.02..
+oewn-signifier__1.10.00..	derivation		oewn-signify__2.32.02..
+oewn-signify__2.32.00..	other	by_means_of	oewn-sign__1.10.01..
+oewn-signify__2.32.00..	other	by_means_of	oewn-sign__1.10.03..
+oewn-signify__2.32.00..	other	by_means_of	oewn-sign__1.10.04..
+oewn-signify__2.32.00..	other	by_means_of	oewn-sign__1.10.05..
+oewn-signify__2.32.00..	other	by_means_of	oewn-significance__1.10.00..
+oewn-signify__2.32.00..	other	undergoer	oewn-significance__1.10.00..
+oewn-signify__2.32.02..	other	agent	oewn-signifier__1.10.00..
+oewn-signify__2.32.02..	other	by_means_of	oewn-sign__1.10.04..
+oewn-signify__2.32.02..	other	by_means_of	oewn-signifier__1.10.00..
+oewn-signify__2.32.02..	other	undergoer	oewn-signification__1.10.00..
+oewn-signpost__1.10.00..	derivation		oewn-signpost__2.32.00..
+oewn-signpost__2.32.00..	other	uses	oewn-signpost__1.10.00..
+oewn-sikh__1.18.00..	derivation		oewn-sikh__3.01.00..
+oewn-sikh__3.01.00..	pertainym		oewn-sikhism__1.09.00..
+oewn-silence__1.07.00..	antonym		oewn-sound__1.07.00..
+oewn-silence__1.07.00..	derivation		oewn-silence__2.30.00..
+oewn-silence__1.07.00..	derivation		oewn-silent__5.00.00.quiet.01
+oewn-silence__1.07.01..	derivation		oewn-silence__2.30.00..
+oewn-silence__1.07.01..	derivation		oewn-silent__5.00.00.uncommunicative.00
+oewn-silence__1.07.02..	derivation		oewn-silence__2.30.02..
+oewn-silence__1.26.00..	derivation		oewn-silence__2.30.00..
+oewn-silence__1.26.00..	derivation		oewn-silent__5.00.00.quiet.01
+oewn-silence__2.30.00..	derivation		oewn-silencer__1.06.00..
+oewn-silence__2.30.00..	derivation		oewn-silencer__1.06.01..
+oewn-silence__2.30.00..	other	by_means_of	oewn-silencer__1.06.00..
+oewn-silence__2.30.00..	other	by_means_of	oewn-silencer__1.06.01..
+oewn-silence__2.30.00..	other	event	oewn-silence__1.07.00..
+oewn-silence__2.30.00..	other	event	oewn-silence__1.07.01..
+oewn-silence__2.30.00..	other	state	oewn-silence__1.26.00..
+oewn-silence__2.30.02..	other	property	oewn-silence__1.07.02..
+oewn-silenced__3.00.00..	antonym		oewn-unsilenced__3.00.00..
+oewn-silently__4.02.00..	pertainym		oewn-silent__5.00.00.uncommunicative.00
+oewn-silhouette__1.06.00..	derivation		oewn-silhouette__2.36.00..
+oewn-silhouette__1.15.00..	derivation		oewn-silhouette__2.39.00..
+oewn-silhouette__2.36.00..	other	by_means_of	oewn-silhouette__1.06.00..
+oewn-silhouette__2.39.00..	other	result	oewn-silhouette__1.15.00..
+oewn-silica__1.27.00..	derivation		oewn-siliceous__3.01.00..
+oewn-silica__1.27.00..	derivation		oewn-silicious__3.01.00..
+oewn-siliceous__3.01.00..	pertainym		oewn-silica__1.27.00..
+oewn-silicious__3.01.00..	pertainym		oewn-silica__1.27.00..
+oewn-silk__1.06.00..	derivation		oewn-silky__5.00.00.bright.00
+oewn-silkiness__1.07.00..	derivation		oewn-silky__5.00.00.bright.00
+oewn-silliness__1.07.00..	derivation		oewn-silly__5.00.00.foolish.00
+oewn-silliness__1.07.00..	derivation		oewn-silly__5.00.00.undignified.00
+oewn-silliness__1.07.01..	derivation		oewn-silly__5.00.00.frivolous.00
+oewn-silt__1.27.00..	derivation		oewn-silt__2.35.00..
+oewn-silt__1.27.00..	derivation		oewn-silty__5.00.00.loose.02
+oewn-silt__2.35.00..	other	by_means_of	oewn-silt__1.27.00..
+oewn-silver--plate__2.35.00..	derivation		oewn-silver_plate__1.06.00..
+oewn-silver--plate__2.35.00..	derivation		oewn-silver_plate__1.06.01..
+oewn-silver__1.06.00..	derivation		oewn-silver__2.35.00..
+oewn-silver__1.07.00..	derivation		oewn-silver__2.30.00..
+oewn-silver__1.07.00..	derivation		oewn-silver__2.30.01..
+oewn-silver__1.07.00..	derivation		oewn-silvery__5.00.00.achromatic.00
+oewn-silver__1.27.00..	derivation		oewn-silver__2.35.00..
+oewn-silver__1.27.00..	derivation		oewn-silvery__5.00.00.bright.00
+oewn-silver__2.30.00..	other	result	oewn-silver__1.07.00..
+oewn-silver__2.30.00..	other	uses	oewn-silver__1.07.00..
+oewn-silver__2.30.01..	other	result	oewn-silver__1.07.00..
+oewn-silver__2.30.01..	other	uses	oewn-silver__1.07.00..
+oewn-silver__2.35.00..	other	material	oewn-silver__1.27.00..
+oewn-silver__2.35.00..	other	uses	oewn-silver__1.27.00..
+oewn-silver_plate__1.06.00..	derivation		oewn-silverplate__2.35.00..
+oewn-silver_plate__1.06.01..	derivation		oewn-silverplate__2.35.00..
+oewn-simian__1.05.00..	derivation		oewn-simian__3.01.00..
+oewn-simian__3.01.00..	pertainym		oewn-ape__1.05.00..
+oewn-similar__3.00.00..	derivation		oewn-similarity__1.07.00..
+oewn-similar__3.00.02..	derivation		oewn-similarity__1.07.00..
+oewn-similar__3.00.04..	derivation		oewn-similarity__1.07.00..
+oewn-similar__5.00.00.replaceable.00	derivation		oewn-similarity__1.07.00..
+oewn-similar__5.00.00.synonymous.00	derivation		oewn-similarity__1.07.00..
+oewn-similarly__4.02.00..	pertainym		oewn-similar__3.00.00..
+oewn-simmer__1.07.00..	derivation		oewn-simmer__2.30.00..
+oewn-simmer__2.30.00..	derivation		oewn-simmering__1.04.00..
+oewn-simmer__2.30.00..	other	property	oewn-simmer__1.07.00..
+oewn-simmer__2.30.00..	other	result	oewn-simmer__1.07.00..
+oewn-simonise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-simonise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-simoniz__1.27.00..	derivation		oewn-simonize__2.35.00..
+oewn-simonize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-simper__2.29.00..	derivation		oewn-simperer__1.18.00..
+oewn-simper__2.29.00..	other	agent	oewn-simperer__1.18.00..
+oewn-simple--minded__5.00.00.naive.00	derivation		oewn-simplicity__1.07.04..
+oewn-simple--minded__5.00.00.retarded.00	derivation		oewn-simplicity__1.07.04..
+oewn-simple__3.00.01..	derivation		oewn-simplicity__1.07.02..
+oewn-simple__3.00.02..	derivation		oewn-simpleness__1.07.00..
+oewn-simple__3.00.02..	derivation		oewn-simplicity__1.07.02..
+oewn-simple__5.00.00.easy.01	derivation		oewn-simpleness__1.07.02..
+oewn-simple__5.00.00.easy.01	derivation		oewn-simplicity__1.07.00..
+oewn-simple__5.00.00.naive.00	derivation		oewn-simpleness__1.07.04..
+oewn-simple__5.00.00.naive.00	derivation		oewn-simplicity__1.07.04..
+oewn-simple__5.00.00.plain.01	derivation		oewn-simpleness__1.07.01..
+oewn-simple__5.00.00.plain.01	derivation		oewn-simplicity__1.07.01..
+oewn-simple__5.00.00.retarded.00	derivation		oewn-simpleness__1.07.04..
+oewn-simplification__1.04.00..	derivation		oewn-simplify__2.30.00..
+oewn-simplification__1.04.02..	derivation		oewn-simplify__2.30.00..
+oewn-simplification__1.10.00..	derivation		oewn-simplify__2.30.00..
+oewn-simplify__2.30.00..	other	by_means_of	oewn-simplification__1.10.00..
+oewn-simplify__2.30.00..	other	event	oewn-simplification__1.04.00..
+oewn-simplify__2.30.00..	other	event	oewn-simplification__1.04.02..
+oewn-simplify__2.30.00..	other	result	oewn-simplification__1.10.00..
+oewn-simply__4.02.00..	pertainym		oewn-simple__5.00.02.plain.01
+oewn-simulate__2.36.00..	derivation		oewn-simulation__1.04.00..
+oewn-simulate__2.36.00..	other	event	oewn-simulation__1.04.00..
+oewn-simulate__2.36.02..	derivation		oewn-simulation__1.09.00..
+oewn-simulate__2.36.02..	derivation		oewn-simulator__1.06.00..
+oewn-simulate__2.36.02..	other	by_means_of	oewn-simulator__1.06.00..
+oewn-simulate__2.36.02..	other	event	oewn-simulation__1.09.00..
+oewn-simultaneity__1.07.00..	derivation		oewn-simultaneous__5.00.00.synchronous.00
+oewn-simultaneous__5.00.00.synchronous.00	derivation		oewn-simultaneousness__1.07.00..
+oewn-simultaneously__4.02.00..	pertainym		oewn-simultaneous__5.00.00.synchronous.00
+oewn-sin__1.04.00..	derivation		oewn-sin__2.41.00..
+oewn-sin__2.41.00..	derivation		oewn-sinner__1.18.00..
+oewn-sin__2.41.00..	derivation		oewn-sinning__1.04.00..
+oewn-sin__2.41.00..	other	agent	oewn-sinner__1.18.00..
+oewn-sin__2.41.00..	other	event	oewn-sin__1.04.00..
+oewn-sincere__3.00.00..	derivation		oewn-sincerity__1.07.00..
+oewn-sincere__5.00.00.serious.00	derivation		oewn-sincerity__1.07.01..
+oewn-sincere__5.00.00.serious.00	derivation		oewn-sincerity__1.12.00..
+oewn-sincerely__4.02.00..	pertainym		oewn-sincere__3.00.00..
+oewn-sinew__1.07.00..	derivation		oewn-sinewy__5.00.00.strong.00
+oewn-sinew__1.08.00..	derivation		oewn-sinewy__3.01.00..
+oewn-sinewy__3.01.00..	pertainym		oewn-sinew__1.08.00..
+oewn-sinful__5.00.00.unrighteous.00	derivation		oewn-sinfulness__1.07.00..
+oewn-sinful__5.00.00.wicked.00	derivation		oewn-sinfulness__1.07.00..
+oewn-sing__2.32.00..	derivation		oewn-song__1.11.00..
+oewn-sing__2.32.01..	derivation		oewn-singing__1.10.02..
+oewn-sing__2.32.08..	derivation		oewn-singer__1.18.00..
+oewn-sing__2.32.08..	derivation		oewn-song__1.10.02..
+oewn-sing__2.32.08..	other	agent	oewn-singer__1.18.00..
+oewn-sing__2.36.00..	derivation		oewn-singer__1.18.00..
+oewn-sing__2.36.00..	derivation		oewn-singing__1.04.00..
+oewn-sing__2.36.00..	derivation		oewn-song__1.04.00..
+oewn-sing__2.36.00..	derivation		oewn-song__1.10.00..
+oewn-sing__2.36.00..	other	agent	oewn-singer__1.18.00..
+oewn-sing__2.36.01..	derivation		oewn-singer__1.18.00..
+oewn-sing__2.36.01..	derivation		oewn-singing__1.04.00..
+oewn-sing__2.36.01..	derivation		oewn-song__1.04.00..
+oewn-sing__2.36.01..	derivation		oewn-song__1.10.00..
+oewn-sing__2.36.01..	other	agent	oewn-singer__1.18.00..
+oewn-sing_along__2.36.00..	derivation		oewn-singalong__1.04.00..
+oewn-singaporean__1.18.00..	derivation		oewn-singaporean__3.01.01..
+oewn-singaporean__1.18.00..	derivation		oewn-singaporean__3.01.02..
+oewn-singe__1.26.00..	derivation		oewn-singe__2.30.00..
+oewn-singe__2.30.00..	other	event	oewn-singe__1.26.00..
+oewn-singhalese__3.01.00..	pertainym		oewn-sinhalese__1.18.00..
+oewn-singhalese__3.01.01..	pertainym		oewn-sinhalese__1.10.00..
+oewn-single--foot__1.04.00..	derivation		oewn-single--foot__2.38.00..
+oewn-single--foot__2.38.00..	other	event	oewn-single--foot__1.04.00..
+oewn-single--humped__3.01.00..	pertainym		oewn-hump__1.25.00..
+oewn-single--minded__5.00.00.resolute.00	derivation		oewn-single--mindedness__1.07.00..
+oewn-single--mindedly__4.02.00..	pertainym		oewn-single--minded__5.00.00.resolute.00
+oewn-single--stranded__3.01.00..	pertainym		oewn-strand__1.27.00..
+oewn-single__1.04.00..	derivation		oewn-single__2.35.00..
+oewn-single__2.35.00..	other	event	oewn-single__1.04.00..
+oewn-single__5.00.00.concentrated.00	derivation		oewn-singleness__1.07.01..
+oewn-single_crochet__1.06.00..	derivation		oewn-single_crochet__2.36.00..
+oewn-single_crochet__2.36.00..	other	by_means_of	oewn-single_crochet__1.06.00..
+oewn-single_stitch__1.06.00..	derivation		oewn-single_stitch__2.36.00..
+oewn-single_stitch__2.36.00..	other	by_means_of	oewn-single_stitch__1.06.00..
+oewn-singlet__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-singly__4.02.00..	pertainym		oewn-single__3.00.00..
+oewn-singly__4.02.01..	pertainym		oewn-single__3.00.00..
+oewn-singsong__1.04.00..	derivation		oewn-singsong__2.32.00..
+oewn-singsong__1.04.00..	derivation		oewn-singsong__2.38.00..
+oewn-singsong__1.10.00..	derivation		oewn-singsong__2.32.00..
+oewn-singsong__1.10.00..	derivation		oewn-singsong__2.38.00..
+oewn-singsong__2.32.00..	other	event	oewn-singsong__1.04.00..
+oewn-singsong__2.32.00..	other	event	oewn-singsong__1.10.00..
+oewn-singsong__2.38.00..	other	event	oewn-singsong__1.04.00..
+oewn-singsong__2.38.00..	other	event	oewn-singsong__1.10.00..
+oewn-singular__5.00.00.extraordinary.00	derivation		oewn-singularity__1.07.02..
+oewn-singular__5.00.00.individual.00	derivation		oewn-singularity__1.07.01..
+oewn-singular__5.00.00.single.05	derivation		oewn-singularity__1.07.01..
+oewn-singular__5.00.00.strange.00	derivation		oewn-singularity__1.07.02..
+oewn-singularise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-singularise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-singularize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-singularly__4.02.00..	pertainym		oewn-singular__5.00.00.extraordinary.00
+oewn-sinhala__3.01.00..	pertainym		oewn-sinhalese__1.10.00..
+oewn-sinhalese__3.01.00..	pertainym		oewn-sinhalese__1.18.00..
+oewn-sinhalese__3.01.01..	pertainym		oewn-sinhalese__1.10.00..
+oewn-sinistral__5.00.00.left-handed.00	derivation		oewn-sinistrality__1.07.00..
+oewn-sinitic__3.01.00..	pertainym		oewn-chinese__1.18.00..
+oewn-sink__1.22.00..	antonym		oewn-source__1.22.00..
+oewn-sink__2.38.00..	also		oewn-sink_in__2.35.00..
+oewn-sink__2.38.00..	derivation		oewn-sinker__1.06.00..
+oewn-sink__2.38.00..	derivation		oewn-sinking__1.11.00..
+oewn-sink__2.38.00..	other	by_means_of	oewn-sinker__1.06.00..
+oewn-sinkable__3.00.00..	antonym		oewn-unsinkable__3.00.00..
+oewn-sinless__5.00.00.virtuous.00	derivation		oewn-sinlessness__1.26.00..
+oewn-sinologist__1.18.00..	derivation		oewn-sinology__1.09.00..
+oewn-sintered__3.44.00..	participle		oewn-sinter__2.36.00..
+oewn-sinuosity__1.25.00..	derivation		oewn-sinuous__5.00.00.curved.00
+oewn-sinuosity__1.25.00..	derivation		oewn-sinuous__5.00.00.graceful.00
+oewn-sinuous__5.00.00.curved.00	derivation		oewn-sinuousness__1.25.00..
+oewn-sinuous__5.00.00.graceful.00	derivation		oewn-sinuousness__1.25.00..
+oewn-sinuously__4.02.00..	pertainym		oewn-sinuous__5.00.00.curved.00
+oewn-sinusoid__1.25.00..	derivation		oewn-sinusoidal__5.00.00.curved.00
+oewn-sinusoidally__4.02.00..	pertainym		oewn-sinusoidal__5.00.00.curved.00
+oewn-siouan__3.01.00..	derivation		oewn-sioux__1.18.00..
+oewn-siouan__3.01.00..	pertainym		oewn-siouan__1.10.00..
+oewn-siouan__3.01.00..	pertainym		oewn-sioux__1.18.00..
+oewn-sip__1.04.01..	derivation		oewn-sip__2.34.00..
+oewn-sip__2.34.00..	derivation		oewn-sipper__1.18.00..
+oewn-sip__2.34.00..	other	agent	oewn-sipper__1.18.00..
+oewn-sip__2.34.00..	other	event	oewn-sip__1.04.01..
+oewn-siphon__1.06.00..	derivation		oewn-siphon__2.35.00..
+oewn-siphon__2.35.00..	other	instrument	oewn-siphon__1.06.00..
+oewn-sire__1.05.00..	derivation		oewn-sire__2.29.00..
+oewn-sire__1.18.00..	derivation		oewn-sire__2.29.00..
+oewn-sire__2.29.00..	other	agent	oewn-sire__1.05.00..
+oewn-sire__2.29.00..	other	agent	oewn-sire__1.18.00..
+oewn-sissiness__1.07.00..	derivation		oewn-sissy__5.00.00.unmanly.00
+oewn-sister__1.18.00..	derivation		oewn-sisterhood__1.24.00..
+oewn-sister__1.18.00..	derivation		oewn-sisterly__3.00.00..
+oewn-sister__1.18.01..	derivation		oewn-sisterhood__1.14.00..
+oewn-sit--in__1.04.00..	derivation		oewn-sit_in__2.41.00..
+oewn-sit--up__1.04.00..	derivation		oewn-sit_up__2.38.01..
+oewn-sit__2.35.00..	also		oewn-sit_down__2.38.00..
+oewn-sit__2.35.00..	also		oewn-sit_out__2.31.00..
+oewn-sit__2.35.00..	antonym		oewn-stand__2.35.00..
+oewn-sit__2.35.00..	derivation		oewn-sitting__1.04.00..
+oewn-sit__2.38.01..	derivation		oewn-sitting__1.10.00..
+oewn-sit__2.39.00..	derivation		oewn-sitter__1.18.02..
+oewn-sit__2.39.00..	derivation		oewn-sitting__1.04.01..
+oewn-sit__2.39.00..	other	agent	oewn-sitter__1.18.02..
+oewn-sit__2.41.05..	derivation		oewn-sitter__1.18.00..
+oewn-sit__2.41.05..	other	agent	oewn-sitter__1.18.00..
+oewn-site__1.15.00..	derivation		oewn-site__2.40.00..
+oewn-site__2.40.00..	other	undergoer	oewn-site__1.15.00..
+oewn-sitter__1.18.01..	antonym		oewn-stander__1.18.00..
+oewn-situate__2.42.00..	derivation		oewn-situation__1.15.00..
+oewn-situate__2.42.00..	other	location	oewn-situation__1.15.00..
+oewn-sixthly__4.02.00..	pertainym		oewn-sixth__5.00.00.ordinal.00
+oewn-sizable__5.00.00.considerable.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sizable__5.00.00.large.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-size__1.07.00..	derivation		oewn-size__2.30.00..
+oewn-size__1.07.00..	derivation		oewn-size__2.31.00..
+oewn-size__1.07.01..	derivation		oewn-size__2.30.00..
+oewn-size__1.07.01..	derivation		oewn-size__2.31.00..
+oewn-size__1.27.00..	derivation		oewn-size__2.35.00..
+oewn-size__2.30.00..	also		oewn-size_up__2.39.00..
+oewn-size__2.30.00..	other	property	oewn-size__1.07.00..
+oewn-size__2.30.00..	other	property	oewn-size__1.07.01..
+oewn-size__2.31.00..	other	property	oewn-size__1.07.00..
+oewn-size__2.31.00..	other	property	oewn-size__1.07.01..
+oewn-size__2.35.00..	derivation		oewn-sizing__1.27.00..
+oewn-size__2.35.00..	other	uses	oewn-size__1.27.00..
+oewn-sizeable__5.00.00.considerable.00	derivation		oewn-sizeableness__1.07.00..
+oewn-sizeable__5.00.00.considerable.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sizeable__5.00.00.large.00	derivation		oewn-sizeableness__1.07.00..
+oewn-sizeable__5.00.00.large.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sized__3.00.00..	antonym		oewn-unsized__3.00.00..
+oewn-sized__3.00.01..	antonym		oewn-unsized__3.00.01..

@@ -1,0 +1,13 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-x--linked__3.01.00..	pertainym		oewn-x_chromosome__1.08.00..
+oewn-x--ray__2.32.00..	derivation		oewn-x--raying__1.04.00..
+oewn-x--ray__2.39.00..	derivation		oewn-x--raying__1.04.00..
+oewn-xanax__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-xenophobia__1.26.00..	derivation		oewn-xenophobic__5.00.00.afraid.00
+oewn-xerographic__3.01.00..	derivation		oewn-xerography__1.04.00..
+oewn-xerographic__3.01.00..	pertainym		oewn-xerography__1.04.00..
+oewn-xerophyte__1.20.00..	derivation		oewn-xerophytic__5.00.00.xeric.00
+oewn-xerox__1.06.00..	derivation		oewn-xerox__2.36.00..
+oewn-xerox__1.06.01..	derivation		oewn-xerox__2.36.00..
+oewn-xerox__2.36.00..	other	result	oewn-xerox__1.06.01..
+oewn-xylophone__1.06.00..	derivation		oewn-xylophonist__1.18.00..

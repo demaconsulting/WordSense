@@ -1,0 +1,70 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00023695-s	s	oewn-00023420-a	adj.all
+oewn-00055488-r	r		adv.all
+oewn-00056878-r	r		adv.all
+oewn-00088483-n	n		noun.act
+oewn-00145441-r	r		adv.all
+oewn-00188104-a	a		adj.all
+oewn-00188537-s	s	oewn-00188104-a	adj.all
+oewn-00191603-a	a		adj.all
+oewn-00195400-s	s	oewn-00194616-a	adj.all
+oewn-00196447-r	r		adv.all
+oewn-00218450-a	a		adj.all
+oewn-00218775-a	a		adj.all
+oewn-00234667-r	r		adv.all
+oewn-00235026-r	r		adv.all
+oewn-00236283-r	r		adv.all
+oewn-00236477-r	r		adv.all
+oewn-00236800-r	r		adv.all
+oewn-00236984-r	r		adv.all
+oewn-00237168-r	r		adv.all
+oewn-00237300-r	r		adv.all
+oewn-00457714-n	n		noun.act
+oewn-00482429-s	s	oewn-00481923-a	adj.all
+oewn-00607783-s	s	oewn-00607505-a	adj.all
+oewn-00721987-v	v		verb.cognition
+oewn-00738100-v	v		verb.cognition
+oewn-00749659-s	s	oewn-00748528-a	adj.all
+oewn-01004599-s	s	oewn-01004300-a	adj.all
+oewn-01144030-a	a		adj.all
+oewn-01222609-a	a		adj.all
+oewn-01262453-n	n		noun.act
+oewn-01567061-s	s	oewn-01566164-a	adj.all
+oewn-01591485-a	a		adj.all
+oewn-01681792-s	s	oewn-01679784-a	adj.all
+oewn-01699494-s	s	oewn-01698676-a	adj.all
+oewn-01783561-v	v		verb.emotion
+oewn-01853792-s	s	oewn-01853600-a	adj.all
+oewn-01854099-s	s	oewn-01853600-a	adj.all
+oewn-01984219-a	a		adj.all
+oewn-02019253-s	s	oewn-02018906-a	adj.all
+oewn-02020179-s	s	oewn-02019600-a	adj.all
+oewn-02021601-a	a		adj.all
+oewn-02021929-a	a		adj.all
+oewn-02022348-s	s	oewn-02022269-a	adj.all
+oewn-02152328-s	s	oewn-02150471-a	adj.all
+oewn-02266695-v	v		verb.possession
+oewn-02267085-v	v		verb.possession
+oewn-02441240-s	s	oewn-02440540-a	adj.all
+oewn-02500509-s	s	oewn-02499848-a	adj.all
+oewn-02574753-s	s	oewn-02574457-a	adj.all
+oewn-02665457-a	a		adj.pert
+oewn-02766719-n	n		noun.artifact
+oewn-02766906-n	n		noun.artifact
+oewn-03554912-n	n		noun.artifact
+oewn-04718941-n	n		noun.attribute
+oewn-04789380-n	n		noun.attribute
+oewn-04822855-n	n		noun.attribute
+oewn-05011459-n	n		noun.attribute
+oewn-05170334-n	n		noun.attribute
+oewn-05656304-n	n		noun.cognition
+oewn-05683749-n	n		noun.cognition
+oewn-05685793-n	n		noun.cognition
+oewn-07525423-n	n		noun.feeling
+oewn-07536278-n	n		noun.feeling
+oewn-09777167-n	n		noun.person
+oewn-11918740-n	n		noun.plant
+oewn-12131560-n	n		noun.plant
+oewn-13111503-n	n		noun.plant
+oewn-13289169-n	n		noun.possession
+oewn-13984559-n	n		noun.state

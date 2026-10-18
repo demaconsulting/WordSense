@@ -23,5 +23,6 @@ package WordSense {
         part miniLM : MiniLMSubsystem;
         part bertBaseCased : BertBaseCasedSubsystem;
         part wordSenseBuilder : WordSenseBuilder;
+        part wordData : WordDataSubsystem;
     }
 }

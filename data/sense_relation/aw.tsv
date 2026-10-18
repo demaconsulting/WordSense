@@ -1,0 +1,36 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-awaken__2.29.00..	antonym		oewn-cause_to_sleep__2.29.00..
+oewn-awaken__2.29.00..	derivation		oewn-awakening__1.04.00..
+oewn-awaken__2.29.01..	derivation		oewn-awakening__1.04.00..
+oewn-awakened__3.00.00..	antonym		oewn-unawakened__3.00.00..
+oewn-award--winning__3.01.00..	pertainym		oewn-win__1.11.00..
+oewn-award__1.10.00..	derivation		oewn-award__2.40.00..
+oewn-award__1.21.00..	derivation		oewn-award__2.40.00..
+oewn-award__2.40.00..	other	undergoer	oewn-award__1.10.00..
+oewn-award__2.40.00..	other	undergoer	oewn-award__1.21.00..
+oewn-aware__3.00.00..	antonym		oewn-unaware__3.00.00..
+oewn-aware__3.00.00..	derivation		oewn-awareness__1.09.00..
+oewn-aware__3.00.04..	derivation		oewn-awareness__1.09.00..
+oewn-aware__3.00.04..	derivation		oewn-awareness__1.09.01..
+oewn-away__3.00.00..	antonym		oewn-home__3.00.00..
+oewn-away__5.00.00.absent.00	derivation		oewn-awayness__1.26.00..
+oewn-away_game__1.04.00..	antonym		oewn-home_game__1.04.00..
+oewn-awe__1.12.02..	derivation		oewn-awe__2.37.00..
+oewn-awe__2.37.00..	other	state	oewn-awe__1.12.02..
+oewn-awed__3.00.00..	antonym		oewn-unawed__3.00.00..
+oewn-awful__3.00.02..	derivation		oewn-awfulness__1.07.00..
+oewn-awful__5.00.00.alarming.00	derivation		oewn-awfulness__1.07.00..
+oewn-awful__5.00.00.bad.00	derivation		oewn-awfulness__1.07.00..
+oewn-awfully__4.02.01..	pertainym		oewn-awful__5.00.00.alarming.00
+oewn-awfully__4.02.02..	pertainym		oewn-awful__5.00.00.bad.00
+oewn-awkward__3.00.00..	antonym		oewn-graceful__3.00.00..
+oewn-awkward__3.00.00..	derivation		oewn-awkwardness__1.09.01..
+oewn-awkward__5.00.00.difficult.00	derivation		oewn-awkwardness__1.07.01..
+oewn-awkward__5.00.00.infelicitous.00	derivation		oewn-awkwardness__1.09.01..
+oewn-awkward__5.00.00.uncomfortable.01	derivation		oewn-awkwardness__1.07.03..
+oewn-awkward__5.00.00.unwieldy.00	derivation		oewn-awkwardness__1.07.02..
+oewn-awkwardly__4.02.00..	pertainym		oewn-awkward__3.00.00..
+oewn-awkwardness__1.07.00..	antonym		oewn-gracefulness__1.07.00..
+oewn-awn__1.20.00..	derivation		oewn-awny__3.00.00..
+oewn-awned__3.00.00..	antonym		oewn-awnless__3.00.00..
+oewn-awol__1.18.00..	derivation		oewn-awol__5.00.00.absent.00

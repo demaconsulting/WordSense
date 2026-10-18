@@ -1,0 +1,16 @@
+class_id	lemma	label	pos	kind
+addict#noun	addict	noun	n	sense_group
+addict#verb	addict	verb	v	sense_group
+address#address-noun	address	address-noun	n	sense_group
+address#address-verb	address	address-verb	v	sense_group
+adduct#adduct-noun	adduct	adduct-noun	n	sense_group
+adduct#adduct-verb	adduct	adduct-verb	v	sense_group
+adulterate#adj	adulterate	adj	a	sense_group
+adulterate#verb	adulterate	verb	v	sense_group
+advance#noun	advance	noun	n	sense_group
+advance#unmapped-a	advance	unmapped-a	a	unmapped
+advance#verb	advance	verb	v	sense_group
+advert#advert-noun	advert	advert-noun	n	sense_group
+advert#advert-verb	advert	advert-verb	v	sense_group
+advocate#noun	advocate	noun	n	sense_group
+advocate#verb	advocate	verb	v	sense_group

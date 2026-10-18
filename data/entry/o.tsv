@@ -1,0 +1,3281 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-obverse-a	obverse	a	0	1	1	dema
+dema-opiate-v	opiate	v	0	1	1	dema
+dema-outreach-v	outreach	v	0	1	1	dema
+dema-overall-r	overall	r	0	1	1	dema
+dema-overcall-v	overcall	v	0	1	1	dema
+dema-overdose-n	overdose	n	0	1	1	dema
+dema-overdress-n	overdress	n	0	1	1	dema
+dema-overdub-n	overdub	n	0	1	1	dema
+dema-overdub-v	overdub	v	0	1	1	dema
+dema-overpass-v	overpass	v	0	1	1	dema
+dema-overspend-n	overspend	n	0	1	1	dema
+dema-oversteer-v	oversteer	v	0	1	1	dema
+dema-overstock-n	overstock	n	0	1	1	dema
+dema-overweight-v	overweight	v	0	1	1	dema
+oewn-O-n	O	n	0	1	1	oewn
+oewn-O.K.-n	O.K.	n	0	1	1	oewn
+oewn-O.K.-r	O.K.	r	0	1	1	oewn
+oewn-O.K.-v	O.K.	v	0	1	1	oewn
+oewn-OAS-n	OAS	n	0	1	1	oewn
+oewn-OB-n	OB	n	0	1	1	oewn
+oewn-OD-n	OD	n	0	1	1	oewn
+oewn-OIG-n	OIG	n	0	1	1	oewn
+oewn-OIS-n	OIS	n	0	1	1	oewn
+oewn-OK-n	OK	n	0	1	1	oewn
+oewn-OK-r	OK	r	0	1	1	oewn
+oewn-OLED-n	OLED	n	0	1	1	oewn
+oewn-OMB-n	OMB	n	0	1	1	oewn
+oewn-ONI-n	ONI	n	0	1	1	oewn
+oewn-OPCW-n	OPCW	n	0	1	1	oewn
+oewn-OPEC-n	OPEC	n	0	1	1	oewn
+oewn-OPV-n	OPV	n	0	1	1	oewn
+oewn-OR-n	OR	n	0	1	1	oewn
+oewn-OR_circuit-n	OR circuit	n	0	2	2	oewn
+oewn-OR_gate-n	OR gate	n	0	2	2	oewn
+oewn-OS-n	OS	n	0	1	1	oewn
+oewn-OSHA-n	OSHA	n	0	1	1	oewn
+oewn-OTC_derivative-n	OTC derivative	n	0	2	2	oewn
+oewn-OTC_market-n	OTC market	n	0	2	2	oewn
+oewn-OTC_security-n	OTC security	n	0	2	2	oewn
+oewn-OTC_stock-n	OTC stock	n	0	2	2	oewn
+oewn-OWLT-n	OWLT	n	0	1	1	oewn
+oewn-O_level-n	O level	n	0	2	2	oewn
+oewn-O_ring-n	O ring	n	0	2	2	oewn
+oewn-Oak_Leaf_Cluster-n	Oak Leaf Cluster	n	0	3	3	oewn
+oewn-Oberon-n	Oberon	n	0	1	1	oewn
+oewn-Oblation-n	Oblation	n	0	1	1	oewn
+oewn-Occam-ap-s_Razor-n	Occam's Razor	n	0	2	2	oewn
+oewn-Occidental-n	Occidental	n	0	1	1	oewn
+oewn-Occidentalism-n	Occidentalism	n	0	1	1	oewn
+oewn-Occitan-n	Occitan	n	0	1	1	oewn
+oewn-Occupational_Safety_and_Health_Administration-n	Occupational Safety and Health Administration	n	0	5	5	oewn
+oewn-Oceanic-n	Oceanic	n	0	1	1	oewn
+oewn-Oceanid-n	Oceanid	n	0	1	1	oewn
+oewn-Oceanites_oceanicus-n	Oceanites oceanicus	n	0	2	2	oewn
+oewn-Ochna_serrulata-n	Ochna serrulata	n	0	2	2	oewn
+oewn-Ochotona_collaris-n	Ochotona collaris	n	0	2	2	oewn
+oewn-Ochotona_princeps-n	Ochotona princeps	n	0	2	2	oewn
+oewn-Ochroma_lagopus-n	Ochroma lagopus	n	0	2	2	oewn
+oewn-Ocimum_basilicum-n	Ocimum basilicum	n	0	2	2	oewn
+oewn-Ockham-ap-s_Razor-n	Ockham's Razor	n	0	2	2	oewn
+oewn-Oct-n	Oct	n	0	1	1	oewn
+oewn-October-n	October	n	0	1	1	oewn
+oewn-October_12-n	October 12	n	0	2	2	oewn
+oewn-October_24-n	October 24	n	0	2	2	oewn
+oewn-Octoberfest-n	Octoberfest	n	0	1	1	oewn
+oewn-Ocyurus_chrysurus-n	Ocyurus chrysurus	n	0	2	2	oewn
+oewn-Odobenus_divergens-n	Odobenus divergens	n	0	2	2	oewn
+oewn-Odobenus_rosmarus-n	Odobenus rosmarus	n	0	2	2	oewn
+oewn-Odocoileus_hemionus-n	Odocoileus hemionus	n	0	2	2	oewn
+oewn-Odocoileus_hemionus_columbianus-n	Odocoileus hemionus columbianus	n	0	3	3	oewn
+oewn-Odocoileus_virginianus-n	Odocoileus virginianus	n	0	2	2	oewn
+oewn-Odontaspis_taurus-n	Odontaspis taurus	n	0	2	2	oewn
+oewn-Oecanthus_fultoni-n	Oecanthus fultoni	n	0	2	2	oewn
+oewn-Oedipal_complex-n	Oedipal complex	n	0	2	2	oewn
+oewn-Oedipus_complex-n	Oedipus complex	n	0	2	2	oewn
+oewn-Oenanthe_aquatica-n	Oenanthe aquatica	n	0	2	2	oewn
+oewn-Oenanthe_crocata-n	Oenanthe crocata	n	0	2	2	oewn
+oewn-Oenothera_biennis-n	Oenothera biennis	n	0	2	2	oewn
+oewn-Oenothera_fruticosa-n	Oenothera fruticosa	n	0	2	2	oewn
+oewn-Oenothera_macrocarpa-n	Oenothera macrocarpa	n	0	2	2	oewn
+oewn-Oestrus_ovis-n	Oestrus ovis	n	0	2	2	oewn
+oewn-Offertory-n	Offertory	n	0	1	1	oewn
+oewn-Office_of_Inspector_General-n	Office of Inspector General	n	0	4	1	oewn
+oewn-Office_of_Intelligence_Support-n	Office of Intelligence Support	n	0	4	1	oewn
+oewn-Office_of_Management_and_Budget-n	Office of Management and Budget	n	0	5	1	oewn
+oewn-Office_of_Naval_Intelligence-n	Office of Naval Intelligence	n	0	4	1	oewn
+oewn-Office_of_the_Dead-n	Office of the Dead	n	0	4	1	oewn
+oewn-Ofo-n	Ofo	n	0	1	1	oewn
+oewn-Ofo_language-n	Ofo language	n	0	2	2	oewn
+oewn-Ogalala-n	Ogalala	n	0	1	1	oewn
+oewn-Ogalala_language-n	Ogalala language	n	0	2	2	oewn
+oewn-Oglala-n	Oglala	n	0	1	1	oewn
+oewn-Oglala_language-n	Oglala language	n	0	2	2	oewn
+oewn-Ohio_buckeye-n	Ohio buckeye	n	0	2	2	oewn
+oewn-Ohio_goldenrod-n	Ohio goldenrod	n	0	2	2	oewn
+oewn-Ohioan-n	Ohioan	n	0	1	1	oewn
+oewn-Ohm-ap-s_law-n	Ohm's law	n	0	2	2	oewn
+oewn-Oireachtas-n	Oireachtas	n	0	1	1	oewn
+oewn-Ojibwa-n	Ojibwa	n	0	1	1	oewn
+oewn-Ojibwa_language-n	Ojibwa language	n	0	2	2	oewn
+oewn-Ojibway-n	Ojibway	n	0	1	1	oewn
+oewn-Ojibway_language-n	Ojibway language	n	0	2	2	oewn
+oewn-Okapia_johnstoni-n	Okapia johnstoni	n	0	2	2	oewn
+oewn-Oklahoman-n	Oklahoman	n	0	1	1	oewn
+oewn-Oktoberfest-n	Oktoberfest	n	0	1	1	oewn
+oewn-Old-a	Old	a	0	1	1	oewn
+oewn-Old_Bailey-n	Old Bailey	n	0	2	2	oewn
+oewn-Old_Bulgarian-n	Old Bulgarian	n	0	2	2	oewn
+oewn-Old_Bulgarian_language-n	Old Bulgarian language	n	0	3	3	oewn
+oewn-Old_Catholic-n	Old Catholic	n	0	2	2	oewn
+oewn-Old_Catholic_Church-n	Old Catholic Church	n	0	3	3	oewn
+oewn-Old_Church_Slavic-n	Old Church Slavic	n	0	3	3	oewn
+oewn-Old_Church_Slavic_language-n	Old Church Slavic language	n	0	4	4	oewn
+oewn-Old_Church_Slavonic-n	Old Church Slavonic	n	0	3	3	oewn
+oewn-Old_Church_Slavonic_language-n	Old Church Slavonic language	n	0	4	4	oewn
+oewn-Old_English-n	Old English	n	0	2	2	oewn
+oewn-Old_English_sheepdog-n	Old English sheepdog	n	0	3	3	oewn
+oewn-Old_French-n	Old French	n	0	2	2	oewn
+oewn-Old_French_language-n	Old French language	n	0	3	3	oewn
+oewn-Old_Frisian-n	Old Frisian	n	0	2	2	oewn
+oewn-Old_Frisian_language-n	Old Frisian language	n	0	3	3	oewn
+oewn-Old_Glory-n	Old Glory	n	0	2	2	oewn
+oewn-Old_High_German-n	Old High German	n	0	3	3	oewn
+oewn-Old_High_German_language-n	Old High German language	n	0	4	4	oewn
+oewn-Old_Icelandic-n	Old Icelandic	n	0	2	2	oewn
+oewn-Old_Irish-n	Old Irish	n	0	2	2	oewn
+oewn-Old_Irish_language-n	Old Irish language	n	0	3	3	oewn
+oewn-Old_Italian-n	Old Italian	n	0	2	2	oewn
+oewn-Old_Italian_language-n	Old Italian language	n	0	3	3	oewn
+oewn-Old_Latin-n	Old Latin	n	0	2	2	oewn
+oewn-Old_Latin_language-n	Old Latin language	n	0	3	3	oewn
+oewn-Old_Norse-n	Old Norse	n	0	2	2	oewn
+oewn-Old_Norse_language-n	Old Norse language	n	0	3	3	oewn
+oewn-Old_North_French-n	Old North French	n	0	3	3	oewn
+oewn-Old_Occitan-n	Old Occitan	n	0	2	2	oewn
+oewn-Old_Prussian-n	Old Prussian	n	0	2	2	oewn
+oewn-Old_Saxon-n	Old Saxon	n	0	2	2	oewn
+oewn-Old_Saxon_language-n	Old Saxon language	n	0	3	3	oewn
+oewn-Old_Style_calendar-n	Old Style calendar	n	0	3	3	oewn
+oewn-Old_Testament-n	Old Testament	n	0	2	2	oewn
+oewn-Old_World_beaver-n	Old World beaver	n	0	3	3	oewn
+oewn-Old_World_buffalo-n	Old World buffalo	n	0	3	3	oewn
+oewn-Old_World_chat-n	Old World chat	n	0	3	3	oewn
+oewn-Old_World_coot-n	Old World coot	n	0	3	3	oewn
+oewn-Old_World_coral_snake-n	Old World coral snake	n	0	4	4	oewn
+oewn-Old_World_crayfish-n	Old World crayfish	n	0	3	3	oewn
+oewn-Old_World_flycatcher-n	Old World flycatcher	n	0	3	3	oewn
+oewn-Old_World_hop_hornbeam-n	Old World hop hornbeam	n	0	4	4	oewn
+oewn-Old_World_jay-n	Old World jay	n	0	3	3	oewn
+oewn-Old_World_least_weasel-n	Old World least weasel	n	0	4	4	oewn
+oewn-Old_World_leishmaniasis-n	Old World leishmaniasis	n	0	3	3	oewn
+oewn-Old_World_mistletoe-n	Old World mistletoe	n	0	3	3	oewn
+oewn-Old_World_monkey-n	Old World monkey	n	0	3	3	oewn
+oewn-Old_World_oriole-n	Old World oriole	n	0	3	3	oewn
+oewn-Old_World_porcupine-n	Old World porcupine	n	0	3	3	oewn
+oewn-Old_World_quail-n	Old World quail	n	0	3	3	oewn
+oewn-Old_World_rabbit-n	Old World rabbit	n	0	3	3	oewn
+oewn-Old_World_robin-n	Old World robin	n	0	3	3	oewn
+oewn-Old_World_scops_owl-n	Old World scops owl	n	0	4	4	oewn
+oewn-Old_World_vulture-n	Old World vulture	n	0	3	3	oewn
+oewn-Old_World_warbler-n	Old World warbler	n	0	3	3	oewn
+oewn-Old_World_yew-n	Old World yew	n	0	3	3	oewn
+oewn-Old_world_white_pelican-n	Old world white pelican	n	0	4	4	oewn
+oewn-Olea_cunninghamii-n	Olea cunninghamii	n	0	2	2	oewn
+oewn-Olea_europaea-n	Olea europaea	n	0	2	2	oewn
+oewn-Olea_lanceolata-n	Olea lanceolata	n	0	2	2	oewn
+oewn-Oleandra_mollis-n	Oleandra mollis	n	0	2	2	oewn
+oewn-Oleandra_neriiformis-n	Oleandra neriiformis	n	0	2	2	oewn
+oewn-Olearia_argophylla-n	Olearia argophylla	n	0	2	2	oewn
+oewn-Olearia_haastii-n	Olearia haastii	n	0	2	2	oewn
+oewn-Olfersia_cervina-n	Olfersia cervina	n	0	2	2	oewn
+oewn-Oligoporus_leucospongia-n	Oligoporus leucospongia	n	0	2	2	oewn
+oewn-Ollari-n	Ollari	n	0	1	1	oewn
+oewn-Ollari_language-n	Ollari language	n	0	2	2	oewn
+oewn-Olmec-n	Olmec	n	0	1	1	oewn
+oewn-Olympiad-n	Olympiad	n	0	1	1	oewn
+oewn-Olympian-a	Olympian	a	0	1	1	oewn
+oewn-Olympian-n	Olympian	n	0	1	1	oewn
+oewn-Olympian_Games-n	Olympian Games	n	0	2	2	oewn
+oewn-Olympian_Zeus-n	Olympian Zeus	n	0	2	2	oewn
+oewn-Olympic-a	Olympic	a	0	1	1	oewn
+oewn-Olympic_Games-n	Olympic Games	n	0	2	2	oewn
+oewn-Olympics-n	Olympics	n	0	1	1	oewn
+oewn-Olympism-n	Olympism	n	0	1	1	oewn
+oewn-Omaha-n	Omaha	n	0	1	1	oewn
+oewn-Omani-a	Omani	a	0	1	1	oewn
+oewn-Omani-n	Omani	n	0	1	1	oewn
+oewn-Omani_monetary_unit-n	Omani monetary unit	n	0	3	3	oewn
+oewn-Omani_rial-n	Omani rial	n	0	2	2	oewn
+oewn-Omayyad-n	Omayyad	n	0	1	1	oewn
+oewn-Ommiad-n	Ommiad	n	0	1	1	oewn
+oewn-Omotic-n	Omotic	n	0	1	1	oewn
+oewn-Omphalotus_illudens-n	Omphalotus illudens	n	0	2	2	oewn
+oewn-Oncidium_papilio-n	Oncidium papilio	n	0	2	2	oewn
+oewn-Oncidium_papilio_kramerianum-n	Oncidium papilio kramerianum	n	0	3	3	oewn
+oewn-Oncorhynchus_keta-n	Oncorhynchus keta	n	0	2	2	oewn
+oewn-Oncorhynchus_kisutch-n	Oncorhynchus kisutch	n	0	2	2	oewn
+oewn-Oncorhynchus_nerka-n	Oncorhynchus nerka	n	0	2	2	oewn
+oewn-Oncorhynchus_tshawytscha-n	Oncorhynchus tshawytscha	n	0	2	2	oewn
+oewn-Oncovin-n	Oncovin	n	0	1	1	oewn
+oewn-Ondatra_zibethica-n	Ondatra zibethica	n	0	2	2	oewn
+oewn-Oneida-n	Oneida	n	0	1	1	oewn
+oewn-Oneida_language-n	Oneida language	n	0	2	2	oewn
+oewn-Onobrychis_viciaefolia-n	Onobrychis viciaefolia	n	0	2	2	oewn
+oewn-Onobrychis_viciifolia-n	Onobrychis viciifolia	n	0	2	2	oewn
+oewn-Onoclea_sensibilis-n	Onoclea sensibilis	n	0	2	2	oewn
+oewn-Onoclea_struthiopteris-n	Onoclea struthiopteris	n	0	2	2	oewn
+oewn-Onondaga-n	Onondaga	n	0	1	1	oewn
+oewn-Onondaga_language-n	Onondaga language	n	0	2	2	oewn
+oewn-Ononis_repens-n	Ononis repens	n	0	2	2	oewn
+oewn-Ononis_spinosa-n	Ononis spinosa	n	0	2	2	oewn
+oewn-Onopordon_acanthium-n	Onopordon acanthium	n	0	2	2	oewn
+oewn-Onopordum_acanthium-n	Onopordum acanthium	n	0	2	2	oewn
+oewn-Oort_cloud-n	Oort cloud	n	0	2	2	oewn
+oewn-Open_University-n	Open University	n	0	2	2	oewn
+oewn-Opheodrys_aestivus-n	Opheodrys aestivus	n	0	2	2	oewn
+oewn-Opheodrys_vernalis-n	Opheodrys vernalis	n	0	2	2	oewn
+oewn-Ophiodon_elongatus-n	Ophiodon elongatus	n	0	2	2	oewn
+oewn-Ophioglossum_pendulum-n	Ophioglossum pendulum	n	0	2	2	oewn
+oewn-Ophiophagus_hannah-n	Ophiophagus hannah	n	0	2	2	oewn
+oewn-Ophrys_apifera-n	Ophrys apifera	n	0	2	2	oewn
+oewn-Ophrys_insectifera-n	Ophrys insectifera	n	0	2	2	oewn
+oewn-Ophrys_muscifera-n	Ophrys muscifera	n	0	2	2	oewn
+oewn-Ophrys_sphegodes-n	Ophrys sphegodes	n	0	2	2	oewn
+oewn-Opisthocomus_hoazin-n	Opisthocomus hoazin	n	0	2	2	oewn
+oewn-Opposition-n	Opposition	n	0	1	1	oewn
+oewn-Opsanus_tau-n	Opsanus tau	n	0	2	2	oewn
+oewn-Optez-n	Optez	n	0	1	1	oewn
+oewn-Opuntia_cholla-n	Opuntia cholla	n	0	2	2	oewn
+oewn-Opuntia_lindheimeri-n	Opuntia lindheimeri	n	0	2	2	oewn
+oewn-Opuntia_tuna-n	Opuntia tuna	n	0	2	2	oewn
+oewn-Oradexon-n	Oradexon	n	0	1	1	oewn
+oewn-Orange_Order-n	Orange Order	n	0	2	2	oewn
+oewn-Orangeman-n	Orangeman	n	0	1	1	oewn
+oewn-Orasone-n	Orasone	n	0	1	1	oewn
+oewn-Orbignya_cohune-n	Orbignya cohune	n	0	2	2	oewn
+oewn-Orbignya_martiana-n	Orbignya martiana	n	0	2	2	oewn
+oewn-Orbignya_phalerata-n	Orbignya phalerata	n	0	2	2	oewn
+oewn-Orbignya_spesiosa-n	Orbignya spesiosa	n	0	2	2	oewn
+oewn-Orchis_mascula-n	Orchis mascula	n	0	2	2	oewn
+oewn-Orchis_papilionaceae-n	Orchis papilionaceae	n	0	2	2	oewn
+oewn-Orchis_spectabilis-n	Orchis spectabilis	n	0	2	2	oewn
+oewn-Orcinus_orca-n	Orcinus orca	n	0	2	2	oewn
+oewn-Ord_kangaroo_rat-n	Ord kangaroo rat	n	0	3	3	oewn
+oewn-Order-n	Order	n	0	1	1	oewn
+oewn-Order_of_Our_Lady_of_Mount_Carmel-n	Order of Our Lady of Mount Carmel	n	0	7	1	oewn
+oewn-Order_of_the_Purple_Heart-n	Order of the Purple Heart	n	0	5	1	oewn
+oewn-Ordnance_Survey-n	Ordnance Survey	n	0	2	2	oewn
+oewn-Oread-n	Oread	n	0	1	1	oewn
+oewn-Oreamnos_americanus-n	Oreamnos americanus	n	0	2	2	oewn
+oewn-Orectolobus_barbatus-n	Orectolobus barbatus	n	0	2	2	oewn
+oewn-Oregon_Jargon-n	Oregon Jargon	n	0	2	2	oewn
+oewn-Oregon_alder-n	Oregon alder	n	0	2	2	oewn
+oewn-Oregon_ash-n	Oregon ash	n	0	2	2	oewn
+oewn-Oregon_cedar-n	Oregon cedar	n	0	2	2	oewn
+oewn-Oregon_crab_apple-n	Oregon crab apple	n	0	3	3	oewn
+oewn-Oregon_fir-n	Oregon fir	n	0	2	2	oewn
+oewn-Oregon_grape-n	Oregon grape	n	0	2	2	oewn
+oewn-Oregon_holly_grape-n	Oregon holly grape	n	0	3	3	oewn
+oewn-Oregon_larch-n	Oregon larch	n	0	2	2	oewn
+oewn-Oregon_lily-n	Oregon lily	n	0	2	2	oewn
+oewn-Oregon_maple-n	Oregon maple	n	0	2	2	oewn
+oewn-Oregon_myrtle-n	Oregon myrtle	n	0	2	2	oewn
+oewn-Oregon_oak-n	Oregon oak	n	0	2	2	oewn
+oewn-Oregon_pine-n	Oregon pine	n	0	2	2	oewn
+oewn-Oregon_white_oak-n	Oregon white oak	n	0	3	3	oewn
+oewn-Oregonian-n	Oregonian	n	0	1	1	oewn
+oewn-Oreo-n	Oreo	n	0	1	1	oewn
+oewn-Oreo_cookie-n	Oreo cookie	n	0	2	2	oewn
+oewn-Oreopteris_limbosperma-n	Oreopteris limbosperma	n	0	2	2	oewn
+oewn-Oreortyx_picta_palmeri-n	Oreortyx picta palmeri	n	0	3	3	oewn
+oewn-Organization_for_the_Prohibition_of_Chemical_Weapons-n	Organization for the Prohibition of Chemical Weapons	n	0	7	1	oewn
+oewn-Organization_of_American_States-n	Organization of American States	n	0	4	1	oewn
+oewn-Organization_of_Petroleum-Exporting_Countries-n	Organization of Petroleum-Exporting Countries	n	0	4	1	oewn
+oewn-Oriental_Studies-n	Oriental Studies	n	0	2	2	oewn
+oewn-Oriental_arborvitae-n	Oriental arborvitae	n	0	2	2	oewn
+oewn-Oriental_beetle-n	Oriental beetle	n	0	2	2	oewn
+oewn-Oriental_black_mushroom-n	Oriental black mushroom	n	0	3	3	oewn
+oewn-Oriental_garlic-n	Oriental garlic	n	0	2	2	oewn
+oewn-Oriental_scops_owl-n	Oriental scops owl	n	0	3	3	oewn
+oewn-Orientalism-n	Orientalism	n	0	1	1	oewn
+oewn-Origanum_dictamnus-n	Origanum dictamnus	n	0	2	2	oewn
+oewn-Origanum_majorana-n	Origanum majorana	n	0	2	2	oewn
+oewn-Origanum_vulgare-n	Origanum vulgare	n	0	2	2	oewn
+oewn-Orinase-n	Orinase	n	0	1	1	oewn
+oewn-Oriolus_oriolus-n	Oriolus oriolus	n	0	2	2	oewn
+oewn-Orites_excelsa-n	Orites excelsa	n	0	2	2	oewn
+oewn-Oriya-n	Oriya	n	0	1	1	oewn
+oewn-Oriya_language-n	Oriya language	n	0	2	2	oewn
+oewn-Orleanism-n	Orleanism	n	0	1	1	oewn
+oewn-Orleanist-n	Orleanist	n	0	1	1	oewn
+oewn-Orlon-n	Orlon	n	0	1	1	oewn
+oewn-Ormosia_coarctata-n	Ormosia coarctata	n	0	2	2	oewn
+oewn-Ormosia_monosperma-n	Ormosia monosperma	n	0	2	2	oewn
+oewn-Ornithogalum_pyrenaicum-n	Ornithogalum pyrenaicum	n	0	2	2	oewn
+oewn-Ornithogalum_thyrsoides-n	Ornithogalum thyrsoides	n	0	2	2	oewn
+oewn-Ornithogalum_umbellatum-n	Ornithogalum umbellatum	n	0	2	2	oewn
+oewn-Ornithorhynchus_anatinus-n	Ornithorhynchus anatinus	n	0	2	2	oewn
+oewn-Orontium_aquaticum-n	Orontium aquaticum	n	0	2	2	oewn
+oewn-Orphic-a	Orphic	a	0	1	1	oewn
+oewn-Orpington-n	Orpington	n	0	1	1	oewn
+oewn-Orthodox-a	Orthodox	a	0	1	1	oewn
+oewn-Orthodox_Catholic_Church-n	Orthodox Catholic Church	n	0	3	3	oewn
+oewn-Orthodox_Church-n	Orthodox Church	n	0	2	2	oewn
+oewn-Orthodox_Jew-n	Orthodox Jew	n	0	2	2	oewn
+oewn-Orthodox_Judaism-n	Orthodox Judaism	n	0	2	2	oewn
+oewn-Orthopristis_chrysopterus-n	Orthopristis chrysopterus	n	0	2	2	oewn
+oewn-Orthotomus_sutorius-n	Orthotomus sutorius	n	0	2	2	oewn
+oewn-Ortilis_vetula_macalli-n	Ortilis vetula macalli	n	0	3	3	oewn
+oewn-Orudis-n	Orudis	n	0	1	1	oewn
+oewn-Orudis_KT-n	Orudis KT	n	0	2	2	oewn
+oewn-Oruvail-n	Oruvail	n	0	1	1	oewn
+oewn-Orwellian-a	Orwellian	a	0	1	1	oewn
+oewn-Orycteropus_afer-n	Orycteropus afer	n	0	2	2	oewn
+oewn-Oryctolagus_cuniculus-n	Oryctolagus cuniculus	n	0	2	2	oewn
+oewn-Oryx_gazella-n	Oryx gazella	n	0	2	2	oewn
+oewn-Oryza_sativa-n	Oryza sativa	n	0	2	2	oewn
+oewn-Oryzomys_palustris-n	Oryzomys palustris	n	0	2	2	oewn
+oewn-Oryzopsis_hymenoides-n	Oryzopsis hymenoides	n	0	2	2	oewn
+oewn-Oryzopsis_miliacea-n	Oryzopsis miliacea	n	0	2	2	oewn
+oewn-Os-n	Os	n	0	1	1	oewn
+oewn-Osage-n	Osage	n	0	1	1	oewn
+oewn-Oscan-n	Oscan	n	0	1	1	oewn
+oewn-Oscan-speaking-a	Oscan-speaking	a	0	1	1	oewn
+oewn-Oscan_language-n	Oscan language	n	0	2	2	oewn
+oewn-Oscar-n	Oscar	n	0	1	1	oewn
+oewn-Osco-Umbrian-n	Osco-Umbrian	n	0	1	1	oewn
+oewn-Osmanli-n	Osmanli	n	0	1	1	oewn
+oewn-Osmanthus_americanus-n	Osmanthus americanus	n	0	2	2	oewn
+oewn-Osmerus_eperlanus-n	Osmerus eperlanus	n	0	2	2	oewn
+oewn-Osmerus_mordax-n	Osmerus mordax	n	0	2	2	oewn
+oewn-Osmitrol-n	Osmitrol	n	0	1	1	oewn
+oewn-Osmunda_cinnamonea-n	Osmunda cinnamonea	n	0	2	2	oewn
+oewn-Osmunda_clatonia-n	Osmunda clatonia	n	0	2	2	oewn
+oewn-Osmunda_regalis-n	Osmunda regalis	n	0	2	2	oewn
+oewn-Ossete-n	Ossete	n	0	1	1	oewn
+oewn-Ossete_language-n	Ossete language	n	0	2	2	oewn
+oewn-Ossianism-n	Ossianism	n	0	1	1	oewn
+oewn-Ostariophysi-n	Ostariophysi	n	0	1	1	oewn
+oewn-Ostrea_gigas-n	Ostrea gigas	n	0	2	2	oewn
+oewn-Ostrogoth-n	Ostrogoth	n	0	1	1	oewn
+oewn-Ostrya_carpinifolia-n	Ostrya carpinifolia	n	0	2	2	oewn
+oewn-Ostrya_virginiana-n	Ostrya virginiana	n	0	2	2	oewn
+oewn-Ostwald-ap-s_theory_of_indicators-n	Ostwald's theory of indicators	n	0	4	2	oewn
+oewn-Ostyak-Samoyed-n	Ostyak-Samoyed	n	0	1	1	oewn
+oewn-Ostyak-Samoyed_language-n	Ostyak-Samoyed language	n	0	2	2	oewn
+oewn-Ostyak-n	Ostyak	n	0	1	1	oewn
+oewn-Ostyak_language-n	Ostyak language	n	0	2	2	oewn
+oewn-Otaheite_arrowroot-n	Otaheite arrowroot	n	0	2	2	oewn
+oewn-Otaheite_arrowroot_starch-n	Otaheite arrowroot starch	n	0	3	3	oewn
+oewn-Otaria_byronia-n	Otaria byronia	n	0	2	2	oewn
+oewn-Otis_tarda-n	Otis tarda	n	0	2	2	oewn
+oewn-Oto-n	Oto	n	0	1	1	oewn
+oewn-Otocolobus_manul-n	Otocolobus manul	n	0	2	2	oewn
+oewn-Otoe-n	Otoe	n	0	1	1	oewn
+oewn-Ottawa-n	Ottawa	n	0	1	1	oewn
+oewn-Ottoman-a	Ottoman	a	0	1	1	oewn
+oewn-Ottoman-n	Ottoman	n	0	1	1	oewn
+oewn-Ottoman_Turk-n	Ottoman Turk	n	0	2	2	oewn
+oewn-Ottoman_dynasty-n	Ottoman dynasty	n	0	2	2	oewn
+oewn-Otus_asio-n	Otus asio	n	0	2	2	oewn
+oewn-Otus_scops-n	Otus scops	n	0	2	2	oewn
+oewn-Otus_sunia-n	Otus sunia	n	0	2	2	oewn
+oewn-Ouija-n	Ouija	n	0	1	1	oewn
+oewn-Ouija_board-n	Ouija board	n	0	2	2	oewn
+oewn-Our_Lady-ap-s_bedstraw-n	Our Lady's bedstraw	n	0	3	3	oewn
+oewn-Our_Lady-ap-s_mild_thistle-n	Our Lady's mild thistle	n	0	4	4	oewn
+oewn-Our_Lord-ap-s_candle-n	Our Lord's candle	n	0	3	3	oewn
+oewn-Ovalipes_ocellatus-n	Ovalipes ocellatus	n	0	2	2	oewn
+oewn-Oven_Stuffer-n	Oven Stuffer	n	0	2	2	oewn
+oewn-Oven_Stuffer_Roaster-n	Oven Stuffer Roaster	n	0	3	3	oewn
+oewn-Ovibos_moschatus-n	Ovibos moschatus	n	0	2	2	oewn
+oewn-Ovimbundu-n	Ovimbundu	n	0	1	1	oewn
+oewn-Ovis_ammon-n	Ovis ammon	n	0	2	2	oewn
+oewn-Ovis_aries-n	Ovis aries	n	0	2	2	oewn
+oewn-Ovis_canadensis-n	Ovis canadensis	n	0	2	2	oewn
+oewn-Ovis_montana_dalli-n	Ovis montana dalli	n	0	3	3	oewn
+oewn-Ovis_musimon-n	Ovis musimon	n	0	2	2	oewn
+oewn-Ovis_poli-n	Ovis poli	n	0	2	2	oewn
+oewn-Ovis_vignei-n	Ovis vignei	n	0	2	2	oewn
+oewn-Ovocon-n	Ovocon	n	0	1	1	oewn
+oewn-Ovral-n	Ovral	n	0	1	1	oewn
+oewn-Ovrette-n	Ovrette	n	0	1	1	oewn
+oewn-Ovulen-n	Ovulen	n	0	1	1	oewn
+oewn-Oxalis_acetosella-n	Oxalis acetosella	n	0	2	2	oewn
+oewn-Oxalis_caprina-n	Oxalis caprina	n	0	2	2	oewn
+oewn-Oxalis_cernua-n	Oxalis cernua	n	0	2	2	oewn
+oewn-Oxalis_corniculata-n	Oxalis corniculata	n	0	2	2	oewn
+oewn-Oxalis_crenata-n	Oxalis crenata	n	0	2	2	oewn
+oewn-Oxalis_pes-caprae-n	Oxalis pes-caprae	n	0	2	2	oewn
+oewn-Oxalis_tuberosa-n	Oxalis tuberosa	n	0	2	2	oewn
+oewn-Oxalis_violacea-n	Oxalis violacea	n	0	2	2	oewn
+oewn-Oxandra_lanceolata-n	Oxandra lanceolata	n	0	2	2	oewn
+oewn-Oxbridge-n	Oxbridge	n	0	1	1	oewn
+oewn-Oxford_English-n	Oxford English	n	0	2	2	oewn
+oewn-Oxford_movement-n	Oxford movement	n	0	2	2	oewn
+oewn-Oxonian-a	Oxonian	a	0	1	1	oewn
+oewn-Oxonian-n	Oxonian	n	0	1	1	oewn
+oewn-Oxydendrum_arboreum-n	Oxydendrum arboreum	n	0	2	2	oewn
+oewn-Oxylebius_pictus-n	Oxylebius pictus	n	0	2	2	oewn
+oewn-Oxytropis_lambertii-n	Oxytropis lambertii	n	0	2	2	oewn
+oewn-Oxyura_jamaicensis-n	Oxyura jamaicensis	n	0	2	2	oewn
+oewn-Oxyuranus_scutellatus-n	Oxyuranus scutellatus	n	0	2	2	oewn
+oewn-Ozark_chinkapin-n	Ozark chinkapin	n	0	2	2	oewn
+oewn-Ozark_chinquapin-n	Ozark chinquapin	n	0	2	2	oewn
+oewn-Ozark_sundrops-n	Ozark sundrops	n	0	2	2	oewn
+oewn-Ozothamnus_secundiflorus-n	Ozothamnus secundiflorus	n	0	2	2	oewn
+oewn-o-ap-clock-r	o'clock	r	0	1	1	oewn
+oewn-o-ap-er-r	o'er	r	0	1	1	oewn
+oewn-o-n	o	n	0	1	1	oewn
+oewn-o.d.-v	o.d.	v	0	1	1	oewn
+oewn-o.k.-a	o.k.	a	0	1	1	oewn
+oewn-oaf-n	oaf	n	0	1	1	oewn
+oewn-oafish-a	oafish	a	0	1	1	oewn
+oewn-oak-leaved_goosefoot-n	oak-leaved goosefoot	n	0	2	2	oewn
+oewn-oak-n	oak	n	0	1	1	oewn
+oewn-oak_apple-n	oak apple	n	0	2	2	oewn
+oewn-oak_blight-n	oak blight	n	0	2	2	oewn
+oewn-oak_chestnut-n	oak chestnut	n	0	2	2	oewn
+oewn-oak_fern-n	oak fern	n	0	2	2	oewn
+oewn-oak_tree-n	oak tree	n	0	2	2	oewn
+oewn-oaken-a	oaken	a	0	1	1	oewn
+oewn-oakleaf_goosefoot-n	oakleaf goosefoot	n	0	2	2	oewn
+oewn-oakum-n	oakum	n	0	1	1	oewn
+oewn-oar-n	oar	n	0	1	1	oewn
+oewn-oarfish-n	oarfish	n	0	1	1	oewn
+oewn-oarlock-n	oarlock	n	0	1	1	oewn
+oewn-oarsman-n	oarsman	n	0	1	1	oewn
+oewn-oarsmanship-n	oarsmanship	n	0	1	1	oewn
+oewn-oarswoman-n	oarswoman	n	0	1	1	oewn
+oewn-oasis-n	oasis	n	0	1	1	oewn
+oewn-oast-n	oast	n	0	1	1	oewn
+oewn-oast_house-n	oast house	n	0	2	2	oewn
+oewn-oat-n	oat	n	0	1	1	oewn
+oewn-oat_cell_carcinoma-n	oat cell carcinoma	n	0	3	3	oewn
+oewn-oatcake-n	oatcake	n	0	1	1	oewn
+oewn-oaten-a	oaten	a	0	1	1	oewn
+oewn-oath-n	oath	n	0	1	1	oewn
+oewn-oatmeal-n	oatmeal	n	0	1	1	oewn
+oewn-oatmeal_cookie-n	oatmeal cookie	n	0	2	2	oewn
+oewn-obbligato-n	obbligato	n	0	1	1	oewn
+oewn-obduracy-n	obduracy	n	0	1	1	oewn
+oewn-obdurate-a	obdurate	a	0	1	1	oewn
+oewn-obdurately-r	obdurately	r	0	1	1	oewn
+oewn-obeah-n	obeah	n	0	1	1	oewn
+oewn-obeche-n	obeche	n	0	1	1	oewn
+oewn-obechi-n	obechi	n	0	1	1	oewn
+oewn-obedience-n	obedience	n	0	1	1	oewn
+oewn-obedience_plant-n	obedience plant	n	0	2	2	oewn
+oewn-obedient-a	obedient	a	0	1	1	oewn
+oewn-obedient_plant-n	obedient plant	n	0	2	2	oewn
+oewn-obediently-r	obediently	r	0	1	1	oewn
+oewn-obeisance-n	obeisance	n	0	1	1	oewn
+oewn-obelion-n	obelion	n	0	1	1	oewn
+oewn-obelisk-n	obelisk	n	0	1	1	oewn
+oewn-obese-a	obese	a	0	1	1	oewn
+oewn-obesity-n	obesity	n	0	1	1	oewn
+oewn-obesity_diet-n	obesity diet	n	0	2	2	oewn
+oewn-obey-v	obey	v	0	1	1	oewn
+oewn-obfuscate-v	obfuscate	v	0	1	1	oewn
+oewn-obfuscation-n	obfuscation	n	0	1	1	oewn
+oewn-obi-n	obi	n	0	1	1	oewn
+oewn-obidoxime_chloride-n	obidoxime chloride	n	0	2	2	oewn
+oewn-obiism-n	obiism	n	0	1	1	oewn
+oewn-obit-n	obit	n	0	1	1	oewn
+oewn-obiter_dictum-n	obiter dictum	n	0	2	2	oewn
+oewn-obituary-n	obituary	n	0	1	1	oewn
+oewn-object-n	object	n	0	1	1	oewn
+oewn-object-oriented_database-n	object-oriented database	n	0	2	2	oewn
+oewn-object-oriented_database_management_system-n	object-oriented database management system	n	0	4	4	oewn
+oewn-object-oriented_programing-n	object-oriented programing	n	0	2	2	oewn
+oewn-object-oriented_programing_language-n	object-oriented programing language	n	0	3	3	oewn
+oewn-object-oriented_programming-n	object-oriented programming	n	0	2	2	oewn
+oewn-object-oriented_programming_language-n	object-oriented programming language	n	0	3	3	oewn
+oewn-object-v	object	v	0	1	1	oewn
+oewn-object_ball-n	object ball	n	0	2	2	oewn
+oewn-object_code-n	object code	n	0	2	2	oewn
+oewn-object_glass-n	object glass	n	0	2	2	oewn
+oewn-object_language-n	object language	n	0	2	2	oewn
+oewn-object_lens-n	object lens	n	0	2	2	oewn
+oewn-object_lesson-n	object lesson	n	0	2	2	oewn
+oewn-object_of_a_preposition-n	object of a preposition	n	0	4	1	oewn
+oewn-object_of_the_verb-n	object of the verb	n	0	4	1	oewn
+oewn-object_program-n	object program	n	0	2	2	oewn
+oewn-object_recognition-n	object recognition	n	0	2	2	oewn
+oewn-objectification-n	objectification	n	0	1	1	oewn
+oewn-objectify-v	objectify	v	0	1	1	oewn
+oewn-objection-n	objection	n	0	1	1	oewn
+oewn-objectionable-a	objectionable	a	0	1	1	oewn
+oewn-objectionableness-n	objectionableness	n	0	1	1	oewn
+oewn-objectionably-r	objectionably	r	0	1	1	oewn
+oewn-objective-a	objective	a	0	1	1	oewn
+oewn-objective-n	objective	n	0	1	1	oewn
+oewn-objective_case-n	objective case	n	0	2	2	oewn
+oewn-objective_lens-n	objective lens	n	0	2	2	oewn
+oewn-objectively-r	objectively	r	0	1	1	oewn
+oewn-objectiveness-n	objectiveness	n	0	1	1	oewn
+oewn-objectivity-n	objectivity	n	0	1	1	oewn
+oewn-objectivization-n	objectivization	n	0	1	1	oewn
+oewn-objector-n	objector	n	0	1	1	oewn
+oewn-objet_d-ap-art-n	objet d'art	n	0	2	2	oewn
+oewn-objurgate-v	objurgate	v	0	1	1	oewn
+oewn-objurgation-n	objurgation	n	0	1	1	oewn
+oewn-oblanceolate-a	oblanceolate	a	0	1	1	oewn
+oewn-oblanceolate_leaf-n	oblanceolate leaf	n	0	2	2	oewn
+oewn-oblate-a	oblate	a	0	1	1	oewn
+oewn-oblate-n	oblate	n	0	1	1	oewn
+oewn-oblateness-n	oblateness	n	0	1	1	oewn
+oewn-oblation-n	oblation	n	0	1	1	oewn
+oewn-obligate-a	obligate	a	0	1	1	oewn
+oewn-obligate-v	obligate	v	0	1	1	oewn
+oewn-obligate_anaerobe-n	obligate anaerobe	n	0	2	2	oewn
+oewn-obligated-a	obligated	a	0	1	1	oewn
+oewn-obligation-n	obligation	n	0	1	1	oewn
+oewn-obligational-a	obligational	a	0	1	1	oewn
+oewn-obligato-n	obligato	n	0	1	1	oewn
+oewn-obligatorily-r	obligatorily	r	0	1	1	oewn
+oewn-obligatory-a	obligatory	a	0	1	1	oewn
+oewn-oblige-v	oblige	v	0	1	1	oewn
+oewn-obliged-a	obliged	a	0	1	1	oewn
+oewn-obliger-n	obliger	n	0	1	1	oewn
+oewn-obliging-a	obliging	a	0	1	1	oewn
+oewn-obligingly-r	obligingly	r	0	1	1	oewn
+oewn-obligingness-n	obligingness	n	0	1	1	oewn
+oewn-oblique-a	oblique	a	0	1	1	oewn
+oewn-oblique-angled-a	oblique-angled	a	0	1	1	oewn
+oewn-oblique-n	oblique	n	0	1	1	oewn
+oewn-oblique_angle-n	oblique angle	n	0	2	2	oewn
+oewn-oblique_bandage-n	oblique bandage	n	0	2	2	oewn
+oewn-oblique_case-n	oblique case	n	0	2	2	oewn
+oewn-oblique_triangle-n	oblique triangle	n	0	2	2	oewn
+oewn-oblique_vein_of_the_left_atrium-n	oblique vein of the left atrium	n	0	6	2	oewn
+oewn-obliquely-r	obliquely	r	0	1	1	oewn
+oewn-obliqueness-n	obliqueness	n	0	1	1	oewn
+oewn-obliquity-n	obliquity	n	0	1	1	oewn
+oewn-obliterable-a	obliterable	a	0	1	1	oewn
+oewn-obliterate-a	obliterate	a	0	1	1	oewn
+oewn-obliterate-v	obliterate	v	0	1	1	oewn
+oewn-obliterated-a	obliterated	a	0	1	1	oewn
+oewn-obliteration-n	obliteration	n	0	1	1	oewn
+oewn-obliterator-n	obliterator	n	0	1	1	oewn
+oewn-oblivion-n	oblivion	n	0	1	1	oewn
+oewn-oblivious-a	oblivious	a	0	1	1	oewn
+oewn-obliviousness-n	obliviousness	n	0	1	1	oewn
+oewn-oblong-a	oblong	a	0	1	1	oewn
+oewn-oblong-n	oblong	n	0	1	1	oewn
+oewn-oblong_leaf-n	oblong leaf	n	0	2	2	oewn
+oewn-oblong_woodsia-n	oblong woodsia	n	0	2	2	oewn
+oewn-oblongness-n	oblongness	n	0	1	1	oewn
+oewn-obloquy-n	obloquy	n	0	1	1	oewn
+oewn-obnoxious-a	obnoxious	a	0	1	1	oewn
+oewn-obnoxiously-r	obnoxiously	r	0	1	1	oewn
+oewn-obnoxiousness-n	obnoxiousness	n	0	1	1	oewn
+oewn-obnubilate-v	obnubilate	v	0	1	1	oewn
+oewn-oboe-n	oboe	n	0	1	1	oewn
+oewn-oboe_d-ap-amore-n	oboe d'amore	n	0	2	2	oewn
+oewn-oboe_da_caccia-n	oboe da caccia	n	0	3	3	oewn
+oewn-oboist-n	oboist	n	0	1	1	oewn
+oewn-obolus-n	obolus	n	0	1	1	oewn
+oewn-obovate-a	obovate	a	0	1	1	oewn
+oewn-obovate_leaf-n	obovate leaf	n	0	2	2	oewn
+oewn-obscene-a	obscene	a	0	1	1	oewn
+oewn-obscenely-r	obscenely	r	0	1	1	oewn
+oewn-obscenity-n	obscenity	n	0	1	1	oewn
+oewn-obscurantism-n	obscurantism	n	0	1	1	oewn
+oewn-obscurantist-n	obscurantist	n	0	1	1	oewn
+oewn-obscure-a	obscure	a	0	1	1	oewn
+oewn-obscure-v	obscure	v	0	1	1	oewn
+oewn-obscurely-r	obscurely	r	0	1	1	oewn
+oewn-obscureness-n	obscureness	n	0	1	1	oewn
+oewn-obscurity-n	obscurity	n	0	1	1	oewn
+oewn-obsequious-a	obsequious	a	0	1	1	oewn
+oewn-obsequiously-r	obsequiously	r	0	1	1	oewn
+oewn-obsequiousness-n	obsequiousness	n	0	1	1	oewn
+oewn-obsequy-n	obsequy	n	0	1	1	oewn
+oewn-observable-a	observable	a	0	1	1	oewn
+oewn-observably-r	observably	r	0	1	1	oewn
+oewn-observance-n	observance	n	0	1	1	oewn
+oewn-observant-a	observant	a	0	1	1	oewn
+oewn-observantly-r	observantly	r	0	1	1	oewn
+oewn-observation-n	observation	n	0	1	1	oewn
+oewn-observation_dome-n	observation dome	n	0	2	2	oewn
+oewn-observation_post-n	observation post	n	0	2	2	oewn
+oewn-observation_station-n	observation station	n	0	2	2	oewn
+oewn-observation_tower-n	observation tower	n	0	2	2	oewn
+oewn-observational-a	observational	a	0	1	1	oewn
+oewn-observatory-n	observatory	n	0	1	1	oewn
+oewn-observe-v	observe	v	0	1	1	oewn
+oewn-observed-a	observed	a	0	1	1	oewn
+oewn-observed_fire-n	observed fire	n	0	2	2	oewn
+oewn-observer-ap-s_meridian-n	observer's meridian	n	0	2	2	oewn
+oewn-observer-n	observer	n	0	1	1	oewn
+oewn-observing-a	observing	a	0	1	1	oewn
+oewn-observingly-r	observingly	r	0	1	1	oewn
+oewn-obsess-v	obsess	v	0	1	1	oewn
+oewn-obsessed-a	obsessed	a	0	1	1	oewn
+oewn-obsession-n	obsession	n	0	1	1	oewn
+oewn-obsessional-a	obsessional	a	0	1	1	oewn
+oewn-obsessionally-r	obsessionally	r	0	1	1	oewn
+oewn-obsessive-a	obsessive	a	0	1	1	oewn
+oewn-obsessive-compulsive-a	obsessive-compulsive	a	0	1	1	oewn
+oewn-obsessive-compulsive-n	obsessive-compulsive	n	0	1	1	oewn
+oewn-obsessive-compulsive_disorder-n	obsessive-compulsive disorder	n	0	2	2	oewn
+oewn-obsessive-compulsive_personality-n	obsessive-compulsive personality	n	0	2	2	oewn
+oewn-obsessive-n	obsessive	n	0	1	1	oewn
+oewn-obsessively-r	obsessively	r	0	1	1	oewn
+oewn-obsessiveness-n	obsessiveness	n	0	1	1	oewn
+oewn-obsessivity-n	obsessivity	n	0	1	1	oewn
+oewn-obsidian-n	obsidian	n	0	1	1	oewn
+oewn-obsolesce-v	obsolesce	v	0	1	1	oewn
+oewn-obsolescence-n	obsolescence	n	0	1	1	oewn
+oewn-obsolescent-a	obsolescent	a	0	1	1	oewn
+oewn-obsolete-a	obsolete	a	0	1	1	oewn
+oewn-obsoleteness-n	obsoleteness	n	0	1	1	oewn
+oewn-obstacle-n	obstacle	n	0	1	1	oewn
+oewn-obstacle_race-n	obstacle race	n	0	2	2	oewn
+oewn-obstetric-a	obstetric	a	0	1	1	oewn
+oewn-obstetrical-a	obstetrical	a	0	1	1	oewn
+oewn-obstetrical_delivery-n	obstetrical delivery	n	0	2	2	oewn
+oewn-obstetrical_toad-n	obstetrical toad	n	0	2	2	oewn
+oewn-obstetrician-n	obstetrician	n	0	1	1	oewn
+oewn-obstetrics-n	obstetrics	n	0	1	1	oewn
+oewn-obstinacy-n	obstinacy	n	0	1	1	oewn
+oewn-obstinance-n	obstinance	n	0	1	1	oewn
+oewn-obstinate-a	obstinate	a	0	1	1	oewn
+oewn-obstinate-v	obstinate	v	0	1	1	oewn
+oewn-obstinately-r	obstinately	r	0	1	1	oewn
+oewn-obstipate-v	obstipate	v	0	1	1	oewn
+oewn-obstipation-n	obstipation	n	0	1	1	oewn
+oewn-obstreperous-a	obstreperous	a	0	1	1	oewn
+oewn-obstreperously-r	obstreperously	r	0	1	1	oewn
+oewn-obstreperousness-n	obstreperousness	n	0	1	1	oewn
+oewn-obstruct-v	obstruct	v	0	1	1	oewn
+oewn-obstructed-a	obstructed	a	0	1	1	oewn
+oewn-obstructer-n	obstructer	n	0	1	1	oewn
+oewn-obstruction-n	obstruction	n	0	1	1	oewn
+oewn-obstruction_of_justice-n	obstruction of justice	n	0	3	1	oewn
+oewn-obstructionism-n	obstructionism	n	0	1	1	oewn
+oewn-obstructionist-n	obstructionist	n	0	1	1	oewn
+oewn-obstructive-a	obstructive	a	0	1	1	oewn
+oewn-obstructive_shock-n	obstructive shock	n	0	2	2	oewn
+oewn-obstructively-r	obstructively	r	0	1	1	oewn
+oewn-obstructor-n	obstructor	n	0	1	1	oewn
+oewn-obstruent-n	obstruent	n	0	1	1	oewn
+oewn-obtain-v	obtain	v	0	1	1	oewn
+oewn-obtainable-a	obtainable	a	0	1	1	oewn
+oewn-obtainment-n	obtainment	n	0	1	1	oewn
+oewn-obtention-n	obtention	n	0	1	1	oewn
+oewn-obtrude-v	obtrude	v	0	1	1	oewn
+oewn-obtrude_upon-v	obtrude upon	v	0	2	1	oewn
+oewn-obtrusive-a	obtrusive	a	0	1	1	oewn
+oewn-obtrusively-r	obtrusively	r	0	1	1	oewn
+oewn-obtrusiveness-n	obtrusiveness	n	0	1	1	oewn
+oewn-obtund-v	obtund	v	0	1	1	oewn
+oewn-obturate-v	obturate	v	0	1	1	oewn
+oewn-obturator-n	obturator	n	0	1	1	oewn
+oewn-obturator_vein-n	obturator vein	n	0	2	2	oewn
+oewn-obtuse-a	obtuse	a	0	1	1	oewn
+oewn-obtuse-angled_triangle-n	obtuse-angled triangle	n	0	2	2	oewn
+oewn-obtuse_angle-n	obtuse angle	n	0	2	2	oewn
+oewn-obtuse_leaf-n	obtuse leaf	n	0	2	2	oewn
+oewn-obtuse_triangle-n	obtuse triangle	n	0	2	2	oewn
+oewn-obtusely-r	obtusely	r	0	1	1	oewn
+oewn-obtuseness-n	obtuseness	n	0	1	1	oewn
+oewn-obverse-n	obverse	n	0	1	1	oewn
+oewn-obviate-v	obviate	v	0	1	1	oewn
+oewn-obviating-a	obviating	a	0	1	1	oewn
+oewn-obviation-n	obviation	n	0	1	1	oewn
+oewn-obvious-a	obvious	a	0	1	1	oewn
+oewn-obviously-r	obviously	r	0	1	1	oewn
+oewn-obviousness-n	obviousness	n	0	1	1	oewn
+oewn-oca-n	oca	n	0	1	1	oewn
+oewn-ocarina-n	ocarina	n	0	1	1	oewn
+oewn-occasion-n	occasion	n	0	1	1	oewn
+oewn-occasion-v	occasion	v	0	1	1	oewn
+oewn-occasional-a	occasional	a	0	1	1	oewn
+oewn-occasionally-r	occasionally	r	0	1	1	oewn
+oewn-occasions-n	occasions	n	0	1	1	oewn
+oewn-occident-n	occident	n	0	1	1	oewn
+oewn-occidental-a	occidental	a	0	1	1	oewn
+oewn-occidentalise-v	occidentalise	v	0	1	1	oewn
+oewn-occidentalism-n	occidentalism	n	0	1	1	oewn
+oewn-occidentalize-v	occidentalize	v	0	1	1	oewn
+oewn-occipital-a	occipital	a	0	1	1	oewn
+oewn-occipital_bone-n	occipital bone	n	0	2	2	oewn
+oewn-occipital_cortex-n	occipital cortex	n	0	2	2	oewn
+oewn-occipital_gyrus-n	occipital gyrus	n	0	2	2	oewn
+oewn-occipital_lobe-n	occipital lobe	n	0	2	2	oewn
+oewn-occipital_protuberance-n	occipital protuberance	n	0	2	2	oewn
+oewn-occipital_vein-n	occipital vein	n	0	2	2	oewn
+oewn-occipitomastoid_suture-n	occipitomastoid suture	n	0	2	2	oewn
+oewn-occiput-n	occiput	n	0	1	1	oewn
+oewn-occlude-v	occlude	v	0	1	1	oewn
+oewn-occluded-a	occluded	a	0	1	1	oewn
+oewn-occluded_front-n	occluded front	n	0	2	2	oewn
+oewn-occlusion-n	occlusion	n	0	1	1	oewn
+oewn-occlusive-a	occlusive	a	0	1	1	oewn
+oewn-occlusive-n	occlusive	n	0	1	1	oewn
+oewn-occult-a	occult	a	0	1	1	oewn
+oewn-occult-n	occult	n	0	1	1	oewn
+oewn-occult-v	occult	v	0	1	1	oewn
+oewn-occult_arts-n	occult arts	n	0	2	2	oewn
+oewn-occultation-n	occultation	n	0	1	1	oewn
+oewn-occultism-n	occultism	n	0	1	1	oewn
+oewn-occultist-n	occultist	n	0	1	1	oewn
+oewn-occupancy-n	occupancy	n	0	1	1	oewn
+oewn-occupancy_rate-n	occupancy rate	n	0	2	2	oewn
+oewn-occupant-n	occupant	n	0	1	1	oewn
+oewn-occupation-n	occupation	n	0	1	1	oewn
+oewn-occupation_licence-n	occupation licence	n	0	2	2	oewn
+oewn-occupation_license-n	occupation license	n	0	2	2	oewn
+oewn-occupational-a	occupational	a	0	1	1	oewn
+oewn-occupational_disease-n	occupational disease	n	0	2	2	oewn
+oewn-occupational_group-n	occupational group	n	0	2	2	oewn
+oewn-occupational_hazard-n	occupational hazard	n	0	2	2	oewn
+oewn-occupational_safety_and_health_act-n	occupational safety and health act	n	0	5	5	oewn
+oewn-occupational_therapy-n	occupational therapy	n	0	2	2	oewn
+oewn-occupied-a	occupied	a	0	1	1	oewn
+oewn-occupier-n	occupier	n	0	1	1	oewn
+oewn-occupy-v	occupy	v	0	1	1	oewn
+oewn-occur-v	occur	v	0	1	1	oewn
+oewn-occurrence-n	occurrence	n	0	1	1	oewn
+oewn-occurrent-a	occurrent	a	0	1	1	oewn
+oewn-occurrent-n	occurrent	n	0	1	1	oewn
+oewn-ocean-n	ocean	n	0	1	1	oewn
+oewn-ocean_bottom-n	ocean bottom	n	0	2	2	oewn
+oewn-ocean_current-n	ocean current	n	0	2	2	oewn
+oewn-ocean_floor-n	ocean floor	n	0	2	2	oewn
+oewn-ocean_liner-n	ocean liner	n	0	2	2	oewn
+oewn-ocean_perch-n	ocean perch	n	0	2	2	oewn
+oewn-ocean_pout-n	ocean pout	n	0	2	2	oewn
+oewn-ocean_sunfish-n	ocean sunfish	n	0	2	2	oewn
+oewn-ocean_trip-n	ocean trip	n	0	2	2	oewn
+oewn-oceanaut-n	oceanaut	n	0	1	1	oewn
+oewn-oceanfront-n	oceanfront	n	0	1	1	oewn
+oewn-oceangoing-a	oceangoing	a	0	1	1	oewn
+oewn-oceanic-a	oceanic	a	0	1	1	oewn
+oewn-oceanic_abyss-n	oceanic abyss	n	0	2	2	oewn
+oewn-oceanic_bird-n	oceanic bird	n	0	2	2	oewn
+oewn-oceanic_bonito-n	oceanic bonito	n	0	2	2	oewn
+oewn-oceanic_whitetip_shark-n	oceanic whitetip shark	n	0	3	3	oewn
+oewn-oceanographer-n	oceanographer	n	0	1	1	oewn
+oewn-oceanography-n	oceanography	n	0	1	1	oewn
+oewn-oceanology-n	oceanology	n	0	1	1	oewn
+oewn-ocellated-a	ocellated	a	0	1	1	oewn
+oewn-ocellated_turkey-n	ocellated turkey	n	0	2	2	oewn
+oewn-ocellus-n	ocellus	n	0	1	1	oewn
+oewn-ocelot-n	ocelot	n	0	1	1	oewn
+oewn-ocher-a	ocher	a	0	1	1	oewn
+oewn-ocher-n	ocher	n	0	1	1	oewn
+oewn-ochlocracy-n	ochlocracy	n	0	1	1	oewn
+oewn-ochre-a	ochre	a	0	1	1	oewn
+oewn-ochre-n	ochre	n	0	1	1	oewn
+oewn-ochronosis-n	ochronosis	n	0	1	1	oewn
+oewn-oconee_bells-n	oconee bells	n	0	2	2	oewn
+oewn-ocotillo-n	ocotillo	n	0	1	1	oewn
+oewn-octad-n	octad	n	0	1	1	oewn
+oewn-octadecanoic_acid-n	octadecanoic acid	n	0	2	2	oewn
+oewn-octagon-n	octagon	n	0	1	1	oewn
+oewn-octagonal-a	octagonal	a	0	1	1	oewn
+oewn-octahedron-n	octahedron	n	0	1	1	oewn
+oewn-octal-a	octal	a	0	1	1	oewn
+oewn-octal_digit-n	octal digit	n	0	2	2	oewn
+oewn-octal_notation-n	octal notation	n	0	2	2	oewn
+oewn-octal_number_system-n	octal number system	n	0	3	3	oewn
+oewn-octal_numeration_system-n	octal numeration system	n	0	3	3	oewn
+oewn-octameter-n	octameter	n	0	1	1	oewn
+oewn-octane-n	octane	n	0	1	1	oewn
+oewn-octane_number-n	octane number	n	0	2	2	oewn
+oewn-octane_rating-n	octane rating	n	0	2	2	oewn
+oewn-octanedioic_acid-n	octanedioic acid	n	0	2	2	oewn
+oewn-octangular-a	octangular	a	0	1	1	oewn
+oewn-octant-n	octant	n	0	1	1	oewn
+oewn-octatonic_scale-n	octatonic scale	n	0	2	2	oewn
+oewn-octave-n	octave	n	0	1	1	oewn
+oewn-octavo-n	octavo	n	0	1	1	oewn
+oewn-octet-n	octet	n	0	1	1	oewn
+oewn-octette-n	octette	n	0	1	1	oewn
+oewn-octillion-n	octillion	n	0	1	1	oewn
+oewn-octogenarian-a	octogenarian	a	0	1	1	oewn
+oewn-octogenarian-n	octogenarian	n	0	1	1	oewn
+oewn-octonary-n	octonary	n	0	1	1	oewn
+oewn-octopod-n	octopod	n	0	1	1	oewn
+oewn-octopus-n	octopus	n	0	1	1	oewn
+oewn-octoroon-n	octoroon	n	0	1	1	oewn
+oewn-octosyllabic-a	octosyllabic	a	0	1	1	oewn
+oewn-octosyllable-n	octosyllable	n	0	1	1	oewn
+oewn-octroi-n	octroi	n	0	1	1	oewn
+oewn-octuple-a	octuple	a	0	1	1	oewn
+oewn-ocular-a	ocular	a	0	1	1	oewn
+oewn-ocular-n	ocular	n	0	1	1	oewn
+oewn-ocular_helmet-n	ocular helmet	n	0	2	2	oewn
+oewn-ocular_muscle-n	ocular muscle	n	0	2	2	oewn
+oewn-oculism-n	oculism	n	0	1	1	oewn
+oewn-oculist-n	oculist	n	0	1	1	oewn
+oewn-oculomotor-n	oculomotor	n	0	1	1	oewn
+oewn-oculomotor_nerve-n	oculomotor nerve	n	0	2	2	oewn
+oewn-oculopharyngeal_muscular_dystrophy-n	oculopharyngeal muscular dystrophy	n	0	3	3	oewn
+oewn-oculus-n	oculus	n	0	1	1	oewn
+oewn-oculus_dexter-n	oculus dexter	n	0	2	2	oewn
+oewn-oculus_sinister-n	oculus sinister	n	0	2	2	oewn
+oewn-odalisque-n	odalisque	n	0	1	1	oewn
+oewn-odd-a	odd	a	0	1	1	oewn
+oewn-odd-even_check-n	odd-even check	n	0	2	2	oewn
+oewn-odd-job-a	odd-job	a	0	1	1	oewn
+oewn-odd-job_man-n	odd-job man	n	0	2	2	oewn
+oewn-odd-job_woman-n	odd-job woman	n	0	2	2	oewn
+oewn-odd-leg_caliper-n	odd-leg caliper	n	0	2	2	oewn
+oewn-odd-pinnate-a	odd-pinnate	a	0	1	1	oewn
+oewn-odd-pinnate_leaf-n	odd-pinnate leaf	n	0	2	2	oewn
+oewn-odd-toed_ungulate-n	odd-toed ungulate	n	0	2	2	oewn
+oewn-odd_fellow-n	odd fellow	n	0	2	2	oewn
+oewn-odd_fish-n	odd fish	n	0	2	2	oewn
+oewn-odd_man_out-n	odd man out	n	0	3	3	oewn
+oewn-oddball-n	oddball	n	0	1	1	oewn
+oewn-oddish-a	oddish	a	0	1	1	oewn
+oewn-oddity-n	oddity	n	0	1	1	oewn
+oewn-oddly-r	oddly	r	0	1	1	oewn
+oewn-oddment-n	oddment	n	0	1	1	oewn
+oewn-oddments-n	oddments	n	0	1	1	oewn
+oewn-oddness-n	oddness	n	0	1	1	oewn
+oewn-odds-maker-n	odds-maker	n	0	1	1	oewn
+oewn-odds-n	odds	n	0	1	1	oewn
+oewn-odds-on-a	odds-on	a	0	1	1	oewn
+oewn-odds_and_ends-n	odds and ends	n	0	3	3	oewn
+oewn-ode-n	ode	n	0	1	1	oewn
+oewn-odious-a	odious	a	0	1	1	oewn
+oewn-odiously-r	odiously	r	0	1	1	oewn
+oewn-odiousness-n	odiousness	n	0	1	1	oewn
+oewn-odist-n	odist	n	0	1	1	oewn
+oewn-odium-n	odium	n	0	1	1	oewn
+oewn-odometer-n	odometer	n	0	1	1	oewn
+oewn-odonate-n	odonate	n	0	1	1	oewn
+oewn-odontalgia-n	odontalgia	n	0	1	1	oewn
+oewn-odontiasis-n	odontiasis	n	0	1	1	oewn
+oewn-odontoglossum-n	odontoglossum	n	0	1	1	oewn
+oewn-odontoid_process-n	odontoid process	n	0	2	2	oewn
+oewn-odontology-n	odontology	n	0	1	1	oewn
+oewn-odor-n	odor	n	0	1	1	oewn
+oewn-odoriferous-a	odoriferous	a	0	1	1	oewn
+oewn-odorize-v	odorize	v	0	1	1	oewn
+oewn-odorless-a	odorless	a	0	1	1	oewn
+oewn-odorous-a	odorous	a	0	1	1	oewn
+oewn-odour-n	odour	n	0	1	1	oewn
+oewn-odourise-v	odourise	v	0	1	1	oewn
+oewn-odourless-a	odourless	a	0	1	1	oewn
+oewn-odynophagia-n	odynophagia	n	0	1	1	oewn
+oewn-odyssey-n	odyssey	n	0	1	1	oewn
+oewn-oecumenic-a	oecumenic	a	0	1	1	oewn
+oewn-oecumenical-a	oecumenical	a	0	1	1	oewn
+oewn-oecumenism-n	oecumenism	n	0	1	1	oewn
+oewn-oedema-n	oedema	n	0	1	1	oewn
+oewn-oedometer-n	oedometer	n	0	1	1	oewn
+oewn-oeil_de_boeuf-n	oeil de boeuf	n	0	3	1	oewn
+oewn-oenologist-n	oenologist	n	0	1	1	oewn
+oewn-oenology-n	oenology	n	0	1	1	oewn
+oewn-oenomel-n	oenomel	n	0	1	1	oewn
+oewn-oenophile-n	oenophile	n	0	1	1	oewn
+oewn-oersted-n	oersted	n	0	1	1	oewn
+oewn-oesophageal_reflux-n	oesophageal reflux	n	0	2	2	oewn
+oewn-oesophageal_veins-n	oesophageal veins	n	0	2	2	oewn
+oewn-oesophagitis-n	oesophagitis	n	0	1	1	oewn
+oewn-oesophagogastric_junction-n	oesophagogastric junction	n	0	2	2	oewn
+oewn-oesophagoscope-n	oesophagoscope	n	0	1	1	oewn
+oewn-oesophagus-n	oesophagus	n	0	1	1	oewn
+oewn-oestradiol-n	oestradiol	n	0	1	1	oewn
+oewn-oestriol-n	oestriol	n	0	1	1	oewn
+oewn-oestrogen-n	oestrogen	n	0	1	1	oewn
+oewn-oestrone-n	oestrone	n	0	1	1	oewn
+oewn-oestrus-n	oestrus	n	0	1	1	oewn
+oewn-oeuvre-n	oeuvre	n	0	1	1	oewn
+oewn-of_a_sudden-r	of a sudden	r	0	3	3	oewn
+oewn-of_age-a	of age	a	0	2	2	oewn
+oewn-of_all_time-r	of all time	r	0	3	3	oewn
+oewn-of_course-r	of course	r	0	2	2	oewn
+oewn-of_import-a	of import	a	0	2	2	oewn
+oewn-of_late-r	of late	r	0	2	2	oewn
+oewn-of_necessity-r	of necessity	r	0	2	2	oewn
+oewn-of_sound_mind-a	of sound mind	a	0	3	3	oewn
+oewn-of_the_essence-a	of the essence	a	0	3	3	oewn
+oewn-of_unsound_mind-a	of unsound mind	a	0	3	3	oewn
+oewn-off-a	off	a	0	1	1	oewn
+oewn-off-and-on-a	off-and-on	a	0	1	1	oewn
+oewn-off-axis_reflector-n	off-axis reflector	n	0	2	2	oewn
+oewn-off-base-a	off-base	a	0	1	1	oewn
+oewn-off-center-a	off-center	a	0	1	1	oewn
+oewn-off-centered-a	off-centered	a	0	1	1	oewn
+oewn-off-color-a	off-color	a	0	1	1	oewn
+oewn-off-colour-a	off-colour	a	0	1	1	oewn
+oewn-off-day-n	off-day	n	0	1	1	oewn
+oewn-off-grid-a	off-grid	a	0	1	1	oewn
+oewn-off-guard-a	off-guard	a	0	1	1	oewn
+oewn-off-hand-r	off-hand	r	0	1	1	oewn
+oewn-off-key-a	off-key	a	0	1	1	oewn
+oewn-off-licence-n	off-licence	n	0	1	1	oewn
+oewn-off-limits-a	off-limits	a	0	1	1	oewn
+oewn-off-line-a	off-line	a	0	1	1	oewn
+oewn-off-line_equipment-n	off-line equipment	n	0	2	2	oewn
+oewn-off-line_operation-n	off-line operation	n	0	2	2	oewn
+oewn-off-putting-a	off-putting	a	0	1	1	oewn
+oewn-off-r	off	r	0	1	1	oewn
+oewn-off-roader-n	off-roader	n	0	1	1	oewn
+oewn-off-season-n	off-season	n	0	1	1	oewn
+oewn-off-site-a	off-site	a	0	1	1	oewn
+oewn-off-speed_pitch-n	off-speed pitch	n	0	2	2	oewn
+oewn-off-street-a	off-street	a	0	1	1	oewn
+oewn-off-the-clock-r	off-the-clock	r	0	1	1	oewn
+oewn-off-the-cuff-a	off-the-cuff	a	0	1	1	oewn
+oewn-off-the-peg-a	off-the-peg	a	0	1	1	oewn
+oewn-off-the-rack-a	off-the-rack	a	0	1	1	oewn
+oewn-off-the-shelf-a	off-the-shelf	a	0	1	1	oewn
+oewn-off-the-shoulder-a	off-the-shoulder	a	0	1	1	oewn
+oewn-off-the-wall-a	off-the-wall	a	0	1	1	oewn
+oewn-off-v	off	v	0	1	1	oewn
+oewn-off-white-a	off-white	a	0	1	1	oewn
+oewn-off-white-n	off-white	n	0	1	1	oewn
+oewn-off_and_on-r	off and on	r	0	3	3	oewn
+oewn-off_fleek-a	off fleek	a	0	2	2	oewn
+oewn-off_guard-a	off guard	a	0	2	2	oewn
+oewn-off_her_guard-a	off her guard	a	0	3	3	oewn
+oewn-off_his_guard-a	off his guard	a	0	3	3	oewn
+oewn-off_one-ap-s_guard-a	off one's guard	a	0	3	3	oewn
+oewn-off_the_beaten_path-r	off the beaten path	r	0	4	4	oewn
+oewn-off_the_beaten_track-a	off the beaten track	a	0	4	4	oewn
+oewn-off_the_beaten_track-r	off the beaten track	r	0	4	4	oewn
+oewn-off_the_cuff-r	off the cuff	r	0	3	3	oewn
+oewn-off_the_hook-a	off the hook	a	0	3	3	oewn
+oewn-off_the_record-r	off the record	r	0	3	3	oewn
+oewn-off_year-n	off year	n	0	2	2	oewn
+oewn-off_your_guard-a	off your guard	a	0	3	3	oewn
+oewn-offal-n	offal	n	0	1	1	oewn
+oewn-offbeat-a	offbeat	a	0	1	1	oewn
+oewn-offbeat-n	offbeat	n	0	1	1	oewn
+oewn-offence-n	offence	n	0	1	1	oewn
+oewn-offenceless-a	offenceless	a	0	1	1	oewn
+oewn-offend-v	offend	v	0	1	1	oewn
+oewn-offended-a	offended	a	0	1	1	oewn
+oewn-offender-n	offender	n	0	1	1	oewn
+oewn-offending-a	offending	a	0	1	1	oewn
+oewn-offense-n	offense	n	0	1	1	oewn
+oewn-offenseless-a	offenseless	a	0	1	1	oewn
+oewn-offensive-a	offensive	a	0	1	1	oewn
+oewn-offensive-n	offensive	n	0	1	1	oewn
+oewn-offensive_activity-n	offensive activity	n	0	2	2	oewn
+oewn-offensively-r	offensively	r	0	1	1	oewn
+oewn-offensiveness-n	offensiveness	n	0	1	1	oewn
+oewn-offer-n	offer	n	0	1	1	oewn
+oewn-offer-v	offer	v	0	1	1	oewn
+oewn-offer_price-n	offer price	n	0	2	2	oewn
+oewn-offer_up-v	offer up	v	0	2	1	oewn
+oewn-offerer-n	offerer	n	0	1	1	oewn
+oewn-offering-n	offering	n	0	1	1	oewn
+oewn-offeror-n	offeror	n	0	1	1	oewn
+oewn-offertory-n	offertory	n	0	1	1	oewn
+oewn-offhand-a	offhand	a	0	1	1	oewn
+oewn-offhand-r	offhand	r	0	1	1	oewn
+oewn-offhanded-a	offhanded	a	0	1	1	oewn
+oewn-offhanded-r	offhanded	r	0	1	1	oewn
+oewn-offhandedly-r	offhandedly	r	0	1	1	oewn
+oewn-office-bearer-n	office-bearer	n	0	1	1	oewn
+oewn-office-n	office	n	0	1	1	oewn
+oewn-office_block-n	office block	n	0	2	2	oewn
+oewn-office_boy-n	office boy	n	0	2	2	oewn
+oewn-office_building-n	office building	n	0	2	2	oewn
+oewn-office_furniture-n	office furniture	n	0	2	2	oewn
+oewn-office_staff-n	office staff	n	0	2	2	oewn
+oewn-officeholder-n	officeholder	n	0	1	1	oewn
+oewn-officer-ap-s_mess-n	officer's mess	n	0	2	2	oewn
+oewn-officer-n	officer	n	0	1	1	oewn
+oewn-officer-v	officer	v	0	1	1	oewn
+oewn-official-a	official	a	0	1	1	oewn
+oewn-official-n	official	n	0	1	1	oewn
+oewn-official_document-n	official document	n	0	2	2	oewn
+oewn-official_emissary-n	official emissary	n	0	2	2	oewn
+oewn-official_immunity-n	official immunity	n	0	2	2	oewn
+oewn-officialdom-n	officialdom	n	0	1	1	oewn
+oewn-officialese-n	officialese	n	0	1	1	oewn
+oewn-officialise-v	officialise	v	0	1	1	oewn
+oewn-officialize-v	officialize	v	0	1	1	oewn
+oewn-officially-r	officially	r	0	1	1	oewn
+oewn-officiant-n	officiant	n	0	1	1	oewn
+oewn-officiate-v	officiate	v	0	1	1	oewn
+oewn-officiating-n	officiating	n	0	1	1	oewn
+oewn-officiation-n	officiation	n	0	1	1	oewn
+oewn-officious-a	officious	a	0	1	1	oewn
+oewn-officiously-r	officiously	r	0	1	1	oewn
+oewn-officiousness-n	officiousness	n	0	1	1	oewn
+oewn-offing-n	offing	n	0	1	1	oewn
+oewn-offish-a	offish	a	0	1	1	oewn
+oewn-offload-v	offload	v	0	1	1	oewn
+oewn-offprint-n	offprint	n	0	1	1	oewn
+oewn-offsaddle-v	offsaddle	v	0	1	1	oewn
+oewn-offset-n	offset	n	0	1	1	oewn
+oewn-offset-v	offset	v	0	1	1	oewn
+oewn-offset_lithography-n	offset lithography	n	0	2	2	oewn
+oewn-offset_press-n	offset press	n	0	2	2	oewn
+oewn-offset_printing-n	offset printing	n	0	2	2	oewn
+oewn-offsetting_balance-n	offsetting balance	n	0	2	2	oewn
+oewn-offshoot-n	offshoot	n	0	1	1	oewn
+oewn-offshore-a	offshore	a	0	1	1	oewn
+oewn-offshore-r	offshore	r	0	1	1	oewn
+oewn-offshore_rig-n	offshore rig	n	0	2	2	oewn
+oewn-offside-a	offside	a	0	1	1	oewn
+oewn-offside-n	offside	n	0	1	1	oewn
+oewn-offside-r	offside	r	0	1	1	oewn
+oewn-offsides-a	offsides	a	0	1	1	oewn
+oewn-offspring-n	offspring	n	0	1	1	oewn
+oewn-offstage-a	offstage	a	0	1	1	oewn
+oewn-offstage-n	offstage	n	0	1	1	oewn
+oewn-offstage-r	offstage	r	0	1	1	oewn
+oewn-oft-r	oft	r	0	1	1	oewn
+oewn-often-r	often	r	0	1	1	oewn
+oewn-oftener-r	oftener	r	0	1	1	oewn
+oewn-oftenness-n	oftenness	n	0	1	1	oewn
+oewn-oftentimes-r	oftentimes	r	0	1	1	oewn
+oewn-ofttimes-r	ofttimes	r	0	1	1	oewn
+oewn-ogdoad-n	ogdoad	n	0	1	1	oewn
+oewn-ogee-n	ogee	n	0	1	1	oewn
+oewn-ogee_arch-n	ogee arch	n	0	2	2	oewn
+oewn-ogive-n	ogive	n	0	1	1	oewn
+oewn-ogle-v	ogle	v	0	1	1	oewn
+oewn-ogler-n	ogler	n	0	1	1	oewn
+oewn-ogre-n	ogre	n	0	1	1	oewn
+oewn-ogress-n	ogress	n	0	1	1	oewn
+oewn-ohm-n	ohm	n	0	1	1	oewn
+oewn-ohmage-n	ohmage	n	0	1	1	oewn
+oewn-ohmic-a	ohmic	a	0	1	1	oewn
+oewn-ohmic_resistance-n	ohmic resistance	n	0	2	2	oewn
+oewn-ohmmeter-n	ohmmeter	n	0	1	1	oewn
+oewn-oil-bearing-a	oil-bearing	a	0	1	1	oewn
+oewn-oil-fired-a	oil-fired	a	0	1	1	oewn
+oewn-oil-hardened_steel-n	oil-hardened steel	n	0	2	2	oewn
+oewn-oil-industry_analyst-n	oil-industry analyst	n	0	2	2	oewn
+oewn-oil-n	oil	n	0	1	1	oewn
+oewn-oil-rich_seed-n	oil-rich seed	n	0	2	2	oewn
+oewn-oil-soluble-a	oil-soluble	a	0	1	1	oewn
+oewn-oil-v	oil	v	0	1	1	oewn
+oewn-oil-water_interface-n	oil-water interface	n	0	2	2	oewn
+oewn-oil_beetle-n	oil beetle	n	0	2	2	oewn
+oewn-oil_burner-n	oil burner	n	0	2	2	oewn
+oewn-oil_business-n	oil business	n	0	2	2	oewn
+oewn-oil_cake-n	oil cake	n	0	2	2	oewn
+oewn-oil_cartel-n	oil cartel	n	0	2	2	oewn
+oewn-oil_change-n	oil change	n	0	2	2	oewn
+oewn-oil_color-n	oil color	n	0	2	2	oewn
+oewn-oil_colour-n	oil colour	n	0	2	2	oewn
+oewn-oil_company-n	oil company	n	0	2	2	oewn
+oewn-oil_conservation-n	oil conservation	n	0	2	2	oewn
+oewn-oil_drying_agent-n	oil drying agent	n	0	3	3	oewn
+oewn-oil_filter-n	oil filter	n	0	2	2	oewn
+oewn-oil_furnace-n	oil furnace	n	0	2	2	oewn
+oewn-oil_future-n	oil future	n	0	2	2	oewn
+oewn-oil_geologist-n	oil geologist	n	0	2	2	oewn
+oewn-oil_gland-n	oil gland	n	0	2	2	oewn
+oewn-oil_heater-n	oil heater	n	0	2	2	oewn
+oewn-oil_industry-n	oil industry	n	0	2	2	oewn
+oewn-oil_lamp-n	oil lamp	n	0	2	2	oewn
+oewn-oil_meal-n	oil meal	n	0	2	2	oewn
+oewn-oil_nut-n	oil nut	n	0	2	2	oewn
+oewn-oil_of_anise-n	oil of anise	n	0	3	1	oewn
+oewn-oil_of_cloves-n	oil of cloves	n	0	3	1	oewn
+oewn-oil_of_turpentine-n	oil of turpentine	n	0	3	1	oewn
+oewn-oil_of_vitriol-n	oil of vitriol	n	0	3	1	oewn
+oewn-oil_of_wintergreen-n	oil of wintergreen	n	0	3	1	oewn
+oewn-oil_operator-n	oil operator	n	0	2	2	oewn
+oewn-oil_paint-n	oil paint	n	0	2	2	oewn
+oewn-oil_painter-n	oil painter	n	0	2	2	oewn
+oewn-oil_painting-n	oil painting	n	0	2	2	oewn
+oewn-oil_palm-n	oil palm	n	0	2	2	oewn
+oewn-oil_pipeline-n	oil pipeline	n	0	2	2	oewn
+oewn-oil_pressure-n	oil pressure	n	0	2	2	oewn
+oewn-oil_production-n	oil production	n	0	2	2	oewn
+oewn-oil_pump-n	oil pump	n	0	2	2	oewn
+oewn-oil_refinery-n	oil refinery	n	0	2	2	oewn
+oewn-oil_rig-n	oil rig	n	0	2	2	oewn
+oewn-oil_rigger-n	oil rigger	n	0	2	2	oewn
+oewn-oil_shale-n	oil shale	n	0	2	2	oewn
+oewn-oil_slick-n	oil slick	n	0	2	2	oewn
+oewn-oil_stain-n	oil stain	n	0	2	2	oewn
+oewn-oil_tanker-n	oil tanker	n	0	2	2	oewn
+oewn-oil_tycoon-n	oil tycoon	n	0	2	2	oewn
+oewn-oil_well-n	oil well	n	0	2	2	oewn
+oewn-oil_woman-n	oil woman	n	0	2	2	oewn
+oewn-oil_worker-n	oil worker	n	0	2	2	oewn
+oewn-oilbird-n	oilbird	n	0	1	1	oewn
+oewn-oilcan-n	oilcan	n	0	1	1	oewn
+oewn-oilcloth-n	oilcloth	n	0	1	1	oewn
+oewn-oiled-a	oiled	a	0	1	1	oewn
+oewn-oiler-n	oiler	n	0	1	1	oewn
+oewn-oilfield-n	oilfield	n	0	1	1	oewn
+oewn-oilfish-n	oilfish	n	0	1	1	oewn
+oewn-oiliness-n	oiliness	n	0	1	1	oewn
+oewn-oilman-n	oilman	n	0	1	1	oewn
+oewn-oilpaper-n	oilpaper	n	0	1	1	oewn
+oewn-oilrig-n	oilrig	n	0	1	1	oewn
+oewn-oilseed-n	oilseed	n	0	1	1	oewn
+oewn-oilskin-n	oilskin	n	0	1	1	oewn
+oewn-oilstone-n	oilstone	n	0	1	1	oewn
+oewn-oilstove-n	oilstove	n	0	1	1	oewn
+oewn-oilwoman-n	oilwoman	n	0	1	1	oewn
+oewn-oily-a	oily	a	0	1	1	oewn
+oewn-oink-n	oink	n	0	1	1	oewn
+oewn-oink-v	oink	v	0	1	1	oewn
+oewn-ointment-n	ointment	n	0	1	1	oewn
+oewn-ok-a	ok	a	0	1	1	oewn
+oewn-oka-n	oka	n	0	1	1	oewn
+oewn-okapi-n	okapi	n	0	1	1	oewn
+oewn-okay-a	okay	a	0	1	1	oewn
+oewn-okay-n	okay	n	0	1	1	oewn
+oewn-okay-r	okay	r	0	1	1	oewn
+oewn-okay-v	okay	v	0	1	1	oewn
+oewn-okeh-n	okeh	n	0	1	1	oewn
+oewn-okey-n	okey	n	0	1	1	oewn
+oewn-okra-n	okra	n	0	1	1	oewn
+oewn-okra_plant-n	okra plant	n	0	2	2	oewn
+oewn-ola-n	ola	n	0	1	1	oewn
+oewn-old-a	old	a	0	1	1	oewn
+oewn-old-age_insurance-n	old-age insurance	n	0	2	2	oewn
+oewn-old-age_pension-n	old-age pension	n	0	2	2	oewn
+oewn-old-age_pensioner-n	old-age pensioner	n	0	2	2	oewn
+oewn-old-fashioned-a	old-fashioned	a	0	1	1	oewn
+oewn-old-fashionedness-n	old-fashionedness	n	0	1	1	oewn
+oewn-old-field_toadflax-n	old-field toadflax	n	0	2	2	oewn
+oewn-old-hat-a	old-hat	a	0	1	1	oewn
+oewn-old-line-a	old-line	a	0	1	1	oewn
+oewn-old-maid-ap-s_bonnet-n	old-maid's bonnet	n	0	2	2	oewn
+oewn-old-maidish-a	old-maidish	a	0	1	1	oewn
+oewn-old-man-of-the-woods-n	old-man-of-the-woods	n	0	1	1	oewn
+oewn-old-n	old	n	0	1	1	oewn
+oewn-old-time-a	old-time	a	0	1	1	oewn
+oewn-old-timer-n	old-timer	n	0	1	1	oewn
+oewn-old-womanish-a	old-womanish	a	0	1	1	oewn
+oewn-old-world-a	old-world	a	0	1	1	oewn
+oewn-old_age-n	old age	n	0	2	2	oewn
+oewn-old_bag-n	old bag	n	0	2	2	oewn
+oewn-old_boy-n	old boy	n	0	2	2	oewn
+oewn-old_boy_network-n	old boy network	n	0	3	3	oewn
+oewn-old_codger-n	old codger	n	0	2	2	oewn
+oewn-old_country-n	old country	n	0	2	2	oewn
+oewn-old_fashioned-n	old fashioned	n	0	2	2	oewn
+oewn-old_geezer-n	old geezer	n	0	2	2	oewn
+oewn-old_gold-n	old gold	n	0	2	2	oewn
+oewn-old_growth-n	old growth	n	0	2	2	oewn
+oewn-old_guard-n	old guard	n	0	2	2	oewn
+oewn-old_hand-n	old hand	n	0	2	2	oewn
+oewn-old_lady-n	old lady	n	0	2	2	oewn
+oewn-old_maid-n	old maid	n	0	2	2	oewn
+oewn-old_maid_flower-n	old maid flower	n	0	3	3	oewn
+oewn-old_man-ap-s_beard-n	old man's beard	n	0	3	3	oewn
+oewn-old_man-n	old man	n	0	2	2	oewn
+oewn-old_man_of_the_mountain-n	old man of the mountain	n	0	5	2	oewn
+oewn-old_master-n	old master	n	0	2	2	oewn
+oewn-old_money-n	old money	n	0	2	2	oewn
+oewn-old_person-n	old person	n	0	2	2	oewn
+oewn-old_rose-n	old rose	n	0	2	2	oewn
+oewn-old_salt-n	old salt	n	0	2	2	oewn
+oewn-old_school-n	old school	n	0	2	2	oewn
+oewn-old_school_tie-n	old school tie	n	0	3	3	oewn
+oewn-old_sledge-n	old sledge	n	0	2	2	oewn
+oewn-old_squaw-n	old squaw	n	0	2	2	oewn
+oewn-old_stager-n	old stager	n	0	2	2	oewn
+oewn-old_style-n	old style	n	0	2	2	oewn
+oewn-old_style_font-n	old style font	n	0	3	3	oewn
+oewn-old_times-n	old times	n	0	2	2	oewn
+oewn-old_witch_grass-n	old witch grass	n	0	3	3	oewn
+oewn-old_witchgrass-n	old witchgrass	n	0	2	2	oewn
+oewn-old_wives-ap-_tale-n	old wives' tale	n	0	3	3	oewn
+oewn-old_woman-n	old woman	n	0	2	2	oewn
+oewn-olde_worlde-a	olde worlde	a	0	2	2	oewn
+oewn-olden-a	olden	a	0	1	1	oewn
+oewn-older-a	older	a	0	1	1	oewn
+oewn-oldie-n	oldie	n	0	1	1	oewn
+oewn-oldish-a	oldish	a	0	1	1	oewn
+oewn-oldline-a	oldline	a	0	1	1	oewn
+oewn-oldness-n	oldness	n	0	1	1	oewn
+oewn-oldster-n	oldster	n	0	1	1	oewn
+oewn-oldtimer-n	oldtimer	n	0	1	1	oewn
+oewn-oldwench-n	oldwench	n	0	1	1	oewn
+oewn-oldwife-n	oldwife	n	0	1	1	oewn
+oewn-oleaceous-a	oleaceous	a	0	1	1	oewn
+oewn-oleaginous-a	oleaginous	a	0	1	1	oewn
+oewn-oleaginousness-n	oleaginousness	n	0	1	1	oewn
+oewn-oleander-n	oleander	n	0	1	1	oewn
+oewn-oleander_fern-n	oleander fern	n	0	2	2	oewn
+oewn-oleaster-n	oleaster	n	0	1	1	oewn
+oewn-olecranon-n	olecranon	n	0	1	1	oewn
+oewn-olecranon_process-n	olecranon process	n	0	2	2	oewn
+oewn-olefin-n	olefin	n	0	1	1	oewn
+oewn-olefine-n	olefine	n	0	1	1	oewn
+oewn-oleic_acid-n	oleic acid	n	0	2	2	oewn
+oewn-olein-n	olein	n	0	1	1	oewn
+oewn-oleo-n	oleo	n	0	1	1	oewn
+oewn-oleo_oil-n	oleo oil	n	0	2	2	oewn
+oewn-oleography-n	oleography	n	0	1	1	oewn
+oewn-oleomargarine-n	oleomargarine	n	0	1	1	oewn
+oewn-oleophilic-a	oleophilic	a	0	1	1	oewn
+oewn-oleophobic-a	oleophobic	a	0	1	1	oewn
+oewn-oleoresin-n	oleoresin	n	0	1	1	oewn
+oewn-oleoresin_capsicum-n	oleoresin capsicum	n	0	2	2	oewn
+oewn-olfaction-n	olfaction	n	0	1	1	oewn
+oewn-olfactive-a	olfactive	a	0	1	1	oewn
+oewn-olfactology-n	olfactology	n	0	1	1	oewn
+oewn-olfactory-a	olfactory	a	0	1	1	oewn
+oewn-olfactory_brain-n	olfactory brain	n	0	2	2	oewn
+oewn-olfactory_bulb-n	olfactory bulb	n	0	2	2	oewn
+oewn-olfactory_impairment-n	olfactory impairment	n	0	2	2	oewn
+oewn-olfactory_modality-n	olfactory modality	n	0	2	2	oewn
+oewn-olfactory_nerve-n	olfactory nerve	n	0	2	2	oewn
+oewn-olfactory_organ-n	olfactory organ	n	0	2	2	oewn
+oewn-olfactory_perception-n	olfactory perception	n	0	2	2	oewn
+oewn-olfactory_property-n	olfactory property	n	0	2	2	oewn
+oewn-olfactory_sensation-n	olfactory sensation	n	0	2	2	oewn
+oewn-olibanum-n	olibanum	n	0	1	1	oewn
+oewn-oligarch-n	oligarch	n	0	1	1	oewn
+oewn-oligarchic-a	oligarchic	a	0	1	1	oewn
+oewn-oligarchical-a	oligarchical	a	0	1	1	oewn
+oewn-oligarchy-n	oligarchy	n	0	1	1	oewn
+oewn-oligo-n	oligo	n	0	1	1	oewn
+oewn-oligochaete-n	oligochaete	n	0	1	1	oewn
+oewn-oligochaete_worm-n	oligochaete worm	n	0	2	2	oewn
+oewn-oligoclase-n	oligoclase	n	0	1	1	oewn
+oewn-oligodactyly-n	oligodactyly	n	0	1	1	oewn
+oewn-oligodendria-n	oligodendria	n	0	1	1	oewn
+oewn-oligodendrocyte-n	oligodendrocyte	n	0	1	1	oewn
+oewn-oligodendroglia-n	oligodendroglia	n	0	1	1	oewn
+oewn-oligodontia-n	oligodontia	n	0	1	1	oewn
+oewn-oligomenorrhea-n	oligomenorrhea	n	0	1	1	oewn
+oewn-oligonucleotide-n	oligonucleotide	n	0	1	1	oewn
+oewn-oligopoly-n	oligopoly	n	0	1	1	oewn
+oewn-oligosaccharide-n	oligosaccharide	n	0	1	1	oewn
+oewn-oligospermia-n	oligospermia	n	0	1	1	oewn
+oewn-oliguria-n	oliguria	n	0	1	1	oewn
+oewn-olive-a	olive	a	0	1	1	oewn
+oewn-olive-brown-a	olive-brown	a	0	1	1	oewn
+oewn-olive-colored-a	olive-colored	a	0	1	1	oewn
+oewn-olive-coloured-a	olive-coloured	a	0	1	1	oewn
+oewn-olive-drab-a	olive-drab	a	0	1	1	oewn
+oewn-olive-drab_uniform-n	olive-drab uniform	n	0	2	2	oewn
+oewn-olive-gray-a	olive-gray	a	0	1	1	oewn
+oewn-olive-green-n	olive-green	n	0	1	1	oewn
+oewn-olive-grey-a	olive-grey	a	0	1	1	oewn
+oewn-olive-like-a	olive-like	a	0	1	1	oewn
+oewn-olive-n	olive	n	0	1	1	oewn
+oewn-olive-sized-a	olive-sized	a	0	1	1	oewn
+oewn-olive-tree_agaric-n	olive-tree agaric	n	0	2	2	oewn
+oewn-olive_branch-n	olive branch	n	0	2	2	oewn
+oewn-olive_brown-n	olive brown	n	0	2	2	oewn
+oewn-olive_drab-n	olive drab	n	0	2	2	oewn
+oewn-olive_green-n	olive green	n	0	2	2	oewn
+oewn-olive_oil-n	olive oil	n	0	2	2	oewn
+oewn-olive_ridley-n	olive ridley	n	0	2	2	oewn
+oewn-olive_tree-n	olive tree	n	0	2	2	oewn
+oewn-olivelike-a	olivelike	a	0	1	1	oewn
+oewn-olivenite-n	olivenite	n	0	1	1	oewn
+oewn-olivine-n	olivine	n	0	1	1	oewn
+oewn-olla-n	olla	n	0	1	1	oewn
+oewn-olla_podrida-n	olla podrida	n	0	2	2	oewn
+oewn-olm-n	olm	n	0	1	1	oewn
+oewn-ology-n	ology	n	0	1	1	oewn
+oewn-olympian-a	olympian	a	0	1	1	oewn
+oewn-olympic_salamander-n	olympic salamander	n	0	2	2	oewn
+oewn-omasum-n	omasum	n	0	1	1	oewn
+oewn-ombu-n	ombu	n	0	1	1	oewn
+oewn-ombudsman-n	ombudsman	n	0	1	1	oewn
+oewn-ombudsperson-n	ombudsperson	n	0	1	1	oewn
+oewn-ombudswoman-n	ombudswoman	n	0	1	1	oewn
+oewn-omega-3-n	omega-3	n	0	1	1	oewn
+oewn-omega-3_fatty_acid-n	omega-3 fatty acid	n	0	3	3	oewn
+oewn-omega-6-n	omega-6	n	0	1	1	oewn
+oewn-omega-6_fatty_acid-n	omega-6 fatty acid	n	0	3	3	oewn
+oewn-omega-n	omega	n	0	1	1	oewn
+oewn-omelet-n	omelet	n	0	1	1	oewn
+oewn-omelet_pan-n	omelet pan	n	0	2	2	oewn
+oewn-omelette-n	omelette	n	0	1	1	oewn
+oewn-omelette_pan-n	omelette pan	n	0	2	2	oewn
+oewn-omen-n	omen	n	0	1	1	oewn
+oewn-omen-v	omen	v	0	1	1	oewn
+oewn-omental_bursa-n	omental bursa	n	0	2	2	oewn
+oewn-omentum-n	omentum	n	0	1	1	oewn
+oewn-omeprazole-n	omeprazole	n	0	1	1	oewn
+oewn-omerta-n	omerta	n	0	1	1	oewn
+oewn-omicron-n	omicron	n	0	1	1	oewn
+oewn-ominous-a	ominous	a	0	1	1	oewn
+oewn-ominously-r	ominously	r	0	1	1	oewn
+oewn-ominousness-n	ominousness	n	0	1	1	oewn
+oewn-omissible-a	omissible	a	0	1	1	oewn
+oewn-omission-n	omission	n	0	1	1	oewn
+oewn-omissive-a	omissive	a	0	1	1	oewn
+oewn-omit-v	omit	v	0	1	1	oewn
+oewn-ommastrephes-n	ommastrephes	n	0	1	1	oewn
+oewn-ommatidium-n	ommatidium	n	0	1	1	oewn
+oewn-omnibus-a	omnibus	a	0	1	1	oewn
+oewn-omnibus-n	omnibus	n	0	1	1	oewn
+oewn-omnidirectional-a	omnidirectional	a	0	1	1	oewn
+oewn-omnidirectional_antenna-n	omnidirectional antenna	n	0	2	2	oewn
+oewn-omnidirectional_radio_range-n	omnidirectional radio range	n	0	3	3	oewn
+oewn-omnidirectional_range-n	omnidirectional range	n	0	2	2	oewn
+oewn-omnifarious-a	omnifarious	a	0	1	1	oewn
+oewn-omnipotence-n	omnipotence	n	0	1	1	oewn
+oewn-omnipotent-a	omnipotent	a	0	1	1	oewn
+oewn-omnipresence-n	omnipresence	n	0	1	1	oewn
+oewn-omnipresent-a	omnipresent	a	0	1	1	oewn
+oewn-omnirange-n	omnirange	n	0	1	1	oewn
+oewn-omniscience-n	omniscience	n	0	1	1	oewn
+oewn-omniscient-a	omniscient	a	0	1	1	oewn
+oewn-omnium-gatherum-n	omnium-gatherum	n	0	1	1	oewn
+oewn-omnivore-n	omnivore	n	0	1	1	oewn
+oewn-omnivorous-a	omnivorous	a	0	1	1	oewn
+oewn-omnivorousness-n	omnivorousness	n	0	1	1	oewn
+oewn-omophagia-n	omophagia	n	0	1	1	oewn
+oewn-omphalocele-n	omphalocele	n	0	1	1	oewn
+oewn-omphalos-n	omphalos	n	0	1	1	oewn
+oewn-omphaloskepsis-n	omphaloskepsis	n	0	1	1	oewn
+oewn-omphalus-n	omphalus	n	0	1	1	oewn
+oewn-on-a	on	a	0	1	1	oewn
+oewn-on-going-a	on-going	a	0	1	1	oewn
+oewn-on-key-a	on-key	a	0	1	1	oewn
+oewn-on-license-n	on-license	n	0	1	1	oewn
+oewn-on-line-a	on-line	a	0	1	1	oewn
+oewn-on-line_database-n	on-line database	n	0	2	2	oewn
+oewn-on-off_switch-n	on-off switch	n	0	2	2	oewn
+oewn-on-r	on	r	0	1	1	oewn
+oewn-on-site-a	on-site	a	0	1	1	oewn
+oewn-on-sl-off_switch-n	on/off switch	n	0	2	2	oewn
+oewn-on-street-a	on-street	a	0	1	1	oewn
+oewn-on-the-job-a	on-the-job	a	0	1	1	oewn
+oewn-on-the-scene-a	on-the-scene	a	0	1	1	oewn
+oewn-on-the-spot-a	on-the-spot	a	0	1	1	oewn
+oewn-on_a_higher_floor-r	on a higher floor	r	0	4	4	oewn
+oewn-on_a_lower_floor-r	on a lower floor	r	0	4	4	oewn
+oewn-on_a_regular_basis-r	on a regular basis	r	0	4	4	oewn
+oewn-on_air-r	on air	r	0	2	2	oewn
+oewn-on_all_fours-r	on all fours	r	0	3	3	oewn
+oewn-on_an_individual_basis-r	on an individual basis	r	0	4	4	oewn
+oewn-on_an_irregular_basis-r	on an irregular basis	r	0	4	4	oewn
+oewn-on_and_off-r	on and off	r	0	3	3	oewn
+oewn-on_approval-r	on approval	r	0	2	2	oewn
+oewn-on_average-r	on average	r	0	2	2	oewn
+oewn-on_board-r	on board	r	0	2	2	oewn
+oewn-on_camera-r	on camera	r	0	2	2	oewn
+oewn-on_earth-r	on earth	r	0	2	2	oewn
+oewn-on_faith-r	on faith	r	0	2	2	oewn
+oewn-on_fire-a	on fire	a	0	2	2	oewn
+oewn-on_fleek-a	on fleek	a	0	2	2	oewn
+oewn-on_guard-a	on guard	a	0	2	2	oewn
+oewn-on_hand-a	on hand	a	0	2	2	oewn
+oewn-on_it-r	on it	r	0	2	2	oewn
+oewn-on_occasion-r	on occasion	r	0	2	2	oewn
+oewn-on_one-ap-s_coattails-r	on one's coattails	r	0	3	3	oewn
+oewn-on_one-ap-s_guard-a	on one's guard	a	0	3	3	oewn
+oewn-on_one_hand-r	on one hand	r	0	3	3	oewn
+oewn-on_paper-r	on paper	r	0	2	2	oewn
+oewn-on_purpose-r	on purpose	r	0	2	2	oewn
+oewn-on_request-r	on request	r	0	2	2	oewn
+oewn-on_tap-a	on tap	a	0	2	2	oewn
+oewn-on_that-r	on that	r	0	2	2	oewn
+oewn-on_the_Q.T.-r	on the Q.T.	r	0	3	3	oewn
+oewn-on_the_QT-r	on the QT	r	0	3	3	oewn
+oewn-on_the_average-r	on the average	r	0	3	3	oewn
+oewn-on_the_button-a	on the button	a	0	3	3	oewn
+oewn-on_the_button-r	on the button	r	0	3	3	oewn
+oewn-on_the_coattails-r	on the coattails	r	0	3	3	oewn
+oewn-on_the_contrary-r	on the contrary	r	0	3	3	oewn
+oewn-on_the_dot-r	on the dot	r	0	3	3	oewn
+oewn-on_the_face_of_it-r	on the face of it	r	0	5	5	oewn
+oewn-on_the_fence-a	on the fence	a	0	3	3	oewn
+oewn-on_the_fly-r	on the fly	r	0	3	3	oewn
+oewn-on_the_go-a	on the go	a	0	3	3	oewn
+oewn-on_the_hook-a	on the hook	a	0	3	3	oewn
+oewn-on_the_job-a	on the job	a	0	3	3	oewn
+oewn-on_the_loose-a	on the loose	a	0	3	3	oewn
+oewn-on_the_nose-a	on the nose	a	0	3	3	oewn
+oewn-on_the_nose-r	on the nose	r	0	3	3	oewn
+oewn-on_the_offensive-a	on the offensive	a	0	3	3	oewn
+oewn-on_the_one_hand-r	on the one hand	r	0	4	4	oewn
+oewn-on_the_other_hand-r	on the other hand	r	0	4	4	oewn
+oewn-on_the_qui_vive-n	on the qui vive	n	0	4	4	oewn
+oewn-on_the_road-n	on the road	n	0	3	3	oewn
+oewn-on_the_side-r	on the side	r	0	3	3	oewn
+oewn-on_the_sly-r	on the sly	r	0	3	3	oewn
+oewn-on_the_spot-r	on the spot	r	0	3	3	oewn
+oewn-on_the_spur_of_the_moment-r	on the spur of the moment	r	0	6	6	oewn
+oewn-on_the_table-a	on the table	a	0	3	3	oewn
+oewn-on_the_way-r	on the way	r	0	3	3	oewn
+oewn-on_the_whole-r	on the whole	r	0	3	3	oewn
+oewn-on_the_wing-r	on the wing	r	0	3	3	oewn
+oewn-on_time-a	on time	a	0	2	2	oewn
+oewn-on_time-r	on time	r	0	2	2	oewn
+oewn-on_tour-n	on tour	n	0	2	2	oewn
+oewn-on_trial-a	on trial	a	0	2	2	oewn
+oewn-on_your_guard-a	on your guard	a	0	3	3	oewn
+oewn-onager-n	onager	n	0	1	1	oewn
+oewn-onanism-n	onanism	n	0	1	1	oewn
+oewn-onanist-n	onanist	n	0	1	1	oewn
+oewn-once-over-n	once-over	n	0	1	1	oewn
+oewn-once-r	once	r	0	1	1	oewn
+oewn-once_again-r	once again	r	0	2	2	oewn
+oewn-once_and_for_all-r	once and for all	r	0	4	4	oewn
+oewn-once_in_a_while-r	once in a while	r	0	4	4	oewn
+oewn-once_more-r	once more	r	0	2	2	oewn
+oewn-onchocerciasis-n	onchocerciasis	n	0	1	1	oewn
+oewn-oncidium-n	oncidium	n	0	1	1	oewn
+oewn-oncogene-n	oncogene	n	0	1	1	oewn
+oewn-oncologic-a	oncologic	a	0	1	1	oewn
+oewn-oncological-a	oncological	a	0	1	1	oewn
+oewn-oncologist-n	oncologist	n	0	1	1	oewn
+oewn-oncology-n	oncology	n	0	1	1	oewn
+oewn-oncoming-a	oncoming	a	0	1	1	oewn
+oewn-oncoming-n	oncoming	n	0	1	1	oewn
+oewn-one-a	one	a	0	1	1	oewn
+oewn-one-act_play-n	one-act play	n	0	2	2	oewn
+oewn-one-acter-n	one-acter	n	0	1	1	oewn
+oewn-one-and-one-n	one-and-one	n	0	1	1	oewn
+oewn-one-armed-a	one-armed	a	0	1	1	oewn
+oewn-one-armed_bandit-n	one-armed bandit	n	0	2	2	oewn
+oewn-one-billionth-n	one-billionth	n	0	1	1	oewn
+oewn-one-celled-a	one-celled	a	0	1	1	oewn
+oewn-one-dimensional-a	one-dimensional	a	0	1	1	oewn
+oewn-one-dimensional_language-n	one-dimensional language	n	0	2	2	oewn
+oewn-one-dimensionality-n	one-dimensionality	n	0	1	1	oewn
+oewn-one-eared-a	one-eared	a	0	1	1	oewn
+oewn-one-eighth-n	one-eighth	n	0	1	1	oewn
+oewn-one-eyed-a	one-eyed	a	0	1	1	oewn
+oewn-one-fifth-n	one-fifth	n	0	1	1	oewn
+oewn-one-flowered_pyrola-n	one-flowered pyrola	n	0	2	2	oewn
+oewn-one-flowered_wintergreen-n	one-flowered wintergreen	n	0	2	2	oewn
+oewn-one-fourth-n	one-fourth	n	0	1	1	oewn
+oewn-one-half-n	one-half	n	0	1	1	oewn
+oewn-one-handed-a	one-handed	a	0	1	1	oewn
+oewn-one-hitter-n	one-hitter	n	0	1	1	oewn
+oewn-one-horse-a	one-horse	a	0	1	1	oewn
+oewn-one-humped-a	one-humped	a	0	1	1	oewn
+oewn-one-hundred-millionth-n	one-hundred-millionth	n	0	1	1	oewn
+oewn-one-hundred-thousandth-n	one-hundred-thousandth	n	0	1	1	oewn
+oewn-one-hundredth-n	one-hundredth	n	0	1	1	oewn
+oewn-one-liner-n	one-liner	n	0	1	1	oewn
+oewn-one-man-a	one-man	a	0	1	1	oewn
+oewn-one-man_rule-n	one-man rule	n	0	2	2	oewn
+oewn-one-member-a	one-member	a	0	1	1	oewn
+oewn-one-millionth-n	one-millionth	n	0	1	1	oewn
+oewn-one-n	one	n	0	1	1	oewn
+oewn-one-night_stand-n	one-night stand	n	0	2	2	oewn
+oewn-one-ninth-n	one-ninth	n	0	1	1	oewn
+oewn-one-off-n	one-off	n	0	1	1	oewn
+oewn-one-on-one-a	one-on-one	a	0	1	1	oewn
+oewn-one-on-one-r	one-on-one	r	0	1	1	oewn
+oewn-one-party-a	one-party	a	0	1	1	oewn
+oewn-one-person-a	one-person	a	0	1	1	oewn
+oewn-one-piece-a	one-piece	a	0	1	1	oewn
+oewn-one-quadrillionth-n	one-quadrillionth	n	0	1	1	oewn
+oewn-one-quarter-n	one-quarter	n	0	1	1	oewn
+oewn-one-quintillionth-n	one-quintillionth	n	0	1	1	oewn
+oewn-one-seed-a	one-seed	a	0	1	1	oewn
+oewn-one-seeded-a	one-seeded	a	0	1	1	oewn
+oewn-one-seventh-n	one-seventh	n	0	1	1	oewn
+oewn-one-sided-a	one-sided	a	0	1	1	oewn
+oewn-one-sidedly-r	one-sidedly	r	0	1	1	oewn
+oewn-one-sixteenth-n	one-sixteenth	n	0	1	1	oewn
+oewn-one-sixth-n	one-sixth	n	0	1	1	oewn
+oewn-one-sixtieth-n	one-sixtieth	n	0	1	1	oewn
+oewn-one-sixty-fourth-n	one-sixty-fourth	n	0	1	1	oewn
+oewn-one-spot-n	one-spot	n	0	1	1	oewn
+oewn-one-step-n	one-step	n	0	1	1	oewn
+oewn-one-step-v	one-step	v	0	1	1	oewn
+oewn-one-ten-thousandth-n	one-ten-thousandth	n	0	1	1	oewn
+oewn-one-tenth-n	one-tenth	n	0	1	1	oewn
+oewn-one-third-n	one-third	n	0	1	1	oewn
+oewn-one-thirty-second-n	one-thirty-second	n	0	1	1	oewn
+oewn-one-thousandth-n	one-thousandth	n	0	1	1	oewn
+oewn-one-time-a	one-time	a	0	1	1	oewn
+oewn-one-to-one-a	one-to-one	a	0	1	1	oewn
+oewn-one-trillionth-n	one-trillionth	n	0	1	1	oewn
+oewn-one-twelfth-n	one-twelfth	n	0	1	1	oewn
+oewn-one-upmanship-n	one-upmanship	n	0	1	1	oewn
+oewn-one-way-a	one-way	a	0	1	1	oewn
+oewn-one-way_light_time-n	one-way light time	n	0	3	3	oewn
+oewn-one-way_street-n	one-way street	n	0	2	2	oewn
+oewn-one-winged-a	one-winged	a	0	1	1	oewn
+oewn-one-woman-a	one-woman	a	0	1	1	oewn
+oewn-one-year-a	one-year	a	0	1	1	oewn
+oewn-one-year-old-a	one-year-old	a	0	1	1	oewn
+oewn-one_C-n	one C	n	0	2	2	oewn
+oewn-one_after_another-r	one after another	r	0	3	3	oewn
+oewn-one_after_the_other-r	one after the other	r	0	4	4	oewn
+oewn-one_and_only-a	one and only	a	0	3	3	oewn
+oewn-one_at_a_time-r	one at a time	r	0	4	4	oewn
+oewn-one_by_one-r	one by one	r	0	3	3	oewn
+oewn-one_dollar_bill-n	one dollar bill	n	0	3	3	oewn
+oewn-one_hundred-a	one hundred	a	0	2	2	oewn
+oewn-one_hundred_eighty-a	one hundred eighty	a	0	3	3	oewn
+oewn-one_hundred_fifteen-a	one hundred fifteen	a	0	3	3	oewn
+oewn-one_hundred_fifty-a	one hundred fifty	a	0	3	3	oewn
+oewn-one_hundred_fifty-five-a	one hundred fifty-five	a	0	3	3	oewn
+oewn-one_hundred_five-a	one hundred five	a	0	3	3	oewn
+oewn-one_hundred_forty-a	one hundred forty	a	0	3	3	oewn
+oewn-one_hundred_forty-five-a	one hundred forty-five	a	0	3	3	oewn
+oewn-one_hundred_ninety-a	one hundred ninety	a	0	3	3	oewn
+oewn-one_hundred_one-a	one hundred one	a	0	3	3	oewn
+oewn-one_hundred_seventy-a	one hundred seventy	a	0	3	3	oewn
+oewn-one_hundred_seventy-five-a	one hundred seventy-five	a	0	3	3	oewn
+oewn-one_hundred_sixty-a	one hundred sixty	a	0	3	3	oewn
+oewn-one_hundred_sixty-five-a	one hundred sixty-five	a	0	3	3	oewn
+oewn-one_hundred_ten-a	one hundred ten	a	0	3	3	oewn
+oewn-one_hundred_thirty-a	one hundred thirty	a	0	3	3	oewn
+oewn-one_hundred_thirty-five-a	one hundred thirty-five	a	0	3	3	oewn
+oewn-one_hundred_twenty-a	one hundred twenty	a	0	3	3	oewn
+oewn-one_hundred_twenty-five-a	one hundred twenty-five	a	0	3	3	oewn
+oewn-one_iron-n	one iron	n	0	2	2	oewn
+oewn-one_million_million-n	one million million	n	0	3	3	oewn
+oewn-one_million_million_million-n	one million million million	n	0	4	4	oewn
+oewn-one_of_the_boys-n	one of the boys	n	0	4	1	oewn
+oewn-one_percent-n	one percent	n	0	2	2	oewn
+oewn-one_shot-n	one shot	n	0	2	2	oewn
+oewn-one_thousand-a	one thousand	a	0	2	2	oewn
+oewn-one_thousand-n	one thousand	n	0	2	2	oewn
+oewn-one_thousand_million-n	one thousand million	n	0	3	3	oewn
+oewn-one_thousand_thousand-n	one thousand thousand	n	0	3	3	oewn
+oewn-one_time-r	one time	r	0	2	2	oewn
+oewn-oneiric-a	oneiric	a	0	1	1	oewn
+oewn-oneirism-n	oneirism	n	0	1	1	oewn
+oewn-oneiromancer-n	oneiromancer	n	0	1	1	oewn
+oewn-oneiromancy-n	oneiromancy	n	0	1	1	oewn
+oewn-oneness-n	oneness	n	0	1	1	oewn
+oewn-onerous-a	onerous	a	0	1	1	oewn
+oewn-onerously-r	onerously	r	0	1	1	oewn
+oewn-onerousness-n	onerousness	n	0	1	1	oewn
+oewn-onetime-a	onetime	a	0	1	1	oewn
+oewn-ongoing-a	ongoing	a	0	1	1	oewn
+oewn-ongoing_evaluation-n	ongoing evaluation	n	0	2	2	oewn
+oewn-onion-n	onion	n	0	1	1	oewn
+oewn-onion_bagel-n	onion bagel	n	0	2	2	oewn
+oewn-onion_bread-n	onion bread	n	0	2	2	oewn
+oewn-onion_butter-n	onion butter	n	0	2	2	oewn
+oewn-onion_dome-n	onion dome	n	0	2	2	oewn
+oewn-onion_louse-n	onion louse	n	0	2	2	oewn
+oewn-onion_mildew-n	onion mildew	n	0	2	2	oewn
+oewn-onion_plant-n	onion plant	n	0	2	2	oewn
+oewn-onion_roll-n	onion roll	n	0	2	2	oewn
+oewn-onion_salt-n	onion salt	n	0	2	2	oewn
+oewn-onion_smut-n	onion smut	n	0	2	2	oewn
+oewn-onion_stem-n	onion stem	n	0	2	2	oewn
+oewn-onion_thrips-n	onion thrips	n	0	2	2	oewn
+oewn-onion_yellow-dwarf_virus-n	onion yellow-dwarf virus	n	0	3	3	oewn
+oewn-onion_yellow_dwarf-n	onion yellow dwarf	n	0	3	3	oewn
+oewn-onionskin-n	onionskin	n	0	1	1	oewn
+oewn-onkos-n	onkos	n	0	1	1	oewn
+oewn-online-a	online	a	0	1	1	oewn
+oewn-online-r	online	r	0	1	1	oewn
+oewn-onlooker-n	onlooker	n	0	1	1	oewn
+oewn-only-a	only	a	0	1	1	oewn
+oewn-only-r	only	r	0	1	1	oewn
+oewn-only_too-r	only too	r	0	2	2	oewn
+oewn-onomancer-n	onomancer	n	0	1	1	oewn
+oewn-onomancy-n	onomancy	n	0	1	1	oewn
+oewn-onomastic-a	onomastic	a	0	1	1	oewn
+oewn-onomasticon-n	onomasticon	n	0	1	1	oewn
+oewn-onomastics-n	onomastics	n	0	1	1	oewn
+oewn-onomatomania-n	onomatomania	n	0	1	1	oewn
+oewn-onomatopoeia-n	onomatopoeia	n	0	1	1	oewn
+oewn-onomatopoeic-a	onomatopoeic	a	0	1	1	oewn
+oewn-onomatopoeical-a	onomatopoeical	a	0	1	1	oewn
+oewn-onomatopoetic-a	onomatopoetic	a	0	1	1	oewn
+oewn-onrush-n	onrush	n	0	1	1	oewn
+oewn-onset-n	onset	n	0	1	1	oewn
+oewn-onshore-a	onshore	a	0	1	1	oewn
+oewn-onshore-r	onshore	r	0	1	1	oewn
+oewn-onside-a	onside	a	0	1	1	oewn
+oewn-onslaught-n	onslaught	n	0	1	1	oewn
+oewn-onstage-a	onstage	a	0	1	1	oewn
+oewn-onstage-r	onstage	r	0	1	1	oewn
+oewn-onto_function-n	onto function	n	0	2	2	oewn
+oewn-ontogenesis-n	ontogenesis	n	0	1	1	oewn
+oewn-ontogenetic-a	ontogenetic	a	0	1	1	oewn
+oewn-ontogeny-n	ontogeny	n	0	1	1	oewn
+oewn-ontological-a	ontological	a	0	1	1	oewn
+oewn-ontology-n	ontology	n	0	1	1	oewn
+oewn-onus-n	onus	n	0	1	1	oewn
+oewn-onward-r	onward	r	0	1	1	oewn
+oewn-onward_motion-n	onward motion	n	0	2	2	oewn
+oewn-onwards-r	onwards	r	0	1	1	oewn
+oewn-onycholysis-n	onycholysis	n	0	1	1	oewn
+oewn-onychophoran-n	onychophoran	n	0	1	1	oewn
+oewn-onychosis-n	onychosis	n	0	1	1	oewn
+oewn-onymous-a	onymous	a	0	1	1	oewn
+oewn-onyx-n	onyx	n	0	1	1	oewn
+oewn-onyx_marble-n	onyx marble	n	0	2	2	oewn
+oewn-onyxis-n	onyxis	n	0	1	1	oewn
+oewn-oocyte-n	oocyte	n	0	1	1	oewn
+oewn-oodles-n	oodles	n	0	1	1	oewn
+oewn-oogenesis-n	oogenesis	n	0	1	1	oewn
+oewn-ooh-v	ooh	v	0	1	1	oewn
+oewn-oology-n	oology	n	0	1	1	oewn
+oewn-oolong-n	oolong	n	0	1	1	oewn
+oewn-oomph-n	oomph	n	0	1	1	oewn
+oewn-oophorectomy-n	oophorectomy	n	0	1	1	oewn
+oewn-oophoritis-n	oophoritis	n	0	1	1	oewn
+oewn-oophorosalpingectomy-n	oophorosalpingectomy	n	0	1	1	oewn
+oewn-oosphere-n	oosphere	n	0	1	1	oewn
+oewn-oospore-n	oospore	n	0	1	1	oewn
+oewn-ootid-n	ootid	n	0	1	1	oewn
+oewn-ooze-n	ooze	n	0	1	1	oewn
+oewn-ooze-v	ooze	v	0	1	1	oewn
+oewn-ooze_leather-n	ooze leather	n	0	2	2	oewn
+oewn-ooze_out-v	ooze out	v	0	2	1	oewn
+oewn-ooze_through-v	ooze through	v	0	2	1	oewn
+oewn-oozing-a	oozing	a	0	1	1	oewn
+oewn-oozing-n	oozing	n	0	1	1	oewn
+oewn-oozy-a	oozy	a	0	1	1	oewn
+oewn-op_art-n	op art	n	0	2	2	oewn
+oewn-opacification-n	opacification	n	0	1	1	oewn
+oewn-opacify-v	opacify	v	0	1	1	oewn
+oewn-opacity-n	opacity	n	0	1	1	oewn
+oewn-opah-n	opah	n	0	1	1	oewn
+oewn-opal-n	opal	n	0	1	1	oewn
+oewn-opal_glass-n	opal glass	n	0	2	2	oewn
+oewn-opalesce-v	opalesce	v	0	1	1	oewn
+oewn-opalescence-n	opalescence	n	0	1	1	oewn
+oewn-opalescent-a	opalescent	a	0	1	1	oewn
+oewn-opaline-a	opaline	a	0	1	1	oewn
+oewn-opalise-v	opalise	v	0	1	1	oewn
+oewn-opalize-v	opalize	v	0	1	1	oewn
+oewn-opaque-a	opaque	a	0	1	1	oewn
+oewn-opaque_gem-n	opaque gem	n	0	2	2	oewn
+oewn-opaquely-r	opaquely	r	0	1	1	oewn
+oewn-opaqueness-n	opaqueness	n	0	1	1	oewn
+oewn-open-a	open	a	0	1	1	oewn
+oewn-open-air-a	open-air	a	0	1	1	oewn
+oewn-open-air_market-n	open-air market	n	0	2	2	oewn
+oewn-open-air_marketplace-n	open-air marketplace	n	0	2	2	oewn
+oewn-open-and-shut-a	open-and-shut	a	0	1	1	oewn
+oewn-open-angle_glaucoma-n	open-angle glaucoma	n	0	2	2	oewn
+oewn-open-chain-a	open-chain	a	0	1	1	oewn
+oewn-open-class_word-n	open-class word	n	0	2	2	oewn
+oewn-open-collared-a	open-collared	a	0	1	1	oewn
+oewn-open-door_policy-n	open-door policy	n	0	2	2	oewn
+oewn-open-end_credit-n	open-end credit	n	0	2	2	oewn
+oewn-open-end_fund-n	open-end fund	n	0	2	2	oewn
+oewn-open-end_investment_company-n	open-end investment company	n	0	3	3	oewn
+oewn-open-end_wrench-n	open-end wrench	n	0	2	2	oewn
+oewn-open-ended-a	open-ended	a	0	1	1	oewn
+oewn-open-eyed-a	open-eyed	a	0	1	1	oewn
+oewn-open-face_sandwich-n	open-face sandwich	n	0	2	2	oewn
+oewn-open-heart_surgery-n	open-heart surgery	n	0	2	2	oewn
+oewn-open-hearth-a	open-hearth	a	0	1	1	oewn
+oewn-open-hearth_furnace-n	open-hearth furnace	n	0	2	2	oewn
+oewn-open-hearth_process-n	open-hearth process	n	0	2	2	oewn
+oewn-open-minded-a	open-minded	a	0	1	1	oewn
+oewn-open-n	open	n	0	1	1	oewn
+oewn-open-plan-a	open-plan	a	0	1	1	oewn
+oewn-open-source-a	open-source	a	0	1	1	oewn
+oewn-open-v	open	v	0	1	1	oewn
+oewn-open_account-n	open account	n	0	2	2	oewn
+oewn-open_air-n	open air	n	0	2	2	oewn
+oewn-open_chain-n	open chain	n	0	2	2	oewn
+oewn-open_circuit-n	open circuit	n	0	2	2	oewn
+oewn-open_door-n	open door	n	0	2	2	oewn
+oewn-open_fire-v	open fire	v	0	2	1	oewn
+oewn-open_fireplace-n	open fireplace	n	0	2	2	oewn
+oewn-open_fracture-n	open fracture	n	0	2	2	oewn
+oewn-open_frame-n	open frame	n	0	2	2	oewn
+oewn-open_house-n	open house	n	0	2	2	oewn
+oewn-open_interval-n	open interval	n	0	2	2	oewn
+oewn-open_letter-n	open letter	n	0	2	2	oewn
+oewn-open_marriage-n	open marriage	n	0	2	2	oewn
+oewn-open_order-n	open order	n	0	2	2	oewn
+oewn-open_primary-n	open primary	n	0	2	2	oewn
+oewn-open_sandwich-n	open sandwich	n	0	2	2	oewn
+oewn-open_secret-n	open secret	n	0	2	2	oewn
+oewn-open_sesame-n	open sesame	n	0	2	2	oewn
+oewn-open_shop-n	open shop	n	0	2	2	oewn
+oewn-open_sight-n	open sight	n	0	2	2	oewn
+oewn-open_society-n	open society	n	0	2	2	oewn
+oewn-open_syllable-n	open syllable	n	0	2	2	oewn
+oewn-open_up-v	open up	v	0	2	1	oewn
+oewn-open_vowel-n	open vowel	n	0	2	2	oewn
+oewn-open_weave-n	open weave	n	0	2	2	oewn
+oewn-openbill-n	openbill	n	0	1	1	oewn
+oewn-opencast-a	opencast	a	0	1	1	oewn
+oewn-opencast_mining-n	opencast mining	n	0	2	2	oewn
+oewn-opencut-a	opencut	a	0	1	1	oewn
+oewn-opened-a	opened	a	0	1	1	oewn
+oewn-opener-n	opener	n	0	1	1	oewn
+oewn-openhanded-a	openhanded	a	0	1	1	oewn
+oewn-openhandedness-n	openhandedness	n	0	1	1	oewn
+oewn-openhearted-a	openhearted	a	0	1	1	oewn
+oewn-opening-a	opening	a	0	1	1	oewn
+oewn-opening-n	opening	n	0	1	1	oewn
+oewn-opening_line-n	opening line	n	0	2	2	oewn
+oewn-opening_move-n	opening move	n	0	2	2	oewn
+oewn-opening_night-n	opening night	n	0	2	2	oewn
+oewn-openly-r	openly	r	0	1	1	oewn
+oewn-openmouthed-a	openmouthed	a	0	1	1	oewn
+oewn-openness-n	openness	n	0	1	1	oewn
+oewn-openside_plane-n	openside plane	n	0	2	2	oewn
+oewn-openwork-n	openwork	n	0	1	1	oewn
+oewn-opepe-n	opepe	n	0	1	1	oewn
+oewn-opera-n	opera	n	0	1	1	oewn
+oewn-opera_bouffe-n	opera bouffe	n	0	2	2	oewn
+oewn-opera_cloak-n	opera cloak	n	0	2	2	oewn
+oewn-opera_comique-n	opera comique	n	0	2	2	oewn
+oewn-opera_company-n	opera company	n	0	2	2	oewn
+oewn-opera_glasses-n	opera glasses	n	0	2	2	oewn
+oewn-opera_hat-n	opera hat	n	0	2	2	oewn
+oewn-opera_hood-n	opera hood	n	0	2	2	oewn
+oewn-opera_house-n	opera house	n	0	2	2	oewn
+oewn-opera_star-n	opera star	n	0	2	2	oewn
+oewn-operable-a	operable	a	0	1	1	oewn
+oewn-operagoer-n	operagoer	n	0	1	1	oewn
+oewn-operand-n	operand	n	0	1	1	oewn
+oewn-operant-a	operant	a	0	1	1	oewn
+oewn-operant_conditioning-n	operant conditioning	n	0	2	2	oewn
+oewn-operate-v	operate	v	0	1	1	oewn
+oewn-operate_on-v	operate on	v	0	2	1	oewn
+oewn-operatic-a	operatic	a	0	1	1	oewn
+oewn-operatic_star-n	operatic star	n	0	2	2	oewn
+oewn-operating-a	operating	a	0	1	1	oewn
+oewn-operating_budget-n	operating budget	n	0	2	2	oewn
+oewn-operating_capability-n	operating capability	n	0	2	2	oewn
+oewn-operating_capital-n	operating capital	n	0	2	2	oewn
+oewn-operating_cost-n	operating cost	n	0	2	2	oewn
+oewn-operating_expense-n	operating expense	n	0	2	2	oewn
+oewn-operating_instructions-n	operating instructions	n	0	2	2	oewn
+oewn-operating_microscope-n	operating microscope	n	0	2	2	oewn
+oewn-operating_procedure-n	operating procedure	n	0	2	2	oewn
+oewn-operating_room-n	operating room	n	0	2	2	oewn
+oewn-operating_statement-n	operating statement	n	0	2	2	oewn
+oewn-operating_surgeon-n	operating surgeon	n	0	2	2	oewn
+oewn-operating_system-n	operating system	n	0	2	2	oewn
+oewn-operating_table-n	operating table	n	0	2	2	oewn
+oewn-operating_theater-n	operating theater	n	0	2	2	oewn
+oewn-operating_theatre-n	operating theatre	n	0	2	2	oewn
+oewn-operation-n	operation	n	0	1	1	oewn
+oewn-operation_code-n	operation code	n	0	2	2	oewn
+oewn-operational-a	operational	a	0	1	1	oewn
+oewn-operational_analysis-n	operational analysis	n	0	2	2	oewn
+oewn-operational_calculus-n	operational calculus	n	0	2	2	oewn
+oewn-operational_casualty-n	operational casualty	n	0	2	2	oewn
+oewn-operational_cell-n	operational cell	n	0	2	2	oewn
+oewn-operational_damage-n	operational damage	n	0	2	2	oewn
+oewn-operationalism-n	operationalism	n	0	1	1	oewn
+oewn-operationalist-a	operationalist	a	0	1	1	oewn
+oewn-operationally-r	operationally	r	0	1	1	oewn
+oewn-operations-n	operations	n	0	1	1	oewn
+oewn-operations_research-n	operations research	n	0	2	2	oewn
+oewn-operative-a	operative	a	0	1	1	oewn
+oewn-operative-n	operative	n	0	1	1	oewn
+oewn-operative_field-n	operative field	n	0	2	2	oewn
+oewn-operatively-r	operatively	r	0	1	1	oewn
+oewn-operator-n	operator	n	0	1	1	oewn
+oewn-operator_gene-n	operator gene	n	0	2	2	oewn
+oewn-operculate-a	operculate	a	0	1	1	oewn
+oewn-operculated-a	operculated	a	0	1	1	oewn
+oewn-operculum-n	operculum	n	0	1	1	oewn
+oewn-operetta-n	operetta	n	0	1	1	oewn
+oewn-operon-n	operon	n	0	1	1	oewn
+oewn-operose-a	operose	a	0	1	1	oewn
+oewn-operoseness-n	operoseness	n	0	1	1	oewn
+oewn-ophidian-n	ophidian	n	0	1	1	oewn
+oewn-ophidism-n	ophidism	n	0	1	1	oewn
+oewn-ophiolatry-n	ophiolatry	n	0	1	1	oewn
+oewn-ophryon-n	ophryon	n	0	1	1	oewn
+oewn-ophthalmectomy-n	ophthalmectomy	n	0	1	1	oewn
+oewn-ophthalmia-n	ophthalmia	n	0	1	1	oewn
+oewn-ophthalmia_neonatorum-n	ophthalmia neonatorum	n	0	2	2	oewn
+oewn-ophthalmic-a	ophthalmic	a	0	1	1	oewn
+oewn-ophthalmic_artery-n	ophthalmic artery	n	0	2	2	oewn
+oewn-ophthalmic_vein-n	ophthalmic vein	n	0	2	2	oewn
+oewn-ophthalmitis-n	ophthalmitis	n	0	1	1	oewn
+oewn-ophthalmologist-n	ophthalmologist	n	0	1	1	oewn
+oewn-ophthalmology-n	ophthalmology	n	0	1	1	oewn
+oewn-ophthalmoplegia-n	ophthalmoplegia	n	0	1	1	oewn
+oewn-ophthalmoscope-n	ophthalmoscope	n	0	1	1	oewn
+oewn-ophthalmoscopy-n	ophthalmoscopy	n	0	1	1	oewn
+oewn-opiate-n	opiate	n	0	1	1	oewn
+oewn-opine-v	opine	v	0	1	1	oewn
+oewn-opinion-n	opinion	n	0	1	1	oewn
+oewn-opinion_poll-n	opinion poll	n	0	2	2	oewn
+oewn-opinionated-a	opinionated	a	0	1	1	oewn
+oewn-opinionative-a	opinionative	a	0	1	1	oewn
+oewn-opisthognathous-a	opisthognathous	a	0	1	1	oewn
+oewn-opisthorchiasis-n	opisthorchiasis	n	0	1	1	oewn
+oewn-opisthotonos-n	opisthotonos	n	0	1	1	oewn
+oewn-opium-n	opium	n	0	1	1	oewn
+oewn-opium_addict-n	opium addict	n	0	2	2	oewn
+oewn-opium_den-n	opium den	n	0	2	2	oewn
+oewn-opium_poppy-n	opium poppy	n	0	2	2	oewn
+oewn-opium_taker-n	opium taker	n	0	2	2	oewn
+oewn-opopanax-n	opopanax	n	0	1	1	oewn
+oewn-opossum-n	opossum	n	0	1	1	oewn
+oewn-opossum_rat-n	opossum rat	n	0	2	2	oewn
+oewn-opossum_shrimp-n	opossum shrimp	n	0	2	2	oewn
+oewn-opossum_wood-n	opossum wood	n	0	2	2	oewn
+oewn-oppa-n	oppa	n	0	1	1	oewn
+oewn-opponent-a	opponent	a	0	1	1	oewn
+oewn-opponent-n	opponent	n	0	1	1	oewn
+oewn-opportune-a	opportune	a	0	1	1	oewn
+oewn-opportunely-r	opportunely	r	0	1	1	oewn
+oewn-opportuneness-n	opportuneness	n	0	1	1	oewn
+oewn-opportunism-n	opportunism	n	0	1	1	oewn
+oewn-opportunist-a	opportunist	a	0	1	1	oewn
+oewn-opportunist-n	opportunist	n	0	1	1	oewn
+oewn-opportunistic-a	opportunistic	a	0	1	1	oewn
+oewn-opportunistic_infection-n	opportunistic infection	n	0	2	2	oewn
+oewn-opportunity-n	opportunity	n	0	1	1	oewn
+oewn-opportunity_cost-n	opportunity cost	n	0	2	2	oewn
+oewn-opposable-a	opposable	a	0	1	1	oewn
+oewn-oppose-v	oppose	v	0	1	1	oewn
+oewn-opposed-a	opposed	a	0	1	1	oewn
+oewn-opposer-n	opposer	n	0	1	1	oewn
+oewn-opposing-a	opposing	a	0	1	1	oewn
+oewn-opposite-a	opposite	a	0	1	1	oewn
+oewn-opposite-n	opposite	n	0	1	1	oewn
+oewn-opposite-r	opposite	r	0	1	1	oewn
+oewn-opposite_number-n	opposite number	n	0	2	2	oewn
+oewn-opposite_word-n	opposite word	n	0	2	2	oewn
+oewn-oppositely-r	oppositely	r	0	1	1	oewn
+oewn-oppositeness-n	oppositeness	n	0	1	1	oewn
+oewn-opposition-n	opposition	n	0	1	1	oewn
+oewn-oppositionality-n	oppositionality	n	0	1	1	oewn
+oewn-oppositive-a	oppositive	a	0	1	1	oewn
+oewn-oppress-v	oppress	v	0	1	1	oewn
+oewn-oppressed-a	oppressed	a	0	1	1	oewn
+oewn-oppression-n	oppression	n	0	1	1	oewn
+oewn-oppressive-a	oppressive	a	0	1	1	oewn
+oewn-oppressively-r	oppressively	r	0	1	1	oewn
+oewn-oppressiveness-n	oppressiveness	n	0	1	1	oewn
+oewn-oppressor-n	oppressor	n	0	1	1	oewn
+oewn-opprobrious-a	opprobrious	a	0	1	1	oewn
+oewn-opprobrium-n	opprobrium	n	0	1	1	oewn
+oewn-oppugn-v	oppugn	v	0	1	1	oewn
+oewn-opsin-n	opsin	n	0	1	1	oewn
+oewn-opsonin-n	opsonin	n	0	1	1	oewn
+oewn-opsonisation-n	opsonisation	n	0	1	1	oewn
+oewn-opsonization-n	opsonization	n	0	1	1	oewn
+oewn-opsonize-v	opsonize	v	0	1	1	oewn
+oewn-opt-v	opt	v	0	1	1	oewn
+oewn-opt_out-v	opt out	v	0	2	1	oewn
+oewn-optative-a	optative	a	0	1	1	oewn
+oewn-optative-n	optative	n	0	1	1	oewn
+oewn-optative_mood-n	optative mood	n	0	2	2	oewn
+oewn-optic-a	optic	a	0	1	1	oewn
+oewn-optic-n	optic	n	0	1	1	oewn
+oewn-optic_axis-n	optic axis	n	0	2	2	oewn
+oewn-optic_chiasm-n	optic chiasm	n	0	2	2	oewn
+oewn-optic_chiasma-n	optic chiasma	n	0	2	2	oewn
+oewn-optic_cup-n	optic cup	n	0	2	2	oewn
+oewn-optic_disc-n	optic disc	n	0	2	2	oewn
+oewn-optic_disk-n	optic disk	n	0	2	2	oewn
+oewn-optic_nerve-n	optic nerve	n	0	2	2	oewn
+oewn-optic_radiation-n	optic radiation	n	0	2	2	oewn
+oewn-optic_tract-n	optic tract	n	0	2	2	oewn
+oewn-optical-a	optical	a	0	1	1	oewn
+oewn-optical_aberration-n	optical aberration	n	0	2	2	oewn
+oewn-optical_bench-n	optical bench	n	0	2	2	oewn
+oewn-optical_condenser-n	optical condenser	n	0	2	2	oewn
+oewn-optical_crown-n	optical crown	n	0	2	2	oewn
+oewn-optical_crown_glass-n	optical crown glass	n	0	3	3	oewn
+oewn-optical_density-n	optical density	n	0	2	2	oewn
+oewn-optical_device-n	optical device	n	0	2	2	oewn
+oewn-optical_disc-n	optical disc	n	0	2	2	oewn
+oewn-optical_disk-n	optical disk	n	0	2	2	oewn
+oewn-optical_fiber-n	optical fiber	n	0	2	2	oewn
+oewn-optical_fibre-n	optical fibre	n	0	2	2	oewn
+oewn-optical_flint-n	optical flint	n	0	2	2	oewn
+oewn-optical_fusion-n	optical fusion	n	0	2	2	oewn
+oewn-optical_glass-n	optical glass	n	0	2	2	oewn
+oewn-optical_illusion-n	optical illusion	n	0	2	2	oewn
+oewn-optical_instrument-n	optical instrument	n	0	2	2	oewn
+oewn-optical_isomer-n	optical isomer	n	0	2	2	oewn
+oewn-optical_lens-n	optical lens	n	0	2	2	oewn
+oewn-optical_maser-n	optical maser	n	0	2	2	oewn
+oewn-optical_opacity-n	optical opacity	n	0	2	2	oewn
+oewn-optical_phenomenon-n	optical phenomenon	n	0	2	2	oewn
+oewn-optical_prism-n	optical prism	n	0	2	2	oewn
+oewn-optical_pyrometer-n	optical pyrometer	n	0	2	2	oewn
+oewn-optical_scanner-n	optical scanner	n	0	2	2	oewn
+oewn-optical_telegraph-n	optical telegraph	n	0	2	2	oewn
+oewn-optical_telescope-n	optical telescope	n	0	2	2	oewn
+oewn-optically-r	optically	r	0	1	1	oewn
+oewn-optician-n	optician	n	0	1	1	oewn
+oewn-optics-n	optics	n	0	1	1	oewn
+oewn-optimal-a	optimal	a	0	1	1	oewn
+oewn-optimally-r	optimally	r	0	1	1	oewn
+oewn-optimisation-n	optimisation	n	0	1	1	oewn
+oewn-optimise-v	optimise	v	0	1	1	oewn
+oewn-optimism-n	optimism	n	0	1	1	oewn
+oewn-optimist-n	optimist	n	0	1	1	oewn
+oewn-optimistic-a	optimistic	a	0	1	1	oewn
+oewn-optimistically-r	optimistically	r	0	1	1	oewn
+oewn-optimization-n	optimization	n	0	1	1	oewn
+oewn-optimize-v	optimize	v	0	1	1	oewn
+oewn-optimum-a	optimum	a	0	1	1	oewn
+oewn-optimum-n	optimum	n	0	1	1	oewn
+oewn-option-n	option	n	0	1	1	oewn
+oewn-optional-a	optional	a	0	1	1	oewn
+oewn-optionality-n	optionality	n	0	1	1	oewn
+oewn-optionally-r	optionally	r	0	1	1	oewn
+oewn-optometrist-n	optometrist	n	0	1	1	oewn
+oewn-optometry-n	optometry	n	0	1	1	oewn
+oewn-opulence-n	opulence	n	0	1	1	oewn
+oewn-opulent-a	opulent	a	0	1	1	oewn
+oewn-opulently-r	opulently	r	0	1	1	oewn
+oewn-opus-n	opus	n	0	1	1	oewn
+oewn-or_else-r	or else	r	0	2	2	oewn
+oewn-or_so-r	or so	r	0	2	2	oewn
+oewn-orach-n	orach	n	0	1	1	oewn
+oewn-orache-n	orache	n	0	1	1	oewn
+oewn-oracle-n	oracle	n	0	1	1	oewn
+oewn-oracular-a	oracular	a	0	1	1	oewn
+oewn-orad-r	orad	r	0	1	1	oewn
+oewn-oral-a	oral	a	0	1	1	oewn
+oewn-oral-n	oral	n	0	1	1	oewn
+oewn-oral_cancer-n	oral cancer	n	0	2	2	oewn
+oewn-oral_cavity-n	oral cavity	n	0	2	2	oewn
+oewn-oral_communication-n	oral communication	n	0	2	2	oewn
+oewn-oral_consonant-n	oral consonant	n	0	2	2	oewn
+oewn-oral_contraception-n	oral contraception	n	0	2	2	oewn
+oewn-oral_contraceptive-n	oral contraceptive	n	0	2	2	oewn
+oewn-oral_contraceptive_pill-n	oral contraceptive pill	n	0	3	3	oewn
+oewn-oral_contract-n	oral contract	n	0	2	2	oewn
+oewn-oral_exam-n	oral exam	n	0	2	2	oewn
+oewn-oral_examination-n	oral examination	n	0	2	2	oewn
+oewn-oral_fissure-n	oral fissure	n	0	2	2	oewn
+oewn-oral_herpes-n	oral herpes	n	0	2	2	oewn
+oewn-oral_personality-n	oral personality	n	0	2	2	oewn
+oewn-oral_phase-n	oral phase	n	0	2	2	oewn
+oewn-oral_poliovirus_vaccine-n	oral poliovirus vaccine	n	0	3	3	oewn
+oewn-oral_presentation-n	oral presentation	n	0	2	2	oewn
+oewn-oral_sex-n	oral sex	n	0	2	2	oewn
+oewn-oral_smear-n	oral smear	n	0	2	2	oewn
+oewn-oral_stage-n	oral stage	n	0	2	2	oewn
+oewn-oral_vowel-n	oral vowel	n	0	2	2	oewn
+oewn-orally-r	orally	r	0	1	1	oewn
+oewn-orang-n	orang	n	0	1	1	oewn
+oewn-orange-a	orange	a	0	1	1	oewn
+oewn-orange-blossom_orchid-n	orange-blossom orchid	n	0	2	2	oewn
+oewn-orange-brown-a	orange-brown	a	0	1	1	oewn
+oewn-orange-colored-a	orange-colored	a	0	1	1	oewn
+oewn-orange-coloured-a	orange-coloured	a	0	1	1	oewn
+oewn-orange-flowered-a	orange-flowered	a	0	1	1	oewn
+oewn-orange-hued-a	orange-hued	a	0	1	1	oewn
+oewn-orange-juice_concentrate-n	orange-juice concentrate	n	0	2	2	oewn
+oewn-orange-n	orange	n	0	1	1	oewn
+oewn-orange-red-a	orange-red	a	0	1	1	oewn
+oewn-orange-sized-a	orange-sized	a	0	1	1	oewn
+oewn-orange_balsam-n	orange balsam	n	0	2	2	oewn
+oewn-orange_bat-n	orange bat	n	0	2	2	oewn
+oewn-orange_daisy-n	orange daisy	n	0	2	2	oewn
+oewn-orange_fleabane-n	orange fleabane	n	0	2	2	oewn
+oewn-orange_grass-n	orange grass	n	0	2	2	oewn
+oewn-orange_grove-n	orange grove	n	0	2	2	oewn
+oewn-orange_hawkweed-n	orange hawkweed	n	0	2	2	oewn
+oewn-orange_horseshoe_bat-n	orange horseshoe bat	n	0	3	3	oewn
+oewn-orange_juice-n	orange juice	n	0	2	2	oewn
+oewn-orange_liqueur-n	orange liqueur	n	0	2	2	oewn
+oewn-orange_marmalade-n	orange marmalade	n	0	2	2	oewn
+oewn-orange_milkweed-n	orange milkweed	n	0	2	2	oewn
+oewn-orange_milkwort-n	orange milkwort	n	0	2	2	oewn
+oewn-orange_mushroom_pimple-n	orange mushroom pimple	n	0	3	3	oewn
+oewn-orange_peel-n	orange peel	n	0	2	2	oewn
+oewn-orange_peel_fungus-n	orange peel fungus	n	0	3	3	oewn
+oewn-orange_pekoe-n	orange pekoe	n	0	2	2	oewn
+oewn-orange_red-n	orange red	n	0	2	2	oewn
+oewn-orange_rind-n	orange rind	n	0	2	2	oewn
+oewn-orange_sneezeweed-n	orange sneezeweed	n	0	2	2	oewn
+oewn-orange_soda-n	orange soda	n	0	2	2	oewn
+oewn-orange_toast-n	orange toast	n	0	2	2	oewn
+oewn-orange_tortrix-n	orange tortrix	n	0	2	2	oewn
+oewn-orange_tree-n	orange tree	n	0	2	2	oewn
+oewn-orange_yellow-n	orange yellow	n	0	2	2	oewn
+oewn-orange_zest-n	orange zest	n	0	2	2	oewn
+oewn-orangeade-n	orangeade	n	0	1	1	oewn
+oewn-orangeness-n	orangeness	n	0	1	1	oewn
+oewn-orangery-n	orangery	n	0	1	1	oewn
+oewn-orangewood-n	orangewood	n	0	1	1	oewn
+oewn-orangish-a	orangish	a	0	1	1	oewn
+oewn-orangish-red-a	orangish-red	a	0	1	1	oewn
+oewn-orangutan-n	orangutan	n	0	1	1	oewn
+oewn-orangutang-n	orangutang	n	0	1	1	oewn
+oewn-orate-v	orate	v	0	1	1	oewn
+oewn-oration-n	oration	n	0	1	1	oewn
+oewn-orator-n	orator	n	0	1	1	oewn
+oewn-oratorical-a	oratorical	a	0	1	1	oewn
+oewn-oratorio-n	oratorio	n	0	1	1	oewn
+oewn-oratory-n	oratory	n	0	1	1	oewn
+oewn-orb-n	orb	n	0	1	1	oewn
+oewn-orb-v	orb	v	0	1	1	oewn
+oewn-orb-weaving-a	orb-weaving	a	0	1	1	oewn
+oewn-orb-weaving_spider-n	orb-weaving spider	n	0	2	2	oewn
+oewn-orb_web-n	orb web	n	0	2	2	oewn
+oewn-orbicular-a	orbicular	a	0	1	1	oewn
+oewn-orbiculate-a	orbiculate	a	0	1	1	oewn
+oewn-orbiculate_leaf-n	orbiculate leaf	n	0	2	2	oewn
+oewn-orbit-n	orbit	n	0	1	1	oewn
+oewn-orbit-v	orbit	v	0	1	1	oewn
+oewn-orbit_period-n	orbit period	n	0	2	2	oewn
+oewn-orbital-a	orbital	a	1	1	1	oewn
+oewn-orbital-s	orbital	a	2	1	1	oewn
+oewn-orbital_cavity-n	orbital cavity	n	0	2	2	oewn
+oewn-orbital_motion-n	orbital motion	n	0	2	2	oewn
+oewn-orbital_plane-n	orbital plane	n	0	2	2	oewn
+oewn-orbital_point-n	orbital point	n	0	2	2	oewn
+oewn-orbital_rotation-n	orbital rotation	n	0	2	2	oewn
+oewn-orbitale-n	orbitale	n	0	1	1	oewn
+oewn-orbiter-n	orbiter	n	0	1	1	oewn
+oewn-orca-n	orca	n	0	1	1	oewn
+oewn-orchard-n	orchard	n	0	1	1	oewn
+oewn-orchard_apple_tree-n	orchard apple tree	n	0	3	3	oewn
+oewn-orchard_grass-n	orchard grass	n	0	2	2	oewn
+oewn-orchard_oriole-n	orchard oriole	n	0	2	2	oewn
+oewn-orchestra-n	orchestra	n	0	1	1	oewn
+oewn-orchestra_pit-n	orchestra pit	n	0	2	2	oewn
+oewn-orchestral-a	orchestral	a	0	1	1	oewn
+oewn-orchestral_bells-n	orchestral bells	n	0	2	2	oewn
+oewn-orchestrate-v	orchestrate	v	0	1	1	oewn
+oewn-orchestrated-a	orchestrated	a	0	1	1	oewn
+oewn-orchestration-n	orchestration	n	0	1	1	oewn
+oewn-orchestrator-n	orchestrator	n	0	1	1	oewn
+oewn-orchid-n	orchid	n	0	1	1	oewn
+oewn-orchid_cactus-n	orchid cactus	n	0	2	2	oewn
+oewn-orchid_tree-n	orchid tree	n	0	2	2	oewn
+oewn-orchidaceous_plant-n	orchidaceous plant	n	0	2	2	oewn
+oewn-orchidalgia-n	orchidalgia	n	0	1	1	oewn
+oewn-orchidectomy-n	orchidectomy	n	0	1	1	oewn
+oewn-orchiectomy-n	orchiectomy	n	0	1	1	oewn
+oewn-orchil-n	orchil	n	0	1	1	oewn
+oewn-orchiopexy-n	orchiopexy	n	0	1	1	oewn
+oewn-orchis-n	orchis	n	0	1	1	oewn
+oewn-orchitis-n	orchitis	n	0	1	1	oewn
+oewn-orchotomy-n	orchotomy	n	0	1	1	oewn
+oewn-ordain-v	ordain	v	0	1	1	oewn
+oewn-ordained-a	ordained	a	0	1	1	oewn
+oewn-ordainer-n	ordainer	n	0	1	1	oewn
+oewn-ordeal-n	ordeal	n	0	1	1	oewn
+oewn-ordeal_bean-n	ordeal bean	n	0	2	2	oewn
+oewn-ordeal_tree-n	ordeal tree	n	0	2	2	oewn
+oewn-order-n	order	n	0	1	1	oewn
+oewn-order-v	order	v	0	1	1	oewn
+oewn-order_Accipitriformes-n	order Accipitriformes	n	0	2	2	oewn
+oewn-order_Ostariophysi-n	order Ostariophysi	n	0	2	2	oewn
+oewn-order_arms-n	order arms	n	0	2	2	oewn
+oewn-order_book-n	order book	n	0	2	2	oewn
+oewn-order_code-n	order code	n	0	2	2	oewn
+oewn-order_form-n	order form	n	0	2	2	oewn
+oewn-order_of_Saint_Benedict-n	order of Saint Benedict	n	0	4	1	oewn
+oewn-order_of_business-n	order of business	n	0	3	1	oewn
+oewn-order_of_magnitude-n	order of magnitude	n	0	3	1	oewn
+oewn-order_of_payment-n	order of payment	n	0	3	1	oewn
+oewn-order_of_the_day-n	order of the day	n	0	4	1	oewn
+oewn-order_paper-n	order paper	n	0	2	2	oewn
+oewn-ordered-a	ordered	a	0	1	1	oewn
+oewn-ordered_series-n	ordered series	n	0	2	2	oewn
+oewn-orderer-n	orderer	n	0	1	1	oewn
+oewn-ordering-n	ordering	n	0	1	1	oewn
+oewn-orderliness-n	orderliness	n	0	1	1	oewn
+oewn-orderly-a	orderly	a	0	1	1	oewn
+oewn-orderly-n	orderly	n	0	1	1	oewn
+oewn-orderly_sergeant-n	orderly sergeant	n	0	2	2	oewn
+oewn-ordinal-a	ordinal	a	0	1	1	oewn
+oewn-ordinal-n	ordinal	n	0	1	1	oewn
+oewn-ordinal_number-n	ordinal number	n	0	2	2	oewn
+oewn-ordinance-n	ordinance	n	0	1	1	oewn
+oewn-ordinand-n	ordinand	n	0	1	1	oewn
+oewn-ordinarily-r	ordinarily	r	0	1	1	oewn
+oewn-ordinariness-n	ordinariness	n	0	1	1	oewn
+oewn-ordinary-a	ordinary	a	0	1	1	oewn
+oewn-ordinary-n	ordinary	n	0	1	1	oewn
+oewn-ordinary_annuity-n	ordinary annuity	n	0	2	2	oewn
+oewn-ordinary_bicycle-n	ordinary bicycle	n	0	2	2	oewn
+oewn-ordinary_care-n	ordinary care	n	0	2	2	oewn
+oewn-ordinary_life_insurance-n	ordinary life insurance	n	0	3	3	oewn
+oewn-ordinary_shares-n	ordinary shares	n	0	2	2	oewn
+oewn-ordinate-n	ordinate	n	0	1	1	oewn
+oewn-ordinate-v	ordinate	v	0	1	1	oewn
+oewn-ordination-n	ordination	n	0	1	1	oewn
+oewn-ordnance-n	ordnance	n	0	1	1	oewn
+oewn-ordnance_store-n	ordnance store	n	0	2	2	oewn
+oewn-ordure-n	ordure	n	0	1	1	oewn
+oewn-ore-n	ore	n	0	1	1	oewn
+oewn-ore_bed-n	ore bed	n	0	2	2	oewn
+oewn-ore_dressing-n	ore dressing	n	0	2	2	oewn
+oewn-ore_processing-n	ore processing	n	0	2	2	oewn
+oewn-oregano-n	oregano	n	0	1	1	oewn
+oewn-oreide-n	oreide	n	0	1	1	oewn
+oewn-organ-grinder-n	organ-grinder	n	0	1	1	oewn
+oewn-organ-n	organ	n	0	1	1	oewn
+oewn-organ_donor-n	organ donor	n	0	2	2	oewn
+oewn-organ_loft-n	organ loft	n	0	2	2	oewn
+oewn-organ_of_Corti-n	organ of Corti	n	0	3	1	oewn
+oewn-organ_of_hearing-n	organ of hearing	n	0	3	1	oewn
+oewn-organ_of_speech-n	organ of speech	n	0	3	1	oewn
+oewn-organ_pipe-n	organ pipe	n	0	2	2	oewn
+oewn-organ_stop-n	organ stop	n	0	2	2	oewn
+oewn-organ_transplant-n	organ transplant	n	0	2	2	oewn
+oewn-organdie-n	organdie	n	0	1	1	oewn
+oewn-organdy-n	organdy	n	0	1	1	oewn
+oewn-organelle-n	organelle	n	0	1	1	oewn
+oewn-organic-a	organic	a	0	1	1	oewn
+oewn-organic-n	organic	n	0	1	1	oewn
+oewn-organic_brain_syndrome-n	organic brain syndrome	n	0	3	3	oewn
+oewn-organic_chemistry-n	organic chemistry	n	0	2	2	oewn
+oewn-organic_compound-n	organic compound	n	0	2	2	oewn
+oewn-organic_disorder-n	organic disorder	n	0	2	2	oewn
+oewn-organic_evolution-n	organic evolution	n	0	2	2	oewn
+oewn-organic_fertiliser-n	organic fertiliser	n	0	2	2	oewn
+oewn-organic_fertilizer-n	organic fertilizer	n	0	2	2	oewn
+oewn-organic_law-n	organic law	n	0	2	2	oewn
+oewn-organic_light-emitting_diode-n	organic light-emitting diode	n	0	3	3	oewn
+oewn-organic_phenomenon-n	organic phenomenon	n	0	2	2	oewn
+oewn-organic_process-n	organic process	n	0	2	2	oewn
+oewn-organic_structure-n	organic structure	n	0	2	2	oewn
+oewn-organically-r	organically	r	0	1	1	oewn
+oewn-organicism-n	organicism	n	0	1	1	oewn
+oewn-organicistic-a	organicistic	a	0	1	1	oewn
+oewn-organification-n	organification	n	0	1	1	oewn
+oewn-organisation-n	organisation	n	0	1	1	oewn
+oewn-organisational-a	organisational	a	0	1	1	oewn
+oewn-organise-v	organise	v	0	1	1	oewn
+oewn-organised-a	organised	a	0	1	1	oewn
+oewn-organiser-n	organiser	n	0	1	1	oewn
+oewn-organism-n	organism	n	0	1	1	oewn
+oewn-organismal-a	organismal	a	0	1	1	oewn
+oewn-organismic-a	organismic	a	0	1	1	oewn
+oewn-organist-n	organist	n	0	1	1	oewn
+oewn-organization-n	organization	n	0	1	1	oewn
+oewn-organization_chart-n	organization chart	n	0	2	2	oewn
+oewn-organization_expense-n	organization expense	n	0	2	2	oewn
+oewn-organization_man-n	organization man	n	0	2	2	oewn
+oewn-organizational-a	organizational	a	0	1	1	oewn
+oewn-organizationally-r	organizationally	r	0	1	1	oewn
+oewn-organize-v	organize	v	0	1	1	oewn
+oewn-organized-a	organized	a	0	1	1	oewn
+oewn-organized_crime-n	organized crime	n	0	2	2	oewn
+oewn-organized_labor-n	organized labor	n	0	2	2	oewn
+oewn-organized_religion-n	organized religion	n	0	2	2	oewn
+oewn-organizer-n	organizer	n	0	1	1	oewn
+oewn-organometallic_compound-n	organometallic compound	n	0	2	2	oewn
+oewn-organon-n	organon	n	0	1	1	oewn
+oewn-organophosphate-n	organophosphate	n	0	1	1	oewn
+oewn-organophosphate_nerve_agent-n	organophosphate nerve agent	n	0	3	3	oewn
+oewn-organs-n	organs	n	0	1	1	oewn
+oewn-organza-n	organza	n	0	1	1	oewn
+oewn-orgasm-n	orgasm	n	0	1	1	oewn
+oewn-orgiastic-a	orgiastic	a	0	1	1	oewn
+oewn-orgy-n	orgy	n	0	1	1	oewn
+oewn-oriel-n	oriel	n	0	1	1	oewn
+oewn-oriel_window-n	oriel window	n	0	2	2	oewn
+oewn-orient-n	orient	n	0	1	1	oewn
+oewn-orient-v	orient	v	0	1	1	oewn
+oewn-oriental-a	oriental	a	0	1	1	oewn
+oewn-oriental_alabaster-n	oriental alabaster	n	0	2	2	oewn
+oewn-oriental_bittersweet-n	oriental bittersweet	n	0	2	2	oewn
+oewn-oriental_bush_cherry-n	oriental bush cherry	n	0	3	3	oewn
+oewn-oriental_cherry-n	oriental cherry	n	0	2	2	oewn
+oewn-oriental_cockroach-n	oriental cockroach	n	0	2	2	oewn
+oewn-oriental_person-n	oriental person	n	0	2	2	oewn
+oewn-oriental_plane-n	oriental plane	n	0	2	2	oewn
+oewn-oriental_poppy-n	oriental poppy	n	0	2	2	oewn
+oewn-oriental_roach-n	oriental roach	n	0	2	2	oewn
+oewn-oriental_sore-n	oriental sore	n	0	2	2	oewn
+oewn-oriental_spruce-n	oriental spruce	n	0	2	2	oewn
+oewn-orientalise-v	orientalise	v	0	1	1	oewn
+oewn-orientalism-n	orientalism	n	0	1	1	oewn
+oewn-orientalist-n	orientalist	n	0	1	1	oewn
+oewn-orientalize-v	orientalize	v	0	1	1	oewn
+oewn-orientate-v	orientate	v	0	1	1	oewn
+oewn-orientated-a	orientated	a	0	1	1	oewn
+oewn-orientating-a	orientating	a	0	1	1	oewn
+oewn-orientation-n	orientation	n	0	1	1	oewn
+oewn-orientation_course-n	orientation course	n	0	2	2	oewn
+oewn-oriented-a	oriented	a	0	1	1	oewn
+oewn-orienting-a	orienting	a	0	1	1	oewn
+oewn-orifice-n	orifice	n	0	1	1	oewn
+oewn-oriflamme-n	oriflamme	n	0	1	1	oewn
+oewn-origami-n	origami	n	0	1	1	oewn
+oewn-origanum-n	origanum	n	0	1	1	oewn
+oewn-origin-n	origin	n	0	1	1	oewn
+oewn-original-a	original	a	0	1	1	oewn
+oewn-original-n	original	n	0	1	1	oewn
+oewn-original_combination-n	original combination	n	0	2	2	oewn
+oewn-original_sin-n	original sin	n	0	2	2	oewn
+oewn-originalism-n	originalism	n	0	1	1	oewn
+oewn-originality-n	originality	n	0	1	1	oewn
+oewn-originally-r	originally	r	0	1	1	oewn
+oewn-originate-v	originate	v	0	1	1	oewn
+oewn-originate_in-v	originate in	v	0	2	1	oewn
+oewn-origination-n	origination	n	0	1	1	oewn
+oewn-origination_fee-n	origination fee	n	0	2	2	oewn
+oewn-originative-a	originative	a	0	1	1	oewn
+oewn-originator-n	originator	n	0	1	1	oewn
+oewn-orinasal-n	orinasal	n	0	1	1	oewn
+oewn-orinasal_phone-n	orinasal phone	n	0	2	2	oewn
+oewn-oriole-n	oriole	n	0	1	1	oewn
+oewn-orison-n	orison	n	0	1	1	oewn
+oewn-orlop-n	orlop	n	0	1	1	oewn
+oewn-orlop_deck-n	orlop deck	n	0	2	2	oewn
+oewn-ormer-n	ormer	n	0	1	1	oewn
+oewn-ormolu-n	ormolu	n	0	1	1	oewn
+oewn-ornament-n	ornament	n	0	1	1	oewn
+oewn-ornament-v	ornament	v	0	1	1	oewn
+oewn-ornamental-a	ornamental	a	0	1	1	oewn
+oewn-ornamental-n	ornamental	n	0	1	1	oewn
+oewn-ornamentalism-n	ornamentalism	n	0	1	1	oewn
+oewn-ornamentalist-n	ornamentalist	n	0	1	1	oewn
+oewn-ornamentally-r	ornamentally	r	0	1	1	oewn
+oewn-ornamentation-n	ornamentation	n	0	1	1	oewn
+oewn-ornate-a	ornate	a	0	1	1	oewn
+oewn-ornately-r	ornately	r	0	1	1	oewn
+oewn-ornateness-n	ornateness	n	0	1	1	oewn
+oewn-orneriness-n	orneriness	n	0	1	1	oewn
+oewn-ornery-a	ornery	a	0	1	1	oewn
+oewn-ornithine-n	ornithine	n	0	1	1	oewn
+oewn-ornithischian-n	ornithischian	n	0	1	1	oewn
+oewn-ornithischian_dinosaur-n	ornithischian dinosaur	n	0	2	2	oewn
+oewn-ornithological-a	ornithological	a	0	1	1	oewn
+oewn-ornithologist-n	ornithologist	n	0	1	1	oewn
+oewn-ornithology-n	ornithology	n	0	1	1	oewn
+oewn-ornithomimid-n	ornithomimid	n	0	1	1	oewn
+oewn-ornithopod-n	ornithopod	n	0	1	1	oewn
+oewn-ornithopod_dinosaur-n	ornithopod dinosaur	n	0	2	2	oewn
+oewn-ornithopter-n	ornithopter	n	0	1	1	oewn
+oewn-ornithosis-n	ornithosis	n	0	1	1	oewn
+oewn-orogeny-n	orogeny	n	0	1	1	oewn
+oewn-orograph-n	orograph	n	0	1	1	oewn
+oewn-orography-n	orography	n	0	1	1	oewn
+oewn-oroide-n	oroide	n	0	1	1	oewn
+oewn-orology-n	orology	n	0	1	1	oewn
+oewn-oropharyngeal-a	oropharyngeal	a	0	1	1	oewn
+oewn-oropharynx-n	oropharynx	n	0	1	1	oewn
+oewn-orotund-a	orotund	a	0	1	1	oewn
+oewn-orphan-n	orphan	n	0	1	1	oewn
+oewn-orphan-v	orphan	v	0	1	1	oewn
+oewn-orphan_site-n	orphan site	n	0	2	2	oewn
+oewn-orphanage-n	orphanage	n	0	1	1	oewn
+oewn-orphaned-a	orphaned	a	0	1	1	oewn
+oewn-orphanhood-n	orphanhood	n	0	1	1	oewn
+oewn-orphans-ap-_asylum-n	orphans' asylum	n	0	2	2	oewn
+oewn-orphenadrine-n	orphenadrine	n	0	1	1	oewn
+oewn-orphic-a	orphic	a	0	1	1	oewn
+oewn-orphrey-n	orphrey	n	0	1	1	oewn
+oewn-orpiment-n	orpiment	n	0	1	1	oewn
+oewn-orpin-n	orpin	n	0	1	1	oewn
+oewn-orpine-n	orpine	n	0	1	1	oewn
+oewn-orrery-n	orrery	n	0	1	1	oewn
+oewn-orris-n	orris	n	0	1	1	oewn
+oewn-orrisroot-n	orrisroot	n	0	1	1	oewn
+oewn-orthicon-n	orthicon	n	0	1	1	oewn
+oewn-orthoboric_acid-n	orthoboric acid	n	0	2	2	oewn
+oewn-orthochorea-n	orthochorea	n	0	1	1	oewn
+oewn-orthochromatic_film-n	orthochromatic film	n	0	2	2	oewn
+oewn-orthoclase-n	orthoclase	n	0	1	1	oewn
+oewn-orthodontia-n	orthodontia	n	0	1	1	oewn
+oewn-orthodontic-a	orthodontic	a	0	1	1	oewn
+oewn-orthodontic_braces-n	orthodontic braces	n	0	2	2	oewn
+oewn-orthodontic_treatment-n	orthodontic treatment	n	0	2	2	oewn
+oewn-orthodontics-n	orthodontics	n	0	1	1	oewn
+oewn-orthodontist-n	orthodontist	n	0	1	1	oewn
+oewn-orthodonture-n	orthodonture	n	0	1	1	oewn
+oewn-orthodox-a	orthodox	a	0	1	1	oewn
+oewn-orthodox_sleep-n	orthodox sleep	n	0	2	2	oewn
+oewn-orthodoxy-n	orthodoxy	n	0	1	1	oewn
+oewn-orthoepist-n	orthoepist	n	0	1	1	oewn
+oewn-orthoepy-n	orthoepy	n	0	1	1	oewn
+oewn-orthogonal-a	orthogonal	a	0	1	1	oewn
+oewn-orthogonal_opposition-n	orthogonal opposition	n	0	2	2	oewn
+oewn-orthogonality-n	orthogonality	n	0	1	1	oewn
+oewn-orthographic-a	orthographic	a	0	1	1	oewn
+oewn-orthography-n	orthography	n	0	1	1	oewn
+oewn-orthomolecular-a	orthomolecular	a	0	1	1	oewn
+oewn-orthomorphic_projection-n	orthomorphic projection	n	0	2	2	oewn
+oewn-orthomyxovirus-n	orthomyxovirus	n	0	1	1	oewn
+oewn-orthopaedic-a	orthopaedic	a	0	1	1	oewn
+oewn-orthopaedics-n	orthopaedics	n	0	1	1	oewn
+oewn-orthopaedist-n	orthopaedist	n	0	1	1	oewn
+oewn-orthopedic-a	orthopedic	a	0	1	1	oewn
+oewn-orthopedic_foot_insole-n	orthopedic foot insole	n	0	3	3	oewn
+oewn-orthopedic_insole-n	orthopedic insole	n	0	2	2	oewn
+oewn-orthopedical-a	orthopedical	a	0	1	1	oewn
+oewn-orthopedics-n	orthopedics	n	0	1	1	oewn
+oewn-orthopedist-n	orthopedist	n	0	1	1	oewn
+oewn-orthophosphate-n	orthophosphate	n	0	1	1	oewn
+oewn-orthophosphoric_acid-n	orthophosphoric acid	n	0	2	2	oewn
+oewn-orthophosphorous_acid-n	orthophosphorous acid	n	0	2	2	oewn
+oewn-orthopnea-n	orthopnea	n	0	1	1	oewn
+oewn-orthopter-n	orthopter	n	0	1	1	oewn
+oewn-orthopteran-n	orthopteran	n	0	1	1	oewn
+oewn-orthopteron-n	orthopteron	n	0	1	1	oewn
+oewn-orthopterous_insect-n	orthopterous insect	n	0	2	2	oewn
+oewn-orthoptic-a	orthoptic	a	0	1	1	oewn
+oewn-orthoptics-n	orthoptics	n	0	1	1	oewn
+oewn-orthoptist-n	orthoptist	n	0	1	1	oewn
+oewn-orthoscope-n	orthoscope	n	0	1	1	oewn
+oewn-orthostatic-a	orthostatic	a	0	1	1	oewn
+oewn-orthostatic_hypotension-n	orthostatic hypotension	n	0	2	2	oewn
+oewn-orthotic_insole-n	orthotic insole	n	0	2	2	oewn
+oewn-orthotropous-a	orthotropous	a	0	1	1	oewn
+oewn-orthotropous_ovule-n	orthotropous ovule	n	0	2	2	oewn
+oewn-ortolan-n	ortolan	n	0	1	1	oewn
+oewn-ortolan_bunting-n	ortolan bunting	n	0	2	2	oewn
+oewn-ortygan-n	ortygan	n	0	1	1	oewn
+oewn-oryx-n	oryx	n	0	1	1	oewn
+oewn-orzo-n	orzo	n	0	1	1	oewn
+oewn-os-n	os	n	0	1	1	oewn
+oewn-os_breve-n	os breve	n	0	2	2	oewn
+oewn-os_capitatum-n	os capitatum	n	0	2	2	oewn
+oewn-os_frontale-n	os frontale	n	0	2	2	oewn
+oewn-os_hamatum-n	os hamatum	n	0	2	2	oewn
+oewn-os_hyoideum-n	os hyoideum	n	0	2	2	oewn
+oewn-os_ischii-n	os ischii	n	0	2	2	oewn
+oewn-os_longum-n	os longum	n	0	2	2	oewn
+oewn-os_lunatum-n	os lunatum	n	0	2	2	oewn
+oewn-os_nasale-n	os nasale	n	0	2	2	oewn
+oewn-os_palatinum-n	os palatinum	n	0	2	2	oewn
+oewn-os_pisiforme-n	os pisiforme	n	0	2	2	oewn
+oewn-os_pubis-n	os pubis	n	0	2	2	oewn
+oewn-os_scaphoideum-n	os scaphoideum	n	0	2	2	oewn
+oewn-os_sesamoideum-n	os sesamoideum	n	0	2	2	oewn
+oewn-os_sphenoidale-n	os sphenoidale	n	0	2	2	oewn
+oewn-os_tarsi_fibulare-n	os tarsi fibulare	n	0	3	3	oewn
+oewn-os_temporale-n	os temporale	n	0	2	2	oewn
+oewn-os_trapezium-n	os trapezium	n	0	2	2	oewn
+oewn-os_trapezoideum-n	os trapezoideum	n	0	2	2	oewn
+oewn-os_triquetrum-n	os triquetrum	n	0	2	2	oewn
+oewn-os_zygomaticum-n	os zygomaticum	n	0	2	2	oewn
+oewn-osage_orange-n	osage orange	n	0	2	2	oewn
+oewn-oscheocele-n	oscheocele	n	0	1	1	oewn
+oewn-oscheocoele-n	oscheocoele	n	0	1	1	oewn
+oewn-oscillate-v	oscillate	v	0	1	1	oewn
+oewn-oscillating-a	oscillating	a	0	1	1	oewn
+oewn-oscillation-n	oscillation	n	0	1	1	oewn
+oewn-oscillator-n	oscillator	n	0	1	1	oewn
+oewn-oscillatory-a	oscillatory	a	0	1	1	oewn
+oewn-oscillogram-n	oscillogram	n	0	1	1	oewn
+oewn-oscillograph-n	oscillograph	n	0	1	1	oewn
+oewn-oscilloscope-n	oscilloscope	n	0	1	1	oewn
+oewn-oscine-a	oscine	a	0	1	1	oewn
+oewn-oscine-n	oscine	n	0	1	1	oewn
+oewn-oscine_bird-n	oscine bird	n	0	2	2	oewn
+oewn-oscitance-n	oscitance	n	0	1	1	oewn
+oewn-oscitancy-n	oscitancy	n	0	1	1	oewn
+oewn-oscitant-a	oscitant	a	0	1	1	oewn
+oewn-osculate-v	osculate	v	0	1	1	oewn
+oewn-osculating_circle-n	osculating circle	n	0	2	2	oewn
+oewn-osculation-n	osculation	n	0	1	1	oewn
+oewn-osculator-n	osculator	n	0	1	1	oewn
+oewn-osier-n	osier	n	0	1	1	oewn
+oewn-osmiridium-n	osmiridium	n	0	1	1	oewn
+oewn-osmium-n	osmium	n	0	1	1	oewn
+oewn-osmoreceptor-n	osmoreceptor	n	0	1	1	oewn
+oewn-osmosis-n	osmosis	n	0	1	1	oewn
+oewn-osmotic-a	osmotic	a	0	1	1	oewn
+oewn-osmotic_pressure-n	osmotic pressure	n	0	2	2	oewn
+oewn-osmotically-r	osmotically	r	0	1	1	oewn
+oewn-osmund-n	osmund	n	0	1	1	oewn
+oewn-osprey-n	osprey	n	0	1	1	oewn
+oewn-osseous-a	osseous	a	0	1	1	oewn
+oewn-osseous_labyrinth-n	osseous labyrinth	n	0	2	2	oewn
+oewn-osseous_tissue-n	osseous tissue	n	0	2	2	oewn
+oewn-ossicle-n	ossicle	n	0	1	1	oewn
+oewn-ossicular-a	ossicular	a	0	1	1	oewn
+oewn-ossiculate-a	ossiculate	a	0	1	1	oewn
+oewn-ossiculum-n	ossiculum	n	0	1	1	oewn
+oewn-ossiferous-a	ossiferous	a	0	1	1	oewn
+oewn-ossification-n	ossification	n	0	1	1	oewn
+oewn-ossified-a	ossified	a	0	1	1	oewn
+oewn-ossify-v	ossify	v	0	1	1	oewn
+oewn-osso_buco-n	osso buco	n	0	2	2	oewn
+oewn-ossuary-n	ossuary	n	0	1	1	oewn
+oewn-osteal-a	osteal	a	0	1	1	oewn
+oewn-osteitis-n	osteitis	n	0	1	1	oewn
+oewn-osteitis_deformans-n	osteitis deformans	n	0	2	2	oewn
+oewn-ostensibility-n	ostensibility	n	0	1	1	oewn
+oewn-ostensible-a	ostensible	a	0	1	1	oewn
+oewn-ostensibly-r	ostensibly	r	0	1	1	oewn
+oewn-ostensive-a	ostensive	a	0	1	1	oewn
+oewn-ostensive_definition-n	ostensive definition	n	0	2	2	oewn
+oewn-ostensorium-n	ostensorium	n	0	1	1	oewn
+oewn-ostentate-v	ostentate	v	0	1	1	oewn
+oewn-ostentation-n	ostentation	n	0	1	1	oewn
+oewn-ostentatious-a	ostentatious	a	0	1	1	oewn
+oewn-ostentatiously-r	ostentatiously	r	0	1	1	oewn
+oewn-ostentatiousness-n	ostentatiousness	n	0	1	1	oewn
+oewn-osteoarthritis-n	osteoarthritis	n	0	1	1	oewn
+oewn-osteoblast-n	osteoblast	n	0	1	1	oewn
+oewn-osteoblastoma-n	osteoblastoma	n	0	1	1	oewn
+oewn-osteochondroma-n	osteochondroma	n	0	1	1	oewn
+oewn-osteoclasis-n	osteoclasis	n	0	1	1	oewn
+oewn-osteoclast-n	osteoclast	n	0	1	1	oewn
+oewn-osteocyte-n	osteocyte	n	0	1	1	oewn
+oewn-osteodystrophy-n	osteodystrophy	n	0	1	1	oewn
+oewn-osteogenesis_imperfecta-n	osteogenesis imperfecta	n	0	2	2	oewn
+oewn-osteogenic_sarcoma-n	osteogenic sarcoma	n	0	2	2	oewn
+oewn-osteologer-n	osteologer	n	0	1	1	oewn
+oewn-osteologist-n	osteologist	n	0	1	1	oewn
+oewn-osteology-n	osteology	n	0	1	1	oewn
+oewn-osteolysis-n	osteolysis	n	0	1	1	oewn
+oewn-osteoma-n	osteoma	n	0	1	1	oewn
+oewn-osteomalacia-n	osteomalacia	n	0	1	1	oewn
+oewn-osteomyelitis-n	osteomyelitis	n	0	1	1	oewn
+oewn-osteopath-n	osteopath	n	0	1	1	oewn
+oewn-osteopathist-n	osteopathist	n	0	1	1	oewn
+oewn-osteopathy-n	osteopathy	n	0	1	1	oewn
+oewn-osteopetrosis-n	osteopetrosis	n	0	1	1	oewn
+oewn-osteophyte-n	osteophyte	n	0	1	1	oewn
+oewn-osteoporosis-n	osteoporosis	n	0	1	1	oewn
+oewn-osteosarcoma-n	osteosarcoma	n	0	1	1	oewn
+oewn-osteosclerosis-n	osteosclerosis	n	0	1	1	oewn
+oewn-osteosclerosis_congenita-n	osteosclerosis congenita	n	0	2	2	oewn
+oewn-osteostracan-n	osteostracan	n	0	1	1	oewn
+oewn-osteotomy-n	osteotomy	n	0	1	1	oewn
+oewn-ostiarius-n	ostiarius	n	0	1	1	oewn
+oewn-ostiary-n	ostiary	n	0	1	1	oewn
+oewn-ostinato-n	ostinato	n	0	1	1	oewn
+oewn-ostiole-n	ostiole	n	0	1	1	oewn
+oewn-ostler-n	ostler	n	0	1	1	oewn
+oewn-ostomy-n	ostomy	n	0	1	1	oewn
+oewn-ostracise-v	ostracise	v	0	1	1	oewn
+oewn-ostracism-n	ostracism	n	0	1	1	oewn
+oewn-ostracize-v	ostracize	v	0	1	1	oewn
+oewn-ostracod-n	ostracod	n	0	1	1	oewn
+oewn-ostracoderm-n	ostracoderm	n	0	1	1	oewn
+oewn-ostrich-n	ostrich	n	0	1	1	oewn
+oewn-ostrich_fern-n	ostrich fern	n	0	2	2	oewn
+oewn-oswego_tea-n	oswego tea	n	0	2	2	oewn
+oewn-otalgia-n	otalgia	n	0	1	1	oewn
+oewn-otc-a	otc	a	0	1	1	oewn
+oewn-other-a	other	a	0	1	1	oewn
+oewn-otherness-n	otherness	n	0	1	1	oewn
+oewn-otherwise-a	otherwise	a	0	1	1	oewn
+oewn-otherwise-r	otherwise	r	0	1	1	oewn
+oewn-otherworld-n	otherworld	n	0	1	1	oewn
+oewn-otherworldliness-n	otherworldliness	n	0	1	1	oewn
+oewn-otherworldly-a	otherworldly	a	0	1	1	oewn
+oewn-othonna-n	othonna	n	0	1	1	oewn
+oewn-otic-a	otic	a	0	1	1	oewn
+oewn-otic_ganglion-n	otic ganglion	n	0	2	2	oewn
+oewn-otiose-a	otiose	a	0	1	1	oewn
+oewn-otitis-n	otitis	n	0	1	1	oewn
+oewn-otitis_externa-n	otitis externa	n	0	2	2	oewn
+oewn-otitis_interna-n	otitis interna	n	0	2	2	oewn
+oewn-otitis_media-n	otitis media	n	0	2	2	oewn
+oewn-otoganglion-n	otoganglion	n	0	1	1	oewn
+oewn-otolaryngologist-n	otolaryngologist	n	0	1	1	oewn
+oewn-otolaryngology-n	otolaryngology	n	0	1	1	oewn
+oewn-otolith_organ-n	otolith organ	n	0	2	2	oewn
+oewn-otologist-n	otologist	n	0	1	1	oewn
+oewn-otology-n	otology	n	0	1	1	oewn
+oewn-otoplasty-n	otoplasty	n	0	1	1	oewn
+oewn-otorhinolaryngologist-n	otorhinolaryngologist	n	0	1	1	oewn
+oewn-otorhinolaryngology-n	otorhinolaryngology	n	0	1	1	oewn
+oewn-otorrhea-n	otorrhea	n	0	1	1	oewn
+oewn-otosclerosis-n	otosclerosis	n	0	1	1	oewn
+oewn-otoscope-n	otoscope	n	0	1	1	oewn
+oewn-ototoxic-a	ototoxic	a	0	1	1	oewn
+oewn-ottar-n	ottar	n	0	1	1	oewn
+oewn-ottava_rima-n	ottava rima	n	0	2	2	oewn
+oewn-otter-n	otter	n	0	1	1	oewn
+oewn-otter_hound-n	otter hound	n	0	2	2	oewn
+oewn-otter_shrew-n	otter shrew	n	0	2	2	oewn
+oewn-otterhound-n	otterhound	n	0	1	1	oewn
+oewn-ottoman-n	ottoman	n	0	1	1	oewn
+oewn-oubliette-n	oubliette	n	0	1	1	oewn
+oewn-ouguiya-n	ouguiya	n	0	1	1	oewn
+oewn-ounce-n	ounce	n	0	1	1	oewn
+oewn-ousel-n	ousel	n	0	1	1	oewn
+oewn-oust-v	oust	v	0	1	1	oewn
+oewn-ouster-n	ouster	n	0	1	1	oewn
+oewn-ousting-n	ousting	n	0	1	1	oewn
+oewn-out-a	out	a	0	1	1	oewn
+oewn-out-and-out-a	out-and-out	a	0	1	1	oewn
+oewn-out-and-outer-n	out-and-outer	n	0	1	1	oewn
+oewn-out-basket-n	out-basket	n	0	1	1	oewn
+oewn-out-herod-v	out-herod	v	0	1	1	oewn
+oewn-out-migration-n	out-migration	n	0	1	1	oewn
+oewn-out-n	out	n	0	1	1	oewn
+oewn-out-of-body_experience-n	out-of-body experience	n	0	2	2	oewn
+oewn-out-of-bounds-a	out-of-bounds	a	0	1	1	oewn
+oewn-out-of-court_settlement-n	out-of-court settlement	n	0	2	2	oewn
+oewn-out-of-date-a	out-of-date	a	0	1	1	oewn
+oewn-out-of-door-a	out-of-door	a	0	1	1	oewn
+oewn-out-of-doors-n	out-of-doors	n	0	1	1	oewn
+oewn-out-of-pocket-a	out-of-pocket	a	0	1	1	oewn
+oewn-out-of-school-a	out-of-school	a	0	1	1	oewn
+oewn-out-of-the-box_thinking-n	out-of-the-box thinking	n	0	2	2	oewn
+oewn-out-of-the-way-a	out-of-the-way	a	0	1	1	oewn
+oewn-out-of-town-a	out-of-town	a	0	1	1	oewn
+oewn-out-r	out	r	0	1	1	oewn
+oewn-out-tray-n	out-tray	n	0	1	1	oewn
+oewn-out-v	out	v	0	1	1	oewn
+oewn-out_and_away-r	out and away	r	0	3	3	oewn
+oewn-out_front-r	out front	r	0	2	2	oewn
+oewn-out_in-v	out in	v	0	2	1	oewn
+oewn-out_loud-r	out loud	r	0	2	2	oewn
+oewn-out_of-r	out of	r	0	2	2	oewn
+oewn-out_of_bounds-n	out of bounds	n	0	3	1	oewn
+oewn-out_of_doors-r	out of doors	r	0	3	3	oewn
+oewn-out_of_fashion-a	out of fashion	a	0	3	3	oewn
+oewn-out_of_gear-a	out of gear	a	0	3	3	oewn
+oewn-out_of_hand-r	out of hand	r	0	3	3	oewn
+oewn-out_of_it-a	out of it	a	0	3	3	oewn
+oewn-out_of_keeping-a	out of keeping	a	0	3	3	oewn
+oewn-out_of_nothing-r	out of nothing	r	0	3	3	oewn
+oewn-out_of_place-a	out of place	a	0	3	3	oewn
+oewn-out_of_place-r	out of place	r	0	3	3	oewn
+oewn-out_of_play-a	out of play	a	0	3	3	oewn
+oewn-out_of_practice-a	out of practice	a	0	3	3	oewn
+oewn-out_of_print-a	out of print	a	0	3	3	oewn
+oewn-out_of_reach-a	out of reach	a	0	3	3	oewn
+oewn-out_of_sight-a	out of sight	a	0	3	3	oewn
+oewn-out_of_sight-r	out of sight	r	0	3	3	oewn
+oewn-out_of_stock-a	out of stock	a	0	3	3	oewn
+oewn-out_of_the_blue-a	out of the blue	a	0	4	4	oewn
+oewn-out_of_the_blue-r	out of the blue	r	0	4	4	oewn
+oewn-out_of_the_ordinary-a	out of the ordinary	a	0	4	4	oewn
+oewn-out_of_the_question-a	out of the question	a	0	4	4	oewn
+oewn-out_of_the_way-a	out of the way	a	0	4	4	oewn
+oewn-out_of_the_way-r	out of the way	r	0	4	4	oewn
+oewn-out_of_thin_air-r	out of thin air	r	0	4	4	oewn
+oewn-out_of_this_world-a	out of this world	a	0	4	4	oewn
+oewn-out_of_true-a	out of true	a	0	3	3	oewn
+oewn-out_of_view-r	out of view	r	0	3	3	oewn
+oewn-out_of_wedlock-r	out of wedlock	r	0	3	3	oewn
+oewn-out_of_whack-a	out of whack	a	0	3	3	oewn
+oewn-out_of_work-a	out of work	a	0	3	3	oewn
+oewn-out_to-a	out to	a	0	2	2	oewn
+oewn-outage-n	outage	n	0	1	1	oewn
+oewn-outback-a	outback	a	0	1	1	oewn
+oewn-outback-n	outback	n	0	1	1	oewn
+oewn-outbalance-v	outbalance	v	0	1	1	oewn
+oewn-outbid-v	outbid	v	0	1	1	oewn
+oewn-outboard-a	outboard	a	0	1	1	oewn
+oewn-outboard-n	outboard	n	0	1	1	oewn
+oewn-outboard_motor-n	outboard motor	n	0	2	2	oewn
+oewn-outboard_motorboat-n	outboard motorboat	n	0	2	2	oewn
+oewn-outbound-a	outbound	a	0	1	1	oewn
+oewn-outbrave-v	outbrave	v	0	1	1	oewn
+oewn-outbreak-n	outbreak	n	0	1	1	oewn
+oewn-outbred-a	outbred	a	0	1	1	oewn
+oewn-outbuilding-n	outbuilding	n	0	1	1	oewn
+oewn-outburst-n	outburst	n	0	1	1	oewn
+oewn-outcall-v	outcall	v	0	1	1	oewn
+oewn-outcast-a	outcast	a	0	1	1	oewn
+oewn-outcast-n	outcast	n	0	1	1	oewn
+oewn-outcaste-a	outcaste	a	0	1	1	oewn
+oewn-outcaste-n	outcaste	n	0	1	1	oewn
+oewn-outclass-v	outclass	v	0	1	1	oewn
+oewn-outclassed-a	outclassed	a	0	1	1	oewn
+oewn-outcome-n	outcome	n	0	1	1	oewn
+oewn-outcrop-n	outcrop	n	0	1	1	oewn
+oewn-outcrop-v	outcrop	v	0	1	1	oewn
+oewn-outcropping-n	outcropping	n	0	1	1	oewn
+oewn-outcry-n	outcry	n	0	1	1	oewn
+oewn-outcry-v	outcry	v	0	1	1	oewn
+oewn-outdated-a	outdated	a	0	1	1	oewn
+oewn-outdistance-v	outdistance	v	0	1	1	oewn
+oewn-outdo-v	outdo	v	0	1	1	oewn
+oewn-outdoor-a	outdoor	a	0	1	1	oewn
+oewn-outdoor_game-n	outdoor game	n	0	2	2	oewn
+oewn-outdoor_man-n	outdoor man	n	0	2	2	oewn
+oewn-outdoor_sport-n	outdoor sport	n	0	2	2	oewn
+oewn-outdoor_stage-n	outdoor stage	n	0	2	2	oewn
+oewn-outdoor_woman-n	outdoor woman	n	0	2	2	oewn
+oewn-outdoors-n	outdoors	n	0	1	1	oewn
+oewn-outdoors-r	outdoors	r	0	1	1	oewn
+oewn-outdoorsman-n	outdoorsman	n	0	1	1	oewn
+oewn-outdoorsperson-n	outdoorsperson	n	0	1	1	oewn
+oewn-outdoorswoman-n	outdoorswoman	n	0	1	1	oewn
+oewn-outdoorsy-a	outdoorsy	a	0	1	1	oewn
+oewn-outdraw-v	outdraw	v	0	1	1	oewn
+oewn-outer-a	outer	a	0	1	1	oewn
+oewn-outer_boundary-n	outer boundary	n	0	2	2	oewn
+oewn-outer_cassock-n	outer cassock	n	0	2	2	oewn
+oewn-outer_ear-n	outer ear	n	0	2	2	oewn
+oewn-outer_garment-n	outer garment	n	0	2	2	oewn
+oewn-outer_jib-n	outer jib	n	0	2	2	oewn
+oewn-outer_planet-n	outer planet	n	0	2	2	oewn
+oewn-outer_rason-n	outer rason	n	0	2	2	oewn
+oewn-outer_space-n	outer space	n	0	2	2	oewn
+oewn-outercourse-n	outercourse	n	0	1	1	oewn
+oewn-outermost-a	outermost	a	0	1	1	oewn
+oewn-outerwear-n	outerwear	n	0	1	1	oewn
+oewn-outface-v	outface	v	0	1	1	oewn
+oewn-outfall-n	outfall	n	0	1	1	oewn
+oewn-outfield-n	outfield	n	0	1	1	oewn
+oewn-outfielder-n	outfielder	n	0	1	1	oewn
+oewn-outfight-v	outfight	v	0	1	1	oewn
+oewn-outfit-n	outfit	n	0	1	1	oewn
+oewn-outfit-v	outfit	v	0	1	1	oewn
+oewn-outfitted-a	outfitted	a	0	1	1	oewn
+oewn-outfitter-n	outfitter	n	0	1	1	oewn
+oewn-outfitting-n	outfitting	n	0	1	1	oewn
+oewn-outflank-v	outflank	v	0	1	1	oewn
+oewn-outflow-n	outflow	n	0	1	1	oewn
+oewn-outflowing-a	outflowing	a	0	1	1	oewn
+oewn-outfox-v	outfox	v	0	1	1	oewn
+oewn-outgeneral-v	outgeneral	v	0	1	1	oewn
+oewn-outgo-n	outgo	n	0	1	1	oewn
+oewn-outgo-v	outgo	v	0	1	1	oewn
+oewn-outgoer-n	outgoer	n	0	1	1	oewn
+oewn-outgoing-a	outgoing	a	0	1	1	oewn
+oewn-outgrow-v	outgrow	v	0	1	1	oewn
+oewn-outgrowth-n	outgrowth	n	0	1	1	oewn
+oewn-outguess-v	outguess	v	0	1	1	oewn
+oewn-outhouse-n	outhouse	n	0	1	1	oewn
+oewn-outing-n	outing	n	0	1	1	oewn
+oewn-outlander-n	outlander	n	0	1	1	oewn
+oewn-outlandish-a	outlandish	a	0	1	1	oewn
+oewn-outlandishly-r	outlandishly	r	0	1	1	oewn
+oewn-outlandishness-n	outlandishness	n	0	1	1	oewn
+oewn-outlast-v	outlast	v	0	1	1	oewn
+oewn-outlaw-a	outlaw	a	0	1	1	oewn
+oewn-outlaw-n	outlaw	n	0	1	1	oewn
+oewn-outlaw-v	outlaw	v	0	1	1	oewn
+oewn-outlawed-a	outlawed	a	0	1	1	oewn
+oewn-outlawry-n	outlawry	n	0	1	1	oewn
+oewn-outlay-n	outlay	n	0	1	1	oewn
+oewn-outlet-n	outlet	n	0	1	1	oewn
+oewn-outlet_box-n	outlet box	n	0	2	2	oewn
+oewn-outlier-n	outlier	n	0	1	1	oewn
+oewn-outline-n	outline	n	0	1	1	oewn
+oewn-outline-v	outline	v	0	1	1	oewn
+oewn-outlined-a	outlined	a	0	1	1	oewn
+oewn-outlive-v	outlive	v	0	1	1	oewn
+oewn-outlook-n	outlook	n	0	1	1	oewn
+oewn-outlying-a	outlying	a	0	1	1	oewn
+oewn-outmaneuver-v	outmaneuver	v	0	1	1	oewn
+oewn-outmanoeuvre-v	outmanoeuvre	v	0	1	1	oewn
+oewn-outmarch-v	outmarch	v	0	1	1	oewn
+oewn-outmatch-v	outmatch	v	0	1	1	oewn
+oewn-outmode-v	outmode	v	0	1	1	oewn
+oewn-outmoded-a	outmoded	a	0	1	1	oewn
+oewn-outmost-a	outmost	a	0	1	1	oewn
+oewn-outnumber-v	outnumber	v	0	1	1	oewn
+oewn-outpace-v	outpace	v	0	1	1	oewn
+oewn-outpatient-n	outpatient	n	0	1	1	oewn
+oewn-outperform-v	outperform	v	0	1	1	oewn
+oewn-outplay-v	outplay	v	0	1	1	oewn
+oewn-outpoint-v	outpoint	v	0	1	1	oewn
+oewn-outport-n	outport	n	0	1	1	oewn
+oewn-outpost-n	outpost	n	0	1	1	oewn
+oewn-outpouring-n	outpouring	n	0	1	1	oewn
+oewn-output-n	output	n	0	1	1	oewn
+oewn-output-to-input_ratio-n	output-to-input ratio	n	0	2	2	oewn
+oewn-output-v	output	v	0	1	1	oewn
+oewn-output_contract-n	output contract	n	0	2	2	oewn
+oewn-output_device-n	output device	n	0	2	2	oewn
+oewn-output_file-n	output file	n	0	2	2	oewn
+oewn-output_program-n	output program	n	0	2	2	oewn
+oewn-output_routine-n	output routine	n	0	2	2	oewn
+oewn-output_signal-n	output signal	n	0	2	2	oewn
+oewn-outrage-n	outrage	n	0	1	1	oewn
+oewn-outrage-v	outrage	v	0	1	1	oewn
+oewn-outraged-a	outraged	a	0	1	1	oewn
+oewn-outrageous-a	outrageous	a	0	1	1	oewn
+oewn-outrageously-r	outrageously	r	0	1	1	oewn
+oewn-outrageousness-n	outrageousness	n	0	1	1	oewn
+oewn-outrange-v	outrange	v	0	1	1	oewn
+oewn-outrank-v	outrank	v	0	1	1	oewn
+oewn-outre-a	outre	a	0	1	1	oewn
+oewn-outreach-n	outreach	n	0	1	1	oewn
+oewn-outride-v	outride	v	0	1	1	oewn
+oewn-outrider-n	outrider	n	0	1	1	oewn
+oewn-outrigged-a	outrigged	a	0	1	1	oewn
+oewn-outrigger-n	outrigger	n	0	1	1	oewn
+oewn-outrigger_canoe-n	outrigger canoe	n	0	2	2	oewn
+oewn-outright-a	outright	a	0	1	1	oewn
+oewn-outright-r	outright	r	0	1	1	oewn
+oewn-outrival-v	outrival	v	0	1	1	oewn
+oewn-outro-n	outro	n	0	1	1	oewn
+oewn-outroar-v	outroar	v	0	1	1	oewn
+oewn-outrun-v	outrun	v	0	1	1	oewn
+oewn-outsail-v	outsail	v	0	1	1	oewn
+oewn-outscore-v	outscore	v	0	1	1	oewn
+oewn-outsell-v	outsell	v	0	1	1	oewn
+oewn-outset-n	outset	n	0	1	1	oewn
+oewn-outshine-v	outshine	v	0	1	1	oewn
+oewn-outshout-v	outshout	v	0	1	1	oewn
+oewn-outside-a	outside	a	0	1	1	oewn
+oewn-outside-n	outside	n	0	1	1	oewn
+oewn-outside-r	outside	r	0	1	1	oewn
+oewn-outside_caliper-n	outside caliper	n	0	2	2	oewn
+oewn-outside_clinch-n	outside clinch	n	0	2	2	oewn
+oewn-outside_door-n	outside door	n	0	2	2	oewn
+oewn-outside_loop-n	outside loop	n	0	2	2	oewn
+oewn-outside_marriage-r	outside marriage	r	0	2	2	oewn
+oewn-outside_mirror-n	outside mirror	n	0	2	2	oewn
+oewn-outsider-n	outsider	n	0	1	1	oewn
+oewn-outsider_art-n	outsider art	n	0	2	2	oewn
+oewn-outsize-a	outsize	a	0	1	1	oewn
+oewn-outsize-n	outsize	n	0	1	1	oewn
+oewn-outsized-a	outsized	a	0	1	1	oewn
+oewn-outskirt-n	outskirt	n	0	1	1	oewn
+oewn-outskirts-n	outskirts	n	0	1	1	oewn
+oewn-outsmart-v	outsmart	v	0	1	1	oewn
+oewn-outsole-n	outsole	n	0	1	1	oewn
+oewn-outsource-v	outsource	v	0	1	1	oewn
+oewn-outspan-v	outspan	v	0	1	1	oewn
+oewn-outspoken-a	outspoken	a	0	1	1	oewn
+oewn-outspokenly-r	outspokenly	r	0	1	1	oewn
+oewn-outspokenness-n	outspokenness	n	0	1	1	oewn
+oewn-outspread-a	outspread	a	0	1	1	oewn
+oewn-outstanding-a	outstanding	a	0	1	1	oewn
+oewn-outstandingly-r	outstandingly	r	0	1	1	oewn
+oewn-outstare-v	outstare	v	0	1	1	oewn
+oewn-outstation-n	outstation	n	0	1	1	oewn
+oewn-outstay-v	outstay	v	0	1	1	oewn
+oewn-outstretched-a	outstretched	a	0	1	1	oewn
+oewn-outstrip-v	outstrip	v	0	1	1	oewn
+oewn-outstroke-n	outstroke	n	0	1	1	oewn
+oewn-outtake-n	outtake	n	0	1	1	oewn
+oewn-outthrust-n	outthrust	n	0	1	1	oewn
+oewn-outturn-n	outturn	n	0	1	1	oewn
+oewn-outvie-v	outvie	v	0	1	1	oewn
+oewn-outvote-v	outvote	v	0	1	1	oewn
+oewn-outward-a	outward	a	0	1	1	oewn
+oewn-outward-bound-a	outward-bound	a	0	1	1	oewn
+oewn-outward-developing-a	outward-developing	a	0	1	1	oewn
+oewn-outward-moving-a	outward-moving	a	0	1	1	oewn
+oewn-outward-r	outward	r	0	1	1	oewn
+oewn-outwardly-r	outwardly	r	0	1	1	oewn
+oewn-outwardness-n	outwardness	n	0	1	1	oewn
+oewn-outwards-r	outwards	r	0	1	1	oewn
+oewn-outwear-v	outwear	v	0	1	1	oewn
+oewn-outweigh-v	outweigh	v	0	1	1	oewn
+oewn-outwit-v	outwit	v	0	1	1	oewn
+oewn-outwork-n	outwork	n	0	1	1	oewn
+oewn-ouzel-n	ouzel	n	0	1	1	oewn
+oewn-ouzo-n	ouzo	n	0	1	1	oewn
+oewn-oval-a	oval	a	0	1	1	oewn
+oewn-oval-bodied-a	oval-bodied	a	0	1	1	oewn
+oewn-oval-fruited-a	oval-fruited	a	0	1	1	oewn
+oewn-oval-n	oval	n	0	1	1	oewn
+oewn-oval-shaped-a	oval-shaped	a	0	1	1	oewn
+oewn-oval_kumquat-n	oval kumquat	n	0	2	2	oewn
+oewn-oval_window-n	oval window	n	0	2	2	oewn
+oewn-ovalbumin-n	ovalbumin	n	0	1	1	oewn
+oewn-ovarian-a	ovarian	a	0	1	1	oewn
+oewn-ovarian_artery-n	ovarian artery	n	0	2	2	oewn
+oewn-ovarian_cyst-n	ovarian cyst	n	0	2	2	oewn
+oewn-ovarian_pregnancy-n	ovarian pregnancy	n	0	2	2	oewn
+oewn-ovarian_vein-n	ovarian vein	n	0	2	2	oewn
+oewn-ovariectomy-n	ovariectomy	n	0	1	1	oewn
+oewn-ovaritis-n	ovaritis	n	0	1	1	oewn
+oewn-ovary-n	ovary	n	0	1	1	oewn
+oewn-ovate-a	ovate	a	0	1	1	oewn
+oewn-ovate_leaf-n	ovate leaf	n	0	2	2	oewn
+oewn-ovation-n	ovation	n	0	1	1	oewn
+oewn-oven-n	oven	n	0	1	1	oewn
+oewn-oven-ready-a	oven-ready	a	0	1	1	oewn
+oewn-oven-shaped-a	oven-shaped	a	0	1	1	oewn
+oewn-oven_broil-v	oven broil	v	0	2	1	oewn
+oewn-oven_thermometer-n	oven thermometer	n	0	2	2	oewn
+oewn-ovenbake-v	ovenbake	v	0	1	1	oewn
+oewn-ovenbird-n	ovenbird	n	0	1	1	oewn
+oewn-ovenware-n	ovenware	n	0	1	1	oewn
+oewn-over-a	over	a	0	1	1	oewn
+oewn-over-burned_lime-n	over-burned lime	n	0	2	2	oewn
+oewn-over-correct-v	over-correct	v	0	1	1	oewn
+oewn-over-crowding-n	over-crowding	n	0	1	1	oewn
+oewn-over-embellished-a	over-embellished	a	0	1	1	oewn
+oewn-over-n	over	n	0	1	1	oewn
+oewn-over-r	over	r	0	1	1	oewn
+oewn-over-refine-v	over-refine	v	0	1	1	oewn
+oewn-over-the-counter-a	over-the-counter	a	0	1	1	oewn
+oewn-over-the-counter_derivative-n	over-the-counter derivative	n	0	2	2	oewn
+oewn-over-the-counter_drug-n	over-the-counter drug	n	0	2	2	oewn
+oewn-over-the-counter_market-n	over-the-counter market	n	0	2	2	oewn
+oewn-over-the-counter_medicine-n	over-the-counter medicine	n	0	2	2	oewn
+oewn-over-the-hill-a	over-the-hill	a	0	1	1	oewn
+oewn-over-the-shoulder_bombing-n	over-the-shoulder bombing	n	0	2	2	oewn
+oewn-over-the-top-a	over-the-top	a	0	1	1	oewn
+oewn-over_again-r	over again	r	0	2	2	oewn
+oewn-over_and_over-r	over and over	r	0	3	3	oewn
+oewn-over_and_over_again-r	over and over again	r	0	4	4	oewn
+oewn-over_here-r	over here	r	0	2	2	oewn
+oewn-over_the_counter_security-n	over the counter security	n	0	4	4	oewn
+oewn-over_the_counter_stock-n	over the counter stock	n	0	4	4	oewn
+oewn-overabundance-n	overabundance	n	0	1	1	oewn
+oewn-overabundant-a	overabundant	a	0	1	1	oewn
+oewn-overachieve-v	overachieve	v	0	1	1	oewn
+oewn-overachievement-n	overachievement	n	0	1	1	oewn
+oewn-overachiever-n	overachiever	n	0	1	1	oewn
+oewn-overact-v	overact	v	0	1	1	oewn
+oewn-overacting-n	overacting	n	0	1	1	oewn
+oewn-overactive-a	overactive	a	0	1	1	oewn
+oewn-overactivity-n	overactivity	n	0	1	1	oewn
+oewn-overage-a	overage	a	0	1	1	oewn
+oewn-overage-n	overage	n	0	1	1	oewn
+oewn-overaged-a	overaged	a	0	1	1	oewn
+oewn-overall-a	overall	a	0	1	1	oewn
+oewn-overall-n	overall	n	0	1	1	oewn
+oewn-overambitious-a	overambitious	a	0	1	1	oewn
+oewn-overanxiety-n	overanxiety	n	0	1	1	oewn
+oewn-overanxious-a	overanxious	a	0	1	1	oewn
+oewn-overappraisal-n	overappraisal	n	0	1	1	oewn
+oewn-overarch-v	overarch	v	0	1	1	oewn
+oewn-overarm-a	overarm	a	0	1	1	oewn
+oewn-overawe-v	overawe	v	0	1	1	oewn
+oewn-overawed-a	overawed	a	0	1	1	oewn
+oewn-overbalance-v	overbalance	v	0	1	1	oewn
+oewn-overbear-v	overbear	v	0	1	1	oewn
+oewn-overbearing-a	overbearing	a	0	1	1	oewn
+oewn-overbearingly-r	overbearingly	r	0	1	1	oewn
+oewn-overbearingness-n	overbearingness	n	0	1	1	oewn
+oewn-overbid-n	overbid	n	0	1	1	oewn
+oewn-overbid-v	overbid	v	0	1	1	oewn
+oewn-overbite-n	overbite	n	0	1	1	oewn
+oewn-overblown-a	overblown	a	0	1	1	oewn
+oewn-overboard-r	overboard	r	0	1	1	oewn
+oewn-overboil-v	overboil	v	0	1	1	oewn
+oewn-overbold-a	overbold	a	0	1	1	oewn
+oewn-overburden-n	overburden	n	0	1	1	oewn
+oewn-overburden-v	overburden	v	0	1	1	oewn
+oewn-overburdened-a	overburdened	a	0	1	1	oewn
+oewn-overburned_lime-n	overburned lime	n	0	2	2	oewn
+oewn-overbusy-a	overbusy	a	0	1	1	oewn
+oewn-overcall-n	overcall	n	0	1	1	oewn
+oewn-overcapitalisation-n	overcapitalisation	n	0	1	1	oewn
+oewn-overcapitalise-v	overcapitalise	v	0	1	1	oewn
+oewn-overcapitalization-n	overcapitalization	n	0	1	1	oewn
+oewn-overcapitalize-v	overcapitalize	v	0	1	1	oewn
+oewn-overcareful-a	overcareful	a	0	1	1	oewn
+oewn-overcast-a	overcast	a	0	1	1	oewn
+oewn-overcast-n	overcast	n	0	1	1	oewn
+oewn-overcast-v	overcast	v	0	1	1	oewn
+oewn-overcasting-n	overcasting	n	0	1	1	oewn
+oewn-overcautious-a	overcautious	a	0	1	1	oewn
+oewn-overcharge-n	overcharge	n	0	1	1	oewn
+oewn-overcharge-v	overcharge	v	0	1	1	oewn
+oewn-overclock-v	overclock	v	0	1	1	oewn
+oewn-overclothe-v	overclothe	v	0	1	1	oewn
+oewn-overclothes-n	overclothes	n	0	1	1	oewn
+oewn-overcloud-v	overcloud	v	0	1	1	oewn
+oewn-overcoat-n	overcoat	n	0	1	1	oewn
+oewn-overcoating-n	overcoating	n	0	1	1	oewn
+oewn-overcome-v	overcome	v	0	1	1	oewn
+oewn-overcomer-n	overcomer	n	0	1	1	oewn
+oewn-overcompensate-v	overcompensate	v	0	1	1	oewn
+oewn-overcompensation-n	overcompensation	n	0	1	1	oewn
+oewn-overconfidence-n	overconfidence	n	0	1	1	oewn
+oewn-overconfident-a	overconfident	a	0	1	1	oewn
+oewn-overcook-v	overcook	v	0	1	1	oewn
+oewn-overcredulity-n	overcredulity	n	0	1	1	oewn
+oewn-overcredulous-a	overcredulous	a	0	1	1	oewn
+oewn-overcritical-a	overcritical	a	0	1	1	oewn
+oewn-overcrop-v	overcrop	v	0	1	1	oewn
+oewn-overcrossing-n	overcrossing	n	0	1	1	oewn
+oewn-overcrowd-v	overcrowd	v	0	1	1	oewn
+oewn-overcrowding-n	overcrowding	n	0	1	1	oewn
+oewn-overcultivate-v	overcultivate	v	0	1	1	oewn
+oewn-overcup_oak-n	overcup oak	n	0	2	2	oewn
+oewn-overcurious-a	overcurious	a	0	1	1	oewn
+oewn-overdelicate-a	overdelicate	a	0	1	1	oewn
+oewn-overdo-v	overdo	v	0	1	1	oewn
+oewn-overdone-a	overdone	a	0	1	1	oewn
+oewn-overdose-v	overdose	v	0	1	1	oewn
+oewn-overdraft-n	overdraft	n	0	1	1	oewn
+oewn-overdraft_credit-n	overdraft credit	n	0	2	2	oewn
+oewn-overdramatise-v	overdramatise	v	0	1	1	oewn
+oewn-overdramatize-v	overdramatize	v	0	1	1	oewn
+oewn-overdraw-v	overdraw	v	0	1	1	oewn
+oewn-overdress-v	overdress	v	0	1	1	oewn
+oewn-overdressed-a	overdressed	a	0	1	1	oewn
+oewn-overdrive-n	overdrive	n	0	1	1	oewn
+oewn-overdrive-v	overdrive	v	0	1	1	oewn
+oewn-overdue-a	overdue	a	0	1	1	oewn
+oewn-overeager-a	overeager	a	0	1	1	oewn
+oewn-overeat-v	overeat	v	0	1	1	oewn
+oewn-overeating-n	overeating	n	0	1	1	oewn
+oewn-overemotional-a	overemotional	a	0	1	1	oewn
+oewn-overemphasis-n	overemphasis	n	0	1	1	oewn
+oewn-overemphasise-v	overemphasise	v	0	1	1	oewn
+oewn-overemphasize-v	overemphasize	v	0	1	1	oewn
+oewn-overenthusiastic-a	overenthusiastic	a	0	1	1	oewn
+oewn-overestimate-n	overestimate	n	0	1	1	oewn
+oewn-overestimate-v	overestimate	v	0	1	1	oewn
+oewn-overestimation-n	overestimation	n	0	1	1	oewn
+oewn-overexcited-a	overexcited	a	0	1	1	oewn
+oewn-overexert-v	overexert	v	0	1	1	oewn
+oewn-overexert_oneself-v	overexert oneself	v	0	2	1	oewn
+oewn-overexertion-n	overexertion	n	0	1	1	oewn
+oewn-overexploit-v	overexploit	v	0	1	1	oewn
+oewn-overexploitation-n	overexploitation	n	0	1	1	oewn
+oewn-overexpose-v	overexpose	v	0	1	1	oewn
+oewn-overexposure-n	overexposure	n	0	1	1	oewn
+oewn-overextend-v	overextend	v	0	1	1	oewn
+oewn-overfamiliar-a	overfamiliar	a	0	1	1	oewn
+oewn-overfamiliarity-n	overfamiliarity	n	0	1	1	oewn
+oewn-overfatigue-v	overfatigue	v	0	1	1	oewn
+oewn-overfed-a	overfed	a	0	1	1	oewn
+oewn-overfeed-v	overfeed	v	0	1	1	oewn
+oewn-overfeeding-n	overfeeding	n	0	1	1	oewn
+oewn-overfill-v	overfill	v	0	1	1	oewn
+oewn-overflight-n	overflight	n	0	1	1	oewn
+oewn-overflow-n	overflow	n	0	1	1	oewn
+oewn-overflow-v	overflow	v	0	1	1	oewn
+oewn-overflow_incontinence-n	overflow incontinence	n	0	2	2	oewn
+oewn-overflowing-a	overflowing	a	0	1	1	oewn
+oewn-overfly-v	overfly	v	0	1	1	oewn
+oewn-overfond-a	overfond	a	0	1	1	oewn
+oewn-overfull-a	overfull	a	0	1	1	oewn
+oewn-overgarment-n	overgarment	n	0	1	1	oewn
+oewn-overgeneralise-v	overgeneralise	v	0	1	1	oewn
+oewn-overgeneralize-v	overgeneralize	v	0	1	1	oewn
+oewn-overgenerous-a	overgenerous	a	0	1	1	oewn
+oewn-overgorge-v	overgorge	v	0	1	1	oewn
+oewn-overgreedy-a	overgreedy	a	0	1	1	oewn
+oewn-overgrow-v	overgrow	v	0	1	1	oewn
+oewn-overgrown-a	overgrown	a	0	1	1	oewn
+oewn-overgrowth-n	overgrowth	n	0	1	1	oewn
+oewn-overhand-a	overhand	a	0	1	1	oewn
+oewn-overhand_knot-n	overhand knot	n	0	2	2	oewn
+oewn-overhand_pitch-n	overhand pitch	n	0	2	2	oewn
+oewn-overhand_stitch-n	overhand stitch	n	0	2	2	oewn
+oewn-overhanded-a	overhanded	a	0	1	1	oewn
+oewn-overhang-n	overhang	n	0	1	1	oewn
+oewn-overhang-v	overhang	v	0	1	1	oewn
+oewn-overhasty-a	overhasty	a	0	1	1	oewn
+oewn-overhaul-n	overhaul	n	0	1	1	oewn
+oewn-overhaul-v	overhaul	v	0	1	1	oewn
+oewn-overhead-a	overhead	a	0	1	1	oewn
+oewn-overhead-n	overhead	n	0	1	1	oewn
+oewn-overhead-r	overhead	r	0	1	1	oewn
+oewn-overhead_press-n	overhead press	n	0	2	2	oewn
+oewn-overhead_projector-n	overhead projector	n	0	2	2	oewn
+oewn-overhead_railway-n	overhead railway	n	0	2	2	oewn
+oewn-overhear-v	overhear	v	0	1	1	oewn
+oewn-overheat-v	overheat	v	0	1	1	oewn
+oewn-overheated-a	overheated	a	0	1	1	oewn
+oewn-overheating-n	overheating	n	0	1	1	oewn
+oewn-overindulge-v	overindulge	v	0	1	1	oewn
+oewn-overindulgence-n	overindulgence	n	0	1	1	oewn
+oewn-overindulgent-a	overindulgent	a	0	1	1	oewn
+oewn-overinterpretation-n	overinterpretation	n	0	1	1	oewn
+oewn-overjealous-a	overjealous	a	0	1	1	oewn
+oewn-overjoy-v	overjoy	v	0	1	1	oewn
+oewn-overjoyed-a	overjoyed	a	0	1	1	oewn
+oewn-overkill-n	overkill	n	0	1	1	oewn
+oewn-overladen-a	overladen	a	0	1	1	oewn
+oewn-overland-a	overland	a	0	1	1	oewn
+oewn-overlap-n	overlap	n	0	1	1	oewn
+oewn-overlap-v	overlap	v	0	1	1	oewn
+oewn-overlapping-n	overlapping	n	0	1	1	oewn
+oewn-overlarge-a	overlarge	a	0	1	1	oewn
+oewn-overlay-n	overlay	n	0	1	1	oewn
+oewn-overlay-v	overlay	v	0	1	1	oewn
+oewn-overlayer-n	overlayer	n	0	1	1	oewn
+oewn-overleaf-r	overleaf	r	0	1	1	oewn
+oewn-overleap-v	overleap	v	0	1	1	oewn
+oewn-overlie-v	overlie	v	0	1	1	oewn
+oewn-overlip-n	overlip	n	0	1	1	oewn
+oewn-overload-n	overload	n	0	1	1	oewn
+oewn-overload-v	overload	v	0	1	1	oewn
+oewn-overloaded-a	overloaded	a	0	1	1	oewn
+oewn-overlook-n	overlook	n	0	1	1	oewn
+oewn-overlook-v	overlook	v	0	1	1	oewn
+oewn-overlooked-a	overlooked	a	0	1	1	oewn
+oewn-overlooking-a	overlooking	a	0	1	1	oewn
+oewn-overlord-n	overlord	n	0	1	1	oewn
+oewn-overlordship-n	overlordship	n	0	1	1	oewn
+oewn-overly-r	overly	r	0	1	1	oewn
+oewn-overlying-a	overlying	a	0	1	1	oewn
+oewn-overmantel-n	overmantel	n	0	1	1	oewn
+oewn-overmaster-v	overmaster	v	0	1	1	oewn
+oewn-overmodest-a	overmodest	a	0	1	1	oewn
+oewn-overmuch-a	overmuch	a	0	1	1	oewn
+oewn-overmuch-n	overmuch	n	0	1	1	oewn
+oewn-overmuch-r	overmuch	r	0	1	1	oewn
+oewn-overmuchness-n	overmuchness	n	0	1	1	oewn
+oewn-overnice-a	overnice	a	0	1	1	oewn
+oewn-overnight-a	overnight	a	0	1	1	oewn
+oewn-overnight-r	overnight	r	0	1	1	oewn
+oewn-overnight_bag-n	overnight bag	n	0	2	2	oewn
+oewn-overnight_case-n	overnight case	n	0	2	2	oewn
+oewn-overnighter-n	overnighter	n	0	1	1	oewn
+oewn-overpass-n	overpass	n	0	1	1	oewn
+oewn-overpay-v	overpay	v	0	1	1	oewn
+oewn-overpayment-n	overpayment	n	0	1	1	oewn
+oewn-overplay-v	overplay	v	0	1	1	oewn
+oewn-overplus-n	overplus	n	0	1	1	oewn
+oewn-overpopulate-v	overpopulate	v	0	1	1	oewn
+oewn-overpopulation-n	overpopulation	n	0	1	1	oewn
+oewn-overpower-v	overpower	v	0	1	1	oewn
+oewn-overpowering-a	overpowering	a	0	1	1	oewn
+oewn-overpoweringly-r	overpoweringly	r	0	1	1	oewn
+oewn-overpraise-n	overpraise	n	0	1	1	oewn
+oewn-overpraise-v	overpraise	v	0	1	1	oewn
+oewn-overpressure-n	overpressure	n	0	1	1	oewn
+oewn-overprice-v	overprice	v	0	1	1	oewn
+oewn-overpriced-a	overpriced	a	0	1	1	oewn
+oewn-overprint-n	overprint	n	0	1	1	oewn
+oewn-overprint-v	overprint	v	0	1	1	oewn
+oewn-overproduce-v	overproduce	v	0	1	1	oewn
+oewn-overproduction-n	overproduction	n	0	1	1	oewn
+oewn-overprotect-v	overprotect	v	0	1	1	oewn
+oewn-overprotection-n	overprotection	n	0	1	1	oewn
+oewn-overprotective-a	overprotective	a	0	1	1	oewn
+oewn-overproud-a	overproud	a	0	1	1	oewn
+oewn-overrate-v	overrate	v	0	1	1	oewn
+oewn-overrating-n	overrating	n	0	1	1	oewn
+oewn-overreach-v	overreach	v	0	1	1	oewn
+oewn-overreaching-a	overreaching	a	0	1	1	oewn
+oewn-overreact-v	overreact	v	0	1	1	oewn
+oewn-overreaction-n	overreaction	n	0	1	1	oewn
+oewn-overreckoning-n	overreckoning	n	0	1	1	oewn
+oewn-overrefine-v	overrefine	v	0	1	1	oewn
+oewn-overrefined-a	overrefined	a	0	1	1	oewn
+oewn-overrefinement-n	overrefinement	n	0	1	1	oewn
+oewn-override-n	override	n	0	1	1	oewn
+oewn-override-v	override	v	0	1	1	oewn
+oewn-overriding-a	overriding	a	0	1	1	oewn
+oewn-overripe-a	overripe	a	0	1	1	oewn
+oewn-overrule-v	overrule	v	0	1	1	oewn
+oewn-overrun-n	overrun	n	0	1	1	oewn
+oewn-overrun-v	overrun	v	0	1	1	oewn
+oewn-oversea-a	oversea	a	0	1	1	oewn
+oewn-oversea-r	oversea	r	0	1	1	oewn
+oewn-overseas-a	overseas	a	0	1	1	oewn
+oewn-overseas-r	overseas	r	0	1	1	oewn
+oewn-overseas_cap-n	overseas cap	n	0	2	2	oewn
+oewn-overseas_telegram-n	overseas telegram	n	0	2	2	oewn
+oewn-oversee-v	oversee	v	0	1	1	oewn
+oewn-overseer-n	overseer	n	0	1	1	oewn
+oewn-oversensitive-a	oversensitive	a	0	1	1	oewn
+oewn-oversensitiveness-n	oversensitiveness	n	0	1	1	oewn
+oewn-overserious-a	overserious	a	0	1	1	oewn
+oewn-oversew-v	oversew	v	0	1	1	oewn
+oewn-oversewn-a	oversewn	a	0	1	1	oewn
+oewn-oversexed-a	oversexed	a	0	1	1	oewn
+oewn-overshadow-v	overshadow	v	0	1	1	oewn
+oewn-overshielding-n	overshielding	n	0	1	1	oewn
+oewn-overshoe-n	overshoe	n	0	1	1	oewn
+oewn-overshoot-n	overshoot	n	0	1	1	oewn
+oewn-overshoot-v	overshoot	v	0	1	1	oewn
+oewn-overshot-a	overshot	a	0	1	1	oewn
+oewn-overside-r	overside	r	0	1	1	oewn
+oewn-oversight-n	oversight	n	0	1	1	oewn
+oewn-oversimplification-n	oversimplification	n	0	1	1	oewn
+oewn-oversimplify-v	oversimplify	v	0	1	1	oewn
+oewn-oversize-a	oversize	a	0	1	1	oewn
+oewn-oversized-a	oversized	a	0	1	1	oewn
+oewn-overskirt-n	overskirt	n	0	1	1	oewn
+oewn-oversleep-v	oversleep	v	0	1	1	oewn
+oewn-oversolicitous-a	oversolicitous	a	0	1	1	oewn
+oewn-overspecialise-v	overspecialise	v	0	1	1	oewn
+oewn-overspecialize-v	overspecialize	v	0	1	1	oewn
+oewn-overspend-v	overspend	v	0	1	1	oewn
+oewn-overspill-n	overspill	n	0	1	1	oewn
+oewn-overspread-v	overspread	v	0	1	1	oewn
+oewn-overstate-v	overstate	v	0	1	1	oewn
+oewn-overstated-a	overstated	a	0	1	1	oewn
+oewn-overstatement-n	overstatement	n	0	1	1	oewn
+oewn-overstay-v	overstay	v	0	1	1	oewn
+oewn-oversteer-n	oversteer	n	0	1	1	oewn
+oewn-overstep-v	overstep	v	0	1	1	oewn
+oewn-overstock-v	overstock	v	0	1	1	oewn
+oewn-overstrain-n	overstrain	n	0	1	1	oewn
+oewn-overstrain-v	overstrain	v	0	1	1	oewn
+oewn-overstress-v	overstress	v	0	1	1	oewn
+oewn-overstretch-v	overstretch	v	0	1	1	oewn
+oewn-overstrung-a	overstrung	a	0	1	1	oewn
+oewn-overstuff-v	overstuff	v	0	1	1	oewn
+oewn-overstuffed-a	overstuffed	a	0	1	1	oewn
+oewn-overstuffed_chair-n	overstuffed chair	n	0	2	2	oewn
+oewn-oversubscribed-a	oversubscribed	a	0	1	1	oewn
+oewn-oversupply-n	oversupply	n	0	1	1	oewn
+oewn-oversupply-v	oversupply	v	0	1	1	oewn
+oewn-oversuspicious-a	oversuspicious	a	0	1	1	oewn
+oewn-overt-a	overt	a	0	1	1	oewn
+oewn-overt_operation-n	overt operation	n	0	2	2	oewn
+oewn-overtake-v	overtake	v	0	1	1	oewn
+oewn-overtaking-n	overtaking	n	0	1	1	oewn
+oewn-overtax-v	overtax	v	0	1	1	oewn
+oewn-overthink-v	overthink	v	0	1	1	oewn
+oewn-overthrow-n	overthrow	n	0	1	1	oewn
+oewn-overthrow-v	overthrow	v	0	1	1	oewn
+oewn-overthrust_fault-n	overthrust fault	n	0	2	2	oewn
+oewn-overtime-n	overtime	n	0	1	1	oewn
+oewn-overtime-r	overtime	r	0	1	1	oewn
+oewn-overtime_period-n	overtime period	n	0	2	2	oewn
+oewn-overtire-v	overtire	v	0	1	1	oewn
+oewn-overtly-r	overtly	r	0	1	1	oewn
+oewn-overtolerance-n	overtolerance	n	0	1	1	oewn
+oewn-overtone-n	overtone	n	0	1	1	oewn
+oewn-overtop-v	overtop	v	0	1	1	oewn
+oewn-overtrump-v	overtrump	v	0	1	1	oewn
+oewn-overture-n	overture	n	0	1	1	oewn
+oewn-overturn-n	overturn	n	0	1	1	oewn
+oewn-overturn-v	overturn	v	0	1	1	oewn
+oewn-overturned-a	overturned	a	0	1	1	oewn
+oewn-overuse-n	overuse	n	0	1	1	oewn
+oewn-overuse-v	overuse	v	0	1	1	oewn
+oewn-overutilisation-n	overutilisation	n	0	1	1	oewn
+oewn-overutilization-n	overutilization	n	0	1	1	oewn
+oewn-overvaliant-a	overvaliant	a	0	1	1	oewn
+oewn-overvaluation-n	overvaluation	n	0	1	1	oewn
+oewn-overvalue-v	overvalue	v	0	1	1	oewn
+oewn-overview-n	overview	n	0	1	1	oewn
+oewn-overwatch-n	overwatch	n	0	1	1	oewn
+oewn-overweary-v	overweary	v	0	1	1	oewn
+oewn-overweening-a	overweening	a	0	1	1	oewn
+oewn-overweight-a	overweight	a	0	1	1	oewn
+oewn-overweight-n	overweight	n	0	1	1	oewn
+oewn-overwhelm-v	overwhelm	v	0	1	1	oewn
+oewn-overwhelming-a	overwhelming	a	0	1	1	oewn
+oewn-overwhelmingly-r	overwhelmingly	r	0	1	1	oewn
+oewn-overwinter-v	overwinter	v	0	1	1	oewn
+oewn-overwork-n	overwork	n	0	1	1	oewn
+oewn-overwork-v	overwork	v	0	1	1	oewn
+oewn-overworking-n	overworking	n	0	1	1	oewn
+oewn-overwrite-v	overwrite	v	0	1	1	oewn
+oewn-overwrought-a	overwrought	a	0	1	1	oewn
+oewn-overzeal-n	overzeal	n	0	1	1	oewn
+oewn-overzealous-a	overzealous	a	0	1	1	oewn
+oewn-overzealousness-n	overzealousness	n	0	1	1	oewn
+oewn-oviduct-n	oviduct	n	0	1	1	oewn
+oewn-oviform-a	oviform	a	0	1	1	oewn
+oewn-ovine-a	ovine	a	0	1	1	oewn
+oewn-oviparous-a	oviparous	a	0	1	1	oewn
+oewn-ovipositor-n	ovipositor	n	0	1	1	oewn
+oewn-oviraptorid-n	oviraptorid	n	0	1	1	oewn
+oewn-ovo-lacto_vegetarianism-n	ovo-lacto vegetarianism	n	0	2	2	oewn
+oewn-ovoflavin-n	ovoflavin	n	0	1	1	oewn
+oewn-ovoid-a	ovoid	a	0	1	1	oewn
+oewn-ovoid-n	ovoid	n	0	1	1	oewn
+oewn-ovolo-n	ovolo	n	0	1	1	oewn
+oewn-ovotestis-n	ovotestis	n	0	1	1	oewn
+oewn-ovoviviparous-a	ovoviviparous	a	0	1	1	oewn
+oewn-ovular-a	ovular	a	0	1	1	oewn
+oewn-ovulate-v	ovulate	v	0	1	1	oewn
+oewn-ovulation-n	ovulation	n	0	1	1	oewn
+oewn-ovulation_method-n	ovulation method	n	0	2	2	oewn
+oewn-ovulation_method_of_family_planning-n	ovulation method of family planning	n	0	5	2	oewn
+oewn-ovule-n	ovule	n	0	1	1	oewn
+oewn-ovum-n	ovum	n	0	1	1	oewn
+oewn-owe-v	owe	v	0	1	1	oewn
+oewn-owing-a	owing	a	0	1	1	oewn
+oewn-owl-n	owl	n	0	1	1	oewn
+oewn-owlclaws-n	owlclaws	n	0	1	1	oewn
+oewn-owlet-n	owlet	n	0	1	1	oewn
+oewn-owlet_moth-n	owlet moth	n	0	2	2	oewn
+oewn-owlish-a	owlish	a	0	1	1	oewn
+oewn-owlishly-r	owlishly	r	0	1	1	oewn
+oewn-own-a	own	a	0	1	1	oewn
+oewn-own-v	own	v	0	1	1	oewn
+oewn-own_goal-n	own goal	n	0	2	2	oewn
+oewn-own_up-v	own up	v	0	2	1	oewn
+oewn-owned-a	owned	a	0	1	1	oewn
+oewn-owner-ap-s_equity-n	owner's equity	n	0	2	2	oewn
+oewn-owner-driver-n	owner-driver	n	0	1	1	oewn
+oewn-owner-n	owner	n	0	1	1	oewn
+oewn-owner-occupied-a	owner-occupied	a	0	1	1	oewn
+oewn-owner-occupier-n	owner-occupier	n	0	1	1	oewn
+oewn-ownerless-a	ownerless	a	0	1	1	oewn
+oewn-ownership-n	ownership	n	0	1	1	oewn
+oewn-ox-eyed-a	ox-eyed	a	0	1	1	oewn
+oewn-ox-eyed_daisy-n	ox-eyed daisy	n	0	2	2	oewn
+oewn-ox-n	ox	n	0	1	1	oewn
+oewn-oxacillin-n	oxacillin	n	0	1	1	oewn
+oewn-oxalacetate-n	oxalacetate	n	0	1	1	oewn
+oewn-oxalacetic_acid-n	oxalacetic acid	n	0	2	2	oewn
+oewn-oxalate-n	oxalate	n	0	1	1	oewn
+oewn-oxalic-a	oxalic	a	0	1	1	oewn
+oewn-oxalic_acid-n	oxalic acid	n	0	2	2	oewn
+oewn-oxalis-n	oxalis	n	0	1	1	oewn
+oewn-oxaloacetate-n	oxaloacetate	n	0	1	1	oewn
+oewn-oxaloacetic_acid-n	oxaloacetic acid	n	0	2	2	oewn
+oewn-oxaprozin-n	oxaprozin	n	0	1	1	oewn
+oewn-oxazepam-n	oxazepam	n	0	1	1	oewn
+oewn-oxblood_red-n	oxblood red	n	0	2	2	oewn
+oewn-oxbow-n	oxbow	n	0	1	1	oewn
+oewn-oxbow_lake-n	oxbow lake	n	0	2	2	oewn
+oewn-oxcart-n	oxcart	n	0	1	1	oewn
+oewn-oxen-n	oxen	n	0	1	1	oewn
+oewn-oxeye-n	oxeye	n	0	1	1	oewn
+oewn-oxeye_daisy-n	oxeye daisy	n	0	2	2	oewn
+oewn-oxford-gray-a	oxford-gray	a	0	1	1	oewn
+oewn-oxford-grey-a	oxford-grey	a	0	1	1	oewn
+oewn-oxford-n	oxford	n	0	1	1	oewn
+oewn-oxford_gray-n	oxford gray	n	0	2	2	oewn
+oewn-oxford_grey-n	oxford grey	n	0	2	2	oewn
+oewn-oxheart-n	oxheart	n	0	1	1	oewn
+oewn-oxheart_cherry-n	oxheart cherry	n	0	2	2	oewn
+oewn-oxidant-n	oxidant	n	0	1	1	oewn
+oewn-oxidase-n	oxidase	n	0	1	1	oewn
+oewn-oxidate-v	oxidate	v	0	1	1	oewn
+oewn-oxidation-n	oxidation	n	0	1	1	oewn
+oewn-oxidation-reduction-n	oxidation-reduction	n	0	1	1	oewn
+oewn-oxidation-reduction_indicator-n	oxidation-reduction indicator	n	0	2	2	oewn
+oewn-oxidation_number-n	oxidation number	n	0	2	2	oewn
+oewn-oxidation_pond-n	oxidation pond	n	0	2	2	oewn
+oewn-oxidation_state-n	oxidation state	n	0	2	2	oewn
+oewn-oxidative-a	oxidative	a	0	1	1	oewn
+oewn-oxidative_phosphorylation-n	oxidative phosphorylation	n	0	2	2	oewn
+oewn-oxide-n	oxide	n	0	1	1	oewn
+oewn-oxidisation-n	oxidisation	n	0	1	1	oewn
+oewn-oxidise-v	oxidise	v	0	1	1	oewn
+oewn-oxidised-a	oxidised	a	0	1	1	oewn
+oewn-oxidiser-n	oxidiser	n	0	1	1	oewn
+oewn-oxidizable-a	oxidizable	a	0	1	1	oewn
+oewn-oxidization-n	oxidization	n	0	1	1	oewn
+oewn-oxidize-v	oxidize	v	0	1	1	oewn
+oewn-oxidized-a	oxidized	a	0	1	1	oewn
+oewn-oxidized_LDL_cholesterol-n	oxidized LDL cholesterol	n	0	3	3	oewn
+oewn-oxidizer-n	oxidizer	n	0	1	1	oewn
+oewn-oxidizing_agent-n	oxidizing agent	n	0	2	2	oewn
+oewn-oxidoreductase-n	oxidoreductase	n	0	1	1	oewn
+oewn-oxidoreduction-n	oxidoreduction	n	0	1	1	oewn
+oewn-oxime-n	oxime	n	0	1	1	oewn
+oewn-oximeter-n	oximeter	n	0	1	1	oewn
+oewn-oxlip-n	oxlip	n	0	1	1	oewn
+oewn-oxtail-n	oxtail	n	0	1	1	oewn
+oewn-oxtail_soup-n	oxtail soup	n	0	2	2	oewn
+oewn-oxtant-n	oxtant	n	0	1	1	oewn
+oewn-oxtongue-n	oxtongue	n	0	1	1	oewn
+oewn-oxyacetylene-n	oxyacetylene	n	0	1	1	oewn
+oewn-oxyacetylene_torch-n	oxyacetylene torch	n	0	2	2	oewn
+oewn-oxyacid-n	oxyacid	n	0	1	1	oewn
+oewn-oxybenzene-n	oxybenzene	n	0	1	1	oewn
+oewn-oxybutyric_acid-n	oxybutyric acid	n	0	2	2	oewn
+oewn-oxycephaly-n	oxycephaly	n	0	1	1	oewn
+oewn-oxygen-n	oxygen	n	0	1	1	oewn
+oewn-oxygen_acid-n	oxygen acid	n	0	2	2	oewn
+oewn-oxygen_debt-n	oxygen debt	n	0	2	2	oewn
+oewn-oxygen_deficit-n	oxygen deficit	n	0	2	2	oewn
+oewn-oxygen_mask-n	oxygen mask	n	0	2	2	oewn
+oewn-oxygenase-n	oxygenase	n	0	1	1	oewn
+oewn-oxygenate-v	oxygenate	v	0	1	1	oewn
+oewn-oxygenation-n	oxygenation	n	0	1	1	oewn
+oewn-oxygenise-v	oxygenise	v	0	1	1	oewn
+oewn-oxygenize-v	oxygenize	v	0	1	1	oewn
+oewn-oxyhaemoglobin-n	oxyhaemoglobin	n	0	1	1	oewn
+oewn-oxyhemoglobin-n	oxyhemoglobin	n	0	1	1	oewn
+oewn-oxymoron-n	oxymoron	n	0	1	1	oewn
+oewn-oxynervonic_acid-n	oxynervonic acid	n	0	2	2	oewn
+oewn-oxyopia-n	oxyopia	n	0	1	1	oewn
+oewn-oxyphenbutazone-n	oxyphenbutazone	n	0	1	1	oewn
+oewn-oxyphencyclimine-n	oxyphencyclimine	n	0	1	1	oewn
+oewn-oxytetracycline-n	oxytetracycline	n	0	1	1	oewn
+oewn-oxytetracycline_hydrochloride-n	oxytetracycline hydrochloride	n	0	2	2	oewn
+oewn-oxytocic-n	oxytocic	n	0	1	1	oewn
+oewn-oxytocic_drug-n	oxytocic drug	n	0	2	2	oewn
+oewn-oxytocin-n	oxytocin	n	0	1	1	oewn
+oewn-oxytone-n	oxytone	n	0	1	1	oewn
+oewn-oyabun-n	oyabun	n	0	1	1	oewn
+oewn-oyster-fish-n	oyster-fish	n	0	1	1	oewn
+oewn-oyster-n	oyster	n	0	1	1	oewn
+oewn-oyster-v	oyster	v	0	1	1	oewn
+oewn-oyster_agaric-n	oyster agaric	n	0	2	2	oewn
+oewn-oyster_bank-n	oyster bank	n	0	2	2	oewn
+oewn-oyster_bar-n	oyster bar	n	0	2	2	oewn
+oewn-oyster_bed-n	oyster bed	n	0	2	2	oewn
+oewn-oyster_catcher-n	oyster catcher	n	0	2	2	oewn
+oewn-oyster_crab-n	oyster crab	n	0	2	2	oewn
+oewn-oyster_cracker-n	oyster cracker	n	0	2	2	oewn
+oewn-oyster_dressing-n	oyster dressing	n	0	2	2	oewn
+oewn-oyster_fish-n	oyster fish	n	0	2	2	oewn
+oewn-oyster_fungus-n	oyster fungus	n	0	2	2	oewn
+oewn-oyster_mushroom-n	oyster mushroom	n	0	2	2	oewn
+oewn-oyster_park-n	oyster park	n	0	2	2	oewn
+oewn-oyster_plant-n	oyster plant	n	0	2	2	oewn
+oewn-oyster_shell-n	oyster shell	n	0	2	2	oewn
+oewn-oyster_stew-n	oyster stew	n	0	2	2	oewn
+oewn-oyster_stuffing-n	oyster stuffing	n	0	2	2	oewn
+oewn-oystercatcher-n	oystercatcher	n	0	1	1	oewn
+oewn-oysterfish-n	oysterfish	n	0	1	1	oewn
+oewn-oysters_Rockefeller-n	oysters Rockefeller	n	0	2	2	oewn
+oewn-oz.-n	oz.	n	0	1	1	oewn
+oewn-ozaena-n	ozaena	n	0	1	1	oewn
+oewn-ozena-n	ozena	n	0	1	1	oewn
+oewn-ozocerite-n	ozocerite	n	0	1	1	oewn
+oewn-ozokerite-n	ozokerite	n	0	1	1	oewn
+oewn-ozone-n	ozone	n	0	1	1	oewn
+oewn-ozone_hole-n	ozone hole	n	0	2	2	oewn
+oewn-ozone_layer-n	ozone layer	n	0	2	2	oewn
+oewn-ozone_sickness-n	ozone sickness	n	0	2	2	oewn
+oewn-ozonide-n	ozonide	n	0	1	1	oewn
+oewn-ozonise-v	ozonise	v	0	1	1	oewn
+oewn-ozonize-v	ozonize	v	0	1	1	oewn
+oewn-ozonosphere-n	ozonosphere	n	0	1	1	oewn

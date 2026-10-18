@@ -1,0 +1,597 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-soak__1.22.00..	derivation		oewn-soak__2.30.00..
+oewn-soak__1.22.00..	derivation		oewn-soak__2.35.01..
+oewn-soak__2.30.00..	other	event	oewn-soak__1.22.00..
+oewn-soak__2.30.01..	derivation		oewn-soaker__1.19.00..
+oewn-soak__2.30.01..	derivation		oewn-soaking__1.04.01..
+oewn-soak__2.30.01..	other	by_means_of	oewn-soaker__1.19.00..
+oewn-soak__2.34.00..	derivation		oewn-soaker__1.18.00..
+oewn-soak__2.34.00..	other	agent	oewn-soaker__1.18.00..
+oewn-soak__2.35.01..	derivation		oewn-soakage__1.22.00..
+oewn-soak__2.35.01..	derivation		oewn-soaking__1.04.00..
+oewn-soak__2.35.01..	derivation		oewn-soaking__1.22.00..
+oewn-soak__2.35.01..	other	event	oewn-soak__1.22.00..
+oewn-soap__1.06.00..	derivation		oewn-soap__2.29.00..
+oewn-soap__1.06.00..	derivation		oewn-soapy__3.01.00..
+oewn-soap__2.29.00..	other	event	oewn-soap__1.06.00..
+oewn-soapbox__1.06.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-soapiness__1.07.00..	derivation		oewn-soapy__3.01.00..
+oewn-soapy__3.01.00..	pertainym		oewn-soap__1.06.00..
+oewn-soar__1.04.00..	derivation		oewn-soar__2.38.00..
+oewn-soar__1.04.00..	derivation		oewn-soar__2.38.03..
+oewn-soar__2.38.00..	other	event	oewn-soar__1.04.00..
+oewn-soar__2.38.02..	derivation		oewn-soaring__1.04.00..
+oewn-soar__2.38.03..	derivation		oewn-soaring__1.04.00..
+oewn-soar__2.38.03..	other	event	oewn-soar__1.04.00..
+oewn-sob__1.04.00..	derivation		oewn-sob__2.29.00..
+oewn-sob__2.29.00..	derivation		oewn-sobbing__1.04.00..
+oewn-sob__2.29.00..	other	event	oewn-sob__1.04.00..
+oewn-sober__3.00.01..	derivation		oewn-soberness__1.26.00..
+oewn-sober__3.00.02..	derivation		oewn-soberness__1.07.00..
+oewn-sober__5.00.00.serious.00	derivation		oewn-soberness__1.07.00..
+oewn-soberly__4.02.00..	pertainym		oewn-sober__5.00.00.serious.00
+oewn-sociability__1.07.00..	antonym		oewn-unsociability__1.07.00..
+oewn-sociability__1.07.00..	derivation		oewn-sociable__3.00.00..
+oewn-sociability__1.07.00..	derivation		oewn-sociable__5.00.00.congenial.00
+oewn-sociable__1.14.00..	derivation		oewn-sociable__3.00.00..
+oewn-sociable__3.00.00..	antonym		oewn-unsociable__3.00.00..
+oewn-sociable__3.00.00..	derivation		oewn-sociableness__1.07.00..
+oewn-sociable__5.00.00.congenial.00	derivation		oewn-sociableness__1.07.00..
+oewn-sociably__4.02.00..	antonym		oewn-unsociably__4.02.00..
+oewn-sociably__4.02.00..	pertainym		oewn-sociable__3.00.00..
+oewn-sociably__4.02.01..	pertainym		oewn-sociable__3.00.00..
+oewn-social__1.14.00..	derivation		oewn-social__5.00.00.friendly.01
+oewn-social__1.14.00..	derivation		oewn-social__5.00.00.sociable.00
+oewn-social__3.00.00..	antonym		oewn-unsocial__3.00.00..
+oewn-social__3.00.00..	derivation		oewn-sociality__1.07.00..
+oewn-social__3.01.00..	pertainym		oewn-society__1.14.00..
+oewn-social__3.01.02..	pertainym		oewn-society__1.14.02..
+oewn-social__5.00.00.friendly.01	derivation		oewn-sociality__1.07.00..
+oewn-social__5.00.00.gregarious.00	derivation		oewn-sociality__1.07.00..
+oewn-social__5.00.00.sociable.00	derivation		oewn-sociality__1.07.00..
+oewn-social_anthropologist__1.18.00..	derivation		oewn-social_anthropology__1.09.00..
+oewn-social_organisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-social_organisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-social_organization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-social_science__1.09.00..	derivation		oewn-social_scientist__1.18.00..
+oewn-socialisation__1.04.00..	derivation		oewn-socialise__2.30.01..
+oewn-socialisation__1.04.00..	derivation		oewn-socialise__2.41.00..
+oewn-socialisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialisation__1.04.01..	derivation		oewn-socialise__2.41.01..
+oewn-socialisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialisation__1.04.02..	derivation		oewn-socialise__2.30.00..
+oewn-socialisation__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialisation__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialise__2.30.00..	other	event	oewn-socialisation__1.04.02..
+oewn-socialise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialise__2.30.01..	other	event	oewn-socialisation__1.04.00..
+oewn-socialise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialise__2.41.00..	other	event	oewn-socialisation__1.04.00..
+oewn-socialise__2.41.01..	derivation		oewn-socialiser__1.18.00..
+oewn-socialise__2.41.01..	derivation		oewn-socialising__1.04.00..
+oewn-socialise__2.41.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialise__2.41.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialise__2.41.01..	other	agent	oewn-socialiser__1.18.00..
+oewn-socialise__2.41.01..	other	event	oewn-socialisation__1.04.01..
+oewn-socialising__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-socialising__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-socialism__1.09.00..	derivation		oewn-socialist__1.18.00..
+oewn-socialism__1.09.00..	derivation		oewn-socialistic__3.00.00..
+oewn-socialism__1.14.00..	derivation		oewn-socialist__1.18.00..
+oewn-socialism__1.14.00..	derivation		oewn-socialistic__3.00.00..
+oewn-socialist__1.18.00..	derivation		oewn-socialist__3.00.04..
+oewn-socialization__1.04.00..	derivation		oewn-socialize__2.30.01..
+oewn-socialization__1.04.00..	derivation		oewn-socialize__2.41.00..
+oewn-socialization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialization__1.04.01..	derivation		oewn-socialize__2.41.01..
+oewn-socialization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialization__1.04.02..	derivation		oewn-socialize__2.30.00..
+oewn-socialization__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialize__2.30.00..	other	event	oewn-socialization__1.04.02..
+oewn-socialize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialize__2.30.01..	other	event	oewn-socialization__1.04.00..
+oewn-socialize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialize__2.41.00..	other	event	oewn-socialization__1.04.00..
+oewn-socialize__2.41.01..	derivation		oewn-socializer__1.18.00..
+oewn-socialize__2.41.01..	derivation		oewn-socializing__1.04.00..
+oewn-socialize__2.41.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socialize__2.41.01..	other	agent	oewn-socializer__1.18.00..
+oewn-socialize__2.41.01..	other	event	oewn-socialization__1.04.01..
+oewn-socializing__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-socially__4.02.00..	pertainym		oewn-social__3.01.00..
+oewn-socially__4.02.01..	pertainym		oewn-social__3.00.00..
+oewn-societal__3.01.00..	derivation		oewn-society__1.14.00..
+oewn-societal__3.01.00..	pertainym		oewn-society__1.14.00..
+oewn-sociobiologic__3.01.00..	derivation		oewn-sociobiology__1.09.00..
+oewn-sociobiologic__3.01.00..	pertainym		oewn-sociobiology__1.09.00..
+oewn-sociobiological__3.01.00..	derivation		oewn-sociobiology__1.09.00..
+oewn-sociobiological__3.01.00..	pertainym		oewn-sociobiology__1.09.00..
+oewn-sociobiologically__4.02.00..	pertainym		oewn-sociobiological__3.01.00..
+oewn-sociobiologist__1.18.00..	derivation		oewn-sociobiology__1.09.00..
+oewn-sociocultural__3.01.00..	pertainym		oewn-culture__1.09.01..
+oewn-sociocultural__3.01.00..	pertainym		oewn-society__1.14.00..
+oewn-socioeconomic__3.01.00..	pertainym		oewn-economic__3.01.00..
+oewn-socioeconomically__4.02.00..	pertainym		oewn-socioeconomic__3.01.00..
+oewn-sociolinguist__1.18.00..	derivation		oewn-sociolinguistics__1.09.00..
+oewn-sociolinguistic__3.01.00..	derivation		oewn-sociolinguistics__1.09.00..
+oewn-sociolinguistic__3.01.00..	pertainym		oewn-sociolinguistics__1.09.00..
+oewn-sociolinguistically__4.02.00..	pertainym		oewn-sociolinguistic__3.01.00..
+oewn-sociological__3.01.00..	derivation		oewn-sociology__1.09.00..
+oewn-sociological__3.01.00..	pertainym		oewn-sociology__1.09.00..
+oewn-sociologically__4.02.00..	pertainym		oewn-sociological__3.01.00..
+oewn-sociologist__1.18.00..	derivation		oewn-sociology__1.09.00..
+oewn-sociopath__1.18.00..	derivation		oewn-sociopathic__3.01.00..
+oewn-sociopathic__3.01.00..	pertainym		oewn-sociopathic_personality__1.26.00..
+oewn-sod__1.17.00..	derivation		oewn-sod__2.35.00..
+oewn-sod__1.18.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-sod__2.35.00..	other	uses	oewn-sod__1.17.00..
+oewn-sodalist__1.18.00..	derivation		oewn-sodality__1.14.00..
+oewn-sodomise__2.41.00..	derivation		oewn-sodomy__1.04.00..
+oewn-sodomise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sodomise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sodomise__2.41.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sodomise__2.41.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sodomist__1.18.00..	derivation		oewn-sodomy__1.04.00..
+oewn-sodomize__2.41.00..	derivation		oewn-sodomy__1.04.00..
+oewn-sodomize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sodomize__2.41.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-soft--finned__3.01.00..	pertainym		oewn-soft--finned_fish__1.05.00..
+oewn-soft--finned_fish__1.05.00..	antonym		oewn-spiny--finned_fish__1.05.00..
+oewn-soft--nosed__3.01.00..	pertainym		oewn-bullet__1.06.00..
+oewn-soft__3.00.01..	derivation		oewn-softness__1.07.00..
+oewn-soft__3.00.02..	derivation		oewn-softness__1.07.03..
+oewn-soft__3.00.03..	derivation		oewn-softness__1.07.01..
+oewn-soft__3.00.04..	derivation		oewn-softness__1.07.01..
+oewn-soft__4.02.00..	pertainym		oewn-soft__5.00.00.easy.01
+oewn-soft__5.00.00.clement.02	derivation		oewn-softness__1.26.02..
+oewn-soft__5.00.00.conciliatory.00	derivation		oewn-softness__1.07.03..
+oewn-soft__5.00.00.dull.02	derivation		oewn-softness__1.07.06..
+oewn-soft__5.00.00.falling.00	derivation		oewn-softness__1.26.00..
+oewn-soft__5.00.00.permissive.01	derivation		oewn-softness__1.07.02..
+oewn-soft__5.00.00.unfit.01	derivation		oewn-softness__1.26.01..
+oewn-soften__2.30.00..	derivation		oewn-softening__1.22.00..
+oewn-soften__2.30.01..	derivation		oewn-softener__1.27.00..
+oewn-soften__2.30.01..	derivation		oewn-softening__1.22.00..
+oewn-soften__2.30.01..	other	material	oewn-softener__1.27.00..
+oewn-softhearted__3.00.00..	derivation		oewn-softheartedness__1.12.00..
+oewn-softly__4.02.00..	pertainym		oewn-soft__3.00.04..
+oewn-software_optimisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-software_optimisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-software_optimization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sogginess__1.26.00..	derivation		oewn-soggy__5.00.00.heavy.01
+oewn-sogginess__1.26.00..	derivation		oewn-soggy__5.00.00.wet.01
+oewn-soil__1.26.00..	derivation		oewn-soil__2.35.00..
+oewn-soil__2.35.00..	derivation		oewn-soiling__1.04.00..
+oewn-soil__2.35.00..	derivation		oewn-soilure__1.04.00..
+oewn-soil__2.35.00..	other	event	oewn-soil__1.26.00..
+oewn-sojourn__1.04.00..	derivation		oewn-sojourn__2.42.00..
+oewn-sojourn__2.42.00..	derivation		oewn-sojourner__1.18.00..
+oewn-sojourn__2.42.00..	other	agent	oewn-sojourner__1.18.00..
+oewn-sojourn__2.42.00..	other	event	oewn-sojourn__1.04.00..
+oewn-solace__1.04.00..	derivation		oewn-solace__2.37.00..
+oewn-solace__1.12.00..	derivation		oewn-solace__2.37.00..
+oewn-solace__1.26.00..	derivation		oewn-solace__2.37.00..
+oewn-solace__2.37.00..	derivation		oewn-solacement__1.12.00..
+oewn-solace__2.37.00..	derivation		oewn-solacement__1.26.00..
+oewn-solace__2.37.00..	other	event	oewn-solace__1.04.00..
+oewn-solace__2.37.00..	other	result	oewn-solacement__1.12.00..
+oewn-solace__2.37.00..	other	result	oewn-solacement__1.26.00..
+oewn-solace__2.37.00..	other	uses	oewn-solace__1.12.00..
+oewn-solace__2.37.00..	other	uses	oewn-solace__1.26.00..
+oewn-solarisation__1.07.00..	derivation		oewn-solarise__2.39.00..
+oewn-solarisation__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solarisation__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solarise__2.39.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solarise__2.39.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solarise__2.39.00..	other	event	oewn-solarisation__1.07.00..
+oewn-solarise__2.39.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solarise__2.39.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solarise__2.39.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solarise__2.39.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solarise__2.39.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solarise__2.39.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solarization__1.07.00..	derivation		oewn-solarize__2.39.00..
+oewn-solarization__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solarize__2.39.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solarize__2.39.00..	other	event	oewn-solarization__1.07.00..
+oewn-solarize__2.39.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solarize__2.39.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solarize__2.39.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sold__3.00.00..	antonym		oewn-unsold__3.00.00..
+oewn-solder__1.27.00..	derivation		oewn-solder__2.35.00..
+oewn-solder__2.35.00..	derivation		oewn-solderer__1.18.00..
+oewn-solder__2.35.00..	derivation		oewn-soldering__1.04.00..
+oewn-solder__2.35.00..	other	agent	oewn-solderer__1.18.00..
+oewn-solder__2.35.00..	other	by_means_of	oewn-solder__1.27.00..
+oewn-solder__2.35.00..	other	material	oewn-solder__1.27.00..
+oewn-soldier__1.18.00..	derivation		oewn-soldier__2.33.00..
+oewn-soldier__1.18.00..	derivation		oewn-soldierly__5.00.00.military.02
+oewn-soldier__1.18.00..	derivation		oewn-soldiership__1.09.00..
+oewn-soldier__2.33.00..	derivation		oewn-soldiering__1.09.00..
+oewn-soldier__2.33.00..	derivation		oewn-soldiery__1.14.00..
+oewn-soldier__2.33.00..	other	agent	oewn-soldier__1.18.00..
+oewn-sole__1.06.00..	derivation		oewn-sole__2.30.00..
+oewn-sole__2.30.00..	other	uses	oewn-sole__1.06.00..
+oewn-soled__3.00.00..	antonym		oewn-soleless__3.00.00..
+oewn-solely__4.02.00..	pertainym		oewn-sole__5.00.00.unshared.00
+oewn-solemn__5.00.00.serious.00	derivation		oewn-solemness__1.07.00..
+oewn-solemn__5.00.00.serious.00	derivation		oewn-solemnity__1.07.00..
+oewn-solemn__5.00.00.serious.00	derivation		oewn-solemnity__1.12.01..
+oewn-solemn__5.00.01.serious.00	derivation		oewn-solemnity__1.07.00..
+oewn-solemn__5.00.01.serious.00	derivation		oewn-solemnity__1.12.01..
+oewn-solemnisation__1.04.00..	derivation		oewn-solemnise__2.41.00..
+oewn-solemnisation__1.04.00..	derivation		oewn-solemnise__2.41.01..
+oewn-solemnisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solemnisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solemnise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solemnise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solemnise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solemnise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solemnise__2.41.00..	other	event	oewn-solemnisation__1.04.00..
+oewn-solemnise__2.41.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solemnise__2.41.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solemnise__2.41.01..	other	event	oewn-solemnisation__1.04.00..
+oewn-solemnization__1.04.00..	derivation		oewn-solemnize__2.41.00..
+oewn-solemnization__1.04.00..	derivation		oewn-solemnize__2.41.01..
+oewn-solemnization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solemnize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solemnize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solemnize__2.41.00..	other	event	oewn-solemnization__1.04.00..
+oewn-solemnize__2.41.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solemnize__2.41.01..	other	event	oewn-solemnization__1.04.00..
+oewn-solemnly__4.02.00..	pertainym		oewn-solemn__5.00.00.serious.00
+oewn-solicit__2.32.00..	derivation		oewn-solicitation__1.10.00..
+oewn-solicit__2.32.00..	derivation		oewn-solicitor__1.18.01..
+oewn-solicit__2.32.00..	other	agent	oewn-solicitor__1.18.01..
+oewn-solicit__2.32.00..	other	event	oewn-solicitation__1.10.00..
+oewn-solicit__2.32.01..	derivation		oewn-solicitation__1.04.01..
+oewn-solicit__2.32.01..	other	event	oewn-solicitation__1.04.01..
+oewn-solicitor__1.18.00..	derivation		oewn-solicitorship__1.04.00..
+oewn-solicitous__5.00.00.attentive.00	derivation		oewn-solicitousness__1.12.00..
+oewn-solicitous__5.00.00.concerned.00	derivation		oewn-solicitousness__1.12.00..
+oewn-solicitously__4.02.00..	pertainym		oewn-solicitous__5.00.00.concerned.00
+oewn-solid__1.25.00..	derivation		oewn-solid__5.00.00.cubic.00
+oewn-solid__1.25.00..	derivation		oewn-solidify__2.30.00..
+oewn-solid__1.26.00..	derivation		oewn-solidify__2.30.00..
+oewn-solid__1.26.00..	derivation		oewn-solidify__2.30.01..
+oewn-solid__1.27.04..	derivation		oewn-solidify__2.30.00..
+oewn-solid__3.00.01..	derivation		oewn-solidness__1.26.00..
+oewn-solid__3.00.02..	derivation		oewn-solidity__1.26.00..
+oewn-solid__3.00.02..	derivation		oewn-solidness__1.07.02..
+oewn-solid__5.00.00.good.01	derivation		oewn-solidness__1.07.01..
+oewn-solid__5.00.00.hard.01	derivation		oewn-solidity__1.07.02..
+oewn-solid__5.00.00.hard.01	derivation		oewn-solidness__1.07.02..
+oewn-solid__5.00.00.homogeneous.00	derivation		oewn-solidness__1.07.00..
+oewn-solid__5.00.00.respectable.00	derivation		oewn-solidness__1.07.01..
+oewn-solid__5.00.00.serious.00	derivation		oewn-solidness__1.07.01..
+oewn-solid__5.00.00.sound.00	derivation		oewn-solidness__1.07.01..
+oewn-solid__5.00.00.sound.01	derivation		oewn-solidness__1.07.00..
+oewn-solidification__1.22.00..	derivation		oewn-solidify__2.30.00..
+oewn-solidification__1.22.00..	derivation		oewn-solidify__2.30.01..
+oewn-solidify__2.30.00..	derivation		oewn-solidifying__1.22.00..
+oewn-solidify__2.30.00..	other	event	oewn-solidification__1.22.00..
+oewn-solidify__2.30.00..	other	event	oewn-solidifying__1.22.00..
+oewn-solidify__2.30.00..	other	result	oewn-solid__1.25.00..
+oewn-solidify__2.30.00..	other	result	oewn-solid__1.26.00..
+oewn-solidify__2.30.00..	other	result	oewn-solid__1.27.04..
+oewn-solidify__2.30.01..	derivation		oewn-solidifying__1.22.00..
+oewn-solidify__2.30.01..	other	event	oewn-solidification__1.22.00..
+oewn-solidify__2.30.01..	other	event	oewn-solidifying__1.22.00..
+oewn-solidify__2.30.01..	other	result	oewn-solid__1.26.00..
+oewn-solidly__4.02.00..	pertainym		oewn-solid__5.00.00.sound.01
+oewn-solidly__4.02.02..	pertainym		oewn-solid__5.00.00.undiversified.00
+oewn-soliloquise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-soliloquise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-soliloquize__2.32.00..	derivation		oewn-soliloquy__1.10.00..
+oewn-soliloquize__2.32.00..	derivation		oewn-soliloquy__1.10.01..
+oewn-soliloquize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solitaire__1.04.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-solitarily__4.02.00..	pertainym		oewn-solitary__5.00.01.unsocial.00
+oewn-solitariness__1.07.00..	derivation		oewn-solitary__5.00.01.unsocial.00
+oewn-solitariness__1.26.00..	derivation		oewn-solitary__5.00.00.unaccompanied.00
+oewn-solitariness__1.26.00..	derivation		oewn-solitary__5.00.00.ungregarious.00
+oewn-solitary__1.18.00..	derivation		oewn-solitary__5.00.01.unsocial.00
+oewn-solmisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-solmisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-solmizate__2.36.00..	derivation		oewn-solmization__1.04.00..
+oewn-solmizate__2.36.00..	derivation		oewn-solmization__1.10.00..
+oewn-solmizate__2.36.00..	other	event	oewn-solmization__1.04.00..
+oewn-solmizate__2.36.00..	other	event	oewn-solmization__1.10.00..
+oewn-solmizate__2.36.01..	derivation		oewn-solmization__1.04.00..
+oewn-solmizate__2.36.01..	derivation		oewn-solmization__1.10.00..
+oewn-solmizate__2.36.01..	other	event	oewn-solmization__1.04.00..
+oewn-solmizate__2.36.01..	other	event	oewn-solmization__1.10.00..
+oewn-solmization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-solo__1.04.00..	derivation		oewn-solo__2.38.00..
+oewn-solo__1.04.01..	derivation		oewn-soloist__1.18.00..
+oewn-solo__1.10.00..	derivation		oewn-solo__2.36.00..
+oewn-solo__1.10.00..	derivation		oewn-soloist__1.18.00..
+oewn-solo__2.36.00..	derivation		oewn-soloist__1.18.00..
+oewn-solo__2.36.00..	other	undergoer	oewn-solo__1.10.00..
+oewn-solo__2.38.00..	other	event	oewn-solo__1.04.00..
+oewn-solubility__1.07.00..	derivation		oewn-soluble__3.00.01..
+oewn-solubility__1.07.01..	derivation		oewn-soluble__3.00.02..
+oewn-solubility__1.23.00..	derivation		oewn-soluble__3.00.01..
+oewn-soluble__3.00.01..	derivation		oewn-solubleness__1.07.00..
+oewn-solution__1.04.00..	derivation		oewn-solve__2.31.00..
+oewn-solvability__1.07.00..	antonym		oewn-unsolvability__1.07.00..
+oewn-solvability__1.07.00..	derivation		oewn-solvable__5.00.00.soluble.02
+oewn-solvate__1.27.00..	derivation		oewn-solvate__2.30.00..
+oewn-solvate__1.27.00..	derivation		oewn-solvate__2.30.01..
+oewn-solvate__2.30.00..	derivation		oewn-solvation__1.22.00..
+oewn-solvate__2.30.00..	derivation		oewn-solvent__1.27.00..
+oewn-solvate__2.30.00..	other	event	oewn-solvation__1.22.00..
+oewn-solvate__2.30.00..	other	result	oewn-solvate__1.27.00..
+oewn-solvate__2.30.01..	derivation		oewn-solvation__1.22.00..
+oewn-solvate__2.30.01..	derivation		oewn-solvent__1.27.00..
+oewn-solvate__2.30.01..	other	event	oewn-solvation__1.22.00..
+oewn-solvate__2.30.01..	other	result	oewn-solvate__1.27.00..
+oewn-solve__2.31.00..	derivation		oewn-solvent__1.10.00..
+oewn-solve__2.31.00..	derivation		oewn-solver__1.18.00..
+oewn-solve__2.31.00..	derivation		oewn-solving__1.04.00..
+oewn-solve__2.31.00..	other	agent	oewn-solver__1.18.00..
+oewn-solve__2.31.00..	other	event	oewn-solution__1.04.00..
+oewn-solve__2.31.01..	derivation		oewn-solver__1.18.00..
+oewn-solve__2.31.01..	derivation		oewn-solving__1.04.00..
+oewn-solve__2.31.01..	other	agent	oewn-solver__1.18.00..
+oewn-solve__2.32.10..	derivation		oewn-solvent__3.00.00..
+oewn-solved__3.00.00..	antonym		oewn-unsolved__3.00.00..
+oewn-solvency__1.26.00..	derivation		oewn-solvent__3.00.00..
+oewn-somali__1.10.00..	derivation		oewn-somali__3.01.00..
+oewn-somali__1.18.00..	derivation		oewn-somali__3.01.00..
+oewn-somatosensory__3.01.00..	pertainym		oewn-somatosense__1.09.00..
+oewn-somber__5.00.00.colorless.02	derivation		oewn-somberness__1.26.00..
+oewn-somber__5.00.00.colorless.02	exemplifies		oewn-american_spelling__1.10.01..
+oewn-somber__5.00.00.depressing.00	derivation		oewn-somberness__1.07.00..
+oewn-somber__5.00.00.depressing.00	derivation		oewn-somberness__1.12.00..
+oewn-somber__5.00.00.depressing.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-somberly__4.02.00..	pertainym		oewn-somber__5.00.00.depressing.00
+oewn-sombre__5.00.00.colorless.02	derivation		oewn-sombreness__1.26.00..
+oewn-sombre__5.00.00.colorless.02	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sombre__5.00.00.colorless.02	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sombre__5.00.00.colorless.02	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-sombre__5.00.00.depressing.00	derivation		oewn-sombreness__1.07.00..
+oewn-sombre__5.00.00.depressing.00	derivation		oewn-sombreness__1.12.00..
+oewn-sombre__5.00.00.depressing.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sombre__5.00.00.depressing.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sombre__5.00.00.depressing.00	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-somersault__1.04.00..	derivation		oewn-somersault__2.38.00..
+oewn-somersault__2.38.00..	derivation		oewn-somersaulting__1.04.00..
+oewn-somersault__2.38.00..	other	event	oewn-somersault__1.04.00..
+oewn-somnambulate__2.38.00..	derivation		oewn-somnambulation__1.04.00..
+oewn-somnambulate__2.38.00..	other	event	oewn-somnambulation__1.04.00..
+oewn-somnambulism__1.04.00..	derivation		oewn-somnambulist__1.18.00..
+oewn-somniloquism__1.04.00..	derivation		oewn-somniloquist__1.18.00..
+oewn-somniloquist__1.18.00..	derivation		oewn-somniloquy__1.04.00..
+oewn-somnolence__1.26.00..	derivation		oewn-somnolent__5.00.00.asleep.00
+oewn-somnolently__4.02.00..	pertainym		oewn-somnolent__5.00.00.asleep.00
+oewn-sonant__1.10.00..	derivation		oewn-sonant__3.00.00..
+oewn-sonant__1.10.00..	derivation		oewn-sound__2.32.00..
+oewn-song__1.04.00..	derivation		oewn-songster__1.18.00..
+oewn-song__1.10.00..	derivation		oewn-songster__1.18.00..
+oewn-song__1.10.00..	derivation		oewn-songster__1.18.01..
+oewn-song__1.10.02..	derivation		oewn-songster__1.05.00..
+oewn-songful__5.00.00.melodious.00	derivation		oewn-songfulness__1.07.00..
+oewn-sonic__3.00.00..	antonym		oewn-subsonic__3.00.00..
+oewn-sonic__3.00.00..	antonym		oewn-supersonic__3.00.00..
+oewn-sonnet__1.10.00..	derivation		oewn-sonnet__2.36.00..
+oewn-sonnet__1.10.00..	derivation		oewn-sonnet__2.36.01..
+oewn-sonnet__1.10.00..	derivation		oewn-sonneteer__1.18.00..
+oewn-sonority__1.07.00..	derivation		oewn-sonorous__5.00.00.full.01
+oewn-sonorous__5.00.00.full.01	derivation		oewn-sonorousness__1.07.00..
+oewn-sonorously__4.02.00..	pertainym		oewn-sonorous__5.00.00.full.01
+oewn-soot__1.27.00..	derivation		oewn-soot__2.35.00..
+oewn-soot__1.27.00..	derivation		oewn-sooty__5.00.00.achromatic.00
+oewn-soot__1.27.00..	derivation		oewn-sooty__5.00.00.dirty.01
+oewn-soot__2.35.00..	other	uses	oewn-soot__1.27.00..
+oewn-soothingly__4.02.00..	pertainym		oewn-soothing__5.00.00.reassuring.00
+oewn-sootiness__1.26.00..	derivation		oewn-sooty__5.00.00.dirty.01
+oewn-sop__1.10.00..	derivation		oewn-sop__2.40.00..
+oewn-sop__1.13.00..	derivation		oewn-sop__2.35.00..
+oewn-sop__1.13.00..	derivation		oewn-sop__2.35.02..
+oewn-sop__2.35.00..	other	undergoer	oewn-sop__1.13.00..
+oewn-sop__2.35.02..	other	undergoer	oewn-sop__1.13.00..
+oewn-sop__2.40.00..	other	uses	oewn-sop__1.10.00..
+oewn-sophism__1.09.00..	derivation		oewn-sophist__1.18.00..
+oewn-sophism__1.09.00..	derivation		oewn-sophistic__5.00.00.invalid.00
+oewn-sophist__1.18.00..	derivation		oewn-sophistic__5.00.00.invalid.00
+oewn-sophist__1.18.00..	derivation		oewn-sophistical__5.00.00.invalid.00
+oewn-sophist__1.18.01..	derivation		oewn-sophistic__3.01.00..
+oewn-sophistic__3.01.00..	pertainym		oewn-sophist__1.18.00..
+oewn-sophisticate__1.18.00..	derivation		oewn-sophisticate__2.41.00..
+oewn-sophisticate__2.30.00..	derivation		oewn-sophistication__1.09.01..
+oewn-sophisticate__2.30.00..	other	event	oewn-sophistication__1.09.01..
+oewn-sophisticate__2.32.00..	derivation		oewn-sophistication__1.04.00..
+oewn-sophisticate__2.32.00..	derivation		oewn-sophistication__1.09.02..
+oewn-sophisticate__2.32.00..	other	event	oewn-sophistication__1.04.00..
+oewn-sophisticate__2.32.00..	other	event	oewn-sophistication__1.09.02..
+oewn-sophisticate__2.41.00..	derivation		oewn-sophistication__1.07.00..
+oewn-sophisticate__2.41.00..	other	property	oewn-sophistication__1.07.00..
+oewn-sophisticate__2.41.00..	other	result	oewn-sophisticate__1.18.00..
+oewn-sophomore__1.18.00..	derivation		oewn-sophomore__5.00.00.intermediate.00
+oewn-soporific__1.06.00..	derivation		oewn-soporific__5.00.00.depressant.00
+oewn-soporific__1.06.00..	derivation		oewn-soporific__5.00.00.uninteresting.00
+oewn-sorb__2.35.00..	derivation		oewn-sorbent__1.27.00..
+oewn-sorb__2.35.00..	derivation		oewn-sorption__1.22.00..
+oewn-sorb__2.35.00..	other	event	oewn-sorption__1.22.00..
+oewn-sorcerise__2.30.00..	derivation		oewn-sorcery__1.09.00..
+oewn-sorcerise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sorcerise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sorcerize__2.30.00..	derivation		oewn-sorcery__1.09.00..
+oewn-sorcerize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sorcerous__5.00.00.supernatural.00	derivation		oewn-sorcery__1.09.00..
+oewn-sordid__5.00.00.acquisitive.00	derivation		oewn-sordidness__1.07.00..
+oewn-sordid__5.00.00.corrupt.00	derivation		oewn-sordidness__1.07.00..
+oewn-sordid__5.00.00.dirty.01	derivation		oewn-sordidness__1.26.00..
+oewn-sordid__5.00.00.disreputable.00	derivation		oewn-sordidness__1.07.00..
+oewn-sordidly__4.02.00..	pertainym		oewn-sordid__5.00.00.dirty.01
+oewn-sore__5.00.00.angry.00	derivation		oewn-soreness__1.12.00..
+oewn-sore__5.00.00.painful.00	derivation		oewn-soreness__1.26.00..
+oewn-sore__5.00.00.unpleasant.00	derivation		oewn-soreness__1.12.00..
+oewn-sorely__4.02.01..	pertainym		oewn-sore__5.00.00.unpleasant.00
+oewn-sorely__4.02.02..	pertainym		oewn-sore__5.00.00.painful.00
+oewn-sorriness__1.07.00..	derivation		oewn-sorry__5.00.00.bad.00
+oewn-sorriness__1.07.00..	derivation		oewn-sorry__5.00.00.worthless.00
+oewn-sorrow__1.09.00..	derivation		oewn-sorrow__2.37.00..
+oewn-sorrow__1.12.00..	derivation		oewn-sorrow__2.37.00..
+oewn-sorrow__1.12.01..	derivation		oewn-sorrow__2.37.00..
+oewn-sorrow__1.26.00..	derivation		oewn-sorrow__2.37.00..
+oewn-sorrow__2.37.00..	derivation		oewn-sorrower__1.18.00..
+oewn-sorrow__2.37.00..	other	agent	oewn-sorrower__1.18.00..
+oewn-sorrow__2.37.00..	other	by_means_of	oewn-sorrow__1.09.00..
+oewn-sorrow__2.37.00..	other	event	oewn-sorrow__1.12.00..
+oewn-sorrow__2.37.00..	other	state	oewn-sorrow__1.12.01..
+oewn-sorrow__2.37.00..	other	state	oewn-sorrow__1.26.00..
+oewn-sorrowful__3.00.00..	derivation		oewn-sorrowfulness__1.12.00..
+oewn-sorrowful__3.00.00..	derivation		oewn-sorrowfulness__1.26.00..
+oewn-sorrowfully__4.02.00..	pertainym		oewn-sorrowful__3.00.00..
+oewn-sorrowfully__4.02.01..	pertainym		oewn-sorrowful__3.00.00..
+oewn-sort__1.09.00..	derivation		oewn-sort__2.31.00..
+oewn-sort__1.22.00..	derivation		oewn-sort__2.31.00..
+oewn-sort__1.22.00..	derivation		oewn-sort__2.41.00..
+oewn-sort__2.31.00..	derivation		oewn-sorter__1.06.00..
+oewn-sort__2.31.00..	derivation		oewn-sorter__1.18.00..
+oewn-sort__2.31.00..	derivation		oewn-sorting__1.04.00..
+oewn-sort__2.31.00..	derivation		oewn-sorting__1.22.00..
+oewn-sort__2.31.00..	other	agent	oewn-sorter__1.18.00..
+oewn-sort__2.31.00..	other	event	oewn-sort__1.22.00..
+oewn-sort__2.31.00..	other	instrument	oewn-sorter__1.06.00..
+oewn-sort__2.31.00..	other	result	oewn-sort__1.09.00..
+oewn-sort__2.41.00..	other	event	oewn-sort__1.22.00..
+oewn-soteriological__3.01.00..	derivation		oewn-soteriology__1.09.00..
+oewn-soteriological__3.01.00..	pertainym		oewn-soteriology__1.09.00..
+oewn-sotho__1.10.00..	derivation		oewn-sotho__3.01.00..
+oewn-sotho__1.18.00..	derivation		oewn-sotho__3.01.00..
+oewn-sotho__3.01.00..	pertainym		oewn-sotho__1.10.00..
+oewn-sottish__5.00.00.intoxicated.00	derivation		oewn-sottishness__1.07.00..
+oewn-sottish__5.00.00.intoxicated.00	derivation		oewn-sottishness__1.26.00..
+oewn-sottishly__4.02.00..	pertainym		oewn-sottish__5.00.00.intoxicated.00
+oewn-soughingly__4.02.00..	pertainym		oewn-soughing__5.00.00.soft.04
+oewn-sought__3.44.00..	participle		oewn-seek__2.35.00..
+oewn-soulful__5.00.00.emotional.00	derivation		oewn-soulfulness__1.12.00..
+oewn-soulfully__4.02.00..	pertainym		oewn-soulful__5.00.00.emotional.00
+oewn-soullessly__4.02.00..	pertainym		oewn-soulless__5.00.00.insensitive.02
+oewn-sound__1.07.00..	derivation		oewn-sound__2.39.00..
+oewn-sound__1.07.00..	derivation		oewn-sound__2.39.01..
+oewn-sound__1.07.00..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.07.00..	derivation		oewn-sound__2.39.03..
+oewn-sound__1.09.00..	derivation		oewn-sound__2.39.01..
+oewn-sound__1.09.00..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.09.00..	derivation		oewn-sound__2.39.03..
+oewn-sound__1.10.00..	derivation		oewn-sound__2.39.00..
+oewn-sound__1.10.00..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.10.01..	derivation		oewn-sound__2.32.00..
+oewn-sound__1.10.01..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.11.00..	derivation		oewn-sound__2.39.00..
+oewn-sound__1.11.00..	derivation		oewn-sound__2.39.01..
+oewn-sound__1.11.00..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.11.00..	derivation		oewn-sound__2.39.03..
+oewn-sound__1.17.00..	derivation		oewn-sound__2.30.00..
+oewn-sound__1.19.00..	derivation		oewn-sound__2.39.00..
+oewn-sound__1.19.00..	derivation		oewn-sound__2.39.01..
+oewn-sound__1.19.00..	derivation		oewn-sound__2.39.02..
+oewn-sound__1.19.00..	derivation		oewn-sound__2.39.03..
+oewn-sound__2.30.00..	derivation		oewn-sounder__1.06.00..
+oewn-sound__2.30.00..	derivation		oewn-sounding__1.04.00..
+oewn-sound__2.30.00..	derivation		oewn-sounding__1.07.00..
+oewn-sound__2.30.00..	other	instrument	oewn-sounder__1.06.00..
+oewn-sound__2.30.00..	other	undergoer	oewn-sound__1.17.00..
+oewn-sound__2.32.00..	other	event	oewn-sound__1.10.01..
+oewn-sound__2.39.00..	other	event	oewn-sound__1.07.00..
+oewn-sound__2.39.00..	other	event	oewn-sound__1.10.00..
+oewn-sound__2.39.00..	other	event	oewn-sound__1.11.00..
+oewn-sound__2.39.00..	other	event	oewn-sound__1.19.00..
+oewn-sound__2.39.01..	also		oewn-sound_off__2.36.00..
+oewn-sound__2.39.01..	other	event	oewn-sound__1.07.00..
+oewn-sound__2.39.01..	other	event	oewn-sound__1.09.00..
+oewn-sound__2.39.01..	other	event	oewn-sound__1.11.00..
+oewn-sound__2.39.01..	other	event	oewn-sound__1.19.00..
+oewn-sound__2.39.02..	other	by_means_of	oewn-sound__1.10.01..
+oewn-sound__2.39.02..	other	event	oewn-sound__1.07.00..
+oewn-sound__2.39.02..	other	event	oewn-sound__1.09.00..
+oewn-sound__2.39.02..	other	event	oewn-sound__1.10.00..
+oewn-sound__2.39.02..	other	event	oewn-sound__1.11.00..
+oewn-sound__2.39.02..	other	event	oewn-sound__1.19.00..
+oewn-sound__2.39.03..	other	event	oewn-sound__1.07.00..
+oewn-sound__2.39.03..	other	event	oewn-sound__1.09.00..
+oewn-sound__2.39.03..	other	event	oewn-sound__1.11.00..
+oewn-sound__2.39.03..	other	event	oewn-sound__1.19.00..
+oewn-sound__3.00.00..	antonym		oewn-unsound__3.00.00..
+oewn-sound__3.00.00..	derivation		oewn-soundness__1.26.00..
+oewn-sound__3.00.01..	antonym		oewn-unsound__3.00.01..
+oewn-sound__3.00.01..	derivation		oewn-soundness__1.26.00..
+oewn-sound__5.00.00.healthy.00	derivation		oewn-soundness__1.07.00..
+oewn-sound__5.00.00.righteous.00	derivation		oewn-soundness__1.07.01..
+oewn-sound__5.00.02.valid.00	derivation		oewn-soundness__1.07.01..
+oewn-soundless__5.00.00.quiet.01	derivation		oewn-soundlessness__1.07.00..
+oewn-soundlessly__4.02.00..	pertainym		oewn-soundless__5.00.00.quiet.01
+oewn-soundly__4.02.00..	pertainym		oewn-sound__5.00.00.complete.00
+oewn-soundly__4.02.01..	pertainym		oewn-sound__5.00.00.deep.02
+oewn-soundness__1.07.00..	antonym		oewn-unsoundness__1.07.00..
+oewn-soundness__1.07.01..	antonym		oewn-unsoundness__1.07.00..
+oewn-soundness__1.26.00..	antonym		oewn-unsoundness__1.26.00..
+oewn-soupiness__1.07.00..	derivation		oewn-soupy__5.00.00.thick.02
+oewn-sour__1.07.00..	derivation		oewn-sour__2.39.00..
+oewn-sour__1.09.00..	derivation		oewn-sour__2.39.00..
+oewn-sour__2.30.01..	derivation		oewn-souring__1.22.00..
+oewn-sour__2.39.00..	antonym		oewn-sweeten__2.39.00..
+oewn-sour__2.39.00..	other	event	oewn-sour__1.09.00..
+oewn-sour__2.39.00..	other	property	oewn-sour__1.07.00..
+oewn-sour__3.00.00..	antonym		oewn-sweet__3.00.02..
+oewn-sour__3.00.00..	derivation		oewn-sourness__1.07.00..
+oewn-sour__5.00.00.ill-natured.00	derivation		oewn-sourness__1.07.01..
+oewn-sour__5.00.00.malodorous.00	derivation		oewn-sourness__1.07.00..
+oewn-sour__5.00.00.soured.00	derivation		oewn-sourness__1.07.00..
+oewn-sour__5.00.00.tasty.00	derivation		oewn-sourness__1.07.00..
+oewn-sour__5.00.00.tasty.00	derivation		oewn-sourness__1.09.00..
+oewn-source__1.06.00..	derivation		oewn-source__2.40.00..
+oewn-source__1.10.00..	derivation		oewn-source__2.31.00..
+oewn-source__1.10.01..	derivation		oewn-source__2.31.00..
+oewn-source__2.31.00..	other	undergoer	oewn-source__1.10.00..
+oewn-source__2.31.00..	other	undergoer	oewn-source__1.10.01..
+oewn-source__2.40.00..	other	location	oewn-source__1.06.00..
+oewn-soured__3.00.00..	antonym		oewn-unsoured__3.00.00..
+oewn-sourly__4.02.00..	pertainym		oewn-sour__5.00.00.ill-natured.00
+oewn-souse__1.04.00..	derivation		oewn-souse__2.30.01..
+oewn-souse__1.04.00..	derivation		oewn-souse__2.35.00..
+oewn-souse__1.13.00..	derivation		oewn-souse__2.30.00..
+oewn-souse__1.18.00..	derivation		oewn-souse__2.34.00..
+oewn-souse__2.30.01..	derivation		oewn-sousing__1.04.00..
+oewn-souse__2.30.01..	other	event	oewn-souse__1.04.00..
+oewn-souse__2.34.00..	other	agent	oewn-souse__1.18.00..
+oewn-souse__2.35.00..	other	event	oewn-souse__1.04.00..
+oewn-south_america__1.14.00..	derivation		oewn-south_american__3.01.00..
+oewn-south_korean__1.18.00..	derivation		oewn-south_korean__3.01.00..
+oewn-southeaster__1.19.00..	derivation		oewn-southeasterly__5.00.02.south.00
+oewn-southeastward__4.02.00..	pertainym		oewn-southeastward__5.00.00.south.00
+oewn-southeastwardly__4.02.00..	pertainym		oewn-southeastward__5.00.00.south.00
+oewn-souther__1.19.00..	derivation		oewn-southerly__5.00.01.south.00
+oewn-southerly__4.02.00..	pertainym		oewn-southerly__5.00.01.south.00
+oewn-southerly__4.02.01..	pertainym		oewn-southerly__5.00.02.south.00
+oewn-southern__3.00.01..	derivation		oewn-southernness__1.07.00..
+oewn-southern__5.00.01.south.00	derivation		oewn-southernness__1.07.00..
+oewn-southern__5.00.02.south.00	derivation		oewn-southernness__1.07.00..
+oewn-southward__4.02.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-southwards__4.02.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-southwester__1.19.00..	derivation		oewn-southwesterly__5.00.02.south.00
+oewn-southwestward__4.02.00..	pertainym		oewn-southwestward__5.00.00.south.00
+oewn-southwestwardly__4.02.00..	pertainym		oewn-southwestward__5.00.00.south.00
+oewn-sovietise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sovietise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sovietise__2.41.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-sovietise__2.41.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-sovietize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sovietize__2.41.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-sow__2.32.00..	derivation		oewn-sower__1.18.00..
+oewn-sow__2.32.00..	other	agent	oewn-sower__1.18.00..
+oewn-sow__2.35.00..	derivation		oewn-sower__1.18.00..
+oewn-sow__2.35.00..	other	agent	oewn-sower__1.18.00..
+oewn-sow__2.35.02..	derivation		oewn-sower__1.18.00..
+oewn-sow__2.35.02..	other	agent	oewn-sower__1.18.00..

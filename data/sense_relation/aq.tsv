@@ -1,0 +1,24 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-aqua--lung__1.06.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-aquacultural__3.01.00..	derivation		oewn-aquaculture__1.04.00..
+oewn-aquacultural__3.01.00..	pertainym		oewn-aquiculture__1.04.00..
+oewn-aquaphobia__1.26.00..	derivation		oewn-aquaphobic__5.00.00.afraid.00
+oewn-aquaplane__1.06.00..	derivation		oewn-aquaplane__2.38.00..
+oewn-aquaplane__2.38.00..	other	instrument	oewn-aquaplane__1.06.00..
+oewn-aquatic__1.20.00..	derivation		oewn-aquatic__3.00.00..
+oewn-aquatic__3.00.00..	antonym		oewn-terrestrial__3.00.00..
+oewn-aquatic__3.01.00..	pertainym		oewn-water__1.27.00..
+oewn-aquatint__1.04.00..	derivation		oewn-aquatint__2.36.00..
+oewn-aquatint__1.06.00..	derivation		oewn-aquatint__2.36.00..
+oewn-aquatint__2.36.00..	other	by_means_of	oewn-aquatint__1.04.00..
+oewn-aquatint__2.36.00..	other	result	oewn-aquatint__1.06.00..
+oewn-aqueous__3.00.00..	antonym		oewn-igneous__3.00.00..
+oewn-aqueous__3.01.00..	pertainym		oewn-water__1.27.00..
+oewn-aqueous_humor__1.08.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-aqueous_humour__1.08.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-aqueous_humour__1.08.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-aqueous_humour__1.08.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-aquicultural__3.01.00..	derivation		oewn-aquiculture__1.04.00..
+oewn-aquicultural__3.01.00..	pertainym		oewn-aquiculture__1.04.00..
+oewn-aquifer__1.17.00..	derivation		oewn-aquiferous__3.01.00..
+oewn-aquiferous__3.01.00..	pertainym		oewn-aquifer__1.17.00..

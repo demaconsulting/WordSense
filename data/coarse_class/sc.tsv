@@ -1,0 +1,11 @@
+class_id	lemma	label	pos	kind
+schedule#noun	schedule	noun	n	sense_group
+schedule#verb	schedule	verb	v	sense_group
+score#noun	score	noun	n	sense_group
+score#verb	score	verb	v	sense_group
+scream#noun	scream	noun	n	sense_group
+scream#verb	scream	verb	v	sense_group
+screen#noun	screen	noun	n	sense_group
+screen#verb	screen	verb	v	sense_group
+screw#noun	screw	noun	n	sense_group
+screw#verb	screw	verb	v	sense_group

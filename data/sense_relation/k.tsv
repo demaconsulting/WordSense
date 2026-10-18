@@ -1,0 +1,321 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-kabbala__1.10.00..	derivation		oewn-kabbalistic__5.00.00.esoteric.00
+oewn-kabolin__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kaleidoscope__1.09.00..	derivation		oewn-kaleidoscopic__5.00.00.changeable.00
+oewn-kaleidoscope__1.09.00..	derivation		oewn-kaleidoscopical__5.00.00.changeable.00
+oewn-kampuchean__1.18.00..	derivation		oewn-kampuchean__3.01.00..
+oewn-kantrex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-karyokinesis__1.22.00..	derivation		oewn-karyokinetic__3.01.00..
+oewn-karyokinetic__3.01.00..	pertainym		oewn-karyokinesis__1.22.00..
+oewn-kashmiri__1.10.00..	derivation		oewn-kashmiri__3.01.00..
+oewn-kashmiri__1.18.00..	derivation		oewn-kashmiri__3.01.00..
+oewn-katabolic__3.01.00..	pertainym		oewn-catabolism__1.22.00..
+oewn-katari__1.18.00..	derivation		oewn-katari__3.01.00..
+oewn-katharobic__3.01.00..	pertainym		oewn-katharobe__1.20.00..
+oewn-kavrin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kayak__1.06.00..	derivation		oewn-kayak__2.38.00..
+oewn-kayak__2.38.00..	other	vehicle	oewn-kayak__1.06.00..
+oewn-kazakhstani__1.18.00..	derivation		oewn-kazakhstani__3.01.00..
+oewn-kechua__1.18.00..	derivation		oewn-kechuan__3.01.00..
+oewn-kechuan__1.10.00..	derivation		oewn-kechuan__3.01.00..
+oewn-kechuan__3.01.00..	pertainym		oewn-quechua__1.10.00..
+oewn-kechuan__3.01.00..	pertainym		oewn-quechua__1.18.00..
+oewn-keen__1.10.00..	derivation		oewn-keen__2.37.00..
+oewn-keen__2.37.00..	other	event	oewn-keen__1.10.00..
+oewn-keen__5.00.00.perceptive.00	derivation		oewn-keenness__1.09.00..
+oewn-keen__5.00.00.sharp.00	derivation		oewn-keenness__1.07.00..
+oewn-keenly__4.02.00..	pertainym		oewn-keen__5.00.00.perceptive.00
+oewn-keep__1.06.01..	derivation		oewn-keep__2.35.10..
+oewn-keep__1.21.00..	derivation		oewn-keep__2.34.00..
+oewn-keep__2.34.00..	other	uses	oewn-keep__1.21.00..
+oewn-keep__2.35.10..	other	location	oewn-keep__1.06.01..
+oewn-keep__2.40.00..	also		oewn-keep_back__2.40.00..
+oewn-keep__2.40.00..	also		oewn-keep_back__2.40.01..
+oewn-keep__2.40.00..	antonym		oewn-lose__2.40.02..
+oewn-keep__2.40.00..	derivation		oewn-keeping__1.04.02..
+oewn-keep__2.40.01..	derivation		oewn-keeper__1.18.00..
+oewn-keep__2.40.01..	derivation		oewn-keeper__1.18.02..
+oewn-keep__2.40.01..	derivation		oewn-keeping__1.04.00..
+oewn-keep__2.40.01..	other	agent	oewn-keeper__1.18.00..
+oewn-keep__2.40.01..	other	agent	oewn-keeper__1.18.02..
+oewn-keep__2.41.03..	derivation		oewn-keeping__1.04.01..
+oewn-keep__2.42.00..	also		oewn-keep_apart__2.30.00..
+oewn-keep__2.42.00..	also		oewn-keep_down__2.30.00..
+oewn-keep__2.42.00..	also		oewn-keep_in__2.41.00..
+oewn-keep__2.42.00..	also		oewn-keep_off__2.32.00..
+oewn-keep__2.42.00..	also		oewn-keep_off__2.34.00..
+oewn-keep__2.42.00..	also		oewn-keep_out__2.41.00..
+oewn-keep__2.42.00..	also		oewn-keep_up__2.33.00..
+oewn-keep__2.42.00..	also		oewn-keep_up__2.42.00..
+oewn-keep_down__2.29.00..	antonym		oewn-vomit__2.29.00..
+oewn-keep_quiet__2.32.00..	antonym		oewn-talk__2.32.06..
+oewn-keep_track__2.31.00..	antonym		oewn-lose_track__2.31.00..
+oewn-keflex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-keflin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-keftab__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kemadrin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kenalog__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kennel__1.06.00..	derivation		oewn-kennel__2.41.00..
+oewn-kenyan__1.18.00..	derivation		oewn-kenyan__3.01.00..
+oewn-keratinisation__1.22.00..	derivation		oewn-keratinise__2.30.00..
+oewn-keratinisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-keratinisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-keratinise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-keratinise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-keratinise__2.30.00..	other	event	oewn-keratinisation__1.22.00..
+oewn-keratinise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-keratinise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-keratinization__1.22.00..	derivation		oewn-keratinize__2.30.00..
+oewn-keratinization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-keratinize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-keratinize__2.30.00..	other	event	oewn-keratinization__1.22.00..
+oewn-keratinize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-kerb__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-kerb__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-kern__1.06.00..	derivation		oewn-kern__2.40.00..
+oewn-kern__1.06.00..	derivation		oewn-kern__2.40.01..
+oewn-kern__2.40.00..	antonym		oewn-kern__2.40.01..
+oewn-key__1.06.00..	derivation		oewn-key__2.35.00..
+oewn-key__1.06.00..	derivation		oewn-key__2.40.00..
+oewn-key__1.07.00..	derivation		oewn-key__2.30.10..
+oewn-key__1.10.00..	derivation		oewn-key__2.30.10..
+oewn-key__2.30.10..	other	undergoer	oewn-key__1.07.00..
+oewn-key__2.30.10..	other	undergoer	oewn-key__1.10.00..
+oewn-key__2.35.00..	other	instrument	oewn-key__1.06.00..
+oewn-key__2.40.00..	other	uses	oewn-key__1.06.00..
+oewn-keyed__3.00.00..	antonym		oewn-keyless__3.00.00..
+oewn-keynesian__3.01.00..	pertainym		oewn-keynesianism__1.09.00..
+oewn-keynote__1.09.00..	derivation		oewn-keynote__2.30.00..
+oewn-keynote__1.10.01..	derivation		oewn-keynote__2.32.00..
+oewn-keynote__2.30.00..	other	undergoer	oewn-keynote__1.09.00..
+oewn-keynote__2.32.00..	other	undergoer	oewn-keynote__1.10.01..
+oewn-khaki__1.06.00..	derivation		oewn-khaki__5.00.00.chromatic.00
+oewn-kibitz__2.32.00..	derivation		oewn-kibitzer__1.18.00..
+oewn-kibitz__2.32.00..	other	agent	oewn-kibitzer__1.18.00..
+oewn-kick--start__2.38.00..	derivation		oewn-kick_start__1.06.00..
+oewn-kick--start__2.38.00..	derivation		oewn-kick_starter__1.06.00..
+oewn-kick__1.04.00..	derivation		oewn-kick__2.35.00..
+oewn-kick__1.04.00..	derivation		oewn-kick__2.35.01..
+oewn-kick__1.04.01..	derivation		oewn-kick__2.38.00..
+oewn-kick__1.10.00..	derivation		oewn-kick__2.32.00..
+oewn-kick__1.11.00..	derivation		oewn-kick__2.35.08..
+oewn-kick__2.32.00..	other	event	oewn-kick__1.10.00..
+oewn-kick__2.35.00..	also		oewn-kick_down__2.35.00..
+oewn-kick__2.35.00..	also		oewn-kick_in__2.35.00..
+oewn-kick__2.35.00..	also		oewn-kick_out__2.41.00..
+oewn-kick__2.35.00..	also		oewn-kick_up__2.35.00..
+oewn-kick__2.35.00..	derivation		oewn-kicking__1.04.00..
+oewn-kick__2.35.00..	other	event	oewn-kick__1.04.00..
+oewn-kick__2.35.01..	derivation		oewn-kicker__1.18.00..
+oewn-kick__2.35.01..	derivation		oewn-kicking__1.04.00..
+oewn-kick__2.35.01..	other	agent	oewn-kicker__1.18.00..
+oewn-kick__2.35.01..	other	event	oewn-kick__1.04.00..
+oewn-kick__2.35.08..	other	event	oewn-kick__1.11.00..
+oewn-kick__2.38.00..	other	event	oewn-kick__1.04.01..
+oewn-kick_back__2.40.00..	derivation		oewn-kickback__1.21.00..
+oewn-kick_off__2.41.00..	derivation		oewn-kickoff__1.11.00..
+oewn-kick_off__2.41.00..	derivation		oewn-kickoff__1.28.00..
+oewn-kidnap__2.35.00..	derivation		oewn-kidnaper__1.18.00..
+oewn-kidnap__2.35.00..	derivation		oewn-kidnapper__1.18.00..
+oewn-kidnap__2.35.00..	derivation		oewn-kidnapping__1.04.00..
+oewn-kidnap__2.35.00..	other	agent	oewn-kidnapper__1.18.00..
+oewn-kill__1.04.00..	derivation		oewn-kill__2.35.00..
+oewn-kill__1.04.00..	derivation		oewn-kill__2.35.01..
+oewn-kill__1.04.00..	derivation		oewn-kill__2.35.02..
+oewn-kill__1.04.00..	derivation		oewn-kill__2.42.00..
+oewn-kill__1.04.01..	derivation		oewn-kill__2.30.03..
+oewn-kill__1.05.00..	derivation		oewn-kill__2.35.00..
+oewn-kill__2.30.03..	other	event	oewn-kill__1.04.01..
+oewn-kill__2.35.00..	also		oewn-kill_off__2.35.00..
+oewn-kill__2.35.00..	derivation		oewn-killable__5.00.00.edible.00
+oewn-kill__2.35.00..	derivation		oewn-killer__1.18.00..
+oewn-kill__2.35.00..	derivation		oewn-killer__1.26.00..
+oewn-kill__2.35.00..	derivation		oewn-killing__1.04.00..
+oewn-kill__2.35.00..	derivation		oewn-killing__1.11.00..
+oewn-kill__2.35.00..	other	agent	oewn-killer__1.18.00..
+oewn-kill__2.35.00..	other	by_means_of	oewn-killer__1.26.00..
+oewn-kill__2.35.00..	other	event	oewn-kill__1.04.00..
+oewn-kill__2.35.01..	derivation		oewn-killer__1.26.00..
+oewn-kill__2.35.01..	derivation		oewn-killing__1.11.00..
+oewn-kill__2.35.01..	other	by_means_of	oewn-killer__1.26.00..
+oewn-kill__2.35.01..	other	event	oewn-kill__1.04.00..
+oewn-kill__2.35.02..	other	event	oewn-kill__1.04.00..
+oewn-kill__2.39.00..	derivation		oewn-killer__1.09.00..
+oewn-kill__2.39.00..	other	by_means_of	oewn-killer__1.09.00..
+oewn-kill__2.42.00..	other	event	oewn-kill__1.04.00..
+oewn-killingly__4.02.00..	pertainym		oewn-killing__5.00.00.humorous.00
+oewn-kiloliter__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-kilolitre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-kilolitre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-kilolitre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-kilometer__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-kilometre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-kilometre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-kilometre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-kilometres_per_hour__1.28.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-kilometres_per_hour__1.28.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-kin__1.14.00..	derivation		oewn-kin__5.00.00.related.01
+oewn-kin__1.14.00..	derivation		oewn-kinship__1.24.00..
+oewn-kin__1.18.00..	derivation		oewn-kin__5.00.00.related.01
+oewn-kin__1.18.00..	derivation		oewn-kinship__1.24.00..
+oewn-kinaesthesia__1.09.00..	derivation		oewn-kinaesthetic__3.01.00..
+oewn-kinaesthesia__1.09.01..	derivation		oewn-kinaesthetic__3.01.00..
+oewn-kinaesthetic__3.01.00..	pertainym		oewn-kinesthesis__1.09.00..
+oewn-kinanesthesia__1.09.00..	antonym		oewn-kinesthesia__1.09.01..
+oewn-kind__3.00.00..	antonym		oewn-unkind__3.00.00..
+oewn-kind__3.00.00..	derivation		oewn-kindness__1.04.00..
+oewn-kind__3.00.00..	derivation		oewn-kindness__1.07.00..
+oewn-kind__5.00.00.forgiving.00	derivation		oewn-kindness__1.07.01..
+oewn-kindhearted__5.00.00.kind.00	derivation		oewn-kindheartedness__1.12.00..
+oewn-kindle__2.43.01..	derivation		oewn-kindling__1.04.00..
+oewn-kindle__2.43.01..	derivation		oewn-kindling__1.27.00..
+oewn-kindliness__1.07.00..	derivation		oewn-kindly__5.00.00.kind.00
+oewn-kindly__4.02.00..	antonym		oewn-unkindly__4.02.00..
+oewn-kindly__4.02.00..	pertainym		oewn-kind__3.00.00..
+oewn-kindness__1.07.00..	antonym		oewn-unkindness__1.07.00..
+oewn-kindred__1.14.00..	derivation		oewn-kindred__5.00.00.related.01
+oewn-kinesis__1.04.00..	derivation		oewn-kinetic__3.01.00..
+oewn-kinesis__1.04.00..	derivation		oewn-kinetic__5.00.00.moving.02
+oewn-kinesthesia__1.09.00..	derivation		oewn-kinesthetic__3.01.00..
+oewn-kinesthesia__1.09.01..	derivation		oewn-kinesthetic__3.01.00..
+oewn-kinesthesis__1.09.00..	derivation		oewn-kinesthetic__3.01.00..
+oewn-kinesthetic__3.01.00..	pertainym		oewn-kinesthesis__1.09.00..
+oewn-kinesthetically__4.02.00..	pertainym		oewn-kinesthetic__3.01.00..
+oewn-kinetic__3.01.00..	pertainym		oewn-kinetics__1.09.00..
+oewn-king__1.18.00..	antonym		oewn-queen__1.18.00..
+oewn-king__1.18.00..	derivation		oewn-kingdom__1.14.01..
+oewn-king__1.18.00..	derivation		oewn-kingdom__1.15.00..
+oewn-king__1.18.00..	derivation		oewn-kingly__5.00.00.noble.02
+oewn-king__1.18.00..	derivation		oewn-kingship__1.26.00..
+oewn-kink__1.09.01..	derivation		oewn-kinky__5.00.00.unconventional.01
+oewn-kink__1.18.00..	derivation		oewn-kinky__5.00.00.abnormal.00
+oewn-kink__1.25.00..	derivation		oewn-kink__2.30.00..
+oewn-kink__1.25.00..	derivation		oewn-kink__2.35.00..
+oewn-kink__2.30.00..	other	result	oewn-kink__1.25.00..
+oewn-kink__2.35.00..	other	result	oewn-kink__1.25.00..
+oewn-kip__1.28.00..	derivation		oewn-kip__2.29.00..
+oewn-kip__2.29.00..	other	event	oewn-kip__1.28.00..
+oewn-kiss__1.04.00..	derivation		oewn-kiss__2.35.00..
+oewn-kiss__1.04.01..	derivation		oewn-kiss__2.35.01..
+oewn-kiss__2.35.00..	derivation		oewn-kisser__1.18.00..
+oewn-kiss__2.35.00..	derivation		oewn-kissing__1.04.00..
+oewn-kiss__2.35.00..	other	agent	oewn-kisser__1.18.00..
+oewn-kiss__2.35.00..	other	event	oewn-kiss__1.04.00..
+oewn-kiss__2.35.01..	other	event	oewn-kiss__1.04.01..
+oewn-kit__1.06.00..	derivation		oewn-kit__2.40.00..
+oewn-kit__1.06.01..	derivation		oewn-kit__2.40.00..
+oewn-kit__2.40.00..	other	uses	oewn-kit__1.06.00..
+oewn-kit__2.40.00..	other	uses	oewn-kit__1.06.01..
+oewn-kite__1.06.00..	derivation		oewn-kite__2.38.00..
+oewn-kite__1.21.00..	derivation		oewn-kite__2.40.00..
+oewn-kite__1.21.01..	derivation		oewn-kite__2.40.01..
+oewn-kite__2.38.00..	other	undergoer	oewn-kite__1.06.00..
+oewn-kite__2.40.00..	other	by_means_of	oewn-kite__1.21.00..
+oewn-kite__2.40.01..	other	by_means_of	oewn-kite__1.21.01..
+oewn-kitten__1.05.00..	derivation		oewn-kitten__2.29.00..
+oewn-kitten__2.29.00..	other	result	oewn-kitten__1.05.00..
+oewn-knavishly__4.02.00..	pertainym		oewn-knavish__5.00.00.artful.00
+oewn-knee--length__3.01.00..	pertainym		oewn-knee__1.08.00..
+oewn-kneel__1.04.00..	derivation		oewn-kneel__2.35.00..
+oewn-kneel__2.35.00..	derivation		oewn-kneeler__1.06.00..
+oewn-kneel__2.35.00..	derivation		oewn-kneeler__1.18.00..
+oewn-kneel__2.35.00..	derivation		oewn-kneeling__1.04.00..
+oewn-kneel__2.35.00..	other	agent	oewn-kneeler__1.18.00..
+oewn-kneel__2.35.00..	other	event	oewn-kneel__1.04.00..
+oewn-kneel__2.35.00..	other	location	oewn-kneeler__1.06.00..
+oewn-knell__1.11.00..	derivation		oewn-knell__2.39.00..
+oewn-knell__1.11.00..	derivation		oewn-knell__2.39.01..
+oewn-knell__2.39.00..	other	event	oewn-knell__1.11.00..
+oewn-knell__2.39.01..	other	event	oewn-knell__1.11.00..
+oewn-knife__1.06.00..	derivation		oewn-knife__2.35.00..
+oewn-knife__1.06.01..	derivation		oewn-knife__2.35.00..
+oewn-knife__2.35.00..	other	instrument	oewn-knife__1.06.00..
+oewn-knife__2.35.00..	other	instrument	oewn-knife__1.06.01..
+oewn-knight__1.18.00..	derivation		oewn-knight__2.41.01..
+oewn-knight__1.18.00..	derivation		oewn-knightly__5.00.00.courteous.00
+oewn-knight__1.18.00..	derivation		oewn-knightly__5.00.00.past.00
+oewn-knight__2.41.01..	other	agent	oewn-knight__1.18.00..
+oewn-knit__1.06.00..	derivation		oewn-knit__2.36.00..
+oewn-knit__1.06.00..	derivation		oewn-knit__2.36.01..
+oewn-knit__1.06.01..	derivation		oewn-knit__2.36.00..
+oewn-knit__1.06.02..	derivation		oewn-knit__2.36.00..
+oewn-knit__2.36.00..	derivation		oewn-knitter__1.18.00..
+oewn-knit__2.36.00..	derivation		oewn-knitting__1.04.00..
+oewn-knit__2.36.00..	derivation		oewn-knitting__1.06.00..
+oewn-knit__2.36.00..	other	agent	oewn-knitter__1.18.00..
+oewn-knit__2.36.00..	other	by_means_of	oewn-knit__1.06.01..
+oewn-knit__2.36.00..	other	result	oewn-knit__1.06.00..
+oewn-knit__2.36.00..	other	result	oewn-knit__1.06.02..
+oewn-knit__2.36.01..	other	result	oewn-knit__1.06.00..
+oewn-knob__1.25.00..	derivation		oewn-knobby__5.00.00.unshapely.00
+oewn-knobble__1.06.00..	derivation		oewn-knobbly__5.00.00.unshapely.00
+oewn-knock__1.04.00..	derivation		oewn-knock__2.35.04..
+oewn-knock__1.11.00..	derivation		oewn-knock__2.35.04..
+oewn-knock__1.11.01..	derivation		oewn-knock__2.35.01..
+oewn-knock__1.11.01..	derivation		oewn-knock__2.39.00..
+oewn-knock__1.11.01..	derivation		oewn-knock__2.39.01..
+oewn-knock__2.35.00..	also		oewn-knock_about__2.35.00..
+oewn-knock__2.35.00..	also		oewn-knock_against__2.35.00..
+oewn-knock__2.35.01..	derivation		oewn-knocker__1.18.01..
+oewn-knock__2.35.01..	derivation		oewn-knocking__1.11.00..
+oewn-knock__2.35.01..	other	agent	oewn-knocker__1.18.01..
+oewn-knock__2.35.01..	other	event	oewn-knock__1.11.01..
+oewn-knock__2.35.04..	also		oewn-knock_cold__2.35.00..
+oewn-knock__2.35.04..	also		oewn-knock_down__2.35.00..
+oewn-knock__2.35.04..	also		oewn-knock_out__2.35.00..
+oewn-knock__2.35.04..	also		oewn-knock_over__2.38.00..
+oewn-knock__2.35.04..	other	event	oewn-knock__1.04.00..
+oewn-knock__2.35.04..	other	event	oewn-knock__1.11.00..
+oewn-knock__2.39.00..	other	event	oewn-knock__1.11.01..
+oewn-knock__2.39.01..	derivation		oewn-knocking__1.11.00..
+oewn-knock__2.39.01..	other	event	oewn-knock__1.11.01..
+oewn-knock_down__2.35.00..	derivation		oewn-knockdown__1.04.00..
+oewn-knock_out__2.35.00..	derivation		oewn-knockout__1.04.00..
+oewn-knot__1.06.00..	derivation		oewn-knot__2.35.00..
+oewn-knot__1.06.00..	derivation		oewn-knotty__5.00.00.tangled.00
+oewn-knot__1.25.00..	derivation		oewn-knot__2.35.02..
+oewn-knot__1.25.00..	derivation		oewn-knot__2.36.00..
+oewn-knot__1.25.00..	derivation		oewn-knotty__5.00.00.tangled.00
+oewn-knot__2.35.00..	other	result	oewn-knot__1.06.00..
+oewn-knot__2.35.02..	antonym		oewn-unknot__2.35.00..
+oewn-knot__2.35.02..	other	result	oewn-knot__1.25.00..
+oewn-knot__2.36.00..	other	result	oewn-knot__1.25.00..
+oewn-knottiness__1.07.00..	derivation		oewn-knotty__5.00.00.complex.00
+oewn-knottiness__1.07.00..	derivation		oewn-knotty__5.00.00.difficult.00
+oewn-know__2.31.01..	derivation		oewn-knowable__3.00.00..
+oewn-know__2.31.01..	derivation		oewn-knower__1.18.00..
+oewn-know__2.31.01..	derivation		oewn-knowing__1.09.00..
+oewn-know__2.31.01..	other	agent	oewn-knower__1.18.00..
+oewn-know__2.31.04..	derivation		oewn-knowable__3.00.00..
+oewn-know__2.31.12..	derivation		oewn-knowable__3.00.00..
+oewn-know__2.31.15..	derivation		oewn-knowable__3.00.00..
+oewn-knowable__3.00.00..	antonym		oewn-unknowable__3.00.00..
+oewn-knowing__5.00.00.educated.00	derivation		oewn-knowingness__1.09.00..
+oewn-knowing__5.00.00.informed.00	derivation		oewn-knowingness__1.09.00..
+oewn-knowing__5.00.00.informed.00	derivation		oewn-knowingness__1.09.01..
+oewn-knowing__5.00.00.intended.00	derivation		oewn-knowingness__1.09.01..
+oewn-knowing__5.00.02.informed.00	derivation		oewn-knowingness__1.09.00..
+oewn-knowingly__4.02.00..	antonym		oewn-unknowingly__4.02.00..
+oewn-knowingly__4.02.00..	pertainym		oewn-knowing__5.00.00.intended.00
+oewn-knowledgeability__1.07.00..	derivation		oewn-knowledgeable__5.00.00.educated.00
+oewn-knowledgeability__1.07.00..	derivation		oewn-knowledgeable__5.00.00.experienced.00
+oewn-knowledgeability__1.07.00..	derivation		oewn-knowledgeable__5.00.00.informed.00
+oewn-knowledgeable__5.00.00.educated.00	derivation		oewn-knowledgeableness__1.07.00..
+oewn-knowledgeable__5.00.00.informed.00	derivation		oewn-knowledgeableness__1.07.00..
+oewn-known__3.00.00..	antonym		oewn-unknown__3.00.00..
+oewn-knuckle__1.08.00..	derivation		oewn-knuckle__2.35.00..
+oewn-knuckle__2.35.00..	other	by_means_of	oewn-knuckle__1.08.00..
+oewn-kokka__1.14.00..	derivation		oewn-kokka__3.01.00..
+oewn-kokka__3.01.00..	pertainym		oewn-kokka_shinto__1.14.00..
+oewn-kook__1.18.00..	derivation		oewn-kooky__5.00.00.insane.00
+oewn-korean__1.10.00..	derivation		oewn-korean__3.01.00..
+oewn-korean__1.18.00..	derivation		oewn-korean__3.01.00..
+oewn-kotex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-kotow__1.10.00..	derivation		oewn-kotow__2.32.00..
+oewn-kowtow__1.10.00..	derivation		oewn-kowtow__2.32.00..
+oewn-kowtow__1.10.00..	derivation		oewn-kowtow__2.38.00..
+oewn-kowtow__2.32.00..	other	event	oewn-kowtow__1.10.00..
+oewn-kowtow__2.38.00..	other	event	oewn-kowtow__1.10.00..
+oewn-kuwaiti__1.18.00..	derivation		oewn-kuwaiti__3.01.00..
+oewn-kuwaiti__1.18.00..	derivation		oewn-kuwaiti__3.01.01..
+oewn-kyphosis__1.26.00..	derivation		oewn-kyphotic__5.00.00.unfit.01

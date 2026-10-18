@@ -1,0 +1,10 @@
+class_id	lemma	label	pos	kind
+beam#noun	beam	noun	n	sense_group
+beam#verb	beam	verb	v	sense_group
+bear#noun	bear	noun	n	sense_group
+bear#verb	bear	verb	v	sense_group
+beat#noun	beat	noun	n	sense_group
+beat#unmapped-a	beat	unmapped-a	a	unmapped
+beat#verb	beat	verb	v	sense_group
+bend#noun	bend	noun	n	sense_group
+bend#verb	bend	verb	v	sense_group

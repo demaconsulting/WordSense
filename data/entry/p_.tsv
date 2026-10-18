@@ -1,0 +1,16 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-P-n	P	n	0	1	1	oewn
+oewn-P-sl-E_ratio-n	P/E ratio	n	0	2	2	oewn
+oewn-P.A.-n	P.A.	n	0	1	1	oewn
+oewn-P.A._system-n	P.A. system	n	0	2	2	oewn
+oewn-P.E.-n	P.E.	n	0	1	1	oewn
+oewn-P.M.-n	P.M.	n	0	1	1	oewn
+oewn-P.M.-r	P.M.	r	0	1	1	oewn
+oewn-P.O.-n	P.O.	n	0	1	1	oewn
+oewn-p-n	p	n	0	1	1	oewn
+oewn-p-n-p_transistor-n	p-n-p transistor	n	0	2	2	oewn
+oewn-p-n_junction-n	p-n junction	n	0	2	2	oewn
+oewn-p-type_semiconductor-n	p-type semiconductor	n	0	2	2	oewn
+oewn-p.a.-r	p.a.	r	0	1	1	oewn
+oewn-p.m.-n	p.m.	n	0	1	1	oewn
+oewn-p.m.-r	p.m.	r	0	1	1	oewn

@@ -1,0 +1,668 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-AM-n	AM	n	0	1	1	oewn
+oewn-AM-r	AM	r	0	1	1	oewn
+oewn-AMD-n	AMD	n	0	1	1	oewn
+oewn-AMP-n	AMP	n	0	1	1	oewn
+oewn-AMusD-n	AMusD	n	0	1	1	oewn
+oewn-Am-n	Am	n	0	1	1	oewn
+oewn-Aman-n	Aman	n	0	1	1	oewn
+oewn-Amanita_caesarea-n	Amanita caesarea	n	0	2	2	oewn
+oewn-Amanita_mappa-n	Amanita mappa	n	0	2	2	oewn
+oewn-Amanita_muscaria-n	Amanita muscaria	n	0	2	2	oewn
+oewn-Amanita_phalloides-n	Amanita phalloides	n	0	2	2	oewn
+oewn-Amanita_rubescens-n	Amanita rubescens	n	0	2	2	oewn
+oewn-Amanita_verna-n	Amanita verna	n	0	2	2	oewn
+oewn-Amaranthus_albus-n	Amaranthus albus	n	0	2	2	oewn
+oewn-Amaranthus_caudatus-n	Amaranthus caudatus	n	0	2	2	oewn
+oewn-Amaranthus_cruentus-n	Amaranthus cruentus	n	0	2	2	oewn
+oewn-Amaranthus_graecizans-n	Amaranthus graecizans	n	0	2	2	oewn
+oewn-Amaranthus_hybridus_erythrostachys-n	Amaranthus hybridus erythrostachys	n	0	3	3	oewn
+oewn-Amaranthus_hybridus_hypochondriacus-n	Amaranthus hybridus hypochondriacus	n	0	3	3	oewn
+oewn-Amaranthus_hypochondriacus-n	Amaranthus hypochondriacus	n	0	2	2	oewn
+oewn-Amaranthus_spinosus-n	Amaranthus spinosus	n	0	2	2	oewn
+oewn-Amaryllis_belladonna-n	Amaryllis belladonna	n	0	2	2	oewn
+oewn-Amati-n	Amati	n	0	1	1	oewn
+oewn-Amazon-n	Amazon	n	0	1	1	oewn
+oewn-Amazon_ant-n	Amazon ant	n	0	2	2	oewn
+oewn-Amberboa_moschata-n	Amberboa moschata	n	0	2	2	oewn
+oewn-Ambloplites_rupestris-n	Ambloplites rupestris	n	0	2	2	oewn
+oewn-Amblyrhynchus_cristatus-n	Amblyrhynchus cristatus	n	0	2	2	oewn
+oewn-Ambrosia_artemisiifolia-n	Ambrosia artemisiifolia	n	0	2	2	oewn
+oewn-Ambrosia_psilostachya-n	Ambrosia psilostachya	n	0	2	2	oewn
+oewn-Ambrosia_trifida-n	Ambrosia trifida	n	0	2	2	oewn
+oewn-Ambrosian-a	Ambrosian	a	0	1	1	oewn
+oewn-Ambystoma_maculatum-n	Ambystoma maculatum	n	0	2	2	oewn
+oewn-Ambystoma_mexicanum-n	Ambystoma mexicanum	n	0	2	2	oewn
+oewn-Ambystoma_talpoideum-n	Ambystoma talpoideum	n	0	2	2	oewn
+oewn-Ambystoma_tigrinum-n	Ambystoma tigrinum	n	0	2	2	oewn
+oewn-Ameiurus_melas-n	Ameiurus melas	n	0	2	2	oewn
+oewn-Amelanchier_alnifolia-n	Amelanchier alnifolia	n	0	2	2	oewn
+oewn-Amelanchier_bartramiana-n	Amelanchier bartramiana	n	0	2	2	oewn
+oewn-American-Indian_language-n	American-Indian language	n	0	2	2	oewn
+oewn-American-a	American	a	0	1	1	oewn
+oewn-American-n	American	n	0	1	1	oewn
+oewn-American_Baptist_Convention-n	American Baptist Convention	n	0	3	3	oewn
+oewn-American_Dream-n	American Dream	n	0	2	2	oewn
+oewn-American_English-n	American English	n	0	2	2	oewn
+oewn-American_English_orthography-n	American English orthography	n	0	3	3	oewn
+oewn-American_English_spelling-n	American English spelling	n	0	3	3	oewn
+oewn-American_Federalist_Party-n	American Federalist Party	n	0	3	3	oewn
+oewn-American_Federation_of_Labor-n	American Federation of Labor	n	0	4	2	oewn
+oewn-American_Federation_of_Labor_and_Congress_of_Industrial_Organizations-n	American Federation of Labor and Congress of Industrial Organizations	n	0	9	2	oewn
+oewn-American_Indian-n	American Indian	n	0	2	2	oewn
+oewn-American_Indian_Day-n	American Indian Day	n	0	3	3	oewn
+oewn-American_Indian_language-n	American Indian language	n	0	3	3	oewn
+oewn-American_Labor_Party-n	American Labor Party	n	0	3	3	oewn
+oewn-American_Legion-n	American Legion	n	0	2	2	oewn
+oewn-American_Party-n	American Party	n	0	2	2	oewn
+oewn-American_Revolutionary_leader-n	American Revolutionary leader	n	0	3	3	oewn
+oewn-American_Staffordshire_terrier-n	American Staffordshire terrier	n	0	3	3	oewn
+oewn-American_Standard_Code_for_Information_Interchange-n	American Standard Code for Information Interchange	n	0	6	3	oewn
+oewn-American_agave-n	American agave	n	0	2	2	oewn
+oewn-American_alligator-n	American alligator	n	0	2	2	oewn
+oewn-American_aloe-n	American aloe	n	0	2	2	oewn
+oewn-American_angelica_tree-n	American angelica tree	n	0	3	3	oewn
+oewn-American_antelope-n	American antelope	n	0	2	2	oewn
+oewn-American_arborvitae-n	American arborvitae	n	0	2	2	oewn
+oewn-American_arrowroot-n	American arrowroot	n	0	2	2	oewn
+oewn-American_aspen-n	American aspen	n	0	2	2	oewn
+oewn-American_badger-n	American badger	n	0	2	2	oewn
+oewn-American_barberry-n	American barberry	n	0	2	2	oewn
+oewn-American_basswood-n	American basswood	n	0	2	2	oewn
+oewn-American_beech-n	American beech	n	0	2	2	oewn
+oewn-American_bison-n	American bison	n	0	2	2	oewn
+oewn-American_bittern-n	American bittern	n	0	2	2	oewn
+oewn-American_bittersweet-n	American bittersweet	n	0	2	2	oewn
+oewn-American_black_bear-n	American black bear	n	0	3	3	oewn
+oewn-American_blight-n	American blight	n	0	2	2	oewn
+oewn-American_bog_asphodel-n	American bog asphodel	n	0	3	3	oewn
+oewn-American_brooklime-n	American brooklime	n	0	2	2	oewn
+oewn-American_buffalo-n	American buffalo	n	0	2	2	oewn
+oewn-American_bugbane-n	American bugbane	n	0	2	2	oewn
+oewn-American_centaury-n	American centaury	n	0	2	2	oewn
+oewn-American_chameleon-n	American chameleon	n	0	2	2	oewn
+oewn-American_cheese-n	American cheese	n	0	2	2	oewn
+oewn-American_chestnut-n	American chestnut	n	0	2	2	oewn
+oewn-American_cockroach-n	American cockroach	n	0	2	2	oewn
+oewn-American_columbo-n	American columbo	n	0	2	2	oewn
+oewn-American_coot-n	American coot	n	0	2	2	oewn
+oewn-American_copper-n	American copper	n	0	2	2	oewn
+oewn-American_crab_apple-n	American crab apple	n	0	3	3	oewn
+oewn-American_cranberry-n	American cranberry	n	0	2	2	oewn
+oewn-American_cranberry_bush-n	American cranberry bush	n	0	3	3	oewn
+oewn-American_crayfish-n	American crayfish	n	0	2	2	oewn
+oewn-American_creeper-n	American creeper	n	0	2	2	oewn
+oewn-American_cress-n	American cress	n	0	2	2	oewn
+oewn-American_crow-n	American crow	n	0	2	2	oewn
+oewn-American_dewberry-n	American dewberry	n	0	2	2	oewn
+oewn-American_dog_tick-n	American dog tick	n	0	3	3	oewn
+oewn-American_dog_violet-n	American dog violet	n	0	3	3	oewn
+oewn-American_dogwood-n	American dogwood	n	0	2	2	oewn
+oewn-American_dwarf_birch-n	American dwarf birch	n	0	3	3	oewn
+oewn-American_eagle-n	American eagle	n	0	2	2	oewn
+oewn-American_egret-n	American egret	n	0	2	2	oewn
+oewn-American_elder-n	American elder	n	0	2	2	oewn
+oewn-American_elk-n	American elk	n	0	2	2	oewn
+oewn-American_elm-n	American elm	n	0	2	2	oewn
+oewn-American_featherfoil-n	American featherfoil	n	0	2	2	oewn
+oewn-American_feverfew-n	American feverfew	n	0	2	2	oewn
+oewn-American_flag-n	American flag	n	0	2	2	oewn
+oewn-American_flagfish-n	American flagfish	n	0	2	2	oewn
+oewn-American_fly_honeysuckle-n	American fly honeysuckle	n	0	3	3	oewn
+oewn-American_flying_squirrel-n	American flying squirrel	n	0	3	3	oewn
+oewn-American_football-n	American football	n	0	2	2	oewn
+oewn-American_football_game-n	American football game	n	0	3	3	oewn
+oewn-American_foxhound-n	American foxhound	n	0	2	2	oewn
+oewn-American_frogbit-n	American frogbit	n	0	2	2	oewn
+oewn-American_gallinule-n	American gallinule	n	0	2	2	oewn
+oewn-American_gentian-n	American gentian	n	0	2	2	oewn
+oewn-American_germander-n	American germander	n	0	2	2	oewn
+oewn-American_ginseng-n	American ginseng	n	0	2	2	oewn
+oewn-American_gray_birch-n	American gray birch	n	0	3	3	oewn
+oewn-American_green_toad-n	American green toad	n	0	3	3	oewn
+oewn-American_grey_birch-n	American grey birch	n	0	3	3	oewn
+oewn-American_hackberry-n	American hackberry	n	0	2	2	oewn
+oewn-American_harvest_mouse-n	American harvest mouse	n	0	3	3	oewn
+oewn-American_hazel-n	American hazel	n	0	2	2	oewn
+oewn-American_hellebore-n	American hellebore	n	0	2	2	oewn
+oewn-American_holly-n	American holly	n	0	2	2	oewn
+oewn-American_hop-n	American hop	n	0	2	2	oewn
+oewn-American_hornbeam-n	American hornbeam	n	0	2	2	oewn
+oewn-American_ivy-n	American ivy	n	0	2	2	oewn
+oewn-American_kestrel-n	American kestrel	n	0	2	2	oewn
+oewn-American_lady_crab-n	American lady crab	n	0	3	3	oewn
+oewn-American_language-n	American language	n	0	2	2	oewn
+oewn-American_larch-n	American larch	n	0	2	2	oewn
+oewn-American_laurel-n	American laurel	n	0	2	2	oewn
+oewn-American_leishmaniasis-n	American leishmaniasis	n	0	2	2	oewn
+oewn-American_licorice-n	American licorice	n	0	2	2	oewn
+oewn-American_lime-n	American lime	n	0	2	2	oewn
+oewn-American_liquorice-n	American liquorice	n	0	2	2	oewn
+oewn-American_lobster-n	American lobster	n	0	2	2	oewn
+oewn-American_lotus-n	American lotus	n	0	2	2	oewn
+oewn-American_magpie-n	American magpie	n	0	2	2	oewn
+oewn-American_maidenhair_fern-n	American maidenhair fern	n	0	3	3	oewn
+oewn-American_marten-n	American marten	n	0	2	2	oewn
+oewn-American_mastodon-n	American mastodon	n	0	2	2	oewn
+oewn-American_mastodont-n	American mastodont	n	0	2	2	oewn
+oewn-American_merganser-n	American merganser	n	0	2	2	oewn
+oewn-American_mink-n	American mink	n	0	2	2	oewn
+oewn-American_mistletoe-n	American mistletoe	n	0	2	2	oewn
+oewn-American_mountain_ash-n	American mountain ash	n	0	3	3	oewn
+oewn-American_oil_palm-n	American oil palm	n	0	3	3	oewn
+oewn-American_olive-n	American olive	n	0	2	2	oewn
+oewn-American_organ-n	American organ	n	0	2	2	oewn
+oewn-American_oriole-n	American oriole	n	0	2	2	oewn
+oewn-American_parasol-n	American parasol	n	0	2	2	oewn
+oewn-American_parsley_fern-n	American parsley fern	n	0	3	3	oewn
+oewn-American_pasqueflower-n	American pasqueflower	n	0	2	2	oewn
+oewn-American_pennyroyal-n	American pennyroyal	n	0	2	2	oewn
+oewn-American_persimmon-n	American persimmon	n	0	2	2	oewn
+oewn-American_pit_bull_terrier-n	American pit bull terrier	n	0	4	4	oewn
+oewn-American_plaice-n	American plaice	n	0	2	2	oewn
+oewn-American_plan-n	American plan	n	0	2	2	oewn
+oewn-American_plane-n	American plane	n	0	2	2	oewn
+oewn-American_pulsatilla-n	American pulsatilla	n	0	2	2	oewn
+oewn-American_quaking_aspen-n	American quaking aspen	n	0	3	3	oewn
+oewn-American_raspberry-n	American raspberry	n	0	2	2	oewn
+oewn-American_rattlebox-n	American rattlebox	n	0	2	2	oewn
+oewn-American_red_elder-n	American red elder	n	0	3	3	oewn
+oewn-American_red_plum-n	American red plum	n	0	3	3	oewn
+oewn-American_red_squirrel-n	American red squirrel	n	0	3	3	oewn
+oewn-American_redstart-n	American redstart	n	0	2	2	oewn
+oewn-American_robin-n	American robin	n	0	2	2	oewn
+oewn-American_rock_brake-n	American rock brake	n	0	3	3	oewn
+oewn-American_sable-n	American sable	n	0	2	2	oewn
+oewn-American_saddle_horse-n	American saddle horse	n	0	3	3	oewn
+oewn-American_shrew_mole-n	American shrew mole	n	0	3	3	oewn
+oewn-American_sign_language-n	American sign language	n	0	3	3	oewn
+oewn-American_smelt-n	American smelt	n	0	2	2	oewn
+oewn-American_smokewood-n	American smokewood	n	0	2	2	oewn
+oewn-American_smooth_dogfish-n	American smooth dogfish	n	0	3	3	oewn
+oewn-American_spelling-n	American spelling	n	0	2	2	oewn
+oewn-American_spicebush-n	American spicebush	n	0	2	2	oewn
+oewn-American_spikenard-n	American spikenard	n	0	2	2	oewn
+oewn-American_star_grass-n	American star grass	n	0	3	3	oewn
+oewn-American_state-n	American state	n	0	2	2	oewn
+oewn-American_sweet_chestnut-n	American sweet chestnut	n	0	3	3	oewn
+oewn-American_sweet_gum-n	American sweet gum	n	0	3	3	oewn
+oewn-American_sycamore-n	American sycamore	n	0	2	2	oewn
+oewn-American_toad-n	American toad	n	0	2	2	oewn
+oewn-American_turkey_oak-n	American turkey oak	n	0	3	3	oewn
+oewn-American_twinflower-n	American twinflower	n	0	2	2	oewn
+oewn-American_wall_fern-n	American wall fern	n	0	3	3	oewn
+oewn-American_water_ouzel-n	American water ouzel	n	0	3	3	oewn
+oewn-American_water_shrew-n	American water shrew	n	0	3	3	oewn
+oewn-American_water_spaniel-n	American water spaniel	n	0	3	3	oewn
+oewn-American_watercress-n	American watercress	n	0	2	2	oewn
+oewn-American_white_birch-n	American white birch	n	0	3	3	oewn
+oewn-American_white_oak-n	American white oak	n	0	3	3	oewn
+oewn-American_white_pine-n	American white pine	n	0	3	3	oewn
+oewn-American_widgeon-n	American widgeon	n	0	2	2	oewn
+oewn-American_wisteria-n	American wisteria	n	0	2	2	oewn
+oewn-American_woodcock-n	American woodcock	n	0	2	2	oewn
+oewn-American_wormseed-n	American wormseed	n	0	2	2	oewn
+oewn-Americana-n	Americana	n	0	1	1	oewn
+oewn-Americanisation-n	Americanisation	n	0	1	1	oewn
+oewn-Americanise-v	Americanise	v	0	1	1	oewn
+oewn-Americanism-n	Americanism	n	0	1	1	oewn
+oewn-Americanization-n	Americanization	n	0	1	1	oewn
+oewn-Americanize-v	Americanize	v	0	1	1	oewn
+oewn-Americanness-n	Americanness	n	0	1	1	oewn
+oewn-Amerind-a	Amerind	a	0	1	1	oewn
+oewn-Amerind-n	Amerind	n	0	1	1	oewn
+oewn-Amerind_language-n	Amerind language	n	0	2	2	oewn
+oewn-Amerindian-n	Amerindian	n	0	1	1	oewn
+oewn-Amerindian_language-n	Amerindian language	n	0	2	2	oewn
+oewn-Amerindian_race-n	Amerindian race	n	0	2	2	oewn
+oewn-Amerindic-a	Amerindic	a	0	1	1	oewn
+oewn-Amhara-n	Amhara	n	0	1	1	oewn
+oewn-Amharic-a	Amharic	a	0	1	1	oewn
+oewn-Amharic-n	Amharic	n	0	1	1	oewn
+oewn-Amharic_language-n	Amharic language	n	0	2	2	oewn
+oewn-Amia_calva-n	Amia calva	n	0	2	2	oewn
+oewn-Amianthum_muscaetoxicum-n	Amianthum muscaetoxicum	n	0	2	2	oewn
+oewn-Amianthum_muscitoxicum-n	Amianthum muscitoxicum	n	0	2	2	oewn
+oewn-Amish-n	Amish	n	0	1	1	oewn
+oewn-Amish_sect-n	Amish sect	n	0	2	2	oewn
+oewn-Ammobium_alatum-n	Ammobium alatum	n	0	2	2	oewn
+oewn-Ammotragus_lervia-n	Ammotragus lervia	n	0	2	2	oewn
+oewn-Amniota-n	Amniota	n	0	1	1	oewn
+oewn-Amontillado-n	Amontillado	n	0	1	1	oewn
+oewn-Amorpha_californica-n	Amorpha californica	n	0	2	2	oewn
+oewn-Amorpha_canescens-n	Amorpha canescens	n	0	2	2	oewn
+oewn-Amorpha_fruticosa-n	Amorpha fruticosa	n	0	2	2	oewn
+oewn-Amorphophallus_campanulatus-n	Amorphophallus campanulatus	n	0	2	2	oewn
+oewn-Amorphophallus_paeonifolius-n	Amorphophallus paeonifolius	n	0	2	2	oewn
+oewn-Amorphophallus_rivieri-n	Amorphophallus rivieri	n	0	2	2	oewn
+oewn-Amorphophallus_titanum-n	Amorphophallus titanum	n	0	2	2	oewn
+oewn-Amoxil-n	Amoxil	n	0	1	1	oewn
+oewn-Amoy-n	Amoy	n	0	1	1	oewn
+oewn-Amoy_language-n	Amoy language	n	0	2	2	oewn
+oewn-Amphicarpa_bracteata-n	Amphicarpa bracteata	n	0	2	2	oewn
+oewn-Amphicarpaea_bracteata-n	Amphicarpaea bracteata	n	0	2	2	oewn
+oewn-Amphiprion_percula-n	Amphiprion percula	n	0	2	2	oewn
+oewn-Amsinckia_grandiflora-n	Amsinckia grandiflora	n	0	2	2	oewn
+oewn-Amsinckia_intermedia-n	Amsinckia intermedia	n	0	2	2	oewn
+oewn-Amsler_grid-n	Amsler grid	n	0	2	2	oewn
+oewn-Amsonia_tabernaemontana-n	Amsonia tabernaemontana	n	0	2	2	oewn
+oewn-Amur_privet-n	Amur privet	n	0	2	2	oewn
+oewn-Amygdalus_communis-n	Amygdalus communis	n	0	2	2	oewn
+oewn-Amygdalus_communis_amara-n	Amygdalus communis amara	n	0	3	3	oewn
+oewn-Amytal-n	Amytal	n	0	1	1	oewn
+oewn-am-n	am	n	0	1	1	oewn
+oewn-am-r	am	r	0	1	1	oewn
+oewn-amabilis_fir-n	amabilis fir	n	0	2	2	oewn
+oewn-amadavat-n	amadavat	n	0	1	1	oewn
+oewn-amah-n	amah	n	0	1	1	oewn
+oewn-amain-r	amain	r	0	1	1	oewn
+oewn-amalgam-n	amalgam	n	0	1	1	oewn
+oewn-amalgamate-a	amalgamate	a	0	1	1	oewn
+oewn-amalgamate-v	amalgamate	v	0	1	1	oewn
+oewn-amalgamated-a	amalgamated	a	0	1	1	oewn
+oewn-amalgamation-n	amalgamation	n	0	1	1	oewn
+oewn-amalgamative-a	amalgamative	a	0	1	1	oewn
+oewn-amalgamator-n	amalgamator	n	0	1	1	oewn
+oewn-amanuensis-n	amanuensis	n	0	1	1	oewn
+oewn-amaranth-n	amaranth	n	0	1	1	oewn
+oewn-amaranthine-a	amaranthine	a	0	1	1	oewn
+oewn-amarelle-n	amarelle	n	0	1	1	oewn
+oewn-amaretto-n	amaretto	n	0	1	1	oewn
+oewn-amaryllis-n	amaryllis	n	0	1	1	oewn
+oewn-amass-v	amass	v	0	1	1	oewn
+oewn-amastia-n	amastia	n	0	1	1	oewn
+oewn-amateur-a	amateur	a	0	1	1	oewn
+oewn-amateur-n	amateur	n	0	1	1	oewn
+oewn-amateurish-a	amateurish	a	0	1	1	oewn
+oewn-amateurishly-r	amateurishly	r	0	1	1	oewn
+oewn-amateurishness-n	amateurishness	n	0	1	1	oewn
+oewn-amateurism-n	amateurism	n	0	1	1	oewn
+oewn-amative-a	amative	a	0	1	1	oewn
+oewn-amativeness-n	amativeness	n	0	1	1	oewn
+oewn-amatory-a	amatory	a	0	1	1	oewn
+oewn-amatungulu-n	amatungulu	n	0	1	1	oewn
+oewn-amaurosis-n	amaurosis	n	0	1	1	oewn
+oewn-amaurotic-a	amaurotic	a	0	1	1	oewn
+oewn-amaze-v	amaze	v	0	1	1	oewn
+oewn-amazed-a	amazed	a	0	1	1	oewn
+oewn-amazement-n	amazement	n	0	1	1	oewn
+oewn-amazing-a	amazing	a	0	1	1	oewn
+oewn-amazingly-r	amazingly	r	0	1	1	oewn
+oewn-amazon-n	amazon	n	0	1	1	oewn
+oewn-ambage-n	ambage	n	0	1	1	oewn
+oewn-ambages-n	ambages	n	0	1	1	oewn
+oewn-ambagious-a	ambagious	a	0	1	1	oewn
+oewn-ambassador-n	ambassador	n	0	1	1	oewn
+oewn-ambassadorial-a	ambassadorial	a	0	1	1	oewn
+oewn-ambassadorship-n	ambassadorship	n	0	1	1	oewn
+oewn-ambassadress-n	ambassadress	n	0	1	1	oewn
+oewn-amber-a	amber	a	0	1	1	oewn
+oewn-amber-green-a	amber-green	a	0	1	1	oewn
+oewn-amber-n	amber	n	0	1	1	oewn
+oewn-amber_lily-n	amber lily	n	0	2	2	oewn
+oewn-amberbell-n	amberbell	n	0	1	1	oewn
+oewn-amberfish-n	amberfish	n	0	1	1	oewn
+oewn-ambergris-n	ambergris	n	0	1	1	oewn
+oewn-amberjack-n	amberjack	n	0	1	1	oewn
+oewn-ambiance-n	ambiance	n	0	1	1	oewn
+oewn-ambidexterity-n	ambidexterity	n	0	1	1	oewn
+oewn-ambidextrous-a	ambidextrous	a	0	1	1	oewn
+oewn-ambidextrousness-n	ambidextrousness	n	0	1	1	oewn
+oewn-ambience-n	ambience	n	0	1	1	oewn
+oewn-ambient-a	ambient	a	0	1	1	oewn
+oewn-ambiguity-n	ambiguity	n	0	1	1	oewn
+oewn-ambiguous-a	ambiguous	a	0	1	1	oewn
+oewn-ambiguously-r	ambiguously	r	0	1	1	oewn
+oewn-ambit-n	ambit	n	0	1	1	oewn
+oewn-ambition-n	ambition	n	0	1	1	oewn
+oewn-ambition-v	ambition	v	0	1	1	oewn
+oewn-ambitionless-a	ambitionless	a	0	1	1	oewn
+oewn-ambitious-a	ambitious	a	0	1	1	oewn
+oewn-ambitiously-r	ambitiously	r	0	1	1	oewn
+oewn-ambitiousness-n	ambitiousness	n	0	1	1	oewn
+oewn-ambivalence-n	ambivalence	n	0	1	1	oewn
+oewn-ambivalency-n	ambivalency	n	0	1	1	oewn
+oewn-ambivalent-a	ambivalent	a	0	1	1	oewn
+oewn-ambiversion-n	ambiversion	n	0	1	1	oewn
+oewn-ambiversive-a	ambiversive	a	0	1	1	oewn
+oewn-amble-n	amble	n	0	1	1	oewn
+oewn-amble-v	amble	v	0	1	1	oewn
+oewn-ambler-n	ambler	n	0	1	1	oewn
+oewn-amblygonite-n	amblygonite	n	0	1	1	oewn
+oewn-amblyopia-n	amblyopia	n	0	1	1	oewn
+oewn-amblyopic-a	amblyopic	a	0	1	1	oewn
+oewn-ambo-n	ambo	n	0	1	1	oewn
+oewn-amboceptor-n	amboceptor	n	0	1	1	oewn
+oewn-amboina_pine-n	amboina pine	n	0	2	2	oewn
+oewn-amboyna-n	amboyna	n	0	1	1	oewn
+oewn-amboyna_pine-n	amboyna pine	n	0	2	2	oewn
+oewn-ambrosia-n	ambrosia	n	0	1	1	oewn
+oewn-ambrosial-a	ambrosial	a	0	1	1	oewn
+oewn-ambrosian-a	ambrosian	a	0	1	1	oewn
+oewn-ambulacral-a	ambulacral	a	0	1	1	oewn
+oewn-ambulacrum-n	ambulacrum	n	0	1	1	oewn
+oewn-ambulance-n	ambulance	n	0	1	1	oewn
+oewn-ambulance_chaser-n	ambulance chaser	n	0	2	2	oewn
+oewn-ambulant-a	ambulant	a	0	1	1	oewn
+oewn-ambulant_plague-n	ambulant plague	n	0	2	2	oewn
+oewn-ambulate-v	ambulate	v	0	1	1	oewn
+oewn-ambulation-n	ambulation	n	0	1	1	oewn
+oewn-ambulatory-a	ambulatory	a	0	1	1	oewn
+oewn-ambulatory-n	ambulatory	n	0	1	1	oewn
+oewn-ambulatory_plague-n	ambulatory plague	n	0	2	2	oewn
+oewn-ambuscade-n	ambuscade	n	0	1	1	oewn
+oewn-ambuscade-v	ambuscade	v	0	1	1	oewn
+oewn-ambush-n	ambush	n	0	1	1	oewn
+oewn-ambush-v	ambush	v	0	1	1	oewn
+oewn-ambusher-n	ambusher	n	0	1	1	oewn
+oewn-ambystomid-n	ambystomid	n	0	1	1	oewn
+oewn-ambystomid_salamander-n	ambystomid salamander	n	0	2	2	oewn
+oewn-ameba-n	ameba	n	0	1	1	oewn
+oewn-ameban-a	ameban	a	0	1	1	oewn
+oewn-amebiasis-n	amebiasis	n	0	1	1	oewn
+oewn-amebic-a	amebic	a	0	1	1	oewn
+oewn-amebic_dysentery-n	amebic dysentery	n	0	2	2	oewn
+oewn-amebiosis-n	amebiosis	n	0	1	1	oewn
+oewn-ameboid-a	ameboid	a	0	1	1	oewn
+oewn-amebous-a	amebous	a	0	1	1	oewn
+oewn-ameer-n	ameer	n	0	1	1	oewn
+oewn-amelia-n	amelia	n	0	1	1	oewn
+oewn-ameliorate-v	ameliorate	v	0	1	1	oewn
+oewn-ameliorating-a	ameliorating	a	0	1	1	oewn
+oewn-amelioration-n	amelioration	n	0	1	1	oewn
+oewn-ameliorative-a	ameliorative	a	0	1	1	oewn
+oewn-amelioratory-a	amelioratory	a	0	1	1	oewn
+oewn-ameloblast-n	ameloblast	n	0	1	1	oewn
+oewn-amelogenesis-n	amelogenesis	n	0	1	1	oewn
+oewn-amen_cadence-n	amen cadence	n	0	2	2	oewn
+oewn-amen_corner-n	amen corner	n	0	2	2	oewn
+oewn-amenability-n	amenability	n	0	1	1	oewn
+oewn-amenable-a	amenable	a	0	1	1	oewn
+oewn-amenableness-n	amenableness	n	0	1	1	oewn
+oewn-amend-v	amend	v	0	1	1	oewn
+oewn-amendable-a	amendable	a	0	1	1	oewn
+oewn-amendatory-a	amendatory	a	0	1	1	oewn
+oewn-amended-a	amended	a	0	1	1	oewn
+oewn-amended_return-n	amended return	n	0	2	2	oewn
+oewn-amendment-n	amendment	n	0	1	1	oewn
+oewn-amends-n	amends	n	0	1	1	oewn
+oewn-amenia-n	amenia	n	0	1	1	oewn
+oewn-amenities-n	amenities	n	0	1	1	oewn
+oewn-amenity-n	amenity	n	0	1	1	oewn
+oewn-amenorrhea-n	amenorrhea	n	0	1	1	oewn
+oewn-amenorrheal-a	amenorrheal	a	0	1	1	oewn
+oewn-amenorrheic-a	amenorrheic	a	0	1	1	oewn
+oewn-amenorrhoea-n	amenorrhoea	n	0	1	1	oewn
+oewn-amenorrhoeal-a	amenorrhoeal	a	0	1	1	oewn
+oewn-amenorrhoeic-a	amenorrhoeic	a	0	1	1	oewn
+oewn-ament-n	ament	n	0	1	1	oewn
+oewn-amentaceous-a	amentaceous	a	0	1	1	oewn
+oewn-amentia-n	amentia	n	0	1	1	oewn
+oewn-amentiferous-a	amentiferous	a	0	1	1	oewn
+oewn-amerce-v	amerce	v	0	1	1	oewn
+oewn-amercement-n	amercement	n	0	1	1	oewn
+oewn-amerciable-a	amerciable	a	0	1	1	oewn
+oewn-americium-n	americium	n	0	1	1	oewn
+oewn-ametabolic-a	ametabolic	a	0	1	1	oewn
+oewn-ametabolous-a	ametabolous	a	0	1	1	oewn
+oewn-amethopterin-n	amethopterin	n	0	1	1	oewn
+oewn-amethyst-a	amethyst	a	0	1	1	oewn
+oewn-amethyst-n	amethyst	n	0	1	1	oewn
+oewn-amethystine-a	amethystine	a	0	1	1	oewn
+oewn-amethystine_python-n	amethystine python	n	0	2	2	oewn
+oewn-ametria-n	ametria	n	0	1	1	oewn
+oewn-ametropia-n	ametropia	n	0	1	1	oewn
+oewn-ametropic-a	ametropic	a	0	1	1	oewn
+oewn-amiability-n	amiability	n	0	1	1	oewn
+oewn-amiable-a	amiable	a	0	1	1	oewn
+oewn-amiableness-n	amiableness	n	0	1	1	oewn
+oewn-amiably-r	amiably	r	0	1	1	oewn
+oewn-amicability-n	amicability	n	0	1	1	oewn
+oewn-amicable-a	amicable	a	0	1	1	oewn
+oewn-amicableness-n	amicableness	n	0	1	1	oewn
+oewn-amicably-r	amicably	r	0	1	1	oewn
+oewn-amicus_curiae-n	amicus curiae	n	0	2	2	oewn
+oewn-amicus_curiae_brief-n	amicus curiae brief	n	0	3	3	oewn
+oewn-amide-n	amide	n	0	1	1	oewn
+oewn-amidopyrine-n	amidopyrine	n	0	1	1	oewn
+oewn-amidship-a	amidship	a	0	1	1	oewn
+oewn-amidship-r	amidship	r	0	1	1	oewn
+oewn-amidships-r	amidships	r	0	1	1	oewn
+oewn-amigo-n	amigo	n	0	1	1	oewn
+oewn-amine-n	amine	n	0	1	1	oewn
+oewn-aminic-a	aminic	a	0	1	1	oewn
+oewn-amino-a	amino	a	0	1	1	oewn
+oewn-amino-n	amino	n	0	1	1	oewn
+oewn-amino_acid-n	amino acid	n	0	2	2	oewn
+oewn-amino_group-n	amino group	n	0	2	2	oewn
+oewn-amino_plastic-n	amino plastic	n	0	2	2	oewn
+oewn-amino_resin-n	amino resin	n	0	2	2	oewn
+oewn-aminoaciduria-n	aminoaciduria	n	0	1	1	oewn
+oewn-aminoalkane-n	aminoalkane	n	0	1	1	oewn
+oewn-aminoalkanoic_acid-n	aminoalkanoic acid	n	0	2	2	oewn
+oewn-aminobenzine-n	aminobenzine	n	0	1	1	oewn
+oewn-aminobenzoic_acid-n	aminobenzoic acid	n	0	2	2	oewn
+oewn-aminomethane-n	aminomethane	n	0	1	1	oewn
+oewn-aminopherase-n	aminopherase	n	0	1	1	oewn
+oewn-aminophylline-n	aminophylline	n	0	1	1	oewn
+oewn-aminoplast-n	aminoplast	n	0	1	1	oewn
+oewn-aminopyrine-n	aminopyrine	n	0	1	1	oewn
+oewn-aminotransferase-n	aminotransferase	n	0	1	1	oewn
+oewn-amiodarone-n	amiodarone	n	0	1	1	oewn
+oewn-amir-n	amir	n	0	1	1	oewn
+oewn-amiss-a	amiss	a	0	1	1	oewn
+oewn-amiss-r	amiss	r	0	1	1	oewn
+oewn-amitosis-n	amitosis	n	0	1	1	oewn
+oewn-amitotic-a	amitotic	a	0	1	1	oewn
+oewn-amitriptyline-n	amitriptyline	n	0	1	1	oewn
+oewn-amitriptyline_hydrochloride-n	amitriptyline hydrochloride	n	0	2	2	oewn
+oewn-amity-n	amity	n	0	1	1	oewn
+oewn-amlodipine_besylate-n	amlodipine besylate	n	0	2	2	oewn
+oewn-ammeter-n	ammeter	n	0	1	1	oewn
+oewn-ammine-n	ammine	n	0	1	1	oewn
+oewn-ammino-a	ammino	a	0	1	1	oewn
+oewn-ammo-n	ammo	n	0	1	1	oewn
+oewn-ammobium-n	ammobium	n	0	1	1	oewn
+oewn-ammonal-n	ammonal	n	0	1	1	oewn
+oewn-ammonia-n	ammonia	n	0	1	1	oewn
+oewn-ammonia_alum-n	ammonia alum	n	0	2	2	oewn
+oewn-ammonia_clock-n	ammonia clock	n	0	2	2	oewn
+oewn-ammonia_water-n	ammonia water	n	0	2	2	oewn
+oewn-ammoniac-a	ammoniac	a	0	1	1	oewn
+oewn-ammoniac-n	ammoniac	n	0	1	1	oewn
+oewn-ammoniacal-a	ammoniacal	a	0	1	1	oewn
+oewn-ammoniate-v	ammoniate	v	0	1	1	oewn
+oewn-ammoniated-a	ammoniated	a	0	1	1	oewn
+oewn-ammonification-n	ammonification	n	0	1	1	oewn
+oewn-ammonify-v	ammonify	v	0	1	1	oewn
+oewn-ammonite-n	ammonite	n	0	1	1	oewn
+oewn-ammonitic-a	ammonitic	a	0	1	1	oewn
+oewn-ammonium-n	ammonium	n	0	1	1	oewn
+oewn-ammonium_alum-n	ammonium alum	n	0	2	2	oewn
+oewn-ammonium_carbamate-n	ammonium carbamate	n	0	2	2	oewn
+oewn-ammonium_carbonate-n	ammonium carbonate	n	0	2	2	oewn
+oewn-ammonium_chloride-n	ammonium chloride	n	0	2	2	oewn
+oewn-ammonium_hydroxide-n	ammonium hydroxide	n	0	2	2	oewn
+oewn-ammonium_ion-n	ammonium ion	n	0	2	2	oewn
+oewn-ammonium_nitrate-n	ammonium nitrate	n	0	2	2	oewn
+oewn-ammonium_nitrate-sl-fuel_oil-n	ammonium nitrate/fuel oil	n	0	3	3	oewn
+oewn-ammonium_salt-n	ammonium salt	n	0	2	2	oewn
+oewn-ammoniuria-n	ammoniuria	n	0	1	1	oewn
+oewn-ammonoid-n	ammonoid	n	0	1	1	oewn
+oewn-ammunition-n	ammunition	n	0	1	1	oewn
+oewn-ammunition_chest-n	ammunition chest	n	0	2	2	oewn
+oewn-amnesia-n	amnesia	n	0	1	1	oewn
+oewn-amnesiac-a	amnesiac	a	0	1	1	oewn
+oewn-amnesiac-n	amnesiac	n	0	1	1	oewn
+oewn-amnesic-a	amnesic	a	0	1	1	oewn
+oewn-amnesic-n	amnesic	n	0	1	1	oewn
+oewn-amnesic_aphasia-n	amnesic aphasia	n	0	2	2	oewn
+oewn-amnestic-a	amnestic	a	0	1	1	oewn
+oewn-amnestic_aphasia-n	amnestic aphasia	n	0	2	2	oewn
+oewn-amnesty-n	amnesty	n	0	1	1	oewn
+oewn-amnesty-v	amnesty	v	0	1	1	oewn
+oewn-amnic-a	amnic	a	0	1	1	oewn
+oewn-amnio-n	amnio	n	0	1	1	oewn
+oewn-amniocentesis-n	amniocentesis	n	0	1	1	oewn
+oewn-amnion-n	amnion	n	0	1	1	oewn
+oewn-amnionic-a	amnionic	a	0	1	1	oewn
+oewn-amnionic_fluid-n	amnionic fluid	n	0	2	2	oewn
+oewn-amnios-n	amnios	n	0	1	1	oewn
+oewn-amniote-n	amniote	n	0	1	1	oewn
+oewn-amniotic-a	amniotic	a	0	1	1	oewn
+oewn-amniotic_cavity-n	amniotic cavity	n	0	2	2	oewn
+oewn-amniotic_fluid-n	amniotic fluid	n	0	2	2	oewn
+oewn-amniotic_sac-n	amniotic sac	n	0	2	2	oewn
+oewn-amobarbital-n	amobarbital	n	0	1	1	oewn
+oewn-amobarbital_sodium-n	amobarbital sodium	n	0	2	2	oewn
+oewn-amoeba-n	amoeba	n	0	1	1	oewn
+oewn-amoeban-a	amoeban	a	0	1	1	oewn
+oewn-amoebiasis-n	amoebiasis	n	0	1	1	oewn
+oewn-amoebic-a	amoebic	a	0	1	1	oewn
+oewn-amoebic_dysentery-n	amoebic dysentery	n	0	2	2	oewn
+oewn-amoebiosis-n	amoebiosis	n	0	1	1	oewn
+oewn-amoeboid-a	amoeboid	a	0	1	1	oewn
+oewn-amoebous-a	amoebous	a	0	1	1	oewn
+oewn-amok-a	amok	a	0	1	1	oewn
+oewn-amok-r	amok	r	0	1	1	oewn
+oewn-amora-n	amora	n	0	1	1	oewn
+oewn-amoralism-n	amoralism	n	0	1	1	oewn
+oewn-amoralist-n	amoralist	n	0	1	1	oewn
+oewn-amorality-n	amorality	n	0	1	1	oewn
+oewn-amorally-r	amorally	r	0	1	1	oewn
+oewn-amorist-n	amorist	n	0	1	1	oewn
+oewn-amoristic-a	amoristic	a	0	1	1	oewn
+oewn-amorous-a	amorous	a	0	1	1	oewn
+oewn-amorously-r	amorously	r	0	1	1	oewn
+oewn-amorousness-n	amorousness	n	0	1	1	oewn
+oewn-amorpha-n	amorpha	n	0	1	1	oewn
+oewn-amorphophallus-n	amorphophallus	n	0	1	1	oewn
+oewn-amorphous-a	amorphous	a	0	1	1	oewn
+oewn-amorphous_shape-n	amorphous shape	n	0	2	2	oewn
+oewn-amort-a	amort	a	0	1	1	oewn
+oewn-amortisation-n	amortisation	n	0	1	1	oewn
+oewn-amortise-v	amortise	v	0	1	1	oewn
+oewn-amortization-n	amortization	n	0	1	1	oewn
+oewn-amortize-v	amortize	v	0	1	1	oewn
+oewn-amount-n	amount	n	0	1	1	oewn
+oewn-amount-v	amount	v	0	1	1	oewn
+oewn-amount_of_money-n	amount of money	n	0	3	1	oewn
+oewn-amour-n	amour	n	0	1	1	oewn
+oewn-amour_propre-n	amour propre	n	0	2	2	oewn
+oewn-amoxicillin-n	amoxicillin	n	0	1	1	oewn
+oewn-amp-n	amp	n	0	1	1	oewn
+oewn-amperage-n	amperage	n	0	1	1	oewn
+oewn-ampere-hour-n	ampere-hour	n	0	1	1	oewn
+oewn-ampere-minute-n	ampere-minute	n	0	1	1	oewn
+oewn-ampere-n	ampere	n	0	1	1	oewn
+oewn-ampere-second-n	ampere-second	n	0	1	1	oewn
+oewn-ampere-turn-n	ampere-turn	n	0	1	1	oewn
+oewn-ampersand-n	ampersand	n	0	1	1	oewn
+oewn-amphetamine-n	amphetamine	n	0	1	1	oewn
+oewn-amphetamine_sulfate-n	amphetamine sulfate	n	0	2	2	oewn
+oewn-amphetamine_sulphate-n	amphetamine sulphate	n	0	2	2	oewn
+oewn-amphibian-a	amphibian	a	0	1	1	oewn
+oewn-amphibian-n	amphibian	n	0	1	1	oewn
+oewn-amphibian_family-n	amphibian family	n	0	2	2	oewn
+oewn-amphibian_genus-n	amphibian genus	n	0	2	2	oewn
+oewn-amphibiotic-a	amphibiotic	a	0	1	1	oewn
+oewn-amphibious-a	amphibious	a	0	1	1	oewn
+oewn-amphibious_aircraft-n	amphibious aircraft	n	0	2	2	oewn
+oewn-amphibious_assault-n	amphibious assault	n	0	2	2	oewn
+oewn-amphibious_demonstration-n	amphibious demonstration	n	0	2	2	oewn
+oewn-amphibious_landing-n	amphibious landing	n	0	2	2	oewn
+oewn-amphibious_operation-n	amphibious operation	n	0	2	2	oewn
+oewn-amphibious_vehicle-n	amphibious vehicle	n	0	2	2	oewn
+oewn-amphibole-n	amphibole	n	0	1	1	oewn
+oewn-amphibole_group-n	amphibole group	n	0	2	2	oewn
+oewn-amphibolite-n	amphibolite	n	0	1	1	oewn
+oewn-amphibology-n	amphibology	n	0	1	1	oewn
+oewn-amphiboly-n	amphiboly	n	0	1	1	oewn
+oewn-amphibrach-n	amphibrach	n	0	1	1	oewn
+oewn-amphictyony-n	amphictyony	n	0	1	1	oewn
+oewn-amphidiploid-n	amphidiploid	n	0	1	1	oewn
+oewn-amphidiploidy-n	amphidiploidy	n	0	1	1	oewn
+oewn-amphigory-n	amphigory	n	0	1	1	oewn
+oewn-amphimixis-n	amphimixis	n	0	1	1	oewn
+oewn-amphioxus-n	amphioxus	n	0	1	1	oewn
+oewn-amphipod-n	amphipod	n	0	1	1	oewn
+oewn-amphiprostylar-a	amphiprostylar	a	0	1	1	oewn
+oewn-amphiprostyle-a	amphiprostyle	a	0	1	1	oewn
+oewn-amphiprotic-a	amphiprotic	a	0	1	1	oewn
+oewn-amphisbaena-n	amphisbaena	n	0	1	1	oewn
+oewn-amphistylar-a	amphistylar	a	0	1	1	oewn
+oewn-amphitheater-n	amphitheater	n	0	1	1	oewn
+oewn-amphitheatre-n	amphitheatre	n	0	1	1	oewn
+oewn-amphitheatric-a	amphitheatric	a	0	1	1	oewn
+oewn-amphitheatrical-a	amphitheatrical	a	0	1	1	oewn
+oewn-amphitropous-a	amphitropous	a	0	1	1	oewn
+oewn-amphitropous_ovule-n	amphitropous ovule	n	0	2	2	oewn
+oewn-amphiuma-n	amphiuma	n	0	1	1	oewn
+oewn-ampholyte-n	ampholyte	n	0	1	1	oewn
+oewn-amphora-n	amphora	n	0	1	1	oewn
+oewn-amphoric-a	amphoric	a	0	1	1	oewn
+oewn-amphoteric-a	amphoteric	a	0	1	1	oewn
+oewn-amphoteric_electrolyte-n	amphoteric electrolyte	n	0	2	2	oewn
+oewn-amphotericin-n	amphotericin	n	0	1	1	oewn
+oewn-ampicillin-n	ampicillin	n	0	1	1	oewn
+oewn-ample-a	ample	a	0	1	1	oewn
+oewn-ampleness-n	ampleness	n	0	1	1	oewn
+oewn-amplexicaul_leaf-n	amplexicaul leaf	n	0	2	2	oewn
+oewn-amplification-n	amplification	n	0	1	1	oewn
+oewn-amplifier-n	amplifier	n	0	1	1	oewn
+oewn-amplify-v	amplify	v	0	1	1	oewn
+oewn-amplitude-n	amplitude	n	0	1	1	oewn
+oewn-amplitude_distortion-n	amplitude distortion	n	0	2	2	oewn
+oewn-amplitude_level-n	amplitude level	n	0	2	2	oewn
+oewn-amplitude_modulation-n	amplitude modulation	n	0	2	2	oewn
+oewn-amply-r	amply	r	0	1	1	oewn
+oewn-ampoule-n	ampoule	n	0	1	1	oewn
+oewn-ampul-n	ampul	n	0	1	1	oewn
+oewn-ampule-n	ampule	n	0	1	1	oewn
+oewn-ampulla-n	ampulla	n	0	1	1	oewn
+oewn-ampullar-a	ampullar	a	0	1	1	oewn
+oewn-ampullary-a	ampullary	a	0	1	1	oewn
+oewn-amputate-v	amputate	v	0	1	1	oewn
+oewn-amputation-n	amputation	n	0	1	1	oewn
+oewn-amputator-n	amputator	n	0	1	1	oewn
+oewn-amputee-n	amputee	n	0	1	1	oewn
+oewn-amrinone-n	amrinone	n	0	1	1	oewn
+oewn-amuck-a	amuck	a	0	1	1	oewn
+oewn-amuck-r	amuck	r	0	1	1	oewn
+oewn-amulet-n	amulet	n	0	1	1	oewn
+oewn-amuse-v	amuse	v	0	1	1	oewn
+oewn-amused-a	amused	a	0	1	1	oewn
+oewn-amusement-n	amusement	n	0	1	1	oewn
+oewn-amusement_arcade-n	amusement arcade	n	0	2	2	oewn
+oewn-amusement_park-n	amusement park	n	0	2	2	oewn
+oewn-amusing-a	amusing	a	0	1	1	oewn
+oewn-amusingly-r	amusingly	r	0	1	1	oewn
+oewn-amusive-a	amusive	a	0	1	1	oewn
+oewn-amygdala-n	amygdala	n	0	1	1	oewn
+oewn-amygdaliform-a	amygdaliform	a	0	1	1	oewn
+oewn-amygdalin-n	amygdalin	n	0	1	1	oewn
+oewn-amygdaline-a	amygdaline	a	0	1	1	oewn
+oewn-amygdaloid-a	amygdaloid	a	0	1	1	oewn
+oewn-amygdaloid-n	amygdaloid	n	0	1	1	oewn
+oewn-amygdaloid_nucleus-n	amygdaloid nucleus	n	0	2	2	oewn
+oewn-amygdaloidal-a	amygdaloidal	a	0	1	1	oewn
+oewn-amygdalotomy-n	amygdalotomy	n	0	1	1	oewn
+oewn-amyl-n	amyl	n	0	1	1	oewn
+oewn-amyl_alcohol-n	amyl alcohol	n	0	2	2	oewn
+oewn-amyl_nitrite-n	amyl nitrite	n	0	2	2	oewn
+oewn-amylaceous-a	amylaceous	a	0	1	1	oewn
+oewn-amylase-n	amylase	n	0	1	1	oewn
+oewn-amyloid-a	amyloid	a	0	1	1	oewn
+oewn-amyloid-n	amyloid	n	0	1	1	oewn
+oewn-amyloid_plaque-n	amyloid plaque	n	0	2	2	oewn
+oewn-amyloid_protein_plaque-n	amyloid protein plaque	n	0	3	3	oewn
+oewn-amyloidal-a	amyloidal	a	0	1	1	oewn
+oewn-amyloidosis-n	amyloidosis	n	0	1	1	oewn
+oewn-amylolysis-n	amylolysis	n	0	1	1	oewn
+oewn-amylolytic-a	amylolytic	a	0	1	1	oewn
+oewn-amylum-n	amylum	n	0	1	1	oewn
+oewn-amyotonia-n	amyotonia	n	0	1	1	oewn
+oewn-amyotrophia-n	amyotrophia	n	0	1	1	oewn
+oewn-amyotrophic_lateral_sclerosis-n	amyotrophic lateral sclerosis	n	0	3	3	oewn
+oewn-amyotrophy-n	amyotrophy	n	0	1	1	oewn
+oewn-amyxia-n	amyxia	n	0	1	1	oewn

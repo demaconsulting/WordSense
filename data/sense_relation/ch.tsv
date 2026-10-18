@@ -1,0 +1,890 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-cha--cha__1.04.00..	derivation		oewn-cha--cha__2.38.00..
+oewn-chadian__1.18.00..	derivation		oewn-chadian__3.01.00..
+oewn-chaeta__1.05.00..	derivation		oewn-chaetal__3.01.00..
+oewn-chaetal__3.01.00..	pertainym		oewn-chaeta__1.05.00..
+oewn-chafe__1.26.00..	derivation		oewn-chafe__2.30.00..
+oewn-chafe__1.26.00..	derivation		oewn-chafe__2.35.00..
+oewn-chafe__1.26.00..	derivation		oewn-chafe__2.35.01..
+oewn-chafe__1.26.00..	derivation		oewn-chafe__2.39.00..
+oewn-chafe__2.30.00..	other	result	oewn-chafe__1.26.00..
+oewn-chafe__2.35.00..	other	result	oewn-chafe__1.26.00..
+oewn-chafe__2.35.01..	other	result	oewn-chafe__1.26.00..
+oewn-chafe__2.39.00..	other	result	oewn-chafe__1.26.00..
+oewn-chaff__1.06.00..	derivation		oewn-chaffy__3.01.00..
+oewn-chaff__1.27.00..	derivation		oewn-chaffy__3.01.00..
+oewn-chafflike__3.01.00..	pertainym		oewn-chaff__1.27.00..
+oewn-chaffy__3.01.00..	pertainym		oewn-chaff__1.27.00..
+oewn-chagrin__1.12.00..	derivation		oewn-chagrin__2.37.01..
+oewn-chagrin__2.37.01..	other	state	oewn-chagrin__1.12.00..
+oewn-chain--smoke__2.34.00..	derivation		oewn-chain--smoker__1.18.00..
+oewn-chain--smoke__2.34.00..	other	agent	oewn-chain--smoker__1.18.00..
+oewn-chain__1.06.00..	derivation		oewn-chain__2.35.00..
+oewn-chain__2.35.00..	antonym		oewn-unchain__2.35.00..
+oewn-chain__2.35.00..	other	by_means_of	oewn-chain__1.06.00..
+oewn-chain_armor__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-chain_armour__1.06.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chain_armour__1.06.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chain_armour__1.06.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-chair__1.18.00..	derivation		oewn-chair__2.32.00..
+oewn-chair__1.18.00..	derivation		oewn-chair__2.41.00..
+oewn-chair__2.32.00..	other	agent	oewn-chair__1.18.00..
+oewn-chair__2.41.00..	other	agent	oewn-chair__1.18.00..
+oewn-chairman__1.18.01..	derivation		oewn-chairman__2.41.00..
+oewn-chairman__1.18.01..	derivation		oewn-chairmanship__1.04.00..
+oewn-chairman__2.41.00..	other	agent	oewn-chairman__1.18.01..
+oewn-chaldaean__1.18.00..	derivation		oewn-chaldaean__3.01.00..
+oewn-chaldean__1.18.00..	derivation		oewn-chaldean__3.01.00..
+oewn-chaldee__1.18.00..	derivation		oewn-chaldee__3.01.00..
+oewn-chalk__1.06.00..	derivation		oewn-chalk__2.36.00..
+oewn-chalk__1.06.00..	derivation		oewn-chalky__3.01.00..
+oewn-chalk__1.07.00..	derivation		oewn-chalky__5.00.00.achromatic.00
+oewn-chalk__1.27.00..	derivation		oewn-chalky__5.00.00.achromatic.00
+oewn-chalk__2.36.00..	other	instrument	oewn-chalk__1.06.00..
+oewn-chalky__3.01.00..	pertainym		oewn-calcium_carbonate__1.27.00..
+oewn-challenge__1.10.00..	derivation		oewn-challenge__2.32.00..
+oewn-challenge__1.10.01..	derivation		oewn-challenge__2.32.01..
+oewn-challenge__1.10.02..	derivation		oewn-challenge__2.32.02..
+oewn-challenge__1.10.03..	derivation		oewn-challenge__2.32.03..
+oewn-challenge__2.32.00..	derivation		oewn-challenger__1.18.00..
+oewn-challenge__2.32.00..	other	agent	oewn-challenger__1.18.00..
+oewn-challenge__2.32.00..	other	event	oewn-challenge__1.10.00..
+oewn-challenge__2.32.01..	derivation		oewn-challengeable__5.00.00.contestable.00
+oewn-challenge__2.32.01..	other	event	oewn-challenge__1.10.01..
+oewn-challenge__2.32.02..	other	event	oewn-challenge__1.10.02..
+oewn-challenge__2.32.03..	other	event	oewn-challenge__1.10.03..
+oewn-chalybeate__3.01.00..	pertainym		oewn-iron__1.27.00..
+oewn-chamber__1.06.00..	derivation		oewn-chamber__2.42.00..
+oewn-chamber__1.06.02..	derivation		oewn-chamber__2.42.00..
+oewn-chamber__2.42.00..	other	location	oewn-chamber__1.06.00..
+oewn-chamber__2.42.00..	other	location	oewn-chamber__1.06.02..
+oewn-chamfer__1.06.00..	derivation		oewn-chamfer__2.35.00..
+oewn-chamfer__1.06.00..	derivation		oewn-chamfer__2.35.01..
+oewn-chamfer__2.35.00..	other	location	oewn-chamfer__1.06.00..
+oewn-chamfer__2.35.00..	other	result	oewn-chamfer__1.06.00..
+oewn-chamfer__2.35.01..	other	location	oewn-chamfer__1.06.00..
+oewn-chamfer__2.35.01..	other	result	oewn-chamfer__1.06.00..
+oewn-champion__1.18.00..	derivation		oewn-champion__2.33.00..
+oewn-champion__1.18.02..	derivation		oewn-champion__2.33.00..
+oewn-champion__2.33.00..	other	agent	oewn-champion__1.18.00..
+oewn-champion__2.33.00..	other	agent	oewn-champion__1.18.02..
+oewn-chance__1.04.00..	derivation		oewn-chance__2.41.00..
+oewn-chance__1.04.00..	derivation		oewn-chancy__5.00.00.dangerous.00
+oewn-chance__1.19.00..	derivation		oewn-chance__2.41.01..
+oewn-chance__1.26.00..	derivation		oewn-chance__2.41.01..
+oewn-chance__2.41.00..	other	event	oewn-chance__1.04.00..
+oewn-chance__2.41.01..	other	event	oewn-chance__1.19.00..
+oewn-chance__2.41.01..	other	event	oewn-chance__1.26.00..
+oewn-chancellor__1.18.00..	derivation		oewn-chancellorship__1.04.00..
+oewn-chancellor__1.18.01..	derivation		oewn-chancellorship__1.04.00..
+oewn-chancre__1.26.00..	derivation		oewn-chancrous__3.01.00..
+oewn-chancroid__1.26.00..	derivation		oewn-chancroidal__3.01.00..
+oewn-chancroidal__3.01.00..	pertainym		oewn-chancroid__1.26.00..
+oewn-chancrous__3.01.00..	pertainym		oewn-chancre__1.26.00..
+oewn-change__1.04.00..	derivation		oewn-change__2.30.01..
+oewn-change__1.04.00..	derivation		oewn-change__2.30.02..
+oewn-change__1.06.00..	derivation		oewn-change__2.30.03..
+oewn-change__1.06.01..	derivation		oewn-change__2.30.00..
+oewn-change__1.06.01..	derivation		oewn-change__2.30.01..
+oewn-change__1.06.01..	derivation		oewn-change__2.30.02..
+oewn-change__1.11.00..	derivation		oewn-change__2.30.00..
+oewn-change__1.11.00..	derivation		oewn-change__2.30.01..
+oewn-change__1.11.00..	derivation		oewn-change__2.30.02..
+oewn-change__1.19.00..	derivation		oewn-change__2.30.00..
+oewn-change__1.19.00..	derivation		oewn-change__2.30.01..
+oewn-change__1.19.00..	derivation		oewn-change__2.30.02..
+oewn-change__1.24.00..	derivation		oewn-change__2.30.01..
+oewn-change__1.24.00..	derivation		oewn-change__2.30.02..
+oewn-change__2.30.00..	antonym		oewn-stay__2.30.00..
+oewn-change__2.30.00..	other	event	oewn-change__1.11.00..
+oewn-change__2.30.00..	other	event	oewn-change__1.19.00..
+oewn-change__2.30.00..	other	result	oewn-change__1.06.01..
+oewn-change__2.30.01..	derivation		oewn-changer__1.18.00..
+oewn-change__2.30.01..	other	agent	oewn-changer__1.18.00..
+oewn-change__2.30.01..	other	event	oewn-change__1.04.00..
+oewn-change__2.30.01..	other	event	oewn-change__1.11.00..
+oewn-change__2.30.01..	other	property	oewn-change__1.24.00..
+oewn-change__2.30.01..	other	result	oewn-change__1.06.01..
+oewn-change__2.30.01..	other	result	oewn-change__1.19.00..
+oewn-change__2.30.02..	other	event	oewn-change__1.04.00..
+oewn-change__2.30.02..	other	event	oewn-change__1.11.00..
+oewn-change__2.30.02..	other	property	oewn-change__1.24.00..
+oewn-change__2.30.02..	other	result	oewn-change__1.06.01..
+oewn-change__2.30.02..	other	result	oewn-change__1.19.00..
+oewn-change__2.30.03..	other	undergoer	oewn-change__1.06.00..
+oewn-change_over__2.30.02..	derivation		oewn-changeover__1.11.00..
+oewn-change_over__2.30.02..	other	event	oewn-changeover__1.11.00..
+oewn-changeability__1.07.00..	derivation		oewn-changeable__3.00.04..
+oewn-changeability__1.07.00..	derivation		oewn-changeable__5.00.00.variable.00
+oewn-changeable__3.00.00..	antonym		oewn-unchangeable__3.00.00..
+oewn-changeable__3.00.00..	derivation		oewn-changeableness__1.07.00..
+oewn-changeable__3.00.04..	derivation		oewn-changeableness__1.07.00..
+oewn-changeable__5.00.00.colorful.00	derivation		oewn-changeableness__1.07.00..
+oewn-changeable__5.00.00.variable.00	derivation		oewn-changeableness__1.07.00..
+oewn-changeableness__1.07.00..	antonym		oewn-changelessness__1.07.00..
+oewn-changed__3.00.00..	antonym		oewn-unchanged__3.00.00..
+oewn-changeful__3.00.00..	derivation		oewn-changefulness__1.07.00..
+oewn-changeless__3.00.04..	derivation		oewn-changelessness__1.07.00..
+oewn-changeless__5.00.00.invariable.00	derivation		oewn-changelessness__1.07.01..
+oewn-changeless__5.00.00.unchangeable.00	derivation		oewn-changelessness__1.07.00..
+oewn-channel__1.06.00..	derivation		oewn-channelize__2.35.01..
+oewn-channel__1.08.00..	derivation		oewn-channelize__2.35.00..
+oewn-channel__1.10.00..	derivation		oewn-channel__2.38.01..
+oewn-channel__1.10.00..	derivation		oewn-channelize__2.35.00..
+oewn-channel__1.10.01..	derivation		oewn-channel__2.35.00..
+oewn-channel__1.10.01..	derivation		oewn-channel__2.38.00..
+oewn-channel__1.10.01..	derivation		oewn-channel__2.38.01..
+oewn-channel__1.10.01..	derivation		oewn-channelize__2.35.00..
+oewn-channel__2.35.00..	derivation		oewn-channelisation__1.04.00..
+oewn-channel__2.35.00..	derivation		oewn-channelization__1.04.00..
+oewn-channel__2.35.00..	other	by_means_of	oewn-channel__1.10.01..
+oewn-channel__2.35.00..	other	event	oewn-channelisation__1.04.00..
+oewn-channel__2.35.00..	other	event	oewn-channelization__1.04.00..
+oewn-channel__2.38.00..	derivation		oewn-channelisation__1.04.00..
+oewn-channel__2.38.00..	derivation		oewn-channelization__1.04.00..
+oewn-channel__2.38.00..	other	by_means_of	oewn-channel__1.10.01..
+oewn-channel__2.38.00..	other	event	oewn-channelisation__1.04.00..
+oewn-channel__2.38.00..	other	event	oewn-channelization__1.04.00..
+oewn-channel__2.38.01..	other	by_means_of	oewn-channel__1.10.00..
+oewn-channel__2.38.01..	other	by_means_of	oewn-channel__1.10.01..
+oewn-channelisation__1.04.00..	derivation		oewn-channelise__2.35.00..
+oewn-channelisation__1.04.00..	derivation		oewn-channelise__2.38.03..
+oewn-channelisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-channelisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-channelise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-channelise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-channelise__2.35.00..	other	event	oewn-channelisation__1.04.00..
+oewn-channelise__2.35.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-channelise__2.35.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-channelise__2.36.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-channelise__2.36.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-channelise__2.38.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-channelise__2.38.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-channelise__2.38.03..	other	event	oewn-channelisation__1.04.00..
+oewn-channelization__1.04.00..	derivation		oewn-channelize__2.35.00..
+oewn-channelization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-channelize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-channelize__2.35.00..	other	event	oewn-channelization__1.04.00..
+oewn-channelize__2.35.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-channelize__2.36.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-channelize__2.38.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-chant__1.10.00..	derivation		oewn-chant__2.32.00..
+oewn-chant__1.10.00..	derivation		oewn-chant__2.32.01..
+oewn-chant__2.32.00..	derivation		oewn-chanter__1.06.00..
+oewn-chant__2.32.00..	derivation		oewn-chanting__1.04.00..
+oewn-chant__2.32.00..	other	instrument	oewn-chanter__1.06.00..
+oewn-chant__2.32.00..	other	undergoer	oewn-chant__1.10.00..
+oewn-chant__2.32.01..	other	undergoer	oewn-chant__1.10.00..
+oewn-chaos__1.09.00..	derivation		oewn-chaotic__3.01.00..
+oewn-chaos__1.26.00..	derivation		oewn-chaotic__5.00.00.wild.02
+oewn-chaotic__3.01.00..	pertainym		oewn-chaos__1.09.00..
+oewn-chaotically__4.02.00..	pertainym		oewn-chaotic__5.00.00.disorganized.00
+oewn-chaotically__4.02.01..	pertainym		oewn-chaotic__5.00.00.wild.02
+oewn-chap__1.17.00..	derivation		oewn-chap__2.30.00..
+oewn-chap__2.30.00..	other	result	oewn-chap__1.17.00..
+oewn-chaperon__1.18.00..	derivation		oewn-chaperon__2.38.00..
+oewn-chaperon__2.38.00..	other	agent	oewn-chaperon__1.18.00..
+oewn-chaperone__1.18.00..	derivation		oewn-chaperone__2.38.00..
+oewn-chaperone__2.38.00..	other	agent	oewn-chaperone__1.18.00..
+oewn-chaplain__1.18.00..	derivation		oewn-chaplainship__1.04.00..
+oewn-char__1.27.00..	derivation		oewn-char__2.43.00..
+oewn-char__2.43.00..	other	result	oewn-char__1.27.00..
+oewn-character__1.09.00..	derivation		oewn-characterise__2.32.00..
+oewn-character__1.09.00..	derivation		oewn-characterise__2.42.01..
+oewn-character__1.09.00..	derivation		oewn-characteristic__3.00.00..
+oewn-character__1.09.00..	derivation		oewn-characterize__2.32.00..
+oewn-character__1.09.00..	derivation		oewn-characterize__2.42.01..
+oewn-character__1.10.00..	derivation		oewn-character__2.35.00..
+oewn-character__1.10.01..	derivation		oewn-characterise__2.32.00..
+oewn-character__2.35.00..	other	undergoer	oewn-character__1.10.00..
+oewn-characterisation__1.10.00..	derivation		oewn-characterise__2.32.00..
+oewn-characterisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-characterisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-characterisation__1.10.01..	derivation		oewn-characterise__2.32.00..
+oewn-characterisation__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-characterisation__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-characterise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-characterise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-characterise__2.32.00..	other	event	oewn-characterisation__1.10.00..
+oewn-characterise__2.32.00..	other	event	oewn-characterisation__1.10.01..
+oewn-characterise__2.32.00..	other	state	oewn-character__1.09.00..
+oewn-characterise__2.42.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-characterise__2.42.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-characterise__2.42.01..	other	state	oewn-character__1.09.00..
+oewn-characteristic__1.07.00..	derivation		oewn-characteristic__3.00.00..
+oewn-characteristic__3.00.00..	antonym		oewn-uncharacteristic__3.00.00..
+oewn-characteristically__4.02.00..	antonym		oewn-uncharacteristically__4.02.00..
+oewn-characteristically__4.02.00..	pertainym		oewn-characteristic__3.00.00..
+oewn-characterization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-characterization__1.10.01..	derivation		oewn-characterize__2.32.00..
+oewn-characterization__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-characterize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-characterize__2.32.00..	other	event	oewn-characterization__1.10.01..
+oewn-characterize__2.32.00..	other	state	oewn-character__1.09.00..
+oewn-characterize__2.42.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-characterize__2.42.01..	other	state	oewn-character__1.09.00..
+oewn-charcoal__1.06.00..	derivation		oewn-charcoal__2.36.00..
+oewn-charcoal__1.06.01..	derivation		oewn-charcoal__2.36.00..
+oewn-charcoal__1.07.00..	derivation		oewn-charcoal__5.00.00.achromatic.00
+oewn-charcoal__2.36.00..	other	instrument	oewn-charcoal__1.06.00..
+oewn-charcoal__2.36.00..	other	result	oewn-charcoal__1.06.01..
+oewn-charge__1.04.00..	derivation		oewn-charge__2.41.00..
+oewn-charge__1.04.01..	derivation		oewn-charge__2.33.00..
+oewn-charge__1.04.03..	derivation		oewn-charge__2.32.01..
+oewn-charge__1.04.03..	derivation		oewn-charge__2.32.11..
+oewn-charge__1.04.03..	derivation		oewn-charge__2.41.00..
+oewn-charge__1.06.00..	derivation		oewn-charge__2.35.02..
+oewn-charge__1.06.01..	derivation		oewn-charge__2.36.00..
+oewn-charge__1.10.00..	derivation		oewn-charge__2.32.00..
+oewn-charge__1.10.00..	derivation		oewn-charge__2.32.02..
+oewn-charge__1.10.01..	derivation		oewn-charge__2.32.12..
+oewn-charge__1.10.01..	derivation		oewn-charge__2.41.00..
+oewn-charge__1.10.03..	derivation		oewn-charge__2.40.01..
+oewn-charge__1.10.03..	derivation		oewn-charge__2.40.02..
+oewn-charge__1.10.03..	derivation		oewn-charge__2.40.03..
+oewn-charge__1.10.04..	derivation		oewn-charge__2.32.02..
+oewn-charge__1.10.04..	derivation		oewn-charge__2.32.03..
+oewn-charge__1.12.00..	derivation		oewn-charge__2.37.05..
+oewn-charge__1.18.00..	derivation		oewn-charge__2.40.04..
+oewn-charge__1.18.00..	derivation		oewn-charge__2.41.00..
+oewn-charge__1.19.00..	derivation		oewn-charge__2.30.00..
+oewn-charge__1.19.00..	derivation		oewn-charge__2.30.03..
+oewn-charge__1.21.01..	derivation		oewn-charge__2.40.02..
+oewn-charge__1.21.02..	derivation		oewn-charge__2.31.12..
+oewn-charge__1.21.02..	derivation		oewn-charge__2.40.02..
+oewn-charge__1.21.02..	derivation		oewn-charge__2.40.03..
+oewn-charge__2.30.00..	derivation		oewn-charger__1.06.00..
+oewn-charge__2.30.00..	other	instrument	oewn-charger__1.06.00..
+oewn-charge__2.30.00..	other	property	oewn-charge__1.19.00..
+oewn-charge__2.30.03..	other	property	oewn-charge__1.19.00..
+oewn-charge__2.31.12..	other	undergoer	oewn-charge__1.21.02..
+oewn-charge__2.32.00..	other	event	oewn-charge__1.10.00..
+oewn-charge__2.32.01..	other	event	oewn-charge__1.04.03..
+oewn-charge__2.32.02..	other	event	oewn-charge__1.10.00..
+oewn-charge__2.32.02..	other	event	oewn-charge__1.10.04..
+oewn-charge__2.32.03..	other	event	oewn-charge__1.10.04..
+oewn-charge__2.32.11..	other	event	oewn-charge__1.04.03..
+oewn-charge__2.32.12..	other	event	oewn-charge__1.10.01..
+oewn-charge__2.33.00..	derivation		oewn-charger__1.05.00..
+oewn-charge__2.33.00..	other	agent	oewn-charger__1.05.00..
+oewn-charge__2.33.00..	other	event	oewn-charge__1.04.01..
+oewn-charge__2.35.00..	antonym		oewn-discharge__2.35.01..
+oewn-charge__2.35.02..	other	uses	oewn-charge__1.06.00..
+oewn-charge__2.36.00..	other	undergoer	oewn-charge__1.06.01..
+oewn-charge__2.37.05..	other	event	oewn-charge__1.12.00..
+oewn-charge__2.40.01..	antonym		oewn-pay_cash__2.40.00..
+oewn-charge__2.40.01..	other	event	oewn-charge__1.10.03..
+oewn-charge__2.40.02..	other	event	oewn-charge__1.10.03..
+oewn-charge__2.40.02..	other	event	oewn-charge__1.21.01..
+oewn-charge__2.40.02..	other	undergoer	oewn-charge__1.21.02..
+oewn-charge__2.40.03..	other	event	oewn-charge__1.10.03..
+oewn-charge__2.40.03..	other	undergoer	oewn-charge__1.21.02..
+oewn-charge__2.40.04..	other	undergoer	oewn-charge__1.18.00..
+oewn-charge__2.41.00..	other	event	oewn-charge__1.04.00..
+oewn-charge__2.41.00..	other	event	oewn-charge__1.04.03..
+oewn-charge__2.41.00..	other	event	oewn-charge__1.10.01..
+oewn-charged__3.00.00..	antonym		oewn-uncharged__3.00.00..
+oewn-charily__4.02.00..	pertainym		oewn-chary__5.00.00.cautious.00
+oewn-chariness__1.07.00..	derivation		oewn-chary__5.00.00.cautious.00
+oewn-chariot__1.06.00..	derivation		oewn-chariot__2.38.00..
+oewn-chariot__1.06.00..	derivation		oewn-chariot__2.38.01..
+oewn-chariot__1.06.00..	derivation		oewn-charioteer__1.18.00..
+oewn-chariot__1.06.01..	derivation		oewn-chariot__2.38.00..
+oewn-chariot__1.06.01..	derivation		oewn-chariot__2.38.01..
+oewn-chariot__1.06.01..	derivation		oewn-charioteer__1.18.00..
+oewn-chariot__2.38.00..	derivation		oewn-charioteer__1.18.00..
+oewn-chariot__2.38.00..	other	agent	oewn-charioteer__1.18.00..
+oewn-chariot__2.38.00..	other	vehicle	oewn-chariot__1.06.00..
+oewn-chariot__2.38.00..	other	vehicle	oewn-chariot__1.06.01..
+oewn-chariot__2.38.01..	derivation		oewn-charioteer__1.18.00..
+oewn-chariot__2.38.01..	other	agent	oewn-charioteer__1.18.00..
+oewn-chariot__2.38.01..	other	vehicle	oewn-chariot__1.06.00..
+oewn-chariot__2.38.01..	other	vehicle	oewn-chariot__1.06.01..
+oewn-charisma__1.07.00..	derivation		oewn-charismatic__5.00.00.attractive.01
+oewn-charitable__3.00.00..	antonym		oewn-uncharitable__3.00.00..
+oewn-charitable__3.00.00..	derivation		oewn-charitableness__1.07.00..
+oewn-charitable__3.01.00..	derivation		oewn-charitableness__1.07.00..
+oewn-charitable__3.01.00..	pertainym		oewn-charity__1.04.00..
+oewn-charitable__5.00.00.kind.00	derivation		oewn-charitableness__1.07.00..
+oewn-charitably__4.02.00..	pertainym		oewn-charitable__3.00.00..
+oewn-charivari__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-charivari__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-charleston__1.04.00..	derivation		oewn-charleston__2.38.00..
+oewn-charm__1.06.00..	derivation		oewn-charm__2.33.00..
+oewn-charm__1.07.00..	derivation		oewn-charm__2.32.00..
+oewn-charm__1.07.00..	derivation		oewn-charm__2.37.00..
+oewn-charm__1.10.00..	derivation		oewn-charm__2.33.00..
+oewn-charm__1.10.00..	derivation		oewn-charm__2.41.00..
+oewn-charm__2.32.00..	other	by_means_of	oewn-charm__1.07.00..
+oewn-charm__2.33.00..	other	by_means_of	oewn-charm__1.06.00..
+oewn-charm__2.33.00..	other	by_means_of	oewn-charm__1.10.00..
+oewn-charm__2.37.00..	derivation		oewn-charmer__1.18.00..
+oewn-charm__2.37.00..	derivation		oewn-charmer__1.18.01..
+oewn-charm__2.37.00..	other	agent	oewn-charmer__1.18.00..
+oewn-charm__2.37.00..	other	agent	oewn-charmer__1.18.01..
+oewn-charm__2.37.00..	other	property	oewn-charm__1.07.00..
+oewn-charm__2.41.00..	other	by_means_of	oewn-charm__1.10.00..
+oewn-charmingly__4.02.00..	pertainym		oewn-charming__5.00.00.pleasing.00
+oewn-chart__1.06.00..	derivation		oewn-chart__2.31.13..
+oewn-chart__1.10.00..	derivation		oewn-chart__2.36.04..
+oewn-chart__1.10.00..	derivation		oewn-chartist__1.18.00..
+oewn-chart__2.31.13..	other	result	oewn-chart__1.06.00..
+oewn-chart__2.36.04..	derivation		oewn-chartist__1.18.00..
+oewn-chartaceous__3.01.00..	pertainym		oewn-paper__1.27.00..
+oewn-charter__1.10.00..	derivation		oewn-charter__2.41.00..
+oewn-charter__1.10.01..	derivation		oewn-charter__2.40.00..
+oewn-charter__1.10.01..	derivation		oewn-charter__2.41.01..
+oewn-charter__2.40.00..	other	by_means_of	oewn-charter__1.10.01..
+oewn-charter__2.41.00..	other	by_means_of	oewn-charter__1.10.00..
+oewn-charter__2.41.00..	other	undergoer	oewn-charter__1.10.00..
+oewn-charter__2.41.01..	other	by_means_of	oewn-charter__1.10.01..
+oewn-chartered__3.00.00..	antonym		oewn-unchartered__3.00.00..
+oewn-chartism__1.09.00..	derivation		oewn-chartist__1.18.01..
+oewn-chartreuse__1.07.00..	derivation		oewn-chartreuse__5.00.00.chromatic.00
+oewn-chase__1.04.00..	derivation		oewn-chase__2.38.00..
+oewn-chase__1.04.00..	derivation		oewn-chase__2.41.00..
+oewn-chase__2.38.00..	also		oewn-chase_away__2.38.00..
+oewn-chase__2.38.00..	derivation		oewn-chaser__1.13.00..
+oewn-chase__2.38.00..	derivation		oewn-chaser__1.18.00..
+oewn-chase__2.38.00..	other	agent	oewn-chaser__1.18.00..
+oewn-chase__2.38.00..	other	event	oewn-chase__1.04.00..
+oewn-chase__2.41.00..	other	event	oewn-chase__1.04.00..
+oewn-chasidic__3.01.00..	pertainym		oewn-chasidim__1.14.00..
+oewn-chasidic__3.01.00..	pertainym		oewn-chasidism__1.09.00..
+oewn-chasse__1.04.00..	derivation		oewn-chasse__2.38.00..
+oewn-chasse__2.38.00..	other	event	oewn-chasse__1.04.00..
+oewn-chassidic__3.01.00..	pertainym		oewn-chassidim__1.14.00..
+oewn-chassidic__3.01.00..	pertainym		oewn-chassidism__1.09.00..
+oewn-chaste__3.00.00..	antonym		oewn-unchaste__3.00.00..
+oewn-chaste__3.00.00..	derivation		oewn-chastity__1.07.00..
+oewn-chaste__5.00.00.moral.00	derivation		oewn-chastity__1.04.00..
+oewn-chaste__5.00.00.plain.01	derivation		oewn-chasteness__1.07.01..
+oewn-chastely__4.02.00..	pertainym		oewn-chaste__3.00.00..
+oewn-chastise__2.32.00..	derivation		oewn-chastisement__1.04.00..
+oewn-chastise__2.32.00..	derivation		oewn-chastisement__1.10.00..
+oewn-chastise__2.32.00..	other	event	oewn-chastisement__1.04.00..
+oewn-chastise__2.32.00..	other	event	oewn-chastisement__1.10.00..
+oewn-chat__1.10.00..	derivation		oewn-chat__2.32.00..
+oewn-chat__1.10.00..	derivation		oewn-chatty__5.00.00.communicative.00
+oewn-chat__2.32.00..	other	event	oewn-chat__1.10.00..
+oewn-chatter__1.10.00..	derivation		oewn-chatter__2.32.00..
+oewn-chatter__1.10.00..	derivation		oewn-chatter__2.32.01..
+oewn-chatter__1.11.00..	derivation		oewn-chatter__2.32.02..
+oewn-chatter__2.32.00..	derivation		oewn-chatterer__1.18.00..
+oewn-chatter__2.32.00..	other	agent	oewn-chatterer__1.18.00..
+oewn-chatter__2.32.00..	other	event	oewn-chatter__1.10.00..
+oewn-chatter__2.32.01..	derivation		oewn-chatterer__1.18.00..
+oewn-chatter__2.32.01..	other	agent	oewn-chatterer__1.18.00..
+oewn-chatter__2.32.01..	other	event	oewn-chatter__1.10.00..
+oewn-chatter__2.32.02..	derivation		oewn-chatterer__1.18.00..
+oewn-chatter__2.32.02..	derivation		oewn-chattering__1.11.00..
+oewn-chatter__2.32.02..	other	agent	oewn-chatterer__1.18.00..
+oewn-chatter__2.32.02..	other	event	oewn-chatter__1.11.00..
+oewn-chatter__2.35.00..	derivation		oewn-chattering__1.11.01..
+oewn-chattily__4.02.00..	pertainym		oewn-chatty__5.00.00.voluble.00
+oewn-chauffeur__1.18.00..	derivation		oewn-chauffeur__2.38.00..
+oewn-chauffeur__2.38.00..	other	agent	oewn-chauffeur__1.18.00..
+oewn-chauvinism__1.04.01..	derivation		oewn-chauvinist__1.18.01..
+oewn-chauvinism__1.07.00..	derivation		oewn-chauvinist__1.18.00..
+oewn-chauvinism__1.07.00..	derivation		oewn-chauvinistic__5.00.00.patriotic.00
+oewn-chauvinist__1.18.00..	derivation		oewn-chauvinistic__5.00.00.patriotic.00
+oewn-chauvinist__1.18.01..	derivation		oewn-chauvinistic__3.01.00..
+oewn-chauvinistic__3.01.00..	pertainym		oewn-chauvinist__1.18.00..
+oewn-chaw__1.13.00..	derivation		oewn-chaw__2.34.00..
+oewn-chaw__2.34.00..	other	undergoer	oewn-chaw__1.13.00..
+oewn-cheap__3.00.00..	antonym		oewn-expensive__3.00.00..
+oewn-cheap__3.00.00..	derivation		oewn-cheapness__1.07.00..
+oewn-cheap__5.00.00.inferior.02	derivation		oewn-cheapness__1.07.02..
+oewn-cheap__5.00.00.stingy.00	derivation		oewn-cheapness__1.07.02..
+oewn-cheap__5.00.00.tasteless.02	derivation		oewn-cheapness__1.07.02..
+oewn-cheaply__4.02.00..	pertainym		oewn-cheap__3.00.00..
+oewn-cheaply__4.02.01..	antonym		oewn-expensively__4.02.00..
+oewn-cheaply__4.02.01..	pertainym		oewn-cheap__3.00.00..
+oewn-cheaply__4.02.02..	pertainym		oewn-cheap__5.00.00.stingy.00
+oewn-cheat__1.04.00..	derivation		oewn-cheat__2.41.00..
+oewn-cheat__1.04.01..	derivation		oewn-cheat__2.33.00..
+oewn-cheat__1.18.00..	derivation		oewn-cheat__2.41.01..
+oewn-cheat__2.33.00..	derivation		oewn-cheater__1.18.00..
+oewn-cheat__2.33.00..	other	agent	oewn-cheater__1.18.00..
+oewn-cheat__2.33.00..	other	event	oewn-cheat__1.04.01..
+oewn-cheat__2.41.00..	derivation		oewn-cheater__1.18.00..
+oewn-cheat__2.41.00..	derivation		oewn-cheating__1.04.00..
+oewn-cheat__2.41.00..	other	agent	oewn-cheater__1.18.00..
+oewn-cheat__2.41.00..	other	event	oewn-cheat__1.04.00..
+oewn-cheat__2.41.01..	derivation		oewn-cheater__1.18.00..
+oewn-cheat__2.41.01..	derivation		oewn-cheating__1.04.00..
+oewn-cheat__2.41.01..	other	agent	oewn-cheat__1.18.00..
+oewn-cheat__2.41.01..	other	agent	oewn-cheater__1.18.00..
+oewn-check--in__1.04.00..	derivation		oewn-check_in__2.32.00..
+oewn-check__1.04.01..	derivation		oewn-check__2.41.02..
+oewn-check__1.04.01..	derivation		oewn-check__2.41.08..
+oewn-check__1.04.02..	derivation		oewn-check__2.41.14..
+oewn-check__1.04.05..	derivation		oewn-check__2.31.00..
+oewn-check__1.04.05..	derivation		oewn-check__2.31.02..
+oewn-check__1.04.05..	derivation		oewn-check__2.31.12..
+oewn-check__1.04.05..	derivation		oewn-check__2.32.10..
+oewn-check__1.04.05..	derivation		oewn-check__2.42.09..
+oewn-check__1.06.00..	derivation		oewn-check__2.36.00..
+oewn-check__1.07.00..	derivation		oewn-check__2.30.03..
+oewn-check__1.07.00..	derivation		oewn-check__2.30.09..
+oewn-check__1.09.00..	derivation		oewn-check__2.31.00..
+oewn-check__1.09.01..	derivation		oewn-check__2.31.02..
+oewn-check__1.09.01..	derivation		oewn-check__2.41.04..
+oewn-check__1.10.01..	derivation		oewn-check__2.31.01..
+oewn-check__1.10.01..	exemplifies		oewn-american_english__1.10.00..
+oewn-check__1.21.00..	derivation		oewn-check__2.32.07..
+oewn-check__1.21.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-check__1.26.00..	derivation		oewn-check__2.30.10..
+oewn-check__1.26.00..	derivation		oewn-check__2.38.15..
+oewn-check__2.30.03..	other	result	oewn-check__1.07.00..
+oewn-check__2.30.09..	other	uses	oewn-check__1.07.00..
+oewn-check__2.30.10..	other	state	oewn-check__1.26.00..
+oewn-check__2.31.00..	derivation		oewn-checker__1.18.00..
+oewn-check__2.31.00..	other	agent	oewn-checker__1.18.00..
+oewn-check__2.31.00..	other	event	oewn-check__1.04.05..
+oewn-check__2.31.00..	other	event	oewn-check__1.09.00..
+oewn-check__2.31.01..	other	uses	oewn-check__1.10.01..
+oewn-check__2.31.02..	other	event	oewn-check__1.04.05..
+oewn-check__2.31.12..	other	event	oewn-check__1.04.05..
+oewn-check__2.32.07..	other	undergoer	oewn-check__1.21.00..
+oewn-check__2.32.10..	other	event	oewn-check__1.04.05..
+oewn-check__2.38.15..	other	state	oewn-check__1.26.00..
+oewn-check__2.40.00..	derivation		oewn-checker__1.18.01..
+oewn-check__2.40.00..	other	agent	oewn-checker__1.18.01..
+oewn-check__2.41.02..	other	event	oewn-check__1.04.01..
+oewn-check__2.41.04..	other	result	oewn-check__1.09.01..
+oewn-check__2.41.08..	other	event	oewn-check__1.04.01..
+oewn-check__2.41.14..	other	event	oewn-check__1.04.02..
+oewn-check__2.42.09..	other	event	oewn-check__1.04.05..
+oewn-check_in__2.32.00..	antonym		oewn-check_out__2.32.00..
+oewn-check_out__2.31.00..	derivation		oewn-checkout__1.04.00..
+oewn-check_out__2.32.00..	derivation		oewn-checkout__1.28.00..
+oewn-check_out__2.40.00..	derivation		oewn-checkout__1.06.00..
+oewn-checked__5.00.00.patterned.00	exemplifies		oewn-american_english__1.10.00..
+oewn-checker__2.36.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-checkerboard__1.06.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-checkered__5.00.00.patterned.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-checking_account__1.21.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-checkmate__1.04.00..	derivation		oewn-checkmate__2.33.00..
+oewn-checkmate__2.33.00..	other	event	oewn-checkmate__1.04.00..
+oewn-cheek__1.07.00..	derivation		oewn-cheek__2.32.00..
+oewn-cheek__1.07.00..	derivation		oewn-cheeky__5.00.00.forward.02
+oewn-cheek__1.10.00..	derivation		oewn-cheek__2.32.00..
+oewn-cheek__2.32.00..	other	event	oewn-cheek__1.07.00..
+oewn-cheek__2.32.00..	other	event	oewn-cheek__1.10.00..
+oewn-cheekily__4.02.00..	pertainym		oewn-cheeky__5.00.00.forward.02
+oewn-cheekiness__1.07.00..	derivation		oewn-cheeky__5.00.00.forward.02
+oewn-cheep__1.11.00..	derivation		oewn-cheep__2.32.00..
+oewn-cheep__2.32.00..	other	event	oewn-cheep__1.11.00..
+oewn-cheer__1.07.00..	derivation		oewn-cheer__2.32.00..
+oewn-cheer__1.07.00..	derivation		oewn-cheer__2.32.03..
+oewn-cheer__1.07.00..	derivation		oewn-cheery__5.00.00.cheerful.00
+oewn-cheer__1.10.00..	derivation		oewn-cheer__2.32.02..
+oewn-cheer__2.32.00..	antonym		oewn-complain__2.32.00..
+oewn-cheer__2.32.00..	other	property	oewn-cheer__1.07.00..
+oewn-cheer__2.32.00..	other	state	oewn-cheer__1.07.00..
+oewn-cheer__2.32.01..	derivation		oewn-cheerer__1.18.00..
+oewn-cheer__2.32.01..	derivation		oewn-cheering__1.10.00..
+oewn-cheer__2.32.01..	other	agent	oewn-cheerer__1.18.00..
+oewn-cheer__2.32.02..	derivation		oewn-cheerer__1.18.00..
+oewn-cheer__2.32.02..	derivation		oewn-cheering__1.10.00..
+oewn-cheer__2.32.02..	other	agent	oewn-cheerer__1.18.00..
+oewn-cheer__2.32.02..	other	event	oewn-cheer__1.10.00..
+oewn-cheer__2.32.03..	other	property	oewn-cheer__1.07.00..
+oewn-cheer__2.32.03..	other	state	oewn-cheer__1.07.00..
+oewn-cheer__2.37.02..	derivation		oewn-cheering__1.10.00..
+oewn-cheerful__3.00.00..	antonym		oewn-depressing__3.00.00..
+oewn-cheerful__3.00.00..	derivation		oewn-cheerfulness__1.07.00..
+oewn-cheerful__5.00.00.optimistic.00	derivation		oewn-cheerfulness__1.12.00..
+oewn-cheerfully__4.02.00..	antonym		oewn-cheerlessly__4.02.00..
+oewn-cheerfully__4.02.00..	pertainym		oewn-upbeat__5.00.00.optimistic.00
+oewn-cheerfulness__1.07.00..	antonym		oewn-uncheerfulness__1.07.00..
+oewn-cheerfulness__1.12.00..	antonym		oewn-cheerlessness__1.12.00..
+oewn-cheerily__4.02.00..	pertainym		oewn-cheery__5.00.00.cheerful.00
+oewn-cheerlead__2.32.00..	derivation		oewn-cheerleader__1.18.00..
+oewn-cheerlead__2.32.00..	other	agent	oewn-cheerleader__1.18.00..
+oewn-cheerless__3.00.00..	derivation		oewn-cheerlessness__1.12.00..
+oewn-chelate__1.27.00..	derivation		oewn-chelate__2.42.00..
+oewn-chelate__2.42.00..	derivation		oewn-chelation__1.22.01..
+oewn-chelate__2.42.00..	derivation		oewn-chelation__1.22.02..
+oewn-chelate__2.42.00..	other	event	oewn-chelation__1.22.01..
+oewn-chelate__2.42.00..	other	event	oewn-chelation__1.22.02..
+oewn-chelate__2.42.00..	other	material	oewn-chelate__1.27.00..
+oewn-chelate__2.42.00..	other	result	oewn-chelate__1.27.00..
+oewn-chelate__3.01.01..	pertainym		oewn-chela__1.05.00..
+oewn-chelate__3.01.02..	pertainym		oewn-chelation__1.22.01..
+oewn-chelated__3.01.00..	pertainym		oewn-chelation__1.22.01..
+oewn-chelicera__1.05.00..	derivation		oewn-cheliceral__3.01.00..
+oewn-chelicera__1.05.00..	derivation		oewn-chelicerous__3.01.00..
+oewn-cheliceral__3.01.00..	pertainym		oewn-chelicera__1.05.00..
+oewn-chelicerate__3.01.00..	pertainym		oewn-chelicera__1.05.00..
+oewn-chelicerous__3.01.00..	pertainym		oewn-chelicera__1.05.00..
+oewn-cheliferous__3.01.00..	pertainym		oewn-chela__1.05.00..
+oewn-chelonian__1.05.00..	derivation		oewn-chelonian__3.01.00..
+oewn-chemic__3.01.00..	derivation		oewn-chemistry__1.09.00..
+oewn-chemic__3.01.00..	pertainym		oewn-chemistry__1.09.00..
+oewn-chemical__1.27.00..	derivation		oewn-chemical__3.01.01..
+oewn-chemical__3.01.00..	derivation		oewn-chemistry__1.09.00..
+oewn-chemical__3.01.00..	pertainym		oewn-chemistry__1.09.00..
+oewn-chemical__3.01.01..	derivation		oewn-chemistry__1.09.00..
+oewn-chemical__3.01.01..	pertainym		oewn-chemical__1.27.00..
+oewn-chemical_defence__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chemical_defence__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chemical_defence__1.04.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-chemical_defense__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-chemical_mace__1.27.00..	exemplifies		oewn-trademark__1.10.00..
+oewn-chemically__4.02.00..	pertainym		oewn-chemical__3.01.00..
+oewn-chemically__4.02.01..	pertainym		oewn-chemical__3.01.01..
+oewn-chemiluminescence__1.19.00..	derivation		oewn-chemiluminescent__3.01.00..
+oewn-chemiluminescent__3.01.00..	pertainym		oewn-chemiluminescence__1.19.00..
+oewn-chemisorb__2.35.00..	derivation		oewn-chemisorption__1.22.00..
+oewn-chemisorb__2.35.00..	derivation		oewn-chemosorption__1.22.00..
+oewn-chemisorb__2.35.00..	other	event	oewn-chemisorption__1.22.00..
+oewn-chemisorb__2.35.00..	other	event	oewn-chemosorption__1.22.00..
+oewn-chemist__1.18.00..	derivation		oewn-chemistry__1.09.00..
+oewn-chemist__1.18.01..	derivation		oewn-chemistry__1.09.00..
+oewn-chemoreceptive__3.01.00..	pertainym		oewn-chemoreceptor__1.08.00..
+oewn-chemotherapeutic__3.01.00..	derivation		oewn-chemotherapy__1.04.00..
+oewn-chemotherapeutic__3.01.00..	pertainym		oewn-chemotherapy__1.04.00..
+oewn-chemotherapeutical__3.01.00..	derivation		oewn-chemotherapy__1.04.00..
+oewn-chemotherapeutical__3.01.00..	pertainym		oewn-chemotherapy__1.04.00..
+oewn-cheque__1.21.00..	derivation		oewn-cheque__2.40.00..
+oewn-cheque__1.21.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-cheque__1.21.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-cheque__2.40.00..	other	by_means_of	oewn-cheque__1.21.00..
+oewn-chequer__2.36.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-chequerboard__1.06.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chequerboard__1.06.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chequered__5.00.00.patterned.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chequered__5.00.00.patterned.00	exemplifies		oewn-british_english__1.10.01..
+oewn-chequered__5.00.00.patterned.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chequing_account__1.21.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-cherry__1.07.00..	derivation		oewn-cherry__5.00.00.chromatic.00
+oewn-chert__1.27.00..	derivation		oewn-cherty__3.01.00..
+oewn-cherty__3.01.00..	pertainym		oewn-chert__1.27.00..
+oewn-chest__1.08.00..	derivation		oewn-chesty__5.00.00.robust.00
+oewn-chestnut__1.07.00..	derivation		oewn-chestnut__5.00.00.chromatic.00
+oewn-chew__1.04.00..	derivation		oewn-chew__2.34.00..
+oewn-chew__1.04.00..	derivation		oewn-chewy__5.00.00.elastic.00
+oewn-chew__1.04.00..	derivation		oewn-chewy__5.00.00.tough.01
+oewn-chew__1.13.00..	derivation		oewn-chew__2.34.00..
+oewn-chew__2.34.00..	derivation		oewn-chewer__1.18.00..
+oewn-chew__2.34.00..	derivation		oewn-chewing__1.04.00..
+oewn-chew__2.34.00..	other	agent	oewn-chewer__1.18.00..
+oewn-chew__2.34.00..	other	event	oewn-chew__1.04.00..
+oewn-chew__2.34.00..	other	undergoer	oewn-chew__1.13.00..
+oewn-chiasm__1.08.00..	derivation		oewn-chiasmal__3.01.00..
+oewn-chiasm__1.08.00..	derivation		oewn-chiasmatic__3.01.00..
+oewn-chiasm__1.08.00..	derivation		oewn-chiasmic__3.01.00..
+oewn-chiasmal__3.01.00..	pertainym		oewn-chiasma__1.08.00..
+oewn-chiasmatic__3.01.00..	pertainym		oewn-chiasma__1.08.00..
+oewn-chiasmic__3.01.00..	pertainym		oewn-chiasma__1.08.00..
+oewn-chic__1.07.00..	derivation		oewn-chic__5.00.00.stylish.00
+oewn-chic__5.00.00.stylish.00	derivation		oewn-chicness__1.07.00..
+oewn-chicane__1.04.00..	derivation		oewn-chicane__2.33.00..
+oewn-chicane__2.33.00..	derivation		oewn-chicanery__1.04.00..
+oewn-chicane__2.33.00..	other	event	oewn-chicane__1.04.00..
+oewn-chicken__1.18.00..	derivation		oewn-chicken__5.00.00.cowardly.00
+oewn-chide__2.32.00..	derivation		oewn-chiding__1.10.00..
+oewn-chiefly__4.02.00..	pertainym		oewn-chief__5.00.02.important.00
+oewn-chieftain__1.18.00..	derivation		oewn-chieftainship__1.04.00..
+oewn-chieftain__1.18.01..	derivation		oewn-chieftainship__1.04.00..
+oewn-child__1.18.00..	derivation		oewn-childhood__1.26.00..
+oewn-child__1.18.00..	derivation		oewn-childhood__1.28.00..
+oewn-child__1.18.00..	derivation		oewn-childly__5.00.00.young.00
+oewn-child__1.18.01..	antonym		oewn-parent__1.18.00..
+oewn-child__1.18.06..	derivation		oewn-childhood__1.26.00..
+oewn-childbearing__1.22.00..	derivation		oewn-childbearing__3.01.00..
+oewn-childbearing__3.01.00..	pertainym		oewn-childbirth__1.22.00..
+oewn-childish__5.00.00.immature.02	derivation		oewn-childishness__1.07.00..
+oewn-childishly__4.02.00..	pertainym		oewn-childish__5.00.00.immature.02
+oewn-childless__5.00.00.unfruitful.00	derivation		oewn-childlessness__1.26.00..
+oewn-chilean__1.18.00..	derivation		oewn-chilean__3.01.00..
+oewn-chiliasm__1.09.00..	derivation		oewn-chiliastic__3.01.00..
+oewn-chill__1.07.00..	derivation		oewn-chill__2.30.00..
+oewn-chill__1.07.00..	derivation		oewn-chill__2.30.01..
+oewn-chill__1.07.00..	derivation		oewn-chilly__5.00.00.cold.01
+oewn-chill__1.12.00..	derivation		oewn-chill__2.37.00..
+oewn-chill__2.30.00..	derivation		oewn-chilling__1.22.00..
+oewn-chill__2.30.00..	other	result	oewn-chill__1.07.00..
+oewn-chill__2.30.01..	derivation		oewn-chilling__1.22.00..
+oewn-chill__2.30.01..	other	result	oewn-chill__1.07.00..
+oewn-chill__2.37.00..	other	event	oewn-chill__1.12.00..
+oewn-chilliness__1.07.00..	derivation		oewn-chilly__5.00.00.cold.01
+oewn-chime__1.06.00..	derivation		oewn-chime__2.39.00..
+oewn-chime__2.39.00..	also		oewn-chime_in__2.32.00..
+oewn-chime__2.39.00..	other	instrument	oewn-chime__1.06.00..
+oewn-chimera__1.09.00..	derivation		oewn-chimeral__3.01.00..
+oewn-chimera__1.09.00..	derivation		oewn-chimeric__3.01.00..
+oewn-chimera__1.09.00..	derivation		oewn-chimerical__5.00.00.unrealistic.00
+oewn-chimera__1.18.00..	derivation		oewn-chimeral__3.01.00..
+oewn-chimera__1.18.00..	derivation		oewn-chimerical__3.01.00..
+oewn-chimeral__3.01.00..	pertainym		oewn-chimera__1.18.00..
+oewn-chimeric__3.01.00..	pertainym		oewn-chimera__1.18.00..
+oewn-chimerical__3.01.00..	pertainym		oewn-chimera__1.18.00..
+oewn-chin--up__1.04.00..	derivation		oewn-chin_up__2.38.00..
+oewn-chine__1.05.00..	derivation		oewn-chine__2.35.00..
+oewn-chine__1.13.00..	derivation		oewn-chine__2.35.00..
+oewn-chine__2.35.00..	other	result	oewn-chine__1.13.00..
+oewn-chink__1.11.00..	derivation		oewn-chink__2.39.00..
+oewn-chink__1.17.00..	derivation		oewn-chink__2.30.00..
+oewn-chink__1.17.00..	derivation		oewn-chink__2.35.00..
+oewn-chink__2.30.00..	other	location	oewn-chink__1.17.00..
+oewn-chink__2.35.00..	other	location	oewn-chink__1.17.00..
+oewn-chink__2.39.00..	other	event	oewn-chink__1.11.00..
+oewn-chintzily__4.02.00..	pertainym		oewn-chintzy__5.00.00.stingy.00
+oewn-chip__1.04.00..	derivation		oewn-chip__2.35.00..
+oewn-chip__1.04.00..	derivation		oewn-chip__2.35.01..
+oewn-chip__1.04.01..	derivation		oewn-chip__2.35.04..
+oewn-chip__1.07.00..	derivation		oewn-chip__2.35.03..
+oewn-chip__1.17.00..	derivation		oewn-chip__2.35.00..
+oewn-chip__1.17.00..	derivation		oewn-chip__2.35.01..
+oewn-chip__1.17.00..	derivation		oewn-chip__2.35.02..
+oewn-chip__2.35.00..	also		oewn-chip_at__2.35.00..
+oewn-chip__2.35.00..	derivation		oewn-chipping__1.04.00..
+oewn-chip__2.35.00..	other	event	oewn-chip__1.04.00..
+oewn-chip__2.35.00..	other	result	oewn-chip__1.17.00..
+oewn-chip__2.35.01..	derivation		oewn-chipping__1.04.00..
+oewn-chip__2.35.01..	other	event	oewn-chip__1.04.00..
+oewn-chip__2.35.01..	other	result	oewn-chip__1.17.00..
+oewn-chip__2.35.02..	other	result	oewn-chip__1.17.00..
+oewn-chip__2.35.03..	other	result	oewn-chip__1.07.00..
+oewn-chip__2.35.04..	other	event	oewn-chip__1.04.01..
+oewn-chips__1.13.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-chiromance__2.39.00..	derivation		oewn-chiromancer__1.18.00..
+oewn-chiromance__2.39.00..	derivation		oewn-chiromancy__1.09.00..
+oewn-chiromance__2.39.00..	other	agent	oewn-chiromancer__1.18.00..
+oewn-chiromancer__1.18.00..	derivation		oewn-chiromancy__1.09.00..
+oewn-chiromancy__1.09.00..	derivation		oewn-chiromantic__3.01.00..
+oewn-chiromantic__3.01.00..	pertainym		oewn-chiromancy__1.09.00..
+oewn-chiropodist__1.18.00..	derivation		oewn-chiropody__1.09.00..
+oewn-chirp__1.11.00..	derivation		oewn-chirp__2.32.00..
+oewn-chirp__1.11.00..	derivation		oewn-chirp__2.36.00..
+oewn-chirp__1.11.00..	derivation		oewn-chirpy__3.01.00..
+oewn-chirp__2.32.00..	other	event	oewn-chirp__1.11.00..
+oewn-chirp__2.36.00..	other	event	oewn-chirp__1.11.00..
+oewn-chirpily__4.02.00..	pertainym		oewn-buoyant__5.00.00.cheerful.00
+oewn-chirpiness__1.07.00..	derivation		oewn-chirpy__5.00.00.cheerful.00
+oewn-chirpy__3.01.00..	pertainym		oewn-chirp__1.11.00..
+oewn-chirrup__1.11.00..	derivation		oewn-chirrup__2.32.00..
+oewn-chirrup__2.32.00..	other	event	oewn-chirrup__1.11.00..
+oewn-chisel__1.06.00..	derivation		oewn-chisel__2.35.00..
+oewn-chisel__2.35.00..	other	instrument	oewn-chisel__1.06.00..
+oewn-chisel__2.41.00..	derivation		oewn-chiseler__1.18.00..
+oewn-chisel__2.41.00..	derivation		oewn-chiseller__1.18.00..
+oewn-chisel__2.41.00..	other	agent	oewn-chiseler__1.18.00..
+oewn-chisel__2.41.00..	other	agent	oewn-chiseller__1.18.00..
+oewn-chisel__2.41.01..	derivation		oewn-chiseler__1.18.00..
+oewn-chisel__2.41.01..	derivation		oewn-chiseller__1.18.00..
+oewn-chisel__2.41.01..	other	agent	oewn-chiseler__1.18.00..
+oewn-chisel__2.41.01..	other	agent	oewn-chiseller__1.18.00..
+oewn-chit--chat__1.10.00..	derivation		oewn-chitchat__2.32.00..
+oewn-chit_chat__1.10.00..	derivation		oewn-chitchat__2.32.00..
+oewn-chitchat__1.10.00..	derivation		oewn-chitchat__2.32.00..
+oewn-chitchat__2.32.00..	other	event	oewn-chitchat__1.10.00..
+oewn-chitin__1.27.00..	derivation		oewn-chitinous__3.01.00..
+oewn-chitinous__3.01.00..	pertainym		oewn-chitin__1.27.00..
+oewn-chivalric__5.00.00.past.00	derivation		oewn-chivalry__1.09.00..
+oewn-chivalrous__5.00.00.courteous.00	derivation		oewn-chivalry__1.09.00..
+oewn-chivalrously__4.02.00..	antonym		oewn-unchivalrously__4.02.00..
+oewn-chivalrously__4.02.00..	pertainym		oewn-chivalrous__5.00.00.courteous.00
+oewn-chlamydeous__3.00.00..	derivation		oewn-chlamys__1.20.00..
+oewn-chlamydia__1.05.00..	derivation		oewn-chlamydial__3.01.00..
+oewn-chlamydia__1.26.00..	derivation		oewn-chlamydial__3.01.00..
+oewn-chlamydial__3.01.00..	pertainym		oewn-chlamydia__1.05.00..
+oewn-chlamydial__3.01.00..	pertainym		oewn-chlamydia__1.26.00..
+oewn-chlor--trimeton__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-chlorinate__2.29.00..	derivation		oewn-chlorination__1.04.00..
+oewn-chlorinate__2.29.00..	derivation		oewn-chlorine__1.27.00..
+oewn-chlorinate__2.29.00..	other	event	oewn-chlorination__1.04.00..
+oewn-chlorinate__2.30.00..	derivation		oewn-chlorination__1.04.00..
+oewn-chlorinate__2.30.00..	derivation		oewn-chlorination__1.22.00..
+oewn-chlorinate__2.30.00..	derivation		oewn-chlorine__1.27.00..
+oewn-chlorinate__2.30.00..	other	event	oewn-chlorination__1.04.00..
+oewn-chlorinate__2.30.00..	other	event	oewn-chlorination__1.22.00..
+oewn-chloroform__1.06.00..	derivation		oewn-chloroform__2.29.00..
+oewn-chloroform__2.29.00..	other	material	oewn-chloroform__1.06.00..
+oewn-chloroform__2.29.00..	other	uses	oewn-chloroform__1.06.00..
+oewn-chlorophyll__1.05.00..	derivation		oewn-chlorophyllous__3.01.00..
+oewn-chlorophyllose__3.01.00..	pertainym		oewn-chlorophyll__1.05.00..
+oewn-chlorophyllous__3.01.00..	pertainym		oewn-chlorophyll__1.05.00..
+oewn-chlorotic__3.01.00..	pertainym		oewn-chlorosis__1.26.00..
+oewn-chock__1.06.00..	derivation		oewn-chock__2.35.00..
+oewn-chock__1.06.00..	derivation		oewn-chock__2.35.01..
+oewn-chock__2.35.00..	other	by_means_of	oewn-chock__1.06.00..
+oewn-chock__2.35.01..	other	by_means_of	oewn-chock__1.06.00..
+oewn-choice__5.00.00.superior.02	derivation		oewn-choiceness__1.07.00..
+oewn-choir__1.06.00..	derivation		oewn-choir__2.36.00..
+oewn-choir__1.14.00..	derivation		oewn-choir__2.36.00..
+oewn-choir__1.14.00..	derivation		oewn-choral__3.01.01..
+oewn-choir__1.14.00..	derivation		oewn-chorister__1.18.00..
+oewn-choir__1.14.01..	derivation		oewn-choir__2.36.00..
+oewn-choir__1.14.01..	derivation		oewn-choral__3.01.01..
+oewn-choir__2.36.00..	other	agent	oewn-choir__1.14.00..
+oewn-choir__2.36.00..	other	location	oewn-choir__1.06.00..
+oewn-choke__1.06.00..	derivation		oewn-choke__2.30.00..
+oewn-choke__2.29.00..	derivation		oewn-choking__1.26.00..
+oewn-choke__2.29.03..	derivation		oewn-choking__1.26.00..
+oewn-choke__2.29.04..	derivation		oewn-choking__1.04.00..
+oewn-choke__2.30.00..	other	instrument	oewn-choke__1.06.00..
+oewn-choke__2.35.00..	derivation		oewn-choker__1.06.00..
+oewn-choke__2.35.00..	derivation		oewn-choker__1.06.01..
+oewn-choke__2.35.00..	other	by_means_of	oewn-choker__1.06.00..
+oewn-choke__2.35.00..	other	by_means_of	oewn-choker__1.06.01..
+oewn-choke__2.35.02..	derivation		oewn-choker__1.18.00..
+oewn-choke__2.35.02..	derivation		oewn-choking__1.04.00..
+oewn-choke__2.35.02..	other	agent	oewn-choker__1.18.00..
+oewn-choke__2.35.03..	derivation		oewn-choking__1.26.00..
+oewn-choke__2.41.03..	derivation		oewn-choker__1.18.01..
+oewn-choke__2.41.03..	other	agent	oewn-choker__1.18.01..
+oewn-choler__1.12.01..	derivation		oewn-choleric__5.00.00.angry.00
+oewn-choler__1.12.01..	derivation		oewn-choleric__5.00.00.ill-natured.00
+oewn-choler__1.12.01..	derivation		oewn-choleric__5.00.00.passionate.00
+oewn-cholera__1.26.00..	derivation		oewn-choleraic__3.01.00..
+oewn-choleraic__3.01.00..	pertainym		oewn-cholera__1.26.00..
+oewn-chomp__1.04.00..	derivation		oewn-chomp__2.34.00..
+oewn-chomp__2.34.00..	derivation		oewn-chomping__1.04.00..
+oewn-chomp__2.34.00..	other	event	oewn-chomp__1.04.00..
+oewn-chondrify__2.30.00..	derivation		oewn-chondrin__1.27.00..
+oewn-chondrify__2.30.00..	other	result	oewn-chondrin__1.27.00..
+oewn-chondrite__1.17.00..	derivation		oewn-chondritic__3.00.00..
+oewn-chop__1.04.00..	derivation		oewn-chop__2.35.03..
+oewn-chop__1.13.00..	derivation		oewn-chop__2.35.01..
+oewn-chop__1.19.00..	derivation		oewn-choppy__5.00.00.stormy.00
+oewn-chop__2.35.00..	also		oewn-chop_down__2.35.00..
+oewn-chop__2.35.00..	also		oewn-chop_off__2.35.00..
+oewn-chop__2.35.00..	also		oewn-chop_up__2.35.00..
+oewn-chop__2.35.00..	derivation		oewn-chopper__1.06.00..
+oewn-chop__2.35.00..	derivation		oewn-chopper__1.08.00..
+oewn-chop__2.35.00..	other	body_part	oewn-chopper__1.08.00..
+oewn-chop__2.35.00..	other	instrument	oewn-chopper__1.06.00..
+oewn-chop__2.35.01..	derivation		oewn-chopper__1.06.00..
+oewn-chop__2.35.01..	derivation		oewn-chopper__1.08.00..
+oewn-chop__2.35.01..	other	body_part	oewn-chopper__1.08.00..
+oewn-chop__2.35.01..	other	instrument	oewn-chopper__1.06.00..
+oewn-chop__2.35.01..	other	result	oewn-chop__1.13.00..
+oewn-chop__2.35.03..	derivation		oewn-chopper__1.04.00..
+oewn-chop__2.35.03..	other	event	oewn-chop__1.04.00..
+oewn-chop__2.35.03..	other	undergoer	oewn-chopper__1.04.00..
+oewn-choppiness__1.26.01..	derivation		oewn-choppy__5.00.00.stormy.00
+oewn-choragic__3.01.00..	derivation		oewn-choragus__1.18.00..
+oewn-choragic__3.01.00..	pertainym		oewn-choragus__1.18.00..
+oewn-choral__3.01.01..	derivation		oewn-chorus__1.10.00..
+oewn-choral__3.01.01..	derivation		oewn-chorus__1.11.00..
+oewn-choral__3.01.01..	derivation		oewn-chorus__1.14.00..
+oewn-choral__3.01.01..	derivation		oewn-chorus__1.14.01..
+oewn-choral__3.01.01..	pertainym		oewn-chorus__1.14.00..
+oewn-chorally__4.02.00..	pertainym		oewn-choral__3.01.01..
+oewn-chord__1.10.00..	derivation		oewn-chord__2.30.00..
+oewn-chord__1.10.00..	derivation		oewn-chord__2.36.00..
+oewn-chord__1.10.00..	derivation		oewn-chordal__3.01.00..
+oewn-chord__2.30.00..	other	undergoer	oewn-chord__1.10.00..
+oewn-chord__2.36.00..	other	undergoer	oewn-chord__1.10.00..
+oewn-chordal__3.01.00..	pertainym		oewn-chord__1.10.00..
+oewn-chordate__1.05.00..	derivation		oewn-chordate__3.01.00..
+oewn-choreograph__2.36.00..	derivation		oewn-choreographer__1.18.00..
+oewn-choreograph__2.36.00..	other	agent	oewn-choreographer__1.18.00..
+oewn-choreographic__3.01.00..	pertainym		oewn-choreography__1.10.00..
+oewn-choric__3.01.00..	derivation		oewn-chorus__1.14.02..
+oewn-choric__3.01.00..	pertainym		oewn-chorus__1.14.02..
+oewn-chorion__1.05.00..	derivation		oewn-chorionic__3.01.00..
+oewn-chorionic__3.01.00..	pertainym		oewn-chorion__1.05.00..
+oewn-chortle__1.10.00..	derivation		oewn-chortle__2.29.00..
+oewn-chortle__2.29.00..	other	event	oewn-chortle__1.10.00..
+oewn-chorus__1.10.00..	derivation		oewn-chorus__2.36.00..
+oewn-chorus__1.11.00..	derivation		oewn-chorus__2.32.00..
+oewn-chorus__1.14.00..	derivation		oewn-chorus__2.36.00..
+oewn-chorus__1.14.01..	derivation		oewn-chorus__2.36.00..
+oewn-chorus__1.14.02..	derivation		oewn-chorus__2.32.00..
+oewn-chorus__1.14.02..	derivation		oewn-chorus__2.36.00..
+oewn-chorus__2.32.00..	other	agent	oewn-chorus__1.14.02..
+oewn-chorus__2.32.00..	other	event	oewn-chorus__1.11.00..
+oewn-chorus__2.36.00..	other	agent	oewn-chorus__1.14.00..
+oewn-christen__2.32.00..	derivation		oewn-christening__1.04.00..
+oewn-christendom__1.14.00..	derivation		oewn-christian__1.18.00..
+oewn-christian__1.18.00..	derivation		oewn-christianly__5.00.00.christian.00
+oewn-christian__3.00.00..	antonym		oewn-unchristian__3.00.00..
+oewn-christian__3.00.00..	derivation		oewn-christianity__1.09.00..
+oewn-christian__3.01.00..	derivation		oewn-christianity__1.14.02..
+oewn-christian__3.01.00..	pertainym		oewn-christianity__1.09.00..
+oewn-christianisation__1.11.00..	derivation		oewn-christianise__2.30.00..
+oewn-christianisation__1.11.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-christianisation__1.11.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-christianise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-christianise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-christianise__2.30.00..	other	event	oewn-christianisation__1.11.00..
+oewn-christianization__1.11.00..	derivation		oewn-christianize__2.30.00..
+oewn-christianization__1.11.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-christianize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-christianize__2.30.00..	other	event	oewn-christianization__1.11.00..
+oewn-christological__3.01.00..	derivation		oewn-christology__1.09.00..
+oewn-christological__3.01.00..	derivation		oewn-christology__1.09.01..
+oewn-christological__3.01.00..	pertainym		oewn-christology__1.09.00..
+oewn-christological__3.01.00..	pertainym		oewn-christology__1.09.01..
+oewn-chroma__1.07.00..	derivation		oewn-chromatic__3.00.00..
+oewn-chromatic__3.00.00..	derivation		oewn-chromaticity__1.07.00..
+oewn-chromatic__3.00.01..	antonym		oewn-diatonic__3.00.00..
+oewn-chromatic__3.01.00..	pertainym		oewn-color__1.07.00..
+oewn-chromatic_color__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-chromatic_colour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chromatic_colour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chromatic_colour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-chromatically__4.02.00..	pertainym		oewn-chromatic__3.00.00..
+oewn-chromatin__1.08.00..	derivation		oewn-chromatinic__3.01.00..
+oewn-chromatinic__3.01.00..	pertainym		oewn-chromatin__1.08.00..
+oewn-chromatographic__3.01.00..	pertainym		oewn-chromatography__1.22.00..
+oewn-chromatographical__3.01.00..	derivation		oewn-chromatography__1.22.00..
+oewn-chromatographical__3.01.00..	pertainym		oewn-chromatography__1.22.00..
+oewn-chromatographically__4.02.00..	pertainym		oewn-chromatographic__3.01.00..
+oewn-chrome__1.27.00..	derivation		oewn-chrome__2.30.00..
+oewn-chrome__1.27.00..	derivation		oewn-chrome__2.35.00..
+oewn-chrome__2.30.00..	other	uses	oewn-chrome__1.27.00..
+oewn-chrome__2.35.00..	other	uses	oewn-chrome__1.27.00..
+oewn-chromosomal__3.01.00..	derivation		oewn-chromosome__1.08.00..
+oewn-chromosomal__3.01.00..	pertainym		oewn-chromosome__1.08.00..
+oewn-chronically__4.02.00..	pertainym		oewn-chronic__3.00.00..
+oewn-chronicle__1.10.00..	derivation		oewn-chronicle__2.32.00..
+oewn-chronicle__2.32.00..	derivation		oewn-chronicler__1.18.00..
+oewn-chronicle__2.32.00..	other	agent	oewn-chronicler__1.18.00..
+oewn-chronicle__2.32.00..	other	event	oewn-chronicle__1.10.00..
+oewn-chronological__3.01.00..	derivation		oewn-chronology__1.09.00..
+oewn-chronological__3.01.00..	derivation		oewn-chronology__1.10.00..
+oewn-chronological__3.01.00..	derivation		oewn-chronology__1.24.00..
+oewn-chronological__3.01.00..	pertainym		oewn-chronology__1.10.00..
+oewn-chronologically__4.02.00..	pertainym		oewn-chronological__3.01.00..
+oewn-chronologise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-chronologise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-chronologize__2.30.00..	derivation		oewn-chronology__1.09.00..
+oewn-chronologize__2.30.00..	derivation		oewn-chronology__1.10.00..
+oewn-chronologize__2.30.00..	derivation		oewn-chronology__1.24.00..
+oewn-chronologize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-chubbiness__1.07.00..	derivation		oewn-chubby__5.00.00.fat.01
+oewn-chuckle__1.10.00..	derivation		oewn-chuckle__2.29.00..
+oewn-chuckle__2.29.00..	other	event	oewn-chuckle__1.10.00..
+oewn-chug__1.11.00..	derivation		oewn-chug__2.39.00..
+oewn-chug__2.39.00..	other	event	oewn-chug__1.11.00..
+oewn-chum__1.18.00..	derivation		oewn-chummy__5.00.00.close.02
+oewn-chum__1.18.00..	derivation		oewn-chummy__5.00.00.friendly.01
+oewn-chumminess__1.07.00..	derivation		oewn-chummy__5.00.00.close.02
+oewn-chumminess__1.07.00..	derivation		oewn-chummy__5.00.00.friendly.01
+oewn-chunk__1.14.00..	derivation		oewn-chunk__2.31.13..
+oewn-chunk__1.14.00..	derivation		oewn-chunky__5.00.00.unshapely.00
+oewn-chunk__2.31.13..	derivation		oewn-chunking__1.09.00..
+oewn-chunk__2.31.13..	other	result	oewn-chunk__1.14.00..
+oewn-church__1.04.00..	derivation		oewn-church__2.38.00..
+oewn-church__1.06.00..	derivation		oewn-church__2.38.00..
+oewn-church__1.06.00..	derivation		oewn-churchly__5.00.00.religious.00
+oewn-church__2.38.00..	other	event	oewn-church__1.04.00..
+oewn-church__2.38.00..	other	location	oewn-church__1.06.00..
+oewn-churlishly__4.02.00..	pertainym		oewn-churlish__5.00.00.ungracious.00
+oewn-churn__1.06.00..	derivation		oewn-churn__2.35.00..
+oewn-churn__2.35.00..	other	location	oewn-churn__1.06.00..
+oewn-chute__1.06.01..	derivation		oewn-chute__2.38.00..
+oewn-chylaceous__3.01.00..	derivation		oewn-chyle__1.08.00..
+oewn-chylaceous__3.01.00..	pertainym		oewn-chyle__1.08.00..
+oewn-chyle__1.08.00..	derivation		oewn-chylous__3.01.00..
+oewn-chylifactive__3.01.00..	pertainym		oewn-chyle__1.08.00..
+oewn-chylifactory__3.01.00..	pertainym		oewn-chyle__1.08.00..
+oewn-chyliferous__3.01.00..	pertainym		oewn-chyle__1.08.00..
+oewn-chylific__3.01.00..	pertainym		oewn-chyle__1.08.00..
+oewn-chylous__3.01.00..	pertainym		oewn-chyle__1.08.00..

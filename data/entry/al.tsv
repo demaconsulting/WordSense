@@ -1,0 +1,970 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+oewn-ALGOL-n	ALGOL	n	0	1	1	oewn
+oewn-ALS-n	ALS	n	0	1	1	oewn
+oewn-ALT-n	ALT	n	0	1	1	oewn
+oewn-Al-n	Al	n	0	1	1	oewn
+oewn-Alabama-n	Alabama	n	0	1	1	oewn
+oewn-Alabama_language-n	Alabama language	n	0	2	2	oewn
+oewn-Alabama_lip_fern-n	Alabama lip fern	n	0	3	3	oewn
+oewn-Alabaman-n	Alabaman	n	0	1	1	oewn
+oewn-Alabamian-n	Alabamian	n	0	1	1	oewn
+oewn-Aladdin-ap-s_lamp-n	Aladdin's lamp	n	0	2	2	oewn
+oewn-Alar-n	Alar	n	0	1	1	oewn
+oewn-Alaska_Native-n	Alaska Native	n	0	2	2	oewn
+oewn-Alaska_Standard_Time-n	Alaska Standard Time	n	0	3	3	oewn
+oewn-Alaska_cedar-n	Alaska cedar	n	0	2	2	oewn
+oewn-Alaska_cod-n	Alaska cod	n	0	2	2	oewn
+oewn-Alaska_crab-n	Alaska crab	n	0	2	2	oewn
+oewn-Alaska_fur_seal-n	Alaska fur seal	n	0	3	3	oewn
+oewn-Alaska_king_crab-n	Alaska king crab	n	0	3	3	oewn
+oewn-Alaska_rein_orchid-n	Alaska rein orchid	n	0	3	3	oewn
+oewn-Alaskan-a	Alaskan	a	0	1	1	oewn
+oewn-Alaskan-n	Alaskan	n	0	1	1	oewn
+oewn-Alaskan_Native-n	Alaskan Native	n	0	2	2	oewn
+oewn-Alaskan_brown_bear-n	Alaskan brown bear	n	0	3	3	oewn
+oewn-Alaskan_king_crab-n	Alaskan king crab	n	0	3	3	oewn
+oewn-Alaskan_malamute-n	Alaskan malamute	n	0	2	2	oewn
+oewn-Alauda_arvensis-n	Alauda arvensis	n	0	2	2	oewn
+oewn-Alawism-n	Alawism	n	0	1	1	oewn
+oewn-Albanian-a	Albanian	a	0	1	1	oewn
+oewn-Albanian-n	Albanian	n	0	1	1	oewn
+oewn-Albanian_language-n	Albanian language	n	0	2	2	oewn
+oewn-Albanian_monetary_unit-n	Albanian monetary unit	n	0	3	3	oewn
+oewn-Albatrellus_dispansus-n	Albatrellus dispansus	n	0	2	2	oewn
+oewn-Albatrellus_ovinus-n	Albatrellus ovinus	n	0	2	2	oewn
+oewn-Albers-Schonberg_disease-n	Albers-Schonberg disease	n	0	2	2	oewn
+oewn-Albertism-n	Albertism	n	0	1	1	oewn
+oewn-Albigenses-n	Albigenses	n	0	1	1	oewn
+oewn-Albigensian-a	Albigensian	a	0	1	1	oewn
+oewn-Albigensianism-n	Albigensianism	n	0	1	1	oewn
+oewn-Albizia_julibrissin-n	Albizia julibrissin	n	0	2	2	oewn
+oewn-Albizia_lebbeck-n	Albizia lebbeck	n	0	2	2	oewn
+oewn-Albizia_saman-n	Albizia saman	n	0	2	2	oewn
+oewn-Albizzia_julibrissin-n	Albizzia julibrissin	n	0	2	2	oewn
+oewn-Albizzia_lebbeck-n	Albizzia lebbeck	n	0	2	2	oewn
+oewn-Albright-ap-s_disease-n	Albright's disease	n	0	2	2	oewn
+oewn-Albula_vulpes-n	Albula vulpes	n	0	2	2	oewn
+oewn-Alca_torda-n	Alca torda	n	0	2	2	oewn
+oewn-Alcaic-n	Alcaic	n	0	1	1	oewn
+oewn-Alcaic_verse-n	Alcaic verse	n	0	2	2	oewn
+oewn-Alcea_rosea-n	Alcea rosea	n	0	2	2	oewn
+oewn-Alcedo_atthis-n	Alcedo atthis	n	0	2	2	oewn
+oewn-Alces_alces-n	Alces alces	n	0	2	2	oewn
+oewn-Alcoholics_Anonymous-n	Alcoholics Anonymous	n	0	2	2	oewn
+oewn-Aldactone-n	Aldactone	n	0	1	1	oewn
+oewn-Aldomet-n	Aldomet	n	0	1	1	oewn
+oewn-Aldrovanda_vesiculosa-n	Aldrovanda vesiculosa	n	0	2	2	oewn
+oewn-Alectis_ciliaris-n	Alectis ciliaris	n	0	2	2	oewn
+oewn-Alectoris_graeca-n	Alectoris graeca	n	0	2	2	oewn
+oewn-Alectoris_ruffa-n	Alectoris ruffa	n	0	2	2	oewn
+oewn-Alectura_lathami-n	Alectura lathami	n	0	2	2	oewn
+oewn-Aleppo_boil-n	Aleppo boil	n	0	2	2	oewn
+oewn-Aleppo_grass-n	Aleppo grass	n	0	2	2	oewn
+oewn-Aletris_aurea-n	Aletris aurea	n	0	2	2	oewn
+oewn-Aletris_farinosa-n	Aletris farinosa	n	0	2	2	oewn
+oewn-Aleuria_aurantia-n	Aleuria aurantia	n	0	2	2	oewn
+oewn-Aleurites_fordii-n	Aleurites fordii	n	0	2	2	oewn
+oewn-Aleurites_moluccana-n	Aleurites moluccana	n	0	2	2	oewn
+oewn-Aleut-n	Aleut	n	0	1	1	oewn
+oewn-Aleut_language-n	Aleut language	n	0	2	2	oewn
+oewn-Aleutian-a	Aleutian	a	0	1	1	oewn
+oewn-Aleutian-n	Aleutian	n	0	1	1	oewn
+oewn-Aleve-n	Aleve	n	0	1	1	oewn
+oewn-Alexandria_senna-n	Alexandria senna	n	0	2	2	oewn
+oewn-Alexandrian-a	Alexandrian	a	0	1	1	oewn
+oewn-Alexandrian-n	Alexandrian	n	0	1	1	oewn
+oewn-Alexandrian_laurel-n	Alexandrian laurel	n	0	2	2	oewn
+oewn-Alexandrian_senna-n	Alexandrian senna	n	0	2	2	oewn
+oewn-Alexandrine-n	Alexandrine	n	0	1	1	oewn
+oewn-Algerian-a	Algerian	a	0	1	1	oewn
+oewn-Algerian-n	Algerian	n	0	1	1	oewn
+oewn-Algerian_centime-n	Algerian centime	n	0	2	2	oewn
+oewn-Algerian_dinar-n	Algerian dinar	n	0	2	2	oewn
+oewn-Algerian_monetary_unit-n	Algerian monetary unit	n	0	3	3	oewn
+oewn-Algeripithecus_minutus-n	Algeripithecus minutus	n	0	2	2	oewn
+oewn-Algonkian-a	Algonkian	a	0	1	1	oewn
+oewn-Algonkian-n	Algonkian	n	0	1	1	oewn
+oewn-Algonkian_language-n	Algonkian language	n	0	2	2	oewn
+oewn-Algonkin-n	Algonkin	n	0	1	1	oewn
+oewn-Algonkin_language-n	Algonkin language	n	0	2	2	oewn
+oewn-Algonquian-a	Algonquian	a	0	1	1	oewn
+oewn-Algonquian-n	Algonquian	n	0	1	1	oewn
+oewn-Algonquian_language-n	Algonquian language	n	0	2	2	oewn
+oewn-Algonquin-a	Algonquin	a	0	1	1	oewn
+oewn-Algonquin-n	Algonquin	n	0	1	1	oewn
+oewn-Alisma_plantago-aquatica-n	Alisma plantago-aquatica	n	0	2	2	oewn
+oewn-Alka-Seltzer-n	Alka-Seltzer	n	0	1	1	oewn
+oewn-Alkeran-n	Alkeran	n	0	1	1	oewn
+oewn-All_Fools-ap-_day-n	All Fools' day	n	0	3	3	oewn
+oewn-All_Saints-ap-_Day-n	All Saints' Day	n	0	3	3	oewn
+oewn-All_Souls-ap-_Day-n	All Souls' Day	n	0	3	3	oewn
+oewn-Allamanda_cathartica-n	Allamanda cathartica	n	0	2	2	oewn
+oewn-Alleghany_plum-n	Alleghany plum	n	0	2	2	oewn
+oewn-Allegheny_chinkapin-n	Allegheny chinkapin	n	0	2	2	oewn
+oewn-Allegheny_mountain_spurge-n	Allegheny mountain spurge	n	0	3	3	oewn
+oewn-Allegheny_plum-n	Allegheny plum	n	0	2	2	oewn
+oewn-Allegheny_spurge-n	Allegheny spurge	n	0	2	2	oewn
+oewn-Allegheny_vine-n	Allegheny vine	n	0	2	2	oewn
+oewn-Allen_key-n	Allen key	n	0	2	2	oewn
+oewn-Allen_screw-n	Allen screw	n	0	2	2	oewn
+oewn-Allen_wrench-n	Allen wrench	n	0	2	2	oewn
+oewn-Allhallows-n	Allhallows	n	0	1	1	oewn
+oewn-Allhallows_Eve-n	Allhallows Eve	n	0	2	2	oewn
+oewn-Allhallowtide-n	Allhallowtide	n	0	1	1	oewn
+oewn-Alliaria_officinalis-n	Alliaria officinalis	n	0	2	2	oewn
+oewn-Allied-a	Allied	a	0	1	1	oewn
+oewn-Allied_Command_Atlantic-n	Allied Command Atlantic	n	0	3	3	oewn
+oewn-Allied_Command_Europe-n	Allied Command Europe	n	0	3	3	oewn
+oewn-Allies-n	Allies	n	0	1	1	oewn
+oewn-Alligator_mississipiensis-n	Alligator mississipiensis	n	0	2	2	oewn
+oewn-Alligator_sinensis-n	Alligator sinensis	n	0	2	2	oewn
+oewn-Allionia_incarnata-n	Allionia incarnata	n	0	2	2	oewn
+oewn-Allium_acuminatum-n	Allium acuminatum	n	0	2	2	oewn
+oewn-Allium_ampeloprasum-n	Allium ampeloprasum	n	0	2	2	oewn
+oewn-Allium_ascalonicum-n	Allium ascalonicum	n	0	2	2	oewn
+oewn-Allium_canadense-n	Allium canadense	n	0	2	2	oewn
+oewn-Allium_carinatum-n	Allium carinatum	n	0	2	2	oewn
+oewn-Allium_cepa-n	Allium cepa	n	0	2	2	oewn
+oewn-Allium_cepa_aggregatum-n	Allium cepa aggregatum	n	0	3	3	oewn
+oewn-Allium_cepa_viviparum-n	Allium cepa viviparum	n	0	3	3	oewn
+oewn-Allium_cernuum-n	Allium cernuum	n	0	2	2	oewn
+oewn-Allium_fistulosum-n	Allium fistulosum	n	0	2	2	oewn
+oewn-Allium_haematochiton-n	Allium haematochiton	n	0	2	2	oewn
+oewn-Allium_neopolitanum-n	Allium neopolitanum	n	0	2	2	oewn
+oewn-Allium_paradoxum-n	Allium paradoxum	n	0	2	2	oewn
+oewn-Allium_porrum-n	Allium porrum	n	0	2	2	oewn
+oewn-Allium_sativum-n	Allium sativum	n	0	2	2	oewn
+oewn-Allium_schoenoprasum-n	Allium schoenoprasum	n	0	2	2	oewn
+oewn-Allium_scorodoprasum-n	Allium scorodoprasum	n	0	2	2	oewn
+oewn-Allium_sphaerocephalum-n	Allium sphaerocephalum	n	0	2	2	oewn
+oewn-Allium_tricoccum-n	Allium tricoccum	n	0	2	2	oewn
+oewn-Allium_triquetrum-n	Allium triquetrum	n	0	2	2	oewn
+oewn-Allium_tuberosum-n	Allium tuberosum	n	0	2	2	oewn
+oewn-Allium_ursinum-n	Allium ursinum	n	0	2	2	oewn
+oewn-Allium_vineale-n	Allium vineale	n	0	2	2	oewn
+oewn-Almoravid-n	Almoravid	n	0	1	1	oewn
+oewn-Alnico-n	Alnico	n	0	1	1	oewn
+oewn-Alnus_crispa-n	Alnus crispa	n	0	2	2	oewn
+oewn-Alnus_glutinosa-n	Alnus glutinosa	n	0	2	2	oewn
+oewn-Alnus_incana-n	Alnus incana	n	0	2	2	oewn
+oewn-Alnus_maritima-n	Alnus maritima	n	0	2	2	oewn
+oewn-Alnus_rhombifolia-n	Alnus rhombifolia	n	0	2	2	oewn
+oewn-Alnus_rubra-n	Alnus rubra	n	0	2	2	oewn
+oewn-Alnus_rugosa-n	Alnus rugosa	n	0	2	2	oewn
+oewn-Alnus_serrulata-n	Alnus serrulata	n	0	2	2	oewn
+oewn-Alnus_veridis_crispa-n	Alnus veridis crispa	n	0	3	3	oewn
+oewn-Alnus_viridis-n	Alnus viridis	n	0	2	2	oewn
+oewn-Alnus_vulgaris-n	Alnus vulgaris	n	0	2	2	oewn
+oewn-Alocasia_macrorrhiza-n	Alocasia macrorrhiza	n	0	2	2	oewn
+oewn-Aloe_ferox-n	Aloe ferox	n	0	2	2	oewn
+oewn-Aloe_vera-n	Aloe vera	n	0	2	2	oewn
+oewn-Alopecurus_pratensis-n	Alopecurus pratensis	n	0	2	2	oewn
+oewn-Alopex_lagopus-n	Alopex lagopus	n	0	2	2	oewn
+oewn-Alopius_vulpinus-n	Alopius vulpinus	n	0	2	2	oewn
+oewn-Alosa_alosa-n	Alosa alosa	n	0	2	2	oewn
+oewn-Alosa_chrysocloris-n	Alosa chrysocloris	n	0	2	2	oewn
+oewn-Alosa_pseudoharengus-n	Alosa pseudoharengus	n	0	2	2	oewn
+oewn-Alosa_sapidissima-n	Alosa sapidissima	n	0	2	2	oewn
+oewn-Alpine-a	Alpine	a	0	1	1	oewn
+oewn-Alpine_anemone-n	Alpine anemone	n	0	2	2	oewn
+oewn-Alpine_besseya-n	Alpine besseya	n	0	2	2	oewn
+oewn-Alpine_celery_pine-n	Alpine celery pine	n	0	3	3	oewn
+oewn-Alpine_enchanter-ap-s_nightshade-n	Alpine enchanter's nightshade	n	0	3	3	oewn
+oewn-Alpine_fir-n	Alpine fir	n	0	2	2	oewn
+oewn-Alpine_glacier-n	Alpine glacier	n	0	2	2	oewn
+oewn-Alpine_golden_chain-n	Alpine golden chain	n	0	3	3	oewn
+oewn-Alpine_lady_fern-n	Alpine lady fern	n	0	3	3	oewn
+oewn-Alpine_lift-n	Alpine lift	n	0	2	2	oewn
+oewn-Alpine_mouse-ear-n	Alpine mouse-ear	n	0	2	2	oewn
+oewn-Alpine_scurvy-n	Alpine scurvy	n	0	2	2	oewn
+oewn-Alpine_type_of_glacier-n	Alpine type of glacier	n	0	4	2	oewn
+oewn-Alpine_woodsia-n	Alpine woodsia	n	0	2	2	oewn
+oewn-Alpinia_galanga-n	Alpinia galanga	n	0	2	2	oewn
+oewn-Alpinia_officinalis-n	Alpinia officinalis	n	0	2	2	oewn
+oewn-Alpinia_officinarum-n	Alpinia officinarum	n	0	2	2	oewn
+oewn-Alpinia_purpurata-n	Alpinia purpurata	n	0	2	2	oewn
+oewn-Alpinia_speciosa-n	Alpinia speciosa	n	0	2	2	oewn
+oewn-Alpinia_zerumbet-n	Alpinia zerumbet	n	0	2	2	oewn
+oewn-Alpinism-n	Alpinism	n	0	1	1	oewn
+oewn-Alsatian-a	Alsatian	a	0	1	1	oewn
+oewn-Alsatian-n	Alsatian	n	0	1	1	oewn
+oewn-Alsobia_dianthiflora-n	Alsobia dianthiflora	n	0	2	2	oewn
+oewn-Alsophila_pometaria-n	Alsophila pometaria	n	0	2	2	oewn
+oewn-Alstonia_scholaris-n	Alstonia scholaris	n	0	2	2	oewn
+oewn-Alstroemeria_pelegrina-n	Alstroemeria pelegrina	n	0	2	2	oewn
+oewn-Altace-n	Altace	n	0	1	1	oewn
+oewn-Altaic-a	Altaic	a	0	1	1	oewn
+oewn-Altaic-n	Altaic	n	0	1	1	oewn
+oewn-Altaic_language-n	Altaic language	n	0	2	2	oewn
+oewn-Alternanthera_philoxeroides-n	Alternanthera philoxeroides	n	0	2	2	oewn
+oewn-Althea_officinalis-n	Althea officinalis	n	0	2	2	oewn
+oewn-Althea_rosea-n	Althea rosea	n	0	2	2	oewn
+oewn-Alupent-n	Alupent	n	0	1	1	oewn
+oewn-Alytes_cisternasi-n	Alytes cisternasi	n	0	2	2	oewn
+oewn-Alytes_obstetricans-n	Alytes obstetricans	n	0	2	2	oewn
+oewn-Alzheimer-ap-s-n	Alzheimer's	n	0	1	1	oewn
+oewn-Alzheimer-ap-s_disease-n	Alzheimer's disease	n	0	2	2	oewn
+oewn-Alzheimers-n	Alzheimers	n	0	1	1	oewn
+oewn-al_dente-a	al dente	a	0	2	2	oewn
+oewn-ala-n	ala	n	0	1	1	oewn
+oewn-alabaster-a	alabaster	a	0	1	1	oewn
+oewn-alabaster-n	alabaster	n	0	1	1	oewn
+oewn-alabastrine-a	alabastrine	a	0	1	1	oewn
+oewn-alacritous-a	alacritous	a	0	1	1	oewn
+oewn-alacrity-n	alacrity	n	0	1	1	oewn
+oewn-alalia-n	alalia	n	0	1	1	oewn
+oewn-alanine-n	alanine	n	0	1	1	oewn
+oewn-alar-a	alar	a	0	1	1	oewn
+oewn-alarm-n	alarm	n	0	1	1	oewn
+oewn-alarm-v	alarm	v	0	1	1	oewn
+oewn-alarm_bell-n	alarm bell	n	0	2	2	oewn
+oewn-alarm_clock-n	alarm clock	n	0	2	2	oewn
+oewn-alarm_system-n	alarm system	n	0	2	2	oewn
+oewn-alarmed-a	alarmed	a	0	1	1	oewn
+oewn-alarming-a	alarming	a	0	1	1	oewn
+oewn-alarmingly-r	alarmingly	r	0	1	1	oewn
+oewn-alarmism-n	alarmism	n	0	1	1	oewn
+oewn-alarmist-n	alarmist	n	0	1	1	oewn
+oewn-alarum-n	alarum	n	0	1	1	oewn
+oewn-alary-a	alary	a	0	1	1	oewn
+oewn-alas-r	alas	r	0	1	1	oewn
+oewn-alastrim-n	alastrim	n	0	1	1	oewn
+oewn-alate-a	alate	a	0	1	1	oewn
+oewn-alated-a	alated	a	0	1	1	oewn
+oewn-alb-n	alb	n	0	1	1	oewn
+oewn-albacore-n	albacore	n	0	1	1	oewn
+oewn-albatross-n	albatross	n	0	1	1	oewn
+oewn-albedo-n	albedo	n	0	1	1	oewn
+oewn-albescent-a	albescent	a	0	1	1	oewn
+oewn-albinal-a	albinal	a	0	1	1	oewn
+oewn-albinic-a	albinic	a	0	1	1	oewn
+oewn-albinism-n	albinism	n	0	1	1	oewn
+oewn-albinistic-a	albinistic	a	0	1	1	oewn
+oewn-albino-a	albino	a	0	1	1	oewn
+oewn-albino-n	albino	n	0	1	1	oewn
+oewn-albinotic-a	albinotic	a	0	1	1	oewn
+oewn-albite-n	albite	n	0	1	1	oewn
+oewn-albitic-a	albitic	a	0	1	1	oewn
+oewn-albizia-n	albizia	n	0	1	1	oewn
+oewn-albizzia-n	albizzia	n	0	1	1	oewn
+oewn-albuca-n	albuca	n	0	1	1	oewn
+oewn-albuginea-n	albuginea	n	0	1	1	oewn
+oewn-album-n	album	n	0	1	1	oewn
+oewn-albumen-n	albumen	n	0	1	1	oewn
+oewn-albumin-n	albumin	n	0	1	1	oewn
+oewn-albuminoid-n	albuminoid	n	0	1	1	oewn
+oewn-albuminous-a	albuminous	a	0	1	1	oewn
+oewn-albuminuria-n	albuminuria	n	0	1	1	oewn
+oewn-albuminuric-a	albuminuric	a	0	1	1	oewn
+oewn-albuterol-n	albuterol	n	0	1	1	oewn
+oewn-alcahest-n	alcahest	n	0	1	1	oewn
+oewn-alcalde-n	alcalde	n	0	1	1	oewn
+oewn-alcalescent-a	alcalescent	a	0	1	1	oewn
+oewn-alcapton-n	alcapton	n	0	1	1	oewn
+oewn-alcaptonuria-n	alcaptonuria	n	0	1	1	oewn
+oewn-alcazar-n	alcazar	n	0	1	1	oewn
+oewn-alchemic-a	alchemic	a	0	1	1	oewn
+oewn-alchemical-a	alchemical	a	0	1	1	oewn
+oewn-alchemise-v	alchemise	v	0	1	1	oewn
+oewn-alchemist-n	alchemist	n	0	1	1	oewn
+oewn-alchemistic-a	alchemistic	a	0	1	1	oewn
+oewn-alchemistical-a	alchemistical	a	0	1	1	oewn
+oewn-alchemize-v	alchemize	v	0	1	1	oewn
+oewn-alchemy-n	alchemy	n	0	1	1	oewn
+oewn-alcohol-dependent-a	alcohol-dependent	a	0	1	1	oewn
+oewn-alcohol-in-glass_thermometer-n	alcohol-in-glass thermometer	n	0	2	2	oewn
+oewn-alcohol-n	alcohol	n	0	1	1	oewn
+oewn-alcohol-soluble-a	alcohol-soluble	a	0	1	1	oewn
+oewn-alcohol_abuse-n	alcohol abuse	n	0	2	2	oewn
+oewn-alcohol_addiction-n	alcohol addiction	n	0	2	2	oewn
+oewn-alcohol_amnestic_disorder-n	alcohol amnestic disorder	n	0	3	3	oewn
+oewn-alcohol_group-n	alcohol group	n	0	2	2	oewn
+oewn-alcohol_radical-n	alcohol radical	n	0	2	2	oewn
+oewn-alcohol_thermometer-n	alcohol thermometer	n	0	2	2	oewn
+oewn-alcoholic-a	alcoholic	a	0	1	1	oewn
+oewn-alcoholic-n	alcoholic	n	0	1	1	oewn
+oewn-alcoholic_abuse-n	alcoholic abuse	n	0	2	2	oewn
+oewn-alcoholic_beverage-n	alcoholic beverage	n	0	2	2	oewn
+oewn-alcoholic_dementia-n	alcoholic dementia	n	0	2	2	oewn
+oewn-alcoholic_drink-n	alcoholic drink	n	0	2	2	oewn
+oewn-alcoholise-v	alcoholise	v	0	1	1	oewn
+oewn-alcoholism-n	alcoholism	n	0	1	1	oewn
+oewn-alcoholism_abuse-n	alcoholism abuse	n	0	2	2	oewn
+oewn-alcoholize-v	alcoholize	v	0	1	1	oewn
+oewn-alcove-n	alcove	n	0	1	1	oewn
+oewn-aldehyde-alcohol-n	aldehyde-alcohol	n	0	1	1	oewn
+oewn-aldehyde-n	aldehyde	n	0	1	1	oewn
+oewn-aldehyde_group-n	aldehyde group	n	0	2	2	oewn
+oewn-aldehyde_radical-n	aldehyde radical	n	0	2	2	oewn
+oewn-aldehydic-a	aldehydic	a	0	1	1	oewn
+oewn-alder-leaved_serviceberry-n	alder-leaved serviceberry	n	0	2	2	oewn
+oewn-alder-n	alder	n	0	1	1	oewn
+oewn-alder_blight-n	alder blight	n	0	2	2	oewn
+oewn-alder_buckthorn-n	alder buckthorn	n	0	2	2	oewn
+oewn-alder_dogwood-n	alder dogwood	n	0	2	2	oewn
+oewn-alder_fly-n	alder fly	n	0	2	2	oewn
+oewn-alder_tree-n	alder tree	n	0	2	2	oewn
+oewn-alderfly-n	alderfly	n	0	1	1	oewn
+oewn-alderleaf_Juneberry-n	alderleaf Juneberry	n	0	2	2	oewn
+oewn-alderman-n	alderman	n	0	1	1	oewn
+oewn-aldermanic-a	aldermanic	a	0	1	1	oewn
+oewn-aldermanly-a	aldermanly	a	0	1	1	oewn
+oewn-alderperson-n	alderperson	n	0	1	1	oewn
+oewn-alderwoman-n	alderwoman	n	0	1	1	oewn
+oewn-aldohexose-n	aldohexose	n	0	1	1	oewn
+oewn-aldol-n	aldol	n	0	1	1	oewn
+oewn-aldol_reaction-n	aldol reaction	n	0	2	2	oewn
+oewn-aldose-n	aldose	n	0	1	1	oewn
+oewn-aldosterone-n	aldosterone	n	0	1	1	oewn
+oewn-aldosteronism-n	aldosteronism	n	0	1	1	oewn
+oewn-aldotetrose-n	aldotetrose	n	0	1	1	oewn
+oewn-aldotriose-n	aldotriose	n	0	1	1	oewn
+oewn-ale-n	ale	n	0	1	1	oewn
+oewn-ale_drinker-n	ale drinker	n	0	2	2	oewn
+oewn-aleatoric_music-n	aleatoric music	n	0	2	2	oewn
+oewn-aleatory-a	aleatory	a	0	1	1	oewn
+oewn-aleatory_contract-n	aleatory contract	n	0	2	2	oewn
+oewn-aleatory_music-n	aleatory music	n	0	2	2	oewn
+oewn-alecost-n	alecost	n	0	1	1	oewn
+oewn-alee-r	alee	r	0	1	1	oewn
+oewn-alehoof-n	alehoof	n	0	1	1	oewn
+oewn-alehouse-n	alehouse	n	0	1	1	oewn
+oewn-alembic-n	alembic	n	0	1	1	oewn
+oewn-alendronate-n	alendronate	n	0	1	1	oewn
+oewn-aleph-n	aleph	n	0	1	1	oewn
+oewn-aleph-nought-n	aleph-nought	n	0	1	1	oewn
+oewn-aleph-null-n	aleph-null	n	0	1	1	oewn
+oewn-aleph-zero-n	aleph-zero	n	0	1	1	oewn
+oewn-alert-a	alert	a	0	1	1	oewn
+oewn-alert-n	alert	n	0	1	1	oewn
+oewn-alert-v	alert	v	0	1	1	oewn
+oewn-alerting-n	alerting	n	0	1	1	oewn
+oewn-alertly-r	alertly	r	0	1	1	oewn
+oewn-alertness-n	alertness	n	0	1	1	oewn
+oewn-alethic_logic-n	alethic logic	n	0	2	2	oewn
+oewn-aleurone-n	aleurone	n	0	1	1	oewn
+oewn-aleuronic-a	aleuronic	a	0	1	1	oewn
+oewn-alewife-n	alewife	n	0	1	1	oewn
+oewn-alexander-n	alexander	n	0	1	1	oewn
+oewn-alexanders-n	alexanders	n	0	1	1	oewn
+oewn-alexandrite-n	alexandrite	n	0	1	1	oewn
+oewn-alexia-n	alexia	n	0	1	1	oewn
+oewn-alexic-a	alexic	a	0	1	1	oewn
+oewn-alexic-n	alexic	n	0	1	1	oewn
+oewn-alfalfa-n	alfalfa	n	0	1	1	oewn
+oewn-alfalfa_sprout-n	alfalfa sprout	n	0	2	2	oewn
+oewn-alfilaria-n	alfilaria	n	0	1	1	oewn
+oewn-alfileria-n	alfileria	n	0	1	1	oewn
+oewn-alfresco-a	alfresco	a	0	1	1	oewn
+oewn-alfresco-r	alfresco	r	0	1	1	oewn
+oewn-alga-n	alga	n	0	1	1	oewn
+oewn-algae-n	algae	n	0	1	1	oewn
+oewn-algal-a	algal	a	0	1	1	oewn
+oewn-algarobilla-n	algarobilla	n	0	1	1	oewn
+oewn-algarroba-n	algarroba	n	0	1	1	oewn
+oewn-algarroba_bean-n	algarroba bean	n	0	2	2	oewn
+oewn-algarrobilla-n	algarrobilla	n	0	1	1	oewn
+oewn-algebra-n	algebra	n	0	1	1	oewn
+oewn-algebraic-a	algebraic	a	0	1	1	oewn
+oewn-algebraic_language-n	algebraic language	n	0	2	2	oewn
+oewn-algebraic_number-n	algebraic number	n	0	2	2	oewn
+oewn-algebraical-a	algebraical	a	0	1	1	oewn
+oewn-algebraically-r	algebraically	r	0	1	1	oewn
+oewn-algebraist-n	algebraist	n	0	1	1	oewn
+oewn-algid-a	algid	a	0	1	1	oewn
+oewn-algidity-n	algidity	n	0	1	1	oewn
+oewn-algin-n	algin	n	0	1	1	oewn
+oewn-alginic_acid-n	alginic acid	n	0	2	2	oewn
+oewn-algoid-a	algoid	a	0	1	1	oewn
+oewn-algolagnia-n	algolagnia	n	0	1	1	oewn
+oewn-algolagnic-a	algolagnic	a	0	1	1	oewn
+oewn-algology-n	algology	n	0	1	1	oewn
+oewn-algometer-n	algometer	n	0	1	1	oewn
+oewn-algometric-a	algometric	a	0	1	1	oewn
+oewn-algometrical-a	algometrical	a	0	1	1	oewn
+oewn-algometry-n	algometry	n	0	1	1	oewn
+oewn-algophilia-n	algophilia	n	0	1	1	oewn
+oewn-algophobia-n	algophobia	n	0	1	1	oewn
+oewn-algophobic-a	algophobic	a	0	1	1	oewn
+oewn-algorism-n	algorism	n	0	1	1	oewn
+oewn-algorithm-n	algorithm	n	0	1	1	oewn
+oewn-algorithm_error-n	algorithm error	n	0	2	2	oewn
+oewn-algorithmic-a	algorithmic	a	0	1	1	oewn
+oewn-algorithmic_language-n	algorithmic language	n	0	2	2	oewn
+oewn-algorithmic_program-n	algorithmic program	n	0	2	2	oewn
+oewn-algorithmic_rule-n	algorithmic rule	n	0	2	2	oewn
+oewn-alhamdulillah-n	alhamdulillah	n	0	1	1	oewn
+oewn-alias-n	alias	n	0	1	1	oewn
+oewn-alias-r	alias	r	0	1	1	oewn
+oewn-alibi-n	alibi	n	0	1	1	oewn
+oewn-alibi-v	alibi	v	0	1	1	oewn
+oewn-alicante_bouschet-n	alicante bouschet	n	0	2	2	oewn
+oewn-alicyclic_compound-n	alicyclic compound	n	0	2	2	oewn
+oewn-alidad-n	alidad	n	0	1	1	oewn
+oewn-alidade-n	alidade	n	0	1	1	oewn
+oewn-alien-a	alien	a	0	1	1	oewn
+oewn-alien-n	alien	n	0	1	1	oewn
+oewn-alien-v	alien	v	0	1	1	oewn
+oewn-alien_absconder-n	alien absconder	n	0	2	2	oewn
+oewn-alienable-a	alienable	a	0	1	1	oewn
+oewn-alienage-n	alienage	n	0	1	1	oewn
+oewn-alienate-v	alienate	v	0	1	1	oewn
+oewn-alienated-a	alienated	a	0	1	1	oewn
+oewn-alienating-a	alienating	a	0	1	1	oewn
+oewn-alienation-n	alienation	n	0	1	1	oewn
+oewn-alienation_of_affection-n	alienation of affection	n	0	3	1	oewn
+oewn-alienator-n	alienator	n	0	1	1	oewn
+oewn-alienee-n	alienee	n	0	1	1	oewn
+oewn-alienism-n	alienism	n	0	1	1	oewn
+oewn-alienist-n	alienist	n	0	1	1	oewn
+oewn-alienor-n	alienor	n	0	1	1	oewn
+oewn-aliform-a	aliform	a	0	1	1	oewn
+oewn-alight-a	alight	a	0	1	1	oewn
+oewn-alight-v	alight	v	0	1	1	oewn
+oewn-align-v	align	v	0	1	1	oewn
+oewn-aligned-a	aligned	a	0	1	1	oewn
+oewn-aligning-a	aligning	a	0	1	1	oewn
+oewn-alignment-n	alignment	n	0	1	1	oewn
+oewn-alike-a	alike	a	0	1	1	oewn
+oewn-alike-r	alike	r	0	1	1	oewn
+oewn-alikeness-n	alikeness	n	0	1	1	oewn
+oewn-aliment-n	aliment	n	0	1	1	oewn
+oewn-aliment-v	aliment	v	0	1	1	oewn
+oewn-alimental-a	alimental	a	0	1	1	oewn
+oewn-alimentary-a	alimentary	a	0	1	1	oewn
+oewn-alimentary_canal-n	alimentary canal	n	0	2	2	oewn
+oewn-alimentary_paste-n	alimentary paste	n	0	2	2	oewn
+oewn-alimentary_tract-n	alimentary tract	n	0	2	2	oewn
+oewn-alimentary_tract_smear-n	alimentary tract smear	n	0	3	3	oewn
+oewn-alimentation-n	alimentation	n	0	1	1	oewn
+oewn-alimentative-a	alimentative	a	0	1	1	oewn
+oewn-alimony-n	alimony	n	0	1	1	oewn
+oewn-aline-v	aline	v	0	1	1	oewn
+oewn-alinement-n	alinement	n	0	1	1	oewn
+oewn-aliphatic-a	aliphatic	a	0	1	1	oewn
+oewn-aliphatic_compound-n	aliphatic compound	n	0	2	2	oewn
+oewn-aliquant-n	aliquant	n	0	1	1	oewn
+oewn-aliquant_part-n	aliquant part	n	0	2	2	oewn
+oewn-aliquot-a	aliquot	a	0	1	1	oewn
+oewn-aliquot-n	aliquot	n	0	1	1	oewn
+oewn-aliquot_part-n	aliquot part	n	0	2	2	oewn
+oewn-aliterate-n	aliterate	n	0	1	1	oewn
+oewn-aliterate_person-n	aliterate person	n	0	2	2	oewn
+oewn-alive-a	alive	a	0	1	1	oewn
+oewn-aliveness-n	aliveness	n	0	1	1	oewn
+oewn-aliyah-n	aliyah	n	0	1	1	oewn
+oewn-alizarin-n	alizarin	n	0	1	1	oewn
+oewn-alizarin_carmine-n	alizarin carmine	n	0	2	2	oewn
+oewn-alizarin_crimson-n	alizarin crimson	n	0	2	2	oewn
+oewn-alizarin_red-n	alizarin red	n	0	2	2	oewn
+oewn-alizarin_yellow-n	alizarin yellow	n	0	2	2	oewn
+oewn-alizarine-n	alizarine	n	0	1	1	oewn
+oewn-alizarine_red-n	alizarine red	n	0	2	2	oewn
+oewn-alkahest-n	alkahest	n	0	1	1	oewn
+oewn-alkahestic-a	alkahestic	a	0	1	1	oewn
+oewn-alkalemia-n	alkalemia	n	0	1	1	oewn
+oewn-alkalescent-a	alkalescent	a	0	1	1	oewn
+oewn-alkali-n	alkali	n	0	1	1	oewn
+oewn-alkali_bee-n	alkali bee	n	0	2	2	oewn
+oewn-alkali_grass-n	alkali grass	n	0	2	2	oewn
+oewn-alkali_metal-n	alkali metal	n	0	2	2	oewn
+oewn-alkali_poisoning-n	alkali poisoning	n	0	2	2	oewn
+oewn-alkalic-a	alkalic	a	0	1	1	oewn
+oewn-alkalify-v	alkalify	v	0	1	1	oewn
+oewn-alkalimetry-n	alkalimetry	n	0	1	1	oewn
+oewn-alkaline-a	alkaline	a	0	1	1	oewn
+oewn-alkaline-earth_metal-n	alkaline-earth metal	n	0	2	2	oewn
+oewn-alkaline-loving-a	alkaline-loving	a	0	1	1	oewn
+oewn-alkaline_earth-n	alkaline earth	n	0	2	2	oewn
+oewn-alkaline_metal-n	alkaline metal	n	0	2	2	oewn
+oewn-alkalinise-v	alkalinise	v	0	1	1	oewn
+oewn-alkalinity-n	alkalinity	n	0	1	1	oewn
+oewn-alkalinize-v	alkalinize	v	0	1	1	oewn
+oewn-alkalinuria-n	alkalinuria	n	0	1	1	oewn
+oewn-alkalise-v	alkalise	v	0	1	1	oewn
+oewn-alkaliser-n	alkaliser	n	0	1	1	oewn
+oewn-alkalize-v	alkalize	v	0	1	1	oewn
+oewn-alkalizer-n	alkalizer	n	0	1	1	oewn
+oewn-alkaloid-n	alkaloid	n	0	1	1	oewn
+oewn-alkaloidal-a	alkaloidal	a	0	1	1	oewn
+oewn-alkalosis-n	alkalosis	n	0	1	1	oewn
+oewn-alkalotic-a	alkalotic	a	0	1	1	oewn
+oewn-alkaluria-n	alkaluria	n	0	1	1	oewn
+oewn-alkane-n	alkane	n	0	1	1	oewn
+oewn-alkane_series-n	alkane series	n	0	2	2	oewn
+oewn-alkanet-n	alkanet	n	0	1	1	oewn
+oewn-alkapton-n	alkapton	n	0	1	1	oewn
+oewn-alkaptonuria-n	alkaptonuria	n	0	1	1	oewn
+oewn-alkene-n	alkene	n	0	1	1	oewn
+oewn-alky-n	alky	n	0	1	1	oewn
+oewn-alkyd-n	alkyd	n	0	1	1	oewn
+oewn-alkyd_resin-n	alkyd resin	n	0	2	2	oewn
+oewn-alkyl-n	alkyl	n	0	1	1	oewn
+oewn-alkyl_group-n	alkyl group	n	0	2	2	oewn
+oewn-alkyl_halide-n	alkyl halide	n	0	2	2	oewn
+oewn-alkyl_radical-n	alkyl radical	n	0	2	2	oewn
+oewn-alkylating_agent-n	alkylating agent	n	0	2	2	oewn
+oewn-alkylbenzene-n	alkylbenzene	n	0	1	1	oewn
+oewn-alkylbenzenesulfonate-n	alkylbenzenesulfonate	n	0	1	1	oewn
+oewn-alkylic-a	alkylic	a	0	1	1	oewn
+oewn-alkyne-n	alkyne	n	0	1	1	oewn
+oewn-all-a	all	a	0	1	1	oewn
+oewn-all-around-a	all-around	a	0	1	1	oewn
+oewn-all-day_sucker-n	all-day sucker	n	0	2	2	oewn
+oewn-all-devouring-a	all-devouring	a	0	1	1	oewn
+oewn-all-embracing-a	all-embracing	a	0	1	1	oewn
+oewn-all-encompassing-a	all-encompassing	a	0	1	1	oewn
+oewn-all-fired-a	all-fired	a	0	1	1	oewn
+oewn-all-fired-r	all-fired	r	0	1	1	oewn
+oewn-all-firedly-r	all-firedly	r	0	1	1	oewn
+oewn-all-important-a	all-important	a	0	1	1	oewn
+oewn-all-inclusive-a	all-inclusive	a	0	1	1	oewn
+oewn-all-knowing-a	all-knowing	a	0	1	1	oewn
+oewn-all-mains-a	all-mains	a	0	1	1	oewn
+oewn-all-metal-a	all-metal	a	0	1	1	oewn
+oewn-all-night-a	all-night	a	0	1	1	oewn
+oewn-all-or-none-a	all-or-none	a	0	1	1	oewn
+oewn-all-or-none_law-n	all-or-none law	n	0	2	2	oewn
+oewn-all-or-nothing-a	all-or-nothing	a	0	1	1	oewn
+oewn-all-out-a	all-out	a	0	1	1	oewn
+oewn-all-powerful-a	all-powerful	a	0	1	1	oewn
+oewn-all-purpose-a	all-purpose	a	0	1	1	oewn
+oewn-all-r	all	r	0	1	1	oewn
+oewn-all-round-a	all-round	a	0	1	1	oewn
+oewn-all-rounder-n	all-rounder	n	0	1	1	oewn
+oewn-all-terrain_bike-n	all-terrain bike	n	0	2	2	oewn
+oewn-all-time-a	all-time	a	0	1	1	oewn
+oewn-all-victorious-a	all-victorious	a	0	1	1	oewn
+oewn-all-weather-a	all-weather	a	0	1	1	oewn
+oewn-all_along-r	all along	r	0	2	2	oewn
+oewn-all_arounder-n	all arounder	n	0	2	2	oewn
+oewn-all_at_once-r	all at once	r	0	3	3	oewn
+oewn-all_clear-n	all clear	n	0	2	2	oewn
+oewn-all_day_long-r	all day long	r	0	3	3	oewn
+oewn-all_fours-n	all fours	n	0	2	2	oewn
+oewn-all_get_out-n	all get out	n	0	3	3	oewn
+oewn-all_important-a	all important	a	0	2	2	oewn
+oewn-all_in-a	all in	a	0	2	2	oewn
+oewn-all_in_all-r	all in all	r	0	3	3	oewn
+oewn-all_of_a_sudden-r	all of a sudden	r	0	4	4	oewn
+oewn-all_over-a	all over	a	0	2	2	oewn
+oewn-all_over-r	all over	r	0	2	2	oewn
+oewn-all_right-a	all right	a	0	2	2	oewn
+oewn-all_right-r	all right	r	0	2	2	oewn
+oewn-all_the_same-r	all the same	r	0	3	3	oewn
+oewn-all_the_time-r	all the time	r	0	3	3	oewn
+oewn-all_the_way-r	all the way	r	0	3	3	oewn
+oewn-all_together-r	all together	r	0	2	2	oewn
+oewn-all_told-r	all told	r	0	2	2	oewn
+oewn-all_too-r	all too	r	0	2	2	oewn
+oewn-alla_breve-n	alla breve	n	0	2	2	oewn
+oewn-allamanda-n	allamanda	n	0	1	1	oewn
+oewn-allantoic-a	allantoic	a	0	1	1	oewn
+oewn-allantoid-a	allantoid	a	0	1	1	oewn
+oewn-allantois-n	allantois	n	0	1	1	oewn
+oewn-allargando-a	allargando	a	0	1	1	oewn
+oewn-allay-v	allay	v	0	1	1	oewn
+oewn-allayer-n	allayer	n	0	1	1	oewn
+oewn-allegation-n	allegation	n	0	1	1	oewn
+oewn-allege-v	allege	v	0	1	1	oewn
+oewn-alleged-a	alleged	a	0	1	1	oewn
+oewn-allegedly-r	allegedly	r	0	1	1	oewn
+oewn-allegement-n	allegement	n	0	1	1	oewn
+oewn-allegiance-n	allegiance	n	0	1	1	oewn
+oewn-allegiant-a	allegiant	a	0	1	1	oewn
+oewn-allegoresis-n	allegoresis	n	0	1	1	oewn
+oewn-allegoric-a	allegoric	a	0	1	1	oewn
+oewn-allegorical-a	allegorical	a	0	1	1	oewn
+oewn-allegorically-r	allegorically	r	0	1	1	oewn
+oewn-allegoricalness-n	allegoricalness	n	0	1	1	oewn
+oewn-allegorise-v	allegorise	v	0	1	1	oewn
+oewn-allegoriser-n	allegoriser	n	0	1	1	oewn
+oewn-allegorize-v	allegorize	v	0	1	1	oewn
+oewn-allegorizer-n	allegorizer	n	0	1	1	oewn
+oewn-allegory-n	allegory	n	0	1	1	oewn
+oewn-allegretto-a	allegretto	a	0	1	1	oewn
+oewn-allegretto-n	allegretto	n	0	1	1	oewn
+oewn-allegretto-r	allegretto	r	0	1	1	oewn
+oewn-allegro-a	allegro	a	0	1	1	oewn
+oewn-allegro-n	allegro	n	0	1	1	oewn
+oewn-allegro-r	allegro	r	0	1	1	oewn
+oewn-allegro_con_spirito-n	allegro con spirito	n	0	3	3	oewn
+oewn-allele-n	allele	n	0	1	1	oewn
+oewn-allelic-a	allelic	a	0	1	1	oewn
+oewn-allelomorph-n	allelomorph	n	0	1	1	oewn
+oewn-allelomorphic-a	allelomorphic	a	0	1	1	oewn
+oewn-allemande-n	allemande	n	0	1	1	oewn
+oewn-allemande_sauce-n	allemande sauce	n	0	2	2	oewn
+oewn-allergen-n	allergen	n	0	1	1	oewn
+oewn-allergenic-a	allergenic	a	0	1	1	oewn
+oewn-allergic-a	allergic	a	0	1	1	oewn
+oewn-allergic_eczema-n	allergic eczema	n	0	2	2	oewn
+oewn-allergic_reaction-n	allergic reaction	n	0	2	2	oewn
+oewn-allergic_rhinitis-n	allergic rhinitis	n	0	2	2	oewn
+oewn-allergist-n	allergist	n	0	1	1	oewn
+oewn-allergology-n	allergology	n	0	1	1	oewn
+oewn-allergy-n	allergy	n	0	1	1	oewn
+oewn-allergy_diet-n	allergy diet	n	0	2	2	oewn
+oewn-alleviant-n	alleviant	n	0	1	1	oewn
+oewn-alleviate-v	alleviate	v	0	1	1	oewn
+oewn-alleviated-a	alleviated	a	0	1	1	oewn
+oewn-alleviation-n	alleviation	n	0	1	1	oewn
+oewn-alleviative-a	alleviative	a	0	1	1	oewn
+oewn-alleviator-n	alleviator	n	0	1	1	oewn
+oewn-alleviatory-a	alleviatory	a	0	1	1	oewn
+oewn-alley-n	alley	n	0	1	1	oewn
+oewn-alley_cat-n	alley cat	n	0	2	2	oewn
+oewn-alleyway-n	alleyway	n	0	1	1	oewn
+oewn-allgood-n	allgood	n	0	1	1	oewn
+oewn-alliaceous-a	alliaceous	a	0	1	1	oewn
+oewn-alliaceous_plant-n	alliaceous plant	n	0	2	2	oewn
+oewn-alliance-n	alliance	n	0	1	1	oewn
+oewn-allice-n	allice	n	0	1	1	oewn
+oewn-allice_shad-n	allice shad	n	0	2	2	oewn
+oewn-allied-a	allied	a	0	1	1	oewn
+oewn-allies-n	allies	n	0	1	1	oewn
+oewn-alligator-n	alligator	n	0	1	1	oewn
+oewn-alligator-v	alligator	v	0	1	1	oewn
+oewn-alligator_clip-n	alligator clip	n	0	2	2	oewn
+oewn-alligator_grass-n	alligator grass	n	0	2	2	oewn
+oewn-alligator_lizard-n	alligator lizard	n	0	2	2	oewn
+oewn-alligator_pear-n	alligator pear	n	0	2	2	oewn
+oewn-alligator_snapper-n	alligator snapper	n	0	2	2	oewn
+oewn-alligator_snapping_turtle-n	alligator snapping turtle	n	0	3	3	oewn
+oewn-alligator_weed-n	alligator weed	n	0	2	2	oewn
+oewn-alligator_wrench-n	alligator wrench	n	0	2	2	oewn
+oewn-alligatored-a	alligatored	a	0	1	1	oewn
+oewn-alligatorfish-n	alligatorfish	n	0	1	1	oewn
+oewn-allis-n	allis	n	0	1	1	oewn
+oewn-allis_shad-n	allis shad	n	0	2	2	oewn
+oewn-alliterate-v	alliterate	v	0	1	1	oewn
+oewn-alliteration-n	alliteration	n	0	1	1	oewn
+oewn-alliterative-a	alliterative	a	0	1	1	oewn
+oewn-alliteratively-r	alliteratively	r	0	1	1	oewn
+oewn-alliterator-n	alliterator	n	0	1	1	oewn
+oewn-allmouth-n	allmouth	n	0	1	1	oewn
+oewn-alloantibody-n	alloantibody	n	0	1	1	oewn
+oewn-allocable-a	allocable	a	0	1	1	oewn
+oewn-allocatable-a	allocatable	a	0	1	1	oewn
+oewn-allocate-v	allocate	v	0	1	1	oewn
+oewn-allocation-n	allocation	n	0	1	1	oewn
+oewn-allocation_unit-n	allocation unit	n	0	2	2	oewn
+oewn-allocator-n	allocator	n	0	1	1	oewn
+oewn-allochronic-a	allochronic	a	0	1	1	oewn
+oewn-allochthonous-a	allochthonous	a	0	1	1	oewn
+oewn-allocution-n	allocution	n	0	1	1	oewn
+oewn-allogamous-a	allogamous	a	0	1	1	oewn
+oewn-allogamy-n	allogamy	n	0	1	1	oewn
+oewn-allogeneic-a	allogeneic	a	0	1	1	oewn
+oewn-allograft-n	allograft	n	0	1	1	oewn
+oewn-allograph-n	allograph	n	0	1	1	oewn
+oewn-allographic-a	allographic	a	0	1	1	oewn
+oewn-allomerism-n	allomerism	n	0	1	1	oewn
+oewn-allomerous-a	allomerous	a	0	1	1	oewn
+oewn-allometric-a	allometric	a	0	1	1	oewn
+oewn-allometry-n	allometry	n	0	1	1	oewn
+oewn-allomorph-n	allomorph	n	0	1	1	oewn
+oewn-allomorphic-a	allomorphic	a	0	1	1	oewn
+oewn-allopathic-a	allopathic	a	0	1	1	oewn
+oewn-allopathy-n	allopathy	n	0	1	1	oewn
+oewn-allopatric-a	allopatric	a	0	1	1	oewn
+oewn-allopatry-n	allopatry	n	0	1	1	oewn
+oewn-allophone-n	allophone	n	0	1	1	oewn
+oewn-allophonic-a	allophonic	a	0	1	1	oewn
+oewn-allopurinol-n	allopurinol	n	0	1	1	oewn
+oewn-allosaur-n	allosaur	n	0	1	1	oewn
+oewn-allosaurus-n	allosaurus	n	0	1	1	oewn
+oewn-allot-v	allot	v	0	1	1	oewn
+oewn-allotment-n	allotment	n	0	1	1	oewn
+oewn-allotrope-n	allotrope	n	0	1	1	oewn
+oewn-allotropic-a	allotropic	a	0	1	1	oewn
+oewn-allotropical-a	allotropical	a	0	1	1	oewn
+oewn-allotropism-n	allotropism	n	0	1	1	oewn
+oewn-allotropy-n	allotropy	n	0	1	1	oewn
+oewn-allotted-a	allotted	a	0	1	1	oewn
+oewn-allover-a	allover	a	0	1	1	oewn
+oewn-allow-v	allow	v	0	1	1	oewn
+oewn-allow_for-v	allow for	v	0	2	1	oewn
+oewn-allow_in-v	allow in	v	0	2	1	oewn
+oewn-allowable-a	allowable	a	0	1	1	oewn
+oewn-allowably-r	allowably	r	0	1	1	oewn
+oewn-allowance-n	allowance	n	0	1	1	oewn
+oewn-allowance-v	allowance	v	0	1	1	oewn
+oewn-allowance_account-n	allowance account	n	0	2	2	oewn
+oewn-alloy-n	alloy	n	0	1	1	oewn
+oewn-alloy-v	alloy	v	0	1	1	oewn
+oewn-alloy_cast_iron-n	alloy cast iron	n	0	3	3	oewn
+oewn-alloy_iron-n	alloy iron	n	0	2	2	oewn
+oewn-alloy_steel-n	alloy steel	n	0	2	2	oewn
+oewn-alloyed-a	alloyed	a	0	1	1	oewn
+oewn-allspice-n	allspice	n	0	1	1	oewn
+oewn-allspice_tree-n	allspice tree	n	0	2	2	oewn
+oewn-allude-v	allude	v	0	1	1	oewn
+oewn-allure-n	allure	n	0	1	1	oewn
+oewn-allure-v	allure	v	0	1	1	oewn
+oewn-allurement-n	allurement	n	0	1	1	oewn
+oewn-alluring-a	alluring	a	0	1	1	oewn
+oewn-allusion-n	allusion	n	0	1	1	oewn
+oewn-allusive-a	allusive	a	0	1	1	oewn
+oewn-allusiveness-n	allusiveness	n	0	1	1	oewn
+oewn-alluvial-a	alluvial	a	0	1	1	oewn
+oewn-alluvial_cone-n	alluvial cone	n	0	2	2	oewn
+oewn-alluvial_deposit-n	alluvial deposit	n	0	2	2	oewn
+oewn-alluvial_fan-n	alluvial fan	n	0	2	2	oewn
+oewn-alluvial_flat-n	alluvial flat	n	0	2	2	oewn
+oewn-alluvial_plain-n	alluvial plain	n	0	2	2	oewn
+oewn-alluvial_sediment-n	alluvial sediment	n	0	2	2	oewn
+oewn-alluvial_soil-n	alluvial soil	n	0	2	2	oewn
+oewn-alluviation-n	alluviation	n	0	1	1	oewn
+oewn-alluvion-n	alluvion	n	0	1	1	oewn
+oewn-alluvium-n	alluvium	n	0	1	1	oewn
+oewn-ally-n	ally	n	0	1	1	oewn
+oewn-ally-v	ally	v	0	1	1	oewn
+oewn-ally_with-v	ally with	v	0	2	1	oewn
+oewn-allyl-n	allyl	n	0	1	1	oewn
+oewn-allyl_alcohol-n	allyl alcohol	n	0	2	2	oewn
+oewn-allyl_group-n	allyl group	n	0	2	2	oewn
+oewn-allyl_radical-n	allyl radical	n	0	2	2	oewn
+oewn-allyl_resin-n	allyl resin	n	0	2	2	oewn
+oewn-allylic-a	allylic	a	0	1	1	oewn
+oewn-alma_mater-n	alma mater	n	0	2	2	oewn
+oewn-almanac-n	almanac	n	0	1	1	oewn
+oewn-almandine-n	almandine	n	0	1	1	oewn
+oewn-almandite-n	almandite	n	0	1	1	oewn
+oewn-almighty-a	almighty	a	0	1	1	oewn
+oewn-almond-eyed-a	almond-eyed	a	0	1	1	oewn
+oewn-almond-leaves_willow-n	almond-leaves willow	n	0	2	2	oewn
+oewn-almond-n	almond	n	0	1	1	oewn
+oewn-almond-scented-a	almond-scented	a	0	1	1	oewn
+oewn-almond-shaped-a	almond-shaped	a	0	1	1	oewn
+oewn-almond_cookie-n	almond cookie	n	0	2	2	oewn
+oewn-almond_crescent-n	almond crescent	n	0	2	2	oewn
+oewn-almond_extract-n	almond extract	n	0	2	2	oewn
+oewn-almond_moth-n	almond moth	n	0	2	2	oewn
+oewn-almond_oil-n	almond oil	n	0	2	2	oewn
+oewn-almond_tree-n	almond tree	n	0	2	2	oewn
+oewn-almond_willow-n	almond willow	n	0	2	2	oewn
+oewn-almoner-n	almoner	n	0	1	1	oewn
+oewn-almost-r	almost	r	0	1	1	oewn
+oewn-alms-giving-n	alms-giving	n	0	1	1	oewn
+oewn-alms-n	alms	n	0	1	1	oewn
+oewn-alms_box-n	alms box	n	0	2	2	oewn
+oewn-alms_dish-n	alms dish	n	0	2	2	oewn
+oewn-alms_tray-n	alms tray	n	0	2	2	oewn
+oewn-almsgiver-n	almsgiver	n	0	1	1	oewn
+oewn-almsgiving-n	almsgiving	n	0	1	1	oewn
+oewn-alocasia-n	alocasia	n	0	1	1	oewn
+oewn-aloe-n	aloe	n	0	1	1	oewn
+oewn-aloes-n	aloes	n	0	1	1	oewn
+oewn-aloft-r	aloft	r	0	1	1	oewn
+oewn-aloha-n	aloha	n	0	1	1	oewn
+oewn-alone-a	alone	a	0	1	1	oewn
+oewn-alone-r	alone	r	0	1	1	oewn
+oewn-aloneness-n	aloneness	n	0	1	1	oewn
+oewn-along-r	along	r	0	1	1	oewn
+oewn-alongside-r	alongside	r	0	1	1	oewn
+oewn-aloof-a	aloof	a	0	1	1	oewn
+oewn-aloof-r	aloof	r	0	1	1	oewn
+oewn-aloofness-n	aloofness	n	0	1	1	oewn
+oewn-alopecia-n	alopecia	n	0	1	1	oewn
+oewn-alopecia_areata-n	alopecia areata	n	0	2	2	oewn
+oewn-alopecic-a	alopecic	a	0	1	1	oewn
+oewn-aloud-r	aloud	r	0	1	1	oewn
+oewn-alp-n	alp	n	0	1	1	oewn
+oewn-alpaca-n	alpaca	n	0	1	1	oewn
+oewn-alpenstock-n	alpenstock	n	0	1	1	oewn
+oewn-alpestrine-a	alpestrine	a	0	1	1	oewn
+oewn-alpha-Fe-n	alpha-Fe	n	0	1	1	oewn
+oewn-alpha-Terpinene-n	alpha-Terpinene	n	0	1	1	oewn
+oewn-alpha-a	alpha	a	0	1	1	oewn
+oewn-alpha-adrenergic_blocker-n	alpha-adrenergic blocker	n	0	2	2	oewn
+oewn-alpha-adrenergic_blocking_agent-n	alpha-adrenergic blocking agent	n	0	3	3	oewn
+oewn-alpha-adrenergic_receptor-n	alpha-adrenergic receptor	n	0	2	2	oewn
+oewn-alpha-adrenoceptor-n	alpha-adrenoceptor	n	0	1	1	oewn
+oewn-alpha-beta_brass-n	alpha-beta brass	n	0	2	2	oewn
+oewn-alpha-blocker-n	alpha-blocker	n	0	1	1	oewn
+oewn-alpha-ferrite-n	alpha-ferrite	n	0	1	1	oewn
+oewn-alpha-interferon-n	alpha-interferon	n	0	1	1	oewn
+oewn-alpha-linolenic_acid-n	alpha-linolenic acid	n	0	2	2	oewn
+oewn-alpha-lipoprotein-n	alpha-lipoprotein	n	0	1	1	oewn
+oewn-alpha-n	alpha	n	0	1	1	oewn
+oewn-alpha-naphthol-n	alpha-naphthol	n	0	1	1	oewn
+oewn-alpha-naphthol_test-n	alpha-naphthol test	n	0	2	2	oewn
+oewn-alpha-tocopheral-n	alpha-tocopheral	n	0	1	1	oewn
+oewn-alpha_and_omega-n	alpha and omega	n	0	3	3	oewn
+oewn-alpha_blocker-n	alpha blocker	n	0	2	2	oewn
+oewn-alpha_brass-n	alpha brass	n	0	2	2	oewn
+oewn-alpha_bronze-n	alpha bronze	n	0	2	2	oewn
+oewn-alpha_decay-n	alpha decay	n	0	2	2	oewn
+oewn-alpha_fetoprotein-n	alpha fetoprotein	n	0	2	2	oewn
+oewn-alpha_foetoprotein-n	alpha foetoprotein	n	0	2	2	oewn
+oewn-alpha_globulin-n	alpha globulin	n	0	2	2	oewn
+oewn-alpha_iron-n	alpha iron	n	0	2	2	oewn
+oewn-alpha_methyl_dopa-n	alpha methyl dopa	n	0	3	3	oewn
+oewn-alpha_particle-n	alpha particle	n	0	2	2	oewn
+oewn-alpha_privative-n	alpha privative	n	0	2	2	oewn
+oewn-alpha_radiation-n	alpha radiation	n	0	2	2	oewn
+oewn-alpha_ray-n	alpha ray	n	0	2	2	oewn
+oewn-alpha_receptor-n	alpha receptor	n	0	2	2	oewn
+oewn-alpha_rhythm-n	alpha rhythm	n	0	2	2	oewn
+oewn-alpha_software-n	alpha software	n	0	2	2	oewn
+oewn-alpha_test-n	alpha test	n	0	2	2	oewn
+oewn-alpha_wave-n	alpha wave	n	0	2	2	oewn
+oewn-alphabet-n	alphabet	n	0	1	1	oewn
+oewn-alphabet_soup-n	alphabet soup	n	0	2	2	oewn
+oewn-alphabetic-a	alphabetic	a	0	1	1	oewn
+oewn-alphabetic_character-n	alphabetic character	n	0	2	2	oewn
+oewn-alphabetic_script-n	alphabetic script	n	0	2	2	oewn
+oewn-alphabetic_writing-n	alphabetic writing	n	0	2	2	oewn
+oewn-alphabetical-a	alphabetical	a	0	1	1	oewn
+oewn-alphabetically-r	alphabetically	r	0	1	1	oewn
+oewn-alphabetisation-n	alphabetisation	n	0	1	1	oewn
+oewn-alphabetise-v	alphabetise	v	0	1	1	oewn
+oewn-alphabetised-a	alphabetised	a	0	1	1	oewn
+oewn-alphabetiser-n	alphabetiser	n	0	1	1	oewn
+oewn-alphabetization-n	alphabetization	n	0	1	1	oewn
+oewn-alphabetize-v	alphabetize	v	0	1	1	oewn
+oewn-alphabetized-a	alphabetized	a	0	1	1	oewn
+oewn-alphabetizer-n	alphabetizer	n	0	1	1	oewn
+oewn-alphameric-a	alphameric	a	0	1	1	oewn
+oewn-alphamerical-a	alphamerical	a	0	1	1	oewn
+oewn-alphanumeric-a	alphanumeric	a	0	1	1	oewn
+oewn-alphanumeric_characters-n	alphanumeric characters	n	0	2	2	oewn
+oewn-alphanumeric_display-n	alphanumeric display	n	0	2	2	oewn
+oewn-alphanumerical-a	alphanumerical	a	0	1	1	oewn
+oewn-alphanumerics-n	alphanumerics	n	0	1	1	oewn
+oewn-alphavirus-n	alphavirus	n	0	1	1	oewn
+oewn-alpine-a	alpine	a	0	1	1	oewn
+oewn-alpine_ash-n	alpine ash	n	0	2	2	oewn
+oewn-alpine_azalea-n	alpine azalea	n	0	2	2	oewn
+oewn-alpine_bearberry-n	alpine bearberry	n	0	2	2	oewn
+oewn-alpine_clover-n	alpine clover	n	0	2	2	oewn
+oewn-alpine_clubmoss-n	alpine clubmoss	n	0	2	2	oewn
+oewn-alpine_coltsfoot-n	alpine coltsfoot	n	0	2	2	oewn
+oewn-alpine_gold-n	alpine gold	n	0	2	2	oewn
+oewn-alpine_goldenrod-n	alpine goldenrod	n	0	2	2	oewn
+oewn-alpine_hulsea-n	alpine hulsea	n	0	2	2	oewn
+oewn-alpine_milk_vetch-n	alpine milk vetch	n	0	3	3	oewn
+oewn-alpine_salamander-n	alpine salamander	n	0	2	2	oewn
+oewn-alpine_sunflower-n	alpine sunflower	n	0	2	2	oewn
+oewn-alpine_totara-n	alpine totara	n	0	2	2	oewn
+oewn-alpinist-n	alpinist	n	0	1	1	oewn
+oewn-alprazolam-n	alprazolam	n	0	1	1	oewn
+oewn-already-r	already	r	0	1	1	oewn
+oewn-alright-a	alright	a	0	1	1	oewn
+oewn-alright-r	alright	r	0	1	1	oewn
+oewn-alsatian-n	alsatian	n	0	1	1	oewn
+oewn-also-r	also	r	0	1	1	oewn
+oewn-also-ran-n	also-ran	n	0	1	1	oewn
+oewn-also_known_as-r	also known as	r	0	3	3	oewn
+oewn-alstroemeria-n	alstroemeria	n	0	1	1	oewn
+oewn-altar-n	altar	n	0	1	1	oewn
+oewn-altar_boy-n	altar boy	n	0	2	2	oewn
+oewn-altar_girl-n	altar girl	n	0	2	2	oewn
+oewn-altar_wine-n	altar wine	n	0	2	2	oewn
+oewn-altarpiece-n	altarpiece	n	0	1	1	oewn
+oewn-altazimuth-n	altazimuth	n	0	1	1	oewn
+oewn-altcoin-n	altcoin	n	0	1	1	oewn
+oewn-alter-v	alter	v	0	1	1	oewn
+oewn-alter_ego-n	alter ego	n	0	2	2	oewn
+oewn-alterability-n	alterability	n	0	1	1	oewn
+oewn-alterable-a	alterable	a	0	1	1	oewn
+oewn-alteration-n	alteration	n	0	1	1	oewn
+oewn-alterative-a	alterative	a	0	1	1	oewn
+oewn-altercate-v	altercate	v	0	1	1	oewn
+oewn-altercation-n	altercation	n	0	1	1	oewn
+oewn-altered-a	altered	a	0	1	1	oewn
+oewn-altering-n	altering	n	0	1	1	oewn
+oewn-alternate-a	alternate	a	0	1	1	oewn
+oewn-alternate-n	alternate	n	0	1	1	oewn
+oewn-alternate-v	alternate	v	0	1	1	oewn
+oewn-alternately-r	alternately	r	0	1	1	oewn
+oewn-alternating-a	alternating	a	0	1	1	oewn
+oewn-alternating_current-n	alternating current	n	0	2	2	oewn
+oewn-alternating_electric_current-n	alternating electric current	n	0	3	3	oewn
+oewn-alternation-n	alternation	n	0	1	1	oewn
+oewn-alternation_of_generations-n	alternation of generations	n	0	3	1	oewn
+oewn-alternative-a	alternative	a	0	1	1	oewn
+oewn-alternative-n	alternative	n	0	1	1	oewn
+oewn-alternative_birth-n	alternative birth	n	0	2	2	oewn
+oewn-alternative_birthing-n	alternative birthing	n	0	2	2	oewn
+oewn-alternative_energy-n	alternative energy	n	0	2	2	oewn
+oewn-alternative_medicine-n	alternative medicine	n	0	2	2	oewn
+oewn-alternative_pleading-n	alternative pleading	n	0	2	2	oewn
+oewn-alternatively-r	alternatively	r	0	1	1	oewn
+oewn-alternator-n	alternator	n	0	1	1	oewn
+oewn-althaea-n	althaea	n	0	1	1	oewn
+oewn-althea-n	althea	n	0	1	1	oewn
+oewn-altimeter-n	altimeter	n	0	1	1	oewn
+oewn-altissimo-a	altissimo	a	0	1	1	oewn
+oewn-altitude-n	altitude	n	0	1	1	oewn
+oewn-altitude_sickness-n	altitude sickness	n	0	2	2	oewn
+oewn-altitudinal-a	altitudinal	a	0	1	1	oewn
+oewn-altitudinous-a	altitudinous	a	0	1	1	oewn
+oewn-alto-a	alto	a	0	1	1	oewn
+oewn-alto-n	alto	n	0	1	1	oewn
+oewn-alto_clef-n	alto clef	n	0	2	2	oewn
+oewn-alto_relievo-n	alto relievo	n	0	2	2	oewn
+oewn-alto_rilievo-n	alto rilievo	n	0	2	2	oewn
+oewn-alto_saxophonist-n	alto saxophonist	n	0	2	2	oewn
+oewn-altocumulus-n	altocumulus	n	0	1	1	oewn
+oewn-altocumulus_cloud-n	altocumulus cloud	n	0	2	2	oewn
+oewn-altogether-n	altogether	n	0	1	1	oewn
+oewn-altogether-r	altogether	r	0	1	1	oewn
+oewn-altoist-n	altoist	n	0	1	1	oewn
+oewn-altostratus-n	altostratus	n	0	1	1	oewn
+oewn-altostratus_cloud-n	altostratus cloud	n	0	2	2	oewn
+oewn-altricial-a	altricial	a	0	1	1	oewn
+oewn-altruism-n	altruism	n	0	1	1	oewn
+oewn-altruist-n	altruist	n	0	1	1	oewn
+oewn-altruistic-a	altruistic	a	0	1	1	oewn
+oewn-altruistically-r	altruistically	r	0	1	1	oewn
+oewn-alula-n	alula	n	0	1	1	oewn
+oewn-alular-a	alular	a	0	1	1	oewn
+oewn-alum-n-1	alum	n	1	1	1	oewn
+oewn-alum-n-2	alum	n	2	1	1	oewn
+oewn-alumbloom-n	alumbloom	n	0	1	1	oewn
+oewn-alumina-n	alumina	n	0	1	1	oewn
+oewn-aluminate-n	aluminate	n	0	1	1	oewn
+oewn-aluminiferous-a	aluminiferous	a	0	1	1	oewn
+oewn-aluminise-v	aluminise	v	0	1	1	oewn
+oewn-aluminium-n	aluminium	n	0	1	1	oewn
+oewn-aluminium_bronze-n	aluminium bronze	n	0	2	2	oewn
+oewn-aluminium_chloride-n	aluminium chloride	n	0	2	2	oewn
+oewn-aluminium_foil-n	aluminium foil	n	0	2	2	oewn
+oewn-aluminium_hydroxide-n	aluminium hydroxide	n	0	2	2	oewn
+oewn-aluminium_nitrate-n	aluminium nitrate	n	0	2	2	oewn
+oewn-aluminium_oxide-n	aluminium oxide	n	0	2	2	oewn
+oewn-aluminize-v	aluminize	v	0	1	1	oewn
+oewn-aluminous-a	aluminous	a	0	1	1	oewn
+oewn-aluminum-n	aluminum	n	0	1	1	oewn
+oewn-aluminum_bronze-n	aluminum bronze	n	0	2	2	oewn
+oewn-aluminum_business-n	aluminum business	n	0	2	2	oewn
+oewn-aluminum_chloride-n	aluminum chloride	n	0	2	2	oewn
+oewn-aluminum_foil-n	aluminum foil	n	0	2	2	oewn
+oewn-aluminum_hydroxide-n	aluminum hydroxide	n	0	2	2	oewn
+oewn-aluminum_industry-n	aluminum industry	n	0	2	2	oewn
+oewn-aluminum_oxide-n	aluminum oxide	n	0	2	2	oewn
+oewn-alumna-n	alumna	n	0	1	1	oewn
+oewn-alumnus-n	alumnus	n	0	1	1	oewn
+oewn-alumroot-n	alumroot	n	0	1	1	oewn
+oewn-alundum-n	alundum	n	0	1	1	oewn
+oewn-alveolar-a	alveolar	a	0	1	1	oewn
+oewn-alveolar-n	alveolar	n	0	1	1	oewn
+oewn-alveolar_arch-n	alveolar arch	n	0	2	2	oewn
+oewn-alveolar_artery-n	alveolar artery	n	0	2	2	oewn
+oewn-alveolar_bed-n	alveolar bed	n	0	2	2	oewn
+oewn-alveolar_consonant-n	alveolar consonant	n	0	2	2	oewn
+oewn-alveolar_ectasia-n	alveolar ectasia	n	0	2	2	oewn
+oewn-alveolar_point-n	alveolar point	n	0	2	2	oewn
+oewn-alveolar_process-n	alveolar process	n	0	2	2	oewn
+oewn-alveolar_resorption-n	alveolar resorption	n	0	2	2	oewn
+oewn-alveolar_rhabdomyosarcoma-n	alveolar rhabdomyosarcoma	n	0	2	2	oewn
+oewn-alveolar_rhabdosarcoma-n	alveolar rhabdosarcoma	n	0	2	2	oewn
+oewn-alveolar_ridge-n	alveolar ridge	n	0	2	2	oewn
+oewn-alveolate-a	alveolate	a	0	1	1	oewn
+oewn-alveolitis-n	alveolitis	n	0	1	1	oewn
+oewn-alveolus-n	alveolus	n	0	1	1	oewn
+oewn-alvine-a	alvine	a	0	1	1	oewn
+oewn-always-r	always	r	0	1	1	oewn
+oewn-alyssum-n	alyssum	n	0	1	1	oewn

@@ -1,0 +1,108 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00030046-s	s	oewn-00029456-a	adj.all
+oewn-00046234-a	a		adj.all
+oewn-00123882-v	v		verb.change
+oewn-00184353-a	a		adj.all
+oewn-00204602-n	n		noun.act
+oewn-00204871-n	n		noun.act
+oewn-00268567-r	r		adv.all
+oewn-00277821-r	r		adv.all
+oewn-00277958-r	r		adv.all
+oewn-00344599-a	a		adj.all
+oewn-00371222-s	s	oewn-00367771-a	adj.all
+oewn-00385466-n	n		noun.act
+oewn-00433629-n	n		noun.act
+oewn-00488278-s	s	oewn-00487699-a	adj.all
+oewn-00641660-v	v		verb.cognition
+oewn-00691351-s	s	oewn-00690633-a	adj.all
+oewn-00702744-n	n		noun.act
+oewn-00759878-n	n		noun.act
+oewn-00781209-s	s	oewn-00780977-a	adj.all
+oewn-00813037-v	v		verb.communication
+oewn-00821584-v	v		verb.communication
+oewn-00889495-s	s	oewn-00888937-a	adj.all
+oewn-00891770-s	s	oewn-00891011-a	adj.all
+oewn-00943420-n	n		noun.act
+oewn-01066320-s	s	oewn-01065188-a	adj.all
+oewn-01079662-n	n		noun.act
+oewn-01155952-v	v		verb.competition
+oewn-01163877-v	v		verb.consumption
+oewn-01192356-v	v		verb.consumption
+oewn-01196102-v	v		verb.consumption
+oewn-01536076-s	s	oewn-01535494-a	adj.all
+oewn-01598728-s	s	oewn-01598231-a	adj.all
+oewn-01599054-s	s	oewn-01598231-a	adj.all
+oewn-01599393-s	s	oewn-01598231-a	adj.all
+oewn-01677616-s	s	oewn-01677162-a	adj.all
+oewn-01691548-s	s	oewn-01691099-a	adj.all
+oewn-01944952-v	v		verb.motion
+oewn-01970713-v	v		verb.motion
+oewn-02035962-v	v		verb.motion
+oewn-02038356-v	v		verb.motion
+oewn-02039365-n	n		noun.animal
+oewn-02458770-v	v		verb.social
+oewn-02468933-v	v		verb.social
+oewn-02503227-n	n		noun.animal
+oewn-02532960-v	v		verb.social
+oewn-02554745-v	v		verb.social
+oewn-02651473-v	v		verb.stative
+oewn-02664511-a	a		adj.pert
+oewn-02664629-a	a		adj.pert
+oewn-02664740-a	a		adj.pert
+oewn-02664921-a	a		adj.pert
+oewn-02665019-a	a		adj.pert
+oewn-02665147-a	a		adj.pert
+oewn-02665253-a	a		adj.pert
+oewn-02665357-a	a		adj.pert
+oewn-02766477-n	n		noun.artifact
+oewn-02766609-n	n		noun.artifact
+oewn-02885357-a	a		adj.pert
+oewn-02937832-a	a		adj.pert
+oewn-02945300-n	n		noun.artifact
+oewn-03009140-a	a		adj.pert
+oewn-03159292-a	a		adj.ppl
+oewn-04802310-n	n		noun.attribute
+oewn-04952935-n	n		noun.attribute
+oewn-05006566-n	n		noun.attribute
+oewn-05152820-n	n		noun.attribute
+oewn-05157079-n	n		noun.attribute
+oewn-05766904-n	n		noun.cognition
+oewn-05840437-n	n		noun.cognition
+oewn-05865563-n	n		noun.cognition
+oewn-05883548-n	n		noun.cognition
+oewn-06031110-n	n		noun.cognition
+oewn-06106838-n	n		noun.cognition
+oewn-06363708-n	n		noun.communication
+oewn-06986601-n	n		noun.communication
+oewn-07299741-n	n		noun.event
+oewn-07311994-n	n		noun.event
+oewn-07419737-n	n		noun.event
+oewn-07570749-n	n		noun.feeling
+oewn-08010085-n	n		noun.group
+oewn-08084054-n	n		noun.group
+oewn-08482569-n	n		noun.group
+oewn-09553360-n	n		noun.person
+oewn-09845476-n	n		noun.person
+oewn-09846100-n	n		noun.person
+oewn-10438047-n	n		noun.person
+oewn-11727230-n	n		noun.plant
+oewn-12130602-n	n		noun.plant
+oewn-12130753-n	n		noun.plant
+oewn-12130869-n	n		noun.plant
+oewn-12472071-n	n		noun.plant
+oewn-12520262-n	n		noun.plant
+oewn-12652092-n	n		noun.plant
+oewn-12725103-n	n		noun.plant
+oewn-12725273-n	n		noun.plant
+oewn-12936328-n	n		noun.plant
+oewn-12936571-n	n		noun.plant
+oewn-13607022-n	n		noun.quantity
+oewn-13712654-n	n		noun.quantity
+oewn-13738026-n	n		noun.quantity
+oewn-13738189-n	n		noun.quantity
+oewn-13842867-n	n		noun.relation
+oewn-14222058-n	n		noun.state
+oewn-14524756-n	n		noun.state
+oewn-15089127-n	n		noun.substance
+oewn-92412444-n	n		noun.possession
+oewn-92436720-n	n		noun.cognition

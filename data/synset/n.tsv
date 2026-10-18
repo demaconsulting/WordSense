@@ -1,0 +1,2286 @@
+synset_id	pos	head_synset_id	lexfile
+dema-syn-nominate-a-1	a		
+oewn-00003356-a	a		adj.all
+oewn-00004565-r	r		adv.all
+oewn-00004669-r	r		adv.all
+oewn-00007832-a	a		adj.all
+oewn-00008614-a	a		adj.all
+oewn-00016566-v	v		verb.body
+oewn-00016695-v	v		verb.body
+oewn-00019226-n	n		noun.Tops
+oewn-00019308-n	n		noun.Tops
+oewn-00021214-r	r		adv.all
+oewn-00021914-n	n		noun.Tops
+oewn-00024432-r	r		adv.all
+oewn-00024616-r	r		adv.all
+oewn-00024715-r	r		adv.all
+oewn-00024946-r	r		adv.all
+oewn-00025041-r	r		adv.all
+oewn-00025079-s	s	oewn-00024914-a	adj.all
+oewn-00025873-r	r		adv.all
+oewn-00031911-r	r		adv.all
+oewn-00042544-r	r		adv.all
+oewn-00048174-a	a		adj.all
+oewn-00049013-r	r		adv.all
+oewn-00049640-r	r		adv.all
+oewn-00049971-r	r		adv.all
+oewn-00050223-r	r		adv.all
+oewn-00050296-r	r		adv.all
+oewn-00050427-r	r		adv.all
+oewn-00051219-r	r		adv.all
+oewn-00054252-v	v		verb.body
+oewn-00054750-r	r		adv.all
+oewn-00055148-a	a		adj.all
+oewn-00055281-s	s	oewn-00055148-a	adj.all
+oewn-00055382-s	s	oewn-00055148-a	adj.all
+oewn-00064624-s	s	oewn-00063536-a	adj.all
+oewn-00067036-n	n		noun.act
+oewn-00067973-n	n		noun.act
+oewn-00071721-r	r		adv.all
+oewn-00076123-a	a		adj.all
+oewn-00080458-v	v		verb.body
+oewn-00081288-s	s	oewn-00078253-a	adj.all
+oewn-00081294-n	n		noun.act
+oewn-00085259-v	v		verb.body
+oewn-00085425-a	a		adj.all
+oewn-00085462-n	n		noun.act
+oewn-00089477-s	s	oewn-00089343-a	adj.all
+oewn-00091262-s	s	oewn-00090040-a	adj.all
+oewn-00095092-s	s	oewn-00094663-a	adj.all
+oewn-00095177-s	s	oewn-00094663-a	adj.all
+oewn-00098896-s	s	oewn-00096133-a	adj.all
+oewn-00107003-r	r		adv.all
+oewn-00107917-r	r		adv.all
+oewn-00119262-s	s	oewn-00119049-a	adj.all
+oewn-00121594-s	s	oewn-00121384-a	adj.all
+oewn-00125896-r	r		adv.all
+oewn-00129027-s	s	oewn-00128168-a	adj.all
+oewn-00129647-r	r		adv.all
+oewn-00129805-s	s	oewn-00129644-a	adj.all
+oewn-00130101-a	a		adj.all
+oewn-00134663-r	r		adv.all
+oewn-00136477-r	r		adv.all
+oewn-00137571-r	r		adv.all
+oewn-00140076-r	r		adv.all
+oewn-00141437-r	r		adv.all
+oewn-00141705-a	a		adj.all
+oewn-00142790-a	a		adj.all
+oewn-00143215-a	a		adj.all
+oewn-00144401-r	r		adv.all
+oewn-00144491-r	r		adv.all
+oewn-00151192-r	r		adv.all
+oewn-00154507-a	a		adj.all
+oewn-00158346-s	s	oewn-00158105-a	adj.all
+oewn-00159114-a	a		adj.all
+oewn-00164973-n	n		noun.act
+oewn-00170319-r	r		adv.all
+oewn-00174955-a	a		adj.all
+oewn-00181543-r	r		adv.all
+oewn-00185248-v	v		verb.change
+oewn-00188540-r	r		adv.all
+oewn-00190022-r	r		adv.all
+oewn-00191511-a	a		adj.all
+oewn-00197191-r	r		adv.all
+oewn-00197697-n	n		noun.act
+oewn-00205183-n	n		noun.act
+oewn-00206198-n	n		noun.act
+oewn-00213327-s	s	oewn-00212038-a	adj.all
+oewn-00213419-s	s	oewn-00212038-a	adj.all
+oewn-00213508-s	s	oewn-00212038-a	adj.all
+oewn-00219155-a	a		adj.all
+oewn-00222909-r	r		adv.all
+oewn-00225596-r	r		adv.all
+oewn-00230871-r	r		adv.all
+oewn-00232434-n	n		noun.act
+oewn-00235290-n	n		noun.act
+oewn-00235542-n	n		noun.act
+oewn-00240380-s	s	oewn-00238832-a	adj.all
+oewn-00244907-r	r		adv.all
+oewn-00245180-s	s	oewn-00244463-a	adj.all
+oewn-00245502-r	r		adv.all
+oewn-00246716-s	s	oewn-00245359-a	adj.all
+oewn-00250442-s	s	oewn-00250299-a	adj.all
+oewn-00252239-s	s	oewn-00250587-a	adj.all
+oewn-00260686-s	s	oewn-00260434-a	adj.all
+oewn-00268134-s	s	oewn-00268011-a	adj.all
+oewn-00270352-a	a		adj.all
+oewn-00283423-s	s	oewn-00279417-a	adj.all
+oewn-00285985-n	n		noun.act
+oewn-00288506-a	a		adj.all
+oewn-00289871-r	r		adv.all
+oewn-00302827-n	n		noun.act
+oewn-00309518-s	s	oewn-00309391-a	adj.all
+oewn-00315295-n	n		noun.act
+oewn-00326095-a	a		adj.all
+oewn-00330593-a	a		adj.all
+oewn-00332157-s	s	oewn-00330729-a	adj.all
+oewn-00335453-s	s	oewn-00334885-a	adj.all
+oewn-00337256-n	n		noun.act
+oewn-00337387-n	n		noun.act
+oewn-00338431-n	n		noun.act
+oewn-00344451-s	s	oewn-00343913-a	adj.all
+oewn-00357322-a	a		adj.all
+oewn-00363921-v	v		verb.change
+oewn-00367464-r	r		adv.all
+oewn-00388705-n	n		noun.act
+oewn-00400540-s	s	oewn-00395623-a	adj.all
+oewn-00408067-r	r		adv.all
+oewn-00408198-r	r		adv.all
+oewn-00408228-n	n		noun.act
+oewn-00408380-r	r		adv.all
+oewn-00408548-r	r		adv.all
+oewn-00408843-s	s	oewn-00407944-a	adj.all
+oewn-00409329-r	r		adv.all
+oewn-00409361-s	s	oewn-00409108-a	adj.all
+oewn-00409589-r	r		adv.all
+oewn-00410115-r	r		adv.all
+oewn-00410285-r	r		adv.all
+oewn-00410775-r	r		adv.all
+oewn-00410919-r	r		adv.all
+oewn-00411000-r	r		adv.all
+oewn-00411110-r	r		adv.all
+oewn-00411237-r	r		adv.all
+oewn-00411369-r	r		adv.all
+oewn-00411507-r	r		adv.all
+oewn-00412227-r	r		adv.all
+oewn-00412336-r	r		adv.all
+oewn-00412430-r	r		adv.all
+oewn-00412472-v	v		verb.change
+oewn-00412530-r	r		adv.all
+oewn-00412630-r	r		adv.all
+oewn-00412791-r	r		adv.all
+oewn-00412955-r	r		adv.all
+oewn-00413081-r	r		adv.all
+oewn-00413217-v	v		verb.change
+oewn-00413480-r	r		adv.all
+oewn-00413571-r	r		adv.all
+oewn-00413621-v	v		verb.change
+oewn-00413644-a	a		adj.all
+oewn-00413665-r	r		adv.all
+oewn-00413759-r	r		adv.all
+oewn-00413857-r	r		adv.all
+oewn-00413918-v	v		verb.change
+oewn-00414389-s	s	oewn-00413644-a	adj.all
+oewn-00415599-s	s	oewn-00414699-a	adj.all
+oewn-00415746-a	a		adj.all
+oewn-00418170-s	s	oewn-00417934-a	adj.all
+oewn-00419318-n	n		noun.act
+oewn-00424426-n	n		noun.act
+oewn-00427760-n	n		noun.act
+oewn-00428752-a	a		adj.all
+oewn-00429618-s	s	oewn-00429283-a	adj.all
+oewn-00432277-n	n		noun.act
+oewn-00438402-v	v		verb.change
+oewn-00443382-s	s	oewn-00441328-a	adj.all
+oewn-00447203-s	s	oewn-00446553-a	adj.all
+oewn-00448559-s	s	oewn-00447582-a	adj.all
+oewn-00451923-s	s	oewn-00448955-a	adj.all
+oewn-00457587-n	n		noun.act
+oewn-00461905-n	n		noun.act
+oewn-00463444-n	n		noun.act
+oewn-00464818-r	r		adv.all
+oewn-00468356-a	a		adj.all
+oewn-00468477-s	s	oewn-00468356-a	adj.all
+oewn-00469149-v	v		verb.change
+oewn-00469496-v	v		verb.change
+oewn-00470835-v	v		verb.change
+oewn-00471015-v	v		verb.change
+oewn-00473688-s	s	oewn-00473338-a	adj.all
+oewn-00474800-a	a		adj.all
+oewn-00474904-s	s	oewn-00474800-a	adj.all
+oewn-00476025-n	n		noun.act
+oewn-00476531-s	s	oewn-00476033-a	adj.all
+oewn-00476998-a	a		adj.all
+oewn-00478279-n	n		noun.act
+oewn-00483133-n	n		noun.act
+oewn-00486321-a	a		adj.all
+oewn-00486668-s	s	oewn-00486321-a	adj.all
+oewn-00487240-a	a		adj.all
+oewn-00487581-a	a		adj.all
+oewn-00490971-r	r		adv.all
+oewn-00492572-n	n		noun.act
+oewn-00494753-n	n		noun.act
+oewn-00500610-n	n		noun.act
+oewn-00500957-s	s	oewn-00496952-a	adj.all
+oewn-00501107-s	s	oewn-00496952-a	adj.all
+oewn-00501228-s	s	oewn-00496952-a	adj.all
+oewn-00503166-v	v		verb.change
+oewn-00503559-v	v		verb.change
+oewn-00505757-v	v		verb.change
+oewn-00505982-v	v		verb.change
+oewn-00507218-n	n		noun.act
+oewn-00508655-s	s	oewn-00508211-a	adj.all
+oewn-00509558-n	n		noun.act
+oewn-00512399-v	v		verb.change
+oewn-00513721-v	v		verb.change
+oewn-00514358-r	r		adv.all
+oewn-00514450-r	r		adv.all
+oewn-00514619-r	r		adv.all
+oewn-00515090-a	a		adj.all
+oewn-00516963-n	n		noun.act
+oewn-00517615-n	n		noun.act
+oewn-00526784-s	s	oewn-00526155-a	adj.all
+oewn-00527830-n	n		noun.act
+oewn-00532238-n	n		noun.act
+oewn-00553915-s	s	oewn-00552997-a	adj.all
+oewn-00560458-a	a		adj.all
+oewn-00575121-s	s	oewn-00573907-a	adj.all
+oewn-00578362-s	s	oewn-00577581-a	adj.all
+oewn-00578407-v	v		verb.change
+oewn-00579372-v	v		verb.change
+oewn-00580238-n	n		noun.act
+oewn-00583028-n	n		noun.act
+oewn-00604434-n	n		noun.act
+oewn-00605365-a	a		adj.all
+oewn-00607164-s	s	oewn-00607043-a	adj.all
+oewn-00612482-v	v		verb.cognition
+oewn-00612640-a	a		adj.all
+oewn-00613161-n	n		noun.act
+oewn-00614561-a	a		adj.all
+oewn-00616469-n	n		noun.act
+oewn-00617843-v	v		verb.cognition
+oewn-00628405-v	v		verb.cognition
+oewn-00631360-s	s	oewn-00630690-a	adj.all
+oewn-00631766-n	n		noun.act
+oewn-00640013-n	n		noun.act
+oewn-00652427-a	a		adj.all
+oewn-00653373-a	a		adj.all
+oewn-00654719-a	a		adj.all
+oewn-00655555-a	a		adj.all
+oewn-00659794-a	a		adj.all
+oewn-00666092-n	n		noun.act
+oewn-00666240-n	n		noun.act
+oewn-00666322-n	n		noun.act
+oewn-00666601-n	n		noun.act
+oewn-00668361-s	s	oewn-00667636-a	adj.all
+oewn-00671807-a	a		adj.all
+oewn-00679725-a	a		adj.all
+oewn-00682190-a	a		adj.all
+oewn-00683791-n	n		noun.act
+oewn-00687638-n	n		noun.act
+oewn-00687724-n	n		noun.act
+oewn-00690168-n	n		noun.act
+oewn-00690315-n	n		noun.act
+oewn-00693247-a	a		adj.all
+oewn-00695710-s	s	oewn-00694973-a	adj.all
+oewn-00699487-n	n		noun.act
+oewn-00700543-s	s	oewn-00699967-a	adj.all
+oewn-00705690-s	s	oewn-00704924-a	adj.all
+oewn-00705889-s	s	oewn-00704924-a	adj.all
+oewn-00709585-n	n		noun.act
+oewn-00709742-n	n		noun.act
+oewn-00714375-s	s	oewn-00713705-a	adj.all
+oewn-00717446-v	v		verb.cognition
+oewn-00723526-a	a		adj.all
+oewn-00734736-a	a		adj.all
+oewn-00735481-a	a		adj.all
+oewn-00735604-s	s	oewn-00735481-a	adj.all
+oewn-00735987-a	a		adj.all
+oewn-00740376-n	n		noun.act
+oewn-00741907-n	n		noun.act
+oewn-00751340-s	s	oewn-00748528-a	adj.all
+oewn-00758394-a	a		adj.all
+oewn-00763758-v	v		verb.communication
+oewn-00764523-v	v		verb.communication
+oewn-00764992-s	s	oewn-00764460-a	adj.all
+oewn-00765789-n	n		noun.act
+oewn-00765941-n	n		noun.act
+oewn-00768334-v	v		verb.communication
+oewn-00769097-s	s	oewn-00767444-a	adj.all
+oewn-00780381-a	a		adj.all
+oewn-00780797-a	a		adj.all
+oewn-00781720-a	a		adj.all
+oewn-00790427-n	n		noun.act
+oewn-00799129-n	n		noun.act
+oewn-00814997-n	n		noun.act
+oewn-00817462-n	n		noun.act
+oewn-00821577-s	s	oewn-00820993-a	adj.all
+oewn-00823762-v	v		verb.communication
+oewn-00824416-n	n		noun.act
+oewn-00824777-s	s	oewn-00824290-a	adj.all
+oewn-00827874-n	n		noun.act
+oewn-00830197-s	s	oewn-00829509-a	adj.all
+oewn-00831095-s	s	oewn-00830498-a	adj.all
+oewn-00832685-s	s	oewn-00832318-a	adj.all
+oewn-00835614-a	a		adj.all
+oewn-00843858-n	n		noun.act
+oewn-00843942-n	n		noun.act
+oewn-00844080-n	n		noun.act
+oewn-00847897-v	v		verb.communication
+oewn-00849395-s	s	oewn-00849067-a	adj.all
+oewn-00849888-s	s	oewn-00849591-a	adj.all
+oewn-00850164-s	s	oewn-00850001-a	adj.all
+oewn-00850328-s	s	oewn-00850001-a	adj.all
+oewn-00851396-s	s	oewn-00850938-a	adj.all
+oewn-00853319-n	n		noun.act
+oewn-00863988-n	n		noun.act
+oewn-00864695-n	n		noun.act
+oewn-00865005-s	s	oewn-00863798-a	adj.all
+oewn-00871145-n	n		noun.act
+oewn-00881061-v	v		verb.communication
+oewn-00881946-a	a		adj.all
+oewn-00888657-a	a		adj.all
+oewn-00892391-s	s	oewn-00891011-a	adj.all
+oewn-00896269-s	s	oewn-00895672-a	adj.all
+oewn-00899973-v	v		verb.communication
+oewn-00900197-v	v		verb.communication
+oewn-00904824-s	s	oewn-00903909-a	adj.all
+oewn-00911084-n	n		noun.act
+oewn-00911768-n	n		noun.act
+oewn-00922770-n	n		noun.act
+oewn-00928091-n	n		noun.act
+oewn-00930819-a	a		adj.all
+oewn-00931479-s	s	oewn-00930819-a	adj.all
+oewn-00933268-n	n		noun.act
+oewn-00938528-s	s	oewn-00937468-a	adj.all
+oewn-00938943-v	v		verb.communication
+oewn-00940455-s	s	oewn-00940009-a	adj.all
+oewn-00940610-s	s	oewn-00940009-a	adj.all
+oewn-00941788-v	v		verb.communication
+oewn-00949471-v	v		verb.communication
+oewn-00950885-v	v		verb.communication
+oewn-00953238-v	v		verb.communication
+oewn-00953431-v	v		verb.communication
+oewn-00955248-v	v		verb.communication
+oewn-00956303-v	v		verb.communication
+oewn-00960588-n	n		noun.act
+oewn-00972582-n	n		noun.act
+oewn-00987625-v	v		verb.communication
+oewn-00993858-n	n		noun.act
+oewn-00997331-v	v		verb.communication
+oewn-00997560-a	a		adj.all
+oewn-00997676-s	s	oewn-00997560-a	adj.all
+oewn-01006595-v	v		verb.communication
+oewn-01018989-s	s	oewn-01017848-a	adj.all
+oewn-01020398-a	a		adj.all
+oewn-01020640-a	a		adj.all
+oewn-01022943-v	v		verb.communication
+oewn-01027098-v	v		verb.communication
+oewn-01028015-s	s	oewn-01027688-a	adj.all
+oewn-01030691-a	a		adj.all
+oewn-01033595-n	n		noun.act
+oewn-01034712-v	v		verb.communication
+oewn-01036417-n	n		noun.act
+oewn-01037678-a	a		adj.all
+oewn-01038959-s	s	oewn-01038139-a	adj.all
+oewn-01039765-a	a		adj.all
+oewn-01040704-s	s	oewn-01039765-a	adj.all
+oewn-01041087-a	a		adj.all
+oewn-01045221-n	n		noun.act
+oewn-01047056-s	s	oewn-01045598-a	adj.all
+oewn-01050843-s	s	oewn-01049410-a	adj.all
+oewn-01058066-s	s	oewn-01056843-a	adj.all
+oewn-01058637-n	n		noun.act
+oewn-01060463-n	n		noun.act
+oewn-01061615-v	v		verb.communication
+oewn-01061657-s	s	oewn-01061474-a	adj.all
+oewn-01069090-s	s	oewn-01067975-a	adj.all
+oewn-01072287-s	s	oewn-01071383-a	adj.all
+oewn-01076894-n	n		noun.act
+oewn-01078787-n	n		noun.act
+oewn-01080123-s	s	oewn-01078338-a	adj.all
+oewn-01080496-n	n		noun.act
+oewn-01086772-n	n		noun.act
+oewn-01089422-n	n		noun.act
+oewn-01089664-n	n		noun.act
+oewn-01094686-a	a		adj.all
+oewn-01094693-n	n		noun.act
+oewn-01094853-s	s	oewn-01094686-a	adj.all
+oewn-01103503-s	s	oewn-01103229-a	adj.all
+oewn-01107642-n	n		noun.act
+oewn-01109313-a	a		adj.all
+oewn-01109533-a	a		adj.all
+oewn-01112055-v	v		verb.competition
+oewn-01112807-a	a		adj.all
+oewn-01113070-a	a		adj.all
+oewn-01114808-n	n		noun.act
+oewn-01120349-v	v		verb.competition
+oewn-01126764-a	a		adj.all
+oewn-01132237-s	s	oewn-01129296-a	adj.all
+oewn-01132339-s	s	oewn-01129296-a	adj.all
+oewn-01132700-s	s	oewn-01129296-a	adj.all
+oewn-01133056-n	n		noun.act
+oewn-01139918-n	n		noun.act
+oewn-01141957-n	n		noun.act
+oewn-01142070-n	n		noun.act
+oewn-01142110-s	s	oewn-01138269-a	adj.all
+oewn-01145876-v	v		verb.competition
+oewn-01154795-n	n		noun.act
+oewn-01154956-n	n		noun.act
+oewn-01156578-n	n		noun.act
+oewn-01157387-n	n		noun.act
+oewn-01161177-n	n		noun.act
+oewn-01163075-a	a		adj.all
+oewn-01166361-s	s	oewn-01163575-a	adj.all
+oewn-01172088-n	n		noun.act
+oewn-01172176-s	s	oewn-01171361-a	adj.all
+oewn-01175702-v	v		verb.consumption
+oewn-01176591-v	v		verb.consumption
+oewn-01186818-s	s	oewn-01186291-a	adj.all
+oewn-01189650-s	s	oewn-01188475-a	adj.all
+oewn-01189953-n	n		noun.act
+oewn-01190110-n	n		noun.act
+oewn-01191258-v	v		verb.consumption
+oewn-01191273-n	n		noun.act
+oewn-01191646-v	v		verb.consumption
+oewn-01205348-v	v		verb.consumption
+oewn-01206990-a	a		adj.all
+oewn-01207201-n	n		noun.act
+oewn-01207335-n	n		noun.act
+oewn-01210218-s	s	oewn-01209146-a	adj.all
+oewn-01211675-a	a		adj.all
+oewn-01212142-s	s	oewn-01211675-a	adj.all
+oewn-01212351-a	a		adj.all
+oewn-01215837-v	v		verb.contact
+oewn-01220156-a	a		adj.all
+oewn-01220590-a	a		adj.all
+oewn-01233816-v	v		verb.contact
+oewn-01233943-a	a		adj.all
+oewn-01234710-a	a		adj.all
+oewn-01236098-s	s	oewn-01235508-a	adj.all
+oewn-01236655-n	n		noun.act
+oewn-01236808-n	n		noun.act
+oewn-01242052-n	n		noun.act
+oewn-01243415-n	n		noun.act
+oewn-01245263-n	n		noun.act
+oewn-01248497-n	n		noun.act
+oewn-01261705-v	v		verb.contact
+oewn-01263095-a	a		adj.all
+oewn-01268857-n	n		noun.act
+oewn-01279534-v	v		verb.contact
+oewn-01284805-s	s	oewn-01283088-a	adj.all
+oewn-01289803-a	a		adj.all
+oewn-01302836-a	a		adj.all
+oewn-01305303-a	a		adj.all
+oewn-01306479-a	a		adj.all
+oewn-01306571-s	s	oewn-01306479-a	adj.all
+oewn-01308179-s	s	oewn-01307505-a	adj.all
+oewn-01308659-s	s	oewn-01308562-a	adj.all
+oewn-01309042-s	s	oewn-01308884-a	adj.all
+oewn-01312383-s	s	oewn-01311380-a	adj.all
+oewn-01312612-s	s	oewn-01311380-a	adj.all
+oewn-01316983-v	v		verb.contact
+oewn-01318293-s	s	oewn-01316883-a	adj.all
+oewn-01318461-a	a		adj.all
+oewn-01318973-s	s	oewn-01318461-a	adj.all
+oewn-01319081-s	s	oewn-01318461-a	adj.all
+oewn-01331959-a	a		adj.all
+oewn-01333709-v	v		verb.contact
+oewn-01336670-a	a		adj.all
+oewn-01344806-v	v		verb.contact
+oewn-01347682-s	s	oewn-01346766-a	adj.all
+oewn-01349046-s	s	oewn-01347811-a	adj.all
+oewn-01355743-a	a		adj.all
+oewn-01359363-a	a		adj.all
+oewn-01360534-v	v		verb.contact
+oewn-01362006-n	n		noun.animal
+oewn-01364977-n	n		noun.animal
+oewn-01365264-n	n		noun.animal
+oewn-01368648-v	v		verb.contact
+oewn-01377098-n	n		noun.animal
+oewn-01377344-n	n		noun.animal
+oewn-01377487-n	n		noun.animal
+oewn-01385374-v	v		verb.contact
+oewn-01386047-v	v		verb.contact
+oewn-01386954-n	n		noun.animal
+oewn-01387667-v	v		verb.contact
+oewn-01396394-n	n		noun.animal
+oewn-01398317-v	v		verb.contact
+oewn-01418331-s	s	oewn-01417858-a	adj.all
+oewn-01420315-n	n		noun.animal
+oewn-01420660-a	a		adj.all
+oewn-01427004-v	v		verb.contact
+oewn-01427999-v	v		verb.contact
+oewn-01449039-v	v		verb.contact
+oewn-01449188-v	v		verb.contact
+oewn-01449348-v	v		verb.contact
+oewn-01451588-s	s	oewn-01451347-a	adj.all
+oewn-01458419-n	n		noun.animal
+oewn-01459400-v	v		verb.contact
+oewn-01463787-n	n		noun.animal
+oewn-01466574-n	n		noun.animal
+oewn-01469113-n	n		noun.animal
+oewn-01473828-a	a		adj.all
+oewn-01489634-a	a		adj.all
+oewn-01499757-s	s	oewn-01499316-a	adj.all
+oewn-01499887-s	s	oewn-01499316-a	adj.all
+oewn-01501931-s	s	oewn-01501055-a	adj.all
+oewn-01504445-a	a		adj.all
+oewn-01504555-s	s	oewn-01504445-a	adj.all
+oewn-01508997-a	a		adj.all
+oewn-01509465-a	a		adj.all
+oewn-01517567-n	n		noun.animal
+oewn-01517719-n	n		noun.animal
+oewn-01517858-n	n		noun.animal
+oewn-01520688-s	s	oewn-01518910-a	adj.all
+oewn-01521838-s	s	oewn-01521164-a	adj.all
+oewn-01522378-s	s	oewn-01522004-a	adj.all
+oewn-01523038-a	a		adj.all
+oewn-01524397-n	n		noun.animal
+oewn-01527402-n	n		noun.animal
+oewn-01532554-v	v		verb.contact
+oewn-01533412-a	a		adj.all
+oewn-01535299-a	a		adj.all
+oewn-01537403-n	n		noun.animal
+oewn-01540371-s	s	oewn-01539804-a	adj.all
+oewn-01541006-a	a		adj.all
+oewn-01551888-a	a		adj.all
+oewn-01568466-a	a		adj.all
+oewn-01569774-n	n		noun.animal
+oewn-01570319-n	n		noun.animal
+oewn-01570616-s	s	oewn-01570420-a	adj.all
+oewn-01572255-a	a		adj.all
+oewn-01572485-s	s	oewn-01572255-a	adj.all
+oewn-01574358-a	a		adj.all
+oewn-01575285-a	a		adj.all
+oewn-01578155-s	s	oewn-01575756-a	adj.all
+oewn-01578429-a	a		adj.all
+oewn-01581254-s	s	oewn-01578839-a	adj.all
+oewn-01581495-s	s	oewn-01578839-a	adj.all
+oewn-01582180-a	a		adj.all
+oewn-01583413-n	n		noun.animal
+oewn-01584371-n	n		noun.animal
+oewn-01584458-a	a		adj.all
+oewn-01585183-s	s	oewn-01584458-a	adj.all
+oewn-01586869-a	a		adj.all
+oewn-01587448-a	a		adj.all
+oewn-01589265-s	s	oewn-01587448-a	adj.all
+oewn-01590750-a	a		adj.all
+oewn-01591072-n	n		noun.animal
+oewn-01592357-a	a		adj.all
+oewn-01592472-a	a		adj.all
+oewn-01592579-a	a		adj.all
+oewn-01593224-n	n		noun.animal
+oewn-01594522-a	a		adj.all
+oewn-01598231-a	a		adj.all
+oewn-01599632-s	s	oewn-01598231-a	adj.all
+oewn-01602901-a	a		adj.all
+oewn-01603680-v	v		verb.contact
+oewn-01603922-a	a		adj.all
+oewn-01604027-a	a		adj.all
+oewn-01604915-a	a		adj.all
+oewn-01605295-s	s	oewn-01604915-a	adj.all
+oewn-01605470-s	s	oewn-01604915-a	adj.all
+oewn-01605651-s	s	oewn-01604915-a	adj.all
+oewn-01605879-s	s	oewn-01604915-a	adj.all
+oewn-01606044-s	s	oewn-01604915-a	adj.all
+oewn-01606174-s	s	oewn-01604915-a	adj.all
+oewn-01606345-s	s	oewn-01604915-a	adj.all
+oewn-01606483-s	s	oewn-01604915-a	adj.all
+oewn-01606563-s	s	oewn-01604915-a	adj.all
+oewn-01606694-s	s	oewn-01604915-a	adj.all
+oewn-01606832-s	s	oewn-01604915-a	adj.all
+oewn-01608808-a	a		adj.all
+oewn-01609148-s	s	oewn-01608808-a	adj.all
+oewn-01610335-a	a		adj.all
+oewn-01611875-a	a		adj.all
+oewn-01612491-a	a		adj.all
+oewn-01612560-a	a		adj.all
+oewn-01615595-a	a		adj.all
+oewn-01619332-a	a		adj.all
+oewn-01632925-n	n		noun.animal
+oewn-01633542-n	n		noun.animal
+oewn-01641513-s	s	oewn-01641326-a	adj.all
+oewn-01645077-a	a		adj.all
+oewn-01646166-s	s	oewn-01645077-a	adj.all
+oewn-01646326-s	s	oewn-01645077-a	adj.all
+oewn-01646523-s	s	oewn-01645077-a	adj.all
+oewn-01646687-s	s	oewn-01645077-a	adj.all
+oewn-01650562-s	s	oewn-01648062-a	adj.all
+oewn-01653626-s	s	oewn-01651383-a	adj.all
+oewn-01658725-s	s	oewn-01657980-a	adj.all
+oewn-01676063-v	v		verb.creation
+oewn-01677525-v	v		verb.creation
+oewn-01684566-s	s	oewn-01684118-a	adj.all
+oewn-01686199-n	n		noun.animal
+oewn-01696279-s	s	oewn-01695526-a	adj.all
+oewn-01703213-s	s	oewn-01702853-a	adj.all
+oewn-01709648-s	s	oewn-01709214-a	adj.all
+oewn-01714874-s	s	oewn-01714268-a	adj.all
+oewn-01722968-s	s	oewn-01722394-a	adj.all
+oewn-01724326-s	s	oewn-01723103-a	adj.all
+oewn-01724784-s	s	oewn-01724515-a	adj.all
+oewn-01728670-a	a		adj.all
+oewn-01728844-n	n		noun.animal
+oewn-01728957-s	s	oewn-01728765-a	adj.all
+oewn-01729130-s	s	oewn-01728765-a	adj.all
+oewn-01740706-n	n		noun.animal
+oewn-01745812-s	s	oewn-01745141-a	adj.all
+oewn-01753078-n	n		noun.animal
+oewn-01764521-a	a		adj.all
+oewn-01770490-v	v		verb.emotion
+oewn-01774268-s	s	oewn-01774089-a	adj.all
+oewn-01782618-a	a		adj.all
+oewn-01789232-s	s	oewn-01788544-a	adj.all
+oewn-01810238-v	v		verb.emotion
+oewn-01816005-s	s	oewn-01814940-a	adj.all
+oewn-01820414-a	a		adj.all
+oewn-01823738-a	a		adj.all
+oewn-01824496-a	a		adj.all
+oewn-01824656-s	s	oewn-01824496-a	adj.all
+oewn-01825096-s	s	oewn-01824894-a	adj.all
+oewn-01825480-s	s	oewn-01825325-a	adj.all
+oewn-01825842-a	a		adj.all
+oewn-01837507-s	s	oewn-01837191-a	adj.all
+oewn-01844650-s	s	oewn-01843460-a	adj.all
+oewn-01850262-v	v		verb.motion
+oewn-01852128-a	a		adj.all
+oewn-01853277-s	s	oewn-01852337-a	adj.all
+oewn-01856790-s	s	oewn-01855216-a	adj.all
+oewn-01866147-s	s	oewn-01864034-a	adj.all
+oewn-01867716-s	s	oewn-01867145-a	adj.all
+oewn-01872193-s	s	oewn-01871147-a	adj.all
+oewn-01873139-s	s	oewn-01872485-a	adj.all
+oewn-01875076-s	s	oewn-01874674-a	adj.all
+oewn-01875320-a	a		adj.all
+oewn-01877044-v	v		verb.motion
+oewn-01880304-v	v		verb.motion
+oewn-01881280-n	n		noun.animal
+oewn-01881778-v	v		verb.motion
+oewn-01889818-s	s	oewn-01889685-a	adj.all
+oewn-01904118-s	s	oewn-01903854-a	adj.all
+oewn-01913172-s	s	oewn-01911832-a	adj.all
+oewn-01915450-n	n		noun.animal
+oewn-01919239-s	s	oewn-01918994-a	adj.all
+oewn-01921967-s	s	oewn-01921311-a	adj.all
+oewn-01925681-s	s	oewn-01925383-a	adj.all
+oewn-01926330-a	a		adj.all
+oewn-01931158-n	n		noun.animal
+oewn-01931557-a	a		adj.all
+oewn-01932753-n	n		noun.animal
+oewn-01933320-s	s	oewn-01932775-a	adj.all
+oewn-01934780-a	a		adj.all
+oewn-01936643-s	s	oewn-01935999-a	adj.all
+oewn-01936675-v	v		verb.motion
+oewn-01937276-v	v		verb.motion
+oewn-01939062-s	s	oewn-01938650-a	adj.all
+oewn-01946401-a	a		adj.all
+oewn-01948918-n	n		noun.animal
+oewn-01949271-n	n		noun.animal
+oewn-01949780-n	n		noun.animal
+oewn-01953372-n	n		noun.animal
+oewn-01953528-a	a		adj.all
+oewn-01953638-s	s	oewn-01953528-a	adj.all
+oewn-01959465-s	s	oewn-01959227-a	adj.all
+oewn-01969942-a	a		adj.all
+oewn-01971600-a	a		adj.all
+oewn-01971641-v	v		verb.motion
+oewn-01975417-s	s	oewn-01974305-a	adj.all
+oewn-01977669-s	s	oewn-01977529-a	adj.all
+oewn-01977751-s	s	oewn-01977529-a	adj.all
+oewn-01986886-n	n		noun.animal
+oewn-01987050-s	s	oewn-01986118-a	adj.all
+oewn-01987315-a	a		adj.all
+oewn-01989603-a	a		adj.all
+oewn-01998160-v	v		verb.motion
+oewn-02012556-s	s	oewn-02012341-a	adj.all
+oewn-02013107-n	n		noun.animal
+oewn-02013670-n	n		noun.animal
+oewn-02014418-s	s	oewn-02013324-a	adj.all
+oewn-02014509-a	a		adj.all
+oewn-02014871-a	a		adj.all
+oewn-02015476-a	a		adj.all
+oewn-02018238-a	a		adj.all
+oewn-02020379-n	n		noun.animal
+oewn-02028545-s	s	oewn-02028263-a	adj.all
+oewn-02040963-s	s	oewn-02040360-a	adj.all
+oewn-02050019-s	s	oewn-02048059-a	adj.all
+oewn-02054612-v	v		verb.motion
+oewn-02063405-s	s	oewn-02062466-a	adj.all
+oewn-02077895-s	s	oewn-02076759-a	adj.all
+oewn-02084118-s	s	oewn-02081496-a	adj.all
+oewn-02096766-n	n		noun.animal
+oewn-02096910-n	n		noun.animal
+oewn-02099277-a	a		adj.all
+oewn-02099409-a	a		adj.all
+oewn-02100267-s	s	oewn-02099409-a	adj.all
+oewn-02112335-s	s	oewn-02110761-a	adj.all
+oewn-02113929-n	n		noun.animal
+oewn-02115827-s	s	oewn-02115639-a	adj.all
+oewn-02119102-n	n		noun.animal
+oewn-02123398-v	v		verb.perception
+oewn-02123677-s	s	oewn-02122604-a	adj.all
+oewn-02125180-v	v		verb.perception
+oewn-02129688-v	v		verb.perception
+oewn-02129925-v	v		verb.perception
+oewn-02132982-a	a		adj.all
+oewn-02134075-s	s	oewn-02133178-a	adj.all
+oewn-02136516-a	a		adj.all
+oewn-02143934-s	s	oewn-02143325-a	adj.all
+oewn-02149282-s	s	oewn-02147907-a	adj.all
+oewn-02149478-s	s	oewn-02147907-a	adj.all
+oewn-02152513-n	n		noun.animal
+oewn-02155941-s	s	oewn-02150471-a	adj.all
+oewn-02156063-s	s	oewn-02150471-a	adj.all
+oewn-02163090-a	a		adj.all
+oewn-02171017-s	s	oewn-02168847-a	adj.all
+oewn-02173482-a	a		adj.all
+oewn-02176461-s	s	oewn-02173903-a	adj.all
+oewn-02193904-s	s	oewn-02191250-a	adj.all
+oewn-02199637-v	v		verb.perception
+oewn-02220813-s	s	oewn-02207704-a	adj.all
+oewn-02225960-v	v		verb.possession
+oewn-02226110-v	v		verb.possession
+oewn-02227957-s	s	oewn-02223646-a	adj.all
+oewn-02231739-s	s	oewn-02229911-a	adj.all
+oewn-02241027-s	s	oewn-02239996-a	adj.all
+oewn-02243075-s	s	oewn-02242526-a	adj.all
+oewn-02244015-a	a		adj.all
+oewn-02244167-s	s	oewn-02244015-a	adj.all
+oewn-02244276-s	s	oewn-02244015-a	adj.all
+oewn-02255529-s	s	oewn-02253147-a	adj.all
+oewn-02260961-s	s	oewn-02260821-a	adj.all
+oewn-02266030-n	n		noun.animal
+oewn-02271629-v	v		verb.possession
+oewn-02273799-s	s	oewn-02273647-a	adj.all
+oewn-02276242-a	a		adj.all
+oewn-02276640-s	s	oewn-02276242-a	adj.all
+oewn-02276797-s	s	oewn-02276242-a	adj.all
+oewn-02279294-a	a		adj.all
+oewn-02284713-a	a		adj.all
+oewn-02284931-s	s	oewn-02284713-a	adj.all
+oewn-02285234-a	a		adj.all
+oewn-02292225-v	v		verb.possession
+oewn-02296222-a	a		adj.all
+oewn-02297470-a	a		adj.all
+oewn-02297716-n	n		noun.animal
+oewn-02303542-a	a		adj.all
+oewn-02304841-a	a		adj.all
+oewn-02305261-s	s	oewn-02304841-a	adj.all
+oewn-02305966-a	a		adj.all
+oewn-02307908-a	a		adj.all
+oewn-02314269-n	n		noun.animal
+oewn-02316520-s	s	oewn-02315894-a	adj.all
+oewn-02335606-n	n		noun.animal
+oewn-02338663-n	n		noun.animal
+oewn-02340413-s	s	oewn-02339254-a	adj.all
+oewn-02342846-s	s	oewn-02341445-a	adj.all
+oewn-02346397-a	a		adj.all
+oewn-02348822-n	n		noun.animal
+oewn-02350396-n	n		noun.animal
+oewn-02357433-n	n		noun.animal
+oewn-02362790-s	s	oewn-02362685-a	adj.all
+oewn-02367863-a	a		adj.all
+oewn-02372332-n	n		noun.animal
+oewn-02374768-a	a		adj.all
+oewn-02382549-s	s	oewn-02382167-a	adj.all
+oewn-02388428-n	n		noun.animal
+oewn-02388793-s	s	oewn-02388163-a	adj.all
+oewn-02396459-n	n		noun.animal
+oewn-02406665-v	v		verb.social
+oewn-02406878-s	s	oewn-02403682-a	adj.all
+oewn-02407004-s	s	oewn-02403682-a	adj.all
+oewn-02408726-s	s	oewn-02408123-a	adj.all
+oewn-02408942-a	a		adj.all
+oewn-02415704-s	s	oewn-02414122-a	adj.all
+oewn-02418508-a	a		adj.all
+oewn-02419610-n	n		noun.animal
+oewn-02427555-n	n		noun.animal
+oewn-02432057-s	s	oewn-02431459-a	adj.all
+oewn-02432205-s	s	oewn-02431459-a	adj.all
+oewn-02438984-n	n		noun.animal
+oewn-02450336-s	s	oewn-02449895-a	adj.all
+oewn-02455268-n	n		noun.animal
+oewn-02459342-s	s	oewn-02458503-a	adj.all
+oewn-02459992-s	s	oewn-02459713-a	adj.all
+oewn-02460087-s	s	oewn-02459713-a	adj.all
+oewn-02471366-n	n		noun.animal
+oewn-02482508-a	a		adj.all
+oewn-02484149-a	a		adj.all
+oewn-02484476-s	s	oewn-02484149-a	adj.all
+oewn-02488064-s	s	oewn-02485330-a	adj.all
+oewn-02491797-n	n		noun.animal
+oewn-02492220-n	n		noun.animal
+oewn-02501653-n	n		noun.animal
+oewn-02510539-s	s	oewn-02509563-a	adj.all
+oewn-02513039-s	s	oewn-02512179-a	adj.all
+oewn-02513261-s	s	oewn-02512179-a	adj.all
+oewn-02516951-n	n		noun.animal
+oewn-02520860-v	v		verb.social
+oewn-02522980-a	a		adj.all
+oewn-02525059-s	s	oewn-02523798-a	adj.all
+oewn-02528427-s	s	oewn-02527322-a	adj.all
+oewn-02530133-a	a		adj.all
+oewn-02530563-v	v		verb.social
+oewn-02541562-v	v		verb.social
+oewn-02544717-a	a		adj.all
+oewn-02556395-v	v		verb.social
+oewn-02556459-s	s	oewn-02552072-a	adj.all
+oewn-02572618-a	a		adj.all
+oewn-02573098-s	s	oewn-02572618-a	adj.all
+oewn-02573214-s	s	oewn-02572618-a	adj.all
+oewn-02573639-s	s	oewn-02572618-a	adj.all
+oewn-02574040-a	a		adj.all
+oewn-02582819-n	n		noun.animal
+oewn-02587095-a	a		adj.all
+oewn-02595137-a	a		adj.all
+oewn-02596083-n	n		noun.animal
+oewn-02604176-a	a		adj.all
+oewn-02605672-a	a		adj.all
+oewn-02614039-v	v		verb.stative
+oewn-02614211-v	v		verb.stative
+oewn-02632355-v	v		verb.stative
+oewn-02641628-v	v		verb.stative
+oewn-02653690-n	n		noun.animal
+oewn-02661042-v	v		verb.stative
+oewn-02676999-a	a		adj.pert
+oewn-02686363-a	a		adj.pert
+oewn-02697196-v	v		verb.stative
+oewn-02738648-a	a		adj.pert
+oewn-02748735-a	a		adj.pert
+oewn-02762139-a	a		adj.pert
+oewn-02777882-a	a		adj.pert
+oewn-02778022-a	a		adj.pert
+oewn-02778150-a	a		adj.pert
+oewn-02778286-a	a		adj.pert
+oewn-02778368-a	a		adj.pert
+oewn-02778473-a	a		adj.pert
+oewn-02778644-a	a		adj.pert
+oewn-02778774-a	a		adj.pert
+oewn-02778878-a	a		adj.pert
+oewn-02779043-a	a		adj.pert
+oewn-02779193-a	a		adj.pert
+oewn-02779383-a	a		adj.pert
+oewn-02779512-a	a		adj.pert
+oewn-02779622-a	a		adj.pert
+oewn-02779730-a	a		adj.pert
+oewn-02779900-a	a		adj.pert
+oewn-02780130-a	a		adj.pert
+oewn-02780235-a	a		adj.pert
+oewn-02780464-a	a		adj.pert
+oewn-02780583-a	a		adj.pert
+oewn-02780705-a	a		adj.pert
+oewn-02780934-a	a		adj.pert
+oewn-02781040-a	a		adj.pert
+oewn-02781171-a	a		adj.pert
+oewn-02785982-a	a		adj.pert
+oewn-02788638-a	a		adj.pert
+oewn-02800958-a	a		adj.pert
+oewn-02811674-a	a		adj.pert
+oewn-02814563-a	a		adj.pert
+oewn-02816695-a	a		adj.pert
+oewn-02825697-a	a		adj.pert
+oewn-02845877-a	a		adj.pert
+oewn-02852307-a	a		adj.pert
+oewn-02853589-a	a		adj.pert
+oewn-02859004-a	a		adj.pert
+oewn-02873726-a	a		adj.pert
+oewn-02873911-a	a		adj.pert
+oewn-02874079-a	a		adj.pert
+oewn-02874393-a	a		adj.pert
+oewn-02894247-a	a		adj.pert
+oewn-02894416-a	a		adj.pert
+oewn-02894514-a	a		adj.pert
+oewn-02894648-a	a		adj.pert
+oewn-02894763-a	a		adj.pert
+oewn-02894903-a	a		adj.pert
+oewn-02895014-a	a		adj.pert
+oewn-02895109-a	a		adj.pert
+oewn-02895218-a	a		adj.pert
+oewn-02898071-a	a		adj.pert
+oewn-02900461-a	a		adj.pert
+oewn-02905371-a	a		adj.pert
+oewn-02915824-a	a		adj.pert
+oewn-02920081-a	a		adj.pert
+oewn-02920200-a	a		adj.pert
+oewn-02920319-a	a		adj.pert
+oewn-02922102-a	a		adj.pert
+oewn-02922801-a	a		adj.pert
+oewn-02923070-a	a		adj.pert
+oewn-02925727-a	a		adj.pert
+oewn-02929206-a	a		adj.pert
+oewn-02939879-a	a		adj.pert
+oewn-02943139-a	a		adj.pert
+oewn-02971458-a	a		adj.pert
+oewn-02971676-a	a		adj.pert
+oewn-02979535-a	a		adj.pert
+oewn-02981987-a	a		adj.pert
+oewn-02983384-a	a		adj.pert
+oewn-02985381-a	a		adj.pert
+oewn-02988070-a	a		adj.pert
+oewn-02990326-a	a		adj.pert
+oewn-02994034-a	a		adj.pert
+oewn-02999528-a	a		adj.pert
+oewn-02999749-a	a		adj.pert
+oewn-02999870-a	a		adj.pert
+oewn-03000018-a	a		adj.pert
+oewn-03000261-a	a		adj.pert
+oewn-03000537-a	a		adj.pert
+oewn-03007372-a	a		adj.pert
+oewn-03007631-a	a		adj.pert
+oewn-03007747-a	a		adj.pert
+oewn-03007881-a	a		adj.pert
+oewn-03011226-a	a		adj.pert
+oewn-03011412-a	a		adj.pert
+oewn-03013859-a	a		adj.pert
+oewn-03016663-a	a		adj.pert
+oewn-03022289-a	a		adj.pert
+oewn-03023366-a	a		adj.pert
+oewn-03023885-a	a		adj.pert
+oewn-03025239-a	a		adj.pert
+oewn-03025543-a	a		adj.pert
+oewn-03038166-a	a		adj.pert
+oewn-03047390-a	a		adj.pert
+oewn-03047528-a	a		adj.pert
+oewn-03100296-a	a		adj.pert
+oewn-03100426-a	a		adj.pert
+oewn-03100579-a	a		adj.pert
+oewn-03100835-a	a		adj.pert
+oewn-03101073-a	a		adj.pert
+oewn-03101171-a	a		adj.pert
+oewn-03101544-a	a		adj.pert
+oewn-03101914-a	a		adj.pert
+oewn-03102070-a	a		adj.pert
+oewn-03102240-a	a		adj.pert
+oewn-03102397-a	a		adj.pert
+oewn-03102538-a	a		adj.pert
+oewn-03102765-a	a		adj.pert
+oewn-03102922-a	a		adj.pert
+oewn-03103076-a	a		adj.pert
+oewn-03103209-a	a		adj.pert
+oewn-03103319-a	a		adj.pert
+oewn-03103656-a	a		adj.pert
+oewn-03103834-a	a		adj.pert
+oewn-03103985-a	a		adj.pert
+oewn-03104119-a	a		adj.pert
+oewn-03104282-a	a		adj.pert
+oewn-03104416-a	a		adj.pert
+oewn-03143148-a	a		adj.pert
+oewn-03158831-a	a		adj.pert
+oewn-03809588-n	n		noun.artifact
+oewn-03809751-n	n		noun.artifact
+oewn-03810033-n	n		noun.artifact
+oewn-03810284-n	n		noun.artifact
+oewn-03810720-n	n		noun.artifact
+oewn-03810820-n	n		noun.artifact
+oewn-03810914-n	n		noun.artifact
+oewn-03811043-n	n		noun.artifact
+oewn-03811174-n	n		noun.artifact
+oewn-03811265-n	n		noun.artifact
+oewn-03811473-n	n		noun.artifact
+oewn-03811580-n	n		noun.artifact
+oewn-03811720-n	n		noun.artifact
+oewn-03811921-n	n		noun.artifact
+oewn-03812087-n	n		noun.artifact
+oewn-03812192-n	n		noun.artifact
+oewn-03812288-n	n		noun.artifact
+oewn-03812444-n	n		noun.artifact
+oewn-03812592-n	n		noun.artifact
+oewn-03812874-n	n		noun.artifact
+oewn-03813077-n	n		noun.artifact
+oewn-03813320-n	n		noun.artifact
+oewn-03813435-n	n		noun.artifact
+oewn-03813964-n	n		noun.artifact
+oewn-03814104-n	n		noun.artifact
+oewn-03814517-n	n		noun.artifact
+oewn-03814751-n	n		noun.artifact
+oewn-03814852-n	n		noun.artifact
+oewn-03814996-n	n		noun.artifact
+oewn-03815143-n	n		noun.artifact
+oewn-03815226-n	n		noun.artifact
+oewn-03815342-n	n		noun.artifact
+oewn-03815479-n	n		noun.artifact
+oewn-03815952-n	n		noun.artifact
+oewn-03816492-n	n		noun.artifact
+oewn-03816703-n	n		noun.artifact
+oewn-03816835-n	n		noun.artifact
+oewn-03816984-n	n		noun.artifact
+oewn-03817188-n	n		noun.artifact
+oewn-03817387-n	n		noun.artifact
+oewn-03817505-n	n		noun.artifact
+oewn-03817659-n	n		noun.artifact
+oewn-03817803-n	n		noun.artifact
+oewn-03817922-n	n		noun.artifact
+oewn-03818329-n	n		noun.artifact
+oewn-03818464-n	n		noun.artifact
+oewn-03818618-n	n		noun.artifact
+oewn-03818716-n	n		noun.artifact
+oewn-03818909-n	n		noun.artifact
+oewn-03819152-n	n		noun.artifact
+oewn-03819244-n	n		noun.artifact
+oewn-03819374-n	n		noun.artifact
+oewn-03819486-n	n		noun.artifact
+oewn-03819652-n	n		noun.artifact
+oewn-03819888-n	n		noun.artifact
+oewn-03820068-n	n		noun.artifact
+oewn-03820179-n	n		noun.artifact
+oewn-03820267-n	n		noun.artifact
+oewn-03820357-n	n		noun.artifact
+oewn-03820446-n	n		noun.artifact
+oewn-03820689-n	n		noun.artifact
+oewn-03820818-n	n		noun.artifact
+oewn-03821022-n	n		noun.artifact
+oewn-03821155-n	n		noun.artifact
+oewn-03821545-n	n		noun.artifact
+oewn-03821676-n	n		noun.artifact
+oewn-03821934-n	n		noun.artifact
+oewn-03822070-n	n		noun.artifact
+oewn-03822199-n	n		noun.artifact
+oewn-03822389-n	n		noun.artifact
+oewn-03822602-n	n		noun.artifact
+oewn-03822731-n	n		noun.artifact
+oewn-03822871-n	n		noun.artifact
+oewn-03823062-n	n		noun.artifact
+oewn-03823370-n	n		noun.artifact
+oewn-03823541-n	n		noun.artifact
+oewn-03823883-n	n		noun.artifact
+oewn-03824169-n	n		noun.artifact
+oewn-03824383-n	n		noun.artifact
+oewn-03824587-n	n		noun.artifact
+oewn-03824757-n	n		noun.artifact
+oewn-03824876-n	n		noun.artifact
+oewn-03824988-n	n		noun.artifact
+oewn-03825534-n	n		noun.artifact
+oewn-03825694-n	n		noun.artifact
+oewn-03825858-n	n		noun.artifact
+oewn-03826014-n	n		noun.artifact
+oewn-03826490-n	n		noun.artifact
+oewn-03826685-n	n		noun.artifact
+oewn-03826799-n	n		noun.artifact
+oewn-03826964-n	n		noun.artifact
+oewn-03827058-n	n		noun.artifact
+oewn-03827438-n	n		noun.artifact
+oewn-03827711-n	n		noun.artifact
+oewn-03827901-n	n		noun.artifact
+oewn-03828044-n	n		noun.artifact
+oewn-03828196-n	n		noun.artifact
+oewn-03828307-n	n		noun.artifact
+oewn-03828651-n	n		noun.artifact
+oewn-03828756-n	n		noun.artifact
+oewn-03828852-n	n		noun.artifact
+oewn-03829080-n	n		noun.artifact
+oewn-03829213-n	n		noun.artifact
+oewn-03829446-n	n		noun.artifact
+oewn-03829554-n	n		noun.artifact
+oewn-03829737-n	n		noun.artifact
+oewn-03829824-n	n		noun.artifact
+oewn-03830129-n	n		noun.artifact
+oewn-03830253-n	n		noun.artifact
+oewn-03830407-n	n		noun.artifact
+oewn-03830539-n	n		noun.artifact
+oewn-03830620-n	n		noun.artifact
+oewn-03830811-n	n		noun.artifact
+oewn-03830982-n	n		noun.artifact
+oewn-03831088-n	n		noun.artifact
+oewn-03831213-n	n		noun.artifact
+oewn-03831328-n	n		noun.artifact
+oewn-03831453-n	n		noun.artifact
+oewn-03831579-n	n		noun.artifact
+oewn-03831726-n	n		noun.artifact
+oewn-03831871-n	n		noun.artifact
+oewn-03832302-n	n		noun.artifact
+oewn-03832824-n	n		noun.artifact
+oewn-03832960-n	n		noun.artifact
+oewn-03833076-n	n		noun.artifact
+oewn-03833256-n	n		noun.artifact
+oewn-03833370-n	n		noun.artifact
+oewn-03833560-n	n		noun.artifact
+oewn-03833695-n	n		noun.artifact
+oewn-03834005-n	n		noun.artifact
+oewn-03834625-n	n		noun.artifact
+oewn-03834880-n	n		noun.artifact
+oewn-03835103-n	n		noun.artifact
+oewn-03835397-n	n		noun.artifact
+oewn-03835494-n	n		noun.artifact
+oewn-03835651-n	n		noun.artifact
+oewn-03835988-n	n		noun.artifact
+oewn-03836122-n	n		noun.artifact
+oewn-03836375-n	n		noun.artifact
+oewn-03836602-n	n		noun.artifact
+oewn-03836922-n	n		noun.artifact
+oewn-03837077-n	n		noun.artifact
+oewn-03837297-n	n		noun.artifact
+oewn-03837439-n	n		noun.artifact
+oewn-03837548-n	n		noun.artifact
+oewn-03837684-n	n		noun.artifact
+oewn-03837845-n	n		noun.artifact
+oewn-03837945-n	n		noun.artifact
+oewn-03838213-n	n		noun.artifact
+oewn-03838339-n	n		noun.artifact
+oewn-03838513-n	n		noun.artifact
+oewn-03838605-n	n		noun.artifact
+oewn-03838834-n	n		noun.artifact
+oewn-03838949-n	n		noun.artifact
+oewn-03839104-n	n		noun.artifact
+oewn-03839290-n	n		noun.artifact
+oewn-03839447-n	n		noun.artifact
+oewn-03839580-n	n		noun.artifact
+oewn-03840012-n	n		noun.artifact
+oewn-03840376-n	n		noun.artifact
+oewn-03840737-n	n		noun.artifact
+oewn-03840838-n	n		noun.artifact
+oewn-03840952-n	n		noun.artifact
+oewn-03841102-n	n		noun.artifact
+oewn-03841249-n	n		noun.artifact
+oewn-03841373-n	n		noun.artifact
+oewn-03841461-n	n		noun.artifact
+oewn-03841711-n	n		noun.artifact
+oewn-03841971-n	n		noun.artifact
+oewn-03842122-n	n		noun.artifact
+oewn-03842219-n	n		noun.artifact
+oewn-03842426-n	n		noun.artifact
+oewn-03842496-n	n		noun.artifact
+oewn-03852292-n	n		noun.artifact
+oewn-03861668-n	n		noun.artifact
+oewn-03867479-n	n		noun.artifact
+oewn-03911659-n	n		noun.artifact
+oewn-03919248-n	n		noun.artifact
+oewn-03927871-n	n		noun.artifact
+oewn-03930040-n	n		noun.artifact
+oewn-03942321-n	n		noun.artifact
+oewn-03982146-n	n		noun.artifact
+oewn-03994032-n	n		noun.artifact
+oewn-04013329-n	n		noun.artifact
+oewn-04069081-n	n		noun.artifact
+oewn-04102077-n	n		noun.artifact
+oewn-04378312-n	n		noun.artifact
+oewn-04387704-n	n		noun.artifact
+oewn-04432791-n	n		noun.artifact
+oewn-04450722-n	n		noun.artifact
+oewn-04488629-n	n		noun.artifact
+oewn-04584579-n	n		noun.artifact
+oewn-04626953-n	n		noun.attribute
+oewn-04630470-n	n		noun.attribute
+oewn-04632316-n	n		noun.attribute
+oewn-04661423-n	n		noun.attribute
+oewn-04673170-n	n		noun.attribute
+oewn-04689541-n	n		noun.attribute
+oewn-04703541-n	n		noun.attribute
+oewn-04713638-n	n		noun.attribute
+oewn-04718532-n	n		noun.attribute
+oewn-04721334-n	n		noun.attribute
+oewn-04726937-n	n		noun.attribute
+oewn-04727081-n	n		noun.attribute
+oewn-04733982-n	n		noun.attribute
+oewn-04734952-n	n		noun.attribute
+oewn-04754486-n	n		noun.attribute
+oewn-04758195-n	n		noun.attribute
+oewn-04759669-n	n		noun.attribute
+oewn-04786760-n	n		noun.attribute
+oewn-04788030-n	n		noun.attribute
+oewn-04793136-n	n		noun.attribute
+oewn-04794552-n	n		noun.attribute
+oewn-04797125-n	n		noun.attribute
+oewn-04802662-n	n		noun.attribute
+oewn-04807130-n	n		noun.attribute
+oewn-04808279-n	n		noun.attribute
+oewn-04830262-n	n		noun.attribute
+oewn-04833046-n	n		noun.attribute
+oewn-04842491-n	n		noun.attribute
+oewn-04846676-n	n		noun.attribute
+oewn-04854964-n	n		noun.attribute
+oewn-04859981-n	n		noun.attribute
+oewn-04869467-n	n		noun.attribute
+oewn-04885296-n	n		noun.attribute
+oewn-04887768-n	n		noun.attribute
+oewn-04903710-n	n		noun.attribute
+oewn-04920159-n	n		noun.attribute
+oewn-04929290-n	n		noun.attribute
+oewn-04933604-n	n		noun.attribute
+oewn-04949915-n	n		noun.attribute
+oewn-04954264-n	n		noun.attribute
+oewn-04988723-n	n		noun.attribute
+oewn-04990262-n	n		noun.attribute
+oewn-04996598-n	n		noun.attribute
+oewn-04996748-n	n		noun.attribute
+oewn-05000286-n	n		noun.attribute
+oewn-05046973-n	n		noun.attribute
+oewn-05057266-n	n		noun.attribute
+oewn-05078196-n	n		noun.attribute
+oewn-05086387-n	n		noun.attribute
+oewn-05103556-n	n		noun.attribute
+oewn-05115562-n	n		noun.attribute
+oewn-05128395-n	n		noun.attribute
+oewn-05144053-n	n		noun.attribute
+oewn-05175145-n	n		noun.attribute
+oewn-05200165-n	n		noun.attribute
+oewn-05230403-n	n		noun.body
+oewn-05236671-n	n		noun.body
+oewn-05241492-n	n		noun.body
+oewn-05244178-n	n		noun.body
+oewn-05248193-n	n		noun.body
+oewn-05254521-n	n		noun.body
+oewn-05256437-n	n		noun.body
+oewn-05261025-n	n		noun.body
+oewn-05272412-n	n		noun.body
+oewn-05272537-n	n		noun.body
+oewn-05279775-n	n		noun.body
+oewn-05285031-n	n		noun.body
+oewn-05304274-n	n		noun.body
+oewn-05319320-n	n		noun.body
+oewn-05322012-n	n		noun.body
+oewn-05322189-n	n		noun.body
+oewn-05339986-n	n		noun.body
+oewn-05381623-n	n		noun.body
+oewn-05415233-n	n		noun.body
+oewn-05418773-n	n		noun.body
+oewn-05438753-n	n		noun.body
+oewn-05442853-n	n		noun.body
+oewn-05443053-n	n		noun.body
+oewn-05447518-n	n		noun.body
+oewn-05456077-n	n		noun.body
+oewn-05461233-n	n		noun.body
+oewn-05469891-n	n		noun.body
+oewn-05470250-n	n		noun.body
+oewn-05471756-n	n		noun.body
+oewn-05472186-n	n		noun.body
+oewn-05472591-n	n		noun.body
+oewn-05473219-n	n		noun.body
+oewn-05476684-n	n		noun.body
+oewn-05481998-n	n		noun.body
+oewn-05483530-n	n		noun.body
+oewn-05485988-n	n		noun.body
+oewn-05486178-n	n		noun.body
+oewn-05487728-n	n		noun.body
+oewn-05489201-n	n		noun.body
+oewn-05489398-n	n		noun.body
+oewn-05490774-n	n		noun.body
+oewn-05492514-n	n		noun.body
+oewn-05509362-n	n		noun.body
+oewn-05509583-n	n		noun.body
+oewn-05536237-n	n		noun.body
+oewn-05536487-n	n		noun.body
+oewn-05555029-n	n		noun.body
+oewn-05562800-n	n		noun.body
+oewn-05575508-n	n		noun.body
+oewn-05575982-n	n		noun.body
+oewn-05576183-n	n		noun.body
+oewn-05576686-n	n		noun.body
+oewn-05589324-n	n		noun.body
+oewn-05595647-n	n		noun.body
+oewn-05605902-n	n		noun.body
+oewn-05608186-n	n		noun.body
+oewn-05619467-n	n		noun.cognition
+oewn-05622930-n	n		noun.cognition
+oewn-05626842-n	n		noun.cognition
+oewn-05631720-n	n		noun.cognition
+oewn-05644951-n	n		noun.cognition
+oewn-05647276-n	n		noun.cognition
+oewn-05664735-n	n		noun.cognition
+oewn-05664842-n	n		noun.cognition
+oewn-05666671-n	n		noun.cognition
+oewn-05689896-n	n		noun.cognition
+oewn-05690037-n	n		noun.cognition
+oewn-05691195-n	n		noun.cognition
+oewn-05711376-n	n		noun.cognition
+oewn-05711750-n	n		noun.cognition
+oewn-05723097-n	n		noun.cognition
+oewn-05738310-n	n		noun.cognition
+oewn-05751119-n	n		noun.cognition
+oewn-05758468-n	n		noun.cognition
+oewn-05777059-n	n		noun.cognition
+oewn-05785436-n	n		noun.cognition
+oewn-05789660-n	n		noun.cognition
+oewn-05795853-n	n		noun.cognition
+oewn-05802197-n	n		noun.cognition
+oewn-05805907-n	n		noun.cognition
+oewn-05821558-n	n		noun.cognition
+oewn-05828167-n	n		noun.cognition
+oewn-05836587-n	n		noun.cognition
+oewn-05837336-n	n		noun.cognition
+oewn-05837804-n	n		noun.cognition
+oewn-05838851-n	n		noun.cognition
+oewn-05844922-n	n		noun.cognition
+oewn-05848940-n	n		noun.cognition
+oewn-05851569-n	n		noun.cognition
+oewn-05855153-n	n		noun.cognition
+oewn-05864650-n	n		noun.cognition
+oewn-05894019-n	n		noun.cognition
+oewn-05894646-n	n		noun.cognition
+oewn-05896822-n	n		noun.cognition
+oewn-05928143-n	n		noun.cognition
+oewn-05938673-n	n		noun.cognition
+oewn-05958203-n	n		noun.cognition
+oewn-05973889-n	n		noun.cognition
+oewn-05974062-n	n		noun.cognition
+oewn-05974255-n	n		noun.cognition
+oewn-05982065-n	n		noun.cognition
+oewn-05982239-n	n		noun.cognition
+oewn-05982470-n	n		noun.cognition
+oewn-05983023-n	n		noun.cognition
+oewn-05984526-n	n		noun.cognition
+oewn-05990909-n	n		noun.cognition
+oewn-06009578-n	n		noun.cognition
+oewn-06016126-n	n		noun.cognition
+oewn-06016991-n	n		noun.cognition
+oewn-06043631-n	n		noun.cognition
+oewn-06062052-n	n		noun.cognition
+oewn-06062216-n	n		noun.cognition
+oewn-06062632-n	n		noun.cognition
+oewn-06069758-n	n		noun.cognition
+oewn-06071467-n	n		noun.cognition
+oewn-06088061-n	n		noun.cognition
+oewn-06088528-n	n		noun.cognition
+oewn-06091190-n	n		noun.cognition
+oewn-06091421-n	n		noun.cognition
+oewn-06100128-n	n		noun.cognition
+oewn-06100457-n	n		noun.cognition
+oewn-06119874-n	n		noun.cognition
+oewn-06120205-n	n		noun.cognition
+oewn-06129215-n	n		noun.cognition
+oewn-06144350-n	n		noun.cognition
+oewn-06144786-n	n		noun.cognition
+oewn-06144954-n	n		noun.cognition
+oewn-06145366-n	n		noun.cognition
+oewn-06150250-n	n		noun.cognition
+oewn-06163988-n	n		noun.cognition
+oewn-06169640-n	n		noun.cognition
+oewn-06189006-n	n		noun.cognition
+oewn-06194698-n	n		noun.cognition
+oewn-06195483-n	n		noun.cognition
+oewn-06200040-n	n		noun.cognition
+oewn-06202643-n	n		noun.cognition
+oewn-06207818-n	n		noun.cognition
+oewn-06215146-n	n		noun.cognition
+oewn-06222385-n	n		noun.cognition
+oewn-06226345-n	n		noun.cognition
+oewn-06228946-n	n		noun.cognition
+oewn-06229360-n	n		noun.cognition
+oewn-06258660-n	n		noun.cognition
+oewn-06269819-n	n		noun.communication
+oewn-06277531-n	n		noun.communication
+oewn-06277798-n	n		noun.communication
+oewn-06279783-n	n		noun.communication
+oewn-06281194-n	n		noun.communication
+oewn-06322150-n	n		noun.communication
+oewn-06327473-n	n		noun.communication
+oewn-06328855-n	n		noun.communication
+oewn-06330286-n	n		noun.communication
+oewn-06337519-n	n		noun.communication
+oewn-06340306-n	n		noun.communication
+oewn-06344646-n	n		noun.communication
+oewn-06349373-n	n		noun.communication
+oewn-06350023-n	n		noun.communication
+oewn-06379016-n	n		noun.communication
+oewn-06379324-n	n		noun.communication
+oewn-06380585-n	n		noun.communication
+oewn-06386838-n	n		noun.communication
+oewn-06408950-n	n		noun.communication
+oewn-06422419-n	n		noun.communication
+oewn-06427062-n	n		noun.communication
+oewn-06436708-n	n		noun.communication
+oewn-06437781-n	n		noun.communication
+oewn-06465519-n	n		noun.communication
+oewn-06492827-n	n		noun.communication
+oewn-06495028-n	n		noun.communication
+oewn-06497731-n	n		noun.communication
+oewn-06505917-n	n		noun.communication
+oewn-06516453-n	n		noun.communication
+oewn-06517243-n	n		noun.communication
+oewn-06517425-n	n		noun.communication
+oewn-06544754-n	n		noun.communication
+oewn-06572930-n	n		noun.communication
+oewn-06584187-n	n		noun.communication
+oewn-06608678-n	n		noun.communication
+oewn-06609408-n	n		noun.communication
+oewn-06618544-n	n		noun.communication
+oewn-06629210-n	n		noun.communication
+oewn-06632357-n	n		noun.communication
+oewn-06635384-n	n		noun.communication
+oewn-06654987-n	n		noun.communication
+oewn-06655149-n	n		noun.communication
+oewn-06669854-n	n		noun.communication
+oewn-06673413-n	n		noun.communication
+oewn-06674492-n	n		noun.communication
+oewn-06674668-n	n		noun.communication
+oewn-06675457-n	n		noun.communication
+oewn-06675763-n	n		noun.communication
+oewn-06693922-n	n		noun.communication
+oewn-06694721-n	n		noun.communication
+oewn-06696104-n	n		noun.communication
+oewn-06700804-n	n		noun.communication
+oewn-06720648-n	n		noun.communication
+oewn-06733533-n	n		noun.communication
+oewn-06738216-n	n		noun.communication
+oewn-06738429-n	n		noun.communication
+oewn-06760383-n	n		noun.communication
+oewn-06760847-n	n		noun.communication
+oewn-06764286-n	n		noun.communication
+oewn-06777091-n	n		noun.communication
+oewn-06779603-n	n		noun.communication
+oewn-06803874-n	n		noun.communication
+oewn-06819914-n	n		noun.communication
+oewn-06820056-n	n		noun.communication
+oewn-06821351-n	n		noun.communication
+oewn-06821932-n	n		noun.communication
+oewn-06825862-n	n		noun.communication
+oewn-06845622-n	n		noun.communication
+oewn-06848470-n	n		noun.communication
+oewn-06851162-n	n		noun.communication
+oewn-06898956-n	n		noun.communication
+oewn-06909981-n	n		noun.communication
+oewn-06910082-n	n		noun.communication
+oewn-06910157-n	n		noun.communication
+oewn-06916172-n	n		noun.communication
+oewn-06916947-n	n		noun.communication
+oewn-06923843-n	n		noun.communication
+oewn-06926411-n	n		noun.communication
+oewn-06927485-n	n		noun.communication
+oewn-06931608-n	n		noun.communication
+oewn-06932489-n	n		noun.communication
+oewn-06938212-n	n		noun.communication
+oewn-06946206-n	n		noun.communication
+oewn-06946797-n	n		noun.communication
+oewn-06948767-n	n		noun.communication
+oewn-06961969-n	n		noun.communication
+oewn-06966471-n	n		noun.communication
+oewn-06967043-n	n		noun.communication
+oewn-06972528-n	n		noun.communication
+oewn-06972823-n	n		noun.communication
+oewn-06976564-n	n		noun.communication
+oewn-06978478-n	n		noun.communication
+oewn-06985645-n	n		noun.communication
+oewn-06994478-n	n		noun.communication
+oewn-06994881-n	n		noun.communication
+oewn-06998064-n	n		noun.communication
+oewn-07003937-n	n		noun.communication
+oewn-07004424-n	n		noun.communication
+oewn-07006989-n	n		noun.communication
+oewn-07007578-n	n		noun.communication
+oewn-07010357-n	n		noun.communication
+oewn-07010768-n	n		noun.communication
+oewn-07049344-n	n		noun.communication
+oewn-07061737-n	n		noun.communication
+oewn-07063095-n	n		noun.communication
+oewn-07097011-n	n		noun.communication
+oewn-07132710-n	n		noun.communication
+oewn-07133919-n	n		noun.communication
+oewn-07137438-n	n		noun.communication
+oewn-07152023-n	n		noun.communication
+oewn-07159542-n	n		noun.communication
+oewn-07169789-n	n		noun.communication
+oewn-07196113-n	n		noun.communication
+oewn-07200328-n	n		noun.communication
+oewn-07214474-n	n		noun.communication
+oewn-07219482-n	n		noun.communication
+oewn-07219571-n	n		noun.communication
+oewn-07219764-n	n		noun.communication
+oewn-07219870-n	n		noun.communication
+oewn-07221121-n	n		noun.communication
+oewn-07227272-n	n		noun.communication
+oewn-07235433-n	n		noun.communication
+oewn-07235754-n	n		noun.communication
+oewn-07237388-n	n		noun.communication
+oewn-07245162-n	n		noun.communication
+oewn-07245619-n	n		noun.communication
+oewn-07255585-n	n		noun.communication
+oewn-07264094-n	n		noun.communication
+oewn-07283464-n	n		noun.communication
+oewn-07287625-n	n		noun.communication
+oewn-07289021-n	n		noun.communication
+oewn-07295646-n	n		noun.communication
+oewn-07298178-n	n		noun.event
+oewn-07302315-n	n		noun.event
+oewn-07305226-n	n		noun.event
+oewn-07316464-n	n		noun.event
+oewn-07401916-n	n		noun.event
+oewn-07402109-n	n		noun.event
+oewn-07415431-n	n		noun.event
+oewn-07417900-n	n		noun.event
+oewn-07500187-n	n		noun.feeling
+oewn-07502515-n	n		noun.feeling
+oewn-07505065-n	n		noun.feeling
+oewn-07519350-n	n		noun.feeling
+oewn-07587468-n	n		noun.food
+oewn-07593103-n	n		noun.food
+oewn-07593222-n	n		noun.food
+oewn-07603533-n	n		noun.food
+oewn-07620449-n	n		noun.food
+oewn-07623948-n	n		noun.food
+oewn-07624038-n	n		noun.food
+oewn-07624142-n	n		noun.food
+oewn-07630661-n	n		noun.food
+oewn-07634293-n	n		noun.food
+oewn-07636873-n	n		noun.food
+oewn-07642695-n	n		noun.food
+oewn-07668490-n	n		noun.food
+oewn-07677102-n	n		noun.food
+oewn-07678464-n	n		noun.food
+oewn-07700034-n	n		noun.food
+oewn-07700963-n	n		noun.food
+oewn-07715329-n	n		noun.food
+oewn-07728704-n	n		noun.food
+oewn-07743116-n	n		noun.food
+oewn-07757211-n	n		noun.food
+oewn-07758489-n	n		noun.food
+oewn-07765168-n	n		noun.food
+oewn-07767124-n	n		noun.food
+oewn-07772617-n	n		noun.food
+oewn-07785282-n	n		noun.food
+oewn-07812946-n	n		noun.food
+oewn-07831400-n	n		noun.food
+oewn-07835745-n	n		noun.food
+oewn-07855031-n	n		noun.food
+oewn-07862250-n	n		noun.food
+oewn-07871389-n	n		noun.food
+oewn-07886710-n	n		noun.food
+oewn-07907164-n	n		noun.food
+oewn-07907588-n	n		noun.food
+oewn-07928859-n	n		noun.food
+oewn-07930926-n	n		noun.food
+oewn-07940516-n	n		noun.food
+oewn-07943310-n	n		noun.food
+oewn-07965746-n	n		noun.group
+oewn-07966049-n	n		noun.group
+oewn-07977183-n	n		noun.group
+oewn-08000298-n	n		noun.group
+oewn-08017786-n	n		noun.group
+oewn-08020885-n	n		noun.group
+oewn-08026566-n	n		noun.group
+oewn-08065877-n	n		noun.group
+oewn-08079806-n	n		noun.group
+oewn-08079965-n	n		noun.group
+oewn-08102274-n	n		noun.group
+oewn-08129942-n	n		noun.group
+oewn-08139571-n	n		noun.group
+oewn-08142704-n	n		noun.group
+oewn-08143272-n	n		noun.group
+oewn-08143465-n	n		noun.group
+oewn-08143698-n	n		noun.group
+oewn-08143903-n	n		noun.group
+oewn-08144742-n	n		noun.group
+oewn-08146865-n	n		noun.group
+oewn-08147274-n	n		noun.group
+oewn-08147458-n	n		noun.group
+oewn-08147987-n	n		noun.group
+oewn-08148236-n	n		noun.group
+oewn-08151063-n	n		noun.group
+oewn-08156637-n	n		noun.group
+oewn-08159170-n	n		noun.group
+oewn-08161915-n	n		noun.group
+oewn-08163417-n	n		noun.group
+oewn-08187154-n	n		noun.group
+oewn-08189929-n	n		noun.group
+oewn-08191297-n	n		noun.group
+oewn-08208462-n	n		noun.group
+oewn-08208631-n	n		noun.group
+oewn-08208917-n	n		noun.group
+oewn-08210152-n	n		noun.group
+oewn-08210388-n	n		noun.group
+oewn-08210585-n	n		noun.group
+oewn-08210794-n	n		noun.group
+oewn-08227756-n	n		noun.group
+oewn-08242011-n	n		noun.group
+oewn-08252544-n	n		noun.group
+oewn-08261267-n	n		noun.group
+oewn-08279230-n	n		noun.group
+oewn-08286860-n	n		noun.group
+oewn-08296586-n	n		noun.group
+oewn-08297950-n	n		noun.group
+oewn-08300678-n	n		noun.group
+oewn-08311316-n	n		noun.group
+oewn-08320622-n	n		noun.group
+oewn-08327652-n	n		noun.group
+oewn-08331645-n	n		noun.group
+oewn-08351378-n	n		noun.group
+oewn-08364631-n	n		noun.group
+oewn-08365018-n	n		noun.group
+oewn-08372002-n	n		noun.group
+oewn-08382271-n	n		noun.group
+oewn-08383367-n	n		noun.group
+oewn-08392453-n	n		noun.group
+oewn-08405234-n	n		noun.group
+oewn-08405825-n	n		noun.group
+oewn-08408653-n	n		noun.group
+oewn-08413494-n	n		noun.group
+oewn-08428927-n	n		noun.group
+oewn-08429222-n	n		noun.group
+oewn-08429577-n	n		noun.group
+oewn-08435588-n	n		noun.group
+oewn-08436941-n	n		noun.group
+oewn-08451269-n	n		noun.group
+oewn-08452256-n	n		noun.group
+oewn-08475844-n	n		noun.group
+oewn-08484587-n	n		noun.group
+oewn-08486468-n	n		noun.group
+oewn-08486689-n	n		noun.group
+oewn-08486796-n	n		noun.group
+oewn-08486928-n	n		noun.group
+oewn-08493436-n	n		noun.group
+oewn-08493640-n	n		noun.group
+oewn-08497523-n	n		noun.group
+oewn-08504329-n	n		noun.group
+oewn-08515452-n	n		noun.location
+oewn-08515608-n	n		noun.location
+oewn-08530489-n	n		noun.location
+oewn-08531522-n	n		noun.location
+oewn-08541929-n	n		noun.location
+oewn-08578618-n	n		noun.location
+oewn-08578767-n	n		noun.location
+oewn-08579483-n	n		noun.location
+oewn-08580527-n	n		noun.location
+oewn-08618316-n	n		noun.location
+oewn-08618548-n	n		noun.location
+oewn-08628532-n	n		noun.location
+oewn-08628620-n	n		noun.location
+oewn-08628775-n	n		noun.location
+oewn-08628896-n	n		noun.location
+oewn-08628978-n	n		noun.location
+oewn-08644097-n	n		noun.location
+oewn-08659906-n	n		noun.location
+oewn-08661223-n	n		noun.location
+oewn-08661304-n	n		noun.location
+oewn-08667880-n	n		noun.location
+oewn-08699272-n	n		noun.location
+oewn-08709407-n	n		noun.location
+oewn-08720619-n	n		noun.location
+oewn-08778226-n	n		noun.location
+oewn-09205547-n	n		noun.motive
+oewn-09388760-n	n		noun.object
+oewn-09389494-n	n		noun.object
+oewn-09389659-n	n		noun.object
+oewn-09389837-n	n		noun.object
+oewn-09390034-n	n		noun.object
+oewn-09390630-n	n		noun.object
+oewn-09390888-n	n		noun.object
+oewn-09391121-n	n		noun.object
+oewn-09391936-n	n		noun.object
+oewn-09392066-n	n		noun.object
+oewn-09392309-n	n		noun.object
+oewn-09392431-n	n		noun.object
+oewn-09392603-n	n		noun.object
+oewn-09392917-n	n		noun.object
+oewn-09393939-n	n		noun.object
+oewn-09394597-n	n		noun.object
+oewn-09394852-n	n		noun.object
+oewn-09397404-n	n		noun.object
+oewn-09397558-n	n		noun.object
+oewn-09397685-n	n		noun.object
+oewn-09397798-n	n		noun.object
+oewn-09397997-n	n		noun.object
+oewn-09398135-n	n		noun.object
+oewn-09398393-n	n		noun.object
+oewn-09398518-n	n		noun.object
+oewn-09522625-n	n		noun.person
+oewn-09522788-n	n		noun.person
+oewn-09526814-n	n		noun.person
+oewn-09571761-n	n		noun.person
+oewn-09573572-n	n		noun.person
+oewn-09573714-n	n		noun.person
+oewn-09601643-n	n		noun.person
+oewn-09605194-n	n		noun.person
+oewn-09605518-n	n		noun.person
+oewn-09628284-n	n		noun.person
+oewn-09644402-n	n		noun.person
+oewn-09648479-n	n		noun.person
+oewn-09648571-n	n		noun.person
+oewn-09648846-n	n		noun.person
+oewn-09648959-n	n		noun.person
+oewn-09649219-n	n		noun.person
+oewn-09668448-n	n		noun.person
+oewn-09682235-n	n		noun.person
+oewn-09682366-n	n		noun.person
+oewn-09682509-n	n		noun.person
+oewn-09682656-n	n		noun.person
+oewn-09699532-n	n		noun.person
+oewn-09726983-n	n		noun.person
+oewn-09732656-n	n		noun.person
+oewn-09736233-n	n		noun.person
+oewn-09738501-n	n		noun.person
+oewn-09743233-n	n		noun.person
+oewn-09743358-n	n		noun.person
+oewn-09743480-n	n		noun.person
+oewn-09744070-n	n		noun.person
+oewn-09744199-n	n		noun.person
+oewn-09744538-n	n		noun.person
+oewn-09744643-n	n		noun.person
+oewn-09744816-n	n		noun.person
+oewn-09749546-n	n		noun.person
+oewn-09762021-n	n		noun.person
+oewn-09763593-n	n		noun.person
+oewn-09763918-n	n		noun.person
+oewn-09764010-n	n		noun.person
+oewn-09764165-n	n		noun.person
+oewn-09764276-n	n		noun.person
+oewn-09856046-n	n		noun.person
+oewn-09906830-n	n		noun.person
+oewn-09977313-n	n		noun.person
+oewn-10032138-n	n		noun.person
+oewn-10035642-n	n		noun.person
+oewn-10327733-n	n		noun.person
+oewn-10363735-n	n		noun.person
+oewn-10363852-n	n		noun.person
+oewn-10363934-n	n		noun.person
+oewn-10364050-n	n		noun.person
+oewn-10364387-n	n		noun.person
+oewn-10364505-n	n		noun.person
+oewn-10364653-n	n		noun.person
+oewn-10364746-n	n		noun.person
+oewn-10364831-n	n		noun.person
+oewn-10365033-n	n		noun.person
+oewn-10365153-n	n		noun.person
+oewn-10365287-n	n		noun.person
+oewn-10365535-n	n		noun.person
+oewn-10365746-n	n		noun.person
+oewn-10365929-n	n		noun.person
+oewn-10366123-n	n		noun.person
+oewn-10366245-n	n		noun.person
+oewn-10366686-n	n		noun.person
+oewn-10366841-n	n		noun.person
+oewn-10366935-n	n		noun.person
+oewn-10367029-n	n		noun.person
+oewn-10367177-n	n		noun.person
+oewn-10367324-n	n		noun.person
+oewn-10367614-n	n		noun.person
+oewn-10368096-n	n		noun.person
+oewn-10368257-n	n		noun.person
+oewn-10368483-n	n		noun.person
+oewn-10369282-n	n		noun.person
+oewn-10369401-n	n		noun.person
+oewn-10369481-n	n		noun.person
+oewn-10370215-n	n		noun.person
+oewn-10370397-n	n		noun.person
+oewn-10370505-n	n		noun.person
+oewn-10370627-n	n		noun.person
+oewn-10370795-n	n		noun.person
+oewn-10370883-n	n		noun.person
+oewn-10371012-n	n		noun.person
+oewn-10371222-n	n		noun.person
+oewn-10371356-n	n		noun.person
+oewn-10371605-n	n		noun.person
+oewn-10371939-n	n		noun.person
+oewn-10372030-n	n		noun.person
+oewn-10372288-n	n		noun.person
+oewn-10372394-n	n		noun.person
+oewn-10372513-n	n		noun.person
+oewn-10372629-n	n		noun.person
+oewn-10372747-n	n		noun.person
+oewn-10372968-n	n		noun.person
+oewn-10373054-n	n		noun.person
+oewn-10373174-n	n		noun.person
+oewn-10373297-n	n		noun.person
+oewn-10373433-n	n		noun.person
+oewn-10373512-n	n		noun.person
+oewn-10373627-n	n		noun.person
+oewn-10373752-n	n		noun.person
+oewn-10374279-n	n		noun.person
+oewn-10374841-n	n		noun.person
+oewn-10375005-n	n		noun.person
+oewn-10375387-n	n		noun.person
+oewn-10375505-n	n		noun.person
+oewn-10375641-n	n		noun.person
+oewn-10375912-n	n		noun.person
+oewn-10376043-n	n		noun.person
+oewn-10376149-n	n		noun.person
+oewn-10376291-n	n		noun.person
+oewn-10376448-n	n		noun.person
+oewn-10376576-n	n		noun.person
+oewn-10376711-n	n		noun.person
+oewn-10376811-n	n		noun.person
+oewn-10376906-n	n		noun.person
+oewn-10377048-n	n		noun.person
+oewn-10377183-n	n		noun.person
+oewn-10377312-n	n		noun.person
+oewn-10377606-n	n		noun.person
+oewn-10377731-n	n		noun.person
+oewn-10377823-n	n		noun.person
+oewn-10378021-n	n		noun.person
+oewn-10378119-n	n		noun.person
+oewn-10378274-n	n		noun.person
+oewn-10378493-n	n		noun.person
+oewn-10378588-n	n		noun.person
+oewn-10378816-n	n		noun.person
+oewn-10378999-n	n		noun.person
+oewn-10379121-n	n		noun.person
+oewn-10379245-n	n		noun.person
+oewn-10379358-n	n		noun.person
+oewn-10379458-n	n		noun.person
+oewn-10379687-n	n		noun.person
+oewn-10379800-n	n		noun.person
+oewn-10379952-n	n		noun.person
+oewn-10380065-n	n		noun.person
+oewn-10380277-n	n		noun.person
+oewn-10380759-n	n		noun.person
+oewn-10380893-n	n		noun.person
+oewn-10380995-n	n		noun.person
+oewn-10381089-n	n		noun.person
+oewn-10381224-n	n		noun.person
+oewn-10381600-n	n		noun.person
+oewn-10381702-n	n		noun.person
+oewn-10381894-n	n		noun.person
+oewn-10382018-n	n		noun.person
+oewn-10382127-n	n		noun.person
+oewn-10382256-n	n		noun.person
+oewn-10382381-n	n		noun.person
+oewn-10382464-n	n		noun.person
+oewn-10382616-n	n		noun.person
+oewn-10382716-n	n		noun.person
+oewn-10382848-n	n		noun.person
+oewn-10383059-n	n		noun.person
+oewn-10383144-n	n		noun.person
+oewn-10383272-n	n		noun.person
+oewn-10383897-n	n		noun.person
+oewn-10384032-n	n		noun.person
+oewn-10384201-n	n		noun.person
+oewn-10384342-n	n		noun.person
+oewn-10385098-n	n		noun.person
+oewn-10385213-n	n		noun.person
+oewn-10385400-n	n		noun.person
+oewn-10385545-n	n		noun.person
+oewn-10385683-n	n		noun.person
+oewn-10385844-n	n		noun.person
+oewn-10385975-n	n		noun.person
+oewn-10386082-n	n		noun.person
+oewn-10386183-n	n		noun.person
+oewn-10386391-n	n		noun.person
+oewn-10386665-n	n		noun.person
+oewn-10387108-n	n		noun.person
+oewn-10387247-n	n		noun.person
+oewn-10387393-n	n		noun.person
+oewn-10387518-n	n		noun.person
+oewn-10387708-n	n		noun.person
+oewn-10387812-n	n		noun.person
+oewn-10387990-n	n		noun.person
+oewn-10388113-n	n		noun.person
+oewn-10388323-n	n		noun.person
+oewn-10388410-n	n		noun.person
+oewn-10388497-n	n		noun.person
+oewn-10427055-n	n		noun.person
+oewn-10490835-n	n		noun.person
+oewn-10511160-n	n		noun.person
+oewn-10541255-n	n		noun.person
+oewn-10541446-n	n		noun.person
+oewn-10565985-n	n		noun.person
+oewn-10630877-n	n		noun.person
+oewn-10650493-n	n		noun.person
+oewn-10669601-n	n		noun.person
+oewn-10734226-n	n		noun.person
+oewn-10756051-n	n		noun.person
+oewn-10785693-n	n		noun.person
+oewn-10821887-n	n		noun.person
+oewn-11428673-n	n		noun.phenomenon
+oewn-11454264-n	n		noun.phenomenon
+oewn-11456133-n	n		noun.phenomenon
+oewn-11468812-n	n		noun.phenomenon
+oewn-11475803-n	n		noun.phenomenon
+oewn-11483350-n	n		noun.phenomenon
+oewn-11498914-n	n		noun.phenomenon
+oewn-11499298-n	n		noun.phenomenon
+oewn-11507698-n	n		noun.phenomenon
+oewn-11508560-n	n		noun.phenomenon
+oewn-11509630-n	n		noun.phenomenon
+oewn-11551441-n	n		noun.plant
+oewn-11565975-n	n		noun.plant
+oewn-11574085-n	n		noun.plant
+oewn-11630135-n	n		noun.plant
+oewn-11631807-n	n		noun.plant
+oewn-11645454-n	n		noun.plant
+oewn-11678036-n	n		noun.plant
+oewn-11699701-n	n		noun.plant
+oewn-11704216-n	n		noun.plant
+oewn-11737167-n	n		noun.plant
+oewn-11737346-n	n		noun.plant
+oewn-11757163-n	n		noun.plant
+oewn-11784094-n	n		noun.plant
+oewn-11794456-n	n		noun.plant
+oewn-11810431-n	n		noun.plant
+oewn-11810558-n	n		noun.plant
+oewn-11842769-n	n		noun.plant
+oewn-11856796-n	n		noun.plant
+oewn-11865361-n	n		noun.plant
+oewn-11868948-n	n		noun.plant
+oewn-11871727-n	n		noun.plant
+oewn-11872497-n	n		noun.plant
+oewn-11874282-n	n		noun.plant
+oewn-11883711-n	n		noun.plant
+oewn-12018961-n	n		noun.plant
+oewn-12031839-n	n		noun.plant
+oewn-12034170-n	n		noun.plant
+oewn-12038322-n	n		noun.plant
+oewn-12043290-n	n		noun.plant
+oewn-12153473-n	n		noun.plant
+oewn-12206043-n	n		noun.plant
+oewn-12240185-n	n		noun.plant
+oewn-12244657-n	n		noun.plant
+oewn-12287313-n	n		noun.plant
+oewn-12287501-n	n		noun.plant
+oewn-12287650-n	n		noun.plant
+oewn-12287782-n	n		noun.plant
+oewn-12296831-n	n		noun.plant
+oewn-12298317-n	n		noun.plant
+oewn-12361098-n	n		noun.plant
+oewn-12412587-n	n		noun.plant
+oewn-12441972-n	n		noun.plant
+oewn-12442735-n	n		noun.plant
+oewn-12574078-n	n		noun.plant
+oewn-12612819-n	n		noun.plant
+oewn-12632401-n	n		noun.plant
+oewn-12633572-n	n		noun.plant
+oewn-12668957-n	n		noun.plant
+oewn-12689678-n	n		noun.plant
+oewn-12691095-n	n		noun.plant
+oewn-12717591-n	n		noun.plant
+oewn-12740444-n	n		noun.plant
+oewn-12766146-n	n		noun.plant
+oewn-12766324-n	n		noun.plant
+oewn-12830767-n	n		noun.plant
+oewn-12856972-n	n		noun.plant
+oewn-12907591-n	n		noun.plant
+oewn-12914223-n	n		noun.plant
+oewn-12917878-n	n		noun.plant
+oewn-12929614-n	n		noun.plant
+oewn-12929828-n	n		noun.plant
+oewn-13029845-n	n		noun.plant
+oewn-13072106-n	n		noun.plant
+oewn-13072454-n	n		noun.plant
+oewn-13094463-n	n		noun.plant
+oewn-13105239-n	n		noun.plant
+oewn-13109749-n	n		noun.plant
+oewn-13118945-n	n		noun.plant
+oewn-13131674-n	n		noun.plant
+oewn-13157333-n	n		noun.plant
+oewn-13157558-n	n		noun.plant
+oewn-13163684-n	n		noun.plant
+oewn-13221309-n	n		noun.plant
+oewn-13260634-n	n		noun.plant
+oewn-13270704-n	n		noun.possession
+oewn-13272323-n	n		noun.possession
+oewn-13277793-n	n		noun.possession
+oewn-13282006-n	n		noun.possession
+oewn-13297936-n	n		noun.possession
+oewn-13312637-n	n		noun.possession
+oewn-13337590-n	n		noun.possession
+oewn-13353024-n	n		noun.possession
+oewn-13356823-n	n		noun.possession
+oewn-13359795-n	n		noun.possession
+oewn-13366575-n	n		noun.possession
+oewn-13380745-n	n		noun.possession
+oewn-13411312-n	n		noun.possession
+oewn-13412866-n	n		noun.possession
+oewn-13413014-n	n		noun.possession
+oewn-13416825-n	n		noun.possession
+oewn-13418692-n	n		noun.possession
+oewn-13419247-n	n		noun.possession
+oewn-13419642-n	n		noun.possession
+oewn-13428562-n	n		noun.possession
+oewn-13428891-n	n		noun.possession
+oewn-13539766-n	n		noun.process
+oewn-13539859-n	n		noun.process
+oewn-13541629-n	n		noun.process
+oewn-13541832-n	n		noun.process
+oewn-13541934-n	n		noun.process
+oewn-13542052-n	n		noun.process
+oewn-13542184-n	n		noun.process
+oewn-13542275-n	n		noun.process
+oewn-13542647-n	n		noun.process
+oewn-13542819-n	n		noun.process
+oewn-13543076-n	n		noun.process
+oewn-13543287-n	n		noun.process
+oewn-13543508-n	n		noun.process
+oewn-13543688-n	n		noun.process
+oewn-13543814-n	n		noun.process
+oewn-13543947-n	n		noun.process
+oewn-13544082-n	n		noun.process
+oewn-13544291-n	n		noun.process
+oewn-13544411-n	n		noun.process
+oewn-13544706-n	n		noun.process
+oewn-13544864-n	n		noun.process
+oewn-13584949-n	n		noun.process
+oewn-13602112-n	n		noun.quantity
+oewn-13603216-n	n		noun.quantity
+oewn-13618523-n	n		noun.quantity
+oewn-13647355-n	n		noun.quantity
+oewn-13662502-n	n		noun.quantity
+oewn-13664335-n	n		noun.quantity
+oewn-13669285-n	n		noun.quantity
+oewn-13671244-n	n		noun.quantity
+oewn-13673953-n	n		noun.quantity
+oewn-13682196-n	n		noun.quantity
+oewn-13695948-n	n		noun.quantity
+oewn-13700585-n	n		noun.quantity
+oewn-13704965-n	n		noun.quantity
+oewn-13705805-n	n		noun.quantity
+oewn-13711049-n	n		noun.quantity
+oewn-13711178-n	n		noun.quantity
+oewn-13711516-n	n		noun.quantity
+oewn-13713259-n	n		noun.quantity
+oewn-13726893-n	n		noun.quantity
+oewn-13727002-n	n		noun.quantity
+oewn-13730960-n	n		noun.quantity
+oewn-13731097-n	n		noun.quantity
+oewn-13743634-n	n		noun.quantity
+oewn-13745299-n	n		noun.quantity
+oewn-13750477-n	n		noun.quantity
+oewn-13755011-n	n		noun.quantity
+oewn-13760375-n	n		noun.quantity
+oewn-13762731-n	n		noun.quantity
+oewn-13781286-n	n		noun.quantity
+oewn-13784598-n	n		noun.quantity
+oewn-13795390-n	n		noun.quantity
+oewn-13819773-n	n		noun.relation
+oewn-13853509-n	n		noun.relation
+oewn-13853771-n	n		noun.relation
+oewn-13853916-n	n		noun.relation
+oewn-13854042-n	n		noun.relation
+oewn-13854193-n	n		noun.relation
+oewn-13856960-n	n		noun.relation
+oewn-13857084-n	n		noun.relation
+oewn-13857236-n	n		noun.relation
+oewn-13857362-n	n		noun.relation
+oewn-13857507-n	n		noun.relation
+oewn-13857626-n	n		noun.relation
+oewn-13857745-n	n		noun.relation
+oewn-13858452-n	n		noun.relation
+oewn-13860224-n	n		noun.relation
+oewn-13869912-n	n		noun.relation
+oewn-13870981-n	n		noun.relation
+oewn-13871808-n	n		noun.relation
+oewn-13876685-n	n		noun.relation
+oewn-13879205-n	n		noun.relation
+oewn-13884885-n	n		noun.shape
+oewn-13905296-n	n		noun.shape
+oewn-13918315-n	n		noun.shape
+oewn-13928281-n	n		noun.shape
+oewn-13934060-n	n		noun.shape
+oewn-13947569-n	n		noun.state
+oewn-13949201-n	n		noun.state
+oewn-13949484-n	n		noun.state
+oewn-13949568-n	n		noun.state
+oewn-13959816-n	n		noun.state
+oewn-13962386-n	n		noun.state
+oewn-13977005-n	n		noun.state
+oewn-13983104-n	n		noun.state
+oewn-13983217-n	n		noun.state
+oewn-13984465-n	n		noun.state
+oewn-13996767-n	n		noun.state
+oewn-14007202-n	n		noun.state
+oewn-14027084-n	n		noun.state
+oewn-14041342-n	n		noun.state
+oewn-14048949-n	n		noun.state
+oewn-14067854-n	n		noun.state
+oewn-14088725-n	n		noun.state
+oewn-14090143-n	n		noun.state
+oewn-14090288-n	n		noun.state
+oewn-14090441-n	n		noun.state
+oewn-14108362-n	n		noun.state
+oewn-14114500-n	n		noun.state
+oewn-14132967-n	n		noun.state
+oewn-14133173-n	n		noun.state
+oewn-14137420-n	n		noun.state
+oewn-14138936-n	n		noun.state
+oewn-14139130-n	n		noun.state
+oewn-14143080-n	n		noun.state
+oewn-14158547-n	n		noun.state
+oewn-14160350-n	n		noun.state
+oewn-14181661-n	n		noun.state
+oewn-14187489-n	n		noun.state
+oewn-14220025-n	n		noun.state
+oewn-14221110-n	n		noun.state
+oewn-14223900-n	n		noun.state
+oewn-14225754-n	n		noun.state
+oewn-14231920-n	n		noun.state
+oewn-14236423-n	n		noun.state
+oewn-14236526-n	n		noun.state
+oewn-14247823-n	n		noun.state
+oewn-14254070-n	n		noun.state
+oewn-14258682-n	n		noun.state
+oewn-14272269-n	n		noun.state
+oewn-14272381-n	n		noun.state
+oewn-14272519-n	n		noun.state
+oewn-14272620-n	n		noun.state
+oewn-14272744-n	n		noun.state
+oewn-14279330-n	n		noun.state
+oewn-14279599-n	n		noun.state
+oewn-14293743-n	n		noun.state
+oewn-14298303-n	n		noun.state
+oewn-14330895-n	n		noun.state
+oewn-14331151-n	n		noun.state
+oewn-14331439-n	n		noun.state
+oewn-14333599-n	n		noun.state
+oewn-14338183-n	n		noun.state
+oewn-14345955-n	n		noun.state
+oewn-14352564-n	n		noun.state
+oewn-14352667-n	n		noun.state
+oewn-14368573-n	n		noun.state
+oewn-14374242-n	n		noun.state
+oewn-14383357-n	n		noun.state
+oewn-14391202-n	n		noun.state
+oewn-14398981-n	n		noun.state
+oewn-14402117-n	n		noun.state
+oewn-14407366-n	n		noun.state
+oewn-14407446-n	n		noun.state
+oewn-14414372-n	n		noun.state
+oewn-14416566-n	n		noun.state
+oewn-14424916-n	n		noun.state
+oewn-14455458-n	n		noun.state
+oewn-14460133-n	n		noun.state
+oewn-14462254-n	n		noun.state
+oewn-14474157-n	n		noun.state
+oewn-14479148-n	n		noun.state
+oewn-14479586-n	n		noun.state
+oewn-14479883-n	n		noun.state
+oewn-14520949-n	n		noun.state
+oewn-14524492-n	n		noun.state
+oewn-14535332-n	n		noun.state
+oewn-14535464-n	n		noun.state
+oewn-14540845-n	n		noun.state
+oewn-14542141-n	n		noun.state
+oewn-14575157-n	n		noun.state
+oewn-14582491-n	n		noun.state
+oewn-14590577-n	n		noun.state
+oewn-14591152-n	n		noun.state
+oewn-14593264-n	n		noun.state
+oewn-14651259-n	n		noun.substance
+oewn-14651424-n	n		noun.substance
+oewn-14707365-n	n		noun.substance
+oewn-14707608-n	n		noun.substance
+oewn-14707756-n	n		noun.substance
+oewn-14708178-n	n		noun.substance
+oewn-14712250-n	n		noun.substance
+oewn-14738978-n	n		noun.substance
+oewn-14758666-n	n		noun.substance
+oewn-14759084-n	n		noun.substance
+oewn-14770596-n	n		noun.substance
+oewn-14770972-n	n		noun.substance
+oewn-14771186-n	n		noun.substance
+oewn-14790904-n	n		noun.substance
+oewn-14791069-n	n		noun.substance
+oewn-14791266-n	n		noun.substance
+oewn-14791381-n	n		noun.substance
+oewn-14807078-n	n		noun.substance
+oewn-14831580-n	n		noun.substance
+oewn-14831728-n	n		noun.substance
+oewn-14834526-n	n		noun.substance
+oewn-14857197-n	n		noun.substance
+oewn-14870949-n	n		noun.substance
+oewn-14885506-n	n		noun.substance
+oewn-14888321-n	n		noun.substance
+oewn-14903756-n	n		noun.substance
+oewn-14918632-n	n		noun.substance
+oewn-14981788-n	n		noun.substance
+oewn-14982393-n	n		noun.substance
+oewn-14982544-n	n		noun.substance
+oewn-14982703-n	n		noun.substance
+oewn-14982939-n	n		noun.substance
+oewn-14983373-n	n		noun.substance
+oewn-14984596-n	n		noun.substance
+oewn-14984745-n	n		noun.substance
+oewn-14984860-n	n		noun.substance
+oewn-14985651-n	n		noun.substance
+oewn-14985861-n	n		noun.substance
+oewn-14986035-n	n		noun.substance
+oewn-14986256-n	n		noun.substance
+oewn-14986430-n	n		noun.substance
+oewn-14986660-n	n		noun.substance
+oewn-14986751-n	n		noun.substance
+oewn-14986976-n	n		noun.substance
+oewn-14987190-n	n		noun.substance
+oewn-14987326-n	n		noun.substance
+oewn-14987456-n	n		noun.substance
+oewn-14987625-n	n		noun.substance
+oewn-14987773-n	n		noun.substance
+oewn-14987901-n	n		noun.substance
+oewn-14988055-n	n		noun.substance
+oewn-14988268-n	n		noun.substance
+oewn-14988506-n	n		noun.substance
+oewn-14989100-n	n		noun.substance
+oewn-14990580-n	n		noun.substance
+oewn-14992426-n	n		noun.substance
+oewn-15031944-n	n		noun.substance
+oewn-15040068-n	n		noun.substance
+oewn-15040439-n	n		noun.substance
+oewn-15040530-n	n		noun.substance
+oewn-15045652-n	n		noun.substance
+oewn-15060778-n	n		noun.substance
+oewn-15060888-n	n		noun.substance
+oewn-15082590-n	n		noun.substance
+oewn-15094151-n	n		noun.substance
+oewn-15116626-n	n		noun.substance
+oewn-15132091-n	n		noun.substance
+oewn-15144478-n	n		noun.time
+oewn-15144861-n	n		noun.time
+oewn-15159865-n	n		noun.time
+oewn-15160386-n	n		noun.time
+oewn-15170459-n	n		noun.time
+oewn-15180707-n	n		noun.time
+oewn-15183776-n	n		noun.time
+oewn-15192396-n	n		noun.time
+oewn-15192521-n	n		noun.time
+oewn-15192624-n	n		noun.time
+oewn-15194806-n	n		noun.time
+oewn-15201523-n	n		noun.time
+oewn-15207154-n	n		noun.time
+oewn-15231739-n	n		noun.time
+oewn-15238202-n	n		noun.time
+oewn-15240612-n	n		noun.time
+oewn-15246514-n	n		noun.time
+oewn-15248712-n	n		noun.time
+oewn-15253583-n	n		noun.time
+oewn-15254872-n	n		noun.time
+oewn-15260812-n	n		noun.time
+oewn-15298612-n	n		noun.time
+oewn-15307406-n	n		noun.time
+oewn-15310674-n	n		noun.time
+oewn-15310990-n	n		noun.time
+oewn-15312435-n	n		noun.time
+oewn-15320127-n	n		noun.time
+oewn-80457774-n	n		noun.person
+oewn-81034589-n	n		noun.person
+oewn-81427977-n	n		noun.person
+oewn-82074520-n	n		noun.person
+oewn-82627249-n	n		noun.person
+oewn-82640040-n	n		noun.person
+oewn-83586037-n	n		noun.location
+oewn-83709917-n	n		noun.person
+oewn-84660288-n	n		noun.animal
+oewn-84863880-n	n		noun.person
+oewn-85496233-n	n		noun.person
+oewn-85697159-n	n		noun.person
+oewn-86554066-n	n		noun.person
+oewn-86751488-n	n		noun.person
+oewn-87201571-n	n		noun.person
+oewn-87306750-n	n		noun.person
+oewn-87565945-n	n		noun.person
+oewn-88121161-a	a		adj.all
+oewn-88306827-a	a		adj.all
+oewn-88473967-a	a		adj.all
+oewn-88647839-n	n		noun.communication
+oewn-90008291-n	n		noun.person
+oewn-91000661-n	n		noun.artifact
+oewn-92413447-n	n		noun.possession
+oewn-92417571-n	n		noun.attribute
+oewn-92418288-n	n		noun.attribute
+oewn-92419248-n	n		noun.attribute
+oewn-92419318-n	n		noun.group
+oewn-92420141-n	n		noun.group
+oewn-92420752-n	n		noun.attribute
+oewn-92422897-n	n		noun.quantity
+oewn-92422926-n	n		noun.attribute
+oewn-92423441-n	n		noun.attribute
+oewn-92423547-n	n		noun.attribute
+oewn-92424299-n	n		noun.animal
+oewn-92426917-n	n		noun.attribute
+oewn-92428602-n	n		noun.attribute
+oewn-92432553-n	n		noun.substance
+oewn-92435345-n	n		noun.artifact
+oewn-92436642-n	n		noun.body
+oewn-92437056-n	n		noun.cognition
+oewn-92437560-n	n		noun.quantity
+oewn-92438314-n	n		noun.group
+oewn-92438754-n	n		noun.cognition
+oewn-92438763-n	n		noun.cognition
+oewn-92440316-n	n		noun.cognition
+oewn-92440890-n	n		noun.cognition
+oewn-92441269-n	n		noun.attribute
+oewn-92441915-n	n		noun.cognition
+oewn-92442155-n	n		noun.group
+oewn-92444048-n	n		noun.cognition
+oewn-92444944-n	n		noun.group
+oewn-92445463-n	n		noun.group
+oewn-92445776-n	n		noun.cognition
+oewn-92445781-n	n		noun.cognition
+oewn-92446203-n	n		noun.attribute
+oewn-92447044-n	n		noun.cognition
+oewn-92447045-n	n		noun.cognition
+oewn-92448354-n	n		noun.attribute
+oewn-92449091-n	n		noun.communication
+oewn-92449300-n	n		noun.act
+oewn-92450340-n	n		noun.artifact
+oewn-92460897-n	n		noun.artifact
+oewn-92461338-n	n		noun.communication
+oewn-92461516-n	n		noun.artifact
+oewn-92462429-n	n		noun.artifact
+oewn-92462578-n	n		noun.artifact
+oewn-92463242-n	n		noun.cognition
+oewn-92464376-n	n		noun.communication
+oewn-92470455-n	n		noun.communication

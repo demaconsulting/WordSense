@@ -1,0 +1,9 @@
+class_id	lemma	label	pos	kind
+jagged#adj	jagged	adj	a	sense_group
+jagged#verb	jagged	verb	v	lemma_split
+jerk#noun	jerk	noun	n	sense_group
+jerk#verb	jerk	verb	v	sense_group
+joke#noun	joke	noun	n	sense_group
+joke#verb	joke	verb	v	sense_group
+judge#noun	judge	noun	n	sense_group
+judge#verb	judge	verb	v	sense_group

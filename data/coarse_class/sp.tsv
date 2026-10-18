@@ -1,0 +1,11 @@
+class_id	lemma	label	pos	kind
+spark#noun	spark	noun	n	sense_group
+spark#verb	spark	verb	v	sense_group
+spell#noun	spell	noun	n	sense_group
+spell#verb	spell	verb	v	sense_group
+spot#noun	spot	noun	n	sense_group
+spot#verb	spot	verb	v	sense_group
+spray#noun	spray	noun	n	sense_group
+spray#verb	spray	verb	v	sense_group
+spring#noun	spring	noun	n	sense_group
+spring#verb	spring	verb	v	sense_group

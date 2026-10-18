@@ -1,0 +1,17 @@
+sense_id	sense_key	entry_id	synset_id	position
+oewn-p--n--p_transistor__1.06.00..	p-n-p_transistor%1:06:00::	oewn-p-n-p_transistor-n	oewn-03978504-n	1
+oewn-p--n_junction__1.06.00..	p-n_junction%1:06:00::	oewn-p-n_junction-n	oewn-03978318-n	1
+oewn-p--type_semiconductor__1.06.00..	p-type_semiconductor%1:06:00::	oewn-p-type_semiconductor-n	oewn-04024387-n	1
+oewn-p-sol-e_ratio__1.24.00..	p/e_ratio%1:24:00::	oewn-P-sl-E_ratio-n	oewn-13846552-n	1
+oewn-p.a.__1.06.00..	p.a.%1:06:00::	oewn-P.A.-n	oewn-04024549-n	1
+oewn-p.a.__4.02.00..	p.a.%4:02:00::	oewn-p.a.-r	oewn-00252039-r	1
+oewn-p.a._system__1.06.00..	p.a._system%1:06:00::	oewn-P.A._system-n	oewn-04024549-n	1
+oewn-p.e.__1.19.00..	p.e.%1:19:00::	oewn-P.E.-n	oewn-11514872-n	1
+oewn-p.m.__1.28.01..	p.m.%1:28:01::	oewn-P.M.-n	oewn-89528311-n	1
+oewn-p.m.__1.28.02..	p.m.%1:28:02::	oewn-p.m.-n	oewn-89528311-n	1
+oewn-p.m.__4.02.00..	p.m.%4:02:00::	oewn-P.M.-r	oewn-00252877-r	1
+oewn-p.m.__4.02.03..	p.m.%4:02:03::	oewn-p.m.-r	oewn-00252877-r	1
+oewn-p.o.__1.18.00..	p.o.%1:18:00::	oewn-P.O.-n	oewn-10440554-n	1
+oewn-p__1.10.00..	p%1:10:00::	oewn-P-n	oewn-06845838-n	2
+oewn-p__1.10.01..	p%1:10:01::	oewn-p-n	oewn-06845838-n	1
+oewn-p__1.27.00..	p%1:27:00::	oewn-P-n	oewn-14673375-n	1

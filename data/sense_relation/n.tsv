@@ -1,0 +1,1301 @@
+from_sense	rel	rel_subtype	to_sense
+oewn-nacre__1.27.00..	derivation		oewn-nacreous__3.01.00..
+oewn-nacreous__3.01.00..	pertainym		oewn-nacre__1.27.00..
+oewn-nadir__1.15.01..	antonym		oewn-zenith__1.15.01..
+oewn-nag__1.18.00..	derivation		oewn-nag__2.32.00..
+oewn-nag__2.32.00..	derivation		oewn-nagger__1.18.00..
+oewn-nag__2.32.00..	other	agent	oewn-nag__1.18.00..
+oewn-nag__2.32.00..	other	agent	oewn-nagger__1.18.00..
+oewn-nail__1.06.00..	derivation		oewn-nail__2.35.00..
+oewn-nail__2.35.00..	also		oewn-nail_down__2.31.00..
+oewn-nail__2.35.00..	derivation		oewn-nailer__1.18.00..
+oewn-nail__2.35.00..	other	agent	oewn-nailer__1.18.00..
+oewn-nail__2.35.00..	other	by_means_of	oewn-nail__1.06.00..
+oewn-naive__3.00.00..	antonym		oewn-sophisticated__3.00.00..
+oewn-naive__3.00.00..	derivation		oewn-naiveness__1.07.00..
+oewn-naive__5.00.00.inexperienced.00	derivation		oewn-naiveness__1.07.00..
+oewn-naive__5.00.00.unconditioned.00	derivation		oewn-naiveness__1.07.00..
+oewn-naive__5.00.00.uninformed.00	derivation		oewn-naiveness__1.07.00..
+oewn-naively__4.02.00..	pertainym		oewn-naive__3.00.00..
+oewn-naivete__1.07.00..	antonym		oewn-sophistication__1.07.00..
+oewn-naked__5.00.00.bare.00	derivation		oewn-nakedness__1.26.00..
+oewn-naked__5.00.00.overt.00	derivation		oewn-nakedness__1.07.00..
+oewn-naked__5.00.00.unclothed.00	derivation		oewn-nakedness__1.26.00..
+oewn-naked__5.00.00.unprotected.00	derivation		oewn-nakedness__1.26.00..
+oewn-nakedly__4.02.00..	pertainym		oewn-naked__5.00.00.unclothed.00
+oewn-nakedly__4.02.02..	pertainym		oewn-naked__5.00.00.unprotected.00
+oewn-nalfon__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-namby--pamby__1.18.00..	derivation		oewn-namby--pamby__3.00.00..
+oewn-name__1.10.00..	derivation		oewn-name__2.31.01..
+oewn-name__1.10.00..	derivation		oewn-name__2.32.03..
+oewn-name__1.10.00..	derivation		oewn-name__2.32.04..
+oewn-name__1.10.00..	derivation		oewn-name__2.32.07..
+oewn-name__2.31.01..	derivation		oewn-naming__1.10.00..
+oewn-name__2.31.01..	other	by_means_of	oewn-name__1.10.00..
+oewn-name__2.32.02..	derivation		oewn-naming__1.10.00..
+oewn-name__2.32.03..	derivation		oewn-namer__1.18.00..
+oewn-name__2.32.03..	derivation		oewn-naming__1.10.00..
+oewn-name__2.32.03..	other	agent	oewn-namer__1.18.00..
+oewn-name__2.32.03..	other	uses	oewn-name__1.10.00..
+oewn-name__2.32.04..	derivation		oewn-naming__1.10.00..
+oewn-name__2.32.07..	derivation		oewn-naming__1.10.00..
+oewn-name__2.32.07..	other	by_means_of	oewn-name__1.10.00..
+oewn-name__2.41.00..	derivation		oewn-naming__1.04.00..
+oewn-name__2.41.01..	derivation		oewn-naming__1.04.00..
+oewn-nameless__5.00.00.anonymous.00	derivation		oewn-namelessness__1.26.00..
+oewn-namibian__1.18.00..	derivation		oewn-namibian__3.01.00..
+oewn-nan__1.18.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-nanna__1.18.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-nanocephalic__3.01.00..	derivation		oewn-nanocephaly__1.26.00..
+oewn-nanocephalic__3.01.00..	pertainym		oewn-nanocephaly__1.26.00..
+oewn-nanometer__1.23.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nanometre__1.23.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nanometre__1.23.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nanometre__1.23.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nap__1.04.00..	derivation		oewn-nap__2.29.00..
+oewn-nap__1.07.00..	derivation		oewn-nappy__5.00.00.curly.00
+oewn-nap__1.28.00..	derivation		oewn-nap__2.29.00..
+oewn-nap__2.29.00..	other	event	oewn-nap__1.04.00..
+oewn-nap__2.29.00..	other	event	oewn-nap__1.28.00..
+oewn-nappy__1.06.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-naprosyn__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-naqua__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-narcan__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-narcism__1.07.00..	derivation		oewn-narcist__1.18.00..
+oewn-narcissism__1.07.00..	derivation		oewn-narcissist__1.18.00..
+oewn-narcissism__1.07.00..	derivation		oewn-narcissistic__5.00.00.selfish.00
+oewn-narcolepsy__1.26.00..	derivation		oewn-narcoleptic__3.01.00..
+oewn-narcoleptic__1.06.00..	derivation		oewn-narcoleptic__3.01.00..
+oewn-narcoleptic__1.18.00..	derivation		oewn-narcoleptic__3.01.00..
+oewn-narcoleptic__3.01.00..	pertainym		oewn-narcolepsy__1.26.00..
+oewn-narcosis__1.09.00..	derivation		oewn-narcotic__5.00.00.depressant.00
+oewn-narcotic__1.06.00..	derivation		oewn-narcotic__5.00.00.depressant.00
+oewn-narcotic__1.06.00..	derivation		oewn-narcotize__2.29.00..
+oewn-narcotic__3.01.00..	pertainym		oewn-narcotic__1.06.00..
+oewn-narcotise__2.29.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-narcotise__2.29.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-narcotising__5.00.00.depressant.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-narcotising__5.00.00.depressant.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-narcotize__2.29.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-narcotizing__5.00.00.depressant.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nardil__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-narial__3.01.00..	derivation		oewn-naris__1.08.00..
+oewn-narial__3.01.00..	pertainym		oewn-naris__1.08.00..
+oewn-nark__1.18.00..	derivation		oewn-nark__2.32.00..
+oewn-nark__2.32.00..	other	agent	oewn-nark__1.18.00..
+oewn-narrate__2.32.00..	derivation		oewn-narration__1.10.00..
+oewn-narrate__2.32.00..	derivation		oewn-narration__1.10.01..
+oewn-narrate__2.32.00..	derivation		oewn-narration__1.10.02..
+oewn-narrate__2.32.00..	derivation		oewn-narrative__5.00.00.communicative.00
+oewn-narrate__2.32.00..	derivation		oewn-narrator__1.18.00..
+oewn-narrate__2.32.00..	other	agent	oewn-narrator__1.18.00..
+oewn-narrate__2.32.00..	other	by_means_of	oewn-narration__1.10.01..
+oewn-narrate__2.32.00..	other	event	oewn-narration__1.10.00..
+oewn-narrate__2.32.00..	other	event	oewn-narration__1.10.02..
+oewn-narrate__2.32.01..	derivation		oewn-narration__1.10.00..
+oewn-narrate__2.32.01..	derivation		oewn-narration__1.10.01..
+oewn-narrate__2.32.01..	other	event	oewn-narration__1.10.00..
+oewn-narrate__2.32.01..	other	uses	oewn-narration__1.10.01..
+oewn-narrow--minded__3.00.00..	derivation		oewn-narrow--mindedness__1.09.00..
+oewn-narrow--minded__3.00.05..	derivation		oewn-narrow--mindedness__1.09.00..
+oewn-narrow--mindedly__4.02.00..	pertainym		oewn-narrow--minded__3.00.00..
+oewn-narrow__1.17.00..	derivation		oewn-narrow__2.30.00..
+oewn-narrow__1.17.00..	derivation		oewn-narrow__3.00.00..
+oewn-narrow__2.30.00..	also		oewn-narrow_down__2.30.01..
+oewn-narrow__2.30.00..	antonym		oewn-widen__2.30.00..
+oewn-narrow__2.30.00..	derivation		oewn-narrowing__1.04.00..
+oewn-narrow__2.30.00..	other	by_means_of	oewn-narrow__1.17.00..
+oewn-narrow__2.30.01..	derivation		oewn-narrowing__1.07.00..
+oewn-narrow__3.00.00..	antonym		oewn-wide__3.00.00..
+oewn-narrow__3.00.00..	derivation		oewn-narrowness__1.07.00..
+oewn-narrow__3.00.02..	antonym		oewn-wide__3.00.02..
+oewn-narrow__3.00.02..	derivation		oewn-narrowness__1.07.01..
+oewn-narrow__3.00.06..	derivation		oewn-narrowness__1.09.00..
+oewn-narrow__5.00.00.limited.00	derivation		oewn-narrowness__1.09.01..
+oewn-narrowing__1.04.00..	antonym		oewn-widening__1.04.00..
+oewn-narrowing__1.22.00..	antonym		oewn-widening__1.22.00..
+oewn-narrowly__4.02.00..	pertainym		oewn-narrow__5.00.00.limited.00
+oewn-narrowness__1.07.00..	antonym		oewn-wideness__1.07.00..
+oewn-nasal__1.08.00..	derivation		oewn-nasal__3.01.00..
+oewn-nasal__1.10.00..	derivation		oewn-nasal__5.00.00.high.03
+oewn-nasal__3.01.00..	pertainym		oewn-nose__1.08.00..
+oewn-nasal__5.00.00.high.03	derivation		oewn-nasality__1.07.00..
+oewn-nasalisation__1.10.00..	derivation		oewn-nasalise__2.32.00..
+oewn-nasalisation__1.10.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nasalisation__1.10.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nasalise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nasalise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nasalise__2.32.00..	other	event	oewn-nasalisation__1.10.00..
+oewn-nasalise__2.32.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nasalise__2.32.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nasalization__1.10.00..	derivation		oewn-nasalize__2.32.00..
+oewn-nasalization__1.10.00..	derivation		oewn-nasalize__2.32.01..
+oewn-nasalization__1.10.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nasalize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nasalize__2.32.00..	other	event	oewn-nasalization__1.10.00..
+oewn-nasalize__2.32.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nasalize__2.32.01..	other	event	oewn-nasalization__1.10.00..
+oewn-nasally__4.02.00..	pertainym		oewn-nasal__3.01.00..
+oewn-nascency__1.11.00..	derivation		oewn-nascent__3.00.00..
+oewn-nasopharyngeal__3.01.00..	derivation		oewn-nasopharynx__1.08.00..
+oewn-nasopharyngeal__3.01.00..	pertainym		oewn-nasopharynx__1.08.00..
+oewn-nastily__4.02.00..	pertainym		oewn-nasty__3.00.00..
+oewn-nastiness__1.07.00..	antonym		oewn-niceness__1.07.00..
+oewn-nastiness__1.07.00..	derivation		oewn-nasty__3.00.00..
+oewn-nastiness__1.07.02..	derivation		oewn-nasty__3.00.00..
+oewn-nastiness__1.07.02..	derivation		oewn-nasty__5.00.00.dirty.02
+oewn-nastiness__1.26.00..	derivation		oewn-nasty__5.00.00.dirty.01
+oewn-nasty__3.00.00..	antonym		oewn-nice__3.00.00..
+oewn-natal__3.01.00..	pertainym		oewn-birth__1.11.00..
+oewn-natal__3.01.01..	pertainym		oewn-nates__1.08.00..
+oewn-national__1.18.00..	derivation		oewn-national__3.01.00..
+oewn-national__3.00.00..	derivation		oewn-nationality__1.14.00..
+oewn-national__3.00.01..	derivation		oewn-nationality__1.14.00..
+oewn-national__3.01.00..	derivation		oewn-nationality__1.14.00..
+oewn-national__3.01.00..	derivation		oewn-nationality__1.26.00..
+oewn-national__3.01.00..	pertainym		oewn-nation__1.14.00..
+oewn-national__3.01.01..	derivation		oewn-nationality__1.14.00..
+oewn-national__3.01.01..	pertainym		oewn-nationality__1.26.00..
+oewn-national__3.01.02..	derivation		oewn-nationality__1.14.00..
+oewn-national__3.01.02..	pertainym		oewn-nation__1.14.01..
+oewn-national_socialist__3.01.00..	pertainym		oewn-socialism__1.14.00..
+oewn-nationalisation__1.04.00..	derivation		oewn-nationalise__2.30.00..
+oewn-nationalisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nationalisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nationalisation__1.04.01..	derivation		oewn-nationalise__2.30.01..
+oewn-nationalisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nationalisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nationalisation__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nationalisation__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nationalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nationalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nationalise__2.30.00..	other	event	oewn-nationalisation__1.04.00..
+oewn-nationalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nationalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nationalise__2.30.01..	other	event	oewn-nationalisation__1.04.01..
+oewn-nationalism__1.07.00..	derivation		oewn-nationalist__1.18.00..
+oewn-nationalism__1.07.00..	derivation		oewn-nationalistic__5.00.00.patriotic.00
+oewn-nationalism__1.09.01..	derivation		oewn-nationalist__1.18.01..
+oewn-nationalism__1.12.00..	derivation		oewn-nationalist__1.18.01..
+oewn-nationalist__1.18.00..	derivation		oewn-nationalist__5.00.00.national.00
+oewn-nationalization__1.04.00..	derivation		oewn-nationalize__2.30.00..
+oewn-nationalization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nationalization__1.04.01..	derivation		oewn-nationalize__2.30.01..
+oewn-nationalization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nationalization__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nationalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nationalize__2.30.00..	other	event	oewn-nationalization__1.04.00..
+oewn-nationalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nationalize__2.30.01..	other	event	oewn-nationalization__1.04.01..
+oewn-nationally__4.02.00..	pertainym		oewn-national__3.01.00..
+oewn-nationally__4.02.02..	pertainym		oewn-national__3.00.00..
+oewn-native__1.18.00..	derivation		oewn-native__3.00.01..
+oewn-native__3.00.01..	derivation		oewn-nativeness__1.07.00..
+oewn-native__3.00.02..	antonym		oewn-nonnative__3.00.00..
+oewn-native__3.00.02..	derivation		oewn-nativeness__1.07.00..
+oewn-native__3.00.03..	derivation		oewn-nativeness__1.07.00..
+oewn-native__5.00.00.pure.02	derivation		oewn-nativeness__1.07.00..
+oewn-native_american__3.01.00..	pertainym		oewn-native_american__1.18.00..
+oewn-nativism__1.09.00..	derivation		oewn-nativist__1.18.00..
+oewn-nativism__1.09.00..	derivation		oewn-nativistic__3.01.00..
+oewn-nativism__1.10.00..	derivation		oewn-nativistic__3.01.01..
+oewn-nativist__3.01.00..	pertainym		oewn-nativism__1.09.00..
+oewn-nativist__3.01.01..	pertainym		oewn-nativism__1.10.00..
+oewn-nativistic__3.01.00..	pertainym		oewn-nativism__1.09.00..
+oewn-nativistic__3.01.01..	pertainym		oewn-nativism__1.10.00..
+oewn-natriuresis__1.26.00..	derivation		oewn-natriuretic__3.01.00..
+oewn-natriuretic__3.01.00..	pertainym		oewn-natriuresis__1.26.00..
+oewn-nattily__4.02.00..	pertainym		oewn-natty__5.00.00.fashionable.00
+oewn-nattiness__1.07.00..	derivation		oewn-natty__5.00.00.fashionable.00
+oewn-natural__3.00.01..	antonym		oewn-unnatural__3.00.00..
+oewn-natural__3.00.02..	derivation		oewn-naturalness__1.07.01..
+oewn-natural__3.00.03..	antonym		oewn-supernatural__3.00.00..
+oewn-natural__3.00.03..	derivation		oewn-naturalness__1.07.00..
+oewn-natural__3.00.04..	antonym		oewn-sharp__3.00.03..
+oewn-natural__5.00.00.unaffected.01	derivation		oewn-naturalness__1.07.00..
+oewn-natural_depression__1.17.00..	antonym		oewn-natural_elevation__1.17.00..
+oewn-natural_fiber__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-natural_fibre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-natural_fibre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-natural_fibre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-naturalisation__1.04.00..	derivation		oewn-naturalise__2.30.00..
+oewn-naturalisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalisation__1.04.01..	derivation		oewn-naturalise__2.30.02..
+oewn-naturalisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalisation__1.04.02..	derivation		oewn-naturalise__2.30.03..
+oewn-naturalisation__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalisation__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalisation__1.07.00..	derivation		oewn-naturalise__2.30.01..
+oewn-naturalisation__1.07.00..	derivation		oewn-naturalise__2.30.03..
+oewn-naturalisation__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalisation__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalise__2.30.00..	other	event	oewn-naturalisation__1.04.00..
+oewn-naturalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalise__2.30.01..	other	property	oewn-naturalisation__1.07.00..
+oewn-naturalise__2.30.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalise__2.30.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalise__2.30.02..	other	event	oewn-naturalisation__1.04.01..
+oewn-naturalise__2.30.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-naturalise__2.30.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-naturalise__2.30.03..	other	event	oewn-naturalisation__1.04.02..
+oewn-naturalise__2.30.03..	other	property	oewn-naturalisation__1.07.00..
+oewn-naturalism__1.09.00..	derivation		oewn-naturalist__1.18.01..
+oewn-naturalism__1.14.00..	derivation		oewn-naturalistic__5.00.00.representational.00
+oewn-naturalization__1.04.00..	derivation		oewn-naturalize__2.30.00..
+oewn-naturalization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalization__1.04.01..	derivation		oewn-naturalize__2.30.02..
+oewn-naturalization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalization__1.04.02..	derivation		oewn-naturalize__2.30.03..
+oewn-naturalization__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalization__1.07.00..	derivation		oewn-naturalize__2.30.01..
+oewn-naturalization__1.07.00..	derivation		oewn-naturalize__2.30.03..
+oewn-naturalization__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalize__2.30.00..	other	event	oewn-naturalization__1.04.00..
+oewn-naturalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalize__2.30.01..	other	property	oewn-naturalization__1.07.00..
+oewn-naturalize__2.30.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalize__2.30.02..	other	event	oewn-naturalization__1.04.01..
+oewn-naturalize__2.30.03..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-naturalize__2.30.03..	other	event	oewn-naturalization__1.04.02..
+oewn-naturalize__2.30.03..	other	property	oewn-naturalization__1.07.00..
+oewn-naturally__4.02.00..	antonym		oewn-unnaturally__4.02.03..
+oewn-naturally__4.02.01..	pertainym		oewn-natural__3.00.02..
+oewn-naturally__4.02.02..	antonym		oewn-unnaturally__4.02.02..
+oewn-naturalness__1.07.00..	antonym		oewn-unnaturalness__1.07.00..
+oewn-naturism__1.04.00..	derivation		oewn-naturistic__3.01.00..
+oewn-naturistic__3.01.00..	pertainym		oewn-naturism__1.04.00..
+oewn-naughtily__4.02.00..	pertainym		oewn-naughty__5.00.00.bad.00
+oewn-naughtiness__1.07.00..	derivation		oewn-naughty__5.00.00.bad.00
+oewn-nauruan__1.18.00..	derivation		oewn-nauruan__3.01.00..
+oewn-nausea__1.12.00..	derivation		oewn-nauseate__2.37.00..
+oewn-nausea__1.12.00..	derivation		oewn-nauseate__2.39.00..
+oewn-nausea__1.12.00..	derivation		oewn-nauseous__5.00.00.unwholesome.00
+oewn-nausea__1.26.00..	derivation		oewn-nauseate__2.39.00..
+oewn-nausea__1.26.00..	derivation		oewn-nauseous__5.00.00.ill.01
+oewn-nauseant__1.06.00..	derivation		oewn-nauseate__2.39.00..
+oewn-nauseating__5.00.00.unwholesome.00	derivation		oewn-nauseatingness__1.07.00..
+oewn-nautical__3.01.02..	pertainym		oewn-navigation__1.04.02..
+oewn-naval__3.01.00..	derivation		oewn-navy__1.14.00..
+oewn-naval__3.01.00..	pertainym		oewn-navy__1.14.00..
+oewn-navane__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-navicular__1.08.00..	derivation		oewn-navicular__5.00.00.formed.00
+oewn-navigability__1.07.00..	derivation		oewn-navigable__5.00.00.passable.00
+oewn-navigable__5.00.00.passable.00	derivation		oewn-navigate__2.38.02..
+oewn-navigate__2.38.00..	derivation		oewn-navigation__1.04.00..
+oewn-navigate__2.38.00..	derivation		oewn-navigator__1.18.01..
+oewn-navigate__2.38.00..	derivation		oewn-navigator__1.18.02..
+oewn-navigate__2.38.00..	other	agent	oewn-navigator__1.18.01..
+oewn-navigate__2.38.00..	other	agent	oewn-navigator__1.18.02..
+oewn-navigate__2.38.00..	other	event	oewn-navigation__1.04.00..
+oewn-navigate__2.38.02..	derivation		oewn-navigation__1.04.02..
+oewn-navigate__2.38.02..	other	event	oewn-navigation__1.04.02..
+oewn-navigation__1.04.00..	derivation		oewn-navigational__3.01.00..
+oewn-navigation__1.04.01..	derivation		oewn-navigational__3.01.00..
+oewn-navigation__1.04.02..	derivation		oewn-navigational__3.01.00..
+oewn-navigational__3.01.00..	pertainym		oewn-navigation__1.04.00..
+oewn-nay__1.10.00..	antonym		oewn-yea__1.10.00..
+oewn-nazarene__3.01.00..	pertainym		oewn-nazarene__1.18.00..
+oewn-nazarene__3.01.01..	pertainym		oewn-nazarene__1.18.02..
+oewn-nazi__3.01.00..	pertainym		oewn-socialism__1.14.00..
+oewn-nazi__3.01.02..	pertainym		oewn-nazism__1.14.00..
+oewn-nazify__2.30.00..	derivation		oewn-nazism__1.14.00..
+oewn-nazify__2.30.00..	other	result	oewn-nazism__1.14.00..
+oewn-neandertal__1.05.00..	derivation		oewn-neandertal__3.01.00..
+oewn-neandertal__3.01.00..	pertainym		oewn-neanderthal_man__1.05.00..
+oewn-neanderthal__1.05.00..	derivation		oewn-neanderthal__3.01.00..
+oewn-neanderthal__1.05.00..	derivation		oewn-neanderthalian__3.01.00..
+oewn-neanderthal__3.01.00..	pertainym		oewn-neanderthal_man__1.05.00..
+oewn-neanderthalian__3.01.00..	pertainym		oewn-neanderthal_man__1.05.00..
+oewn-neap_tide__1.11.00..	antonym		oewn-springtide__1.11.00..
+oewn-near__3.00.00..	derivation		oewn-nearness__1.07.00..
+oewn-nearsighted__3.00.00..	derivation		oewn-nearsightedness__1.26.00..
+oewn-neat__5.00.00.tidy.00	derivation		oewn-neatness__1.07.00..
+oewn-neat__5.00.03.tidy.00	derivation		oewn-neatness__1.07.00..
+oewn-neatly__4.02.00..	pertainym		oewn-neat__5.00.03.tidy.00
+oewn-nebcin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-nebula__1.07.00..	derivation		oewn-nebular__5.00.00.cloudy.00
+oewn-nebula__1.17.00..	derivation		oewn-nebular__3.01.00..
+oewn-nebula__1.17.00..	derivation		oewn-nebulous__3.01.00..
+oewn-nebula__1.26.00..	derivation		oewn-nebular__5.00.00.cloudy.00
+oewn-nebular__3.01.00..	pertainym		oewn-nebula__1.17.00..
+oewn-nebulous__3.01.00..	pertainym		oewn-nebula__1.17.00..
+oewn-nebulously__4.02.00..	pertainym		oewn-nebulous__5.00.00.indefinite.00
+oewn-necessarily__4.02.00..	antonym		oewn-unnecessarily__4.02.00..
+oewn-necessarily__4.02.00..	pertainym		oewn-necessary__3.00.00..
+oewn-necessarily__4.02.03..	pertainym		oewn-necessary__5.00.00.inevitable.00
+oewn-necessary__3.00.00..	antonym		oewn-unnecessary__3.00.00..
+oewn-necessary__3.00.00..	derivation		oewn-necessity__1.17.00..
+oewn-necessary__3.00.00..	derivation		oewn-necessity__1.26.00..
+oewn-necessitate__2.42.00..	antonym		oewn-obviate__2.42.00..
+oewn-necessitate__2.42.00..	derivation		oewn-necessity__1.17.00..
+oewn-necessitate__2.42.00..	derivation		oewn-necessity__1.26.00..
+oewn-necessitous__5.00.00.poor.00	derivation		oewn-necessity__1.17.00..
+oewn-neck__2.35.00..	derivation		oewn-necker__1.18.00..
+oewn-neck__2.35.00..	derivation		oewn-necking__1.04.00..
+oewn-neck__2.35.00..	other	agent	oewn-necker__1.18.00..
+oewn-neck_and_neck__4.02.00..	pertainym		oewn-neck_and_neck__5.00.00.inconclusive.00
+oewn-necked__3.00.00..	antonym		oewn-neckless__3.00.00..
+oewn-necromancer__1.18.00..	derivation		oewn-necromancy__1.09.01..
+oewn-necromancer__1.18.01..	derivation		oewn-necromancy__1.09.00..
+oewn-necromancy__1.09.00..	derivation		oewn-necromantic__5.00.00.supernatural.00
+oewn-necromancy__1.09.00..	derivation		oewn-necromantical__3.01.00..
+oewn-necromancy__1.09.01..	derivation		oewn-necromantic__3.01.00..
+oewn-necromancy__1.09.01..	derivation		oewn-necromantical__3.01.00..
+oewn-necromantic__3.01.00..	pertainym		oewn-necromancy__1.09.00..
+oewn-necromantical__3.01.00..	pertainym		oewn-necromancy__1.09.00..
+oewn-necrosis__1.19.00..	derivation		oewn-necrotic__3.01.00..
+oewn-necrotic__3.01.00..	pertainym		oewn-necrosis__1.19.00..
+oewn-nectar--rich__3.01.00..	pertainym		oewn-nectar__1.27.00..
+oewn-nectar__1.13.01..	derivation		oewn-nectarous__5.00.00.tasty.00
+oewn-nectariferous__3.01.00..	derivation		oewn-nectary__1.20.00..
+oewn-nectariferous__3.01.00..	pertainym		oewn-nectary__1.20.00..
+oewn-need__1.17.00..	derivation		oewn-need__2.42.00..
+oewn-need__1.26.00..	derivation		oewn-need__2.34.00..
+oewn-need__1.26.01..	derivation		oewn-needy__5.00.00.poor.00
+oewn-need__2.34.00..	other	state	oewn-need__1.26.00..
+oewn-need__2.42.00..	other	undergoer	oewn-need__1.17.00..
+oewn-needfully__4.02.00..	pertainym		oewn-needful__5.00.00.necessary.00
+oewn-neediness__1.07.00..	derivation		oewn-needy__5.00.00.demanding.01
+oewn-neediness__1.26.00..	derivation		oewn-needy__5.00.00.poor.00
+oewn-needle__1.06.00..	derivation		oewn-needle__2.35.00..
+oewn-needle__2.35.00..	other	instrument	oewn-needle__1.06.00..
+oewn-needlessly__4.02.00..	pertainym		oewn-needless__5.00.00.unnecessary.00
+oewn-nefarious__5.00.00.wicked.00	derivation		oewn-nefariousness__1.07.00..
+oewn-nefariously__4.02.00..	pertainym		oewn-nefarious__5.00.00.wicked.00
+oewn-negate__2.31.00..	derivation		oewn-negative__3.00.01..
+oewn-negate__2.32.00..	derivation		oewn-negation__1.10.00..
+oewn-negate__2.32.00..	derivation		oewn-negation__1.10.01..
+oewn-negate__2.32.00..	derivation		oewn-negative__3.00.01..
+oewn-negate__2.32.00..	other	by_means_of	oewn-negation__1.10.01..
+oewn-negate__2.32.00..	other	event	oewn-negation__1.10.00..
+oewn-negate__2.42.00..	derivation		oewn-negation__1.10.02..
+oewn-negate__2.42.00..	other	event	oewn-negation__1.10.02..
+oewn-negative__1.10.00..	derivation		oewn-negative__2.41.00..
+oewn-negative__2.41.00..	other	event	oewn-negative__1.10.00..
+oewn-negative__3.00.01..	derivation		oewn-negativeness__1.07.00..
+oewn-negative__3.00.02..	antonym		oewn-neutral__3.00.02..
+oewn-negative__3.00.02..	antonym		oewn-positive__3.00.01..
+oewn-negative__3.00.02..	derivation		oewn-negativity__1.07.00..
+oewn-negative__3.00.04..	antonym		oewn-positive__3.00.04..
+oewn-negative__3.00.05..	antonym		oewn-positive__3.00.05..
+oewn-negative__5.00.00.bad.00	derivation		oewn-negativeness__1.07.00..
+oewn-negative__5.00.00.minus.00	derivation		oewn-negativeness__1.07.03..
+oewn-negative_charge__1.19.00..	antonym		oewn-positive_charge__1.19.00..
+oewn-negatively__4.02.00..	pertainym		oewn-negative__3.00.02..
+oewn-negatively__4.02.01..	pertainym		oewn-negative__5.00.00.bad.00
+oewn-negativeness__1.07.00..	antonym		oewn-positiveness__1.07.00..
+oewn-negativeness__1.07.03..	antonym		oewn-positiveness__1.07.03..
+oewn-negativeness__1.24.00..	antonym		oewn-positiveness__1.24.00..
+oewn-negativism__1.07.00..	derivation		oewn-negativist__1.18.00..
+oewn-negativity__1.07.00..	antonym		oewn-positivity__1.07.00..
+oewn-negativity__1.07.03..	antonym		oewn-positivity__1.07.03..
+oewn-negativity__1.24.00..	antonym		oewn-positivity__1.24.00..
+oewn-neglect__1.04.00..	derivation		oewn-neglect__2.31.00..
+oewn-neglect__1.04.02..	derivation		oewn-neglect__2.31.05..
+oewn-neglect__1.07.00..	derivation		oewn-neglect__2.31.05..
+oewn-neglect__1.07.00..	derivation		oewn-neglect__2.41.00..
+oewn-neglect__1.09.00..	derivation		oewn-neglect__2.31.01..
+oewn-neglect__1.09.00..	derivation		oewn-neglect__2.31.05..
+oewn-neglect__2.31.00..	derivation		oewn-neglecter__1.18.00..
+oewn-neglect__2.31.00..	other	agent	oewn-neglecter__1.18.00..
+oewn-neglect__2.31.00..	other	event	oewn-neglect__1.04.00..
+oewn-neglect__2.31.01..	derivation		oewn-neglecter__1.18.00..
+oewn-neglect__2.31.01..	derivation		oewn-negligent__3.00.00..
+oewn-neglect__2.31.01..	other	agent	oewn-neglecter__1.18.00..
+oewn-neglect__2.31.01..	other	event	oewn-neglect__1.09.00..
+oewn-neglect__2.31.05..	derivation		oewn-neglecter__1.18.00..
+oewn-neglect__2.31.05..	derivation		oewn-negligent__3.00.00..
+oewn-neglect__2.31.05..	other	agent	oewn-neglecter__1.18.00..
+oewn-neglect__2.31.05..	other	event	oewn-neglect__1.04.02..
+oewn-neglect__2.31.05..	other	event	oewn-neglect__1.09.00..
+oewn-neglect__2.31.05..	other	property	oewn-neglect__1.07.00..
+oewn-neglect__2.41.00..	other	property	oewn-neglect__1.07.00..
+oewn-neglectful__5.00.00.negligent.00	derivation		oewn-neglectfulness__1.07.00..
+oewn-neglectful__5.00.02.negligent.00	derivation		oewn-neglectfulness__1.07.00..
+oewn-neglectfully__4.02.00..	pertainym		oewn-neglectful__5.00.00.negligent.00
+oewn-negligence__1.07.00..	derivation		oewn-negligent__3.00.00..
+oewn-negligently__4.02.00..	pertainym		oewn-negligent__3.00.00..
+oewn-negotiable__5.00.00.alienable.00	derivation		oewn-negotiate__2.32.00..
+oewn-negotiable__5.00.00.flexible.02	derivation		oewn-negotiate__2.32.00..
+oewn-negotiant__1.18.00..	derivation		oewn-negotiate__2.32.00..
+oewn-negotiate__2.32.00..	derivation		oewn-negotiation__1.10.00..
+oewn-negotiate__2.32.00..	derivation		oewn-negotiator__1.18.00..
+oewn-negotiate__2.32.00..	other	agent	oewn-negotiator__1.18.00..
+oewn-negotiate__2.32.00..	other	event	oewn-negotiation__1.10.00..
+oewn-negro__1.18.00..	exemplifies		oewn-archaism__1.10.00..
+oewn-negroid__1.18.00..	exemplifies		oewn-archaism__1.10.00..
+oewn-neigh__1.11.00..	derivation		oewn-neigh__2.32.00..
+oewn-neigh__2.32.00..	other	event	oewn-neigh__1.11.00..
+oewn-neighbor__1.17.00..	derivation		oewn-neighbor__2.42.00..
+oewn-neighbor__1.17.00..	derivation		oewn-neighborhood__1.15.00..
+oewn-neighbor__1.17.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neighbor__1.18.00..	derivation		oewn-neighbor__2.42.01..
+oewn-neighbor__1.18.00..	derivation		oewn-neighborhood__1.14.00..
+oewn-neighbor__1.18.00..	derivation		oewn-neighborhood__1.15.00..
+oewn-neighbor__1.18.00..	derivation		oewn-neighborly__5.00.00.friendly.01
+oewn-neighbor__1.18.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neighbor__2.42.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neighbor__2.42.00..	other	by_means_of	oewn-neighbor__1.17.00..
+oewn-neighbor__2.42.00..	other	undergoer	oewn-neighbor__1.17.00..
+oewn-neighbor__2.42.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neighbor__2.42.01..	other	agent	oewn-neighbor__1.18.00..
+oewn-neighboring__5.00.00.connected.00	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neighborliness__1.07.00..	antonym		oewn-unneighborliness__1.07.00..
+oewn-neighborliness__1.07.00..	derivation		oewn-neighborly__5.00.00.friendly.01
+oewn-neighbour__1.17.00..	derivation		oewn-neighbour__2.42.00..
+oewn-neighbour__1.17.00..	derivation		oewn-neighbourhood__1.15.00..
+oewn-neighbour__1.17.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neighbour__1.17.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neighbour__1.17.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-neighbour__1.18.00..	derivation		oewn-neighbour__2.42.01..
+oewn-neighbour__1.18.00..	derivation		oewn-neighbourhood__1.14.00..
+oewn-neighbour__1.18.00..	derivation		oewn-neighbourhood__1.15.00..
+oewn-neighbour__1.18.00..	derivation		oewn-neighbourly__5.00.00.friendly.01
+oewn-neighbour__1.18.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neighbour__1.18.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neighbour__1.18.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-neighbour__2.42.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neighbour__2.42.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neighbour__2.42.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-neighbour__2.42.00..	other	undergoer	oewn-neighbour__1.17.00..
+oewn-neighbour__2.42.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neighbour__2.42.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neighbour__2.42.01..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-neighbour__2.42.01..	other	agent	oewn-neighbour__1.18.00..
+oewn-neighbouring__5.00.01.connected.00	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neighbouring__5.00.01.connected.00	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neighbouring__5.00.01.connected.00	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-neighbourliness__1.07.00..	derivation		oewn-neighbourly__5.00.00.friendly.01
+oewn-nembutal__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-neo--darwinian__3.01.00..	derivation		oewn-neo--darwinism__1.09.00..
+oewn-neo--darwinian__3.01.00..	pertainym		oewn-neo--darwinism__1.09.00..
+oewn-neo--lamarckian__3.01.00..	pertainym		oewn-neo--lamarckism__1.09.00..
+oewn-neobiotic__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-neoclassical__5.00.00.classical.00	derivation		oewn-neoclassicism__1.09.00..
+oewn-neoclassicism__1.09.00..	derivation		oewn-neoclassicist__1.18.00..
+oewn-neoclassicism__1.09.00..	derivation		oewn-neoclassicistic__3.01.00..
+oewn-neoclassicist__3.01.00..	pertainym		oewn-neoclassicism__1.09.00..
+oewn-neoclassicistic__3.01.00..	pertainym		oewn-neoclassicism__1.09.00..
+oewn-neocortex__1.08.00..	derivation		oewn-neocortical__3.01.00..
+oewn-neocortical__3.01.00..	pertainym		oewn-neocortex__1.08.00..
+oewn-neoliberal__1.18.00..	derivation		oewn-neoliberal__5.00.00.liberal.00
+oewn-neologism__1.04.00..	derivation		oewn-neologist__1.18.00..
+oewn-neonatal__3.01.00..	pertainym		oewn-neonate__1.18.00..
+oewn-neoplasm__1.26.00..	derivation		oewn-neoplastic__3.01.00..
+oewn-neoplastic__3.01.00..	pertainym		oewn-neoplasm__1.26.00..
+oewn-neotenic__3.01.00..	derivation		oewn-neoteny__1.09.00..
+oewn-neotenic__3.01.00..	pertainym		oewn-neoteny__1.09.00..
+oewn-neotenous__3.01.00..	derivation		oewn-neotony__1.26.00..
+oewn-neotenous__3.01.00..	pertainym		oewn-neoteny__1.09.00..
+oewn-nepalese__1.18.00..	derivation		oewn-nepalese__3.01.00..
+oewn-nepali__1.10.00..	derivation		oewn-nepali__3.01.00..
+oewn-nepali__1.18.00..	derivation		oewn-nepali__3.01.00..
+oewn-nephew__1.18.00..	antonym		oewn-niece__1.18.00..
+oewn-nephritic__3.01.00..	pertainym		oewn-kidney__1.08.00..
+oewn-nephritic__3.01.01..	derivation		oewn-nephritis__1.26.00..
+oewn-nephritic__3.01.01..	pertainym		oewn-nephritis__1.26.00..
+oewn-nephrotoxic__5.00.00.toxic.00	derivation		oewn-nephrotoxin__1.27.00..
+oewn-neritic__3.01.00..	pertainym		oewn-neritic_zone__1.17.00..
+oewn-nerve__1.07.00..	derivation		oewn-nerve__2.37.00..
+oewn-nerve__1.07.00..	derivation		oewn-nervy__5.00.00.bold.00
+oewn-nerve__1.07.01..	derivation		oewn-nervy__5.00.00.forward.02
+oewn-nerve__1.08.00..	derivation		oewn-nervous__3.01.00..
+oewn-nerve__2.37.00..	other	by_means_of	oewn-nerve__1.07.00..
+oewn-nerve_center__1.15.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nerve_centre__1.08.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-nerve_centre__1.08.00..	exemplifies		oewn-canadian_english__1.10.01..
+oewn-nerve_centre__1.15.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nerve_centre__1.15.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nerve_centre__1.15.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nerve_fiber__1.08.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nerve_fibre__1.08.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nerve_fibre__1.08.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nerve_fibre__1.08.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nerveless__5.00.00.composed.00	derivation		oewn-nervelessness__1.07.00..
+oewn-nervelessly__4.02.00..	pertainym		oewn-nerveless__5.00.00.composed.00
+oewn-nervily__4.02.00..	pertainym		oewn-nervy__5.00.00.forward.02
+oewn-nervous__3.01.00..	pertainym		oewn-nervous_system__1.08.00..
+oewn-nervous__5.00.00.excitable.00	derivation		oewn-nervousness__1.07.00..
+oewn-nervous__5.00.00.excited.00	derivation		oewn-nervousness__1.12.00..
+oewn-nervous__5.00.00.tense.03	derivation		oewn-nervousness__1.07.00..
+oewn-nervous__5.00.00.troubled.00	derivation		oewn-nervousness__1.12.00..
+oewn-nervous__5.00.00.troubled.00	derivation		oewn-nervousness__1.26.00..
+oewn-nervously__4.02.00..	pertainym		oewn-nervous__5.00.00.tense.03
+oewn-nervously__4.02.01..	pertainym		oewn-nervous__5.00.00.excitable.00
+oewn-nescience__1.09.00..	derivation		oewn-nescient__5.00.00.uneducated.00
+oewn-nest__1.06.01..	derivation		oewn-nest__2.35.00..
+oewn-nest__1.17.00..	derivation		oewn-nest__2.35.01..
+oewn-nest__1.17.00..	derivation		oewn-nest__2.42.00..
+oewn-nest__2.35.00..	derivation		oewn-nester__1.05.00..
+oewn-nest__2.35.00..	other	undergoer	oewn-nest__1.06.01..
+oewn-nest__2.35.01..	derivation		oewn-nester__1.05.00..
+oewn-nest__2.35.01..	other	agent	oewn-nester__1.05.00..
+oewn-nest__2.42.00..	derivation		oewn-nester__1.05.00..
+oewn-nest__2.42.00..	other	agent	oewn-nester__1.05.00..
+oewn-nest__2.42.00..	other	location	oewn-nest__1.17.00..
+oewn-nestle__1.04.00..	derivation		oewn-nestle__2.35.00..
+oewn-nestle__2.35.00..	other	event	oewn-nestle__1.04.00..
+oewn-nestorian__3.01.00..	pertainym		oewn-nestorianism__1.09.00..
+oewn-net__1.06.00..	derivation		oewn-net__2.36.00..
+oewn-net__1.06.02..	derivation		oewn-net__2.35.00..
+oewn-net__1.21.00..	derivation		oewn-net__2.40.01..
+oewn-net__2.35.00..	other	instrument	oewn-net__1.06.02..
+oewn-net__2.36.00..	derivation		oewn-netting__1.04.00..
+oewn-net__2.36.00..	other	result	oewn-net__1.06.00..
+oewn-net__2.40.01..	other	result	oewn-net__1.21.00..
+oewn-nettle__1.20.00..	derivation		oewn-nettle__2.39.00..
+oewn-nettle__2.39.00..	other	by_means_of	oewn-nettle__1.20.00..
+oewn-network__1.14.00..	derivation		oewn-network__2.32.00..
+oewn-network__2.32.00..	other	by_means_of	oewn-network__1.14.00..
+oewn-neural__3.01.00..	derivation		oewn-neuron__1.08.00..
+oewn-neural__3.01.00..	pertainym		oewn-neuron__1.08.00..
+oewn-neural__3.01.01..	pertainym		oewn-nervous_system__1.08.00..
+oewn-neuralgia__1.26.00..	derivation		oewn-neuralgic__3.01.00..
+oewn-neuralgic__3.01.00..	derivation		oewn-neuralgy__1.26.00..
+oewn-neuralgic__3.01.00..	pertainym		oewn-neuralgia__1.26.00..
+oewn-neurasthenia__1.26.00..	derivation		oewn-neurasthenic__3.01.00..
+oewn-neurasthenic__1.18.00..	derivation		oewn-neurasthenic__3.01.00..
+oewn-neurasthenic__3.01.00..	pertainym		oewn-neurasthenia__1.26.00..
+oewn-neuroanatomic__3.01.00..	derivation		oewn-neuroanatomy__1.09.00..
+oewn-neuroanatomic__3.01.00..	pertainym		oewn-neuroanatomy__1.09.00..
+oewn-neuroanatomical__3.01.00..	derivation		oewn-neuroanatomy__1.09.00..
+oewn-neuroanatomical__3.01.00..	pertainym		oewn-neuroanatomy__1.09.00..
+oewn-neurobiological__3.01.00..	derivation		oewn-neurobiology__1.09.00..
+oewn-neurobiological__3.01.00..	pertainym		oewn-neurobiology__1.09.00..
+oewn-neurobiological__4.02.00..	pertainym		oewn-neurobiological__3.01.00..
+oewn-neurobiologist__1.18.00..	derivation		oewn-neurobiology__1.09.00..
+oewn-neuroendocrine__3.01.00..	pertainym		oewn-endocrine_system__1.08.00..
+oewn-neuroendocrine__3.01.00..	pertainym		oewn-nervous_system__1.08.00..
+oewn-neurogenic__3.01.00..	pertainym		oewn-nervous_tissue__1.08.00..
+oewn-neuroglia__1.08.00..	derivation		oewn-neuroglial__3.01.00..
+oewn-neuroglial__3.01.00..	pertainym		oewn-neuroglia__1.08.00..
+oewn-neurolinguist__1.18.00..	derivation		oewn-neurolinguistics__1.09.00..
+oewn-neurologic__3.01.00..	derivation		oewn-neurology__1.09.01..
+oewn-neurologic__3.01.00..	derivation		oewn-neurology__1.09.02..
+oewn-neurologic__3.01.00..	pertainym		oewn-neurology__1.09.02..
+oewn-neurological__3.01.00..	derivation		oewn-neurology__1.09.01..
+oewn-neurological__3.01.00..	derivation		oewn-neurology__1.09.02..
+oewn-neurological__3.01.00..	pertainym		oewn-neurology__1.09.02..
+oewn-neurologist__1.18.00..	derivation		oewn-neurology__1.09.01..
+oewn-neurologist__1.18.00..	derivation		oewn-neurology__1.09.02..
+oewn-neuroma__1.26.00..	derivation		oewn-neuromatous__3.01.00..
+oewn-neuromatous__3.01.00..	pertainym		oewn-neuroma__1.26.00..
+oewn-neuromuscular__3.01.00..	pertainym		oewn-muscle__1.08.00..
+oewn-neuromuscular__3.01.00..	pertainym		oewn-nerve__1.08.00..
+oewn-neuron__1.08.00..	derivation		oewn-neuronal__3.01.00..
+oewn-neuron__1.08.00..	derivation		oewn-neuronic__3.01.00..
+oewn-neuronal__3.01.00..	pertainym		oewn-neuron__1.08.00..
+oewn-neuronic__3.01.00..	pertainym		oewn-neuron__1.08.00..
+oewn-neurophysiological__3.01.00..	derivation		oewn-neurophysiology__1.09.00..
+oewn-neurophysiological__3.01.00..	pertainym		oewn-neurophysiology__1.09.00..
+oewn-neuropsychiatric__3.01.00..	derivation		oewn-neuropsychiatry__1.09.00..
+oewn-neuropsychiatric__3.01.00..	pertainym		oewn-neuropsychiatry__1.09.00..
+oewn-neuropsychological__3.01.00..	derivation		oewn-neuropsychology__1.09.00..
+oewn-neuropsychological__3.01.00..	pertainym		oewn-neuropsychology__1.09.00..
+oewn-neuroscience__1.09.00..	derivation		oewn-neuroscientist__1.18.00..
+oewn-neurosis__1.26.00..	derivation		oewn-neurotic__3.00.00..
+oewn-neurosis__1.26.00..	derivation		oewn-neurotic__3.01.00..
+oewn-neurotic__1.18.00..	derivation		oewn-neurotic__3.00.00..
+oewn-neurotic__3.00.00..	antonym		oewn-unneurotic__3.00.00..
+oewn-neurotic__3.01.00..	pertainym		oewn-neurosis__1.26.00..
+oewn-neurotic_depression__1.26.00..	antonym		oewn-psychotic_depression__1.26.00..
+oewn-neurotically__4.02.00..	pertainym		oewn-neurotic__3.00.00..
+oewn-neurotoxic__3.01.00..	derivation		oewn-neurotoxin__1.27.00..
+oewn-neurotoxic__3.01.00..	pertainym		oewn-neurotoxin__1.27.00..
+oewn-neurotropic__3.01.00..	pertainym		oewn-neurotropism__1.04.00..
+oewn-neuter__1.10.00..	derivation		oewn-neuter__2.29.00..
+oewn-neuter__1.10.00..	derivation		oewn-neuter__3.00.00..
+oewn-neuter__2.29.00..	derivation		oewn-neutering__1.04.00..
+oewn-neutral__1.18.00..	derivation		oewn-neutral__5.00.00.nonaligned.00
+oewn-neutral__3.00.02..	antonym		oewn-positive__3.00.01..
+oewn-neutral__5.00.00.nonaligned.00	derivation		oewn-neutrality__1.04.00..
+oewn-neutral__5.00.00.objective.00	derivation		oewn-neutrality__1.09.00..
+oewn-neutral__5.00.00.unreactive.00	derivation		oewn-neutrality__1.07.01..
+oewn-neutralisation__1.04.00..	derivation		oewn-neutralise__2.30.01..
+oewn-neutralisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralisation__1.04.01..	derivation		oewn-neutralise__2.33.00..
+oewn-neutralisation__1.04.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralisation__1.04.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralisation__1.04.02..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralisation__1.04.02..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralisation__1.22.00..	derivation		oewn-neutralise__2.30.00..
+oewn-neutralisation__1.22.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralisation__1.22.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralise__2.30.00..	other	event	oewn-neutralisation__1.22.00..
+oewn-neutralise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralise__2.30.01..	other	event	oewn-neutralisation__1.04.00..
+oewn-neutralise__2.33.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralise__2.33.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralise__2.33.00..	other	event	oewn-neutralisation__1.04.01..
+oewn-neutralise__2.35.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-neutralise__2.35.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-neutralism__1.10.00..	derivation		oewn-neutralist__1.18.00..
+oewn-neutralist__1.18.00..	derivation		oewn-neutrality__1.04.00..
+oewn-neutralization__1.04.00..	derivation		oewn-neutralize__2.30.01..
+oewn-neutralization__1.04.00..	derivation		oewn-neutralize__2.41.02..
+oewn-neutralization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralization__1.04.01..	derivation		oewn-neutralize__2.33.00..
+oewn-neutralization__1.04.01..	derivation		oewn-neutralize__2.41.00..
+oewn-neutralization__1.04.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralization__1.04.02..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralization__1.22.00..	derivation		oewn-neutralize__2.30.00..
+oewn-neutralization__1.22.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralize__2.30.00..	other	event	oewn-neutralization__1.22.00..
+oewn-neutralize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralize__2.30.01..	other	event	oewn-neutralization__1.04.00..
+oewn-neutralize__2.33.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralize__2.33.00..	other	event	oewn-neutralization__1.04.01..
+oewn-neutralize__2.35.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-neutralize__2.41.00..	other	event	oewn-neutralization__1.04.01..
+oewn-neutralize__2.41.02..	other	event	oewn-neutralization__1.04.00..
+oewn-new__3.00.00..	antonym		oewn-old__3.00.01..
+oewn-new__3.00.00..	derivation		oewn-newness__1.07.00..
+oewn-new__3.00.09..	antonym		oewn-worn__3.00.00..
+oewn-new_evangelisation__1.10.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-new_evangelisation__1.10.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-new_evangelization__1.10.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-newness__1.07.00..	antonym		oewn-oldness__1.07.00..
+oewn-news__1.10.03..	derivation		oewn-newsy__5.00.00.informative.00
+oewn-news_organisation__1.14.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-news_organisation__1.14.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-news_organization__1.14.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-newsagent__1.18.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-newsdealer__1.18.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-newsworthiness__1.07.00..	derivation		oewn-newsworthy__5.00.00.interesting.00
+oewn-newtonian__1.18.00..	derivation		oewn-newtonian__3.01.00..
+oewn-nibble__1.04.00..	derivation		oewn-nibble__2.35.02..
+oewn-nibble__1.23.00..	derivation		oewn-nibble__2.34.01..
+oewn-nibble__1.23.00..	derivation		oewn-nibble__2.35.00..
+oewn-nibble__2.34.01..	derivation		oewn-nibbler__1.18.00..
+oewn-nibble__2.34.01..	other	agent	oewn-nibbler__1.18.00..
+oewn-nibble__2.35.00..	derivation		oewn-nibbler__1.18.00..
+oewn-nibble__2.35.00..	other	agent	oewn-nibbler__1.18.00..
+oewn-nibble__2.35.02..	other	event	oewn-nibble__1.04.00..
+oewn-nice__3.00.00..	derivation		oewn-niceness__1.07.00..
+oewn-nice__5.00.00.polite.00	derivation		oewn-niceness__1.07.02..
+oewn-nice__5.00.00.respectable.00	derivation		oewn-niceness__1.07.02..
+oewn-nicely__4.02.00..	pertainym		oewn-nice__3.00.00..
+oewn-nick__1.04.00..	derivation		oewn-nick__2.35.00..
+oewn-nick__1.04.00..	derivation		oewn-nick__2.35.01..
+oewn-nick__2.35.00..	other	event	oewn-nick__1.04.00..
+oewn-nick__2.35.01..	other	event	oewn-nick__1.04.00..
+oewn-nickel__1.27.00..	derivation		oewn-nickel__2.35.00..
+oewn-nickel__2.35.00..	other	uses	oewn-nickel__1.27.00..
+oewn-nicker__1.11.00..	derivation		oewn-nicker__2.32.00..
+oewn-nicker__2.32.00..	other	event	oewn-nicker__1.11.00..
+oewn-nickname__1.10.00..	derivation		oewn-nickname__2.32.00..
+oewn-nickname__2.32.00..	other	uses	oewn-nickname__1.10.00..
+oewn-nictate__2.29.00..	derivation		oewn-nictation__1.04.00..
+oewn-nictate__2.29.00..	other	event	oewn-nictation__1.04.00..
+oewn-nictitate__2.29.00..	derivation		oewn-nictitation__1.04.00..
+oewn-nictitate__2.29.00..	other	event	oewn-nictitation__1.04.00..
+oewn-nidicolous__3.00.00..	antonym		oewn-nidifugous__3.00.00..
+oewn-niff__1.09.00..	derivation		oewn-niffy__5.00.00.malodorous.00
+oewn-nigerian__1.18.00..	derivation		oewn-nigerian__3.01.00..
+oewn-nigerian__1.18.00..	derivation		oewn-nigerian__3.01.01..
+oewn-nigerian__3.01.00..	pertainym		oewn-nigerian__1.18.00..
+oewn-nigerien__3.01.00..	pertainym		oewn-nigerian__1.18.00..
+oewn-niggard__1.18.00..	derivation		oewn-niggardly__5.00.00.stingy.00
+oewn-niggardliness__1.07.00..	derivation		oewn-niggardly__5.00.00.stingy.00
+oewn-niggle__2.32.00..	derivation		oewn-niggler__1.18.00..
+oewn-niggle__2.32.00..	other	agent	oewn-niggler__1.18.00..
+oewn-night__1.28.00..	derivation		oewn-nightly__5.00.00.periodic.00
+oewn-nightclothes__1.06.00..	exemplifies		oewn-plural__1.10.00..
+oewn-nihilism__1.09.00..	derivation		oewn-nihilist__1.18.00..
+oewn-nihilism__1.09.00..	derivation		oewn-nihilist__1.18.01..
+oewn-nihilism__1.09.00..	derivation		oewn-nihilistic__3.01.00..
+oewn-nihilism__1.26.00..	derivation		oewn-nihilist__1.18.00..
+oewn-nihilism__1.26.00..	derivation		oewn-nihilist__1.18.01..
+oewn-nihilism__1.26.00..	derivation		oewn-nihilistic__3.01.00..
+oewn-nihilistic__3.01.00..	pertainym		oewn-nihilism__1.09.00..
+oewn-nilotic__1.10.00..	derivation		oewn-nilotic__3.01.00..
+oewn-nilotic__3.01.00..	pertainym		oewn-nilotic__1.10.00..
+oewn-nilpotent__3.01.00..	pertainym		oewn-zero__1.23.01..
+oewn-nimble__5.00.00.active.01	derivation		oewn-nimbleness__1.07.00..
+oewn-nimble__5.00.00.intelligent.00	derivation		oewn-nimbleness__1.09.00..
+oewn-nimbly__4.02.00..	pertainym		oewn-nimble__5.00.00.active.01
+oewn-nineteen__1.23.00..	derivation		oewn-nineteen__5.00.00.cardinal.00
+oewn-nip__1.04.01..	derivation		oewn-nip__2.35.02..
+oewn-nip__1.07.00..	derivation		oewn-nippy__5.00.00.tasty.00
+oewn-nip__1.07.01..	derivation		oewn-nippy__5.00.00.cold.01
+oewn-nip__1.09.00..	derivation		oewn-nippy__5.00.00.tasty.00
+oewn-nip__2.35.00..	derivation		oewn-nipper__1.05.00..
+oewn-nip__2.35.00..	other	body_part	oewn-nipper__1.05.00..
+oewn-nip__2.35.02..	other	event	oewn-nip__1.04.01..
+oewn-nip_and_tuck__4.02.00..	pertainym		oewn-nip_and_tuck__5.00.00.inconclusive.00
+oewn-nipponese__1.18.00..	derivation		oewn-nipponese__3.01.00..
+oewn-niter__1.27.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nitpick__2.32.00..	derivation		oewn-nitpicker__1.18.00..
+oewn-nitpick__2.32.00..	other	agent	oewn-nitpicker__1.18.00..
+oewn-nitrate__1.27.00..	derivation		oewn-nitrate__2.30.10..
+oewn-nitrate__1.27.00..	derivation		oewn-nitrify__2.30.00..
+oewn-nitrate__1.27.00..	derivation		oewn-nitrify__2.30.01..
+oewn-nitrate__1.27.00..	derivation		oewn-nitrify__2.30.02..
+oewn-nitrate__2.30.10..	derivation		oewn-nitric_acid__1.27.00..
+oewn-nitrate__2.30.10..	other	uses	oewn-nitrate__1.27.00..
+oewn-nitre__1.27.00..	derivation		oewn-nitric__3.01.00..
+oewn-nitre__1.27.00..	derivation		oewn-nitrous__3.01.00..
+oewn-nitre__1.27.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nitre__1.27.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nitre__1.27.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nitric__3.01.00..	pertainym		oewn-nitrogen__1.27.00..
+oewn-nitric_acid__1.27.00..	derivation		oewn-nitrify__2.30.02..
+oewn-nitrification__1.22.00..	derivation		oewn-nitrify__2.30.00..
+oewn-nitrification__1.22.00..	derivation		oewn-nitrify__2.30.02..
+oewn-nitrification__1.22.01..	derivation		oewn-nitrify__2.30.01..
+oewn-nitrify__2.30.00..	other	event	oewn-nitrification__1.22.00..
+oewn-nitrify__2.30.00..	other	uses	oewn-nitrate__1.27.00..
+oewn-nitrify__2.30.00..	other	uses	oewn-nitrification__1.22.00..
+oewn-nitrify__2.30.01..	derivation		oewn-nitrogen__1.27.00..
+oewn-nitrify__2.30.01..	derivation		oewn-nitrous_acid__1.27.00..
+oewn-nitrify__2.30.01..	other	event	oewn-nitrification__1.22.01..
+oewn-nitrify__2.30.01..	other	uses	oewn-nitrate__1.27.00..
+oewn-nitrify__2.30.01..	other	uses	oewn-nitrogen__1.27.00..
+oewn-nitrify__2.30.01..	other	uses	oewn-nitrous_acid__1.27.00..
+oewn-nitrify__2.30.02..	derivation		oewn-nitrous_acid__1.27.00..
+oewn-nitrify__2.30.02..	other	event	oewn-nitrification__1.22.00..
+oewn-nitrify__2.30.02..	other	result	oewn-nitrate__1.27.00..
+oewn-nitrify__2.30.02..	other	result	oewn-nitric_acid__1.27.00..
+oewn-nitrify__2.30.02..	other	result	oewn-nitrous_acid__1.27.00..
+oewn-nitrogen--fixing__3.01.00..	pertainym		oewn-nitrogen_fixation__1.22.00..
+oewn-nitrogen__1.27.00..	derivation		oewn-nitrogenize__2.30.00..
+oewn-nitrogen__1.27.00..	derivation		oewn-nitrogenous__3.01.00..
+oewn-nitrogenise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nitrogenise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nitrogenize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nitrogenous__3.01.00..	pertainym		oewn-nitrogen__1.27.00..
+oewn-nitrospan__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-nitrostat__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-nitrous__3.01.00..	pertainym		oewn-nitrogen__1.27.00..
+oewn-no__1.10.00..	antonym		oewn-yes__1.10.00..
+oewn-no__3.00.00..	antonym		oewn-some__3.00.00..
+oewn-no_longer__4.02.00..	antonym		oewn-still__4.02.01..
+oewn-nobel_prize__1.10.00..	derivation		oewn-nobelist__1.18.00..
+oewn-nobility__1.07.00..	derivation		oewn-noble__3.00.01..
+oewn-nobility__1.14.00..	derivation		oewn-noble__3.00.02..
+oewn-nobility__1.26.00..	derivation		oewn-noble__3.00.02..
+oewn-noble--minded__5.00.00.noble.01	derivation		oewn-noble--mindedness__1.07.00..
+oewn-nobleman__1.18.00..	antonym		oewn-noblewoman__1.18.00..
+oewn-nobly__4.02.00..	pertainym		oewn-noble__3.00.01..
+oewn-noctambulism__1.04.00..	derivation		oewn-noctambulist__1.18.00..
+oewn-nocturnal__3.01.01..	pertainym		oewn-night__1.28.00..
+oewn-nocturnally__4.02.00..	pertainym		oewn-nocturnal__3.01.01..
+oewn-nod__1.04.00..	derivation		oewn-nod__2.29.03..
+oewn-nod__1.04.00..	derivation		oewn-nod__2.32.00..
+oewn-nod__1.10.01..	derivation		oewn-nod__2.32.01..
+oewn-nod__2.29.03..	other	event	oewn-nod__1.04.00..
+oewn-nod__2.32.00..	other	event	oewn-nod__1.04.00..
+oewn-nod__2.32.01..	other	event	oewn-nod__1.10.01..
+oewn-nodular__3.01.00..	derivation		oewn-nodule__1.08.00..
+oewn-nodular__3.01.00..	derivation		oewn-nodule__1.17.00..
+oewn-nodular__3.01.00..	derivation		oewn-nodule__1.20.00..
+oewn-nodular__3.01.00..	pertainym		oewn-nodule__1.08.00..
+oewn-nodular__5.00.00.unshapely.00	derivation		oewn-nodule__1.08.00..
+oewn-nodular__5.00.00.unshapely.00	derivation		oewn-nodule__1.17.00..
+oewn-nodular__5.00.00.unshapely.00	derivation		oewn-nodule__1.20.00..
+oewn-noesis__1.03.00..	derivation		oewn-noetic__5.00.00.mental.00
+oewn-noise__1.09.00..	derivation		oewn-noise__2.39.00..
+oewn-noise__1.10.00..	derivation		oewn-noisy__3.00.00..
+oewn-noise__1.11.00..	derivation		oewn-noise__2.39.00..
+oewn-noise__2.39.00..	other	event	oewn-noise__1.09.00..
+oewn-noise__2.39.00..	other	event	oewn-noise__1.11.00..
+oewn-noiseless__5.00.00.quiet.01	derivation		oewn-noiselessness__1.07.00..
+oewn-noiselessly__4.02.00..	pertainym		oewn-noiseless__5.00.00.quiet.01
+oewn-noisily__4.02.00..	antonym		oewn-quietly__4.02.01..
+oewn-noisily__4.02.00..	pertainym		oewn-noisy__3.00.00..
+oewn-noisiness__1.07.00..	derivation		oewn-noisy__3.00.00..
+oewn-noisome__5.00.00.malodorous.00	derivation		oewn-noisomeness__1.07.00..
+oewn-noisome__5.00.00.unwholesome.00	derivation		oewn-noisomeness__1.07.00..
+oewn-noisy__3.00.00..	antonym		oewn-quiet__3.00.01..
+oewn-nolle_prosequi__1.10.00..	derivation		oewn-nolle_prosequi__2.30.00..
+oewn-nominal__3.00.00..	antonym		oewn-real__3.00.01..
+oewn-nominal__3.01.00..	pertainym		oewn-noun__1.10.01..
+oewn-nominal__3.01.01..	pertainym		oewn-name__1.10.00..
+oewn-nominalism__1.09.00..	derivation		oewn-nominalistic__3.01.00..
+oewn-nominalistic__3.01.00..	pertainym		oewn-nominalism__1.09.00..
+oewn-nominally__4.02.00..	pertainym		oewn-nominal__3.01.01..
+oewn-nominate__2.32.00..	derivation		oewn-nomination__1.04.00..
+oewn-nominate__2.32.00..	derivation		oewn-nomination__1.10.00..
+oewn-nominate__2.32.00..	derivation		oewn-nomination__1.26.00..
+oewn-nominate__2.32.00..	derivation		oewn-nominative__5.00.00.appointive.00
+oewn-nominate__2.32.00..	derivation		oewn-nominator__1.18.00..
+oewn-nominate__2.32.00..	other	agent	oewn-nominator__1.18.00..
+oewn-nominate__2.32.00..	other	event	oewn-nomination__1.04.00..
+oewn-nominate__2.32.00..	other	event	oewn-nomination__1.10.00..
+oewn-nominate__2.32.00..	other	state	oewn-nomination__1.26.00..
+oewn-nominate__2.41.00..	derivation		oewn-nomination__1.04.00..
+oewn-nominate__2.41.00..	derivation		oewn-nominative__5.00.00.appointive.00
+oewn-nominate__2.41.00..	other	event	oewn-nomination__1.04.00..
+oewn-nominate__2.41.01..	derivation		oewn-nomination__1.04.00..
+oewn-nominate__2.41.01..	derivation		oewn-nominative__5.00.00.appointive.00
+oewn-nominate__2.41.01..	other	event	oewn-nomination__1.04.00..
+oewn-nominate__2.41.02..	derivation		oewn-nominative__5.00.00.appointive.00
+oewn-nominate__2.41.02..	derivation		oewn-nominator__1.18.00..
+oewn-nominate__2.41.02..	other	agent	oewn-nominator__1.18.00..
+oewn-nominative__1.10.00..	antonym		oewn-oblique__1.10.00..
+oewn-nominative__3.01.00..	pertainym		oewn-nominative__1.10.00..
+oewn-non--metric__3.01.00..	pertainym		oewn-meter__1.23.00..
+oewn-non--proliferation__1.04.00..	antonym		oewn-proliferation__1.22.01..
+oewn-non--volatile_storage__1.06.00..	antonym		oewn-volatile_storage__1.06.00..
+oewn-nonabsorbency__1.07.00..	derivation		oewn-nonabsorbent__3.00.00..
+oewn-nonagenarian__1.18.00..	derivation		oewn-nonagenarian__5.00.00.old.02
+oewn-noncaloric__3.01.00..	pertainym		oewn-nutritionist-apos-s_calorie__1.23.00..
+oewn-nonchalance__1.07.00..	derivation		oewn-nonchalant__5.00.00.unconcerned.00
+oewn-nonchalantly__4.02.00..	pertainym		oewn-nonchalant__5.00.00.unconcerned.00
+oewn-nonchalantly__4.02.01..	pertainym		oewn-nonchalant__5.00.00.unconcerned.00
+oewn-noncombatant__1.18.00..	derivation		oewn-noncombatant__5.00.01.military.01
+oewn-noncompetitively__4.02.00..	pertainym		oewn-noncompetitive__3.00.00..
+oewn-noncompliance__1.04.00..	derivation		oewn-noncompliant__3.00.00..
+oewn-noncomprehensively__4.02.00..	pertainym		oewn-noncomprehensive__3.00.00..
+oewn-nonconformism__1.09.00..	derivation		oewn-nonconformist__1.18.00..
+oewn-nondescript__1.18.00..	derivation		oewn-nondescript__5.00.00.ordinary.00
+oewn-nonenzymatic__3.01.00..	pertainym		oewn-enzyme__1.27.00..
+oewn-nonequivalence__1.07.00..	derivation		oewn-nonequivalent__5.00.00.unequal.00
+oewn-nonessential__1.17.00..	derivation		oewn-nonessential__5.00.00.inessential.00
+oewn-nonexistence__1.26.00..	derivation		oewn-nonexistent__3.00.00..
+oewn-nonfictional__3.01.00..	pertainym		oewn-nonfiction__1.10.00..
+oewn-nonfinancial__3.01.00..	pertainym		oewn-finance__1.04.00..
+oewn-nonharmonic__3.01.00..	pertainym		oewn-harmony__1.10.01..
+oewn-nonindulgence__1.07.00..	derivation		oewn-nonindulgent__3.00.00..
+oewn-nonionic__3.01.00..	pertainym		oewn-ion__1.17.00..
+oewn-nonlexical__3.01.00..	pertainym		oewn-word__1.10.00..
+oewn-nonlexically__4.02.00..	pertainym		oewn-nonlexical__3.01.00..
+oewn-nonlinguistic__3.01.00..	pertainym		oewn-language__1.10.00..
+oewn-nonmalignant_tumor__1.26.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nonmalignant_tumour__1.26.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nonmalignant_tumour__1.26.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nonmalignant_tumour__1.26.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nonmetal__1.27.00..	derivation		oewn-nonmetal__3.00.00..
+oewn-nonobservance__1.04.00..	antonym		oewn-observance__1.04.02..
+oewn-nonoperational__3.00.00..	antonym		oewn-operational__3.00.00..
+oewn-nonparametric__3.01.00..	pertainym		oewn-nonparametric_statistic__1.09.00..
+oewn-nonparticipation__1.04.00..	antonym		oewn-participation__1.04.00..
+oewn-nonparticulate__3.00.00..	antonym		oewn-particulate__3.00.00..
+oewn-nonpartisan__1.18.00..	antonym		oewn-partisan__1.18.00..
+oewn-nonpartisan__1.18.00..	derivation		oewn-nonpartisan__3.00.00..
+oewn-nonpartisan__3.00.00..	antonym		oewn-partisan__3.00.00..
+oewn-nonpasserine__3.01.00..	antonym		oewn-passerine__3.01.00..
+oewn-nonpasserine__3.01.00..	pertainym		oewn-passerine__1.05.00..
+oewn-nonpayment__1.04.00..	antonym		oewn-payment__1.04.00..
+oewn-nonpayment__1.21.00..	antonym		oewn-payment__1.21.00..
+oewn-nonphotosynthetic__3.01.00..	antonym		oewn-photosynthetic__3.01.00..
+oewn-nonphotosynthetic__3.01.00..	pertainym		oewn-photosynthesis__1.22.00..
+oewn-nonpolitical__3.00.00..	antonym		oewn-political__3.00.00..
+oewn-nonporous__3.00.00..	antonym		oewn-porous__3.00.00..
+oewn-nonpregnant__3.00.00..	antonym		oewn-pregnant__3.00.00..
+oewn-nonprehensile__3.00.00..	antonym		oewn-prehensile__3.00.00..
+oewn-nonprescription__3.00.00..	antonym		oewn-prescription__3.00.00..
+oewn-nonprofessional__3.00.00..	antonym		oewn-professional__3.00.01..
+oewn-nonproliferation__1.04.00..	antonym		oewn-proliferation__1.22.01..
+oewn-nonproprietary__3.00.00..	antonym		oewn-proprietary__3.00.00..
+oewn-nonpsychoactive__3.00.00..	antonym		oewn-psychoactive__3.00.00..
+oewn-nonracial__3.00.00..	antonym		oewn-racial__3.00.00..
+oewn-nonradioactive__3.00.00..	antonym		oewn-radioactive__3.00.00..
+oewn-nonrandom__3.00.00..	antonym		oewn-random__3.00.00..
+oewn-nonreciprocal__3.00.00..	antonym		oewn-reciprocal__3.00.00..
+oewn-nonreflective__3.00.00..	antonym		oewn-reflective__3.00.00..
+oewn-nonreligious_person__1.18.00..	antonym		oewn-religious_person__1.18.00..
+oewn-nonrepetitive__3.00.00..	antonym		oewn-repetitive__3.00.00..
+oewn-nonrepresentational__3.00.00..	antonym		oewn-representational__3.00.00..
+oewn-nonrepresentative__3.00.00..	antonym		oewn-representative__3.00.00..
+oewn-nonresident__1.18.00..	antonym		oewn-resident__1.18.00..
+oewn-nonresident__3.00.00..	antonym		oewn-resident__3.00.00..
+oewn-nonresidential__3.00.00..	antonym		oewn-residential__3.00.00..
+oewn-nonresistance__1.04.00..	derivation		oewn-nonresistant__5.00.00.compliant.00
+oewn-nonreticulate__3.00.00..	antonym		oewn-reticulate__3.00.00..
+oewn-nonretractile__3.00.00..	antonym		oewn-retractile__3.00.00..
+oewn-nonreturnable__3.00.00..	antonym		oewn-returnable__3.00.00..
+oewn-nonreversible__3.00.00..	antonym		oewn-reversible__3.00.02..
+oewn-nonrigid__3.00.00..	antonym		oewn-rigid__3.00.00..
+oewn-nonruminant__3.01.00..	antonym		oewn-ruminant__3.01.00..
+oewn-nonsectarian__3.00.00..	antonym		oewn-sectarian__3.01.01..
+oewn-nonsensical__5.00.00.meaningless.00	derivation		oewn-nonsensicality__1.10.00..
+oewn-nonsignificant__3.00.00..	antonym		oewn-significant__3.00.01..
+oewn-nonsingular_matrix__1.14.00..	antonym		oewn-singular_matrix__1.14.00..
+oewn-nonslippery__3.00.00..	antonym		oewn-slippery__3.00.00..
+oewn-nonsmoker__1.18.00..	antonym		oewn-smoker__1.18.00..
+oewn-nonsolid_color__1.07.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-nonsolid_colour__1.07.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-nonsolid_colour__1.07.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-nonsolid_colour__1.07.00..	exemplifies		oewn-canadian_spelling__1.10.01..
+oewn-nonspatial__3.01.00..	antonym		oewn-spatial__3.01.00..
+oewn-nonspatial__3.01.00..	pertainym		oewn-space__1.03.00..
+oewn-nonspeaking__3.00.00..	antonym		oewn-speaking__3.00.00..
+oewn-nonspecific__3.00.00..	antonym		oewn-specific__3.00.00..
+oewn-nonspecific__3.00.00..	antonym		oewn-specific__3.00.02..
+oewn-nonspecifically__4.02.00..	pertainym		oewn-nonspecific__3.00.00..
+oewn-nonspherical__3.01.00..	antonym		oewn-spherical__3.01.00..
+oewn-nonspherical__3.01.00..	pertainym		oewn-sphere__1.25.00..
+oewn-nonstandard__3.00.00..	antonym		oewn-standard__3.00.01..
+oewn-nonstandard__3.00.02..	antonym		oewn-standard__3.00.02..
+oewn-nonstandard__3.00.03..	antonym		oewn-standard__3.00.03..
+oewn-nonsteroidal__3.01.00..	antonym		oewn-steroidal__3.01.00..
+oewn-nonsteroidal__3.01.00..	pertainym		oewn-nonsteroid__1.27.00..
+oewn-nonsubmersible__3.00.00..	antonym		oewn-submersible__3.00.00..
+oewn-nonsuppurative__3.01.00..	antonym		oewn-suppurative__3.01.00..
+oewn-nonsuppurative__3.01.00..	pertainym		oewn-suppuration__1.22.00..
+oewn-nonsurgical__3.01.00..	antonym		oewn-surgical__3.01.00..
+oewn-nonsurgical__3.01.00..	pertainym		oewn-surgery__1.04.01..
+oewn-nonsyllabic__3.00.00..	antonym		oewn-syllabic__3.00.00..
+oewn-nonsyllabic__3.00.02..	antonym		oewn-syllabic__3.00.02..
+oewn-nontaxable__3.00.00..	antonym		oewn-taxable__3.00.00..
+oewn-nontechnical__3.00.00..	antonym		oewn-technical__3.00.00..
+oewn-nonterritorial__3.00.00..	antonym		oewn-territorial__3.00.01..
+oewn-nonthermal__3.01.00..	antonym		oewn-thermal__3.01.00..
+oewn-nonthermal__3.01.00..	pertainym		oewn-heat__1.19.00..
+oewn-nontoxic__3.00.00..	antonym		oewn-toxic__3.00.00..
+oewn-nontraditional__3.00.00..	antonym		oewn-traditional__3.00.00..
+oewn-nontranslational__3.01.00..	antonym		oewn-translational__3.01.00..
+oewn-nontranslational__3.01.00..	pertainym		oewn-translation__1.11.00..
+oewn-nonuniformity__1.07.00..	antonym		oewn-uniformity__1.07.00..
+oewn-nonunion__3.00.00..	antonym		oewn-union__3.00.00..
+oewn-nonverbally__4.02.00..	pertainym		oewn-nonverbal__5.00.01.communicative.00
+oewn-nonviolence__1.04.00..	derivation		oewn-nonviolent__3.00.00..
+oewn-nonviolence__1.04.00..	derivation		oewn-nonviolent__5.00.00.bloodless.00
+oewn-nonviolent__3.00.00..	antonym		oewn-violent__3.00.00..
+oewn-nonviolently__4.02.00..	antonym		oewn-violently__4.02.00..
+oewn-nonviolently__4.02.00..	pertainym		oewn-nonviolent__3.00.00..
+oewn-nonvolatile__3.00.00..	antonym		oewn-volatile__3.00.00..
+oewn-nonvolatile_storage__1.06.00..	antonym		oewn-volatile_storage__1.06.00..
+oewn-nonwashable__3.00.00..	antonym		oewn-washable__3.00.00..
+oewn-nonwoody__3.00.00..	antonym		oewn-woody__3.00.00..
+oewn-nonworker__1.18.00..	antonym		oewn-worker__1.18.00..
+oewn-noose__1.06.01..	derivation		oewn-noose__2.35.00..
+oewn-noose__1.06.01..	derivation		oewn-noose__2.36.00..
+oewn-noose__2.35.00..	other	by_means_of	oewn-noose__1.06.01..
+oewn-noose__2.36.00..	other	result	oewn-noose__1.06.01..
+oewn-nordic__3.01.00..	pertainym		oewn-northern_europe__1.15.00..
+oewn-nordic__3.01.01..	pertainym		oewn-scandinavian__1.10.00..
+oewn-norflex__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-norlutin__1.27.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-normal__3.00.01..	derivation		oewn-normality__1.07.01..
+oewn-normal__3.00.02..	antonym		oewn-paranormal__3.00.00..
+oewn-normal__3.00.03..	derivation		oewn-normality__1.26.00..
+oewn-normalcy__1.26.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-normalisation__1.04.00..	derivation		oewn-normalise__2.30.01..
+oewn-normalisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-normalisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-normalise__2.30.01..	derivation		oewn-normaliser__1.18.00..
+oewn-normalise__2.30.01..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-normalise__2.30.01..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-normalise__2.30.01..	other	agent	oewn-normaliser__1.18.00..
+oewn-normalise__2.30.01..	other	event	oewn-normalisation__1.04.00..
+oewn-normalise__2.30.03..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-normalise__2.30.03..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-normality__1.26.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-normalization__1.04.00..	derivation		oewn-normalize__2.30.01..
+oewn-normalization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-normalize__2.30.01..	derivation		oewn-normalizer__1.18.00..
+oewn-normalize__2.30.01..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-normalize__2.30.01..	other	agent	oewn-normalizer__1.18.00..
+oewn-normalize__2.30.01..	other	event	oewn-normalization__1.04.00..
+oewn-normalize__2.30.06..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-norman__3.01.00..	pertainym		oewn-norman__1.18.00..
+oewn-normative__3.01.00..	pertainym		oewn-norm__1.24.00..
+oewn-north__3.00.00..	antonym		oewn-south__3.00.00..
+oewn-north_korean__1.18.00..	derivation		oewn-north_korean__3.01.00..
+oewn-northeaster__1.19.00..	derivation		oewn-northeasterly__5.00.02.north.00
+oewn-northeastward__4.02.00..	pertainym		oewn-northeastward__5.00.00.north.00
+oewn-northeastwardly__4.02.00..	pertainym		oewn-northeastward__5.00.00.north.00
+oewn-norther__1.19.00..	derivation		oewn-northerly__5.00.01.north.00
+oewn-northerly__4.02.00..	pertainym		oewn-northerly__5.00.02.north.00
+oewn-northern__3.00.01..	antonym		oewn-southern__3.00.01..
+oewn-northern__3.00.02..	antonym		oewn-southern__3.00.02..
+oewn-northern__5.00.01.north.00	derivation		oewn-northernness__1.07.00..
+oewn-northernness__1.07.00..	antonym		oewn-southernness__1.07.00..
+oewn-northward__4.02.00..	exemplifies		oewn-american_english__1.10.00..
+oewn-northwards__4.02.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-northwester__1.19.00..	derivation		oewn-northwesterly__5.00.02.north.00
+oewn-northwestward__4.02.00..	pertainym		oewn-northwestward__5.00.00.north.00
+oewn-northwestwardly__4.02.00..	pertainym		oewn-northwestward__5.00.00.north.00
+oewn-norwegian__1.10.00..	derivation		oewn-norwegian__3.01.00..
+oewn-norwegian__1.18.00..	derivation		oewn-norwegian__3.01.00..
+oewn-nose__1.06.00..	derivation		oewn-nose__2.38.02..
+oewn-nose__1.08.00..	derivation		oewn-nose__2.35.00..
+oewn-nose__1.08.00..	derivation		oewn-nose__2.38.00..
+oewn-nose__1.08.00..	derivation		oewn-nose__2.39.01..
+oewn-nose__1.09.00..	derivation		oewn-nose__2.39.01..
+oewn-nose__1.09.01..	derivation		oewn-nose__2.39.00..
+oewn-nose__1.10.00..	derivation		oewn-nosey__5.00.00.curious.00
+oewn-nose__1.10.00..	derivation		oewn-nosy__5.00.00.curious.00
+oewn-nose__1.23.00..	derivation		oewn-nose__2.33.00..
+oewn-nose__2.33.00..	other	event	oewn-nose__1.23.00..
+oewn-nose__2.35.00..	other	undergoer	oewn-nose__1.08.00..
+oewn-nose__2.38.00..	other	by_means_of	oewn-nose__1.08.00..
+oewn-nose__2.38.02..	other	undergoer	oewn-nose__1.06.00..
+oewn-nose__2.39.00..	also		oewn-nose_out__2.39.00..
+oewn-nose__2.39.01..	other	by_means_of	oewn-nose__1.08.00..
+oewn-nose__2.39.01..	other	by_means_of	oewn-nose__1.09.00..
+oewn-nosed__3.00.00..	antonym		oewn-noseless__3.00.00..
+oewn-nosh__1.13.00..	derivation		oewn-nosh__2.34.00..
+oewn-nosh__2.34.00..	derivation		oewn-nosher__1.18.00..
+oewn-nosh__2.34.00..	other	agent	oewn-nosher__1.18.00..
+oewn-nosh__2.34.00..	other	event	oewn-nosh__1.13.00..
+oewn-nosiness__1.09.00..	derivation		oewn-nosy__5.00.00.curious.00
+oewn-nosocomial__3.01.00..	pertainym		oewn-hospital__1.06.00..
+oewn-nosohusial__3.01.00..	pertainym		oewn-healthcare__1.04.01..
+oewn-nostalgia__1.12.00..	derivation		oewn-nostalgic__5.00.00.desirous.00
+oewn-notability__1.18.00..	derivation		oewn-notable__5.00.00.known.00
+oewn-notable__1.18.00..	derivation		oewn-notable__5.00.00.known.00
+oewn-notarise__2.32.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-notarise__2.32.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-notarize__2.32.00..	derivation		oewn-notary__1.18.00..
+oewn-notarize__2.32.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-notate__2.32.00..	derivation		oewn-notation__1.04.00..
+oewn-notate__2.32.00..	derivation		oewn-notation__1.10.00..
+oewn-notate__2.32.00..	other	event	oewn-notation__1.04.00..
+oewn-notate__2.32.00..	other	result	oewn-notation__1.10.00..
+oewn-notation__1.10.01..	derivation		oewn-note__2.32.01..
+oewn-notch__1.04.00..	derivation		oewn-notch__2.32.00..
+oewn-notch__1.04.00..	derivation		oewn-notch__2.35.00..
+oewn-notch__1.06.00..	derivation		oewn-notch__2.32.00..
+oewn-notch__1.06.00..	derivation		oewn-notch__2.35.00..
+oewn-notch__1.25.00..	derivation		oewn-notch__2.35.00..
+oewn-notch__2.32.00..	other	result	oewn-notch__1.04.00..
+oewn-notch__2.32.00..	other	result	oewn-notch__1.06.00..
+oewn-notch__2.35.00..	other	result	oewn-notch__1.04.00..
+oewn-notch__2.35.00..	other	result	oewn-notch__1.06.00..
+oewn-notch__2.35.00..	other	result	oewn-notch__1.25.00..
+oewn-note__1.10.00..	derivation		oewn-note__2.32.01..
+oewn-note__1.10.02..	derivation		oewn-note__2.32.00..
+oewn-note__1.21.01..	exemplifies		oewn-british_english__1.10.01..
+oewn-note__2.32.00..	other	event	oewn-note__1.10.02..
+oewn-note__2.32.01..	other	event	oewn-note__1.10.00..
+oewn-note__2.32.01..	other	result	oewn-notation__1.10.01..
+oewn-notice__1.09.00..	derivation		oewn-notice__2.32.01..
+oewn-notice__1.09.00..	derivation		oewn-notice__2.39.00..
+oewn-notice__1.09.00..	derivation		oewn-notice__2.39.04..
+oewn-notice__1.09.01..	derivation		oewn-notice__2.32.01..
+oewn-notice__1.10.01..	derivation		oewn-notify__2.32.00..
+oewn-notice__1.10.02..	derivation		oewn-notify__2.32.00..
+oewn-notice__1.10.04..	derivation		oewn-notice__2.32.00..
+oewn-notice__2.32.00..	other	event	oewn-notice__1.10.04..
+oewn-notice__2.32.01..	other	event	oewn-notice__1.09.00..
+oewn-notice__2.32.01..	other	event	oewn-notice__1.09.01..
+oewn-notice__2.39.00..	derivation		oewn-noticeable__3.00.00..
+oewn-notice__2.39.00..	derivation		oewn-noticeable__5.00.00.perceptible.00
+oewn-notice__2.39.00..	derivation		oewn-noticer__1.18.01..
+oewn-notice__2.39.00..	other	agent	oewn-noticer__1.18.01..
+oewn-notice__2.39.00..	other	event	oewn-notice__1.09.00..
+oewn-notice__2.39.04..	other	event	oewn-notice__1.09.00..
+oewn-noticeability__1.07.00..	derivation		oewn-noticeable__5.00.00.perceptible.00
+oewn-noticeable__3.00.00..	antonym		oewn-unnoticeable__3.00.00..
+oewn-noticeable__3.00.00..	derivation		oewn-noticeableness__1.07.00..
+oewn-noticeable__5.00.00.perceptible.00	derivation		oewn-noticeableness__1.07.00..
+oewn-noticeably__4.02.00..	pertainym		oewn-noticeable__3.00.00..
+oewn-noticed__3.00.00..	antonym		oewn-unnoticed__3.00.00..
+oewn-notifiable__5.00.00.reported.00	derivation		oewn-notify__2.32.00..
+oewn-notification__1.10.00..	derivation		oewn-notify__2.32.00..
+oewn-notification__1.10.01..	derivation		oewn-notify__2.32.00..
+oewn-notify__2.32.00..	other	event	oewn-notice__1.10.01..
+oewn-notify__2.32.00..	other	event	oewn-notice__1.10.02..
+oewn-notify__2.32.00..	other	event	oewn-notification__1.10.00..
+oewn-notify__2.32.00..	other	event	oewn-notification__1.10.01..
+oewn-notify__2.32.00..	other	uses	oewn-notification__1.10.01..
+oewn-notion__1.09.00..	derivation		oewn-notional__5.00.00.abstract.00
+oewn-noughts_and_crosses__1.04.00..	exemplifies		oewn-british_english__1.10.01..
+oewn-nourish__2.34.00..	derivation		oewn-nourishment__1.13.00..
+oewn-nourish__2.34.00..	derivation		oewn-nutrient__5.00.00.wholesome.00
+oewn-nourish__2.34.00..	other	uses	oewn-nourishment__1.13.00..
+oewn-nourish__2.34.01..	derivation		oewn-nourishment__1.04.00..
+oewn-nourish__2.34.01..	derivation		oewn-nutrient__5.00.00.wholesome.00
+oewn-nourish__2.34.01..	other	event	oewn-nourishment__1.04.00..
+oewn-nouveau--riche__1.18.00..	derivation		oewn-nouveau--riche__5.00.00.pretentious.00
+oewn-novate__2.30.00..	derivation		oewn-novation__1.04.00..
+oewn-novate__2.30.00..	other	event	oewn-novation__1.04.00..
+oewn-novel__1.06.00..	derivation		oewn-novelette__1.10.00..
+oewn-novel__1.06.00..	derivation		oewn-novelist__1.18.00..
+oewn-novel__1.10.00..	derivation		oewn-novelette__1.10.00..
+oewn-novel__1.10.00..	derivation		oewn-novelist__1.18.00..
+oewn-novelisation__1.04.00..	derivation		oewn-novelise__2.30.00..
+oewn-novelisation__1.04.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-novelisation__1.04.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-novelise__2.30.00..	exemplifies		oewn-australian_spelling__1.10.01..
+oewn-novelise__2.30.00..	exemplifies		oewn-british_spelling__1.10.01..
+oewn-novelise__2.30.00..	other	event	oewn-novelisation__1.04.00..
+oewn-novelization__1.04.00..	derivation		oewn-novelize__2.30.00..
+oewn-novelization__1.04.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-novelize__2.30.00..	exemplifies		oewn-american_spelling__1.10.01..
+oewn-novelize__2.30.00..	other	event	oewn-novelization__1.04.00..
+oewn-novocain__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-noxious__3.00.00..	derivation		oewn-noxiousness__1.07.00..
+oewn-noxiously__4.02.00..	pertainym		oewn-noxious__3.00.00..
+oewn-nub__1.25.00..	derivation		oewn-nubby__5.00.00.rough.00
+oewn-nubbiness__1.07.00..	derivation		oewn-nubby__5.00.00.rough.00
+oewn-nubble__1.25.00..	derivation		oewn-nubbly__5.00.00.rough.00
+oewn-nuclear__3.01.01..	pertainym		oewn-nucleus__1.17.00..
+oewn-nuclear__3.01.02..	pertainym		oewn-nucleus__1.08.00..
+oewn-nucleate__2.42.00..	derivation		oewn-nucleus__1.08.00..
+oewn-nucleate__3.01.00..	pertainym		oewn-nucleus__1.08.00..
+oewn-nucleated__3.01.00..	pertainym		oewn-nucleus__1.08.00..
+oewn-nude__1.18.00..	derivation		oewn-nude__5.00.00.unclothed.00
+oewn-nude__1.26.00..	derivation		oewn-nude__5.00.00.unclothed.00
+oewn-nude__5.00.00.unclothed.00	derivation		oewn-nudeness__1.26.00..
+oewn-nude__5.00.00.unclothed.00	derivation		oewn-nudity__1.26.00..
+oewn-nudge__1.04.00..	derivation		oewn-nudge__2.35.00..
+oewn-nudge__2.32.00..	derivation		oewn-nudger__1.18.00..
+oewn-nudge__2.32.00..	other	agent	oewn-nudger__1.18.00..
+oewn-nudge__2.35.00..	derivation		oewn-nudger__1.18.00..
+oewn-nudge__2.35.00..	other	agent	oewn-nudger__1.18.00..
+oewn-nudge__2.35.00..	other	event	oewn-nudge__1.04.00..
+oewn-nudism__1.04.00..	derivation		oewn-nudist__1.18.00..
+oewn-nuke__1.06.00..	derivation		oewn-nuke__2.33.00..
+oewn-nuke__1.06.00..	derivation		oewn-nuke__2.33.01..
+oewn-nuke__2.33.00..	other	by_means_of	oewn-nuke__1.06.00..
+oewn-nuke__2.33.01..	other	by_means_of	oewn-nuke__1.06.00..
+oewn-null__5.00.00.invalid.00	derivation		oewn-nullity__1.10.00..
+oewn-nullification__1.04.00..	derivation		oewn-nullify__2.30.00..
+oewn-nullification__1.04.00..	derivation		oewn-nullify__2.41.00..
+oewn-nullification__1.09.00..	derivation		oewn-nullify__2.41.00..
+oewn-nullifier__1.18.00..	derivation		oewn-nullify__2.41.00..
+oewn-nullifier__1.18.01..	derivation		oewn-nullify__2.41.00..
+oewn-nullify__2.30.00..	other	event	oewn-nullification__1.04.00..
+oewn-nullify__2.41.00..	other	agent	oewn-nullifier__1.18.00..
+oewn-nullify__2.41.00..	other	agent	oewn-nullifier__1.18.01..
+oewn-nullify__2.41.00..	other	by_means_of	oewn-nullification__1.09.00..
+oewn-nullify__2.41.00..	other	event	oewn-nullification__1.04.00..
+oewn-numb__5.00.00.insensible.00	derivation		oewn-numbness__1.26.00..
+oewn-numb__5.00.00.insensitive.02	derivation		oewn-numbness__1.07.00..
+oewn-number__1.07.00..	derivation		oewn-number__2.30.00..
+oewn-number__1.07.00..	derivation		oewn-number__2.32.00..
+oewn-number__1.07.00..	derivation		oewn-number__2.32.01..
+oewn-number__1.07.00..	derivation		oewn-number__2.32.03..
+oewn-number__1.07.00..	derivation		oewn-number__2.42.00..
+oewn-number__1.10.01..	derivation		oewn-number__2.30.00..
+oewn-number__1.10.01..	derivation		oewn-number__2.32.00..
+oewn-number__1.10.01..	derivation		oewn-number__2.32.01..
+oewn-number__1.10.01..	derivation		oewn-number__2.32.03..
+oewn-number__1.10.01..	derivation		oewn-number__2.42.00..
+oewn-number__1.10.02..	derivation		oewn-number__2.30.00..
+oewn-number__1.10.02..	derivation		oewn-number__2.32.00..
+oewn-number__1.10.02..	derivation		oewn-number__2.32.01..
+oewn-number__1.10.02..	derivation		oewn-number__2.32.03..
+oewn-number__1.14.00..	derivation		oewn-number__2.42.01..
+oewn-number__1.23.00..	derivation		oewn-number__2.30.00..
+oewn-number__1.23.00..	derivation		oewn-number__2.32.00..
+oewn-number__1.23.00..	derivation		oewn-number__2.32.01..
+oewn-number__1.23.00..	derivation		oewn-number__2.32.03..
+oewn-number__1.23.00..	derivation		oewn-number__2.42.00..
+oewn-number__1.23.00..	derivation		oewn-numerical__3.01.00..
+oewn-number__2.30.00..	other	state	oewn-number__1.23.00..
+oewn-number__2.30.00..	other	undergoer	oewn-number__1.07.00..
+oewn-number__2.30.00..	other	undergoer	oewn-number__1.10.01..
+oewn-number__2.30.00..	other	undergoer	oewn-number__1.10.02..
+oewn-number__2.32.00..	other	property	oewn-number__1.07.00..
+oewn-number__2.32.00..	other	property	oewn-number__1.10.01..
+oewn-number__2.32.00..	other	property	oewn-number__1.10.02..
+oewn-number__2.32.00..	other	property	oewn-number__1.23.00..
+oewn-number__2.32.00..	other	state	oewn-number__1.23.00..
+oewn-number__2.32.00..	other	undergoer	oewn-number__1.07.00..
+oewn-number__2.32.00..	other	undergoer	oewn-number__1.10.01..
+oewn-number__2.32.00..	other	undergoer	oewn-number__1.10.02..
+oewn-number__2.32.01..	derivation		oewn-numbering__1.10.00..
+oewn-number__2.32.01..	other	property	oewn-number__1.07.00..
+oewn-number__2.32.01..	other	property	oewn-number__1.10.01..
+oewn-number__2.32.01..	other	property	oewn-number__1.10.02..
+oewn-number__2.32.01..	other	property	oewn-number__1.23.00..
+oewn-number__2.32.01..	other	state	oewn-number__1.23.00..
+oewn-number__2.32.01..	other	undergoer	oewn-number__1.07.00..
+oewn-number__2.32.01..	other	undergoer	oewn-number__1.10.01..
+oewn-number__2.32.01..	other	undergoer	oewn-number__1.10.02..
+oewn-number__2.32.03..	derivation		oewn-numbering__1.10.00..
+oewn-number__2.32.03..	other	state	oewn-number__1.23.00..
+oewn-number__2.32.03..	other	undergoer	oewn-number__1.07.00..
+oewn-number__2.32.03..	other	undergoer	oewn-number__1.10.01..
+oewn-number__2.32.03..	other	undergoer	oewn-number__1.10.02..
+oewn-number__2.32.03..	other	uses	oewn-number__1.07.00..
+oewn-number__2.32.03..	other	uses	oewn-number__1.10.01..
+oewn-number__2.32.03..	other	uses	oewn-number__1.10.02..
+oewn-number__2.32.03..	other	uses	oewn-number__1.23.00..
+oewn-number__2.42.00..	other	result	oewn-number__1.07.00..
+oewn-number__2.42.00..	other	state	oewn-number__1.23.00..
+oewn-number__2.42.01..	other	result	oewn-number__1.14.00..
+oewn-numbly__4.02.00..	pertainym		oewn-numb__5.00.00.insensible.00
+oewn-numen__1.18.00..	derivation		oewn-numinous__3.01.00..
+oewn-numen__1.18.00..	derivation		oewn-numinous__5.00.00.sacred.00
+oewn-numerable__5.00.00.calculable.00	derivation		oewn-numerate__2.32.00..
+oewn-numeral__3.01.00..	pertainym		oewn-number__1.23.00..
+oewn-numerate__2.31.00..	derivation		oewn-numeration__1.10.01..
+oewn-numerate__2.31.00..	other	event	oewn-numeration__1.10.01..
+oewn-numerate__2.32.00..	derivation		oewn-numeration__1.04.00..
+oewn-numerate__2.32.00..	other	event	oewn-numeration__1.04.00..
+oewn-numeric__3.01.00..	pertainym		oewn-number__1.23.00..
+oewn-numerical__3.00.00..	antonym		oewn-verbal__3.00.00..
+oewn-numerical__3.01.00..	pertainym		oewn-number__1.23.00..
+oewn-numerically__4.02.00..	pertainym		oewn-numerical__5.00.00.quantitative.00
+oewn-numerological__3.01.00..	derivation		oewn-numerology__1.09.00..
+oewn-numerological__3.01.00..	pertainym		oewn-numerology__1.09.00..
+oewn-numerologist__1.18.00..	derivation		oewn-numerology__1.09.00..
+oewn-numerosity__1.07.00..	derivation		oewn-numerous__5.00.00.many.00
+oewn-numerous__5.00.00.many.00	derivation		oewn-numerousness__1.07.00..
+oewn-numinous__3.01.00..	pertainym		oewn-numen__1.18.00..
+oewn-numismatics__1.04.00..	derivation		oewn-numismatist__1.18.00..
+oewn-numismatologist__1.18.00..	derivation		oewn-numismatology__1.04.00..
+oewn-nuprin__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-nuptial__3.01.00..	pertainym		oewn-wedding__1.11.00..
+oewn-nurse__1.18.00..	derivation		oewn-nurse__2.29.00..
+oewn-nurse__1.18.00..	derivation		oewn-nurse__2.41.00..
+oewn-nurse__1.18.01..	derivation		oewn-nurse__2.34.00..
+oewn-nurse__2.29.00..	derivation		oewn-nursing__1.04.00..
+oewn-nurse__2.29.00..	other	agent	oewn-nurse__1.18.00..
+oewn-nurse__2.34.00..	derivation		oewn-nursery__1.06.01..
+oewn-nurse__2.34.00..	derivation		oewn-nursing__1.04.01..
+oewn-nurse__2.34.00..	other	agent	oewn-nurse__1.18.01..
+oewn-nurse__2.41.00..	derivation		oewn-nursing__1.04.00..
+oewn-nurse__2.41.00..	derivation		oewn-nursing__1.14.00..
+oewn-nurse__2.41.00..	other	agent	oewn-nurse__1.18.00..
+oewn-nurse__2.41.03..	derivation		oewn-nurser__1.18.00..
+oewn-nurse__2.41.03..	other	agent	oewn-nurser__1.18.00..
+oewn-nurtural__5.00.00.noninheritable.00	derivation		oewn-nurture__1.04.00..
+oewn-nurturance__1.04.00..	derivation		oewn-nurture__2.34.00..
+oewn-nurture__1.04.00..	derivation		oewn-nurture__2.32.00..
+oewn-nurture__1.04.00..	derivation		oewn-nurture__2.41.00..
+oewn-nurture__1.07.00..	derivation		oewn-nurture__2.32.00..
+oewn-nurture__1.07.00..	derivation		oewn-nurture__2.41.00..
+oewn-nurture__2.32.00..	other	event	oewn-nurture__1.04.00..
+oewn-nurture__2.32.00..	other	property	oewn-nurture__1.07.00..
+oewn-nurture__2.34.00..	other	uses	oewn-nurturance__1.04.00..
+oewn-nurture__2.41.00..	other	event	oewn-nurture__1.04.00..
+oewn-nurture__2.41.00..	other	property	oewn-nurture__1.07.00..
+oewn-nut__1.20.00..	derivation		oewn-nut__2.35.00..
+oewn-nut__1.20.00..	derivation		oewn-nutty__5.00.00.tasty.00
+oewn-nut__2.35.00..	other	undergoer	oewn-nut__1.20.00..
+oewn-nutate__2.38.00..	derivation		oewn-nutation__1.04.00..
+oewn-nutate__2.38.00..	other	event	oewn-nutation__1.04.00..
+oewn-nutrient__1.03.00..	derivation		oewn-nutrient__5.00.00.wholesome.00
+oewn-nutrient__1.03.00..	derivation		oewn-nutrify__2.34.00..
+oewn-nutrify__2.34.00..	derivation		oewn-nutrition__1.22.00..
+oewn-nutrify__2.34.00..	other	event	oewn-nutrition__1.22.00..
+oewn-nutrify__2.34.00..	other	uses	oewn-nutrient__1.03.00..
+oewn-nutrition__1.09.00..	derivation		oewn-nutritional__3.01.00..
+oewn-nutrition__1.09.00..	derivation		oewn-nutritionary__3.01.00..
+oewn-nutrition__1.09.00..	derivation		oewn-nutritionist__1.18.00..
+oewn-nutrition__1.13.00..	derivation		oewn-nutritional__3.01.00..
+oewn-nutrition__1.13.00..	derivation		oewn-nutritionary__3.01.00..
+oewn-nutrition__1.13.00..	derivation		oewn-nutritionist__1.18.00..
+oewn-nutrition__1.13.00..	derivation		oewn-nutritious__5.00.00.wholesome.00
+oewn-nutrition__1.22.00..	derivation		oewn-nutritional__3.01.00..
+oewn-nutrition__1.22.00..	derivation		oewn-nutritionary__3.01.00..
+oewn-nutrition__1.22.00..	derivation		oewn-nutritionist__1.18.00..
+oewn-nutrition__1.22.00..	derivation		oewn-nutritious__5.00.00.wholesome.00
+oewn-nutritional__3.01.00..	pertainym		oewn-nutrition__1.22.00..
+oewn-nutritionally__4.02.00..	pertainym		oewn-nutritional__3.01.00..
+oewn-nutritionary__3.01.00..	pertainym		oewn-nutrition__1.22.00..
+oewn-nutritious__5.00.00.wholesome.00	derivation		oewn-nutritiousness__1.07.00..
+oewn-nutritive__5.00.00.wholesome.00	derivation		oewn-nutritiveness__1.07.00..
+oewn-nuttily__4.02.00..	pertainym		oewn-nutty__5.00.00.insane.00
+oewn-nydrazid__1.06.00..	exemplifies		oewn-trade_name__1.10.00..
+oewn-nymphomania__1.12.00..	derivation		oewn-nymphomaniacal__5.00.00.neurotic.00
+oewn-nymphomaniac__1.18.00..	derivation		oewn-nymphomaniac__5.00.00.neurotic.00
+oewn-nystan__1.06.00..	exemplifies		oewn-trade_name__1.10.00..

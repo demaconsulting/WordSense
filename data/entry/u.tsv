@@ -1,0 +1,3300 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-underbid-n	underbid	n	0	1	1	dema
+dema-undercount-n	undercount	n	0	1	1	dema
+dema-undercount-v	undercount	v	0	1	1	dema
+dema-underset-n	underset	n	0	1	1	dema
+dema-underset-v	underset	v	0	1	1	dema
+dema-undershoot-n	undershoot	n	0	1	1	dema
+dema-underspend-n	underspend	n	0	1	1	dema
+dema-underuse-n	underuse	n	0	1	1	dema
+dema-underuse-v	underuse	v	0	1	1	dema
+dema-unpeople-n	unpeople	n	0	1	1	dema
+dema-unpeople-v	unpeople	v	0	1	1	dema
+dema-upsetting-n	upsetting	n	0	1	1	dema
+dema-upturn-v	upturn	v	0	1	1	dema
+oewn-U-boat-n	U-boat	n	0	1	1	oewn
+oewn-U-n	U	n	0	1	1	oewn
+oewn-U-shaped-a	U-shaped	a	0	1	1	oewn
+oewn-U.S.-n	U.S.	n	0	1	1	oewn
+oewn-U.S._Congress-n	U.S. Congress	n	0	2	2	oewn
+oewn-U.S._House-n	U.S. House	n	0	2	2	oewn
+oewn-U.S._House_of_Representatives-n	U.S. House of Representatives	n	0	4	2	oewn
+oewn-U.S._Senate-n	U.S. Senate	n	0	2	2	oewn
+oewn-U.S._government-n	U.S. government	n	0	2	2	oewn
+oewn-U._S._Air_Force-n	U. S. Air Force	n	0	4	4	oewn
+oewn-U._S._Army-n	U. S. Army	n	0	3	3	oewn
+oewn-U._S._Army_Special_Forces-n	U. S. Army Special Forces	n	0	5	5	oewn
+oewn-U._S._Coast_Guard-n	U. S. Coast Guard	n	0	4	4	oewn
+oewn-U._S._Code-n	U. S. Code	n	0	3	3	oewn
+oewn-U308-n	U308	n	0	1	1	oewn
+oewn-UFO-n	UFO	n	0	1	1	oewn
+oewn-UHF-n	UHF	n	0	1	1	oewn
+oewn-UK_English-n	UK English	n	0	2	2	oewn
+oewn-UN-n	UN	n	0	1	1	oewn
+oewn-UNESCO-n	UNESCO	n	0	1	1	oewn
+oewn-UNICEF-n	UNICEF	n	0	1	1	oewn
+oewn-UNIX-n	UNIX	n	0	1	1	oewn
+oewn-UNIX_guru-n	UNIX guru	n	0	2	2	oewn
+oewn-UNIX_operating_system-n	UNIX operating system	n	0	3	3	oewn
+oewn-UNIX_system-n	UNIX system	n	0	2	2	oewn
+oewn-UN_agency-n	UN agency	n	0	2	2	oewn
+oewn-UPPP-n	UPPP	n	0	1	1	oewn
+oewn-URL-n	URL	n	0	1	1	oewn
+oewn-USA-n	USA	n	0	1	1	oewn
+oewn-USAF-n	USAF	n	0	1	1	oewn
+oewn-USCB-n	USCB	n	0	1	1	oewn
+oewn-USDA-n	USDA	n	0	1	1	oewn
+oewn-USMC-n	USMC	n	0	1	1	oewn
+oewn-USN-n	USN	n	0	1	1	oewn
+oewn-USPS-n	USPS	n	0	1	1	oewn
+oewn-USSS-n	USSS	n	0	1	1	oewn
+oewn-US_Air_Force-n	US Air Force	n	0	3	3	oewn
+oewn-US_Air_Force_Academy-n	US Air Force Academy	n	0	4	4	oewn
+oewn-US_Army-n	US Army	n	0	2	2	oewn
+oewn-US_Border_Patrol-n	US Border Patrol	n	0	3	3	oewn
+oewn-US_Cabinet-n	US Cabinet	n	0	2	2	oewn
+oewn-US_Coast_Guard-n	US Coast Guard	n	0	3	3	oewn
+oewn-US_Congress-n	US Congress	n	0	2	2	oewn
+oewn-US_English_orthography-n	US English orthography	n	0	3	3	oewn
+oewn-US_English_spelling-n	US English spelling	n	0	3	3	oewn
+oewn-US_Fish_and_Wildlife_Service-n	US Fish and Wildlife Service	n	0	5	5	oewn
+oewn-US_Government-n	US Government	n	0	2	2	oewn
+oewn-US_Government_Printing_Office-n	US Government Printing Office	n	0	4	4	oewn
+oewn-US_House-n	US House	n	0	2	2	oewn
+oewn-US_House_of_Representatives-n	US House of Representatives	n	0	4	2	oewn
+oewn-US_Marine_Corps-n	US Marine Corps	n	0	3	3	oewn
+oewn-US_Marshals_Service-n	US Marshals Service	n	0	3	3	oewn
+oewn-US_Military_Academy-n	US Military Academy	n	0	3	3	oewn
+oewn-US_Naval_Academy-n	US Naval Academy	n	0	3	3	oewn
+oewn-US_Navy-n	US Navy	n	0	2	2	oewn
+oewn-US_Post_Office-n	US Post Office	n	0	3	3	oewn
+oewn-US_Postal_Inspection_Service-n	US Postal Inspection Service	n	0	4	4	oewn
+oewn-US_Postal_Service-n	US Postal Service	n	0	3	3	oewn
+oewn-US_Secret_Service-n	US Secret Service	n	0	3	3	oewn
+oewn-US_Senate-n	US Senate	n	0	2	2	oewn
+oewn-US_Trade_Representative-n	US Trade Representative	n	0	3	3	oewn
+oewn-US_attorney_general-n	US attorney general	n	0	3	3	oewn
+oewn-US_spelling-n	US spelling	n	0	2	2	oewn
+oewn-UT-n	UT	n	0	1	1	oewn
+oewn-UT1-n	UT1	n	0	1	1	oewn
+oewn-UTC-n	UTC	n	0	1	1	oewn
+oewn-UTN-n	UTN	n	0	1	1	oewn
+oewn-UV-n	UV	n	0	1	1	oewn
+oewn-Ubermensch-n	Ubermensch	n	0	1	1	oewn
+oewn-Ubykh-n	Ubykh	n	0	1	1	oewn
+oewn-Ubykh_language-n	Ubykh language	n	0	2	2	oewn
+oewn-Udmurt-n	Udmurt	n	0	1	1	oewn
+oewn-Udmurt_language-n	Udmurt language	n	0	2	2	oewn
+oewn-Ugandan-a	Ugandan	a	0	1	1	oewn
+oewn-Ugandan-n	Ugandan	n	0	1	1	oewn
+oewn-Ugandan_monetary_unit-n	Ugandan monetary unit	n	0	3	3	oewn
+oewn-Ugandan_shilling-n	Ugandan shilling	n	0	2	2	oewn
+oewn-Ugaritic-n	Ugaritic	n	0	1	1	oewn
+oewn-Ugaritic_language-n	Ugaritic language	n	0	2	2	oewn
+oewn-Ugrian-n	Ugrian	n	0	1	1	oewn
+oewn-Ugric-n	Ugric	n	0	1	1	oewn
+oewn-Uighur-n	Uighur	n	0	1	1	oewn
+oewn-Uighur_language-n	Uighur language	n	0	2	2	oewn
+oewn-Uigur-n	Uigur	n	0	1	1	oewn
+oewn-Uigur_language-n	Uigur language	n	0	2	2	oewn
+oewn-Ukrainian-a	Ukrainian	a	0	1	1	oewn
+oewn-Ukrainian-n	Ukrainian	n	0	1	1	oewn
+oewn-Ukrainian_language-n	Ukrainian language	n	0	2	2	oewn
+oewn-Ukrainian_monetary_unit-n	Ukrainian monetary unit	n	0	3	3	oewn
+oewn-Ulex_europaeus-n	Ulex europaeus	n	0	2	2	oewn
+oewn-Ull-n	Ull	n	0	1	1	oewn
+oewn-Ullr-n	Ullr	n	0	1	1	oewn
+oewn-Ulmus_alata-n	Ulmus alata	n	0	2	2	oewn
+oewn-Ulmus_americana-n	Ulmus americana	n	0	2	2	oewn
+oewn-Ulmus_campestris_sarniensis-n	Ulmus campestris sarniensis	n	0	3	3	oewn
+oewn-Ulmus_campestris_wheatleyi-n	Ulmus campestris wheatleyi	n	0	3	3	oewn
+oewn-Ulmus_carpinifolia-n	Ulmus carpinifolia	n	0	2	2	oewn
+oewn-Ulmus_crassifolia-n	Ulmus crassifolia	n	0	2	2	oewn
+oewn-Ulmus_glabra-n	Ulmus glabra	n	0	2	2	oewn
+oewn-Ulmus_hollandica-n	Ulmus hollandica	n	0	2	2	oewn
+oewn-Ulmus_hollandica_vegetata-n	Ulmus hollandica vegetata	n	0	3	3	oewn
+oewn-Ulmus_laevis-n	Ulmus laevis	n	0	2	2	oewn
+oewn-Ulmus_parvifolia-n	Ulmus parvifolia	n	0	2	2	oewn
+oewn-Ulmus_procera-n	Ulmus procera	n	0	2	2	oewn
+oewn-Ulmus_pumila-n	Ulmus pumila	n	0	2	2	oewn
+oewn-Ulmus_rubra-n	Ulmus rubra	n	0	2	2	oewn
+oewn-Ulmus_sarniensis-n	Ulmus sarniensis	n	0	2	2	oewn
+oewn-Ulmus_serotina-n	Ulmus serotina	n	0	2	2	oewn
+oewn-Ulmus_thomasii-n	Ulmus thomasii	n	0	2	2	oewn
+oewn-Ultracef-n	Ultracef	n	0	1	1	oewn
+oewn-Ultraism-n	Ultraism	n	0	1	1	oewn
+oewn-Ultrasuede-n	Ultrasuede	n	0	1	1	oewn
+oewn-Uma_notata-n	Uma notata	n	0	2	2	oewn
+oewn-Umayyad-n	Umayyad	n	0	1	1	oewn
+oewn-Umbellularia_californica-n	Umbellularia californica	n	0	2	2	oewn
+oewn-Umbrian-n	Umbrian	n	0	1	1	oewn
+oewn-Umbrian_language-n	Umbrian language	n	0	2	2	oewn
+oewn-Umbrina_roncador-n	Umbrina roncador	n	0	2	2	oewn
+oewn-Umbundu-n	Umbundu	n	0	1	1	oewn
+oewn-Umbundu_language-n	Umbundu language	n	0	2	2	oewn
+oewn-Umma-n	Umma	n	0	1	1	oewn
+oewn-Umma_Tameer-e-Nau-n	Umma Tameer-e-Nau	n	0	2	2	oewn
+oewn-Ummah-n	Ummah	n	0	1	1	oewn
+oewn-Unbrako_key-n	Unbrako key	n	0	2	2	oewn
+oewn-Unbrako_wrench-n	Unbrako wrench	n	0	2	2	oewn
+oewn-Uncle_Tom-n	Uncle Tom	n	0	2	2	oewn
+oewn-Unguiculata-n	Unguiculata	n	0	1	1	oewn
+oewn-Ungulata-n	Ungulata	n	0	1	1	oewn
+oewn-Uniat-n	Uniat	n	0	1	1	oewn
+oewn-Uniat_Church-n	Uniat Church	n	0	2	2	oewn
+oewn-Uniate-a	Uniate	a	0	1	1	oewn
+oewn-Uniate-n	Uniate	n	0	1	1	oewn
+oewn-Uniate_Christian-n	Uniate Christian	n	0	2	2	oewn
+oewn-Uniate_Church-n	Uniate Church	n	0	2	2	oewn
+oewn-Unification_Church-n	Unification Church	n	0	2	2	oewn
+oewn-Union-a	Union	a	0	1	1	oewn
+oewn-Union_Army-n	Union Army	n	0	2	2	oewn
+oewn-Union_Jack-n	Union Jack	n	0	2	2	oewn
+oewn-Union_flag-n	Union flag	n	0	2	2	oewn
+oewn-Union_soldier-n	Union soldier	n	0	2	2	oewn
+oewn-Unitarian-a	Unitarian	a	0	1	1	oewn
+oewn-Unitarian-n	Unitarian	n	0	1	1	oewn
+oewn-Unitarian_Church-n	Unitarian Church	n	0	2	2	oewn
+oewn-Unitarianism-n	Unitarianism	n	0	1	1	oewn
+oewn-United_Arab_Emirate_dirham-n	United Arab Emirate dirham	n	0	4	4	oewn
+oewn-United_Arab_Emirate_monetary_unit-n	United Arab Emirate monetary unit	n	0	5	5	oewn
+oewn-United_Church_of_Christ-n	United Church of Christ	n	0	4	2	oewn
+oewn-United_Front-n	United Front	n	0	2	2	oewn
+oewn-United_Methodist_Church-n	United Methodist Church	n	0	3	3	oewn
+oewn-United_Mine_Workers-n	United Mine Workers	n	0	3	3	oewn
+oewn-United_Mine_Workers_of_America-n	United Mine Workers of America	n	0	5	3	oewn
+oewn-United_Nations-n	United Nations	n	0	2	2	oewn
+oewn-United_Nations_Children-ap-s_Fund-n	United Nations Children's Fund	n	0	4	4	oewn
+oewn-United_Nations_Crime_Prevention_and_Criminal_Justice-n	United Nations Crime Prevention and Criminal Justice	n	0	7	7	oewn
+oewn-United_Nations_Day-n	United Nations Day	n	0	3	3	oewn
+oewn-United_Nations_Educational_Scientific_and_Cultural_Organization-n	United Nations Educational Scientific and Cultural Organization	n	0	7	7	oewn
+oewn-United_Nations_International_Children-ap-s_Emergency_Fund-n	United Nations International Children's Emergency Fund	n	0	6	6	oewn
+oewn-United_Nations_Office_for_Drug_Control_and_Crime_Prevention-n	United Nations Office for Drug Control and Crime Prevention	n	0	9	3	oewn
+oewn-United_Nations_Secretariat-n	United Nations Secretariat	n	0	3	3	oewn
+oewn-United_Nations_agency-n	United Nations agency	n	0	3	3	oewn
+oewn-United_Society_of_Believers_in_Christ-ap-s_Second_Appearing-n	United Society of Believers in Christ's Second Appearing	n	0	8	2	oewn
+oewn-United_States-n	United States	n	0	2	2	oewn
+oewn-United_States_Air_Force-n	United States Air Force	n	0	4	4	oewn
+oewn-United_States_Air_Force_Academy-n	United States Air Force Academy	n	0	5	5	oewn
+oewn-United_States_Army-n	United States Army	n	0	3	3	oewn
+oewn-United_States_Army_Criminal_Investigation_Command-n	United States Army Criminal Investigation Command	n	0	6	6	oewn
+oewn-United_States_Army_Rangers-n	United States Army Rangers	n	0	4	4	oewn
+oewn-United_States_Army_Special_Forces-n	United States Army Special Forces	n	0	5	5	oewn
+oewn-United_States_Border_Patrol-n	United States Border Patrol	n	0	4	4	oewn
+oewn-United_States_Cabinet-n	United States Cabinet	n	0	3	3	oewn
+oewn-United_States_Coast_Guard-n	United States Coast Guard	n	0	4	4	oewn
+oewn-United_States_Code-n	United States Code	n	0	3	3	oewn
+oewn-United_States_Congress-n	United States Congress	n	0	3	3	oewn
+oewn-United_States_Customary_System-n	United States Customary System	n	0	4	4	oewn
+oewn-United_States_Department_of_Defense-n	United States Department of Defense	n	0	5	3	oewn
+oewn-United_States_Department_of_State-n	United States Department of State	n	0	5	3	oewn
+oewn-United_States_Fish_and_Wildlife_Service-n	United States Fish and Wildlife Service	n	0	6	6	oewn
+oewn-United_States_Government_Accounting_Office-n	United States Government Accounting Office	n	0	5	5	oewn
+oewn-United_States_Government_Printing_Office-n	United States Government Printing Office	n	0	5	5	oewn
+oewn-United_States_House_of_Representatives-n	United States House of Representatives	n	0	5	3	oewn
+oewn-United_States_Intelligence_Community-n	United States Intelligence Community	n	0	4	4	oewn
+oewn-United_States_Marine_Corps-n	United States Marine Corps	n	0	4	4	oewn
+oewn-United_States_Marines-n	United States Marines	n	0	3	3	oewn
+oewn-United_States_Marshals_Service-n	United States Marshals Service	n	0	4	4	oewn
+oewn-United_States_Military_Academy-n	United States Military Academy	n	0	4	4	oewn
+oewn-United_States_Naval_Academy-n	United States Naval Academy	n	0	4	4	oewn
+oewn-United_States_Navy-n	United States Navy	n	0	3	3	oewn
+oewn-United_States_Post_Office-n	United States Post Office	n	0	4	4	oewn
+oewn-United_States_Postal_Inspection_Service-n	United States Postal Inspection Service	n	0	5	5	oewn
+oewn-United_States_Postal_Service-n	United States Postal Service	n	0	4	4	oewn
+oewn-United_States_Public_Health_Service-n	United States Public Health Service	n	0	5	5	oewn
+oewn-United_States_Secret_Service-n	United States Secret Service	n	0	4	4	oewn
+oewn-United_States_Senate-n	United States Senate	n	0	3	3	oewn
+oewn-United_States_Supreme_Court-n	United States Supreme Court	n	0	4	4	oewn
+oewn-United_States_Trade_Representative-n	United States Trade Representative	n	0	4	4	oewn
+oewn-United_States_Treasury-n	United States Treasury	n	0	3	3	oewn
+oewn-United_States_attorney_general-n	United States attorney general	n	0	4	4	oewn
+oewn-United_States_dollar-n	United States dollar	n	0	3	3	oewn
+oewn-United_States_dry_unit-n	United States dry unit	n	0	4	4	oewn
+oewn-United_States_government-n	United States government	n	0	3	3	oewn
+oewn-United_States_intelligence_agency-n	United States intelligence agency	n	0	4	4	oewn
+oewn-United_States_liquid_unit-n	United States liquid unit	n	0	4	4	oewn
+oewn-United_States_president-n	United States president	n	0	3	3	oewn
+oewn-Universal_Product_Code-n	Universal Product Code	n	0	3	3	oewn
+oewn-Unknown_Soldier-n	Unknown Soldier	n	0	2	2	oewn
+oewn-Unq-n	Unq	n	0	1	1	oewn
+oewn-Upupa_epops-n	Upupa epops	n	0	2	2	oewn
+oewn-Ural-Altaic-n	Ural-Altaic	n	0	1	1	oewn
+oewn-Uralic-n	Uralic	n	0	1	1	oewn
+oewn-Uralic_language-n	Uralic language	n	0	2	2	oewn
+oewn-Urdu-n	Urdu	n	0	1	1	oewn
+oewn-Urdu_language-n	Urdu language	n	0	2	2	oewn
+oewn-Urex-n	Urex	n	0	1	1	oewn
+oewn-Urginea_maritima-n	Urginea maritima	n	0	2	2	oewn
+oewn-Uria_aalge-n	Uria aalge	n	0	2	2	oewn
+oewn-Uria_lomvia-n	Uria lomvia	n	0	2	2	oewn
+oewn-Uriah-n	Uriah	n	0	1	1	oewn
+oewn-Urim_and_Thummim-n	Urim and Thummim	n	0	3	3	oewn
+oewn-Urnula_craterium-n	Urnula craterium	n	0	2	2	oewn
+oewn-Urocyon_cinereoargenteus-n	Urocyon cinereoargenteus	n	0	2	2	oewn
+oewn-Urocystis_cepulae-n	Urocystis cepulae	n	0	2	2	oewn
+oewn-Urocystis_tritici-n	Urocystis tritici	n	0	2	2	oewn
+oewn-Uropsilus_soricipes-n	Uropsilus soricipes	n	0	2	2	oewn
+oewn-Urosaurus_ornatus-n	Urosaurus ornatus	n	0	2	2	oewn
+oewn-Ursulines-n	Ursulines	n	0	1	1	oewn
+oewn-Ursulines_of_Mary_Immaculate_Virgin_of_Gandino-n	Ursulines of Mary Immaculate Virgin of Gandino	n	0	7	1	oewn
+oewn-Ursulines_of_the_Roman_Union-n	Ursulines of the Roman Union	n	0	5	1	oewn
+oewn-Ursus_americanus-n	Ursus americanus	n	0	2	2	oewn
+oewn-Ursus_arctos-n	Ursus arctos	n	0	2	2	oewn
+oewn-Ursus_arctos_horribilis-n	Ursus arctos horribilis	n	0	3	3	oewn
+oewn-Ursus_arctos_middendorffi-n	Ursus arctos middendorffi	n	0	3	3	oewn
+oewn-Ursus_arctos_syriacus-n	Ursus arctos syriacus	n	0	3	3	oewn
+oewn-Ursus_horribilis-n	Ursus horribilis	n	0	2	2	oewn
+oewn-Ursus_maritimus-n	Ursus maritimus	n	0	2	2	oewn
+oewn-Ursus_middendorffi-n	Ursus middendorffi	n	0	2	2	oewn
+oewn-Ursus_thibetanus-n	Ursus thibetanus	n	0	2	2	oewn
+oewn-Ursus_ursinus-n	Ursus ursinus	n	0	2	2	oewn
+oewn-Urtica_dioica-n	Urtica dioica	n	0	2	2	oewn
+oewn-Urtica_pipulifera-n	Urtica pipulifera	n	0	2	2	oewn
+oewn-Uruguay_potato-n	Uruguay potato	n	0	2	2	oewn
+oewn-Uruguay_potato_vine-n	Uruguay potato vine	n	0	3	3	oewn
+oewn-Uruguayan-a	Uruguayan	a	0	1	1	oewn
+oewn-Uruguayan-n	Uruguayan	n	0	1	1	oewn
+oewn-Uruguayan_monetary_unit-n	Uruguayan monetary unit	n	0	3	3	oewn
+oewn-Uruguayan_peso-n	Uruguayan peso	n	0	2	2	oewn
+oewn-Usbeg-n	Usbeg	n	0	1	1	oewn
+oewn-Usbeg_language-n	Usbeg language	n	0	2	2	oewn
+oewn-Usbek-n	Usbek	n	0	1	1	oewn
+oewn-Usbek_language-n	Usbek language	n	0	2	2	oewn
+oewn-Usnea_barbata-n	Usnea barbata	n	0	2	2	oewn
+oewn-Ustilaginoidea_virens-n	Ustilaginoidea virens	n	0	2	2	oewn
+oewn-Ustilago_maydis-n	Ustilago maydis	n	0	2	2	oewn
+oewn-Usuli-n	Usuli	n	0	1	1	oewn
+oewn-Uta_stansburiana-n	Uta stansburiana	n	0	2	2	oewn
+oewn-Utahan-n	Utahan	n	0	1	1	oewn
+oewn-Ute-n	Ute	n	0	1	1	oewn
+oewn-Ute_language-n	Ute language	n	0	2	2	oewn
+oewn-Uto-Aztecan-n	Uto-Aztecan	n	0	1	1	oewn
+oewn-Uto-Aztecan_language-n	Uto-Aztecan language	n	0	2	2	oewn
+oewn-Utopia-n	Utopia	n	0	1	1	oewn
+oewn-Utopian-a	Utopian	a	0	1	1	oewn
+oewn-Utopian-n	Utopian	n	0	1	1	oewn
+oewn-Utopianism-n	Utopianism	n	0	1	1	oewn
+oewn-Utraquism-n	Utraquism	n	0	1	1	oewn
+oewn-Uub-n	Uub	n	0	1	1	oewn
+oewn-Uuh-n	Uuh	n	0	1	1	oewn
+oewn-Uup-n	Uup	n	0	1	1	oewn
+oewn-Uuq-n	Uuq	n	0	1	1	oewn
+oewn-Uut-n	Uut	n	0	1	1	oewn
+oewn-Uvularia_grandiflora-n	Uvularia grandiflora	n	0	2	2	oewn
+oewn-Uygur-n	Uygur	n	0	1	1	oewn
+oewn-Uygur_language-n	Uygur language	n	0	2	2	oewn
+oewn-Uzbak-n	Uzbak	n	0	1	1	oewn
+oewn-Uzbak_language-n	Uzbak language	n	0	2	2	oewn
+oewn-Uzbeg-n	Uzbeg	n	0	1	1	oewn
+oewn-Uzbeg_language-n	Uzbeg language	n	0	2	2	oewn
+oewn-Uzbek-n	Uzbek	n	0	1	1	oewn
+oewn-Uzbek_language-n	Uzbek language	n	0	2	2	oewn
+oewn-Uzbekistani-a	Uzbekistani	a	0	1	1	oewn
+oewn-Uzbekistani_monetary_unit-n	Uzbekistani monetary unit	n	0	3	3	oewn
+oewn-Uzi-n	Uzi	n	0	1	1	oewn
+oewn-u-a	u	a	0	1	1	oewn
+oewn-u-drive-n	u-drive	n	0	1	1	oewn
+oewn-u-n	u	n	0	1	1	oewn
+oewn-u-turn-n	u-turn	n	0	1	1	oewn
+oewn-uakari-n	uakari	n	0	1	1	oewn
+oewn-ubiety-n	ubiety	n	0	1	1	oewn
+oewn-ubiquinone-n	ubiquinone	n	0	1	1	oewn
+oewn-ubiquitous-a	ubiquitous	a	0	1	1	oewn
+oewn-ubiquitousness-n	ubiquitousness	n	0	1	1	oewn
+oewn-ubiquity-n	ubiquity	n	0	1	1	oewn
+oewn-udder-n	udder	n	0	1	1	oewn
+oewn-udometer-n	udometer	n	0	1	1	oewn
+oewn-ugli-n	ugli	n	0	1	1	oewn
+oewn-ugli_fruit-n	ugli fruit	n	0	2	2	oewn
+oewn-uglify-v	uglify	v	0	1	1	oewn
+oewn-ugliness-n	ugliness	n	0	1	1	oewn
+oewn-ugly-a	ugly	a	0	1	1	oewn
+oewn-ugly_ass-a	ugly ass	a	0	2	2	oewn
+oewn-ugly_duckling-n	ugly duckling	n	0	2	2	oewn
+oewn-uintathere-n	uintathere	n	0	1	1	oewn
+oewn-ukase-n	ukase	n	0	1	1	oewn
+oewn-uke-n	uke	n	0	1	1	oewn
+oewn-ukulele-n	ukulele	n	0	1	1	oewn
+oewn-ulalgia-n	ulalgia	n	0	1	1	oewn
+oewn-ulama-n	ulama	n	0	1	1	oewn
+oewn-ulatrophia-n	ulatrophia	n	0	1	1	oewn
+oewn-ulcer-n	ulcer	n	0	1	1	oewn
+oewn-ulcer_diet-n	ulcer diet	n	0	2	2	oewn
+oewn-ulcerate-v	ulcerate	v	0	1	1	oewn
+oewn-ulcerated-a	ulcerated	a	0	1	1	oewn
+oewn-ulceration-n	ulceration	n	0	1	1	oewn
+oewn-ulcerative-a	ulcerative	a	0	1	1	oewn
+oewn-ulcerative_colitis-n	ulcerative colitis	n	0	2	2	oewn
+oewn-ulcerous-a	ulcerous	a	0	1	1	oewn
+oewn-ulema-n	ulema	n	0	1	1	oewn
+oewn-ulemorrhagia-n	ulemorrhagia	n	0	1	1	oewn
+oewn-ulitis-n	ulitis	n	0	1	1	oewn
+oewn-ullage-n	ullage	n	0	1	1	oewn
+oewn-ulna-n	ulna	n	0	1	1	oewn
+oewn-ulnar-a	ulnar	a	0	1	1	oewn
+oewn-ulnar_artery-n	ulnar artery	n	0	2	2	oewn
+oewn-ulnar_nerve-n	ulnar nerve	n	0	2	2	oewn
+oewn-ulnar_vein-n	ulnar vein	n	0	2	2	oewn
+oewn-ulster-n	ulster	n	0	1	1	oewn
+oewn-ult-a	ult	a	0	1	1	oewn
+oewn-ulterior-a	ulterior	a	0	1	1	oewn
+oewn-ulteriority-n	ulteriority	n	0	1	1	oewn
+oewn-ulteriorly-r	ulteriorly	r	0	1	1	oewn
+oewn-ultima-n	ultima	n	0	1	1	oewn
+oewn-ultimacy-n	ultimacy	n	0	1	1	oewn
+oewn-ultimate-a	ultimate	a	0	1	1	oewn
+oewn-ultimate-n	ultimate	n	0	1	1	oewn
+oewn-ultimate_frisbee-n	ultimate frisbee	n	0	2	2	oewn
+oewn-ultimately-r	ultimately	r	0	1	1	oewn
+oewn-ultimateness-n	ultimateness	n	0	1	1	oewn
+oewn-ultimatum-n	ultimatum	n	0	1	1	oewn
+oewn-ultimo-a	ultimo	a	0	1	1	oewn
+oewn-ultra-a	ultra	a	0	1	1	oewn
+oewn-ultra-lightweight_concrete-n	ultra-lightweight concrete	n	0	2	2	oewn
+oewn-ultra_vires-a	ultra vires	a	0	2	2	oewn
+oewn-ultra_vires-r	ultra vires	r	0	2	2	oewn
+oewn-ultracentrifugation-n	ultracentrifugation	n	0	1	1	oewn
+oewn-ultracentrifuge-n	ultracentrifuge	n	0	1	1	oewn
+oewn-ultracentrifuge-v	ultracentrifuge	v	0	1	1	oewn
+oewn-ultraconservative-a	ultraconservative	a	0	1	1	oewn
+oewn-ultraconservative-n	ultraconservative	n	0	1	1	oewn
+oewn-ultrahigh_frequency-n	ultrahigh frequency	n	0	2	2	oewn
+oewn-ultramarine-a	ultramarine	a	0	1	1	oewn
+oewn-ultramarine-n	ultramarine	n	0	1	1	oewn
+oewn-ultramarine_blue-n	ultramarine blue	n	0	2	2	oewn
+oewn-ultramicroscope-n	ultramicroscope	n	0	1	1	oewn
+oewn-ultramicroscopic-a	ultramicroscopic	a	0	1	1	oewn
+oewn-ultramodern-a	ultramodern	a	0	1	1	oewn
+oewn-ultramodernity-n	ultramodernity	n	0	1	1	oewn
+oewn-ultramontane-a	ultramontane	a	0	1	1	oewn
+oewn-ultramontane-n	ultramontane	n	0	1	1	oewn
+oewn-ultramontanism-n	ultramontanism	n	0	1	1	oewn
+oewn-ultranationalism-n	ultranationalism	n	0	1	1	oewn
+oewn-ultranationalistic-a	ultranationalistic	a	0	1	1	oewn
+oewn-ultrasonic-a	ultrasonic	a	0	1	1	oewn
+oewn-ultrasonic_flaw_detector-n	ultrasonic flaw detector	n	0	3	3	oewn
+oewn-ultrasonic_pulse_analyzer-n	ultrasonic pulse analyzer	n	0	3	3	oewn
+oewn-ultrasonic_pulse_velocity_tester-n	ultrasonic pulse velocity tester	n	0	4	4	oewn
+oewn-ultrasonically-r	ultrasonically	r	0	1	1	oewn
+oewn-ultrasonography-n	ultrasonography	n	0	1	1	oewn
+oewn-ultrasound-n	ultrasound	n	0	1	1	oewn
+oewn-ultrasound_scanner-n	ultrasound scanner	n	0	2	2	oewn
+oewn-ultraviolet-a	ultraviolet	a	0	1	1	oewn
+oewn-ultraviolet-n	ultraviolet	n	0	1	1	oewn
+oewn-ultraviolet_illumination-n	ultraviolet illumination	n	0	2	2	oewn
+oewn-ultraviolet_lamp-n	ultraviolet lamp	n	0	2	2	oewn
+oewn-ultraviolet_light-n	ultraviolet light	n	0	2	2	oewn
+oewn-ultraviolet_radiation-n	ultraviolet radiation	n	0	2	2	oewn
+oewn-ultraviolet_source-n	ultraviolet source	n	0	2	2	oewn
+oewn-ultraviolet_spectrum-n	ultraviolet spectrum	n	0	2	2	oewn
+oewn-ululate-v	ululate	v	0	1	1	oewn
+oewn-ululation-n	ululation	n	0	1	1	oewn
+oewn-umbel-like-a	umbel-like	a	0	1	1	oewn
+oewn-umbel-n	umbel	n	0	1	1	oewn
+oewn-umbellar-a	umbellar	a	0	1	1	oewn
+oewn-umbellate-a	umbellate	a	0	1	1	oewn
+oewn-umbellifer-n	umbellifer	n	0	1	1	oewn
+oewn-umbelliferous-a	umbelliferous	a	0	1	1	oewn
+oewn-umbelliferous_plant-n	umbelliferous plant	n	0	2	2	oewn
+oewn-umbelliform-a	umbelliform	a	0	1	1	oewn
+oewn-umber-a	umber	a	0	1	1	oewn
+oewn-umber-n	umber	n	0	1	1	oewn
+oewn-umbilical-a	umbilical	a	0	1	1	oewn
+oewn-umbilical-n	umbilical	n	0	1	1	oewn
+oewn-umbilical_cord-n	umbilical cord	n	0	2	2	oewn
+oewn-umbilical_hernia-n	umbilical hernia	n	0	2	2	oewn
+oewn-umbilical_vein-n	umbilical vein	n	0	2	2	oewn
+oewn-umbilical_vesicle-n	umbilical vesicle	n	0	2	2	oewn
+oewn-umbilicate-a	umbilicate	a	0	1	1	oewn
+oewn-umbilicus-n	umbilicus	n	0	1	1	oewn
+oewn-umbo-n	umbo	n	0	1	1	oewn
+oewn-umbra-n	umbra	n	0	1	1	oewn
+oewn-umbrage-n	umbrage	n	0	1	1	oewn
+oewn-umbrageous-a	umbrageous	a	0	1	1	oewn
+oewn-umbrella-a	umbrella	a	0	1	1	oewn
+oewn-umbrella-n	umbrella	n	0	1	1	oewn
+oewn-umbrella-shaped-a	umbrella-shaped	a	0	1	1	oewn
+oewn-umbrella_arum-n	umbrella arum	n	0	2	2	oewn
+oewn-umbrella_bird-n	umbrella bird	n	0	2	2	oewn
+oewn-umbrella_fern-n	umbrella fern	n	0	2	2	oewn
+oewn-umbrella_magnolia-n	umbrella magnolia	n	0	2	2	oewn
+oewn-umbrella_pine-n	umbrella pine	n	0	2	2	oewn
+oewn-umbrella_plant-n	umbrella plant	n	0	2	2	oewn
+oewn-umbrella_sedge-n	umbrella sedge	n	0	2	2	oewn
+oewn-umbrella_tent-n	umbrella tent	n	0	2	2	oewn
+oewn-umbrella_tree-n	umbrella tree	n	0	2	2	oewn
+oewn-umbrellalike-a	umbrellalike	a	0	1	1	oewn
+oewn-umbrellawort-n	umbrellawort	n	0	1	1	oewn
+oewn-umlaut-n	umlaut	n	0	1	1	oewn
+oewn-ump-n	ump	n	0	1	1	oewn
+oewn-umpirage-n	umpirage	n	0	1	1	oewn
+oewn-umpire-n	umpire	n	0	1	1	oewn
+oewn-umpire-v	umpire	v	0	1	1	oewn
+oewn-umpteen-a	umpteen	a	0	1	1	oewn
+oewn-umpteenth-a	umpteenth	a	0	1	1	oewn
+oewn-umptieth-a	umptieth	a	0	1	1	oewn
+oewn-umteen-a	umteen	a	0	1	1	oewn
+oewn-umteenth-a	umteenth	a	0	1	1	oewn
+oewn-un-American-a	un-American	a	0	1	1	oewn
+oewn-un-come-at-able-a	un-come-at-able	a	0	1	1	oewn
+oewn-un-get-at-able-a	un-get-at-able	a	0	1	1	oewn
+oewn-unabashed-a	unabashed	a	0	1	1	oewn
+oewn-unabashedly-r	unabashedly	r	0	1	1	oewn
+oewn-unabated-a	unabated	a	0	1	1	oewn
+oewn-unable-a	unable	a	0	1	1	oewn
+oewn-unabridged-a	unabridged	a	0	1	1	oewn
+oewn-unabridged-n	unabridged	n	0	1	1	oewn
+oewn-unabridged_dictionary-n	unabridged dictionary	n	0	2	2	oewn
+oewn-unabused-a	unabused	a	0	1	1	oewn
+oewn-unaccented-a	unaccented	a	0	1	1	oewn
+oewn-unacceptability-n	unacceptability	n	0	1	1	oewn
+oewn-unacceptable-a	unacceptable	a	0	1	1	oewn
+oewn-unacceptableness-n	unacceptableness	n	0	1	1	oewn
+oewn-unacceptably-r	unacceptably	r	0	1	1	oewn
+oewn-unaccepted-a	unaccepted	a	0	1	1	oewn
+oewn-unaccessible-a	unaccessible	a	0	1	1	oewn
+oewn-unaccommodating-a	unaccommodating	a	0	1	1	oewn
+oewn-unaccompanied-a	unaccompanied	a	0	1	1	oewn
+oewn-unaccompanied-r	unaccompanied	r	0	1	1	oewn
+oewn-unaccountable-a	unaccountable	a	0	1	1	oewn
+oewn-unaccountably-r	unaccountably	r	0	1	1	oewn
+oewn-unaccredited-a	unaccredited	a	0	1	1	oewn
+oewn-unaccustomed-a	unaccustomed	a	0	1	1	oewn
+oewn-unaccustomed_to-a	unaccustomed to	a	0	2	2	oewn
+oewn-unachievable-a	unachievable	a	0	1	1	oewn
+oewn-unachievably-r	unachievably	r	0	1	1	oewn
+oewn-unacknowledged-a	unacknowledged	a	0	1	1	oewn
+oewn-unacquainted-a	unacquainted	a	0	1	1	oewn
+oewn-unacquainted_with-a	unacquainted with	a	0	2	2	oewn
+oewn-unacquisitive-a	unacquisitive	a	0	1	1	oewn
+oewn-unactable-a	unactable	a	0	1	1	oewn
+oewn-unadaptability-n	unadaptability	n	0	1	1	oewn
+oewn-unadaptable-a	unadaptable	a	0	1	1	oewn
+oewn-unadapted-a	unadapted	a	0	1	1	oewn
+oewn-unaddicted-a	unaddicted	a	0	1	1	oewn
+oewn-unaddressed-a	unaddressed	a	0	1	1	oewn
+oewn-unadjustable-a	unadjustable	a	0	1	1	oewn
+oewn-unadjusted-a	unadjusted	a	0	1	1	oewn
+oewn-unadoptable-a	unadoptable	a	0	1	1	oewn
+oewn-unadorned-a	unadorned	a	0	1	1	oewn
+oewn-unadulterated-a	unadulterated	a	0	1	1	oewn
+oewn-unadventurous-a	unadventurous	a	0	1	1	oewn
+oewn-unadvisable-a	unadvisable	a	0	1	1	oewn
+oewn-unadvised-a	unadvised	a	0	1	1	oewn
+oewn-unadvisedly-r	unadvisedly	r	0	1	1	oewn
+oewn-unaerated-a	unaerated	a	0	1	1	oewn
+oewn-unaesthetic-a	unaesthetic	a	0	1	1	oewn
+oewn-unaffected-a	unaffected	a	0	1	1	oewn
+oewn-unaffectedness-n	unaffectedness	n	0	1	1	oewn
+oewn-unaffecting-a	unaffecting	a	0	1	1	oewn
+oewn-unaffectionate-a	unaffectionate	a	0	1	1	oewn
+oewn-unaffiliated-a	unaffiliated	a	0	1	1	oewn
+oewn-unaffixed-a	unaffixed	a	0	1	1	oewn
+oewn-unafraid-a	unafraid	a	0	1	1	oewn
+oewn-unaged-a	unaged	a	0	1	1	oewn
+oewn-unaggressive-a	unaggressive	a	0	1	1	oewn
+oewn-unagitated-a	unagitated	a	0	1	1	oewn
+oewn-unai-n	unai	n	0	1	1	oewn
+oewn-unaided-a	unaided	a	0	1	1	oewn
+oewn-unaired-a	unaired	a	0	1	1	oewn
+oewn-unairworthy-a	unairworthy	a	0	1	1	oewn
+oewn-unalarming-a	unalarming	a	0	1	1	oewn
+oewn-unalert-a	unalert	a	0	1	1	oewn
+oewn-unalienable-a	unalienable	a	0	1	1	oewn
+oewn-unalike-a	unalike	a	0	1	1	oewn
+oewn-unalloyed-a	unalloyed	a	0	1	1	oewn
+oewn-unalterability-n	unalterability	n	0	1	1	oewn
+oewn-unalterable-a	unalterable	a	0	1	1	oewn
+oewn-unalterably-r	unalterably	r	0	1	1	oewn
+oewn-unaltered-a	unaltered	a	0	1	1	oewn
+oewn-unambiguity-n	unambiguity	n	0	1	1	oewn
+oewn-unambiguous-a	unambiguous	a	0	1	1	oewn
+oewn-unambiguously-r	unambiguously	r	0	1	1	oewn
+oewn-unambitious-a	unambitious	a	0	1	1	oewn
+oewn-unambitiously-r	unambitiously	r	0	1	1	oewn
+oewn-unamended-a	unamended	a	0	1	1	oewn
+oewn-unanalyzable-a	unanalyzable	a	0	1	1	oewn
+oewn-unanalyzed-a	unanalyzed	a	0	1	1	oewn
+oewn-unangry-a	unangry	a	0	1	1	oewn
+oewn-unanimated-a	unanimated	a	0	1	1	oewn
+oewn-unanimity-n	unanimity	n	0	1	1	oewn
+oewn-unanimous-a	unanimous	a	0	1	1	oewn
+oewn-unanimously-r	unanimously	r	0	1	1	oewn
+oewn-unannealed-a	unannealed	a	0	1	1	oewn
+oewn-unannounced-a	unannounced	a	0	1	1	oewn
+oewn-unanswerable-a	unanswerable	a	0	1	1	oewn
+oewn-unanswered-a	unanswered	a	0	1	1	oewn
+oewn-unanticipated-a	unanticipated	a	0	1	1	oewn
+oewn-unapologetic-a	unapologetic	a	0	1	1	oewn
+oewn-unappareled-a	unappareled	a	0	1	1	oewn
+oewn-unapparent-a	unapparent	a	0	1	1	oewn
+oewn-unappealable-a	unappealable	a	0	1	1	oewn
+oewn-unappealing-a	unappealing	a	0	1	1	oewn
+oewn-unappealingly-r	unappealingly	r	0	1	1	oewn
+oewn-unappeasable-a	unappeasable	a	0	1	1	oewn
+oewn-unappendaged-a	unappendaged	a	0	1	1	oewn
+oewn-unappetising-a	unappetising	a	0	1	1	oewn
+oewn-unappetisingness-n	unappetisingness	n	0	1	1	oewn
+oewn-unappetizing-a	unappetizing	a	0	1	1	oewn
+oewn-unappetizingness-n	unappetizingness	n	0	1	1	oewn
+oewn-unappreciated-a	unappreciated	a	0	1	1	oewn
+oewn-unappreciative-a	unappreciative	a	0	1	1	oewn
+oewn-unappreciatively-r	unappreciatively	r	0	1	1	oewn
+oewn-unapprehensive-a	unapprehensive	a	0	1	1	oewn
+oewn-unapproachability-n	unapproachability	n	0	1	1	oewn
+oewn-unapproachable-a	unapproachable	a	0	1	1	oewn
+oewn-unarbitrary-a	unarbitrary	a	0	1	1	oewn
+oewn-unarguable-a	unarguable	a	0	1	1	oewn
+oewn-unarguably-r	unarguably	r	0	1	1	oewn
+oewn-unargumentative-a	unargumentative	a	0	1	1	oewn
+oewn-unarm-v	unarm	v	0	1	1	oewn
+oewn-unarmed-a	unarmed	a	0	1	1	oewn
+oewn-unarmored-a	unarmored	a	0	1	1	oewn
+oewn-unarmoured-a	unarmoured	a	0	1	1	oewn
+oewn-unarticulate-a	unarticulate	a	0	1	1	oewn
+oewn-unarticulated-a	unarticulated	a	0	1	1	oewn
+oewn-unartistic-a	unartistic	a	0	1	1	oewn
+oewn-unary-a	unary	a	0	1	1	oewn
+oewn-unary-n	unary	n	0	1	1	oewn
+oewn-unary_numeral_system-n	unary numeral system	n	0	3	3	oewn
+oewn-unary_operation-n	unary operation	n	0	2	2	oewn
+oewn-unascertainable-a	unascertainable	a	0	1	1	oewn
+oewn-unascribable-a	unascribable	a	0	1	1	oewn
+oewn-unashamed-a	unashamed	a	0	1	1	oewn
+oewn-unashamedly-r	unashamedly	r	0	1	1	oewn
+oewn-unasked-a	unasked	a	0	1	1	oewn
+oewn-unasked-for-a	unasked-for	a	0	1	1	oewn
+oewn-unassailable-a	unassailable	a	0	1	1	oewn
+oewn-unassailably-r	unassailably	r	0	1	1	oewn
+oewn-unassertive-a	unassertive	a	0	1	1	oewn
+oewn-unassertively-r	unassertively	r	0	1	1	oewn
+oewn-unassertiveness-n	unassertiveness	n	0	1	1	oewn
+oewn-unassignable-a	unassignable	a	0	1	1	oewn
+oewn-unassigned-a	unassigned	a	0	1	1	oewn
+oewn-unassisted-a	unassisted	a	0	1	1	oewn
+oewn-unassuming-a	unassuming	a	0	1	1	oewn
+oewn-unassumingly-r	unassumingly	r	0	1	1	oewn
+oewn-unassumingness-n	unassumingness	n	0	1	1	oewn
+oewn-unassured-a	unassured	a	0	1	1	oewn
+oewn-unasterisked-a	unasterisked	a	0	1	1	oewn
+oewn-unattached-a	unattached	a	0	1	1	oewn
+oewn-unattackable-a	unattackable	a	0	1	1	oewn
+oewn-unattainability-n	unattainability	n	0	1	1	oewn
+oewn-unattainable-a	unattainable	a	0	1	1	oewn
+oewn-unattainableness-n	unattainableness	n	0	1	1	oewn
+oewn-unattainably-r	unattainably	r	0	1	1	oewn
+oewn-unattended-a	unattended	a	0	1	1	oewn
+oewn-unattired-a	unattired	a	0	1	1	oewn
+oewn-unattractive-a	unattractive	a	0	1	1	oewn
+oewn-unattractively-r	unattractively	r	0	1	1	oewn
+oewn-unattractiveness-n	unattractiveness	n	0	1	1	oewn
+oewn-unattributable-a	unattributable	a	0	1	1	oewn
+oewn-unau-n	unau	n	0	1	1	oewn
+oewn-unauthentic-a	unauthentic	a	0	1	1	oewn
+oewn-unauthorised-a	unauthorised	a	0	1	1	oewn
+oewn-unauthorized-a	unauthorized	a	0	1	1	oewn
+oewn-unauthorized_absence-n	unauthorized absence	n	0	2	2	oewn
+oewn-unavailability-n	unavailability	n	0	1	1	oewn
+oewn-unavailable-a	unavailable	a	0	1	1	oewn
+oewn-unavailing-a	unavailing	a	0	1	1	oewn
+oewn-unavenged-a	unavenged	a	0	1	1	oewn
+oewn-unavoidability-n	unavoidability	n	0	1	1	oewn
+oewn-unavoidable-a	unavoidable	a	0	1	1	oewn
+oewn-unavoidable_casualty-n	unavoidable casualty	n	0	2	2	oewn
+oewn-unavoidably-r	unavoidably	r	0	1	1	oewn
+oewn-unavowed-a	unavowed	a	0	1	1	oewn
+oewn-unawakened-a	unawakened	a	0	1	1	oewn
+oewn-unaware-a	unaware	a	0	1	1	oewn
+oewn-unawareness-n	unawareness	n	0	1	1	oewn
+oewn-unawares-r	unawares	r	0	1	1	oewn
+oewn-unawed-a	unawed	a	0	1	1	oewn
+oewn-unbacked-a	unbacked	a	0	1	1	oewn
+oewn-unbaffled-a	unbaffled	a	0	1	1	oewn
+oewn-unbalance-n	unbalance	n	0	1	1	oewn
+oewn-unbalance-v	unbalance	v	0	1	1	oewn
+oewn-unbalanced-a	unbalanced	a	0	1	1	oewn
+oewn-unbalconied-a	unbalconied	a	0	1	1	oewn
+oewn-unbanded-a	unbanded	a	0	1	1	oewn
+oewn-unbaptised-a	unbaptised	a	0	1	1	oewn
+oewn-unbaptized-a	unbaptized	a	0	1	1	oewn
+oewn-unbar-v	unbar	v	0	1	1	oewn
+oewn-unbarred-a	unbarred	a	0	1	1	oewn
+oewn-unbarreled-a	unbarreled	a	0	1	1	oewn
+oewn-unbarrelled-a	unbarrelled	a	0	1	1	oewn
+oewn-unbearable-a	unbearable	a	0	1	1	oewn
+oewn-unbearably-r	unbearably	r	0	1	1	oewn
+oewn-unbeatable-a	unbeatable	a	0	1	1	oewn
+oewn-unbeaten-a	unbeaten	a	0	1	1	oewn
+oewn-unbecoming-a	unbecoming	a	0	1	1	oewn
+oewn-unbecomingly-r	unbecomingly	r	0	1	1	oewn
+oewn-unbecomingness-n	unbecomingness	n	0	1	1	oewn
+oewn-unbefitting-a	unbefitting	a	0	1	1	oewn
+oewn-unbeholden-a	unbeholden	a	0	1	1	oewn
+oewn-unbeknown-a	unbeknown	a	0	1	1	oewn
+oewn-unbeknown-r	unbeknown	r	0	1	1	oewn
+oewn-unbeknownst-a	unbeknownst	a	0	1	1	oewn
+oewn-unbeknownst-r	unbeknownst	r	0	1	1	oewn
+oewn-unbelief-n	unbelief	n	0	1	1	oewn
+oewn-unbelievable-a	unbelievable	a	0	1	1	oewn
+oewn-unbelievably-r	unbelievably	r	0	1	1	oewn
+oewn-unbelieving-a	unbelieving	a	0	1	1	oewn
+oewn-unbelievingly-r	unbelievingly	r	0	1	1	oewn
+oewn-unbeloved-a	unbeloved	a	0	1	1	oewn
+oewn-unbelt-v	unbelt	v	0	1	1	oewn
+oewn-unbelted-a	unbelted	a	0	1	1	oewn
+oewn-unbend-v	unbend	v	0	1	1	oewn
+oewn-unbendable-a	unbendable	a	0	1	1	oewn
+oewn-unbending-a	unbending	a	0	1	1	oewn
+oewn-unbeneficed-a	unbeneficed	a	0	1	1	oewn
+oewn-unbent-a	unbent	a	0	1	1	oewn
+oewn-unbiased-a	unbiased	a	0	1	1	oewn
+oewn-unbiassed-a	unbiassed	a	0	1	1	oewn
+oewn-unbigoted-a	unbigoted	a	0	1	1	oewn
+oewn-unbind-v	unbind	v	0	1	1	oewn
+oewn-unbitter-a	unbitter	a	0	1	1	oewn
+oewn-unbleached-a	unbleached	a	0	1	1	oewn
+oewn-unblemished-a	unblemished	a	0	1	1	oewn
+oewn-unblended-a	unblended	a	0	1	1	oewn
+oewn-unblessed-a	unblessed	a	0	1	1	oewn
+oewn-unblinking-a	unblinking	a	0	1	1	oewn
+oewn-unblinkingly-r	unblinkingly	r	0	1	1	oewn
+oewn-unblock-v	unblock	v	0	1	1	oewn
+oewn-unbloody-a	unbloody	a	0	1	1	oewn
+oewn-unblushing-a	unblushing	a	0	1	1	oewn
+oewn-unblushingly-r	unblushingly	r	0	1	1	oewn
+oewn-unbodied-a	unbodied	a	0	1	1	oewn
+oewn-unbolt-v	unbolt	v	0	1	1	oewn
+oewn-unbolted-a	unbolted	a	0	1	1	oewn
+oewn-unbooked-a	unbooked	a	0	1	1	oewn
+oewn-unbordered-a	unbordered	a	0	1	1	oewn
+oewn-unborn-a	unborn	a	0	1	1	oewn
+oewn-unbosom-v	unbosom	v	0	1	1	oewn
+oewn-unbound-a	unbound	a	0	1	1	oewn
+oewn-unbounded-a	unbounded	a	0	1	1	oewn
+oewn-unbounded_interval-n	unbounded interval	n	0	2	2	oewn
+oewn-unboundedness-n	unboundedness	n	0	1	1	oewn
+oewn-unbowed-a	unbowed	a	0	1	1	oewn
+oewn-unbox-v	unbox	v	0	1	1	oewn
+oewn-unbrace-v	unbrace	v	0	1	1	oewn
+oewn-unbraced-a	unbraced	a	0	1	1	oewn
+oewn-unbraid-v	unbraid	v	0	1	1	oewn
+oewn-unbrainwashed-a	unbrainwashed	a	0	1	1	oewn
+oewn-unbranched-a	unbranched	a	0	1	1	oewn
+oewn-unbranching-a	unbranching	a	0	1	1	oewn
+oewn-unbranded-a	unbranded	a	0	1	1	oewn
+oewn-unbreakable-a	unbreakable	a	0	1	1	oewn
+oewn-unbreakableness-n	unbreakableness	n	0	1	1	oewn
+oewn-unbridgeable-a	unbridgeable	a	0	1	1	oewn
+oewn-unbridle-v	unbridle	v	0	1	1	oewn
+oewn-unbridled-a	unbridled	a	0	1	1	oewn
+oewn-unbroken-a	unbroken	a	0	1	1	oewn
+oewn-unbrushed-a	unbrushed	a	0	1	1	oewn
+oewn-unbuckle-v	unbuckle	v	0	1	1	oewn
+oewn-unburden-v	unburden	v	0	1	1	oewn
+oewn-unburdened-a	unburdened	a	0	1	1	oewn
+oewn-unburied-a	unburied	a	0	1	1	oewn
+oewn-unburnished-a	unburnished	a	0	1	1	oewn
+oewn-unbutton-v	unbutton	v	0	1	1	oewn
+oewn-unbuttoned-a	unbuttoned	a	0	1	1	oewn
+oewn-uncalled-for-a	uncalled-for	a	0	1	1	oewn
+oewn-uncamphorated-a	uncamphorated	a	0	1	1	oewn
+oewn-uncannily-r	uncannily	r	0	1	1	oewn
+oewn-uncanny-a	uncanny	a	0	1	1	oewn
+oewn-uncapped-a	uncapped	a	0	1	1	oewn
+oewn-uncarbonated-a	uncarbonated	a	0	1	1	oewn
+oewn-uncared-for-a	uncared-for	a	0	1	1	oewn
+oewn-uncaring-a	uncaring	a	0	1	1	oewn
+oewn-uncarpeted-a	uncarpeted	a	0	1	1	oewn
+oewn-uncarved-a	uncarved	a	0	1	1	oewn
+oewn-uncase-v	uncase	v	0	1	1	oewn
+oewn-uncastrated-a	uncastrated	a	0	1	1	oewn
+oewn-uncategorised-a	uncategorised	a	0	1	1	oewn
+oewn-uncategorized-a	uncategorized	a	0	1	1	oewn
+oewn-uncaulked-a	uncaulked	a	0	1	1	oewn
+oewn-uncaused-a	uncaused	a	0	1	1	oewn
+oewn-unceasing-a	unceasing	a	0	1	1	oewn
+oewn-unceasingly-r	unceasingly	r	0	1	1	oewn
+oewn-uncensored-a	uncensored	a	0	1	1	oewn
+oewn-unceremonial-a	unceremonial	a	0	1	1	oewn
+oewn-unceremonious-a	unceremonious	a	0	1	1	oewn
+oewn-unceremoniously-r	unceremoniously	r	0	1	1	oewn
+oewn-unceremoniousness-n	unceremoniousness	n	0	1	1	oewn
+oewn-uncertain-a	uncertain	a	0	1	1	oewn
+oewn-uncertainly-r	uncertainly	r	0	1	1	oewn
+oewn-uncertainness-n	uncertainness	n	0	1	1	oewn
+oewn-uncertainty-n	uncertainty	n	0	1	1	oewn
+oewn-uncertainty_principle-n	uncertainty principle	n	0	2	2	oewn
+oewn-uncertified-a	uncertified	a	0	1	1	oewn
+oewn-unchain-v	unchain	v	0	1	1	oewn
+oewn-unchained-a	unchained	a	0	1	1	oewn
+oewn-unchallengeable-a	unchallengeable	a	0	1	1	oewn
+oewn-unchallenged-a	unchallenged	a	0	1	1	oewn
+oewn-unchangeability-n	unchangeability	n	0	1	1	oewn
+oewn-unchangeable-a	unchangeable	a	0	1	1	oewn
+oewn-unchangeableness-n	unchangeableness	n	0	1	1	oewn
+oewn-unchangeably-r	unchangeably	r	0	1	1	oewn
+oewn-unchanged-a	unchanged	a	0	1	1	oewn
+oewn-unchanging-a	unchanging	a	0	1	1	oewn
+oewn-unchangingness-n	unchangingness	n	0	1	1	oewn
+oewn-uncharacteristic-a	uncharacteristic	a	0	1	1	oewn
+oewn-uncharacteristically-r	uncharacteristically	r	0	1	1	oewn
+oewn-uncharged-a	uncharged	a	0	1	1	oewn
+oewn-uncharitable-a	uncharitable	a	0	1	1	oewn
+oewn-uncharted-a	uncharted	a	0	1	1	oewn
+oewn-unchartered-a	unchartered	a	0	1	1	oewn
+oewn-unchaste-a	unchaste	a	0	1	1	oewn
+oewn-uncheckable-a	uncheckable	a	0	1	1	oewn
+oewn-unchecked-a	unchecked	a	0	1	1	oewn
+oewn-uncheerful-a	uncheerful	a	0	1	1	oewn
+oewn-uncheerfulness-n	uncheerfulness	n	0	1	1	oewn
+oewn-unchewable-a	unchewable	a	0	1	1	oewn
+oewn-unchivalrous-a	unchivalrous	a	0	1	1	oewn
+oewn-unchivalrously-r	unchivalrously	r	0	1	1	oewn
+oewn-unchristian-a	unchristian	a	0	1	1	oewn
+oewn-unchristianly-a	unchristianly	a	0	1	1	oewn
+oewn-unchristlike-a	unchristlike	a	0	1	1	oewn
+oewn-unchurch-v	unchurch	v	0	1	1	oewn
+oewn-uncial-a	uncial	a	0	1	1	oewn
+oewn-uncial-n	uncial	n	0	1	1	oewn
+oewn-unciform_bone-n	unciform bone	n	0	2	2	oewn
+oewn-uncivil-a	uncivil	a	0	1	1	oewn
+oewn-uncivilised-a	uncivilised	a	0	1	1	oewn
+oewn-uncivilized-a	uncivilized	a	0	1	1	oewn
+oewn-uncivilly-r	uncivilly	r	0	1	1	oewn
+oewn-unclad-a	unclad	a	0	1	1	oewn
+oewn-unclaimed-a	unclaimed	a	0	1	1	oewn
+oewn-unclasp-v	unclasp	v	0	1	1	oewn
+oewn-unclassifiable-a	unclassifiable	a	0	1	1	oewn
+oewn-unclassified-a	unclassified	a	0	1	1	oewn
+oewn-uncle-n	uncle	n	0	1	1	oewn
+oewn-unclean-a	unclean	a	0	1	1	oewn
+oewn-uncleanliness-n	uncleanliness	n	0	1	1	oewn
+oewn-uncleanly-a	uncleanly	a	0	1	1	oewn
+oewn-uncleanness-n	uncleanness	n	0	1	1	oewn
+oewn-unclear-a	unclear	a	0	1	1	oewn
+oewn-uncleared-a	uncleared	a	0	1	1	oewn
+oewn-unclearly-r	unclearly	r	0	1	1	oewn
+oewn-unclearness-n	unclearness	n	0	1	1	oewn
+oewn-unclimbable-a	unclimbable	a	0	1	1	oewn
+oewn-unclip-v	unclip	v	0	1	1	oewn
+oewn-unclipped-a	unclipped	a	0	1	1	oewn
+oewn-uncloak-v	uncloak	v	0	1	1	oewn
+oewn-unclog-v	unclog	v	0	1	1	oewn
+oewn-unclogged-a	unclogged	a	0	1	1	oewn
+oewn-unclothe-v	unclothe	v	0	1	1	oewn
+oewn-unclothed-a	unclothed	a	0	1	1	oewn
+oewn-unclouded-a	unclouded	a	0	1	1	oewn
+oewn-uncloudedness-n	uncloudedness	n	0	1	1	oewn
+oewn-unclutter-v	unclutter	v	0	1	1	oewn
+oewn-uncluttered-a	uncluttered	a	0	1	1	oewn
+oewn-unco-r	unco	r	0	1	1	oewn
+oewn-uncoated-a	uncoated	a	0	1	1	oewn
+oewn-uncoerced-a	uncoerced	a	0	1	1	oewn
+oewn-uncoil-v	uncoil	v	0	1	1	oewn
+oewn-uncoiled-a	uncoiled	a	0	1	1	oewn
+oewn-uncollected-a	uncollected	a	0	1	1	oewn
+oewn-uncollectible-a	uncollectible	a	0	1	1	oewn
+oewn-uncolored-a	uncolored	a	0	1	1	oewn
+oewn-uncoloured-a	uncoloured	a	0	1	1	oewn
+oewn-uncolumned-a	uncolumned	a	0	1	1	oewn
+oewn-uncombable-a	uncombable	a	0	1	1	oewn
+oewn-uncombed-a	uncombed	a	0	1	1	oewn
+oewn-uncombined-a	uncombined	a	0	1	1	oewn
+oewn-uncomely-a	uncomely	a	0	1	1	oewn
+oewn-uncomfortable-a	uncomfortable	a	0	1	1	oewn
+oewn-uncomfortableness-n	uncomfortableness	n	0	1	1	oewn
+oewn-uncomfortably-r	uncomfortably	r	0	1	1	oewn
+oewn-uncommercial-a	uncommercial	a	0	1	1	oewn
+oewn-uncommercialised-a	uncommercialised	a	0	1	1	oewn
+oewn-uncommercialized-a	uncommercialized	a	0	1	1	oewn
+oewn-uncommitted-a	uncommitted	a	0	1	1	oewn
+oewn-uncommon-a	uncommon	a	0	1	1	oewn
+oewn-uncommonly-r	uncommonly	r	0	1	1	oewn
+oewn-uncommonness-n	uncommonness	n	0	1	1	oewn
+oewn-uncommunicative-a	uncommunicative	a	0	1	1	oewn
+oewn-uncommunicativeness-n	uncommunicativeness	n	0	1	1	oewn
+oewn-uncomparable-a	uncomparable	a	0	1	1	oewn
+oewn-uncomparably-r	uncomparably	r	0	1	1	oewn
+oewn-uncompartmented-a	uncompartmented	a	0	1	1	oewn
+oewn-uncompassionate-a	uncompassionate	a	0	1	1	oewn
+oewn-uncompensated-a	uncompensated	a	0	1	1	oewn
+oewn-uncompetitive-a	uncompetitive	a	0	1	1	oewn
+oewn-uncompetitiveness-n	uncompetitiveness	n	0	1	1	oewn
+oewn-uncomplaining-a	uncomplaining	a	0	1	1	oewn
+oewn-uncomplainingly-r	uncomplainingly	r	0	1	1	oewn
+oewn-uncomplete-a	uncomplete	a	0	1	1	oewn
+oewn-uncompleted-a	uncompleted	a	0	1	1	oewn
+oewn-uncomplicated-a	uncomplicated	a	0	1	1	oewn
+oewn-uncomplimentary-a	uncomplimentary	a	0	1	1	oewn
+oewn-uncompounded-a	uncompounded	a	0	1	1	oewn
+oewn-uncomprehended-a	uncomprehended	a	0	1	1	oewn
+oewn-uncomprehending-a	uncomprehending	a	0	1	1	oewn
+oewn-uncomprehensible-a	uncomprehensible	a	0	1	1	oewn
+oewn-uncompress-v	uncompress	v	0	1	1	oewn
+oewn-uncompromising-a	uncompromising	a	0	1	1	oewn
+oewn-uncompromisingly-r	uncompromisingly	r	0	1	1	oewn
+oewn-unconcealed-a	unconcealed	a	0	1	1	oewn
+oewn-unconcern-n	unconcern	n	0	1	1	oewn
+oewn-unconcerned-a	unconcerned	a	0	1	1	oewn
+oewn-unconcernedly-r	unconcernedly	r	0	1	1	oewn
+oewn-unconditional-a	unconditional	a	0	1	1	oewn
+oewn-unconditionality-n	unconditionality	n	0	1	1	oewn
+oewn-unconditionally-r	unconditionally	r	0	1	1	oewn
+oewn-unconditioned-a	unconditioned	a	0	1	1	oewn
+oewn-unconditioned_reflex-n	unconditioned reflex	n	0	2	2	oewn
+oewn-unconfessed-a	unconfessed	a	0	1	1	oewn
+oewn-unconfessed-n	unconfessed	n	0	1	1	oewn
+oewn-unconfined-a	unconfined	a	0	1	1	oewn
+oewn-unconfirmed-a	unconfirmed	a	0	1	1	oewn
+oewn-unconformable-a	unconformable	a	0	1	1	oewn
+oewn-unconformist-a	unconformist	a	0	1	1	oewn
+oewn-unconfused-a	unconfused	a	0	1	1	oewn
+oewn-uncongenial-a	uncongenial	a	0	1	1	oewn
+oewn-uncongeniality-n	uncongeniality	n	0	1	1	oewn
+oewn-unconnected-a	unconnected	a	0	1	1	oewn
+oewn-unconnectedness-n	unconnectedness	n	0	1	1	oewn
+oewn-unconquerable-a	unconquerable	a	0	1	1	oewn
+oewn-unconquered-a	unconquered	a	0	1	1	oewn
+oewn-unconscientious-a	unconscientious	a	0	1	1	oewn
+oewn-unconscientiousness-n	unconscientiousness	n	0	1	1	oewn
+oewn-unconscionable-a	unconscionable	a	0	1	1	oewn
+oewn-unconscious-a	unconscious	a	0	1	1	oewn
+oewn-unconscious-n	unconscious	n	0	1	1	oewn
+oewn-unconscious_mind-n	unconscious mind	n	0	2	2	oewn
+oewn-unconscious_process-n	unconscious process	n	0	2	2	oewn
+oewn-unconsciously-r	unconsciously	r	0	1	1	oewn
+oewn-unconsciousness-n	unconsciousness	n	0	1	1	oewn
+oewn-unconsecrated-a	unconsecrated	a	0	1	1	oewn
+oewn-unconsidered-a	unconsidered	a	0	1	1	oewn
+oewn-unconsolable-a	unconsolable	a	0	1	1	oewn
+oewn-unconsolidated-a	unconsolidated	a	0	1	1	oewn
+oewn-unconstipated-a	unconstipated	a	0	1	1	oewn
+oewn-unconstitutional-a	unconstitutional	a	0	1	1	oewn
+oewn-unconstitutionality-n	unconstitutionality	n	0	1	1	oewn
+oewn-unconstitutionally-r	unconstitutionally	r	0	1	1	oewn
+oewn-unconstrained-a	unconstrained	a	0	1	1	oewn
+oewn-unconstraint-n	unconstraint	n	0	1	1	oewn
+oewn-unconstricted-a	unconstricted	a	0	1	1	oewn
+oewn-unconstructive-a	unconstructive	a	0	1	1	oewn
+oewn-unconsumed-a	unconsumed	a	0	1	1	oewn
+oewn-unconsummated-a	unconsummated	a	0	1	1	oewn
+oewn-uncontaminated-a	uncontaminated	a	0	1	1	oewn
+oewn-uncontaminating-a	uncontaminating	a	0	1	1	oewn
+oewn-uncontested-a	uncontested	a	0	1	1	oewn
+oewn-uncontrived-a	uncontrived	a	0	1	1	oewn
+oewn-uncontrollable-a	uncontrollable	a	0	1	1	oewn
+oewn-uncontrollably-r	uncontrollably	r	0	1	1	oewn
+oewn-uncontrolled-a	uncontrolled	a	0	1	1	oewn
+oewn-uncontroversial-a	uncontroversial	a	0	1	1	oewn
+oewn-uncontroversially-r	uncontroversially	r	0	1	1	oewn
+oewn-unconventional-a	unconventional	a	0	1	1	oewn
+oewn-unconventionality-n	unconventionality	n	0	1	1	oewn
+oewn-unconventionally-r	unconventionally	r	0	1	1	oewn
+oewn-unconverted-a	unconverted	a	0	1	1	oewn
+oewn-unconvertible-a	unconvertible	a	0	1	1	oewn
+oewn-unconvinced-a	unconvinced	a	0	1	1	oewn
+oewn-unconvincing-a	unconvincing	a	0	1	1	oewn
+oewn-unconvincingly-r	unconvincingly	r	0	1	1	oewn
+oewn-uncooked-a	uncooked	a	0	1	1	oewn
+oewn-uncool-a	uncool	a	0	1	1	oewn
+oewn-uncooperative-a	uncooperative	a	0	1	1	oewn
+oewn-uncoordinated-a	uncoordinated	a	0	1	1	oewn
+oewn-uncordial-a	uncordial	a	0	1	1	oewn
+oewn-uncork-v	uncork	v	0	1	1	oewn
+oewn-uncorrectable-a	uncorrectable	a	0	1	1	oewn
+oewn-uncorrected-a	uncorrected	a	0	1	1	oewn
+oewn-uncorrelated-a	uncorrelated	a	0	1	1	oewn
+oewn-uncorroborated-a	uncorroborated	a	0	1	1	oewn
+oewn-uncorrupted-a	uncorrupted	a	0	1	1	oewn
+oewn-uncounted-a	uncounted	a	0	1	1	oewn
+oewn-uncouple-v	uncouple	v	0	1	1	oewn
+oewn-uncoupled-a	uncoupled	a	0	1	1	oewn
+oewn-uncousinly-a	uncousinly	a	0	1	1	oewn
+oewn-uncouth-a	uncouth	a	0	1	1	oewn
+oewn-uncouthly-r	uncouthly	r	0	1	1	oewn
+oewn-uncouthness-n	uncouthness	n	0	1	1	oewn
+oewn-uncover-v	uncover	v	0	1	1	oewn
+oewn-uncovered-a	uncovered	a	0	1	1	oewn
+oewn-uncovering-n	uncovering	n	0	1	1	oewn
+oewn-uncrannied-a	uncrannied	a	0	1	1	oewn
+oewn-uncrate-v	uncrate	v	0	1	1	oewn
+oewn-uncreased-a	uncreased	a	0	1	1	oewn
+oewn-uncreative-a	uncreative	a	0	1	1	oewn
+oewn-uncreativeness-n	uncreativeness	n	0	1	1	oewn
+oewn-uncritical-a	uncritical	a	0	1	1	oewn
+oewn-uncritically-r	uncritically	r	0	1	1	oewn
+oewn-uncropped-a	uncropped	a	0	1	1	oewn
+oewn-uncross-v	uncross	v	0	1	1	oewn
+oewn-uncrossed-a	uncrossed	a	0	1	1	oewn
+oewn-uncrowded-a	uncrowded	a	0	1	1	oewn
+oewn-uncrowned-a	uncrowned	a	0	1	1	oewn
+oewn-uncrystallised-a	uncrystallised	a	0	1	1	oewn
+oewn-uncrystallized-a	uncrystallized	a	0	1	1	oewn
+oewn-unction-n	unction	n	0	1	1	oewn
+oewn-unctuous-a	unctuous	a	0	1	1	oewn
+oewn-unctuously-r	unctuously	r	0	1	1	oewn
+oewn-unctuousness-n	unctuousness	n	0	1	1	oewn
+oewn-uncultivable-a	uncultivable	a	0	1	1	oewn
+oewn-uncultivatable-a	uncultivatable	a	0	1	1	oewn
+oewn-uncultivated-a	uncultivated	a	0	1	1	oewn
+oewn-uncultured-a	uncultured	a	0	1	1	oewn
+oewn-uncurbed-a	uncurbed	a	0	1	1	oewn
+oewn-uncured-a	uncured	a	0	1	1	oewn
+oewn-uncurl-v	uncurl	v	0	1	1	oewn
+oewn-uncurled-a	uncurled	a	0	1	1	oewn
+oewn-uncurtained-a	uncurtained	a	0	1	1	oewn
+oewn-uncurved-a	uncurved	a	0	1	1	oewn
+oewn-uncurving-a	uncurving	a	0	1	1	oewn
+oewn-uncus-n	uncus	n	0	1	1	oewn
+oewn-uncut-a	uncut	a	0	1	1	oewn
+oewn-undamaged-a	undamaged	a	0	1	1	oewn
+oewn-undatable-a	undatable	a	0	1	1	oewn
+oewn-undated-a	undated	a	0	1	1	oewn
+oewn-undaunted-a	undaunted	a	0	1	1	oewn
+oewn-undecagon-n	undecagon	n	0	1	1	oewn
+oewn-undeceive-v	undeceive	v	0	1	1	oewn
+oewn-undeceived-a	undeceived	a	0	1	1	oewn
+oewn-undecidable-s	undecidable	a	0	1	1	oewn
+oewn-undecideable-a	undecideable	a	0	1	1	oewn
+oewn-undecided-a	undecided	a	0	1	1	oewn
+oewn-undecipherable-a	undecipherable	a	0	1	1	oewn
+oewn-undecipherably-r	undecipherably	r	0	1	1	oewn
+oewn-undeciphered-a	undeciphered	a	0	1	1	oewn
+oewn-undeclared-a	undeclared	a	0	1	1	oewn
+oewn-undecomposable-a	undecomposable	a	0	1	1	oewn
+oewn-undecomposed-a	undecomposed	a	0	1	1	oewn
+oewn-undecorated-a	undecorated	a	0	1	1	oewn
+oewn-undecylenic_acid-n	undecylenic acid	n	0	2	2	oewn
+oewn-undedicated-a	undedicated	a	0	1	1	oewn
+oewn-undefeated-a	undefeated	a	0	1	1	oewn
+oewn-undefendable-a	undefendable	a	0	1	1	oewn
+oewn-undefended-a	undefended	a	0	1	1	oewn
+oewn-undeferential-a	undeferential	a	0	1	1	oewn
+oewn-undefiled-a	undefiled	a	0	1	1	oewn
+oewn-undefinable-a	undefinable	a	0	1	1	oewn
+oewn-undefined-a	undefined	a	0	1	1	oewn
+oewn-undelineated-a	undelineated	a	0	1	1	oewn
+oewn-undemanding-a	undemanding	a	0	1	1	oewn
+oewn-undemocratic-a	undemocratic	a	0	1	1	oewn
+oewn-undemocratically-r	undemocratically	r	0	1	1	oewn
+oewn-undemonstrative-a	undemonstrative	a	0	1	1	oewn
+oewn-undeniable-a	undeniable	a	0	1	1	oewn
+oewn-undeniably-r	undeniably	r	0	1	1	oewn
+oewn-undenominational-a	undenominational	a	0	1	1	oewn
+oewn-undependability-n	undependability	n	0	1	1	oewn
+oewn-undependable-a	undependable	a	0	1	1	oewn
+oewn-undependableness-n	undependableness	n	0	1	1	oewn
+oewn-undependably-r	undependably	r	0	1	1	oewn
+oewn-undepicted-a	undepicted	a	0	1	1	oewn
+oewn-under-a	under	a	0	1	1	oewn
+oewn-under-r	under	r	0	1	1	oewn
+oewn-under-the-counter-a	under-the-counter	a	0	1	1	oewn
+oewn-under-the-table-a	under-the-table	a	0	1	1	oewn
+oewn-under_arms-r	under arms	r	0	2	2	oewn
+oewn-under_attack-a	under attack	a	0	2	2	oewn
+oewn-under_fire-a	under fire	a	0	2	2	oewn
+oewn-under_the_circumstances-r	under the circumstances	r	0	3	3	oewn
+oewn-under_the_weather-a	under the weather	a	0	3	3	oewn
+oewn-under_way-r	under way	r	0	2	2	oewn
+oewn-under_wraps-a	under wraps	a	0	2	2	oewn
+oewn-underachieve-v	underachieve	v	0	1	1	oewn
+oewn-underachievement-n	underachievement	n	0	1	1	oewn
+oewn-underachiever-n	underachiever	n	0	1	1	oewn
+oewn-underact-v	underact	v	0	1	1	oewn
+oewn-underactive-a	underactive	a	0	1	1	oewn
+oewn-underage-a	underage	a	0	1	1	oewn
+oewn-underarm-a	underarm	a	0	1	1	oewn
+oewn-underarm-r	underarm	r	0	1	1	oewn
+oewn-underbelly-n	underbelly	n	0	1	1	oewn
+oewn-underbid-v	underbid	v	0	1	1	oewn
+oewn-underbodice-n	underbodice	n	0	1	1	oewn
+oewn-underbody-n	underbody	n	0	1	1	oewn
+oewn-underboss-n	underboss	n	0	1	1	oewn
+oewn-underbred-a	underbred	a	0	1	1	oewn
+oewn-underbrush-n	underbrush	n	0	1	1	oewn
+oewn-undercarriage-n	undercarriage	n	0	1	1	oewn
+oewn-undercharge-n	undercharge	n	0	1	1	oewn
+oewn-undercharge-v	undercharge	v	0	1	1	oewn
+oewn-underclass-a	underclass	a	0	1	1	oewn
+oewn-underclass-n	underclass	n	0	1	1	oewn
+oewn-underclassman-n	underclassman	n	0	1	1	oewn
+oewn-underclothed-a	underclothed	a	0	1	1	oewn
+oewn-underclothes-n	underclothes	n	0	1	1	oewn
+oewn-underclothing-n	underclothing	n	0	1	1	oewn
+oewn-undercoat-n	undercoat	n	0	1	1	oewn
+oewn-undercoat-v	undercoat	v	0	1	1	oewn
+oewn-undercoated-a	undercoated	a	0	1	1	oewn
+oewn-undercover-a	undercover	a	0	1	1	oewn
+oewn-undercover_agent-n	undercover agent	n	0	2	2	oewn
+oewn-undercover_operation-n	undercover operation	n	0	2	2	oewn
+oewn-undercover_work-n	undercover work	n	0	2	2	oewn
+oewn-undercurrent-n	undercurrent	n	0	1	1	oewn
+oewn-undercut-n	undercut	n	0	1	1	oewn
+oewn-undercut-v	undercut	v	0	1	1	oewn
+oewn-underdevelop-v	underdevelop	v	0	1	1	oewn
+oewn-underdeveloped-a	underdeveloped	a	0	1	1	oewn
+oewn-underdevelopment-n	underdevelopment	n	0	1	1	oewn
+oewn-underdog-n	underdog	n	0	1	1	oewn
+oewn-underdone-a	underdone	a	0	1	1	oewn
+oewn-underdrawers-n	underdrawers	n	0	1	1	oewn
+oewn-underdress-v	underdress	v	0	1	1	oewn
+oewn-underdressed-a	underdressed	a	0	1	1	oewn
+oewn-undereducated-a	undereducated	a	0	1	1	oewn
+oewn-underemployed-a	underemployed	a	0	1	1	oewn
+oewn-underestimate-n	underestimate	n	0	1	1	oewn
+oewn-underestimate-v	underestimate	v	0	1	1	oewn
+oewn-underestimation-n	underestimation	n	0	1	1	oewn
+oewn-underevaluation-n	underevaluation	n	0	1	1	oewn
+oewn-underexpose-v	underexpose	v	0	1	1	oewn
+oewn-underexposure-n	underexposure	n	0	1	1	oewn
+oewn-underfed-a	underfed	a	0	1	1	oewn
+oewn-underfelt-n	underfelt	n	0	1	1	oewn
+oewn-underfoot-r	underfoot	r	0	1	1	oewn
+oewn-underframe-n	underframe	n	0	1	1	oewn
+oewn-underfur-n	underfur	n	0	1	1	oewn
+oewn-undergarment-n	undergarment	n	0	1	1	oewn
+oewn-undergird-v	undergird	v	0	1	1	oewn
+oewn-undergo-v	undergo	v	0	1	1	oewn
+oewn-undergrad-n	undergrad	n	0	1	1	oewn
+oewn-undergraduate-n	undergraduate	n	0	1	1	oewn
+oewn-underground-a	underground	a	0	1	1	oewn
+oewn-underground-n	underground	n	0	1	1	oewn
+oewn-underground-r	underground	r	0	1	1	oewn
+oewn-underground_press-n	underground press	n	0	2	2	oewn
+oewn-undergrow-v	undergrow	v	0	1	1	oewn
+oewn-undergrowth-n	undergrowth	n	0	1	1	oewn
+oewn-underhand-a	underhand	a	0	1	1	oewn
+oewn-underhand-r	underhand	r	0	1	1	oewn
+oewn-underhanded-a	underhanded	a	0	1	1	oewn
+oewn-underhandedly-r	underhandedly	r	0	1	1	oewn
+oewn-underhung-a	underhung	a	0	1	1	oewn
+oewn-underivative-a	underivative	a	0	1	1	oewn
+oewn-underived-a	underived	a	0	1	1	oewn
+oewn-underlay-n	underlay	n	0	1	1	oewn
+oewn-underlay-v	underlay	v	0	1	1	oewn
+oewn-underlayment-n	underlayment	n	0	1	1	oewn
+oewn-underlie-v	underlie	v	0	1	1	oewn
+oewn-underline-n	underline	n	0	1	1	oewn
+oewn-underline-v	underline	v	0	1	1	oewn
+oewn-underling-n	underling	n	0	1	1	oewn
+oewn-underlip-n	underlip	n	0	1	1	oewn
+oewn-underlying-a	underlying	a	0	1	1	oewn
+oewn-undermanned-a	undermanned	a	0	1	1	oewn
+oewn-undermentioned-a	undermentioned	a	0	1	1	oewn
+oewn-undermine-v	undermine	v	0	1	1	oewn
+oewn-underneath-r	underneath	r	0	1	1	oewn
+oewn-undernourish-v	undernourish	v	0	1	1	oewn
+oewn-undernourished-a	undernourished	a	0	1	1	oewn
+oewn-undernourishment-n	undernourishment	n	0	1	1	oewn
+oewn-underpants-n	underpants	n	0	1	1	oewn
+oewn-underpart-n	underpart	n	0	1	1	oewn
+oewn-underpass-n	underpass	n	0	1	1	oewn
+oewn-underpay-v	underpay	v	0	1	1	oewn
+oewn-underpayment-n	underpayment	n	0	1	1	oewn
+oewn-underperform-v	underperform	v	0	1	1	oewn
+oewn-underperformer-n	underperformer	n	0	1	1	oewn
+oewn-underpin-v	underpin	v	0	1	1	oewn
+oewn-underplay-v	underplay	v	0	1	1	oewn
+oewn-underpopulated-a	underpopulated	a	0	1	1	oewn
+oewn-underprice-v	underprice	v	0	1	1	oewn
+oewn-underprivileged-a	underprivileged	a	0	1	1	oewn
+oewn-underproduce-v	underproduce	v	0	1	1	oewn
+oewn-underproduction-n	underproduction	n	0	1	1	oewn
+oewn-underquote-v	underquote	v	0	1	1	oewn
+oewn-underrate-v	underrate	v	0	1	1	oewn
+oewn-underrating-n	underrating	n	0	1	1	oewn
+oewn-underreckoning-n	underreckoning	n	0	1	1	oewn
+oewn-underrun-v	underrun	v	0	1	1	oewn
+oewn-underscore-n	underscore	n	0	1	1	oewn
+oewn-underscore-v	underscore	v	0	1	1	oewn
+oewn-undersea-a	undersea	a	0	1	1	oewn
+oewn-underseal-n	underseal	n	0	1	1	oewn
+oewn-undersealed-a	undersealed	a	0	1	1	oewn
+oewn-undersecretary-n	undersecretary	n	0	1	1	oewn
+oewn-undersell-v	undersell	v	0	1	1	oewn
+oewn-underseller-n	underseller	n	0	1	1	oewn
+oewn-undersexed-a	undersexed	a	0	1	1	oewn
+oewn-undershirt-n	undershirt	n	0	1	1	oewn
+oewn-undershoot-v	undershoot	v	0	1	1	oewn
+oewn-undershot-a	undershot	a	0	1	1	oewn
+oewn-undershrub-n	undershrub	n	0	1	1	oewn
+oewn-underside-n	underside	n	0	1	1	oewn
+oewn-undersign-v	undersign	v	0	1	1	oewn
+oewn-undersize-a	undersize	a	0	1	1	oewn
+oewn-undersized-a	undersized	a	0	1	1	oewn
+oewn-underskirt-n	underskirt	n	0	1	1	oewn
+oewn-underslung-a	underslung	a	0	1	1	oewn
+oewn-undersoil-n	undersoil	n	0	1	1	oewn
+oewn-underspend-v	underspend	v	0	1	1	oewn
+oewn-understaffed-a	understaffed	a	0	1	1	oewn
+oewn-understand-v	understand	v	0	1	1	oewn
+oewn-understandability-n	understandability	n	0	1	1	oewn
+oewn-understandable-a	understandable	a	0	1	1	oewn
+oewn-understandably-r	understandably	r	0	1	1	oewn
+oewn-understanding-a	understanding	a	0	1	1	oewn
+oewn-understanding-n	understanding	n	0	1	1	oewn
+oewn-understandingly-r	understandingly	r	0	1	1	oewn
+oewn-understate-v	understate	v	0	1	1	oewn
+oewn-understated-a	understated	a	0	1	1	oewn
+oewn-understatement-n	understatement	n	0	1	1	oewn
+oewn-understeer-n	understeer	n	0	1	1	oewn
+oewn-understock-v	understock	v	0	1	1	oewn
+oewn-understood-a	understood	a	0	1	1	oewn
+oewn-understructure-n	understructure	n	0	1	1	oewn
+oewn-understudy-n	understudy	n	0	1	1	oewn
+oewn-understudy-v	understudy	v	0	1	1	oewn
+oewn-undersurface-n	undersurface	n	0	1	1	oewn
+oewn-undertake-v	undertake	v	0	1	1	oewn
+oewn-undertaker-n	undertaker	n	0	1	1	oewn
+oewn-undertaking-n	undertaking	n	0	1	1	oewn
+oewn-undertide-n	undertide	n	0	1	1	oewn
+oewn-undertone-n	undertone	n	0	1	1	oewn
+oewn-undertow-n	undertow	n	0	1	1	oewn
+oewn-undervaluation-n	undervaluation	n	0	1	1	oewn
+oewn-undervalue-v	undervalue	v	0	1	1	oewn
+oewn-underwater-a	underwater	a	0	1	1	oewn
+oewn-underwater_archaeology-n	underwater archaeology	n	0	2	2	oewn
+oewn-underwater_archeology-n	underwater archeology	n	0	2	2	oewn
+oewn-underwater_diver-n	underwater diver	n	0	2	2	oewn
+oewn-underway-a	underway	a	0	1	1	oewn
+oewn-underwear-n	underwear	n	0	1	1	oewn
+oewn-underweight-a	underweight	a	0	1	1	oewn
+oewn-underwing-n	underwing	n	0	1	1	oewn
+oewn-underwood-n	underwood	n	0	1	1	oewn
+oewn-underworld-n	underworld	n	0	1	1	oewn
+oewn-underwrite-v	underwrite	v	0	1	1	oewn
+oewn-underwriter-n	underwriter	n	0	1	1	oewn
+oewn-undescended-a	undescended	a	0	1	1	oewn
+oewn-undescended_testicle-n	undescended testicle	n	0	2	2	oewn
+oewn-undescended_testis-n	undescended testis	n	0	2	2	oewn
+oewn-undescriptive-a	undescriptive	a	0	1	1	oewn
+oewn-undeserved-a	undeserved	a	0	1	1	oewn
+oewn-undeservedly-r	undeservedly	r	0	1	1	oewn
+oewn-undeserving-a	undeserving	a	0	1	1	oewn
+oewn-undesigned-a	undesigned	a	0	1	1	oewn
+oewn-undesirability-n	undesirability	n	0	1	1	oewn
+oewn-undesirable-a	undesirable	a	0	1	1	oewn
+oewn-undesirable-n	undesirable	n	0	1	1	oewn
+oewn-undesirably-r	undesirably	r	0	1	1	oewn
+oewn-undesired-a	undesired	a	0	1	1	oewn
+oewn-undesiring-a	undesiring	a	0	1	1	oewn
+oewn-undesirous-a	undesirous	a	0	1	1	oewn
+oewn-undestroyable-a	undestroyable	a	0	1	1	oewn
+oewn-undetectable-a	undetectable	a	0	1	1	oewn
+oewn-undetected-a	undetected	a	0	1	1	oewn
+oewn-undeterminable-a	undeterminable	a	0	1	1	oewn
+oewn-undetermined-a	undetermined	a	0	1	1	oewn
+oewn-undeterred-a	undeterred	a	0	1	1	oewn
+oewn-undeveloped-a	undeveloped	a	0	1	1	oewn
+oewn-undeviating-a	undeviating	a	0	1	1	oewn
+oewn-undiagnosable-a	undiagnosable	a	0	1	1	oewn
+oewn-undiagnosed-a	undiagnosed	a	0	1	1	oewn
+oewn-undies-n	undies	n	0	1	1	oewn
+oewn-undifferentiated-a	undifferentiated	a	0	1	1	oewn
+oewn-undigested-a	undigested	a	0	1	1	oewn
+oewn-undignified-a	undignified	a	0	1	1	oewn
+oewn-undiluted-a	undiluted	a	0	1	1	oewn
+oewn-undiminished-a	undiminished	a	0	1	1	oewn
+oewn-undimmed-a	undimmed	a	0	1	1	oewn
+oewn-undine-n	undine	n	0	1	1	oewn
+oewn-undiplomatic-a	undiplomatic	a	0	1	1	oewn
+oewn-undiplomatically-r	undiplomatically	r	0	1	1	oewn
+oewn-undirected-a	undirected	a	0	1	1	oewn
+oewn-undirected_graph-n	undirected graph	n	0	2	2	oewn
+oewn-undiscerning-a	undiscerning	a	0	1	1	oewn
+oewn-undischarged-a	undischarged	a	0	1	1	oewn
+oewn-undiscipline-n	undiscipline	n	0	1	1	oewn
+oewn-undisciplined-a	undisciplined	a	0	1	1	oewn
+oewn-undisclosed-a	undisclosed	a	0	1	1	oewn
+oewn-undiscouraged-a	undiscouraged	a	0	1	1	oewn
+oewn-undiscoverable-a	undiscoverable	a	0	1	1	oewn
+oewn-undiscovered-a	undiscovered	a	0	1	1	oewn
+oewn-undiscriminating-a	undiscriminating	a	0	1	1	oewn
+oewn-undisguised-a	undisguised	a	0	1	1	oewn
+oewn-undismayed-a	undismayed	a	0	1	1	oewn
+oewn-undisputable-a	undisputable	a	0	1	1	oewn
+oewn-undisputed-a	undisputed	a	0	1	1	oewn
+oewn-undisputedly-r	undisputedly	r	0	1	1	oewn
+oewn-undissolved-a	undissolved	a	0	1	1	oewn
+oewn-undistinguishable-a	undistinguishable	a	0	1	1	oewn
+oewn-undistinguished-a	undistinguished	a	0	1	1	oewn
+oewn-undistorted-a	undistorted	a	0	1	1	oewn
+oewn-undistributed-a	undistributed	a	0	1	1	oewn
+oewn-undisturbed-a	undisturbed	a	0	1	1	oewn
+oewn-undiversified-a	undiversified	a	0	1	1	oewn
+oewn-undividable-a	undividable	a	0	1	1	oewn
+oewn-undivided-a	undivided	a	0	1	1	oewn
+oewn-undivided_interest-n	undivided interest	n	0	2	2	oewn
+oewn-undivided_right-n	undivided right	n	0	2	2	oewn
+oewn-undo-v	undo	v	0	1	1	oewn
+oewn-undoable-a	undoable	a	0	1	1	oewn
+oewn-undock-v	undock	v	0	1	1	oewn
+oewn-undocumented-a	undocumented	a	0	1	1	oewn
+oewn-undoer-n	undoer	n	0	1	1	oewn
+oewn-undogmatic-a	undogmatic	a	0	1	1	oewn
+oewn-undogmatical-a	undogmatical	a	0	1	1	oewn
+oewn-undoing-n	undoing	n	0	1	1	oewn
+oewn-undomestic-a	undomestic	a	0	1	1	oewn
+oewn-undomesticated-a	undomesticated	a	0	1	1	oewn
+oewn-undone-a	undone	a	0	1	1	oewn
+oewn-undoubtedly-r	undoubtedly	r	0	1	1	oewn
+oewn-undrained-a	undrained	a	0	1	1	oewn
+oewn-undramatic-a	undramatic	a	0	1	1	oewn
+oewn-undramatically-r	undramatically	r	0	1	1	oewn
+oewn-undrape-v	undrape	v	0	1	1	oewn
+oewn-undraped-a	undraped	a	0	1	1	oewn
+oewn-undrawn-a	undrawn	a	0	1	1	oewn
+oewn-undreamed-a	undreamed	a	0	1	1	oewn
+oewn-undreamed_of-a	undreamed of	a	0	2	2	oewn
+oewn-undreamt-a	undreamt	a	0	1	1	oewn
+oewn-undreamt_of-a	undreamt of	a	0	2	2	oewn
+oewn-undress-n	undress	n	0	1	1	oewn
+oewn-undress-v	undress	v	0	1	1	oewn
+oewn-undressed-a	undressed	a	0	1	1	oewn
+oewn-undried-a	undried	a	0	1	1	oewn
+oewn-undrinkable-a	undrinkable	a	0	1	1	oewn
+oewn-undue-a	undue	a	0	1	1	oewn
+oewn-undulant-a	undulant	a	0	1	1	oewn
+oewn-undulant_fever-n	undulant fever	n	0	2	2	oewn
+oewn-undulate-a	undulate	a	0	1	1	oewn
+oewn-undulate-v	undulate	v	0	1	1	oewn
+oewn-undulation-n	undulation	n	0	1	1	oewn
+oewn-undulatory-a	undulatory	a	0	1	1	oewn
+oewn-undulatory_theory-n	undulatory theory	n	0	2	2	oewn
+oewn-unduly-r	unduly	r	0	1	1	oewn
+oewn-undutiful-a	undutiful	a	0	1	1	oewn
+oewn-undutifulness-n	undutifulness	n	0	1	1	oewn
+oewn-undyed-a	undyed	a	0	1	1	oewn
+oewn-undying-a	undying	a	0	1	1	oewn
+oewn-undynamic-a	undynamic	a	0	1	1	oewn
+oewn-uneager-a	uneager	a	0	1	1	oewn
+oewn-unearned-a	unearned	a	0	1	1	oewn
+oewn-unearned_income-n	unearned income	n	0	2	2	oewn
+oewn-unearned_increment-n	unearned increment	n	0	2	2	oewn
+oewn-unearned_revenue-n	unearned revenue	n	0	2	2	oewn
+oewn-unearned_run-n	unearned run	n	0	2	2	oewn
+oewn-unearth-v	unearth	v	0	1	1	oewn
+oewn-unearthly-a	unearthly	a	0	1	1	oewn
+oewn-unease-n	unease	n	0	1	1	oewn
+oewn-uneasily-r	uneasily	r	0	1	1	oewn
+oewn-uneasiness-n	uneasiness	n	0	1	1	oewn
+oewn-uneasy-a	uneasy	a	0	1	1	oewn
+oewn-uneatable-a	uneatable	a	0	1	1	oewn
+oewn-uneconomic-a	uneconomic	a	0	1	1	oewn
+oewn-uneconomical-a	uneconomical	a	0	1	1	oewn
+oewn-unedifying-a	unedifying	a	0	1	1	oewn
+oewn-unedited-a	unedited	a	0	1	1	oewn
+oewn-uneducated-a	uneducated	a	0	1	1	oewn
+oewn-uneducated_person-n	uneducated person	n	0	2	2	oewn
+oewn-uneffective-a	uneffective	a	0	1	1	oewn
+oewn-unelaborate-a	unelaborate	a	0	1	1	oewn
+oewn-unelaborated-a	unelaborated	a	0	1	1	oewn
+oewn-unembarrassed-a	unembarrassed	a	0	1	1	oewn
+oewn-unembellished-a	unembellished	a	0	1	1	oewn
+oewn-unembodied-a	unembodied	a	0	1	1	oewn
+oewn-unemotional-a	unemotional	a	0	1	1	oewn
+oewn-unemotional_person-n	unemotional person	n	0	2	2	oewn
+oewn-unemotionality-n	unemotionality	n	0	1	1	oewn
+oewn-unemotionally-r	unemotionally	r	0	1	1	oewn
+oewn-unemphatic-a	unemphatic	a	0	1	1	oewn
+oewn-unemployable-a	unemployable	a	0	1	1	oewn
+oewn-unemployed-a	unemployed	a	0	1	1	oewn
+oewn-unemployed-n	unemployed	n	0	1	1	oewn
+oewn-unemployed_people-n	unemployed people	n	0	2	2	oewn
+oewn-unemployed_person-n	unemployed person	n	0	2	2	oewn
+oewn-unemployment-n	unemployment	n	0	1	1	oewn
+oewn-unemployment_compensation-n	unemployment compensation	n	0	2	2	oewn
+oewn-unemployment_line-n	unemployment line	n	0	2	2	oewn
+oewn-unemployment_rate-n	unemployment rate	n	0	2	2	oewn
+oewn-unenclosed-a	unenclosed	a	0	1	1	oewn
+oewn-unencouraging-a	unencouraging	a	0	1	1	oewn
+oewn-unencumbered-a	unencumbered	a	0	1	1	oewn
+oewn-unended-a	unended	a	0	1	1	oewn
+oewn-unending-a	unending	a	0	1	1	oewn
+oewn-unendingly-r	unendingly	r	0	1	1	oewn
+oewn-unendowed-a	unendowed	a	0	1	1	oewn
+oewn-unendurable-a	unendurable	a	0	1	1	oewn
+oewn-unenergetic-a	unenergetic	a	0	1	1	oewn
+oewn-unenergetically-r	unenergetically	r	0	1	1	oewn
+oewn-unenforceable-a	unenforceable	a	0	1	1	oewn
+oewn-unenforced-a	unenforced	a	0	1	1	oewn
+oewn-unengaged-a	unengaged	a	0	1	1	oewn
+oewn-unenlightened-a	unenlightened	a	0	1	1	oewn
+oewn-unenlightening-a	unenlightening	a	0	1	1	oewn
+oewn-unenlightenment-n	unenlightenment	n	0	1	1	oewn
+oewn-unenlivened-a	unenlivened	a	0	1	1	oewn
+oewn-unenterprising-a	unenterprising	a	0	1	1	oewn
+oewn-unenthusiastic-a	unenthusiastic	a	0	1	1	oewn
+oewn-unenthusiastically-r	unenthusiastically	r	0	1	1	oewn
+oewn-unentitled-a	unentitled	a	0	1	1	oewn
+oewn-unenviable-a	unenviable	a	0	1	1	oewn
+oewn-unequal-a	unequal	a	0	1	1	oewn
+oewn-unequal_to-a	unequal to	a	0	2	2	oewn
+oewn-unequaled-a	unequaled	a	0	1	1	oewn
+oewn-unequalised-a	unequalised	a	0	1	1	oewn
+oewn-unequalized-a	unequalized	a	0	1	1	oewn
+oewn-unequalled-a	unequalled	a	0	1	1	oewn
+oewn-unequally-r	unequally	r	0	1	1	oewn
+oewn-unequipped-a	unequipped	a	0	1	1	oewn
+oewn-unequivocal-a	unequivocal	a	0	1	1	oewn
+oewn-unequivocally-r	unequivocally	r	0	1	1	oewn
+oewn-unequivocalness-n	unequivocalness	n	0	1	1	oewn
+oewn-unerasable-a	unerasable	a	0	1	1	oewn
+oewn-unerect-a	unerect	a	0	1	1	oewn
+oewn-unerring-a	unerring	a	0	1	1	oewn
+oewn-unerringly-r	unerringly	r	0	1	1	oewn
+oewn-unessential-a	unessential	a	0	1	1	oewn
+oewn-unestablished-a	unestablished	a	0	1	1	oewn
+oewn-unethical-a	unethical	a	0	1	1	oewn
+oewn-unethically-r	unethically	r	0	1	1	oewn
+oewn-uneven-a	uneven	a	0	1	1	oewn
+oewn-uneven_bars-n	uneven bars	n	0	2	2	oewn
+oewn-uneven_parallel_bars-n	uneven parallel bars	n	0	3	3	oewn
+oewn-unevenly-r	unevenly	r	0	1	1	oewn
+oewn-unevenness-n	unevenness	n	0	1	1	oewn
+oewn-uneventful-a	uneventful	a	0	1	1	oewn
+oewn-uneventfully-r	uneventfully	r	0	1	1	oewn
+oewn-unexacting-a	unexacting	a	0	1	1	oewn
+oewn-unexampled-a	unexampled	a	0	1	1	oewn
+oewn-unexceeded-a	unexceeded	a	0	1	1	oewn
+oewn-unexcelled-a	unexcelled	a	0	1	1	oewn
+oewn-unexceptionable-a	unexceptionable	a	0	1	1	oewn
+oewn-unexceptional-a	unexceptional	a	0	1	1	oewn
+oewn-unexchangeability-n	unexchangeability	n	0	1	1	oewn
+oewn-unexchangeable-a	unexchangeable	a	0	1	1	oewn
+oewn-unexcitable-a	unexcitable	a	0	1	1	oewn
+oewn-unexcited-a	unexcited	a	0	1	1	oewn
+oewn-unexciting-a	unexciting	a	0	1	1	oewn
+oewn-unexcitingly-r	unexcitingly	r	0	1	1	oewn
+oewn-unexclusive-a	unexclusive	a	0	1	1	oewn
+oewn-unexcused-a	unexcused	a	0	1	1	oewn
+oewn-unexhausted-a	unexhausted	a	0	1	1	oewn
+oewn-unexpansive-a	unexpansive	a	0	1	1	oewn
+oewn-unexpected-a	unexpected	a	0	1	1	oewn
+oewn-unexpectedly-r	unexpectedly	r	0	1	1	oewn
+oewn-unexpectedness-n	unexpectedness	n	0	1	1	oewn
+oewn-unexpendable-a	unexpendable	a	0	1	1	oewn
+oewn-unexpended-a	unexpended	a	0	1	1	oewn
+oewn-unexpired-a	unexpired	a	0	1	1	oewn
+oewn-unexplainable-a	unexplainable	a	0	1	1	oewn
+oewn-unexplained-a	unexplained	a	0	1	1	oewn
+oewn-unexploded-a	unexploded	a	0	1	1	oewn
+oewn-unexploited-a	unexploited	a	0	1	1	oewn
+oewn-unexplorative-a	unexplorative	a	0	1	1	oewn
+oewn-unexploratory-a	unexploratory	a	0	1	1	oewn
+oewn-unexplored-a	unexplored	a	0	1	1	oewn
+oewn-unexportable-a	unexportable	a	0	1	1	oewn
+oewn-unexpressed-a	unexpressed	a	0	1	1	oewn
+oewn-unexpressible-a	unexpressible	a	0	1	1	oewn
+oewn-unexpressive-a	unexpressive	a	0	1	1	oewn
+oewn-unexpurgated-a	unexpurgated	a	0	1	1	oewn
+oewn-unextended-a	unextended	a	0	1	1	oewn
+oewn-unfaceted-a	unfaceted	a	0	1	1	oewn
+oewn-unfading-a	unfading	a	0	1	1	oewn
+oewn-unfailing-a	unfailing	a	0	1	1	oewn
+oewn-unfailingly-r	unfailingly	r	0	1	1	oewn
+oewn-unfair-a	unfair	a	0	1	1	oewn
+oewn-unfairly-r	unfairly	r	0	1	1	oewn
+oewn-unfairness-n	unfairness	n	0	1	1	oewn
+oewn-unfaithful-a	unfaithful	a	0	1	1	oewn
+oewn-unfaithfully-r	unfaithfully	r	0	1	1	oewn
+oewn-unfaithfulness-n	unfaithfulness	n	0	1	1	oewn
+oewn-unfaltering-a	unfaltering	a	0	1	1	oewn
+oewn-unfalteringly-r	unfalteringly	r	0	1	1	oewn
+oewn-unfamiliar-a	unfamiliar	a	0	1	1	oewn
+oewn-unfamiliar_with-a	unfamiliar with	a	0	2	2	oewn
+oewn-unfamiliarity-n	unfamiliarity	n	0	1	1	oewn
+oewn-unfashionable-a	unfashionable	a	0	1	1	oewn
+oewn-unfashionably-r	unfashionably	r	0	1	1	oewn
+oewn-unfasten-v	unfasten	v	0	1	1	oewn
+oewn-unfastened-a	unfastened	a	0	1	1	oewn
+oewn-unfastener-n	unfastener	n	0	1	1	oewn
+oewn-unfastening-n	unfastening	n	0	1	1	oewn
+oewn-unfastidious-a	unfastidious	a	0	1	1	oewn
+oewn-unfathomable-a	unfathomable	a	0	1	1	oewn
+oewn-unfathomed-a	unfathomed	a	0	1	1	oewn
+oewn-unfattened-a	unfattened	a	0	1	1	oewn
+oewn-unfavorable-a	unfavorable	a	0	1	1	oewn
+oewn-unfavorable_judgment-n	unfavorable judgment	n	0	2	2	oewn
+oewn-unfavorable_position-n	unfavorable position	n	0	2	2	oewn
+oewn-unfavorableness-n	unfavorableness	n	0	1	1	oewn
+oewn-unfavorably-r	unfavorably	r	0	1	1	oewn
+oewn-unfavourable-a	unfavourable	a	0	1	1	oewn
+oewn-unfavourableness-n	unfavourableness	n	0	1	1	oewn
+oewn-unfavourably-r	unfavourably	r	0	1	1	oewn
+oewn-unfearing-a	unfearing	a	0	1	1	oewn
+oewn-unfeasibility-n	unfeasibility	n	0	1	1	oewn
+oewn-unfeasible-a	unfeasible	a	0	1	1	oewn
+oewn-unfeathered-a	unfeathered	a	0	1	1	oewn
+oewn-unfed-a	unfed	a	0	1	1	oewn
+oewn-unfeeling-a	unfeeling	a	0	1	1	oewn
+oewn-unfeelingly-r	unfeelingly	r	0	1	1	oewn
+oewn-unfeelingness-n	unfeelingness	n	0	1	1	oewn
+oewn-unfeigned-a	unfeigned	a	0	1	1	oewn
+oewn-unfeignedly-r	unfeignedly	r	0	1	1	oewn
+oewn-unfeminine-a	unfeminine	a	0	1	1	oewn
+oewn-unfenced-a	unfenced	a	0	1	1	oewn
+oewn-unfermented-a	unfermented	a	0	1	1	oewn
+oewn-unfertile-a	unfertile	a	0	1	1	oewn
+oewn-unfertilised-a	unfertilised	a	0	1	1	oewn
+oewn-unfertilized-a	unfertilized	a	0	1	1	oewn
+oewn-unfettered-a	unfettered	a	0	1	1	oewn
+oewn-unfilled-a	unfilled	a	0	1	1	oewn
+oewn-unfilmed-a	unfilmed	a	0	1	1	oewn
+oewn-unfinished-a	unfinished	a	0	1	1	oewn
+oewn-unfinished_business-n	unfinished business	n	0	2	2	oewn
+oewn-unfirm-a	unfirm	a	0	1	1	oewn
+oewn-unfit-a	unfit	a	0	1	1	oewn
+oewn-unfit-v	unfit	v	0	1	1	oewn
+oewn-unfitness-n	unfitness	n	0	1	1	oewn
+oewn-unfitting-a	unfitting	a	0	1	1	oewn
+oewn-unfixed-a	unfixed	a	0	1	1	oewn
+oewn-unflagging-a	unflagging	a	0	1	1	oewn
+oewn-unflappable-a	unflappable	a	0	1	1	oewn
+oewn-unflattering-a	unflattering	a	0	1	1	oewn
+oewn-unflavored-a	unflavored	a	0	1	1	oewn
+oewn-unflavoured-a	unflavoured	a	0	1	1	oewn
+oewn-unflawed-a	unflawed	a	0	1	1	oewn
+oewn-unfledged-a	unfledged	a	0	1	1	oewn
+oewn-unflinching-a	unflinching	a	0	1	1	oewn
+oewn-unfluctuating-a	unfluctuating	a	0	1	1	oewn
+oewn-unflurried-a	unflurried	a	0	1	1	oewn
+oewn-unflustered-a	unflustered	a	0	1	1	oewn
+oewn-unfocused-a	unfocused	a	0	1	1	oewn
+oewn-unfocussed-a	unfocussed	a	0	1	1	oewn
+oewn-unfold-v	unfold	v	0	1	1	oewn
+oewn-unfolding-n	unfolding	n	0	1	1	oewn
+oewn-unfollow-v	unfollow	v	0	1	1	oewn
+oewn-unforbearing-a	unforbearing	a	0	1	1	oewn
+oewn-unforced-a	unforced	a	0	1	1	oewn
+oewn-unforceful-a	unforceful	a	0	1	1	oewn
+oewn-unforeseeable-a	unforeseeable	a	0	1	1	oewn
+oewn-unforeseen-a	unforeseen	a	0	1	1	oewn
+oewn-unforesightful-a	unforesightful	a	0	1	1	oewn
+oewn-unforested-a	unforested	a	0	1	1	oewn
+oewn-unforethoughtful-a	unforethoughtful	a	0	1	1	oewn
+oewn-unforfeitable-a	unforfeitable	a	0	1	1	oewn
+oewn-unforgettable-a	unforgettable	a	0	1	1	oewn
+oewn-unforgettably-r	unforgettably	r	0	1	1	oewn
+oewn-unforgivable-a	unforgivable	a	0	1	1	oewn
+oewn-unforgivably-r	unforgivably	r	0	1	1	oewn
+oewn-unforgiving-a	unforgiving	a	0	1	1	oewn
+oewn-unforgivingly-r	unforgivingly	r	0	1	1	oewn
+oewn-unforgivingness-n	unforgivingness	n	0	1	1	oewn
+oewn-unformatted_capacity-n	unformatted capacity	n	0	2	2	oewn
+oewn-unformed-a	unformed	a	0	1	1	oewn
+oewn-unfortunate-a	unfortunate	a	0	1	1	oewn
+oewn-unfortunate-n	unfortunate	n	0	1	1	oewn
+oewn-unfortunate_person-n	unfortunate person	n	0	2	2	oewn
+oewn-unfortunately-r	unfortunately	r	0	1	1	oewn
+oewn-unfounded-a	unfounded	a	0	1	1	oewn
+oewn-unframed-a	unframed	a	0	1	1	oewn
+oewn-unfree-a	unfree	a	0	1	1	oewn
+oewn-unfreeze-v	unfreeze	v	0	1	1	oewn
+oewn-unfrequented-a	unfrequented	a	0	1	1	oewn
+oewn-unfretted-a	unfretted	a	0	1	1	oewn
+oewn-unfriend-v	unfriend	v	0	1	1	oewn
+oewn-unfriendliness-n	unfriendliness	n	0	1	1	oewn
+oewn-unfriendly-a	unfriendly	a	0	1	1	oewn
+oewn-unfrightened-a	unfrightened	a	0	1	1	oewn
+oewn-unfrock-v	unfrock	v	0	1	1	oewn
+oewn-unfrosted-a	unfrosted	a	0	1	1	oewn
+oewn-unfrozen-a	unfrozen	a	0	1	1	oewn
+oewn-unfruitful-a	unfruitful	a	0	1	1	oewn
+oewn-unfueled-a	unfueled	a	0	1	1	oewn
+oewn-unfulfilled-a	unfulfilled	a	0	1	1	oewn
+oewn-unfunctional-a	unfunctional	a	0	1	1	oewn
+oewn-unfunded-a	unfunded	a	0	1	1	oewn
+oewn-unfunny-a	unfunny	a	0	1	1	oewn
+oewn-unfurl-v	unfurl	v	0	1	1	oewn
+oewn-unfurnished-a	unfurnished	a	0	1	1	oewn
+oewn-unfurrowed-a	unfurrowed	a	0	1	1	oewn
+oewn-ungainliness-n	ungainliness	n	0	1	1	oewn
+oewn-ungainly-a	ungainly	a	0	1	1	oewn
+oewn-ungallant-a	ungallant	a	0	1	1	oewn
+oewn-ungarbed-a	ungarbed	a	0	1	1	oewn
+oewn-ungarmented-a	ungarmented	a	0	1	1	oewn
+oewn-ungathered-a	ungathered	a	0	1	1	oewn
+oewn-ungeared-a	ungeared	a	0	1	1	oewn
+oewn-ungenerous-a	ungenerous	a	0	1	1	oewn
+oewn-ungentle-a	ungentle	a	0	1	1	oewn
+oewn-ungentlemanlike-a	ungentlemanlike	a	0	1	1	oewn
+oewn-ungentlemanly-a	ungentlemanly	a	0	1	1	oewn
+oewn-ungetatable-a	ungetatable	a	0	1	1	oewn
+oewn-unglamorous-a	unglamorous	a	0	1	1	oewn
+oewn-unglamourous-a	unglamourous	a	0	1	1	oewn
+oewn-unglazed-a	unglazed	a	0	1	1	oewn
+oewn-ungodliness-n	ungodliness	n	0	1	1	oewn
+oewn-ungodly-a	ungodly	a	0	1	1	oewn
+oewn-ungovernable-a	ungovernable	a	0	1	1	oewn
+oewn-ungoverned-a	ungoverned	a	0	1	1	oewn
+oewn-ungraceful-a	ungraceful	a	0	1	1	oewn
+oewn-ungracefully-r	ungracefully	r	0	1	1	oewn
+oewn-ungracefulness-n	ungracefulness	n	0	1	1	oewn
+oewn-ungracious-a	ungracious	a	0	1	1	oewn
+oewn-ungraciously-r	ungraciously	r	0	1	1	oewn
+oewn-ungraciousness-n	ungraciousness	n	0	1	1	oewn
+oewn-ungradable_opposition-n	ungradable opposition	n	0	2	2	oewn
+oewn-ungraded-a	ungraded	a	0	1	1	oewn
+oewn-ungrammatical-a	ungrammatical	a	0	1	1	oewn
+oewn-ungrammaticality-n	ungrammaticality	n	0	1	1	oewn
+oewn-ungrammatically-r	ungrammatically	r	0	1	1	oewn
+oewn-ungrasped-a	ungrasped	a	0	1	1	oewn
+oewn-ungrateful-a	ungrateful	a	0	1	1	oewn
+oewn-ungrateful_person-n	ungrateful person	n	0	2	2	oewn
+oewn-ungratefully-r	ungratefully	r	0	1	1	oewn
+oewn-ungratefulness-n	ungratefulness	n	0	1	1	oewn
+oewn-ungratified-a	ungratified	a	0	1	1	oewn
+oewn-ungratifying-a	ungratifying	a	0	1	1	oewn
+oewn-ungreased-a	ungreased	a	0	1	1	oewn
+oewn-ungregarious-a	ungregarious	a	0	1	1	oewn
+oewn-ungroomed-a	ungroomed	a	0	1	1	oewn
+oewn-ungrudging-a	ungrudging	a	0	1	1	oewn
+oewn-ungrudgingly-r	ungrudgingly	r	0	1	1	oewn
+oewn-ungual-a	ungual	a	0	1	1	oewn
+oewn-unguaranteed-a	unguaranteed	a	0	1	1	oewn
+oewn-unguarded-a	unguarded	a	0	1	1	oewn
+oewn-unguent-n	unguent	n	0	1	1	oewn
+oewn-unguiculate-a	unguiculate	a	0	1	1	oewn
+oewn-unguiculate-n	unguiculate	n	0	1	1	oewn
+oewn-unguiculate_mammal-n	unguiculate mammal	n	0	2	2	oewn
+oewn-unguiculated-a	unguiculated	a	0	1	1	oewn
+oewn-unguided-a	unguided	a	0	1	1	oewn
+oewn-unguis-n	unguis	n	0	1	1	oewn
+oewn-ungulate-a	ungulate	a	0	1	1	oewn
+oewn-ungulate-n	ungulate	n	0	1	1	oewn
+oewn-ungulated-a	ungulated	a	0	1	1	oewn
+oewn-ungummed-a	ungummed	a	0	1	1	oewn
+oewn-ungusseted-a	ungusseted	a	0	1	1	oewn
+oewn-unhallow-v	unhallow	v	0	1	1	oewn
+oewn-unhallowed-a	unhallowed	a	0	1	1	oewn
+oewn-unhampered-a	unhampered	a	0	1	1	oewn
+oewn-unhand-v	unhand	v	0	1	1	oewn
+oewn-unhappily-r	unhappily	r	0	1	1	oewn
+oewn-unhappiness-n	unhappiness	n	0	1	1	oewn
+oewn-unhappy-a	unhappy	a	0	1	1	oewn
+oewn-unhardened-a	unhardened	a	0	1	1	oewn
+oewn-unharmed-a	unharmed	a	0	1	1	oewn
+oewn-unharmonious-a	unharmonious	a	0	1	1	oewn
+oewn-unharmoniously-r	unharmoniously	r	0	1	1	oewn
+oewn-unharness-v	unharness	v	0	1	1	oewn
+oewn-unhatched-a	unhatched	a	0	1	1	oewn
+oewn-unhazardous-a	unhazardous	a	0	1	1	oewn
+oewn-unheaded-a	unheaded	a	0	1	1	oewn
+oewn-unhealed-a	unhealed	a	0	1	1	oewn
+oewn-unhealthful-a	unhealthful	a	0	1	1	oewn
+oewn-unhealthfulness-n	unhealthfulness	n	0	1	1	oewn
+oewn-unhealthiness-n	unhealthiness	n	0	1	1	oewn
+oewn-unhealthy-a	unhealthy	a	0	1	1	oewn
+oewn-unhearable-a	unhearable	a	0	1	1	oewn
+oewn-unheard-a	unheard	a	0	1	1	oewn
+oewn-unheard-of-a	unheard-of	a	0	1	1	oewn
+oewn-unhearing-a	unhearing	a	0	1	1	oewn
+oewn-unheated-a	unheated	a	0	1	1	oewn
+oewn-unheeded-a	unheeded	a	0	1	1	oewn
+oewn-unheeding-a	unheeding	a	0	1	1	oewn
+oewn-unhelpful-a	unhelpful	a	0	1	1	oewn
+oewn-unhelpfully-r	unhelpfully	r	0	1	1	oewn
+oewn-unhelpfulness-n	unhelpfulness	n	0	1	1	oewn
+oewn-unheralded-a	unheralded	a	0	1	1	oewn
+oewn-unhesitating-a	unhesitating	a	0	1	1	oewn
+oewn-unhesitatingly-r	unhesitatingly	r	0	1	1	oewn
+oewn-unhewn-a	unhewn	a	0	1	1	oewn
+oewn-unhindered-a	unhindered	a	0	1	1	oewn
+oewn-unhinge-v	unhinge	v	0	1	1	oewn
+oewn-unhinged-a	unhinged	a	0	1	1	oewn
+oewn-unhitch-v	unhitch	v	0	1	1	oewn
+oewn-unholiness-n	unholiness	n	0	1	1	oewn
+oewn-unholy-a	unholy	a	0	1	1	oewn
+oewn-unhomogenised-a	unhomogenised	a	0	1	1	oewn
+oewn-unhomogenized-a	unhomogenized	a	0	1	1	oewn
+oewn-unhook-v	unhook	v	0	1	1	oewn
+oewn-unhoped-a	unhoped	a	0	1	1	oewn
+oewn-unhoped-for-a	unhoped-for	a	0	1	1	oewn
+oewn-unhopeful-a	unhopeful	a	0	1	1	oewn
+oewn-unhorse-v	unhorse	v	0	1	1	oewn
+oewn-unhuman-a	unhuman	a	0	1	1	oewn
+oewn-unhumorous-a	unhumorous	a	0	1	1	oewn
+oewn-unhurried-a	unhurried	a	0	1	1	oewn
+oewn-unhurriedly-r	unhurriedly	r	0	1	1	oewn
+oewn-unhurriedness-n	unhurriedness	n	0	1	1	oewn
+oewn-unhurt-a	unhurt	a	0	1	1	oewn
+oewn-unhygienic-a	unhygienic	a	0	1	1	oewn
+oewn-unhygienically-r	unhygienically	r	0	1	1	oewn
+oewn-unicameral-a	unicameral	a	0	1	1	oewn
+oewn-unicameral_script-n	unicameral script	n	0	2	2	oewn
+oewn-unicellular-a	unicellular	a	0	1	1	oewn
+oewn-unicorn-n	unicorn	n	0	1	1	oewn
+oewn-unicorn_root-n	unicorn root	n	0	2	2	oewn
+oewn-unicuspid-a	unicuspid	a	0	1	1	oewn
+oewn-unicycle-n	unicycle	n	0	1	1	oewn
+oewn-unicycle-v	unicycle	v	0	1	1	oewn
+oewn-unicyclist-n	unicyclist	n	0	1	1	oewn
+oewn-unidentifiable-a	unidentifiable	a	0	1	1	oewn
+oewn-unidentified-a	unidentified	a	0	1	1	oewn
+oewn-unidentified_flying_object-n	unidentified flying object	n	0	3	3	oewn
+oewn-unidimensional-a	unidimensional	a	0	1	1	oewn
+oewn-unidirectional-a	unidirectional	a	0	1	1	oewn
+oewn-unifacial-a	unifacial	a	0	1	1	oewn
+oewn-unification-n	unification	n	0	1	1	oewn
+oewn-unified-a	unified	a	0	1	1	oewn
+oewn-unifilar-a	unifilar	a	0	1	1	oewn
+oewn-unifoliate-a	unifoliate	a	0	1	1	oewn
+oewn-uniform-a	uniform	a	0	1	1	oewn
+oewn-uniform-n	uniform	n	0	1	1	oewn
+oewn-uniform-v	uniform	v	0	1	1	oewn
+oewn-uniform_acceleration-n	uniform acceleration	n	0	2	2	oewn
+oewn-uniform_resource_locator-n	uniform resource locator	n	0	3	3	oewn
+oewn-uniformed-a	uniformed	a	0	1	1	oewn
+oewn-uniformise-v	uniformise	v	0	1	1	oewn
+oewn-uniformity-n	uniformity	n	0	1	1	oewn
+oewn-uniformize-v	uniformize	v	0	1	1	oewn
+oewn-uniformly-r	uniformly	r	0	1	1	oewn
+oewn-uniformly_decelerated_motion-n	uniformly decelerated motion	n	0	3	3	oewn
+oewn-uniformness-n	uniformness	n	0	1	1	oewn
+oewn-unify-v	unify	v	0	1	1	oewn
+oewn-unifying-a	unifying	a	0	1	1	oewn
+oewn-unilateral-a	unilateral	a	0	1	1	oewn
+oewn-unilateral_contract-n	unilateral contract	n	0	2	2	oewn
+oewn-unilateral_descent-n	unilateral descent	n	0	2	2	oewn
+oewn-unilateral_paralysis-n	unilateral paralysis	n	0	2	2	oewn
+oewn-unilateralism-n	unilateralism	n	0	1	1	oewn
+oewn-unilateralist-n	unilateralist	n	0	1	1	oewn
+oewn-unilaterality-n	unilaterality	n	0	1	1	oewn
+oewn-unilaterally-r	unilaterally	r	0	1	1	oewn
+oewn-unilluminated-a	unilluminated	a	0	1	1	oewn
+oewn-unilluminating-a	unilluminating	a	0	1	1	oewn
+oewn-unimaginable-a	unimaginable	a	0	1	1	oewn
+oewn-unimaginably-r	unimaginably	r	0	1	1	oewn
+oewn-unimaginative-a	unimaginative	a	0	1	1	oewn
+oewn-unimaginatively-r	unimaginatively	r	0	1	1	oewn
+oewn-unimagined-a	unimagined	a	0	1	1	oewn
+oewn-unimodal-a	unimodal	a	0	1	1	oewn
+oewn-unimpaired-a	unimpaired	a	0	1	1	oewn
+oewn-unimpassioned-a	unimpassioned	a	0	1	1	oewn
+oewn-unimpeachable-a	unimpeachable	a	0	1	1	oewn
+oewn-unimpeachably-r	unimpeachably	r	0	1	1	oewn
+oewn-unimpeded-a	unimpeded	a	0	1	1	oewn
+oewn-unimportance-n	unimportance	n	0	1	1	oewn
+oewn-unimportant-a	unimportant	a	0	1	1	oewn
+oewn-unimposing-a	unimposing	a	0	1	1	oewn
+oewn-unimpregnated-a	unimpregnated	a	0	1	1	oewn
+oewn-unimpressed-a	unimpressed	a	0	1	1	oewn
+oewn-unimpressionable-a	unimpressionable	a	0	1	1	oewn
+oewn-unimpressive-a	unimpressive	a	0	1	1	oewn
+oewn-unimpressively-r	unimpressively	r	0	1	1	oewn
+oewn-unimprisoned-a	unimprisoned	a	0	1	1	oewn
+oewn-unimproved-a	unimproved	a	0	1	1	oewn
+oewn-unincorporated-a	unincorporated	a	0	1	1	oewn
+oewn-unindustrialised-a	unindustrialised	a	0	1	1	oewn
+oewn-unindustrialized-a	unindustrialized	a	0	1	1	oewn
+oewn-uninebriated-a	uninebriated	a	0	1	1	oewn
+oewn-uninfected-a	uninfected	a	0	1	1	oewn
+oewn-uninflected-a	uninflected	a	0	1	1	oewn
+oewn-uninfluenced-a	uninfluenced	a	0	1	1	oewn
+oewn-uninfluential-a	uninfluential	a	0	1	1	oewn
+oewn-uninformative-a	uninformative	a	0	1	1	oewn
+oewn-uninformatively-r	uninformatively	r	0	1	1	oewn
+oewn-uninformed-a	uninformed	a	0	1	1	oewn
+oewn-uninhabitable-a	uninhabitable	a	0	1	1	oewn
+oewn-uninhabited-a	uninhabited	a	0	1	1	oewn
+oewn-uninhibited-a	uninhibited	a	0	1	1	oewn
+oewn-uninitiate-a	uninitiate	a	0	1	1	oewn
+oewn-uninitiate-n	uninitiate	n	0	1	1	oewn
+oewn-uninitiated-a	uninitiated	a	0	1	1	oewn
+oewn-uninjectable-a	uninjectable	a	0	1	1	oewn
+oewn-uninjured-a	uninjured	a	0	1	1	oewn
+oewn-uninominal-a	uninominal	a	0	1	1	oewn
+oewn-uninominal_system-n	uninominal system	n	0	2	2	oewn
+oewn-uninominal_voting_system-n	uninominal voting system	n	0	3	3	oewn
+oewn-uninquiring-a	uninquiring	a	0	1	1	oewn
+oewn-uninquisitive-a	uninquisitive	a	0	1	1	oewn
+oewn-uninspired-a	uninspired	a	0	1	1	oewn
+oewn-uninspiring-a	uninspiring	a	0	1	1	oewn
+oewn-uninstructed-a	uninstructed	a	0	1	1	oewn
+oewn-uninstructive-a	uninstructive	a	0	1	1	oewn
+oewn-uninstructively-r	uninstructively	r	0	1	1	oewn
+oewn-uninsurability-n	uninsurability	n	0	1	1	oewn
+oewn-uninsurable-a	uninsurable	a	0	1	1	oewn
+oewn-uninsured-a	uninsured	a	0	1	1	oewn
+oewn-unintegrated-a	unintegrated	a	0	1	1	oewn
+oewn-unintelligent-a	unintelligent	a	0	1	1	oewn
+oewn-unintelligently-r	unintelligently	r	0	1	1	oewn
+oewn-unintelligibility-n	unintelligibility	n	0	1	1	oewn
+oewn-unintelligible-a	unintelligible	a	0	1	1	oewn
+oewn-unintelligibly-r	unintelligibly	r	0	1	1	oewn
+oewn-unintended-a	unintended	a	0	1	1	oewn
+oewn-unintentional-a	unintentional	a	0	1	1	oewn
+oewn-unintentionally-r	unintentionally	r	0	1	1	oewn
+oewn-uninterested-a	uninterested	a	0	1	1	oewn
+oewn-uninteresting-a	uninteresting	a	0	1	1	oewn
+oewn-uninterestingly-r	uninterestingly	r	0	1	1	oewn
+oewn-uninterestingness-n	uninterestingness	n	0	1	1	oewn
+oewn-uninterrupted-a	uninterrupted	a	0	1	1	oewn
+oewn-uninterruptedly-r	uninterruptedly	r	0	1	1	oewn
+oewn-unintimidated-a	unintimidated	a	0	1	1	oewn
+oewn-unintoxicated-a	unintoxicated	a	0	1	1	oewn
+oewn-unintrusive-a	unintrusive	a	0	1	1	oewn
+oewn-uninucleate-a	uninucleate	a	0	1	1	oewn
+oewn-uninventive-a	uninventive	a	0	1	1	oewn
+oewn-uninvited-a	uninvited	a	0	1	1	oewn
+oewn-uninvitedly-r	uninvitedly	r	0	1	1	oewn
+oewn-uninviting-a	uninviting	a	0	1	1	oewn
+oewn-uninvolved-a	uninvolved	a	0	1	1	oewn
+oewn-uniocular_dichromat-n	uniocular dichromat	n	0	2	2	oewn
+oewn-union-a	union	a	0	1	1	oewn
+oewn-union-n	union	n	0	1	1	oewn
+oewn-union_card-n	union card	n	0	2	2	oewn
+oewn-union_member-n	union member	n	0	2	2	oewn
+oewn-union_representative-n	union representative	n	0	2	2	oewn
+oewn-union_shop-n	union shop	n	0	2	2	oewn
+oewn-union_suit-n	union suit	n	0	2	2	oewn
+oewn-unionisation-n	unionisation	n	0	1	1	oewn
+oewn-unionise-v	unionise	v	0	1	1	oewn
+oewn-unionised-a	unionised	a	0	1	1	oewn
+oewn-unionism-n	unionism	n	0	1	1	oewn
+oewn-unionist-n	unionist	n	0	1	1	oewn
+oewn-unionization-n	unionization	n	0	1	1	oewn
+oewn-unionize-v	unionize	v	0	1	1	oewn
+oewn-unionized-a	unionized	a	0	1	1	oewn
+oewn-uniovular-a	uniovular	a	0	1	1	oewn
+oewn-uniovulate-a	uniovulate	a	0	1	1	oewn
+oewn-uniparous-a	uniparous	a	0	1	1	oewn
+oewn-unipolar-a	unipolar	a	0	1	1	oewn
+oewn-unipolar_depression-n	unipolar depression	n	0	2	2	oewn
+oewn-unique-a	unique	a	0	1	1	oewn
+oewn-uniquely-r	uniquely	r	0	1	1	oewn
+oewn-uniqueness-n	uniqueness	n	0	1	1	oewn
+oewn-unironed-a	unironed	a	0	1	1	oewn
+oewn-unisex-a	unisex	a	0	1	1	oewn
+oewn-unisexual-a	unisexual	a	0	1	1	oewn
+oewn-unison-n	unison	n	0	1	1	oewn
+oewn-unit-n	unit	n	0	1	1	oewn
+oewn-unit_cell-n	unit cell	n	0	2	2	oewn
+oewn-unit_character-n	unit character	n	0	2	2	oewn
+oewn-unit_cost-n	unit cost	n	0	2	2	oewn
+oewn-unit_investment_trust-n	unit investment trust	n	0	3	3	oewn
+oewn-unit_matrix-n	unit matrix	n	0	2	2	oewn
+oewn-unit_of_ammunition-n	unit of ammunition	n	0	3	1	oewn
+oewn-unit_of_measurement-n	unit of measurement	n	0	3	1	oewn
+oewn-unit_of_time-n	unit of time	n	0	3	1	oewn
+oewn-unit_of_viscosity-n	unit of viscosity	n	0	3	1	oewn
+oewn-unit_trust-n	unit trust	n	0	2	2	oewn
+oewn-unitard-n	unitard	n	0	1	1	oewn
+oewn-unitariness-n	unitariness	n	0	1	1	oewn
+oewn-unitarism-n	unitarism	n	0	1	1	oewn
+oewn-unitary-a	unitary	a	0	1	1	oewn
+oewn-unite-v	unite	v	0	1	1	oewn
+oewn-united-a	united	a	0	1	1	oewn
+oewn-unitedly-r	unitedly	r	0	1	1	oewn
+oewn-uniting-n	uniting	n	0	1	1	oewn
+oewn-unitisation-n	unitisation	n	0	1	1	oewn
+oewn-unitise-v	unitise	v	0	1	1	oewn
+oewn-unitization-n	unitization	n	0	1	1	oewn
+oewn-unitize-v	unitize	v	0	1	1	oewn
+oewn-unity-n	unity	n	0	1	1	oewn
+oewn-univalent-a	univalent	a	0	1	1	oewn
+oewn-univalve-a	univalve	a	0	1	1	oewn
+oewn-univalve-n	univalve	n	0	1	1	oewn
+oewn-universal-a	universal	a	0	1	1	oewn
+oewn-universal-n	universal	n	0	1	1	oewn
+oewn-universal_agent-n	universal agent	n	0	2	2	oewn
+oewn-universal_donor-n	universal donor	n	0	2	2	oewn
+oewn-universal_gas_constant-n	universal gas constant	n	0	3	3	oewn
+oewn-universal_gravitational_constant-n	universal gravitational constant	n	0	3	3	oewn
+oewn-universal_joint-n	universal joint	n	0	2	2	oewn
+oewn-universal_meter-n	universal meter	n	0	2	2	oewn
+oewn-universal_metre-n	universal metre	n	0	2	2	oewn
+oewn-universal_proposition-n	universal proposition	n	0	2	2	oewn
+oewn-universal_quantifier-n	universal quantifier	n	0	2	2	oewn
+oewn-universal_resource_locator-n	universal resource locator	n	0	3	3	oewn
+oewn-universal_set-n	universal set	n	0	2	2	oewn
+oewn-universal_solvent-n	universal solvent	n	0	2	2	oewn
+oewn-universal_suffrage-n	universal suffrage	n	0	2	2	oewn
+oewn-universal_time-n	universal time	n	0	2	2	oewn
+oewn-universal_veil-n	universal veil	n	0	2	2	oewn
+oewn-universalise-v	universalise	v	0	1	1	oewn
+oewn-universalism-n	universalism	n	0	1	1	oewn
+oewn-universalist-a	universalist	a	0	1	1	oewn
+oewn-universalistic-a	universalistic	a	0	1	1	oewn
+oewn-universality-n	universality	n	0	1	1	oewn
+oewn-universalize-v	universalize	v	0	1	1	oewn
+oewn-universally-r	universally	r	0	1	1	oewn
+oewn-universe-n	universe	n	0	1	1	oewn
+oewn-universe_of_discourse-n	universe of discourse	n	0	3	1	oewn
+oewn-university-n	university	n	0	1	1	oewn
+oewn-university_extension-n	university extension	n	0	2	2	oewn
+oewn-university_student-n	university student	n	0	2	2	oewn
+oewn-univocal-a	univocal	a	0	1	1	oewn
+oewn-unjointed-a	unjointed	a	0	1	1	oewn
+oewn-unjust-a	unjust	a	0	1	1	oewn
+oewn-unjustifiable-a	unjustifiable	a	0	1	1	oewn
+oewn-unjustifiably-r	unjustifiably	r	0	1	1	oewn
+oewn-unjustified-a	unjustified	a	0	1	1	oewn
+oewn-unjustly-r	unjustly	r	0	1	1	oewn
+oewn-unjustness-n	unjustness	n	0	1	1	oewn
+oewn-unkempt-a	unkempt	a	0	1	1	oewn
+oewn-unkemptness-n	unkemptness	n	0	1	1	oewn
+oewn-unkept-a	unkept	a	0	1	1	oewn
+oewn-unkeyed-a	unkeyed	a	0	1	1	oewn
+oewn-unkind-a	unkind	a	0	1	1	oewn
+oewn-unkind_person-n	unkind person	n	0	2	2	oewn
+oewn-unkindled-a	unkindled	a	0	1	1	oewn
+oewn-unkindly-a	unkindly	a	0	1	1	oewn
+oewn-unkindly-r	unkindly	r	0	1	1	oewn
+oewn-unkindness-n	unkindness	n	0	1	1	oewn
+oewn-unknot-v	unknot	v	0	1	1	oewn
+oewn-unknowable-a	unknowable	a	0	1	1	oewn
+oewn-unknowing-a	unknowing	a	0	1	1	oewn
+oewn-unknowing-n	unknowing	n	0	1	1	oewn
+oewn-unknowingly-r	unknowingly	r	0	1	1	oewn
+oewn-unknowingness-n	unknowingness	n	0	1	1	oewn
+oewn-unknowledgeable-a	unknowledgeable	a	0	1	1	oewn
+oewn-unknown-a	unknown	a	0	1	1	oewn
+oewn-unknown-n	unknown	n	0	1	1	oewn
+oewn-unknown_quantity-n	unknown quantity	n	0	2	2	oewn
+oewn-unknown_region-n	unknown region	n	0	2	2	oewn
+oewn-unlabeled-a	unlabeled	a	0	1	1	oewn
+oewn-unlabelled-a	unlabelled	a	0	1	1	oewn
+oewn-unlace-v	unlace	v	0	1	1	oewn
+oewn-unlaced-a	unlaced	a	0	1	1	oewn
+oewn-unlade-v	unlade	v	0	1	1	oewn
+oewn-unladylike-a	unladylike	a	0	1	1	oewn
+oewn-unlamented-a	unlamented	a	0	1	1	oewn
+oewn-unlash-v	unlash	v	0	1	1	oewn
+oewn-unlatched-a	unlatched	a	0	1	1	oewn
+oewn-unlaureled-a	unlaureled	a	0	1	1	oewn
+oewn-unlaurelled-a	unlaurelled	a	0	1	1	oewn
+oewn-unlawful-a	unlawful	a	0	1	1	oewn
+oewn-unlawful_carnal_knowledge-n	unlawful carnal knowledge	n	0	3	3	oewn
+oewn-unlawfully-r	unlawfully	r	0	1	1	oewn
+oewn-unlawfulness-n	unlawfulness	n	0	1	1	oewn
+oewn-unlax-v	unlax	v	0	1	1	oewn
+oewn-unleaded-a	unleaded	a	0	1	1	oewn
+oewn-unleaded_gasoline-n	unleaded gasoline	n	0	2	2	oewn
+oewn-unleaded_petrol-n	unleaded petrol	n	0	2	2	oewn
+oewn-unlearn-v	unlearn	v	0	1	1	oewn
+oewn-unlearned-a	unlearned	a	0	1	1	oewn
+oewn-unleash-v	unleash	v	0	1	1	oewn
+oewn-unleavened-a	unleavened	a	0	1	1	oewn
+oewn-unleavened_bread-n	unleavened bread	n	0	2	2	oewn
+oewn-unlettered-a	unlettered	a	0	1	1	oewn
+oewn-unlicenced-a	unlicenced	a	0	1	1	oewn
+oewn-unlicensed-a	unlicensed	a	0	1	1	oewn
+oewn-unlifelike-a	unlifelike	a	0	1	1	oewn
+oewn-unlighted-a	unlighted	a	0	1	1	oewn
+oewn-unlikable-a	unlikable	a	0	1	1	oewn
+oewn-unlike-a	unlike	a	0	1	1	oewn
+oewn-unlikeable-a	unlikeable	a	0	1	1	oewn
+oewn-unlikelihood-n	unlikelihood	n	0	1	1	oewn
+oewn-unlikeliness-n	unlikeliness	n	0	1	1	oewn
+oewn-unlikely-a	unlikely	a	0	1	1	oewn
+oewn-unlikeness-n	unlikeness	n	0	1	1	oewn
+oewn-unlimited-a	unlimited	a	0	1	1	oewn
+oewn-unlined-a	unlined	a	0	1	1	oewn
+oewn-unlipped-a	unlipped	a	0	1	1	oewn
+oewn-unlisted-a	unlisted	a	0	1	1	oewn
+oewn-unlisted_security-n	unlisted security	n	0	2	2	oewn
+oewn-unlisted_stock-n	unlisted stock	n	0	2	2	oewn
+oewn-unlit-a	unlit	a	0	1	1	oewn
+oewn-unliterary-a	unliterary	a	0	1	1	oewn
+oewn-unlittered-a	unlittered	a	0	1	1	oewn
+oewn-unlivable-a	unlivable	a	0	1	1	oewn
+oewn-unlive-v	unlive	v	0	1	1	oewn
+oewn-unliveable-a	unliveable	a	0	1	1	oewn
+oewn-unliveried-a	unliveried	a	0	1	1	oewn
+oewn-unload-v	unload	v	0	1	1	oewn
+oewn-unloaded-a	unloaded	a	0	1	1	oewn
+oewn-unloading-n	unloading	n	0	1	1	oewn
+oewn-unlobed-a	unlobed	a	0	1	1	oewn
+oewn-unlocated-a	unlocated	a	0	1	1	oewn
+oewn-unlock-v	unlock	v	0	1	1	oewn
+oewn-unlocked-a	unlocked	a	0	1	1	oewn
+oewn-unlogical-a	unlogical	a	0	1	1	oewn
+oewn-unlooked-for-a	unlooked-for	a	0	1	1	oewn
+oewn-unloose-v	unloose	v	0	1	1	oewn
+oewn-unloosen-v	unloosen	v	0	1	1	oewn
+oewn-unlovable-a	unlovable	a	0	1	1	oewn
+oewn-unloved-a	unloved	a	0	1	1	oewn
+oewn-unlovely-a	unlovely	a	0	1	1	oewn
+oewn-unloving-a	unloving	a	0	1	1	oewn
+oewn-unlubricated-a	unlubricated	a	0	1	1	oewn
+oewn-unluckily-r	unluckily	r	0	1	1	oewn
+oewn-unlucky-a	unlucky	a	0	1	1	oewn
+oewn-unmade-a	unmade	a	0	1	1	oewn
+oewn-unmake-v	unmake	v	0	1	1	oewn
+oewn-unmalicious-a	unmalicious	a	0	1	1	oewn
+oewn-unmalleability-n	unmalleability	n	0	1	1	oewn
+oewn-unmalleable-a	unmalleable	a	0	1	1	oewn
+oewn-unmalted-a	unmalted	a	0	1	1	oewn
+oewn-unman-v	unman	v	0	1	1	oewn
+oewn-unmanageable-a	unmanageable	a	0	1	1	oewn
+oewn-unmanageableness-n	unmanageableness	n	0	1	1	oewn
+oewn-unmanageably-r	unmanageably	r	0	1	1	oewn
+oewn-unmanful-a	unmanful	a	0	1	1	oewn
+oewn-unmanfully-r	unmanfully	r	0	1	1	oewn
+oewn-unmanlike-a	unmanlike	a	0	1	1	oewn
+oewn-unmanliness-n	unmanliness	n	0	1	1	oewn
+oewn-unmanly-a	unmanly	a	0	1	1	oewn
+oewn-unmanly-r	unmanly	r	0	1	1	oewn
+oewn-unmanned-a	unmanned	a	0	1	1	oewn
+oewn-unmannered-a	unmannered	a	0	1	1	oewn
+oewn-unmannerly-a	unmannerly	a	0	1	1	oewn
+oewn-unmapped-a	unmapped	a	0	1	1	oewn
+oewn-unmarked-a	unmarked	a	0	1	1	oewn
+oewn-unmarketable-a	unmarketable	a	0	1	1	oewn
+oewn-unmarred-a	unmarred	a	0	1	1	oewn
+oewn-unmarried-a	unmarried	a	0	1	1	oewn
+oewn-unmarried_man-n	unmarried man	n	0	2	2	oewn
+oewn-unmarried_woman-n	unmarried woman	n	0	2	2	oewn
+oewn-unmask-v	unmask	v	0	1	1	oewn
+oewn-unmasking-n	unmasking	n	0	1	1	oewn
+oewn-unmatchable-a	unmatchable	a	0	1	1	oewn
+oewn-unmatched-a	unmatched	a	0	1	1	oewn
+oewn-unmated-a	unmated	a	0	1	1	oewn
+oewn-unmeaning-a	unmeaning	a	0	1	1	oewn
+oewn-unmeasurable-a	unmeasurable	a	0	1	1	oewn
+oewn-unmeasured-a	unmeasured	a	0	1	1	oewn
+oewn-unmechanical-a	unmechanical	a	0	1	1	oewn
+oewn-unmechanised-a	unmechanised	a	0	1	1	oewn
+oewn-unmechanized-a	unmechanized	a	0	1	1	oewn
+oewn-unmediated-a	unmediated	a	0	1	1	oewn
+oewn-unmedical-a	unmedical	a	0	1	1	oewn
+oewn-unmedicative-a	unmedicative	a	0	1	1	oewn
+oewn-unmedicinal-a	unmedicinal	a	0	1	1	oewn
+oewn-unmelodic-a	unmelodic	a	0	1	1	oewn
+oewn-unmelodious-a	unmelodious	a	0	1	1	oewn
+oewn-unmelodiously-r	unmelodiously	r	0	1	1	oewn
+oewn-unmelted-a	unmelted	a	0	1	1	oewn
+oewn-unmemorable-a	unmemorable	a	0	1	1	oewn
+oewn-unmemorably-r	unmemorably	r	0	1	1	oewn
+oewn-unmentionable-a	unmentionable	a	0	1	1	oewn
+oewn-unmentionable-n	unmentionable	n	0	1	1	oewn
+oewn-unmercenary-a	unmercenary	a	0	1	1	oewn
+oewn-unmerchantable-a	unmerchantable	a	0	1	1	oewn
+oewn-unmerciful-a	unmerciful	a	0	1	1	oewn
+oewn-unmercifully-r	unmercifully	r	0	1	1	oewn
+oewn-unmercifulness-n	unmercifulness	n	0	1	1	oewn
+oewn-unmerited-a	unmerited	a	0	1	1	oewn
+oewn-unmeritorious-a	unmeritorious	a	0	1	1	oewn
+oewn-unmethodical-a	unmethodical	a	0	1	1	oewn
+oewn-unmilitary-a	unmilitary	a	0	1	1	oewn
+oewn-unmindful-a	unmindful	a	0	1	1	oewn
+oewn-unmindfully-r	unmindfully	r	0	1	1	oewn
+oewn-unmindfulness-n	unmindfulness	n	0	1	1	oewn
+oewn-unmined-a	unmined	a	0	1	1	oewn
+oewn-unmingled-a	unmingled	a	0	1	1	oewn
+oewn-unmistakable-a	unmistakable	a	0	1	1	oewn
+oewn-unmistakably-r	unmistakably	r	0	1	1	oewn
+oewn-unmitigable-a	unmitigable	a	0	1	1	oewn
+oewn-unmitigated-a	unmitigated	a	0	1	1	oewn
+oewn-unmixable-a	unmixable	a	0	1	1	oewn
+oewn-unmixed-a	unmixed	a	0	1	1	oewn
+oewn-unmoderated-a	unmoderated	a	0	1	1	oewn
+oewn-unmodernised-a	unmodernised	a	0	1	1	oewn
+oewn-unmodernized-a	unmodernized	a	0	1	1	oewn
+oewn-unmodifiable-a	unmodifiable	a	0	1	1	oewn
+oewn-unmodified-a	unmodified	a	0	1	1	oewn
+oewn-unmodulated-a	unmodulated	a	0	1	1	oewn
+oewn-unmolested-a	unmolested	a	0	1	1	oewn
+oewn-unmortgaged-a	unmortgaged	a	0	1	1	oewn
+oewn-unmotivated-a	unmotivated	a	0	1	1	oewn
+oewn-unmotorised-a	unmotorised	a	0	1	1	oewn
+oewn-unmotorized-a	unmotorized	a	0	1	1	oewn
+oewn-unmourned-a	unmourned	a	0	1	1	oewn
+oewn-unmovable-a	unmovable	a	0	1	1	oewn
+oewn-unmoved-a	unmoved	a	0	1	1	oewn
+oewn-unmoving-a	unmoving	a	0	1	1	oewn
+oewn-unmown-a	unmown	a	0	1	1	oewn
+oewn-unmusical-a	unmusical	a	0	1	1	oewn
+oewn-unmusicality-n	unmusicality	n	0	1	1	oewn
+oewn-unmusically-r	unmusically	r	0	1	1	oewn
+oewn-unmutilated-a	unmutilated	a	0	1	1	oewn
+oewn-unmuzzle-v	unmuzzle	v	0	1	1	oewn
+oewn-unmyelinated-a	unmyelinated	a	0	1	1	oewn
+oewn-unnameable-a	unnameable	a	0	1	1	oewn
+oewn-unnamed-a	unnamed	a	0	1	1	oewn
+oewn-unnatural-a	unnatural	a	0	1	1	oewn
+oewn-unnaturalised-a	unnaturalised	a	0	1	1	oewn
+oewn-unnaturalized-a	unnaturalized	a	0	1	1	oewn
+oewn-unnaturally-r	unnaturally	r	0	1	1	oewn
+oewn-unnaturalness-n	unnaturalness	n	0	1	1	oewn
+oewn-unnavigable-a	unnavigable	a	0	1	1	oewn
+oewn-unnecessarily-r	unnecessarily	r	0	1	1	oewn
+oewn-unnecessary-a	unnecessary	a	0	1	1	oewn
+oewn-unneeded-a	unneeded	a	0	1	1	oewn
+oewn-unneighborliness-n	unneighborliness	n	0	1	1	oewn
+oewn-unneighborly-a	unneighborly	a	0	1	1	oewn
+oewn-unneighbourly-a	unneighbourly	a	0	1	1	oewn
+oewn-unnerve-v	unnerve	v	0	1	1	oewn
+oewn-unnerved-a	unnerved	a	0	1	1	oewn
+oewn-unnerving-a	unnerving	a	0	1	1	oewn
+oewn-unneurotic-a	unneurotic	a	0	1	1	oewn
+oewn-unnie-n	unnie	n	0	1	1	oewn
+oewn-unnilquadium-n	unnilquadium	n	0	1	1	oewn
+oewn-unnotched-a	unnotched	a	0	1	1	oewn
+oewn-unnoted-a	unnoted	a	0	1	1	oewn
+oewn-unnoticeable-a	unnoticeable	a	0	1	1	oewn
+oewn-unnoticeableness-n	unnoticeableness	n	0	1	1	oewn
+oewn-unnoticeably-r	unnoticeably	r	0	1	1	oewn
+oewn-unnoticed-a	unnoticed	a	0	1	1	oewn
+oewn-unnourished-a	unnourished	a	0	1	1	oewn
+oewn-unnumberable-a	unnumberable	a	0	1	1	oewn
+oewn-unnumbered-a	unnumbered	a	0	1	1	oewn
+oewn-unnumerable-a	unnumerable	a	0	1	1	oewn
+oewn-unobjectionable-a	unobjectionable	a	0	1	1	oewn
+oewn-unobjective-a	unobjective	a	0	1	1	oewn
+oewn-unobligated-a	unobligated	a	0	1	1	oewn
+oewn-unobliging-a	unobliging	a	0	1	1	oewn
+oewn-unobservable-a	unobservable	a	0	1	1	oewn
+oewn-unobservant-a	unobservant	a	0	1	1	oewn
+oewn-unobserved-a	unobserved	a	0	1	1	oewn
+oewn-unobserved_fire-n	unobserved fire	n	0	2	2	oewn
+oewn-unobstructed-a	unobstructed	a	0	1	1	oewn
+oewn-unobtainable-a	unobtainable	a	0	1	1	oewn
+oewn-unobtrusive-a	unobtrusive	a	0	1	1	oewn
+oewn-unobtrusively-r	unobtrusively	r	0	1	1	oewn
+oewn-unobtrusiveness-n	unobtrusiveness	n	0	1	1	oewn
+oewn-unobvious-a	unobvious	a	0	1	1	oewn
+oewn-unoccupied-a	unoccupied	a	0	1	1	oewn
+oewn-unoffending-a	unoffending	a	0	1	1	oewn
+oewn-unofficial-a	unofficial	a	0	1	1	oewn
+oewn-unofficially-r	unofficially	r	0	1	1	oewn
+oewn-unoiled-a	unoiled	a	0	1	1	oewn
+oewn-unopen-a	unopen	a	0	1	1	oewn
+oewn-unopened-a	unopened	a	0	1	1	oewn
+oewn-unopposable-a	unopposable	a	0	1	1	oewn
+oewn-unopposed-a	unopposed	a	0	1	1	oewn
+oewn-unordered-a	unordered	a	0	1	1	oewn
+oewn-unorganised-a	unorganised	a	0	1	1	oewn
+oewn-unorganized-a	unorganized	a	0	1	1	oewn
+oewn-unoriented-a	unoriented	a	0	1	1	oewn
+oewn-unoriginal-a	unoriginal	a	0	1	1	oewn
+oewn-unoriginality-n	unoriginality	n	0	1	1	oewn
+oewn-unoriginally-r	unoriginally	r	0	1	1	oewn
+oewn-unornamented-a	unornamented	a	0	1	1	oewn
+oewn-unorthodox-a	unorthodox	a	0	1	1	oewn
+oewn-unorthodoxy-n	unorthodoxy	n	0	1	1	oewn
+oewn-unostentatious-a	unostentatious	a	0	1	1	oewn
+oewn-unowned-a	unowned	a	0	1	1	oewn
+oewn-unoxygenated-a	unoxygenated	a	0	1	1	oewn
+oewn-unpack-v	unpack	v	0	1	1	oewn
+oewn-unpackaged-a	unpackaged	a	0	1	1	oewn
+oewn-unpaid-a	unpaid	a	0	1	1	oewn
+oewn-unpaid_worker-n	unpaid worker	n	0	2	2	oewn
+oewn-unpainful-a	unpainful	a	0	1	1	oewn
+oewn-unpaintable-a	unpaintable	a	0	1	1	oewn
+oewn-unpainted-a	unpainted	a	0	1	1	oewn
+oewn-unpaired-a	unpaired	a	0	1	1	oewn
+oewn-unpalatability-n	unpalatability	n	0	1	1	oewn
+oewn-unpalatable-a	unpalatable	a	0	1	1	oewn
+oewn-unpalatableness-n	unpalatableness	n	0	1	1	oewn
+oewn-unpalatably-r	unpalatably	r	0	1	1	oewn
+oewn-unparallel-a	unparallel	a	0	1	1	oewn
+oewn-unparalleled-a	unparalleled	a	0	1	1	oewn
+oewn-unpardonable-a	unpardonable	a	0	1	1	oewn
+oewn-unpardonably-r	unpardonably	r	0	1	1	oewn
+oewn-unparented-a	unparented	a	0	1	1	oewn
+oewn-unparliamentary-a	unparliamentary	a	0	1	1	oewn
+oewn-unpartitioned-a	unpartitioned	a	0	1	1	oewn
+oewn-unpassable-a	unpassable	a	0	1	1	oewn
+oewn-unpasteurised-a	unpasteurised	a	0	1	1	oewn
+oewn-unpasteurized-a	unpasteurized	a	0	1	1	oewn
+oewn-unpatented-a	unpatented	a	0	1	1	oewn
+oewn-unpatriotic-a	unpatriotic	a	0	1	1	oewn
+oewn-unpatriotically-r	unpatriotically	r	0	1	1	oewn
+oewn-unpatronised-a	unpatronised	a	0	1	1	oewn
+oewn-unpatronized-a	unpatronized	a	0	1	1	oewn
+oewn-unpatterned-a	unpatterned	a	0	1	1	oewn
+oewn-unpaved-a	unpaved	a	0	1	1	oewn
+oewn-unpeaceable-a	unpeaceable	a	0	1	1	oewn
+oewn-unpeaceful-a	unpeaceful	a	0	1	1	oewn
+oewn-unpeopled-a	unpeopled	a	0	1	1	oewn
+oewn-unperceivable-a	unperceivable	a	0	1	1	oewn
+oewn-unperceived-a	unperceived	a	0	1	1	oewn
+oewn-unperceiving-a	unperceiving	a	0	1	1	oewn
+oewn-unperceptive-a	unperceptive	a	0	1	1	oewn
+oewn-unperceptiveness-n	unperceptiveness	n	0	1	1	oewn
+oewn-unperformed-a	unperformed	a	0	1	1	oewn
+oewn-unpermed-a	unpermed	a	0	1	1	oewn
+oewn-unpermissive-a	unpermissive	a	0	1	1	oewn
+oewn-unpermissiveness-n	unpermissiveness	n	0	1	1	oewn
+oewn-unperplexed-a	unperplexed	a	0	1	1	oewn
+oewn-unperson-n	unperson	n	0	1	1	oewn
+oewn-unpersuadable-a	unpersuadable	a	0	1	1	oewn
+oewn-unpersuaded-a	unpersuaded	a	0	1	1	oewn
+oewn-unpersuasive-a	unpersuasive	a	0	1	1	oewn
+oewn-unpersuasiveness-n	unpersuasiveness	n	0	1	1	oewn
+oewn-unperturbed-a	unperturbed	a	0	1	1	oewn
+oewn-unpick-v	unpick	v	0	1	1	oewn
+oewn-unpictured-a	unpictured	a	0	1	1	oewn
+oewn-unpicturesque-a	unpicturesque	a	0	1	1	oewn
+oewn-unpierced-a	unpierced	a	0	1	1	oewn
+oewn-unpigmented-a	unpigmented	a	0	1	1	oewn
+oewn-unpillared-a	unpillared	a	0	1	1	oewn
+oewn-unpin-v	unpin	v	0	1	1	oewn
+oewn-unpitying-a	unpitying	a	0	1	1	oewn
+oewn-unplaced-a	unplaced	a	0	1	1	oewn
+oewn-unplanned-a	unplanned	a	0	1	1	oewn
+oewn-unplanted-a	unplanted	a	0	1	1	oewn
+oewn-unplayable-a	unplayable	a	0	1	1	oewn
+oewn-unplayful-a	unplayful	a	0	1	1	oewn
+oewn-unpleasant-a	unpleasant	a	0	1	1	oewn
+oewn-unpleasant-smelling-a	unpleasant-smelling	a	0	1	1	oewn
+oewn-unpleasant_person-n	unpleasant person	n	0	2	2	oewn
+oewn-unpleasantly-r	unpleasantly	r	0	1	1	oewn
+oewn-unpleasantness-n	unpleasantness	n	0	1	1	oewn
+oewn-unpleasing-a	unpleasing	a	0	1	1	oewn
+oewn-unpleasingness-n	unpleasingness	n	0	1	1	oewn
+oewn-unpledged-a	unpledged	a	0	1	1	oewn
+oewn-unploughed-a	unploughed	a	0	1	1	oewn
+oewn-unplowed-a	unplowed	a	0	1	1	oewn
+oewn-unplug-v	unplug	v	0	1	1	oewn
+oewn-unplumbed-a	unplumbed	a	0	1	1	oewn
+oewn-unpointed-a	unpointed	a	0	1	1	oewn
+oewn-unpointedness-n	unpointedness	n	0	1	1	oewn
+oewn-unpolished-a	unpolished	a	0	1	1	oewn
+oewn-unpolitical-a	unpolitical	a	0	1	1	oewn
+oewn-unpolluted-a	unpolluted	a	0	1	1	oewn
+oewn-unpompous-a	unpompous	a	0	1	1	oewn
+oewn-unpopular-a	unpopular	a	0	1	1	oewn
+oewn-unpopularity-n	unpopularity	n	0	1	1	oewn
+oewn-unpopulated-a	unpopulated	a	0	1	1	oewn
+oewn-unportable-a	unportable	a	0	1	1	oewn
+oewn-unposed-a	unposed	a	0	1	1	oewn
+oewn-unpotted-a	unpotted	a	0	1	1	oewn
+oewn-unpowered-a	unpowered	a	0	1	1	oewn
+oewn-unpracticed-a	unpracticed	a	0	1	1	oewn
+oewn-unpractised-a	unpractised	a	0	1	1	oewn
+oewn-unprecedented-a	unprecedented	a	0	1	1	oewn
+oewn-unprecedentedly-r	unprecedentedly	r	0	1	1	oewn
+oewn-unpredictability-n	unpredictability	n	0	1	1	oewn
+oewn-unpredictable-a	unpredictable	a	0	1	1	oewn
+oewn-unpredictably-r	unpredictably	r	0	1	1	oewn
+oewn-unpredicted-a	unpredicted	a	0	1	1	oewn
+oewn-unpredictive-a	unpredictive	a	0	1	1	oewn
+oewn-unprejudiced-a	unprejudiced	a	0	1	1	oewn
+oewn-unpremeditated-a	unpremeditated	a	0	1	1	oewn
+oewn-unprepared-a	unprepared	a	0	1	1	oewn
+oewn-unprepossessing-a	unprepossessing	a	0	1	1	oewn
+oewn-unpresentable-a	unpresentable	a	0	1	1	oewn
+oewn-unpresidential-a	unpresidential	a	0	1	1	oewn
+oewn-unpressed-a	unpressed	a	0	1	1	oewn
+oewn-unpretending-a	unpretending	a	0	1	1	oewn
+oewn-unpretentious-a	unpretentious	a	0	1	1	oewn
+oewn-unpretentiously-r	unpretentiously	r	0	1	1	oewn
+oewn-unpretentiousness-n	unpretentiousness	n	0	1	1	oewn
+oewn-unpreventable-a	unpreventable	a	0	1	1	oewn
+oewn-unpriestly-a	unpriestly	a	0	1	1	oewn
+oewn-unprincipled-a	unprincipled	a	0	1	1	oewn
+oewn-unprintable-a	unprintable	a	0	1	1	oewn
+oewn-unproblematic-a	unproblematic	a	0	1	1	oewn
+oewn-unproblematicalness-n	unproblematicalness	n	0	1	1	oewn
+oewn-unprocessed-a	unprocessed	a	0	1	1	oewn
+oewn-unprocurable-a	unprocurable	a	0	1	1	oewn
+oewn-unproductive-a	unproductive	a	0	1	1	oewn
+oewn-unproductively-r	unproductively	r	0	1	1	oewn
+oewn-unproductiveness-n	unproductiveness	n	0	1	1	oewn
+oewn-unprofessional-a	unprofessional	a	0	1	1	oewn
+oewn-unprofitability-n	unprofitability	n	0	1	1	oewn
+oewn-unprofitable-a	unprofitable	a	0	1	1	oewn
+oewn-unprofitableness-n	unprofitableness	n	0	1	1	oewn
+oewn-unprofitably-r	unprofitably	r	0	1	1	oewn
+oewn-unprogressive-a	unprogressive	a	0	1	1	oewn
+oewn-unpromised-a	unpromised	a	0	1	1	oewn
+oewn-unpromising-a	unpromising	a	0	1	1	oewn
+oewn-unprompted-a	unprompted	a	0	1	1	oewn
+oewn-unpronounceable-a	unpronounceable	a	0	1	1	oewn
+oewn-unprophetic-a	unprophetic	a	0	1	1	oewn
+oewn-unpropitious-a	unpropitious	a	0	1	1	oewn
+oewn-unpropitiously-r	unpropitiously	r	0	1	1	oewn
+oewn-unpropitiousness-n	unpropitiousness	n	0	1	1	oewn
+oewn-unprotected-a	unprotected	a	0	1	1	oewn
+oewn-unprotectedness-n	unprotectedness	n	0	1	1	oewn
+oewn-unprotective-a	unprotective	a	0	1	1	oewn
+oewn-unprovable-a	unprovable	a	0	1	1	oewn
+oewn-unproved-a	unproved	a	0	1	1	oewn
+oewn-unproven-a	unproven	a	0	1	1	oewn
+oewn-unprovided_for-a	unprovided for	a	0	2	2	oewn
+oewn-unprovocative-a	unprovocative	a	0	1	1	oewn
+oewn-unprovoked-a	unprovoked	a	0	1	1	oewn
+oewn-unprovoking-a	unprovoking	a	0	1	1	oewn
+oewn-unpublishable-a	unpublishable	a	0	1	1	oewn
+oewn-unpublished-a	unpublished	a	0	1	1	oewn
+oewn-unpunctual-a	unpunctual	a	0	1	1	oewn
+oewn-unpunished-a	unpunished	a	0	1	1	oewn
+oewn-unpurified-a	unpurified	a	0	1	1	oewn
+oewn-unqualified-a	unqualified	a	0	1	1	oewn
+oewn-unqualifiedly-r	unqualifiedly	r	0	1	1	oewn
+oewn-unquenchable-a	unquenchable	a	0	1	1	oewn
+oewn-unquestionability-n	unquestionability	n	0	1	1	oewn
+oewn-unquestionable-a	unquestionable	a	0	1	1	oewn
+oewn-unquestionableness-n	unquestionableness	n	0	1	1	oewn
+oewn-unquestionably-r	unquestionably	r	0	1	1	oewn
+oewn-unquestioned-a	unquestioned	a	0	1	1	oewn
+oewn-unquestioning-a	unquestioning	a	0	1	1	oewn
+oewn-unquestioningly-r	unquestioningly	r	0	1	1	oewn
+oewn-unquiet-a	unquiet	a	0	1	1	oewn
+oewn-unquietly-r	unquietly	r	0	1	1	oewn
+oewn-unquotable-a	unquotable	a	0	1	1	oewn
+oewn-unraised-a	unraised	a	0	1	1	oewn
+oewn-unranked-a	unranked	a	0	1	1	oewn
+oewn-unratable-a	unratable	a	0	1	1	oewn
+oewn-unratified-a	unratified	a	0	1	1	oewn
+oewn-unravel-v	unravel	v	0	1	1	oewn
+oewn-unraveler-n	unraveler	n	0	1	1	oewn
+oewn-unraveller-n	unraveller	n	0	1	1	oewn
+oewn-unreachable-a	unreachable	a	0	1	1	oewn
+oewn-unreached-a	unreached	a	0	1	1	oewn
+oewn-unreactive-a	unreactive	a	0	1	1	oewn
+oewn-unread-a	unread	a	0	1	1	oewn
+oewn-unreadable-a	unreadable	a	0	1	1	oewn
+oewn-unreadably-r	unreadably	r	0	1	1	oewn
+oewn-unready-a	unready	a	0	1	1	oewn
+oewn-unreal-a	unreal	a	0	1	1	oewn
+oewn-unrealised-a	unrealised	a	0	1	1	oewn
+oewn-unrealism-n	unrealism	n	0	1	1	oewn
+oewn-unrealistic-a	unrealistic	a	0	1	1	oewn
+oewn-unrealistically-r	unrealistically	r	0	1	1	oewn
+oewn-unreality-n	unreality	n	0	1	1	oewn
+oewn-unrealizable-a	unrealizable	a	0	1	1	oewn
+oewn-unrealized-a	unrealized	a	0	1	1	oewn
+oewn-unreason-n	unreason	n	0	1	1	oewn
+oewn-unreasonable-a	unreasonable	a	0	1	1	oewn
+oewn-unreasonably-r	unreasonably	r	0	1	1	oewn
+oewn-unreasoning-a	unreasoning	a	0	1	1	oewn
+oewn-unreasoningly-r	unreasoningly	r	0	1	1	oewn
+oewn-unreassuring-a	unreassuring	a	0	1	1	oewn
+oewn-unreceptive-a	unreceptive	a	0	1	1	oewn
+oewn-unreciprocated-a	unreciprocated	a	0	1	1	oewn
+oewn-unrecognisable-a	unrecognisable	a	0	1	1	oewn
+oewn-unrecognisable-r	unrecognisable	r	0	1	1	oewn
+oewn-unrecognised-a	unrecognised	a	0	1	1	oewn
+oewn-unrecognizable-a	unrecognizable	a	0	1	1	oewn
+oewn-unrecognizably-r	unrecognizably	r	0	1	1	oewn
+oewn-unrecognized-a	unrecognized	a	0	1	1	oewn
+oewn-unrecognized_state-n	unrecognized state	n	0	2	2	oewn
+oewn-unreconcilable-a	unreconcilable	a	0	1	1	oewn
+oewn-unreconciled-a	unreconciled	a	0	1	1	oewn
+oewn-unreconstructed-a	unreconstructed	a	0	1	1	oewn
+oewn-unrecorded-a	unrecorded	a	0	1	1	oewn
+oewn-unrecoverable-a	unrecoverable	a	0	1	1	oewn
+oewn-unredeemable-a	unredeemable	a	0	1	1	oewn
+oewn-unredeemed-a	unredeemed	a	0	1	1	oewn
+oewn-unreduced-a	unreduced	a	0	1	1	oewn
+oewn-unreel-v	unreel	v	0	1	1	oewn
+oewn-unrefined-a	unrefined	a	0	1	1	oewn
+oewn-unreflected-a	unreflected	a	0	1	1	oewn
+oewn-unreflective-a	unreflective	a	0	1	1	oewn
+oewn-unreformable-a	unreformable	a	0	1	1	oewn
+oewn-unreformed-a	unreformed	a	0	1	1	oewn
+oewn-unrefreshed-a	unrefreshed	a	0	1	1	oewn
+oewn-unregenerate-a	unregenerate	a	0	1	1	oewn
+oewn-unregenerated-a	unregenerated	a	0	1	1	oewn
+oewn-unregistered-a	unregistered	a	0	1	1	oewn
+oewn-unregretful-a	unregretful	a	0	1	1	oewn
+oewn-unregretting-a	unregretting	a	0	1	1	oewn
+oewn-unregularity-n	unregularity	n	0	1	1	oewn
+oewn-unregulated-a	unregulated	a	0	1	1	oewn
+oewn-unrehearsed-a	unrehearsed	a	0	1	1	oewn
+oewn-unrelated-a	unrelated	a	0	1	1	oewn
+oewn-unrelatedness-n	unrelatedness	n	0	1	1	oewn
+oewn-unrelaxed-a	unrelaxed	a	0	1	1	oewn
+oewn-unreleased-a	unreleased	a	0	1	1	oewn
+oewn-unrelenting-a	unrelenting	a	0	1	1	oewn
+oewn-unrelentingly-r	unrelentingly	r	0	1	1	oewn
+oewn-unreliability-n	unreliability	n	0	1	1	oewn
+oewn-unreliable-a	unreliable	a	0	1	1	oewn
+oewn-unreliableness-n	unreliableness	n	0	1	1	oewn
+oewn-unreliably-r	unreliably	r	0	1	1	oewn
+oewn-unrelieved-a	unrelieved	a	0	1	1	oewn
+oewn-unremarkable-a	unremarkable	a	0	1	1	oewn
+oewn-unremarkably-r	unremarkably	r	0	1	1	oewn
+oewn-unremarked-a	unremarked	a	0	1	1	oewn
+oewn-unremedied-a	unremedied	a	0	1	1	oewn
+oewn-unremitting-a	unremitting	a	0	1	1	oewn
+oewn-unremorseful-a	unremorseful	a	0	1	1	oewn
+oewn-unremunerative-a	unremunerative	a	0	1	1	oewn
+oewn-unrenewable-a	unrenewable	a	0	1	1	oewn
+oewn-unrenewed-a	unrenewed	a	0	1	1	oewn
+oewn-unrentable-a	unrentable	a	0	1	1	oewn
+oewn-unrepaired-a	unrepaired	a	0	1	1	oewn
+oewn-unrepeatable-a	unrepeatable	a	0	1	1	oewn
+oewn-unrepentant-a	unrepentant	a	0	1	1	oewn
+oewn-unrepentantly-r	unrepentantly	r	0	1	1	oewn
+oewn-unreplaceable-a	unreplaceable	a	0	1	1	oewn
+oewn-unreportable-a	unreportable	a	0	1	1	oewn
+oewn-unreported-a	unreported	a	0	1	1	oewn
+oewn-unrepresentative-a	unrepresentative	a	0	1	1	oewn
+oewn-unrepressed-a	unrepressed	a	0	1	1	oewn
+oewn-unreproducible-a	unreproducible	a	0	1	1	oewn
+oewn-unreproducibly-r	unreproducibly	r	0	1	1	oewn
+oewn-unrequested-a	unrequested	a	0	1	1	oewn
+oewn-unrequited-a	unrequited	a	0	1	1	oewn
+oewn-unresentful-a	unresentful	a	0	1	1	oewn
+oewn-unreserved-a	unreserved	a	0	1	1	oewn
+oewn-unreservedly-r	unreservedly	r	0	1	1	oewn
+oewn-unresistant-a	unresistant	a	0	1	1	oewn
+oewn-unresisting-a	unresisting	a	0	1	1	oewn
+oewn-unresolvable-a	unresolvable	a	0	1	1	oewn
+oewn-unresolved-a	unresolved	a	0	1	1	oewn
+oewn-unrespectability-n	unrespectability	n	0	1	1	oewn
+oewn-unrespectable-a	unrespectable	a	0	1	1	oewn
+oewn-unresponsive-a	unresponsive	a	0	1	1	oewn
+oewn-unresponsiveness-n	unresponsiveness	n	0	1	1	oewn
+oewn-unrest-n	unrest	n	0	1	1	oewn
+oewn-unrested-a	unrested	a	0	1	1	oewn
+oewn-unrestrained-a	unrestrained	a	0	1	1	oewn
+oewn-unrestrainedly-r	unrestrainedly	r	0	1	1	oewn
+oewn-unrestraint-n	unrestraint	n	0	1	1	oewn
+oewn-unrestricted-a	unrestricted	a	0	1	1	oewn
+oewn-unrestrictive-a	unrestrictive	a	0	1	1	oewn
+oewn-unretentive-a	unretentive	a	0	1	1	oewn
+oewn-unretrievable-a	unretrievable	a	0	1	1	oewn
+oewn-unrevealed-a	unrevealed	a	0	1	1	oewn
+oewn-unreverberant-a	unreverberant	a	0	1	1	oewn
+oewn-unrevised-a	unrevised	a	0	1	1	oewn
+oewn-unrevived-a	unrevived	a	0	1	1	oewn
+oewn-unrewarded-a	unrewarded	a	0	1	1	oewn
+oewn-unrewarding-a	unrewarding	a	0	1	1	oewn
+oewn-unrhetorical-a	unrhetorical	a	0	1	1	oewn
+oewn-unrhymed-a	unrhymed	a	0	1	1	oewn
+oewn-unrhythmic-a	unrhythmic	a	0	1	1	oewn
+oewn-unrhythmical-a	unrhythmical	a	0	1	1	oewn
+oewn-unrifled-a	unrifled	a	0	1	1	oewn
+oewn-unrigged-a	unrigged	a	0	1	1	oewn
+oewn-unrighteous-a	unrighteous	a	0	1	1	oewn
+oewn-unrighteously-r	unrighteously	r	0	1	1	oewn
+oewn-unrighteousness-n	unrighteousness	n	0	1	1	oewn
+oewn-unrimed-a	unrimed	a	0	1	1	oewn
+oewn-unripe-a	unripe	a	0	1	1	oewn
+oewn-unripened-a	unripened	a	0	1	1	oewn
+oewn-unrivaled-a	unrivaled	a	0	1	1	oewn
+oewn-unrivalled-a	unrivalled	a	0	1	1	oewn
+oewn-unroll-v	unroll	v	0	1	1	oewn
+oewn-unromantic-a	unromantic	a	0	1	1	oewn
+oewn-unromantically-r	unromantically	r	0	1	1	oewn
+oewn-unroofed-a	unroofed	a	0	1	1	oewn
+oewn-unrouged-a	unrouged	a	0	1	1	oewn
+oewn-unrounded_vowel-n	unrounded vowel	n	0	2	2	oewn
+oewn-unruffled-a	unruffled	a	0	1	1	oewn
+oewn-unruliness-n	unruliness	n	0	1	1	oewn
+oewn-unruly-a	unruly	a	0	1	1	oewn
+oewn-unsaddle-v	unsaddle	v	0	1	1	oewn
+oewn-unsaddled-a	unsaddled	a	0	1	1	oewn
+oewn-unsafe-a	unsafe	a	0	1	1	oewn
+oewn-unsaid-a	unsaid	a	0	1	1	oewn
+oewn-unsalable-a	unsalable	a	0	1	1	oewn
+oewn-unsalaried-a	unsalaried	a	0	1	1	oewn
+oewn-unsaleable-a	unsaleable	a	0	1	1	oewn
+oewn-unsalted-a	unsalted	a	0	1	1	oewn
+oewn-unsanctification-n	unsanctification	n	0	1	1	oewn
+oewn-unsanctified-a	unsanctified	a	0	1	1	oewn
+oewn-unsanctify-v	unsanctify	v	0	1	1	oewn
+oewn-unsanctioned-a	unsanctioned	a	0	1	1	oewn
+oewn-unsanded-a	unsanded	a	0	1	1	oewn
+oewn-unsanitariness-n	unsanitariness	n	0	1	1	oewn
+oewn-unsanitary-a	unsanitary	a	0	1	1	oewn
+oewn-unsaponified-a	unsaponified	a	0	1	1	oewn
+oewn-unsarcastic-a	unsarcastic	a	0	1	1	oewn
+oewn-unsated-a	unsated	a	0	1	1	oewn
+oewn-unsatiable-a	unsatiable	a	0	1	1	oewn
+oewn-unsatiably-r	unsatiably	r	0	1	1	oewn
+oewn-unsatiated-a	unsatiated	a	0	1	1	oewn
+oewn-unsatisfactorily-r	unsatisfactorily	r	0	1	1	oewn
+oewn-unsatisfactoriness-n	unsatisfactoriness	n	0	1	1	oewn
+oewn-unsatisfactory-a	unsatisfactory	a	0	1	1	oewn
+oewn-unsatisfiable-a	unsatisfiable	a	0	1	1	oewn
+oewn-unsatisfied-a	unsatisfied	a	0	1	1	oewn
+oewn-unsatisfying-a	unsatisfying	a	0	1	1	oewn
+oewn-unsaturated-a	unsaturated	a	0	1	1	oewn
+oewn-unsaturated_compound-n	unsaturated compound	n	0	2	2	oewn
+oewn-unsaturated_fatty_acid-n	unsaturated fatty acid	n	0	3	3	oewn
+oewn-unsaved-a	unsaved	a	0	1	1	oewn
+oewn-unsavoriness-n	unsavoriness	n	0	1	1	oewn
+oewn-unsavory-a	unsavory	a	0	1	1	oewn
+oewn-unsavoury-a	unsavoury	a	0	1	1	oewn
+oewn-unsay-v	unsay	v	0	1	1	oewn
+oewn-unscalable-a	unscalable	a	0	1	1	oewn
+oewn-unscathed-a	unscathed	a	0	1	1	oewn
+oewn-unscheduled-a	unscheduled	a	0	1	1	oewn
+oewn-unscholarly-a	unscholarly	a	0	1	1	oewn
+oewn-unschooled-a	unschooled	a	0	1	1	oewn
+oewn-unscientific-a	unscientific	a	0	1	1	oewn
+oewn-unscientifically-r	unscientifically	r	0	1	1	oewn
+oewn-unscramble-v	unscramble	v	0	1	1	oewn
+oewn-unscrew-v	unscrew	v	0	1	1	oewn
+oewn-unscripted-a	unscripted	a	0	1	1	oewn
+oewn-unscrupulous-a	unscrupulous	a	0	1	1	oewn
+oewn-unscrupulously-r	unscrupulously	r	0	1	1	oewn
+oewn-unscrupulousness-n	unscrupulousness	n	0	1	1	oewn
+oewn-unseal-v	unseal	v	0	1	1	oewn
+oewn-unsealed-a	unsealed	a	0	1	1	oewn
+oewn-unseamanlike-a	unseamanlike	a	0	1	1	oewn
+oewn-unseamed-a	unseamed	a	0	1	1	oewn
+oewn-unseasonable-a	unseasonable	a	0	1	1	oewn
+oewn-unseasonableness-n	unseasonableness	n	0	1	1	oewn
+oewn-unseasonably-r	unseasonably	r	0	1	1	oewn
+oewn-unseasoned-a	unseasoned	a	0	1	1	oewn
+oewn-unseat-v	unseat	v	0	1	1	oewn
+oewn-unseaworthy-a	unseaworthy	a	0	1	1	oewn
+oewn-unsectarian-a	unsectarian	a	0	1	1	oewn
+oewn-unsecured-a	unsecured	a	0	1	1	oewn
+oewn-unsecured_bond-n	unsecured bond	n	0	2	2	oewn
+oewn-unseductive-a	unseductive	a	0	1	1	oewn
+oewn-unsee-v	unsee	v	0	1	1	oewn
+oewn-unseeable-a	unseeable	a	0	1	1	oewn
+oewn-unseeded-a	unseeded	a	0	1	1	oewn
+oewn-unseeing-a	unseeing	a	0	1	1	oewn
+oewn-unseemliness-n	unseemliness	n	0	1	1	oewn
+oewn-unseemly-a	unseemly	a	0	1	1	oewn
+oewn-unseen-a	unseen	a	0	1	1	oewn
+oewn-unseen-n	unseen	n	0	1	1	oewn
+oewn-unsegmented-a	unsegmented	a	0	1	1	oewn
+oewn-unsegregated-a	unsegregated	a	0	1	1	oewn
+oewn-unselected-a	unselected	a	0	1	1	oewn
+oewn-unselective-a	unselective	a	0	1	1	oewn
+oewn-unselfconscious-a	unselfconscious	a	0	1	1	oewn
+oewn-unselfconsciously-r	unselfconsciously	r	0	1	1	oewn
+oewn-unselfconsciousness-n	unselfconsciousness	n	0	1	1	oewn
+oewn-unselfish-a	unselfish	a	0	1	1	oewn
+oewn-unselfishly-r	unselfishly	r	0	1	1	oewn
+oewn-unselfishness-n	unselfishness	n	0	1	1	oewn
+oewn-unsensational-a	unsensational	a	0	1	1	oewn
+oewn-unsent-a	unsent	a	0	1	1	oewn
+oewn-unsentimental-a	unsentimental	a	0	1	1	oewn
+oewn-unsentimentally-r	unsentimentally	r	0	1	1	oewn
+oewn-unserviceable-a	unserviceable	a	0	1	1	oewn
+oewn-unservile-a	unservile	a	0	1	1	oewn
+oewn-unsettle-v	unsettle	v	0	1	1	oewn
+oewn-unsettled-a	unsettled	a	0	1	1	oewn
+oewn-unsex-v	unsex	v	0	1	1	oewn
+oewn-unsexed-a	unsexed	a	0	1	1	oewn
+oewn-unsexy-a	unsexy	a	0	1	1	oewn
+oewn-unshackled-a	unshackled	a	0	1	1	oewn
+oewn-unshaded-a	unshaded	a	0	1	1	oewn
+oewn-unshadowed-a	unshadowed	a	0	1	1	oewn
+oewn-unshakable-a	unshakable	a	0	1	1	oewn
+oewn-unshakably-r	unshakably	r	0	1	1	oewn
+oewn-unshaken-a	unshaken	a	0	1	1	oewn
+oewn-unshaped-a	unshaped	a	0	1	1	oewn
+oewn-unshapely-a	unshapely	a	0	1	1	oewn
+oewn-unshapen-a	unshapen	a	0	1	1	oewn
+oewn-unshared-a	unshared	a	0	1	1	oewn
+oewn-unsharpened-a	unsharpened	a	0	1	1	oewn
+oewn-unshaved-a	unshaved	a	0	1	1	oewn
+oewn-unshaven-a	unshaven	a	0	1	1	oewn
+oewn-unsheared-a	unsheared	a	0	1	1	oewn
+oewn-unsheathe-v	unsheathe	v	0	1	1	oewn
+oewn-unsheathed-a	unsheathed	a	0	1	1	oewn
+oewn-unshelled-a	unshelled	a	0	1	1	oewn
+oewn-unshielded-a	unshielded	a	0	1	1	oewn
+oewn-unshockable-a	unshockable	a	0	1	1	oewn
+oewn-unshod-a	unshod	a	0	1	1	oewn
+oewn-unshoed-a	unshoed	a	0	1	1	oewn
+oewn-unshorn-a	unshorn	a	0	1	1	oewn
+oewn-unshrinkable-a	unshrinkable	a	0	1	1	oewn
+oewn-unshrinking-a	unshrinking	a	0	1	1	oewn
+oewn-unshuttered-a	unshuttered	a	0	1	1	oewn
+oewn-unsighted-a	unsighted	a	0	1	1	oewn
+oewn-unsightliness-n	unsightliness	n	0	1	1	oewn
+oewn-unsightly-a	unsightly	a	0	1	1	oewn
+oewn-unsigned-a	unsigned	a	0	1	1	oewn
+oewn-unsilenced-a	unsilenced	a	0	1	1	oewn
+oewn-unsimilarity-n	unsimilarity	n	0	1	1	oewn
+oewn-unsinkable-a	unsinkable	a	0	1	1	oewn
+oewn-unsized-a	unsized	a	0	1	1	oewn
+oewn-unskilled-a	unskilled	a	0	1	1	oewn
+oewn-unskilled_person-n	unskilled person	n	0	2	2	oewn
+oewn-unskillful-a	unskillful	a	0	1	1	oewn
+oewn-unskillfulness-n	unskillfulness	n	0	1	1	oewn
+oewn-unslaked_lime-n	unslaked lime	n	0	2	2	oewn
+oewn-unsleeping-a	unsleeping	a	0	1	1	oewn
+oewn-unsloped-a	unsloped	a	0	1	1	oewn
+oewn-unsmiling-a	unsmiling	a	0	1	1	oewn
+oewn-unsmilingly-r	unsmilingly	r	0	1	1	oewn
+oewn-unsmooth-a	unsmooth	a	0	1	1	oewn
+oewn-unsmoothed-a	unsmoothed	a	0	1	1	oewn
+oewn-unsnarl-v	unsnarl	v	0	1	1	oewn
+oewn-unsnarled-a	unsnarled	a	0	1	1	oewn
+oewn-unsnarling-n	unsnarling	n	0	1	1	oewn
+oewn-unsociability-n	unsociability	n	0	1	1	oewn
+oewn-unsociable-a	unsociable	a	0	1	1	oewn
+oewn-unsociableness-n	unsociableness	n	0	1	1	oewn
+oewn-unsociably-r	unsociably	r	0	1	1	oewn
+oewn-unsocial-a	unsocial	a	0	1	1	oewn
+oewn-unsoiled-a	unsoiled	a	0	1	1	oewn
+oewn-unsold-a	unsold	a	0	1	1	oewn
+oewn-unsolder-v	unsolder	v	0	1	1	oewn
+oewn-unsoldierly-a	unsoldierly	a	0	1	1	oewn
+oewn-unsolicited-a	unsolicited	a	0	1	1	oewn
+oewn-unsoluble-a	unsoluble	a	0	1	1	oewn
+oewn-unsolvability-n	unsolvability	n	0	1	1	oewn
+oewn-unsolvable-a	unsolvable	a	0	1	1	oewn
+oewn-unsolved-a	unsolved	a	0	1	1	oewn
+oewn-unsophisticated-a	unsophisticated	a	0	1	1	oewn
+oewn-unsorted-a	unsorted	a	0	1	1	oewn
+oewn-unsought-a	unsought	a	0	1	1	oewn
+oewn-unsound-a	unsound	a	0	1	1	oewn
+oewn-unsoundable-a	unsoundable	a	0	1	1	oewn
+oewn-unsounded-a	unsounded	a	0	1	1	oewn
+oewn-unsoundness-n	unsoundness	n	0	1	1	oewn
+oewn-unsoured-a	unsoured	a	0	1	1	oewn
+oewn-unsown-a	unsown	a	0	1	1	oewn
+oewn-unspaced-a	unspaced	a	0	1	1	oewn
+oewn-unsparing-a	unsparing	a	0	1	1	oewn
+oewn-unsparingly-r	unsparingly	r	0	1	1	oewn
+oewn-unspeakable-a	unspeakable	a	0	1	1	oewn
+oewn-unspeakably-r	unspeakably	r	0	1	1	oewn
+oewn-unspecialised-a	unspecialised	a	0	1	1	oewn
+oewn-unspecialized-a	unspecialized	a	0	1	1	oewn
+oewn-unspecific-a	unspecific	a	0	1	1	oewn
+oewn-unspecified-a	unspecified	a	0	1	1	oewn
+oewn-unspectacular-a	unspectacular	a	0	1	1	oewn
+oewn-unspell-v	unspell	v	0	1	1	oewn
+oewn-unspent-a	unspent	a	0	1	1	oewn
+oewn-unspoiled-a	unspoiled	a	0	1	1	oewn
+oewn-unspoilt-a	unspoilt	a	0	1	1	oewn
+oewn-unspoken-a	unspoken	a	0	1	1	oewn
+oewn-unspoken_accusation-n	unspoken accusation	n	0	2	2	oewn
+oewn-unsporting-a	unsporting	a	0	1	1	oewn
+oewn-unsportingly-r	unsportingly	r	0	1	1	oewn
+oewn-unsportsmanlike-a	unsportsmanlike	a	0	1	1	oewn
+oewn-unspotted-a	unspotted	a	0	1	1	oewn
+oewn-unstable-a	unstable	a	0	1	1	oewn
+oewn-unstableness-n	unstableness	n	0	1	1	oewn
+oewn-unstaged-a	unstaged	a	0	1	1	oewn
+oewn-unstained-a	unstained	a	0	1	1	oewn
+oewn-unstaple-v	unstaple	v	0	1	1	oewn
+oewn-unstarred-a	unstarred	a	0	1	1	oewn
+oewn-unstated-a	unstated	a	0	1	1	oewn
+oewn-unstatesmanlike-a	unstatesmanlike	a	0	1	1	oewn
+oewn-unsteadily-r	unsteadily	r	0	1	1	oewn
+oewn-unsteadiness-n	unsteadiness	n	0	1	1	oewn
+oewn-unsteady-a	unsteady	a	0	1	1	oewn
+oewn-unsterilised-a	unsterilised	a	0	1	1	oewn
+oewn-unsterilized-a	unsterilized	a	0	1	1	oewn
+oewn-unstilted-a	unstilted	a	0	1	1	oewn
+oewn-unstimulating-a	unstimulating	a	0	1	1	oewn
+oewn-unstinted-a	unstinted	a	0	1	1	oewn
+oewn-unstinting-a	unstinting	a	0	1	1	oewn
+oewn-unstintingly-r	unstintingly	r	0	1	1	oewn
+oewn-unstirred-a	unstirred	a	0	1	1	oewn
+oewn-unstoppable-a	unstoppable	a	0	1	1	oewn
+oewn-unstoppered-a	unstoppered	a	0	1	1	oewn
+oewn-unstrain-v	unstrain	v	0	1	1	oewn
+oewn-unstrained-a	unstrained	a	0	1	1	oewn
+oewn-unstrap-v	unstrap	v	0	1	1	oewn
+oewn-unstratified-a	unstratified	a	0	1	1	oewn
+oewn-unstratified_language-n	unstratified language	n	0	2	2	oewn
+oewn-unstressed-a	unstressed	a	0	1	1	oewn
+oewn-unstring-v	unstring	v	0	1	1	oewn
+oewn-unstructured-a	unstructured	a	0	1	1	oewn
+oewn-unstrung-a	unstrung	a	0	1	1	oewn
+oewn-unstuck-a	unstuck	a	0	1	1	oewn
+oewn-unstudied-a	unstudied	a	0	1	1	oewn
+oewn-unstudious-a	unstudious	a	0	1	1	oewn
+oewn-unstuff-v	unstuff	v	0	1	1	oewn
+oewn-unstylish-a	unstylish	a	0	1	1	oewn
+oewn-unsuasible-a	unsuasible	a	0	1	1	oewn
+oewn-unsubdivided-a	unsubdivided	a	0	1	1	oewn
+oewn-unsubduable-a	unsubduable	a	0	1	1	oewn
+oewn-unsubdued-a	unsubdued	a	0	1	1	oewn
+oewn-unsubmissive-a	unsubmissive	a	0	1	1	oewn
+oewn-unsubstantial-a	unsubstantial	a	0	1	1	oewn
+oewn-unsubstantialise-v	unsubstantialise	v	0	1	1	oewn
+oewn-unsubstantialize-v	unsubstantialize	v	0	1	1	oewn
+oewn-unsubstantiated-a	unsubstantiated	a	0	1	1	oewn
+oewn-unsubtle-a	unsubtle	a	0	1	1	oewn
+oewn-unsuccessful-a	unsuccessful	a	0	1	1	oewn
+oewn-unsuccessful_person-n	unsuccessful person	n	0	2	2	oewn
+oewn-unsuccessfully-r	unsuccessfully	r	0	1	1	oewn
+oewn-unsufferable-a	unsufferable	a	0	1	1	oewn
+oewn-unsufferably-r	unsufferably	r	0	1	1	oewn
+oewn-unsugared-a	unsugared	a	0	1	1	oewn
+oewn-unsuitability-n	unsuitability	n	0	1	1	oewn
+oewn-unsuitable-a	unsuitable	a	0	1	1	oewn
+oewn-unsuitableness-n	unsuitableness	n	0	1	1	oewn
+oewn-unsuitably-r	unsuitably	r	0	1	1	oewn
+oewn-unsuited-a	unsuited	a	0	1	1	oewn
+oewn-unsullied-a	unsullied	a	0	1	1	oewn
+oewn-unsung-a	unsung	a	0	1	1	oewn
+oewn-unsupervised-a	unsupervised	a	0	1	1	oewn
+oewn-unsupportable-a	unsupportable	a	0	1	1	oewn
+oewn-unsupported-a	unsupported	a	0	1	1	oewn
+oewn-unsupportive-a	unsupportive	a	0	1	1	oewn
+oewn-unsuppressed-a	unsuppressed	a	0	1	1	oewn
+oewn-unsure-a	unsure	a	0	1	1	oewn
+oewn-unsurmountable-a	unsurmountable	a	0	1	1	oewn
+oewn-unsurpassable-a	unsurpassable	a	0	1	1	oewn
+oewn-unsurpassed-a	unsurpassed	a	0	1	1	oewn
+oewn-unsurprised-a	unsurprised	a	0	1	1	oewn
+oewn-unsurprising-a	unsurprising	a	0	1	1	oewn
+oewn-unsusceptibility-n	unsusceptibility	n	0	1	1	oewn
+oewn-unsusceptible-a	unsusceptible	a	0	1	1	oewn
+oewn-unsuspected-a	unsuspected	a	0	1	1	oewn
+oewn-unsuspecting-a	unsuspecting	a	0	1	1	oewn
+oewn-unsuspectingly-r	unsuspectingly	r	0	1	1	oewn
+oewn-unsuspicious-a	unsuspicious	a	0	1	1	oewn
+oewn-unswayed-a	unswayed	a	0	1	1	oewn
+oewn-unsweet-a	unsweet	a	0	1	1	oewn
+oewn-unsweetened-a	unsweetened	a	0	1	1	oewn
+oewn-unswept-a	unswept	a	0	1	1	oewn
+oewn-unswerving-a	unswerving	a	0	1	1	oewn
+oewn-unswervingly-r	unswervingly	r	0	1	1	oewn
+oewn-unsworn-a	unsworn	a	0	1	1	oewn
+oewn-unsyllabic-a	unsyllabic	a	0	1	1	oewn
+oewn-unsyllabled-a	unsyllabled	a	0	1	1	oewn
+oewn-unsymbolic-a	unsymbolic	a	0	1	1	oewn
+oewn-unsymmetric-a	unsymmetric	a	0	1	1	oewn
+oewn-unsymmetrical-a	unsymmetrical	a	0	1	1	oewn
+oewn-unsymmetrically-r	unsymmetrically	r	0	1	1	oewn
+oewn-unsympathetic-a	unsympathetic	a	0	1	1	oewn
+oewn-unsympathetically-r	unsympathetically	r	0	1	1	oewn
+oewn-unsympathising-a	unsympathising	a	0	1	1	oewn
+oewn-unsympathizing-a	unsympathizing	a	0	1	1	oewn
+oewn-unsynchronised-a	unsynchronised	a	0	1	1	oewn
+oewn-unsynchronized-a	unsynchronized	a	0	1	1	oewn
+oewn-unsynchronous-a	unsynchronous	a	0	1	1	oewn
+oewn-unsystematic-a	unsystematic	a	0	1	1	oewn
+oewn-unsystematically-r	unsystematically	r	0	1	1	oewn
+oewn-untactful-a	untactful	a	0	1	1	oewn
+oewn-untag-v	untag	v	0	1	1	oewn
+oewn-untagged-a	untagged	a	0	1	1	oewn
+oewn-untainted-a	untainted	a	0	1	1	oewn
+oewn-untalented-a	untalented	a	0	1	1	oewn
+oewn-untalkative-a	untalkative	a	0	1	1	oewn
+oewn-untamed-a	untamed	a	0	1	1	oewn
+oewn-untangle-v	untangle	v	0	1	1	oewn
+oewn-untangled-a	untangled	a	0	1	1	oewn
+oewn-untangling-n	untangling	n	0	1	1	oewn
+oewn-untanned-a	untanned	a	0	1	1	oewn
+oewn-untaped-a	untaped	a	0	1	1	oewn
+oewn-untapped-a	untapped	a	0	1	1	oewn
+oewn-untarnished-a	untarnished	a	0	1	1	oewn
+oewn-untasted-a	untasted	a	0	1	1	oewn
+oewn-untaught-a	untaught	a	0	1	1	oewn
+oewn-untaxed-a	untaxed	a	0	1	1	oewn
+oewn-unteach-v	unteach	v	0	1	1	oewn
+oewn-untechnical-a	untechnical	a	0	1	1	oewn
+oewn-untellable-a	untellable	a	0	1	1	oewn
+oewn-untempered-a	untempered	a	0	1	1	oewn
+oewn-untempting-a	untempting	a	0	1	1	oewn
+oewn-untenable-a	untenable	a	0	1	1	oewn
+oewn-untenanted-a	untenanted	a	0	1	1	oewn
+oewn-untended-a	untended	a	0	1	1	oewn
+oewn-untested-a	untested	a	0	1	1	oewn
+oewn-untethered-a	untethered	a	0	1	1	oewn
+oewn-unthankful-a	unthankful	a	0	1	1	oewn
+oewn-unthaw-v	unthaw	v	0	1	1	oewn
+oewn-unthawed-a	unthawed	a	0	1	1	oewn
+oewn-untheatrical-a	untheatrical	a	0	1	1	oewn
+oewn-unthematic-a	unthematic	a	0	1	1	oewn
+oewn-unthinkable-a	unthinkable	a	0	1	1	oewn
+oewn-unthinkably-r	unthinkably	r	0	1	1	oewn
+oewn-unthinking-a	unthinking	a	0	1	1	oewn
+oewn-unthinking-r	unthinking	r	0	1	1	oewn
+oewn-unthinkingly-r	unthinkingly	r	0	1	1	oewn
+oewn-unthought-a	unthought	a	0	1	1	oewn
+oewn-unthought-of-a	unthought-of	a	0	1	1	oewn
+oewn-unthoughtful-a	unthoughtful	a	0	1	1	oewn
+oewn-unthoughtfulness-n	unthoughtfulness	n	0	1	1	oewn
+oewn-unthreatening-a	unthreatening	a	0	1	1	oewn
+oewn-untidily-r	untidily	r	0	1	1	oewn
+oewn-untidiness-n	untidiness	n	0	1	1	oewn
+oewn-untidy-a	untidy	a	0	1	1	oewn
+oewn-untie-v	untie	v	0	1	1	oewn
+oewn-untied-a	untied	a	0	1	1	oewn
+oewn-untier-n	untier	n	0	1	1	oewn
+oewn-until_now-r	until now	r	0	2	2	oewn
+oewn-untilled-a	untilled	a	0	1	1	oewn
+oewn-untimbered-a	untimbered	a	0	1	1	oewn
+oewn-untimeliness-n	untimeliness	n	0	1	1	oewn
+oewn-untimely-a	untimely	a	0	1	1	oewn
+oewn-untimely-r	untimely	r	0	1	1	oewn
+oewn-untipped-a	untipped	a	0	1	1	oewn
+oewn-untired-a	untired	a	0	1	1	oewn
+oewn-untiring-a	untiring	a	0	1	1	oewn
+oewn-untitled-a	untitled	a	0	1	1	oewn
+oewn-untoasted-a	untoasted	a	0	1	1	oewn
+oewn-untold-a	untold	a	0	1	1	oewn
+oewn-untoothed-a	untoothed	a	0	1	1	oewn
+oewn-untouchable-a	untouchable	a	0	1	1	oewn
+oewn-untouchable-n	untouchable	n	0	1	1	oewn
+oewn-untouched-a	untouched	a	0	1	1	oewn
+oewn-untoughened-a	untoughened	a	0	1	1	oewn
+oewn-untoward-a	untoward	a	0	1	1	oewn
+oewn-untraceable-a	untraceable	a	0	1	1	oewn
+oewn-untracked-a	untracked	a	0	1	1	oewn
+oewn-untraditional-a	untraditional	a	0	1	1	oewn
+oewn-untrained-a	untrained	a	0	1	1	oewn
+oewn-untrammeled-a	untrammeled	a	0	1	1	oewn
+oewn-untrammelled-a	untrammelled	a	0	1	1	oewn
+oewn-untransferable-a	untransferable	a	0	1	1	oewn
+oewn-untranslatable-a	untranslatable	a	0	1	1	oewn
+oewn-untransmutable-a	untransmutable	a	0	1	1	oewn
+oewn-untraveled-a	untraveled	a	0	1	1	oewn
+oewn-untravelled-a	untravelled	a	0	1	1	oewn
+oewn-untraversable-a	untraversable	a	0	1	1	oewn
+oewn-untraversed-a	untraversed	a	0	1	1	oewn
+oewn-untreated-a	untreated	a	0	1	1	oewn
+oewn-untried-a	untried	a	0	1	1	oewn
+oewn-untrimmed-a	untrimmed	a	0	1	1	oewn
+oewn-untrod-a	untrod	a	0	1	1	oewn
+oewn-untrodden-a	untrodden	a	0	1	1	oewn
+oewn-untroubled-a	untroubled	a	0	1	1	oewn
+oewn-untroublesomeness-n	untroublesomeness	n	0	1	1	oewn
+oewn-untrue-a	untrue	a	0	1	1	oewn
+oewn-untruly-r	untruly	r	0	1	1	oewn
+oewn-untrustiness-n	untrustiness	n	0	1	1	oewn
+oewn-untrusting-a	untrusting	a	0	1	1	oewn
+oewn-untrustworthiness-n	untrustworthiness	n	0	1	1	oewn
+oewn-untrustworthy-a	untrustworthy	a	0	1	1	oewn
+oewn-untrusty-a	untrusty	a	0	1	1	oewn
+oewn-untruth-n	untruth	n	0	1	1	oewn
+oewn-untruthful-a	untruthful	a	0	1	1	oewn
+oewn-untruthfully-r	untruthfully	r	0	1	1	oewn
+oewn-untruthfulness-n	untruthfulness	n	0	1	1	oewn
+oewn-untucked-a	untucked	a	0	1	1	oewn
+oewn-untufted-a	untufted	a	0	1	1	oewn
+oewn-untune-v	untune	v	0	1	1	oewn
+oewn-untuneful-a	untuneful	a	0	1	1	oewn
+oewn-unturned-a	unturned	a	0	1	1	oewn
+oewn-untutored-a	untutored	a	0	1	1	oewn
+oewn-untwine-v	untwine	v	0	1	1	oewn
+oewn-untwist-v	untwist	v	0	1	1	oewn
+oewn-untwisted-a	untwisted	a	0	1	1	oewn
+oewn-untying-n	untying	n	0	1	1	oewn
+oewn-untypical-a	untypical	a	0	1	1	oewn
+oewn-untypicality-n	untypicality	n	0	1	1	oewn
+oewn-untypically-r	untypically	r	0	1	1	oewn
+oewn-ununbium-n	ununbium	n	0	1	1	oewn
+oewn-ununderstandably-r	ununderstandably	r	0	1	1	oewn
+oewn-ununderstood-a	ununderstood	a	0	1	1	oewn
+oewn-ununhexium-n	ununhexium	n	0	1	1	oewn
+oewn-ununpentium-n	ununpentium	n	0	1	1	oewn
+oewn-ununquadium-n	ununquadium	n	0	1	1	oewn
+oewn-ununtrium-n	ununtrium	n	0	1	1	oewn
+oewn-unusable-a	unusable	a	0	1	1	oewn
+oewn-unuseable-a	unuseable	a	0	1	1	oewn
+oewn-unused-a	unused	a	0	1	1	oewn
+oewn-unused_to-a	unused to	a	0	2	2	oewn
+oewn-unusefulness-n	unusefulness	n	0	1	1	oewn
+oewn-unusual-a	unusual	a	0	1	1	oewn
+oewn-unusual_person-n	unusual person	n	0	2	2	oewn
+oewn-unusually-r	unusually	r	0	1	1	oewn
+oewn-unusualness-n	unusualness	n	0	1	1	oewn
+oewn-unutterable-a	unutterable	a	0	1	1	oewn
+oewn-unutterably-r	unutterably	r	0	1	1	oewn
+oewn-unuttered-a	unuttered	a	0	1	1	oewn
+oewn-unvaccinated-a	unvaccinated	a	0	1	1	oewn
+oewn-unvalued-a	unvalued	a	0	1	1	oewn
+oewn-unvaned-a	unvaned	a	0	1	1	oewn
+oewn-unvanquishable-a	unvanquishable	a	0	1	1	oewn
+oewn-unvanquished-a	unvanquished	a	0	1	1	oewn
+oewn-unvaried-a	unvaried	a	0	1	1	oewn
+oewn-unvariedness-n	unvariedness	n	0	1	1	oewn
+oewn-unvarnished-a	unvarnished	a	0	1	1	oewn
+oewn-unvarying-a	unvarying	a	0	1	1	oewn
+oewn-unveil-v	unveil	v	0	1	1	oewn
+oewn-unveiled-a	unveiled	a	0	1	1	oewn
+oewn-unveiling-n	unveiling	n	0	1	1	oewn
+oewn-unvendible-a	unvendible	a	0	1	1	oewn
+oewn-unvented-a	unvented	a	0	1	1	oewn
+oewn-unventilated-a	unventilated	a	0	1	1	oewn
+oewn-unverbalised-a	unverbalised	a	0	1	1	oewn
+oewn-unverbalized-a	unverbalized	a	0	1	1	oewn
+oewn-unverifiable-a	unverifiable	a	0	1	1	oewn
+oewn-unverified-a	unverified	a	0	1	1	oewn
+oewn-unversed-a	unversed	a	0	1	1	oewn
+oewn-unvigilant-a	unvigilant	a	0	1	1	oewn
+oewn-unvindictive-a	unvindictive	a	0	1	1	oewn
+oewn-unvitrified-a	unvitrified	a	0	1	1	oewn
+oewn-unvoiced-a	unvoiced	a	0	1	1	oewn
+oewn-unvoluntary-a	unvoluntary	a	0	1	1	oewn
+oewn-unvulcanised-a	unvulcanised	a	0	1	1	oewn
+oewn-unvulcanized-a	unvulcanized	a	0	1	1	oewn
+oewn-unwanted-a	unwanted	a	0	1	1	oewn
+oewn-unwantedly-r	unwantedly	r	0	1	1	oewn
+oewn-unwarily-r	unwarily	r	0	1	1	oewn
+oewn-unwariness-n	unwariness	n	0	1	1	oewn
+oewn-unwarmed-a	unwarmed	a	0	1	1	oewn
+oewn-unwarrantable-a	unwarrantable	a	0	1	1	oewn
+oewn-unwarrantably-r	unwarrantably	r	0	1	1	oewn
+oewn-unwarranted-a	unwarranted	a	0	1	1	oewn
+oewn-unwary-a	unwary	a	0	1	1	oewn
+oewn-unwashed-a	unwashed	a	0	1	1	oewn
+oewn-unwatchful-a	unwatchful	a	0	1	1	oewn
+oewn-unwavering-a	unwavering	a	0	1	1	oewn
+oewn-unwaveringly-r	unwaveringly	r	0	1	1	oewn
+oewn-unwaxed-a	unwaxed	a	0	1	1	oewn
+oewn-unweaned-a	unweaned	a	0	1	1	oewn
+oewn-unwearable-a	unwearable	a	0	1	1	oewn
+oewn-unwearied-a	unwearied	a	0	1	1	oewn
+oewn-unweary-a	unweary	a	0	1	1	oewn
+oewn-unwearying-a	unwearying	a	0	1	1	oewn
+oewn-unweathered-a	unweathered	a	0	1	1	oewn
+oewn-unweave-v	unweave	v	0	1	1	oewn
+oewn-unwebbed-a	unwebbed	a	0	1	1	oewn
+oewn-unwed-a	unwed	a	0	1	1	oewn
+oewn-unwedded-a	unwedded	a	0	1	1	oewn
+oewn-unwelcome-a	unwelcome	a	0	1	1	oewn
+oewn-unwelcome_guest-n	unwelcome guest	n	0	2	2	oewn
+oewn-unwelcome_person-n	unwelcome person	n	0	2	2	oewn
+oewn-unwell-a	unwell	a	0	1	1	oewn
+oewn-unwellness-n	unwellness	n	0	1	1	oewn
+oewn-unwholesome-a	unwholesome	a	0	1	1	oewn
+oewn-unwholesomeness-n	unwholesomeness	n	0	1	1	oewn
+oewn-unwieldiness-n	unwieldiness	n	0	1	1	oewn
+oewn-unwieldy-a	unwieldy	a	0	1	1	oewn
+oewn-unwilled-a	unwilled	a	0	1	1	oewn
+oewn-unwilling-a	unwilling	a	0	1	1	oewn
+oewn-unwillingly-r	unwillingly	r	0	1	1	oewn
+oewn-unwillingness-n	unwillingness	n	0	1	1	oewn
+oewn-unwind-v	unwind	v	0	1	1	oewn
+oewn-unwire-v	unwire	v	0	1	1	oewn
+oewn-unwise-a	unwise	a	0	1	1	oewn
+oewn-unwisely-r	unwisely	r	0	1	1	oewn
+oewn-unwiseness-n	unwiseness	n	0	1	1	oewn
+oewn-unwished-a	unwished	a	0	1	1	oewn
+oewn-unwished-for-a	unwished-for	a	0	1	1	oewn
+oewn-unwitting-a	unwitting	a	0	1	1	oewn
+oewn-unwittingly-r	unwittingly	r	0	1	1	oewn
+oewn-unwomanly-a	unwomanly	a	0	1	1	oewn
+oewn-unwonted-a	unwonted	a	0	1	1	oewn
+oewn-unwontedly-r	unwontedly	r	0	1	1	oewn
+oewn-unwooded-a	unwooded	a	0	1	1	oewn
+oewn-unworkable-a	unworkable	a	0	1	1	oewn
+oewn-unworkmanlike-a	unworkmanlike	a	0	1	1	oewn
+oewn-unworldly-a	unworldly	a	0	1	1	oewn
+oewn-unworried-a	unworried	a	0	1	1	oewn
+oewn-unworthily-r	unworthily	r	0	1	1	oewn
+oewn-unworthiness-n	unworthiness	n	0	1	1	oewn
+oewn-unworthy-a	unworthy	a	0	1	1	oewn
+oewn-unwounded-a	unwounded	a	0	1	1	oewn
+oewn-unwoven-a	unwoven	a	0	1	1	oewn
+oewn-unwrap-v	unwrap	v	0	1	1	oewn
+oewn-unwrapped-a	unwrapped	a	0	1	1	oewn
+oewn-unwrinkled-a	unwrinkled	a	0	1	1	oewn
+oewn-unwritten-a	unwritten	a	0	1	1	oewn
+oewn-unwritten_law-n	unwritten law	n	0	2	2	oewn
+oewn-unyielding-a	unyielding	a	0	1	1	oewn
+oewn-unyieldingness-n	unyieldingness	n	0	1	1	oewn
+oewn-unyoke-v	unyoke	v	0	1	1	oewn
+oewn-unzip-v	unzip	v	0	1	1	oewn
+oewn-up-a	up	a	0	1	1	oewn
+oewn-up-and-coming-a	up-and-coming	a	0	1	1	oewn
+oewn-up-bow-n	up-bow	n	0	1	1	oewn
+oewn-up-country-r	up-country	r	0	1	1	oewn
+oewn-up-r	up	r	0	1	1	oewn
+oewn-up-tick-n	up-tick	n	0	1	1	oewn
+oewn-up-to-date-a	up-to-date	a	0	1	1	oewn
+oewn-up-to-dateness-n	up-to-dateness	n	0	1	1	oewn
+oewn-up-to-the-minute-a	up-to-the-minute	a	0	1	1	oewn
+oewn-up-v	up	v	0	1	1	oewn
+oewn-up_and_down-r	up and down	r	0	3	3	oewn
+oewn-up_here-r	up here	r	0	2	2	oewn
+oewn-up_in_the_air-a	up in the air	a	0	4	4	oewn
+oewn-up_on-a	up on	a	0	2	2	oewn
+oewn-up_quark-n	up quark	n	0	2	2	oewn
+oewn-up_the_stairs-r	up the stairs	r	0	3	3	oewn
+oewn-up_to-a	up to	a	0	2	2	oewn
+oewn-up_to_date-a	up to date	a	0	3	3	oewn
+oewn-up_to_her_neck-a	up to her neck	a	0	4	4	oewn
+oewn-up_to_his_neck-a	up to his neck	a	0	4	4	oewn
+oewn-up_to_my_neck-a	up to my neck	a	0	4	4	oewn
+oewn-up_to_now-r	up to now	r	0	3	3	oewn
+oewn-up_to_our_necks-a	up to our necks	a	0	4	4	oewn
+oewn-up_to_their_necks-a	up to their necks	a	0	4	4	oewn
+oewn-up_to_your_neck-a	up to your neck	a	0	4	4	oewn
+oewn-upbeat-a	upbeat	a	0	1	1	oewn
+oewn-upbeat-n	upbeat	n	0	1	1	oewn
+oewn-upbound-a	upbound	a	0	1	1	oewn
+oewn-upbraid-v	upbraid	v	0	1	1	oewn
+oewn-upbraider-n	upbraider	n	0	1	1	oewn
+oewn-upbraiding-n	upbraiding	n	0	1	1	oewn
+oewn-upbringing-n	upbringing	n	0	1	1	oewn
+oewn-upcast-n	upcast	n	0	1	1	oewn
+oewn-upchuck-v	upchuck	v	0	1	1	oewn
+oewn-upcoming-a	upcoming	a	0	1	1	oewn
+oewn-upcountry-a	upcountry	a	0	1	1	oewn
+oewn-upcountry-r	upcountry	r	0	1	1	oewn
+oewn-upcurved-a	upcurved	a	0	1	1	oewn
+oewn-upcycle-v	upcycle	v	0	1	1	oewn
+oewn-update-n	update	n	0	1	1	oewn
+oewn-update-v	update	v	0	1	1	oewn
+oewn-updating-n	updating	n	0	1	1	oewn
+oewn-updraft-n	updraft	n	0	1	1	oewn
+oewn-upend-v	upend	v	0	1	1	oewn
+oewn-upended-a	upended	a	0	1	1	oewn
+oewn-upending-n	upending	n	0	1	1	oewn
+oewn-upfield-a	upfield	a	0	1	1	oewn
+oewn-upfront-a	upfront	a	0	1	1	oewn
+oewn-upgrade-n	upgrade	n	0	1	1	oewn
+oewn-upgrade-v	upgrade	v	0	1	1	oewn
+oewn-upheaval-n	upheaval	n	0	1	1	oewn
+oewn-upheave-v	upheave	v	0	1	1	oewn
+oewn-uphill-a	uphill	a	0	1	1	oewn
+oewn-uphill-n	uphill	n	0	1	1	oewn
+oewn-uphill-r	uphill	r	0	1	1	oewn
+oewn-uphold-v	uphold	v	0	1	1	oewn
+oewn-upholder-n	upholder	n	0	1	1	oewn
+oewn-upholster-v	upholster	v	0	1	1	oewn
+oewn-upholsterer-n	upholsterer	n	0	1	1	oewn
+oewn-upholstery-n	upholstery	n	0	1	1	oewn
+oewn-upholstery_material-n	upholstery material	n	0	2	2	oewn
+oewn-upholstery_needle-n	upholstery needle	n	0	2	2	oewn
+oewn-upkeep-n	upkeep	n	0	1	1	oewn
+oewn-upland-a	upland	a	0	1	1	oewn
+oewn-upland-n	upland	n	0	1	1	oewn
+oewn-upland_cotton-n	upland cotton	n	0	2	2	oewn
+oewn-upland_plover-n	upland plover	n	0	2	2	oewn
+oewn-upland_sandpiper-n	upland sandpiper	n	0	2	2	oewn
+oewn-upland_white_aster-n	upland white aster	n	0	3	3	oewn
+oewn-uplift-n	uplift	n	0	1	1	oewn
+oewn-uplift-v	uplift	v	0	1	1	oewn
+oewn-uplifted-a	uplifted	a	0	1	1	oewn
+oewn-uplifting-n	uplifting	n	0	1	1	oewn
+oewn-uplifting_trance-n	uplifting trance	n	0	2	2	oewn
+oewn-uplink-n	uplink	n	0	1	1	oewn
+oewn-upload-v	upload	v	0	1	1	oewn
+oewn-upmarket-a	upmarket	a	0	1	1	oewn
+oewn-upmost-a	upmost	a	0	1	1	oewn
+oewn-upon_one-ap-s_guard-a	upon one's guard	a	0	3	3	oewn
+oewn-upper-a	upper	a	0	1	1	oewn
+oewn-upper-case_letter-n	upper-case letter	n	0	2	2	oewn
+oewn-upper-class-a	upper-class	a	0	1	1	oewn
+oewn-upper-level-a	upper-level	a	0	1	1	oewn
+oewn-upper-lower-class-a	upper-lower-class	a	0	1	1	oewn
+oewn-upper-middle-class-a	upper-middle-class	a	0	1	1	oewn
+oewn-upper-n	upper	n	0	1	1	oewn
+oewn-upper_balcony-n	upper balcony	n	0	2	2	oewn
+oewn-upper_berth-n	upper berth	n	0	2	2	oewn
+oewn-upper_bound-n	upper bound	n	0	2	2	oewn
+oewn-upper_cannon-n	upper cannon	n	0	2	2	oewn
+oewn-upper_class-n	upper class	n	0	2	2	oewn
+oewn-upper_crust-n	upper crust	n	0	2	2	oewn
+oewn-upper_deck-n	upper deck	n	0	2	2	oewn
+oewn-upper_hand-n	upper hand	n	0	2	2	oewn
+oewn-upper_jaw-n	upper jaw	n	0	2	2	oewn
+oewn-upper_jawbone-n	upper jawbone	n	0	2	2	oewn
+oewn-upper_limit-n	upper limit	n	0	2	2	oewn
+oewn-upper_mantle-n	upper mantle	n	0	2	2	oewn
+oewn-upper_respiratory_infection-n	upper respiratory infection	n	0	3	3	oewn
+oewn-upper_respiratory_tract-n	upper respiratory tract	n	0	3	3	oewn
+oewn-upper_side-n	upper side	n	0	2	2	oewn
+oewn-upper_surface-n	upper surface	n	0	2	2	oewn
+oewn-uppercase-a	uppercase	a	0	1	1	oewn
+oewn-uppercase-n	uppercase	n	0	1	1	oewn
+oewn-uppercut-n	uppercut	n	0	1	1	oewn
+oewn-uppermost-a	uppermost	a	0	1	1	oewn
+oewn-uppermost-r	uppermost	r	0	1	1	oewn
+oewn-uppish-a	uppish	a	0	1	1	oewn
+oewn-uppishly-r	uppishly	r	0	1	1	oewn
+oewn-uppishness-n	uppishness	n	0	1	1	oewn
+oewn-uppity-a	uppity	a	0	1	1	oewn
+oewn-uppityness-n	uppityness	n	0	1	1	oewn
+oewn-upraise-v	upraise	v	0	1	1	oewn
+oewn-upraised-a	upraised	a	0	1	1	oewn
+oewn-upright-a	upright	a	0	1	1	oewn
+oewn-upright-n	upright	n	0	1	1	oewn
+oewn-upright_piano-n	upright piano	n	0	2	2	oewn
+oewn-uprightly-r	uprightly	r	0	1	1	oewn
+oewn-uprightness-n	uprightness	n	0	1	1	oewn
+oewn-uprise-v	uprise	v	0	1	1	oewn
+oewn-uprising-n	uprising	n	0	1	1	oewn
+oewn-upriver-r	upriver	r	0	1	1	oewn
+oewn-uproar-n	uproar	n	0	1	1	oewn
+oewn-uproarious-a	uproarious	a	0	1	1	oewn
+oewn-uproariously-r	uproariously	r	0	1	1	oewn
+oewn-uproot-v	uproot	v	0	1	1	oewn
+oewn-uprooter-n	uprooter	n	0	1	1	oewn
+oewn-upscale-a	upscale	a	0	1	1	oewn
+oewn-upset-a	upset	a	0	1	1	oewn
+oewn-upset-n	upset	n	0	1	1	oewn
+oewn-upset-v	upset	v	0	1	1	oewn
+oewn-upset_price-n	upset price	n	0	2	2	oewn
+oewn-upset_stomach-n	upset stomach	n	0	2	2	oewn
+oewn-upsetter-n	upsetter	n	0	1	1	oewn
+oewn-upsetting-a	upsetting	a	0	1	1	oewn
+oewn-upshot-n	upshot	n	0	1	1	oewn
+oewn-upside-down-a	upside-down	a	0	1	1	oewn
+oewn-upside-down_cake-n	upside-down cake	n	0	2	2	oewn
+oewn-upside-n	upside	n	0	1	1	oewn
+oewn-upside_down-r	upside down	r	0	2	2	oewn
+oewn-upsilon-n	upsilon	n	0	1	1	oewn
+oewn-upstage-a	upstage	a	0	1	1	oewn
+oewn-upstage-n	upstage	n	0	1	1	oewn
+oewn-upstage-r	upstage	r	0	1	1	oewn
+oewn-upstage-v	upstage	v	0	1	1	oewn
+oewn-upstager-n	upstager	n	0	1	1	oewn
+oewn-upstair-a	upstair	a	0	1	1	oewn
+oewn-upstairs-a	upstairs	a	0	1	1	oewn
+oewn-upstairs-n	upstairs	n	0	1	1	oewn
+oewn-upstairs-r	upstairs	r	0	1	1	oewn
+oewn-upstanding-a	upstanding	a	0	1	1	oewn
+oewn-upstart-a	upstart	a	0	1	1	oewn
+oewn-upstart-n	upstart	n	0	1	1	oewn
+oewn-upstate-r	upstate	r	0	1	1	oewn
+oewn-upstream-a	upstream	a	0	1	1	oewn
+oewn-upstream-r	upstream	r	0	1	1	oewn
+oewn-upstroke-n	upstroke	n	0	1	1	oewn
+oewn-upsurge-n	upsurge	n	0	1	1	oewn
+oewn-uptake-n	uptake	n	0	1	1	oewn
+oewn-upthrow-n	upthrow	n	0	1	1	oewn
+oewn-upthrust-n	upthrust	n	0	1	1	oewn
+oewn-uptick-n	uptick	n	0	1	1	oewn
+oewn-uptight-a	uptight	a	0	1	1	oewn
+oewn-uptime-n	uptime	n	0	1	1	oewn
+oewn-uptown-a	uptown	a	0	1	1	oewn
+oewn-uptown-n	uptown	n	0	1	1	oewn
+oewn-uptown-r	uptown	r	0	1	1	oewn
+oewn-upturn-n	upturn	n	0	1	1	oewn
+oewn-upturned-a	upturned	a	0	1	1	oewn
+oewn-upvote-n	upvote	n	0	1	1	oewn
+oewn-upvote-v	upvote	v	0	1	1	oewn
+oewn-upward-a	upward	a	0	1	1	oewn
+oewn-upward-r	upward	r	0	1	1	oewn
+oewn-upwardly-r	upwardly	r	0	1	1	oewn
+oewn-upwards-r	upwards	r	0	1	1	oewn
+oewn-upwind-a	upwind	a	0	1	1	oewn
+oewn-upwind-r	upwind	r	0	1	1	oewn
+oewn-uracil-n	uracil	n	0	1	1	oewn
+oewn-uraemia-n	uraemia	n	0	1	1	oewn
+oewn-uraemic-a	uraemic	a	0	1	1	oewn
+oewn-uranalysis-n	uranalysis	n	0	1	1	oewn
+oewn-uraninite-n	uraninite	n	0	1	1	oewn
+oewn-uranium-n	uranium	n	0	1	1	oewn
+oewn-uranium_235-n	uranium 235	n	0	2	2	oewn
+oewn-uranium_238-n	uranium 238	n	0	2	2	oewn
+oewn-uranium_ore-n	uranium ore	n	0	2	2	oewn
+oewn-uranologist-n	uranologist	n	0	1	1	oewn
+oewn-uranology-n	uranology	n	0	1	1	oewn
+oewn-uranoplasty-n	uranoplasty	n	0	1	1	oewn
+oewn-uranyl-n	uranyl	n	0	1	1	oewn
+oewn-uranyl_group-n	uranyl group	n	0	2	2	oewn
+oewn-uranyl_nitrate-n	uranyl nitrate	n	0	2	2	oewn
+oewn-uranyl_oxalate-n	uranyl oxalate	n	0	2	2	oewn
+oewn-uranyl_radical-n	uranyl radical	n	0	2	2	oewn
+oewn-urarthritis-n	urarthritis	n	0	1	1	oewn
+oewn-urate-n	urate	n	0	1	1	oewn
+oewn-uratemia-n	uratemia	n	0	1	1	oewn
+oewn-uraturia-n	uraturia	n	0	1	1	oewn
+oewn-urban-a	urban	a	0	1	1	oewn
+oewn-urban_area-n	urban area	n	0	2	2	oewn
+oewn-urban_center-n	urban center	n	0	2	2	oewn
+oewn-urban_guerrilla-n	urban guerrilla	n	0	2	2	oewn
+oewn-urban_legend-n	urban legend	n	0	2	2	oewn
+oewn-urban_planning-n	urban planning	n	0	2	2	oewn
+oewn-urban_renewal-n	urban renewal	n	0	2	2	oewn
+oewn-urban_sprawl-n	urban sprawl	n	0	2	2	oewn
+oewn-urban_typhus-n	urban typhus	n	0	2	2	oewn
+oewn-urbane-a	urbane	a	0	1	1	oewn
+oewn-urbanely-r	urbanely	r	0	1	1	oewn
+oewn-urbanisation-n	urbanisation	n	0	1	1	oewn
+oewn-urbanise-v	urbanise	v	0	1	1	oewn
+oewn-urbanised-a	urbanised	a	0	1	1	oewn
+oewn-urbanity-n	urbanity	n	0	1	1	oewn
+oewn-urbanization-n	urbanization	n	0	1	1	oewn
+oewn-urbanize-v	urbanize	v	0	1	1	oewn
+oewn-urbanized-a	urbanized	a	0	1	1	oewn
+oewn-urceolate-a	urceolate	a	0	1	1	oewn
+oewn-urceole-n	urceole	n	0	1	1	oewn
+oewn-urchin-n	urchin	n	0	1	1	oewn
+oewn-urea-formaldehyde_resin-n	urea-formaldehyde resin	n	0	2	2	oewn
+oewn-urea-n	urea	n	0	1	1	oewn
+oewn-urease-n	urease	n	0	1	1	oewn
+oewn-ureide-n	ureide	n	0	1	1	oewn
+oewn-uremia-n	uremia	n	0	1	1	oewn
+oewn-uremic-a	uremic	a	0	1	1	oewn
+oewn-ureter-n	ureter	n	0	1	1	oewn
+oewn-ureteritis-n	ureteritis	n	0	1	1	oewn
+oewn-ureterocele-n	ureterocele	n	0	1	1	oewn
+oewn-ureterorenal_reflux-n	ureterorenal reflux	n	0	2	2	oewn
+oewn-ureterostenosis-n	ureterostenosis	n	0	1	1	oewn
+oewn-urethane-n	urethane	n	0	1	1	oewn
+oewn-urethra-n	urethra	n	0	1	1	oewn
+oewn-urethral-a	urethral	a	0	1	1	oewn
+oewn-urethral_orifice-n	urethral orifice	n	0	2	2	oewn
+oewn-urethral_sphincter-n	urethral sphincter	n	0	2	2	oewn
+oewn-urethritis-n	urethritis	n	0	1	1	oewn
+oewn-urethrocele-n	urethrocele	n	0	1	1	oewn
+oewn-urge-n	urge	n	0	1	1	oewn
+oewn-urge-v	urge	v	0	1	1	oewn
+oewn-urge_incontinence-n	urge incontinence	n	0	2	2	oewn
+oewn-urge_on-v	urge on	v	0	2	1	oewn
+oewn-urgency-n	urgency	n	0	1	1	oewn
+oewn-urgent-a	urgent	a	0	1	1	oewn
+oewn-urgently-r	urgently	r	0	1	1	oewn
+oewn-urging-n	urging	n	0	1	1	oewn
+oewn-urial-n	urial	n	0	1	1	oewn
+oewn-uric-a	uric	a	0	1	1	oewn
+oewn-uric_acid-n	uric acid	n	0	2	2	oewn
+oewn-uricaciduria-n	uricaciduria	n	0	1	1	oewn
+oewn-uricosuric-a	uricosuric	a	0	1	1	oewn
+oewn-urinal-n	urinal	n	0	1	1	oewn
+oewn-urinalysis-n	urinalysis	n	0	1	1	oewn
+oewn-urinary-a	urinary	a	0	1	1	oewn
+oewn-urinary_apparatus-n	urinary apparatus	n	0	2	2	oewn
+oewn-urinary_bladder-n	urinary bladder	n	0	2	2	oewn
+oewn-urinary_calculus-n	urinary calculus	n	0	2	2	oewn
+oewn-urinary_hesitancy-n	urinary hesitancy	n	0	2	2	oewn
+oewn-urinary_incontinence-n	urinary incontinence	n	0	2	2	oewn
+oewn-urinary_indican-n	urinary indican	n	0	2	2	oewn
+oewn-urinary_organ-n	urinary organ	n	0	2	2	oewn
+oewn-urinary_retention-n	urinary retention	n	0	2	2	oewn
+oewn-urinary_system-n	urinary system	n	0	2	2	oewn
+oewn-urinary_tract-n	urinary tract	n	0	2	2	oewn
+oewn-urinary_tract_infection-n	urinary tract infection	n	0	3	3	oewn
+oewn-urinate-v	urinate	v	0	1	1	oewn
+oewn-urination-n	urination	n	0	1	1	oewn
+oewn-urinator-n	urinator	n	0	1	1	oewn
+oewn-urine-n	urine	n	0	1	1	oewn
+oewn-uriniferous_tubule-n	uriniferous tubule	n	0	2	2	oewn
+oewn-urn-n	urn	n	0	1	1	oewn
+oewn-urn-shaped-a	urn-shaped	a	0	1	1	oewn
+oewn-urn_fungus-n	urn fungus	n	0	2	2	oewn
+oewn-urobilin-n	urobilin	n	0	1	1	oewn
+oewn-urobilinogen-n	urobilinogen	n	0	1	1	oewn
+oewn-urocele-n	urocele	n	0	1	1	oewn
+oewn-urochesia-n	urochesia	n	0	1	1	oewn
+oewn-urochezia-n	urochezia	n	0	1	1	oewn
+oewn-urochord-n	urochord	n	0	1	1	oewn
+oewn-urochordate-n	urochordate	n	0	1	1	oewn
+oewn-urodele-n	urodele	n	0	1	1	oewn
+oewn-urodynia-n	urodynia	n	0	1	1	oewn
+oewn-urogenital-a	urogenital	a	0	1	1	oewn
+oewn-urogenital_apparatus-n	urogenital apparatus	n	0	2	2	oewn
+oewn-urogenital_cleft-n	urogenital cleft	n	0	2	2	oewn
+oewn-urogenital_medicine-n	urogenital medicine	n	0	2	2	oewn
+oewn-urogenital_system-n	urogenital system	n	0	2	2	oewn
+oewn-urokinase-n	urokinase	n	0	1	1	oewn
+oewn-urolith-n	urolith	n	0	1	1	oewn
+oewn-urologist-n	urologist	n	0	1	1	oewn
+oewn-urology-n	urology	n	0	1	1	oewn
+oewn-uropathy-n	uropathy	n	0	1	1	oewn
+oewn-uropygial_gland-n	uropygial gland	n	0	2	2	oewn
+oewn-uropygium-n	uropygium	n	0	1	1	oewn
+oewn-ursine-a	ursine	a	0	1	1	oewn
+oewn-ursine_dasyure-n	ursine dasyure	n	0	2	2	oewn
+oewn-ursinia-n	ursinia	n	0	1	1	oewn
+oewn-urticaria-n	urticaria	n	0	1	1	oewn
+oewn-urticate-v	urticate	v	0	1	1	oewn
+oewn-urtication-n	urtication	n	0	1	1	oewn
+oewn-urus-n	urus	n	0	1	1	oewn
+oewn-usability-n	usability	n	0	1	1	oewn
+oewn-usable-a	usable	a	0	1	1	oewn
+oewn-usableness-n	usableness	n	0	1	1	oewn
+oewn-usage-n	usage	n	0	1	1	oewn
+oewn-usance-n	usance	n	0	1	1	oewn
+oewn-use-n	use	n	0	1	1	oewn
+oewn-use-v	use	v	0	1	1	oewn
+oewn-use_immunity-n	use immunity	n	0	2	2	oewn
+oewn-use_of_goods_and_services-n	use of goods and services	n	0	5	1	oewn
+oewn-use_up-v	use up	v	0	2	1	oewn
+oewn-useable-a	useable	a	0	1	1	oewn
+oewn-useableness-n	useableness	n	0	1	1	oewn
+oewn-used-a	used	a	0	1	1	oewn
+oewn-used-car-n	used-car	n	0	1	1	oewn
+oewn-used-car_lot-n	used-car lot	n	0	2	2	oewn
+oewn-used_to-a	used to	a	0	2	2	oewn
+oewn-useful-a	useful	a	0	1	1	oewn
+oewn-usefully-r	usefully	r	0	1	1	oewn
+oewn-usefulness-n	usefulness	n	0	1	1	oewn
+oewn-useless-a	useless	a	0	1	1	oewn
+oewn-uselessly-r	uselessly	r	0	1	1	oewn
+oewn-uselessness-n	uselessness	n	0	1	1	oewn
+oewn-user-friendly-a	user-friendly	a	0	1	1	oewn
+oewn-user-n	user	n	0	1	1	oewn
+oewn-user_interface-n	user interface	n	0	2	2	oewn
+oewn-usher-n	usher	n	0	1	1	oewn
+oewn-usher-v	usher	v	0	1	1	oewn
+oewn-usher_in-v	usher in	v	0	2	1	oewn
+oewn-usher_out-v	usher out	v	0	2	1	oewn
+oewn-usherette-n	usherette	n	0	1	1	oewn
+oewn-ushering_in-n	ushering in	n	0	2	1	oewn
+oewn-using-n	using	n	0	1	1	oewn
+oewn-using_up-n	using up	n	0	2	2	oewn
+oewn-usual-a	usual	a	0	1	1	oewn
+oewn-usually-r	usually	r	0	1	1	oewn
+oewn-usualness-n	usualness	n	0	1	1	oewn
+oewn-usufruct-n	usufruct	n	0	1	1	oewn
+oewn-usufructuary-a	usufructuary	a	0	1	1	oewn
+oewn-usufructuary-n	usufructuary	n	0	1	1	oewn
+oewn-usurer-n	usurer	n	0	1	1	oewn
+oewn-usurious-a	usurious	a	0	1	1	oewn
+oewn-usuriously-r	usuriously	r	0	1	1	oewn
+oewn-usurp-v	usurp	v	0	1	1	oewn
+oewn-usurpation-n	usurpation	n	0	1	1	oewn
+oewn-usurper-n	usurper	n	0	1	1	oewn
+oewn-usury-n	usury	n	0	1	1	oewn
+oewn-ut-n	ut	n	0	1	1	oewn
+oewn-utahraptor-n	utahraptor	n	0	1	1	oewn
+oewn-utensil-n	utensil	n	0	1	1	oewn
+oewn-uterine-a	uterine	a	0	1	1	oewn
+oewn-uterine_artery-n	uterine artery	n	0	2	2	oewn
+oewn-uterine_cavity-n	uterine cavity	n	0	2	2	oewn
+oewn-uterine_cervix-n	uterine cervix	n	0	2	2	oewn
+oewn-uterine_contraction-n	uterine contraction	n	0	2	2	oewn
+oewn-uterine_tube-n	uterine tube	n	0	2	2	oewn
+oewn-uterine_vein-n	uterine vein	n	0	2	2	oewn
+oewn-uterus-n	uterus	n	0	1	1	oewn
+oewn-utile-a	utile	a	0	1	1	oewn
+oewn-utilisation-n	utilisation	n	0	1	1	oewn
+oewn-utilise-v	utilise	v	0	1	1	oewn
+oewn-utilised-a	utilised	a	0	1	1	oewn
+oewn-utiliser-n	utiliser	n	0	1	1	oewn
+oewn-utilitarian-a	utilitarian	a	0	1	1	oewn
+oewn-utilitarian-n	utilitarian	n	0	1	1	oewn
+oewn-utilitarianism-n	utilitarianism	n	0	1	1	oewn
+oewn-utility-a	utility	a	0	1	1	oewn
+oewn-utility-grade-a	utility-grade	a	0	1	1	oewn
+oewn-utility-n	utility	n	0	1	1	oewn
+oewn-utility_bond-n	utility bond	n	0	2	2	oewn
+oewn-utility_man-n	utility man	n	0	2	2	oewn
+oewn-utility_player-n	utility player	n	0	2	2	oewn
+oewn-utility_program-n	utility program	n	0	2	2	oewn
+oewn-utility_revenue_bond-n	utility revenue bond	n	0	3	3	oewn
+oewn-utility_routine-n	utility routine	n	0	2	2	oewn
+oewn-utility_woman-n	utility woman	n	0	2	2	oewn
+oewn-utility_worker-n	utility worker	n	0	2	2	oewn
+oewn-utilizable-a	utilizable	a	0	1	1	oewn
+oewn-utilization-n	utilization	n	0	1	1	oewn
+oewn-utilize-v	utilize	v	0	1	1	oewn
+oewn-utilized-a	utilized	a	0	1	1	oewn
+oewn-utilizer-n	utilizer	n	0	1	1	oewn
+oewn-utmost-a	utmost	a	0	1	1	oewn
+oewn-utmost-n	utmost	n	0	1	1	oewn
+oewn-utopia-n	utopia	n	0	1	1	oewn
+oewn-utopian-a	utopian	a	0	1	1	oewn
+oewn-utopian-n	utopian	n	0	1	1	oewn
+oewn-utopian_socialism-n	utopian socialism	n	0	2	2	oewn
+oewn-utricle-n	utricle	n	0	1	1	oewn
+oewn-utriculus-n	utriculus	n	0	1	1	oewn
+oewn-utter-a	utter	a	0	1	1	oewn
+oewn-utter-v	utter	v	0	1	1	oewn
+oewn-utterable-a	utterable	a	0	1	1	oewn
+oewn-utterance-n	utterance	n	0	1	1	oewn
+oewn-uttered-a	uttered	a	0	1	1	oewn
+oewn-utterer-n	utterer	n	0	1	1	oewn
+oewn-utterly-r	utterly	r	0	1	1	oewn
+oewn-uttermost-a	uttermost	a	0	1	1	oewn
+oewn-uttermost-n	uttermost	n	0	1	1	oewn
+oewn-utterness-n	utterness	n	0	1	1	oewn
+oewn-uvea-n	uvea	n	0	1	1	oewn
+oewn-uveal-a	uveal	a	0	1	1	oewn
+oewn-uveitis-n	uveitis	n	0	1	1	oewn
+oewn-uveoscleral_pathway-n	uveoscleral pathway	n	0	2	2	oewn
+oewn-uveous-a	uveous	a	0	1	1	oewn
+oewn-uvula-n	uvula	n	0	1	1	oewn
+oewn-uvular-a	uvular	a	0	1	1	oewn
+oewn-uvulitis-n	uvulitis	n	0	1	1	oewn
+oewn-uvulopalatopharyngoplasty-n	uvulopalatopharyngoplasty	n	0	1	1	oewn
+oewn-ux.-n	ux.	n	0	1	1	oewn
+oewn-uxor-n	uxor	n	0	1	1	oewn
+oewn-uxorial-a	uxorial	a	0	1	1	oewn
+oewn-uxoricide-n	uxoricide	n	0	1	1	oewn
+oewn-uxorious-a	uxorious	a	0	1	1	oewn
+oewn-uxoriously-r	uxoriously	r	0	1	1	oewn
+oewn-uxoriousness-n	uxoriousness	n	0	1	1	oewn

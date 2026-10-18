@@ -1,0 +1,3665 @@
+entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-wicked-v	wicked	v	0	1	1	dema
+oewn-W-n	W	n	0	1	1	oewn
+oewn-W-shaped-a	W-shaped	a	0	1	1	oewn
+oewn-W.C.-n	W.C.	n	0	1	1	oewn
+oewn-W.H.O.-n	W.H.O.	n	0	1	1	oewn
+oewn-W.M.D.-n	W.M.D.	n	0	1	1	oewn
+oewn-WAC-n	WAC	n	0	1	1	oewn
+oewn-WAN-n	WAN	n	0	1	1	oewn
+oewn-WASP-n	WASP	n	0	1	1	oewn
+oewn-WATS-n	WATS	n	0	1	1	oewn
+oewn-WATS_line-n	WATS line	n	0	2	2	oewn
+oewn-WBC-n	WBC	n	0	1	1	oewn
+oewn-WHO-n	WHO	n	0	1	1	oewn
+oewn-WIMP-n	WIMP	n	0	1	1	oewn
+oewn-WLAN-n	WLAN	n	0	1	1	oewn
+oewn-WMD-n	WMD	n	0	1	1	oewn
+oewn-WMO-n	WMO	n	0	1	1	oewn
+oewn-WNW-n	WNW	n	0	1	1	oewn
+oewn-WSW-n	WSW	n	0	1	1	oewn
+oewn-WTO-n	WTO	n	0	1	1	oewn
+oewn-WTV-n	WTV	n	0	1	1	oewn
+oewn-WWW-n	WWW	n	0	1	1	oewn
+oewn-WYSIWYG-a	WYSIWYG	a	0	1	1	oewn
+oewn-Wac-n	Wac	n	0	1	1	oewn
+oewn-Wagner-n	Wagner	n	0	1	1	oewn
+oewn-Wagnerian-a	Wagnerian	a	0	1	1	oewn
+oewn-Wagnerian-n	Wagnerian	n	0	1	1	oewn
+oewn-Wahabi-n	Wahabi	n	0	1	1	oewn
+oewn-Wahabism-n	Wahabism	n	0	1	1	oewn
+oewn-Wahhabi-n	Wahhabi	n	0	1	1	oewn
+oewn-Wahhabism-n	Wahhabism	n	0	1	1	oewn
+oewn-Wakashan-n	Wakashan	n	0	1	1	oewn
+oewn-Wakashan_language-n	Wakashan language	n	0	2	2	oewn
+oewn-Walapai-n	Walapai	n	0	1	1	oewn
+oewn-Walapai_language-n	Walapai language	n	0	2	2	oewn
+oewn-Walbiri-n	Walbiri	n	0	1	1	oewn
+oewn-Walbiri_language-n	Walbiri language	n	0	2	2	oewn
+oewn-Waldenses-n	Waldenses	n	0	1	1	oewn
+oewn-Waldorf_salad-n	Waldorf salad	n	0	2	2	oewn
+oewn-Walhalla-n	Walhalla	n	0	1	1	oewn
+oewn-Walker_foxhound-n	Walker foxhound	n	0	2	2	oewn
+oewn-Walker_hound-n	Walker hound	n	0	2	2	oewn
+oewn-Walking_horse-n	Walking horse	n	0	2	2	oewn
+oewn-Walkman-n	Walkman	n	0	1	1	oewn
+oewn-Wall_Street-n	Wall Street	n	0	2	2	oewn
+oewn-Walloon-n	Walloon	n	0	1	1	oewn
+oewn-Walloons-n	Walloons	n	0	1	1	oewn
+oewn-Walpurgis_Night-n	Walpurgis Night	n	0	2	2	oewn
+oewn-Wampanoag-n	Wampanoag	n	0	1	1	oewn
+oewn-Wandala-n	Wandala	n	0	1	1	oewn
+oewn-Wandala_language-n	Wandala language	n	0	2	2	oewn
+oewn-Wandering_Jew-n	Wandering Jew	n	0	2	2	oewn
+oewn-Wankel_engine-n	Wankel engine	n	0	2	2	oewn
+oewn-Wankel_rotary_engine-n	Wankel rotary engine	n	0	3	3	oewn
+oewn-War_Department-n	War Department	n	0	2	2	oewn
+oewn-Warji-n	Warji	n	0	1	1	oewn
+oewn-Warji_language-n	Warji language	n	0	2	2	oewn
+oewn-Warlpiri-n	Warlpiri	n	0	1	1	oewn
+oewn-Warlpiri_language-n	Warlpiri language	n	0	2	2	oewn
+oewn-Washington-ap-s_Birthday-n	Washington's Birthday	n	0	2	2	oewn
+oewn-Washingtonian-a	Washingtonian	a	0	1	1	oewn
+oewn-Washingtonian-n	Washingtonian	n	0	1	1	oewn
+oewn-Wasserman_reaction-n	Wasserman reaction	n	0	2	2	oewn
+oewn-Wassermann-n	Wassermann	n	0	1	1	oewn
+oewn-Wassermann_test-n	Wassermann test	n	0	2	2	oewn
+oewn-Water_Bearer-n	Water Bearer	n	0	2	2	oewn
+oewn-Waterhouse-Friderichsen_syndrome-n	Waterhouse-Friderichsen syndrome	n	0	2	2	oewn
+oewn-Watusi-n	Watusi	n	0	1	1	oewn
+oewn-Watutsi-n	Watutsi	n	0	1	1	oewn
+oewn-Wave-n	Wave	n	0	1	1	oewn
+oewn-Ways_and_Means_Committee-n	Ways and Means Committee	n	0	4	4	oewn
+oewn-Wb-n	Wb	n	0	1	1	oewn
+oewn-WbN-n	WbN	n	0	1	1	oewn
+oewn-WbS-n	WbS	n	0	1	1	oewn
+oewn-Web_Map_Server-n	Web Map Server	n	0	3	3	oewn
+oewn-Web_Map_Service-n	Web Map Service	n	0	3	3	oewn
+oewn-Weber-Fechner_law-n	Weber-Fechner law	n	0	2	2	oewn
+oewn-Weber-ap-s_law-n	Weber's law	n	0	2	2	oewn
+oewn-Wed-n	Wed	n	0	1	1	oewn
+oewn-Wedgwood-n	Wedgwood	n	0	1	1	oewn
+oewn-Wednesday-n	Wednesday	n	0	1	1	oewn
+oewn-Wei-n	Wei	n	0	1	1	oewn
+oewn-Wei_dynasty-n	Wei dynasty	n	0	2	2	oewn
+oewn-Weigela_florida-n	Weigela florida	n	0	2	2	oewn
+oewn-Weil-ap-s_disease-n	Weil's disease	n	0	2	2	oewn
+oewn-Weimar_Republic-n	Weimar Republic	n	0	2	2	oewn
+oewn-Weimaraner-n	Weimaraner	n	0	1	1	oewn
+oewn-Weird-n	Weird	n	0	1	1	oewn
+oewn-Weissbier-n	Weissbier	n	0	1	1	oewn
+oewn-Weizenbier-n	Weizenbier	n	0	1	1	oewn
+oewn-Weizenbock-n	Weizenbock	n	0	1	1	oewn
+oewn-Wellington-n	Wellington	n	0	1	1	oewn
+oewn-Wellington_boot-n	Wellington boot	n	0	2	2	oewn
+oewn-Welsh-a	Welsh	a	0	1	1	oewn
+oewn-Welsh-n	Welsh	n	0	1	1	oewn
+oewn-Welsh_Black-n	Welsh Black	n	0	2	2	oewn
+oewn-Welsh_corgi-n	Welsh corgi	n	0	2	2	oewn
+oewn-Welsh_language-n	Welsh language	n	0	2	2	oewn
+oewn-Welsh_onion-n	Welsh onion	n	0	2	2	oewn
+oewn-Welsh_pony-n	Welsh pony	n	0	2	2	oewn
+oewn-Welsh_poppy-n	Welsh poppy	n	0	2	2	oewn
+oewn-Welsh_rabbit-n	Welsh rabbit	n	0	2	2	oewn
+oewn-Welsh_rarebit-n	Welsh rarebit	n	0	2	2	oewn
+oewn-Welsh_springer_spaniel-n	Welsh springer spaniel	n	0	3	3	oewn
+oewn-Welsh_terrier-n	Welsh terrier	n	0	2	2	oewn
+oewn-Welshman-n	Welshman	n	0	1	1	oewn
+oewn-Welshwoman-n	Welshwoman	n	0	1	1	oewn
+oewn-Weltanschauung-n	Weltanschauung	n	0	1	1	oewn
+oewn-Weltschmerz-n	Weltschmerz	n	0	1	1	oewn
+oewn-Welwitschia_mirabilis-n	Welwitschia mirabilis	n	0	2	2	oewn
+oewn-Werdnig-Hoffman_disease-n	Werdnig-Hoffman disease	n	0	2	2	oewn
+oewn-Werlhof-ap-s_disease-n	Werlhof's disease	n	0	2	2	oewn
+oewn-Wernicke-ap-s_aphasia-n	Wernicke's aphasia	n	0	2	2	oewn
+oewn-Wernicke-ap-s_area-n	Wernicke's area	n	0	2	2	oewn
+oewn-Wernicke-ap-s_center-n	Wernicke's center	n	0	2	2	oewn
+oewn-Wernicke-ap-s_encephalopathy-n	Wernicke's encephalopathy	n	0	2	2	oewn
+oewn-Wesleyan-a	Wesleyan	a	0	1	1	oewn
+oewn-Wesleyan-n	Wesleyan	n	0	1	1	oewn
+oewn-Wesleyan_Methodist_Church-n	Wesleyan Methodist Church	n	0	3	3	oewn
+oewn-Wesleyan_Methodists-n	Wesleyan Methodists	n	0	2	2	oewn
+oewn-Wesleyanism-n	Wesleyanism	n	0	1	1	oewn
+oewn-Wesleyism-n	Wesleyism	n	0	1	1	oewn
+oewn-West-sider-n	West-sider	n	0	1	1	oewn
+oewn-West_African-a	West African	a	0	2	2	oewn
+oewn-West_African-n	West African	n	0	2	2	oewn
+oewn-West_African_CFA_franc-n	West African CFA franc	n	0	4	4	oewn
+oewn-West_Berliner-n	West Berliner	n	0	2	2	oewn
+oewn-West_Chadic-n	West Chadic	n	0	2	2	oewn
+oewn-West_Germanic-n	West Germanic	n	0	2	2	oewn
+oewn-West_Germanic_language-n	West Germanic language	n	0	3	3	oewn
+oewn-West_Highland_white_terrier-n	West Highland white terrier	n	0	4	4	oewn
+oewn-West_Indian-n	West Indian	n	0	2	2	oewn
+oewn-West_Indian_cherry-n	West Indian cherry	n	0	3	3	oewn
+oewn-West_Indian_jasmine-n	West Indian jasmine	n	0	3	3	oewn
+oewn-West_Indian_satinwood-n	West Indian satinwood	n	0	3	3	oewn
+oewn-West_Indian_smallpox-n	West Indian smallpox	n	0	3	3	oewn
+oewn-West_Indian_snowberry-n	West Indian snowberry	n	0	3	3	oewn
+oewn-West_Midland-n	West Midland	n	0	2	2	oewn
+oewn-West_Nile_encephalitis-n	West Nile encephalitis	n	0	3	3	oewn
+oewn-West_Nile_encephalitis_virus-n	West Nile encephalitis virus	n	0	4	4	oewn
+oewn-West_Nile_virus-n	West Nile virus	n	0	3	3	oewn
+oewn-West_Saxon-n	West Saxon	n	0	2	2	oewn
+oewn-West_Tocharian-n	West Tocharian	n	0	2	2	oewn
+oewn-West_Virginian-n	West Virginian	n	0	2	2	oewn
+oewn-Western-n	Western	n	0	1	1	oewn
+oewn-Western_Australia_coral_pea-n	Western Australia coral pea	n	0	4	4	oewn
+oewn-Western_Church-n	Western Church	n	0	2	2	oewn
+oewn-Western_Malayo-Polynesian-n	Western Malayo-Polynesian	n	0	2	2	oewn
+oewn-Western_Samoan_monetary_unit-n	Western Samoan monetary unit	n	0	4	4	oewn
+oewn-Western_ax-n	Western ax	n	0	2	2	oewn
+oewn-Western_axe-n	Western axe	n	0	2	2	oewn
+oewn-Western_balsam_poplar-n	Western balsam poplar	n	0	3	3	oewn
+oewn-Western_birch-n	Western birch	n	0	2	2	oewn
+oewn-Western_box_turtle-n	Western box turtle	n	0	3	3	oewn
+oewn-Western_civilization-n	Western civilization	n	0	2	2	oewn
+oewn-Western_concert_flute-n	Western concert flute	n	0	3	3	oewn
+oewn-Western_culture-n	Western culture	n	0	2	2	oewn
+oewn-Western_diamondback-n	Western diamondback	n	0	2	2	oewn
+oewn-Western_diamondback_rattlesnake-n	Western diamondback rattlesnake	n	0	3	3	oewn
+oewn-Western_honey_mesquite-n	Western honey mesquite	n	0	3	3	oewn
+oewn-Western_mountain_ash-n	Western mountain ash	n	0	3	3	oewn
+oewn-Western_paper_birch-n	Western paper birch	n	0	3	3	oewn
+oewn-Western_pasqueflower-n	Western pasqueflower	n	0	2	2	oewn
+oewn-Western_rattlesnake-n	Western rattlesnake	n	0	2	2	oewn
+oewn-Western_ribbon_snake-n	Western ribbon snake	n	0	3	3	oewn
+oewn-Western_saddle-n	Western saddle	n	0	2	2	oewn
+oewn-Western_sand_cherry-n	Western sand cherry	n	0	3	3	oewn
+oewn-Western_silvery_aster-n	Western silvery aster	n	0	3	3	oewn
+oewn-Westernisation-n	Westernisation	n	0	1	1	oewn
+oewn-Westernization-n	Westernization	n	0	1	1	oewn
+oewn-Weston_cell-n	Weston cell	n	0	2	2	oewn
+oewn-Wheatstone_bridge-n	Wheatstone bridge	n	0	2	2	oewn
+oewn-Whig-n	Whig	n	0	1	1	oewn
+oewn-Whig_Party-n	Whig Party	n	0	2	2	oewn
+oewn-Whipple-ap-s_penstemon-n	Whipple's penstemon	n	0	2	2	oewn
+oewn-Whit-Tuesday-n	Whit-Tuesday	n	0	1	1	oewn
+oewn-White-n	White	n	0	1	1	oewn
+oewn-White_Friar-n	White Friar	n	0	2	2	oewn
+oewn-White_House-n	White House	n	0	2	2	oewn
+oewn-White_Russian-n	White Russian	n	0	2	2	oewn
+oewn-White_Russian_language-n	White Russian language	n	0	3	3	oewn
+oewn-White_Tai-n	White Tai	n	0	2	2	oewn
+oewn-White_people-n	White people	n	0	2	2	oewn
+oewn-White_person-n	White person	n	0	2	2	oewn
+oewn-White_race-n	White race	n	0	2	2	oewn
+oewn-Whitehall-n	Whitehall	n	0	1	1	oewn
+oewn-Whitmonday-n	Whitmonday	n	0	1	1	oewn
+oewn-Whitsun-n	Whitsun	n	0	1	1	oewn
+oewn-Whitsun_Monday-n	Whitsun Monday	n	0	2	2	oewn
+oewn-Whitsun_Tuesday-n	Whitsun Tuesday	n	0	2	2	oewn
+oewn-Whitsunday-n	Whitsunday	n	0	1	1	oewn
+oewn-Whitsuntide-n	Whitsuntide	n	0	1	1	oewn
+oewn-Whitweek-n	Whitweek	n	0	1	1	oewn
+oewn-WiFi-n	WiFi	n	0	1	1	oewn
+oewn-Wicca-n	Wicca	n	0	1	1	oewn
+oewn-Wiccan-a	Wiccan	a	0	1	1	oewn
+oewn-Wiccan-n	Wiccan	n	0	1	1	oewn
+oewn-Wichita-n	Wichita	n	0	1	1	oewn
+oewn-Wichita_language-n	Wichita language	n	0	2	2	oewn
+oewn-Widal-ap-s_test-n	Widal's test	n	0	2	2	oewn
+oewn-Widal_test-n	Widal test	n	0	2	2	oewn
+oewn-Wiener_schnitzel-n	Wiener schnitzel	n	0	2	2	oewn
+oewn-Wiffle-n	Wiffle	n	0	1	1	oewn
+oewn-Wiffle_Ball-n	Wiffle Ball	n	0	2	2	oewn
+oewn-Wild_West_Show-n	Wild West Show	n	0	3	3	oewn
+oewn-Williams_syndrome-n	Williams syndrome	n	0	2	2	oewn
+oewn-Wilms-ap-_tumor-n	Wilms' tumor	n	0	2	2	oewn
+oewn-Wilms_tumour-n	Wilms tumour	n	0	2	2	oewn
+oewn-Wilson-ap-s_blackcap-n	Wilson's blackcap	n	0	2	2	oewn
+oewn-Wilson-ap-s_disease-n	Wilson's disease	n	0	2	2	oewn
+oewn-Wilson-ap-s_phalarope-n	Wilson's phalarope	n	0	2	2	oewn
+oewn-Wilson-ap-s_snipe-n	Wilson's snipe	n	0	2	2	oewn
+oewn-Wilson-ap-s_thrush-n	Wilson's thrush	n	0	2	2	oewn
+oewn-Wilson-ap-s_warbler-n	Wilson's warbler	n	0	2	2	oewn
+oewn-Wilson_cloud_chamber-n	Wilson cloud chamber	n	0	3	3	oewn
+oewn-Wilsonia_pusilla-n	Wilsonia pusilla	n	0	2	2	oewn
+oewn-Wilsonian-a	Wilsonian	a	0	1	1	oewn
+oewn-Wilton-n	Wilton	n	0	1	1	oewn
+oewn-Wilton_carpet-n	Wilton carpet	n	0	2	2	oewn
+oewn-Wimshurst_machine-n	Wimshurst machine	n	0	2	2	oewn
+oewn-Winchester-n	Winchester	n	0	1	1	oewn
+oewn-Winchester_College-n	Winchester College	n	0	2	2	oewn
+oewn-Winchester_drive-n	Winchester drive	n	0	2	2	oewn
+oewn-Windows-n	Windows	n	0	1	1	oewn
+oewn-Windsor-n	Windsor	n	0	1	1	oewn
+oewn-Windsor_chair-n	Windsor chair	n	0	2	2	oewn
+oewn-Windsor_eyeglasses-n	Windsor eyeglasses	n	0	2	2	oewn
+oewn-Windsor_green-n	Windsor green	n	0	2	2	oewn
+oewn-Windsor_knot-n	Windsor knot	n	0	2	2	oewn
+oewn-Windsor_spectacles-n	Windsor spectacles	n	0	2	2	oewn
+oewn-Windsor_tie-n	Windsor tie	n	0	2	2	oewn
+oewn-Windsors-n	Windsors	n	0	1	1	oewn
+oewn-Winesap-n	Winesap	n	0	1	1	oewn
+oewn-Winnebago-n	Winnebago	n	0	1	1	oewn
+oewn-Winnebago_language-n	Winnebago language	n	0	2	2	oewn
+oewn-Winsorized_mean-n	Winsorized mean	n	0	2	2	oewn
+oewn-Winter_Olympic_Games-n	Winter Olympic Games	n	0	3	3	oewn
+oewn-Winter_Olympics-n	Winter Olympics	n	0	2	2	oewn
+oewn-Wintera_colorata-n	Wintera colorata	n	0	2	2	oewn
+oewn-Wintun-n	Wintun	n	0	1	1	oewn
+oewn-Wintun_language-n	Wintun language	n	0	2	2	oewn
+oewn-Wisconsin_weeping_willow-n	Wisconsin weeping willow	n	0	3	3	oewn
+oewn-Wisconsinite-n	Wisconsinite	n	0	1	1	oewn
+oewn-Wisteria_chinensis-n	Wisteria chinensis	n	0	2	2	oewn
+oewn-Wisteria_floribunda-n	Wisteria floribunda	n	0	2	2	oewn
+oewn-Wisteria_frutescens-n	Wisteria frutescens	n	0	2	2	oewn
+oewn-Wisteria_venusta-n	Wisteria venusta	n	0	2	2	oewn
+oewn-Wittgensteinian-a	Wittgensteinian	a	0	1	1	oewn
+oewn-Wobbly-n	Wobbly	n	0	1	1	oewn
+oewn-Wolffia_columbiana-n	Wolffia columbiana	n	0	2	2	oewn
+oewn-Wolffiella_gladiata-n	Wolffiella gladiata	n	0	2	2	oewn
+oewn-Wollaston_prism-n	Wollaston prism	n	0	2	2	oewn
+oewn-Wollemi_pine-n	Wollemi pine	n	0	2	2	oewn
+oewn-Wolof-n	Wolof	n	0	1	1	oewn
+oewn-Wolof_language-n	Wolof language	n	0	2	2	oewn
+oewn-Wolstonian_glaciation-n	Wolstonian glaciation	n	0	2	2	oewn
+oewn-Wolverine-n	Wolverine	n	0	1	1	oewn
+oewn-Women-ap-s_Army_Corps-n	Women's Army Corps	n	0	3	3	oewn
+oewn-Wood-ap-s_alloy-n	Wood's alloy	n	0	2	2	oewn
+oewn-Wood-ap-s_metal-n	Wood's metal	n	0	2	2	oewn
+oewn-Woodsia_alpina-n	Woodsia alpina	n	0	2	2	oewn
+oewn-Woodsia_glabella-n	Woodsia glabella	n	0	2	2	oewn
+oewn-Woodsia_ilvensis-n	Woodsia ilvensis	n	0	2	2	oewn
+oewn-Woodwardia_virginica-n	Woodwardia virginica	n	0	2	2	oewn
+oewn-Worcester_sauce-n	Worcester sauce	n	0	2	2	oewn
+oewn-Worcestershire-n	Worcestershire	n	0	1	1	oewn
+oewn-Worcestershire_sauce-n	Worcestershire sauce	n	0	2	2	oewn
+oewn-Word-n	Word	n	0	1	1	oewn
+oewn-Word_of_God-n	Word of God	n	0	3	1	oewn
+oewn-Wordsworthian-a	Wordsworthian	a	0	1	1	oewn
+oewn-World_Bank-n	World Bank	n	0	2	2	oewn
+oewn-World_Council_of_Churches-n	World Council of Churches	n	0	4	2	oewn
+oewn-World_Court-n	World Court	n	0	2	2	oewn
+oewn-World_Cup-n	World Cup	n	0	2	2	oewn
+oewn-World_Health_Organization-n	World Health Organization	n	0	3	3	oewn
+oewn-World_Meteorological_Organization-n	World Meteorological Organization	n	0	3	3	oewn
+oewn-World_Series-n	World Series	n	0	2	2	oewn
+oewn-World_Trade_Organization-n	World Trade Organization	n	0	3	3	oewn
+oewn-World_Wide_Web-n	World Wide Web	n	0	3	3	oewn
+oewn-Wormian_bone-n	Wormian bone	n	0	2	2	oewn
+oewn-Wu-n	Wu	n	0	1	1	oewn
+oewn-Wu_dialect-n	Wu dialect	n	0	2	2	oewn
+oewn-Wuhan_coronavirus-n	Wuhan coronavirus	n	0	2	2	oewn
+oewn-Wuhan_flu-n	Wuhan flu	n	0	2	2	oewn
+oewn-Wuhan_pneumonia-n	Wuhan pneumonia	n	0	2	2	oewn
+oewn-Wuhan_virus-n	Wuhan virus	n	0	2	2	oewn
+oewn-Wyethia_amplexicaulis-n	Wyethia amplexicaulis	n	0	2	2	oewn
+oewn-Wyethia_helianthoides-n	Wyethia helianthoides	n	0	2	2	oewn
+oewn-Wykehamist-n	Wykehamist	n	0	1	1	oewn
+oewn-Wynnea_americana-n	Wynnea americana	n	0	2	2	oewn
+oewn-Wynnea_sparassoides-n	Wynnea sparassoides	n	0	2	2	oewn
+oewn-Wyomingite-n	Wyomingite	n	0	1	1	oewn
+oewn-Wyrd-n	Wyrd	n	0	1	1	oewn
+oewn-Wytensin-n	Wytensin	n	0	1	1	oewn
+oewn-w-n	w	n	0	1	1	oewn
+oewn-wackily-r	wackily	r	0	1	1	oewn
+oewn-wacko-n	wacko	n	0	1	1	oewn
+oewn-wacky-a	wacky	a	0	1	1	oewn
+oewn-wad-n	wad	n	0	1	1	oewn
+oewn-wad-v	wad	v	0	1	1	oewn
+oewn-wadding-n	wadding	n	0	1	1	oewn
+oewn-waddle-n	waddle	n	0	1	1	oewn
+oewn-waddle-v	waddle	v	0	1	1	oewn
+oewn-waddler-n	waddler	n	0	1	1	oewn
+oewn-wade-v	wade	v	0	1	1	oewn
+oewn-wader-n	wader	n	0	1	1	oewn
+oewn-waders-n	waders	n	0	1	1	oewn
+oewn-wadi-n	wadi	n	0	1	1	oewn
+oewn-wading-n	wading	n	0	1	1	oewn
+oewn-wading_bird-n	wading bird	n	0	2	2	oewn
+oewn-wading_pool-n	wading pool	n	0	2	2	oewn
+oewn-wads-n	wads	n	0	1	1	oewn
+oewn-wafer-like-a	wafer-like	a	0	1	1	oewn
+oewn-wafer-n	wafer	n	0	1	1	oewn
+oewn-wafer-thin-a	wafer-thin	a	0	1	1	oewn
+oewn-wafer-thin-r	wafer-thin	r	0	1	1	oewn
+oewn-waffle-n	waffle	n	0	1	1	oewn
+oewn-waffle-v	waffle	v	0	1	1	oewn
+oewn-waffle_iron-n	waffle iron	n	0	2	2	oewn
+oewn-waffler-n	waffler	n	0	1	1	oewn
+oewn-waft-n	waft	n	0	1	1	oewn
+oewn-waft-v	waft	v	0	1	1	oewn
+oewn-wafture-n	wafture	n	0	1	1	oewn
+oewn-wag-n	wag	n	0	1	1	oewn
+oewn-wag-v	wag	v	0	1	1	oewn
+oewn-wage-earning-a	wage-earning	a	0	1	1	oewn
+oewn-wage-n	wage	n	0	1	1	oewn
+oewn-wage-v	wage	v	0	1	1	oewn
+oewn-wage_claim-n	wage claim	n	0	2	2	oewn
+oewn-wage_concession-n	wage concession	n	0	2	2	oewn
+oewn-wage_earner-n	wage earner	n	0	2	2	oewn
+oewn-wage_floor-n	wage floor	n	0	2	2	oewn
+oewn-wage_freeze-n	wage freeze	n	0	2	2	oewn
+oewn-wage_hike-n	wage hike	n	0	2	2	oewn
+oewn-wage_increase-n	wage increase	n	0	2	2	oewn
+oewn-wage_scale-n	wage scale	n	0	2	2	oewn
+oewn-wage_schedule-n	wage schedule	n	0	2	2	oewn
+oewn-wage_setter-n	wage setter	n	0	2	2	oewn
+oewn-wager-n	wager	n	0	1	1	oewn
+oewn-wager-v	wager	v	0	1	1	oewn
+oewn-wagerer-n	wagerer	n	0	1	1	oewn
+oewn-wages-n	wages	n	0	1	1	oewn
+oewn-waggery-n	waggery	n	0	1	1	oewn
+oewn-waggish-a	waggish	a	0	1	1	oewn
+oewn-waggishly-r	waggishly	r	0	1	1	oewn
+oewn-waggishness-n	waggishness	n	0	1	1	oewn
+oewn-waggle-n	waggle	n	0	1	1	oewn
+oewn-waggle-v	waggle	v	0	1	1	oewn
+oewn-waggon-n	waggon	n	0	1	1	oewn
+oewn-waggoner-n	waggoner	n	0	1	1	oewn
+oewn-waggonwright-n	waggonwright	n	0	1	1	oewn
+oewn-wagon-lit-n	wagon-lit	n	0	1	1	oewn
+oewn-wagon-n	wagon	n	0	1	1	oewn
+oewn-wagon_tire-n	wagon tire	n	0	2	2	oewn
+oewn-wagon_train-n	wagon train	n	0	2	2	oewn
+oewn-wagon_wheel-n	wagon wheel	n	0	2	2	oewn
+oewn-wagoner-n	wagoner	n	0	1	1	oewn
+oewn-wagonwright-n	wagonwright	n	0	1	1	oewn
+oewn-wagtail-n	wagtail	n	0	1	1	oewn
+oewn-wahoo-n	wahoo	n	0	1	1	oewn
+oewn-wai-n	wai	n	0	1	1	oewn
+oewn-wai-v	wai	v	0	1	1	oewn
+oewn-waif-n	waif	n	0	1	1	oewn
+oewn-waifu-n	waifu	n	0	1	1	oewn
+oewn-wail-n	wail	n	0	1	1	oewn
+oewn-wail-v	wail	v	0	1	1	oewn
+oewn-wailer-n	wailer	n	0	1	1	oewn
+oewn-wailful-a	wailful	a	0	1	1	oewn
+oewn-wailing-a	wailing	a	0	1	1	oewn
+oewn-wailing-n	wailing	n	0	1	1	oewn
+oewn-wain-n	wain	n	0	1	1	oewn
+oewn-wainscot-n	wainscot	n	0	1	1	oewn
+oewn-wainscoted-a	wainscoted	a	0	1	1	oewn
+oewn-wainscoting-n	wainscoting	n	0	1	1	oewn
+oewn-wainscotting-n	wainscotting	n	0	1	1	oewn
+oewn-wainwright-n	wainwright	n	0	1	1	oewn
+oewn-waist-deep-r	waist-deep	r	0	1	1	oewn
+oewn-waist-high-r	waist-high	r	0	1	1	oewn
+oewn-waist-length-a	waist-length	a	0	1	1	oewn
+oewn-waist-n	waist	n	0	1	1	oewn
+oewn-waist_anchor-n	waist anchor	n	0	2	2	oewn
+oewn-waist_pack-n	waist pack	n	0	2	2	oewn
+oewn-waistband-n	waistband	n	0	1	1	oewn
+oewn-waistcloth-n	waistcloth	n	0	1	1	oewn
+oewn-waistcoat-n	waistcoat	n	0	1	1	oewn
+oewn-waistline-n	waistline	n	0	1	1	oewn
+oewn-wait-n	wait	n	0	1	1	oewn
+oewn-wait-v	wait	v	0	1	1	oewn
+oewn-wait_on-v	wait on	v	0	2	1	oewn
+oewn-waiter-ap-s_assistant-n	waiter's assistant	n	0	2	2	oewn
+oewn-waiter-n	waiter	n	0	1	1	oewn
+oewn-waiting-a	waiting	a	0	1	1	oewn
+oewn-waiting-n	waiting	n	0	1	1	oewn
+oewn-waiting_area-n	waiting area	n	0	2	2	oewn
+oewn-waiting_game-n	waiting game	n	0	2	2	oewn
+oewn-waiting_line-n	waiting line	n	0	2	2	oewn
+oewn-waiting_list-n	waiting list	n	0	2	2	oewn
+oewn-waiting_room-n	waiting room	n	0	2	2	oewn
+oewn-waitress-n	waitress	n	0	1	1	oewn
+oewn-waitress-v	waitress	v	0	1	1	oewn
+oewn-waive-v	waive	v	0	1	1	oewn
+oewn-waiver-n	waiver	n	0	1	1	oewn
+oewn-wake-n	wake	n	0	1	1	oewn
+oewn-wake-robin-n	wake-robin	n	0	1	1	oewn
+oewn-wake-up_call-n	wake-up call	n	0	2	2	oewn
+oewn-wake-up_signal-n	wake-up signal	n	0	2	2	oewn
+oewn-wake-v	wake	v	0	1	1	oewn
+oewn-wake_board-n	wake board	n	0	2	2	oewn
+oewn-wake_up-v	wake up	v	0	2	1	oewn
+oewn-wakeboard-n	wakeboard	n	0	1	1	oewn
+oewn-wakeful-a	wakeful	a	0	1	1	oewn
+oewn-wakefulness-n	wakefulness	n	0	1	1	oewn
+oewn-wakeless-a	wakeless	a	0	1	1	oewn
+oewn-waken-v	waken	v	0	1	1	oewn
+oewn-wakening-n	wakening	n	0	1	1	oewn
+oewn-waker-n	waker	n	0	1	1	oewn
+oewn-waking-a	waking	a	0	1	1	oewn
+oewn-waking-n	waking	n	0	1	1	oewn
+oewn-waking_up-n	waking up	n	0	2	2	oewn
+oewn-waldmeister-n	waldmeister	n	0	1	1	oewn
+oewn-wale-n	wale	n	0	1	1	oewn
+oewn-walk-in-a	walk-in	a	0	1	1	oewn
+oewn-walk-in-n	walk-in	n	0	1	1	oewn
+oewn-walk-n	walk	n	0	1	1	oewn
+oewn-walk-on-a	walk-on	a	0	1	1	oewn
+oewn-walk-on-n	walk-on	n	0	1	1	oewn
+oewn-walk-through-n	walk-through	n	0	1	1	oewn
+oewn-walk-to-a	walk-to	a	0	1	1	oewn
+oewn-walk-up-a	walk-up	a	0	1	1	oewn
+oewn-walk-up-n	walk-up	n	0	1	1	oewn
+oewn-walk-up_apartment-n	walk-up apartment	n	0	2	2	oewn
+oewn-walk-v	walk	v	0	1	1	oewn
+oewn-walk_about-v	walk about	v	0	2	1	oewn
+oewn-walk_around-v	walk around	v	0	2	1	oewn
+oewn-walk_away-v	walk away	v	0	2	1	oewn
+oewn-walk_in-v	walk in	v	0	2	1	oewn
+oewn-walk_of_life-n	walk of life	n	0	3	1	oewn
+oewn-walk_off-v	walk off	v	0	2	1	oewn
+oewn-walk_on_air-v	walk on air	v	0	3	1	oewn
+oewn-walk_out-v	walk out	v	0	2	1	oewn
+oewn-walk_out_of-v	walk out of	v	0	3	1	oewn
+oewn-walk_over-v	walk over	v	0	2	1	oewn
+oewn-walk_through-v	walk through	v	0	2	1	oewn
+oewn-walkabout-n	walkabout	n	0	1	1	oewn
+oewn-walkaway-n	walkaway	n	0	1	1	oewn
+oewn-walker-n	walker	n	0	1	1	oewn
+oewn-walkie-talkie-n	walkie-talkie	n	0	1	1	oewn
+oewn-walking-a	walking	a	0	1	1	oewn
+oewn-walking-n	walking	n	0	1	1	oewn
+oewn-walking_delegate-n	walking delegate	n	0	2	2	oewn
+oewn-walking_fern-n	walking fern	n	0	2	2	oewn
+oewn-walking_leaf-n	walking leaf	n	0	2	2	oewn
+oewn-walking_on_air-n	walking on air	n	0	3	1	oewn
+oewn-walking_papers-n	walking papers	n	0	2	2	oewn
+oewn-walking_shoe-n	walking shoe	n	0	2	2	oewn
+oewn-walking_stick-n	walking stick	n	0	2	2	oewn
+oewn-walkingstick-n	walkingstick	n	0	1	1	oewn
+oewn-walkout-n	walkout	n	0	1	1	oewn
+oewn-walkover-n	walkover	n	0	1	1	oewn
+oewn-walkway-n	walkway	n	0	1	1	oewn
+oewn-walky-talky-n	walky-talky	n	0	1	1	oewn
+oewn-wall-n	wall	n	0	1	1	oewn
+oewn-wall-paperer-n	wall-paperer	n	0	1	1	oewn
+oewn-wall-v	wall	v	0	1	1	oewn
+oewn-wall_barley-n	wall barley	n	0	2	2	oewn
+oewn-wall_bracket-n	wall bracket	n	0	2	2	oewn
+oewn-wall_clock-n	wall clock	n	0	2	2	oewn
+oewn-wall_creeper-n	wall creeper	n	0	2	2	oewn
+oewn-wall_fern-n	wall fern	n	0	2	2	oewn
+oewn-wall_germander-n	wall germander	n	0	2	2	oewn
+oewn-wall_hanging-n	wall hanging	n	0	2	2	oewn
+oewn-wall_in-v	wall in	v	0	2	1	oewn
+oewn-wall_mural-n	wall mural	n	0	2	2	oewn
+oewn-wall_of_silence-n	wall of silence	n	0	3	1	oewn
+oewn-wall_painting-n	wall painting	n	0	2	2	oewn
+oewn-wall_panel-n	wall panel	n	0	2	2	oewn
+oewn-wall_pellitory-n	wall pellitory	n	0	2	2	oewn
+oewn-wall_pepper-n	wall pepper	n	0	2	2	oewn
+oewn-wall_plate-n	wall plate	n	0	2	2	oewn
+oewn-wall_plug-n	wall plug	n	0	2	2	oewn
+oewn-wall_rock-n	wall rock	n	0	2	2	oewn
+oewn-wall_rocket-n	wall rocket	n	0	2	2	oewn
+oewn-wall_rue-n	wall rue	n	0	2	2	oewn
+oewn-wall_rue_spleenwort-n	wall rue spleenwort	n	0	3	3	oewn
+oewn-wall_socket-n	wall socket	n	0	2	2	oewn
+oewn-wall_tent-n	wall tent	n	0	2	2	oewn
+oewn-wall_unit-n	wall unit	n	0	2	2	oewn
+oewn-wall_up-v	wall up	v	0	2	1	oewn
+oewn-wallaby-n	wallaby	n	0	1	1	oewn
+oewn-wallah-n	wallah	n	0	1	1	oewn
+oewn-wallboard-n	wallboard	n	0	1	1	oewn
+oewn-wallet-n	wallet	n	0	1	1	oewn
+oewn-wallet_calendar-n	wallet calendar	n	0	2	2	oewn
+oewn-walleye-n	walleye	n	0	1	1	oewn
+oewn-walleyed-a	walleyed	a	0	1	1	oewn
+oewn-walleyed_pike-n	walleyed pike	n	0	2	2	oewn
+oewn-wallflower-n	wallflower	n	0	1	1	oewn
+oewn-wallop-n	wallop	n	0	1	1	oewn
+oewn-wallop-v	wallop	v	0	1	1	oewn
+oewn-walloper-n	walloper	n	0	1	1	oewn
+oewn-walloping-a	walloping	a	0	1	1	oewn
+oewn-walloping-n	walloping	n	0	1	1	oewn
+oewn-wallow-n	wallow	n	0	1	1	oewn
+oewn-wallow-v	wallow	v	0	1	1	oewn
+oewn-wallpaper-n	wallpaper	n	0	1	1	oewn
+oewn-wallpaper-v	wallpaper	v	0	1	1	oewn
+oewn-wallpaperer-n	wallpaperer	n	0	1	1	oewn
+oewn-wally-n	wally	n	0	1	1	oewn
+oewn-walnut-n	walnut	n	0	1	1	oewn
+oewn-walnut_blight-n	walnut blight	n	0	2	2	oewn
+oewn-walnut_liqueur-n	walnut liqueur	n	0	2	2	oewn
+oewn-walnut_oil-n	walnut oil	n	0	2	2	oewn
+oewn-walnut_tree-n	walnut tree	n	0	2	2	oewn
+oewn-walrus-n	walrus	n	0	1	1	oewn
+oewn-walrus_moustache-n	walrus moustache	n	0	2	2	oewn
+oewn-walrus_mustache-n	walrus mustache	n	0	2	2	oewn
+oewn-waltz-n	waltz	n	0	1	1	oewn
+oewn-waltz-v	waltz	v	0	1	1	oewn
+oewn-waltz_around-v	waltz around	v	0	2	1	oewn
+oewn-waltzer-n	waltzer	n	0	1	1	oewn
+oewn-wamble-v	wamble	v	0	1	1	oewn
+oewn-wampee-n	wampee	n	0	1	1	oewn
+oewn-wampum-n	wampum	n	0	1	1	oewn
+oewn-wampumpeag-n	wampumpeag	n	0	1	1	oewn
+oewn-wan-a	wan	a	0	1	1	oewn
+oewn-wan-v	wan	v	0	1	1	oewn
+oewn-wand-n	wand	n	0	1	1	oewn
+oewn-wander-v	wander	v	0	1	1	oewn
+oewn-wanderer-n	wanderer	n	0	1	1	oewn
+oewn-wandering-a	wandering	a	0	1	1	oewn
+oewn-wandering-n	wandering	n	0	1	1	oewn
+oewn-wandering_albatross-n	wandering albatross	n	0	2	2	oewn
+oewn-wandering_nerve-n	wandering nerve	n	0	2	2	oewn
+oewn-wanderlust-n	wanderlust	n	0	1	1	oewn
+oewn-wandflower-n	wandflower	n	0	1	1	oewn
+oewn-wane-n	wane	n	0	1	1	oewn
+oewn-wane-v	wane	v	0	1	1	oewn
+oewn-wangle-n	wangle	n	0	1	1	oewn
+oewn-wangle-v	wangle	v	0	1	1	oewn
+oewn-wangler-n	wangler	n	0	1	1	oewn
+oewn-wangling-n	wangling	n	0	1	1	oewn
+oewn-waning-a	waning	a	0	1	1	oewn
+oewn-waning-n	waning	n	0	1	1	oewn
+oewn-wank-n	wank	n	0	1	1	oewn
+oewn-wank-v	wank	v	0	1	1	oewn
+oewn-wanker-n	wanker	n	0	1	1	oewn
+oewn-wanly-r	wanly	r	0	1	1	oewn
+oewn-wannabe-n	wannabe	n	0	1	1	oewn
+oewn-wannabee-n	wannabee	n	0	1	1	oewn
+oewn-wanness-n	wanness	n	0	1	1	oewn
+oewn-want-n	want	n	0	1	1	oewn
+oewn-want-v	want	v	0	1	1	oewn
+oewn-want_ad-n	want ad	n	0	2	2	oewn
+oewn-wanted-a	wanted	a	0	1	1	oewn
+oewn-wanted_notice-n	wanted notice	n	0	2	2	oewn
+oewn-wanted_poster-n	wanted poster	n	0	2	2	oewn
+oewn-wanter-n	wanter	n	0	1	1	oewn
+oewn-wanting-a	wanting	a	0	1	1	oewn
+oewn-wanton-a	wanton	a	0	1	1	oewn
+oewn-wanton-n	wanton	n	0	1	1	oewn
+oewn-wanton-v	wanton	v	0	1	1	oewn
+oewn-wanton_away-v	wanton away	v	0	2	1	oewn
+oewn-wantonly-r	wantonly	r	0	1	1	oewn
+oewn-wantonness-n	wantonness	n	0	1	1	oewn
+oewn-wapiti-n	wapiti	n	0	1	1	oewn
+oewn-war-n	war	n	0	1	1	oewn
+oewn-war-ridden-a	war-ridden	a	0	1	1	oewn
+oewn-war-torn-a	war-torn	a	0	1	1	oewn
+oewn-war-v	war	v	0	1	1	oewn
+oewn-war-worn-a	war-worn	a	0	1	1	oewn
+oewn-war_advocacy-n	war advocacy	n	0	2	2	oewn
+oewn-war_baby-n	war baby	n	0	2	2	oewn
+oewn-war_bride-n	war bride	n	0	2	2	oewn
+oewn-war_chest-n	war chest	n	0	2	2	oewn
+oewn-war_cloud-n	war cloud	n	0	2	2	oewn
+oewn-war_correspondent-n	war correspondent	n	0	2	2	oewn
+oewn-war_crime-n	war crime	n	0	2	2	oewn
+oewn-war_criminal-n	war criminal	n	0	2	2	oewn
+oewn-war_cry-n	war cry	n	0	2	2	oewn
+oewn-war_dance-n	war dance	n	0	2	2	oewn
+oewn-war_game-n	war game	n	0	2	2	oewn
+oewn-war_god-n	war god	n	0	2	2	oewn
+oewn-war_hawk-n	war hawk	n	0	2	2	oewn
+oewn-war_machine-n	war machine	n	0	2	2	oewn
+oewn-war_of_nerves-n	war of nerves	n	0	3	1	oewn
+oewn-war_paint-n	war paint	n	0	2	2	oewn
+oewn-war_party-n	war party	n	0	2	2	oewn
+oewn-war_power-n	war power	n	0	2	2	oewn
+oewn-war_room-n	war room	n	0	2	2	oewn
+oewn-war_secretary-n	war secretary	n	0	2	2	oewn
+oewn-war_vessel-n	war vessel	n	0	2	2	oewn
+oewn-war_whoop-n	war whoop	n	0	2	2	oewn
+oewn-war_widow-n	war widow	n	0	2	2	oewn
+oewn-war_zone-n	war zone	n	0	2	2	oewn
+oewn-waratah-n	waratah	n	0	1	1	oewn
+oewn-warble-n	warble	n	0	1	1	oewn
+oewn-warble-v	warble	v	0	1	1	oewn
+oewn-warble_fly-n	warble fly	n	0	2	2	oewn
+oewn-warbler-n	warbler	n	0	1	1	oewn
+oewn-ward-heeler-n	ward-heeler	n	0	1	1	oewn
+oewn-ward-n	ward	n	0	1	1	oewn
+oewn-ward-v	ward	v	0	1	1	oewn
+oewn-ward_off-v	ward off	v	0	2	1	oewn
+oewn-warden-n	warden	n	0	1	1	oewn
+oewn-wardenship-n	wardenship	n	0	1	1	oewn
+oewn-warder-n	warder	n	0	1	1	oewn
+oewn-wardership-n	wardership	n	0	1	1	oewn
+oewn-wardress-n	wardress	n	0	1	1	oewn
+oewn-wardrobe-n	wardrobe	n	0	1	1	oewn
+oewn-wardroom-n	wardroom	n	0	1	1	oewn
+oewn-ware-n	ware	n	0	1	1	oewn
+oewn-ware-v	ware	v	0	1	1	oewn
+oewn-warehouse-n	warehouse	n	0	1	1	oewn
+oewn-warehouse-v	warehouse	v	0	1	1	oewn
+oewn-warehouseman-ap-s_lien-n	warehouseman's lien	n	0	2	2	oewn
+oewn-warehouseman-n	warehouseman	n	0	1	1	oewn
+oewn-warehouser-n	warehouser	n	0	1	1	oewn
+oewn-warehousewoman-n	warehousewoman	n	0	1	1	oewn
+oewn-warehousing-n	warehousing	n	0	1	1	oewn
+oewn-warfare-n	warfare	n	0	1	1	oewn
+oewn-warfarin-n	warfarin	n	0	1	1	oewn
+oewn-warhead-n	warhead	n	0	1	1	oewn
+oewn-warhorse-n	warhorse	n	0	1	1	oewn
+oewn-warily-r	warily	r	0	1	1	oewn
+oewn-wariness-n	wariness	n	0	1	1	oewn
+oewn-warlike-a	warlike	a	0	1	1	oewn
+oewn-warlock-n	warlock	n	0	1	1	oewn
+oewn-warlord-n	warlord	n	0	1	1	oewn
+oewn-warm-a	warm	a	0	1	1	oewn
+oewn-warm-blooded-a	warm-blooded	a	0	1	1	oewn
+oewn-warm-r	warm	r	0	1	1	oewn
+oewn-warm-toned-a	warm-toned	a	0	1	1	oewn
+oewn-warm-up-n	warm-up	n	0	1	1	oewn
+oewn-warm-v	warm	v	0	1	1	oewn
+oewn-warm_front-n	warm front	n	0	2	2	oewn
+oewn-warm_the_bench-v	warm the bench	v	0	3	1	oewn
+oewn-warm_to-v	warm to	v	0	2	1	oewn
+oewn-warm_up-n	warm up	n	0	2	2	oewn
+oewn-warm_up-v	warm up	v	0	2	1	oewn
+oewn-warmed-a	warmed	a	0	1	1	oewn
+oewn-warmer-n	warmer	n	0	1	1	oewn
+oewn-warmhearted-a	warmhearted	a	0	1	1	oewn
+oewn-warmheartedness-n	warmheartedness	n	0	1	1	oewn
+oewn-warming-a	warming	a	0	1	1	oewn
+oewn-warming-n	warming	n	0	1	1	oewn
+oewn-warming_pan-n	warming pan	n	0	2	2	oewn
+oewn-warmly-r	warmly	r	0	1	1	oewn
+oewn-warmness-n	warmness	n	0	1	1	oewn
+oewn-warmonger-n	warmonger	n	0	1	1	oewn
+oewn-warmongering-n	warmongering	n	0	1	1	oewn
+oewn-warmth-n	warmth	n	0	1	1	oewn
+oewn-warn-v	warn	v	0	1	1	oewn
+oewn-warner-n	warner	n	0	1	1	oewn
+oewn-warning-a	warning	a	0	1	1	oewn
+oewn-warning-n	warning	n	0	1	1	oewn
+oewn-warning_bell-n	warning bell	n	0	2	2	oewn
+oewn-warning_coloration-n	warning coloration	n	0	2	2	oewn
+oewn-warning_device-n	warning device	n	0	2	2	oewn
+oewn-warning_light-n	warning light	n	0	2	2	oewn
+oewn-warning_of_attack-n	warning of attack	n	0	3	1	oewn
+oewn-warning_of_war-n	warning of war	n	0	3	1	oewn
+oewn-warning_signal-n	warning signal	n	0	2	2	oewn
+oewn-warp-n	warp	n	0	1	1	oewn
+oewn-warp-v	warp	v	0	1	1	oewn
+oewn-warpath-n	warpath	n	0	1	1	oewn
+oewn-warped-a	warped	a	0	1	1	oewn
+oewn-warper-n	warper	n	0	1	1	oewn
+oewn-warping-n	warping	n	0	1	1	oewn
+oewn-warping_machine-n	warping machine	n	0	2	2	oewn
+oewn-warplane-n	warplane	n	0	1	1	oewn
+oewn-warragal-n	warragal	n	0	1	1	oewn
+oewn-warrant-n	warrant	n	0	1	1	oewn
+oewn-warrant-v	warrant	v	0	1	1	oewn
+oewn-warrant_officer-n	warrant officer	n	0	2	2	oewn
+oewn-warrantee-n	warrantee	n	0	1	1	oewn
+oewn-warranter-n	warranter	n	0	1	1	oewn
+oewn-warrantor-n	warrantor	n	0	1	1	oewn
+oewn-warranty-n	warranty	n	0	1	1	oewn
+oewn-warren-n	warren	n	0	1	1	oewn
+oewn-warrener-n	warrener	n	0	1	1	oewn
+oewn-warrigal-n	warrigal	n	0	1	1	oewn
+oewn-warring-a	warring	a	0	1	1	oewn
+oewn-warrior-n	warrior	n	0	1	1	oewn
+oewn-warriorlike-a	warriorlike	a	0	1	1	oewn
+oewn-warship-n	warship	n	0	1	1	oewn
+oewn-wart-n	wart	n	0	1	1	oewn
+oewn-warthog-n	warthog	n	0	1	1	oewn
+oewn-wartime-n	wartime	n	0	1	1	oewn
+oewn-wartlike-a	wartlike	a	0	1	1	oewn
+oewn-wartweed-n	wartweed	n	0	1	1	oewn
+oewn-wartwort-n	wartwort	n	0	1	1	oewn
+oewn-warty-a	warty	a	0	1	1	oewn
+oewn-wary-a	wary	a	0	1	1	oewn
+oewn-wasabi-n	wasabi	n	0	1	1	oewn
+oewn-wash-and-wear-a	wash-and-wear	a	0	1	1	oewn
+oewn-wash-and-wear-n	wash-and-wear	n	0	1	1	oewn
+oewn-wash-hand_basin-n	wash-hand basin	n	0	2	2	oewn
+oewn-wash-hand_stand-n	wash-hand stand	n	0	2	2	oewn
+oewn-wash-n	wash	n	0	1	1	oewn
+oewn-wash-v	wash	v	0	1	1	oewn
+oewn-wash_away-v	wash away	v	0	2	1	oewn
+oewn-wash_down-v	wash down	v	0	2	1	oewn
+oewn-wash_drawing-n	wash drawing	n	0	2	2	oewn
+oewn-wash_leather-n	wash leather	n	0	2	2	oewn
+oewn-wash_off-v	wash off	v	0	2	1	oewn
+oewn-wash_one-ap-s_hands-v	wash one's hands	v	0	3	1	oewn
+oewn-wash_out-v	wash out	v	0	2	1	oewn
+oewn-wash_room-n	wash room	n	0	2	2	oewn
+oewn-wash_up-v	wash up	v	0	2	1	oewn
+oewn-washable-a	washable	a	0	1	1	oewn
+oewn-washables-n	washables	n	0	1	1	oewn
+oewn-washbasin-n	washbasin	n	0	1	1	oewn
+oewn-washboard-n	washboard	n	0	1	1	oewn
+oewn-washbowl-n	washbowl	n	0	1	1	oewn
+oewn-washcloth-n	washcloth	n	0	1	1	oewn
+oewn-washday-n	washday	n	0	1	1	oewn
+oewn-washed-a	washed	a	0	1	1	oewn
+oewn-washed-out-a	washed-out	a	0	1	1	oewn
+oewn-washed-up-a	washed-up	a	0	1	1	oewn
+oewn-washer-n	washer	n	0	1	1	oewn
+oewn-washerman-n	washerman	n	0	1	1	oewn
+oewn-washerwoman-n	washerwoman	n	0	1	1	oewn
+oewn-washhouse-n	washhouse	n	0	1	1	oewn
+oewn-washing-n	washing	n	0	1	1	oewn
+oewn-washing-up-n	washing-up	n	0	1	1	oewn
+oewn-washing_day-n	washing day	n	0	2	2	oewn
+oewn-washing_machine-n	washing machine	n	0	2	2	oewn
+oewn-washing_powder-n	washing powder	n	0	2	2	oewn
+oewn-washing_soda-n	washing soda	n	0	2	2	oewn
+oewn-washman-n	washman	n	0	1	1	oewn
+oewn-washout-n	washout	n	0	1	1	oewn
+oewn-washpot-n	washpot	n	0	1	1	oewn
+oewn-washrag-n	washrag	n	0	1	1	oewn
+oewn-washroom-n	washroom	n	0	1	1	oewn
+oewn-washstand-n	washstand	n	0	1	1	oewn
+oewn-washtub-n	washtub	n	0	1	1	oewn
+oewn-washup-n	washup	n	0	1	1	oewn
+oewn-washwoman-n	washwoman	n	0	1	1	oewn
+oewn-washy-a	washy	a	0	1	1	oewn
+oewn-wasp-ap-s_nest-n	wasp's nest	n	0	2	2	oewn
+oewn-wasp-n	wasp	n	0	1	1	oewn
+oewn-wasp-waisted-a	wasp-waisted	a	0	1	1	oewn
+oewn-wasp_waist-n	wasp waist	n	0	2	2	oewn
+oewn-waspish-a	waspish	a	0	1	1	oewn
+oewn-wasps-ap-_nest-n	wasps' nest	n	0	2	2	oewn
+oewn-wassail-n	wassail	n	0	1	1	oewn
+oewn-wassail-v	wassail	v	0	1	1	oewn
+oewn-wassailer-n	wassailer	n	0	1	1	oewn
+oewn-wastage-n	wastage	n	0	1	1	oewn
+oewn-waste-a	waste	a	0	1	1	oewn
+oewn-waste-n	waste	n	0	1	1	oewn
+oewn-waste-paper_basket-n	waste-paper basket	n	0	2	2	oewn
+oewn-waste-v	waste	v	0	1	1	oewn
+oewn-waste-yard-n	waste-yard	n	0	1	1	oewn
+oewn-waste_baler-n	waste baler	n	0	2	2	oewn
+oewn-waste_basket-n	waste basket	n	0	2	2	oewn
+oewn-waste_material-n	waste material	n	0	2	2	oewn
+oewn-waste_matter-n	waste matter	n	0	2	2	oewn
+oewn-waste_of_effort-n	waste of effort	n	0	3	1	oewn
+oewn-waste_of_energy-n	waste of energy	n	0	3	1	oewn
+oewn-waste_of_material-n	waste of material	n	0	3	1	oewn
+oewn-waste_of_money-n	waste of money	n	0	3	1	oewn
+oewn-waste_of_time-n	waste of time	n	0	3	1	oewn
+oewn-waste_one-ap-s_time-v	waste one's time	v	0	3	1	oewn
+oewn-waste_paper-n	waste paper	n	0	2	2	oewn
+oewn-waste_pipe-n	waste pipe	n	0	2	2	oewn
+oewn-waste_product-n	waste product	n	0	2	2	oewn
+oewn-wastebasket-n	wastebasket	n	0	1	1	oewn
+oewn-wastebin-n	wastebin	n	0	1	1	oewn
+oewn-wasted-a	wasted	a	0	1	1	oewn
+oewn-wasteful-a	wasteful	a	0	1	1	oewn
+oewn-wastefully-r	wastefully	r	0	1	1	oewn
+oewn-wastefulness-n	wastefulness	n	0	1	1	oewn
+oewn-wasteland-n	wasteland	n	0	1	1	oewn
+oewn-wastepaper_basket-n	wastepaper basket	n	0	2	2	oewn
+oewn-waster-n	waster	n	0	1	1	oewn
+oewn-wastewater-n	wastewater	n	0	1	1	oewn
+oewn-wasteweir-n	wasteweir	n	0	1	1	oewn
+oewn-wasteyard-n	wasteyard	n	0	1	1	oewn
+oewn-wasting-n	wasting	n	0	1	1	oewn
+oewn-wasting_away-n	wasting away	n	0	2	2	oewn
+oewn-wasting_disease-n	wasting disease	n	0	2	2	oewn
+oewn-wastrel-n	wastrel	n	0	1	1	oewn
+oewn-watch-n	watch	n	0	1	1	oewn
+oewn-watch-v	watch	v	0	1	1	oewn
+oewn-watch_bracelet-n	watch bracelet	n	0	2	2	oewn
+oewn-watch_cap-n	watch cap	n	0	2	2	oewn
+oewn-watch_case-n	watch case	n	0	2	2	oewn
+oewn-watch_chain-n	watch chain	n	0	2	2	oewn
+oewn-watch_crystal-n	watch crystal	n	0	2	2	oewn
+oewn-watch_fire-n	watch fire	n	0	2	2	oewn
+oewn-watch_glass-n	watch glass	n	0	2	2	oewn
+oewn-watch_guard-n	watch guard	n	0	2	2	oewn
+oewn-watch_key-n	watch key	n	0	2	2	oewn
+oewn-watch_night-n	watch night	n	0	2	2	oewn
+oewn-watch_out-v	watch out	v	0	2	1	oewn
+oewn-watch_over-v	watch over	v	0	2	1	oewn
+oewn-watch_pocket-n	watch pocket	n	0	2	2	oewn
+oewn-watchband-n	watchband	n	0	1	1	oewn
+oewn-watchdog-n	watchdog	n	0	1	1	oewn
+oewn-watcher-n	watcher	n	0	1	1	oewn
+oewn-watchful-a	watchful	a	0	1	1	oewn
+oewn-watchfully-r	watchfully	r	0	1	1	oewn
+oewn-watchfulness-n	watchfulness	n	0	1	1	oewn
+oewn-watching-n	watching	n	0	1	1	oewn
+oewn-watchmaker-n	watchmaker	n	0	1	1	oewn
+oewn-watchman-n	watchman	n	0	1	1	oewn
+oewn-watchstrap-n	watchstrap	n	0	1	1	oewn
+oewn-watchtower-n	watchtower	n	0	1	1	oewn
+oewn-watchwoman-n	watchwoman	n	0	1	1	oewn
+oewn-watchword-n	watchword	n	0	1	1	oewn
+oewn-water-base_paint-n	water-base paint	n	0	2	2	oewn
+oewn-water-color-n	water-color	n	0	1	1	oewn
+oewn-water-colour-n	water-colour	n	0	1	1	oewn
+oewn-water-cooled-a	water-cooled	a	0	1	1	oewn
+oewn-water-cooled_reactor-n	water-cooled reactor	n	0	2	2	oewn
+oewn-water-insoluble-a	water-insoluble	a	0	1	1	oewn
+oewn-water-loving-a	water-loving	a	0	1	1	oewn
+oewn-water-mint-n	water-mint	n	0	1	1	oewn
+oewn-water-n	water	n	0	1	1	oewn
+oewn-water-rate-n	water-rate	n	0	1	1	oewn
+oewn-water-repellent-a	water-repellent	a	0	1	1	oewn
+oewn-water-resistant-a	water-resistant	a	0	1	1	oewn
+oewn-water-shield-n	water-shield	n	0	1	1	oewn
+oewn-water-skiing-n	water-skiing	n	0	1	1	oewn
+oewn-water-soluble-a	water-soluble	a	0	1	1	oewn
+oewn-water-soluble_vitamin-n	water-soluble vitamin	n	0	2	2	oewn
+oewn-water-target-n	water-target	n	0	1	1	oewn
+oewn-water-v	water	v	0	1	1	oewn
+oewn-water-wash-v	water-wash	v	0	1	1	oewn
+oewn-water-washed-a	water-washed	a	0	1	1	oewn
+oewn-water_absorption-n	water absorption	n	0	2	2	oewn
+oewn-water_arum-n	water arum	n	0	2	2	oewn
+oewn-water_avens-n	water avens	n	0	2	2	oewn
+oewn-water_back-n	water back	n	0	2	2	oewn
+oewn-water_bed-n	water bed	n	0	2	2	oewn
+oewn-water_beetle-n	water beetle	n	0	2	2	oewn
+oewn-water_birch-n	water birch	n	0	2	2	oewn
+oewn-water_bird-n	water bird	n	0	2	2	oewn
+oewn-water_biscuit-n	water biscuit	n	0	2	2	oewn
+oewn-water_bitternut-n	water bitternut	n	0	2	2	oewn
+oewn-water_blister-n	water blister	n	0	2	2	oewn
+oewn-water_boatman-n	water boatman	n	0	2	2	oewn
+oewn-water_bottle-n	water bottle	n	0	2	2	oewn
+oewn-water_boy-n	water boy	n	0	2	2	oewn
+oewn-water_buffalo-n	water buffalo	n	0	2	2	oewn
+oewn-water_bug-n	water bug	n	0	2	2	oewn
+oewn-water_butt-n	water butt	n	0	2	2	oewn
+oewn-water_buttercup-n	water buttercup	n	0	2	2	oewn
+oewn-water_cabbage-n	water cabbage	n	0	2	2	oewn
+oewn-water_caltrop-n	water caltrop	n	0	2	2	oewn
+oewn-water_cannon-n	water cannon	n	0	2	2	oewn
+oewn-water_carpet-n	water carpet	n	0	2	2	oewn
+oewn-water_cart-n	water cart	n	0	2	2	oewn
+oewn-water_chestnut-n	water chestnut	n	0	2	2	oewn
+oewn-water_chestnut_plant-n	water chestnut plant	n	0	3	3	oewn
+oewn-water_chevrotain-n	water chevrotain	n	0	2	2	oewn
+oewn-water_chickweed-n	water chickweed	n	0	2	2	oewn
+oewn-water_chinquapin-n	water chinquapin	n	0	2	2	oewn
+oewn-water_chute-n	water chute	n	0	2	2	oewn
+oewn-water_clock-n	water clock	n	0	2	2	oewn
+oewn-water_closet-n	water closet	n	0	2	2	oewn
+oewn-water_clover-n	water clover	n	0	2	2	oewn
+oewn-water_company-n	water company	n	0	2	2	oewn
+oewn-water_conservation-n	water conservation	n	0	2	2	oewn
+oewn-water_cooler-n	water cooler	n	0	2	2	oewn
+oewn-water_crowfoot-n	water crowfoot	n	0	2	2	oewn
+oewn-water_deer-n	water deer	n	0	2	2	oewn
+oewn-water_development-n	water development	n	0	2	2	oewn
+oewn-water_dog-n	water dog	n	0	2	2	oewn
+oewn-water_down-v	water down	v	0	2	1	oewn
+oewn-water_dragon-n	water dragon	n	0	2	2	oewn
+oewn-water_dropwort-n	water dropwort	n	0	2	2	oewn
+oewn-water_elm-n	water elm	n	0	2	2	oewn
+oewn-water_faucet-n	water faucet	n	0	2	2	oewn
+oewn-water_fennel-n	water fennel	n	0	2	2	oewn
+oewn-water_fern-n	water fern	n	0	2	2	oewn
+oewn-water_filter-n	water filter	n	0	2	2	oewn
+oewn-water_finder-n	water finder	n	0	2	2	oewn
+oewn-water_flaxseed-n	water flaxseed	n	0	2	2	oewn
+oewn-water_flea-n	water flea	n	0	2	2	oewn
+oewn-water_fountain-n	water fountain	n	0	2	2	oewn
+oewn-water_gage-n	water gage	n	0	2	2	oewn
+oewn-water_gap-n	water gap	n	0	2	2	oewn
+oewn-water_gas-n	water gas	n	0	2	2	oewn
+oewn-water_gate-n	water gate	n	0	2	2	oewn
+oewn-water_gauge-n	water gauge	n	0	2	2	oewn
+oewn-water_gillyflower-n	water gillyflower	n	0	2	2	oewn
+oewn-water_girl-n	water girl	n	0	2	2	oewn
+oewn-water_glass-n	water glass	n	0	2	2	oewn
+oewn-water_gum-n	water gum	n	0	2	2	oewn
+oewn-water_gun-n	water gun	n	0	2	2	oewn
+oewn-water_hammer-n	water hammer	n	0	2	2	oewn
+oewn-water_hazard-n	water hazard	n	0	2	2	oewn
+oewn-water_heater-n	water heater	n	0	2	2	oewn
+oewn-water_hemlock-n	water hemlock	n	0	2	2	oewn
+oewn-water_hen-n	water hen	n	0	2	2	oewn
+oewn-water_hickory-n	water hickory	n	0	2	2	oewn
+oewn-water_hole-n	water hole	n	0	2	2	oewn
+oewn-water_horehound-n	water horehound	n	0	2	2	oewn
+oewn-water_horsetail-n	water horsetail	n	0	2	2	oewn
+oewn-water_hyacinth-n	water hyacinth	n	0	2	2	oewn
+oewn-water_ice-n	water ice	n	0	2	2	oewn
+oewn-water_jacket-n	water jacket	n	0	2	2	oewn
+oewn-water_jug-n	water jug	n	0	2	2	oewn
+oewn-water_jump-n	water jump	n	0	2	2	oewn
+oewn-water_lemon-n	water lemon	n	0	2	2	oewn
+oewn-water_lettuce-n	water lettuce	n	0	2	2	oewn
+oewn-water_level-n	water level	n	0	2	2	oewn
+oewn-water_lily-n	water lily	n	0	2	2	oewn
+oewn-water_line-n	water line	n	0	2	2	oewn
+oewn-water_lobelia-n	water lobelia	n	0	2	2	oewn
+oewn-water_locust-n	water locust	n	0	2	2	oewn
+oewn-water_main-n	water main	n	0	2	2	oewn
+oewn-water_mat-n	water mat	n	0	2	2	oewn
+oewn-water_meter-n	water meter	n	0	2	2	oewn
+oewn-water_milfoil-n	water milfoil	n	0	2	2	oewn
+oewn-water_mill-n	water mill	n	0	2	2	oewn
+oewn-water_mint-n	water mint	n	0	2	2	oewn
+oewn-water_moccasin-n	water moccasin	n	0	2	2	oewn
+oewn-water_mold-n	water mold	n	0	2	2	oewn
+oewn-water_nymph-n	water nymph	n	0	2	2	oewn
+oewn-water_oak-n	water oak	n	0	2	2	oewn
+oewn-water_of_crystallisation-n	water of crystallisation	n	0	3	1	oewn
+oewn-water_of_crystallization-n	water of crystallization	n	0	3	1	oewn
+oewn-water_of_hydration-n	water of hydration	n	0	3	1	oewn
+oewn-water_on_the_knee-n	water on the knee	n	0	4	1	oewn
+oewn-water_orchid-n	water orchid	n	0	2	2	oewn
+oewn-water_ouzel-n	water ouzel	n	0	2	2	oewn
+oewn-water_ox-n	water ox	n	0	2	2	oewn
+oewn-water_parsnip-n	water parsnip	n	0	2	2	oewn
+oewn-water_parting-n	water parting	n	0	2	2	oewn
+oewn-water_pill-n	water pill	n	0	2	2	oewn
+oewn-water_pimpernel-n	water pimpernel	n	0	2	2	oewn
+oewn-water_pipe-n	water pipe	n	0	2	2	oewn
+oewn-water_pistol-n	water pistol	n	0	2	2	oewn
+oewn-water_plant-n	water plant	n	0	2	2	oewn
+oewn-water_plantain-n	water plantain	n	0	2	2	oewn
+oewn-water_pollution-n	water pollution	n	0	2	2	oewn
+oewn-water_polo-n	water polo	n	0	2	2	oewn
+oewn-water_pore-n	water pore	n	0	2	2	oewn
+oewn-water_program-n	water program	n	0	2	2	oewn
+oewn-water_project-n	water project	n	0	2	2	oewn
+oewn-water_pump-n	water pump	n	0	2	2	oewn
+oewn-water_rat-n	water rat	n	0	2	2	oewn
+oewn-water_right-n	water right	n	0	2	2	oewn
+oewn-water_sapphire-n	water sapphire	n	0	2	2	oewn
+oewn-water_scooter-n	water scooter	n	0	2	2	oewn
+oewn-water_scorpion-n	water scorpion	n	0	2	2	oewn
+oewn-water_shamrock-n	water shamrock	n	0	2	2	oewn
+oewn-water_shrew-n	water shrew	n	0	2	2	oewn
+oewn-water_skater-n	water skater	n	0	2	2	oewn
+oewn-water_ski-n	water ski	n	0	2	2	oewn
+oewn-water_ski-v	water ski	v	0	2	1	oewn
+oewn-water_skiing-n	water skiing	n	0	2	2	oewn
+oewn-water_skin-n	water skin	n	0	2	2	oewn
+oewn-water_snake-n	water snake	n	0	2	2	oewn
+oewn-water_softener-n	water softener	n	0	2	2	oewn
+oewn-water_spaniel-n	water spaniel	n	0	2	2	oewn
+oewn-water_speedwell-n	water speedwell	n	0	2	2	oewn
+oewn-water_spirit-n	water spirit	n	0	2	2	oewn
+oewn-water_sport-n	water sport	n	0	2	2	oewn
+oewn-water_sprite-n	water sprite	n	0	2	2	oewn
+oewn-water_stabilization_lagoon-n	water stabilization lagoon	n	0	3	3	oewn
+oewn-water_star_grass-n	water star grass	n	0	3	3	oewn
+oewn-water_starwort-n	water starwort	n	0	2	2	oewn
+oewn-water_stoma-n	water stoma	n	0	2	2	oewn
+oewn-water_strider-n	water strider	n	0	2	2	oewn
+oewn-water_supply-n	water supply	n	0	2	2	oewn
+oewn-water_system-n	water system	n	0	2	2	oewn
+oewn-water_table-n	water table	n	0	2	2	oewn
+oewn-water_tank-n	water tank	n	0	2	2	oewn
+oewn-water_tank_truck-n	water tank truck	n	0	3	3	oewn
+oewn-water_tap-n	water tap	n	0	2	2	oewn
+oewn-water_thrush-n	water thrush	n	0	2	2	oewn
+oewn-water_tower-n	water tower	n	0	2	2	oewn
+oewn-water_travel-n	water travel	n	0	2	2	oewn
+oewn-water_truck-n	water truck	n	0	2	2	oewn
+oewn-water_trumpet-n	water trumpet	n	0	2	2	oewn
+oewn-water_tube-n	water tube	n	0	2	2	oewn
+oewn-water_turkey-n	water turkey	n	0	2	2	oewn
+oewn-water_under_the_bridge-n	water under the bridge	n	0	4	4	oewn
+oewn-water_vapor-n	water vapor	n	0	2	2	oewn
+oewn-water_vapour-n	water vapour	n	0	2	2	oewn
+oewn-water_vascular_system-n	water vascular system	n	0	3	3	oewn
+oewn-water_violet-n	water violet	n	0	2	2	oewn
+oewn-water_vole-n	water vole	n	0	2	2	oewn
+oewn-water_waggon-n	water waggon	n	0	2	2	oewn
+oewn-water_wagon-n	water wagon	n	0	2	2	oewn
+oewn-water_wheel-n	water wheel	n	0	2	2	oewn
+oewn-water_wings-n	water wings	n	0	2	2	oewn
+oewn-water_witch-n	water witch	n	0	2	2	oewn
+oewn-water_yam-n	water yam	n	0	2	2	oewn
+oewn-waterbird-n	waterbird	n	0	1	1	oewn
+oewn-waterboarding-n	waterboarding	n	0	1	1	oewn
+oewn-waterborne-a	waterborne	a	0	1	1	oewn
+oewn-waterbuck-n	waterbuck	n	0	1	1	oewn
+oewn-watercannon-n	watercannon	n	0	1	1	oewn
+oewn-watercolor-n	watercolor	n	0	1	1	oewn
+oewn-watercolor-v	watercolor	v	0	1	1	oewn
+oewn-watercolorist-n	watercolorist	n	0	1	1	oewn
+oewn-watercolour-n	watercolour	n	0	1	1	oewn
+oewn-watercolour-v	watercolour	v	0	1	1	oewn
+oewn-watercolourist-n	watercolourist	n	0	1	1	oewn
+oewn-watercourse-n	watercourse	n	0	1	1	oewn
+oewn-watercraft-n	watercraft	n	0	1	1	oewn
+oewn-watercress-a	watercress	a	0	1	1	oewn
+oewn-watercress-n	watercress	n	0	1	1	oewn
+oewn-waterdog-n	waterdog	n	0	1	1	oewn
+oewn-watered-a	watered	a	0	1	1	oewn
+oewn-watered-silk-n	watered-silk	n	0	1	1	oewn
+oewn-watered_stock-n	watered stock	n	0	2	2	oewn
+oewn-waterer-n	waterer	n	0	1	1	oewn
+oewn-waterfall-n	waterfall	n	0	1	1	oewn
+oewn-waterfinder-n	waterfinder	n	0	1	1	oewn
+oewn-waterfowl-n	waterfowl	n	0	1	1	oewn
+oewn-waterfront-n	waterfront	n	0	1	1	oewn
+oewn-wateriness-n	wateriness	n	0	1	1	oewn
+oewn-watering-n	watering	n	0	1	1	oewn
+oewn-watering_can-n	watering can	n	0	2	2	oewn
+oewn-watering_cart-n	watering cart	n	0	2	2	oewn
+oewn-watering_hole-n	watering hole	n	0	2	2	oewn
+oewn-watering_place-n	watering place	n	0	2	2	oewn
+oewn-watering_pot-n	watering pot	n	0	2	2	oewn
+oewn-waterleaf-n	waterleaf	n	0	1	1	oewn
+oewn-waterless-a	waterless	a	0	1	1	oewn
+oewn-waterlessness-n	waterlessness	n	0	1	1	oewn
+oewn-waterline-n	waterline	n	0	1	1	oewn
+oewn-waterlogged-a	waterlogged	a	0	1	1	oewn
+oewn-waterloo-n	waterloo	n	0	1	1	oewn
+oewn-waterman-n	waterman	n	0	1	1	oewn
+oewn-watermark-n	watermark	n	0	1	1	oewn
+oewn-watermeal-n	watermeal	n	0	1	1	oewn
+oewn-watermelon-n	watermelon	n	0	1	1	oewn
+oewn-watermelon-shaped-a	watermelon-shaped	a	0	1	1	oewn
+oewn-watermelon_begonia-n	watermelon begonia	n	0	2	2	oewn
+oewn-watermelon_vine-n	watermelon vine	n	0	2	2	oewn
+oewn-waterpower-n	waterpower	n	0	1	1	oewn
+oewn-waterproof-a	waterproof	a	0	1	1	oewn
+oewn-waterproof-n	waterproof	n	0	1	1	oewn
+oewn-waterproof-v	waterproof	v	0	1	1	oewn
+oewn-waterproofed-a	waterproofed	a	0	1	1	oewn
+oewn-waterproofing-n	waterproofing	n	0	1	1	oewn
+oewn-waterproofness-n	waterproofness	n	0	1	1	oewn
+oewn-waters-n	waters	n	0	1	1	oewn
+oewn-waterscape-n	waterscape	n	0	1	1	oewn
+oewn-watershed-n	watershed	n	0	1	1	oewn
+oewn-waterside-n	waterside	n	0	1	1	oewn
+oewn-waterskiing-n	waterskiing	n	0	1	1	oewn
+oewn-waterskin-n	waterskin	n	0	1	1	oewn
+oewn-waterspout-n	waterspout	n	0	1	1	oewn
+oewn-watertight-a	watertight	a	0	1	1	oewn
+oewn-watertightness-n	watertightness	n	0	1	1	oewn
+oewn-watertube-n	watertube	n	0	1	1	oewn
+oewn-waterway-n	waterway	n	0	1	1	oewn
+oewn-waterweed-n	waterweed	n	0	1	1	oewn
+oewn-waterwheel-n	waterwheel	n	0	1	1	oewn
+oewn-waterwheel_plant-n	waterwheel plant	n	0	2	2	oewn
+oewn-waterwoman-n	waterwoman	n	0	1	1	oewn
+oewn-waterworks-n	waterworks	n	0	1	1	oewn
+oewn-waterworn-a	waterworn	a	0	1	1	oewn
+oewn-watery-a	watery	a	0	1	1	oewn
+oewn-watery-eyed-a	watery-eyed	a	0	1	1	oewn
+oewn-watt-hour-n	watt-hour	n	0	1	1	oewn
+oewn-watt-n	watt	n	0	1	1	oewn
+oewn-watt_second-n	watt second	n	0	2	2	oewn
+oewn-wattage-n	wattage	n	0	1	1	oewn
+oewn-wattle-n	wattle	n	0	1	1	oewn
+oewn-wattle-v	wattle	v	0	1	1	oewn
+oewn-wattle_and_daub-n	wattle and daub	n	0	3	3	oewn
+oewn-wattmeter-n	wattmeter	n	0	1	1	oewn
+oewn-waul-v	waul	v	0	1	1	oewn
+oewn-wave-n	wave	n	0	1	1	oewn
+oewn-wave-off-n	wave-off	n	0	1	1	oewn
+oewn-wave-particle_duality-n	wave-particle duality	n	0	2	2	oewn
+oewn-wave-v	wave	v	0	1	1	oewn
+oewn-wave_angle-n	wave angle	n	0	2	2	oewn
+oewn-wave_equation-n	wave equation	n	0	2	2	oewn
+oewn-wave_form-n	wave form	n	0	2	2	oewn
+oewn-wave_front-n	wave front	n	0	2	2	oewn
+oewn-wave_guide-n	wave guide	n	0	2	2	oewn
+oewn-wave_mechanics-n	wave mechanics	n	0	2	2	oewn
+oewn-wave_number-n	wave number	n	0	2	2	oewn
+oewn-wave_off-v	wave off	v	0	2	1	oewn
+oewn-wave_shape-n	wave shape	n	0	2	2	oewn
+oewn-wave_theory-n	wave theory	n	0	2	2	oewn
+oewn-wave_theory_of_light-n	wave theory of light	n	0	4	2	oewn
+oewn-wave_train-n	wave train	n	0	2	2	oewn
+oewn-waveband-n	waveband	n	0	1	1	oewn
+oewn-waveform-n	waveform	n	0	1	1	oewn
+oewn-wavefront-n	wavefront	n	0	1	1	oewn
+oewn-waveguide-n	waveguide	n	0	1	1	oewn
+oewn-wavelength-n	wavelength	n	0	1	1	oewn
+oewn-wavelet-n	wavelet	n	0	1	1	oewn
+oewn-wavelike-a	wavelike	a	0	1	1	oewn
+oewn-waver-n	waver	n	0	1	1	oewn
+oewn-waver-v	waver	v	0	1	1	oewn
+oewn-waverer-n	waverer	n	0	1	1	oewn
+oewn-wavering-a	wavering	a	0	1	1	oewn
+oewn-wavering-n	wavering	n	0	1	1	oewn
+oewn-waviness-n	waviness	n	0	1	1	oewn
+oewn-waving-n	waving	n	0	1	1	oewn
+oewn-wavy-a	wavy	a	0	1	1	oewn
+oewn-wavy-grained-a	wavy-grained	a	0	1	1	oewn
+oewn-wavy-leaved_aster-n	wavy-leaved aster	n	0	2	2	oewn
+oewn-waw-n	waw	n	0	1	1	oewn
+oewn-wawl-v	wawl	v	0	1	1	oewn
+oewn-wax-chandler-n	wax-chandler	n	0	1	1	oewn
+oewn-wax-n	wax	n	0	1	1	oewn
+oewn-wax-v	wax	v	0	1	1	oewn
+oewn-wax_bean-n	wax bean	n	0	2	2	oewn
+oewn-wax_begonia-n	wax begonia	n	0	2	2	oewn
+oewn-wax_crayon-n	wax crayon	n	0	2	2	oewn
+oewn-wax_figure-n	wax figure	n	0	2	2	oewn
+oewn-wax_insect-n	wax insect	n	0	2	2	oewn
+oewn-wax_light-n	wax light	n	0	2	2	oewn
+oewn-wax_mallow-n	wax mallow	n	0	2	2	oewn
+oewn-wax_moth-n	wax moth	n	0	2	2	oewn
+oewn-wax_myrtle-n	wax myrtle	n	0	2	2	oewn
+oewn-wax_palm-n	wax palm	n	0	2	2	oewn
+oewn-wax_paper-n	wax paper	n	0	2	2	oewn
+oewn-wax_plant-n	wax plant	n	0	2	2	oewn
+oewn-waxberry-n	waxberry	n	0	1	1	oewn
+oewn-waxed-a	waxed	a	0	1	1	oewn
+oewn-waxen-a	waxen	a	0	1	1	oewn
+oewn-waxflower-n	waxflower	n	0	1	1	oewn
+oewn-waxiness-n	waxiness	n	0	1	1	oewn
+oewn-waxing-a	waxing	a	0	1	1	oewn
+oewn-waxing-n	waxing	n	0	1	1	oewn
+oewn-waxlike-a	waxlike	a	0	1	1	oewn
+oewn-waxmallow-n	waxmallow	n	0	1	1	oewn
+oewn-waxwing-n	waxwing	n	0	1	1	oewn
+oewn-waxwork-n	waxwork	n	0	1	1	oewn
+oewn-waxy-a	waxy	a	0	1	1	oewn
+oewn-waxycap-n	waxycap	n	0	1	1	oewn
+oewn-way-n	way	n	0	1	1	oewn
+oewn-way-out-a	way-out	a	0	1	1	oewn
+oewn-way-r	way	r	0	1	1	oewn
+oewn-way_of_life-n	way of life	n	0	3	1	oewn
+oewn-way_out-n	way out	n	0	2	2	oewn
+oewn-way_station-n	way station	n	0	2	2	oewn
+oewn-waybill-n	waybill	n	0	1	1	oewn
+oewn-wayfarer-n	wayfarer	n	0	1	1	oewn
+oewn-wayfaring-a	wayfaring	a	0	1	1	oewn
+oewn-wayfaring-n	wayfaring	n	0	1	1	oewn
+oewn-wayfaring_tree-n	wayfaring tree	n	0	2	2	oewn
+oewn-waylay-v	waylay	v	0	1	1	oewn
+oewn-ways-n	ways	n	0	1	1	oewn
+oewn-ways_and_means-n	ways and means	n	0	3	3	oewn
+oewn-wayside-n	wayside	n	0	1	1	oewn
+oewn-wayward-a	wayward	a	0	1	1	oewn
+oewn-weak-a	weak	a	0	1	1	oewn
+oewn-weak-kneed-a	weak-kneed	a	0	1	1	oewn
+oewn-weak-stemmed-a	weak-stemmed	a	0	1	1	oewn
+oewn-weak_force-n	weak force	n	0	2	2	oewn
+oewn-weak_interaction-n	weak interaction	n	0	2	2	oewn
+oewn-weak_part-n	weak part	n	0	2	2	oewn
+oewn-weak_point-n	weak point	n	0	2	2	oewn
+oewn-weak_spot-n	weak spot	n	0	2	2	oewn
+oewn-weak_yer-n	weak yer	n	0	2	2	oewn
+oewn-weaken-v	weaken	v	0	1	1	oewn
+oewn-weakened-a	weakened	a	0	1	1	oewn
+oewn-weakener-n	weakener	n	0	1	1	oewn
+oewn-weakening-a	weakening	a	0	1	1	oewn
+oewn-weakening-n	weakening	n	0	1	1	oewn
+oewn-weakfish-n	weakfish	n	0	1	1	oewn
+oewn-weakling-n	weakling	n	0	1	1	oewn
+oewn-weakly-a	weakly	a	0	1	1	oewn
+oewn-weakly-r	weakly	r	0	1	1	oewn
+oewn-weakly_interacting_massive_particle-n	weakly interacting massive particle	n	0	4	4	oewn
+oewn-weakness-n	weakness	n	0	1	1	oewn
+oewn-weal-n	weal	n	0	1	1	oewn
+oewn-weald-n	weald	n	0	1	1	oewn
+oewn-wealth-n	wealth	n	0	1	1	oewn
+oewn-wealthily-r	wealthily	r	0	1	1	oewn
+oewn-wealthiness-n	wealthiness	n	0	1	1	oewn
+oewn-wealthy-a	wealthy	a	0	1	1	oewn
+oewn-wealthy_man-n	wealthy man	n	0	2	2	oewn
+oewn-wealthy_person-n	wealthy person	n	0	2	2	oewn
+oewn-wealthy_woman-n	wealthy woman	n	0	2	2	oewn
+oewn-wean-v	wean	v	0	1	1	oewn
+oewn-weaned-a	weaned	a	0	1	1	oewn
+oewn-weaning-n	weaning	n	0	1	1	oewn
+oewn-weapon-n	weapon	n	0	1	1	oewn
+oewn-weapon_of_mass_destruction-n	weapon of mass destruction	n	0	4	1	oewn
+oewn-weapon_system-n	weapon system	n	0	2	2	oewn
+oewn-weaponed-a	weaponed	a	0	1	1	oewn
+oewn-weaponize-v	weaponize	v	0	1	1	oewn
+oewn-weaponless-a	weaponless	a	0	1	1	oewn
+oewn-weaponry-n	weaponry	n	0	1	1	oewn
+oewn-weapons-grade-a	weapons-grade	a	0	1	1	oewn
+oewn-weapons-grade_plutonium-n	weapons-grade plutonium	n	0	2	2	oewn
+oewn-weapons_carrier-n	weapons carrier	n	0	2	2	oewn
+oewn-weapons_emplacement-n	weapons emplacement	n	0	2	2	oewn
+oewn-weapons_platform-n	weapons platform	n	0	2	2	oewn
+oewn-weapons_plutonium-n	weapons plutonium	n	0	2	2	oewn
+oewn-weapons_system-n	weapons system	n	0	2	2	oewn
+oewn-wear-n	wear	n	0	1	1	oewn
+oewn-wear-v	wear	v	0	1	1	oewn
+oewn-wear_and_tear-n	wear and tear	n	0	3	3	oewn
+oewn-wear_away-v	wear away	v	0	2	1	oewn
+oewn-wear_down-v	wear down	v	0	2	1	oewn
+oewn-wear_off-v	wear off	v	0	2	1	oewn
+oewn-wear_on-v	wear on	v	0	2	1	oewn
+oewn-wear_out-v	wear out	v	0	2	1	oewn
+oewn-wear_round-v	wear round	v	0	2	1	oewn
+oewn-wear_ship-v	wear ship	v	0	2	1	oewn
+oewn-wear_the_trousers-v	wear the trousers	v	0	3	1	oewn
+oewn-wear_thin-v	wear thin	v	0	2	1	oewn
+oewn-wear_upon-v	wear upon	v	0	2	1	oewn
+oewn-wearable-a	wearable	a	0	1	1	oewn
+oewn-wearable-n	wearable	n	0	1	1	oewn
+oewn-wearer-n	wearer	n	0	1	1	oewn
+oewn-wearied-a	wearied	a	0	1	1	oewn
+oewn-wearily-r	wearily	r	0	1	1	oewn
+oewn-weariness-n	weariness	n	0	1	1	oewn
+oewn-wearing-a	wearing	a	0	1	1	oewn
+oewn-wearing-n	wearing	n	0	1	1	oewn
+oewn-wearing_apparel-n	wearing apparel	n	0	2	2	oewn
+oewn-wearing_away-n	wearing away	n	0	2	2	oewn
+oewn-wearisome-a	wearisome	a	0	1	1	oewn
+oewn-weary-a	weary	a	0	1	1	oewn
+oewn-weary-v	weary	v	0	1	1	oewn
+oewn-wearying-a	wearying	a	0	1	1	oewn
+oewn-weasel-n	weasel	n	0	1	1	oewn
+oewn-weasel-worded-a	weasel-worded	a	0	1	1	oewn
+oewn-weasel_word-n	weasel word	n	0	2	2	oewn
+oewn-weather-a	weather	a	0	1	1	oewn
+oewn-weather-beaten-a	weather-beaten	a	0	1	1	oewn
+oewn-weather-bound-a	weather-bound	a	0	1	1	oewn
+oewn-weather-n	weather	n	0	1	1	oewn
+oewn-weather-stripped-a	weather-stripped	a	0	1	1	oewn
+oewn-weather-v	weather	v	0	1	1	oewn
+oewn-weather_bureau-n	weather bureau	n	0	2	2	oewn
+oewn-weather_chart-n	weather chart	n	0	2	2	oewn
+oewn-weather_condition-n	weather condition	n	0	2	2	oewn
+oewn-weather_deck-n	weather deck	n	0	2	2	oewn
+oewn-weather_eye-n	weather eye	n	0	2	2	oewn
+oewn-weather_forecast-n	weather forecast	n	0	2	2	oewn
+oewn-weather_forecaster-n	weather forecaster	n	0	2	2	oewn
+oewn-weather_forecasting-n	weather forecasting	n	0	2	2	oewn
+oewn-weather_map-n	weather map	n	0	2	2	oewn
+oewn-weather_outlook-n	weather outlook	n	0	2	2	oewn
+oewn-weather_radar-n	weather radar	n	0	2	2	oewn
+oewn-weather_satellite-n	weather satellite	n	0	2	2	oewn
+oewn-weather_sheet-n	weather sheet	n	0	2	2	oewn
+oewn-weather_ship-n	weather ship	n	0	2	2	oewn
+oewn-weather_side-n	weather side	n	0	2	2	oewn
+oewn-weather_station-n	weather station	n	0	2	2	oewn
+oewn-weather_strip-n	weather strip	n	0	2	2	oewn
+oewn-weather_stripping-n	weather stripping	n	0	2	2	oewn
+oewn-weather_vane-n	weather vane	n	0	2	2	oewn
+oewn-weatherboard-n	weatherboard	n	0	1	1	oewn
+oewn-weatherboarding-n	weatherboarding	n	0	1	1	oewn
+oewn-weathercock-n	weathercock	n	0	1	1	oewn
+oewn-weathered-a	weathered	a	0	1	1	oewn
+oewn-weatherglass-n	weatherglass	n	0	1	1	oewn
+oewn-weatherliness-n	weatherliness	n	0	1	1	oewn
+oewn-weatherly-a	weatherly	a	0	1	1	oewn
+oewn-weatherman-n	weatherman	n	0	1	1	oewn
+oewn-weatherproof-a	weatherproof	a	0	1	1	oewn
+oewn-weatherproof-v	weatherproof	v	0	1	1	oewn
+oewn-weatherstrip-n	weatherstrip	n	0	1	1	oewn
+oewn-weatherstrip-v	weatherstrip	v	0	1	1	oewn
+oewn-weatherstripping-n	weatherstripping	n	0	1	1	oewn
+oewn-weathervane-n	weathervane	n	0	1	1	oewn
+oewn-weatherwoman-n	weatherwoman	n	0	1	1	oewn
+oewn-weatherworn-a	weatherworn	a	0	1	1	oewn
+oewn-weave-n	weave	n	0	1	1	oewn
+oewn-weave-v	weave	v	0	1	1	oewn
+oewn-weaver-ap-s_broom-n	weaver's broom	n	0	2	2	oewn
+oewn-weaver-ap-s_hitch-n	weaver's hitch	n	0	2	2	oewn
+oewn-weaver-ap-s_knot-n	weaver's knot	n	0	2	2	oewn
+oewn-weaver-n	weaver	n	0	1	1	oewn
+oewn-weaver_finch-n	weaver finch	n	0	2	2	oewn
+oewn-weaverbird-n	weaverbird	n	0	1	1	oewn
+oewn-weaving-n	weaving	n	0	1	1	oewn
+oewn-web-footed-a	web-footed	a	0	1	1	oewn
+oewn-web-n	web	n	0	1	1	oewn
+oewn-web-spinning_mite-n	web-spinning mite	n	0	2	2	oewn
+oewn-web-toed-a	web-toed	a	0	1	1	oewn
+oewn-web-toed_salamander-n	web-toed salamander	n	0	2	2	oewn
+oewn-web-v	web	v	0	1	1	oewn
+oewn-web_browser-n	web browser	n	0	2	2	oewn
+oewn-web_log-n	web log	n	0	2	2	oewn
+oewn-web_page-n	web page	n	0	2	2	oewn
+oewn-web_site-n	web site	n	0	2	2	oewn
+oewn-web_spinner-n	web spinner	n	0	2	2	oewn
+oewn-web_television-n	web television	n	0	2	2	oewn
+oewn-web_tv-n	web tv	n	0	2	2	oewn
+oewn-webbed-a	webbed	a	0	1	1	oewn
+oewn-webbed_foot-n	webbed foot	n	0	2	2	oewn
+oewn-webbing-n	webbing	n	0	1	1	oewn
+oewn-webbing_clothes_moth-n	webbing clothes moth	n	0	3	3	oewn
+oewn-webbing_moth-n	webbing moth	n	0	2	2	oewn
+oewn-webby-a	webby	a	0	1	1	oewn
+oewn-webcam-n	webcam	n	0	1	1	oewn
+oewn-weber-n	weber	n	0	1	1	oewn
+oewn-webfoot-n	webfoot	n	0	1	1	oewn
+oewn-weblike-a	weblike	a	0	1	1	oewn
+oewn-webmaster-n	webmaster	n	0	1	1	oewn
+oewn-webpage-n	webpage	n	0	1	1	oewn
+oewn-website-n	website	n	0	1	1	oewn
+oewn-webworm-n	webworm	n	0	1	1	oewn
+oewn-webworm_moth-n	webworm moth	n	0	2	2	oewn
+oewn-wed-a	wed	a	0	1	1	oewn
+oewn-wed-v	wed	v	0	1	1	oewn
+oewn-wedded-a	wedded	a	0	1	1	oewn
+oewn-wedding-n	wedding	n	0	1	1	oewn
+oewn-wedding_anniversary-n	wedding anniversary	n	0	2	2	oewn
+oewn-wedding_band-n	wedding band	n	0	2	2	oewn
+oewn-wedding_cake-n	wedding cake	n	0	2	2	oewn
+oewn-wedding_ceremony-n	wedding ceremony	n	0	2	2	oewn
+oewn-wedding_chest-n	wedding chest	n	0	2	2	oewn
+oewn-wedding_day-n	wedding day	n	0	2	2	oewn
+oewn-wedding_dress-n	wedding dress	n	0	2	2	oewn
+oewn-wedding_gift-n	wedding gift	n	0	2	2	oewn
+oewn-wedding_gown-n	wedding gown	n	0	2	2	oewn
+oewn-wedding_guest-n	wedding guest	n	0	2	2	oewn
+oewn-wedding_licence-n	wedding licence	n	0	2	2	oewn
+oewn-wedding_license-n	wedding license	n	0	2	2	oewn
+oewn-wedding_march-n	wedding march	n	0	2	2	oewn
+oewn-wedding_night-n	wedding night	n	0	2	2	oewn
+oewn-wedding_party-n	wedding party	n	0	2	2	oewn
+oewn-wedding_picture-n	wedding picture	n	0	2	2	oewn
+oewn-wedding_present-n	wedding present	n	0	2	2	oewn
+oewn-wedding_reception-n	wedding reception	n	0	2	2	oewn
+oewn-wedding_ring-n	wedding ring	n	0	2	2	oewn
+oewn-wedel-v	wedel	v	0	1	1	oewn
+oewn-wedge-n	wedge	n	0	1	1	oewn
+oewn-wedge-shaped-a	wedge-shaped	a	0	1	1	oewn
+oewn-wedge-v	wedge	v	0	1	1	oewn
+oewn-wedge_bone-n	wedge bone	n	0	2	2	oewn
+oewn-wedge_heel-n	wedge heel	n	0	2	2	oewn
+oewn-wedge_shape-n	wedge shape	n	0	2	2	oewn
+oewn-wedge_sum-n	wedge sum	n	0	2	2	oewn
+oewn-wedged-a	wedged	a	0	1	1	oewn
+oewn-wedgie-n	wedgie	n	0	1	1	oewn
+oewn-wedlock-n	wedlock	n	0	1	1	oewn
+oewn-wee-a	wee	a	0	1	1	oewn
+oewn-wee-n	wee	n	0	1	1	oewn
+oewn-wee-v	wee	v	0	1	1	oewn
+oewn-wee-wee-v	wee-wee	v	0	1	1	oewn
+oewn-wee_small_voice-n	wee small voice	n	0	3	3	oewn
+oewn-weeaboo-n	weeaboo	n	0	1	1	oewn
+oewn-weeb-n	weeb	n	0	1	1	oewn
+oewn-weed-n	weed	n	0	1	1	oewn
+oewn-weed-v	weed	v	0	1	1	oewn
+oewn-weed-whacker-n	weed-whacker	n	0	1	1	oewn
+oewn-weed_killer-n	weed killer	n	0	2	2	oewn
+oewn-weed_out-v	weed out	v	0	2	1	oewn
+oewn-weed_puller-n	weed puller	n	0	2	2	oewn
+oewn-weed_remover-n	weed remover	n	0	2	2	oewn
+oewn-weeder-n	weeder	n	0	1	1	oewn
+oewn-weedkiller-n	weedkiller	n	0	1	1	oewn
+oewn-weedless-a	weedless	a	0	1	1	oewn
+oewn-weeds-n	weeds	n	0	1	1	oewn
+oewn-weedy-a	weedy	a	0	1	1	oewn
+oewn-week-n	week	n	0	1	1	oewn
+oewn-week_after_week-r	week after week	r	0	3	3	oewn
+oewn-week_by_week-r	week by week	r	0	3	3	oewn
+oewn-week_from_Monday-n	week from Monday	n	0	3	3	oewn
+oewn-weekday-n	weekday	n	0	1	1	oewn
+oewn-weekend-n	weekend	n	0	1	1	oewn
+oewn-weekend-v	weekend	v	0	1	1	oewn
+oewn-weekend_warrior-n	weekend warrior	n	0	2	2	oewn
+oewn-weekender-n	weekender	n	0	1	1	oewn
+oewn-weeklong-a	weeklong	a	0	1	1	oewn
+oewn-weekly-a	weekly	a	0	1	1	oewn
+oewn-weekly-n	weekly	n	0	1	1	oewn
+oewn-weekly-r	weekly	r	0	1	1	oewn
+oewn-weeknight-n	weeknight	n	0	1	1	oewn
+oewn-weeness-n	weeness	n	0	1	1	oewn
+oewn-weenie-n	weenie	n	0	1	1	oewn
+oewn-weenie_roast-n	weenie roast	n	0	2	2	oewn
+oewn-weensy-a	weensy	a	0	1	1	oewn
+oewn-weeny-a	weeny	a	0	1	1	oewn
+oewn-weep-v	weep	v	0	1	1	oewn
+oewn-weeper-n	weeper	n	0	1	1	oewn
+oewn-weepiness-n	weepiness	n	0	1	1	oewn
+oewn-weeping-a	weeping	a	0	1	1	oewn
+oewn-weeping-n	weeping	n	0	1	1	oewn
+oewn-weeping_beech-n	weeping beech	n	0	2	2	oewn
+oewn-weeping_love_grass-n	weeping love grass	n	0	3	3	oewn
+oewn-weeping_spruce-n	weeping spruce	n	0	2	2	oewn
+oewn-weeping_tree_broom-n	weeping tree broom	n	0	3	3	oewn
+oewn-weeping_willow-n	weeping willow	n	0	2	2	oewn
+oewn-weepy-a	weepy	a	0	1	1	oewn
+oewn-weevil-n	weevil	n	0	1	1	oewn
+oewn-weewee-n	weewee	n	0	1	1	oewn
+oewn-weft-n	weft	n	0	1	1	oewn
+oewn-weigela-n	weigela	n	0	1	1	oewn
+oewn-weigh-in-n	weigh-in	n	0	1	1	oewn
+oewn-weigh-v	weigh	v	0	1	1	oewn
+oewn-weigh_anchor-v	weigh anchor	v	0	2	1	oewn
+oewn-weigh_down-v	weigh down	v	0	2	1	oewn
+oewn-weigh_on-v	weigh on	v	0	2	1	oewn
+oewn-weigh_the_anchor-v	weigh the anchor	v	0	3	1	oewn
+oewn-weighbridge-n	weighbridge	n	0	1	1	oewn
+oewn-weighed_down-a	weighed down	a	0	2	2	oewn
+oewn-weigher-n	weigher	n	0	1	1	oewn
+oewn-weighing-n	weighing	n	0	1	1	oewn
+oewn-weighing_machine-n	weighing machine	n	0	2	2	oewn
+oewn-weight-lift-v	weight-lift	v	0	1	1	oewn
+oewn-weight-n	weight	n	0	1	1	oewn
+oewn-weight-v	weight	v	0	1	1	oewn
+oewn-weight_class-n	weight class	n	0	2	2	oewn
+oewn-weight_down-v	weight down	v	0	2	1	oewn
+oewn-weight_gainer-n	weight gainer	n	0	2	2	oewn
+oewn-weight_gaining-n	weight gaining	n	0	2	2	oewn
+oewn-weight_unit-n	weight unit	n	0	2	2	oewn
+oewn-weighted-a	weighted	a	0	1	1	oewn
+oewn-weighted_arithmetic_mean-n	weighted arithmetic mean	n	0	3	3	oewn
+oewn-weighted_average-n	weighted average	n	0	2	2	oewn
+oewn-weighted_mean-n	weighted mean	n	0	2	2	oewn
+oewn-weightily-r	weightily	r	0	1	1	oewn
+oewn-weightiness-n	weightiness	n	0	1	1	oewn
+oewn-weighting-n	weighting	n	0	1	1	oewn
+oewn-weightless-a	weightless	a	0	1	1	oewn
+oewn-weightlessness-n	weightlessness	n	0	1	1	oewn
+oewn-weightlift-n	weightlift	n	0	1	1	oewn
+oewn-weightlift-v	weightlift	v	0	1	1	oewn
+oewn-weightlifter-n	weightlifter	n	0	1	1	oewn
+oewn-weightlifting-n	weightlifting	n	0	1	1	oewn
+oewn-weighty-a	weighty	a	0	1	1	oewn
+oewn-weir-n	weir	n	0	1	1	oewn
+oewn-weird-a	weird	a	0	1	1	oewn
+oewn-weird_sister-n	weird sister	n	0	2	2	oewn
+oewn-weirdie-n	weirdie	n	0	1	1	oewn
+oewn-weirdly-r	weirdly	r	0	1	1	oewn
+oewn-weirdness-n	weirdness	n	0	1	1	oewn
+oewn-weirdo-n	weirdo	n	0	1	1	oewn
+oewn-weirdy-n	weirdy	n	0	1	1	oewn
+oewn-weisenheimer-n	weisenheimer	n	0	1	1	oewn
+oewn-weka-n	weka	n	0	1	1	oewn
+oewn-welch-v	welch	v	0	1	1	oewn
+oewn-welcher-n	welcher	n	0	1	1	oewn
+oewn-welcome-a	welcome	a	0	1	1	oewn
+oewn-welcome-n	welcome	n	0	1	1	oewn
+oewn-welcome-v	welcome	v	0	1	1	oewn
+oewn-welcome_mat-n	welcome mat	n	0	2	2	oewn
+oewn-welcome_wagon-n	welcome wagon	n	0	2	2	oewn
+oewn-welcomer-n	welcomer	n	0	1	1	oewn
+oewn-welcoming-a	welcoming	a	0	1	1	oewn
+oewn-welcoming_committee-n	welcoming committee	n	0	2	2	oewn
+oewn-weld-n	weld	n	0	1	1	oewn
+oewn-weld-v	weld	v	0	1	1	oewn
+oewn-welder-ap-s_mask-n	welder's mask	n	0	2	2	oewn
+oewn-welder-n	welder	n	0	1	1	oewn
+oewn-welding-n	welding	n	0	1	1	oewn
+oewn-weldment-n	weldment	n	0	1	1	oewn
+oewn-welfare-n	welfare	n	0	1	1	oewn
+oewn-welfare-statist-a	welfare-statist	a	0	1	1	oewn
+oewn-welfare_case-n	welfare case	n	0	2	2	oewn
+oewn-welfare_state-n	welfare state	n	0	2	2	oewn
+oewn-welfare_work-n	welfare work	n	0	2	2	oewn
+oewn-welfare_worker-n	welfare worker	n	0	2	2	oewn
+oewn-welfarist-a	welfarist	a	0	1	1	oewn
+oewn-welkin-n	welkin	n	0	1	1	oewn
+oewn-well-a	well	a	0	1	1	oewn
+oewn-well-adjusted-a	well-adjusted	a	0	1	1	oewn
+oewn-well-advised-a	well-advised	a	0	1	1	oewn
+oewn-well-appointed-a	well-appointed	a	0	1	1	oewn
+oewn-well-balanced-a	well-balanced	a	0	1	1	oewn
+oewn-well-behaved-a	well-behaved	a	0	1	1	oewn
+oewn-well-being-n	well-being	n	0	1	1	oewn
+oewn-well-bound-a	well-bound	a	0	1	1	oewn
+oewn-well-branched-a	well-branched	a	0	1	1	oewn
+oewn-well-bred-a	well-bred	a	0	1	1	oewn
+oewn-well-chosen-a	well-chosen	a	0	1	1	oewn
+oewn-well-conducted-a	well-conducted	a	0	1	1	oewn
+oewn-well-connected-a	well-connected	a	0	1	1	oewn
+oewn-well-defined-a	well-defined	a	0	1	1	oewn
+oewn-well-disposed-a	well-disposed	a	0	1	1	oewn
+oewn-well-done-a	well-done	a	0	1	1	oewn
+oewn-well-dressed-a	well-dressed	a	0	1	1	oewn
+oewn-well-educated-a	well-educated	a	0	1	1	oewn
+oewn-well-endowed-a	well-endowed	a	0	1	1	oewn
+oewn-well-favored-a	well-favored	a	0	1	1	oewn
+oewn-well-favoured-a	well-favoured	a	0	1	1	oewn
+oewn-well-fed-a	well-fed	a	0	1	1	oewn
+oewn-well-fixed-a	well-fixed	a	0	1	1	oewn
+oewn-well-formed-a	well-formed	a	0	1	1	oewn
+oewn-well-found-a	well-found	a	0	1	1	oewn
+oewn-well-founded-a	well-founded	a	0	1	1	oewn
+oewn-well-groomed-a	well-groomed	a	0	1	1	oewn
+oewn-well-grooved-a	well-grooved	a	0	1	1	oewn
+oewn-well-grounded-a	well-grounded	a	0	1	1	oewn
+oewn-well-heeled-a	well-heeled	a	0	1	1	oewn
+oewn-well-informed-a	well-informed	a	0	1	1	oewn
+oewn-well-intentioned-a	well-intentioned	a	0	1	1	oewn
+oewn-well-kept-a	well-kept	a	0	1	1	oewn
+oewn-well-knit-a	well-knit	a	0	1	1	oewn
+oewn-well-known-a	well-known	a	0	1	1	oewn
+oewn-well-lighted-a	well-lighted	a	0	1	1	oewn
+oewn-well-lined-a	well-lined	a	0	1	1	oewn
+oewn-well-made-a	well-made	a	0	1	1	oewn
+oewn-well-mannered-a	well-mannered	a	0	1	1	oewn
+oewn-well-marked-a	well-marked	a	0	1	1	oewn
+oewn-well-meaning-a	well-meaning	a	0	1	1	oewn
+oewn-well-meant-a	well-meant	a	0	1	1	oewn
+oewn-well-mined-a	well-mined	a	0	1	1	oewn
+oewn-well-n	well	n	0	1	1	oewn
+oewn-well-nigh-r	well-nigh	r	0	1	1	oewn
+oewn-well-nourished-a	well-nourished	a	0	1	1	oewn
+oewn-well-off-a	well-off	a	0	1	1	oewn
+oewn-well-ordered-a	well-ordered	a	0	1	1	oewn
+oewn-well-preserved-a	well-preserved	a	0	1	1	oewn
+oewn-well-proportioned-a	well-proportioned	a	0	1	1	oewn
+oewn-well-qualified-a	well-qualified	a	0	1	1	oewn
+oewn-well-r	well	r	0	1	1	oewn
+oewn-well-read-a	well-read	a	0	1	1	oewn
+oewn-well-rounded-a	well-rounded	a	0	1	1	oewn
+oewn-well-set-a	well-set	a	0	1	1	oewn
+oewn-well-shaven-a	well-shaven	a	0	1	1	oewn
+oewn-well-situated-a	well-situated	a	0	1	1	oewn
+oewn-well-spoken-a	well-spoken	a	0	1	1	oewn
+oewn-well-thought-of-a	well-thought-of	a	0	1	1	oewn
+oewn-well-timed-a	well-timed	a	0	1	1	oewn
+oewn-well-timed-r	well-timed	r	0	1	1	oewn
+oewn-well-to-do-a	well-to-do	a	0	1	1	oewn
+oewn-well-tried-a	well-tried	a	0	1	1	oewn
+oewn-well-turned-a	well-turned	a	0	1	1	oewn
+oewn-well-v	well	v	0	1	1	oewn
+oewn-well-wisher-n	well-wisher	n	0	1	1	oewn
+oewn-well-wishing-a	well-wishing	a	0	1	1	oewn
+oewn-well-wishing-n	well-wishing	n	0	1	1	oewn
+oewn-well-worn-a	well-worn	a	0	1	1	oewn
+oewn-well_behaved-a	well behaved	a	0	2	2	oewn
+oewn-well_disposed-a	well disposed	a	0	2	2	oewn
+oewn-well_out-v	well out	v	0	2	1	oewn
+oewn-well_over-v	well over	v	0	2	1	oewn
+oewn-well_point-n	well point	n	0	2	2	oewn
+oewn-well_thought_out-a	well thought out	a	0	3	3	oewn
+oewn-well_timed-a	well timed	a	0	2	2	oewn
+oewn-well_up-v	well up	v	0	2	1	oewn
+oewn-well_water-n	well water	n	0	2	2	oewn
+oewn-wellbeing-n	wellbeing	n	0	1	1	oewn
+oewn-wellborn-a	wellborn	a	0	1	1	oewn
+oewn-wellerism-n	wellerism	n	0	1	1	oewn
+oewn-wellhead-n	wellhead	n	0	1	1	oewn
+oewn-wellness-n	wellness	n	0	1	1	oewn
+oewn-wellpoint-n	wellpoint	n	0	1	1	oewn
+oewn-wellspring-n	wellspring	n	0	1	1	oewn
+oewn-welsh-v	welsh	v	0	1	1	oewn
+oewn-welsher-n	welsher	n	0	1	1	oewn
+oewn-welt-n	welt	n	0	1	1	oewn
+oewn-welt-v	welt	v	0	1	1	oewn
+oewn-welted_thistle-n	welted thistle	n	0	2	2	oewn
+oewn-welter-n	welter	n	0	1	1	oewn
+oewn-welter-v	welter	v	0	1	1	oewn
+oewn-welterweight-n	welterweight	n	0	1	1	oewn
+oewn-welwitschia-n	welwitschia	n	0	1	1	oewn
+oewn-wen-n	wen	n	0	1	1	oewn
+oewn-wench-n	wench	n	0	1	1	oewn
+oewn-wench-v	wench	v	0	1	1	oewn
+oewn-wencher-n	wencher	n	0	1	1	oewn
+oewn-wend-v	wend	v	0	1	1	oewn
+oewn-wendy_house-n	wendy house	n	0	2	2	oewn
+oewn-werewolf-n	werewolf	n	0	1	1	oewn
+oewn-west-a	west	a	0	1	1	oewn
+oewn-west-central-a	west-central	a	0	1	1	oewn
+oewn-west-n	west	n	0	1	1	oewn
+oewn-west-r	west	r	0	1	1	oewn
+oewn-west_by_north-n	west by north	n	0	3	1	oewn
+oewn-west_by_south-n	west by south	n	0	3	1	oewn
+oewn-west_coast_hemlock-n	west coast hemlock	n	0	3	3	oewn
+oewn-west_northwest-n	west northwest	n	0	2	2	oewn
+oewn-west_side-n	west side	n	0	2	2	oewn
+oewn-west_southwest-n	west southwest	n	0	2	2	oewn
+oewn-west_wind-n	west wind	n	0	2	2	oewn
+oewn-westbound-a	westbound	a	0	1	1	oewn
+oewn-wester-n	wester	n	0	1	1	oewn
+oewn-westerly-a	westerly	a	0	1	1	oewn
+oewn-westerly-n	westerly	n	0	1	1	oewn
+oewn-westerly-r	westerly	r	0	1	1	oewn
+oewn-western-a	western	a	0	1	1	oewn
+oewn-western-n	western	n	0	1	1	oewn
+oewn-western_big-eared_bat-n	western big-eared bat	n	0	3	3	oewn
+oewn-western_black-legged_tick-n	western black-legged tick	n	0	3	3	oewn
+oewn-western_blackberry-n	western blackberry	n	0	2	2	oewn
+oewn-western_blind_snake-n	western blind snake	n	0	3	3	oewn
+oewn-western_buttercup-n	western buttercup	n	0	2	2	oewn
+oewn-western_chimpanzee-n	western chimpanzee	n	0	2	2	oewn
+oewn-western_chokecherry-n	western chokecherry	n	0	2	2	oewn
+oewn-western_coral_snake-n	western coral snake	n	0	3	3	oewn
+oewn-western_crab_apple-n	western crab apple	n	0	3	3	oewn
+oewn-western_dewberry-n	western dewberry	n	0	2	2	oewn
+oewn-western_fence_lizard-n	western fence lizard	n	0	3	3	oewn
+oewn-western_gray_squirrel-n	western gray squirrel	n	0	3	3	oewn
+oewn-western_grey_squirrel-n	western grey squirrel	n	0	3	3	oewn
+oewn-western_hemisphere-n	western hemisphere	n	0	2	2	oewn
+oewn-western_hemlock-n	western hemlock	n	0	2	2	oewn
+oewn-western_holly_fern-n	western holly fern	n	0	3	3	oewn
+oewn-western_kingbird-n	western kingbird	n	0	2	2	oewn
+oewn-western_ladies-ap-_tresses-n	western ladies' tresses	n	0	3	3	oewn
+oewn-western_larch-n	western larch	n	0	2	2	oewn
+oewn-western_lowland_gorilla-n	western lowland gorilla	n	0	3	3	oewn
+oewn-western_meadowlark-n	western meadowlark	n	0	2	2	oewn
+oewn-western_mugwort-n	western mugwort	n	0	2	2	oewn
+oewn-western_narrow-mouthed_toad-n	western narrow-mouthed toad	n	0	3	3	oewn
+oewn-western_omelet-n	western omelet	n	0	2	2	oewn
+oewn-western_pipistrel-n	western pipistrel	n	0	2	2	oewn
+oewn-western_poison_oak-n	western poison oak	n	0	3	3	oewn
+oewn-western_poppy-n	western poppy	n	0	2	2	oewn
+oewn-western_prince-ap-s_pine-n	western prince's pine	n	0	3	3	oewn
+oewn-western_ragweed-n	western ragweed	n	0	2	2	oewn
+oewn-western_red-backed_salamander-n	western red-backed salamander	n	0	3	3	oewn
+oewn-western_red_cedar-n	western red cedar	n	0	3	3	oewn
+oewn-western_redbud-n	western redbud	n	0	2	2	oewn
+oewn-western_sandwich-n	western sandwich	n	0	2	2	oewn
+oewn-western_saxifrage-n	western saxifrage	n	0	2	2	oewn
+oewn-western_skink-n	western skink	n	0	2	2	oewn
+oewn-western_spadefoot-n	western spadefoot	n	0	2	2	oewn
+oewn-western_tamarack-n	western tamarack	n	0	2	2	oewn
+oewn-western_tanager-n	western tanager	n	0	2	2	oewn
+oewn-western_toad-n	western toad	n	0	2	2	oewn
+oewn-western_wall_flower-n	western wall flower	n	0	3	3	oewn
+oewn-western_wheatgrass-n	western wheatgrass	n	0	2	2	oewn
+oewn-western_whiptail-n	western whiptail	n	0	2	2	oewn
+oewn-western_white_pine-n	western white pine	n	0	3	3	oewn
+oewn-western_wood_pewee-n	western wood pewee	n	0	3	3	oewn
+oewn-western_yellow_pine-n	western yellow pine	n	0	3	3	oewn
+oewn-western_yew-n	western yew	n	0	2	2	oewn
+oewn-westerner-n	westerner	n	0	1	1	oewn
+oewn-westernise-v	westernise	v	0	1	1	oewn
+oewn-westernize-v	westernize	v	0	1	1	oewn
+oewn-westernmost-a	westernmost	a	0	1	1	oewn
+oewn-westland_pine-n	westland pine	n	0	2	2	oewn
+oewn-westmost-a	westmost	a	0	1	1	oewn
+oewn-westside-a	westside	a	0	1	1	oewn
+oewn-westward-a	westward	a	0	1	1	oewn
+oewn-westward-n	westward	n	0	1	1	oewn
+oewn-westward-r	westward	r	0	1	1	oewn
+oewn-westwards-r	westwards	r	0	1	1	oewn
+oewn-wet-a	wet	a	0	1	1	oewn
+oewn-wet-bulb_thermometer-n	wet-bulb thermometer	n	0	2	2	oewn
+oewn-wet-n	wet	n	0	1	1	oewn
+oewn-wet-nurse-n	wet-nurse	n	0	1	1	oewn
+oewn-wet-nurse-v	wet-nurse	v	0	1	1	oewn
+oewn-wet-v	wet	v	0	1	1	oewn
+oewn-wet_bar-n	wet bar	n	0	2	2	oewn
+oewn-wet_blanket-n	wet blanket	n	0	2	2	oewn
+oewn-wet_cell-n	wet cell	n	0	2	2	oewn
+oewn-wet_dream-n	wet dream	n	0	2	2	oewn
+oewn-wet_fly-n	wet fly	n	0	2	2	oewn
+oewn-wet_lung-n	wet lung	n	0	2	2	oewn
+oewn-wet_nurse-n	wet nurse	n	0	2	2	oewn
+oewn-wet_suit-n	wet suit	n	0	2	2	oewn
+oewn-wetback-n	wetback	n	0	1	1	oewn
+oewn-wether-n	wether	n	0	1	1	oewn
+oewn-wetland-n	wetland	n	0	1	1	oewn
+oewn-wetness-n	wetness	n	0	1	1	oewn
+oewn-wetnurse-n	wetnurse	n	0	1	1	oewn
+oewn-wetter-n	wetter	n	0	1	1	oewn
+oewn-wetting-n	wetting	n	0	1	1	oewn
+oewn-wetting_agent-n	wetting agent	n	0	2	2	oewn
+oewn-weymouth_pine-n	weymouth pine	n	0	2	2	oewn
+oewn-whack-n	whack	n	0	1	1	oewn
+oewn-whack-v	whack	v	0	1	1	oewn
+oewn-whacked-a	whacked	a	0	1	1	oewn
+oewn-whacker-n	whacker	n	0	1	1	oewn
+oewn-whacking-a	whacking	a	0	1	1	oewn
+oewn-whacking-n	whacking	n	0	1	1	oewn
+oewn-whacking-r	whacking	r	0	1	1	oewn
+oewn-whacko-n	whacko	n	0	1	1	oewn
+oewn-whacky-a	whacky	a	0	1	1	oewn
+oewn-whale-n	whale	n	0	1	1	oewn
+oewn-whale-v	whale	v	0	1	1	oewn
+oewn-whale_louse-n	whale louse	n	0	2	2	oewn
+oewn-whale_oil-n	whale oil	n	0	2	2	oewn
+oewn-whale_shark-n	whale shark	n	0	2	2	oewn
+oewn-whale_sucker-n	whale sucker	n	0	2	2	oewn
+oewn-whaleboat-n	whaleboat	n	0	1	1	oewn
+oewn-whalebone-n	whalebone	n	0	1	1	oewn
+oewn-whalebone_whale-n	whalebone whale	n	0	2	2	oewn
+oewn-whaler-n	whaler	n	0	1	1	oewn
+oewn-whalesucker-n	whalesucker	n	0	1	1	oewn
+oewn-whaling_gun-n	whaling gun	n	0	2	2	oewn
+oewn-whaling_ship-n	whaling ship	n	0	2	2	oewn
+oewn-wham-v	wham	v	0	1	1	oewn
+oewn-whammy-n	whammy	n	0	1	1	oewn
+oewn-whang-n	whang	n	0	1	1	oewn
+oewn-whang-v	whang	v	0	1	1	oewn
+oewn-whap-v	whap	v	0	1	1	oewn
+oewn-wharf-n	wharf	n	0	1	1	oewn
+oewn-wharf-v	wharf	v	0	1	1	oewn
+oewn-wharf_rat-n	wharf rat	n	0	2	2	oewn
+oewn-wharfage-n	wharfage	n	0	1	1	oewn
+oewn-what_for-n	what for	n	0	2	1	oewn
+oewn-what_is_more-r	what is more	r	0	3	3	oewn
+oewn-whatchamacallit-n	whatchamacallit	n	0	1	1	oewn
+oewn-whatchamacallum-n	whatchamacallum	n	0	1	1	oewn
+oewn-whatever-a	whatever	a	0	1	1	oewn
+oewn-whatever_may_come-r	whatever may come	r	0	3	3	oewn
+oewn-whatnot-n	whatnot	n	0	1	1	oewn
+oewn-whatsis-n	whatsis	n	0	1	1	oewn
+oewn-whatsoever-a	whatsoever	a	0	1	1	oewn
+oewn-wheal-n	wheal	n	0	1	1	oewn
+oewn-wheat-grass-n	wheat-grass	n	0	1	1	oewn
+oewn-wheat-n	wheat	n	0	1	1	oewn
+oewn-wheat_beer-n	wheat beer	n	0	2	2	oewn
+oewn-wheat_berry-n	wheat berry	n	0	2	2	oewn
+oewn-wheat_eel-n	wheat eel	n	0	2	2	oewn
+oewn-wheat_eelworm-n	wheat eelworm	n	0	2	2	oewn
+oewn-wheat_field-n	wheat field	n	0	2	2	oewn
+oewn-wheat_flag_smut-n	wheat flag smut	n	0	3	3	oewn
+oewn-wheat_flour-n	wheat flour	n	0	2	2	oewn
+oewn-wheat_future-n	wheat future	n	0	2	2	oewn
+oewn-wheat_germ-n	wheat germ	n	0	2	2	oewn
+oewn-wheat_gluten-n	wheat gluten	n	0	2	2	oewn
+oewn-wheat_rust-n	wheat rust	n	0	2	2	oewn
+oewn-wheat_scab-n	wheat scab	n	0	2	2	oewn
+oewn-wheatear-n	wheatear	n	0	1	1	oewn
+oewn-wheately_elm-n	wheately elm	n	0	2	2	oewn
+oewn-wheaten-a	wheaten	a	0	1	1	oewn
+oewn-wheatfield-n	wheatfield	n	0	1	1	oewn
+oewn-wheatflake-n	wheatflake	n	0	1	1	oewn
+oewn-wheatgrass-n	wheatgrass	n	0	1	1	oewn
+oewn-wheatworm-n	wheatworm	n	0	1	1	oewn
+oewn-wheedle-v	wheedle	v	0	1	1	oewn
+oewn-wheedler-n	wheedler	n	0	1	1	oewn
+oewn-wheedling-n	wheedling	n	0	1	1	oewn
+oewn-wheel-like-a	wheel-like	a	0	1	1	oewn
+oewn-wheel-n	wheel	n	0	1	1	oewn
+oewn-wheel-v	wheel	v	0	1	1	oewn
+oewn-wheel_and_axle-n	wheel and axle	n	0	3	3	oewn
+oewn-wheel_around-v	wheel around	v	0	2	1	oewn
+oewn-wheel_bug-n	wheel bug	n	0	2	2	oewn
+oewn-wheel_chart-n	wheel chart	n	0	2	2	oewn
+oewn-wheel_fiddle-n	wheel fiddle	n	0	2	2	oewn
+oewn-wheel_horse-n	wheel horse	n	0	2	2	oewn
+oewn-wheel_lathe-n	wheel lathe	n	0	2	2	oewn
+oewn-wheel_lock-n	wheel lock	n	0	2	2	oewn
+oewn-wheel_spoke-n	wheel spoke	n	0	2	2	oewn
+oewn-wheel_tree-n	wheel tree	n	0	2	2	oewn
+oewn-wheelbarrow-n	wheelbarrow	n	0	1	1	oewn
+oewn-wheelbarrow-v	wheelbarrow	v	0	1	1	oewn
+oewn-wheelbase-n	wheelbase	n	0	1	1	oewn
+oewn-wheelchair-n	wheelchair	n	0	1	1	oewn
+oewn-wheeled-a	wheeled	a	0	1	1	oewn
+oewn-wheeled_forecarriage-n	wheeled forecarriage	n	0	2	2	oewn
+oewn-wheeled_vehicle-n	wheeled vehicle	n	0	2	2	oewn
+oewn-wheeler-n	wheeler	n	0	1	1	oewn
+oewn-wheeler_dealer-n	wheeler dealer	n	0	2	2	oewn
+oewn-wheelhouse-n	wheelhouse	n	0	1	1	oewn
+oewn-wheeling-n	wheeling	n	0	1	1	oewn
+oewn-wheelless-a	wheelless	a	0	1	1	oewn
+oewn-wheelwork-n	wheelwork	n	0	1	1	oewn
+oewn-wheelwright-n	wheelwright	n	0	1	1	oewn
+oewn-wheeze-n	wheeze	n	0	1	1	oewn
+oewn-wheeze-v	wheeze	v	0	1	1	oewn
+oewn-wheezily-r	wheezily	r	0	1	1	oewn
+oewn-wheeziness-n	wheeziness	n	0	1	1	oewn
+oewn-wheezing-a	wheezing	a	0	1	1	oewn
+oewn-wheezingly-r	wheezingly	r	0	1	1	oewn
+oewn-wheezy-a	wheezy	a	0	1	1	oewn
+oewn-whelk-n	whelk	n	0	1	1	oewn
+oewn-whelk-v	whelk	v	0	1	1	oewn
+oewn-whelm-v	whelm	v	0	1	1	oewn
+oewn-whelp-n	whelp	n	0	1	1	oewn
+oewn-whelp-v	whelp	v	0	1	1	oewn
+oewn-when_first_seen-r	when first seen	r	0	3	3	oewn
+oewn-when_the_time_comes-r	when the time comes	r	0	4	4	oewn
+oewn-whence-r	whence	r	0	1	1	oewn
+oewn-whereabouts-n	whereabouts	n	0	1	1	oewn
+oewn-wherefore-n	wherefore	n	0	1	1	oewn
+oewn-wheresoever-r	wheresoever	r	0	1	1	oewn
+oewn-wherever-r	wherever	r	0	1	1	oewn
+oewn-wherewithal-n	wherewithal	n	0	1	1	oewn
+oewn-wherry-n	wherry	n	0	1	1	oewn
+oewn-whet-v	whet	v	0	1	1	oewn
+oewn-whetstone-n	whetstone	n	0	1	1	oewn
+oewn-whey-n	whey	n	0	1	1	oewn
+oewn-whicker-n	whicker	n	0	1	1	oewn
+oewn-whicker-v	whicker	v	0	1	1	oewn
+oewn-whidah-n	whidah	n	0	1	1	oewn
+oewn-whiff-n	whiff	n	0	1	1	oewn
+oewn-whiff-v	whiff	v	0	1	1	oewn
+oewn-whiffer-n	whiffer	n	0	1	1	oewn
+oewn-whiffletree-n	whiffletree	n	0	1	1	oewn
+oewn-while-n	while	n	0	1	1	oewn
+oewn-while_away-v	while away	v	0	2	1	oewn
+oewn-whim-n	whim	n	0	1	1	oewn
+oewn-whimper-n	whimper	n	0	1	1	oewn
+oewn-whimper-v	whimper	v	0	1	1	oewn
+oewn-whimsey-n	whimsey	n	0	1	1	oewn
+oewn-whimsical-a	whimsical	a	0	1	1	oewn
+oewn-whimsicality-n	whimsicality	n	0	1	1	oewn
+oewn-whimsically-r	whimsically	r	0	1	1	oewn
+oewn-whimsy-n	whimsy	n	0	1	1	oewn
+oewn-whin-n	whin	n	0	1	1	oewn
+oewn-whinberry-n	whinberry	n	0	1	1	oewn
+oewn-whinchat-n	whinchat	n	0	1	1	oewn
+oewn-whine-n	whine	n	0	1	1	oewn
+oewn-whine-v	whine	v	0	1	1	oewn
+oewn-whiner-n	whiner	n	0	1	1	oewn
+oewn-whiney-a	whiney	a	0	1	1	oewn
+oewn-whinny-n	whinny	n	0	1	1	oewn
+oewn-whinny-v	whinny	v	0	1	1	oewn
+oewn-whinstone-n	whinstone	n	0	1	1	oewn
+oewn-whiny-a	whiny	a	0	1	1	oewn
+oewn-whip-n	whip	n	0	1	1	oewn
+oewn-whip-round-n	whip-round	n	0	1	1	oewn
+oewn-whip-scorpion-n	whip-scorpion	n	0	1	1	oewn
+oewn-whip-snake-n	whip-snake	n	0	1	1	oewn
+oewn-whip-v	whip	v	0	1	1	oewn
+oewn-whip_hand-n	whip hand	n	0	2	2	oewn
+oewn-whip_scorpion-n	whip scorpion	n	0	2	2	oewn
+oewn-whip_snake-n	whip snake	n	0	2	2	oewn
+oewn-whip_through-v	whip through	v	0	2	1	oewn
+oewn-whip_top-n	whip top	n	0	2	2	oewn
+oewn-whip_up-v	whip up	v	0	2	1	oewn
+oewn-whipcord-n	whipcord	n	0	1	1	oewn
+oewn-whiplash-n	whiplash	n	0	1	1	oewn
+oewn-whiplash_injury-n	whiplash injury	n	0	2	2	oewn
+oewn-whiplike-a	whiplike	a	0	1	1	oewn
+oewn-whipped_cream-n	whipped cream	n	0	2	2	oewn
+oewn-whipper-in-n	whipper-in	n	0	1	1	oewn
+oewn-whipper-n	whipper	n	0	1	1	oewn
+oewn-whippersnapper-n	whippersnapper	n	0	1	1	oewn
+oewn-whippet-n	whippet	n	0	1	1	oewn
+oewn-whipping-a	whipping	a	0	1	1	oewn
+oewn-whipping-n	whipping	n	0	1	1	oewn
+oewn-whipping_boy-n	whipping boy	n	0	2	2	oewn
+oewn-whipping_cream-n	whipping cream	n	0	2	2	oewn
+oewn-whipping_girl-n	whipping girl	n	0	2	2	oewn
+oewn-whipping_post-n	whipping post	n	0	2	2	oewn
+oewn-whipping_top-n	whipping top	n	0	2	2	oewn
+oewn-whippletree-n	whippletree	n	0	1	1	oewn
+oewn-whippoorwill-n	whippoorwill	n	0	1	1	oewn
+oewn-whippy-a	whippy	a	0	1	1	oewn
+oewn-whipsaw-n	whipsaw	n	0	1	1	oewn
+oewn-whipsaw-v	whipsaw	v	0	1	1	oewn
+oewn-whipsnake-n	whipsnake	n	0	1	1	oewn
+oewn-whipstitch-n	whipstitch	n	0	1	1	oewn
+oewn-whipstitching-n	whipstitching	n	0	1	1	oewn
+oewn-whiptail-n	whiptail	n	0	1	1	oewn
+oewn-whiptail_lizard-n	whiptail lizard	n	0	2	2	oewn
+oewn-whir-n	whir	n	0	1	1	oewn
+oewn-whir-v	whir	v	0	1	1	oewn
+oewn-whirl-n	whirl	n	0	1	1	oewn
+oewn-whirl-v	whirl	v	0	1	1	oewn
+oewn-whirl_around-v	whirl around	v	0	2	1	oewn
+oewn-whirler-n	whirler	n	0	1	1	oewn
+oewn-whirligig-n	whirligig	n	0	1	1	oewn
+oewn-whirligig-v	whirligig	v	0	1	1	oewn
+oewn-whirligig_beetle-n	whirligig beetle	n	0	2	2	oewn
+oewn-whirling-n	whirling	n	0	1	1	oewn
+oewn-whirling_dervish-n	whirling dervish	n	0	2	2	oewn
+oewn-whirling_table-n	whirling table	n	0	2	2	oewn
+oewn-whirlpool-n	whirlpool	n	0	1	1	oewn
+oewn-whirlpool-v	whirlpool	v	0	1	1	oewn
+oewn-whirlwind-n	whirlwind	n	0	1	1	oewn
+oewn-whirlybird-n	whirlybird	n	0	1	1	oewn
+oewn-whirr-n	whirr	n	0	1	1	oewn
+oewn-whirr-v	whirr	v	0	1	1	oewn
+oewn-whirring-a	whirring	a	0	1	1	oewn
+oewn-whirring-n	whirring	n	0	1	1	oewn
+oewn-whish-v	whish	v	0	1	1	oewn
+oewn-whisk-n	whisk	n	0	1	1	oewn
+oewn-whisk-v	whisk	v	0	1	1	oewn
+oewn-whisk_away-v	whisk away	v	0	2	1	oewn
+oewn-whisk_broom-n	whisk broom	n	0	2	2	oewn
+oewn-whisk_by-v	whisk by	v	0	2	1	oewn
+oewn-whisk_fern-n	whisk fern	n	0	2	2	oewn
+oewn-whisk_off-v	whisk off	v	0	2	1	oewn
+oewn-whisker-n	whisker	n	0	1	1	oewn
+oewn-whisker-v	whisker	v	0	1	1	oewn
+oewn-whisker_jack-n	whisker jack	n	0	2	2	oewn
+oewn-whiskered-a	whiskered	a	0	1	1	oewn
+oewn-whiskerless-a	whiskerless	a	0	1	1	oewn
+oewn-whiskers-n	whiskers	n	0	1	1	oewn
+oewn-whiskery-a	whiskery	a	0	1	1	oewn
+oewn-whiskey-n	whiskey	n	0	1	1	oewn
+oewn-whiskey_bottle-n	whiskey bottle	n	0	2	2	oewn
+oewn-whiskey_jug-n	whiskey jug	n	0	2	2	oewn
+oewn-whiskey_neat-n	whiskey neat	n	0	2	2	oewn
+oewn-whiskey_on_the_rocks-n	whiskey on the rocks	n	0	4	1	oewn
+oewn-whiskey_sour-n	whiskey sour	n	0	2	2	oewn
+oewn-whisky-n	whisky	n	0	1	1	oewn
+oewn-whisky_neat-n	whisky neat	n	0	2	2	oewn
+oewn-whisky_on_the_rocks-n	whisky on the rocks	n	0	4	1	oewn
+oewn-whisky_sour-n	whisky sour	n	0	2	2	oewn
+oewn-whisper-n	whisper	n	0	1	1	oewn
+oewn-whisper-v	whisper	v	0	1	1	oewn
+oewn-whispered-a	whispered	a	0	1	1	oewn
+oewn-whisperer-n	whisperer	n	0	1	1	oewn
+oewn-whispering-a	whispering	a	0	1	1	oewn
+oewn-whispering-n	whispering	n	0	1	1	oewn
+oewn-whispering_bells-n	whispering bells	n	0	2	2	oewn
+oewn-whispering_campaign-n	whispering campaign	n	0	2	2	oewn
+oewn-whispering_dome-n	whispering dome	n	0	2	2	oewn
+oewn-whispering_gallery-n	whispering gallery	n	0	2	2	oewn
+oewn-whist-n	whist	n	0	1	1	oewn
+oewn-whist_drive-n	whist drive	n	0	2	2	oewn
+oewn-whistle-blower-n	whistle-blower	n	0	1	1	oewn
+oewn-whistle-n	whistle	n	0	1	1	oewn
+oewn-whistle-stop_tour-n	whistle-stop tour	n	0	2	2	oewn
+oewn-whistle-v	whistle	v	0	1	1	oewn
+oewn-whistle_blower-n	whistle blower	n	0	2	2	oewn
+oewn-whistle_buoy-n	whistle buoy	n	0	2	2	oewn
+oewn-whistle_stop-n	whistle stop	n	0	2	2	oewn
+oewn-whistleblower-n	whistleblower	n	0	1	1	oewn
+oewn-whistler-n	whistler	n	0	1	1	oewn
+oewn-whistlestop-v	whistlestop	v	0	1	1	oewn
+oewn-whistling-n	whistling	n	0	1	1	oewn
+oewn-whistling_buoy-n	whistling buoy	n	0	2	2	oewn
+oewn-whistling_marmot-n	whistling marmot	n	0	2	2	oewn
+oewn-whistling_swan-n	whistling swan	n	0	2	2	oewn
+oewn-whit-n	whit	n	0	1	1	oewn
+oewn-whit_leather-n	whit leather	n	0	2	2	oewn
+oewn-white-a	white	a	0	1	1	oewn
+oewn-white-bellied_swallow-n	white-bellied swallow	n	0	2	2	oewn
+oewn-white-berry_yew-n	white-berry yew	n	0	2	2	oewn
+oewn-white-blotched-a	white-blotched	a	0	1	1	oewn
+oewn-white-bread-a	white-bread	a	0	1	1	oewn
+oewn-white-breasted_nuthatch-n	white-breasted nuthatch	n	0	2	2	oewn
+oewn-white-chinned_petrel-n	white-chinned petrel	n	0	2	2	oewn
+oewn-white-coat_hypertension-n	white-coat hypertension	n	0	2	2	oewn
+oewn-white-collar-a	white-collar	a	0	1	1	oewn
+oewn-white-crowned_sparrow-n	white-crowned sparrow	n	0	2	2	oewn
+oewn-white-edged-a	white-edged	a	0	1	1	oewn
+oewn-white-faced_hornet-n	white-faced hornet	n	0	2	2	oewn
+oewn-white-flowered-a	white-flowered	a	0	1	1	oewn
+oewn-white-footed_mouse-n	white-footed mouse	n	0	2	2	oewn
+oewn-white-haired-a	white-haired	a	0	1	1	oewn
+oewn-white-headed_stilt-n	white-headed stilt	n	0	2	2	oewn
+oewn-white-heart_hickory-n	white-heart hickory	n	0	2	2	oewn
+oewn-white-hot-a	white-hot	a	0	1	1	oewn
+oewn-white-leaved_rockrose-n	white-leaved rockrose	n	0	2	2	oewn
+oewn-white-lipped-a	white-lipped	a	0	1	1	oewn
+oewn-white-lipped_peccary-n	white-lipped peccary	n	0	2	2	oewn
+oewn-white-livered-a	white-livered	a	0	1	1	oewn
+oewn-white-man-ap-s_foot-n	white-man's foot	n	0	2	2	oewn
+oewn-white-n	white	n	0	1	1	oewn
+oewn-white-out-v	white-out	v	0	1	1	oewn
+oewn-white-pine_rust-n	white-pine rust	n	0	2	2	oewn
+oewn-white-pink-a	white-pink	a	0	1	1	oewn
+oewn-white-rayed_mule-ap-s_ears-n	white-rayed mule's ears	n	0	3	3	oewn
+oewn-white-ribbed-a	white-ribbed	a	0	1	1	oewn
+oewn-white-rumped_shrike-n	white-rumped shrike	n	0	2	2	oewn
+oewn-white-seeded-a	white-seeded	a	0	1	1	oewn
+oewn-white-shoe-a	white-shoe	a	0	1	1	oewn
+oewn-white-stemmed_filaree-n	white-stemmed filaree	n	0	2	2	oewn
+oewn-white-streaked-a	white-streaked	a	0	1	1	oewn
+oewn-white-tailed_deer-n	white-tailed deer	n	0	2	2	oewn
+oewn-white-tailed_jackrabbit-n	white-tailed jackrabbit	n	0	2	2	oewn
+oewn-white-tailed_kite-n	white-tailed kite	n	0	2	2	oewn
+oewn-white-tailed_sea_eagle-n	white-tailed sea eagle	n	0	3	3	oewn
+oewn-white-throated_sparrow-n	white-throated sparrow	n	0	2	2	oewn
+oewn-white-tie-a	white-tie	a	0	1	1	oewn
+oewn-white-tipped_shark-n	white-tipped shark	n	0	2	2	oewn
+oewn-white-topped_aster-n	white-topped aster	n	0	2	2	oewn
+oewn-white-v	white	v	0	1	1	oewn
+oewn-white_Anglo-Saxon_Protestant-n	white Anglo-Saxon Protestant	n	0	3	3	oewn
+oewn-white_Burgundy-n	white Burgundy	n	0	2	2	oewn
+oewn-white_Spanish_broom-n	white Spanish broom	n	0	3	3	oewn
+oewn-white_admiral-n	white admiral	n	0	2	2	oewn
+oewn-white_alder-n	white alder	n	0	2	2	oewn
+oewn-white_ant-n	white ant	n	0	2	2	oewn
+oewn-white_arsenic-n	white arsenic	n	0	2	2	oewn
+oewn-white_asbestos-n	white asbestos	n	0	2	2	oewn
+oewn-white_ash-n	white ash	n	0	2	2	oewn
+oewn-white_aspen-n	white aspen	n	0	2	2	oewn
+oewn-white_avens-n	white avens	n	0	2	2	oewn
+oewn-white_backlash-n	white backlash	n	0	2	2	oewn
+oewn-white_baneberry-n	white baneberry	n	0	2	2	oewn
+oewn-white_basswood-n	white basswood	n	0	2	2	oewn
+oewn-white_bead-n	white bead	n	0	2	2	oewn
+oewn-white_bean-n	white bean	n	0	2	2	oewn
+oewn-white_bedstraw-n	white bedstraw	n	0	2	2	oewn
+oewn-white_beech-n	white beech	n	0	2	2	oewn
+oewn-white_beer-n	white beer	n	0	2	2	oewn
+oewn-white_birch-n	white birch	n	0	2	2	oewn
+oewn-white_blood_cell-n	white blood cell	n	0	3	3	oewn
+oewn-white_blood_corpuscle-n	white blood corpuscle	n	0	3	3	oewn
+oewn-white_book-n	white book	n	0	2	2	oewn
+oewn-white_borscht-n	white borscht	n	0	2	2	oewn
+oewn-white_bread-n	white bread	n	0	2	2	oewn
+oewn-white_broom-n	white broom	n	0	2	2	oewn
+oewn-white_bryony-n	white bryony	n	0	2	2	oewn
+oewn-white_cake-n	white cake	n	0	2	2	oewn
+oewn-white_camas-n	white camas	n	0	2	2	oewn
+oewn-white_campion-n	white campion	n	0	2	2	oewn
+oewn-white_cedar-n	white cedar	n	0	2	2	oewn
+oewn-white_cell-n	white cell	n	0	2	2	oewn
+oewn-white_chocolate-n	white chocolate	n	0	2	2	oewn
+oewn-white_cinnamon-n	white cinnamon	n	0	2	2	oewn
+oewn-white_cinnamon_tree-n	white cinnamon tree	n	0	3	3	oewn
+oewn-white_clover-n	white clover	n	0	2	2	oewn
+oewn-white_cockle-n	white cockle	n	0	2	2	oewn
+oewn-white_cohosh-n	white cohosh	n	0	2	2	oewn
+oewn-white_corpuscle-n	white corpuscle	n	0	2	2	oewn
+oewn-white_crappie-n	white crappie	n	0	2	2	oewn
+oewn-white_croaker-n	white croaker	n	0	2	2	oewn
+oewn-white_currant-n	white currant	n	0	2	2	oewn
+oewn-white_cypress-n	white cypress	n	0	2	2	oewn
+oewn-white_cypress_pine-n	white cypress pine	n	0	3	3	oewn
+oewn-white_daisy-n	white daisy	n	0	2	2	oewn
+oewn-white_dead_nettle-n	white dead nettle	n	0	3	3	oewn
+oewn-white_dipladenia-n	white dipladenia	n	0	2	2	oewn
+oewn-white_dog-ap-s-tooth_violet-n	white dog's-tooth violet	n	0	3	3	oewn
+oewn-white_dogtooth_violet-n	white dogtooth violet	n	0	3	3	oewn
+oewn-white_dwarf-n	white dwarf	n	0	2	2	oewn
+oewn-white_dwarf_star-n	white dwarf star	n	0	3	3	oewn
+oewn-white_elephant-n	white elephant	n	0	2	2	oewn
+oewn-white_elm-n	white elm	n	0	2	2	oewn
+oewn-white_fairy_lantern-n	white fairy lantern	n	0	3	3	oewn
+oewn-white_false_indigo-n	white false indigo	n	0	3	3	oewn
+oewn-white_feather-n	white feather	n	0	2	2	oewn
+oewn-white_feldspar-n	white feldspar	n	0	2	2	oewn
+oewn-white_fir-n	white fir	n	0	2	2	oewn
+oewn-white_flag-n	white flag	n	0	2	2	oewn
+oewn-white_fox-n	white fox	n	0	2	2	oewn
+oewn-white_fringed_orchid-n	white fringed orchid	n	0	3	3	oewn
+oewn-white_fringed_orchis-n	white fringed orchis	n	0	3	3	oewn
+oewn-white_fritillary-n	white fritillary	n	0	2	2	oewn
+oewn-white_fungus-n	white fungus	n	0	2	2	oewn
+oewn-white_globe_lily-n	white globe lily	n	0	3	3	oewn
+oewn-white_gold-n	white gold	n	0	2	2	oewn
+oewn-white_goods-n	white goods	n	0	2	2	oewn
+oewn-white_heat-n	white heat	n	0	2	2	oewn
+oewn-white_heather-n	white heather	n	0	2	2	oewn
+oewn-white_hellebore-n	white hellebore	n	0	2	2	oewn
+oewn-white_honeysuckle-n	white honeysuckle	n	0	2	2	oewn
+oewn-white_hope-n	white hope	n	0	2	2	oewn
+oewn-white_horehound-n	white horehound	n	0	2	2	oewn
+oewn-white_horse-n	white horse	n	0	2	2	oewn
+oewn-white_horse_nettle-n	white horse nettle	n	0	3	3	oewn
+oewn-white_knight-n	white knight	n	0	2	2	oewn
+oewn-white_lead-n	white lead	n	0	2	2	oewn
+oewn-white_lead_ore-n	white lead ore	n	0	3	3	oewn
+oewn-white_leather-n	white leather	n	0	2	2	oewn
+oewn-white_leg-n	white leg	n	0	2	2	oewn
+oewn-white_lettuce-n	white lettuce	n	0	2	2	oewn
+oewn-white_lie-n	white lie	n	0	2	2	oewn
+oewn-white_lily-n	white lily	n	0	2	2	oewn
+oewn-white_line-n	white line	n	0	2	2	oewn
+oewn-white_lotus-n	white lotus	n	0	2	2	oewn
+oewn-white_lung-n	white lung	n	0	2	2	oewn
+oewn-white_lupine-n	white lupine	n	0	2	2	oewn
+oewn-white_madder-n	white madder	n	0	2	2	oewn
+oewn-white_magic-n	white magic	n	0	2	2	oewn
+oewn-white_maire-n	white maire	n	0	2	2	oewn
+oewn-white_mallee-n	white mallee	n	0	2	2	oewn
+oewn-white_mallow-n	white mallow	n	0	2	2	oewn
+oewn-white_man-ap-s_burden-n	white man's burden	n	0	3	3	oewn
+oewn-white_man-n	white man	n	0	2	2	oewn
+oewn-white_mangrove-n	white mangrove	n	0	2	2	oewn
+oewn-white_marlin-n	white marlin	n	0	2	2	oewn
+oewn-white_matsutake-n	white matsutake	n	0	2	2	oewn
+oewn-white_matter-n	white matter	n	0	2	2	oewn
+oewn-white_meat-n	white meat	n	0	2	2	oewn
+oewn-white_melilot-n	white melilot	n	0	2	2	oewn
+oewn-white_metal-n	white metal	n	0	2	2	oewn
+oewn-white_milkweed-n	white milkweed	n	0	2	2	oewn
+oewn-white_mountain_ash-n	white mountain ash	n	0	3	3	oewn
+oewn-white_mulberry-n	white mulberry	n	0	2	2	oewn
+oewn-white_mullein-n	white mullein	n	0	2	2	oewn
+oewn-white_mullet-n	white mullet	n	0	2	2	oewn
+oewn-white_mustard-n	white mustard	n	0	2	2	oewn
+oewn-white_noise-n	white noise	n	0	2	2	oewn
+oewn-white_oak-n	white oak	n	0	2	2	oewn
+oewn-white_onion_sauce-n	white onion sauce	n	0	3	3	oewn
+oewn-white_out-v	white out	v	0	2	1	oewn
+oewn-white_pages-n	white pages	n	0	2	2	oewn
+oewn-white_paper-n	white paper	n	0	2	2	oewn
+oewn-white_pelican-n	white pelican	n	0	2	2	oewn
+oewn-white_pepper-n	white pepper	n	0	2	2	oewn
+oewn-white_perch-n	white perch	n	0	2	2	oewn
+oewn-white_pine-n	white pine	n	0	2	2	oewn
+oewn-white_pine_blister_rust-n	white pine blister rust	n	0	4	4	oewn
+oewn-white_plague-n	white plague	n	0	2	2	oewn
+oewn-white_popinac-n	white popinac	n	0	2	2	oewn
+oewn-white_poplar-n	white poplar	n	0	2	2	oewn
+oewn-white_potato-n	white potato	n	0	2	2	oewn
+oewn-white_potato_vine-n	white potato vine	n	0	3	3	oewn
+oewn-white_pox-n	white pox	n	0	2	2	oewn
+oewn-white_prairie_aster-n	white prairie aster	n	0	3	3	oewn
+oewn-white_rhinoceros-n	white rhinoceros	n	0	2	2	oewn
+oewn-white_rice-n	white rice	n	0	2	2	oewn
+oewn-white_rocket-n	white rocket	n	0	2	2	oewn
+oewn-white_room-n	white room	n	0	2	2	oewn
+oewn-white_rust-n	white rust	n	0	2	2	oewn
+oewn-white_sage-n	white sage	n	0	2	2	oewn
+oewn-white_sale-n	white sale	n	0	2	2	oewn
+oewn-white_sanicle-n	white sanicle	n	0	2	2	oewn
+oewn-white_sauce-n	white sauce	n	0	2	2	oewn
+oewn-white_separatism-n	white separatism	n	0	2	2	oewn
+oewn-white_separatist-n	white separatist	n	0	2	2	oewn
+oewn-white_shark-n	white shark	n	0	2	2	oewn
+oewn-white_sheep-n	white sheep	n	0	2	2	oewn
+oewn-white_silk-cotton_tree-n	white silk-cotton tree	n	0	3	3	oewn
+oewn-white_slave-n	white slave	n	0	2	2	oewn
+oewn-white_slaver-n	white slaver	n	0	2	2	oewn
+oewn-white_slime_mushroom-n	white slime mushroom	n	0	3	3	oewn
+oewn-white_snakeroot-n	white snakeroot	n	0	2	2	oewn
+oewn-white_snapdragon-n	white snapdragon	n	0	2	2	oewn
+oewn-white_spruce-n	white spruce	n	0	2	2	oewn
+oewn-white_squire-n	white squire	n	0	2	2	oewn
+oewn-white_stork-n	white stork	n	0	2	2	oewn
+oewn-white_stringybark-n	white stringybark	n	0	2	2	oewn
+oewn-white_sturgeon-n	white sturgeon	n	0	2	2	oewn
+oewn-white_supremacist-n	white supremacist	n	0	2	2	oewn
+oewn-white_supremacy-n	white supremacy	n	0	2	2	oewn
+oewn-white_sweet_clover-n	white sweet clover	n	0	3	3	oewn
+oewn-white_tail-n	white tail	n	0	2	2	oewn
+oewn-white_tea-n	white tea	n	0	2	2	oewn
+oewn-white_thistle-n	white thistle	n	0	2	2	oewn
+oewn-white_tie-n	white tie	n	0	2	2	oewn
+oewn-white_tie_and_tails-n	white tie and tails	n	0	4	4	oewn
+oewn-white_titi-n	white titi	n	0	2	2	oewn
+oewn-white_trash-n	white trash	n	0	2	2	oewn
+oewn-white_trumpet_lily-n	white trumpet lily	n	0	3	3	oewn
+oewn-white_turnip-n	white turnip	n	0	2	2	oewn
+oewn-white_violet-n	white violet	n	0	2	2	oewn
+oewn-white_vitriol-n	white vitriol	n	0	2	2	oewn
+oewn-white_walnut-n	white walnut	n	0	2	2	oewn
+oewn-white_water-n	white water	n	0	2	2	oewn
+oewn-white_wax_tree-n	white wax tree	n	0	3	3	oewn
+oewn-white_whale-n	white whale	n	0	2	2	oewn
+oewn-white_willow-n	white willow	n	0	2	2	oewn
+oewn-white_wine-n	white wine	n	0	2	2	oewn
+oewn-white_wolf-n	white wolf	n	0	2	2	oewn
+oewn-white_woman-n	white woman	n	0	2	2	oewn
+oewn-white_wood_aster-n	white wood aster	n	0	3	3	oewn
+oewn-white_yam-n	white yam	n	0	2	2	oewn
+oewn-white_zinnia-n	white zinnia	n	0	2	2	oewn
+oewn-whitebait-n	whitebait	n	0	1	1	oewn
+oewn-whitebark_pine-n	whitebark pine	n	0	2	2	oewn
+oewn-whitebarked_pine-n	whitebarked pine	n	0	2	2	oewn
+oewn-whitecap-n	whitecap	n	0	1	1	oewn
+oewn-whitecup-n	whitecup	n	0	1	1	oewn
+oewn-whited_sepulcher-n	whited sepulcher	n	0	2	2	oewn
+oewn-whited_sepulchre-n	whited sepulchre	n	0	2	2	oewn
+oewn-whiteface-n	whiteface	n	0	1	1	oewn
+oewn-whitefish-n	whitefish	n	0	1	1	oewn
+oewn-whitefly-n	whitefly	n	0	1	1	oewn
+oewn-whitehead-n	whitehead	n	0	1	1	oewn
+oewn-whitelash-n	whitelash	n	0	1	1	oewn
+oewn-whiteman-ap-s_foot-n	whiteman's foot	n	0	2	2	oewn
+oewn-whiten-v	whiten	v	0	1	1	oewn
+oewn-whitened-a	whitened	a	0	1	1	oewn
+oewn-whitener-n	whitener	n	0	1	1	oewn
+oewn-whiteness-n	whiteness	n	0	1	1	oewn
+oewn-whitening-n	whitening	n	0	1	1	oewn
+oewn-whiteout-n	whiteout	n	0	1	1	oewn
+oewn-whiteout-v	whiteout	v	0	1	1	oewn
+oewn-whitetail-n	whitetail	n	0	1	1	oewn
+oewn-whitetail_antelope_squirrel-n	whitetail antelope squirrel	n	0	3	3	oewn
+oewn-whitetail_deer-n	whitetail deer	n	0	2	2	oewn
+oewn-whitetail_jackrabbit-n	whitetail jackrabbit	n	0	2	2	oewn
+oewn-whitetail_prairie_dog-n	whitetail prairie dog	n	0	3	3	oewn
+oewn-whitethorn-n	whitethorn	n	0	1	1	oewn
+oewn-whitethroat-n	whitethroat	n	0	1	1	oewn
+oewn-whitetip_shark-n	whitetip shark	n	0	2	2	oewn
+oewn-whitewash-n	whitewash	n	0	1	1	oewn
+oewn-whitewash-v	whitewash	v	0	1	1	oewn
+oewn-whitewashed-a	whitewashed	a	0	1	1	oewn
+oewn-whitewater-n	whitewater	n	0	1	1	oewn
+oewn-whitewood-n	whitewood	n	0	1	1	oewn
+oewn-whitey-n	whitey	n	0	1	1	oewn
+oewn-whiting-n	whiting	n	0	1	1	oewn
+oewn-whitish-a	whitish	a	0	1	1	oewn
+oewn-whitlavia-n	whitlavia	n	0	1	1	oewn
+oewn-whitlow-n	whitlow	n	0	1	1	oewn
+oewn-whitlow_grass-n	whitlow grass	n	0	2	2	oewn
+oewn-whitlowwort-n	whitlowwort	n	0	1	1	oewn
+oewn-whittle-v	whittle	v	0	1	1	oewn
+oewn-whittle_away-v	whittle away	v	0	2	1	oewn
+oewn-whittle_down-v	whittle down	v	0	2	1	oewn
+oewn-whittler-n	whittler	n	0	1	1	oewn
+oewn-whiz-kid-n	whiz-kid	n	0	1	1	oewn
+oewn-whiz-n	whiz	n	0	1	1	oewn
+oewn-whiz-v	whiz	v	0	1	1	oewn
+oewn-whizbang-n	whizbang	n	0	1	1	oewn
+oewn-whizbang_shell-n	whizbang shell	n	0	2	2	oewn
+oewn-whizz-kid-n	whizz-kid	n	0	1	1	oewn
+oewn-whizz-n	whizz	n	0	1	1	oewn
+oewn-whizz-v	whizz	v	0	1	1	oewn
+oewn-whizz_along-v	whizz along	v	0	2	1	oewn
+oewn-whizzbang-n	whizzbang	n	0	1	1	oewn
+oewn-whodunit-n	whodunit	n	0	1	1	oewn
+oewn-whole-a	whole	a	0	1	1	oewn
+oewn-whole-n	whole	n	0	1	1	oewn
+oewn-whole-r	whole	r	0	1	1	oewn
+oewn-whole-souled-a	whole-souled	a	0	1	1	oewn
+oewn-whole-wheat-a	whole-wheat	a	0	1	1	oewn
+oewn-whole-word_method-n	whole-word method	n	0	2	2	oewn
+oewn-whole_blood-n	whole blood	n	0	2	2	oewn
+oewn-whole_caboodle-n	whole caboodle	n	0	2	2	oewn
+oewn-whole_gale-n	whole gale	n	0	2	2	oewn
+oewn-whole_kit-n	whole kit	n	0	2	2	oewn
+oewn-whole_kit_and_boodle-n	whole kit and boodle	n	0	4	4	oewn
+oewn-whole_kit_and_caboodle-n	whole kit and caboodle	n	0	4	4	oewn
+oewn-whole_life_insurance-n	whole life insurance	n	0	3	3	oewn
+oewn-whole_meal_bread-n	whole meal bread	n	0	3	3	oewn
+oewn-whole_meal_flour-n	whole meal flour	n	0	3	3	oewn
+oewn-whole_milk-n	whole milk	n	0	2	2	oewn
+oewn-whole_name-n	whole name	n	0	2	2	oewn
+oewn-whole_note-n	whole note	n	0	2	2	oewn
+oewn-whole_number-n	whole number	n	0	2	2	oewn
+oewn-whole_rest-n	whole rest	n	0	2	2	oewn
+oewn-whole_shebang-n	whole shebang	n	0	2	2	oewn
+oewn-whole_snipe-n	whole snipe	n	0	2	2	oewn
+oewn-whole_step-n	whole step	n	0	2	2	oewn
+oewn-whole_to_part_relation-n	whole to part relation	n	0	4	1	oewn
+oewn-whole_tone-n	whole tone	n	0	2	2	oewn
+oewn-whole_wheat_bread-n	whole wheat bread	n	0	3	3	oewn
+oewn-whole_wheat_flour-n	whole wheat flour	n	0	3	3	oewn
+oewn-whole_works-n	whole works	n	0	2	2	oewn
+oewn-wholehearted-a	wholehearted	a	0	1	1	oewn
+oewn-wholeheartedly-r	wholeheartedly	r	0	1	1	oewn
+oewn-wholeheartedness-n	wholeheartedness	n	0	1	1	oewn
+oewn-wholemeal-a	wholemeal	a	0	1	1	oewn
+oewn-wholeness-n	wholeness	n	0	1	1	oewn
+oewn-wholesale-a	wholesale	a	0	1	1	oewn
+oewn-wholesale-n	wholesale	n	0	1	1	oewn
+oewn-wholesale-r	wholesale	r	0	1	1	oewn
+oewn-wholesale-v	wholesale	v	0	1	1	oewn
+oewn-wholesale_house-n	wholesale house	n	0	2	2	oewn
+oewn-wholesale_market-n	wholesale market	n	0	2	2	oewn
+oewn-wholesale_price_index-n	wholesale price index	n	0	3	3	oewn
+oewn-wholesaler-n	wholesaler	n	0	1	1	oewn
+oewn-wholesome-a	wholesome	a	0	1	1	oewn
+oewn-wholesomely-r	wholesomely	r	0	1	1	oewn
+oewn-wholesomeness-n	wholesomeness	n	0	1	1	oewn
+oewn-wholly-r	wholly	r	0	1	1	oewn
+oewn-whomp-v	whomp	v	0	1	1	oewn
+oewn-whomp_up-v	whomp up	v	0	2	1	oewn
+oewn-whoop-n	whoop	n	0	1	1	oewn
+oewn-whoop-v-1	whoop	v	1	1	1	oewn
+oewn-whoop-v-2	whoop	v	2	1	1	oewn
+oewn-whoop_it_up-v	whoop it up	v	0	3	1	oewn
+oewn-whoopee-n	whoopee	n	0	1	1	oewn
+oewn-whooper-n	whooper	n	0	1	1	oewn
+oewn-whooper_swan-n	whooper swan	n	0	2	2	oewn
+oewn-whooping_cough-n	whooping cough	n	0	2	2	oewn
+oewn-whooping_crane-n	whooping crane	n	0	2	2	oewn
+oewn-whoosh-n	whoosh	n	0	1	1	oewn
+oewn-whoosh-v	whoosh	v	0	1	1	oewn
+oewn-whooty-n	whooty	n	0	1	1	oewn
+oewn-whop-v	whop	v	0	1	1	oewn
+oewn-whopper-n	whopper	n	0	1	1	oewn
+oewn-whopping-a	whopping	a	0	1	1	oewn
+oewn-whopping-r	whopping	r	0	1	1	oewn
+oewn-whore-n	whore	n	0	1	1	oewn
+oewn-whore-v	whore	v	0	1	1	oewn
+oewn-whoredom-n	whoredom	n	0	1	1	oewn
+oewn-whorehouse-n	whorehouse	n	0	1	1	oewn
+oewn-whoremaster-n	whoremaster	n	0	1	1	oewn
+oewn-whoremonger-n	whoremonger	n	0	1	1	oewn
+oewn-whoreson-n	whoreson	n	0	1	1	oewn
+oewn-whoriental-n	whoriental	n	0	1	1	oewn
+oewn-whorl-n	whorl	n	0	1	1	oewn
+oewn-whorled-a	whorled	a	0	1	1	oewn
+oewn-whorled_aster-n	whorled aster	n	0	2	2	oewn
+oewn-whorled_caraway-n	whorled caraway	n	0	2	2	oewn
+oewn-whorled_loosestrife-n	whorled loosestrife	n	0	2	2	oewn
+oewn-whorled_milkweed-n	whorled milkweed	n	0	2	2	oewn
+oewn-whortleberry-n	whortleberry	n	0	1	1	oewn
+oewn-why-n	why	n	0	1	1	oewn
+oewn-whydah-n	whydah	n	0	1	1	oewn
+oewn-wick-n	wick	n	0	1	1	oewn
+oewn-wicked-a	wicked	a	0	1	1	oewn
+oewn-wickedly-r	wickedly	r	0	1	1	oewn
+oewn-wickedness-n	wickedness	n	0	1	1	oewn
+oewn-wicker-n	wicker	n	0	1	1	oewn
+oewn-wicker_basket-n	wicker basket	n	0	2	2	oewn
+oewn-wickerwork-n	wickerwork	n	0	1	1	oewn
+oewn-wicket-keeper-n	wicket-keeper	n	0	1	1	oewn
+oewn-wicket-n	wicket	n	0	1	1	oewn
+oewn-wicket_door-n	wicket door	n	0	2	2	oewn
+oewn-wicket_gate-n	wicket gate	n	0	2	2	oewn
+oewn-wickiup-n	wickiup	n	0	1	1	oewn
+oewn-wickup-n	wickup	n	0	1	1	oewn
+oewn-wicopy-n	wicopy	n	0	1	1	oewn
+oewn-wide-a	wide	a	0	1	1	oewn
+oewn-wide-angle-a	wide-angle	a	0	1	1	oewn
+oewn-wide-angle_lens-n	wide-angle lens	n	0	2	2	oewn
+oewn-wide-awake-a	wide-awake	a	0	1	1	oewn
+oewn-wide-body-n	wide-body	n	0	1	1	oewn
+oewn-wide-body_aircraft-n	wide-body aircraft	n	0	2	2	oewn
+oewn-wide-cut-a	wide-cut	a	0	1	1	oewn
+oewn-wide-eyed-a	wide-eyed	a	0	1	1	oewn
+oewn-wide-open-a	wide-open	a	0	1	1	oewn
+oewn-wide-r	wide	r	0	1	1	oewn
+oewn-wide-ranging-a	wide-ranging	a	0	1	1	oewn
+oewn-wide-screen-a	wide-screen	a	0	1	1	oewn
+oewn-wide_area_network-n	wide area network	n	0	3	3	oewn
+oewn-wide_of_the_mark-a	wide of the mark	a	0	4	4	oewn
+oewn-wide_screen-n	wide screen	n	0	2	2	oewn
+oewn-wide_wale-n	wide wale	n	0	2	2	oewn
+oewn-wideband-a	wideband	a	0	1	1	oewn
+oewn-widebody_aircraft-n	widebody aircraft	n	0	2	2	oewn
+oewn-widegrip_pushup-n	widegrip pushup	n	0	2	2	oewn
+oewn-widely-r	widely	r	0	1	1	oewn
+oewn-widely_distributed-a	widely distributed	a	0	2	2	oewn
+oewn-widen-v	widen	v	0	1	1	oewn
+oewn-wideness-n	wideness	n	0	1	1	oewn
+oewn-widening-n	widening	n	0	1	1	oewn
+oewn-widespread-a	widespread	a	0	1	1	oewn
+oewn-widgeon-n	widgeon	n	0	1	1	oewn
+oewn-widget-n	widget	n	0	1	1	oewn
+oewn-widow-ap-s_peak-n	widow's peak	n	0	2	2	oewn
+oewn-widow-ap-s_walk-n	widow's walk	n	0	2	2	oewn
+oewn-widow-ap-s_weeds-n	widow's weeds	n	0	2	2	oewn
+oewn-widow-n	widow	n	0	1	1	oewn
+oewn-widow-v	widow	v	0	1	1	oewn
+oewn-widow_bird-n	widow bird	n	0	2	2	oewn
+oewn-widow_woman-n	widow woman	n	0	2	2	oewn
+oewn-widowed-a	widowed	a	0	1	1	oewn
+oewn-widower-n	widower	n	0	1	1	oewn
+oewn-widowhood-n	widowhood	n	0	1	1	oewn
+oewn-widowman-n	widowman	n	0	1	1	oewn
+oewn-width-n	width	n	0	1	1	oewn
+oewn-wield-v	wield	v	0	1	1	oewn
+oewn-wieldy-a	wieldy	a	0	1	1	oewn
+oewn-wiener-n	wiener	n	0	1	1	oewn
+oewn-wiener_roast-n	wiener roast	n	0	2	2	oewn
+oewn-wienerwurst-n	wienerwurst	n	0	1	1	oewn
+oewn-wiesenboden-n	wiesenboden	n	0	1	1	oewn
+oewn-wife-n	wife	n	0	1	1	oewn
+oewn-wifelike-a	wifelike	a	0	1	1	oewn
+oewn-wifely-a	wifely	a	0	1	1	oewn
+oewn-wig-n	wig	n	0	1	1	oewn
+oewn-wig_tree-n	wig tree	n	0	2	2	oewn
+oewn-wigeon-n	wigeon	n	0	1	1	oewn
+oewn-wigged-a	wigged	a	0	1	1	oewn
+oewn-wigging-n	wigging	n	0	1	1	oewn
+oewn-wiggle-n	wiggle	n	0	1	1	oewn
+oewn-wiggle-v	wiggle	v	0	1	1	oewn
+oewn-wiggle_nail-n	wiggle nail	n	0	2	2	oewn
+oewn-wiggle_room-n	wiggle room	n	0	2	2	oewn
+oewn-wiggler-n	wiggler	n	0	1	1	oewn
+oewn-wiggliness-n	wiggliness	n	0	1	1	oewn
+oewn-wiggly-a	wiggly	a	0	1	1	oewn
+oewn-wight-n	wight	n	0	1	1	oewn
+oewn-wigless-a	wigless	a	0	1	1	oewn
+oewn-wigmaker-n	wigmaker	n	0	1	1	oewn
+oewn-wigwag-v	wigwag	v	0	1	1	oewn
+oewn-wigwam-n	wigwam	n	0	1	1	oewn
+oewn-wikiup-n	wikiup	n	0	1	1	oewn
+oewn-wild-a	wild	a	0	1	1	oewn
+oewn-wild-eyed-a	wild-eyed	a	0	1	1	oewn
+oewn-wild-goose_chase-n	wild-goose chase	n	0	2	2	oewn
+oewn-wild-n	wild	n	0	1	1	oewn
+oewn-wild-r	wild	r	0	1	1	oewn
+oewn-wild_China_tree-n	wild China tree	n	0	3	3	oewn
+oewn-wild_angelica-n	wild angelica	n	0	2	2	oewn
+oewn-wild_apple-n	wild apple	n	0	2	2	oewn
+oewn-wild_ass-n	wild ass	n	0	2	2	oewn
+oewn-wild_basil-n	wild basil	n	0	2	2	oewn
+oewn-wild_bean-n	wild bean	n	0	2	2	oewn
+oewn-wild_bergamot-n	wild bergamot	n	0	2	2	oewn
+oewn-wild_blue_yonder-n	wild blue yonder	n	0	3	3	oewn
+oewn-wild_boar-n	wild boar	n	0	2	2	oewn
+oewn-wild_buckwheat-n	wild buckwheat	n	0	2	2	oewn
+oewn-wild_cabbage-n	wild cabbage	n	0	2	2	oewn
+oewn-wild_calla-n	wild calla	n	0	2	2	oewn
+oewn-wild_card-n	wild card	n	0	2	2	oewn
+oewn-wild_carrot-n	wild carrot	n	0	2	2	oewn
+oewn-wild_cavy-n	wild cavy	n	0	2	2	oewn
+oewn-wild_celery-n	wild celery	n	0	2	2	oewn
+oewn-wild_chamomile-n	wild chamomile	n	0	2	2	oewn
+oewn-wild_cherry-n	wild cherry	n	0	2	2	oewn
+oewn-wild_cherry_tree-n	wild cherry tree	n	0	3	3	oewn
+oewn-wild_chervil-n	wild chervil	n	0	2	2	oewn
+oewn-wild_cinnamon-n	wild cinnamon	n	0	2	2	oewn
+oewn-wild_clary-n	wild clary	n	0	2	2	oewn
+oewn-wild_climbing_hempweed-n	wild climbing hempweed	n	0	3	3	oewn
+oewn-wild_coffee-n	wild coffee	n	0	2	2	oewn
+oewn-wild_cotton-n	wild cotton	n	0	2	2	oewn
+oewn-wild_crab-n	wild crab	n	0	2	2	oewn
+oewn-wild_cranberry-n	wild cranberry	n	0	2	2	oewn
+oewn-wild_crocus-n	wild crocus	n	0	2	2	oewn
+oewn-wild_dog-n	wild dog	n	0	2	2	oewn
+oewn-wild_duck-n	wild duck	n	0	2	2	oewn
+oewn-wild_emmer-n	wild emmer	n	0	2	2	oewn
+oewn-wild_fig-n	wild fig	n	0	2	2	oewn
+oewn-wild_flower-n	wild flower	n	0	2	2	oewn
+oewn-wild_garlic-n	wild garlic	n	0	2	2	oewn
+oewn-wild_geranium-n	wild geranium	n	0	2	2	oewn
+oewn-wild_ginger-n	wild ginger	n	0	2	2	oewn
+oewn-wild_goat-n	wild goat	n	0	2	2	oewn
+oewn-wild_hollyhock-n	wild hollyhock	n	0	2	2	oewn
+oewn-wild_hop-n	wild hop	n	0	2	2	oewn
+oewn-wild_horse-n	wild horse	n	0	2	2	oewn
+oewn-wild_hyacinth-n	wild hyacinth	n	0	2	2	oewn
+oewn-wild_hydrangea-n	wild hydrangea	n	0	2	2	oewn
+oewn-wild_indigo-n	wild indigo	n	0	2	2	oewn
+oewn-wild_leek-n	wild leek	n	0	2	2	oewn
+oewn-wild_licorice-n	wild licorice	n	0	2	2	oewn
+oewn-wild_lily_of_the_valley-n	wild lily of the valley	n	0	5	2	oewn
+oewn-wild_liquorice-n	wild liquorice	n	0	2	2	oewn
+oewn-wild_lupine-n	wild lupine	n	0	2	2	oewn
+oewn-wild_madder-n	wild madder	n	0	2	2	oewn
+oewn-wild_man-n	wild man	n	0	2	2	oewn
+oewn-wild_mandrake-n	wild mandrake	n	0	2	2	oewn
+oewn-wild_mango-n	wild mango	n	0	2	2	oewn
+oewn-wild_mango_tree-n	wild mango tree	n	0	3	3	oewn
+oewn-wild_marjoram-n	wild marjoram	n	0	2	2	oewn
+oewn-wild_meadow_lily-n	wild meadow lily	n	0	3	3	oewn
+oewn-wild_medlar-n	wild medlar	n	0	2	2	oewn
+oewn-wild_medlar_tree-n	wild medlar tree	n	0	3	3	oewn
+oewn-wild_morning-glory-n	wild morning-glory	n	0	2	2	oewn
+oewn-wild_mustard-n	wild mustard	n	0	2	2	oewn
+oewn-wild_oat-n	wild oat	n	0	2	2	oewn
+oewn-wild_oat_grass-n	wild oat grass	n	0	3	3	oewn
+oewn-wild_oats-n	wild oats	n	0	2	2	oewn
+oewn-wild_olive-n	wild olive	n	0	2	2	oewn
+oewn-wild_onion-n	wild onion	n	0	2	2	oewn
+oewn-wild_orange-n	wild orange	n	0	2	2	oewn
+oewn-wild_ox-n	wild ox	n	0	2	2	oewn
+oewn-wild_pansy-n	wild pansy	n	0	2	2	oewn
+oewn-wild_parsley-n	wild parsley	n	0	2	2	oewn
+oewn-wild_parsnip-n	wild parsnip	n	0	2	2	oewn
+oewn-wild_pea-n	wild pea	n	0	2	2	oewn
+oewn-wild_peach-n	wild peach	n	0	2	2	oewn
+oewn-wild_peanut-n	wild peanut	n	0	2	2	oewn
+oewn-wild_pink-n	wild pink	n	0	2	2	oewn
+oewn-wild_pitch-n	wild pitch	n	0	2	2	oewn
+oewn-wild_plum-n	wild plum	n	0	2	2	oewn
+oewn-wild_plum_tree-n	wild plum tree	n	0	3	3	oewn
+oewn-wild_potato-n	wild potato	n	0	2	2	oewn
+oewn-wild_potato_vine-n	wild potato vine	n	0	3	3	oewn
+oewn-wild_pumpkin-n	wild pumpkin	n	0	2	2	oewn
+oewn-wild_quinine-n	wild quinine	n	0	2	2	oewn
+oewn-wild_radish-n	wild radish	n	0	2	2	oewn
+oewn-wild_rape-n	wild rape	n	0	2	2	oewn
+oewn-wild_raspberry-n	wild raspberry	n	0	2	2	oewn
+oewn-wild_red_oat-n	wild red oat	n	0	3	3	oewn
+oewn-wild_rice-n	wild rice	n	0	2	2	oewn
+oewn-wild_rosemary-n	wild rosemary	n	0	2	2	oewn
+oewn-wild_rye-n	wild rye	n	0	2	2	oewn
+oewn-wild_sage-n	wild sage	n	0	2	2	oewn
+oewn-wild_sarsaparilla-n	wild sarsaparilla	n	0	2	2	oewn
+oewn-wild_sarsparilla-n	wild sarsparilla	n	0	2	2	oewn
+oewn-wild_senna-n	wild senna	n	0	2	2	oewn
+oewn-wild_sensitive_plant-n	wild sensitive plant	n	0	3	3	oewn
+oewn-wild_service_tree-n	wild service tree	n	0	3	3	oewn
+oewn-wild_sheep-n	wild sheep	n	0	2	2	oewn
+oewn-wild_silkworm-n	wild silkworm	n	0	2	2	oewn
+oewn-wild_snapdragon-n	wild snapdragon	n	0	2	2	oewn
+oewn-wild_spinach-n	wild spinach	n	0	2	2	oewn
+oewn-wild_spurge-n	wild spurge	n	0	2	2	oewn
+oewn-wild_strawberry-n	wild strawberry	n	0	2	2	oewn
+oewn-wild_sweet_pea-n	wild sweet pea	n	0	3	3	oewn
+oewn-wild_sweet_potato_vine-n	wild sweet potato vine	n	0	4	4	oewn
+oewn-wild_tamarind-n	wild tamarind	n	0	2	2	oewn
+oewn-wild_teasel-n	wild teasel	n	0	2	2	oewn
+oewn-wild_thyme-n	wild thyme	n	0	2	2	oewn
+oewn-wild_tobacco-n	wild tobacco	n	0	2	2	oewn
+oewn-wild_vanilla-n	wild vanilla	n	0	2	2	oewn
+oewn-wild_water_lemon-n	wild water lemon	n	0	3	3	oewn
+oewn-wild_wheat-n	wild wheat	n	0	2	2	oewn
+oewn-wild_winterpea-n	wild winterpea	n	0	2	2	oewn
+oewn-wild_woman-n	wild woman	n	0	2	2	oewn
+oewn-wild_yam-n	wild yam	n	0	2	2	oewn
+oewn-wild_yellow_lily-n	wild yellow lily	n	0	3	3	oewn
+oewn-wildcat-a	wildcat	a	0	1	1	oewn
+oewn-wildcat-n	wildcat	n	0	1	1	oewn
+oewn-wildcat_strike-n	wildcat strike	n	0	2	2	oewn
+oewn-wildcat_well-n	wildcat well	n	0	2	2	oewn
+oewn-wildcatter-n	wildcatter	n	0	1	1	oewn
+oewn-wilde_dagga-n	wilde dagga	n	0	2	2	oewn
+oewn-wildebeest-n	wildebeest	n	0	1	1	oewn
+oewn-wilderness-n	wilderness	n	0	1	1	oewn
+oewn-wildfire-n	wildfire	n	0	1	1	oewn
+oewn-wildflower-n	wildflower	n	0	1	1	oewn
+oewn-wildfowl-n	wildfowl	n	0	1	1	oewn
+oewn-wildin-ap--v	wildin'	v	0	1	1	oewn
+oewn-wilding-n	wilding	n	0	1	1	oewn
+oewn-wildlife-n	wildlife	n	0	1	1	oewn
+oewn-wildly-r	wildly	r	0	1	1	oewn
+oewn-wildness-n	wildness	n	0	1	1	oewn
+oewn-wile-n	wile	n	0	1	1	oewn
+oewn-wilful-a	wilful	a	0	1	1	oewn
+oewn-wilfully-r	wilfully	r	0	1	1	oewn
+oewn-wilfulness-n	wilfulness	n	0	1	1	oewn
+oewn-wiliness-n	wiliness	n	0	1	1	oewn
+oewn-will-n	will	n	0	1	1	oewn
+oewn-will-o-ap--the-wisp-n	will-o'-the-wisp	n	0	1	1	oewn
+oewn-will-v	will	v	0	1	1	oewn
+oewn-will_power-n	will power	n	0	2	2	oewn
+oewn-willet-n	willet	n	0	1	1	oewn
+oewn-willful-a	willful	a	0	1	1	oewn
+oewn-willful_neglect-n	willful neglect	n	0	2	2	oewn
+oewn-willfully-r	willfully	r	0	1	1	oewn
+oewn-willfulness-n	willfulness	n	0	1	1	oewn
+oewn-willies-n	willies	n	0	1	1	oewn
+oewn-willing-a	willing	a	0	1	1	oewn
+oewn-willing-n	willing	n	0	1	1	oewn
+oewn-willing_and_able-a	willing and able	a	0	3	3	oewn
+oewn-willingly-r	willingly	r	0	1	1	oewn
+oewn-willingness-n	willingness	n	0	1	1	oewn
+oewn-willow-n	willow	n	0	1	1	oewn
+oewn-willow-pattern-n	willow-pattern	n	0	1	1	oewn
+oewn-willow_aster-n	willow aster	n	0	2	2	oewn
+oewn-willow_bell-n	willow bell	n	0	2	2	oewn
+oewn-willow_oak-n	willow oak	n	0	2	2	oewn
+oewn-willow_tree-n	willow tree	n	0	2	2	oewn
+oewn-willowherb-n	willowherb	n	0	1	1	oewn
+oewn-willowware-n	willowware	n	0	1	1	oewn
+oewn-willowy-a	willowy	a	0	1	1	oewn
+oewn-willpower-n	willpower	n	0	1	1	oewn
+oewn-willy-nilly-r	willy-nilly	r	0	1	1	oewn
+oewn-wilt-n	wilt	n	0	1	1	oewn
+oewn-wilt-v	wilt	v	0	1	1	oewn
+oewn-wilt_disease-n	wilt disease	n	0	2	2	oewn
+oewn-wilted-a	wilted	a	0	1	1	oewn
+oewn-wilting-n	wilting	n	0	1	1	oewn
+oewn-wily-a	wily	a	0	1	1	oewn
+oewn-wimble-n	wimble	n	0	1	1	oewn
+oewn-wimp-n	wimp	n	0	1	1	oewn
+oewn-wimpish-a	wimpish	a	0	1	1	oewn
+oewn-wimple-n	wimple	n	0	1	1	oewn
+oewn-wimpy-a	wimpy	a	0	1	1	oewn
+oewn-win-n	win	n	0	1	1	oewn
+oewn-win-v	win	v	0	1	1	oewn
+oewn-win_back-v	win back	v	0	2	1	oewn
+oewn-win_over-v	win over	v	0	2	1	oewn
+oewn-wince-n	wince	n	0	1	1	oewn
+oewn-wince-v	wince	v	0	1	1	oewn
+oewn-wincey-n	wincey	n	0	1	1	oewn
+oewn-winceyette-n	winceyette	n	0	1	1	oewn
+oewn-winch-n	winch	n	0	1	1	oewn
+oewn-winch-v	winch	v	0	1	1	oewn
+oewn-wind-n-1	wind	n	1	1	1	oewn
+oewn-wind-n-2	wind	n	2	1	1	oewn
+oewn-wind-v-1	wind	v	1	1	1	oewn
+oewn-wind-v-2	wind	v	2	1	1	oewn
+oewn-wind_bell-n	wind bell	n	0	2	2	oewn
+oewn-wind_chime-n	wind chime	n	0	2	2	oewn
+oewn-wind_cone-n	wind cone	n	0	2	2	oewn
+oewn-wind_deflection-n	wind deflection	n	0	2	2	oewn
+oewn-wind_energy_facility-n	wind energy facility	n	0	3	3	oewn
+oewn-wind_exposure-n	wind exposure	n	0	2	2	oewn
+oewn-wind_farm-n	wind farm	n	0	2	2	oewn
+oewn-wind_gage-n	wind gage	n	0	2	2	oewn
+oewn-wind_gap-n	wind gap	n	0	2	2	oewn
+oewn-wind_gauge-n	wind gauge	n	0	2	2	oewn
+oewn-wind_generation-n	wind generation	n	0	2	2	oewn
+oewn-wind_generator-n	wind generator	n	0	2	2	oewn
+oewn-wind_harp-n	wind harp	n	0	2	2	oewn
+oewn-wind_instrument-n	wind instrument	n	0	2	2	oewn
+oewn-wind_off-v	wind off	v	0	2	1	oewn
+oewn-wind_park-n	wind park	n	0	2	2	oewn
+oewn-wind_poppy-n	wind poppy	n	0	2	2	oewn
+oewn-wind_power-n	wind power	n	0	2	2	oewn
+oewn-wind_rose-n	wind rose	n	0	2	2	oewn
+oewn-wind_scale-n	wind scale	n	0	2	2	oewn
+oewn-wind_sleeve-n	wind sleeve	n	0	2	2	oewn
+oewn-wind_sock-n	wind sock	n	0	2	2	oewn
+oewn-wind_tee-n	wind tee	n	0	2	2	oewn
+oewn-wind_tunnel-n	wind tunnel	n	0	2	2	oewn
+oewn-wind_turbine-n	wind turbine	n	0	2	2	oewn
+oewn-wind_up-v	wind up	v	0	2	1	oewn
+oewn-wind_vane-n	wind vane	n	0	2	2	oewn
+oewn-windage-n	windage	n	0	1	1	oewn
+oewn-windbag-n	windbag	n	0	1	1	oewn
+oewn-windblown-a	windblown	a	0	1	1	oewn
+oewn-windbreak-n	windbreak	n	0	1	1	oewn
+oewn-windbreaker-n	windbreaker	n	0	1	1	oewn
+oewn-windburn-n	windburn	n	0	1	1	oewn
+oewn-windburned-a	windburned	a	0	1	1	oewn
+oewn-windburnt-a	windburnt	a	0	1	1	oewn
+oewn-windcheater-n	windcheater	n	0	1	1	oewn
+oewn-winded-a	winded	a	0	1	1	oewn
+oewn-winder-n	winder	n	0	1	1	oewn
+oewn-windfall-n	windfall	n	0	1	1	oewn
+oewn-windfall_profit-n	windfall profit	n	0	2	2	oewn
+oewn-windflower-n	windflower	n	0	1	1	oewn
+oewn-windily-r	windily	r	0	1	1	oewn
+oewn-windiness-n	windiness	n	0	1	1	oewn
+oewn-winding-a	winding	a	0	1	1	oewn
+oewn-winding-clothes-n	winding-clothes	n	0	1	1	oewn
+oewn-winding-n	winding	n	0	1	1	oewn
+oewn-winding-sheet-n	winding-sheet	n	0	1	1	oewn
+oewn-windjammer-n	windjammer	n	0	1	1	oewn
+oewn-windlass-n	windlass	n	0	1	1	oewn
+oewn-windless-a	windless	a	0	1	1	oewn
+oewn-windlessness-n	windlessness	n	0	1	1	oewn
+oewn-windmill-n	windmill	n	0	1	1	oewn
+oewn-windmill_grass-n	windmill grass	n	0	2	2	oewn
+oewn-window-dress-v	window-dress	v	0	1	1	oewn
+oewn-window-n	window	n	0	1	1	oewn
+oewn-window-shop-v	window-shop	v	0	1	1	oewn
+oewn-window-washing-n	window-washing	n	0	1	1	oewn
+oewn-window_blind-n	window blind	n	0	2	2	oewn
+oewn-window_box-n	window box	n	0	2	2	oewn
+oewn-window_cleaner-n	window cleaner	n	0	2	2	oewn
+oewn-window_dresser-n	window dresser	n	0	2	2	oewn
+oewn-window_dressing-n	window dressing	n	0	2	2	oewn
+oewn-window_envelope-n	window envelope	n	0	2	2	oewn
+oewn-window_frame-n	window frame	n	0	2	2	oewn
+oewn-window_glass-n	window glass	n	0	2	2	oewn
+oewn-window_lock-n	window lock	n	0	2	2	oewn
+oewn-window_oyster-n	window oyster	n	0	2	2	oewn
+oewn-window_pane-n	window pane	n	0	2	2	oewn
+oewn-window_sash-n	window sash	n	0	2	2	oewn
+oewn-window_screen-n	window screen	n	0	2	2	oewn
+oewn-window_seat-n	window seat	n	0	2	2	oewn
+oewn-window_shade-n	window shade	n	0	2	2	oewn
+oewn-window_trimmer-n	window trimmer	n	0	2	2	oewn
+oewn-window_washer-n	window washer	n	0	2	2	oewn
+oewn-windowpane-n	windowpane	n	0	1	1	oewn
+oewn-windowpane_oyster-n	windowpane oyster	n	0	2	2	oewn
+oewn-windowsill-n	windowsill	n	0	1	1	oewn
+oewn-windpipe-n	windpipe	n	0	1	1	oewn
+oewn-windscreen-n	windscreen	n	0	1	1	oewn
+oewn-windscreen_wiper-n	windscreen wiper	n	0	2	2	oewn
+oewn-windshield-n	windshield	n	0	1	1	oewn
+oewn-windshield_wiper-n	windshield wiper	n	0	2	2	oewn
+oewn-windsock-n	windsock	n	0	1	1	oewn
+oewn-windstorm-n	windstorm	n	0	1	1	oewn
+oewn-windsurf-v	windsurf	v	0	1	1	oewn
+oewn-windswept-a	windswept	a	0	1	1	oewn
+oewn-windtalker-n	windtalker	n	0	1	1	oewn
+oewn-windup-a	windup	a	0	1	1	oewn
+oewn-windup-n	windup	n	0	1	1	oewn
+oewn-windward-a	windward	a	0	1	1	oewn
+oewn-windward-n	windward	n	0	1	1	oewn
+oewn-windward-r	windward	r	0	1	1	oewn
+oewn-windward_side-n	windward side	n	0	2	2	oewn
+oewn-windy-a	windy	a	0	1	1	oewn
+oewn-wine-colored-n	wine-colored	n	0	1	1	oewn
+oewn-wine-coloured-n	wine-coloured	n	0	1	1	oewn
+oewn-wine-maker-ap-s_yeast-n	wine-maker's yeast	n	0	2	2	oewn
+oewn-wine-n	wine	n	0	1	1	oewn
+oewn-wine-red-a	wine-red	a	0	1	1	oewn
+oewn-wine-v	wine	v	0	1	1	oewn
+oewn-wine_and_dine-v	wine and dine	v	0	3	1	oewn
+oewn-wine_bar-n	wine bar	n	0	2	2	oewn
+oewn-wine_barrel-n	wine barrel	n	0	2	2	oewn
+oewn-wine_bottle-n	wine bottle	n	0	2	2	oewn
+oewn-wine_bucket-n	wine bucket	n	0	2	2	oewn
+oewn-wine_cask-n	wine cask	n	0	2	2	oewn
+oewn-wine_cellar-n	wine cellar	n	0	2	2	oewn
+oewn-wine_cooler-n	wine cooler	n	0	2	2	oewn
+oewn-wine_lover-n	wine lover	n	0	2	2	oewn
+oewn-wine_maker-n	wine maker	n	0	2	2	oewn
+oewn-wine_making-n	wine making	n	0	2	2	oewn
+oewn-wine_merchant-n	wine merchant	n	0	2	2	oewn
+oewn-wine_palm-n	wine palm	n	0	2	2	oewn
+oewn-wine_sauce-n	wine sauce	n	0	2	2	oewn
+oewn-wine_steward-n	wine steward	n	0	2	2	oewn
+oewn-wine_taster-n	wine taster	n	0	2	2	oewn
+oewn-wine_tasting-n	wine tasting	n	0	2	2	oewn
+oewn-wine_vinegar-n	wine vinegar	n	0	2	2	oewn
+oewn-wine_waiter-n	wine waiter	n	0	2	2	oewn
+oewn-wineberry-n	wineberry	n	0	1	1	oewn
+oewn-wineglass-n	wineglass	n	0	1	1	oewn
+oewn-wineglass_heel-n	wineglass heel	n	0	2	2	oewn
+oewn-winemaker-n	winemaker	n	0	1	1	oewn
+oewn-winemaking-n	winemaking	n	0	1	1	oewn
+oewn-winepress-n	winepress	n	0	1	1	oewn
+oewn-winery-n	winery	n	0	1	1	oewn
+oewn-wineskin-n	wineskin	n	0	1	1	oewn
+oewn-winey-a	winey	a	0	1	1	oewn
+oewn-wing-n	wing	n	0	1	1	oewn
+oewn-wing-nut-n	wing-nut	n	0	1	1	oewn
+oewn-wing-shaped-a	wing-shaped	a	0	1	1	oewn
+oewn-wing-v	wing	v	0	1	1	oewn
+oewn-wing_case-n	wing case	n	0	2	2	oewn
+oewn-wing_chair-n	wing chair	n	0	2	2	oewn
+oewn-wing_commander-n	wing commander	n	0	2	2	oewn
+oewn-wing_elm-n	wing elm	n	0	2	2	oewn
+oewn-wing_flat-n	wing flat	n	0	2	2	oewn
+oewn-wing_loading-n	wing loading	n	0	2	2	oewn
+oewn-wing_nut-n	wing nut	n	0	2	2	oewn
+oewn-wing_screw-n	wing screw	n	0	2	2	oewn
+oewn-wing_shooting-n	wing shooting	n	0	2	2	oewn
+oewn-wing_tip-n	wing tip	n	0	2	2	oewn
+oewn-wingback-n	wingback	n	0	1	1	oewn
+oewn-winged-a	winged	a	0	1	1	oewn
+oewn-winged_bean-n	winged bean	n	0	2	2	oewn
+oewn-winged_elm-n	winged elm	n	0	2	2	oewn
+oewn-winged_everlasting-n	winged everlasting	n	0	2	2	oewn
+oewn-winged_pea-n	winged pea	n	0	2	2	oewn
+oewn-winged_pigweed-n	winged pigweed	n	0	2	2	oewn
+oewn-winged_spindle_tree-n	winged spindle tree	n	0	3	3	oewn
+oewn-winger-n	winger	n	0	1	1	oewn
+oewn-wingless-a	wingless	a	0	1	1	oewn
+oewn-winglike-a	winglike	a	0	1	1	oewn
+oewn-wingman-n	wingman	n	0	1	1	oewn
+oewn-wings-n	wings	n	0	1	1	oewn
+oewn-wingspan-n	wingspan	n	0	1	1	oewn
+oewn-wingspread-n	wingspread	n	0	1	1	oewn
+oewn-wingstem-n	wingstem	n	0	1	1	oewn
+oewn-wingwoman-n	wingwoman	n	0	1	1	oewn
+oewn-wink-n	wink	n	0	1	1	oewn
+oewn-wink-v	wink	v	0	1	1	oewn
+oewn-wink_at-v	wink at	v	0	2	1	oewn
+oewn-winker-n	winker	n	0	1	1	oewn
+oewn-winking-a	winking	a	0	1	1	oewn
+oewn-winking-n	winking	n	0	1	1	oewn
+oewn-winkle-n	winkle	n	0	1	1	oewn
+oewn-winkle-v	winkle	v	0	1	1	oewn
+oewn-winkle_out-v	winkle out	v	0	2	1	oewn
+oewn-winless-a	winless	a	0	1	1	oewn
+oewn-winner-ap-s_circle-n	winner's circle	n	0	2	2	oewn
+oewn-winner-n	winner	n	0	1	1	oewn
+oewn-winning-a	winning	a	0	1	1	oewn
+oewn-winning-n	winning	n	0	1	1	oewn
+oewn-winning_post-n	winning post	n	0	2	2	oewn
+oewn-winning_streak-n	winning streak	n	0	2	2	oewn
+oewn-winnings-n	winnings	n	0	1	1	oewn
+oewn-winnow-n	winnow	n	0	1	1	oewn
+oewn-winnow-v	winnow	v	0	1	1	oewn
+oewn-winnow_out-v	winnow out	v	0	2	1	oewn
+oewn-winnowing-n	winnowing	n	0	1	1	oewn
+oewn-wino-n	wino	n	0	1	1	oewn
+oewn-winsome-a	winsome	a	0	1	1	oewn
+oewn-winsomely-r	winsomely	r	0	1	1	oewn
+oewn-winsomeness-n	winsomeness	n	0	1	1	oewn
+oewn-winter-ap-s_bark-n	winter's bark	n	0	2	2	oewn
+oewn-winter-ap-s_bark_tree-n	winter's bark tree	n	0	3	3	oewn
+oewn-winter-blooming-a	winter-blooming	a	0	1	1	oewn
+oewn-winter-flowering-a	winter-flowering	a	0	1	1	oewn
+oewn-winter-n	winter	n	0	1	1	oewn
+oewn-winter-v	winter	v	0	1	1	oewn
+oewn-winter_aconite-n	winter aconite	n	0	2	2	oewn
+oewn-winter_break-n	winter break	n	0	2	2	oewn
+oewn-winter_cherry-n	winter cherry	n	0	2	2	oewn
+oewn-winter_cress-n	winter cress	n	0	2	2	oewn
+oewn-winter_crookneck-n	winter crookneck	n	0	2	2	oewn
+oewn-winter_crookneck_squash-n	winter crookneck squash	n	0	3	3	oewn
+oewn-winter_currant-n	winter currant	n	0	2	2	oewn
+oewn-winter_fern-n	winter fern	n	0	2	2	oewn
+oewn-winter_flounder-n	winter flounder	n	0	2	2	oewn
+oewn-winter_flowering_cherry-n	winter flowering cherry	n	0	3	3	oewn
+oewn-winter_hardiness-n	winter hardiness	n	0	2	2	oewn
+oewn-winter_hazel-n	winter hazel	n	0	2	2	oewn
+oewn-winter_heath-n	winter heath	n	0	2	2	oewn
+oewn-winter_heliotrope-n	winter heliotrope	n	0	2	2	oewn
+oewn-winter_jasmine-n	winter jasmine	n	0	2	2	oewn
+oewn-winter_melon-n	winter melon	n	0	2	2	oewn
+oewn-winter_melon_vine-n	winter melon vine	n	0	3	3	oewn
+oewn-winter_mushroom-n	winter mushroom	n	0	2	2	oewn
+oewn-winter_purslane-n	winter purslane	n	0	2	2	oewn
+oewn-winter_rose-n	winter rose	n	0	2	2	oewn
+oewn-winter_savory-n	winter savory	n	0	2	2	oewn
+oewn-winter_savoury-n	winter savoury	n	0	2	2	oewn
+oewn-winter_solstice-n	winter solstice	n	0	2	2	oewn
+oewn-winter_squash-n	winter squash	n	0	2	2	oewn
+oewn-winter_squash_plant-n	winter squash plant	n	0	3	3	oewn
+oewn-winter_sweet-n	winter sweet	n	0	2	2	oewn
+oewn-winter_urn-n	winter urn	n	0	2	2	oewn
+oewn-winter_wren-n	winter wren	n	0	2	2	oewn
+oewn-winterberry-n	winterberry	n	0	1	1	oewn
+oewn-wintergreen-n	wintergreen	n	0	1	1	oewn
+oewn-wintergreen_oil-n	wintergreen oil	n	0	2	2	oewn
+oewn-winterise-v	winterise	v	0	1	1	oewn
+oewn-winterize-v	winterize	v	0	1	1	oewn
+oewn-wintertime-n	wintertime	n	0	1	1	oewn
+oewn-wintery-a	wintery	a	0	1	1	oewn
+oewn-wintriness-n	wintriness	n	0	1	1	oewn
+oewn-wintry-a	wintry	a	0	1	1	oewn
+oewn-winy-a	winy	a	0	1	1	oewn
+oewn-wipe-n	wipe	n	0	1	1	oewn
+oewn-wipe-v	wipe	v	0	1	1	oewn
+oewn-wipe_away-v	wipe away	v	0	2	1	oewn
+oewn-wipe_off-v	wipe off	v	0	2	1	oewn
+oewn-wipe_out-v	wipe out	v	0	2	1	oewn
+oewn-wipe_up-v	wipe up	v	0	2	1	oewn
+oewn-wiped_out-a	wiped out	a	0	2	2	oewn
+oewn-wipeout-n	wipeout	n	0	1	1	oewn
+oewn-wiper-n	wiper	n	0	1	1	oewn
+oewn-wiper_arm-n	wiper arm	n	0	2	2	oewn
+oewn-wiper_blade-n	wiper blade	n	0	2	2	oewn
+oewn-wiper_motor-n	wiper motor	n	0	2	2	oewn
+oewn-wiping_cloth-n	wiping cloth	n	0	2	2	oewn
+oewn-wire-guided_torpedo-n	wire-guided torpedo	n	0	2	2	oewn
+oewn-wire-haired-a	wire-haired	a	0	1	1	oewn
+oewn-wire-haired_fox_terrier-n	wire-haired fox terrier	n	0	3	3	oewn
+oewn-wire-haired_pointing_griffon-n	wire-haired pointing griffon	n	0	3	3	oewn
+oewn-wire-haired_terrier-n	wire-haired terrier	n	0	2	2	oewn
+oewn-wire-n	wire	n	0	1	1	oewn
+oewn-wire-puller-n	wire-puller	n	0	1	1	oewn
+oewn-wire-v	wire	v	0	1	1	oewn
+oewn-wire_cloth-n	wire cloth	n	0	2	2	oewn
+oewn-wire_cutter-n	wire cutter	n	0	2	2	oewn
+oewn-wire_gage-n	wire gage	n	0	2	2	oewn
+oewn-wire_gauge-n	wire gauge	n	0	2	2	oewn
+oewn-wire_glass-n	wire glass	n	0	2	2	oewn
+oewn-wire_grass-n	wire grass	n	0	2	2	oewn
+oewn-wire_matrix_printer-n	wire matrix printer	n	0	3	3	oewn
+oewn-wire_printer-n	wire printer	n	0	2	2	oewn
+oewn-wire_recorder-n	wire recorder	n	0	2	2	oewn
+oewn-wire_service-n	wire service	n	0	2	2	oewn
+oewn-wire_stripper-n	wire stripper	n	0	2	2	oewn
+oewn-wire_wool-n	wire wool	n	0	2	2	oewn
+oewn-wired-a	wired	a	0	1	1	oewn
+oewn-wirehair-n	wirehair	n	0	1	1	oewn
+oewn-wirehaired_terrier-n	wirehaired terrier	n	0	2	2	oewn
+oewn-wireless-a	wireless	a	0	1	1	oewn
+oewn-wireless-n	wireless	n	0	1	1	oewn
+oewn-wireless_fidelity-n	wireless fidelity	n	0	2	2	oewn
+oewn-wireless_local_area_network-n	wireless local area network	n	0	4	4	oewn
+oewn-wireless_telegraph-n	wireless telegraph	n	0	2	2	oewn
+oewn-wireless_telegraphy-n	wireless telegraphy	n	0	2	2	oewn
+oewn-wireless_telephone-n	wireless telephone	n	0	2	2	oewn
+oewn-wirelessness-n	wirelessness	n	0	1	1	oewn
+oewn-wireman-n	wireman	n	0	1	1	oewn
+oewn-wirer-n	wirer	n	0	1	1	oewn
+oewn-wiretap-n	wiretap	n	0	1	1	oewn
+oewn-wiretap-v	wiretap	v	0	1	1	oewn
+oewn-wiretapper-n	wiretapper	n	0	1	1	oewn
+oewn-wirewoman-n	wirewoman	n	0	1	1	oewn
+oewn-wirework-n	wirework	n	0	1	1	oewn
+oewn-wireworm-n	wireworm	n	0	1	1	oewn
+oewn-wiriness-n	wiriness	n	0	1	1	oewn
+oewn-wiring-n	wiring	n	0	1	1	oewn
+oewn-wiring_diagram-n	wiring diagram	n	0	2	2	oewn
+oewn-wiry-a	wiry	a	0	1	1	oewn
+oewn-wiry-coated-a	wiry-coated	a	0	1	1	oewn
+oewn-wiry-stemmed-a	wiry-stemmed	a	0	1	1	oewn
+oewn-wisdom-n	wisdom	n	0	1	1	oewn
+oewn-wisdom_book-n	wisdom book	n	0	2	2	oewn
+oewn-wisdom_literature-n	wisdom literature	n	0	2	2	oewn
+oewn-wisdom_tooth-n	wisdom tooth	n	0	2	2	oewn
+oewn-wise-a	wise	a	0	1	1	oewn
+oewn-wise-n	wise	n	0	1	1	oewn
+oewn-wise_guy-n	wise guy	n	0	2	2	oewn
+oewn-wise_man-n	wise man	n	0	2	2	oewn
+oewn-wise_to-a	wise to	a	0	2	2	oewn
+oewn-wise_up-v	wise up	v	0	2	1	oewn
+oewn-wise_woman-n	wise woman	n	0	2	2	oewn
+oewn-wiseacre-n	wiseacre	n	0	1	1	oewn
+oewn-wisecrack-n	wisecrack	n	0	1	1	oewn
+oewn-wisecrack-v	wisecrack	v	0	1	1	oewn
+oewn-wisely-r	wisely	r	0	1	1	oewn
+oewn-wiseness-n	wiseness	n	0	1	1	oewn
+oewn-wisenheimer-n	wisenheimer	n	0	1	1	oewn
+oewn-wisent-n	wisent	n	0	1	1	oewn
+oewn-wish-n	wish	n	0	1	1	oewn
+oewn-wish-v	wish	v	0	1	1	oewn
+oewn-wish-wash-n	wish-wash	n	0	1	1	oewn
+oewn-wish_list-n	wish list	n	0	2	2	oewn
+oewn-wish_well-v	wish well	v	0	2	1	oewn
+oewn-wishbone-n	wishbone	n	0	1	1	oewn
+oewn-wished-for-a	wished-for	a	0	1	1	oewn
+oewn-wishful-a	wishful	a	0	1	1	oewn
+oewn-wishful_thinker-n	wishful thinker	n	0	2	2	oewn
+oewn-wishful_thinking-n	wishful thinking	n	0	2	2	oewn
+oewn-wishfully-r	wishfully	r	0	1	1	oewn
+oewn-wishfulness-n	wishfulness	n	0	1	1	oewn
+oewn-wishing-n	wishing	n	0	1	1	oewn
+oewn-wishing_bone-n	wishing bone	n	0	2	2	oewn
+oewn-wishing_cap-n	wishing cap	n	0	2	2	oewn
+oewn-wishy-washy-a	wishy-washy	a	0	1	1	oewn
+oewn-wisp-n	wisp	n	0	1	1	oewn
+oewn-wisplike-a	wisplike	a	0	1	1	oewn
+oewn-wispy-a	wispy	a	0	1	1	oewn
+oewn-wistaria-n	wistaria	n	0	1	1	oewn
+oewn-wisteria-n	wisteria	n	0	1	1	oewn
+oewn-wistful-a	wistful	a	0	1	1	oewn
+oewn-wistfully-r	wistfully	r	0	1	1	oewn
+oewn-wistfulness-n	wistfulness	n	0	1	1	oewn
+oewn-wit-n	wit	n	0	1	1	oewn
+oewn-witbier-n	witbier	n	0	1	1	oewn
+oewn-witch-ap-s_brew-n	witch's brew	n	0	2	2	oewn
+oewn-witch-hunt-n	witch-hunt	n	0	1	1	oewn
+oewn-witch-hunter-n	witch-hunter	n	0	1	1	oewn
+oewn-witch-n	witch	n	0	1	1	oewn
+oewn-witch-v	witch	v	0	1	1	oewn
+oewn-witch_alder-n	witch alder	n	0	2	2	oewn
+oewn-witch_broom-n	witch broom	n	0	2	2	oewn
+oewn-witch_doctor-n	witch doctor	n	0	2	2	oewn
+oewn-witch_elm-n	witch elm	n	0	2	2	oewn
+oewn-witch_grass-n	witch grass	n	0	2	2	oewn
+oewn-witch_hazel-n	witch hazel	n	0	2	2	oewn
+oewn-witch_hazel_plant-n	witch hazel plant	n	0	3	3	oewn
+oewn-witchcraft-n	witchcraft	n	0	1	1	oewn
+oewn-witchery-n	witchery	n	0	1	1	oewn
+oewn-witches-ap-_Sabbath-n	witches' Sabbath	n	0	2	2	oewn
+oewn-witches-ap-_brew-n	witches' brew	n	0	2	2	oewn
+oewn-witches-ap-_broom-n	witches' broom	n	0	2	2	oewn
+oewn-witches-ap-_broth-n	witches' broth	n	0	2	2	oewn
+oewn-witches-ap-_butter-n	witches' butter	n	0	2	2	oewn
+oewn-witchgrass-n	witchgrass	n	0	1	1	oewn
+oewn-witching-a	witching	a	0	1	1	oewn
+oewn-witching-n	witching	n	0	1	1	oewn
+oewn-witchlike-a	witchlike	a	0	1	1	oewn
+oewn-with-it-a	with-it	a	0	1	1	oewn
+oewn-with_child-a	with child	a	0	2	2	oewn
+oewn-with_kid_gloves-r	with kid gloves	r	0	3	3	oewn
+oewn-withal-r	withal	r	0	1	1	oewn
+oewn-withdraw-v	withdraw	v	0	1	1	oewn
+oewn-withdrawal-n	withdrawal	n	0	1	1	oewn
+oewn-withdrawal_method-n	withdrawal method	n	0	2	2	oewn
+oewn-withdrawal_symptom-n	withdrawal symptom	n	0	2	2	oewn
+oewn-withdrawer-n	withdrawer	n	0	1	1	oewn
+oewn-withdrawing_room-n	withdrawing room	n	0	2	2	oewn
+oewn-withdrawn-a	withdrawn	a	0	1	1	oewn
+oewn-withdrawnness-n	withdrawnness	n	0	1	1	oewn
+oewn-withe-n	withe	n	0	1	1	oewn
+oewn-wither-v	wither	v	0	1	1	oewn
+oewn-withered-a	withered	a	0	1	1	oewn
+oewn-withering-a	withering	a	0	1	1	oewn
+oewn-withering-n	withering	n	0	1	1	oewn
+oewn-witheringly-r	witheringly	r	0	1	1	oewn
+oewn-withers-n	withers	n	0	1	1	oewn
+oewn-withhold-v	withhold	v	0	1	1	oewn
+oewn-withholder-n	withholder	n	0	1	1	oewn
+oewn-withholding-n	withholding	n	0	1	1	oewn
+oewn-withholding_tax-n	withholding tax	n	0	2	2	oewn
+oewn-within-r	within	r	0	1	1	oewn
+oewn-without_a_stitch-a	without a stitch	a	0	3	3	oewn
+oewn-without_doubt-r	without doubt	r	0	2	2	oewn
+oewn-withstand-v	withstand	v	0	1	1	oewn
+oewn-withstander-n	withstander	n	0	1	1	oewn
+oewn-withy-n	withy	n	0	1	1	oewn
+oewn-witless-a	witless	a	0	1	1	oewn
+oewn-witloof-n	witloof	n	0	1	1	oewn
+oewn-witness-n	witness	n	0	1	1	oewn
+oewn-witness-v	witness	v	0	1	1	oewn
+oewn-witness_box-n	witness box	n	0	2	2	oewn
+oewn-witness_stand-n	witness stand	n	0	2	2	oewn
+oewn-witnesser-n	witnesser	n	0	1	1	oewn
+oewn-wits-n	wits	n	0	1	1	oewn
+oewn-witticism-n	witticism	n	0	1	1	oewn
+oewn-wittily-r	wittily	r	0	1	1	oewn
+oewn-wittiness-n	wittiness	n	0	1	1	oewn
+oewn-witting-a	witting	a	0	1	1	oewn
+oewn-wittingly-r	wittingly	r	0	1	1	oewn
+oewn-wittol-n	wittol	n	0	1	1	oewn
+oewn-witty-a	witty	a	0	1	1	oewn
+oewn-wive-v	wive	v	0	1	1	oewn
+oewn-wivern-n	wivern	n	0	1	1	oewn
+oewn-wiz-n	wiz	n	0	1	1	oewn
+oewn-wizard-a	wizard	a	0	1	1	oewn
+oewn-wizard-n	wizard	n	0	1	1	oewn
+oewn-wizardly-a	wizardly	a	0	1	1	oewn
+oewn-wizardry-n	wizardry	n	0	1	1	oewn
+oewn-wizen-a	wizen	a	0	1	1	oewn
+oewn-wizened-a	wizened	a	0	1	1	oewn
+oewn-woad-n	woad	n	0	1	1	oewn
+oewn-woadwaxen-n	woadwaxen	n	0	1	1	oewn
+oewn-wobble-n	wobble	n	0	1	1	oewn
+oewn-wobble-v	wobble	v	0	1	1	oewn
+oewn-wobbler-n	wobbler	n	0	1	1	oewn
+oewn-wobbling-a	wobbling	a	0	1	1	oewn
+oewn-wobbly-a	wobbly	a	0	1	1	oewn
+oewn-woe-n	woe	n	0	1	1	oewn
+oewn-woebegone-a	woebegone	a	0	1	1	oewn
+oewn-woeful-a	woeful	a	0	1	1	oewn
+oewn-woefully-r	woefully	r	0	1	1	oewn
+oewn-woefulness-n	woefulness	n	0	1	1	oewn
+oewn-wog-n	wog	n	0	1	1	oewn
+oewn-wok-n	wok	n	0	1	1	oewn
+oewn-wold-n	wold	n	0	1	1	oewn
+oewn-wolf-ap-s_bane-n	wolf's bane	n	0	2	2	oewn
+oewn-wolf-ap-s_milk-n	wolf's milk	n	0	2	2	oewn
+oewn-wolf-n	wolf	n	0	1	1	oewn
+oewn-wolf-sized-a	wolf-sized	a	0	1	1	oewn
+oewn-wolf-v	wolf	v	0	1	1	oewn
+oewn-wolf-whistle-v	wolf-whistle	v	0	1	1	oewn
+oewn-wolf_bean-n	wolf bean	n	0	2	2	oewn
+oewn-wolf_boy-n	wolf boy	n	0	2	2	oewn
+oewn-wolf_cub-n	wolf cub	n	0	2	2	oewn
+oewn-wolf_down-v	wolf down	v	0	2	1	oewn
+oewn-wolf_fish-n	wolf fish	n	0	2	2	oewn
+oewn-wolf_pack-n	wolf pack	n	0	2	2	oewn
+oewn-wolf_pup-n	wolf pup	n	0	2	2	oewn
+oewn-wolf_spider-n	wolf spider	n	0	2	2	oewn
+oewn-wolfbane-n	wolfbane	n	0	1	1	oewn
+oewn-wolffish-n	wolffish	n	0	1	1	oewn
+oewn-wolfhound-n	wolfhound	n	0	1	1	oewn
+oewn-wolfish-a	wolfish	a	0	1	1	oewn
+oewn-wolfishly-r	wolfishly	r	0	1	1	oewn
+oewn-wolflike-a	wolflike	a	0	1	1	oewn
+oewn-wolfman-n	wolfman	n	0	1	1	oewn
+oewn-wolfram-n	wolfram	n	0	1	1	oewn
+oewn-wolfram_steel-n	wolfram steel	n	0	2	2	oewn
+oewn-wolframite-n	wolframite	n	0	1	1	oewn
+oewn-wolfsbane-n	wolfsbane	n	0	1	1	oewn
+oewn-wollastonite-n	wollastonite	n	0	1	1	oewn
+oewn-wolverine-n	wolverine	n	0	1	1	oewn
+oewn-woman-ap-s_body-n	woman's body	n	0	2	2	oewn
+oewn-woman-ap-s_doctor-n	woman's doctor	n	0	2	2	oewn
+oewn-woman-ap-s_hat-n	woman's hat	n	0	2	2	oewn
+oewn-woman-n	woman	n	0	1	1	oewn
+oewn-woman-worship-n	woman-worship	n	0	1	1	oewn
+oewn-woman_chaser-n	woman chaser	n	0	2	2	oewn
+oewn-woman_hater-n	woman hater	n	0	2	2	oewn
+oewn-woman_of_the_cloth-n	woman of the cloth	n	0	4	1	oewn
+oewn-woman_of_the_house-n	woman of the house	n	0	4	1	oewn
+oewn-woman_of_the_street-n	woman of the street	n	0	4	1	oewn
+oewn-womanhood-n	womanhood	n	0	1	1	oewn
+oewn-womanise-v	womanise	v	0	1	1	oewn
+oewn-womaniser-n	womaniser	n	0	1	1	oewn
+oewn-womanish-a	womanish	a	0	1	1	oewn
+oewn-womanishness-n	womanishness	n	0	1	1	oewn
+oewn-womanize-v	womanize	v	0	1	1	oewn
+oewn-womanizer-n	womanizer	n	0	1	1	oewn
+oewn-womankind-n	womankind	n	0	1	1	oewn
+oewn-womanlike-a	womanlike	a	0	1	1	oewn
+oewn-womanlike-n	womanlike	n	0	1	1	oewn
+oewn-womanliness-n	womanliness	n	0	1	1	oewn
+oewn-womanly-a	womanly	a	0	1	1	oewn
+oewn-womb-n	womb	n	0	1	1	oewn
+oewn-womb-to-tomb-a	womb-to-tomb	a	0	1	1	oewn
+oewn-wombat-n	wombat	n	0	1	1	oewn
+oewn-women-ap-s_clothing-n	women's clothing	n	0	2	2	oewn
+oewn-women-ap-s_lib-n	women's lib	n	0	2	2	oewn
+oewn-women-ap-s_liberation_movement-n	women's liberation movement	n	0	3	3	oewn
+oewn-women-ap-s_liberationist-n	women's liberationist	n	0	2	2	oewn
+oewn-women-ap-s_rightist-n	women's rightist	n	0	2	2	oewn
+oewn-won-a	won	a	0	1	1	oewn
+oewn-won-lost_record-n	won-lost record	n	0	2	2	oewn
+oewn-won-n	won	n	0	1	1	oewn
+oewn-won_ton-n	won ton	n	0	2	2	oewn
+oewn-wonder-n	wonder	n	0	1	1	oewn
+oewn-wonder-struck-a	wonder-struck	a	0	1	1	oewn
+oewn-wonder-v	wonder	v	0	1	1	oewn
+oewn-wonder_bean-n	wonder bean	n	0	2	2	oewn
+oewn-wonder_flower-n	wonder flower	n	0	2	2	oewn
+oewn-wonderberry-n	wonderberry	n	0	1	1	oewn
+oewn-wonderer-n	wonderer	n	0	1	1	oewn
+oewn-wonderful-a	wonderful	a	0	1	1	oewn
+oewn-wonderfully-r	wonderfully	r	0	1	1	oewn
+oewn-wonderfulness-n	wonderfulness	n	0	1	1	oewn
+oewn-wondering-a	wondering	a	0	1	1	oewn
+oewn-wonderingly-r	wonderingly	r	0	1	1	oewn
+oewn-wonderland-n	wonderland	n	0	1	1	oewn
+oewn-wonderment-n	wonderment	n	0	1	1	oewn
+oewn-wonderworking-a	wonderworking	a	0	1	1	oewn
+oewn-wondrous-a	wondrous	a	0	1	1	oewn
+oewn-wondrous-r	wondrous	r	0	1	1	oewn
+oewn-wondrously-r	wondrously	r	0	1	1	oewn
+oewn-wonk-n	wonk	n	0	1	1	oewn
+oewn-wonky-a	wonky	a	0	1	1	oewn
+oewn-wont-n	wont	n	0	1	1	oewn
+oewn-wont_to-a	wont to	a	0	2	2	oewn
+oewn-wonted-a	wonted	a	0	1	1	oewn
+oewn-wonton-n	wonton	n	0	1	1	oewn
+oewn-wonton_soup-n	wonton soup	n	0	2	2	oewn
+oewn-woo-v	woo	v	0	1	1	oewn
+oewn-wood-burning-a	wood-burning	a	0	1	1	oewn
+oewn-wood-creeper-n	wood-creeper	n	0	1	1	oewn
+oewn-wood-fern-n	wood-fern	n	0	1	1	oewn
+oewn-wood-fired-a	wood-fired	a	0	1	1	oewn
+oewn-wood-frog-n	wood-frog	n	0	1	1	oewn
+oewn-wood-n	wood	n	0	1	1	oewn
+oewn-wood-rat-n	wood-rat	n	0	1	1	oewn
+oewn-wood_alcohol-n	wood alcohol	n	0	2	2	oewn
+oewn-wood_anemone-n	wood anemone	n	0	2	2	oewn
+oewn-wood_ant-n	wood ant	n	0	2	2	oewn
+oewn-wood_aster-n	wood aster	n	0	2	2	oewn
+oewn-wood_avens-n	wood avens	n	0	2	2	oewn
+oewn-wood_block-n	wood block	n	0	2	2	oewn
+oewn-wood_carving-n	wood carving	n	0	2	2	oewn
+oewn-wood_chisel-n	wood chisel	n	0	2	2	oewn
+oewn-wood_coal-n	wood coal	n	0	2	2	oewn
+oewn-wood_cudweed-n	wood cudweed	n	0	2	2	oewn
+oewn-wood_drake-n	wood drake	n	0	2	2	oewn
+oewn-wood_duck-n	wood duck	n	0	2	2	oewn
+oewn-wood_engraving-n	wood engraving	n	0	2	2	oewn
+oewn-wood_fern-n	wood fern	n	0	2	2	oewn
+oewn-wood_file-n	wood file	n	0	2	2	oewn
+oewn-wood_frog-n	wood frog	n	0	2	2	oewn
+oewn-wood_garlic-n	wood garlic	n	0	2	2	oewn
+oewn-wood_grain-n	wood grain	n	0	2	2	oewn
+oewn-wood_hen-n	wood hen	n	0	2	2	oewn
+oewn-wood_hoopoe-n	wood hoopoe	n	0	2	2	oewn
+oewn-wood_horsetail-n	wood horsetail	n	0	2	2	oewn
+oewn-wood_hyacinth-n	wood hyacinth	n	0	2	2	oewn
+oewn-wood_ibis-n	wood ibis	n	0	2	2	oewn
+oewn-wood_laurel-n	wood laurel	n	0	2	2	oewn
+oewn-wood_lily-n	wood lily	n	0	2	2	oewn
+oewn-wood_louse-n	wood louse	n	0	2	2	oewn
+oewn-wood_meadowgrass-n	wood meadowgrass	n	0	2	2	oewn
+oewn-wood_mint-n	wood mint	n	0	2	2	oewn
+oewn-wood_mouse-n	wood mouse	n	0	2	2	oewn
+oewn-wood_nettle-n	wood nettle	n	0	2	2	oewn
+oewn-wood_nymph-n	wood nymph	n	0	2	2	oewn
+oewn-wood_pewee-n	wood pewee	n	0	2	2	oewn
+oewn-wood_pigeon-n	wood pigeon	n	0	2	2	oewn
+oewn-wood_poppy-n	wood poppy	n	0	2	2	oewn
+oewn-wood_pulp-n	wood pulp	n	0	2	2	oewn
+oewn-wood_pussy-n	wood pussy	n	0	2	2	oewn
+oewn-wood_rabbit-n	wood rabbit	n	0	2	2	oewn
+oewn-wood_rat-n	wood rat	n	0	2	2	oewn
+oewn-wood_sage-n	wood sage	n	0	2	2	oewn
+oewn-wood_shavings-n	wood shavings	n	0	2	2	oewn
+oewn-wood_sorrel-n	wood sorrel	n	0	2	2	oewn
+oewn-wood_spirit-n	wood spirit	n	0	2	2	oewn
+oewn-wood_spurge-n	wood spurge	n	0	2	2	oewn
+oewn-wood_stork-n	wood stork	n	0	2	2	oewn
+oewn-wood_strawberry-n	wood strawberry	n	0	2	2	oewn
+oewn-wood_sugar-n	wood sugar	n	0	2	2	oewn
+oewn-wood_swallow-n	wood swallow	n	0	2	2	oewn
+oewn-wood_tar-n	wood tar	n	0	2	2	oewn
+oewn-wood_thrush-n	wood thrush	n	0	2	2	oewn
+oewn-wood_tick-n	wood tick	n	0	2	2	oewn
+oewn-wood_vinegar-n	wood vinegar	n	0	2	2	oewn
+oewn-wood_violet-n	wood violet	n	0	2	2	oewn
+oewn-wood_vise-n	wood vise	n	0	2	2	oewn
+oewn-wood_warbler-n	wood warbler	n	0	2	2	oewn
+oewn-wood_widgeon-n	wood widgeon	n	0	2	2	oewn
+oewn-woodbine-n	woodbine	n	0	1	1	oewn
+oewn-woodborer-n	woodborer	n	0	1	1	oewn
+oewn-woodcarver-n	woodcarver	n	0	1	1	oewn
+oewn-woodcarving-n	woodcarving	n	0	1	1	oewn
+oewn-woodchuck-n	woodchuck	n	0	1	1	oewn
+oewn-woodcock-n	woodcock	n	0	1	1	oewn
+oewn-woodcock_snipe-n	woodcock snipe	n	0	2	2	oewn
+oewn-woodcraft-n	woodcraft	n	0	1	1	oewn
+oewn-woodcreeper-n	woodcreeper	n	0	1	1	oewn
+oewn-woodcut-n	woodcut	n	0	1	1	oewn
+oewn-woodcutter-n	woodcutter	n	0	1	1	oewn
+oewn-wooded-a	wooded	a	0	1	1	oewn
+oewn-wooden-a	wooden	a	0	1	1	oewn
+oewn-wooden-headed-a	wooden-headed	a	0	1	1	oewn
+oewn-wooden_leg-n	wooden leg	n	0	2	2	oewn
+oewn-wooden_shoe-n	wooden shoe	n	0	2	2	oewn
+oewn-wooden_spoon-n	wooden spoon	n	0	2	2	oewn
+oewn-woodenly-r	woodenly	r	0	1	1	oewn
+oewn-woodenness-n	woodenness	n	0	1	1	oewn
+oewn-woodenware-n	woodenware	n	0	1	1	oewn
+oewn-woodfern-n	woodfern	n	0	1	1	oewn
+oewn-woodgrain-n	woodgrain	n	0	1	1	oewn
+oewn-woodgraining-n	woodgraining	n	0	1	1	oewn
+oewn-woodhewer-n	woodhewer	n	0	1	1	oewn
+oewn-woodiness-n	woodiness	n	0	1	1	oewn
+oewn-woodland-n	woodland	n	0	1	1	oewn
+oewn-woodland_caribou-n	woodland caribou	n	0	2	2	oewn
+oewn-woodland_oxeye-n	woodland oxeye	n	0	2	2	oewn
+oewn-woodland_star-n	woodland star	n	0	2	2	oewn
+oewn-woodland_white_violet-n	woodland white violet	n	0	3	3	oewn
+oewn-woodlet-n	woodlet	n	0	1	1	oewn
+oewn-woodlouse-n	woodlouse	n	0	1	1	oewn
+oewn-woodman-n	woodman	n	0	1	1	oewn
+oewn-woodpecker-n	woodpecker	n	0	1	1	oewn
+oewn-woodpile-n	woodpile	n	0	1	1	oewn
+oewn-woodrat-n	woodrat	n	0	1	1	oewn
+oewn-woodruff-n	woodruff	n	0	1	1	oewn
+oewn-woods-n	woods	n	0	1	1	oewn
+oewn-woodscrew-n	woodscrew	n	0	1	1	oewn
+oewn-woodshed-n	woodshed	n	0	1	1	oewn
+oewn-woodsia-n	woodsia	n	0	1	1	oewn
+oewn-woodsiness-n	woodsiness	n	0	1	1	oewn
+oewn-woodsman-n	woodsman	n	0	1	1	oewn
+oewn-woodswoman-n	woodswoman	n	0	1	1	oewn
+oewn-woodsy-a	woodsy	a	0	1	1	oewn
+oewn-woodwaxen-n	woodwaxen	n	0	1	1	oewn
+oewn-woodwind-n	woodwind	n	0	1	1	oewn
+oewn-woodwind_family-n	woodwind family	n	0	2	2	oewn
+oewn-woodwind_instrument-n	woodwind instrument	n	0	2	2	oewn
+oewn-woodwork-n	woodwork	n	0	1	1	oewn
+oewn-woodworker-n	woodworker	n	0	1	1	oewn
+oewn-woodworking-n	woodworking	n	0	1	1	oewn
+oewn-woodworking_bench-n	woodworking bench	n	0	2	2	oewn
+oewn-woodworking_plane-n	woodworking plane	n	0	2	2	oewn
+oewn-woodworking_vise-n	woodworking vise	n	0	2	2	oewn
+oewn-woodworm-n	woodworm	n	0	1	1	oewn
+oewn-woody-a	woody	a	0	1	1	oewn
+oewn-woody-stemmed-a	woody-stemmed	a	0	1	1	oewn
+oewn-woody_nightshade-n	woody nightshade	n	0	2	2	oewn
+oewn-woody_pear-n	woody pear	n	0	2	2	oewn
+oewn-woody_plant-n	woody plant	n	0	2	2	oewn
+oewn-wooer-n	wooer	n	0	1	1	oewn
+oewn-woof-n	woof	n	0	1	1	oewn
+oewn-woofer-n	woofer	n	0	1	1	oewn
+oewn-wooing-n	wooing	n	0	1	1	oewn
+oewn-wool-n	wool	n	0	1	1	oewn
+oewn-wool_fat-n	wool fat	n	0	2	2	oewn
+oewn-wool_grass-n	wool grass	n	0	2	2	oewn
+oewn-wool_grease-n	wool grease	n	0	2	2	oewn
+oewn-wool_oil-n	wool oil	n	0	2	2	oewn
+oewn-wool_stapler-n	wool stapler	n	0	2	2	oewn
+oewn-woolen-a	woolen	a	0	1	1	oewn
+oewn-woolen-n	woolen	n	0	1	1	oewn
+oewn-woolgather-v	woolgather	v	0	1	1	oewn
+oewn-woolgatherer-n	woolgatherer	n	0	1	1	oewn
+oewn-woolgathering-a	woolgathering	a	0	1	1	oewn
+oewn-woolgathering-n	woolgathering	n	0	1	1	oewn
+oewn-woollen-a	woollen	a	0	1	1	oewn
+oewn-woollen-n	woollen	n	0	1	1	oewn
+oewn-woolliness-n	woolliness	n	0	1	1	oewn
+oewn-woolly-a	woolly	a	0	1	1	oewn
+oewn-woolly-haired-a	woolly-haired	a	0	1	1	oewn
+oewn-woolly-headed-a	woolly-headed	a	0	1	1	oewn
+oewn-woolly-stemmed-a	woolly-stemmed	a	0	1	1	oewn
+oewn-woolly_adelgid-n	woolly adelgid	n	0	2	2	oewn
+oewn-woolly_alder_aphid-n	woolly alder aphid	n	0	3	3	oewn
+oewn-woolly_aphid-n	woolly aphid	n	0	2	2	oewn
+oewn-woolly_apple_aphid-n	woolly apple aphid	n	0	3	3	oewn
+oewn-woolly_bear-n	woolly bear	n	0	2	2	oewn
+oewn-woolly_bear_caterpillar-n	woolly bear caterpillar	n	0	3	3	oewn
+oewn-woolly_bear_moth-n	woolly bear moth	n	0	3	3	oewn
+oewn-woolly_daisy-n	woolly daisy	n	0	2	2	oewn
+oewn-woolly_indris-n	woolly indris	n	0	2	2	oewn
+oewn-woolly_mammoth-n	woolly mammoth	n	0	2	2	oewn
+oewn-woolly_manzanita-n	woolly manzanita	n	0	2	2	oewn
+oewn-woolly_monkey-n	woolly monkey	n	0	2	2	oewn
+oewn-woolly_mullein-n	woolly mullein	n	0	2	2	oewn
+oewn-woolly_plant_louse-n	woolly plant louse	n	0	3	3	oewn
+oewn-woolly_rhinoceros-n	woolly rhinoceros	n	0	2	2	oewn
+oewn-woolly_sunflower-n	woolly sunflower	n	0	2	2	oewn
+oewn-woolly_thistle-n	woolly thistle	n	0	2	2	oewn
+oewn-woolsorter-ap-s_disease-n	woolsorter's disease	n	0	2	2	oewn
+oewn-woolsorter-ap-s_pneumonia-n	woolsorter's pneumonia	n	0	2	2	oewn
+oewn-woolsorter-n	woolsorter	n	0	1	1	oewn
+oewn-wooly-a	wooly	a	0	1	1	oewn
+oewn-wooly-haired-a	wooly-haired	a	0	1	1	oewn
+oewn-wooly-minded-a	wooly-minded	a	0	1	1	oewn
+oewn-wooly_blue_curls-n	wooly blue curls	n	0	3	3	oewn
+oewn-wooly_lip_fern-n	wooly lip fern	n	0	3	3	oewn
+oewn-woosh-v	woosh	v	0	1	1	oewn
+oewn-woozy-a	woozy	a	0	1	1	oewn
+oewn-wop-n	wop	n	0	1	1	oewn
+oewn-word-blind-a	word-blind	a	0	1	1	oewn
+oewn-word-n	word	n	0	1	1	oewn
+oewn-word-of-mouth-a	word-of-mouth	a	0	1	1	oewn
+oewn-word-painter-n	word-painter	n	0	1	1	oewn
+oewn-word-painting-n	word-painting	n	0	1	1	oewn
+oewn-word-perfect-a	word-perfect	a	0	1	1	oewn
+oewn-word-splitting-n	word-splitting	n	0	1	1	oewn
+oewn-word-v	word	v	0	1	1	oewn
+oewn-word-worship-n	word-worship	n	0	1	1	oewn
+oewn-word_accent-n	word accent	n	0	2	2	oewn
+oewn-word_blindness-n	word blindness	n	0	2	2	oewn
+oewn-word_class-n	word class	n	0	2	2	oewn
+oewn-word_deafness-n	word deafness	n	0	2	2	oewn
+oewn-word_division-n	word division	n	0	2	2	oewn
+oewn-word_finder-n	word finder	n	0	2	2	oewn
+oewn-word_for_word-r	word for word	r	0	3	3	oewn
+oewn-word_form-n	word form	n	0	2	2	oewn
+oewn-word_game-n	word game	n	0	2	2	oewn
+oewn-word_meaning-n	word meaning	n	0	2	2	oewn
+oewn-word_of_advice-n	word of advice	n	0	3	1	oewn
+oewn-word_of_farewell-n	word of farewell	n	0	3	1	oewn
+oewn-word_of_honor-n	word of honor	n	0	3	1	oewn
+oewn-word_of_mouth-n	word of mouth	n	0	3	1	oewn
+oewn-word_order-n	word order	n	0	2	2	oewn
+oewn-word_picture-n	word picture	n	0	2	2	oewn
+oewn-word_play-n	word play	n	0	2	2	oewn
+oewn-word_processing-n	word processing	n	0	2	2	oewn
+oewn-word_processing_system-n	word processing system	n	0	3	3	oewn
+oewn-word_processor-n	word processor	n	0	2	2	oewn
+oewn-word_salad-n	word salad	n	0	2	2	oewn
+oewn-word_sense-n	word sense	n	0	2	2	oewn
+oewn-word_square-n	word square	n	0	2	2	oewn
+oewn-word_stress-n	word stress	n	0	2	2	oewn
+oewn-word_string-n	word string	n	0	2	2	oewn
+oewn-word_structure-n	word structure	n	0	2	2	oewn
+oewn-wordbook-n	wordbook	n	0	1	1	oewn
+oewn-wordfinder-n	wordfinder	n	0	1	1	oewn
+oewn-wordily-r	wordily	r	0	1	1	oewn
+oewn-wordiness-n	wordiness	n	0	1	1	oewn
+oewn-wording-n	wording	n	0	1	1	oewn
+oewn-wordless-a	wordless	a	0	1	1	oewn
+oewn-wordlessly-r	wordlessly	r	0	1	1	oewn
+oewn-wordmonger-n	wordmonger	n	0	1	1	oewn
+oewn-wordnet-n	wordnet	n	0	1	1	oewn
+oewn-wordplay-n	wordplay	n	0	1	1	oewn
+oewn-words-n	words	n	0	1	1	oewn
+oewn-words_per_minute-n	words per minute	n	0	3	3	oewn
+oewn-wordsmith-n	wordsmith	n	0	1	1	oewn
+oewn-wordy-a	wordy	a	0	1	1	oewn
+oewn-work-board-n	work-board	n	0	1	1	oewn
+oewn-work-clothes-n	work-clothes	n	0	1	1	oewn
+oewn-work-clothing-n	work-clothing	n	0	1	1	oewn
+oewn-work-in-n	work-in	n	0	1	1	oewn
+oewn-work-n	work	n	0	1	1	oewn
+oewn-work-shirt-n	work-shirt	n	0	1	1	oewn
+oewn-work-shy-a	work-shy	a	0	1	1	oewn
+oewn-work-study_program-n	work-study program	n	0	2	2	oewn
+oewn-work-v	work	v	0	1	1	oewn
+oewn-work_animal-n	work animal	n	0	2	2	oewn
+oewn-work_at-v	work at	v	0	2	1	oewn
+oewn-work_bench-n	work bench	n	0	2	2	oewn
+oewn-work_camp-n	work camp	n	0	2	2	oewn
+oewn-work_clothes-n	work clothes	n	0	2	2	oewn
+oewn-work_clothing-n	work clothing	n	0	2	2	oewn
+oewn-work_day-n	work day	n	0	2	2	oewn
+oewn-work_flow-n	work flow	n	0	2	2	oewn
+oewn-work_force-n	work force	n	0	2	2	oewn
+oewn-work_in-v	work in	v	0	2	1	oewn
+oewn-work_in_progress-n	work in progress	n	0	3	1	oewn
+oewn-work_load-n	work load	n	0	2	2	oewn
+oewn-work_of_art-n	work of art	n	0	3	1	oewn
+oewn-work_off-v	work off	v	0	2	1	oewn
+oewn-work_on-v	work on	v	0	2	1	oewn
+oewn-work_out-v	work out	v	0	2	1	oewn
+oewn-work_over-v	work over	v	0	2	1	oewn
+oewn-work_papers-n	work papers	n	0	2	2	oewn
+oewn-work_party-n	work party	n	0	2	2	oewn
+oewn-work_permit-n	work permit	n	0	2	2	oewn
+oewn-work_shift-n	work shift	n	0	2	2	oewn
+oewn-work_shoe-n	work shoe	n	0	2	2	oewn
+oewn-work_song-n	work song	n	0	2	2	oewn
+oewn-work_stoppage-n	work stoppage	n	0	2	2	oewn
+oewn-work_study-n	work study	n	0	2	2	oewn
+oewn-work_surface-n	work surface	n	0	2	2	oewn
+oewn-work_table-n	work table	n	0	2	2	oewn
+oewn-work_through-v	work through	v	0	2	1	oewn
+oewn-work_time-n	work time	n	0	2	2	oewn
+oewn-work_to_rule-n	work to rule	n	0	3	1	oewn
+oewn-work_unit-n	work unit	n	0	2	2	oewn
+oewn-work_up-v	work up	v	0	2	1	oewn
+oewn-workable-a	workable	a	0	1	1	oewn
+oewn-workaday-a	workaday	a	0	1	1	oewn
+oewn-workaholic-n	workaholic	n	0	1	1	oewn
+oewn-workaholism-n	workaholism	n	0	1	1	oewn
+oewn-workbag-n	workbag	n	0	1	1	oewn
+oewn-workbasket-n	workbasket	n	0	1	1	oewn
+oewn-workbench-n	workbench	n	0	1	1	oewn
+oewn-workboard-n	workboard	n	0	1	1	oewn
+oewn-workbook-n	workbook	n	0	1	1	oewn
+oewn-workbox-n	workbox	n	0	1	1	oewn
+oewn-workday-n	workday	n	0	1	1	oewn
+oewn-worked_up-a	worked up	a	0	2	2	oewn
+oewn-worker-n	worker	n	0	1	1	oewn
+oewn-worker_bee-n	worker bee	n	0	2	2	oewn
+oewn-workfellow-n	workfellow	n	0	1	1	oewn
+oewn-workflow-n	workflow	n	0	1	1	oewn
+oewn-workforce-n	workforce	n	0	1	1	oewn
+oewn-workhorse-n	workhorse	n	0	1	1	oewn
+oewn-workhouse-n	workhouse	n	0	1	1	oewn
+oewn-working-a	working	a	0	1	1	oewn
+oewn-working-class-a	working-class	a	0	1	1	oewn
+oewn-working-n	working	n	0	1	1	oewn
+oewn-working_agreement-n	working agreement	n	0	2	2	oewn
+oewn-working_capital-n	working capital	n	0	2	2	oewn
+oewn-working_class-n	working class	n	0	2	2	oewn
+oewn-working_day-n	working day	n	0	2	2	oewn
+oewn-working_dog-n	working dog	n	0	2	2	oewn
+oewn-working_girl-n	working girl	n	0	2	2	oewn
+oewn-working_group-n	working group	n	0	2	2	oewn
+oewn-working_man-n	working man	n	0	2	2	oewn
+oewn-working_memory-n	working memory	n	0	2	2	oewn
+oewn-working_out-n	working out	n	0	2	2	oewn
+oewn-working_papers-n	working papers	n	0	2	2	oewn
+oewn-working_party-n	working party	n	0	2	2	oewn
+oewn-working_person-n	working person	n	0	2	2	oewn
+oewn-working_principle-n	working principle	n	0	2	2	oewn
+oewn-working_rule-n	working rule	n	0	2	2	oewn
+oewn-working_woman-n	working woman	n	0	2	2	oewn
+oewn-workingman-n	workingman	n	0	1	1	oewn
+oewn-workings-n	workings	n	0	1	1	oewn
+oewn-workingwoman-n	workingwoman	n	0	1	1	oewn
+oewn-workload-n	workload	n	0	1	1	oewn
+oewn-workman-n	workman	n	0	1	1	oewn
+oewn-workmanlike-a	workmanlike	a	0	1	1	oewn
+oewn-workmanship-n	workmanship	n	0	1	1	oewn
+oewn-workmate-n	workmate	n	0	1	1	oewn
+oewn-workmen-ap-s_compensation-n	workmen's compensation	n	0	2	2	oewn
+oewn-workout-n	workout	n	0	1	1	oewn
+oewn-workout_suit-n	workout suit	n	0	2	2	oewn
+oewn-workpiece-n	workpiece	n	0	1	1	oewn
+oewn-workplace-n	workplace	n	0	1	1	oewn
+oewn-workroom-n	workroom	n	0	1	1	oewn
+oewn-works-n	works	n	0	1	1	oewn
+oewn-works_council-n	works council	n	0	2	2	oewn
+oewn-works_program-n	works program	n	0	2	2	oewn
+oewn-worksheet-n	worksheet	n	0	1	1	oewn
+oewn-workshop-n	workshop	n	0	1	1	oewn
+oewn-workspace-n	workspace	n	0	1	1	oewn
+oewn-workstation-n	workstation	n	0	1	1	oewn
+oewn-worktable-n	worktable	n	0	1	1	oewn
+oewn-workwear-n	workwear	n	0	1	1	oewn
+oewn-workweek-n	workweek	n	0	1	1	oewn
+oewn-workwoman-n	workwoman	n	0	1	1	oewn
+oewn-world-a	world	a	0	1	1	oewn
+oewn-world-beater-n	world-beater	n	0	1	1	oewn
+oewn-world-class-a	world-class	a	0	1	1	oewn
+oewn-world-n	world	n	0	1	1	oewn
+oewn-world-shaking-a	world-shaking	a	0	1	1	oewn
+oewn-world-shattering-a	world-shattering	a	0	1	1	oewn
+oewn-world-weariness-n	world-weariness	n	0	1	1	oewn
+oewn-world-weary-a	world-weary	a	0	1	1	oewn
+oewn-world-wide-a	world-wide	a	0	1	1	oewn
+oewn-world_affairs-n	world affairs	n	0	2	2	oewn
+oewn-world_council-n	world council	n	0	2	2	oewn
+oewn-world_organisation-n	world organisation	n	0	2	2	oewn
+oewn-world_organization-n	world organization	n	0	2	2	oewn
+oewn-world_power-n	world power	n	0	2	2	oewn
+oewn-world_premiere-n	world premiere	n	0	2	2	oewn
+oewn-world_record-n	world record	n	0	2	2	oewn
+oewn-world_traveler-n	world traveler	n	0	2	2	oewn
+oewn-world_view-n	world view	n	0	2	2	oewn
+oewn-world_war-n	world war	n	0	2	2	oewn
+oewn-worldliness-n	worldliness	n	0	1	1	oewn
+oewn-worldling-n	worldling	n	0	1	1	oewn
+oewn-worldly-a	worldly	a	0	1	1	oewn
+oewn-worldly-minded-a	worldly-minded	a	0	1	1	oewn
+oewn-worldly-wise-a	worldly-wise	a	0	1	1	oewn
+oewn-worldly_belongings-n	worldly belongings	n	0	2	2	oewn
+oewn-worldly_concern-n	worldly concern	n	0	2	2	oewn
+oewn-worldly_good-n	worldly good	n	0	2	2	oewn
+oewn-worldly_goods-n	worldly goods	n	0	2	2	oewn
+oewn-worldly_possession-n	worldly possession	n	0	2	2	oewn
+oewn-worldly_possessions-n	worldly possessions	n	0	2	2	oewn
+oewn-worldwide-a	worldwide	a	0	1	1	oewn
+oewn-worm-eaten-a	worm-eaten	a	0	1	1	oewn
+oewn-worm-n	worm	n	0	1	1	oewn
+oewn-worm-shaped-a	worm-shaped	a	0	1	1	oewn
+oewn-worm-v	worm	v	0	1	1	oewn
+oewn-worm_family-n	worm family	n	0	2	2	oewn
+oewn-worm_fence-n	worm fence	n	0	2	2	oewn
+oewn-worm_fish-n	worm fish	n	0	2	2	oewn
+oewn-worm_gear-n	worm gear	n	0	2	2	oewn
+oewn-worm_genus-n	worm genus	n	0	2	2	oewn
+oewn-worm_lizard-n	worm lizard	n	0	2	2	oewn
+oewn-worm_salamander-n	worm salamander	n	0	2	2	oewn
+oewn-worm_snake-n	worm snake	n	0	2	2	oewn
+oewn-worm_wheel-n	worm wheel	n	0	2	2	oewn
+oewn-wormcast-n	wormcast	n	0	1	1	oewn
+oewn-wormhole-n	wormhole	n	0	1	1	oewn
+oewn-wormlike-a	wormlike	a	0	1	1	oewn
+oewn-wormseed-n	wormseed	n	0	1	1	oewn
+oewn-wormseed_mustard-n	wormseed mustard	n	0	2	2	oewn
+oewn-wormwood-n	wormwood	n	0	1	1	oewn
+oewn-wormwood_oil-n	wormwood oil	n	0	2	2	oewn
+oewn-wormwood_sage-n	wormwood sage	n	0	2	2	oewn
+oewn-wormy-a	wormy	a	0	1	1	oewn
+oewn-worn-a	worn	a	0	1	1	oewn
+oewn-worn-out-a	worn-out	a	0	1	1	oewn
+oewn-worn_out-a	worn out	a	0	2	2	oewn
+oewn-worn_spot-n	worn spot	n	0	2	2	oewn
+oewn-worried-a	worried	a	0	1	1	oewn
+oewn-worriedly-r	worriedly	r	0	1	1	oewn
+oewn-worrier-n	worrier	n	0	1	1	oewn
+oewn-worriment-n	worriment	n	0	1	1	oewn
+oewn-worrisome-a	worrisome	a	0	1	1	oewn
+oewn-worry-n	worry	n	0	1	1	oewn
+oewn-worry-v	worry	v	0	1	1	oewn
+oewn-worrying-a	worrying	a	0	1	1	oewn
+oewn-worrying-n	worrying	n	0	1	1	oewn
+oewn-worryingly-r	worryingly	r	0	1	1	oewn
+oewn-worrywart-n	worrywart	n	0	1	1	oewn
+oewn-worse-a	worse	a	0	1	1	oewn
+oewn-worse-n	worse	n	0	1	1	oewn
+oewn-worse-r	worse	r	0	1	1	oewn
+oewn-worsen-v	worsen	v	0	1	1	oewn
+oewn-worsened-a	worsened	a	0	1	1	oewn
+oewn-worsening-a	worsening	a	0	1	1	oewn
+oewn-worsening-n	worsening	n	0	1	1	oewn
+oewn-worship-n	worship	n	0	1	1	oewn
+oewn-worship-v	worship	v	0	1	1	oewn
+oewn-worship_of_heavenly_bodies-n	worship of heavenly bodies	n	0	4	1	oewn
+oewn-worship_of_man-n	worship of man	n	0	3	1	oewn
+oewn-worshiper-n	worshiper	n	0	1	1	oewn
+oewn-worshipful-a	worshipful	a	0	1	1	oewn
+oewn-worshipped-a	worshipped	a	0	1	1	oewn
+oewn-worshipper-n	worshipper	n	0	1	1	oewn
+oewn-worst-a	worst	a	0	1	1	oewn
+oewn-worst-n	worst	n	0	1	1	oewn
+oewn-worst-r	worst	r	0	1	1	oewn
+oewn-worst-v	worst	v	0	1	1	oewn
+oewn-worsted-n	worsted	n	0	1	1	oewn
+oewn-worsted_yarn-n	worsted yarn	n	0	2	2	oewn
+oewn-wort-n	wort	n	0	1	1	oewn
+oewn-worth-a	worth	a	0	1	1	oewn
+oewn-worth-n	worth	n	0	1	1	oewn
+oewn-worthful-a	worthful	a	0	1	1	oewn
+oewn-worthily-r	worthily	r	0	1	1	oewn
+oewn-worthiness-n	worthiness	n	0	1	1	oewn
+oewn-worthless-a	worthless	a	0	1	1	oewn
+oewn-worthlessly-r	worthlessly	r	0	1	1	oewn
+oewn-worthlessness-n	worthlessness	n	0	1	1	oewn
+oewn-worthwhile-a	worthwhile	a	0	1	1	oewn
+oewn-worthwhileness-n	worthwhileness	n	0	1	1	oewn
+oewn-worthy-a	worthy	a	0	1	1	oewn
+oewn-worthy-n	worthy	n	0	1	1	oewn
+oewn-would-be-a	would-be	a	0	1	1	oewn
+oewn-wound-a	wound	a	0	1	1	oewn
+oewn-wound-n	wound	n	0	1	1	oewn
+oewn-wound-v	wound	v	0	1	1	oewn
+oewn-wound_tumor_virus-n	wound tumor virus	n	0	3	3	oewn
+oewn-wound_up-a	wound up	a	0	2	2	oewn
+oewn-wounded-a	wounded	a	0	1	1	oewn
+oewn-wounded-n	wounded	n	0	1	1	oewn
+oewn-wounding-a	wounding	a	0	1	1	oewn
+oewn-wounding-n	wounding	n	0	1	1	oewn
+oewn-wove_paper-n	wove paper	n	0	2	2	oewn
+oewn-woven-a	woven	a	0	1	1	oewn
+oewn-wow-n	wow	n	0	1	1	oewn
+oewn-wow-v	wow	v	0	1	1	oewn
+oewn-wpm-n	wpm	n	0	1	1	oewn
+oewn-wrack-n	wrack	n	0	1	1	oewn
+oewn-wrack-v	wrack	v	0	1	1	oewn
+oewn-wraith-n	wraith	n	0	1	1	oewn
+oewn-wraithlike-a	wraithlike	a	0	1	1	oewn
+oewn-wrangle-n	wrangle	n	0	1	1	oewn
+oewn-wrangle-v	wrangle	v	0	1	1	oewn
+oewn-wrangler-n	wrangler	n	0	1	1	oewn
+oewn-wrangling-n	wrangling	n	0	1	1	oewn
+oewn-wrap-n	wrap	n	0	1	1	oewn
+oewn-wrap-v	wrap	v	0	1	1	oewn
+oewn-wrap_up-v	wrap up	v	0	2	1	oewn
+oewn-wraparound-n	wraparound	n	0	1	1	oewn
+oewn-wrapped-a	wrapped	a	0	1	1	oewn
+oewn-wrapped_up-a	wrapped up	a	0	2	2	oewn
+oewn-wrapper-n	wrapper	n	0	1	1	oewn
+oewn-wrapping-n	wrapping	n	0	1	1	oewn
+oewn-wrapping_paper-n	wrapping paper	n	0	2	2	oewn
+oewn-wrasse-n	wrasse	n	0	1	1	oewn
+oewn-wrath-n	wrath	n	0	1	1	oewn
+oewn-wrathful-a	wrathful	a	0	1	1	oewn
+oewn-wrathfully-r	wrathfully	r	0	1	1	oewn
+oewn-wrawl-v	wrawl	v	0	1	1	oewn
+oewn-wreak-v	wreak	v	0	1	1	oewn
+oewn-wreath-n	wreath	n	0	1	1	oewn
+oewn-wreathe-v	wreathe	v	0	1	1	oewn
+oewn-wreck-n	wreck	n	0	1	1	oewn
+oewn-wreck-v	wreck	v	0	1	1	oewn
+oewn-wreckage-n	wreckage	n	0	1	1	oewn
+oewn-wrecked-a	wrecked	a	0	1	1	oewn
+oewn-wrecker-n	wrecker	n	0	1	1	oewn
+oewn-wreckfish-n	wreckfish	n	0	1	1	oewn
+oewn-wrecking-n	wrecking	n	0	1	1	oewn
+oewn-wrecking_bar-n	wrecking bar	n	0	2	2	oewn
+oewn-wren-n	wren	n	0	1	1	oewn
+oewn-wren-tit-n	wren-tit	n	0	1	1	oewn
+oewn-wren_warbler-n	wren warbler	n	0	2	2	oewn
+oewn-wrench-n	wrench	n	0	1	1	oewn
+oewn-wrench-v	wrench	v	0	1	1	oewn
+oewn-wrenching-a	wrenching	a	0	1	1	oewn
+oewn-wrest-v	wrest	v	0	1	1	oewn
+oewn-wrester-n	wrester	n	0	1	1	oewn
+oewn-wrestle-n	wrestle	n	0	1	1	oewn
+oewn-wrestle-v	wrestle	v	0	1	1	oewn
+oewn-wrestler-n	wrestler	n	0	1	1	oewn
+oewn-wrestling-n	wrestling	n	0	1	1	oewn
+oewn-wrestling_hold-n	wrestling hold	n	0	2	2	oewn
+oewn-wrestling_mat-n	wrestling mat	n	0	2	2	oewn
+oewn-wrestling_match-n	wrestling match	n	0	2	2	oewn
+oewn-wrestling_ring-n	wrestling ring	n	0	2	2	oewn
+oewn-wretch-n	wretch	n	0	1	1	oewn
+oewn-wretched-a	wretched	a	0	1	1	oewn
+oewn-wretchedly-r	wretchedly	r	0	1	1	oewn
+oewn-wretchedness-n	wretchedness	n	0	1	1	oewn
+oewn-wrick-n	wrick	n	0	1	1	oewn
+oewn-wrick-v	wrick	v	0	1	1	oewn
+oewn-wriggle-n	wriggle	n	0	1	1	oewn
+oewn-wriggle-v	wriggle	v	0	1	1	oewn
+oewn-wriggler-n	wriggler	n	0	1	1	oewn
+oewn-wriggling-a	wriggling	a	0	1	1	oewn
+oewn-wriggly-a	wriggly	a	0	1	1	oewn
+oewn-wright-n	wright	n	0	1	1	oewn
+oewn-wring-n	wring	n	0	1	1	oewn
+oewn-wring-v	wring	v	0	1	1	oewn
+oewn-wring_from-v	wring from	v	0	2	1	oewn
+oewn-wring_out-v	wring out	v	0	2	1	oewn
+oewn-wringer-n	wringer	n	0	1	1	oewn
+oewn-wrinkle-n	wrinkle	n	0	1	1	oewn
+oewn-wrinkle-resistant-a	wrinkle-resistant	a	0	1	1	oewn
+oewn-wrinkle-v	wrinkle	v	0	1	1	oewn
+oewn-wrinkled-a	wrinkled	a	0	1	1	oewn
+oewn-wrinkleless-a	wrinkleless	a	0	1	1	oewn
+oewn-wrinkleproof-a	wrinkleproof	a	0	1	1	oewn
+oewn-wrinkly-a	wrinkly	a	0	1	1	oewn
+oewn-wrist-n	wrist	n	0	1	1	oewn
+oewn-wrist_band-n	wrist band	n	0	2	2	oewn
+oewn-wrist_bone-n	wrist bone	n	0	2	2	oewn
+oewn-wrist_joint-n	wrist joint	n	0	2	2	oewn
+oewn-wrist_pad-n	wrist pad	n	0	2	2	oewn
+oewn-wrist_pin-n	wrist pin	n	0	2	2	oewn
+oewn-wrist_watch-n	wrist watch	n	0	2	2	oewn
+oewn-wristband-n	wristband	n	0	1	1	oewn
+oewn-wristlet-n	wristlet	n	0	1	1	oewn
+oewn-wristwatch-n	wristwatch	n	0	1	1	oewn
+oewn-writ-n	writ	n	0	1	1	oewn
+oewn-writ_large-a	writ large	a	0	2	2	oewn
+oewn-writ_of_certiorari-n	writ of certiorari	n	0	3	1	oewn
+oewn-writ_of_detinue-n	writ of detinue	n	0	3	1	oewn
+oewn-writ_of_election-n	writ of election	n	0	3	1	oewn
+oewn-writ_of_error-n	writ of error	n	0	3	1	oewn
+oewn-writ_of_execution-n	writ of execution	n	0	3	1	oewn
+oewn-writ_of_habeas_corpus-n	writ of habeas corpus	n	0	4	1	oewn
+oewn-writ_of_mandamus-n	writ of mandamus	n	0	3	1	oewn
+oewn-writ_of_prohibition-n	writ of prohibition	n	0	3	1	oewn
+oewn-writ_of_right-n	writ of right	n	0	3	1	oewn
+oewn-write-down-n	write-down	n	0	1	1	oewn
+oewn-write-in-n	write-in	n	0	1	1	oewn
+oewn-write-in_candidate-n	write-in candidate	n	0	2	2	oewn
+oewn-write-off-n	write-off	n	0	1	1	oewn
+oewn-write-v	write	v	0	1	1	oewn
+oewn-write_about-v	write about	v	0	2	1	oewn
+oewn-write_copy-v	write copy	v	0	2	1	oewn
+oewn-write_down-v	write down	v	0	2	1	oewn
+oewn-write_in-v	write in	v	0	2	1	oewn
+oewn-write_in_code-v	write in code	v	0	3	1	oewn
+oewn-write_of-v	write of	v	0	2	1	oewn
+oewn-write_off-v	write off	v	0	2	1	oewn
+oewn-write_on-v	write on	v	0	2	1	oewn
+oewn-write_out-v	write out	v	0	2	1	oewn
+oewn-write_up-n	write up	n	0	2	2	oewn
+oewn-write_up-v	write up	v	0	2	1	oewn
+oewn-writer-ap-s_block-n	writer's block	n	0	2	2	oewn
+oewn-writer-ap-s_cramp-n	writer's cramp	n	0	2	2	oewn
+oewn-writer-ap-s_name-n	writer's name	n	0	2	2	oewn
+oewn-writer-n	writer	n	0	1	1	oewn
+oewn-writhe-v	writhe	v	0	1	1	oewn
+oewn-writhed-a	writhed	a	0	1	1	oewn
+oewn-writhen-a	writhen	a	0	1	1	oewn
+oewn-writhing-a	writhing	a	0	1	1	oewn
+oewn-writing-n	writing	n	0	1	1	oewn
+oewn-writing_arm-n	writing arm	n	0	2	2	oewn
+oewn-writing_assignment-n	writing assignment	n	0	2	2	oewn
+oewn-writing_board-n	writing board	n	0	2	2	oewn
+oewn-writing_desk-n	writing desk	n	0	2	2	oewn
+oewn-writing_implement-n	writing implement	n	0	2	2	oewn
+oewn-writing_ink-n	writing ink	n	0	2	2	oewn
+oewn-writing_pad-n	writing pad	n	0	2	2	oewn
+oewn-writing_paper-n	writing paper	n	0	2	2	oewn
+oewn-writing_style-n	writing style	n	0	2	2	oewn
+oewn-writing_system-n	writing system	n	0	2	2	oewn
+oewn-writing_table-n	writing table	n	0	2	2	oewn
+oewn-written-a	written	a	0	1	1	oewn
+oewn-written_account-n	written account	n	0	2	2	oewn
+oewn-written_agreement-n	written agreement	n	0	2	2	oewn
+oewn-written_assignment-n	written assignment	n	0	2	2	oewn
+oewn-written_communication-n	written communication	n	0	2	2	oewn
+oewn-written_document-n	written document	n	0	2	2	oewn
+oewn-written_language-n	written language	n	0	2	2	oewn
+oewn-written_material-n	written material	n	0	2	2	oewn
+oewn-written_matter-n	written matter	n	0	2	2	oewn
+oewn-written_record-n	written record	n	0	2	2	oewn
+oewn-written_report-n	written report	n	0	2	2	oewn
+oewn-written_symbol-n	written symbol	n	0	2	2	oewn
+oewn-written_text-n	written text	n	0	2	2	oewn
+oewn-written_word-n	written word	n	0	2	2	oewn
+oewn-wrong-a	wrong	a	0	1	1	oewn
+oewn-wrong-n	wrong	n	0	1	1	oewn
+oewn-wrong-r	wrong	r	0	1	1	oewn
+oewn-wrong-side-out-a	wrong-side-out	a	0	1	1	oewn
+oewn-wrong-site_surgery-n	wrong-site surgery	n	0	2	2	oewn
+oewn-wrong-v	wrong	v	0	1	1	oewn
+oewn-wrong_-ap-un-n	wrong 'un	n	0	2	2	oewn
+oewn-wrongdoer-n	wrongdoer	n	0	1	1	oewn
+oewn-wrongdoing-n	wrongdoing	n	0	1	1	oewn
+oewn-wrongful-a	wrongful	a	0	1	1	oewn
+oewn-wrongful_conduct-n	wrongful conduct	n	0	2	2	oewn
+oewn-wrongful_death-n	wrongful death	n	0	2	2	oewn
+oewn-wrongfully-r	wrongfully	r	0	1	1	oewn
+oewn-wrongfulness-n	wrongfulness	n	0	1	1	oewn
+oewn-wrongheaded-a	wrongheaded	a	0	1	1	oewn
+oewn-wrongheadedly-r	wrongheadedly	r	0	1	1	oewn
+oewn-wrongly-r	wrongly	r	0	1	1	oewn
+oewn-wrongness-n	wrongness	n	0	1	1	oewn
+oewn-wroth-a	wroth	a	0	1	1	oewn
+oewn-wrothful-a	wrothful	a	0	1	1	oewn
+oewn-wrought-a	wrought	a	0	1	1	oewn
+oewn-wrought_iron-n	wrought iron	n	0	2	2	oewn
+oewn-wry-a	wry	a	0	1	1	oewn
+oewn-wry_face-n	wry face	n	0	2	2	oewn
+oewn-wryly-r	wryly	r	0	1	1	oewn
+oewn-wrymouth-n	wrymouth	n	0	1	1	oewn
+oewn-wryneck-n	wryneck	n	0	1	1	oewn
+oewn-wulfenite-n	wulfenite	n	0	1	1	oewn
+oewn-wurtzite-n	wurtzite	n	0	1	1	oewn
+oewn-wuss-n	wuss	n	0	1	1	oewn
+oewn-wych_elm-n	wych elm	n	0	2	2	oewn
+oewn-wych_hazel-n	wych hazel	n	0	2	2	oewn
+oewn-wych_hazel_plant-n	wych hazel plant	n	0	3	3	oewn
+oewn-wye-n	wye	n	0	1	1	oewn
+oewn-wyvern-n	wyvern	n	0	1	1	oewn

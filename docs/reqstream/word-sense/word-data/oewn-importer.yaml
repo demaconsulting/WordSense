@@ -1,0 +1,62 @@
+---
+# OewnImporter unit requirements (the Open English WordNet import)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        sections:
+          - title: OewnImporter Requirements
+            requirements:
+              - id: WordSense-WordData-OewnImporter-Tables
+                title: >-
+                  OewnImporter shall read an Open English WordNet LMF file (plain or gzip-compressed) and write the
+                  source, entry, synset, gloss, example, sense, synset relation, sense relation, pronunciation and
+                  identifier-map tables, with every sense, synset, definition, example and pronunciation of the file.
+                tags: [unit]
+                justification: |
+                  The tables are the data model of the library; nothing that the model keeps may be lost in the import.
+                tests:
+                  - WordSenseBuilder_OewnImporter_Import_Slice_CountsRows
+                  - WordSenseBuilder_OewnImporter_Import_Slice_IsValid
+                  - WordSenseBuilder_OewnImporter_Import_GzipInput_Works
+                  - WordSenseBuilder_OewnImporter_Import_TextTables_KeepOrder
+                  - WordSenseBuilder_OewnImporter_Import_NonAsciiLemmas_GoToUnderscoreFile
+                  - WordSenseBuilder_OewnImporter_Import_LowThreshold_SplitsAndUpdatesSchema
+
+              - id: WordSense-WordData-OewnImporter-Derived
+                title: >-
+                  OewnImporter shall derive the homograph numbers, the part of speech of satellite entries, the head
+                  of each satellite synset, the sense key and the one stored direction of every relation (a symmetric
+                  relation once, with the smaller identifier first) from the data of the file, and shall clean tabs,
+                  line breaks and Unicode form of text.
+                tags: [unit]
+                justification: |
+                  The model stores each fact once and derives the rest; the derivation must be exact and repeatable.
+                tests:
+                  - WordSenseBuilder_OewnImporter_Import_Entries_DeriveHomographsAndPos
+                  - WordSenseBuilder_OewnImporter_Import_SynsetsAndSenses_DeriveHeadAndKey
+                  - WordSenseBuilder_OewnImporter_Import_Relations_StoredOnce
+                  - WordSenseBuilder_OewnImporter_Import_TabInText_IsCleaned
+
+              - id: WordSense-WordData-OewnImporter-Safety
+                title: >-
+                  OewnImporter shall produce byte-identical files for the same input, check the SHA-256 of the input
+                  against the pin before writing anything, refuse to overwrite existing tables unless told to, and
+                  reject malformed, incomplete or inconsistent input with an error.
+                tags: [unit]
+                justification: |
+                  Once the tables are edited they are authoritative; a re-import must never silently replace them, and a
+                  wrong or damaged source must never produce data.
+                tests:
+                  - WordSenseBuilder_OewnImporter_Import_Twice_IsByteIdentical
+                  - WordSenseBuilder_OewnImporter_Import_HashPin_IsChecked
+                  - WordSenseBuilder_OewnImporter_Import_ExistingTables_RefusesWithoutOverwrite
+                  - WordSenseBuilder_OewnImporter_Import_MalformedXml_Throws
+                  - WordSenseBuilder_OewnImporter_Import_NoLexicon_Throws
+                  - WordSenseBuilder_OewnImporter_Import_UnknownRelation_Throws
+                  - WordSenseBuilder_OewnImporter_Import_SatelliteWithoutHead_Throws
+                  - WordSenseBuilder_OewnImporter_Import_MissingSynset_Throws
+                  - WordSenseBuilder_DataCommands_Import_PinnedHash_RejectsOtherFile
+                  - WordSenseBuilder_DataCommands_Import_ExistingTables_NeedsOverwrite
+                  - WordSenseBuilder_DataCommands_Import_NoInput_ReportsUsage
