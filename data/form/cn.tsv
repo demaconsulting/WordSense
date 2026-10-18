@@ -1,31 +1,32 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cnemial	0	dema-cnemial-a	Degree=Pos	dema	0
-cnemially	0	dema-cnemial-r		dema	0
-cnemialness	0	dema-cnemial-n	Number=Plur	dema	0
-cnemic	0	dema-cnemic-a	Degree=Pos	dema	0
-cnemically	0	dema-cnemic-r		dema	0
-cnemicness	0	dema-cnemic-n	Number=Plur	dema	0
-cnemides	0	dema-cnemides-n	Number=Sing	dema	0
-cnemideses	0	dema-cnemides-n	Number=Plur	dema	0
-cnemis	0	dema-cnemis-n	Number=Sing	dema	0
-cnida	0	dema-cnida-n	Number=Sing	dema	0
-cnidae	0	dema-cnidae-n	Number=Sing	dema	0
-cnidaes	0	dema-cnidae-n	Number=Plur	dema	0
-cnidarian	0	oewn-cnidarian-n	Number=Sing	dema	0
-cnidarian	1	dema-cnidarian-a	Degree=Pos	dema	0
-cnidarianly	0	dema-cnidarian-r		dema	0
-cnidarianness	0	oewn-cnidarian-n	Number=Plur	dema	0
-cnidarians	0	oewn-cnidarian-n	Number=Plur	dema	0
-cnidas	0	dema-cnida-n	Number=Plur	dema	0
-cnidoblast	0	dema-cnidoblast-n	Number=Sing	dema	0
-cnidoblasts	0	dema-cnidoblast-n	Number=Plur	dema	0
-cnidocil	0	dema-cnidocil-n	Number=Sing	dema	0
-cnidocils	0	dema-cnidocil-n	Number=Plur	dema	0
-cnidocyst	0	dema-cnidocyst-n	Number=Sing	dema	0
-cnidocysts	0	dema-cnidocyst-n	Number=Plur	dema	0
-cnidogenous	0	dema-cnidogenous-a	Degree=Pos	dema	0
-cnidogenously	0	dema-cnidogenous-r		dema	0
-cnidophore	0	dema-cnidophore-n	Number=Sing	dema	0
-cnidophores	0	dema-cnidophore-n	Number=Plur	dema	0
-cnidophorous	0	dema-cnidophorous-a	Degree=Pos	dema	0
-cnidophorously	0	dema-cnidophorous-r		dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CN gas	0	oewn-CN_gas-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CNS	0	oewn-CNS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Cnemidophorus exsanguis	0	oewn-Cnemidophorus_exsanguis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnemidophorus sexlineatus	0	oewn-Cnemidophorus_sexlineatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnemidophorus tesselatus	0	oewn-Cnemidophorus_tesselatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnemidophorus tigris	0	oewn-Cnemidophorus_tigris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnemidophorus velox	0	oewn-Cnemidophorus_velox-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnemidophorus veloxes	0	oewn-Cnemidophorus_velox-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cnicus benedictus	0	oewn-Cnicus_benedictus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cnidoscolus urens	0	oewn-Cnidoscolus_urens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+cnemial	0		Degree=Pos	dema	0	cnemial	a	moby_reverse
+cnemic	0		Degree=Pos	dema	0	cnemic	a	moby_reverse
+cnemides	0		Number=Sing	dema	0	cnemides	n	moby_reverse
+cnemis	0		Number=Sing	dema	0	cnemis	n	moby_reverse
+cnida	0		Number=Sing	dema	0	cnida	n	moby_reverse
+cnidae	0		Number=Sing	dema	0	cnidae	n	moby_reverse
+cnidaes	0		Number=Plur	dema	0	cnidae	n	rule
+cnidarian	0	oewn-cnidarian-n	Number=Sing	dema	0			oewn_form
+cnidarian	1		Degree=Pos	dema	0	cnidarian	a	moby_reverse
+cnidarians	0	oewn-cnidarian-n	Number=Plur	dema	0			rule
+cnidas	0		Number=Plur	dema	0	cnida	n	rule
+cnidoblast	0		Number=Sing	dema	0	cnidoblast	n	moby_reverse
+cnidoblasts	0		Number=Plur	dema	0	cnidoblast	n	rule
+cnidocil	0		Number=Sing	dema	0	cnidocil	n	moby_reverse
+cnidocils	0		Number=Plur	dema	0	cnidocil	n	rule
+cnidocyst	0		Number=Sing	dema	0	cnidocyst	n	moby_reverse
+cnidocysts	0		Number=Plur	dema	0	cnidocyst	n	rule
+cnidogenous	0		Degree=Pos	dema	0	cnidogenous	a	moby_reverse
+cnidophore	0		Number=Sing	dema	0	cnidophore	n	moby_reverse
+cnidophores	0		Number=Plur	dema	0	cnidophore	n	rule
+cnidophorous	0		Degree=Pos	dema	0	cnidophorous	a	moby_reverse

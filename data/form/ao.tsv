@@ -1,25 +1,33 @@
-spelling	rank	entry_id	features	source_id	reviewed
-aoli	0	dema-aoli-n	Number=Sing	dema	0
-aolis	0	dema-aoli-n	Number=Plur	dema	0
-aorist	0	oewn-aorist-n	Number=Sing	dema	0
-aoristic	0	oewn-aoristic-a	Degree=Pos	dema	0
-aoristically	0	dema-aoristically-r	Degree=Pos	dema	0
-aoristicness	0	dema-aoristic-n	Number=Plur	dema	0
-aorists	0	oewn-aorist-n	Number=Plur	dema	0
-aorta	0	oewn-aorta-n	Number=Sing	dema	0
-aortae	0	dema-aortae-n	Number=Sing	dema	0
-aortaes	0	dema-aortae-n	Number=Plur	dema	0
-aortal	0	oewn-aortal-a	Degree=Pos	dema	0
-aortally	0	dema-aortal-r		dema	0
-aortalness	0	dema-aortal-n	Number=Plur	dema	0
-aortas	0	dema-aortas-n	Number=Sing	dema	0
-aortic	0	oewn-aortic-a	Degree=Pos	dema	0
-aortically	0	dema-aortic-r		dema	0
-aorticness	0	dema-aortic-n	Number=Plur	dema	0
-aortitis	0	oewn-aortitis-n	Number=Sing	dema	0
-aortoclasia	0	dema-aortoclasia-n	Number=Sing	dema	0
-aortoclasias	0	dema-aortoclasia-n	Number=Plur	dema	0
-aortographies	0	dema-aortographies-n	Number=Sing	dema	0
-aortography	0	dema-aortography-n	Number=Sing	dema	0
-aoudad	0	oewn-aoudad-n	Number=Sing	dema	0
-aoudads	0	oewn-aoudad-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Aotus trivirgatus	0	oewn-Aotus_trivirgatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+ao dai	0	oewn-ao_dai-n	Number=Sing	dema	0			oewn_form
+ao dais	0	oewn-ao_dai-n	Number=Plur	dema	0			rule
+aoli	0		Number=Sing	dema	0	aoli	n	moby_reverse
+aolis	0		Number=Plur	dema	0	aoli	n	rule
+aorist	0	oewn-aorist-n	Number=Sing	dema	0			oewn_form
+aoristic	0	oewn-aoristic-a	Degree=Pos	dema	0			oewn_form
+aoristically	0		Degree=Pos	dema	0	aoristically	r	moby_reverse
+aorists	0	oewn-aorist-n	Number=Plur	dema	0			rule
+aorta	0	oewn-aorta-n	Number=Sing	dema	0			oewn_form
+aortae	0	oewn-aorta-n	Number=Plur	dema	0			oewn_form
+aortal	0	oewn-aortal-a	Degree=Pos	dema	0			oewn_form
+aortas	0	oewn-aorta-n	Number=Plur	dema	0			rule_variant
+aortic	0	oewn-aortic-a	Degree=Pos	dema	0			oewn_form
+aortic aneurysm	0	oewn-aortic_aneurysm-n	Number=Sing	dema	0			oewn_form
+aortic aneurysms	0	oewn-aortic_aneurysm-n	Number=Plur	dema	0			rule
+aortic arch	0	oewn-aortic_arch-n	Number=Sing	dema	0			oewn_form
+aortic arches	0	oewn-aortic_arch-n	Number=Plur	dema	0			rule
+aortic isthmus	0	oewn-aortic_isthmus-n	Number=Sing	dema	0			oewn_form
+aortic orifice	0	oewn-aortic_orifice-n	Number=Sing	dema	0			oewn_form
+aortic orifices	0	oewn-aortic_orifice-n	Number=Plur	dema	0			rule
+aortic plexus	0	oewn-aortic_plexus-n	Number=Sing	dema	0			oewn_form
+aortic stenosis	0	oewn-aortic_stenosis-n	Number=Sing	dema	0			oewn_form
+aortic valve	0	oewn-aortic_valve-n	Number=Sing	dema	0			oewn_form
+aortic valves	0	oewn-aortic_valve-n	Number=Plur	dema	0			rule
+aortitis	0	oewn-aortitis-n	Number=Sing	dema	0			oewn_form
+aortoclasia	0		Number=Sing	dema	0	aortoclasia	n	moby_reverse
+aortoclasias	0		Number=Plur	dema	0	aortoclasia	n	rule
+aortographies	0		Number=Plur	dema	0	aortography	n	rule
+aortography	0		Number=Sing	dema	0	aortography	n	moby_reverse
+aoudad	0	oewn-aoudad-n	Number=Sing	dema	0			oewn_form
+aoudads	0	oewn-aoudad-n	Number=Plur	dema	0			rule

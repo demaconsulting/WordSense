@@ -1,4 +1,3 @@
 # Irregular forms derived from the Universal Dependencies English-EWT treebank (CC BY-SA 4.0, training and development files only).
 # Columns: lemma <TAB> part-of-speech letter <TAB> rule <TAB> forms (space separated) <TAB> evidence (occurrences)
 # Written by the ud-irregular command of WordSense.Builder; see corpus/ud/PROVENANCE.md.
-minute	N	Variant	mins	7

@@ -1,10 +1,4 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
-dema-cp-n	cp	n	0	1	1	dema
-dema-cpd-n	cpd	n	0	1	1	dema
-dema-cpl-n	cpl	n	0	1	1	dema
-dema-cpm-n	cpm	n	0	1	1	dema
-dema-cpo-n	cpo	n	0	1	1	dema
-dema-cpt-n	cpt	n	0	1	1	dema
 oewn-CPA-n	CPA	n	0	1	1	oewn
 oewn-CPI-n	CPI	n	0	1	1	oewn
 oewn-CPR-n	CPR	n	0	1	1	oewn

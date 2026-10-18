@@ -1,496 +1,708 @@
-spelling	rank	entry_id	features	source_id	reviewed
-smack	0	oewn-smack-n	Number=Sing	dema	0
-smack	1	oewn-smack-v	VerbForm=Inf	dema	0
-smack	2	oewn-smack-r	Degree=Pos	dema	0
-smacked	0	oewn-smack-v	Tense=Past	dema	0
-smacker	0	oewn-smacker-n	Number=Sing	dema	0
-smackeroo	0	dema-smackeroo-n	Number=Sing	dema	0
-smackeroos	0	dema-smackeroos-n	Number=Sing	dema	0
-smackers	0	oewn-smack-n	Number=Plur	dema	0
-smackest	0	oewn-smack-r	Degree=Sup	dema	0
-smacking	0	dema-smacking-a	Degree=Pos	dema	0
-smacking	1	dema-smacking-v	VerbForm=Inf	dema	0
-smackingly	0	oewn-smack-r		dema	0
-smacks	0	oewn-smack-n	Number=Plur	dema	0
-smacks	1	oewn-smack-v	Person=3+Tense=Pres	dema	0
-small	0	oewn-small-a	Degree=Pos	dema	0
-small	1	oewn-small-r	Degree=Pos	dema	0
-small	2	oewn-small-n	Number=Sing	dema	0
-smallage	0	dema-smallage-n	Number=Sing	dema	0
-smallages	0	dema-smallage-n	Number=Plur	dema	0
-smallboy	0	dema-smallboy-n	Number=Sing	dema	0
-smallboys	0	dema-smallboy-n	Number=Plur	dema	0
-smallclothes	0	dema-smallclothes-n	Number=Sing	dema	0
-smallclotheses	0	dema-smallclothes-n	Number=Plur	dema	0
-smaller	0	oewn-small-a	Degree=Cmp	dema	0
-smaller	1	oewn-small-r	Degree=Cmp	dema	0
-smallest	0	oewn-small-a	Degree=Sup	dema	0
-smallest	1	oewn-small-r	Degree=Sup	dema	0
-smallholding	0	oewn-smallholding-n	Number=Sing	dema	0
-smallholdings	0	oewn-smallholding-n	Number=Plur	dema	0
-smallish	0	oewn-smallish-a	Degree=Pos	dema	0
-smallishly	0	dema-smallish-r		dema	0
-smallishness	0	dema-smallish-n	Number=Plur	dema	0
-smallness	0	oewn-small-n	Number=Plur	dema	0
-smallpox	0	oewn-smallpox-n	Number=Sing	dema	0
-smallpoxes	0	oewn-smallpox-n	Number=Plur	dema	0
-smalls	0	oewn-small-n	Number=Plur	dema	0
-smallsword	0	dema-smallsword-n	Number=Sing	dema	0
-smallswords	0	dema-smallsword-n	Number=Plur	dema	0
-smally	0	oewn-small-r		dema	0
-smalt	0	dema-smalt-n	Number=Sing	dema	0
-smaltite	0	oewn-smaltite-n	Number=Sing	dema	0
-smaltites	0	oewn-smaltite-n	Number=Plur	dema	0
-smalto	0	dema-smalto-n	Number=Sing	dema	0
-smaltoes	0	dema-smalto-n	Number=Plur	dema	0
-smaltos	0	dema-smaltos-n	Number=Sing	dema	0
-smalts	0	dema-smalt-n	Number=Plur	dema	0
-smaragd	0	dema-smaragd-n	Number=Sing	dema	0
-smaragdine	0	dema-smaragdine-a	Degree=Pos	dema	0
-smaragdine	1	dema-smaragdine-n	Number=Sing	dema	0
-smaragdinely	0	dema-smaragdine-r		dema	0
-smaragdineness	0	dema-smaragdine-n	Number=Plur	dema	0
-smaragdines	0	dema-smaragdine-n	Number=Plur	dema	0
-smaragdite	0	dema-smaragdite-n	Number=Sing	dema	0
-smaragdites	0	dema-smaragdite-n	Number=Plur	dema	0
-smaragds	0	dema-smaragd-n	Number=Plur	dema	0
-smarm	0	dema-smarm-v	VerbForm=Inf	dema	0
-smarm	1	oewn-smarm-n	Number=Sing	dema	0
-smarmed	0	dema-smarm-v	Tense=Past	dema	0
-smarmer	0	oewn-smarm-n	Number=Plur	dema	0
-smarmers	0	oewn-smarm-n	Number=Plur	dema	0
-smarmier	0	oewn-smarmy-a	Degree=Cmp	dema	0
-smarmiest	0	oewn-smarmy-a	Degree=Sup	dema	0
-smarmily	0	dema-smarmy-r		dema	0
-smarminess	0	dema-smarmy-n	Number=Plur	dema	0
-smarming	0	dema-smarm-v	VerbForm=Ger	dema	0
-smarmingly	0	dema-smarm-r		dema	0
-smarms	0	dema-smarm-v	Person=3+Tense=Pres	dema	0
-smarms	1	oewn-smarm-n	Number=Plur	dema	0
-smarmy	0	oewn-smarmy-a	Degree=Pos	dema	0
-smart	0	oewn-smart-a	Degree=Pos	dema	0
-smart	1	oewn-smart-v	VerbForm=Inf	dema	0
-smart	2	oewn-smart-n	Number=Sing	dema	0
-smart	3	dema-smart-r	Degree=Pos	dema	0
-smarted	0	oewn-smart-v	Tense=Past	dema	0
-smarten	0	dema-smarten-v	VerbForm=Inf	dema	0
-smartened	0	dema-smarten-v	Tense=Past	dema	0
-smartener	0	dema-smarten-n	Number=Plur	dema	0
-smarteners	0	dema-smarten-n	Number=Plur	dema	0
-smartening	0	dema-smarten-v	VerbForm=Ger	dema	0
-smarteningly	0	dema-smarten-r		dema	0
-smartens	0	dema-smarten-v	Person=3+Tense=Pres	dema	0
-smarter	0	oewn-smart-a	Degree=Cmp	dema	0
-smarter	1	oewn-smart-n	Number=Plur	dema	0
-smarter	2	dema-smart-r	Degree=Cmp	dema	0
-smarters	0	oewn-smart-n	Number=Plur	dema	0
-smartest	0	oewn-smart-a	Degree=Sup	dema	0
-smartest	1	dema-smart-r	Degree=Sup	dema	0
-smartie	0	dema-smartie-n	Number=Sing	dema	0
-smartier	0	dema-smarty-a	Degree=Cmp	dema	0
-smarties	0	dema-smartie-n	Number=Plur	dema	0
-smartiest	0	dema-smarty-a	Degree=Sup	dema	0
-smartily	0	dema-smarty-r		dema	0
-smartiness	0	dema-smarty-n	Number=Plur	dema	0
-smarting	0	oewn-smart-v	VerbForm=Ger	dema	0
-smartingly	0	dema-smartingly-r	Degree=Pos	dema	0
-smartish	0	dema-smartish-a	Degree=Pos	dema	0
-smartishly	0	dema-smartish-r		dema	0
-smartishness	0	dema-smartish-n	Number=Plur	dema	0
-smartly	0	oewn-smartly-r	Degree=Pos	dema	0
-smartness	0	oewn-smart-n	Number=Plur	dema	0
-smarts	0	oewn-smart-v	Person=3+Tense=Pres	dema	0
-smarts	1	oewn-smart-n	Number=Plur	dema	0
-smarty	0	dema-smarty-a	Degree=Pos	dema	0
-smash	0	oewn-smash-v	VerbForm=Inf	dema	0
-smash	1	oewn-smash-n	Number=Sing	dema	0
-smash	2	oewn-smash-r	Degree=Pos	dema	0
-smashable	0	dema-smashable-a	Degree=Pos	dema	0
-smashableness	0	dema-smashable-n	Number=Plur	dema	0
-smashably	0	dema-smashable-r		dema	0
-smashed	0	oewn-smashed-a	Degree=Pos	dema	0
-smashed	1	dema-smashed-v	VerbForm=Inf	dema	0
-smashedly	0	dema-smashed-r		dema	0
-smasher	0	oewn-smasher-n	Number=Sing	dema	0
-smashers	0	oewn-smash-n	Number=Plur	dema	0
-smashes	0	oewn-smash-v	Person=3+Tense=Pres	dema	0
-smashes	1	oewn-smash-n	Number=Plur	dema	0
-smashest	0	oewn-smash-r	Degree=Sup	dema	0
-smashing	0	oewn-smashing-a	Degree=Pos	dema	0
-smashing	1	dema-smashing-v	VerbForm=Inf	dema	0
-smashingly	0	oewn-smash-r		dema	0
-smatch	0	dema-smatch-n	Number=Sing	dema	0
-smatches	0	dema-smatch-n	Number=Plur	dema	0
-smatchs	0	dema-smatch-n	Number=Plur	dema	0
-smatter	0	dema-smatter-n	Number=Sing	dema	0
-smatter	1	oewn-smatter-v	VerbForm=Inf	dema	0
-smattered	0	oewn-smatter-v	Tense=Past	dema	0
-smatterer	0	dema-smatterer-n	Number=Sing	dema	0
-smatterers	0	dema-smatterer-n	Number=Plur	dema	0
-smattering	0	oewn-smattering-n	Number=Sing	dema	0
-smattering	1	dema-smattering-v	VerbForm=Inf	dema	0
-smatteringly	0	dema-smatteringly-r	Degree=Pos	dema	0
-smatterings	0	oewn-smattering-n	Number=Plur	dema	0
-smatters	0	dema-smatter-n	Number=Plur	dema	0
-smatters	1	oewn-smatter-v	Person=3+Tense=Pres	dema	0
-smaze	0	dema-smaze-n	Number=Sing	dema	0
-smazes	0	dema-smaze-n	Number=Plur	dema	0
-smear	0	oewn-smear-v	VerbForm=Inf	dema	0
-smear	1	oewn-smear-n	Number=Sing	dema	0
-smearcase	0	dema-smearcase-n	Number=Sing	dema	0
-smearcases	0	dema-smearcase-n	Number=Plur	dema	0
-smeared	0	oewn-smear-v	Tense=Past	dema	0
-smearer	0	dema-smearer-n	Number=Sing	dema	0
-smearers	0	oewn-smear-n	Number=Plur	dema	0
-smearier	0	dema-smearier-a	Degree=Pos	dema	0
-smearierly	0	dema-smearier-r		dema	0
-smeariest	0	dema-smeariest-a	Degree=Pos	dema	0
-smeariestly	0	dema-smeariest-r		dema	0
-smearily	0	dema-smeary-r		dema	0
-smeariness	0	dema-smeariness-n	Number=Sing	dema	0
-smearinesses	0	dema-smeariness-n	Number=Plur	dema	0
-smearing	0	oewn-smear-v	VerbForm=Ger	dema	0
-smearingly	0	dema-smear-r		dema	0
-smears	0	oewn-smear-v	Person=3+Tense=Pres	dema	0
-smears	1	oewn-smear-n	Number=Plur	dema	0
-smeary	0	dema-smeary-a	Degree=Pos	dema	0
-smectic	0	dema-smectic-a	Degree=Pos	dema	0
-smectically	0	dema-smectic-r		dema	0
-smecticness	0	dema-smectic-n	Number=Plur	dema	0
-smeek	0	dema-smeek-n	Number=Sing	dema	0
-smeek	1	dema-smeek-v	VerbForm=Inf	dema	0
-smeeked	0	dema-smeek-v	Tense=Past	dema	0
-smeeker	0	dema-smeek-n	Number=Plur	dema	0
-smeekers	0	dema-smeek-n	Number=Plur	dema	0
-smeekier	0	dema-smeeky-a	Degree=Cmp	dema	0
-smeekiest	0	dema-smeeky-a	Degree=Sup	dema	0
-smeekily	0	dema-smeeky-r		dema	0
-smeekiness	0	dema-smeeky-n	Number=Plur	dema	0
-smeeking	0	dema-smeek-v	VerbForm=Ger	dema	0
-smeekingly	0	dema-smeek-r		dema	0
-smeeks	0	dema-smeek-n	Number=Plur	dema	0
-smeeks	1	dema-smeek-v	Person=3+Tense=Pres	dema	0
-smeeky	0	dema-smeeky-a	Degree=Pos	dema	0
-smegma	0	oewn-smegma-n	Number=Sing	dema	0
-smegmas	0	oewn-smegma-n	Number=Plur	dema	0
-smell	0	oewn-smell-n	Number=Sing	dema	1
-smell	1	oewn-smell-v	VerbForm=Inf	dema	1
-smellable	0	dema-smellable-a	Degree=Pos	dema	0
-smellableness	0	dema-smellable-n	Number=Plur	dema	0
-smellably	0	dema-smellable-r		dema	0
-smelled	0	oewn-smell-v	Tense=Past	dema	1
-smeller	0	dema-smeller-n	Number=Sing	dema	0
-smellers	0	oewn-smell-n	Number=Plur	dema	1
-smellier	0	dema-smellier-a	Degree=Pos	dema	0
-smellierly	0	dema-smellier-r		dema	0
-smelliest	0	dema-smelliest-a	Degree=Pos	dema	0
-smelliestly	0	dema-smelliest-r		dema	0
-smelliness	0	dema-smelliness-n	Number=Sing	dema	0
-smellinesses	0	dema-smelliness-n	Number=Plur	dema	0
-smelling	0	oewn-smell-n	Number=Plur	dema	1
-smelling	1	oewn-smell-v	VerbForm=Ger	dema	1
-smellingly	0	dema-smell-r		dema	0
-smells	0	oewn-smell-n	Number=Plur	dema	1
-smells	1	oewn-smell-v	Person=3+Tense=Pres	dema	1
-smelly	0	oewn-smelly-a	Degree=Pos	dema	0
-smelt	0	oewn-smelt-v	VerbForm=Inf	dema	0
-smelt	1	oewn-smelt-n	Number=Sing	dema	0
-smelted	0	oewn-smelt-v	Tense=Past	dema	0
-smelter	0	oewn-smelter-n	Number=Sing	dema	0
-smelteries	0	dema-smelteries-n	Number=Sing	dema	0
-smelters	0	oewn-smelt-n	Number=Plur	dema	0
-smeltery	0	oewn-smeltery-n	Number=Sing	dema	0
-smelting	0	oewn-smelt-v	VerbForm=Ger	dema	0
-smeltingly	0	dema-smelt-r		dema	0
-smelts	0	oewn-smelt-v	Person=3+Tense=Pres	dema	0
-smelts	1	oewn-smelt-n	Number=Plur	dema	0
-smew	0	oewn-smew-n	Number=Sing	dema	0
-smews	0	oewn-smew-n	Number=Plur	dema	0
-smidgen	0	oewn-smidgen-n	Number=Sing	dema	0
-smidgens	0	oewn-smidgen-n	Number=Plur	dema	0
-smiercase	0	dema-smiercase-n	Number=Sing	dema	0
-smiercases	0	dema-smiercase-n	Number=Plur	dema	0
-smilacaceous	0	dema-smilacaceous-a	Degree=Pos	dema	0
-smilacaceously	0	dema-smilacaceous-r		dema	0
-smilax	0	oewn-smilax-n	Number=Sing	dema	0
-smilaxes	0	oewn-smilax-n	Number=Plur	dema	0
-smile	0	oewn-smile-n	Number=Sing	dema	0
-smile	1	oewn-smile-v	VerbForm=Inf	dema	0
-smiled	0	dema-smiled-v	VerbForm=Inf	dema	0
-smileless	0	dema-smileless-a	Degree=Pos	dema	0
-smilelessly	0	dema-smilelessly-r	Degree=Pos	dema	0
-smilelessness	0	dema-smileless-n	Number=Plur	dema	0
-smiler	0	oewn-smile-n	Number=Plur	dema	0
-smilers	0	oewn-smile-n	Number=Plur	dema	0
-smiles	0	oewn-smile-n	Number=Plur	dema	0
-smiles	1	oewn-smile-v	Person=3+Tense=Pres	dema	0
-smiling	0	dema-smiling-v	VerbForm=Inf	dema	0
-smilingly	0	oewn-smilingly-r	Degree=Pos	dema	0
-smirch	0	oewn-smirch-v	VerbForm=Inf	dema	0
-smirch	1	oewn-smirch-n	Number=Sing	dema	0
-smirched	0	oewn-smirch-v	Tense=Past	dema	0
-smircher	0	oewn-smirch-n	Number=Plur	dema	0
-smirchers	0	oewn-smirch-n	Number=Plur	dema	0
-smirches	0	oewn-smirch-v	Person=3+Tense=Pres	dema	0
-smirches	1	oewn-smirch-n	Number=Plur	dema	0
-smirching	0	oewn-smirch-v	VerbForm=Ger	dema	0
-smirchingly	0	dema-smirch-r		dema	0
-smirchless	0	dema-smirchless-a	Degree=Pos	dema	0
-smirchlessly	0	dema-smirchless-r		dema	0
-smirchlessness	0	dema-smirchless-n	Number=Plur	dema	0
-smirchs	0	oewn-smirch-v	Person=3+Tense=Pres	dema	0
-smirchs	1	oewn-smirch-n	Number=Plur	dema	0
-smirk	0	oewn-smirk-n	Number=Sing	dema	0
-smirk	1	oewn-smirk-v	VerbForm=Inf	dema	0
-smirked	0	oewn-smirk-v	Tense=Past	dema	0
-smirker	0	oewn-smirker-n	Number=Sing	dema	0
-smirkers	0	oewn-smirk-n	Number=Plur	dema	0
-smirking	0	oewn-smirk-v	VerbForm=Ger	dema	0
-smirkingly	0	dema-smirkingly-r	Degree=Pos	dema	0
-smirks	0	oewn-smirk-n	Number=Plur	dema	0
-smirks	1	oewn-smirk-v	Person=3+Tense=Pres	dema	0
-smit	0	dema-smit-n	Number=Sing	dema	0
-smitch	0	dema-smitch-n	Number=Sing	dema	0
-smitches	0	dema-smitch-n	Number=Plur	dema	0
-smitchs	0	dema-smitch-n	Number=Plur	dema	0
-smite	0	oewn-smite-v	VerbForm=Inf	dema	0
-smiter	0	dema-smiter-n	Number=Sing	dema	0
-smiters	0	dema-smite-n	Number=Plur	dema	0
-smites	0	oewn-smite-v	Person=3+Tense=Pres	dema	0
-smith	0	oewn-smith-n	Number=Sing	dema	0
-smithereens	0	oewn-smithereens-n	Number=Sing	dema	0
-smithereenses	0	oewn-smithereens-n	Number=Plur	dema	0
-smitheries	0	dema-smitheries-n	Number=Sing	dema	0
-smithery	0	dema-smithery-n	Number=Sing	dema	0
-smithies	0	oewn-smithy-n	Number=Plur	dema	0
-smiths	0	oewn-smith-n	Number=Plur	dema	0
-smithsonite	0	oewn-smithsonite-n	Number=Sing	dema	0
-smithsonites	0	oewn-smithsonite-n	Number=Plur	dema	0
-smithy	0	oewn-smithy-n	Number=Sing	dema	0
-smiting	0	oewn-smite-v	VerbForm=Ger	dema	0
-smitingly	0	dema-smite-r		dema	0
-smits	0	dema-smit-n	Number=Plur	dema	0
-smitten	0	dema-smitten-v	VerbForm=Inf	dema	0
-smock	0	oewn-smock-n	Number=Sing	dema	0
-smock	1	oewn-smock-v	VerbForm=Inf	dema	0
-smocked	0	oewn-smock-v	Tense=Past	dema	0
-smocker	0	oewn-smock-n	Number=Plur	dema	0
-smockers	0	oewn-smock-n	Number=Plur	dema	0
-smocking	0	oewn-smocking-n	Number=Sing	dema	0
-smocking	1	dema-smocking-v	VerbForm=Inf	dema	0
-smockingly	0	dema-smock-r		dema	0
-smockings	0	oewn-smocking-n	Number=Plur	dema	0
-smocklike	0	dema-smocklike-a	Degree=Pos	dema	0
-smocklikely	0	dema-smocklike-r		dema	0
-smocklikeness	0	dema-smocklike-n	Number=Plur	dema	0
-smockliker	0	dema-smocklike-a	Degree=Cmp	dema	0
-smocklikest	0	dema-smocklike-a	Degree=Sup	dema	0
-smocks	0	oewn-smock-n	Number=Plur	dema	0
-smocks	1	oewn-smock-v	Person=3+Tense=Pres	dema	0
-smog	0	oewn-smog-n	Number=Sing	dema	0
-smogs	0	oewn-smog-n	Number=Plur	dema	0
-smoke	0	oewn-smoke-n	Number=Sing	dema	1
-smoke	1	oewn-smoke-v	VerbForm=Inf	dema	1
-smokechaser	0	dema-smokechaser-n	Number=Sing	dema	0
-smokechasers	0	dema-smokechaser-n	Number=Plur	dema	0
-smoked	0	oewn-smoke-v	Tense=Past	dema	1
-smokeho	0	dema-smokeho-n	Number=Sing	dema	0
-smokehoes	0	dema-smokeho-n	Number=Plur	dema	0
-smokehos	0	dema-smokeho-n	Number=Plur	dema	0
-smokehouse	0	oewn-smokehouse-n	Number=Sing	dema	0
-smokehouses	0	oewn-smokehouse-n	Number=Plur	dema	0
-smokejack	0	dema-smokejack-n	Number=Sing	dema	0
-smokejacks	0	dema-smokejack-n	Number=Plur	dema	0
-smokejumper	0	dema-smokejumper-n	Number=Sing	dema	0
-smokejumpers	0	dema-smokejumper-n	Number=Plur	dema	0
-smokeless	0	oewn-smokeless-a	Degree=Pos	dema	0
-smokelessly	0	dema-smokelessly-r	Degree=Pos	dema	0
-smokelessness	0	dema-smokelessness-n	Number=Sing	dema	0
-smokelessnesses	0	dema-smokelessness-n	Number=Plur	dema	0
-smokelike	0	dema-smokelike-a	Degree=Pos	dema	0
-smokelikely	0	dema-smokelike-r		dema	0
-smokelikeness	0	dema-smokelike-n	Number=Plur	dema	0
-smokeproof	0	dema-smokeproof-a	Degree=Pos	dema	0
-smokeproofly	0	dema-smokeproof-r		dema	0
-smokeproofness	0	dema-smokeproof-n	Number=Plur	dema	0
-smoker	0	oewn-smoker-n	Number=Sing	dema	0
-smokers	0	oewn-smoke-n	Number=Plur	dema	1
-smokes	0	oewn-smoke-n	Number=Plur	dema	1
-smokes	1	oewn-smoke-v	Person=3+Tense=Pres	dema	1
-smokestack	0	oewn-smokestack-n	Number=Sing	dema	0
-smokestacks	0	oewn-smokestack-n	Number=Plur	dema	0
-smokier	0	dema-smokier-a	Degree=Pos	dema	0
-smokierly	0	dema-smokier-r		dema	0
-smokiest	0	dema-smokiest-a	Degree=Pos	dema	0
-smokiestly	0	dema-smokiest-r		dema	0
-smokily	0	dema-smoky-r		dema	0
-smokiness	0	dema-smoky-n	Number=Plur	dema	0
-smoking	0	oewn-smoke-n	Number=Plur	dema	1
-smoking	1	oewn-smoke-v	VerbForm=Ger	dema	1
-smokingly	0	dema-smoke-r		dema	0
-smokings	0	dema-smokings-n	Number=Sing	dema	0
-smoko	0	dema-smoko-n	Number=Sing	dema	0
-smokoes	0	dema-smoko-n	Number=Plur	dema	0
-smokos	0	dema-smokos-n	Number=Sing	dema	0
-smoky	0	oewn-smoky-a	Degree=Pos	dema	0
-smolder	0	oewn-smolder-v	VerbForm=Inf	dema	0
-smolder	1	oewn-smolder-n	Number=Sing	dema	0
-smoldered	0	oewn-smolder-v	Tense=Past	dema	0
-smoldering	0	oewn-smolder-v	VerbForm=Ger	dema	0
-smolderingly	0	dema-smolder-r		dema	0
-smolders	0	oewn-smolder-v	Person=3+Tense=Pres	dema	0
-smolders	1	oewn-smolder-n	Number=Plur	dema	0
-smolt	0	dema-smolt-n	Number=Sing	dema	0
-smolts	0	dema-smolt-n	Number=Plur	dema	0
-smooch	0	oewn-smooch-v	VerbForm=Inf	dema	0
-smooch	1	oewn-smooch-n	Number=Sing	dema	0
-smooched	0	oewn-smooch-v	Tense=Past	dema	0
-smoocher	0	oewn-smooch-n	Number=Plur	dema	0
-smoochers	0	oewn-smooch-n	Number=Plur	dema	0
-smooches	0	oewn-smooch-v	Person=3+Tense=Pres	dema	0
-smooches	1	oewn-smooch-n	Number=Plur	dema	0
-smooching	0	oewn-smooch-v	VerbForm=Ger	dema	0
-smoochingly	0	dema-smooch-r		dema	0
-smoochs	0	oewn-smooch-v	Person=3+Tense=Pres	dema	0
-smoochs	1	oewn-smooch-n	Number=Plur	dema	0
-smoodge	0	dema-smoodge-v	VerbForm=Inf	dema	0
-smoodged	0	dema-smoodged-v	VerbForm=Inf	dema	0
-smoodger	0	dema-smoodger-n	Number=Sing	dema	0
-smoodgers	0	dema-smoodge-n	Number=Plur	dema	0
-smoodges	0	dema-smoodge-v	Person=3+Tense=Pres	dema	0
-smoodging	0	dema-smoodging-v	VerbForm=Inf	dema	0
-smoodgingly	0	dema-smoodge-r		dema	0
-smooth	0	oewn-smooth-a	Degree=Pos	dema	0
-smooth	1	dema-smooth-r	Degree=Pos	dema	0
-smooth	2	oewn-smooth-v	VerbForm=Inf	dema	0
-smooth	3	oewn-smooth-n	Number=Sing	dema	0
-smoothable	0	dema-smoothable-a	Degree=Pos	dema	0
-smoothableness	0	dema-smoothable-n	Number=Plur	dema	0
-smoothably	0	dema-smoothable-r		dema	0
-smoothbore	0	oewn-smoothbore-n	Number=Sing	dema	0
-smoothbores	0	oewn-smoothbore-n	Number=Plur	dema	0
-smoothed	0	oewn-smooth-v	Tense=Past	dema	0
-smoothen	0	oewn-smoothen-v	VerbForm=Inf	dema	0
-smoothened	0	oewn-smoothen-v	Tense=Past	dema	0
-smoothener	0	dema-smoothen-n	Number=Plur	dema	0
-smootheners	0	dema-smoothen-n	Number=Plur	dema	0
-smoothening	0	oewn-smoothen-v	VerbForm=Ger	dema	0
-smootheningly	0	dema-smoothen-r		dema	0
-smoothens	0	oewn-smoothen-v	Person=3+Tense=Pres	dema	0
-smoother	0	oewn-smoother-n	Number=Sing	dema	0
-smoothers	0	oewn-smooth-n	Number=Plur	dema	0
-smoothest	0	oewn-smooth-a	Degree=Sup	dema	0
-smoothest	1	dema-smooth-r	Degree=Sup	dema	0
-smoothhound	0	oewn-smoothhound-n	Number=Sing	dema	0
-smoothhounds	0	oewn-smoothhound-n	Number=Plur	dema	0
-smoothie	0	oewn-smoothie-n	Number=Sing	dema	0
-smoothies	0	dema-smoothies-n	Number=Sing	dema	0
-smoothing	0	oewn-smooth-v	VerbForm=Ger	dema	0
-smoothingly	0	dema-smooth-r		dema	0
-smoothly	0	oewn-smoothly-r	Degree=Pos	dema	0
-smoothness	0	oewn-smoothness-n	Number=Sing	dema	0
-smoothnesses	0	oewn-smoothness-n	Number=Plur	dema	0
-smooths	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0
-smooths	1	oewn-smooth-n	Number=Plur	dema	0
-smoothy	0	oewn-smoothy-n	Number=Sing	dema	0
-smorebro	0	dema-smorebro-n	Number=Sing	dema	0
-smorebroes	0	dema-smorebro-n	Number=Plur	dema	0
-smorebros	0	dema-smorebro-n	Number=Plur	dema	0
-smorgasbord	0	oewn-smorgasbord-n	Number=Sing	dema	0
-smorgasbords	0	oewn-smorgasbord-n	Number=Plur	dema	0
-smorzando	0	dema-smorzando-a	Degree=Pos	dema	0
-smorzandoly	0	dema-smorzando-r		dema	0
-smorzandoness	0	dema-smorzando-n	Number=Plur	dema	0
-smote	0	dema-smote-v	VerbForm=Inf	dema	0
-smother	0	oewn-smother-v	VerbForm=Inf	dema	0
-smother	1	oewn-smother-n	Number=Sing	dema	0
-smotherable	0	dema-smotherable-a	Degree=Pos	dema	0
-smotherably	0	dema-smotherable-r		dema	0
-smothered	0	oewn-smother-v	Tense=Past	dema	0
-smotherily	0	dema-smothery-r		dema	0
-smotheriness	0	dema-smothery-n	Number=Plur	dema	0
-smothering	0	oewn-smother-v	VerbForm=Ger	dema	0
-smotheringly	0	dema-smother-r		dema	0
-smothers	0	oewn-smother-v	Person=3+Tense=Pres	dema	0
-smothers	1	oewn-smother-n	Number=Plur	dema	0
-smothery	0	dema-smothery-a	Degree=Pos	dema	0
-smoulder	0	oewn-smoulder-v	VerbForm=Inf	dema	0
-smoulder	1	oewn-smoulder-n	Number=Sing	dema	0
-smouldered	0	oewn-smoulder-v	Tense=Past	dema	0
-smouldering	0	oewn-smoulder-v	VerbForm=Ger	dema	0
-smoulderingly	0	dema-smoulder-r		dema	0
-smoulders	0	oewn-smoulder-v	Person=3+Tense=Pres	dema	0
-smoulders	1	oewn-smoulder-n	Number=Plur	dema	0
-smriti	0	dema-smriti-n	Number=Sing	dema	0
-smritis	0	dema-smriti-n	Number=Plur	dema	0
-smudge	0	oewn-smudge-v	VerbForm=Inf	dema	0
-smudge	1	oewn-smudge-n	Number=Sing	dema	0
-smudged	0	dema-smudged-v	VerbForm=Inf	dema	0
-smudgedly	0	dema-smudgedly-r	Degree=Pos	dema	0
-smudgeless	0	dema-smudgeless-a	Degree=Pos	dema	0
-smudgelessly	0	dema-smudgeless-r		dema	0
-smudgelessness	0	dema-smudgeless-n	Number=Plur	dema	0
-smudger	0	oewn-smudge-n	Number=Plur	dema	0
-smudgers	0	oewn-smudge-n	Number=Plur	dema	0
-smudges	0	oewn-smudge-v	Person=3+Tense=Pres	dema	0
-smudges	1	oewn-smudge-n	Number=Plur	dema	0
-smudgily	0	dema-smudgily-r	Degree=Pos	dema	0
-smudginess	0	dema-smudginess-n	Number=Sing	dema	0
-smudginesses	0	dema-smudginess-n	Number=Plur	dema	0
-smudging	0	dema-smudging-v	VerbForm=Inf	dema	0
-smudgingly	0	dema-smudge-r		dema	0
-smug	0	oewn-smug-a	Degree=Pos	dema	0
-smugger	0	dema-smugger-a	Degree=Pos	dema	0
-smuggerly	0	dema-smugger-r		dema	0
-smuggest	0	dema-smuggest-a	Degree=Pos	dema	0
-smuggestly	0	dema-smuggest-r		dema	0
-smuggle	0	oewn-smuggle-v	VerbForm=Inf	dema	0
-smuggled	0	dema-smuggled-v	VerbForm=Inf	dema	0
-smuggler	0	oewn-smuggler-n	Number=Sing	dema	0
-smugglers	0	dema-smuggle-n	Number=Plur	dema	0
-smuggles	0	oewn-smuggle-v	Person=3+Tense=Pres	dema	0
-smuggling	0	dema-smuggling-v	VerbForm=Inf	dema	0
-smugglingly	0	dema-smuggle-r		dema	0
-smugly	0	oewn-smugly-r	Degree=Pos	dema	0
-smugness	0	oewn-smugness-n	Number=Sing	dema	0
-smugnesses	0	oewn-smugness-n	Number=Plur	dema	0
-smut	0	oewn-smut-n	Number=Sing	dema	0
-smut	1	oewn-smut-v	VerbForm=Inf	dema	0
-smutch	0	oewn-smutch-v	VerbForm=Inf	dema	0
-smutch	1	dema-smutch-n	Number=Sing	dema	0
-smutched	0	oewn-smutch-v	Tense=Past	dema	0
-smutcher	0	dema-smutch-n	Number=Plur	dema	0
-smutchers	0	dema-smutch-n	Number=Plur	dema	0
-smutches	0	oewn-smutch-v	Person=3+Tense=Pres	dema	0
-smutches	1	dema-smutch-n	Number=Plur	dema	0
-smutchier	0	dema-smutchier-a	Degree=Pos	dema	0
-smutchierly	0	dema-smutchier-r		dema	0
-smutchiest	0	dema-smutchiest-a	Degree=Pos	dema	0
-smutchiestly	0	dema-smutchiest-r		dema	0
-smutchily	0	dema-smutchy-r		dema	0
-smutchiness	0	dema-smutchy-n	Number=Plur	dema	0
-smutching	0	oewn-smutch-v	VerbForm=Ger	dema	0
-smutchingly	0	dema-smutch-r		dema	0
-smutchless	0	dema-smutchless-a	Degree=Pos	dema	0
-smutchlessly	0	dema-smutchless-r		dema	0
-smutchlessness	0	dema-smutchless-n	Number=Plur	dema	0
-smutchs	0	oewn-smutch-v	Person=3+Tense=Pres	dema	0
-smutchs	1	dema-smutch-n	Number=Plur	dema	0
-smutchy	0	dema-smutchy-a	Degree=Pos	dema	0
-smuts	0	oewn-smut-n	Number=Plur	dema	0
-smuts	1	oewn-smut-v	Person=3+Tense=Pres	dema	0
-smutted	0	dema-smutted-v	VerbForm=Inf	dema	0
-smutter	0	oewn-smut-n	Number=Plur	dema	0
-smutters	0	oewn-smut-n	Number=Plur	dema	0
-smuttier	0	dema-smuttier-a	Degree=Pos	dema	0
-smuttierly	0	dema-smuttier-r		dema	0
-smuttiest	0	dema-smuttiest-a	Degree=Pos	dema	0
-smuttiestly	0	dema-smuttiest-r		dema	0
-smuttily	0	oewn-smuttily-r	Degree=Pos	dema	0
-smuttiness	0	oewn-smuttiness-n	Number=Sing	dema	0
-smuttinesses	0	oewn-smuttiness-n	Number=Plur	dema	0
-smutting	0	dema-smutting-v	VerbForm=Inf	dema	0
-smuttingly	0	dema-smut-r		dema	0
-smutty	0	oewn-smutty-a	Degree=Pos	dema	0
-smytrie	0	dema-smytrie-n	Number=Sing	dema	0
-smytries	0	dema-smytrie-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+SM	0	oewn-SM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SMS	0	oewn-SM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SMSgt	0	oewn-SMSgt-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Sm	0	oewn-Sm-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Small Business Administration	0	oewn-Small_Business_Administration-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Small Business Administrations	0	oewn-Small_Business_Administration-n	Capitalization=Title+Number=Plur	dema	0			rule
+Smilax aspera	0	oewn-Smilax_aspera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Smilax asperas	0	oewn-Smilax_aspera-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Smilax rotundifolia	0	oewn-Smilax_rotundifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Smilax rotundifolias	0	oewn-Smilax_rotundifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Smiledon californicus	0	oewn-Smiledon_californicus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Smitane	0	oewn-Smitane-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Smitanes	0	oewn-Smitane-n	Capitalization=Title+Number=Plur	dema	0			rule
+Sms	0	oewn-Sm-n	Capitalization=Title+Number=Plur	dema	0			rule
+Smsgts	0	oewn-SMSgt-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Smyrnium olusatrum	0	oewn-Smyrnium_olusatrum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Smyrnium olusatrums	0	oewn-Smyrnium_olusatrum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+smack	0	oewn-smack-n	Number=Sing	dema	0			oewn_form
+smack	1	oewn-smack-v	VerbForm=Inf	dema	0			oewn_form
+smack	2	oewn-smack-r	Degree=Pos	dema	0			oewn_form
+smacked	0	oewn-smack-v	Tense=Past+VerbForm=Part	dema	0			rule
+smacker	0	oewn-smacker-n	Number=Sing	dema	0			oewn_form
+smackeroo	0		Number=Sing	dema	0	smackeroo	n	moby_reverse
+smackeroos	0		Number=Plur	dema	0	smackeroo	n	rule
+smackers	0	oewn-smacker-n	Number=Plur	dema	0			rule
+smacking	0		Degree=Pos	dema	0	smacking	a	moby_reverse
+smacking	1	oewn-smacking-n	Number=Sing	dema	0			oewn_form
+smacking	2	oewn-smack-v	VerbForm=Ger	dema	0			rule
+smackings	0	oewn-smacking-n	Number=Plur	dema	0			rule
+smacks	0	oewn-smack-n	Number=Plur	dema	0			rule
+smacks	1	oewn-smack-v	Person=3+Tense=Pres	dema	0			rule
+small	0	oewn-small-a	Degree=Pos	dema	0			oewn_form
+small	1	oewn-small-r	Degree=Pos	dema	0			oewn_form
+small	2	oewn-small-n	Number=Sing	dema	0			oewn_form
+small beer	0	oewn-small_beer-n	Number=Sing	dema	0			oewn_form
+small beers	0	oewn-small_beer-n	Number=Plur	dema	0			rule
+small boat	0	oewn-small_boat-n	Number=Sing	dema	0			oewn_form
+small boats	0	oewn-small_boat-n	Number=Plur	dema	0			rule
+small businessman	0	oewn-small_businessman-n	Number=Sing	dema	0			oewn_form
+small businessmans	0	oewn-small_businessman-n	Number=Plur	dema	0			rule
+small calorie	0	oewn-small_calorie-n	Number=Sing	dema	0			oewn_form
+small calories	0	oewn-small_calorie-n	Number=Plur	dema	0			rule
+small cane	0	oewn-small_cane-n	Number=Sing	dema	0			oewn_form
+small canes	0	oewn-small_cane-n	Number=Plur	dema	0			rule
+small cap	0	oewn-small_cap-n	Number=Sing	dema	0			oewn_form
+small capital	0	oewn-small_capital-n	Number=Sing	dema	0			oewn_form
+small capitals	0	oewn-small_capital-n	Number=Plur	dema	0			rule
+small caps	0	oewn-small_cap-n	Number=Plur	dema	0			rule
+small cell carcinoma	0	oewn-small_cell_carcinoma-n	Number=Sing	dema	0			oewn_form
+small cell carcinomas	0	oewn-small_cell_carcinoma-n	Number=Plur	dema	0			rule
+small change	0	oewn-small_change-n	Number=Sing	dema	0			oewn_form
+small changes	0	oewn-small_change-n	Number=Plur	dema	0			rule
+small civet	0	oewn-small_civet-n	Number=Sing	dema	0			oewn_form
+small civets	0	oewn-small_civet-n	Number=Plur	dema	0			rule
+small computer system interface	0	oewn-small_computer_system_interface-n	Number=Sing	dema	0			oewn_form
+small computer system interfaces	0	oewn-small_computer_system_interface-n	Number=Plur	dema	0			rule
+small cranberries	0	oewn-small_cranberry-n	Number=Plur	dema	0			rule
+small cranberry	0	oewn-small_cranberry-n	Number=Sing	dema	0			oewn_form
+small farmer	0	oewn-small_farmer-n	Number=Sing	dema	0			oewn_form
+small farmers	0	oewn-small_farmer-n	Number=Plur	dema	0			rule
+small fortune	0	oewn-small_fortune-n	Number=Sing	dema	0			oewn_form
+small fortunes	0	oewn-small_fortune-n	Number=Plur	dema	0			rule
+small fries	0	oewn-small_fry-n	Number=Plur	dema	0			rule
+small fry	0	oewn-small_fry-n	Number=Sing	dema	0			oewn_form
+small game	0	oewn-small_game-n	Number=Sing	dema	0			oewn_form
+small games	0	oewn-small_game-n	Number=Plur	dema	0			rule
+small hours	0	oewn-small_hours-n	Number=Sing	dema	0			oewn_form
+small indefinite amount	0	oewn-small_indefinite_amount-n	Number=Sing	dema	0			oewn_form
+small indefinite amounts	0	oewn-small_indefinite_amount-n	Number=Plur	dema	0			rule
+small indefinite quantities	0	oewn-small_indefinite_quantity-n	Number=Plur	dema	0			rule
+small indefinite quantity	0	oewn-small_indefinite_quantity-n	Number=Sing	dema	0			oewn_form
+small intestine	0	oewn-small_intestine-n	Number=Sing	dema	0			oewn_form
+small intestines	0	oewn-small_intestine-n	Number=Plur	dema	0			rule
+small letter	0	oewn-small_letter-n	Number=Sing	dema	0			oewn_form
+small letters	0	oewn-small_letter-n	Number=Plur	dema	0			rule
+small livestock	0	oewn-small_livestock-n	Number=Sing	dema	0			oewn_form
+small livestocks	0	oewn-small_livestock-n	Number=Plur	dema	0			rule
+small loan companies	0	oewn-small_loan_company-n	Number=Plur	dema	0			rule
+small loan company	0	oewn-small_loan_company-n	Number=Sing	dema	0			oewn_form
+small person	0	oewn-small_person-n	Number=Sing	dema	0			oewn_form
+small persons	0	oewn-small_person-n	Number=Plur	dema	0			rule
+small print	0	oewn-small_print-n	Number=Sing	dema	0			oewn_form
+small prints	0	oewn-small_print-n	Number=Plur	dema	0			rule
+small ship	0	oewn-small_ship-n	Number=Sing	dema	0			oewn_form
+small ships	0	oewn-small_ship-n	Number=Plur	dema	0			rule
+small slam	0	oewn-small_slam-n	Number=Sing	dema	0			oewn_form
+small slams	0	oewn-small_slam-n	Number=Plur	dema	0			rule
+small stores	0	oewn-small_stores-n	Number=Sing	dema	0			oewn_form
+small stuff	0	oewn-small_stuff-n	Number=Sing	dema	0			oewn_form
+small stuffs	0	oewn-small_stuff-n	Number=Plur	dema	0			rule
+small talk	0	oewn-small_talk-n	Number=Sing	dema	0			oewn_form
+small talks	0	oewn-small_talk-n	Number=Plur	dema	0			rule
+small town	0	oewn-small_town-n	Number=Sing	dema	0			oewn_form
+small towns	0	oewn-small_town-n	Number=Plur	dema	0			rule
+small voice	0	oewn-small_voice-n	Number=Sing	dema	0			oewn_form
+small voices	0	oewn-small_voice-n	Number=Plur	dema	0			rule
+small white	0	oewn-small_white-n	Number=Sing	dema	0			oewn_form
+small white aster	0	oewn-small_white_aster-n	Number=Sing	dema	0			oewn_form
+small white asters	0	oewn-small_white_aster-n	Number=Plur	dema	0			rule
+small whites	0	oewn-small_white-n	Number=Plur	dema	0			rule
+small-arm	0	oewn-small-arm-n	Number=Sing	dema	0			oewn_form
+small-arms	0	oewn-small-arm-n	Number=Plur	dema	0			rule
+small-cap	0	oewn-small-cap-a	Degree=Pos	dema	0			oewn_form
+small-capitalisation	0	oewn-small-capitalisation-a	Degree=Pos	dema	0			oewn_form
+small-capitalization	0	oewn-small-capitalization-a	Degree=Pos	dema	0			oewn_form
+small-eared	0	oewn-small-eared-a	Degree=Pos	dema	0			oewn_form
+small-for-gestational-age infant	0	oewn-small-for-gestational-age_infant-n	Number=Sing	dema	0			oewn_form
+small-for-gestational-age infants	0	oewn-small-for-gestational-age_infant-n	Number=Plur	dema	0			rule
+small-fruited	0	oewn-small-fruited-a	Degree=Pos	dema	0			oewn_form
+small-grained	0	oewn-small-grained-a	Degree=Pos	dema	0			oewn_form
+small-leaved lime	0	oewn-small-leaved_lime-n	Number=Sing	dema	0			oewn_form
+small-leaved limes	0	oewn-small-leaved_lime-n	Number=Plur	dema	0			rule
+small-leaved linden	0	oewn-small-leaved_linden-n	Number=Sing	dema	0			oewn_form
+small-leaved lindens	0	oewn-small-leaved_linden-n	Number=Plur	dema	0			rule
+small-minded	0	oewn-small-minded-a	Degree=Pos	dema	0			oewn_form
+small-mindedly	0	oewn-small-mindedly-r	Degree=Pos	dema	0			oewn_form
+small-particle pollution	0	oewn-small-particle_pollution-n	Number=Sing	dema	0			oewn_form
+small-particle pollutions	0	oewn-small-particle_pollution-n	Number=Plur	dema	0			rule
+small-scale	0	oewn-small-scale-a	Degree=Pos	dema	0			oewn_form
+small-seeded	0	oewn-small-seeded-a	Degree=Pos	dema	0			oewn_form
+small-time	0	oewn-small-time-a	Degree=Pos	dema	0			oewn_form
+small-toothed	0	oewn-small-toothed-a	Degree=Pos	dema	0			oewn_form
+small-winged	0	oewn-small-winged-a	Degree=Pos	dema	0			oewn_form
+smallage	0		Number=Sing	dema	0	smallage	n	moby_reverse
+smallages	0		Number=Plur	dema	0	smallage	n	rule
+smallboy	0		Number=Sing	dema	0	smallboy	n	moby_reverse
+smallboys	0		Number=Plur	dema	0	smallboy	n	rule
+smallclothes	0		Number=Sing	dema	0	smallclothes	n	moby_reverse
+smaller	0	oewn-small-a	Degree=Cmp	dema	0			rule
+smaller	1	oewn-smaller-a	Degree=Pos	dema	0			oewn_form
+smaller pectoral muscle	0	oewn-smaller_pectoral_muscle-n	Number=Sing	dema	0			oewn_form
+smaller pectoral muscles	0	oewn-smaller_pectoral_muscle-n	Number=Plur	dema	0			rule
+smallest	0	oewn-small-a	Degree=Sup	dema	0			rule
+smalleye hammerhead	0	oewn-smalleye_hammerhead-n	Number=Sing	dema	0			oewn_form
+smalleye hammerheads	0	oewn-smalleye_hammerhead-n	Number=Plur	dema	0			rule
+smallholder	0	oewn-smallholder-n	Number=Sing	dema	0			oewn_form
+smallholders	0	oewn-smallholder-n	Number=Plur	dema	0			rule
+smallholding	0	oewn-smallholding-n	Number=Sing	dema	0			oewn_form
+smallholdings	0	oewn-smallholding-n	Number=Plur	dema	0			rule
+smallish	0	oewn-smallish-a	Degree=Pos	dema	0			oewn_form
+smallmouth	0	oewn-smallmouth-n	Number=Sing	dema	0			oewn_form
+smallmouth bass	0	oewn-smallmouth_bass-n	Number=Sing	dema	0			oewn_form
+smallmouth basses	0	oewn-smallmouth_bass-n	Number=Plur	dema	0			rule
+smallmouth black bass	0	oewn-smallmouth_black_bass-n	Number=Sing	dema	0			oewn_form
+smallmouth black basses	0	oewn-smallmouth_black_bass-n	Number=Plur	dema	0			rule
+smallmouthed bass	0	oewn-smallmouthed_bass-n	Number=Sing	dema	0			oewn_form
+smallmouthed basses	0	oewn-smallmouthed_bass-n	Number=Plur	dema	0			rule
+smallmouthed black bass	0	oewn-smallmouthed_black_bass-n	Number=Sing	dema	0			oewn_form
+smallmouthed black basses	0	oewn-smallmouthed_black_bass-n	Number=Plur	dema	0			rule
+smallmouths	0	oewn-smallmouth-n	Number=Plur	dema	0			rule
+smallness	0	oewn-smallness-n	Number=Sing	dema	0			oewn_form
+smallnesses	0	oewn-smallness-n	Number=Plur	dema	0			rule
+smallpox	0	oewn-smallpox-n	Number=Sing	dema	0			oewn_form
+smallpox virus	0	oewn-smallpox_virus-n	Number=Sing	dema	0			oewn_form
+smallpoxes	0	oewn-smallpox-n	Number=Plur	dema	0			rule
+smalls	0	oewn-small-n	Number=Plur	dema	0			rule
+smallsword	0		Number=Sing	dema	0	smallsword	n	moby_reverse
+smallswords	0		Number=Plur	dema	0	smallsword	n	rule
+smalltooth sawfish	0	oewn-smalltooth_sawfish-n	Number=Sing	dema	0			oewn_form
+smalltooth sawfishes	0	oewn-smalltooth_sawfish-n	Number=Plur	dema	0			rule
+smalt	0		Number=Sing	dema	0	smalt	n	moby_reverse
+smaltite	0	oewn-smaltite-n	Number=Sing	dema	0			oewn_form
+smaltites	0	oewn-smaltite-n	Number=Plur	dema	0			rule
+smalto	0		Number=Sing	dema	0	smalto	n	moby_reverse
+smaltos	0		Number=Plur	dema	0	smalto	n	rule
+smalts	0		Number=Plur	dema	0	smalt	n	rule
+smaragd	0		Number=Sing	dema	0	smaragd	n	moby_reverse
+smaragdine	0		Degree=Pos	dema	0	smaragdine	a	moby_reverse
+smaragdine	1		Number=Sing	dema	0	smaragdine	n	moby_reverse
+smaragdite	0		Number=Sing	dema	0	smaragdite	n	moby_reverse
+smaragdites	0		Number=Plur	dema	0	smaragdite	n	rule
+smaragds	0		Number=Plur	dema	0	smaragd	n	rule
+smarm	0		VerbForm=Inf	dema	0	smarm	v	moby_reverse
+smarm	1	oewn-smarm-n	Number=Sing	dema	0			oewn_form
+smarmed	0		Tense=Past+VerbForm=Part	dema	0	smarm	v	rule
+smarmier	0	oewn-smarmy-a	Degree=Cmp	dema	0			oewn_form
+smarmiest	0	oewn-smarmy-a	Degree=Sup	dema	0			oewn_form
+smarmily	0	oewn-smarmily-r	Degree=Pos	dema	0			oewn_form
+smarminess	0	oewn-smarminess-n	Number=Sing	dema	0			oewn_form
+smarminesses	0	oewn-smarminess-n	Number=Plur	dema	0			rule
+smarming	0		VerbForm=Ger	dema	0	smarm	v	rule
+smarms	0		Person=3+Tense=Pres	dema	0	smarm	v	rule
+smarms	1	oewn-smarm-n	Number=Plur	dema	0			rule
+smarmy	0	oewn-smarmy-a	Degree=Pos	dema	0			oewn_form
+smart	0	oewn-smart-a	Degree=Pos	dema	0			oewn_form
+smart	1	oewn-smart-v	VerbForm=Inf	dema	0			oewn_form
+smart	2	oewn-smart-n	Number=Sing	dema	0			oewn_form
+smart	3		Degree=Pos	dema	0	smart	r	moby_reverse
+smart aleck	0	oewn-smart_aleck-n	Number=Sing	dema	0			oewn_form
+smart alecks	0	oewn-smart_aleck-n	Number=Plur	dema	0			rule
+smart as a whip	0	oewn-smart_as_a_whip-a	Degree=Pos	dema	0			oewn_form
+smart bomb	0	oewn-smart_bomb-n	Number=Sing	dema	0			oewn_form
+smart bombs	0	oewn-smart_bomb-n	Number=Plur	dema	0			rule
+smart card	0	oewn-smart_card-n	Number=Sing	dema	0			oewn_form
+smart cards	0	oewn-smart_card-n	Number=Plur	dema	0			rule
+smart money	0	oewn-smart_money-n	Number=Sing	dema	0			oewn_form
+smart moneys	0	oewn-smart_money-n	Number=Plur	dema	0			rule
+smart phone	0	oewn-smart_phone-n	Number=Sing	dema	0			oewn_form
+smart phones	0	oewn-smart_phone-n	Number=Plur	dema	0			rule
+smart set	0	oewn-smart_set-n	Number=Sing	dema	0			oewn_form
+smart sets	0	oewn-smart_set-n	Number=Plur	dema	0			rule
+smarta	0	oewn-smarta-n	Number=Sing	dema	0			oewn_form
+smartas	0	oewn-smarta-n	Number=Plur	dema	0			rule
+smarted	0	oewn-smart-v	Tense=Past+VerbForm=Part	dema	0			rule
+smarten	0		VerbForm=Inf	dema	0	smarten	v	moby_reverse
+smarten up	0	oewn-smarten_up-v	VerbForm=Inf	dema	0			oewn_form
+smartened	0		Tense=Past+VerbForm=Part	dema	0	smarten	v	rule
+smartened up	0	oewn-smarten_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+smartening	0		VerbForm=Ger	dema	0	smarten	v	rule
+smartening up	0	oewn-smarten_up-v	VerbForm=Ger	dema	0			rule
+smartens	0		Person=3+Tense=Pres	dema	0	smarten	v	rule
+smartens up	0	oewn-smarten_up-v	Person=3+Tense=Pres	dema	0			rule
+smarter	0	oewn-smart-a	Degree=Cmp	dema	0			rule
+smartest	0	oewn-smart-a	Degree=Sup	dema	0			rule
+smartie	0		Number=Sing	dema	0	smartie	n	moby_reverse
+smarties	0		Number=Plur	dema	0	smartie	n	rule
+smarting	0	oewn-smart-v	VerbForm=Ger	dema	0			rule
+smarting	1	oewn-smarting-n	Number=Sing	dema	0			oewn_form
+smartingly	0		Degree=Pos	dema	0	smartingly	r	moby_reverse
+smartings	0	oewn-smarting-n	Number=Plur	dema	0			rule
+smartish	0		Degree=Pos	dema	0	smartish	a	moby_reverse
+smartly	0	oewn-smartly-r	Degree=Pos	dema	0			oewn_form
+smartness	0	oewn-smartness-n	Number=Sing	dema	0			oewn_form
+smartnesses	0	oewn-smartness-n	Number=Plur	dema	0			rule
+smartphone	0	oewn-smartphone-n	Number=Sing	dema	0			oewn_form
+smartphones	0	oewn-smartphone-n	Number=Plur	dema	0			rule
+smarts	0	oewn-smart-v	Person=3+Tense=Pres	dema	0			rule
+smarts	1	oewn-smart-n	Number=Plur	dema	0			rule
+smarty	0		Degree=Pos	dema	0	smarty	a	moby_reverse
+smash	0	oewn-smash-v	VerbForm=Inf	dema	0			oewn_form
+smash	1	oewn-smash-n	Number=Sing	dema	0			oewn_form
+smash	2	oewn-smash-r	Degree=Pos	dema	0			oewn_form
+smash hit	0	oewn-smash_hit-n	Number=Sing	dema	0			oewn_form
+smash hits	0	oewn-smash_hit-n	Number=Plur	dema	0			rule
+smash up	0	oewn-smash_up-v	VerbForm=Inf	dema	0			oewn_form
+smash-up	0	oewn-smash-up-n	Number=Sing	dema	0			oewn_form
+smash-ups	0	oewn-smash-up-n	Number=Plur	dema	0			rule
+smashable	0		Degree=Pos	dema	0	smashable	a	moby_reverse
+smashed	0	oewn-smashed-a	Degree=Pos	dema	0			oewn_form
+smashed	1	oewn-smash-v	Tense=Past+VerbForm=Part	dema	0			rule
+smashed up	0	oewn-smash_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+smasher	0	oewn-smasher-n	Number=Sing	dema	0			oewn_form
+smashers	0	oewn-smasher-n	Number=Plur	dema	0			rule
+smashes	0	oewn-smash-v	Person=3+Tense=Pres	dema	0			rule
+smashes	1	oewn-smash-n	Number=Plur	dema	0			rule
+smashes up	0	oewn-smash_up-v	Person=3+Tense=Pres	dema	0			rule
+smashing	0	oewn-smashing-a	Degree=Pos	dema	0			oewn_form
+smashing	1	oewn-smashing-n	Number=Sing	dema	0			oewn_form
+smashing	2	oewn-smash-v	VerbForm=Ger	dema	0			rule
+smashing up	0	oewn-smash_up-v	VerbForm=Ger	dema	0			rule
+smashingly	0	oewn-smashingly-r	Degree=Pos	dema	0			oewn_form
+smashings	0	oewn-smashing-n	Number=Plur	dema	0			rule
+smatch	0		Number=Sing	dema	0	smatch	n	moby_reverse
+smatches	0		Number=Plur	dema	0	smatch	n	rule
+smatter	0		Number=Sing	dema	0	smatter	n	moby_reverse
+smatter	1	oewn-smatter-v	VerbForm=Inf	dema	0			oewn_form
+smattered	0	oewn-smatter-v	Tense=Past+VerbForm=Part	dema	0			rule
+smatterer	0		Number=Sing	dema	0	smatterer	n	moby_reverse
+smatterers	0		Number=Plur	dema	0	smatterer	n	rule
+smattering	0	oewn-smattering-n	Number=Sing	dema	0			oewn_form
+smattering	1	oewn-smatter-v	VerbForm=Ger	dema	0			rule
+smatteringly	0		Degree=Pos	dema	0	smatteringly	r	moby_reverse
+smatterings	0	oewn-smattering-n	Number=Plur	dema	0			rule
+smatters	0		Number=Plur	dema	0	smatter	n	rule
+smatters	1	oewn-smatter-v	Person=3+Tense=Pres	dema	0			rule
+smaze	0		Number=Sing	dema	0	smaze	n	moby_reverse
+smazes	0		Number=Plur	dema	0	smaze	n	rule
+smear	0	oewn-smear-v	VerbForm=Inf	dema	0			oewn_form
+smear	1	oewn-smear-n	Number=Sing	dema	0			oewn_form
+smear test	0	oewn-smear_test-n	Number=Sing	dema	0			oewn_form
+smear tests	0	oewn-smear_test-n	Number=Plur	dema	0			rule
+smear word	0	oewn-smear_word-n	Number=Sing	dema	0			oewn_form
+smear words	0	oewn-smear_word-n	Number=Plur	dema	0			rule
+smearcase	0		Number=Sing	dema	0	smearcase	n	moby_reverse
+smearcases	0		Number=Plur	dema	0	smearcase	n	rule
+smeared	0	oewn-smear-v	Tense=Past+VerbForm=Part	dema	0			rule
+smearer	0		Number=Sing	dema	0	smearer	n	moby_reverse
+smearers	0		Number=Plur	dema	0	smearer	n	rule
+smearier	0		Degree=Cmp	dema	0	smeary	a	moby_reverse
+smeariest	0		Degree=Sup	dema	0	smeary	a	moby_reverse
+smeariness	0		Number=Sing	dema	0	smeariness	n	moby_reverse
+smearinesses	0		Number=Plur	dema	0	smeariness	n	rule
+smearing	0	oewn-smear-v	VerbForm=Ger	dema	0			rule
+smears	0	oewn-smear-v	Person=3+Tense=Pres	dema	0			rule
+smears	1	oewn-smear-n	Number=Plur	dema	0			rule
+smeary	0		Degree=Pos	dema	0	smeary	a	moby_reverse
+smectic	0		Degree=Pos	dema	0	smectic	a	moby_reverse
+smeek	0		Number=Sing	dema	0	smeek	n	moby_reverse
+smeek	1		VerbForm=Inf	dema	0	smeek	v	moby_reverse
+smeeks	0		Number=Plur	dema	0	smeek	n	rule
+smeeky	0		Degree=Pos	dema	0	smeeky	a	moby_reverse
+smegma	0	oewn-smegma-n	Number=Sing	dema	0			oewn_form
+smegmas	0	oewn-smegma-n	Number=Plur	dema	0			rule
+smell	0	oewn-smell-n	Number=Sing	dema	1			carried
+smell	1	oewn-smell-v	VerbForm=Inf	dema	1			carried
+smell out	0	oewn-smell_out-v	VerbForm=Inf	dema	0			oewn_form
+smell up	0	oewn-smell_up-v	VerbForm=Inf	dema	0			oewn_form
+smellable	0		Degree=Pos	dema	0	smellable	a	moby_reverse
+smelled	0	oewn-smell-v	Tense=Past	dema	1			carried
+smeller	0		Number=Sing	dema	0	smeller	n	moby_reverse
+smellers	0		Number=Plur	dema	0	smeller	n	rule
+smellier	0	oewn-smelly-a	Degree=Cmp	dema	0			oewn_form
+smelliest	0	oewn-smelly-a	Degree=Sup	dema	0			oewn_form
+smelliness	0		Number=Sing	dema	0	smelliness	n	moby_reverse
+smellinesses	0		Number=Plur	dema	0	smelliness	n	rule
+smelling	0	oewn-smell-v	VerbForm=Ger	dema	1			carried
+smelling	1	oewn-smell-n	Number=Sing+VerbForm=Ger	dema	1			carried
+smelling bottle	0	oewn-smelling_bottle-n	Number=Sing	dema	0			oewn_form
+smelling bottles	0	oewn-smelling_bottle-n	Number=Plur	dema	0			rule
+smelling out	0	oewn-smell_out-v	VerbForm=Ger	dema	0			rule
+smelling salts	0	oewn-smelling_salts-n	Number=Sing	dema	0			oewn_form
+smelling up	0	oewn-smell_up-v	VerbForm=Ger	dema	0			rule
+smellings	0	oewn-smelling-n	Number=Plur	dema	0			rule
+smells	0	oewn-smell-n	Number=Plur	dema	1			carried
+smells	1	oewn-smell-v	Person=3+Tense=Pres	dema	1			carried
+smells out	0	oewn-smell_out-v	Person=3+Tense=Pres	dema	0			rule
+smells up	0	oewn-smell_up-v	Person=3+Tense=Pres	dema	0			rule
+smelly	0	oewn-smelly-a	Degree=Pos	dema	0			oewn_form
+smelt	0	oewn-smell-v	Tense=Past+VerbForm=Part	dema	0			hand
+smelt	1	oewn-smelt-v	VerbForm=Inf	dema	0			oewn_form
+smelt	2	oewn-smelt-n	Number=Plur	dema	0			agid
+smelt	3	oewn-smelt-n	Number=Sing	dema	0			oewn_form
+smelted	0	oewn-smelt-v	Tense=Past+VerbForm=Part	dema	0			rule
+smelter	0	oewn-smelter-n	Number=Sing	dema	0			oewn_form
+smelteries	0	oewn-smeltery-n	Number=Plur	dema	0			rule
+smelters	0	oewn-smelter-n	Number=Plur	dema	0			rule
+smeltery	0	oewn-smeltery-n	Number=Sing	dema	0			oewn_form
+smelting	0	oewn-smelt-v	VerbForm=Ger	dema	0			rule
+smelts	0	oewn-smelt-v	Person=3+Tense=Pres	dema	0			rule
+smelts	1	oewn-smelt-n	Number=Plur	dema	0			rule_variant
+smew	0	oewn-smew-n	Number=Sing	dema	0			oewn_form
+smews	0	oewn-smew-n	Number=Plur	dema	0			rule
+smidge	0	oewn-smidge-n	Number=Sing	dema	0			oewn_form
+smidgen	0	oewn-smidgen-n	Number=Sing	dema	0			oewn_form
+smidgens	0	oewn-smidgen-n	Number=Plur	dema	0			rule
+smidgeon	0	oewn-smidgeon-n	Number=Sing	dema	0			oewn_form
+smidgeons	0	oewn-smidgeon-n	Number=Plur	dema	0			rule
+smidges	0	oewn-smidge-n	Number=Plur	dema	0			rule
+smidgin	0	oewn-smidgin-n	Number=Sing	dema	0			oewn_form
+smidgins	0	oewn-smidgin-n	Number=Plur	dema	0			rule
+smiercase	0		Number=Sing	dema	0	smiercase	n	moby_reverse
+smiercases	0		Number=Plur	dema	0	smiercase	n	rule
+smilacaceous	0		Degree=Pos	dema	0	smilacaceous	a	moby_reverse
+smilax	0	oewn-smilax-n	Number=Sing	dema	0			oewn_form
+smilaxes	0	oewn-smilax-n	Number=Plur	dema	0			rule
+smile	0	oewn-smile-n	Number=Sing	dema	0			oewn_form
+smile	1	oewn-smile-v	VerbForm=Inf	dema	0			oewn_form
+smiled	0	oewn-smile-v	Tense=Past+VerbForm=Part	dema	0			rule
+smileless	0		Degree=Pos	dema	0	smileless	a	moby_reverse
+smilelessly	0		Degree=Pos	dema	0	smilelessly	r	moby_reverse
+smiler	0	oewn-smiler-n	Number=Sing	dema	0			oewn_form
+smilers	0	oewn-smiler-n	Number=Plur	dema	0			rule
+smiles	0	oewn-smile-n	Number=Plur	dema	0			rule
+smiles	1	oewn-smile-v	Person=3+Tense=Pres	dema	0			rule
+smiley	0	oewn-smiley-n	Number=Sing	dema	0			oewn_form
+smileys	0	oewn-smiley-n	Number=Plur	dema	0			rule
+smiling	0	oewn-smiling-n	Number=Sing	dema	0			oewn_form
+smiling	1	oewn-smile-v	VerbForm=Ger	dema	0			rule
+smiling	2	oewn-smiling-a	Degree=Pos	dema	0			oewn_form
+smilingly	0	oewn-smilingly-r	Degree=Pos	dema	0			oewn_form
+smilings	0	oewn-smiling-n	Number=Plur	dema	0			rule
+smilo	0	oewn-smilo-n	Number=Sing	dema	0			oewn_form
+smilo grass	0	oewn-smilo_grass-n	Number=Sing	dema	0			oewn_form
+smilo grasses	0	oewn-smilo_grass-n	Number=Plur	dema	0			rule
+smilos	0	oewn-smilo-n	Number=Plur	dema	0			rule
+smirch	0	oewn-smirch-v	VerbForm=Inf	dema	0			oewn_form
+smirch	1	oewn-smirch-n	Number=Sing	dema	0			oewn_form
+smirched	0	oewn-smirch-v	Tense=Past+VerbForm=Part	dema	0			rule
+smirches	0	oewn-smirch-v	Person=3+Tense=Pres	dema	0			rule
+smirches	1	oewn-smirch-n	Number=Plur	dema	0			rule
+smirching	0	oewn-smirch-v	VerbForm=Ger	dema	0			rule
+smirchless	0		Degree=Pos	dema	0	smirchless	a	moby_reverse
+smirk	0	oewn-smirk-n	Number=Sing	dema	0			oewn_form
+smirk	1	oewn-smirk-v	VerbForm=Inf	dema	0			oewn_form
+smirked	0	oewn-smirk-v	Tense=Past+VerbForm=Part	dema	0			rule
+smirker	0	oewn-smirker-n	Number=Sing	dema	0			oewn_form
+smirkers	0	oewn-smirker-n	Number=Plur	dema	0			rule
+smirking	0	oewn-smirk-v	VerbForm=Ger	dema	0			rule
+smirkingly	0		Degree=Pos	dema	0	smirkingly	r	moby_reverse
+smirks	0	oewn-smirk-n	Number=Plur	dema	0			rule
+smirks	1	oewn-smirk-v	Person=3+Tense=Pres	dema	0			rule
+smit	0		Number=Sing	dema	0	smit	n	moby_reverse
+smitch	0		Number=Sing	dema	0	smitch	n	moby_reverse
+smitches	0		Number=Plur	dema	0	smitch	n	rule
+smite	0	oewn-smite-v	VerbForm=Inf	dema	0			oewn_form
+smiter	0		Number=Sing	dema	0	smiter	n	moby_reverse
+smiters	0		Number=Plur	dema	0	smiter	n	rule
+smites	0	oewn-smite-v	Person=3+Tense=Pres	dema	0			rule
+smith	0	oewn-smith-n	Number=Sing	dema	0			oewn_form
+smithereens	0	oewn-smithereens-n	Number=Sing	dema	0			oewn_form
+smitheries	0		Number=Plur	dema	0	smithery	n	rule
+smithery	0		Number=Sing	dema	0	smithery	n	moby_reverse
+smithies	0	oewn-smithy-n	Number=Plur	dema	0			rule
+smiths	0	oewn-smith-n	Number=Plur	dema	0			rule
+smithsonite	0	oewn-smithsonite-n	Number=Sing	dema	0			oewn_form
+smithsonites	0	oewn-smithsonite-n	Number=Plur	dema	0			rule
+smithy	0	oewn-smithy-n	Number=Sing	dema	0			oewn_form
+smiting	0	oewn-smite-v	VerbForm=Ger	dema	0			rule
+smits	0		Number=Plur	dema	0	smit	n	rule
+smitten	0	oewn-smite-v	VerbForm=Part	dema	0			hand
+smitten	1	oewn-smitten-a	Degree=Pos	dema	0			oewn_form
+smock	0	oewn-smock-n	Number=Sing	dema	0			oewn_form
+smock	1	oewn-smock-v	VerbForm=Inf	dema	0			oewn_form
+smocked	0	oewn-smock-v	Tense=Past+VerbForm=Part	dema	0			rule
+smocking	0	oewn-smocking-n	Number=Sing	dema	0			oewn_form
+smocking	1	oewn-smock-v	VerbForm=Ger	dema	0			rule
+smockings	0	oewn-smocking-n	Number=Plur	dema	0			rule
+smocklike	0		Degree=Pos	dema	0	smocklike	a	moby_reverse
+smocks	0	oewn-smock-n	Number=Plur	dema	0			rule
+smocks	1	oewn-smock-v	Person=3+Tense=Pres	dema	0			rule
+smog	0	oewn-smog-n	Number=Sing	dema	0			oewn_form
+smoggier	0	oewn-smoggy-a	Degree=Cmp	dema	0			rule
+smoggiest	0	oewn-smoggy-a	Degree=Sup	dema	0			rule
+smogginess	0	oewn-smogginess-n	Number=Sing	dema	0			oewn_form
+smogginesses	0	oewn-smogginess-n	Number=Plur	dema	0			rule
+smoggy	0	oewn-smoggy-a	Degree=Pos	dema	0			oewn_form
+smogs	0	oewn-smog-n	Number=Plur	dema	0			rule
+smoke	0	oewn-smoke-n	Number=Sing	dema	1			carried
+smoke	1	oewn-smoke-v	VerbForm=Inf	dema	1			carried
+smoke alarm	0	oewn-smoke_alarm-n	Number=Sing	dema	0			oewn_form
+smoke alarms	0	oewn-smoke_alarm-n	Number=Plur	dema	0			rule
+smoke bomb	0	oewn-smoke_bomb-n	Number=Sing	dema	0			oewn_form
+smoke bombs	0	oewn-smoke_bomb-n	Number=Plur	dema	0			rule
+smoke bush	0	oewn-smoke_bush-n	Number=Sing	dema	0			oewn_form
+smoke bushes	0	oewn-smoke_bush-n	Number=Plur	dema	0			rule
+smoke grenade	0	oewn-smoke_grenade-n	Number=Sing	dema	0			oewn_form
+smoke grenades	0	oewn-smoke_grenade-n	Number=Plur	dema	0			rule
+smoke hole	0	oewn-smoke_hole-n	Number=Sing	dema	0			oewn_form
+smoke holes	0	oewn-smoke_hole-n	Number=Plur	dema	0			rule
+smoke out	0	oewn-smoke_out-v	VerbForm=Inf	dema	0			oewn_form
+smoke screen	0	oewn-smoke_screen-n	Number=Sing	dema	0			oewn_form
+smoke screens	0	oewn-smoke_screen-n	Number=Plur	dema	0			rule
+smoke tree	0	oewn-smoke_tree-n	Number=Sing	dema	0			oewn_form
+smoke trees	0	oewn-smoke_tree-n	Number=Plur	dema	0			rule
+smoke-cured	0	oewn-smoke-cured-a	Degree=Pos	dema	0			oewn_form
+smoke-dried	0	oewn-smoke-dried-a	Degree=Pos	dema	0			oewn_form
+smoke-filled	0	oewn-smoke-filled-a	Degree=Pos	dema	0			oewn_form
+smoke-free	0	oewn-smoke-free-a	Degree=Pos	dema	0			oewn_form
+smokechaser	0		Number=Sing	dema	0	smokechaser	n	moby_reverse
+smokechasers	0		Number=Plur	dema	0	smokechaser	n	rule
+smoked	0	oewn-smoke-v	Tense=Past	dema	1			carried
+smoked eel	0	oewn-smoked_eel-n	Number=Sing	dema	0			oewn_form
+smoked eels	0	oewn-smoked_eel-n	Number=Plur	dema	0			rule
+smoked haddock	0	oewn-smoked_haddock-n	Number=Sing	dema	0			oewn_form
+smoked haddocks	0	oewn-smoked_haddock-n	Number=Plur	dema	0			rule
+smoked herring	0	oewn-smoked_herring-n	Number=Sing	dema	0			oewn_form
+smoked herrings	0	oewn-smoked_herring-n	Number=Plur	dema	0			rule
+smoked mackerel	0	oewn-smoked_mackerel-n	Number=Sing	dema	0			oewn_form
+smoked mackerels	0	oewn-smoked_mackerel-n	Number=Plur	dema	0			rule
+smoked out	0	oewn-smoke_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoked salmon	0	oewn-smoked_salmon-n	Number=Sing	dema	0			oewn_form
+smoked salmons	0	oewn-smoked_salmon-n	Number=Plur	dema	0			rule
+smokeho	0		Number=Sing	dema	0	smokeho	n	moby_reverse
+smokehos	0		Number=Plur	dema	0	smokeho	n	rule
+smokehouse	0	oewn-smokehouse-n	Number=Sing	dema	0			oewn_form
+smokehouses	0	oewn-smokehouse-n	Number=Plur	dema	0			rule
+smokejack	0		Number=Sing	dema	0	smokejack	n	moby_reverse
+smokejacks	0		Number=Plur	dema	0	smokejack	n	rule
+smokejumper	0		Number=Sing	dema	0	smokejumper	n	moby_reverse
+smokejumpers	0		Number=Plur	dema	0	smokejumper	n	rule
+smokeless	0	oewn-smokeless-a	Degree=Pos	dema	0			oewn_form
+smokeless powder	0	oewn-smokeless_powder-n	Number=Sing	dema	0			oewn_form
+smokeless powders	0	oewn-smokeless_powder-n	Number=Plur	dema	0			rule
+smokelessly	0		Degree=Pos	dema	0	smokelessly	r	moby_reverse
+smokelessness	0		Number=Sing	dema	0	smokelessness	n	moby_reverse
+smokelike	0		Degree=Pos	dema	0	smokelike	a	moby_reverse
+smokeproof	0		Degree=Pos	dema	0	smokeproof	a	moby_reverse
+smoker	0	oewn-smoker-n	Number=Sing	dema	0			oewn_form
+smoker fuel	0	oewn-smoker_fuel-n	Number=Sing	dema	0			oewn_form
+smoker fuels	0	oewn-smoker_fuel-n	Number=Plur	dema	0			rule
+smokers	0	oewn-smoker-n	Number=Plur	dema	0			rule
+smokes	0	oewn-smoke-n	Number=Plur	dema	1			carried
+smokes	1	oewn-smoke-v	Person=3+Tense=Pres	dema	1			carried
+smokes out	0	oewn-smoke_out-v	Person=3+Tense=Pres	dema	0			rule
+smokescreen	0	oewn-smokescreen-n	Number=Sing	dema	0			oewn_form
+smokescreens	0	oewn-smokescreen-n	Number=Plur	dema	0			rule
+smokestack	0	oewn-smokestack-n	Number=Sing	dema	0			oewn_form
+smokestacks	0	oewn-smokestack-n	Number=Plur	dema	0			rule
+smokier	0	oewn-smoky-a	Degree=Cmp	dema	0			oewn_form
+smokiest	0	oewn-smoky-a	Degree=Sup	dema	0			oewn_form
+smoking	0	oewn-smoke-v	VerbForm=Ger	dema	1			carried
+smoking	1	oewn-smoke-n	Number=Sing+VerbForm=Ger	dema	1			carried
+smoking car	0	oewn-smoking_car-n	Number=Sing	dema	0			oewn_form
+smoking carriage	0	oewn-smoking_carriage-n	Number=Sing	dema	0			oewn_form
+smoking carriages	0	oewn-smoking_carriage-n	Number=Plur	dema	0			rule
+smoking cars	0	oewn-smoking_car-n	Number=Plur	dema	0			rule
+smoking compartment	0	oewn-smoking_compartment-n	Number=Sing	dema	0			oewn_form
+smoking compartments	0	oewn-smoking_compartment-n	Number=Plur	dema	0			rule
+smoking gun	0	oewn-smoking_gun-n	Number=Sing	dema	0			oewn_form
+smoking guns	0	oewn-smoking_gun-n	Number=Plur	dema	0			rule
+smoking jacket	0	oewn-smoking_jacket-n	Number=Sing	dema	0			oewn_form
+smoking jackets	0	oewn-smoking_jacket-n	Number=Plur	dema	0			rule
+smoking mixture	0	oewn-smoking_mixture-n	Number=Sing	dema	0			oewn_form
+smoking mixtures	0	oewn-smoking_mixture-n	Number=Plur	dema	0			rule
+smoking out	0	oewn-smoke_out-v	VerbForm=Ger	dema	0			rule
+smoking room	0	oewn-smoking_room-n	Number=Sing	dema	0			oewn_form
+smoking rooms	0	oewn-smoking_room-n	Number=Plur	dema	0			rule
+smokings	0	oewn-smoking-n	Number=Plur	dema	0			rule
+smoko	0		Number=Sing	dema	0	smoko	n	moby_reverse
+smokos	0		Number=Plur	dema	0	smoko	n	rule
+smoky	0	oewn-smoky-a	Degree=Pos	dema	0			oewn_form
+smoky quartz	0	oewn-smoky_quartz-n	Number=Sing	dema	0			oewn_form
+smoky quartzes	0	oewn-smoky_quartz-n	Number=Plur	dema	0			rule
+smol	0	oewn-smol-a	Degree=Pos	dema	0			oewn_form
+smolder	0	oewn-smolder-v	VerbForm=Inf	dema	0			oewn_form
+smolder	1	oewn-smolder-n	Number=Sing	dema	0			oewn_form
+smoldered	0	oewn-smolder-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoldering	0	oewn-smolder-v	VerbForm=Ger	dema	0			rule
+smoldering	1	oewn-smoldering-a	Degree=Pos	dema	0			oewn_form
+smolderingly	0	oewn-smolderingly-r	Degree=Pos	dema	0			oewn_form
+smolders	0	oewn-smolder-v	Person=3+Tense=Pres	dema	0			rule
+smolders	1	oewn-smolder-n	Number=Plur	dema	0			rule
+smolt	0		Number=Sing	dema	0	smolt	n	moby_reverse
+smolts	0		Number=Plur	dema	0	smolt	n	rule
+smooch	0	oewn-smooch-v	VerbForm=Inf	dema	0			oewn_form
+smooch	1	oewn-smooch-n	Number=Sing	dema	0			oewn_form
+smooched	0	oewn-smooch-v	Tense=Past+VerbForm=Part	dema	0			rule
+smooches	0	oewn-smooch-v	Person=3+Tense=Pres	dema	0			rule
+smooches	1	oewn-smooch-n	Number=Plur	dema	0			rule
+smooching	0	oewn-smooch-v	VerbForm=Ger	dema	0			rule
+smooching	1	oewn-smooching-n	Number=Sing	dema	0			oewn_form
+smoochings	0	oewn-smooching-n	Number=Plur	dema	0			rule
+smoodge	0		VerbForm=Inf	dema	0	smoodge	v	moby_reverse
+smoodged	0		Tense=Past+VerbForm=Part	dema	0	smoodge	v	rule
+smoodger	0		Number=Sing	dema	0	smoodger	n	moby_reverse
+smoodgers	0		Number=Plur	dema	0	smoodger	n	rule
+smoodges	0		Person=3+Tense=Pres	dema	0	smoodge	v	rule
+smoodging	0		VerbForm=Ger	dema	0	smoodge	v	rule
+smooth	0	oewn-smooth-a	Degree=Pos	dema	0			oewn_form
+smooth	1		Degree=Pos	dema	0	smooth	r	moby_reverse
+smooth	2	oewn-smooth-v	VerbForm=Inf	dema	0			oewn_form
+smooth	3	oewn-smooth-n	Number=Sing	dema	0			oewn_form
+smooth alder	0	oewn-smooth_alder-n	Number=Sing	dema	0			oewn_form
+smooth alders	0	oewn-smooth_alder-n	Number=Plur	dema	0			rule
+smooth aster	0	oewn-smooth_aster-n	Number=Sing	dema	0			oewn_form
+smooth asters	0	oewn-smooth_aster-n	Number=Plur	dema	0			rule
+smooth bark kauri	0	oewn-smooth_bark_kauri-n	Number=Sing	dema	0			oewn_form
+smooth bark kauris	0	oewn-smooth_bark_kauri-n	Number=Plur	dema	0			rule
+smooth crabgrass	0	oewn-smooth_crabgrass-n	Number=Sing	dema	0			oewn_form
+smooth crabgrasses	0	oewn-smooth_crabgrass-n	Number=Plur	dema	0			rule
+smooth darling pea	0	oewn-smooth_darling_pea-n	Number=Sing	dema	0			oewn_form
+smooth darling peas	0	oewn-smooth_darling_pea-n	Number=Plur	dema	0			rule
+smooth dogfish	0	oewn-smooth_dogfish-n	Number=Sing	dema	0			oewn_form
+smooth dogfishes	0	oewn-smooth_dogfish-n	Number=Plur	dema	0			rule
+smooth earthball	0	oewn-smooth_earthball-n	Number=Sing	dema	0			oewn_form
+smooth earthballs	0	oewn-smooth_earthball-n	Number=Plur	dema	0			rule
+smooth green snake	0	oewn-smooth_green_snake-n	Number=Sing	dema	0			oewn_form
+smooth green snakes	0	oewn-smooth_green_snake-n	Number=Plur	dema	0			rule
+smooth hammerhead	0	oewn-smooth_hammerhead-n	Number=Sing	dema	0			oewn_form
+smooth hammerheads	0	oewn-smooth_hammerhead-n	Number=Plur	dema	0			rule
+smooth lip fern	0	oewn-smooth_lip_fern-n	Number=Sing	dema	0			oewn_form
+smooth lip ferns	0	oewn-smooth_lip_fern-n	Number=Plur	dema	0			rule
+smooth muscle	0	oewn-smooth_muscle-n	Number=Sing	dema	0			oewn_form
+smooth muscle cell	0	oewn-smooth_muscle_cell-n	Number=Sing	dema	0			oewn_form
+smooth muscle cells	0	oewn-smooth_muscle_cell-n	Number=Plur	dema	0			rule
+smooth muscles	0	oewn-smooth_muscle-n	Number=Plur	dema	0			rule
+smooth out	0	oewn-smooth_out-v	VerbForm=Inf	dema	0			oewn_form
+smooth over	0	oewn-smooth_over-v	VerbForm=Inf	dema	0			oewn_form
+smooth plane	0	oewn-smooth_plane-n	Number=Sing	dema	0			oewn_form
+smooth planes	0	oewn-smooth_plane-n	Number=Plur	dema	0			rule
+smooth softshell	0	oewn-smooth_softshell-n	Number=Sing	dema	0			oewn_form
+smooth softshells	0	oewn-smooth_softshell-n	Number=Plur	dema	0			rule
+smooth sumac	0	oewn-smooth_sumac-n	Number=Sing	dema	0			oewn_form
+smooth sumacs	0	oewn-smooth_sumac-n	Number=Plur	dema	0			rule
+smooth winterberry hollies	0	oewn-smooth_winterberry_holly-n	Number=Plur	dema	0			rule
+smooth winterberry holly	0	oewn-smooth_winterberry_holly-n	Number=Sing	dema	0			oewn_form
+smooth woodsia	0	oewn-smooth_woodsia-n	Number=Sing	dema	0			oewn_form
+smooth woodsias	0	oewn-smooth_woodsia-n	Number=Plur	dema	0			rule
+smooth-bodied	0	oewn-smooth-bodied-a	Degree=Pos	dema	0			oewn_form
+smooth-faced	0	oewn-smooth-faced-a	Degree=Pos	dema	0			oewn_form
+smooth-haired	0	oewn-smooth-haired-a	Degree=Pos	dema	0			oewn_form
+smooth-haired fox terrier	0	oewn-smooth-haired_fox_terrier-n	Number=Sing	dema	0			oewn_form
+smooth-haired fox terriers	0	oewn-smooth-haired_fox_terrier-n	Number=Plur	dema	0			rule
+smooth-leaved elm	0	oewn-smooth-leaved_elm-n	Number=Sing	dema	0			oewn_form
+smooth-leaved elms	0	oewn-smooth-leaved_elm-n	Number=Plur	dema	0			rule
+smooth-shaven	0	oewn-smooth-shaven-a	Degree=Pos	dema	0			oewn_form
+smooth-shelled	0	oewn-smooth-shelled-a	Degree=Pos	dema	0			oewn_form
+smooth-skinned	0	oewn-smooth-skinned-a	Degree=Pos	dema	0			oewn_form
+smooth-spoken	0	oewn-smooth-spoken-a	Degree=Pos	dema	0			oewn_form
+smooth-textured	0	oewn-smooth-textured-a	Degree=Pos	dema	0			oewn_form
+smooth-tongued	0	oewn-smooth-tongued-a	Degree=Pos	dema	0			oewn_form
+smoothable	0		Degree=Pos	dema	0	smoothable	a	moby_reverse
+smoothbark	0	oewn-smoothbark-n	Number=Sing	dema	0			oewn_form
+smoothbarks	0	oewn-smoothbark-n	Number=Plur	dema	0			rule
+smoothbore	0	oewn-smoothbore-n	Number=Sing	dema	0			oewn_form
+smoothbore	1	oewn-smoothbore-a	Degree=Pos	dema	0			oewn_form
+smoothbores	0	oewn-smoothbore-n	Number=Plur	dema	0			rule
+smoothed	0	oewn-smooth-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoothed	1	oewn-smoothed-a	Degree=Pos	dema	0			oewn_form
+smoothed out	0	oewn-smooth_out-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoothed over	0	oewn-smooth_over-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoothen	0	oewn-smoothen-v	VerbForm=Inf	dema	0			oewn_form
+smoothened	0	oewn-smoothen-v	Tense=Past+VerbForm=Part	dema	0			rule
+smoothened	1	oewn-smoothened-a	Degree=Pos	dema	0			oewn_form
+smoothening	0	oewn-smoothen-v	VerbForm=Ger	dema	0			rule
+smoothens	0	oewn-smoothen-v	Person=3+Tense=Pres	dema	0			rule
+smoother	0	oewn-smoother-n	Number=Sing	dema	0			oewn_form
+smoother	1	oewn-smooth-a	Degree=Cmp	dema	0			rule
+smoothers	0	oewn-smoother-n	Number=Plur	dema	0			rule
+smoothes	0	oewn-smooth-n	Number=Plur	dema	0			rule_variant
+smoothes	1	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
+smoothest	0	oewn-smooth-a	Degree=Sup	dema	0			rule
+smoothhound	0	oewn-smoothhound-n	Number=Sing	dema	0			oewn_form
+smoothhound shark	0	oewn-smoothhound_shark-n	Number=Sing	dema	0			oewn_form
+smoothhound sharks	0	oewn-smoothhound_shark-n	Number=Plur	dema	0			rule
+smoothhounds	0	oewn-smoothhound-n	Number=Plur	dema	0			rule
+smoothie	0	oewn-smoothie-n	Number=Sing	dema	0			oewn_form
+smoothies	0	oewn-smoothie-n	Number=Plur	dema	0			rule
+smoothies	1	oewn-smoothy-n	Number=Plur	dema	0			rule
+smoothing	0	oewn-smooth-v	VerbForm=Ger	dema	0			rule
+smoothing iron	0	oewn-smoothing_iron-n	Number=Sing	dema	0			oewn_form
+smoothing irons	0	oewn-smoothing_iron-n	Number=Plur	dema	0			rule
+smoothing out	0	oewn-smooth_out-v	VerbForm=Ger	dema	0			rule
+smoothing over	0	oewn-smooth_over-v	VerbForm=Ger	dema	0			rule
+smoothing plane	0	oewn-smoothing_plane-n	Number=Sing	dema	0			oewn_form
+smoothing planes	0	oewn-smoothing_plane-n	Number=Plur	dema	0			rule
+smoothly	0	oewn-smoothly-r	Degree=Pos	dema	0			oewn_form
+smoothness	0	oewn-smoothness-n	Number=Sing	dema	0			oewn_form
+smoothnesses	0	oewn-smoothness-n	Number=Plur	dema	0			rule
+smooths	0	oewn-smooth-v	Person=3+Tense=Pres	dema	0			rule_variant
+smooths	1	oewn-smooth-n	Number=Plur	dema	0			rule_variant
+smooths out	0	oewn-smooth_out-v	Person=3+Tense=Pres	dema	0			rule
+smooths over	0	oewn-smooth_over-v	Person=3+Tense=Pres	dema	0			rule
+smoothy	0	oewn-smoothy-n	Number=Sing	dema	0			oewn_form
+smorebro	0		Number=Sing	dema	0	smorebro	n	moby_reverse
+smorebros	0		Number=Plur	dema	0	smorebro	n	rule
+smorgasbord	0	oewn-smorgasbord-n	Number=Sing	dema	0			oewn_form
+smorgasbords	0	oewn-smorgasbord-n	Number=Plur	dema	0			rule
+smorzando	0		Degree=Pos	dema	0	smorzando	a	moby_reverse
+smote	0	oewn-smite-v	Tense=Past	dema	0			hand
+smother	0	oewn-smother-v	VerbForm=Inf	dema	0			oewn_form
+smother	1	oewn-smother-n	Number=Sing	dema	0			oewn_form
+smotherable	0		Degree=Pos	dema	0	smotherable	a	moby_reverse
+smothered	0	oewn-smother-v	Tense=Past+VerbForm=Part	dema	0			rule
+smothered	1	oewn-smothered-a	Degree=Pos	dema	0			oewn_form
+smotherer	0	oewn-smotherer-n	Number=Sing	dema	0			oewn_form
+smotherers	0	oewn-smotherer-n	Number=Plur	dema	0			rule
+smothering	0	oewn-smother-v	VerbForm=Ger	dema	0			rule
+smothering	1	oewn-smothering-a	Degree=Pos	dema	0			oewn_form
+smothers	0	oewn-smother-v	Person=3+Tense=Pres	dema	0			rule
+smothers	1	oewn-smother-n	Number=Plur	dema	0			rule
+smothery	0		Degree=Pos	dema	0	smothery	a	moby_reverse
+smoulder	0	oewn-smoulder-v	VerbForm=Inf	dema	0			oewn_form
+smoulder	1	oewn-smoulder-n	Number=Sing	dema	0			oewn_form
+smouldered	0	oewn-smoulder-v	Tense=Past+VerbForm=Part	dema	0			rule
+smouldering	0	oewn-smoulder-v	VerbForm=Ger	dema	0			rule
+smouldering	1	oewn-smouldering-a	Degree=Pos	dema	0			oewn_form
+smoulderingly	0	oewn-smoulderingly-r	Degree=Pos	dema	0			oewn_form
+smoulders	0	oewn-smoulder-v	Person=3+Tense=Pres	dema	0			rule
+smoulders	1	oewn-smoulder-n	Number=Plur	dema	0			rule
+smriti	0		Number=Sing	dema	0	smriti	n	moby_reverse
+smritis	0		Number=Plur	dema	0	smriti	n	rule
+smudge	0	oewn-smudge-v	VerbForm=Inf	dema	0			oewn_form
+smudge	1	oewn-smudge-n	Number=Sing	dema	0			oewn_form
+smudged	0	oewn-smudge-v	Tense=Past+VerbForm=Part	dema	0			rule
+smudgedly	0		Degree=Pos	dema	0	smudgedly	r	moby_reverse
+smudgeless	0		Degree=Pos	dema	0	smudgeless	a	moby_reverse
+smudges	0	oewn-smudge-v	Person=3+Tense=Pres	dema	0			rule
+smudges	1	oewn-smudge-n	Number=Plur	dema	0			rule
+smudgier	0	oewn-smudgy-a	Degree=Cmp	dema	0			rule
+smudgiest	0	oewn-smudgy-a	Degree=Sup	dema	0			rule
+smudgily	0		Degree=Pos	dema	0	smudgily	r	moby_reverse
+smudginess	0		Number=Sing	dema	0	smudginess	n	moby_reverse
+smudginesses	0		Number=Plur	dema	0	smudginess	n	rule
+smudging	0	oewn-smudge-v	VerbForm=Ger	dema	0			rule
+smudgy	0	oewn-smudgy-a	Degree=Pos	dema	0			oewn_form
+smug	0	oewn-smug-a	Degree=Pos	dema	0			oewn_form
+smugger	0	oewn-smug-a	Degree=Cmp	dema	0			oewn_form
+smuggest	0	oewn-smug-a	Degree=Sup	dema	0			oewn_form
+smuggle	0	oewn-smuggle-v	VerbForm=Inf	dema	0			oewn_form
+smuggled	0	oewn-smuggle-v	Tense=Past+VerbForm=Part	dema	0			rule
+smuggled	1	oewn-smuggled-a	Degree=Pos	dema	0			oewn_form
+smuggler	0	oewn-smuggler-n	Number=Sing	dema	0			oewn_form
+smugglers	0	oewn-smuggler-n	Number=Plur	dema	0			rule
+smuggles	0	oewn-smuggle-v	Person=3+Tense=Pres	dema	0			rule
+smuggling	0	oewn-smuggling-n	Number=Sing	dema	0			oewn_form
+smuggling	1	oewn-smuggle-v	VerbForm=Ger	dema	0			rule
+smugglings	0	oewn-smuggling-n	Number=Plur	dema	0			rule
+smugly	0	oewn-smugly-r	Degree=Pos	dema	0			oewn_form
+smugness	0	oewn-smugness-n	Number=Sing	dema	0			oewn_form
+smugnesses	0	oewn-smugness-n	Number=Plur	dema	0			rule
+smut	0	oewn-smut-n	Number=Sing	dema	0			oewn_form
+smut	1	oewn-smut-v	VerbForm=Inf	dema	0			oewn_form
+smut fungus	0	oewn-smut_fungus-n	Number=Sing	dema	0			oewn_form
+smut grass	0	oewn-smut_grass-n	Number=Sing	dema	0			oewn_form
+smut grasses	0	oewn-smut_grass-n	Number=Plur	dema	0			rule
+smutch	0	oewn-smutch-v	VerbForm=Inf	dema	0			oewn_form
+smutch	1		Number=Sing	dema	0	smutch	n	moby_reverse
+smutched	0	oewn-smutch-v	Tense=Past+VerbForm=Part	dema	0			rule
+smutches	0	oewn-smutch-v	Person=3+Tense=Pres	dema	0			rule
+smutchier	0		Degree=Cmp	dema	0	smutchy	a	moby_reverse
+smutchiest	0		Degree=Sup	dema	0	smutchy	a	moby_reverse
+smutching	0	oewn-smutch-v	VerbForm=Ger	dema	0			rule
+smutchless	0		Degree=Pos	dema	0	smutchless	a	moby_reverse
+smutchy	0		Degree=Pos	dema	0	smutchy	a	moby_reverse
+smuts	0	oewn-smut-n	Number=Plur	dema	0			rule
+smuts	1	oewn-smut-v	Person=3+Tense=Pres	dema	0			rule
+smutted	0	oewn-smut-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+smuttier	0	oewn-smutty-a	Degree=Cmp	dema	0			rule
+smuttiest	0	oewn-smutty-a	Degree=Sup	dema	0			rule
+smuttily	0	oewn-smuttily-r	Degree=Pos	dema	0			oewn_form
+smuttiness	0	oewn-smuttiness-n	Number=Sing	dema	0			oewn_form
+smuttinesses	0	oewn-smuttiness-n	Number=Plur	dema	0			rule
+smutting	0	oewn-smut-v	VerbForm=Ger	dema	0			oewn_form
+smutty	0	oewn-smutty-a	Degree=Pos	dema	0			oewn_form
+smytrie	0		Number=Sing	dema	0	smytrie	n	moby_reverse
+smytries	0		Number=Plur	dema	0	smytrie	n	rule

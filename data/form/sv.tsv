@@ -1,8 +1,12 @@
-spelling	rank	entry_id	features	source_id	reviewed
-svelte	0	oewn-svelte-a	Degree=Pos	dema	0
-sveltely	0	dema-svelte-r		dema	0
-svelteness	0	dema-svelte-n	Number=Plur	dema	0
-svelter	0	dema-svelter-a	Degree=Pos	dema	0
-svelterly	0	dema-svelter-r		dema	0
-sveltest	0	dema-sveltest-a	Degree=Pos	dema	0
-sveltestly	0	dema-sveltest-r		dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+SVM	0	oewn-SVM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SVMS	0	oewn-SVM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SVR	0	oewn-SVR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SVRS	0	oewn-SVR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Svengali	0	oewn-Svengali-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Svengalis	0	oewn-Svengali-n	Capitalization=Title+Number=Plur	dema	0			rule
+svelte	0	oewn-svelte-a	Degree=Pos	dema	0			oewn_form
+svelter	0	oewn-svelte-a	Degree=Cmp	dema	0			moby_reverse
+sveltest	0	oewn-svelte-a	Degree=Sup	dema	0			moby_reverse
+svoboda	0	oewn-svoboda-n	Number=Sing	dema	0			oewn_form
+svobodas	0	oewn-svoboda-n	Number=Plur	dema	0			rule

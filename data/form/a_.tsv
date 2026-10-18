@@ -1,2 +1,67 @@
-spelling	rank	entry_id	features	source_id	reviewed
-a	0	dema-a-d		dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+A	0	dema-a-d		dema	0			carried
+A	1	oewn-A-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A batteries	0	oewn-A_battery-n	Capitalization=Exact+Number=Plur	dema	0			rule
+A battery	0	oewn-A_battery-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+A level	0	oewn-A_level-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+A levels	0	oewn-A_level-n	Capitalization=Exact+Number=Plur	dema	0			rule
+A'man	0	oewn-A-ap-man-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A'mans	0	oewn-A-ap-man-n	Capitalization=Title+Number=Plur	dema	0			rule
+A-bomb	0	oewn-A-bomb-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A-bombs	0	oewn-A-bomb-n	Capitalization=Title+Number=Plur	dema	0			rule
+A-line	0	oewn-A-line-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A-lines	0	oewn-A-line-n	Capitalization=Title+Number=Plur	dema	0			rule
+A-list	0	oewn-A-list-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A-lists	0	oewn-A-list-n	Capitalization=Title+Number=Plur	dema	0			rule
+A-one	0	oewn-A-one-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+A-scan ultrasonographies	0	oewn-A-scan_ultrasonography-n	Capitalization=Exact+Number=Plur	dema	0			rule
+A-scan ultrasonography	0	oewn-A-scan_ultrasonography-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+A-team	0	oewn-A-team-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A-teams	0	oewn-A-team-n	Capitalization=Title+Number=Plur	dema	0			rule
+A. testudineus	0	oewn-A._testudineus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+A.D.	0	oewn-A.D.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+A.M.	0	oewn-a.m.-n	Number=Sing	dema	0			oewn_form
+A.M.	1	oewn-a.m.-r	Degree=Pos	dema	0			oewn_form
+A.M.	2	oewn-A.M.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+A.M.	3	oewn-A.M.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+A/C	0	oewn-A-sl-C-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+A0	0	oewn-A0-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A1	0	oewn-A1-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A2	0	oewn-A2-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A4	0	oewn-A4-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A5	0	oewn-A5-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+A6	0	oewn-A6-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+a	0	dema-a-d		dema	0			carried
+a bit	0	oewn-a_bit-r	Degree=Pos	dema	0			oewn_form
+a capella	0	oewn-a_capella-a	Degree=Pos	dema	0			oewn_form
+a capella	1	oewn-a_capella-r	Degree=Pos	dema	0			oewn_form
+a capella singing	0	oewn-a_capella_singing-n	Number=Sing	dema	0			oewn_form
+a capella singings	0	oewn-a_capella_singing-n	Number=Plur	dema	0			rule
+a cappella	0	oewn-a_cappella-a	Degree=Pos	dema	0			oewn_form
+a cappella	1	oewn-a_cappella-r	Degree=Pos	dema	0			oewn_form
+a cappella singing	0	oewn-a_cappella_singing-n	Number=Sing	dema	0			oewn_form
+a cappella singings	0	oewn-a_cappella_singing-n	Number=Plur	dema	0			rule
+a couple of	0	oewn-a_couple_of-a	Degree=Pos	dema	0			oewn_form
+a few	0	oewn-a_few-a	Degree=Pos	dema	0			oewn_form
+a fortiori	0	oewn-a_fortiori-r	Degree=Pos	dema	0			oewn_form
+a good deal	0	oewn-a_good_deal-r	Degree=Pos	dema	0			oewn_form
+a great deal	0	oewn-a_great_deal-r	Degree=Pos	dema	0			oewn_form
+a hundred times	0	oewn-a_hundred_times-r	Degree=Pos	dema	0			oewn_form
+a la carte	0	oewn-a_la_carte-n	Number=Sing	dema	0			oewn_form
+a la carte	1	oewn-a_la_carte-a	Degree=Pos	dema	0			oewn_form
+a la carte	2	oewn-a_la_carte-r	Degree=Pos	dema	0			oewn_form
+a la mode	0	oewn-a_la_mode-a	Degree=Pos	dema	0			oewn_form
+a la mode	1	oewn-a_la_mode-r	Degree=Pos	dema	0			oewn_form
+a little	0	oewn-a_little-r	Degree=Pos	dema	0			oewn_form
+a lot	0	oewn-a_lot-r	Degree=Pos	dema	0			oewn_form
+a million times	0	oewn-a_million_times-r	Degree=Pos	dema	0			oewn_form
+a posteriori	0	oewn-a_posteriori-a	Degree=Pos	dema	0			oewn_form
+a posteriori	1	oewn-a_posteriori-r	Degree=Pos	dema	0			oewn_form
+a priori	0	oewn-a_priori-a	Degree=Pos	dema	0			oewn_form
+a priori	1	oewn-a_priori-r	Degree=Pos	dema	0			oewn_form
+a trifle	0	oewn-a_trifle-r	Degree=Pos	dema	0			oewn_form
+a-ok	0	oewn-a-ok-a	Degree=Pos	dema	0			oewn_form
+a-okay	0	oewn-a-okay-a	Degree=Pos	dema	0			oewn_form
+a.k.a.	0	oewn-a.k.a.-r	Degree=Pos	dema	0			oewn_form
+a.m.	0	oewn-a.m.-n	Number=Sing	dema	0			oewn_form
+a.m.	1	oewn-a.m.-r	Degree=Pos	dema	0			oewn_form

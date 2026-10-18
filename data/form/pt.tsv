@@ -1,91 +1,157 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pt	0	dema-pt-n	Number=Sing	dema	0
-ptarmigan	0	oewn-ptarmigan-n	Number=Sing	dema	0
-ptarmigans	0	dema-ptarmigans-n	Number=Sing	dema	0
-pteranodon	0	dema-pteranodon-n	Number=Sing	dema	0
-pteranodons	0	dema-pteranodon-n	Number=Plur	dema	0
-pteridological	0	oewn-pteridological-a	Degree=Pos	dema	0
-pteridologically	0	dema-pteridological-r		dema	0
-pteridologies	0	oewn-pteridology-n	Number=Plur	dema	0
-pteridologist	0	oewn-pteridologist-n	Number=Sing	dema	0
-pteridologists	0	oewn-pteridologist-n	Number=Plur	dema	0
-pteridology	0	oewn-pteridology-n	Number=Sing	dema	0
-pteridophyte	0	oewn-pteridophyte-n	Number=Sing	dema	0
-pteridophytes	0	oewn-pteridophyte-n	Number=Plur	dema	0
-pteridosperm	0	oewn-pteridosperm-n	Number=Sing	dema	0
-pteridosperms	0	oewn-pteridosperm-n	Number=Plur	dema	0
-pterocarpous	0	dema-pterocarpous-a	Degree=Pos	dema	0
-pterocarpously	0	dema-pterocarpous-r		dema	0
-pterodactyl	0	oewn-pterodactyl-n	Number=Sing	dema	0
-pterodactylic	0	dema-pterodactylic-a	Degree=Pos	dema	0
-pterodactylically	0	dema-pterodactylic-r		dema	0
-pterodactylid	0	dema-pterodactylid-a	Degree=Pos	dema	0
-pterodactylidly	0	dema-pterodactylid-r		dema	0
-pterodactyloid	0	dema-pterodactyloid-a	Degree=Pos	dema	0
-pterodactyloidly	0	dema-pterodactyloid-r		dema	0
-pterodactylous	0	dema-pterodactylous-a	Degree=Pos	dema	0
-pterodactylously	0	dema-pterodactylous-r		dema	0
-pterodactyls	0	oewn-pterodactyl-n	Number=Plur	dema	0
-pteroma	0	dema-pteroma-n	Number=Sing	dema	0
-pteromas	0	dema-pteroma-n	Number=Plur	dema	0
-pteromata	0	dema-pteromata-n	Number=Sing	dema	0
-pteromatas	0	dema-pteromata-n	Number=Plur	dema	0
-pteron	0	dema-pteron-n	Number=Sing	dema	0
-pterons	0	dema-pteron-n	Number=Plur	dema	0
-pteropod	0	dema-pteropod-n	Number=Sing	dema	0
-pteropods	0	dema-pteropod-n	Number=Plur	dema	0
-pterosaur	0	oewn-pterosaur-n	Number=Sing	dema	0
-pterosaurs	0	oewn-pterosaur-n	Number=Plur	dema	0
-pterygial	0	dema-pterygial-a	Degree=Pos	dema	0
-pterygially	0	dema-pterygial-r		dema	0
-pterygialness	0	dema-pterygial-n	Number=Plur	dema	0
-pterygium	0	oewn-pterygium-n	Number=Sing	dema	0
-pterygiums	0	dema-pterygiums-n	Number=Sing	dema	0
-pterygoid	0	dema-pterygoid-a	Degree=Pos	dema	0
-pterygoid	1	dema-pterygoid-n	Number=Sing	dema	0
-pterygoidly	0	dema-pterygoid-r		dema	0
-pterygoidness	0	dema-pterygoid-n	Number=Plur	dema	0
-pterygoids	0	dema-pterygoid-n	Number=Plur	dema	0
-pteryla	0	dema-pteryla-n	Number=Sing	dema	0
-pterylae	0	dema-pterylae-n	Number=Sing	dema	0
-pterylaes	0	dema-pterylae-n	Number=Plur	dema	0
-pterylas	0	dema-pteryla-n	Number=Plur	dema	0
-pterylographic	0	dema-pterylographic-a	Degree=Pos	dema	0
-pterylographical	0	dema-pterylographical-a	Degree=Pos	dema	0
-pterylographically	0	dema-pterylographic-r		dema	0
-pterylographies	0	dema-pterylography-n	Number=Plur	dema	0
-pterylography	0	dema-pterylography-n	Number=Sing	dema	0
-pterylological	0	dema-pterylological-a	Degree=Pos	dema	0
-pterylologically	0	dema-pterylological-r		dema	0
-pterylologies	0	dema-pterylology-n	Number=Plur	dema	0
-pterylology	0	dema-pterylology-n	Number=Sing	dema	0
-pterylosis	0	dema-pterylosis-n	Number=Sing	dema	0
-pteryrygia	0	dema-pteryrygia-n	Number=Sing	dema	0
-pteryrygias	0	dema-pteryrygia-n	Number=Plur	dema	0
-ptg	0	dema-ptg-n	Number=Sing	dema	0
-ptgs	0	dema-ptg-n	Number=Plur	dema	0
-ptilosis	0	dema-ptilosis-n	Number=Sing	dema	0
-ptisan	0	dema-ptisan-n	Number=Sing	dema	0
-ptisans	0	dema-ptisan-n	Number=Plur	dema	0
-ptochocracies	0	dema-ptochocracy-n	Number=Plur	dema	0
-ptochocracy	0	dema-ptochocracy-n	Number=Sing	dema	0
-ptomaine	0	oewn-ptomaine-n	Number=Sing	dema	0
-ptomaines	0	oewn-ptomaine-n	Number=Plur	dema	0
-ptomainic	0	dema-ptomainic-a	Degree=Pos	dema	0
-ptomainically	0	dema-ptomainic-r		dema	0
-ptomainicness	0	dema-ptomainic-n	Number=Plur	dema	0
-ptosis	0	oewn-ptosis-n	Number=Sing	dema	0
-ptotic	0	dema-ptotic-a	Degree=Pos	dema	0
-ptotically	0	dema-ptotic-r		dema	0
-ptoticness	0	dema-ptotic-n	Number=Plur	dema	0
-ptp	0	dema-ptp-n	Number=Sing	dema	0
-ptps	0	dema-ptp-n	Number=Plur	dema	0
-pts	0	dema-pts-n	Number=Sing	dema	0
-ptses	0	dema-pts-n	Number=Plur	dema	0
-ptyalectases	0	dema-ptyalectases-n	Number=Sing	dema	0
-ptyalectaseses	0	dema-ptyalectases-n	Number=Plur	dema	0
-ptyalectasis	0	dema-ptyalectasis-n	Number=Sing	dema	0
-ptyalin	0	oewn-ptyalin-n	Number=Sing	dema	0
-ptyalins	0	oewn-ptyalin-n	Number=Plur	dema	0
-ptyalism	0	oewn-ptyalism-n	Number=Sing	dema	0
-ptyalisms	0	oewn-ptyalism-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PT boat	0	oewn-PT_boat-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+PT boats	0	oewn-PT_boat-n	Capitalization=Exact+Number=Plur	dema	0			rule
+PTO	0	oewn-PTO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PTOS	0	oewn-PTO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PTSD	0	oewn-PTSD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PTSDS	0	oewn-PTSD-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Pt	0		Number=Sing	dema	0	pt	n	moby_reverse
+Pt	1	oewn-Pt-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pteretis struthiopteris	0	oewn-Pteretis_struthiopteris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteridium aquilinum	0	oewn-Pteridium_aquilinum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteridium aquilinums	0	oewn-Pteridium_aquilinum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteridium esculentum	0	oewn-Pteridium_esculentum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteridium esculentums	0	oewn-Pteridium_esculentum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteris cretica	0	oewn-Pteris_cretica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteris creticas	0	oewn-Pteris_cretica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteris multifida	0	oewn-Pteris_multifida-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteris multifidas	0	oewn-Pteris_multifida-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteris serrulata	0	oewn-Pteris_serrulata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteris serrulatas	0	oewn-Pteris_serrulata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pternohyla fodiens	0	oewn-Pternohyla_fodiens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarpus angolensis	0	oewn-Pterocarpus_angolensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarpus indicus	0	oewn-Pterocarpus_indicus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarpus macrocarpus	0	oewn-Pterocarpus_macrocarpus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarpus marsupium	0	oewn-Pterocarpus_marsupium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarpus marsupiums	0	oewn-Pterocarpus_marsupium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pterocarpus santalinus	0	oewn-Pterocarpus_santalinus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarya fraxinifolia	0	oewn-Pterocarya_fraxinifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocarya fraxinifolias	0	oewn-Pterocarya_fraxinifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pterocles alchata	0	oewn-Pterocles_alchata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocles alchatas	0	oewn-Pterocles_alchata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pterocles indicus	0	oewn-Pterocles_indicus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocnemia pennata	0	oewn-Pterocnemia_pennata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterocnemia pennatas	0	oewn-Pterocnemia_pennata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteropogon humboltianum	0	oewn-Pteropogon_humboltianum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteropogon humboltianums	0	oewn-Pteropogon_humboltianum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pteropus capestratus	0	oewn-Pteropus_capestratus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pteropus hypomelanus	0	oewn-Pteropus_hypomelanus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterospermum acerifolium	0	oewn-Pterospermum_acerifolium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pterospermum acerifoliums	0	oewn-Pterospermum_acerifolium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pthirus pubis	0	oewn-Pthirus_pubis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptilonorhynchus violaceus	0	oewn-Ptilonorhynchus_violaceus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptiloris paradisea	0	oewn-Ptiloris_paradisea-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptiloris paradiseas	0	oewn-Ptiloris_paradisea-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ptolemaic	0	oewn-Ptolemaic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Ptolemaic dynasties	0	oewn-Ptolemaic_dynasty-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ptolemaic dynasty	0	oewn-Ptolemaic_dynasty-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptolemaic system	0	oewn-Ptolemaic_system-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptolemaic systems	0	oewn-Ptolemaic_system-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ptolemies	0	oewn-Ptolemy-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ptolemy	0	oewn-Ptolemy-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pts	0	oewn-Pt-n	Number=Plur	dema	0			moby_reverse
+Pts	1		Number=Plur	dema	0	pt	n	rule
+Pts	2	oewn-Pt-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ptyas mucosus	0	oewn-Ptyas_mucosus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptychozoon homalocephalum	0	oewn-Ptychozoon_homalocephalum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ptychozoon homalocephalums	0	oewn-Ptychozoon_homalocephalum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+pt	0		Number=Sing	dema	0	pt	n	moby_reverse
+ptarmigan	0	oewn-ptarmigan-n	Number=Plur	dema	0			agid
+ptarmigan	1	oewn-ptarmigan-n	Number=Sing	dema	0			oewn_form
+ptarmigans	0	oewn-ptarmigan-n	Number=Plur	dema	0			rule_variant
+pteranodon	0		Number=Sing	dema	0	pteranodon	n	moby_reverse
+pteranodons	0		Number=Plur	dema	0	pteranodon	n	rule
+pteridological	0	oewn-pteridological-a	Degree=Pos	dema	0			oewn_form
+pteridologies	0	oewn-pteridology-n	Number=Plur	dema	0			rule
+pteridologist	0	oewn-pteridologist-n	Number=Sing	dema	0			oewn_form
+pteridologists	0	oewn-pteridologist-n	Number=Plur	dema	0			rule
+pteridology	0	oewn-pteridology-n	Number=Sing	dema	0			oewn_form
+pteridophyte	0	oewn-pteridophyte-n	Number=Sing	dema	0			oewn_form
+pteridophytes	0	oewn-pteridophyte-n	Number=Plur	dema	0			rule
+pteridosperm	0	oewn-pteridosperm-n	Number=Sing	dema	0			oewn_form
+pteridosperms	0	oewn-pteridosperm-n	Number=Plur	dema	0			rule
+pterion	0	oewn-pterion-n	Number=Sing	dema	0			oewn_form
+pterions	0	oewn-pterion-n	Number=Plur	dema	0			rule
+pterocarpous	0		Degree=Pos	dema	0	pterocarpous	a	moby_reverse
+pterodactyl	0	oewn-pterodactyl-n	Number=Sing	dema	0			oewn_form
+pterodactylic	0		Degree=Pos	dema	0	pterodactylic	a	moby_reverse
+pterodactylid	0		Degree=Pos	dema	0	pterodactylid	a	moby_reverse
+pterodactyloid	0		Degree=Pos	dema	0	pterodactyloid	a	moby_reverse
+pterodactylous	0		Degree=Pos	dema	0	pterodactylous	a	moby_reverse
+pterodactyls	0	oewn-pterodactyl-n	Number=Plur	dema	0			rule
+pteroma	0		Number=Sing	dema	0	pteroma	n	moby_reverse
+pteromas	0		Number=Plur	dema	0	pteroma	n	rule
+pteromata	0		Number=Sing	dema	0	pteromata	n	moby_reverse
+pteromatas	0		Number=Plur	dema	0	pteromata	n	rule
+pteron	0		Number=Sing	dema	0	pteron	n	moby_reverse
+pterons	0		Number=Plur	dema	0	pteron	n	rule
+pteropod	0		Number=Sing	dema	0	pteropod	n	moby_reverse
+pteropods	0		Number=Plur	dema	0	pteropod	n	rule
+pteropogon	0	oewn-pteropogon-n	Number=Sing	dema	0			oewn_form
+pteropogons	0	oewn-pteropogon-n	Number=Plur	dema	0			rule
+pterosaur	0	oewn-pterosaur-n	Number=Sing	dema	0			oewn_form
+pterosaurs	0	oewn-pterosaur-n	Number=Plur	dema	0			rule
+pteroylglutamic acid	0	oewn-pteroylglutamic_acid-n	Number=Sing	dema	0			oewn_form
+pteroylglutamic acids	0	oewn-pteroylglutamic_acid-n	Number=Plur	dema	0			rule
+pteroylmonoglutamic acid	0	oewn-pteroylmonoglutamic_acid-n	Number=Sing	dema	0			oewn_form
+pteroylmonoglutamic acids	0	oewn-pteroylmonoglutamic_acid-n	Number=Plur	dema	0			rule
+pterygia	0	oewn-pterygium-n	Number=Plur	dema	0			oewn_form
+pterygial	0		Degree=Pos	dema	0	pterygial	a	moby_reverse
+pterygium	0	oewn-pterygium-n	Number=Sing	dema	0			oewn_form
+pterygiums	0	oewn-pterygium-n	Number=Plur	dema	0			rule_variant
+pterygoid	0		Degree=Pos	dema	0	pterygoid	a	moby_reverse
+pterygoid	1		Number=Sing	dema	0	pterygoid	n	moby_reverse
+pterygoid muscle	0	oewn-pterygoid_muscle-n	Number=Sing	dema	0			oewn_form
+pterygoid muscles	0	oewn-pterygoid_muscle-n	Number=Plur	dema	0			rule
+pterygoid plexus	0	oewn-pterygoid_plexus-n	Number=Sing	dema	0			oewn_form
+pterygoid process	0	oewn-pterygoid_process-n	Number=Sing	dema	0			oewn_form
+pterygoid processes	0	oewn-pterygoid_process-n	Number=Plur	dema	0			rule
+pteryla	0		Number=Sing	dema	0	pteryla	n	moby_reverse
+pterylae	0		Number=Sing	dema	0	pterylae	n	moby_reverse
+pterylaes	0		Number=Plur	dema	0	pterylae	n	rule
+pterylas	0		Number=Plur	dema	0	pteryla	n	rule
+pterylographic	0		Degree=Pos	dema	0	pterylographic	a	moby_reverse
+pterylographical	0		Degree=Pos	dema	0	pterylographical	a	moby_reverse
+pterylographies	0		Number=Plur	dema	0	pterylography	n	rule
+pterylography	0		Number=Sing	dema	0	pterylography	n	moby_reverse
+pterylological	0		Degree=Pos	dema	0	pterylological	a	moby_reverse
+pterylologies	0		Number=Plur	dema	0	pterylology	n	rule
+pterylology	0		Number=Sing	dema	0	pterylology	n	moby_reverse
+pterylosis	0		Number=Sing	dema	0	pterylosis	n	moby_reverse
+pteryrygia	0		Number=Sing	dema	0	pteryrygia	n	moby_reverse
+pteryrygias	0		Number=Plur	dema	0	pteryrygia	n	rule
+ptg	0		Number=Sing	dema	0	ptg	n	moby_reverse
+ptilosis	0		Number=Sing	dema	0	ptilosis	n	moby_reverse
+ptisan	0		Number=Sing	dema	0	ptisan	n	moby_reverse
+ptisans	0		Number=Plur	dema	0	ptisan	n	rule
+ptochocracies	0		Number=Plur	dema	0	ptochocracy	n	rule
+ptochocracy	0		Number=Sing	dema	0	ptochocracy	n	moby_reverse
+ptomain	0	oewn-ptomain-n	Number=Sing	dema	0			oewn_form
+ptomaine	0	oewn-ptomaine-n	Number=Sing	dema	0			oewn_form
+ptomaine poisoning	0	oewn-ptomaine_poisoning-n	Number=Sing	dema	0			oewn_form
+ptomaine poisonings	0	oewn-ptomaine_poisoning-n	Number=Plur	dema	0			rule
+ptomaines	0	oewn-ptomaine-n	Number=Plur	dema	0			rule
+ptomainic	0		Degree=Pos	dema	0	ptomainic	a	moby_reverse
+ptomains	0	oewn-ptomain-n	Number=Plur	dema	0			rule
+ptoses	0	oewn-ptosis-n	Number=Plur	dema	0			oewn_form
+ptosis	0	oewn-ptosis-n	Number=Sing	dema	0			oewn_form
+ptotic	0		Degree=Pos	dema	0	ptotic	a	moby_reverse
+ptp	0		Number=Sing	dema	0	ptp	n	moby_reverse
+pts	0	oewn-Pt-n	Number=Plur	dema	0			moby_reverse
+pts	1		Number=Plur	dema	0	pt	n	rule
+ptyalectases	0		Number=Sing	dema	0	ptyalectases	n	moby_reverse
+ptyalectasis	0		Number=Sing	dema	0	ptyalectasis	n	moby_reverse
+ptyalin	0	oewn-ptyalin-n	Number=Sing	dema	0			oewn_form
+ptyalins	0	oewn-ptyalin-n	Number=Plur	dema	0			rule
+ptyalise	0	oewn-ptyalise-v	VerbForm=Inf	dema	0			oewn_form
+ptyalised	0	oewn-ptyalise-v	Tense=Past+VerbForm=Part	dema	0			rule
+ptyalises	0	oewn-ptyalise-v	Person=3+Tense=Pres	dema	0			rule
+ptyalising	0	oewn-ptyalise-v	VerbForm=Ger	dema	0			rule
+ptyalism	0	oewn-ptyalism-n	Number=Sing	dema	0			oewn_form
+ptyalisms	0	oewn-ptyalism-n	Number=Plur	dema	0			rule
+ptyalith	0	oewn-ptyalith-n	Number=Sing	dema	0			oewn_form
+ptyaliths	0	oewn-ptyalith-n	Number=Plur	dema	0			rule
+ptyalize	0	oewn-ptyalize-v	VerbForm=Inf	dema	0			oewn_form
+ptyalized	0	oewn-ptyalize-v	Tense=Past+VerbForm=Part	dema	0			rule
+ptyalizes	0	oewn-ptyalize-v	Person=3+Tense=Pres	dema	0			rule
+ptyalizing	0	oewn-ptyalize-v	VerbForm=Ger	dema	0			rule

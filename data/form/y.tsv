@@ -1,723 +1,1250 @@
-spelling	rank	entry_id	features	source_id	reviewed
-y	0	oewn-y-n	Number=Sing	dema	0
-ya	0	dema-ya-u		dema	0
-yabber	0	dema-yabber-v	VerbForm=Inf	dema	0
-yabber	1	dema-yabber-n	Number=Sing	dema	0
-yabbered	0	dema-yabber-v	Tense=Past	dema	0
-yabbering	0	dema-yabber-v	VerbForm=Ger	dema	0
-yabberingly	0	dema-yabber-r		dema	0
-yabbers	0	dema-yabber-v	Person=3+Tense=Pres	dema	0
-yabbers	1	dema-yabber-n	Number=Plur	dema	0
-yabbies	0	dema-yabby-n	Number=Plur	dema	0
-yabby	0	dema-yabby-n	Number=Sing	dema	0
-yacht	0	oewn-yacht-n	Number=Sing	dema	0
-yacht	1	oewn-yacht-v	VerbForm=Inf	dema	0
-yachted	0	oewn-yacht-v	Tense=Past	dema	0
-yachter	0	oewn-yacht-n	Number=Plur	dema	0
-yachters	0	oewn-yacht-n	Number=Plur	dema	0
-yachtier	0	dema-yachty-a	Degree=Cmp	dema	0
-yachtiest	0	dema-yachty-a	Degree=Sup	dema	0
-yachtily	0	dema-yachty-r		dema	0
-yachtiness	0	dema-yachty-n	Number=Plur	dema	0
-yachting	0	oewn-yachting-n	Number=Sing	dema	0
-yachting	1	dema-yachting-v	VerbForm=Inf	dema	0
-yachtingly	0	dema-yacht-r		dema	0
-yachtings	0	oewn-yachting-n	Number=Plur	dema	0
-yachtmanship	0	dema-yachtmanship-n	Number=Sing	dema	0
-yachtmanships	0	dema-yachtmanship-n	Number=Plur	dema	0
-yachts	0	oewn-yacht-n	Number=Plur	dema	0
-yachts	1	oewn-yacht-v	Person=3+Tense=Pres	dema	0
-yachtsmanship	0	dema-yachtsmanship-n	Number=Sing	dema	0
-yachtsmanships	0	dema-yachtsmanship-n	Number=Plur	dema	0
-yachtswoman	0	oewn-yachtswoman-n	Number=Sing	dema	0
-yachtswomans	0	oewn-yachtswoman-n	Number=Plur	dema	0
-yachtswomen	0	dema-yachtswomen-n	Number=Sing	dema	0
-yachtswomens	0	dema-yachtswomen-n	Number=Plur	dema	0
-yachty	0	dema-yachty-a	Degree=Pos	dema	0
-yack	0	oewn-yack-n	Number=Sing	dema	0
-yack	1	oewn-yack-v	VerbForm=Inf	dema	0
-yacked	0	oewn-yack-v	Tense=Past	dema	0
-yacker	0	oewn-yack-n	Number=Plur	dema	0
-yackers	0	oewn-yack-n	Number=Plur	dema	0
-yacking	0	oewn-yack-v	VerbForm=Ger	dema	0
-yackingly	0	dema-yack-r		dema	0
-yacks	0	oewn-yack-n	Number=Plur	dema	0
-yacks	1	oewn-yack-v	Person=3+Tense=Pres	dema	0
-yad	0	dema-yad-n	Number=Sing	dema	0
-yadim	0	dema-yadim-n	Number=Sing	dema	0
-yadims	0	dema-yadim-n	Number=Plur	dema	0
-yads	0	dema-yad-n	Number=Plur	dema	0
-yaff	0	dema-yaff-v	VerbForm=Inf	dema	0
-yaffed	0	dema-yaff-v	Tense=Past	dema	0
-yaffer	0	dema-yaff-n	Number=Plur	dema	0
-yaffers	0	dema-yaff-n	Number=Plur	dema	0
-yaffing	0	dema-yaff-v	VerbForm=Ger	dema	0
-yaffingly	0	dema-yaff-r		dema	0
-yaffle	0	dema-yaffle-n	Number=Sing	dema	0
-yaffles	0	dema-yaffle-n	Number=Plur	dema	0
-yaffs	0	dema-yaff-v	Person=3+Tense=Pres	dema	0
-yager	0	dema-yager-i		dema	0
-yah	0	dema-yah-i		dema	0
-yahoo	0	oewn-yahoo-n	Number=Sing	dema	0
-yahooism	0	dema-yahooism-n	Number=Sing	dema	0
-yahooisms	0	dema-yahooism-n	Number=Plur	dema	0
-yahoos	0	oewn-yahoo-n	Number=Plur	dema	0
-yak	0	oewn-yak-n	Number=Sing	dema	0
-yakka	0	dema-yakka-n	Number=Sing	dema	0
-yakkas	0	dema-yakka-n	Number=Plur	dema	0
-yaks	0	oewn-yak-n	Number=Plur	dema	0
-yam	0	oewn-yam-n	Number=Sing	dema	0
-yamen	0	dema-yamen-n	Number=Sing	dema	0
-yamens	0	dema-yamen-n	Number=Plur	dema	0
-yammer	0	oewn-yammer-v	VerbForm=Inf	dema	0
-yammer	1	dema-yammer-n	Number=Sing	dema	0
-yammered	0	oewn-yammer-v	Tense=Past	dema	0
-yammering	0	oewn-yammer-v	VerbForm=Ger	dema	0
-yammeringly	0	dema-yammer-r		dema	0
-yammers	0	oewn-yammer-v	Person=3+Tense=Pres	dema	0
-yammers	1	dema-yammer-n	Number=Plur	dema	0
-yams	0	oewn-yam-n	Number=Plur	dema	0
-yank	0	oewn-yank-v	VerbForm=Inf	dema	0
-yank	1	dema-yank-n	Number=Sing	dema	0
-yanked	0	oewn-yank-v	Tense=Past	dema	0
-yanker	0	dema-yank-n	Number=Plur	dema	0
-yankers	0	dema-yank-n	Number=Plur	dema	0
-yanking	0	oewn-yank-v	VerbForm=Ger	dema	0
-yankingly	0	dema-yank-r		dema	0
-yanks	0	oewn-yank-v	Person=3+Tense=Pres	dema	0
-yanks	1	dema-yank-n	Number=Plur	dema	0
-yap	0	oewn-yap-v	VerbForm=Inf	dema	0
-yap	1	oewn-yap-n	Number=Sing	dema	0
-yap	2	dema-yap-i		dema	0
-yapok	0	dema-yapok-n	Number=Sing	dema	0
-yapoks	0	dema-yapok-n	Number=Plur	dema	0
-yapon	0	dema-yapon-n	Number=Sing	dema	0
-yapons	0	dema-yapon-n	Number=Plur	dema	0
-yapp	0	dema-yapp-n	Number=Sing	dema	0
-yapped	0	dema-yapped-v	VerbForm=Inf	dema	0
-yapper	0	dema-yapper-n	Number=Sing	dema	0
-yappers	0	oewn-yap-n	Number=Plur	dema	0
-yapping	0	dema-yapping-v	VerbForm=Inf	dema	0
-yappingly	0	dema-yappingly-r	Degree=Pos	dema	0
-yapps	0	dema-yapp-n	Number=Plur	dema	0
-yaps	0	oewn-yap-v	Person=3+Tense=Pres	dema	0
-yaps	1	oewn-yap-n	Number=Plur	dema	0
-yarak	0	dema-yarak-n	Number=Sing	dema	0
-yaraks	0	dema-yarak-n	Number=Plur	dema	0
-yarborough	0	dema-yarborough-n	Number=Sing	dema	0
-yarboroughs	0	dema-yarborough-n	Number=Plur	dema	0
-yard	0	oewn-yard-n	Number=Sing	dema	0
-yardage	0	oewn-yardage-n	Number=Sing	dema	0
-yardages	0	oewn-yardage-n	Number=Plur	dema	0
-yardang	0	dema-yardang-n	Number=Sing	dema	0
-yardangs	0	dema-yardang-n	Number=Plur	dema	0
-yardarm	0	oewn-yardarm-n	Number=Sing	dema	0
-yardarms	0	oewn-yardarm-n	Number=Plur	dema	0
-yardbird	0	oewn-yardbird-n	Number=Sing	dema	0
-yardbirds	0	oewn-yardbird-n	Number=Plur	dema	0
-yardman	0	oewn-yardman-n	Number=Sing	dema	0
-yardmen	0	oewn-yardman-n	Number=Plur	dema	0
-yards	0	oewn-yard-n	Number=Plur	dema	0
-yardstick	0	oewn-yardstick-n	Number=Sing	dema	0
-yardsticks	0	oewn-yardstick-n	Number=Plur	dema	0
-yare	0	dema-yare-a	Degree=Pos	dema	0
-yare	1	dema-yare-r	Degree=Pos	dema	0
-yarely	0	dema-yarely-r	Degree=Pos	dema	0
-yareness	0	dema-yare-n	Number=Plur	dema	0
-yarer	0	dema-yarer-a	Degree=Pos	dema	0
-yarerly	0	dema-yarer-r		dema	0
-yarest	0	dema-yarest-a	Degree=Pos	dema	0
-yarestly	0	dema-yarest-r		dema	0
-yarmulke	0	oewn-yarmulke-n	Number=Sing	dema	0
-yarmulkes	0	oewn-yarmulke-n	Number=Plur	dema	0
-yarn	0	oewn-yarn-n	Number=Sing	dema	0
-yarn	1	oewn-yarn-v	VerbForm=Inf	dema	0
-yarned	0	oewn-yarn-v	Tense=Past	dema	0
-yarner	0	oewn-yarn-n	Number=Plur	dema	0
-yarners	0	oewn-yarn-n	Number=Plur	dema	0
-yarning	0	oewn-yarn-v	VerbForm=Ger	dema	0
-yarningly	0	dema-yarn-r		dema	0
-yarns	0	oewn-yarn-n	Number=Plur	dema	0
-yarns	1	oewn-yarn-v	Person=3+Tense=Pres	dema	0
-yarovization	0	dema-yarovization-n	Number=Sing	dema	0
-yarovizations	0	dema-yarovization-n	Number=Plur	dema	0
-yarovize	0	dema-yarovize-v	VerbForm=Inf	dema	0
-yarovized	0	dema-yarovized-v	VerbForm=Inf	dema	0
-yarovizer	0	dema-yarovize-n	Number=Plur	dema	0
-yarovizers	0	dema-yarovize-n	Number=Plur	dema	0
-yarovizes	0	dema-yarovize-v	Person=3+Tense=Pres	dema	0
-yarovizing	0	dema-yarovizing-v	VerbForm=Inf	dema	0
-yarovizingly	0	dema-yarovize-r		dema	0
-yarraman	0	dema-yarraman-n	Number=Sing	dema	0
-yarramans	0	dema-yarraman-n	Number=Plur	dema	0
-yarramen	0	dema-yarramen-n	Number=Sing	dema	0
-yarramens	0	dema-yarramen-n	Number=Plur	dema	0
-yarrow	0	oewn-yarrow-n	Number=Sing	dema	0
-yarrows	0	oewn-yarrow-n	Number=Plur	dema	0
-yashmak	0	oewn-yashmak-n	Number=Sing	dema	0
-yashmaks	0	oewn-yashmak-n	Number=Plur	dema	0
-yataghan	0	oewn-yataghan-n	Number=Sing	dema	0
-yataghans	0	oewn-yataghan-n	Number=Plur	dema	0
-yate	0	dema-yate-n	Number=Sing	dema	0
-yates	0	dema-yate-n	Number=Plur	dema	0
-yatter	0	dema-yatter-v	VerbForm=Inf	dema	0
-yatter	1	dema-yatter-n	Number=Sing	dema	0
-yattered	0	dema-yatter-v	Tense=Past	dema	0
-yattering	0	dema-yatter-v	VerbForm=Ger	dema	0
-yatteringly	0	dema-yatter-r		dema	0
-yatters	0	dema-yatter-v	Person=3+Tense=Pres	dema	0
-yatters	1	dema-yatter-n	Number=Plur	dema	0
-yaud	0	dema-yaud-n	Number=Sing	dema	0
-yauds	0	dema-yaud-n	Number=Plur	dema	0
-yauld	0	dema-yauld-a	Degree=Pos	dema	0
-yaulder	0	dema-yauld-a	Degree=Cmp	dema	0
-yauldest	0	dema-yauld-a	Degree=Sup	dema	0
-yauldly	0	dema-yauld-r		dema	0
-yauldness	0	dema-yauld-n	Number=Plur	dema	0
-yaup	0	oewn-yaup-v	VerbForm=Inf	dema	0
-yaup	1	dema-yaup-n	Number=Sing	dema	0
-yauped	0	oewn-yaup-v	Tense=Past	dema	0
-yauper	0	dema-yaup-n	Number=Plur	dema	0
-yaupers	0	dema-yaup-n	Number=Plur	dema	0
-yauping	0	oewn-yaup-v	VerbForm=Ger	dema	0
-yaupingly	0	dema-yaup-r		dema	0
-yaupon	0	dema-yaupon-n	Number=Sing	dema	0
-yaupons	0	dema-yaupon-n	Number=Plur	dema	0
-yaups	0	oewn-yaup-v	Person=3+Tense=Pres	dema	0
-yaups	1	dema-yaup-n	Number=Plur	dema	0
-yautia	0	oewn-yautia-n	Number=Sing	dema	0
-yautias	0	oewn-yautia-n	Number=Plur	dema	0
-yaw	0	oewn-yaw-v	VerbForm=Inf	dema	0
-yaw	1	oewn-yaw-n	Number=Sing	dema	0
-yawed	0	oewn-yaw-v	Tense=Past	dema	0
-yawer	0	oewn-yaw-n	Number=Plur	dema	0
-yawers	0	oewn-yaw-n	Number=Plur	dema	0
-yawing	0	oewn-yaw-v	VerbForm=Ger	dema	0
-yawingly	0	dema-yaw-r		dema	0
-yawl	0	oewn-yawl-n	Number=Sing	dema	0
-yawl	1	oewn-yawl-v	VerbForm=Inf	dema	0
-yawled	0	oewn-yawl-v	Tense=Past	dema	0
-yawler	0	oewn-yawl-n	Number=Plur	dema	0
-yawlers	0	oewn-yawl-n	Number=Plur	dema	0
-yawling	0	oewn-yawl-v	VerbForm=Ger	dema	0
-yawlingly	0	dema-yawl-r		dema	0
-yawls	0	oewn-yawl-n	Number=Plur	dema	0
-yawls	1	oewn-yawl-v	Person=3+Tense=Pres	dema	0
-yawmeter	0	dema-yawmeter-n	Number=Sing	dema	0
-yawmeters	0	dema-yawmeter-n	Number=Plur	dema	0
-yawn	0	oewn-yawn-v	VerbForm=Inf	dema	0
-yawn	1	oewn-yawn-n	Number=Sing	dema	0
-yawned	0	oewn-yawn-v	Tense=Past	dema	0
-yawner	0	oewn-yawner-n	Number=Sing	dema	0
-yawners	0	oewn-yawn-n	Number=Plur	dema	0
-yawnful	0	dema-yawnful-a	Degree=Pos	dema	0
-yawnfully	0	dema-yawnfully-r	Degree=Pos	dema	0
-yawnfulness	0	dema-yawnful-n	Number=Plur	dema	0
-yawning	0	oewn-yawning-a	Degree=Pos	dema	0
-yawning	1	dema-yawning-v	VerbForm=Inf	dema	0
-yawningly	0	dema-yawn-r		dema	0
-yawns	0	oewn-yawn-v	Person=3+Tense=Pres	dema	0
-yawns	1	oewn-yawn-n	Number=Plur	dema	0
-yawp	0	oewn-yawp-v	VerbForm=Inf	dema	0
-yawp	1	dema-yawp-n	Number=Sing	dema	0
-yawped	0	oewn-yawp-v	Tense=Past	dema	0
-yawper	0	dema-yawper-n	Number=Sing	dema	0
-yawpers	0	dema-yawp-n	Number=Plur	dema	0
-yawping	0	oewn-yawp-v	VerbForm=Ger	dema	0
-yawpingly	0	dema-yawp-r		dema	0
-yawps	0	oewn-yawp-v	Person=3+Tense=Pres	dema	0
-yawps	1	dema-yawp-n	Number=Plur	dema	0
-yaws	0	oewn-yaws-n	Number=Sing	dema	0
-yawweed	0	dema-yawweed-n	Number=Sing	dema	0
-yawweeds	0	dema-yawweed-n	Number=Plur	dema	0
-yazata	0	dema-yazata-n	Number=Sing	dema	0
-yazatas	0	dema-yazata-n	Number=Plur	dema	0
-yclad	0	dema-yclad-v	VerbForm=Inf	dema	0
-ycladded	0	dema-yclad-v	Tense=Past	dema	0
-ycladder	0	dema-yclad-n	Number=Plur	dema	0
-ycladders	0	dema-yclad-n	Number=Plur	dema	0
-ycladding	0	dema-yclad-v	VerbForm=Ger	dema	0
-ycladdingly	0	dema-yclad-r		dema	0
-yclads	0	dema-yclad-v	Person=3+Tense=Pres	dema	0
-ycleping	0	dema-ycleping-v	VerbForm=Inf	dema	0
-yclepinged	0	dema-ycleping-v	Tense=Past	dema	0
-yclepinger	0	dema-ycleping-n	Number=Plur	dema	0
-yclepingers	0	dema-ycleping-n	Number=Plur	dema	0
-yclepinging	0	dema-ycleping-v	VerbForm=Ger	dema	0
-yclepingingly	0	dema-ycleping-r		dema	0
-yclepings	0	dema-ycleping-v	Person=3+Tense=Pres	dema	0
-yclept	0	dema-yclept-v	VerbForm=Inf	dema	0
-yclept	1	dema-yclept-a	Degree=Pos	dema	0
-yclepted	0	dema-yclept-v	Tense=Past	dema	0
-yclepter	0	dema-yclept-a	Degree=Cmp	dema	0
-yclepter	1	dema-yclept-n	Number=Plur	dema	0
-yclepters	0	dema-yclept-n	Number=Plur	dema	0
-ycleptest	0	dema-yclept-a	Degree=Sup	dema	0
-yclepting	0	dema-yclept-v	VerbForm=Ger	dema	0
-ycleptingly	0	dema-yclept-r		dema	0
-ycleptly	0	dema-yclept-r		dema	0
-ycleptness	0	dema-yclept-n	Number=Plur	dema	0
-yclepts	0	dema-yclept-v	Person=3+Tense=Pres	dema	0
-yd	0	dema-yd-n	Number=Sing	dema	0
-yds	0	dema-yds-n	Number=Sing	dema	0
-ydses	0	dema-yds-n	Number=Plur	dema	0
-ye	0	dema-ye-u		dema	0
-ye	1	dema-ye-d		dema	0
-yea	0	oewn-yea-r	Degree=Pos	dema	0
-yeaer	0	oewn-yea-r	Degree=Cmp	dema	0
-yeaest	0	oewn-yea-r	Degree=Sup	dema	0
-yeah	0	oewn-yeah-r	Degree=Pos	dema	0
-yeaher	0	oewn-yeah-r	Degree=Cmp	dema	0
-yeahest	0	oewn-yeah-r	Degree=Sup	dema	0
-yealing	0	dema-yealing-n	Number=Sing	dema	0
-yealings	0	dema-yealing-n	Number=Plur	dema	0
-yean	0	dema-yean-v	VerbForm=Inf	dema	0
-yeaned	0	dema-yean-v	Tense=Past	dema	0
-yeaner	0	dema-yean-n	Number=Plur	dema	0
-yeaners	0	dema-yean-n	Number=Plur	dema	0
-yeaning	0	dema-yean-v	VerbForm=Ger	dema	0
-yeaningly	0	dema-yean-r		dema	0
-yeanling	0	dema-yeanling-n	Number=Sing	dema	0
-yeanlings	0	dema-yeanling-n	Number=Plur	dema	0
-yeans	0	dema-yean-v	Person=3+Tense=Pres	dema	0
-year	0	oewn-year-n	Number=Sing	dema	0
-yearbook	0	oewn-yearbook-n	Number=Sing	dema	0
-yearbooks	0	oewn-yearbook-n	Number=Plur	dema	0
-yearlier	0	oewn-yearly-a	Degree=Cmp	dema	0
-yearlier	1	oewn-yearly-r	Degree=Cmp	dema	0
-yearlies	0	oewn-yearly-n	Number=Plur	dema	0
-yearliest	0	oewn-yearly-a	Degree=Sup	dema	0
-yearliest	1	oewn-yearly-r	Degree=Sup	dema	0
-yearling	0	oewn-yearling-n	Number=Sing	dema	0
-yearling	1	dema-yearling-a	Degree=Pos	dema	0
-yearlingly	0	dema-yearling-r		dema	0
-yearlingness	0	oewn-yearling-n	Number=Plur	dema	0
-yearlings	0	oewn-yearling-n	Number=Plur	dema	0
-yearlong	0	oewn-yearlong-a	Degree=Pos	dema	0
-yearlonger	0	oewn-yearlong-a	Degree=Cmp	dema	0
-yearlongest	0	oewn-yearlong-a	Degree=Sup	dema	0
-yearlongly	0	dema-yearlong-r		dema	0
-yearlongness	0	dema-yearlong-n	Number=Plur	dema	0
-yearly	0	oewn-yearly-a	Degree=Pos	dema	0
-yearly	1	oewn-yearly-r	Degree=Pos	dema	0
-yearly	2	oewn-yearly-n	Number=Sing	dema	0
-yearn	0	oewn-yearn-v	VerbForm=Inf	dema	0
-yearned	0	oewn-yearn-v	Tense=Past	dema	0
-yearner	0	oewn-yearner-n	Number=Sing	dema	0
-yearners	0	dema-yearn-n	Number=Plur	dema	0
-yearning	0	oewn-yearning-n	Number=Sing	dema	0
-yearning	1	dema-yearning-v	VerbForm=Inf	dema	0
-yearningly	0	dema-yearn-r		dema	0
-yearnings	0	oewn-yearning-n	Number=Plur	dema	0
-yearns	0	oewn-yearn-v	Person=3+Tense=Pres	dema	0
-years	0	oewn-year-n	Number=Plur	dema	0
-yeast	0	oewn-yeast-n	Number=Sing	dema	0
-yeast	1	dema-yeast-v	VerbForm=Inf	dema	0
-yeasted	0	dema-yeast-v	Tense=Past	dema	0
-yeaster	0	oewn-yeast-n	Number=Plur	dema	0
-yeasters	0	oewn-yeast-n	Number=Plur	dema	0
-yeastier	0	oewn-yeasty-a	Degree=Cmp	dema	0
-yeastiest	0	oewn-yeasty-a	Degree=Sup	dema	0
-yeastily	0	dema-yeasty-r		dema	0
-yeastiness	0	dema-yeastiness-n	Number=Sing	dema	0
-yeastinesses	0	dema-yeastiness-n	Number=Plur	dema	0
-yeasting	0	dema-yeast-v	VerbForm=Ger	dema	0
-yeastingly	0	dema-yeast-r		dema	0
-yeastless	0	dema-yeastless-a	Degree=Pos	dema	0
-yeastlessly	0	dema-yeastless-r		dema	0
-yeastlessness	0	dema-yeastless-n	Number=Plur	dema	0
-yeastlike	0	oewn-yeastlike-a	Degree=Pos	dema	0
-yeastlikely	0	dema-yeastlike-r		dema	0
-yeastlikeness	0	dema-yeastlike-n	Number=Plur	dema	0
-yeastliker	0	oewn-yeastlike-a	Degree=Cmp	dema	0
-yeastlikest	0	oewn-yeastlike-a	Degree=Sup	dema	0
-yeasts	0	oewn-yeast-n	Number=Plur	dema	0
-yeasts	1	dema-yeast-v	Person=3+Tense=Pres	dema	0
-yeasty	0	oewn-yeasty-a	Degree=Pos	dema	0
-yegg	0	dema-yegg-n	Number=Sing	dema	0
-yeggman	0	dema-yeggman-n	Number=Sing	dema	0
-yeggmen	0	dema-yeggmen-n	Number=Sing	dema	0
-yeggmens	0	dema-yeggmen-n	Number=Plur	dema	0
-yeggs	0	dema-yegg-n	Number=Plur	dema	0
-yeld	0	dema-yeld-a	Degree=Pos	dema	0
-yelder	0	dema-yeld-a	Degree=Cmp	dema	0
-yeldest	0	dema-yeld-a	Degree=Sup	dema	0
-yeldly	0	dema-yeld-r		dema	0
-yeldness	0	dema-yeld-n	Number=Plur	dema	0
-yeldring	0	dema-yeldring-n	Number=Sing	dema	0
-yeldrings	0	dema-yeldring-n	Number=Plur	dema	0
-yelk	0	dema-yelk-n	Number=Sing	dema	0
-yelks	0	dema-yelk-n	Number=Plur	dema	0
-yell	0	oewn-yell-v	VerbForm=Inf	dema	0
-yell	1	oewn-yell-n	Number=Sing	dema	0
-yelled	0	oewn-yell-v	Tense=Past	dema	0
-yeller	0	oewn-yell-n	Number=Plur	dema	0
-yellers	0	oewn-yell-n	Number=Plur	dema	0
-yelling	0	oewn-yell-v	VerbForm=Ger	dema	0
-yellingly	0	dema-yell-r		dema	0
-yellow	0	oewn-yellow-n	Number=Sing	dema	0
-yellow	1	oewn-yellow-a	Degree=Pos	dema	0
-yellow	2	oewn-yellow-v	VerbForm=Inf	dema	0
-yellowback	0	dema-yellowback-n	Number=Sing	dema	0
-yellowbacks	0	dema-yellowback-n	Number=Plur	dema	0
-yellowbark	0	dema-yellowbark-n	Number=Sing	dema	0
-yellowbarks	0	dema-yellowbark-n	Number=Plur	dema	0
-yellowbellies	0	dema-yellowbellies-n	Number=Sing	dema	0
-yellowbelly	0	dema-yellowbelly-n	Number=Sing	dema	0
-yellowbird	0	oewn-yellowbird-n	Number=Sing	dema	0
-yellowbirds	0	oewn-yellowbird-n	Number=Plur	dema	0
-yellowed	0	oewn-yellow-v	Tense=Past	dema	0
-yellower	0	oewn-yellow-n	Number=Plur	dema	0
-yellower	1	oewn-yellow-a	Degree=Cmp	dema	0
-yellowers	0	oewn-yellow-n	Number=Plur	dema	0
-yellowest	0	oewn-yellow-a	Degree=Sup	dema	0
-yellowhammer	0	oewn-yellowhammer-n	Number=Sing	dema	0
-yellowhammers	0	oewn-yellowhammer-n	Number=Plur	dema	0
-yellowing	0	oewn-yellow-v	VerbForm=Ger	dema	0
-yellowingly	0	dema-yellow-r		dema	0
-yellowish	0	oewn-yellowish-a	Degree=Pos	dema	0
-yellowishly	0	dema-yellowish-r		dema	0
-yellowishness	0	dema-yellowish-n	Number=Plur	dema	0
-yellowlegs	0	oewn-yellowlegs-n	Number=Sing	dema	0
-yellowlegses	0	oewn-yellowlegs-n	Number=Plur	dema	0
-yellowly	0	dema-yellowly-r	Degree=Pos	dema	0
-yellowness	0	oewn-yellowness-n	Number=Sing	dema	0
-yellownesses	0	oewn-yellowness-n	Number=Plur	dema	0
-yellows	0	dema-yellows-n	Number=Sing	dema	0
-yellowtail	0	oewn-yellowtail-n	Number=Sing	dema	0
-yellowtails	0	dema-yellowtails-n	Number=Sing	dema	0
-yellowthroat	0	oewn-yellowthroat-n	Number=Sing	dema	0
-yellowthroats	0	oewn-yellowthroat-n	Number=Plur	dema	0
-yellowweed	0	dema-yellowweed-n	Number=Sing	dema	0
-yellowweeds	0	dema-yellowweed-n	Number=Plur	dema	0
-yellowwood	0	oewn-yellowwood-n	Number=Sing	dema	0
-yellowwoods	0	oewn-yellowwood-n	Number=Plur	dema	0
-yells	0	oewn-yell-v	Person=3+Tense=Pres	dema	0
-yells	1	oewn-yell-n	Number=Plur	dema	0
-yelp	0	oewn-yelp-v	VerbForm=Inf	dema	0
-yelp	1	oewn-yelp-n	Number=Sing	dema	0
-yelped	0	oewn-yelp-v	Tense=Past	dema	0
-yelper	0	dema-yelper-n	Number=Sing	dema	0
-yelpers	0	oewn-yelp-n	Number=Plur	dema	0
-yelping	0	oewn-yelp-v	VerbForm=Ger	dema	0
-yelpingly	0	dema-yelp-r		dema	0
-yelps	0	oewn-yelp-v	Person=3+Tense=Pres	dema	0
-yelps	1	oewn-yelp-n	Number=Plur	dema	0
-yen	0	oewn-yen-n	Number=Sing	dema	0
-yens	0	oewn-yen-n	Number=Plur	dema	0
-yenta	0	oewn-yenta-n	Number=Sing	dema	0
-yentas	0	oewn-yenta-n	Number=Plur	dema	0
-yeo	0	dema-yeo-n	Number=Sing	dema	0
-yeoman	0	oewn-yeoman-n	Number=Sing	dema	0
-yeomanly	0	dema-yeomanly-a	Degree=Pos	dema	0
-yeomanly	1	dema-yeomanly-r	Degree=Pos	dema	0
-yeomanries	0	oewn-yeomanry-n	Number=Plur	dema	0
-yeomanry	0	oewn-yeomanry-n	Number=Sing	dema	0
-yeomen	0	dema-yeomen-n	Number=Sing	dema	0
-yeomens	0	dema-yeomen-n	Number=Plur	dema	0
-yeos	0	dema-yeo-n	Number=Plur	dema	0
-yep	0	dema-yep-r	Degree=Pos	dema	0
-yepper	0	dema-yep-r	Degree=Cmp	dema	0
-yeppest	0	dema-yep-r	Degree=Sup	dema	0
-yerba	0	dema-yerba-n	Number=Sing	dema	0
-yerbas	0	dema-yerba-n	Number=Plur	dema	0
-yes	0	dema-yes-r	Degree=Pos	dema	0
-yes	1	oewn-yes-n	Number=Sing	dema	0
-yeses	0	oewn-yes-n	Number=Plur	dema	0
-yeshiva	0	oewn-yeshiva-n	Number=Sing	dema	0
-yeshivahs	0	dema-yeshivahs-n	Number=Sing	dema	0
-yeshivahses	0	dema-yeshivahs-n	Number=Plur	dema	0
-yeshivas	0	oewn-yeshiva-n	Number=Plur	dema	0
-yeshivoth	0	dema-yeshivoth-n	Number=Sing	dema	0
-yeshivoths	0	dema-yeshivoth-n	Number=Plur	dema	0
-yesser	0	dema-yes-r	Degree=Cmp	dema	0
-yessest	0	dema-yes-r	Degree=Sup	dema	0
-yester	0	dema-yester-a	Degree=Pos	dema	0
-yesterday	0	oewn-yesterday-n	Number=Sing	dema	0
-yesterday	1	oewn-yesterday-r	Degree=Pos	dema	0
-yesterdayness	0	dema-yesterdayness-n	Number=Sing	dema	0
-yesterdaynesses	0	dema-yesterdayness-n	Number=Plur	dema	0
-yesterdays	0	oewn-yesterday-n	Number=Plur	dema	0
-yesterer	0	dema-yester-a	Degree=Cmp	dema	0
-yesterest	0	dema-yester-a	Degree=Sup	dema	0
-yestereve	0	dema-yestereve-n	Number=Sing	dema	0
-yestereve	1	dema-yestereve-r	Degree=Pos	dema	0
-yesterevening	0	dema-yesterevening-n	Number=Sing	dema	0
-yesterevenings	0	dema-yesterevening-n	Number=Plur	dema	0
-yestereves	0	dema-yestereve-n	Number=Plur	dema	0
-yesterly	0	dema-yester-r		dema	0
-yestern	0	dema-yestern-a	Degree=Pos	dema	0
-yesterness	0	dema-yester-n	Number=Plur	dema	0
-yesternight	0	dema-yesternight-n	Number=Sing	dema	0
-yesternight	1	dema-yesternight-r	Degree=Pos	dema	0
-yesternights	0	dema-yesternight-n	Number=Plur	dema	0
-yesternly	0	dema-yestern-r		dema	0
-yesternness	0	dema-yestern-n	Number=Plur	dema	0
-yesternoon	0	dema-yesternoon-n	Number=Sing	dema	0
-yesternoon	1	dema-yesternoon-r	Degree=Pos	dema	0
-yesternoons	0	dema-yesternoon-n	Number=Plur	dema	0
-yesterweek	0	dema-yesterweek-n	Number=Sing	dema	0
-yesterweek	1	dema-yesterweek-r	Degree=Pos	dema	0
-yesterweeks	0	dema-yesterweek-n	Number=Plur	dema	0
-yesteryear	0	oewn-yesteryear-n	Number=Sing	dema	0
-yesteryear	1	dema-yesteryear-r	Degree=Pos	dema	0
-yesteryears	0	oewn-yesteryear-n	Number=Plur	dema	0
-yestreen	0	dema-yestreen-r	Degree=Pos	dema	0
-yet	0	dema-yet-c		dema	0
-yet	1	oewn-yet-r	Degree=Pos	dema	0
-yeti	0	oewn-yeti-n	Number=Sing	dema	0
-yetis	0	oewn-yeti-n	Number=Plur	dema	0
-yett	0	dema-yett-n	Number=Sing	dema	0
-yetts	0	dema-yett-n	Number=Plur	dema	0
-yeuk	0	dema-yeuk-v	VerbForm=Inf	dema	0
-yeuk	1	dema-yeuk-n	Number=Sing	dema	0
-yeuked	0	dema-yeuk-v	Tense=Past	dema	0
-yeuker	0	dema-yeuk-n	Number=Plur	dema	0
-yeukers	0	dema-yeuk-n	Number=Plur	dema	0
-yeukier	0	dema-yeuky-a	Degree=Cmp	dema	0
-yeukiest	0	dema-yeuky-a	Degree=Sup	dema	0
-yeukily	0	dema-yeuky-r		dema	0
-yeukiness	0	dema-yeuky-n	Number=Plur	dema	0
-yeuking	0	dema-yeuk-v	VerbForm=Ger	dema	0
-yeukingly	0	dema-yeuk-r		dema	0
-yeuks	0	dema-yeuk-v	Person=3+Tense=Pres	dema	0
-yeuks	1	dema-yeuk-n	Number=Plur	dema	0
-yeuky	0	dema-yeuky-a	Degree=Pos	dema	0
-yew	0	oewn-yew-n	Number=Sing	dema	0
-yews	0	oewn-yew-n	Number=Plur	dema	0
-yi	0	dema-yi-n	Number=Sing	dema	0
-yid	0	oewn-yid-n	Number=Sing	dema	0
-yids	0	oewn-yid-n	Number=Plur	dema	0
-yield	0	oewn-yield-v	VerbForm=Inf	dema	0
-yield	1	oewn-yield-n	Number=Sing	dema	0
-yielded	0	oewn-yield-v	Tense=Past	dema	0
-yielder	0	oewn-yield-n	Number=Plur	dema	0
-yielders	0	oewn-yield-n	Number=Plur	dema	0
-yielding	0	oewn-yielding-a	Degree=Pos	dema	0
-yielding	1	dema-yielding-v	VerbForm=Inf	dema	0
-yieldingly	0	oewn-yieldingly-r	Degree=Pos	dema	0
-yieldingness	0	dema-yieldingness-n	Number=Sing	dema	0
-yieldingnesses	0	dema-yieldingness-n	Number=Plur	dema	0
-yields	0	oewn-yield-v	Person=3+Tense=Pres	dema	0
-yields	1	oewn-yield-n	Number=Plur	dema	0
-yike	0	dema-yike-n	Number=Sing	dema	0
-yike	1	dema-yike-v	VerbForm=Inf	dema	0
-yiked	0	dema-yike-v	Tense=Past	dema	0
-yiker	0	dema-yike-n	Number=Plur	dema	0
-yikers	0	dema-yike-n	Number=Plur	dema	0
-yikes	0	dema-yike-n	Number=Plur	dema	0
-yikes	1	dema-yike-v	Person=3+Tense=Pres	dema	0
-yiking	0	dema-yike-v	VerbForm=Ger	dema	0
-yikingly	0	dema-yike-r		dema	0
-yip	0	oewn-yip-v	VerbForm=Inf	dema	0
-yip	1	oewn-yip-n	Number=Sing	dema	0
-yipe	0	dema-yipe-i		dema	0
-yipped	0	dema-yipped-v	VerbForm=Inf	dema	0
-yippee	0	dema-yippee-i		dema	0
-yipper	0	oewn-yip-n	Number=Plur	dema	0
-yippers	0	oewn-yip-n	Number=Plur	dema	0
-yippie	0	dema-yippie-n	Number=Sing	dema	0
-yippies	0	dema-yippie-n	Number=Plur	dema	0
-yipping	0	dema-yipping-v	VerbForm=Inf	dema	0
-yippingly	0	dema-yip-r		dema	0
-yips	0	oewn-yip-v	Person=3+Tense=Pres	dema	0
-yips	1	oewn-yip-n	Number=Plur	dema	0
-yirr	0	dema-yirr-v	VerbForm=Inf	dema	0
-yirred	0	dema-yirr-v	Tense=Past	dema	0
-yirrer	0	dema-yirr-n	Number=Plur	dema	0
-yirrers	0	dema-yirr-n	Number=Plur	dema	0
-yirring	0	dema-yirr-v	VerbForm=Ger	dema	0
-yirringly	0	dema-yirr-r		dema	0
-yirrs	0	dema-yirr-v	Person=3+Tense=Pres	dema	0
-ylem	0	oewn-ylem-n	Number=Sing	dema	0
-ylems	0	oewn-ylem-n	Number=Plur	dema	0
-yob	0	oewn-yob-n	Number=Sing	dema	0
-yobs	0	oewn-yob-n	Number=Plur	dema	0
-yod	0	dema-yod-n	Number=Sing	dema	0
-yodel	0	oewn-yodel-v	VerbForm=Inf	dema	0
-yodel	1	oewn-yodel-n	Number=Sing	dema	0
-yodeled	0	dema-yodeled-v	VerbForm=Inf	dema	0
-yodeler	0	dema-yodeler-n	Number=Sing	dema	0
-yodelers	0	oewn-yodel-n	Number=Plur	dema	0
-yodeling	0	dema-yodeling-v	VerbForm=Inf	dema	0
-yodelingly	0	dema-yodel-r		dema	0
-yodelled	0	dema-yodelled-v	VerbForm=Inf	dema	0
-yodeller	0	oewn-yodeller-n	Number=Sing	dema	0
-yodellers	0	oewn-yodeller-n	Number=Plur	dema	0
-yodelling	0	dema-yodelling-v	VerbForm=Inf	dema	0
-yodellingly	0	dema-yodel-r		dema	0
-yodels	0	oewn-yodel-v	Person=3+Tense=Pres	dema	0
-yodels	1	oewn-yodel-n	Number=Plur	dema	0
-yodle	0	dema-yodle-n	Number=Sing	dema	0
-yodled	0	dema-yodled-v	VerbForm=Inf	dema	0
-yodleded	0	dema-yodled-v	Tense=Past	dema	0
-yodleder	0	dema-yodled-n	Number=Plur	dema	0
-yodleders	0	dema-yodled-n	Number=Plur	dema	0
-yodleding	0	dema-yodled-v	VerbForm=Ger	dema	0
-yodledingly	0	dema-yodled-r		dema	0
-yodleds	0	dema-yodled-v	Person=3+Tense=Pres	dema	0
-yodler	0	dema-yodler-n	Number=Sing	dema	0
-yodlers	0	dema-yodler-n	Number=Plur	dema	0
-yodles	0	dema-yodle-n	Number=Plur	dema	0
-yodling	0	dema-yodling-v	VerbForm=Inf	dema	0
-yodlinged	0	dema-yodling-v	Tense=Past	dema	0
-yodlinger	0	dema-yodling-n	Number=Plur	dema	0
-yodlingers	0	dema-yodling-n	Number=Plur	dema	0
-yodlinging	0	dema-yodling-v	VerbForm=Ger	dema	0
-yodlingingly	0	dema-yodling-r		dema	0
-yodlings	0	dema-yodling-v	Person=3+Tense=Pres	dema	0
-yods	0	dema-yod-n	Number=Plur	dema	0
-yoga	0	oewn-yoga-n	Number=Sing	dema	0
-yogas	0	oewn-yoga-n	Number=Plur	dema	0
-yogh	0	dema-yogh-n	Number=Sing	dema	0
-yoghs	0	dema-yogh-n	Number=Plur	dema	0
-yoghurt	0	oewn-yoghurt-n	Number=Sing	dema	0
-yoghurts	0	oewn-yoghurt-n	Number=Plur	dema	0
-yogi	0	oewn-yogi-n	Number=Sing	dema	0
-yogini	0	dema-yogini-n	Number=Sing	dema	0
-yoginis	0	dema-yogini-n	Number=Plur	dema	0
-yogis	0	dema-yogis-n	Number=Sing	dema	0
-yogurt	0	oewn-yogurt-n	Number=Sing	dema	0
-yogurts	0	oewn-yogurt-n	Number=Plur	dema	0
-yohimbine	0	dema-yohimbine-n	Number=Sing	dema	0
-yohimbines	0	dema-yohimbine-n	Number=Plur	dema	0
-yoicks	0	dema-yoicks-i		dema	0
-yoke	0	oewn-yoke-n	Number=Sing	dema	0
-yoke	1	oewn-yoke-v	VerbForm=Inf	dema	0
-yoked	0	oewn-yoke-v	Tense=Past	dema	0
-yokefellow	0	dema-yokefellow-n	Number=Sing	dema	0
-yokefellows	0	dema-yokefellow-n	Number=Plur	dema	0
-yokel	0	oewn-yokel-n	Number=Sing	dema	0
-yokelish	0	oewn-yokelish-a	Degree=Pos	dema	0
-yokelishly	0	dema-yokelish-r		dema	0
-yokelishness	0	dema-yokelish-n	Number=Plur	dema	0
-yokels	0	oewn-yokel-n	Number=Plur	dema	0
-yoker	0	oewn-yoke-n	Number=Plur	dema	0
-yokers	0	oewn-yoke-n	Number=Plur	dema	0
-yokes	0	dema-yokes-n	Number=Sing	dema	0
-yoking	0	oewn-yoke-v	VerbForm=Ger	dema	0
-yokingly	0	dema-yoke-r		dema	0
-yolk	0	oewn-yolk-n	Number=Sing	dema	0
-yolkier	0	dema-yolky-a	Degree=Cmp	dema	0
-yolkiest	0	dema-yolky-a	Degree=Sup	dema	0
-yolkily	0	dema-yolky-r		dema	0
-yolkiness	0	dema-yolky-n	Number=Plur	dema	0
-yolkless	0	dema-yolkless-a	Degree=Pos	dema	0
-yolklessly	0	dema-yolkless-r		dema	0
-yolklessness	0	dema-yolkless-n	Number=Plur	dema	0
-yolks	0	oewn-yolk-n	Number=Plur	dema	0
-yolky	0	dema-yolky-a	Degree=Pos	dema	0
-yon	0	dema-yon-d		dema	0
-yonder	0	oewn-yonder-r	Degree=Pos	dema	0
-yonder	1	dema-yonder-d		dema	0
-yoni	0	dema-yoni-n	Number=Sing	dema	0
-yonis	0	dema-yoni-n	Number=Plur	dema	0
-yonnie	0	dema-yonnie-n	Number=Sing	dema	0
-yonnies	0	dema-yonnie-n	Number=Plur	dema	0
-yore	0	oewn-yore-n	Number=Sing	dema	0
-yore	1	dema-yore-r	Degree=Pos	dema	0
-yorer	0	dema-yore-r	Degree=Cmp	dema	0
-yores	0	oewn-yore-n	Number=Plur	dema	0
-yorest	0	dema-yore-r	Degree=Sup	dema	0
-york	0	dema-york-v	VerbForm=Inf	dema	0
-yorked	0	dema-york-v	Tense=Past	dema	0
-yorker	0	dema-yorker-n	Number=Sing	dema	0
-yorkers	0	dema-york-n	Number=Plur	dema	0
-yorking	0	dema-york-v	VerbForm=Ger	dema	0
-yorkingly	0	dema-york-r		dema	0
-yorks	0	dema-york-v	Person=3+Tense=Pres	dema	0
-you	0	dema-you-u		dema	0
-you	1	dema-you-n	Number=Sing	dema	0
-young	0	oewn-young-a	Degree=Pos	dema	0
-young	1	oewn-young-n	Number=Sing	dema	0
-youngberries	0	dema-youngberry-n	Number=Plur	dema	0
-youngberry	0	dema-youngberry-n	Number=Sing	dema	0
-younger	0	oewn-young-a	Degree=Cmp	dema	0
-youngest	0	oewn-young-a	Degree=Sup	dema	0
-youngling	0	dema-youngling-n	Number=Sing	dema	0
-younglings	0	dema-youngling-n	Number=Plur	dema	0
-youngly	0	dema-young-r		dema	0
-youngness	0	oewn-young-n	Number=Plur	dema	0
-youngs	0	oewn-young-n	Number=Plur	dema	0
-youngster	0	oewn-youngster-n	Number=Sing	dema	0
-youngsters	0	oewn-youngster-n	Number=Plur	dema	0
-younker	0	oewn-younker-n	Number=Sing	dema	0
-younkers	0	oewn-younker-n	Number=Plur	dema	0
-your	0	dema-your-d		dema	0
-yours	0	dema-yours-u		dema	0
-yourself	0	dema-yourself-u		dema	0
-yourselves	0	dema-yourselves-n	Number=Sing	dema	0
-yourselveses	0	dema-yourselves-n	Number=Plur	dema	0
-yous	0	dema-yous-n	Number=Sing	dema	0
-yous	1	dema-yous-u		dema	0
-youse	0	dema-youse-u		dema	0
-youses	0	dema-yous-n	Number=Plur	dema	0
-youth	0	oewn-youth-n	Number=Sing	dema	0
-youthen	0	dema-youthen-v	VerbForm=Inf	dema	0
-youthened	0	dema-youthen-v	Tense=Past	dema	0
-youthener	0	dema-youthen-n	Number=Plur	dema	0
-youtheners	0	dema-youthen-n	Number=Plur	dema	0
-youthening	0	dema-youthen-v	VerbForm=Ger	dema	0
-youtheningly	0	dema-youthen-r		dema	0
-youthens	0	dema-youthen-v	Person=3+Tense=Pres	dema	0
-youthful	0	oewn-youthful-a	Degree=Pos	dema	0
-youthfully	0	oewn-youthfully-r	Degree=Pos	dema	0
-youthfulness	0	oewn-youthfulness-n	Number=Sing	dema	0
-youthfulnesses	0	oewn-youthfulness-n	Number=Plur	dema	0
-youths	0	dema-youths-n	Number=Sing	dema	0
-yowl	0	oewn-yowl-v	VerbForm=Inf	dema	0
-yowl	1	oewn-yowl-n	Number=Sing	dema	0
-yowled	0	oewn-yowl-v	Tense=Past	dema	0
-yowler	0	oewn-yowl-n	Number=Plur	dema	0
-yowlers	0	oewn-yowl-n	Number=Plur	dema	0
-yowling	0	oewn-yowl-v	VerbForm=Ger	dema	0
-yowlingly	0	dema-yowl-r		dema	0
-yowls	0	oewn-yowl-v	Person=3+Tense=Pres	dema	0
-yowls	1	oewn-yowl-n	Number=Plur	dema	0
-yperite	0	dema-yperite-n	Number=Sing	dema	0
-yperites	0	dema-yperite-n	Number=Plur	dema	0
-yrs	0	dema-yrs-n	Number=Sing	dema	0
-yrses	0	dema-yrs-n	Number=Plur	dema	0
-ytterbia	0	dema-ytterbia-n	Number=Sing	dema	0
-ytterbias	0	dema-ytterbia-n	Number=Plur	dema	0
-ytterbite	0	oewn-ytterbite-n	Number=Sing	dema	0
-ytterbites	0	oewn-ytterbite-n	Number=Plur	dema	0
-ytterbium	0	oewn-ytterbium-n	Number=Sing	dema	0
-ytterbiums	0	oewn-ytterbium-n	Number=Plur	dema	0
-yttria	0	dema-yttria-n	Number=Sing	dema	0
-yttrias	0	dema-yttria-n	Number=Plur	dema	0
-yttric	0	dema-yttric-a	Degree=Pos	dema	0
-yttrically	0	dema-yttric-r		dema	0
-yttriccer	0	dema-yttric-a	Degree=Cmp	dema	0
-yttriccest	0	dema-yttric-a	Degree=Sup	dema	0
-yttricness	0	dema-yttric-n	Number=Plur	dema	0
-yttriferous	0	dema-yttriferous-a	Degree=Pos	dema	0
-yttriferously	0	dema-yttriferous-r		dema	0
-yttriferousness	0	dema-yttriferous-n	Number=Plur	dema	0
-yttrium	0	oewn-yttrium-n	Number=Sing	dema	0
-yttriums	0	oewn-yttrium-n	Number=Plur	dema	0
-yttrotantalite	0	dema-yttrotantalite-n	Number=Sing	dema	0
-yttrotantalites	0	dema-yttrotantalite-n	Number=Plur	dema	0
-yuan	0	oewn-yuan-n	Number=Sing	dema	0
-yuans	0	oewn-yuan-n	Number=Plur	dema	0
-yucca	0	oewn-yucca-n	Number=Sing	dema	0
-yuccas	0	oewn-yucca-n	Number=Plur	dema	0
-yuk	0	dema-yuk-i		dema	0
-yuk	1	dema-yuk-n	Number=Sing	dema	0
-yuks	0	dema-yuk-n	Number=Plur	dema	0
-yulan	0	dema-yulan-n	Number=Sing	dema	0
-yulans	0	dema-yulan-n	Number=Plur	dema	0
-yule	0	dema-yule-n	Number=Sing	dema	0
-yules	0	dema-yule-n	Number=Plur	dema	0
-yuletide	0	dema-yuletide-n	Number=Sing	dema	0
-yuletide	1	dema-yuletide-a	Degree=Pos	dema	0
-yuletidely	0	dema-yuletide-r		dema	0
-yuletideness	0	dema-yuletide-n	Number=Plur	dema	0
-yuletides	0	dema-yuletide-n	Number=Plur	dema	0
-yuquilla	0	dema-yuquilla-n	Number=Sing	dema	0
-yuquillas	0	dema-yuquillas-n	Number=Sing	dema	0
-yurt	0	oewn-yurt-n	Number=Sing	dema	0
-yurts	0	oewn-yurt-n	Number=Plur	dema	0
-ywis	0	dema-ywis-r	Degree=Pos	dema	0
-ywisser	0	dema-ywis-r	Degree=Cmp	dema	0
-ywissest	0	dema-ywis-r	Degree=Sup	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Y	0	oewn-y-n	Number=Sing	dema	0			oewn_form
+Y	1	oewn-Y-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Y chromosome	0	oewn-Y_chromosome-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Y chromosomes	0	oewn-Y_chromosome-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Y-linked gene	0	oewn-Y-linked_gene-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Y-linked genes	0	oewn-Y-linked_gene-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Y-shaped	0	oewn-Y-shaped-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Y2K	0	oewn-Y2K-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Y2K compliant	0	oewn-Y2K_compliant-a	Capitalization=Exact+Degree=Pos	dema	0			oewn_form
+YB	0	oewn-YB-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+YBS	0	oewn-YB-n	Capitalization=Upper+Number=Plur	dema	0			rule
+YFLOPS	0	oewn-YFLOPS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Yagi aerial	0	oewn-Yagi_aerial-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yagi aerials	0	oewn-Yagi_aerial-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yahi	0	oewn-Yahi-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yahi language	0	oewn-Yahi_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yahi languages	0	oewn-Yahi_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yahis	0	oewn-Yahi-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yakut	0	oewn-Yakut-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yakut language	0	oewn-Yakut_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yakut languages	0	oewn-Yakut_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yakuts	0	oewn-Yakut-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yamaltu	0	oewn-Yamaltu-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yamaltu language	0	oewn-Yamaltu_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yamaltu languages	0	oewn-Yamaltu_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yamaltus	0	oewn-Yamaltu-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yana	0	oewn-Yana-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yana language	0	oewn-Yana_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yana languages	0	oewn-Yana_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yanan	0	oewn-Yanan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yanans	0	oewn-Yanan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yanas	0	oewn-Yana-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yank	0	oewn-yank-v	VerbForm=Inf	dema	0			oewn_form
+Yank	1		Number=Sing	dema	0	yank	n	moby_reverse
+Yank	2	oewn-Yank-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yankee	0	oewn-Yankee-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yankee	1	oewn-Yankee-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yankee corn	0	oewn-Yankee_corn-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yankee corns	0	oewn-Yankee_corn-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yankee-Doodle	0	oewn-Yankee-Doodle-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yankee-doodles	0	oewn-Yankee-Doodle-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yankees	0	oewn-Yankee-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yanks	0	oewn-yank-v	Person=3+Tense=Pres	dema	0			rule
+Yanks	1	oewn-Yank-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yavapai	0	oewn-Yavapai-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yavapai language	0	oewn-Yavapai_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yavapai languages	0	oewn-Yavapai_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yavapais	0	oewn-Yavapai-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yay	0	oewn-Yay-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yays	0	oewn-Yay-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yb	0	oewn-Yb-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ybit	0	oewn-Ybit-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ybits	0	oewn-Ybit-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ybs	0	oewn-Yb-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yeatsian	0	oewn-Yeatsian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yellow Delicious	0	oewn-Yellow_Delicious-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yellow race	0	oewn-Yellow_race-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yellow races	0	oewn-Yellow_race-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yemeni	0	oewn-Yemeni-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yemeni	1	oewn-Yemeni-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yemeni fils	0	oewn-Yemeni_fils-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yemeni monetary unit	0	oewn-Yemeni_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yemeni monetary units	0	oewn-Yemeni_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yemeni rial	0	oewn-Yemeni_rial-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yemeni rials	0	oewn-Yemeni_rial-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yemenis	0	oewn-Yemeni-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yenisei	0	oewn-Yenisei-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yenisei language	0	oewn-Yenisei_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yenisei languages	0	oewn-Yenisei_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yenisei-Samoyed	0	oewn-Yenisei-Samoyed-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yenisei-Samoyed language	0	oewn-Yenisei-Samoyed_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yenisei-Samoyed languages	0	oewn-Yenisei-Samoyed_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yenisei-samoyeds	0	oewn-Yenisei-Samoyed-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yeniseian	0	oewn-Yeniseian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yeniseian language	0	oewn-Yeniseian_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yeniseian languages	0	oewn-Yeniseian_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yeniseians	0	oewn-Yeniseian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yeniseis	0	oewn-Yenisei-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yersinia pestis	0	oewn-Yersinia_pestis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yi	0		Number=Sing	dema	0	yi	n	moby_reverse
+Yi	1	oewn-Yi-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yi language	0	oewn-Yi_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yi languages	0	oewn-Yi_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+YiB	0	oewn-YiB-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yibit	0	oewn-Yibit-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yibits	0	oewn-Yibit-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yibs	0	oewn-YiB-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yiddish	0	oewn-Yiddish-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yiddishes	0	oewn-Yiddish-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yiddishism	0	oewn-Yiddishism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yiddishisms	0	oewn-Yiddishism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yis	0	oewn-Yi-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yogacara	0	oewn-Yogacara-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yogacaras	0	oewn-Yogacara-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yokuts	0	oewn-Yokuts-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yokuts language	0	oewn-Yokuts_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yokuts languages	0	oewn-Yokuts_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yom Kippur	0	oewn-Yom_Kippur-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yom Kippurs	0	oewn-Yom_Kippur-n	Capitalization=Title+Number=Plur	dema	0			rule
+York	0		VerbForm=Inf	dema	0	york	v	moby_reverse
+York	1	oewn-York-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yorks	0		Person=3+Tense=Pres	dema	0	york	v	rule
+Yorks	1	oewn-York-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yorkshire fog	0	oewn-Yorkshire_fog-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yorkshire fogs	0	oewn-Yorkshire_fog-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yorkshire pudding	0	oewn-Yorkshire_pudding-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yorkshire puddings	0	oewn-Yorkshire_pudding-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yorkshire terrier	0	oewn-Yorkshire_terrier-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yorkshire terriers	0	oewn-Yorkshire_terrier-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yoruba	0	oewn-Yoruba-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yoruba language	0	oewn-Yoruba_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yoruba languages	0	oewn-Yoruba_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yorubas	0	oewn-Yoruba-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yosemite toad	0	oewn-Yosemite_toad-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yosemite toads	0	oewn-Yosemite_toad-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Young Turk	0	oewn-Young_Turk-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Young Turks	0	oewn-Young_Turk-n	Capitalization=Title+Number=Plur	dema	0			rule
+Young's modulus	0	oewn-Young-ap-s_modulus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yquem	0	oewn-Yquem-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yquems	0	oewn-Yquem-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ys	0	oewn-y-n	Number=Plur	dema	0			rule
+Ys	1	oewn-Y-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yuan	0	oewn-yuan-n	Number=Plur	dema	0			agid
+Yuan	1	oewn-yuan-n	Number=Sing	dema	0			oewn_form
+Yuan	2	oewn-Yuan-n	Capitalization=Title+Number=Plur	dema	0			agid
+Yuan	3	oewn-Yuan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yuan dynasties	0	oewn-Yuan_dynasty-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yuan dynasty	0	oewn-Yuan_dynasty-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucatec	0	oewn-Yucatec-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yucatec language	0	oewn-Yucatec_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucatec languages	0	oewn-Yucatec_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucateco	0	oewn-Yucateco-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yucateco language	0	oewn-Yucateco_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucateco languages	0	oewn-Yucateco_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucatecos	0	oewn-Yucateco-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yucatecs	0	oewn-Yucatec-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yucca aloifolia	0	oewn-Yucca_aloifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca aloifolias	0	oewn-Yucca_aloifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca baccata	0	oewn-Yucca_baccata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca baccatas	0	oewn-Yucca_baccata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca brevifolia	0	oewn-Yucca_brevifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca brevifolias	0	oewn-Yucca_brevifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca carnerosana	0	oewn-Yucca_carnerosana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca carnerosanas	0	oewn-Yucca_carnerosana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca elata	0	oewn-Yucca_elata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca elatas	0	oewn-Yucca_elata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca filamentosa	0	oewn-Yucca_filamentosa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca filamentosas	0	oewn-Yucca_filamentosa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca glauca	0	oewn-Yucca_glauca-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca glaucas	0	oewn-Yucca_glauca-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca gloriosa	0	oewn-Yucca_gloriosa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca gloriosas	0	oewn-Yucca_gloriosa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca smalliana	0	oewn-Yucca_smalliana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca smallianas	0	oewn-Yucca_smalliana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yucca whipplei	0	oewn-Yucca_whipplei-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yucca whippleis	0	oewn-Yucca_whipplei-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yue	0	oewn-Yue-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yue dialect	0	oewn-Yue_dialect-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yue dialects	0	oewn-Yue_dialect-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yues	0	oewn-Yue-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yugoslav	0	oewn-Yugoslav-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yugoslav	1	oewn-Yugoslav-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yugoslavian	0	oewn-Yugoslavian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yugoslavian	1	oewn-Yugoslavian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yugoslavian dinar	0	oewn-Yugoslavian_dinar-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yugoslavian dinars	0	oewn-Yugoslavian_dinar-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yugoslavian monetary unit	0	oewn-Yugoslavian_monetary_unit-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yugoslavian monetary units	0	oewn-Yugoslavian_monetary_unit-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yugoslavians	0	oewn-Yugoslavian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yugoslavs	0	oewn-Yugoslav-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yukon Time	0	oewn-Yukon_Time-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yukon Times	0	oewn-Yukon_Time-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yukon white birch	0	oewn-Yukon_white_birch-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yukon white birches	0	oewn-Yukon_white_birch-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yule	0		Number=Sing	dema	0	yule	n	moby_reverse
+Yule	1	oewn-Yule-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yule log	0	oewn-Yule_log-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yule logs	0	oewn-Yule_log-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yules	0		Number=Plur	dema	0	yule	n	rule
+Yules	1	oewn-Yule-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yuletide	0		Number=Sing	dema	0	yuletide	n	moby_reverse
+Yuletide	1		Degree=Pos	dema	0	yuletide	a	moby_reverse
+Yuletide	2	oewn-Yuletide-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yuletides	0		Number=Plur	dema	0	yuletide	n	rule
+Yuletides	1	oewn-Yuletide-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yuma	0	oewn-Yuma-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yuma language	0	oewn-Yuma_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yuma languages	0	oewn-Yuma_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yuman	0	oewn-Yuman-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Yuman	1	oewn-Yuman-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Yumans	0	oewn-Yuman-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yumas	0	oewn-Yuma-n	Capitalization=Title+Number=Plur	dema	0			rule
+Yurak-Samoyed	0	oewn-Yurak-Samoyed-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yurak-Samoyed language	0	oewn-Yurak-Samoyed_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Yurak-Samoyed languages	0	oewn-Yurak-Samoyed_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Yurak-samoyeds	0	oewn-Yurak-Samoyed-n	Capitalization=Exact+Number=Plur	dema	0			rule
+y	0	oewn-y-n	Number=Sing	dema	0			oewn_form
+y-axis	0	oewn-y-axis-n	Number=Sing	dema	0			oewn_form
+ya	0	dema-ya-u		dema	0			carried
+yabber	0		VerbForm=Inf	dema	0	yabber	v	moby_reverse
+yabber	1		Number=Sing	dema	0	yabber	n	moby_reverse
+yabbered	0		Tense=Past+VerbForm=Part	dema	0	yabber	v	rule
+yabbering	0		VerbForm=Ger	dema	0	yabber	v	rule
+yabbers	0		Person=3+Tense=Pres	dema	0	yabber	v	rule
+yabbies	0		Number=Plur	dema	0	yabby	n	rule
+yabby	0		Number=Sing	dema	0	yabby	n	moby_reverse
+yacca	0	oewn-yacca-n	Number=Sing	dema	0			oewn_form
+yacca podocarp	0	oewn-yacca_podocarp-n	Number=Sing	dema	0			oewn_form
+yacca podocarps	0	oewn-yacca_podocarp-n	Number=Plur	dema	0			rule
+yaccas	0	oewn-yacca-n	Number=Plur	dema	0			rule
+yacht	0	oewn-yacht-n	Number=Sing	dema	0			oewn_form
+yacht	1	oewn-yacht-v	VerbForm=Inf	dema	0			oewn_form
+yacht chair	0	oewn-yacht_chair-n	Number=Sing	dema	0			oewn_form
+yacht chairs	0	oewn-yacht_chair-n	Number=Plur	dema	0			rule
+yacht club	0	oewn-yacht_club-n	Number=Sing	dema	0			oewn_form
+yacht clubs	0	oewn-yacht_club-n	Number=Plur	dema	0			rule
+yacht race	0	oewn-yacht_race-n	Number=Sing	dema	0			oewn_form
+yacht races	0	oewn-yacht_race-n	Number=Plur	dema	0			rule
+yachted	0	oewn-yacht-v	Tense=Past+VerbForm=Part	dema	0			rule
+yachting	0	oewn-yachting-n	Number=Sing	dema	0			oewn_form
+yachting	1	oewn-yacht-v	VerbForm=Ger	dema	0			rule
+yachting cap	0	oewn-yachting_cap-n	Number=Sing	dema	0			oewn_form
+yachting caps	0	oewn-yachting_cap-n	Number=Plur	dema	0			rule
+yachtings	0	oewn-yachting-n	Number=Plur	dema	0			rule
+yachtmanship	0		Number=Sing	dema	0	yachtmanship	n	moby_reverse
+yachtmanships	0		Number=Plur	dema	0	yachtmanship	n	rule
+yachts	0	oewn-yacht-n	Number=Plur	dema	0			rule
+yachts	1	oewn-yacht-v	Person=3+Tense=Pres	dema	0			rule
+yachtsman	0	oewn-yachtsman-n	Number=Sing	dema	0			oewn_form
+yachtsmans	0	oewn-yachtsman-n	Number=Plur	dema	0			rule
+yachtsmanship	0		Number=Sing	dema	0	yachtsmanship	n	moby_reverse
+yachtsmanships	0		Number=Plur	dema	0	yachtsmanship	n	rule
+yachtsperson	0	oewn-yachtsperson-n	Number=Sing	dema	0			oewn_form
+yachtspersons	0	oewn-yachtsperson-n	Number=Plur	dema	0			rule
+yachtswoman	0	oewn-yachtswoman-n	Number=Sing	dema	0			oewn_form
+yachtswomen	0	oewn-yachtswoman-n	Number=Plur	dema	0			agid
+yachty	0		Degree=Pos	dema	0	yachty	a	moby_reverse
+yack	0	oewn-yack-n	Number=Sing	dema	0			oewn_form
+yack	1	oewn-yack-v	VerbForm=Inf	dema	0			oewn_form
+yack away	0	oewn-yack_away-v	VerbForm=Inf	dema	0			oewn_form
+yacked	0	oewn-yack-v	Tense=Past+VerbForm=Part	dema	0			rule
+yacked away	0	oewn-yack_away-v	Tense=Past+VerbForm=Part	dema	0			rule
+yacking	0	oewn-yack-v	VerbForm=Ger	dema	0			rule
+yacking away	0	oewn-yack_away-v	VerbForm=Ger	dema	0			rule
+yacks	0	oewn-yack-n	Number=Plur	dema	0			rule
+yacks	1	oewn-yack-v	Person=3+Tense=Pres	dema	0			rule
+yacks away	0	oewn-yack_away-v	Person=3+Tense=Pres	dema	0			rule
+yad	0		Number=Sing	dema	0	yad	n	moby_reverse
+yadim	0		Number=Sing	dema	0	yadim	n	moby_reverse
+yadims	0		Number=Plur	dema	0	yadim	n	rule
+yaff	0		VerbForm=Inf	dema	0	yaff	v	moby_reverse
+yaffed	0		Tense=Past+VerbForm=Part	dema	0	yaff	v	rule
+yaffing	0		VerbForm=Ger	dema	0	yaff	v	rule
+yaffle	0		Number=Sing	dema	0	yaffle	n	moby_reverse
+yaffles	0		Number=Plur	dema	0	yaffle	n	rule
+yaffs	0		Person=3+Tense=Pres	dema	0	yaff	v	rule
+yager	0	dema-yager-i		dema	0			carried
+yagi	0	oewn-yagi-n	Number=Sing	dema	0			oewn_form
+yagis	0	oewn-yagi-n	Number=Plur	dema	0			rule
+yah	0	dema-yah-i		dema	0			carried
+yahoo	0	oewn-yahoo-n	Number=Sing	dema	0			oewn_form
+yahooism	0		Number=Sing	dema	0	yahooism	n	moby_reverse
+yahooisms	0		Number=Plur	dema	0	yahooism	n	rule
+yahoos	0	oewn-yahoo-n	Number=Plur	dema	0			rule
+yak	0	oewn-yak-n	Number=Sing	dema	0			oewn_form
+yak	1	oewn-yak-v	VerbForm=Inf	dema	0			oewn_form
+yak butter	0	oewn-yak_butter-n	Number=Sing	dema	0			oewn_form
+yak butters	0	oewn-yak_butter-n	Number=Plur	dema	0			rule
+yak's milk	0	oewn-yak-ap-s_milk-n	Number=Sing	dema	0			oewn_form
+yak's milks	0	oewn-yak-ap-s_milk-n	Number=Plur	dema	0			rule
+yakety-yak	0	oewn-yakety-yak-n	Number=Sing	dema	0			oewn_form
+yakety-yaks	0	oewn-yakety-yak-n	Number=Plur	dema	0			rule
+yakka	0		Number=Sing	dema	0	yakka	n	moby_reverse
+yakkas	0		Number=Plur	dema	0	yakka	n	rule
+yakked	0	oewn-yak-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+yakking	0	oewn-yak-v	VerbForm=Ger	dema	0			oewn_form
+yaks	0	oewn-yak-n	Number=Plur	dema	0			rule
+yaks	1	oewn-yak-v	Person=3+Tense=Pres	dema	0			rule
+yakuza	0	oewn-yakuza-n	Number=Sing	dema	0			oewn_form
+yakuzas	0	oewn-yakuza-n	Number=Plur	dema	0			rule
+yam	0	oewn-yam-n	Number=Sing	dema	0			oewn_form
+yam bean	0	oewn-yam_bean-n	Number=Sing	dema	0			oewn_form
+yam beans	0	oewn-yam_bean-n	Number=Plur	dema	0			rule
+yam plant	0	oewn-yam_plant-n	Number=Sing	dema	0			oewn_form
+yam plants	0	oewn-yam_plant-n	Number=Plur	dema	0			rule
+yamen	0		Number=Sing	dema	0	yamen	n	moby_reverse
+yamens	0		Number=Plur	dema	0	yamen	n	rule
+yammer	0	oewn-yammer-v	VerbForm=Inf	dema	0			oewn_form
+yammer	1		Number=Sing	dema	0	yammer	n	moby_reverse
+yammered	0	oewn-yammer-v	Tense=Past+VerbForm=Part	dema	0			rule
+yammering	0	oewn-yammer-v	VerbForm=Ger	dema	0			rule
+yammers	0	oewn-yammer-v	Person=3+Tense=Pres	dema	0			rule
+yams	0	oewn-yam-n	Number=Plur	dema	0			rule
+yang	0	oewn-yang-n	Number=Sing	dema	0			oewn_form
+yangs	0	oewn-yang-n	Number=Plur	dema	0			rule
+yank	0	oewn-yank-v	VerbForm=Inf	dema	0			oewn_form
+yank	1		Number=Sing	dema	0	yank	n	moby_reverse
+yanked	0	oewn-yank-v	Tense=Past+VerbForm=Part	dema	0			rule
+yanker	0	oewn-yanker-n	Number=Sing	dema	0			oewn_form
+yankers	0	oewn-yanker-n	Number=Plur	dema	0			rule
+yanking	0	oewn-yank-v	VerbForm=Ger	dema	0			rule
+yanks	0	oewn-yank-v	Person=3+Tense=Pres	dema	0			rule
+yanquapin	0	oewn-yanquapin-n	Number=Sing	dema	0			oewn_form
+yanquapins	0	oewn-yanquapin-n	Number=Plur	dema	0			rule
+yap	0	oewn-yap-v	VerbForm=Inf	dema	0			oewn_form
+yap	1	oewn-yap-n	Number=Sing	dema	0			oewn_form
+yap	2	dema-yap-i		dema	0			carried
+yap away	0	oewn-yap_away-v	VerbForm=Inf	dema	0			oewn_form
+yapok	0		Number=Sing	dema	0	yapok	n	moby_reverse
+yapoks	0		Number=Plur	dema	0	yapok	n	rule
+yapon	0		Number=Sing	dema	0	yapon	n	moby_reverse
+yapons	0		Number=Plur	dema	0	yapon	n	rule
+yapp	0		Number=Sing	dema	0	yapp	n	moby_reverse
+yapped	0	oewn-yap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+yapped away	0	oewn-yap_away-v	Tense=Past+VerbForm=Part	dema	0			rule
+yapper	0		Number=Sing	dema	0	yapper	n	moby_reverse
+yappers	0		Number=Plur	dema	0	yapper	n	rule
+yapping	0	oewn-yap-v	VerbForm=Ger	dema	0			oewn_form
+yapping away	0	oewn-yap_away-v	VerbForm=Ger	dema	0			rule
+yappingly	0		Degree=Pos	dema	0	yappingly	r	moby_reverse
+yapps	0		Number=Plur	dema	0	yapp	n	rule
+yaps	0	oewn-yap-v	Person=3+Tense=Pres	dema	0			rule
+yaps	1	oewn-yap-n	Number=Plur	dema	0			rule
+yaps away	0	oewn-yap_away-v	Person=3+Tense=Pres	dema	0			rule
+yarak	0		Number=Sing	dema	0	yarak	n	moby_reverse
+yaraks	0		Number=Plur	dema	0	yarak	n	rule
+yarborough	0		Number=Sing	dema	0	yarborough	n	moby_reverse
+yarboroughs	0		Number=Plur	dema	0	yarborough	n	rule
+yard	0	oewn-yard-n	Number=Sing	dema	0			oewn_form
+yard bird	0	oewn-yard_bird-n	Number=Sing	dema	0			oewn_form
+yard birds	0	oewn-yard_bird-n	Number=Plur	dema	0			rule
+yard donkey	0	oewn-yard_donkey-n	Number=Sing	dema	0			oewn_form
+yard donkeys	0	oewn-yard_donkey-n	Number=Plur	dema	0			rule
+yard goods	0	oewn-yard_goods-n	Number=Sing	dema	0			oewn_form
+yard grass	0	oewn-yard_grass-n	Number=Sing	dema	0			oewn_form
+yard grasses	0	oewn-yard_grass-n	Number=Plur	dema	0			rule
+yard line	0	oewn-yard_line-n	Number=Sing	dema	0			oewn_form
+yard lines	0	oewn-yard_line-n	Number=Plur	dema	0			rule
+yard marker	0	oewn-yard_marker-n	Number=Sing	dema	0			oewn_form
+yard markers	0	oewn-yard_marker-n	Number=Plur	dema	0			rule
+yard measure	0	oewn-yard_measure-n	Number=Sing	dema	0			oewn_form
+yard measures	0	oewn-yard_measure-n	Number=Plur	dema	0			rule
+yard sale	0	oewn-yard_sale-n	Number=Sing	dema	0			oewn_form
+yard sales	0	oewn-yard_sale-n	Number=Plur	dema	0			rule
+yard worker	0	oewn-yard_worker-n	Number=Sing	dema	0			oewn_form
+yard workers	0	oewn-yard_worker-n	Number=Plur	dema	0			rule
+yard-long bean	0	oewn-yard-long_bean-n	Number=Sing	dema	0			oewn_form
+yard-long beans	0	oewn-yard-long_bean-n	Number=Plur	dema	0			rule
+yardage	0	oewn-yardage-n	Number=Sing	dema	0			oewn_form
+yardages	0	oewn-yardage-n	Number=Plur	dema	0			rule
+yardang	0		Number=Sing	dema	0	yardang	n	moby_reverse
+yardangs	0		Number=Plur	dema	0	yardang	n	rule
+yardarm	0	oewn-yardarm-n	Number=Sing	dema	0			oewn_form
+yardarms	0	oewn-yardarm-n	Number=Plur	dema	0			rule
+yardbird	0	oewn-yardbird-n	Number=Sing	dema	0			oewn_form
+yardbirds	0	oewn-yardbird-n	Number=Plur	dema	0			rule
+yarder	0	oewn-yarder-n	Number=Sing	dema	0			oewn_form
+yarders	0	oewn-yarder-n	Number=Plur	dema	0			rule
+yardgrass	0	oewn-yardgrass-n	Number=Sing	dema	0			oewn_form
+yardgrasses	0	oewn-yardgrass-n	Number=Plur	dema	0			rule
+yardie	0	oewn-yardie-n	Number=Sing	dema	0			oewn_form
+yardies	0	oewn-yardie-n	Number=Plur	dema	0			rule
+yardman	0	oewn-yardman-n	Number=Sing	dema	0			oewn_form
+yardmaster	0	oewn-yardmaster-n	Number=Sing	dema	0			oewn_form
+yardmasters	0	oewn-yardmaster-n	Number=Plur	dema	0			rule
+yards	0	oewn-yard-n	Number=Plur	dema	0			rule
+yardstick	0	oewn-yardstick-n	Number=Sing	dema	0			oewn_form
+yardsticks	0	oewn-yardstick-n	Number=Plur	dema	0			rule
+yardwoman	0	oewn-yardwoman-n	Number=Sing	dema	0			oewn_form
+yardwomans	0	oewn-yardwoman-n	Number=Plur	dema	0			rule
+yare	0		Degree=Pos	dema	0	yare	a	moby_reverse
+yare	1		Degree=Pos	dema	0	yare	r	moby_reverse
+yarely	0		Degree=Pos	dema	0	yarely	r	moby_reverse
+yarer	0		Degree=Cmp	dema	0	yare	a	moby_reverse
+yarest	0		Degree=Sup	dema	0	yare	a	moby_reverse
+yarmelke	0	oewn-yarmelke-n	Number=Sing	dema	0			oewn_form
+yarmelkes	0	oewn-yarmelke-n	Number=Plur	dema	0			rule
+yarmulka	0	oewn-yarmulka-n	Number=Sing	dema	0			oewn_form
+yarmulkas	0	oewn-yarmulka-n	Number=Plur	dema	0			rule
+yarmulke	0	oewn-yarmulke-n	Number=Sing	dema	0			oewn_form
+yarmulkes	0	oewn-yarmulke-n	Number=Plur	dema	0			rule
+yarn	0	oewn-yarn-n	Number=Sing	dema	0			oewn_form
+yarn	1	oewn-yarn-v	VerbForm=Inf	dema	0			oewn_form
+yarn-dye	0	oewn-yarn-dye-v	VerbForm=Inf	dema	0			oewn_form
+yarn-dyed	0	oewn-yarn-dye-v	Tense=Past+VerbForm=Part	dema	0			rule
+yarn-dyeing	0	oewn-yarn-dye-v	VerbForm=Ger	dema	0			rule
+yarn-dyes	0	oewn-yarn-dye-v	Person=3+Tense=Pres	dema	0			rule
+yarn-spinning	0	oewn-yarn-spinning-a	Degree=Pos	dema	0			oewn_form
+yarned	0	oewn-yarn-v	Tense=Past+VerbForm=Part	dema	0			rule
+yarning	0	oewn-yarn-v	VerbForm=Ger	dema	0			rule
+yarns	0	oewn-yarn-n	Number=Plur	dema	0			rule
+yarns	1	oewn-yarn-v	Person=3+Tense=Pres	dema	0			rule
+yarovization	0		Number=Sing	dema	0	yarovization	n	moby_reverse
+yarovizations	0		Number=Plur	dema	0	yarovization	n	rule
+yarovize	0		VerbForm=Inf	dema	0	yarovize	v	moby_reverse
+yarovized	0		Tense=Past+VerbForm=Part	dema	0	yarovize	v	rule
+yarovizes	0		Person=3+Tense=Pres	dema	0	yarovize	v	rule
+yarovizing	0		VerbForm=Ger	dema	0	yarovize	v	rule
+yarraman	0		Number=Sing	dema	0	yarraman	n	moby_reverse
+yarramans	0		Number=Plur	dema	0	yarraman	n	rule
+yarramen	0		Number=Sing	dema	0	yarramen	n	moby_reverse
+yarramens	0		Number=Plur	dema	0	yarramen	n	rule
+yarrow	0	oewn-yarrow-n	Number=Sing	dema	0			oewn_form
+yarrows	0	oewn-yarrow-n	Number=Plur	dema	0			rule
+yashmac	0	oewn-yashmac-n	Number=Sing	dema	0			oewn_form
+yashmacs	0	oewn-yashmac-n	Number=Plur	dema	0			rule
+yashmak	0	oewn-yashmak-n	Number=Sing	dema	0			oewn_form
+yashmaks	0	oewn-yashmak-n	Number=Plur	dema	0			rule
+yataghan	0	oewn-yataghan-n	Number=Sing	dema	0			oewn_form
+yataghans	0	oewn-yataghan-n	Number=Plur	dema	0			rule
+yate	0		Number=Sing	dema	0	yate	n	moby_reverse
+yates	0		Number=Plur	dema	0	yate	n	rule
+yatobyo	0	oewn-yatobyo-n	Number=Sing	dema	0			oewn_form
+yatobyos	0	oewn-yatobyo-n	Number=Plur	dema	0			rule
+yatter	0		VerbForm=Inf	dema	0	yatter	v	moby_reverse
+yatter	1		Number=Sing	dema	0	yatter	n	moby_reverse
+yattered	0		Tense=Past+VerbForm=Part	dema	0	yatter	v	rule
+yattering	0		VerbForm=Ger	dema	0	yatter	v	rule
+yatters	0		Person=3+Tense=Pres	dema	0	yatter	v	rule
+yaud	0		Number=Sing	dema	0	yaud	n	moby_reverse
+yauds	0		Number=Plur	dema	0	yaud	n	rule
+yauld	0		Degree=Pos	dema	0	yauld	a	moby_reverse
+yaup	0	oewn-yaup-v	VerbForm=Inf	dema	0			oewn_form
+yaup	1		Number=Sing	dema	0	yaup	n	moby_reverse
+yauped	0	oewn-yaup-v	Tense=Past+VerbForm=Part	dema	0			rule
+yauping	0	oewn-yaup-v	VerbForm=Ger	dema	0			rule
+yaupon	0		Number=Sing	dema	0	yaupon	n	moby_reverse
+yaupon hollies	0	oewn-yaupon_holly-n	Number=Plur	dema	0			rule
+yaupon holly	0	oewn-yaupon_holly-n	Number=Sing	dema	0			oewn_form
+yaupons	0		Number=Plur	dema	0	yaupon	n	rule
+yaups	0	oewn-yaup-v	Person=3+Tense=Pres	dema	0			rule
+yautia	0	oewn-yautia-n	Number=Sing	dema	0			oewn_form
+yautias	0	oewn-yautia-n	Number=Plur	dema	0			rule
+yaw	0	oewn-yaw-v	VerbForm=Inf	dema	0			oewn_form
+yaw	1	oewn-yaw-n	Number=Sing	dema	0			oewn_form
+yawed	0	oewn-yaw-v	Tense=Past+VerbForm=Part	dema	0			rule
+yawing	0	oewn-yaw-v	VerbForm=Ger	dema	0			rule
+yawl	0	oewn-yawl-n	Number=Sing	dema	0			oewn_form
+yawl	1	oewn-yawl-v	VerbForm=Inf	dema	0			oewn_form
+yawled	0	oewn-yawl-v	Tense=Past+VerbForm=Part	dema	0			rule
+yawling	0	oewn-yawl-v	VerbForm=Ger	dema	0			rule
+yawls	0	oewn-yawl-n	Number=Plur	dema	0			rule
+yawls	1	oewn-yawl-v	Person=3+Tense=Pres	dema	0			rule
+yawmeter	0		Number=Sing	dema	0	yawmeter	n	moby_reverse
+yawmeters	0		Number=Plur	dema	0	yawmeter	n	rule
+yawn	0	oewn-yawn-v	VerbForm=Inf	dema	0			oewn_form
+yawn	1	oewn-yawn-n	Number=Sing	dema	0			oewn_form
+yawned	0	oewn-yawn-v	Tense=Past+VerbForm=Part	dema	0			rule
+yawner	0	oewn-yawner-n	Number=Sing	dema	0			oewn_form
+yawners	0	oewn-yawner-n	Number=Plur	dema	0			rule
+yawnful	0		Degree=Pos	dema	0	yawnful	a	moby_reverse
+yawnfully	0		Degree=Pos	dema	0	yawnfully	r	moby_reverse
+yawning	0	oewn-yawning-a	Degree=Pos	dema	0			oewn_form
+yawning	1	oewn-yawning-n	Number=Sing	dema	0			oewn_form
+yawning	2	oewn-yawn-v	VerbForm=Ger	dema	0			rule
+yawnings	0	oewn-yawning-n	Number=Plur	dema	0			rule
+yawns	0	oewn-yawn-v	Person=3+Tense=Pres	dema	0			rule
+yawns	1	oewn-yawn-n	Number=Plur	dema	0			rule
+yawp	0	oewn-yawp-v	VerbForm=Inf	dema	0			oewn_form
+yawp	1		Number=Sing	dema	0	yawp	n	moby_reverse
+yawped	0	oewn-yawp-v	Tense=Past+VerbForm=Part	dema	0			rule
+yawper	0		Number=Sing	dema	0	yawper	n	moby_reverse
+yawpers	0		Number=Plur	dema	0	yawper	n	rule
+yawping	0	oewn-yawp-v	VerbForm=Ger	dema	0			rule
+yawps	0	oewn-yawp-v	Person=3+Tense=Pres	dema	0			rule
+yaws	0	oewn-yaws-n	Number=Sing	dema	0			oewn_form
+yaws	1	oewn-yaw-n	Number=Plur	dema	0			rule
+yaws	2	oewn-yaw-v	Person=3+Tense=Pres	dema	0			rule
+yawweed	0		Number=Sing	dema	0	yawweed	n	moby_reverse
+yawweeds	0		Number=Plur	dema	0	yawweed	n	rule
+yazata	0		Number=Sing	dema	0	yazata	n	moby_reverse
+yazatas	0		Number=Plur	dema	0	yazata	n	rule
+yclad	0		VerbForm=Inf	dema	0	yclad	v	moby_reverse
+ycladed	0		Tense=Past+VerbForm=Part	dema	0	yclad	v	rule
+yclading	0		VerbForm=Ger	dema	0	yclad	v	rule
+yclads	0		Person=3+Tense=Pres	dema	0	yclad	v	rule
+ycleping	0		VerbForm=Inf	dema	0	ycleping	v	moby_reverse
+yclept	0		VerbForm=Inf	dema	0	yclept	v	moby_reverse
+yclept	1		Degree=Pos	dema	0	yclept	a	moby_reverse
+yclepted	0		Tense=Past+VerbForm=Part	dema	0	yclept	v	rule
+yclepting	0		VerbForm=Ger	dema	0	yclept	v	rule
+yclepts	0		Person=3+Tense=Pres	dema	0	yclept	v	rule
+yd	0		Number=Sing	dema	0	yd	n	moby_reverse
+yds	0		Number=Sing	dema	0	yds	n	moby_reverse
+yds	1		Number=Plur	dema	0	yd	n	rule
+ye	0	dema-ye-u		dema	0			carried
+ye	1	dema-ye-d		dema	0			carried
+yea	0	oewn-yea-r	Degree=Pos	dema	0			oewn_form
+yea	1	oewn-yea-n	Number=Sing	dema	0			oewn_form
+yeah	0	oewn-yeah-r	Degree=Pos	dema	0			oewn_form
+yealing	0		Number=Sing	dema	0	yealing	n	moby_reverse
+yealings	0		Number=Plur	dema	0	yealing	n	rule
+yean	0		VerbForm=Inf	dema	0	yean	v	moby_reverse
+yeaned	0		Tense=Past+VerbForm=Part	dema	0	yean	v	rule
+yeaning	0		VerbForm=Ger	dema	0	yean	v	rule
+yeanling	0		Number=Sing	dema	0	yeanling	n	moby_reverse
+yeanlings	0		Number=Plur	dema	0	yeanling	n	rule
+yeans	0		Person=3+Tense=Pres	dema	0	yean	v	rule
+year	0	oewn-year-n	Number=Sing	dema	0			oewn_form
+year dot	0	oewn-year_dot-n	Number=Sing	dema	0			oewn_form
+year dots	0	oewn-year_dot-n	Number=Plur	dema	0			rule
+year of grace	0	oewn-year_of_grace-n	Number=Sing	dema	0			oewn_form
+year-around	0	oewn-year-around-a	Degree=Pos	dema	0			oewn_form
+year-end	0	oewn-year-end-n	Number=Sing	dema	0			oewn_form
+year-end	1	oewn-year-end-a	Degree=Pos	dema	0			oewn_form
+year-ends	0	oewn-year-end-n	Number=Plur	dema	0			rule
+year-round	0	oewn-year-round-a	Degree=Pos	dema	0			oewn_form
+yearbook	0	oewn-yearbook-n	Number=Sing	dema	0			oewn_form
+yearbooks	0	oewn-yearbook-n	Number=Plur	dema	0			rule
+yearlies	0	oewn-yearly-n	Number=Plur	dema	0			rule
+yearling	0	oewn-yearling-n	Number=Plur	dema	0			agid
+yearling	1	oewn-yearling-n	Number=Sing	dema	0			oewn_form
+yearling	2		Degree=Pos	dema	0	yearling	a	moby_reverse
+yearlong	0	oewn-yearlong-a	Degree=Pos	dema	0			oewn_form
+yearly	0	oewn-yearly-a	Degree=Pos	dema	0			oewn_form
+yearly	1	oewn-yearly-r	Degree=Pos	dema	0			oewn_form
+yearly	2	oewn-yearly-n	Number=Sing	dema	0			oewn_form
+yearn	0	oewn-yearn-v	VerbForm=Inf	dema	0			oewn_form
+yearned	0	oewn-yearn-v	Tense=Past+VerbForm=Part	dema	0			rule
+yearned-for	0	oewn-yearned-for-a	Degree=Pos	dema	0			oewn_form
+yearner	0	oewn-yearner-n	Number=Sing	dema	0			oewn_form
+yearners	0	oewn-yearner-n	Number=Plur	dema	0			rule
+yearning	0	oewn-yearning-n	Number=Sing	dema	0			oewn_form
+yearning	1	oewn-yearn-v	VerbForm=Ger	dema	0			rule
+yearningly	0	oewn-yearningly-r	Degree=Pos	dema	0			oewn_form
+yearnings	0	oewn-yearning-n	Number=Plur	dema	0			rule
+yearns	0	oewn-yearn-v	Person=3+Tense=Pres	dema	0			rule
+years	0	oewn-year-n	Number=Plur	dema	0			rule
+years	1	oewn-years-n	Number=Sing	dema	0			oewn_form
+years of grace	0	oewn-year_of_grace-n	Number=Plur	dema	0			rule
+yeas	0	oewn-yea-n	Number=Plur	dema	0			rule
+yeast	0	oewn-yeast-n	Number=Sing	dema	0			oewn_form
+yeast	1		VerbForm=Inf	dema	0	yeast	v	moby_reverse
+yeast cake	0	oewn-yeast_cake-n	Number=Sing	dema	0			oewn_form
+yeast cakes	0	oewn-yeast_cake-n	Number=Plur	dema	0			rule
+yeast dough	0	oewn-yeast_dough-n	Number=Sing	dema	0			oewn_form
+yeast doughs	0	oewn-yeast_dough-n	Number=Plur	dema	0			rule
+yeastier	0	oewn-yeasty-a	Degree=Cmp	dema	0			oewn_form
+yeastiest	0	oewn-yeasty-a	Degree=Sup	dema	0			oewn_form
+yeastiness	0		Number=Sing	dema	0	yeastiness	n	moby_reverse
+yeastinesses	0		Number=Plur	dema	0	yeastiness	n	rule
+yeastless	0		Degree=Pos	dema	0	yeastless	a	moby_reverse
+yeastlike	0	oewn-yeastlike-a	Degree=Pos	dema	0			oewn_form
+yeasts	0	oewn-yeast-n	Number=Plur	dema	0			rule
+yeasty	0	oewn-yeasty-a	Degree=Pos	dema	0			oewn_form
+yegg	0		Number=Sing	dema	0	yegg	n	moby_reverse
+yeggman	0		Number=Sing	dema	0	yeggman	n	moby_reverse
+yeggmans	0		Number=Plur	dema	0	yeggman	n	rule
+yeggmen	0		Number=Sing	dema	0	yeggmen	n	moby_reverse
+yeggmens	0		Number=Plur	dema	0	yeggmen	n	rule
+yeggs	0		Number=Plur	dema	0	yegg	n	rule
+yeld	0		Degree=Pos	dema	0	yeld	a	moby_reverse
+yeldring	0		Number=Sing	dema	0	yeldring	n	moby_reverse
+yeldrings	0		Number=Plur	dema	0	yeldring	n	rule
+yelk	0		Number=Sing	dema	0	yelk	n	moby_reverse
+yelks	0		Number=Plur	dema	0	yelk	n	rule
+yell	0	oewn-yell-v	VerbForm=Inf	dema	0			oewn_form
+yell	1	oewn-yell-n	Number=Sing	dema	0			oewn_form
+yelled	0	oewn-yell-v	Tense=Past+VerbForm=Part	dema	0			rule
+yelled	1	oewn-yelled-a	Degree=Pos	dema	0			oewn_form
+yeller	0	oewn-yeller-n	Number=Sing	dema	0			oewn_form
+yellers	0	oewn-yeller-n	Number=Plur	dema	0			rule
+yelling	0	oewn-yell-v	VerbForm=Ger	dema	0			rule
+yelling	1	oewn-yelling-n	Number=Sing	dema	0			oewn_form
+yellings	0	oewn-yelling-n	Number=Plur	dema	0			rule
+yellow	0	oewn-yellow-n	Number=Sing	dema	0			oewn_form
+yellow	1	oewn-yellow-a	Degree=Pos	dema	0			oewn_form
+yellow	2	oewn-yellow-v	VerbForm=Inf	dema	0			oewn_form
+yellow adder's tongue	0	oewn-yellow_adder-ap-s_tongue-n	Number=Sing	dema	0			oewn_form
+yellow adder's tongues	0	oewn-yellow_adder-ap-s_tongue-n	Number=Plur	dema	0			rule
+yellow ageratum	0	oewn-yellow_ageratum-n	Number=Sing	dema	0			oewn_form
+yellow ageratums	0	oewn-yellow_ageratum-n	Number=Plur	dema	0			rule
+yellow asphodel	0	oewn-yellow_asphodel-n	Number=Sing	dema	0			oewn_form
+yellow asphodels	0	oewn-yellow_asphodel-n	Number=Plur	dema	0			rule
+yellow avens	0	oewn-yellow_avens-n	Number=Sing	dema	0			oewn_form
+yellow bachelor's button	0	oewn-yellow_bachelor-ap-s_button-n	Number=Sing	dema	0			oewn_form
+yellow bachelor's buttons	0	oewn-yellow_bachelor-ap-s_button-n	Number=Plur	dema	0			rule
+yellow bass	0	oewn-yellow_bass-n	Number=Sing	dema	0			oewn_form
+yellow basses	0	oewn-yellow_bass-n	Number=Plur	dema	0			rule
+yellow bean	0	oewn-yellow_bean-n	Number=Sing	dema	0			oewn_form
+yellow beans	0	oewn-yellow_bean-n	Number=Plur	dema	0			rule
+yellow bedstraw	0	oewn-yellow_bedstraw-n	Number=Sing	dema	0			oewn_form
+yellow bedstraws	0	oewn-yellow_bedstraw-n	Number=Plur	dema	0			rule
+yellow bells	0	oewn-yellow_bells-n	Number=Sing	dema	0			oewn_form
+yellow berries	0	oewn-yellow_berry-n	Number=Plur	dema	0			rule
+yellow berry	0	oewn-yellow_berry-n	Number=Sing	dema	0			oewn_form
+yellow bile	0	oewn-yellow_bile-n	Number=Sing	dema	0			oewn_form
+yellow biles	0	oewn-yellow_bile-n	Number=Plur	dema	0			rule
+yellow birch	0	oewn-yellow_birch-n	Number=Sing	dema	0			oewn_form
+yellow birches	0	oewn-yellow_birch-n	Number=Plur	dema	0			rule
+yellow bone marrow	0	oewn-yellow_bone_marrow-n	Number=Sing	dema	0			oewn_form
+yellow bone marrows	0	oewn-yellow_bone_marrow-n	Number=Plur	dema	0			rule
+yellow bristle grass	0	oewn-yellow_bristle_grass-n	Number=Sing	dema	0			oewn_form
+yellow bristle grasses	0	oewn-yellow_bristle_grass-n	Number=Plur	dema	0			rule
+yellow bristlegrass	0	oewn-yellow_bristlegrass-n	Number=Sing	dema	0			oewn_form
+yellow bristlegrasses	0	oewn-yellow_bristlegrass-n	Number=Plur	dema	0			rule
+yellow bugle	0	oewn-yellow_bugle-n	Number=Sing	dema	0			oewn_form
+yellow bugles	0	oewn-yellow_bugle-n	Number=Plur	dema	0			rule
+yellow bunting	0	oewn-yellow_bunting-n	Number=Sing	dema	0			oewn_form
+yellow buntings	0	oewn-yellow_bunting-n	Number=Plur	dema	0			rule
+yellow cattley guava	0	oewn-yellow_cattley_guava-n	Number=Sing	dema	0			oewn_form
+yellow cattley guavas	0	oewn-yellow_cattley_guava-n	Number=Plur	dema	0			rule
+yellow cedar	0	oewn-yellow_cedar-n	Number=Sing	dema	0			oewn_form
+yellow cedars	0	oewn-yellow_cedar-n	Number=Plur	dema	0			rule
+yellow chamomile	0	oewn-yellow_chamomile-n	Number=Sing	dema	0			oewn_form
+yellow chamomiles	0	oewn-yellow_chamomile-n	Number=Plur	dema	0			rule
+yellow chestnut oak	0	oewn-yellow_chestnut_oak-n	Number=Sing	dema	0			oewn_form
+yellow chestnut oaks	0	oewn-yellow_chestnut_oak-n	Number=Plur	dema	0			rule
+yellow cleavers	0	oewn-yellow_cleavers-n	Number=Sing	dema	0			oewn_form
+yellow clintonia	0	oewn-yellow_clintonia-n	Number=Sing	dema	0			oewn_form
+yellow clintonias	0	oewn-yellow_clintonia-n	Number=Plur	dema	0			rule
+yellow colicroot	0	oewn-yellow_colicroot-n	Number=Sing	dema	0			oewn_form
+yellow colicroots	0	oewn-yellow_colicroot-n	Number=Plur	dema	0			rule
+yellow cypress	0	oewn-yellow_cypress-n	Number=Sing	dema	0			oewn_form
+yellow cypresses	0	oewn-yellow_cypress-n	Number=Plur	dema	0			rule
+yellow dock	0	oewn-yellow_dock-n	Number=Sing	dema	0			oewn_form
+yellow docks	0	oewn-yellow_dock-n	Number=Plur	dema	0			rule
+yellow dwarf	0	oewn-yellow_dwarf-n	Number=Sing	dema	0			oewn_form
+yellow dwarf of potato	0	oewn-yellow_dwarf_of_potato-n	Number=Sing	dema	0			oewn_form
+yellow dwarfs	0	oewn-yellow_dwarf-n	Number=Plur	dema	0			rule
+yellow dwarfs of potato	0	oewn-yellow_dwarf_of_potato-n	Number=Plur	dema	0			rule
+yellow fever	0	oewn-yellow_fever-n	Number=Sing	dema	0			oewn_form
+yellow fevers	0	oewn-yellow_fever-n	Number=Plur	dema	0			rule
+yellow flag	0	oewn-yellow_flag-n	Number=Sing	dema	0			oewn_form
+yellow flags	0	oewn-yellow_flag-n	Number=Plur	dema	0			rule
+yellow foxglove	0	oewn-yellow_foxglove-n	Number=Sing	dema	0			oewn_form
+yellow foxgloves	0	oewn-yellow_foxglove-n	Number=Plur	dema	0			rule
+yellow foxtail	0	oewn-yellow_foxtail-n	Number=Sing	dema	0			oewn_form
+yellow foxtails	0	oewn-yellow_foxtail-n	Number=Plur	dema	0			rule
+yellow giant hyssop	0	oewn-yellow_giant_hyssop-n	Number=Sing	dema	0			oewn_form
+yellow giant hyssops	0	oewn-yellow_giant_hyssop-n	Number=Plur	dema	0			rule
+yellow globe lilies	0	oewn-yellow_globe_lily-n	Number=Plur	dema	0			rule
+yellow globe lily	0	oewn-yellow_globe_lily-n	Number=Sing	dema	0			oewn_form
+yellow goatfish	0	oewn-yellow_goatfish-n	Number=Sing	dema	0			oewn_form
+yellow goatfishes	0	oewn-yellow_goatfish-n	Number=Plur	dema	0			rule
+yellow granadilla	0	oewn-yellow_granadilla-n	Number=Sing	dema	0			oewn_form
+yellow granadillas	0	oewn-yellow_granadilla-n	Number=Plur	dema	0			rule
+yellow green	0	oewn-yellow_green-n	Number=Sing	dema	0			oewn_form
+yellow greens	0	oewn-yellow_green-n	Number=Plur	dema	0			rule
+yellow gurnard	0	oewn-yellow_gurnard-n	Number=Sing	dema	0			oewn_form
+yellow gurnards	0	oewn-yellow_gurnard-n	Number=Plur	dema	0			rule
+yellow hawkweed	0	oewn-yellow_hawkweed-n	Number=Sing	dema	0			oewn_form
+yellow hawkweeds	0	oewn-yellow_hawkweed-n	Number=Plur	dema	0			rule
+yellow henbane	0	oewn-yellow_henbane-n	Number=Sing	dema	0			oewn_form
+yellow henbanes	0	oewn-yellow_henbane-n	Number=Plur	dema	0			rule
+yellow honeysuckle	0	oewn-yellow_honeysuckle-n	Number=Sing	dema	0			oewn_form
+yellow honeysuckles	0	oewn-yellow_honeysuckle-n	Number=Plur	dema	0			rule
+yellow horned poppies	0	oewn-yellow_horned_poppy-n	Number=Plur	dema	0			rule
+yellow horned poppy	0	oewn-yellow_horned_poppy-n	Number=Sing	dema	0			oewn_form
+yellow hornet	0	oewn-yellow_hornet-n	Number=Sing	dema	0			oewn_form
+yellow hornets	0	oewn-yellow_hornet-n	Number=Plur	dema	0			rule
+yellow iris	0	oewn-yellow_iris-n	Number=Sing	dema	0			oewn_form
+yellow ironweed	0	oewn-yellow_ironweed-n	Number=Sing	dema	0			oewn_form
+yellow ironweeds	0	oewn-yellow_ironweed-n	Number=Plur	dema	0			rule
+yellow jacaranda	0	oewn-yellow_jacaranda-n	Number=Sing	dema	0			oewn_form
+yellow jacarandas	0	oewn-yellow_jacaranda-n	Number=Plur	dema	0			rule
+yellow jack	0	oewn-yellow_jack-n	Number=Sing	dema	0			oewn_form
+yellow jacket	0	oewn-yellow_jacket-n	Number=Sing	dema	0			oewn_form
+yellow jackets	0	oewn-yellow_jacket-n	Number=Plur	dema	0			rule
+yellow jacks	0	oewn-yellow_jack-n	Number=Plur	dema	0			rule
+yellow jasmine	0	oewn-yellow_jasmine-n	Number=Sing	dema	0			oewn_form
+yellow jasmines	0	oewn-yellow_jasmine-n	Number=Plur	dema	0			rule
+yellow jessamine	0	oewn-yellow_jessamine-n	Number=Sing	dema	0			oewn_form
+yellow jessamines	0	oewn-yellow_jessamine-n	Number=Plur	dema	0			rule
+yellow journalism	0	oewn-yellow_journalism-n	Number=Sing	dema	0			oewn_form
+yellow journalisms	0	oewn-yellow_journalism-n	Number=Plur	dema	0			rule
+yellow lady's slipper	0	oewn-yellow_lady-ap-s_slipper-n	Number=Sing	dema	0			oewn_form
+yellow lady's slippers	0	oewn-yellow_lady-ap-s_slipper-n	Number=Plur	dema	0			rule
+yellow lady-slipper	0	oewn-yellow_lady-slipper-n	Number=Sing	dema	0			oewn_form
+yellow lady-slippers	0	oewn-yellow_lady-slipper-n	Number=Plur	dema	0			rule
+yellow light	0	oewn-yellow_light-n	Number=Sing	dema	0			oewn_form
+yellow lights	0	oewn-yellow_light-n	Number=Plur	dema	0			rule
+yellow locust	0	oewn-yellow_locust-n	Number=Sing	dema	0			oewn_form
+yellow locusts	0	oewn-yellow_locust-n	Number=Plur	dema	0			rule
+yellow loosestrife	0	oewn-yellow_loosestrife-n	Number=Sing	dema	0			oewn_form
+yellow loosestrifes	0	oewn-yellow_loosestrife-n	Number=Plur	dema	0			rule
+yellow lupine	0	oewn-yellow_lupine-n	Number=Sing	dema	0			oewn_form
+yellow lupines	0	oewn-yellow_lupine-n	Number=Plur	dema	0			rule
+yellow man	0	oewn-yellow_man-n	Number=Sing	dema	0			oewn_form
+yellow mans	0	oewn-yellow_man-n	Number=Plur	dema	0			rule
+yellow mariposa tulip	0	oewn-yellow_mariposa_tulip-n	Number=Sing	dema	0			oewn_form
+yellow mariposa tulips	0	oewn-yellow_mariposa_tulip-n	Number=Plur	dema	0			rule
+yellow marrow	0	oewn-yellow_marrow-n	Number=Sing	dema	0			oewn_form
+yellow marrows	0	oewn-yellow_marrow-n	Number=Plur	dema	0			rule
+yellow metal	0	oewn-yellow_metal-n	Number=Sing	dema	0			oewn_form
+yellow metals	0	oewn-yellow_metal-n	Number=Plur	dema	0			rule
+yellow milkwort	0	oewn-yellow_milkwort-n	Number=Sing	dema	0			oewn_form
+yellow milkworts	0	oewn-yellow_milkwort-n	Number=Plur	dema	0			rule
+yellow mombin	0	oewn-yellow_mombin-n	Number=Sing	dema	0			oewn_form
+yellow mombin tree	0	oewn-yellow_mombin_tree-n	Number=Sing	dema	0			oewn_form
+yellow mombin trees	0	oewn-yellow_mombin_tree-n	Number=Plur	dema	0			rule
+yellow mombins	0	oewn-yellow_mombin-n	Number=Plur	dema	0			rule
+yellow mountain saxifrage	0	oewn-yellow_mountain_saxifrage-n	Number=Sing	dema	0			oewn_form
+yellow mountain saxifrages	0	oewn-yellow_mountain_saxifrage-n	Number=Plur	dema	0			rule
+yellow nutgrass	0	oewn-yellow_nutgrass-n	Number=Sing	dema	0			oewn_form
+yellow nutgrasses	0	oewn-yellow_nutgrass-n	Number=Plur	dema	0			rule
+yellow oak	0	oewn-yellow_oak-n	Number=Sing	dema	0			oewn_form
+yellow oaks	0	oewn-yellow_oak-n	Number=Plur	dema	0			rule
+yellow ocher	0	oewn-yellow_ocher-n	Number=Sing	dema	0			oewn_form
+yellow ochers	0	oewn-yellow_ocher-n	Number=Plur	dema	0			rule
+yellow ochre	0	oewn-yellow_ochre-n	Number=Sing	dema	0			oewn_form
+yellow ochres	0	oewn-yellow_ochre-n	Number=Plur	dema	0			rule
+yellow oleander	0	oewn-yellow_oleander-n	Number=Sing	dema	0			oewn_form
+yellow oleanders	0	oewn-yellow_oleander-n	Number=Plur	dema	0			rule
+yellow pages	0	oewn-yellow_pages-n	Number=Sing	dema	0			oewn_form
+yellow paper daisies	0	oewn-yellow_paper_daisy-n	Number=Plur	dema	0			rule
+yellow paper daisy	0	oewn-yellow_paper_daisy-n	Number=Sing	dema	0			oewn_form
+yellow parilla	0	oewn-yellow_parilla-n	Number=Sing	dema	0			oewn_form
+yellow parillas	0	oewn-yellow_parilla-n	Number=Plur	dema	0			rule
+yellow pea	0	oewn-yellow_pea-n	Number=Sing	dema	0			oewn_form
+yellow peas	0	oewn-yellow_pea-n	Number=Plur	dema	0			rule
+yellow perch	0	oewn-yellow_perch-n	Number=Sing	dema	0			oewn_form
+yellow perches	0	oewn-yellow_perch-n	Number=Plur	dema	0			rule
+yellow peril	0	oewn-yellow_peril-n	Number=Sing	dema	0			oewn_form
+yellow perils	0	oewn-yellow_peril-n	Number=Plur	dema	0			rule
+yellow pimpernel	0	oewn-yellow_pimpernel-n	Number=Sing	dema	0			oewn_form
+yellow pimpernels	0	oewn-yellow_pimpernel-n	Number=Plur	dema	0			rule
+yellow pine	0	oewn-yellow_pine-n	Number=Sing	dema	0			oewn_form
+yellow pines	0	oewn-yellow_pine-n	Number=Plur	dema	0			rule
+yellow pitcher plant	0	oewn-yellow_pitcher_plant-n	Number=Sing	dema	0			oewn_form
+yellow pitcher plants	0	oewn-yellow_pitcher_plant-n	Number=Plur	dema	0			rule
+yellow pond lilies	0	oewn-yellow_pond_lily-n	Number=Plur	dema	0			rule
+yellow pond lily	0	oewn-yellow_pond_lily-n	Number=Sing	dema	0			oewn_form
+yellow poplar	0	oewn-yellow_poplar-n	Number=Sing	dema	0			oewn_form
+yellow poplars	0	oewn-yellow_poplar-n	Number=Plur	dema	0			rule
+yellow prussiate of potash	0	oewn-yellow_prussiate_of_potash-n	Number=Sing	dema	0			oewn_form
+yellow prussiates of potash	0	oewn-yellow_prussiate_of_potash-n	Number=Plur	dema	0			rule
+yellow rocket	0	oewn-yellow_rocket-n	Number=Sing	dema	0			oewn_form
+yellow rockets	0	oewn-yellow_rocket-n	Number=Plur	dema	0			rule
+yellow root	0	oewn-yellow_root-n	Number=Sing	dema	0			oewn_form
+yellow roots	0	oewn-yellow_root-n	Number=Plur	dema	0			rule
+yellow salsifies	0	oewn-yellow_salsify-n	Number=Plur	dema	0			rule
+yellow salsify	0	oewn-yellow_salsify-n	Number=Sing	dema	0			oewn_form
+yellow sand verbena	0	oewn-yellow_sand_verbena-n	Number=Sing	dema	0			oewn_form
+yellow sand verbenas	0	oewn-yellow_sand_verbena-n	Number=Plur	dema	0			rule
+yellow spiny daisies	0	oewn-yellow_spiny_daisy-n	Number=Plur	dema	0			rule
+yellow spiny daisy	0	oewn-yellow_spiny_daisy-n	Number=Sing	dema	0			oewn_form
+yellow spot	0	oewn-yellow_spot-n	Number=Sing	dema	0			oewn_form
+yellow spot fungus	0	oewn-yellow_spot_fungus-n	Number=Sing	dema	0			oewn_form
+yellow spots	0	oewn-yellow_spot-n	Number=Plur	dema	0			rule
+yellow spruce	0	oewn-yellow_spruce-n	Number=Sing	dema	0			oewn_form
+yellow spruces	0	oewn-yellow_spruce-n	Number=Plur	dema	0			rule
+yellow squash	0	oewn-yellow_squash-n	Number=Sing	dema	0			oewn_form
+yellow squashes	0	oewn-yellow_squash-n	Number=Plur	dema	0			rule
+yellow star-thistle	0	oewn-yellow_star-thistle-n	Number=Sing	dema	0			oewn_form
+yellow star-thistles	0	oewn-yellow_star-thistle-n	Number=Plur	dema	0			rule
+yellow sweet clover	0	oewn-yellow_sweet_clover-n	Number=Sing	dema	0			oewn_form
+yellow sweet clovers	0	oewn-yellow_sweet_clover-n	Number=Plur	dema	0			rule
+yellow trefoil	0	oewn-yellow_trefoil-n	Number=Sing	dema	0			oewn_form
+yellow trefoils	0	oewn-yellow_trefoil-n	Number=Plur	dema	0			rule
+yellow trumpet	0	oewn-yellow_trumpet-n	Number=Sing	dema	0			oewn_form
+yellow trumpets	0	oewn-yellow_trumpet-n	Number=Plur	dema	0			rule
+yellow turnip	0	oewn-yellow_turnip-n	Number=Sing	dema	0			oewn_form
+yellow turnips	0	oewn-yellow_turnip-n	Number=Plur	dema	0			rule
+yellow twining snapdragon	0	oewn-yellow_twining_snapdragon-n	Number=Sing	dema	0			oewn_form
+yellow twining snapdragons	0	oewn-yellow_twining_snapdragon-n	Number=Plur	dema	0			rule
+yellow vetchling	0	oewn-yellow_vetchling-n	Number=Sing	dema	0			oewn_form
+yellow vetchlings	0	oewn-yellow_vetchling-n	Number=Plur	dema	0			rule
+yellow warbler	0	oewn-yellow_warbler-n	Number=Sing	dema	0			oewn_form
+yellow warblers	0	oewn-yellow_warbler-n	Number=Plur	dema	0			rule
+yellow water flag	0	oewn-yellow_water_flag-n	Number=Sing	dema	0			oewn_form
+yellow water flags	0	oewn-yellow_water_flag-n	Number=Plur	dema	0			rule
+yellow water lilies	0	oewn-yellow_water_lily-n	Number=Plur	dema	0			rule
+yellow water lily	0	oewn-yellow_water_lily-n	Number=Sing	dema	0			oewn_form
+yellow watercress	0	oewn-yellow_watercress-n	Number=Sing	dema	0			oewn_form
+yellow watercresses	0	oewn-yellow_watercress-n	Number=Plur	dema	0			rule
+yellow woman	0	oewn-yellow_woman-n	Number=Sing	dema	0			oewn_form
+yellow womans	0	oewn-yellow_woman-n	Number=Plur	dema	0			rule
+yellow-banded	0	oewn-yellow-banded-a	Degree=Pos	dema	0			oewn_form
+yellow-beige	0	oewn-yellow-beige-a	Degree=Pos	dema	0			oewn_form
+yellow-bellied	0	oewn-yellow-bellied-a	Degree=Pos	dema	0			oewn_form
+yellow-bellied sapsucker	0	oewn-yellow-bellied_sapsucker-n	Number=Sing	dema	0			oewn_form
+yellow-bellied sapsuckers	0	oewn-yellow-bellied_sapsucker-n	Number=Plur	dema	0			rule
+yellow-bellied terrapin	0	oewn-yellow-bellied_terrapin-n	Number=Sing	dema	0			oewn_form
+yellow-bellied terrapins	0	oewn-yellow-bellied_terrapin-n	Number=Plur	dema	0			rule
+yellow-blindness	0	oewn-yellow-blindness-n	Number=Sing	dema	0			oewn_form
+yellow-blindnesses	0	oewn-yellow-blindness-n	Number=Plur	dema	0			rule
+yellow-blue color blindness	0	oewn-yellow-blue_color_blindness-n	Number=Sing	dema	0			oewn_form
+yellow-blue color blindnesses	0	oewn-yellow-blue_color_blindness-n	Number=Plur	dema	0			rule
+yellow-blue dichromacies	0	oewn-yellow-blue_dichromacy-n	Number=Plur	dema	0			rule
+yellow-blue dichromacy	0	oewn-yellow-blue_dichromacy-n	Number=Sing	dema	0			oewn_form
+yellow-breasted bunting	0	oewn-yellow-breasted_bunting-n	Number=Sing	dema	0			oewn_form
+yellow-breasted buntings	0	oewn-yellow-breasted_bunting-n	Number=Plur	dema	0			rule
+yellow-breasted chat	0	oewn-yellow-breasted_chat-n	Number=Sing	dema	0			oewn_form
+yellow-breasted chats	0	oewn-yellow-breasted_chat-n	Number=Plur	dema	0			rule
+yellow-brown	0	oewn-yellow-brown-a	Degree=Pos	dema	0			oewn_form
+yellow-crowned night heron	0	oewn-yellow-crowned_night_heron-n	Number=Sing	dema	0			oewn_form
+yellow-crowned night herons	0	oewn-yellow-crowned_night_heron-n	Number=Plur	dema	0			rule
+yellow-dog contract	0	oewn-yellow-dog_contract-n	Number=Sing	dema	0			oewn_form
+yellow-dog contracts	0	oewn-yellow-dog_contract-n	Number=Plur	dema	0			rule
+yellow-eyed grass	0	oewn-yellow-eyed_grass-n	Number=Sing	dema	0			oewn_form
+yellow-eyed grasses	0	oewn-yellow-eyed_grass-n	Number=Plur	dema	0			rule
+yellow-fever mosquito	0	oewn-yellow-fever_mosquito-n	Number=Sing	dema	0			oewn_form
+yellow-fever mosquitoes	0	oewn-yellow-fever_mosquito-n	Number=Plur	dema	0			rule
+yellow-gray	0	oewn-yellow-gray-a	Degree=Pos	dema	0			oewn_form
+yellow-green	0	oewn-yellow-green-a	Degree=Pos	dema	0			oewn_form
+yellow-green algae	0	oewn-yellow-green_algae-n	Number=Sing	dema	0			oewn_form
+yellow-green algaes	0	oewn-yellow-green_algae-n	Number=Plur	dema	0			rule
+yellow-grey	0	oewn-yellow-grey-a	Degree=Pos	dema	0			oewn_form
+yellow-leaf sickle pine	0	oewn-yellow-leaf_sickle_pine-n	Number=Sing	dema	0			oewn_form
+yellow-leaf sickle pines	0	oewn-yellow-leaf_sickle_pine-n	Number=Plur	dema	0			rule
+yellow-marked	0	oewn-yellow-marked-a	Degree=Pos	dema	0			oewn_form
+yellow-orange	0	oewn-yellow-orange-a	Degree=Pos	dema	0			oewn_form
+yellow-shafted flicker	0	oewn-yellow-shafted_flicker-n	Number=Sing	dema	0			oewn_form
+yellow-shafted flickers	0	oewn-yellow-shafted_flicker-n	Number=Plur	dema	0			rule
+yellow-spotted	0	oewn-yellow-spotted-a	Degree=Pos	dema	0			oewn_form
+yellow-striped	0	oewn-yellow-striped-a	Degree=Pos	dema	0			oewn_form
+yellow-throated marten	0	oewn-yellow-throated_marten-n	Number=Sing	dema	0			oewn_form
+yellow-throated martens	0	oewn-yellow-throated_marten-n	Number=Plur	dema	0			rule
+yellow-tinged	0	oewn-yellow-tinged-a	Degree=Pos	dema	0			oewn_form
+yellow-tipped	0	oewn-yellow-tipped-a	Degree=Pos	dema	0			oewn_form
+yellow-white	0	oewn-yellow-white-a	Degree=Pos	dema	0			oewn_form
+yellowback	0		Number=Sing	dema	0	yellowback	n	moby_reverse
+yellowbacks	0		Number=Plur	dema	0	yellowback	n	rule
+yellowbark	0		Number=Sing	dema	0	yellowbark	n	moby_reverse
+yellowbarks	0		Number=Plur	dema	0	yellowbark	n	rule
+yellowbellies	0		Number=Plur	dema	0	yellowbelly	n	rule
+yellowbelly	0		Number=Sing	dema	0	yellowbelly	n	moby_reverse
+yellowbelly marmot	0	oewn-yellowbelly_marmot-n	Number=Sing	dema	0			oewn_form
+yellowbelly marmots	0	oewn-yellowbelly_marmot-n	Number=Plur	dema	0			rule
+yellowbird	0	oewn-yellowbird-n	Number=Sing	dema	0			oewn_form
+yellowbirds	0	oewn-yellowbird-n	Number=Plur	dema	0			rule
+yellowcake	0	oewn-yellowcake-n	Number=Sing	dema	0			oewn_form
+yellowcakes	0	oewn-yellowcake-n	Number=Plur	dema	0			rule
+yellowed	0	oewn-yellow-v	Tense=Past+VerbForm=Part	dema	0			rule
+yellowed	1	oewn-yellowed-a	Degree=Pos	dema	0			oewn_form
+yellower	0	oewn-yellow-a	Degree=Cmp	dema	0			rule
+yellowest	0	oewn-yellow-a	Degree=Sup	dema	0			rule
+yellowfin	0	oewn-yellowfin-n	Number=Sing	dema	0			oewn_form
+yellowfin croaker	0	oewn-yellowfin_croaker-n	Number=Sing	dema	0			oewn_form
+yellowfin croakers	0	oewn-yellowfin_croaker-n	Number=Plur	dema	0			rule
+yellowfin mojarra	0	oewn-yellowfin_mojarra-n	Number=Sing	dema	0			oewn_form
+yellowfin mojarras	0	oewn-yellowfin_mojarra-n	Number=Plur	dema	0			rule
+yellowfin tuna	0	oewn-yellowfin_tuna-n	Number=Sing	dema	0			oewn_form
+yellowfin tunas	0	oewn-yellowfin_tuna-n	Number=Plur	dema	0			rule
+yellowfins	0	oewn-yellowfin-n	Number=Plur	dema	0			rule
+yellowhammer	0	oewn-yellowhammer-n	Number=Sing	dema	0			oewn_form
+yellowhammers	0	oewn-yellowhammer-n	Number=Plur	dema	0			rule
+yellowing	0	oewn-yellow-v	VerbForm=Ger	dema	0			rule
+yellowish	0	oewn-yellowish-a	Degree=Pos	dema	0			oewn_form
+yellowish brown	0	oewn-yellowish_brown-n	Number=Sing	dema	0			oewn_form
+yellowish browns	0	oewn-yellowish_brown-n	Number=Plur	dema	0			rule
+yellowish green	0	oewn-yellowish_green-n	Number=Sing	dema	0			oewn_form
+yellowish greens	0	oewn-yellowish_green-n	Number=Plur	dema	0			rule
+yellowish pink	0	oewn-yellowish_pink-n	Number=Sing	dema	0			oewn_form
+yellowish pinks	0	oewn-yellowish_pink-n	Number=Plur	dema	0			rule
+yellowish-beige	0	oewn-yellowish-beige-a	Degree=Pos	dema	0			oewn_form
+yellowish-gray	0	oewn-yellowish-gray-a	Degree=Pos	dema	0			oewn_form
+yellowish-grey	0	oewn-yellowish-grey-a	Degree=Pos	dema	0			oewn_form
+yellowish-orange	0	oewn-yellowish-orange-a	Degree=Pos	dema	0			oewn_form
+yellowish-white	0	oewn-yellowish-white-a	Degree=Pos	dema	0			oewn_form
+yellowlegs	0	oewn-yellowlegs-n	Number=Sing	dema	0			oewn_form
+yellowly	0		Degree=Pos	dema	0	yellowly	r	moby_reverse
+yellowness	0	oewn-yellowness-n	Number=Sing	dema	0			oewn_form
+yellownesses	0	oewn-yellowness-n	Number=Plur	dema	0			rule
+yellows	0	oewn-yellow-n	Number=Plur	dema	0			rule
+yellows	1	oewn-yellow-v	Person=3+Tense=Pres	dema	0			rule
+yellowtail	0	oewn-yellowtail-n	Number=Sing	dema	0			oewn_form
+yellowtail flounder	0	oewn-yellowtail_flounder-n	Number=Sing	dema	0			oewn_form
+yellowtail flounders	0	oewn-yellowtail_flounder-n	Number=Plur	dema	0			rule
+yellowtail snapper	0	oewn-yellowtail_snapper-n	Number=Sing	dema	0			oewn_form
+yellowtail snappers	0	oewn-yellowtail_snapper-n	Number=Plur	dema	0			rule
+yellowtails	0	oewn-yellowtail-n	Number=Plur	dema	0			rule
+yellowthroat	0	oewn-yellowthroat-n	Number=Sing	dema	0			oewn_form
+yellowthroats	0	oewn-yellowthroat-n	Number=Plur	dema	0			rule
+yellowweed	0		Number=Sing	dema	0	yellowweed	n	moby_reverse
+yellowweeds	0		Number=Plur	dema	0	yellowweed	n	rule
+yellowwood	0	oewn-yellowwood-n	Number=Sing	dema	0			oewn_form
+yellowwood tree	0	oewn-yellowwood_tree-n	Number=Sing	dema	0			oewn_form
+yellowwood trees	0	oewn-yellowwood_tree-n	Number=Plur	dema	0			rule
+yellowwoods	0	oewn-yellowwood-n	Number=Plur	dema	0			rule
+yells	0	oewn-yell-v	Person=3+Tense=Pres	dema	0			rule
+yells	1	oewn-yell-n	Number=Plur	dema	0			rule
+yelp	0	oewn-yelp-v	VerbForm=Inf	dema	0			oewn_form
+yelp	1	oewn-yelp-n	Number=Sing	dema	0			oewn_form
+yelped	0	oewn-yelp-v	Tense=Past+VerbForm=Part	dema	0			rule
+yelper	0		Number=Sing	dema	0	yelper	n	moby_reverse
+yelpers	0		Number=Plur	dema	0	yelper	n	rule
+yelping	0	oewn-yelp-v	VerbForm=Ger	dema	0			rule
+yelping	1	oewn-yelping-n	Number=Sing	dema	0			oewn_form
+yelpings	0	oewn-yelping-n	Number=Plur	dema	0			rule
+yelps	0	oewn-yelp-v	Person=3+Tense=Pres	dema	0			rule
+yelps	1	oewn-yelp-n	Number=Plur	dema	0			rule
+yen	0	oewn-yen-n	Number=Plur	dema	0			agid
+yen	1	oewn-yen-n	Number=Sing	dema	0			oewn_form
+yen	2	oewn-yen-v	VerbForm=Inf	dema	0			oewn_form
+yenned	0	oewn-yen-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+yenning	0	oewn-yen-v	VerbForm=Ger	dema	0			oewn_form
+yens	0	oewn-yen-n	Number=Plur	dema	0			rule_variant
+yens	1	oewn-yen-v	Person=3+Tense=Pres	dema	0			rule
+yenta	0	oewn-yenta-n	Number=Sing	dema	0			oewn_form
+yentas	0	oewn-yenta-n	Number=Plur	dema	0			rule
+yeo	0		Number=Sing	dema	0	yeo	n	moby_reverse
+yeoman	0	oewn-yeoman-n	Number=Sing	dema	0			oewn_form
+yeoman of the guard	0	oewn-yeoman_of_the_guard-n	Number=Sing	dema	0			oewn_form
+yeomanly	0		Degree=Pos	dema	0	yeomanly	a	moby_reverse
+yeomanly	1		Degree=Pos	dema	0	yeomanly	r	moby_reverse
+yeomanries	0	oewn-yeomanry-n	Number=Plur	dema	0			rule
+yeomanry	0	oewn-yeomanry-n	Number=Sing	dema	0			oewn_form
+yeomans of the guard	0	oewn-yeoman_of_the_guard-n	Number=Plur	dema	0			rule
+yeomen	0	oewn-yeoman-n	Number=Plur	dema	0			agid
+yep	0		Degree=Pos	dema	0	yep	r	moby_reverse
+yer	0	oewn-yer-n	Number=Sing	dema	0			oewn_form
+yerba	0		Number=Sing	dema	0	yerba	n	moby_reverse
+yerba buena	0	oewn-yerba_buena-n	Number=Sing	dema	0			oewn_form
+yerba buenas	0	oewn-yerba_buena-n	Number=Plur	dema	0			rule
+yerba mansa	0	oewn-yerba_mansa-n	Number=Sing	dema	0			oewn_form
+yerba mansas	0	oewn-yerba_mansa-n	Number=Plur	dema	0			rule
+yerba santa	0	oewn-yerba_santa-n	Number=Sing	dema	0			oewn_form
+yerba santas	0	oewn-yerba_santa-n	Number=Plur	dema	0			rule
+yerbas	0		Number=Plur	dema	0	yerba	n	rule
+yers	0	oewn-yer-n	Number=Plur	dema	0			rule
+yes	0		Degree=Pos	dema	0	yes	r	moby_reverse
+yes	1	oewn-yes-n	Number=Sing	dema	0			oewn_form
+yes-man	0	oewn-yes-man-n	Number=Sing	dema	0			oewn_form
+yes-mans	0	oewn-yes-man-n	Number=Plur	dema	0			rule
+yes-no question	0	oewn-yes-no_question-n	Number=Sing	dema	0			oewn_form
+yes-no questions	0	oewn-yes-no_question-n	Number=Plur	dema	0			rule
+yeses	0	oewn-yes-n	Number=Plur	dema	0			rule
+yeshiva	0	oewn-yeshiva-n	Number=Sing	dema	0			oewn_form
+yeshivah	0	oewn-yeshivah-n	Number=Sing	dema	0			oewn_form
+yeshivahs	0	oewn-yeshiva-n	Number=Plur	dema	0			oewn_form
+yeshivahs	1	oewn-yeshivah-n	Number=Plur	dema	0			rule
+yeshivas	0	oewn-yeshiva-n	Number=Plur	dema	0			rule_variant
+yeshivoth	0	oewn-yeshiva-n	Number=Plur	dema	0			oewn_form
+yester	0		Degree=Pos	dema	0	yester	a	moby_reverse
+yesterday	0	oewn-yesterday-n	Number=Sing	dema	0			oewn_form
+yesterday	1	oewn-yesterday-r	Degree=Pos	dema	0			oewn_form
+yesterdayness	0		Number=Sing	dema	0	yesterdayness	n	moby_reverse
+yesterdays	0	oewn-yesterday-n	Number=Plur	dema	0			rule
+yestereve	0		Number=Sing	dema	0	yestereve	n	moby_reverse
+yestereve	1		Degree=Pos	dema	0	yestereve	r	moby_reverse
+yesterevening	0		Number=Sing	dema	0	yesterevening	n	moby_reverse
+yesterevenings	0		Number=Plur	dema	0	yesterevening	n	rule
+yestereves	0		Number=Plur	dema	0	yestereve	n	rule
+yestern	0		Degree=Pos	dema	0	yestern	a	moby_reverse
+yesternight	0		Number=Sing	dema	0	yesternight	n	moby_reverse
+yesternight	1		Degree=Pos	dema	0	yesternight	r	moby_reverse
+yesternights	0		Number=Plur	dema	0	yesternight	n	rule
+yesternoon	0		Number=Sing	dema	0	yesternoon	n	moby_reverse
+yesternoon	1		Degree=Pos	dema	0	yesternoon	r	moby_reverse
+yesternoons	0		Number=Plur	dema	0	yesternoon	n	rule
+yesterweek	0		Number=Sing	dema	0	yesterweek	n	moby_reverse
+yesterweek	1		Degree=Pos	dema	0	yesterweek	r	moby_reverse
+yesterweeks	0		Number=Plur	dema	0	yesterweek	n	rule
+yesteryear	0	oewn-yesteryear-n	Number=Sing	dema	0			oewn_form
+yesteryear	1		Degree=Pos	dema	0	yesteryear	r	moby_reverse
+yesteryears	0	oewn-yesteryear-n	Number=Plur	dema	0			rule
+yestreen	0		Degree=Pos	dema	0	yestreen	r	moby_reverse
+yet	0	dema-yet-c		dema	0			carried
+yet	1	oewn-yet-r	Degree=Pos	dema	0			oewn_form
+yeti	0	oewn-yeti-n	Number=Sing	dema	0			oewn_form
+yetis	0	oewn-yeti-n	Number=Plur	dema	0			rule
+yett	0		Number=Sing	dema	0	yett	n	moby_reverse
+yetts	0		Number=Plur	dema	0	yett	n	rule
+yeuk	0		VerbForm=Inf	dema	0	yeuk	v	moby_reverse
+yeuk	1		Number=Sing	dema	0	yeuk	n	moby_reverse
+yeuked	0		Tense=Past+VerbForm=Part	dema	0	yeuk	v	rule
+yeuking	0		VerbForm=Ger	dema	0	yeuk	v	rule
+yeuks	0		Person=3+Tense=Pres	dema	0	yeuk	v	rule
+yeuky	0		Degree=Pos	dema	0	yeuky	a	moby_reverse
+yew	0	oewn-yew-n	Number=Sing	dema	0			oewn_form
+yews	0	oewn-yew-n	Number=Plur	dema	0			rule
+yi	0		Number=Sing	dema	0	yi	n	moby_reverse
+yid	0	oewn-yid-n	Number=Sing	dema	0			oewn_form
+yids	0	oewn-yid-n	Number=Plur	dema	0			rule
+yield	0	oewn-yield-v	VerbForm=Inf	dema	0			oewn_form
+yield	1	oewn-yield-n	Number=Sing	dema	0			oewn_form
+yield up	0	oewn-yield_up-v	VerbForm=Inf	dema	0			oewn_form
+yielded	0	oewn-yield-v	Tense=Past+VerbForm=Part	dema	0			rule
+yielded up	0	oewn-yield_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+yielder	0	oewn-yielder-n	Number=Sing	dema	0			oewn_form
+yielders	0	oewn-yielder-n	Number=Plur	dema	0			rule
+yielding	0	oewn-yielding-a	Degree=Pos	dema	0			oewn_form
+yielding	1	oewn-yielding-n	Number=Sing	dema	0			oewn_form
+yielding	2	oewn-yield-v	VerbForm=Ger	dema	0			rule
+yielding up	0	oewn-yield_up-v	VerbForm=Ger	dema	0			rule
+yieldingly	0	oewn-yieldingly-r	Degree=Pos	dema	0			oewn_form
+yieldingness	0		Number=Sing	dema	0	yieldingness	n	moby_reverse
+yieldingnesses	0		Number=Plur	dema	0	yieldingness	n	rule
+yieldings	0	oewn-yielding-n	Number=Plur	dema	0			rule
+yields	0	oewn-yield-v	Person=3+Tense=Pres	dema	0			rule
+yields	1	oewn-yield-n	Number=Plur	dema	0			rule
+yields up	0	oewn-yield_up-v	Person=3+Tense=Pres	dema	0			rule
+yike	0		Number=Sing	dema	0	yike	n	moby_reverse
+yike	1		VerbForm=Inf	dema	0	yike	v	moby_reverse
+yikes	0		Number=Plur	dema	0	yike	n	rule
+yin	0	oewn-yin-n	Number=Sing	dema	0			oewn_form
+yins	0	oewn-yin-n	Number=Plur	dema	0			rule
+yip	0	oewn-yip-v	VerbForm=Inf	dema	0			oewn_form
+yip	1	oewn-yip-n	Number=Sing	dema	0			oewn_form
+yipe	0	dema-yipe-i		dema	0			carried
+yipped	0	oewn-yip-v	Tense=Past+VerbForm=Part	dema	0			rule
+yippee	0	dema-yippee-i		dema	0			carried
+yippie	0		Number=Sing	dema	0	yippie	n	moby_reverse
+yippies	0		Number=Plur	dema	0	yippie	n	rule
+yipping	0	oewn-yip-v	VerbForm=Ger	dema	0			rule
+yips	0	oewn-yip-v	Person=3+Tense=Pres	dema	0			rule
+yips	1	oewn-yip-n	Number=Plur	dema	0			rule
+yips	2	oewn-yips-n	Number=Sing	dema	0			oewn_form
+yirr	0		VerbForm=Inf	dema	0	yirr	v	moby_reverse
+yirred	0		Tense=Past+VerbForm=Part	dema	0	yirr	v	rule
+yirring	0		VerbForm=Ger	dema	0	yirr	v	rule
+yirrs	0		Person=3+Tense=Pres	dema	0	yirr	v	rule
+ylang-ylang	0	oewn-ylang-ylang-n	Number=Sing	dema	0			oewn_form
+ylang-ylangs	0	oewn-ylang-ylang-n	Number=Plur	dema	0			rule
+ylem	0	oewn-ylem-n	Number=Sing	dema	0			oewn_form
+ylems	0	oewn-ylem-n	Number=Plur	dema	0			rule
+yo-yo	0	oewn-yo-yo-n	Number=Sing	dema	0			oewn_form
+yo-yos	0	oewn-yo-yo-n	Number=Plur	dema	0			rule
+yob	0	oewn-yob-n	Number=Sing	dema	0			oewn_form
+yobbo	0	oewn-yobbo-n	Number=Sing	dema	0			oewn_form
+yobbos	0	oewn-yobbo-n	Number=Plur	dema	0			rule
+yobibit	0	oewn-yobibit-n	Number=Sing	dema	0			oewn_form
+yobibits	0	oewn-yobibit-n	Number=Plur	dema	0			rule
+yobibyte	0	oewn-yobibyte-n	Number=Sing	dema	0			oewn_form
+yobibytes	0	oewn-yobibyte-n	Number=Plur	dema	0			rule
+yobo	0	oewn-yobo-n	Number=Sing	dema	0			oewn_form
+yobos	0	oewn-yobo-n	Number=Plur	dema	0			rule
+yobs	0	oewn-yob-n	Number=Plur	dema	0			rule
+yod	0		Number=Sing	dema	0	yod	n	moby_reverse
+yodel	0	oewn-yodel-v	VerbForm=Inf	dema	0			oewn_form
+yodel	1	oewn-yodel-n	Number=Sing	dema	0			oewn_form
+yodeled	0	oewn-yodel-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+yodeler	0		Number=Sing	dema	0	yodeler	n	moby_reverse
+yodelers	0		Number=Plur	dema	0	yodeler	n	rule
+yodeling	0	oewn-yodeling-n	Number=Sing	dema	0			oewn_form
+yodeling	1	oewn-yodel-v	VerbForm=Ger	dema	0			rule_variant
+yodelings	0	oewn-yodeling-n	Number=Plur	dema	0			rule
+yodelled	0	oewn-yodel-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+yodeller	0	oewn-yodeller-n	Number=Sing	dema	0			oewn_form
+yodellers	0	oewn-yodeller-n	Number=Plur	dema	0			rule
+yodelling	0	oewn-yodel-v	VerbForm=Ger	dema	0			oewn_form
+yodels	0	oewn-yodel-v	Person=3+Tense=Pres	dema	0			rule
+yodels	1	oewn-yodel-n	Number=Plur	dema	0			rule
+yodh	0	oewn-yodh-n	Number=Sing	dema	0			oewn_form
+yodhs	0	oewn-yodh-n	Number=Plur	dema	0			rule
+yodle	0		Number=Sing	dema	0	yodle	n	moby_reverse
+yodled	0		VerbForm=Inf	dema	0	yodled	v	moby_reverse
+yodler	0		Number=Sing	dema	0	yodler	n	moby_reverse
+yodlers	0		Number=Plur	dema	0	yodler	n	rule
+yodles	0		Number=Plur	dema	0	yodle	n	rule
+yodling	0		VerbForm=Inf	dema	0	yodling	v	moby_reverse
+yods	0		Number=Plur	dema	0	yod	n	rule
+yoga	0	oewn-yoga-n	Number=Sing	dema	0			oewn_form
+yogas	0	oewn-yoga-n	Number=Plur	dema	0			rule
+yogh	0		Number=Sing	dema	0	yogh	n	moby_reverse
+yoghourt	0	oewn-yoghourt-n	Number=Sing	dema	0			oewn_form
+yoghourts	0	oewn-yoghourt-n	Number=Plur	dema	0			rule
+yoghs	0		Number=Plur	dema	0	yogh	n	rule
+yoghurt	0	oewn-yoghurt-n	Number=Sing	dema	0			oewn_form
+yoghurts	0	oewn-yoghurt-n	Number=Plur	dema	0			rule
+yogi	0	oewn-yogi-n	Number=Sing	dema	0			oewn_form
+yogic	0	oewn-yogic-a	Degree=Pos	dema	0			oewn_form
+yogin	0	oewn-yogi-n	Number=Plur	dema	0			oewn_form
+yogini	0		Number=Sing	dema	0	yogini	n	moby_reverse
+yoginis	0		Number=Plur	dema	0	yogini	n	rule
+yogis	0	oewn-yogi-n	Number=Plur	dema	0			rule_variant
+yogistic	0	oewn-yogistic-a	Degree=Pos	dema	0			oewn_form
+yogurt	0	oewn-yogurt-n	Number=Sing	dema	0			oewn_form
+yogurts	0	oewn-yogurt-n	Number=Plur	dema	0			rule
+yohimbine	0		Number=Sing	dema	0	yohimbine	n	moby_reverse
+yohimbines	0		Number=Plur	dema	0	yohimbine	n	rule
+yoicks	0	dema-yoicks-i		dema	0			carried
+yokai	0	oewn-yokai-n	Number=Sing	dema	0			oewn_form
+yokais	0	oewn-yokai-n	Number=Plur	dema	0			rule
+yoke	0	oewn-yoke-n	Number=Sing	dema	0			oewn_form
+yoke	1	oewn-yoke-v	VerbForm=Inf	dema	0			oewn_form
+yoked	0	oewn-yoke-v	Tense=Past+VerbForm=Part	dema	0			rule
+yokefellow	0		Number=Sing	dema	0	yokefellow	n	moby_reverse
+yokefellows	0		Number=Plur	dema	0	yokefellow	n	rule
+yokel	0	oewn-yokel-n	Number=Sing	dema	0			oewn_form
+yokel-like	0	oewn-yokel-like-a	Degree=Pos	dema	0			oewn_form
+yokelish	0	oewn-yokelish-a	Degree=Pos	dema	0			oewn_form
+yokels	0	oewn-yokel-n	Number=Plur	dema	0			rule
+yokes	0	oewn-yoke-n	Number=Plur	dema	0			rule
+yokes	1	oewn-yoke-v	Person=3+Tense=Pres	dema	0			rule
+yoking	0	oewn-yoke-v	VerbForm=Ger	dema	0			rule
+yolk	0	oewn-yolk-n	Number=Sing	dema	0			oewn_form
+yolk sac	0	oewn-yolk_sac-n	Number=Sing	dema	0			oewn_form
+yolk sacs	0	oewn-yolk_sac-n	Number=Plur	dema	0			rule
+yolkless	0		Degree=Pos	dema	0	yolkless	a	moby_reverse
+yolks	0	oewn-yolk-n	Number=Plur	dema	0			rule
+yolky	0		Degree=Pos	dema	0	yolky	a	moby_reverse
+yon	0	dema-yon-d		dema	0			carried
+yonder	0	oewn-yonder-r	Degree=Pos	dema	0			oewn_form
+yonder	1	dema-yonder-d		dema	0			carried
+yonder	2	oewn-yonder-a	Degree=Pos	dema	0			oewn_form
+yoni	0		Number=Sing	dema	0	yoni	n	moby_reverse
+yonis	0		Number=Plur	dema	0	yoni	n	rule
+yonnie	0		Number=Sing	dema	0	yonnie	n	moby_reverse
+yonnies	0		Number=Plur	dema	0	yonnie	n	rule
+yore	0	oewn-yore-n	Number=Sing	dema	0			oewn_form
+yore	1		Degree=Pos	dema	0	yore	r	moby_reverse
+yores	0	oewn-yore-n	Number=Plur	dema	0			rule
+york	0		VerbForm=Inf	dema	0	york	v	moby_reverse
+yorked	0		Tense=Past+VerbForm=Part	dema	0	york	v	rule
+yorker	0		Number=Sing	dema	0	yorker	n	moby_reverse
+yorkers	0		Number=Plur	dema	0	yorker	n	rule
+yorking	0		VerbForm=Ger	dema	0	york	v	rule
+yorks	0		Person=3+Tense=Pres	dema	0	york	v	rule
+yottabit	0	oewn-yottabit-n	Number=Sing	dema	0			oewn_form
+yottabits	0	oewn-yottabit-n	Number=Plur	dema	0			rule
+yottabyte	0	oewn-yottabyte-n	Number=Sing	dema	0			oewn_form
+yottabytes	0	oewn-yottabyte-n	Number=Plur	dema	0			rule
+yottaflop	0	oewn-yottaflop-n	Number=Sing	dema	0			oewn_form
+yottaflops	0	oewn-yottaflop-n	Number=Plur	dema	0			rule
+you	0	dema-you-u		dema	0			carried
+you	1		Number=Sing	dema	0	you	n	moby_reverse
+you bet	0	oewn-you_bet-r	Degree=Pos	dema	0			oewn_form
+you said it	0	oewn-you_said_it-r	Degree=Pos	dema	0			oewn_form
+you'd	0	dema-you-u	Contraction=Yes	dema	0			contraction
+you'd	1	dema-would-x	Contraction=Yes	dema	0			contraction
+you'll	0	dema-you-u	Contraction=Yes	dema	0			contraction
+you'll	1	dema-will-x	Contraction=Yes	dema	0			contraction
+you're	0	dema-you-u	Contraction=Yes	dema	0			contraction
+you're	1	dema-be-x	Contraction=Yes	dema	0			contraction
+you've	0	dema-you-u	Contraction=Yes	dema	0			contraction
+you've	1	dema-have-x	Contraction=Yes	dema	0			contraction
+you-drive	0	oewn-you-drive-n	Number=Sing	dema	0			oewn_form
+you-drives	0	oewn-you-drive-n	Number=Plur	dema	0			rule
+young	0	oewn-young-a	Degree=Pos	dema	0			oewn_form
+young	1	oewn-young-n	Number=Plur	dema	0			agid
+young	2	oewn-young-n	Number=Sing	dema	0			oewn_form
+young Turk	0	oewn-young_Turk-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+young Turks	0	oewn-young_Turk-n	Capitalization=Exact+Number=Plur	dema	0			rule
+young bird	0	oewn-young_bird-n	Number=Sing	dema	0			oewn_form
+young birds	0	oewn-young_bird-n	Number=Plur	dema	0			rule
+young blood	0	oewn-young_blood-n	Number=Sing	dema	0			oewn_form
+young bloods	0	oewn-young_blood-n	Number=Plur	dema	0			rule
+young buck	0	oewn-young_buck-n	Number=Sing	dema	0			oewn_form
+young bucks	0	oewn-young_buck-n	Number=Plur	dema	0			rule
+young carnivore	0	oewn-young_carnivore-n	Number=Sing	dema	0			oewn_form
+young carnivores	0	oewn-young_carnivore-n	Number=Plur	dema	0			rule
+young fish	0	oewn-young_fish-n	Number=Sing	dema	0			oewn_form
+young fishes	0	oewn-young_fish-n	Number=Plur	dema	0			rule
+young girl	0	oewn-young_girl-n	Number=Sing	dema	0			oewn_form
+young girls	0	oewn-young_girl-n	Number=Plur	dema	0			rule
+young ladies	0	oewn-young_lady-n	Number=Plur	dema	0			rule
+young lady	0	oewn-young_lady-n	Number=Sing	dema	0			oewn_form
+young mammal	0	oewn-young_mammal-n	Number=Sing	dema	0			oewn_form
+young mammals	0	oewn-young_mammal-n	Number=Plur	dema	0			rule
+young man	0	oewn-young_man-n	Number=Sing	dema	0			oewn_form
+young mans	0	oewn-young_man-n	Number=Plur	dema	0			rule
+young person	0	oewn-young_person-n	Number=Sing	dema	0			oewn_form
+young persons	0	oewn-young_person-n	Number=Plur	dema	0			rule
+young woman	0	oewn-young_woman-n	Number=Sing	dema	0			oewn_form
+young womans	0	oewn-young_woman-n	Number=Plur	dema	0			rule
+young-bearing	0	oewn-young-bearing-a	Degree=Pos	dema	0			oewn_form
+young-begetting	0	oewn-young-begetting-a	Degree=Pos	dema	0			oewn_form
+youngberries	0		Number=Plur	dema	0	youngberry	n	rule
+youngberry	0		Number=Sing	dema	0	youngberry	n	moby_reverse
+younger	0	oewn-young-a	Degree=Cmp	dema	0			oewn_form
+younger	1	oewn-younger-a	Degree=Pos	dema	0			oewn_form
+youngest	0	oewn-young-a	Degree=Sup	dema	0			oewn_form
+youngish	0	oewn-youngish-a	Degree=Pos	dema	0			oewn_form
+youngling	0		Number=Sing	dema	0	youngling	n	moby_reverse
+younglings	0		Number=Plur	dema	0	youngling	n	rule
+youngness	0	oewn-youngness-n	Number=Sing	dema	0			oewn_form
+youngnesses	0	oewn-youngness-n	Number=Plur	dema	0			rule
+youngster	0	oewn-youngster-n	Number=Sing	dema	0			oewn_form
+youngsters	0	oewn-youngster-n	Number=Plur	dema	0			rule
+younker	0	oewn-younker-n	Number=Sing	dema	0			oewn_form
+younkers	0	oewn-younker-n	Number=Plur	dema	0			rule
+your	0	dema-your-d		dema	0			carried
+yours	0	dema-yours-u		dema	0			carried
+yourself	0	dema-yourself-u		dema	0			carried
+yourselves	0		Number=Sing	dema	0	yourselves	n	moby_reverse
+yous	0	dema-yous-u		dema	0			carried
+yous	1		Number=Plur	dema	0	you	n	moby_reverse
+youse	0	dema-youse-u		dema	0			carried
+youth	0	oewn-youth-n	Number=Sing	dema	0			oewn_form
+youth crusade	0	oewn-youth_crusade-n	Number=Sing	dema	0			oewn_form
+youth crusades	0	oewn-youth_crusade-n	Number=Plur	dema	0			rule
+youth culture	0	oewn-youth_culture-n	Number=Sing	dema	0			oewn_form
+youth cultures	0	oewn-youth_culture-n	Number=Plur	dema	0			rule
+youth gang	0	oewn-youth_gang-n	Number=Sing	dema	0			oewn_form
+youth gangs	0	oewn-youth_gang-n	Number=Plur	dema	0			rule
+youth hostel	0	oewn-youth_hostel-n	Number=Sing	dema	0			oewn_form
+youth hostels	0	oewn-youth_hostel-n	Number=Plur	dema	0			rule
+youth movement	0	oewn-youth_movement-n	Number=Sing	dema	0			oewn_form
+youth movements	0	oewn-youth_movement-n	Number=Plur	dema	0			rule
+youth subculture	0	oewn-youth_subculture-n	Number=Sing	dema	0			oewn_form
+youth subcultures	0	oewn-youth_subculture-n	Number=Plur	dema	0			rule
+youth-on-age	0	oewn-youth-on-age-n	Number=Sing	dema	0			oewn_form
+youth-on-ages	0	oewn-youth-on-age-n	Number=Plur	dema	0			rule
+youthen	0		VerbForm=Inf	dema	0	youthen	v	moby_reverse
+youthened	0		Tense=Past+VerbForm=Part	dema	0	youthen	v	rule
+youthening	0		VerbForm=Ger	dema	0	youthen	v	rule
+youthens	0		Person=3+Tense=Pres	dema	0	youthen	v	rule
+youthful	0	oewn-youthful-a	Degree=Pos	dema	0			oewn_form
+youthfully	0	oewn-youthfully-r	Degree=Pos	dema	0			oewn_form
+youthfulness	0	oewn-youthfulness-n	Number=Sing	dema	0			oewn_form
+youthfulnesses	0	oewn-youthfulness-n	Number=Plur	dema	0			rule
+youths	0	oewn-youth-n	Number=Plur	dema	0			rule
+yowl	0	oewn-yowl-v	VerbForm=Inf	dema	0			oewn_form
+yowl	1	oewn-yowl-n	Number=Sing	dema	0			oewn_form
+yowled	0	oewn-yowl-v	Tense=Past+VerbForm=Part	dema	0			rule
+yowling	0	oewn-yowl-v	VerbForm=Ger	dema	0			rule
+yowls	0	oewn-yowl-v	Person=3+Tense=Pres	dema	0			rule
+yowls	1	oewn-yowl-n	Number=Plur	dema	0			rule
+yperite	0		Number=Sing	dema	0	yperite	n	moby_reverse
+yperites	0		Number=Plur	dema	0	yperite	n	rule
+yr	0	oewn-yr-n	Number=Sing	dema	0			oewn_form
+yrs	0	oewn-yr-n	Number=Plur	dema	0			rule
+ys	0	oewn-y-n	Number=Plur	dema	0			rule
+ytterbia	0		Number=Sing	dema	0	ytterbia	n	moby_reverse
+ytterbias	0		Number=Plur	dema	0	ytterbia	n	rule
+ytterbite	0	oewn-ytterbite-n	Number=Sing	dema	0			oewn_form
+ytterbites	0	oewn-ytterbite-n	Number=Plur	dema	0			rule
+ytterbium	0	oewn-ytterbium-n	Number=Sing	dema	0			oewn_form
+ytterbiums	0	oewn-ytterbium-n	Number=Plur	dema	0			rule
+yttria	0		Number=Sing	dema	0	yttria	n	moby_reverse
+yttrias	0		Number=Plur	dema	0	yttria	n	rule
+yttric	0		Degree=Pos	dema	0	yttric	a	moby_reverse
+yttriferous	0		Degree=Pos	dema	0	yttriferous	a	moby_reverse
+yttrium	0	oewn-yttrium-n	Number=Sing	dema	0			oewn_form
+yttriums	0	oewn-yttrium-n	Number=Plur	dema	0			rule
+yttrotantalite	0		Number=Sing	dema	0	yttrotantalite	n	moby_reverse
+yttrotantalites	0		Number=Plur	dema	0	yttrotantalite	n	rule
+yuan	0	oewn-yuan-n	Number=Plur	dema	0			agid
+yuan	1	oewn-yuan-n	Number=Sing	dema	0			oewn_form
+yucca	0	oewn-yucca-n	Number=Sing	dema	0			oewn_form
+yuccas	0	oewn-yucca-n	Number=Plur	dema	0			rule
+yuckier	0	oewn-yucky-a	Degree=Cmp	dema	0			rule
+yuckiest	0	oewn-yucky-a	Degree=Sup	dema	0			rule
+yucky	0	oewn-yucky-a	Degree=Pos	dema	0			oewn_form
+yuga	0	oewn-yuga-n	Number=Sing	dema	0			oewn_form
+yugas	0	oewn-yuga-n	Number=Plur	dema	0			rule
+yuk	0	dema-yuk-i		dema	0			carried
+yuk	1		Number=Sing	dema	0	yuk	n	moby_reverse
+yulan	0		Number=Sing	dema	0	yulan	n	moby_reverse
+yulans	0		Number=Plur	dema	0	yulan	n	rule
+yule	0		Number=Sing	dema	0	yule	n	moby_reverse
+yules	0		Number=Plur	dema	0	yule	n	rule
+yuletide	0		Number=Sing	dema	0	yuletide	n	moby_reverse
+yuletide	1		Degree=Pos	dema	0	yuletide	a	moby_reverse
+yuletides	0		Number=Plur	dema	0	yuletide	n	rule
+yummier	0	oewn-yummy-a	Degree=Cmp	dema	0			oewn_form
+yummiest	0	oewn-yummy-a	Degree=Sup	dema	0			oewn_form
+yummy	0	oewn-yummy-a	Degree=Pos	dema	0			oewn_form
+yuppie	0	oewn-yuppie-n	Number=Sing	dema	0			oewn_form
+yuppies	0	oewn-yuppie-n	Number=Plur	dema	0			rule
+yuquilla	0		Number=Sing	dema	0	yuquilla	n	moby_reverse
+yuquillas	0		Number=Plur	dema	0	yuquilla	n	rule
+yurt	0	oewn-yurt-n	Number=Sing	dema	0			oewn_form
+yurts	0	oewn-yurt-n	Number=Plur	dema	0			rule
+yus	0	oewn-yus-n	Number=Sing	dema	0			oewn_form
+ywis	0		Degree=Pos	dema	0	ywis	r	moby_reverse

@@ -1,0 +1,458 @@
+# Closed lists of irregular English inflection, written from general knowledge of the language (facts, no third-party data).
+# Columns: lemma <TAB> part-of-speech letter <TAB> rule <TAB> forms (space separated) <TAB> evidence
+# Rules: Past, Participle, Plural, Comparative, Superlative: the irregular forms of that kind; the regular form of that kind is suppressed.
+# Auxiliary: the forms of an auxiliary verb as form:Features pairs (letter A). Modal: the lemma of a modal auxiliary (letter A).
+# This list ranks below irregular-forms.tsv (hand-written decisions) and above the Open English WordNet written forms.
+arise	V	Past	arose	closed
+arise	V	Participle	arisen	closed
+awake	V	Past	awoke	closed
+awake	V	Participle	awoken	closed
+be	V	Past	was were	closed
+be	V	Participle	been	closed
+be	V	Third	is	closed
+bear	V	Past	bore	closed
+bear	V	Participle	born borne	closed
+beat	V	Past	beat	closed
+beat	V	Participle	beaten	closed
+become	V	Past	became	closed
+become	V	Participle	become	closed
+begin	V	Past	began	closed
+begin	V	Participle	begun	closed
+bend	V	Past	bent	closed
+bend	V	Participle	bent	closed
+bet	V	Past	bet	closed
+bet	V	Participle	bet	closed
+bid	V	Past	bid bade	closed
+bid	V	Participle	bid bidden	closed
+bind	V	Past	bound	closed
+bind	V	Participle	bound	closed
+bite	V	Past	bit	closed
+bite	V	Participle	bitten	closed
+bleed	V	Past	bled	closed
+bleed	V	Participle	bled	closed
+blow	V	Past	blew	closed
+blow	V	Participle	blown	closed
+break	V	Past	broke	closed
+break	V	Participle	broken	closed
+breed	V	Past	bred	closed
+breed	V	Participle	bred	closed
+bring	V	Past	brought	closed
+bring	V	Participle	brought	closed
+build	V	Past	built	closed
+build	V	Participle	built	closed
+burn	V	Past	burnt burned	closed
+burn	V	Participle	burnt burned	closed
+burst	V	Past	burst	closed
+burst	V	Participle	burst	closed
+buy	V	Past	bought	closed
+buy	V	Participle	bought	closed
+cast	V	Past	cast	closed
+cast	V	Participle	cast	closed
+catch	V	Past	caught	closed
+catch	V	Participle	caught	closed
+choose	V	Past	chose	closed
+choose	V	Participle	chosen	closed
+cling	V	Past	clung	closed
+cling	V	Participle	clung	closed
+come	V	Past	came	closed
+come	V	Participle	come	closed
+cost	V	Past	cost	closed
+cost	V	Participle	cost	closed
+creep	V	Past	crept	closed
+creep	V	Participle	crept	closed
+cut	V	Past	cut	closed
+cut	V	Participle	cut	closed
+deal	V	Past	dealt	closed
+deal	V	Participle	dealt	closed
+dig	V	Past	dug	closed
+dig	V	Participle	dug	closed
+do	V	Past	did	closed
+do	V	Participle	done	closed
+draw	V	Past	drew	closed
+draw	V	Participle	drawn	closed
+dream	V	Past	dreamt dreamed	closed
+dream	V	Participle	dreamt dreamed	closed
+drink	V	Past	drank	closed
+drink	V	Participle	drunk	closed
+drive	V	Past	drove	closed
+drive	V	Participle	driven	closed
+dwell	V	Past	dwelt	closed
+dwell	V	Participle	dwelt	closed
+eat	V	Past	ate	closed
+eat	V	Participle	eaten	closed
+fall	V	Past	fell	closed
+fall	V	Participle	fallen	closed
+feed	V	Past	fed	closed
+feed	V	Participle	fed	closed
+feel	V	Past	felt	closed
+feel	V	Participle	felt	closed
+fight	V	Past	fought	closed
+fight	V	Participle	fought	closed
+find	V	Past	found	closed
+find	V	Participle	found	closed
+flee	V	Past	fled	closed
+flee	V	Participle	fled	closed
+fling	V	Past	flung	closed
+fling	V	Participle	flung	closed
+fly	V	Past	flew	closed
+fly	V	Participle	flown	closed
+forbid	V	Past	forbade forbad	closed
+forbid	V	Participle	forbidden	closed
+forget	V	Past	forgot	closed
+forget	V	Participle	forgotten	closed
+forgive	V	Past	forgave	closed
+forgive	V	Participle	forgiven	closed
+freeze	V	Past	froze	closed
+freeze	V	Participle	frozen	closed
+get	V	Past	got	closed
+get	V	Participle	gotten got	closed
+give	V	Past	gave	closed
+give	V	Participle	given	closed
+go	V	Past	went	closed
+go	V	Participle	gone	closed
+grind	V	Past	ground	closed
+grind	V	Participle	ground	closed
+grow	V	Past	grew	closed
+grow	V	Participle	grown	closed
+hang	V	Past	hung hanged	closed
+hang	V	Participle	hung hanged	closed
+have	V	Past	had	closed
+have	V	Participle	had	closed
+hear	V	Past	heard	closed
+hear	V	Participle	heard	closed
+hide	V	Past	hid	closed
+hide	V	Participle	hidden	closed
+hit	V	Past	hit	closed
+hit	V	Participle	hit	closed
+hold	V	Past	held	closed
+hold	V	Participle	held	closed
+hurt	V	Past	hurt	closed
+hurt	V	Participle	hurt	closed
+keep	V	Past	kept	closed
+keep	V	Participle	kept	closed
+kneel	V	Past	knelt kneeled	closed
+kneel	V	Participle	knelt kneeled	closed
+know	V	Past	knew	closed
+know	V	Participle	known	closed
+lay	V	Past	laid	closed
+lay	V	Participle	laid	closed
+lead	V	Past	led	closed
+lead	V	Participle	led	closed
+lean	V	Past	leant leaned	closed
+lean	V	Participle	leant leaned	closed
+leap	V	Past	leapt leaped	closed
+leap	V	Participle	leapt leaped	closed
+learn	V	Past	learnt learned	closed
+learn	V	Participle	learnt learned	closed
+leave	V	Past	left	closed
+leave	V	Participle	left	closed
+lend	V	Past	lent	closed
+lend	V	Participle	lent	closed
+let	V	Past	let	closed
+let	V	Participle	let	closed
+lie	V	Past	lay	closed
+lie	V	Participle	lain	closed
+light	V	Past	lit lighted	closed
+light	V	Participle	lit lighted	closed
+lose	V	Past	lost	closed
+lose	V	Participle	lost	closed
+make	V	Past	made	closed
+make	V	Participle	made	closed
+mean	V	Past	meant	closed
+mean	V	Participle	meant	closed
+meet	V	Past	met	closed
+meet	V	Participle	met	closed
+pay	V	Past	paid	closed
+pay	V	Participle	paid	closed
+put	V	Past	put	closed
+put	V	Participle	put	closed
+quit	V	Past	quit quitted	closed
+quit	V	Participle	quit quitted	closed
+read	V	Past	read	closed
+read	V	Participle	read	closed
+rid	V	Past	rid	closed
+rid	V	Participle	rid	closed
+ride	V	Past	rode	closed
+ride	V	Participle	ridden	closed
+ring	V	Past	rang	closed
+ring	V	Participle	rung	closed
+rise	V	Past	rose	closed
+rise	V	Participle	risen	closed
+run	V	Past	ran	closed
+run	V	Participle	run	closed
+saw	V	Past	sawed	closed
+saw	V	Participle	sawn sawed	closed
+say	V	Past	said	closed
+say	V	Participle	said	closed
+see	V	Past	saw	closed
+see	V	Participle	seen	closed
+seek	V	Past	sought	closed
+seek	V	Participle	sought	closed
+sell	V	Past	sold	closed
+sell	V	Participle	sold	closed
+send	V	Past	sent	closed
+send	V	Participle	sent	closed
+set	V	Past	set	closed
+set	V	Participle	set	closed
+sew	V	Past	sewed	closed
+sew	V	Participle	sewn sewed	closed
+shake	V	Past	shook	closed
+shake	V	Participle	shaken	closed
+shed	V	Past	shed	closed
+shed	V	Participle	shed	closed
+shine	V	Past	shone shined	closed
+shine	V	Participle	shone shined	closed
+shoe	V	Past	shod shoed	closed
+shoe	V	Participle	shod shoed	closed
+shoot	V	Past	shot	closed
+shoot	V	Participle	shot	closed
+show	V	Past	showed	closed
+show	V	Participle	shown showed	closed
+shrink	V	Past	shrank shrunk	closed
+shrink	V	Participle	shrunk shrunken	closed
+shut	V	Past	shut	closed
+shut	V	Participle	shut	closed
+sing	V	Past	sang	closed
+sing	V	Participle	sung	closed
+sink	V	Past	sank sunk	closed
+sink	V	Participle	sunk sunken	closed
+sit	V	Past	sat	closed
+sit	V	Participle	sat	closed
+slay	V	Past	slew	closed
+slay	V	Participle	slain	closed
+sleep	V	Past	slept	closed
+sleep	V	Participle	slept	closed
+slide	V	Past	slid	closed
+slide	V	Participle	slid	closed
+sling	V	Past	slung	closed
+sling	V	Participle	slung	closed
+slit	V	Past	slit	closed
+slit	V	Participle	slit	closed
+smell	V	Past	smelt smelled	closed
+smell	V	Participle	smelt smelled	closed
+sow	V	Past	sowed	closed
+sow	V	Participle	sown sowed	closed
+speak	V	Past	spoke	closed
+speak	V	Participle	spoken	closed
+speed	V	Past	sped speeded	closed
+speed	V	Participle	sped speeded	closed
+spell	V	Past	spelt spelled	closed
+spell	V	Participle	spelt spelled	closed
+spend	V	Past	spent	closed
+spend	V	Participle	spent	closed
+spill	V	Past	spilt spilled	closed
+spill	V	Participle	spilt spilled	closed
+spin	V	Past	spun	closed
+spin	V	Participle	spun	closed
+spit	V	Past	spat spit	closed
+spit	V	Participle	spat spit	closed
+split	V	Past	split	closed
+split	V	Participle	split	closed
+spoil	V	Past	spoilt spoiled	closed
+spoil	V	Participle	spoilt spoiled	closed
+spread	V	Past	spread	closed
+spread	V	Participle	spread	closed
+spring	V	Past	sprang sprung	closed
+spring	V	Participle	sprung	closed
+stand	V	Past	stood	closed
+stand	V	Participle	stood	closed
+steal	V	Past	stole	closed
+steal	V	Participle	stolen	closed
+stick	V	Past	stuck	closed
+stick	V	Participle	stuck	closed
+sting	V	Past	stung	closed
+sting	V	Participle	stung	closed
+stink	V	Past	stank stunk	closed
+stink	V	Participle	stunk	closed
+stride	V	Past	strode	closed
+stride	V	Participle	stridden	closed
+strike	V	Past	struck	closed
+strike	V	Participle	struck stricken	closed
+string	V	Past	strung	closed
+string	V	Participle	strung	closed
+strive	V	Past	strove strived	closed
+strive	V	Participle	striven strived	closed
+swear	V	Past	swore	closed
+swear	V	Participle	sworn	closed
+sweep	V	Past	swept	closed
+sweep	V	Participle	swept	closed
+swell	V	Past	swelled	closed
+swell	V	Participle	swollen swelled	closed
+swim	V	Past	swam	closed
+swim	V	Participle	swum	closed
+swing	V	Past	swung	closed
+swing	V	Participle	swung	closed
+take	V	Past	took	closed
+take	V	Participle	taken	closed
+teach	V	Past	taught	closed
+teach	V	Participle	taught	closed
+tear	V	Past	tore	closed
+tear	V	Participle	torn	closed
+tell	V	Past	told	closed
+tell	V	Participle	told	closed
+think	V	Past	thought	closed
+think	V	Participle	thought	closed
+throw	V	Past	threw	closed
+throw	V	Participle	thrown	closed
+thrust	V	Past	thrust	closed
+thrust	V	Participle	thrust	closed
+tread	V	Past	trod	closed
+tread	V	Participle	trodden trod	closed
+wake	V	Past	woke waked	closed
+wake	V	Participle	woken waked	closed
+wear	V	Past	wore	closed
+wear	V	Participle	worn	closed
+weave	V	Past	wove weaved	closed
+weave	V	Participle	woven weaved	closed
+weep	V	Past	wept	closed
+weep	V	Participle	wept	closed
+wet	V	Past	wet wetted	closed
+wet	V	Participle	wet wetted	closed
+win	V	Past	won	closed
+win	V	Participle	won	closed
+wind	V	Past	wound	closed
+wind	V	Participle	wound	closed
+wring	V	Past	wrung	closed
+wring	V	Participle	wrung	closed
+write	V	Past	wrote	closed
+write	V	Participle	written	closed
+undergo	V	Past	underwent	closed
+undergo	V	Participle	undergone	closed
+child	N	Plural	children	closed
+person	N	Plural	people persons	closed
+man	N	Plural	men	closed
+woman	N	Plural	women	closed
+foot	N	Plural	feet	closed
+tooth	N	Plural	teeth	closed
+goose	N	Plural	geese	closed
+mouse	N	Plural	mice	closed
+louse	N	Plural	lice	closed
+ox	N	Plural	oxen	closed
+die	N	Plural	dice	closed
+penny	N	Plural	pence pennies	closed
+knife	N	Plural	knives	closed
+wife	N	Plural	wives	closed
+life	N	Plural	lives	closed
+leaf	N	Plural	leaves	closed
+loaf	N	Plural	loaves	closed
+half	N	Plural	halves	closed
+wolf	N	Plural	wolves	closed
+calf	N	Plural	calves	closed
+shelf	N	Plural	shelves	closed
+self	N	Plural	selves	closed
+elf	N	Plural	elves	closed
+thief	N	Plural	thieves	closed
+sheaf	N	Plural	sheaves	closed
+scarf	N	Plural	scarves scarfs	closed
+hoof	N	Plural	hooves hoofs	closed
+dwarf	N	Plural	dwarves dwarfs	closed
+wharf	N	Plural	wharves wharfs	closed
+staff	N	Plural	staves staffs	closed
+sheep	N	Plural	sheep	closed
+deer	N	Plural	deer	closed
+fish	N	Plural	fish fishes	closed
+moose	N	Plural	moose	closed
+swine	N	Plural	swine	closed
+series	N	Plural	series	closed
+species	N	Plural	species	closed
+aircraft	N	Plural	aircraft	closed
+means	N	Plural	means	closed
+crisis	N	Plural	crises	closed
+analysis	N	Plural	analyses	closed
+basis	N	Plural	bases	closed
+thesis	N	Plural	theses	closed
+hypothesis	N	Plural	hypotheses	closed
+diagnosis	N	Plural	diagnoses	closed
+ellipsis	N	Plural	ellipses	closed
+oasis	N	Plural	oases	closed
+parenthesis	N	Plural	parentheses	closed
+synopsis	N	Plural	synopses	closed
+axis	N	Plural	axes	closed
+phenomenon	N	Plural	phenomena	closed
+criterion	N	Plural	criteria	closed
+bacterium	N	Plural	bacteria	closed
+datum	N	Plural	data	closed
+medium	N	Plural	media mediums	closed
+stratum	N	Plural	strata	closed
+curriculum	N	Plural	curricula curriculums	closed
+memorandum	N	Plural	memoranda memorandums	closed
+millennium	N	Plural	millennia millenniums	closed
+symposium	N	Plural	symposia symposiums	closed
+alumnus	N	Plural	alumni	closed
+cactus	N	Plural	cacti cactuses	closed
+fungus	N	Plural	fungi funguses	closed
+nucleus	N	Plural	nuclei	closed
+radius	N	Plural	radii radiuses	closed
+stimulus	N	Plural	stimuli	closed
+syllabus	N	Plural	syllabi syllabuses	closed
+terminus	N	Plural	termini terminuses	closed
+focus	N	Plural	foci focuses	closed
+alga	N	Plural	algae	closed
+larva	N	Plural	larvae	closed
+vertebra	N	Plural	vertebrae	closed
+formula	N	Plural	formulae formulas	closed
+antenna	N	Plural	antennae antennas	closed
+alumna	N	Plural	alumnae	closed
+appendix	N	Plural	appendices appendixes	closed
+index	N	Plural	indices indexes	closed
+matrix	N	Plural	matrices matrixes	closed
+vortex	N	Plural	vortices vortexes	closed
+vertex	N	Plural	vertices vertexes	closed
+apex	N	Plural	apices apexes	closed
+codex	N	Plural	codices	closed
+genus	N	Plural	genera	closed
+corpus	N	Plural	corpora corpuses	closed
+opus	N	Plural	opera opuses	closed
+virus	N	Plural	viruses	closed
+bus	N	Plural	buses busses	closed
+good	J	Comparative	better	closed
+good	J	Superlative	best	closed
+bad	J	Comparative	worse	closed
+bad	J	Superlative	worst	closed
+ill	J	Comparative	worse	closed
+ill	J	Superlative	worst	closed
+well	J	Comparative	better	closed
+well	J	Superlative	best	closed
+far	J	Comparative	farther further	closed
+far	J	Superlative	farthest furthest	closed
+little	J	Comparative	less lesser	closed
+little	J	Superlative	least	closed
+much	J	Comparative	more	closed
+much	J	Superlative	most	closed
+many	J	Comparative	more	closed
+many	J	Superlative	most	closed
+old	J	Comparative	older elder	closed
+old	J	Superlative	oldest eldest	closed
+late	J	Comparative	later latter	closed
+late	J	Superlative	latest last	closed
+near	J	Comparative	nearer	closed
+near	J	Superlative	nearest next	closed
+well	B	Comparative	better	closed
+well	B	Superlative	best	closed
+badly	B	Comparative	worse	closed
+badly	B	Superlative	worst	closed
+far	B	Comparative	farther further	closed
+far	B	Superlative	farthest furthest	closed
+much	B	Comparative	more	closed
+much	B	Superlative	most	closed
+little	B	Comparative	less	closed
+little	B	Superlative	least	closed
+late	B	Comparative	later	closed
+late	B	Superlative	latest	closed
+soon	B	Comparative	sooner	closed
+soon	B	Superlative	soonest	closed
+be	A	Auxiliary	am:Tense=Pres is:Person=3+Tense=Pres are:Tense=Pres was:Tense=Past were:Tense=Past been:VerbForm=Part being:VerbForm=Ger	closed
+have	A	Auxiliary	has:Person=3+Tense=Pres had:Tense=Past having:VerbForm=Ger	closed
+do	A	Auxiliary	does:Person=3+Tense=Pres did:Tense=Past done:VerbForm=Part doing:VerbForm=Ger	closed
+will	A	Modal	will	closed
+would	A	Modal	would	closed
+can	A	Modal	can	closed
+could	A	Modal	could	closed
+may	A	Modal	may	closed
+might	A	Modal	might	closed
+shall	A	Modal	shall	closed
+should	A	Modal	should	closed
+must	A	Modal	must	closed
+ought	A	Modal	ought	closed
+need	A	Modal	need	closed
+dare	A	Modal	dare	closed

@@ -1,612 +1,1005 @@
-spelling	rank	entry_id	features	source_id	reviewed
-at	0	dema-at-p		dema	0
-at	1	oewn-at-n	Number=Sing	dema	0
-atabal	0	dema-atabal-n	Number=Sing	dema	0
-atabals	0	dema-atabal-n	Number=Plur	dema	0
-atacamite	0	dema-atacamite-n	Number=Sing	dema	0
-atacamites	0	dema-atacamite-n	Number=Plur	dema	0
-atactic	0	oewn-atactic-a	Degree=Pos	dema	0
-atactically	0	dema-atactic-r		dema	0
-atacticness	0	dema-atactic-n	Number=Plur	dema	0
-ataghan	0	dema-ataghan-n	Number=Sing	dema	0
-ataghans	0	dema-ataghan-n	Number=Plur	dema	0
-ataman	0	dema-ataman-n	Number=Sing	dema	0
-atamans	0	dema-atamans-n	Number=Sing	dema	0
-atar	0	oewn-atar-n	Number=Sing	dema	0
-ataractic	0	oewn-ataractic-a	Degree=Pos	dema	0
-ataractic	1	oewn-ataractic-n	Number=Sing	dema	0
-ataractically	0	dema-ataractic-r		dema	0
-ataractics	0	oewn-ataractic-n	Number=Plur	dema	0
-ataraxia	0	oewn-ataraxia-n	Number=Sing	dema	0
-ataraxias	0	oewn-ataraxia-n	Number=Plur	dema	0
-ataraxic	0	oewn-ataraxic-a	Degree=Pos	dema	0
-ataraxic	1	dema-ataraxic-n	Number=Sing	dema	0
-ataraxically	0	dema-ataraxic-r		dema	0
-ataraxics	0	dema-ataraxic-n	Number=Plur	dema	0
-atars	0	oewn-atar-n	Number=Plur	dema	0
-atavic	0	dema-atavic-a	Degree=Pos	dema	0
-atavically	0	dema-atavic-r		dema	0
-atavicness	0	dema-atavic-n	Number=Plur	dema	0
-atavism	0	oewn-atavism-n	Number=Sing	dema	0
-atavisms	0	oewn-atavism-n	Number=Plur	dema	0
-atavist	0	oewn-atavist-n	Number=Sing	dema	0
-atavistic	0	oewn-atavistic-a	Degree=Pos	dema	0
-atavistically	0	dema-atavistically-r	Degree=Pos	dema	0
-atavists	0	oewn-atavist-n	Number=Plur	dema	0
-ataxia	0	oewn-ataxia-n	Number=Sing	dema	0
-ataxias	0	oewn-ataxia-n	Number=Plur	dema	0
-ataxic	0	oewn-ataxic-a	Degree=Pos	dema	0
-ataxically	0	dema-ataxic-r		dema	0
-ataxicness	0	dema-ataxic-n	Number=Plur	dema	0
-ataxite	0	dema-ataxite-n	Number=Sing	dema	0
-ataxites	0	dema-ataxite-n	Number=Plur	dema	0
-ate	0	dema-ate-v	VerbForm=Inf	dema	0
-atebrin	0	dema-atebrin-n	Number=Sing	dema	0
-atebrins	0	dema-atebrin-n	Number=Plur	dema	0
-atelectasis	0	oewn-atelectasis-n	Number=Sing	dema	0
-atelectatic	0	dema-atelectatic-a	Degree=Pos	dema	0
-atelectatically	0	dema-atelectatic-r		dema	0
-ateleiosis	0	oewn-ateleiosis-n	Number=Sing	dema	0
-atelic	0	dema-atelic-a	Degree=Pos	dema	0
-atelically	0	dema-atelic-r		dema	0
-atelicness	0	dema-atelic-n	Number=Plur	dema	0
-atelier	0	oewn-atelier-n	Number=Sing	dema	0
-ateliers	0	dema-ateliers-n	Number=Sing	dema	0
-ateliosis	0	oewn-ateliosis-n	Number=Sing	dema	0
-ateliotic	0	dema-ateliotic-a	Degree=Pos	dema	0
-ateliotically	0	dema-ateliotic-r		dema	0
-athanasia	0	dema-athanasia-n	Number=Sing	dema	0
-athanasias	0	dema-athanasia-n	Number=Plur	dema	0
-athar	0	oewn-athar-n	Number=Sing	dema	0
-athars	0	oewn-athar-n	Number=Plur	dema	0
-atheism	0	oewn-atheism-n	Number=Sing	dema	0
-atheism	1	dema-atheism-a	Degree=Pos	dema	0
-atheismer	0	dema-atheism-a	Degree=Cmp	dema	0
-atheismest	0	dema-atheism-a	Degree=Sup	dema	0
-atheismly	0	dema-atheism-r		dema	0
-atheismness	0	oewn-atheism-n	Number=Plur	dema	0
-atheisms	0	oewn-atheism-n	Number=Plur	dema	0
-atheist	0	oewn-atheist-n	Number=Sing	dema	0
-atheistic	0	oewn-atheistic-a	Degree=Pos	dema	0
-atheistically	0	dema-atheistically-r	Degree=Pos	dema	0
-atheisticness	0	dema-atheisticness-n	Number=Sing	dema	0
-atheisticnesses	0	dema-atheisticness-n	Number=Plur	dema	0
-atheists	0	oewn-atheist-n	Number=Plur	dema	0
-atheling	0	dema-atheling-n	Number=Sing	dema	0
-athelings	0	dema-atheling-n	Number=Plur	dema	0
-athematic	0	dema-athematic-a	Degree=Pos	dema	0
-athematically	0	dema-athematic-r		dema	0
-athenaeum	0	oewn-athenaeum-n	Number=Sing	dema	0
-athenaeums	0	oewn-athenaeum-n	Number=Plur	dema	0
-atherine	0	dema-atherine-a	Degree=Pos	dema	0
-atherine	1	dema-atherine-n	Number=Sing	dema	0
-atherinely	0	dema-atherine-r		dema	0
-atherineness	0	dema-atherine-n	Number=Plur	dema	0
-atherines	0	dema-atherine-n	Number=Plur	dema	0
-athermancies	0	dema-athermancy-n	Number=Plur	dema	0
-athermancy	0	dema-athermancy-n	Number=Sing	dema	0
-athermanous	0	dema-athermanous-a	Degree=Pos	dema	0
-athermanously	0	dema-athermanous-r		dema	0
-atheroma	0	oewn-atheroma-n	Number=Sing	dema	0
-atheromas	0	dema-atheromas-n	Number=Sing	dema	0
-atheromata	0	dema-atheromata-n	Number=Sing	dema	0
-atheromatas	0	dema-atheromata-n	Number=Plur	dema	0
-atherosclerosis	0	oewn-atherosclerosis-n	Number=Sing	dema	0
-atherosclerotic	0	oewn-atherosclerotic-a	Degree=Pos	dema	0
-atherosclerotically	0	dema-atherosclerotic-r		dema	0
-athetoid	0	dema-athetoid-a	Degree=Pos	dema	0
-athetoidly	0	dema-athetoid-r		dema	0
-athetoidness	0	dema-athetoid-n	Number=Plur	dema	0
-athetosic	0	dema-athetosic-a	Degree=Pos	dema	0
-athetosically	0	dema-athetosic-r		dema	0
-athetosis	0	oewn-athetosis-n	Number=Sing	dema	0
-athirst	0	oewn-athirst-a	Degree=Pos	dema	0
-athirster	0	oewn-athirst-a	Degree=Cmp	dema	0
-athirstest	0	oewn-athirst-a	Degree=Sup	dema	0
-athirstly	0	dema-athirst-r		dema	0
-athirstness	0	dema-athirst-n	Number=Plur	dema	0
-athlete	0	oewn-athlete-n	Number=Sing	dema	0
-athletes	0	oewn-athlete-n	Number=Plur	dema	0
-athletic	0	oewn-athletic-a	Degree=Pos	dema	0
-athletically	0	dema-athletically-r	Degree=Pos	dema	0
-athleticism	0	oewn-athleticism-n	Number=Sing	dema	0
-athleticisms	0	oewn-athleticism-n	Number=Plur	dema	0
-athleticness	0	dema-athletic-n	Number=Plur	dema	0
-athletics	0	oewn-athletics-n	Number=Sing	dema	0
-athleticses	0	oewn-athletics-n	Number=Plur	dema	0
-athodyd	0	oewn-athodyd-n	Number=Sing	dema	0
-athodyds	0	oewn-athodyd-n	Number=Plur	dema	0
-athonite	0	dema-athonite-a	Degree=Pos	dema	0
-athonitely	0	dema-athonite-r		dema	0
-athoniteness	0	dema-athonite-n	Number=Plur	dema	0
-athrill	0	dema-athrill-a	Degree=Pos	dema	0
-athriller	0	dema-athrill-a	Degree=Cmp	dema	0
-athrillest	0	dema-athrill-a	Degree=Sup	dema	0
-athrillness	0	dema-athrill-n	Number=Plur	dema	0
-athrilly	0	dema-athrill-r		dema	0
-athrocyte	0	dema-athrocyte-n	Number=Sing	dema	0
-athrocytes	0	dema-athrocyte-n	Number=Plur	dema	0
-athrocytosis	0	dema-athrocytosis-n	Number=Sing	dema	0
-athwart	0	oewn-athwart-r	Degree=Pos	dema	0
-athwart	1	dema-athwart-p		dema	0
-athwartships	0	dema-athwartships-r	Degree=Pos	dema	0
-atilt	0	dema-atilt-r	Degree=Pos	dema	0
-atingle	0	dema-atingle-a	Degree=Pos	dema	0
-atingleness	0	dema-atingle-n	Number=Plur	dema	0
-atingly	0	dema-atingle-r		dema	0
-atiptoe	0	dema-atiptoe-r	Degree=Pos	dema	0
-atiptoe	1	dema-atiptoe-a	Degree=Pos	dema	0
-atiptoely	0	dema-atiptoe-r		dema	0
-atiptoeness	0	dema-atiptoe-n	Number=Plur	dema	0
-atiptoer	0	dema-atiptoe-r	Degree=Cmp	dema	0
-atiptoer	1	dema-atiptoe-a	Degree=Cmp	dema	0
-atiptoest	0	dema-atiptoe-r	Degree=Sup	dema	0
-atiptoest	1	dema-atiptoe-a	Degree=Sup	dema	0
-atlantad	0	dema-atlantad-r	Degree=Pos	dema	0
-atlantal	0	dema-atlantal-a	Degree=Pos	dema	0
-atlantally	0	dema-atlantal-r		dema	0
-atlantalness	0	dema-atlantal-n	Number=Plur	dema	0
-atlantes	0	dema-atlantes-n	Number=Sing	dema	0
-atlanteses	0	dema-atlantes-n	Number=Plur	dema	0
-atlas	0	oewn-atlas-n	Number=Sing	dema	0
-atlases	0	dema-atlases-n	Number=Sing	dema	0
-atm	0	oewn-atm-n	Number=Sing	dema	0
-atman	0	dema-atman-n	Number=Sing	dema	0
-atmans	0	dema-atman-n	Number=Plur	dema	0
-atmolyses	0	dema-atmolyses-n	Number=Sing	dema	0
-atmolyseses	0	dema-atmolyses-n	Number=Plur	dema	0
-atmolysis	0	dema-atmolysis-n	Number=Sing	dema	0
-atmometer	0	oewn-atmometer-n	Number=Sing	dema	0
-atmometers	0	oewn-atmometer-n	Number=Plur	dema	0
-atmometries	0	dema-atmometry-n	Number=Plur	dema	0
-atmometry	0	dema-atmometry-n	Number=Sing	dema	0
-atmophile	0	dema-atmophile-a	Degree=Pos	dema	0
-atmophile	1	dema-atmophile-n	Number=Sing	dema	0
-atmophilely	0	dema-atmophile-r		dema	0
-atmophileness	0	dema-atmophile-n	Number=Plur	dema	0
-atmophiles	0	dema-atmophile-n	Number=Plur	dema	0
-atmosphere	0	oewn-atmosphere-n	Number=Sing	dema	0
-atmosphereless	0	dema-atmosphereless-a	Degree=Pos	dema	0
-atmospherelessly	0	dema-atmosphereless-r		dema	0
-atmospheres	0	oewn-atmosphere-n	Number=Plur	dema	0
-atmospheric	0	oewn-atmospheric-a	Degree=Pos	dema	0
-atmospherically	0	dema-atmospherically-r	Degree=Pos	dema	0
-atmospherics	0	oewn-atmospherics-n	Number=Sing	dema	0
-atmosphericses	0	oewn-atmospherics-n	Number=Plur	dema	0
-atms	0	oewn-atm-n	Number=Plur	dema	0
-atoll	0	oewn-atoll-n	Number=Sing	dema	0
-atolls	0	oewn-atoll-n	Number=Plur	dema	0
-atom	0	oewn-atom-n	Number=Sing	dema	0
-atomic	0	oewn-atomic-a	Degree=Pos	dema	0
-atomically	0	dema-atomically-r	Degree=Pos	dema	0
-atomicities	0	dema-atomicity-n	Number=Plur	dema	0
-atomicity	0	dema-atomicity-n	Number=Sing	dema	0
-atomicness	0	dema-atomic-n	Number=Plur	dema	0
-atomics	0	dema-atomics-n	Number=Sing	dema	0
-atomicses	0	dema-atomics-n	Number=Plur	dema	0
-atomies	0	dema-atomies-n	Number=Sing	dema	0
-atomisation	0	oewn-atomisation-n	Number=Sing	dema	0
-atomisations	0	oewn-atomisation-n	Number=Plur	dema	0
-atomise	0	oewn-atomise-v	VerbForm=Inf	dema	0
-atomised	0	dema-atomised-v	VerbForm=Inf	dema	0
-atomiser	0	dema-atomise-n	Number=Plur	dema	0
-atomisers	0	dema-atomise-n	Number=Plur	dema	0
-atomises	0	oewn-atomise-v	Person=3+Tense=Pres	dema	0
-atomising	0	dema-atomising-v	VerbForm=Inf	dema	0
-atomisingly	0	dema-atomise-r		dema	0
-atomism	0	oewn-atomism-n	Number=Sing	dema	0
-atomism	1	dema-atomism-a	Degree=Pos	dema	0
-atomismly	0	dema-atomism-r		dema	0
-atomismness	0	oewn-atomism-n	Number=Plur	dema	0
-atomisms	0	oewn-atomism-n	Number=Plur	dema	0
-atomist	0	dema-atomist-n	Number=Sing	dema	0
-atomistic	0	oewn-atomistic-a	Degree=Pos	dema	0
-atomistical	0	oewn-atomistical-a	Degree=Pos	dema	0
-atomistically	0	dema-atomistically-r	Degree=Pos	dema	0
-atomists	0	dema-atomist-n	Number=Plur	dema	0
-atomization	0	oewn-atomization-n	Number=Sing	dema	0
-atomizations	0	oewn-atomization-n	Number=Plur	dema	0
-atomize	0	oewn-atomize-v	VerbForm=Inf	dema	0
-atomized	0	dema-atomized-v	VerbForm=Inf	dema	0
-atomizer	0	oewn-atomizer-n	Number=Sing	dema	0
-atomizers	0	dema-atomize-n	Number=Plur	dema	0
-atomizes	0	oewn-atomize-v	Person=3+Tense=Pres	dema	0
-atomizing	0	dema-atomizing-v	VerbForm=Inf	dema	0
-atomizingly	0	dema-atomize-r		dema	0
-atoms	0	oewn-atom-n	Number=Plur	dema	0
-atomy	0	dema-atomy-n	Number=Sing	dema	0
-atonable	0	dema-atonable-a	Degree=Pos	dema	0
-atonably	0	dema-atonable-r		dema	0
-atonal	0	oewn-atonal-a	Degree=Pos	dema	0
-atonalism	0	oewn-atonalism-n	Number=Sing	dema	0
-atonalisms	0	oewn-atonalism-n	Number=Plur	dema	0
-atonalistic	0	oewn-atonalistic-a	Degree=Pos	dema	0
-atonalistically	0	dema-atonalistic-r		dema	0
-atonalities	0	oewn-atonality-n	Number=Plur	dema	0
-atonality	0	oewn-atonality-n	Number=Sing	dema	0
-atonally	0	oewn-atonally-r	Degree=Pos	dema	0
-atonalness	0	dema-atonal-n	Number=Plur	dema	0
-atone	0	oewn-atone-v	VerbForm=Inf	dema	0
-atoneable	0	dema-atoneable-a	Degree=Pos	dema	0
-atoneably	0	dema-atoneable-r		dema	0
-atoned	0	dema-atoned-v	VerbForm=Inf	dema	0
-atonement	0	oewn-atonement-n	Number=Sing	dema	0
-atonements	0	oewn-atonement-n	Number=Plur	dema	0
-atoner	0	dema-atoner-n	Number=Sing	dema	0
-atoners	0	dema-atone-n	Number=Plur	dema	0
-atones	0	oewn-atone-v	Person=3+Tense=Pres	dema	0
-atonic	0	oewn-atonic-a	Degree=Pos	dema	0
-atonic	1	dema-atonic-n	Number=Sing	dema	0
-atonically	0	dema-atonic-r		dema	0
-atonicities	0	oewn-atonicity-n	Number=Plur	dema	0
-atonicity	0	oewn-atonicity-n	Number=Sing	dema	0
-atonicness	0	dema-atonic-n	Number=Plur	dema	0
-atonics	0	dema-atonic-n	Number=Plur	dema	0
-atonies	0	oewn-atony-n	Number=Plur	dema	0
-atoning	0	dema-atoning-v	VerbForm=Inf	dema	0
-atoningly	0	dema-atoningly-r	Degree=Pos	dema	0
-atony	0	oewn-atony-n	Number=Sing	dema	0
-atop	0	oewn-atop-r	Degree=Pos	dema	0
-atop	1	dema-atop-p		dema	0
-atrabilious	0	oewn-atrabilious-a	Degree=Pos	dema	0
-atrabiliously	0	dema-atrabilious-r		dema	0
-atrabiliousness	0	dema-atrabiliousness-n	Number=Sing	dema	0
-atrabiliousnesses	0	dema-atrabiliousness-n	Number=Plur	dema	0
-atremble	0	dema-atremble-r	Degree=Pos	dema	0
-atresia	0	oewn-atresia-n	Number=Sing	dema	0
-atresias	0	oewn-atresia-n	Number=Plur	dema	0
-atresic	0	dema-atresic-a	Degree=Pos	dema	0
-atresically	0	dema-atresic-r		dema	0
-atresicness	0	dema-atresic-n	Number=Plur	dema	0
-atria	0	dema-atria-n	Number=Sing	dema	0
-atrial	0	oewn-atrial-a	Degree=Pos	dema	0
-atrially	0	dema-atrial-r		dema	0
-atrialness	0	dema-atrial-n	Number=Plur	dema	0
-atrias	0	dema-atria-n	Number=Plur	dema	0
-atrichia	0	dema-atrichia-n	Number=Sing	dema	0
-atrichias	0	dema-atrichia-n	Number=Plur	dema	0
-atrier	0	dema-atry-a	Degree=Cmp	dema	0
-atriest	0	dema-atry-a	Degree=Sup	dema	0
-atrily	0	dema-atry-r		dema	0
-atriness	0	dema-atry-n	Number=Plur	dema	0
-atrioventricular	0	oewn-atrioventricular-a	Degree=Pos	dema	0
-atrioventricularly	0	dema-atrioventricular-r		dema	0
-atrip	0	oewn-atrip-a	Degree=Pos	dema	0
-atriper	0	oewn-atrip-a	Degree=Cmp	dema	0
-atripest	0	oewn-atrip-a	Degree=Sup	dema	0
-atriply	0	dema-atrip-r		dema	0
-atripness	0	dema-atrip-n	Number=Plur	dema	0
-atrium	0	oewn-atrium-n	Number=Sing	dema	0
-atriums	0	oewn-atrium-n	Number=Plur	dema	0
-atroceruleous	0	dema-atroceruleous-n	Number=Sing	dema	0
-atroceruleouses	0	dema-atroceruleous-n	Number=Plur	dema	0
-atrocious	0	oewn-atrocious-a	Degree=Pos	dema	0
-atrociously	0	oewn-atrociously-r	Degree=Pos	dema	0
-atrociousness	0	oewn-atrociousness-n	Number=Sing	dema	0
-atrociousnesses	0	oewn-atrociousness-n	Number=Plur	dema	0
-atrocities	0	dema-atrocities-n	Number=Sing	dema	0
-atrocity	0	oewn-atrocity-n	Number=Sing	dema	0
-atrophic	0	oewn-atrophic-a	Degree=Pos	dema	0
-atrophically	0	dema-atrophic-r		dema	0
-atrophicness	0	dema-atrophic-n	Number=Plur	dema	0
-atrophied	0	oewn-atrophied-a	Degree=Pos	dema	0
-atrophied	1	dema-atrophied-v	VerbForm=Inf	dema	0
-atrophiedly	0	dema-atrophied-r		dema	0
-atrophier	0	oewn-atrophy-n	Number=Plur	dema	0
-atrophiers	0	oewn-atrophy-n	Number=Plur	dema	0
-atrophies	0	oewn-atrophy-n	Number=Plur	dema	0
-atrophies	1	oewn-atrophy-v	Person=3+Tense=Pres	dema	0
-atrophy	0	oewn-atrophy-n	Number=Sing	dema	0
-atrophy	1	oewn-atrophy-v	VerbForm=Inf	dema	0
-atrophying	0	dema-atrophying-v	VerbForm=Inf	dema	0
-atropine	0	oewn-atropine-n	Number=Sing	dema	0
-atropines	0	oewn-atropine-n	Number=Plur	dema	0
-atropism	0	dema-atropism-n	Number=Sing	dema	0
-atropisms	0	dema-atropism-n	Number=Plur	dema	0
-atry	0	dema-atry-a	Degree=Pos	dema	0
-att	0	dema-att-n	Number=Sing	dema	0
-attabal	0	dema-attabal-n	Number=Sing	dema	0
-attabals	0	dema-attabal-n	Number=Plur	dema	0
-attaboy	0	dema-attaboy-i		dema	0
-attacca	0	dema-attacca-v	VerbForm=Inf	dema	0
-attaccaed	0	dema-attacca-v	Tense=Past	dema	0
-attaccaer	0	dema-attacca-n	Number=Plur	dema	0
-attaccaers	0	dema-attacca-n	Number=Plur	dema	0
-attaccaing	0	dema-attacca-v	VerbForm=Ger	dema	0
-attaccaingly	0	dema-attacca-r		dema	0
-attaccas	0	dema-attacca-v	Person=3+Tense=Pres	dema	0
-attach	0	dema-attach-n	Number=Sing	dema	0
-attach	1	oewn-attach-v	VerbForm=Inf	dema	0
-attachable	0	oewn-attachable-a	Degree=Pos	dema	0
-attachably	0	dema-attachable-r		dema	0
-attached	0	oewn-attached-a	Degree=Pos	dema	0
-attached	1	dema-attached-v	VerbForm=Inf	dema	0
-attachedly	0	dema-attached-r		dema	0
-attacher	0	dema-attacher-n	Number=Sing	dema	0
-attachers	0	dema-attach-n	Number=Plur	dema	0
-attaches	0	dema-attach-n	Number=Plur	dema	0
-attaches	1	oewn-attach-v	Person=3+Tense=Pres	dema	0
-attaching	0	oewn-attach-v	VerbForm=Ger	dema	0
-attachingly	0	dema-attach-r		dema	0
-attachment	0	oewn-attachment-n	Number=Sing	dema	0
-attachments	0	oewn-attachment-n	Number=Plur	dema	0
-attachs	0	dema-attach-n	Number=Plur	dema	0
-attachs	1	oewn-attach-v	Person=3+Tense=Pres	dema	0
-attack	0	oewn-attack-v	VerbForm=Inf	dema	0
-attack	1	oewn-attack-n	Number=Sing	dema	0
-attackable	0	dema-attackable-a	Degree=Pos	dema	0
-attackably	0	dema-attackable-r		dema	0
-attacked	0	oewn-attack-v	Tense=Past	dema	0
-attacker	0	oewn-attacker-n	Number=Sing	dema	0
-attackers	0	oewn-attack-n	Number=Plur	dema	0
-attacking	0	oewn-attack-v	VerbForm=Ger	dema	0
-attackingly	0	dema-attack-r		dema	0
-attacks	0	oewn-attack-v	Person=3+Tense=Pres	dema	0
-attacks	1	oewn-attack-n	Number=Plur	dema	0
-attain	0	oewn-attain-v	VerbForm=Inf	dema	0
-attainabilities	0	oewn-attainability-n	Number=Plur	dema	0
-attainability	0	oewn-attainability-n	Number=Sing	dema	0
-attainable	0	oewn-attainable-a	Degree=Pos	dema	0
-attainableness	0	oewn-attainableness-n	Number=Sing	dema	0
-attainablenesses	0	oewn-attainableness-n	Number=Plur	dema	0
-attainably	0	dema-attainable-r		dema	0
-attainder	0	oewn-attainder-n	Number=Sing	dema	0
-attainders	0	oewn-attainder-n	Number=Plur	dema	0
-attained	0	oewn-attain-v	Tense=Past	dema	0
-attainer	0	dema-attainer-n	Number=Sing	dema	0
-attainers	0	dema-attain-n	Number=Plur	dema	0
-attaining	0	oewn-attain-v	VerbForm=Ger	dema	0
-attainingly	0	dema-attain-r		dema	0
-attainment	0	oewn-attainment-n	Number=Sing	dema	0
-attainments	0	oewn-attainment-n	Number=Plur	dema	0
-attains	0	oewn-attain-v	Person=3+Tense=Pres	dema	0
-attaint	0	oewn-attaint-v	VerbForm=Inf	dema	0
-attaint	1	dema-attaint-n	Number=Sing	dema	0
-attainted	0	oewn-attaint-v	Tense=Past	dema	0
-attainter	0	dema-attaint-n	Number=Plur	dema	0
-attainters	0	dema-attaint-n	Number=Plur	dema	0
-attainting	0	oewn-attaint-v	VerbForm=Ger	dema	0
-attaintingly	0	dema-attaint-r		dema	0
-attaints	0	oewn-attaint-v	Person=3+Tense=Pres	dema	0
-attaints	1	dema-attaint-n	Number=Plur	dema	0
-attainture	0	dema-attainture-n	Number=Sing	dema	0
-attaintures	0	dema-attainture-n	Number=Plur	dema	0
-attapulgite	0	dema-attapulgite-n	Number=Sing	dema	0
-attapulgites	0	dema-attapulgite-n	Number=Plur	dema	0
-attar	0	oewn-attar-n	Number=Sing	dema	0
-attars	0	oewn-attar-n	Number=Plur	dema	0
-attemper	0	oewn-attemper-v	VerbForm=Inf	dema	0
-attemperator	0	dema-attemperator-n	Number=Sing	dema	0
-attemperators	0	dema-attemperator-n	Number=Plur	dema	0
-attempered	0	oewn-attemper-v	Tense=Past	dema	0
-attempering	0	oewn-attemper-v	VerbForm=Ger	dema	0
-attemperingly	0	dema-attemper-r		dema	0
-attempers	0	oewn-attemper-v	Person=3+Tense=Pres	dema	0
-attempt	0	oewn-attempt-v	VerbForm=Inf	dema	0
-attempt	1	oewn-attempt-n	Number=Sing	dema	0
-attemptabilities	0	dema-attemptability-n	Number=Plur	dema	0
-attemptability	0	dema-attemptability-n	Number=Sing	dema	0
-attemptable	0	dema-attemptable-a	Degree=Pos	dema	0
-attemptably	0	dema-attemptable-r		dema	0
-attempted	0	oewn-attempt-v	Tense=Past	dema	0
-attempter	0	oewn-attempter-n	Number=Sing	dema	0
-attempters	0	oewn-attempt-n	Number=Plur	dema	0
-attempting	0	oewn-attempt-v	VerbForm=Ger	dema	0
-attemptingly	0	dema-attempt-r		dema	0
-attempts	0	oewn-attempt-v	Person=3+Tense=Pres	dema	0
-attempts	1	oewn-attempt-n	Number=Plur	dema	0
-attend	0	oewn-attend-v	VerbForm=Inf	dema	0
-attendance	0	oewn-attendance-n	Number=Sing	dema	0
-attendances	0	oewn-attendance-n	Number=Plur	dema	0
-attendant	0	oewn-attendant-n	Number=Sing	dema	0
-attendant	1	oewn-attendant-a	Degree=Pos	dema	0
-attendantly	0	dema-attendantly-r	Degree=Pos	dema	0
-attendantness	0	oewn-attendant-n	Number=Plur	dema	0
-attendants	0	oewn-attendant-n	Number=Plur	dema	0
-attended	0	oewn-attend-v	Tense=Past	dema	0
-attender	0	oewn-attender-n	Number=Sing	dema	0
-attenders	0	dema-attend-n	Number=Plur	dema	0
-attending	0	oewn-attending-a	Degree=Pos	dema	0
-attending	1	dema-attending-v	VerbForm=Inf	dema	0
-attendingly	0	dema-attendingly-r	Degree=Pos	dema	0
-attends	0	oewn-attend-v	Person=3+Tense=Pres	dema	0
-attent	0	dema-attent-a	Degree=Pos	dema	0
-attenter	0	dema-attent-a	Degree=Cmp	dema	0
-attentest	0	dema-attent-a	Degree=Sup	dema	0
-attention	0	oewn-attention-n	Number=Sing	dema	0
-attention	1	dema-attention-i		dema	0
-attentional	0	oewn-attentional-a	Degree=Pos	dema	0
-attentionally	0	dema-attentional-r		dema	0
-attentions	0	oewn-attention-n	Number=Plur	dema	0
-attentive	0	oewn-attentive-a	Degree=Pos	dema	0
-attentively	0	oewn-attentively-r	Degree=Pos	dema	0
-attentiveness	0	oewn-attentiveness-n	Number=Sing	dema	0
-attentivenesses	0	oewn-attentiveness-n	Number=Plur	dema	0
-attently	0	dema-attently-r	Degree=Pos	dema	0
-attentness	0	dema-attent-n	Number=Plur	dema	0
-attenuant	0	dema-attenuant-a	Degree=Pos	dema	0
-attenuant	1	dema-attenuant-n	Number=Sing	dema	0
-attenuantly	0	dema-attenuant-r		dema	0
-attenuantness	0	dema-attenuant-n	Number=Plur	dema	0
-attenuants	0	dema-attenuant-n	Number=Plur	dema	0
-attenuate	0	oewn-attenuate-a	Degree=Pos	dema	1
-attenuate	1	oewn-attenuate-v	VerbForm=Inf	dema	1
-attenuated	0	dema-attenuated-v	VerbForm=Inf	dema	0
-attenuately	0	dema-attenuate-r		dema	0
-attenuateness	0	dema-attenuate-n	Number=Plur	dema	0
-attenuater	0	dema-attenuate-n	Number=Plur	dema	0
-attenuaters	0	dema-attenuate-n	Number=Plur	dema	0
-attenuates	0	oewn-attenuate-v	Person=3+Tense=Pres	dema	1
-attenuating	0	dema-attenuating-v	VerbForm=Inf	dema	0
-attenuatingly	0	dema-attenuate-r		dema	0
-attenuation	0	oewn-attenuation-n	Number=Sing	dema	0
-attenuations	0	oewn-attenuation-n	Number=Plur	dema	0
-attenuator	0	oewn-attenuator-n	Number=Sing	dema	0
-attenuators	0	oewn-attenuator-n	Number=Plur	dema	0
-attest	0	oewn-attest-v	VerbForm=Inf	dema	0
-attestable	0	dema-attestable-a	Degree=Pos	dema	0
-attestably	0	dema-attestable-r		dema	0
-attestant	0	oewn-attestant-n	Number=Sing	dema	0
-attestants	0	oewn-attestant-n	Number=Plur	dema	0
-attestation	0	oewn-attestation-n	Number=Sing	dema	0
-attestations	0	oewn-attestation-n	Number=Plur	dema	0
-attestative	0	dema-attestative-a	Degree=Pos	dema	0
-attestatively	0	dema-attestative-r		dema	0
-attestator	0	oewn-attestator-n	Number=Sing	dema	0
-attestators	0	oewn-attestator-n	Number=Plur	dema	0
-attested	0	oewn-attested-a	Degree=Pos	dema	0
-attested	1	dema-attested-v	VerbForm=Inf	dema	0
-attestedly	0	dema-attested-r		dema	0
-attester	0	oewn-attester-n	Number=Sing	dema	0
-attesters	0	dema-attest-n	Number=Plur	dema	0
-attesting	0	oewn-attest-v	VerbForm=Ger	dema	0
-attestingly	0	dema-attest-r		dema	0
-attestive	0	dema-attestive-a	Degree=Pos	dema	0
-attestively	0	dema-attestive-r		dema	0
-attestiveness	0	dema-attestive-n	Number=Plur	dema	0
-attestor	0	oewn-attestor-n	Number=Sing	dema	0
-attestors	0	oewn-attestor-n	Number=Plur	dema	0
-attests	0	oewn-attest-v	Person=3+Tense=Pres	dema	0
-attic	0	oewn-attic-n	Number=Sing	dema	0
-atticist	0	dema-atticist-n	Number=Sing	dema	0
-atticists	0	dema-atticist-n	Number=Plur	dema	0
-attics	0	oewn-attic-n	Number=Plur	dema	0
-atties	0	dema-atty-n	Number=Plur	dema	0
-attingence	0	dema-attingence-n	Number=Sing	dema	0
-attingences	0	dema-attingence-n	Number=Plur	dema	0
-attingencies	0	dema-attingency-n	Number=Plur	dema	0
-attingency	0	dema-attingency-n	Number=Sing	dema	0
-attingent	0	dema-attingent-a	Degree=Pos	dema	0
-attingently	0	dema-attingent-r		dema	0
-attingentness	0	dema-attingent-n	Number=Plur	dema	0
-attire	0	oewn-attire-v	VerbForm=Inf	dema	0
-attire	1	oewn-attire-n	Number=Sing	dema	0
-attired	0	oewn-attired-a	Degree=Pos	dema	0
-attired	1	dema-attired-v	VerbForm=Inf	dema	0
-attiredly	0	dema-attired-r		dema	0
-attirement	0	dema-attirement-n	Number=Sing	dema	0
-attirements	0	dema-attirement-n	Number=Plur	dema	0
-attirer	0	oewn-attire-n	Number=Plur	dema	0
-attirers	0	oewn-attire-n	Number=Plur	dema	0
-attires	0	oewn-attire-v	Person=3+Tense=Pres	dema	0
-attires	1	oewn-attire-n	Number=Plur	dema	0
-attiring	0	dema-attiring-v	VerbForm=Inf	dema	0
-attiringly	0	dema-attire-r		dema	0
-attitude	0	oewn-attitude-n	Number=Sing	dema	0
-attitudes	0	oewn-attitude-n	Number=Plur	dema	0
-attitudinal	0	oewn-attitudinal-a	Degree=Pos	dema	0
-attitudinally	0	dema-attitudinal-r		dema	0
-attitudinarian	0	dema-attitudinarian-n	Number=Sing	dema	0
-attitudinarianism	0	dema-attitudinarianism-n	Number=Sing	dema	0
-attitudinarianisms	0	dema-attitudinarianism-n	Number=Plur	dema	0
-attitudinarians	0	dema-attitudinarian-n	Number=Plur	dema	0
-attitudinise	0	oewn-attitudinise-v	VerbForm=Inf	dema	0
-attitudinised	0	dema-attitudinised-v	VerbForm=Inf	dema	0
-attitudiniser	0	dema-attitudiniser-n	Number=Sing	dema	0
-attitudinisers	0	dema-attitudiniser-n	Number=Plur	dema	0
-attitudinises	0	oewn-attitudinise-v	Person=3+Tense=Pres	dema	0
-attitudinising	0	dema-attitudinising-v	VerbForm=Inf	dema	0
-attitudinize	0	oewn-attitudinize-v	VerbForm=Inf	dema	0
-attitudinized	0	dema-attitudinized-v	VerbForm=Inf	dema	0
-attitudinizer	0	dema-attitudinizer-n	Number=Sing	dema	0
-attitudinizers	0	dema-attitudinizer-n	Number=Plur	dema	0
-attitudinizes	0	oewn-attitudinize-v	Person=3+Tense=Pres	dema	0
-attitudinizing	0	dema-attitudinizing-v	VerbForm=Inf	dema	0
-attorn	0	oewn-attorn-v	VerbForm=Inf	dema	0
-attorned	0	oewn-attorn-v	Tense=Past	dema	0
-attorner	0	dema-attorn-n	Number=Plur	dema	0
-attorners	0	dema-attorn-n	Number=Plur	dema	0
-attorney	0	oewn-attorney-n	Number=Sing	dema	0
-attorneys	0	dema-attorneys-n	Number=Sing	dema	0
-attorneyship	0	oewn-attorneyship-n	Number=Sing	dema	0
-attorneyships	0	oewn-attorneyship-n	Number=Plur	dema	0
-attorning	0	oewn-attorn-v	VerbForm=Ger	dema	0
-attorningly	0	dema-attorn-r		dema	0
-attornment	0	dema-attornment-n	Number=Sing	dema	0
-attornments	0	dema-attornment-n	Number=Plur	dema	0
-attorns	0	oewn-attorn-v	Person=3+Tense=Pres	dema	0
-attract	0	oewn-attract-v	VerbForm=Inf	dema	0
-attractable	0	oewn-attractable-a	Degree=Pos	dema	0
-attractableness	0	dema-attractableness-n	Number=Sing	dema	0
-attractablenesses	0	dema-attractableness-n	Number=Plur	dema	0
-attractably	0	dema-attractable-r		dema	0
-attractant	0	dema-attractant-n	Number=Sing	dema	0
-attractants	0	dema-attractant-n	Number=Plur	dema	0
-attracted	0	oewn-attract-v	Tense=Past	dema	0
-attracter	0	oewn-attracter-n	Number=Sing	dema	0
-attracters	0	dema-attract-n	Number=Plur	dema	0
-attracting	0	oewn-attract-v	VerbForm=Ger	dema	0
-attractingly	0	dema-attractingly-r	Degree=Pos	dema	0
-attraction	0	oewn-attraction-n	Number=Sing	dema	0
-attractionally	0	dema-attractionally-r	Degree=Pos	dema	0
-attractions	0	oewn-attraction-n	Number=Plur	dema	0
-attractive	0	oewn-attractive-a	Degree=Pos	dema	0
-attractively	0	oewn-attractively-r	Degree=Pos	dema	0
-attractiveness	0	oewn-attractiveness-n	Number=Sing	dema	0
-attractivenesses	0	oewn-attractiveness-n	Number=Plur	dema	0
-attractor	0	oewn-attractor-n	Number=Sing	dema	0
-attractors	0	oewn-attractor-n	Number=Plur	dema	0
-attracts	0	oewn-attract-v	Person=3+Tense=Pres	dema	0
-attrahent	0	dema-attrahent-a	Degree=Pos	dema	0
-attrahently	0	dema-attrahent-r		dema	0
-attrahentness	0	dema-attrahent-n	Number=Plur	dema	0
-attrib	0	dema-attrib-n	Number=Sing	dema	0
-attribs	0	dema-attrib-n	Number=Plur	dema	0
-attributable	0	oewn-attributable-a	Degree=Pos	dema	0
-attributably	0	dema-attributable-r		dema	0
-attribute	0	oewn-attribute-n	Number=Sing	dema	1
-attribute	1	oewn-attribute-v	VerbForm=Inf	dema	1
-attributed	0	dema-attributed-v	VerbForm=Inf	dema	0
-attributer	0	dema-attributer-n	Number=Sing	dema	0
-attributers	0	oewn-attribute-n	Number=Plur	dema	0
-attributes	0	oewn-attribute-n	Number=Plur	dema	1
-attributes	1	oewn-attribute-v	Person=3+Tense=Pres	dema	1
-attributing	0	dema-attributing-v	VerbForm=Inf	dema	0
-attributingly	0	dema-attribute-r		dema	0
-attribution	0	oewn-attribution-n	Number=Sing	dema	0
-attributions	0	oewn-attribution-n	Number=Plur	dema	0
-attributive	0	oewn-attributive-a	Degree=Pos	dema	0
-attributive	1	dema-attributive-n	Number=Sing	dema	0
-attributively	0	oewn-attributively-r	Degree=Pos	dema	0
-attributiveness	0	dema-attributiveness-n	Number=Sing	dema	0
-attributivenesses	0	dema-attributiveness-n	Number=Plur	dema	0
-attributives	0	dema-attributive-n	Number=Plur	dema	0
-attributor	0	dema-attributor-n	Number=Sing	dema	0
-attributors	0	dema-attributor-n	Number=Plur	dema	0
-attrite	0	dema-attrite-a	Degree=Pos	dema	0
-attrite	1	dema-attrite-v	VerbForm=Inf	dema	0
-attrited	0	dema-attrited-v	VerbForm=Inf	dema	0
-attritely	0	dema-attrite-r		dema	0
-attriteness	0	dema-attriteness-n	Number=Sing	dema	0
-attritenesses	0	dema-attriteness-n	Number=Plur	dema	0
-attriter	0	dema-attrite-a	Degree=Cmp	dema	0
-attriter	1	dema-attrite-n	Number=Plur	dema	0
-attriters	0	dema-attrite-n	Number=Plur	dema	0
-attrites	0	dema-attrite-v	Person=3+Tense=Pres	dema	0
-attritest	0	dema-attrite-a	Degree=Sup	dema	0
-attriting	0	dema-attriting-v	VerbForm=Inf	dema	0
-attritingly	0	dema-attrite-r		dema	0
-attrition	0	oewn-attrition-n	Number=Sing	dema	0
-attritional	0	oewn-attritional-a	Degree=Pos	dema	0
-attritionally	0	dema-attritional-r		dema	0
-attritions	0	oewn-attrition-n	Number=Plur	dema	0
-attritive	0	dema-attritive-a	Degree=Pos	dema	0
-attritively	0	dema-attritive-r		dema	0
-attritiveness	0	dema-attritive-n	Number=Plur	dema	0
-atts	0	dema-att-n	Number=Plur	dema	0
-attune	0	oewn-attune-v	VerbForm=Inf	dema	0
-attuned	0	dema-attuned-v	VerbForm=Inf	dema	0
-attuner	0	dema-attune-n	Number=Plur	dema	0
-attuners	0	dema-attune-n	Number=Plur	dema	0
-attunes	0	oewn-attune-v	Person=3+Tense=Pres	dema	0
-attuning	0	dema-attuning-v	VerbForm=Inf	dema	0
-attuningly	0	dema-attune-r		dema	0
-atty	0	dema-atty-n	Number=Sing	dema	0
-atwain	0	dema-atwain-r	Degree=Pos	dema	0
-atweel	0	dema-atweel-r	Degree=Pos	dema	0
-atween	0	dema-atween-p		dema	0
-atwitter	0	dema-atwitter-a	Degree=Pos	dema	0
-atwitterly	0	dema-atwitter-r		dema	0
-atwitterness	0	dema-atwitter-n	Number=Plur	dema	0
-atypical	0	oewn-atypical-a	Degree=Pos	dema	0
-atypically	0	oewn-atypically-r	Degree=Pos	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+ATF	0	oewn-ATF-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+ATFS	0	oewn-ATF-n	Capitalization=Upper+Number=Plur	dema	0			rule
+ATM	0	oewn-atm-n	Number=Sing	dema	0			oewn_form
+ATM	1	oewn-ATM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+ATMS	0	oewn-atm-n	Number=Plur	dema	0			rule
+ATMS	1	oewn-ATM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+ATP	0	oewn-ATP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+ATPS	0	oewn-ATP-n	Capitalization=Upper+Number=Plur	dema	0			rule
+At	0	dema-at-p		dema	0			carried
+At	1	oewn-at-n	Number=Sing	dema	0			oewn_form
+At	2	oewn-At-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atabrine	0	oewn-Atabrine-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atabrines	0	oewn-Atabrine-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atakapa	0	oewn-Atakapa-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atakapa language	0	oewn-Atakapa_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atakapa languages	0	oewn-Atakapa_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atakapan	0	oewn-Atakapan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atakapan language	0	oewn-Atakapan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atakapan languages	0	oewn-Atakapan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atakapans	0	oewn-Atakapan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atakapas	0	oewn-Atakapa-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atarax	0	oewn-Atarax-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ataraxes	0	oewn-Atarax-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atayalic	0	oewn-Atayalic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atayalic language	0	oewn-Atayalic_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atayalic languages	0	oewn-Atayalic_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atayalics	0	oewn-Atayalic-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ateles geoffroyi	0	oewn-Ateles_geoffroyi-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ateles geoffroyis	0	oewn-Ateles_geoffroyi-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athabascan	0	oewn-Athabascan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athabascans	0	oewn-Athabascan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athabaskan	0	oewn-Athabaskan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athabaskans	0	oewn-Athabaskan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athanasian Creed	0	oewn-Athanasian_Creed-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athanasian Creeds	0	oewn-Athanasian_Creed-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athanasianism	0	oewn-Athanasianism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athanasianisms	0	oewn-Athanasianism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athapascan	0	oewn-Athapascan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athapascans	0	oewn-Athapascan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athapaskan	0	oewn-Athapaskan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athapaskan language	0	oewn-Athapaskan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athapaskan languages	0	oewn-Athapaskan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athapaskans	0	oewn-Athapaskan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Athene noctua	0	oewn-Athene_noctua-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athene noctuas	0	oewn-Athene_noctua-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athenian	0	oewn-Athenian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Athenian	1	oewn-Athenian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Athenians	0	oewn-Athenian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atherinopsis californiensis	0	oewn-Atherinopsis_californiensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athrotaxis selaginoides	0	oewn-Athrotaxis_selaginoides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athyrium distentifolium	0	oewn-Athyrium_distentifolium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athyrium distentifoliums	0	oewn-Athyrium_distentifolium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athyrium filix-femina	0	oewn-Athyrium_filix-femina-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athyrium filix-feminas	0	oewn-Athyrium_filix-femina-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athyrium pycnocarpon	0	oewn-Athyrium_pycnocarpon-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Athyrium pycnocarpons	0	oewn-Athyrium_pycnocarpon-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Athyrium thelypteroides	0	oewn-Athyrium_thelypteroides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ativan	0	oewn-Ativan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ativans	0	oewn-Ativan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atlantic	0	oewn-Atlantic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Atlantic Standard Time	0	oewn-Atlantic_Standard_Time-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atlantic Standard Times	0	oewn-Atlantic_Standard_Time-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atlantic Time	0	oewn-Atlantic_Time-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atlantic Times	0	oewn-Atlantic_Time-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atlantic bonito	0	oewn-Atlantic_bonito-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic bonitos	0	oewn-Atlantic_bonito-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic bottlenose dolphin	0	oewn-Atlantic_bottlenose_dolphin-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic bottlenose dolphins	0	oewn-Atlantic_bottlenose_dolphin-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic cod	0	oewn-Atlantic_cod-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic cods	0	oewn-Atlantic_cod-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic croaker	0	oewn-Atlantic_croaker-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic croakers	0	oewn-Atlantic_croaker-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic halibut	0	oewn-Atlantic_halibut-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic halibuts	0	oewn-Atlantic_halibut-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic herring	0	oewn-Atlantic_herring-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic herrings	0	oewn-Atlantic_herring-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic manta	0	oewn-Atlantic_manta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic mantas	0	oewn-Atlantic_manta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic moonfish	0	oewn-Atlantic_moonfish-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic moonfishes	0	oewn-Atlantic_moonfish-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic puffin	0	oewn-Atlantic_puffin-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic puffins	0	oewn-Atlantic_puffin-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic ridley	0	oewn-Atlantic_ridley-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic ridleys	0	oewn-Atlantic_ridley-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic sailfish	0	oewn-Atlantic_sailfish-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic sailfishes	0	oewn-Atlantic_sailfish-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic salmon	0	oewn-Atlantic_salmon-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic salmons	0	oewn-Atlantic_salmon-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic sea bream	0	oewn-Atlantic_sea_bream-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic sea breams	0	oewn-Atlantic_sea_bream-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic spiny dogfish	0	oewn-Atlantic_spiny_dogfish-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic spiny dogfishes	0	oewn-Atlantic_spiny_dogfish-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic tripletail	0	oewn-Atlantic_tripletail-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic tripletails	0	oewn-Atlantic_tripletail-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantic walrus	0	oewn-Atlantic_walrus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic white cedar	0	oewn-Atlantic_white_cedar-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlantic white cedars	0	oewn-Atlantic_white_cedar-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atlantides	0	oewn-Atlantides-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atlantis	0	oewn-Atlantis-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atlas cedar	0	oewn-Atlas_cedar-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atlas cedars	0	oewn-Atlas_cedar-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atomic Energy Commission	0	oewn-Atomic_Energy_Commission-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atomic Energy Commissions	0	oewn-Atomic_Energy_Commission-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atriplex hortensis	0	oewn-Atriplex_hortensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atriplex hymenelytra	0	oewn-Atriplex_hymenelytra-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atriplex hymenelytras	0	oewn-Atriplex_hymenelytra-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atriplex lentiformis	0	oewn-Atriplex_lentiformis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atriplex mexicana	0	oewn-Atriplex_mexicana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atriplex mexicanas	0	oewn-Atriplex_mexicana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atromid-S	0	oewn-Atromid-S-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atropa belladonna	0	oewn-Atropa_belladonna-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atropa belladonnas	0	oewn-Atropa_belladonna-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atrovent	0	oewn-Atrovent-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atrovents	0	oewn-Atrovent-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ats	0	oewn-at-n	Number=Plur	dema	0			rule
+Ats	1	oewn-At-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atsina	0	oewn-Atsina-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atsinas	0	oewn-Atsina-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atsugewi	0	oewn-Atsugewi-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Atsugewi language	0	oewn-Atsugewi_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Atsugewi languages	0	oewn-Atsugewi_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Atsugewis	0	oewn-Atsugewi-n	Capitalization=Title+Number=Plur	dema	0			rule
+Attacapa	0	oewn-Attacapa-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Attacapa language	0	oewn-Attacapa_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Attacapa languages	0	oewn-Attacapa_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Attacapan	0	oewn-Attacapan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Attacapan language	0	oewn-Attacapan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Attacapan languages	0	oewn-Attacapan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Attacapans	0	oewn-Attacapan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Attacapas	0	oewn-Attacapa-n	Capitalization=Title+Number=Plur	dema	0			rule
+Attalea funifera	0	oewn-Attalea_funifera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Attalea funiferas	0	oewn-Attalea_funifera-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Attic	0	oewn-attic-n	Number=Sing	dema	0			oewn_form
+Attic	1	oewn-Attic-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Attic	2	oewn-Attic-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Attics	0	oewn-attic-n	Number=Plur	dema	0			rule
+Attics	1	oewn-Attic-n	Capitalization=Title+Number=Plur	dema	0			rule
+Atticus atlas	0	oewn-Atticus_atlas-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Attilio	0	oewn-Attilio-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Attilios	0	oewn-Attilio-n	Capitalization=Title+Number=Plur	dema	0			rule
+at	0	dema-at-p		dema	0			carried
+at	1	oewn-at-n	Number=Sing	dema	0			oewn_form
+at a loss	0	oewn-at_a_loss-a	Degree=Pos	dema	0			oewn_form
+at a loss	1	oewn-at_a_loss-r	Degree=Pos	dema	0			oewn_form
+at a low price	0	oewn-at_a_low_price-r	Degree=Pos	dema	0			oewn_form
+at a lower place	0	oewn-at_a_lower_place-r	Degree=Pos	dema	0			oewn_form
+at a time	0	oewn-at_a_time-r	Degree=Pos	dema	0			oewn_form
+at all	0	oewn-at_all-r	Degree=Pos	dema	0			oewn_form
+at all costs	0	oewn-at_all_costs-r	Degree=Pos	dema	0			oewn_form
+at an equal rate	0	oewn-at_an_equal_rate-r	Degree=Pos	dema	0			oewn_form
+at any cost	0	oewn-at_any_cost-r	Degree=Pos	dema	0			oewn_form
+at any expense	0	oewn-at_any_expense-r	Degree=Pos	dema	0			oewn_form
+at any rate	0	oewn-at_any_rate-r	Degree=Pos	dema	0			oewn_form
+at arm's length	0	oewn-at_arm-ap-s_length-r	Degree=Pos	dema	0			oewn_form
+at bay	0	oewn-at_bay-a	Degree=Pos	dema	0			oewn_form
+at best	0	oewn-at_best-r	Degree=Pos	dema	0			oewn_form
+at bottom	0	oewn-at_bottom-r	Degree=Pos	dema	0			oewn_form
+at close range	0	oewn-at_close_range-r	Degree=Pos	dema	0			oewn_form
+at fault	0	oewn-at_fault-a	Degree=Pos	dema	0			oewn_form
+at first	0	oewn-at_first-r	Degree=Pos	dema	0			oewn_form
+at first blush	0	oewn-at_first_blush-r	Degree=Pos	dema	0			oewn_form
+at first glance	0	oewn-at_first_glance-r	Degree=Pos	dema	0			oewn_form
+at first hand	0	oewn-at_first_hand-r	Degree=Pos	dema	0			oewn_form
+at first sight	0	oewn-at_first_sight-r	Degree=Pos	dema	0			oewn_form
+at hand	0	oewn-at_hand-a	Degree=Pos	dema	0			oewn_form
+at heart	0	oewn-at_heart-r	Degree=Pos	dema	0			oewn_form
+at home	0	oewn-at_home-n	Number=Sing	dema	0			oewn_form
+at home	1	oewn-at_home-r	Degree=Pos	dema	0			oewn_form
+at homes	0	oewn-at_home-n	Number=Plur	dema	0			rule
+at large	0	oewn-at_large-a	Degree=Pos	dema	0			oewn_form
+at large	1	oewn-at_large-r	Degree=Pos	dema	0			oewn_form
+at last	0	oewn-at_last-r	Degree=Pos	dema	0			oewn_form
+at least	0	oewn-at_least-r	Degree=Pos	dema	0			oewn_form
+at leisure	0	oewn-at_leisure-r	Degree=Pos	dema	0			oewn_form
+at length	0	oewn-at_length-r	Degree=Pos	dema	0			oewn_form
+at loggerheads	0	oewn-at_loggerheads-a	Degree=Pos	dema	0			oewn_form
+at long last	0	oewn-at_long_last-r	Degree=Pos	dema	0			oewn_form
+at most	0	oewn-at_most-r	Degree=Pos	dema	0			oewn_form
+at odds	0	oewn-at_odds-a	Degree=Pos	dema	0			oewn_form
+at once	0	oewn-at_once-r	Degree=Pos	dema	0			oewn_form
+at one time	0	oewn-at_one_time-r	Degree=Pos	dema	0			oewn_form
+at peace	0	oewn-at_peace-a	Degree=Pos	dema	0			oewn_form
+at present	0	oewn-at_present-r	Degree=Pos	dema	0			oewn_form
+at random	0	oewn-at_random-r	Degree=Pos	dema	0			oewn_form
+at rest	0	oewn-at_rest-a	Degree=Pos	dema	0			oewn_form
+at sea	0	oewn-at_sea-a	Degree=Pos	dema	0			oewn_form
+at stake	0	oewn-at_stake-r	Degree=Pos	dema	0			oewn_form
+at the best	0	oewn-at_the_best-r	Degree=Pos	dema	0			oewn_form
+at the least	0	oewn-at_the_least-r	Degree=Pos	dema	0			oewn_form
+at the most	0	oewn-at_the_most-r	Degree=Pos	dema	0			oewn_form
+at the ready	0	oewn-at_the_ready-a	Degree=Pos	dema	0			oewn_form
+at the same time	0	oewn-at_the_same_time-r	Degree=Pos	dema	0			oewn_form
+at the worst	0	oewn-at_the_worst-r	Degree=Pos	dema	0			oewn_form
+at times	0	oewn-at_times-r	Degree=Pos	dema	0			oewn_form
+at variance	0	oewn-at_variance-a	Degree=Pos	dema	0			oewn_form
+at will	0	oewn-at_will-r	Degree=Pos	dema	0			oewn_form
+at work	0	oewn-at_work-a	Degree=Pos	dema	0			oewn_form
+at worst	0	oewn-at_worst-r	Degree=Pos	dema	0			oewn_form
+at-bat	0	oewn-at-bat-n	Number=Sing	dema	0			oewn_form
+at-bats	0	oewn-at-bat-n	Number=Plur	dema	0			rule
+atabal	0		Number=Sing	dema	0	atabal	n	moby_reverse
+atabals	0		Number=Plur	dema	0	atabal	n	rule
+atacamite	0		Number=Sing	dema	0	atacamite	n	moby_reverse
+atacamites	0		Number=Plur	dema	0	atacamite	n	rule
+atactic	0	oewn-atactic-a	Degree=Pos	dema	0			oewn_form
+atactic abasia	0	oewn-atactic_abasia-n	Number=Sing	dema	0			oewn_form
+atactic abasias	0	oewn-atactic_abasia-n	Number=Plur	dema	0			rule
+ataghan	0		Number=Sing	dema	0	ataghan	n	moby_reverse
+ataghans	0		Number=Plur	dema	0	ataghan	n	rule
+ataman	0		Number=Sing	dema	0	ataman	n	moby_reverse
+atamans	0		Number=Plur	dema	0	ataman	n	rule
+atar	0	oewn-atar-n	Number=Sing	dema	0			oewn_form
+ataractic	0	oewn-ataractic-a	Degree=Pos	dema	0			oewn_form
+ataractic	1	oewn-ataractic-n	Number=Sing	dema	0			oewn_form
+ataractic agent	0	oewn-ataractic_agent-n	Number=Sing	dema	0			oewn_form
+ataractic agents	0	oewn-ataractic_agent-n	Number=Plur	dema	0			rule
+ataractic drug	0	oewn-ataractic_drug-n	Number=Sing	dema	0			oewn_form
+ataractic drugs	0	oewn-ataractic_drug-n	Number=Plur	dema	0			rule
+ataractics	0	oewn-ataractic-n	Number=Plur	dema	0			rule
+ataraxia	0	oewn-ataraxia-n	Number=Sing	dema	0			oewn_form
+ataraxias	0	oewn-ataraxia-n	Number=Plur	dema	0			rule
+ataraxic	0	oewn-ataraxic-a	Degree=Pos	dema	0			oewn_form
+ataraxic	1		Number=Sing	dema	0	ataraxic	n	moby_reverse
+ataraxis	0	oewn-ataraxis-n	Number=Sing	dema	0			oewn_form
+atars	0	oewn-atar-n	Number=Plur	dema	0			rule
+atavic	0		Degree=Pos	dema	0	atavic	a	moby_reverse
+atavism	0	oewn-atavism-n	Number=Sing	dema	0			oewn_form
+atavisms	0	oewn-atavism-n	Number=Plur	dema	0			rule
+atavist	0	oewn-atavist-n	Number=Sing	dema	0			oewn_form
+atavistic	0	oewn-atavistic-a	Degree=Pos	dema	0			oewn_form
+atavistically	0		Degree=Pos	dema	0	atavistically	r	moby_reverse
+atavists	0	oewn-atavist-n	Number=Plur	dema	0			rule
+ataxia	0	oewn-ataxia-n	Number=Sing	dema	0			oewn_form
+ataxias	0	oewn-ataxia-n	Number=Plur	dema	0			rule
+ataxic	0	oewn-ataxic-a	Degree=Pos	dema	0			oewn_form
+ataxic abasia	0	oewn-ataxic_abasia-n	Number=Sing	dema	0			oewn_form
+ataxic abasias	0	oewn-ataxic_abasia-n	Number=Plur	dema	0			rule
+ataxic aphasia	0	oewn-ataxic_aphasia-n	Number=Sing	dema	0			oewn_form
+ataxic aphasias	0	oewn-ataxic_aphasia-n	Number=Plur	dema	0			rule
+ataxies	0	oewn-ataxy-n	Number=Plur	dema	0			rule
+ataxite	0		Number=Sing	dema	0	ataxite	n	moby_reverse
+ataxites	0		Number=Plur	dema	0	ataxite	n	rule
+ataxy	0	oewn-ataxy-n	Number=Sing	dema	0			oewn_form
+ate	0	oewn-eat-v	Tense=Past	dema	0			hand
+atebrin	0		Number=Sing	dema	0	atebrin	n	moby_reverse
+atebrins	0		Number=Plur	dema	0	atebrin	n	rule
+atelectasis	0	oewn-atelectasis-n	Number=Sing	dema	0			oewn_form
+atelectatic	0		Degree=Pos	dema	0	atelectatic	a	moby_reverse
+ateleiosis	0	oewn-ateleiosis-n	Number=Sing	dema	0			oewn_form
+ateleiotic	0	oewn-ateleiotic-a	Degree=Pos	dema	0			oewn_form
+atelic	0		Degree=Pos	dema	0	atelic	a	moby_reverse
+atelier	0	oewn-atelier-n	Number=Sing	dema	0			oewn_form
+ateliers	0	oewn-atelier-n	Number=Plur	dema	0			rule
+ateliosis	0	oewn-ateliosis-n	Number=Sing	dema	0			oewn_form
+ateliotic	0		Degree=Pos	dema	0	ateliotic	a	moby_reverse
+atenolol	0	oewn-atenolol-n	Number=Sing	dema	0			oewn_form
+atenolols	0	oewn-atenolol-n	Number=Plur	dema	0			rule
+athanasia	0		Number=Sing	dema	0	athanasia	n	moby_reverse
+athanasias	0		Number=Plur	dema	0	athanasia	n	rule
+athanor	0	oewn-athanor-n	Number=Sing	dema	0			oewn_form
+athanors	0	oewn-athanor-n	Number=Plur	dema	0			rule
+athar	0	oewn-athar-n	Number=Sing	dema	0			oewn_form
+athars	0	oewn-athar-n	Number=Plur	dema	0			rule
+atheism	0	oewn-atheism-n	Number=Sing	dema	0			oewn_form
+atheism	1		Degree=Pos	dema	0	atheism	a	moby_reverse
+atheisms	0	oewn-atheism-n	Number=Plur	dema	0			rule
+atheist	0	oewn-atheist-n	Number=Sing	dema	0			oewn_form
+atheist	1	oewn-atheist-a	Degree=Pos	dema	0			oewn_form
+atheistic	0	oewn-atheistic-a	Degree=Pos	dema	0			oewn_form
+atheistical	0	oewn-atheistical-a	Degree=Pos	dema	0			oewn_form
+atheistically	0		Degree=Pos	dema	0	atheistically	r	moby_reverse
+atheisticness	0		Number=Sing	dema	0	atheisticness	n	moby_reverse
+atheists	0	oewn-atheist-n	Number=Plur	dema	0			rule
+atheling	0		Number=Sing	dema	0	atheling	n	moby_reverse
+athelings	0		Number=Plur	dema	0	atheling	n	rule
+athematic	0		Degree=Pos	dema	0	athematic	a	moby_reverse
+athenaeum	0	oewn-athenaeum-n	Number=Sing	dema	0			oewn_form
+athenaeums	0	oewn-athenaeum-n	Number=Plur	dema	0			rule
+atheneum	0	oewn-atheneum-n	Number=Sing	dema	0			oewn_form
+atheneums	0	oewn-atheneum-n	Number=Plur	dema	0			rule
+atherine	0		Degree=Pos	dema	0	atherine	a	moby_reverse
+atherine	1		Number=Sing	dema	0	atherine	n	moby_reverse
+athermancies	0		Number=Plur	dema	0	athermancy	n	rule
+athermancy	0		Number=Sing	dema	0	athermancy	n	moby_reverse
+athermanous	0		Degree=Pos	dema	0	athermanous	a	moby_reverse
+atherodyde	0	oewn-atherodyde-n	Number=Sing	dema	0			oewn_form
+atherodydes	0	oewn-atherodyde-n	Number=Plur	dema	0			rule
+atherogenesis	0	oewn-atherogenesis-n	Number=Sing	dema	0			oewn_form
+atheroma	0	oewn-atheroma-n	Number=Sing	dema	0			oewn_form
+atheromas	0	oewn-atheroma-n	Number=Plur	dema	0			rule_variant
+atheromata	0	oewn-atheroma-n	Number=Plur	dema	0			oewn_form
+atheromatic	0	oewn-atheromatic-a	Degree=Pos	dema	0			oewn_form
+atheromatous	0	oewn-atheromatous-a	Degree=Pos	dema	0			oewn_form
+atheroscleroses	0	oewn-atherosclerosis-n	Number=Plur	dema	0			oewn_form
+atherosclerosis	0	oewn-atherosclerosis-n	Number=Sing	dema	0			oewn_form
+atherosclerotic	0	oewn-atherosclerotic-a	Degree=Pos	dema	0			oewn_form
+athetoid	0		Degree=Pos	dema	0	athetoid	a	moby_reverse
+athetosic	0		Degree=Pos	dema	0	athetosic	a	moby_reverse
+athetosis	0	oewn-athetosis-n	Number=Sing	dema	0			oewn_form
+athirst	0	oewn-athirst-a	Degree=Pos	dema	0			oewn_form
+athlete	0	oewn-athlete-n	Number=Sing	dema	0			oewn_form
+athlete's foot	0	oewn-athlete-ap-s_foot-n	Number=Sing	dema	0			oewn_form
+athlete's foots	0	oewn-athlete-ap-s_foot-n	Number=Plur	dema	0			rule
+athlete's heart	0	oewn-athlete-ap-s_heart-n	Number=Sing	dema	0			oewn_form
+athlete's hearts	0	oewn-athlete-ap-s_heart-n	Number=Plur	dema	0			rule
+athletes	0	oewn-athlete-n	Number=Plur	dema	0			rule
+athletic	0	oewn-athletic-a	Degree=Pos	dema	0			oewn_form
+athletic competition	0	oewn-athletic_competition-n	Number=Sing	dema	0			oewn_form
+athletic competitions	0	oewn-athletic_competition-n	Number=Plur	dema	0			rule
+athletic contest	0	oewn-athletic_contest-n	Number=Sing	dema	0			oewn_form
+athletic contests	0	oewn-athletic_contest-n	Number=Plur	dema	0			rule
+athletic facilities	0	oewn-athletic_facility-n	Number=Plur	dema	0			rule
+athletic facility	0	oewn-athletic_facility-n	Number=Sing	dema	0			oewn_form
+athletic field	0	oewn-athletic_field-n	Number=Sing	dema	0			oewn_form
+athletic fields	0	oewn-athletic_field-n	Number=Plur	dema	0			rule
+athletic game	0	oewn-athletic_game-n	Number=Sing	dema	0			oewn_form
+athletic games	0	oewn-athletic_game-n	Number=Plur	dema	0			rule
+athletic sock	0	oewn-athletic_sock-n	Number=Sing	dema	0			oewn_form
+athletic socks	0	oewn-athletic_sock-n	Number=Plur	dema	0			rule
+athletic supporter	0	oewn-athletic_supporter-n	Number=Sing	dema	0			oewn_form
+athletic supporters	0	oewn-athletic_supporter-n	Number=Plur	dema	0			rule
+athletic training	0	oewn-athletic_training-n	Number=Sing	dema	0			oewn_form
+athletic trainings	0	oewn-athletic_training-n	Number=Plur	dema	0			rule
+athletic type	0	oewn-athletic_type-n	Number=Sing	dema	0			oewn_form
+athletic types	0	oewn-athletic_type-n	Number=Plur	dema	0			rule
+athletic wear	0	oewn-athletic_wear-n	Number=Sing	dema	0			oewn_form
+athletic wears	0	oewn-athletic_wear-n	Number=Plur	dema	0			rule
+athletically	0		Degree=Pos	dema	0	athletically	r	moby_reverse
+athleticism	0	oewn-athleticism-n	Number=Sing	dema	0			oewn_form
+athleticisms	0	oewn-athleticism-n	Number=Plur	dema	0			rule
+athletics	0	oewn-athletics-n	Number=Sing	dema	0			oewn_form
+athodyd	0	oewn-athodyd-n	Number=Sing	dema	0			oewn_form
+athodyds	0	oewn-athodyd-n	Number=Plur	dema	0			rule
+athonite	0		Degree=Pos	dema	0	athonite	a	moby_reverse
+athrill	0		Degree=Pos	dema	0	athrill	a	moby_reverse
+athrocyte	0		Number=Sing	dema	0	athrocyte	n	moby_reverse
+athrocytes	0		Number=Plur	dema	0	athrocyte	n	rule
+athrocytosis	0		Number=Sing	dema	0	athrocytosis	n	moby_reverse
+athwart	0	oewn-athwart-r	Degree=Pos	dema	0			oewn_form
+athwart	1	dema-athwart-p		dema	0			carried
+athwartships	0		Degree=Pos	dema	0	athwartships	r	moby_reverse
+atilt	0		Degree=Pos	dema	0	atilt	r	moby_reverse
+atilt	1	oewn-atilt-a	Degree=Pos	dema	0			oewn_form
+atingle	0		Degree=Pos	dema	0	atingle	a	moby_reverse
+atiptoe	0		Degree=Pos	dema	0	atiptoe	r	moby_reverse
+atiptoe	1		Degree=Pos	dema	0	atiptoe	a	moby_reverse
+atlantad	0		Degree=Pos	dema	0	atlantad	r	moby_reverse
+atlantal	0		Degree=Pos	dema	0	atlantal	a	moby_reverse
+atlantes	0	oewn-atlas-n	Number=Plur	dema	0			agid
+atlas	0	oewn-atlas-n	Number=Sing	dema	0			oewn_form
+atlas moth	0	oewn-atlas_moth-n	Number=Sing	dema	0			oewn_form
+atlas moths	0	oewn-atlas_moth-n	Number=Plur	dema	0			rule
+atlas vertebra	0	oewn-atlas_vertebra-n	Number=Sing	dema	0			oewn_form
+atlas vertebras	0	oewn-atlas_vertebra-n	Number=Plur	dema	0			rule
+atlases	0	oewn-atlas-n	Number=Plur	dema	0			rule_variant
+atm	0	oewn-atm-n	Number=Sing	dema	0			oewn_form
+atman	0		Number=Sing	dema	0	atman	n	moby_reverse
+atmans	0		Number=Plur	dema	0	atman	n	rule
+atmolyses	0		Number=Sing	dema	0	atmolyses	n	moby_reverse
+atmolysis	0		Number=Sing	dema	0	atmolysis	n	moby_reverse
+atmometer	0	oewn-atmometer-n	Number=Sing	dema	0			oewn_form
+atmometers	0	oewn-atmometer-n	Number=Plur	dema	0			rule
+atmometries	0		Number=Plur	dema	0	atmometry	n	rule
+atmometry	0		Number=Sing	dema	0	atmometry	n	moby_reverse
+atmophile	0		Degree=Pos	dema	0	atmophile	a	moby_reverse
+atmophile	1		Number=Sing	dema	0	atmophile	n	moby_reverse
+atmoradiograph	0	oewn-atmoradiograph-n	Number=Sing	dema	0			oewn_form
+atmoradiographs	0	oewn-atmoradiograph-n	Number=Plur	dema	0			rule
+atmosphere	0	oewn-atmosphere-n	Number=Sing	dema	0			oewn_form
+atmosphereless	0		Degree=Pos	dema	0	atmosphereless	a	moby_reverse
+atmospheres	0	oewn-atmosphere-n	Number=Plur	dema	0			rule
+atmospheric	0	oewn-atmospheric-a	Degree=Pos	dema	0			oewn_form
+atmospheric condition	0	oewn-atmospheric_condition-n	Number=Sing	dema	0			oewn_form
+atmospheric conditions	0	oewn-atmospheric_condition-n	Number=Plur	dema	0			rule
+atmospheric electricities	0	oewn-atmospheric_electricity-n	Number=Plur	dema	0			rule
+atmospheric electricity	0	oewn-atmospheric_electricity-n	Number=Sing	dema	0			oewn_form
+atmospheric phenomenon	0	oewn-atmospheric_phenomenon-n	Number=Sing	dema	0			oewn_form
+atmospheric phenomenons	0	oewn-atmospheric_phenomenon-n	Number=Plur	dema	0			rule
+atmospheric pressure	0	oewn-atmospheric_pressure-n	Number=Sing	dema	0			oewn_form
+atmospheric pressures	0	oewn-atmospheric_pressure-n	Number=Plur	dema	0			rule
+atmospheric state	0	oewn-atmospheric_state-n	Number=Sing	dema	0			oewn_form
+atmospheric states	0	oewn-atmospheric_state-n	Number=Plur	dema	0			rule
+atmospheric static	0	oewn-atmospheric_static-n	Number=Sing	dema	0			oewn_form
+atmospheric statics	0	oewn-atmospheric_static-n	Number=Plur	dema	0			rule
+atmospherical	0	oewn-atmospherical-a	Degree=Pos	dema	0			oewn_form
+atmospherically	0		Degree=Pos	dema	0	atmospherically	r	moby_reverse
+atmospherics	0	oewn-atmospherics-n	Number=Sing	dema	0			oewn_form
+atms	0	oewn-atm-n	Number=Plur	dema	0			rule
+atole	0	oewn-atole-n	Number=Sing	dema	0			oewn_form
+atoles	0	oewn-atole-n	Number=Plur	dema	0			rule
+atoll	0	oewn-atoll-n	Number=Sing	dema	0			oewn_form
+atolls	0	oewn-atoll-n	Number=Plur	dema	0			rule
+atom	0	oewn-atom-n	Number=Sing	dema	0			oewn_form
+atom bomb	0	oewn-atom_bomb-n	Number=Sing	dema	0			oewn_form
+atom bombs	0	oewn-atom_bomb-n	Number=Plur	dema	0			rule
+atom smasher	0	oewn-atom_smasher-n	Number=Sing	dema	0			oewn_form
+atom smashers	0	oewn-atom_smasher-n	Number=Plur	dema	0			rule
+atom-bomb	0	oewn-atom-bomb-v	VerbForm=Inf	dema	0			oewn_form
+atom-bombed	0	oewn-atom-bomb-v	Tense=Past+VerbForm=Part	dema	0			rule
+atom-bombing	0	oewn-atom-bomb-v	VerbForm=Ger	dema	0			rule
+atom-bombs	0	oewn-atom-bomb-v	Person=3+Tense=Pres	dema	0			rule
+atomic	0	oewn-atomic-a	Degree=Pos	dema	0			oewn_form
+atomic bomb	0	oewn-atomic_bomb-n	Number=Sing	dema	0			oewn_form
+atomic bombs	0	oewn-atomic_bomb-n	Number=Plur	dema	0			rule
+atomic clock	0	oewn-atomic_clock-n	Number=Sing	dema	0			oewn_form
+atomic clocks	0	oewn-atomic_clock-n	Number=Plur	dema	0			rule
+atomic cocktail	0	oewn-atomic_cocktail-n	Number=Sing	dema	0			oewn_form
+atomic cocktails	0	oewn-atomic_cocktail-n	Number=Plur	dema	0			rule
+atomic energies	0	oewn-atomic_energy-n	Number=Plur	dema	0			rule
+atomic energy	0	oewn-atomic_energy-n	Number=Sing	dema	0			oewn_form
+atomic explosion	0	oewn-atomic_explosion-n	Number=Sing	dema	0			oewn_form
+atomic explosions	0	oewn-atomic_explosion-n	Number=Plur	dema	0			rule
+atomic mass	0	oewn-atomic_mass-n	Number=Sing	dema	0			oewn_form
+atomic mass unit	0	oewn-atomic_mass_unit-n	Number=Sing	dema	0			oewn_form
+atomic mass units	0	oewn-atomic_mass_unit-n	Number=Plur	dema	0			rule
+atomic masses	0	oewn-atomic_mass-n	Number=Plur	dema	0			rule
+atomic number	0	oewn-atomic_number-n	Number=Sing	dema	0			oewn_form
+atomic number 1	0	oewn-atomic_number_1-n	Number=Sing	dema	0			oewn_form
+atomic number 10	0	oewn-atomic_number_10-n	Number=Sing	dema	0			oewn_form
+atomic number 100	0	oewn-atomic_number_100-n	Number=Sing	dema	0			oewn_form
+atomic number 101	0	oewn-atomic_number_101-n	Number=Sing	dema	0			oewn_form
+atomic number 102	0	oewn-atomic_number_102-n	Number=Sing	dema	0			oewn_form
+atomic number 103	0	oewn-atomic_number_103-n	Number=Sing	dema	0			oewn_form
+atomic number 104	0	oewn-atomic_number_104-n	Number=Sing	dema	0			oewn_form
+atomic number 105	0	oewn-atomic_number_105-n	Number=Sing	dema	0			oewn_form
+atomic number 106	0	oewn-atomic_number_106-n	Number=Sing	dema	0			oewn_form
+atomic number 107	0	oewn-atomic_number_107-n	Number=Sing	dema	0			oewn_form
+atomic number 108	0	oewn-atomic_number_108-n	Number=Sing	dema	0			oewn_form
+atomic number 109	0	oewn-atomic_number_109-n	Number=Sing	dema	0			oewn_form
+atomic number 11	0	oewn-atomic_number_11-n	Number=Sing	dema	0			oewn_form
+atomic number 110	0	oewn-atomic_number_110-n	Number=Sing	dema	0			oewn_form
+atomic number 111	0	oewn-atomic_number_111-n	Number=Sing	dema	0			oewn_form
+atomic number 112	0	oewn-atomic_number_112-n	Number=Sing	dema	0			oewn_form
+atomic number 113	0	oewn-atomic_number_113-n	Number=Sing	dema	0			oewn_form
+atomic number 114	0	oewn-atomic_number_114-n	Number=Sing	dema	0			oewn_form
+atomic number 115	0	oewn-atomic_number_115-n	Number=Sing	dema	0			oewn_form
+atomic number 116	0	oewn-atomic_number_116-n	Number=Sing	dema	0			oewn_form
+atomic number 12	0	oewn-atomic_number_12-n	Number=Sing	dema	0			oewn_form
+atomic number 13	0	oewn-atomic_number_13-n	Number=Sing	dema	0			oewn_form
+atomic number 14	0	oewn-atomic_number_14-n	Number=Sing	dema	0			oewn_form
+atomic number 15	0	oewn-atomic_number_15-n	Number=Sing	dema	0			oewn_form
+atomic number 16	0	oewn-atomic_number_16-n	Number=Sing	dema	0			oewn_form
+atomic number 17	0	oewn-atomic_number_17-n	Number=Sing	dema	0			oewn_form
+atomic number 18	0	oewn-atomic_number_18-n	Number=Sing	dema	0			oewn_form
+atomic number 19	0	oewn-atomic_number_19-n	Number=Sing	dema	0			oewn_form
+atomic number 2	0	oewn-atomic_number_2-n	Number=Sing	dema	0			oewn_form
+atomic number 20	0	oewn-atomic_number_20-n	Number=Sing	dema	0			oewn_form
+atomic number 21	0	oewn-atomic_number_21-n	Number=Sing	dema	0			oewn_form
+atomic number 22	0	oewn-atomic_number_22-n	Number=Sing	dema	0			oewn_form
+atomic number 23	0	oewn-atomic_number_23-n	Number=Sing	dema	0			oewn_form
+atomic number 24	0	oewn-atomic_number_24-n	Number=Sing	dema	0			oewn_form
+atomic number 25	0	oewn-atomic_number_25-n	Number=Sing	dema	0			oewn_form
+atomic number 26	0	oewn-atomic_number_26-n	Number=Sing	dema	0			oewn_form
+atomic number 27	0	oewn-atomic_number_27-n	Number=Sing	dema	0			oewn_form
+atomic number 28	0	oewn-atomic_number_28-n	Number=Sing	dema	0			oewn_form
+atomic number 29	0	oewn-atomic_number_29-n	Number=Sing	dema	0			oewn_form
+atomic number 3	0	oewn-atomic_number_3-n	Number=Sing	dema	0			oewn_form
+atomic number 30	0	oewn-atomic_number_30-n	Number=Sing	dema	0			oewn_form
+atomic number 31	0	oewn-atomic_number_31-n	Number=Sing	dema	0			oewn_form
+atomic number 32	0	oewn-atomic_number_32-n	Number=Sing	dema	0			oewn_form
+atomic number 33	0	oewn-atomic_number_33-n	Number=Sing	dema	0			oewn_form
+atomic number 34	0	oewn-atomic_number_34-n	Number=Sing	dema	0			oewn_form
+atomic number 35	0	oewn-atomic_number_35-n	Number=Sing	dema	0			oewn_form
+atomic number 36	0	oewn-atomic_number_36-n	Number=Sing	dema	0			oewn_form
+atomic number 37	0	oewn-atomic_number_37-n	Number=Sing	dema	0			oewn_form
+atomic number 38	0	oewn-atomic_number_38-n	Number=Sing	dema	0			oewn_form
+atomic number 39	0	oewn-atomic_number_39-n	Number=Sing	dema	0			oewn_form
+atomic number 4	0	oewn-atomic_number_4-n	Number=Sing	dema	0			oewn_form
+atomic number 40	0	oewn-atomic_number_40-n	Number=Sing	dema	0			oewn_form
+atomic number 41	0	oewn-atomic_number_41-n	Number=Sing	dema	0			oewn_form
+atomic number 42	0	oewn-atomic_number_42-n	Number=Sing	dema	0			oewn_form
+atomic number 43	0	oewn-atomic_number_43-n	Number=Sing	dema	0			oewn_form
+atomic number 44	0	oewn-atomic_number_44-n	Number=Sing	dema	0			oewn_form
+atomic number 45	0	oewn-atomic_number_45-n	Number=Sing	dema	0			oewn_form
+atomic number 46	0	oewn-atomic_number_46-n	Number=Sing	dema	0			oewn_form
+atomic number 47	0	oewn-atomic_number_47-n	Number=Sing	dema	0			oewn_form
+atomic number 48	0	oewn-atomic_number_48-n	Number=Sing	dema	0			oewn_form
+atomic number 49	0	oewn-atomic_number_49-n	Number=Sing	dema	0			oewn_form
+atomic number 5	0	oewn-atomic_number_5-n	Number=Sing	dema	0			oewn_form
+atomic number 50	0	oewn-atomic_number_50-n	Number=Sing	dema	0			oewn_form
+atomic number 51	0	oewn-atomic_number_51-n	Number=Sing	dema	0			oewn_form
+atomic number 52	0	oewn-atomic_number_52-n	Number=Sing	dema	0			oewn_form
+atomic number 53	0	oewn-atomic_number_53-n	Number=Sing	dema	0			oewn_form
+atomic number 54	0	oewn-atomic_number_54-n	Number=Sing	dema	0			oewn_form
+atomic number 55	0	oewn-atomic_number_55-n	Number=Sing	dema	0			oewn_form
+atomic number 56	0	oewn-atomic_number_56-n	Number=Sing	dema	0			oewn_form
+atomic number 57	0	oewn-atomic_number_57-n	Number=Sing	dema	0			oewn_form
+atomic number 58	0	oewn-atomic_number_58-n	Number=Sing	dema	0			oewn_form
+atomic number 59	0	oewn-atomic_number_59-n	Number=Sing	dema	0			oewn_form
+atomic number 6	0	oewn-atomic_number_6-n	Number=Sing	dema	0			oewn_form
+atomic number 60	0	oewn-atomic_number_60-n	Number=Sing	dema	0			oewn_form
+atomic number 61	0	oewn-atomic_number_61-n	Number=Sing	dema	0			oewn_form
+atomic number 62	0	oewn-atomic_number_62-n	Number=Sing	dema	0			oewn_form
+atomic number 63	0	oewn-atomic_number_63-n	Number=Sing	dema	0			oewn_form
+atomic number 64	0	oewn-atomic_number_64-n	Number=Sing	dema	0			oewn_form
+atomic number 65	0	oewn-atomic_number_65-n	Number=Sing	dema	0			oewn_form
+atomic number 66	0	oewn-atomic_number_66-n	Number=Sing	dema	0			oewn_form
+atomic number 67	0	oewn-atomic_number_67-n	Number=Sing	dema	0			oewn_form
+atomic number 68	0	oewn-atomic_number_68-n	Number=Sing	dema	0			oewn_form
+atomic number 69	0	oewn-atomic_number_69-n	Number=Sing	dema	0			oewn_form
+atomic number 7	0	oewn-atomic_number_7-n	Number=Sing	dema	0			oewn_form
+atomic number 70	0	oewn-atomic_number_70-n	Number=Sing	dema	0			oewn_form
+atomic number 71	0	oewn-atomic_number_71-n	Number=Sing	dema	0			oewn_form
+atomic number 72	0	oewn-atomic_number_72-n	Number=Sing	dema	0			oewn_form
+atomic number 73	0	oewn-atomic_number_73-n	Number=Sing	dema	0			oewn_form
+atomic number 74	0	oewn-atomic_number_74-n	Number=Sing	dema	0			oewn_form
+atomic number 75	0	oewn-atomic_number_75-n	Number=Sing	dema	0			oewn_form
+atomic number 76	0	oewn-atomic_number_76-n	Number=Sing	dema	0			oewn_form
+atomic number 77	0	oewn-atomic_number_77-n	Number=Sing	dema	0			oewn_form
+atomic number 78	0	oewn-atomic_number_78-n	Number=Sing	dema	0			oewn_form
+atomic number 79	0	oewn-atomic_number_79-n	Number=Sing	dema	0			oewn_form
+atomic number 8	0	oewn-atomic_number_8-n	Number=Sing	dema	0			oewn_form
+atomic number 80	0	oewn-atomic_number_80-n	Number=Sing	dema	0			oewn_form
+atomic number 81	0	oewn-atomic_number_81-n	Number=Sing	dema	0			oewn_form
+atomic number 82	0	oewn-atomic_number_82-n	Number=Sing	dema	0			oewn_form
+atomic number 83	0	oewn-atomic_number_83-n	Number=Sing	dema	0			oewn_form
+atomic number 84	0	oewn-atomic_number_84-n	Number=Sing	dema	0			oewn_form
+atomic number 85	0	oewn-atomic_number_85-n	Number=Sing	dema	0			oewn_form
+atomic number 86	0	oewn-atomic_number_86-n	Number=Sing	dema	0			oewn_form
+atomic number 87	0	oewn-atomic_number_87-n	Number=Sing	dema	0			oewn_form
+atomic number 88	0	oewn-atomic_number_88-n	Number=Sing	dema	0			oewn_form
+atomic number 89	0	oewn-atomic_number_89-n	Number=Sing	dema	0			oewn_form
+atomic number 9	0	oewn-atomic_number_9-n	Number=Sing	dema	0			oewn_form
+atomic number 90	0	oewn-atomic_number_90-n	Number=Sing	dema	0			oewn_form
+atomic number 91	0	oewn-atomic_number_91-n	Number=Sing	dema	0			oewn_form
+atomic number 92	0	oewn-atomic_number_92-n	Number=Sing	dema	0			oewn_form
+atomic number 93	0	oewn-atomic_number_93-n	Number=Sing	dema	0			oewn_form
+atomic number 94	0	oewn-atomic_number_94-n	Number=Sing	dema	0			oewn_form
+atomic number 95	0	oewn-atomic_number_95-n	Number=Sing	dema	0			oewn_form
+atomic number 96	0	oewn-atomic_number_96-n	Number=Sing	dema	0			oewn_form
+atomic number 97	0	oewn-atomic_number_97-n	Number=Sing	dema	0			oewn_form
+atomic number 98	0	oewn-atomic_number_98-n	Number=Sing	dema	0			oewn_form
+atomic number 99	0	oewn-atomic_number_99-n	Number=Sing	dema	0			oewn_form
+atomic numbers	0	oewn-atomic_number-n	Number=Plur	dema	0			rule
+atomic physics	0	oewn-atomic_physics-n	Number=Sing	dema	0			oewn_form
+atomic pile	0	oewn-atomic_pile-n	Number=Sing	dema	0			oewn_form
+atomic piles	0	oewn-atomic_pile-n	Number=Plur	dema	0			rule
+atomic power	0	oewn-atomic_power-n	Number=Sing	dema	0			oewn_form
+atomic powers	0	oewn-atomic_power-n	Number=Plur	dema	0			rule
+atomic reactor	0	oewn-atomic_reactor-n	Number=Sing	dema	0			oewn_form
+atomic reactors	0	oewn-atomic_reactor-n	Number=Plur	dema	0			rule
+atomic spectrum	0	oewn-atomic_spectrum-n	Number=Sing	dema	0			oewn_form
+atomic spectrums	0	oewn-atomic_spectrum-n	Number=Plur	dema	0			rule
+atomic theories	0	oewn-atomic_theory-n	Number=Plur	dema	0			rule
+atomic theory	0	oewn-atomic_theory-n	Number=Sing	dema	0			oewn_form
+atomic warhead	0	oewn-atomic_warhead-n	Number=Sing	dema	0			oewn_form
+atomic warheads	0	oewn-atomic_warhead-n	Number=Plur	dema	0			rule
+atomic weapon	0	oewn-atomic_weapon-n	Number=Sing	dema	0			oewn_form
+atomic weapons	0	oewn-atomic_weapon-n	Number=Plur	dema	0			rule
+atomic weight	0	oewn-atomic_weight-n	Number=Sing	dema	0			oewn_form
+atomic weights	0	oewn-atomic_weight-n	Number=Plur	dema	0			rule
+atomically	0		Degree=Pos	dema	0	atomically	r	moby_reverse
+atomicities	0		Number=Plur	dema	0	atomicity	n	rule
+atomicity	0		Number=Sing	dema	0	atomicity	n	moby_reverse
+atomics	0		Number=Sing	dema	0	atomics	n	moby_reverse
+atomies	0		Number=Plur	dema	0	atomy	n	rule
+atomisation	0	oewn-atomisation-n	Number=Sing	dema	0			oewn_form
+atomisations	0	oewn-atomisation-n	Number=Plur	dema	0			rule
+atomise	0	oewn-atomise-v	VerbForm=Inf	dema	0			oewn_form
+atomised	0	oewn-atomise-v	Tense=Past+VerbForm=Part	dema	0			rule
+atomiser	0	oewn-atomiser-n	Number=Sing	dema	0			oewn_form
+atomisers	0	oewn-atomiser-n	Number=Plur	dema	0			rule
+atomises	0	oewn-atomise-v	Person=3+Tense=Pres	dema	0			rule
+atomising	0	oewn-atomise-v	VerbForm=Ger	dema	0			rule
+atomism	0	oewn-atomism-n	Number=Sing	dema	0			oewn_form
+atomism	1		Degree=Pos	dema	0	atomism	a	moby_reverse
+atomisms	0	oewn-atomism-n	Number=Plur	dema	0			rule
+atomist	0		Number=Sing	dema	0	atomist	n	moby_reverse
+atomist theories	0	oewn-atomist_theory-n	Number=Plur	dema	0			rule
+atomist theory	0	oewn-atomist_theory-n	Number=Sing	dema	0			oewn_form
+atomistic	0	oewn-atomistic-a	Degree=Pos	dema	0			oewn_form
+atomistic theories	0	oewn-atomistic_theory-n	Number=Plur	dema	0			rule
+atomistic theory	0	oewn-atomistic_theory-n	Number=Sing	dema	0			oewn_form
+atomistical	0	oewn-atomistical-a	Degree=Pos	dema	0			oewn_form
+atomistically	0		Degree=Pos	dema	0	atomistically	r	moby_reverse
+atomists	0		Number=Plur	dema	0	atomist	n	rule
+atomization	0	oewn-atomization-n	Number=Sing	dema	0			oewn_form
+atomizations	0	oewn-atomization-n	Number=Plur	dema	0			rule
+atomize	0	oewn-atomize-v	VerbForm=Inf	dema	0			oewn_form
+atomized	0	oewn-atomize-v	Tense=Past+VerbForm=Part	dema	0			rule
+atomizer	0	oewn-atomizer-n	Number=Sing	dema	0			oewn_form
+atomizers	0	oewn-atomizer-n	Number=Plur	dema	0			rule
+atomizes	0	oewn-atomize-v	Person=3+Tense=Pres	dema	0			rule
+atomizing	0	oewn-atomize-v	VerbForm=Ger	dema	0			rule
+atoms	0	oewn-atom-n	Number=Plur	dema	0			rule
+atomy	0		Number=Sing	dema	0	atomy	n	moby_reverse
+atonable	0		Degree=Pos	dema	0	atonable	a	moby_reverse
+atonal	0	oewn-atonal-a	Degree=Pos	dema	0			oewn_form
+atonalism	0	oewn-atonalism-n	Number=Sing	dema	0			oewn_form
+atonalisms	0	oewn-atonalism-n	Number=Plur	dema	0			rule
+atonalistic	0	oewn-atonalistic-a	Degree=Pos	dema	0			oewn_form
+atonalities	0	oewn-atonality-n	Number=Plur	dema	0			rule
+atonality	0	oewn-atonality-n	Number=Sing	dema	0			oewn_form
+atonally	0	oewn-atonally-r	Degree=Pos	dema	0			oewn_form
+atone	0	oewn-atone-v	VerbForm=Inf	dema	0			oewn_form
+atoneable	0		Degree=Pos	dema	0	atoneable	a	moby_reverse
+atoned	0	oewn-atone-v	Tense=Past+VerbForm=Part	dema	0			rule
+atonement	0	oewn-atonement-n	Number=Sing	dema	0			oewn_form
+atonements	0	oewn-atonement-n	Number=Plur	dema	0			rule
+atoner	0		Number=Sing	dema	0	atoner	n	moby_reverse
+atoners	0		Number=Plur	dema	0	atoner	n	rule
+atones	0	oewn-atone-v	Person=3+Tense=Pres	dema	0			rule
+atonia	0	oewn-atonia-n	Number=Sing	dema	0			oewn_form
+atonias	0	oewn-atonia-n	Number=Plur	dema	0			rule
+atonic	0	oewn-atonic-a	Degree=Pos	dema	0			oewn_form
+atonic	1		Number=Sing	dema	0	atonic	n	moby_reverse
+atonicities	0	oewn-atonicity-n	Number=Plur	dema	0			rule
+atonicity	0	oewn-atonicity-n	Number=Sing	dema	0			oewn_form
+atonies	0	oewn-atony-n	Number=Plur	dema	0			rule
+atoning	0	oewn-atone-v	VerbForm=Ger	dema	0			rule
+atoningly	0		Degree=Pos	dema	0	atoningly	r	moby_reverse
+atony	0	oewn-atony-n	Number=Sing	dema	0			oewn_form
+atop	0	oewn-atop-r	Degree=Pos	dema	0			oewn_form
+atop	1	dema-atop-p		dema	0			carried
+atopic allergies	0	oewn-atopic_allergy-n	Number=Plur	dema	0			rule
+atopic allergy	0	oewn-atopic_allergy-n	Number=Sing	dema	0			oewn_form
+atopic dermatitis	0	oewn-atopic_dermatitis-n	Number=Sing	dema	0			oewn_form
+atopic eczema	0	oewn-atopic_eczema-n	Number=Sing	dema	0			oewn_form
+atopic eczemas	0	oewn-atopic_eczema-n	Number=Plur	dema	0			rule
+atopies	0	oewn-atopy-n	Number=Plur	dema	0			rule
+atopognosia	0	oewn-atopognosia-n	Number=Sing	dema	0			oewn_form
+atopognosias	0	oewn-atopognosia-n	Number=Plur	dema	0			rule
+atopognosis	0	oewn-atopognosis-n	Number=Sing	dema	0			oewn_form
+atopy	0	oewn-atopy-n	Number=Sing	dema	0			oewn_form
+atorvastatin	0	oewn-atorvastatin-n	Number=Sing	dema	0			oewn_form
+atorvastatins	0	oewn-atorvastatin-n	Number=Plur	dema	0			rule
+atoxic	0	oewn-atoxic-a	Degree=Pos	dema	0			oewn_form
+atrabilious	0	oewn-atrabilious-a	Degree=Pos	dema	0			oewn_form
+atrabiliousness	0		Number=Sing	dema	0	atrabiliousness	n	moby_reverse
+atrabiliousnesses	0		Number=Plur	dema	0	atrabiliousness	n	rule
+atrazine	0	oewn-atrazine-n	Number=Sing	dema	0			oewn_form
+atrazines	0	oewn-atrazine-n	Number=Plur	dema	0			rule
+atremble	0		Degree=Pos	dema	0	atremble	r	moby_reverse
+atresia	0	oewn-atresia-n	Number=Sing	dema	0			oewn_form
+atresias	0	oewn-atresia-n	Number=Plur	dema	0			rule
+atresic	0		Degree=Pos	dema	0	atresic	a	moby_reverse
+atria	0	oewn-atrium-n	Number=Plur	dema	0			oewn_form
+atrial	0	oewn-atrial-a	Degree=Pos	dema	0			oewn_form
+atrial arteries	0	oewn-atrial_artery-n	Number=Plur	dema	0			rule
+atrial artery	0	oewn-atrial_artery-n	Number=Sing	dema	0			oewn_form
+atrial auricle	0	oewn-atrial_auricle-n	Number=Sing	dema	0			oewn_form
+atrial auricles	0	oewn-atrial_auricle-n	Number=Plur	dema	0			rule
+atrial fibrillation	0	oewn-atrial_fibrillation-n	Number=Sing	dema	0			oewn_form
+atrial fibrillations	0	oewn-atrial_fibrillation-n	Number=Plur	dema	0			rule
+atrial septal defect	0	oewn-atrial_septal_defect-n	Number=Sing	dema	0			oewn_form
+atrial septal defects	0	oewn-atrial_septal_defect-n	Number=Plur	dema	0			rule
+atrichia	0		Number=Sing	dema	0	atrichia	n	moby_reverse
+atrichias	0		Number=Plur	dema	0	atrichia	n	rule
+atrioventricular	0	oewn-atrioventricular-a	Degree=Pos	dema	0			oewn_form
+atrioventricular block	0	oewn-atrioventricular_block-n	Number=Sing	dema	0			oewn_form
+atrioventricular blocks	0	oewn-atrioventricular_block-n	Number=Plur	dema	0			rule
+atrioventricular bundle	0	oewn-atrioventricular_bundle-n	Number=Sing	dema	0			oewn_form
+atrioventricular bundles	0	oewn-atrioventricular_bundle-n	Number=Plur	dema	0			rule
+atrioventricular nodal rhythm	0	oewn-atrioventricular_nodal_rhythm-n	Number=Sing	dema	0			oewn_form
+atrioventricular nodal rhythms	0	oewn-atrioventricular_nodal_rhythm-n	Number=Plur	dema	0			rule
+atrioventricular node	0	oewn-atrioventricular_node-n	Number=Sing	dema	0			oewn_form
+atrioventricular nodes	0	oewn-atrioventricular_node-n	Number=Plur	dema	0			rule
+atrioventricular trunk	0	oewn-atrioventricular_trunk-n	Number=Sing	dema	0			oewn_form
+atrioventricular trunks	0	oewn-atrioventricular_trunk-n	Number=Plur	dema	0			rule
+atrioventricular valve	0	oewn-atrioventricular_valve-n	Number=Sing	dema	0			oewn_form
+atrioventricular valves	0	oewn-atrioventricular_valve-n	Number=Plur	dema	0			rule
+atrip	0	oewn-atrip-a	Degree=Pos	dema	0			oewn_form
+atrium	0	oewn-atrium-n	Number=Sing	dema	0			oewn_form
+atrium cordis	0	oewn-atrium_cordis-n	Number=Sing	dema	0			oewn_form
+atrium dextrum	0	oewn-atrium_dextrum-n	Number=Sing	dema	0			oewn_form
+atrium dextrums	0	oewn-atrium_dextrum-n	Number=Plur	dema	0			rule
+atrium of the heart	0	oewn-atrium_of_the_heart-n	Number=Sing	dema	0			oewn_form
+atrium sinistrum	0	oewn-atrium_sinistrum-n	Number=Sing	dema	0			oewn_form
+atrium sinistrums	0	oewn-atrium_sinistrum-n	Number=Plur	dema	0			rule
+atriums	0	oewn-atrium-n	Number=Plur	dema	0			rule_variant
+atriums of the heart	0	oewn-atrium_of_the_heart-n	Number=Plur	dema	0			rule
+atroceruleous	0		Number=Sing	dema	0	atroceruleous	n	moby_reverse
+atrocious	0	oewn-atrocious-a	Degree=Pos	dema	0			oewn_form
+atrociously	0	oewn-atrociously-r	Degree=Pos	dema	0			oewn_form
+atrociousness	0	oewn-atrociousness-n	Number=Sing	dema	0			oewn_form
+atrociousnesses	0	oewn-atrociousness-n	Number=Plur	dema	0			rule
+atrocities	0	oewn-atrocity-n	Number=Plur	dema	0			rule
+atrocity	0	oewn-atrocity-n	Number=Sing	dema	0			oewn_form
+atrophedema	0	oewn-atrophedema-n	Number=Sing	dema	0			oewn_form
+atrophedemas	0	oewn-atrophedema-n	Number=Plur	dema	0			rule
+atrophic	0	oewn-atrophic-a	Degree=Pos	dema	0			oewn_form
+atrophic arthritis	0	oewn-atrophic_arthritis-n	Number=Sing	dema	0			oewn_form
+atrophied	0	oewn-atrophied-a	Degree=Pos	dema	0			oewn_form
+atrophied	1	oewn-atrophy-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+atrophies	0	oewn-atrophy-n	Number=Plur	dema	0			rule
+atrophies	1	oewn-atrophy-v	Person=3+Tense=Pres	dema	0			rule
+atrophy	0	oewn-atrophy-n	Number=Sing	dema	0			oewn_form
+atrophy	1	oewn-atrophy-v	VerbForm=Inf	dema	0			oewn_form
+atrophying	0	oewn-atrophy-v	VerbForm=Ger	dema	0			rule
+atropine	0	oewn-atropine-n	Number=Sing	dema	0			oewn_form
+atropines	0	oewn-atropine-n	Number=Plur	dema	0			rule
+atropism	0		Number=Sing	dema	0	atropism	n	moby_reverse
+atropisms	0		Number=Plur	dema	0	atropism	n	rule
+atry	0		Degree=Pos	dema	0	atry	a	moby_reverse
+ats	0	oewn-at-n	Number=Plur	dema	0			rule
+att	0		Number=Sing	dema	0	att	n	moby_reverse
+attabal	0		Number=Sing	dema	0	attabal	n	moby_reverse
+attabals	0		Number=Plur	dema	0	attabal	n	rule
+attaboy	0	dema-attaboy-i		dema	0			carried
+attacca	0		VerbForm=Inf	dema	0	attacca	v	moby_reverse
+attaccaed	0		Tense=Past+VerbForm=Part	dema	0	attacca	v	rule
+attaccaing	0		VerbForm=Ger	dema	0	attacca	v	rule
+attaccas	0		Person=3+Tense=Pres	dema	0	attacca	v	rule
+attach	0		Number=Sing	dema	0	attach	n	moby_reverse
+attach	1	oewn-attach-v	VerbForm=Inf	dema	0			oewn_form
+attach to	0	oewn-attach_to-v	VerbForm=Inf	dema	0			oewn_form
+attachable	0	oewn-attachable-a	Degree=Pos	dema	0			oewn_form
+attache	0	oewn-attache-n	Number=Sing	dema	0			oewn_form
+attache case	0	oewn-attache_case-n	Number=Sing	dema	0			oewn_form
+attache cases	0	oewn-attache_case-n	Number=Plur	dema	0			rule
+attached	0	oewn-attached-a	Degree=Pos	dema	0			oewn_form
+attached	1	oewn-attach-v	Tense=Past+VerbForm=Part	dema	0			rule
+attached to	0	oewn-attach_to-v	Tense=Past+VerbForm=Part	dema	0			rule
+attacher	0		Number=Sing	dema	0	attacher	n	moby_reverse
+attachers	0		Number=Plur	dema	0	attacher	n	rule
+attaches	0		Number=Plur	dema	0	attach	n	rule
+attaches	1	oewn-attach-v	Person=3+Tense=Pres	dema	0			rule
+attaches	2	oewn-attache-n	Number=Plur	dema	0			rule
+attaches to	0	oewn-attach_to-v	Person=3+Tense=Pres	dema	0			rule
+attaching	0	oewn-attach-v	VerbForm=Ger	dema	0			rule
+attaching to	0	oewn-attach_to-v	VerbForm=Ger	dema	0			rule
+attachment	0	oewn-attachment-n	Number=Sing	dema	0			oewn_form
+attachments	0	oewn-attachment-n	Number=Plur	dema	0			rule
+attack	0	oewn-attack-v	VerbForm=Inf	dema	0			oewn_form
+attack	1	oewn-attack-n	Number=Sing	dema	0			oewn_form
+attack aircraft	0	oewn-attack_aircraft-n	Number=Sing	dema	0			oewn_form
+attack aircraft carrier	0	oewn-attack_aircraft_carrier-n	Number=Sing	dema	0			oewn_form
+attack aircraft carriers	0	oewn-attack_aircraft_carrier-n	Number=Plur	dema	0			rule
+attack aircrafts	0	oewn-attack_aircraft-n	Number=Plur	dema	0			rule
+attack dog	0	oewn-attack_dog-n	Number=Sing	dema	0			oewn_form
+attack dogs	0	oewn-attack_dog-n	Number=Plur	dema	0			rule
+attack submarine	0	oewn-attack_submarine-n	Number=Sing	dema	0			oewn_form
+attack submarines	0	oewn-attack_submarine-n	Number=Plur	dema	0			rule
+attackable	0		Degree=Pos	dema	0	attackable	a	moby_reverse
+attacked	0	oewn-attack-v	Tense=Past+VerbForm=Part	dema	0			rule
+attacker	0	oewn-attacker-n	Number=Sing	dema	0			oewn_form
+attackers	0	oewn-attacker-n	Number=Plur	dema	0			rule
+attacking	0	oewn-attack-v	VerbForm=Ger	dema	0			rule
+attacking	1	oewn-attacking-a	Degree=Pos	dema	0			oewn_form
+attacks	0	oewn-attack-v	Person=3+Tense=Pres	dema	0			rule
+attacks	1	oewn-attack-n	Number=Plur	dema	0			rule
+attain	0	oewn-attain-v	VerbForm=Inf	dema	0			oewn_form
+attainabilities	0	oewn-attainability-n	Number=Plur	dema	0			rule
+attainability	0	oewn-attainability-n	Number=Sing	dema	0			oewn_form
+attainable	0	oewn-attainable-a	Degree=Pos	dema	0			oewn_form
+attainableness	0	oewn-attainableness-n	Number=Sing	dema	0			oewn_form
+attainablenesses	0	oewn-attainableness-n	Number=Plur	dema	0			rule
+attainder	0	oewn-attainder-n	Number=Sing	dema	0			oewn_form
+attainders	0	oewn-attainder-n	Number=Plur	dema	0			rule
+attained	0	oewn-attain-v	Tense=Past+VerbForm=Part	dema	0			rule
+attained	1	oewn-attained-a	Degree=Pos	dema	0			oewn_form
+attainer	0		Number=Sing	dema	0	attainer	n	moby_reverse
+attainers	0		Number=Plur	dema	0	attainer	n	rule
+attaining	0	oewn-attain-v	VerbForm=Ger	dema	0			rule
+attainment	0	oewn-attainment-n	Number=Sing	dema	0			oewn_form
+attainments	0	oewn-attainment-n	Number=Plur	dema	0			rule
+attains	0	oewn-attain-v	Person=3+Tense=Pres	dema	0			rule
+attaint	0	oewn-attaint-v	VerbForm=Inf	dema	0			oewn_form
+attaint	1		Number=Sing	dema	0	attaint	n	moby_reverse
+attainted	0	oewn-attaint-v	Tense=Past+VerbForm=Part	dema	0			rule
+attainting	0	oewn-attaint-v	VerbForm=Ger	dema	0			rule
+attaints	0	oewn-attaint-v	Person=3+Tense=Pres	dema	0			rule
+attainture	0		Number=Sing	dema	0	attainture	n	moby_reverse
+attaintures	0		Number=Plur	dema	0	attainture	n	rule
+attapulgite	0		Number=Sing	dema	0	attapulgite	n	moby_reverse
+attapulgites	0		Number=Plur	dema	0	attapulgite	n	rule
+attar	0	oewn-attar-n	Number=Sing	dema	0			oewn_form
+attar of roses	0	oewn-attar_of_roses-n	Number=Sing	dema	0			oewn_form
+attars	0	oewn-attar-n	Number=Plur	dema	0			rule
+attars of roses	0	oewn-attar_of_roses-n	Number=Plur	dema	0			rule
+attemper	0	oewn-attemper-v	VerbForm=Inf	dema	0			oewn_form
+attemperator	0		Number=Sing	dema	0	attemperator	n	moby_reverse
+attemperators	0		Number=Plur	dema	0	attemperator	n	rule
+attempered	0	oewn-attemper-v	Tense=Past+VerbForm=Part	dema	0			rule
+attempering	0	oewn-attemper-v	VerbForm=Ger	dema	0			rule
+attempers	0	oewn-attemper-v	Person=3+Tense=Pres	dema	0			rule
+attempt	0	oewn-attempt-v	VerbForm=Inf	dema	0			oewn_form
+attempt	1	oewn-attempt-n	Number=Sing	dema	0			oewn_form
+attemptabilities	0		Number=Plur	dema	0	attemptability	n	rule
+attemptability	0		Number=Sing	dema	0	attemptability	n	moby_reverse
+attemptable	0		Degree=Pos	dema	0	attemptable	a	moby_reverse
+attempted	0	oewn-attempt-v	Tense=Past+VerbForm=Part	dema	0			rule
+attempted	1	oewn-attempted-a	Degree=Pos	dema	0			oewn_form
+attempter	0	oewn-attempter-n	Number=Sing	dema	0			oewn_form
+attempters	0	oewn-attempter-n	Number=Plur	dema	0			rule
+attempting	0	oewn-attempt-v	VerbForm=Ger	dema	0			rule
+attempts	0	oewn-attempt-v	Person=3+Tense=Pres	dema	0			rule
+attempts	1	oewn-attempt-n	Number=Plur	dema	0			rule
+attend	0	oewn-attend-v	VerbForm=Inf	dema	0			oewn_form
+attend to	0	oewn-attend_to-v	VerbForm=Inf	dema	0			oewn_form
+attendance	0	oewn-attendance-n	Number=Sing	dema	0			oewn_form
+attendance check	0	oewn-attendance_check-n	Number=Sing	dema	0			oewn_form
+attendance checks	0	oewn-attendance_check-n	Number=Plur	dema	0			rule
+attendances	0	oewn-attendance-n	Number=Plur	dema	0			rule
+attendant	0	oewn-attendant-n	Number=Sing	dema	0			oewn_form
+attendant	1	oewn-attendant-a	Degree=Pos	dema	0			oewn_form
+attendantly	0		Degree=Pos	dema	0	attendantly	r	moby_reverse
+attendants	0	oewn-attendant-n	Number=Plur	dema	0			rule
+attended	0	oewn-attend-v	Tense=Past+VerbForm=Part	dema	0			rule
+attended	1	oewn-attended-a	Degree=Pos	dema	0			oewn_form
+attended to	0	oewn-attend_to-v	Tense=Past+VerbForm=Part	dema	0			rule
+attendee	0	oewn-attendee-n	Number=Sing	dema	0			oewn_form
+attendees	0	oewn-attendee-n	Number=Plur	dema	0			rule
+attender	0	oewn-attender-n	Number=Sing	dema	0			oewn_form
+attenders	0	oewn-attender-n	Number=Plur	dema	0			rule
+attending	0	oewn-attending-a	Degree=Pos	dema	0			oewn_form
+attending	1	oewn-attending-n	Number=Sing	dema	0			oewn_form
+attending	2	oewn-attend-v	VerbForm=Ger	dema	0			rule
+attending to	0	oewn-attend_to-v	VerbForm=Ger	dema	0			rule
+attendingly	0		Degree=Pos	dema	0	attendingly	r	moby_reverse
+attendings	0	oewn-attending-n	Number=Plur	dema	0			rule
+attends	0	oewn-attend-v	Person=3+Tense=Pres	dema	0			rule
+attends to	0	oewn-attend_to-v	Person=3+Tense=Pres	dema	0			rule
+attent	0		Degree=Pos	dema	0	attent	a	moby_reverse
+attention	0	oewn-attention-n	Number=Sing	dema	0			oewn_form
+attention	1	dema-attention-i		dema	0			carried
+attention deficit disorder	0	oewn-attention_deficit_disorder-n	Number=Sing	dema	0			oewn_form
+attention deficit disorders	0	oewn-attention_deficit_disorder-n	Number=Plur	dema	0			rule
+attention deficit hyperactivity disorder	0	oewn-attention_deficit_hyperactivity_disorder-n	Number=Sing	dema	0			oewn_form
+attention deficit hyperactivity disorders	0	oewn-attention_deficit_hyperactivity_disorder-n	Number=Plur	dema	0			rule
+attention span	0	oewn-attention_span-n	Number=Sing	dema	0			oewn_form
+attention spans	0	oewn-attention_span-n	Number=Plur	dema	0			rule
+attention-getting	0	oewn-attention-getting-a	Degree=Pos	dema	0			oewn_form
+attentional	0	oewn-attentional-a	Degree=Pos	dema	0			oewn_form
+attentions	0	oewn-attention-n	Number=Plur	dema	0			rule
+attentive	0	oewn-attentive-a	Degree=Pos	dema	0			oewn_form
+attentively	0	oewn-attentively-r	Degree=Pos	dema	0			oewn_form
+attentiveness	0	oewn-attentiveness-n	Number=Sing	dema	0			oewn_form
+attentivenesses	0	oewn-attentiveness-n	Number=Plur	dema	0			rule
+attently	0		Degree=Pos	dema	0	attently	r	moby_reverse
+attenuant	0		Degree=Pos	dema	0	attenuant	a	moby_reverse
+attenuant	1		Number=Sing	dema	0	attenuant	n	moby_reverse
+attenuate	0	oewn-attenuate-a	Degree=Pos	dema	1			carried
+attenuate	1	oewn-attenuate-v	VerbForm=Inf	dema	1			carried
+attenuated	0	oewn-attenuate-v	Tense=Past+VerbForm=Part	dema	0			rule
+attenuated	1	oewn-attenuated-a	Degree=Pos	dema	0			oewn_form
+attenuates	0	oewn-attenuate-v	Person=3+Tense=Pres	dema	1			carried
+attenuating	0	oewn-attenuate-v	VerbForm=Ger	dema	0			rule
+attenuation	0	oewn-attenuation-n	Number=Sing	dema	0			oewn_form
+attenuations	0	oewn-attenuation-n	Number=Plur	dema	0			rule
+attenuator	0	oewn-attenuator-n	Number=Sing	dema	0			oewn_form
+attenuators	0	oewn-attenuator-n	Number=Plur	dema	0			rule
+attest	0	oewn-attest-v	VerbForm=Inf	dema	0			oewn_form
+attestable	0		Degree=Pos	dema	0	attestable	a	moby_reverse
+attestant	0	oewn-attestant-n	Number=Sing	dema	0			oewn_form
+attestants	0	oewn-attestant-n	Number=Plur	dema	0			rule
+attestation	0	oewn-attestation-n	Number=Sing	dema	0			oewn_form
+attestation report	0	oewn-attestation_report-n	Number=Sing	dema	0			oewn_form
+attestation reports	0	oewn-attestation_report-n	Number=Plur	dema	0			rule
+attestation service	0	oewn-attestation_service-n	Number=Sing	dema	0			oewn_form
+attestation services	0	oewn-attestation_service-n	Number=Plur	dema	0			rule
+attestations	0	oewn-attestation-n	Number=Plur	dema	0			rule
+attestative	0		Degree=Pos	dema	0	attestative	a	moby_reverse
+attestator	0	oewn-attestator-n	Number=Sing	dema	0			oewn_form
+attestators	0	oewn-attestator-n	Number=Plur	dema	0			rule
+attested	0	oewn-attested-a	Degree=Pos	dema	0			oewn_form
+attested	1	oewn-attest-v	Tense=Past+VerbForm=Part	dema	0			rule
+attester	0	oewn-attester-n	Number=Sing	dema	0			oewn_form
+attesters	0	oewn-attester-n	Number=Plur	dema	0			rule
+attesting	0	oewn-attest-v	VerbForm=Ger	dema	0			rule
+attestive	0		Degree=Pos	dema	0	attestive	a	moby_reverse
+attestor	0	oewn-attestor-n	Number=Sing	dema	0			oewn_form
+attestors	0	oewn-attestor-n	Number=Plur	dema	0			rule
+attests	0	oewn-attest-v	Person=3+Tense=Pres	dema	0			rule
+attic	0	oewn-attic-n	Number=Sing	dema	0			oewn_form
+attic fan	0	oewn-attic_fan-n	Number=Sing	dema	0			oewn_form
+attic fans	0	oewn-attic_fan-n	Number=Plur	dema	0			rule
+atticist	0		Number=Sing	dema	0	atticist	n	moby_reverse
+atticists	0		Number=Plur	dema	0	atticist	n	rule
+attics	0	oewn-attic-n	Number=Plur	dema	0			rule
+atties	0		Number=Plur	dema	0	atty	n	rule
+attingence	0		Number=Sing	dema	0	attingence	n	moby_reverse
+attingences	0		Number=Plur	dema	0	attingence	n	rule
+attingencies	0		Number=Plur	dema	0	attingency	n	rule
+attingency	0		Number=Sing	dema	0	attingency	n	moby_reverse
+attingent	0		Degree=Pos	dema	0	attingent	a	moby_reverse
+attire	0	oewn-attire-v	VerbForm=Inf	dema	0			oewn_form
+attire	1	oewn-attire-n	Number=Sing	dema	0			oewn_form
+attired	0	oewn-attired-a	Degree=Pos	dema	0			oewn_form
+attired	1	oewn-attire-v	Tense=Past+VerbForm=Part	dema	0			rule
+attirement	0		Number=Sing	dema	0	attirement	n	moby_reverse
+attirements	0		Number=Plur	dema	0	attirement	n	rule
+attires	0	oewn-attire-v	Person=3+Tense=Pres	dema	0			rule
+attires	1	oewn-attire-n	Number=Plur	dema	0			rule
+attiring	0	oewn-attire-v	VerbForm=Ger	dema	0			rule
+attitude	0	oewn-attitude-n	Number=Sing	dema	0			oewn_form
+attitudes	0	oewn-attitude-n	Number=Plur	dema	0			rule
+attitudinal	0	oewn-attitudinal-a	Degree=Pos	dema	0			oewn_form
+attitudinarian	0		Number=Sing	dema	0	attitudinarian	n	moby_reverse
+attitudinarianism	0		Number=Sing	dema	0	attitudinarianism	n	moby_reverse
+attitudinarianisms	0		Number=Plur	dema	0	attitudinarianism	n	rule
+attitudinarians	0		Number=Plur	dema	0	attitudinarian	n	rule
+attitudinise	0	oewn-attitudinise-v	VerbForm=Inf	dema	0			oewn_form
+attitudinised	0	oewn-attitudinise-v	Tense=Past+VerbForm=Part	dema	0			rule
+attitudiniser	0		Number=Sing	dema	0	attitudiniser	n	moby_reverse
+attitudinisers	0		Number=Plur	dema	0	attitudiniser	n	rule
+attitudinises	0	oewn-attitudinise-v	Person=3+Tense=Pres	dema	0			rule
+attitudinising	0	oewn-attitudinise-v	VerbForm=Ger	dema	0			rule
+attitudinize	0	oewn-attitudinize-v	VerbForm=Inf	dema	0			oewn_form
+attitudinized	0	oewn-attitudinize-v	Tense=Past+VerbForm=Part	dema	0			rule
+attitudinizer	0		Number=Sing	dema	0	attitudinizer	n	moby_reverse
+attitudinizers	0		Number=Plur	dema	0	attitudinizer	n	rule
+attitudinizes	0	oewn-attitudinize-v	Person=3+Tense=Pres	dema	0			rule
+attitudinizing	0	oewn-attitudinize-v	VerbForm=Ger	dema	0			rule
+attorn	0	oewn-attorn-v	VerbForm=Inf	dema	0			oewn_form
+attorned	0	oewn-attorn-v	Tense=Past+VerbForm=Part	dema	0			rule
+attorney	0	oewn-attorney-n	Number=Sing	dema	0			oewn_form
+attorney general	0	oewn-attorney_general-n	Number=Sing	dema	0			oewn_form
+attorney general of the United States	0	oewn-attorney_general_of_the_United_States-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+attorney generals	0	oewn-attorney_general-n	Number=Plur	dema	0			rule
+attorney generals of the United States	0	oewn-attorney_general_of_the_United_States-n	Capitalization=Exact+Number=Plur	dema	0			rule
+attorney-client privilege	0	oewn-attorney-client_privilege-n	Number=Sing	dema	0			oewn_form
+attorney-client privileges	0	oewn-attorney-client_privilege-n	Number=Plur	dema	0			rule
+attorney-client relation	0	oewn-attorney-client_relation-n	Number=Sing	dema	0			oewn_form
+attorney-client relations	0	oewn-attorney-client_relation-n	Number=Plur	dema	0			rule
+attorneys	0	oewn-attorney-n	Number=Plur	dema	0			rule
+attorneyship	0	oewn-attorneyship-n	Number=Sing	dema	0			oewn_form
+attorneyships	0	oewn-attorneyship-n	Number=Plur	dema	0			rule
+attorning	0	oewn-attorn-v	VerbForm=Ger	dema	0			rule
+attornment	0		Number=Sing	dema	0	attornment	n	moby_reverse
+attornments	0		Number=Plur	dema	0	attornment	n	rule
+attorns	0	oewn-attorn-v	Person=3+Tense=Pres	dema	0			rule
+attosecond	0	oewn-attosecond-n	Number=Sing	dema	0			oewn_form
+attoseconds	0	oewn-attosecond-n	Number=Plur	dema	0			rule
+attract	0	oewn-attract-v	VerbForm=Inf	dema	0			oewn_form
+attractable	0	oewn-attractable-a	Degree=Pos	dema	0			oewn_form
+attractableness	0		Number=Sing	dema	0	attractableness	n	moby_reverse
+attractant	0		Number=Sing	dema	0	attractant	n	moby_reverse
+attractants	0		Number=Plur	dema	0	attractant	n	rule
+attracted	0	oewn-attract-v	Tense=Past+VerbForm=Part	dema	0			rule
+attracter	0	oewn-attracter-n	Number=Sing	dema	0			oewn_form
+attracters	0	oewn-attracter-n	Number=Plur	dema	0			rule
+attracting	0	oewn-attract-v	VerbForm=Ger	dema	0			rule
+attractingly	0		Degree=Pos	dema	0	attractingly	r	moby_reverse
+attraction	0	oewn-attraction-n	Number=Sing	dema	0			oewn_form
+attractionally	0		Degree=Pos	dema	0	attractionally	r	moby_reverse
+attractions	0	oewn-attraction-n	Number=Plur	dema	0			rule
+attractive	0	oewn-attractive-a	Degree=Pos	dema	0			oewn_form
+attractive feature	0	oewn-attractive_feature-n	Number=Sing	dema	0			oewn_form
+attractive features	0	oewn-attractive_feature-n	Number=Plur	dema	0			rule
+attractive force	0	oewn-attractive_force-n	Number=Sing	dema	0			oewn_form
+attractive forces	0	oewn-attractive_force-n	Number=Plur	dema	0			rule
+attractive nuisance	0	oewn-attractive_nuisance-n	Number=Sing	dema	0			oewn_form
+attractive nuisances	0	oewn-attractive_nuisance-n	Number=Plur	dema	0			rule
+attractively	0	oewn-attractively-r	Degree=Pos	dema	0			oewn_form
+attractiveness	0	oewn-attractiveness-n	Number=Sing	dema	0			oewn_form
+attractivenesses	0	oewn-attractiveness-n	Number=Plur	dema	0			rule
+attractor	0	oewn-attractor-n	Number=Sing	dema	0			oewn_form
+attractors	0	oewn-attractor-n	Number=Plur	dema	0			rule
+attracts	0	oewn-attract-v	Person=3+Tense=Pres	dema	0			rule
+attrahent	0		Degree=Pos	dema	0	attrahent	a	moby_reverse
+attrib	0		Number=Sing	dema	0	attrib	n	moby_reverse
+attribs	0		Number=Plur	dema	0	attrib	n	rule
+attributable	0	oewn-attributable-a	Degree=Pos	dema	0			oewn_form
+attribute	0	oewn-attribute-n	Number=Sing	dema	1			carried
+attribute	1	oewn-attribute-v	VerbForm=Inf	dema	1			carried
+attributed	0	oewn-attribute-v	Tense=Past+VerbForm=Part	dema	0			rule
+attributer	0		Number=Sing	dema	0	attributer	n	moby_reverse
+attributers	0		Number=Plur	dema	0	attributer	n	rule
+attributes	0	oewn-attribute-n	Number=Plur	dema	1			carried
+attributes	1	oewn-attribute-v	Person=3+Tense=Pres	dema	1			carried
+attributing	0	oewn-attribute-v	VerbForm=Ger	dema	0			rule
+attribution	0	oewn-attribution-n	Number=Sing	dema	0			oewn_form
+attributions	0	oewn-attribution-n	Number=Plur	dema	0			rule
+attributive	0	oewn-attributive-a	Degree=Pos	dema	0			oewn_form
+attributive	1		Number=Sing	dema	0	attributive	n	moby_reverse
+attributive genitive	0	oewn-attributive_genitive-n	Number=Sing	dema	0			oewn_form
+attributive genitive	1	oewn-attributive_genitive-a	Degree=Pos	dema	0			oewn_form
+attributive genitive case	0	oewn-attributive_genitive_case-n	Number=Sing	dema	0			oewn_form
+attributive genitive cases	0	oewn-attributive_genitive_case-n	Number=Plur	dema	0			rule
+attributive genitives	0	oewn-attributive_genitive-n	Number=Plur	dema	0			rule
+attributively	0	oewn-attributively-r	Degree=Pos	dema	0			oewn_form
+attributiveness	0		Number=Sing	dema	0	attributiveness	n	moby_reverse
+attributivenesses	0		Number=Plur	dema	0	attributiveness	n	rule
+attributor	0		Number=Sing	dema	0	attributor	n	moby_reverse
+attributors	0		Number=Plur	dema	0	attributor	n	rule
+attrite	0		Degree=Pos	dema	0	attrite	a	moby_reverse
+attrite	1		VerbForm=Inf	dema	0	attrite	v	moby_reverse
+attrited	0	oewn-attrited-a	Degree=Pos	dema	0			oewn_form
+attrited	1		Tense=Past+VerbForm=Part	dema	0	attrite	v	moby_reverse
+attriteness	0		Number=Sing	dema	0	attriteness	n	moby_reverse
+attriting	0		VerbForm=Ger	dema	0	attrite	v	moby_reverse
+attrition	0	oewn-attrition-n	Number=Sing	dema	0			oewn_form
+attrition rate	0	oewn-attrition_rate-n	Number=Sing	dema	0			oewn_form
+attrition rates	0	oewn-attrition_rate-n	Number=Plur	dema	0			rule
+attritional	0	oewn-attritional-a	Degree=Pos	dema	0			oewn_form
+attritions	0	oewn-attrition-n	Number=Plur	dema	0			rule
+attritive	0		Degree=Pos	dema	0	attritive	a	moby_reverse
+attune	0	oewn-attune-v	VerbForm=Inf	dema	0			oewn_form
+attuned	0	oewn-attune-v	Tense=Past+VerbForm=Part	dema	0			rule
+attunes	0	oewn-attune-v	Person=3+Tense=Pres	dema	0			rule
+attuning	0	oewn-attune-v	VerbForm=Ger	dema	0			rule
+atty	0		Number=Sing	dema	0	atty	n	moby_reverse
+atwain	0		Degree=Pos	dema	0	atwain	r	moby_reverse
+atweel	0		Degree=Pos	dema	0	atweel	r	moby_reverse
+atween	0	dema-atween-p		dema	0			carried
+atwitter	0		Degree=Pos	dema	0	atwitter	a	moby_reverse
+atypic	0	oewn-atypic-a	Degree=Pos	dema	0			oewn_form
+atypical	0	oewn-atypical-a	Degree=Pos	dema	0			oewn_form
+atypical pneumonia	0	oewn-atypical_pneumonia-n	Number=Sing	dema	0			oewn_form
+atypical pneumonias	0	oewn-atypical_pneumonia-n	Number=Plur	dema	0			rule
+atypicalities	0	oewn-atypicality-n	Number=Plur	dema	0			rule
+atypicality	0	oewn-atypicality-n	Number=Sing	dema	0			oewn_form
+atypically	0	oewn-atypically-r	Degree=Pos	dema	0			oewn_form

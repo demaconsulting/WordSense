@@ -1,3 +1,11 @@
-spelling	rank	entry_id	features	source_id	reviewed
-bwana	0	dema-bwana-n	Number=Sing	dema	0
-bwanas	0	dema-bwana-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+BW	0	oewn-BW-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BW defence	0	oewn-BW_defence-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+BW defences	0	oewn-BW_defence-n	Capitalization=Exact+Number=Plur	dema	0			rule
+BW defense	0	oewn-BW_defense-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+BW defenses	0	oewn-BW_defense-n	Capitalization=Exact+Number=Plur	dema	0			rule
+BWR	0	oewn-BWR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BWRS	0	oewn-BWR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+BWS	0	oewn-BW-n	Capitalization=Upper+Number=Plur	dema	0			rule
+bwana	0		Number=Sing	dema	0	bwana	n	moby_reverse
+bwanas	0		Number=Plur	dema	0	bwana	n	rule

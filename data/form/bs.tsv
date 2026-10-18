@@ -1,6 +1,16 @@
-spelling	rank	entry_id	features	source_id	reviewed
-bs	0	dema-bs-n	Number=Sing	dema	0
-bsh	0	dema-bsh-n	Number=Sing	dema	0
-bshes	0	dema-bsh-n	Number=Plur	dema	0
-bskt	0	dema-bskt-n	Number=Sing	dema	0
-bskts	0	dema-bskt-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+BS	0	oewn-B-n	Number=Plur	dema	0			moby_reverse
+BS	1	oewn-b-n	Number=Plur	dema	0			rule
+BS	2	oewn-BS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BSArch	0	oewn-BSArch-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+BSE	0	oewn-BSE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BSES	0	oewn-BSE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Bs	0	oewn-B-n	Number=Plur	dema	0			moby_reverse
+Bs	1	oewn-b-n	Number=Plur	dema	0			rule
+Bs	2	oewn-B-n	Capitalization=Title+Number=Plur	dema	0			rule
+Bsarches	0	oewn-BSArch-n	Capitalization=Exact+Number=Plur	dema	0			rule
+bs	0	oewn-B-n	Number=Plur	dema	0			moby_reverse
+bs	1	oewn-b-n	Number=Plur	dema	0			rule
+bsh	0		Number=Sing	dema	0	bsh	n	moby_reverse
+bskt	0		Number=Sing	dema	0	bskt	n	moby_reverse
+bskts	0		Number=Plur	dema	0	bskt	n	rule

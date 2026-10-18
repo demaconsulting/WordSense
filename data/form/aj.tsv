@@ -1,7 +1,12 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ajar	0	dema-ajar-r	Degree=Pos	dema	0
-ajee	0	dema-ajee-r	Degree=Pos	dema	0
-ajeer	0	dema-ajee-r	Degree=Cmp	dema	0
-ajeest	0	dema-ajee-r	Degree=Sup	dema	0
-ajiva	0	dema-ajiva-n	Number=Sing	dema	0
-ajivas	0	dema-ajiva-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Ajaia ajaja	0	oewn-Ajaia_ajaja-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ajaia ajajas	0	oewn-Ajaia_ajaja-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ajuga chamaepitys	0	oewn-Ajuga_chamaepitys-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ajuga genevensis	0	oewn-Ajuga_genevensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ajuga pyramidalis	0	oewn-Ajuga_pyramidalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ajuga reptans	0	oewn-Ajuga_reptans-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+ajar	0		Degree=Pos	dema	0	ajar	r	moby_reverse
+ajar	1	oewn-ajar-a	Degree=Pos	dema	0			oewn_form
+ajee	0		Degree=Pos	dema	0	ajee	r	moby_reverse
+ajiva	0		Number=Sing	dema	0	ajiva	n	moby_reverse
+ajivas	0		Number=Plur	dema	0	ajiva	n	rule

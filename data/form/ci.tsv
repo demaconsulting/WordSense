@@ -1,956 +1,1202 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ciao	0	dema-ciao-i		dema	0
-cibarial	0	dema-cibarial-a	Degree=Pos	dema	0
-cibarially	0	dema-cibarial-r		dema	0
-cibarialness	0	dema-cibarial-n	Number=Plur	dema	0
-cibarian	0	dema-cibarian-a	Degree=Pos	dema	0
-cibarianly	0	dema-cibarian-r		dema	0
-cibarianness	0	dema-cibarian-n	Number=Plur	dema	0
-cibarious	0	dema-cibarious-a	Degree=Pos	dema	0
-cibariously	0	dema-cibarious-r		dema	0
-cibariousness	0	dema-cibarious-n	Number=Plur	dema	0
-cibarium	0	dema-cibarium-n	Number=Sing	dema	0
-cibariums	0	dema-cibarium-n	Number=Plur	dema	0
-cibbaria	0	dema-cibbaria-n	Number=Sing	dema	0
-cibbarias	0	dema-cibbaria-n	Number=Plur	dema	0
-cibboria	0	dema-cibboria-n	Number=Sing	dema	0
-cibborias	0	dema-cibboria-n	Number=Plur	dema	0
-ciborium	0	dema-ciborium-n	Number=Sing	dema	0
-ciboriums	0	dema-ciborium-n	Number=Plur	dema	0
-cicada	0	oewn-cicada-n	Number=Sing	dema	0
-cicadas	0	dema-cicadas-n	Number=Sing	dema	0
-cicala	0	oewn-cicala-n	Number=Sing	dema	0
-cicalas	0	oewn-cicala-n	Number=Plur	dema	0
-cicale	0	dema-cicale-n	Number=Sing	dema	0
-cicales	0	dema-cicale-n	Number=Plur	dema	0
-cicatrices	0	dema-cicatrices-n	Number=Sing	dema	0
-cicatriceses	0	dema-cicatrices-n	Number=Plur	dema	0
-cicatricial	0	dema-cicatricial-a	Degree=Pos	dema	0
-cicatricially	0	dema-cicatricial-r		dema	0
-cicatricle	0	dema-cicatricle-n	Number=Sing	dema	0
-cicatricles	0	dema-cicatricle-n	Number=Plur	dema	0
-cicatricose	0	dema-cicatricose-a	Degree=Pos	dema	0
-cicatricosely	0	dema-cicatricose-r		dema	0
-cicatrisant	0	dema-cicatrisant-a	Degree=Pos	dema	0
-cicatrisantly	0	dema-cicatrisant-r		dema	0
-cicatrisation	0	dema-cicatrisation-n	Number=Sing	dema	0
-cicatrisations	0	dema-cicatrisation-n	Number=Plur	dema	0
-cicatrise	0	oewn-cicatrise-v	VerbForm=Inf	dema	0
-cicatrised	0	dema-cicatrised-v	VerbForm=Inf	dema	0
-cicatriser	0	dema-cicatriser-n	Number=Sing	dema	0
-cicatrisers	0	dema-cicatrise-n	Number=Plur	dema	0
-cicatrises	0	oewn-cicatrise-v	Person=3+Tense=Pres	dema	0
-cicatrising	0	dema-cicatrising-v	VerbForm=Inf	dema	0
-cicatrisingly	0	dema-cicatrise-r		dema	0
-cicatrix	0	oewn-cicatrix-n	Number=Sing	dema	0
-cicatrixes	0	oewn-cicatrix-n	Number=Plur	dema	0
-cicatrizant	0	dema-cicatrizant-a	Degree=Pos	dema	0
-cicatrizantly	0	dema-cicatrizant-r		dema	0
-cicatrization	0	dema-cicatrization-n	Number=Sing	dema	0
-cicatrizations	0	dema-cicatrization-n	Number=Plur	dema	0
-cicatrize	0	oewn-cicatrize-v	VerbForm=Inf	dema	0
-cicatrized	0	dema-cicatrized-v	VerbForm=Inf	dema	0
-cicatrizer	0	dema-cicatrizer-n	Number=Sing	dema	0
-cicatrizers	0	dema-cicatrize-n	Number=Plur	dema	0
-cicatrizes	0	oewn-cicatrize-v	Person=3+Tense=Pres	dema	0
-cicatrizing	0	dema-cicatrizing-v	VerbForm=Inf	dema	0
-cicatrizingly	0	dema-cicatrize-r		dema	0
-cicelies	0	dema-cicelies-n	Number=Sing	dema	0
-cicely	0	dema-cicely-n	Number=Sing	dema	0
-cicero	0	oewn-cicero-n	Number=Sing	dema	0
-ciceroes	0	oewn-cicero-n	Number=Plur	dema	0
-cicerone	0	oewn-cicerone-n	Number=Sing	dema	0
-cicerones	0	oewn-cicerone-n	Number=Plur	dema	0
-ciceroni	0	dema-ciceroni-n	Number=Sing	dema	0
-ciceronis	0	dema-ciceroni-n	Number=Plur	dema	0
-ciceros	0	dema-ciceros-n	Number=Sing	dema	0
-cichlid	0	oewn-cichlid-n	Number=Sing	dema	0
-cichlid	1	dema-cichlid-a	Degree=Pos	dema	0
-cichlider	0	dema-cichlid-a	Degree=Cmp	dema	0
-cichlidest	0	dema-cichlid-a	Degree=Sup	dema	0
-cichlidly	0	dema-cichlid-r		dema	0
-cichlidness	0	oewn-cichlid-n	Number=Plur	dema	0
-cichlids	0	oewn-cichlid-n	Number=Plur	dema	0
-cichoriaceous	0	dema-cichoriaceous-a	Degree=Pos	dema	0
-cichoriaceously	0	dema-cichoriaceous-r		dema	0
-cicisbei	0	dema-cicisbei-n	Number=Sing	dema	0
-cicisbeis	0	dema-cicisbei-n	Number=Plur	dema	0
-cicisbeism	0	dema-cicisbeism-n	Number=Sing	dema	0
-cicisbeisms	0	dema-cicisbeism-n	Number=Plur	dema	0
-cicisbeo	0	dema-cicisbeo-n	Number=Sing	dema	0
-cicisbeos	0	dema-cicisbeo-n	Number=Plur	dema	0
-cider	0	oewn-cider-n	Number=Sing	dema	0
-ciderish	0	dema-ciderish-a	Degree=Pos	dema	0
-ciderishly	0	dema-ciderish-r		dema	0
-ciderishness	0	dema-ciderish-n	Number=Plur	dema	0
-ciderlike	0	dema-ciderlike-a	Degree=Pos	dema	0
-ciderlikely	0	dema-ciderlike-r		dema	0
-ciderlikeness	0	dema-ciderlike-n	Number=Plur	dema	0
-ciders	0	oewn-cider-n	Number=Plur	dema	0
-cierzo	0	dema-cierzo-n	Number=Sing	dema	0
-cierzoes	0	dema-cierzo-n	Number=Plur	dema	0
-cierzos	0	dema-cierzos-n	Number=Sing	dema	0
-cig	0	dema-cig-n	Number=Sing	dema	0
-cigar	0	oewn-cigar-n	Number=Sing	dema	0
-cigarette	0	oewn-cigarette-n	Number=Sing	dema	0
-cigarettes	0	oewn-cigarette-n	Number=Plur	dema	0
-cigarillo	0	oewn-cigarillo-n	Number=Sing	dema	0
-cigarilloes	0	oewn-cigarillo-n	Number=Plur	dema	0
-cigarillos	0	dema-cigarillos-n	Number=Sing	dema	0
-cigarless	0	dema-cigarless-a	Degree=Pos	dema	0
-cigarlessly	0	dema-cigarless-r		dema	0
-cigarlessness	0	dema-cigarless-n	Number=Plur	dema	0
-cigars	0	oewn-cigar-n	Number=Plur	dema	0
-cigs	0	dema-cig-n	Number=Plur	dema	0
-cilia	0	dema-cilia-n	Number=Sing	dema	0
-ciliarily	0	dema-ciliary-r		dema	0
-ciliariness	0	dema-ciliary-n	Number=Plur	dema	0
-ciliary	0	oewn-ciliary-a	Degree=Pos	dema	0
-cilias	0	dema-cilia-n	Number=Plur	dema	0
-ciliate	0	oewn-ciliate-a	Degree=Pos	dema	0
-ciliate	1	oewn-ciliate-n	Number=Sing	dema	0
-ciliately	0	dema-ciliately-r	Degree=Pos	dema	0
-ciliateness	0	oewn-ciliate-n	Number=Plur	dema	0
-ciliates	0	oewn-ciliate-n	Number=Plur	dema	0
-ciliation	0	dema-ciliation-n	Number=Sing	dema	0
-ciliations	0	dema-ciliation-n	Number=Plur	dema	0
-cilice	0	dema-cilice-n	Number=Sing	dema	0
-cilices	0	dema-cilice-n	Number=Plur	dema	0
-ciliolate	0	dema-ciliolate-a	Degree=Pos	dema	0
-ciliolately	0	dema-ciliolate-r		dema	0
-ciliolateness	0	dema-ciliolate-n	Number=Plur	dema	0
-cilium	0	oewn-cilium-n	Number=Sing	dema	0
-ciliums	0	oewn-cilium-n	Number=Plur	dema	0
-cimaise	0	dema-cimaise-n	Number=Sing	dema	0
-cimaises	0	dema-cimaise-n	Number=Plur	dema	0
-cimbalom	0	dema-cimbalom-n	Number=Sing	dema	0
-cimbaloms	0	dema-cimbalom-n	Number=Plur	dema	0
-cimelia	0	dema-cimelia-n	Number=Sing	dema	0
-cimeliarch	0	dema-cimeliarch-n	Number=Sing	dema	0
-cimeliarches	0	dema-cimeliarch-n	Number=Plur	dema	0
-cimeliarchs	0	dema-cimeliarch-n	Number=Plur	dema	0
-cimelias	0	dema-cimelia-n	Number=Plur	dema	0
-cimex	0	dema-cimex-n	Number=Sing	dema	0
-cimexes	0	dema-cimex-n	Number=Plur	dema	0
-cimices	0	dema-cimices-n	Number=Sing	dema	0
-cimiceses	0	dema-cimices-n	Number=Plur	dema	0
-cinch	0	oewn-cinch-n	Number=Sing	dema	0
-cinch	1	oewn-cinch-v	VerbForm=Inf	dema	0
-cinched	0	oewn-cinch-v	Tense=Past	dema	0
-cincher	0	oewn-cinch-n	Number=Plur	dema	0
-cinchers	0	oewn-cinch-n	Number=Plur	dema	0
-cinches	0	oewn-cinch-n	Number=Plur	dema	0
-cinches	1	oewn-cinch-v	Person=3+Tense=Pres	dema	0
-cinching	0	oewn-cinch-v	VerbForm=Ger	dema	0
-cinchingly	0	dema-cinch-r		dema	0
-cinchona	0	oewn-cinchona-n	Number=Sing	dema	0
-cinchonas	0	oewn-cinchona-n	Number=Plur	dema	0
-cinchonic	0	dema-cinchonic-a	Degree=Pos	dema	0
-cinchonically	0	dema-cinchonic-r		dema	0
-cinchonicness	0	dema-cinchonic-n	Number=Plur	dema	0
-cinchonidine	0	dema-cinchonidine-n	Number=Sing	dema	0
-cinchonidines	0	dema-cinchonidine-n	Number=Plur	dema	0
-cinchonine	0	oewn-cinchonine-n	Number=Sing	dema	0
-cinchonines	0	oewn-cinchonine-n	Number=Plur	dema	0
-cinchonisation	0	dema-cinchonisation-n	Number=Sing	dema	0
-cinchonisations	0	dema-cinchonisation-n	Number=Plur	dema	0
-cinchonise	0	dema-cinchonise-v	VerbForm=Inf	dema	0
-cinchonised	0	dema-cinchonised-v	VerbForm=Inf	dema	0
-cinchoniser	0	dema-cinchonise-n	Number=Plur	dema	0
-cinchonisers	0	dema-cinchonise-n	Number=Plur	dema	0
-cinchonises	0	dema-cinchonise-v	Person=3+Tense=Pres	dema	0
-cinchonising	0	dema-cinchonising-v	VerbForm=Inf	dema	0
-cinchonisingly	0	dema-cinchonise-r		dema	0
-cinchonism	0	dema-cinchonism-n	Number=Sing	dema	0
-cinchonisms	0	dema-cinchonism-n	Number=Plur	dema	0
-cinchonization	0	dema-cinchonization-n	Number=Sing	dema	0
-cinchonizations	0	dema-cinchonization-n	Number=Plur	dema	0
-cinchonize	0	dema-cinchonize-v	VerbForm=Inf	dema	0
-cinchonized	0	dema-cinchonized-v	VerbForm=Inf	dema	0
-cinchonizer	0	dema-cinchonize-n	Number=Plur	dema	0
-cinchonizers	0	dema-cinchonize-n	Number=Plur	dema	0
-cinchonizes	0	dema-cinchonize-v	Person=3+Tense=Pres	dema	0
-cinchonizing	0	dema-cinchonizing-v	VerbForm=Inf	dema	0
-cinchonizingly	0	dema-cinchonize-r		dema	0
-cinchs	0	oewn-cinch-n	Number=Plur	dema	0
-cinchs	1	oewn-cinch-v	Person=3+Tense=Pres	dema	0
-cincture	0	oewn-cincture-n	Number=Sing	dema	0
-cinctured	0	dema-cinctured-v	VerbForm=Inf	dema	0
-cinctureded	0	dema-cinctured-v	Tense=Past	dema	0
-cinctureder	0	dema-cinctured-n	Number=Plur	dema	0
-cinctureders	0	dema-cinctured-n	Number=Plur	dema	0
-cinctureding	0	dema-cinctured-v	VerbForm=Ger	dema	0
-cincturedingly	0	dema-cinctured-r		dema	0
-cinctureds	0	dema-cinctured-v	Person=3+Tense=Pres	dema	0
-cinctures	0	oewn-cincture-n	Number=Plur	dema	0
-cincturing	0	dema-cincturing-v	VerbForm=Inf	dema	0
-cincturinged	0	dema-cincturing-v	Tense=Past	dema	0
-cincturinger	0	dema-cincturing-n	Number=Plur	dema	0
-cincturingers	0	dema-cincturing-n	Number=Plur	dema	0
-cincturinging	0	dema-cincturing-v	VerbForm=Ger	dema	0
-cincturingingly	0	dema-cincturing-r		dema	0
-cincturings	0	dema-cincturing-v	Person=3+Tense=Pres	dema	0
-cinder	0	oewn-cinder-n	Number=Sing	dema	0
-cinder	1	dema-cinder-v	VerbForm=Inf	dema	0
-cindered	0	dema-cinder-v	Tense=Past	dema	0
-cinderily	0	dema-cindery-r		dema	0
-cinderiness	0	dema-cindery-n	Number=Plur	dema	0
-cindering	0	dema-cinder-v	VerbForm=Ger	dema	0
-cinderingly	0	dema-cinder-r		dema	0
-cinderlike	0	dema-cinderlike-a	Degree=Pos	dema	0
-cinderlikely	0	dema-cinderlike-r		dema	0
-cinderlikeness	0	dema-cinderlike-n	Number=Plur	dema	0
-cinderous	0	dema-cinderous-a	Degree=Pos	dema	0
-cinderously	0	dema-cinderous-r		dema	0
-cinderousness	0	dema-cinderous-n	Number=Plur	dema	0
-cinders	0	oewn-cinder-n	Number=Plur	dema	0
-cinders	1	dema-cinder-v	Person=3+Tense=Pres	dema	0
-cindery	0	dema-cindery-a	Degree=Pos	dema	0
-cine	0	dema-cine-n	Number=Sing	dema	0
-cineaste	0	dema-cineaste-n	Number=Sing	dema	0
-cineastes	0	dema-cineaste-n	Number=Plur	dema	0
-cinema	0	oewn-cinema-n	Number=Sing	dema	0
-cinemas	0	oewn-cinema-n	Number=Plur	dema	0
-cinematheque	0	dema-cinematheque-n	Number=Sing	dema	0
-cinematheques	0	dema-cinematheque-n	Number=Plur	dema	0
-cinematic	0	oewn-cinematic-a	Degree=Pos	dema	0
-cinematically	0	dema-cinematically-r	Degree=Pos	dema	0
-cinematics	0	dema-cinematics-n	Number=Sing	dema	0
-cinematicses	0	dema-cinematics-n	Number=Plur	dema	0
-cinematize	0	oewn-cinematize-v	VerbForm=Inf	dema	0
-cinematized	0	dema-cinematized-v	VerbForm=Inf	dema	0
-cinematizes	0	oewn-cinematize-v	Person=3+Tense=Pres	dema	0
-cinematizing	0	dema-cinematizing-v	VerbForm=Inf	dema	0
-cinematograph	0	dema-cinematograph-n	Number=Sing	dema	0
-cinematograph	1	dema-cinematograph-v	VerbForm=Inf	dema	0
-cinematographed	0	dema-cinematograph-v	Tense=Past	dema	0
-cinematographer	0	oewn-cinematographer-n	Number=Sing	dema	0
-cinematographers	0	oewn-cinematographer-n	Number=Plur	dema	0
-cinematographic	0	dema-cinematographic-a	Degree=Pos	dema	0
-cinematographically	0	dema-cinematographically-r	Degree=Pos	dema	0
-cinematographies	0	oewn-cinematography-n	Number=Plur	dema	0
-cinematographing	0	dema-cinematograph-v	VerbForm=Ger	dema	0
-cinematographist	0	dema-cinematographist-n	Number=Sing	dema	0
-cinematographists	0	dema-cinematographist-n	Number=Plur	dema	0
-cinematographs	0	dema-cinematograph-n	Number=Plur	dema	0
-cinematographs	1	dema-cinematograph-v	Person=3+Tense=Pres	dema	0
-cinematography	0	oewn-cinematography-n	Number=Sing	dema	0
-cineol	0	dema-cineol-n	Number=Sing	dema	0
-cineole	0	dema-cineole-n	Number=Sing	dema	0
-cineoles	0	dema-cineole-n	Number=Plur	dema	0
-cineols	0	dema-cineol-n	Number=Plur	dema	0
-cineradiographies	0	dema-cineradiography-n	Number=Plur	dema	0
-cineradiography	0	dema-cineradiography-n	Number=Sing	dema	0
-cinerararia	0	dema-cinerararia-n	Number=Sing	dema	0
-cinerararias	0	dema-cinerararia-n	Number=Plur	dema	0
-cineraria	0	oewn-cineraria-n	Number=Sing	dema	0
-cinerarias	0	oewn-cineraria-n	Number=Plur	dema	0
-cinerarily	0	dema-cinerary-r		dema	0
-cinerarium	0	oewn-cinerarium-n	Number=Sing	dema	0
-cinerariums	0	oewn-cinerarium-n	Number=Plur	dema	0
-cinerary	0	oewn-cinerary-a	Degree=Pos	dema	0
-cineration	0	dema-cineration-n	Number=Sing	dema	0
-cinerations	0	dema-cineration-n	Number=Plur	dema	0
-cinerator	0	dema-cinerator-n	Number=Sing	dema	0
-cinerators	0	dema-cinerator-n	Number=Plur	dema	0
-cinereous	0	dema-cinereous-a	Degree=Pos	dema	0
-cinereously	0	dema-cinereous-r		dema	0
-cinereousness	0	dema-cinereous-n	Number=Plur	dema	0
-cinerin	0	dema-cinerin-n	Number=Sing	dema	0
-cinerins	0	dema-cinerin-n	Number=Plur	dema	0
-cines	0	dema-cine-n	Number=Plur	dema	0
-cingular	0	dema-cingular-a	Degree=Pos	dema	0
-cingularly	0	dema-cingular-r		dema	0
-cingularness	0	dema-cingular-n	Number=Plur	dema	0
-cingulate	0	dema-cingulate-a	Degree=Pos	dema	0
-cingulated	0	dema-cingulated-a	Degree=Pos	dema	0
-cingulated	1	dema-cingulated-v	VerbForm=Inf	dema	0
-cingulateded	0	dema-cingulated-v	Tense=Past	dema	0
-cingulateding	0	dema-cingulated-v	VerbForm=Ger	dema	0
-cingulatedly	0	dema-cingulated-r		dema	0
-cingulateds	0	dema-cingulated-v	Person=3+Tense=Pres	dema	0
-cingulately	0	dema-cingulate-r		dema	0
-cingulateness	0	dema-cingulate-n	Number=Plur	dema	0
-cingulectomies	0	dema-cingulectomies-n	Number=Sing	dema	0
-cingulectomy	0	dema-cingulectomy-n	Number=Sing	dema	0
-cingulum	0	oewn-cingulum-n	Number=Sing	dema	0
-cingulums	0	oewn-cingulum-n	Number=Plur	dema	0
-cinnabar	0	oewn-cinnabar-n	Number=Sing	dema	0
-cinnabarine	0	dema-cinnabarine-a	Degree=Pos	dema	0
-cinnabarinely	0	dema-cinnabarine-r		dema	0
-cinnabars	0	oewn-cinnabar-n	Number=Plur	dema	0
-cinnamene	0	oewn-cinnamene-n	Number=Sing	dema	0
-cinnamenes	0	oewn-cinnamene-n	Number=Plur	dema	0
-cinnamic	0	dema-cinnamic-a	Degree=Pos	dema	0
-cinnamically	0	dema-cinnamic-r		dema	0
-cinnamicness	0	dema-cinnamic-n	Number=Plur	dema	0
-cinnamon	0	oewn-cinnamon-n	Number=Sing	dema	0
-cinnamoned	0	dema-cinnamoned-a	Degree=Pos	dema	0
-cinnamoned	1	dema-cinnamoned-v	VerbForm=Inf	dema	0
-cinnamoneded	0	dema-cinnamoned-v	Tense=Past	dema	0
-cinnamoneding	0	dema-cinnamoned-v	VerbForm=Ger	dema	0
-cinnamonedly	0	dema-cinnamoned-r		dema	0
-cinnamoneds	0	dema-cinnamoned-v	Person=3+Tense=Pres	dema	0
-cinnamonic	0	dema-cinnamonic-a	Degree=Pos	dema	0
-cinnamonically	0	dema-cinnamonic-r		dema	0
-cinnamons	0	oewn-cinnamon-n	Number=Plur	dema	0
-cinnamoyl	0	dema-cinnamoyl-a	Degree=Pos	dema	0
-cinnamoylly	0	dema-cinnamoyl-r		dema	0
-cinnamoylness	0	dema-cinnamoyl-n	Number=Plur	dema	0
-cinnamyl	0	dema-cinnamyl-a	Degree=Pos	dema	0
-cinnamylly	0	dema-cinnamyl-r		dema	0
-cinnamylness	0	dema-cinnamyl-n	Number=Plur	dema	0
-cinquain	0	dema-cinquain-n	Number=Sing	dema	0
-cinquains	0	dema-cinquain-n	Number=Plur	dema	0
-cinque	0	oewn-cinque-n	Number=Sing	dema	0
-cinquecentism	0	dema-cinquecentism-n	Number=Sing	dema	0
-cinquecentisms	0	dema-cinquecentism-n	Number=Plur	dema	0
-cinquecentist	0	dema-cinquecentist-n	Number=Sing	dema	0
-cinquecentists	0	dema-cinquecentist-n	Number=Plur	dema	0
-cinquecento	0	dema-cinquecento-n	Number=Sing	dema	0
-cinquecentoes	0	dema-cinquecento-n	Number=Plur	dema	0
-cinquecentos	0	dema-cinquecento-n	Number=Plur	dema	0
-cinquedea	0	dema-cinquedea-n	Number=Sing	dema	0
-cinquedeas	0	dema-cinquedea-n	Number=Plur	dema	0
-cinquefoil	0	oewn-cinquefoil-n	Number=Sing	dema	0
-cinquefoils	0	oewn-cinquefoil-n	Number=Plur	dema	0
-cinques	0	oewn-cinque-n	Number=Plur	dema	0
-cion	0	dema-cion-n	Number=Sing	dema	0
-cions	0	dema-cion-n	Number=Plur	dema	0
-cipher	0	oewn-cipher-n	Number=Sing	dema	0
-cipher	1	oewn-cipher-v	VerbForm=Inf	dema	0
-cipherable	0	dema-cipherable-a	Degree=Pos	dema	0
-cipherably	0	dema-cipherable-r		dema	0
-ciphered	0	oewn-cipher-v	Tense=Past	dema	0
-cipherer	0	dema-cipherer-n	Number=Sing	dema	0
-cipherers	0	dema-cipherer-n	Number=Plur	dema	0
-ciphering	0	oewn-cipher-v	VerbForm=Ger	dema	0
-cipheringly	0	dema-cipher-r		dema	0
-ciphers	0	oewn-cipher-n	Number=Plur	dema	0
-ciphers	1	oewn-cipher-v	Person=3+Tense=Pres	dema	0
-cipolin	0	dema-cipolin-n	Number=Sing	dema	0
-cipolins	0	dema-cipolin-n	Number=Plur	dema	0
-cippi	0	dema-cippi-n	Number=Sing	dema	0
-cippis	0	dema-cippi-n	Number=Plur	dema	0
-cippus	0	dema-cippus-n	Number=Sing	dema	0
-cippuses	0	dema-cippus-n	Number=Plur	dema	0
-cir	0	dema-cir-a	Degree=Pos	dema	0
-cir	1	dema-cir-n	Number=Sing	dema	0
-circ	0	dema-circ-n	Number=Sing	dema	0
-circa	0	dema-circa-p		dema	0
-circadian	0	oewn-circadian-a	Degree=Pos	dema	0
-circadianly	0	dema-circadian-r		dema	0
-circadianness	0	dema-circadian-n	Number=Plur	dema	0
-circinate	0	oewn-circinate-a	Degree=Pos	dema	0
-circinately	0	dema-circinately-r	Degree=Pos	dema	0
-circinateness	0	dema-circinate-n	Number=Plur	dema	0
-circle	0	oewn-circle-n	Number=Sing	dema	0
-circled	0	dema-circled-v	VerbForm=Inf	dema	0
-circleded	0	dema-circled-v	Tense=Past	dema	0
-circleder	0	dema-circled-n	Number=Plur	dema	0
-circleders	0	dema-circled-n	Number=Plur	dema	0
-circleding	0	dema-circled-v	VerbForm=Ger	dema	0
-circledingly	0	dema-circled-r		dema	0
-circleds	0	dema-circled-v	Person=3+Tense=Pres	dema	0
-circler	0	dema-circler-n	Number=Sing	dema	0
-circlers	0	dema-circler-n	Number=Plur	dema	0
-circles	0	oewn-circle-n	Number=Plur	dema	0
-circlet	0	oewn-circlet-n	Number=Sing	dema	0
-circlets	0	oewn-circlet-n	Number=Plur	dema	0
-circling	0	dema-circling-v	VerbForm=Inf	dema	0
-circlinged	0	dema-circling-v	Tense=Past	dema	0
-circlinger	0	dema-circling-n	Number=Plur	dema	0
-circlingers	0	dema-circling-n	Number=Plur	dema	0
-circlinging	0	dema-circling-v	VerbForm=Ger	dema	0
-circlingingly	0	dema-circling-r		dema	0
-circlings	0	dema-circling-v	Person=3+Tense=Pres	dema	0
-circs	0	dema-circ-n	Number=Plur	dema	0
-circuit	0	oewn-circuit-n	Number=Sing	dema	0
-circuit	1	oewn-circuit-v	VerbForm=Inf	dema	0
-circuital	0	dema-circuital-a	Degree=Pos	dema	0
-circuitally	0	dema-circuital-r		dema	0
-circuitalness	0	dema-circuital-n	Number=Plur	dema	0
-circuited	0	oewn-circuit-v	Tense=Past	dema	0
-circuiter	0	dema-circuiter-n	Number=Sing	dema	0
-circuiters	0	oewn-circuit-n	Number=Plur	dema	0
-circuities	0	dema-circuities-n	Number=Sing	dema	0
-circuiting	0	oewn-circuit-v	VerbForm=Ger	dema	0
-circuitingly	0	dema-circuit-r		dema	0
-circuitous	0	oewn-circuitous-a	Degree=Pos	dema	0
-circuitously	0	dema-circuitously-r	Degree=Pos	dema	0
-circuitousness	0	oewn-circuitousness-n	Number=Sing	dema	0
-circuitousnesses	0	oewn-circuitousness-n	Number=Plur	dema	0
-circuitries	0	oewn-circuitry-n	Number=Plur	dema	0
-circuitry	0	oewn-circuitry-n	Number=Sing	dema	0
-circuits	0	oewn-circuit-n	Number=Plur	dema	0
-circuits	1	oewn-circuit-v	Person=3+Tense=Pres	dema	0
-circuity	0	dema-circuity-n	Number=Sing	dema	0
-circulable	0	dema-circulable-a	Degree=Pos	dema	0
-circulably	0	dema-circulable-r		dema	0
-circular	0	oewn-circular-a	Degree=Pos	dema	0
-circular	1	oewn-circular-n	Number=Sing	dema	0
-circularisation	0	oewn-circularisation-n	Number=Sing	dema	0
-circularisations	0	oewn-circularisation-n	Number=Plur	dema	0
-circularise	0	oewn-circularise-v	VerbForm=Inf	dema	0
-circularised	0	dema-circularised-v	VerbForm=Inf	dema	0
-circulariser	0	dema-circulariser-n	Number=Sing	dema	0
-circularisers	0	dema-circulariser-n	Number=Plur	dema	0
-circularises	0	oewn-circularise-v	Person=3+Tense=Pres	dema	0
-circularising	0	dema-circularising-v	VerbForm=Inf	dema	0
-circularities	0	oewn-circularity-n	Number=Plur	dema	0
-circularity	0	oewn-circularity-n	Number=Sing	dema	0
-circularization	0	oewn-circularization-n	Number=Sing	dema	0
-circularizations	0	oewn-circularization-n	Number=Plur	dema	0
-circularize	0	oewn-circularize-v	VerbForm=Inf	dema	0
-circularized	0	dema-circularized-v	VerbForm=Inf	dema	0
-circularizer	0	dema-circularizer-n	Number=Sing	dema	0
-circularizers	0	dema-circularizer-n	Number=Plur	dema	0
-circularizes	0	oewn-circularize-v	Person=3+Tense=Pres	dema	0
-circularizing	0	dema-circularizing-v	VerbForm=Inf	dema	0
-circularly	0	oewn-circularly-r	Degree=Pos	dema	0
-circularness	0	dema-circularness-n	Number=Sing	dema	0
-circularnesses	0	dema-circularness-n	Number=Plur	dema	0
-circulars	0	oewn-circular-n	Number=Plur	dema	0
-circulate	0	oewn-circulate-v	VerbForm=Inf	dema	0
-circulated	0	dema-circulated-v	VerbForm=Inf	dema	0
-circulater	0	dema-circulate-n	Number=Plur	dema	0
-circulaters	0	dema-circulate-n	Number=Plur	dema	0
-circulates	0	oewn-circulate-v	Person=3+Tense=Pres	dema	0
-circulating	0	dema-circulating-v	VerbForm=Inf	dema	0
-circulatingly	0	dema-circulate-r		dema	0
-circulation	0	oewn-circulation-n	Number=Sing	dema	0
-circulations	0	oewn-circulation-n	Number=Plur	dema	0
-circulative	0	oewn-circulative-a	Degree=Pos	dema	0
-circulatively	0	dema-circulative-r		dema	0
-circulator	0	dema-circulator-n	Number=Sing	dema	0
-circulatorily	0	dema-circulatory-r		dema	0
-circulators	0	dema-circulator-n	Number=Plur	dema	0
-circulatory	0	oewn-circulatory-a	Degree=Pos	dema	0
-circuli	0	dema-circuli-n	Number=Sing	dema	0
-circulis	0	dema-circuli-n	Number=Plur	dema	0
-circulus	0	dema-circulus-n	Number=Sing	dema	0
-circuluses	0	dema-circulus-n	Number=Plur	dema	0
-circumambience	0	dema-circumambience-n	Number=Sing	dema	0
-circumambiences	0	dema-circumambience-n	Number=Plur	dema	0
-circumambiencies	0	dema-circumambiency-n	Number=Plur	dema	0
-circumambiency	0	dema-circumambiency-n	Number=Sing	dema	0
-circumambient	0	dema-circumambient-a	Degree=Pos	dema	0
-circumambiently	0	dema-circumambient-r		dema	0
-circumambulate	0	oewn-circumambulate-v	VerbForm=Inf	dema	0
-circumambulated	0	dema-circumambulated-v	VerbForm=Inf	dema	0
-circumambulates	0	oewn-circumambulate-v	Person=3+Tense=Pres	dema	0
-circumambulating	0	dema-circumambulating-v	VerbForm=Inf	dema	0
-circumambulation	0	dema-circumambulation-n	Number=Sing	dema	0
-circumambulations	0	dema-circumambulation-n	Number=Plur	dema	0
-circumambulator	0	dema-circumambulator-n	Number=Sing	dema	0
-circumambulatorily	0	dema-circumambulatory-r		dema	0
-circumambulators	0	dema-circumambulator-n	Number=Plur	dema	0
-circumambulatory	0	dema-circumambulatory-a	Degree=Pos	dema	0
-circumbasal	0	dema-circumbasal-a	Degree=Pos	dema	0
-circumbasally	0	dema-circumbasal-r		dema	0
-circumbendibus	0	dema-circumbendibus-n	Number=Sing	dema	0
-circumbendibuses	0	dema-circumbendibuses-n	Number=Sing	dema	0
-circumcenter	0	dema-circumcenter-n	Number=Sing	dema	0
-circumcenters	0	dema-circumcenter-n	Number=Plur	dema	0
-circumcise	0	oewn-circumcise-v	VerbForm=Inf	dema	0
-circumcised	0	dema-circumcised-v	VerbForm=Inf	dema	0
-circumciser	0	dema-circumciser-n	Number=Sing	dema	0
-circumcisers	0	dema-circumcise-n	Number=Plur	dema	0
-circumcises	0	oewn-circumcise-v	Person=3+Tense=Pres	dema	0
-circumcising	0	dema-circumcising-v	VerbForm=Inf	dema	0
-circumcisingly	0	dema-circumcise-r		dema	0
-circumcision	0	oewn-circumcision-n	Number=Sing	dema	0
-circumcisions	0	oewn-circumcision-n	Number=Plur	dema	0
-circumcolumnar	0	dema-circumcolumnar-a	Degree=Pos	dema	0
-circumcolumnarly	0	dema-circumcolumnar-r		dema	0
-circumference	0	oewn-circumference-n	Number=Sing	dema	0
-circumferences	0	oewn-circumference-n	Number=Plur	dema	0
-circumferential	0	oewn-circumferential-a	Degree=Pos	dema	0
-circumferentially	0	dema-circumferential-r		dema	0
-circumferentor	0	dema-circumferentor-n	Number=Sing	dema	0
-circumferentors	0	dema-circumferentor-n	Number=Plur	dema	0
-circumflex	0	oewn-circumflex-n	Number=Sing	dema	0
-circumflex	1	dema-circumflex-a	Degree=Pos	dema	0
-circumflexes	0	oewn-circumflex-n	Number=Plur	dema	0
-circumflexly	0	dema-circumflex-r		dema	0
-circumflexness	0	oewn-circumflex-n	Number=Plur	dema	0
-circumfluence	0	dema-circumfluence-n	Number=Sing	dema	0
-circumfluences	0	dema-circumfluence-n	Number=Plur	dema	0
-circumfluent	0	dema-circumfluent-a	Degree=Pos	dema	0
-circumfluently	0	dema-circumfluent-r		dema	0
-circumfluentness	0	dema-circumfluent-n	Number=Plur	dema	0
-circumfluous	0	dema-circumfluous-a	Degree=Pos	dema	0
-circumfluously	0	dema-circumfluous-r		dema	0
-circumfluousness	0	dema-circumfluous-n	Number=Plur	dema	0
-circumfuse	0	oewn-circumfuse-v	VerbForm=Inf	dema	0
-circumfused	0	dema-circumfused-v	VerbForm=Inf	dema	0
-circumfuser	0	dema-circumfuse-n	Number=Plur	dema	0
-circumfusers	0	dema-circumfuse-n	Number=Plur	dema	0
-circumfuses	0	oewn-circumfuse-v	Person=3+Tense=Pres	dema	0
-circumfusing	0	dema-circumfusing-v	VerbForm=Inf	dema	0
-circumfusingly	0	dema-circumfuse-r		dema	0
-circumfusion	0	dema-circumfusion-n	Number=Sing	dema	0
-circumfusions	0	dema-circumfusion-n	Number=Plur	dema	0
-circumgyration	0	dema-circumgyration-n	Number=Sing	dema	0
-circumgyrations	0	dema-circumgyration-n	Number=Plur	dema	0
-circumgyratorily	0	dema-circumgyratory-r		dema	0
-circumgyratory	0	dema-circumgyratory-a	Degree=Pos	dema	0
-circumincession	0	dema-circumincession-n	Number=Sing	dema	0
-circumincessions	0	dema-circumincession-n	Number=Plur	dema	0
-circumjacence	0	dema-circumjacence-n	Number=Sing	dema	0
-circumjacences	0	dema-circumjacence-n	Number=Plur	dema	0
-circumjacencies	0	dema-circumjacency-n	Number=Plur	dema	0
-circumjacency	0	dema-circumjacency-n	Number=Sing	dema	0
-circumjacent	0	dema-circumjacent-a	Degree=Pos	dema	0
-circumjacently	0	dema-circumjacent-r		dema	0
-circumlocution	0	oewn-circumlocution-n	Number=Sing	dema	0
-circumlocutional	0	dema-circumlocutional-a	Degree=Pos	dema	0
-circumlocutionally	0	dema-circumlocutional-r		dema	0
-circumlocutionarily	0	dema-circumlocutionary-r		dema	0
-circumlocutionary	0	dema-circumlocutionary-a	Degree=Pos	dema	0
-circumlocutionist	0	dema-circumlocutionist-n	Number=Sing	dema	0
-circumlocutionists	0	dema-circumlocutionist-n	Number=Plur	dema	0
-circumlocutions	0	oewn-circumlocution-n	Number=Plur	dema	0
-circumlocutorily	0	dema-circumlocutory-r		dema	0
-circumlocutory	0	oewn-circumlocutory-a	Degree=Pos	dema	0
-circumlunar	0	dema-circumlunar-a	Degree=Pos	dema	0
-circumlunarly	0	dema-circumlunar-r		dema	0
-circumnavigable	0	dema-circumnavigable-a	Degree=Pos	dema	0
-circumnavigably	0	dema-circumnavigable-r		dema	0
-circumnavigate	0	oewn-circumnavigate-v	VerbForm=Inf	dema	0
-circumnavigated	0	dema-circumnavigated-v	VerbForm=Inf	dema	0
-circumnavigates	0	oewn-circumnavigate-v	Person=3+Tense=Pres	dema	0
-circumnavigating	0	dema-circumnavigating-v	VerbForm=Inf	dema	0
-circumnavigation	0	oewn-circumnavigation-n	Number=Sing	dema	0
-circumnavigations	0	oewn-circumnavigation-n	Number=Plur	dema	0
-circumnavigator	0	dema-circumnavigator-n	Number=Sing	dema	0
-circumnavigatorily	0	dema-circumnavigatory-r		dema	0
-circumnavigators	0	dema-circumnavigator-n	Number=Plur	dema	0
-circumnavigatory	0	dema-circumnavigatory-a	Degree=Pos	dema	0
-circumnutate	0	dema-circumnutate-v	VerbForm=Inf	dema	0
-circumnutated	0	dema-circumnutated-v	VerbForm=Inf	dema	0
-circumnutates	0	dema-circumnutate-v	Person=3+Tense=Pres	dema	0
-circumnutating	0	dema-circumnutating-v	VerbForm=Inf	dema	0
-circumnutation	0	dema-circumnutation-n	Number=Sing	dema	0
-circumnutations	0	dema-circumnutation-n	Number=Plur	dema	0
-circumnutatorily	0	dema-circumnutatory-r		dema	0
-circumnutatory	0	dema-circumnutatory-a	Degree=Pos	dema	0
-circumocular	0	dema-circumocular-a	Degree=Pos	dema	0
-circumocularly	0	dema-circumocular-r		dema	0
-circumpolar	0	oewn-circumpolar-a	Degree=Pos	dema	0
-circumpolarly	0	dema-circumpolar-r		dema	0
-circumradii	0	dema-circumradii-n	Number=Sing	dema	0
-circumradiis	0	dema-circumradii-n	Number=Plur	dema	0
-circumradius	0	dema-circumradius-n	Number=Sing	dema	0
-circumradiuses	0	dema-circumradius-n	Number=Plur	dema	0
-circumrotate	0	dema-circumrotate-v	VerbForm=Inf	dema	0
-circumrotated	0	dema-circumrotated-v	VerbForm=Inf	dema	0
-circumrotates	0	dema-circumrotate-v	Person=3+Tense=Pres	dema	0
-circumrotating	0	dema-circumrotating-v	VerbForm=Inf	dema	0
-circumrotation	0	dema-circumrotation-n	Number=Sing	dema	0
-circumrotations	0	dema-circumrotation-n	Number=Plur	dema	0
-circumrotatorily	0	dema-circumrotatory-r		dema	0
-circumrotatory	0	dema-circumrotatory-a	Degree=Pos	dema	0
-circumscissile	0	dema-circumscissile-a	Degree=Pos	dema	0
-circumscissilely	0	dema-circumscissile-r		dema	0
-circumscribable	0	dema-circumscribable-a	Degree=Pos	dema	0
-circumscribably	0	dema-circumscribable-r		dema	0
-circumscribe	0	oewn-circumscribe-v	VerbForm=Inf	dema	0
-circumscribed	0	dema-circumscribed-v	VerbForm=Inf	dema	0
-circumscriber	0	dema-circumscriber-n	Number=Sing	dema	0
-circumscribers	0	dema-circumscribe-n	Number=Plur	dema	0
-circumscribes	0	oewn-circumscribe-v	Person=3+Tense=Pres	dema	0
-circumscribing	0	dema-circumscribing-v	VerbForm=Inf	dema	0
-circumscribingly	0	dema-circumscribe-r		dema	0
-circumscription	0	oewn-circumscription-n	Number=Sing	dema	0
-circumscriptions	0	oewn-circumscription-n	Number=Plur	dema	0
-circumscriptive	0	dema-circumscriptive-a	Degree=Pos	dema	0
-circumscriptively	0	dema-circumscriptively-r	Degree=Pos	dema	0
-circumsolar	0	dema-circumsolar-a	Degree=Pos	dema	0
-circumsolarly	0	dema-circumsolar-r		dema	0
-circumspect	0	oewn-circumspect-a	Degree=Pos	dema	0
-circumspection	0	oewn-circumspection-n	Number=Sing	dema	0
-circumspections	0	oewn-circumspection-n	Number=Plur	dema	0
-circumspective	0	dema-circumspective-a	Degree=Pos	dema	0
-circumspectively	0	dema-circumspectively-r	Degree=Pos	dema	0
-circumspectly	0	oewn-circumspectly-r	Degree=Pos	dema	0
-circumspectness	0	dema-circumspectness-n	Number=Sing	dema	0
-circumspectnesses	0	dema-circumspectness-n	Number=Plur	dema	0
-circumstance	0	oewn-circumstance-n	Number=Sing	dema	0
-circumstance	1	dema-circumstance-v	VerbForm=Inf	dema	0
-circumstanced	0	dema-circumstanced-v	VerbForm=Inf	dema	0
-circumstancer	0	oewn-circumstance-n	Number=Plur	dema	0
-circumstancers	0	oewn-circumstance-n	Number=Plur	dema	0
-circumstances	0	oewn-circumstance-n	Number=Plur	dema	0
-circumstances	1	dema-circumstance-v	Person=3+Tense=Pres	dema	0
-circumstancing	0	dema-circumstancing-v	VerbForm=Inf	dema	0
-circumstancingly	0	dema-circumstance-r		dema	0
-circumstantial	0	oewn-circumstantial-a	Degree=Pos	dema	0
-circumstantialities	0	dema-circumstantialities-n	Number=Sing	dema	0
-circumstantiality	0	dema-circumstantiality-n	Number=Sing	dema	0
-circumstantially	0	oewn-circumstantially-r	Degree=Pos	dema	0
-circumstantiate	0	oewn-circumstantiate-v	VerbForm=Inf	dema	0
-circumstantiated	0	dema-circumstantiated-v	VerbForm=Inf	dema	0
-circumstantiates	0	oewn-circumstantiate-v	Person=3+Tense=Pres	dema	0
-circumstantiating	0	dema-circumstantiating-v	VerbForm=Inf	dema	0
-circumstantiation	0	dema-circumstantiation-n	Number=Sing	dema	0
-circumstantiations	0	dema-circumstantiation-n	Number=Plur	dema	0
-circumvallate	0	oewn-circumvallate-v	VerbForm=Inf	dema	0
-circumvallated	0	dema-circumvallated-v	VerbForm=Inf	dema	0
-circumvallates	0	oewn-circumvallate-v	Person=3+Tense=Pres	dema	0
-circumvallating	0	dema-circumvallating-v	VerbForm=Inf	dema	0
-circumvallation	0	dema-circumvallation-n	Number=Sing	dema	0
-circumvallations	0	dema-circumvallation-n	Number=Plur	dema	0
-circumvascular	0	dema-circumvascular-a	Degree=Pos	dema	0
-circumvascularly	0	dema-circumvascular-r		dema	0
-circumvent	0	oewn-circumvent-v	VerbForm=Inf	dema	0
-circumvented	0	oewn-circumvent-v	Tense=Past	dema	0
-circumventer	0	dema-circumventer-n	Number=Sing	dema	0
-circumventers	0	dema-circumvent-n	Number=Plur	dema	0
-circumventing	0	oewn-circumvent-v	VerbForm=Ger	dema	0
-circumventingly	0	dema-circumvent-r		dema	0
-circumvention	0	oewn-circumvention-n	Number=Sing	dema	0
-circumventions	0	oewn-circumvention-n	Number=Plur	dema	0
-circumventive	0	dema-circumventive-a	Degree=Pos	dema	0
-circumventively	0	dema-circumventive-r		dema	0
-circumventor	0	dema-circumventor-n	Number=Sing	dema	0
-circumventors	0	dema-circumventor-n	Number=Plur	dema	0
-circumvents	0	oewn-circumvent-v	Person=3+Tense=Pres	dema	0
-circumvolution	0	oewn-circumvolution-n	Number=Sing	dema	0
-circumvolutions	0	oewn-circumvolution-n	Number=Plur	dema	0
-circumvolutorily	0	dema-circumvolutory-r		dema	0
-circumvolutory	0	dema-circumvolutory-a	Degree=Pos	dema	0
-circumvolve	0	oewn-circumvolve-v	VerbForm=Inf	dema	0
-circumvolved	0	dema-circumvolved-v	VerbForm=Inf	dema	0
-circumvolver	0	dema-circumvolve-n	Number=Plur	dema	0
-circumvolvers	0	dema-circumvolve-n	Number=Plur	dema	0
-circumvolves	0	oewn-circumvolve-v	Person=3+Tense=Pres	dema	0
-circumvolving	0	dema-circumvolving-v	VerbForm=Inf	dema	0
-circumvolvingly	0	dema-circumvolve-r		dema	0
-circus	0	oewn-circus-n	Number=Sing	dema	0
-circuses	0	dema-circuses-n	Number=Sing	dema	0
-cirly	0	dema-cir-r		dema	0
-cirness	0	dema-cir-n	Number=Plur	dema	0
-cirque	0	oewn-cirque-n	Number=Sing	dema	0
-cirques	0	oewn-cirque-n	Number=Plur	dema	0
-cirrate	0	dema-cirrate-a	Degree=Pos	dema	0
-cirrately	0	dema-cirrate-r		dema	0
-cirrateness	0	dema-cirrate-n	Number=Plur	dema	0
-cirrer	0	dema-cir-a	Degree=Cmp	dema	0
-cirrest	0	dema-cir-a	Degree=Sup	dema	0
-cirrhosed	0	dema-cirrhosed-a	Degree=Pos	dema	0
-cirrhosed	1	dema-cirrhosed-v	VerbForm=Inf	dema	0
-cirrhoseded	0	dema-cirrhosed-v	Tense=Past	dema	0
-cirrhoseder	0	dema-cirrhosed-n	Number=Plur	dema	0
-cirrhoseders	0	dema-cirrhosed-n	Number=Plur	dema	0
-cirrhoseding	0	dema-cirrhosed-v	VerbForm=Ger	dema	0
-cirrhosedingly	0	dema-cirrhosed-r		dema	0
-cirrhosedly	0	dema-cirrhosed-r		dema	0
-cirrhosedness	0	dema-cirrhosed-n	Number=Plur	dema	0
-cirrhoseds	0	dema-cirrhosed-v	Person=3+Tense=Pres	dema	0
-cirrhosis	0	oewn-cirrhosis-n	Number=Sing	dema	0
-cirrhotic	0	dema-cirrhotic-a	Degree=Pos	dema	0
-cirrhotically	0	dema-cirrhotic-r		dema	0
-cirrhoticness	0	dema-cirrhotic-n	Number=Plur	dema	0
-cirri	0	dema-cirri-n	Number=Sing	dema	0
-cirriform	0	dema-cirriform-a	Degree=Pos	dema	0
-cirriformly	0	dema-cirriform-r		dema	0
-cirriformness	0	dema-cirriform-n	Number=Plur	dema	0
-cirriped	0	oewn-cirriped-n	Number=Sing	dema	0
-cirriped	1	dema-cirriped-a	Degree=Pos	dema	0
-cirripede	0	oewn-cirripede-n	Number=Sing	dema	0
-cirripede	1	dema-cirripede-a	Degree=Pos	dema	0
-cirripedely	0	dema-cirripede-r		dema	0
-cirripedeness	0	oewn-cirripede-n	Number=Plur	dema	0
-cirripedes	0	oewn-cirripede-n	Number=Plur	dema	0
-cirripedly	0	dema-cirriped-r		dema	0
-cirripedness	0	oewn-cirriped-n	Number=Plur	dema	0
-cirripeds	0	oewn-cirriped-n	Number=Plur	dema	0
-cirris	0	dema-cirri-n	Number=Plur	dema	0
-cirrocumular	0	dema-cirrocumular-a	Degree=Pos	dema	0
-cirrocumularly	0	dema-cirrocumular-r		dema	0
-cirrocumulative	0	dema-cirrocumulative-a	Degree=Pos	dema	0
-cirrocumulatively	0	dema-cirrocumulative-r		dema	0
-cirrocumulous	0	dema-cirrocumulous-a	Degree=Pos	dema	0
-cirrocumulously	0	dema-cirrocumulous-r		dema	0
-cirrocumulus	0	oewn-cirrocumulus-n	Number=Sing	dema	0
-cirrocumuluses	0	oewn-cirrocumulus-n	Number=Plur	dema	0
-cirrose	0	dema-cirrose-a	Degree=Pos	dema	0
-cirrosely	0	dema-cirrosely-r	Degree=Pos	dema	0
-cirroseness	0	dema-cirrose-n	Number=Plur	dema	0
-cirrostrative	0	dema-cirrostrative-a	Degree=Pos	dema	0
-cirrostratively	0	dema-cirrostrative-r		dema	0
-cirrostratus	0	oewn-cirrostratus-n	Number=Sing	dema	0
-cirrostratuses	0	oewn-cirrostratus-n	Number=Plur	dema	0
-cirrus	0	oewn-cirrus-n	Number=Sing	dema	0
-cirruses	0	oewn-cirrus-n	Number=Plur	dema	0
-cirs	0	dema-cir-n	Number=Plur	dema	0
-cirsectomies	0	dema-cirsectomies-n	Number=Sing	dema	0
-cirsectomy	0	dema-cirsectomy-n	Number=Sing	dema	0
-cirsoid	0	dema-cirsoid-a	Degree=Pos	dema	0
-cirsoider	0	dema-cirsoid-a	Degree=Cmp	dema	0
-cirsoidest	0	dema-cirsoid-a	Degree=Sup	dema	0
-cirsoidly	0	dema-cirsoid-r		dema	0
-cirsoidness	0	dema-cirsoid-n	Number=Plur	dema	0
-cisalpine	0	oewn-cisalpine-a	Degree=Pos	dema	0
-cisalpinely	0	dema-cisalpine-r		dema	0
-cisalpineness	0	dema-cisalpine-n	Number=Plur	dema	0
-cisatlantic	0	dema-cisatlantic-a	Degree=Pos	dema	0
-cisatlantically	0	dema-cisatlantic-r		dema	0
-cisco	0	oewn-cisco-n	Number=Sing	dema	0
-ciscoes	0	dema-ciscoes-n	Number=Sing	dema	0
-ciscos	0	dema-ciscos-n	Number=Sing	dema	0
-ciseaux	0	dema-ciseaux-n	Number=Sing	dema	0
-ciseauxes	0	dema-ciseaux-n	Number=Plur	dema	0
-ciseleur	0	dema-ciseleur-n	Number=Sing	dema	0
-ciseleurs	0	dema-ciseleurs-n	Number=Sing	dema	0
-ciselure	0	dema-ciselure-n	Number=Sing	dema	0
-ciselures	0	dema-ciselures-n	Number=Sing	dema	0
-cising	0	dema-cising-v	VerbForm=Inf	dema	0
-cisinged	0	dema-cising-v	Tense=Past	dema	0
-cisinger	0	dema-cising-n	Number=Plur	dema	0
-cisingers	0	dema-cising-n	Number=Plur	dema	0
-cisinging	0	dema-cising-v	VerbForm=Ger	dema	0
-cisingingly	0	dema-cising-r		dema	0
-cisings	0	dema-cising-v	Person=3+Tense=Pres	dema	0
-cislunar	0	oewn-cislunar-a	Degree=Pos	dema	0
-cislunarly	0	dema-cislunar-r		dema	0
-cislunarness	0	dema-cislunar-n	Number=Plur	dema	0
-cismontane	0	oewn-cismontane-a	Degree=Pos	dema	0
-cismontanely	0	dema-cismontane-r		dema	0
-cismontaneness	0	dema-cismontane-n	Number=Plur	dema	0
-cispadane	0	dema-cispadane-a	Degree=Pos	dema	0
-cispadanely	0	dema-cispadane-r		dema	0
-cispadaneness	0	dema-cispadane-n	Number=Plur	dema	0
-cissing	0	dema-cissing-n	Number=Sing	dema	0
-cissings	0	dema-cissing-n	Number=Plur	dema	0
-cissoid	0	dema-cissoid-n	Number=Sing	dema	0
-cissoid	1	dema-cissoid-a	Degree=Pos	dema	0
-cissoidal	0	dema-cissoidal-a	Degree=Pos	dema	0
-cissoidally	0	dema-cissoidal-r		dema	0
-cissoidalness	0	dema-cissoidal-n	Number=Plur	dema	0
-cissoider	0	dema-cissoid-a	Degree=Cmp	dema	0
-cissoidest	0	dema-cissoid-a	Degree=Sup	dema	0
-cissoidly	0	dema-cissoid-r		dema	0
-cissoidness	0	dema-cissoid-n	Number=Plur	dema	0
-cissoids	0	dema-cissoid-n	Number=Plur	dema	0
-cist	0	dema-cist-n	Number=Sing	dema	0
-cistaceous	0	dema-cistaceous-a	Degree=Pos	dema	0
-cistaceously	0	dema-cistaceous-r		dema	0
-cistaceousness	0	dema-cistaceous-n	Number=Plur	dema	0
-cisted	0	dema-cisted-a	Degree=Pos	dema	0
-cisted	1	dema-cisted-v	VerbForm=Inf	dema	0
-cisteded	0	dema-cisted-v	Tense=Past	dema	0
-cisteder	0	dema-cisted-n	Number=Plur	dema	0
-cisteders	0	dema-cisted-n	Number=Plur	dema	0
-cisteding	0	dema-cisted-v	VerbForm=Ger	dema	0
-cistedingly	0	dema-cisted-r		dema	0
-cistedly	0	dema-cisted-r		dema	0
-cistedness	0	dema-cisted-n	Number=Plur	dema	0
-cisteds	0	dema-cisted-v	Person=3+Tense=Pres	dema	0
-cistern	0	oewn-cistern-n	Number=Sing	dema	0
-cisterna	0	oewn-cisterna-n	Number=Sing	dema	0
-cisternal	0	dema-cisternal-a	Degree=Pos	dema	0
-cisternally	0	dema-cisternal-r		dema	0
-cisternalness	0	dema-cisternal-n	Number=Plur	dema	0
-cisternas	0	oewn-cisterna-n	Number=Plur	dema	0
-cisterns	0	oewn-cistern-n	Number=Plur	dema	0
-cistic	0	dema-cistic-a	Degree=Pos	dema	0
-cistically	0	dema-cistic-r		dema	0
-cisticness	0	dema-cistic-n	Number=Plur	dema	0
-cistophoric	0	dema-cistophoric-a	Degree=Pos	dema	0
-cistophorically	0	dema-cistophoric-r		dema	0
-cistophorus	0	dema-cistophorus-n	Number=Sing	dema	0
-cistophoruses	0	dema-cistophorus-n	Number=Plur	dema	0
-cistori	0	dema-cistori-n	Number=Sing	dema	0
-cistoris	0	dema-cistori-n	Number=Plur	dema	0
-cistron	0	oewn-cistron-n	Number=Sing	dema	0
-cistrons	0	oewn-cistron-n	Number=Plur	dema	0
-cists	0	dema-cist-n	Number=Plur	dema	0
-cistus	0	dema-cistus-n	Number=Sing	dema	0
-cistuses	0	dema-cistus-n	Number=Plur	dema	0
-cistvaen	0	dema-cistvaen-n	Number=Sing	dema	0
-cistvaens	0	dema-cistvaen-n	Number=Plur	dema	0
-cit	0	dema-cit-n	Number=Sing	dema	0
-citable	0	dema-citable-a	Degree=Pos	dema	0
-citableness	0	dema-citable-n	Number=Plur	dema	0
-citably	0	dema-citable-r		dema	0
-citadel	0	oewn-citadel-n	Number=Sing	dema	0
-citadels	0	oewn-citadel-n	Number=Plur	dema	0
-citation	0	oewn-citation-n	Number=Sing	dema	0
-citations	0	oewn-citation-n	Number=Plur	dema	0
-citatorily	0	dema-citatory-r		dema	0
-citatory	0	dema-citatory-a	Degree=Pos	dema	0
-cite	0	oewn-cite-v	VerbForm=Inf	dema	0
-citeable	0	dema-citeable-a	Degree=Pos	dema	0
-citeableness	0	dema-citeable-n	Number=Plur	dema	0
-citeably	0	dema-citeable-r		dema	0
-cited	0	dema-cited-v	VerbForm=Inf	dema	0
-citer	0	dema-citer-n	Number=Sing	dema	0
-citers	0	oewn-cite-n	Number=Plur	dema	0
-cites	0	oewn-cite-v	Person=3+Tense=Pres	dema	0
-cithara	0	dema-cithara-n	Number=Sing	dema	0
-citharas	0	dema-cithara-n	Number=Plur	dema	0
-citharist	0	dema-citharist-n	Number=Sing	dema	0
-citharists	0	dema-citharist-n	Number=Plur	dema	0
-cither	0	oewn-cither-n	Number=Sing	dema	0
-cithers	0	oewn-cither-n	Number=Plur	dema	0
-citied	0	dema-citied-a	Degree=Pos	dema	0
-citied	1	dema-citied-v	VerbForm=Inf	dema	0
-citieded	0	dema-citied-v	Tense=Past	dema	0
-citieder	0	dema-citied-n	Number=Plur	dema	0
-citieders	0	dema-citied-n	Number=Plur	dema	0
-citieding	0	dema-citied-v	VerbForm=Ger	dema	0
-citiedingly	0	dema-citied-r		dema	0
-citiedly	0	dema-citied-r		dema	0
-citiedness	0	dema-citied-n	Number=Plur	dema	0
-citieds	0	dema-citied-v	Person=3+Tense=Pres	dema	0
-cities	0	dema-cities-n	Number=Sing	dema	0
-citification	0	dema-citification-n	Number=Sing	dema	0
-citifications	0	dema-citification-n	Number=Plur	dema	0
-citified	0	oewn-citified-a	Degree=Pos	dema	0
-citified	1	dema-citified-v	VerbForm=Inf	dema	0
-citifiedly	0	dema-citified-r		dema	0
-citifier	0	dema-citify-n	Number=Plur	dema	0
-citifiers	0	dema-citify-n	Number=Plur	dema	0
-citifies	0	oewn-citify-v	Person=3+Tense=Pres	dema	0
-citify	0	oewn-citify-v	VerbForm=Inf	dema	0
-citifying	0	dema-citifying-v	VerbForm=Inf	dema	0
-citing	0	dema-citing-v	VerbForm=Inf	dema	0
-citingly	0	dema-cite-r		dema	0
-citizen	0	oewn-citizen-n	Number=Sing	dema	0
-citizenly	0	dema-citizenly-a	Degree=Pos	dema	0
-citizenries	0	dema-citizenries-n	Number=Sing	dema	0
-citizenry	0	oewn-citizenry-n	Number=Sing	dema	0
-citizens	0	oewn-citizen-n	Number=Plur	dema	0
-citizenship	0	oewn-citizenship-n	Number=Sing	dema	0
-citizenships	0	oewn-citizenship-n	Number=Plur	dema	0
-citole	0	oewn-citole-n	Number=Sing	dema	0
-citoles	0	oewn-citole-n	Number=Plur	dema	0
-citoyen	0	dema-citoyen-n	Number=Sing	dema	0
-citoyens	0	dema-citoyens-n	Number=Sing	dema	0
-citral	0	dema-citral-n	Number=Sing	dema	0
-citrals	0	dema-citral-n	Number=Plur	dema	0
-citrange	0	oewn-citrange-n	Number=Sing	dema	0
-citranges	0	oewn-citrange-n	Number=Plur	dema	0
-citrate	0	oewn-citrate-n	Number=Sing	dema	0
-citrates	0	oewn-citrate-n	Number=Plur	dema	0
-citreous	0	dema-citreous-a	Degree=Pos	dema	0
-citreously	0	dema-citreous-r		dema	0
-citreousness	0	dema-citreous-n	Number=Plur	dema	0
-citric	0	oewn-citric-a	Degree=Pos	dema	0
-citrically	0	dema-citric-r		dema	0
-citricness	0	dema-citric-n	Number=Plur	dema	0
-citriculture	0	dema-citriculture-n	Number=Sing	dema	0
-citricultures	0	dema-citriculture-n	Number=Plur	dema	0
-citriculturist	0	dema-citriculturist-n	Number=Sing	dema	0
-citriculturists	0	dema-citriculturist-n	Number=Plur	dema	0
-citrin	0	oewn-citrin-n	Number=Sing	dema	0
-citrine	0	oewn-citrine-n	Number=Sing	dema	0
-citrines	0	oewn-citrine-n	Number=Plur	dema	0
-citrins	0	oewn-citrin-n	Number=Plur	dema	0
-citron	0	oewn-citron-n	Number=Sing	dema	0
-citronalis	0	dema-citronalis-n	Number=Sing	dema	0
-citronella	0	dema-citronella-n	Number=Sing	dema	0
-citronellal	0	dema-citronellal-n	Number=Sing	dema	0
-citronellals	0	dema-citronellal-n	Number=Plur	dema	0
-citronellas	0	dema-citronella-n	Number=Plur	dema	0
-citronellol	0	dema-citronellol-n	Number=Sing	dema	0
-citronellols	0	dema-citronellol-n	Number=Plur	dema	0
-citrons	0	oewn-citron-n	Number=Plur	dema	0
-citrulline	0	oewn-citrulline-n	Number=Sing	dema	0
-citrullines	0	oewn-citrulline-n	Number=Plur	dema	0
-citrus	0	oewn-citrus-n	Number=Sing	dema	0
-citrus	1	dema-citrus-a	Degree=Pos	dema	0
-citruser	0	dema-citrus-a	Degree=Cmp	dema	0
-citruses	0	dema-citruses-n	Number=Sing	dema	0
-citrusest	0	dema-citrus-a	Degree=Sup	dema	0
-citrusly	0	dema-citrus-r		dema	0
-citrusness	0	oewn-citrus-n	Number=Plur	dema	0
-cits	0	dema-cit-n	Number=Plur	dema	0
-cittern	0	oewn-cittern-n	Number=Sing	dema	0
-citterns	0	oewn-cittern-n	Number=Plur	dema	0
-city	0	oewn-city-n	Number=Sing	dema	0
-cityfied	0	oewn-cityfied-a	Degree=Pos	dema	0
-cityfied	1	dema-cityfied-v	VerbForm=Inf	dema	0
-cityfieded	0	dema-cityfied-v	Tense=Past	dema	0
-cityfieder	0	dema-cityfied-n	Number=Plur	dema	0
-cityfieders	0	dema-cityfied-n	Number=Plur	dema	0
-cityfieding	0	dema-cityfied-v	VerbForm=Ger	dema	0
-cityfiedingly	0	dema-cityfied-r		dema	0
-cityfiedly	0	dema-cityfied-r		dema	0
-cityfiedness	0	dema-cityfied-n	Number=Plur	dema	0
-cityfieds	0	dema-cityfied-v	Person=3+Tense=Pres	dema	0
-cityless	0	dema-cityless-a	Degree=Pos	dema	0
-citylessly	0	dema-cityless-r		dema	0
-citylessness	0	dema-cityless-n	Number=Plur	dema	0
-citylike	0	dema-citylike-a	Degree=Pos	dema	0
-citylikely	0	dema-citylike-r		dema	0
-citylikeness	0	dema-citylike-n	Number=Plur	dema	0
-cityscape	0	oewn-cityscape-n	Number=Sing	dema	0
-cityscapes	0	oewn-cityscape-n	Number=Plur	dema	0
-cityward	0	dema-cityward-r	Degree=Pos	dema	0
-civ	0	dema-civ-n	Number=Sing	dema	0
-civet	0	oewn-civet-n	Number=Sing	dema	0
-civetlike	0	dema-civetlike-a	Degree=Pos	dema	0
-civetlikely	0	dema-civetlike-r		dema	0
-civetlikeness	0	dema-civetlike-n	Number=Plur	dema	0
-civets	0	oewn-civet-n	Number=Plur	dema	0
-civic	0	oewn-civic-a	Degree=Pos	dema	0
-civically	0	dema-civically-r	Degree=Pos	dema	0
-civicness	0	dema-civic-n	Number=Plur	dema	0
-civics	0	oewn-civics-n	Number=Sing	dema	0
-civicses	0	oewn-civics-n	Number=Plur	dema	0
-civies	0	oewn-civies-n	Number=Sing	dema	0
-civieses	0	oewn-civies-n	Number=Plur	dema	0
-civil	0	oewn-civil-a	Degree=Pos	dema	0
-civiler	0	oewn-civil-a	Degree=Cmp	dema	0
-civilest	0	oewn-civil-a	Degree=Sup	dema	0
-civilian	0	oewn-civilian-n	Number=Sing	dema	0
-civilians	0	oewn-civilian-n	Number=Plur	dema	0
-civilisable	0	dema-civilisable-a	Degree=Pos	dema	0
-civilisably	0	dema-civilisable-r		dema	0
-civilisation	0	oewn-civilisation-n	Number=Sing	dema	0
-civilisational	0	dema-civilisational-a	Degree=Pos	dema	0
-civilisationally	0	dema-civilisational-r		dema	0
-civilisations	0	oewn-civilisation-n	Number=Plur	dema	0
-civilisatorily	0	dema-civilisatory-r		dema	0
-civilisatory	0	dema-civilisatory-a	Degree=Pos	dema	0
-civilise	0	oewn-civilise-v	VerbForm=Inf	dema	0
-civilised	0	dema-civilised-v	VerbForm=Inf	dema	0
-civilisedness	0	dema-civilisedness-n	Number=Sing	dema	0
-civilisednesses	0	dema-civilisedness-n	Number=Plur	dema	0
-civiliser	0	dema-civiliser-n	Number=Sing	dema	0
-civilisers	0	dema-civilise-n	Number=Plur	dema	0
-civilises	0	oewn-civilise-v	Person=3+Tense=Pres	dema	0
-civilising	0	dema-civilising-v	VerbForm=Inf	dema	0
-civilisingly	0	dema-civilise-r		dema	0
-civilities	0	dema-civilities-n	Number=Sing	dema	0
-civility	0	oewn-civility-n	Number=Sing	dema	0
-civilizable	0	dema-civilizable-a	Degree=Pos	dema	0
-civilizably	0	dema-civilizable-r		dema	0
-civilization	0	oewn-civilization-n	Number=Sing	dema	0
-civilizational	0	dema-civilizational-a	Degree=Pos	dema	0
-civilizationally	0	dema-civilizational-r		dema	0
-civilizations	0	oewn-civilization-n	Number=Plur	dema	0
-civilizatorily	0	dema-civilizatory-r		dema	0
-civilizatory	0	dema-civilizatory-a	Degree=Pos	dema	0
-civilize	0	oewn-civilize-v	VerbForm=Inf	dema	0
-civilized	0	oewn-civilized-a	Degree=Pos	dema	0
-civilized	1	dema-civilized-v	VerbForm=Inf	dema	0
-civilizedly	0	dema-civilized-r		dema	0
-civilizedness	0	dema-civilizedness-n	Number=Sing	dema	0
-civilizednesses	0	dema-civilizedness-n	Number=Plur	dema	0
-civilizer	0	dema-civilizer-n	Number=Sing	dema	0
-civilizers	0	dema-civilize-n	Number=Plur	dema	0
-civilizes	0	oewn-civilize-v	Person=3+Tense=Pres	dema	0
-civilizing	0	dema-civilizing-v	VerbForm=Inf	dema	0
-civilizingly	0	dema-civilize-r		dema	0
-civilly	0	oewn-civilly-r	Degree=Pos	dema	0
-civilness	0	dema-civilness-n	Number=Sing	dema	0
-civilnesses	0	dema-civilness-n	Number=Plur	dema	0
-civism	0	dema-civism-n	Number=Sing	dema	0
-civisms	0	dema-civism-n	Number=Plur	dema	0
-civs	0	dema-civ-n	Number=Plur	dema	0
-civvies	0	oewn-civvies-n	Number=Sing	dema	0
-civvy	0	dema-civvy-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CIA	0	oewn-CIA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CIAS	0	oewn-CIA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CID	0	oewn-CID-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CIDS	0	oewn-CID-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CIM	0	oewn-CIM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CIMS	0	oewn-CIM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CIO	0	oewn-CIO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CIOS	0	oewn-CIO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CIS	0	oewn-CIS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CISC	0	oewn-CISC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CISCS	0	oewn-CISC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Ci	0	oewn-ci-a	Degree=Pos	dema	0			oewn_form
+Ci	1	oewn-Ci-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cialis	0	oewn-Cialis-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cibotium barometz	0	oewn-Cibotium_barometz-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cibotium barometzes	0	oewn-Cibotium_barometz-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cicer arietinum	0	oewn-Cicer_arietinum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cicer arietinums	0	oewn-Cicer_arietinum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ciceronianism	0	oewn-Ciceronianism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Ciceronianisms	0	oewn-Ciceronianism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cichorium endivia	0	oewn-Cichorium_endivia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cichorium endivias	0	oewn-Cichorium_endivia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cichorium intybus	0	oewn-Cichorium_intybus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ciconia ciconia	0	oewn-Ciconia_ciconia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ciconia ciconias	0	oewn-Ciconia_ciconia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ciconia nigra	0	oewn-Ciconia_nigra-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ciconia nigras	0	oewn-Ciconia_nigra-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cicuta virosa	0	oewn-Cicuta_virosa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cicuta virosas	0	oewn-Cicuta_virosa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cimex lectularius	0	oewn-Cimex_lectularius-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cimicifuga americana	0	oewn-Cimicifuga_americana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cimicifuga americanas	0	oewn-Cimicifuga_americana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cimicifuga foetida	0	oewn-Cimicifuga_foetida-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cimicifuga foetidas	0	oewn-Cimicifuga_foetida-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cimicifuga racemosa	0	oewn-Cimicifuga_racemosa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cimicifuga racemosas	0	oewn-Cimicifuga_racemosa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cimmerian	0	oewn-Cimmerian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Cinchona calisaya	0	oewn-Cinchona_calisaya-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinchona calisayas	0	oewn-Cinchona_calisaya-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinchona cordifolia	0	oewn-Cinchona_cordifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinchona cordifolias	0	oewn-Cinchona_cordifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinchona lancifolia	0	oewn-Cinchona_lancifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinchona lancifolias	0	oewn-Cinchona_lancifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinchona ledgeriana	0	oewn-Cinchona_ledgeriana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinchona ledgerianas	0	oewn-Cinchona_ledgeriana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinchona officinalis	0	oewn-Cinchona_officinalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinchona pubescens	0	oewn-Cinchona_pubescens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinclus aquaticus	0	oewn-Cinclus_aquaticus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinclus mexicanus	0	oewn-Cinclus_mexicanus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinco de Mayo	0	oewn-Cinco_de_Mayo-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cincos de Mayo	0	oewn-Cinco_de_Mayo-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinderella	0	oewn-Cinderella-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cinderellas	0	oewn-Cinderella-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cineraria maritima	0	oewn-Cineraria_maritima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cineraria maritimas	0	oewn-Cineraria_maritima-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinnamomum camphora	0	oewn-Cinnamomum_camphora-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinnamomum camphoras	0	oewn-Cinnamomum_camphora-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinnamomum cassia	0	oewn-Cinnamomum_cassia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinnamomum cassias	0	oewn-Cinnamomum_cassia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinnamomum loureirii	0	oewn-Cinnamomum_loureirii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinnamomum loureiriis	0	oewn-Cinnamomum_loureirii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cinnamomum zeylanicum	0	oewn-Cinnamomum_zeylanicum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cinnamomum zeylanicums	0	oewn-Cinnamomum_zeylanicum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cipro	0	oewn-Cipro-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cipros	0	oewn-Cipro-n	Capitalization=Title+Number=Plur	dema	0			rule
+Circaea alpina	0	oewn-Circaea_alpina-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circaea alpinas	0	oewn-Circaea_alpina-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Circaea lutetiana	0	oewn-Circaea_lutetiana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circaea lutetianas	0	oewn-Circaea_lutetiana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Circassian	0	oewn-Circassian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Circassian language	0	oewn-Circassian_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circassian languages	0	oewn-Circassian_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Circassian walnut	0	oewn-Circassian_walnut-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circassian walnuts	0	oewn-Circassian_walnut-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Circassians	0	oewn-Circassian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Circe	0	oewn-Circe-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Circes	0	oewn-Circe-n	Capitalization=Title+Number=Plur	dema	0			rule
+Circis siliquastrum	0	oewn-Circis_siliquastrum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circis siliquastrums	0	oewn-Circis_siliquastrum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Circumcision	0	oewn-circumcision-n	Number=Sing	dema	0			oewn_form
+Circumcision	1	oewn-Circumcision-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Circumcisions	0	oewn-circumcision-n	Number=Plur	dema	0			rule
+Circumcisions	1	oewn-Circumcision-n	Capitalization=Title+Number=Plur	dema	0			rule
+Circus aeruginosus	0	oewn-Circus_aeruginosus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circus cyaneus	0	oewn-Circus_cyaneus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Circus pygargus	0	oewn-Circus_pygargus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium arvense	0	oewn-Cirsium_arvense-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium arvenses	0	oewn-Cirsium_arvense-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium discolor	0	oewn-Cirsium_discolor-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium discolors	0	oewn-Cirsium_discolor-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium eriophorum	0	oewn-Cirsium_eriophorum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium eriophorums	0	oewn-Cirsium_eriophorum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium flodmanii	0	oewn-Cirsium_flodmanii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium flodmaniis	0	oewn-Cirsium_flodmanii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium helenioides	0	oewn-Cirsium_helenioides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium heterophylum	0	oewn-Cirsium_heterophylum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium heterophylums	0	oewn-Cirsium_heterophylum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium lanceolatum	0	oewn-Cirsium_lanceolatum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium lanceolatums	0	oewn-Cirsium_lanceolatum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium rivulare	0	oewn-Cirsium_rivulare-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium rivulares	0	oewn-Cirsium_rivulare-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cirsium vulgare	0	oewn-Cirsium_vulgare-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cirsium vulgares	0	oewn-Cirsium_vulgare-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cis	0	oewn-Ci-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cistercian	0	oewn-Cistercian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cistercians	0	oewn-Cistercian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cistothorus palustris	0	oewn-Cistothorus_palustris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cistothorus platensis	0	oewn-Cistothorus_platensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cistus albidus	0	oewn-Cistus_albidus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cistus ladanifer	0	oewn-Cistus_ladanifer-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cistus ladanifers	0	oewn-Cistus_ladanifer-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Cistus ladanum	0	oewn-Cistus_ladanum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cistus ladanums	0	oewn-Cistus_ladanum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citellus citellus	0	oewn-Citellus_citellus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citellus lateralis	0	oewn-Citellus_lateralis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citellus leucurus	0	oewn-Citellus_leucurus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citellus parryi	0	oewn-Citellus_parryi-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citellus parryis	0	oewn-Citellus_parryi-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citellus richardsoni	0	oewn-Citellus_richardsoni-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citellus richardsonis	0	oewn-Citellus_richardsoni-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citellus variegatus	0	oewn-Citellus_variegatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citharichthys cornutus	0	oewn-Citharichthys_cornutus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Cities of God	0	oewn-City_of_God-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citizenship Day	0	oewn-Citizenship_Day-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Citizenship Days	0	oewn-Citizenship_Day-n	Capitalization=Title+Number=Plur	dema	0			rule
+Citroncirus webberi	0	oewn-Citroncirus_webberi-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citroncirus webberis	0	oewn-Citroncirus_webberi-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrullus vulgaris	0	oewn-Citrullus_vulgaris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus aurantifolia	0	oewn-Citrus_aurantifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus aurantifolias	0	oewn-Citrus_aurantifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus aurantium	0	oewn-Citrus_aurantium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus aurantiums	0	oewn-Citrus_aurantium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus bergamia	0	oewn-Citrus_bergamia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus bergamias	0	oewn-Citrus_bergamia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus decumana	0	oewn-Citrus_decumana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus decumanas	0	oewn-Citrus_decumana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus grandis	0	oewn-Citrus_grandis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus limetta	0	oewn-Citrus_limetta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus limettas	0	oewn-Citrus_limetta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus limon	0	oewn-Citrus_limon-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus limonia	0	oewn-Citrus_limonia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus limonias	0	oewn-Citrus_limonia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus limons	0	oewn-Citrus_limon-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus maxima	0	oewn-Citrus_maxima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus maximas	0	oewn-Citrus_maxima-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus medica	0	oewn-Citrus_medica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus medicas	0	oewn-Citrus_medica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus nobilis	0	oewn-Citrus_nobilis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus paradisi	0	oewn-Citrus_paradisi-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus paradisis	0	oewn-Citrus_paradisi-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus reticulata	0	oewn-Citrus_reticulata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus reticulatas	0	oewn-Citrus_reticulata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Citrus sinensis	0	oewn-Citrus_sinensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus tangelo	0	oewn-Citrus_tangelo-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Citrus tangelos	0	oewn-Citrus_tangelo-n	Capitalization=Exact+Number=Plur	dema	0			rule
+City of God	0	oewn-City_of_God-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Civil List	0	oewn-Civil_List-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Civil Lists	0	oewn-Civil_List-n	Capitalization=Title+Number=Plur	dema	0			rule
+Civil Rights movement	0	oewn-Civil_Rights_movement-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Civil Rights movements	0	oewn-Civil_Rights_movement-n	Capitalization=Exact+Number=Plur	dema	0			rule
+ci	0	oewn-ci-a	Degree=Pos	dema	0			oewn_form
+ciao	0	dema-ciao-i		dema	0			carried
+ciaos	0	oewn-ciao-n	Number=Plur	dema	0			rule
+cibarial	0		Degree=Pos	dema	0	cibarial	a	moby_reverse
+cibarian	0		Degree=Pos	dema	0	cibarian	a	moby_reverse
+cibarious	0		Degree=Pos	dema	0	cibarious	a	moby_reverse
+cibarium	0		Number=Sing	dema	0	cibarium	n	moby_reverse
+cibariums	0		Number=Plur	dema	0	cibarium	n	rule
+cibbaria	0		Number=Sing	dema	0	cibbaria	n	moby_reverse
+cibbarias	0		Number=Plur	dema	0	cibbaria	n	rule
+cibboria	0		Number=Sing	dema	0	cibboria	n	moby_reverse
+cibborias	0		Number=Plur	dema	0	cibboria	n	rule
+ciborium	0		Number=Sing	dema	0	ciborium	n	moby_reverse
+ciboriums	0		Number=Plur	dema	0	ciborium	n	rule
+cicada	0	oewn-cicada-n	Number=Sing	dema	0			oewn_form
+cicada killer	0	oewn-cicada_killer-n	Number=Sing	dema	0			oewn_form
+cicada killers	0	oewn-cicada_killer-n	Number=Plur	dema	0			rule
+cicadae	0	oewn-cicada-n	Number=Plur	dema	0			oewn_form
+cicadas	0	oewn-cicada-n	Number=Plur	dema	0			rule_variant
+cicala	0	oewn-cicala-n	Number=Sing	dema	0			oewn_form
+cicalas	0	oewn-cicala-n	Number=Plur	dema	0			rule_variant
+cicale	0	oewn-cicala-n	Number=Plur	dema	0			oewn_form
+cicatrice	0	oewn-cicatrice-n	Number=Sing	dema	0			oewn_form
+cicatrices	0	oewn-cicatrice-n	Number=Plur	dema	0			rule
+cicatrices	1	oewn-cicatrix-n	Number=Plur	dema	0			oewn_form
+cicatricial	0		Degree=Pos	dema	0	cicatricial	a	moby_reverse
+cicatricle	0		Number=Sing	dema	0	cicatricle	n	moby_reverse
+cicatricles	0		Number=Plur	dema	0	cicatricle	n	rule
+cicatricose	0		Degree=Pos	dema	0	cicatricose	a	moby_reverse
+cicatrisant	0		Degree=Pos	dema	0	cicatrisant	a	moby_reverse
+cicatrisation	0		Number=Sing	dema	0	cicatrisation	n	moby_reverse
+cicatrisations	0		Number=Plur	dema	0	cicatrisation	n	rule
+cicatrise	0	oewn-cicatrise-v	VerbForm=Inf	dema	0			oewn_form
+cicatrised	0	oewn-cicatrise-v	Tense=Past+VerbForm=Part	dema	0			rule
+cicatriser	0		Number=Sing	dema	0	cicatriser	n	moby_reverse
+cicatrisers	0		Number=Plur	dema	0	cicatriser	n	rule
+cicatrises	0	oewn-cicatrise-v	Person=3+Tense=Pres	dema	0			rule
+cicatrising	0	oewn-cicatrise-v	VerbForm=Ger	dema	0			rule
+cicatrix	0	oewn-cicatrix-n	Number=Sing	dema	0			oewn_form
+cicatrixes	0	oewn-cicatrix-n	Number=Plur	dema	0			rule_variant
+cicatrizant	0		Degree=Pos	dema	0	cicatrizant	a	moby_reverse
+cicatrization	0		Number=Sing	dema	0	cicatrization	n	moby_reverse
+cicatrizations	0		Number=Plur	dema	0	cicatrization	n	rule
+cicatrize	0	oewn-cicatrize-v	VerbForm=Inf	dema	0			oewn_form
+cicatrized	0	oewn-cicatrize-v	Tense=Past+VerbForm=Part	dema	0			rule
+cicatrizer	0		Number=Sing	dema	0	cicatrizer	n	moby_reverse
+cicatrizers	0		Number=Plur	dema	0	cicatrizer	n	rule
+cicatrizes	0	oewn-cicatrize-v	Person=3+Tense=Pres	dema	0			rule
+cicatrizing	0	oewn-cicatrize-v	VerbForm=Ger	dema	0			rule
+cicelies	0		Number=Plur	dema	0	cicely	n	rule
+cicely	0		Number=Sing	dema	0	cicely	n	moby_reverse
+cicero	0	oewn-cicero-n	Number=Sing	dema	0			oewn_form
+cicerone	0	oewn-cicerone-n	Number=Sing	dema	0			oewn_form
+cicerones	0	oewn-cicerone-n	Number=Plur	dema	0			rule_variant
+ciceroni	0	oewn-cicerone-n	Number=Plur	dema	0			oewn_form
+ciceros	0	oewn-cicero-n	Number=Plur	dema	0			rule
+cichlid	0	oewn-cichlid-n	Number=Sing	dema	0			oewn_form
+cichlid	1		Degree=Pos	dema	0	cichlid	a	moby_reverse
+cichlid fish	0	oewn-cichlid_fish-n	Number=Sing	dema	0			oewn_form
+cichlid fishes	0	oewn-cichlid_fish-n	Number=Plur	dema	0			rule
+cichlids	0	oewn-cichlid-n	Number=Plur	dema	0			rule
+cichoriaceous	0		Degree=Pos	dema	0	cichoriaceous	a	moby_reverse
+cicisbei	0		Number=Sing	dema	0	cicisbei	n	moby_reverse
+cicisbeis	0		Number=Plur	dema	0	cicisbei	n	rule
+cicisbeism	0		Number=Sing	dema	0	cicisbeism	n	moby_reverse
+cicisbeisms	0		Number=Plur	dema	0	cicisbeism	n	rule
+cicisbeo	0		Number=Sing	dema	0	cicisbeo	n	moby_reverse
+cicisbeos	0		Number=Plur	dema	0	cicisbeo	n	rule
+cider	0	oewn-cider-n	Number=Sing	dema	0			oewn_form
+cider gum	0	oewn-cider_gum-n	Number=Sing	dema	0			oewn_form
+cider gums	0	oewn-cider_gum-n	Number=Plur	dema	0			rule
+cider mill	0	oewn-cider_mill-n	Number=Sing	dema	0			oewn_form
+cider mills	0	oewn-cider_mill-n	Number=Plur	dema	0			rule
+cider vinegar	0	oewn-cider_vinegar-n	Number=Sing	dema	0			oewn_form
+cider vinegars	0	oewn-cider_vinegar-n	Number=Plur	dema	0			rule
+ciderish	0		Degree=Pos	dema	0	ciderish	a	moby_reverse
+ciderlike	0		Degree=Pos	dema	0	ciderlike	a	moby_reverse
+ciderpress	0	oewn-ciderpress-n	Number=Sing	dema	0			oewn_form
+ciderpresses	0	oewn-ciderpress-n	Number=Plur	dema	0			rule
+ciders	0	oewn-cider-n	Number=Plur	dema	0			rule
+cierzo	0		Number=Sing	dema	0	cierzo	n	moby_reverse
+cierzos	0		Number=Plur	dema	0	cierzo	n	rule
+cig	0		Number=Sing	dema	0	cig	n	moby_reverse
+cigar	0	oewn-cigar-n	Number=Sing	dema	0			oewn_form
+cigar band	0	oewn-cigar_band-n	Number=Sing	dema	0			oewn_form
+cigar bands	0	oewn-cigar_band-n	Number=Plur	dema	0			rule
+cigar box	0	oewn-cigar_box-n	Number=Sing	dema	0			oewn_form
+cigar boxes	0	oewn-cigar_box-n	Number=Plur	dema	0			rule
+cigar butt	0	oewn-cigar_butt-n	Number=Sing	dema	0			oewn_form
+cigar butts	0	oewn-cigar_butt-n	Number=Plur	dema	0			rule
+cigar cutter	0	oewn-cigar_cutter-n	Number=Sing	dema	0			oewn_form
+cigar cutters	0	oewn-cigar_cutter-n	Number=Plur	dema	0			rule
+cigar lighter	0	oewn-cigar_lighter-n	Number=Sing	dema	0			oewn_form
+cigar lighters	0	oewn-cigar_lighter-n	Number=Plur	dema	0			rule
+cigar smoker	0	oewn-cigar_smoker-n	Number=Sing	dema	0			oewn_form
+cigar smokers	0	oewn-cigar_smoker-n	Number=Plur	dema	0			rule
+cigar-box cedar	0	oewn-cigar-box_cedar-n	Number=Sing	dema	0			oewn_form
+cigar-box cedars	0	oewn-cigar-box_cedar-n	Number=Plur	dema	0			rule
+cigar-shaped	0	oewn-cigar-shaped-a	Degree=Pos	dema	0			oewn_form
+cigaret	0	oewn-cigaret-n	Number=Sing	dema	0			oewn_form
+cigarets	0	oewn-cigaret-n	Number=Plur	dema	0			rule
+cigarette	0	oewn-cigarette-n	Number=Sing	dema	0			oewn_form
+cigarette burn	0	oewn-cigarette_burn-n	Number=Sing	dema	0			oewn_form
+cigarette burns	0	oewn-cigarette_burn-n	Number=Plur	dema	0			rule
+cigarette butt	0	oewn-cigarette_butt-n	Number=Sing	dema	0			oewn_form
+cigarette butts	0	oewn-cigarette_butt-n	Number=Plur	dema	0			rule
+cigarette case	0	oewn-cigarette_case-n	Number=Sing	dema	0			oewn_form
+cigarette cases	0	oewn-cigarette_case-n	Number=Plur	dema	0			rule
+cigarette holder	0	oewn-cigarette_holder-n	Number=Sing	dema	0			oewn_form
+cigarette holders	0	oewn-cigarette_holder-n	Number=Plur	dema	0			rule
+cigarette lighter	0	oewn-cigarette_lighter-n	Number=Sing	dema	0			oewn_form
+cigarette lighters	0	oewn-cigarette_lighter-n	Number=Plur	dema	0			rule
+cigarette paper	0	oewn-cigarette_paper-n	Number=Sing	dema	0			oewn_form
+cigarette papers	0	oewn-cigarette_paper-n	Number=Plur	dema	0			rule
+cigarette smoker	0	oewn-cigarette_smoker-n	Number=Sing	dema	0			oewn_form
+cigarette smokers	0	oewn-cigarette_smoker-n	Number=Plur	dema	0			rule
+cigarettes	0	oewn-cigarette-n	Number=Plur	dema	0			rule
+cigarfish	0	oewn-cigarfish-n	Number=Sing	dema	0			oewn_form
+cigarfishes	0	oewn-cigarfish-n	Number=Plur	dema	0			rule
+cigarillo	0	oewn-cigarillo-n	Number=Sing	dema	0			oewn_form
+cigarillos	0	oewn-cigarillo-n	Number=Plur	dema	0			rule
+cigarless	0		Degree=Pos	dema	0	cigarless	a	moby_reverse
+cigars	0	oewn-cigar-n	Number=Plur	dema	0			rule
+cigs	0		Number=Plur	dema	0	cig	n	rule
+cilantro	0	oewn-cilantro-n	Number=Sing	dema	0			oewn_form
+cilantros	0	oewn-cilantro-n	Number=Plur	dema	0			rule
+cilia	0	oewn-cilium-n	Number=Plur	dema	0			oewn_form
+cilial	0	oewn-cilial-a	Degree=Pos	dema	0			oewn_form
+ciliary	0	oewn-ciliary-a	Degree=Pos	dema	0			oewn_form
+ciliary arteries	0	oewn-ciliary_artery-n	Number=Plur	dema	0			rule
+ciliary artery	0	oewn-ciliary_artery-n	Number=Sing	dema	0			oewn_form
+ciliary bodies	0	oewn-ciliary_body-n	Number=Plur	dema	0			rule
+ciliary body	0	oewn-ciliary_body-n	Number=Sing	dema	0			oewn_form
+ciliary veins	0	oewn-ciliary_veins-n	Number=Sing	dema	0			oewn_form
+ciliate	0	oewn-ciliate-a	Degree=Pos	dema	0			oewn_form
+ciliate	1	oewn-ciliate-n	Number=Sing	dema	0			oewn_form
+ciliated	0	oewn-ciliated-a	Degree=Pos	dema	0			oewn_form
+ciliated protozoan	0	oewn-ciliated_protozoan-n	Number=Sing	dema	0			oewn_form
+ciliated protozoans	0	oewn-ciliated_protozoan-n	Number=Plur	dema	0			rule
+ciliately	0		Degree=Pos	dema	0	ciliately	r	moby_reverse
+ciliates	0	oewn-ciliate-n	Number=Plur	dema	0			rule
+ciliation	0		Number=Sing	dema	0	ciliation	n	moby_reverse
+ciliations	0		Number=Plur	dema	0	ciliation	n	rule
+cilice	0		Number=Sing	dema	0	cilice	n	moby_reverse
+cilices	0		Number=Plur	dema	0	cilice	n	rule
+ciliolate	0		Degree=Pos	dema	0	ciliolate	a	moby_reverse
+ciliophoran	0	oewn-ciliophoran-n	Number=Sing	dema	0			oewn_form
+ciliophorans	0	oewn-ciliophoran-n	Number=Plur	dema	0			rule
+cilium	0	oewn-cilium-n	Number=Sing	dema	0			oewn_form
+cimaise	0		Number=Sing	dema	0	cimaise	n	moby_reverse
+cimaises	0		Number=Plur	dema	0	cimaise	n	rule
+cimarron	0	oewn-cimarron-n	Number=Sing	dema	0			oewn_form
+cimarrons	0	oewn-cimarron-n	Number=Plur	dema	0			rule
+cimbalom	0		Number=Sing	dema	0	cimbalom	n	moby_reverse
+cimbaloms	0		Number=Plur	dema	0	cimbalom	n	rule
+cimelia	0		Number=Sing	dema	0	cimelia	n	moby_reverse
+cimeliarch	0		Number=Sing	dema	0	cimeliarch	n	moby_reverse
+cimeliarches	0		Number=Plur	dema	0	cimeliarch	n	rule
+cimelias	0		Number=Plur	dema	0	cimelia	n	rule
+cimetidine	0	oewn-cimetidine-n	Number=Sing	dema	0			oewn_form
+cimetidines	0	oewn-cimetidine-n	Number=Plur	dema	0			rule
+cimex	0		Number=Sing	dema	0	cimex	n	moby_reverse
+cimexes	0		Number=Plur	dema	0	cimex	n	rule
+cimices	0		Number=Sing	dema	0	cimices	n	moby_reverse
+cinch	0	oewn-cinch-n	Number=Sing	dema	0			oewn_form
+cinch	1	oewn-cinch-v	VerbForm=Inf	dema	0			oewn_form
+cinched	0	oewn-cinch-v	Tense=Past+VerbForm=Part	dema	0			rule
+cinches	0	oewn-cinch-n	Number=Plur	dema	0			rule
+cinches	1	oewn-cinch-v	Person=3+Tense=Pres	dema	0			rule
+cinching	0	oewn-cinch-v	VerbForm=Ger	dema	0			rule
+cinchona	0	oewn-cinchona-n	Number=Sing	dema	0			oewn_form
+cinchona bark	0	oewn-cinchona_bark-n	Number=Sing	dema	0			oewn_form
+cinchona barks	0	oewn-cinchona_bark-n	Number=Plur	dema	0			rule
+cinchona tree	0	oewn-cinchona_tree-n	Number=Sing	dema	0			oewn_form
+cinchona trees	0	oewn-cinchona_tree-n	Number=Plur	dema	0			rule
+cinchonas	0	oewn-cinchona-n	Number=Plur	dema	0			rule
+cinchonic	0		Degree=Pos	dema	0	cinchonic	a	moby_reverse
+cinchonidine	0		Number=Sing	dema	0	cinchonidine	n	moby_reverse
+cinchonidines	0		Number=Plur	dema	0	cinchonidine	n	rule
+cinchonine	0	oewn-cinchonine-n	Number=Sing	dema	0			oewn_form
+cinchonines	0	oewn-cinchonine-n	Number=Plur	dema	0			rule
+cinchonisation	0		Number=Sing	dema	0	cinchonisation	n	moby_reverse
+cinchonisations	0		Number=Plur	dema	0	cinchonisation	n	rule
+cinchonise	0		VerbForm=Inf	dema	0	cinchonise	v	moby_reverse
+cinchonised	0		Tense=Past+VerbForm=Part	dema	0	cinchonise	v	rule
+cinchonises	0		Person=3+Tense=Pres	dema	0	cinchonise	v	rule
+cinchonising	0		VerbForm=Ger	dema	0	cinchonise	v	rule
+cinchonism	0		Number=Sing	dema	0	cinchonism	n	moby_reverse
+cinchonisms	0		Number=Plur	dema	0	cinchonism	n	rule
+cinchonization	0		Number=Sing	dema	0	cinchonization	n	moby_reverse
+cinchonizations	0		Number=Plur	dema	0	cinchonization	n	rule
+cinchonize	0		VerbForm=Inf	dema	0	cinchonize	v	moby_reverse
+cinchonized	0		Tense=Past+VerbForm=Part	dema	0	cinchonize	v	rule
+cinchonizes	0		Person=3+Tense=Pres	dema	0	cinchonize	v	rule
+cinchonizing	0		VerbForm=Ger	dema	0	cinchonize	v	rule
+cincture	0	oewn-cincture-n	Number=Sing	dema	0			oewn_form
+cinctured	0		VerbForm=Inf	dema	0	cinctured	v	moby_reverse
+cinctures	0	oewn-cincture-n	Number=Plur	dema	0			rule
+cincturing	0		VerbForm=Inf	dema	0	cincturing	v	moby_reverse
+cinder	0	oewn-cinder-n	Number=Sing	dema	0			oewn_form
+cinder	1		VerbForm=Inf	dema	0	cinder	v	moby_reverse
+cinder block	0	oewn-cinder_block-n	Number=Sing	dema	0			oewn_form
+cinder blocks	0	oewn-cinder_block-n	Number=Plur	dema	0			rule
+cinder pig	0	oewn-cinder_pig-n	Number=Sing	dema	0			oewn_form
+cinder pigs	0	oewn-cinder_pig-n	Number=Plur	dema	0			rule
+cinder track	0	oewn-cinder_track-n	Number=Sing	dema	0			oewn_form
+cinder tracks	0	oewn-cinder_track-n	Number=Plur	dema	0			rule
+cinderlike	0		Degree=Pos	dema	0	cinderlike	a	moby_reverse
+cinderous	0		Degree=Pos	dema	0	cinderous	a	moby_reverse
+cinders	0	oewn-cinder-n	Number=Plur	dema	0			rule
+cindery	0		Degree=Pos	dema	0	cindery	a	moby_reverse
+cine	0		Number=Sing	dema	0	cine	n	moby_reverse
+cine projector	0	oewn-cine_projector-n	Number=Sing	dema	0			oewn_form
+cine projectors	0	oewn-cine_projector-n	Number=Plur	dema	0			rule
+cine-camera	0	oewn-cine-camera-n	Number=Sing	dema	0			oewn_form
+cine-cameras	0	oewn-cine-camera-n	Number=Plur	dema	0			rule
+cine-film	0	oewn-cine-film-n	Number=Sing	dema	0			oewn_form
+cine-films	0	oewn-cine-film-n	Number=Plur	dema	0			rule
+cineaste	0		Number=Sing	dema	0	cineaste	n	moby_reverse
+cineastes	0		Number=Plur	dema	0	cineaste	n	rule
+cinema	0	oewn-cinema-n	Number=Sing	dema	0			oewn_form
+cinema verite	0	oewn-cinema_verite-n	Number=Sing	dema	0			oewn_form
+cinema verites	0	oewn-cinema_verite-n	Number=Plur	dema	0			rule
+cinemas	0	oewn-cinema-n	Number=Plur	dema	0			rule
+cinematheque	0		Number=Sing	dema	0	cinematheque	n	moby_reverse
+cinematheques	0		Number=Plur	dema	0	cinematheque	n	rule
+cinematic	0	oewn-cinematic-a	Degree=Pos	dema	0			oewn_form
+cinematically	0		Degree=Pos	dema	0	cinematically	r	moby_reverse
+cinematics	0		Number=Sing	dema	0	cinematics	n	moby_reverse
+cinematise	0	oewn-cinematise-v	VerbForm=Inf	dema	0			oewn_form
+cinematised	0	oewn-cinematise-v	Tense=Past+VerbForm=Part	dema	0			rule
+cinematises	0	oewn-cinematise-v	Person=3+Tense=Pres	dema	0			rule
+cinematising	0	oewn-cinematise-v	VerbForm=Ger	dema	0			rule
+cinematize	0	oewn-cinematize-v	VerbForm=Inf	dema	0			oewn_form
+cinematized	0	oewn-cinematize-v	Tense=Past+VerbForm=Part	dema	0			rule
+cinematizes	0	oewn-cinematize-v	Person=3+Tense=Pres	dema	0			rule
+cinematizing	0	oewn-cinematize-v	VerbForm=Ger	dema	0			rule
+cinematograph	0		Number=Sing	dema	0	cinematograph	n	moby_reverse
+cinematograph	1		VerbForm=Inf	dema	0	cinematograph	v	moby_reverse
+cinematographer	0	oewn-cinematographer-n	Number=Sing	dema	0			oewn_form
+cinematographers	0	oewn-cinematographer-n	Number=Plur	dema	0			rule
+cinematographic	0		Degree=Pos	dema	0	cinematographic	a	moby_reverse
+cinematographically	0		Degree=Pos	dema	0	cinematographically	r	moby_reverse
+cinematographies	0	oewn-cinematography-n	Number=Plur	dema	0			rule
+cinematographist	0		Number=Sing	dema	0	cinematographist	n	moby_reverse
+cinematographists	0		Number=Plur	dema	0	cinematographist	n	rule
+cinematographs	0		Number=Plur	dema	0	cinematograph	n	rule
+cinematography	0	oewn-cinematography-n	Number=Sing	dema	0			oewn_form
+cineol	0		Number=Sing	dema	0	cineol	n	moby_reverse
+cineole	0		Number=Sing	dema	0	cineole	n	moby_reverse
+cineoles	0		Number=Plur	dema	0	cineole	n	rule
+cineols	0		Number=Plur	dema	0	cineol	n	rule
+cineradiographies	0		Number=Plur	dema	0	cineradiography	n	rule
+cineradiography	0		Number=Sing	dema	0	cineradiography	n	moby_reverse
+cinerararia	0		Number=Sing	dema	0	cinerararia	n	moby_reverse
+cinerararias	0		Number=Plur	dema	0	cinerararia	n	rule
+cineraria	0	oewn-cineraria-n	Number=Sing	dema	0			oewn_form
+cineraria	1	oewn-cinerarium-n	Number=Plur	dema	0			oewn_form
+cinerarias	0	oewn-cineraria-n	Number=Plur	dema	0			rule
+cinerarium	0	oewn-cinerarium-n	Number=Sing	dema	0			oewn_form
+cinerary	0	oewn-cinerary-a	Degree=Pos	dema	0			oewn_form
+cineration	0		Number=Sing	dema	0	cineration	n	moby_reverse
+cinerations	0		Number=Plur	dema	0	cineration	n	rule
+cinerator	0		Number=Sing	dema	0	cinerator	n	moby_reverse
+cinerators	0		Number=Plur	dema	0	cinerator	n	rule
+cinereous	0		Degree=Pos	dema	0	cinereous	a	moby_reverse
+cinerin	0		Number=Sing	dema	0	cinerin	n	moby_reverse
+cinerins	0		Number=Plur	dema	0	cinerin	n	rule
+cines	0		Number=Plur	dema	0	cine	n	rule
+cingula	0	oewn-cingulum-n	Number=Plur	dema	0			oewn_form
+cingular	0		Degree=Pos	dema	0	cingular	a	moby_reverse
+cingulate	0		Degree=Pos	dema	0	cingulate	a	moby_reverse
+cingulate gyrus	0	oewn-cingulate_gyrus-n	Number=Sing	dema	0			oewn_form
+cingulated	0		Degree=Pos	dema	0	cingulated	a	moby_reverse
+cingulated	1		VerbForm=Inf	dema	0	cingulated	v	moby_reverse
+cingulectomies	0		Number=Plur	dema	0	cingulectomy	n	rule
+cingulectomy	0		Number=Sing	dema	0	cingulectomy	n	moby_reverse
+cingulum	0	oewn-cingulum-n	Number=Sing	dema	0			oewn_form
+cinnabar	0	oewn-cinnabar-n	Number=Sing	dema	0			oewn_form
+cinnabar	1	oewn-cinnabar-a	Degree=Pos	dema	0			oewn_form
+cinnabar chanterelle	0	oewn-cinnabar_chanterelle-n	Number=Sing	dema	0			oewn_form
+cinnabar chanterelles	0	oewn-cinnabar_chanterelle-n	Number=Plur	dema	0			rule
+cinnabar moth	0	oewn-cinnabar_moth-n	Number=Sing	dema	0			oewn_form
+cinnabar moths	0	oewn-cinnabar_moth-n	Number=Plur	dema	0			rule
+cinnabarine	0		Degree=Pos	dema	0	cinnabarine	a	moby_reverse
+cinnabars	0	oewn-cinnabar-n	Number=Plur	dema	0			rule
+cinnamene	0	oewn-cinnamene-n	Number=Sing	dema	0			oewn_form
+cinnamenes	0	oewn-cinnamene-n	Number=Plur	dema	0			rule
+cinnamic	0		Degree=Pos	dema	0	cinnamic	a	moby_reverse
+cinnamon	0	oewn-cinnamon-n	Number=Sing	dema	0			oewn_form
+cinnamon bark	0	oewn-cinnamon_bark-n	Number=Sing	dema	0			oewn_form
+cinnamon barks	0	oewn-cinnamon_bark-n	Number=Plur	dema	0			rule
+cinnamon bear	0	oewn-cinnamon_bear-n	Number=Sing	dema	0			oewn_form
+cinnamon bears	0	oewn-cinnamon_bear-n	Number=Plur	dema	0			rule
+cinnamon bread	0	oewn-cinnamon_bread-n	Number=Sing	dema	0			oewn_form
+cinnamon breads	0	oewn-cinnamon_bread-n	Number=Plur	dema	0			rule
+cinnamon bun	0	oewn-cinnamon_bun-n	Number=Sing	dema	0			oewn_form
+cinnamon buns	0	oewn-cinnamon_bun-n	Number=Plur	dema	0			rule
+cinnamon fern	0	oewn-cinnamon_fern-n	Number=Sing	dema	0			oewn_form
+cinnamon ferns	0	oewn-cinnamon_fern-n	Number=Plur	dema	0			rule
+cinnamon roll	0	oewn-cinnamon_roll-n	Number=Sing	dema	0			oewn_form
+cinnamon rolls	0	oewn-cinnamon_roll-n	Number=Plur	dema	0			rule
+cinnamon snail	0	oewn-cinnamon_snail-n	Number=Sing	dema	0			oewn_form
+cinnamon snails	0	oewn-cinnamon_snail-n	Number=Plur	dema	0			rule
+cinnamon stone	0	oewn-cinnamon_stone-n	Number=Sing	dema	0			oewn_form
+cinnamon stones	0	oewn-cinnamon_stone-n	Number=Plur	dema	0			rule
+cinnamon toast	0	oewn-cinnamon_toast-n	Number=Sing	dema	0			oewn_form
+cinnamon toasts	0	oewn-cinnamon_toast-n	Number=Plur	dema	0			rule
+cinnamon vine	0	oewn-cinnamon_vine-n	Number=Sing	dema	0			oewn_form
+cinnamon vines	0	oewn-cinnamon_vine-n	Number=Plur	dema	0			rule
+cinnamon-colored	0	oewn-cinnamon-colored-a	Degree=Pos	dema	0			oewn_form
+cinnamon-coloured	0	oewn-cinnamon-coloured-a	Degree=Pos	dema	0			oewn_form
+cinnamon-red	0	oewn-cinnamon-red-a	Degree=Pos	dema	0			oewn_form
+cinnamon-scented	0	oewn-cinnamon-scented-a	Degree=Pos	dema	0			oewn_form
+cinnamoned	0		Degree=Pos	dema	0	cinnamoned	a	moby_reverse
+cinnamoned	1		VerbForm=Inf	dema	0	cinnamoned	v	moby_reverse
+cinnamonic	0		Degree=Pos	dema	0	cinnamonic	a	moby_reverse
+cinnamons	0	oewn-cinnamon-n	Number=Plur	dema	0			rule
+cinnamoyl	0		Degree=Pos	dema	0	cinnamoyl	a	moby_reverse
+cinnamyl	0		Degree=Pos	dema	0	cinnamyl	a	moby_reverse
+cinquain	0		Number=Sing	dema	0	cinquain	n	moby_reverse
+cinquains	0		Number=Plur	dema	0	cinquain	n	rule
+cinque	0	oewn-cinque-n	Number=Sing	dema	0			oewn_form
+cinquecentism	0		Number=Sing	dema	0	cinquecentism	n	moby_reverse
+cinquecentisms	0		Number=Plur	dema	0	cinquecentism	n	rule
+cinquecentist	0		Number=Sing	dema	0	cinquecentist	n	moby_reverse
+cinquecentists	0		Number=Plur	dema	0	cinquecentist	n	rule
+cinquecento	0		Number=Sing	dema	0	cinquecento	n	moby_reverse
+cinquecentos	0		Number=Plur	dema	0	cinquecento	n	rule
+cinquedea	0		Number=Sing	dema	0	cinquedea	n	moby_reverse
+cinquedeas	0		Number=Plur	dema	0	cinquedea	n	rule
+cinquefoil	0	oewn-cinquefoil-n	Number=Sing	dema	0			oewn_form
+cinquefoils	0	oewn-cinquefoil-n	Number=Plur	dema	0			rule
+cinques	0	oewn-cinque-n	Number=Plur	dema	0			rule
+cion	0		Number=Sing	dema	0	cion	n	moby_reverse
+cions	0		Number=Plur	dema	0	cion	n	rule
+cipher	0	oewn-cipher-n	Number=Sing	dema	0			oewn_form
+cipher	1	oewn-cipher-v	VerbForm=Inf	dema	0			oewn_form
+cipherable	0		Degree=Pos	dema	0	cipherable	a	moby_reverse
+ciphered	0	oewn-cipher-v	Tense=Past+VerbForm=Part	dema	0			rule
+cipherer	0		Number=Sing	dema	0	cipherer	n	moby_reverse
+cipherers	0		Number=Plur	dema	0	cipherer	n	rule
+ciphering	0	oewn-cipher-v	VerbForm=Ger	dema	0			rule
+ciphers	0	oewn-cipher-n	Number=Plur	dema	0			rule
+ciphers	1	oewn-cipher-v	Person=3+Tense=Pres	dema	0			rule
+cipolin	0		Number=Sing	dema	0	cipolin	n	moby_reverse
+cipolins	0		Number=Plur	dema	0	cipolin	n	rule
+cippi	0		Number=Sing	dema	0	cippi	n	moby_reverse
+cippis	0		Number=Plur	dema	0	cippi	n	rule
+cippus	0		Number=Sing	dema	0	cippus	n	moby_reverse
+ciprofloxacin	0	oewn-ciprofloxacin-n	Number=Sing	dema	0			oewn_form
+ciprofloxacins	0	oewn-ciprofloxacin-n	Number=Plur	dema	0			rule
+cir	0		Degree=Pos	dema	0	cir	a	moby_reverse
+cir	1		Number=Sing	dema	0	cir	n	moby_reverse
+circ	0		Number=Sing	dema	0	circ	n	moby_reverse
+circa	0	dema-circa-p		dema	0			carried
+circadian	0	oewn-circadian-a	Degree=Pos	dema	0			oewn_form
+circadian rhythm	0	oewn-circadian_rhythm-n	Number=Sing	dema	0			oewn_form
+circadian rhythms	0	oewn-circadian_rhythm-n	Number=Plur	dema	0			rule
+circinate	0	oewn-circinate-a	Degree=Pos	dema	0			oewn_form
+circinately	0		Degree=Pos	dema	0	circinately	r	moby_reverse
+circle	0	oewn-circle-n	Number=Sing	dema	0			oewn_form
+circle	1	oewn-circle-v	VerbForm=Inf	dema	0			oewn_form
+circle around	0	oewn-circle_around-v	VerbForm=Inf	dema	0			oewn_form
+circle of Willis	0	oewn-circle_of_Willis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+circle of curvature	0	oewn-circle_of_curvature-n	Number=Sing	dema	0			oewn_form
+circle round	0	oewn-circle_round-v	VerbForm=Inf	dema	0			oewn_form
+circled	0	oewn-circle-v	Tense=Past+VerbForm=Part	dema	0			rule
+circled around	0	oewn-circle_around-v	Tense=Past+VerbForm=Part	dema	0			rule
+circled round	0	oewn-circle_round-v	Tense=Past+VerbForm=Part	dema	0			rule
+circler	0		Number=Sing	dema	0	circler	n	moby_reverse
+circlers	0		Number=Plur	dema	0	circler	n	rule
+circles	0	oewn-circle-n	Number=Plur	dema	0			rule
+circles	1	oewn-circle-v	Person=3+Tense=Pres	dema	0			rule
+circles around	0	oewn-circle_around-v	Person=3+Tense=Pres	dema	0			rule
+circles of Willis	0	oewn-circle_of_Willis-n	Capitalization=Exact+Number=Plur	dema	0			rule
+circles of curvature	0	oewn-circle_of_curvature-n	Number=Plur	dema	0			rule
+circles round	0	oewn-circle_round-v	Person=3+Tense=Pres	dema	0			rule
+circlet	0	oewn-circlet-n	Number=Sing	dema	0			oewn_form
+circlets	0	oewn-circlet-n	Number=Plur	dema	0			rule
+circling	0	oewn-circle-v	VerbForm=Ger	dema	0			rule
+circling around	0	oewn-circle_around-v	VerbForm=Ger	dema	0			rule
+circling round	0	oewn-circle_round-v	VerbForm=Ger	dema	0			rule
+circs	0		Number=Plur	dema	0	circ	n	rule
+circuit	0	oewn-circuit-n	Number=Sing	dema	0			oewn_form
+circuit	1	oewn-circuit-v	VerbForm=Inf	dema	0			oewn_form
+circuit board	0	oewn-circuit_board-n	Number=Sing	dema	0			oewn_form
+circuit boards	0	oewn-circuit_board-n	Number=Plur	dema	0			rule
+circuit breaker	0	oewn-circuit_breaker-n	Number=Sing	dema	0			oewn_form
+circuit breakers	0	oewn-circuit_breaker-n	Number=Plur	dema	0			rule
+circuit card	0	oewn-circuit_card-n	Number=Sing	dema	0			oewn_form
+circuit cards	0	oewn-circuit_card-n	Number=Plur	dema	0			rule
+circuit court of appeals	0	oewn-circuit_court_of_appeals-n	Number=Sing	dema	0			oewn_form
+circuit courts of appeals	0	oewn-circuit_court_of_appeals-n	Number=Plur	dema	0			rule
+circuital	0		Degree=Pos	dema	0	circuital	a	moby_reverse
+circuited	0	oewn-circuit-v	Tense=Past+VerbForm=Part	dema	0			rule
+circuiter	0		Number=Sing	dema	0	circuiter	n	moby_reverse
+circuiters	0		Number=Plur	dema	0	circuiter	n	rule
+circuities	0		Number=Plur	dema	0	circuity	n	rule
+circuiting	0	oewn-circuit-v	VerbForm=Ger	dema	0			rule
+circuitous	0	oewn-circuitous-a	Degree=Pos	dema	0			oewn_form
+circuitously	0		Degree=Pos	dema	0	circuitously	r	moby_reverse
+circuitousness	0	oewn-circuitousness-n	Number=Sing	dema	0			oewn_form
+circuitousnesses	0	oewn-circuitousness-n	Number=Plur	dema	0			rule
+circuitries	0	oewn-circuitry-n	Number=Plur	dema	0			rule
+circuitry	0	oewn-circuitry-n	Number=Sing	dema	0			oewn_form
+circuits	0	oewn-circuit-n	Number=Plur	dema	0			rule
+circuits	1	oewn-circuit-v	Person=3+Tense=Pres	dema	0			rule
+circuity	0		Number=Sing	dema	0	circuity	n	moby_reverse
+circulable	0		Degree=Pos	dema	0	circulable	a	moby_reverse
+circular	0	oewn-circular-a	Degree=Pos	dema	0			oewn_form
+circular	1	oewn-circular-n	Number=Sing	dema	0			oewn_form
+circular file	0	oewn-circular_file-n	Number=Sing	dema	0			oewn_form
+circular files	0	oewn-circular_file-n	Number=Plur	dema	0			rule
+circular function	0	oewn-circular_function-n	Number=Sing	dema	0			oewn_form
+circular functions	0	oewn-circular_function-n	Number=Plur	dema	0			rule
+circular measure	0	oewn-circular_measure-n	Number=Sing	dema	0			oewn_form
+circular measures	0	oewn-circular_measure-n	Number=Plur	dema	0			rule
+circular plane	0	oewn-circular_plane-n	Number=Sing	dema	0			oewn_form
+circular planes	0	oewn-circular_plane-n	Number=Plur	dema	0			rule
+circular saw	0	oewn-circular_saw-n	Number=Sing	dema	0			oewn_form
+circular saws	0	oewn-circular_saw-n	Number=Plur	dema	0			rule
+circular-knit	0	oewn-circular-knit-a	Degree=Pos	dema	0			oewn_form
+circularisation	0	oewn-circularisation-n	Number=Sing	dema	0			oewn_form
+circularisations	0	oewn-circularisation-n	Number=Plur	dema	0			rule
+circularise	0	oewn-circularise-v	VerbForm=Inf	dema	0			oewn_form
+circularised	0	oewn-circularise-v	Tense=Past+VerbForm=Part	dema	0			rule
+circulariser	0		Number=Sing	dema	0	circulariser	n	moby_reverse
+circularisers	0		Number=Plur	dema	0	circulariser	n	rule
+circularises	0	oewn-circularise-v	Person=3+Tense=Pres	dema	0			rule
+circularising	0	oewn-circularise-v	VerbForm=Ger	dema	0			rule
+circularities	0	oewn-circularity-n	Number=Plur	dema	0			rule
+circularity	0	oewn-circularity-n	Number=Sing	dema	0			oewn_form
+circularization	0	oewn-circularization-n	Number=Sing	dema	0			oewn_form
+circularizations	0	oewn-circularization-n	Number=Plur	dema	0			rule
+circularize	0	oewn-circularize-v	VerbForm=Inf	dema	0			oewn_form
+circularized	0	oewn-circularize-v	Tense=Past+VerbForm=Part	dema	0			rule
+circularizer	0		Number=Sing	dema	0	circularizer	n	moby_reverse
+circularizers	0		Number=Plur	dema	0	circularizer	n	rule
+circularizes	0	oewn-circularize-v	Person=3+Tense=Pres	dema	0			rule
+circularizing	0	oewn-circularize-v	VerbForm=Ger	dema	0			rule
+circularly	0	oewn-circularly-r	Degree=Pos	dema	0			oewn_form
+circularness	0		Number=Sing	dema	0	circularness	n	moby_reverse
+circularnesses	0		Number=Plur	dema	0	circularness	n	rule
+circulars	0	oewn-circular-n	Number=Plur	dema	0			rule
+circulate	0	oewn-circulate-v	VerbForm=Inf	dema	0			oewn_form
+circulated	0	oewn-circulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+circulates	0	oewn-circulate-v	Person=3+Tense=Pres	dema	0			rule
+circulating	0	oewn-circulate-v	VerbForm=Ger	dema	0			rule
+circulating	1	oewn-circulating-a	Degree=Pos	dema	0			oewn_form
+circulating decimal	0	oewn-circulating_decimal-n	Number=Sing	dema	0			oewn_form
+circulating decimals	0	oewn-circulating_decimal-n	Number=Plur	dema	0			rule
+circulating libraries	0	oewn-circulating_library-n	Number=Plur	dema	0			rule
+circulating library	0	oewn-circulating_library-n	Number=Sing	dema	0			oewn_form
+circulation	0	oewn-circulation-n	Number=Sing	dema	0			oewn_form
+circulations	0	oewn-circulation-n	Number=Plur	dema	0			rule
+circulative	0	oewn-circulative-a	Degree=Pos	dema	0			oewn_form
+circulator	0		Number=Sing	dema	0	circulator	n	moby_reverse
+circulators	0		Number=Plur	dema	0	circulator	n	rule
+circulatory	0	oewn-circulatory-a	Degree=Pos	dema	0			oewn_form
+circulatory failure	0	oewn-circulatory_failure-n	Number=Sing	dema	0			oewn_form
+circulatory failures	0	oewn-circulatory_failure-n	Number=Plur	dema	0			rule
+circulatory system	0	oewn-circulatory_system-n	Number=Sing	dema	0			oewn_form
+circulatory systems	0	oewn-circulatory_system-n	Number=Plur	dema	0			rule
+circuli	0		Number=Sing	dema	0	circuli	n	moby_reverse
+circulis	0		Number=Plur	dema	0	circuli	n	rule
+circulus	0		Number=Sing	dema	0	circulus	n	moby_reverse
+circumambience	0		Number=Sing	dema	0	circumambience	n	moby_reverse
+circumambiences	0		Number=Plur	dema	0	circumambience	n	rule
+circumambiencies	0		Number=Plur	dema	0	circumambiency	n	rule
+circumambiency	0		Number=Sing	dema	0	circumambiency	n	moby_reverse
+circumambient	0		Degree=Pos	dema	0	circumambient	a	moby_reverse
+circumambulate	0	oewn-circumambulate-v	VerbForm=Inf	dema	0			oewn_form
+circumambulated	0	oewn-circumambulate-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumambulates	0	oewn-circumambulate-v	Person=3+Tense=Pres	dema	0			rule
+circumambulating	0	oewn-circumambulate-v	VerbForm=Ger	dema	0			rule
+circumambulation	0		Number=Sing	dema	0	circumambulation	n	moby_reverse
+circumambulations	0		Number=Plur	dema	0	circumambulation	n	rule
+circumambulator	0		Number=Sing	dema	0	circumambulator	n	moby_reverse
+circumambulators	0		Number=Plur	dema	0	circumambulator	n	rule
+circumambulatory	0		Degree=Pos	dema	0	circumambulatory	a	moby_reverse
+circumbasal	0		Degree=Pos	dema	0	circumbasal	a	moby_reverse
+circumbendibus	0		Number=Sing	dema	0	circumbendibus	n	moby_reverse
+circumbendibuses	0		Number=Plur	dema	0	circumbendibus	n	rule
+circumboreal	0	oewn-circumboreal-a	Degree=Pos	dema	0			oewn_form
+circumcenter	0		Number=Sing	dema	0	circumcenter	n	moby_reverse
+circumcenters	0		Number=Plur	dema	0	circumcenter	n	rule
+circumcise	0	oewn-circumcise-v	VerbForm=Inf	dema	0			oewn_form
+circumcised	0	oewn-circumcise-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumciser	0		Number=Sing	dema	0	circumciser	n	moby_reverse
+circumcisers	0		Number=Plur	dema	0	circumciser	n	rule
+circumcises	0	oewn-circumcise-v	Person=3+Tense=Pres	dema	0			rule
+circumcising	0	oewn-circumcise-v	VerbForm=Ger	dema	0			rule
+circumcision	0	oewn-circumcision-n	Number=Sing	dema	0			oewn_form
+circumcisions	0	oewn-circumcision-n	Number=Plur	dema	0			rule
+circumcolumnar	0		Degree=Pos	dema	0	circumcolumnar	a	moby_reverse
+circumduction	0	oewn-circumduction-n	Number=Sing	dema	0			oewn_form
+circumductions	0	oewn-circumduction-n	Number=Plur	dema	0			rule
+circumference	0	oewn-circumference-n	Number=Sing	dema	0			oewn_form
+circumferences	0	oewn-circumference-n	Number=Plur	dema	0			rule
+circumferent	0	oewn-circumferent-a	Degree=Pos	dema	0			oewn_form
+circumferential	0	oewn-circumferential-a	Degree=Pos	dema	0			oewn_form
+circumferentor	0		Number=Sing	dema	0	circumferentor	n	moby_reverse
+circumferentors	0		Number=Plur	dema	0	circumferentor	n	rule
+circumflex	0	oewn-circumflex-n	Number=Sing	dema	0			oewn_form
+circumflex	1		Degree=Pos	dema	0	circumflex	a	moby_reverse
+circumflex arteries	0	oewn-circumflex_artery-n	Number=Plur	dema	0			rule
+circumflex arteries of the thigh	0	oewn-circumflex_artery_of_the_thigh-n	Number=Plur	dema	0			rule
+circumflex artery	0	oewn-circumflex_artery-n	Number=Sing	dema	0			oewn_form
+circumflex artery of the thigh	0	oewn-circumflex_artery_of_the_thigh-n	Number=Sing	dema	0			oewn_form
+circumflex femoral vein	0	oewn-circumflex_femoral_vein-n	Number=Sing	dema	0			oewn_form
+circumflex femoral veins	0	oewn-circumflex_femoral_vein-n	Number=Plur	dema	0			rule
+circumflex humeral arteries	0	oewn-circumflex_humeral_artery-n	Number=Plur	dema	0			rule
+circumflex humeral artery	0	oewn-circumflex_humeral_artery-n	Number=Sing	dema	0			oewn_form
+circumflex iliac arteries	0	oewn-circumflex_iliac_artery-n	Number=Plur	dema	0			rule
+circumflex iliac artery	0	oewn-circumflex_iliac_artery-n	Number=Sing	dema	0			oewn_form
+circumflex iliac vein	0	oewn-circumflex_iliac_vein-n	Number=Sing	dema	0			oewn_form
+circumflex iliac veins	0	oewn-circumflex_iliac_vein-n	Number=Plur	dema	0			rule
+circumflex scapular arteries	0	oewn-circumflex_scapular_artery-n	Number=Plur	dema	0			rule
+circumflex scapular artery	0	oewn-circumflex_scapular_artery-n	Number=Sing	dema	0			oewn_form
+circumflex vein	0	oewn-circumflex_vein-n	Number=Sing	dema	0			oewn_form
+circumflex veins	0	oewn-circumflex_vein-n	Number=Plur	dema	0			rule
+circumflexes	0	oewn-circumflex-n	Number=Plur	dema	0			rule
+circumfluence	0		Number=Sing	dema	0	circumfluence	n	moby_reverse
+circumfluences	0		Number=Plur	dema	0	circumfluence	n	rule
+circumfluent	0		Degree=Pos	dema	0	circumfluent	a	moby_reverse
+circumfluous	0		Degree=Pos	dema	0	circumfluous	a	moby_reverse
+circumfuse	0	oewn-circumfuse-v	VerbForm=Inf	dema	0			oewn_form
+circumfused	0	oewn-circumfuse-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumfuses	0	oewn-circumfuse-v	Person=3+Tense=Pres	dema	0			rule
+circumfusing	0	oewn-circumfuse-v	VerbForm=Ger	dema	0			rule
+circumfusion	0		Number=Sing	dema	0	circumfusion	n	moby_reverse
+circumfusions	0		Number=Plur	dema	0	circumfusion	n	rule
+circumgyration	0		Number=Sing	dema	0	circumgyration	n	moby_reverse
+circumgyrations	0		Number=Plur	dema	0	circumgyration	n	rule
+circumgyratory	0		Degree=Pos	dema	0	circumgyratory	a	moby_reverse
+circumincession	0		Number=Sing	dema	0	circumincession	n	moby_reverse
+circumincessions	0		Number=Plur	dema	0	circumincession	n	rule
+circumjacence	0		Number=Sing	dema	0	circumjacence	n	moby_reverse
+circumjacences	0		Number=Plur	dema	0	circumjacence	n	rule
+circumjacencies	0		Number=Plur	dema	0	circumjacency	n	rule
+circumjacency	0		Number=Sing	dema	0	circumjacency	n	moby_reverse
+circumjacent	0		Degree=Pos	dema	0	circumjacent	a	moby_reverse
+circumlocution	0	oewn-circumlocution-n	Number=Sing	dema	0			oewn_form
+circumlocutional	0		Degree=Pos	dema	0	circumlocutional	a	moby_reverse
+circumlocutionary	0		Degree=Pos	dema	0	circumlocutionary	a	moby_reverse
+circumlocutionist	0		Number=Sing	dema	0	circumlocutionist	n	moby_reverse
+circumlocutionists	0		Number=Plur	dema	0	circumlocutionist	n	rule
+circumlocutions	0	oewn-circumlocution-n	Number=Plur	dema	0			rule
+circumlocutious	0	oewn-circumlocutious-a	Degree=Pos	dema	0			oewn_form
+circumlocutory	0	oewn-circumlocutory-a	Degree=Pos	dema	0			oewn_form
+circumlunar	0		Degree=Pos	dema	0	circumlunar	a	moby_reverse
+circumnavigable	0		Degree=Pos	dema	0	circumnavigable	a	moby_reverse
+circumnavigate	0	oewn-circumnavigate-v	VerbForm=Inf	dema	0			oewn_form
+circumnavigated	0	oewn-circumnavigate-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumnavigates	0	oewn-circumnavigate-v	Person=3+Tense=Pres	dema	0			rule
+circumnavigating	0	oewn-circumnavigate-v	VerbForm=Ger	dema	0			rule
+circumnavigation	0	oewn-circumnavigation-n	Number=Sing	dema	0			oewn_form
+circumnavigations	0	oewn-circumnavigation-n	Number=Plur	dema	0			rule
+circumnavigator	0		Number=Sing	dema	0	circumnavigator	n	moby_reverse
+circumnavigators	0		Number=Plur	dema	0	circumnavigator	n	rule
+circumnavigatory	0		Degree=Pos	dema	0	circumnavigatory	a	moby_reverse
+circumnutate	0		VerbForm=Inf	dema	0	circumnutate	v	moby_reverse
+circumnutated	0		Tense=Past+VerbForm=Part	dema	0	circumnutate	v	rule
+circumnutates	0		Person=3+Tense=Pres	dema	0	circumnutate	v	rule
+circumnutating	0		VerbForm=Ger	dema	0	circumnutate	v	rule
+circumnutation	0		Number=Sing	dema	0	circumnutation	n	moby_reverse
+circumnutations	0		Number=Plur	dema	0	circumnutation	n	rule
+circumnutatory	0		Degree=Pos	dema	0	circumnutatory	a	moby_reverse
+circumocular	0		Degree=Pos	dema	0	circumocular	a	moby_reverse
+circumpolar	0	oewn-circumpolar-a	Degree=Pos	dema	0			oewn_form
+circumradii	0		Number=Sing	dema	0	circumradii	n	moby_reverse
+circumradiis	0		Number=Plur	dema	0	circumradii	n	rule
+circumradius	0		Number=Sing	dema	0	circumradius	n	moby_reverse
+circumrotate	0		VerbForm=Inf	dema	0	circumrotate	v	moby_reverse
+circumrotated	0		Tense=Past+VerbForm=Part	dema	0	circumrotate	v	rule
+circumrotates	0		Person=3+Tense=Pres	dema	0	circumrotate	v	rule
+circumrotating	0		VerbForm=Ger	dema	0	circumrotate	v	rule
+circumrotation	0		Number=Sing	dema	0	circumrotation	n	moby_reverse
+circumrotations	0		Number=Plur	dema	0	circumrotation	n	rule
+circumrotatory	0		Degree=Pos	dema	0	circumrotatory	a	moby_reverse
+circumscissile	0		Degree=Pos	dema	0	circumscissile	a	moby_reverse
+circumscribable	0		Degree=Pos	dema	0	circumscribable	a	moby_reverse
+circumscribe	0	oewn-circumscribe-v	VerbForm=Inf	dema	0			oewn_form
+circumscribed	0	oewn-circumscribe-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumscribed	1	oewn-circumscribed-a	Degree=Pos	dema	0			oewn_form
+circumscriber	0		Number=Sing	dema	0	circumscriber	n	moby_reverse
+circumscribers	0		Number=Plur	dema	0	circumscriber	n	rule
+circumscribes	0	oewn-circumscribe-v	Person=3+Tense=Pres	dema	0			rule
+circumscribing	0	oewn-circumscribe-v	VerbForm=Ger	dema	0			rule
+circumscription	0	oewn-circumscription-n	Number=Sing	dema	0			oewn_form
+circumscriptions	0	oewn-circumscription-n	Number=Plur	dema	0			rule
+circumscriptive	0		Degree=Pos	dema	0	circumscriptive	a	moby_reverse
+circumscriptively	0		Degree=Pos	dema	0	circumscriptively	r	moby_reverse
+circumsolar	0		Degree=Pos	dema	0	circumsolar	a	moby_reverse
+circumspect	0	oewn-circumspect-a	Degree=Pos	dema	0			oewn_form
+circumspection	0	oewn-circumspection-n	Number=Sing	dema	0			oewn_form
+circumspections	0	oewn-circumspection-n	Number=Plur	dema	0			rule
+circumspective	0		Degree=Pos	dema	0	circumspective	a	moby_reverse
+circumspectively	0		Degree=Pos	dema	0	circumspectively	r	moby_reverse
+circumspectly	0	oewn-circumspectly-r	Degree=Pos	dema	0			oewn_form
+circumspectness	0		Number=Sing	dema	0	circumspectness	n	moby_reverse
+circumstance	0	oewn-circumstance-n	Number=Sing	dema	0			oewn_form
+circumstance	1		VerbForm=Inf	dema	0	circumstance	v	moby_reverse
+circumstanced	0		Tense=Past+VerbForm=Part	dema	0	circumstance	v	moby_reverse
+circumstances	0	oewn-circumstance-n	Number=Plur	dema	0			rule
+circumstances	1	oewn-circumstances-n	Number=Sing	dema	0			oewn_form
+circumstancing	0		VerbForm=Ger	dema	0	circumstance	v	moby_reverse
+circumstantial	0	oewn-circumstantial-a	Degree=Pos	dema	0			oewn_form
+circumstantial evidence	0	oewn-circumstantial_evidence-n	Number=Sing	dema	0			oewn_form
+circumstantial evidences	0	oewn-circumstantial_evidence-n	Number=Plur	dema	0			rule
+circumstantialities	0		Number=Plur	dema	0	circumstantiality	n	rule
+circumstantiality	0		Number=Sing	dema	0	circumstantiality	n	moby_reverse
+circumstantially	0	oewn-circumstantially-r	Degree=Pos	dema	0			oewn_form
+circumstantiate	0	oewn-circumstantiate-v	VerbForm=Inf	dema	0			oewn_form
+circumstantiated	0	oewn-circumstantiate-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumstantiates	0	oewn-circumstantiate-v	Person=3+Tense=Pres	dema	0			rule
+circumstantiating	0	oewn-circumstantiate-v	VerbForm=Ger	dema	0			rule
+circumstantiation	0		Number=Sing	dema	0	circumstantiation	n	moby_reverse
+circumstantiations	0		Number=Plur	dema	0	circumstantiation	n	rule
+circumvallate	0	oewn-circumvallate-v	VerbForm=Inf	dema	0			oewn_form
+circumvallated	0	oewn-circumvallate-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumvallates	0	oewn-circumvallate-v	Person=3+Tense=Pres	dema	0			rule
+circumvallating	0	oewn-circumvallate-v	VerbForm=Ger	dema	0			rule
+circumvallation	0		Number=Sing	dema	0	circumvallation	n	moby_reverse
+circumvallations	0		Number=Plur	dema	0	circumvallation	n	rule
+circumvascular	0		Degree=Pos	dema	0	circumvascular	a	moby_reverse
+circumvent	0	oewn-circumvent-v	VerbForm=Inf	dema	0			oewn_form
+circumvented	0	oewn-circumvent-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumventer	0		Number=Sing	dema	0	circumventer	n	moby_reverse
+circumventers	0		Number=Plur	dema	0	circumventer	n	rule
+circumventing	0	oewn-circumvent-v	VerbForm=Ger	dema	0			rule
+circumvention	0	oewn-circumvention-n	Number=Sing	dema	0			oewn_form
+circumventions	0	oewn-circumvention-n	Number=Plur	dema	0			rule
+circumventive	0		Degree=Pos	dema	0	circumventive	a	moby_reverse
+circumventor	0		Number=Sing	dema	0	circumventor	n	moby_reverse
+circumventors	0		Number=Plur	dema	0	circumventor	n	rule
+circumvents	0	oewn-circumvent-v	Person=3+Tense=Pres	dema	0			rule
+circumvolute	0	oewn-circumvolute-v	VerbForm=Inf	dema	0			oewn_form
+circumvoluted	0	oewn-circumvolute-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumvolutes	0	oewn-circumvolute-v	Person=3+Tense=Pres	dema	0			rule
+circumvoluting	0	oewn-circumvolute-v	VerbForm=Ger	dema	0			rule
+circumvolution	0	oewn-circumvolution-n	Number=Sing	dema	0			oewn_form
+circumvolutions	0	oewn-circumvolution-n	Number=Plur	dema	0			rule
+circumvolutory	0		Degree=Pos	dema	0	circumvolutory	a	moby_reverse
+circumvolve	0	oewn-circumvolve-v	VerbForm=Inf	dema	0			oewn_form
+circumvolved	0	oewn-circumvolve-v	Tense=Past+VerbForm=Part	dema	0			rule
+circumvolves	0	oewn-circumvolve-v	Person=3+Tense=Pres	dema	0			rule
+circumvolving	0	oewn-circumvolve-v	VerbForm=Ger	dema	0			rule
+circus	0	oewn-circus-n	Number=Sing	dema	0			oewn_form
+circus acrobat	0	oewn-circus_acrobat-n	Number=Sing	dema	0			oewn_form
+circus acrobats	0	oewn-circus_acrobat-n	Number=Plur	dema	0			rule
+circus tent	0	oewn-circus_tent-n	Number=Sing	dema	0			oewn_form
+circus tents	0	oewn-circus_tent-n	Number=Plur	dema	0			rule
+circuses	0	oewn-circus-n	Number=Plur	dema	0			rule
+cirio	0	oewn-cirio-n	Number=Sing	dema	0			oewn_form
+cirios	0	oewn-cirio-n	Number=Plur	dema	0			rule
+cirque	0	oewn-cirque-n	Number=Sing	dema	0			oewn_form
+cirques	0	oewn-cirque-n	Number=Plur	dema	0			rule
+cirrate	0		Degree=Pos	dema	0	cirrate	a	moby_reverse
+cirrhosed	0		Degree=Pos	dema	0	cirrhosed	a	moby_reverse
+cirrhosed	1		VerbForm=Inf	dema	0	cirrhosed	v	moby_reverse
+cirrhosis	0	oewn-cirrhosis-n	Number=Sing	dema	0			oewn_form
+cirrhosis of the liver	0	oewn-cirrhosis_of_the_liver-n	Number=Sing	dema	0			oewn_form
+cirrhotic	0		Degree=Pos	dema	0	cirrhotic	a	moby_reverse
+cirrhus	0	oewn-cirrhus-n	Number=Sing	dema	0			oewn_form
+cirri	0	oewn-cirrus-n	Number=Plur	dema	0			oewn_form
+cirriform	0		Degree=Pos	dema	0	cirriform	a	moby_reverse
+cirriped	0	oewn-cirriped-n	Number=Sing	dema	0			oewn_form
+cirriped	1		Degree=Pos	dema	0	cirriped	a	moby_reverse
+cirripede	0	oewn-cirripede-n	Number=Sing	dema	0			oewn_form
+cirripede	1		Degree=Pos	dema	0	cirripede	a	moby_reverse
+cirripedes	0	oewn-cirripede-n	Number=Plur	dema	0			rule
+cirripeds	0	oewn-cirriped-n	Number=Plur	dema	0			rule
+cirrocumular	0		Degree=Pos	dema	0	cirrocumular	a	moby_reverse
+cirrocumulative	0		Degree=Pos	dema	0	cirrocumulative	a	moby_reverse
+cirrocumuli	0	oewn-cirrocumulus-n	Number=Plur	dema	0			oewn_form
+cirrocumulous	0		Degree=Pos	dema	0	cirrocumulous	a	moby_reverse
+cirrocumulus	0	oewn-cirrocumulus-n	Number=Sing	dema	0			oewn_form
+cirrocumulus cloud	0	oewn-cirrocumulus_cloud-n	Number=Sing	dema	0			oewn_form
+cirrocumulus clouds	0	oewn-cirrocumulus_cloud-n	Number=Plur	dema	0			rule
+cirrose	0		Degree=Pos	dema	0	cirrose	a	moby_reverse
+cirrosely	0		Degree=Pos	dema	0	cirrosely	r	moby_reverse
+cirrostrati	0	oewn-cirrostratus-n	Number=Plur	dema	0			oewn_form
+cirrostrative	0		Degree=Pos	dema	0	cirrostrative	a	moby_reverse
+cirrostratus	0	oewn-cirrostratus-n	Number=Sing	dema	0			oewn_form
+cirrostratus cloud	0	oewn-cirrostratus_cloud-n	Number=Sing	dema	0			oewn_form
+cirrostratus clouds	0	oewn-cirrostratus_cloud-n	Number=Plur	dema	0			rule
+cirrus	0	oewn-cirrus-n	Number=Sing	dema	0			oewn_form
+cirrus cloud	0	oewn-cirrus_cloud-n	Number=Sing	dema	0			oewn_form
+cirrus clouds	0	oewn-cirrus_cloud-n	Number=Plur	dema	0			rule
+cirsectomies	0		Number=Plur	dema	0	cirsectomy	n	rule
+cirsectomy	0		Number=Sing	dema	0	cirsectomy	n	moby_reverse
+cirsoid	0		Degree=Pos	dema	0	cirsoid	a	moby_reverse
+cisalpine	0	oewn-cisalpine-a	Degree=Pos	dema	0			oewn_form
+cisatlantic	0		Degree=Pos	dema	0	cisatlantic	a	moby_reverse
+cisco	0	oewn-cisco-n	Number=Sing	dema	0			oewn_form
+ciscoes	0	oewn-cisco-n	Number=Plur	dema	0			oewn_form
+ciscos	0	oewn-cisco-n	Number=Plur	dema	0			rule_variant
+ciseaux	0		Number=Sing	dema	0	ciseaux	n	moby_reverse
+ciseauxes	0		Number=Plur	dema	0	ciseaux	n	rule
+ciseleur	0		Number=Sing	dema	0	ciseleur	n	moby_reverse
+ciseleurs	0		Number=Plur	dema	0	ciseleur	n	rule
+ciselure	0		Number=Sing	dema	0	ciselure	n	moby_reverse
+ciselures	0		Number=Plur	dema	0	ciselure	n	rule
+cising	0		VerbForm=Inf	dema	0	cising	v	moby_reverse
+cislunar	0	oewn-cislunar-a	Degree=Pos	dema	0			oewn_form
+cismontane	0	oewn-cismontane-a	Degree=Pos	dema	0			oewn_form
+cispadane	0		Degree=Pos	dema	0	cispadane	a	moby_reverse
+cissing	0		Number=Sing	dema	0	cissing	n	moby_reverse
+cissings	0		Number=Plur	dema	0	cissing	n	rule
+cissoid	0		Number=Sing	dema	0	cissoid	n	moby_reverse
+cissoid	1		Degree=Pos	dema	0	cissoid	a	moby_reverse
+cissoidal	0		Degree=Pos	dema	0	cissoidal	a	moby_reverse
+cissoids	0		Number=Plur	dema	0	cissoid	n	rule
+cissy	0	oewn-cissy-a	Degree=Pos	dema	0			oewn_form
+cist	0		Number=Sing	dema	0	cist	n	moby_reverse
+cistaceous	0		Degree=Pos	dema	0	cistaceous	a	moby_reverse
+cisted	0		Degree=Pos	dema	0	cisted	a	moby_reverse
+cisted	1		VerbForm=Inf	dema	0	cisted	v	moby_reverse
+cistern	0	oewn-cistern-n	Number=Sing	dema	0			oewn_form
+cisterna	0	oewn-cisterna-n	Number=Sing	dema	0			oewn_form
+cisternae	0	oewn-cisterna-n	Number=Plur	dema	0			oewn_form
+cisternal	0		Degree=Pos	dema	0	cisternal	a	moby_reverse
+cisterns	0	oewn-cistern-n	Number=Plur	dema	0			rule
+cistic	0		Degree=Pos	dema	0	cistic	a	moby_reverse
+cistophoric	0		Degree=Pos	dema	0	cistophoric	a	moby_reverse
+cistophorus	0		Number=Sing	dema	0	cistophorus	n	moby_reverse
+cistori	0		Number=Sing	dema	0	cistori	n	moby_reverse
+cistoris	0		Number=Plur	dema	0	cistori	n	rule
+cistron	0	oewn-cistron-n	Number=Sing	dema	0			oewn_form
+cistrons	0	oewn-cistron-n	Number=Plur	dema	0			rule
+cists	0		Number=Plur	dema	0	cist	n	rule
+cistus	0		Number=Sing	dema	0	cistus	n	moby_reverse
+cistuses	0		Number=Plur	dema	0	cistus	n	rule
+cistvaen	0		Number=Sing	dema	0	cistvaen	n	moby_reverse
+cistvaens	0		Number=Plur	dema	0	cistvaen	n	rule
+cit	0		Number=Sing	dema	0	cit	n	moby_reverse
+citable	0		Degree=Pos	dema	0	citable	a	moby_reverse
+citadel	0	oewn-citadel-n	Number=Sing	dema	0			oewn_form
+citadels	0	oewn-citadel-n	Number=Plur	dema	0			rule
+citation	0	oewn-citation-n	Number=Sing	dema	0			oewn_form
+citation form	0	oewn-citation_form-n	Number=Sing	dema	0			oewn_form
+citation forms	0	oewn-citation_form-n	Number=Plur	dema	0			rule
+citations	0	oewn-citation-n	Number=Plur	dema	0			rule
+citatory	0		Degree=Pos	dema	0	citatory	a	moby_reverse
+cite	0	oewn-cite-v	VerbForm=Inf	dema	0			oewn_form
+cite	1	oewn-cite-n	Number=Sing	dema	0			oewn_form
+citeable	0		Degree=Pos	dema	0	citeable	a	moby_reverse
+cited	0	oewn-cite-v	Tense=Past+VerbForm=Part	dema	0			rule
+citer	0		Number=Sing	dema	0	citer	n	moby_reverse
+citers	0		Number=Plur	dema	0	citer	n	rule
+cites	0	oewn-cite-v	Person=3+Tense=Pres	dema	0			rule
+cites	1	oewn-cite-n	Number=Plur	dema	0			rule
+cithara	0		Number=Sing	dema	0	cithara	n	moby_reverse
+citharas	0		Number=Plur	dema	0	cithara	n	rule
+citharist	0		Number=Sing	dema	0	citharist	n	moby_reverse
+citharists	0		Number=Plur	dema	0	citharist	n	rule
+cither	0	oewn-cither-n	Number=Sing	dema	0			oewn_form
+cithern	0	oewn-cithern-n	Number=Sing	dema	0			oewn_form
+citherns	0	oewn-cithern-n	Number=Plur	dema	0			rule
+cithers	0	oewn-cither-n	Number=Plur	dema	0			rule
+citied	0		Degree=Pos	dema	0	citied	a	moby_reverse
+citied	1		VerbForm=Inf	dema	0	citied	v	moby_reverse
+cities	0	oewn-city-n	Number=Plur	dema	0			rule
+citification	0		Number=Sing	dema	0	citification	n	moby_reverse
+citifications	0		Number=Plur	dema	0	citification	n	rule
+citified	0	oewn-citified-a	Degree=Pos	dema	0			oewn_form
+citified	1	oewn-citify-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+citifies	0	oewn-citify-v	Person=3+Tense=Pres	dema	0			rule
+citify	0	oewn-citify-v	VerbForm=Inf	dema	0			oewn_form
+citifying	0	oewn-citify-v	VerbForm=Ger	dema	0			rule
+citing	0	oewn-cite-v	VerbForm=Ger	dema	0			rule
+citizen	0	oewn-citizen-n	Number=Sing	dema	0			oewn_form
+citizenly	0		Degree=Pos	dema	0	citizenly	a	moby_reverse
+citizenries	0	oewn-citizenry-n	Number=Plur	dema	0			rule
+citizenry	0	oewn-citizenry-n	Number=Sing	dema	0			oewn_form
+citizens	0	oewn-citizen-n	Number=Plur	dema	0			rule
+citizens committee	0	oewn-citizens_committee-n	Number=Sing	dema	0			oewn_form
+citizens committees	0	oewn-citizens_committee-n	Number=Plur	dema	0			rule
+citizenship	0	oewn-citizenship-n	Number=Sing	dema	0			oewn_form
+citizenships	0	oewn-citizenship-n	Number=Plur	dema	0			rule
+citole	0	oewn-citole-n	Number=Sing	dema	0			oewn_form
+citoles	0	oewn-citole-n	Number=Plur	dema	0			rule
+citoyen	0		Number=Sing	dema	0	citoyen	n	moby_reverse
+citoyens	0		Number=Plur	dema	0	citoyen	n	rule
+citral	0		Number=Sing	dema	0	citral	n	moby_reverse
+citrals	0		Number=Plur	dema	0	citral	n	rule
+citrange	0	oewn-citrange-n	Number=Sing	dema	0			oewn_form
+citrange tree	0	oewn-citrange_tree-n	Number=Sing	dema	0			oewn_form
+citrange trees	0	oewn-citrange_tree-n	Number=Plur	dema	0			rule
+citranges	0	oewn-citrange-n	Number=Plur	dema	0			rule
+citrate	0	oewn-citrate-n	Number=Sing	dema	0			oewn_form
+citrate	1	oewn-citrate-v	VerbForm=Inf	dema	0			oewn_form
+citrated	0	oewn-citrate-v	Tense=Past+VerbForm=Part	dema	0			rule
+citrates	0	oewn-citrate-n	Number=Plur	dema	0			rule
+citrates	1	oewn-citrate-v	Person=3+Tense=Pres	dema	0			rule
+citrating	0	oewn-citrate-v	VerbForm=Ger	dema	0			rule
+citreous	0		Degree=Pos	dema	0	citreous	a	moby_reverse
+citric	0	oewn-citric-a	Degree=Pos	dema	0			oewn_form
+citric acid	0	oewn-citric_acid-n	Number=Sing	dema	0			oewn_form
+citric acid cycle	0	oewn-citric_acid_cycle-n	Number=Sing	dema	0			oewn_form
+citric acid cycles	0	oewn-citric_acid_cycle-n	Number=Plur	dema	0			rule
+citric acids	0	oewn-citric_acid-n	Number=Plur	dema	0			rule
+citriculture	0		Number=Sing	dema	0	citriculture	n	moby_reverse
+citricultures	0		Number=Plur	dema	0	citriculture	n	rule
+citriculturist	0		Number=Sing	dema	0	citriculturist	n	moby_reverse
+citriculturists	0		Number=Plur	dema	0	citriculturist	n	rule
+citrin	0	oewn-citrin-n	Number=Sing	dema	0			oewn_form
+citrine	0	oewn-citrine-n	Number=Sing	dema	0			oewn_form
+citrines	0	oewn-citrine-n	Number=Plur	dema	0			rule
+citrins	0	oewn-citrin-n	Number=Plur	dema	0			rule
+citron	0	oewn-citron-n	Number=Sing	dema	0			oewn_form
+citron tree	0	oewn-citron_tree-n	Number=Sing	dema	0			oewn_form
+citron trees	0	oewn-citron_tree-n	Number=Plur	dema	0			rule
+citronalis	0		Number=Sing	dema	0	citronalis	n	moby_reverse
+citronella	0		Number=Sing	dema	0	citronella	n	moby_reverse
+citronellal	0		Number=Sing	dema	0	citronellal	n	moby_reverse
+citronellals	0		Number=Plur	dema	0	citronellal	n	rule
+citronellas	0		Number=Plur	dema	0	citronella	n	rule
+citronellol	0		Number=Sing	dema	0	citronellol	n	moby_reverse
+citronellols	0		Number=Plur	dema	0	citronellol	n	rule
+citrons	0	oewn-citron-n	Number=Plur	dema	0			rule
+citronwood	0	oewn-citronwood-n	Number=Sing	dema	0			oewn_form
+citronwoods	0	oewn-citronwood-n	Number=Plur	dema	0			rule
+citrophilous mealybug	0	oewn-citrophilous_mealybug-n	Number=Sing	dema	0			oewn_form
+citrophilous mealybugs	0	oewn-citrophilous_mealybug-n	Number=Plur	dema	0			rule
+citrophilus mealybug	0	oewn-citrophilus_mealybug-n	Number=Sing	dema	0			oewn_form
+citrophilus mealybugs	0	oewn-citrophilus_mealybug-n	Number=Plur	dema	0			rule
+citrous	0	oewn-citrous-a	Degree=Pos	dema	0			oewn_form
+citrous fruit	0	oewn-citrous_fruit-n	Number=Sing	dema	0			oewn_form
+citrous fruits	0	oewn-citrous_fruit-n	Number=Plur	dema	0			rule
+citrulline	0	oewn-citrulline-n	Number=Sing	dema	0			oewn_form
+citrullines	0	oewn-citrulline-n	Number=Plur	dema	0			rule
+citrus	0	oewn-citrus-n	Number=Plur	dema	0			rule_variant
+citrus	1	oewn-citrus-n	Number=Sing	dema	0			oewn_form
+citrus	2		Degree=Pos	dema	0	citrus	a	moby_reverse
+citrus fruit	0	oewn-citrus_fruit-n	Number=Sing	dema	0			oewn_form
+citrus fruits	0	oewn-citrus_fruit-n	Number=Plur	dema	0			rule
+citrus mealybug	0	oewn-citrus_mealybug-n	Number=Sing	dema	0			oewn_form
+citrus mealybugs	0	oewn-citrus_mealybug-n	Number=Plur	dema	0			rule
+citrus tree	0	oewn-citrus_tree-n	Number=Sing	dema	0			oewn_form
+citrus trees	0	oewn-citrus_tree-n	Number=Plur	dema	0			rule
+citrus whiteflies	0	oewn-citrus_whitefly-n	Number=Plur	dema	0			rule
+citrus whitefly	0	oewn-citrus_whitefly-n	Number=Sing	dema	0			oewn_form
+citruses	0	oewn-citrus-n	Number=Plur	dema	0			rule_variant
+cits	0		Number=Plur	dema	0	cit	n	rule
+cittern	0	oewn-cittern-n	Number=Sing	dema	0			oewn_form
+citterns	0	oewn-cittern-n	Number=Plur	dema	0			rule
+city	0	oewn-city-n	Number=Sing	dema	0			oewn_form
+city block	0	oewn-city_block-n	Number=Sing	dema	0			oewn_form
+city blocks	0	oewn-city_block-n	Number=Plur	dema	0			rule
+city boy	0	oewn-city_boy-n	Number=Sing	dema	0			oewn_form
+city boys	0	oewn-city_boy-n	Number=Plur	dema	0			rule
+city center	0	oewn-city_center-n	Number=Sing	dema	0			oewn_form
+city centers	0	oewn-city_center-n	Number=Plur	dema	0			rule
+city centre	0	oewn-city_centre-n	Number=Sing	dema	0			oewn_form
+city centres	0	oewn-city_centre-n	Number=Plur	dema	0			rule
+city council	0	oewn-city_council-n	Number=Sing	dema	0			oewn_form
+city councils	0	oewn-city_council-n	Number=Plur	dema	0			rule
+city desk	0	oewn-city_desk-n	Number=Sing	dema	0			oewn_form
+city desks	0	oewn-city_desk-n	Number=Plur	dema	0			rule
+city district	0	oewn-city_district-n	Number=Sing	dema	0			oewn_form
+city districts	0	oewn-city_district-n	Number=Plur	dema	0			rule
+city editor	0	oewn-city_editor-n	Number=Sing	dema	0			oewn_form
+city editors	0	oewn-city_editor-n	Number=Plur	dema	0			rule
+city father	0	oewn-city_father-n	Number=Sing	dema	0			oewn_form
+city fathers	0	oewn-city_father-n	Number=Plur	dema	0			rule
+city financier	0	oewn-city_financier-n	Number=Sing	dema	0			oewn_form
+city financiers	0	oewn-city_financier-n	Number=Plur	dema	0			rule
+city girl	0	oewn-city_girl-n	Number=Sing	dema	0			oewn_form
+city girls	0	oewn-city_girl-n	Number=Plur	dema	0			rule
+city hall	0	oewn-city_hall-n	Number=Sing	dema	0			oewn_form
+city halls	0	oewn-city_hall-n	Number=Plur	dema	0			rule
+city limit	0	oewn-city_limit-n	Number=Sing	dema	0			oewn_form
+city limits	0	oewn-city_limit-n	Number=Plur	dema	0			rule
+city limits	1	oewn-city_limits-n	Number=Sing	dema	0			oewn_form
+city line	0	oewn-city_line-n	Number=Sing	dema	0			oewn_form
+city lines	0	oewn-city_line-n	Number=Plur	dema	0			rule
+city man	0	oewn-city_man-n	Number=Sing	dema	0			oewn_form
+city manager	0	oewn-city_manager-n	Number=Sing	dema	0			oewn_form
+city managers	0	oewn-city_manager-n	Number=Plur	dema	0			rule
+city mans	0	oewn-city_man-n	Number=Plur	dema	0			rule
+city planning	0	oewn-city_planning-n	Number=Sing	dema	0			oewn_form
+city plannings	0	oewn-city_planning-n	Number=Plur	dema	0			rule
+city room	0	oewn-city_room-n	Number=Sing	dema	0			oewn_form
+city rooms	0	oewn-city_room-n	Number=Plur	dema	0			rule
+city slicker	0	oewn-city_slicker-n	Number=Sing	dema	0			oewn_form
+city slickers	0	oewn-city_slicker-n	Number=Plur	dema	0			rule
+city state	0	oewn-city_state-n	Number=Sing	dema	0			oewn_form
+city states	0	oewn-city_state-n	Number=Plur	dema	0			rule
+city universities	0	oewn-city_university-n	Number=Plur	dema	0			rule
+city university	0	oewn-city_university-n	Number=Sing	dema	0			oewn_form
+city woman	0	oewn-city_woman-n	Number=Sing	dema	0			oewn_form
+city womans	0	oewn-city_woman-n	Number=Plur	dema	0			rule
+city-born	0	oewn-city-born-a	Degree=Pos	dema	0			oewn_form
+city-bred	0	oewn-city-bred-a	Degree=Pos	dema	0			oewn_form
+city-like	0	oewn-city-like-a	Degree=Pos	dema	0			oewn_form
+city-state	0	oewn-city-state-n	Number=Sing	dema	0			oewn_form
+city-states	0	oewn-city-state-n	Number=Plur	dema	0			rule
+cityfied	0	oewn-cityfied-a	Degree=Pos	dema	0			oewn_form
+cityfied	1		VerbForm=Inf	dema	0	cityfied	v	moby_reverse
+cityless	0		Degree=Pos	dema	0	cityless	a	moby_reverse
+citylike	0		Degree=Pos	dema	0	citylike	a	moby_reverse
+cityscape	0	oewn-cityscape-n	Number=Sing	dema	0			oewn_form
+cityscapes	0	oewn-cityscape-n	Number=Plur	dema	0			rule
+cityward	0		Degree=Pos	dema	0	cityward	r	moby_reverse
+citywide	0	oewn-citywide-a	Degree=Pos	dema	0			oewn_form
+civ	0		Number=Sing	dema	0	civ	n	moby_reverse
+cive	0	oewn-cive-n	Number=Sing	dema	0			oewn_form
+cives	0	oewn-cive-n	Number=Plur	dema	0			rule
+civet	0	oewn-civet-n	Number=Sing	dema	0			oewn_form
+civet bean	0	oewn-civet_bean-n	Number=Sing	dema	0			oewn_form
+civet beans	0	oewn-civet_bean-n	Number=Plur	dema	0			rule
+civet cat	0	oewn-civet_cat-n	Number=Sing	dema	0			oewn_form
+civet cats	0	oewn-civet_cat-n	Number=Plur	dema	0			rule
+civetlike	0		Degree=Pos	dema	0	civetlike	a	moby_reverse
+civets	0	oewn-civet-n	Number=Plur	dema	0			rule
+civic	0	oewn-civic-a	Degree=Pos	dema	0			oewn_form
+civic center	0	oewn-civic_center-n	Number=Sing	dema	0			oewn_form
+civic centers	0	oewn-civic_center-n	Number=Plur	dema	0			rule
+civic duties	0	oewn-civic_duty-n	Number=Plur	dema	0			rule
+civic duty	0	oewn-civic_duty-n	Number=Sing	dema	0			oewn_form
+civic leader	0	oewn-civic_leader-n	Number=Sing	dema	0			oewn_form
+civic leaders	0	oewn-civic_leader-n	Number=Plur	dema	0			rule
+civic pride	0	oewn-civic_pride-n	Number=Sing	dema	0			oewn_form
+civic prides	0	oewn-civic_pride-n	Number=Plur	dema	0			rule
+civic responsibilities	0	oewn-civic_responsibility-n	Number=Plur	dema	0			rule
+civic responsibility	0	oewn-civic_responsibility-n	Number=Sing	dema	0			oewn_form
+civic spirit	0	oewn-civic_spirit-n	Number=Sing	dema	0			oewn_form
+civic spirits	0	oewn-civic_spirit-n	Number=Plur	dema	0			rule
+civically	0		Degree=Pos	dema	0	civically	r	moby_reverse
+civics	0	oewn-civics-n	Number=Sing	dema	0			oewn_form
+civies	0	oewn-civies-n	Number=Sing	dema	0			oewn_form
+civil	0	oewn-civil-a	Degree=Pos	dema	0			oewn_form
+civil action	0	oewn-civil_action-n	Number=Sing	dema	0			oewn_form
+civil actions	0	oewn-civil_action-n	Number=Plur	dema	0			rule
+civil authorities	0	oewn-civil_authority-n	Number=Plur	dema	0			rule
+civil authority	0	oewn-civil_authority-n	Number=Sing	dema	0			oewn_form
+civil censorship	0	oewn-civil_censorship-n	Number=Sing	dema	0			oewn_form
+civil censorships	0	oewn-civil_censorship-n	Number=Plur	dema	0			rule
+civil contempt	0	oewn-civil_contempt-n	Number=Sing	dema	0			oewn_form
+civil contempts	0	oewn-civil_contempt-n	Number=Plur	dema	0			rule
+civil day	0	oewn-civil_day-n	Number=Sing	dema	0			oewn_form
+civil days	0	oewn-civil_day-n	Number=Plur	dema	0			rule
+civil death	0	oewn-civil_death-n	Number=Sing	dema	0			oewn_form
+civil deaths	0	oewn-civil_death-n	Number=Plur	dema	0			rule
+civil defense	0	oewn-civil_defense-n	Number=Sing	dema	0			oewn_form
+civil defenses	0	oewn-civil_defense-n	Number=Plur	dema	0			rule
+civil disobedience	0	oewn-civil_disobedience-n	Number=Sing	dema	0			oewn_form
+civil disobediences	0	oewn-civil_disobedience-n	Number=Plur	dema	0			rule
+civil engineer	0	oewn-civil_engineer-n	Number=Sing	dema	0			oewn_form
+civil engineering	0	oewn-civil_engineering-n	Number=Sing	dema	0			oewn_form
+civil engineerings	0	oewn-civil_engineering-n	Number=Plur	dema	0			rule
+civil engineers	0	oewn-civil_engineer-n	Number=Plur	dema	0			rule
+civil law	0	oewn-civil_law-n	Number=Sing	dema	0			oewn_form
+civil laws	0	oewn-civil_law-n	Number=Plur	dema	0			rule
+civil leader	0	oewn-civil_leader-n	Number=Sing	dema	0			oewn_form
+civil leaders	0	oewn-civil_leader-n	Number=Plur	dema	0			rule
+civil libertarian	0	oewn-civil_libertarian-n	Number=Sing	dema	0			oewn_form
+civil libertarians	0	oewn-civil_libertarian-n	Number=Plur	dema	0			rule
+civil liberties	0	oewn-civil_liberty-n	Number=Plur	dema	0			rule
+civil liberty	0	oewn-civil_liberty-n	Number=Sing	dema	0			oewn_form
+civil marriage	0	oewn-civil_marriage-n	Number=Sing	dema	0			oewn_form
+civil marriages	0	oewn-civil_marriage-n	Number=Plur	dema	0			rule
+civil officer	0	oewn-civil_officer-n	Number=Sing	dema	0			oewn_form
+civil officers	0	oewn-civil_officer-n	Number=Plur	dema	0			rule
+civil order	0	oewn-civil_order-n	Number=Sing	dema	0			oewn_form
+civil orders	0	oewn-civil_order-n	Number=Plur	dema	0			rule
+civil right	0	oewn-civil_right-n	Number=Sing	dema	0			oewn_form
+civil rights	0	oewn-civil_right-n	Number=Plur	dema	0			rule
+civil rights activist	0	oewn-civil_rights_activist-n	Number=Sing	dema	0			oewn_form
+civil rights activists	0	oewn-civil_rights_activist-n	Number=Plur	dema	0			rule
+civil rights leader	0	oewn-civil_rights_leader-n	Number=Sing	dema	0			oewn_form
+civil rights leaders	0	oewn-civil_rights_leader-n	Number=Plur	dema	0			rule
+civil rights worker	0	oewn-civil_rights_worker-n	Number=Sing	dema	0			oewn_form
+civil rights workers	0	oewn-civil_rights_worker-n	Number=Plur	dema	0			rule
+civil script	0	oewn-civil_script-n	Number=Sing	dema	0			oewn_form
+civil scripts	0	oewn-civil_script-n	Number=Plur	dema	0			rule
+civil servant	0	oewn-civil_servant-n	Number=Sing	dema	0			oewn_form
+civil servants	0	oewn-civil_servant-n	Number=Plur	dema	0			rule
+civil service	0	oewn-civil_service-n	Number=Sing	dema	0			oewn_form
+civil services	0	oewn-civil_service-n	Number=Plur	dema	0			rule
+civil suit	0	oewn-civil_suit-n	Number=Sing	dema	0			oewn_form
+civil suits	0	oewn-civil_suit-n	Number=Plur	dema	0			rule
+civil time	0	oewn-civil_time-n	Number=Sing	dema	0			oewn_form
+civil times	0	oewn-civil_time-n	Number=Plur	dema	0			rule
+civil union	0	oewn-civil_union-n	Number=Sing	dema	0			oewn_form
+civil unions	0	oewn-civil_union-n	Number=Plur	dema	0			rule
+civil war	0	oewn-civil_war-n	Number=Sing	dema	0			oewn_form
+civil wars	0	oewn-civil_war-n	Number=Plur	dema	0			rule
+civil wrong	0	oewn-civil_wrong-n	Number=Sing	dema	0			oewn_form
+civil wrongs	0	oewn-civil_wrong-n	Number=Plur	dema	0			rule
+civil year	0	oewn-civil_year-n	Number=Sing	dema	0			oewn_form
+civil years	0	oewn-civil_year-n	Number=Plur	dema	0			rule
+civil-libertarian	0	oewn-civil-libertarian-a	Degree=Pos	dema	0			oewn_form
+civilian	0	oewn-civilian-n	Number=Sing	dema	0			oewn_form
+civilian	1	oewn-civilian-a	Degree=Pos	dema	0			oewn_form
+civilian clothing	0	oewn-civilian_clothing-n	Number=Sing	dema	0			oewn_form
+civilian clothings	0	oewn-civilian_clothing-n	Number=Plur	dema	0			rule
+civilian dress	0	oewn-civilian_dress-n	Number=Sing	dema	0			oewn_form
+civilian dresses	0	oewn-civilian_dress-n	Number=Plur	dema	0			rule
+civilian garb	0	oewn-civilian_garb-n	Number=Sing	dema	0			oewn_form
+civilian garbs	0	oewn-civilian_garb-n	Number=Plur	dema	0			rule
+civilians	0	oewn-civilian-n	Number=Plur	dema	0			rule
+civilisable	0		Degree=Pos	dema	0	civilisable	a	moby_reverse
+civilisation	0	oewn-civilisation-n	Number=Sing	dema	0			oewn_form
+civilisational	0		Degree=Pos	dema	0	civilisational	a	moby_reverse
+civilisations	0	oewn-civilisation-n	Number=Plur	dema	0			rule
+civilisatory	0		Degree=Pos	dema	0	civilisatory	a	moby_reverse
+civilise	0	oewn-civilise-v	VerbForm=Inf	dema	0			oewn_form
+civilised	0	oewn-civilise-v	Tense=Past+VerbForm=Part	dema	0			rule
+civilised	1	oewn-civilised-a	Degree=Pos	dema	0			oewn_form
+civilisedness	0		Number=Sing	dema	0	civilisedness	n	moby_reverse
+civiliser	0		Number=Sing	dema	0	civiliser	n	moby_reverse
+civilisers	0		Number=Plur	dema	0	civiliser	n	rule
+civilises	0	oewn-civilise-v	Person=3+Tense=Pres	dema	0			rule
+civilising	0	oewn-civilise-v	VerbForm=Ger	dema	0			rule
+civilities	0	oewn-civility-n	Number=Plur	dema	0			rule
+civility	0	oewn-civility-n	Number=Sing	dema	0			oewn_form
+civilizable	0		Degree=Pos	dema	0	civilizable	a	moby_reverse
+civilization	0	oewn-civilization-n	Number=Sing	dema	0			oewn_form
+civilizational	0		Degree=Pos	dema	0	civilizational	a	moby_reverse
+civilizations	0	oewn-civilization-n	Number=Plur	dema	0			rule
+civilizatory	0		Degree=Pos	dema	0	civilizatory	a	moby_reverse
+civilize	0	oewn-civilize-v	VerbForm=Inf	dema	0			oewn_form
+civilized	0	oewn-civilized-a	Degree=Pos	dema	0			oewn_form
+civilized	1	oewn-civilize-v	Tense=Past+VerbForm=Part	dema	0			rule
+civilizedness	0		Number=Sing	dema	0	civilizedness	n	moby_reverse
+civilizer	0		Number=Sing	dema	0	civilizer	n	moby_reverse
+civilizers	0		Number=Plur	dema	0	civilizer	n	rule
+civilizes	0	oewn-civilize-v	Person=3+Tense=Pres	dema	0			rule
+civilizing	0	oewn-civilize-v	VerbForm=Ger	dema	0			rule
+civilly	0	oewn-civilly-r	Degree=Pos	dema	0			oewn_form
+civilness	0		Number=Sing	dema	0	civilness	n	moby_reverse
+civism	0		Number=Sing	dema	0	civism	n	moby_reverse
+civisms	0		Number=Plur	dema	0	civism	n	rule
+civs	0		Number=Plur	dema	0	civ	n	rule
+civvies	0	oewn-civvies-n	Number=Sing	dema	0			oewn_form
+civvies	1		Number=Plur	dema	0	civvy	n	rule
+civvy	0		Number=Sing	dema	0	civvy	n	moby_reverse

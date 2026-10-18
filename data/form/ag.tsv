@@ -1,629 +1,706 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ag	0	dema-ag-n	Number=Sing	dema	0
-aga	0	dema-aga-n	Number=Sing	dema	0
-again	0	oewn-again-r	Degree=Pos	dema	0
-against	0	dema-against-p		dema	0
-agal	0	oewn-agal-n	Number=Sing	dema	0
-agalite	0	dema-agalite-n	Number=Sing	dema	0
-agalites	0	dema-agalite-n	Number=Plur	dema	0
-agalloch	0	dema-agalloch-n	Number=Sing	dema	0
-agalloches	0	dema-agalloch-n	Number=Plur	dema	0
-agallochs	0	dema-agalloch-n	Number=Plur	dema	0
-agalmatolite	0	dema-agalmatolite-n	Number=Sing	dema	0
-agalmatolites	0	dema-agalmatolite-n	Number=Plur	dema	0
-agals	0	oewn-agal-n	Number=Plur	dema	0
-agalwood	0	dema-agalwood-n	Number=Sing	dema	0
-agalwoods	0	dema-agalwood-n	Number=Plur	dema	0
-agama	0	oewn-agama-n	Number=Sing	dema	0
-agamas	0	oewn-agama-n	Number=Plur	dema	0
-agamete	0	oewn-agamete-n	Number=Sing	dema	0
-agametes	0	oewn-agamete-n	Number=Plur	dema	0
-agamic	0	oewn-agamic-a	Degree=Pos	dema	0
-agamically	0	dema-agamically-r	Degree=Pos	dema	0
-agamicness	0	dema-agamic-n	Number=Plur	dema	0
-agamid	0	oewn-agamid-n	Number=Sing	dema	0
-agamid	1	dema-agamid-a	Degree=Pos	dema	0
-agamidly	0	dema-agamid-r		dema	0
-agamidness	0	oewn-agamid-n	Number=Plur	dema	0
-agamids	0	oewn-agamid-n	Number=Plur	dema	0
-agamies	0	dema-agamy-n	Number=Plur	dema	0
-agammaglobulinemia	0	oewn-agammaglobulinemia-n	Number=Sing	dema	0
-agammaglobulinemias	0	oewn-agammaglobulinemia-n	Number=Plur	dema	0
-agamogenesis	0	oewn-agamogenesis-n	Number=Sing	dema	0
-agamogenetic	0	oewn-agamogenetic-a	Degree=Pos	dema	0
-agamogenetically	0	dema-agamogenetically-r	Degree=Pos	dema	0
-agamy	0	dema-agamy-n	Number=Sing	dema	0
-agapai	0	dema-agapai-n	Number=Sing	dema	0
-agapais	0	dema-agapai-n	Number=Plur	dema	0
-agapanthus	0	oewn-agapanthus-n	Number=Sing	dema	0
-agapanthuses	0	dema-agapanthuses-n	Number=Sing	dema	0
-agape	0	oewn-agape-n	Number=Sing	dema	1
-agape	1	oewn-agape-a	Degree=Pos	dema	1
-agape	2	dema-agape-r	Degree=Pos	dema	0
-agapely	0	dema-agape-r		dema	0
-agapeness	0	oewn-agape-n	Number=Plur	dema	0
-agaper	0	oewn-agape-n	Number=Plur	dema	1
-agaper	1	oewn-agape-a	Degree=Cmp	dema	1
-agapes	0	oewn-agape-n	Number=Plur	dema	0
-agapest	0	oewn-agape-n	Number=Plur	dema	1
-agapest	1	oewn-agape-a	Degree=Sup	dema	1
-agar	0	oewn-agar-n	Number=Sing	dema	0
-agaric	0	oewn-agaric-n	Number=Sing	dema	0
-agaricaceous	0	dema-agaricaceous-a	Degree=Pos	dema	0
-agaricaceously	0	dema-agaricaceous-r		dema	0
-agaricin	0	dema-agaricin-n	Number=Sing	dema	0
-agaricins	0	dema-agaricin-n	Number=Plur	dema	0
-agarics	0	oewn-agaric-n	Number=Plur	dema	0
-agarita	0	dema-agarita-n	Number=Sing	dema	0
-agaritas	0	dema-agarita-n	Number=Plur	dema	0
-agars	0	oewn-agar-n	Number=Plur	dema	0
-agas	0	dema-aga-n	Number=Plur	dema	0
-agata	0	dema-agata-n	Number=Sing	dema	0
-agatas	0	dema-agata-n	Number=Plur	dema	0
-agate	0	oewn-agate-n	Number=Sing	dema	0
-agatelike	0	dema-agatelike-a	Degree=Pos	dema	0
-agatelikely	0	dema-agatelike-r		dema	0
-agates	0	oewn-agate-n	Number=Plur	dema	0
-agateware	0	oewn-agateware-n	Number=Sing	dema	0
-agatewares	0	oewn-agateware-n	Number=Plur	dema	0
-agatize	0	dema-agatize-v	VerbForm=Inf	dema	0
-agatized	0	dema-agatized-v	VerbForm=Inf	dema	0
-agatizer	0	dema-agatize-n	Number=Plur	dema	0
-agatizers	0	dema-agatize-n	Number=Plur	dema	0
-agatizes	0	dema-agatize-v	Person=3+Tense=Pres	dema	0
-agatizing	0	dema-agatizing-v	VerbForm=Inf	dema	0
-agatizingly	0	dema-agatize-r		dema	0
-agatoid	0	dema-agatoid-a	Degree=Pos	dema	0
-agatoidly	0	dema-agatoid-r		dema	0
-agatoidness	0	dema-agatoid-n	Number=Plur	dema	0
-agave	0	oewn-agave-n	Number=Sing	dema	0
-agaves	0	oewn-agave-n	Number=Plur	dema	0
-agaze	0	oewn-agaze-a	Degree=Pos	dema	0
-agazely	0	dema-agaze-r		dema	0
-agazeness	0	dema-agaze-n	Number=Plur	dema	0
-agazer	0	oewn-agaze-a	Degree=Cmp	dema	0
-agazest	0	oewn-agaze-a	Degree=Sup	dema	0
-agba	0	dema-agba-n	Number=Sing	dema	0
-agbas	0	dema-agba-n	Number=Plur	dema	0
-agcies	0	dema-agcy-n	Number=Plur	dema	0
-agcy	0	dema-agcy-n	Number=Sing	dema	0
-age	0	oewn-age-n	Number=Sing	dema	0
-age	1	oewn-age-v	VerbForm=Inf	dema	0
-aged	0	oewn-aged-a	Degree=Pos	dema	0
-aged	1	dema-aged-v	VerbForm=Inf	dema	0
-ageded	0	dema-aged-v	Tense=Past	dema	0
-ageder	0	oewn-aged-n	Number=Plur	dema	0
-ageders	0	oewn-aged-n	Number=Plur	dema	0
-ageding	0	dema-aged-v	VerbForm=Ger	dema	0
-agedingly	0	dema-aged-r		dema	0
-agedly	0	dema-agedly-r	Degree=Pos	dema	0
-agedness	0	oewn-agedness-n	Number=Sing	dema	0
-agednesses	0	oewn-agedness-n	Number=Plur	dema	0
-ageds	0	dema-aged-v	Person=3+Tense=Pres	dema	0
-agee	0	dema-agee-a	Degree=Pos	dema	0
-ageely	0	dema-agee-r		dema	0
-ageeness	0	dema-agee-n	Number=Plur	dema	0
-ageer	0	dema-agee-a	Degree=Cmp	dema	0
-ageest	0	dema-agee-a	Degree=Sup	dema	0
-ageing	0	dema-ageing-v	VerbForm=Inf	dema	0
-ageless	0	oewn-ageless-a	Degree=Pos	dema	0
-agelessly	0	dema-ageless-r		dema	0
-agelessness	0	oewn-agelessness-n	Number=Sing	dema	0
-agelessnesses	0	oewn-agelessness-n	Number=Plur	dema	0
-agelong	0	oewn-agelong-a	Degree=Pos	dema	0
-agelongly	0	dema-agelong-r		dema	0
-agelongness	0	dema-agelong-n	Number=Plur	dema	0
-agencies	0	dema-agencies-n	Number=Sing	dema	0
-agency	0	oewn-agency-n	Number=Sing	dema	0
-agenda	0	oewn-agenda-n	Number=Sing	dema	0
-agendas	0	oewn-agenda-n	Number=Plur	dema	0
-agendum	0	oewn-agendum-n	Number=Sing	dema	0
-agendums	0	oewn-agendum-n	Number=Plur	dema	0
-agenesis	0	oewn-agenesis-n	Number=Sing	dema	0
-agenetic	0	dema-agenetic-a	Degree=Pos	dema	0
-agenetically	0	dema-agenetic-r		dema	0
-agent	0	oewn-agent-n	Number=Sing	dema	0
-agential	0	oewn-agential-a	Degree=Pos	dema	0
-agentially	0	dema-agential-r		dema	0
-agentialness	0	dema-agential-n	Number=Plur	dema	0
-agentival	0	dema-agentival-a	Degree=Pos	dema	0
-agentivally	0	dema-agentival-r		dema	0
-agentive	0	dema-agentive-a	Degree=Pos	dema	0
-agentive	1	dema-agentive-n	Number=Sing	dema	0
-agentively	0	dema-agentive-r		dema	0
-agentiveness	0	dema-agentive-n	Number=Plur	dema	0
-agentives	0	dema-agentive-n	Number=Plur	dema	0
-agents	0	oewn-agent-n	Number=Plur	dema	0
-ager	0	oewn-age-n	Number=Plur	dema	0
-ageratum	0	oewn-ageratum-n	Number=Sing	dema	0
-ageratums	0	oewn-ageratum-n	Number=Plur	dema	0
-agers	0	oewn-age-n	Number=Plur	dema	0
-ages	0	oewn-age-n	Number=Plur	dema	0
-ages	1	oewn-age-v	Person=3+Tense=Pres	dema	0
-ageusia	0	dema-ageusia-n	Number=Sing	dema	0
-ageusias	0	dema-ageusia-n	Number=Plur	dema	0
-ageusic	0	dema-ageusic-a	Degree=Pos	dema	0
-ageusically	0	dema-ageusic-r		dema	0
-ageusicness	0	dema-ageusic-n	Number=Plur	dema	0
-aggadic	0	dema-aggadic-a	Degree=Pos	dema	0
-aggadically	0	dema-aggadic-r		dema	0
-aggadicness	0	dema-aggadic-n	Number=Plur	dema	0
-agger	0	dema-agger-n	Number=Sing	dema	0
-aggers	0	dema-agger-n	Number=Plur	dema	0
-aggie	0	dema-aggie-n	Number=Sing	dema	0
-aggies	0	dema-aggie-n	Number=Plur	dema	0
-aggiornamenti	0	dema-aggiornamenti-n	Number=Sing	dema	0
-aggiornamentis	0	dema-aggiornamenti-n	Number=Plur	dema	0
-aggiornamento	0	dema-aggiornamento-n	Number=Sing	dema	0
-aggiornamentoes	0	dema-aggiornamento-n	Number=Plur	dema	0
-aggiornamentos	0	dema-aggiornamento-n	Number=Plur	dema	0
-agglomerate	0	oewn-agglomerate-n	Number=Sing	dema	1
-agglomerate	1	oewn-agglomerate-v	VerbForm=Inf	dema	1
-agglomerate	2	oewn-agglomerate-a	Degree=Pos	dema	0
-agglomerated	0	dema-agglomerated-v	VerbForm=Inf	dema	0
-agglomerately	0	dema-agglomerate-r		dema	0
-agglomerates	0	oewn-agglomerate-n	Number=Plur	dema	1
-agglomerates	1	oewn-agglomerate-v	Person=3+Tense=Pres	dema	1
-agglomerating	0	dema-agglomerating-v	VerbForm=Inf	dema	0
-agglomeration	0	oewn-agglomeration-n	Number=Sing	dema	0
-agglomerations	0	oewn-agglomeration-n	Number=Plur	dema	0
-agglomerative	0	oewn-agglomerative-a	Degree=Pos	dema	0
-agglomeratively	0	dema-agglomerative-r		dema	0
-agglomerator	0	oewn-agglomerator-n	Number=Sing	dema	0
-agglomerators	0	oewn-agglomerator-n	Number=Plur	dema	0
-agglutinabilities	0	dema-agglutinability-n	Number=Plur	dema	0
-agglutinability	0	dema-agglutinability-n	Number=Sing	dema	0
-agglutinable	0	dema-agglutinable-a	Degree=Pos	dema	0
-agglutinably	0	dema-agglutinable-r		dema	0
-agglutinant	0	dema-agglutinant-a	Degree=Pos	dema	0
-agglutinant	1	dema-agglutinant-n	Number=Sing	dema	0
-agglutinantly	0	dema-agglutinant-r		dema	0
-agglutinants	0	dema-agglutinant-n	Number=Plur	dema	0
-agglutinate	0	oewn-agglutinate-v	VerbForm=Inf	dema	0
-agglutinate	1	oewn-agglutinate-a	Degree=Pos	dema	0
-agglutinated	0	dema-agglutinated-v	VerbForm=Inf	dema	0
-agglutinately	0	dema-agglutinate-r		dema	0
-agglutinates	0	oewn-agglutinate-v	Person=3+Tense=Pres	dema	0
-agglutinating	0	dema-agglutinating-v	VerbForm=Inf	dema	0
-agglutination	0	oewn-agglutination-n	Number=Sing	dema	0
-agglutinations	0	oewn-agglutination-n	Number=Plur	dema	0
-agglutinative	0	oewn-agglutinative-a	Degree=Pos	dema	0
-agglutinatively	0	dema-agglutinative-r		dema	0
-agglutinin	0	oewn-agglutinin-n	Number=Sing	dema	0
-agglutinins	0	oewn-agglutinin-n	Number=Plur	dema	0
-agglutinogen	0	oewn-agglutinogen-n	Number=Sing	dema	0
-agglutinogenic	0	dema-agglutinogenic-a	Degree=Pos	dema	0
-agglutinogenically	0	dema-agglutinogenic-r		dema	0
-agglutinogens	0	oewn-agglutinogen-n	Number=Plur	dema	0
-aggradation	0	dema-aggradation-n	Number=Sing	dema	0
-aggradational	0	dema-aggradational-a	Degree=Pos	dema	0
-aggradationally	0	dema-aggradational-r		dema	0
-aggradations	0	dema-aggradation-n	Number=Plur	dema	0
-aggrade	0	oewn-aggrade-v	VerbForm=Inf	dema	0
-aggraded	0	dema-aggraded-v	VerbForm=Inf	dema	0
-aggrader	0	dema-aggrade-n	Number=Plur	dema	0
-aggraders	0	dema-aggrade-n	Number=Plur	dema	0
-aggrades	0	oewn-aggrade-v	Person=3+Tense=Pres	dema	0
-aggrading	0	dema-aggrading-v	VerbForm=Inf	dema	0
-aggradingly	0	dema-aggrade-r		dema	0
-aggrandise	0	oewn-aggrandise-v	VerbForm=Inf	dema	0
-aggrandised	0	dema-aggrandised-v	VerbForm=Inf	dema	0
-aggrandisement	0	oewn-aggrandisement-n	Number=Sing	dema	0
-aggrandisements	0	oewn-aggrandisement-n	Number=Plur	dema	0
-aggrandiser	0	dema-aggrandiser-n	Number=Sing	dema	0
-aggrandisers	0	dema-aggrandise-n	Number=Plur	dema	0
-aggrandises	0	oewn-aggrandise-v	Person=3+Tense=Pres	dema	0
-aggrandising	0	dema-aggrandising-v	VerbForm=Inf	dema	0
-aggrandisingly	0	dema-aggrandise-r		dema	0
-aggrandize	0	oewn-aggrandize-v	VerbForm=Inf	dema	0
-aggrandized	0	dema-aggrandized-v	VerbForm=Inf	dema	0
-aggrandizement	0	oewn-aggrandizement-n	Number=Sing	dema	0
-aggrandizements	0	oewn-aggrandizement-n	Number=Plur	dema	0
-aggrandizer	0	dema-aggrandizer-n	Number=Sing	dema	0
-aggrandizers	0	dema-aggrandize-n	Number=Plur	dema	0
-aggrandizes	0	oewn-aggrandize-v	Person=3+Tense=Pres	dema	0
-aggrandizing	0	dema-aggrandizing-v	VerbForm=Inf	dema	0
-aggrandizingly	0	dema-aggrandize-r		dema	0
-aggravate	0	oewn-aggravate-v	VerbForm=Inf	dema	0
-aggravated	0	dema-aggravated-v	VerbForm=Inf	dema	0
-aggravater	0	dema-aggravate-n	Number=Plur	dema	0
-aggravaters	0	dema-aggravate-n	Number=Plur	dema	0
-aggravates	0	oewn-aggravate-v	Person=3+Tense=Pres	dema	0
-aggravating	0	dema-aggravating-v	VerbForm=Inf	dema	0
-aggravatingly	0	oewn-aggravatingly-r	Degree=Pos	dema	0
-aggravation	0	oewn-aggravation-n	Number=Sing	dema	0
-aggravations	0	oewn-aggravation-n	Number=Plur	dema	0
-aggravative	0	dema-aggravative-a	Degree=Pos	dema	0
-aggravatively	0	dema-aggravative-r		dema	0
-aggravator	0	oewn-aggravator-n	Number=Sing	dema	0
-aggravators	0	oewn-aggravator-n	Number=Plur	dema	0
-aggregable	0	dema-aggregable-a	Degree=Pos	dema	0
-aggregably	0	dema-aggregable-r		dema	0
-aggregate	0	oewn-aggregate-n	Number=Sing	dema	1
-aggregate	1	oewn-aggregate-v	VerbForm=Inf	dema	1
-aggregate	2	oewn-aggregate-a	Degree=Pos	dema	0
-aggregate	3	dema-aggregate-r	Degree=Pos	dema	0
-aggregated	0	dema-aggregated-v	VerbForm=Inf	dema	0
-aggregately	0	dema-aggregately-a	Degree=Pos	dema	0
-aggregateness	0	dema-aggregateness-n	Number=Sing	dema	0
-aggregatenesses	0	dema-aggregateness-n	Number=Plur	dema	0
-aggregater	0	oewn-aggregate-n	Number=Plur	dema	0
-aggregaters	0	oewn-aggregate-n	Number=Plur	dema	0
-aggregates	0	oewn-aggregate-n	Number=Plur	dema	1
-aggregates	1	oewn-aggregate-v	Person=3+Tense=Pres	dema	1
-aggregating	0	dema-aggregating-v	VerbForm=Inf	dema	0
-aggregatingly	0	dema-aggregate-r		dema	0
-aggregation	0	oewn-aggregation-n	Number=Sing	dema	0
-aggregations	0	oewn-aggregation-n	Number=Plur	dema	0
-aggregative	0	oewn-aggregative-a	Degree=Pos	dema	0
-aggregatively	0	dema-aggregative-r		dema	0
-aggregatorily	0	dema-aggregatory-r		dema	0
-aggregatory	0	dema-aggregatory-a	Degree=Pos	dema	0
-aggress	0	oewn-aggress-v	VerbForm=Inf	dema	0
-aggressed	0	oewn-aggress-v	Tense=Past	dema	0
-aggresser	0	dema-aggress-n	Number=Plur	dema	0
-aggressers	0	dema-aggress-n	Number=Plur	dema	0
-aggresses	0	oewn-aggress-v	Person=3+Tense=Pres	dema	0
-aggressing	0	oewn-aggress-v	VerbForm=Ger	dema	0
-aggressingly	0	dema-aggress-r		dema	0
-aggression	0	oewn-aggression-n	Number=Sing	dema	0
-aggressions	0	oewn-aggression-n	Number=Plur	dema	0
-aggressive	0	oewn-aggressive-a	Degree=Pos	dema	0
-aggressively	0	oewn-aggressively-r	Degree=Pos	dema	0
-aggressiveness	0	dema-aggressive-n	Number=Plur	dema	0
-aggressor	0	oewn-aggressor-n	Number=Sing	dema	0
-aggressors	0	oewn-aggressor-n	Number=Plur	dema	0
-aggrieve	0	oewn-aggrieve-v	VerbForm=Inf	dema	0
-aggrieved	0	dema-aggrieved-v	VerbForm=Inf	dema	0
-aggrievedly	0	dema-aggrievedly-r	Degree=Pos	dema	0
-aggrievedness	0	dema-aggrievedness-n	Number=Sing	dema	0
-aggrievednesses	0	dema-aggrievedness-n	Number=Plur	dema	0
-aggriever	0	dema-aggrieve-n	Number=Plur	dema	0
-aggrievers	0	dema-aggrieve-n	Number=Plur	dema	0
-aggrieves	0	oewn-aggrieve-v	Person=3+Tense=Pres	dema	0
-aggrieving	0	dema-aggrieving-v	VerbForm=Inf	dema	0
-aggrievingly	0	dema-aggrieve-r		dema	0
-aggro	0	oewn-aggro-n	Number=Sing	dema	0
-aggroes	0	oewn-aggro-n	Number=Plur	dema	0
-aggros	0	oewn-aggro-n	Number=Plur	dema	0
-agha	0	dema-agha-n	Number=Sing	dema	0
-aghas	0	dema-agha-n	Number=Plur	dema	0
-aghast	0	oewn-aghast-a	Degree=Pos	dema	0
-aghaster	0	oewn-aghast-a	Degree=Cmp	dema	0
-aghastest	0	oewn-aghast-a	Degree=Sup	dema	0
-aghastly	0	dema-aghast-r		dema	0
-aghastness	0	dema-aghast-n	Number=Plur	dema	0
-agilawood	0	dema-agilawood-n	Number=Sing	dema	0
-agilawoods	0	dema-agilawood-n	Number=Plur	dema	0
-agile	0	oewn-agile-a	Degree=Pos	dema	0
-agilely	0	oewn-agilely-r	Degree=Pos	dema	0
-agileness	0	dema-agileness-n	Number=Sing	dema	0
-agilenesses	0	dema-agileness-n	Number=Plur	dema	0
-agiler	0	oewn-agile-a	Degree=Cmp	dema	0
-agilest	0	oewn-agile-a	Degree=Sup	dema	0
-agilities	0	oewn-agility-n	Number=Plur	dema	0
-agility	0	oewn-agility-n	Number=Sing	dema	0
-aging	0	dema-aging-v	VerbForm=Inf	dema	0
-agingly	0	dema-age-r		dema	0
-agio	0	oewn-agio-n	Number=Sing	dema	0
-agios	0	dema-agios-n	Number=Sing	dema	0
-agiotage	0	oewn-agiotage-n	Number=Sing	dema	0
-agiotages	0	oewn-agiotage-n	Number=Plur	dema	0
-agist	0	dema-agist-v	VerbForm=Inf	dema	0
-agisted	0	dema-agist-v	Tense=Past	dema	0
-agister	0	dema-agister-n	Number=Sing	dema	0
-agisters	0	dema-agist-n	Number=Plur	dema	0
-agisting	0	dema-agist-v	VerbForm=Ger	dema	0
-agistingly	0	dema-agist-r		dema	0
-agistment	0	dema-agistment-n	Number=Sing	dema	0
-agistments	0	dema-agistment-n	Number=Plur	dema	0
-agists	0	dema-agist-v	Person=3+Tense=Pres	dema	0
-agit	0	dema-agit-n	Number=Sing	dema	0
-agitable	0	dema-agitable-a	Degree=Pos	dema	0
-agitably	0	dema-agitable-r		dema	0
-agitate	0	oewn-agitate-v	VerbForm=Inf	dema	0
-agitated	0	dema-agitated-v	VerbForm=Inf	dema	0
-agitatedly	0	dema-agitatedly-r	Degree=Pos	dema	0
-agitater	0	dema-agitate-n	Number=Plur	dema	0
-agitaters	0	dema-agitate-n	Number=Plur	dema	0
-agitates	0	oewn-agitate-v	Person=3+Tense=Pres	dema	0
-agitating	0	dema-agitating-v	VerbForm=Inf	dema	0
-agitatingly	0	dema-agitate-r		dema	0
-agitation	0	oewn-agitation-n	Number=Sing	dema	0
-agitational	0	dema-agitational-a	Degree=Pos	dema	0
-agitationally	0	dema-agitational-r		dema	0
-agitations	0	oewn-agitation-n	Number=Plur	dema	0
-agitative	0	oewn-agitative-a	Degree=Pos	dema	0
-agitatively	0	dema-agitative-r		dema	0
-agitato	0	dema-agitato-a	Degree=Pos	dema	0
-agitato	1	dema-agitato-r	Degree=Pos	dema	0
-agitatoly	0	dema-agitato-r		dema	0
-agitator	0	oewn-agitator-n	Number=Sing	dema	0
-agitatorial	0	dema-agitatorial-a	Degree=Pos	dema	0
-agitatorially	0	dema-agitatorial-r		dema	0
-agitators	0	oewn-agitator-n	Number=Plur	dema	0
-agitprop	0	oewn-agitprop-n	Number=Sing	dema	0
-agitpropist	0	dema-agitpropist-n	Number=Sing	dema	0
-agitpropists	0	dema-agitpropist-n	Number=Plur	dema	0
-agitprops	0	oewn-agitprop-n	Number=Plur	dema	0
-agits	0	dema-agit-n	Number=Plur	dema	0
-agleam	0	oewn-agleam-a	Degree=Pos	dema	0
-agleamer	0	oewn-agleam-a	Degree=Cmp	dema	0
-agleamest	0	oewn-agleam-a	Degree=Sup	dema	0
-agleamly	0	dema-agleam-r		dema	0
-agleamness	0	dema-agleam-n	Number=Plur	dema	0
-aglet	0	oewn-aglet-n	Number=Sing	dema	0
-aglets	0	oewn-aglet-n	Number=Plur	dema	0
-agley	0	dema-agley-a	Degree=Pos	dema	0
-agleyer	0	dema-agley-a	Degree=Cmp	dema	0
-agleyest	0	dema-agley-a	Degree=Sup	dema	0
-agleyly	0	dema-agley-r		dema	0
-agleyness	0	dema-agley-n	Number=Plur	dema	0
-aglimmer	0	dema-aglimmer-a	Degree=Pos	dema	0
-aglimmerly	0	dema-aglimmer-r		dema	0
-aglimmerness	0	dema-aglimmer-n	Number=Plur	dema	0
-aglint	0	dema-aglint-a	Degree=Pos	dema	0
-aglinter	0	dema-aglint-a	Degree=Cmp	dema	0
-aglintest	0	dema-aglint-a	Degree=Sup	dema	0
-aglintly	0	dema-aglint-r		dema	0
-aglintness	0	dema-aglint-n	Number=Plur	dema	0
-aglisten	0	dema-aglisten-a	Degree=Pos	dema	0
-aglistenly	0	dema-aglisten-r		dema	0
-aglistenness	0	dema-aglisten-n	Number=Plur	dema	0
-aglitter	0	oewn-aglitter-a	Degree=Pos	dema	0
-aglitterly	0	dema-aglitter-r		dema	0
-aglitterness	0	dema-aglitter-n	Number=Plur	dema	0
-aglossia	0	dema-aglossia-n	Number=Sing	dema	0
-aglossias	0	dema-aglossia-n	Number=Plur	dema	0
-aglow	0	oewn-aglow-a	Degree=Pos	dema	0
-aglower	0	oewn-aglow-a	Degree=Cmp	dema	0
-aglowest	0	oewn-aglow-a	Degree=Sup	dema	0
-aglowly	0	dema-aglow-r		dema	0
-aglowness	0	dema-aglow-n	Number=Plur	dema	0
-aglucon	0	dema-aglucon-n	Number=Sing	dema	0
-aglucons	0	dema-aglucon-n	Number=Plur	dema	0
-agly	0	dema-agly-r	Degree=Pos	dema	0
-aglycon	0	dema-aglycon-n	Number=Sing	dema	0
-aglycons	0	dema-aglycon-n	Number=Plur	dema	0
-agma	0	dema-agma-n	Number=Sing	dema	0
-agmas	0	dema-agma-n	Number=Plur	dema	0
-agminate	0	dema-agminate-a	Degree=Pos	dema	0
-agminately	0	dema-agminate-r		dema	0
-agminateness	0	dema-agminate-n	Number=Plur	dema	0
-agnail	0	oewn-agnail-n	Number=Sing	dema	0
-agnails	0	oewn-agnail-n	Number=Plur	dema	0
-agnate	0	oewn-agnate-a	Degree=Pos	dema	0
-agnate	1	oewn-agnate-n	Number=Sing	dema	0
-agnately	0	dema-agnate-r		dema	0
-agnateness	0	oewn-agnate-n	Number=Plur	dema	0
-agnates	0	oewn-agnate-n	Number=Plur	dema	0
-agnathous	0	dema-agnathous-a	Degree=Pos	dema	0
-agnathously	0	dema-agnathous-r		dema	0
-agnathousness	0	dema-agnathous-n	Number=Plur	dema	0
-agnatic	0	oewn-agnatic-a	Degree=Pos	dema	0
-agnatical	0	dema-agnatical-a	Degree=Pos	dema	0
-agnatically	0	dema-agnatically-r	Degree=Pos	dema	0
-agnaticness	0	dema-agnatic-n	Number=Plur	dema	0
-agnation	0	oewn-agnation-n	Number=Sing	dema	0
-agnations	0	oewn-agnation-n	Number=Plur	dema	0
-agneaux	0	dema-agneaux-n	Number=Sing	dema	0
-agneauxes	0	dema-agneaux-n	Number=Plur	dema	0
-agnel	0	dema-agnel-n	Number=Sing	dema	0
-agnels	0	dema-agnel-n	Number=Plur	dema	0
-agnize	0	oewn-agnize-v	VerbForm=Inf	dema	0
-agnized	0	dema-agnized-v	VerbForm=Inf	dema	0
-agnizer	0	dema-agnize-n	Number=Plur	dema	0
-agnizers	0	dema-agnize-n	Number=Plur	dema	0
-agnizes	0	oewn-agnize-v	Person=3+Tense=Pres	dema	0
-agnizing	0	dema-agnizing-v	VerbForm=Inf	dema	0
-agnizingly	0	dema-agnize-r		dema	0
-agnoiologies	0	dema-agnoiology-n	Number=Plur	dema	0
-agnoiology	0	dema-agnoiology-n	Number=Sing	dema	0
-agnomen	0	oewn-agnomen-n	Number=Sing	dema	0
-agnomens	0	oewn-agnomen-n	Number=Plur	dema	0
-agnomina	0	dema-agnomina-n	Number=Sing	dema	0
-agnominal	0	dema-agnominal-a	Degree=Pos	dema	0
-agnominally	0	dema-agnominal-r		dema	0
-agnominas	0	dema-agnomina-n	Number=Plur	dema	0
-agnosia	0	oewn-agnosia-n	Number=Sing	dema	0
-agnosias	0	oewn-agnosia-n	Number=Plur	dema	0
-agnostic	0	oewn-agnostic-n	Number=Sing	dema	0
-agnostic	1	oewn-agnostic-a	Degree=Pos	dema	0
-agnostically	0	dema-agnostically-r	Degree=Pos	dema	0
-agnosticism	0	oewn-agnosticism-n	Number=Sing	dema	0
-agnosticisms	0	oewn-agnosticism-n	Number=Plur	dema	0
-agnosticness	0	oewn-agnostic-n	Number=Plur	dema	0
-agnostics	0	oewn-agnostic-n	Number=Plur	dema	0
-ago	0	oewn-ago-r	Degree=Pos	dema	0
-agog	0	oewn-agog-a	Degree=Pos	dema	0
-agog	1	dema-agog-r	Degree=Pos	dema	0
-agoger	0	oewn-agog-a	Degree=Cmp	dema	0
-agoger	1	dema-agog-r	Degree=Cmp	dema	0
-agogest	0	oewn-agog-a	Degree=Sup	dema	0
-agogest	1	dema-agog-r	Degree=Sup	dema	0
-agogics	0	dema-agogics-n	Number=Sing	dema	0
-agogicses	0	dema-agogics-n	Number=Plur	dema	0
-agogly	0	dema-agog-r		dema	0
-agogness	0	dema-agog-n	Number=Plur	dema	0
-agon	0	oewn-agon-n	Number=Sing	dema	0
-agonal	0	oewn-agonal-a	Degree=Pos	dema	0
-agonally	0	dema-agonal-r		dema	0
-agonalness	0	dema-agonal-n	Number=Plur	dema	0
-agone	0	dema-agone-r	Degree=Pos	dema	0
-agones	0	dema-agones-n	Number=Sing	dema	0
-agonic	0	dema-agonic-a	Degree=Pos	dema	0
-agonically	0	dema-agonic-r		dema	0
-agonicness	0	dema-agonic-n	Number=Plur	dema	0
-agonies	0	dema-agonies-n	Number=Sing	dema	0
-agonise	0	oewn-agonise-v	VerbForm=Inf	dema	0
-agonised	0	dema-agonised-v	VerbForm=Inf	dema	0
-agoniser	0	dema-agonise-n	Number=Plur	dema	0
-agonisers	0	dema-agonise-n	Number=Plur	dema	0
-agonises	0	oewn-agonise-v	Person=3+Tense=Pres	dema	0
-agonising	0	dema-agonising-v	VerbForm=Inf	dema	0
-agonisingly	0	dema-agonisingly-r	Degree=Pos	dema	0
-agonist	0	oewn-agonist-n	Number=Sing	dema	0
-agonistic	0	oewn-agonistic-a	Degree=Pos	dema	0
-agonistically	0	dema-agonistically-r	Degree=Pos	dema	0
-agonists	0	oewn-agonist-n	Number=Plur	dema	0
-agonize	0	oewn-agonize-v	VerbForm=Inf	dema	0
-agonized	0	dema-agonized-v	VerbForm=Inf	dema	0
-agonizedly	0	dema-agonizedly-r	Degree=Pos	dema	0
-agonizer	0	dema-agonize-n	Number=Plur	dema	0
-agonizers	0	dema-agonize-n	Number=Plur	dema	0
-agonizes	0	oewn-agonize-v	Person=3+Tense=Pres	dema	0
-agonizing	0	oewn-agonizing-a	Degree=Pos	dema	0
-agonizing	1	dema-agonizing-v	VerbForm=Inf	dema	0
-agonizingly	0	oewn-agonizingly-r	Degree=Pos	dema	0
-agons	0	oewn-agon-n	Number=Plur	dema	0
-agony	0	oewn-agony-n	Number=Sing	dema	0
-agora	0	oewn-agora-n-1	Number=Sing	dema	0
-agorae	0	dema-agorae-n	Number=Sing	dema	0
-agoraes	0	dema-agorae-n	Number=Plur	dema	0
-agoraphobia	0	oewn-agoraphobia-n	Number=Sing	dema	0
-agoraphobias	0	oewn-agoraphobia-n	Number=Plur	dema	0
-agoras	0	oewn-agora-n-1	Number=Plur	dema	0
-agoroth	0	dema-agoroth-n	Number=Sing	dema	0
-agoroths	0	dema-agoroth-n	Number=Plur	dema	0
-agouta	0	dema-agouta-n	Number=Sing	dema	0
-agoutas	0	dema-agouta-n	Number=Plur	dema	0
-agouti	0	oewn-agouti-n	Number=Sing	dema	0
-agouties	0	dema-agouties-n	Number=Sing	dema	0
-agoutis	0	dema-agoutis-n	Number=Sing	dema	0
-agouty	0	dema-agouty-n	Number=Sing	dema	0
-agr	0	dema-agr-n	Number=Sing	dema	0
-agraffe	0	dema-agraffe-n	Number=Sing	dema	0
-agraffes	0	dema-agraffe-n	Number=Plur	dema	0
-agrammatism	0	dema-agrammatism-n	Number=Sing	dema	0
-agrammatisms	0	dema-agrammatism-n	Number=Plur	dema	0
-agranulocytosis	0	oewn-agranulocytosis-n	Number=Sing	dema	0
-agrapha	0	oewn-agrapha-n	Number=Sing	dema	0
-agraphas	0	oewn-agrapha-n	Number=Plur	dema	0
-agraphia	0	oewn-agraphia-n	Number=Sing	dema	0
-agraphias	0	oewn-agraphia-n	Number=Plur	dema	0
-agraphic	0	oewn-agraphic-a	Degree=Pos	dema	0
-agraphically	0	dema-agraphic-r		dema	0
-agraphicness	0	dema-agraphic-n	Number=Plur	dema	0
-agrarian	0	oewn-agrarian-a	Degree=Pos	dema	0
-agrarian	1	dema-agrarian-n	Number=Sing	dema	0
-agrarianism	0	dema-agrarianism-n	Number=Sing	dema	0
-agrarianisms	0	dema-agrarianism-n	Number=Plur	dema	0
-agrarianly	0	dema-agrarianly-r	Degree=Pos	dema	0
-agrarianness	0	dema-agrarian-n	Number=Plur	dema	0
-agrarians	0	dema-agrarian-n	Number=Plur	dema	0
-agravic	0	dema-agravic-a	Degree=Pos	dema	0
-agravically	0	dema-agravic-r		dema	0
-agravicness	0	dema-agravic-n	Number=Plur	dema	0
-agree	0	oewn-agree-v	VerbForm=Inf	dema	0
-agreeabilities	0	oewn-agreeability-n	Number=Plur	dema	0
-agreeability	0	oewn-agreeability-n	Number=Sing	dema	0
-agreeable	0	oewn-agreeable-a	Degree=Pos	dema	0
-agreeableness	0	oewn-agreeableness-n	Number=Sing	dema	0
-agreeablenesses	0	oewn-agreeableness-n	Number=Plur	dema	0
-agreeably	0	oewn-agreeably-r	Degree=Pos	dema	0
-agreed	0	oewn-agreed-a	Degree=Pos	dema	0
-agreed	1	dema-agreed-v	VerbForm=Inf	dema	0
-agreeded	0	dema-agreed-v	Tense=Past	dema	0
-agreeder	0	dema-agreed-n	Number=Plur	dema	0
-agreeders	0	dema-agreed-n	Number=Plur	dema	0
-agreeding	0	dema-agreed-v	VerbForm=Ger	dema	0
-agreedingly	0	dema-agreed-r		dema	0
-agreedly	0	dema-agreed-r		dema	0
-agreedness	0	dema-agreed-n	Number=Plur	dema	0
-agreeds	0	dema-agreed-v	Person=3+Tense=Pres	dema	0
-agreeing	0	dema-agreeing-v	VerbForm=Inf	dema	0
-agreeingly	0	dema-agreeingly-r	Degree=Pos	dema	0
-agreement	0	oewn-agreement-n	Number=Sing	dema	0
-agreements	0	oewn-agreement-n	Number=Plur	dema	0
-agreer	0	dema-agree-n	Number=Plur	dema	0
-agreers	0	dema-agree-n	Number=Plur	dema	0
-agrees	0	oewn-agree-v	Person=3+Tense=Pres	dema	0
-agrestal	0	dema-agrestal-a	Degree=Pos	dema	0
-agrestally	0	dema-agrestal-r		dema	0
-agrestalness	0	dema-agrestal-n	Number=Plur	dema	0
-agrestic	0	oewn-agrestic-a	Degree=Pos	dema	0
-agrestically	0	dema-agrestic-r		dema	0
-agresticness	0	dema-agrestic-n	Number=Plur	dema	0
-agribusiness	0	oewn-agribusiness-n	Number=Sing	dema	0
-agribusinesses	0	oewn-agribusiness-n	Number=Plur	dema	0
-agric	0	dema-agric-n	Number=Sing	dema	0
-agrics	0	dema-agric-n	Number=Plur	dema	0
-agricultural	0	oewn-agricultural-a	Degree=Pos	dema	0
-agriculturally	0	dema-agriculturally-r	Degree=Pos	dema	0
-agriculture	0	oewn-agriculture-n	Number=Sing	dema	0
-agricultures	0	oewn-agriculture-n	Number=Plur	dema	0
-agriculturist	0	oewn-agriculturist-n	Number=Sing	dema	0
-agriculturists	0	oewn-agriculturist-n	Number=Plur	dema	0
-agrimonies	0	dema-agrimonies-n	Number=Sing	dema	0
-agrimony	0	oewn-agrimony-n	Number=Sing	dema	0
-agriological	0	dema-agriological-a	Degree=Pos	dema	0
-agriologically	0	dema-agriological-r		dema	0
-agriologies	0	dema-agriology-n	Number=Plur	dema	0
-agriologist	0	dema-agriologist-n	Number=Sing	dema	0
-agriologists	0	dema-agriologist-n	Number=Plur	dema	0
-agriology	0	dema-agriology-n	Number=Sing	dema	0
-agrobiologic	0	oewn-agrobiologic-a	Degree=Pos	dema	0
-agrobiological	0	oewn-agrobiological-a	Degree=Pos	dema	0
-agrobiologically	0	dema-agrobiologically-r	Degree=Pos	dema	0
-agrobiologies	0	oewn-agrobiology-n	Number=Plur	dema	0
-agrobiologist	0	dema-agrobiologist-n	Number=Sing	dema	0
-agrobiologists	0	dema-agrobiologist-n	Number=Plur	dema	0
-agrobiology	0	oewn-agrobiology-n	Number=Sing	dema	0
-agrologic	0	oewn-agrologic-a	Degree=Pos	dema	0
-agrological	0	oewn-agrological-a	Degree=Pos	dema	0
-agrologically	0	dema-agrologic-r		dema	0
-agrologies	0	oewn-agrology-n	Number=Plur	dema	0
-agrology	0	oewn-agrology-n	Number=Sing	dema	0
-agromania	0	oewn-agromania-n	Number=Sing	dema	0
-agromanias	0	oewn-agromania-n	Number=Plur	dema	0
-agron	0	dema-agron-n	Number=Sing	dema	0
-agronomic	0	oewn-agronomic-a	Degree=Pos	dema	0
-agronomical	0	oewn-agronomical-a	Degree=Pos	dema	0
-agronomically	0	dema-agronomic-r		dema	0
-agronomics	0	dema-agronomics-n	Number=Sing	dema	0
-agronomicses	0	dema-agronomics-n	Number=Plur	dema	0
-agronomies	0	oewn-agronomy-n	Number=Plur	dema	0
-agronomist	0	oewn-agronomist-n	Number=Sing	dema	0
-agronomists	0	oewn-agronomist-n	Number=Plur	dema	0
-agronomy	0	oewn-agronomy-n	Number=Sing	dema	0
-agrons	0	dema-agron-n	Number=Plur	dema	0
-agrostographer	0	dema-agrostographer-n	Number=Sing	dema	0
-agrostographers	0	dema-agrostographer-n	Number=Plur	dema	0
-agrostographic	0	dema-agrostographic-a	Degree=Pos	dema	0
-agrostographical	0	dema-agrostographical-a	Degree=Pos	dema	0
-agrostographically	0	dema-agrostographic-r		dema	0
-agrostographies	0	dema-agrostographies-n	Number=Sing	dema	0
-agrostography	0	dema-agrostography-n	Number=Sing	dema	0
-agrostologic	0	dema-agrostologic-a	Degree=Pos	dema	0
-agrostological	0	dema-agrostological-a	Degree=Pos	dema	0
-agrostologically	0	dema-agrostologic-r		dema	0
-agrostologies	0	dema-agrostology-n	Number=Plur	dema	0
-agrostologist	0	dema-agrostologist-n	Number=Sing	dema	0
-agrostologists	0	dema-agrostologist-n	Number=Plur	dema	0
-agrostology	0	dema-agrostology-n	Number=Sing	dema	0
-aground	0	oewn-aground-r	Degree=Pos	dema	0
-agrs	0	dema-agr-n	Number=Plur	dema	0
-agrypnotic	0	oewn-agrypnotic-a	Degree=Pos	dema	0
-agrypnotic	1	dema-agrypnotic-n	Number=Sing	dema	0
-agrypnotically	0	dema-agrypnotic-r		dema	0
-agrypnotics	0	dema-agrypnotic-n	Number=Plur	dema	0
-agst	0	dema-agst-n	Number=Sing	dema	0
-agsts	0	dema-agst-n	Number=Plur	dema	0
-aguardiente	0	dema-aguardiente-n	Number=Sing	dema	0
-aguardientes	0	dema-aguardiente-n	Number=Plur	dema	0
-ague	0	oewn-ague-n	Number=Sing	dema	0
-aguelike	0	dema-aguelike-a	Degree=Pos	dema	0
-aguelikely	0	dema-aguelike-r		dema	0
-aguelikeness	0	dema-aguelike-n	Number=Plur	dema	0
-agues	0	oewn-ague-n	Number=Plur	dema	0
-agueweed	0	oewn-agueweed-n	Number=Sing	dema	0
-agueweeds	0	oewn-agueweed-n	Number=Plur	dema	0
-aguish	0	oewn-aguish-a	Degree=Pos	dema	0
-aguishly	0	dema-aguishly-r	Degree=Pos	dema	0
-aguishness	0	dema-aguish-n	Number=Plur	dema	0
-agujon	0	dema-agujon-n	Number=Sing	dema	0
-agujons	0	dema-agujon-n	Number=Plur	dema	0
-agura	0	dema-agura-n	Number=Sing	dema	0
-aguras	0	dema-agura-n	Number=Plur	dema	0
-aguroth	0	dema-aguroth-n	Number=Sing	dema	0
-aguroths	0	dema-aguroth-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Ag	0		Number=Sing	dema	0	ag	n	moby_reverse
+Ag	1	oewn-Ag-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aga	0		Number=Sing	dema	0	aga	n	moby_reverse
+Aga	1	oewn-Aga-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agapanthus africanus	0	oewn-Agapanthus_africanus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agaricus arvensis	0	oewn-Agaricus_arvensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agaricus campestris	0	oewn-Agaricus_campestris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agas	0		Number=Plur	dema	0	aga	n	rule
+Agas	1	oewn-Aga-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agastache foeniculum	0	oewn-Agastache_foeniculum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agastache foeniculums	0	oewn-Agastache_foeniculum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agastache mexicana	0	oewn-Agastache_mexicana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agastache mexicanas	0	oewn-Agastache_mexicana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agastache nepetoides	0	oewn-Agastache_nepetoides-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis alba	0	oewn-Agathis_alba-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis albas	0	oewn-Agathis_alba-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agathis australis	0	oewn-Agathis_australis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis dammara	0	oewn-Agathis_dammara-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis dammaras	0	oewn-Agathis_dammara-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agathis lanceolata	0	oewn-Agathis_lanceolata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis lanceolatas	0	oewn-Agathis_lanceolata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agathis robusta	0	oewn-Agathis_robusta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agathis robustas	0	oewn-Agathis_robusta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agave americana	0	oewn-Agave_americana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agave americanas	0	oewn-Agave_americana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agave atrovirens	0	oewn-Agave_atrovirens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agave cantala	0	oewn-Agave_cantala-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agave cantalas	0	oewn-Agave_cantala-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agave sisalana	0	oewn-Agave_sisalana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agave sisalanas	0	oewn-Agave_sisalana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agave tequilana	0	oewn-Agave_tequilana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agave tequilanas	0	oewn-Agave_tequilana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agelaius phoeniceus	0	oewn-Agelaius_phoeniceus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agene	0	oewn-Agene-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agenes	0	oewn-Agene-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agenise	0	oewn-Agenise-v	Capitalization=Title+VerbForm=Inf	dema	0			oewn_form
+Agenised	0	oewn-Agenise-v	Capitalization=Title+Tense=Past+VerbForm=Part	dema	0			rule
+Agenises	0	oewn-Agenise-v	Capitalization=Title+Person=3+Tense=Pres	dema	0			rule
+Agenising	0	oewn-Agenise-v	Capitalization=Title+VerbForm=Ger	dema	0			rule
+Agenize	0	oewn-Agenize-v	Capitalization=Title+VerbForm=Inf	dema	0			oewn_form
+Agenized	0	oewn-Agenize-v	Capitalization=Title+Tense=Past+VerbForm=Part	dema	0			rule
+Agenizes	0	oewn-Agenize-v	Capitalization=Title+Person=3+Tense=Pres	dema	0			rule
+Agenizing	0	oewn-Agenize-v	Capitalization=Title+VerbForm=Ger	dema	0			rule
+Agent Orange	0	oewn-Agent_Orange-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agent Oranges	0	oewn-Agent_Orange-n	Capitalization=Title+Number=Plur	dema	0			rule
+Ageratina altissima	0	oewn-Ageratina_altissima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ageratina altissimas	0	oewn-Ageratina_altissima-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Ageratum houstonianum	0	oewn-Ageratum_houstonianum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ageratum houstonianums	0	oewn-Ageratum_houstonianum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agha	0		Number=Sing	dema	0	agha	n	moby_reverse
+Agha	1	oewn-Agha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aghan	0	oewn-Aghan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aghans	0	oewn-Aghan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aghas	0		Number=Plur	dema	0	agha	n	rule
+Aghas	1	oewn-Agha-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agkistrodon contortrix	0	oewn-Agkistrodon_contortrix-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agkistrodon contortrixes	0	oewn-Agkistrodon_contortrix-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agkistrodon piscivorus	0	oewn-Agkistrodon_piscivorus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aglaia	0	oewn-Aglaia-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aglaias	0	oewn-Aglaia-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aglaomorpha meyeniana	0	oewn-Aglaomorpha_meyeniana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aglaomorpha meyenianas	0	oewn-Aglaomorpha_meyeniana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aglaonema modestum	0	oewn-Aglaonema_modestum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aglaonema modestums	0	oewn-Aglaonema_modestum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agnus Dei	0	oewn-Agnus_Dei-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agnus Deis	0	oewn-Agnus_Dei-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agonus cataphractus	0	oewn-Agonus_cataphractus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agriculture	0	oewn-agriculture-n	Number=Sing	dema	0			oewn_form
+Agriculture	1	oewn-Agriculture-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agriculture Department	0	oewn-Agriculture_Department-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Agriculture Departments	0	oewn-Agriculture_Department-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agricultures	0	oewn-agriculture-n	Number=Plur	dema	0			rule
+Agricultures	1	oewn-Agriculture-n	Capitalization=Title+Number=Plur	dema	0			rule
+Agrimonia eupatoria	0	oewn-Agrimonia_eupatoria-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrimonia eupatorias	0	oewn-Agrimonia_eupatoria-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrimonia procera	0	oewn-Agrimonia_procera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrimonia proceras	0	oewn-Agrimonia_procera-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agriocharis ocellata	0	oewn-Agriocharis_ocellata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agriocharis ocellatas	0	oewn-Agriocharis_ocellata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron cristatum	0	oewn-Agropyron_cristatum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron cristatums	0	oewn-Agropyron_cristatum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron intermedium	0	oewn-Agropyron_intermedium-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron intermediums	0	oewn-Agropyron_intermedium-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron pauciflorum	0	oewn-Agropyron_pauciflorum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron pauciflorums	0	oewn-Agropyron_pauciflorum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron repens	0	oewn-Agropyron_repens-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron smithii	0	oewn-Agropyron_smithii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron smithiis	0	oewn-Agropyron_smithii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron subsecundum	0	oewn-Agropyron_subsecundum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron subsecundums	0	oewn-Agropyron_subsecundum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agropyron trachycaulum	0	oewn-Agropyron_trachycaulum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agropyron trachycaulums	0	oewn-Agropyron_trachycaulum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrostemma githago	0	oewn-Agrostemma_githago-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrostemma githagos	0	oewn-Agrostemma_githago-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrostis alba	0	oewn-Agrostis_alba-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrostis albas	0	oewn-Agrostis_alba-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrostis canina	0	oewn-Agrostis_canina-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrostis caninas	0	oewn-Agrostis_canina-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrostis nebulosa	0	oewn-Agrostis_nebulosa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Agrostis nebulosas	0	oewn-Agrostis_nebulosa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Agrostis palustris	0	oewn-Agrostis_palustris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Ags	0	oewn-Ag-n	Capitalization=Title+Number=Plur	dema	0			rule
+ag	0		Number=Sing	dema	0	ag	n	moby_reverse
+aga	0		Number=Sing	dema	0	aga	n	moby_reverse
+agada tantra	0	oewn-agada_tantra-n	Number=Sing	dema	0			oewn_form
+agada tantras	0	oewn-agada_tantra-n	Number=Plur	dema	0			rule
+again	0	oewn-again-r	Degree=Pos	dema	0			oewn_form
+again and again	0	oewn-again_and_again-r	Degree=Pos	dema	0			oewn_form
+against	0	dema-against-p		dema	0			carried
+against the clock	0	oewn-against_the_clock-r	Degree=Pos	dema	0			oewn_form
+against the wind	0	oewn-against_the_wind-r	Degree=Pos	dema	0			oewn_form
+against time	0	oewn-against_time-r	Degree=Pos	dema	0			oewn_form
+agal	0	oewn-agal-n	Number=Sing	dema	0			oewn_form
+agalactia	0	oewn-agalactia-n	Number=Sing	dema	0			oewn_form
+agalactias	0	oewn-agalactia-n	Number=Plur	dema	0			rule
+agalactosis	0	oewn-agalactosis-n	Number=Sing	dema	0			oewn_form
+agalite	0		Number=Sing	dema	0	agalite	n	moby_reverse
+agalites	0		Number=Plur	dema	0	agalite	n	rule
+agalloch	0		Number=Sing	dema	0	agalloch	n	moby_reverse
+agalloches	0		Number=Plur	dema	0	agalloch	n	rule
+agalmatolite	0		Number=Sing	dema	0	agalmatolite	n	moby_reverse
+agalmatolites	0		Number=Plur	dema	0	agalmatolite	n	rule
+agals	0	oewn-agal-n	Number=Plur	dema	0			rule
+agalwood	0		Number=Sing	dema	0	agalwood	n	moby_reverse
+agalwoods	0		Number=Plur	dema	0	agalwood	n	rule
+agama	0	oewn-agama-n	Number=Sing	dema	0			oewn_form
+agamas	0	oewn-agama-n	Number=Plur	dema	0			rule
+agamete	0	oewn-agamete-n	Number=Sing	dema	0			oewn_form
+agametes	0	oewn-agamete-n	Number=Plur	dema	0			rule
+agamic	0	oewn-agamic-a	Degree=Pos	dema	0			oewn_form
+agamically	0		Degree=Pos	dema	0	agamically	r	moby_reverse
+agamid	0	oewn-agamid-n	Number=Sing	dema	0			oewn_form
+agamid	1		Degree=Pos	dema	0	agamid	a	moby_reverse
+agamid lizard	0	oewn-agamid_lizard-n	Number=Sing	dema	0			oewn_form
+agamid lizards	0	oewn-agamid_lizard-n	Number=Plur	dema	0			rule
+agamids	0	oewn-agamid-n	Number=Plur	dema	0			rule
+agamies	0		Number=Plur	dema	0	agamy	n	rule
+agammaglobulinemia	0	oewn-agammaglobulinemia-n	Number=Sing	dema	0			oewn_form
+agammaglobulinemias	0	oewn-agammaglobulinemia-n	Number=Plur	dema	0			rule
+agamogenesis	0	oewn-agamogenesis-n	Number=Sing	dema	0			oewn_form
+agamogenetic	0	oewn-agamogenetic-a	Degree=Pos	dema	0			oewn_form
+agamogenetically	0		Degree=Pos	dema	0	agamogenetically	r	moby_reverse
+agamous	0	oewn-agamous-a	Degree=Pos	dema	0			oewn_form
+agamy	0		Number=Sing	dema	0	agamy	n	moby_reverse
+agapai	0	oewn-agape-n	Number=Plur	dema	0			agid
+agapanthus	0	oewn-agapanthus-n	Number=Sing	dema	0			oewn_form
+agapanthuses	0	oewn-agapanthus-n	Number=Plur	dema	0			rule
+agape	0	oewn-agape-n	Number=Sing	dema	1			carried
+agape	1	oewn-agape-a	Degree=Pos	dema	1			carried
+agape	2	dema-agape-r	Degree=Pos	dema	0			carried
+agape love	0	oewn-agape_love-n	Number=Sing	dema	0			oewn_form
+agape loves	0	oewn-agape_love-n	Number=Plur	dema	0			rule
+agapes	0	oewn-agape-n	Number=Plur	dema	0			rule_variant
+agar	0	oewn-agar-n	Number=Sing	dema	0			oewn_form
+agar-agar	0	oewn-agar-agar-n	Number=Sing	dema	0			oewn_form
+agar-agars	0	oewn-agar-agar-n	Number=Plur	dema	0			rule
+agaric	0	oewn-agaric-n	Number=Sing	dema	0			oewn_form
+agaricaceous	0		Degree=Pos	dema	0	agaricaceous	a	moby_reverse
+agaricin	0		Number=Sing	dema	0	agaricin	n	moby_reverse
+agaricins	0		Number=Plur	dema	0	agaricin	n	rule
+agarics	0	oewn-agaric-n	Number=Plur	dema	0			rule
+agarita	0		Number=Sing	dema	0	agarita	n	moby_reverse
+agaritas	0		Number=Plur	dema	0	agarita	n	rule
+agars	0	oewn-agar-n	Number=Plur	dema	0			rule
+agas	0		Number=Plur	dema	0	aga	n	rule
+agata	0		Number=Sing	dema	0	agata	n	moby_reverse
+agatas	0		Number=Plur	dema	0	agata	n	rule
+agate	0	oewn-agate-n	Number=Sing	dema	0			oewn_form
+agate line	0	oewn-agate_line-n	Number=Sing	dema	0			oewn_form
+agate lines	0	oewn-agate_line-n	Number=Plur	dema	0			rule
+agatelike	0		Degree=Pos	dema	0	agatelike	a	moby_reverse
+agates	0	oewn-agate-n	Number=Plur	dema	0			rule
+agateware	0	oewn-agateware-n	Number=Sing	dema	0			oewn_form
+agatewares	0	oewn-agateware-n	Number=Plur	dema	0			rule
+agatize	0		VerbForm=Inf	dema	0	agatize	v	moby_reverse
+agatized	0		Tense=Past+VerbForm=Part	dema	0	agatize	v	rule
+agatizes	0		Person=3+Tense=Pres	dema	0	agatize	v	rule
+agatizing	0		VerbForm=Ger	dema	0	agatize	v	rule
+agatoid	0		Degree=Pos	dema	0	agatoid	a	moby_reverse
+agave	0	oewn-agave-n	Number=Sing	dema	0			oewn_form
+agaves	0	oewn-agave-n	Number=Plur	dema	0			rule
+agaze	0	oewn-agaze-a	Degree=Pos	dema	0			oewn_form
+agba	0		Number=Sing	dema	0	agba	n	moby_reverse
+agbas	0		Number=Plur	dema	0	agba	n	rule
+agcies	0		Number=Plur	dema	0	agcy	n	rule
+agcy	0		Number=Sing	dema	0	agcy	n	moby_reverse
+age	0	oewn-age-n	Number=Sing	dema	0			oewn_form
+age	1	oewn-age-v	VerbForm=Inf	dema	0			oewn_form
+age bracket	0	oewn-age_bracket-n	Number=Sing	dema	0			oewn_form
+age brackets	0	oewn-age_bracket-n	Number=Plur	dema	0			rule
+age class	0	oewn-age_class-n	Number=Sing	dema	0			oewn_form
+age classes	0	oewn-age_class-n	Number=Plur	dema	0			rule
+age group	0	oewn-age_group-n	Number=Sing	dema	0			oewn_form
+age groups	0	oewn-age_group-n	Number=Plur	dema	0			rule
+age limit	0	oewn-age_limit-n	Number=Sing	dema	0			oewn_form
+age limits	0	oewn-age_limit-n	Number=Plur	dema	0			rule
+age norm	0	oewn-age_norm-n	Number=Sing	dema	0			oewn_form
+age norms	0	oewn-age_norm-n	Number=Plur	dema	0			rule
+age of consent	0	oewn-age_of_consent-n	Number=Sing	dema	0			oewn_form
+age-old	0	oewn-age-old-a	Degree=Pos	dema	0			oewn_form
+age-related	0	oewn-age-related-a	Degree=Pos	dema	0			oewn_form
+age-related macular degeneration	0	oewn-age-related_macular_degeneration-n	Number=Sing	dema	0			oewn_form
+age-related macular degenerations	0	oewn-age-related_macular_degeneration-n	Number=Plur	dema	0			rule
+aged	0	oewn-aged-a	Degree=Pos	dema	0			oewn_form
+aged	1	oewn-aged-n	Number=Sing	dema	0			oewn_form
+aged	2	oewn-age-v	Tense=Past+VerbForm=Part	dema	0			rule
+agedly	0		Degree=Pos	dema	0	agedly	r	moby_reverse
+agedness	0	oewn-agedness-n	Number=Sing	dema	0			oewn_form
+agednesses	0	oewn-agedness-n	Number=Plur	dema	0			rule
+ageds	0	oewn-aged-n	Number=Plur	dema	0			rule
+agee	0		Degree=Pos	dema	0	agee	a	moby_reverse
+ageing	0	oewn-ageing-n	Number=Sing	dema	0			oewn_form
+ageing	1	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+ageing	2	oewn-ageing-a	Degree=Pos	dema	0			oewn_form
+ageings	0	oewn-ageing-n	Number=Plur	dema	0			rule
+ageism	0	oewn-ageism-n	Number=Sing	dema	0			oewn_form
+ageisms	0	oewn-ageism-n	Number=Plur	dema	0			rule
+ageless	0	oewn-ageless-a	Degree=Pos	dema	0			oewn_form
+agelessness	0	oewn-agelessness-n	Number=Sing	dema	0			oewn_form
+agelessnesses	0	oewn-agelessness-n	Number=Plur	dema	0			rule
+agelong	0	oewn-agelong-a	Degree=Pos	dema	0			oewn_form
+agencies	0	oewn-agency-n	Number=Plur	dema	0			rule
+agency	0	oewn-agency-n	Number=Sing	dema	0			oewn_form
+agency securities	0	oewn-agency_security-n	Number=Plur	dema	0			rule
+agency security	0	oewn-agency_security-n	Number=Sing	dema	0			oewn_form
+agenda	0	oewn-agenda-n	Number=Sing	dema	0			oewn_form
+agenda item	0	oewn-agenda_item-n	Number=Sing	dema	0			oewn_form
+agenda items	0	oewn-agenda_item-n	Number=Plur	dema	0			rule
+agendas	0	oewn-agenda-n	Number=Plur	dema	0			rule
+agendum	0	oewn-agendum-n	Number=Sing	dema	0			oewn_form
+agendums	0	oewn-agendum-n	Number=Plur	dema	0			rule
+agenesia	0	oewn-agenesia-n	Number=Sing	dema	0			oewn_form
+agenesias	0	oewn-agenesia-n	Number=Plur	dema	0			rule
+agenesis	0	oewn-agenesis-n	Number=Sing	dema	0			oewn_form
+agenetic	0		Degree=Pos	dema	0	agenetic	a	moby_reverse
+agent	0	oewn-agent-n	Number=Sing	dema	0			oewn_form
+agent bank	0	oewn-agent_bank-n	Number=Sing	dema	0			oewn_form
+agent banks	0	oewn-agent_bank-n	Number=Plur	dema	0			rule
+agent provocateur	0	oewn-agent_provocateur-n	Number=Sing	dema	0			oewn_form
+agent provocateurs	0	oewn-agent_provocateur-n	Number=Plur	dema	0			rule
+agent-based model	0	oewn-agent-based_model-n	Number=Sing	dema	0			oewn_form
+agent-based models	0	oewn-agent-based_model-n	Number=Plur	dema	0			rule
+agent-in-place	0	oewn-agent-in-place-n	Number=Sing	dema	0			oewn_form
+agent-in-places	0	oewn-agent-in-place-n	Number=Plur	dema	0			rule
+agential	0	oewn-agential-a	Degree=Pos	dema	0			oewn_form
+agentival	0		Degree=Pos	dema	0	agentival	a	moby_reverse
+agentive	0		Degree=Pos	dema	0	agentive	a	moby_reverse
+agentive	1		Number=Sing	dema	0	agentive	n	moby_reverse
+agentive role	0	oewn-agentive_role-n	Number=Sing	dema	0			oewn_form
+agentive roles	0	oewn-agentive_role-n	Number=Plur	dema	0			rule
+agents	0	oewn-agent-n	Number=Plur	dema	0			rule
+agerasia	0	oewn-agerasia-n	Number=Sing	dema	0			oewn_form
+agerasias	0	oewn-agerasia-n	Number=Plur	dema	0			rule
+ageratum	0	oewn-ageratum-n	Number=Plur	dema	0			agid
+ageratum	1	oewn-ageratum-n	Number=Sing	dema	0			oewn_form
+ageratums	0	oewn-ageratum-n	Number=Plur	dema	0			rule_variant
+ages	0	oewn-age-n	Number=Plur	dema	0			rule
+ages	1	oewn-age-v	Person=3+Tense=Pres	dema	0			rule
+ages of consent	0	oewn-age_of_consent-n	Number=Plur	dema	0			rule
+ageusia	0		Number=Sing	dema	0	ageusia	n	moby_reverse
+ageusias	0		Number=Plur	dema	0	ageusia	n	rule
+ageusic	0		Degree=Pos	dema	0	ageusic	a	moby_reverse
+aggadic	0		Degree=Pos	dema	0	aggadic	a	moby_reverse
+agger	0		Number=Sing	dema	0	agger	n	moby_reverse
+aggers	0		Number=Plur	dema	0	agger	n	rule
+aggie	0		Number=Sing	dema	0	aggie	n	moby_reverse
+aggies	0		Number=Plur	dema	0	aggie	n	rule
+aggiornamenti	0		Number=Sing	dema	0	aggiornamenti	n	moby_reverse
+aggiornamentis	0		Number=Plur	dema	0	aggiornamenti	n	rule
+aggiornamento	0		Number=Sing	dema	0	aggiornamento	n	moby_reverse
+aggiornamentos	0		Number=Plur	dema	0	aggiornamento	n	rule
+agglomerate	0	oewn-agglomerate-n	Number=Sing	dema	1			carried
+agglomerate	1	oewn-agglomerate-v	VerbForm=Inf	dema	1			carried
+agglomerate	2	oewn-agglomerate-a	Degree=Pos	dema	0			carried
+agglomerated	0	oewn-agglomerate-v	Tense=Past+VerbForm=Part	dema	0			rule
+agglomerated	1	oewn-agglomerated-a	Degree=Pos	dema	0			oewn_form
+agglomerates	0	oewn-agglomerate-n	Number=Plur	dema	1			carried
+agglomerates	1	oewn-agglomerate-v	Person=3+Tense=Pres	dema	1			carried
+agglomerating	0	oewn-agglomerate-v	VerbForm=Ger	dema	0			rule
+agglomeration	0	oewn-agglomeration-n	Number=Sing	dema	0			oewn_form
+agglomerations	0	oewn-agglomeration-n	Number=Plur	dema	0			rule
+agglomerative	0	oewn-agglomerative-a	Degree=Pos	dema	0			oewn_form
+agglomerator	0	oewn-agglomerator-n	Number=Sing	dema	0			oewn_form
+agglomerators	0	oewn-agglomerator-n	Number=Plur	dema	0			rule
+agglutinabilities	0		Number=Plur	dema	0	agglutinability	n	rule
+agglutinability	0		Number=Sing	dema	0	agglutinability	n	moby_reverse
+agglutinable	0		Degree=Pos	dema	0	agglutinable	a	moby_reverse
+agglutinant	0		Degree=Pos	dema	0	agglutinant	a	moby_reverse
+agglutinant	1		Number=Sing	dema	0	agglutinant	n	moby_reverse
+agglutinate	0	oewn-agglutinate-v	VerbForm=Inf	dema	0			oewn_form
+agglutinate	1	oewn-agglutinate-a	Degree=Pos	dema	0			oewn_form
+agglutinated	0	oewn-agglutinate-v	Tense=Past+VerbForm=Part	dema	0			rule
+agglutinates	0	oewn-agglutinate-v	Person=3+Tense=Pres	dema	0			rule
+agglutinating	0	oewn-agglutinate-v	VerbForm=Ger	dema	0			rule
+agglutinating activities	0	oewn-agglutinating_activity-n	Number=Plur	dema	0			rule
+agglutinating activity	0	oewn-agglutinating_activity-n	Number=Sing	dema	0			oewn_form
+agglutination	0	oewn-agglutination-n	Number=Sing	dema	0			oewn_form
+agglutination test	0	oewn-agglutination_test-n	Number=Sing	dema	0			oewn_form
+agglutination tests	0	oewn-agglutination_test-n	Number=Plur	dema	0			rule
+agglutinations	0	oewn-agglutination-n	Number=Plur	dema	0			rule
+agglutinative	0	oewn-agglutinative-a	Degree=Pos	dema	0			oewn_form
+agglutinative language	0	oewn-agglutinative_language-n	Number=Sing	dema	0			oewn_form
+agglutinative languages	0	oewn-agglutinative_language-n	Number=Plur	dema	0			rule
+agglutinin	0	oewn-agglutinin-n	Number=Sing	dema	0			oewn_form
+agglutinins	0	oewn-agglutinin-n	Number=Plur	dema	0			rule
+agglutinogen	0	oewn-agglutinogen-n	Number=Sing	dema	0			oewn_form
+agglutinogenic	0		Degree=Pos	dema	0	agglutinogenic	a	moby_reverse
+agglutinogens	0	oewn-agglutinogen-n	Number=Plur	dema	0			rule
+aggradation	0		Number=Sing	dema	0	aggradation	n	moby_reverse
+aggradational	0		Degree=Pos	dema	0	aggradational	a	moby_reverse
+aggradations	0		Number=Plur	dema	0	aggradation	n	rule
+aggrade	0	oewn-aggrade-v	VerbForm=Inf	dema	0			oewn_form
+aggraded	0	oewn-aggrade-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggrades	0	oewn-aggrade-v	Person=3+Tense=Pres	dema	0			rule
+aggrading	0	oewn-aggrade-v	VerbForm=Ger	dema	0			rule
+aggrandise	0	oewn-aggrandise-v	VerbForm=Inf	dema	0			oewn_form
+aggrandised	0	oewn-aggrandise-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggrandisement	0	oewn-aggrandisement-n	Number=Sing	dema	0			oewn_form
+aggrandisements	0	oewn-aggrandisement-n	Number=Plur	dema	0			rule
+aggrandiser	0		Number=Sing	dema	0	aggrandiser	n	moby_reverse
+aggrandisers	0		Number=Plur	dema	0	aggrandiser	n	rule
+aggrandises	0	oewn-aggrandise-v	Person=3+Tense=Pres	dema	0			rule
+aggrandising	0	oewn-aggrandise-v	VerbForm=Ger	dema	0			rule
+aggrandize	0	oewn-aggrandize-v	VerbForm=Inf	dema	0			oewn_form
+aggrandized	0	oewn-aggrandize-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggrandizement	0	oewn-aggrandizement-n	Number=Sing	dema	0			oewn_form
+aggrandizements	0	oewn-aggrandizement-n	Number=Plur	dema	0			rule
+aggrandizer	0		Number=Sing	dema	0	aggrandizer	n	moby_reverse
+aggrandizers	0		Number=Plur	dema	0	aggrandizer	n	rule
+aggrandizes	0	oewn-aggrandize-v	Person=3+Tense=Pres	dema	0			rule
+aggrandizing	0	oewn-aggrandize-v	VerbForm=Ger	dema	0			rule
+aggravate	0	oewn-aggravate-v	VerbForm=Inf	dema	0			oewn_form
+aggravated	0	oewn-aggravate-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggravated	1	oewn-aggravated-a	Degree=Pos	dema	0			oewn_form
+aggravated assault	0	oewn-aggravated_assault-n	Number=Sing	dema	0			oewn_form
+aggravated assaults	0	oewn-aggravated_assault-n	Number=Plur	dema	0			rule
+aggravates	0	oewn-aggravate-v	Person=3+Tense=Pres	dema	0			rule
+aggravating	0	oewn-aggravate-v	VerbForm=Ger	dema	0			rule
+aggravating	1	oewn-aggravating-a	Degree=Pos	dema	0			oewn_form
+aggravatingly	0	oewn-aggravatingly-r	Degree=Pos	dema	0			oewn_form
+aggravation	0	oewn-aggravation-n	Number=Sing	dema	0			oewn_form
+aggravations	0	oewn-aggravation-n	Number=Plur	dema	0			rule
+aggravative	0		Degree=Pos	dema	0	aggravative	a	moby_reverse
+aggravator	0	oewn-aggravator-n	Number=Sing	dema	0			oewn_form
+aggravators	0	oewn-aggravator-n	Number=Plur	dema	0			rule
+aggregable	0		Degree=Pos	dema	0	aggregable	a	moby_reverse
+aggregate	0	oewn-aggregate-n	Number=Sing	dema	1			carried
+aggregate	1	oewn-aggregate-v	VerbForm=Inf	dema	1			carried
+aggregate	2	oewn-aggregate-a	Degree=Pos	dema	0			carried
+aggregate	3	dema-aggregate-r	Degree=Pos	dema	0			carried
+aggregate demand	0	oewn-aggregate_demand-n	Number=Sing	dema	0			oewn_form
+aggregate demands	0	oewn-aggregate_demand-n	Number=Plur	dema	0			rule
+aggregate fruit	0	oewn-aggregate_fruit-n	Number=Sing	dema	0			oewn_form
+aggregate fruits	0	oewn-aggregate_fruit-n	Number=Plur	dema	0			rule
+aggregated	0	oewn-aggregate-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggregated	1	oewn-aggregated-a	Degree=Pos	dema	0			oewn_form
+aggregately	0		Degree=Pos	dema	0	aggregately	a	moby_reverse
+aggregateness	0		Number=Sing	dema	0	aggregateness	n	moby_reverse
+aggregatenesses	0		Number=Plur	dema	0	aggregateness	n	rule
+aggregates	0	oewn-aggregate-n	Number=Plur	dema	1			carried
+aggregates	1	oewn-aggregate-v	Person=3+Tense=Pres	dema	1			carried
+aggregating	0	oewn-aggregate-v	VerbForm=Ger	dema	0			rule
+aggregation	0	oewn-aggregation-n	Number=Sing	dema	0			oewn_form
+aggregations	0	oewn-aggregation-n	Number=Plur	dema	0			rule
+aggregative	0	oewn-aggregative-a	Degree=Pos	dema	0			oewn_form
+aggregator	0	oewn-aggregator-n	Number=Sing	dema	0			oewn_form
+aggregators	0	oewn-aggregator-n	Number=Plur	dema	0			rule
+aggregatory	0		Degree=Pos	dema	0	aggregatory	a	moby_reverse
+aggress	0	oewn-aggress-v	VerbForm=Inf	dema	0			oewn_form
+aggressed	0	oewn-aggress-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggresses	0	oewn-aggress-v	Person=3+Tense=Pres	dema	0			rule
+aggressing	0	oewn-aggress-v	VerbForm=Ger	dema	0			rule
+aggression	0	oewn-aggression-n	Number=Sing	dema	0			oewn_form
+aggressions	0	oewn-aggression-n	Number=Plur	dema	0			rule
+aggressive	0	oewn-aggressive-a	Degree=Pos	dema	0			oewn_form
+aggressively	0	oewn-aggressively-r	Degree=Pos	dema	0			oewn_form
+aggressiveness	0	oewn-aggressiveness-n	Number=Sing	dema	0			oewn_form
+aggressivenesses	0	oewn-aggressiveness-n	Number=Plur	dema	0			rule
+aggressor	0	oewn-aggressor-n	Number=Sing	dema	0			oewn_form
+aggressors	0	oewn-aggressor-n	Number=Plur	dema	0			rule
+aggrieve	0	oewn-aggrieve-v	VerbForm=Inf	dema	0			oewn_form
+aggrieved	0	oewn-aggrieve-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggrievedly	0		Degree=Pos	dema	0	aggrievedly	r	moby_reverse
+aggrievedness	0		Number=Sing	dema	0	aggrievedness	n	moby_reverse
+aggrievednesses	0		Number=Plur	dema	0	aggrievedness	n	rule
+aggrieves	0	oewn-aggrieve-v	Person=3+Tense=Pres	dema	0			rule
+aggrieving	0	oewn-aggrieve-v	VerbForm=Ger	dema	0			rule
+aggro	0	oewn-aggro-n	Number=Sing	dema	0			oewn_form
+aggros	0	oewn-aggro-n	Number=Plur	dema	0			rule
+aggroup	0	oewn-aggroup-v	VerbForm=Inf	dema	0			oewn_form
+aggrouped	0	oewn-aggroup-v	Tense=Past+VerbForm=Part	dema	0			rule
+aggrouping	0	oewn-aggroup-v	VerbForm=Ger	dema	0			rule
+aggroups	0	oewn-aggroup-v	Person=3+Tense=Pres	dema	0			rule
+agha	0		Number=Sing	dema	0	agha	n	moby_reverse
+aghas	0		Number=Plur	dema	0	agha	n	rule
+aghast	0	oewn-aghast-a	Degree=Pos	dema	0			oewn_form
+agilawood	0		Number=Sing	dema	0	agilawood	n	moby_reverse
+agilawoods	0		Number=Plur	dema	0	agilawood	n	rule
+agile	0	oewn-agile-a	Degree=Pos	dema	0			oewn_form
+agilely	0	oewn-agilely-r	Degree=Pos	dema	0			oewn_form
+agileness	0		Number=Sing	dema	0	agileness	n	moby_reverse
+agilenesses	0		Number=Plur	dema	0	agileness	n	rule
+agilities	0	oewn-agility-n	Number=Plur	dema	0			rule
+agility	0	oewn-agility-n	Number=Sing	dema	0			oewn_form
+aging	0	oewn-aging-n	Number=Sing	dema	0			oewn_form
+aging	1	oewn-age-v	VerbForm=Ger	dema	0			rule_variant
+aging	2	oewn-aging-a	Degree=Pos	dema	0			oewn_form
+agings	0	oewn-aging-n	Number=Plur	dema	0			rule
+agio	0	oewn-agio-n	Number=Sing	dema	0			oewn_form
+agios	0	oewn-agio-n	Number=Plur	dema	0			rule
+agiotage	0	oewn-agiotage-n	Number=Sing	dema	0			oewn_form
+agiotages	0	oewn-agiotage-n	Number=Plur	dema	0			rule
+agism	0	oewn-agism-n	Number=Sing	dema	0			oewn_form
+agisms	0	oewn-agism-n	Number=Plur	dema	0			rule
+agist	0		VerbForm=Inf	dema	0	agist	v	moby_reverse
+agisted	0		Tense=Past+VerbForm=Part	dema	0	agist	v	rule
+agister	0		Number=Sing	dema	0	agister	n	moby_reverse
+agisters	0		Number=Plur	dema	0	agister	n	rule
+agisting	0		VerbForm=Ger	dema	0	agist	v	rule
+agistment	0		Number=Sing	dema	0	agistment	n	moby_reverse
+agistments	0		Number=Plur	dema	0	agistment	n	rule
+agists	0		Person=3+Tense=Pres	dema	0	agist	v	rule
+agit	0		Number=Sing	dema	0	agit	n	moby_reverse
+agitable	0		Degree=Pos	dema	0	agitable	a	moby_reverse
+agitate	0	oewn-agitate-v	VerbForm=Inf	dema	0			oewn_form
+agitated	0	oewn-agitate-v	Tense=Past+VerbForm=Part	dema	0			rule
+agitated	1	oewn-agitated-a	Degree=Pos	dema	0			oewn_form
+agitated depression	0	oewn-agitated_depression-n	Number=Sing	dema	0			oewn_form
+agitated depressions	0	oewn-agitated_depression-n	Number=Plur	dema	0			rule
+agitatedly	0		Degree=Pos	dema	0	agitatedly	r	moby_reverse
+agitates	0	oewn-agitate-v	Person=3+Tense=Pres	dema	0			rule
+agitating	0	oewn-agitate-v	VerbForm=Ger	dema	0			rule
+agitating	1	oewn-agitating-a	Degree=Pos	dema	0			oewn_form
+agitation	0	oewn-agitation-n	Number=Sing	dema	0			oewn_form
+agitational	0		Degree=Pos	dema	0	agitational	a	moby_reverse
+agitations	0	oewn-agitation-n	Number=Plur	dema	0			rule
+agitative	0	oewn-agitative-a	Degree=Pos	dema	0			oewn_form
+agitato	0		Degree=Pos	dema	0	agitato	a	moby_reverse
+agitato	1		Degree=Pos	dema	0	agitato	r	moby_reverse
+agitator	0	oewn-agitator-n	Number=Sing	dema	0			oewn_form
+agitatorial	0		Degree=Pos	dema	0	agitatorial	a	moby_reverse
+agitators	0	oewn-agitator-n	Number=Plur	dema	0			rule
+agitprop	0	oewn-agitprop-n	Number=Sing	dema	0			oewn_form
+agitpropist	0		Number=Sing	dema	0	agitpropist	n	moby_reverse
+agitpropists	0		Number=Plur	dema	0	agitpropist	n	rule
+agitprops	0	oewn-agitprop-n	Number=Plur	dema	0			rule
+agits	0		Number=Plur	dema	0	agit	n	rule
+agleam	0	oewn-agleam-a	Degree=Pos	dema	0			oewn_form
+aglet	0	oewn-aglet-n	Number=Sing	dema	0			oewn_form
+aglets	0	oewn-aglet-n	Number=Plur	dema	0			rule
+agley	0		Degree=Pos	dema	0	agley	a	moby_reverse
+aglimmer	0		Degree=Pos	dema	0	aglimmer	a	moby_reverse
+aglint	0		Degree=Pos	dema	0	aglint	a	moby_reverse
+aglisten	0		Degree=Pos	dema	0	aglisten	a	moby_reverse
+aglitter	0	oewn-aglitter-a	Degree=Pos	dema	0			oewn_form
+aglossia	0		Number=Sing	dema	0	aglossia	n	moby_reverse
+aglossias	0		Number=Plur	dema	0	aglossia	n	rule
+aglow	0	oewn-aglow-a	Degree=Pos	dema	0			oewn_form
+aglucon	0		Number=Sing	dema	0	aglucon	n	moby_reverse
+aglucons	0		Number=Plur	dema	0	aglucon	n	rule
+agly	0		Degree=Pos	dema	0	agly	r	moby_reverse
+aglycon	0		Number=Sing	dema	0	aglycon	n	moby_reverse
+aglycons	0		Number=Plur	dema	0	aglycon	n	rule
+agma	0		Number=Sing	dema	0	agma	n	moby_reverse
+agmas	0		Number=Plur	dema	0	agma	n	rule
+agminate	0		Degree=Pos	dema	0	agminate	a	moby_reverse
+agnail	0	oewn-agnail-n	Number=Sing	dema	0			oewn_form
+agnails	0	oewn-agnail-n	Number=Plur	dema	0			rule
+agnate	0	oewn-agnate-a	Degree=Pos	dema	0			oewn_form
+agnate	1	oewn-agnate-n	Number=Sing	dema	0			oewn_form
+agnates	0	oewn-agnate-n	Number=Plur	dema	0			rule
+agnathan	0	oewn-agnathan-n	Number=Sing	dema	0			oewn_form
+agnathans	0	oewn-agnathan-n	Number=Plur	dema	0			rule
+agnathous	0		Degree=Pos	dema	0	agnathous	a	moby_reverse
+agnatic	0	oewn-agnatic-a	Degree=Pos	dema	0			oewn_form
+agnatical	0		Degree=Pos	dema	0	agnatical	a	moby_reverse
+agnatically	0		Degree=Pos	dema	0	agnatically	r	moby_reverse
+agnation	0	oewn-agnation-n	Number=Sing	dema	0			oewn_form
+agnations	0	oewn-agnation-n	Number=Plur	dema	0			rule
+agneaux	0		Number=Sing	dema	0	agneaux	n	moby_reverse
+agneauxes	0		Number=Plur	dema	0	agneaux	n	rule
+agnel	0		Number=Sing	dema	0	agnel	n	moby_reverse
+agnels	0		Number=Plur	dema	0	agnel	n	rule
+agnise	0	oewn-agnise-v	VerbForm=Inf	dema	0			oewn_form
+agnised	0	oewn-agnise-v	Tense=Past+VerbForm=Part	dema	0			rule
+agnises	0	oewn-agnise-v	Person=3+Tense=Pres	dema	0			rule
+agnising	0	oewn-agnise-v	VerbForm=Ger	dema	0			rule
+agnize	0	oewn-agnize-v	VerbForm=Inf	dema	0			oewn_form
+agnized	0	oewn-agnize-v	Tense=Past+VerbForm=Part	dema	0			rule
+agnizes	0	oewn-agnize-v	Person=3+Tense=Pres	dema	0			rule
+agnizing	0	oewn-agnize-v	VerbForm=Ger	dema	0			rule
+agnoiologies	0		Number=Plur	dema	0	agnoiology	n	rule
+agnoiology	0		Number=Sing	dema	0	agnoiology	n	moby_reverse
+agnomen	0	oewn-agnomen-n	Number=Sing	dema	0			oewn_form
+agnomens	0	oewn-agnomen-n	Number=Plur	dema	0			rule_variant
+agnomina	0	oewn-agnomen-n	Number=Plur	dema	0			oewn_form
+agnominal	0		Degree=Pos	dema	0	agnominal	a	moby_reverse
+agnosia	0	oewn-agnosia-n	Number=Sing	dema	0			oewn_form
+agnosias	0	oewn-agnosia-n	Number=Plur	dema	0			rule
+agnostic	0	oewn-agnostic-n	Number=Sing	dema	0			oewn_form
+agnostic	1	oewn-agnostic-a	Degree=Pos	dema	0			oewn_form
+agnostical	0	oewn-agnostical-a	Degree=Pos	dema	0			oewn_form
+agnostically	0		Degree=Pos	dema	0	agnostically	r	moby_reverse
+agnosticism	0	oewn-agnosticism-n	Number=Sing	dema	0			oewn_form
+agnosticisms	0	oewn-agnosticism-n	Number=Plur	dema	0			rule
+agnostics	0	oewn-agnostic-n	Number=Plur	dema	0			rule
+ago	0	oewn-ago-r	Degree=Pos	dema	0			oewn_form
+ago	1	oewn-ago-a	Degree=Pos	dema	0			oewn_form
+agog	0	oewn-agog-a	Degree=Pos	dema	0			oewn_form
+agog	1		Degree=Pos	dema	0	agog	r	moby_reverse
+agogics	0		Number=Sing	dema	0	agogics	n	moby_reverse
+agon	0	oewn-agon-n	Number=Sing	dema	0			oewn_form
+agonadal	0	oewn-agonadal-a	Degree=Pos	dema	0			oewn_form
+agonal	0	oewn-agonal-a	Degree=Pos	dema	0			oewn_form
+agone	0		Degree=Pos	dema	0	agone	r	moby_reverse
+agone	1	oewn-agone-a	Degree=Pos	dema	0			oewn_form
+agones	0	oewn-agon-n	Number=Plur	dema	0			oewn_form
+agonic	0		Degree=Pos	dema	0	agonic	a	moby_reverse
+agonic line	0	oewn-agonic_line-n	Number=Sing	dema	0			oewn_form
+agonic lines	0	oewn-agonic_line-n	Number=Plur	dema	0			rule
+agonies	0	oewn-agony-n	Number=Plur	dema	0			rule
+agonise	0	oewn-agonise-v	VerbForm=Inf	dema	0			oewn_form
+agonised	0	oewn-agonise-v	Tense=Past+VerbForm=Part	dema	0			rule
+agonised	1	oewn-agonised-a	Degree=Pos	dema	0			oewn_form
+agonises	0	oewn-agonise-v	Person=3+Tense=Pres	dema	0			rule
+agonising	0	oewn-agonise-v	VerbForm=Ger	dema	0			rule
+agonising	1	oewn-agonising-a	Degree=Pos	dema	0			oewn_form
+agonisingly	0		Degree=Pos	dema	0	agonisingly	r	moby_reverse
+agonist	0	oewn-agonist-n	Number=Sing	dema	0			oewn_form
+agonistic	0	oewn-agonistic-a	Degree=Pos	dema	0			oewn_form
+agonistical	0	oewn-agonistical-a	Degree=Pos	dema	0			oewn_form
+agonistically	0		Degree=Pos	dema	0	agonistically	r	moby_reverse
+agonists	0	oewn-agonist-n	Number=Plur	dema	0			rule
+agonize	0	oewn-agonize-v	VerbForm=Inf	dema	0			oewn_form
+agonized	0	oewn-agonize-v	Tense=Past+VerbForm=Part	dema	0			rule
+agonized	1	oewn-agonized-a	Degree=Pos	dema	0			oewn_form
+agonizedly	0		Degree=Pos	dema	0	agonizedly	r	moby_reverse
+agonizes	0	oewn-agonize-v	Person=3+Tense=Pres	dema	0			rule
+agonizing	0	oewn-agonizing-a	Degree=Pos	dema	0			oewn_form
+agonizing	1	oewn-agonize-v	VerbForm=Ger	dema	0			rule
+agonizingly	0	oewn-agonizingly-r	Degree=Pos	dema	0			oewn_form
+agons	0	oewn-agon-n	Number=Plur	dema	0			rule_variant
+agony	0	oewn-agony-n	Number=Sing	dema	0			oewn_form
+agony aunt	0	oewn-agony_aunt-n	Number=Sing	dema	0			oewn_form
+agony aunts	0	oewn-agony_aunt-n	Number=Plur	dema	0			rule
+agony column	0	oewn-agony_column-n	Number=Sing	dema	0			oewn_form
+agony columns	0	oewn-agony_column-n	Number=Plur	dema	0			rule
+agony uncle	0	oewn-agony_uncle-n	Number=Sing	dema	0			oewn_form
+agony uncles	0	oewn-agony_uncle-n	Number=Plur	dema	0			rule
+agora	0	oewn-agora-n-1	Number=Sing	dema	0			oewn_form
+agora	1	oewn-agora-n-2	Number=Sing	dema	0			oewn_form
+agorae	0	oewn-agora-n-1	Number=Plur	dema	0			oewn_form
+agorae	1	oewn-agora-n-2	Number=Plur	dema	0			oewn_form
+agoraphobia	0	oewn-agoraphobia-n	Number=Sing	dema	0			oewn_form
+agoraphobias	0	oewn-agoraphobia-n	Number=Plur	dema	0			rule
+agoraphobic	0	oewn-agoraphobic-a	Degree=Pos	dema	0			oewn_form
+agoras	0	oewn-agora-n-1	Number=Plur	dema	0			rule_variant
+agoras	1	oewn-agora-n-2	Number=Plur	dema	0			rule_variant
+agoroth	0		Number=Sing	dema	0	agoroth	n	moby_reverse
+agoroths	0		Number=Plur	dema	0	agoroth	n	rule
+agouta	0		Number=Sing	dema	0	agouta	n	moby_reverse
+agoutas	0		Number=Plur	dema	0	agouta	n	rule
+agouti	0	oewn-agouti-n	Number=Sing	dema	0			oewn_form
+agouties	0	oewn-agouti-n	Number=Plur	dema	0			oewn_form
+agouties	1		Number=Plur	dema	0	agouty	n	rule
+agoutis	0	oewn-agouti-n	Number=Plur	dema	0			rule_variant
+agouty	0		Number=Sing	dema	0	agouty	n	moby_reverse
+agr	0		Number=Sing	dema	0	agr	n	moby_reverse
+agraffe	0		Number=Sing	dema	0	agraffe	n	moby_reverse
+agraffes	0		Number=Plur	dema	0	agraffe	n	rule
+agrammatism	0		Number=Sing	dema	0	agrammatism	n	moby_reverse
+agrammatisms	0		Number=Plur	dema	0	agrammatism	n	rule
+agranulocytic	0	oewn-agranulocytic-a	Degree=Pos	dema	0			oewn_form
+agranulocytosis	0	oewn-agranulocytosis-n	Number=Sing	dema	0			oewn_form
+agranulosis	0	oewn-agranulosis-n	Number=Sing	dema	0			oewn_form
+agrapha	0	oewn-agrapha-n	Number=Sing	dema	0			oewn_form
+agraphas	0	oewn-agrapha-n	Number=Plur	dema	0			rule
+agraphia	0	oewn-agraphia-n	Number=Sing	dema	0			oewn_form
+agraphias	0	oewn-agraphia-n	Number=Plur	dema	0			rule
+agraphic	0	oewn-agraphic-a	Degree=Pos	dema	0			oewn_form
+agraphon	0	oewn-agraphon-n	Number=Sing	dema	0			oewn_form
+agraphons	0	oewn-agraphon-n	Number=Plur	dema	0			rule
+agrarian	0	oewn-agrarian-a	Degree=Pos	dema	0			oewn_form
+agrarian	1		Number=Sing	dema	0	agrarian	n	moby_reverse
+agrarianism	0		Number=Sing	dema	0	agrarianism	n	moby_reverse
+agrarianisms	0		Number=Plur	dema	0	agrarianism	n	rule
+agrarianly	0		Degree=Pos	dema	0	agrarianly	r	moby_reverse
+agravic	0		Degree=Pos	dema	0	agravic	a	moby_reverse
+agree	0	oewn-agree-v	VerbForm=Inf	dema	0			oewn_form
+agreeabilities	0	oewn-agreeability-n	Number=Plur	dema	0			rule
+agreeability	0	oewn-agreeability-n	Number=Sing	dema	0			oewn_form
+agreeable	0	oewn-agreeable-a	Degree=Pos	dema	0			oewn_form
+agreeableness	0	oewn-agreeableness-n	Number=Sing	dema	0			oewn_form
+agreeablenesses	0	oewn-agreeableness-n	Number=Plur	dema	0			rule
+agreeably	0	oewn-agreeably-r	Degree=Pos	dema	0			oewn_form
+agreed	0	oewn-agreed-a	Degree=Pos	dema	0			oewn_form
+agreed	1	oewn-agree-v	Tense=Past+VerbForm=Part	dema	0			rule
+agreed upon	0	oewn-agreed_upon-a	Degree=Pos	dema	0			oewn_form
+agreeing	0	oewn-agree-v	VerbForm=Ger	dema	0			rule
+agreeingly	0		Degree=Pos	dema	0	agreeingly	r	moby_reverse
+agreement	0	oewn-agreement-n	Number=Sing	dema	0			oewn_form
+agreements	0	oewn-agreement-n	Number=Plur	dema	0			rule
+agrees	0	oewn-agree-v	Person=3+Tense=Pres	dema	0			rule
+agrestal	0		Degree=Pos	dema	0	agrestal	a	moby_reverse
+agrestic	0	oewn-agrestic-a	Degree=Pos	dema	0			oewn_form
+agribusiness	0	oewn-agribusiness-n	Number=Sing	dema	0			oewn_form
+agribusinesses	0	oewn-agribusiness-n	Number=Plur	dema	0			rule
+agric	0		Number=Sing	dema	0	agric	n	moby_reverse
+agrics	0		Number=Plur	dema	0	agric	n	rule
+agricultural	0	oewn-agricultural-a	Degree=Pos	dema	0			oewn_form
+agricultural agent	0	oewn-agricultural_agent-n	Number=Sing	dema	0			oewn_form
+agricultural agents	0	oewn-agricultural_agent-n	Number=Plur	dema	0			rule
+agricultural chemistries	0	oewn-agricultural_chemistry-n	Number=Plur	dema	0			rule
+agricultural chemistry	0	oewn-agricultural_chemistry-n	Number=Sing	dema	0			oewn_form
+agricultural laborer	0	oewn-agricultural_laborer-n	Number=Sing	dema	0			oewn_form
+agricultural laborers	0	oewn-agricultural_laborer-n	Number=Plur	dema	0			rule
+agricultural labourer	0	oewn-agricultural_labourer-n	Number=Sing	dema	0			oewn_form
+agricultural labourers	0	oewn-agricultural_labourer-n	Number=Plur	dema	0			rule
+agriculturalist	0	oewn-agriculturalist-n	Number=Sing	dema	0			oewn_form
+agriculturalists	0	oewn-agriculturalist-n	Number=Plur	dema	0			rule
+agriculturally	0		Degree=Pos	dema	0	agriculturally	r	moby_reverse
+agriculture	0	oewn-agriculture-n	Number=Sing	dema	0			oewn_form
+agriculture secretaries	0	oewn-agriculture_secretary-n	Number=Plur	dema	0			rule
+agriculture secretary	0	oewn-agriculture_secretary-n	Number=Sing	dema	0			oewn_form
+agricultures	0	oewn-agriculture-n	Number=Plur	dema	0			rule
+agriculturist	0	oewn-agriculturist-n	Number=Sing	dema	0			oewn_form
+agriculturists	0	oewn-agriculturist-n	Number=Plur	dema	0			rule
+agrimonia	0	oewn-agrimonia-n	Number=Sing	dema	0			oewn_form
+agrimonias	0	oewn-agrimonia-n	Number=Plur	dema	0			rule
+agrimonies	0	oewn-agrimony-n	Number=Plur	dema	0			rule
+agrimony	0	oewn-agrimony-n	Number=Sing	dema	0			oewn_form
+agriological	0		Degree=Pos	dema	0	agriological	a	moby_reverse
+agriologies	0		Number=Plur	dema	0	agriology	n	rule
+agriologist	0		Number=Sing	dema	0	agriologist	n	moby_reverse
+agriologists	0		Number=Plur	dema	0	agriologist	n	rule
+agriology	0		Number=Sing	dema	0	agriology	n	moby_reverse
+agrobiologic	0	oewn-agrobiologic-a	Degree=Pos	dema	0			oewn_form
+agrobiological	0	oewn-agrobiological-a	Degree=Pos	dema	0			oewn_form
+agrobiologically	0		Degree=Pos	dema	0	agrobiologically	r	moby_reverse
+agrobiologies	0	oewn-agrobiology-n	Number=Plur	dema	0			rule
+agrobiologist	0		Number=Sing	dema	0	agrobiologist	n	moby_reverse
+agrobiologists	0		Number=Plur	dema	0	agrobiologist	n	rule
+agrobiology	0	oewn-agrobiology-n	Number=Sing	dema	0			oewn_form
+agrologic	0	oewn-agrologic-a	Degree=Pos	dema	0			oewn_form
+agrological	0	oewn-agrological-a	Degree=Pos	dema	0			oewn_form
+agrologies	0	oewn-agrology-n	Number=Plur	dema	0			rule
+agrology	0	oewn-agrology-n	Number=Sing	dema	0			oewn_form
+agromania	0	oewn-agromania-n	Number=Sing	dema	0			oewn_form
+agromanias	0	oewn-agromania-n	Number=Plur	dema	0			rule
+agron	0		Number=Sing	dema	0	agron	n	moby_reverse
+agronomic	0	oewn-agronomic-a	Degree=Pos	dema	0			oewn_form
+agronomical	0	oewn-agronomical-a	Degree=Pos	dema	0			oewn_form
+agronomics	0		Number=Sing	dema	0	agronomics	n	moby_reverse
+agronomies	0	oewn-agronomy-n	Number=Plur	dema	0			rule
+agronomist	0	oewn-agronomist-n	Number=Sing	dema	0			oewn_form
+agronomists	0	oewn-agronomist-n	Number=Plur	dema	0			rule
+agronomy	0	oewn-agronomy-n	Number=Sing	dema	0			oewn_form
+agrons	0		Number=Plur	dema	0	agron	n	rule
+agrostographer	0		Number=Sing	dema	0	agrostographer	n	moby_reverse
+agrostographers	0		Number=Plur	dema	0	agrostographer	n	rule
+agrostographic	0		Degree=Pos	dema	0	agrostographic	a	moby_reverse
+agrostographical	0		Degree=Pos	dema	0	agrostographical	a	moby_reverse
+agrostographies	0		Number=Plur	dema	0	agrostography	n	rule
+agrostography	0		Number=Sing	dema	0	agrostography	n	moby_reverse
+agrostologic	0		Degree=Pos	dema	0	agrostologic	a	moby_reverse
+agrostological	0		Degree=Pos	dema	0	agrostological	a	moby_reverse
+agrostologies	0		Number=Plur	dema	0	agrostology	n	rule
+agrostologist	0		Number=Sing	dema	0	agrostologist	n	moby_reverse
+agrostologists	0		Number=Plur	dema	0	agrostologist	n	rule
+agrostology	0		Number=Sing	dema	0	agrostology	n	moby_reverse
+aground	0	oewn-aground-r	Degree=Pos	dema	0			oewn_form
+aground	1	oewn-aground-a	Degree=Pos	dema	0			oewn_form
+agrypnia	0	oewn-agrypnia-n	Number=Sing	dema	0			oewn_form
+agrypnias	0	oewn-agrypnia-n	Number=Plur	dema	0			rule
+agrypnotic	0	oewn-agrypnotic-a	Degree=Pos	dema	0			oewn_form
+agrypnotic	1		Number=Sing	dema	0	agrypnotic	n	moby_reverse
+agst	0		Number=Sing	dema	0	agst	n	moby_reverse
+agsts	0		Number=Plur	dema	0	agst	n	rule
+agua	0	oewn-agua-n	Number=Sing	dema	0			oewn_form
+agua toad	0	oewn-agua_toad-n	Number=Sing	dema	0			oewn_form
+agua toads	0	oewn-agua_toad-n	Number=Plur	dema	0			rule
+aguacate	0	oewn-aguacate-n	Number=Sing	dema	0			oewn_form
+aguacates	0	oewn-aguacate-n	Number=Plur	dema	0			rule
+aguardiente	0		Number=Sing	dema	0	aguardiente	n	moby_reverse
+aguardientes	0		Number=Plur	dema	0	aguardiente	n	rule
+aguas	0	oewn-agua-n	Number=Plur	dema	0			rule
+ague	0	oewn-ague-n	Number=Sing	dema	0			oewn_form
+ague grass	0	oewn-ague_grass-n	Number=Sing	dema	0			oewn_form
+ague grasses	0	oewn-ague_grass-n	Number=Plur	dema	0			rule
+ague root	0	oewn-ague_root-n	Number=Sing	dema	0			oewn_form
+ague roots	0	oewn-ague_root-n	Number=Plur	dema	0			rule
+ague weed	0	oewn-ague_weed-n	Number=Sing	dema	0			oewn_form
+ague weeds	0	oewn-ague_weed-n	Number=Plur	dema	0			rule
+aguelike	0		Degree=Pos	dema	0	aguelike	a	moby_reverse
+agues	0	oewn-ague-n	Number=Plur	dema	0			rule
+agueweed	0	oewn-agueweed-n	Number=Sing	dema	0			oewn_form
+agueweeds	0	oewn-agueweed-n	Number=Plur	dema	0			rule
+aguish	0	oewn-aguish-a	Degree=Pos	dema	0			oewn_form
+aguishly	0		Degree=Pos	dema	0	aguishly	r	moby_reverse
+agujon	0		Number=Sing	dema	0	agujon	n	moby_reverse
+agujons	0		Number=Plur	dema	0	agujon	n	rule
+agura	0		Number=Sing	dema	0	agura	n	moby_reverse
+aguras	0		Number=Plur	dema	0	agura	n	rule
+aguroth	0		Number=Sing	dema	0	aguroth	n	moby_reverse
+aguroths	0		Number=Plur	dema	0	aguroth	n	rule

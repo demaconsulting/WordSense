@@ -1,0 +1,5 @@
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CBC	0	oewn-CBC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CBCS	0	oewn-CBC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CBR	0	oewn-CBR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CBRS	0	oewn-CBR-n	Capitalization=Upper+Number=Plur	dema	0			rule

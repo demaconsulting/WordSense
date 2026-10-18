@@ -21,11 +21,10 @@ adulterates	0	adulterate#verb
 advance	0	advance#noun
 advance	1	advance#verb
 advanced	0	advance#verb
-advancers	0	advance#noun
 advances	0	advance#noun
 advances	1	advance#verb
-advancing	0	advance#noun
-advancing	1	advance#verb
+advancing	0	advance#verb
+advancing	1	advance#noun
 advert	0	advert#advert-noun
 advert	1	advert#advert-verb
 adverted	0	advert#advert-verb

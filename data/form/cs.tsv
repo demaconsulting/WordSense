@@ -1,9 +1,19 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cs	0	dema-cs-n	Number=Sing	dema	0
-csc	0	dema-csc-n	Number=Sing	dema	0
-csch	0	dema-csch-n	Number=Sing	dema	0
-csches	0	dema-csch-n	Number=Plur	dema	0
-cschs	0	dema-csch-n	Number=Plur	dema	0
-cscs	0	dema-csc-n	Number=Plur	dema	0
-csk	0	dema-csk-n	Number=Sing	dema	0
-csks	0	dema-csk-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CS gas	0	oewn-CS_gas-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CSE	0	oewn-CSE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CSES	0	oewn-CSE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CSIS	0	oewn-CSIS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CST	0	oewn-CST-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CSTS	0	oewn-CST-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Cs	0	oewn-C-n	Number=Plur	dema	0			moby_reverse
+Cs	1	oewn-c-n	Number=Plur	dema	0			rule
+Cs	2	oewn-C-n	Capitalization=Title+Number=Plur	dema	0			rule
+Cs	3	oewn-Cs-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+cs	0	oewn-C-n	Number=Plur	dema	0			moby_reverse
+cs	1	oewn-c-n	Number=Plur	dema	0			rule
+csardas	0	oewn-csardas-n	Number=Sing	dema	0			oewn_form
+csardases	0	oewn-csardas-n	Number=Plur	dema	0			rule
+csc	0		Number=Sing	dema	0	csc	n	moby_reverse
+csch	0		Number=Sing	dema	0	csch	n	moby_reverse
+csches	0		Number=Plur	dema	0	csch	n	rule
+csk	0		Number=Sing	dema	0	csk	n	moby_reverse

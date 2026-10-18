@@ -8,9 +8,7 @@ accents	1	accent#accent-verb
 access	0	access#noun
 access	1	access#verb
 accessed	0	access#verb
-accesser	0	access#noun
-accessers	0	access#noun
 accesses	0	access#noun
 accesses	1	access#verb
-accessing	0	access#noun
-accessing	1	access#verb
+accessing	0	access#verb
+accessing	1	access#noun

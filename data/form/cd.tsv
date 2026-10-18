@@ -1,2 +1,42 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cd	0	oewn-cd-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CD	0	oewn-cd-n	Number=Sing	dema	0			oewn_form
+CD	1	oewn-cd-a	Degree=Pos	dema	0			oewn_form
+CD	2	oewn-CD-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD burner	0	oewn-CD_burner-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD burners	0	oewn-CD_burner-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD drive	0	oewn-CD_drive-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD drives	0	oewn-CD_drive-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD player	0	oewn-CD_player-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD players	0	oewn-CD_player-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD-R	0	oewn-CD-R-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD-ROM	0	oewn-CD-ROM-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD-ROM drive	0	oewn-CD-ROM_drive-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD-ROM drives	0	oewn-CD-ROM_drive-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD-ROMS	0	oewn-CD-ROM-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CD-RS	0	oewn-CD-R-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CD-WO	0	oewn-CD-WO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD-WOS	0	oewn-CD-WO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CD4	0	oewn-CD4-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD4 T cell	0	oewn-CD4_T_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD4 T cells	0	oewn-CD4_T_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD4 cell	0	oewn-CD4_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD4 cells	0	oewn-CD4_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD8	0	oewn-CD8-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CD8 T cell	0	oewn-CD8_T_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD8 T cells	0	oewn-CD8_T_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CD8 cell	0	oewn-CD8_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CD8 cells	0	oewn-CD8_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CDC	0	oewn-CDC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CDCS	0	oewn-CDC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CDS	0	oewn-cd-n	Number=Plur	dema	0			rule
+CDS	1	oewn-CD-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Cd	0	oewn-cd-n	Number=Sing	dema	0			oewn_form
+Cd	1	oewn-cd-a	Degree=Pos	dema	0			oewn_form
+Cd	2	oewn-Cd-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Cds	0	oewn-cd-n	Number=Plur	dema	0			rule
+Cds	1	oewn-Cd-n	Capitalization=Title+Number=Plur	dema	0			rule
+cDNA	0	oewn-cDNA-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+cd	0	oewn-cd-n	Number=Sing	dema	0			oewn_form
+cd	1	oewn-cd-a	Degree=Pos	dema	0			oewn_form
+cdnas	0	oewn-cDNA-n	Capitalization=Exact+Number=Plur	dema	0			rule
+cds	0	oewn-cd-n	Number=Plur	dema	0			rule

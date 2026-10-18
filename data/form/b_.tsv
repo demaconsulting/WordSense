@@ -1,2 +1,36 @@
-spelling	rank	entry_id	features	source_id	reviewed
-b	0	oewn-b-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+B	0	oewn-b-n	Number=Sing	dema	0			oewn_form
+B	1	oewn-B-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B batteries	0	oewn-B_battery-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B battery	0	oewn-B_battery-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B cell	0	oewn-B_cell-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B cells	0	oewn-B_cell-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B complex	0	oewn-B_complex-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B complexes	0	oewn-B_complex-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B lymphocyte	0	oewn-B_lymphocyte-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B lymphocytes	0	oewn-B_lymphocyte-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B vitamin	0	oewn-B_vitamin-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B vitamins	0	oewn-B_vitamin-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B-complex vitamin	0	oewn-B-complex_vitamin-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B-complex vitamins	0	oewn-B-complex_vitamin-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B-flat clarinet	0	oewn-B-flat_clarinet-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B-flat clarinets	0	oewn-B-flat_clarinet-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B-girl	0	oewn-B-girl-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B-girls	0	oewn-B-girl-n	Capitalization=Title+Number=Plur	dema	0			rule
+B-scan ultrasonographies	0	oewn-B-scan_ultrasonography-n	Capitalization=Exact+Number=Plur	dema	0			rule
+B-scan ultrasonography	0	oewn-B-scan_ultrasonography-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B.C.	0	oewn-B.C.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+B.C.E.	0	oewn-B.C.E.-r	Capitalization=Upper+Degree=Pos	dema	0			oewn_form
+B.O.	0	oewn-B.O.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+B.T.U.	0	oewn-B.T.U.-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+B.Th.U.	0	oewn-B.Th.U.-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+B0	0	oewn-B0-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B1	0	oewn-B1-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B2	0	oewn-B2-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B3	0	oewn-B3-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B4	0	oewn-B4-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B5	0	oewn-B5-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+B6	0	oewn-B6-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+b	0	oewn-b-n	Number=Sing	dema	0			oewn_form
+b-meson	0	oewn-b-meson-n	Number=Sing	dema	0			oewn_form
+b-mesons	0	oewn-b-meson-n	Number=Plur	dema	0			rule

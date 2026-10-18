@@ -1,70 +1,139 @@
-spelling	rank	entry_id	features	source_id	reviewed
-by	0	dema-by-p		dema	0
-by	1	oewn-by-r	Degree=Pos	dema	0
-by	2	dema-by-n	Number=Sing	dema	0
-bye	0	oewn-bye-n	Number=Sing	dema	0
-byelaw	0	dema-byelaw-n	Number=Sing	dema	0
-byelaws	0	dema-byelaw-n	Number=Plur	dema	0
-byes	0	dema-byes-n	Number=Sing	dema	0
-bygone	0	oewn-bygone-a	Degree=Pos	dema	0
-bygone	1	oewn-bygone-n	Number=Sing	dema	0
-bygonely	0	dema-bygone-r		dema	0
-bygoneness	0	oewn-bygone-n	Number=Plur	dema	0
-bygoner	0	oewn-bygone-a	Degree=Cmp	dema	0
-bygones	0	oewn-bygone-n	Number=Plur	dema	0
-bygonest	0	oewn-bygone-a	Degree=Sup	dema	0
-bylaw	0	oewn-bylaw-n	Number=Sing	dema	0
-bylaws	0	oewn-bylaw-n	Number=Plur	dema	0
-byliner	0	dema-byliner-n	Number=Sing	dema	0
-byliners	0	dema-byliner-n	Number=Plur	dema	0
-bypass	0	oewn-bypass-n	Number=Sing	dema	0
-bypass	1	oewn-bypass-v	VerbForm=Inf	dema	0
-bypassed	0	oewn-bypass-v	Tense=Past	dema	0
-bypasser	0	dema-bypasser-n	Number=Sing	dema	0
-bypassers	0	oewn-bypass-n	Number=Plur	dema	0
-bypasses	0	oewn-bypass-n	Number=Plur	dema	0
-bypasses	1	oewn-bypass-v	Person=3+Tense=Pres	dema	0
-bypassing	0	oewn-bypass-v	VerbForm=Ger	dema	0
-bypassingly	0	dema-bypass-r		dema	0
-bypath	0	oewn-bypath-n	Number=Sing	dema	0
-bypaths	0	oewn-bypath-n	Number=Plur	dema	0
-byre	0	oewn-byre-n	Number=Sing	dema	0
-byres	0	oewn-byre-n	Number=Plur	dema	0
-byrnie	0	oewn-byrnie-n	Number=Sing	dema	0
-byrnies	0	oewn-byrnie-n	Number=Plur	dema	0
-byroad	0	oewn-byroad-n	Number=Sing	dema	0
-byroads	0	oewn-byroad-n	Number=Plur	dema	0
-byrri	0	dema-byrri-n	Number=Sing	dema	0
-byrris	0	dema-byrri-n	Number=Plur	dema	0
-byrrus	0	dema-byrrus-n	Number=Sing	dema	0
-byrruses	0	dema-byrrus-n	Number=Plur	dema	0
-byssaceous	0	dema-byssaceous-a	Degree=Pos	dema	0
-byssaceously	0	dema-byssaceous-r		dema	0
-byssaceousness	0	dema-byssaceous-n	Number=Plur	dema	0
-byssal	0	dema-byssal-a	Degree=Pos	dema	0
-byssally	0	dema-byssal-r		dema	0
-byssalness	0	dema-byssal-n	Number=Plur	dema	0
-byssinosis	0	dema-byssinosis-n	Number=Sing	dema	0
-byssoid	0	dema-byssoid-a	Degree=Pos	dema	0
-byssoider	0	dema-byssoid-a	Degree=Cmp	dema	0
-byssoidest	0	dema-byssoid-a	Degree=Sup	dema	0
-byssoidly	0	dema-byssoid-r		dema	0
-byssoidness	0	dema-byssoid-n	Number=Plur	dema	0
-byssus	0	oewn-byssus-n	Number=Sing	dema	0
-byssuses	0	oewn-byssus-n	Number=Plur	dema	0
-bystander	0	oewn-bystander-n	Number=Sing	dema	0
-bystanders	0	oewn-bystander-n	Number=Plur	dema	0
-bystreet	0	dema-bystreet-n	Number=Sing	dema	0
-bystreets	0	dema-bystreet-n	Number=Plur	dema	0
-byte	0	oewn-byte-n	Number=Sing	dema	0
-bytes	0	oewn-byte-n	Number=Plur	dema	0
-bytownite	0	dema-bytownite-n	Number=Sing	dema	0
-bytownites	0	dema-bytownite-n	Number=Plur	dema	0
-byway	0	oewn-byway-n	Number=Sing	dema	0
-byways	0	oewn-byway-n	Number=Plur	dema	0
-bywoner	0	dema-bywoner-n	Number=Sing	dema	0
-bywoners	0	dema-bywoner-n	Number=Plur	dema	0
-byword	0	oewn-byword-n	Number=Sing	dema	0
-bywords	0	oewn-byword-n	Number=Plur	dema	0
-byzant	0	oewn-byzant-n	Number=Sing	dema	0
-byzants	0	oewn-byzant-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Byelorussian	0	oewn-Byelorussian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byelorussian language	0	oewn-Byelorussian_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Byelorussian languages	0	oewn-Byelorussian_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Byelorussians	0	oewn-Byelorussian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Byronism	0	oewn-Byronism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byronisms	0	oewn-Byronism-n	Capitalization=Title+Number=Plur	dema	0			rule
+Byzantine	0	oewn-Byzantine-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byzantine	1	oewn-Byzantine-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Byzantine Church	0	oewn-Byzantine_Church-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byzantine Churches	0	oewn-Byzantine_Church-n	Capitalization=Title+Number=Plur	dema	0			rule
+Byzantine Greek	0	oewn-Byzantine_Greek-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byzantine Greek language	0	oewn-Byzantine_Greek_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Byzantine Greek languages	0	oewn-Byzantine_Greek_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Byzantine Greeks	0	oewn-Byzantine_Greek-n	Capitalization=Title+Number=Plur	dema	0			rule
+Byzantine architecture	0	oewn-Byzantine_architecture-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Byzantine architectures	0	oewn-Byzantine_architecture-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Byzantines	0	oewn-Byzantine-n	Capitalization=Title+Number=Plur	dema	0			rule
+Byzantinism	0	oewn-Byzantinism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Byzantinisms	0	oewn-Byzantinism-n	Capitalization=Title+Number=Plur	dema	0			rule
+by	0	dema-by-p		dema	0			carried
+by	1	oewn-by-r	Degree=Pos	dema	0			oewn_form
+by	2		Number=Sing	dema	0	by	n	moby_reverse
+by a long shot	0	oewn-by_a_long_shot-r	Degree=Pos	dema	0			oewn_form
+by all means	0	oewn-by_all_means-r	Degree=Pos	dema	0			oewn_form
+by all odds	0	oewn-by_all_odds-r	Degree=Pos	dema	0			oewn_form
+by and by	0	oewn-by_and_by-r	Degree=Pos	dema	0			oewn_form
+by and large	0	oewn-by_and_large-r	Degree=Pos	dema	0			oewn_form
+by artificial means	0	oewn-by_artificial_means-r	Degree=Pos	dema	0			oewn_form
+by chance	0	oewn-by_chance-r	Degree=Pos	dema	0			oewn_form
+by choice	0	oewn-by_choice-r	Degree=Pos	dema	0			oewn_form
+by design	0	oewn-by_design-r	Degree=Pos	dema	0			oewn_form
+by experimentation	0	oewn-by_experimentation-r	Degree=Pos	dema	0			oewn_form
+by far	0	oewn-by_far-r	Degree=Pos	dema	0			oewn_form
+by fits and starts	0	oewn-by_fits_and_starts-r	Degree=Pos	dema	0			oewn_form
+by hand	0	oewn-by_hand-r	Degree=Pos	dema	0			oewn_form
+by heart	0	oewn-by_heart-r	Degree=Pos	dema	0			oewn_form
+by hook or by crook	0	oewn-by_hook_or_by_crook-r	Degree=Pos	dema	0			oewn_form
+by inches	0	oewn-by_inches-r	Degree=Pos	dema	0			oewn_form
+by luck	0	oewn-by_luck-r	Degree=Pos	dema	0			oewn_form
+by machine	0	oewn-by_machine-r	Degree=Pos	dema	0			oewn_form
+by memory	0	oewn-by_memory-r	Degree=Pos	dema	0			oewn_form
+by nature	0	oewn-by_nature-r	Degree=Pos	dema	0			oewn_form
+by no means	0	oewn-by_no_means-r	Degree=Pos	dema	0			oewn_form
+by right of office	0	oewn-by_right_of_office-r	Degree=Pos	dema	0			oewn_form
+by rights	0	oewn-by_rights-r	Degree=Pos	dema	0			oewn_form
+by small degrees	0	oewn-by_small_degrees-r	Degree=Pos	dema	0			oewn_form
+by the bye	0	oewn-by_the_bye-r	Degree=Pos	dema	0			oewn_form
+by the day	0	oewn-by_the_day-r	Degree=Pos	dema	0			oewn_form
+by the piece	0	oewn-by_the_piece-r	Degree=Pos	dema	0			oewn_form
+by the way	0	oewn-by_the_way-r	Degree=Pos	dema	0			oewn_form
+by trial and error	0	oewn-by_trial_and_error-r	Degree=Pos	dema	0			oewn_form
+by word of mouth	0	oewn-by_word_of_mouth-r	Degree=Pos	dema	0			oewn_form
+by-and-bies	0	oewn-by-and-by-n	Number=Plur	dema	0			rule
+by-and-by	0	oewn-by-and-by-n	Number=Sing	dema	0			oewn_form
+by-bid	0	oewn-by-bid-v	VerbForm=Inf	dema	0			oewn_form
+by-biding	0	oewn-by-bid-v	VerbForm=Ger	dema	0			rule
+by-bids	0	oewn-by-bid-v	Person=3+Tense=Pres	dema	0			rule
+by-blow	0	oewn-by-blow-n	Number=Sing	dema	0			oewn_form
+by-blows	0	oewn-by-blow-n	Number=Plur	dema	0			rule
+by-catch	0	oewn-by-catch-n	Number=Sing	dema	0			oewn_form
+by-catches	0	oewn-by-catch-n	Number=Plur	dema	0			rule
+by-election	0	oewn-by-election-n	Number=Sing	dema	0			oewn_form
+by-elections	0	oewn-by-election-n	Number=Plur	dema	0			rule
+by-line	0	oewn-by-line-n	Number=Sing	dema	0			oewn_form
+by-lines	0	oewn-by-line-n	Number=Plur	dema	0			rule
+by-product	0	oewn-by-product-n	Number=Sing	dema	0			oewn_form
+by-products	0	oewn-by-product-n	Number=Plur	dema	0			rule
+bycatch	0	oewn-bycatch-n	Number=Sing	dema	0			oewn_form
+bycatches	0	oewn-bycatch-n	Number=Plur	dema	0			rule
+bye	0	oewn-bye-n	Number=Sing	dema	0			oewn_form
+bye-bye	0	oewn-bye-bye-n	Number=Sing	dema	0			oewn_form
+bye-byes	0	oewn-bye-bye-n	Number=Plur	dema	0			rule
+bye-election	0	oewn-bye-election-n	Number=Sing	dema	0			oewn_form
+bye-elections	0	oewn-bye-election-n	Number=Plur	dema	0			rule
+byelaw	0		Number=Sing	dema	0	byelaw	n	moby_reverse
+byelaws	0		Number=Plur	dema	0	byelaw	n	rule
+byes	0	oewn-bye-n	Number=Plur	dema	0			rule
+bygone	0	oewn-bygone-a	Degree=Pos	dema	0			oewn_form
+bygone	1	oewn-bygone-n	Number=Sing	dema	0			oewn_form
+bygones	0	oewn-bygone-n	Number=Plur	dema	0			rule
+bylaw	0	oewn-bylaw-n	Number=Sing	dema	0			oewn_form
+bylaws	0	oewn-bylaw-n	Number=Plur	dema	0			rule
+byliner	0		Number=Sing	dema	0	byliner	n	moby_reverse
+byliners	0		Number=Plur	dema	0	byliner	n	rule
+byname	0	oewn-byname-n	Number=Sing	dema	0			oewn_form
+bynames	0	oewn-byname-n	Number=Plur	dema	0			rule
+bypass	0	oewn-bypass-n	Number=Sing	dema	0			oewn_form
+bypass	1	oewn-bypass-v	VerbForm=Inf	dema	0			oewn_form
+bypass capacitor	0	oewn-bypass_capacitor-n	Number=Sing	dema	0			oewn_form
+bypass capacitors	0	oewn-bypass_capacitor-n	Number=Plur	dema	0			rule
+bypass condenser	0	oewn-bypass_condenser-n	Number=Sing	dema	0			oewn_form
+bypass condensers	0	oewn-bypass_condenser-n	Number=Plur	dema	0			rule
+bypassed	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			rule_variant
+bypasser	0		Number=Sing	dema	0	bypasser	n	moby_reverse
+bypassers	0		Number=Plur	dema	0	bypasser	n	rule
+bypasses	0	oewn-bypass-n	Number=Plur	dema	0			rule
+bypasses	1	oewn-bypass-v	Person=3+Tense=Pres	dema	0			rule
+bypassing	0	oewn-bypass-v	VerbForm=Ger	dema	0			rule
+bypast	0	oewn-bypass-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
+bypast	1	oewn-bypast-a	Degree=Pos	dema	0			oewn_form
+bypath	0	oewn-bypath-n	Number=Sing	dema	0			oewn_form
+bypaths	0	oewn-bypath-n	Number=Plur	dema	0			rule
+byplay	0	oewn-byplay-n	Number=Sing	dema	0			oewn_form
+byplays	0	oewn-byplay-n	Number=Plur	dema	0			rule
+byproduct	0	oewn-byproduct-n	Number=Sing	dema	0			oewn_form
+byproducts	0	oewn-byproduct-n	Number=Plur	dema	0			rule
+byre	0	oewn-byre-n	Number=Sing	dema	0			oewn_form
+byres	0	oewn-byre-n	Number=Plur	dema	0			rule
+byrnie	0	oewn-byrnie-n	Number=Sing	dema	0			oewn_form
+byrnies	0	oewn-byrnie-n	Number=Plur	dema	0			rule
+byroad	0	oewn-byroad-n	Number=Sing	dema	0			oewn_form
+byroads	0	oewn-byroad-n	Number=Plur	dema	0			rule
+byrri	0		Number=Sing	dema	0	byrri	n	moby_reverse
+byrris	0		Number=Plur	dema	0	byrri	n	rule
+byrrus	0		Number=Sing	dema	0	byrrus	n	moby_reverse
+byssaceous	0		Degree=Pos	dema	0	byssaceous	a	moby_reverse
+byssal	0		Degree=Pos	dema	0	byssal	a	moby_reverse
+byssi	0	oewn-byssus-n	Number=Plur	dema	0			oewn_form
+byssinosis	0		Number=Sing	dema	0	byssinosis	n	moby_reverse
+byssoid	0		Degree=Pos	dema	0	byssoid	a	moby_reverse
+byssus	0	oewn-byssus-n	Number=Sing	dema	0			oewn_form
+byssuses	0	oewn-byssus-n	Number=Plur	dema	0			rule_variant
+bystander	0	oewn-bystander-n	Number=Sing	dema	0			oewn_form
+bystanders	0	oewn-bystander-n	Number=Plur	dema	0			rule
+bystreet	0		Number=Sing	dema	0	bystreet	n	moby_reverse
+bystreets	0		Number=Plur	dema	0	bystreet	n	rule
+byte	0	oewn-byte-n	Number=Sing	dema	0			oewn_form
+bytes	0	oewn-byte-n	Number=Plur	dema	0			rule
+bytownite	0		Number=Sing	dema	0	bytownite	n	moby_reverse
+bytownites	0		Number=Plur	dema	0	bytownite	n	rule
+byway	0	oewn-byway-n	Number=Sing	dema	0			oewn_form
+byways	0	oewn-byway-n	Number=Plur	dema	0			rule
+bywoner	0		Number=Sing	dema	0	bywoner	n	moby_reverse
+bywoners	0		Number=Plur	dema	0	bywoner	n	rule
+byword	0	oewn-byword-n	Number=Sing	dema	0			oewn_form
+bywords	0	oewn-byword-n	Number=Plur	dema	0			rule
+byzant	0	oewn-byzant-n	Number=Sing	dema	0			oewn_form
+byzants	0	oewn-byzant-n	Number=Plur	dema	0			rule

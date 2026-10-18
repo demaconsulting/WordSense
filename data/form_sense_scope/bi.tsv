@@ -5,8 +5,7 @@ bifurcates	0	bifurcate#verb
 bite	0	bite#noun
 bite	1	bite#verb
 bited	0	bite#verb
-biters	0	bite#noun
 bites	0	bite#noun
 bites	1	bite#verb
-biting	0	bite#noun
-biting	1	bite#verb
+biting	0	bite#verb
+biting	2	bite#noun

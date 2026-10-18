@@ -1,6 +1,11 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pf	0	dema-pf-n	Number=Sing	dema	0
-pfennig	0	oewn-pfennig-n	Number=Sing	dema	0
-pfennigs	0	oewn-pfennig-n	Number=Plur	dema	0
-pfg	0	dema-pfg-n	Number=Sing	dema	0
-pfgs	0	dema-pfg-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PFC	0	oewn-PFC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PFCS	0	oewn-PFC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PFLOPS	0	oewn-PFLOPS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+pf	0		Number=Sing	dema	0	pf	n	moby_reverse
+pfannkuchen	0	oewn-pfannkuchen-n	Number=Sing	dema	0			oewn_form
+pfannkuchens	0	oewn-pfannkuchen-n	Number=Plur	dema	0			rule
+pfennig	0	oewn-pfennig-n	Number=Sing	dema	0			oewn_form
+pfennige	0	oewn-pfennig-n	Number=Plur	dema	0			oewn_form
+pfennigs	0	oewn-pfennig-n	Number=Plur	dema	0			rule_variant
+pfg	0		Number=Sing	dema	0	pfg	n	moby_reverse

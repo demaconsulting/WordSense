@@ -1,0 +1,8 @@
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PB	0	oewn-PB-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PBS	0	oewn-PB-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PBS	1	oewn-PBS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+Pb	0	oewn-Pb-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pbit	0	oewn-Pbit-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pbits	0	oewn-Pbit-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pbs	0	oewn-Pb-n	Capitalization=Title+Number=Plur	dema	0			rule

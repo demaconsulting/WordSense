@@ -1,8 +1,9 @@
-spelling	rank	entry_id	features	source_id	reviewed
-bt	0	dema-bt-n	Number=Sing	dema	0
-btise	0	dema-btise-n	Number=Sing	dema	0
-btises	0	dema-btise-n	Number=Plur	dema	0
-btl	0	dema-btl-n	Number=Sing	dema	0
-btls	0	dema-btl-n	Number=Plur	dema	0
-btries	0	dema-btry-n	Number=Plur	dema	0
-btry	0	dema-btry-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+BTU	0	oewn-BTU-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+BTUS	0	oewn-BTU-n	Capitalization=Upper+Number=Plur	dema	0			rule
+bt	0		Number=Sing	dema	0	bt	n	moby_reverse
+btise	0		Number=Sing	dema	0	btise	n	moby_reverse
+btises	0		Number=Plur	dema	0	btise	n	rule
+btl	0		Number=Sing	dema	0	btl	n	moby_reverse
+btries	0		Number=Plur	dema	0	btry	n	rule
+btry	0		Number=Sing	dema	0	btry	n	moby_reverse

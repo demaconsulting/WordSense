@@ -1,0 +1,7 @@
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CV	0	oewn-cv-a	Degree=Pos	dema	0			oewn_form
+CV	1	oewn-CV-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CVA	0	oewn-CVA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CVAS	0	oewn-CVA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CVS	0	oewn-CV-n	Capitalization=Upper+Number=Plur	dema	0			rule
+cv	0	oewn-cv-a	Degree=Pos	dema	0			oewn_form

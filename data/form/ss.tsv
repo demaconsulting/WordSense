@@ -1,2 +1,19 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ss	0	dema-ss-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+SS	0		Number=Sing	dema	0	ss	n	moby_reverse
+SS	1	oewn-SS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSA	0	oewn-SSA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSAS	0	oewn-SSA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSE	0	oewn-SSE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSES	0	oewn-SS-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSES	1	oewn-SSE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSMG	0	oewn-SSMG-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSMGS	0	oewn-SSMG-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSPE	0	oewn-SSPE-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSPES	0	oewn-SSPE-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSRI	0	oewn-SSRI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSRIS	0	oewn-SSRI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSS	0	oewn-SSS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSSES	0	oewn-SSS-n	Capitalization=Upper+Number=Plur	dema	0			rule
+SSW	0	oewn-SSW-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+SSWS	0	oewn-SSW-n	Capitalization=Upper+Number=Plur	dema	0			rule
+ss	0		Number=Sing	dema	0	ss	n	moby_reverse

@@ -1,5 +1,6 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pwr	0	dema-pwr-n	Number=Sing	dema	0
-pwrs	0	dema-pwr-n	Number=Plur	dema	0
-pwt	0	dema-pwt-n	Number=Sing	dema	0
-pwts	0	dema-pwt-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PWR	0		Number=Sing	dema	0	pwr	n	moby_reverse
+PWR	1	oewn-PWR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PWRS	0	oewn-PWR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+pwr	0		Number=Sing	dema	0	pwr	n	moby_reverse
+pwt	0		Number=Sing	dema	0	pwt	n	moby_reverse

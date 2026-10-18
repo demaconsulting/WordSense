@@ -1,968 +1,958 @@
-spelling	rank	entry_id	features	source_id	reviewed
-ps	0	dema-ps-n	Number=Sing	dema	0
-psalm	0	oewn-psalm-n	Number=Sing	dema	0
-psalmbook	0	dema-psalmbook-n	Number=Sing	dema	0
-psalmbooks	0	dema-psalmbook-n	Number=Plur	dema	0
-psalmic	0	dema-psalmic-a	Degree=Pos	dema	0
-psalmically	0	dema-psalmic-r		dema	0
-psalmicness	0	dema-psalmic-n	Number=Plur	dema	0
-psalmist	0	oewn-psalmist-n	Number=Sing	dema	0
-psalmists	0	oewn-psalmist-n	Number=Plur	dema	0
-psalmodies	0	dema-psalmodies-n	Number=Sing	dema	0
-psalmodist	0	dema-psalmodist-n	Number=Sing	dema	0
-psalmodists	0	dema-psalmodist-n	Number=Plur	dema	0
-psalmody	0	oewn-psalmody-n	Number=Sing	dema	0
-psalms	0	oewn-psalm-n	Number=Plur	dema	0
-psalterial	0	dema-psalterial-a	Degree=Pos	dema	0
-psalterially	0	dema-psalterial-r		dema	0
-psalterialness	0	dema-psalterial-n	Number=Plur	dema	0
-psalteries	0	dema-psalteries-n	Number=Sing	dema	0
-psalterium	0	oewn-psalterium-n	Number=Sing	dema	0
-psalteriums	0	oewn-psalterium-n	Number=Plur	dema	0
-psaltery	0	oewn-psaltery-n	Number=Sing	dema	0
-psalteteria	0	dema-psalteteria-n	Number=Sing	dema	0
-psalteterias	0	dema-psalteteria-n	Number=Plur	dema	0
-psammead	0	dema-psammead-a	Degree=Pos	dema	0
-psammeader	0	dema-psammead-a	Degree=Cmp	dema	0
-psammeadest	0	dema-psammead-a	Degree=Sup	dema	0
-psammeadly	0	dema-psammead-r		dema	0
-psammeadness	0	dema-psammead-n	Number=Plur	dema	0
-psammite	0	dema-psammite-n	Number=Sing	dema	0
-psammites	0	dema-psammite-n	Number=Plur	dema	0
-psammophytic	0	dema-psammophytic-a	Degree=Pos	dema	0
-psammophytically	0	dema-psammophytic-r		dema	0
-psammosere	0	dema-psammosere-n	Number=Sing	dema	0
-psammoseres	0	dema-psammosere-n	Number=Plur	dema	0
-pschent	0	dema-pschent-n	Number=Sing	dema	0
-pschents	0	dema-pschent-n	Number=Plur	dema	0
-psec	0	dema-psec-n	Number=Sing	dema	0
-psecs	0	dema-psec-n	Number=Plur	dema	0
-psellism	0	dema-psellism-n	Number=Sing	dema	0
-psellisms	0	dema-psellism-n	Number=Plur	dema	0
-psephite	0	dema-psephite-n	Number=Sing	dema	0
-psephites	0	dema-psephite-n	Number=Plur	dema	0
-psephological	0	dema-psephological-a	Degree=Pos	dema	0
-psephologically	0	dema-psephological-r		dema	0
-psephologies	0	oewn-psephology-n	Number=Plur	dema	0
-psephologist	0	oewn-psephologist-n	Number=Sing	dema	0
-psephologists	0	oewn-psephologist-n	Number=Plur	dema	0
-psephology	0	oewn-psephology-n	Number=Sing	dema	0
-pseud	0	oewn-pseud-n	Number=Sing	dema	0
-pseud	1	dema-pseud-a	Degree=Pos	dema	0
-pseudamphora	0	dema-pseudamphora-n	Number=Sing	dema	0
-pseudamphorae	0	dema-pseudamphorae-n	Number=Sing	dema	0
-pseudamphoraes	0	dema-pseudamphorae-n	Number=Plur	dema	0
-pseudamphoras	0	dema-pseudamphora-n	Number=Plur	dema	0
-pseudaxis	0	dema-pseudaxis-n	Number=Sing	dema	0
-pseudepigrapha	0	dema-pseudepigrapha-n	Number=Sing	dema	0
-pseudepigraphas	0	dema-pseudepigrapha-n	Number=Plur	dema	0
-pseuder	0	dema-pseud-a	Degree=Cmp	dema	0
-pseudest	0	dema-pseud-a	Degree=Sup	dema	0
-pseudisodomic	0	dema-pseudisodomic-a	Degree=Pos	dema	0
-pseudisodomically	0	dema-pseudisodomic-r		dema	0
-pseudly	0	dema-pseud-r		dema	0
-pseudness	0	oewn-pseud-n	Number=Plur	dema	0
-pseudo	0	oewn-pseudo-a	Degree=Pos	dema	0
-pseudoacademic	0	dema-pseudoacademic-a	Degree=Pos	dema	0
-pseudoacademically	0	dema-pseudoacademically-r	Degree=Pos	dema	0
-pseudoaccidental	0	dema-pseudoaccidental-a	Degree=Pos	dema	0
-pseudoaccidentally	0	dema-pseudoaccidentally-r	Degree=Pos	dema	0
-pseudoacquaintance	0	dema-pseudoacquaintance-n	Number=Sing	dema	0
-pseudoacquaintances	0	dema-pseudoacquaintance-n	Number=Plur	dema	0
-pseudoacromegalies	0	dema-pseudoacromegaly-n	Number=Plur	dema	0
-pseudoacromegaly	0	dema-pseudoacromegaly-n	Number=Sing	dema	0
-pseudoaesthetic	0	dema-pseudoaesthetic-a	Degree=Pos	dema	0
-pseudoaesthetically	0	dema-pseudoaesthetically-r	Degree=Pos	dema	0
-pseudoaffectionate	0	dema-pseudoaffectionate-a	Degree=Pos	dema	0
-pseudoaffectionately	0	dema-pseudoaffectionately-r	Degree=Pos	dema	0
-pseudoaggressive	0	dema-pseudoaggressive-a	Degree=Pos	dema	0
-pseudoaggressively	0	dema-pseudoaggressively-r	Degree=Pos	dema	0
-pseudoallegoristic	0	dema-pseudoallegoristic-a	Degree=Pos	dema	0
-pseudoallegoristically	0	dema-pseudoallegoristic-r		dema	0
-pseudoalveolar	0	dema-pseudoalveolar-a	Degree=Pos	dema	0
-pseudoalveolarly	0	dema-pseudoalveolar-r		dema	0
-pseudoamateurish	0	dema-pseudoamateurish-a	Degree=Pos	dema	0
-pseudoamateurishly	0	dema-pseudoamateurishly-r	Degree=Pos	dema	0
-pseudoamateurism	0	dema-pseudoamateurism-n	Number=Sing	dema	0
-pseudoamateurisms	0	dema-pseudoamateurism-n	Number=Plur	dema	0
-pseudoamatorial	0	dema-pseudoamatorial-a	Degree=Pos	dema	0
-pseudoamatorially	0	dema-pseudoamatorial-r		dema	0
-pseudoamatorily	0	dema-pseudoamatory-r		dema	0
-pseudoamatory	0	dema-pseudoamatory-a	Degree=Pos	dema	0
-pseudoambidextrous	0	dema-pseudoambidextrous-a	Degree=Pos	dema	0
-pseudoambidextrously	0	dema-pseudoambidextrously-r	Degree=Pos	dema	0
-pseudoameboid	0	dema-pseudoameboid-a	Degree=Pos	dema	0
-pseudoameboidly	0	dema-pseudoameboid-r		dema	0
-pseudoanachronistic	0	dema-pseudoanachronistic-a	Degree=Pos	dema	0
-pseudoanachronistical	0	dema-pseudoanachronistical-a	Degree=Pos	dema	0
-pseudoanachronistically	0	dema-pseudoanachronistic-r		dema	0
-pseudoanaphylactic	0	dema-pseudoanaphylactic-a	Degree=Pos	dema	0
-pseudoanaphylactically	0	dema-pseudoanaphylactic-r		dema	0
-pseudoanarchistic	0	dema-pseudoanarchistic-a	Degree=Pos	dema	0
-pseudoanarchistically	0	dema-pseudoanarchistic-r		dema	0
-pseudoanatomic	0	dema-pseudoanatomic-a	Degree=Pos	dema	0
-pseudoanatomical	0	dema-pseudoanatomical-a	Degree=Pos	dema	0
-pseudoanatomically	0	dema-pseudoanatomically-r	Degree=Pos	dema	0
-pseudoancestral	0	dema-pseudoancestral-a	Degree=Pos	dema	0
-pseudoancestrally	0	dema-pseudoancestrally-r	Degree=Pos	dema	0
-pseudoanemia	0	dema-pseudoanemia-n	Number=Sing	dema	0
-pseudoanemias	0	dema-pseudoanemia-n	Number=Plur	dema	0
-pseudoanemic	0	dema-pseudoanemic-a	Degree=Pos	dema	0
-pseudoanemically	0	dema-pseudoanemic-r		dema	0
-pseudoangelic	0	dema-pseudoangelic-a	Degree=Pos	dema	0
-pseudoangelical	0	dema-pseudoangelical-a	Degree=Pos	dema	0
-pseudoangelically	0	dema-pseudoangelically-r	Degree=Pos	dema	0
-pseudoangular	0	dema-pseudoangular-a	Degree=Pos	dema	0
-pseudoangularly	0	dema-pseudoangularly-r	Degree=Pos	dema	0
-pseudoanthropoid	0	dema-pseudoanthropoid-a	Degree=Pos	dema	0
-pseudoanthropoidly	0	dema-pseudoanthropoid-r		dema	0
-pseudoanthropological	0	dema-pseudoanthropological-a	Degree=Pos	dema	0
-pseudoanthropologically	0	dema-pseudoanthropological-r		dema	0
-pseudoantique	0	dema-pseudoantique-a	Degree=Pos	dema	0
-pseudoantiqueness	0	dema-pseudoantique-n	Number=Plur	dema	0
-pseudoantiquly	0	dema-pseudoantique-r		dema	0
-pseudoapologetic	0	dema-pseudoapologetic-a	Degree=Pos	dema	0
-pseudoapologetically	0	dema-pseudoapologetically-r	Degree=Pos	dema	0
-pseudoapoplectic	0	dema-pseudoapoplectic-a	Degree=Pos	dema	0
-pseudoapoplectical	0	dema-pseudoapoplectical-a	Degree=Pos	dema	0
-pseudoapoplectically	0	dema-pseudoapoplectically-r	Degree=Pos	dema	0
-pseudoappendicitis	0	dema-pseudoappendicitis-n	Number=Sing	dema	0
-pseudoapplicative	0	dema-pseudoapplicative-a	Degree=Pos	dema	0
-pseudoapplicatively	0	dema-pseudoapplicative-r		dema	0
-pseudoapprehensive	0	dema-pseudoapprehensive-a	Degree=Pos	dema	0
-pseudoapprehensively	0	dema-pseudoapprehensively-r	Degree=Pos	dema	0
-pseudoaquatic	0	dema-pseudoaquatic-a	Degree=Pos	dema	0
-pseudoaquatically	0	dema-pseudoaquatic-r		dema	0
-pseudoarchaic	0	dema-pseudoarchaic-a	Degree=Pos	dema	0
-pseudoarchaically	0	dema-pseudoarchaically-r	Degree=Pos	dema	0
-pseudoarchaicness	0	dema-pseudoarchaic-n	Number=Plur	dema	0
-pseudoaristocratic	0	dema-pseudoaristocratic-a	Degree=Pos	dema	0
-pseudoaristocratical	0	dema-pseudoaristocratical-a	Degree=Pos	dema	0
-pseudoaristocratically	0	dema-pseudoaristocratically-r	Degree=Pos	dema	0
-pseudoarticulate	0	dema-pseudoarticulate-a	Degree=Pos	dema	0
-pseudoarticulately	0	dema-pseudoarticulately-r	Degree=Pos	dema	0
-pseudoartistic	0	dema-pseudoartistic-a	Degree=Pos	dema	0
-pseudoartistically	0	dema-pseudoartistically-r	Degree=Pos	dema	0
-pseudoascetic	0	dema-pseudoascetic-a	Degree=Pos	dema	0
-pseudoascetical	0	dema-pseudoascetical-a	Degree=Pos	dema	0
-pseudoascetically	0	dema-pseudoascetically-r	Degree=Pos	dema	0
-pseudoassertive	0	dema-pseudoassertive-a	Degree=Pos	dema	0
-pseudoassertively	0	dema-pseudoassertively-r	Degree=Pos	dema	0
-pseudoassociational	0	dema-pseudoassociational-a	Degree=Pos	dema	0
-pseudoassociationally	0	dema-pseudoassociational-r		dema	0
-pseudoasymmetric	0	dema-pseudoasymmetric-a	Degree=Pos	dema	0
-pseudoasymmetrical	0	dema-pseudoasymmetrical-a	Degree=Pos	dema	0
-pseudoasymmetrically	0	dema-pseudoasymmetrically-r	Degree=Pos	dema	0
-pseudobankrupt	0	dema-pseudobankrupt-a	Degree=Pos	dema	0
-pseudobankruptly	0	dema-pseudobankrupt-r		dema	0
-pseudobaptismal	0	dema-pseudobaptismal-a	Degree=Pos	dema	0
-pseudobaptismally	0	dema-pseudobaptismal-r		dema	0
-pseudobchia	0	dema-pseudobchia-n	Number=Sing	dema	0
-pseudobchias	0	dema-pseudobchia-n	Number=Plur	dema	0
-pseudobenefactorily	0	dema-pseudobenefactory-r		dema	0
-pseudobenefactory	0	dema-pseudobenefactory-a	Degree=Pos	dema	0
-pseudobenevolent	0	dema-pseudobenevolent-a	Degree=Pos	dema	0
-pseudobenevolently	0	dema-pseudobenevolently-r	Degree=Pos	dema	0
-pseudobia	0	dema-pseudobia-n	Number=Sing	dema	0
-pseudobias	0	dema-pseudobia-n	Number=Plur	dema	0
-pseudobiographic	0	dema-pseudobiographic-a	Degree=Pos	dema	0
-pseudobiographical	0	dema-pseudobiographical-a	Degree=Pos	dema	0
-pseudobiographically	0	dema-pseudobiographically-r	Degree=Pos	dema	0
-pseudobiological	0	dema-pseudobiological-a	Degree=Pos	dema	0
-pseudobiologically	0	dema-pseudobiologically-r	Degree=Pos	dema	0
-pseudobrachial	0	dema-pseudobrachial-a	Degree=Pos	dema	0
-pseudobrachially	0	dema-pseudobrachial-r		dema	0
-pseudobrachium	0	dema-pseudobrachium-n	Number=Sing	dema	0
-pseudobrachiums	0	dema-pseudobrachium-n	Number=Plur	dema	0
-pseudobrotherly	0	dema-pseudobrotherly-r	Degree=Pos	dema	0
-pseudocandid	0	dema-pseudocandid-a	Degree=Pos	dema	0
-pseudocandidly	0	dema-pseudocandidly-r	Degree=Pos	dema	0
-pseudocaptive	0	dema-pseudocaptive-a	Degree=Pos	dema	0
-pseudocaptively	0	dema-pseudocaptive-r		dema	0
-pseudocarp	0	oewn-pseudocarp-n	Number=Sing	dema	0
-pseudocarp	1	dema-pseudocarp-a	Degree=Pos	dema	0
-pseudocarply	0	dema-pseudocarp-r		dema	0
-pseudocarpness	0	oewn-pseudocarp-n	Number=Plur	dema	0
-pseudocarpous	0	dema-pseudocarpous-a	Degree=Pos	dema	0
-pseudocarpously	0	dema-pseudocarpous-r		dema	0
-pseudocarps	0	oewn-pseudocarp-n	Number=Plur	dema	0
-pseudocartilaginous	0	dema-pseudocartilaginous-a	Degree=Pos	dema	0
-pseudocartilaginously	0	dema-pseudocartilaginous-r		dema	0
-pseudocatholically	0	dema-pseudocatholically-r	Degree=Pos	dema	0
-pseudocentric	0	dema-pseudocentric-a	Degree=Pos	dema	0
-pseudocentrically	0	dema-pseudocentric-r		dema	0
-pseudocercaria	0	dema-pseudocercaria-n	Number=Sing	dema	0
-pseudocercariae	0	dema-pseudocercariae-n	Number=Sing	dema	0
-pseudocercariaes	0	dema-pseudocercariae-n	Number=Plur	dema	0
-pseudocercarias	0	dema-pseudocercaria-n	Number=Plur	dema	0
-pseudocercerci	0	dema-pseudocercerci-n	Number=Sing	dema	0
-pseudocercercis	0	dema-pseudocercerci-n	Number=Plur	dema	0
-pseudocercus	0	dema-pseudocercus-n	Number=Sing	dema	0
-pseudocercuses	0	dema-pseudocercus-n	Number=Plur	dema	0
-pseudocharitable	0	dema-pseudocharitable-a	Degree=Pos	dema	0
-pseudocharitably	0	dema-pseudocharitably-r	Degree=Pos	dema	0
-pseudochemical	0	dema-pseudochemical-a	Degree=Pos	dema	0
-pseudochemically	0	dema-pseudochemical-r		dema	0
-pseudochylous	0	dema-pseudochylous-a	Degree=Pos	dema	0
-pseudochylously	0	dema-pseudochylous-r		dema	0
-pseudoclassicalities	0	dema-pseudoclassicality-n	Number=Plur	dema	0
-pseudoclassicality	0	dema-pseudoclassicality-n	Number=Sing	dema	0
-pseudoclassicism	0	dema-pseudoclassicism-n	Number=Sing	dema	0
-pseudoclassicisms	0	dema-pseudoclassicism-n	Number=Plur	dema	0
-pseudoclerical	0	dema-pseudoclerical-a	Degree=Pos	dema	0
-pseudoclerically	0	dema-pseudoclerically-r	Degree=Pos	dema	0
-pseudocoel	0	dema-pseudocoel-n	Number=Sing	dema	0
-pseudocoelomate	0	dema-pseudocoelomate-a	Degree=Pos	dema	0
-pseudocoelomately	0	dema-pseudocoelomate-r		dema	0
-pseudocoels	0	dema-pseudocoel-n	Number=Plur	dema	0
-pseudocollegiate	0	dema-pseudocollegiate-a	Degree=Pos	dema	0
-pseudocollegiately	0	dema-pseudocollegiate-r		dema	0
-pseudocolumellar	0	dema-pseudocolumellar-a	Degree=Pos	dema	0
-pseudocolumellarly	0	dema-pseudocolumellar-r		dema	0
-pseudocommissural	0	dema-pseudocommissural-a	Degree=Pos	dema	0
-pseudocommissurally	0	dema-pseudocommissural-r		dema	0
-pseudocompetitive	0	dema-pseudocompetitive-a	Degree=Pos	dema	0
-pseudocompetitively	0	dema-pseudocompetitively-r	Degree=Pos	dema	0
-pseudoconcha	0	dema-pseudoconcha-n	Number=Sing	dema	0
-pseudoconchas	0	dema-pseudoconcha-n	Number=Plur	dema	0
-pseudoconfessional	0	dema-pseudoconfessional-a	Degree=Pos	dema	0
-pseudoconfessionally	0	dema-pseudoconfessional-r		dema	0
-pseudoconglomerate	0	dema-pseudoconglomerate-a	Degree=Pos	dema	0
-pseudoconglomerately	0	dema-pseudoconglomerate-r		dema	0
-pseudoconservative	0	dema-pseudoconservative-a	Degree=Pos	dema	0
-pseudoconservatively	0	dema-pseudoconservatively-r	Degree=Pos	dema	0
-pseudocorneous	0	dema-pseudocorneous-a	Degree=Pos	dema	0
-pseudocorneously	0	dema-pseudocorneous-r		dema	0
-pseudocosta	0	dema-pseudocosta-n	Number=Sing	dema	0
-pseudocostas	0	dema-pseudocosta-n	Number=Plur	dema	0
-pseudocotyledonal	0	dema-pseudocotyledonal-a	Degree=Pos	dema	0
-pseudocotyledonally	0	dema-pseudocotyledonal-r		dema	0
-pseudocotyledonarily	0	dema-pseudocotyledonary-r		dema	0
-pseudocotyledonary	0	dema-pseudocotyledonary-a	Degree=Pos	dema	0
-pseudocourteous	0	dema-pseudocourteous-a	Degree=Pos	dema	0
-pseudocourteously	0	dema-pseudocourteously-r	Degree=Pos	dema	0
-pseudocritical	0	dema-pseudocritical-a	Degree=Pos	dema	0
-pseudocritically	0	dema-pseudocritically-r	Degree=Pos	dema	0
-pseudocrystalline	0	dema-pseudocrystalline-a	Degree=Pos	dema	0
-pseudocrystallinely	0	dema-pseudocrystalline-r		dema	0
-pseudocubic	0	dema-pseudocubic-a	Degree=Pos	dema	0
-pseudocubical	0	dema-pseudocubical-a	Degree=Pos	dema	0
-pseudocubically	0	dema-pseudocubically-r	Degree=Pos	dema	0
-pseudocultivated	0	dema-pseudocultivated-a	Degree=Pos	dema	0
-pseudocultivated	1	dema-pseudocultivated-v	VerbForm=Inf	dema	0
-pseudocultivateded	0	dema-pseudocultivated-v	Tense=Past	dema	0
-pseudocultivateding	0	dema-pseudocultivated-v	VerbForm=Ger	dema	0
-pseudocultivatedly	0	dema-pseudocultivated-r		dema	0
-pseudocultivateds	0	dema-pseudocultivated-v	Person=3+Tense=Pres	dema	0
-pseudocultural	0	dema-pseudocultural-a	Degree=Pos	dema	0
-pseudoculturally	0	dema-pseudoculturally-r	Degree=Pos	dema	0
-pseudocyclosis	0	dema-pseudocyclosis-n	Number=Sing	dema	0
-pseudocyesis	0	oewn-pseudocyesis-n	Number=Sing	dema	0
-pseudocyphella	0	dema-pseudocyphella-n	Number=Sing	dema	0
-pseudocyphellas	0	dema-pseudocyphella-n	Number=Plur	dema	0
-pseudodementia	0	dema-pseudodementia-n	Number=Sing	dema	0
-pseudodementias	0	dema-pseudodementia-n	Number=Plur	dema	0
-pseudodemocratic	0	dema-pseudodemocratic-a	Degree=Pos	dema	0
-pseudodemocratically	0	dema-pseudodemocratically-r	Degree=Pos	dema	0
-pseudoderm	0	dema-pseudoderm-n	Number=Sing	dema	0
-pseudoderms	0	dema-pseudoderm-n	Number=Plur	dema	0
-pseudodiastolic	0	dema-pseudodiastolic-a	Degree=Pos	dema	0
-pseudodiastolically	0	dema-pseudodiastolic-r		dema	0
-pseudodiphtherial	0	dema-pseudodiphtherial-a	Degree=Pos	dema	0
-pseudodiphtherially	0	dema-pseudodiphtherial-r		dema	0
-pseudodiphtheric	0	dema-pseudodiphtheric-a	Degree=Pos	dema	0
-pseudodiphtherically	0	dema-pseudodiphtheric-r		dema	0
-pseudodiphtheritic	0	dema-pseudodiphtheritic-a	Degree=Pos	dema	0
-pseudodiphtheritically	0	dema-pseudodiphtheritic-r		dema	0
-pseudodivine	0	dema-pseudodivine-a	Degree=Pos	dema	0
-pseudodivinely	0	dema-pseudodivine-r		dema	0
-pseudodramatic	0	dema-pseudodramatic-a	Degree=Pos	dema	0
-pseudodramatically	0	dema-pseudodramatically-r	Degree=Pos	dema	0
-pseudoeconomical	0	dema-pseudoeconomical-a	Degree=Pos	dema	0
-pseudoeconomically	0	dema-pseudoeconomically-r	Degree=Pos	dema	0
-pseudoedema	0	dema-pseudoedema-n	Number=Sing	dema	0
-pseudoedemas	0	dema-pseudoedema-n	Number=Plur	dema	0
-pseudoedemata	0	dema-pseudoedemata-n	Number=Sing	dema	0
-pseudoedematas	0	dema-pseudoedemata-n	Number=Plur	dema	0
-pseudoeditorial	0	dema-pseudoeditorial-a	Degree=Pos	dema	0
-pseudoeditorially	0	dema-pseudoeditorially-r	Degree=Pos	dema	0
-pseudoeducational	0	dema-pseudoeducational-a	Degree=Pos	dema	0
-pseudoeducationally	0	dema-pseudoeducationally-r	Degree=Pos	dema	0
-pseudoelectoral	0	dema-pseudoelectoral-a	Degree=Pos	dema	0
-pseudoelectorally	0	dema-pseudoelectoral-r		dema	0
-pseudoembryonic	0	dema-pseudoembryonic-a	Degree=Pos	dema	0
-pseudoembryonically	0	dema-pseudoembryonic-r		dema	0
-pseudoemotional	0	dema-pseudoemotional-a	Degree=Pos	dema	0
-pseudoemotionally	0	dema-pseudoemotionally-r	Degree=Pos	dema	0
-pseudoencephalitic	0	dema-pseudoencephalitic-a	Degree=Pos	dema	0
-pseudoencephalitically	0	dema-pseudoencephalitic-r		dema	0
-pseudoenthusiastic	0	dema-pseudoenthusiastic-a	Degree=Pos	dema	0
-pseudoenthusiastically	0	dema-pseudoenthusiastically-r	Degree=Pos	dema	0
-pseudoepiscopal	0	dema-pseudoepiscopal-a	Degree=Pos	dema	0
-pseudoepiscopally	0	dema-pseudoepiscopal-r		dema	0
-pseudoequalitarian	0	dema-pseudoequalitarian-a	Degree=Pos	dema	0
-pseudoequalitarianly	0	dema-pseudoequalitarian-r		dema	0
-pseudoer	0	oewn-pseudo-a	Degree=Cmp	dema	0
-pseudoerotic	0	dema-pseudoerotic-a	Degree=Pos	dema	0
-pseudoerotically	0	dema-pseudoerotically-r	Degree=Pos	dema	0
-pseudoerysipelatous	0	dema-pseudoerysipelatous-a	Degree=Pos	dema	0
-pseudoerysipelatously	0	dema-pseudoerysipelatous-r		dema	0
-pseudoest	0	oewn-pseudo-a	Degree=Sup	dema	0
-pseudoethical	0	dema-pseudoethical-a	Degree=Pos	dema	0
-pseudoethically	0	dema-pseudoethically-r	Degree=Pos	dema	0
-pseudoetymological	0	dema-pseudoetymological-a	Degree=Pos	dema	0
-pseudoetymologically	0	dema-pseudoetymologically-r	Degree=Pos	dema	0
-pseudoevangelic	0	dema-pseudoevangelic-a	Degree=Pos	dema	0
-pseudoevangelical	0	dema-pseudoevangelical-a	Degree=Pos	dema	0
-pseudoevangelically	0	dema-pseudoevangelically-r	Degree=Pos	dema	0
-pseudoexperimental	0	dema-pseudoexperimental-a	Degree=Pos	dema	0
-pseudoexperimentally	0	dema-pseudoexperimentally-r	Degree=Pos	dema	0
-pseudofaithful	0	dema-pseudofaithful-a	Degree=Pos	dema	0
-pseudofaithfully	0	dema-pseudofaithfully-r	Degree=Pos	dema	0
-pseudofamous	0	dema-pseudofamous-a	Degree=Pos	dema	0
-pseudofamously	0	dema-pseudofamously-r	Degree=Pos	dema	0
-pseudofatherly	0	dema-pseudofatherly-r	Degree=Pos	dema	0
-pseudofeminine	0	dema-pseudofeminine-a	Degree=Pos	dema	0
-pseudofemininely	0	dema-pseudofeminine-r		dema	0
-pseudofeverish	0	dema-pseudofeverish-a	Degree=Pos	dema	0
-pseudofeverishly	0	dema-pseudofeverishly-r	Degree=Pos	dema	0
-pseudofinal	0	dema-pseudofinal-a	Degree=Pos	dema	0
-pseudofinally	0	dema-pseudofinally-r	Degree=Pos	dema	0
-pseudogaseous	0	dema-pseudogaseous-a	Degree=Pos	dema	0
-pseudogaseously	0	dema-pseudogaseous-r		dema	0
-pseudogenera	0	dema-pseudogenera-n	Number=Sing	dema	0
-pseudogeneral	0	dema-pseudogeneral-a	Degree=Pos	dema	0
-pseudogenerally	0	dema-pseudogeneral-r		dema	0
-pseudogeneras	0	dema-pseudogenera-n	Number=Plur	dema	0
-pseudogeneric	0	dema-pseudogeneric-a	Degree=Pos	dema	0
-pseudogenerical	0	dema-pseudogenerical-a	Degree=Pos	dema	0
-pseudogenerically	0	dema-pseudogenerically-r	Degree=Pos	dema	0
-pseudogenteel	0	dema-pseudogenteel-a	Degree=Pos	dema	0
-pseudogenteelly	0	dema-pseudogenteel-r		dema	0
-pseudogentlemanly	0	dema-pseudogentlemanly-r	Degree=Pos	dema	0
-pseudogenus	0	dema-pseudogenus-n	Number=Sing	dema	0
-pseudogenuses	0	dema-pseudogenuses-n	Number=Sing	dema	0
-pseudogyrate	0	dema-pseudogyrate-a	Degree=Pos	dema	0
-pseudogyrately	0	dema-pseudogyrate-r		dema	0
-pseudohemal	0	dema-pseudohemal-a	Degree=Pos	dema	0
-pseudohemally	0	dema-pseudohemal-r		dema	0
-pseudohemophilia	0	dema-pseudohemophilia-n	Number=Sing	dema	0
-pseudohemophilias	0	dema-pseudohemophilia-n	Number=Plur	dema	0
-pseudohermaphrodite	0	oewn-pseudohermaphrodite-n	Number=Sing	dema	0
-pseudohermaphrodites	0	oewn-pseudohermaphrodite-n	Number=Plur	dema	0
-pseudohermaphroditic	0	oewn-pseudohermaphroditic-a	Degree=Pos	dema	0
-pseudohermaphroditically	0	dema-pseudohermaphroditic-r		dema	0
-pseudohermaphroditism	0	oewn-pseudohermaphroditism-n	Number=Sing	dema	0
-pseudohermaphroditisms	0	oewn-pseudohermaphroditism-n	Number=Plur	dema	0
-pseudoheroic	0	dema-pseudoheroic-a	Degree=Pos	dema	0
-pseudoheroical	0	dema-pseudoheroical-a	Degree=Pos	dema	0
-pseudoheroically	0	dema-pseudoheroically-r	Degree=Pos	dema	0
-pseudohexagonal	0	dema-pseudohexagonal-a	Degree=Pos	dema	0
-pseudohexagonally	0	dema-pseudohexagonally-r	Degree=Pos	dema	0
-pseudohistoric	0	dema-pseudohistoric-a	Degree=Pos	dema	0
-pseudohistorical	0	dema-pseudohistorical-a	Degree=Pos	dema	0
-pseudohistorically	0	dema-pseudohistorically-r	Degree=Pos	dema	0
-pseudohuman	0	dema-pseudohuman-a	Degree=Pos	dema	0
-pseudohumanistic	0	dema-pseudohumanistic-a	Degree=Pos	dema	0
-pseudohumanistically	0	dema-pseudohumanistic-r		dema	0
-pseudohumanly	0	dema-pseudohuman-r		dema	0
-pseudohypertrophic	0	dema-pseudohypertrophic-a	Degree=Pos	dema	0
-pseudohypertrophically	0	dema-pseudohypertrophic-r		dema	0
-pseudoidentical	0	dema-pseudoidentical-a	Degree=Pos	dema	0
-pseudoidentically	0	dema-pseudoidentical-r		dema	0
-pseudoimpartial	0	dema-pseudoimpartial-a	Degree=Pos	dema	0
-pseudoimpartially	0	dema-pseudoimpartially-r	Degree=Pos	dema	0
-pseudoindependent	0	dema-pseudoindependent-a	Degree=Pos	dema	0
-pseudoindependently	0	dema-pseudoindependently-r	Degree=Pos	dema	0
-pseudoinsane	0	dema-pseudoinsane-a	Degree=Pos	dema	0
-pseudoinsanely	0	dema-pseudoinsane-r		dema	0
-pseudoinsaneness	0	dema-pseudoinsane-n	Number=Plur	dema	0
-pseudoinspirational	0	dema-pseudoinspirational-a	Degree=Pos	dema	0
-pseudoinspirationally	0	dema-pseudoinspirational-r		dema	0
-pseudoinspiring	0	dema-pseudoinspiring-a	Degree=Pos	dema	0
-pseudoinspiring	1	dema-pseudoinspiring-v	VerbForm=Inf	dema	0
-pseudoinspiringed	0	dema-pseudoinspiring-v	Tense=Past	dema	0
-pseudoinspiringing	0	dema-pseudoinspiring-v	VerbForm=Ger	dema	0
-pseudoinspiringly	0	dema-pseudoinspiring-r		dema	0
-pseudoinspirings	0	dema-pseudoinspiring-v	Person=3+Tense=Pres	dema	0
-pseudointellectually	0	dema-pseudointellectually-r	Degree=Pos	dema	0
-pseudointernational	0	dema-pseudointernational-a	Degree=Pos	dema	0
-pseudointernationalistic	0	dema-pseudointernationalistic-a	Degree=Pos	dema	0
-pseudointernationalistically	0	dema-pseudointernationalistic-r		dema	0
-pseudointernationally	0	dema-pseudointernational-r		dema	0
-pseudoinvalid	0	dema-pseudoinvalid-a	Degree=Pos	dema	0
-pseudoinvalidly	0	dema-pseudoinvalidly-r	Degree=Pos	dema	0
-pseudoisometric	0	dema-pseudoisometric-a	Degree=Pos	dema	0
-pseudoisometrically	0	dema-pseudoisometric-r		dema	0
-pseudolabial	0	dema-pseudolabial-a	Degree=Pos	dema	0
-pseudolabially	0	dema-pseudolabial-r		dema	0
-pseudolabium	0	dema-pseudolabium-n	Number=Sing	dema	0
-pseudolabiums	0	dema-pseudolabium-n	Number=Plur	dema	0
-pseudolaminated	0	dema-pseudolaminated-a	Degree=Pos	dema	0
-pseudolaminated	1	dema-pseudolaminated-v	VerbForm=Inf	dema	0
-pseudolaminateded	0	dema-pseudolaminated-v	Tense=Past	dema	0
-pseudolaminateding	0	dema-pseudolaminated-v	VerbForm=Ger	dema	0
-pseudolaminatedly	0	dema-pseudolaminated-r		dema	0
-pseudolaminateds	0	dema-pseudolaminated-v	Person=3+Tense=Pres	dema	0
-pseudolateral	0	dema-pseudolateral-a	Degree=Pos	dema	0
-pseudolaterally	0	dema-pseudolateral-r		dema	0
-pseudolegal	0	dema-pseudolegal-a	Degree=Pos	dema	0
-pseudolegalities	0	dema-pseudolegality-n	Number=Plur	dema	0
-pseudolegality	0	dema-pseudolegality-n	Number=Sing	dema	0
-pseudolegally	0	dema-pseudolegal-r		dema	0
-pseudolegendarily	0	dema-pseudolegendary-r		dema	0
-pseudolegendary	0	dema-pseudolegendary-a	Degree=Pos	dema	0
-pseudolegislative	0	dema-pseudolegislative-a	Degree=Pos	dema	0
-pseudolegislatively	0	dema-pseudolegislative-r		dema	0
-pseudoleucite	0	dema-pseudoleucite-n	Number=Sing	dema	0
-pseudoleucites	0	dema-pseudoleucite-n	Number=Plur	dema	0
-pseudoleucocyte	0	dema-pseudoleucocyte-n	Number=Sing	dema	0
-pseudoleucocytes	0	dema-pseudoleucocyte-n	Number=Plur	dema	0
-pseudoliberal	0	dema-pseudoliberal-a	Degree=Pos	dema	0
-pseudoliberally	0	dema-pseudoliberally-r	Degree=Pos	dema	0
-pseudolinguistic	0	dema-pseudolinguistic-a	Degree=Pos	dema	0
-pseudolinguistically	0	dema-pseudolinguistically-r	Degree=Pos	dema	0
-pseudoliterarily	0	dema-pseudoliterary-r		dema	0
-pseudoliterary	0	dema-pseudoliterary-a	Degree=Pos	dema	0
-pseudolobar	0	dema-pseudolobar-a	Degree=Pos	dema	0
-pseudolobarly	0	dema-pseudolobar-r		dema	0
-pseudolunula	0	dema-pseudolunula-n	Number=Sing	dema	0
-pseudolunulae	0	dema-pseudolunulae-n	Number=Sing	dema	0
-pseudolunulaes	0	dema-pseudolunulae-n	Number=Plur	dema	0
-pseudolunulas	0	dema-pseudolunula-n	Number=Plur	dema	0
-pseudolunule	0	dema-pseudolunule-n	Number=Sing	dema	0
-pseudolunules	0	dema-pseudolunule-n	Number=Plur	dema	0
-pseudoly	0	dema-pseudo-r		dema	0
-pseudomalaria	0	dema-pseudomalaria-n	Number=Sing	dema	0
-pseudomalarias	0	dema-pseudomalaria-n	Number=Plur	dema	0
-pseudomasculine	0	dema-pseudomasculine-a	Degree=Pos	dema	0
-pseudomasculinely	0	dema-pseudomasculine-r		dema	0
-pseudomedical	0	dema-pseudomedical-a	Degree=Pos	dema	0
-pseudomedically	0	dema-pseudomedically-r	Degree=Pos	dema	0
-pseudomedieval	0	dema-pseudomedieval-a	Degree=Pos	dema	0
-pseudomedievally	0	dema-pseudomedievally-r	Degree=Pos	dema	0
-pseudomemories	0	dema-pseudomemory-n	Number=Plur	dema	0
-pseudomemory	0	dema-pseudomemory-n	Number=Sing	dema	0
-pseudometric	0	dema-pseudometric-n	Number=Sing	dema	0
-pseudometrics	0	dema-pseudometric-n	Number=Plur	dema	0
-pseudomilitarily	0	dema-pseudomilitarily-r	Degree=Pos	dema	0
-pseudomilitaristic	0	dema-pseudomilitaristic-a	Degree=Pos	dema	0
-pseudomilitaristically	0	dema-pseudomilitaristic-r		dema	0
-pseudomilitary	0	dema-pseudomilitary-a	Degree=Pos	dema	0
-pseudoministerial	0	dema-pseudoministerial-a	Degree=Pos	dema	0
-pseudoministerially	0	dema-pseudoministerial-r		dema	0
-pseudoministries	0	dema-pseudoministry-n	Number=Plur	dema	0
-pseudoministry	0	dema-pseudoministry-n	Number=Sing	dema	0
-pseudomiraculous	0	dema-pseudomiraculous-a	Degree=Pos	dema	0
-pseudomiraculously	0	dema-pseudomiraculously-r	Degree=Pos	dema	0
-pseudomodern	0	dema-pseudomodern-a	Degree=Pos	dema	0
-pseudomodernly	0	dema-pseudomodern-r		dema	0
-pseudomodest	0	dema-pseudomodest-a	Degree=Pos	dema	0
-pseudomodestly	0	dema-pseudomodestly-r	Degree=Pos	dema	0
-pseudomonades	0	dema-pseudomonades-n	Number=Sing	dema	0
-pseudomonadeses	0	dema-pseudomonades-n	Number=Plur	dema	0
-pseudomonas	0	dema-pseudomonas-n	Number=Sing	dema	0
-pseudomonases	0	dema-pseudomonas-n	Number=Plur	dema	0
-pseudomonastic	0	dema-pseudomonastic-a	Degree=Pos	dema	0
-pseudomonastical	0	dema-pseudomonastical-a	Degree=Pos	dema	0
-pseudomonastically	0	dema-pseudomonastically-r	Degree=Pos	dema	0
-pseudomonoclinic	0	dema-pseudomonoclinic-a	Degree=Pos	dema	0
-pseudomonoclinically	0	dema-pseudomonoclinic-r		dema	0
-pseudomonocyclic	0	dema-pseudomonocyclic-a	Degree=Pos	dema	0
-pseudomonocyclically	0	dema-pseudomonocyclic-r		dema	0
-pseudomoral	0	dema-pseudomoral-a	Degree=Pos	dema	0
-pseudomoralistic	0	dema-pseudomoralistic-a	Degree=Pos	dema	0
-pseudomoralistically	0	dema-pseudomoralistic-r		dema	0
-pseudomorally	0	dema-pseudomoral-r		dema	0
-pseudomorph	0	dema-pseudomorph-n	Number=Sing	dema	0
-pseudomorphism	0	dema-pseudomorphism-n	Number=Sing	dema	0
-pseudomorphisms	0	dema-pseudomorphism-n	Number=Plur	dema	0
-pseudomorphs	0	dema-pseudomorph-n	Number=Plur	dema	0
-pseudomorular	0	dema-pseudomorular-a	Degree=Pos	dema	0
-pseudomorularly	0	dema-pseudomorular-r		dema	0
-pseudomultilocular	0	dema-pseudomultilocular-a	Degree=Pos	dema	0
-pseudomultilocularly	0	dema-pseudomultilocular-r		dema	0
-pseudomultiseptate	0	dema-pseudomultiseptate-a	Degree=Pos	dema	0
-pseudomultiseptately	0	dema-pseudomultiseptate-r		dema	0
-pseudomutualities	0	dema-pseudomutuality-n	Number=Plur	dema	0
-pseudomutuality	0	dema-pseudomutuality-n	Number=Sing	dema	0
-pseudomythical	0	dema-pseudomythical-a	Degree=Pos	dema	0
-pseudomythically	0	dema-pseudomythically-r	Degree=Pos	dema	0
-pseudonarcotic	0	dema-pseudonarcotic-a	Degree=Pos	dema	0
-pseudonarcotically	0	dema-pseudonarcotic-r		dema	0
-pseudonational	0	dema-pseudonational-a	Degree=Pos	dema	0
-pseudonationally	0	dema-pseudonationally-r	Degree=Pos	dema	0
-pseudoness	0	oewn-pseudo-n	Number=Plur	dema	0
-pseudonoble	0	dema-pseudonoble-a	Degree=Pos	dema	0
-pseudonobly	0	dema-pseudonoble-r		dema	0
-pseudonym	0	oewn-pseudonym-n	Number=Sing	dema	0
-pseudonymities	0	dema-pseudonymity-n	Number=Plur	dema	0
-pseudonymity	0	dema-pseudonymity-n	Number=Sing	dema	0
-pseudonymous	0	oewn-pseudonymous-a	Degree=Pos	dema	0
-pseudonymously	0	dema-pseudonymously-r	Degree=Pos	dema	0
-pseudonymousness	0	dema-pseudonymousness-n	Number=Sing	dema	0
-pseudonymousnesses	0	dema-pseudonymousness-n	Number=Plur	dema	0
-pseudonyms	0	oewn-pseudonym-n	Number=Plur	dema	0
-pseudooccidental	0	dema-pseudooccidental-a	Degree=Pos	dema	0
-pseudooccidentally	0	dema-pseudooccidental-r		dema	0
-pseudoofficial	0	dema-pseudoofficial-a	Degree=Pos	dema	0
-pseudoofficially	0	dema-pseudoofficially-r	Degree=Pos	dema	0
-pseudoorganic	0	dema-pseudoorganic-a	Degree=Pos	dema	0
-pseudoorganically	0	dema-pseudoorganically-r	Degree=Pos	dema	0
-pseudooriental	0	dema-pseudooriental-a	Degree=Pos	dema	0
-pseudoorientally	0	dema-pseudoorientally-r	Degree=Pos	dema	0
-pseudoorthorhombic	0	dema-pseudoorthorhombic-a	Degree=Pos	dema	0
-pseudoorthorhombically	0	dema-pseudoorthorhombic-r		dema	0
-pseudooval	0	dema-pseudooval-a	Degree=Pos	dema	0
-pseudoovally	0	dema-pseudoovally-r	Degree=Pos	dema	0
-pseudoovalness	0	dema-pseudooval-n	Number=Plur	dema	0
-pseudopagan	0	dema-pseudopagan-a	Degree=Pos	dema	0
-pseudopaganly	0	dema-pseudopagan-r		dema	0
-pseudopapal	0	dema-pseudopapal-a	Degree=Pos	dema	0
-pseudopapally	0	dema-pseudopapal-r		dema	0
-pseudoparallel	0	dema-pseudoparallel-a	Degree=Pos	dema	0
-pseudoparallelly	0	dema-pseudoparallel-r		dema	0
-pseudoparalysis	0	dema-pseudoparalysis-n	Number=Sing	dema	0
-pseudoparalytic	0	dema-pseudoparalytic-a	Degree=Pos	dema	0
-pseudoparalytically	0	dema-pseudoparalytic-r		dema	0
-pseudoparasitic	0	dema-pseudoparasitic-a	Degree=Pos	dema	0
-pseudoparasitically	0	dema-pseudoparasitic-r		dema	0
-pseudopatriotic	0	dema-pseudopatriotic-a	Degree=Pos	dema	0
-pseudopatriotically	0	dema-pseudopatriotically-r	Degree=Pos	dema	0
-pseudopediform	0	dema-pseudopediform-a	Degree=Pos	dema	0
-pseudopediformly	0	dema-pseudopediform-r		dema	0
-pseudoperipteral	0	oewn-pseudoperipteral-a	Degree=Pos	dema	0
-pseudoperipterally	0	dema-pseudoperipteral-r		dema	0
-pseudopermanent	0	dema-pseudopermanent-a	Degree=Pos	dema	0
-pseudopermanently	0	dema-pseudopermanent-r		dema	0
-pseudophallic	0	dema-pseudophallic-a	Degree=Pos	dema	0
-pseudophallically	0	dema-pseudophallic-r		dema	0
-pseudophilanthropic	0	dema-pseudophilanthropic-a	Degree=Pos	dema	0
-pseudophilanthropical	0	dema-pseudophilanthropical-a	Degree=Pos	dema	0
-pseudophilanthropically	0	dema-pseudophilanthropically-r	Degree=Pos	dema	0
-pseudophilosophical	0	dema-pseudophilosophical-a	Degree=Pos	dema	0
-pseudophilosophically	0	dema-pseudophilosophical-r		dema	0
-pseudophone	0	dema-pseudophone-n	Number=Sing	dema	0
-pseudophones	0	dema-pseudophone-n	Number=Plur	dema	0
-pseudopious	0	dema-pseudopious-a	Degree=Pos	dema	0
-pseudopiously	0	dema-pseudopiously-r	Degree=Pos	dema	0
-pseudopiousness	0	dema-pseudopious-n	Number=Plur	dema	0
-pseudopodal	0	dema-pseudopodal-a	Degree=Pos	dema	0
-pseudopodally	0	dema-pseudopodal-r		dema	0
-pseudopodium	0	oewn-pseudopodium-n	Number=Sing	dema	0
-pseudopodiums	0	oewn-pseudopodium-n	Number=Plur	dema	0
-pseudopoetic	0	dema-pseudopoetic-a	Degree=Pos	dema	0
-pseudopoetical	0	dema-pseudopoetical-a	Degree=Pos	dema	0
-pseudopoetically	0	dema-pseudopoetic-r		dema	0
-pseudopolitic	0	dema-pseudopolitic-a	Degree=Pos	dema	0
-pseudopolitical	0	dema-pseudopolitical-a	Degree=Pos	dema	0
-pseudopolitically	0	dema-pseudopolitic-r		dema	0
-pseudopopular	0	dema-pseudopopular-a	Degree=Pos	dema	0
-pseudopopularly	0	dema-pseudopopular-r		dema	0
-pseudoporphyritic	0	dema-pseudoporphyritic-a	Degree=Pos	dema	0
-pseudoporphyritically	0	dema-pseudoporphyritic-r		dema	0
-pseudopregnant	0	dema-pseudopregnant-a	Degree=Pos	dema	0
-pseudopregnantly	0	dema-pseudopregnant-r		dema	0
-pseudopriestly	0	dema-pseudopriestly-a	Degree=Pos	dema	0
-pseudoprimitive	0	dema-pseudoprimitive-a	Degree=Pos	dema	0
-pseudoprimitively	0	dema-pseudoprimitive-r		dema	0
-pseudoprincely	0	dema-pseudoprincely-r	Degree=Pos	dema	0
-pseudoprofessional	0	dema-pseudoprofessional-a	Degree=Pos	dema	0
-pseudoprofessionally	0	dema-pseudoprofessional-r		dema	0
-pseudoprofessorial	0	dema-pseudoprofessorial-a	Degree=Pos	dema	0
-pseudoprofessorially	0	dema-pseudoprofessorial-r		dema	0
-pseudoprophetic	0	dema-pseudoprophetic-a	Degree=Pos	dema	0
-pseudoprophetical	0	dema-pseudoprophetical-a	Degree=Pos	dema	0
-pseudoprophetically	0	dema-pseudoprophetic-r		dema	0
-pseudoprosperous	0	dema-pseudoprosperous-a	Degree=Pos	dema	0
-pseudoprosperously	0	dema-pseudoprosperously-r	Degree=Pos	dema	0
-pseudoprostyle	0	oewn-pseudoprostyle-a	Degree=Pos	dema	0
-pseudoprostyly	0	dema-pseudoprostyle-r		dema	0
-pseudopsychological	0	dema-pseudopsychological-a	Degree=Pos	dema	0
-pseudopsychologically	0	dema-pseudopsychological-r		dema	0
-pseudopyriform	0	dema-pseudopyriform-a	Degree=Pos	dema	0
-pseudopyriformly	0	dema-pseudopyriform-r		dema	0
-pseudorealistic	0	dema-pseudorealistic-a	Degree=Pos	dema	0
-pseudorealistically	0	dema-pseudorealistic-r		dema	0
-pseudoreformatorily	0	dema-pseudoreformatory-r		dema	0
-pseudoreformatory	0	dema-pseudoreformatory-a	Degree=Pos	dema	0
-pseudoreformed	0	dema-pseudoreformed-a	Degree=Pos	dema	0
-pseudoreformed	1	dema-pseudoreformed-v	VerbForm=Inf	dema	0
-pseudoreformeded	0	dema-pseudoreformed-v	Tense=Past	dema	0
-pseudoreformeding	0	dema-pseudoreformed-v	VerbForm=Ger	dema	0
-pseudoreformedly	0	dema-pseudoreformed-r		dema	0
-pseudoreformeds	0	dema-pseudoreformed-v	Person=3+Tense=Pres	dema	0
-pseudoregal	0	dema-pseudoregal-a	Degree=Pos	dema	0
-pseudoregally	0	dema-pseudoregally-r	Degree=Pos	dema	0
-pseudoreligious	0	dema-pseudoreligious-a	Degree=Pos	dema	0
-pseudoreligiously	0	dema-pseudoreligiously-r	Degree=Pos	dema	0
-pseudorepublican	0	dema-pseudorepublican-a	Degree=Pos	dema	0
-pseudorepublicanly	0	dema-pseudorepublican-r		dema	0
-pseudoresident	0	dema-pseudoresident-a	Degree=Pos	dema	0
-pseudoresidential	0	dema-pseudoresidential-a	Degree=Pos	dema	0
-pseudoresidentially	0	dema-pseudoresidential-r		dema	0
-pseudoresidently	0	dema-pseudoresident-r		dema	0
-pseudorheumatic	0	dema-pseudorheumatic-a	Degree=Pos	dema	0
-pseudorheumatically	0	dema-pseudorheumatic-r		dema	0
-pseudorhombohedral	0	dema-pseudorhombohedral-a	Degree=Pos	dema	0
-pseudorhombohedrally	0	dema-pseudorhombohedral-r		dema	0
-pseudoromantic	0	dema-pseudoromantic-a	Degree=Pos	dema	0
-pseudoromantically	0	dema-pseudoromantically-r	Degree=Pos	dema	0
-pseudoroyal	0	dema-pseudoroyal-a	Degree=Pos	dema	0
-pseudoroyally	0	dema-pseudoroyally-r	Degree=Pos	dema	0
-pseudoroyalness	0	dema-pseudoroyal-n	Number=Plur	dema	0
-pseudosacred	0	dema-pseudosacred-a	Degree=Pos	dema	0
-pseudosacred	1	dema-pseudosacred-v	VerbForm=Inf	dema	0
-pseudosacreded	0	dema-pseudosacred-v	Tense=Past	dema	0
-pseudosacreding	0	dema-pseudosacred-v	VerbForm=Ger	dema	0
-pseudosacredly	0	dema-pseudosacred-r		dema	0
-pseudosacreds	0	dema-pseudosacred-v	Person=3+Tense=Pres	dema	0
-pseudosacrilegious	0	dema-pseudosacrilegious-a	Degree=Pos	dema	0
-pseudosacrilegiously	0	dema-pseudosacrilegiously-r	Degree=Pos	dema	0
-pseudosatirical	0	dema-pseudosatirical-a	Degree=Pos	dema	0
-pseudosatirically	0	dema-pseudosatirically-r	Degree=Pos	dema	0
-pseudoscalar	0	dema-pseudoscalar-a	Degree=Pos	dema	0
-pseudoscalarly	0	dema-pseudoscalar-r		dema	0
-pseudoscholarly	0	dema-pseudoscholarly-a	Degree=Pos	dema	0
-pseudoscholastic	0	dema-pseudoscholastic-a	Degree=Pos	dema	0
-pseudoscholastically	0	dema-pseudoscholastically-r	Degree=Pos	dema	0
-pseudoscientific	0	oewn-pseudoscientific-a	Degree=Pos	dema	0
-pseudoscientifically	0	dema-pseudoscientifically-r	Degree=Pos	dema	0
-pseudoscope	0	dema-pseudoscope-n	Number=Sing	dema	0
-pseudoscopes	0	dema-pseudoscope-n	Number=Plur	dema	0
-pseudoscopies	0	dema-pseudoscopy-n	Number=Plur	dema	0
-pseudoscopy	0	dema-pseudoscopy-n	Number=Sing	dema	0
-pseudoscorpion	0	oewn-pseudoscorpion-n	Number=Sing	dema	0
-pseudoscorpions	0	oewn-pseudoscorpion-n	Number=Plur	dema	0
-pseudosemantic	0	dema-pseudosemantic-a	Degree=Pos	dema	0
-pseudosemantically	0	dema-pseudosemantically-r	Degree=Pos	dema	0
-pseudosensational	0	dema-pseudosensational-a	Degree=Pos	dema	0
-pseudosensationally	0	dema-pseudosensational-r		dema	0
-pseudoservile	0	dema-pseudoservile-a	Degree=Pos	dema	0
-pseudoservilely	0	dema-pseudoservilely-r	Degree=Pos	dema	0
-pseudosessile	0	dema-pseudosessile-a	Degree=Pos	dema	0
-pseudosessilely	0	dema-pseudosessile-r		dema	0
-pseudosiphonal	0	dema-pseudosiphonal-a	Degree=Pos	dema	0
-pseudosiphonally	0	dema-pseudosiphonal-r		dema	0
-pseudosiphonic	0	dema-pseudosiphonic-a	Degree=Pos	dema	0
-pseudosiphonically	0	dema-pseudosiphonic-r		dema	0
-pseudoskeletal	0	dema-pseudoskeletal-a	Degree=Pos	dema	0
-pseudoskeletally	0	dema-pseudoskeletal-r		dema	0
-pseudosocial	0	dema-pseudosocial-a	Degree=Pos	dema	0
-pseudosocialistic	0	dema-pseudosocialistic-a	Degree=Pos	dema	0
-pseudosocialistically	0	dema-pseudosocialistic-r		dema	0
-pseudosocially	0	dema-pseudosocially-r	Degree=Pos	dema	0
-pseudospectral	0	dema-pseudospectral-a	Degree=Pos	dema	0
-pseudospectrally	0	dema-pseudospectral-r		dema	0
-pseudosphere	0	dema-pseudosphere-n	Number=Sing	dema	0
-pseudospheres	0	dema-pseudosphere-n	Number=Plur	dema	0
-pseudospherical	0	dema-pseudospherical-a	Degree=Pos	dema	0
-pseudospherically	0	dema-pseudospherical-r		dema	0
-pseudospiritual	0	dema-pseudospiritual-a	Degree=Pos	dema	0
-pseudospiritually	0	dema-pseudospiritually-r	Degree=Pos	dema	0
-pseudosquamate	0	dema-pseudosquamate-a	Degree=Pos	dema	0
-pseudosquamately	0	dema-pseudosquamate-r		dema	0
-pseudostalactitic	0	dema-pseudostalactitic-a	Degree=Pos	dema	0
-pseudostalactitically	0	dema-pseudostalactitic-r		dema	0
-pseudostalagmitic	0	dema-pseudostalagmitic-a	Degree=Pos	dema	0
-pseudostalagmitically	0	dema-pseudostalagmitic-r		dema	0
-pseudostigmatic	0	dema-pseudostigmatic-a	Degree=Pos	dema	0
-pseudostigmatically	0	dema-pseudostigmatic-r		dema	0
-pseudostudious	0	dema-pseudostudious-a	Degree=Pos	dema	0
-pseudostudiously	0	dema-pseudostudiously-r	Degree=Pos	dema	0
-pseudosubtle	0	dema-pseudosubtle-a	Degree=Pos	dema	0
-pseudosubtly	0	dema-pseudosubtle-r		dema	0
-pseudosuicidal	0	dema-pseudosuicidal-a	Degree=Pos	dema	0
-pseudosuicidally	0	dema-pseudosuicidal-r		dema	0
-pseudosymptomatic	0	dema-pseudosymptomatic-a	Degree=Pos	dema	0
-pseudosymptomatically	0	dema-pseudosymptomatic-r		dema	0
-pseudosyphilitic	0	dema-pseudosyphilitic-a	Degree=Pos	dema	0
-pseudosyphilitically	0	dema-pseudosyphilitic-r		dema	0
-pseudotetragonal	0	dema-pseudotetragonal-a	Degree=Pos	dema	0
-pseudotetragonally	0	dema-pseudotetragonal-r		dema	0
-pseudotribal	0	dema-pseudotribal-a	Degree=Pos	dema	0
-pseudotribally	0	dema-pseudotribally-r	Degree=Pos	dema	0
-pseudotripteral	0	dema-pseudotripteral-a	Degree=Pos	dema	0
-pseudotripterally	0	dema-pseudotripteral-r		dema	0
-pseudovarian	0	dema-pseudovarian-a	Degree=Pos	dema	0
-pseudovarianly	0	dema-pseudovarian-r		dema	0
-pseudovaries	0	dema-pseudovaries-n	Number=Sing	dema	0
-pseudovary	0	dema-pseudovary-n	Number=Sing	dema	0
-pseudovelar	0	dema-pseudovelar-a	Degree=Pos	dema	0
-pseudovelarly	0	dema-pseudovelar-r		dema	0
-pseudoviperine	0	dema-pseudoviperine-a	Degree=Pos	dema	0
-pseudoviperinely	0	dema-pseudoviperine-r		dema	0
-pseudoviperous	0	dema-pseudoviperous-a	Degree=Pos	dema	0
-pseudoviperously	0	dema-pseudoviperously-r	Degree=Pos	dema	0
-pseudoviscous	0	dema-pseudoviscous-a	Degree=Pos	dema	0
-pseudoviscously	0	dema-pseudoviscous-r		dema	0
-pseudozealous	0	dema-pseudozealous-a	Degree=Pos	dema	0
-pseudozealously	0	dema-pseudozealously-r	Degree=Pos	dema	0
-pseudozoogloeal	0	dema-pseudozoogloeal-a	Degree=Pos	dema	0
-pseudozoogloeally	0	dema-pseudozoogloeal-r		dema	0
-pseudozoological	0	dema-pseudozoological-a	Degree=Pos	dema	0
-pseudozoologically	0	dema-pseudozoological-r		dema	0
-pseuds	0	oewn-pseud-n	Number=Plur	dema	0
-psf	0	dema-psf-n	Number=Sing	dema	0
-psfs	0	dema-psf-n	Number=Plur	dema	0
-pshaw	0	dema-pshaw-i		dema	0
-psi	0	oewn-psi-n	Number=Sing	dema	0
-psia	0	dema-psia-n	Number=Sing	dema	0
-psias	0	dema-psia-n	Number=Plur	dema	0
-psid	0	dema-psid-n	Number=Sing	dema	0
-psids	0	dema-psid-n	Number=Plur	dema	0
-psilanthropic	0	dema-psilanthropic-a	Degree=Pos	dema	0
-psilanthropically	0	dema-psilanthropic-r		dema	0
-psilanthropist	0	dema-psilanthropist-n	Number=Sing	dema	0
-psilanthropists	0	dema-psilanthropist-n	Number=Plur	dema	0
-psilocybin	0	oewn-psilocybin-n	Number=Sing	dema	0
-psilocybins	0	oewn-psilocybin-n	Number=Plur	dema	0
-psilomelane	0	oewn-psilomelane-n	Number=Sing	dema	0
-psilomelanes	0	oewn-psilomelane-n	Number=Plur	dema	0
-psilotic	0	dema-psilotic-a	Degree=Pos	dema	0
-psilotically	0	dema-psilotic-r		dema	0
-psiloticness	0	dema-psilotic-n	Number=Plur	dema	0
-psis	0	dema-psis-n	Number=Sing	dema	0
-psittacine	0	dema-psittacine-a	Degree=Pos	dema	0
-psittacinely	0	dema-psittacine-r		dema	0
-psittacineness	0	dema-psittacine-n	Number=Plur	dema	0
-psittacinite	0	dema-psittacinite-n	Number=Sing	dema	0
-psittacinites	0	dema-psittacinite-n	Number=Plur	dema	0
-psittacistic	0	dema-psittacistic-a	Degree=Pos	dema	0
-psittacistically	0	dema-psittacistic-r		dema	0
-psittacosis	0	oewn-psittacosis-n	Number=Sing	dema	0
-psoas	0	oewn-psoas-n	Number=Sing	dema	0
-psoases	0	oewn-psoas-n	Number=Plur	dema	0
-psoatic	0	dema-psoatic-a	Degree=Pos	dema	0
-psoatically	0	dema-psoatic-r		dema	0
-psoaticness	0	dema-psoatic-n	Number=Plur	dema	0
-psocid	0	oewn-psocid-n	Number=Sing	dema	0
-psocids	0	oewn-psocid-n	Number=Plur	dema	0
-psoralea	0	dema-psoralea-n	Number=Sing	dema	0
-psoraleas	0	dema-psoralea-n	Number=Plur	dema	0
-psoriasis	0	oewn-psoriasis-n	Number=Sing	dema	0
-psoriatic	0	dema-psoriatic-a	Degree=Pos	dema	0
-psoriatically	0	dema-psoriatic-r		dema	0
-psoriaticness	0	dema-psoriatic-n	Number=Plur	dema	0
-psorosis	0	dema-psorosis-n	Number=Sing	dema	0
-psst	0	dema-psst-i		dema	0
-psych	0	dema-psych-v	VerbForm=Inf	dema	0
-psychanalytically	0	dema-psychanalytically-r	Degree=Pos	dema	0
-psychasthenia	0	dema-psychasthenia-n	Number=Sing	dema	0
-psychasthenias	0	dema-psychasthenia-n	Number=Plur	dema	0
-psychasthenic	0	dema-psychasthenic-a	Degree=Pos	dema	0
-psychasthenically	0	dema-psychasthenic-r		dema	0
-psychataxia	0	dema-psychataxia-n	Number=Sing	dema	0
-psychataxias	0	dema-psychataxia-n	Number=Plur	dema	0
-psyche	0	oewn-psyche-n	Number=Sing	dema	0
-psyched	0	dema-psyched-v	VerbForm=Inf	dema	0
-psychedelia	0	oewn-psychedelia-n	Number=Sing	dema	0
-psychedelias	0	oewn-psychedelia-n	Number=Plur	dema	0
-psychedelic	0	oewn-psychedelic-a	Degree=Pos	dema	0
-psychedelically	0	dema-psychedelic-r		dema	0
-psycher	0	dema-psych-n	Number=Plur	dema	0
-psychers	0	dema-psych-n	Number=Plur	dema	0
-psyches	0	dema-psych-v	Person=3+Tense=Pres	dema	0
-psychiatric	0	oewn-psychiatric-a	Degree=Pos	dema	0
-psychiatrical	0	oewn-psychiatrical-a	Degree=Pos	dema	0
-psychiatrically	0	dema-psychiatrically-r	Degree=Pos	dema	0
-psychiatricness	0	dema-psychiatric-n	Number=Plur	dema	0
-psychiatries	0	oewn-psychiatry-n	Number=Plur	dema	0
-psychiatrist	0	oewn-psychiatrist-n	Number=Sing	dema	0
-psychiatrists	0	oewn-psychiatrist-n	Number=Plur	dema	0
-psychiatry	0	oewn-psychiatry-n	Number=Sing	dema	0
-psychic	0	oewn-psychic-a	Degree=Pos	dema	0
-psychic	1	oewn-psychic-n	Number=Sing	dema	0
-psychically	0	oewn-psychically-r	Degree=Pos	dema	0
-psychicness	0	oewn-psychic-n	Number=Plur	dema	0
-psychics	0	oewn-psychic-n	Number=Plur	dema	0
-psyching	0	dema-psyching-v	VerbForm=Inf	dema	0
-psychingly	0	dema-psych-r		dema	0
-psycho	0	oewn-psycho-n	Number=Sing	dema	0
-psycho	1	dema-psycho-a	Degree=Pos	dema	0
-psychoacoustics	0	dema-psychoacoustics-n	Number=Sing	dema	0
-psychoacousticses	0	dema-psychoacoustics-n	Number=Plur	dema	0
-psychoactive	0	oewn-psychoactive-a	Degree=Pos	dema	0
-psychoactively	0	dema-psychoactive-r		dema	0
-psychoactiveness	0	dema-psychoactive-n	Number=Plur	dema	0
-psychoanal	0	dema-psychoanal-n	Number=Sing	dema	0
-psychoanals	0	dema-psychoanal-n	Number=Plur	dema	0
-psychoanalyse	0	oewn-psychoanalyse-v	VerbForm=Inf	dema	0
-psychoanalysed	0	oewn-psychoanalyse-v	Tense=Past	dema	0
-psychoanalyses	0	oewn-psychoanalyse-v	Person=3+Tense=Pres	dema	0
-psychoanalysing	0	oewn-psychoanalyse-v	VerbForm=Ger	dema	0
-psychoanalysis	0	oewn-psychoanalysis-n	Number=Sing	dema	0
-psychoanalytic	0	oewn-psychoanalytic-a	Degree=Pos	dema	0
-psychoanalytical	0	oewn-psychoanalytical-a	Degree=Pos	dema	0
-psychoanalytically	0	dema-psychoanalytically-r	Degree=Pos	dema	0
-psychoanalyzer	0	dema-psychoanalyzer-n	Number=Sing	dema	0
-psychoanalyzers	0	dema-psychoanalyzer-n	Number=Plur	dema	0
-psychobiologic	0	dema-psychobiologic-a	Degree=Pos	dema	0
-psychobiological	0	dema-psychobiological-a	Degree=Pos	dema	0
-psychobiologically	0	dema-psychobiologic-r		dema	0
-psychobiologies	0	dema-psychobiology-n	Number=Plur	dema	0
-psychobiologist	0	dema-psychobiologist-n	Number=Sing	dema	0
-psychobiologists	0	dema-psychobiologist-n	Number=Plur	dema	0
-psychobiology	0	dema-psychobiology-n	Number=Sing	dema	0
-psychochemical	0	dema-psychochemical-n	Number=Sing	dema	0
-psychochemical	1	dema-psychochemical-a	Degree=Pos	dema	0
-psychochemically	0	dema-psychochemical-r		dema	0
-psychochemicals	0	dema-psychochemical-n	Number=Plur	dema	0
-psychodelic	0	dema-psychodelic-a	Degree=Pos	dema	0
-psychodelically	0	dema-psychodelic-r		dema	0
-psychodiagnosis	0	dema-psychodiagnosis-n	Number=Sing	dema	0
-psychodiagnostic	0	dema-psychodiagnostic-a	Degree=Pos	dema	0
-psychodiagnostically	0	dema-psychodiagnostic-r		dema	0
-psychodiagnostics	0	dema-psychodiagnostics-n	Number=Sing	dema	0
-psychodiagnosticses	0	dema-psychodiagnostics-n	Number=Plur	dema	0
-psychodrama	0	dema-psychodrama-n	Number=Sing	dema	0
-psychodramas	0	dema-psychodrama-n	Number=Plur	dema	0
-psychodynamics	0	oewn-psychodynamics-n	Number=Sing	dema	0
-psychodynamicses	0	oewn-psychodynamics-n	Number=Plur	dema	0
-psychoer	0	dema-psycho-a	Degree=Cmp	dema	0
-psychoes	0	oewn-psycho-n	Number=Plur	dema	0
-psychoest	0	dema-psycho-a	Degree=Sup	dema	0
-psychogalvanic	0	dema-psychogalvanic-a	Degree=Pos	dema	0
-psychogalvanically	0	dema-psychogalvanic-r		dema	0
-psychogalvanometer	0	dema-psychogalvanometer-n	Number=Sing	dema	0
-psychogalvanometers	0	dema-psychogalvanometer-n	Number=Plur	dema	0
-psychogenesis	0	oewn-psychogenesis-n	Number=Sing	dema	0
-psychogenetic	0	oewn-psychogenetic-a	Degree=Pos	dema	0
-psychogenetically	0	dema-psychogenetically-r	Degree=Pos	dema	0
-psychogenic	0	oewn-psychogenic-a	Degree=Pos	dema	0
-psychogenically	0	dema-psychogenic-r		dema	0
-psychognosis	0	dema-psychognosis-n	Number=Sing	dema	0
-psychographer	0	dema-psychographer-n	Number=Sing	dema	0
-psychographers	0	dema-psychographer-n	Number=Plur	dema	0
-psychographic	0	dema-psychographic-a	Degree=Pos	dema	0
-psychographically	0	dema-psychographically-r	Degree=Pos	dema	0
-psychohistories	0	dema-psychohistory-n	Number=Plur	dema	0
-psychohistory	0	dema-psychohistory-n	Number=Sing	dema	0
-psychokinesis	0	oewn-psychokinesis-n	Number=Sing	dema	0
-psychol	0	dema-psychol-n	Number=Sing	dema	0
-psycholinguistic	0	oewn-psycholinguistic-a	Degree=Pos	dema	0
-psycholinguistically	0	dema-psycholinguistic-r		dema	0
-psycholinguistics	0	oewn-psycholinguistics-n	Number=Sing	dema	0
-psycholinguisticses	0	oewn-psycholinguistics-n	Number=Plur	dema	0
-psychological	0	oewn-psychological-a	Degree=Pos	dema	0
-psychologically	0	oewn-psychologically-r	Degree=Pos	dema	0
-psychologies	0	dema-psychologies-n	Number=Sing	dema	0
-psychologised	0	dema-psychologised-v	VerbForm=Inf	dema	0
-psychologiseded	0	dema-psychologised-v	Tense=Past	dema	0
-psychologiseding	0	dema-psychologised-v	VerbForm=Ger	dema	0
-psychologiseds	0	dema-psychologised-v	Person=3+Tense=Pres	dema	0
-psychologising	0	dema-psychologising-v	VerbForm=Inf	dema	0
-psychologisinged	0	dema-psychologising-v	Tense=Past	dema	0
-psychologisinging	0	dema-psychologising-v	VerbForm=Ger	dema	0
-psychologisings	0	dema-psychologising-v	Person=3+Tense=Pres	dema	0
-psychologism	0	dema-psychologism-n	Number=Sing	dema	0
-psychologisms	0	dema-psychologism-n	Number=Plur	dema	0
-psychologist	0	oewn-psychologist-n	Number=Sing	dema	0
-psychologist	1	dema-psychologist-a	Degree=Pos	dema	0
-psychologistly	0	dema-psychologist-r		dema	0
-psychologists	0	oewn-psychologist-n	Number=Plur	dema	0
-psychologize	0	dema-psychologize-v	VerbForm=Inf	dema	0
-psychologized	0	dema-psychologized-v	VerbForm=Inf	dema	0
-psychologizes	0	dema-psychologize-v	Person=3+Tense=Pres	dema	0
-psychologizing	0	dema-psychologizing-v	VerbForm=Inf	dema	0
-psychology	0	oewn-psychology-n	Number=Sing	dema	0
-psychols	0	dema-psychol-n	Number=Plur	dema	0
-psycholy	0	dema-psycho-r		dema	0
-psychomancies	0	dema-psychomancy-n	Number=Plur	dema	0
-psychomancy	0	dema-psychomancy-n	Number=Sing	dema	0
-psychometric	0	oewn-psychometric-a	Degree=Pos	dema	0
-psychometrical	0	dema-psychometrical-a	Degree=Pos	dema	0
-psychometrically	0	dema-psychometrically-r	Degree=Pos	dema	0
-psychometrician	0	dema-psychometrician-n	Number=Sing	dema	0
-psychometricians	0	dema-psychometrician-n	Number=Plur	dema	0
-psychometrics	0	oewn-psychometrics-n	Number=Sing	dema	0
-psychometricses	0	oewn-psychometrics-n	Number=Plur	dema	0
-psychometries	0	oewn-psychometry-n	Number=Plur	dema	0
-psychometrist	0	dema-psychometrist-n	Number=Sing	dema	0
-psychometrists	0	dema-psychometrist-n	Number=Plur	dema	0
-psychometry	0	oewn-psychometry-n	Number=Sing	dema	0
-psychomotor	0	oewn-psychomotor-a	Degree=Pos	dema	0
-psychomotorly	0	dema-psychomotor-r		dema	0
-psychoness	0	oewn-psycho-n	Number=Plur	dema	0
-psychoneurosis	0	oewn-psychoneurosis-n	Number=Sing	dema	0
-psychoneurotic	0	oewn-psychoneurotic-a	Degree=Pos	dema	0
-psychoneurotic	1	oewn-psychoneurotic-n	Number=Sing	dema	0
-psychoneurotically	0	dema-psychoneurotic-r		dema	0
-psychoneurotics	0	oewn-psychoneurotic-n	Number=Plur	dema	0
-psychopath	0	oewn-psychopath-n	Number=Sing	dema	0
-psychopathies	0	oewn-psychopathy-n	Number=Plur	dema	0
-psychopathist	0	dema-psychopathist-n	Number=Sing	dema	0
-psychopathists	0	dema-psychopathist-n	Number=Plur	dema	0
-psychopathologic	0	oewn-psychopathologic-a	Degree=Pos	dema	0
-psychopathological	0	oewn-psychopathological-a	Degree=Pos	dema	0
-psychopathologically	0	dema-psychopathologic-r		dema	0
-psychopathologies	0	oewn-psychopathology-n	Number=Plur	dema	0
-psychopathologist	0	dema-psychopathologist-n	Number=Sing	dema	0
-psychopathologists	0	dema-psychopathologist-n	Number=Plur	dema	0
-psychopathology	0	oewn-psychopathology-n	Number=Sing	dema	0
-psychopaths	0	oewn-psychopath-n	Number=Plur	dema	0
-psychopathy	0	oewn-psychopathy-n	Number=Sing	dema	0
-psychopharmacologic	0	dema-psychopharmacologic-a	Degree=Pos	dema	0
-psychopharmacological	0	oewn-psychopharmacological-a	Degree=Pos	dema	0
-psychopharmacologically	0	dema-psychopharmacologic-r		dema	0
-psychopharmacologies	0	oewn-psychopharmacology-n	Number=Plur	dema	0
-psychopharmacology	0	oewn-psychopharmacology-n	Number=Sing	dema	0
-psychophysics	0	oewn-psychophysics-n	Number=Sing	dema	0
-psychophysicses	0	oewn-psychophysics-n	Number=Plur	dema	0
-psychophysiologically	0	dema-psychophysiologically-r	Degree=Pos	dema	0
-psychophysiologies	0	oewn-psychophysiology-n	Number=Plur	dema	0
-psychophysiologist	0	dema-psychophysiologist-n	Number=Sing	dema	0
-psychophysiologists	0	dema-psychophysiologist-n	Number=Plur	dema	0
-psychophysiology	0	oewn-psychophysiology-n	Number=Sing	dema	0
-psychopomp	0	oewn-psychopomp-n	Number=Sing	dema	0
-psychopomps	0	oewn-psychopomp-n	Number=Plur	dema	0
-psychoprophylactic	0	dema-psychoprophylactic-a	Degree=Pos	dema	0
-psychoprophylactically	0	dema-psychoprophylactic-r		dema	0
-psychoprophylaxis	0	dema-psychoprophylaxis-n	Number=Sing	dema	0
-psychos	0	dema-psychos-n	Number=Sing	dema	0
-psychosexual	0	oewn-psychosexual-a	Degree=Pos	dema	0
-psychosexually	0	dema-psychosexual-r		dema	0
-psychosis	0	oewn-psychosis-n	Number=Sing	dema	0
-psychosocial	0	dema-psychosocial-a	Degree=Pos	dema	0
-psychosocially	0	dema-psychosocial-r		dema	0
-psychosomatic	0	oewn-psychosomatic-a	Degree=Pos	dema	0
-psychosomatically	0	dema-psychosomatic-r		dema	0
-psychosomatics	0	dema-psychosomatics-n	Number=Sing	dema	0
-psychosomaticses	0	dema-psychosomatics-n	Number=Plur	dema	0
-psychosurgeries	0	oewn-psychosurgery-n	Number=Plur	dema	0
-psychosurgery	0	oewn-psychosurgery-n	Number=Sing	dema	0
-psychotechnics	0	dema-psychotechnics-n	Number=Sing	dema	0
-psychotechnicses	0	dema-psychotechnics-n	Number=Plur	dema	0
-psychotechnologies	0	dema-psychotechnology-n	Number=Plur	dema	0
-psychotechnology	0	dema-psychotechnology-n	Number=Sing	dema	0
-psychotherapeutic	0	oewn-psychotherapeutic-a	Degree=Pos	dema	0
-psychotherapeutically	0	dema-psychotherapeutically-r	Degree=Pos	dema	0
-psychotherapeutist	0	dema-psychotherapeutist-n	Number=Sing	dema	0
-psychotherapeutists	0	dema-psychotherapeutist-n	Number=Plur	dema	0
-psychotherapies	0	oewn-psychotherapy-n	Number=Plur	dema	0
-psychotherapist	0	oewn-psychotherapist-n	Number=Sing	dema	0
-psychotherapists	0	oewn-psychotherapist-n	Number=Plur	dema	0
-psychotherapy	0	oewn-psychotherapy-n	Number=Sing	dema	0
-psychotic	0	oewn-psychotic-a	Degree=Pos	dema	0
-psychotic	1	oewn-psychotic-n	Number=Sing	dema	0
-psychotically	0	dema-psychotic-r		dema	0
-psychoticness	0	oewn-psychotic-n	Number=Plur	dema	0
-psychotics	0	oewn-psychotic-n	Number=Plur	dema	0
-psychotomimetic	0	dema-psychotomimetic-a	Degree=Pos	dema	0
-psychotomimetically	0	dema-psychotomimetic-r		dema	0
-psychotropic	0	oewn-psychotropic-a	Degree=Pos	dema	0
-psychotropically	0	dema-psychotropic-r		dema	0
-psychrometer	0	oewn-psychrometer-n	Number=Sing	dema	0
-psychrometers	0	oewn-psychrometer-n	Number=Plur	dema	0
-psychrometric	0	dema-psychrometric-a	Degree=Pos	dema	0
-psychrometrical	0	dema-psychrometrical-a	Degree=Pos	dema	0
-psychrometrically	0	dema-psychrometric-r		dema	0
-psychrometries	0	dema-psychrometry-n	Number=Plur	dema	0
-psychrometry	0	dema-psychrometry-n	Number=Sing	dema	0
-psychrophile	0	dema-psychrophile-n	Number=Sing	dema	0
-psychrophiles	0	dema-psychrophile-n	Number=Plur	dema	0
-psychrophilic	0	dema-psychrophilic-a	Degree=Pos	dema	0
-psychrophilically	0	dema-psychrophilic-r		dema	0
-psychs	0	dema-psych-v	Person=3+Tense=Pres	dema	0
-psyllid	0	oewn-psyllid-n	Number=Sing	dema	0
-psyllids	0	oewn-psyllid-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PS	0	oewn-P-n	Number=Plur	dema	0			moby_reverse
+PS	1	oewn-p-n	Number=Plur	dema	0			rule
+PS	2	oewn-PS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PSA	0	oewn-PSA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PSA blood test	0	oewn-PSA_blood_test-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+PSA blood tests	0	oewn-PSA_blood_test-n	Capitalization=Exact+Number=Plur	dema	0			rule
+PSAS	0	oewn-PSA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PST	0	oewn-PST-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PSTS	0	oewn-PST-n	Capitalization=Upper+Number=Plur	dema	0			rule
+Ps	0	oewn-P-n	Number=Plur	dema	0			moby_reverse
+Ps	1	oewn-p-n	Number=Plur	dema	0			rule
+Ps	2	oewn-P-n	Capitalization=Title+Number=Plur	dema	0			rule
+Psalter	0	oewn-Psalter-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Psalters	0	oewn-Psalter-n	Capitalization=Title+Number=Plur	dema	0			rule
+Psephurus gladis	0	oewn-Psephurus_gladis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psetta maxima	0	oewn-Psetta_maxima-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psetta maximas	0	oewn-Psetta_maxima-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psettichthys melanostichus	0	oewn-Psettichthys_melanostichus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudaletia unipuncta	0	oewn-Pseudaletia_unipuncta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudaletia unipunctas	0	oewn-Pseudaletia_unipuncta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudechis porphyriacus	0	oewn-Pseudechis_porphyriacus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudemys concinna	0	oewn-Pseudemys_concinna-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudemys concinnas	0	oewn-Pseudemys_concinna-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudemys rubriventris	0	oewn-Pseudemys_rubriventris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudemys scripta	0	oewn-Pseudemys_scripta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudemys scriptas	0	oewn-Pseudemys_scripta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudepigrapha	0		Number=Sing	dema	0	pseudepigrapha	n	moby_reverse
+Pseudepigrapha	1	oewn-Pseudepigrapha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pseudepigraphas	0		Number=Plur	dema	0	pseudepigrapha	n	rule
+Pseudepigraphas	1	oewn-Pseudepigrapha-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pseudobombax ellipticum	0	oewn-Pseudobombax_ellipticum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudobombax ellipticums	0	oewn-Pseudobombax_ellipticum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudococcus comstocki	0	oewn-Pseudococcus_comstocki-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudococcus comstockis	0	oewn-Pseudococcus_comstocki-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudococcus fragilis	0	oewn-Pseudococcus_fragilis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudocolus fusiformis	0	oewn-Pseudocolus_fusiformis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudolarix amabilis	0	oewn-Pseudolarix_amabilis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudomonas solanacearum	0	oewn-Pseudomonas_solanacearum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudomonas solanacearums	0	oewn-Pseudomonas_solanacearum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudopleuronectes americanus	0	oewn-Pseudopleuronectes_americanus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudoryx nghetinhensis	0	oewn-Pseudoryx_nghetinhensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudotaxus chienii	0	oewn-Pseudotaxus_chienii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudotaxus chieniis	0	oewn-Pseudotaxus_chienii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudotsuga macrocarpa	0	oewn-Pseudotsuga_macrocarpa-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudotsuga macrocarpas	0	oewn-Pseudotsuga_macrocarpa-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudotsuga menziesii	0	oewn-Pseudotsuga_menziesii-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudotsuga menziesiis	0	oewn-Pseudotsuga_menziesii-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pseudowintera colorata	0	oewn-Pseudowintera_colorata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pseudowintera coloratas	0	oewn-Pseudowintera_colorata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psidium cattleianum	0	oewn-Psidium_cattleianum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psidium cattleianums	0	oewn-Psidium_cattleianum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psidium guajava	0	oewn-Psidium_guajava-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psidium guajavas	0	oewn-Psidium_guajava-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psidium guineense	0	oewn-Psidium_guineense-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psidium guineenses	0	oewn-Psidium_guineense-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psidium littorale	0	oewn-Psidium_littorale-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psidium littorale longipes	0	oewn-Psidium_littorale_longipes-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psidium littorales	0	oewn-Psidium_littorale-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psilotum nudum	0	oewn-Psilotum_nudum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psilotum nudums	0	oewn-Psilotum_nudum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psittacula krameri	0	oewn-Psittacula_krameri-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psittacula krameris	0	oewn-Psittacula_krameri-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psittacus erithacus	0	oewn-Psittacus_erithacus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psophia crepitans	0	oewn-Psophia_crepitans-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psophocarpus tetragonolobus	0	oewn-Psophocarpus_tetragonolobus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psoralea esculenta	0	oewn-Psoralea_esculenta-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psoralea esculentas	0	oewn-Psoralea_esculenta-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psychopsis krameriana	0	oewn-Psychopsis_krameriana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psychopsis kramerianas	0	oewn-Psychopsis_krameriana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psychopsis papilio	0	oewn-Psychopsis_papilio-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Psychopsis papilios	0	oewn-Psychopsis_papilio-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Psychotria capensis	0	oewn-Psychotria_capensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+ps	0	oewn-P-n	Number=Plur	dema	0			moby_reverse
+ps	1	oewn-p-n	Number=Plur	dema	0			rule
+psalm	0	oewn-psalm-n	Number=Sing	dema	0			oewn_form
+psalm	1	oewn-psalm-v	VerbForm=Inf	dema	0			oewn_form
+psalmbook	0		Number=Sing	dema	0	psalmbook	n	moby_reverse
+psalmbooks	0		Number=Plur	dema	0	psalmbook	n	rule
+psalmed	0	oewn-psalm-v	Tense=Past+VerbForm=Part	dema	0			rule
+psalmic	0		Degree=Pos	dema	0	psalmic	a	moby_reverse
+psalming	0	oewn-psalm-v	VerbForm=Ger	dema	0			rule
+psalmist	0	oewn-psalmist-n	Number=Sing	dema	0			oewn_form
+psalmists	0	oewn-psalmist-n	Number=Plur	dema	0			rule
+psalmodies	0	oewn-psalmody-n	Number=Plur	dema	0			rule
+psalmodist	0		Number=Sing	dema	0	psalmodist	n	moby_reverse
+psalmodists	0		Number=Plur	dema	0	psalmodist	n	rule
+psalmody	0	oewn-psalmody-n	Number=Sing	dema	0			oewn_form
+psalms	0	oewn-psalm-n	Number=Plur	dema	0			rule
+psalms	1	oewn-psalm-v	Person=3+Tense=Pres	dema	0			rule
+psalteria	0	oewn-psalterium-n	Number=Plur	dema	0			oewn_form
+psalterial	0		Degree=Pos	dema	0	psalterial	a	moby_reverse
+psalteries	0	oewn-psaltery-n	Number=Plur	dema	0			rule
+psalterium	0	oewn-psalterium-n	Number=Sing	dema	0			oewn_form
+psaltery	0	oewn-psaltery-n	Number=Sing	dema	0			oewn_form
+psalteteria	0		Number=Sing	dema	0	psalteteria	n	moby_reverse
+psalteterias	0		Number=Plur	dema	0	psalteteria	n	rule
+psammead	0		Degree=Pos	dema	0	psammead	a	moby_reverse
+psammite	0		Number=Sing	dema	0	psammite	n	moby_reverse
+psammites	0		Number=Plur	dema	0	psammite	n	rule
+psammoma	0	oewn-psammoma-n	Number=Sing	dema	0			oewn_form
+psammomas	0	oewn-psammoma-n	Number=Plur	dema	0			rule
+psammophytic	0		Degree=Pos	dema	0	psammophytic	a	moby_reverse
+psammosere	0		Number=Sing	dema	0	psammosere	n	moby_reverse
+psammoseres	0		Number=Plur	dema	0	psammosere	n	rule
+pschent	0		Number=Sing	dema	0	pschent	n	moby_reverse
+pschents	0		Number=Plur	dema	0	pschent	n	rule
+psec	0		Number=Sing	dema	0	psec	n	moby_reverse
+psecs	0		Number=Plur	dema	0	psec	n	rule
+psellism	0		Number=Sing	dema	0	psellism	n	moby_reverse
+psellisms	0		Number=Plur	dema	0	psellism	n	rule
+psephite	0		Number=Sing	dema	0	psephite	n	moby_reverse
+psephites	0		Number=Plur	dema	0	psephite	n	rule
+psephological	0		Degree=Pos	dema	0	psephological	a	moby_reverse
+psephologies	0	oewn-psephology-n	Number=Plur	dema	0			rule
+psephologist	0	oewn-psephologist-n	Number=Sing	dema	0			oewn_form
+psephologists	0	oewn-psephologist-n	Number=Plur	dema	0			rule
+psephology	0	oewn-psephology-n	Number=Sing	dema	0			oewn_form
+pseud	0	oewn-pseud-n	Number=Sing	dema	0			oewn_form
+pseud	1		Degree=Pos	dema	0	pseud	a	moby_reverse
+pseudamphora	0		Number=Sing	dema	0	pseudamphora	n	moby_reverse
+pseudamphorae	0		Number=Sing	dema	0	pseudamphorae	n	moby_reverse
+pseudamphoraes	0		Number=Plur	dema	0	pseudamphorae	n	rule
+pseudamphoras	0		Number=Plur	dema	0	pseudamphora	n	rule
+pseudaxis	0		Number=Sing	dema	0	pseudaxis	n	moby_reverse
+pseudepigrapha	0		Number=Sing	dema	0	pseudepigrapha	n	moby_reverse
+pseudepigraphas	0		Number=Plur	dema	0	pseudepigrapha	n	rule
+pseudisodomic	0		Degree=Pos	dema	0	pseudisodomic	a	moby_reverse
+pseudo	0	oewn-pseudo-a	Degree=Pos	dema	0			oewn_form
+pseudo	1	oewn-pseudo-n	Number=Sing	dema	0			oewn_form
+pseudoacademic	0		Degree=Pos	dema	0	pseudoacademic	a	moby_reverse
+pseudoacademically	0		Degree=Pos	dema	0	pseudoacademically	r	moby_reverse
+pseudoaccidental	0		Degree=Pos	dema	0	pseudoaccidental	a	moby_reverse
+pseudoaccidentally	0		Degree=Pos	dema	0	pseudoaccidentally	r	moby_reverse
+pseudoacquaintance	0		Number=Sing	dema	0	pseudoacquaintance	n	moby_reverse
+pseudoacquaintances	0		Number=Plur	dema	0	pseudoacquaintance	n	rule
+pseudoacromegalies	0		Number=Plur	dema	0	pseudoacromegaly	n	rule
+pseudoacromegaly	0		Number=Sing	dema	0	pseudoacromegaly	n	moby_reverse
+pseudoaesthetic	0		Degree=Pos	dema	0	pseudoaesthetic	a	moby_reverse
+pseudoaesthetically	0		Degree=Pos	dema	0	pseudoaesthetically	r	moby_reverse
+pseudoaffectionate	0		Degree=Pos	dema	0	pseudoaffectionate	a	moby_reverse
+pseudoaffectionately	0		Degree=Pos	dema	0	pseudoaffectionately	r	moby_reverse
+pseudoaggressive	0		Degree=Pos	dema	0	pseudoaggressive	a	moby_reverse
+pseudoaggressively	0		Degree=Pos	dema	0	pseudoaggressively	r	moby_reverse
+pseudoallegoristic	0		Degree=Pos	dema	0	pseudoallegoristic	a	moby_reverse
+pseudoalveolar	0		Degree=Pos	dema	0	pseudoalveolar	a	moby_reverse
+pseudoamateurish	0		Degree=Pos	dema	0	pseudoamateurish	a	moby_reverse
+pseudoamateurishly	0		Degree=Pos	dema	0	pseudoamateurishly	r	moby_reverse
+pseudoamateurism	0		Number=Sing	dema	0	pseudoamateurism	n	moby_reverse
+pseudoamateurisms	0		Number=Plur	dema	0	pseudoamateurism	n	rule
+pseudoamatorial	0		Degree=Pos	dema	0	pseudoamatorial	a	moby_reverse
+pseudoamatory	0		Degree=Pos	dema	0	pseudoamatory	a	moby_reverse
+pseudoambidextrous	0		Degree=Pos	dema	0	pseudoambidextrous	a	moby_reverse
+pseudoambidextrously	0		Degree=Pos	dema	0	pseudoambidextrously	r	moby_reverse
+pseudoameboid	0		Degree=Pos	dema	0	pseudoameboid	a	moby_reverse
+pseudoanachronistic	0		Degree=Pos	dema	0	pseudoanachronistic	a	moby_reverse
+pseudoanachronistical	0		Degree=Pos	dema	0	pseudoanachronistical	a	moby_reverse
+pseudoanaphylactic	0		Degree=Pos	dema	0	pseudoanaphylactic	a	moby_reverse
+pseudoanarchistic	0		Degree=Pos	dema	0	pseudoanarchistic	a	moby_reverse
+pseudoanatomic	0		Degree=Pos	dema	0	pseudoanatomic	a	moby_reverse
+pseudoanatomical	0		Degree=Pos	dema	0	pseudoanatomical	a	moby_reverse
+pseudoanatomically	0		Degree=Pos	dema	0	pseudoanatomically	r	moby_reverse
+pseudoancestral	0		Degree=Pos	dema	0	pseudoancestral	a	moby_reverse
+pseudoancestrally	0		Degree=Pos	dema	0	pseudoancestrally	r	moby_reverse
+pseudoanemia	0		Number=Sing	dema	0	pseudoanemia	n	moby_reverse
+pseudoanemias	0		Number=Plur	dema	0	pseudoanemia	n	rule
+pseudoanemic	0		Degree=Pos	dema	0	pseudoanemic	a	moby_reverse
+pseudoangelic	0		Degree=Pos	dema	0	pseudoangelic	a	moby_reverse
+pseudoangelical	0		Degree=Pos	dema	0	pseudoangelical	a	moby_reverse
+pseudoangelically	0		Degree=Pos	dema	0	pseudoangelically	r	moby_reverse
+pseudoangular	0		Degree=Pos	dema	0	pseudoangular	a	moby_reverse
+pseudoangularly	0		Degree=Pos	dema	0	pseudoangularly	r	moby_reverse
+pseudoanthropoid	0		Degree=Pos	dema	0	pseudoanthropoid	a	moby_reverse
+pseudoanthropological	0		Degree=Pos	dema	0	pseudoanthropological	a	moby_reverse
+pseudoantique	0		Degree=Pos	dema	0	pseudoantique	a	moby_reverse
+pseudoapologetic	0		Degree=Pos	dema	0	pseudoapologetic	a	moby_reverse
+pseudoapologetically	0		Degree=Pos	dema	0	pseudoapologetically	r	moby_reverse
+pseudoapoplectic	0		Degree=Pos	dema	0	pseudoapoplectic	a	moby_reverse
+pseudoapoplectical	0		Degree=Pos	dema	0	pseudoapoplectical	a	moby_reverse
+pseudoapoplectically	0		Degree=Pos	dema	0	pseudoapoplectically	r	moby_reverse
+pseudoappendicitis	0		Number=Sing	dema	0	pseudoappendicitis	n	moby_reverse
+pseudoapplicative	0		Degree=Pos	dema	0	pseudoapplicative	a	moby_reverse
+pseudoapprehensive	0		Degree=Pos	dema	0	pseudoapprehensive	a	moby_reverse
+pseudoapprehensively	0		Degree=Pos	dema	0	pseudoapprehensively	r	moby_reverse
+pseudoaquatic	0		Degree=Pos	dema	0	pseudoaquatic	a	moby_reverse
+pseudoarchaic	0		Degree=Pos	dema	0	pseudoarchaic	a	moby_reverse
+pseudoarchaically	0		Degree=Pos	dema	0	pseudoarchaically	r	moby_reverse
+pseudoaristocratic	0		Degree=Pos	dema	0	pseudoaristocratic	a	moby_reverse
+pseudoaristocratical	0		Degree=Pos	dema	0	pseudoaristocratical	a	moby_reverse
+pseudoaristocratically	0		Degree=Pos	dema	0	pseudoaristocratically	r	moby_reverse
+pseudoarticulate	0		Degree=Pos	dema	0	pseudoarticulate	a	moby_reverse
+pseudoarticulately	0		Degree=Pos	dema	0	pseudoarticulately	r	moby_reverse
+pseudoartistic	0		Degree=Pos	dema	0	pseudoartistic	a	moby_reverse
+pseudoartistically	0		Degree=Pos	dema	0	pseudoartistically	r	moby_reverse
+pseudoascetic	0		Degree=Pos	dema	0	pseudoascetic	a	moby_reverse
+pseudoascetical	0		Degree=Pos	dema	0	pseudoascetical	a	moby_reverse
+pseudoascetically	0		Degree=Pos	dema	0	pseudoascetically	r	moby_reverse
+pseudoassertive	0		Degree=Pos	dema	0	pseudoassertive	a	moby_reverse
+pseudoassertively	0		Degree=Pos	dema	0	pseudoassertively	r	moby_reverse
+pseudoassociational	0		Degree=Pos	dema	0	pseudoassociational	a	moby_reverse
+pseudoasymmetric	0		Degree=Pos	dema	0	pseudoasymmetric	a	moby_reverse
+pseudoasymmetrical	0		Degree=Pos	dema	0	pseudoasymmetrical	a	moby_reverse
+pseudoasymmetrically	0		Degree=Pos	dema	0	pseudoasymmetrically	r	moby_reverse
+pseudobankrupt	0		Degree=Pos	dema	0	pseudobankrupt	a	moby_reverse
+pseudobaptismal	0		Degree=Pos	dema	0	pseudobaptismal	a	moby_reverse
+pseudobchia	0		Number=Sing	dema	0	pseudobchia	n	moby_reverse
+pseudobchias	0		Number=Plur	dema	0	pseudobchia	n	rule
+pseudobenefactory	0		Degree=Pos	dema	0	pseudobenefactory	a	moby_reverse
+pseudobenevolent	0		Degree=Pos	dema	0	pseudobenevolent	a	moby_reverse
+pseudobenevolently	0		Degree=Pos	dema	0	pseudobenevolently	r	moby_reverse
+pseudobia	0		Number=Sing	dema	0	pseudobia	n	moby_reverse
+pseudobias	0		Number=Plur	dema	0	pseudobia	n	rule
+pseudobiographic	0		Degree=Pos	dema	0	pseudobiographic	a	moby_reverse
+pseudobiographical	0		Degree=Pos	dema	0	pseudobiographical	a	moby_reverse
+pseudobiographically	0		Degree=Pos	dema	0	pseudobiographically	r	moby_reverse
+pseudobiological	0		Degree=Pos	dema	0	pseudobiological	a	moby_reverse
+pseudobiologically	0		Degree=Pos	dema	0	pseudobiologically	r	moby_reverse
+pseudobrachial	0		Degree=Pos	dema	0	pseudobrachial	a	moby_reverse
+pseudobrachium	0		Number=Sing	dema	0	pseudobrachium	n	moby_reverse
+pseudobrachiums	0		Number=Plur	dema	0	pseudobrachium	n	rule
+pseudobrotherly	0		Degree=Pos	dema	0	pseudobrotherly	r	moby_reverse
+pseudobulb	0	oewn-pseudobulb-n	Number=Sing	dema	0			oewn_form
+pseudobulbs	0	oewn-pseudobulb-n	Number=Plur	dema	0			rule
+pseudocandid	0		Degree=Pos	dema	0	pseudocandid	a	moby_reverse
+pseudocandidly	0		Degree=Pos	dema	0	pseudocandidly	r	moby_reverse
+pseudocaptive	0		Degree=Pos	dema	0	pseudocaptive	a	moby_reverse
+pseudocarp	0	oewn-pseudocarp-n	Number=Plur	dema	0			agid
+pseudocarp	1	oewn-pseudocarp-n	Number=Sing	dema	0			oewn_form
+pseudocarp	2		Degree=Pos	dema	0	pseudocarp	a	moby_reverse
+pseudocarpous	0		Degree=Pos	dema	0	pseudocarpous	a	moby_reverse
+pseudocartilaginous	0		Degree=Pos	dema	0	pseudocartilaginous	a	moby_reverse
+pseudocatholically	0		Degree=Pos	dema	0	pseudocatholically	r	moby_reverse
+pseudocentric	0		Degree=Pos	dema	0	pseudocentric	a	moby_reverse
+pseudocercaria	0		Number=Sing	dema	0	pseudocercaria	n	moby_reverse
+pseudocercariae	0		Number=Sing	dema	0	pseudocercariae	n	moby_reverse
+pseudocercariaes	0		Number=Plur	dema	0	pseudocercariae	n	rule
+pseudocercarias	0		Number=Plur	dema	0	pseudocercaria	n	rule
+pseudocercerci	0		Number=Sing	dema	0	pseudocercerci	n	moby_reverse
+pseudocercercis	0		Number=Plur	dema	0	pseudocercerci	n	rule
+pseudocercus	0		Number=Sing	dema	0	pseudocercus	n	moby_reverse
+pseudocharitable	0		Degree=Pos	dema	0	pseudocharitable	a	moby_reverse
+pseudocharitably	0		Degree=Pos	dema	0	pseudocharitably	r	moby_reverse
+pseudochemical	0		Degree=Pos	dema	0	pseudochemical	a	moby_reverse
+pseudochylous	0		Degree=Pos	dema	0	pseudochylous	a	moby_reverse
+pseudoclassicalities	0		Number=Plur	dema	0	pseudoclassicality	n	rule
+pseudoclassicality	0		Number=Sing	dema	0	pseudoclassicality	n	moby_reverse
+pseudoclassicism	0		Number=Sing	dema	0	pseudoclassicism	n	moby_reverse
+pseudoclassicisms	0		Number=Plur	dema	0	pseudoclassicism	n	rule
+pseudoclerical	0		Degree=Pos	dema	0	pseudoclerical	a	moby_reverse
+pseudoclerically	0		Degree=Pos	dema	0	pseudoclerically	r	moby_reverse
+pseudocoel	0		Number=Sing	dema	0	pseudocoel	n	moby_reverse
+pseudocoelomate	0		Degree=Pos	dema	0	pseudocoelomate	a	moby_reverse
+pseudocoels	0		Number=Plur	dema	0	pseudocoel	n	rule
+pseudocollegiate	0		Degree=Pos	dema	0	pseudocollegiate	a	moby_reverse
+pseudocolumellar	0		Degree=Pos	dema	0	pseudocolumellar	a	moby_reverse
+pseudocommissural	0		Degree=Pos	dema	0	pseudocommissural	a	moby_reverse
+pseudocompetitive	0		Degree=Pos	dema	0	pseudocompetitive	a	moby_reverse
+pseudocompetitively	0		Degree=Pos	dema	0	pseudocompetitively	r	moby_reverse
+pseudoconcha	0		Number=Sing	dema	0	pseudoconcha	n	moby_reverse
+pseudoconchas	0		Number=Plur	dema	0	pseudoconcha	n	rule
+pseudoconfessional	0		Degree=Pos	dema	0	pseudoconfessional	a	moby_reverse
+pseudoconglomerate	0		Degree=Pos	dema	0	pseudoconglomerate	a	moby_reverse
+pseudoconservative	0		Degree=Pos	dema	0	pseudoconservative	a	moby_reverse
+pseudoconservatively	0		Degree=Pos	dema	0	pseudoconservatively	r	moby_reverse
+pseudocorneous	0		Degree=Pos	dema	0	pseudocorneous	a	moby_reverse
+pseudocosta	0		Number=Sing	dema	0	pseudocosta	n	moby_reverse
+pseudocostas	0		Number=Plur	dema	0	pseudocosta	n	rule
+pseudocotyledonal	0		Degree=Pos	dema	0	pseudocotyledonal	a	moby_reverse
+pseudocotyledonary	0		Degree=Pos	dema	0	pseudocotyledonary	a	moby_reverse
+pseudocourteous	0		Degree=Pos	dema	0	pseudocourteous	a	moby_reverse
+pseudocourteously	0		Degree=Pos	dema	0	pseudocourteously	r	moby_reverse
+pseudocritical	0		Degree=Pos	dema	0	pseudocritical	a	moby_reverse
+pseudocritically	0		Degree=Pos	dema	0	pseudocritically	r	moby_reverse
+pseudocrystalline	0		Degree=Pos	dema	0	pseudocrystalline	a	moby_reverse
+pseudocubic	0		Degree=Pos	dema	0	pseudocubic	a	moby_reverse
+pseudocubical	0		Degree=Pos	dema	0	pseudocubical	a	moby_reverse
+pseudocubically	0		Degree=Pos	dema	0	pseudocubically	r	moby_reverse
+pseudocultivated	0		Degree=Pos	dema	0	pseudocultivated	a	moby_reverse
+pseudocultivated	1		VerbForm=Inf	dema	0	pseudocultivated	v	moby_reverse
+pseudocultural	0		Degree=Pos	dema	0	pseudocultural	a	moby_reverse
+pseudoculturally	0		Degree=Pos	dema	0	pseudoculturally	r	moby_reverse
+pseudocyclosis	0		Number=Sing	dema	0	pseudocyclosis	n	moby_reverse
+pseudocyesis	0	oewn-pseudocyesis-n	Number=Sing	dema	0			oewn_form
+pseudocyphella	0		Number=Sing	dema	0	pseudocyphella	n	moby_reverse
+pseudocyphellas	0		Number=Plur	dema	0	pseudocyphella	n	rule
+pseudodementia	0		Number=Sing	dema	0	pseudodementia	n	moby_reverse
+pseudodementias	0		Number=Plur	dema	0	pseudodementia	n	rule
+pseudodemocratic	0		Degree=Pos	dema	0	pseudodemocratic	a	moby_reverse
+pseudodemocratically	0		Degree=Pos	dema	0	pseudodemocratically	r	moby_reverse
+pseudoderm	0		Number=Sing	dema	0	pseudoderm	n	moby_reverse
+pseudoderms	0		Number=Plur	dema	0	pseudoderm	n	rule
+pseudodiastolic	0		Degree=Pos	dema	0	pseudodiastolic	a	moby_reverse
+pseudodiphtherial	0		Degree=Pos	dema	0	pseudodiphtherial	a	moby_reverse
+pseudodiphtheric	0		Degree=Pos	dema	0	pseudodiphtheric	a	moby_reverse
+pseudodiphtheritic	0		Degree=Pos	dema	0	pseudodiphtheritic	a	moby_reverse
+pseudodivine	0		Degree=Pos	dema	0	pseudodivine	a	moby_reverse
+pseudodramatic	0		Degree=Pos	dema	0	pseudodramatic	a	moby_reverse
+pseudodramatically	0		Degree=Pos	dema	0	pseudodramatically	r	moby_reverse
+pseudoeconomical	0		Degree=Pos	dema	0	pseudoeconomical	a	moby_reverse
+pseudoeconomically	0		Degree=Pos	dema	0	pseudoeconomically	r	moby_reverse
+pseudoedema	0		Number=Sing	dema	0	pseudoedema	n	moby_reverse
+pseudoedemas	0		Number=Plur	dema	0	pseudoedema	n	rule
+pseudoedemata	0		Number=Sing	dema	0	pseudoedemata	n	moby_reverse
+pseudoedematas	0		Number=Plur	dema	0	pseudoedemata	n	rule
+pseudoeditorial	0		Degree=Pos	dema	0	pseudoeditorial	a	moby_reverse
+pseudoeditorially	0		Degree=Pos	dema	0	pseudoeditorially	r	moby_reverse
+pseudoeducational	0		Degree=Pos	dema	0	pseudoeducational	a	moby_reverse
+pseudoeducationally	0		Degree=Pos	dema	0	pseudoeducationally	r	moby_reverse
+pseudoelectoral	0		Degree=Pos	dema	0	pseudoelectoral	a	moby_reverse
+pseudoembryonic	0		Degree=Pos	dema	0	pseudoembryonic	a	moby_reverse
+pseudoemotional	0		Degree=Pos	dema	0	pseudoemotional	a	moby_reverse
+pseudoemotionally	0		Degree=Pos	dema	0	pseudoemotionally	r	moby_reverse
+pseudoencephalitic	0		Degree=Pos	dema	0	pseudoencephalitic	a	moby_reverse
+pseudoenthusiastic	0		Degree=Pos	dema	0	pseudoenthusiastic	a	moby_reverse
+pseudoenthusiastically	0		Degree=Pos	dema	0	pseudoenthusiastically	r	moby_reverse
+pseudoephedrine	0	oewn-pseudoephedrine-n	Number=Sing	dema	0			oewn_form
+pseudoephedrines	0	oewn-pseudoephedrine-n	Number=Plur	dema	0			rule
+pseudoepiscopal	0		Degree=Pos	dema	0	pseudoepiscopal	a	moby_reverse
+pseudoequalitarian	0		Degree=Pos	dema	0	pseudoequalitarian	a	moby_reverse
+pseudoerotic	0		Degree=Pos	dema	0	pseudoerotic	a	moby_reverse
+pseudoerotically	0		Degree=Pos	dema	0	pseudoerotically	r	moby_reverse
+pseudoerysipelatous	0		Degree=Pos	dema	0	pseudoerysipelatous	a	moby_reverse
+pseudoethical	0		Degree=Pos	dema	0	pseudoethical	a	moby_reverse
+pseudoethically	0		Degree=Pos	dema	0	pseudoethically	r	moby_reverse
+pseudoetymological	0		Degree=Pos	dema	0	pseudoetymological	a	moby_reverse
+pseudoetymologically	0		Degree=Pos	dema	0	pseudoetymologically	r	moby_reverse
+pseudoevangelic	0		Degree=Pos	dema	0	pseudoevangelic	a	moby_reverse
+pseudoevangelical	0		Degree=Pos	dema	0	pseudoevangelical	a	moby_reverse
+pseudoevangelically	0		Degree=Pos	dema	0	pseudoevangelically	r	moby_reverse
+pseudoexperimental	0		Degree=Pos	dema	0	pseudoexperimental	a	moby_reverse
+pseudoexperimentally	0		Degree=Pos	dema	0	pseudoexperimentally	r	moby_reverse
+pseudofaithful	0		Degree=Pos	dema	0	pseudofaithful	a	moby_reverse
+pseudofaithfully	0		Degree=Pos	dema	0	pseudofaithfully	r	moby_reverse
+pseudofamous	0		Degree=Pos	dema	0	pseudofamous	a	moby_reverse
+pseudofamously	0		Degree=Pos	dema	0	pseudofamously	r	moby_reverse
+pseudofatherly	0		Degree=Pos	dema	0	pseudofatherly	r	moby_reverse
+pseudofeminine	0		Degree=Pos	dema	0	pseudofeminine	a	moby_reverse
+pseudofeverish	0		Degree=Pos	dema	0	pseudofeverish	a	moby_reverse
+pseudofeverishly	0		Degree=Pos	dema	0	pseudofeverishly	r	moby_reverse
+pseudofinal	0		Degree=Pos	dema	0	pseudofinal	a	moby_reverse
+pseudofinally	0		Degree=Pos	dema	0	pseudofinally	r	moby_reverse
+pseudogaseous	0		Degree=Pos	dema	0	pseudogaseous	a	moby_reverse
+pseudogenera	0		Number=Sing	dema	0	pseudogenera	n	moby_reverse
+pseudogeneral	0		Degree=Pos	dema	0	pseudogeneral	a	moby_reverse
+pseudogeneras	0		Number=Plur	dema	0	pseudogenera	n	rule
+pseudogeneric	0		Degree=Pos	dema	0	pseudogeneric	a	moby_reverse
+pseudogenerical	0		Degree=Pos	dema	0	pseudogenerical	a	moby_reverse
+pseudogenerically	0		Degree=Pos	dema	0	pseudogenerically	r	moby_reverse
+pseudogenteel	0		Degree=Pos	dema	0	pseudogenteel	a	moby_reverse
+pseudogentlemanly	0		Degree=Pos	dema	0	pseudogentlemanly	r	moby_reverse
+pseudogenus	0		Number=Sing	dema	0	pseudogenus	n	moby_reverse
+pseudogenuses	0		Number=Sing	dema	0	pseudogenuses	n	moby_reverse
+pseudogenuses	1		Number=Plur	dema	0	pseudogenus	n	rule
+pseudogyrate	0		Degree=Pos	dema	0	pseudogyrate	a	moby_reverse
+pseudohallucination	0	oewn-pseudohallucination-n	Number=Sing	dema	0			oewn_form
+pseudohallucinations	0	oewn-pseudohallucination-n	Number=Plur	dema	0			rule
+pseudohemal	0		Degree=Pos	dema	0	pseudohemal	a	moby_reverse
+pseudohemophilia	0		Number=Sing	dema	0	pseudohemophilia	n	moby_reverse
+pseudohemophilias	0		Number=Plur	dema	0	pseudohemophilia	n	rule
+pseudohermaphrodite	0	oewn-pseudohermaphrodite-n	Number=Sing	dema	0			oewn_form
+pseudohermaphrodite	1	oewn-pseudohermaphrodite-a	Degree=Pos	dema	0			oewn_form
+pseudohermaphrodites	0	oewn-pseudohermaphrodite-n	Number=Plur	dema	0			rule
+pseudohermaphroditic	0	oewn-pseudohermaphroditic-a	Degree=Pos	dema	0			oewn_form
+pseudohermaphroditism	0	oewn-pseudohermaphroditism-n	Number=Sing	dema	0			oewn_form
+pseudohermaphroditisms	0	oewn-pseudohermaphroditism-n	Number=Plur	dema	0			rule
+pseudoheroic	0		Degree=Pos	dema	0	pseudoheroic	a	moby_reverse
+pseudoheroical	0		Degree=Pos	dema	0	pseudoheroical	a	moby_reverse
+pseudoheroically	0		Degree=Pos	dema	0	pseudoheroically	r	moby_reverse
+pseudohexagonal	0		Degree=Pos	dema	0	pseudohexagonal	a	moby_reverse
+pseudohexagonally	0		Degree=Pos	dema	0	pseudohexagonally	r	moby_reverse
+pseudohistoric	0		Degree=Pos	dema	0	pseudohistoric	a	moby_reverse
+pseudohistorical	0		Degree=Pos	dema	0	pseudohistorical	a	moby_reverse
+pseudohistorically	0		Degree=Pos	dema	0	pseudohistorically	r	moby_reverse
+pseudohuman	0		Degree=Pos	dema	0	pseudohuman	a	moby_reverse
+pseudohumanistic	0		Degree=Pos	dema	0	pseudohumanistic	a	moby_reverse
+pseudohypertrophic	0		Degree=Pos	dema	0	pseudohypertrophic	a	moby_reverse
+pseudohypertrophic dystrophies	0	oewn-pseudohypertrophic_dystrophy-n	Number=Plur	dema	0			rule
+pseudohypertrophic dystrophy	0	oewn-pseudohypertrophic_dystrophy-n	Number=Sing	dema	0			oewn_form
+pseudoidentical	0		Degree=Pos	dema	0	pseudoidentical	a	moby_reverse
+pseudoimpartial	0		Degree=Pos	dema	0	pseudoimpartial	a	moby_reverse
+pseudoimpartially	0		Degree=Pos	dema	0	pseudoimpartially	r	moby_reverse
+pseudoindependent	0		Degree=Pos	dema	0	pseudoindependent	a	moby_reverse
+pseudoindependently	0		Degree=Pos	dema	0	pseudoindependently	r	moby_reverse
+pseudoinsane	0		Degree=Pos	dema	0	pseudoinsane	a	moby_reverse
+pseudoinspirational	0		Degree=Pos	dema	0	pseudoinspirational	a	moby_reverse
+pseudoinspiring	0		Degree=Pos	dema	0	pseudoinspiring	a	moby_reverse
+pseudoinspiring	1		VerbForm=Inf	dema	0	pseudoinspiring	v	moby_reverse
+pseudointellectually	0		Degree=Pos	dema	0	pseudointellectually	r	moby_reverse
+pseudointernational	0		Degree=Pos	dema	0	pseudointernational	a	moby_reverse
+pseudointernationalistic	0		Degree=Pos	dema	0	pseudointernationalistic	a	moby_reverse
+pseudoinvalid	0		Degree=Pos	dema	0	pseudoinvalid	a	moby_reverse
+pseudoinvalidly	0		Degree=Pos	dema	0	pseudoinvalidly	r	moby_reverse
+pseudoisometric	0		Degree=Pos	dema	0	pseudoisometric	a	moby_reverse
+pseudolabial	0		Degree=Pos	dema	0	pseudolabial	a	moby_reverse
+pseudolabium	0		Number=Sing	dema	0	pseudolabium	n	moby_reverse
+pseudolabiums	0		Number=Plur	dema	0	pseudolabium	n	rule
+pseudolaminated	0		Degree=Pos	dema	0	pseudolaminated	a	moby_reverse
+pseudolaminated	1		VerbForm=Inf	dema	0	pseudolaminated	v	moby_reverse
+pseudolateral	0		Degree=Pos	dema	0	pseudolateral	a	moby_reverse
+pseudolegal	0		Degree=Pos	dema	0	pseudolegal	a	moby_reverse
+pseudolegalities	0		Number=Plur	dema	0	pseudolegality	n	rule
+pseudolegality	0		Number=Sing	dema	0	pseudolegality	n	moby_reverse
+pseudolegendary	0		Degree=Pos	dema	0	pseudolegendary	a	moby_reverse
+pseudolegislative	0		Degree=Pos	dema	0	pseudolegislative	a	moby_reverse
+pseudoleucite	0		Number=Sing	dema	0	pseudoleucite	n	moby_reverse
+pseudoleucites	0		Number=Plur	dema	0	pseudoleucite	n	rule
+pseudoleucocyte	0		Number=Sing	dema	0	pseudoleucocyte	n	moby_reverse
+pseudoleucocytes	0		Number=Plur	dema	0	pseudoleucocyte	n	rule
+pseudoliberal	0		Degree=Pos	dema	0	pseudoliberal	a	moby_reverse
+pseudoliberally	0		Degree=Pos	dema	0	pseudoliberally	r	moby_reverse
+pseudolinguistic	0		Degree=Pos	dema	0	pseudolinguistic	a	moby_reverse
+pseudolinguistically	0		Degree=Pos	dema	0	pseudolinguistically	r	moby_reverse
+pseudoliterary	0		Degree=Pos	dema	0	pseudoliterary	a	moby_reverse
+pseudolobar	0		Degree=Pos	dema	0	pseudolobar	a	moby_reverse
+pseudolunula	0		Number=Sing	dema	0	pseudolunula	n	moby_reverse
+pseudolunulae	0		Number=Sing	dema	0	pseudolunulae	n	moby_reverse
+pseudolunulaes	0		Number=Plur	dema	0	pseudolunulae	n	rule
+pseudolunulas	0		Number=Plur	dema	0	pseudolunula	n	rule
+pseudolunule	0		Number=Sing	dema	0	pseudolunule	n	moby_reverse
+pseudolunules	0		Number=Plur	dema	0	pseudolunule	n	rule
+pseudomalaria	0		Number=Sing	dema	0	pseudomalaria	n	moby_reverse
+pseudomalarias	0		Number=Plur	dema	0	pseudomalaria	n	rule
+pseudomasculine	0		Degree=Pos	dema	0	pseudomasculine	a	moby_reverse
+pseudomedical	0		Degree=Pos	dema	0	pseudomedical	a	moby_reverse
+pseudomedically	0		Degree=Pos	dema	0	pseudomedically	r	moby_reverse
+pseudomedieval	0		Degree=Pos	dema	0	pseudomedieval	a	moby_reverse
+pseudomedievally	0		Degree=Pos	dema	0	pseudomedievally	r	moby_reverse
+pseudomemories	0		Number=Plur	dema	0	pseudomemory	n	rule
+pseudomemory	0		Number=Sing	dema	0	pseudomemory	n	moby_reverse
+pseudometric	0		Number=Sing	dema	0	pseudometric	n	moby_reverse
+pseudometric space	0	oewn-pseudometric_space-n	Number=Sing	dema	0			oewn_form
+pseudometric spaces	0	oewn-pseudometric_space-n	Number=Plur	dema	0			rule
+pseudometrics	0		Number=Plur	dema	0	pseudometric	n	rule
+pseudomilitarily	0		Degree=Pos	dema	0	pseudomilitarily	r	moby_reverse
+pseudomilitaristic	0		Degree=Pos	dema	0	pseudomilitaristic	a	moby_reverse
+pseudomilitary	0		Degree=Pos	dema	0	pseudomilitary	a	moby_reverse
+pseudoministerial	0		Degree=Pos	dema	0	pseudoministerial	a	moby_reverse
+pseudoministries	0		Number=Plur	dema	0	pseudoministry	n	rule
+pseudoministry	0		Number=Sing	dema	0	pseudoministry	n	moby_reverse
+pseudomiraculous	0		Degree=Pos	dema	0	pseudomiraculous	a	moby_reverse
+pseudomiraculously	0		Degree=Pos	dema	0	pseudomiraculously	r	moby_reverse
+pseudomodern	0		Degree=Pos	dema	0	pseudomodern	a	moby_reverse
+pseudomodest	0		Degree=Pos	dema	0	pseudomodest	a	moby_reverse
+pseudomodestly	0		Degree=Pos	dema	0	pseudomodestly	r	moby_reverse
+pseudomonad	0	oewn-pseudomonad-n	Number=Sing	dema	0			oewn_form
+pseudomonades	0		Number=Sing	dema	0	pseudomonades	n	moby_reverse
+pseudomonads	0	oewn-pseudomonad-n	Number=Plur	dema	0			rule
+pseudomonas	0		Number=Sing	dema	0	pseudomonas	n	moby_reverse
+pseudomonastic	0		Degree=Pos	dema	0	pseudomonastic	a	moby_reverse
+pseudomonastical	0		Degree=Pos	dema	0	pseudomonastical	a	moby_reverse
+pseudomonastically	0		Degree=Pos	dema	0	pseudomonastically	r	moby_reverse
+pseudomonoclinic	0		Degree=Pos	dema	0	pseudomonoclinic	a	moby_reverse
+pseudomonocyclic	0		Degree=Pos	dema	0	pseudomonocyclic	a	moby_reverse
+pseudomoral	0		Degree=Pos	dema	0	pseudomoral	a	moby_reverse
+pseudomoralistic	0		Degree=Pos	dema	0	pseudomoralistic	a	moby_reverse
+pseudomorph	0		Number=Sing	dema	0	pseudomorph	n	moby_reverse
+pseudomorphism	0		Number=Sing	dema	0	pseudomorphism	n	moby_reverse
+pseudomorphisms	0		Number=Plur	dema	0	pseudomorphism	n	rule
+pseudomorphs	0		Number=Plur	dema	0	pseudomorph	n	rule
+pseudomorular	0		Degree=Pos	dema	0	pseudomorular	a	moby_reverse
+pseudomultilocular	0		Degree=Pos	dema	0	pseudomultilocular	a	moby_reverse
+pseudomultiseptate	0		Degree=Pos	dema	0	pseudomultiseptate	a	moby_reverse
+pseudomutualities	0		Number=Plur	dema	0	pseudomutuality	n	rule
+pseudomutuality	0		Number=Sing	dema	0	pseudomutuality	n	moby_reverse
+pseudomythical	0		Degree=Pos	dema	0	pseudomythical	a	moby_reverse
+pseudomythically	0		Degree=Pos	dema	0	pseudomythically	r	moby_reverse
+pseudonarcotic	0		Degree=Pos	dema	0	pseudonarcotic	a	moby_reverse
+pseudonational	0		Degree=Pos	dema	0	pseudonational	a	moby_reverse
+pseudonationally	0		Degree=Pos	dema	0	pseudonationally	r	moby_reverse
+pseudonoble	0		Degree=Pos	dema	0	pseudonoble	a	moby_reverse
+pseudonym	0	oewn-pseudonym-n	Number=Sing	dema	0			oewn_form
+pseudonymities	0		Number=Plur	dema	0	pseudonymity	n	rule
+pseudonymity	0		Number=Sing	dema	0	pseudonymity	n	moby_reverse
+pseudonymous	0	oewn-pseudonymous-a	Degree=Pos	dema	0			oewn_form
+pseudonymously	0		Degree=Pos	dema	0	pseudonymously	r	moby_reverse
+pseudonymousness	0		Number=Sing	dema	0	pseudonymousness	n	moby_reverse
+pseudonymousnesses	0		Number=Plur	dema	0	pseudonymousness	n	rule
+pseudonyms	0	oewn-pseudonym-n	Number=Plur	dema	0			rule
+pseudooccidental	0		Degree=Pos	dema	0	pseudooccidental	a	moby_reverse
+pseudoofficial	0		Degree=Pos	dema	0	pseudoofficial	a	moby_reverse
+pseudoofficially	0		Degree=Pos	dema	0	pseudoofficially	r	moby_reverse
+pseudoorganic	0		Degree=Pos	dema	0	pseudoorganic	a	moby_reverse
+pseudoorganically	0		Degree=Pos	dema	0	pseudoorganically	r	moby_reverse
+pseudooriental	0		Degree=Pos	dema	0	pseudooriental	a	moby_reverse
+pseudoorientally	0		Degree=Pos	dema	0	pseudoorientally	r	moby_reverse
+pseudoorthorhombic	0		Degree=Pos	dema	0	pseudoorthorhombic	a	moby_reverse
+pseudooval	0		Degree=Pos	dema	0	pseudooval	a	moby_reverse
+pseudoovally	0		Degree=Pos	dema	0	pseudoovally	r	moby_reverse
+pseudopagan	0		Degree=Pos	dema	0	pseudopagan	a	moby_reverse
+pseudopapal	0		Degree=Pos	dema	0	pseudopapal	a	moby_reverse
+pseudoparallel	0		Degree=Pos	dema	0	pseudoparallel	a	moby_reverse
+pseudoparalysis	0		Number=Sing	dema	0	pseudoparalysis	n	moby_reverse
+pseudoparalytic	0		Degree=Pos	dema	0	pseudoparalytic	a	moby_reverse
+pseudoparasitic	0		Degree=Pos	dema	0	pseudoparasitic	a	moby_reverse
+pseudopatriotic	0		Degree=Pos	dema	0	pseudopatriotic	a	moby_reverse
+pseudopatriotically	0		Degree=Pos	dema	0	pseudopatriotically	r	moby_reverse
+pseudopediform	0		Degree=Pos	dema	0	pseudopediform	a	moby_reverse
+pseudoperipteral	0	oewn-pseudoperipteral-a	Degree=Pos	dema	0			oewn_form
+pseudopermanent	0		Degree=Pos	dema	0	pseudopermanent	a	moby_reverse
+pseudophallic	0		Degree=Pos	dema	0	pseudophallic	a	moby_reverse
+pseudophilanthropic	0		Degree=Pos	dema	0	pseudophilanthropic	a	moby_reverse
+pseudophilanthropical	0		Degree=Pos	dema	0	pseudophilanthropical	a	moby_reverse
+pseudophilanthropically	0		Degree=Pos	dema	0	pseudophilanthropically	r	moby_reverse
+pseudophilosophical	0		Degree=Pos	dema	0	pseudophilosophical	a	moby_reverse
+pseudophloem	0	oewn-pseudophloem-n	Number=Sing	dema	0			oewn_form
+pseudophloems	0	oewn-pseudophloem-n	Number=Plur	dema	0			rule
+pseudophone	0		Number=Sing	dema	0	pseudophone	n	moby_reverse
+pseudophones	0		Number=Plur	dema	0	pseudophone	n	rule
+pseudopious	0		Degree=Pos	dema	0	pseudopious	a	moby_reverse
+pseudopiously	0		Degree=Pos	dema	0	pseudopiously	r	moby_reverse
+pseudopod	0	oewn-pseudopod-n	Number=Sing	dema	0			oewn_form
+pseudopodal	0		Degree=Pos	dema	0	pseudopodal	a	moby_reverse
+pseudopodia	0	oewn-pseudopodium-n	Number=Plur	dema	0			oewn_form
+pseudopodium	0	oewn-pseudopodium-n	Number=Sing	dema	0			oewn_form
+pseudopods	0	oewn-pseudopod-n	Number=Plur	dema	0			rule
+pseudopoetic	0		Degree=Pos	dema	0	pseudopoetic	a	moby_reverse
+pseudopoetical	0		Degree=Pos	dema	0	pseudopoetical	a	moby_reverse
+pseudopolitic	0		Degree=Pos	dema	0	pseudopolitic	a	moby_reverse
+pseudopolitical	0		Degree=Pos	dema	0	pseudopolitical	a	moby_reverse
+pseudopopular	0		Degree=Pos	dema	0	pseudopopular	a	moby_reverse
+pseudoporphyritic	0		Degree=Pos	dema	0	pseudoporphyritic	a	moby_reverse
+pseudopregnant	0		Degree=Pos	dema	0	pseudopregnant	a	moby_reverse
+pseudopriestly	0		Degree=Pos	dema	0	pseudopriestly	a	moby_reverse
+pseudoprimitive	0		Degree=Pos	dema	0	pseudoprimitive	a	moby_reverse
+pseudoprincely	0		Degree=Pos	dema	0	pseudoprincely	r	moby_reverse
+pseudoprofessional	0		Degree=Pos	dema	0	pseudoprofessional	a	moby_reverse
+pseudoprofessorial	0		Degree=Pos	dema	0	pseudoprofessorial	a	moby_reverse
+pseudoprophetic	0		Degree=Pos	dema	0	pseudoprophetic	a	moby_reverse
+pseudoprophetical	0		Degree=Pos	dema	0	pseudoprophetical	a	moby_reverse
+pseudoprosperous	0		Degree=Pos	dema	0	pseudoprosperous	a	moby_reverse
+pseudoprosperously	0		Degree=Pos	dema	0	pseudoprosperously	r	moby_reverse
+pseudoprostyle	0	oewn-pseudoprostyle-a	Degree=Pos	dema	0			oewn_form
+pseudopsychological	0		Degree=Pos	dema	0	pseudopsychological	a	moby_reverse
+pseudopyriform	0		Degree=Pos	dema	0	pseudopyriform	a	moby_reverse
+pseudorealistic	0		Degree=Pos	dema	0	pseudorealistic	a	moby_reverse
+pseudoreformatory	0		Degree=Pos	dema	0	pseudoreformatory	a	moby_reverse
+pseudoreformed	0		Degree=Pos	dema	0	pseudoreformed	a	moby_reverse
+pseudoreformed	1		VerbForm=Inf	dema	0	pseudoreformed	v	moby_reverse
+pseudoregal	0		Degree=Pos	dema	0	pseudoregal	a	moby_reverse
+pseudoregally	0		Degree=Pos	dema	0	pseudoregally	r	moby_reverse
+pseudoreligious	0		Degree=Pos	dema	0	pseudoreligious	a	moby_reverse
+pseudoreligiously	0		Degree=Pos	dema	0	pseudoreligiously	r	moby_reverse
+pseudorepublican	0		Degree=Pos	dema	0	pseudorepublican	a	moby_reverse
+pseudoresident	0		Degree=Pos	dema	0	pseudoresident	a	moby_reverse
+pseudoresidential	0		Degree=Pos	dema	0	pseudoresidential	a	moby_reverse
+pseudorheumatic	0		Degree=Pos	dema	0	pseudorheumatic	a	moby_reverse
+pseudorhombohedral	0		Degree=Pos	dema	0	pseudorhombohedral	a	moby_reverse
+pseudoromantic	0		Degree=Pos	dema	0	pseudoromantic	a	moby_reverse
+pseudoromantically	0		Degree=Pos	dema	0	pseudoromantically	r	moby_reverse
+pseudoroyal	0		Degree=Pos	dema	0	pseudoroyal	a	moby_reverse
+pseudoroyally	0		Degree=Pos	dema	0	pseudoroyally	r	moby_reverse
+pseudorubella	0	oewn-pseudorubella-n	Number=Sing	dema	0			oewn_form
+pseudorubellas	0	oewn-pseudorubella-n	Number=Plur	dema	0			rule
+pseudos	0	oewn-pseudo-n	Number=Plur	dema	0			rule
+pseudosacred	0		Degree=Pos	dema	0	pseudosacred	a	moby_reverse
+pseudosacred	1		VerbForm=Inf	dema	0	pseudosacred	v	moby_reverse
+pseudosacrilegious	0		Degree=Pos	dema	0	pseudosacrilegious	a	moby_reverse
+pseudosacrilegiously	0		Degree=Pos	dema	0	pseudosacrilegiously	r	moby_reverse
+pseudosatirical	0		Degree=Pos	dema	0	pseudosatirical	a	moby_reverse
+pseudosatirically	0		Degree=Pos	dema	0	pseudosatirically	r	moby_reverse
+pseudoscalar	0		Degree=Pos	dema	0	pseudoscalar	a	moby_reverse
+pseudoscholarly	0		Degree=Pos	dema	0	pseudoscholarly	a	moby_reverse
+pseudoscholastic	0		Degree=Pos	dema	0	pseudoscholastic	a	moby_reverse
+pseudoscholastically	0		Degree=Pos	dema	0	pseudoscholastically	r	moby_reverse
+pseudoscience	0	oewn-pseudoscience-n	Number=Sing	dema	0			oewn_form
+pseudosciences	0	oewn-pseudoscience-n	Number=Plur	dema	0			rule
+pseudoscientific	0	oewn-pseudoscientific-a	Degree=Pos	dema	0			oewn_form
+pseudoscientifically	0		Degree=Pos	dema	0	pseudoscientifically	r	moby_reverse
+pseudoscope	0		Number=Sing	dema	0	pseudoscope	n	moby_reverse
+pseudoscopes	0		Number=Plur	dema	0	pseudoscope	n	rule
+pseudoscopies	0		Number=Plur	dema	0	pseudoscopy	n	rule
+pseudoscopy	0		Number=Sing	dema	0	pseudoscopy	n	moby_reverse
+pseudoscorpion	0	oewn-pseudoscorpion-n	Number=Sing	dema	0			oewn_form
+pseudoscorpions	0	oewn-pseudoscorpion-n	Number=Plur	dema	0			rule
+pseudosemantic	0		Degree=Pos	dema	0	pseudosemantic	a	moby_reverse
+pseudosemantically	0		Degree=Pos	dema	0	pseudosemantically	r	moby_reverse
+pseudosensational	0		Degree=Pos	dema	0	pseudosensational	a	moby_reverse
+pseudoservile	0		Degree=Pos	dema	0	pseudoservile	a	moby_reverse
+pseudoservilely	0		Degree=Pos	dema	0	pseudoservilely	r	moby_reverse
+pseudosessile	0		Degree=Pos	dema	0	pseudosessile	a	moby_reverse
+pseudosiphonal	0		Degree=Pos	dema	0	pseudosiphonal	a	moby_reverse
+pseudosiphonic	0		Degree=Pos	dema	0	pseudosiphonic	a	moby_reverse
+pseudoskeletal	0		Degree=Pos	dema	0	pseudoskeletal	a	moby_reverse
+pseudosmallpox	0	oewn-pseudosmallpox-n	Number=Sing	dema	0			oewn_form
+pseudosmallpoxes	0	oewn-pseudosmallpox-n	Number=Plur	dema	0			rule
+pseudosocial	0		Degree=Pos	dema	0	pseudosocial	a	moby_reverse
+pseudosocialistic	0		Degree=Pos	dema	0	pseudosocialistic	a	moby_reverse
+pseudosocially	0		Degree=Pos	dema	0	pseudosocially	r	moby_reverse
+pseudospectral	0		Degree=Pos	dema	0	pseudospectral	a	moby_reverse
+pseudosphere	0		Number=Sing	dema	0	pseudosphere	n	moby_reverse
+pseudospheres	0		Number=Plur	dema	0	pseudosphere	n	rule
+pseudospherical	0		Degree=Pos	dema	0	pseudospherical	a	moby_reverse
+pseudospiritual	0		Degree=Pos	dema	0	pseudospiritual	a	moby_reverse
+pseudospiritually	0		Degree=Pos	dema	0	pseudospiritually	r	moby_reverse
+pseudosquamate	0		Degree=Pos	dema	0	pseudosquamate	a	moby_reverse
+pseudostalactitic	0		Degree=Pos	dema	0	pseudostalactitic	a	moby_reverse
+pseudostalagmitic	0		Degree=Pos	dema	0	pseudostalagmitic	a	moby_reverse
+pseudostigmatic	0		Degree=Pos	dema	0	pseudostigmatic	a	moby_reverse
+pseudostudious	0		Degree=Pos	dema	0	pseudostudious	a	moby_reverse
+pseudostudiously	0		Degree=Pos	dema	0	pseudostudiously	r	moby_reverse
+pseudosubtle	0		Degree=Pos	dema	0	pseudosubtle	a	moby_reverse
+pseudosuicidal	0		Degree=Pos	dema	0	pseudosuicidal	a	moby_reverse
+pseudosymptomatic	0		Degree=Pos	dema	0	pseudosymptomatic	a	moby_reverse
+pseudosyphilitic	0		Degree=Pos	dema	0	pseudosyphilitic	a	moby_reverse
+pseudotetragonal	0		Degree=Pos	dema	0	pseudotetragonal	a	moby_reverse
+pseudotribal	0		Degree=Pos	dema	0	pseudotribal	a	moby_reverse
+pseudotribally	0		Degree=Pos	dema	0	pseudotribally	r	moby_reverse
+pseudotripteral	0		Degree=Pos	dema	0	pseudotripteral	a	moby_reverse
+pseudovarian	0		Degree=Pos	dema	0	pseudovarian	a	moby_reverse
+pseudovaries	0		Number=Plur	dema	0	pseudovary	n	rule
+pseudovariola	0	oewn-pseudovariola-n	Number=Sing	dema	0			oewn_form
+pseudovariolas	0	oewn-pseudovariola-n	Number=Plur	dema	0			rule
+pseudovary	0		Number=Sing	dema	0	pseudovary	n	moby_reverse
+pseudovelar	0		Degree=Pos	dema	0	pseudovelar	a	moby_reverse
+pseudoviperine	0		Degree=Pos	dema	0	pseudoviperine	a	moby_reverse
+pseudoviperous	0		Degree=Pos	dema	0	pseudoviperous	a	moby_reverse
+pseudoviperously	0		Degree=Pos	dema	0	pseudoviperously	r	moby_reverse
+pseudoviscous	0		Degree=Pos	dema	0	pseudoviscous	a	moby_reverse
+pseudozealous	0		Degree=Pos	dema	0	pseudozealous	a	moby_reverse
+pseudozealously	0		Degree=Pos	dema	0	pseudozealously	r	moby_reverse
+pseudozoogloeal	0		Degree=Pos	dema	0	pseudozoogloeal	a	moby_reverse
+pseudozoological	0		Degree=Pos	dema	0	pseudozoological	a	moby_reverse
+pseuds	0	oewn-pseud-n	Number=Plur	dema	0			rule
+psf	0		Number=Sing	dema	0	psf	n	moby_reverse
+pshaw	0	dema-pshaw-i		dema	0			carried
+psi	0	oewn-psi-n	Number=Sing	dema	0			oewn_form
+psi particle	0	oewn-psi_particle-n	Number=Sing	dema	0			oewn_form
+psi particles	0	oewn-psi_particle-n	Number=Plur	dema	0			rule
+psia	0		Number=Sing	dema	0	psia	n	moby_reverse
+psias	0		Number=Plur	dema	0	psia	n	rule
+psid	0		Number=Sing	dema	0	psid	n	moby_reverse
+psids	0		Number=Plur	dema	0	psid	n	rule
+psilanthropic	0		Degree=Pos	dema	0	psilanthropic	a	moby_reverse
+psilanthropist	0		Number=Sing	dema	0	psilanthropist	n	moby_reverse
+psilanthropists	0		Number=Plur	dema	0	psilanthropist	n	rule
+psilocin	0	oewn-psilocin-n	Number=Sing	dema	0			oewn_form
+psilocine	0	oewn-psilocine-n	Number=Sing	dema	0			oewn_form
+psilocines	0	oewn-psilocine-n	Number=Plur	dema	0			rule
+psilocins	0	oewn-psilocin-n	Number=Plur	dema	0			rule
+psilocybin	0	oewn-psilocybin-n	Number=Sing	dema	0			oewn_form
+psilocybin mushroom	0	oewn-psilocybin_mushroom-n	Number=Sing	dema	0			oewn_form
+psilocybin mushrooms	0	oewn-psilocybin_mushroom-n	Number=Plur	dema	0			rule
+psilocybins	0	oewn-psilocybin-n	Number=Plur	dema	0			rule
+psilocyn	0	oewn-psilocyn-n	Number=Sing	dema	0			oewn_form
+psilocyns	0	oewn-psilocyn-n	Number=Plur	dema	0			rule
+psilomelane	0	oewn-psilomelane-n	Number=Sing	dema	0			oewn_form
+psilomelanes	0	oewn-psilomelane-n	Number=Plur	dema	0			rule
+psilophyte	0	oewn-psilophyte-n	Number=Sing	dema	0			oewn_form
+psilophytes	0	oewn-psilophyte-n	Number=Plur	dema	0			rule
+psilophyton	0	oewn-psilophyton-n	Number=Sing	dema	0			oewn_form
+psilophytons	0	oewn-psilophyton-n	Number=Plur	dema	0			rule
+psilosis	0	oewn-psilosis-n	Number=Sing	dema	0			oewn_form
+psilotic	0		Degree=Pos	dema	0	psilotic	a	moby_reverse
+psilotsin	0	oewn-psilotsin-n	Number=Sing	dema	0			oewn_form
+psilotsins	0	oewn-psilotsin-n	Number=Plur	dema	0			rule
+psis	0	oewn-psi-n	Number=Plur	dema	0			rule
+psittacine	0		Degree=Pos	dema	0	psittacine	a	moby_reverse
+psittacinite	0		Number=Sing	dema	0	psittacinite	n	moby_reverse
+psittacinites	0		Number=Plur	dema	0	psittacinite	n	rule
+psittacistic	0		Degree=Pos	dema	0	psittacistic	a	moby_reverse
+psittacosaur	0	oewn-psittacosaur-n	Number=Sing	dema	0			oewn_form
+psittacosaurs	0	oewn-psittacosaur-n	Number=Plur	dema	0			rule
+psittacosaurus	0	oewn-psittacosaurus-n	Number=Sing	dema	0			oewn_form
+psittacosis	0	oewn-psittacosis-n	Number=Sing	dema	0			oewn_form
+psoas	0	oewn-psoas-n	Number=Sing	dema	0			oewn_form
+psoases	0	oewn-psoas-n	Number=Plur	dema	0			rule
+psoatic	0		Degree=Pos	dema	0	psoatic	a	moby_reverse
+psocid	0	oewn-psocid-n	Number=Sing	dema	0			oewn_form
+psocids	0	oewn-psocid-n	Number=Plur	dema	0			rule
+psocopterous insect	0	oewn-psocopterous_insect-n	Number=Sing	dema	0			oewn_form
+psocopterous insects	0	oewn-psocopterous_insect-n	Number=Plur	dema	0			rule
+psoralea	0		Number=Sing	dema	0	psoralea	n	moby_reverse
+psoraleas	0		Number=Plur	dema	0	psoralea	n	rule
+psoriasis	0	oewn-psoriasis-n	Number=Sing	dema	0			oewn_form
+psoriatic	0		Degree=Pos	dema	0	psoriatic	a	moby_reverse
+psoriatic arthritis	0	oewn-psoriatic_arthritis-n	Number=Sing	dema	0			oewn_form
+psorosis	0		Number=Sing	dema	0	psorosis	n	moby_reverse
+psst	0	dema-psst-i		dema	0			carried
+psych	0		VerbForm=Inf	dema	0	psych	v	moby_reverse
+psych up	0	oewn-psych_up-v	VerbForm=Inf	dema	0			oewn_form
+psychanalytically	0		Degree=Pos	dema	0	psychanalytically	r	moby_reverse
+psychasthenia	0		Number=Sing	dema	0	psychasthenia	n	moby_reverse
+psychasthenias	0		Number=Plur	dema	0	psychasthenia	n	rule
+psychasthenic	0		Degree=Pos	dema	0	psychasthenic	a	moby_reverse
+psychataxia	0		Number=Sing	dema	0	psychataxia	n	moby_reverse
+psychataxias	0		Number=Plur	dema	0	psychataxia	n	rule
+psyche	0	oewn-psyche-n	Number=Sing	dema	0			oewn_form
+psyched	0		Tense=Past+VerbForm=Part	dema	0	psych	v	rule
+psyched up	0	oewn-psych_up-v	Tense=Past+VerbForm=Part	dema	0			rule
+psychedelia	0	oewn-psychedelia-n	Number=Sing	dema	0			oewn_form
+psychedelias	0	oewn-psychedelia-n	Number=Plur	dema	0			rule
+psychedelic	0	oewn-psychedelic-a	Degree=Pos	dema	0			oewn_form
+psychedelic drug	0	oewn-psychedelic_drug-n	Number=Sing	dema	0			oewn_form
+psychedelic drugs	0	oewn-psychedelic_drug-n	Number=Plur	dema	0			rule
+psychedelic rock	0	oewn-psychedelic_rock-n	Number=Sing	dema	0			oewn_form
+psychedelic rocks	0	oewn-psychedelic_rock-n	Number=Plur	dema	0			rule
+psychedlic mushroom	0	oewn-psychedlic_mushroom-n	Number=Sing	dema	0			oewn_form
+psychedlic mushrooms	0	oewn-psychedlic_mushroom-n	Number=Plur	dema	0			rule
+psyches	0		Person=3+Tense=Pres	dema	0	psych	v	rule
+psyches	1	oewn-psyche-n	Number=Plur	dema	0			rule
+psyches up	0	oewn-psych_up-v	Person=3+Tense=Pres	dema	0			rule
+psychiatric	0	oewn-psychiatric-a	Degree=Pos	dema	0			oewn_form
+psychiatric hospital	0	oewn-psychiatric_hospital-n	Number=Sing	dema	0			oewn_form
+psychiatric hospitals	0	oewn-psychiatric_hospital-n	Number=Plur	dema	0			rule
+psychiatrical	0	oewn-psychiatrical-a	Degree=Pos	dema	0			oewn_form
+psychiatrically	0		Degree=Pos	dema	0	psychiatrically	r	moby_reverse
+psychiatries	0	oewn-psychiatry-n	Number=Plur	dema	0			rule
+psychiatrist	0	oewn-psychiatrist-n	Number=Sing	dema	0			oewn_form
+psychiatrists	0	oewn-psychiatrist-n	Number=Plur	dema	0			rule
+psychiatry	0	oewn-psychiatry-n	Number=Sing	dema	0			oewn_form
+psychic	0	oewn-psychic-a	Degree=Pos	dema	0			oewn_form
+psychic	1	oewn-psychic-n	Number=Sing	dema	0			oewn_form
+psychic communication	0	oewn-psychic_communication-n	Number=Sing	dema	0			oewn_form
+psychic communications	0	oewn-psychic_communication-n	Number=Plur	dema	0			rule
+psychic energies	0	oewn-psychic_energy-n	Number=Plur	dema	0			rule
+psychic energy	0	oewn-psychic_energy-n	Number=Sing	dema	0			oewn_form
+psychic phenomena	0	oewn-psychic_phenomena-n	Number=Sing	dema	0			oewn_form
+psychic phenomenas	0	oewn-psychic_phenomena-n	Number=Plur	dema	0			rule
+psychic phenomenon	0	oewn-psychic_phenomenon-n	Number=Sing	dema	0			oewn_form
+psychic phenomenons	0	oewn-psychic_phenomenon-n	Number=Plur	dema	0			rule
+psychic trauma	0	oewn-psychic_trauma-n	Number=Sing	dema	0			oewn_form
+psychic traumas	0	oewn-psychic_trauma-n	Number=Plur	dema	0			rule
+psychical	0	oewn-psychical-a	Degree=Pos	dema	0			oewn_form
+psychical communication	0	oewn-psychical_communication-n	Number=Sing	dema	0			oewn_form
+psychical communications	0	oewn-psychical_communication-n	Number=Plur	dema	0			rule
+psychically	0	oewn-psychically-r	Degree=Pos	dema	0			oewn_form
+psychics	0	oewn-psychic-n	Number=Plur	dema	0			rule
+psyching	0		VerbForm=Ger	dema	0	psych	v	rule
+psyching up	0	oewn-psych_up-v	VerbForm=Ger	dema	0			rule
+psycho	0	oewn-psycho-n	Number=Sing	dema	0			oewn_form
+psycho	1		Degree=Pos	dema	0	psycho	a	moby_reverse
+psychoacoustics	0		Number=Sing	dema	0	psychoacoustics	n	moby_reverse
+psychoactive	0	oewn-psychoactive-a	Degree=Pos	dema	0			oewn_form
+psychoactive drug	0	oewn-psychoactive_drug-n	Number=Sing	dema	0			oewn_form
+psychoactive drugs	0	oewn-psychoactive_drug-n	Number=Plur	dema	0			rule
+psychoactive substance	0	oewn-psychoactive_substance-n	Number=Sing	dema	0			oewn_form
+psychoactive substances	0	oewn-psychoactive_substance-n	Number=Plur	dema	0			rule
+psychoanal	0		Number=Sing	dema	0	psychoanal	n	moby_reverse
+psychoanals	0		Number=Plur	dema	0	psychoanal	n	rule
+psychoanalyse	0	oewn-psychoanalyse-v	VerbForm=Inf	dema	0			oewn_form
+psychoanalysed	0	oewn-psychoanalyse-v	Tense=Past+VerbForm=Part	dema	0			rule
+psychoanalyses	0	oewn-psychoanalyse-v	Person=3+Tense=Pres	dema	0			rule
+psychoanalysing	0	oewn-psychoanalyse-v	VerbForm=Ger	dema	0			rule
+psychoanalysis	0	oewn-psychoanalysis-n	Number=Sing	dema	0			oewn_form
+psychoanalyst	0	oewn-psychoanalyst-n	Number=Sing	dema	0			oewn_form
+psychoanalysts	0	oewn-psychoanalyst-n	Number=Plur	dema	0			rule
+psychoanalytic	0	oewn-psychoanalytic-a	Degree=Pos	dema	0			oewn_form
+psychoanalytic process	0	oewn-psychoanalytic_process-n	Number=Sing	dema	0			oewn_form
+psychoanalytic processes	0	oewn-psychoanalytic_process-n	Number=Plur	dema	0			rule
+psychoanalytical	0	oewn-psychoanalytical-a	Degree=Pos	dema	0			oewn_form
+psychoanalytically	0		Degree=Pos	dema	0	psychoanalytically	r	moby_reverse
+psychoanalyze	0	oewn-psychoanalyze-v	VerbForm=Inf	dema	0			oewn_form
+psychoanalyzed	0	oewn-psychoanalyze-v	Tense=Past+VerbForm=Part	dema	0			rule
+psychoanalyzer	0		Number=Sing	dema	0	psychoanalyzer	n	moby_reverse
+psychoanalyzers	0		Number=Plur	dema	0	psychoanalyzer	n	rule
+psychoanalyzes	0	oewn-psychoanalyze-v	Person=3+Tense=Pres	dema	0			rule
+psychoanalyzing	0	oewn-psychoanalyze-v	VerbForm=Ger	dema	0			rule
+psychobabble	0	oewn-psychobabble-n	Number=Sing	dema	0			oewn_form
+psychobabbles	0	oewn-psychobabble-n	Number=Plur	dema	0			rule
+psychobiologic	0		Degree=Pos	dema	0	psychobiologic	a	moby_reverse
+psychobiological	0		Degree=Pos	dema	0	psychobiological	a	moby_reverse
+psychobiologies	0		Number=Plur	dema	0	psychobiology	n	rule
+psychobiologist	0		Number=Sing	dema	0	psychobiologist	n	moby_reverse
+psychobiologists	0		Number=Plur	dema	0	psychobiologist	n	rule
+psychobiology	0		Number=Sing	dema	0	psychobiology	n	moby_reverse
+psychochemical	0		Number=Sing	dema	0	psychochemical	n	moby_reverse
+psychochemical	1		Degree=Pos	dema	0	psychochemical	a	moby_reverse
+psychochemicals	0		Number=Plur	dema	0	psychochemical	n	rule
+psychodelic	0		Degree=Pos	dema	0	psychodelic	a	moby_reverse
+psychodiagnosis	0		Number=Sing	dema	0	psychodiagnosis	n	moby_reverse
+psychodiagnostic	0		Degree=Pos	dema	0	psychodiagnostic	a	moby_reverse
+psychodiagnostics	0		Number=Sing	dema	0	psychodiagnostics	n	moby_reverse
+psychodid	0	oewn-psychodid-n	Number=Sing	dema	0			oewn_form
+psychodids	0	oewn-psychodid-n	Number=Plur	dema	0			rule
+psychodrama	0		Number=Sing	dema	0	psychodrama	n	moby_reverse
+psychodramas	0		Number=Plur	dema	0	psychodrama	n	rule
+psychodynamics	0	oewn-psychodynamics-n	Number=Sing	dema	0			oewn_form
+psychogalvanic	0		Degree=Pos	dema	0	psychogalvanic	a	moby_reverse
+psychogalvanic response	0	oewn-psychogalvanic_response-n	Number=Sing	dema	0			oewn_form
+psychogalvanic responses	0	oewn-psychogalvanic_response-n	Number=Plur	dema	0			rule
+psychogalvanometer	0		Number=Sing	dema	0	psychogalvanometer	n	moby_reverse
+psychogalvanometers	0		Number=Plur	dema	0	psychogalvanometer	n	rule
+psychogenesis	0	oewn-psychogenesis-n	Number=Sing	dema	0			oewn_form
+psychogenetic	0	oewn-psychogenetic-a	Degree=Pos	dema	0			oewn_form
+psychogenetically	0		Degree=Pos	dema	0	psychogenetically	r	moby_reverse
+psychogenic	0	oewn-psychogenic-a	Degree=Pos	dema	0			oewn_form
+psychogenic fugue	0	oewn-psychogenic_fugue-n	Number=Sing	dema	0			oewn_form
+psychogenic fugues	0	oewn-psychogenic_fugue-n	Number=Plur	dema	0			rule
+psychognosis	0		Number=Sing	dema	0	psychognosis	n	moby_reverse
+psychographer	0		Number=Sing	dema	0	psychographer	n	moby_reverse
+psychographers	0		Number=Plur	dema	0	psychographer	n	rule
+psychographic	0		Degree=Pos	dema	0	psychographic	a	moby_reverse
+psychographically	0		Degree=Pos	dema	0	psychographically	r	moby_reverse
+psychographics	0	oewn-psychographics-n	Number=Sing	dema	0			oewn_form
+psychohistories	0		Number=Plur	dema	0	psychohistory	n	rule
+psychohistory	0		Number=Sing	dema	0	psychohistory	n	moby_reverse
+psychokinesis	0	oewn-psychokinesis-n	Number=Sing	dema	0			oewn_form
+psychokinetic	0	oewn-psychokinetic-a	Degree=Pos	dema	0			oewn_form
+psychol	0		Number=Sing	dema	0	psychol	n	moby_reverse
+psycholinguist	0	oewn-psycholinguist-n	Number=Sing	dema	0			oewn_form
+psycholinguistic	0	oewn-psycholinguistic-a	Degree=Pos	dema	0			oewn_form
+psycholinguistics	0	oewn-psycholinguistics-n	Number=Sing	dema	0			oewn_form
+psycholinguists	0	oewn-psycholinguist-n	Number=Plur	dema	0			rule
+psychological	0	oewn-psychological-a	Degree=Pos	dema	0			oewn_form
+psychological condition	0	oewn-psychological_condition-n	Number=Sing	dema	0			oewn_form
+psychological conditions	0	oewn-psychological_condition-n	Number=Plur	dema	0			rule
+psychological disorder	0	oewn-psychological_disorder-n	Number=Sing	dema	0			oewn_form
+psychological disorders	0	oewn-psychological_disorder-n	Number=Plur	dema	0			rule
+psychological feature	0	oewn-psychological_feature-n	Number=Sing	dema	0			oewn_form
+psychological features	0	oewn-psychological_feature-n	Number=Plur	dema	0			rule
+psychological medicine	0	oewn-psychological_medicine-n	Number=Sing	dema	0			oewn_form
+psychological medicines	0	oewn-psychological_medicine-n	Number=Plur	dema	0			rule
+psychological moment	0	oewn-psychological_moment-n	Number=Sing	dema	0			oewn_form
+psychological moments	0	oewn-psychological_moment-n	Number=Plur	dema	0			rule
+psychological operation	0	oewn-psychological_operation-n	Number=Sing	dema	0			oewn_form
+psychological operations	0	oewn-psychological_operation-n	Number=Plur	dema	0			rule
+psychological science	0	oewn-psychological_science-n	Number=Sing	dema	0			oewn_form
+psychological sciences	0	oewn-psychological_science-n	Number=Plur	dema	0			rule
+psychological state	0	oewn-psychological_state-n	Number=Sing	dema	0			oewn_form
+psychological states	0	oewn-psychological_state-n	Number=Plur	dema	0			rule
+psychological warfare	0	oewn-psychological_warfare-n	Number=Sing	dema	0			oewn_form
+psychological warfares	0	oewn-psychological_warfare-n	Number=Plur	dema	0			rule
+psychologically	0	oewn-psychologically-r	Degree=Pos	dema	0			oewn_form
+psychologies	0	oewn-psychology-n	Number=Plur	dema	0			rule
+psychologised	0		VerbForm=Inf	dema	0	psychologised	v	moby_reverse
+psychologising	0		VerbForm=Inf	dema	0	psychologising	v	moby_reverse
+psychologism	0		Number=Sing	dema	0	psychologism	n	moby_reverse
+psychologisms	0		Number=Plur	dema	0	psychologism	n	rule
+psychologist	0	oewn-psychologist-n	Number=Sing	dema	0			oewn_form
+psychologist	1		Degree=Pos	dema	0	psychologist	a	moby_reverse
+psychologists	0	oewn-psychologist-n	Number=Plur	dema	0			rule
+psychologize	0		VerbForm=Inf	dema	0	psychologize	v	moby_reverse
+psychologized	0		Tense=Past+VerbForm=Part	dema	0	psychologize	v	rule
+psychologizes	0		Person=3+Tense=Pres	dema	0	psychologize	v	rule
+psychologizing	0		VerbForm=Ger	dema	0	psychologize	v	rule
+psychology	0	oewn-psychology-n	Number=Sing	dema	0			oewn_form
+psychology department	0	oewn-psychology_department-n	Number=Sing	dema	0			oewn_form
+psychology departments	0	oewn-psychology_department-n	Number=Plur	dema	0			rule
+psychols	0		Number=Plur	dema	0	psychol	n	rule
+psychomachies	0	oewn-psychomachy-n	Number=Plur	dema	0			rule
+psychomachy	0	oewn-psychomachy-n	Number=Sing	dema	0			oewn_form
+psychomancies	0		Number=Plur	dema	0	psychomancy	n	rule
+psychomancy	0		Number=Sing	dema	0	psychomancy	n	moby_reverse
+psychometric	0	oewn-psychometric-a	Degree=Pos	dema	0			oewn_form
+psychometric test	0	oewn-psychometric_test-n	Number=Sing	dema	0			oewn_form
+psychometric tests	0	oewn-psychometric_test-n	Number=Plur	dema	0			rule
+psychometrical	0		Degree=Pos	dema	0	psychometrical	a	moby_reverse
+psychometrically	0		Degree=Pos	dema	0	psychometrically	r	moby_reverse
+psychometrician	0		Number=Sing	dema	0	psychometrician	n	moby_reverse
+psychometricians	0		Number=Plur	dema	0	psychometrician	n	rule
+psychometrics	0	oewn-psychometrics-n	Number=Sing	dema	0			oewn_form
+psychometries	0	oewn-psychometry-n	Number=Plur	dema	0			rule
+psychometrika	0	oewn-psychometrika-n	Number=Sing	dema	0			oewn_form
+psychometrikas	0	oewn-psychometrika-n	Number=Plur	dema	0			rule
+psychometrist	0		Number=Sing	dema	0	psychometrist	n	moby_reverse
+psychometrists	0		Number=Plur	dema	0	psychometrist	n	rule
+psychometry	0	oewn-psychometry-n	Number=Sing	dema	0			oewn_form
+psychomotor	0	oewn-psychomotor-a	Degree=Pos	dema	0			oewn_form
+psychomotor development	0	oewn-psychomotor_development-n	Number=Sing	dema	0			oewn_form
+psychomotor developments	0	oewn-psychomotor_development-n	Number=Plur	dema	0			rule
+psychomotor epilepsies	0	oewn-psychomotor_epilepsy-n	Number=Plur	dema	0			rule
+psychomotor epilepsy	0	oewn-psychomotor_epilepsy-n	Number=Sing	dema	0			oewn_form
+psychoneuroses	0	oewn-psychoneurosis-n	Number=Plur	dema	0			oewn_form
+psychoneurosis	0	oewn-psychoneurosis-n	Number=Sing	dema	0			oewn_form
+psychoneurotic	0	oewn-psychoneurotic-a	Degree=Pos	dema	0			oewn_form
+psychoneurotic	1	oewn-psychoneurotic-n	Number=Sing	dema	0			oewn_form
+psychoneurotics	0	oewn-psychoneurotic-n	Number=Plur	dema	0			rule
+psychonomics	0	oewn-psychonomics-n	Number=Sing	dema	0			oewn_form
+psychopath	0	oewn-psychopath-n	Number=Sing	dema	0			oewn_form
+psychopathic	0	oewn-psychopathic-a	Degree=Pos	dema	0			oewn_form
+psychopathic personalities	0	oewn-psychopathic_personality-n	Number=Plur	dema	0			rule
+psychopathic personality	0	oewn-psychopathic_personality-n	Number=Sing	dema	0			oewn_form
+psychopathies	0	oewn-psychopathy-n	Number=Plur	dema	0			rule
+psychopathist	0		Number=Sing	dema	0	psychopathist	n	moby_reverse
+psychopathists	0		Number=Plur	dema	0	psychopathist	n	rule
+psychopathologic	0	oewn-psychopathologic-a	Degree=Pos	dema	0			oewn_form
+psychopathological	0	oewn-psychopathological-a	Degree=Pos	dema	0			oewn_form
+psychopathologies	0	oewn-psychopathology-n	Number=Plur	dema	0			rule
+psychopathologist	0		Number=Sing	dema	0	psychopathologist	n	moby_reverse
+psychopathologists	0		Number=Plur	dema	0	psychopathologist	n	rule
+psychopathology	0	oewn-psychopathology-n	Number=Sing	dema	0			oewn_form
+psychopaths	0	oewn-psychopath-n	Number=Plur	dema	0			rule
+psychopathy	0	oewn-psychopathy-n	Number=Sing	dema	0			oewn_form
+psychopharmacologic	0		Degree=Pos	dema	0	psychopharmacologic	a	moby_reverse
+psychopharmacological	0	oewn-psychopharmacological-a	Degree=Pos	dema	0			oewn_form
+psychopharmacologies	0	oewn-psychopharmacology-n	Number=Plur	dema	0			rule
+psychopharmacology	0	oewn-psychopharmacology-n	Number=Sing	dema	0			oewn_form
+psychophysicist	0	oewn-psychophysicist-n	Number=Sing	dema	0			oewn_form
+psychophysicists	0	oewn-psychophysicist-n	Number=Plur	dema	0			rule
+psychophysics	0	oewn-psychophysics-n	Number=Sing	dema	0			oewn_form
+psychophysiologically	0		Degree=Pos	dema	0	psychophysiologically	r	moby_reverse
+psychophysiologies	0	oewn-psychophysiology-n	Number=Plur	dema	0			rule
+psychophysiologist	0		Number=Sing	dema	0	psychophysiologist	n	moby_reverse
+psychophysiologists	0		Number=Plur	dema	0	psychophysiologist	n	rule
+psychophysiology	0	oewn-psychophysiology-n	Number=Sing	dema	0			oewn_form
+psychopomp	0	oewn-psychopomp-n	Number=Sing	dema	0			oewn_form
+psychopomps	0	oewn-psychopomp-n	Number=Plur	dema	0			rule
+psychoprophylactic	0		Degree=Pos	dema	0	psychoprophylactic	a	moby_reverse
+psychoprophylaxis	0		Number=Sing	dema	0	psychoprophylaxis	n	moby_reverse
+psychos	0	oewn-psycho-n	Number=Plur	dema	0			rule
+psychoses	0	oewn-psychosis-n	Number=Plur	dema	0			oewn_form
+psychosexual	0	oewn-psychosexual-a	Degree=Pos	dema	0			oewn_form
+psychosexual development	0	oewn-psychosexual_development-n	Number=Sing	dema	0			oewn_form
+psychosexual developments	0	oewn-psychosexual_development-n	Number=Plur	dema	0			rule
+psychosexualities	0	oewn-psychosexuality-n	Number=Plur	dema	0			rule
+psychosexuality	0	oewn-psychosexuality-n	Number=Sing	dema	0			oewn_form
+psychosis	0	oewn-psychosis-n	Number=Sing	dema	0			oewn_form
+psychosocial	0		Degree=Pos	dema	0	psychosocial	a	moby_reverse
+psychosomatic	0	oewn-psychosomatic-a	Degree=Pos	dema	0			oewn_form
+psychosomatic disorder	0	oewn-psychosomatic_disorder-n	Number=Sing	dema	0			oewn_form
+psychosomatic disorders	0	oewn-psychosomatic_disorder-n	Number=Plur	dema	0			rule
+psychosomatics	0		Number=Sing	dema	0	psychosomatics	n	moby_reverse
+psychosurgeries	0	oewn-psychosurgery-n	Number=Plur	dema	0			rule
+psychosurgery	0	oewn-psychosurgery-n	Number=Sing	dema	0			oewn_form
+psychotechnics	0		Number=Sing	dema	0	psychotechnics	n	moby_reverse
+psychotechnologies	0		Number=Plur	dema	0	psychotechnology	n	rule
+psychotechnology	0		Number=Sing	dema	0	psychotechnology	n	moby_reverse
+psychotherapeutic	0	oewn-psychotherapeutic-a	Degree=Pos	dema	0			oewn_form
+psychotherapeutically	0		Degree=Pos	dema	0	psychotherapeutically	r	moby_reverse
+psychotherapeutics	0	oewn-psychotherapeutics-n	Number=Sing	dema	0			oewn_form
+psychotherapeutist	0		Number=Sing	dema	0	psychotherapeutist	n	moby_reverse
+psychotherapeutists	0		Number=Plur	dema	0	psychotherapeutist	n	rule
+psychotherapies	0	oewn-psychotherapy-n	Number=Plur	dema	0			rule
+psychotherapist	0	oewn-psychotherapist-n	Number=Sing	dema	0			oewn_form
+psychotherapists	0	oewn-psychotherapist-n	Number=Plur	dema	0			rule
+psychotherapy	0	oewn-psychotherapy-n	Number=Sing	dema	0			oewn_form
+psychotherapy group	0	oewn-psychotherapy_group-n	Number=Sing	dema	0			oewn_form
+psychotherapy groups	0	oewn-psychotherapy_group-n	Number=Plur	dema	0			rule
+psychotic	0	oewn-psychotic-a	Degree=Pos	dema	0			oewn_form
+psychotic	1	oewn-psychotic-n	Number=Sing	dema	0			oewn_form
+psychotic belief	0	oewn-psychotic_belief-n	Number=Sing	dema	0			oewn_form
+psychotic beliefs	0	oewn-psychotic_belief-n	Number=Plur	dema	0			rule
+psychotic depression	0	oewn-psychotic_depression-n	Number=Sing	dema	0			oewn_form
+psychotic depressions	0	oewn-psychotic_depression-n	Number=Plur	dema	0			rule
+psychotic person	0	oewn-psychotic_person-n	Number=Sing	dema	0			oewn_form
+psychotic persons	0	oewn-psychotic_person-n	Number=Plur	dema	0			rule
+psychotics	0	oewn-psychotic-n	Number=Plur	dema	0			rule
+psychotomimetic	0		Degree=Pos	dema	0	psychotomimetic	a	moby_reverse
+psychotropic	0	oewn-psychotropic-a	Degree=Pos	dema	0			oewn_form
+psychotropic agent	0	oewn-psychotropic_agent-n	Number=Sing	dema	0			oewn_form
+psychotropic agents	0	oewn-psychotropic_agent-n	Number=Plur	dema	0			rule
+psychrometer	0	oewn-psychrometer-n	Number=Sing	dema	0			oewn_form
+psychrometers	0	oewn-psychrometer-n	Number=Plur	dema	0			rule
+psychrometric	0		Degree=Pos	dema	0	psychrometric	a	moby_reverse
+psychrometrical	0		Degree=Pos	dema	0	psychrometrical	a	moby_reverse
+psychrometries	0		Number=Plur	dema	0	psychrometry	n	rule
+psychrometry	0		Number=Sing	dema	0	psychrometry	n	moby_reverse
+psychrophile	0		Number=Sing	dema	0	psychrophile	n	moby_reverse
+psychrophiles	0		Number=Plur	dema	0	psychrophile	n	rule
+psychrophilic	0		Degree=Pos	dema	0	psychrophilic	a	moby_reverse
+psylla	0	oewn-psylla-n	Number=Sing	dema	0			oewn_form
+psyllas	0	oewn-psylla-n	Number=Plur	dema	0			rule
+psyllid	0	oewn-psyllid-n	Number=Sing	dema	0			oewn_form
+psyllids	0	oewn-psyllid-n	Number=Plur	dema	0			rule
+psyllium	0	oewn-psyllium-n	Number=Sing	dema	0			oewn_form
+psylliums	0	oewn-psyllium-n	Number=Plur	dema	0			rule
+psyop	0	oewn-psyop-n	Number=Sing	dema	0			oewn_form
+psyops	0	oewn-psyop-n	Number=Plur	dema	0			rule

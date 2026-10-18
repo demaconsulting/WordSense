@@ -1,0 +1,5 @@
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PVA	0	oewn-PVA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PVAS	0	oewn-PVA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PVC	0	oewn-PVC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PVCS	0	oewn-PVC-n	Capitalization=Upper+Number=Plur	dema	0			rule

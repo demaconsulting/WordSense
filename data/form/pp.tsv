@@ -1,10 +1,10 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pp	0	dema-pp-n	Number=Sing	dema	0
-ppd	0	dema-ppd-n	Number=Sing	dema	0
-ppds	0	dema-ppd-n	Number=Plur	dema	0
-pph	0	dema-pph-n	Number=Sing	dema	0
-pphs	0	dema-pph-n	Number=Plur	dema	0
-ppl	0	dema-ppl-n	Number=Sing	dema	0
-ppls	0	dema-ppl-n	Number=Plur	dema	0
-ppm	0	dema-ppm-n	Number=Sing	dema	0
-ppms	0	dema-ppm-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+PPLO	0	oewn-PPLO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PPLOS	0	oewn-PPLO-n	Capitalization=Upper+Number=Plur	dema	0			rule
+PPP	0	oewn-PPP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+PPPS	0	oewn-PPP-n	Capitalization=Upper+Number=Plur	dema	0			rule
+pp	0		Number=Sing	dema	0	pp	n	moby_reverse
+ppd	0		Number=Sing	dema	0	ppd	n	moby_reverse
+pph	0		Number=Sing	dema	0	pph	n	moby_reverse
+ppl	0		Number=Sing	dema	0	ppl	n	moby_reverse
+ppm	0		Number=Sing	dema	0	ppm	n	moby_reverse

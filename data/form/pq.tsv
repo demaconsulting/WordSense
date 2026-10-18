@@ -1,2 +1,2 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pq	0	dema-pq-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+pq	0		Number=Sing	dema	0	pq	n	moby_reverse

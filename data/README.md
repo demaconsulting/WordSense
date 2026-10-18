@@ -33,7 +33,7 @@ importer refuses to overwrite existing tables, so a re-import can never destroy 
 | `synset_relation` | `from_synset, rel, to_synset` | relation between synsets, one stored direction |
 | `sense_relation` | `from_sense, rel, rel_subtype, to_sense` | relation between senses, one stored direction |
 | `pronunciation` | `entry_id, seq` | IPA given by the source, a hint |
-| `id_map` | `old_id, release` | identifier map of a later release (empty) |
+| `id_map` | `old_id, release` | identifier map of the previous release (OEWN 2024) |
 | `coarse_class` | `class_id` | class of the coarse sense inventory of the shipped models |
 | `class_sense` | `class_id, sense_id` | the senses of a class; a sense is in at most one class |
 | `class_entry` | `class_id, entry_id, features` | the entry (and grammatical features) a class stands for |

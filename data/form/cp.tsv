@@ -1,15 +1,19 @@
-spelling	rank	entry_id	features	source_id	reviewed
-cp	0	dema-cp-n	Number=Sing	dema	0
-cpd	0	dema-cpd-n	Number=Sing	dema	0
-cpds	0	dema-cpd-n	Number=Plur	dema	0
-cpl	0	dema-cpl-n	Number=Sing	dema	0
-cpls	0	dema-cpl-n	Number=Plur	dema	0
-cpm	0	dema-cpm-n	Number=Sing	dema	0
-cpms	0	dema-cpm-n	Number=Plur	dema	0
-cpo	0	dema-cpo-n	Number=Sing	dema	0
-cpoes	0	dema-cpo-n	Number=Plur	dema	0
-cpos	0	dema-cpo-n	Number=Plur	dema	0
-cps	0	oewn-cps-n	Number=Sing	dema	0
-cpses	0	oewn-cps-n	Number=Plur	dema	0
-cpt	0	dema-cpt-n	Number=Sing	dema	0
-cpts	0	dema-cpt-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+CPA	0	oewn-CPA-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CPAS	0	oewn-CPA-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CPI	0	oewn-CPI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CPIS	0	oewn-CPI-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CPR	0	oewn-CPR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CPRS	0	oewn-CPR-n	Capitalization=Upper+Number=Plur	dema	0			rule
+CPU	0	oewn-CPU-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
+CPU board	0	oewn-CPU_board-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+CPU boards	0	oewn-CPU_board-n	Capitalization=Exact+Number=Plur	dema	0			rule
+CPUS	0	oewn-CPU-n	Capitalization=Upper+Number=Plur	dema	0			rule
+cp	0		Number=Sing	dema	0	cp	n	moby_reverse
+cpd	0		Number=Sing	dema	0	cpd	n	moby_reverse
+cpl	0		Number=Sing	dema	0	cpl	n	moby_reverse
+cpm	0		Number=Sing	dema	0	cpm	n	moby_reverse
+cpo	0		Number=Sing	dema	0	cpo	n	moby_reverse
+cps	0	oewn-cps-n	Number=Sing	dema	0			oewn_form
+cps	1		Number=Plur	dema	0	cp	n	rule
+cpt	0		Number=Sing	dema	0	cpt	n	moby_reverse

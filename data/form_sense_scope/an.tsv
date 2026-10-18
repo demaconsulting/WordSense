@@ -4,11 +4,9 @@ analyses	1	analyses#verb
 anger	0	anger#noun
 anger	1	anger#verb
 angered	0	anger#verb
-angering	0	anger#noun
-angering	1	anger#verb
-angerred	0	anger#verb
+angering	0	anger#verb
+angering	1	anger#noun
 angerring	0	anger#noun
-angerring	1	anger#verb
 angers	0	anger#noun
 angers	1	anger#verb
 animate	0	animate#adj

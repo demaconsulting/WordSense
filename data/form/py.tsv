@@ -1,378 +1,464 @@
-spelling	rank	entry_id	features	source_id	reviewed
-pya	0	oewn-pya-n	Number=Sing	dema	0
-pyaemia	0	oewn-pyaemia-n	Number=Sing	dema	0
-pyaemias	0	oewn-pyaemia-n	Number=Plur	dema	0
-pyaemic	0	oewn-pyaemic-a	Degree=Pos	dema	0
-pyaemically	0	dema-pyaemic-r		dema	0
-pyaemicness	0	dema-pyaemic-n	Number=Plur	dema	0
-pyalla	0	dema-pyalla-v	VerbForm=Inf	dema	0
-pyallaed	0	dema-pyalla-v	Tense=Past	dema	0
-pyallaer	0	dema-pyalla-n	Number=Plur	dema	0
-pyallaers	0	dema-pyalla-n	Number=Plur	dema	0
-pyallaing	0	dema-pyalla-v	VerbForm=Ger	dema	0
-pyallaingly	0	dema-pyalla-r		dema	0
-pyallas	0	dema-pyalla-v	Person=3+Tense=Pres	dema	0
-pyas	0	oewn-pya-n	Number=Plur	dema	0
-pycnidial	0	dema-pycnidial-a	Degree=Pos	dema	0
-pycnidially	0	dema-pycnidial-r		dema	0
-pycnidialness	0	dema-pycnidial-n	Number=Plur	dema	0
-pycnidium	0	oewn-pycnidium-n	Number=Sing	dema	0
-pycnidiums	0	oewn-pycnidium-n	Number=Plur	dema	0
-pycninidia	0	dema-pycninidia-n	Number=Sing	dema	0
-pycninidias	0	dema-pycninidia-n	Number=Plur	dema	0
-pycniospore	0	dema-pycniospore-n	Number=Sing	dema	0
-pycniospores	0	dema-pycniospore-n	Number=Plur	dema	0
-pycnometer	0	dema-pycnometer-n	Number=Sing	dema	0
-pycnometers	0	dema-pycnometer-n	Number=Plur	dema	0
-pycnostyle	0	dema-pycnostyle-a	Degree=Pos	dema	0
-pycnostyly	0	dema-pycnostyle-r		dema	0
-pye	0	dema-pye-n	Number=Sing	dema	0
-pyelitic	0	dema-pyelitic-a	Degree=Pos	dema	0
-pyelitically	0	dema-pyelitic-r		dema	0
-pyeliticness	0	dema-pyelitic-n	Number=Plur	dema	0
-pyelitis	0	oewn-pyelitis-n	Number=Sing	dema	0
-pyelographic	0	dema-pyelographic-a	Degree=Pos	dema	0
-pyelographically	0	dema-pyelographic-r		dema	0
-pyelographies	0	oewn-pyelography-n	Number=Plur	dema	0
-pyelography	0	oewn-pyelography-n	Number=Sing	dema	0
-pyelonephritic	0	dema-pyelonephritic-a	Degree=Pos	dema	0
-pyelonephritically	0	dema-pyelonephritic-r		dema	0
-pyelonephritis	0	oewn-pyelonephritis-n	Number=Sing	dema	0
-pyelonephrosis	0	dema-pyelonephrosis-n	Number=Sing	dema	0
-pyemia	0	oewn-pyemia-n	Number=Sing	dema	0
-pyemias	0	oewn-pyemia-n	Number=Plur	dema	0
-pyemic	0	oewn-pyemic-a	Degree=Pos	dema	0
-pyemically	0	dema-pyemic-r		dema	0
-pyemicness	0	dema-pyemic-n	Number=Plur	dema	0
-pyes	0	dema-pye-n	Number=Plur	dema	0
-pygidium	0	dema-pygidium-n	Number=Sing	dema	0
-pygidiums	0	dema-pygidium-n	Number=Plur	dema	0
-pygigidia	0	dema-pygigidia-n	Number=Sing	dema	0
-pygigidias	0	dema-pygigidia-n	Number=Plur	dema	0
-pygmies	0	oewn-pygmy-n	Number=Plur	dema	0
-pygmoid	0	dema-pygmoid-a	Degree=Pos	dema	0
-pygmoider	0	dema-pygmoid-a	Degree=Cmp	dema	0
-pygmoidest	0	dema-pygmoid-a	Degree=Sup	dema	0
-pygmoidly	0	dema-pygmoid-r		dema	0
-pygmoidness	0	dema-pygmoid-n	Number=Plur	dema	0
-pygmy	0	oewn-pygmy-n	Number=Sing	dema	0
-pygmyish	0	dema-pygmyish-a	Degree=Pos	dema	0
-pygmyishly	0	dema-pygmyish-r		dema	0
-pygmyishness	0	dema-pygmyish-n	Number=Plur	dema	0
-pygmyism	0	dema-pygmyism-n	Number=Sing	dema	0
-pygmyisms	0	dema-pygmyism-n	Number=Plur	dema	0
-pygostyled	0	dema-pygostyled-a	Degree=Pos	dema	0
-pygostyled	1	dema-pygostyled-v	VerbForm=Inf	dema	0
-pygostyleded	0	dema-pygostyled-v	Tense=Past	dema	0
-pygostyleding	0	dema-pygostyled-v	VerbForm=Ger	dema	0
-pygostyledly	0	dema-pygostyled-r		dema	0
-pygostyleds	0	dema-pygostyled-v	Person=3+Tense=Pres	dema	0
-pygostylous	0	dema-pygostylous-a	Degree=Pos	dema	0
-pygostylously	0	dema-pygostylous-r		dema	0
-pyic	0	dema-pyic-a	Degree=Pos	dema	0
-pyically	0	dema-pyic-r		dema	0
-pyiccer	0	dema-pyic-a	Degree=Cmp	dema	0
-pyiccest	0	dema-pyic-a	Degree=Sup	dema	0
-pyicness	0	dema-pyic-n	Number=Plur	dema	0
-pyin	0	dema-pyin-n	Number=Sing	dema	0
-pyins	0	dema-pyin-n	Number=Plur	dema	0
-pyjama	0	oewn-pyjama-n	Number=Sing	dema	0
-pyjamas	0	dema-pyjamas-n	Number=Sing	dema	0
-pyknic	0	oewn-pyknic-a	Degree=Pos	dema	0
-pyknically	0	dema-pyknic-r		dema	0
-pyknicness	0	dema-pyknic-n	Number=Plur	dema	0
-pylon	0	oewn-pylon-n	Number=Sing	dema	0
-pylons	0	oewn-pylon-n	Number=Plur	dema	0
-pylorectomies	0	dema-pylorectomies-n	Number=Sing	dema	0
-pylorectomy	0	dema-pylorectomy-n	Number=Sing	dema	0
-pyloric	0	oewn-pyloric-a	Degree=Pos	dema	0
-pylorically	0	dema-pyloric-r		dema	0
-pyloricness	0	dema-pyloric-n	Number=Plur	dema	0
-pylorus	0	oewn-pylorus-n	Number=Sing	dema	0
-pyloruses	0	oewn-pylorus-n	Number=Plur	dema	0
-pyoderma	0	dema-pyoderma-n	Number=Sing	dema	0
-pyodermas	0	dema-pyoderma-n	Number=Plur	dema	0
-pyogenesis	0	dema-pyogenesis-n	Number=Sing	dema	0
-pyogenic	0	oewn-pyogenic-a	Degree=Pos	dema	0
-pyogenically	0	dema-pyogenic-r		dema	0
-pyogenicness	0	dema-pyogenic-n	Number=Plur	dema	0
-pyoid	0	dema-pyoid-a	Degree=Pos	dema	0
-pyoider	0	dema-pyoid-a	Degree=Cmp	dema	0
-pyoidest	0	dema-pyoid-a	Degree=Sup	dema	0
-pyoidly	0	dema-pyoid-r		dema	0
-pyoidness	0	dema-pyoid-n	Number=Plur	dema	0
-pyometra	0	dema-pyometra-n	Number=Sing	dema	0
-pyometras	0	dema-pyometra-n	Number=Plur	dema	0
-pyonephritis	0	dema-pyonephritis-n	Number=Sing	dema	0
-pyopericardium	0	dema-pyopericardium-n	Number=Sing	dema	0
-pyopericardiums	0	dema-pyopericardium-n	Number=Plur	dema	0
-pyophthalmia	0	dema-pyophthalmia-n	Number=Sing	dema	0
-pyophthalmias	0	dema-pyophthalmia-n	Number=Plur	dema	0
-pyorrhea	0	oewn-pyorrhea-n	Number=Sing	dema	0
-pyorrheal	0	dema-pyorrheal-a	Degree=Pos	dema	0
-pyorrheally	0	dema-pyorrheal-r		dema	0
-pyorrhealness	0	dema-pyorrheal-n	Number=Plur	dema	0
-pyorrheas	0	oewn-pyorrhea-n	Number=Plur	dema	0
-pyorrheic	0	dema-pyorrheic-a	Degree=Pos	dema	0
-pyorrheically	0	dema-pyorrheic-r		dema	0
-pyorrheicness	0	dema-pyorrheic-n	Number=Plur	dema	0
-pyorrhoea	0	oewn-pyorrhoea-n	Number=Sing	dema	0
-pyorrhoeal	0	dema-pyorrhoeal-a	Degree=Pos	dema	0
-pyorrhoeally	0	dema-pyorrhoeal-r		dema	0
-pyorrhoealness	0	dema-pyorrhoeal-n	Number=Plur	dema	0
-pyorrhoeas	0	oewn-pyorrhoea-n	Number=Plur	dema	0
-pyorrhoeic	0	dema-pyorrhoeic-a	Degree=Pos	dema	0
-pyorrhoeically	0	dema-pyorrhoeic-r		dema	0
-pyorrhoeicness	0	dema-pyorrhoeic-n	Number=Plur	dema	0
-pyosalpinx	0	dema-pyosalpinx-n	Number=Sing	dema	0
-pyosalpinxes	0	dema-pyosalpinx-n	Number=Plur	dema	0
-pyosepticemia	0	dema-pyosepticemia-n	Number=Sing	dema	0
-pyosepticemias	0	dema-pyosepticemia-n	Number=Plur	dema	0
-pyosepticemic	0	dema-pyosepticemic-a	Degree=Pos	dema	0
-pyosepticemically	0	dema-pyosepticemic-r		dema	0
-pyosis	0	dema-pyosis-n	Number=Sing	dema	0
-pyothorax	0	dema-pyothorax-n	Number=Sing	dema	0
-pyothoraxes	0	dema-pyothorax-n	Number=Plur	dema	0
-pyracantha	0	dema-pyracantha-n	Number=Sing	dema	0
-pyracanthas	0	dema-pyracantha-n	Number=Plur	dema	0
-pyralid	0	oewn-pyralid-n	Number=Sing	dema	0
-pyralid	1	dema-pyralid-a	Degree=Pos	dema	0
-pyralidly	0	dema-pyralid-r		dema	0
-pyralidness	0	oewn-pyralid-n	Number=Plur	dema	0
-pyralids	0	oewn-pyralid-n	Number=Plur	dema	0
-pyramid	0	oewn-pyramid-n	Number=Sing	dema	0
-pyramid	1	oewn-pyramid-v	VerbForm=Inf	dema	0
-pyramidal	0	oewn-pyramidal-a	Degree=Pos	dema	0
-pyramidally	0	dema-pyramidally-r	Degree=Pos	dema	0
-pyramided	0	oewn-pyramid-v	Tense=Past	dema	0
-pyramider	0	oewn-pyramid-n	Number=Plur	dema	0
-pyramiders	0	oewn-pyramid-n	Number=Plur	dema	0
-pyramidical	0	oewn-pyramidical-a	Degree=Pos	dema	0
-pyramidically	0	oewn-pyramidically-r	Degree=Pos	dema	0
-pyramiding	0	oewn-pyramid-v	VerbForm=Ger	dema	0
-pyramidingly	0	dema-pyramid-r		dema	0
-pyramidion	0	dema-pyramidion-n	Number=Sing	dema	0
-pyramidions	0	dema-pyramidion-n	Number=Plur	dema	0
-pyramidlike	0	dema-pyramidlike-a	Degree=Pos	dema	0
-pyramidlikely	0	dema-pyramidlike-r		dema	0
-pyramids	0	oewn-pyramid-n	Number=Plur	dema	0
-pyramids	1	oewn-pyramid-v	Person=3+Tense=Pres	dema	0
-pyramimidia	0	dema-pyramimidia-n	Number=Sing	dema	0
-pyramimidias	0	dema-pyramimidia-n	Number=Plur	dema	0
-pyran	0	dema-pyran-n	Number=Sing	dema	0
-pyranometer	0	dema-pyranometer-n	Number=Sing	dema	0
-pyranometers	0	dema-pyranometer-n	Number=Plur	dema	0
-pyrans	0	dema-pyran-n	Number=Plur	dema	0
-pyrargyrite	0	dema-pyrargyrite-n	Number=Sing	dema	0
-pyrargyrites	0	dema-pyrargyrite-n	Number=Plur	dema	0
-pyrazole	0	dema-pyrazole-n	Number=Sing	dema	0
-pyrazoles	0	dema-pyrazole-n	Number=Plur	dema	0
-pyrazoline	0	dema-pyrazoline-n	Number=Sing	dema	0
-pyrazolines	0	dema-pyrazoline-n	Number=Plur	dema	0
-pyrazolone	0	dema-pyrazolone-n	Number=Sing	dema	0
-pyrazolones	0	dema-pyrazolone-n	Number=Plur	dema	0
-pyre	0	oewn-pyre-n	Number=Sing	dema	0
-pyrene	0	oewn-pyrene-n	Number=Sing	dema	0
-pyrenes	0	oewn-pyrene-n	Number=Plur	dema	0
-pyrenocarp	0	dema-pyrenocarp-n	Number=Sing	dema	0
-pyrenocarpic	0	dema-pyrenocarpic-a	Degree=Pos	dema	0
-pyrenocarpically	0	dema-pyrenocarpic-r		dema	0
-pyrenocarpous	0	dema-pyrenocarpous-a	Degree=Pos	dema	0
-pyrenocarpously	0	dema-pyrenocarpous-r		dema	0
-pyrenocarps	0	dema-pyrenocarp-n	Number=Plur	dema	0
-pyrenoid	0	dema-pyrenoid-n	Number=Sing	dema	0
-pyrenoids	0	dema-pyrenoid-n	Number=Plur	dema	0
-pyres	0	oewn-pyre-n	Number=Plur	dema	0
-pyrethrin	0	dema-pyrethrin-n	Number=Sing	dema	0
-pyrethrins	0	dema-pyrethrin-n	Number=Plur	dema	0
-pyrethrum	0	oewn-pyrethrum-n	Number=Sing	dema	0
-pyrethrums	0	oewn-pyrethrum-n	Number=Plur	dema	0
-pyretic	0	oewn-pyretic-a	Degree=Pos	dema	0
-pyretically	0	dema-pyretic-r		dema	0
-pyreticness	0	dema-pyretic-n	Number=Plur	dema	0
-pyretologies	0	dema-pyretology-n	Number=Plur	dema	0
-pyretologist	0	dema-pyretologist-n	Number=Sing	dema	0
-pyretologists	0	dema-pyretologist-n	Number=Plur	dema	0
-pyretology	0	dema-pyretology-n	Number=Sing	dema	0
-pyretotherapies	0	dema-pyretotherapy-n	Number=Plur	dema	0
-pyretotherapy	0	dema-pyretotherapy-n	Number=Sing	dema	0
-pyrexia	0	oewn-pyrexia-n	Number=Sing	dema	0
-pyrexias	0	oewn-pyrexia-n	Number=Plur	dema	0
-pyrheliometer	0	dema-pyrheliometer-n	Number=Sing	dema	0
-pyrheliometers	0	dema-pyrheliometer-n	Number=Plur	dema	0
-pyrheliometric	0	dema-pyrheliometric-a	Degree=Pos	dema	0
-pyrheliometrically	0	dema-pyrheliometric-r		dema	0
-pyridic	0	dema-pyridic-a	Degree=Pos	dema	0
-pyridically	0	dema-pyridic-r		dema	0
-pyridicness	0	dema-pyridic-n	Number=Plur	dema	0
-pyridine	0	oewn-pyridine-n	Number=Sing	dema	0
-pyridines	0	oewn-pyridine-n	Number=Plur	dema	0
-pyridoxal	0	oewn-pyridoxal-n	Number=Sing	dema	0
-pyridoxals	0	oewn-pyridoxal-n	Number=Plur	dema	0
-pyridoxamine	0	oewn-pyridoxamine-n	Number=Sing	dema	0
-pyridoxamines	0	oewn-pyridoxamine-n	Number=Plur	dema	0
-pyridoxine	0	oewn-pyridoxine-n	Number=Sing	dema	0
-pyridoxines	0	oewn-pyridoxine-n	Number=Plur	dema	0
-pyriform	0	dema-pyriform-a	Degree=Pos	dema	0
-pyriformly	0	dema-pyriform-r		dema	0
-pyriformness	0	dema-pyriform-n	Number=Plur	dema	0
-pyrimidine	0	oewn-pyrimidine-n	Number=Sing	dema	0
-pyrimidines	0	oewn-pyrimidine-n	Number=Plur	dema	0
-pyrite	0	oewn-pyrite-n	Number=Sing	dema	0
-pyrites	0	oewn-pyrites-n	Number=Sing	dema	0
-pyritic	0	dema-pyritic-a	Degree=Pos	dema	0
-pyritically	0	dema-pyritic-r		dema	0
-pyriticness	0	dema-pyritic-n	Number=Plur	dema	0
-pyritohedron	0	dema-pyritohedron-n	Number=Sing	dema	0
-pyritohedrons	0	dema-pyritohedron-n	Number=Plur	dema	0
-pyrobi	0	dema-pyrobi-n	Number=Sing	dema	0
-pyrobis	0	dema-pyrobi-n	Number=Plur	dema	0
-pyrobitumen	0	dema-pyrobitumen-n	Number=Sing	dema	0
-pyrobitumens	0	dema-pyrobitumen-n	Number=Plur	dema	0
-pyrocatechol	0	dema-pyrocatechol-n	Number=Sing	dema	0
-pyrocatechols	0	dema-pyrocatechol-n	Number=Plur	dema	0
-pyrochemical	0	oewn-pyrochemical-a	Degree=Pos	dema	0
-pyrochemically	0	dema-pyrochemically-r	Degree=Pos	dema	0
-pyrochlore	0	dema-pyrochlore-n	Number=Sing	dema	0
-pyrochlores	0	dema-pyrochlore-n	Number=Plur	dema	0
-pyroclastic	0	dema-pyroclastic-a	Degree=Pos	dema	0
-pyroclastically	0	dema-pyroclastic-r		dema	0
-pyroconductivities	0	dema-pyroconductivity-n	Number=Plur	dema	0
-pyroconductivity	0	dema-pyroconductivity-n	Number=Sing	dema	0
-pyrocrystalline	0	dema-pyrocrystalline-a	Degree=Pos	dema	0
-pyrocrystallinely	0	dema-pyrocrystalline-r		dema	0
-pyroelectric	0	oewn-pyroelectric-a	Degree=Pos	dema	0
-pyroelectric	1	dema-pyroelectric-n	Number=Sing	dema	0
-pyroelectrically	0	dema-pyroelectric-r		dema	0
-pyroelectricities	0	oewn-pyroelectricity-n	Number=Plur	dema	0
-pyroelectricity	0	oewn-pyroelectricity-n	Number=Sing	dema	0
-pyroelectrics	0	dema-pyroelectric-n	Number=Plur	dema	0
-pyrogallate	0	dema-pyrogallate-n	Number=Sing	dema	0
-pyrogallates	0	dema-pyrogallate-n	Number=Plur	dema	0
-pyrogallic	0	oewn-pyrogallic-a	Degree=Pos	dema	0
-pyrogallically	0	dema-pyrogallic-r		dema	0
-pyrogallol	0	oewn-pyrogallol-n	Number=Sing	dema	0
-pyrogallols	0	oewn-pyrogallol-n	Number=Plur	dema	0
-pyrogen	0	oewn-pyrogen-n	Number=Sing	dema	0
-pyrogenic	0	oewn-pyrogenic-a	Degree=Pos	dema	0
-pyrogenically	0	dema-pyrogenic-r		dema	0
-pyrogenous	0	oewn-pyrogenous-a	Degree=Pos	dema	0
-pyrogenously	0	dema-pyrogenous-r		dema	0
-pyrogens	0	oewn-pyrogen-n	Number=Plur	dema	0
-pyrognostics	0	dema-pyrognostics-n	Number=Sing	dema	0
-pyrognosticses	0	dema-pyrognostics-n	Number=Plur	dema	0
-pyrographer	0	oewn-pyrographer-n	Number=Sing	dema	0
-pyrographers	0	oewn-pyrographer-n	Number=Plur	dema	0
-pyrographic	0	oewn-pyrographic-a	Degree=Pos	dema	0
-pyrographically	0	dema-pyrographic-r		dema	0
-pyrographies	0	dema-pyrographies-n	Number=Sing	dema	0
-pyrography	0	oewn-pyrography-n	Number=Sing	dema	0
-pyroligneous	0	oewn-pyroligneous-a	Degree=Pos	dema	0
-pyroligneously	0	dema-pyroligneous-r		dema	0
-pyrological	0	dema-pyrological-a	Degree=Pos	dema	0
-pyrologically	0	dema-pyrological-r		dema	0
-pyrologies	0	dema-pyrology-n	Number=Plur	dema	0
-pyrologist	0	dema-pyrologist-n	Number=Sing	dema	0
-pyrologists	0	dema-pyrologist-n	Number=Plur	dema	0
-pyrology	0	dema-pyrology-n	Number=Sing	dema	0
-pyrolusite	0	oewn-pyrolusite-n	Number=Sing	dema	0
-pyrolusites	0	oewn-pyrolusite-n	Number=Plur	dema	0
-pyrolysis	0	oewn-pyrolysis-n	Number=Sing	dema	0
-pyrolytic	0	oewn-pyrolytic-a	Degree=Pos	dema	0
-pyrolytically	0	dema-pyrolytic-r		dema	0
-pyromagnetic	0	dema-pyromagnetic-a	Degree=Pos	dema	0
-pyromagnetically	0	dema-pyromagnetic-r		dema	0
-pyromancer	0	oewn-pyromancer-n	Number=Sing	dema	0
-pyromancers	0	oewn-pyromancer-n	Number=Plur	dema	0
-pyromancies	0	oewn-pyromancy-n	Number=Plur	dema	0
-pyromancy	0	oewn-pyromancy-n	Number=Sing	dema	0
-pyromania	0	oewn-pyromania-n	Number=Sing	dema	0
-pyromaniac	0	oewn-pyromaniac-n	Number=Sing	dema	0
-pyromaniacal	0	dema-pyromaniacal-a	Degree=Pos	dema	0
-pyromaniacally	0	dema-pyromaniacal-r		dema	0
-pyromaniacs	0	oewn-pyromaniac-n	Number=Plur	dema	0
-pyromanias	0	oewn-pyromania-n	Number=Plur	dema	0
-pyromantic	0	dema-pyromantic-a	Degree=Pos	dema	0
-pyromantically	0	dema-pyromantic-r		dema	0
-pyrometallurgies	0	dema-pyrometallurgy-n	Number=Plur	dema	0
-pyrometallurgy	0	dema-pyrometallurgy-n	Number=Sing	dema	0
-pyrometer	0	oewn-pyrometer-n	Number=Sing	dema	0
-pyrometers	0	oewn-pyrometer-n	Number=Plur	dema	0
-pyrometries	0	dema-pyrometry-n	Number=Plur	dema	0
-pyrometry	0	dema-pyrometry-n	Number=Sing	dema	0
-pyromorphite	0	oewn-pyromorphite-n	Number=Sing	dema	0
-pyromorphites	0	oewn-pyromorphite-n	Number=Plur	dema	0
-pyrone	0	dema-pyrone-n	Number=Sing	dema	0
-pyrones	0	dema-pyrone-n	Number=Plur	dema	0
-pyrope	0	oewn-pyrope-n	Number=Sing	dema	0
-pyropes	0	oewn-pyrope-n	Number=Plur	dema	0
-pyrophoric	0	dema-pyrophoric-a	Degree=Pos	dema	0
-pyrophorically	0	dema-pyrophoric-r		dema	0
-pyrophosphate	0	oewn-pyrophosphate-n	Number=Sing	dema	0
-pyrophosphates	0	oewn-pyrophosphate-n	Number=Plur	dema	0
-pyrophotometer	0	dema-pyrophotometer-n	Number=Sing	dema	0
-pyrophotometers	0	dema-pyrophotometer-n	Number=Plur	dema	0
-pyrophyllite	0	oewn-pyrophyllite-n	Number=Sing	dema	0
-pyrophyllites	0	oewn-pyrophyllite-n	Number=Plur	dema	0
-pyrosis	0	oewn-pyrosis-n	Number=Sing	dema	0
-pyrostat	0	oewn-pyrostat-n	Number=Sing	dema	0
-pyrostats	0	oewn-pyrostat-n	Number=Plur	dema	0
-pyrosulfate	0	dema-pyrosulfate-n	Number=Sing	dema	0
-pyrosulfates	0	dema-pyrosulfate-n	Number=Plur	dema	0
-pyrosulfuric	0	dema-pyrosulfuric-a	Degree=Pos	dema	0
-pyrosulfurically	0	dema-pyrosulfuric-r		dema	0
-pyrosulphate	0	dema-pyrosulphate-n	Number=Sing	dema	0
-pyrosulphates	0	dema-pyrosulphate-n	Number=Plur	dema	0
-pyrotechnic	0	oewn-pyrotechnic-a	Degree=Pos	dema	0
-pyrotechnically	0	dema-pyrotechnically-r	Degree=Pos	dema	0
-pyrotechnics	0	oewn-pyrotechnics-n	Number=Sing	dema	0
-pyrotechnics	1	dema-pyrotechnics-a	Degree=Pos	dema	0
-pyrotechnicses	0	oewn-pyrotechnics-n	Number=Plur	dema	0
-pyrotechnicsly	0	dema-pyrotechnics-r		dema	0
-pyrotoxin	0	dema-pyrotoxin-n	Number=Sing	dema	0
-pyrotoxins	0	dema-pyrotoxin-n	Number=Plur	dema	0
-pyroxene	0	oewn-pyroxene-n	Number=Sing	dema	0
-pyroxenes	0	oewn-pyroxene-n	Number=Plur	dema	0
-pyroxenic	0	dema-pyroxenic-a	Degree=Pos	dema	0
-pyroxenically	0	dema-pyroxenic-r		dema	0
-pyroxenite	0	dema-pyroxenite-n	Number=Sing	dema	0
-pyroxenites	0	dema-pyroxenite-n	Number=Plur	dema	0
-pyroxylin	0	oewn-pyroxylin-n	Number=Sing	dema	0
-pyroxylins	0	oewn-pyroxylin-n	Number=Plur	dema	0
-pyrrhic	0	oewn-pyrrhic-n	Number=Sing	dema	0
-pyrrhic	1	oewn-pyrrhic-a	Degree=Pos	dema	0
-pyrrhically	0	dema-pyrrhic-r		dema	0
-pyrrhicness	0	oewn-pyrrhic-n	Number=Plur	dema	0
-pyrrhics	0	oewn-pyrrhic-n	Number=Plur	dema	0
-pyrrhotite	0	oewn-pyrrhotite-n	Number=Sing	dema	0
-pyrrhotites	0	oewn-pyrrhotite-n	Number=Plur	dema	0
-pyrrhuloxia	0	oewn-pyrrhuloxia-n	Number=Sing	dema	0
-pyrrhuloxias	0	oewn-pyrrhuloxia-n	Number=Plur	dema	0
-pyrrole	0	dema-pyrrole-n	Number=Sing	dema	0
-pyrroles	0	dema-pyrrole-n	Number=Plur	dema	0
-pyrrolic	0	dema-pyrrolic-a	Degree=Pos	dema	0
-pyrrolically	0	dema-pyrrolic-r		dema	0
-pyrrolicness	0	dema-pyrrolic-n	Number=Plur	dema	0
-pyrrolidine	0	dema-pyrrolidine-n	Number=Sing	dema	0
-pyrrolidines	0	dema-pyrrolidine-n	Number=Plur	dema	0
-pyruvic	0	dema-pyruvic-a	Degree=Pos	dema	0
-pyruvically	0	dema-pyruvic-r		dema	0
-pyruvicness	0	dema-pyruvic-n	Number=Plur	dema	0
-pythogenesis	0	dema-pythogenesis-n	Number=Sing	dema	0
-pythogenic	0	dema-pythogenic-a	Degree=Pos	dema	0
-pythogenically	0	dema-pythogenic-r		dema	0
-python	0	oewn-python-n	Number=Sing	dema	0
-pythoness	0	oewn-pythoness-n	Number=Sing	dema	0
-pythonesses	0	oewn-pythoness-n	Number=Plur	dema	0
-pythons	0	oewn-python-n	Number=Plur	dema	0
-pyuria	0	oewn-pyuria-n	Number=Sing	dema	0
-pyurias	0	oewn-pyuria-n	Number=Plur	dema	0
-pyx	0	oewn-pyx-n	Number=Sing	dema	0
-pyxes	0	oewn-pyx-n	Number=Plur	dema	0
-pyxidia	0	dema-pyxidia-n	Number=Sing	dema	0
-pyxidias	0	dema-pyxidia-n	Number=Plur	dema	0
-pyxidium	0	oewn-pyxidium-n	Number=Sing	dema	0
-pyxidiums	0	oewn-pyxidium-n	Number=Plur	dema	0
-pyxie	0	oewn-pyxie-n	Number=Sing	dema	0
-pyxies	0	oewn-pyxie-n	Number=Plur	dema	0
-pyxis	0	oewn-pyxis-n	Number=Sing	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Pycnanthemum virginianum	0	oewn-Pycnanthemum_virginianum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pycnanthemum virginianums	0	oewn-Pycnanthemum_virginianum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pygoscelis adeliae	0	oewn-Pygoscelis_adeliae-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pygoscelis adeliaes	0	oewn-Pygoscelis_adeliae-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pylodictus olivaris	0	oewn-Pylodictus_olivaris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyracantha	0		Number=Sing	dema	0	pyracantha	n	moby_reverse
+Pyracantha	1	oewn-Pyracantha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pyracanthas	0		Number=Plur	dema	0	pyracantha	n	rule
+Pyracanthas	1	oewn-Pyracantha-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pyrausta nubilalis	0	oewn-Pyrausta_nubilalis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrenees daisies	0	oewn-Pyrenees_daisy-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrenees daisy	0	oewn-Pyrenees_daisy-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrex	0	oewn-Pyrex-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pyrexes	0	oewn-Pyrex-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pyridium	0	oewn-Pyridium-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pyridiums	0	oewn-Pyridium-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pyrocephalus rubinus mexicanus	0	oewn-Pyrocephalus_rubinus_mexicanus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola americana	0	oewn-Pyrola_americana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola americanas	0	oewn-Pyrola_americana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrola elliptica	0	oewn-Pyrola_elliptica-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola ellipticas	0	oewn-Pyrola_elliptica-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrola minor	0	oewn-Pyrola_minor-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola minors	0	oewn-Pyrola_minor-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrola rotundifolia	0	oewn-Pyrola_rotundifolia-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola rotundifolia americana	0	oewn-Pyrola_rotundifolia_americana-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola rotundifolia americanas	0	oewn-Pyrola_rotundifolia_americana-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrola rotundifolias	0	oewn-Pyrola_rotundifolia-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrola uniflora	0	oewn-Pyrola_uniflora-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrola unifloras	0	oewn-Pyrola_uniflora-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrophorus noctiluca	0	oewn-Pyrophorus_noctiluca-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrophorus noctilucas	0	oewn-Pyrophorus_noctiluca-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrrhic victories	0	oewn-Pyrrhic_victory-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrrhic victory	0	oewn-Pyrrhic_victory-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrrhula pyrrhula	0	oewn-Pyrrhula_pyrrhula-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrrhula pyrrhulas	0	oewn-Pyrrhula_pyrrhula-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrrhuloxia sinuata	0	oewn-Pyrrhuloxia_sinuata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrrhuloxia sinuatas	0	oewn-Pyrrhuloxia_sinuata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrrosia lingua	0	oewn-Pyrrosia_lingua-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrrosia linguas	0	oewn-Pyrrosia_lingua-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrularia pubera	0	oewn-Pyrularia_pubera-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyrularia puberas	0	oewn-Pyrularia_pubera-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pyrus communis	0	oewn-Pyrus_communis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pythagorean	0	oewn-Pythagorean-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
+Pythagorean triangle	0	oewn-Pythagorean_triangle-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pythagorean triangles	0	oewn-Pythagorean_triangle-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Pythian Games	0	oewn-Pythian_Games-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Pythium debaryanum	0	oewn-Pythium_debaryanum-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pythium debaryanums	0	oewn-Pythium_debaryanum-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Python	0	oewn-python-n	Number=Sing	dema	0			oewn_form
+Python	1	oewn-Python-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Python molurus	0	oewn-Python_molurus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Python reticulatus	0	oewn-Python_reticulatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Python sebae	0	oewn-Python_sebae-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Python sebaes	0	oewn-Python_sebae-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Python variegatus	0	oewn-Python_variegatus-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pythons	0	oewn-python-n	Number=Plur	dema	0			rule
+Pythons	1	oewn-Python-n	Capitalization=Title+Number=Plur	dema	0			rule
+Pyxidanthera barbulata	0	oewn-Pyxidanthera_barbulata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Pyxidanthera barbulatas	0	oewn-Pyxidanthera_barbulata-n	Capitalization=Exact+Number=Plur	dema	0			rule
+pya	0	oewn-pya-n	Number=Sing	dema	0			oewn_form
+pyaemia	0	oewn-pyaemia-n	Number=Sing	dema	0			oewn_form
+pyaemias	0	oewn-pyaemia-n	Number=Plur	dema	0			rule
+pyaemic	0	oewn-pyaemic-a	Degree=Pos	dema	0			oewn_form
+pyalla	0		VerbForm=Inf	dema	0	pyalla	v	moby_reverse
+pyallaed	0		Tense=Past+VerbForm=Part	dema	0	pyalla	v	rule
+pyallaing	0		VerbForm=Ger	dema	0	pyalla	v	rule
+pyallas	0		Person=3+Tense=Pres	dema	0	pyalla	v	rule
+pyas	0	oewn-pya-n	Number=Plur	dema	0			rule
+pycnidia	0	oewn-pycnidium-n	Number=Plur	dema	0			oewn_form
+pycnidial	0		Degree=Pos	dema	0	pycnidial	a	moby_reverse
+pycnidium	0	oewn-pycnidium-n	Number=Sing	dema	0			oewn_form
+pycnidiums	0	oewn-pycnidium-n	Number=Plur	dema	0			rule_variant
+pycninidia	0		Number=Sing	dema	0	pycninidia	n	moby_reverse
+pycninidias	0		Number=Plur	dema	0	pycninidia	n	rule
+pycniospore	0		Number=Sing	dema	0	pycniospore	n	moby_reverse
+pycniospores	0		Number=Plur	dema	0	pycniospore	n	rule
+pycnodysostosis	0	oewn-pycnodysostosis-n	Number=Sing	dema	0			oewn_form
+pycnogonid	0	oewn-pycnogonid-n	Number=Sing	dema	0			oewn_form
+pycnogonids	0	oewn-pycnogonid-n	Number=Plur	dema	0			rule
+pycnometer	0		Number=Sing	dema	0	pycnometer	n	moby_reverse
+pycnometers	0		Number=Plur	dema	0	pycnometer	n	rule
+pycnometries	0	oewn-pycnometry-n	Number=Plur	dema	0			rule
+pycnometry	0	oewn-pycnometry-n	Number=Sing	dema	0			oewn_form
+pycnosis	0	oewn-pycnosis-n	Number=Sing	dema	0			oewn_form
+pycnostyle	0		Degree=Pos	dema	0	pycnostyle	a	moby_reverse
+pycnotic	0	oewn-pycnotic-a	Degree=Pos	dema	0			oewn_form
+pye	0		Number=Sing	dema	0	pye	n	moby_reverse
+pye-dog	0	oewn-pye-dog-n	Number=Sing	dema	0			oewn_form
+pye-dogs	0	oewn-pye-dog-n	Number=Plur	dema	0			rule
+pyelitic	0		Degree=Pos	dema	0	pyelitic	a	moby_reverse
+pyelitis	0	oewn-pyelitis-n	Number=Sing	dema	0			oewn_form
+pyelitises	0	oewn-pyelitis-n	Number=Plur	dema	0			rule
+pyelogram	0	oewn-pyelogram-n	Number=Sing	dema	0			oewn_form
+pyelograms	0	oewn-pyelogram-n	Number=Plur	dema	0			rule
+pyelographic	0		Degree=Pos	dema	0	pyelographic	a	moby_reverse
+pyelographies	0	oewn-pyelography-n	Number=Plur	dema	0			rule
+pyelography	0	oewn-pyelography-n	Number=Sing	dema	0			oewn_form
+pyelonephritic	0		Degree=Pos	dema	0	pyelonephritic	a	moby_reverse
+pyelonephritis	0	oewn-pyelonephritis-n	Number=Sing	dema	0			oewn_form
+pyelonephrosis	0		Number=Sing	dema	0	pyelonephrosis	n	moby_reverse
+pyemia	0	oewn-pyemia-n	Number=Sing	dema	0			oewn_form
+pyemias	0	oewn-pyemia-n	Number=Plur	dema	0			rule
+pyemic	0	oewn-pyemic-a	Degree=Pos	dema	0			oewn_form
+pyes	0		Number=Plur	dema	0	pye	n	rule
+pygidium	0		Number=Sing	dema	0	pygidium	n	moby_reverse
+pygidiums	0		Number=Plur	dema	0	pygidium	n	rule
+pygigidia	0		Number=Sing	dema	0	pygigidia	n	moby_reverse
+pygigidias	0		Number=Plur	dema	0	pygigidia	n	rule
+pygmies	0	oewn-pygmy-n	Number=Plur	dema	0			rule
+pygmoid	0		Degree=Pos	dema	0	pygmoid	a	moby_reverse
+pygmy	0	oewn-pygmy-n	Number=Sing	dema	0			oewn_form
+pygmy chimpanzee	0	oewn-pygmy_chimpanzee-n	Number=Sing	dema	0			oewn_form
+pygmy chimpanzees	0	oewn-pygmy_chimpanzee-n	Number=Plur	dema	0			rule
+pygmy cypress	0	oewn-pygmy_cypress-n	Number=Sing	dema	0			oewn_form
+pygmy cypresses	0	oewn-pygmy_cypress-n	Number=Plur	dema	0			rule
+pygmy marmoset	0	oewn-pygmy_marmoset-n	Number=Sing	dema	0			oewn_form
+pygmy marmosets	0	oewn-pygmy_marmoset-n	Number=Plur	dema	0			rule
+pygmy mouse	0	oewn-pygmy_mouse-n	Number=Sing	dema	0			oewn_form
+pygmy mouses	0	oewn-pygmy_mouse-n	Number=Plur	dema	0			rule
+pygmy sperm whale	0	oewn-pygmy_sperm_whale-n	Number=Sing	dema	0			oewn_form
+pygmy sperm whales	0	oewn-pygmy_sperm_whale-n	Number=Plur	dema	0			rule
+pygmyish	0		Degree=Pos	dema	0	pygmyish	a	moby_reverse
+pygmyism	0		Number=Sing	dema	0	pygmyism	n	moby_reverse
+pygmyisms	0		Number=Plur	dema	0	pygmyism	n	rule
+pygostyled	0		Degree=Pos	dema	0	pygostyled	a	moby_reverse
+pygostyled	1		VerbForm=Inf	dema	0	pygostyled	v	moby_reverse
+pygostylous	0		Degree=Pos	dema	0	pygostylous	a	moby_reverse
+pyic	0		Degree=Pos	dema	0	pyic	a	moby_reverse
+pyin	0		Number=Sing	dema	0	pyin	n	moby_reverse
+pyinma	0	oewn-pyinma-n	Number=Sing	dema	0			oewn_form
+pyinmas	0	oewn-pyinma-n	Number=Plur	dema	0			rule
+pyins	0		Number=Plur	dema	0	pyin	n	rule
+pyjama	0	oewn-pyjama-n	Number=Sing	dema	0			oewn_form
+pyjamas	0	oewn-pyjama-n	Number=Plur	dema	0			rule
+pyknic	0	oewn-pyknic-a	Degree=Pos	dema	0			oewn_form
+pyknic type	0	oewn-pyknic_type-n	Number=Sing	dema	0			oewn_form
+pyknic types	0	oewn-pyknic_type-n	Number=Plur	dema	0			rule
+pyknosis	0	oewn-pyknosis-n	Number=Sing	dema	0			oewn_form
+pyknotic	0	oewn-pyknotic-a	Degree=Pos	dema	0			oewn_form
+pylon	0	oewn-pylon-n	Number=Sing	dema	0			oewn_form
+pylons	0	oewn-pylon-n	Number=Plur	dema	0			rule
+pylorectomies	0		Number=Plur	dema	0	pylorectomy	n	rule
+pylorectomy	0		Number=Sing	dema	0	pylorectomy	n	moby_reverse
+pylori	0	oewn-pylorus-n	Number=Plur	dema	0			oewn_form
+pyloric	0	oewn-pyloric-a	Degree=Pos	dema	0			oewn_form
+pyloric sphincter	0	oewn-pyloric_sphincter-n	Number=Sing	dema	0			oewn_form
+pyloric sphincters	0	oewn-pyloric_sphincter-n	Number=Plur	dema	0			rule
+pyloric stenosis	0	oewn-pyloric_stenosis-n	Number=Sing	dema	0			oewn_form
+pyloric valve	0	oewn-pyloric_valve-n	Number=Sing	dema	0			oewn_form
+pyloric valves	0	oewn-pyloric_valve-n	Number=Plur	dema	0			rule
+pyloric vein	0	oewn-pyloric_vein-n	Number=Sing	dema	0			oewn_form
+pyloric veins	0	oewn-pyloric_vein-n	Number=Plur	dema	0			rule
+pylorus	0	oewn-pylorus-n	Number=Sing	dema	0			oewn_form
+pyocyanase	0	oewn-pyocyanase-n	Number=Sing	dema	0			oewn_form
+pyocyanases	0	oewn-pyocyanase-n	Number=Plur	dema	0			rule
+pyocyanin	0	oewn-pyocyanin-n	Number=Sing	dema	0			oewn_form
+pyocyanins	0	oewn-pyocyanin-n	Number=Plur	dema	0			rule
+pyoderma	0		Number=Sing	dema	0	pyoderma	n	moby_reverse
+pyodermas	0		Number=Plur	dema	0	pyoderma	n	rule
+pyogenesis	0		Number=Sing	dema	0	pyogenesis	n	moby_reverse
+pyogenic	0	oewn-pyogenic-a	Degree=Pos	dema	0			oewn_form
+pyoid	0		Degree=Pos	dema	0	pyoid	a	moby_reverse
+pyometra	0		Number=Sing	dema	0	pyometra	n	moby_reverse
+pyometras	0		Number=Plur	dema	0	pyometra	n	rule
+pyonephritis	0		Number=Sing	dema	0	pyonephritis	n	moby_reverse
+pyopericardium	0		Number=Sing	dema	0	pyopericardium	n	moby_reverse
+pyopericardiums	0		Number=Plur	dema	0	pyopericardium	n	rule
+pyophthalmia	0		Number=Sing	dema	0	pyophthalmia	n	moby_reverse
+pyophthalmias	0		Number=Plur	dema	0	pyophthalmia	n	rule
+pyorrhea	0	oewn-pyorrhea-n	Number=Sing	dema	0			oewn_form
+pyorrhea alveolaris	0	oewn-pyorrhea_alveolaris-n	Number=Sing	dema	0			oewn_form
+pyorrheal	0		Degree=Pos	dema	0	pyorrheal	a	moby_reverse
+pyorrheas	0	oewn-pyorrhea-n	Number=Plur	dema	0			rule
+pyorrheic	0		Degree=Pos	dema	0	pyorrheic	a	moby_reverse
+pyorrhoea	0	oewn-pyorrhoea-n	Number=Sing	dema	0			oewn_form
+pyorrhoeal	0		Degree=Pos	dema	0	pyorrhoeal	a	moby_reverse
+pyorrhoeas	0	oewn-pyorrhoea-n	Number=Plur	dema	0			rule
+pyorrhoeic	0		Degree=Pos	dema	0	pyorrhoeic	a	moby_reverse
+pyosalpinx	0		Number=Sing	dema	0	pyosalpinx	n	moby_reverse
+pyosalpinxes	0		Number=Plur	dema	0	pyosalpinx	n	rule
+pyosepticemia	0		Number=Sing	dema	0	pyosepticemia	n	moby_reverse
+pyosepticemias	0		Number=Plur	dema	0	pyosepticemia	n	rule
+pyosepticemic	0		Degree=Pos	dema	0	pyosepticemic	a	moby_reverse
+pyosis	0		Number=Sing	dema	0	pyosis	n	moby_reverse
+pyothorax	0		Number=Sing	dema	0	pyothorax	n	moby_reverse
+pyothoraxes	0		Number=Plur	dema	0	pyothorax	n	rule
+pyracanth	0	oewn-pyracanth-n	Number=Sing	dema	0			oewn_form
+pyracantha	0		Number=Sing	dema	0	pyracantha	n	moby_reverse
+pyracanthas	0		Number=Plur	dema	0	pyracantha	n	rule
+pyracanths	0	oewn-pyracanth-n	Number=Plur	dema	0			rule
+pyralid	0	oewn-pyralid-n	Number=Sing	dema	0			oewn_form
+pyralid	1		Degree=Pos	dema	0	pyralid	a	moby_reverse
+pyralid moth	0	oewn-pyralid_moth-n	Number=Sing	dema	0			oewn_form
+pyralid moths	0	oewn-pyralid_moth-n	Number=Plur	dema	0			rule
+pyralids	0	oewn-pyralid-n	Number=Plur	dema	0			rule
+pyramid	0	oewn-pyramid-n	Number=Sing	dema	0			oewn_form
+pyramid	1	oewn-pyramid-v	VerbForm=Inf	dema	0			oewn_form
+pyramid bugle	0	oewn-pyramid_bugle-n	Number=Sing	dema	0			oewn_form
+pyramid bugles	0	oewn-pyramid_bugle-n	Number=Plur	dema	0			rule
+pyramid plant	0	oewn-pyramid_plant-n	Number=Sing	dema	0			oewn_form
+pyramid plants	0	oewn-pyramid_plant-n	Number=Plur	dema	0			rule
+pyramid scheme	0	oewn-pyramid_scheme-n	Number=Sing	dema	0			oewn_form
+pyramid schemes	0	oewn-pyramid_scheme-n	Number=Plur	dema	0			rule
+pyramidal	0	oewn-pyramidal-a	Degree=Pos	dema	0			oewn_form
+pyramidal bone	0	oewn-pyramidal_bone-n	Number=Sing	dema	0			oewn_form
+pyramidal bones	0	oewn-pyramidal_bone-n	Number=Plur	dema	0			rule
+pyramidal motor system	0	oewn-pyramidal_motor_system-n	Number=Sing	dema	0			oewn_form
+pyramidal motor systems	0	oewn-pyramidal_motor_system-n	Number=Plur	dema	0			rule
+pyramidal tent	0	oewn-pyramidal_tent-n	Number=Sing	dema	0			oewn_form
+pyramidal tents	0	oewn-pyramidal_tent-n	Number=Plur	dema	0			rule
+pyramidal tract	0	oewn-pyramidal_tract-n	Number=Sing	dema	0			oewn_form
+pyramidal tracts	0	oewn-pyramidal_tract-n	Number=Plur	dema	0			rule
+pyramidally	0		Degree=Pos	dema	0	pyramidally	r	moby_reverse
+pyramided	0	oewn-pyramid-v	Tense=Past+VerbForm=Part	dema	0			rule
+pyramidic	0	oewn-pyramidic-a	Degree=Pos	dema	0			oewn_form
+pyramidical	0	oewn-pyramidical-a	Degree=Pos	dema	0			oewn_form
+pyramidically	0	oewn-pyramidically-r	Degree=Pos	dema	0			oewn_form
+pyramiding	0	oewn-pyramid-v	VerbForm=Ger	dema	0			rule
+pyramiding	1	oewn-pyramiding-n	Number=Sing	dema	0			oewn_form
+pyramidings	0	oewn-pyramiding-n	Number=Plur	dema	0			rule
+pyramidion	0		Number=Sing	dema	0	pyramidion	n	moby_reverse
+pyramidions	0		Number=Plur	dema	0	pyramidion	n	rule
+pyramidlike	0		Degree=Pos	dema	0	pyramidlike	a	moby_reverse
+pyramids	0	oewn-pyramid-n	Number=Plur	dema	0			rule
+pyramids	1	oewn-pyramid-v	Person=3+Tense=Pres	dema	0			rule
+pyramimidia	0		Number=Sing	dema	0	pyramimidia	n	moby_reverse
+pyramimidias	0		Number=Plur	dema	0	pyramimidia	n	rule
+pyran	0		Number=Sing	dema	0	pyran	n	moby_reverse
+pyranometer	0		Number=Sing	dema	0	pyranometer	n	moby_reverse
+pyranometers	0		Number=Plur	dema	0	pyranometer	n	rule
+pyrans	0		Number=Plur	dema	0	pyran	n	rule
+pyrargyrite	0		Number=Sing	dema	0	pyrargyrite	n	moby_reverse
+pyrargyrites	0		Number=Plur	dema	0	pyrargyrite	n	rule
+pyrazole	0		Number=Sing	dema	0	pyrazole	n	moby_reverse
+pyrazoles	0		Number=Plur	dema	0	pyrazole	n	rule
+pyrazoline	0		Number=Sing	dema	0	pyrazoline	n	moby_reverse
+pyrazolines	0		Number=Plur	dema	0	pyrazoline	n	rule
+pyrazolone	0		Number=Sing	dema	0	pyrazolone	n	moby_reverse
+pyrazolones	0		Number=Plur	dema	0	pyrazolone	n	rule
+pyre	0	oewn-pyre-n	Number=Sing	dema	0			oewn_form
+pyrectic	0	oewn-pyrectic-n	Number=Sing	dema	0			oewn_form
+pyrectic	1	oewn-pyrectic-a	Degree=Pos	dema	0			oewn_form
+pyrectics	0	oewn-pyrectic-n	Number=Plur	dema	0			rule
+pyrene	0	oewn-pyrene-n	Number=Sing	dema	0			oewn_form
+pyrenes	0	oewn-pyrene-n	Number=Plur	dema	0			rule
+pyrenocarp	0		Number=Sing	dema	0	pyrenocarp	n	moby_reverse
+pyrenocarpic	0		Degree=Pos	dema	0	pyrenocarpic	a	moby_reverse
+pyrenocarpous	0		Degree=Pos	dema	0	pyrenocarpous	a	moby_reverse
+pyrenocarps	0		Number=Plur	dema	0	pyrenocarp	n	rule
+pyrenoid	0		Number=Sing	dema	0	pyrenoid	n	moby_reverse
+pyrenoids	0		Number=Plur	dema	0	pyrenoid	n	rule
+pyres	0	oewn-pyre-n	Number=Plur	dema	0			rule
+pyrethrin	0		Number=Sing	dema	0	pyrethrin	n	moby_reverse
+pyrethrins	0		Number=Plur	dema	0	pyrethrin	n	rule
+pyrethrum	0	oewn-pyrethrum-n	Number=Sing	dema	0			oewn_form
+pyrethrums	0	oewn-pyrethrum-n	Number=Plur	dema	0			rule
+pyretic	0	oewn-pyretic-a	Degree=Pos	dema	0			oewn_form
+pyretologies	0		Number=Plur	dema	0	pyretology	n	rule
+pyretologist	0		Number=Sing	dema	0	pyretologist	n	moby_reverse
+pyretologists	0		Number=Plur	dema	0	pyretologist	n	rule
+pyretology	0		Number=Sing	dema	0	pyretology	n	moby_reverse
+pyretotherapies	0		Number=Plur	dema	0	pyretotherapy	n	rule
+pyretotherapy	0		Number=Sing	dema	0	pyretotherapy	n	moby_reverse
+pyrexia	0	oewn-pyrexia-n	Number=Sing	dema	0			oewn_form
+pyrexias	0	oewn-pyrexia-n	Number=Plur	dema	0			rule
+pyrheliometer	0		Number=Sing	dema	0	pyrheliometer	n	moby_reverse
+pyrheliometers	0		Number=Plur	dema	0	pyrheliometer	n	rule
+pyrheliometric	0		Degree=Pos	dema	0	pyrheliometric	a	moby_reverse
+pyridic	0		Degree=Pos	dema	0	pyridic	a	moby_reverse
+pyridine	0	oewn-pyridine-n	Number=Sing	dema	0			oewn_form
+pyridines	0	oewn-pyridine-n	Number=Plur	dema	0			rule
+pyridoxal	0	oewn-pyridoxal-n	Number=Sing	dema	0			oewn_form
+pyridoxals	0	oewn-pyridoxal-n	Number=Plur	dema	0			rule
+pyridoxamine	0	oewn-pyridoxamine-n	Number=Sing	dema	0			oewn_form
+pyridoxamine 5'-phosphate	0	oewn-pyridoxamine_5-ap--phosphate-n	Number=Sing	dema	0			oewn_form
+pyridoxamines	0	oewn-pyridoxamine-n	Number=Plur	dema	0			rule
+pyridoxine	0	oewn-pyridoxine-n	Number=Sing	dema	0			oewn_form
+pyridoxine 5'-phosphate	0	oewn-pyridoxine_5-ap--phosphate-n	Number=Sing	dema	0			oewn_form
+pyridoxines	0	oewn-pyridoxine-n	Number=Plur	dema	0			rule
+pyriform	0		Degree=Pos	dema	0	pyriform	a	moby_reverse
+pyriform area	0	oewn-pyriform_area-n	Number=Sing	dema	0			oewn_form
+pyriform areas	0	oewn-pyriform_area-n	Number=Plur	dema	0			rule
+pyriform lobe	0	oewn-pyriform_lobe-n	Number=Sing	dema	0			oewn_form
+pyriform lobes	0	oewn-pyriform_lobe-n	Number=Plur	dema	0			rule
+pyrilamine	0	oewn-pyrilamine-n	Number=Sing	dema	0			oewn_form
+pyrilamines	0	oewn-pyrilamine-n	Number=Plur	dema	0			rule
+pyrimidine	0	oewn-pyrimidine-n	Number=Sing	dema	0			oewn_form
+pyrimidines	0	oewn-pyrimidine-n	Number=Plur	dema	0			rule
+pyrite	0	oewn-pyrite-n	Number=Sing	dema	0			oewn_form
+pyrites	0	oewn-pyrites-n	Number=Sing	dema	0			oewn_form
+pyrites	1	oewn-pyrite-n	Number=Plur	dema	0			rule
+pyritic	0		Degree=Pos	dema	0	pyritic	a	moby_reverse
+pyritohedron	0		Number=Sing	dema	0	pyritohedron	n	moby_reverse
+pyritohedrons	0		Number=Plur	dema	0	pyritohedron	n	rule
+pyrobi	0		Number=Sing	dema	0	pyrobi	n	moby_reverse
+pyrobis	0		Number=Plur	dema	0	pyrobi	n	rule
+pyrobitumen	0		Number=Sing	dema	0	pyrobitumen	n	moby_reverse
+pyrobitumens	0		Number=Plur	dema	0	pyrobitumen	n	rule
+pyrocatechol	0		Number=Sing	dema	0	pyrocatechol	n	moby_reverse
+pyrocatechols	0		Number=Plur	dema	0	pyrocatechol	n	rule
+pyrocellulose	0	oewn-pyrocellulose-n	Number=Sing	dema	0			oewn_form
+pyrocelluloses	0	oewn-pyrocellulose-n	Number=Plur	dema	0			rule
+pyrochemical	0	oewn-pyrochemical-a	Degree=Pos	dema	0			oewn_form
+pyrochemical process	0	oewn-pyrochemical_process-n	Number=Sing	dema	0			oewn_form
+pyrochemical processes	0	oewn-pyrochemical_process-n	Number=Plur	dema	0			rule
+pyrochemically	0		Degree=Pos	dema	0	pyrochemically	r	moby_reverse
+pyrochemistries	0	oewn-pyrochemistry-n	Number=Plur	dema	0			rule
+pyrochemistry	0	oewn-pyrochemistry-n	Number=Sing	dema	0			oewn_form
+pyrochlore	0		Number=Sing	dema	0	pyrochlore	n	moby_reverse
+pyrochlores	0		Number=Plur	dema	0	pyrochlore	n	rule
+pyroclastic	0		Degree=Pos	dema	0	pyroclastic	a	moby_reverse
+pyroconductivities	0		Number=Plur	dema	0	pyroconductivity	n	rule
+pyroconductivity	0		Number=Sing	dema	0	pyroconductivity	n	moby_reverse
+pyrocrystalline	0		Degree=Pos	dema	0	pyrocrystalline	a	moby_reverse
+pyroelectric	0	oewn-pyroelectric-a	Degree=Pos	dema	0			oewn_form
+pyroelectric	1		Number=Sing	dema	0	pyroelectric	n	moby_reverse
+pyroelectric material	0	oewn-pyroelectric_material-n	Number=Sing	dema	0			oewn_form
+pyroelectric materials	0	oewn-pyroelectric_material-n	Number=Plur	dema	0			rule
+pyroelectrical	0	oewn-pyroelectrical-a	Degree=Pos	dema	0			oewn_form
+pyroelectricities	0	oewn-pyroelectricity-n	Number=Plur	dema	0			rule
+pyroelectricity	0	oewn-pyroelectricity-n	Number=Sing	dema	0			oewn_form
+pyrogallate	0		Number=Sing	dema	0	pyrogallate	n	moby_reverse
+pyrogallates	0		Number=Plur	dema	0	pyrogallate	n	rule
+pyrogallic	0	oewn-pyrogallic-a	Degree=Pos	dema	0			oewn_form
+pyrogallic acid	0	oewn-pyrogallic_acid-n	Number=Sing	dema	0			oewn_form
+pyrogallic acids	0	oewn-pyrogallic_acid-n	Number=Plur	dema	0			rule
+pyrogallol	0	oewn-pyrogallol-n	Number=Sing	dema	0			oewn_form
+pyrogallols	0	oewn-pyrogallol-n	Number=Plur	dema	0			rule
+pyrogen	0	oewn-pyrogen-n	Number=Sing	dema	0			oewn_form
+pyrogenetic	0	oewn-pyrogenetic-a	Degree=Pos	dema	0			oewn_form
+pyrogenic	0	oewn-pyrogenic-a	Degree=Pos	dema	0			oewn_form
+pyrogenous	0	oewn-pyrogenous-a	Degree=Pos	dema	0			oewn_form
+pyrogens	0	oewn-pyrogen-n	Number=Plur	dema	0			rule
+pyrognostics	0		Number=Sing	dema	0	pyrognostics	n	moby_reverse
+pyrograph	0	oewn-pyrograph-n	Number=Sing	dema	0			oewn_form
+pyrographer	0	oewn-pyrographer-n	Number=Sing	dema	0			oewn_form
+pyrographers	0	oewn-pyrographer-n	Number=Plur	dema	0			rule
+pyrographic	0	oewn-pyrographic-a	Degree=Pos	dema	0			oewn_form
+pyrographies	0	oewn-pyrography-n	Number=Plur	dema	0			rule
+pyrographs	0	oewn-pyrograph-n	Number=Plur	dema	0			rule
+pyrography	0	oewn-pyrography-n	Number=Sing	dema	0			oewn_form
+pyrola	0	oewn-pyrola-n	Number=Sing	dema	0			oewn_form
+pyrolas	0	oewn-pyrola-n	Number=Plur	dema	0			rule
+pyrolatries	0	oewn-pyrolatry-n	Number=Plur	dema	0			rule
+pyrolatry	0	oewn-pyrolatry-n	Number=Sing	dema	0			oewn_form
+pyroligneous	0	oewn-pyroligneous-a	Degree=Pos	dema	0			oewn_form
+pyroligneous acid	0	oewn-pyroligneous_acid-n	Number=Sing	dema	0			oewn_form
+pyroligneous acids	0	oewn-pyroligneous_acid-n	Number=Plur	dema	0			rule
+pyrolignic	0	oewn-pyrolignic-a	Degree=Pos	dema	0			oewn_form
+pyrological	0		Degree=Pos	dema	0	pyrological	a	moby_reverse
+pyrologies	0		Number=Plur	dema	0	pyrology	n	rule
+pyrologist	0		Number=Sing	dema	0	pyrologist	n	moby_reverse
+pyrologists	0		Number=Plur	dema	0	pyrologist	n	rule
+pyrology	0		Number=Sing	dema	0	pyrology	n	moby_reverse
+pyrolusite	0	oewn-pyrolusite-n	Number=Sing	dema	0			oewn_form
+pyrolusites	0	oewn-pyrolusite-n	Number=Plur	dema	0			rule
+pyrolysis	0	oewn-pyrolysis-n	Number=Sing	dema	0			oewn_form
+pyrolytic	0	oewn-pyrolytic-a	Degree=Pos	dema	0			oewn_form
+pyromagnetic	0		Degree=Pos	dema	0	pyromagnetic	a	moby_reverse
+pyromancer	0	oewn-pyromancer-n	Number=Sing	dema	0			oewn_form
+pyromancers	0	oewn-pyromancer-n	Number=Plur	dema	0			rule
+pyromancies	0	oewn-pyromancy-n	Number=Plur	dema	0			rule
+pyromancy	0	oewn-pyromancy-n	Number=Sing	dema	0			oewn_form
+pyromania	0	oewn-pyromania-n	Number=Sing	dema	0			oewn_form
+pyromaniac	0	oewn-pyromaniac-n	Number=Sing	dema	0			oewn_form
+pyromaniacal	0		Degree=Pos	dema	0	pyromaniacal	a	moby_reverse
+pyromaniacs	0	oewn-pyromaniac-n	Number=Plur	dema	0			rule
+pyromanias	0	oewn-pyromania-n	Number=Plur	dema	0			rule
+pyromantic	0		Degree=Pos	dema	0	pyromantic	a	moby_reverse
+pyrometallurgies	0		Number=Plur	dema	0	pyrometallurgy	n	rule
+pyrometallurgy	0		Number=Sing	dema	0	pyrometallurgy	n	moby_reverse
+pyrometer	0	oewn-pyrometer-n	Number=Sing	dema	0			oewn_form
+pyrometers	0	oewn-pyrometer-n	Number=Plur	dema	0			rule
+pyrometric cone	0	oewn-pyrometric_cone-n	Number=Sing	dema	0			oewn_form
+pyrometric cones	0	oewn-pyrometric_cone-n	Number=Plur	dema	0			rule
+pyrometries	0		Number=Plur	dema	0	pyrometry	n	rule
+pyrometry	0		Number=Sing	dema	0	pyrometry	n	moby_reverse
+pyromorphite	0	oewn-pyromorphite-n	Number=Sing	dema	0			oewn_form
+pyromorphites	0	oewn-pyromorphite-n	Number=Plur	dema	0			rule
+pyrone	0		Number=Sing	dema	0	pyrone	n	moby_reverse
+pyrones	0		Number=Plur	dema	0	pyrone	n	rule
+pyrope	0	oewn-pyrope-n	Number=Sing	dema	0			oewn_form
+pyropes	0	oewn-pyrope-n	Number=Plur	dema	0			rule
+pyrophobia	0	oewn-pyrophobia-n	Number=Sing	dema	0			oewn_form
+pyrophobias	0	oewn-pyrophobia-n	Number=Plur	dema	0			rule
+pyrophoric	0		Degree=Pos	dema	0	pyrophoric	a	moby_reverse
+pyrophoric alloy	0	oewn-pyrophoric_alloy-n	Number=Sing	dema	0			oewn_form
+pyrophoric alloys	0	oewn-pyrophoric_alloy-n	Number=Plur	dema	0			rule
+pyrophosphate	0	oewn-pyrophosphate-n	Number=Sing	dema	0			oewn_form
+pyrophosphates	0	oewn-pyrophosphate-n	Number=Plur	dema	0			rule
+pyrophosphoric acid	0	oewn-pyrophosphoric_acid-n	Number=Sing	dema	0			oewn_form
+pyrophosphoric acids	0	oewn-pyrophosphoric_acid-n	Number=Plur	dema	0			rule
+pyrophotometer	0		Number=Sing	dema	0	pyrophotometer	n	moby_reverse
+pyrophotometers	0		Number=Plur	dema	0	pyrophotometer	n	rule
+pyrophyllite	0	oewn-pyrophyllite-n	Number=Sing	dema	0			oewn_form
+pyrophyllites	0	oewn-pyrophyllite-n	Number=Plur	dema	0			rule
+pyroscope	0	oewn-pyroscope-n	Number=Sing	dema	0			oewn_form
+pyroscopes	0	oewn-pyroscope-n	Number=Plur	dema	0			rule
+pyrosis	0	oewn-pyrosis-n	Number=Sing	dema	0			oewn_form
+pyrostat	0	oewn-pyrostat-n	Number=Sing	dema	0			oewn_form
+pyrostats	0	oewn-pyrostat-n	Number=Plur	dema	0			rule
+pyrosulfate	0		Number=Sing	dema	0	pyrosulfate	n	moby_reverse
+pyrosulfates	0		Number=Plur	dema	0	pyrosulfate	n	rule
+pyrosulfuric	0		Degree=Pos	dema	0	pyrosulfuric	a	moby_reverse
+pyrosulphate	0		Number=Sing	dema	0	pyrosulphate	n	moby_reverse
+pyrosulphates	0		Number=Plur	dema	0	pyrosulphate	n	rule
+pyrotechnic	0	oewn-pyrotechnic-a	Degree=Pos	dema	0			oewn_form
+pyrotechnic	1	oewn-pyrotechnic-n	Number=Sing	dema	0			oewn_form
+pyrotechnical	0	oewn-pyrotechnical-a	Degree=Pos	dema	0			oewn_form
+pyrotechnically	0		Degree=Pos	dema	0	pyrotechnically	r	moby_reverse
+pyrotechnics	0	oewn-pyrotechnics-n	Number=Sing	dema	0			oewn_form
+pyrotechnics	1		Degree=Pos	dema	0	pyrotechnics	a	moby_reverse
+pyrotechnics	2	oewn-pyrotechnic-n	Number=Plur	dema	0			rule
+pyrotechnies	0	oewn-pyrotechny-n	Number=Plur	dema	0			rule
+pyrotechny	0	oewn-pyrotechny-n	Number=Sing	dema	0			oewn_form
+pyrotoxin	0		Number=Sing	dema	0	pyrotoxin	n	moby_reverse
+pyrotoxins	0		Number=Plur	dema	0	pyrotoxin	n	rule
+pyroxene	0	oewn-pyroxene-n	Number=Sing	dema	0			oewn_form
+pyroxenes	0	oewn-pyroxene-n	Number=Plur	dema	0			rule
+pyroxenic	0		Degree=Pos	dema	0	pyroxenic	a	moby_reverse
+pyroxenite	0		Number=Sing	dema	0	pyroxenite	n	moby_reverse
+pyroxenites	0		Number=Plur	dema	0	pyroxenite	n	rule
+pyroxylin	0	oewn-pyroxylin-n	Number=Sing	dema	0			oewn_form
+pyroxyline	0	oewn-pyroxyline-n	Number=Sing	dema	0			oewn_form
+pyroxylines	0	oewn-pyroxyline-n	Number=Plur	dema	0			rule
+pyroxylins	0	oewn-pyroxylin-n	Number=Plur	dema	0			rule
+pyrrhic	0	oewn-pyrrhic-n	Number=Sing	dema	0			oewn_form
+pyrrhic	1	oewn-pyrrhic-a	Degree=Pos	dema	0			oewn_form
+pyrrhics	0	oewn-pyrrhic-n	Number=Plur	dema	0			rule
+pyrrhotine	0	oewn-pyrrhotine-n	Number=Sing	dema	0			oewn_form
+pyrrhotines	0	oewn-pyrrhotine-n	Number=Plur	dema	0			rule
+pyrrhotite	0	oewn-pyrrhotite-n	Number=Sing	dema	0			oewn_form
+pyrrhotites	0	oewn-pyrrhotite-n	Number=Plur	dema	0			rule
+pyrrhuloxia	0	oewn-pyrrhuloxia-n	Number=Sing	dema	0			oewn_form
+pyrrhuloxias	0	oewn-pyrrhuloxia-n	Number=Plur	dema	0			rule
+pyrrole	0		Number=Sing	dema	0	pyrrole	n	moby_reverse
+pyrroles	0		Number=Plur	dema	0	pyrrole	n	rule
+pyrrolic	0		Degree=Pos	dema	0	pyrrolic	a	moby_reverse
+pyrrolidine	0		Number=Sing	dema	0	pyrrolidine	n	moby_reverse
+pyrrolidines	0		Number=Plur	dema	0	pyrrolidine	n	rule
+pyruvic	0		Degree=Pos	dema	0	pyruvic	a	moby_reverse
+pyruvic acid	0	oewn-pyruvic_acid-n	Number=Sing	dema	0			oewn_form
+pyruvic acids	0	oewn-pyruvic_acid-n	Number=Plur	dema	0			rule
+pythium	0	oewn-pythium-n	Number=Sing	dema	0			oewn_form
+pythiums	0	oewn-pythium-n	Number=Plur	dema	0			rule
+pythogenesis	0		Number=Sing	dema	0	pythogenesis	n	moby_reverse
+pythogenic	0		Degree=Pos	dema	0	pythogenic	a	moby_reverse
+python	0	oewn-python-n	Number=Sing	dema	0			oewn_form
+pythoness	0	oewn-pythoness-n	Number=Sing	dema	0			oewn_form
+pythonesses	0	oewn-pythoness-n	Number=Plur	dema	0			rule
+pythons	0	oewn-python-n	Number=Plur	dema	0			rule
+pyuria	0	oewn-pyuria-n	Number=Sing	dema	0			oewn_form
+pyurias	0	oewn-pyuria-n	Number=Plur	dema	0			rule
+pyx	0	oewn-pyx-n	Number=Sing	dema	0			oewn_form
+pyx chest	0	oewn-pyx_chest-n	Number=Sing	dema	0			oewn_form
+pyx chests	0	oewn-pyx_chest-n	Number=Plur	dema	0			rule
+pyxes	0	oewn-pyx-n	Number=Plur	dema	0			rule
+pyxides	0	oewn-pyxis-n	Number=Plur	dema	0			oewn_form
+pyxidia	0	oewn-pyxidium-n	Number=Plur	dema	0			oewn_form
+pyxidium	0	oewn-pyxidium-n	Number=Sing	dema	0			oewn_form
+pyxie	0	oewn-pyxie-n	Number=Sing	dema	0			oewn_form
+pyxies	0	oewn-pyxie-n	Number=Plur	dema	0			rule
+pyxis	0	oewn-pyxis-n	Number=Sing	dema	0			oewn_form

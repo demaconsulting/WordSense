@@ -1,101 +1,125 @@
-spelling	rank	entry_id	features	source_id	reviewed
-aqua	0	oewn-aqua-n	Number=Sing	dema	0
-aqua	1	dema-aqua-a	Degree=Pos	dema	0
-aquacade	0	dema-aquacade-n	Number=Sing	dema	0
-aquacades	0	dema-aquacade-n	Number=Plur	dema	0
-aquaculture	0	oewn-aquaculture-n	Number=Sing	dema	0
-aquacultures	0	oewn-aquaculture-n	Number=Plur	dema	0
-aquae	0	dema-aquae-n	Number=Sing	dema	0
-aquaemanale	0	dema-aquaemanale-n	Number=Sing	dema	0
-aquaemanales	0	dema-aquaemanale-n	Number=Plur	dema	0
-aquaemanalia	0	dema-aquaemanalia-n	Number=Sing	dema	0
-aquaemanalias	0	dema-aquaemanalia-n	Number=Plur	dema	0
-aquaer	0	dema-aqua-a	Degree=Cmp	dema	0
-aquaes	0	dema-aquae-n	Number=Plur	dema	0
-aquaest	0	dema-aqua-a	Degree=Sup	dema	0
-aqualung	0	oewn-aqualung-n	Number=Sing	dema	0
-aqualungs	0	oewn-aqualung-n	Number=Plur	dema	0
-aqualy	0	dema-aqua-r		dema	0
-aquamanale	0	dema-aquamanale-n	Number=Sing	dema	0
-aquamanales	0	dema-aquamanale-n	Number=Plur	dema	0
-aquamanalia	0	dema-aquamanalia-n	Number=Sing	dema	0
-aquamanalias	0	dema-aquamanalia-n	Number=Plur	dema	0
-aquamanile	0	dema-aquamanile-n	Number=Sing	dema	0
-aquamaniles	0	dema-aquamanile-n	Number=Plur	dema	0
-aquamanilia	0	dema-aquamanilia-n	Number=Sing	dema	0
-aquamanilias	0	dema-aquamanilia-n	Number=Plur	dema	0
-aquamarine	0	oewn-aquamarine-n	Number=Sing	dema	0
-aquamarines	0	oewn-aquamarine-n	Number=Plur	dema	0
-aquanaut	0	oewn-aquanaut-n	Number=Sing	dema	0
-aquanauts	0	oewn-aquanaut-n	Number=Plur	dema	0
-aquaness	0	oewn-aqua-n	Number=Plur	dema	0
-aquaphobia	0	oewn-aquaphobia-n	Number=Sing	dema	0
-aquaphobias	0	oewn-aquaphobia-n	Number=Plur	dema	0
-aquaplane	0	oewn-aquaplane-n	Number=Sing	dema	0
-aquaplane	1	oewn-aquaplane-v	VerbForm=Inf	dema	0
-aquaplaned	0	dema-aquaplaned-v	VerbForm=Inf	dema	0
-aquaplaner	0	dema-aquaplaner-n	Number=Sing	dema	0
-aquaplaners	0	oewn-aquaplane-n	Number=Plur	dema	0
-aquaplanes	0	oewn-aquaplane-n	Number=Plur	dema	0
-aquaplanes	1	oewn-aquaplane-v	Person=3+Tense=Pres	dema	0
-aquaplaning	0	dema-aquaplaning-v	VerbForm=Inf	dema	0
-aquaplaningly	0	dema-aquaplane-r		dema	0
-aquarelle	0	dema-aquarelle-n	Number=Sing	dema	0
-aquarelles	0	dema-aquarelles-n	Number=Sing	dema	0
-aquarellist	0	dema-aquarellist-n	Number=Sing	dema	0
-aquarellists	0	dema-aquarellist-n	Number=Plur	dema	0
-aquarial	0	dema-aquarial-a	Degree=Pos	dema	0
-aquarially	0	dema-aquarial-r		dema	0
-aquarialness	0	dema-aquarial-n	Number=Plur	dema	0
-aquarian	0	dema-aquarian-a	Degree=Pos	dema	0
-aquarianly	0	dema-aquarian-r		dema	0
-aquarianness	0	dema-aquarian-n	Number=Plur	dema	0
-aquarist	0	dema-aquarist-n	Number=Sing	dema	0
-aquarists	0	dema-aquarist-n	Number=Plur	dema	0
-aquarium	0	oewn-aquarium-n	Number=Sing	dema	0
-aquariums	0	oewn-aquarium-n	Number=Plur	dema	0
-aquas	0	oewn-aqua-n	Number=Plur	dema	0
-aquashow	0	dema-aquashow-n	Number=Sing	dema	0
-aquashows	0	dema-aquashow-n	Number=Plur	dema	0
-aquatic	0	oewn-aquatic-a	Degree=Pos	dema	0
-aquatic	1	oewn-aquatic-n	Number=Sing	dema	0
-aquatically	0	dema-aquatically-r	Degree=Pos	dema	0
-aquaticness	0	oewn-aquatic-n	Number=Plur	dema	0
-aquatics	0	oewn-aquatics-n	Number=Sing	dema	0
-aquatint	0	oewn-aquatint-n	Number=Sing	dema	0
-aquatint	1	oewn-aquatint-v	VerbForm=Inf	dema	0
-aquatinted	0	oewn-aquatint-v	Tense=Past	dema	0
-aquatinter	0	dema-aquatinter-n	Number=Sing	dema	0
-aquatinters	0	oewn-aquatint-n	Number=Plur	dema	0
-aquatinting	0	oewn-aquatint-v	VerbForm=Ger	dema	0
-aquatintingly	0	dema-aquatint-r		dema	0
-aquatints	0	oewn-aquatint-n	Number=Plur	dema	0
-aquatints	1	oewn-aquatint-v	Person=3+Tense=Pres	dema	0
-aquatone	0	dema-aquatone-n	Number=Sing	dema	0
-aquatones	0	dema-aquatone-n	Number=Plur	dema	0
-aquavit	0	oewn-aquavit-n	Number=Sing	dema	0
-aquavits	0	oewn-aquavit-n	Number=Plur	dema	0
-aqueduct	0	oewn-aqueduct-n	Number=Sing	dema	0
-aqueducts	0	oewn-aqueduct-n	Number=Plur	dema	0
-aqueous	0	oewn-aqueous-a	Degree=Pos	dema	0
-aqueously	0	dema-aqueously-r	Degree=Pos	dema	0
-aqueousness	0	dema-aqueousness-n	Number=Sing	dema	0
-aqueousnesses	0	dema-aqueousness-n	Number=Plur	dema	0
-aquiclude	0	dema-aquiclude-n	Number=Sing	dema	0
-aquicludes	0	dema-aquiclude-n	Number=Plur	dema	0
-aquicultural	0	oewn-aquicultural-a	Degree=Pos	dema	0
-aquiculturally	0	dema-aquicultural-r		dema	0
-aquiculture	0	oewn-aquiculture-n	Number=Sing	dema	0
-aquicultures	0	oewn-aquiculture-n	Number=Plur	dema	0
-aquiculturist	0	dema-aquiculturist-n	Number=Sing	dema	0
-aquiculturists	0	dema-aquiculturist-n	Number=Plur	dema	0
-aquifer	0	oewn-aquifer-n	Number=Sing	dema	0
-aquifers	0	oewn-aquifer-n	Number=Plur	dema	0
-aquilegia	0	oewn-aquilegia-n	Number=Sing	dema	0
-aquilegias	0	oewn-aquilegia-n	Number=Plur	dema	0
-aquiline	0	oewn-aquiline-a	Degree=Pos	dema	0
-aquilinely	0	dema-aquiline-r		dema	0
-aquilineness	0	dema-aquiline-n	Number=Plur	dema	0
-aquiver	0	dema-aquiver-a	Degree=Pos	dema	0
-aquiverly	0	dema-aquiver-r		dema	0
-aquiverness	0	dema-aquiver-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Aqua-Lung	0	oewn-Aqua-Lung-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aqua-lungs	0	oewn-Aqua-Lung-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aquarius	0	oewn-Aquarius-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aquila chrysaetos	0	oewn-Aquila_chrysaetos-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aquila rapax	0	oewn-Aquila_rapax-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aquila rapaxes	0	oewn-Aquila_rapax-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aquilegia caerulea	0	oewn-Aquilegia_caerulea-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aquilegia caeruleas	0	oewn-Aquilegia_caerulea-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aquilegia canadensis	0	oewn-Aquilegia_canadensis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aquilegia scopulorum calcarea	0	oewn-Aquilegia_scopulorum_calcarea-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aquilegia scopulorum calcareas	0	oewn-Aquilegia_scopulorum_calcarea-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Aquilegia vulgaris	0	oewn-Aquilegia_vulgaris-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+aqua	0	oewn-aqua-n	Number=Sing	dema	0			oewn_form
+aqua	1		Degree=Pos	dema	0	aqua	a	moby_reverse
+aqua fortis	0	oewn-aqua_fortis-n	Number=Sing	dema	0			oewn_form
+aqua regia	0	oewn-aqua_regia-n	Number=Sing	dema	0			oewn_form
+aqua regias	0	oewn-aqua_regia-n	Number=Plur	dema	0			rule
+aqua vitae	0	oewn-aqua_vitae-n	Number=Sing	dema	0			oewn_form
+aqua vitaes	0	oewn-aqua_vitae-n	Number=Plur	dema	0			rule
+aquacade	0		Number=Sing	dema	0	aquacade	n	moby_reverse
+aquacades	0		Number=Plur	dema	0	aquacade	n	rule
+aquacultural	0	oewn-aquacultural-a	Degree=Pos	dema	0			oewn_form
+aquaculture	0	oewn-aquaculture-n	Number=Sing	dema	0			oewn_form
+aquacultures	0	oewn-aquaculture-n	Number=Plur	dema	0			rule
+aquae	0	oewn-aqua-n	Number=Plur	dema	0			oewn_form
+aquaemanale	0		Number=Sing	dema	0	aquaemanale	n	moby_reverse
+aquaemanales	0		Number=Plur	dema	0	aquaemanale	n	rule
+aquaemanalia	0		Number=Sing	dema	0	aquaemanalia	n	moby_reverse
+aquaemanalias	0		Number=Plur	dema	0	aquaemanalia	n	rule
+aqualung	0	oewn-aqualung-n	Number=Sing	dema	0			oewn_form
+aqualungs	0	oewn-aqualung-n	Number=Plur	dema	0			rule
+aquamanale	0		Number=Sing	dema	0	aquamanale	n	moby_reverse
+aquamanales	0		Number=Plur	dema	0	aquamanale	n	rule
+aquamanalia	0		Number=Sing	dema	0	aquamanalia	n	moby_reverse
+aquamanalias	0		Number=Plur	dema	0	aquamanalia	n	rule
+aquamanile	0		Number=Sing	dema	0	aquamanile	n	moby_reverse
+aquamaniles	0		Number=Plur	dema	0	aquamanile	n	rule
+aquamanilia	0		Number=Sing	dema	0	aquamanilia	n	moby_reverse
+aquamanilias	0		Number=Plur	dema	0	aquamanilia	n	rule
+aquamarine	0	oewn-aquamarine-n	Number=Sing	dema	0			oewn_form
+aquamarines	0	oewn-aquamarine-n	Number=Plur	dema	0			rule
+aquanaut	0	oewn-aquanaut-n	Number=Sing	dema	0			oewn_form
+aquanauts	0	oewn-aquanaut-n	Number=Plur	dema	0			rule
+aquaphobia	0	oewn-aquaphobia-n	Number=Sing	dema	0			oewn_form
+aquaphobias	0	oewn-aquaphobia-n	Number=Plur	dema	0			rule
+aquaphobic	0	oewn-aquaphobic-a	Degree=Pos	dema	0			oewn_form
+aquaplane	0	oewn-aquaplane-n	Number=Sing	dema	0			oewn_form
+aquaplane	1	oewn-aquaplane-v	VerbForm=Inf	dema	0			oewn_form
+aquaplaned	0	oewn-aquaplane-v	Tense=Past+VerbForm=Part	dema	0			rule
+aquaplaner	0		Number=Sing	dema	0	aquaplaner	n	moby_reverse
+aquaplaners	0		Number=Plur	dema	0	aquaplaner	n	rule
+aquaplanes	0	oewn-aquaplane-n	Number=Plur	dema	0			rule
+aquaplanes	1	oewn-aquaplane-v	Person=3+Tense=Pres	dema	0			rule
+aquaplaning	0	oewn-aquaplane-v	VerbForm=Ger	dema	0			rule
+aquarelle	0		Number=Sing	dema	0	aquarelle	n	moby_reverse
+aquarelles	0		Number=Plur	dema	0	aquarelle	n	rule
+aquarellist	0		Number=Sing	dema	0	aquarellist	n	moby_reverse
+aquarellists	0		Number=Plur	dema	0	aquarellist	n	rule
+aquaria	0	oewn-aquarium-n	Number=Plur	dema	0			oewn_form
+aquarial	0		Degree=Pos	dema	0	aquarial	a	moby_reverse
+aquarian	0		Degree=Pos	dema	0	aquarian	a	moby_reverse
+aquarist	0		Number=Sing	dema	0	aquarist	n	moby_reverse
+aquarists	0		Number=Plur	dema	0	aquarist	n	rule
+aquarium	0	oewn-aquarium-n	Number=Sing	dema	0			oewn_form
+aquariums	0	oewn-aquarium-n	Number=Plur	dema	0			rule_variant
+aquas	0	oewn-aqua-n	Number=Plur	dema	0			rule_variant
+aquashow	0		Number=Sing	dema	0	aquashow	n	moby_reverse
+aquashows	0		Number=Plur	dema	0	aquashow	n	rule
+aquatic	0	oewn-aquatic-a	Degree=Pos	dema	0			oewn_form
+aquatic	1	oewn-aquatic-n	Number=Sing	dema	0			oewn_form
+aquatic bird	0	oewn-aquatic_bird-n	Number=Sing	dema	0			oewn_form
+aquatic birds	0	oewn-aquatic_bird-n	Number=Plur	dema	0			rule
+aquatic fern	0	oewn-aquatic_fern-n	Number=Sing	dema	0			oewn_form
+aquatic ferns	0	oewn-aquatic_fern-n	Number=Plur	dema	0			rule
+aquatic mammal	0	oewn-aquatic_mammal-n	Number=Sing	dema	0			oewn_form
+aquatic mammals	0	oewn-aquatic_mammal-n	Number=Plur	dema	0			rule
+aquatic plant	0	oewn-aquatic_plant-n	Number=Sing	dema	0			oewn_form
+aquatic plants	0	oewn-aquatic_plant-n	Number=Plur	dema	0			rule
+aquatic vertebrate	0	oewn-aquatic_vertebrate-n	Number=Sing	dema	0			oewn_form
+aquatic vertebrates	0	oewn-aquatic_vertebrate-n	Number=Plur	dema	0			rule
+aquatically	0		Degree=Pos	dema	0	aquatically	r	moby_reverse
+aquatics	0	oewn-aquatics-n	Number=Sing	dema	0			oewn_form
+aquatics	1	oewn-aquatic-n	Number=Plur	dema	0			rule
+aquatint	0	oewn-aquatint-n	Number=Sing	dema	0			oewn_form
+aquatint	1	oewn-aquatint-v	VerbForm=Inf	dema	0			oewn_form
+aquatinted	0	oewn-aquatint-v	Tense=Past+VerbForm=Part	dema	0			rule
+aquatinter	0		Number=Sing	dema	0	aquatinter	n	moby_reverse
+aquatinters	0		Number=Plur	dema	0	aquatinter	n	rule
+aquatinting	0	oewn-aquatint-v	VerbForm=Ger	dema	0			rule
+aquatints	0	oewn-aquatint-n	Number=Plur	dema	0			rule
+aquatints	1	oewn-aquatint-v	Person=3+Tense=Pres	dema	0			rule
+aquatone	0		Number=Sing	dema	0	aquatone	n	moby_reverse
+aquatones	0		Number=Plur	dema	0	aquatone	n	rule
+aquavit	0	oewn-aquavit-n	Number=Sing	dema	0			oewn_form
+aquavits	0	oewn-aquavit-n	Number=Plur	dema	0			rule
+aqueduct	0	oewn-aqueduct-n	Number=Sing	dema	0			oewn_form
+aqueducts	0	oewn-aqueduct-n	Number=Plur	dema	0			rule
+aqueductus cerebri	0	oewn-aqueductus_cerebri-n	Number=Sing	dema	0			oewn_form
+aqueductus cerebris	0	oewn-aqueductus_cerebri-n	Number=Plur	dema	0			rule
+aqueous	0	oewn-aqueous-a	Degree=Pos	dema	0			oewn_form
+aqueous humor	0	oewn-aqueous_humor-n	Number=Sing	dema	0			oewn_form
+aqueous humors	0	oewn-aqueous_humor-n	Number=Plur	dema	0			rule
+aqueous humour	0	oewn-aqueous_humour-n	Number=Sing	dema	0			oewn_form
+aqueous humours	0	oewn-aqueous_humour-n	Number=Plur	dema	0			rule
+aqueous solution	0	oewn-aqueous_solution-n	Number=Sing	dema	0			oewn_form
+aqueous solutions	0	oewn-aqueous_solution-n	Number=Plur	dema	0			rule
+aqueously	0		Degree=Pos	dema	0	aqueously	r	moby_reverse
+aqueousness	0		Number=Sing	dema	0	aqueousness	n	moby_reverse
+aquiclude	0		Number=Sing	dema	0	aquiclude	n	moby_reverse
+aquicludes	0		Number=Plur	dema	0	aquiclude	n	rule
+aquicultural	0	oewn-aquicultural-a	Degree=Pos	dema	0			oewn_form
+aquiculture	0	oewn-aquiculture-n	Number=Sing	dema	0			oewn_form
+aquicultures	0	oewn-aquiculture-n	Number=Plur	dema	0			rule
+aquiculturist	0		Number=Sing	dema	0	aquiculturist	n	moby_reverse
+aquiculturists	0		Number=Plur	dema	0	aquiculturist	n	rule
+aquifer	0	oewn-aquifer-n	Number=Sing	dema	0			oewn_form
+aquiferous	0	oewn-aquiferous-a	Degree=Pos	dema	0			oewn_form
+aquifers	0	oewn-aquifer-n	Number=Plur	dema	0			rule
+aquilege	0	oewn-aquilege-n	Number=Sing	dema	0			oewn_form
+aquileges	0	oewn-aquilege-n	Number=Plur	dema	0			rule
+aquilegia	0	oewn-aquilegia-n	Number=Sing	dema	0			oewn_form
+aquilegias	0	oewn-aquilegia-n	Number=Plur	dema	0			rule
+aquiline	0	oewn-aquiline-a	Degree=Pos	dema	0			oewn_form
+aquiver	0		Degree=Pos	dema	0	aquiver	a	moby_reverse

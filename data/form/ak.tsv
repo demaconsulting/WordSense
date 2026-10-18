@@ -1,54 +1,69 @@
-spelling	rank	entry_id	features	source_id	reviewed
-akala	0	dema-akala-n	Number=Sing	dema	0
-akalas	0	dema-akala-n	Number=Plur	dema	0
-akasha	0	dema-akasha-n	Number=Sing	dema	0
-akashas	0	dema-akasha-n	Number=Plur	dema	0
-ake	0	dema-ake-v	VerbForm=Inf	dema	0
-ake	1	dema-ake-n	Number=Sing	dema	0
-akeake	0	dema-akeake-n	Number=Sing	dema	0
-akeakes	0	dema-akeake-n	Number=Plur	dema	0
-akebi	0	dema-akebi-n	Number=Sing	dema	0
-akebis	0	dema-akebi-n	Number=Plur	dema	0
-aked	0	dema-aked-v	VerbForm=Inf	dema	0
-akeded	0	dema-aked-v	Tense=Past	dema	0
-akeder	0	dema-aked-n	Number=Plur	dema	0
-akeders	0	dema-aked-n	Number=Plur	dema	0
-akeding	0	dema-aked-v	VerbForm=Ger	dema	0
-akedingly	0	dema-aked-r		dema	0
-akeds	0	dema-aked-v	Person=3+Tense=Pres	dema	0
-akee	0	oewn-akee-n	Number=Sing	dema	0
-akees	0	oewn-akee-n	Number=Plur	dema	0
-akela	0	dema-akela-n	Number=Sing	dema	0
-akelas	0	dema-akela-n	Number=Plur	dema	0
-akene	0	dema-akene-n	Number=Sing	dema	0
-akenes	0	dema-akene-n	Number=Plur	dema	0
-aker	0	dema-ake-n	Number=Plur	dema	0
-akers	0	dema-ake-n	Number=Plur	dema	0
-akes	0	dema-ake-v	Person=3+Tense=Pres	dema	0
-akes	1	dema-ake-n	Number=Plur	dema	0
-aketon	0	dema-aketon-n	Number=Sing	dema	0
-aketons	0	dema-aketon-n	Number=Plur	dema	0
-akhara	0	dema-akhara-n	Number=Sing	dema	0
-akharas	0	dema-akhara-n	Number=Plur	dema	0
-akimbo	0	oewn-akimbo-r	Degree=Pos	dema	0
-akin	0	oewn-akin-a	Degree=Pos	dema	0
-akiner	0	oewn-akin-a	Degree=Cmp	dema	0
-akinesia	0	oewn-akinesia-n	Number=Sing	dema	0
-akinesias	0	oewn-akinesia-n	Number=Plur	dema	0
-akinest	0	oewn-akin-a	Degree=Sup	dema	0
-akinete	0	dema-akinete-n	Number=Sing	dema	0
-akinetes	0	dema-akinete-n	Number=Plur	dema	0
-akinetic	0	dema-akinetic-a	Degree=Pos	dema	0
-akinetically	0	dema-akinetic-r		dema	0
-aking	0	dema-aking-v	VerbForm=Inf	dema	0
-akingly	0	dema-ake-r		dema	0
-akinly	0	dema-akin-r		dema	0
-akinness	0	dema-akin-n	Number=Plur	dema	0
-akroter	0	dema-akroter-n	Number=Sing	dema	0
-akroterion	0	dema-akroterion-n	Number=Sing	dema	0
-akroterions	0	dema-akroterion-n	Number=Plur	dema	0
-akroters	0	dema-akroter-n	Number=Plur	dema	0
-akrteria	0	dema-akrteria-n	Number=Sing	dema	0
-akrterias	0	dema-akrteria-n	Number=Plur	dema	0
-akvavit	0	oewn-akvavit-n	Number=Sing	dema	0
-akvavits	0	oewn-akvavit-n	Number=Plur	dema	0
+spelling	rank	entry_id	features	source_id	reviewed	lemma	pos	provenance
+Akan	0	oewn-Akan-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Akan language	0	oewn-Akan_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Akan languages	0	oewn-Akan_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Akans	0	oewn-Akan-n	Capitalization=Title+Number=Plur	dema	0			rule
+Akha	0	oewn-Akha-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Akha language	0	oewn-Akha_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Akha languages	0	oewn-Akha_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Akhas	0	oewn-Akha-n	Capitalization=Title+Number=Plur	dema	0			rule
+Akhbari	0	oewn-Akhbari-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Akhbaris	0	oewn-Akhbari-n	Capitalization=Title+Number=Plur	dema	0			rule
+Akkadian	0	oewn-Akkadian-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Akkadians	0	oewn-Akkadian-n	Capitalization=Title+Number=Plur	dema	0			rule
+Aku	0	oewn-Aku-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Aku language	0	oewn-Aku_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Aku languages	0	oewn-Aku_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Akus	0	oewn-Aku-n	Capitalization=Title+Number=Plur	dema	0			rule
+Akwa'ala	0	oewn-Akwa-ap-ala-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
+Akwa'ala language	0	oewn-Akwa-ap-ala_language-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
+Akwa'ala languages	0	oewn-Akwa-ap-ala_language-n	Capitalization=Exact+Number=Plur	dema	0			rule
+Akwa'alas	0	oewn-Akwa-ap-ala-n	Capitalization=Title+Number=Plur	dema	0			rule
+akala	0		Number=Sing	dema	0	akala	n	moby_reverse
+akalas	0		Number=Plur	dema	0	akala	n	rule
+akaryocyte	0	oewn-akaryocyte-n	Number=Sing	dema	0			oewn_form
+akaryocytes	0	oewn-akaryocyte-n	Number=Plur	dema	0			rule
+akaryote	0	oewn-akaryote-n	Number=Sing	dema	0			oewn_form
+akaryotes	0	oewn-akaryote-n	Number=Plur	dema	0			rule
+akasha	0		Number=Sing	dema	0	akasha	n	moby_reverse
+akashas	0		Number=Plur	dema	0	akasha	n	rule
+ake	0		VerbForm=Inf	dema	0	ake	v	moby_reverse
+ake	1		Number=Sing	dema	0	ake	n	moby_reverse
+akeake	0		Number=Sing	dema	0	akeake	n	moby_reverse
+akeakes	0		Number=Plur	dema	0	akeake	n	rule
+akebi	0		Number=Sing	dema	0	akebi	n	moby_reverse
+akebis	0		Number=Plur	dema	0	akebi	n	rule
+aked	0		Tense=Past+VerbForm=Part	dema	0	ake	v	rule
+akee	0	oewn-akee-n	Number=Sing	dema	0			oewn_form
+akee tree	0	oewn-akee_tree-n	Number=Sing	dema	0			oewn_form
+akee trees	0	oewn-akee_tree-n	Number=Plur	dema	0			rule
+akees	0	oewn-akee-n	Number=Plur	dema	0			rule
+akela	0		Number=Sing	dema	0	akela	n	moby_reverse
+akelas	0		Number=Plur	dema	0	akela	n	rule
+akene	0		Number=Sing	dema	0	akene	n	moby_reverse
+akenes	0		Number=Plur	dema	0	akene	n	rule
+akes	0		Person=3+Tense=Pres	dema	0	ake	v	rule
+aketon	0		Number=Sing	dema	0	aketon	n	moby_reverse
+aketons	0		Number=Plur	dema	0	aketon	n	rule
+akhara	0		Number=Sing	dema	0	akhara	n	moby_reverse
+akharas	0		Number=Plur	dema	0	akhara	n	rule
+akimbo	0	oewn-akimbo-r	Degree=Pos	dema	0			oewn_form
+akimbo	1	oewn-akimbo-a	Degree=Pos	dema	0			oewn_form
+akin	0	oewn-akin-a	Degree=Pos	dema	0			oewn_form
+akinesia	0	oewn-akinesia-n	Number=Sing	dema	0			oewn_form
+akinesias	0	oewn-akinesia-n	Number=Plur	dema	0			rule
+akinesis	0	oewn-akinesis-n	Number=Sing	dema	0			oewn_form
+akinete	0		Number=Sing	dema	0	akinete	n	moby_reverse
+akinetes	0		Number=Plur	dema	0	akinete	n	rule
+akinetic	0		Degree=Pos	dema	0	akinetic	a	moby_reverse
+akinetic epilepsies	0	oewn-akinetic_epilepsy-n	Number=Plur	dema	0			rule
+akinetic epilepsy	0	oewn-akinetic_epilepsy-n	Number=Sing	dema	0			oewn_form
+aking	0		VerbForm=Ger	dema	0	ake	v	rule
+akroter	0		Number=Sing	dema	0	akroter	n	moby_reverse
+akroterion	0		Number=Sing	dema	0	akroterion	n	moby_reverse
+akroterions	0		Number=Plur	dema	0	akroterion	n	rule
+akroters	0		Number=Plur	dema	0	akroter	n	rule
+akrteria	0		Number=Sing	dema	0	akrteria	n	moby_reverse
+akrterias	0		Number=Plur	dema	0	akrteria	n	rule
+akvavit	0	oewn-akvavit-n	Number=Sing	dema	0			oewn_form
+akvavits	0	oewn-akvavit-n	Number=Plur	dema	0			rule
