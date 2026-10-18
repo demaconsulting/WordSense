@@ -1,0 +1,185 @@
+lemma	sense	tags	group	from	definition	status
+bow	bend-noun	noun	bend	bend:noun	an act of bending the body forward or the head down, as a greeting, thanks, respect or at the end of a performance, or the front of a ship (bow rhymes with cow)	new
+bow	bend-verb	verb	bend	bend:verb	to bend the body forward or the head down in greeting, respect or thanks; to yield or submit (bow to pressure)	new
+bow	weapon	noun		weapon:noun	a curved weapon for shooting arrows, or a similar curved or knotted object (bow rhymes with go): a violin bow, a ribbon bow, a bow tie	new
+lead	metal	noun		metal:noun	the soft heavy grey metal (pronounced led): lead pipes, lead paint, lead poisoning, a pencil lead	new
+lead	guide-noun	noun	guide	guide:noun	a position in front, a clue or tip, a leash, or the main part: take the lead, a good lead, a lead role, the lead singer	new
+lead	guide-verb	verb	guide	guide:verb	to guide, go in front of, command or cause (lead, leads, led, leading): led the way, lead to trouble, led by example	new
+tear	drop	noun		drop:noun	a drop of salty liquid from the eye (pronounced like ear): tears ran down her cheeks	new
+tear	rip-noun	noun	rip	rip:noun	a hole or split made by tearing (pronounced like air): a tear in the paper, a tear in his coat	new
+tear	rip-verb	verb	rip	rip:verb	to pull apart by force, or to rush (tear, tears, tore, torn, tearing): tore the letter, torn jeans, tear down a wall	new
+closer	noun	noun		noun:noun	one that closes or finishes: a door closer, the closer of the game, a baseball closer	new
+closer	adj	adj|comparative	nearer	verb:adj	comparative adjective of close: nearer in space, time or relationship: a closer look, closer friends, the closer of the two	new
+closer	adv	adv|comparative	nearer	verb:adv	comparative adverb of close: to or at a nearer position: come closer, stand closer to the fire, moved closer	new
+close	adj	adj		-	adjective: near, intimate or careful: a close friend, a close call, close attention	existing
+close	verb	verb		-	to shut or end: close the door, the shop closes at six	existing
+close	adv	adv		adj:adv	adverb: near, closely or tightly: stay close, stood close to the wall, held her close, close behind	new
+content	adj	adj		-	satisfied, happy with what one has: content with the result	existing
+content	noun	noun		-	what is contained, or subject matter: the content of the box, contents	existing
+content	verb	verb		adj:verb	to satisfy or make content, often reflexive: she contented herself with a short walk, content yourself with this	new
+present	noun	noun		-	a gift, or the present time: a birthday present, the past and the present	existing
+present	verb	verb		-	to give, show or introduce: present an award, present the findings	existing
+present	adj	adj		noun:adj	adjective: being in a place or existing now: all members were present, the present situation, those present	new
+live	adj	adj		-	adjective (pronounced like hive): alive, broadcast as it happens, or carrying electricity: a live broadcast, a live wire, live animals	existing
+live	verb	verb		-	to be alive or to reside (pronounced like give): live in London, live a long life	existing
+live	adv	adv		adj:adv	adverb (pronounced like hive): as it happens, in a live performance: broadcast live, played live, streamed live	new
+rows	argument	noun		-	noun: noisy quarrels (rows of the argument kind, pronounced like cows)	existing
+rows	line	noun		-	noun: lines of things side by side: rows of seats, rows of houses	existing
+rows	paddle	verb		line:verb,argument:verb	verb: propels a boat with oars (he rows the boat, she rows across the lake, pronounced like goes)	new
+row	argument	noun		-	noun: a noisy quarrel	existing
+row	line	noun		-	noun: a line of things side by side: a row of seats	existing
+row	paddle	verb		argument:verb	verb: to propel a boat with oars: row the boat, row across the lake	existing
+upsetting	adj	adj		-	adjective: causing distress or sadness: an upsetting experience, upsetting news	new
+upsetting	noun	noun		-	noun (nominal gerund after the): the act of overturning or disturbing: the upsetting of the plan, the upsetting of the boat	new
+upsetting	verb	verb		verb:verb	verb (present participle or gerund of upset, with an object): overturning, disturbing or distressing: upsetting the apple cart, is upsetting her	new
+polish	noun	noun		-	noun: a substance or action that makes a surface shiny, or refinement: shoe polish, a coat of polish	existing
+polish	verb	verb		-	verb: to make shiny by rubbing, or to refine: polish the silver, polish your speech	existing
+polish	adj	adj	nationality	-	adjective (capitalized Polish used as a modifier): of Poland, its people or language: Polish sausage, a Polish film	new
+polish	language	noun	nationality	-	noun (capitalized Polish): the Polish language or a Polish person: she speaks fluent Polish, the Polish voted	new
+orient	noun	noun		-	noun (the Orient): the countries of East Asia, old-fashioned	existing
+orient	verb	verb		-	verb: to align, direct or familiarize: orient the map, orients herself, oriented toward	existing
+overhead	adj	adj	above	-	adjective: located above, especially over the head, or of overhead expenses: an overhead light, overhead wires, the overhead compartment, an overhead kick	new
+overhead	adv	adv	above	-	adverb: in the sky or above the head: birds flying overhead, the stars overhead, a plane passed overhead	new
+overhead	noun	noun		-	noun: the general running expenses of a business, or the extra processing or transmission cost of a system: administrative overhead, overheads, protocol overhead, low overhead	new
+uptown	adj	adj	uptown	-	adjective: of or in the upper or residential part of a town, especially upper Manhattan: an uptown train, an uptown apartment, uptown stations	new
+uptown	adv	adv	uptown	-	adverb: to, toward or in the upper part of a town or city: go uptown, moved uptown, a train heading uptown	new
+uptown	noun	noun		-	noun: the upper or residential part of a town or city, or a district named Uptown: Uptown New Orleans, in Uptown, Uptown Minneapolis	new
+conjunct	adj	adj		-	adjective: joined together, or moving by step in music (conjunct motion), or a kind of adverbial or verb form: conjunct melody, conjunct order, a conjunct adverb	new
+conjunct	noun	noun		-	noun: one of the parts joined by a conjunction, in logic or grammar: the two conjuncts of a coordinate structure, a conjunct of the formula	new
+contact	contact-noun	noun	stress-first	-	noun (CONtact): touch or communication, a person who can help, or an electrical or optical part: eye contact, lost contact, a business contact, contact lenses	new
+contact	contact-verb	verb	stress-last	-	verb (con-TACT): to get in touch with someone, by phone, mail or in person: contact the office, I contacted her, contacting customers	new
+impact	impact-noun	noun	stress-first	-	noun (IM-pact): a strong effect or influence, or the force of one object hitting another: the impact of the crash, an economic impact, a major impact on sales	new
+impact	impact-verb	verb	stress-last	-	verb (im-PACT): to have an effect on something, or to strike or hit something with force: impacted the economy, the meteor impacted the surface, an impacted tooth	new
+address	address-noun	noun	stress-first	-	noun (AD-dress): where someone lives or where mail is sent, a computer or web location, or a formal speech: my home address, an IP address, the president's address to the nation	new
+address	address-verb	verb	stress-last	-	verb (a-DRESS): to speak or write to someone, to deal with a problem or topic, or to write the destination on mail: address the crowd, address the issue, addressed the envelope	new
+transfer	transfer-noun	noun	stress-first	-	noun (TRANS-fer): the moving of something or someone from one place or owner to another: a bank transfer, a heat transfer, a transfer to another school, a bus transfer ticket	new
+transfer	transfer-verb	verb	stress-last	-	verb (trans-FER): to move something or someone from one place, person or group to another: transfer the money, was transferred to Paris, transferring files	new
+update	update-noun	noun	stress-first	-	noun (UP-date): a new version, or a report of the latest news or information: a software update, a news update, a weather update, give me an update	new
+update	update-verb	verb	stress-last	-	verb (up-DATE): to make something newer or bring it up to date, or to give someone the latest information: update the software, updated the records, keeping us updated	new
+protest	protest-noun	noun	stress-first	-	noun (PRO-test): a public show of disagreement, or a statement of objection: a protest march, a protest against the war, in protest, under protest	new
+protest	protest-verb	verb	stress-last	-	verb (pro-TEST): to object to something strongly, in words or in public action: protest the decision, they protested against the tax, he protested that he was innocent	new
+collect	collect-verb	verb	gather	-	verb (col-LECT): to gather, bring together or pick up: collect stamps, collected the data, collecting taxes, collect the children from school	new
+collect	collect-prayer	noun	prayer	-	noun (COLL-ect, first syllable like cot): a short formal prayer in Christian worship, especially the prayer of the day in the Anglican and Roman Catholic liturgy: the collect for Sunday, the Collect of Advent	new
+export	export-noun	noun	stress-first	-	noun (EX-port): a product or service sold to another country, or the act of selling goods abroad: the country's main export, oil exports, an export ban	new
+export	export-verb	verb	stress-last	-	verb (ex-PORT): to send or sell goods to another country, or to save or send data out of a program: export grain, exported to Japan, export the file as a spreadsheet	new
+accent	accent-noun	noun	stress-first	-	noun (AC-cent): a way of pronouncing a language that shows a person's region or origin, a stress mark or emphasis, or a distinctive feature: a French accent, an acute accent mark, an accent color	new
+accent	accent-verb	verb	stress-last	-	verb (ac-CENT): to stress or emphasize something, or to mark a letter or syllable with an accent: the pattern accents the waist, accented the second syllable	new
+upgrade	upgrade-noun	noun	stress-first	-	noun (UP-grade): a newer or better version or improvement, or a move to a higher class of service: a software upgrade, a hardware upgrade, a free upgrade to first class	new
+upgrade	upgrade-verb	verb	stress-last	-	verb (up-GRADE): to improve something or replace it with a better version, or to move to a higher class: upgrade the system, upgraded my seat, upgrading to the latest release	new
+second	second-ordinal-adj	adj	ordinal	-	adjective: coming after the first in order, or another or additional: the second floor, the second day, a second chance, her second language	new
+second	second-noun	noun	ordinal	-	noun: a unit of time of one sixtieth of a minute, a very short moment, the one after the first, a helper at a duel or boxing match, or a flawed product: ten seconds, wait a second, the second of May, a second in command	new
+second	second-support	verb	ordinal	-	verb (SECond): to formally support a motion or proposal so that it can be discussed or voted on, or to agree with a statement: I second the motion, seconded by Mr. Lee, seconding the nomination	new
+second	second-transfer	verb	secondment	-	verb (se-COND, second syllable like on): to transfer an officer or employee temporarily to another unit, post or job: seconded to the ministry, was seconded from the regiment, an officer seconded for duty abroad	new
+detail	detail-noun	noun	stress-first	-	noun (DEE-tail): a small fact or feature, the fine points of something, or a small group given a special task: the details of the plan, every detail, attention to detail, a security detail	new
+detail	detail-verb	verb	stress-last	-	verb (de-TAIL): to describe or list fully, or to assign a person or group to a special task: detail the plans, detailed the changes, detailing the costs, was detailed to guard the gate	new
+combat	combat-noun	noun	stress-first	-	noun (COM-bat): fighting between armed forces or individuals: in combat, hand-to-hand combat, combat troops, a combat zone	new
+combat	combat-verb	verb	stress-last	-	verb (com-BAT): to fight against or try to stop something, such as a disease or a problem: combat crime, combating climate change, combated the infection	new
+resign	resign-quit	verb	quit	-	verb (re-ZINE): to give up a job, post or position formally: resign from the board, he resigned as mayor, resigning next month	new
+resign	resign-sign-again	verb	sign-again	-	verb (re-SIGN, like sign again): to sign a document, contract or lease again: resign the lease, re-signed the contract, the player was re-signed for another year	new
+reset	reset-noun	noun	stress-first	-	noun (REE-set): the act of setting something back to its original state, or a fresh start: a hard reset, a factory reset, the reset button, a reset of relations	new
+reset	reset-verb	verb	stress-last	-	verb (ree-SET): to set something again or return it to its starting state: reset the clock, reset your password, the router resets itself, resetting the counter	new
+intern	intern-noun	noun	trainee	-	noun (IN-turn): a student or recent graduate who works for training and experience: a summer intern, a medical intern, the interns at the firm	new
+intern	intern-train	verb	trainee	-	verb (IN-turn): to work as an intern, gaining experience: interned at the newspaper, interning for a senator, she interns on Fridays	new
+intern	intern-confine	verb	confine	-	verb (in-TURN): to confine or imprison someone, especially in wartime and without trial: interned as enemy aliens, were interned for the duration of the war, interning civilians	new
+recreate	recreate-refresh	verb	refresh	-	verb (REC-re-ate, like rec room): to refresh yourself by relaxing or doing something enjoyable: recreate by the lake, they recreated on the weekends, a place to recreate	new
+recreate	recreate-again	verb	again	-	verb (re-cre-ATE, like create again): to make or create something again, or to reproduce it: recreate the scene, recreated the original, recreating the experiment	new
+perfume	perfume-noun	noun	stress-first	-	noun (PER-fume): a sweet-smelling liquid worn on the skin, or a pleasant smell: a bottle of perfume, French perfume, the perfume of roses	new
+perfume	perfume-verb	verb	stress-last	-	verb (per-FUME): to fill something with a pleasant smell, or to put perfume on it: perfumed the air, a perfumed letter, perfuming the room	new
+dictate	dictate-noun	noun	stress-first	-	noun (DIC-tate): an order, rule or principle that must be obeyed: the dictates of conscience, follow the dictates of fashion, a dictate from above	new
+dictate	dictate-verb	verb	stress-last	-	verb (dic-TATE): to say words aloud for someone to write down, or to give orders or set terms: dictate a letter, dictated the terms, dictating to a secretary	new
+recess	recess-noun	noun	stress-first	-	noun (REE-cess): a break in work or a school day, or a hollow space set into a wall: the court's recess, children at recess, a recess in the wall, the summer recess	new
+recess	recess-verb	verb	stress-last	-	verb (re-CESS): to take a break, or to set something back into a wall or surface: the court recessed for lunch, recessed lighting, recessing the shelf	new
+complex	complex-adj	adj	adj	-	adjective (com-PLEX): made of many connected parts, or hard to understand: a complex system, a complex problem, very complex	new
+complex	complex-noun	noun	noun	-	noun (COM-plex): a group of connected buildings, or a set of related ideas or feelings: a sports complex, an apartment complex, an inferiority complex	new
+frequent	frequent-adj	adj	adj	-	adjective (FREE-quent): happening often or occurring many times: frequent visits, a frequent flyer, frequent rain	new
+frequent	frequent-verb	verb	verb	-	verb (free-QUENT): to visit a place often or habitually: frequent the cafe, frequented by tourists, frequenting the library	new
+ally	ally-noun	noun	stress-first	-	noun (AL-lie): a person, group or country that supports or is joined with another: a close ally, allies in the war, an ally of the United States	new
+ally	ally-verb	verb	stress-last	-	verb (al-LIE): to unite or join with another for a shared purpose: ally with the rebels, allied themselves with the king, allying with local groups	new
+traverse	traverse-noun	noun	stress-first	-	noun (TRAV-erse): a path or crossing, or something that lies across: a traverse across the cliff, the traverse of a gun carriage, a surveyor's traverse	new
+traverse	traverse-verb	verb	stress-last	-	verb (tra-VERSE): to travel across or through a place, or to extend across it: traverse the desert, traversed the bridge, traversing the ridge	new
+prefix	prefix-noun	noun	stress-first	-	noun (PREE-fix): a word part added to the front of a word, or a title or code placed before a name or number: the prefix un-, a telephone prefix, the prefix Dr.	new
+prefix	prefix-verb	verb	stress-last	-	verb (pre-FIX): to add something to the front of a word, name or number: prefix the name with a title, prefixed with a zero, prefixing the code	new
+suffix	suffix-noun	noun	stress-first	-	noun (SUF-fix): a word part added to the end of a word: the suffix -ness, a plural suffix, a noun suffix	new
+suffix	suffix-verb	verb	stress-last	-	verb (suf-FIX): to add something to the end of a word, name or number: suffix the word with -ly, suffixed with a letter, suffixing the number	new
+discord	discord-noun	noun	stress-first	-	noun (DIS-cord): disagreement or conflict, or an unpleasant mixture of sounds: sow discord, family discord, a discord of voices	new
+discord	discord-verb	verb	stress-last	-	verb (dis-CORD): to disagree or be out of harmony with something (rare): the notes discord, discorded with the rest, a story discording with the facts	new
+recap	recap-noun	noun	stress-first	-	noun (REE-cap): a short summary of what has already happened: a recap of the game, a weekly recap, a quick recap	new
+recap	recap-verb	verb	stress-last	-	verb (re-CAP): to go over the main points of something again briefly: recap the story, recapped the evening news, recapping the plot	new
+advert	advert-noun	noun	stress-first	-	noun (AD-vert): British short form of advertisement: a television advert, an advert for a car, the adverts on the radio	new
+advert	advert-verb	verb	stress-last	-	verb (ad-VERT): to refer to something, or to turn attention to it, in speech or writing (formal): advert to the matter, adverted to the earlier case, as I adverted to in my letter	new
+alloy	alloy-noun	noun	stress-first	-	noun (AL-oy): a metal made by mixing two or more metals, or a metal mixed with another substance: an aluminum alloy, a steel alloy, alloy wheels	new
+alloy	alloy-verb	verb	stress-last	-	verb (al-LOY): to mix metals together, or to spoil or weaken something by adding something else: alloy the copper with tin, was alloyed with zinc, joy alloyed with sorrow	new
+primer	primer-paint	noun	paint	-	noun (PRY-mer): a first coat of paint or a substance that prepares a surface, or a cap that sets off an explosive charge: a coat of primer, wall primer, the primer in the shell	new
+primer	primer-textbook	noun	textbook	-	noun (PRIM-er): a book that introduces a subject to beginners: a primer on economics, a reading primer, a primer for new parents	new
+intermediate	intermediate-adj	adj	short-ending	-	adjective (in-ter-MEE-dee-it): in the middle between two things, or at a level between beginner and advanced: an intermediate stage, an intermediate class, intermediate skills	new
+intermediate	intermediate-noun	noun	short-ending	-	noun (in-ter-MEE-dee-it): something in the middle, such as a substance formed between steps of a process: a chemical intermediate, an intermediate in the reaction, the intermediates of the synthesis	new
+intermediate	intermediate-verb	verb	long-ending	-	verb (in-ter-MEE-dee-ate, ending like ate): to act as a go-between, or to mediate (rare): intermediate between the parties, intermediated the deal, intermediating the dispute	new
+wicked	wicked-evil	adj	evil	-	adjective (WICK-id): morally bad or evil, or playfully naughty: a wicked witch, a wicked smile, wicked deeds	new
+wicked	wicked-wick	verb	wick	-	verb (WICKT, one syllable): past tense of wick, drew moisture away like a candle wick: the fabric wicked away sweat, moisture wicked from the skin, the oil wicked up the cloth	new
+tier	tier-noun	noun	row	-	noun (TEER): one of several rows, levels or ranks placed one above another: the upper tier, a three-tier cake, tiers of seats	new
+tier	tier-verb	verb	row	-	verb (TEER): to arrange or build something in tiers: a tiered cake, tiered seating, the fountain tiers upward	new
+tier	tier-one-who-ties	noun	ties	-	noun (TIE-er, rhymes with higher): a person who ties things: a fly tier, a rope tier, a bow tier	new
+tower	tower-noun	noun	structure	-	noun (TOW-er, rhymes with flour): a tall narrow building or structure, or a tall stack of things: a clock tower, the Eiffel Tower, a control tower, a tower of blocks	new
+tower	tower-verb	verb	structure	-	verb (TOW-er, rhymes with flour): to rise high above something, or to be much taller or greater than others: towered over the crowd, towering above the town, mountains tower overhead	new
+tower	tower-one-who-tows	noun	tows	-	noun (TOE-er, rhymes with lower): a person or vehicle that tows something: a barge tower, the tower hired to haul the car, the car's tower	new
+shower	shower-noun	noun	rain	-	noun (SHOW-er, rhymes with flower): a brief fall of rain, a spray of water for washing, or a party for a gift occasion: an April shower, take a shower, a baby shower, a shower of sparks	new
+shower	shower-verb	verb	rain	-	verb (SHOW-er, rhymes with flower): to wash under a shower, or to give or cover someone with a great many things: showered before bed, showered her with praise, showering the crowd with confetti	new
+shower	shower-one-who-shows	noun	shows	-	noun (SHOH-er, rhymes with lower): a person who shows something: a shower of horses, a dog shower, a shower of films	new
+sewer	sewer-drain	noun	drain	-	noun (SOO-er): an underground pipe or channel that carries away waste water: a storm sewer, the city sewer, sewer rats, a sewer line	new
+sewer	sewer-seamstress	noun	sews	-	noun (SOH-er, rhymes with lower): a person who sews, such as a tailor or seamstress: a skilled sewer, a quick sewer, the sewers in the factory	new
+forearm	forearm-noun	noun	stress-first	-	noun (FOR-arm, stress on the first syllable): the part of the arm between the elbow and the wrist: a tattoo on her forearm, forearm muscles, broke his forearm	new
+forearm	forearm-verb	verb	stress-last	-	verb (for-ARM, stress on the last syllable): to arm or prepare someone beforehand against danger: forewarned is forearmed, forearmed with facts, forearm yourself against attack	new
+alum	alum-mineral	noun	mineral	-	noun (AL-um, first syllable like pal): a pale mineral salt used in dyeing, tanning and pickling and to stop bleeding: a pinch of alum, alum crystals, potassium alum	new
+alum	alum-graduate	noun	graduate	-	noun (a-LUM, like alumni): informal short form of alumnus or alumna, a former student of a school or college: a Harvard alum, an alum of the class of 1990, alums of the university	new
+supposed	supposed-adj	adj	voiced	-	adjective (sup-POZED, ends with z): believed or assumed, often wrongly: the supposed cause, a supposed expert, their supposed friend	new
+supposed	supposed-past	verb	voiced	-	verb (sup-POZED, ends with z): past tense of suppose, to assume or think something likely: I supposed he was right, she supposed it was true, they supposed that we knew	new
+supposed	supposed-to	adj	unvoiced	-	adjective (sup-POST, ends with t): in 'supposed to', meaning expected, required or meant to: I am supposed to go, you are not supposed to, what was it supposed to do	new
+blessed	blessed-adj	adj	two-syllable	-	adjective (BLESS-id, two syllables): holy or sacred, or fortunate and happy: the Blessed Virgin, a blessed event, blessed are the meek, blessed with good health	new
+blessed	blessed-past	verb	one-syllable	-	verb (BLEST, one syllable): past tense of bless, to make holy or to wish well: the priest blessed the crowd, she blessed the food, was blessed by the pope	new
+august	august-adj	adj	adj	-	adjective (aw-GUST, stress on the second syllable): respected, noble or impressive: an august gathering, the august presence, an august institution	new
+august	august-month	noun	month	-	noun (AW-gust, stress on the first syllable): the eighth month of the year: in August, August 15, the heat of August	new
+defense	defense-general	noun	general	-	noun (de-FENSE, stress on the second syllable): protection against attack or harm, or the arguments made for an accused person: self-defense, a strong defense, the defense of the city, the defense lawyer	new
+defense	defense-sports	noun	sports	-	noun (DEE-fense, stress on the first syllable): in sports, the team or players trying to stop the other side from scoring: the defense held, a strong defense, the defense forced a turnover	new
+bases	bases-base	noun	base	-	noun (BAY-sez): the plural of base, meaning foundations, bottoms or supports, military camps, or the bases in baseball: the army bases, the bases of the columns, loaded the bases	new
+bases	bases-verb	verb	base	-	verb (BAY-sez): the present tense of base, to build or found something on something else: she bases her answer on the facts, he bases his decisions on data, the firm bases its prices on costs	new
+bases	bases-basis	noun	basis	-	noun (BAY-seez): the plural of basis, the underlying reasons or foundations: the bases for the decision, on what bases, the bases of the argument	new
+costume	costume-noun	noun	stress-first	-	noun (COS-tume): clothing worn for a role, a party or a special occasion: a Halloween costume, a theater costume, a costume party	new
+costume	costume-verb	verb	stress-last	-	verb (cos-TUME): to dress someone in a costume or to provide the costumes for a show: costume the actors, costumed as a pirate, costuming the play	new
+romance	romance-noun	noun	stress-first	-	noun (RO-mance): a love affair, or a story about love and adventure: a summer romance, a historical romance, the romance of the sea	new
+romance	romance-verb	verb	stress-last	-	verb (ro-MANCE): to court or woo someone, or to flatter someone to win favor: romance a customer, romanced her with flowers, romancing the voters	new
+submarine	submarine-noun	noun	stress-first	-	noun (SUB-ma-reen, stress on the first syllable): a ship that can travel under water, or a long sandwich: a nuclear submarine, a submarine captain, a submarine sandwich	new
+submarine	submarine-adj	adj	stress-last	-	adjective (sub-ma-REEN, stress on the last syllable): lying, living or working under the sea: a submarine cable, submarine canyons, submarine plants	new
+excerpt	excerpt-noun	noun	stress-first	-	noun (EX-erpt): a short passage taken from a longer text or film: an excerpt from the novel, read an excerpt, excerpts of the speech	new
+excerpt	excerpt-verb	verb	stress-last	-	verb (ex-ERPT): to take a short passage from a longer work: excerpt a chapter, excerpted in the magazine, excerpting the report	new
+annex	annex-noun	noun	stress-first	-	noun (AN-ex): a building added to or near a larger one: the hotel annex, a library annex, a new annex	new
+annex	annex-verb	verb	stress-last	-	verb (a-NEX): to take over territory, or to attach something as an addition: annex the island, annexed by Austria, annexing the province	new
+slough	slough-skin	noun	shed	-	noun (SLUFF): dead skin or tissue that is shed, such as the cast skin of a snake: a slough of dead tissue, the snake's slough, necrotic slough	new
+slough	slough-shed	verb	shed	-	verb (SLUFF): to shed or cast off something, such as skin, or to get rid of something unwanted: the snake sloughed its skin, sloughing off old habits, sloughed off the dead cells	new
+slough	slough-swamp	noun	swamp	-	noun (SLOW, rhymes with cow): a swamp, a muddy inlet or a state of deep gloom: a slough of despond, a muddy slough, the cattails of the slough	new
+tarry	tarry-linger	verb	linger	-	verb (TAIR-ee, rhymes with carry): to stay somewhere longer than you should, or to be slow to leave or act: do not tarry, tarried in the village, tarrying at the gate	new
+tarry	tarry-tar	adj	tar	-	adjective (TAR-ee, rhymes with starry): covered with or like tar: a tarry smell, tarry black stains, a tarry residue	new
+underscore	underscore-noun	noun	stress-first	-	noun (UN-der-score): the character _ used in file names and code, or a line drawn under a word: a name with an underscore, the underscore key, words separated by underscores	new
+underscore	underscore-verb	verb	stress-last	-	verb (un-der-SCORE): to emphasize something, or to draw a line under it: underscore the importance, underscored the need, underscoring the point	new
+gallant	gallant-brave	adj	brave	-	adjective (GAL-ant, first syllable like pal): brave, noble or heroic: a gallant soldier, a gallant effort, a gallant rescue	new
+gallant	gallant-courtly	adj	courtly	-	adjective (ga-LANT, stress on the second syllable): polite and attentive to women, courteous: a gallant gentleman, gallant manners, was most gallant to the ladies	new
+gallant	gallant-suitor	noun	courtly	-	noun (ga-LANT, stress on the second syllable): a fashionable young man who pays attention to women, a suitor: a young gallant, the gallants of the court, a gallant at her door	new
+mow	mow-cut	verb	cut	-	verb (MOE): to cut grass or a crop with a mower or scythe: mow the lawn, mowed the field, mowing hay	new
+mow	mow-haymow	noun	hay	-	noun (MOW, rhymes with cow): a pile or loft where hay or grain is stored in a barn: the hay mow, a barn mow, fell from the mow	new
+multiply	multiply-verb	verb	verb	-	verb (MUL-ti-ply, ending like ply): to increase in number or amount, or to find the product of numbers: rabbits multiply quickly, multiply six by seven, multiplied by two	new
+multiply	multiply-adverb	adv	adverb	-	adverb (MUL-ti-plee, ending like plea): in many ways or many times (rare): multiply connected, multiply determined, multiply infected	new
+reprimand	reprimand-noun	noun	stress-first	-	noun (REP-ri-mand): a formal expression of disapproval, a severe scolding: a stern reprimand, received a reprimand, a written reprimand	new
+reprimand	reprimand-verb	verb	stress-last	-	verb (rep-ri-MAND, last syllable like and): to scold someone formally or severely: reprimand the officer, was reprimanded for being late, reprimanding the class	new
+retrofit	retrofit-noun	noun	stress-first	-	noun (RET-ro-fit): a change that adds new parts or equipment to something already built: a seismic retrofit, an energy retrofit, the retrofit of the building	new
+retrofit	retrofit-verb	verb	stress-last	-	verb (ret-ro-FIT): to add new parts or equipment to something already built: retrofit the old factory, retrofitted with sensors, retrofitting homes	new
+egress	egress-noun	noun	stress-first	-	noun (EE-gress): a way out, or the act of going out: a means of egress, an emergency egress, ingress and egress	new
+egress	egress-verb	verb	stress-last	-	verb (e-GRESS): to go out or come out of a place (formal): the crowd egressed through the doors, egressing from the vehicle, birds egress at dawn	new
+agape	agape-open	adj	open	-	adjective (a-GAPE, rhymes with tape): wide open, especially of the mouth in wonder: stood with mouth agape, eyes agape, left the door agape	new
+agape	agape-love	noun	love	-	noun (a-GAH-pay, three syllables): selfless Christian love of God and neighbor, or a love feast: agape love, the agape of Christ, an agape meal	new
+predate	predate-earlier	verb	earlier	-	verb (pree-DATE, stress on the last syllable): to come before something in time, or to be older than it: predate the invention, predates the war by years, predated the Romans	new
+predate	predate-prey	verb	prey	-	verb (pruh-DATE, stress on the last syllable): to hunt or prey on other animals: wolves predate on deer, predating on eggs, predated by birds	new
+ellipses	ellipses-ellipse	noun	ellipse	-	noun (e-LIP-siz, ends like his): the plural of ellipse, oval-shaped curves: the orbits are ellipses, draw two ellipses, ellipses and circles	new
+ellipses	ellipses-ellipsis	noun	ellipsis	-	noun (e-LIP-seez, ends like fees): the plural of ellipsis, the three dots that show omitted words: three ellipses, the ellipses in the quotation, ellipses at the end	new
+adduct	adduct-noun	noun	stress-first	-	noun (AD-uct): a chemical compound formed by joining two molecules directly: a DNA adduct, adducts of the protein, an adduct of benzene	new
+adduct	adduct-verb	verb	stress-last	-	verb (ad-DUCT): to draw a limb or body part toward the midline of the body: adduct the thigh, adducted the arm, adducting muscles	new
+forbear	forbear-verb	verb	stress-last	-	verb (for-BARE, last syllable like bear): to hold back or refrain from doing something: forbear from comment, forbore to ask, forborne to say	new
+forbear	forbear-ancestor	noun	stress-first	-	noun (FOR-bare, stress on the first syllable): an ancestor: his forbears, the forbears of the family, our noble forbears	new

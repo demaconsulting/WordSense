@@ -1,11 +1,11 @@
 ---
-title: Template DotNet Library Review Plan
-subtitle: File Review Plan for the Template DotNet Library
+title: WordSense Review Plan
+subtitle: File Review Plan for the WordSense
 author: DEMA Consulting
-description: File Review Plan for the Template DotNet Library
+description: File Review Plan for the WordSense
 lang: en-US
 keywords:
-  - Template DotNet Library
+  - WordSense
   - Review Plan
   - File Reviews
   - .NET

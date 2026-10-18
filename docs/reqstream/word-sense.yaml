@@ -1,0 +1,205 @@
+---
+# Software System Requirements for WordSense
+#
+# WordSense is delivered as five layered NuGet packages: the core package (DemaConsulting.WordSense: contracts and
+# the word lexicon), the statistical Basic package, the shared Onnx package and the two encoder model packages
+# MiniLM and BertBaseCased. These requirements describe the externally visible behavior of the system from the
+# perspective of its consumers, without specifying implementation details. Each requirement is decomposed into the
+# subsystem requirements under docs/reqstream/word-sense/.
+
+sections:
+  - title: WordSense Requirements
+    requirements:
+      - id: WordSense-Lib-Classify
+        title: >-
+          The system shall classify the words of a running text, answering for each word its lemma, part of speech,
+          meaning and (for a heteronym) respelling, and return one result per input word in the input order.
+        tags: [system]
+        justification: |
+          This is the purpose of the system: given a text, callers learn which sense (for example "record" as noun
+          or verb) each word carries, while the results still map one to one onto the words they passed in.
+        children:
+          - WordSense-Core-Contracts
+          - WordSense-Basic-Classify
+          - WordSense-Onnx-Classify
+        tests:
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
+
+      - id: WordSense-Lib-Lexicon
+        title: >-
+          The system shall provide an embedded lexicon of English words, with the senses of each word and of its
+          inflected forms, that needs no model, no network access and no file outside the package.
+        tags: [system]
+        justification: |
+          Most words of a text are not ambiguous; answering them from a lexicon gives broad coverage at no
+          inference cost, and embedding the lexicon keeps the system self-contained.
+        children:
+          - WordSense-Core-Lexicon
+        tests:
+          - WordLexicon_Words_KnownWord_ReturnsItsSenses
+          - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
+          - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
+
+      - id: WordSense-Lib-Layered
+        title: >-
+          The system shall be delivered as five layered packages, in which the core package carries no ONNX
+          Runtime, weights or vector dependency and every other package builds on the core contracts.
+        tags: [system]
+        justification: |
+          Callers that need only the lexicon or the statistical Basic model must not pay for a native runtime or a model
+          file; layering lets each caller take exactly the packages it needs, and lets a third party implement the
+          core contracts with its own model.
+        children:
+          - WordSense-Core-Independent
+          - WordSense-Basic-Offline
+          - WordSense-Onnx-Lifecycle
+          - WordSense-MiniLM-Model
+          - WordSense-BertBaseCased-Model
+        tests:
+          - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences
+          - WordSense_Classifier_EndToEnd_ClassifiesRecord
+
+      - id: WordSense-Lib-BasicModel
+        title: >-
+          The system shall provide a statistical model that chooses the sense of an ambiguous word from the part of
+          speech and the cues in its sentence, answers every ambiguous word with a probability, is deterministic and
+          thread-safe, and needs no model file, no network access and no native runtime.
+        tags: [system]
+        justification: |
+          A small, fast and dependency-free model serves callers that accept lower accuracy; the probability lets
+          them decide which answers to trust.
+        children:
+          - WordSense-Basic-Classify
+          - WordSense-Basic-Tagger
+          - WordSense-Basic-Cues
+          - WordSense-Basic-Fusion
+          - WordSense-Basic-Deterministic
+          - WordSense-Basic-Offline
+        tests:
+          - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+          - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
+
+      - id: WordSense-Lib-EncoderModels
+        title: >-
+          The system shall provide encoder-based models, the all-MiniLM-L6-v2 model (uncased) and the
+          bert-base-cased model (cased), that choose among the senses of an ambiguous word from its sentence context
+          with trained per-lemma weights embedded in the package.
+        tags: [system]
+        justification: |
+          Context-aware models are more accurate than a dictionary alone; two encoders let callers trade size and
+          speed (MiniLM)
+          against accuracy and case sensitivity (BERT base cased), and embedding the weights keeps each package
+          self-contained apart from the model files.
+        children:
+          - WordSense-Onnx-Classify
+          - WordSense-Onnx-Weights
+          - WordSense-Onnx-Encoder
+          - WordSense-MiniLM-Model
+          - WordSense-BertBaseCased-Model
+        tests:
+          - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+          - BertBaseCasedWordSenseModel_Classify_AmbiguousWord_ReturnsBestSense
+
+      - id: WordSense-Lib-Confidence
+        title: >-
+          The system shall report a confidence between 0 and 1 with every result, shall give the best candidate
+          with a low confidence rather than none where the model can rank candidates, and shall report no sense and
+          confidence 0 where it cannot decide, as for a word it does not know.
+        tags: [system]
+        justification: |
+          Callers apply their own confidence policy; a monotonic, bounded confidence and a clear distinction between
+          low confidence and no decision let them do so.
+        children:
+          - WordSense-Basic-Fusion
+          - WordSense-Basic-BasicClassifier-Unknown
+          - WordSense-Onnx-Confidence
+          - WordSense-Core-Contracts
+        tests:
+          - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
+          - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
+
+      - id: WordSense-Lib-ModelFiles
+        title: >-
+          The system shall obtain the files of an encoder model on first use from a user-supplied mirror or the
+          public repository copy, verify each against its pinned SHA-256 digest, store them in a per-user location
+          and use them offline afterwards.
+        tags: [system]
+        justification: |
+          Encoder model files are too large to embed; users in restricted networks need their own mirror, everyone
+          else gets the public copy, and no file is used unless it is verified.
+        children:
+          - WordSense-Onnx-ModelFiles
+          - WordSense-Onnx-Mirror
+        tests:
+          - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+          - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+
+      - id: WordSense-Lib-Reproducible
+        title: >-
+          The build-time tool shall produce the same lexicon, weights and reports from the same corpus and models,
+          and shall never be shipped in a package.
+        tags: [system]
+        justification: |
+          A reproducible build lets reviewers verify that the shipped lexicon and weights come from the committed
+          corpus; keeping the tool out of the packages keeps training code out of consumers' dependency graphs.
+        children:
+          - WordSense-WordSenseBuilder-Words
+          - WordSense-WordSenseBuilder-ImportDictionary
+          - WordSense-WordSenseBuilder-Weights
+          - WordSense-WordSenseBuilder-Evaluate
+          - WordSense-WordSenseBuilder-UdCounts
+          - WordSense-WordSenseBuilder-TrainBasic
+          - WordSense-WordSenseBuilder-TuneBasic
+          - WordSense-WordSenseBuilder-Hyperparameters
+          - WordSense-WordSenseBuilder-Appendix
+          - WordSense-WordSenseBuilder-Coverage
+          - WordSense-WordSenseBuilder-Corpus
+          - WordSense-WordSenseBuilder-Usage
+        tests:
+          - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
+          - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+
+      - id: WordSense-Lib-Packaging
+        title: >-
+          Each of the five packages shall ship XML documentation with a namespace summary and verified examples,
+          NuGet metadata and a README; each package that embeds derived data carries the credits and licenses in its
+          package readme.
+        tags: [system]
+        justification: |
+          Consumers learn the API from the package itself; examples that are compiled by the test suite cannot go
+          stale (the tests verify the documentation examples; NuGet metadata and the package readme are produced
+          and checked by the pack step), and the credits and licenses in the package readme satisfy the licenses of
+          the embedded data and models.
+        children:
+          - WordSense-Core-Packaging
+          - WordSense-Basic-Packaging
+          - WordSense-Onnx-Packaging
+          - WordSense-MiniLM-Packaging
+          - WordSense-BertBaseCased-Packaging
+        tests:
+          - WordSense_XmlDocExamples_Compile
+          - BasicWordSense_XmlDocExamples_Compile
+          - OnnxWordSense_XmlDocExamples_Compile
+          - MiniLMWordSense_XmlDocExamples_Compile
+          - BertBaseCasedWordSense_XmlDocExamples_Compile
+
+      - id: WordSense-Lib-Documentation
+        title: >-
+          The documentation shall show a README usage sample whose code and output for each model are verified against
+          the library,
+          and an appendix that lists every supported lemma with its parts of speech, meanings, respellings and forms
+          and is never stale.
+        tags: [system]
+        justification: |
+          A usage example that no longer compiles or prints something else misleads new users, and a hand-written
+          list of supported words drifts from the corpus. Compiling and running the README sample, and generating the
+          appendix from the corpus, keep both honest.
+        children:
+          - WordSense-WordSenseBuilder-Appendix
+        tests:
+          - WordSense_Readme_CodeBlocks_MatchCompiledSamples
+          - WordSense_Readme_BasicOutput_MatchesReadme
+          - WordSense_Readme_MiniLMOutput_MatchesReadme
+          - WordSense_Readme_BertBaseCasedOutput_MatchesReadme
+          - WordSense_Readme_CommentedAlternatives_NameExistingModels
+          - WordSense_Readme_SampleMarkers_AreAllChecked

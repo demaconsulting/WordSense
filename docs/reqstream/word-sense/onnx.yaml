@@ -1,0 +1,159 @@
+---
+# Onnx subsystem requirements (the package DemaConsulting.WordSense.Onnx)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        requirements:
+          - id: WordSense-Onnx-Classify
+            title: >-
+              The Onnx subsystem shall classify words from the core lexicon, running the encoder only when a word has
+              several senses and trained weights, and scoring only that word's trained candidate senses.
+            tags: [subsystem]
+            justification: |
+              Encoder inference is the expensive step; running it only for words that need context keeps
+              classification fast, and scoring only the candidates keeps answers consistent with the lexicon.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Lookup
+              - WordSense-Onnx-OnnxClassifier-Encode
+              - WordSense-Onnx-OnnxClassifier-Candidates
+              - WordSense-Onnx-OnnxClassifier-Validation
+              - WordSense-Onnx-OnnxWordSenseModel-Classify
+            tests:
+              - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
+
+          - id: WordSense-Onnx-Confidence
+            title: >-
+              The Onnx subsystem shall report a confidence that grows monotonically with the score margin between the
+              best and the second-best candidate relative to the lemma's abstain margin, clamped to 0 to 1, shall
+              give the best candidate even when the confidence is low, shall answer a multi-sense word without
+              trained weights with its first lexicon sense and a confidence of one over its number of senses, and
+              shall give no details and confidence 0 only when the encoder produced no usable vector.
+            tags: [subsystem]
+            justification: |
+              A monotonic, bounded confidence lets callers apply a threshold; returning the best candidate even at
+              low confidence lets them still use it, and a word that no model was trained for still gets its most
+              frequent sense instead of vanishing.
+            children:
+              - WordSense-Onnx-OnnxClassifier-Confidence
+              - WordSense-Onnx-OnnxClassifier-BestCandidate
+              - WordSense-Onnx-OnnxClassifier-MissingWeights
+              - WordSense-Onnx-OnnxClassifier-NoVector
+              - WordSense-Onnx-LemmaWeights-Scoring
+            tests:
+              - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
+
+          - id: WordSense-Onnx-Weights
+            title: >-
+              The Onnx subsystem shall read trained per-lemma weights from a binary blob embedded in the model
+              package and match each lemma to the word lexicon by lemma, part of speech and meaning, keeping the
+              weights of a lemma only when its trained senses are the first senses of the lexicon entry.
+            tags: [subsystem]
+            justification: |
+              A stale or mismatched weights blob must never give a wrong answer; matching per lemma turns any
+              mismatch into the first-sense answer instead.
+            children:
+              - WordSense-Onnx-LemmaWeights-Format
+              - WordSense-Onnx-LemmaWeights-Integrity
+              - WordSense-Onnx-LemmaWeights-Match
+              - WordSense-Onnx-LemmaWeights-Scoring
+              - WordSense-Onnx-LemmaWeights-Embedded
+            tests:
+              - EmbeddedWeights_MiniLM_DropsNoLemma
+
+          - id: WordSense-Onnx-Encoder
+            title: >-
+              The Onnx subsystem shall compute contextual embeddings of the words of a text with ONNX Runtime and a
+              WordPiece tokenizer, with a cased or an uncased vocabulary, including texts longer than the model input.
+            tags: [subsystem]
+            justification: |
+              The embeddings of the surrounding text are the evidence for the sense decision; one shared encoder
+              serves every model package.
+            children:
+              - WordSense-Onnx-OnnxEncoder-Encode
+              - WordSense-Onnx-OnnxEncoder-Concurrency
+              - WordSense-Onnx-OnnxEncoder-LongText
+              - WordSense-Onnx-OnnxEncoder-Threads
+              - WordSense-Onnx-OnnxEncoder-Validation
+              - WordSense-Onnx-WordPieceTokenizer-Parity
+              - WordSense-Onnx-WordPieceTokenizer-Cased
+              - WordSense-Onnx-WordPieceTokenizer-Spans
+              - WordSense-Onnx-WordPieceTokenizer-Window
+              - WordSense-OTS-OnnxRuntime-Inference
+            tests:
+              - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+
+          - id: WordSense-Onnx-ModelFiles
+            title: >-
+              The Onnx subsystem shall make the files of a model available by using verified files already present,
+              or otherwise downloading them from the mirror and then the public repository copy, verifying every
+              file against its pinned SHA-256 digest and storing it atomically in the model's folder of the store.
+            tags: [subsystem]
+            justification: |
+              Users in restricted networks need to supply their own mirror, while everyone else gets the files from
+              public hosting; verification and atomic storage guarantee that only intact files are ever used.
+            children:
+              - WordSense-Onnx-ModelDownloader-Order
+              - WordSense-Onnx-ModelDownloader-Fallthrough
+              - WordSense-Onnx-ModelDownloader-Integrity
+              - WordSense-Onnx-ModelDownloader-Atomic
+              - WordSense-Onnx-ModelDownloader-Location
+              - WordSense-Onnx-ModelDownloader-StoreRoot
+              - WordSense-Onnx-ModelDownloader-AllFail
+              - WordSense-Onnx-ModelDownloader-Present
+              - WordSense-Onnx-ModelDownloader-Cancel
+              - WordSense-Onnx-ModelDownloader-Options
+              - WordSense-Onnx-OnnxWordSenseModel-Ensure
+              - WordSense-Onnx-OnnxWordSenseModel-Concurrent
+            tests:
+              - ModelDownloader_EnsureAsync_MirrorFails_FallsBackToGitHub
+              - ModelDownloader_EnsureAsync_HashMismatch_FallsThroughAndKeepsNothingBad
+
+          - id: WordSense-Onnx-Mirror
+            title: >-
+              The Onnx subsystem shall support a user download mirror, set by MirrorOptions or the WORDSENSE_MIRROR_*
+              environment variables, laid out as the mirror address followed by the model identifier and the file
+              name, and shall send mirror credentials only to the mirror's own origin.
+            tags: [subsystem]
+            justification: |
+              Enterprises and offline users host the model on their own server; environment variables and options
+              let a deployment point the package at it without code changes, and credentials must never reach a
+              public host.
+            children:
+              - WordSense-Onnx-DownloadMirror-Validation
+              - WordSense-Onnx-DownloadMirror-Environment
+              - WordSense-Onnx-DownloadMirror-Redaction
+              - WordSense-Onnx-ModelDownloader-MirrorConfig
+              - WordSense-Onnx-ModelDownloader-MirrorLayout
+              - WordSense-Onnx-ModelDownloader-Credentials
+            tests:
+              - ModelDownloader_EnsureModel_MirrorFromEnvironment_IsUsedFirst
+              - ModelDownloader_EnsureModel_ProgrammaticMirror_BeatsEnvironment
+
+          - id: WordSense-Onnx-Lifecycle
+            title: >-
+              The Onnx subsystem shall provide one abstract, disposable base class for encoder models, with the model
+              identifier and hidden size known before any download, and with the encoder session released on
+              disposal.
+            tags: [subsystem]
+            justification: |
+              The model packages differ only in their model description; a shared base keeps their behavior
+              identical, and disposal releases the native session.
+            children:
+              - WordSense-Onnx-OnnxWordSenseModel-Dispose
+              - WordSense-Onnx-OnnxWordSenseModel-Identity
+              - WordSense-Onnx-OnnxWordSenseModel-Options
+            tests:
+              - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+              - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
+
+          - id: WordSense-Onnx-Packaging
+            title: >-
+              The Onnx package shall ship its XML documentation with a namespace summary and verified examples, its
+              NuGet metadata, and a README.
+            tags: [subsystem]
+            justification: |
+              Consumers learn the API from the package; verified examples cannot go stale.
+            tests:
+              - OnnxWordSense_XmlDocExamples_Compile

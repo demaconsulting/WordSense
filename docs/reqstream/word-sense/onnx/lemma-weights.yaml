@@ -1,0 +1,84 @@
+---
+# LemmaWeights unit requirements (the weights blob, the weighted lemma table and scoring)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: LemmaWeights Requirements
+            requirements:
+              - id: WordSense-Onnx-LemmaWeights-Format
+                title: >-
+                  The weights reader shall read the binary weights blob of a model: its model identifier, dimension,
+                  mean vector and, per lemma, its senses, bias, abstain margin and weights.
+                tags: [unit]
+                justification: |
+                  The trained classifiers ship as one compact blob per model; the reader must reproduce exactly what
+                  the build tool wrote.
+                tests:
+                  - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
+                  - WordSenseBuilder_WeightsBlobWriter_Write_NoLemmas_RoundTrips
+
+              - id: WordSense-Onnx-LemmaWeights-Integrity
+                title: >-
+                  The weights reader shall reject a corrupt, truncated or foreign blob, a part of speech outside the
+                  values of the part-of-speech type, and a flag byte that is neither 0 nor 1, and shall accept every
+                  defined part of speech, determiners included.
+                tags: [unit]
+                justification: |
+                  A damaged blob must fail loudly instead of producing silently wrong answers, and a blob that uses a
+                  valid part of speech must not be refused.
+                tests:
+                  - WeightsBlob_Read_NotCompressed_Throws
+                  - WeightsBlob_Read_UnknownMagic_Throws
+                  - WeightsBlob_Read_Truncated_Throws
+                  - WeightsBlob_Read_EveryPartOfSpeech_IsAccepted
+                  - WeightsBlob_Read_PartOfSpeechOutOfRange_Throws
+                  - WeightsBlob_Read_PresenceByteOutOfRange_Throws
+                  - WeightsBlob_Read_PresenceByteZeroAndOne_AreAccepted
+
+              - id: WordSense-Onnx-LemmaWeights-Match
+                title: >-
+                  The weighted lemma table shall match the weights of a lemma to the word lexicon by lemma, part of
+                  speech and meaning, and shall keep them only when the trained senses are the first senses of the
+                  lexicon entry, with the same lemma, part of speech and meaning; otherwise the lemma shall be dropped
+                  as a whole.
+                tags: [unit]
+                justification: |
+                  Weights score senses by position in the trained classes; a lexicon that disagrees would assign scores
+                  to the wrong senses, so the lemma must have no weights instead. The lexicon may hold more parts of
+                  speech than were trained, and those further senses are never scored.
+                tests:
+                  - WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma
+                  - WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma
+                  - WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma
+                  - WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma
+                  - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
+
+              - id: WordSense-Onnx-LemmaWeights-Scoring
+                title: >-
+                  Lemma weights shall score each sense of a lemma for a feature vector, rank the senses, and map the
+                  margin between the best and the second-best score to a confidence that is monotonic in the margin
+                  and bounded to 0 to 1.
+                tags: [unit]
+                justification: |
+                  The confidence is the contract callers rely on; a monotonic, bounded mapping makes thresholds
+                  meaningful.
+                tests:
+                  - LemmaWeights_Scores_Binary_ReturnsSymmetricScores
+                  - LemmaWeights_Scores_OneVersusRest_ReturnsOneScorePerRow
+                  - LemmaWeights_Rank_ReturnsBestAndMargin
+                  - LemmaWeights_Confidence_IsMonotonicAndClamped
+
+              - id: WordSense-Onnx-LemmaWeights-Embedded
+                title: >-
+                  The weights embedded in each model package shall match the shipped word lexicon completely, so that no
+                  lemma is dropped.
+                tags: [unit]
+                justification: |
+                  A dropped lemma silently takes the trained decision away from every ambiguous use of its words; the
+                  shipped lexicon and weights must always have been built together.
+                tests:
+                  - EmbeddedWeights_MiniLM_DropsNoLemma
+                  - EmbeddedWeights_BertBaseCased_DropsNoLemma

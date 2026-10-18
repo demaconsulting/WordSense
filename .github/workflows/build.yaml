@@ -24,6 +24,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v6
@@ -113,6 +115,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          lfs: true
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v6
@@ -168,7 +171,7 @@ jobs:
         run: >
           dotnet dotnet-sonarscanner
           begin
-          /k:"demaconsulting_TemplateDotNetLibrary"
+          /k:"demaconsulting_WordSense"
           /o:"demaconsulting"
           /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
           /d:sonar.host.url="https://sonarcloud.io"
@@ -181,6 +184,12 @@ jobs:
           --no-restore
           --configuration Release
           --property:Version=${{ inputs.version }}
+
+      - name: Assert API documentation
+        run: >
+          dotnet fileassert
+          --results artifacts/fileassert-api-docs-${{ matrix.os }}.trx
+          api-docs
 
       - name: Test
         run: >
@@ -210,6 +219,17 @@ jobs:
           --configuration Release
           --property:PackageVersion=${{ inputs.version }}
 
+      # actions/upload-artifact roots its archive at the common ancestor of the matched
+      # paths, so uploading from each project's bin/Release would nest the packages under
+      # 'src/<project>/bin/Release/'. Stage all packages in one flat folder instead.
+      - name: Stage packages
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path packages | Out-Null
+          Get-ChildItem src -Recurse -Include *.nupkg,*.snupkg |
+            Where-Object { $_.FullName -match '[\\/]bin[\\/]Release[\\/][^\\/]+$' } |
+            Copy-Item -Destination packages
+
       # === UPLOAD ARTIFACTS ===
       # This section uploads all generated artifacts for use by downstream jobs.
       # Downstream projects: Add any additional artifact uploads here.
@@ -224,9 +244,7 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: packages-${{ matrix.os }}
-          path: |
-            src/DemaConsulting.TemplateDotNetLibrary/bin/Release/*.nupkg
-            src/DemaConsulting.TemplateDotNetLibrary/bin/Release/*.snupkg
+          path: packages/
 
   # Runs CodeQL security and quality analysis, gathering results to include
   # in the code quality report.
@@ -248,6 +266,7 @@ jobs:
         uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          lfs: true
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v4.38.3
@@ -317,6 +336,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - name: Download all job artifacts
         uses: actions/download-artifact@v8
@@ -438,7 +459,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/build_notes/generated/build_notes.html
-          "docs/generated/TemplateDotNetLibrary Build Notes.pdf"
+          "docs/generated/WordSense Build Notes.pdf"
 
       - name: Assert Build Notes Documents with FileAssert
         run: >
@@ -478,7 +499,7 @@ jobs:
           dotnet sarifmark
           --sarif artifacts/csharp.sarif
           --report docs/code_quality/generated/codeql-quality.md
-          --heading "Template DotNet Library CodeQL Analysis"
+          --heading "WordSense CodeQL Analysis"
           --report-depth 1
 
       - name: Display CodeQL Quality Report
@@ -494,7 +515,7 @@ jobs:
         run: >
           dotnet sonarmark
           --server https://sonarcloud.io
-          --project-key demaconsulting_TemplateDotNetLibrary
+          --project-key demaconsulting_WordSense
           --branch ${{ github.ref_name }}
           --token "$SONAR_TOKEN"
           --report docs/code_quality/generated/sonar-quality.md
@@ -521,7 +542,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/code_quality/generated/quality.html
-          "docs/generated/TemplateDotNetLibrary Code Quality.pdf"
+          "docs/generated/WordSense Code Quality.pdf"
 
       - name: Assert Code Quality Documents with FileAssert
         run: >
@@ -583,7 +604,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/code_review_plan/generated/plan.html
-          "docs/generated/TemplateDotNetLibrary Review Plan.pdf"
+          "docs/generated/WordSense Review Plan.pdf"
 
       - name: Generate Review Report HTML with Pandoc
         shell: bash
@@ -600,7 +621,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/code_review_report/generated/report.html
-          "docs/generated/TemplateDotNetLibrary Review Report.pdf"
+          "docs/generated/WordSense Review Report.pdf"
 
       - name: Assert Code Review Documents with FileAssert
         run: >
@@ -646,7 +667,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/design/generated/design.html
-          "docs/generated/TemplateDotNetLibrary Software Design.pdf"
+          "docs/generated/WordSense Software Design.pdf"
 
       - name: Assert Design Documents with FileAssert
         run: >
@@ -678,7 +699,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/verification/generated/verification.html
-          "docs/generated/TemplateDotNetLibrary Verification Design.pdf"
+          "docs/generated/WordSense Verification Design.pdf"
 
       - name: Assert Verification Documents with FileAssert
         run: >
@@ -710,7 +731,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/user_guide/generated/user_guide.html
-          "docs/generated/TemplateDotNetLibrary User Guide.pdf"
+          "docs/generated/WordSense User Guide.pdf"
 
       - name: Assert User Guide Documents with FileAssert
         run: >
@@ -775,7 +796,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/requirements_doc/generated/requirements.html
-          "docs/generated/TemplateDotNetLibrary Requirements.pdf"
+          "docs/generated/WordSense Requirements.pdf"
 
       - name: Generate Trace Matrix HTML with Pandoc
         shell: bash
@@ -792,7 +813,7 @@ jobs:
           dotnet weasyprint
           --pdf-variant pdf/a-3u
           docs/requirements_report/generated/trace_matrix.html
-          "docs/generated/TemplateDotNetLibrary Trace Matrix.pdf"
+          "docs/generated/WordSense Trace Matrix.pdf"
 
       - name: Assert Requirements Documents with FileAssert
         run: >

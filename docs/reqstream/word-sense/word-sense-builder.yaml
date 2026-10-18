@@ -1,0 +1,230 @@
+---
+# WordSenseBuilder (build-time tool) unit requirements
+#
+# The builder is a repository tool and is never shipped in a package.
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordSenseBuilder Requirements
+        requirements:
+          - id: WordSense-WordSenseBuilder-Words
+            title: >-
+              The builder shall build the word lexicon of the core package deterministically from the corpus and
+              the dictionary, with every word of the dictionary (determiners, conjunctions and interjections
+              included), every sense of a trained lemma and the generated inflected forms of every dictionary word
+              and trained lemma (regular and irregular, with the spelling rules of English), and shall write it in
+              the compact binary format that the core package reads. A word that a trained lemma or form also
+              spells, and a dictionary word, shall never be replaced by a generated form; a trained lemma shall keep
+              the trained senses first and gain the other parts of speech of the dictionary. A listed form of a
+              trained lemma shall have only the senses its labels name, and an unknown, duplicate or empty label, or
+              a restricted row for the lemma itself, shall fail the build. A modal or primary
+              auxiliary listed in the committed auxiliary list shall gain an Auxiliary sense after all its other
+              senses, and an Auxiliary sense shall never be trained.
+            tags: [unit]
+            justification: |
+              The shipped lexicon must be reproducible from committed inputs so that reviewers can verify it, and it
+              must never lose a dictionary word or a part of speech because of what was trained. Running text uses
+              inflected forms far more often than lemmas, so every form of every word has to be known.
+            tests:
+              - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
+              - WordSenseBuilder_WordsBuilder_Build_CombinesLemmasFormsLexiconAndMorphology
+              - WordSenseBuilder_WordsBuilder_Build_MergesDictionaryPartsOfSpeechAfterTrainedSenses
+              - WordSenseBuilder_WordsBuilder_Build_AppendsAuxiliarySenseLast
+              - WordSenseBuilder_WordsBuilder_Build_UnknownAuxiliary_Throws
+              - WordSenseBuilder_LexiconSource_ReadAuxiliaries_ReadsWordsAndRejectsBadLines
+              - WordSenseBuilder_LexiconSource_Letters_CoverTheTenParts
+              - WordSenseBuilder_MorphologyExpander_Expand_GeneratesForms
+              - WordSenseBuilder_MorphologyExpander_Expand_AppliesSpellingRules
+              - WordSenseBuilder_MorphologyExpander_Expand_UsesIrregularForms
+              - WordSenseBuilder_MorphologyExpander_Expand_RespectsKnownWordsAndDisabledRules
+              - WordSenseBuilder_WordsBlobWriter_Write_RoundTripsThroughTheReader
+              - WordSenseBuilder_Words_Committed_MatchesCorpus
+              - WordSenseBuilder_Words_Committed_NoExplicitFormHasSenseOutsideItsLabels
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithLabels_GetsOnlyThoseSenses
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormLabelsOutOfOrder_UsesLemmaOrder
+              - WordSenseBuilder_WordsBuilder_Build_ListedFormWithAllLabels_ReusesLemmaSenses
+              - WordSenseBuilder_WordsBuilder_Build_RestrictedFormWithDictionaryPos_AppendsUntrainedExtraAfterSubset
+              - WordSenseBuilder_WordsBuilder_Build_InvalidFormLabels_ThrowsListingAllErrors
+              - WordSenseBuilder_WordsBuilder_Build_SelfRowWithAllLabels_IsAccepted
+              - WordSenseBuilder_SenseInventory_CheckForms_ReportsEveryViolation
+              - WordSenseBuilder_SenseInventory_FormSenseIndexes_FollowsLemmaOrder
+              - WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported
+              - WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent
+              - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+              - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
+              - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
+
+          - id: WordSense-WordSenseBuilder-Coverage
+            title: >-
+              The builder shall report, for a directory of plain-text files, the share of the running words that the
+              word table knows (excluding the Project Gutenberg header and footer), and list the unknown words,
+              separating likely names from other words, most frequent first.
+            tags: [unit]
+            justification: |
+              The completeness of the word table must be measured on real text, not assumed; a repeatable report is
+              how obviously valid unknown words are found and how a regression is detected.
+            tests:
+              - WordSenseBuilder_CoverageReport_Body_CutsAtMarkers
+              - WordSenseBuilder_CoverageReport_AddText_ClassifiesTokens
+              - WordSenseBuilder_CoverageReport_ReadAndRender_ListsFigures
+              - WordSenseBuilder_CoverageReport_Read_BadDirectory_Throws
+              - WordSenseBuilder_CoverageReport_AuthoredSample_IsFullyKnown
+              - WordSenseBuilder_Program_Coverage_ReportsAndWritesFile
+              - WordSenseBuilder_Program_Coverage_WithoutText_Fails
+
+          - id: WordSense-WordSenseBuilder-ImportDictionary
+            title: >-
+              The builder shall derive the dictionary word list from the pinned public-domain word list after
+              verifying its checksum, keep every single lower-case word with all its parts of speech in the order of
+              the source, including the determiners, conjunctions and interjections, and apply the committed
+              corrections.
+            tags: [unit]
+            justification: |
+              The word list the lexicon grows from must be reproducible and complete: dropping a class of words
+              because a model is less accurate for it would make those words unknowable to every model.
+            tests:
+              - WordSenseBuilder_LexiconImporter_Import_KeepsEveryWordInCodeOrder
+              - WordSenseBuilder_LexiconImporter_Import_AppliesParticipleAndGerundRule
+              - WordSenseBuilder_LexiconImporter_Import_AppliesCorrections
+              - WordSenseBuilder_LexiconImporter_Import_ChecksHash
+              - WordSenseBuilder_LexiconImporter_Import_RejectsBadCorrection
+              - WordSenseBuilder_LexiconSource_ReadWords_KeepsSenseOrderAndKnowsDeterminer
+              - WordSenseBuilder_Program_ImportMoby_RequiresPinnedInput
+
+          - id: WordSense-WordSenseBuilder-Weights
+            title: >-
+              The builder shall train, for a named encoder model and the shared corpus, one set of per-lemma weights
+              deterministically, and shall write it, naming the model, to the package of that model.
+            tags: [unit]
+            justification: |
+              Each encoder package needs classifiers trained for its own embedding space; training every model from
+              the one shared corpus keeps the models comparable.
+            tests:
+              - WordSenseBuilder_LogisticTrainer_SeparatesAndIsDeterministic
+              - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
+              - WordSenseBuilder_Program_Weights_UnknownModel_ListsTheModels
+
+          - id: WordSense-WordSenseBuilder-Evaluate
+            title: >-
+              The builder shall measure a shipped model (an encoder model or the basic model) on the held-out and
+              real-text sentences of the corpus, and report accuracy and coverage; for the basic model it shall also
+              report calibration, confidence thresholds, table size, latency and a fixed comparison table printed on
+              every run.
+            tags: [unit]
+            justification: |
+              Each model's accuracy claim must be checkable against a repeatable measurement on sentences that were
+              never used for training.
+            tests:
+              - WordSenseBuilder_Evaluator_RunAsync_BasicModel_CountsHoldoutRows
+              - WordSenseBuilder_Program_Evaluate_BasicModel_PrintsMeasurements
+              - WordSenseBuilder_Program_Evaluate_UnknownModel_ReportsError
+              - WordSenseBuilder_ModelTable_BasicRow_MatchesEvaluation
+              - WordSenseBuilder_EvaluationResult_Render_FormatsSetsAndMeasurements
+
+          - id: WordSense-WordSenseBuilder-UdCounts
+            title: >-
+              The builder shall count part-of-speech tag n-grams and word-tag pairs from the pinned Universal
+              Dependencies English-EWT training file, after verifying its checksum (and the development file used for
+              tuning), and write the
+              counts deterministically to the corpus.
+            tags: [unit]
+            justification: |
+              The statistics of the basic model must come from committed, verifiable inputs and be reproducible.
+            tests:
+              - WordSenseBuilder_UdCounts_ReadConllu_RangeTokensAndEmptyNodes
+              - WordSenseBuilder_UdCounts_ReadConllu_ShortLine_Throws
+              - WordSenseBuilder_UdCounts_MapTag_MapsUniversalTags
+              - WordSenseBuilder_UdCounts_KeyOf_AcceptsLettersAndApostrophes
+              - WordSenseBuilder_UdCounts_Count_CountsNgramsAndWords
+              - WordSenseBuilder_UdCounts_WriteAndRead_RoundTripsDeterministically
+              - WordSenseBuilder_UdCounts_Read_BadHeader_Throws
+              - WordSenseBuilder_UdSource_Verify_ComparesChecksum
+
+          - id: WordSense-WordSenseBuilder-TrainBasic
+            title: >-
+              The builder shall retrain the whole basic model with one command, regenerating the tag counts first
+              when they are missing or when asked, and shall write the embedded table of the basic package
+              deterministically.
+            tags: [unit]
+            justification: |
+              One command from committed inputs to the shipped table lets reviewers reproduce and verify the model.
+            tests:
+              - WordSenseBuilder_BasicTrainer_ClosedMaskOf_AppliesThresholds
+              - WordSenseBuilder_BasicTrainer_Train_SelectsWordsAndSuffixes
+              - WordSenseBuilder_BasicTrainer_Train_CueTablePrefersSeenSense
+              - WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack
+              - WordSenseBuilder_BasicModelData_Summary_NamesSizes
+              - WordSenseBuilder_Program_Weights_BasicModel_PointsToTrainBasic
+              - WordSenseBuilder_Program_TrainBasic_TinyCorpus_WritesLoadableTable
+              - WordSenseBuilder_Program_TrainBasic_InconsistentCorpus_ReportsError
+
+          - id: WordSense-WordSenseBuilder-TuneBasic
+            title: >-
+              The builder shall score a grid of basic-model hyperparameters on the Universal Dependencies development
+              data and the anchor sentences only, print a stable table, write nothing, and never read the held-out
+              or real-text sentences.
+            tags: [unit]
+            justification: |
+              Tuning on data that is also used for the final accuracy measurement would make the reported accuracy
+              dishonest.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
+              - WordSenseBuilder_BasicTuner_SplitAnchors_IsDeterministicAndDisjoint
+              - WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws
+
+          - id: WordSense-WordSenseBuilder-Hyperparameters
+            title: >-
+              The builder shall keep all hyperparameters of the basic model in one place, with one consistent
+              default set used by training and tuning.
+            tags: [unit]
+            justification: |
+              A single definition prevents the trained model and the tuned grid from drifting apart.
+            tests:
+              - WordSenseBuilder_BasicHyperparameters_Default_IsConsistent
+
+          - id: WordSense-WordSenseBuilder-Appendix
+            title: >-
+              The builder shall generate the senses appendix of the user guide deterministically from the sense
+              inventory, the forms and the anchor sentences, shall reject incomplete input, and the committed
+              appendix shall equal the generated one.
+            tags: [unit]
+            justification: |
+              The list of supported lemmas with their parts of speech, meanings, respellings and forms must always
+              describe the trained corpus; generating it, and failing when the committed file is stale, makes drift
+              impossible.
+            tests:
+              - WordSenseBuilder_Appendix_Generate_ListsLemmasSensesAndForms
+              - WordSenseBuilder_Appendix_Generate_RejectsIncompleteInput
+              - WordSenseBuilder_Program_Appendix_WritesFile
+              - WordSenseBuilder_Program_Appendix_MissingCorpus_Fails
+              - WordSenseBuilder_Appendix_Committed_MatchesCorpus
+
+          - id: WordSense-WordSenseBuilder-Corpus
+            title: The builder shall validate corpus format and the disjointness of training and evaluation data.
+            tags: [unit]
+            justification: |
+              Leaked or malformed sentences invalidate the accuracy measurement.
+            tests:
+              - WordSenseBuilder_Corpus_ReadSentences_ParsesRow
+              - WordSenseBuilder_Corpus_ReadSentences_RejectsMalformedRow
+              - WordSenseBuilder_Corpus_DirectoryAndDisjointness
+              - WordSenseBuilder_Corpus_ReadForms_ParsesLabels
+              - WordSenseBuilder_Corpus_ReadSentences_SplitsCompoundTarget
+
+          - id: WordSense-WordSenseBuilder-Usage
+            title: >-
+              The builder shall provide the commands words, import-moby, weights, evaluate, ud-counts, ud-irregular,
+              coverage, train-basic, tune-basic and appendix, print usage when given no arguments, and shall report an
+              unknown or removed command, a
+              malformed option or a data error with a message and a non-zero exit code.
+            tags: [unit]
+            justification: |
+              A build tool used in scripts must fail visibly and say why.
+            tests:
+              - WordSenseBuilder_Program_NoArguments_PrintsUsage
+              - WordSenseBuilder_Program_RemovedCommand_IsUnknown
+              - WordSenseBuilder_Program_ModelCommandWithoutModel_ReportsUsage
+              - WordSenseBuilder_Program_Words_InconsistentCorpus_Fails
+              - WordSenseBuilder_Program_MalformedOptions_ReportUsage
+              - WordSenseBuilder_Program_UnknownCommand_ReportsCommandAndUsage

@@ -1,0 +1,98 @@
+lemma	reason	anchors	holdout	best_sense	noun_answered	verb_answered	coverage
+account	best-sense accuracy 68.8% below 90.0%; noun answered accuracy 75.0% below 80.0%; coverage 68.8% below 70.0%	33	16	68.8%	75.0%	100.0%	68.8%
+act	best-sense accuracy 87.5% below 90.0%	32	16	87.5%	100.0%	85.7%	81.3%
+air	coverage 68.8% below 70.0%	36	16	93.8%	100.0%	100.0%	68.8%
+answer	best-sense accuracy 81.3% below 90.0%	35	16	81.3%	83.3%	100.0%	87.5%
+assault	best-sense accuracy 81.3% below 90.0%	36	16	81.3%	87.5%	83.3%	87.5%
+attack	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	36	16	87.5%	100.0%	75.0%	93.8%
+attempt	coverage 62.5% below 70.0%	36	16	100.0%	100.0%	100.0%	62.5%
+balance	best-sense accuracy 87.5% below 90.0%; coverage 68.8% below 70.0%	35	16	87.5%	100.0%	100.0%	68.8%
+bang	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	100.0%	87.5%
+battle	best-sense accuracy 87.5% below 90.0%; coverage 68.8% below 70.0%	34	16	87.5%	100.0%	100.0%	68.8%
+blame	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	87.5%	87.5%	100.0%
+blast	coverage 62.5% below 70.0%	35	16	93.8%	100.0%	100.0%	62.5%
+blink	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	85.7%	100.0%	93.8%
+blow	coverage 50.0% below 70.0%	36	16	100.0%	100.0%	100.0%	50.0%
+charge	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	100.0%	81.3%
+chip	coverage 66.7% below 70.0%	74	24	100.0%	100.0%	100.0%	66.7%
+coat	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	100.0%	100.0%	87.5%
+collapse	best-sense accuracy 75.0% below 90.0%; verb answered accuracy 75.0% below 80.0%; coverage 56.3% below 70.0%	35	16	75.0%	100.0%	75.0%	56.3%
+command	best-sense accuracy 87.5% below 90.0%; coverage 68.8% below 70.0%	36	16	87.5%	100.0%	100.0%	68.8%
+compromise	coverage 68.8% below 70.0%	34	16	100.0%	100.0%	100.0%	68.8%
+consent	coverage 68.8% below 70.0%	33	16	100.0%	100.0%	100.0%	68.8%
+cook	best-sense accuracy 87.5% below 90.0%	34	16	87.5%	87.5%	87.5%	100.0%
+crack	best-sense accuracy 87.5% below 90.0%	34	16	87.5%	100.0%	85.7%	87.5%
+cut	best-sense accuracy 87.5% below 90.0%	30	16	87.5%	100.0%	85.7%	87.5%
+dash	best-sense accuracy 81.3% below 90.0%	34	16	81.3%	100.0%	80.0%	75.0%
+date	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	85.7%	87.5%
+design	coverage 43.8% below 70.0%	35	16	100.0%	100.0%	100.0%	43.8%
+dislike	coverage 62.5% below 70.0%	36	16	93.8%	100.0%	100.0%	62.5%
+display	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	85.7%	93.8%
+distance	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	85.7%	93.8%
+doubt	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	75.0%
+dress	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	100.0%	81.3%
+exchange	best-sense accuracy 81.3% below 90.0%; verb answered accuracy 71.4% below 80.0%	35	16	81.3%	100.0%	71.4%	93.8%
+exercise	coverage 62.5% below 70.0%	35	16	100.0%	100.0%	100.0%	62.5%
+experiment	coverage 62.5% below 70.0%	36	16	100.0%	100.0%	100.0%	62.5%
+fancy	best-sense accuracy 81.3% below 90.0%; coverage 43.8% below 70.0%	36	16	81.3%	100.0%	100.0%	43.8%
+fear	best-sense accuracy 87.5% below 90.0%; noun answered accuracy 75.0% below 80.0%	36	16	87.5%	75.0%	100.0%	93.8%
+finish	best-sense accuracy 81.3% below 90.0%; noun answered accuracy 62.5% below 80.0%	32	16	81.3%	62.5%	100.0%	100.0%
+flow	coverage 68.8% below 70.0%	32	16	93.8%	100.0%	100.0%	68.8%
+forecast	best-sense accuracy 87.5% below 90.0%	32	16	87.5%	100.0%	85.7%	87.5%
+form	best-sense accuracy 87.5% below 90.0%	34	16	87.5%	100.0%	85.7%	87.5%
+harvest	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	100.0%	81.3%
+help	best-sense accuracy 87.5% below 90.0%; coverage 56.3% below 70.0%	35	16	87.5%	100.0%	100.0%	56.3%
+hike	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	87.5%	100.0%	87.5%
+hold	best-sense accuracy 81.3% below 90.0%	36	16	81.3%	100.0%	100.0%	75.0%
+hurry	coverage 68.8% below 70.0%	36	16	93.8%	100.0%	100.0%	68.8%
+jump	best-sense accuracy 87.5% below 90.0%	32	16	87.5%	100.0%	87.5%	87.5%
+label	coverage 43.8% below 70.0%	33	16	100.0%	100.0%	100.0%	43.8%
+laugh	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	85.7%	100.0%	87.5%
+leap	best-sense accuracy 87.5% below 90.0%; coverage 68.8% below 70.0%	35	16	87.5%	100.0%	100.0%	68.8%
+light	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	87.5%	100.0%	93.8%
+look	coverage 62.5% below 70.0%	34	16	93.8%	100.0%	100.0%	62.5%
+love	verb answered accuracy 75.0% below 80.0%; coverage 68.8% below 70.0%	36	16	93.8%	100.0%	75.0%	68.8%
+matter	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	36	16	87.5%	100.0%	75.0%	100.0%
+mix	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	83.3%	87.5%
+name	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	81.3%
+need	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	87.5%
+order	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	83.3%	100.0%	75.0%
+peer	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	100.0%	100.0%	87.5%
+pick	coverage 68.8% below 70.0%	35	16	93.8%	100.0%	100.0%	68.8%
+pledge	best-sense accuracy 68.8% below 90.0%; coverage 31.3% below 70.0%	35	16	68.8%	100.0%	100.0%	31.3%
+pound	coverage 68.8% below 70.0%	36	16	93.8%	100.0%	100.0%	68.8%
+praise	best-sense accuracy 87.5% below 90.0%; coverage 50.0% below 70.0%	36	16	87.5%	100.0%	100.0%	50.0%
+promise	best-sense accuracy 81.3% below 90.0%; verb answered accuracy 66.7% below 80.0%	36	16	81.3%	100.0%	66.7%	87.5%
+purchase	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	75.0%
+rank	best-sense accuracy 87.5% below 90.0%	34	16	87.5%	87.5%	87.5%	100.0%
+reign	best-sense accuracy 75.0% below 90.0%	34	16	75.0%	100.0%	83.3%	81.3%
+release	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	83.3%	75.0%
+repair	best-sense accuracy 81.3% below 90.0%; coverage 50.0% below 70.0%	36	16	81.3%	100.0%	100.0%	50.0%
+reply	best-sense accuracy 87.5% below 90.0%; coverage 50.0% below 70.0%	36	16	87.5%	80.0%	100.0%	50.0%
+report	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	87.5%
+rest	best-sense accuracy 75.0% below 90.0%	35	16	75.0%	100.0%	100.0%	75.0%
+rush	best-sense accuracy 81.3% below 90.0%; coverage 62.5% below 70.0%	34	16	81.3%	100.0%	100.0%	62.5%
+scratch	coverage 68.8% below 70.0%	34	16	100.0%	100.0%	100.0%	68.8%
+search	best-sense accuracy 75.0% below 90.0%; coverage 62.5% below 70.0%	35	16	75.0%	100.0%	100.0%	62.5%
+set	best-sense accuracy 81.3% below 90.0%; noun answered accuracy 75.0% below 80.0%	33	16	81.3%	75.0%	87.5%	100.0%
+share	coverage 62.5% below 70.0%	36	16	100.0%	100.0%	100.0%	62.5%
+shine	best-sense accuracy 75.0% below 90.0%; coverage 50.0% below 70.0%	34	16	75.0%	100.0%	100.0%	50.0%
+slip	best-sense accuracy 81.3% below 90.0%; verb answered accuracy 71.4% below 80.0%	35	16	81.3%	100.0%	71.4%	93.8%
+smile	best-sense accuracy 87.5% below 90.0%	34	16	87.5%	100.0%	83.3%	87.5%
+snow	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	36	16	87.5%	100.0%	75.0%	100.0%
+spread	best-sense accuracy 87.5% below 90.0%	33	16	87.5%	87.5%	100.0%	93.8%
+strain	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	100.0%	75.0%
+support	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	100.0%	87.5%	87.5%
+switch	best-sense accuracy 81.3% below 90.0%; noun answered accuracy 62.5% below 80.0%	35	16	81.3%	62.5%	100.0%	100.0%
+trade	best-sense accuracy 87.5% below 90.0%	36	16	87.5%	83.3%	100.0%	75.0%
+trail	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	35	16	87.5%	100.0%	75.0%	93.8%
+trip	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	35	16	87.5%	100.0%	75.0%	100.0%
+trouble	best-sense accuracy 87.5% below 90.0%; verb answered accuracy 75.0% below 80.0%	33	16	87.5%	100.0%	75.0%	100.0%
+turn	best-sense accuracy 87.5% below 90.0%; coverage 50.0% below 70.0%	35	16	87.5%	100.0%	100.0%	50.0%
+vent	coverage 62.5% below 70.0%	36	16	93.8%	100.0%	100.0%	62.5%
+volunteer	best-sense accuracy 81.3% below 90.0%	34	16	81.3%	87.5%	100.0%	87.5%
+wash	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	85.7%	100.0%	93.8%
+water	coverage 68.8% below 70.0%	36	16	100.0%	100.0%	100.0%	68.8%
+whistle	best-sense accuracy 87.5% below 90.0%	35	16	87.5%	100.0%	100.0%	81.3%
+witness	best-sense accuracy 81.3% below 90.0%; verb answered accuracy 75.0% below 80.0%	35	16	81.3%	87.5%	75.0%	100.0%
+yield	best-sense accuracy 87.5% below 90.0%	31	16	87.5%	100.0%	85.7%	93.8%

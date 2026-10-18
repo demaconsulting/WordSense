@@ -1,23 +1,28 @@
 # Project Overview
 
-> **Downstream customization required**: Replace the `TODO` values below with
-> values specific to the target repository. These values are the canonical source
-> for project-wide template placeholders used throughout the repository.
-
-- **project-name**: TODO — repository/project name (e.g., `ReqStream`)
-- **organization**: TODO — organization name for document authorship (e.g., `DEMA Consulting`)
-- **project-tagline**: TODO — document subtitle; 4–8 words, noun phrase, no period
-  (e.g., `Requirements traceability for .NET projects`)
-- **description**: TODO — full project description, may be multiple sentences
-- **languages**: TODO — programming languages used (e.g., `C#`, `C++`)
-- **technologies**: TODO — key technologies and frameworks (e.g., `.NET`, `CMake`)
+- **project-name**: WordSense
+- **organization**: DEMA Consulting
+- **project-tagline**: Offline word-sense disambiguation for .NET
+- **description**: WordSense is a .NET library that assigns a sense label (for example noun or verb) to
+  ambiguous English words in context, offline. It ships as five layered NuGet packages: `DemaConsulting.WordSense`,
+  the core (public contracts, embedded lexicon with build-time inflections; no ONNX dependency, no model);
+  `DemaConsulting.WordSense.Basic` (statistical part-of-speech tagger and context-cue model; no model files);
+  `DemaConsulting.WordSense.Onnx` (shared WordPiece tokenizer, ONNX encoder, verified model downloader with mirror
+  support and lemma-weights machinery); and the two concrete models `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.BertBaseCased`, each pinning its model files and embedding its own weights. Basic and Onnx
+  depend only on core; MiniLM and BertBaseCased depend on Onnx.
+- **languages**: C#, Python (one-off tokenizer fixture generator and the real-text harvest tool `tools/real-text`)
+- **technologies**: .NET, ONNX Runtime, Git LFS
 
 # Project Structure
 
-> **Downstream customization required**: Replace `{project}` and
-> `{test-project}` with the actual source and test project folder names.
-
 ```text
+├── corpus/                     (training anchors, holdout sentences, form maps)
+├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
+│                                SHA256SUMS and README; stored in Git LFS)
+├── tools/
+│   ├── WordSense.Builder/      (non-shipped builder: words, weights, evaluate, ud-counts, train-basic, tune-basic, appendix)
+│   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/
 │   ├── code_quality/
@@ -31,9 +36,18 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   └── {project}/
+│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded words.bin)
+│   ├── DemaConsulting.WordSense.Basic/          (statistical model; no files, no network)
+│   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, abstract model)
+│   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights)
+│   └── DemaConsulting.WordSense.BertBaseCased/  (BERT base cased model: pinned files, embedded weights)
 └── test/
-    └── {test-project}/
+    ├── DemaConsulting.WordSense.Tests/
+    ├── DemaConsulting.WordSense.Basic.Tests/
+    ├── DemaConsulting.WordSense.Onnx.Tests/
+    ├── DemaConsulting.WordSense.MiniLM.Tests/
+    ├── DemaConsulting.WordSense.BertBaseCased.Tests/
+    └── WordSense.Builder.Tests/
 ```
 
 # Language and Spelling (ALL Agents)

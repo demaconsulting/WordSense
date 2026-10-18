@@ -1,0 +1,32 @@
+---
+# SenseFusion unit requirements (combination of evidence in the Basic model)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        sections:
+          - title: SenseFusion Requirements
+            requirements:
+              - id: WordSense-Basic-SenseFusion-Fuse
+                title: >-
+                  SenseFusion shall combine the part-of-speech probabilities and the cue scores of the senses into
+                  one probability per sense, choose the most probable sense, and report its probability as the
+                  confidence, greater than 0 and at most 1, with ties going to the lowest index.
+                tags: [unit]
+                justification: |
+                  Both kinds of evidence are needed: part of speech separates senses of different parts of speech and
+                  cues separate senses within one.
+                tests:
+                  - SenseFusion_Fuse_PosPosteriorDecides
+                  - SenseFusion_Fuse_CuesSeparateSamePartOfSpeech
+                  - SenseFusion_Fuse_NoPosMass_IsUniform
+
+              - id: WordSense-Basic-SenseFusion-Stable
+                title: >-
+                  SenseFusion shall give finite probabilities for extreme scores.
+                tags: [unit]
+                justification: |
+                  Large score differences must not produce invalid confidences.
+                tests:
+                  - SenseFusion_Fuse_ExtremeScores_StayFinite

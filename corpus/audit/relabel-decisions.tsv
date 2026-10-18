@@ -1,0 +1,70 @@
+lemma	old_sense	new_sense	group	action	rows	anchors	holdout	reason
+absent	adj	-		drop	2	1	1	undecided: the judges could not settle the part of speech
+aggregate	noun	-		drop	1	1	0	noise: adj among 22 noun rows
+appropriate	noun	adj		retag	14	14	0	the audited part of speech is adj
+approximate	noun	adj		retag	14	14	0	the audited part of speech is adj
+arithmetic	adj	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+arsenic	adj	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+articulate	noun	adj		retag	14	14	0	the audited part of speech is adj
+associate	noun	-		drop	2	1	1	noise: adj among 22 noun rows
+bow	bend	-		restore	15	5	10	restored by the real-text pass: part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum
+bow	bend	-		restore	19	9	10	restored by the real-text pass: part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum
+bow	weapon	-		restore	33	14	19	restored by the real-text pass: the lemma is left with fewer than two senses
+close	adj	-		restore	7	2	5	restored by the real-text pass: part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum
+closer	noun	-		restore	14	14	0	restored by the real-text pass: the lemma is left with fewer than two senses
+closer	verb	-		restore	7	7	0	restored by the real-text pass: part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum
+closer	verb	-		restore	7	7	0	restored by the real-text pass: part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum
+commune	noun	-		drop	1	0	1	undecided: the judges could not settle the part of speech
+compact	noun	-		drop	1	0	1	undecided: the judges could not settle the part of speech
+conjugate	noun	-		drop	2	1	1	noise: adj among 22 noun rows
+conscript	noun	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+content	adj	-		restore	3	1	2	restored by the real-text pass: part of speech verb has 1 anchors and 2 holdout rows, below the 14/8 minimum
+crooked	noun	adj		retag	14	14	0	the audited part of speech is adj
+desolate	noun	adj		retag	14	14	0	the audited part of speech is adj
+digest	noun	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+dogged	noun	adj		retag	14	14	0	the audited part of speech is adj
+graduate	noun	-		drop	2	2	0	noise: adj among 22 noun rows
+inside	adv	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+invalid	noun	-		drop	1	0	1	noise: adj among 33 noun rows
+jagged	noun	adj		retag	14	14	0	the audited part of speech is adj
+lead	guide	-		restore	11	6	5	restored by the real-text pass: part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum
+lead	guide	-		restore	21	8	13	restored by the real-text pass: part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum
+lead	metal	-		restore	35	14	21	restored by the real-text pass: the lemma is left with fewer than two senses
+legitimate	noun	adj		retag	14	14	0	the audited part of speech is adj
+live	adj	-		restore	3	0	3	restored by the real-text pass: part of speech adv has 0 anchors and 3 holdout rows, below the 14/8 minimum
+nearby	adv	-		drop	1	0	1	noise: adj among 22 adv rows
+obverse	noun	-		drop	1	1	0	noise: adj among 22 noun rows
+opiate	verb	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+orient	noun	-		restore	8	0	8	restored by the real-text pass: undecided: the judges could not settle the part of speech
+polish	adj	-		restore	23	14	9	restored by the real-text pass: undecided: the judges could not settle the part of speech
+predestinate	adj	-		drop	1	0	1	undecided: the judges could not settle the part of speech
+present	noun	-		restore	17	8	9	restored by the real-text pass: part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum
+ragged	noun	adj		retag	14	14	0	the audited part of speech is adj
+read	past	-		drop	2	0	2	undecided: the judges could not settle the part of speech
+record	noun	-		drop	2	1	1	noise: adj among 34 noun rows
+regenerate	adj	-		drop	1	0	1	undecided: the judges could not settle the part of speech
+relet	noun	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+retread	noun	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+row	argument	-		restore	2	0	2	restored by the real-text pass: noise: verb among 34 noun rows
+rows	argument	-		restore	2	0	2	restored by the real-text pass: noise: verb among 22 noun rows
+rows	line	-		restore	3	0	3	restored by the real-text pass: part of speech verb has 0 anchors and 3 holdout rows, below the 14/8 minimum
+situate	adj	-		drop	1	1	0	undecided: the judges could not settle the part of speech
+tear	drop	-		restore	32	14	18	restored by the real-text pass: the lemma is left with fewer than two senses
+tear	rip	-		restore	10	4	6	restored by the real-text pass: part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum
+tear	rip	-		restore	24	10	14	restored by the real-text pass: part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum
+underground	adj	-		drop	1	1	0	noise: adv among 22 adj rows
+undertaking	noun	-		drop	1	1	0	noise: verb among 22 noun rows
+unlearned	adj	-		drop	2	1	1	undecided: the judges could not settle the part of speech
+upsetting	noun	-		restore	14	14	0	restored by the real-text pass: undecided: the judges could not settle the part of speech
+upsetting	verb	-		restore	14	14	0	restored by the real-text pass: the lemma is left with fewer than two senses
+bow	bend	-		restore	0	0	0	restored by the real-text pass: mixed part of speech and no part reaches the minimum number of rows
+bow	weapon	-		restore	0	0	0	restored by the real-text pass: the lemma is left with fewer than two senses
+closer	noun	-		restore	0	0	0	restored by the real-text pass: the lemma is left with fewer than two senses
+closer	verb	-		restore	0	0	0	restored by the real-text pass: mixed part of speech and no part reaches the minimum number of rows
+lead	guide	-		restore	0	0	0	restored by the real-text pass: mixed part of speech and no part reaches the minimum number of rows
+lead	metal	-		restore	0	0	0	restored by the real-text pass: the lemma is left with fewer than two senses
+polish	adj	-		restore	0	0	0	restored by the real-text pass: every row is undecided or not a usage of the lemma
+tear	drop	-		restore	0	0	0	restored by the real-text pass: the lemma is left with fewer than two senses
+tear	rip	-		restore	0	0	0	restored by the real-text pass: mixed part of speech and no part reaches the minimum number of rows
+upsetting	noun	-		restore	0	0	0	restored by the real-text pass: every row is undecided or not a usage of the lemma
+upsetting	verb	-		restore	0	0	0	restored by the real-text pass: the lemma is left with fewer than two senses

@@ -1,0 +1,63 @@
+---
+# OnnxEncoder unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: OnnxEncoder Requirements
+            requirements:
+              - id: WordSense-Onnx-OnnxEncoder-Encode
+                title: >-
+                  OnnxEncoder shall return one contextual vector per requested word of a text, deterministically, and
+                  no vector for a word that has no word pieces.
+                tags: [unit]
+                justification: |
+                  The classifier needs the contextual embedding of each target word, and the same text must always
+                  give the same vectors.
+                tests:
+                  - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+                  - OnnxEncoder_EncodeAsync_NoTargetsOrNoTokens_ReturnsEmptyOrNull
+
+              - id: WordSense-Onnx-OnnxEncoder-Concurrency
+                title: >-
+                  OnnxEncoder shall allow concurrent encode calls on one instance and return the same results as
+                  sequential calls.
+                tags: [unit]
+                justification: |
+                  Services share one encoder between many threads; a concurrent call must neither fail nor return
+                  values that differ from those of a sequential call.
+                tests:
+                  - OnnxEncoder_EncodeAsync_Concurrent_MatchesSequentialResults
+
+              - id: WordSense-Onnx-OnnxEncoder-LongText
+                title: >-
+                  OnnxEncoder shall encode texts longer than its input limit using a window around each target word.
+                tags: [unit]
+                justification: |
+                  Real documents are longer than the model input limit, but every word must still get a vector.
+                tests:
+                  - OnnxEncoder_EncodeAsync_TextLongerThanWindow_ReturnsVectorsForTargets
+
+              - id: WordSense-Onnx-OnnxEncoder-Threads
+                title: >-
+                  OnnxEncoder shall let the number of threads used within one inference be configured.
+                tags: [unit]
+                justification: |
+                  Hosts that run many encoders, and build machines that must stay responsive, need to bound the
+                  threads each inference uses.
+                tests:
+                  - OnnxEncoder_Constructor_IntraOpThreads_ProducesSameVectors
+
+              - id: WordSense-Onnx-OnnxEncoder-Validation
+                title: >-
+                  OnnxEncoder shall reject invalid arguments, cancelled calls, an unusable model file and use after
+                  disposal.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with a documented exception.
+                tests:
+                  - OnnxEncoder_EncodeAsync_InvalidUse_Throws
+                  - OnnxEncoder_Constructor_InvalidArguments_Throws
+                  - OnnxEncoder_Constructor_InvalidModelFile_Throws

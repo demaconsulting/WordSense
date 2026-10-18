@@ -18,102 +18,36 @@ run for all scenarios constitutes evidence that both requirements are satisfied.
 
 ### Test Scenarios
 
-#### Demo_DemoMethod_DefaultPrefix_ReturnsGreeting
+#### WordsBlob_Read_UnknownMagic_Throws
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that DemoMethod returns the
-expected greeting using the default prefix.
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_DemoMethod_CustomPrefix_ReturnsGreeting
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that DemoMethod returns the
-expected greeting using a custom prefix.
+**Scenario**: xUnit discovers and runs this test (core test project); the test verifies that a lexicon blob with an
+unknown magic number is refused.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
+**Requirement coverage**: `WordSense-OTS-xUnit-Execute`, `WordSense-OTS-xUnit-Report`.
 
-#### Demo_DemoMethod_NullInput_ThrowsArgumentNullException
+#### WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that DemoMethod rejects a null
-argument with ArgumentNullException.
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_DemoMethod_EmptyInput_ThrowsArgumentException
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that DemoMethod rejects an
-empty string argument with ArgumentException.
+**Scenario**: xUnit discovers and runs this test (Onnx test project); the test verifies that empty text yields no
+tokens.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
+**Requirement coverage**: `WordSense-OTS-xUnit-Execute`, `WordSense-OTS-xUnit-Report`.
 
-#### Demo_Constructor_NullPrefix_ThrowsArgumentNullException
+#### WeightsBlob_Read_UnknownMagic_Throws
 
-**Scenario**: xUnit discovers and runs this test; the test verifies that the constructor rejects a
-null prefix with ArgumentNullException.
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_Constructor_EmptyPrefix_ThrowsArgumentException
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that the constructor rejects an
-empty string prefix with ArgumentException.
+**Scenario**: xUnit discovers and runs this test (Onnx test project); the test verifies that a weights blob with an
+unknown magic number is refused.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_DefaultPrefix_Read_IsHello
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that the DefaultPrefix constant
-has the value "Hello".
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_Prefix_WithCustomConstruction_ReturnsCustomPrefix
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that the Prefix property
-returns the value supplied at construction.
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
-
-#### Demo_DefaultConstructor_WithNoArgs_SetsDefaultPrefix
-
-**Scenario**: xUnit discovers and runs this test; the test verifies that the default constructor
-sets Prefix to the DefaultPrefix constant.
-
-**Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
-
-**Requirement coverage**: `Template-OTS-xUnit-Execute`, `Template-OTS-xUnit-Report`.
+**Requirement coverage**: `WordSense-OTS-xUnit-Execute`, `WordSense-OTS-xUnit-Report`.
 
 ### Requirements Coverage
 
-- **`Template-OTS-xUnit-Execute`**: Demo_DemoMethod_DefaultPrefix_ReturnsGreeting,
-  Demo_DemoMethod_CustomPrefix_ReturnsGreeting,
-  Demo_DemoMethod_NullInput_ThrowsArgumentNullException,
-  Demo_DemoMethod_EmptyInput_ThrowsArgumentException,
-  Demo_Constructor_NullPrefix_ThrowsArgumentNullException,
-  Demo_Constructor_EmptyPrefix_ThrowsArgumentException, Demo_DefaultPrefix_Read_IsHello,
-  Demo_Prefix_WithCustomConstruction_ReturnsCustomPrefix,
-  Demo_DefaultConstructor_WithNoArgs_SetsDefaultPrefix
-- **`Template-OTS-xUnit-Report`**: Demo_DemoMethod_DefaultPrefix_ReturnsGreeting,
-  Demo_DemoMethod_CustomPrefix_ReturnsGreeting,
-  Demo_DemoMethod_NullInput_ThrowsArgumentNullException,
-  Demo_DemoMethod_EmptyInput_ThrowsArgumentException,
-  Demo_Constructor_NullPrefix_ThrowsArgumentNullException,
-  Demo_Constructor_EmptyPrefix_ThrowsArgumentException, Demo_DefaultPrefix_Read_IsHello,
-  Demo_Prefix_WithCustomConstruction_ReturnsCustomPrefix,
-  Demo_DefaultConstructor_WithNoArgs_SetsDefaultPrefix
+- **`WordSense-OTS-xUnit-Execute`**: WordsBlob_Read_UnknownMagic_Throws,
+  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws
+- **`WordSense-OTS-xUnit-Report`**: WordsBlob_Read_UnknownMagic_Throws,
+  WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws

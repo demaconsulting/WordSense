@@ -1,0 +1,34 @@
+---
+# MiniLM subsystem requirements (the package DemaConsulting.WordSense.MiniLM)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: MiniLM Requirements
+        requirements:
+          - id: WordSense-MiniLM-Model
+            title: >-
+              The MiniLM subsystem shall provide a word-sense model on the all-MiniLM-L6-v2 (int8) encoder, an uncased
+              model with hidden size 384, with its trained weights embedded in the package.
+            tags: [subsystem]
+            justification: |
+              MiniLM is the small, fast encoder: its 22 MiB model file and low latency suit interactive callers, and
+              embedding the weights leaves only the model file to be obtained.
+            children:
+              - WordSense-MiniLM-MiniLMWordSenseModel-Identity
+              - WordSense-MiniLM-MiniLMWordSenseModel-Files
+              - WordSense-MiniLM-MiniLMWordSenseModel-Weights
+              - WordSense-MiniLM-MiniLMWordSenseModel-Options
+            tests:
+              - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
+              - WordSense_Classifier_EndToEnd_ClassifiesRecord
+
+          - id: WordSense-MiniLM-Packaging
+            title: >-
+              The MiniLM package shall ship its XML documentation with a namespace summary and verified examples, its
+              NuGet metadata, and a README that carries the credits and licenses of the model it describes.
+            tags: [subsystem]
+            justification: |
+              The model carries its own license and attribution; consumers learn the API from the package.
+            tests:
+              - MiniLMWordSense_XmlDocExamples_Compile

@@ -10,10 +10,94 @@
 # - PROPOSE only genuine technical terms/names as needed
 
 version: "0.2"
-language: en
+language: en,en-GB
 
 # Project-specific technical terms and tool names
 words:
+  - DBFF
+  - DFFF
+  - NRVJBPCI
+  - NRVJBPCID
+  - NRVJBPCIDA
+  - NRJBCI
+  - BCRJIN
+  - BJNV
+  - NRVJBPCIDATUOS
+  - softmax
+  - hyperparameters
+  - unigram
+  - unigrams
+  - ngrams
+  - zorped
+  - zorp
+  - lyve
+  - woond
+  - tboh
+  - wgxy
+  - zzqxj
+  - unknownlicense
+  - goed
+  - childs
+  - knowed
+  - taked
+  - stoped
+  - lovng
+  - ically
+  - iness
+  - ingly
+  - icked
+  - wented
+  - ical
+  - ation
+  - ment
+  - tadvmod
+  - nounverb
+  - minilm
+  - bertbasecased
+  - varints
+  - respelling
+  - respellings
+  - kord
+  - apimark
+  - batly
+  - xyzs
+  - ying
+  - wikt
+  - quizes
+  - visitted
+  - visitting
+  - wordfreq
+  - arpabet
+  - leed
+  - localappdata
+  - tatoeba
+  - treebank
+  - mobypos
+  - overfitting
+  - sconj
+  - cconj
+  - intj
+  - propn
+  - punct
+  - multiword
+  - unscored
+  - conllu
+  - glasss
+  - earlyly
+  - catly
+  - featurized
+  - overcall
+  - overstudies
+  - udict
+  - EBCA
+  - ccby
+  - realtext
+  - Relabeler
+  - retag
+  - retags
+  - retagged
+  - pastpart
+  - presentpart
   - buildmark
   - DEMA
   - Dema
@@ -35,9 +119,37 @@ words:
   - weasyprint
   - netstandard
   - yamlfix
+  - onnx
+  - huggingface
+  - nonspacing
+  - onnxruntime
+  - ordinally
+  - tagless
+  - wordsense
+  - wsns
+  - wsnw
+  - xyzzyq
+  - subword
+  - softplus
+  - featurize
+  - finalizer
+  - unregularized
+  - disjointness
+  - redownloaded
+  - unpadded
+  - varint
+  - zzqxjw
+  - Redownloads
+  - slnx
+  - cret
+  - citys
+  - frobnicate
+  - nosuchmodel
+  - Finalizers
 
 # Exclude common build artifacts, dependencies, and vendored third-party code
 ignorePaths:
+  - "**/audit-work/**"
   - "**/.git/**"
   - "**/node_modules/**"
   - "**/.venv/**"
@@ -50,3 +162,10 @@ ignorePaths:
   - "**/bin/**"
   - "**/obj/**"
   - package-lock.json
+  - model/**
+  - corpus/**
+  - tools/real-text/cache/**
+  - tools/tokenizer-fixture/**
+  # Generated from the corpus (lemma inventory and real sentences contain many rare words and names)
+  - docs/user_guide/appendix-senses.md
+  - test/**/Fixtures/**

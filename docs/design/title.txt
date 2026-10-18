@@ -1,11 +1,11 @@
 ---
-title: Template DotNet Library Software Design Document
+title: WordSense Software Design Document
 subtitle: A .NET Reference Implementation for Libraries
 author: DEMA Consulting
-description: Detailed design document for the Template DotNet Library
+description: Detailed design document for the WordSense
 lang: en-US
 keywords:
-  - Template DotNet Library
+  - WordSense
   - .NET
   - Library
   - Design

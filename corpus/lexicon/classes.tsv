@@ -1,0 +1,9 @@
+Noun	answer	Moby-derived noun-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Pronoun	answer	Moby-derived pronoun-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Verb	answer	Moby-derived verb-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Adjective	answer	Moby-derived adjective-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Adverb	answer	Moby-derived adverb-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Preposition	answer	Moby-derived preposition-only words reach the precision gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md)
+Conjunction	candidate-only	Conjunction-only words fail the 95 percent gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md); the class is never a target of a trained model, but every word of the class stays in the dictionary and is an answer or a candidate
+Interjection	candidate-only	Interjection-only words fail the 95 percent gate on UD English-EWT (see docs/build_notes/lexicon-evaluation.md); the class is never a target of a trained model, but every word of the class stays in the dictionary and is an answer or a candidate
+Determiner	candidate-only	Determiners are a closed class of mostly single-sense words and a candidate sense of a few others; no model is trained for them, and every determiner of the dictionary stays in it

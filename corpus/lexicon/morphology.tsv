@@ -1,0 +1,11 @@
+Plural	enabled	-s, -es and -ies of a noun base; judged by coverage of the Project Gutenberg sample and UD English-EWT attestation (see docs/build_notes/inflection-coverage.md)
+ThirdPerson	enabled	the same endings of a verb base; a verb form that is also a noun form shares the word
+PastTense	enabled	-ed, -d, -ied and doubled-consonant -ed of a verb base; regenerated with part-of-speech-aware bases, see the evidence in docs/build_notes/inflection-coverage.md
+Gerund	enabled	-ing of a verb base with the dropped e, ying and doubled consonant
+Comparative	enabled	-er of an adjective of one or two syllables
+Superlative	enabled	-est of an adjective of one or two syllables
+Adverb	enabled	-ly, -ily and -ically of an adjective that is not an adverb
+Irregular	enabled	irregular-forms.tsv (hand-written closed list) and irregular-ud.tsv (UD English-EWT, forms occurring at least twice); an irregular verb with a prefix takes the prefixed forms
+Quality	enabled	-ness (-iness after a consonant plus y) noun of a plausible adjective base (up to three syllables, not already ending in ness)
+Agent	enabled	-er noun (swimmer, worshipper) of a verb base of up to three syllables
+Manner	enabled	-ingly adverb (smilingly, mockingly) of a verb base of up to three syllables

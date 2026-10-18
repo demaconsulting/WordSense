@@ -1,14 +1,34 @@
 // Views rendered into docs/design/generated/ for the Design document.
-// Reopens the TemplateDotNetLibrary package so each 'expose' statement can reference
+// Reopens the WordSense package so each 'expose' statement can reference
 // its target part def directly. Per SysML2Tools syntax, 'expose' is only valid
 // inside a named 'view' usage (not a 'view def' definition), and it - not
 // 'render' - is what scopes the rendered diagram content.
-package TemplateDotNetLibrary {
+package WordSense {
     view SoftwareStructureView {
-        expose TemplateDotNetLibrary;
+        expose WordSense;
     }
 
-    view TemplateDotNetLibraryView {
-        expose TemplateDotNetLibrarySystem;
+    view WordSenseView {
+        expose WordSenseSystem;
+    }
+
+    view CoreView {
+        expose CoreSubsystem;
+    }
+
+    view BasicView {
+        expose BasicSubsystem;
+    }
+
+    view OnnxView {
+        expose OnnxSubsystem;
+    }
+
+    view MiniLMView {
+        expose MiniLMSubsystem;
+    }
+
+    view BertBaseCasedView {
+        expose BertBaseCasedSubsystem;
     }
 }

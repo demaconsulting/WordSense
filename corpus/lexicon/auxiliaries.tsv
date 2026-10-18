@@ -1,0 +1,30 @@
+# Hand-written closed list of English auxiliary verbs: each word gains an Auxiliary sense, appended after its other senses.
+# Columns: word <TAB> evidence
+# Evidence: modal = modal auxiliary verb; primary = primary auxiliary (forms of be, have and do).
+will	modal
+would	modal
+can	modal
+could	modal
+may	modal
+might	modal
+shall	modal
+should	modal
+must	modal
+ought	modal
+need	modal
+dare	modal
+be	primary
+am	primary
+is	primary
+are	primary
+was	primary
+were	primary
+been	primary
+being	primary
+have	primary
+has	primary
+had	primary
+having	primary
+do	primary
+does	primary
+did	primary

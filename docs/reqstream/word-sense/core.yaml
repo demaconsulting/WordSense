@@ -1,0 +1,64 @@
+---
+# Core subsystem requirements (the package DemaConsulting.WordSense)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Core Requirements
+        requirements:
+          - id: WordSense-Core-Lexicon
+            title: >-
+              The core subsystem shall provide the embedded word lexicon: for each known lower-case word, including
+              inflected forms, determiners, conjunctions and interjections, the senses it can have.
+            tags: [subsystem]
+            justification: |
+              Every model package starts from the same lexicon of candidate senses, so it is provided once, in the
+              package that all others reference.
+            children:
+              - WordSense-Core-WordLexicon-Words
+              - WordSense-Core-WordLexicon-Complete
+              - WordSense-Core-WordLexicon-Embedded
+              - WordSense-Core-WordLexicon-LazyLoad
+              - WordSense-Core-WordLexicon-Format
+            tests:
+              - WordLexicon_Words_KnownWord_ReturnsItsSenses
+
+          - id: WordSense-Core-Contracts
+            title: >-
+              The core subsystem shall define the public contracts through which callers classify words with a
+              model and receive results.
+            tags: [subsystem]
+            justification: |
+              Callers program against one small set of contracts and can swap model packages, or supply their own
+              model, without changing their code.
+            children:
+              - WordSense-Core-WordSenseContracts-Classify
+              - WordSense-Core-WordSenseContracts-Result
+              - WordSense-Core-WordSenseContracts-Model
+              - WordSense-Core-WordSenseContracts-Mirror
+              - WordSense-Core-WordSenseContracts-Details
+            tests:
+              - WordSenseContracts_WordSense_SameValues_AreEqual
+
+          - id: WordSense-Core-Independent
+            title: >-
+              The core subsystem shall not depend on ONNX Runtime, trained weights or vector mathematics.
+            tags: [subsystem]
+            justification: |
+              The core package must stay small and free of native dependencies so that every layer above it, and
+              callers that use only the lexicon, can take it without extra cost.
+            children:
+              - WordSense-Core-WordSenseContracts-Independent
+            tests:
+              - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences
+
+          - id: WordSense-Core-Packaging
+            title: >-
+              The core package shall ship its XML documentation with a namespace summary and verified examples, its
+              NuGet metadata, and a README that carries the credits and licenses of the third-party word data it embeds.
+            tags: [subsystem]
+            justification: |
+              The embedded lexicon derives from third-party word lists whose licenses require attribution, and
+              consumers learn the API from the documentation that ships with the package.
+            tests:
+              - WordSense_XmlDocExamples_Compile

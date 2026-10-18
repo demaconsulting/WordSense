@@ -17,7 +17,8 @@ data, rather than requiring reviewers to open the SARIF file separately.
 ### Integration Pattern
 
 SarifMark is invoked as a `dotnet tool` (`dotnet sarifmark`) from `.github/workflows/build.yaml`
-after the CodeQL scanning step, both to generate `docs/code_quality/generated/codeql-quality.md`
-and to enforce a clean result. It is a stateless CLI invocation — each run reads a SARIF file,
+after the CodeQL scanning step to generate `docs/code_quality/generated/codeql-quality.md`. The
+pipeline generates the report only; enforcement mode is verified through the `SarifMark_Enforcement`
+self-validation test. It is a stateless CLI invocation — each run reads a SARIF file,
 writes its markdown report or returns an exit code, and exits; there is no initialization,
 configuration object, or disposal step.

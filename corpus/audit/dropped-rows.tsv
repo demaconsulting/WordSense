@@ -1,0 +1,358 @@
+id	lemma	old_sense	split	reason	sentence
+29800e8a5bd0	absent	adj	anchors	undecided: the judges could not settle the part of speech	{Absent} a clear majority, the committee postponed the vote.
+db122739502b	absent	adj	holdout	undecided: the judges could not settle the part of speech	{Absent} any evidence of intent, the prosecutors dropped the felony charge.
+d83b5bcb4334	aggregate	noun	anchors	noise: adj among 22 noun rows	Their {aggregate} earnings exceeded a billion dollars.
+0ac14f11d1f1	arithmetic	adj	anchors	undecided: the judges could not settle the part of speech	The test covered {arithmetic} skills for third graders.
+0c0e3744ce04	arsenic	adj	anchors	undecided: the judges could not settle the part of speech	The fluid was an {arsenic} solution of unknown strength.
+29d5858632f3	associate	noun	holdout	noise: adj among 22 noun rows	My brother is an {associate} professor of chemistry at Ohio State.
+683eb8b6d700	associate	noun	anchors	noise: adj among 22 noun rows	He became an {associate} professor in the spring.
+0cc922a1a61e	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	Rough seas lifted the {bow} high out of the water.
+126f8ad1006f	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	She {bows} politely when she meets her teacher.
+1fd102f7e055	bow	bend	anchors	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	Sailors stood at the {bow} and watched for ice.
+24a722570b7a	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The dancers {bow} to the crowd.
+251c4651aeaf	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Please {bow} your heads in silence.
+2a9f1bb2993b	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	{Bow} to your partner before the dance begins.
+2cdf60777408	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Branches {bow} under heavy snow.
+2f44e4d82de4	bow	bend	anchors	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The {bow} of the boat cut through the water.
+32fd204e59a8	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The ship's {bow} was damaged in the collision.
+4af55547e917	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The knight gave a stiff {bow} to the queen.
+50cba5609fbc	bow	bend	anchors	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The singer took a deep {bow} after the song.
+52a56a351702	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	A low {bow} is customary in this culture.
+55811d52f64c	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	We will not {bow} to threats.
+5832407c8286	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The old tree will {bow} under the weight of the snow.
+599b9df57ecc	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The old oak will {bow} before the storm.
+5d6544293de5	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	At the front of the boat, the {bow} sliced through the swell.
+609f2aab17b0	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Visitors {bow} on entering the temple.
+620b3f2c20bd	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The actors will {bow} at the end of the play.
+629013bbe19e	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Did the knight {bow} before the queen?
+70a8c652e763	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Dancers {bow} to one another before the first step.
+70f1197a007f	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The captain, after a pause, gave a slight {bow}.
+85add877a146	bow	bend	anchors	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The waves splashed over the {bow} of the ship.
+89e5104698ba	bow	bend	anchors	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The captain stood at the {bow} in the cold morning mist.
+8e9233bf4e07	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The pianist stood and took a {bow}.
+9af19ed6e512	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Please {bow} your head during the prayer.
+b1d303395e6f	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The sailor stood at the {bow}, scanning for rocks.
+c0adc3f182d5	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Students {bow} to their teacher in the dojo.
+c3a5b8e3af07	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	She made a deep {bow} to the audience.
+c4051623477c	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	He had to {bow} to enter the low doorway.
+ca73054beb51	bow	bend	holdout	part of speech noun has 5 anchors and 10 holdout rows, below the 14/8 minimum	The waves crashed over the {bow} of the ship.
+da7be608bed8	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The actors will {bow} at the end of the show.
+ecf212def5d5	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	He had to {bow} to pressure from the board.
+f0b961fc7205	bow	bend	holdout	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	The champion would never {bow} to an opponent.
+fa05eafcc21a	bow	bend	anchors	part of speech verb has 9 anchors and 10 holdout rows, below the 14/8 minimum	Do not {bow} to anyone who treats you badly.
+0671e54ba289	bow	weapon	holdout	the lemma is left with fewer than two senses	Horsehair stretches along the length of the {bow}.
+07860efe5efe	bow	weapon	holdout	the lemma is left with fewer than two senses	A hair {bow} came untied.
+0c7760391fca	bow	weapon	anchors	the lemma is left with fewer than two senses	A good {bow} needs a steady hand and a keen eye.
+14c4f7a1e977	bow	weapon	anchors	the lemma is left with fewer than two senses	The archer drew the {bow} and took aim.
+19215eeaf257	bow	weapon	holdout	the lemma is left with fewer than two senses	The violinist raised her {bow}.
+24d26cccaf2f	bow	weapon	holdout	the lemma is left with fewer than two senses	The archer's {bow} snapped with a sharp crack.
+26062f2c3ce1	bow	weapon	holdout	the lemma is left with fewer than two senses	He rosined the {bow} before the concert.
+29e60bdd0fa5	bow	weapon	holdout	the lemma is left with fewer than two senses	Robin Hood was a master of the {bow}.
+30a3ac42f0d9	bow	weapon	anchors	the lemma is left with fewer than two senses	Robin Hood carried a long {bow} in the forest.
+3420d7ed0653	bow	weapon	holdout	the lemma is left with fewer than two senses	The little girl's dress had a big satin {bow}.
+3dca7455b3de	bow	weapon	anchors	the lemma is left with fewer than two senses	Hunters carried a {bow} and arrows long ago.
+417249921c80	bow	weapon	anchors	the lemma is left with fewer than two senses	A wooden {bow} hung on the cabin wall.
+43402e92e34e	bow	weapon	anchors	the lemma is left with fewer than two senses	She made a neat {bow} with the ribbon.
+533501d7a69a	bow	weapon	anchors	the lemma is left with fewer than two senses	She tied a red {bow} in her hair.
+7b8362b8eb1f	bow	weapon	anchors	the lemma is left with fewer than two senses	The little girl wore a pink {bow} on her dress.
+7b8d59b1d144	bow	weapon	anchors	the lemma is left with fewer than two senses	He strung the {bow} carefully before the contest.
+84c868097712	bow	weapon	anchors	the lemma is left with fewer than two senses	He rubbed the {bow} with resin before the concert.
+8960fcb237b4	bow	weapon	holdout	the lemma is left with fewer than two senses	The cellist's {bow} slid across the strings.
+8aa771070fe9	bow	weapon	holdout	the lemma is left with fewer than two senses	Hunters favor a compound {bow}.
+9b42f104bb01	bow	weapon	holdout	the lemma is left with fewer than two senses	String the {bow} before you shoot.
+9d146cc5bf47	bow	weapon	holdout	the lemma is left with fewer than two senses	He wore a {bow} tie to the wedding.
+b196ba831b4d	bow	weapon	holdout	the lemma is left with fewer than two senses	A bright ribbon {bow} adorned the package.
+b914b766b9e8	bow	weapon	holdout	the lemma is left with fewer than two senses	Olympic archers shoot a recurve {bow}.
+bc7df9b42dd3	bow	weapon	anchors	the lemma is left with fewer than two senses	The violinist lifted her {bow} and began to play.
+c2b334cc2ebd	bow	weapon	holdout	the lemma is left with fewer than two senses	The gift was topped with a gold {bow}.
+c4f280d9de84	bow	weapon	holdout	the lemma is left with fewer than two senses	The museum displays ancient {bows} and quivers.
+d136437e37ce	bow	weapon	anchors	the lemma is left with fewer than two senses	The cellist broke a string with a sharp stroke of the {bow}.
+d6cbf4276d8b	bow	weapon	anchors	the lemma is left with fewer than two senses	{Bows} and arrows were on sale at the sports shop.
+e2fd59bcac5a	bow	weapon	holdout	the lemma is left with fewer than two senses	He drew the {bow} and let the arrow fly.
+e94c37428319	bow	weapon	holdout	the lemma is left with fewer than two senses	She wore a black velvet {bow} at her collar.
+eb0231b0b137	bow	weapon	holdout	the lemma is left with fewer than two senses	She tied her shoelaces in a double {bow}.
+f04aeddbc54d	bow	weapon	holdout	the lemma is left with fewer than two senses	Hunters have taken deer with a {bow} for centuries.
+f144194274a3	bow	weapon	anchors	the lemma is left with fewer than two senses	The gift had a big gold {bow} on top.
+1fbc6f191ebe	close	adj	holdout	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	The shot landed {close} to the pin.
+658ae2ce5e19	close	adj	holdout	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	The cat crept {close} to the bird.
+6e4fdda7c607	close	adj	holdout	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	Don't stand so {close} to the edge.
+8ebd58870353	close	adj	anchors	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	Stand {close} to the fire and stay warm.
+a3f5b36be1c8	close	adj	holdout	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	He sat {close} to the fire to get warm.
+cca34adf0d93	close	adj	holdout	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	Stay {close} to me in the crowd.
+d6d56c6c18c4	close	adj	anchors	part of speech adv has 2 anchors and 5 holdout rows, below the 14/8 minimum	Come {close} so I can whisper a secret.
+0982793eeac1	closer	noun	anchors	the lemma is left with fewer than two senses	She is the best {closer} on our sales team.
+2e17f281cec8	closer	noun	anchors	the lemma is left with fewer than two senses	The hotshot {closer} blew the save.
+344849c69fed	closer	noun	anchors	the lemma is left with fewer than two senses	The {closer} finished the deal before lunch.
+351548240b07	closer	noun	anchors	the lemma is left with fewer than two senses	Every sales floor needs a strong {closer}.
+40e0dca53223	closer	noun	anchors	the lemma is left with fewer than two senses	The {closer} walked in from the bullpen in the ninth.
+43383fbf5b5b	closer	noun	anchors	the lemma is left with fewer than two senses	The manager brought in his {closer} early.
+47fdcbd0ea83	closer	noun	anchors	the lemma is left with fewer than two senses	The song's {closer} is a quiet piano piece.
+7b2f0e83d772	closer	noun	anchors	the lemma is left with fewer than two senses	A reliable {closer} saves games for the team.
+a5c7863dd609	closer	noun	anchors	the lemma is left with fewer than two senses	A new {closer} joined the bullpen at the deadline.
+b235256a4a88	closer	noun	anchors	the lemma is left with fewer than two senses	He signed as the new {closer} for the Yankees.
+b584d33dfa47	closer	noun	anchors	the lemma is left with fewer than two senses	Their {closer} has thirty saves this season.
+bd1a32060c34	closer	noun	anchors	the lemma is left with fewer than two senses	The door {closer} keeps the gate from slamming.
+cbe7345e6c97	closer	noun	anchors	the lemma is left with fewer than two senses	The team's {closer} struck out the side.
+e1cb41dc73ce	closer	noun	anchors	the lemma is left with fewer than two senses	The album's {closer} runs nearly ten minutes.
+0a6982e71501	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	Take a {closer} look at the evidence.
+257df3f81806	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	Is the store {closer} than the mall?
+2f7bfb4c61f5	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	Our seats were no {closer} than row twenty.
+30ded7b5ce7d	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	The soldiers crept {closer} to the camp.
+32c87696edaa	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	The two sisters are {closer} than ever.
+605cd215151e	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	The storm is moving {closer} to the coast.
+6a8bca68f6b7	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	The deadline grows {closer} each day.
+7099fac84a31	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	Come {closer} so I can hear you.
+71427dfff2a0	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	A {closer} look revealed a tiny crack.
+8ae6ff62fe38	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	He sat {closer} to the stage for a better view.
+a6b9bd92c28c	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	Move a little {closer} to the fire.
+b32d2412a89e	closer	verb	anchors	part of speech adj has 7 anchors and 0 holdout rows, below the 14/8 minimum	The shore is getting {closer} every minute.
+c382fc6d02bc	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	We live much {closer} to the school now.
+c87bfb4cba8e	closer	verb	anchors	part of speech adv has 7 anchors and 0 holdout rows, below the 14/8 minimum	Step {closer}, and I'll show you the trick.
+383950b9d6ee	commune	noun	holdout	undecided: the judges could not settle the part of speech	The Paris {Commune} of 1871 lasted just over two months.
+f79e90c96051	compact	noun	holdout	undecided: the judges could not settle the part of speech	The Mayflower {Compact} was signed in 1620.
+7ac8f638e293	conjugate	noun	anchors	noise: adj among 22 noun rows	Each acid has a {conjugate} base formed when it loses a proton.
+83a973e0a7e9	conjugate	noun	holdout	noise: adj among 22 noun rows	In acid-base chemistry, every acid has a {conjugate} base.
+a196e3d9ce90	conscript	noun	anchors	undecided: the judges could not settle the part of speech	The {conscript} army lacked both supplies and experience.
+99b9d1b2e3fa	content	adj	holdout	part of speech verb has 1 anchors and 2 holdout rows, below the 14/8 minimum	She will {content} herself with watching from the sidelines.
+edbcec230334	content	adj	holdout	part of speech verb has 1 anchors and 2 holdout rows, below the 14/8 minimum	We'll have to {content} ourselves with a draw.
+fc9fbefd0cd3	content	adj	anchors	part of speech verb has 1 anchors and 2 holdout rows, below the 14/8 minimum	You should {content} yourself with what you have.
+13ddd327bda5	digest	noun	anchors	undecided: the judges could not settle the part of speech	Reader's {digest} lined the shelf at the old doctor's office.
+65cea8febdd2	graduate	noun	anchors	noise: adj among 22 noun rows	This {graduate} school offers evening classes.
+7be7b740d4a1	graduate	noun	anchors	noise: adj among 22 noun rows	He is a {graduate} student in physics.
+02095d8bdbf8	inside	adv	anchors	undecided: the judges could not settle the part of speech	Is anyone still {inside} the building?
+bfd74edbefea	invalid	noun	holdout	noise: adj among 33 noun rows	She nursed her {invalid} mother for ten years.
+0a1d43f56b8c	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Teachers {lead} children through the morning routine.
+0c96188f3e36	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	She plays the {lead} in the school play.
+1503207b9dd4	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The dog pulled hard on its {lead}.
+1a052610d96b	lead	guide	holdout	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	Their early {lead} evaporated in the second half.
+1e3b133e3f28	lead	guide	holdout	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The Giants hold a three-game {lead} in the division.
+1eafc4596834	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Do not {lead} her on if you do not care.
+23b8fa67943a	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	The guide will {lead} us through the cave.
+28c778c1e0f9	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Which candidate will {lead} the party?
+2d9dc14c3125	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	She will {lead} the team into the finals.
+2e4842b1e4af	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Follow me; I'll {lead} the way.
+32becfdbbecb	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Can you {lead} the group through the forest?
+36a97c30c8f6	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Roads {lead} to the village from three directions.
+4f3348dae57d	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Please {lead} us to the exit.
+5f740cc7b95c	lead	guide	holdout	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The detective followed every {lead} in the case.
+65ee2ae9627d	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Smoking can {lead} to serious health problems.
+66e2afaf79d1	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Who is going to {lead} the meeting?
+72f895234881	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	A good manager can {lead} by example.
+76c4a78c4a69	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	Keep your dog on a {lead} in the park.
+784b4344d620	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	He {leads} a double life.
+78deb673f880	lead	guide	holdout	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The Tigers took the {lead} in the ninth inning.
+7bd236d16d8d	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	Our team took the {lead} in the second half.
+7efafd48b3b7	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The runner built a big {lead} in the last mile.
+804a4fea5b11	lead	guide	holdout	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The tip gave police a strong {lead}.
+936563f3727a	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Did the guide {lead} you through the cave?
+bdd0e07fc8a1	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	She will {lead} the team to victory.
+c729addfb13f	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	This road will {lead} you to the lake.
+d5b6221ddef4	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	A trail of crumbs would {lead} him home.
+db5ec317175f	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	Does this path {lead} to the lake?
+dc1bf5d39783	lead	guide	anchors	part of speech noun has 6 anchors and 5 holdout rows, below the 14/8 minimum	The detective followed a promising {lead}.
+e2bd06f204e3	lead	guide	holdout	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	She {leads} the choir, I believe, every Sunday.
+e562ef19c92f	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	{Lead} the horses to the stable.
+f86ab193da3a	lead	guide	anchors	part of speech verb has 8 anchors and 13 holdout rows, below the 14/8 minimum	He {leads} the choir with a gentle hand.
+09f25bca97ec	lead	metal	holdout	the lemma is left with fewer than two senses	A heavy {lead} weight pulled the line to the bottom.
+0a5f1c914d46	lead	metal	holdout	the lemma is left with fewer than two senses	{Lead} paint was banned in homes in 1978.
+0b69d1385cbd	lead	metal	holdout	the lemma is left with fewer than two senses	The pipes were made of {lead}.
+20fe00e175b8	lead	metal	anchors	the lemma is left with fewer than two senses	The roof was covered with {lead} to stop leaks.
+214df4050c47	lead	metal	holdout	the lemma is left with fewer than two senses	Alchemists tried to turn {lead} into gold.
+28c5ce159aba	lead	metal	anchors	the lemma is left with fewer than two senses	A {lead} apron protects the patient during scans.
+29b44097a03f	lead	metal	holdout	the lemma is left with fewer than two senses	Fishing weights are often made from {lead}.
+2a3784482ece	lead	metal	anchors	the lemma is left with fewer than two senses	Batteries in old cars contain {lead}.
+2d793ea5906f	lead	metal	holdout	the lemma is left with fewer than two senses	Children exposed to {lead} may suffer developmental delays.
+4d80acb685c9	lead	metal	holdout	the lemma is left with fewer than two senses	Gasoline once contained {lead} to boost performance.
+50b04657e83e	lead	metal	holdout	the lemma is left with fewer than two senses	{Lead} is a heavy, soft metal.
+56522e71631c	lead	metal	anchors	the lemma is left with fewer than two senses	The windows were set in thin strips of {lead}.
+5ca7b7cc5244	lead	metal	holdout	the lemma is left with fewer than two senses	The {lead} level in the paint was far above the legal limit.
+5fcce629141b	lead	metal	holdout	the lemma is left with fewer than two senses	Mining for {lead} began here in Roman times.
+6535161947f6	lead	metal	holdout	the lemma is left with fewer than two senses	Tests found high levels of {lead} in the drinking water.
+69a128347a24	lead	metal	holdout	the lemma is left with fewer than two senses	Pipes made of {lead} were common in old plumbing.
+7d1a10db6001	lead	metal	anchors	the lemma is left with fewer than two senses	Old pipes were made of {lead}.
+8244d0cd556f	lead	metal	holdout	the lemma is left with fewer than two senses	Radiation shields are lined with {lead}.
+8d00627c1d7b	lead	metal	holdout	the lemma is left with fewer than two senses	The stained glass is held together by strips of {lead}.
+a914cf41115e	lead	metal	anchors	the lemma is left with fewer than two senses	A sheet of {lead} blocks X-rays.
+aaf9fb0e987d	lead	metal	anchors	the lemma is left with fewer than two senses	{Lead} is a heavy, soft, gray metal.
+ac1748a5e72a	lead	metal	holdout	the lemma is left with fewer than two senses	The soil near the old smelter was contaminated with {lead}.
+b118935c95f5	lead	metal	anchors	the lemma is left with fewer than two senses	Scientists found {lead} in the old water supply.
+c187526e1d7d	lead	metal	holdout	the lemma is left with fewer than two senses	A {lead} apron protects patients during X-rays.
+c42f06a25e0d	lead	metal	holdout	the lemma is left with fewer than two senses	The statue was cast from {lead} and tin.
+ce2eb1919a4c	lead	metal	anchors	the lemma is left with fewer than two senses	The element {lead} has the symbol Pb.
+cfc8ac5503d2	lead	metal	holdout	the lemma is left with fewer than two senses	Hunters are switching from {lead} shot to steel.
+d08cc857b5a4	lead	metal	holdout	the lemma is left with fewer than two senses	Car batteries contain {lead} and sulfuric acid.
+d5ad5ed24b52	lead	metal	anchors	the lemma is left with fewer than two senses	The bullets were made of {lead}.
+db822856f9d0	lead	metal	holdout	the lemma is left with fewer than two senses	The roof was covered with sheets of {lead}.
+e328ebcb22a9	lead	metal	anchors	the lemma is left with fewer than two senses	The paint contained {lead}, which is a poison.
+e69b26ccba97	lead	metal	holdout	the lemma is left with fewer than two senses	Elements such as tin and {lead} are in the same group.
+e80621d40cdd	lead	metal	anchors	the lemma is left with fewer than two senses	He melted the {lead} in a small iron pot.
+f108503e2f78	lead	metal	anchors	the lemma is left with fewer than two senses	Doctors tested the child for {lead} in the blood.
+fbe345c6355d	lead	metal	anchors	the lemma is left with fewer than two senses	The fishing line had a small {lead} weight.
+1a6901ae0e1e	live	adj	holdout	part of speech adv has 0 anchors and 3 holdout rows, below the 14/8 minimum	Fish are sold {live} at the market.
+1c2852cbbb89	live	adj	holdout	part of speech adv has 0 anchors and 3 holdout rows, below the 14/8 minimum	Watch the game {live} on the app.
+c60612cf741c	live	adj	holdout	part of speech adv has 0 anchors and 3 holdout rows, below the 14/8 minimum	The concert will be broadcast {live} tonight.
+983f6bab2cba	nearby	adv	holdout	noise: adj among 22 adv rows	The restaurant doesn't take reservations, but the bar is {nearby} if you want to wait.
+81adc6720591	obverse	noun	anchors	noise: adj among 22 noun rows	Collectors prize this coin's {obverse} design.
+b9066c9e5b54	opiate	verb	anchors	undecided: the judges could not settle the part of speech	Poets once {opiate} their senses with poppy tea.
+0d0f3d8029e6	orient	noun	holdout	undecided: the judges could not settle the part of speech	The {Orient} of her grandfather's stories was all dragons and paper lanterns.
+0dfa581bd30b	orient	noun	holdout	undecided: the judges could not settle the part of speech	Edward Said's book argued that the West invented the {Orient} as an exotic other.
+22413a868482	orient	noun	holdout	undecided: the judges could not settle the part of speech	Murder on the {Orient} Express was adapted for film again in 2017.
+6394481885ac	orient	noun	holdout	undecided: the judges could not settle the part of speech	"Have you ever been to the {Orient}?" she asked the captain.
+74b7aeeaf8d2	orient	noun	holdout	undecided: the judges could not settle the part of speech	Many Victorian painters romanticized the {Orient} without ever leaving England.
+8fb48c518fcc	orient	noun	holdout	undecided: the judges could not settle the part of speech	The Spice Road carried silk from the {Orient} to the markets of Venice.
+91aff97cf822	orient	noun	holdout	undecided: the judges could not settle the part of speech	In the poem, the sun rises in the {Orient} and sets over a distant sea.
+965bed70b1f2	orient	noun	holdout	undecided: the judges could not settle the part of speech	Merchants returning from the {Orient} brought tea, porcelain, and strange diseases.
+052db9b647bc	polish	adj	anchors	undecided: the judges could not settle the part of speech	{Polish} folk music filled the festival hall.
+15d120869a6a	polish	adj	holdout	undecided: the judges could not settle the part of speech	Is this a {Polish} or a Czech beer?
+177fc36db1a7	polish	adj	anchors	undecided: the judges could not settle the part of speech	The {Polish} team won the volleyball match in straight sets.
+1c435f8bc13c	polish	adj	anchors	undecided: the judges could not settle the part of speech	She speaks fluent {Polish} and often travels to Warsaw.
+20e0e5948bf2	polish	adj	anchors	undecided: the judges could not settle the part of speech	The {Polish} countryside looks beautiful in the spring.
+35217cc44eeb	polish	adj	anchors	undecided: the judges could not settle the part of speech	A {Polish} sausage is the best part of the picnic.
+378c0b7db906	polish	adj	holdout	undecided: the judges could not settle the part of speech	Our neighbors serve smoked {Polish} sausage and sauerkraut every Christmas Eve.
+47fc96425266	polish	adj	holdout	undecided: the judges could not settle the part of speech	He spoke with a faint {Polish} accent that came out when he was tired.
+62029dd0e0e6	polish	adj	anchors	undecided: the judges could not settle the part of speech	Is the author {Polish} or Czech?
+6c6e266e2928	polish	adj	holdout	undecided: the judges could not settle the part of speech	The museum's collection of {Polish} folk art includes painted eggs and paper cutouts.
+746aba5c46d9	polish	adj	anchors	undecided: the judges could not settle the part of speech	My grandmother cooks a wonderful {Polish} soup every winter.
+793a8268d58a	polish	adj	holdout	undecided: the judges could not settle the part of speech	Warsaw's {Polish} president met with the German chancellor to discuss border security.
+8ba260983d11	polish	adj	holdout	undecided: the judges could not settle the part of speech	The {Polish} delegation arrived in Brussels late on Tuesday night.
+93e68086aa4a	polish	adj	anchors	undecided: the judges could not settle the part of speech	The {Polish} government announced a new trade agreement today.
+9b25392c1cbe	polish	adj	anchors	undecided: the judges could not settle the part of speech	Their {Polish} neighbors invited us to a holiday dinner.
+a714395b8148	polish	adj	anchors	undecided: the judges could not settle the part of speech	Very {Polish} in style, the church has a tall red spire.
+bb6a926fbc8e	polish	adj	holdout	undecided: the judges could not settle the part of speech	She married a {Polish} engineer she met while studying in Kraków.
+cc01c38bbc77	polish	adj	anchors	undecided: the judges could not settle the part of speech	He is {Polish} by birth but grew up in Chicago.
+cdbf17d46531	polish	adj	anchors	undecided: the judges could not settle the part of speech	Her {Polish} passport was stamped at the airport.
+d626dcb51d97	polish	adj	anchors	undecided: the judges could not settle the part of speech	The {Polish} border was closed for the night.
+d8b7201e1e71	polish	adj	holdout	undecided: the judges could not settle the part of speech	Grandma's recipe for {Polish} dumplings calls for farmer's cheese and potatoes.
+ea028e401942	polish	adj	anchors	undecided: the judges could not settle the part of speech	{Polish} literature includes several Nobel Prize winners.
+ee652155e35b	polish	adj	holdout	undecided: the judges could not settle the part of speech	The {Polish} national team scored twice in the final ten minutes.
+4c188ec0e393	predestinate	adj	holdout	undecided: the judges could not settle the part of speech	Old theologians argued about whether the {predestinate} could ever fall from grace.
+092497c3a770	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Were you {present} at the meeting when the decision was made?
+2126c259c420	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Every member {present} voted in favor of the amendment.
+2af7da4365dc	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	The verb is in the {present} tense in that sentence.
+33066443cecf	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	The {present} tense describes habitual actions in English.
+4569153409cd	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	The {present} owner plans to sell the house next year.
+75720e24c88a	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	The traces of arsenic {present} in the sample were tiny.
+7b854b761358	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	All the directors were {present} at the annual vote.
+92de3bc4ab27	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Several doctors were {present} when the patient woke up.
+93ec74da030c	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	The teacher noted who was absent and who was {present}.
+94795ba01c12	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	At the {present} time, no further information is available.
+b4e3bbcc3164	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Carbon dioxide is {present} in small amounts in the atmosphere.
+c4765aba02ce	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Anyone {present} at the scene is asked to contact detectives.
+ced386436a6d	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Mold was {present} in the walls of the old cellar.
+d387793bf341	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Is every student {present} in class this morning?
+d43d430ab6a4	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	{Present} and future needs must both be considered by the board.
+ee18c201ddff	present	noun	anchors	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Everyone {present} at the meeting voted in favor.
+fc2e88e1c2eb	present	noun	holdout	part of speech adj has 8 anchors and 9 holdout rows, below the 14/8 minimum	Only two witnesses were {present} in the courtroom.
+26a9168fa294	read	past	holdout	undecided: the judges could not settle the part of speech	They {read} the terms aloud.
+9fa1382d1ee9	read	past	holdout	undecided: the judges could not settle the part of speech	I {read} somewhere that honey never spoils.
+3d07d0915b1c	record	noun	anchors	noise: adj among 34 noun rows	{Record} sales rose sharply during the holiday season.
+4bc081a619c1	record	noun	holdout	noise: adj among 34 noun rows	Revenue hit a {record} high in the third quarter.
+646c1a204942	regenerate	adj	holdout	undecided: the judges could not settle the part of speech	Theologians distinguish the {regenerate} from the unregenerate.
+7d0c4f3915c3	relet	noun	anchors	undecided: the judges could not settle the part of speech	{Relet} terms were posted on the notice board.
+56180ef0bbcf	retread	noun	anchors	undecided: the judges could not settle the part of speech	{Retread} tires are common on long-haul trucks.
+2007dd910450	row	argument	holdout	noise: verb among 34 noun rows	They always {row} over who gets the remote.
+5e3cb8c502b9	row	argument	holdout	noise: verb among 34 noun rows	They {row} constantly about politics.
+827b3d487004	rows	argument	holdout	noise: verb among 22 noun rows	She {rows} with her sister over who gets the car.
+fc1472354c7d	rows	argument	holdout	noise: verb among 22 noun rows	Tom {rows} with his brother whenever they discuss politics.
+0c28955cd0db	rows	line	holdout	part of speech verb has 0 anchors and 3 holdout rows, below the 14/8 minimum	She {rows} across the lake every morning.
+56af1925420e	rows	line	holdout	part of speech verb has 0 anchors and 3 holdout rows, below the 14/8 minimum	He {rows} the little boat out to the island each afternoon.
+a4566f97fd0a	rows	line	holdout	part of speech verb has 0 anchors and 3 holdout rows, below the 14/8 minimum	The team {rows} in perfect rhythm.
+21334f078fae	situate	adj	anchors	undecided: the judges could not settle the part of speech	Houses {situate} along the coast flooded.
+02a4dac779f1	tear	drop	holdout	the lemma is left with fewer than two senses	Happy {tears} flowed at the reunion.
+0cf9befc5370	tear	drop	anchors	the lemma is left with fewer than two senses	The soldier's {tear} fell on the old photograph.
+115e7c9281a8	tear	drop	anchors	the lemma is left with fewer than two senses	The onions made my eyes fill with {tears}.
+170afb8e0b62	tear	drop	holdout	the lemma is left with fewer than two senses	A silent {tear} fell onto the letter.
+18efd0f3b44a	tear	drop	holdout	the lemma is left with fewer than two senses	He fought back {tears} at the funeral.
+1f44e203637e	tear	drop	anchors	the lemma is left with fewer than two senses	She burst into {tears} at the good news.
+331429afe517	tear	drop	anchors	the lemma is left with fewer than two senses	{Tears} of joy filled the room.
+35cead8b6fe4	tear	drop	holdout	the lemma is left with fewer than two senses	The movie left half the theater in {tears}.
+3d55828e2540	tear	drop	holdout	the lemma is left with fewer than two senses	{Tears} streamed down the boy's face.
+41bb73be0992	tear	drop	holdout	the lemma is left with fewer than two senses	She dabbed her {tears} with a napkin.
+4335798fbec7	tear	drop	anchors	the lemma is left with fewer than two senses	A bright {tear} gleamed in his eye.
+46bac1640551	tear	drop	holdout	the lemma is left with fewer than two senses	Crocodile {tears} fooled nobody.
+4dc12d4d5bd0	tear	drop	anchors	the lemma is left with fewer than two senses	A single {tear} rolled down her cheek.
+4f3286608564	tear	drop	holdout	the lemma is left with fewer than two senses	She burst into {tears} when she heard the news.
+509775b16169	tear	drop	anchors	the lemma is left with fewer than two senses	He tried not to shed a {tear} at the farewell.
+5dabcf94d638	tear	drop	anchors	the lemma is left with fewer than two senses	They said goodbye with a {tear} and a hug.
+8bf5a09bbcbe	tear	drop	holdout	the lemma is left with fewer than two senses	The crowd was in {tears} when the song ended.
+9f379e1227fc	tear	drop	holdout	the lemma is left with fewer than two senses	A {tear} glistened on the old man's lashes.
+9f494af08273	tear	drop	holdout	the lemma is left with fewer than two senses	Eyes fill with {tears} when you chop onions.
+a9d8583c1cad	tear	drop	anchors	the lemma is left with fewer than two senses	He wiped a {tear} from his eye.
+c292ad94a882	tear	drop	anchors	the lemma is left with fewer than two senses	She laughed until the {tears} came.
+cc3b52ebe10b	tear	drop	holdout	the lemma is left with fewer than two senses	Not a {tear} was shed at the sale.
+ccc65f24bab7	tear	drop	anchors	the lemma is left with fewer than two senses	A {tear} fell onto the letter.
+ce009667e3dd	tear	drop	holdout	the lemma is left with fewer than two senses	The baby's {tears} dried as soon as he was picked up.
+d15345e09b24	tear	drop	holdout	the lemma is left with fewer than two senses	The sad ending brought {tears} to my eyes.
+d4d62a7b47a8	tear	drop	holdout	the lemma is left with fewer than two senses	Grief left her with no {tears} left to cry.
+d634b3f932a7	tear	drop	anchors	the lemma is left with fewer than two senses	The child's face was wet with {tears}.
+db7ea9b8c5e6	tear	drop	anchors	the lemma is left with fewer than two senses	Her voice broke and a {tear} slid down.
+de306238575f	tear	drop	holdout	the lemma is left with fewer than two senses	Salty {tears} blurred his vision.
+e326a34bd948	tear	drop	holdout	the lemma is left with fewer than two senses	The soldier brushed away a {tear}.
+f0eb7c151c81	tear	drop	anchors	the lemma is left with fewer than two senses	The sad movie brought {tears} to my eyes.
+f1e72a40562f	tear	drop	holdout	the lemma is left with fewer than two senses	Her voice cracked and a {tear} escaped.
+03ae1574fe45	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	A hard storm may {tear} the roof off the shed.
+054355378eaf	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Did the dog {tear} your sleeve?
+125547c3e50c	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Scissors work better than trying to {tear} the fabric.
+14bddbc803b5	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	The cat likes to {tear} at the curtains.
+275cd28a8fb7	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Athletes can {tear} a ligament in a bad fall.
+2ae318f6ef3e	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	The surgeon repaired the {tear} in his rotator cuff.
+3737d42e0442	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Floodwaters will {tear} the old bridge apart.
+37b041206102	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	A small {tear} in the sail slowed the boat.
+38660a9d4e4c	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Dogs {tear} through a pillow in seconds.
+3c35fc9dc7e6	tear	rip	anchors	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	Can you mend this {tear} in my dress?
+3cb3eac2791b	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Sharp thorns can {tear} your sleeves.
+3f980f6f692a	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Don't {tear} the page out of the library book.
+4d87a03cd9a4	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Do not {tear} this page out of the book.
+4e6978ab4c64	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Be careful not to {tear} the paper.
+4f5f547b78ec	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	There's a {tear} in my jacket.
+62b95f5799c4	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	She would {tear} the letter to shreds.
+69c6f17e406c	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	She had to {tear} open the package.
+6b2962b0a82d	tear	rip	anchors	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	There is a small {tear} in my jacket.
+74f6c077b0fc	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	He found a {tear} in the lining of his coat.
+7ca24db7c04b	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	A sharp edge can {tear} the plastic.
+7e65ec624326	tear	rip	anchors	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	A long {tear} ran down the sail.
+9364452be858	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	The kitten likes to {tear} the cardboard box.
+946a0f9ae3f1	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	A long {tear} ran down the poster.
+9fde620e3c19	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	I think you'll {tear} the seam if you bend that far.
+a0f4ec480ce0	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Heavy trucks {tear} up the road surface.
+a25f8ba47196	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Heavy rain could {tear} the old tent.
+a3bafd1c2979	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	The storm could {tear} the tent from its stakes.
+abf30e558461	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	Fabric can {tear} if pulled too hard.
+bd62b543105a	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	He {tears} open every package at once.
+c4854a255a7a	tear	rip	anchors	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	She found a {tear} in the curtain.
+e569c64155bd	tear	rip	holdout	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	The cartilage {tears} easily under pressure.
+ea903d15b7fd	tear	rip	holdout	part of speech noun has 4 anchors and 6 holdout rows, below the 14/8 minimum	Patch the {tear} before it gets bigger.
+edc8a6800741	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	He will {tear} the old wallpaper off the wall.
+fe16854b83ca	tear	rip	anchors	part of speech verb has 10 anchors and 14 holdout rows, below the 14/8 minimum	{Tear} carefully along the dotted line.
+f5dbcb701d18	underground	adj	anchors	noise: adv among 22 adj rows	The movement stayed {underground} for years.
+f8d23aaee889	undertaking	noun	anchors	noise: verb among 22 noun rows	{Undertaking} such a project requires patience.
+3214f26b0881	unlearned	adj	anchors	undecided: the judges could not settle the part of speech	The {unlearned} had no voice in the council.
+c57c271fd27f	unlearned	adj	holdout	undecided: the judges could not settle the part of speech	The preacher addressed the {unlearned} and the learned alike.
+105473532c6b	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of old habits takes time.
+28bb58f75ee2	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	No one blamed her for the {upsetting} of the schedule.
+3b6a852547bf	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	Such {upsetting} of routines is hard on children.
+43ec4bb70ebd	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	His constant {upsetting} of the plan annoyed everyone.
+4693f4989428	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of the boat was an accident.
+87a6c612f891	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of tradition shocked the elders.
+9746dc3e72a8	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of the table broke the dishes.
+b22a49e29483	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	She regretted the {upsetting} of her guests.
+b456a1462c45	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of the balance led to war.
+b9cb6865c90c	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	Their {upsetting} of the favorites was the day's story.
+c488b12555d2	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The deliberate {upsetting} of the market was a crime.
+d6aae84fb9c9	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of the cart scattered the apples.
+d9e21c9152e7	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	{Upsetting} of the status quo is his specialty.
+f42faac5bad2	upsetting	noun	anchors	undecided: the judges could not settle the part of speech	The {upsetting} of the order of service puzzled the priest.
+0e317aa4b68f	upsetting	verb	anchors	the lemma is left with fewer than two senses	She was {upsetting} the plans by arriving late.
+11457fc45f02	upsetting	verb	anchors	the lemma is left with fewer than two senses	I worry the story is {upsetting} the children.
+13f98d55b8bb	upsetting	verb	anchors	the lemma is left with fewer than two senses	The team is {upsetting} the favorites this year.
+2dbcbbecc440	upsetting	verb	anchors	the lemma is left with fewer than two senses	Stop {upsetting} your sister.
+2fae84a9d95d	upsetting	verb	anchors	the lemma is left with fewer than two senses	Without {upsetting} anyone, she explained the change.
+41deadf3c1ce	upsetting	verb	anchors	the lemma is left with fewer than two senses	Why is he {upsetting} the guests?
+42c0e03b9a2b	upsetting	verb	anchors	the lemma is left with fewer than two senses	He is {upsetting} the neighbors with his music.
+54e80e525507	upsetting	verb	anchors	the lemma is left with fewer than two senses	Are you {upsetting} the dog again?
+6fa5b9325f36	upsetting	verb	anchors	the lemma is left with fewer than two senses	The waves were {upsetting} the canoe.
+c3950b808233	upsetting	verb	anchors	the lemma is left with fewer than two senses	The noise kept {upsetting} the baby.
+d2e9de72994f	upsetting	verb	anchors	the lemma is left with fewer than two senses	The tide is {upsetting} the small boats.
+dd4c53ee5e03	upsetting	verb	anchors	the lemma is left with fewer than two senses	The news is {upsetting} the whole family.
+ea14c609e376	upsetting	verb	anchors	the lemma is left with fewer than two senses	They kept {upsetting} the balance of the scale.
+f462f407419b	upsetting	verb	anchors	the lemma is left with fewer than two senses	Rumors keep {upsetting} the staff.

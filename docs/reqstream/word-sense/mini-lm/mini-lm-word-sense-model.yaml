@@ -1,0 +1,55 @@
+---
+# MiniLMWordSenseModel unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: MiniLM Requirements
+        sections:
+          - title: MiniLMWordSenseModel Requirements
+            requirements:
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Identity
+                title: >-
+                  MiniLMWordSenseModel shall identify itself as all-MiniLM-L6-v2-int8 with hidden size 384 and use an
+                  uncased vocabulary.
+                tags: [unit]
+                justification: |
+                  The identifier names the model's folder in the repository, on a mirror and in the store, and the
+                  weights were trained for exactly this encoder.
+                tests:
+                  - MiniLMWordSenseModel_Identity_IsPinned
+
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Files
+                title: >-
+                  MiniLMWordSenseModel shall require the files model_int8.onnx and vocab.txt, each pinned by its SHA-256
+                  digest.
+                tags: [unit]
+                justification: |
+                  A model file that does not match the pinned digest could silently change results.
+                tests:
+                  - MiniLMWordSenseModel_Files_ArePinnedBySha256
+                  - MiniLMWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesPinnedFiles
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
+
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Weights
+                title: >-
+                  MiniLMWordSenseModel shall use the trained weights embedded in its assembly and classify the senses
+                  of ambiguous words with them.
+                tags: [unit]
+                justification: |
+                  Embedded weights make the package self-contained apart from the model file.
+                tests:
+                  - MiniLMWordSenseModel_Classify_AmbiguousWord_ReturnsDeterministicResults
+                  - WordSense_Classifier_EndToEnd_ClassifiesRecord
+
+              - id: WordSense-MiniLM-MiniLMWordSenseModel-Options
+                title: >-
+                  MiniLMWordSenseModel shall accept an optional model directory and a maximum sequence length that
+                  defaults to 128.
+                tags: [unit]
+                justification: |
+                  Offline callers supply their own copy of the files; the weights were trained with the default length.
+                tests:
+                  - MiniLMWordSenseModel_Constructor_Defaults_UseStoreAnd128
+                  - MiniLMWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws

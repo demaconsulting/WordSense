@@ -1,0 +1,57 @@
+---
+# ApiMark OTS Software Requirements
+#
+# Requirements for the ApiMark API reference generation tool functionality.
+
+sections:
+  - title: OTS Software Requirements
+    sections:
+      - title: ApiMark Requirements
+        requirements:
+          - id: WordSense-OTS-ApiMark-Generate
+            title: >-
+              ApiMark shall generate gradually-disclosed Markdown API reference documentation
+              for the shipped package from its XML doc comments.
+            justification: |
+              The audience for the WordSense API reference is a coding agent learning how to use
+              the library, which reads far more effectively from compact Markdown organized for
+              gradual disclosure (index, then namespace, type, and member pages) than from one
+              large document. DemaConsulting.ApiMark.MSBuild produces exactly that during the
+              build of the package. FileAssert asserts the real generated index page, which is
+              the only evidence the MSBuild integration actually ran.
+            tags: [ots]
+            tests:
+              - ApiMark_ApiIndex
+
+          - id: WordSense-OTS-ApiMark-RenderExamples
+            title: >-
+              ApiMark shall render documented examples and remarks into the generated API
+              reference.
+            justification: |
+              An agent learning the library needs the worked examples and the shared terminology
+              (lemma, heteronym, pronunciation, margin, abstain), not only signatures. Two facts are
+              asserted because both are load-bearing: an example renders as a fenced code block a
+              reader can copy, and the terminology remarks survive into the generated pages.
+            tags: [ots]
+            tests:
+              - ApiMark_ExampleCodeRendered
+              - ApiMark_TerminologyDocumented
+              - WordSense_XmlDocExamples_Compile
+
+          - id: WordSense-OTS-ApiMark-EnforceDocs
+            title: >-
+              ApiMark shall fail the build when a public API member of the shipped package lacks
+              an XML doc summary.
+            justification: |
+              An API reference is only trustworthy if it is complete. The C# compiler's own
+              documentation warning (CS1591) does not fire on every public member, so ApiMark's
+              documentation-coverage check is configured at severity Error. A green build is then
+              itself evidence of complete coverage; the asserted artifact is the generated page
+              of a member that exists in documented form because enforcement demands it.
+            tags: [ots]
+            tests:
+              - ApiMark_ModelContractDocumented
+              - ApiMark_BasicModelDocumented
+              - ApiMark_OnnxModelDocumented
+              - ApiMark_MiniLMModelDocumented
+              - ApiMark_BertBaseCasedModelDocumented

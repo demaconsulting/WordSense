@@ -1,0 +1,103 @@
+---
+# OnnxWordSenseModel unit requirements (the abstract base class of the encoder models)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: OnnxWordSenseModel Requirements
+            requirements:
+              - id: WordSense-Onnx-OnnxWordSenseModel-Ensure
+                title: >-
+                  OnnxWordSenseModel shall, in its preparation step, verify every model file in a caller-supplied
+                  directory without network access, or otherwise obtain the files into the per-user store, and shall
+                  reject a missing or altered file.
+                tags: [unit]
+                justification: |
+                  A user-supplied directory is as untrusted as a download; a stale, truncated or tampered model would
+                  silently produce wrong senses.
+                tests:
+                  - OnnxWordSenseModel_EnsureModelAsync_ModelDirectory_VerifiesEveryFile
+                  - OnnxWordSenseModel_EnsureModelAsync_MissingFile_Throws
+                  - OnnxWordSenseModel_EnsureModelAsync_AlteredFile_Throws
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Concurrent
+                title: >-
+                  OnnxWordSenseModel shall let concurrent preparation calls share one download and shall allow a
+                  failed preparation to be retried.
+                tags: [unit]
+                justification: |
+                  Services start several tasks at once; they must neither download twice nor be stuck after a
+                  transient network failure.
+                tests:
+                  - OnnxWordSenseModel_EnsureModelAsync_Concurrent_SharesOneDownload
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterFailure_CanBeRetried
+                  - OnnxWordSenseModel_EnsureModelAsync_CancelledCaller_DoesNotCancelSharedWork
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Classify
+                title: >-
+                  OnnxWordSenseModel shall classify with one shared encoder session and one set of weights, shall
+                  ensure its model files lazily on first need (with the default and environment mirror settings,
+                  sharing one ensure between concurrent callers and allowing a failed ensure to be retried), and shall
+                  answer words that need no model (unknown, single-sense, or several senses without trained weights)
+                  without touching model files or the encoder, a word with several senses but no weights getting its
+                  first sense.
+                tags: [unit]
+                justification: |
+                  Loading a session and weights is expensive and must happen once; a model that is never needed must
+                  never be downloaded, and callers should not have to sequence preparation and use themselves.
+                tests:
+                  - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_MultiSenseWordsWithoutWeights_FallBackWithoutModelFiles
+                  - OnnxWordSenseModel_ClassifyAsync_WithoutEnsure_EnsuresLazily
+                  - OnnxWordSenseModel_ClassifyAsync_Concurrent_ShareOneLazyEnsure
+                  - OnnxWordSenseModel_ClassifyAsync_AfterFailedLazyEnsure_CanBeRetried
+                  - OnnxWordSenseModel_ClassifyAsync_MissingDirectory_ThrowsFileNotFound
+                  - OnnxWordSenseModel_ClassifyAsync_Repeated_ShareTheEncoder
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Dispose
+                title: >-
+                  OnnxWordSenseModel shall release its encoder session on disposal, tolerate repeated and concurrent
+                  disposal, defer the release while a classification is running (the running call completes and the
+                  last one to finish releases the session; new calls are refused at once), cancel a download that its
+                  preparation step has in flight (the pending call then throws OperationCanceledException and leaves
+                  no partial file), and throw ObjectDisposedException from EnsureModelAsync and ClassifyAsync after
+                  disposal.
+                tags: [unit]
+                justification: |
+                  The ONNX session holds native memory; its release must be deterministic and must never happen under
+                  a running inference, a disposal must never hang on a running download or classification, and use
+                  after disposal must fail clearly.
+                tests:
+                  - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - OnnxWordSenseModel_Dispose_Concurrent_IsHarmless
+                  - OnnxWordSenseModel_Dispose_DuringEnsure_CancelsDownload
+                  - OnnxWordSenseModel_Dispose_DuringClassification_DefersEncoderRelease
+                  - OnnxWordSenseModel_Dispose_Idle_ReleasesEncoderImmediately
+                  - InFlightTracker_Close_Idle_ReleasesOnce
+                  - InFlightTracker_Close_WithRunningOperations_ReleasesAfterLastExit
+                  - InFlightTracker_Enter_AfterClose_ThrowsObjectDisposed
+                  - InFlightTracker_Close_DoesNotWaitForRunningOperation
+                  - InFlightTracker_ConcurrentEnterExitClose_ReleasesExactlyOnce
+                  - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Identity
+                title: >-
+                  OnnxWordSenseModel shall expose the model identifier and the hidden size of the encoder before any
+                  file is downloaded.
+                tags: [unit]
+                justification: |
+                  Callers and tests need the identity to name folders and size buffers without waiting for a download.
+                tests:
+                  - OnnxWordSenseModel_ModelIdAndHiddenSize_AreAvailableBeforeEnsure
+
+              - id: WordSense-Onnx-OnnxWordSenseModel-Options
+                title: >-
+                  OnnxWordSenseModel shall accept a maximum sequence length from 8 to 512 and reject any other value.
+                tags: [unit]
+                justification: |
+                  The encoders cannot accept sequences outside that range, so a bad value must fail at construction.
+                tests:
+                  - OnnxWordSenseModel_Constructor_SequenceLengthOutOfRange_Throws

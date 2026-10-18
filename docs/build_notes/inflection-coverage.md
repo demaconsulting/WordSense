@@ -1,0 +1,198 @@
+# Inflection Coverage
+
+This chapter records how the word table came to know the inflected forms of every dictionary word, how the result was
+measured on real running text, what is still unknown and why, and what the change costs. The forms are generated
+by the builder; the runtime only reads the table (see the word-table design).
+
+## Method
+
+The builder (`words` command) now expands every word of the Moby-derived dictionary, not only the trained lemmas:
+
+| Rule (`corpus/lexicon/morphology.tsv`) | Forms generated |
+| --- | --- |
+| Plural | `-s`, `-es`, `-ies` of a noun (`ch` words also get `-chs`: `monarchs`; `-o` words get `-os` and `-oes`) |
+| ThirdPerson | the same endings of a verb |
+| PastTense | `-ed` of a verb: dropped `e`, `y` to `ied`, doubled final consonant (`stopped`), `-ic` to `-icked` |
+| Gerund | `-ing` of a verb: `ie` to `ying`, dropped `e`, doubled consonant |
+| Comparative, Superlative | `-er`, `-est` of an adjective, or of a one-syllable adverb, of up to two syllables |
+| Adverb | `-ly`, `-ily`, `-ically`, `-ly` for `-le` of an adjective |
+| Quality | `-ness` (`-iness`) of an adjective of up to three syllables |
+| Agent | `-er` and its plural of a verb of up to three syllables (`swimmer`, `worshippers`) |
+| Manner | `-ingly` of a verb (`smilingly`) |
+| Irregular | `irregular-forms.tsv` and `irregular-ud.tsv` (below) |
+
+A consonant-vowel-consonant ending doubles for one-syllable words and for the words of a short list with a stressed
+last syllable (`begin`, `occur`, `refer`, ...); a final `l` yields both the US and the British form (`traveled`,
+`travelled`).
+
+Rules that keep earlier decisions:
+
+* An existing dictionary word, trained lemma or trained form always wins; a generated form never replaces it
+  (`TryAdd`).
+* A generated form carries the lemma and part of speech of its base. A base that is itself an inflected form (a gerund,
+  a past tense, a plural, a comparative, an adverb) is not inflected again, and a pure irregular form (`went`) takes no
+  regular ending (`wented`).
+* A generated form that belongs to a trained lemma keeps the trained senses when it has several parts of speech; every
+  other generated form is a single-sense entry. The all-or-nothing weight rule is unchanged: the weights of a lemma are
+  looked up by the lemma of the first sense.
+* Lemmas not in the dictionary but trained (names of the corpus) are bases as well.
+
+### Data sources
+
+* `corpus/lexicon/irregular-forms.tsv`: a hand-written closed list of irregular verbs, nouns (including Latin and Greek
+  plurals), comparatives and a few variants, from the general knowledge of the language. The rules `Past`,
+  `Participle`, `Plural`, `Comparative` and `Superlative` suppress the regular form of that kind (no `goed`, no
+  `childs`); `Variant` adds forms and suppresses nothing (`hanged`, `wakened`, `quitted`). A verb with a prefix takes
+  the prefixed forms (`undo`: `undid`, `undone`; `overtake`: `overtook`). A compound whose last part is `man`,
+  `woman`, `child`, `foot`, `tooth`, `mouse` or `louse` and whose stem is a word takes the irregular plural
+  (`workmen`, `oarsmen`).
+* `corpus/lexicon/irregular-ud.tsv`: derived with `ud-irregular` from the *train and dev* parts of UD English-EWT
+  (CC BY-SA 4.0; the test part is never read): form and lemma pairs seen at least twice with an inflectional feature,
+  whose lemma is in the dictionary with a matching part of speech, whose form is not already a word, is not
+  regular and is
+  more than two edits away from every regular form. After the dictionary and the misspelling filter this
+  contributes a single entry (`mins`). The treebank adds essentially nothing beyond the dictionary and the hand list;
+  the other candidates were misspellings, tokenization artifacts or wrong lemmas.
+* `corpus/lexicon/additions.tsv`: a hand-curated list (word, parts of speech, evidence) of ordinary words that the
+  lower-case dictionary lacks or lists with too few parts of speech: days, months, nationalities and countries
+  (capitalized in text, so absent from the lower-case list), British spellings of words the dictionary has in US
+  spelling (`colour`, `neighbour`, `judgement`), derivations that the rules do not cover (`-ical`, `-ation`, `-ess`)
+  and gaps found by the coverage runs (`wry`, `reminder`, `gypsy`, ...). Added words are bases of the rules.
+
+## The coverage command
+
+`dotnet run --project tools/WordSense.Builder -- coverage --text DIR [--top N] [--output FILE]` builds the word table
+in memory and reads every `*.txt` file of `DIR`. A Project Gutenberg file is cut to the lines between `*** START` and
+`*** END`. Tokens are matched by `[A-Za-z]+(?:['’][A-Za-z]+)*` and looked up in lower case. Tokens with an apostrophe
+(`don't`, `Mary's`) are unknown by design and counted apart. An unknown word is *name-like* when it is written with
+a capital letter at least four times as often as without one; the others are *other* unknowns (misspellings, archaic
+words, fragments). The report lists both kinds, most frequent first.
+
+The sample is the 86 Project Gutenberg texts in `tools/real-text/cache` (13,203,652 tokens; not committed).
+
+## Result
+
+| Measure | Before (HEAD) | After |
+| --- | ---: | ---: |
+| Tokens known | 12,166,305 (92.14%) | 12,661,136 (**95.89%**) |
+| Known without apostrophe tokens (165,817) | 93.32% | **97.11%** |
+| Known words (types seen) | 44,021 | 52,399 |
+| Name-like unknown tokens | 348,754 in 15,931 words | 325,942 in 15,672 words |
+| Other unknown tokens | 522,776 in 23,334 words | 50,757 in 15,215 words |
+
+The unknown tokens that remain are 1.26% apostrophe tokens (by design), 2.47% names and 0.38% other words. Of the
+original 522,776 other tokens, 90% are now known; the rest are the classes below. The coverage of 97.11% without the
+apostrophe tokens is the practical ceiling for names (2.47% of the tokens) plus misspellings.
+
+### The 200 most frequent remaining other unknown words
+
+The top 200 account for 17,820 of the 50,755 other tokens (35%). The long tail (15,000 words) is mostly single
+occurrences of names and fragments. None of the top 200 is an ordinary English word in current use. The lists are
+misspellings and foreign or fragmentary words by nature, so they are excluded from the spell check.
+
+<!-- cspell:disable -->
+
+* **Name fragments (Russian patronymics and surnames split by the hyphen or the line end of the source, French
+  names):** th (2,049; also fragment of `th'`), sha, nardier, zov, nya, sov, ville, ud, lokhov, tya, nski, ne, lov,
+  tha, teau, uf, von, na, es, tych, nie, pell, nsk, ylovna, les, ull, rya, vlovna, tel, ev, ra, tikki, sar, trievna,
+  tski, pinay, ponine, khon, lys, kov, rov, se, khov, nardiers, blanche, val, evich, shka, che, hed, odule, rovo,
+  porte, tre, oo, uvre, novich, ach, nd, novna, vich, tri, dnoe, medi, vski, lna, tino, vere, esaul, roi, rdino, ry,
+  ouse, khin, vill, mlin, ulla, vay, topsy, ses, lors
+* **Hyphen-compound fragments of a word that is not a word alone:** natured (365), haired, naturedly, humouredly,
+  nardiers, chested, browed
+* **French words in English text:** monseigneur, procureur, pardieu, que, qui, je, vous, cher, au, demi, pre, ois,
+  non, mes, notre, chambre, annum, foi, une, bon, bien, parbleu, revoir, altro, mais, tete, jeune, senora, porte
+* **Dialect and eye dialect (apostrophe dropped or speech written as heard):** knowed, goin, nothin, twas, wos, yer,
+  agin, heerd, niver, hev, tink, vith, creetur, natur, umble, drownded, twould, mornin, yo, doin, bein, somethin,
+  lookin, rayther, sich, wuz, gettin, gwyne, hee, theer, sah, thinkin, anythin, nothink, vell, yourn, giv, noo, ole,
+  ooman, doan, blowed, growed, fust, makin, summat, talkin, wid, naow, vun, catched, haf, uz, thot, upo, wisht, jist,
+  sayin, sez, feyther, wery, weel
+* **Contractions written without an apostrophe:** wouldnt, didnt, thats, theyre, dont, couldnt, hes, ve, im
+* **Archaic second and third person verb forms:** knowest, seest, thinkest, goest
+* **Misspellings and scanning artifacts:** ull, ning, ud, ven, hme, ing, dem, demd, demmit, damme, turvy, vs, hee
+
+<!-- cspell:enable -->
+
+Words found by the coverage runs that were valid English (here `thoughts`, `sorrowful`, `reconciliation`,
+`neighboring`, `waked`, `meditative`, `wondrous`, `stragglers`, `swimmers`, `statesmen`, `tranquility`,
+`smartness`, `monarchs`,
+`quitted`, `jews`, `scandalous`, the days, months and nationalities) were fixed by a rule or by `additions.tsv`; the
+other unknown words that are not in the top 200 follow the same classes.
+
+What the rules deliberately do not generate: dialect forms (`knowed`), archaic verb endings (`-est`, `-eth`),
+contractions, and `-ity`, `-ous`, `-ive`, `-ation`, `-ment` and `-able` derivations (the dictionary has the common ones;
+the few frequent misses are in `additions.tsv`). Adding a rule for each would also add many non-words.
+
+## Cost
+
+The numbers are the `evaluate` output (BelowNormal priority, one run after the other, the same machine); the first
+use is the time of the first `WordLexicon.Words` access in the process and the working-set growth it causes.
+
+| Measure | Before (HEAD 4d4ecb1) | After |
+| --- | ---: | ---: |
+| Words in `words.bin` | not recorded | 338,070 (see note) |
+| `words.bin` size | 1,535,821 bytes | 1,937,657 bytes (+26%) |
+| Word table first use, time | 118 ms | 170 - 201 ms (three runs, measured with an earlier 1,979,885-byte blob) |
+| Word table first use, memory | 42.9 MiB | 59.7 MiB (+16.8 MiB, same earlier blob) |
+| `DemaConsulting.WordSense` package (`dotnet pack`, final blob) | 4,718,111 bytes | 5,912,835 bytes (+25%, see note) |
+| Weights, Basic table, accuracy | unchanged | unchanged (below) |
+
+Note: the 338,070 words are 143,992 dictionary entries plus the additions; the rest are generated and trained
+forms. The package figure is the size of the `.nupkg` made from the final `words.bin`; the before figure was taken
+from the earlier measurement and not repeated. `words.bin` is an embedded resource of the assembly and the package
+carries one assembly per target framework (net8.0, net9.0, net10.0, 1.97 MB each after compression), so every byte of
+the blob costs three times in the package: the +402 KB of the blob are about +1.2 MB in the package. A single shared
+copy would remove two of the three.
+
+### Does generic compression help?
+
+Not measured as a change, only to report (nothing is adopted). A one-off measurement at BelowNormal priority, with
+`Brotli` and `GZip` at the smallest size, of the blobs and of the decompress time (the minimum of five runs):
+
+| Blob | Size | Brotli | GZip | Decompress Brotli / GZip |
+| --- | ---: | ---: | ---: | ---: |
+| `words.bin` (earlier 1,979,885-byte build) | 1,979,885 | 1,979,893 | 1,961,750 | 1.3 ms / 6.1 ms |
+| `basic.bin` | 85,237 | 85,242 | 85,285 | 0.1 ms / 0.1 ms |
+| MiniLM `weights.bin` | 1,156,080 | 1,156,085 | 1,156,453 | 1.1 ms / 0.8 ms |
+| BERT `weights.bin` | 2,294,954 | 2,294,959 | 2,295,677 | 1.5 ms / 1.1 ms |
+
+The ratio of about 100% is expected: these blobs are already compressed. `WordsBlobWriter` and `BasicTablesWriter`
+write the payload through a `BrotliStream` at `SmallestSize` (after a string table, a table of shared details and
+7-bit varints), so a second pass has nothing left to remove and adds a few bytes of framing. (A repeat of the
+measurement on the final 1,937,657-byte `words.bin`, with the .NET stream defaults of this machine, gave
+1,888,205 bytes with Brotli and 1,913,238 with GZip, 2.6% and 1.3% less; this is within the variation of the encoder
+settings and not a structural gain.) The lever for a smaller blob is not another generic compression pass but a
+restructured format: front-coding of the sorted keys (a key shares a long prefix with its neighbour) and the
+(base, rule) representation of generated forms from the mitigation (2) below, which stores the many regular forms as
+a rule instead of a string.
+
+Known imperfections of the generated forms, left as they are: the `Quality`, `Agent` and `Manner` rules generate
+some non-words (a bounded syllable count and a few exclusions limit them, but, for example, `-ness` of an adjective
+that no one derives); a capitalized-only base (a nationality or language such as `french`, `dutch`) no longer gets a
+plural (the regular `-chs` form of `french`) because `irregular-forms.tsv` suppresses it, but the data does not mark
+every proper-noun-like base, so other proper-noun-like words of the dictionary can still gain one.
+
+The growth is moderate in size and noticeable in memory and first-use time, because the runtime materializes one
+dictionary entry per word. The growth is proportional to the number of generated forms (roughly 190,000).
+
+Proposed mitigations (not adopted, for a decision): (1) read the table lazily with a binary search over the sorted blob
+instead of materializing a `Dictionary` of arrays (no first-use cost, a small per-lookup cost); (2) store a generated
+form as a (base index, rule) pair and share the sense arrays, which also shrinks the blob; (3) drop the `Quality`, `Agent`
+and `Manner` rules (derivations; the share of the forms and of the coverage gain was not measured separately) if the
+footprint matters more than those derivations; (4) keep one blob per language level (`words.bin` for lemmas and
+common forms, a second file for the
+derivations) and load the second only on a miss.
+
+## Accuracy
+
+The three models were evaluated again on the holdout and the real-text sets after the change.
+
+| Model | Holdout before | Holdout after | Real-text before | Real-text after |
+| --- | ---: | ---: | ---: | ---: |
+| MiniLM | 96.87% | 96.87% | 92.60% | 92.60% |
+| BertBaseCased | 99.05% | 99.05% | 97.39% | 97.39% |
+| Basic | 89.02% | 89.04% | 85.49% | 85.63% |
+
+No model regressed. The models answer a generated single-sense form directly with confidence 1, and the evaluation
+sets only contain forms of trained lemmas, so the sets cannot show the effect on the new words; the coverage figures
+above do.

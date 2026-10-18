@@ -1,0 +1,107 @@
+---
+# WordSenseContracts unit requirements (IWordSenseModel, MirrorOptions, WordSense,
+# WordDetails and PartOfSpeech)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Core Requirements
+        sections:
+          - title: WordSenseContracts Requirements
+            requirements:
+              - id: WordSense-Core-WordSenseContracts-Classify
+                title: >-
+                  IWordSenseModel.ClassifyAsync shall classify a running text given as a list of words joined by
+                  single spaces,
+                  with punctuation as elements of their own, and return an array parallel to the input.
+                tags: [unit]
+                justification: |
+                  Callers tokenize themselves; a fixed text convention gives every model the same context and lets
+                  callers map each result to its input word by index.
+                tests:
+                  - WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface
+                  - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
+                  - BasicWordSenseModel_ClassifyAsync_NullWords_Throws
+                  - BasicWordSenseModel_ClassifyAsync_Cancelled_Throws
+                  - BasicClassifier_ClassifyAsync_ResultsAreParallelToInput
+                  - BasicClassifier_ClassifyAsync_NullWords_Throws
+                  - BasicClassifier_ClassifyAsync_NullElement_Throws
+                  - BasicClassifier_ClassifyAsync_Cancelled_Throws
+
+              - id: WordSense-Core-WordSenseContracts-Result
+                title: >-
+                  WordSense shall be a value type carrying the word as given, the chosen details (or none) and a
+                  confidence, with value equality.
+                tags: [unit]
+                justification: |
+                  A value result is cheap to produce for every word, and equality makes results easy to compare and
+                  test.
+                tests:
+                  - WordSenseContracts_WordSense_SameValues_AreEqual
+                  - WordSenseContracts_WordSense_NoDetails_HasNullDetails
+
+              - id: WordSense-Core-WordSenseContracts-Model
+                title: >-
+                  IWordSenseModel shall provide an asynchronous preparation step and a classification method that
+                  ensures the model lazily on first need, and shall be disposable so that the model owns the lifetime
+                  of its resources, with idempotent thread-safe disposal after which both methods throw
+                  ObjectDisposedException.
+                tags: [unit]
+                justification: |
+                  A single contract serves models with no files and models that download files; the model
+                  owns the encoder session and downloader state, so one disposal point serves every model without
+                  casts, and callers never need to know which model they hold.
+                tests:
+                  - WordSenseContracts_IWordSenseModel_IsDisposable
+                  - WordSenseContracts_IWordSenseModel_TestDouble_IsUsableThroughTheInterface
+                  - BasicWordSenseModel_ClassifyAsync_ReturnsParallelResults
+                  - BasicWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - BasicWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
+                  - BasicWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_Dispose_CalledTwice_IsHarmless
+                  - OnnxWordSenseModel_ClassifyAsync_AfterDispose_ThrowsObjectDisposed
+                  - OnnxWordSenseModel_EnsureModelAsync_AfterDispose_ThrowsObjectDisposed
+
+              - id: WordSense-Core-WordSenseContracts-Mirror
+                title: >-
+                  MirrorOptions shall be an immutable sealed record describing a mirror base address, optional
+                  credentials or bearer token, store location and timeout, and shall never reveal secrets when
+                  converted to text.
+                tags: [unit]
+                justification: |
+                  Logs and exception messages must not leak passwords or tokens, and an immutable value is safe to
+                  share between models.
+                tests:
+                  - WordSenseContracts_MirrorOptions_ToString_RedactsSecrets
+                  - WordSenseContracts_MirrorOptions_ToString_HidesUserInfoQueryAndFragment
+                  - WordSenseContracts_MirrorOptions_ToString_NeverPrintsTokenOrCredentials
+                  - WordSenseContracts_MirrorOptions_IsSealedRecord
+                  - WordSenseContracts_MirrorOptions_Defaults_AreNull
+
+              - id: WordSense-Core-WordSenseContracts-Details
+                title: >-
+                  WordDetails shall describe one sense by lemma, part of speech, optional meaning and optional
+                  respelling, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
+                  determiner and auxiliary.
+                tags: [unit]
+                justification: |
+                  Callers (for example a text-to-speech front end) need the part of speech first, then the meaning and
+                  respelling that fix the pronunciation of a heteronym. The articles and possessives (the, a, his) are
+                  among the most frequent words of English and fit none of the eight traditional values; modal and
+                  primary auxiliaries (will, can, is, has) are told apart from the content verb and noun senses by
+                  a trailing auxiliary sense.
+                tests:
+                  - WordSenseContracts_WordDetails_Construct_ExposesMembers
+                  - WordSenseContracts_WordDetails_SameValues_AreEqual
+                  - WordSenseContracts_PartOfSpeech_Values_AreTheTenClasses
+                  - WordsBlob_Read_DeterminerSense_IsAccepted
+                  - WordsBlob_Read_AuxiliarySense_IsAccepted
+                  - WordLexicon_Words_Auxiliaries_HaveTrailingAuxiliarySense
+
+              - id: WordSense-Core-WordSenseContracts-Independent
+                title: The core assembly shall reference no ONNX Runtime, weights or vector library.
+                tags: [unit]
+                justification: |
+                  Keeps the core package free of native and model dependencies.
+                tests:
+                  - WordSenseContracts_CoreAssembly_HasNoOnnxOrWeightsReferences

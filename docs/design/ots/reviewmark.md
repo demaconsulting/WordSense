@@ -24,8 +24,10 @@ than relying on manual sign-off.
 ReviewMark is invoked as a `dotnet tool` from three places: `lint.ps1` runs
 `dotnet reviewmark --lint` as an early-detection configuration check, and
 `.github/workflows/build.yaml` runs ReviewMark to generate
-`docs/code_review_plan/generated/plan.md` and `docs/code_review_report/generated/report.md`, and
-to enforce review currency against the evidence store published on the repository's `reviews`
-branch. It is a stateless CLI invocation — each run reads `.reviewmark.yaml` and the evidence
+`docs/code_review_plan/generated/plan.md` and `docs/code_review_report/generated/report.md`. The
+workflow does not yet pass `--enforce` (a TODO in the workflow notes that it awaits the evidence PDFs and index on the
+repository's `reviews`
+branch); `--enforce` is exercised through ReviewMark's self-validation only. It is a stateless CLI invocation — each
+run reads `.reviewmark.yaml` and the evidence
 source, produces its output or exit code, and exits; there is no initialization, configuration
 object, or disposal step.

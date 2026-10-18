@@ -1,0 +1,187 @@
+lemma	sense	pos	group	arpabet	notes	batch	tier	status
+contact	contact-noun	noun	stress-first	K AA1 N T AE2 K T	forms: contacts; CMUdict	1	A	accepted
+contact	contact-verb	verb	stress-last	K AH0 N T AE1 K T	forms: contacted, contacting; Wiktionary variant, ear check	1	A	accepted
+impact	impact-noun	noun	stress-first	IH1 M P AE0 K T	forms: impacts; CMUdict	1	A	accepted
+impact	impact-verb	verb	stress-last	IH2 M P AE1 K T	forms: impacted, impacting; CMUdict	1	A	accepted
+address	address-noun	noun	stress-first	AE1 D R EH2 S	forms: addresses; CMUdict; US speakers also say the noun stress-last	1	A	accepted
+address	address-verb	verb	stress-last	AH0 D R EH1 S	forms: addressed, addressing; CMUdict	1	A	accepted
+transfer	transfer-noun	noun	stress-first	T R AE1 N S F ER0	forms: transfers; CMUdict	1	A	accepted
+transfer	transfer-verb	verb	stress-last	T R AE0 N S F ER1	forms: transferred, transferring; CMUdict	1	A	accepted
+update	update-noun	noun	stress-first	AH1 P D EY2 T	forms: updates; CMUdict	1	A	accepted
+update	update-verb	verb	stress-last	AH0 P D EY1 T	forms: updated, updating; CMUdict	1	A	accepted
+protest	protest-noun	noun	stress-first	P R OW1 T EH2 S T	forms: protests; CMUdict	1	A	accepted
+protest	protest-verb	verb	stress-last	P R AH0 T EH1 S T	forms: protested, protesting; CMUdict	1	A	accepted
+collect	collect-verb	verb	gather	K AH0 L EH1 K T	forms: collects, collected, collecting; CMUdict	1	A	accepted
+collect	collect-prayer	noun	prayer	K AA1 L IH0 K T	forms: collects; liturgical prayer; Wiktionary; rare, needs authored sentences	1	A	accepted
+export	export-noun	noun	stress-first	EH1 K S P AO0 R T	forms: exports; CMUdict	1	A	accepted
+export	export-verb	verb	stress-last	IH0 K S P AO1 R T	forms: exported, exporting; CMUdict	1	A	accepted
+accent	accent-noun	noun	stress-first	AE1 K S EH2 N T	forms: accents; CMUdict	1	A	accepted
+accent	accent-verb	verb	stress-last	AH0 K S EH1 N T	forms: accented, accenting; CMUdict variant; ear check	1	A	accepted
+upgrade	upgrade-noun	noun	stress-first	AH1 P G R EY2 D	forms: upgrades; CMUdict	1	A	accepted
+upgrade	upgrade-verb	verb	stress-last	AH0 P G R EY1 D	forms: upgraded, upgrading; CMUdict	1	A	accepted
+second	second-ordinal-adj	adj	ordinal	S EH1 K AH0 N D	forms: seconds; CMUdict	1	A	accepted
+second	second-noun	noun	ordinal	S EH1 K AH0 N D	forms: seconds; unit of time and the next-after-first; CMUdict	1	A	accepted
+second	second-support	verb	ordinal	S EH1 K AH0 N D	forms: seconded, seconding; second a motion; CMUdict	1	A	accepted
+second	second-transfer	verb	secondment	S AH0 K AA1 N D	forms: seconded, seconding; second an officer (secondment); Wiktionary; rare	1	A	accepted
+detail	detail-noun	noun	stress-first	D IY1 T EY0 L	forms: details; CMUdict	1	A	accepted
+detail	detail-verb	verb	stress-last	D IH0 T EY1 L	forms: detailed, detailing; CMUdict	1	A	accepted
+combat	combat-noun	noun	stress-first	K AA1 M B AE0 T	forms: combats; CMUdict	1	A	accepted
+combat	combat-verb	verb	stress-last	K AH0 M B AE1 T	forms: combated, combating; CMUdict	1	A	accepted
+resign	resign-quit	verb	quit	R IH0 Z AY1 N	forms: resigns, resigned, resigning; CMUdict	2	A	accepted
+resign	resign-sign-again	verb	sign-again	R IY0 S AY1 N	forms: re-signs, re-signed; hyphenated in text; CMUdict third variant; harvest risk	2	A	accepted
+reset	reset-noun	noun	stress-first	R IY1 S EH0 T	forms: resets; CMUdict	2	A	accepted
+reset	reset-verb	verb	stress-last	R IY0 S EH1 T	forms: resets, resetting; CMUdict	2	A	accepted
+intern	intern-noun	noun	trainee	IH1 N T ER0 N	forms: interns; CMUdict	2	A	accepted
+intern	intern-train	verb	trainee	IH1 N T ER0 N	forms: interns, interned, interning; work as an intern; CMUdict	2	A	accepted
+intern	intern-confine	verb	confine	IH0 N T ER1 N	forms: interns, interned, interning; detain; Wiktionary	2	A	accepted
+recreate	recreate-refresh	verb	refresh	R EH1 K R IY0 EY2 T	forms: recreates, recreated, recreating; take recreation; CMUdict	2	A	accepted
+recreate	recreate-again	verb	again	R IY0 K R IY0 EY1 T	forms: recreates, recreated, recreating; make again; CMUdict	2	A	accepted
+perfume	perfume-noun	noun	stress-first	P ER1 F Y UW0 M	forms: perfumes; Wiktionary noun stress	2	A	accepted
+perfume	perfume-verb	verb	stress-last	P ER0 F Y UW1 M	forms: perfumed, perfuming; CMUdict	2	A	accepted
+dictate	dictate-noun	noun	stress-first	D IH1 K T EY2 T	forms: dictates; CMUdict	2	A	accepted
+dictate	dictate-verb	verb	stress-last	D IH0 K T EY1 T	forms: dictated, dictating; CMUdict	2	A	accepted
+recess	recess-noun	noun	stress-first	R IY1 S EH0 S	forms: recesses; CMUdict	2	A	accepted
+recess	recess-verb	verb	stress-last	R IH0 S EH1 S	forms: recessed, recessing; CMUdict	2	A	accepted
+complex	complex-adj	adj	adj	K AH0 M P L EH1 K S	forms: complexes; CMUdict	2	A	accepted
+complex	complex-noun	noun	noun	K AA1 M P L EH0 K S	forms: complexes; CMUdict	2	A	accepted
+frequent	frequent-adj	adj	adj	F R IY1 K W AH0 N T	forms: frequents; CMUdict	2	A	accepted
+frequent	frequent-verb	verb	verb	F R IH0 K W EH1 N T	forms: frequents, frequented, frequenting; Wiktionary	2	A	accepted
+ally	ally-noun	noun	stress-first	AE1 L AY0	forms: allies; CMUdict	2	A	accepted
+ally	ally-verb	verb	stress-last	AH0 L AY1	forms: allies, allied, allying; CMUdict	2	A	accepted
+traverse	traverse-noun	noun	stress-first	T R AE1 V ER0 S	forms: traverses; CMUdict	2	A	accepted
+traverse	traverse-verb	verb	stress-last	T R AH0 V ER1 S	forms: traverses, traversed, traversing; CMUdict	2	A	accepted
+prefix	prefix-noun	noun	stress-first	P R IY1 F IH0 K S	forms: prefixes; CMUdict	2	A	accepted
+prefix	prefix-verb	verb	stress-last	P R EH0 F IH1 K S	forms: prefixes, prefixed, prefixing; Wiktionary variant, ear check	2	A	accepted
+suffix	suffix-noun	noun	stress-first	S AH1 F IH0 K S	forms: suffixes; CMUdict	2	A	accepted
+suffix	suffix-verb	verb	stress-last	S AH0 F IH1 K S	forms: suffixes, suffixed, suffixing; Wiktionary variant, ear check	2	A	accepted
+discord	discord-noun	noun	stress-first	D IH1 S K AO0 R D	forms: discords; CMUdict	3	A	accepted
+discord	discord-verb	verb	stress-last	D IH0 S K AO1 R D	forms: discorded; rare verb; needs authored sentences	3	A	accepted
+recap	recap-noun	noun	stress-first	R IY1 K AE2 P	forms: recaps; CMUdict	3	A	accepted
+recap	recap-verb	verb	stress-last	R IH0 K AE1 P	forms: recaps, recapped, recapping; CMUdict	3	A	accepted
+advert	advert-noun	noun	stress-first	AE1 D V ER0 T	forms: adverts; British advertisement; CMUdict	3	A	accepted
+advert	advert-verb	verb	stress-last	AE0 D V ER1 T	forms: adverts, adverted; refer to; formal; Wiktionary	3	A	accepted
+alloy	alloy-noun	noun	stress-first	AE1 L OY2	forms: alloys; CMUdict	3	A	accepted
+alloy	alloy-verb	verb	stress-last	AH0 L OY1	forms: alloys, alloyed, alloying; Wiktionary	3	A	accepted
+primer	primer-paint	noun	paint	P R AY1 M ER0	forms: primers; undercoat, explosive cap; CMUdict	3	A	accepted
+primer	primer-textbook	noun	textbook	P R IH1 M ER0	forms: primers; introductory book; US Wiktionary; UK says PRAY-mer	3	A	accepted
+intermediate	intermediate-adj	adj	short-ending	IH2 N T ER0 M IY1 D IY0 IH0 T	forms: intermediates; CMUdict	3	A	accepted
+intermediate	intermediate-noun	noun	short-ending	IH2 N T ER0 M IY1 D IY0 IH0 T	forms: intermediates; Wiktionary also IY0 AH0 T	3	A	accepted
+intermediate	intermediate-verb	verb	long-ending	IH2 N T ER0 M IY1 D IY0 EY2 T	forms: intermediates, intermediated; rare verb; needs authored sentences	3	A	accepted
+wicked	wicked-evil	adj	evil	W IH1 K AH0 D	forms: wickedly; CMUdict	3	A	accepted
+wicked	wicked-wick	verb	wick	W IH1 K T	forms: wicks; past of wick (wicked away moisture); Wiktionary; rare	3	A	accepted
+tier	tier-noun	noun	row	T IY1 R	forms: tiers; row or rank; CMUdict spelling	3	A	accepted
+tier	tier-verb	verb	row	T IY1 R	forms: tiered; arrange in tiers	3	A	accepted
+tier	tier-one-who-ties	noun	ties	T AY1 ER0	forms: tiers; one who ties; Wiktionary; rare, needs authored sentences	3	A	accepted
+tower	tower-noun	noun	structure	T AW1 ER0	forms: towers; CMUdict	3	A	accepted
+tower	tower-verb	verb	structure	T AW1 ER0	forms: towers, towered, towering; CMUdict	3	A	accepted
+tower	tower-one-who-tows	noun	tows	T OW1 ER0	forms: towers; one who tows; Wiktionary; rare, needs authored sentences	3	A	accepted
+shower	shower-noun	noun	rain	SH AW1 ER0	forms: showers; CMUdict	3	A	accepted
+shower	shower-verb	verb	rain	SH AW1 ER0	forms: showers, showered, showering; CMUdict	3	A	accepted
+shower	shower-one-who-shows	noun	shows	SH OW1 ER0	forms: showers; one who shows; Wiktionary; rare, needs authored sentences	3	A	accepted
+sewer	sewer-drain	noun	drain	S UW1 ER0	forms: sewers; CMUdict	3	A	accepted
+sewer	sewer-seamstress	noun	sews	S OW1 ER0	forms: sewers; one who sews; Wiktionary; rare, needs authored sentences	3	A	accepted
+forearm	forearm-noun	noun	stress-first	F AO1 R AA2 R M	forms: forearms; CMUdict	3	A	accepted
+forearm	forearm-verb	verb	stress-last	F AO0 R AA1 R M	forms: forearms, forearmed; forewarned is forearmed; CMUdict	3	A	accepted
+alum	alum-mineral	noun	mineral	AE1 L AH0 M	forms: alums; CMUdict	3	A	accepted
+alum	alum-graduate	noun	graduate	AH0 L AH1 M	forms: alums; clipping of alumnus; CMUdict	3	A	accepted
+supposed	supposed-adj	adj	voiced	S AH0 P OW1 Z D	forms: supposedly; assumed; CMUdict	4	B	accepted
+supposed	supposed-past	verb	voiced	S AH0 P OW1 Z D	forms: supposes, supposing; past tense; CMUdict	4	B	accepted
+supposed	supposed-to	adj	unvoiced	S AH0 P OW1 S T	supposed to (obliged, expected); Wiktionary; ear check	4	B	accepted
+blessed	blessed-adj	adj	two-syllable	B L EH1 S AH0 D	holy, fortunate; Wiktionary; CMUdict has only B L EH1 S T	4	B	accepted
+blessed	blessed-past	verb	one-syllable	B L EH1 S T	forms: blesses, blessing; past tense; CMUdict	4	B	accepted
+august	august-adj	adj	adj	AO0 G AH1 S T	majestic; CMUdict variant	4	B	accepted
+august	august-month	noun	month	AO1 G AH0 S T	the month; CMUdict	4	B	accepted
+defense	defense-general	noun	general	D IH0 F EH1 N S	forms: defenses; CMUdict	4	B	accepted
+defense	defense-sports	noun	sports	D IY1 F EH2 N S	team sport usage in US English; Wiktionary labels it often US; ear check	4	B	accepted
+bases	bases-base	noun	base	B EY1 S AH0 Z	plural of base; CMUdict	4	B	accepted
+bases	bases-verb	verb	base	B EY1 S AH0 Z	third person of base; CMUdict	4	B	accepted
+bases	bases-basis	noun	basis	B EY1 S IY0 Z	plural of basis; CMUdict variant	4	B	accepted
+costume	costume-noun	noun	stress-first	K AA1 S T UW0 M	forms: costumes; CMUdict	4	B	accepted
+costume	costume-verb	verb	stress-last	K AA0 S T UW1 M	forms: costumed, costuming; CMUdict variant; ear check	4	B	accepted
+romance	romance-noun	noun	stress-first	R OW1 M AE0 N S	forms: romances; CMUdict	4	B	accepted
+romance	romance-verb	verb	stress-last	R OW0 M AE1 N S	forms: romanced, romancing; CMUdict	4	B	accepted
+submarine	submarine-noun	noun	stress-first	S AH1 B M ER0 IY2 N	forms: submarines; CMUdict	4	B	accepted
+submarine	submarine-adj	adj	stress-last	S AH2 B M ER0 IY1 N	underwater (a submarine cable); CMUdict variant; ear check	4	B	accepted
+excerpt	excerpt-noun	noun	stress-first	EH1 K S ER0 P T	forms: excerpts; CMUdict	4	B	accepted
+excerpt	excerpt-verb	verb	stress-last	EH0 K S ER1 P T	forms: excerpts, excerpted, excerpting; CMUdict	4	B	accepted
+annex	annex-noun	noun	stress-first	AE1 N EH2 K S	forms: annexes; building extension; CMUdict	4	B	accepted
+annex	annex-verb	verb	stress-last	AH0 N EH1 K S	forms: annexes, annexed, annexing; CMUdict	4	B	accepted
+slough	slough-skin	noun	shed	S L AH1 F	forms: sloughs; shed skin; CMUdict	4	B	accepted
+slough	slough-shed	verb	shed	S L AH1 F	forms: sloughs, sloughed, sloughing; CMUdict	4	B	accepted
+slough	slough-swamp	noun	swamp	S L AW1	forms: sloughs; swamp or mire; Wiktionary	4	B	accepted
+tarry	tarry-linger	verb	linger	T EH1 R IY0	forms: tarries, tarried, tarrying; CMUdict	4	B	accepted
+tarry	tarry-tar	adj	tar	T AA1 R IY0	covered with tar; Wiktionary	4	B	accepted
+underscore	underscore-noun	noun	stress-first	AH1 N D ER0 S K AO2 R	forms: underscores; the _ character; Wiktionary	4	B	accepted
+underscore	underscore-verb	verb	stress-last	AH2 N D ER0 S K AO1 R	forms: underscores, underscored, underscoring; CMUdict	4	B	accepted
+gallant	gallant-brave	adj	brave	G AE1 L AH0 N T	forms: gallantly; CMUdict	5	B	accepted
+gallant	gallant-courtly	adj	courtly	G AH0 L AE1 N T	attentive to women; Wiktionary	5	B	accepted
+gallant	gallant-suitor	noun	courtly	G AH0 L AE1 N T	forms: gallants; a suitor; Wiktionary	5	B	accepted
+mow	mow-cut	verb	cut	M OW1	forms: mows, mowed, mowing, mown; CMUdict	5	B	accepted
+mow	mow-haymow	noun	hay	M AW1	forms: mows; a hay loft; Wiktionary; rare	5	B	accepted
+multiply	multiply-verb	verb	verb	M AH1 L T AH0 P L AY2	forms: multiplies, multiplied, multiplying; CMUdict	5	B	accepted
+multiply	multiply-adverb	adv	adverb	M AH1 L T AH0 P L IY0	in many ways; Wiktionary; rare	5	B	accepted
+reprimand	reprimand-noun	noun	stress-first	R EH1 P R AH0 M AE2 N D	forms: reprimands; CMUdict	5	B	accepted
+reprimand	reprimand-verb	verb	stress-last	R EH0 P R IH0 M AA1 N D	forms: reprimands, reprimanded, reprimanding; Wiktionary variant, ear check	5	B	accepted
+retrofit	retrofit-noun	noun	stress-first	R EH1 T R OW0 F IH2 T	forms: retrofits; CMUdict	5	B	accepted
+retrofit	retrofit-verb	verb	stress-last	R EH2 T R OW0 F IH1 T	forms: retrofits, retrofitted, retrofitting; Wiktionary variant, ear check	5	B	accepted
+egress	egress-noun	noun	stress-first	IY1 G R EH0 S	forms: egresses; exit; Wiktionary	5	B	accepted
+egress	egress-verb	verb	stress-last	IH0 G R EH1 S	forms: egresses, egressed; CMUdict	5	B	accepted
+agape	agape-open	adj	open	AH0 G EY1 P	wide open; CMUdict	5	B	accepted
+agape	agape-love	noun	love	AH0 G AA1 P EY2	Christian love; Wiktionary	5	B	accepted
+predate	predate-earlier	verb	earlier	P R IY0 D EY1 T	forms: predates, predated, predating; occur earlier; CMUdict	5	B	accepted
+predate	predate-prey	verb	prey	P R AH0 D EY1 T	forms: predates, predated; prey upon; Wiktionary	5	B	accepted
+ellipses	ellipses-ellipse	noun	ellipse	IH0 L IH1 P S IH0 Z	plural of ellipse; Wiktionary	5	B	accepted
+ellipses	ellipses-ellipsis	noun	ellipsis	IH0 L IH1 P S IY0 Z	plural of ellipsis; Wiktionary	5	B	accepted
+adduct	adduct-noun	noun	stress-first	AE1 D AH0 K T	forms: adducts; chemistry; CMUdict	5	B	accepted
+adduct	adduct-verb	verb	stress-last	AH0 D AH1 K T	forms: adducts, adducted; physiology; Wiktionary	5	B	accepted
+forbear	forbear-verb	verb	stress-last	F AO0 R B EH1 ER0	forms: forbears, forbore, forborne; abstain; Wiktionary	5	B	accepted
+forbear	forbear-ancestor	noun	stress-first	F AO1 R B EH0 ER0	forms: forbears; ancestor, spelling of forebear; Wiktionary	5	B	accepted
+access					no sense-linked split beyond free stress variation	-	A	rejected
+gas					noun and verb share /gaes/; /gaez/ is regional only	-	A	rejected
+supply					adverb supply (SUH-plee) is a different word; verb split is not stress-linked in CMUdict	-	A	rejected
+email					variant stress, not sense-linked	-	A	rejected
+finance					three free variants in CMUdict, not sense-linked	-	A	rejected
+mouse					/maus/ vs /mauz/ not sense-linked in CMUdict or Wiktionary	-	A	rejected
+default					free stress variation, same sense	-	A	rejected
+automobile					free stress variation, same sense	-	A	rejected
+syringe					free variation, not sense-linked	-	A	rejected
+levant					not a sense-linked split; proper noun or rare verb	-	A	rejected
+outcry					free stress variation	-	A	rejected
+redress					rare noun stress split; low real-text value	-	A	rejected
+overcast					free stress variation	-	A	rejected
+mandate					free stress variation	-	A	rejected
+put					uncorroborated	-	B	rejected
+number					uncorroborated	-	B	rejected
+research					free stress variation	-	B	rejected
+fine					uncorroborated	-	B	rejected
+sin					uncorroborated	-	B	rejected
+debut					free stress variation	-	B	rejected
+concrete					free stress variation; verb is rare	-	B	rejected
+sake					drink is spelled sake with accent; CMUdict has only one reading	-	B	rejected
+retreat					uncorroborated	-	B	rejected
+forbidden					adjective and participle share pronunciation	-	B	rejected
+advertised					inflected form of advertise, no split	-	B	rejected
+uprising					free stress variation	-	B	rejected
+periodic					uncorroborated	-	B	rejected
+colon					uncorroborated	-	B	rejected
+forecasts					inflected form	-	B	rejected
+lima					proper noun / orthographic split	-	B	rejected
+chassis					dialect variation	-	B	rejected
+devise					not a clear sense-linked pronunciation split (noun devise is a legal term)	-	B	rejected
+chauffeur					free stress variation	-	B	rejected
+detour					free stress variation	-	B	rejected
+starboard					dialect variation	-	B	rejected
+surcharge					free stress variation	-	B	rejected
+coop					dialect variation	-	B	rejected
+whoop					dialect variation	-	B	rejected
+belay					rare nautical stress variation	-	B	rejected
+swathe					spelling variation	-	B	rejected
+quintuple					free variation	-	B	rejected
+annotating					inflected form	-	B	rejected
+lactate					rare noun stress; chemistry only	-	B	rejected
+patronize					dialect variation	-	B	rejected
+ravel					rare noun stress; ravel and unravel are synonyms	-	B	rejected
+concord					free variation	-	B	rejected
+baptized					inflected form	-	B	rejected
+unionize					uncorroborated	-	B	rejected
+transpose					US has one pronunciation; the second reading is not sense-linked	-	B	rejected

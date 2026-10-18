@@ -15,7 +15,7 @@ VersionMark is verified by two complementary layers of evidence. First, the CI p
 `versionmark --validate --results *.trx` in each build job, exercising VersionMark's built-in
 self-validation suite and recording results for ReqStream.
 
-Second, each CI job runs `versionmark --capture` to collect tool-version JSON files, and the
+Second, the quality, build and build-docs jobs run `versionmark --capture` to collect tool-version JSON files, and the
 build-docs job runs `versionmark --publish` to produce
 `docs/build_notes/generated/versions.md`. This file is included in the Build Notes document
 compiled by Pandoc. If VersionMark failed to produce the versions document, the Build Notes
@@ -30,7 +30,7 @@ at any step is evidence that VersionMark did not execute correctly.
 
 **Expected**: Exits 0 and captures version data for every tool.
 
-**Requirement coverage**: `Template-OTS-VersionMark`.
+**Requirement coverage**: `WordSense-OTS-VersionMark`.
 
 #### VersionMark_GeneratesMarkdownReport
 
@@ -38,7 +38,7 @@ at any step is evidence that VersionMark did not execute correctly.
 
 **Expected**: Exits 0 and produces a non-empty versions markdown file.
 
-**Requirement coverage**: `Template-OTS-VersionMark`.
+**Requirement coverage**: `WordSense-OTS-VersionMark`.
 
 #### VersionMark_LintPassesForValidConfig
 
@@ -47,7 +47,7 @@ config.
 
 **Expected**: Exits 0 and reports no errors.
 
-**Requirement coverage**: `Template-OTS-VersionMark-Lint`.
+**Requirement coverage**: `WordSense-OTS-VersionMark-Lint`.
 
 #### VersionMark_LintReportsErrorsForInvalidConfig
 
@@ -56,10 +56,10 @@ deliberate errors.
 
 **Expected**: Correctly identifies and reports the configuration errors.
 
-**Requirement coverage**: `Template-OTS-VersionMark-Lint`.
+**Requirement coverage**: `WordSense-OTS-VersionMark-Lint`.
 
 ### Requirements Coverage
 
-- **`Template-OTS-VersionMark`**: VersionMark_CapturesVersions, VersionMark_GeneratesMarkdownReport
-- **`Template-OTS-VersionMark-Lint`**: VersionMark_LintPassesForValidConfig,
+- **`WordSense-OTS-VersionMark`**: VersionMark_CapturesVersions, VersionMark_GeneratesMarkdownReport
+- **`WordSense-OTS-VersionMark-Lint`**: VersionMark_LintPassesForValidConfig,
   VersionMark_LintReportsErrorsForInvalidConfig

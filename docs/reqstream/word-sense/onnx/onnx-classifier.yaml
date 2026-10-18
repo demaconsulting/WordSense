@@ -1,0 +1,109 @@
+---
+# OnnxClassifier unit requirements
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Onnx Requirements
+        sections:
+          - title: OnnxClassifier Requirements
+            requirements:
+              - id: WordSense-Onnx-OnnxClassifier-Lookup
+                title: >-
+                  OnnxClassifier shall look a word up without regard to its case, answer a word with no lexicon entry
+                  with no details and confidence 0, and answer a word with exactly one sense (a determiner such as
+                  the, for example) with that sense and confidence 1, without running the encoder.
+                tags: [unit]
+                justification: |
+                  Words that need no context must cost no inference and must be answered identically in every model,
+                  whatever their capitalization.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_UnknownWord_ReturnsNoDetails
+                  - OnnxClassifier_ClassifyAsync_SingleSenseWord_ReturnsEntryWithFullConfidence
+                  - OnnxClassifier_ClassifyAsync_CapitalizedWord_ResolvesLikeLowerCase
+                  - OnnxWordSenseModel_ClassifyAsync_LexiconOnlyWords_NeverTouchesModelFiles
+
+              - id: WordSense-Onnx-OnnxClassifier-Encode
+                title: >-
+                  OnnxClassifier shall read the words as one running text joined by single spaces, and shall run the
+                  encoder only when at least one word has several senses and intact lemma weights.
+                tags: [unit]
+                justification: |
+                  Encoding is the expensive step; a text without ambiguous words must not pay for it.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_NoAmbiguousWords_DoesNotEncode
+                  - OnnxClassifier_ClassifyAsync_AmbiguousWords_UseTheEncoder
+                  - OnnxClassifier_ClassifyAsync_OnlyAmbiguousWordsAreEncoded
+
+              - id: WordSense-Onnx-OnnxClassifier-Candidates
+                title: >-
+                  OnnxClassifier shall rank only the senses that the looked-up word itself has, not every sense of its
+                  lemma.
+                tags: [unit]
+                justification: |
+                  An inflected form can have fewer senses than its lemma; answering with a sense the form cannot have
+                  would be wrong.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_FormWithFewerSenses_RanksOnlyItsOwnSenses
+
+              - id: WordSense-Onnx-OnnxClassifier-Confidence
+                title: >-
+                  OnnxClassifier shall report a confidence from 0 to 1 that grows monotonically with the margin
+                  between the best and the second-best score relative to the lemma's abstain margin.
+                tags: [unit]
+                justification: |
+                  A monotonic confidence lets a caller choose a threshold; the abstain margin ties it to the measured
+                  behavior of each lemma.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_LargerMargin_GivesHigherConfidence
+                  - OnnxClassifier_ClassifyAsync_ConfidenceIsWithinZeroAndOne
+
+              - id: WordSense-Onnx-OnnxClassifier-BestCandidate
+                title: >-
+                  OnnxClassifier shall return the best-scoring candidate as the details even when its confidence is
+                  low.
+                tags: [unit]
+                justification: |
+                  Callers that accept low-confidence answers must not lose the model's best guess.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_LowMargin_ReturnsBestCandidateWithLowConfidence
+
+              - id: WordSense-Onnx-OnnxClassifier-MissingWeights
+                title: >-
+                  OnnxClassifier shall answer a word with several senses whose lemma has no usable trained weights with
+                  its first lexicon sense and a confidence of one over the number of its senses, and shall rank only
+                  the trained senses of a lemma that the lexicon extends with further parts of speech.
+                tags: [unit]
+                justification: |
+                  A word must never vanish because a model was not trained for it: the first lexicon sense is the most
+                  frequent part of speech, and the low confidence tells the caller that the answer is a guess.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense
+                  - OnnxClassifier_ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored
+                  - OnnxClassifier_HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse
+                  - OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked
+                  - OnnxClassifier_Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly
+
+              - id: WordSense-Onnx-OnnxClassifier-NoVector
+                title: >-
+                  OnnxClassifier shall answer a word that has trained weights but no usable encoder vector with no
+                  details and confidence 0.
+                tags: [unit]
+                justification: |
+                  Without evidence for a word that a trained classifier should decide, a guess would look like a
+                  trained answer; the caller must be able to see that no decision was made.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_DimensionMismatch_Abstains
+
+              - id: WordSense-Onnx-OnnxClassifier-Validation
+                title: >-
+                  OnnxClassifier shall return an empty array for an empty list and results parallel to the input, and
+                  shall reject a null list, a null element and a cancelled call.
+                tags: [unit]
+                justification: |
+                  Misuse must fail fast with a documented exception, and results must map onto the input by index.
+                tests:
+                  - OnnxClassifier_ClassifyAsync_EmptyList_ReturnsEmpty
+                  - OnnxClassifier_ClassifyAsync_NullWords_Throws
+                  - OnnxClassifier_ClassifyAsync_NullElement_Throws
+                  - OnnxClassifier_ClassifyAsync_Cancelled_Throws

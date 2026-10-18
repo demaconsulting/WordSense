@@ -33,26 +33,45 @@ results containing both passing and failing outcomes.
 
 **Expected**: Writes a TRX results file with correctly classified pass and fail entries.
 
-**Requirement coverage**: `Template-OTS-FileAssert`.
+**Requirement coverage**: `WordSense-OTS-FileAssert`.
 
-#### FileAssert_Exists
+#### FileAssert_File
 
 **Scenario**: FileAssert self-validation exercises a test configuration using a glob pattern to
 assert file existence.
 
 **Expected**: Passes when the specified file is present.
 
-**Requirement coverage**: `Template-OTS-FileAssert`.
+**Requirement coverage**: `WordSense-OTS-FileAssert`.
 
-#### FileAssert_Contains
+#### FileAssert_Text
 
 **Scenario**: FileAssert self-validation exercises a test configuration using a `contains` assertion
-to verify file content.
+to verify text file content.
 
 **Expected**: Passes when the specified content is present.
 
-**Requirement coverage**: `Template-OTS-FileAssert`.
+**Requirement coverage**: `WordSense-OTS-FileAssert`.
+
+#### FileAssert_Html
+
+**Scenario**: FileAssert self-validation exercises a test configuration asserting the content of an
+HTML document.
+
+**Expected**: Passes when the HTML document satisfies the configured assertions.
+
+**Requirement coverage**: `WordSense-OTS-FileAssert`.
+
+#### FileAssert_Pdf
+
+**Scenario**: FileAssert self-validation exercises a test configuration asserting the metadata,
+page count, and rendered text of a PDF document.
+
+**Expected**: Passes when the PDF document satisfies the configured assertions.
+
+**Requirement coverage**: `WordSense-OTS-FileAssert`.
 
 ### Requirements Coverage
 
-- **`Template-OTS-FileAssert`**: FileAssert_Results, FileAssert_Exists, FileAssert_Contains
+- **`WordSense-OTS-FileAssert`**: FileAssert_Results, FileAssert_File, FileAssert_Text,
+  FileAssert_Html, FileAssert_Pdf

@@ -1,0 +1,39 @@
+---
+# BasicTables unit requirements (the embedded statistics of the Basic model)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        sections:
+          - title: BasicTables Requirements
+            requirements:
+              - id: WordSense-Basic-BasicTables-Load
+                title: >-
+                  BasicTables shall read the transition statistics, the tabled words with their closed-class masks,
+                  the suffix statistics and the per-lemma cue statistics from the compressed table, and shall reject
+                  a table with a wrong signature, no compression, missing data, extra data or unordered entries as
+                  invalid data.
+                tags: [unit]
+                justification: |
+                  A damaged or foreign table must fail loudly at load time instead of producing wrong answers.
+                tests:
+                  - BasicTables_Load_ToyTable_ReadsContent
+                  - BasicTables_Load_Transitions_AreDistributions
+                  - BasicTables_FindSuffix_KnownAndUnknown
+                  - BasicTables_Load_BadMagic_Throws
+                  - BasicTables_Load_NotCompressed_Throws
+                  - BasicTables_Load_Truncated_Throws
+                  - BasicTables_Load_TrailingBytes_Throws
+                  - BasicTables_Load_UnorderedHashes_Throws
+                  - FeatureRef_Hash_PrefixAndDeterminism
+
+              - id: WordSense-Basic-BasicTables-Embedded
+                title: >-
+                  BasicTables shall provide a default instance read from the table embedded in the package, without
+                  files or network access.
+                tags: [unit]
+                justification: |
+                  The package must work with nothing but its own assembly.
+                tests:
+                  - BasicTables_Default_LoadsEmbeddedTable

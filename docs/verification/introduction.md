@@ -1,12 +1,13 @@
 # Introduction
 
-This document provides the verification design for the Template DotNet Library, a .NET library
-demonstrating best practices for DEMA Consulting DotNet Libraries.
+This document provides the verification design for the WordSense, a .NET library
+that tells the part of speech and pronunciation of ambiguous English words in context and the part of speech of
+common English words from an embedded dictionary.
 
 ## Purpose
 
 The purpose of this document is to serve as the verification design entry point and document how
-requirements will be tested across all software items in the Template DotNet Library system. This
+requirements will be tested across all software items in the WordSense system. This
 documentation enables formal review by mapping every requirement to named test scenarios, supports
 compliance auditing by providing clear traceability from requirements through verification design
 to tests, and ensures test completeness can be assessed without reading implementation code.
@@ -20,14 +21,28 @@ This document is intended for:
 
 ## Scope
 
-This document covers the verification design for the Template DotNet Library system and its
+This document covers the verification design for the WordSense system and its
 constituent software items, specifically:
 
-- **TemplateDotNetLibrary (System)** — The complete .NET library template system
-- **Demo (Unit)** — Demonstration greeting class providing example functionality
+- **WordSense (System)** — The five layered packages of WordSense, which the units and subsystems below make up
+- **WordSenseBuilder** (non-shipped tool Unit) of the system, which generates the embedded lexicon, weights and appendix
+- **Core**, **Basic**, **Onnx**, **MiniLM** and **BertBaseCased** (Subsystems) — the packages `DemaConsulting.WordSense`,
+  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.BertBaseCased`
+- **WordLexicon** and **WordSenseContracts** (Units) of the Core subsystem
+- **BasicWordSenseModel**, **BasicClassifier**, **BasicTables**, **PosTagger**, **CueModel** and **SenseFusion**
+  (Units) of
+  the Basic subsystem
+- **OnnxWordSenseModel**, **OnnxClassifier**, **OnnxEncoder**, **WordPieceTokenizer**, **ModelDownloader**,
+  **DownloadMirror** and **LemmaWeights** (Units) of the Onnx subsystem
+- **MiniLMWordSenseModel** (Unit) of the MiniLM subsystem
+- **BertBaseCasedWordSenseModel** (Unit) of the BertBaseCased subsystem
+
+The OnnxRuntime OTS runtime dependency of the Onnx package is also covered.
 
 The following OTS items are also covered:
 
+- **ApiMark** — API documentation generation tool
 - **BuildMark** — build-notes documentation tool
 - **FileAssert** — document assertion tool
 - **Pandoc** — Markdown-to-HTML conversion tool
@@ -35,14 +50,14 @@ The following OTS items are also covered:
 - **ReviewMark** — file review enforcement tool
 - **SarifMark** — SARIF report conversion tool
 - **SonarMark** — SonarCloud quality report tool
+- **SysML2Tools** — architecture model tool
 - **VersionMark** — tool-version documentation tool
 - **WeasyPrint** — HTML-to-PDF conversion tool
 - **xUnit** — unit-testing framework
 
 This verification documentation covers the same software items as the design documentation.
 
-Version applicability: This verification design applies to all versions of the Template DotNet
-Library.
+Version applicability: This verification design applies to all versions of the WordSense.
 
 The following topics are explicitly excluded from this verification documentation:
 
@@ -57,8 +72,11 @@ trees. In-house items have artifacts in these parallel locations:
 - Requirements: `docs/reqstream/{system}/.../{item}.yaml` (kebab-case)
 - Design docs: `docs/design/{system}/.../{item}.md` (kebab-case)
 - Verification design: `docs/verification/{system}/.../{item}.md` (kebab-case)
-- Source code: `src/{System}/.../{Item}.cs` (PascalCase for C#)
-- Tests: `test/{System}.Tests/.../{Item}Tests.cs` (PascalCase for C#)
+- Source code: `src/{Package}/.../{Item}.cs` (PascalCase for C#; the package folders are `DemaConsulting.WordSense`,
+  `DemaConsulting.WordSense.Basic`, `DemaConsulting.WordSense.Onnx`, `DemaConsulting.WordSense.MiniLM` and
+  `DemaConsulting.WordSense.BertBaseCased`, and the builder is `tools/WordSense.Builder`)
+- Tests: `test/{Package}.Tests/.../{Item}Tests.cs` (PascalCase for C#; the builder tests are in
+  `test/WordSense.Builder.Tests`)
 
 OTS items have parallel artifacts in:
 
@@ -69,6 +87,6 @@ Review-sets: defined in `.reviewmark.yaml`
 
 ## References
 
-- Template DotNet Library User Guide — the compiled User Guide document for this repository.
-- Template DotNet Library Repository — the TemplateDotNetLibrary source repository hosted on
+- WordSense User Guide — the compiled User Guide document for this repository.
+- WordSense Repository — the WordSense source repository hosted on
   GitHub.

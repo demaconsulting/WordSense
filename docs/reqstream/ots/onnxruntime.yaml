@@ -1,0 +1,23 @@
+---
+# ONNX Runtime OTS Software Requirements
+#
+# Requirements for the Microsoft.ML.OnnxRuntime runtime dependency.
+
+sections:
+  - title: OTS Software Requirements
+    sections:
+      - title: ONNX Runtime Requirements
+        requirements:
+          - id: WordSense-OTS-OnnxRuntime-Inference
+            title: ONNX Runtime shall execute the pinned quantized transformer model and return its hidden states.
+            justification: |
+              Microsoft.ML.OnnxRuntime is the only third-party runtime dependency of the Onnx package, and through
+              it of the MiniLM and BertBaseCased packages (the core and Basic packages have none). It loads the
+              int8 encoder model and computes the contextual embeddings used for the sense decision.
+              A passing end-to-end test proves the runtime loads the model and produces usable output
+              on the platform under test.
+            tags: [ots]
+            tests:
+              - OnnxEncoder_EncodeAsync_ValidTargets_ReturnsDeterministicVectors
+              - WordSense_Classifier_EndToEnd_ClassifiesRecord
+              - BertBaseCased_Classifier_EndToEnd_ClassifiesRecord

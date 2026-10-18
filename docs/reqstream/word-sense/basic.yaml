@@ -1,0 +1,110 @@
+---
+# Basic subsystem requirements (the package DemaConsulting.WordSense.Basic)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: Basic Requirements
+        requirements:
+          - id: WordSense-Basic-Classify
+            title: >-
+              The Basic subsystem shall classify words from the core lexicon statistically: an unknown word without
+              details, a word with one sense with full confidence, and an ambiguous word with the sense that the
+              sentence context makes most probable.
+            tags: [subsystem]
+            justification: |
+              A lexicon lookup decides most words; the part of speech and the context cues in the sentence decide the
+              rest without a model.
+            children:
+              - WordSense-Basic-BasicWordSenseModel-Classify
+              - WordSense-Basic-BasicWordSenseModel-Dispose
+              - WordSense-Basic-BasicClassifier-Unknown
+              - WordSense-Basic-BasicClassifier-SingleSense
+              - WordSense-Basic-BasicClassifier-Resolve
+              - WordSense-Basic-BasicClassifier-Segments
+              - WordSense-Basic-BasicClassifier-Normalization
+              - WordSense-Basic-BasicClassifier-Validation
+            tests:
+              - BasicClassifier_ClassifyAsync_Context_ChoosesPartOfSpeech
+
+          - id: WordSense-Basic-Tagger
+            title: >-
+              The Basic subsystem shall estimate, for every word of a sentence segment, the probability of each part
+              of speech from the whole segment, using embedded statistics only.
+            tags: [subsystem]
+            justification: |
+              The part of speech of an ambiguous word depends on the words around it on both sides, so the estimate
+              must weigh the whole segment rather than a fixed window.
+            children:
+              - WordSense-Basic-BasicTables-Load
+              - WordSense-Basic-PosTagger-Posteriors
+              - WordSense-Basic-PosTagger-UnknownWords
+            tests:
+              - PosTagger_Posteriors_AfterDeterminer_PrefersNoun
+
+          - id: WordSense-Basic-Cues
+            title: >-
+              The Basic subsystem shall separate senses that share a part of speech by scoring context cues taken
+              from the words around the target against per-lemma statistics.
+            tags: [subsystem]
+            justification: |
+              Part of speech alone cannot choose between meanings of one part of speech; the neighboring words can.
+            children:
+              - WordSense-Basic-CueModel-Extract
+              - WordSense-Basic-CueModel-Score
+            tests:
+              - BasicClassifier_ClassifyAsync_SamePartOfSpeech_UsesCues
+
+          - id: WordSense-Basic-Fusion
+            title: >-
+              The Basic subsystem shall combine the part-of-speech probabilities and the cue scores into one answer
+              for every ambiguous word, with a confidence that is the probability of the chosen sense, greater than 0
+              and at most 1.
+            tags: [subsystem]
+            justification: |
+              Callers apply their own confidence policy; an answer with an honest probability for every ambiguous word
+              lets them do so without a separate abstention path.
+            children:
+              - WordSense-Basic-SenseFusion-Fuse
+              - WordSense-Basic-SenseFusion-Stable
+              - WordSense-Basic-BasicClassifier-Resolve
+            tests:
+              - BasicClassifier_ClassifyAsync_AmbiguousWord_AlwaysAnswersWithProbability
+
+          - id: WordSense-Basic-Deterministic
+            title: >-
+              The Basic subsystem shall give the same results for the same input on every call and every thread.
+            tags: [subsystem]
+            justification: |
+              Reproducible results make behavior testable and allow one classifier to serve concurrent callers.
+            children:
+              - WordSense-Basic-BasicClassifier-Deterministic
+              - WordSense-Basic-PosTagger-Deterministic
+              - WordSense-Basic-BasicWordSenseModel-Classify
+            tests:
+              - BasicClassifier_ClassifyAsync_IsDeterministicAndThreadSafe
+
+          - id: WordSense-Basic-Offline
+            title: >-
+              The Basic subsystem shall use only statistics embedded in the package, and need no model file, no
+              network access and no native runtime, and its preparation step shall complete immediately.
+            tags: [subsystem]
+            justification: |
+              The package exists for callers that cannot or will not download or ship a model.
+            children:
+              - WordSense-Basic-BasicWordSenseModel-NoFiles
+              - WordSense-Basic-BasicTables-Load
+              - WordSense-Basic-BasicTables-Embedded
+            tests:
+              - BasicWordSenseModel_EnsureModelAsync_CompletesWithoutFiles
+              - BasicTables_Default_LoadsEmbeddedTable
+
+          - id: WordSense-Basic-Packaging
+            title: >-
+              The Basic package shall ship its XML documentation with a namespace summary and verified examples, its
+              NuGet metadata, and a README.
+            tags: [subsystem]
+            justification: |
+              Consumers learn the API from the package; verified examples cannot go stale.
+            tests:
+              - BasicWordSense_XmlDocExamples_Compile

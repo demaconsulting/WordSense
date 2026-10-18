@@ -14,8 +14,15 @@ needs-review:
   - "docs/verification/**/*.md"  # Verification documentation files
   - "docs/user_guide/**/*.md"    # User guide documentation
   - "docs/sysml2/**/*.sysml"     # SysML2 architecture model
+  - "tools/real-text/**"          # Real-text harvest tooling
+  - "corpus/provenance/**"        # Provenance of the real sentences
+  - "corpus/realtext/**"          # Real-text evaluation sentences
+  - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
+  - "corpus/ud/**"                # Universal Dependencies tag and word-tag counts for the Basic model
+  - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
+  - "!**/generated/**"            # Exclude generated documentation
   - "!node_modules/**"           # Exclude npm dependencies
   - "!**/.venv/**"                # Exclude Python virtual environment
 
@@ -25,7 +32,7 @@ needs-review:
 # and an index.json before enforcement (--enforce flag) can be enabled in the pipeline.
 evidence-source:
   type: url
-  location: https://raw.githubusercontent.com/demaconsulting/TemplateDotNetLibrary/reviews/index.json
+  location: https://raw.githubusercontent.com/demaconsulting/WordSense/reviews/index.json
 
 # Global context shown to every reviewer for orientation (not fingerprinted).
 context:
@@ -42,10 +49,16 @@ reviews:
     paths:
       - "README.md"                                                 # project readme
       - "docs/user_guide/**/*.md"                                   # user guide
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSample.cs"       # README sample code, compiled and run
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # keeps README code and output in sync
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/DocSampleText.cs"      # text helpers of the doc-check tests
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSample.cs"       # Basic README sample, compiled and run
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicReadmeSampleTests.cs"  # keeps Basic README in sync
+      - "test/DemaConsulting.WordSense.Basic.Tests/ModelTableReadmeTests.cs"  # keeps README model table in sync
 
   # Decomposition Review (only one per repository)
   - id: Decomposition
-    title: Review that TemplateDotNetLibrary Decomposition Addresses the Stated Purpose
+    title: Review that WordSense Decomposition Addresses the Stated Purpose
     context:
       - "README.md"
       - "docs/user_guide/**/*.md"
@@ -54,65 +67,402 @@ reviews:
       - "docs/design/introduction.md"                               # design introduction
       - "docs/sysml2/**/*.sysml"                                    # SysML2 model (authoritative structure)
 
-  # TemplateDotNetLibrary-Architecture Review (one per system)
-  - id: TemplateDotNetLibrary-Architecture
-    title: Review that TemplateDotNetLibrary Architecture Satisfies Requirements
+  # WordSense-Architecture Review (one per system)
+  - id: WordSense-Architecture
+    title: Review that WordSense Architecture Satisfies Requirements
     context:
       - "README.md"
       - "docs/user_guide/**/*.md"
     paths:
-      - "docs/reqstream/template-dot-net-library.yaml"                      # system requirements
-      - "docs/design/introduction.md"                                           # design introduction
-      - "docs/design/template-dot-net-library.md"                               # system design
-      - "docs/verification/introduction.md"                                    # verification introduction
-      - "docs/verification/template-dot-net-library.md"                        # system verification
-      - "test/DemaConsulting.TemplateDotNetLibrary.Tests/TemplateDotNetLibraryTests.cs"  # integration tests
+      - "docs/reqstream/word-sense.yaml"                      # system requirements
+      - "docs/design/introduction.md"                         # design introduction
+      - "docs/design/word-sense.md"                           # system design
+      - "docs/verification/introduction.md"                   # verification introduction
+      - "docs/verification/word-sense.md"                     # system verification
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ReadmeSampleTests.cs"  # end-to-end sample test
+      - "test/DemaConsulting.WordSense.Onnx.Tests/ModelAssets.cs"          # integration test helper
 
-  # TemplateDotNetLibrary-Design Review (one per system)
-  - id: TemplateDotNetLibrary-Design
-    title: Review that TemplateDotNetLibrary Design is Consistent and Complete
+  # WordSense-Design Review (one per system)
+  - id: WordSense-Design
+    title: Review that WordSense Design is Consistent and Complete
     context:
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/template-dot-net-library/platform-requirements.yaml"  # platform requirements
-      - "docs/design/introduction.md"                                       # design introduction
-      - "docs/design/template-dot-net-library.md"                           # system design
-      - "docs/design/template-dot-net-library/**/*.md"                      # all system design documents
-      - "docs/design/ots.md"                                                # OTS overview
+      - "docs/reqstream/word-sense/platform-requirements.yaml"  # platform requirements
+      - "docs/design/introduction.md"                           # design introduction
+      - "docs/design/word-sense.md"                             # system design
+      - "docs/design/word-sense/*.md"                           # subsystem and builder design documents
+      - "docs/design/word-sense/*/*.md"                         # unit design documents
+      - "docs/design/ots.md"                                    # OTS overview
 
-  # TemplateDotNetLibrary-Verification Review (one per system)
-  - id: TemplateDotNetLibrary-Verification
-    title: Review that TemplateDotNetLibrary Verification is Consistent and Complete
+  # WordSense-Verification Review (one per system)
+  - id: WordSense-Verification
+    title: Review that WordSense Verification is Consistent and Complete
     context:
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/verification/introduction.md"                                 # verification introduction
-      - "docs/verification/template-dot-net-library.md"                     # system verification
-      - "docs/verification/template-dot-net-library/**/*.md"               # all verification documents
-      - "docs/verification/ots.md"                                          # OTS overview
+      - "docs/verification/introduction.md"                     # verification introduction
+      - "docs/verification/word-sense.md"                       # system verification
+      - "docs/verification/word-sense/*.md"                     # subsystem and builder verification documents
+      - "docs/verification/word-sense/*/*.md"                   # unit verification documents
+      - "docs/verification/ots.md"                              # OTS overview
 
-  # TemplateDotNetLibrary-AllRequirements Review (one per system)
-  - id: TemplateDotNetLibrary-AllRequirements
-    title: Review that All TemplateDotNetLibrary Requirements are Complete
+  # WordSense-AllRequirements Review (one per system)
+  - id: WordSense-AllRequirements
+    title: Review that All WordSense Requirements are Complete
     context:
-      - "docs/design/template-dot-net-library.md"
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "requirements.yaml"                                                 # root requirements file
-      - "docs/reqstream/**/*.yaml"                                          # all requirements files
+      - "requirements.yaml"                                     # root requirements file
+      - "docs/reqstream/**/*.yaml"                              # all requirements files
 
-  # TemplateDotNetLibrary-Demo Review (one per unit)
-  - id: TemplateDotNetLibrary-Demo
-    title: Review that TemplateDotNetLibrary Demo Implementation is Correct
+  # WordSense-WordSenseBuilder Review (one per unit)
+  - id: WordSense-WordSenseBuilder
+    title: Review that WordSense WordSenseBuilder Implementation is Correct
     context:
-      - "docs/design/template-dot-net-library.md"
-      - "docs/reqstream/template-dot-net-library.yaml"
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
     paths:
-      - "docs/reqstream/template-dot-net-library/demo.yaml"                 # unit requirements
-      - "docs/design/template-dot-net-library/demo.md"                     # unit design
-      - "docs/verification/template-dot-net-library/demo.md"               # unit verification
-      - "src/DemaConsulting.TemplateDotNetLibrary/Demo.cs"                  # unit source
-      - "test/DemaConsulting.TemplateDotNetLibrary.Tests/DemoTests.cs"      # unit tests
+      - "docs/reqstream/word-sense/word-sense-builder.yaml"
+      - "docs/design/word-sense/word-sense-builder.md"
+      - "docs/verification/word-sense/word-sense-builder.md"
+      - "tools/WordSense.Builder/**/*.cs"
+      - "!tools/WordSense.Builder/**/obj/**"
+      - "!tools/WordSense.Builder/**/bin/**"
+      - "test/WordSense.Builder.Tests/**/*.cs"
+      - "!test/WordSense.Builder.Tests/**/obj/**"
+      - "!test/WordSense.Builder.Tests/**/bin/**"
+      - "tools/real-text/**"
+      - "!tools/real-text/cache/**"
+      - "corpus/provenance/**"
+      - "corpus/realtext/**"
+      - "corpus/lexicon/**"
+      - "corpus/ud/**"
+
+  # WordSense-Core Review (one per subsystem)
+  - id: WordSense-Core
+    title: Review that WordSense Core Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/core.yaml"
+      - "docs/design/word-sense/core.md"
+      - "docs/verification/word-sense/core.md"
+      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/ReferenceTokenizerTests.cs"
+
+  # WordSense-Core-WordLexicon Review (one per unit)
+  - id: WordSense-Core-WordLexicon
+    title: Review that WordSense WordLexicon Implementation is Correct
+    context:
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
+    paths:
+      - "docs/reqstream/word-sense/core/word-lexicon.yaml"
+      - "docs/design/word-sense/core/word-lexicon.md"
+      - "docs/verification/word-sense/core/word-lexicon.md"
+      - "src/DemaConsulting.WordSense/WordLexicon.cs"
+      - "src/DemaConsulting.WordSense/WordsBlob.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
+      - "test/DemaConsulting.WordSense.Tests/WordsBlobTests.cs"
+
+  # WordSense-Core-WordSenseContracts Review (one per unit)
+  - id: WordSense-Core-WordSenseContracts
+    title: Review that WordSense WordSenseContracts Implementation is Correct
+    context:
+      - "docs/design/word-sense/core.md"
+      - "docs/reqstream/word-sense/core.yaml"
+    paths:
+      - "docs/reqstream/word-sense/core/word-sense-contracts.yaml"
+      - "docs/design/word-sense/core/word-sense-contracts.md"
+      - "docs/verification/word-sense/core/word-sense-contracts.md"
+      - "src/DemaConsulting.WordSense/IWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense/WordDetails.cs"
+      - "test/DemaConsulting.WordSense.Tests/ContractsTests.cs"
+
+  # WordSense-Basic Review (one per subsystem)
+  - id: WordSense-Basic
+    title: Review that WordSense Basic Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic.yaml"
+      - "docs/design/word-sense/basic.md"
+      - "docs/verification/word-sense/basic.md"
+      - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/TestTables.cs"
+
+  # WordSense-Basic-BasicWordSenseModel Review (one per unit)
+  - id: WordSense-Basic-BasicWordSenseModel
+    title: Review that WordSense BasicWordSenseModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/basic-word-sense-model.yaml"
+      - "docs/design/word-sense/basic/basic-word-sense-model.md"
+      - "docs/verification/word-sense/basic/basic-word-sense-model.md"
+      - "src/DemaConsulting.WordSense.Basic/BasicWordSenseModel.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicWordSenseModelTests.cs"
+
+  # WordSense-Basic-BasicClassifier Review (one per unit)
+  - id: WordSense-Basic-BasicClassifier
+    title: Review that WordSense BasicClassifier Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/basic-classifier.yaml"
+      - "docs/design/word-sense/basic/basic-classifier.md"
+      - "docs/verification/word-sense/basic/basic-classifier.md"
+      - "src/DemaConsulting.WordSense.Basic/BasicClassifier.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicClassifierTests.cs"
+
+  # WordSense-Basic-BasicTables Review (one per unit)
+  - id: WordSense-Basic-BasicTables
+    title: Review that WordSense BasicTables Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/basic-tables.yaml"
+      - "docs/design/word-sense/basic/basic-tables.md"
+      - "docs/verification/word-sense/basic/basic-tables.md"
+      - "src/DemaConsulting.WordSense.Basic/BasicTables.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/BasicTablesTests.cs"
+
+  # WordSense-Basic-PosTagger Review (one per unit)
+  - id: WordSense-Basic-PosTagger
+    title: Review that WordSense PosTagger Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/pos-tagger.yaml"
+      - "docs/design/word-sense/basic/pos-tagger.md"
+      - "docs/verification/word-sense/basic/pos-tagger.md"
+      - "src/DemaConsulting.WordSense.Basic/PosTagger.cs"
+      - "src/DemaConsulting.WordSense.Basic/PosTag.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/PosTaggerTests.cs"
+
+  # WordSense-Basic-CueModel Review (one per unit)
+  - id: WordSense-Basic-CueModel
+    title: Review that WordSense CueModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/cue-model.yaml"
+      - "docs/design/word-sense/basic/cue-model.md"
+      - "docs/verification/word-sense/basic/cue-model.md"
+      - "src/DemaConsulting.WordSense.Basic/CueModel.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/CueModelTests.cs"
+
+  # WordSense-Basic-SenseFusion Review (one per unit)
+  - id: WordSense-Basic-SenseFusion
+    title: Review that WordSense SenseFusion Implementation is Correct
+    context:
+      - "docs/design/word-sense/basic.md"
+      - "docs/reqstream/word-sense/basic.yaml"
+    paths:
+      - "docs/reqstream/word-sense/basic/sense-fusion.yaml"
+      - "docs/design/word-sense/basic/sense-fusion.md"
+      - "docs/verification/word-sense/basic/sense-fusion.md"
+      - "src/DemaConsulting.WordSense.Basic/SenseFusion.cs"
+      - "test/DemaConsulting.WordSense.Basic.Tests/SenseFusionTests.cs"
+
+  # WordSense-Onnx Review (one per subsystem)
+  - id: WordSense-Onnx
+    title: Review that WordSense Onnx Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx.yaml"
+      - "docs/design/word-sense/onnx.md"
+      - "docs/verification/word-sense/onnx.md"
+      - "src/DemaConsulting.WordSense.Onnx/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/EmbeddedWeightsTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/ModelAssets.cs"
+
+  # WordSense-Onnx-OnnxWordSenseModel Review (one per unit)
+  - id: WordSense-Onnx-OnnxWordSenseModel
+    title: Review that WordSense OnnxWordSenseModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/onnx-word-sense-model.yaml"
+      - "docs/design/word-sense/onnx/onnx-word-sense-model.md"
+      - "docs/verification/word-sense/onnx/onnx-word-sense-model.md"
+      - "src/DemaConsulting.WordSense.Onnx/OnnxWordSenseModel.cs"
+      - "src/DemaConsulting.WordSense.Onnx/InFlightTracker.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxWordSenseModelTests*.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/InFlightTrackerTests.cs"
+
+  # WordSense-Onnx-OnnxClassifier Review (one per unit)
+  - id: WordSense-Onnx-OnnxClassifier
+    title: Review that WordSense OnnxClassifier Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/onnx-classifier.yaml"
+      - "docs/design/word-sense/onnx/onnx-classifier.md"
+      - "docs/verification/word-sense/onnx/onnx-classifier.md"
+      - "src/DemaConsulting.WordSense.Onnx/OnnxClassifier.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxClassifierTests*.cs"
+
+  # WordSense-Onnx-OnnxEncoder Review (one per unit)
+  - id: WordSense-Onnx-OnnxEncoder
+    title: Review that WordSense OnnxEncoder Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/onnx-encoder.yaml"
+      - "docs/design/word-sense/onnx/onnx-encoder.md"
+      - "docs/verification/word-sense/onnx/onnx-encoder.md"
+      - "src/DemaConsulting.WordSense.Onnx/OnnxEncoder.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/OnnxEncoderTests*.cs"
+
+  # WordSense-Onnx-WordPieceTokenizer Review (one per unit)
+  - id: WordSense-Onnx-WordPieceTokenizer
+    title: Review that WordSense WordPieceTokenizer Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/word-piece-tokenizer.yaml"
+      - "docs/design/word-sense/onnx/word-piece-tokenizer.md"
+      - "docs/verification/word-sense/onnx/word-piece-tokenizer.md"
+      - "src/DemaConsulting.WordSense.Onnx/WordPieceTokenizer.cs"
+      - "src/DemaConsulting.WordSense.Onnx/TokenizedText.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/WordPieceTokenizerTests.cs"
+
+  # WordSense-Onnx-ModelDownloader Review (one per unit)
+  - id: WordSense-Onnx-ModelDownloader
+    title: Review that WordSense ModelDownloader Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/model-downloader.yaml"
+      - "docs/design/word-sense/onnx/model-downloader.md"
+      - "docs/verification/word-sense/onnx/model-downloader.md"
+      - "src/DemaConsulting.WordSense.Onnx/ModelDownloader.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/ModelDownloaderTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/LocalServer.cs"
+
+  # WordSense-Onnx-DownloadMirror Review (one per unit)
+  - id: WordSense-Onnx-DownloadMirror
+    title: Review that WordSense DownloadMirror Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/download-mirror.yaml"
+      - "docs/design/word-sense/onnx/download-mirror.md"
+      - "docs/verification/word-sense/onnx/download-mirror.md"
+      - "src/DemaConsulting.WordSense.Onnx/DownloadMirror.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/DownloadMirrorTests.cs"
+
+  # WordSense-Onnx-LemmaWeights Review (one per unit)
+  - id: WordSense-Onnx-LemmaWeights
+    title: Review that WordSense LemmaWeights Implementation is Correct
+    context:
+      - "docs/design/word-sense/onnx.md"
+      - "docs/reqstream/word-sense/onnx.yaml"
+    paths:
+      - "docs/reqstream/word-sense/onnx/lemma-weights.yaml"
+      - "docs/design/word-sense/onnx/lemma-weights.md"
+      - "docs/verification/word-sense/onnx/lemma-weights.md"
+      - "src/DemaConsulting.WordSense.Onnx/LemmaWeights.cs"
+      - "src/DemaConsulting.WordSense.Onnx/WeightsBlob.cs"
+      - "src/DemaConsulting.WordSense.Onnx/WeightedLemmaTable.cs"
+      - "src/DemaConsulting.WordSense.Onnx/FeatureExtractor.cs"
+      - "src/DemaConsulting.WordSense.Onnx/VectorMath.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/LemmaWeightsTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/WeightsBlobTests.cs"
+      - "test/DemaConsulting.WordSense.Onnx.Tests/WeightedLemmaTableTests.cs"
+
+  # WordSense-MiniLM Review (one per subsystem)
+  - id: WordSense-MiniLM
+    title: Review that WordSense MiniLM Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/mini-lm.yaml"
+      - "docs/design/word-sense/mini-lm.md"
+      - "docs/verification/word-sense/mini-lm.md"
+      - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/EndToEndTests.cs"
+
+  # WordSense-MiniLM-MiniLMWordSenseModel Review (one per unit)
+  - id: WordSense-MiniLM-MiniLMWordSenseModel
+    title: Review that WordSense MiniLMWordSenseModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/mini-lm.md"
+      - "docs/reqstream/word-sense/mini-lm.yaml"
+    paths:
+      - "docs/reqstream/word-sense/mini-lm/mini-lm-word-sense-model.yaml"
+      - "docs/design/word-sense/mini-lm/mini-lm-word-sense-model.md"
+      - "docs/verification/word-sense/mini-lm/mini-lm-word-sense-model.md"
+      - "src/DemaConsulting.WordSense.MiniLM/MiniLMWordSenseModel.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/MiniLMWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/ModelFolder.cs"
+
+  # WordSense-BertBaseCased Review (one per subsystem)
+  - id: WordSense-BertBaseCased
+    title: Review that WordSense BertBaseCased Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/bert-base-cased.yaml"
+      - "docs/design/word-sense/bert-base-cased.md"
+      - "docs/verification/word-sense/bert-base-cased.md"
+      - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"
+
+  # WordSense-BertBaseCased-BertBaseCasedWordSenseModel Review (one per unit)
+  - id: WordSense-BertBaseCased-BertBaseCasedWordSenseModel
+    title: Review that WordSense BertBaseCasedWordSenseModel Implementation is Correct
+    context:
+      - "docs/design/word-sense/bert-base-cased.md"
+      - "docs/reqstream/word-sense/bert-base-cased.yaml"
+    paths:
+      - "docs/reqstream/word-sense/bert-base-cased/bert-base-cased-word-sense-model.yaml"
+      - "docs/design/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
+      - "docs/verification/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md"
+      - "src/DemaConsulting.WordSense.BertBaseCased/BertBaseCasedWordSenseModel.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/BertBaseCasedWordSenseModelTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/EndToEndTests.cs"
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/ModelFolder.cs"
+
+  # OTS-ApiMark Review (one per OTS item)
+  - id: OTS-ApiMark
+    title: Review that ApiMark Provides Required Functionality
+    paths:
+      - "docs/reqstream/ots/apimark.yaml"                                  # OTS requirements
+      - "docs/design/ots/apimark.md"                                       # OTS integration design
+      - "docs/verification/ots/apimark.md"                                 # OTS verification
+      - "src/DemaConsulting.WordSense/NamespaceDoc.cs"                     # core API reference text
+      - "src/DemaConsulting.WordSense.Basic/NamespaceDoc.cs"               # Basic API reference text
+      - "src/DemaConsulting.WordSense.Onnx/NamespaceDoc.cs"                # Onnx API reference text
+      - "src/DemaConsulting.WordSense.MiniLM/NamespaceDoc.cs"              # MiniLM API reference text
+      - "src/DemaConsulting.WordSense.BertBaseCased/NamespaceDoc.cs"       # BertBaseCased API reference text
+      - "test/DemaConsulting.WordSense.Tests/XmlDocExampleVerifier.cs"     # compiles documented examples
+      - "test/DemaConsulting.WordSense.Tests/XmlDocExampleTests.cs"        # example compile test
+      - "test/DemaConsulting.WordSense.Basic.Tests/XmlDocExampleTests.cs"  # Basic example test
+      - "test/DemaConsulting.WordSense.Onnx.Tests/XmlDocExampleTests.cs"   # Onnx example test
+      - "test/DemaConsulting.WordSense.MiniLM.Tests/XmlDocExampleTests.cs"  # MiniLM example test
+      - "test/DemaConsulting.WordSense.BertBaseCased.Tests/XmlDocExampleTests.cs"  # BertBaseCased example test
 
   # OTS-BuildMark Review (one per OTS item)
   - id: OTS-BuildMark
@@ -129,6 +479,14 @@ reviews:
       - "docs/reqstream/ots/fileassert.yaml"                               # OTS requirements
       - "docs/design/ots/fileassert.md"                                    # OTS integration design
       - "docs/verification/ots/fileassert.md"                              # OTS verification
+
+  # OTS-OnnxRuntime Review (one per OTS item)
+  - id: OTS-OnnxRuntime
+    title: Review that ONNX Runtime Provides Required Functionality
+    paths:
+      - "docs/reqstream/ots/onnxruntime.yaml"
+      - "docs/design/ots/onnxruntime.md"
+      - "docs/verification/ots/onnxruntime.md"
 
   # OTS-Pandoc Review (one per OTS item)
   - id: OTS-Pandoc

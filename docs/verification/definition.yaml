@@ -5,10 +5,34 @@ resource-path:
 input-files:
   - docs/verification/title.txt
   - docs/verification/introduction.md
-  - docs/verification/template-dot-net-library.md
-  - docs/verification/template-dot-net-library/demo.md
+  - docs/verification/word-sense.md
+  - docs/verification/word-sense/word-sense-builder.md
+  - docs/verification/word-sense/core.md
+  - docs/verification/word-sense/core/word-lexicon.md
+  - docs/verification/word-sense/core/word-sense-contracts.md
+  - docs/verification/word-sense/basic.md
+  - docs/verification/word-sense/basic/basic-word-sense-model.md
+  - docs/verification/word-sense/basic/basic-classifier.md
+  - docs/verification/word-sense/basic/basic-tables.md
+  - docs/verification/word-sense/basic/pos-tagger.md
+  - docs/verification/word-sense/basic/cue-model.md
+  - docs/verification/word-sense/basic/sense-fusion.md
+  - docs/verification/word-sense/onnx.md
+  - docs/verification/word-sense/onnx/onnx-word-sense-model.md
+  - docs/verification/word-sense/onnx/onnx-classifier.md
+  - docs/verification/word-sense/onnx/onnx-encoder.md
+  - docs/verification/word-sense/onnx/word-piece-tokenizer.md
+  - docs/verification/word-sense/onnx/model-downloader.md
+  - docs/verification/word-sense/onnx/download-mirror.md
+  - docs/verification/word-sense/onnx/lemma-weights.md
+  - docs/verification/word-sense/mini-lm.md
+  - docs/verification/word-sense/mini-lm/mini-lm-word-sense-model.md
+  - docs/verification/word-sense/bert-base-cased.md
+  - docs/verification/word-sense/bert-base-cased/bert-base-cased-word-sense-model.md
   - docs/verification/ots.md
   - docs/verification/ots/buildmark.md
+  - docs/verification/ots/apimark.md
+  - docs/verification/ots/onnxruntime.md
   - docs/verification/ots/fileassert.md
   - docs/verification/ots/pandoc.md
   - docs/verification/ots/reqstream.md

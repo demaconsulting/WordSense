@@ -5,6 +5,27 @@ resource-path:
 input-files:
   - docs/build_notes/title.txt
   - docs/build_notes/introduction.md
+  - docs/build_notes/model-provenance.md
+  - docs/build_notes/pos-audit.md
+  - docs/build_notes/real-text-evaluation.md
+  - docs/build_notes/gap-lemmas-decisions.md
+  - docs/build_notes/learning-curve-and-diagnosis.md
+  - docs/build_notes/weak-lemma-decisions.md
+  - docs/build_notes/new-lemma-decisions.md
+  - docs/build_notes/new-lemma-results.md
+  - docs/build_notes/nounverb-results.md
+  - docs/build_notes/pos-pronunciation-redesign.md
+  - docs/build_notes/lexicon-evaluation.md
+  - docs/build_notes/inflection-coverage.md
+  - docs/build_notes/package-split.md
+  - docs/build_notes/model-comparison.md
+  - docs/build_notes/basic-evaluation.md
+  - docs/build_notes/tuning.md
+  - docs/build_notes/api-quiz.md
+  # new-lemma-results.md also documents corpus/audit/new-lemma-speech-map.tsv (sense-to-pronunciation map of the
+  # Phase 4 lemmas: lemma, sense, pos, group, arpabet, anchors, holdout, source_mix, holdout_accuracy, status).
+  # The two generated files are produced by the build workflow (BuildMark and VersionMark reports in
+  # .github/workflows/build.yaml) before this document is rendered; they do not exist in a plain checkout.
   - docs/build_notes/generated/build_notes.md
   - docs/build_notes/generated/versions.md
 template: template.html
