@@ -22,6 +22,12 @@ vocabularies:
     v: verb
     a: adjective
     r: adverb
+    u: pronoun
+    p: preposition
+    c: conjunction
+    i: interjection
+    d: determiner
+    x: auxiliary
   synset_pos:
     n: noun
     v: verb
@@ -172,7 +178,7 @@ vocabularies:
       symmetric: false
       stored: true
 
-# The closed feature vocabulary of the analysis (forms) table of a later release; class_entry already uses it.
+# The closed feature vocabulary of the analysis (form) table and of class_entry.
 features:
   Number: [Sing, Plur]
   Tense: [Pres, Past]
@@ -372,3 +378,33 @@ tables:
     partition:
       by: class
       column: class_id
+
+  form:
+    description: One analysis of a written form (spelling) - the entry it is a form of, its grammatical features and its rank in the answer order.
+    columns:
+      spelling: text
+      rank: int
+      entry_id: id
+      features: features?
+      source_id: id
+      reviewed: int
+    primary_key: [spelling, rank]
+    foreign_keys:
+      entry_id: entry.entry_id
+      source_id: source.source_id
+    partition:
+      by: lemma
+      column: spelling
+
+  form_sense_scope:
+    description: The classes an analysis stands for; one answer per class in class order. An analysis without a row here is one answer without a sense id.
+    columns:
+      spelling: text
+      rank: int
+      class_id: id
+    primary_key: [spelling, rank, class_id]
+    foreign_keys:
+      class_id: coarse_class.class_id
+    partition:
+      by: lemma
+      column: spelling

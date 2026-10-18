@@ -137,6 +137,11 @@ internal static class Program
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
+                case "bootstrap-forms":
+                    var bootData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
+                    var boot = Data.FormBootstrap.Run(bootData, corpus);
+                    output.WriteLine($"Bootstrapped {boot.Spellings.ToString(CultureInfo.InvariantCulture)} spellings: {boot.Forms.ToString(CultureInfo.InvariantCulture)} analyses ({boot.Analyses.ToString(CultureInfo.InvariantCulture)} legacy answers), {boot.ScopeRows.ToString(CultureInfo.InvariantCulture)} scope rows, {boot.NewEntries.ToString(CultureInfo.InvariantCulture)} new entries.");
+                    return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
                     var lemmas = AppendixGenerator.Write(corpus, appendix);
