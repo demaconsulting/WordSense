@@ -1,3 +1,6 @@
+// Copyright (c) DEMA Consulting
+// Licensed under the MIT License. See LICENSE file in the project root for full license information.
+
 using DemaConsulting.WordSense.Onnx;
 using PartOfSpeech = DemaConsulting.WordSense.PartOfSpeech;
 
@@ -8,6 +11,7 @@ namespace WordSense.Builder.Tests;
 /// </summary>
 public sealed class WeightsTrainerTests
 {
+    private static readonly byte[] Hash = new byte[32];
     private static CorpusRow Row(string lemma, string sense, int number) =>
         new(lemma, sense, $"The {{{lemma}}} {number}.", "a.tsv", ["The", lemma, number.ToString(System.Globalization.CultureInfo.InvariantCulture), "."], 1);
 
@@ -60,15 +64,15 @@ public sealed class WeightsTrainerTests
         double[][] pooled = [[1, 0.1], [0.9, 0], [1.1, 0.2], [0, 1], [0.1, 0.9], [0, 1.1]];
         var options = new TrainingOptions(Parallelism: 1);
 
-        var data = WeightsTrainer.TrainDense("test-model", pooled, anchors, inventory, options);
-        var again = WeightsTrainer.TrainDense("test-model", pooled, anchors, inventory, options);
+        var data = WeightsTrainer.TrainDense("test-model", Hash, pooled, anchors, inventory, options);
+        var again = WeightsTrainer.TrainDense("test-model", Hash, pooled, anchors, inventory, options);
 
         Assert.Equal("test-model", data.ModelId);
         Assert.Equal(2, data.Dimension);
         Assert.Equal(2, data.Mean.Length);
         var lemma = Assert.Single(data.Lemmas);
         Assert.Equal("bank", lemma.Lemma);
-        Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb], lemma.Senses.Select(s => s.PartOfSpeech));
+        Assert.Equal(["bank#noun", "bank#verb"], lemma.ClassIds);
         Assert.Equal(LemmaModelKind.Binary, lemma.Weights.Kind);
         Assert.Equal(lemma.Weights.Weights, again.Lemmas[0].Weights.Weights);
 
@@ -93,7 +97,7 @@ public sealed class WeightsTrainerTests
         double[][] pooled = [[1, 0], [0, 1]];
 
         // The failure of a lemma is rethrown unwrapped
-        Assert.Throws<InvalidDataException>(() => WeightsTrainer.TrainDense("m", pooled, anchors, inventory, new TrainingOptions(Parallelism: 1)));
+        Assert.Throws<InvalidDataException>(() => WeightsTrainer.TrainDense("m", Hash, pooled, anchors, inventory, new TrainingOptions(Parallelism: 1)));
     }
 
     /// <summary>

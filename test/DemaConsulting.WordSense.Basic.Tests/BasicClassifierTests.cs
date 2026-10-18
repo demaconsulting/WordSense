@@ -8,8 +8,8 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 public class BasicClassifierTests
 {
     private static readonly WordDetails Cat = new(null, "cat", PartOfSpeech.Noun, string.Empty);
-    private static readonly WordDetails Fish = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "fish");
-    private static readonly WordDetails Music = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "music");
+    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
+    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
 
     private static readonly Dictionary<string, ImmutableArray<WordDetails>> Lexicon = new(StringComparer.Ordinal)
     {
@@ -21,7 +21,9 @@ public class BasicClassifierTests
 
     private static readonly BasicTables Tables = BasicTables.Load(TestTables.Default());
 
-    private static BasicClassifier Create() => new(Tables, Lexicon);
+    private static BasicClassifier Create() => new(Tables, Find);
+
+    private static ImmutableArray<WordDetails> Find(string word) => Lexicon.GetValueOrDefault(word);
 
     private static Task<WordSense[]> Run(params string[] words) =>
         Create().ClassifyAsync(words, TestContext.Current.CancellationToken);
@@ -90,8 +92,8 @@ public class BasicClassifierTests
         var fish = await Run("the", "river", "bass");
         var music = await Run("the", "guitar", "bass");
 
-        Assert.Equal("fish", WordLexicon.MeaningOf(fish[2].Details!));
-        Assert.Equal("music", WordLexicon.MeaningOf(music[2].Details!));
+        Assert.Equal("bass#fish", fish[2].Details!.SenseId);
+        Assert.Equal("bass#music", music[2].Details!.SenseId);
     }
 
     /// <summary>
@@ -129,7 +131,7 @@ public class BasicClassifierTests
     [Fact]
     public async Task BasicClassifier_ClassifyAsync_NonPrefixSubset_IsScoredOverItsOwnSenses()
     {
-        var bow = WordLexicon.ClassesOf("bow");
+        var bow = WordLexicon.Lookup("bow").Where(b => b.SenseId is not null).ToImmutableArray();
         Assert.Equal(3, bow.Length);
         var voice = bow[2];
         var hashes = TestTables.HeteronymHashes();
@@ -141,7 +143,7 @@ public class BasicClassifierTests
             [],
             [(
                 "bow",
-                [.. bow.Select(b => new CueSense(b.PartOfSpeech, WordLexicon.MeaningOf(b)!, -8))],
+                [.. bow.Select(b => new CueSense(b.SenseId!, -8) { HasMeaning = true })],
                 hashes,
                 hashes[0] == river ? [.. riverRow, .. guitarRow] : [.. guitarRow, .. riverRow])]));
         var lexicon = new Dictionary<string, ImmutableArray<WordDetails>>(StringComparer.Ordinal)
@@ -150,7 +152,7 @@ public class BasicClassifierTests
             ["bows"] = [bow[0], voice],
             ["bowed"] = [voice],
         };
-        var classifier = new BasicClassifier(tables, lexicon);
+        var classifier = new BasicClassifier(tables, word => lexicon.GetValueOrDefault(word));
 
         var whole = await classifier.ClassifyAsync(["the", "guitar", "bow"], TestContext.Current.CancellationToken);
         var subset = await classifier.ClassifyAsync(["the", "guitar", "bows"], TestContext.Current.CancellationToken);

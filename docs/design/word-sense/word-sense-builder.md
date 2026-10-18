@@ -49,10 +49,10 @@ inference share one implementation of the feature computation.
   data hash and a content hash in the header. Equal data always gives equal decompressed sections.
 - `FormBootstrap`: the one-off derivation of the authoritative `form` and `form_sense_scope` tables from the earlier
   generated word table (kept for provenance; the 19 wrong-lemma forms of the old table are fixed there).
-- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma bridge and the tests compare the image
+- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma mapping and the tests compare the image
   against (removed with the weights re-key).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
-  pooled encoder vectors and serialize the weights blob (`WSX1`).
+  pooled encoder vectors and serialize the weights blob (`WSX2`).
 - `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences.
 - `UdSource`, `UdCounts`, `UdSentence`: the pinned treebank source (commit and SHA-256 checksums; download and
   verification) and the tag statistics: a CoNLL-U reader that keeps a multi-word token as one token tagged like its first
@@ -63,7 +63,7 @@ inference share one implementation of the feature computation.
 - `BasicTrainer`, `BasicModelData`: select the tabled words (closed-class words and the most frequent
   dictionary-ambiguous words), the suffixes and the closed-class masks from the counts, and train the cue tables from
   the anchors.
-- `BasicTablesWriter`: serializes the model data into the `WSB1` blob, deterministically.
+- `BasicTablesWriter`: serializes the model data into the `WSB2` blob, deterministically.
 - `BasicTuner`: scores the hyper-parameter grid.
 - `BasicModelBuilder`: the commands `ud-counts` and `train-basic`.
 - `AppendixGenerator`: generates the senses appendix of the user guide.

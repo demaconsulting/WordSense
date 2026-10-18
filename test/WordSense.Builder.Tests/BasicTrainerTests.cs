@@ -50,7 +50,9 @@ public class BasicTrainerTests
     }
 
     private static BasicModelData Train(BasicHyperparameters? hp = null) =>
-        BasicTrainer.Train(Counts(), Lexicon, Anchors(), Inventory(), hp ?? BasicHyperparameters.Default);
+        BasicTrainer.Train(Counts(), w => Lexicon.TryGetValue(w, out var found) ? found : default, Anchors(), Inventory(), hp ?? BasicHyperparameters.Default);
+
+    private static byte[] Write(BasicModelData data) => BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash);
 
     /// <summary>
     ///     A word becomes closed-class only with enough occurrences and a dominant closed-class share.
@@ -101,7 +103,8 @@ public class BasicTrainerTests
 
         var cue = Assert.Single(data.Cues);
         Assert.Equal("bass", cue.Lemma);
-        Assert.Equal(["fish", "music"], cue.Senses.Select(s => s.Meaning!));
+        Assert.Equal(["bass#fish", "bass#music"], cue.Senses.Select(s => s.ClassId));
+        Assert.All(cue.Senses, s => Assert.True(s.HasMeaning));
         var river = Array.IndexOf(cue.Hashes, new FeatureRef(CueModel.Window, "river").Hash);
         Assert.True(river >= 0);
         Assert.True(cue.Weights[(river * 2)] > cue.Weights[(river * 2) + 1]);
@@ -115,9 +118,9 @@ public class BasicTrainerTests
     [Fact]
     public void WordSenseBuilder_BasicTablesWriter_Write_IsDeterministicAndReadsBack()
     {
-        var first = BasicTablesWriter.Write(Train());
-        var second = BasicTablesWriter.Write(Train());
-        var other = BasicTablesWriter.Write(Train(BasicHyperparameters.Default with { HmmWeight = 0.5, Temperature = 4 }));
+        var first = Write(Train());
+        var second = Write(Train());
+        var other = Write(Train(BasicHyperparameters.Default with { HmmWeight = 0.5, Temperature = 4 }));
 
         Assert.Equal(first, second);
         Assert.NotEqual(first, other);

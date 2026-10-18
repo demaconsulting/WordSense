@@ -28,9 +28,8 @@ internal sealed record ImageResult(int Spellings, int Analyses, int Entries, int
 ///     differs, so compare decompressed sections and the data hash, not the file.
 ///     </para>
 ///     <para>
-///     The data hash of the header covers the committed data tables the image is compiled from plus the legacy sense
-///     files of the corpus (the source of the class meanings), with carriage returns removed so that it is the same on
-///     every platform.
+///     The data hash of the header covers the committed data tables the image is compiled from, with carriage returns
+///     removed so that it is the same on every platform.
 ///     </para>
 /// </remarks>
 internal static class ImageCompiler
@@ -49,13 +48,12 @@ internal static class ImageCompiler
     ///     Compiles the image and writes it to a file.
     /// </summary>
     /// <param name="dataDirectory">The data directory.</param>
-    /// <param name="corpus">The corpus directory (for the legacy class meanings).</param>
     /// <param name="output">The file to write.</param>
     /// <returns>The counts.</returns>
     /// <exception cref="InvalidDataException">Thrown when the data cannot be compiled (run <c>validate-data</c> for details).</exception>
-    public static ImageResult Compile(string dataDirectory, string corpus, string output)
+    public static ImageResult Compile(string dataDirectory, string output)
     {
-        var (image, result) = Build(dataDirectory, corpus);
+        var (image, result) = Build(dataDirectory);
         var directory = Path.GetDirectoryName(Path.GetFullPath(output));
         if (!string.IsNullOrEmpty(directory))
         {
@@ -70,10 +68,9 @@ internal static class ImageCompiler
     ///     Compiles the image in memory.
     /// </summary>
     /// <param name="dataDirectory">The data directory.</param>
-    /// <param name="corpus">The corpus directory.</param>
     /// <returns>The image bytes and the counts.</returns>
     /// <exception cref="InvalidDataException">Thrown when the data cannot be compiled.</exception>
-    public static (byte[] Image, ImageResult Result) Build(string dataDirectory, string corpus)
+    public static (byte[] Image, ImageResult Result) Build(string dataDirectory)
     {
         var schema = DataSchema.Load(Path.Combine(dataDirectory, "schema.yaml"));
         var entryRows = DataTables.Read(dataDirectory, schema.Table("entry")).ToDictionary(r => r[0], StringComparer.Ordinal);
@@ -83,8 +80,6 @@ internal static class ImageCompiler
             .Where(r => r[4] != "unmapped")
             .OrderBy(r => r[0], Comparer<string>.Create(DataLayout.CompareUtf8))
             .ToList();
-        var meaningOf = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses")).Rows
-            .ToDictionary(r => r.Lemma + "#" + r.Label, r => r.Meaning, StringComparer.Ordinal);
 
         var utf8 = Comparer<string>.Create(DataLayout.CompareUtf8);
 
@@ -94,9 +89,6 @@ internal static class ImageCompiler
         {
             classIndex[classRows[i][0]] = i;
         }
-
-        var meanings = classRows.Select(r => meaningOf.GetValueOrDefault(r[0])).OfType<string>().Distinct(StringComparer.Ordinal).OrderBy(m => m, utf8).ToList();
-        var meaningIndex = meanings.Select((m, i) => (m, i)).ToDictionary(t => t.m, t => t.i, StringComparer.Ordinal);
 
         // Scope rows by (spelling, rank), the classes in class order
         var scopeBy = new Dictionary<(string, int), List<int>>();
@@ -196,7 +188,7 @@ internal static class ImageCompiler
 
         var sections = new SortedDictionary<int, (byte[] Raw, int Stride)>
         {
-            [ImageFormat.SectionMeta] = (Uints([(uint)bySpelling.Count, (uint)usedEntries.Count, (uint)(rows.Count / 2), (uint)scopeLists.Count, (uint)classRows.Count, (uint)featureList.Count, (uint)fold.Count, (uint)meanings.Count]), 4),
+            [ImageFormat.SectionMeta] = (Uints([(uint)bySpelling.Count, (uint)usedEntries.Count, (uint)(rows.Count / 2), (uint)scopeLists.Count, (uint)classRows.Count, (uint)featureList.Count, (uint)fold.Count]), 4),
             [ImageFormat.SectionAnalysisCount] = (analysisCounts, 1),
             [ImageFormat.SectionAnalysisRows] = (Uints(rows), 8),
         };
@@ -227,17 +219,8 @@ internal static class ImageCompiler
         sections[ImageFormat.SectionFold] = (Uints(fold.Select(i => (uint)i).ToList()), 4);
         AddStrings(sections, ImageFormat.SectionClassIdLength, ImageFormat.SectionClassIdBytes, classRows.Select(r => r[0]));
         sections[ImageFormat.SectionClassPos] = (classRows.Select(r => (byte)DataTables.PosOf(r[3])).ToArray(), 1);
-        var classMeaning = new byte[classRows.Count * 2];
-        for (var i = 0; i < classRows.Count; i++)
-        {
-            var meaning = meaningOf.GetValueOrDefault(classRows[i][0]);
-            BinaryPrimitives.WriteUInt16LittleEndian(classMeaning.AsSpan(i * 2), meaning is null ? (ushort)0 : (ushort)(meaningIndex[meaning] + 1));
-        }
 
-        sections[ImageFormat.SectionClassMeaning] = (classMeaning, 2);
-        AddStrings(sections, ImageFormat.SectionMeaningLength, ImageFormat.SectionMeaningBytes, meanings);
-
-        var image = Assemble(sections, DataHash(dataDirectory, corpus));
+        var image = Assemble(sections, DataHash(dataDirectory));
         return (image, new ImageResult(bySpelling.Count, formRows.Count, usedEntries.Count, image.Length));
     }
 
@@ -245,9 +228,8 @@ internal static class ImageCompiler
     ///     Computes the hash of the data an image is compiled from.
     /// </summary>
     /// <param name="dataDirectory">The data directory.</param>
-    /// <param name="corpus">The corpus directory.</param>
     /// <returns>The SHA-256 over the names and the content (without carriage returns) of the files, in name order.</returns>
-    public static byte[] DataHash(string dataDirectory, string corpus)
+    public static byte[] DataHash(string dataDirectory)
     {
         using var hash = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         var files = new List<(string Name, string Path)>();
@@ -264,12 +246,6 @@ internal static class ImageCompiler
             {
                 files.Add(($"data/{table}.tsv", single));
             }
-        }
-
-        var senses = Path.Combine(corpus, "senses");
-        if (Directory.Exists(senses))
-        {
-            files.AddRange(Directory.GetFiles(senses, "*.tsv").Select(f => ($"corpus/senses/{Path.GetFileName(f)}", f)));
         }
 
         foreach (var (name, path) in files.OrderBy(f => f.Name, StringComparer.Ordinal))

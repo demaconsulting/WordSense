@@ -80,14 +80,14 @@ internal static class BasicTrainer
     ///     Trains the model.
     /// </summary>
     /// <param name="ud">The treebank counts.</param>
-    /// <param name="lexicon">The lexicon of the core package, by lower-case word.</param>
+    /// <param name="lexicon">The lexicon of the core package: the analyses of a lower-case word, or the default array when unknown.</param>
     /// <param name="anchors">The training sentences of the cue model.</param>
     /// <param name="inventory">The sense inventory.</param>
     /// <param name="hp">The hyper-parameters.</param>
     /// <returns>The model data.</returns>
     public static BasicModelData Train(
         UdCounts ud,
-        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
         IReadOnlyList<CorpusRow> anchors,
         SenseInventory inventory,
         BasicHyperparameters hp)
@@ -140,7 +140,7 @@ internal static class BasicTrainer
 
     private static List<BasicWordRow> SelectWords(
         UdCounts ud,
-        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
         Dictionary<string, int> closed,
         BasicHyperparameters hp)
     {
@@ -154,7 +154,7 @@ internal static class BasicTrainer
         }
 
         var ambiguous = ud.Words
-            .Where(p => closed[p.Key] == 0 && lexicon.TryGetValue(p.Key, out var senses) && senses.Select(s => s.PartOfSpeech).Distinct().Count() >= 2)
+            .Where(p => closed[p.Key] == 0 && lexicon(p.Key) is { IsDefaultOrEmpty: false } senses && senses.Select(s => s.PartOfSpeech).Distinct().Count() >= 2)
             .OrderByDescending(p => p.Value.Sum())
             .ThenBy(p => p.Key, StringComparer.Ordinal)
             .Take(hp.TopAmbiguousWords);
@@ -168,14 +168,14 @@ internal static class BasicTrainer
 
     private static List<BasicSuffixRow> SelectSuffixes(
         UdCounts ud,
-        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
         Dictionary<string, int> closed,
         BasicHyperparameters hp)
     {
         var table = new SortedDictionary<string, int[]>(StringComparer.Ordinal);
         foreach (var (word, counts) in ud.Words)
         {
-            if (closed[word] != 0 || lexicon.ContainsKey(word))
+            if (closed[word] != 0 || !lexicon(word).IsDefaultOrEmpty)
             {
                 continue;
             }
@@ -298,7 +298,7 @@ internal static class BasicTrainer
         for (var s = 0; s < rows.Length; s++)
         {
             var prior = Math.Log((senseCounts[s] + 1.0) / (senseTotal + rows.Length));
-            senses[s] = new CueSense(rows[s].Pos, rows[s].Meaning, Quantize(prior));
+            senses[s] = new CueSense(rows[s].Lemma + "#" + rows[s].Label, Quantize(prior)) { HasMeaning = rows[s].Meaning is not null };
         }
 
         var weights = new sbyte[vocabulary * rows.Length];

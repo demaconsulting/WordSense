@@ -76,8 +76,9 @@ namespace DemaConsulting.WordSense;
 ///     is (see the remarks of <see cref="EnsureModelAsync"/>).
 ///     Result content: each element of the result has <see cref="WordSense.Word"/> equal to the input element at the
 ///     same index (as given, not lower-cased); <see cref="WordSense.Details"/> comes from
-///     <c>WordLexicon.View</c> semantics: the key is the word lower-cased (<c>ToLowerInvariant()</c>) with the curly
-///     apostrophe U+2019 replaced by <c>'</c> (that is what <see cref="WordLexicon.Lookup"/> does after an exact match); the shipped models do exactly that, and an implementation should too, so
+///     <see cref="WordLexicon.Lookup"/> semantics: the word is lower-cased (<c>ToLowerInvariant()</c>) and then looked up
+///     with <see cref="WordLexicon.Lookup"/>, which matches the spelling exactly or without regard to case and counts the
+///     curly apostrophe U+2019 as <c>'</c>, so <c>Record</c> finds <c>record</c> (the shipped models do exactly that, and an implementation should too), so
 ///     that the same text finds the same candidates with every model (the candidate senses of a word are the entries of
 ///     the lexicon; an implementation must not invent others). Cancellation: honor the token (check it before the work
 ///     starts and between steps). <see cref="EnsureModelAsync"/>: idempotent (calling it again after it succeeded is

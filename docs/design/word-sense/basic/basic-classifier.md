@@ -11,7 +11,7 @@ sense with its probability.
 #### Data Model
 
 An internal sealed class holding two read-only references: the statistics (`BasicTables`, or null for the embedded
-table loaded on first use) and the lexicon (`WordLexicon.View` by default). The second constructor is internal so the
+table loaded on first use) and the lexicon (`WordLexicon.Lookup` by default). The second constructor is internal so the
 tests can use a toy table and lexicon. Per call it derives, once per word, the lower-case token (typographic
 apostrophe U+2019 mapped to `'`) and, per segment, the tagger tokens. A tagger token is fixed to the punctuation tag
 for a token without a letter (the other tag when the token contains a digit); otherwise it carries the lower-case key,

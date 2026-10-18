@@ -7,8 +7,8 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class CueModelTests
 {
-    private static readonly WordDetails Fish = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "fish");
-    private static readonly WordDetails Music = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "music");
+    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
+    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
     private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
 
     /// <summary>

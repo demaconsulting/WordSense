@@ -76,7 +76,7 @@ internal static class Program
                 case "compile-image":
                     var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Combine(repository, "data");
                     var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Combine(repository, Data.ImageCompiler.DefaultOutput);
-                    var image = Data.ImageCompiler.Compile(dataFolder, corpus, imageOutput);
+                    var image = Data.ImageCompiler.Compile(dataFolder, imageOutput);
                     output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
                     return 0;
                 case "import-moby":

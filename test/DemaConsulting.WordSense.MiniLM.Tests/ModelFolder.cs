@@ -1,8 +1,10 @@
+using DemaConsulting.WordSense.Onnx.Tests;
+
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
 /// <summary>
 ///     Locates the committed MiniLM model files and skips tests that need them when they are unavailable
-///     (for example a checkout without Git LFS content).
+///     (for example a checkout without Git LFS content). Every pinned file must be present, real and intact.
 /// </summary>
 internal static class ModelFolder
 {
@@ -17,13 +19,8 @@ internal static class ModelFolder
             var candidate = Path.Combine(dir.FullName, "model", "all-MiniLM-L6-v2-int8");
             if (File.Exists(Path.Combine(candidate, "SHA256SUMS")))
             {
-                // A Git LFS pointer is a few hundred bytes; the real model is megabytes
-                if (new FileInfo(Path.Combine(candidate, "model_int8.onnx")) is { Exists: true, Length: > 1_000_000 })
-                {
-                    return candidate;
-                }
-
-                Assert.Skip("The model file is missing or is a Git LFS pointer; run 'git lfs pull'.");
+                using var model = new MiniLMWordSenseModel(candidate);
+                return ModelFileCheck.Require(model.Spec, candidate);
             }
         }
 
@@ -31,3 +28,4 @@ internal static class ModelFolder
         return string.Empty;
     }
 }
+

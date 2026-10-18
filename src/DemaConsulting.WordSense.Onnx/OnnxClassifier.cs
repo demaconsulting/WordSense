@@ -49,7 +49,7 @@ internal sealed class OnnxClassifier
     /// <param name="words">The words.</param>
     /// <returns>True when some word has several senses.</returns>
     internal static bool HasMultiSenseWord(IReadOnlyList<string> words) =>
-        words.Any(w => w.Length != 0 && WordLexicon.View.TryGetValue(Normalize(w), out var senses) && EffectiveSenseCount(senses) > 1);
+        words.Any(w => w.Length != 0 && WordLexicon.TryLookup(Normalize(w), out var senses) && EffectiveSenseCount(senses) > 1);
 
     /// <summary>
     ///     Tells whether any word of a list has several senses and intact weights, which is the only case that needs the encoder.
@@ -61,10 +61,19 @@ internal sealed class OnnxClassifier
     {
         ArgumentNullException.ThrowIfNull(table);
         return words.Any(w => w.Length != 0
-            && WordLexicon.View.TryGetValue(Normalize(w), out var senses)
+            && WordLexicon.TryLookup(Normalize(w), out var senses)
             && EffectiveSenseCount(senses) > 1
-            && table.Find(WordLexicon.TrainedLemmaOf(senses[0])) is not null);
+            && WeightsOf(table, senses[0]) is not null);
     }
+
+    /// <summary>
+    ///     Finds the weights that score a word: those of the class of its first sense.
+    /// </summary>
+    /// <param name="table">The weights.</param>
+    /// <param name="first">The first (most frequent) analysis of the word.</param>
+    /// <returns>The weights, or null when the class has none.</returns>
+    private static WeightedLemma? WeightsOf(WeightedLemmaTable table, WordDetails first) =>
+        first.SenseId is { } id ? table.FindByClass(id, out _) : table.Find(first.Lemma);
 
     /// <summary>
     ///     Classifies a list that needs no model, using the lexicon alone: no model file, encoder or weights.
@@ -144,7 +153,7 @@ internal sealed class OnnxClassifier
         lemma = null;
         candidates = [];
         var unknown = new WordSense(word, null, 0);
-        if (word.Length == 0 || !WordLexicon.View.TryGetValue(Normalize(word), out var senses))
+        if (word.Length == 0 || !WordLexicon.TryLookup(Normalize(word), out var senses))
         {
             return unknown;
         }
@@ -157,7 +166,7 @@ internal sealed class OnnxClassifier
 
         // Several senses without intact weights for the lemma: the first sense (the most frequent one in the
         // dictionary order) with a confidence of one over the number of senses
-        if (table?.Find(WordLexicon.TrainedLemmaOf(senses[0])) is not { } weighted)
+        if (table is null || WeightsOf(table, senses[0]) is not { } weighted)
         {
             return new WordSense(word, senses[0], 1.0 / count);
         }
@@ -201,13 +210,13 @@ internal sealed class OnnxClassifier
         var scores = new float[weights.SenseCount];
         weights.Scores(feature, scores);
 
-        // Rank only the senses the word itself can have and the weights were trained for; the weights score the classes
-        // of the lemma in class order
-        var all = WordLexicon.ClassesOf(lemma.Lemma);
+        // Rank only the senses the word itself can have and the weights were trained for; the weights name the class
+        // of every column
+        var all = lemma.ClassIds;
         var allowed = new List<int>(candidates.Length);
-        for (var i = 0; i < Math.Min(all.Length, weights.SenseCount); i++)
+        for (var i = 0; i < Math.Min(all.Count, weights.SenseCount); i++)
         {
-            if (candidates.Any(c => string.Equals(c.SenseId, all[i].SenseId, StringComparison.Ordinal)))
+            if (candidates.Any(c => string.Equals(c.SenseId, all[i], StringComparison.Ordinal)))
             {
                 allowed.Add(i);
             }
@@ -219,7 +228,7 @@ internal sealed class OnnxClassifier
         }
 
         var (best, margin) = allowed.Count == weights.SenseCount ? LemmaWeights.Rank(scores) : RankSubset(scores, allowed);
-        return (candidates.First(c => string.Equals(c.SenseId, all[best].SenseId, StringComparison.Ordinal)), LemmaWeights.Confidence(margin, weights.AbstainMargin));
+        return (candidates.First(c => string.Equals(c.SenseId, all[best], StringComparison.Ordinal)), LemmaWeights.Confidence(margin, weights.AbstainMargin));
     }
 
     /// <summary>

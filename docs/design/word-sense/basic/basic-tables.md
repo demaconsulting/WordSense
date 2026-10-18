@@ -21,13 +21,18 @@ and the cue tables of the ambiguous lemmas. It also defines the tag set through 
 - `FeatureRef`: one context feature (kind and token) and its 16-bit hash, a 32-bit FNV-1a over the UTF-16 code units of
   the feature name (the token, prefixed with `L1:` or `R1:` for an immediate neighbor) folded by xor-ing the upper half
   into the lower half. The builder uses the same hash, so training and inference cannot diverge.
-- Format `WSB1` (Brotli, then little-endian; integers are 7-bit varints, strings are a varint byte length and UTF-8):
-  the magic `WSB1`; seven doubles (gamma, beta, lambda 1 to 3, tagger weight, inverse temperature); the tag count (13);
+- Format `WSB2` (Brotli, then little-endian; integers are 7-bit varints, strings are a varint byte length and UTF-8):
+  the magic `WSB2`; the 32-byte class-inventory hash; seven doubles (gamma, beta, lambda 1 to 3, tagger weight,
+  inverse temperature); the tag count (13);
   the unigram (14), bigram (14 x 14) and trigram (14 x 14 x 14) counts; the word count and per word the word, a flags byte
   (bit 0: closed class), a 16-bit closed-class mask when closed, a 16-bit presence mask and one count per set bit; the
   suffix count and per suffix the suffix and four counts (noun, verb, adjective, adverb); the lemma count and per lemma
-  the lemma, the senses (part of speech byte, meaning, signed prior byte), the delta-coded ascending feature hashes and
-  one signed byte weight per feature and sense. Words, suffixes and lemmas are in ascending ordinal order.
+  the lemma, the senses (class id string, signed prior byte, meaning flag byte), the delta-coded ascending feature
+  hashes and
+  one signed byte weight per feature and sense. Words, suffixes and lemmas are in ascending ordinal order. The meaning
+  flag records whether the class carries a pronunciation meaning; it keeps the cue column of an analysis without a
+  class (a form's own extra sense) the same as before the re-key. At load each class id is resolved against the word
+  image (unknown, duplicate or hash-mismatched classes throw `InvalidDataException`).
 
 #### Key Methods
 

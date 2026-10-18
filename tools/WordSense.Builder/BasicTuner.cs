@@ -38,8 +38,9 @@ internal static class BasicTuner
 
         UdSource.Verify(devPath, UdSource.Files[devName]);
         var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
-        var lexicon = WordLexicon.View;
+        var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var facts = ClassFacts.From(inventory.Rows);
         var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Combine(corpus, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
 
@@ -61,10 +62,10 @@ internal static class BasicTuner
         {
             cancellationToken.ThrowIfCancellationRequested();
             var data = BasicTrainer.Train(counts, lexicon, train, inventory, hp);
-            var blob = BasicTablesWriter.Write(data, CompressionLevel.Fastest);
-            var tables = BasicTables.Load(blob);
+            var blob = BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash, CompressionLevel.Fastest);
+            var tables = BasicTables.Load(blob, WordLexicon.Current);
             var (ambiguous, ambiguousCorrect) = ScoreTreebank(tables, dev, lexicon);
-            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, inventory, cancellationToken).ConfigureAwait(false);
+            var (anchorRows, anchorCorrect) = await ScoreAnchorsAsync(tables, anchorDev, lexicon, inventory, facts, cancellationToken).ConfigureAwait(false);
             text.Append("| ").Append(label)
                 .Append(" | ").Append(Percent(ambiguousCorrect, ambiguous))
                 .Append(" | ").Append(Percent(anchorCorrect, anchorRows))
@@ -128,7 +129,7 @@ internal static class BasicTuner
         CultureInfo.InvariantCulture,
         $"gamma {hp.Gamma}, beta {hp.Beta}, closed {hp.ClosedMinCount}/{hp.ClosedShare}, hmm weight {hp.HmmWeight}, temperature {hp.Temperature}, cue alpha {hp.CueAlpha}");
 
-    private static (int Rows, int Correct) ScoreTreebank(BasicTables tables, List<UdSentence> sentences, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon)
+    private static (int Rows, int Correct) ScoreTreebank(BasicTables tables, List<UdSentence> sentences, Func<string, ImmutableArray<WordDetails>> lexicon)
     {
         var rows = 0;
         var correct = 0;
@@ -172,8 +173,9 @@ internal static class BasicTuner
     private static async Task<(int Rows, int Correct)> ScoreAnchorsAsync(
         BasicTables tables,
         List<CorpusRow> rows,
-        IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon,
+        Func<string, ImmutableArray<WordDetails>> lexicon,
         SenseInventory inventory,
+        ClassFacts facts,
         CancellationToken cancellationToken)
     {
         var classifier = new BasicClassifier(tables, lexicon);
@@ -184,7 +186,7 @@ internal static class BasicTuner
             var expected = gold[(row.Lemma, row.Sense)];
             var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var details = senses[row.TargetWordIndex].Details;
-            correct += details is not null && details.PartOfSpeech == expected.Pos && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
+            correct += details is not null && details.PartOfSpeech == expected.Pos && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
         }
 
         return (rows.Count, correct);

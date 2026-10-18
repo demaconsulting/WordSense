@@ -1,4 +1,4 @@
-using System.Text;
+using DemaConsulting.WordSense.MiniLM;
 
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
@@ -8,8 +8,6 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 /// </summary>
 internal static class ModelAssets
 {
-    private static readonly string[] Names = ["model_int8.onnx", "vocab.txt"];
-
     /// <summary>
     ///     Finds the repository's <c>model/all-MiniLM-L6-v2-int8</c> directory by walking up from the test output directory.
     /// </summary>
@@ -40,16 +38,8 @@ internal static class ModelAssets
             Assert.Skip("The model directory was not found.");
         }
 
-        foreach (var name in Names)
-        {
-            var path = Path.Combine(directory, name);
-            if (!File.Exists(path) || IsLfsPointer(path))
-            {
-                Assert.Skip($"The model file '{name}' is missing or is a Git LFS pointer; run 'git lfs pull'.");
-            }
-        }
-
-        return directory;
+        using var model = new MiniLMWordSenseModel(directory);
+        return ModelFileCheck.Require(model.Spec, directory);
     }
 
     /// <summary>
@@ -66,17 +56,5 @@ internal static class ModelAssets
 
         return Path.GetDirectoryName(Path.GetDirectoryName(model))!;
     }
-
-    /// <summary>
-    ///     Determines whether a file is a Git LFS pointer rather than real content.
-    /// </summary>
-    /// <param name="path">The file path.</param>
-    /// <returns>True for a pointer file.</returns>
-    private static bool IsLfsPointer(string path)
-    {
-        using var stream = File.OpenRead(path);
-        var buffer = new byte[64];
-        var read = stream.Read(buffer, 0, buffer.Length);
-        return Encoding.ASCII.GetString(buffer, 0, read).StartsWith("version https://git-lfs", StringComparison.Ordinal);
-    }
 }
+

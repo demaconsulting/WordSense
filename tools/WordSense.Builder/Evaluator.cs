@@ -402,6 +402,7 @@ internal static class Evaluator
         CancellationToken cancellationToken)
     {
         int best = 0, pos = 0, heteronyms = 0, meaning = 0, answered = 0, answeredCorrect = 0;
+        var facts = ClassFacts.From(gold.Values);
         var outcomes = new List<(double Confidence, bool Correct)>(rows.Count);
         foreach (var row in rows)
         {
@@ -409,15 +410,15 @@ internal static class Evaluator
             var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var actual = senses[row.TargetWordIndex];
             var details = actual.Details;
-            var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal);
+            var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal);
             best += rightSense ? 1 : 0;
             outcomes.Add((actual.Confidence, rightSense));
-            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : WordLexicon.TrainedLemmaOf(details) + "|" + details.PartOfSpeech + "|" + WordLexicon.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture)));
+            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : facts.LemmaOf(details) + "|" + details.PartOfSpeech + "|" + facts.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture)));
             pos += details is not null && details.PartOfSpeech == expected.Pos ? 1 : 0;
             if (expected.Meaning is not null)
             {
                 heteronyms++;
-                meaning += details is not null && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
+                meaning += details is not null && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
             }
 
             if (actual.Confidence >= 0.5)

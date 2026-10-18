@@ -3,9 +3,9 @@
 #### Verification Approach
 
 The unit covers `LemmaWeights` (scores, ranking and the confidence function), the `WeightsBlob` reader and the
-`WeightedLemmaTable` that matches weights to the lexicon. Tests in `test/DemaConsulting.WordSense.Onnx.Tests`
+`WeightedLemmaTable` that resolves weights against the word image. Tests in `test/DemaConsulting.WordSense.Onnx.Tests`
 (`LemmaWeightsTests`, `WeightsBlobTests`, `WeightedLemmaTableTests`, `EmbeddedWeightsTests`) use hand-made weights, tiny
-blobs built by a test helper (the writer lives in the builder) and a hand-made lexicon for the prefix match. The
+blobs built by a test helper (the writer lives in the builder) and a hand-made image. The
 embedded-weights test uses the real weights of the model packages.
 
 #### Test Environment
@@ -29,14 +29,15 @@ All scenarios below pass on every platform and target framework of the CI matrix
   lemma with its senses and weights.
 - **Corrupt blob is rejected**: an unknown format marker, truncated data, inconsistent counts and trailing data each throw
   `InvalidDataException`.
-- **Part of speech and flag bytes are checked**: every value of `PartOfSpeech` up to and including `Auxiliary` is
-  accepted in a sense, a value above the last one is rejected, and a meaning presence byte other than 0 or 1 is rejected
-  with `InvalidDataException`.
-- **Prefix match**: a lemma whose trained senses equal the first senses of the lexicon entry (lemma, part of speech and
-  meaning, in the same order) is kept, also when the entry has further senses (`TrainedSensesArePrefix_KeepsLemma`); if
-  a trained sense differs, or the lemma is absent from the lexicon, the whole lemma is dropped and listed in the
-  dropped names.
-- **Embedded weights are checked on load**: weights trained for another model id or another dimension are refused with
-  `InvalidDataException`, and a missing resource is reported.
-- **Shipped weights drop zero lemmas**: the embedded weights of MiniLM and of BertBaseCased, matched against the embedded
-  lexicon, have `DroppedLemmas` equal to 0.
+- **Class ids and kinds are checked**: an empty or duplicate class id, a class count that does not fit the kind (a
+  Binary lemma needs exactly two) and a zero dimension are rejected with `InvalidDataException`; for every model kind
+  the writer refuses an entry whose class ids differ in number from the sense count of its weights (a Binary lemma with
+  three classes, a one-versus-rest lemma with a class count that does not fit its weights), and the reader applies the
+  same rule.
+- **Resolution at load**: every class of the weights is found in the word image by id (`KnownClasses_AreFoundById`);
+  another class hash, an unknown class, a duplicate class or lemma and a class count mismatch each throw.
+- **Embedded weights are checked on load**: weights trained for another model id, another dimension or another class
+  inventory (class hash) are refused with `InvalidDataException`, as is a class that the image does not know, and a
+  missing resource is reported.
+- **Shipped weights resolve completely**: the embedded weights of MiniLM and of BertBaseCased carry the class hash of
+  the shipped image and every class resolves (`EmbeddedWeights_*_MatchesWordImage`).

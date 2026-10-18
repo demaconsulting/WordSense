@@ -14,7 +14,7 @@ model for another without code changes.
   can, is, has; always the last sense of a word, after its content senses). Every dictionary word has a lexicon entry.
 - `WordDetails(SenseId, Lemma, PartOfSpeech, Features)`: a sealed record. `SenseId` (a class id such as `bow#weapon`)
   is non-null only for an analysis tied to a sense class; `Features` is the inflection as `Key=Value` pairs joined by
-  `|`, or an empty string.
+  `+` (for example `Person=3+Tense=Pres`), or an empty string.
 - `WordSense(Word, Details, Confidence)`: a readonly record struct. `Word` is the input word as given; `Details` is
   the chosen sense or null when no sense could be chosen; `Confidence` is from 0 to 1 (1 when the word has a single
   sense, 0 when unknown or undecided).

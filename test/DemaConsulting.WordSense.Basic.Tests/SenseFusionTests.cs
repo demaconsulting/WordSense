@@ -5,8 +5,8 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class SenseFusionTests
 {
-    private static readonly WordDetails Fish = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "fish");
-    private static readonly WordDetails Music = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "music");
+    private static readonly WordDetails Fish = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#fish");
+    private static readonly WordDetails Music = WordLexicon.Lookup("bass").First(c => c.SenseId == "bass#music");
     private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
     private static readonly WordDetails Auxiliary = new(null, "bass", PartOfSpeech.Auxiliary, string.Empty);
 

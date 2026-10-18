@@ -26,6 +26,10 @@ sections:
                   - BasicTables_Load_Truncated_Throws
                   - BasicTables_Load_TrailingBytes_Throws
                   - BasicTables_Load_UnorderedHashes_Throws
+                  - BasicTables_Load_OtherClassHash_ThrowsNamingBothHashes
+                  - BasicTables_Load_UnknownClass_Throws
+                  - BasicTables_Load_DuplicateClass_Throws
+                  - LemmaCue_RowOf_AnalysisWithoutClass_UsesMeaninglessColumnOfItsPartOfSpeech
                   - FeatureRef_Hash_PrefixAndDeterminism
 
               - id: WordSense-Basic-BasicTables-Embedded
@@ -37,3 +41,4 @@ sections:
                   The package must work with nothing but its own assembly.
                 tests:
                   - BasicTables_Default_LoadsEmbeddedTable
+                  - BasicTables_Default_ShippedTable_ResolvesEveryCueClass

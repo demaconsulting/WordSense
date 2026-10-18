@@ -10,8 +10,9 @@ sections:
             requirements:
               - id: WordSense-Onnx-LemmaWeights-Format
                 title: >-
-                  The weights reader shall read the binary weights blob of a model: its model identifier, dimension,
-                  mean vector and, per lemma, its senses, bias, abstain margin and weights.
+                  The weights reader shall read the binary weights blob of a model: its model identifier, the class
+                  hash of the word image, dimension, mean vector and, per lemma, its class ids, bias, abstain margin and
+                  weights.
                 tags: [unit]
                 justification: |
                   The trained classifiers ship as one compact blob per model; the reader must reproduce exactly what
@@ -19,41 +20,47 @@ sections:
                 tests:
                   - WordSenseBuilder_WeightsBlobWriter_Write_RoundTripsThroughTheReader
                   - WordSenseBuilder_WeightsBlobWriter_Write_NoLemmas_RoundTrips
+                  - WeightsBlob_Read_OneVersusRestLemma_KeepsClassIds
+                  - WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights
 
               - id: WordSense-Onnx-LemmaWeights-Integrity
                 title: >-
-                  The weights reader shall reject a corrupt, truncated or foreign blob, a part of speech outside the
-                  values of the part-of-speech type, and a flag byte that is neither 0 nor 1, and shall accept every
-                  defined part of speech, determiners included.
+                  The weights reader shall reject a corrupt, truncated or foreign blob, a lemma whose class count does
+                  not fit its kind (a Binary lemma needs exactly two classes), an empty or duplicate class id, a zero
+                  dimension and trailing bytes, and the reader and the writer shall reject any lemma, of every model
+                  kind, whose number of class ids differs from the sense count of its weights.
                 tags: [unit]
                 justification: |
-                  A damaged blob must fail loudly instead of producing silently wrong answers, and a blob that uses a
-                  valid part of speech must not be refused.
+                  A damaged blob must fail loudly instead of producing silently wrong answers.
                 tests:
                   - WeightsBlob_Read_NotCompressed_Throws
                   - WeightsBlob_Read_UnknownMagic_Throws
                   - WeightsBlob_Read_Truncated_Throws
-                  - WeightsBlob_Read_EveryPartOfSpeech_IsAccepted
-                  - WeightsBlob_Read_PartOfSpeechOutOfRange_Throws
-                  - WeightsBlob_Read_PresenceByteOutOfRange_Throws
-                  - WeightsBlob_Read_PresenceByteZeroAndOne_AreAccepted
+                  - WeightsBlob_Read_WrongSenseCountForKind_Throws
+                  - WeightsBlob_Read_BinaryLemmaWithTwoClasses_IsAccepted
+                  - WeightsBlob_Read_EmptyOrDuplicateClassId_Throws
+                  - WeightsBlob_Read_MalformedUtf8Lemma_Throws
+                  - WeightsBlob_Read_ZeroDimension_Throws
+                  - WeightsBlob_Read_TrailingBytes_Throws
+                  - WordSenseBuilder_WeightsBlobWriter_Write_BinaryWithThreeSenses_Throws
+                  - WordSenseBuilder_WeightsBlobWriter_Write_OneVersusRestClassCountMismatch_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Match
                 title: >-
-                  The weighted lemma table shall match the weights of a lemma to the word lexicon by lemma, part of
-                  speech and meaning, and shall keep them only when the trained senses are the first senses of the
-                  lexicon entry, with the same lemma, part of speech and meaning; otherwise the lemma shall be dropped
-                  as a whole.
+                  The weighted lemma table shall resolve the class ids of the weights against the word image at load,
+                  shall refuse weights trained for another class inventory (class hash), an unknown class, a duplicate
+                  class or lemma, and a class count that differs from the weights.
                 tags: [unit]
                 justification: |
-                  Weights score senses by position in the trained classes; a lexicon that disagrees would assign scores
-                  to the wrong senses, so the lemma must have no weights instead. The lexicon may hold more parts of
-                  speech than were trained, and those further senses are never scored.
+                  Weights score senses by class; a table that silently disagreed with the image would assign scores to
+                  the wrong senses, so every disagreement must fail loudly at load.
                 tests:
-                  - WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma
-                  - WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma
-                  - WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma
-                  - WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma
+                  - WeightedLemmaTable_Constructor_KnownClasses_AreFoundById
+                  - WeightedLemmaTable_Constructor_OtherClassHash_ThrowsNamingBothHashes
+                  - WeightedLemmaTable_Constructor_UnknownClass_Throws
+                  - WeightedLemmaTable_Constructor_DuplicateClass_Throws
+                  - WeightedLemmaTable_Constructor_DuplicateLemma_Throws
+                  - WeightedLemmaTable_Constructor_ClassCountMismatch_Throws
                   - WeightedLemmaTable_LoadEmbedded_WrongModelId_Throws
 
               - id: WordSense-Onnx-LemmaWeights-Scoring
@@ -73,12 +80,12 @@ sections:
 
               - id: WordSense-Onnx-LemmaWeights-Embedded
                 title: >-
-                  The weights embedded in each model package shall match the shipped word lexicon completely, so that no
-                  lemma is dropped.
+                  The weights embedded in each model package shall resolve completely against the shipped word image:
+                  the class hash matches and every class of every lemma is known.
                 tags: [unit]
                 justification: |
-                  A dropped lemma silently takes the trained decision away from every ambiguous use of its words; the
-                  shipped lexicon and weights must always have been built together.
+                  A weights blob trained against another class inventory would score the wrong senses; the shipped image
+                  and weights must always have been built together.
                 tests:
-                  - EmbeddedWeights_MiniLM_DropsNoLemma
-                  - EmbeddedWeights_BertBaseCased_DropsNoLemma
+                  - EmbeddedWeights_MiniLM_MatchesWordImage
+                  - EmbeddedWeights_BertBaseCased_MatchesWordImage

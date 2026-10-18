@@ -28,13 +28,15 @@ internal static class TestTables
     /// <param name="cues">The cue tables.</param>
     /// <param name="hmmWeight">The weight of the tagger.</param>
     /// <param name="invTemperature">The inverse temperature of the cues.</param>
+    /// <param name="classHash">The class hash to write, or null for the hash of the embedded word image.</param>
     /// <returns>The compressed blob.</returns>
     public static byte[] Build(
         (string Word, int ClosedMask, int[] Counts)[] words,
         (string Suffix, int[] Counts)[] suffixes,
         (string Lemma, CueSense[] Senses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight = 1.5,
-        double invTemperature = 0.5) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature));
+        double invTemperature = 0.5,
+        byte[]? classHash = null) => Compress(Raw(words, suffixes, cues, hmmWeight, invTemperature, classHash));
 
     /// <summary>
     ///     Builds the toy table used by most tests: a few closed-class words, the verb and noun "record" and the
@@ -64,7 +66,7 @@ internal static class TestTables
             [
                 (
                     "bass",
-                    [new CueSense(PartOfSpeech.Noun, "fish", -8), new CueSense(PartOfSpeech.Noun, "music", -8)],
+                    [new CueSense("bass#fish", -8) { HasMeaning = true }, new CueSense("bass#music", -8) { HasMeaning = true }],
                     HeteronymHashes(),
                     HeteronymWeights()),
             ]);
@@ -129,10 +131,12 @@ internal static class TestTables
         (string Suffix, int[] Counts)[] suffixes,
         (string Lemma, CueSense[] Senses, ushort[] Hashes, sbyte[] Weights)[] cues,
         double hmmWeight,
-        double invTemperature)
+        double invTemperature,
+        byte[]? classHash = null)
     {
         using var raw = new MemoryStream();
-        raw.Write("WSB1"u8);
+        raw.Write("WSB2"u8);
+        raw.Write(classHash ?? WordLexicon.Current.ClassHash);
         foreach (var value in new[] { 0.75, 5, 0.1, 0.3, 0.6, hmmWeight, invTemperature })
         {
             var bytes = new byte[8];
@@ -202,9 +206,9 @@ internal static class TestTables
             Varint(raw, senses.Length);
             foreach (var sense in senses)
             {
-                raw.WriteByte((byte)sense.PartOfSpeech);
-                Text(raw, sense.Meaning ?? string.Empty);
+                Text(raw, sense.ClassId);
                 raw.WriteByte((byte)sense.Prior);
+                raw.WriteByte(sense.HasMeaning ? (byte)1 : (byte)0);
             }
 
             Varint(raw, hashes.Length);

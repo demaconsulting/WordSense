@@ -175,17 +175,9 @@ internal sealed class LemmaWeights
 }
 
 /// <summary>
-///     The identity of one weighted sense: the same triple that identifies a sense in the word lexicon.
+///     The senses and trained weights of one lemma group, as stored in a weights blob.
 /// </summary>
-/// <param name="Lemma">The lemma.</param>
-/// <param name="PartOfSpeech">The part of speech.</param>
-/// <param name="Meaning">The pronunciation meaning, or null when the lemma is not a heteronym.</param>
-internal sealed record WeightedWord(string Lemma, PartOfSpeech PartOfSpeech, string? Meaning);
-
-/// <summary>
-///     The senses and trained weights of one lemma, as stored in a weights blob.
-/// </summary>
-/// <param name="Lemma">The lemma.</param>
-/// <param name="Senses">The senses in score order.</param>
-/// <param name="Weights">The trained classifier; it scores exactly these senses.</param>
-internal sealed record WeightedLemma(string Lemma, IReadOnlyList<WeightedWord> Senses, LemmaWeights Weights);
+/// <param name="Lemma">The name of the lemma group (the trained lemma); it is a label of the blob, not a key into the lexicon.</param>
+/// <param name="ClassIds">The ids of the classes (the sense ids of the public API) in score order: column <c>i</c> of the weights scores class <c>i</c>.</param>
+/// <param name="Weights">The trained classifier; it scores exactly these classes.</param>
+internal sealed record WeightedLemma(string Lemma, IReadOnlyList<string> ClassIds, LemmaWeights Weights);

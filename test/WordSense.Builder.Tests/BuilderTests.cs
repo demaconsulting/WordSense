@@ -399,14 +399,13 @@ public sealed class BuilderTests : IDisposable
     {
         var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
         var legacy = WordsBuilder.Build(corpus);
-        var words = DemaConsulting.WordSense.WordLexicon.View;
         var problems = new List<string>();
 
         foreach (var (spelling, expected) in legacy)
         {
-            var actual = words.TryGetValue(spelling, out var found) ? found : [];
-            var left = expected.Select(d => (d.PartOfSpeech, d.Meaning)).ToArray();
-            var right = actual.Select(d => (d.PartOfSpeech, DemaConsulting.WordSense.WordLexicon.MeaningOf(d))).ToArray();
+            var actual = DemaConsulting.WordSense.WordLexicon.Lookup(spelling);
+            var left = expected.Select(d => d.PartOfSpeech).ToArray();
+            var right = actual.Select(d => d.PartOfSpeech).ToArray();
             if (!left.SequenceEqual(right))
             {
                 problems.Add($"{spelling}: [{string.Join(",", left)}] vs [{string.Join(",", right)}]");
@@ -414,7 +413,7 @@ public sealed class BuilderTests : IDisposable
         }
 
         Assert.True(problems.Count == 0, $"{problems.Count} spellings differ from the legacy table: " + string.Join(" | ", problems.Take(30)));
-        Assert.Equal(legacy.Count, words.Count);
+        Assert.Equal(legacy.Count, DemaConsulting.WordSense.WordLexicon.Count);
     }
 
     /// <summary>
@@ -672,12 +671,12 @@ public sealed class BuilderTests : IDisposable
         var root = FindRepositoryRoot();
         var committed = File.ReadAllBytes(Path.Combine(root.FullName, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
 
-        var (image, result) = ImageCompiler.Build(Path.Combine(root.FullName, "data"), Path.Combine(root.FullName, "corpus"));
+        var (image, result) = ImageCompiler.Build(Path.Combine(root.FullName, "data"));
 
         var open = DemaConsulting.WordSense.WordImage.Open(committed);
         var fresh = DemaConsulting.WordSense.WordImage.Open(image);
         Assert.True(
-            open.DataHash.SequenceEqual(ImageCompiler.DataHash(Path.Combine(root.FullName, "data"), Path.Combine(root.FullName, "corpus"))),
+            open.DataHash.SequenceEqual(ImageCompiler.DataHash(Path.Combine(root.FullName, "data"))),
             "src/DemaConsulting.WordSense/Resources/wordsense.img is stale; run the 'compile-image' command.");
         Assert.Equal(result.Spellings, open.SpellingCount);
         Assert.Equal(result.Entries, open.EntryCount);
@@ -697,7 +696,7 @@ public sealed class BuilderTests : IDisposable
     {
         var root = FindRepositoryRoot();
         var lexicon = LexiconSource.ReadWords(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv"));
-        var table = DemaConsulting.WordSense.WordLexicon.View;
+        var table = new LexiconView();
 
         var missing = lexicon.Where(w => !table.ContainsKey(w.Word)).Select(w => w.Word).Take(10).ToList();
         Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from the word image: " + string.Join(", ", missing));
@@ -725,7 +724,7 @@ public sealed class BuilderTests : IDisposable
     {
         var root = FindRepositoryRoot();
         var corpus = Path.Combine(root.FullName, "corpus");
-        var table = DemaConsulting.WordSense.WordLexicon.View;
+        var table = new LexiconView();
         var dictionary = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
         var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
         var checkedForms = 0;
@@ -763,7 +762,7 @@ public sealed class BuilderTests : IDisposable
     [Fact]
     public void WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra()
     {
-        var table = DemaConsulting.WordSense.WordLexicon.View;
+        var table = new LexiconView();
         var expected = new (string Form, string Lemma, PartOfSpeech[] Extras)[]
         {
             ("bent", "bend", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
@@ -814,6 +813,27 @@ public sealed class BuilderTests : IDisposable
 
         var measured = result.RenderTableRow().Split('|')[..6];
         Assert.Equal(measured, committed);
+    }
+
+    /// <summary>
+    ///     A dictionary-style view of the word lexicon for the checks of this class.
+    /// </summary>
+    private sealed class LexiconView
+    {
+        /// <summary>
+        ///     Gets the analyses of a spelling, or an empty array when the lexicon does not know it.
+        /// </summary>
+        /// <param name="word">The spelling.</param>
+        /// <returns>The analyses.</returns>
+        public System.Collections.Immutable.ImmutableArray<DemaConsulting.WordSense.WordDetails> this[string word] =>
+            DemaConsulting.WordSense.WordLexicon.Lookup(word);
+
+        /// <summary>
+        ///     Checks whether the lexicon knows a spelling.
+        /// </summary>
+        /// <param name="word">The spelling.</param>
+        /// <returns>True when the spelling is known.</returns>
+        public bool ContainsKey(string word) => !this[word].IsDefaultOrEmpty;
     }
 
     private static DirectoryInfo FindRepositoryRoot()
