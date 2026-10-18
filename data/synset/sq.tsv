@@ -1,0 +1,147 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00008595-v	v		verb.body
+oewn-00008792-v	v		verb.body
+oewn-00051806-r	r		adv.all
+oewn-00051978-r	r		adv.all
+oewn-00052564-r	r		adv.all
+oewn-00145268-v	v		verb.change
+oewn-00227186-n	n		noun.act
+oewn-00306680-s	s	oewn-00304526-a	adj.all
+oewn-00321354-s	s	oewn-00320432-a	adj.all
+oewn-00345768-n	n		noun.act
+oewn-00350531-n	n		noun.act
+oewn-00357849-n	n		noun.act
+oewn-00466916-r	r		adv.all
+oewn-00480898-n	n		noun.act
+oewn-00540988-n	n		noun.act
+oewn-00565747-n	n		noun.act
+oewn-00610234-s	s	oewn-00609798-a	adj.all
+oewn-00641798-v	v		verb.cognition
+oewn-00745120-n	n		noun.act
+oewn-00745302-n	n		noun.act
+oewn-00769662-s	s	oewn-00767444-a	adj.all
+oewn-00880006-n	n		noun.act
+oewn-00898386-n	n		noun.act
+oewn-01036008-s	s	oewn-01035697-a	adj.all
+oewn-01049135-v	v		verb.communication
+oewn-01097543-s	s	oewn-01097016-a	adj.all
+oewn-01210369-s	s	oewn-01209146-a	adj.all
+oewn-01250248-v	v		verb.contact
+oewn-01352000-v	v		verb.contact
+oewn-01395444-v	v		verb.contact
+oewn-01450487-v	v		verb.contact
+oewn-01453072-s	s	oewn-01452455-a	adj.all
+oewn-01453302-n	n		noun.animal
+oewn-01616493-v	v		verb.contact
+oewn-01660077-s	s	oewn-01659588-a	adj.all
+oewn-01714134-s	s	oewn-01712702-a	adj.all
+oewn-01817190-n	n		noun.animal
+oewn-01872363-v	v		verb.motion
+oewn-01902886-v	v		verb.motion
+oewn-01905875-n	n		noun.animal
+oewn-01930547-s	s	oewn-01929790-a	adj.all
+oewn-01973921-n	n		noun.animal
+oewn-01991507-v	v		verb.motion
+oewn-02030049-v	v		verb.motion
+oewn-02047170-s	s	oewn-02045115-a	adj.all
+oewn-02050637-a	a		adj.all
+oewn-02051149-s	s	oewn-02050637-a	adj.all
+oewn-02051226-s	s	oewn-02050637-a	adj.all
+oewn-02056663-s	s	oewn-02055227-a	adj.all
+oewn-02067153-v	v		verb.motion
+oewn-02172514-v	v		verb.perception
+oewn-02183723-v	v		verb.perception
+oewn-02232546-s	s	oewn-02229911-a	adj.all
+oewn-02249187-s	s	oewn-02246206-a	adj.all
+oewn-02258149-v	v		verb.possession
+oewn-02321356-s	s	oewn-02319224-a	adj.all
+oewn-02326142-a	a		adj.all
+oewn-02357879-n	n		noun.animal
+oewn-02396638-s	s	oewn-02395180-a	adj.all
+oewn-02409218-v	v		verb.social
+oewn-02511717-v	v		verb.social
+oewn-02607644-s	s	oewn-02607430-a	adj.all
+oewn-02637488-n	n		noun.animal
+oewn-02655814-v	v		verb.stative
+oewn-02665619-v	v		verb.stative
+oewn-02665734-v	v		verb.stative
+oewn-02731437-v	v		verb.stative
+oewn-02775977-v	v		verb.weather
+oewn-02810620-a	a		adj.pert
+oewn-02810700-a	a		adj.pert
+oewn-03166154-a	a		adj.ppl
+oewn-04298013-n	n		noun.artifact
+oewn-04298083-n	n		noun.artifact
+oewn-04298207-n	n		noun.artifact
+oewn-04298380-n	n		noun.artifact
+oewn-04298649-n	n		noun.artifact
+oewn-04298897-n	n		noun.artifact
+oewn-04299050-n	n		noun.artifact
+oewn-04299130-n	n		noun.artifact
+oewn-04299218-n	n		noun.artifact
+oewn-04299359-n	n		noun.artifact
+oewn-04299451-n	n		noun.artifact
+oewn-04299871-n	n		noun.artifact
+oewn-04300059-n	n		noun.artifact
+oewn-04300257-n	n		noun.artifact
+oewn-04300396-n	n		noun.artifact
+oewn-04300588-n	n		noun.artifact
+oewn-04300882-n	n		noun.artifact
+oewn-04301040-n	n		noun.artifact
+oewn-04568834-n	n		noun.artifact
+oewn-04904329-n	n		noun.attribute
+oewn-05079575-n	n		noun.attribute
+oewn-05145043-n	n		noun.attribute
+oewn-05250271-n	n		noun.body
+oewn-06416059-n	n		noun.communication
+oewn-07076491-n	n		noun.communication
+oewn-07365631-n	n		noun.event
+oewn-07410046-n	n		noun.event
+oewn-07410223-n	n		noun.event
+oewn-07410377-n	n		noun.event
+oewn-07410467-n	n		noun.event
+oewn-07589128-n	n		noun.food
+oewn-07642442-n	n		noun.food
+oewn-07731306-n	n		noun.food
+oewn-08225481-n	n		noun.group
+oewn-08235043-n	n		noun.group
+oewn-08236689-n	n		noun.group
+oewn-08237010-n	n		noun.group
+oewn-08237149-n	n		noun.group
+oewn-08285006-n	n		noun.group
+oewn-10661897-n	n		noun.person
+oewn-10661994-n	n		noun.person
+oewn-10662103-n	n		noun.person
+oewn-10662243-n	n		noun.person
+oewn-10662493-n	n		noun.person
+oewn-10662798-n	n		noun.person
+oewn-10662895-n	n		noun.person
+oewn-10663023-n	n		noun.person
+oewn-10663166-n	n		noun.person
+oewn-10663276-n	n		noun.person
+oewn-10663376-n	n		noun.person
+oewn-10800912-n	n		noun.person
+oewn-11481361-n	n		noun.phenomenon
+oewn-11534441-n	n		noun.phenomenon
+oewn-12179315-n	n		noun.plant
+oewn-12483310-n	n		noun.plant
+oewn-13176694-n	n		noun.plant
+oewn-13348525-n	n		noun.possession
+oewn-13634186-n	n		noun.quantity
+oewn-13634303-n	n		noun.quantity
+oewn-13634420-n	n		noun.quantity
+oewn-13634689-n	n		noun.quantity
+oewn-13753980-n	n		noun.quantity
+oewn-13901590-n	n		noun.shape
+oewn-13960951-n	n		noun.state
+oewn-14581007-n	n		noun.state
+oewn-14790368-n	n		noun.substance
+oewn-91001101-v	v		verb.competition
+oewn-92406068-n	n		noun.quantity
+oewn-92412942-n	n		noun.quantity
+oewn-92430218-n	n		noun.attribute
+oewn-92459654-n	n		noun.artifact
+oewn-92465792-n	n		noun.communication
+oewn-92467769-n	n		noun.quantity
+oewn-92467772-n	n		noun.quantity
+oewn-92471046-n	n		noun.shape

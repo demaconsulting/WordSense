@@ -1,0 +1,51 @@
+synset_id	pos	head_synset_id	lexfile
+oewn-00001740-r	r		adv.all
+oewn-00001885-r	r		adv.all
+oewn-00034050-r	r		adv.all
+oewn-00059709-r	r		adv.all
+oewn-00059951-r	r		adv.all
+oewn-00064021-r	r		adv.all
+oewn-00140180-a	a		adj.all
+oewn-00140394-a	a		adj.all
+oewn-00252773-r	r		adv.all
+oewn-00252994-r	r		adv.all
+oewn-00253080-r	r		adv.all
+oewn-00259491-r	r		adv.all
+oewn-00271877-r	r		adv.all
+oewn-00346455-r	r		adv.all
+oewn-00361728-r	r		adv.all
+oewn-00500380-r	r		adv.all
+oewn-00547107-n	n		noun.act
+oewn-00862537-s	s	oewn-00862104-a	adj.all
+oewn-00864296-s	s	oewn-00863798-a	adj.all
+oewn-00903806-n	n		noun.act
+oewn-00974685-s	s	oewn-00974254-a	adj.all
+oewn-01126669-s	s	oewn-01126538-a	adj.all
+oewn-01557697-s	s	oewn-01557242-a	adj.all
+oewn-02260096-s	s	oewn-02259926-a	adj.all
+oewn-02349970-s	s	oewn-02349336-a	adj.all
+oewn-02462237-a	a		adj.all
+oewn-02559004-n	n		noun.animal
+oewn-02669254-n	n		noun.artifact
+oewn-02700080-n	n		noun.artifact
+oewn-02756049-n	n		noun.artifact
+oewn-04047719-n	n		noun.artifact
+oewn-05408203-n	n		noun.body
+oewn-06497120-n	n		noun.communication
+oewn-06509108-n	n		noun.communication
+oewn-06844227-n	n		noun.communication
+oewn-08093871-n	n		noun.group
+oewn-08363213-n	n		noun.group
+oewn-13658855-n	n		noun.quantity
+oewn-13679721-n	n		noun.quantity
+oewn-14454441-n	n		noun.state
+oewn-14731050-n	n		noun.substance
+oewn-14853735-n	n		noun.substance
+oewn-15114370-n	n		noun.substance
+oewn-84502472-n	n		noun.time
+oewn-92417546-n	n		noun.attribute
+oewn-92417547-n	n		noun.attribute
+oewn-92417549-n	n		noun.attribute
+oewn-92417550-n	n		noun.attribute
+oewn-92417551-n	n		noun.attribute
+oewn-92422353-n	n		noun.attribute
