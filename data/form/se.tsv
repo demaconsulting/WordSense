@@ -1,0 +1,3921 @@
+spelling	rank	entry_id	features	source_id	reviewed
+sea	0	oewn-sea-n	Number=Sing	dema	0
+seaboard	0	oewn-seaboard-n	Number=Sing	dema	0
+seaboards	0	oewn-seaboard-n	Number=Plur	dema	0
+seaborne	0	oewn-seaborne-a	Degree=Pos	dema	0
+seabornely	0	dema-seaborne-r		dema	0
+seaborneness	0	dema-seaborne-n	Number=Plur	dema	0
+seaborner	0	oewn-seaborne-a	Degree=Cmp	dema	0
+seabornest	0	oewn-seaborne-a	Degree=Sup	dema	0
+seacoast	0	oewn-seacoast-n	Number=Sing	dema	0
+seacoasts	0	oewn-seacoast-n	Number=Plur	dema	0
+seacock	0	dema-seacock-n	Number=Sing	dema	0
+seacocks	0	dema-seacock-n	Number=Plur	dema	0
+seadog	0	dema-seadog-n	Number=Sing	dema	0
+seadogs	0	dema-seadog-n	Number=Plur	dema	0
+seadrome	0	dema-seadrome-n	Number=Sing	dema	0
+seadromes	0	dema-seadrome-n	Number=Plur	dema	0
+seafarer	0	oewn-seafarer-n	Number=Sing	dema	0
+seafarers	0	oewn-seafarer-n	Number=Plur	dema	0
+seafaring	0	oewn-seafaring-a	Degree=Pos	dema	0
+seafaring	1	oewn-seafaring-n	Number=Sing	dema	0
+seafaringly	0	dema-seafaring-r		dema	0
+seafaringness	0	oewn-seafaring-n	Number=Plur	dema	0
+seafarings	0	oewn-seafaring-n	Number=Plur	dema	0
+seafighter	0	dema-seafighter-n	Number=Sing	dema	0
+seafighters	0	dema-seafighter-n	Number=Plur	dema	0
+seafood	0	oewn-seafood-n	Number=Sing	dema	0
+seafoods	0	oewn-seafood-n	Number=Plur	dema	0
+seafowl	0	oewn-seafowl-n	Number=Sing	dema	0
+seafowls	0	dema-seafowls-n	Number=Sing	dema	0
+seafront	0	oewn-seafront-n	Number=Sing	dema	0
+seafronts	0	oewn-seafront-n	Number=Plur	dema	0
+seagirt	0	oewn-seagirt-a	Degree=Pos	dema	0
+seagirter	0	oewn-seagirt-a	Degree=Cmp	dema	0
+seagirtest	0	oewn-seagirt-a	Degree=Sup	dema	0
+seagirtly	0	dema-seagirt-r		dema	0
+seagirtness	0	dema-seagirt-n	Number=Plur	dema	0
+seagoing	0	oewn-seagoing-a	Degree=Pos	dema	0
+seagoing	1	dema-seagoing-v	VerbForm=Inf	dema	0
+seagoinged	0	dema-seagoing-v	Tense=Past	dema	0
+seagoinger	0	dema-seagoing-n	Number=Plur	dema	0
+seagoingers	0	dema-seagoing-n	Number=Plur	dema	0
+seagoinging	0	dema-seagoing-v	VerbForm=Ger	dema	0
+seagoingingly	0	dema-seagoing-r		dema	0
+seagoingly	0	dema-seagoing-r		dema	0
+seagoingness	0	dema-seagoing-n	Number=Plur	dema	0
+seagoings	0	dema-seagoing-v	Person=3+Tense=Pres	dema	0
+seakindliness	0	dema-seakindliness-n	Number=Sing	dema	0
+seakindlinesses	0	dema-seakindliness-n	Number=Plur	dema	0
+seal	0	oewn-seal-n	Number=Sing	dema	1
+seal	1	oewn-seal-v	VerbForm=Inf	dema	1
+sealable	0	dema-sealable-a	Degree=Pos	dema	0
+sealableness	0	dema-sealable-n	Number=Plur	dema	0
+sealably	0	dema-sealable-r		dema	0
+sealant	0	oewn-sealant-n	Number=Sing	dema	0
+sealants	0	oewn-sealant-n	Number=Plur	dema	0
+sealed	0	oewn-seal-v	Tense=Past	dema	1
+sealed	1	oewn-sealed-a	Degree=Pos	dema	0
+sealedly	0	dema-sealed-r		dema	0
+sealer	0	oewn-sealer-n	Number=Sing	dema	0
+sealeries	0	dema-sealery-n	Number=Plur	dema	0
+sealers	0	oewn-seal-n	Number=Plur	dema	1
+sealery	0	dema-sealery-n	Number=Sing	dema	0
+sealing	0	oewn-seal-n	Number=Plur	dema	1
+sealing	1	oewn-seal-v	VerbForm=Ger	dema	1
+sealingly	0	dema-seal-r		dema	0
+seallike	0	dema-seallike-a	Degree=Pos	dema	0
+seallikely	0	dema-seallike-r		dema	0
+seallikeness	0	dema-seallike-n	Number=Plur	dema	0
+sealliker	0	dema-seallike-a	Degree=Cmp	dema	0
+seallikest	0	dema-seallike-a	Degree=Sup	dema	0
+seals	0	oewn-seal-n	Number=Plur	dema	1
+seals	1	oewn-seal-v	Person=3+Tense=Pres	dema	1
+sealskin	0	oewn-sealskin-n	Number=Sing	dema	0
+sealskins	0	oewn-sealskin-n	Number=Plur	dema	0
+seam	0	oewn-seam-n	Number=Sing	dema	0
+seam	1	oewn-seam-v	VerbForm=Inf	dema	0
+seaman	0	oewn-seaman-n	Number=Sing	dema	0
+seaman	1	dema-seaman-r	Degree=Pos	dema	0
+seamanlike	0	oewn-seamanlike-a	Degree=Pos	dema	0
+seamanlikely	0	dema-seamanlike-r		dema	0
+seamanlikeness	0	dema-seamanlike-n	Number=Plur	dema	0
+seamanship	0	oewn-seamanship-n	Number=Sing	dema	0
+seamanships	0	oewn-seamanship-n	Number=Plur	dema	0
+seamark	0	dema-seamark-n	Number=Sing	dema	0
+seamarks	0	dema-seamark-n	Number=Plur	dema	0
+seamed	0	oewn-seam-v	Tense=Past	dema	0
+seamen	0	oewn-seaman-n	Number=Plur	dema	0
+seamer	0	dema-seamer-n	Number=Sing	dema	0
+seamers	0	oewn-seam-n	Number=Plur	dema	0
+seamier	0	dema-seamier-a	Degree=Pos	dema	0
+seamierly	0	dema-seamier-r		dema	0
+seamiest	0	dema-seamiest-a	Degree=Pos	dema	0
+seamiestly	0	dema-seamiest-r		dema	0
+seamily	0	dema-seamy-r		dema	0
+seaminess	0	dema-seaminess-n	Number=Sing	dema	0
+seaminesses	0	dema-seaminess-n	Number=Plur	dema	0
+seaming	0	oewn-seam-v	VerbForm=Ger	dema	0
+seamingly	0	dema-seam-r		dema	0
+seamless	0	oewn-seamless-a	Degree=Pos	dema	0
+seamlessly	0	dema-seamlessly-r	Degree=Pos	dema	0
+seamlessness	0	dema-seamlessness-n	Number=Sing	dema	0
+seamlessnesses	0	dema-seamlessness-n	Number=Plur	dema	0
+seamount	0	oewn-seamount-n	Number=Sing	dema	0
+seamounts	0	oewn-seamount-n	Number=Plur	dema	0
+seams	0	oewn-seam-n	Number=Plur	dema	0
+seams	1	oewn-seam-v	Person=3+Tense=Pres	dema	0
+seamstress	0	oewn-seamstress-n	Number=Sing	dema	0
+seamstresses	0	oewn-seamstress-n	Number=Plur	dema	0
+seamy	0	oewn-seamy-a	Degree=Pos	dema	0
+seance	0	oewn-seance-n	Number=Sing	dema	0
+seances	0	oewn-seance-n	Number=Plur	dema	0
+seaplane	0	oewn-seaplane-n	Number=Sing	dema	0
+seaplanes	0	oewn-seaplane-n	Number=Plur	dema	0
+seaport	0	oewn-seaport-n	Number=Sing	dema	0
+seaports	0	oewn-seaport-n	Number=Plur	dema	0
+seaquake	0	oewn-seaquake-n	Number=Sing	dema	0
+seaquakes	0	oewn-seaquake-n	Number=Plur	dema	0
+sear	0	oewn-sear-v	VerbForm=Inf	dema	0
+sear	1	dema-sear-n	Number=Sing	dema	0
+sear	2	oewn-sear-a	Degree=Pos	dema	0
+search	0	oewn-search-v	VerbForm=Inf	dema	0
+search	1	oewn-search-n	Number=Sing	dema	0
+searchable	0	dema-searchable-a	Degree=Pos	dema	0
+searchableness	0	dema-searchableness-n	Number=Sing	dema	0
+searchablenesses	0	dema-searchableness-n	Number=Plur	dema	0
+searchably	0	dema-searchable-r		dema	0
+searched	0	oewn-search-v	Tense=Past	dema	0
+searcher	0	oewn-searcher-n	Number=Sing	dema	0
+searchers	0	oewn-search-n	Number=Plur	dema	0
+searches	0	oewn-search-v	Person=3+Tense=Pres	dema	0
+searches	1	oewn-search-n	Number=Plur	dema	0
+searching	0	oewn-searching-a	Degree=Pos	dema	0
+searching	1	dema-searching-v	VerbForm=Inf	dema	0
+searchingly	0	oewn-searchingly-r	Degree=Pos	dema	0
+searchingness	0	dema-searchingness-n	Number=Sing	dema	0
+searchingnesses	0	dema-searchingness-n	Number=Plur	dema	0
+searchlight	0	oewn-searchlight-n	Number=Sing	dema	0
+searchlights	0	oewn-searchlight-n	Number=Plur	dema	0
+searchs	0	oewn-search-v	Person=3+Tense=Pres	dema	0
+searchs	1	oewn-search-n	Number=Plur	dema	0
+seared	0	oewn-sear-v	Tense=Past	dema	0
+searer	0	dema-sear-n	Number=Plur	dema	0
+searer	1	oewn-sear-a	Degree=Cmp	dema	0
+searers	0	dema-sear-n	Number=Plur	dema	0
+searest	0	oewn-sear-a	Degree=Sup	dema	0
+searing	0	oewn-sear-v	VerbForm=Ger	dema	0
+searingly	0	dema-sear-r		dema	0
+searly	0	dema-sear-r		dema	0
+searness	0	dema-sear-n	Number=Plur	dema	0
+searoving	0	dema-searoving-a	Degree=Pos	dema	0
+searoving	1	dema-searoving-n	Number=Sing	dema	0
+searovingly	0	dema-searoving-r		dema	0
+searovingness	0	dema-searoving-n	Number=Plur	dema	0
+searovings	0	dema-searoving-n	Number=Plur	dema	0
+sears	0	oewn-sear-v	Person=3+Tense=Pres	dema	0
+sears	1	dema-sear-n	Number=Plur	dema	0
+seas	0	oewn-sea-n	Number=Plur	dema	0
+seascape	0	oewn-seascape-n	Number=Sing	dema	0
+seascapes	0	oewn-seascape-n	Number=Plur	dema	0
+seascout	0	dema-seascout-n	Number=Sing	dema	0
+seascouting	0	dema-seascouting-n	Number=Sing	dema	0
+seascoutings	0	dema-seascouting-n	Number=Plur	dema	0
+seascouts	0	dema-seascout-n	Number=Plur	dema	0
+seashell	0	oewn-seashell-n	Number=Sing	dema	0
+seashells	0	oewn-seashell-n	Number=Plur	dema	0
+seashore	0	oewn-seashore-n	Number=Sing	dema	0
+seashores	0	oewn-seashore-n	Number=Plur	dema	0
+seasick	0	oewn-seasick-a	Degree=Pos	dema	0
+seasick	1	dema-seasick-n	Number=Sing	dema	0
+seasicker	0	oewn-seasick-a	Degree=Cmp	dema	0
+seasickest	0	oewn-seasick-a	Degree=Sup	dema	0
+seasickly	0	dema-seasick-r		dema	0
+seasickness	0	oewn-seasickness-n	Number=Sing	dema	0
+seasicknesses	0	oewn-seasickness-n	Number=Plur	dema	0
+seasicks	0	dema-seasick-n	Number=Plur	dema	0
+seaside	0	oewn-seaside-n	Number=Sing	dema	0
+seasides	0	oewn-seaside-n	Number=Plur	dema	0
+season	0	oewn-season-n	Number=Sing	dema	1
+season	1	oewn-season-v	VerbForm=Inf	dema	1
+seasonable	0	oewn-seasonable-a	Degree=Pos	dema	0
+seasonableness	0	oewn-seasonableness-n	Number=Sing	dema	0
+seasonablenesses	0	oewn-seasonableness-n	Number=Plur	dema	0
+seasonably	0	oewn-seasonably-r	Degree=Pos	dema	0
+seasonal	0	oewn-seasonal-a	Degree=Pos	dema	0
+seasonally	0	oewn-seasonally-r	Degree=Pos	dema	0
+seasonalness	0	dema-seasonalness-n	Number=Sing	dema	0
+seasonalnesses	0	dema-seasonalness-n	Number=Plur	dema	0
+seasoned	0	oewn-season-v	Tense=Past	dema	1
+seasonedly	0	dema-seasonedly-r	Degree=Pos	dema	0
+seasoner	0	oewn-seasoner-n	Number=Sing	dema	0
+seasoners	0	oewn-season-n	Number=Plur	dema	1
+seasoning	0	oewn-season-n	Number=Plur	dema	1
+seasoning	1	oewn-season-v	VerbForm=Ger	dema	1
+seasoningly	0	dema-season-r		dema	0
+seasonings	0	oewn-seasoning-n	Number=Plur	dema	0
+seasonless	0	dema-seasonless-a	Degree=Pos	dema	0
+seasonlessly	0	dema-seasonless-r		dema	0
+seasonlessness	0	dema-seasonless-n	Number=Plur	dema	0
+seasonned	0	oewn-season-v	Tense=Past	dema	1
+seasonning	0	oewn-season-n	Number=Plur	dema	1
+seasonning	1	oewn-season-v	VerbForm=Ger	dema	1
+seasons	0	oewn-season-n	Number=Plur	dema	1
+seasons	1	oewn-season-v	Person=3+Tense=Pres	dema	1
+seat	0	oewn-seat-n	Number=Sing	dema	1
+seat	1	oewn-seat-v	VerbForm=Inf	dema	1
+seated	0	oewn-seat-v	Tense=Past	dema	1
+seater	0	dema-seater-n	Number=Sing	dema	0
+seaters	0	oewn-seat-n	Number=Plur	dema	1
+seating	0	oewn-seat-n	Number=Plur	dema	1
+seating	1	oewn-seat-v	VerbForm=Ger	dema	1
+seatingly	0	dema-seat-r		dema	0
+seatings	0	oewn-seating-n	Number=Plur	dema	0
+seatless	0	dema-seatless-a	Degree=Pos	dema	0
+seatlessly	0	dema-seatless-r		dema	0
+seatlessness	0	dema-seatless-n	Number=Plur	dema	0
+seatrain	0	dema-seatrain-n	Number=Sing	dema	0
+seatrains	0	dema-seatrain-n	Number=Plur	dema	0
+seats	0	oewn-seat-n	Number=Plur	dema	1
+seats	1	oewn-seat-v	Person=3+Tense=Pres	dema	1
+seatwork	0	dema-seatwork-n	Number=Sing	dema	0
+seatworks	0	dema-seatwork-n	Number=Plur	dema	0
+seawan	0	dema-seawan-n	Number=Sing	dema	0
+seawans	0	dema-seawan-n	Number=Plur	dema	0
+seaward	0	oewn-seaward-r	Degree=Pos	dema	0
+seaward	1	oewn-seaward-a	Degree=Pos	dema	0
+seawarder	0	oewn-seaward-r	Degree=Cmp	dema	0
+seawarder	1	oewn-seaward-a	Degree=Cmp	dema	0
+seawardest	0	oewn-seaward-r	Degree=Sup	dema	0
+seawardest	1	oewn-seaward-a	Degree=Sup	dema	0
+seawardly	0	oewn-seaward-r		dema	0
+seawardness	0	oewn-seaward-n	Number=Plur	dema	0
+seawards	0	oewn-seawards-r	Degree=Pos	dema	0
+seaware	0	dema-seaware-n	Number=Sing	dema	0
+seawares	0	dema-seaware-n	Number=Plur	dema	0
+seaway	0	oewn-seaway-n	Number=Sing	dema	0
+seaways	0	oewn-seaway-n	Number=Plur	dema	0
+seaweed	0	oewn-seaweed-n	Number=Sing	dema	0
+seaweeds	0	oewn-seaweed-n	Number=Plur	dema	0
+seaworthily	0	dema-seaworthy-r		dema	0
+seaworthiness	0	oewn-seaworthiness-n	Number=Sing	dema	0
+seaworthinesses	0	oewn-seaworthiness-n	Number=Plur	dema	0
+seaworthy	0	oewn-seaworthy-a	Degree=Pos	dema	0
+sebaceous	0	oewn-sebaceous-a	Degree=Pos	dema	0
+sebaceously	0	dema-sebaceous-r		dema	0
+sebaceousness	0	dema-sebaceous-n	Number=Plur	dema	0
+sebacic	0	dema-sebacic-a	Degree=Pos	dema	0
+sebacically	0	dema-sebacic-r		dema	0
+sebacicness	0	dema-sebacic-n	Number=Plur	dema	0
+sebiferous	0	dema-sebiferous-a	Degree=Pos	dema	0
+sebiferously	0	dema-sebiferous-r		dema	0
+seborrhea	0	oewn-seborrhea-n	Number=Sing	dema	0
+seborrheal	0	dema-seborrheal-a	Degree=Pos	dema	0
+seborrheally	0	dema-seborrheal-r		dema	0
+seborrhealness	0	dema-seborrheal-n	Number=Plur	dema	0
+seborrheas	0	oewn-seborrhea-n	Number=Plur	dema	0
+seborrheic	0	dema-seborrheic-a	Degree=Pos	dema	0
+seborrheically	0	dema-seborrheic-r		dema	0
+seborrheicness	0	dema-seborrheic-n	Number=Plur	dema	0
+seborrhoea	0	dema-seborrhoea-n	Number=Sing	dema	0
+seborrhoeas	0	dema-seborrhoea-n	Number=Plur	dema	0
+sebum	0	oewn-sebum-n	Number=Sing	dema	0
+sebums	0	oewn-sebum-n	Number=Plur	dema	0
+sec	0	oewn-sec-a	Degree=Pos	dema	0
+sec	1	oewn-sec-n	Number=Sing	dema	0
+secant	0	oewn-secant-n	Number=Sing	dema	0
+secantly	0	dema-secantly-r	Degree=Pos	dema	0
+secants	0	oewn-secant-n	Number=Plur	dema	0
+secateurs	0	oewn-secateurs-n	Number=Sing	dema	0
+secateurses	0	oewn-secateurs-n	Number=Plur	dema	0
+seccer	0	oewn-sec-a	Degree=Cmp	dema	0
+seccest	0	oewn-sec-a	Degree=Sup	dema	0
+secco	0	dema-secco-n	Number=Sing	dema	0
+seccoes	0	dema-secco-n	Number=Plur	dema	0
+seccos	0	dema-secco-n	Number=Plur	dema	0
+secede	0	oewn-secede-v	VerbForm=Inf	dema	0
+seceded	0	oewn-secede-v	Tense=Past	dema	0
+seceder	0	dema-secede-n	Number=Plur	dema	0
+seceders	0	dema-secede-n	Number=Plur	dema	0
+secedes	0	oewn-secede-v	Person=3+Tense=Pres	dema	0
+seceding	0	oewn-secede-v	VerbForm=Ger	dema	0
+secedingly	0	dema-secede-r		dema	0
+secern	0	oewn-secern-v	VerbForm=Inf	dema	0
+secerned	0	oewn-secern-v	Tense=Past	dema	0
+secernent	0	dema-secernent-a	Degree=Pos	dema	0
+secernently	0	dema-secernent-r		dema	0
+secernentness	0	dema-secernent-n	Number=Plur	dema	0
+secerner	0	dema-secern-n	Number=Plur	dema	0
+secerners	0	dema-secern-n	Number=Plur	dema	0
+secerning	0	oewn-secern-v	VerbForm=Ger	dema	0
+secerningly	0	dema-secern-r		dema	0
+secernment	0	oewn-secernment-n	Number=Sing	dema	0
+secernments	0	oewn-secernment-n	Number=Plur	dema	0
+secerns	0	oewn-secern-v	Person=3+Tense=Pres	dema	0
+secession	0	oewn-secession-n	Number=Sing	dema	0
+secessional	0	dema-secessional-a	Degree=Pos	dema	0
+secessionally	0	dema-secessional-r		dema	0
+secessionism	0	oewn-secessionism-n	Number=Sing	dema	0
+secessionisms	0	oewn-secessionism-n	Number=Plur	dema	0
+secessionist	0	oewn-secessionist-n	Number=Sing	dema	0
+secessionist	1	dema-secessionist-a	Degree=Pos	dema	0
+secessionistly	0	dema-secessionist-r		dema	0
+secessionists	0	oewn-secessionist-n	Number=Plur	dema	0
+secessions	0	oewn-secession-n	Number=Plur	dema	0
+sech	0	dema-sech-n	Number=Sing	dema	0
+seches	0	dema-sech-n	Number=Plur	dema	0
+sechs	0	dema-sech-n	Number=Plur	dema	0
+seclude	0	oewn-seclude-v	VerbForm=Inf	dema	0
+secluded	0	oewn-secluded-a	Degree=Pos	dema	0
+secluded	1	dema-secluded-v	VerbForm=Inf	dema	0
+secludedly	0	dema-secludedly-r	Degree=Pos	dema	0
+secludedness	0	dema-secludedness-n	Number=Sing	dema	0
+secludednesses	0	dema-secludedness-n	Number=Plur	dema	0
+secluder	0	dema-seclude-n	Number=Plur	dema	0
+secluders	0	dema-seclude-n	Number=Plur	dema	0
+secludes	0	oewn-seclude-v	Person=3+Tense=Pres	dema	0
+secluding	0	oewn-seclude-v	VerbForm=Ger	dema	0
+secludingly	0	dema-seclude-r		dema	0
+seclusion	0	oewn-seclusion-n	Number=Sing	dema	0
+seclusions	0	oewn-seclusion-n	Number=Plur	dema	0
+seclusive	0	dema-seclusive-a	Degree=Pos	dema	0
+seclusively	0	dema-seclusively-r	Degree=Pos	dema	0
+seclusiveness	0	dema-seclusiveness-n	Number=Sing	dema	0
+seclusivenesses	0	dema-seclusiveness-n	Number=Plur	dema	0
+secly	0	dema-sec-r		dema	0
+secness	0	oewn-sec-n	Number=Plur	dema	0
+secobarbital	0	oewn-secobarbital-n	Number=Sing	dema	0
+secobarbitals	0	oewn-secobarbital-n	Number=Plur	dema	0
+second	0	oewn-second-n	Number=Sing	dema	1
+second	1	oewn-second-a	Degree=Pos	dema	1
+second	2	oewn-second-v-1	VerbForm=Inf	dema	1
+second	3	oewn-second-v-2	VerbForm=Inf	dema	1
+second	4	oewn-second-r	Degree=Pos	dema	0
+secondaries	0	oewn-secondary-n	Number=Plur	dema	0
+secondarily	0	oewn-secondarily-r	Degree=Pos	dema	0
+secondary	0	oewn-secondary-a	Degree=Pos	dema	0
+secondary	1	oewn-secondary-n	Number=Sing	dema	0
+seconde	0	dema-seconde-n	Number=Sing	dema	0
+seconded	0	oewn-second-v-1	Tense=Past	dema	1
+seconded	1	oewn-second-v-2	Tense=Past	dema	1
+seconder	0	oewn-seconder-n	Number=Sing	dema	0
+seconders	0	oewn-second-n	Number=Plur	dema	0
+secondes	0	dema-seconde-n	Number=Plur	dema	0
+secondest	0	oewn-second-n	Number=Plur	dema	1
+secondest	1	oewn-second-a	Degree=Sup	dema	1
+secondest	2	oewn-second-v-1		dema	1
+secondest	3	oewn-second-v-2		dema	1
+seconding	0	oewn-second-n	Number=Plur	dema	1
+seconding	1	oewn-second-v-1	VerbForm=Ger	dema	1
+seconding	2	oewn-second-v-2	VerbForm=Ger	dema	1
+secondingly	0	oewn-second-r		dema	0
+secondly	0	oewn-secondly-r	Degree=Pos	dema	0
+secondness	0	oewn-second-n	Number=Plur	dema	0
+secondo	0	oewn-secondo-n	Number=Sing	dema	0
+secondoes	0	oewn-secondo-n	Number=Plur	dema	0
+secondos	0	oewn-secondo-n	Number=Plur	dema	0
+secondrater	0	dema-secondrater-n	Number=Sing	dema	0
+secondraters	0	dema-secondrater-n	Number=Plur	dema	0
+seconds	0	oewn-second-n	Number=Plur	dema	1
+seconds	1	oewn-second-v-1	Person=3+Tense=Pres	dema	1
+secondsighted	0	dema-secondsighted-a	Degree=Pos	dema	0
+secondsighted	1	dema-secondsighted-v	VerbForm=Inf	dema	0
+secondsighteded	0	dema-secondsighted-v	Tense=Past	dema	0
+secondsighteding	0	dema-secondsighted-v	VerbForm=Ger	dema	0
+secondsightedly	0	dema-secondsighted-r		dema	0
+secondsightedness	0	dema-secondsightedness-n	Number=Sing	dema	0
+secondsightednesses	0	dema-secondsightedness-n	Number=Plur	dema	0
+secondsighteds	0	dema-secondsighted-v	Person=3+Tense=Pres	dema	0
+secrecies	0	oewn-secrecy-n	Number=Plur	dema	0
+secrecy	0	oewn-secrecy-n	Number=Sing	dema	0
+secret	0	oewn-secret-a	Degree=Pos	dema	0
+secret	1	oewn-secret-n	Number=Sing	dema	0
+secretaire	0	oewn-secretaire-n	Number=Sing	dema	0
+secretaires	0	oewn-secretaire-n	Number=Plur	dema	0
+secretarial	0	oewn-secretarial-a	Degree=Pos	dema	0
+secretarially	0	dema-secretarial-r		dema	0
+secretariat	0	oewn-secretariat-n	Number=Sing	dema	0
+secretariats	0	oewn-secretariat-n	Number=Plur	dema	0
+secretaries	0	oewn-secretary-n	Number=Plur	dema	0
+secretary	0	oewn-secretary-n	Number=Sing	dema	0
+secretaryship	0	oewn-secretaryship-n	Number=Sing	dema	0
+secretaryships	0	oewn-secretaryship-n	Number=Plur	dema	0
+secrete	0	oewn-secrete-v	VerbForm=Inf	dema	0
+secreted	0	oewn-secrete-v	Tense=Past	dema	0
+secreter	0	oewn-secret-a	Degree=Cmp	dema	0
+secreters	0	dema-secrete-n	Number=Plur	dema	0
+secretes	0	oewn-secrete-v	Person=3+Tense=Pres	dema	0
+secretest	0	oewn-secret-a	Degree=Sup	dema	0
+secretin	0	oewn-secretin-n	Number=Sing	dema	0
+secreting	0	oewn-secrete-v	VerbForm=Ger	dema	0
+secretingly	0	dema-secrete-r		dema	0
+secretins	0	oewn-secretin-n	Number=Plur	dema	0
+secretion	0	oewn-secretion-n	Number=Sing	dema	0
+secretionarily	0	dema-secretionary-r		dema	0
+secretionary	0	dema-secretionary-a	Degree=Pos	dema	0
+secretions	0	oewn-secretion-n	Number=Plur	dema	0
+secretive	0	oewn-secretive-a	Degree=Pos	dema	0
+secretively	0	oewn-secretively-r	Degree=Pos	dema	0
+secretiveness	0	dema-secretive-n	Number=Plur	dema	0
+secretly	0	oewn-secretly-r	Degree=Pos	dema	0
+secretness	0	dema-secretness-n	Number=Sing	dema	0
+secretnesses	0	dema-secretness-n	Number=Plur	dema	0
+secretorily	0	dema-secretory-r		dema	0
+secretory	0	oewn-secretory-a	Degree=Pos	dema	0
+secrets	0	oewn-secret-n	Number=Plur	dema	0
+secs	0	oewn-sec-n	Number=Plur	dema	0
+sect	0	oewn-sect-n	Number=Sing	dema	0
+sectarian	0	oewn-sectarian-a	Degree=Pos	dema	0
+sectarian	1	oewn-sectarian-n	Number=Sing	dema	0
+sectarianise	0	dema-sectarianise-v	VerbForm=Inf	dema	0
+sectarianised	0	dema-sectarianised-v	VerbForm=Inf	dema	0
+sectarianises	0	dema-sectarianise-v	Person=3+Tense=Pres	dema	0
+sectarianising	0	dema-sectarianising-v	VerbForm=Inf	dema	0
+sectarianism	0	oewn-sectarianism-n	Number=Sing	dema	0
+sectarianisms	0	oewn-sectarianism-n	Number=Plur	dema	0
+sectarianize	0	dema-sectarianize-v	VerbForm=Inf	dema	0
+sectarianized	0	dema-sectarianized-v	VerbForm=Inf	dema	0
+sectarianizes	0	dema-sectarianize-v	Person=3+Tense=Pres	dema	0
+sectarianizing	0	dema-sectarianizing-v	VerbForm=Inf	dema	0
+sectarianly	0	dema-sectarianly-r	Degree=Pos	dema	0
+sectarianness	0	oewn-sectarian-n	Number=Plur	dema	0
+sectarians	0	oewn-sectarian-n	Number=Plur	dema	0
+sectaries	0	dema-sectaries-n	Number=Sing	dema	0
+sectary	0	oewn-sectary-n	Number=Sing	dema	0
+sectile	0	dema-sectile-a	Degree=Pos	dema	0
+sectilely	0	dema-sectile-r		dema	0
+sectileness	0	dema-sectile-n	Number=Plur	dema	0
+sectiler	0	dema-sectile-a	Degree=Cmp	dema	0
+sectilest	0	dema-sectile-a	Degree=Sup	dema	0
+section	0	oewn-section-n	Number=Sing	dema	0
+section	1	oewn-section-v	VerbForm=Inf	dema	0
+sectional	0	oewn-sectional-a	Degree=Pos	dema	0
+sectionalisation	0	oewn-sectionalisation-n	Number=Sing	dema	0
+sectionalisations	0	oewn-sectionalisation-n	Number=Plur	dema	0
+sectionalise	0	oewn-sectionalise-v	VerbForm=Inf	dema	0
+sectionalised	0	dema-sectionalised-v	VerbForm=Inf	dema	0
+sectionalises	0	oewn-sectionalise-v	Person=3+Tense=Pres	dema	0
+sectionalising	0	dema-sectionalising-v	VerbForm=Inf	dema	0
+sectionalism	0	oewn-sectionalism-n	Number=Sing	dema	0
+sectionalisms	0	oewn-sectionalism-n	Number=Plur	dema	0
+sectionalist	0	dema-sectionalist-n	Number=Sing	dema	0
+sectionalists	0	dema-sectionalist-n	Number=Plur	dema	0
+sectionalize	0	oewn-sectionalize-v	VerbForm=Inf	dema	0
+sectionalized	0	dema-sectionalized-v	VerbForm=Inf	dema	0
+sectionalizes	0	oewn-sectionalize-v	Person=3+Tense=Pres	dema	0
+sectionalizing	0	dema-sectionalizing-v	VerbForm=Inf	dema	0
+sectionally	0	dema-sectionally-r	Degree=Pos	dema	0
+sectionalness	0	oewn-sectional-n	Number=Plur	dema	0
+sectioned	0	oewn-section-v	Tense=Past	dema	0
+sectioner	0	oewn-section-n	Number=Plur	dema	0
+sectioners	0	oewn-section-n	Number=Plur	dema	0
+sectioning	0	oewn-section-v	VerbForm=Ger	dema	0
+sectioningly	0	dema-section-r		dema	0
+sections	0	oewn-section-n	Number=Plur	dema	0
+sections	1	oewn-section-v	Person=3+Tense=Pres	dema	0
+sector	0	oewn-sector-n	Number=Sing	dema	0
+sectoral	0	dema-sectoral-a	Degree=Pos	dema	0
+sectorally	0	dema-sectoral-r		dema	0
+sectoralness	0	dema-sectoral-n	Number=Plur	dema	0
+sectorial	0	oewn-sectorial-a	Degree=Pos	dema	0
+sectorially	0	dema-sectorial-r		dema	0
+sectorialness	0	dema-sectorial-n	Number=Plur	dema	0
+sectors	0	oewn-sector-n	Number=Plur	dema	0
+sects	0	oewn-sect-n	Number=Plur	dema	0
+secular	0	oewn-secular-a	Degree=Pos	dema	0
+secular	1	oewn-secular-n	Number=Sing	dema	0
+secularisation	0	oewn-secularisation-n	Number=Sing	dema	0
+secularisations	0	oewn-secularisation-n	Number=Plur	dema	0
+secularise	0	oewn-secularise-v	VerbForm=Inf	dema	0
+secularised	0	dema-secularised-v	VerbForm=Inf	dema	0
+seculariser	0	dema-seculariser-n	Number=Sing	dema	0
+secularisers	0	dema-seculariser-n	Number=Plur	dema	0
+secularises	0	oewn-secularise-v	Person=3+Tense=Pres	dema	0
+secularising	0	dema-secularising-v	VerbForm=Inf	dema	0
+secularism	0	oewn-secularism-n	Number=Sing	dema	0
+secularisms	0	oewn-secularism-n	Number=Plur	dema	0
+secularist	0	oewn-secularist-n	Number=Sing	dema	0
+secularistic	0	dema-secularistic-a	Degree=Pos	dema	0
+secularistically	0	dema-secularistic-r		dema	0
+secularists	0	oewn-secularist-n	Number=Plur	dema	0
+secularities	0	dema-secularity-n	Number=Plur	dema	0
+secularity	0	dema-secularity-n	Number=Sing	dema	0
+secularization	0	oewn-secularization-n	Number=Sing	dema	0
+secularizations	0	oewn-secularization-n	Number=Plur	dema	0
+secularize	0	oewn-secularize-v	VerbForm=Inf	dema	0
+secularized	0	oewn-secularize-v	Tense=Past	dema	0
+secularizer	0	dema-secularizer-n	Number=Sing	dema	0
+secularizers	0	dema-secularizer-n	Number=Plur	dema	0
+secularizes	0	oewn-secularize-v	Person=3+Tense=Pres	dema	0
+secularizing	0	oewn-secularize-v	VerbForm=Ger	dema	0
+secularly	0	dema-secularly-r	Degree=Pos	dema	0
+secularness	0	oewn-secular-n	Number=Plur	dema	0
+seculars	0	oewn-secular-n	Number=Plur	dema	0
+secund	0	dema-secund-a	Degree=Pos	dema	0
+secunder	0	dema-secund-a	Degree=Cmp	dema	0
+secundest	0	dema-secund-a	Degree=Sup	dema	0
+secundine	0	dema-secundine-n	Number=Sing	dema	0
+secundines	0	dema-secundines-n	Number=Sing	dema	0
+secundly	0	dema-secundly-r	Degree=Pos	dema	0
+secundness	0	dema-secund-n	Number=Plur	dema	0
+secundum	0	dema-secundum-p		dema	0
+secundus	0	dema-secundus-a	Degree=Pos	dema	0
+secundus	1	dema-secundus-v	VerbForm=Inf	dema	0
+secundused	0	dema-secundus-v	Tense=Past	dema	0
+secunduser	0	dema-secundus-n	Number=Plur	dema	0
+secundusers	0	dema-secundus-n	Number=Plur	dema	0
+secunduses	0	dema-secundus-v	Person=3+Tense=Pres	dema	0
+secundusing	0	dema-secundus-v	VerbForm=Ger	dema	0
+secundusingly	0	dema-secundus-r		dema	0
+secundusly	0	dema-secundus-r		dema	0
+secundusness	0	dema-secundus-n	Number=Plur	dema	0
+securable	0	dema-securable-a	Degree=Pos	dema	0
+securably	0	dema-securable-r		dema	0
+secure	0	oewn-secure-a	Degree=Pos	dema	0
+secure	1	oewn-secure-v	VerbForm=Inf	dema	0
+secured	0	oewn-secure-v	Tense=Past	dema	0
+securely	0	oewn-securely-r	Degree=Pos	dema	0
+secureness	0	dema-secure-n	Number=Plur	dema	0
+securer	0	oewn-secure-a	Degree=Cmp	dema	0
+securer	1	dema-secure-n	Number=Plur	dema	0
+securers	0	dema-secure-n	Number=Plur	dema	0
+secures	0	oewn-secure-v	Person=3+Tense=Pres	dema	0
+securest	0	oewn-secure-a	Degree=Sup	dema	0
+securing	0	oewn-secure-v	VerbForm=Ger	dema	0
+securingly	0	dema-secure-r		dema	0
+securities	0	dema-securities-n	Number=Sing	dema	0
+security	0	oewn-security-n	Number=Sing	dema	0
+sedan	0	oewn-sedan-n	Number=Sing	dema	0
+sedans	0	oewn-sedan-n	Number=Plur	dema	0
+sedate	0	oewn-sedate-a	Degree=Pos	dema	0
+sedate	1	oewn-sedate-v	VerbForm=Inf	dema	0
+sedated	0	dema-sedated-v	VerbForm=Inf	dema	0
+sedately	0	oewn-sedately-r	Degree=Pos	dema	0
+sedateness	0	oewn-sedateness-n	Number=Sing	dema	0
+sedatenesses	0	oewn-sedateness-n	Number=Plur	dema	0
+sedater	0	dema-sedate-n	Number=Plur	dema	0
+sedaters	0	dema-sedate-n	Number=Plur	dema	0
+sedates	0	oewn-sedate-v	Person=3+Tense=Pres	dema	0
+sedating	0	dema-sedating-v	VerbForm=Inf	dema	0
+sedatingly	0	dema-sedate-r		dema	0
+sedation	0	oewn-sedation-n	Number=Sing	dema	0
+sedations	0	oewn-sedation-n	Number=Plur	dema	0
+sedative	0	oewn-sedative-a	Degree=Pos	dema	0
+sedative	1	oewn-sedative-n	Number=Sing	dema	0
+sedatively	0	dema-sedative-r		dema	0
+sedativeness	0	oewn-sedative-n	Number=Plur	dema	0
+sedatives	0	oewn-sedative-n	Number=Plur	dema	0
+sedentarily	0	dema-sedentarily-r	Degree=Pos	dema	0
+sedentary	0	oewn-sedentary-a	Degree=Pos	dema	0
+sedge	0	oewn-sedge-n	Number=Sing	dema	0
+sedged	0	dema-sedged-a	Degree=Pos	dema	0
+sedged	1	dema-sedged-v	VerbForm=Inf	dema	0
+sedgeded	0	dema-sedged-v	Tense=Past	dema	0
+sedgeder	0	dema-sedged-n	Number=Plur	dema	0
+sedgeders	0	dema-sedged-n	Number=Plur	dema	0
+sedgeding	0	dema-sedged-v	VerbForm=Ger	dema	0
+sedgedingly	0	dema-sedged-r		dema	0
+sedgedly	0	dema-sedged-r		dema	0
+sedgedness	0	dema-sedged-n	Number=Plur	dema	0
+sedgeds	0	dema-sedged-v	Person=3+Tense=Pres	dema	0
+sedges	0	oewn-sedge-n	Number=Plur	dema	0
+sedile	0	dema-sedile-n	Number=Sing	dema	0
+sediles	0	dema-sedile-n	Number=Plur	dema	0
+sedilia	0	dema-sedilia-n	Number=Sing	dema	0
+sedilias	0	dema-sedilia-n	Number=Plur	dema	0
+sediment	0	oewn-sediment-n	Number=Sing	dema	0
+sedimentarily	0	dema-sedimentarily-r	Degree=Pos	dema	0
+sedimentary	0	oewn-sedimentary-a	Degree=Pos	dema	0
+sedimentation	0	oewn-sedimentation-n	Number=Sing	dema	0
+sedimentations	0	oewn-sedimentation-n	Number=Plur	dema	0
+sedimentologic	0	dema-sedimentologic-a	Degree=Pos	dema	0
+sedimentological	0	dema-sedimentological-a	Degree=Pos	dema	0
+sedimentologically	0	dema-sedimentologic-r		dema	0
+sedimentologies	0	dema-sedimentology-n	Number=Plur	dema	0
+sedimentologist	0	dema-sedimentologist-n	Number=Sing	dema	0
+sedimentologists	0	dema-sedimentologist-n	Number=Plur	dema	0
+sedimentology	0	dema-sedimentology-n	Number=Sing	dema	0
+sediments	0	oewn-sediment-n	Number=Plur	dema	0
+sedition	0	oewn-sedition-n	Number=Sing	dema	0
+sedition	1	dema-sedition-a	Degree=Pos	dema	0
+seditionly	0	dema-sedition-r		dema	0
+seditionness	0	oewn-sedition-n	Number=Plur	dema	0
+seditions	0	oewn-sedition-n	Number=Plur	dema	0
+seditious	0	oewn-seditious-a	Degree=Pos	dema	0
+seditiously	0	dema-seditiously-r	Degree=Pos	dema	0
+seditiousness	0	dema-seditiousness-n	Number=Sing	dema	0
+seditiousnesses	0	dema-seditiousness-n	Number=Plur	dema	0
+seduce	0	oewn-seduce-v	VerbForm=Inf	dema	0
+seduceable	0	dema-seduceable-a	Degree=Pos	dema	0
+seduceably	0	dema-seduceable-r		dema	0
+seduced	0	dema-seduced-v	VerbForm=Inf	dema	0
+seducer	0	oewn-seducer-n	Number=Sing	dema	0
+seducers	0	dema-seduce-n	Number=Plur	dema	0
+seduces	0	oewn-seduce-v	Person=3+Tense=Pres	dema	0
+seducible	0	dema-seducible-a	Degree=Pos	dema	0
+seducibly	0	dema-seducible-r		dema	0
+seducing	0	dema-seducing-v	VerbForm=Inf	dema	0
+seducingly	0	dema-seducingly-r	Degree=Pos	dema	0
+seducive	0	dema-seducive-a	Degree=Pos	dema	0
+seducively	0	dema-seducive-r		dema	0
+seduciveness	0	dema-seducive-n	Number=Plur	dema	0
+seduction	0	oewn-seduction-n	Number=Sing	dema	0
+seductions	0	oewn-seduction-n	Number=Plur	dema	0
+seductive	0	oewn-seductive-a	Degree=Pos	dema	0
+seductively	0	oewn-seductively-r	Degree=Pos	dema	0
+seductiveness	0	dema-seductiveness-n	Number=Sing	dema	0
+seductivenesses	0	dema-seductiveness-n	Number=Plur	dema	0
+seductress	0	oewn-seductress-n	Number=Sing	dema	0
+seductresses	0	oewn-seductress-n	Number=Plur	dema	0
+sedulities	0	oewn-sedulity-n	Number=Plur	dema	0
+sedulity	0	oewn-sedulity-n	Number=Sing	dema	0
+sedulous	0	oewn-sedulous-a	Degree=Pos	dema	0
+sedulously	0	oewn-sedulously-r	Degree=Pos	dema	0
+sedulousness	0	oewn-sedulousness-n	Number=Sing	dema	0
+sedulousnesses	0	oewn-sedulousness-n	Number=Plur	dema	0
+sedum	0	oewn-sedum-n	Number=Sing	dema	0
+sedums	0	oewn-sedum-n	Number=Plur	dema	0
+see	0	oewn-see-v	VerbForm=Inf	dema	0
+see	1	oewn-see-n	Number=Sing	dema	0
+seeable	0	oewn-seeable-a	Degree=Pos	dema	0
+seeableness	0	dema-seeableness-n	Number=Sing	dema	0
+seeablenesses	0	dema-seeableness-n	Number=Plur	dema	0
+seeably	0	dema-seeable-r		dema	0
+seecatch	0	dema-seecatch-n	Number=Sing	dema	0
+seecatches	0	dema-seecatch-n	Number=Plur	dema	0
+seecatchs	0	dema-seecatch-n	Number=Plur	dema	0
+seed	0	oewn-seed-n	Number=Sing	dema	0
+seed	1	oewn-seed-v	VerbForm=Inf	dema	0
+seedbed	0	oewn-seedbed-n	Number=Sing	dema	0
+seedbeds	0	oewn-seedbed-n	Number=Plur	dema	0
+seedcake	0	oewn-seedcake-n	Number=Sing	dema	0
+seedcakes	0	oewn-seedcake-n	Number=Plur	dema	0
+seedcase	0	oewn-seedcase-n	Number=Sing	dema	0
+seedcases	0	oewn-seedcase-n	Number=Plur	dema	0
+seeded	0	oewn-seed-v	Tense=Past	dema	0
+seeder	0	oewn-seeder-n	Number=Sing	dema	0
+seeders	0	oewn-seed-n	Number=Plur	dema	0
+seedier	0	dema-seedier-a	Degree=Pos	dema	0
+seedierly	0	dema-seedier-r		dema	0
+seediest	0	dema-seediest-a	Degree=Pos	dema	0
+seediestly	0	dema-seediest-r		dema	0
+seedily	0	dema-seedily-r	Degree=Pos	dema	0
+seediness	0	oewn-seediness-n	Number=Sing	dema	0
+seedinesses	0	oewn-seediness-n	Number=Plur	dema	0
+seeding	0	oewn-seed-v	VerbForm=Ger	dema	0
+seedingly	0	dema-seed-r		dema	0
+seedless	0	oewn-seedless-a	Degree=Pos	dema	0
+seedlessly	0	dema-seedless-r		dema	0
+seedlessness	0	dema-seedlessness-n	Number=Sing	dema	0
+seedlessnesses	0	dema-seedlessness-n	Number=Plur	dema	0
+seedlike	0	dema-seedlike-a	Degree=Pos	dema	0
+seedlikely	0	dema-seedlike-r		dema	0
+seedlikeness	0	dema-seedlike-n	Number=Plur	dema	0
+seedliker	0	dema-seedlike-a	Degree=Cmp	dema	0
+seedlikest	0	dema-seedlike-a	Degree=Sup	dema	0
+seedling	0	oewn-seedling-n	Number=Sing	dema	0
+seedlings	0	oewn-seedling-n	Number=Plur	dema	0
+seedman	0	oewn-seedman-n	Number=Sing	dema	0
+seedmen	0	dema-seedmen-n	Number=Sing	dema	0
+seedmens	0	dema-seedmen-n	Number=Plur	dema	0
+seeds	0	oewn-seed-n	Number=Plur	dema	0
+seeds	1	oewn-seed-v	Person=3+Tense=Pres	dema	0
+seedsman	0	oewn-seedsman-n	Number=Sing	dema	0
+seedsmans	0	oewn-seedsman-n	Number=Plur	dema	0
+seedsmen	0	dema-seedsmen-n	Number=Sing	dema	0
+seedsmens	0	dema-seedsmen-n	Number=Plur	dema	0
+seedtime	0	oewn-seedtime-n	Number=Sing	dema	0
+seedtimes	0	oewn-seedtime-n	Number=Plur	dema	0
+seedy	0	oewn-seedy-a	Degree=Pos	dema	0
+seeing	0	oewn-seeing-n	Number=Sing	dema	0
+seeing	1	dema-seeing-c		dema	0
+seeing	2	dema-seeing-v	VerbForm=Inf	dema	0
+seeingly	0	dema-see-r		dema	0
+seeings	0	oewn-seeing-n	Number=Plur	dema	0
+seek	0	oewn-seek-v	VerbForm=Inf	dema	0
+seeker	0	oewn-seeker-n	Number=Sing	dema	0
+seekers	0	oewn-seek-n	Number=Plur	dema	0
+seeking	0	dema-seeking-v	VerbForm=Inf	dema	0
+seekingly	0	dema-seek-r		dema	0
+seeks	0	oewn-seek-v	Person=3+Tense=Pres	dema	0
+seel	0	oewn-seel-v	VerbForm=Inf	dema	0
+seeled	0	oewn-seel-v	Tense=Past	dema	0
+seeler	0	dema-seel-n	Number=Plur	dema	0
+seelers	0	dema-seel-n	Number=Plur	dema	0
+seelier	0	dema-seely-a	Degree=Cmp	dema	0
+seeliest	0	dema-seely-a	Degree=Sup	dema	0
+seelily	0	dema-seelily-r	Degree=Pos	dema	0
+seeling	0	oewn-seel-v	VerbForm=Ger	dema	0
+seelingly	0	dema-seel-r		dema	0
+seels	0	oewn-seel-v	Person=3+Tense=Pres	dema	0
+seely	0	dema-seely-a	Degree=Pos	dema	0
+seem	0	oewn-seem-v	VerbForm=Inf	dema	0
+seemed	0	oewn-seem-v	Tense=Past	dema	0
+seemer	0	dema-seemer-n	Number=Sing	dema	0
+seemers	0	dema-seem-n	Number=Plur	dema	0
+seeming	0	oewn-seeming-a	Degree=Pos	dema	0
+seeming	1	dema-seeming-n	Number=Sing	dema	0
+seeming	2	dema-seeming-v	VerbForm=Inf	dema	0
+seemingly	0	oewn-seemingly-r	Degree=Pos	dema	0
+seemings	0	dema-seeming-n	Number=Plur	dema	0
+seemlier	0	dema-seemlier-a	Degree=Pos	dema	0
+seemlierly	0	dema-seemlier-r		dema	0
+seemliest	0	dema-seemliest-a	Degree=Pos	dema	0
+seemliestly	0	dema-seemliest-r		dema	0
+seemliness	0	oewn-seemliness-n	Number=Sing	dema	0
+seemlinesses	0	oewn-seemliness-n	Number=Plur	dema	0
+seemly	0	oewn-seemly-a	Degree=Pos	dema	0
+seemly	1	dema-seemly-r	Degree=Pos	dema	0
+seems	0	oewn-seem-v	Person=3+Tense=Pres	dema	0
+seen	0	dema-seen-v	VerbForm=Inf	dema	0
+seep	0	oewn-seep-v	VerbForm=Inf	dema	0
+seep	1	dema-seep-n	Number=Sing	dema	0
+seepage	0	oewn-seepage-n	Number=Sing	dema	0
+seepages	0	oewn-seepage-n	Number=Plur	dema	0
+seeped	0	oewn-seep-v	Tense=Past	dema	0
+seeper	0	dema-seep-n	Number=Plur	dema	0
+seepers	0	dema-seep-n	Number=Plur	dema	0
+seeping	0	oewn-seep-v	VerbForm=Ger	dema	0
+seepingly	0	dema-seep-r		dema	0
+seeps	0	oewn-seep-v	Person=3+Tense=Pres	dema	0
+seeps	1	dema-seep-n	Number=Plur	dema	0
+seer	0	oewn-seer-n	Number=Sing	dema	0
+seeress	0	dema-seeress-n	Number=Sing	dema	0
+seeresses	0	dema-seeress-n	Number=Plur	dema	0
+seers	0	oewn-see-n	Number=Plur	dema	0
+seersucker	0	oewn-seersucker-n	Number=Sing	dema	0
+seersuckers	0	oewn-seersucker-n	Number=Plur	dema	0
+sees	0	oewn-see-v	Person=3+Tense=Pres	dema	0
+sees	1	oewn-see-n	Number=Plur	dema	0
+seesaw	0	oewn-seesaw-n	Number=Sing	dema	0
+seesaw	1	oewn-seesaw-v	VerbForm=Inf	dema	0
+seesawed	0	oewn-seesaw-v	Tense=Past	dema	0
+seesawer	0	oewn-seesaw-n	Number=Plur	dema	0
+seesawers	0	oewn-seesaw-n	Number=Plur	dema	0
+seesawing	0	oewn-seesaw-v	VerbForm=Ger	dema	0
+seesawingly	0	dema-seesaw-r		dema	0
+seesaws	0	oewn-seesaw-n	Number=Plur	dema	0
+seesaws	1	oewn-seesaw-v	Person=3+Tense=Pres	dema	0
+seethe	0	oewn-seethe-v	VerbForm=Inf	dema	0
+seethe	1	dema-seethe-n	Number=Sing	dema	0
+seethed	0	oewn-seethe-v	Tense=Past	dema	0
+seether	0	dema-seethe-n	Number=Plur	dema	0
+seethers	0	dema-seethe-n	Number=Plur	dema	0
+seethes	0	oewn-seethe-v	Person=3+Tense=Pres	dema	0
+seethes	1	dema-seethe-n	Number=Plur	dema	0
+seething	0	oewn-seethe-v	VerbForm=Ger	dema	0
+seethingly	0	dema-seethingly-r	Degree=Pos	dema	0
+segar	0	dema-segar-n	Number=Sing	dema	0
+segars	0	dema-segar-n	Number=Plur	dema	0
+segment	0	oewn-segment-n	Number=Sing	dema	1
+segment	1	oewn-segment-v	VerbForm=Inf	dema	1
+segmental	0	oewn-segmental-a	Degree=Pos	dema	0
+segmentally	0	dema-segmentally-r	Degree=Pos	dema	0
+segmentalness	0	dema-segmental-n	Number=Plur	dema	0
+segmentarily	0	dema-segmentary-r		dema	0
+segmentary	0	dema-segmentary-a	Degree=Pos	dema	0
+segmentate	0	dema-segmentate-a	Degree=Pos	dema	0
+segmentately	0	dema-segmentate-r		dema	0
+segmentateness	0	dema-segmentate-n	Number=Plur	dema	0
+segmentation	0	oewn-segmentation-n	Number=Sing	dema	0
+segmentations	0	oewn-segmentation-n	Number=Plur	dema	0
+segmented	0	oewn-segment-v	Tense=Past	dema	0
+segmenter	0	oewn-segment-n	Number=Plur	dema	0
+segmenters	0	oewn-segment-n	Number=Plur	dema	0
+segmenting	0	oewn-segment-v	VerbForm=Ger	dema	0
+segmentingly	0	dema-segment-r		dema	0
+segments	0	oewn-segment-n	Number=Plur	dema	1
+segments	1	oewn-segment-v	Person=3+Tense=Pres	dema	1
+segni	0	dema-segni-n	Number=Sing	dema	0
+segnis	0	dema-segni-n	Number=Plur	dema	0
+segno	0	oewn-segno-n	Number=Sing	dema	0
+segnoes	0	oewn-segno-n	Number=Plur	dema	0
+segnos	0	oewn-segno-n	Number=Plur	dema	0
+sego	0	dema-sego-n	Number=Sing	dema	0
+segoes	0	dema-sego-n	Number=Plur	dema	0
+segos	0	dema-segos-n	Number=Sing	dema	0
+segreant	0	dema-segreant-a	Degree=Pos	dema	0
+segreanter	0	dema-segreant-a	Degree=Cmp	dema	0
+segreantest	0	dema-segreant-a	Degree=Sup	dema	0
+segreantly	0	dema-segreant-r		dema	0
+segreantness	0	dema-segreant-n	Number=Plur	dema	0
+segregable	0	dema-segregable-a	Degree=Pos	dema	0
+segregably	0	dema-segregable-r		dema	0
+segregate	0	oewn-segregate-n	Number=Sing	dema	1
+segregate	1	oewn-segregate-v	VerbForm=Inf	dema	1
+segregated	0	oewn-segregate-v	Tense=Past	dema	1
+segregatedness	0	dema-segregatedness-n	Number=Sing	dema	0
+segregatednesses	0	dema-segregatedness-n	Number=Plur	dema	0
+segregater	0	oewn-segregate-n	Number=Plur	dema	0
+segregaters	0	oewn-segregate-n	Number=Plur	dema	0
+segregates	0	oewn-segregate-n	Number=Plur	dema	1
+segregates	1	oewn-segregate-v	Person=3+Tense=Pres	dema	1
+segregating	0	dema-segregating-v	VerbForm=Inf	dema	0
+segregatingly	0	dema-segregate-r		dema	0
+segregation	0	oewn-segregation-n	Number=Sing	dema	0
+segregational	0	dema-segregational-a	Degree=Pos	dema	0
+segregationally	0	dema-segregational-r		dema	0
+segregationist	0	oewn-segregationist-n	Number=Sing	dema	0
+segregationists	0	oewn-segregationist-n	Number=Plur	dema	0
+segregations	0	oewn-segregation-n	Number=Plur	dema	0
+segregator	0	oewn-segregator-n	Number=Sing	dema	0
+segregators	0	oewn-segregator-n	Number=Plur	dema	0
+segue	0	oewn-segue-v	VerbForm=Inf	dema	0
+segued	0	oewn-segue-v	Tense=Past	dema	0
+seguer	0	oewn-segue-n	Number=Plur	dema	0
+seguers	0	oewn-segue-n	Number=Plur	dema	0
+segues	0	oewn-segue-v	Person=3+Tense=Pres	dema	0
+seguidilla	0	dema-seguidilla-n	Number=Sing	dema	0
+seguidillas	0	dema-seguidilla-n	Number=Plur	dema	0
+seguing	0	oewn-segue-v	VerbForm=Ger	dema	0
+seguingly	0	dema-segue-r		dema	0
+sei	0	dema-sei-n	Number=Sing	dema	0
+seicento	0	dema-seicento-n	Number=Sing	dema	0
+seicentoes	0	dema-seicento-n	Number=Plur	dema	0
+seicentos	0	dema-seicento-n	Number=Plur	dema	0
+seiche	0	oewn-seiche-n	Number=Sing	dema	0
+seiches	0	oewn-seiche-n	Number=Plur	dema	0
+seif	0	dema-seif-n	Number=Sing	dema	0
+seifs	0	dema-seif-n	Number=Plur	dema	0
+seigneur	0	oewn-seigneur-n	Number=Sing	dema	0
+seigneurial	0	dema-seigneurial-a	Degree=Pos	dema	0
+seigneurially	0	dema-seigneurial-r		dema	0
+seigneurialness	0	dema-seigneurial-n	Number=Plur	dema	0
+seigneuries	0	oewn-seigneury-n	Number=Plur	dema	0
+seigneurs	0	dema-seigneurs-n	Number=Sing	dema	0
+seigneury	0	oewn-seigneury-n	Number=Sing	dema	0
+seignior	0	oewn-seignior-n	Number=Sing	dema	0
+seigniorage	0	oewn-seigniorage-n	Number=Sing	dema	0
+seigniorages	0	oewn-seigniorage-n	Number=Plur	dema	0
+seigniories	0	oewn-seigniory-n	Number=Plur	dema	0
+seigniors	0	oewn-seignior-n	Number=Plur	dema	0
+seigniory	0	oewn-seigniory-n	Number=Sing	dema	0
+seignorial	0	dema-seignorial-a	Degree=Pos	dema	0
+seignorially	0	dema-seignorial-r		dema	0
+seignorialness	0	dema-seignorial-n	Number=Plur	dema	0
+seine	0	oewn-seine-n	Number=Sing	dema	0
+seine	1	oewn-seine-v	VerbForm=Inf	dema	0
+seined	0	dema-seined-v	VerbForm=Inf	dema	0
+seiner	0	dema-seiner-n	Number=Sing	dema	0
+seiners	0	oewn-seine-n	Number=Plur	dema	0
+seines	0	oewn-seine-n	Number=Plur	dema	0
+seines	1	oewn-seine-v	Person=3+Tense=Pres	dema	0
+seining	0	dema-seining-v	VerbForm=Inf	dema	0
+seiningly	0	dema-seine-r		dema	0
+seiren	0	dema-seiren-n	Number=Sing	dema	0
+seirens	0	dema-seiren-n	Number=Plur	dema	0
+seis	0	dema-sei-n	Number=Plur	dema	0
+seisable	0	dema-seisable-a	Degree=Pos	dema	0
+seisableness	0	dema-seisable-n	Number=Plur	dema	0
+seisably	0	dema-seisable-r		dema	0
+seise	0	dema-seise-v	VerbForm=Inf	dema	0
+seised	0	dema-seised-v	VerbForm=Inf	dema	0
+seiser	0	dema-seiser-n	Number=Sing	dema	0
+seisers	0	dema-seise-n	Number=Plur	dema	0
+seises	0	dema-seise-v	Person=3+Tense=Pres	dema	0
+seisin	0	dema-seisin-n	Number=Sing	dema	0
+seising	0	dema-seising-n	Number=Sing	dema	0
+seising	1	dema-seising-v	VerbForm=Inf	dema	0
+seisingly	0	dema-seise-r		dema	0
+seisings	0	dema-seising-n	Number=Plur	dema	0
+seisins	0	dema-seisin-n	Number=Plur	dema	0
+seism	0	oewn-seism-n	Number=Sing	dema	0
+seismic	0	oewn-seismic-a	Degree=Pos	dema	0
+seismically	0	dema-seismic-r		dema	0
+seismicness	0	dema-seismic-n	Number=Plur	dema	0
+seismism	0	dema-seismism-n	Number=Sing	dema	0
+seismisms	0	dema-seismism-n	Number=Plur	dema	0
+seismogram	0	oewn-seismogram-n	Number=Sing	dema	0
+seismograms	0	oewn-seismogram-n	Number=Plur	dema	0
+seismograph	0	oewn-seismograph-n	Number=Sing	dema	0
+seismograph	1	dema-seismograph-a	Degree=Pos	dema	0
+seismographer	0	dema-seismographer-n	Number=Sing	dema	0
+seismographers	0	dema-seismographer-n	Number=Plur	dema	0
+seismographic	0	dema-seismographic-a	Degree=Pos	dema	0
+seismographical	0	dema-seismographical-a	Degree=Pos	dema	0
+seismographically	0	dema-seismographic-r		dema	0
+seismographies	0	oewn-seismography-n	Number=Plur	dema	0
+seismographly	0	dema-seismograph-r		dema	0
+seismographness	0	oewn-seismograph-n	Number=Plur	dema	0
+seismographs	0	oewn-seismograph-n	Number=Plur	dema	0
+seismography	0	oewn-seismography-n	Number=Sing	dema	0
+seismol	0	dema-seismol-n	Number=Sing	dema	0
+seismologic	0	oewn-seismologic-a	Degree=Pos	dema	0
+seismological	0	oewn-seismological-a	Degree=Pos	dema	0
+seismologically	0	dema-seismologically-r	Degree=Pos	dema	0
+seismologies	0	oewn-seismology-n	Number=Plur	dema	0
+seismologist	0	oewn-seismologist-n	Number=Sing	dema	0
+seismologists	0	oewn-seismologist-n	Number=Plur	dema	0
+seismology	0	oewn-seismology-n	Number=Sing	dema	0
+seismols	0	dema-seismol-n	Number=Plur	dema	0
+seismometries	0	dema-seismometry-n	Number=Plur	dema	0
+seismometry	0	dema-seismometry-n	Number=Sing	dema	0
+seismoscope	0	dema-seismoscope-n	Number=Sing	dema	0
+seismoscopes	0	dema-seismoscope-n	Number=Plur	dema	0
+seismoscopic	0	dema-seismoscopic-a	Degree=Pos	dema	0
+seismoscopically	0	dema-seismoscopic-r		dema	0
+seisms	0	oewn-seism-n	Number=Plur	dema	0
+seisure	0	dema-seisure-n	Number=Sing	dema	0
+seisures	0	dema-seisure-n	Number=Plur	dema	0
+seizable	0	dema-seizable-a	Degree=Pos	dema	0
+seizableness	0	dema-seizable-n	Number=Plur	dema	0
+seizably	0	dema-seizable-r		dema	0
+seize	0	oewn-seize-v	VerbForm=Inf	dema	0
+seized	0	dema-seized-v	VerbForm=Inf	dema	0
+seizer	0	oewn-seizer-n	Number=Sing	dema	0
+seizers	0	dema-seize-n	Number=Plur	dema	0
+seizes	0	oewn-seize-v	Person=3+Tense=Pres	dema	0
+seizin	0	dema-seizin-n	Number=Sing	dema	0
+seizing	0	oewn-seizing-n	Number=Sing	dema	0
+seizing	1	dema-seizing-v	VerbForm=Inf	dema	0
+seizingly	0	dema-seize-r		dema	0
+seizings	0	oewn-seizing-n	Number=Plur	dema	0
+seizins	0	dema-seizin-n	Number=Plur	dema	0
+seizor	0	dema-seizor-n	Number=Sing	dema	0
+seizors	0	dema-seizor-n	Number=Plur	dema	0
+seizure	0	oewn-seizure-n	Number=Sing	dema	0
+seizures	0	oewn-seizure-n	Number=Plur	dema	0
+sejant	0	dema-sejant-a	Degree=Pos	dema	0
+sejanter	0	dema-sejant-a	Degree=Cmp	dema	0
+sejantest	0	dema-sejant-a	Degree=Sup	dema	0
+sejantly	0	dema-sejant-r		dema	0
+sejantness	0	dema-sejant-n	Number=Plur	dema	0
+sekos	0	dema-sekos-n	Number=Sing	dema	0
+sekoses	0	dema-sekos-n	Number=Plur	dema	0
+selachian	0	dema-selachian-a	Degree=Pos	dema	0
+selachian	1	oewn-selachian-n	Number=Sing	dema	0
+selachianly	0	dema-selachian-r		dema	0
+selachianness	0	oewn-selachian-n	Number=Plur	dema	0
+selachians	0	oewn-selachian-n	Number=Plur	dema	0
+selaginella	0	dema-selaginella-n	Number=Sing	dema	0
+selaginellas	0	dema-selaginella-n	Number=Plur	dema	0
+selah	0	dema-selah-n	Number=Sing	dema	0
+selahs	0	dema-selah-n	Number=Plur	dema	0
+selamlik	0	dema-selamlik-n	Number=Sing	dema	0
+selamliks	0	dema-selamlik-n	Number=Plur	dema	0
+seldom	0	oewn-seldom-r	Degree=Pos	dema	0
+select	0	oewn-select-v	VerbForm=Inf	dema	0
+select	1	oewn-select-a	Degree=Pos	dema	0
+selectable	0	dema-selectable-a	Degree=Pos	dema	0
+selectably	0	dema-selectable-r		dema	0
+selectance	0	dema-selectance-n	Number=Sing	dema	0
+selectances	0	dema-selectance-n	Number=Plur	dema	0
+selected	0	oewn-select-v	Tense=Past	dema	0
+selectee	0	dema-selectee-n	Number=Sing	dema	0
+selectees	0	dema-selectee-n	Number=Plur	dema	0
+selecter	0	oewn-select-a	Degree=Cmp	dema	0
+selecter	1	dema-select-n	Number=Plur	dema	0
+selecters	0	dema-select-n	Number=Plur	dema	0
+selectest	0	oewn-select-a	Degree=Sup	dema	0
+selecting	0	oewn-select-v	VerbForm=Ger	dema	0
+selectingly	0	dema-select-r		dema	0
+selection	0	oewn-selection-n	Number=Sing	dema	0
+selections	0	oewn-selection-n	Number=Plur	dema	0
+selective	0	oewn-selective-a	Degree=Pos	dema	0
+selectively	0	oewn-selectively-r	Degree=Pos	dema	0
+selectiveness	0	dema-selectiveness-n	Number=Sing	dema	0
+selectivenesses	0	dema-selectiveness-n	Number=Plur	dema	0
+selectivities	0	oewn-selectivity-n	Number=Plur	dema	0
+selectivity	0	oewn-selectivity-n	Number=Sing	dema	0
+selectly	0	dema-selectly-r	Degree=Pos	dema	0
+selectman	0	oewn-selectman-n	Number=Sing	dema	0
+selectmen	0	dema-selectmen-n	Number=Sing	dema	0
+selectmens	0	dema-selectmen-n	Number=Plur	dema	0
+selectness	0	dema-selectness-n	Number=Sing	dema	0
+selectnesses	0	dema-selectness-n	Number=Plur	dema	0
+selector	0	oewn-selector-n	Number=Sing	dema	0
+selectors	0	oewn-selector-n	Number=Plur	dema	0
+selects	0	oewn-select-v	Person=3+Tense=Pres	dema	0
+selenate	0	dema-selenate-n	Number=Sing	dema	0
+selenates	0	dema-selenate-n	Number=Plur	dema	0
+selenic	0	dema-selenic-a	Degree=Pos	dema	0
+selenically	0	dema-selenic-r		dema	0
+selenicness	0	dema-selenic-n	Number=Plur	dema	0
+selenide	0	dema-selenide-n	Number=Sing	dema	0
+selenides	0	dema-selenide-n	Number=Plur	dema	0
+selenious	0	dema-selenious-a	Degree=Pos	dema	0
+seleniously	0	dema-selenious-r		dema	0
+seleniousness	0	dema-selenious-n	Number=Plur	dema	0
+selenite	0	oewn-selenite-n	Number=Sing	dema	0
+selenites	0	oewn-selenite-n	Number=Plur	dema	0
+selenitic	0	dema-selenitic-a	Degree=Pos	dema	0
+selenitical	0	dema-selenitical-a	Degree=Pos	dema	0
+selenitically	0	dema-selenitic-r		dema	0
+selenium	0	oewn-selenium-n	Number=Sing	dema	0
+seleniums	0	oewn-selenium-n	Number=Plur	dema	0
+selenodesies	0	dema-selenodesy-n	Number=Plur	dema	0
+selenodesy	0	dema-selenodesy-n	Number=Sing	dema	0
+selenodont	0	dema-selenodont-a	Degree=Pos	dema	0
+selenodont	1	dema-selenodont-n	Number=Sing	dema	0
+selenodonties	0	dema-selenodonty-n	Number=Plur	dema	0
+selenodontly	0	dema-selenodont-r		dema	0
+selenodonts	0	dema-selenodont-n	Number=Plur	dema	0
+selenodonty	0	dema-selenodonty-n	Number=Sing	dema	0
+selenograph	0	dema-selenograph-n	Number=Sing	dema	0
+selenographer	0	dema-selenographer-n	Number=Sing	dema	0
+selenographers	0	dema-selenographer-n	Number=Plur	dema	0
+selenographic	0	dema-selenographic-a	Degree=Pos	dema	0
+selenographical	0	dema-selenographical-a	Degree=Pos	dema	0
+selenographically	0	dema-selenographically-r	Degree=Pos	dema	0
+selenographies	0	dema-selenography-n	Number=Plur	dema	0
+selenographist	0	dema-selenographist-n	Number=Sing	dema	0
+selenographists	0	dema-selenographist-n	Number=Plur	dema	0
+selenographs	0	dema-selenograph-n	Number=Plur	dema	0
+selenography	0	dema-selenography-n	Number=Sing	dema	0
+selenolog	0	dema-selenolog-n	Number=Sing	dema	0
+selenologies	0	oewn-selenology-n	Number=Plur	dema	0
+selenologs	0	dema-selenolog-n	Number=Plur	dema	0
+selenology	0	oewn-selenology-n	Number=Sing	dema	0
+selenomorphologies	0	dema-selenomorphology-n	Number=Plur	dema	0
+selenomorphology	0	dema-selenomorphology-n	Number=Sing	dema	0
+selenotropic	0	dema-selenotropic-a	Degree=Pos	dema	0
+selenotropically	0	dema-selenotropic-r		dema	0
+selenous	0	dema-selenous-a	Degree=Pos	dema	0
+selenously	0	dema-selenous-r		dema	0
+selenousness	0	dema-selenous-n	Number=Plur	dema	0
+self	0	oewn-self-n	Number=Sing	dema	0
+self	1	dema-self-u		dema	0
+self	2	oewn-self-a	Degree=Pos	dema	0
+selfer	0	oewn-self-a	Degree=Cmp	dema	0
+selfest	0	oewn-self-a	Degree=Sup	dema	0
+selfheal	0	dema-selfheal-n	Number=Sing	dema	0
+selfheals	0	dema-selfheal-n	Number=Plur	dema	0
+selfhood	0	dema-selfhood-n	Number=Sing	dema	0
+selfhoods	0	dema-selfhood-n	Number=Plur	dema	0
+selfhypnotization	0	dema-selfhypnotization-n	Number=Sing	dema	0
+selfhypnotizations	0	dema-selfhypnotization-n	Number=Plur	dema	0
+selfish	0	oewn-selfish-a	Degree=Pos	dema	0
+selfishly	0	oewn-selfishly-r	Degree=Pos	dema	0
+selfishness	0	dema-selfishness-a	Degree=Pos	dema	0
+selfishnessly	0	dema-selfishness-r		dema	0
+selfless	0	oewn-selfless-a	Degree=Pos	dema	0
+selflessly	0	oewn-selflessly-r	Degree=Pos	dema	0
+selflessness	0	oewn-selflessness-n	Number=Sing	dema	0
+selflessnesses	0	oewn-selflessness-n	Number=Plur	dema	0
+selfly	0	dema-self-r		dema	0
+selfmovement	0	dema-selfmovement-n	Number=Sing	dema	0
+selfmovements	0	dema-selfmovement-n	Number=Plur	dema	0
+selfness	0	dema-selfness-n	Number=Sing	dema	0
+selfnesses	0	dema-selfness-n	Number=Plur	dema	0
+selfrestrained	0	dema-selfrestrained-a	Degree=Pos	dema	0
+selfrestrained	1	dema-selfrestrained-v	VerbForm=Inf	dema	0
+selfrestraineded	0	dema-selfrestrained-v	Tense=Past	dema	0
+selfrestraineding	0	dema-selfrestrained-v	VerbForm=Ger	dema	0
+selfrestrainedly	0	dema-selfrestrained-r		dema	0
+selfrestraineds	0	dema-selfrestrained-v	Person=3+Tense=Pres	dema	0
+selfsame	0	oewn-selfsame-a	Degree=Pos	dema	0
+selfsamely	0	dema-selfsame-r		dema	0
+selfsameness	0	oewn-selfsameness-n	Number=Sing	dema	0
+selfsamenesses	0	oewn-selfsameness-n	Number=Plur	dema	0
+selfsamer	0	oewn-selfsame-a	Degree=Cmp	dema	0
+selfsamest	0	oewn-selfsame-a	Degree=Sup	dema	0
+selfseekingness	0	dema-selfseekingness-n	Number=Sing	dema	0
+selfseekingnesses	0	dema-selfseekingness-n	Number=Plur	dema	0
+selfsufficiencies	0	dema-selfsufficiency-n	Number=Plur	dema	0
+selfsufficiency	0	dema-selfsufficiency-n	Number=Sing	dema	0
+selfsustainingly	0	dema-selfsustainingly-r	Degree=Pos	dema	0
+selfward	0	dema-selfward-n	Number=Sing	dema	0
+selfwards	0	dema-selfward-n	Number=Plur	dema	0
+sell	0	oewn-sell-v	VerbForm=Inf	dema	0
+sell	1	oewn-sell-n	Number=Sing	dema	0
+seller	0	oewn-seller-n	Number=Sing	dema	0
+sellers	0	oewn-sell-n	Number=Plur	dema	0
+selling	0	dema-selling-v	VerbForm=Inf	dema	0
+sellingly	0	dema-sell-r		dema	0
+sellout	0	oewn-sellout-n	Number=Sing	dema	0
+sellouts	0	oewn-sellout-n	Number=Plur	dema	0
+sells	0	oewn-sell-v	Person=3+Tense=Pres	dema	0
+sells	1	oewn-sell-n	Number=Plur	dema	0
+selsyn	0	oewn-selsyn-n	Number=Sing	dema	0
+selsyns	0	oewn-selsyn-n	Number=Plur	dema	0
+selva	0	oewn-selva-n	Number=Sing	dema	0
+selvage	0	oewn-selvage-n	Number=Sing	dema	0
+selvages	0	oewn-selvage-n	Number=Plur	dema	0
+selvas	0	oewn-selva-n	Number=Plur	dema	0
+selves	0	dema-selves-n	Number=Sing	dema	0
+sem	0	dema-sem-n	Number=Sing	dema	0
+semainier	0	dema-semainier-n	Number=Sing	dema	0
+semainiers	0	dema-semainiers-n	Number=Sing	dema	0
+semaise	0	dema-semaise-n	Number=Sing	dema	0
+semaises	0	dema-semaise-n	Number=Plur	dema	0
+semanteme	0	dema-semanteme-n	Number=Sing	dema	0
+semantemes	0	dema-semanteme-n	Number=Plur	dema	0
+semantic	0	oewn-semantic-a	Degree=Pos	dema	0
+semantically	0	oewn-semantically-r	Degree=Pos	dema	0
+semanticist	0	oewn-semanticist-n	Number=Sing	dema	0
+semanticists	0	oewn-semanticist-n	Number=Plur	dema	0
+semanticness	0	dema-semantic-n	Number=Plur	dema	0
+semantics	0	oewn-semantics-n	Number=Sing	dema	0
+semanticses	0	oewn-semantics-n	Number=Plur	dema	0
+semaphore	0	oewn-semaphore-n	Number=Sing	dema	0
+semaphore	1	oewn-semaphore-v	VerbForm=Inf	dema	0
+semaphored	0	dema-semaphored-v	VerbForm=Inf	dema	0
+semaphorer	0	oewn-semaphore-n	Number=Plur	dema	0
+semaphorers	0	oewn-semaphore-n	Number=Plur	dema	0
+semaphores	0	oewn-semaphore-n	Number=Plur	dema	0
+semaphores	1	oewn-semaphore-v	Person=3+Tense=Pres	dema	0
+semaphoric	0	dema-semaphoric-a	Degree=Pos	dema	0
+semaphorical	0	dema-semaphorical-a	Degree=Pos	dema	0
+semaphorically	0	dema-semaphoric-r		dema	0
+semaphoring	0	dema-semaphoring-v	VerbForm=Inf	dema	0
+semaphoringly	0	dema-semaphore-r		dema	0
+semasiologically	0	dema-semasiologically-r	Degree=Pos	dema	0
+semasiologies	0	oewn-semasiology-n	Number=Plur	dema	0
+semasiologist	0	dema-semasiologist-n	Number=Sing	dema	0
+semasiologists	0	dema-semasiologist-n	Number=Plur	dema	0
+semasiology	0	oewn-semasiology-n	Number=Sing	dema	0
+sematic	0	dema-sematic-a	Degree=Pos	dema	0
+sematically	0	dema-sematic-r		dema	0
+sematicness	0	dema-sematic-n	Number=Plur	dema	0
+sematologies	0	dema-sematology-n	Number=Plur	dema	0
+sematology	0	dema-sematology-n	Number=Sing	dema	0
+semblable	0	dema-semblable-a	Degree=Pos	dema	0
+semblable	1	dema-semblable-n	Number=Sing	dema	0
+semblableness	0	dema-semblable-n	Number=Plur	dema	0
+semblables	0	dema-semblable-n	Number=Plur	dema	0
+semblably	0	dema-semblably-r	Degree=Pos	dema	0
+semblance	0	oewn-semblance-n	Number=Sing	dema	0
+semblances	0	oewn-semblance-n	Number=Plur	dema	0
+semeiologic	0	dema-semeiologic-a	Degree=Pos	dema	0
+semeiological	0	dema-semeiological-a	Degree=Pos	dema	0
+semeiologically	0	dema-semeiologic-r		dema	0
+semeiologies	0	dema-semeiology-n	Number=Plur	dema	0
+semeiologist	0	dema-semeiologist-n	Number=Sing	dema	0
+semeiologists	0	dema-semeiologist-n	Number=Plur	dema	0
+semeiology	0	dema-semeiology-n	Number=Sing	dema	0
+semeiotic	0	dema-semeiotic-a	Degree=Pos	dema	0
+semeiotically	0	dema-semeiotic-r		dema	0
+semeioticness	0	dema-semeiotic-n	Number=Plur	dema	0
+semel	0	dema-semel-r	Degree=Pos	dema	0
+sememe	0	dema-sememe-n	Number=Sing	dema	0
+sememes	0	dema-sememe-n	Number=Plur	dema	0
+semen	0	oewn-semen-n	Number=Sing	dema	0
+semens	0	oewn-semen-n	Number=Plur	dema	0
+semester	0	oewn-semester-n	Number=Sing	dema	0
+semesters	0	oewn-semester-n	Number=Plur	dema	0
+semestral	0	oewn-semestral-a	Degree=Pos	dema	0
+semestrally	0	dema-semestral-r		dema	0
+semestralness	0	dema-semestral-n	Number=Plur	dema	0
+semestrial	0	oewn-semestrial-a	Degree=Pos	dema	0
+semestrially	0	dema-semestrial-r		dema	0
+semestrialness	0	dema-semestrial-n	Number=Plur	dema	0
+semi	0	oewn-semi-n	Number=Sing	dema	0
+semiabsorbent	0	dema-semiabsorbent-a	Degree=Pos	dema	0
+semiabsorbently	0	dema-semiabsorbent-r		dema	0
+semiacademic	0	dema-semiacademic-a	Degree=Pos	dema	0
+semiacademical	0	dema-semiacademical-a	Degree=Pos	dema	0
+semiacademically	0	dema-semiacademically-r	Degree=Pos	dema	0
+semiacetic	0	dema-semiacetic-a	Degree=Pos	dema	0
+semiacetically	0	dema-semiacetic-r		dema	0
+semiacid	0	dema-semiacid-a	Degree=Pos	dema	0
+semiacidic	0	dema-semiacidic-a	Degree=Pos	dema	0
+semiacidically	0	dema-semiacidic-r		dema	0
+semiacidified	0	dema-semiacidified-a	Degree=Pos	dema	0
+semiacidified	1	dema-semiacidified-v	VerbForm=Inf	dema	0
+semiacidifieded	0	dema-semiacidified-v	Tense=Past	dema	0
+semiacidifieding	0	dema-semiacidified-v	VerbForm=Ger	dema	0
+semiacidifiedly	0	dema-semiacidified-r		dema	0
+semiacidifieds	0	dema-semiacidified-v	Person=3+Tense=Pres	dema	0
+semiacidly	0	dema-semiacid-r		dema	0
+semiacidness	0	dema-semiacid-n	Number=Plur	dema	0
+semiacidulated	0	dema-semiacidulated-a	Degree=Pos	dema	0
+semiacidulated	1	dema-semiacidulated-v	VerbForm=Inf	dema	0
+semiacidulateded	0	dema-semiacidulated-v	Tense=Past	dema	0
+semiacidulateding	0	dema-semiacidulated-v	VerbForm=Ger	dema	0
+semiacidulatedly	0	dema-semiacidulated-r		dema	0
+semiacidulateds	0	dema-semiacidulated-v	Person=3+Tense=Pres	dema	0
+semiacrobatic	0	dema-semiacrobatic-a	Degree=Pos	dema	0
+semiacrobatically	0	dema-semiacrobatic-r		dema	0
+semiactive	0	dema-semiactive-a	Degree=Pos	dema	0
+semiactively	0	dema-semiactively-r	Degree=Pos	dema	0
+semiactiveness	0	dema-semiactiveness-n	Number=Sing	dema	0
+semiactivenesses	0	dema-semiactiveness-n	Number=Plur	dema	0
+semiadhesive	0	dema-semiadhesive-a	Degree=Pos	dema	0
+semiadhesively	0	dema-semiadhesively-r	Degree=Pos	dema	0
+semiadhesiveness	0	dema-semiadhesiveness-n	Number=Sing	dema	0
+semiadhesivenesses	0	dema-semiadhesiveness-n	Number=Plur	dema	0
+semiagricultural	0	dema-semiagricultural-a	Degree=Pos	dema	0
+semiagriculturally	0	dema-semiagricultural-r		dema	0
+semialcoholic	0	dema-semialcoholic-a	Degree=Pos	dema	0
+semialcoholically	0	dema-semialcoholic-r		dema	0
+semiallegoric	0	dema-semiallegoric-a	Degree=Pos	dema	0
+semiallegorical	0	dema-semiallegorical-a	Degree=Pos	dema	0
+semiallegorically	0	dema-semiallegorically-r	Degree=Pos	dema	0
+semialuminous	0	dema-semialuminous-a	Degree=Pos	dema	0
+semialuminously	0	dema-semialuminous-r		dema	0
+semianaesthetic	0	dema-semianaesthetic-a	Degree=Pos	dema	0
+semianaesthetically	0	dema-semianaesthetic-r		dema	0
+semianalytic	0	dema-semianalytic-a	Degree=Pos	dema	0
+semianalytical	0	dema-semianalytical-a	Degree=Pos	dema	0
+semianalytically	0	dema-semianalytically-r	Degree=Pos	dema	0
+semianarchism	0	dema-semianarchism-n	Number=Sing	dema	0
+semianarchisms	0	dema-semianarchism-n	Number=Plur	dema	0
+semianarchist	0	dema-semianarchist-n	Number=Sing	dema	0
+semianarchistic	0	dema-semianarchistic-a	Degree=Pos	dema	0
+semianarchistically	0	dema-semianarchistic-r		dema	0
+semianarchists	0	dema-semianarchist-n	Number=Plur	dema	0
+semianatomic	0	dema-semianatomic-a	Degree=Pos	dema	0
+semianatomical	0	dema-semianatomical-a	Degree=Pos	dema	0
+semianatomically	0	dema-semianatomically-r	Degree=Pos	dema	0
+semiandrogenous	0	dema-semiandrogenous-a	Degree=Pos	dema	0
+semiandrogenously	0	dema-semiandrogenous-r		dema	0
+semianesthetic	0	dema-semianesthetic-a	Degree=Pos	dema	0
+semianesthetically	0	dema-semianesthetic-r		dema	0
+semiangle	0	dema-semiangle-n	Number=Sing	dema	0
+semiangles	0	dema-semiangle-n	Number=Plur	dema	0
+semiangular	0	dema-semiangular-a	Degree=Pos	dema	0
+semiangularly	0	dema-semiangular-r		dema	0
+semianimal	0	dema-semianimal-n	Number=Sing	dema	0
+semianimal	1	dema-semianimal-a	Degree=Pos	dema	0
+semianimally	0	dema-semianimal-r		dema	0
+semianimals	0	dema-semianimal-n	Number=Plur	dema	0
+semianimate	0	dema-semianimate-a	Degree=Pos	dema	0
+semianimated	0	dema-semianimated-a	Degree=Pos	dema	0
+semianimated	1	dema-semianimated-v	VerbForm=Inf	dema	0
+semianimateded	0	dema-semianimated-v	Tense=Past	dema	0
+semianimateding	0	dema-semianimated-v	VerbForm=Ger	dema	0
+semianimatedly	0	dema-semianimated-r		dema	0
+semianimateds	0	dema-semianimated-v	Person=3+Tense=Pres	dema	0
+semianimately	0	dema-semianimate-r		dema	0
+semiannual	0	oewn-semiannual-a	Degree=Pos	dema	0
+semiannually	0	oewn-semiannually-r	Degree=Pos	dema	0
+semiannualness	0	dema-semiannual-n	Number=Plur	dema	0
+semianthropologic	0	dema-semianthropologic-a	Degree=Pos	dema	0
+semianthropological	0	dema-semianthropological-a	Degree=Pos	dema	0
+semianthropologically	0	dema-semianthropologically-r	Degree=Pos	dema	0
+semiaquatic	0	oewn-semiaquatic-a	Degree=Pos	dema	0
+semiaquatically	0	dema-semiaquatic-r		dema	0
+semiarchitectural	0	dema-semiarchitectural-a	Degree=Pos	dema	0
+semiarchitecturally	0	dema-semiarchitecturally-r	Degree=Pos	dema	0
+semiarid	0	oewn-semiarid-a	Degree=Pos	dema	0
+semiaridly	0	dema-semiarid-r		dema	0
+semiaridness	0	dema-semiarid-n	Number=Plur	dema	0
+semiarticulate	0	dema-semiarticulate-a	Degree=Pos	dema	0
+semiarticulately	0	dema-semiarticulately-r	Degree=Pos	dema	0
+semiautomatic	0	oewn-semiautomatic-a	Degree=Pos	dema	0
+semiautomatic	1	oewn-semiautomatic-n	Number=Sing	dema	0
+semiautomatically	0	dema-semiautomatically-r	Degree=Pos	dema	0
+semiautomatics	0	oewn-semiautomatic-n	Number=Plur	dema	0
+semiautonomous	0	dema-semiautonomous-a	Degree=Pos	dema	0
+semiautonomously	0	dema-semiautonomous-r		dema	0
+semibald	0	dema-semibald-a	Degree=Pos	dema	0
+semibaldly	0	dema-semibaldly-r	Degree=Pos	dema	0
+semibaldness	0	dema-semibaldness-n	Number=Sing	dema	0
+semibaldnesses	0	dema-semibaldness-n	Number=Plur	dema	0
+semibelted	0	dema-semibelted-a	Degree=Pos	dema	0
+semibelted	1	dema-semibelted-v	VerbForm=Inf	dema	0
+semibelteded	0	dema-semibelted-v	Tense=Past	dema	0
+semibelteding	0	dema-semibelted-v	VerbForm=Ger	dema	0
+semibeltedly	0	dema-semibelted-r		dema	0
+semibelteds	0	dema-semibelted-v	Person=3+Tense=Pres	dema	0
+semibiographic	0	dema-semibiographic-a	Degree=Pos	dema	0
+semibiographical	0	dema-semibiographical-a	Degree=Pos	dema	0
+semibiographically	0	dema-semibiographically-r	Degree=Pos	dema	0
+semibiologic	0	dema-semibiologic-a	Degree=Pos	dema	0
+semibiological	0	dema-semibiological-a	Degree=Pos	dema	0
+semibiologically	0	dema-semibiologically-r	Degree=Pos	dema	0
+semiblasphemous	0	dema-semiblasphemous-a	Degree=Pos	dema	0
+semiblasphemously	0	dema-semiblasphemously-r	Degree=Pos	dema	0
+semiblasphemousness	0	dema-semiblasphemousness-n	Number=Sing	dema	0
+semiblasphemousnesses	0	dema-semiblasphemousness-n	Number=Plur	dema	0
+semibleached	0	dema-semibleached-a	Degree=Pos	dema	0
+semibleached	1	dema-semibleached-v	VerbForm=Inf	dema	0
+semibleacheded	0	dema-semibleached-v	Tense=Past	dema	0
+semibleacheding	0	dema-semibleached-v	VerbForm=Ger	dema	0
+semibleachedly	0	dema-semibleached-r		dema	0
+semibleacheds	0	dema-semibleached-v	Person=3+Tense=Pres	dema	0
+semiboiled	0	dema-semiboiled-a	Degree=Pos	dema	0
+semiboiled	1	dema-semiboiled-v	VerbForm=Inf	dema	0
+semiboileded	0	dema-semiboiled-v	Tense=Past	dema	0
+semiboileding	0	dema-semiboiled-v	VerbForm=Ger	dema	0
+semiboiledly	0	dema-semiboiled-r		dema	0
+semiboileds	0	dema-semiboiled-v	Person=3+Tense=Pres	dema	0
+semibold	0	dema-semibold-a	Degree=Pos	dema	0
+semibold	1	dema-semibold-n	Number=Sing	dema	0
+semiboldly	0	dema-semibold-r		dema	0
+semiboldness	0	dema-semibold-n	Number=Plur	dema	0
+semibolds	0	dema-semibold-n	Number=Plur	dema	0
+semibouffant	0	dema-semibouffant-a	Degree=Pos	dema	0
+semibouffantly	0	dema-semibouffant-r		dema	0
+semibourgeois	0	dema-semibourgeois-a	Degree=Pos	dema	0
+semibourgeoisly	0	dema-semibourgeois-r		dema	0
+semibreve	0	oewn-semibreve-n	Number=Sing	dema	0
+semibreves	0	oewn-semibreve-n	Number=Plur	dema	0
+semibureaucratic	0	dema-semibureaucratic-a	Degree=Pos	dema	0
+semibureaucratically	0	dema-semibureaucratically-r	Degree=Pos	dema	0
+semicabalistic	0	dema-semicabalistic-a	Degree=Pos	dema	0
+semicabalistical	0	dema-semicabalistical-a	Degree=Pos	dema	0
+semicabalistically	0	dema-semicabalistically-r	Degree=Pos	dema	0
+semicalcined	0	dema-semicalcined-a	Degree=Pos	dema	0
+semicalcined	1	dema-semicalcined-v	VerbForm=Inf	dema	0
+semicalcineded	0	dema-semicalcined-v	Tense=Past	dema	0
+semicalcineding	0	dema-semicalcined-v	VerbForm=Ger	dema	0
+semicalcinedly	0	dema-semicalcined-r		dema	0
+semicalcineds	0	dema-semicalcined-v	Person=3+Tense=Pres	dema	0
+semicapitalistic	0	dema-semicapitalistic-a	Degree=Pos	dema	0
+semicapitalistically	0	dema-semicapitalistically-r	Degree=Pos	dema	0
+semicarbonate	0	dema-semicarbonate-a	Degree=Pos	dema	0
+semicarbonately	0	dema-semicarbonate-r		dema	0
+semicaricatural	0	dema-semicaricatural-a	Degree=Pos	dema	0
+semicaricaturally	0	dema-semicaricatural-r		dema	0
+semicarved	0	dema-semicarved-a	Degree=Pos	dema	0
+semicarved	1	dema-semicarved-v	VerbForm=Inf	dema	0
+semicarveded	0	dema-semicarved-v	Tense=Past	dema	0
+semicarveding	0	dema-semicarved-v	VerbForm=Ger	dema	0
+semicarvedly	0	dema-semicarved-r		dema	0
+semicarveds	0	dema-semicarved-v	Person=3+Tense=Pres	dema	0
+semicatalyst	0	dema-semicatalyst-n	Number=Sing	dema	0
+semicatalysts	0	dema-semicatalyst-n	Number=Plur	dema	0
+semicatalytic	0	dema-semicatalytic-a	Degree=Pos	dema	0
+semicatalytically	0	dema-semicatalytic-r		dema	0
+semicathartic	0	dema-semicathartic-a	Degree=Pos	dema	0
+semicathartically	0	dema-semicathartic-r		dema	0
+semicellulose	0	dema-semicellulose-n	Number=Sing	dema	0
+semicelluloses	0	dema-semicellulose-n	Number=Plur	dema	0
+semicellulous	0	dema-semicellulous-a	Degree=Pos	dema	0
+semicellulously	0	dema-semicellulous-r		dema	0
+semicentenaries	0	dema-semicentenaries-n	Number=Sing	dema	0
+semicentenarily	0	dema-semicentenary-r		dema	0
+semicentenary	0	oewn-semicentenary-a	Degree=Pos	dema	0
+semicentenary	1	oewn-semicentenary-n	Number=Sing	dema	0
+semicentennial	0	oewn-semicentennial-a	Degree=Pos	dema	0
+semicentennial	1	oewn-semicentennial-n	Number=Sing	dema	0
+semicentennially	0	dema-semicentennial-r		dema	0
+semicentennials	0	oewn-semicentennial-n	Number=Plur	dema	0
+semichaotic	0	dema-semichaotic-a	Degree=Pos	dema	0
+semichaotically	0	dema-semichaotically-r	Degree=Pos	dema	0
+semichemical	0	dema-semichemical-a	Degree=Pos	dema	0
+semichemically	0	dema-semichemically-r	Degree=Pos	dema	0
+semicircle	0	oewn-semicircle-n	Number=Sing	dema	0
+semicircles	0	oewn-semicircle-n	Number=Plur	dema	0
+semicircular	0	oewn-semicircular-a	Degree=Pos	dema	0
+semicircularly	0	dema-semicircularly-r	Degree=Pos	dema	0
+semicircularness	0	dema-semicircularness-n	Number=Sing	dema	0
+semicircularnesses	0	dema-semicircularness-n	Number=Plur	dema	0
+semicivilization	0	dema-semicivilization-n	Number=Sing	dema	0
+semicivilizations	0	dema-semicivilization-n	Number=Plur	dema	0
+semicivilized	0	dema-semicivilized-a	Degree=Pos	dema	0
+semicivilized	1	dema-semicivilized-v	VerbForm=Inf	dema	0
+semicivilizeded	0	dema-semicivilized-v	Tense=Past	dema	0
+semicivilizeding	0	dema-semicivilized-v	VerbForm=Ger	dema	0
+semicivilizedly	0	dema-semicivilized-r		dema	0
+semicivilizeds	0	dema-semicivilized-v	Person=3+Tense=Pres	dema	0
+semiclassical	0	dema-semiclassical-a	Degree=Pos	dema	0
+semiclassically	0	dema-semiclassically-r	Degree=Pos	dema	0
+semiclerical	0	dema-semiclerical-a	Degree=Pos	dema	0
+semiclerically	0	dema-semiclerically-r	Degree=Pos	dema	0
+semiclinical	0	dema-semiclinical-a	Degree=Pos	dema	0
+semiclinically	0	dema-semiclinically-r	Degree=Pos	dema	0
+semiclosed	0	dema-semiclosed-a	Degree=Pos	dema	0
+semiclosed	1	dema-semiclosed-v	VerbForm=Inf	dema	0
+semicloseded	0	dema-semiclosed-v	Tense=Past	dema	0
+semicloseding	0	dema-semiclosed-v	VerbForm=Ger	dema	0
+semiclosedly	0	dema-semiclosed-r		dema	0
+semicloseds	0	dema-semiclosed-v	Person=3+Tense=Pres	dema	0
+semicolloid	0	dema-semicolloid-n	Number=Sing	dema	0
+semicolloidal	0	dema-semicolloidal-a	Degree=Pos	dema	0
+semicolloidally	0	dema-semicolloidal-r		dema	0
+semicolloids	0	dema-semicolloid-n	Number=Plur	dema	0
+semicolloquial	0	dema-semicolloquial-a	Degree=Pos	dema	0
+semicolloquially	0	dema-semicolloquially-r	Degree=Pos	dema	0
+semicolon	0	oewn-semicolon-n	Number=Sing	dema	0
+semicolonial	0	dema-semicolonial-a	Degree=Pos	dema	0
+semicolonially	0	dema-semicolonially-r	Degree=Pos	dema	0
+semicolons	0	oewn-semicolon-n	Number=Plur	dema	0
+semicoma	0	oewn-semicoma-n	Number=Sing	dema	0
+semicomas	0	dema-semicomas-n	Number=Sing	dema	0
+semicomatose	0	oewn-semicomatose-a	Degree=Pos	dema	0
+semicomatosely	0	dema-semicomatose-r		dema	0
+semicombined	0	dema-semicombined-a	Degree=Pos	dema	0
+semicombined	1	dema-semicombined-v	VerbForm=Inf	dema	0
+semicombineded	0	dema-semicombined-v	Tense=Past	dema	0
+semicombineding	0	dema-semicombined-v	VerbForm=Ger	dema	0
+semicombinedly	0	dema-semicombined-r		dema	0
+semicombineds	0	dema-semicombined-v	Person=3+Tense=Pres	dema	0
+semicomic	0	dema-semicomic-a	Degree=Pos	dema	0
+semicomical	0	dema-semicomical-a	Degree=Pos	dema	0
+semicomically	0	dema-semicomically-r	Degree=Pos	dema	0
+semicommercial	0	dema-semicommercial-a	Degree=Pos	dema	0
+semicommercially	0	dema-semicommercially-r	Degree=Pos	dema	0
+semicommunicative	0	dema-semicommunicative-a	Degree=Pos	dema	0
+semicommunicatively	0	dema-semicommunicative-r		dema	0
+semiconcealed	0	dema-semiconcealed-a	Degree=Pos	dema	0
+semiconcealed	1	dema-semiconcealed-v	VerbForm=Inf	dema	0
+semiconcealeded	0	dema-semiconcealed-v	Tense=Past	dema	0
+semiconcealeding	0	dema-semiconcealed-v	VerbForm=Ger	dema	0
+semiconcealedly	0	dema-semiconcealed-r		dema	0
+semiconcealeds	0	dema-semiconcealed-v	Person=3+Tense=Pres	dema	0
+semiconditioned	0	dema-semiconditioned-a	Degree=Pos	dema	0
+semiconditioned	1	dema-semiconditioned-v	VerbForm=Inf	dema	0
+semiconditioneded	0	dema-semiconditioned-v	Tense=Past	dema	0
+semiconditioneding	0	dema-semiconditioned-v	VerbForm=Ger	dema	0
+semiconditionedly	0	dema-semiconditioned-r		dema	0
+semiconditioneds	0	dema-semiconditioned-v	Person=3+Tense=Pres	dema	0
+semiconduction	0	dema-semiconduction-n	Number=Sing	dema	0
+semiconductions	0	dema-semiconduction-n	Number=Plur	dema	0
+semiconductor	0	oewn-semiconductor-n	Number=Sing	dema	0
+semiconductors	0	oewn-semiconductor-n	Number=Plur	dema	0
+semiconfinement	0	dema-semiconfinement-n	Number=Sing	dema	0
+semiconfinements	0	dema-semiconfinement-n	Number=Plur	dema	0
+semiconformist	0	dema-semiconformist-n	Number=Sing	dema	0
+semiconformists	0	dema-semiconformist-n	Number=Plur	dema	0
+semiconformities	0	dema-semiconformity-n	Number=Plur	dema	0
+semiconformity	0	dema-semiconformity-n	Number=Sing	dema	0
+semiconical	0	dema-semiconical-a	Degree=Pos	dema	0
+semiconically	0	dema-semiconically-r	Degree=Pos	dema	0
+semiconscious	0	oewn-semiconscious-a	Degree=Pos	dema	0
+semiconsciously	0	dema-semiconsciously-r	Degree=Pos	dema	0
+semiconsciousness	0	oewn-semiconsciousness-n	Number=Sing	dema	0
+semiconsciousnesses	0	oewn-semiconsciousness-n	Number=Plur	dema	0
+semiconservative	0	dema-semiconservative-a	Degree=Pos	dema	0
+semiconservatively	0	dema-semiconservative-r		dema	0
+semicontinuous	0	dema-semicontinuous-a	Degree=Pos	dema	0
+semicontinuously	0	dema-semicontinuously-r	Degree=Pos	dema	0
+semiconventional	0	dema-semiconventional-a	Degree=Pos	dema	0
+semiconventionalities	0	dema-semiconventionality-n	Number=Plur	dema	0
+semiconventionality	0	dema-semiconventionality-n	Number=Sing	dema	0
+semiconventionally	0	dema-semiconventionally-r	Degree=Pos	dema	0
+semiconvergence	0	dema-semiconvergence-a	Degree=Pos	dema	0
+semiconvergencely	0	dema-semiconvergence-r		dema	0
+semiconvergent	0	dema-semiconvergent-a	Degree=Pos	dema	0
+semiconvergently	0	dema-semiconvergent-r		dema	0
+semiconversion	0	dema-semiconversion-n	Number=Sing	dema	0
+semiconversions	0	dema-semiconversion-n	Number=Plur	dema	0
+semicordate	0	dema-semicordate-a	Degree=Pos	dema	0
+semicordately	0	dema-semicordate-r		dema	0
+semicotton	0	dema-semicotton-n	Number=Sing	dema	0
+semicottons	0	dema-semicotton-n	Number=Plur	dema	0
+semicretin	0	dema-semicretin-n	Number=Sing	dema	0
+semicretins	0	dema-semicretin-n	Number=Plur	dema	0
+semicrystalline	0	dema-semicrystalline-a	Degree=Pos	dema	0
+semicrystallinely	0	dema-semicrystalline-r		dema	0
+semicultivated	0	dema-semicultivated-a	Degree=Pos	dema	0
+semicultivated	1	dema-semicultivated-v	VerbForm=Inf	dema	0
+semicultivateded	0	dema-semicultivated-v	Tense=Past	dema	0
+semicultivateding	0	dema-semicultivated-v	VerbForm=Ger	dema	0
+semicultivatedly	0	dema-semicultivated-r		dema	0
+semicultivateds	0	dema-semicultivated-v	Person=3+Tense=Pres	dema	0
+semicultured	0	dema-semicultured-a	Degree=Pos	dema	0
+semicultured	1	dema-semicultured-v	VerbForm=Inf	dema	0
+semicultureded	0	dema-semicultured-v	Tense=Past	dema	0
+semicultureding	0	dema-semicultured-v	VerbForm=Ger	dema	0
+semiculturedly	0	dema-semicultured-r		dema	0
+semicultureds	0	dema-semicultured-v	Person=3+Tense=Pres	dema	0
+semicured	0	dema-semicured-a	Degree=Pos	dema	0
+semicured	1	dema-semicured-v	VerbForm=Inf	dema	0
+semicureded	0	dema-semicured-v	Tense=Past	dema	0
+semicureding	0	dema-semicured-v	VerbForm=Ger	dema	0
+semicuredly	0	dema-semicured-r		dema	0
+semicureds	0	dema-semicured-v	Person=3+Tense=Pres	dema	0
+semicylinder	0	dema-semicylinder-n	Number=Sing	dema	0
+semicylinders	0	dema-semicylinder-n	Number=Plur	dema	0
+semicylindric	0	dema-semicylindric-a	Degree=Pos	dema	0
+semicylindrical	0	dema-semicylindrical-a	Degree=Pos	dema	0
+semicylindrically	0	dema-semicylindric-r		dema	0
+semicynical	0	dema-semicynical-a	Degree=Pos	dema	0
+semicynically	0	dema-semicynically-r	Degree=Pos	dema	0
+semidaily	0	dema-semidaily-a	Degree=Pos	dema	0
+semidangerous	0	dema-semidangerous-a	Degree=Pos	dema	0
+semidangerously	0	dema-semidangerously-r	Degree=Pos	dema	0
+semidangerousness	0	dema-semidangerousness-n	Number=Sing	dema	0
+semidangerousnesses	0	dema-semidangerousness-n	Number=Plur	dema	0
+semideaf	0	dema-semideaf-a	Degree=Pos	dema	0
+semideafly	0	dema-semideaf-r		dema	0
+semideafness	0	dema-semideaf-n	Number=Plur	dema	0
+semidecadent	0	dema-semidecadent-a	Degree=Pos	dema	0
+semidecadently	0	dema-semidecadently-r	Degree=Pos	dema	0
+semidecay	0	dema-semidecay-n	Number=Sing	dema	0
+semidecayed	0	dema-semidecayed-a	Degree=Pos	dema	0
+semidecayed	1	dema-semidecayed-v	VerbForm=Inf	dema	0
+semidecayeded	0	dema-semidecayed-v	Tense=Past	dema	0
+semidecayeding	0	dema-semidecayed-v	VerbForm=Ger	dema	0
+semidecayedly	0	dema-semidecayed-r		dema	0
+semidecayeds	0	dema-semidecayed-v	Person=3+Tense=Pres	dema	0
+semidecays	0	dema-semidecay-n	Number=Plur	dema	0
+semidefensive	0	dema-semidefensive-a	Degree=Pos	dema	0
+semidefensively	0	dema-semidefensively-r	Degree=Pos	dema	0
+semidefensiveness	0	dema-semidefensiveness-n	Number=Sing	dema	0
+semidefensivenesses	0	dema-semidefensiveness-n	Number=Plur	dema	0
+semidefined	0	dema-semidefined-a	Degree=Pos	dema	0
+semidefined	1	dema-semidefined-v	VerbForm=Inf	dema	0
+semidefineded	0	dema-semidefined-v	Tense=Past	dema	0
+semidefineding	0	dema-semidefined-v	VerbForm=Ger	dema	0
+semidefinedly	0	dema-semidefined-r		dema	0
+semidefineds	0	dema-semidefined-v	Person=3+Tense=Pres	dema	0
+semidefinite	0	dema-semidefinite-a	Degree=Pos	dema	0
+semidefinitely	0	dema-semidefinitely-r	Degree=Pos	dema	0
+semidefiniteness	0	dema-semidefiniteness-n	Number=Sing	dema	0
+semidefinitenesses	0	dema-semidefiniteness-n	Number=Plur	dema	0
+semideification	0	dema-semideification-n	Number=Sing	dema	0
+semideifications	0	dema-semideification-n	Number=Plur	dema	0
+semidelirium	0	dema-semidelirium-n	Number=Sing	dema	0
+semideliriums	0	dema-semidelirium-n	Number=Plur	dema	0
+semidemented	0	dema-semidemented-a	Degree=Pos	dema	0
+semidemented	1	dema-semidemented-v	VerbForm=Inf	dema	0
+semidementeded	0	dema-semidemented-v	Tense=Past	dema	0
+semidementeding	0	dema-semidemented-v	VerbForm=Ger	dema	0
+semidementedly	0	dema-semidemented-r		dema	0
+semidementeds	0	dema-semidemented-v	Person=3+Tense=Pres	dema	0
+semidependence	0	dema-semidependence-n	Number=Sing	dema	0
+semidependences	0	dema-semidependence-n	Number=Plur	dema	0
+semidependent	0	dema-semidependent-a	Degree=Pos	dema	0
+semidependently	0	dema-semidependently-r	Degree=Pos	dema	0
+semidesert	0	oewn-semidesert-n	Number=Sing	dema	0
+semideserts	0	oewn-semidesert-n	Number=Plur	dema	0
+semidestruction	0	dema-semidestruction-n	Number=Sing	dema	0
+semidestructions	0	dema-semidestruction-n	Number=Plur	dema	0
+semidestructive	0	dema-semidestructive-a	Degree=Pos	dema	0
+semidestructively	0	dema-semidestructive-r		dema	0
+semidetached	0	oewn-semidetached-a	Degree=Pos	dema	0
+semidetached	1	dema-semidetached-v	VerbForm=Inf	dema	0
+semidetacheded	0	dema-semidetached-v	Tense=Past	dema	0
+semidetacheding	0	dema-semidetached-v	VerbForm=Ger	dema	0
+semidetachedly	0	dema-semidetached-r		dema	0
+semidetacheds	0	dema-semidetached-v	Person=3+Tense=Pres	dema	0
+semideterministic	0	dema-semideterministic-a	Degree=Pos	dema	0
+semideterministically	0	dema-semideterministic-r		dema	0
+semidiameter	0	oewn-semidiameter-n	Number=Sing	dema	0
+semidiameters	0	oewn-semidiameter-n	Number=Plur	dema	0
+semidiaphanous	0	dema-semidiaphanous-a	Degree=Pos	dema	0
+semidiaphanously	0	dema-semidiaphanously-r	Degree=Pos	dema	0
+semidiaphanousness	0	dema-semidiaphanousness-n	Number=Sing	dema	0
+semidiaphanousnesses	0	dema-semidiaphanousness-n	Number=Plur	dema	0
+semidictatorial	0	dema-semidictatorial-a	Degree=Pos	dema	0
+semidictatorially	0	dema-semidictatorially-r	Degree=Pos	dema	0
+semidictatorialness	0	dema-semidictatorialness-n	Number=Sing	dema	0
+semidictatorialnesses	0	dema-semidictatorialness-n	Number=Plur	dema	0
+semidigested	0	dema-semidigested-a	Degree=Pos	dema	0
+semidigested	1	dema-semidigested-v	VerbForm=Inf	dema	0
+semidigesteded	0	dema-semidigested-v	Tense=Past	dema	0
+semidigesteding	0	dema-semidigested-v	VerbForm=Ger	dema	0
+semidigestedly	0	dema-semidigested-r		dema	0
+semidigesteds	0	dema-semidigested-v	Person=3+Tense=Pres	dema	0
+semidiness	0	dema-semidiness-n	Number=Sing	dema	0
+semidinesses	0	dema-semidiness-n	Number=Plur	dema	0
+semidirect	0	dema-semidirect-a	Degree=Pos	dema	0
+semidirectly	0	dema-semidirect-r		dema	0
+semidisabled	0	dema-semidisabled-a	Degree=Pos	dema	0
+semidisabled	1	dema-semidisabled-v	VerbForm=Inf	dema	0
+semidisableded	0	dema-semidisabled-v	Tense=Past	dema	0
+semidisableding	0	dema-semidisabled-v	VerbForm=Ger	dema	0
+semidisabledly	0	dema-semidisabled-r		dema	0
+semidisableds	0	dema-semidisabled-v	Person=3+Tense=Pres	dema	0
+semidiurnal	0	dema-semidiurnal-a	Degree=Pos	dema	0
+semidiurnally	0	dema-semidiurnal-r		dema	0
+semidivided	0	dema-semidivided-a	Degree=Pos	dema	0
+semidivided	1	dema-semidivided-v	VerbForm=Inf	dema	0
+semidivideded	0	dema-semidivided-v	Tense=Past	dema	0
+semidivideding	0	dema-semidivided-v	VerbForm=Ger	dema	0
+semidividedly	0	dema-semidivided-r		dema	0
+semidivideds	0	dema-semidivided-v	Person=3+Tense=Pres	dema	0
+semidivine	0	dema-semidivine-a	Degree=Pos	dema	0
+semidivinely	0	dema-semidivine-r		dema	0
+semidivision	0	dema-semidivision-n	Number=Sing	dema	0
+semidivisions	0	dema-semidivision-n	Number=Plur	dema	0
+semidivisive	0	dema-semidivisive-a	Degree=Pos	dema	0
+semidivisively	0	dema-semidivisively-r	Degree=Pos	dema	0
+semidivisiveness	0	dema-semidivisiveness-n	Number=Sing	dema	0
+semidivisivenesses	0	dema-semidivisiveness-n	Number=Plur	dema	0
+semidome	0	dema-semidome-n	Number=Sing	dema	0
+semidomed	0	dema-semidomed-a	Degree=Pos	dema	0
+semidomed	1	dema-semidomed-v	VerbForm=Inf	dema	0
+semidomeded	0	dema-semidomed-v	Tense=Past	dema	0
+semidomeding	0	dema-semidomed-v	VerbForm=Ger	dema	0
+semidomedly	0	dema-semidomed-r		dema	0
+semidomeds	0	dema-semidomed-v	Person=3+Tense=Pres	dema	0
+semidomes	0	dema-semidome-n	Number=Plur	dema	0
+semidomestic	0	dema-semidomestic-a	Degree=Pos	dema	0
+semidomestically	0	dema-semidomestically-r	Degree=Pos	dema	0
+semidomesticated	0	dema-semidomesticated-a	Degree=Pos	dema	0
+semidomesticated	1	dema-semidomesticated-v	VerbForm=Inf	dema	0
+semidomesticateded	0	dema-semidomesticated-v	Tense=Past	dema	0
+semidomesticateding	0	dema-semidomesticated-v	VerbForm=Ger	dema	0
+semidomesticatedly	0	dema-semidomesticated-r		dema	0
+semidomesticateds	0	dema-semidomesticated-v	Person=3+Tense=Pres	dema	0
+semidomestication	0	dema-semidomestication-n	Number=Sing	dema	0
+semidomestications	0	dema-semidomestication-n	Number=Plur	dema	0
+semidormant	0	dema-semidormant-a	Degree=Pos	dema	0
+semidormantly	0	dema-semidormant-r		dema	0
+semidramatic	0	dema-semidramatic-a	Degree=Pos	dema	0
+semidramatical	0	dema-semidramatical-a	Degree=Pos	dema	0
+semidramatically	0	dema-semidramatically-r	Degree=Pos	dema	0
+semidrily	0	dema-semidry-r		dema	0
+semidriness	0	dema-semidry-n	Number=Plur	dema	0
+semidry	0	dema-semidry-a	Degree=Pos	dema	0
+semidrying	0	dema-semidrying-n	Number=Sing	dema	0
+semidryings	0	dema-semidrying-n	Number=Plur	dema	0
+semiductile	0	dema-semiductile-a	Degree=Pos	dema	0
+semiductilely	0	dema-semiductile-r		dema	0
+semidurables	0	dema-semidurables-n	Number=Sing	dema	0
+semidurableses	0	dema-semidurables-n	Number=Plur	dema	0
+semielastic	0	dema-semielastic-a	Degree=Pos	dema	0
+semielastically	0	dema-semielastically-r	Degree=Pos	dema	0
+semielevated	0	dema-semielevated-a	Degree=Pos	dema	0
+semielevated	1	dema-semielevated-v	VerbForm=Inf	dema	0
+semielevateded	0	dema-semielevated-v	Tense=Past	dema	0
+semielevateding	0	dema-semielevated-v	VerbForm=Ger	dema	0
+semielevatedly	0	dema-semielevated-r		dema	0
+semielevateds	0	dema-semielevated-v	Person=3+Tense=Pres	dema	0
+semielliptic	0	dema-semielliptic-a	Degree=Pos	dema	0
+semielliptical	0	dema-semielliptical-a	Degree=Pos	dema	0
+semielliptically	0	dema-semielliptic-r		dema	0
+semiemotional	0	dema-semiemotional-a	Degree=Pos	dema	0
+semiemotionally	0	dema-semiemotionally-r	Degree=Pos	dema	0
+semiempirical	0	oewn-semiempirical-a	Degree=Pos	dema	0
+semiempirically	0	dema-semiempirically-r	Degree=Pos	dema	0
+semienclosure	0	dema-semienclosure-n	Number=Sing	dema	0
+semienclosures	0	dema-semienclosure-n	Number=Plur	dema	0
+semiepic	0	dema-semiepic-a	Degree=Pos	dema	0
+semiepical	0	dema-semiepical-a	Degree=Pos	dema	0
+semiepically	0	dema-semiepically-r	Degree=Pos	dema	0
+semiepicness	0	dema-semiepic-n	Number=Plur	dema	0
+semierect	0	dema-semierect-a	Degree=Pos	dema	0
+semierectly	0	dema-semierectly-r	Degree=Pos	dema	0
+semierectness	0	dema-semierectness-n	Number=Sing	dema	0
+semierectnesses	0	dema-semierectness-n	Number=Plur	dema	0
+semiexclusive	0	dema-semiexclusive-a	Degree=Pos	dema	0
+semiexclusively	0	dema-semiexclusively-r	Degree=Pos	dema	0
+semiexclusiveness	0	dema-semiexclusiveness-n	Number=Sing	dema	0
+semiexclusivenesses	0	dema-semiexclusiveness-n	Number=Plur	dema	0
+semiexecutive	0	dema-semiexecutive-a	Degree=Pos	dema	0
+semiexecutively	0	dema-semiexecutive-r		dema	0
+semiexhibitionist	0	dema-semiexhibitionist-n	Number=Sing	dema	0
+semiexhibitionists	0	dema-semiexhibitionist-n	Number=Plur	dema	0
+semiexpanded	0	dema-semiexpanded-a	Degree=Pos	dema	0
+semiexpanded	1	dema-semiexpanded-v	VerbForm=Inf	dema	0
+semiexpandeded	0	dema-semiexpanded-v	Tense=Past	dema	0
+semiexpandeding	0	dema-semiexpanded-v	VerbForm=Ger	dema	0
+semiexpandedly	0	dema-semiexpanded-r		dema	0
+semiexpandeds	0	dema-semiexpanded-v	Person=3+Tense=Pres	dema	0
+semiexpansible	0	dema-semiexpansible-a	Degree=Pos	dema	0
+semiexpansibly	0	dema-semiexpansible-r		dema	0
+semiexperimental	0	dema-semiexperimental-a	Degree=Pos	dema	0
+semiexperimentally	0	dema-semiexperimentally-r	Degree=Pos	dema	0
+semiexposed	0	dema-semiexposed-a	Degree=Pos	dema	0
+semiexposed	1	dema-semiexposed-v	VerbForm=Inf	dema	0
+semiexposeded	0	dema-semiexposed-v	Tense=Past	dema	0
+semiexposeding	0	dema-semiexposed-v	VerbForm=Ger	dema	0
+semiexposedly	0	dema-semiexposed-r		dema	0
+semiexposeds	0	dema-semiexposed-v	Person=3+Tense=Pres	dema	0
+semiexpositive	0	dema-semiexpositive-a	Degree=Pos	dema	0
+semiexpositively	0	dema-semiexpositive-r		dema	0
+semiexpositorily	0	dema-semiexpository-r		dema	0
+semiexpository	0	dema-semiexpository-a	Degree=Pos	dema	0
+semiexposure	0	dema-semiexposure-n	Number=Sing	dema	0
+semiexposures	0	dema-semiexposure-n	Number=Plur	dema	0
+semiexpressionistic	0	dema-semiexpressionistic-a	Degree=Pos	dema	0
+semiexpressionistically	0	dema-semiexpressionistic-r		dema	0
+semiexternal	0	dema-semiexternal-a	Degree=Pos	dema	0
+semiexternalized	0	dema-semiexternalized-a	Degree=Pos	dema	0
+semiexternalized	1	dema-semiexternalized-v	VerbForm=Inf	dema	0
+semiexternalizeded	0	dema-semiexternalized-v	Tense=Past	dema	0
+semiexternalizeding	0	dema-semiexternalized-v	VerbForm=Ger	dema	0
+semiexternalizedly	0	dema-semiexternalized-r		dema	0
+semiexternalizeds	0	dema-semiexternalized-v	Person=3+Tense=Pres	dema	0
+semiexternally	0	dema-semiexternally-r	Degree=Pos	dema	0
+semifiction	0	dema-semifiction-n	Number=Sing	dema	0
+semifictional	0	dema-semifictional-a	Degree=Pos	dema	0
+semifictionalized	0	dema-semifictionalized-a	Degree=Pos	dema	0
+semifictionalized	1	dema-semifictionalized-v	VerbForm=Inf	dema	0
+semifictionalizeded	0	dema-semifictionalized-v	Tense=Past	dema	0
+semifictionalizeding	0	dema-semifictionalized-v	VerbForm=Ger	dema	0
+semifictionalizedly	0	dema-semifictionalized-r		dema	0
+semifictionalizeds	0	dema-semifictionalized-v	Person=3+Tense=Pres	dema	0
+semifictionally	0	dema-semifictionally-r	Degree=Pos	dema	0
+semifictions	0	dema-semifiction-n	Number=Plur	dema	0
+semifigurative	0	dema-semifigurative-a	Degree=Pos	dema	0
+semifiguratively	0	dema-semifiguratively-r	Degree=Pos	dema	0
+semifigurativeness	0	dema-semifigurativeness-n	Number=Sing	dema	0
+semifigurativenesses	0	dema-semifigurativeness-n	Number=Plur	dema	0
+semifinal	0	oewn-semifinal-n	Number=Sing	dema	0
+semifinalist	0	oewn-semifinalist-n	Number=Sing	dema	0
+semifinalists	0	oewn-semifinalist-n	Number=Plur	dema	0
+semifinals	0	oewn-semifinal-n	Number=Plur	dema	0
+semifine	0	dema-semifine-a	Degree=Pos	dema	0
+semifinely	0	dema-semifine-r		dema	0
+semifineness	0	dema-semifine-n	Number=Plur	dema	0
+semifinished	0	dema-semifinished-a	Degree=Pos	dema	0
+semifinished	1	dema-semifinished-v	VerbForm=Inf	dema	0
+semifinisheded	0	dema-semifinished-v	Tense=Past	dema	0
+semifinisheding	0	dema-semifinished-v	VerbForm=Ger	dema	0
+semifinishedly	0	dema-semifinished-r		dema	0
+semifinisheds	0	dema-semifinished-v	Person=3+Tense=Pres	dema	0
+semifitted	0	dema-semifitted-a	Degree=Pos	dema	0
+semifitted	1	dema-semifitted-v	VerbForm=Inf	dema	0
+semifitteded	0	dema-semifitted-v	Tense=Past	dema	0
+semifitteding	0	dema-semifitted-v	VerbForm=Ger	dema	0
+semifittedly	0	dema-semifitted-r		dema	0
+semifitteds	0	dema-semifitted-v	Person=3+Tense=Pres	dema	0
+semifixed	0	dema-semifixed-a	Degree=Pos	dema	0
+semifixed	1	dema-semifixed-v	VerbForm=Inf	dema	0
+semifixeded	0	dema-semifixed-v	Tense=Past	dema	0
+semifixeding	0	dema-semifixed-v	VerbForm=Ger	dema	0
+semifixedly	0	dema-semifixed-r		dema	0
+semifixeds	0	dema-semifixed-v	Person=3+Tense=Pres	dema	0
+semifloating	0	dema-semifloating-a	Degree=Pos	dema	0
+semifloating	1	dema-semifloating-v	VerbForm=Inf	dema	0
+semifloatinged	0	dema-semifloating-v	Tense=Past	dema	0
+semifloatinging	0	dema-semifloating-v	VerbForm=Ger	dema	0
+semifloatingly	0	dema-semifloating-r		dema	0
+semifloatings	0	dema-semifloating-v	Person=3+Tense=Pres	dema	0
+semifluid	0	dema-semifluid-a	Degree=Pos	dema	0
+semifluid	1	dema-semifluid-n	Number=Sing	dema	0
+semifluidities	0	oewn-semifluidity-n	Number=Plur	dema	0
+semifluidity	0	oewn-semifluidity-n	Number=Sing	dema	0
+semifluidly	0	dema-semifluid-r		dema	0
+semifluidness	0	dema-semifluid-n	Number=Plur	dema	0
+semifluids	0	dema-semifluid-n	Number=Plur	dema	0
+semiformal	0	oewn-semiformal-a	Degree=Pos	dema	0
+semiformally	0	dema-semiformal-r		dema	0
+semiformed	0	dema-semiformed-a	Degree=Pos	dema	0
+semiformed	1	dema-semiformed-v	VerbForm=Inf	dema	0
+semiformeded	0	dema-semiformed-v	Tense=Past	dema	0
+semiformeding	0	dema-semiformed-v	VerbForm=Ger	dema	0
+semiformedly	0	dema-semiformed-r		dema	0
+semiformeds	0	dema-semiformed-v	Person=3+Tense=Pres	dema	0
+semifossilized	0	dema-semifossilized-a	Degree=Pos	dema	0
+semifossilized	1	dema-semifossilized-v	VerbForm=Inf	dema	0
+semifossilizeded	0	dema-semifossilized-v	Tense=Past	dema	0
+semifossilizeding	0	dema-semifossilized-v	VerbForm=Ger	dema	0
+semifossilizedly	0	dema-semifossilized-r		dema	0
+semifossilizeds	0	dema-semifossilized-v	Person=3+Tense=Pres	dema	0
+semifrontier	0	dema-semifrontier-n	Number=Sing	dema	0
+semifrontiers	0	dema-semifrontier-n	Number=Plur	dema	0
+semifunctional	0	dema-semifunctional-a	Degree=Pos	dema	0
+semifunctionalism	0	dema-semifunctionalism-n	Number=Sing	dema	0
+semifunctionalisms	0	dema-semifunctionalism-n	Number=Plur	dema	0
+semifunctionally	0	dema-semifunctionally-r	Degree=Pos	dema	0
+semifurnished	0	dema-semifurnished-a	Degree=Pos	dema	0
+semifurnished	1	dema-semifurnished-v	VerbForm=Inf	dema	0
+semifurnisheded	0	dema-semifurnished-v	Tense=Past	dema	0
+semifurnisheding	0	dema-semifurnished-v	VerbForm=Ger	dema	0
+semifurnishedly	0	dema-semifurnished-r		dema	0
+semifurnisheds	0	dema-semifurnished-v	Person=3+Tense=Pres	dema	0
+semifused	0	dema-semifused-a	Degree=Pos	dema	0
+semifused	1	dema-semifused-v	VerbForm=Inf	dema	0
+semifuseded	0	dema-semifused-v	Tense=Past	dema	0
+semifuseding	0	dema-semifused-v	VerbForm=Ger	dema	0
+semifusedly	0	dema-semifused-r		dema	0
+semifuseds	0	dema-semifused-v	Person=3+Tense=Pres	dema	0
+semifuturistic	0	dema-semifuturistic-a	Degree=Pos	dema	0
+semifuturistically	0	dema-semifuturistic-r		dema	0
+semigeometric	0	dema-semigeometric-a	Degree=Pos	dema	0
+semigeometrical	0	dema-semigeometrical-a	Degree=Pos	dema	0
+semigeometrically	0	dema-semigeometrically-r	Degree=Pos	dema	0
+semiglaze	0	dema-semiglaze-n	Number=Sing	dema	0
+semiglazed	0	dema-semiglazed-a	Degree=Pos	dema	0
+semiglazed	1	dema-semiglazed-v	VerbForm=Inf	dema	0
+semiglazeded	0	dema-semiglazed-v	Tense=Past	dema	0
+semiglazeding	0	dema-semiglazed-v	VerbForm=Ger	dema	0
+semiglazedly	0	dema-semiglazed-r		dema	0
+semiglazeds	0	dema-semiglazed-v	Person=3+Tense=Pres	dema	0
+semiglazes	0	dema-semiglaze-n	Number=Plur	dema	0
+semiglobular	0	dema-semiglobular-a	Degree=Pos	dema	0
+semiglobularly	0	dema-semiglobularly-r	Degree=Pos	dema	0
+semigod	0	dema-semigod-n	Number=Sing	dema	0
+semigods	0	dema-semigod-n	Number=Plur	dema	0
+semigovernmental	0	dema-semigovernmental-a	Degree=Pos	dema	0
+semigovernmentally	0	dema-semigovernmentally-r	Degree=Pos	dema	0
+semigroup	0	dema-semigroup-n	Number=Sing	dema	0
+semigroups	0	dema-semigroup-n	Number=Plur	dema	0
+semih	0	dema-semih-n	Number=Sing	dema	0
+semihaness	0	dema-semihaness-n	Number=Sing	dema	0
+semihanesses	0	dema-semihaness-n	Number=Plur	dema	0
+semihard	0	oewn-semihard-a	Degree=Pos	dema	0
+semihardened	0	dema-semihardened-a	Degree=Pos	dema	0
+semihardened	1	dema-semihardened-v	VerbForm=Inf	dema	0
+semihardeneded	0	dema-semihardened-v	Tense=Past	dema	0
+semihardeneding	0	dema-semihardened-v	VerbForm=Ger	dema	0
+semihardenedly	0	dema-semihardened-r		dema	0
+semihardeneds	0	dema-semihardened-v	Person=3+Tense=Pres	dema	0
+semihardly	0	dema-semihard-r		dema	0
+semihardness	0	dema-semihard-n	Number=Plur	dema	0
+semiherbaceous	0	dema-semiherbaceous-a	Degree=Pos	dema	0
+semiherbaceously	0	dema-semiherbaceous-r		dema	0
+semiheretic	0	dema-semiheretic-a	Degree=Pos	dema	0
+semiheretic	1	dema-semiheretic-n	Number=Sing	dema	0
+semiheretical	0	dema-semiheretical-a	Degree=Pos	dema	0
+semiheretically	0	dema-semiheretic-r		dema	0
+semiheretics	0	dema-semiheretic-n	Number=Plur	dema	0
+semihibernation	0	dema-semihibernation-n	Number=Sing	dema	0
+semihibernations	0	dema-semihibernation-n	Number=Plur	dema	0
+semihistoric	0	dema-semihistoric-a	Degree=Pos	dema	0
+semihistorical	0	dema-semihistorical-a	Degree=Pos	dema	0
+semihistorically	0	dema-semihistorically-r	Degree=Pos	dema	0
+semihostile	0	dema-semihostile-a	Degree=Pos	dema	0
+semihostilely	0	dema-semihostilely-r	Degree=Pos	dema	0
+semihostilities	0	dema-semihostility-n	Number=Plur	dema	0
+semihostility	0	dema-semihostility-n	Number=Sing	dema	0
+semihs	0	dema-semih-n	Number=Plur	dema	0
+semihumanism	0	dema-semihumanism-n	Number=Sing	dema	0
+semihumanisms	0	dema-semihumanism-n	Number=Plur	dema	0
+semihumanistic	0	dema-semihumanistic-a	Degree=Pos	dema	0
+semihumanistically	0	dema-semihumanistic-r		dema	0
+semihumanitarian	0	dema-semihumanitarian-a	Degree=Pos	dema	0
+semihumanitarian	1	dema-semihumanitarian-n	Number=Sing	dema	0
+semihumanitarianly	0	dema-semihumanitarian-r		dema	0
+semihumanitarians	0	dema-semihumanitarian-n	Number=Plur	dema	0
+semihumanized	0	dema-semihumanized-a	Degree=Pos	dema	0
+semihumanized	1	dema-semihumanized-v	VerbForm=Inf	dema	0
+semihumanizeded	0	dema-semihumanized-v	Tense=Past	dema	0
+semihumanizeding	0	dema-semihumanized-v	VerbForm=Ger	dema	0
+semihumanizedly	0	dema-semihumanized-r		dema	0
+semihumanizeds	0	dema-semihumanized-v	Person=3+Tense=Pres	dema	0
+semihyperbolic	0	dema-semihyperbolic-a	Degree=Pos	dema	0
+semihyperbolically	0	dema-semihyperbolic-r		dema	0
+semihysterical	0	dema-semihysterical-a	Degree=Pos	dema	0
+semihysterically	0	dema-semihysterically-r	Degree=Pos	dema	0
+semiintoxicated	0	dema-semiintoxicated-a	Degree=Pos	dema	0
+semiintoxicated	1	dema-semiintoxicated-v	VerbForm=Inf	dema	0
+semiintoxicateded	0	dema-semiintoxicated-v	Tense=Past	dema	0
+semiintoxicateding	0	dema-semiintoxicated-v	VerbForm=Ger	dema	0
+semiintoxicatedly	0	dema-semiintoxicated-r		dema	0
+semiintoxicateds	0	dema-semiintoxicated-v	Person=3+Tense=Pres	dema	0
+semijocular	0	dema-semijocular-a	Degree=Pos	dema	0
+semijocularly	0	dema-semijocularly-r	Degree=Pos	dema	0
+semijudicial	0	dema-semijudicial-a	Degree=Pos	dema	0
+semijudicially	0	dema-semijudicially-r	Degree=Pos	dema	0
+semijuridic	0	dema-semijuridic-a	Degree=Pos	dema	0
+semijuridical	0	dema-semijuridical-a	Degree=Pos	dema	0
+semijuridically	0	dema-semijuridically-r	Degree=Pos	dema	0
+semilegendarily	0	dema-semilegendary-r		dema	0
+semilegendary	0	dema-semilegendary-a	Degree=Pos	dema	0
+semilegislative	0	dema-semilegislative-a	Degree=Pos	dema	0
+semilegislatively	0	dema-semilegislatively-r	Degree=Pos	dema	0
+semiliberal	0	dema-semiliberal-a	Degree=Pos	dema	0
+semiliberal	1	dema-semiliberal-n	Number=Sing	dema	0
+semiliberalism	0	dema-semiliberalism-n	Number=Sing	dema	0
+semiliberalisms	0	dema-semiliberalism-n	Number=Plur	dema	0
+semiliberally	0	dema-semiliberally-r	Degree=Pos	dema	0
+semiliberals	0	dema-semiliberal-n	Number=Plur	dema	0
+semiliquid	0	oewn-semiliquid-a	Degree=Pos	dema	0
+semiliquid	1	dema-semiliquid-n	Number=Sing	dema	0
+semiliquidities	0	dema-semiliquidity-n	Number=Plur	dema	0
+semiliquidity	0	dema-semiliquidity-n	Number=Sing	dema	0
+semiliquidly	0	dema-semiliquid-r		dema	0
+semiliquids	0	dema-semiliquid-n	Number=Plur	dema	0
+semiliterate	0	oewn-semiliterate-a	Degree=Pos	dema	0
+semiliterately	0	dema-semiliterate-r		dema	0
+semilucent	0	dema-semilucent-a	Degree=Pos	dema	0
+semilucently	0	dema-semilucent-r		dema	0
+semiluminous	0	dema-semiluminous-a	Degree=Pos	dema	0
+semiluminously	0	dema-semiluminously-r	Degree=Pos	dema	0
+semiluminousness	0	dema-semiluminousness-n	Number=Sing	dema	0
+semiluminousnesses	0	dema-semiluminousness-n	Number=Plur	dema	0
+semilunar	0	oewn-semilunar-a	Degree=Pos	dema	0
+semilunarly	0	dema-semilunar-r		dema	0
+semilunate	0	dema-semilunate-a	Degree=Pos	dema	0
+semilunated	0	dema-semilunated-a	Degree=Pos	dema	0
+semilunated	1	dema-semilunated-v	VerbForm=Inf	dema	0
+semilunateded	0	dema-semilunated-v	Tense=Past	dema	0
+semilunateding	0	dema-semilunated-v	VerbForm=Ger	dema	0
+semilunatedly	0	dema-semilunated-r		dema	0
+semilunateds	0	dema-semilunated-v	Person=3+Tense=Pres	dema	0
+semilunately	0	dema-semilunate-r		dema	0
+semiluxuries	0	dema-semiluxury-n	Number=Plur	dema	0
+semiluxury	0	dema-semiluxury-n	Number=Sing	dema	0
+semilyric	0	dema-semilyric-a	Degree=Pos	dema	0
+semilyrical	0	dema-semilyrical-a	Degree=Pos	dema	0
+semilyrically	0	dema-semilyrically-r	Degree=Pos	dema	0
+semimagical	0	dema-semimagical-a	Degree=Pos	dema	0
+semimagically	0	dema-semimagically-r	Degree=Pos	dema	0
+semimagnetic	0	dema-semimagnetic-a	Degree=Pos	dema	0
+semimagnetical	0	dema-semimagnetical-a	Degree=Pos	dema	0
+semimagnetically	0	dema-semimagnetically-r	Degree=Pos	dema	0
+semimalicious	0	dema-semimalicious-a	Degree=Pos	dema	0
+semimaliciously	0	dema-semimaliciously-r	Degree=Pos	dema	0
+semimaliciousness	0	dema-semimaliciousness-n	Number=Sing	dema	0
+semimaliciousnesses	0	dema-semimaliciousness-n	Number=Plur	dema	0
+semimalignant	0	dema-semimalignant-a	Degree=Pos	dema	0
+semimalignantly	0	dema-semimalignantly-r	Degree=Pos	dema	0
+semimanagerial	0	dema-semimanagerial-a	Degree=Pos	dema	0
+semimanagerially	0	dema-semimanagerially-r	Degree=Pos	dema	0
+semimanneristic	0	dema-semimanneristic-a	Degree=Pos	dema	0
+semimanneristically	0	dema-semimanneristic-r		dema	0
+semimanufactured	0	dema-semimanufactured-a	Degree=Pos	dema	0
+semimanufactured	1	dema-semimanufactured-v	VerbForm=Inf	dema	0
+semimanufactureded	0	dema-semimanufactured-v	Tense=Past	dema	0
+semimanufactureding	0	dema-semimanufactured-v	VerbForm=Ger	dema	0
+semimanufacturedly	0	dema-semimanufactured-r		dema	0
+semimanufactureds	0	dema-semimanufactured-v	Person=3+Tense=Pres	dema	0
+semimarine	0	dema-semimarine-a	Degree=Pos	dema	0
+semimarine	1	dema-semimarine-n	Number=Sing	dema	0
+semimarinely	0	dema-semimarine-r		dema	0
+semimarines	0	dema-semimarine-n	Number=Plur	dema	0
+semimat	0	dema-semimat-a	Degree=Pos	dema	0
+semimaterialistic	0	dema-semimaterialistic-a	Degree=Pos	dema	0
+semimaterialistically	0	dema-semimaterialistic-r		dema	0
+semimathematical	0	dema-semimathematical-a	Degree=Pos	dema	0
+semimathematically	0	dema-semimathematically-r	Degree=Pos	dema	0
+semimatly	0	dema-semimat-r		dema	0
+semimatness	0	dema-semimat-n	Number=Plur	dema	0
+semimature	0	dema-semimature-a	Degree=Pos	dema	0
+semimaturely	0	dema-semimaturely-r	Degree=Pos	dema	0
+semimatureness	0	dema-semimatureness-n	Number=Sing	dema	0
+semimaturenesses	0	dema-semimatureness-n	Number=Plur	dema	0
+semimaturities	0	dema-semimaturity-n	Number=Plur	dema	0
+semimaturity	0	dema-semimaturity-n	Number=Sing	dema	0
+semimechanical	0	dema-semimechanical-a	Degree=Pos	dema	0
+semimechanically	0	dema-semimechanical-r		dema	0
+semimechanistic	0	dema-semimechanistic-a	Degree=Pos	dema	0
+semimechanistically	0	dema-semimechanistic-r		dema	0
+semimedicinal	0	dema-semimedicinal-a	Degree=Pos	dema	0
+semimedicinally	0	dema-semimedicinal-r		dema	0
+semimembranous	0	dema-semimembranous-a	Degree=Pos	dema	0
+semimembranously	0	dema-semimembranous-r		dema	0
+semimetallic	0	dema-semimetallic-a	Degree=Pos	dema	0
+semimetallically	0	dema-semimetallic-r		dema	0
+semimetaphoric	0	dema-semimetaphoric-a	Degree=Pos	dema	0
+semimetaphorical	0	dema-semimetaphorical-a	Degree=Pos	dema	0
+semimetaphorically	0	dema-semimetaphorically-r	Degree=Pos	dema	0
+semimild	0	dema-semimild-a	Degree=Pos	dema	0
+semimildly	0	dema-semimild-r		dema	0
+semimildness	0	dema-semimild-n	Number=Plur	dema	0
+semimineral	0	dema-semimineral-a	Degree=Pos	dema	0
+semimineralized	0	dema-semimineralized-a	Degree=Pos	dema	0
+semimineralized	1	dema-semimineralized-v	VerbForm=Inf	dema	0
+semimineralizeded	0	dema-semimineralized-v	Tense=Past	dema	0
+semimineralizeding	0	dema-semimineralized-v	VerbForm=Ger	dema	0
+semimineralizedly	0	dema-semimineralized-r		dema	0
+semimineralizeds	0	dema-semimineralized-v	Person=3+Tense=Pres	dema	0
+semiminerally	0	dema-semimineral-r		dema	0
+semiminess	0	dema-semiminess-n	Number=Sing	dema	0
+semiminesses	0	dema-semiminess-n	Number=Plur	dema	0
+semiministerial	0	dema-semiministerial-a	Degree=Pos	dema	0
+semiministerially	0	dema-semiministerial-r		dema	0
+semimobile	0	dema-semimobile-a	Degree=Pos	dema	0
+semimobilely	0	dema-semimobile-r		dema	0
+semimoderate	0	dema-semimoderate-a	Degree=Pos	dema	0
+semimoderately	0	dema-semimoderately-r	Degree=Pos	dema	0
+semimonarchic	0	dema-semimonarchic-a	Degree=Pos	dema	0
+semimonarchical	0	dema-semimonarchical-a	Degree=Pos	dema	0
+semimonarchically	0	dema-semimonarchically-r	Degree=Pos	dema	0
+semimonopolistic	0	dema-semimonopolistic-a	Degree=Pos	dema	0
+semimonopolistically	0	dema-semimonopolistic-r		dema	0
+semimonthlies	0	oewn-semimonthly-n	Number=Plur	dema	0
+semimonthly	0	oewn-semimonthly-a	Degree=Pos	dema	0
+semimonthly	1	oewn-semimonthly-n	Number=Sing	dema	0
+semimonthly	2	oewn-semimonthly-r	Degree=Pos	dema	0
+semimoralistic	0	dema-semimoralistic-a	Degree=Pos	dema	0
+semimoralistically	0	dema-semimoralistic-r		dema	0
+semimountainous	0	dema-semimountainous-a	Degree=Pos	dema	0
+semimountainously	0	dema-semimountainously-a	Degree=Pos	dema	0
+semimystic	0	dema-semimystic-a	Degree=Pos	dema	0
+semimystical	0	dema-semimystical-a	Degree=Pos	dema	0
+semimystically	0	dema-semimystically-r	Degree=Pos	dema	0
+semimysticalness	0	dema-semimysticalness-n	Number=Sing	dema	0
+semimysticalnesses	0	dema-semimysticalness-n	Number=Plur	dema	0
+semimythic	0	dema-semimythic-a	Degree=Pos	dema	0
+semimythical	0	dema-semimythical-a	Degree=Pos	dema	0
+semimythically	0	dema-semimythically-r	Degree=Pos	dema	0
+seminaked	0	dema-seminaked-a	Degree=Pos	dema	0
+seminaked	1	dema-seminaked-v	VerbForm=Inf	dema	0
+seminakeded	0	dema-seminaked-v	Tense=Past	dema	0
+seminakeding	0	dema-seminaked-v	VerbForm=Ger	dema	0
+seminakedly	0	dema-seminaked-r		dema	0
+seminakeds	0	dema-seminaked-v	Person=3+Tense=Pres	dema	0
+seminal	0	oewn-seminal-a	Degree=Pos	dema	0
+seminally	0	dema-seminal-r		dema	0
+seminalness	0	dema-seminal-n	Number=Plur	dema	0
+seminar	0	oewn-seminar-n	Number=Sing	dema	0
+seminarcotic	0	dema-seminarcotic-a	Degree=Pos	dema	0
+seminarcotically	0	dema-seminarcotic-r		dema	0
+seminarial	0	dema-seminarial-a	Degree=Pos	dema	0
+seminarially	0	dema-seminarial-r		dema	0
+seminarian	0	oewn-seminarian-n	Number=Sing	dema	0
+seminarians	0	oewn-seminarian-n	Number=Plur	dema	0
+seminaries	0	dema-seminaries-n	Number=Sing	dema	0
+seminarily	0	dema-seminary-r		dema	0
+seminarrative	0	dema-seminarrative-a	Degree=Pos	dema	0
+seminarratively	0	dema-seminarrative-r		dema	0
+seminars	0	oewn-seminar-n	Number=Plur	dema	0
+seminary	0	oewn-seminary-n	Number=Sing	dema	0
+seminary	1	dema-seminary-a	Degree=Pos	dema	0
+seminasal	0	dema-seminasal-a	Degree=Pos	dema	0
+seminasalities	0	dema-seminasality-n	Number=Plur	dema	0
+seminasality	0	dema-seminasality-n	Number=Sing	dema	0
+seminasally	0	dema-seminasally-r	Degree=Pos	dema	0
+semination	0	dema-semination-n	Number=Sing	dema	0
+seminationalism	0	dema-seminationalism-n	Number=Sing	dema	0
+seminationalisms	0	dema-seminationalism-n	Number=Plur	dema	0
+seminationalistic	0	dema-seminationalistic-a	Degree=Pos	dema	0
+seminationalistically	0	dema-seminationalistic-r		dema	0
+seminationalized	0	dema-seminationalized-a	Degree=Pos	dema	0
+seminationalized	1	dema-seminationalized-v	VerbForm=Inf	dema	0
+seminationalizeded	0	dema-seminationalized-v	Tense=Past	dema	0
+seminationalizeding	0	dema-seminationalized-v	VerbForm=Ger	dema	0
+seminationalizedly	0	dema-seminationalized-r		dema	0
+seminationalizeds	0	dema-seminationalized-v	Person=3+Tense=Pres	dema	0
+seminations	0	dema-semination-n	Number=Plur	dema	0
+seminervous	0	dema-seminervous-a	Degree=Pos	dema	0
+seminervously	0	dema-seminervously-r	Degree=Pos	dema	0
+seminervousness	0	dema-seminervousness-n	Number=Sing	dema	0
+seminervousnesses	0	dema-seminervousness-n	Number=Plur	dema	0
+seminess	0	dema-seminess-n	Number=Sing	dema	0
+seminesses	0	dema-seminess-n	Number=Plur	dema	0
+semineurotic	0	dema-semineurotic-a	Degree=Pos	dema	0
+semineurotically	0	dema-semineurotically-r	Degree=Pos	dema	0
+semineutral	0	dema-semineutral-a	Degree=Pos	dema	0
+semineutralities	0	dema-semineutrality-n	Number=Plur	dema	0
+semineutrality	0	dema-semineutrality-n	Number=Sing	dema	0
+semineutrally	0	dema-semineutral-r		dema	0
+seminiferous	0	oewn-seminiferous-a	Degree=Pos	dema	0
+seminiferously	0	dema-seminiferous-r		dema	0
+seminivorous	0	dema-seminivorous-a	Degree=Pos	dema	0
+seminivorously	0	dema-seminivorous-r		dema	0
+seminocturnal	0	dema-seminocturnal-a	Degree=Pos	dema	0
+seminocturnally	0	dema-seminocturnal-r		dema	0
+seminoma	0	oewn-seminoma-n	Number=Sing	dema	0
+seminomad	0	dema-seminomad-n	Number=Sing	dema	0
+seminomadic	0	dema-seminomadic-a	Degree=Pos	dema	0
+seminomadically	0	dema-seminomadically-r	Degree=Pos	dema	0
+seminomadism	0	dema-seminomadism-n	Number=Sing	dema	0
+seminomadisms	0	dema-seminomadism-n	Number=Plur	dema	0
+seminomads	0	dema-seminomad-n	Number=Plur	dema	0
+seminomas	0	dema-seminomas-n	Number=Sing	dema	0
+seminomata	0	dema-seminomata-n	Number=Sing	dema	0
+seminomatas	0	dema-seminomata-n	Number=Plur	dema	0
+seminormal	0	dema-seminormal-a	Degree=Pos	dema	0
+seminormalities	0	dema-seminormality-n	Number=Plur	dema	0
+seminormality	0	dema-seminormality-n	Number=Sing	dema	0
+seminormally	0	dema-seminormally-r	Degree=Pos	dema	0
+seminormalness	0	dema-seminormalness-n	Number=Sing	dema	0
+seminormalnesses	0	dema-seminormalness-n	Number=Plur	dema	0
+seminude	0	oewn-seminude-a	Degree=Pos	dema	0
+seminudely	0	dema-seminude-r		dema	0
+seminudeness	0	dema-seminude-n	Number=Plur	dema	0
+seminudities	0	dema-seminudity-n	Number=Plur	dema	0
+seminudity	0	dema-seminudity-n	Number=Sing	dema	0
+semiobjective	0	dema-semiobjective-a	Degree=Pos	dema	0
+semiobjectively	0	dema-semiobjectively-r	Degree=Pos	dema	0
+semiobjectiveness	0	dema-semiobjectiveness-n	Number=Sing	dema	0
+semiobjectivenesses	0	dema-semiobjectiveness-n	Number=Plur	dema	0
+semioblivious	0	dema-semioblivious-a	Degree=Pos	dema	0
+semiobliviously	0	dema-semiobliviously-r	Degree=Pos	dema	0
+semiobliviousness	0	dema-semiobliviousness-n	Number=Sing	dema	0
+semiobliviousnesses	0	dema-semiobliviousness-n	Number=Plur	dema	0
+semiofficial	0	oewn-semiofficial-a	Degree=Pos	dema	0
+semiofficially	0	dema-semiofficially-r	Degree=Pos	dema	0
+semiologies	0	oewn-semiology-n	Number=Plur	dema	0
+semiology	0	oewn-semiology-n	Number=Sing	dema	0
+semiopacities	0	dema-semiopacity-n	Number=Plur	dema	0
+semiopacity	0	dema-semiopacity-n	Number=Sing	dema	0
+semiopen	0	dema-semiopen-a	Degree=Pos	dema	0
+semiopenly	0	dema-semiopenly-r	Degree=Pos	dema	0
+semiopenness	0	dema-semiopenness-n	Number=Sing	dema	0
+semiopennesses	0	dema-semiopenness-n	Number=Plur	dema	0
+semioptimistic	0	dema-semioptimistic-a	Degree=Pos	dema	0
+semioptimistically	0	dema-semioptimistically-r	Degree=Pos	dema	0
+semioratorical	0	dema-semioratorical-a	Degree=Pos	dema	0
+semioratorically	0	dema-semioratorically-r	Degree=Pos	dema	0
+semiorganic	0	dema-semiorganic-a	Degree=Pos	dema	0
+semiorganically	0	dema-semiorganically-r	Degree=Pos	dema	0
+semioriental	0	dema-semioriental-a	Degree=Pos	dema	0
+semiorientally	0	dema-semiorientally-r	Degree=Pos	dema	0
+semiorthodox	0	dema-semiorthodox-a	Degree=Pos	dema	0
+semiorthodoxly	0	dema-semiorthodoxly-r	Degree=Pos	dema	0
+semiotic	0	oewn-semiotic-a	Degree=Pos	dema	0
+semiotically	0	dema-semiotic-r		dema	0
+semioticness	0	dema-semiotic-n	Number=Plur	dema	0
+semiotics	0	oewn-semiotics-n	Number=Sing	dema	0
+semioticses	0	oewn-semiotics-n	Number=Plur	dema	0
+semioval	0	dema-semioval-a	Degree=Pos	dema	0
+semiovally	0	dema-semiovally-r	Degree=Pos	dema	0
+semiovalness	0	dema-semiovalness-n	Number=Sing	dema	0
+semiovalnesses	0	dema-semiovalness-n	Number=Plur	dema	0
+semiovate	0	dema-semiovate-a	Degree=Pos	dema	0
+semiovately	0	dema-semiovate-r		dema	0
+semiovateness	0	dema-semiovate-n	Number=Plur	dema	0
+semioviparous	0	dema-semioviparous-a	Degree=Pos	dema	0
+semioviparously	0	dema-semioviparous-r		dema	0
+semioxygenized	0	dema-semioxygenized-a	Degree=Pos	dema	0
+semioxygenized	1	dema-semioxygenized-v	VerbForm=Inf	dema	0
+semioxygenizeded	0	dema-semioxygenized-v	Tense=Past	dema	0
+semioxygenizeding	0	dema-semioxygenized-v	VerbForm=Ger	dema	0
+semioxygenizedly	0	dema-semioxygenized-r		dema	0
+semioxygenizeds	0	dema-semioxygenized-v	Person=3+Tense=Pres	dema	0
+semipacifist	0	dema-semipacifist-a	Degree=Pos	dema	0
+semipacifist	1	dema-semipacifist-n	Number=Sing	dema	0
+semipacifistic	0	dema-semipacifistic-a	Degree=Pos	dema	0
+semipacifistically	0	dema-semipacifistic-r		dema	0
+semipacifistly	0	dema-semipacifist-r		dema	0
+semipacifists	0	dema-semipacifist-n	Number=Plur	dema	0
+semipagan	0	dema-semipagan-n	Number=Sing	dema	0
+semipagan	1	dema-semipagan-a	Degree=Pos	dema	0
+semipaganish	0	dema-semipaganish-a	Degree=Pos	dema	0
+semipaganishly	0	dema-semipaganish-r		dema	0
+semipaganly	0	dema-semipagan-r		dema	0
+semipagans	0	dema-semipagan-n	Number=Plur	dema	0
+semipalmate	0	dema-semipalmate-a	Degree=Pos	dema	0
+semipalmately	0	dema-semipalmate-r		dema	0
+semiparalysis	0	dema-semiparalysis-a	Degree=Pos	dema	0
+semiparalysisly	0	dema-semiparalysis-r		dema	0
+semiparalytic	0	dema-semiparalytic-n	Number=Sing	dema	0
+semiparalytic	1	dema-semiparalytic-a	Degree=Pos	dema	0
+semiparalytically	0	dema-semiparalytic-r		dema	0
+semiparalytics	0	dema-semiparalytic-n	Number=Plur	dema	0
+semiparalyzed	0	dema-semiparalyzed-a	Degree=Pos	dema	0
+semiparalyzed	1	dema-semiparalyzed-v	VerbForm=Inf	dema	0
+semiparalyzeded	0	dema-semiparalyzed-v	Tense=Past	dema	0
+semiparalyzeding	0	dema-semiparalyzed-v	VerbForm=Ger	dema	0
+semiparalyzedly	0	dema-semiparalyzed-r		dema	0
+semiparalyzeds	0	dema-semiparalyzed-v	Person=3+Tense=Pres	dema	0
+semiparasitic	0	oewn-semiparasitic-a	Degree=Pos	dema	0
+semiparasitically	0	dema-semiparasitic-r		dema	0
+semiparasitism	0	dema-semiparasitism-n	Number=Sing	dema	0
+semiparasitisms	0	dema-semiparasitism-n	Number=Plur	dema	0
+semiparochial	0	dema-semiparochial-a	Degree=Pos	dema	0
+semiparochially	0	dema-semiparochial-r		dema	0
+semipassive	0	dema-semipassive-a	Degree=Pos	dema	0
+semipassively	0	dema-semipassively-r	Degree=Pos	dema	0
+semipassiveness	0	dema-semipassiveness-n	Number=Sing	dema	0
+semipassivenesses	0	dema-semipassiveness-n	Number=Plur	dema	0
+semipaste	0	dema-semipaste-n	Number=Sing	dema	0
+semipastes	0	dema-semipaste-n	Number=Plur	dema	0
+semipastoral	0	dema-semipastoral-a	Degree=Pos	dema	0
+semipastorally	0	dema-semipastorally-r	Degree=Pos	dema	0
+semipathologic	0	dema-semipathologic-a	Degree=Pos	dema	0
+semipathological	0	dema-semipathological-a	Degree=Pos	dema	0
+semipathologically	0	dema-semipathologically-r	Degree=Pos	dema	0
+semipatriot	0	dema-semipatriot-n	Number=Sing	dema	0
+semipatriotic	0	dema-semipatriotic-a	Degree=Pos	dema	0
+semipatriotically	0	dema-semipatriotically-r	Degree=Pos	dema	0
+semipatriots	0	dema-semipatriot-n	Number=Plur	dema	0
+semipatterned	0	dema-semipatterned-a	Degree=Pos	dema	0
+semipatterned	1	dema-semipatterned-v	VerbForm=Inf	dema	0
+semipatterneded	0	dema-semipatterned-v	Tense=Past	dema	0
+semipatterneding	0	dema-semipatterned-v	VerbForm=Ger	dema	0
+semipatternedly	0	dema-semipatterned-r		dema	0
+semipatterneds	0	dema-semipatterned-v	Person=3+Tense=Pres	dema	0
+semipeace	0	dema-semipeace-n	Number=Sing	dema	0
+semipeaceful	0	dema-semipeaceful-a	Degree=Pos	dema	0
+semipeacefully	0	dema-semipeacefully-r	Degree=Pos	dema	0
+semipeaces	0	dema-semipeace-n	Number=Plur	dema	0
+semipedantic	0	dema-semipedantic-a	Degree=Pos	dema	0
+semipedantical	0	dema-semipedantical-a	Degree=Pos	dema	0
+semipedantically	0	dema-semipedantically-r	Degree=Pos	dema	0
+semipendent	0	dema-semipendent-a	Degree=Pos	dema	0
+semipendently	0	dema-semipendent-r		dema	0
+semipendulous	0	dema-semipendulous-a	Degree=Pos	dema	0
+semipendulously	0	dema-semipendulously-r	Degree=Pos	dema	0
+semipendulousness	0	dema-semipendulousness-n	Number=Sing	dema	0
+semipendulousnesses	0	dema-semipendulousness-n	Number=Plur	dema	0
+semiperceptive	0	dema-semiperceptive-a	Degree=Pos	dema	0
+semiperceptively	0	dema-semiperceptive-r		dema	0
+semipermanent	0	oewn-semipermanent-a	Degree=Pos	dema	0
+semipermanently	0	dema-semipermanent-r		dema	0
+semipermeabilities	0	dema-semipermeability-n	Number=Plur	dema	0
+semipermeability	0	dema-semipermeability-n	Number=Sing	dema	0
+semipermeable	0	oewn-semipermeable-a	Degree=Pos	dema	0
+semipermeably	0	dema-semipermeable-r		dema	0
+semiperviness	0	dema-semiperviness-n	Number=Sing	dema	0
+semipervinesses	0	dema-semiperviness-n	Number=Plur	dema	0
+semipervious	0	dema-semipervious-a	Degree=Pos	dema	0
+semiperviously	0	dema-semipervious-r		dema	0
+semipetrified	0	dema-semipetrified-a	Degree=Pos	dema	0
+semipetrified	1	dema-semipetrified-v	VerbForm=Inf	dema	0
+semipetrifieded	0	dema-semipetrified-v	Tense=Past	dema	0
+semipetrifieding	0	dema-semipetrified-v	VerbForm=Ger	dema	0
+semipetrifiedly	0	dema-semipetrified-r		dema	0
+semipetrifieds	0	dema-semipetrified-v	Person=3+Tense=Pres	dema	0
+semiphenomenal	0	dema-semiphenomenal-a	Degree=Pos	dema	0
+semiphenomenally	0	dema-semiphenomenally-r	Degree=Pos	dema	0
+semiphilosophic	0	dema-semiphilosophic-a	Degree=Pos	dema	0
+semiphilosophical	0	dema-semiphilosophical-a	Degree=Pos	dema	0
+semiphilosophically	0	dema-semiphilosophically-r	Degree=Pos	dema	0
+semiphosphorescence	0	dema-semiphosphorescence-n	Number=Sing	dema	0
+semiphosphorescences	0	dema-semiphosphorescence-n	Number=Plur	dema	0
+semiphosphorescent	0	dema-semiphosphorescent-a	Degree=Pos	dema	0
+semiphosphorescently	0	dema-semiphosphorescent-r		dema	0
+semiphrenetic	0	dema-semiphrenetic-a	Degree=Pos	dema	0
+semiphrenetically	0	dema-semiphrenetic-r		dema	0
+semipictorial	0	dema-semipictorial-a	Degree=Pos	dema	0
+semipictorially	0	dema-semipictorially-r	Degree=Pos	dema	0
+semipious	0	dema-semipious-a	Degree=Pos	dema	0
+semipiously	0	dema-semipiously-r	Degree=Pos	dema	0
+semipiousness	0	dema-semipiousness-n	Number=Sing	dema	0
+semipiousnesses	0	dema-semipiousness-n	Number=Plur	dema	0
+semiplastic	0	dema-semiplastic-a	Degree=Pos	dema	0
+semiplastically	0	dema-semiplastic-r		dema	0
+semipneumatic	0	dema-semipneumatic-a	Degree=Pos	dema	0
+semipneumatical	0	dema-semipneumatical-a	Degree=Pos	dema	0
+semipneumatically	0	dema-semipneumatically-r	Degree=Pos	dema	0
+semipoisonous	0	dema-semipoisonous-a	Degree=Pos	dema	0
+semipoisonously	0	dema-semipoisonously-r	Degree=Pos	dema	0
+semipolitical	0	oewn-semipolitical-a	Degree=Pos	dema	0
+semipolitically	0	dema-semipolitical-r		dema	0
+semipolitician	0	dema-semipolitician-n	Number=Sing	dema	0
+semipoliticians	0	dema-semipolitician-n	Number=Plur	dema	0
+semipopular	0	dema-semipopular-a	Degree=Pos	dema	0
+semipopularities	0	dema-semipopularity-n	Number=Plur	dema	0
+semipopularity	0	dema-semipopularity-n	Number=Sing	dema	0
+semipopularized	0	dema-semipopularized-a	Degree=Pos	dema	0
+semipopularized	1	dema-semipopularized-v	VerbForm=Inf	dema	0
+semipopularizeded	0	dema-semipopularized-v	Tense=Past	dema	0
+semipopularizeding	0	dema-semipopularized-v	VerbForm=Ger	dema	0
+semipopularizedly	0	dema-semipopularized-r		dema	0
+semipopularizeds	0	dema-semipopularized-v	Person=3+Tense=Pres	dema	0
+semipopularly	0	dema-semipopularly-r	Degree=Pos	dema	0
+semiporcelain	0	dema-semiporcelain-n	Number=Sing	dema	0
+semiporcelains	0	dema-semiporcelain-n	Number=Plur	dema	0
+semipostal	0	dema-semipostal-a	Degree=Pos	dema	0
+semipostally	0	dema-semipostal-r		dema	0
+semipractical	0	dema-semipractical-a	Degree=Pos	dema	0
+semipractically	0	dema-semipractical-r		dema	0
+semiprecious	0	oewn-semiprecious-a	Degree=Pos	dema	0
+semipreciously	0	dema-semiprecious-r		dema	0
+semipreserved	0	dema-semipreserved-a	Degree=Pos	dema	0
+semipreserved	1	dema-semipreserved-v	VerbForm=Inf	dema	0
+semipreserveded	0	dema-semipreserved-v	Tense=Past	dema	0
+semipreserveding	0	dema-semipreserved-v	VerbForm=Ger	dema	0
+semipreservedly	0	dema-semipreserved-r		dema	0
+semipreserveds	0	dema-semipreserved-v	Person=3+Tense=Pres	dema	0
+semiprimitive	0	dema-semiprimitive-a	Degree=Pos	dema	0
+semiprimitively	0	dema-semiprimitive-r		dema	0
+semiprivacies	0	dema-semiprivacy-n	Number=Plur	dema	0
+semiprivacy	0	dema-semiprivacy-n	Number=Sing	dema	0
+semiprivate	0	oewn-semiprivate-a	Degree=Pos	dema	0
+semiprivately	0	dema-semiprivate-r		dema	0
+semipro	0	dema-semipro-a	Degree=Pos	dema	0
+semipro	1	oewn-semipro-n	Number=Sing	dema	0
+semiproductive	0	dema-semiproductive-a	Degree=Pos	dema	0
+semiproductively	0	dema-semiproductively-r	Degree=Pos	dema	0
+semiproductiveness	0	dema-semiproductiveness-n	Number=Sing	dema	0
+semiproductivenesses	0	dema-semiproductiveness-n	Number=Plur	dema	0
+semiproductivities	0	dema-semiproductivity-n	Number=Plur	dema	0
+semiproductivity	0	dema-semiproductivity-n	Number=Sing	dema	0
+semiproes	0	oewn-semipro-n	Number=Plur	dema	0
+semiprofane	0	dema-semiprofane-a	Degree=Pos	dema	0
+semiprofanely	0	dema-semiprofanely-r	Degree=Pos	dema	0
+semiprofaneness	0	dema-semiprofaneness-n	Number=Sing	dema	0
+semiprofanenesses	0	dema-semiprofaneness-n	Number=Plur	dema	0
+semiprofanities	0	dema-semiprofanity-n	Number=Plur	dema	0
+semiprofanity	0	dema-semiprofanity-n	Number=Sing	dema	0
+semiprofessional	0	dema-semiprofessional-a	Degree=Pos	dema	0
+semiprofessional	1	oewn-semiprofessional-n	Number=Sing	dema	0
+semiprofessionally	0	dema-semiprofessionally-r	Degree=Pos	dema	0
+semiprofessionals	0	oewn-semiprofessional-n	Number=Plur	dema	0
+semiprogressive	0	dema-semiprogressive-a	Degree=Pos	dema	0
+semiprogressive	1	dema-semiprogressive-n	Number=Sing	dema	0
+semiprogressively	0	dema-semiprogressively-r	Degree=Pos	dema	0
+semiprogressiveness	0	dema-semiprogressiveness-n	Number=Sing	dema	0
+semiprogressivenesses	0	dema-semiprogressiveness-n	Number=Plur	dema	0
+semiprogressives	0	dema-semiprogressive-n	Number=Plur	dema	0
+semiproly	0	dema-semipro-r		dema	0
+semiprone	0	dema-semiprone-a	Degree=Pos	dema	0
+semipronely	0	dema-semipronely-r	Degree=Pos	dema	0
+semiproneness	0	dema-semiproneness-n	Number=Sing	dema	0
+semipronenesses	0	dema-semiproneness-n	Number=Plur	dema	0
+semiproness	0	oewn-semipro-n	Number=Plur	dema	0
+semipropagandist	0	dema-semipropagandist-a	Degree=Pos	dema	0
+semipropagandistly	0	dema-semipropagandist-r		dema	0
+semipros	0	dema-semipros-n	Number=Sing	dema	0
+semiprotected	0	dema-semiprotected-a	Degree=Pos	dema	0
+semiprotected	1	dema-semiprotected-v	VerbForm=Inf	dema	0
+semiprotecteded	0	dema-semiprotected-v	Tense=Past	dema	0
+semiprotecteding	0	dema-semiprotected-v	VerbForm=Ger	dema	0
+semiprotectedly	0	dema-semiprotected-r		dema	0
+semiprotecteds	0	dema-semiprotected-v	Person=3+Tense=Pres	dema	0
+semiprotective	0	dema-semiprotective-a	Degree=Pos	dema	0
+semiprotectively	0	dema-semiprotectively-r	Degree=Pos	dema	0
+semiproven	0	dema-semiproven-a	Degree=Pos	dema	0
+semiprovenly	0	dema-semiproven-r		dema	0
+semiprovincial	0	dema-semiprovincial-a	Degree=Pos	dema	0
+semiprovincially	0	dema-semiprovincially-r	Degree=Pos	dema	0
+semipsychologic	0	dema-semipsychologic-a	Degree=Pos	dema	0
+semipsychological	0	dema-semipsychological-a	Degree=Pos	dema	0
+semipsychologically	0	dema-semipsychologically-r	Degree=Pos	dema	0
+semipsychotic	0	dema-semipsychotic-a	Degree=Pos	dema	0
+semipsychotically	0	dema-semipsychotic-r		dema	0
+semipublic	0	oewn-semipublic-a	Degree=Pos	dema	0
+semipublically	0	dema-semipublic-r		dema	0
+semipunitive	0	dema-semipunitive-a	Degree=Pos	dema	0
+semipunitively	0	dema-semipunitive-r		dema	0
+semipunitorily	0	dema-semipunitory-r		dema	0
+semipunitory	0	dema-semipunitory-a	Degree=Pos	dema	0
+semipurposive	0	dema-semipurposive-a	Degree=Pos	dema	0
+semipurposively	0	dema-semipurposively-r	Degree=Pos	dema	0
+semipurposiveness	0	dema-semipurposiveness-n	Number=Sing	dema	0
+semipurposivenesses	0	dema-semipurposiveness-n	Number=Plur	dema	0
+semiquaver	0	oewn-semiquaver-n	Number=Sing	dema	0
+semiquavers	0	oewn-semiquaver-n	Number=Plur	dema	0
+semiradical	0	dema-semiradical-a	Degree=Pos	dema	0
+semiradically	0	dema-semiradically-r	Degree=Pos	dema	0
+semiradicalness	0	dema-semiradicalness-n	Number=Sing	dema	0
+semiradicalnesses	0	dema-semiradicalness-n	Number=Plur	dema	0
+semirare	0	dema-semirare-a	Degree=Pos	dema	0
+semirarely	0	dema-semirarely-r	Degree=Pos	dema	0
+semirareness	0	dema-semirareness-n	Number=Sing	dema	0
+semirarenesses	0	dema-semirareness-n	Number=Plur	dema	0
+semirationalized	0	dema-semirationalized-a	Degree=Pos	dema	0
+semirationalized	1	dema-semirationalized-v	VerbForm=Inf	dema	0
+semirationalizeded	0	dema-semirationalized-v	Tense=Past	dema	0
+semirationalizeding	0	dema-semirationalized-v	VerbForm=Ger	dema	0
+semirationalizedly	0	dema-semirationalized-r		dema	0
+semirationalizeds	0	dema-semirationalized-v	Person=3+Tense=Pres	dema	0
+semiraw	0	dema-semiraw-a	Degree=Pos	dema	0
+semirawly	0	dema-semirawly-r	Degree=Pos	dema	0
+semirawness	0	dema-semirawness-n	Number=Sing	dema	0
+semirawnesses	0	dema-semirawness-n	Number=Plur	dema	0
+semireactionarily	0	dema-semireactionary-r		dema	0
+semireactionary	0	dema-semireactionary-a	Degree=Pos	dema	0
+semirealistic	0	dema-semirealistic-a	Degree=Pos	dema	0
+semirealistically	0	dema-semirealistically-r	Degree=Pos	dema	0
+semirebel	0	dema-semirebel-n	Number=Sing	dema	0
+semirebellion	0	dema-semirebellion-n	Number=Sing	dema	0
+semirebellions	0	dema-semirebellion-n	Number=Plur	dema	0
+semirebellious	0	dema-semirebellious-a	Degree=Pos	dema	0
+semirebelliously	0	dema-semirebelliously-r	Degree=Pos	dema	0
+semirebelliousness	0	dema-semirebelliousness-n	Number=Sing	dema	0
+semirebelliousnesses	0	dema-semirebelliousness-n	Number=Plur	dema	0
+semirebels	0	dema-semirebel-n	Number=Plur	dema	0
+semirefined	0	dema-semirefined-a	Degree=Pos	dema	0
+semirefined	1	dema-semirefined-v	VerbForm=Inf	dema	0
+semirefineded	0	dema-semirefined-v	Tense=Past	dema	0
+semirefineding	0	dema-semirefined-v	VerbForm=Ger	dema	0
+semirefinedly	0	dema-semirefined-r		dema	0
+semirefineds	0	dema-semirefined-v	Person=3+Tense=Pres	dema	0
+semireflex	0	dema-semireflex-n	Number=Sing	dema	0
+semireflexes	0	dema-semireflex-n	Number=Plur	dema	0
+semireflexive	0	dema-semireflexive-a	Degree=Pos	dema	0
+semireflexively	0	dema-semireflexively-r	Degree=Pos	dema	0
+semireflexiveness	0	dema-semireflexiveness-n	Number=Sing	dema	0
+semireflexivenesses	0	dema-semireflexiveness-n	Number=Plur	dema	0
+semirelief	0	dema-semirelief-n	Number=Sing	dema	0
+semireliefs	0	dema-semirelief-n	Number=Plur	dema	0
+semireligious	0	dema-semireligious-a	Degree=Pos	dema	0
+semireligiously	0	dema-semireligious-r		dema	0
+semirepublic	0	dema-semirepublic-n	Number=Sing	dema	0
+semirepublican	0	dema-semirepublican-a	Degree=Pos	dema	0
+semirepublican	1	dema-semirepublican-n	Number=Sing	dema	0
+semirepublicanly	0	dema-semirepublican-r		dema	0
+semirepublicans	0	dema-semirepublican-n	Number=Plur	dema	0
+semirepublics	0	dema-semirepublic-n	Number=Plur	dema	0
+semiresinily	0	dema-semiresiny-r		dema	0
+semiresinous	0	dema-semiresinous-a	Degree=Pos	dema	0
+semiresinously	0	dema-semiresinous-r		dema	0
+semiresiny	0	dema-semiresiny-a	Degree=Pos	dema	0
+semiresolute	0	dema-semiresolute-a	Degree=Pos	dema	0
+semiresolutely	0	dema-semiresolutely-r	Degree=Pos	dema	0
+semiresoluteness	0	dema-semiresoluteness-n	Number=Sing	dema	0
+semiresolutenesses	0	dema-semiresoluteness-n	Number=Plur	dema	0
+semirespectabilities	0	dema-semirespectability-n	Number=Plur	dema	0
+semirespectability	0	dema-semirespectability-n	Number=Sing	dema	0
+semirespectable	0	dema-semirespectable-a	Degree=Pos	dema	0
+semirespectably	0	dema-semirespectable-r		dema	0
+semiretired	0	dema-semiretired-a	Degree=Pos	dema	0
+semiretired	1	dema-semiretired-v	VerbForm=Inf	dema	0
+semiretireded	0	dema-semiretired-v	Tense=Past	dema	0
+semiretireding	0	dema-semiretired-v	VerbForm=Ger	dema	0
+semiretiredly	0	dema-semiretired-r		dema	0
+semiretireds	0	dema-semiretired-v	Person=3+Tense=Pres	dema	0
+semiretirement	0	dema-semiretirement-n	Number=Sing	dema	0
+semiretirements	0	dema-semiretirement-n	Number=Plur	dema	0
+semireverberatorily	0	dema-semireverberatory-r		dema	0
+semireverberatory	0	dema-semireverberatory-a	Degree=Pos	dema	0
+semirevolution	0	dema-semirevolution-n	Number=Sing	dema	0
+semirevolutionaries	0	dema-semirevolutionary-n	Number=Plur	dema	0
+semirevolutionarily	0	dema-semirevolutionary-r		dema	0
+semirevolutionary	0	dema-semirevolutionary-a	Degree=Pos	dema	0
+semirevolutionary	1	dema-semirevolutionary-n	Number=Sing	dema	0
+semirevolutionist	0	dema-semirevolutionist-n	Number=Sing	dema	0
+semirevolutionists	0	dema-semirevolutionist-n	Number=Plur	dema	0
+semirevolutions	0	dema-semirevolution-n	Number=Plur	dema	0
+semirhythmic	0	dema-semirhythmic-a	Degree=Pos	dema	0
+semirhythmical	0	dema-semirhythmical-a	Degree=Pos	dema	0
+semirhythmically	0	dema-semirhythmically-r	Degree=Pos	dema	0
+semirigid	0	oewn-semirigid-a	Degree=Pos	dema	0
+semirigidly	0	dema-semirigid-r		dema	0
+semirigorous	0	dema-semirigorous-a	Degree=Pos	dema	0
+semirigorously	0	dema-semirigorously-r	Degree=Pos	dema	0
+semirigorousness	0	dema-semirigorousness-n	Number=Sing	dema	0
+semirigorousnesses	0	dema-semirigorousness-n	Number=Plur	dema	0
+semiromantic	0	dema-semiromantic-a	Degree=Pos	dema	0
+semiromantically	0	dema-semiromantically-r	Degree=Pos	dema	0
+semiround	0	dema-semiround-a	Degree=Pos	dema	0
+semiroundly	0	dema-semiround-r		dema	0
+semiroundness	0	dema-semiround-n	Number=Plur	dema	0
+semirural	0	dema-semirural-a	Degree=Pos	dema	0
+semiruralism	0	dema-semiruralism-n	Number=Sing	dema	0
+semiruralisms	0	dema-semiruralism-n	Number=Plur	dema	0
+semirurally	0	dema-semirurally-r	Degree=Pos	dema	0
+semis	0	dema-semis-n	Number=Sing	dema	0
+semisacred	0	dema-semisacred-a	Degree=Pos	dema	0
+semisacred	1	dema-semisacred-v	VerbForm=Inf	dema	0
+semisacreded	0	dema-semisacred-v	Tense=Past	dema	0
+semisacreding	0	dema-semisacred-v	VerbForm=Ger	dema	0
+semisacredly	0	dema-semisacred-r		dema	0
+semisacreds	0	dema-semisacred-v	Person=3+Tense=Pres	dema	0
+semisaline	0	dema-semisaline-a	Degree=Pos	dema	0
+semisalinely	0	dema-semisaline-r		dema	0
+semisatiric	0	dema-semisatiric-a	Degree=Pos	dema	0
+semisatirical	0	dema-semisatirical-a	Degree=Pos	dema	0
+semisatirically	0	dema-semisatirically-r	Degree=Pos	dema	0
+semisavage	0	dema-semisavage-a	Degree=Pos	dema	0
+semisavage	1	dema-semisavage-n	Number=Sing	dema	0
+semisavagely	0	dema-semisavage-r		dema	0
+semisavages	0	dema-semisavage-n	Number=Plur	dema	0
+semischolastic	0	dema-semischolastic-a	Degree=Pos	dema	0
+semischolastically	0	dema-semischolastically-r	Degree=Pos	dema	0
+semisecrecies	0	dema-semisecrecy-n	Number=Plur	dema	0
+semisecrecy	0	dema-semisecrecy-n	Number=Sing	dema	0
+semisecret	0	dema-semisecret-a	Degree=Pos	dema	0
+semisecretly	0	dema-semisecretly-r	Degree=Pos	dema	0
+semisentimental	0	dema-semisentimental-a	Degree=Pos	dema	0
+semisentimentalized	0	dema-semisentimentalized-a	Degree=Pos	dema	0
+semisentimentalized	1	dema-semisentimentalized-v	VerbForm=Inf	dema	0
+semisentimentalizeded	0	dema-semisentimentalized-v	Tense=Past	dema	0
+semisentimentalizeding	0	dema-semisentimentalized-v	VerbForm=Ger	dema	0
+semisentimentalizedly	0	dema-semisentimentalized-r		dema	0
+semisentimentalizeds	0	dema-semisentimentalized-v	Person=3+Tense=Pres	dema	0
+semisentimentally	0	dema-semisentimentally-r	Degree=Pos	dema	0
+semiserious	0	dema-semiserious-a	Degree=Pos	dema	0
+semiseriously	0	dema-semiseriously-r	Degree=Pos	dema	0
+semiseriousness	0	dema-semiseriousness-n	Number=Sing	dema	0
+semiseriousnesses	0	dema-semiseriousness-n	Number=Plur	dema	0
+semishade	0	dema-semishade-n	Number=Sing	dema	0
+semishades	0	dema-semishade-n	Number=Plur	dema	0
+semiskilled	0	oewn-semiskilled-a	Degree=Pos	dema	0
+semiskilled	1	dema-semiskilled-v	VerbForm=Inf	dema	0
+semiskilleded	0	dema-semiskilled-v	Tense=Past	dema	0
+semiskilleding	0	dema-semiskilled-v	VerbForm=Ger	dema	0
+semiskilledly	0	dema-semiskilled-r		dema	0
+semiskilleds	0	dema-semiskilled-v	Person=3+Tense=Pres	dema	0
+semislave	0	dema-semislave-n	Number=Sing	dema	0
+semislaves	0	dema-semislave-n	Number=Plur	dema	0
+semisocialism	0	dema-semisocialism-n	Number=Sing	dema	0
+semisocialisms	0	dema-semisocialism-n	Number=Plur	dema	0
+semisocialist	0	dema-semisocialist-n	Number=Sing	dema	0
+semisocialistic	0	dema-semisocialistic-a	Degree=Pos	dema	0
+semisocialistically	0	dema-semisocialistically-r	Degree=Pos	dema	0
+semisocialists	0	dema-semisocialist-n	Number=Plur	dema	0
+semisolemn	0	dema-semisolemn-a	Degree=Pos	dema	0
+semisolemnities	0	dema-semisolemnity-n	Number=Plur	dema	0
+semisolemnity	0	dema-semisolemnity-n	Number=Sing	dema	0
+semisolemnly	0	dema-semisolemnly-r	Degree=Pos	dema	0
+semisolemnness	0	dema-semisolemnness-n	Number=Sing	dema	0
+semisolemnnesses	0	dema-semisolemnness-n	Number=Plur	dema	0
+semisolid	0	oewn-semisolid-a	Degree=Pos	dema	0
+semisolid	1	dema-semisolid-n	Number=Sing	dema	0
+semisolidly	0	dema-semisolid-r		dema	0
+semisolids	0	dema-semisolid-n	Number=Plur	dema	0
+semisomnambulistic	0	dema-semisomnambulistic-a	Degree=Pos	dema	0
+semisomnambulistically	0	dema-semisomnambulistic-r		dema	0
+semisomnolence	0	dema-semisomnolence-n	Number=Sing	dema	0
+semisomnolences	0	dema-semisomnolence-n	Number=Plur	dema	0
+semisomnolent	0	dema-semisomnolent-a	Degree=Pos	dema	0
+semisomnolently	0	dema-semisomnolently-r	Degree=Pos	dema	0
+semispeculation	0	dema-semispeculation-n	Number=Sing	dema	0
+semispeculations	0	dema-semispeculation-n	Number=Plur	dema	0
+semispeculative	0	dema-semispeculative-a	Degree=Pos	dema	0
+semispeculatively	0	dema-semispeculatively-r	Degree=Pos	dema	0
+semispeculativeness	0	dema-semispeculativeness-n	Number=Sing	dema	0
+semispeculativenesses	0	dema-semispeculativeness-n	Number=Plur	dema	0
+semisphere	0	dema-semisphere-n	Number=Sing	dema	0
+semispheres	0	dema-semisphere-n	Number=Plur	dema	0
+semispheric	0	dema-semispheric-a	Degree=Pos	dema	0
+semispherically	0	dema-semispheric-r		dema	0
+semispontaneous	0	dema-semispontaneous-a	Degree=Pos	dema	0
+semispontaneously	0	dema-semispontaneously-r	Degree=Pos	dema	0
+semispontaneousness	0	dema-semispontaneousness-n	Number=Sing	dema	0
+semispontaneousnesses	0	dema-semispontaneousness-n	Number=Plur	dema	0
+semistiff	0	dema-semistiff-a	Degree=Pos	dema	0
+semistiffly	0	dema-semistiffly-r	Degree=Pos	dema	0
+semistiffness	0	dema-semistiffness-n	Number=Sing	dema	0
+semistiffnesses	0	dema-semistiffness-n	Number=Plur	dema	0
+semistimulating	0	dema-semistimulating-a	Degree=Pos	dema	0
+semistimulating	1	dema-semistimulating-v	VerbForm=Inf	dema	0
+semistimulatinged	0	dema-semistimulating-v	Tense=Past	dema	0
+semistimulatinging	0	dema-semistimulating-v	VerbForm=Ger	dema	0
+semistimulatingly	0	dema-semistimulating-r		dema	0
+semistimulatings	0	dema-semistimulating-v	Person=3+Tense=Pres	dema	0
+semistratified	0	dema-semistratified-a	Degree=Pos	dema	0
+semistratified	1	dema-semistratified-v	VerbForm=Inf	dema	0
+semistratifieded	0	dema-semistratified-v	Tense=Past	dema	0
+semistratifieding	0	dema-semistratified-v	VerbForm=Ger	dema	0
+semistratifiedly	0	dema-semistratified-r		dema	0
+semistratifieds	0	dema-semistratified-v	Person=3+Tense=Pres	dema	0
+semisubterranean	0	dema-semisubterranean-a	Degree=Pos	dema	0
+semisubterraneanly	0	dema-semisubterranean-r		dema	0
+semisuburban	0	dema-semisuburban-a	Degree=Pos	dema	0
+semisuburbanly	0	dema-semisuburban-r		dema	0
+semisuccess	0	dema-semisuccess-a	Degree=Pos	dema	0
+semisuccessful	0	dema-semisuccessful-a	Degree=Pos	dema	0
+semisuccessfully	0	dema-semisuccessfully-r	Degree=Pos	dema	0
+semisuccessly	0	dema-semisuccess-r		dema	0
+semisupernatural	0	dema-semisupernatural-a	Degree=Pos	dema	0
+semisupernaturally	0	dema-semisupernaturally-r	Degree=Pos	dema	0
+semisupernaturalness	0	dema-semisupernaturalness-n	Number=Sing	dema	0
+semisupernaturalnesses	0	dema-semisupernaturalness-n	Number=Plur	dema	0
+semisweet	0	oewn-semisweet-a	Degree=Pos	dema	0
+semisweetly	0	dema-semisweet-r		dema	0
+semisweetness	0	dema-semisweet-n	Number=Plur	dema	0
+semisynthetic	0	oewn-semisynthetic-a	Degree=Pos	dema	0
+semisynthetically	0	dema-semisynthetic-r		dema	0
+semitailored	0	dema-semitailored-a	Degree=Pos	dema	0
+semitailored	1	dema-semitailored-v	VerbForm=Inf	dema	0
+semitailoreded	0	dema-semitailored-v	Tense=Past	dema	0
+semitailoreding	0	dema-semitailored-v	VerbForm=Ger	dema	0
+semitailoredly	0	dema-semitailored-r		dema	0
+semitailoreds	0	dema-semitailored-v	Person=3+Tense=Pres	dema	0
+semitextural	0	dema-semitextural-a	Degree=Pos	dema	0
+semitexturally	0	dema-semitexturally-r	Degree=Pos	dema	0
+semitheatric	0	dema-semitheatric-a	Degree=Pos	dema	0
+semitheatrical	0	dema-semitheatrical-a	Degree=Pos	dema	0
+semitheatricalism	0	dema-semitheatricalism-n	Number=Sing	dema	0
+semitheatricalisms	0	dema-semitheatricalism-n	Number=Plur	dema	0
+semitheatrically	0	dema-semitheatrically-r	Degree=Pos	dema	0
+semitheological	0	dema-semitheological-a	Degree=Pos	dema	0
+semitheologically	0	dema-semitheologically-r	Degree=Pos	dema	0
+semitonally	0	dema-semitonally-r	Degree=Pos	dema	0
+semitone	0	oewn-semitone-n	Number=Sing	dema	0
+semitones	0	oewn-semitone-n	Number=Plur	dema	0
+semitonic	0	dema-semitonic-a	Degree=Pos	dema	0
+semitonically	0	dema-semitonic-r		dema	0
+semitraditional	0	dema-semitraditional-a	Degree=Pos	dema	0
+semitraditionally	0	dema-semitraditionally-r	Degree=Pos	dema	0
+semitrailer	0	oewn-semitrailer-n	Number=Sing	dema	0
+semitrailers	0	oewn-semitrailer-n	Number=Plur	dema	0
+semitrained	0	dema-semitrained-a	Degree=Pos	dema	0
+semitrained	1	dema-semitrained-v	VerbForm=Inf	dema	0
+semitraineded	0	dema-semitrained-v	Tense=Past	dema	0
+semitraineding	0	dema-semitrained-v	VerbForm=Ger	dema	0
+semitrainedly	0	dema-semitrained-r		dema	0
+semitraineds	0	dema-semitrained-v	Person=3+Tense=Pres	dema	0
+semitransparencies	0	oewn-semitransparency-n	Number=Plur	dema	0
+semitransparency	0	oewn-semitransparency-n	Number=Sing	dema	0
+semitransparently	0	dema-semitransparently-r	Degree=Pos	dema	0
+semitransparentness	0	dema-semitransparentness-n	Number=Sing	dema	0
+semitransparentnesses	0	dema-semitransparentness-n	Number=Plur	dema	0
+semitropical	0	oewn-semitropical-a	Degree=Pos	dema	0
+semitropically	0	dema-semitropically-r	Degree=Pos	dema	0
+semitropics	0	oewn-semitropics-n	Number=Sing	dema	0
+semitropicses	0	oewn-semitropics-n	Number=Plur	dema	0
+semitruthful	0	dema-semitruthful-a	Degree=Pos	dema	0
+semitruthfully	0	dema-semitruthfully-r	Degree=Pos	dema	0
+semitruthfulness	0	dema-semitruthfulness-n	Number=Sing	dema	0
+semitruthfulnesses	0	dema-semitruthfulness-n	Number=Plur	dema	0
+semituberous	0	dema-semituberous-a	Degree=Pos	dema	0
+semituberously	0	dema-semituberous-r		dema	0
+semiundressed	0	dema-semiundressed-a	Degree=Pos	dema	0
+semiundressed	1	dema-semiundressed-v	VerbForm=Inf	dema	0
+semiundresseded	0	dema-semiundressed-v	Tense=Past	dema	0
+semiundresseding	0	dema-semiundressed-v	VerbForm=Ger	dema	0
+semiundressedly	0	dema-semiundressed-r		dema	0
+semiundresseds	0	dema-semiundressed-v	Person=3+Tense=Pres	dema	0
+semiurban	0	dema-semiurban-a	Degree=Pos	dema	0
+semiurbanly	0	dema-semiurban-r		dema	0
+semiurbanness	0	dema-semiurban-n	Number=Plur	dema	0
+semivitreous	0	dema-semivitreous-a	Degree=Pos	dema	0
+semivitreously	0	dema-semivitreous-r		dema	0
+semivocal	0	dema-semivocal-a	Degree=Pos	dema	0
+semivocally	0	dema-semivocal-r		dema	0
+semivolatile	0	dema-semivolatile-a	Degree=Pos	dema	0
+semivolatilely	0	dema-semivolatile-r		dema	0
+semivolcanic	0	dema-semivolcanic-a	Degree=Pos	dema	0
+semivolcanically	0	dema-semivolcanically-r	Degree=Pos	dema	0
+semivoluntarily	0	dema-semivoluntary-r		dema	0
+semivoluntary	0	dema-semivoluntary-a	Degree=Pos	dema	0
+semivowel	0	oewn-semivowel-n	Number=Sing	dema	0
+semivowels	0	oewn-semivowel-n	Number=Plur	dema	0
+semivulcanized	0	dema-semivulcanized-a	Degree=Pos	dema	0
+semivulcanized	1	dema-semivulcanized-v	VerbForm=Inf	dema	0
+semivulcanizeded	0	dema-semivulcanized-v	Tense=Past	dema	0
+semivulcanizeding	0	dema-semivulcanized-v	VerbForm=Ger	dema	0
+semivulcanizedly	0	dema-semivulcanized-r		dema	0
+semivulcanizeds	0	dema-semivulcanized-v	Person=3+Tense=Pres	dema	0
+semiwarfare	0	dema-semiwarfare-n	Number=Sing	dema	0
+semiwarfares	0	dema-semiwarfare-n	Number=Plur	dema	0
+semiweeklies	0	oewn-semiweekly-n	Number=Plur	dema	0
+semiweekly	0	oewn-semiweekly-a	Degree=Pos	dema	0
+semiweekly	1	oewn-semiweekly-n	Number=Sing	dema	0
+semiweekly	2	oewn-semiweekly-r	Degree=Pos	dema	0
+semiwild	0	dema-semiwild-a	Degree=Pos	dema	0
+semiwildly	0	dema-semiwildly-r	Degree=Pos	dema	0
+semiwildness	0	dema-semiwildness-n	Number=Sing	dema	0
+semiwildnesses	0	dema-semiwildness-n	Number=Plur	dema	0
+semiyearly	0	dema-semiyearly-a	Degree=Pos	dema	0
+semolina	0	oewn-semolina-n	Number=Sing	dema	0
+semolinas	0	oewn-semolina-n	Number=Plur	dema	0
+sempiternal	0	oewn-sempiternal-a	Degree=Pos	dema	0
+sempiternally	0	dema-sempiternal-r		dema	0
+semplice	0	dema-semplice-a	Degree=Pos	dema	0
+semplice	1	dema-semplice-r	Degree=Pos	dema	0
+semplicely	0	dema-semplice-r		dema	0
+sempliceness	0	dema-semplice-n	Number=Plur	dema	0
+semplicer	0	dema-semplice-a	Degree=Cmp	dema	0
+semplicer	1	dema-semplice-r	Degree=Cmp	dema	0
+semplicest	0	dema-semplice-a	Degree=Sup	dema	0
+semplicest	1	dema-semplice-r	Degree=Sup	dema	0
+sempre	0	dema-sempre-r	Degree=Pos	dema	0
+semprer	0	dema-sempre-r	Degree=Cmp	dema	0
+semprest	0	dema-sempre-r	Degree=Sup	dema	0
+sempstress	0	oewn-sempstress-n	Number=Sing	dema	0
+sempstresses	0	oewn-sempstress-n	Number=Plur	dema	0
+sems	0	dema-sem-n	Number=Plur	dema	0
+sen	0	oewn-sen-n	Number=Sing	dema	0
+sena	0	dema-sena-n	Number=Sing	dema	0
+senarily	0	dema-senary-r		dema	0
+senariness	0	dema-senary-n	Number=Plur	dema	0
+senarmontite	0	dema-senarmontite-n	Number=Sing	dema	0
+senarmontites	0	dema-senarmontite-n	Number=Plur	dema	0
+senary	0	dema-senary-a	Degree=Pos	dema	0
+senas	0	dema-sena-n	Number=Plur	dema	0
+senate	0	oewn-senate-n	Number=Sing	dema	0
+senates	0	oewn-senate-n	Number=Plur	dema	0
+senator	0	oewn-senator-n	Number=Sing	dema	0
+senatorial	0	oewn-senatorial-a	Degree=Pos	dema	0
+senatorially	0	dema-senatorially-r	Degree=Pos	dema	0
+senators	0	oewn-senator-n	Number=Plur	dema	0
+senatorship	0	oewn-senatorship-n	Number=Sing	dema	0
+senatorships	0	oewn-senatorship-n	Number=Plur	dema	0
+send	0	oewn-send-v	VerbForm=Inf	dema	0
+send	1	dema-send-n	Number=Sing	dema	0
+sendable	0	dema-sendable-a	Degree=Pos	dema	0
+sendableness	0	dema-sendable-n	Number=Plur	dema	0
+sendably	0	dema-sendable-r		dema	0
+sendal	0	dema-sendal-n	Number=Sing	dema	0
+sendals	0	dema-sendal-n	Number=Plur	dema	0
+sendee	0	oewn-sendee-n	Number=Sing	dema	0
+sendees	0	oewn-sendee-n	Number=Plur	dema	0
+sender	0	oewn-sender-n	Number=Sing	dema	0
+senders	0	dema-send-n	Number=Plur	dema	0
+sending	0	dema-sending-v	VerbForm=Inf	dema	0
+sendingly	0	dema-send-r		dema	0
+sendoff	0	dema-sendoff-n	Number=Sing	dema	0
+sendoff	1	dema-sendoff-v	VerbForm=Inf	dema	0
+sendoffed	0	dema-sendoff-v	Tense=Past	dema	0
+sendoffer	0	dema-sendoff-n	Number=Plur	dema	0
+sendoffers	0	dema-sendoff-n	Number=Plur	dema	0
+sendoffing	0	dema-sendoff-v	VerbForm=Ger	dema	0
+sendoffingly	0	dema-sendoff-r		dema	0
+sendoffs	0	dema-sendoff-n	Number=Plur	dema	0
+sendoffs	1	dema-sendoff-v	Person=3+Tense=Pres	dema	0
+sends	0	oewn-send-v	Person=3+Tense=Pres	dema	0
+sends	1	dema-send-n	Number=Plur	dema	0
+senega	0	oewn-senega-n	Number=Sing	dema	0
+senegas	0	oewn-senega-n	Number=Plur	dema	0
+senescence	0	oewn-senescence-n	Number=Sing	dema	0
+senescences	0	oewn-senescence-n	Number=Plur	dema	0
+senescent	0	oewn-senescent-a	Degree=Pos	dema	0
+senescently	0	dema-senescent-r		dema	0
+senescentness	0	dema-senescent-n	Number=Plur	dema	0
+seneschal	0	oewn-seneschal-n	Number=Sing	dema	0
+seneschals	0	oewn-seneschal-n	Number=Plur	dema	0
+senhor	0	dema-senhor-n	Number=Sing	dema	0
+senhoras	0	dema-senhoras-n	Number=Sing	dema	0
+senhorases	0	dema-senhoras-n	Number=Plur	dema	0
+senhorita	0	dema-senhorita-n	Number=Sing	dema	0
+senhoritas	0	dema-senhoritas-n	Number=Sing	dema	0
+senhors	0	dema-senhor-n	Number=Plur	dema	0
+senile	0	oewn-senile-a	Degree=Pos	dema	0
+senilely	0	dema-senile-r		dema	0
+senileness	0	dema-senile-n	Number=Plur	dema	0
+seniler	0	oewn-senile-a	Degree=Cmp	dema	0
+senilest	0	oewn-senile-a	Degree=Sup	dema	0
+senilities	0	oewn-senility-n	Number=Plur	dema	0
+senility	0	oewn-senility-n	Number=Sing	dema	0
+senior	0	oewn-senior-a	Degree=Pos	dema	0
+senior	1	oewn-senior-n	Number=Sing	dema	0
+seniorities	0	dema-seniorities-n	Number=Sing	dema	0
+seniority	0	oewn-seniority-n	Number=Sing	dema	0
+seniorly	0	dema-senior-r		dema	0
+seniorness	0	oewn-senior-n	Number=Plur	dema	0
+seniors	0	oewn-senior-n	Number=Plur	dema	0
+senna	0	oewn-senna-n	Number=Sing	dema	0
+sennas	0	oewn-senna-n	Number=Plur	dema	0
+sennet	0	dema-sennet-n	Number=Sing	dema	0
+sennets	0	dema-sennet-n	Number=Plur	dema	0
+sennight	0	dema-sennight-n	Number=Sing	dema	0
+sennights	0	dema-sennight-n	Number=Plur	dema	0
+sennit	0	oewn-sennit-n	Number=Sing	dema	0
+sennits	0	oewn-sennit-n	Number=Plur	dema	0
+senor	0	dema-senor-n	Number=Sing	dema	0
+senors	0	dema-senor-n	Number=Plur	dema	0
+sens	0	oewn-sen-n	Number=Plur	dema	0
+sensa	0	dema-sensa-n	Number=Sing	dema	0
+sensas	0	dema-sensa-n	Number=Plur	dema	0
+sensate	0	oewn-sensate-a	Degree=Pos	dema	0
+sensately	0	dema-sensate-r		dema	0
+sensateness	0	dema-sensate-n	Number=Plur	dema	0
+sensation	0	oewn-sensation-n	Number=Sing	dema	0
+sensational	0	oewn-sensational-a	Degree=Pos	dema	0
+sensationalise	0	dema-sensationalise-v	VerbForm=Inf	dema	0
+sensationalised	0	dema-sensationalised-v	VerbForm=Inf	dema	0
+sensationalises	0	dema-sensationalise-v	Person=3+Tense=Pres	dema	0
+sensationalising	0	dema-sensationalising-v	VerbForm=Inf	dema	0
+sensationalism	0	oewn-sensationalism-n	Number=Sing	dema	0
+sensationalisms	0	oewn-sensationalism-n	Number=Plur	dema	0
+sensationally	0	oewn-sensationally-r	Degree=Pos	dema	0
+sensationism	0	dema-sensationism-n	Number=Sing	dema	0
+sensationisms	0	dema-sensationism-n	Number=Plur	dema	0
+sensationist	0	dema-sensationist-n	Number=Sing	dema	0
+sensationist	1	dema-sensationist-a	Degree=Pos	dema	0
+sensationistic	0	dema-sensationistic-a	Degree=Pos	dema	0
+sensationistically	0	dema-sensationistic-r		dema	0
+sensationistly	0	dema-sensationist-r		dema	0
+sensationists	0	dema-sensationist-n	Number=Plur	dema	0
+sensationless	0	dema-sensationless-a	Degree=Pos	dema	0
+sensationlessly	0	dema-sensationless-r		dema	0
+sensations	0	oewn-sensation-n	Number=Plur	dema	0
+sense	0	oewn-sense-n	Number=Sing	dema	1
+sense	1	oewn-sense-v	VerbForm=Inf	dema	1
+sensed	0	oewn-sense-v	Tense=Past	dema	1
+senseless	0	oewn-senseless-a	Degree=Pos	dema	0
+senselessly	0	oewn-senselessly-r	Degree=Pos	dema	0
+senselessness	0	oewn-senselessness-n	Number=Sing	dema	0
+senselessnesses	0	oewn-senselessness-n	Number=Plur	dema	0
+senser	0	oewn-sense-n	Number=Plur	dema	1
+sensers	0	oewn-sense-n	Number=Plur	dema	1
+senses	0	oewn-sense-n	Number=Plur	dema	1
+senses	1	oewn-sense-v	Person=3+Tense=Pres	dema	1
+sensibilia	0	dema-sensibilia-n	Number=Sing	dema	0
+sensibilias	0	dema-sensibilia-n	Number=Plur	dema	0
+sensibilities	0	dema-sensibilities-n	Number=Sing	dema	0
+sensibility	0	oewn-sensibility-n	Number=Sing	dema	0
+sensible	0	oewn-sensible-a	Degree=Pos	dema	0
+sensible	1	dema-sensible-n	Number=Sing	dema	0
+sensibleness	0	oewn-sensibleness-n	Number=Sing	dema	0
+sensiblenesses	0	oewn-sensibleness-n	Number=Plur	dema	0
+sensibles	0	dema-sensible-n	Number=Plur	dema	0
+sensibly	0	oewn-sensibly-r	Degree=Pos	dema	0
+sensillum	0	dema-sensillum-n	Number=Sing	dema	0
+sensillumla	0	dema-sensillumla-n	Number=Sing	dema	0
+sensillumlas	0	dema-sensillumla-n	Number=Plur	dema	0
+sensillums	0	dema-sensillum-n	Number=Plur	dema	0
+sensing	0	oewn-sense-n	Number=Plur	dema	1
+sensing	1	oewn-sense-v	VerbForm=Ger	dema	1
+sensingly	0	dema-sense-r		dema	0
+sensitisation	0	oewn-sensitisation-n	Number=Sing	dema	0
+sensitisations	0	oewn-sensitisation-n	Number=Plur	dema	0
+sensitiser	0	oewn-sensitiser-n	Number=Sing	dema	0
+sensitisers	0	oewn-sensitiser-n	Number=Plur	dema	0
+sensitive	0	oewn-sensitive-a	Degree=Pos	dema	0
+sensitively	0	oewn-sensitively-r	Degree=Pos	dema	0
+sensitiveness	0	oewn-sensitiveness-n	Number=Sing	dema	0
+sensitivenesses	0	oewn-sensitiveness-n	Number=Plur	dema	0
+sensitivities	0	oewn-sensitivity-n	Number=Plur	dema	0
+sensitivity	0	oewn-sensitivity-n	Number=Sing	dema	0
+sensitization	0	oewn-sensitization-n	Number=Sing	dema	0
+sensitizations	0	oewn-sensitization-n	Number=Plur	dema	0
+sensitize	0	oewn-sensitize-v	VerbForm=Inf	dema	0
+sensitized	0	dema-sensitized-v	VerbForm=Inf	dema	0
+sensitizer	0	oewn-sensitizer-n	Number=Sing	dema	0
+sensitizers	0	dema-sensitize-n	Number=Plur	dema	0
+sensitizes	0	oewn-sensitize-v	Person=3+Tense=Pres	dema	0
+sensitizing	0	dema-sensitizing-v	VerbForm=Inf	dema	0
+sensitizingly	0	dema-sensitize-r		dema	0
+sensitometer	0	oewn-sensitometer-n	Number=Sing	dema	0
+sensitometers	0	oewn-sensitometer-n	Number=Plur	dema	0
+sensitometric	0	dema-sensitometric-a	Degree=Pos	dema	0
+sensitometrically	0	dema-sensitometrically-r	Degree=Pos	dema	0
+sensitometries	0	dema-sensitometry-n	Number=Plur	dema	0
+sensitometry	0	dema-sensitometry-n	Number=Sing	dema	0
+sensor	0	oewn-sensor-n	Number=Sing	dema	0
+sensorily	0	dema-sensory-r		dema	0
+sensorimotor	0	oewn-sensorimotor-a	Degree=Pos	dema	0
+sensorimotorly	0	dema-sensorimotor-r		dema	0
+sensoriness	0	dema-sensory-n	Number=Plur	dema	0
+sensorium	0	oewn-sensorium-n	Number=Sing	dema	0
+sensoriums	0	oewn-sensorium-n	Number=Plur	dema	0
+sensors	0	oewn-sensor-n	Number=Plur	dema	0
+sensory	0	oewn-sensory-a	Degree=Pos	dema	0
+sensual	0	oewn-sensual-a	Degree=Pos	dema	0
+sensualisation	0	dema-sensualisation-n	Number=Sing	dema	0
+sensualisations	0	dema-sensualisation-n	Number=Plur	dema	0
+sensualism	0	oewn-sensualism-n	Number=Sing	dema	0
+sensualisms	0	oewn-sensualism-n	Number=Plur	dema	0
+sensualist	0	oewn-sensualist-n	Number=Sing	dema	0
+sensualistic	0	dema-sensualistic-a	Degree=Pos	dema	0
+sensualistically	0	dema-sensualistic-r		dema	0
+sensualists	0	oewn-sensualist-n	Number=Plur	dema	0
+sensualities	0	dema-sensualities-n	Number=Sing	dema	0
+sensuality	0	oewn-sensuality-n	Number=Sing	dema	0
+sensualization	0	dema-sensualization-n	Number=Sing	dema	0
+sensualizations	0	dema-sensualization-n	Number=Plur	dema	0
+sensualize	0	oewn-sensualize-v	VerbForm=Inf	dema	0
+sensualized	0	dema-sensualized-v	VerbForm=Inf	dema	0
+sensualizer	0	dema-sensualize-n	Number=Plur	dema	0
+sensualizers	0	dema-sensualize-n	Number=Plur	dema	0
+sensualizes	0	oewn-sensualize-v	Person=3+Tense=Pres	dema	0
+sensualizing	0	dema-sensualizing-v	VerbForm=Inf	dema	0
+sensualizingly	0	dema-sensualize-r		dema	0
+sensually	0	oewn-sensually-r	Degree=Pos	dema	0
+sensualness	0	dema-sensual-n	Number=Plur	dema	0
+sensum	0	dema-sensum-n	Number=Sing	dema	0
+sensums	0	dema-sensum-n	Number=Plur	dema	0
+sensuous	0	oewn-sensuous-a	Degree=Pos	dema	0
+sensuously	0	dema-sensuous-r		dema	0
+sensuousness	0	dema-sensuous-n	Number=Plur	dema	0
+sent	0	dema-sent-v	VerbForm=Inf	dema	0
+sentence	0	oewn-sentence-n	Number=Sing	dema	1
+sentence	1	oewn-sentence-v	VerbForm=Inf	dema	1
+sentenced	0	oewn-sentence-v	Tense=Past	dema	1
+sentencer	0	dema-sentencer-n	Number=Sing	dema	0
+sentencers	0	oewn-sentence-n	Number=Plur	dema	1
+sentences	0	oewn-sentence-n	Number=Plur	dema	1
+sentences	1	oewn-sentence-v	Person=3+Tense=Pres	dema	1
+sentencing	0	oewn-sentence-n	Number=Plur	dema	1
+sentencing	1	oewn-sentence-v	VerbForm=Ger	dema	1
+sentencingly	0	dema-sentence-r		dema	0
+sententially	0	dema-sententially-r	Degree=Pos	dema	0
+sententiosities	0	dema-sententiosity-n	Number=Plur	dema	0
+sententiosity	0	dema-sententiosity-n	Number=Sing	dema	0
+sententious	0	oewn-sententious-a	Degree=Pos	dema	0
+sententiously	0	oewn-sententiously-r	Degree=Pos	dema	0
+sententiousness	0	dema-sententiousness-n	Number=Sing	dema	0
+sententiousnesses	0	dema-sententiousness-n	Number=Plur	dema	0
+senti	0	dema-senti-n	Number=Sing	dema	0
+sentience	0	oewn-sentience-n	Number=Sing	dema	0
+sentiences	0	oewn-sentience-n	Number=Plur	dema	0
+sentient	0	oewn-sentient-a	Degree=Pos	dema	0
+sentient	1	dema-sentient-n	Number=Sing	dema	0
+sentienter	0	oewn-sentient-a	Degree=Cmp	dema	0
+sentientest	0	oewn-sentient-a	Degree=Sup	dema	0
+sentiently	0	dema-sentiently-r	Degree=Pos	dema	0
+sentientness	0	dema-sentient-n	Number=Plur	dema	0
+sentients	0	dema-sentient-n	Number=Plur	dema	0
+sentiment	0	oewn-sentiment-n	Number=Sing	dema	0
+sentimental	0	oewn-sentimental-a	Degree=Pos	dema	0
+sentimentalisation	0	oewn-sentimentalisation-n	Number=Sing	dema	0
+sentimentalisations	0	oewn-sentimentalisation-n	Number=Plur	dema	0
+sentimentaliser	0	dema-sentimentaliser-n	Number=Sing	dema	0
+sentimentalisers	0	dema-sentimentaliser-n	Number=Plur	dema	0
+sentimentalism	0	oewn-sentimentalism-n	Number=Sing	dema	0
+sentimentalisms	0	oewn-sentimentalism-n	Number=Plur	dema	0
+sentimentalist	0	oewn-sentimentalist-n	Number=Sing	dema	0
+sentimentalists	0	oewn-sentimentalist-n	Number=Plur	dema	0
+sentimentalities	0	dema-sentimentalities-n	Number=Sing	dema	0
+sentimentality	0	oewn-sentimentality-n	Number=Sing	dema	0
+sentimentalization	0	oewn-sentimentalization-n	Number=Sing	dema	0
+sentimentalizations	0	oewn-sentimentalization-n	Number=Plur	dema	0
+sentimentalize	0	oewn-sentimentalize-v	VerbForm=Inf	dema	0
+sentimentalized	0	dema-sentimentalized-v	VerbForm=Inf	dema	0
+sentimentalizes	0	oewn-sentimentalize-v	Person=3+Tense=Pres	dema	0
+sentimentalizing	0	dema-sentimentalizing-v	VerbForm=Inf	dema	0
+sentimentally	0	dema-sentimental-r		dema	0
+sentimentless	0	dema-sentimentless-a	Degree=Pos	dema	0
+sentimentlessly	0	dema-sentimentless-r		dema	0
+sentiments	0	oewn-sentiment-n	Number=Plur	dema	0
+sentinel	0	oewn-sentinel-n	Number=Sing	dema	0
+sentinel	1	dema-sentinel-v	VerbForm=Inf	dema	0
+sentineled	0	dema-sentinel-v	Tense=Past	dema	0
+sentineler	0	oewn-sentinel-n	Number=Plur	dema	0
+sentinelers	0	oewn-sentinel-n	Number=Plur	dema	0
+sentineling	0	dema-sentinel-v	VerbForm=Ger	dema	0
+sentinelingly	0	dema-sentinel-r		dema	0
+sentinelled	0	dema-sentinel-v	Tense=Past	dema	0
+sentinellike	0	dema-sentinellike-a	Degree=Pos	dema	0
+sentinellikely	0	dema-sentinellike-r		dema	0
+sentinelling	0	dema-sentinel-v	VerbForm=Ger	dema	0
+sentinellingly	0	dema-sentinel-r		dema	0
+sentinels	0	oewn-sentinel-n	Number=Plur	dema	0
+sentinels	1	dema-sentinel-v	Person=3+Tense=Pres	dema	0
+sentinelship	0	dema-sentinelship-n	Number=Sing	dema	0
+sentinelships	0	dema-sentinelship-n	Number=Plur	dema	0
+sentis	0	dema-senti-n	Number=Plur	dema	0
+sentries	0	dema-sentries-n	Number=Sing	dema	0
+sentry	0	oewn-sentry-n	Number=Sing	dema	0
+senza	0	dema-senza-p		dema	0
+sepal	0	oewn-sepal-n	Number=Sing	dema	0
+sepaled	0	dema-sepaled-a	Degree=Pos	dema	0
+sepaled	1	dema-sepaled-v	VerbForm=Inf	dema	0
+sepaleded	0	dema-sepaled-v	Tense=Past	dema	0
+sepaleder	0	dema-sepaled-n	Number=Plur	dema	0
+sepaleders	0	dema-sepaled-n	Number=Plur	dema	0
+sepaleding	0	dema-sepaled-v	VerbForm=Ger	dema	0
+sepaledingly	0	dema-sepaled-r		dema	0
+sepaledly	0	dema-sepaled-r		dema	0
+sepaledness	0	dema-sepaled-n	Number=Plur	dema	0
+sepaleds	0	dema-sepaled-v	Person=3+Tense=Pres	dema	0
+sepalled	0	dema-sepalled-a	Degree=Pos	dema	0
+sepalled	1	dema-sepalled-v	VerbForm=Inf	dema	0
+sepalleded	0	dema-sepalled-v	Tense=Past	dema	0
+sepalleder	0	dema-sepalled-n	Number=Plur	dema	0
+sepalleders	0	dema-sepalled-n	Number=Plur	dema	0
+sepalleding	0	dema-sepalled-v	VerbForm=Ger	dema	0
+sepalledingly	0	dema-sepalled-r		dema	0
+sepalledly	0	dema-sepalled-r		dema	0
+sepalledness	0	dema-sepalled-n	Number=Plur	dema	0
+sepalleds	0	dema-sepalled-v	Person=3+Tense=Pres	dema	0
+sepaloid	0	oewn-sepaloid-a	Degree=Pos	dema	0
+sepaloidly	0	dema-sepaloid-r		dema	0
+sepaloidness	0	dema-sepaloid-n	Number=Plur	dema	0
+sepals	0	oewn-sepal-n	Number=Plur	dema	0
+separabilities	0	oewn-separability-n	Number=Plur	dema	0
+separability	0	oewn-separability-n	Number=Sing	dema	0
+separable	0	oewn-separable-a	Degree=Pos	dema	0
+separableness	0	dema-separableness-n	Number=Sing	dema	0
+separablenesses	0	dema-separableness-n	Number=Plur	dema	0
+separably	0	oewn-separably-r	Degree=Pos	dema	0
+separate	0	oewn-separate-a	Degree=Pos	dema	1
+separate	1	oewn-separate-v	VerbForm=Inf	dema	1
+separated	0	dema-separated-v	VerbForm=Inf	dema	0
+separately	0	oewn-separately-r	Degree=Pos	dema	0
+separateness	0	oewn-separateness-n	Number=Sing	dema	0
+separatenesses	0	oewn-separateness-n	Number=Plur	dema	0
+separater	0	oewn-separate-n	Number=Plur	dema	0
+separaters	0	oewn-separate-n	Number=Plur	dema	0
+separates	0	oewn-separate-v	Person=3+Tense=Pres	dema	1
+separates	1	dema-separates-n	Number=Sing	dema	0
+separating	0	dema-separating-v	VerbForm=Inf	dema	0
+separatingly	0	dema-separate-r		dema	0
+separation	0	oewn-separation-n	Number=Sing	dema	0
+separations	0	oewn-separation-n	Number=Plur	dema	0
+separatism	0	oewn-separatism-n	Number=Sing	dema	0
+separatisms	0	oewn-separatism-n	Number=Plur	dema	0
+separatist	0	oewn-separatist-n	Number=Sing	dema	0
+separatists	0	oewn-separatist-n	Number=Plur	dema	0
+separative	0	oewn-separative-a	Degree=Pos	dema	0
+separatively	0	dema-separatively-r	Degree=Pos	dema	0
+separativeness	0	dema-separativeness-n	Number=Sing	dema	0
+separativenesses	0	dema-separativeness-n	Number=Plur	dema	0
+separator	0	oewn-separator-n	Number=Sing	dema	0
+separatorily	0	dema-separatory-r		dema	0
+separators	0	oewn-separator-n	Number=Plur	dema	0
+separatory	0	dema-separatory-a	Degree=Pos	dema	0
+separatrix	0	oewn-separatrix-n	Number=Sing	dema	0
+separatrixes	0	oewn-separatrix-n	Number=Plur	dema	0
+sepia	0	oewn-sepia-n	Number=Sing	dema	0
+sepia	1	dema-sepia-a	Degree=Pos	dema	0
+sepiaer	0	dema-sepia-a	Degree=Cmp	dema	0
+sepiaest	0	dema-sepia-a	Degree=Sup	dema	0
+sepialy	0	dema-sepia-r		dema	0
+sepianess	0	oewn-sepia-n	Number=Plur	dema	0
+sepias	0	oewn-sepia-n	Number=Plur	dema	0
+sepiolite	0	oewn-sepiolite-n	Number=Sing	dema	0
+sepiolites	0	oewn-sepiolite-n	Number=Plur	dema	0
+sepoy	0	dema-sepoy-n	Number=Sing	dema	0
+sepoys	0	dema-sepoy-n	Number=Plur	dema	0
+seppa	0	dema-seppa-n	Number=Sing	dema	0
+seppas	0	dema-seppa-n	Number=Plur	dema	0
+seppuku	0	oewn-seppuku-n	Number=Sing	dema	0
+seppukus	0	oewn-seppuku-n	Number=Plur	dema	0
+sepsis	0	oewn-sepsis-n	Number=Sing	dema	0
+sept	0	oewn-sept-n	Number=Sing	dema	0
+septa	0	dema-septa-n	Number=Sing	dema	0
+septal	0	oewn-septal-a	Degree=Pos	dema	0
+septally	0	dema-septal-r		dema	0
+septalness	0	dema-septal-n	Number=Plur	dema	0
+septaria	0	dema-septaria-n	Number=Sing	dema	0
+septarian	0	dema-septarian-a	Degree=Pos	dema	0
+septarianly	0	dema-septarian-r		dema	0
+septarianness	0	dema-septarian-n	Number=Plur	dema	0
+septarias	0	dema-septaria-n	Number=Plur	dema	0
+septariate	0	dema-septariate-a	Degree=Pos	dema	0
+septariately	0	dema-septariate-r		dema	0
+septariateness	0	dema-septariate-n	Number=Plur	dema	0
+septarium	0	dema-septarium-n	Number=Sing	dema	0
+septariums	0	dema-septarium-n	Number=Plur	dema	0
+septas	0	dema-septa-n	Number=Plur	dema	0
+septate	0	oewn-septate-a	Degree=Pos	dema	0
+septately	0	dema-septate-r		dema	0
+septateness	0	dema-septate-n	Number=Plur	dema	0
+septavalent	0	dema-septavalent-a	Degree=Pos	dema	0
+septavalently	0	dema-septavalent-r		dema	0
+septectomies	0	dema-septectomies-n	Number=Sing	dema	0
+septectomy	0	oewn-septectomy-n	Number=Sing	dema	0
+september	0	dema-september-n	Number=Sing	dema	0
+septembers	0	dema-september-n	Number=Plur	dema	0
+septempartite	0	dema-septempartite-a	Degree=Pos	dema	0
+septempartitely	0	dema-septempartite-r		dema	0
+septemvir	0	dema-septemvir-n	Number=Sing	dema	0
+septemviral	0	dema-septemviral-a	Degree=Pos	dema	0
+septemvirally	0	dema-septemviral-r		dema	0
+septemvirate	0	dema-septemvirate-n	Number=Sing	dema	0
+septemvirates	0	dema-septemvirate-n	Number=Plur	dema	0
+septemviri	0	dema-septemviri-n	Number=Sing	dema	0
+septemviris	0	dema-septemviri-n	Number=Plur	dema	0
+septemvirs	0	dema-septemvirs-n	Number=Sing	dema	0
+septenaries	0	oewn-septenary-n	Number=Plur	dema	0
+septenarily	0	dema-septenary-r		dema	0
+septenary	0	dema-septenary-a	Degree=Pos	dema	0
+septenary	1	oewn-septenary-n	Number=Sing	dema	0
+septendecillion	0	dema-septendecillion-n	Number=Sing	dema	0
+septendecillion	1	dema-septendecillion-a	Degree=Pos	dema	0
+septendecillionly	0	dema-septendecillion-r		dema	0
+septendecillions	0	dema-septendecillion-n	Number=Plur	dema	0
+septendecillionth	0	dema-septendecillionth-a	Degree=Pos	dema	0
+septendecillionth	1	dema-septendecillionth-n	Number=Sing	dema	0
+septendecillionthly	0	dema-septendecillionth-r		dema	0
+septendecillionths	0	dema-septendecillionth-n	Number=Plur	dema	0
+septennial	0	dema-septennial-a	Degree=Pos	dema	0
+septennially	0	dema-septennially-r	Degree=Pos	dema	0
+septennialness	0	dema-septennial-n	Number=Plur	dema	0
+septennium	0	dema-septennium-n	Number=Sing	dema	0
+septenniums	0	dema-septennium-n	Number=Plur	dema	0
+septentrion	0	dema-septentrion-n	Number=Sing	dema	0
+septentrional	0	dema-septentrional-a	Degree=Pos	dema	0
+septentrionally	0	dema-septentrional-r		dema	0
+septentrions	0	dema-septentrion-n	Number=Plur	dema	0
+septet	0	oewn-septet-n	Number=Sing	dema	0
+septets	0	oewn-septet-n	Number=Plur	dema	0
+septic	0	oewn-septic-a	Degree=Pos	dema	0
+septic	1	dema-septic-n	Number=Sing	dema	0
+septicaemia	0	oewn-septicaemia-n	Number=Sing	dema	0
+septicaemias	0	oewn-septicaemia-n	Number=Plur	dema	0
+septicaemic	0	dema-septicaemic-a	Degree=Pos	dema	0
+septicaemically	0	dema-septicaemic-r		dema	0
+septically	0	dema-septically-r	Degree=Pos	dema	0
+septicemia	0	oewn-septicemia-n	Number=Sing	dema	0
+septicemias	0	oewn-septicemia-n	Number=Plur	dema	0
+septicemic	0	oewn-septicemic-a	Degree=Pos	dema	0
+septicemically	0	dema-septicemic-r		dema	0
+septicidal	0	dema-septicidal-a	Degree=Pos	dema	0
+septicidally	0	dema-septicidal-r		dema	0
+septicities	0	dema-septicity-n	Number=Plur	dema	0
+septicity	0	dema-septicity-n	Number=Sing	dema	0
+septicness	0	dema-septic-n	Number=Plur	dema	0
+septics	0	dema-septic-n	Number=Plur	dema	0
+septifragal	0	dema-septifragal-a	Degree=Pos	dema	0
+septifragally	0	dema-septifragally-r	Degree=Pos	dema	0
+septilateral	0	dema-septilateral-a	Degree=Pos	dema	0
+septilaterally	0	dema-septilateral-r		dema	0
+septillion	0	oewn-septillion-n	Number=Sing	dema	0
+septillions	0	oewn-septillion-n	Number=Plur	dema	0
+septillionth	0	dema-septillionth-n	Number=Sing	dema	0
+septillionth	1	dema-septillionth-a	Degree=Pos	dema	0
+septillionthly	0	dema-septillionth-r		dema	0
+septillionthness	0	dema-septillionth-n	Number=Plur	dema	0
+septillionths	0	dema-septillionth-n	Number=Plur	dema	0
+septimal	0	dema-septimal-a	Degree=Pos	dema	0
+septimally	0	dema-septimal-r		dema	0
+septimalness	0	dema-septimal-n	Number=Plur	dema	0
+septimana	0	dema-septimana-n	Number=Sing	dema	0
+septimanae	0	dema-septimanae-n	Number=Sing	dema	0
+septimanaes	0	dema-septimanae-n	Number=Plur	dema	0
+septimanas	0	dema-septimana-n	Number=Plur	dema	0
+septime	0	dema-septime-n	Number=Sing	dema	0
+septimes	0	dema-septime-n	Number=Plur	dema	0
+septivalent	0	dema-septivalent-a	Degree=Pos	dema	0
+septivalently	0	dema-septivalent-r		dema	0
+septolet	0	dema-septolet-n	Number=Sing	dema	0
+septolets	0	dema-septolet-n	Number=Plur	dema	0
+septs	0	oewn-sept-n	Number=Plur	dema	0
+septuagenarian	0	oewn-septuagenarian-n	Number=Sing	dema	0
+septuagenarian	1	dema-septuagenarian-a	Degree=Pos	dema	0
+septuagenarianly	0	dema-septuagenarian-r		dema	0
+septuagenarians	0	oewn-septuagenarian-n	Number=Plur	dema	0
+septuagenaries	0	dema-septuagenaries-n	Number=Sing	dema	0
+septuagenarily	0	dema-septuagenary-r		dema	0
+septuagenary	0	dema-septuagenary-a	Degree=Pos	dema	0
+septuagenary	1	dema-septuagenary-n	Number=Sing	dema	0
+septum	0	oewn-septum-n	Number=Sing	dema	0
+septums	0	oewn-septum-n	Number=Plur	dema	0
+septuor	0	dema-septuor-n	Number=Sing	dema	0
+septuors	0	dema-septuor-n	Number=Plur	dema	0
+septuple	0	oewn-septuple-a	Degree=Pos	dema	0
+septuple	1	dema-septuple-v	VerbForm=Inf	dema	0
+septupled	0	dema-septupled-v	VerbForm=Inf	dema	0
+septupleness	0	dema-septuple-n	Number=Plur	dema	0
+septupler	0	dema-septuple-n	Number=Plur	dema	0
+septuplers	0	dema-septuple-n	Number=Plur	dema	0
+septuples	0	dema-septuple-v	Person=3+Tense=Pres	dema	0
+septuplet	0	dema-septuplet-n	Number=Sing	dema	0
+septuplets	0	dema-septuplet-n	Number=Plur	dema	0
+septuplicate	0	dema-septuplicate-n	Number=Sing	dema	0
+septuplicate	1	dema-septuplicate-a	Degree=Pos	dema	0
+septuplicately	0	dema-septuplicate-r		dema	0
+septuplicates	0	dema-septuplicate-n	Number=Plur	dema	0
+septupling	0	dema-septupling-v	VerbForm=Inf	dema	0
+septuplingly	0	dema-septuple-r		dema	0
+septuply	0	dema-septuple-r		dema	0
+sepulcher	0	oewn-sepulcher-n	Number=Sing	dema	0
+sepulcher	1	dema-sepulcher-v	VerbForm=Inf	dema	0
+sepulchered	0	dema-sepulcher-v	Tense=Past	dema	0
+sepulchering	0	dema-sepulcher-v	VerbForm=Ger	dema	0
+sepulcheringly	0	dema-sepulcher-r		dema	0
+sepulchers	0	oewn-sepulcher-n	Number=Plur	dema	0
+sepulchers	1	dema-sepulcher-v	Person=3+Tense=Pres	dema	0
+sepulchral	0	oewn-sepulchral-a	Degree=Pos	dema	0
+sepulchrally	0	dema-sepulchrally-r	Degree=Pos	dema	0
+sepulchralness	0	dema-sepulchral-n	Number=Plur	dema	0
+sepulchre	0	oewn-sepulchre-n	Number=Sing	dema	0
+sepulchre	1	dema-sepulchre-v	VerbForm=Inf	dema	0
+sepulchred	0	dema-sepulchred-v	VerbForm=Inf	dema	0
+sepulchrer	0	oewn-sepulchre-n	Number=Plur	dema	0
+sepulchrers	0	oewn-sepulchre-n	Number=Plur	dema	0
+sepulchres	0	oewn-sepulchre-n	Number=Plur	dema	0
+sepulchres	1	dema-sepulchre-v	Person=3+Tense=Pres	dema	0
+sepulchring	0	dema-sepulchring-v	VerbForm=Inf	dema	0
+sepulchringly	0	dema-sepulchre-r		dema	0
+sepulture	0	oewn-sepulture-n	Number=Sing	dema	0
+sepultures	0	oewn-sepulture-n	Number=Plur	dema	0
+seqq	0	dema-seqq-n	Number=Sing	dema	0
+seqqs	0	dema-seqq-n	Number=Plur	dema	0
+sequacious	0	dema-sequacious-a	Degree=Pos	dema	0
+sequaciously	0	dema-sequaciously-r	Degree=Pos	dema	0
+sequaciousness	0	dema-sequaciousness-n	Number=Sing	dema	0
+sequaciousnesses	0	dema-sequaciousness-n	Number=Plur	dema	0
+sequacities	0	dema-sequacity-n	Number=Plur	dema	0
+sequacity	0	dema-sequacity-n	Number=Sing	dema	0
+sequel	0	oewn-sequel-n	Number=Sing	dema	0
+sequela	0	oewn-sequela-n	Number=Sing	dema	0
+sequelae	0	dema-sequelae-n	Number=Sing	dema	0
+sequelaes	0	dema-sequelae-n	Number=Plur	dema	0
+sequelas	0	oewn-sequela-n	Number=Plur	dema	0
+sequels	0	oewn-sequel-n	Number=Plur	dema	0
+sequence	0	oewn-sequence-n	Number=Sing	dema	0
+sequencer	0	oewn-sequencer-n	Number=Sing	dema	0
+sequencers	0	oewn-sequencer-n	Number=Plur	dema	0
+sequences	0	oewn-sequence-n	Number=Plur	dema	0
+sequent	0	oewn-sequent-a	Degree=Pos	dema	0
+sequent	1	dema-sequent-n	Number=Sing	dema	0
+sequenter	0	oewn-sequent-a	Degree=Cmp	dema	0
+sequentest	0	oewn-sequent-a	Degree=Sup	dema	0
+sequential	0	oewn-sequential-a	Degree=Pos	dema	0
+sequentialities	0	dema-sequentiality-n	Number=Plur	dema	0
+sequentiality	0	dema-sequentiality-n	Number=Sing	dema	0
+sequentially	0	oewn-sequentially-r	Degree=Pos	dema	0
+sequentialness	0	dema-sequential-n	Number=Plur	dema	0
+sequently	0	dema-sequently-r	Degree=Pos	dema	0
+sequentness	0	dema-sequent-n	Number=Plur	dema	0
+sequents	0	dema-sequent-n	Number=Plur	dema	0
+sequester	0	oewn-sequester-v	VerbForm=Inf	dema	0
+sequestered	0	oewn-sequestered-a	Degree=Pos	dema	0
+sequestered	1	dema-sequestered-v	VerbForm=Inf	dema	0
+sequesteredly	0	dema-sequestered-r		dema	0
+sequestering	0	oewn-sequester-v	VerbForm=Ger	dema	0
+sequesteringly	0	dema-sequester-r		dema	0
+sequesters	0	oewn-sequester-v	Person=3+Tense=Pres	dema	0
+sequestrable	0	dema-sequestrable-a	Degree=Pos	dema	0
+sequestrably	0	dema-sequestrable-r		dema	0
+sequestral	0	dema-sequestral-a	Degree=Pos	dema	0
+sequestrally	0	dema-sequestral-r		dema	0
+sequestralness	0	dema-sequestral-n	Number=Plur	dema	0
+sequestrant	0	dema-sequestrant-n	Number=Sing	dema	0
+sequestrants	0	dema-sequestrant-n	Number=Plur	dema	0
+sequestrate	0	oewn-sequestrate-v	VerbForm=Inf	dema	0
+sequestrated	0	dema-sequestrated-v	VerbForm=Inf	dema	0
+sequestrater	0	dema-sequestrate-n	Number=Plur	dema	0
+sequestraters	0	dema-sequestrate-n	Number=Plur	dema	0
+sequestrates	0	oewn-sequestrate-v	Person=3+Tense=Pres	dema	0
+sequestrating	0	dema-sequestrating-v	VerbForm=Inf	dema	0
+sequestratingly	0	dema-sequestrate-r		dema	0
+sequestration	0	oewn-sequestration-n	Number=Sing	dema	0
+sequestrations	0	oewn-sequestration-n	Number=Plur	dema	0
+sequestrator	0	dema-sequestrator-n	Number=Sing	dema	0
+sequestrators	0	dema-sequestrator-n	Number=Plur	dema	0
+sequestrectomies	0	dema-sequestrectomy-n	Number=Plur	dema	0
+sequestrectomy	0	dema-sequestrectomy-n	Number=Sing	dema	0
+sequestrum	0	dema-sequestrum-n	Number=Sing	dema	0
+sequestrums	0	dema-sequestrum-n	Number=Plur	dema	0
+sequin	0	oewn-sequin-n	Number=Sing	dema	0
+sequined	0	oewn-sequined-a	Degree=Pos	dema	0
+sequined	1	dema-sequined-v	VerbForm=Inf	dema	0
+sequineded	0	dema-sequined-v	Tense=Past	dema	0
+sequineder	0	dema-sequined-n	Number=Plur	dema	0
+sequineders	0	dema-sequined-n	Number=Plur	dema	0
+sequineding	0	dema-sequined-v	VerbForm=Ger	dema	0
+sequinedingly	0	dema-sequined-r		dema	0
+sequinedly	0	dema-sequined-r		dema	0
+sequinedness	0	dema-sequined-n	Number=Plur	dema	0
+sequineds	0	dema-sequined-v	Person=3+Tense=Pres	dema	0
+sequins	0	oewn-sequin-n	Number=Plur	dema	0
+sequoia	0	oewn-sequoia-n	Number=Sing	dema	0
+sequoias	0	oewn-sequoia-n	Number=Plur	dema	0
+ser	0	dema-ser-n	Number=Sing	dema	0
+sera	0	dema-sera-n	Number=Sing	dema	0
+seraglio	0	oewn-seraglio-n	Number=Sing	dema	0
+seraglios	0	dema-seraglios-n	Number=Sing	dema	0
+serai	0	dema-serai-n	Number=Sing	dema	0
+serais	0	dema-serais-n	Number=Sing	dema	0
+seral	0	dema-seral-a	Degree=Pos	dema	0
+serally	0	dema-seral-r		dema	0
+seralness	0	dema-seral-n	Number=Plur	dema	0
+seraph	0	oewn-seraph-n	Number=Sing	dema	0
+seraphic	0	oewn-seraphic-a	Degree=Pos	dema	0
+seraphically	0	dema-seraphically-r	Degree=Pos	dema	0
+seraphicalness	0	dema-seraphicalness-n	Number=Sing	dema	0
+seraphicalnesses	0	dema-seraphicalness-n	Number=Plur	dema	0
+seraphicness	0	dema-seraphic-n	Number=Plur	dema	0
+seraphim	0	dema-seraphim-n	Number=Sing	dema	0
+seraphims	0	dema-seraphim-n	Number=Plur	dema	0
+seraphlike	0	dema-seraphlike-a	Degree=Pos	dema	0
+seraphlikely	0	dema-seraphlike-r		dema	0
+seraphlikeness	0	dema-seraphlike-n	Number=Plur	dema	0
+seraphs	0	dema-seraphs-n	Number=Sing	dema	0
+seras	0	dema-sera-n	Number=Plur	dema	0
+serdab	0	dema-serdab-n	Number=Sing	dema	0
+serdabs	0	dema-serdab-n	Number=Plur	dema	0
+sere	0	oewn-sere-a	Degree=Pos	dema	0
+sere	1	dema-sere-v	VerbForm=Inf	dema	0
+sere	2	dema-sere-n	Number=Sing	dema	0
+sered	0	dema-sere-v	Tense=Past	dema	0
+serein	0	dema-serein-n	Number=Sing	dema	0
+sereins	0	dema-serein-n	Number=Plur	dema	0
+serely	0	dema-sere-r		dema	0
+serenade	0	oewn-serenade-n	Number=Sing	dema	0
+serenade	1	oewn-serenade-v	VerbForm=Inf	dema	0
+serenaded	0	dema-serenaded-v	VerbForm=Inf	dema	0
+serenader	0	dema-serenader-n	Number=Sing	dema	0
+serenaders	0	oewn-serenade-n	Number=Plur	dema	0
+serenades	0	oewn-serenade-n	Number=Plur	dema	0
+serenades	1	oewn-serenade-v	Person=3+Tense=Pres	dema	0
+serenading	0	dema-serenading-v	VerbForm=Inf	dema	0
+serenadingly	0	dema-serenade-r		dema	0
+serenata	0	dema-serenata-n	Number=Sing	dema	0
+serenatas	0	dema-serenatas-n	Number=Sing	dema	0
+serendipities	0	oewn-serendipity-n	Number=Plur	dema	0
+serendipity	0	oewn-serendipity-n	Number=Sing	dema	0
+serene	0	oewn-serene-a	Degree=Pos	dema	0
+serenely	0	oewn-serenely-r	Degree=Pos	dema	0
+sereneness	0	dema-sereneness-n	Number=Sing	dema	0
+serenenesses	0	dema-sereneness-n	Number=Plur	dema	0
+serener	0	oewn-serene-a	Degree=Cmp	dema	0
+sereness	0	dema-sere-n	Number=Plur	dema	0
+serenest	0	oewn-serene-a	Degree=Sup	dema	0
+serenities	0	dema-serenities-n	Number=Sing	dema	0
+serenity	0	oewn-serenity-n	Number=Sing	dema	0
+serer	0	oewn-sere-a	Degree=Cmp	dema	0
+serer	1	dema-sere-n	Number=Plur	dema	0
+serers	0	dema-sere-n	Number=Plur	dema	0
+seres	0	dema-sere-v	Person=3+Tense=Pres	dema	0
+seres	1	dema-sere-n	Number=Plur	dema	0
+serest	0	oewn-sere-a	Degree=Sup	dema	0
+serf	0	oewn-serf-n	Number=Sing	dema	0
+serfdom	0	oewn-serfdom-n	Number=Sing	dema	0
+serfdoms	0	oewn-serfdom-n	Number=Plur	dema	0
+serfish	0	dema-serfish-a	Degree=Pos	dema	0
+serfishly	0	dema-serfishly-r	Degree=Pos	dema	0
+serfishness	0	dema-serfishness-n	Number=Sing	dema	0
+serfishnesses	0	dema-serfishness-n	Number=Plur	dema	0
+serflike	0	oewn-serflike-a	Degree=Pos	dema	0
+serflikely	0	dema-serflike-r		dema	0
+serflikeness	0	dema-serflike-n	Number=Plur	dema	0
+serfliker	0	oewn-serflike-a	Degree=Cmp	dema	0
+serflikest	0	oewn-serflike-a	Degree=Sup	dema	0
+serfs	0	oewn-serf-n	Number=Plur	dema	0
+serge	0	oewn-serge-n	Number=Sing	dema	0
+sergeant	0	oewn-sergeant-n	Number=Sing	dema	0
+sergeantfish	0	dema-sergeantfish-n	Number=Sing	dema	0
+sergeantfishes	0	dema-sergeantfishes-n	Number=Sing	dema	0
+sergeanties	0	dema-sergeanty-n	Number=Plur	dema	0
+sergeants	0	oewn-sergeant-n	Number=Plur	dema	0
+sergeanty	0	dema-sergeanty-n	Number=Sing	dema	0
+serges	0	oewn-serge-n	Number=Plur	dema	0
+serial	0	oewn-serial-n	Number=Sing	dema	0
+serial	1	oewn-serial-a	Degree=Pos	dema	0
+serialisation	0	oewn-serialisation-n	Number=Sing	dema	0
+serialisations	0	oewn-serialisation-n	Number=Plur	dema	0
+serialise	0	oewn-serialise-v	VerbForm=Inf	dema	0
+serialised	0	dema-serialised-v	VerbForm=Inf	dema	0
+serialiser	0	dema-serialise-n	Number=Plur	dema	0
+serialisers	0	dema-serialise-n	Number=Plur	dema	0
+serialises	0	oewn-serialise-v	Person=3+Tense=Pres	dema	0
+serialising	0	dema-serialising-v	VerbForm=Inf	dema	0
+serialisingly	0	dema-serialise-r		dema	0
+serialism	0	oewn-serialism-n	Number=Sing	dema	0
+serialisms	0	oewn-serialism-n	Number=Plur	dema	0
+serialist	0	dema-serialist-n	Number=Sing	dema	0
+serialists	0	dema-serialist-n	Number=Plur	dema	0
+serialization	0	oewn-serialization-n	Number=Sing	dema	0
+serializations	0	oewn-serialization-n	Number=Plur	dema	0
+serialize	0	oewn-serialize-v	VerbForm=Inf	dema	0
+serialized	0	dema-serialized-v	VerbForm=Inf	dema	0
+serializer	0	dema-serialize-n	Number=Plur	dema	0
+serializers	0	dema-serialize-n	Number=Plur	dema	0
+serializes	0	oewn-serialize-v	Person=3+Tense=Pres	dema	0
+serializing	0	dema-serializing-v	VerbForm=Inf	dema	0
+serializingly	0	dema-serialize-r		dema	0
+serially	0	oewn-serially-r	Degree=Pos	dema	0
+serialness	0	oewn-serial-n	Number=Plur	dema	0
+serials	0	oewn-serial-n	Number=Plur	dema	0
+seriate	0	dema-seriate-a	Degree=Pos	dema	1
+seriate	1	dema-seriate-v	VerbForm=Inf	dema	1
+seriately	0	dema-seriate-r		dema	0
+seriateness	0	dema-seriate-n	Number=Plur	dema	0
+seriates	0	dema-seriate-v	Person=3+Tense=Pres	dema	1
+seriatim	0	oewn-seriatim-r	Degree=Pos	dema	0
+sericate	0	dema-sericate-a	Degree=Pos	dema	0
+sericately	0	dema-sericate-r		dema	0
+sericateness	0	dema-sericate-n	Number=Plur	dema	0
+sericeous	0	oewn-sericeous-a	Degree=Pos	dema	0
+sericeously	0	dema-sericeous-r		dema	0
+sericeousness	0	dema-sericeous-n	Number=Plur	dema	0
+sericin	0	dema-sericin-n	Number=Sing	dema	0
+sericins	0	dema-sericin-n	Number=Plur	dema	0
+sericite	0	dema-sericite-n	Number=Sing	dema	0
+sericites	0	dema-sericite-n	Number=Plur	dema	0
+sericitic	0	dema-sericitic-a	Degree=Pos	dema	0
+sericitically	0	dema-sericitic-r		dema	0
+sericterium	0	oewn-sericterium-n	Number=Sing	dema	0
+sericteriums	0	oewn-sericterium-n	Number=Plur	dema	0
+serictteria	0	dema-serictteria-n	Number=Sing	dema	0
+serictterias	0	dema-serictteria-n	Number=Plur	dema	0
+sericultural	0	oewn-sericultural-a	Degree=Pos	dema	0
+sericulturally	0	dema-sericultural-r		dema	0
+sericulture	0	oewn-sericulture-n	Number=Sing	dema	0
+sericultures	0	oewn-sericulture-n	Number=Plur	dema	0
+sericulturist	0	oewn-sericulturist-n	Number=Sing	dema	0
+sericulturists	0	oewn-sericulturist-n	Number=Plur	dema	0
+seriema	0	oewn-seriema-n	Number=Sing	dema	0
+seriemas	0	oewn-seriema-n	Number=Plur	dema	0
+series	0	oewn-series-n	Number=Sing	dema	0
+serieses	0	oewn-series-n	Number=Plur	dema	0
+serif	0	oewn-serif-n	Number=Sing	dema	0
+serifs	0	oewn-serif-n	Number=Plur	dema	0
+serigraph	0	oewn-serigraph-n	Number=Sing	dema	0
+serigrapher	0	dema-serigrapher-n	Number=Sing	dema	0
+serigraphers	0	dema-serigrapher-n	Number=Plur	dema	0
+serigraphies	0	oewn-serigraphy-n	Number=Plur	dema	0
+serigraphs	0	oewn-serigraph-n	Number=Plur	dema	0
+serigraphy	0	oewn-serigraphy-n	Number=Sing	dema	0
+serin	0	oewn-serin-n	Number=Sing	dema	0
+serine	0	oewn-serine-n	Number=Sing	dema	0
+serines	0	oewn-serine-n	Number=Plur	dema	0
+sering	0	dema-sere-v	VerbForm=Ger	dema	0
+seringa	0	dema-seringa-n	Number=Sing	dema	0
+seringas	0	dema-seringa-n	Number=Plur	dema	0
+seringly	0	dema-sere-r		dema	0
+serins	0	oewn-serin-n	Number=Plur	dema	0
+seriocomic	0	oewn-seriocomic-a	Degree=Pos	dema	0
+seriocomically	0	dema-seriocomically-r	Degree=Pos	dema	0
+serious	0	oewn-serious-a	Degree=Pos	dema	0
+seriously	0	oewn-seriously-r	Degree=Pos	dema	0
+seriousness	0	oewn-seriousness-n	Number=Sing	dema	0
+seriousnesses	0	oewn-seriousness-n	Number=Plur	dema	0
+seriplane	0	dema-seriplane-n	Number=Sing	dema	0
+seriplanes	0	dema-seriplane-n	Number=Plur	dema	0
+serjeant	0	oewn-serjeant-n	Number=Sing	dema	0
+serjeanties	0	dema-serjeanty-n	Number=Plur	dema	0
+serjeants	0	oewn-serjeant-n	Number=Plur	dema	0
+serjeanty	0	dema-serjeanty-n	Number=Sing	dema	0
+sermon	0	oewn-sermon-n	Number=Sing	dema	0
+sermonically	0	dema-sermonically-r	Degree=Pos	dema	0
+sermonise	0	oewn-sermonise-v	VerbForm=Inf	dema	0
+sermonised	0	dema-sermonised-v	VerbForm=Inf	dema	0
+sermoniser	0	oewn-sermoniser-n	Number=Sing	dema	0
+sermonisers	0	dema-sermonise-n	Number=Plur	dema	0
+sermonises	0	oewn-sermonise-v	Person=3+Tense=Pres	dema	0
+sermonising	0	dema-sermonising-v	VerbForm=Inf	dema	0
+sermonisingly	0	dema-sermonise-r		dema	0
+sermonize	0	oewn-sermonize-v	VerbForm=Inf	dema	0
+sermonized	0	dema-sermonized-v	VerbForm=Inf	dema	0
+sermonizer	0	oewn-sermonizer-n	Number=Sing	dema	0
+sermonizers	0	dema-sermonize-n	Number=Plur	dema	0
+sermonizes	0	oewn-sermonize-v	Person=3+Tense=Pres	dema	0
+sermonizing	0	dema-sermonizing-v	VerbForm=Inf	dema	0
+sermonizingly	0	dema-sermonize-r		dema	0
+sermons	0	oewn-sermon-n	Number=Plur	dema	0
+serologic	0	oewn-serologic-a	Degree=Pos	dema	0
+serological	0	oewn-serological-a	Degree=Pos	dema	0
+serologically	0	dema-serologically-r	Degree=Pos	dema	0
+serologies	0	oewn-serology-n	Number=Plur	dema	0
+serologist	0	oewn-serologist-n	Number=Sing	dema	0
+serologists	0	oewn-serologist-n	Number=Plur	dema	0
+serology	0	oewn-serology-n	Number=Sing	dema	0
+seromucous	0	dema-seromucous-a	Degree=Pos	dema	0
+seromucously	0	dema-seromucous-r		dema	0
+seroresistant	0	dema-seroresistant-a	Degree=Pos	dema	0
+seroresistantly	0	dema-seroresistant-r		dema	0
+serosa	0	oewn-serosa-n	Number=Sing	dema	0
+serosas	0	oewn-serosa-n	Number=Plur	dema	0
+serosities	0	dema-serosity-n	Number=Plur	dema	0
+serositis	0	dema-serositis-n	Number=Sing	dema	0
+serosity	0	dema-serosity-n	Number=Sing	dema	0
+serotherapies	0	dema-serotherapy-n	Number=Plur	dema	0
+serotherapist	0	dema-serotherapist-n	Number=Sing	dema	0
+serotherapists	0	dema-serotherapist-n	Number=Plur	dema	0
+serotherapy	0	dema-serotherapy-n	Number=Sing	dema	0
+serotinal	0	dema-serotinal-a	Degree=Pos	dema	0
+serotinally	0	dema-serotinal-r		dema	0
+serotine	0	dema-serotine-a	Degree=Pos	dema	0
+serotine	1	oewn-serotine-n	Number=Sing	dema	0
+serotinely	0	dema-serotine-r		dema	0
+serotineness	0	oewn-serotine-n	Number=Plur	dema	0
+serotines	0	oewn-serotine-n	Number=Plur	dema	0
+serotonin	0	oewn-serotonin-n	Number=Sing	dema	0
+serotonins	0	oewn-serotonin-n	Number=Plur	dema	0
+serous	0	oewn-serous-a	Degree=Pos	dema	0
+serously	0	dema-serous-r		dema	0
+serousness	0	dema-serousness-n	Number=Sing	dema	0
+serousnesses	0	dema-serousness-n	Number=Plur	dema	0
+serow	0	oewn-serow-n	Number=Sing	dema	0
+serows	0	oewn-serow-n	Number=Plur	dema	0
+serpent	0	oewn-serpent-n	Number=Sing	dema	0
+serpentiform	0	dema-serpentiform-a	Degree=Pos	dema	0
+serpentiformly	0	dema-serpentiform-r		dema	0
+serpentine	0	oewn-serpentine-a	Degree=Pos	dema	0
+serpentine	1	dema-serpentine-n	Number=Sing	dema	0
+serpentinely	0	dema-serpentine-r		dema	0
+serpentineness	0	dema-serpentine-n	Number=Plur	dema	0
+serpentines	0	dema-serpentine-n	Number=Plur	dema	0
+serpentinization	0	dema-serpentinization-n	Number=Sing	dema	0
+serpentinizations	0	dema-serpentinization-n	Number=Plur	dema	0
+serpentinize	0	dema-serpentinize-v	VerbForm=Inf	dema	0
+serpentinized	0	dema-serpentinized-v	VerbForm=Inf	dema	0
+serpentinizes	0	dema-serpentinize-v	Person=3+Tense=Pres	dema	0
+serpentinizing	0	dema-serpentinizing-v	VerbForm=Inf	dema	0
+serpents	0	oewn-serpent-n	Number=Plur	dema	0
+serpiginous	0	dema-serpiginous-a	Degree=Pos	dema	0
+serpiginously	0	dema-serpiginous-r		dema	0
+serpigo	0	dema-serpigo-n	Number=Sing	dema	0
+serpigoes	0	dema-serpigo-n	Number=Plur	dema	0
+serpigos	0	dema-serpigo-n	Number=Plur	dema	0
+serpulid	0	dema-serpulid-n	Number=Sing	dema	0
+serpulids	0	dema-serpulid-n	Number=Plur	dema	0
+serranid	0	oewn-serranid-n	Number=Sing	dema	0
+serranid	1	dema-serranid-a	Degree=Pos	dema	0
+serranidly	0	dema-serranid-r		dema	0
+serranidness	0	oewn-serranid-n	Number=Plur	dema	0
+serranids	0	oewn-serranid-n	Number=Plur	dema	0
+serrate	0	oewn-serrate-a	Degree=Pos	dema	0
+serrate	1	oewn-serrate-v	VerbForm=Inf	dema	0
+serrated	0	dema-serrated-v	VerbForm=Inf	dema	0
+serrately	0	dema-serrate-r		dema	0
+serrateness	0	dema-serrate-n	Number=Plur	dema	0
+serrater	0	dema-serrate-n	Number=Plur	dema	0
+serraters	0	dema-serrate-n	Number=Plur	dema	0
+serrates	0	oewn-serrate-v	Person=3+Tense=Pres	dema	0
+serrating	0	dema-serrating-v	VerbForm=Inf	dema	0
+serratingly	0	dema-serrate-r		dema	0
+serration	0	oewn-serration-n	Number=Sing	dema	0
+serrations	0	oewn-serration-n	Number=Plur	dema	0
+serried	0	oewn-serried-a	Degree=Pos	dema	0
+serried	1	dema-serried-v	VerbForm=Inf	dema	0
+serriedly	0	dema-serriedly-r	Degree=Pos	dema	0
+serriedness	0	dema-serriedness-n	Number=Sing	dema	0
+serriednesses	0	dema-serriedness-n	Number=Plur	dema	0
+serrier	0	dema-serry-n	Number=Plur	dema	0
+serriers	0	dema-serry-n	Number=Plur	dema	0
+serries	0	dema-serry-v	Person=3+Tense=Pres	dema	0
+serriform	0	dema-serriform-a	Degree=Pos	dema	0
+serriformly	0	dema-serriform-r		dema	0
+serriformness	0	dema-serriform-n	Number=Plur	dema	0
+serrulate	0	oewn-serrulate-a	Degree=Pos	dema	0
+serrulately	0	dema-serrulate-r		dema	0
+serrulateness	0	dema-serrulate-n	Number=Plur	dema	0
+serrulation	0	dema-serrulation-n	Number=Sing	dema	0
+serrulations	0	dema-serrulation-n	Number=Plur	dema	0
+serrurerie	0	dema-serrurerie-n	Number=Sing	dema	0
+serrureries	0	dema-serrurerie-n	Number=Plur	dema	0
+serry	0	dema-serry-v	VerbForm=Inf	dema	0
+serrying	0	dema-serrying-v	VerbForm=Inf	dema	0
+sers	0	dema-ser-n	Number=Plur	dema	0
+sertularian	0	oewn-sertularian-n	Number=Sing	dema	0
+sertularians	0	oewn-sertularian-n	Number=Plur	dema	0
+serum	0	oewn-serum-n	Number=Sing	dema	0
+serumal	0	dema-serumal-a	Degree=Pos	dema	0
+serumally	0	dema-serumal-r		dema	0
+serumalness	0	dema-serumal-n	Number=Plur	dema	0
+serums	0	oewn-serum-n	Number=Plur	dema	0
+servable	0	dema-servable-a	Degree=Pos	dema	0
+servableness	0	dema-servable-n	Number=Plur	dema	0
+servably	0	dema-servable-r		dema	0
+serval	0	oewn-serval-n	Number=Sing	dema	0
+servals	0	dema-servals-n	Number=Sing	dema	0
+servant	0	oewn-servant-n	Number=Sing	dema	0
+servantless	0	dema-servantless-a	Degree=Pos	dema	0
+servantlessly	0	dema-servantless-r		dema	0
+servantlessness	0	dema-servantless-n	Number=Plur	dema	0
+servantlike	0	dema-servantlike-a	Degree=Pos	dema	0
+servantlikely	0	dema-servantlike-r		dema	0
+servantlikeness	0	dema-servantlike-n	Number=Plur	dema	0
+servants	0	oewn-servant-n	Number=Plur	dema	0
+serve	0	oewn-serve-v	VerbForm=Inf	dema	0
+serve	1	oewn-serve-n	Number=Sing	dema	0
+served	0	dema-served-v	VerbForm=Inf	dema	0
+server	0	oewn-server-n	Number=Sing	dema	0
+servers	0	oewn-serve-n	Number=Plur	dema	0
+serves	0	oewn-serve-v	Person=3+Tense=Pres	dema	0
+serves	1	oewn-serve-n	Number=Plur	dema	0
+service	0	oewn-service-n	Number=Sing	dema	0
+service	1	oewn-service-v	VerbForm=Inf	dema	0
+serviceabilities	0	oewn-serviceability-n	Number=Plur	dema	0
+serviceability	0	oewn-serviceability-n	Number=Sing	dema	0
+serviceable	0	oewn-serviceable-a	Degree=Pos	dema	0
+serviceableness	0	oewn-serviceableness-n	Number=Sing	dema	0
+serviceablenesses	0	oewn-serviceableness-n	Number=Plur	dema	0
+serviceably	0	dema-serviceably-r	Degree=Pos	dema	0
+serviceberries	0	dema-serviceberries-n	Number=Sing	dema	0
+serviceberry	0	oewn-serviceberry-n	Number=Sing	dema	0
+serviced	0	dema-serviced-v	VerbForm=Inf	dema	0
+serviceman	0	oewn-serviceman-n	Number=Sing	dema	0
+servicemen	0	dema-servicemen-n	Number=Sing	dema	0
+servicemens	0	dema-servicemen-n	Number=Plur	dema	0
+servicer	0	oewn-service-n	Number=Plur	dema	0
+servicers	0	oewn-service-n	Number=Plur	dema	0
+services	0	oewn-services-n	Number=Sing	dema	0
+servicing	0	dema-servicing-v	VerbForm=Inf	dema	0
+servicingly	0	dema-service-r		dema	0
+serviette	0	oewn-serviette-n	Number=Sing	dema	0
+serviettes	0	oewn-serviette-n	Number=Plur	dema	0
+servile	0	oewn-servile-a	Degree=Pos	dema	0
+servilely	0	oewn-servilely-r	Degree=Pos	dema	0
+servileness	0	dema-servileness-n	Number=Sing	dema	0
+servilenesses	0	dema-servileness-n	Number=Plur	dema	0
+serviler	0	oewn-servile-a	Degree=Cmp	dema	0
+servilest	0	oewn-servile-a	Degree=Sup	dema	0
+servilities	0	oewn-servility-n	Number=Plur	dema	0
+servility	0	oewn-servility-n	Number=Sing	dema	0
+serving	0	oewn-serving-n	Number=Sing	dema	0
+serving	1	dema-serving-v	VerbForm=Inf	dema	0
+servingly	0	dema-serve-r		dema	0
+servings	0	oewn-serving-n	Number=Plur	dema	0
+servitor	0	oewn-servitor-n	Number=Sing	dema	0
+servitors	0	oewn-servitor-n	Number=Plur	dema	0
+servitude	0	oewn-servitude-n	Number=Sing	dema	0
+servitudes	0	oewn-servitude-n	Number=Plur	dema	0
+servo	0	oewn-servo-a	Degree=Pos	dema	0
+servo	1	oewn-servo-n	Number=Sing	dema	0
+servoed	0	dema-servoed-v	VerbForm=Inf	dema	0
+servoeded	0	dema-servoed-v	Tense=Past	dema	0
+servoeder	0	dema-servoed-n	Number=Plur	dema	0
+servoeders	0	dema-servoed-n	Number=Plur	dema	0
+servoeding	0	dema-servoed-v	VerbForm=Ger	dema	0
+servoedingly	0	dema-servoed-r		dema	0
+servoeds	0	dema-servoed-v	Person=3+Tense=Pres	dema	0
+servoer	0	oewn-servo-a	Degree=Cmp	dema	0
+servoes	0	oewn-servo-n	Number=Plur	dema	0
+servoest	0	oewn-servo-a	Degree=Sup	dema	0
+servoing	0	dema-servoing-v	VerbForm=Inf	dema	0
+servoinged	0	dema-servoing-v	Tense=Past	dema	0
+servoinger	0	dema-servoing-n	Number=Plur	dema	0
+servoingers	0	dema-servoing-n	Number=Plur	dema	0
+servoinging	0	dema-servoing-v	VerbForm=Ger	dema	0
+servoingingly	0	dema-servoing-r		dema	0
+servoings	0	dema-servoing-v	Person=3+Tense=Pres	dema	0
+servoly	0	dema-servo-r		dema	0
+servomechanical	0	oewn-servomechanical-a	Degree=Pos	dema	0
+servomechanically	0	dema-servomechanically-r	Degree=Pos	dema	0
+servomechanism	0	oewn-servomechanism-n	Number=Sing	dema	0
+servomechanisms	0	oewn-servomechanism-n	Number=Plur	dema	0
+servomotor	0	dema-servomotor-n	Number=Sing	dema	0
+servomotors	0	dema-servomotor-n	Number=Plur	dema	0
+servoness	0	oewn-servo-n	Number=Plur	dema	0
+servos	0	oewn-servo-n	Number=Plur	dema	0
+sesame	0	oewn-sesame-n	Number=Sing	dema	0
+sesames	0	oewn-sesame-n	Number=Plur	dema	0
+sesamoid	0	dema-sesamoid-a	Degree=Pos	dema	0
+sesamoidly	0	dema-sesamoid-r		dema	0
+sesamoidness	0	oewn-sesamoid-n	Number=Plur	dema	0
+sescuncia	0	dema-sescuncia-n	Number=Sing	dema	0
+sescuncias	0	dema-sescuncia-n	Number=Plur	dema	0
+sesquialtera	0	dema-sesquialtera-n	Number=Sing	dema	0
+sesquialteras	0	dema-sesquialtera-n	Number=Plur	dema	0
+sesquicarbonate	0	dema-sesquicarbonate-n	Number=Sing	dema	0
+sesquicarbonates	0	dema-sesquicarbonate-n	Number=Plur	dema	0
+sesquicentennial	0	dema-sesquicentennial-a	Degree=Pos	dema	0
+sesquicentennial	1	oewn-sesquicentennial-n	Number=Sing	dema	0
+sesquicentennially	0	dema-sesquicentennially-r	Degree=Pos	dema	0
+sesquicentennials	0	oewn-sesquicentennial-n	Number=Plur	dema	0
+sesquih	0	dema-sesquih-n	Number=Sing	dema	0
+sesquihs	0	dema-sesquih-n	Number=Plur	dema	0
+sesquioxide	0	dema-sesquioxide-n	Number=Sing	dema	0
+sesquioxides	0	dema-sesquioxide-n	Number=Plur	dema	0
+sesquipedalian	0	oewn-sesquipedalian-a	Degree=Pos	dema	0
+sesquipedalian	1	oewn-sesquipedalian-n	Number=Sing	dema	0
+sesquipedalianly	0	dema-sesquipedalian-r		dema	0
+sesquipedalians	0	oewn-sesquipedalian-n	Number=Plur	dema	0
+sesquipedalities	0	oewn-sesquipedality-n	Number=Plur	dema	0
+sesquipedality	0	oewn-sesquipedality-n	Number=Sing	dema	0
+sesquiplane	0	dema-sesquiplane-n	Number=Sing	dema	0
+sesquiplanes	0	dema-sesquiplane-n	Number=Plur	dema	0
+sesquiterpene	0	dema-sesquiterpene-n	Number=Sing	dema	0
+sesquiterpenes	0	dema-sesquiterpene-n	Number=Plur	dema	0
+sessile	0	oewn-sessile-a	Degree=Pos	dema	0
+sessilely	0	dema-sessile-r		dema	0
+sessileness	0	dema-sessile-n	Number=Plur	dema	0
+sessiler	0	oewn-sessile-a	Degree=Cmp	dema	0
+sessilest	0	oewn-sessile-a	Degree=Sup	dema	0
+sessilities	0	dema-sessility-n	Number=Plur	dema	0
+sessility	0	dema-sessility-n	Number=Sing	dema	0
+session	0	oewn-session-n	Number=Sing	dema	0
+sessional	0	dema-sessional-a	Degree=Pos	dema	0
+sessionally	0	dema-sessional-r		dema	0
+sessionalness	0	dema-sessional-n	Number=Plur	dema	0
+sessions	0	dema-sessions-n	Number=Sing	dema	0
+sesterce	0	dema-sesterce-n	Number=Sing	dema	0
+sesterces	0	dema-sesterce-n	Number=Plur	dema	0
+sestertium	0	dema-sestertium-n	Number=Sing	dema	0
+sestertiums	0	dema-sestertium-n	Number=Plur	dema	0
+sestet	0	oewn-sestet-n	Number=Sing	dema	0
+sestets	0	oewn-sestet-n	Number=Plur	dema	0
+sestia	0	dema-sestia-n	Number=Sing	dema	0
+sestias	0	dema-sestia-n	Number=Plur	dema	0
+sestina	0	dema-sestina-n	Number=Sing	dema	0
+sestinas	0	dema-sestinas-n	Number=Sing	dema	0
+sestine	0	dema-sestine-n	Number=Sing	dema	0
+sestines	0	dema-sestine-n	Number=Plur	dema	0
+set	0	oewn-set-v	VerbForm=Inf	dema	0
+set	1	oewn-set-n	Number=Sing	dema	0
+set	2	oewn-set-a	Degree=Pos	dema	0
+seta	0	oewn-seta-n	Number=Sing	dema	0
+setaceous	0	oewn-setaceous-a	Degree=Pos	dema	0
+setaceously	0	dema-setaceously-r	Degree=Pos	dema	0
+setaceousness	0	dema-setaceous-n	Number=Plur	dema	0
+setae	0	dema-setae-n	Number=Sing	dema	0
+setaes	0	dema-setae-n	Number=Plur	dema	0
+setal	0	dema-setal-a	Degree=Pos	dema	0
+setally	0	dema-setal-r		dema	0
+setalness	0	dema-setal-n	Number=Plur	dema	0
+setaria	0	dema-setaria-n	Number=Sing	dema	0
+setarias	0	dema-setaria-n	Number=Plur	dema	0
+setas	0	oewn-seta-n	Number=Plur	dema	0
+setiform	0	dema-setiform-a	Degree=Pos	dema	0
+setiformly	0	dema-setiform-r		dema	0
+setiformness	0	dema-setiform-n	Number=Plur	dema	0
+setigerous	0	dema-setigerous-a	Degree=Pos	dema	0
+setigerously	0	dema-setigerous-r		dema	0
+setline	0	oewn-setline-n	Number=Sing	dema	0
+setlines	0	oewn-setline-n	Number=Plur	dema	0
+setly	0	dema-set-r		dema	0
+setness	0	oewn-set-n	Number=Plur	dema	0
+seton	0	dema-seton-n	Number=Sing	dema	0
+setons	0	dema-seton-n	Number=Plur	dema	0
+setose	0	oewn-setose-a	Degree=Pos	dema	0
+setosely	0	dema-setose-r		dema	0
+setoseness	0	dema-setose-n	Number=Plur	dema	0
+sets	0	oewn-set-v	Person=3+Tense=Pres	dema	0
+sets	1	oewn-set-n	Number=Plur	dema	0
+setscrew	0	oewn-setscrew-n	Number=Sing	dema	0
+setscrews	0	oewn-setscrew-n	Number=Plur	dema	0
+sett	0	oewn-sett-n	Number=Sing	dema	0
+settee	0	oewn-settee-n	Number=Sing	dema	0
+settees	0	oewn-settee-n	Number=Plur	dema	0
+setter	0	oewn-setter-n	Number=Sing	dema	0
+setters	0	oewn-set-n	Number=Plur	dema	0
+settest	0	oewn-set-a	Degree=Sup	dema	0
+setting	0	oewn-setting-n	Number=Sing	dema	0
+setting	1	dema-setting-v	VerbForm=Inf	dema	0
+settingly	0	dema-set-r		dema	0
+settings	0	oewn-setting-n	Number=Plur	dema	0
+settle	0	oewn-settle-v	VerbForm=Inf	dema	0
+settle	1	oewn-settle-n	Number=Sing	dema	0
+settleabilities	0	dema-settleability-n	Number=Plur	dema	0
+settleability	0	dema-settleability-n	Number=Sing	dema	0
+settleable	0	dema-settleable-a	Degree=Pos	dema	0
+settleableness	0	dema-settleable-n	Number=Plur	dema	0
+settleably	0	dema-settleable-r		dema	0
+settled	0	dema-settled-v	VerbForm=Inf	dema	0
+settledly	0	dema-settledly-r	Degree=Pos	dema	0
+settledness	0	oewn-settledness-n	Number=Sing	dema	0
+settlednesses	0	oewn-settledness-n	Number=Plur	dema	0
+settlement	0	oewn-settlement-n	Number=Sing	dema	0
+settlements	0	oewn-settlement-n	Number=Plur	dema	0
+settler	0	oewn-settler-n	Number=Sing	dema	0
+settlers	0	oewn-settle-n	Number=Plur	dema	0
+settles	0	oewn-settle-v	Person=3+Tense=Pres	dema	0
+settles	1	oewn-settle-n	Number=Plur	dema	0
+settling	0	dema-settling-v	VerbForm=Inf	dema	0
+settlingly	0	dema-settle-r		dema	0
+settlings	0	oewn-settlings-n	Number=Sing	dema	0
+settlor	0	oewn-settlor-n	Number=Sing	dema	0
+settlors	0	oewn-settlor-n	Number=Plur	dema	0
+settos	0	dema-settos-n	Number=Sing	dema	0
+settoses	0	dema-settos-n	Number=Plur	dema	0
+setts	0	oewn-sett-n	Number=Plur	dema	0
+setula	0	dema-setula-n	Number=Sing	dema	0
+setulae	0	dema-setulae-n	Number=Sing	dema	0
+setulaes	0	dema-setulae-n	Number=Plur	dema	0
+setulas	0	dema-setula-n	Number=Plur	dema	0
+setulose	0	dema-setulose-a	Degree=Pos	dema	0
+setulosely	0	dema-setulose-r		dema	0
+setuloseness	0	dema-setulose-n	Number=Plur	dema	0
+setup	0	oewn-setup-n	Number=Sing	dema	0
+setups	0	oewn-setup-n	Number=Plur	dema	0
+seven	0	oewn-seven-n	Number=Sing	dema	0
+seven	1	dema-seven-d		dema	0
+sevenbark	0	dema-sevenbark-n	Number=Sing	dema	0
+sevenbarks	0	dema-sevenbark-n	Number=Plur	dema	0
+sevenfold	0	oewn-sevenfold-a	Degree=Pos	dema	0
+sevenfold	1	oewn-sevenfold-r	Degree=Pos	dema	0
+sevenfoldly	0	oewn-sevenfold-r		dema	0
+sevenfoldness	0	dema-sevenfold-n	Number=Plur	dema	0
+sevens	0	oewn-sevens-n	Number=Sing	dema	0
+seventeen	0	oewn-seventeen-n	Number=Sing	dema	0
+seventeen	1	dema-seventeen-d		dema	0
+seventeens	0	oewn-seventeen-n	Number=Plur	dema	0
+seventeenth	0	oewn-seventeenth-a	Degree=Pos	dema	0
+seventeenth	1	oewn-seventeenth-n	Number=Sing	dema	0
+seventeenthly	0	dema-seventeenth-r		dema	0
+seventeenthness	0	oewn-seventeenth-n	Number=Plur	dema	0
+seventeenths	0	oewn-seventeenth-n	Number=Plur	dema	0
+seventh	0	oewn-seventh-a	Degree=Pos	dema	0
+seventh	1	oewn-seventh-n	Number=Sing	dema	0
+seventh	2	dema-seventh-r	Degree=Pos	dema	0
+seventher	0	oewn-seventh-a	Degree=Cmp	dema	0
+seventher	1	dema-seventh-r	Degree=Cmp	dema	0
+seventhest	0	oewn-seventh-a	Degree=Sup	dema	0
+seventhest	1	dema-seventh-r	Degree=Sup	dema	0
+seventhly	0	oewn-seventhly-r	Degree=Pos	dema	0
+seventhness	0	oewn-seventh-n	Number=Plur	dema	0
+sevenths	0	oewn-seventh-n	Number=Plur	dema	0
+seventies	0	oewn-seventy-n	Number=Plur	dema	0
+seventieth	0	oewn-seventieth-a	Degree=Pos	dema	0
+seventieth	1	oewn-seventieth-n	Number=Sing	dema	0
+seventiethly	0	dema-seventieth-r		dema	0
+seventiethness	0	oewn-seventieth-n	Number=Plur	dema	0
+seventieths	0	oewn-seventieth-n	Number=Plur	dema	0
+seventy	0	oewn-seventy-n	Number=Sing	dema	0
+seventy	1	dema-seventy-d		dema	0
+sever	0	oewn-sever-v	VerbForm=Inf	dema	0
+severable	0	oewn-severable-a	Degree=Pos	dema	0
+severably	0	dema-severable-r		dema	0
+several	0	dema-several-d		dema	0
+several	1	oewn-several-a	Degree=Pos	dema	0
+severally	0	oewn-severally-r	Degree=Pos	dema	0
+severalness	0	dema-several-n	Number=Plur	dema	0
+severalties	0	dema-severalties-n	Number=Sing	dema	0
+severalty	0	oewn-severalty-n	Number=Sing	dema	0
+severance	0	oewn-severance-n	Number=Sing	dema	0
+severances	0	oewn-severance-n	Number=Plur	dema	0
+severe	0	oewn-severe-a	Degree=Pos	dema	0
+severed	0	oewn-sever-v	Tense=Past	dema	0
+severely	0	oewn-severely-r	Degree=Pos	dema	0
+severeness	0	oewn-severeness-n	Number=Sing	dema	0
+severenesses	0	oewn-severeness-n	Number=Plur	dema	0
+severer	0	dema-severer-a	Degree=Pos	dema	0
+severerly	0	dema-severer-r		dema	0
+severest	0	dema-severest-a	Degree=Pos	dema	0
+severestly	0	dema-severest-r		dema	0
+severies	0	dema-severies-n	Number=Sing	dema	0
+severing	0	oewn-sever-v	VerbForm=Ger	dema	0
+severingly	0	dema-sever-r		dema	0
+severities	0	oewn-severity-n	Number=Plur	dema	0
+severity	0	oewn-severity-n	Number=Sing	dema	0
+severs	0	oewn-sever-v	Person=3+Tense=Pres	dema	0
+severy	0	dema-severy-n	Number=Sing	dema	0
+sew	0	oewn-sew-v	VerbForm=Inf	dema	0
+sewable	0	dema-sewable-a	Degree=Pos	dema	0
+sewableness	0	dema-sewable-n	Number=Plur	dema	0
+sewably	0	dema-sewable-r		dema	0
+sewage	0	oewn-sewage-n	Number=Sing	dema	0
+sewages	0	oewn-sewage-n	Number=Plur	dema	0
+sewan	0	dema-sewan-n	Number=Sing	dema	0
+sewans	0	dema-sewan-n	Number=Plur	dema	0
+sewed	0	dema-sewed-v	VerbForm=Inf	dema	0
+sewellel	0	oewn-sewellel-n	Number=Sing	dema	0
+sewellels	0	oewn-sewellel-n	Number=Plur	dema	0
+sewer	0	oewn-sewer-n-1	Number=Sing	dema	1
+sewer	1	oewn-sewer-n-2	Number=Sing	dema	1
+sewer	2	dema-sewer-v	VerbForm=Inf	dema	0
+sewerage	0	oewn-sewerage-n	Number=Sing	dema	0
+sewerages	0	oewn-sewerage-n	Number=Plur	dema	0
+sewered	0	dema-sewer-v	Tense=Past	dema	0
+sewering	0	dema-sewer-v	VerbForm=Ger	dema	0
+seweringly	0	dema-sewer-r		dema	0
+sewerless	0	dema-sewerless-a	Degree=Pos	dema	0
+sewerlessly	0	dema-sewerless-r		dema	0
+sewerlessness	0	dema-sewerless-n	Number=Plur	dema	0
+sewerlike	0	dema-sewerlike-a	Degree=Pos	dema	0
+sewerlikely	0	dema-sewerlike-r		dema	0
+sewerlikeness	0	dema-sewerlike-n	Number=Plur	dema	0
+sewers	0	oewn-sewer-n-1	Number=Plur	dema	1
+sewers	1	oewn-sewer-n-2	Number=Plur	dema	1
+sewing	0	oewn-sewing-n	Number=Sing	dema	0
+sewing	1	dema-sewing-v	VerbForm=Inf	dema	0
+sewingly	0	dema-sew-r		dema	0
+sewings	0	oewn-sewing-n	Number=Plur	dema	0
+sewn	0	dema-sewn-v	VerbForm=Inf	dema	0
+sews	0	oewn-sew-v	Person=3+Tense=Pres	dema	0
+sex	0	oewn-sex-n	Number=Sing	dema	0
+sex	1	oewn-sex-v	VerbForm=Inf	dema	0
+sexagenarian	0	oewn-sexagenarian-n	Number=Sing	dema	0
+sexagenarian	1	oewn-sexagenarian-a	Degree=Pos	dema	0
+sexagenarianly	0	dema-sexagenarian-r		dema	0
+sexagenarians	0	oewn-sexagenarian-n	Number=Plur	dema	0
+sexagenaries	0	dema-sexagenaries-n	Number=Sing	dema	0
+sexagenarily	0	dema-sexagenary-r		dema	0
+sexagenary	0	dema-sexagenary-a	Degree=Pos	dema	0
+sexagenary	1	dema-sexagenary-n	Number=Sing	dema	0
+sexagesimal	0	oewn-sexagesimal-a	Degree=Pos	dema	0
+sexagesimal	1	dema-sexagesimal-n	Number=Sing	dema	0
+sexagesimally	0	dema-sexagesimal-r		dema	0
+sexagesimals	0	dema-sexagesimal-n	Number=Plur	dema	0
+sexangular	0	dema-sexangular-a	Degree=Pos	dema	0
+sexangularly	0	dema-sexangular-r		dema	0
+sexavalent	0	dema-sexavalent-a	Degree=Pos	dema	0
+sexavalently	0	dema-sexavalent-r		dema	0
+sexcentenaries	0	dema-sexcentenaries-n	Number=Sing	dema	0
+sexcentenarily	0	dema-sexcentenary-r		dema	0
+sexcentenary	0	dema-sexcentenary-a	Degree=Pos	dema	0
+sexcentenary	1	dema-sexcentenary-n	Number=Sing	dema	0
+sexdecillion	0	dema-sexdecillion-n	Number=Sing	dema	0
+sexdecillion	1	dema-sexdecillion-a	Degree=Pos	dema	0
+sexdecillionly	0	dema-sexdecillion-r		dema	0
+sexdecillions	0	dema-sexdecillion-n	Number=Plur	dema	0
+sexed	0	oewn-sexed-a	Degree=Pos	dema	0
+sexed	1	dema-sexed-v	VerbForm=Inf	dema	0
+sexedly	0	dema-sexed-r		dema	0
+sexennial	0	dema-sexennial-a	Degree=Pos	dema	0
+sexennial	1	dema-sexennial-n	Number=Sing	dema	0
+sexennially	0	dema-sexennially-r	Degree=Pos	dema	0
+sexennialness	0	dema-sexennial-n	Number=Plur	dema	0
+sexennials	0	dema-sexennial-n	Number=Plur	dema	0
+sexer	0	oewn-sex-n	Number=Plur	dema	0
+sexers	0	oewn-sex-n	Number=Plur	dema	0
+sexes	0	oewn-sex-n	Number=Plur	dema	0
+sexes	1	oewn-sex-v	Person=3+Tense=Pres	dema	0
+sexfoil	0	dema-sexfoil-n	Number=Sing	dema	0
+sexfoils	0	dema-sexfoil-n	Number=Plur	dema	0
+sexier	0	dema-sexier-a	Degree=Pos	dema	0
+sexierly	0	dema-sexier-r		dema	0
+sexiest	0	dema-sexiest-a	Degree=Pos	dema	0
+sexiestly	0	dema-sexiest-r		dema	0
+sexily	0	dema-sexily-r	Degree=Pos	dema	0
+sexiness	0	oewn-sexiness-n	Number=Sing	dema	0
+sexinesses	0	oewn-sexiness-n	Number=Plur	dema	0
+sexing	0	oewn-sex-v	VerbForm=Ger	dema	0
+sexingly	0	dema-sex-r		dema	0
+sexism	0	oewn-sexism-n	Number=Sing	dema	0
+sexism	1	dema-sexism-a	Degree=Pos	dema	0
+sexismer	0	dema-sexism-a	Degree=Cmp	dema	0
+sexismest	0	dema-sexism-a	Degree=Sup	dema	0
+sexismly	0	dema-sexism-r		dema	0
+sexismness	0	oewn-sexism-n	Number=Plur	dema	0
+sexisms	0	oewn-sexism-n	Number=Plur	dema	0
+sexist	0	oewn-sexist-n	Number=Sing	dema	0
+sexist	1	oewn-sexist-a	Degree=Pos	dema	0
+sexistly	0	dema-sexist-r		dema	0
+sexistness	0	oewn-sexist-n	Number=Plur	dema	0
+sexists	0	oewn-sexist-n	Number=Plur	dema	0
+sexivalent	0	dema-sexivalent-a	Degree=Pos	dema	0
+sexivalently	0	dema-sexivalent-r		dema	0
+sexless	0	oewn-sexless-a	Degree=Pos	dema	0
+sexlessly	0	dema-sexlessly-r	Degree=Pos	dema	0
+sexlessness	0	oewn-sexlessness-n	Number=Sing	dema	0
+sexlessnesses	0	oewn-sexlessness-n	Number=Plur	dema	0
+sexological	0	dema-sexological-a	Degree=Pos	dema	0
+sexologically	0	dema-sexological-r		dema	0
+sexologies	0	dema-sexology-n	Number=Plur	dema	0
+sexologist	0	dema-sexologist-n	Number=Sing	dema	0
+sexologists	0	dema-sexologist-n	Number=Plur	dema	0
+sexology	0	dema-sexology-n	Number=Sing	dema	0
+sexpartite	0	dema-sexpartite-a	Degree=Pos	dema	0
+sexpartitely	0	dema-sexpartite-r		dema	0
+sexpartiteness	0	dema-sexpartite-n	Number=Plur	dema	0
+sexpot	0	oewn-sexpot-n	Number=Sing	dema	0
+sexpots	0	oewn-sexpot-n	Number=Plur	dema	0
+sext	0	oewn-sext-n	Number=Sing	dema	0
+sextain	0	dema-sextain-n	Number=Sing	dema	0
+sextains	0	dema-sextain-n	Number=Plur	dema	0
+sextan	0	dema-sextan-a	Degree=Pos	dema	0
+sextanly	0	dema-sextan-r		dema	0
+sextanness	0	dema-sextan-n	Number=Plur	dema	0
+sextant	0	oewn-sextant-n	Number=Sing	dema	0
+sextants	0	oewn-sextant-n	Number=Plur	dema	0
+sextern	0	dema-sextern-a	Degree=Pos	dema	0
+sextern	1	dema-sextern-n	Number=Sing	dema	0
+sexternly	0	dema-sextern-r		dema	0
+sexternness	0	dema-sextern-n	Number=Plur	dema	0
+sexterns	0	dema-sextern-n	Number=Plur	dema	0
+sextet	0	oewn-sextet-n	Number=Sing	dema	0
+sextets	0	oewn-sextet-n	Number=Plur	dema	0
+sextic	0	dema-sextic-a	Degree=Pos	dema	0
+sextic	1	dema-sextic-n	Number=Sing	dema	0
+sextically	0	dema-sextic-r		dema	0
+sexticness	0	dema-sextic-n	Number=Plur	dema	0
+sextics	0	dema-sextic-n	Number=Plur	dema	0
+sextile	0	dema-sextile-n	Number=Sing	dema	0
+sextiles	0	dema-sextile-n	Number=Plur	dema	0
+sextillion	0	oewn-sextillion-n	Number=Sing	dema	0
+sextillions	0	oewn-sextillion-n	Number=Plur	dema	0
+sextillionth	0	dema-sextillionth-a	Degree=Pos	dema	0
+sextillionth	1	dema-sextillionth-n	Number=Sing	dema	0
+sextillionthly	0	dema-sextillionth-r		dema	0
+sextillionthness	0	dema-sextillionth-n	Number=Plur	dema	0
+sextillionths	0	dema-sextillionth-n	Number=Plur	dema	0
+sexto	0	dema-sexto-n	Number=Sing	dema	0
+sextodecimo	0	dema-sextodecimo-n	Number=Sing	dema	0
+sextodecimoes	0	dema-sextodecimo-n	Number=Plur	dema	0
+sextodecimos	0	dema-sextodecimos-n	Number=Sing	dema	0
+sextoes	0	dema-sexto-n	Number=Plur	dema	0
+sextolet	0	dema-sextolet-n	Number=Sing	dema	0
+sextolets	0	dema-sextolet-n	Number=Plur	dema	0
+sexton	0	oewn-sexton-n	Number=Sing	dema	0
+sextons	0	oewn-sexton-n	Number=Plur	dema	0
+sextos	0	dema-sexto-n	Number=Plur	dema	0
+sexts	0	oewn-sext-n	Number=Plur	dema	0
+sextuple	0	dema-sextuple-n	Number=Sing	dema	0
+sextuple	1	oewn-sextuple-a	Degree=Pos	dema	0
+sextupled	0	dema-sextupled-v	VerbForm=Inf	dema	0
+sextupleded	0	dema-sextupled-v	Tense=Past	dema	0
+sextupleder	0	dema-sextupled-n	Number=Plur	dema	0
+sextupleders	0	dema-sextupled-n	Number=Plur	dema	0
+sextupleding	0	dema-sextupled-v	VerbForm=Ger	dema	0
+sextupledingly	0	dema-sextupled-r		dema	0
+sextupleds	0	dema-sextupled-v	Person=3+Tense=Pres	dema	0
+sextupleness	0	dema-sextuple-n	Number=Plur	dema	0
+sextuples	0	dema-sextuple-n	Number=Plur	dema	0
+sextuplet	0	oewn-sextuplet-n	Number=Sing	dema	0
+sextuplets	0	oewn-sextuplet-n	Number=Plur	dema	0
+sextuplicate	0	dema-sextuplicate-n	Number=Sing	dema	0
+sextuplicate	1	dema-sextuplicate-a	Degree=Pos	dema	0
+sextuplicate	2	dema-sextuplicate-v	VerbForm=Inf	dema	0
+sextuplicated	0	dema-sextuplicate-v	Tense=Past	dema	0
+sextuplicately	0	dema-sextuplicate-r		dema	0
+sextuplicates	0	dema-sextuplicate-n	Number=Plur	dema	0
+sextuplicates	1	dema-sextuplicate-v	Person=3+Tense=Pres	dema	0
+sextuplicating	0	dema-sextuplicate-v	VerbForm=Ger	dema	0
+sextupling	0	dema-sextupling-v	VerbForm=Inf	dema	0
+sextuplinged	0	dema-sextupling-v	Tense=Past	dema	0
+sextuplinger	0	dema-sextupling-n	Number=Plur	dema	0
+sextuplingers	0	dema-sextupling-n	Number=Plur	dema	0
+sextuplinging	0	dema-sextupling-v	VerbForm=Ger	dema	0
+sextuplingingly	0	dema-sextupling-r		dema	0
+sextuplings	0	dema-sextupling-v	Person=3+Tense=Pres	dema	0
+sextuply	0	dema-sextuple-r		dema	0
+sextus	0	dema-sextus-a	Degree=Pos	dema	0
+sextuser	0	dema-sextus-a	Degree=Cmp	dema	0
+sextusest	0	dema-sextus-a	Degree=Sup	dema	0
+sextusly	0	dema-sextus-r		dema	0
+sextusness	0	dema-sextus-n	Number=Plur	dema	0
+sexual	0	oewn-sexual-a	Degree=Pos	dema	0
+sexualisation	0	dema-sexualisation-n	Number=Sing	dema	0
+sexualisations	0	dema-sexualisation-n	Number=Plur	dema	0
+sexualities	0	oewn-sexuality-n	Number=Plur	dema	0
+sexuality	0	oewn-sexuality-n	Number=Sing	dema	0
+sexualization	0	dema-sexualization-n	Number=Sing	dema	0
+sexualizations	0	dema-sexualization-n	Number=Plur	dema	0
+sexualize	0	oewn-sexualize-v	VerbForm=Inf	dema	0
+sexualized	0	dema-sexualized-v	VerbForm=Inf	dema	0
+sexualizer	0	dema-sexualize-n	Number=Plur	dema	0
+sexualizers	0	dema-sexualize-n	Number=Plur	dema	0
+sexualizes	0	oewn-sexualize-v	Person=3+Tense=Pres	dema	0
+sexualizing	0	dema-sexualizing-v	VerbForm=Inf	dema	0
+sexualizingly	0	dema-sexualize-r		dema	0
+sexually	0	dema-sexual-r		dema	0
+sexualness	0	dema-sexual-n	Number=Plur	dema	0
+sexy	0	oewn-sexy-a	Degree=Pos	dema	0

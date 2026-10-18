@@ -69,7 +69,7 @@ internal sealed class LemmaEntry
 
         // One shared answer per sense, created once
         Candidates = Senses
-            .Select(s => new WordDetails(lemma, s.Pos, s.Meaning, s.Respelling))
+            .Select(s => new LegacyWord(lemma, s.Pos, s.Meaning, s.Respelling))
             .ToArray();
     }
 
@@ -142,7 +142,7 @@ internal sealed class LemmaEntry
     ///     Gets the answer each sense stands for, parallel to <see cref="Senses"/>: the lemma, the part of speech and,
     ///     for a heteronym, the pronunciation. Exactly one shared instance exists per sense of this entry instance.
     /// </summary>
-    public IReadOnlyList<WordDetails> Candidates { get; }
+    public IReadOnlyList<LegacyWord> Candidates { get; }
 
     /// <summary>
     ///     Gets a value indicating whether the lemma is a heteronym, that is, whether its senses have at least two

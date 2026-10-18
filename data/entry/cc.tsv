@@ -1,4 +1,5 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-ccm-n	ccm	n	0	1	1	dema
 oewn-CCRC-n	CCRC	n	0	1	1	oewn
 oewn-cc-a	cc	a	0	1	1	oewn
 oewn-cc-n	cc	n	0	1	1	oewn

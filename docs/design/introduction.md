@@ -131,11 +131,11 @@ The source code folder structure mirrors the packages, and the packages mirror t
 
 ```text
 src/DemaConsulting.WordSense/                      — core subsystem
-├── WordLexicon.cs, WordsBlob.cs                    — word-lexicon unit
+├── WordLexicon.cs, WordImage.cs, ImageFormat.cs   — word-lexicon unit
 ├── IWordSenseModel.cs (also WordSense, MirrorOptions), WordDetails.cs (also
 │   PartOfSpeech)                                   — word-sense-contracts unit
 ├── NamespaceDoc.cs                                 — namespace description for the generated API reference (no code)
-└── Resources/words.bin                             — embedded lexicon blob (resource of the word-lexicon unit)
+└── Resources/wordsense.img                         — embedded flat word image (resource of the word-lexicon unit)
 
 src/DemaConsulting.WordSense.Basic/                — basic subsystem
 ├── BasicWordSenseModel.cs                          — basic-word-sense-model unit

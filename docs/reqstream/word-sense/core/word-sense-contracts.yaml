@@ -80,13 +80,13 @@ sections:
 
               - id: WordSense-Core-WordSenseContracts-Details
                 title: >-
-                  WordDetails shall describe one sense by lemma, part of speech, optional meaning and optional
-                  respelling, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
+                  WordDetails shall describe one analysis by optional sense id, lemma, part of speech and inflection
+                  features, and PartOfSpeech shall name ten parts of speech: the eight traditional ones,
                   determiner and auxiliary.
                 tags: [unit]
                 justification: |
-                  Callers (for example a text-to-speech front end) need the part of speech first, then the meaning and
-                  respelling that fix the pronunciation of a heteronym. The articles and possessives (the, a, his) are
+                  Callers (for example a text-to-speech front end) need the part of speech first, then the sense id
+                  that fixes the pronunciation of a heteronym. The articles and possessives (the, a, his) are
                   among the most frequent words of English and fit none of the eight traditional values; modal and
                   primary auxiliaries (will, can, is, has) are told apart from the content verb and noun senses by
                   a trailing auxiliary sense.
@@ -94,9 +94,7 @@ sections:
                   - WordSenseContracts_WordDetails_Construct_ExposesMembers
                   - WordSenseContracts_WordDetails_SameValues_AreEqual
                   - WordSenseContracts_PartOfSpeech_Values_AreTheTenClasses
-                  - WordsBlob_Read_DeterminerSense_IsAccepted
-                  - WordsBlob_Read_AuxiliarySense_IsAccepted
-                  - WordLexicon_Words_Auxiliaries_HaveTrailingAuxiliarySense
+                  - WordLexicon_Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis
 
               - id: WordSense-Core-WordSenseContracts-Independent
                 title: The core assembly shall reference no ONNX Runtime, weights or vector library.

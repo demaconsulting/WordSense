@@ -7,7 +7,7 @@ This note records the split of WordSense into five NuGet packages and the rules 
 Package dependencies:
 
 - `DemaConsulting.WordSense` (core): `IWordSenseModel`, `MirrorOptions`, `WordSense`,
-  `WordDetails`, `PartOfSpeech` and `WordLexicon.Words`. Depends on nothing.
+  `WordDetails`, `PartOfSpeech` and `WordLexicon`. Depends on nothing.
 - `DemaConsulting.WordSense.Basic`: `BasicWordSenseModel` with a small embedded statistical table (part-of-speech
   tagger and context cues); no files.
   Depends on the core.
@@ -35,8 +35,8 @@ The namespace of each package equals the package name.
   model files (dense `WSX1` format) and is checked against their SHA-256 digests.
 - **Model files live in `model/<model-id>/`**, which also names the mirror folder, the per-user store folder and the
   GitHub LFS path. See `model-provenance.md`.
-- **The word table is shared.** `WordLexicon.Words` holds the senses of all known surface forms, including the
-  inflections that the builder `words` command materializes at build time, so no model needs morphology at run time.
+- **The word table is shared.** `WordLexicon` serves the analyses of all known spellings, including the
+  inflections that the builder `compile-image` command materializes at build time, so no model needs morphology at run time.
 - **Lifetime.** `IWordSenseModel` is `IDisposable`: the model owns the ONNX session and the downloader state, so it owns
   the lifetime. The Basic model's `Dispose` releases nothing but honors the same contract. Disposing during
   `EnsureModelAsync` cancels the download (`OperationCanceledException`).

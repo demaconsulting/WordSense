@@ -160,6 +160,10 @@ reviews:
       - "data/README.md"
       - "data/PROVENANCE.md"
       - "data/MAPPING.md"
+      - "tools/WordSense.Builder/Data/DataTables.cs"
+      - "tools/WordSense.Builder/Data/FeatureInference.cs"
+      - "tools/WordSense.Builder/Data/FormBootstrap.cs"
+      - "tools/WordSense.Builder/Data/ImageCompiler.cs"
       - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
       - "test/WordSense.Builder.Tests/Data/DataFixture.cs"
 
@@ -242,9 +246,9 @@ reviews:
       - "docs/design/word-sense/core/word-lexicon.md"
       - "docs/verification/word-sense/core/word-lexicon.md"
       - "src/DemaConsulting.WordSense/WordLexicon.cs"
-      - "src/DemaConsulting.WordSense/WordsBlob.cs"
+      - "src/DemaConsulting.WordSense/WordImage.cs"
+      - "src/DemaConsulting.WordSense/ImageFormat.cs"
       - "test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs"
-      - "test/DemaConsulting.WordSense.Tests/WordsBlobTests.cs"
 
   # WordSense-Core-WordSenseContracts Review (one per unit)
   - id: WordSense-Core-WordSenseContracts

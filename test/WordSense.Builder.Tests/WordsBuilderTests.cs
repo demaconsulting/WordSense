@@ -1,4 +1,5 @@
 using DemaConsulting.WordSense;
+using WordSense.Builder.Data;
 
 namespace WordSense.Builder.Tests;
 
@@ -59,7 +60,7 @@ public sealed class WordsBuilderTests : IDisposable
             table["bank"].Select(d => d.PartOfSpeech));
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Pronoun], table["banks"].Select(d => d.PartOfSpeech));
         Assert.All(table["banks"].Take(2), d => Assert.Equal("bank", d.Lemma));
-        Assert.Equal(new WordDetails("banks", PartOfSpeech.Pronoun, null, null), table["banks"][2]);
+        Assert.Equal(new LegacyWord("banks", PartOfSpeech.Pronoun, null, null), table["banks"][2]);
         Assert.Equal(PartOfSpeech.Conjunction, Assert.Single(table["albeit"]).PartOfSpeech);
         Assert.Equal(PartOfSpeech.Determiner, Assert.Single(table["the"]).PartOfSpeech);
         Assert.Equal(
@@ -134,8 +135,8 @@ public sealed class WordsBuilderTests : IDisposable
 
         Assert.Equal(3, table["bowed"].Length);
         Assert.Same(table["bow"][1], table["bowed"][0]);
-        Assert.Equal(new WordDetails("bowed", PartOfSpeech.Adjective, null, null), table["bowed"][1]);
-        Assert.Equal(new WordDetails("bowed", PartOfSpeech.Noun, null, null), table["bowed"][2]);
+        Assert.Equal(new LegacyWord("bowed", PartOfSpeech.Adjective, null, null), table["bowed"][1]);
+        Assert.Equal(new LegacyWord("bowed", PartOfSpeech.Noun, null, null), table["bowed"][2]);
         Assert.Equal(3, table["bow"].Length);
     }
 
@@ -236,26 +237,11 @@ public sealed class WordsBuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     Write returns the word count and the file is the table that Build produced.
+    ///     The default output of the image compiler is the resource of the core package.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_WordsBuilder_Write_WritesBuiltTable()
+    public void WordSenseBuilder_ImageCompiler_DefaultOutput_IsCoreResource()
     {
-        _dir.Write("corpus/senses/s.tsv", TestDirectory.SensesHeader + "bank\tnoun\tnoun\t\t\nbank\tverb\tverb\t\t\n");
-        var target = Path.Combine(_dir.Root, "out", "words.bin");
-
-        var count = WordsBuilder.Write(Path.Combine(_dir.Root, "corpus"), target);
-
-        Assert.Equal(1, count);
-        Assert.Equal(WordsBlobWriter.Write(WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"))), File.ReadAllBytes(target));
-    }
-
-    /// <summary>
-    ///     The default output is the resource of the core package.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_WordsBuilder_DefaultOutput_IsCoreResource()
-    {
-        Assert.Equal("src/DemaConsulting.WordSense/Resources/words.bin", WordsBuilder.DefaultOutput);
+        Assert.Equal("src/DemaConsulting.WordSense/Resources/wordsense.img", ImageCompiler.DefaultOutput);
     }
 }

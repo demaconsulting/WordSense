@@ -14,10 +14,11 @@ namespace WordSense.Builder;
 ///     directory):
 ///     </para>
 ///     <list type="bullet">
-///     <item><description><c>words [--corpus DIR] [--output FILE]</c> writes the word table of the core package.</description></item>
+///     <item><description><c>compile-image [--data DIR] [--corpus DIR] [--output FILE]</c> compiles the data tables into the word image of the core package (<c>Resources/wordsense.img</c>).</description></item>
+///     <item><description><c>bootstrap-forms [--data DIR] [--corpus DIR]</c> derives the form tables of the data folder from the legacy corpus once.</description></item>
 ///     <item><description><c>import-moby --input FILE [--corpus DIR] [--output FILE]</c> imports the pinned Moby Part-of-Speech II list into the dictionary word list of the corpus.</description></item>
 ///     <item><description><c>weights &lt;modelId&gt; [--corpus DIR] [--repository DIR]</c> trains the weights of an ONNX model (minilm, bert-base-cased) and writes them to its package.</description></item>
-///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file.</description></item>
+///     <item><description><c>evaluate &lt;modelId&gt; [--corpus DIR] [--repository DIR] [--output FILE] [--table FILE] [--outcomes FILE]</c> measures a shipped model (minilm, bert-base-cased, basic); <c>--table</c> updates the row of the model in the model comparison table file; <c>--outcomes</c> writes the answer for every sentence.</description></item>
 ///     <item><description><c>ud-counts [--ud DIR] [--corpus DIR] [--output DIR]</c> downloads and verifies the pinned treebank files and writes the count files of <c>corpus/ud</c>.</description></item>
 ///     <item><description><c>train-basic [--corpus DIR] [--repository DIR] [--ud DIR] [--refresh-ud true] [--output FILE]</c> retrains the basic model completely and writes its table; it regenerates the treebank counts first when they are missing or <c>--refresh-ud true</c> is given.</description></item>
 ///     <item><description><c>tune-basic [--corpus DIR] [--repository DIR] [--ud DIR]</c> scores the hyper-parameter grid on the treebank development file and the anchor dev sentences; it writes nothing.</description></item>
@@ -30,7 +31,7 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: compile-image, bootstrap-forms, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
 
     /// <summary>
     ///     Runs the builder.
@@ -72,10 +73,11 @@ internal static class Program
             var corpus = options.TryGetValue("corpus", out var c) ? Path.GetFullPath(c) : Path.Combine(repository, "corpus");
             switch (args[0])
             {
-                case "words":
-                    var wordsOutput = options.TryGetValue("output", out var w) ? w : Path.Combine(repository, WordsBuilder.DefaultOutput);
-                    var count = WordsBuilder.Write(corpus, wordsOutput);
-                    output.WriteLine($"Wrote {count.ToString(CultureInfo.InvariantCulture)} words to {wordsOutput}.");
+                case "compile-image":
+                    var dataFolder = options.TryGetValue("data", out var cd) ? Path.GetFullPath(cd) : Path.Combine(repository, "data");
+                    var imageOutput = options.TryGetValue("output", out var imo) ? imo : Path.Combine(repository, Data.ImageCompiler.DefaultOutput);
+                    var image = Data.ImageCompiler.Compile(dataFolder, corpus, imageOutput);
+                    output.WriteLine($"Wrote the word image to {imageOutput}: {image.Spellings.ToString(CultureInfo.InvariantCulture)} spellings, {image.Analyses.ToString(CultureInfo.InvariantCulture)} analyses, {image.Entries.ToString(CultureInfo.InvariantCulture)} entries, {image.Bytes.ToString(CultureInfo.InvariantCulture)} bytes.");
                     return 0;
                 case "import-moby":
                     var mobyInput = Require(options, "input");
@@ -102,7 +104,7 @@ internal static class Program
                     output.Write(await BasicTuner.RunAsync(corpus, tuneCache, output, cancellationToken).ConfigureAwait(false));
                     return 0;
                 case "evaluate":
-                    var result = await Evaluator.RunAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken).ConfigureAwait(false);
+                    var result = await Evaluator.RunAsync(repository, corpus, ModelCatalog.Find(Require(options, "model")), output, cancellationToken, options.GetValueOrDefault("outcomes")).ConfigureAwait(false);
                     var text = result.Render();
                     output.Write(text);
                     if (options.TryGetValue("output", out var report))
@@ -124,8 +126,8 @@ internal static class Program
                 case "coverage":
                     var textDirectory = Path.GetFullPath(Require(options, "text"));
                     var topCount = options.TryGetValue("top", out var tp) ? int.Parse(tp, CultureInfo.InvariantCulture) : 100;
-                    var table = WordsBuilder.Build(corpus);
-                    var coverage = CoverageReport.Read(textDirectory, table.ContainsKey).Render(topCount);
+                    var table = DemaConsulting.WordSense.WordLexicon.Current;
+                    var coverage = CoverageReport.Read(textDirectory, w => table.TryLookup(w, out _)).Render(topCount);
                     output.Write(coverage);
                     if (options.TryGetValue("output", out var coverageFile))
                     {
@@ -137,6 +139,11 @@ internal static class Program
                     return RunImportOewn(options, repository, output);
                 case "validate-data":
                     return RunValidateData(options, repository, output, error);
+                case "bootstrap-forms":
+                    var bootData = options.TryGetValue("data", out var bd) ? Path.GetFullPath(bd) : Path.Combine(repository, "data");
+                    var boot = Data.FormBootstrap.Run(bootData, corpus);
+                    output.WriteLine($"Bootstrapped {boot.Spellings.ToString(CultureInfo.InvariantCulture)} spellings: {boot.Forms.ToString(CultureInfo.InvariantCulture)} analyses ({boot.Analyses.ToString(CultureInfo.InvariantCulture)} legacy answers), {boot.ScopeRows.ToString(CultureInfo.InvariantCulture)} scope rows, {boot.NewEntries.ToString(CultureInfo.InvariantCulture)} new entries.");
+                    return 0;
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
                     var lemmas = AppendixGenerator.Write(corpus, appendix);
@@ -154,7 +161,7 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite", "outcomes"], StringComparer.Ordinal);
 
     private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)
     {

@@ -21,7 +21,7 @@ sections:
               - WordSense-Core-WordLexicon-LazyLoad
               - WordSense-Core-WordLexicon-Format
             tests:
-              - WordLexicon_Words_KnownWord_ReturnsItsSenses
+              - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
 
           - id: WordSense-Core-Contracts
             title: >-

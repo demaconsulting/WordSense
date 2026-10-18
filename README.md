@@ -19,7 +19,7 @@ over 140,000 common words. Only where a word has several meanings does a model c
 
 - 📖 **Dictionary** - Parts of speech for over 140,000 common words
 - 🧠 **Context Aware** - Picks the part of speech of a word from its sentence
-- 🔊 **Pronunciation** - Respellings for heteronyms like "bow" and "read"
+- 🔊 **Pronunciation** - Sense ids for heteronyms like "bow" and "read"
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1
 - 📦 **Layered Packages** - Small core, dependency-free Basic, optional ONNX models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests
@@ -67,11 +67,11 @@ await model.EnsureModelAsync();
 var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
 var results = await model.ClassifyAsync(words);
 
-// Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
+// Print the part of speech (or unknown), the confidence and, for a heteronym, the sense id
 foreach (var result in results)
 {
     var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-    var say = result.Details?.Respelling ?? "";
+    var say = result.Details?.SenseId ?? "";
     Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
 }
 ```
@@ -87,16 +87,16 @@ an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
 his       Determiner   1.00
-bow       Noun         0.78  boh
+bow       Noun         0.78  bow#weapon
 at        Preposition  1.00
 a         Determiner   1.00
 deer      Noun         1.00
 so        Conjunction  0.61
 we        Pronoun      1.00
 will      Auxiliary    1.00
-record    Verb         1.00  rih-KORD
+record    Verb         1.00  record#verb
 a         Determiner   1.00
-record    Noun         1.00  REK-urd
+record    Noun         1.00  record#noun
 ```
 
 Output with the `MiniLM` model:
@@ -110,16 +110,16 @@ an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
 his       Determiner   1.00
-bow       Noun         1.00  boh
+bow       Noun         1.00  bow#weapon
 at        Preposition  0.50
 a         Determiner   1.00
 deer      Noun         1.00
 so        Adverb       0.17
 we        Pronoun      1.00
 will      Verb         0.50
-record    Verb         1.00  rih-KORD
+record    Verb         1.00  record#verb
 a         Determiner   1.00
-record    Noun         1.00  REK-urd
+record    Noun         1.00  record#noun
 ```
 
 Output with the `BertBaseCased` model:
@@ -133,19 +133,19 @@ an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
 his       Determiner   1.00
-bow       Noun         1.00  boh
+bow       Noun         1.00  bow#weapon
 at        Preposition  0.50
 a         Determiner   1.00
 deer      Noun         1.00
 so        Adverb       0.17
 we        Pronoun      1.00
 will      Verb         0.50
-record    Verb         0.85  rih-KORD
+record    Verb         0.85  record#verb
 a         Determiner   1.00
-record    Noun         0.35  REK-urd
+record    Noun         0.35  record#noun
 ```
 
-The heteronyms `bow` and `record` get their respelling. A word with one meaning is answered with confidence 1; a word
+The heteronyms `bow` and `record` get their sense id. A word with one meaning is answered with confidence 1; a word
 with several meanings gets its best sense, and a low confidence marks a guess (for example `so`), so read the
 confidence of the model you use. The modal and helping verbs (`will`, `can`, `is`, `have`) have an `Auxiliary` sense that
 only the `Basic` model answers. The confidences shown for the encoder models are approximate: they differ slightly

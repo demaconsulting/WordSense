@@ -89,7 +89,7 @@ The README sample is extracted by marker from `README.md` and compared with the 
 after normalizing line
 endings and trailing white space. The set of markers must equal the set of checked samples. The sample runs against
 each model (a stand-in model class wraps Basic, or the committed MiniLM or BertBaseCased model) and gives the output
-documented for it. The word, part of speech and respelling of every output line must match the README exactly; the
+documented for it. The word, part of speech and sense id of every output line must match the README exactly; the
 confidence is compared numerically, within 0.01 for Basic (deterministic managed code) and within 0.10 for the encoder
 models, whose int8 inference differs slightly between CPUs and operating systems. The README is the single source of
 truth that the tests parse. The two commented alternative lines are checked as text and their model classes are created.

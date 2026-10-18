@@ -1,40 +1,39 @@
 namespace DemaConsulting.WordSense;
 
 /// <summary>
-///     One possible sense of a word: its lemma, its part of speech and, for a heteronym, its pronunciation meaning.
+///     One possible analysis of a written word: the sense it stands for (when the word is a trained one), its lemma, its
+///     part of speech and its grammatical features.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     A lemma is the dictionary base form of a word, so the word <c>records</c> has the lemma <c>record</c>. A
-///     lemma is a heteronym when its senses have at least two distinct meanings that are pronounced differently, such
-///     as <c>lead</c> (to guide) and <c>lead</c> (the metal); only then do <see cref="Meaning"/> and
-///     <see cref="Respelling"/> carry values.
+///     A lemma is the dictionary base form of a word, so the word <c>records</c> has the lemma <c>record</c>. The
+///     <see cref="SenseId"/> names one class of the coarse sense inventory of the shipped models, for example
+///     <c>lead#metal</c> or <c>read#past</c>; it is <see langword="null"/> for an analysis that has no sense, which is the
+///     case for most words. Treat a sense id as an opaque, stable key (for example the key of your own pronunciation
+///     lexicon).
 ///     </para>
 ///     <para>
-///     For speech synthesis, key your own pronunciation lexicon on the pair (<see cref="Lemma"/>,
-///     <see cref="Meaning"/>): the meaning is the stable value and the respelling is a human-readable hint.
+///     <see cref="Features"/> lists the grammatical features of the form as <c>Feature=Value</c> items joined by
+///     <c>+</c> in a fixed order, for example <c>Number=Plur</c> for <c>records</c> as a noun or
+///     <c>Person=3+Tense=Pres</c> for <c>records</c> as a verb; it is empty when the features are not known.
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     foreach (WordDetails sense in WordLexicon.Words["lead"])
+///     foreach (WordDetails sense in WordLexicon.Lookup("lead"))
 ///     {
-///         Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, {sense.Meaning ?? "-"}, {sense.Respelling ?? "-"}");
+///         Console.WriteLine($"{sense.SenseId ?? "-"}: {sense.Lemma}, {sense.PartOfSpeech}, {sense.Features}");
 ///     }
 ///     </code>
 /// </example>
-/// <param name="Lemma">The lower-case base form of the word, for example <c>record</c> for <c>records</c>.</param>
+/// <param name="SenseId">
+///     The identifier of the sense (the class id, <c>lemma#label</c>), or <see langword="null"/> when the analysis has no
+///     sense.
+/// </param>
+/// <param name="Lemma">The base form of the word, for example <c>record</c> for <c>records</c>.</param>
 /// <param name="PartOfSpeech">The part of speech.</param>
-/// <param name="Meaning">
-///     A short identifier of the meaning that determines the pronunciation, for example <c>bend</c> or <c>weapon</c>
-///     for <c>bow</c>, or <see langword="null"/> when the lemma is not a heteronym. Lower-case ASCII letters, digits
-///     and hyphens, starting with a letter.
-/// </param>
-/// <param name="Respelling">
-///     A plain-letter respelling of the pronunciation (for example <c>REK-urd</c> for the noun <c>record</c>), or
-///     <see langword="null"/> when there is none. ASCII letters, hyphens and apostrophes only; it is not IPA.
-/// </param>
-public sealed record WordDetails(string Lemma, PartOfSpeech PartOfSpeech, string? Meaning, string? Respelling);
+/// <param name="Features">The grammatical features, or an empty string when they are not known.</param>
+public sealed record WordDetails(string? SenseId, string Lemma, PartOfSpeech PartOfSpeech, string Features);
 
 /// <summary>
 ///     The part of speech of a word.

@@ -528,6 +528,7 @@ internal sealed partial class DataValidator
         CheckSynsets();
         CheckSenses();
         CheckExamples();
+        CheckForms();
     }
 
     private void CheckEntries()
@@ -645,9 +646,87 @@ internal sealed partial class DataValidator
             }
         }
 
-        foreach (var entry in Rows("entry").Where(r => !positions.ContainsKey(r[0])))
+        // Only an entry of the Open English WordNet source must have a sense; a project entry may be a bare lemma and
+        // part of speech that exists only so that forms can refer to it
+        foreach (var entry in Rows("entry").Where(r => r[6] == OewnSource && !positions.ContainsKey(r[0])))
         {
             Report(Path.Combine(_root, "entry"), 0, "sense", $"Entry '{entry[0]}' has no sense.");
+        }
+    }
+
+    private const string OewnSource = "oewn";
+
+    // ---- forms ----
+
+    private void CheckForms()
+    {
+        if (!_tables.TryGetValue("form", out var forms))
+        {
+            return;
+        }
+
+        var entryPos = Index(Rows("entry"), 0, 2);
+        var classKind = Index(Rows("coarse_class"), 0, 4);
+        var classPos = Index(Rows("coarse_class"), 0, 3);
+        var ranks = new Dictionary<string, HashSet<int>>(StringComparer.Ordinal);
+        foreach (var file in forms.Files)
+        {
+            for (var i = 0; i < file.Rows.Count; i++)
+            {
+                var row = file.Rows[i];
+                var rank = int.Parse(row[1], CultureInfo.InvariantCulture);
+                if (!ranks.TryGetValue(row[0], out var set))
+                {
+                    ranks[row[0]] = set = [];
+                }
+
+                set.Add(rank);
+                if (row[5] is not ("0" or "1"))
+                {
+                    Report(file.Path, i + 2, "form", $"{row[0]}#{row[1]}: reviewed must be 0 or 1.");
+                }
+            }
+        }
+
+        foreach (var (spelling, set) in ranks.OrderBy(p => p.Key, StringComparer.Ordinal))
+        {
+            if (!set.OrderBy(r => r).SequenceEqual(Enumerable.Range(0, set.Count)))
+            {
+                Report(Path.Combine(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
+            }
+        }
+
+        if (!_tables.TryGetValue("form_sense_scope", out var scopes))
+        {
+            return;
+        }
+
+        var formEntry = new Dictionary<(string, int), string>();
+        foreach (var row in Rows("form"))
+        {
+            formEntry[(row[0], int.Parse(row[1], CultureInfo.InvariantCulture))] = row[2];
+        }
+
+        foreach (var file in scopes.Files)
+        {
+            for (var i = 0; i < file.Rows.Count; i++)
+            {
+                var row = file.Rows[i];
+                if (!formEntry.TryGetValue((row[0], int.Parse(row[1], CultureInfo.InvariantCulture)), out var entry))
+                {
+                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: there is no such analysis in the form table.");
+                    continue;
+                }
+
+                if (classKind.GetValueOrDefault(row[2]) == "unmapped")
+                {
+                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: class '{row[2]}' is an unmapped bucket and cannot be an answer.");
+                }
+                else if (entryPos.TryGetValue(entry, out var ep) && classPos.TryGetValue(row[2], out var cp) && ep != cp)
+                {
+                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: class '{row[2]}' has part of speech '{cp}' but entry '{entry}' has '{ep}'.");
+                }
+            }
         }
     }
 

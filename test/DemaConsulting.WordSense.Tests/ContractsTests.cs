@@ -13,7 +13,7 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_WordSense_SameValues_AreEqual()
     {
-        var details = new WordDetails("record", PartOfSpeech.Noun, null, null);
+        var details = new WordDetails("record#noun", "record", PartOfSpeech.Noun, "Number=Sing");
 
         Assert.Equal(new WordSense("record", details, 0.5), new WordSense("record", details, 0.5));
         Assert.NotEqual(new WordSense("record", details, 0.5), new WordSense("record", details, 0.6));
@@ -71,8 +71,9 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_WordDetails_SameValues_AreEqual()
     {
-        Assert.Equal(new WordDetails("record", PartOfSpeech.Noun, "a", "REK-urd"), new WordDetails("record", PartOfSpeech.Noun, "a", "REK-urd"));
-        Assert.NotEqual(new WordDetails("record", PartOfSpeech.Noun, null, null), new WordDetails("record", PartOfSpeech.Verb, null, null));
+        Assert.Equal(new WordDetails("record#noun", "record", PartOfSpeech.Noun, "Number=Sing"), new WordDetails("record#noun", "record", PartOfSpeech.Noun, "Number=Sing"));
+        Assert.NotEqual(new WordDetails(null, "record", PartOfSpeech.Noun, string.Empty), new WordDetails(null, "record", PartOfSpeech.Verb, string.Empty));
+        Assert.NotEqual(new WordDetails("record#noun", "record", PartOfSpeech.Noun, string.Empty), new WordDetails(null, "record", PartOfSpeech.Noun, string.Empty));
     }
 
     /// <summary>
@@ -162,12 +163,14 @@ public class ContractsTests
     [Fact]
     public void WordSenseContracts_WordDetails_Construct_ExposesMembers()
     {
-        var details = new WordDetails("record", PartOfSpeech.Verb, "verb", "rih-KORD");
+        var details = new WordDetails("record#verb", "record", PartOfSpeech.Verb, "VerbForm=Inf");
 
+        Assert.Equal("record#verb", details.SenseId);
         Assert.Equal("record", details.Lemma);
         Assert.Equal(PartOfSpeech.Verb, details.PartOfSpeech);
-        Assert.Equal("verb", details.Meaning);
-        Assert.Equal("rih-KORD", details.Respelling);
+        Assert.Equal("VerbForm=Inf", details.Features);
+        Assert.Null(typeof(WordDetails).GetProperty("Meaning"));
+        Assert.Null(typeof(WordDetails).GetProperty("Respelling"));
     }
 
     /// <summary>

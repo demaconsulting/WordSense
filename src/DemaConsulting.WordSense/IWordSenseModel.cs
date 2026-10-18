@@ -76,8 +76,8 @@ namespace DemaConsulting.WordSense;
 ///     is (see the remarks of <see cref="EnsureModelAsync"/>).
 ///     Result content: each element of the result has <see cref="WordSense.Word"/> equal to the input element at the
 ///     same index (as given, not lower-cased); <see cref="WordSense.Details"/> comes from
-///     <c>WordLexicon.Words[key]</c> where the key is the word lower-cased (<c>ToLowerInvariant()</c>) with the curly
-///     apostrophe U+2019 replaced by <c>'</c>; the shipped models do exactly that, and an implementation should too, so
+///     <c>WordLexicon.View</c> semantics: the key is the word lower-cased (<c>ToLowerInvariant()</c>) with the curly
+///     apostrophe U+2019 replaced by <c>'</c> (that is what <see cref="WordLexicon.Lookup"/> does after an exact match); the shipped models do exactly that, and an implementation should too, so
 ///     that the same text finds the same candidates with every model (the candidate senses of a word are the entries of
 ///     the lexicon; an implementation must not invent others). Cancellation: honor the token (check it before the work
 ///     starts and between steps). <see cref="EnsureModelAsync"/>: idempotent (calling it again after it succeeded is
@@ -97,7 +97,7 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
-///     to <see cref="WordLexicon.Words"/> takes about 120 ms and about 43 MiB, and happens once per process for every
+///     to <see cref="WordLexicon"/> takes about 55 ms and about 15 MiB, and happens once per process for every
 ///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
 ///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first classification that needs
 ///     it, and <see cref="EnsureModelAsync"/> reads and hashes every model file once per instance (about 30 ms for the
@@ -206,7 +206,7 @@ public interface IWordSenseModel : IDisposable
     ///     elements of their own (<c>"race"</c> then <c>"."</c>, never <c>"race."</c>).
     ///     </para>
     ///     <para>
-    ///     Each word is lower-cased and looked up in <see cref="WordLexicon.Words"/>; the curly apostrophe (U+2019) is
+    ///     Each word is lower-cased and looked up in <see cref="WordLexicon"/>; the curly apostrophe (U+2019) is
     ///     read as <c>'</c>. A word without an entry is unknown: <see cref="WordSense.Details"/> is null and the
     ///     confidence is 0. A word with one sense is answered with confidence 1. A word with several senses is resolved
     ///     from its context; how the context is used, and what the confidence means, is defined by each model package
@@ -321,13 +321,13 @@ public interface IWordSenseModel : IDisposable
 ///     score, not a calibrated probability: compare it against a threshold you choose and treat lower values as
 ///     uncertain; <see cref="Details"/> still holds the best sense when the confidence is low. Below your threshold,
 ///     treat the word as unresolved or low confidence: fall back to handling that does not depend on
-///     <see cref="WordDetails.Meaning"/> (for example your default pronunciation), or use <see cref="Details"/> only as
+///     <see cref="WordDetails.SenseId"/> (for example your default pronunciation), or use <see cref="Details"/> only as
 ///     a guess (for example show it marked as uncertain).
 ///     </para>
 /// </remarks>
 /// <example>
 ///     <code>
-///     WordSense sense = new("barks", new WordDetails("bark", PartOfSpeech.Verb, null, null), 0.93);
+///     WordSense sense = new("barks", new WordDetails("bark#verb", "bark", PartOfSpeech.Verb, "Person=3+Tense=Pres"), 0.93);
 ///     Console.WriteLine($"{sense.Word} is a {sense.Details?.PartOfSpeech} with confidence {sense.Confidence:P0}");
 ///
 ///     // Keep only confident answers. A threshold belongs to one model: 0.8 is the recommended start for each of

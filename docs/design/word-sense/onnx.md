@@ -24,7 +24,7 @@ The subsystem contains seven units:
 
 It exposes the abstract `OnnxWordSenseModel` (implements `IWordSenseModel`, which is `IDisposable`) with the properties
 `HiddenSize` and `ModelId`. Its constructor is private protected, so only the WordSense model packages can derive.
-It consumes the core contracts and `WordLexicon.Words`, the ONNX Runtime inference API, HTTP(S) for downloads, the
+It consumes the core contracts and the `WordLexicon` lookup, the ONNX Runtime inference API, HTTP(S) for downloads, the
 file system for the model store, and the embedded weights of the derived model's assembly. All other members are
 internal and visible to the MiniLM and BertBaseCased packages, the builder and the test projects.
 

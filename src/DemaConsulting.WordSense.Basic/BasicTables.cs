@@ -109,7 +109,7 @@ internal sealed class LemmaCue
         ArgumentNullException.ThrowIfNull(details);
         for (var i = 0; i < Senses.Length; i++)
         {
-            if (Senses[i].PartOfSpeech == details.PartOfSpeech && string.Equals(Senses[i].Meaning, details.Meaning, StringComparison.Ordinal))
+            if (Senses[i].PartOfSpeech == details.PartOfSpeech && string.Equals(Senses[i].Meaning, WordLexicon.MeaningOf(details), StringComparison.Ordinal))
             {
                 return i;
             }

@@ -22,12 +22,12 @@ The subsystem contains six units:
 - **SenseFusion**: the combination of the posterior and the cue scores into sense probabilities.
 
 `PosTag` (the tag constants) is a small helper of the tagger and the tables. The subsystem references the core package
-only and uses only the public `WordLexicon.Words`.
+only and uses only the `WordLexicon` lookup.
 
 ### Interfaces
 
 It exposes `BasicWordSenseModel` with a public parameterless constructor. `EnsureModelAsync` returns immediately and
-ignores the mirror; `ClassifyAsync` classifies at once, so a lazy ensure is trivial. It consumes `WordLexicon.Words`
+ignores the mirror; `ClassifyAsync` classifies at once, so a lazy ensure is trivial. It consumes the `WordLexicon` lookup
 and the contracts of the core
 package. All other types are internal and visible to the builder (which trains and writes the table with the same
 feature hash and tag constants) and to the Basic test project.

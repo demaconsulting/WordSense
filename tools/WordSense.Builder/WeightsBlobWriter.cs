@@ -31,19 +31,19 @@ internal static class WeightsBlobWriter
         using var raw = new MemoryStream();
         raw.Write(Magic);
         WriteString(raw, data.ModelId);
-        WordsBlobWriter.WriteVarint(raw, data.Dimension);
+        VarintWriter.WriteVarint(raw, data.Dimension);
         raw.WriteByte(0);
         WriteFloats(raw, data.Mean);
 
         var lemmas = data.Lemmas.OrderBy(l => l.Lemma, StringComparer.Ordinal).ToList();
-        WordsBlobWriter.WriteVarint(raw, lemmas.Count);
+        VarintWriter.WriteVarint(raw, lemmas.Count);
         foreach (var entry in lemmas)
         {
             var w = entry.Weights;
             WriteString(raw, entry.Lemma);
             WriteFloats(raw, [w.AbstainMargin]);
             raw.WriteByte((byte)w.Kind);
-            WordsBlobWriter.WriteVarint(raw, entry.Senses.Count);
+            VarintWriter.WriteVarint(raw, entry.Senses.Count);
             foreach (var sense in entry.Senses)
             {
                 raw.WriteByte((byte)sense.PartOfSpeech);
@@ -67,7 +67,7 @@ internal static class WeightsBlobWriter
     private static void WriteString(Stream stream, string value)
     {
         var bytes = Encoding.UTF8.GetBytes(value);
-        WordsBlobWriter.WriteVarint(stream, bytes.Length);
+        VarintWriter.WriteVarint(stream, bytes.Length);
         stream.Write(bytes);
     }
 

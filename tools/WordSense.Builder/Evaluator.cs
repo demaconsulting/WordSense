@@ -294,7 +294,7 @@ internal static class Evaluator
         GC.Collect();
         var before = GC.GetTotalMemory(true);
         var clock = Stopwatch.StartNew();
-        var count = WordLexicon.Words.Count;
+        var count = WordLexicon.Count;
         clock.Stop();
         GC.Collect();
         var after = GC.GetTotalMemory(true);
@@ -309,8 +309,9 @@ internal static class Evaluator
     /// <param name="info">The model.</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
+    /// <param name="outcomesFile">When given, receives one line for each scored sentence (set, index, sentence, answered class, confidence) for comparisons between versions.</param>
     /// <returns>The measurements.</returns>
-    public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken)
+    public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken, string? outcomesFile = null)
     {
         var (wordsMs, wordsBytes) = MeasureWords();
         var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
@@ -370,13 +371,14 @@ internal static class Evaluator
         // Only the pinned files are downloaded, not every file of the model folder (README, SHA256SUMS, unused tokenizer)
         var downloadBytes = model is OnnxWordSenseModel onnx ? onnx.Spec.Files.Sum(f => f.Length) : 0;
 
+        using var outcomesLog = outcomesFile is null ? null : new StreamWriter(outcomesFile, false, new System.Text.UTF8Encoding(false)) { NewLine = "\n" };
         var sets = new List<SetResult>();
         var clock = Stopwatch.StartNew();
-        sets.Add(await ScoreAsync("holdout", holdout, classifier, gold, cancellationToken).ConfigureAwait(false));
+        sets.Add(await ScoreAsync("holdout", holdout, classifier, gold, outcomesLog, cancellationToken).ConfigureAwait(false));
         clock.Stop();
         var latency = holdout.Count == 0 ? 0 : clock.Elapsed.TotalMilliseconds / holdout.Count;
         progress.WriteLine($"{info.Name}: holdout done.");
-        sets.Add(await ScoreAsync("real-text", real, classifier, gold, cancellationToken).ConfigureAwait(false));
+        sets.Add(await ScoreAsync("real-text", real, classifier, gold, outcomesLog, cancellationToken).ConfigureAwait(false));
 
         var weights = info.IsEncoder ? info.WeightsPath(repository) : string.Empty;
         BasicDetails? basic = null;
@@ -396,6 +398,7 @@ internal static class Evaluator
         IReadOnlyList<CorpusRow> rows,
         IWordSenseModel classifier,
         IReadOnlyDictionary<(string Lemma, string Label), InventoryRow> gold,
+        TextWriter? outcomesLog,
         CancellationToken cancellationToken)
     {
         int best = 0, pos = 0, heteronyms = 0, meaning = 0, answered = 0, answeredCorrect = 0;
@@ -406,14 +409,15 @@ internal static class Evaluator
             var senses = await classifier.ClassifyAsync(row.Words, cancellationToken).ConfigureAwait(false);
             var actual = senses[row.TargetWordIndex];
             var details = actual.Details;
-            var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(details.Meaning, expected.Meaning, StringComparison.Ordinal);
+            var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal);
             best += rightSense ? 1 : 0;
             outcomes.Add((actual.Confidence, rightSense));
+            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : WordLexicon.TrainedLemmaOf(details) + "|" + details.PartOfSpeech + "|" + WordLexicon.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture)));
             pos += details is not null && details.PartOfSpeech == expected.Pos ? 1 : 0;
             if (expected.Meaning is not null)
             {
                 heteronyms++;
-                meaning += details is not null && string.Equals(details.Meaning, expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
+                meaning += details is not null && string.Equals(WordLexicon.MeaningOf(details), expected.Meaning, StringComparison.Ordinal) ? 1 : 0;
             }
 
             if (actual.Confidence >= 0.5)

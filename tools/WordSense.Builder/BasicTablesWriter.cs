@@ -112,7 +112,7 @@ internal static class BasicTablesWriter
         return output.ToArray();
     }
 
-    private static void WriteVarint(Stream stream, int value) => WordsBlobWriter.WriteVarint(stream, value);
+    private static void WriteVarint(Stream stream, int value) => VarintWriter.WriteVarint(stream, value);
 
     private static void WriteString(Stream stream, string value)
     {

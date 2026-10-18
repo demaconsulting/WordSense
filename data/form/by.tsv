@@ -1,0 +1,70 @@
+spelling	rank	entry_id	features	source_id	reviewed
+by	0	dema-by-p		dema	0
+by	1	oewn-by-r	Degree=Pos	dema	0
+by	2	dema-by-n	Number=Sing	dema	0
+bye	0	oewn-bye-n	Number=Sing	dema	0
+byelaw	0	dema-byelaw-n	Number=Sing	dema	0
+byelaws	0	dema-byelaw-n	Number=Plur	dema	0
+byes	0	dema-byes-n	Number=Sing	dema	0
+bygone	0	oewn-bygone-a	Degree=Pos	dema	0
+bygone	1	oewn-bygone-n	Number=Sing	dema	0
+bygonely	0	dema-bygone-r		dema	0
+bygoneness	0	oewn-bygone-n	Number=Plur	dema	0
+bygoner	0	oewn-bygone-a	Degree=Cmp	dema	0
+bygones	0	oewn-bygone-n	Number=Plur	dema	0
+bygonest	0	oewn-bygone-a	Degree=Sup	dema	0
+bylaw	0	oewn-bylaw-n	Number=Sing	dema	0
+bylaws	0	oewn-bylaw-n	Number=Plur	dema	0
+byliner	0	dema-byliner-n	Number=Sing	dema	0
+byliners	0	dema-byliner-n	Number=Plur	dema	0
+bypass	0	oewn-bypass-n	Number=Sing	dema	0
+bypass	1	oewn-bypass-v	VerbForm=Inf	dema	0
+bypassed	0	oewn-bypass-v	Tense=Past	dema	0
+bypasser	0	dema-bypasser-n	Number=Sing	dema	0
+bypassers	0	oewn-bypass-n	Number=Plur	dema	0
+bypasses	0	oewn-bypass-n	Number=Plur	dema	0
+bypasses	1	oewn-bypass-v	Person=3+Tense=Pres	dema	0
+bypassing	0	oewn-bypass-v	VerbForm=Ger	dema	0
+bypassingly	0	dema-bypass-r		dema	0
+bypath	0	oewn-bypath-n	Number=Sing	dema	0
+bypaths	0	oewn-bypath-n	Number=Plur	dema	0
+byre	0	oewn-byre-n	Number=Sing	dema	0
+byres	0	oewn-byre-n	Number=Plur	dema	0
+byrnie	0	oewn-byrnie-n	Number=Sing	dema	0
+byrnies	0	oewn-byrnie-n	Number=Plur	dema	0
+byroad	0	oewn-byroad-n	Number=Sing	dema	0
+byroads	0	oewn-byroad-n	Number=Plur	dema	0
+byrri	0	dema-byrri-n	Number=Sing	dema	0
+byrris	0	dema-byrri-n	Number=Plur	dema	0
+byrrus	0	dema-byrrus-n	Number=Sing	dema	0
+byrruses	0	dema-byrrus-n	Number=Plur	dema	0
+byssaceous	0	dema-byssaceous-a	Degree=Pos	dema	0
+byssaceously	0	dema-byssaceous-r		dema	0
+byssaceousness	0	dema-byssaceous-n	Number=Plur	dema	0
+byssal	0	dema-byssal-a	Degree=Pos	dema	0
+byssally	0	dema-byssal-r		dema	0
+byssalness	0	dema-byssal-n	Number=Plur	dema	0
+byssinosis	0	dema-byssinosis-n	Number=Sing	dema	0
+byssoid	0	dema-byssoid-a	Degree=Pos	dema	0
+byssoider	0	dema-byssoid-a	Degree=Cmp	dema	0
+byssoidest	0	dema-byssoid-a	Degree=Sup	dema	0
+byssoidly	0	dema-byssoid-r		dema	0
+byssoidness	0	dema-byssoid-n	Number=Plur	dema	0
+byssus	0	oewn-byssus-n	Number=Sing	dema	0
+byssuses	0	oewn-byssus-n	Number=Plur	dema	0
+bystander	0	oewn-bystander-n	Number=Sing	dema	0
+bystanders	0	oewn-bystander-n	Number=Plur	dema	0
+bystreet	0	dema-bystreet-n	Number=Sing	dema	0
+bystreets	0	dema-bystreet-n	Number=Plur	dema	0
+byte	0	oewn-byte-n	Number=Sing	dema	0
+bytes	0	oewn-byte-n	Number=Plur	dema	0
+bytownite	0	dema-bytownite-n	Number=Sing	dema	0
+bytownites	0	dema-bytownite-n	Number=Plur	dema	0
+byway	0	oewn-byway-n	Number=Sing	dema	0
+byways	0	oewn-byway-n	Number=Plur	dema	0
+bywoner	0	dema-bywoner-n	Number=Sing	dema	0
+bywoners	0	dema-bywoner-n	Number=Plur	dema	0
+byword	0	oewn-byword-n	Number=Sing	dema	0
+bywords	0	oewn-byword-n	Number=Plur	dema	0
+byzant	0	oewn-byzant-n	Number=Sing	dema	0
+byzants	0	oewn-byzant-n	Number=Plur	dema	0

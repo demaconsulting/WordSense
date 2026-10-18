@@ -10,30 +10,35 @@ sections:
             requirements:
               - id: WordSense-Core-WordLexicon-Words
                 title: >-
-                  WordLexicon shall map each known lower-case surface word, including the inflected forms (plural,
+                  WordLexicon shall map each known spelling, including the inflected forms (plural,
                   verb, comparative and adverb forms, irregular forms included) of every dictionary word generated at
-                  build time, to the immutable list of senses (lemma, part of speech, meaning and respelling) it can
-                  have, so that a caller cannot change what any other caller sees.
+                  build time, to the immutable list of analyses (sense id, lemma, part of speech and features) it can
+                  have, so that a caller cannot change what any other caller sees, and shall find a word by its exact
+                  spelling first and by its lower-case folding second.
                 tags: [unit]
                 justification: |
                   Callers and models look words up by their surface form; resolving inflections at build time keeps
-                  look-up a single dictionary access, and the lexicon is shared by every caller in the process.
+                  look-up a binary search, and the lexicon is shared by every caller in the process.
                 tests:
-                  - WordLexicon_Words_KnownWord_ReturnsItsSenses
-                  - WordLexicon_Words_PublishedValues_CannotBeMutated
-                  - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
-                  - WordLexicon_Words_InflectedFormOfAnyDictionaryWord_ResolvesToLemma
-                  - WordLexicon_Words_IrregularFormInDictionary_IsKnown
-                  - WordLexicon_Words_WrongRegularFormOfIrregularWord_IsAbsent
-                  - WordLexicon_Words_Keys_AreLowerCase
-                  - WordLexicon_Words_UnknownWord_IsAbsent
+                  - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
+                  - WordLexicon_Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures
+                  - WordLexicon_Lookup_InflectedFormOfAnyDictionaryWord_ResolvesToLemma
+                  - WordLexicon_Contains_IrregularFormInDictionary_IsKnown
+                  - WordLexicon_Contains_WrongRegularFormOfIrregularWord_IsAbsent
+                  - WordLexicon_View_Keys_AreLowerCase
+                  - WordLexicon_Lookup_Case_FoldsToLowerCase
+                  - WordLexicon_Lookup_UnknownWord_IsAbsent
+                  - WordLexicon_Lookup_NullWord_Throws
+                  - WordLexicon_FormsOf_Lemma_ListsItsForms
+                  - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
+                  - WordSenseBuilder_Image_Find_ReturnsOwnIndex
 
               - id: WordSense-Core-WordLexicon-Complete
                 title: >-
                   WordLexicon shall hold every word of the dictionary the library is built from, including the
                   determiners, the conjunctions and the interjections, each with all of its parts of speech, whatever
                   the accuracy of any model for them, and every sense of a word shall have the lemma of its first sense
-                  or be the word's own extra (the word itself as lemma, no meaning and no respelling).
+                  or be the word's own extra (the word itself as lemma, no sense id).
                 tags: [unit]
                 justification: |
                   A model's accuracy decides which sense it may choose, never whether a word exists; a word that the
@@ -42,12 +47,12 @@ sections:
                   <c>live</c> and the plural of <c>life</c>), so a part of speech that its labels do not cover is
                   an untrained extra of the form itself, never a sense of the lemma that the labels excluded.
                 tests:
-                  - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
-                  - WordLexicon_Words_SoAndWill_ListTheirParts
-                  - WordLexicon_Words_EverySense_SharesTheFirstLemmaOrIsTheOwnExtra
-                  - WordLexicon_Words_ListedFormOfHeteronym_HasOnlyItsLabeledSenses
-                  - WordLexicon_Words_ReadForms_SplitByLabels
-                  - WordLexicon_Words_RestrictedForm_NeverOffersExcludedSense
+                  - WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone
+                  - WordLexicon_Lookup_SoAndWill_ListTheirParts
+                  - WordLexicon_Lookup_FormWithSeveralLemmas_ListsEach
+                  - WordLexicon_Lookup_FormOfHeteronym_HasOnlyItsSenses
+                  - WordLexicon_Lookup_ReadForms_SplitBySense
+                  - WordLexicon_Lookup_RestrictedForm_NeverOffersExcludedSense
                   - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
                   - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
                   - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
@@ -58,7 +63,7 @@ sections:
                 justification: |
                   An embedded lexicon needs no file, no network access and no configuration.
                 tests:
-                  - WordLexicon_Words_EmbeddedBlob_LoadsAndIsNotEmpty
+                  - WordLexicon_Count_EmbeddedImage_LoadsAndIsNotEmpty
 
               - id: WordSense-Core-WordLexicon-LazyLoad
                 title: >-
@@ -68,20 +73,14 @@ sections:
                   Applications that never classify must not pay for loading, and a concurrent first use must neither
                   fail nor load twice.
                 tests:
-                  - WordLexicon_Words_ConcurrentAccess_ReturnsSameInstance
+                  - WordLexicon_Lookup_ConcurrentAccess_ReturnsSameAnswers
 
               - id: WordSense-Core-WordLexicon-Format
                 title: >-
-                  WordLexicon shall reject a corrupt or foreign data blob and shall share one instance among equal
-                  senses.
+                  WordLexicon shall reject a corrupt or foreign word image (wrong magic or version, content hash
+                  mismatch, invalid section).
                 tags: [unit]
                 justification: |
-                  A damaged blob must fail loudly instead of producing wrong senses, and sharing equal senses keeps
-                  the loaded lexicon small.
+                  A damaged image must fail loudly instead of producing wrong senses.
                 tests:
-                  - WordsBlob_Read_CorruptData_Throws
-                  - WordsBlob_Read_UnknownMagic_Throws
-                  - WordsBlob_Read_InvalidSense_Throws
-                  - WordsBlob_Read_ValidBlob_SharesEqualSenses
-                  - WordsBlob_Read_BrokenPayload_Throws
-                  - WordsBlob_Read_MinimalValidBlob_IsAccepted
+                  - WordSenseBuilder_Image_Corruption_IsRejected

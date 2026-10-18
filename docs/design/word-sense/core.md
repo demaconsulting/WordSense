@@ -22,20 +22,20 @@ does not download anything; `MirrorOptions` only carries the configuration that 
 
 The subsystem exposes:
 
-- `WordLexicon.Words`: the read-only dictionary from lower-case surface word to its possible senses, each an immutable array;
+- `WordLexicon`: the lookup of a word in the embedded word image (`Lookup`, `TryLookup`, `Contains`, `FormsOf`);
 - `IWordSenseModel`: the contract that model packages implement;
 - `WordSense`, `WordDetails` and `PartOfSpeech`: the answer values;
 - `MirrorOptions`: the download mirror configuration passed to `EnsureModelAsync`.
 
-It consumes the embedded resource `words.bin` and nothing else. The internals (the blob reader) are visible to the
+It consumes the embedded resource `wordsense.img` and nothing else. The internals (the image reader) are visible to the
 builder and to the core test project only.
 
 ### Design
 
-`WordLexicon` loads `words.bin` lazily and exactly once through `WordsBlob`, which reads the compressed blob into a
-frozen dictionary whose values share `WordDetails` instances. The contracts unit has no behavior of its own beyond
-the value semantics of its records; it depends on `WordLexicon` only through the documentation of the classifier
-contract, which defines the lookup of every word in `WordLexicon.Words` as the common first step of every model.
+`WordLexicon` opens `wordsense.img` lazily and exactly once through `WordImage`, which reads the image in place (no
+dictionary is built) and decodes only the analyses of the word asked for. The contracts unit has no behavior of its own
+beyond the value semantics of its records; it depends on `WordLexicon` only through the documentation of the
+classifier contract, which defines the lookup of every word as the common first step of every model.
 
-The units do not call each other at run time. A model package calls both: it reads `WordLexicon.Words` for the
-senses of a word and returns `WordSense` values built from `WordDetails`.
+The units do not call each other at run time. A model package calls both: it looks up the
+analyses of a word and returns `WordSense` values built from `WordDetails`.

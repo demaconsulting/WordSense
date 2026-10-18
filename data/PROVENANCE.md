@@ -38,3 +38,26 @@ Subcategorization frames, adjective position, syntactic behaviour, ILI definitio
 Rows with `source_id` `dema` (MIT, project-authored) are added to cover words and senses that Open English WordNet
 does not have: 120 entries, each with one synset, sense and gloss. See [MAPPING.md](MAPPING.md) for how they and the
 coarse classes were made.
+
+## Forms (written forms and their analyses)
+
+The `form` and `form_sense_scope` tables were bootstrapped once with `bootstrap-forms` from the word table that the
+legacy corpus builder produced (`corpus/lexicon`, `corpus/forms`, `corpus/senses`, the Moby-derived dictionary and the
+generated inflections): 338,070 spellings, 364,444 analyses (rows of source `dema`, MIT) that stand for the 364,454
+answers of the legacy table (ten answers share a row through its scope), and 4,627 scope rows. The tables are
+authoritative now: edit them by hand.
+
+- A dictionary word that has no Open English WordNet entry for its lemma and part of speech gets a new entry of source
+  `dema` and the id `dema-<lemma>-<pos>`, with no sense (167,583 entries). These entries exist only so that forms
+  refer to a lemma; they are not WordNet data.
+- `features` are inferred from the regular English endings (`Number=Plur`, `Person=3+Tense=Pres`, `VerbForm=Ger`,
+  `Degree=Cmp`, ...) unless a class link states them; a row that is inferred, or that has no class, has
+  `reviewed` 0. A row of a labeled class has `reviewed` 1. Irregular forms without a class can have empty features.
+- The corpus listed 19 inflected forms under a lemma that cannot produce them (see MAPPING.md). `wick`, `wicks` and
+  `wicking` now use a verb `wick`, and `re-sign`, `re-signs`, `re-signed` and `re-signing` a verb `re-sign` (new `dema`
+  entries, `reviewed` 0, the class of the legacy answer kept). `supposes`, `supposing`, `blesses` and `blessing` use
+  `suppose` and `bless` through the class link of their lemma-split class. For `conjuncts`, `pustulates`, `tiered`,
+  `exited`, `exiting`, `ironed`, `ironing` and `stricken` the lemma of the legacy answer was already a valid lemma of
+  an entry (OEWN or `dema`), so the analysis uses it unchanged.
+- An `unmapped` class is never an answer. A lemma-split class with several linked entries of the right part of speech
+  uses the entry whose lemma the class label names, else the alphabetically first lemma.

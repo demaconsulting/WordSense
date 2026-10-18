@@ -13,7 +13,8 @@ sections:
       - id: WordSense-Lib-Classify
         title: >-
           The system shall classify the words of a running text, answering for each word its lemma, part of speech,
-          meaning and (for a heteronym) respelling, and return one result per input word in the input order.
+          sense id and (for a heteronym) the sense that was chosen, and return one result per input word in the
+          input order.
         tags: [system]
         justification: |
           This is the purpose of the system: given a text, callers learn which sense (for example "record" as noun
@@ -36,9 +37,9 @@ sections:
         children:
           - WordSense-Core-Lexicon
         tests:
-          - WordLexicon_Words_KnownWord_ReturnsItsSenses
-          - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
-          - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
+          - WordLexicon_Lookup_KnownWord_ReturnsItsAnalyses
+          - WordLexicon_Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures
+          - WordLexicon_Lookup_ClosedClassWord_HasItsPartOfSpeechAlone
 
       - id: WordSense-Lib-Data
         title: >-
@@ -175,7 +176,7 @@ sections:
           - WordSense-WordSenseBuilder-Corpus
           - WordSense-WordSenseBuilder-Usage
         tests:
-          - WordSenseBuilder_WordsBlobWriter_Write_IsDeterministic
+          - WordSenseBuilder_ImageCompiler_Build_IsDeterministic
           - WordSenseBuilder_Appendix_Committed_MatchesCorpus
 
       - id: WordSense-Lib-Packaging

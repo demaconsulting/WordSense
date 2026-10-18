@@ -27,7 +27,7 @@ public sealed class DataValidatorTests : IDisposable
     {
         var report = DataValidator.Validate(data);
         Assert.False(report.IsValid, "The data should be invalid.");
-        Assert.Contains($"[{rule}]", Messages(report), StringComparison.Ordinal);
+        Assert.True(Messages(report).Contains($"[{rule}]", StringComparison.Ordinal), $"Expected [{rule}] in: " + Messages(report));
     }
 
     private static void AddBassClass(string data, bool coverBoth)
@@ -269,7 +269,7 @@ public sealed class DataValidatorTests : IDisposable
     [Theory]
     [InlineData("cafe\u0301", "\tcafé\t")]
     [InlineData("big ", "\tbig\t")]
-    [InlineData("x", "\tn\t")]
+    [InlineData("q", "\tn\t")]
     [InlineData("00", "\t0\t")]
     public void WordSenseBuilder_DataValidator_Validate_CellDefects_AreReported(string replacement, string target)
     {

@@ -1,0 +1,882 @@
+spelling	rank	entry_id	features	source_id	reviewed
+swab	0	oewn-swab-n	Number=Sing	dema	0
+swab	1	oewn-swab-v	VerbForm=Inf	dema	0
+swabbed	0	dema-swabbed-v	VerbForm=Inf	dema	0
+swabber	0	dema-swabber-n	Number=Sing	dema	0
+swabbers	0	oewn-swab-n	Number=Plur	dema	0
+swabbing	0	dema-swabbing-v	VerbForm=Inf	dema	0
+swabbingly	0	dema-swab-r		dema	0
+swabs	0	oewn-swab-n	Number=Plur	dema	0
+swabs	1	oewn-swab-v	Person=3+Tense=Pres	dema	0
+swacked	0	dema-swacked-a	Degree=Pos	dema	0
+swacked	1	dema-swacked-v	VerbForm=Inf	dema	0
+swackeded	0	dema-swacked-v	Tense=Past	dema	0
+swackeder	0	dema-swacked-n	Number=Plur	dema	0
+swackeders	0	dema-swacked-n	Number=Plur	dema	0
+swackeding	0	dema-swacked-v	VerbForm=Ger	dema	0
+swackedingly	0	dema-swacked-r		dema	0
+swackedly	0	dema-swacked-r		dema	0
+swackedness	0	dema-swacked-n	Number=Plur	dema	0
+swackeds	0	dema-swacked-v	Person=3+Tense=Pres	dema	0
+swaddle	0	oewn-swaddle-v	VerbForm=Inf	dema	0
+swaddle	1	dema-swaddle-n	Number=Sing	dema	0
+swaddled	0	dema-swaddled-v	VerbForm=Inf	dema	0
+swaddler	0	dema-swaddle-n	Number=Plur	dema	0
+swaddlers	0	dema-swaddle-n	Number=Plur	dema	0
+swaddles	0	oewn-swaddle-v	Person=3+Tense=Pres	dema	0
+swaddles	1	dema-swaddle-n	Number=Plur	dema	0
+swaddling	0	dema-swaddling-v	VerbForm=Inf	dema	0
+swaddlingly	0	dema-swaddle-r		dema	0
+swag	0	oewn-swag-n	Number=Sing	dema	0
+swag	1	oewn-swag-v	VerbForm=Inf	dema	0
+swage	0	oewn-swage-n	Number=Sing	dema	0
+swage	1	oewn-swage-v	VerbForm=Inf	dema	0
+swaged	0	dema-swaged-v	VerbForm=Inf	dema	0
+swager	0	dema-swager-n	Number=Sing	dema	0
+swagers	0	oewn-swage-n	Number=Plur	dema	0
+swages	0	oewn-swage-n	Number=Plur	dema	0
+swages	1	oewn-swage-v	Person=3+Tense=Pres	dema	0
+swagged	0	dema-swagged-v	VerbForm=Inf	dema	0
+swagger	0	oewn-swagger-v	VerbForm=Inf	dema	0
+swagger	1	oewn-swagger-n	Number=Sing	dema	0
+swagger	2	oewn-swagger-a	Degree=Pos	dema	0
+swaggered	0	oewn-swagger-v	Tense=Past	dema	0
+swaggerer	0	oewn-swagger-a	Degree=Cmp	dema	0
+swaggerest	0	oewn-swagger-a	Degree=Sup	dema	0
+swaggering	0	oewn-swaggering-a	Degree=Pos	dema	0
+swaggering	1	dema-swaggering-v	VerbForm=Inf	dema	0
+swaggeringly	0	dema-swaggeringly-r	Degree=Pos	dema	0
+swaggerly	0	dema-swagger-r		dema	0
+swaggerness	0	oewn-swagger-n	Number=Plur	dema	0
+swaggers	0	oewn-swag-n	Number=Plur	dema	0
+swaggi	0	dema-swaggi-v	VerbForm=Inf	dema	0
+swaggied	0	dema-swaggi-v	Tense=Past	dema	0
+swaggier	0	dema-swaggi-n	Number=Plur	dema	0
+swaggiers	0	dema-swaggi-n	Number=Plur	dema	0
+swaggiing	0	dema-swaggi-v	VerbForm=Ger	dema	0
+swaggiingly	0	dema-swaggi-r		dema	0
+swagging	0	dema-swagging-v	VerbForm=Inf	dema	0
+swaggingly	0	dema-swag-r		dema	0
+swaggis	0	dema-swaggi-v	Person=3+Tense=Pres	dema	0
+swaging	0	dema-swaging-v	VerbForm=Inf	dema	0
+swagingly	0	dema-swage-r		dema	0
+swagman	0	oewn-swagman-n	Number=Sing	dema	0
+swagmen	0	dema-swagmen-n	Number=Sing	dema	0
+swagmens	0	dema-swagmen-n	Number=Plur	dema	0
+swags	0	oewn-swag-n	Number=Plur	dema	0
+swags	1	oewn-swag-v	Person=3+Tense=Pres	dema	0
+swagsman	0	dema-swagsman-n	Number=Sing	dema	0
+swagsmans	0	dema-swagsman-n	Number=Plur	dema	0
+swagsmen	0	dema-swagsmen-n	Number=Sing	dema	0
+swagsmens	0	dema-swagsmen-n	Number=Plur	dema	0
+swain	0	oewn-swain-n	Number=Sing	dema	0
+swainish	0	dema-swainish-a	Degree=Pos	dema	0
+swainishly	0	dema-swainish-r		dema	0
+swainishness	0	dema-swainish-n	Number=Plur	dema	0
+swains	0	oewn-swain-n	Number=Plur	dema	0
+swale	0	oewn-swale-n	Number=Sing	dema	0
+swales	0	oewn-swale-n	Number=Plur	dema	0
+swallet	0	dema-swallet-n	Number=Sing	dema	0
+swallets	0	dema-swallet-n	Number=Plur	dema	0
+swallow	0	oewn-swallow-n	Number=Sing	dema	1
+swallow	1	oewn-swallow-v	VerbForm=Inf	dema	1
+swallowable	0	dema-swallowable-a	Degree=Pos	dema	0
+swallowably	0	dema-swallowable-r		dema	0
+swallowed	0	oewn-swallow-v	Tense=Past	dema	1
+swallower	0	dema-swallower-n	Number=Sing	dema	0
+swallowers	0	oewn-swallow-n	Number=Plur	dema	1
+swallowing	0	oewn-swallow-n	Number=Plur	dema	1
+swallowing	1	oewn-swallow-v	VerbForm=Ger	dema	1
+swallowingly	0	dema-swallow-r		dema	0
+swallowlike	0	dema-swallowlike-a	Degree=Pos	dema	0
+swallowlikely	0	dema-swallowlike-r		dema	0
+swallowlikeness	0	dema-swallowlike-n	Number=Plur	dema	0
+swallows	0	oewn-swallow-n	Number=Plur	dema	1
+swallows	1	oewn-swallow-v	Person=3+Tense=Pres	dema	1
+swallowtail	0	oewn-swallowtail-n	Number=Sing	dema	0
+swallowtails	0	oewn-swallowtail-n	Number=Plur	dema	0
+swallowwort	0	oewn-swallowwort-n	Number=Sing	dema	0
+swallowworts	0	oewn-swallowwort-n	Number=Plur	dema	0
+swam	0	dema-swam-v	VerbForm=Inf	dema	0
+swami	0	oewn-swami-n	Number=Sing	dema	0
+swamies	0	dema-swamies-n	Number=Sing	dema	0
+swamis	0	oewn-swami-n	Number=Plur	dema	0
+swamp	0	oewn-swamp-n	Number=Sing	dema	0
+swamp	1	oewn-swamp-v	VerbForm=Inf	dema	0
+swamped	0	oewn-swamp-v	Tense=Past	dema	0
+swamper	0	dema-swamper-n	Number=Sing	dema	0
+swampers	0	oewn-swamp-n	Number=Plur	dema	0
+swampier	0	dema-swampier-a	Degree=Pos	dema	0
+swampierly	0	dema-swampier-r		dema	0
+swampiest	0	dema-swampiest-a	Degree=Pos	dema	0
+swampiestly	0	dema-swampiest-r		dema	0
+swampily	0	dema-swampy-r		dema	0
+swampiness	0	dema-swampy-n	Number=Plur	dema	0
+swamping	0	oewn-swamp-v	VerbForm=Ger	dema	0
+swampingly	0	dema-swamp-r		dema	0
+swampland	0	oewn-swampland-n	Number=Sing	dema	0
+swamplands	0	oewn-swampland-n	Number=Plur	dema	0
+swampless	0	dema-swampless-a	Degree=Pos	dema	0
+swamplessly	0	dema-swampless-r		dema	0
+swamplessness	0	dema-swampless-n	Number=Plur	dema	0
+swamps	0	oewn-swamp-n	Number=Plur	dema	0
+swamps	1	oewn-swamp-v	Person=3+Tense=Pres	dema	0
+swampy	0	oewn-swampy-a	Degree=Pos	dema	0
+swamy	0	dema-swamy-n	Number=Sing	dema	0
+swan	0	oewn-swan-n	Number=Sing	dema	0
+swan	1	oewn-swan-v	VerbForm=Inf	dema	0
+swang	0	dema-swang-v	VerbForm=Inf	dema	0
+swanged	0	dema-swang-v	Tense=Past	dema	0
+swanger	0	dema-swang-n	Number=Plur	dema	0
+swangers	0	dema-swang-n	Number=Plur	dema	0
+swanging	0	dema-swang-v	VerbForm=Ger	dema	0
+swangingly	0	dema-swang-r		dema	0
+swangs	0	dema-swang-v	Person=3+Tense=Pres	dema	0
+swanherd	0	dema-swanherd-n	Number=Sing	dema	0
+swanherds	0	dema-swanherd-n	Number=Plur	dema	0
+swank	0	oewn-swank-v	VerbForm=Inf	dema	0
+swank	1	oewn-swank-n	Number=Sing	dema	0
+swank	2	oewn-swank-a	Degree=Pos	dema	0
+swanked	0	oewn-swank-v	Tense=Past	dema	0
+swanker	0	oewn-swank-n	Number=Plur	dema	0
+swanker	1	oewn-swank-a	Degree=Cmp	dema	0
+swankers	0	oewn-swank-n	Number=Plur	dema	0
+swankest	0	oewn-swank-a	Degree=Sup	dema	0
+swankier	0	dema-swankier-a	Degree=Pos	dema	0
+swankierly	0	dema-swankier-r		dema	0
+swankiest	0	dema-swankiest-a	Degree=Pos	dema	0
+swankiestly	0	dema-swankiest-r		dema	0
+swankily	0	dema-swankily-r	Degree=Pos	dema	0
+swankiness	0	dema-swankiness-n	Number=Sing	dema	0
+swankinesses	0	dema-swankiness-n	Number=Plur	dema	0
+swanking	0	oewn-swank-v	VerbForm=Ger	dema	0
+swankingly	0	dema-swank-r		dema	0
+swankly	0	dema-swank-r		dema	0
+swankness	0	oewn-swank-n	Number=Plur	dema	0
+swanks	0	oewn-swank-v	Person=3+Tense=Pres	dema	0
+swanks	1	oewn-swank-n	Number=Plur	dema	0
+swanky	0	oewn-swanky-a	Degree=Pos	dema	0
+swanned	0	oewn-swan-v	Tense=Past	dema	0
+swanner	0	oewn-swan-n	Number=Plur	dema	0
+swanneries	0	dema-swannery-n	Number=Plur	dema	0
+swanners	0	oewn-swan-n	Number=Plur	dema	0
+swannery	0	dema-swannery-n	Number=Sing	dema	0
+swanning	0	oewn-swan-v	VerbForm=Ger	dema	0
+swanningly	0	dema-swan-r		dema	0
+swans	0	oewn-swan-n	Number=Plur	dema	0
+swans	1	oewn-swan-v	Person=3+Tense=Pres	dema	0
+swanskin	0	dema-swanskin-n	Number=Sing	dema	0
+swanskins	0	dema-swanskin-n	Number=Plur	dema	0
+swap	0	oewn-swap-v	VerbForm=Inf	dema	0
+swap	1	oewn-swap-n	Number=Sing	dema	0
+swapped	0	dema-swapped-v	VerbForm=Inf	dema	0
+swapper	0	dema-swapper-n	Number=Sing	dema	0
+swappers	0	oewn-swap-n	Number=Plur	dema	0
+swapping	0	dema-swapping-v	VerbForm=Inf	dema	0
+swappingly	0	dema-swap-r		dema	0
+swaps	0	oewn-swap-v	Person=3+Tense=Pres	dema	0
+swaps	1	oewn-swap-n	Number=Plur	dema	0
+swaraj	0	dema-swaraj-n	Number=Sing	dema	0
+swaraj	1	dema-swaraj-a	Degree=Pos	dema	0
+swarajer	0	dema-swaraj-a	Degree=Cmp	dema	0
+swarajest	0	dema-swaraj-a	Degree=Sup	dema	0
+swarajism	0	dema-swarajism-n	Number=Sing	dema	0
+swarajisms	0	dema-swarajism-n	Number=Plur	dema	0
+swarajist	0	dema-swarajist-n	Number=Sing	dema	0
+swarajist	1	dema-swarajist-a	Degree=Pos	dema	0
+swarajistly	0	dema-swarajist-r		dema	0
+swarajistness	0	dema-swarajist-n	Number=Plur	dema	0
+swarajists	0	dema-swarajist-n	Number=Plur	dema	0
+swarajly	0	dema-swaraj-r		dema	0
+swarajness	0	dema-swaraj-n	Number=Plur	dema	0
+swarajs	0	dema-swaraj-n	Number=Plur	dema	0
+sward	0	oewn-sward-n	Number=Sing	dema	0
+sward	1	dema-sward-v	VerbForm=Inf	dema	0
+swarded	0	dema-sward-v	Tense=Past	dema	0
+swarder	0	oewn-sward-n	Number=Plur	dema	0
+swarders	0	oewn-sward-n	Number=Plur	dema	0
+swarding	0	dema-sward-v	VerbForm=Ger	dema	0
+swardingly	0	dema-sward-r		dema	0
+swards	0	oewn-sward-n	Number=Plur	dema	0
+swards	1	dema-sward-v	Person=3+Tense=Pres	dema	0
+swarf	0	dema-swarf-n	Number=Sing	dema	0
+swarfs	0	dema-swarf-n	Number=Plur	dema	0
+swarm	0	oewn-swarm-n	Number=Sing	dema	0
+swarm	1	oewn-swarm-v	VerbForm=Inf	dema	0
+swarmed	0	oewn-swarm-v	Tense=Past	dema	0
+swarmer	0	dema-swarmer-n	Number=Sing	dema	0
+swarmers	0	oewn-swarm-n	Number=Plur	dema	0
+swarming	0	oewn-swarm-v	VerbForm=Ger	dema	0
+swarmingly	0	dema-swarm-r		dema	0
+swarms	0	oewn-swarm-n	Number=Plur	dema	0
+swarms	1	oewn-swarm-v	Person=3+Tense=Pres	dema	0
+swart	0	oewn-swart-a	Degree=Pos	dema	0
+swarter	0	oewn-swart-a	Degree=Cmp	dema	0
+swartest	0	oewn-swart-a	Degree=Sup	dema	0
+swarth	0	dema-swarth-a	Degree=Pos	dema	0
+swarth	1	dema-swarth-n	Number=Sing	dema	0
+swarther	0	dema-swarth-a	Degree=Cmp	dema	0
+swarthest	0	dema-swarth-a	Degree=Sup	dema	0
+swarthier	0	oewn-swarthy-a	Degree=Cmp	dema	0
+swarthiest	0	oewn-swarthy-a	Degree=Sup	dema	0
+swarthily	0	dema-swarthily-r	Degree=Pos	dema	0
+swarthiness	0	oewn-swarthiness-n	Number=Sing	dema	0
+swarthinesses	0	oewn-swarthiness-n	Number=Plur	dema	0
+swarthly	0	dema-swarth-r		dema	0
+swarthness	0	dema-swarth-n	Number=Plur	dema	0
+swarths	0	dema-swarth-n	Number=Plur	dema	0
+swarthy	0	oewn-swarthy-a	Degree=Pos	dema	0
+swartly	0	dema-swart-r		dema	0
+swartness	0	dema-swart-n	Number=Plur	dema	0
+swartzite	0	dema-swartzite-n	Number=Sing	dema	0
+swartzites	0	dema-swartzite-n	Number=Plur	dema	0
+swash	0	oewn-swash-v	VerbForm=Inf	dema	0
+swash	1	oewn-swash-n	Number=Sing	dema	0
+swashbuckler	0	oewn-swashbuckler-n	Number=Sing	dema	0
+swashbucklers	0	oewn-swashbuckler-n	Number=Plur	dema	0
+swashbuckling	0	oewn-swashbuckling-a	Degree=Pos	dema	0
+swashbuckling	1	dema-swashbuckling-v	VerbForm=Inf	dema	0
+swashbucklinged	0	dema-swashbuckling-v	Tense=Past	dema	0
+swashbucklinger	0	oewn-swashbuckling-n	Number=Plur	dema	0
+swashbucklingers	0	oewn-swashbuckling-n	Number=Plur	dema	0
+swashbucklinging	0	dema-swashbuckling-v	VerbForm=Ger	dema	0
+swashbucklingingly	0	dema-swashbuckling-r		dema	0
+swashbucklingly	0	dema-swashbuckling-r		dema	0
+swashbucklingness	0	oewn-swashbuckling-n	Number=Plur	dema	0
+swashbucklings	0	dema-swashbuckling-v	Person=3+Tense=Pres	dema	0
+swashed	0	oewn-swash-v	Tense=Past	dema	0
+swasher	0	oewn-swash-n	Number=Plur	dema	0
+swashers	0	oewn-swash-n	Number=Plur	dema	0
+swashes	0	oewn-swash-v	Person=3+Tense=Pres	dema	0
+swashes	1	oewn-swash-n	Number=Plur	dema	0
+swashing	0	oewn-swash-v	VerbForm=Ger	dema	0
+swashingly	0	dema-swashingly-r	Degree=Pos	dema	0
+swastika	0	oewn-swastika-n	Number=Sing	dema	0
+swastikaed	0	dema-swastikaed-a	Degree=Pos	dema	0
+swastikaed	1	dema-swastikaed-v	VerbForm=Inf	dema	0
+swastikaeded	0	dema-swastikaed-v	Tense=Past	dema	0
+swastikaeder	0	dema-swastikaed-n	Number=Plur	dema	0
+swastikaeders	0	dema-swastikaed-n	Number=Plur	dema	0
+swastikaeding	0	dema-swastikaed-v	VerbForm=Ger	dema	0
+swastikaedingly	0	dema-swastikaed-r		dema	0
+swastikaedly	0	dema-swastikaed-r		dema	0
+swastikaedness	0	dema-swastikaed-n	Number=Plur	dema	0
+swastikaeds	0	dema-swastikaed-v	Person=3+Tense=Pres	dema	0
+swastikas	0	oewn-swastika-n	Number=Plur	dema	0
+swat	0	oewn-swat-v	VerbForm=Inf	dema	0
+swat	1	oewn-swat-n	Number=Sing	dema	0
+swatch	0	oewn-swatch-n	Number=Sing	dema	0
+swatches	0	oewn-swatch-n	Number=Plur	dema	0
+swatchs	0	oewn-swatch-n	Number=Plur	dema	0
+swath	0	oewn-swath-n	Number=Sing	dema	0
+swathable	0	dema-swathable-a	Degree=Pos	dema	0
+swathableness	0	dema-swathable-n	Number=Plur	dema	0
+swathably	0	dema-swathable-r		dema	0
+swathe	0	oewn-swathe-v	VerbForm=Inf	dema	0
+swathe	1	oewn-swathe-n	Number=Sing	dema	0
+swatheable	0	dema-swatheable-a	Degree=Pos	dema	0
+swatheableness	0	dema-swatheable-n	Number=Plur	dema	0
+swatheably	0	dema-swatheable-r		dema	0
+swathed	0	oewn-swathe-v	Tense=Past	dema	0
+swather	0	dema-swather-n	Number=Sing	dema	0
+swathers	0	oewn-swathe-n	Number=Plur	dema	0
+swathes	0	oewn-swathe-v	Person=3+Tense=Pres	dema	0
+swathes	1	oewn-swathe-n	Number=Plur	dema	0
+swathing	0	oewn-swathe-v	VerbForm=Ger	dema	0
+swathingly	0	dema-swathe-r		dema	0
+swaths	0	oewn-swath-n	Number=Plur	dema	0
+swats	0	dema-swats-n	Number=Sing	dema	0
+swatted	0	dema-swatted-v	VerbForm=Inf	dema	0
+swatter	0	oewn-swatter-n	Number=Sing	dema	0
+swatters	0	oewn-swat-n	Number=Plur	dema	0
+swatting	0	dema-swatting-v	VerbForm=Inf	dema	0
+swattingly	0	dema-swat-r		dema	0
+sway	0	oewn-sway-v	VerbForm=Inf	dema	0
+sway	1	oewn-sway-n	Number=Sing	dema	0
+swayable	0	dema-swayable-a	Degree=Pos	dema	0
+swayableness	0	dema-swayable-n	Number=Plur	dema	0
+swayably	0	dema-swayable-r		dema	0
+swayed	0	oewn-sway-v	Tense=Past	dema	0
+swayer	0	oewn-swayer-n	Number=Sing	dema	0
+swayers	0	oewn-sway-n	Number=Plur	dema	0
+swayful	0	dema-swayful-a	Degree=Pos	dema	0
+swayfully	0	dema-swayful-r		dema	0
+swayfulness	0	dema-swayful-n	Number=Plur	dema	0
+swaying	0	oewn-sway-v	VerbForm=Ger	dema	0
+swayingly	0	dema-swayingly-r	Degree=Pos	dema	0
+sways	0	oewn-sway-v	Person=3+Tense=Pres	dema	0
+sways	1	oewn-sway-n	Number=Plur	dema	0
+sweal	0	dema-sweal-v	VerbForm=Inf	dema	0
+swealed	0	dema-sweal-v	Tense=Past	dema	0
+swealer	0	dema-sweal-n	Number=Plur	dema	0
+swealers	0	dema-sweal-n	Number=Plur	dema	0
+swealing	0	dema-sweal-v	VerbForm=Ger	dema	0
+swealingly	0	dema-sweal-r		dema	0
+sweals	0	dema-sweal-v	Person=3+Tense=Pres	dema	0
+swear	0	oewn-swear-v	VerbForm=Inf	dema	0
+swear	1	dema-swear-n	Number=Sing	dema	0
+swearer	0	oewn-swearer-n	Number=Sing	dema	0
+swearers	0	dema-swear-n	Number=Plur	dema	0
+swearing	0	dema-swearing-v	VerbForm=Inf	dema	0
+swearingly	0	dema-swearingly-r	Degree=Pos	dema	0
+swears	0	oewn-swear-v	Person=3+Tense=Pres	dema	0
+swears	1	dema-swear-n	Number=Plur	dema	0
+swearword	0	oewn-swearword-n	Number=Sing	dema	0
+swearwords	0	oewn-swearword-n	Number=Plur	dema	0
+sweat	0	oewn-sweat-n	Number=Sing	dema	0
+sweat	1	oewn-sweat-v	VerbForm=Inf	dema	0
+sweatband	0	oewn-sweatband-n	Number=Sing	dema	0
+sweatbands	0	oewn-sweatband-n	Number=Plur	dema	0
+sweatbox	0	oewn-sweatbox-n	Number=Sing	dema	0
+sweatboxes	0	oewn-sweatbox-n	Number=Plur	dema	0
+sweated	0	dema-sweated-a	Degree=Pos	dema	0
+sweated	1	dema-sweated-v	VerbForm=Inf	dema	0
+sweatedly	0	dema-sweated-r		dema	0
+sweater	0	oewn-sweater-n	Number=Sing	dema	0
+sweaters	0	oewn-sweat-n	Number=Plur	dema	0
+sweatier	0	dema-sweatier-a	Degree=Pos	dema	0
+sweatierly	0	dema-sweatier-r		dema	0
+sweatiest	0	dema-sweatiest-a	Degree=Pos	dema	0
+sweatiestly	0	dema-sweatiest-r		dema	0
+sweatily	0	dema-sweatily-r	Degree=Pos	dema	0
+sweatiness	0	dema-sweatiness-n	Number=Sing	dema	0
+sweatinesses	0	dema-sweatiness-n	Number=Plur	dema	0
+sweating	0	dema-sweating-v	VerbForm=Inf	dema	0
+sweatingly	0	dema-sweat-r		dema	0
+sweatless	0	dema-sweatless-a	Degree=Pos	dema	0
+sweatlessly	0	dema-sweatless-r		dema	0
+sweatlessness	0	dema-sweatless-n	Number=Plur	dema	0
+sweats	0	oewn-sweat-n	Number=Plur	dema	0
+sweats	1	oewn-sweat-v	Person=3+Tense=Pres	dema	0
+sweatshop	0	oewn-sweatshop-n	Number=Sing	dema	0
+sweatshops	0	oewn-sweatshop-n	Number=Plur	dema	0
+sweatweed	0	dema-sweatweed-n	Number=Sing	dema	0
+sweatweeds	0	dema-sweatweed-n	Number=Plur	dema	0
+sweaty	0	dema-sweaty-a	Degree=Pos	dema	0
+swede	0	oewn-swede-n	Number=Sing	dema	0
+swedes	0	oewn-swede-n	Number=Plur	dema	0
+sweenies	0	dema-sweeny-n	Number=Plur	dema	0
+sweeny	0	dema-sweeny-n	Number=Sing	dema	0
+sweep	0	oewn-sweep-v	VerbForm=Inf	dema	0
+sweep	1	oewn-sweep-n	Number=Sing	dema	0
+sweepable	0	dema-sweepable-a	Degree=Pos	dema	0
+sweepableness	0	dema-sweepable-n	Number=Plur	dema	0
+sweepably	0	dema-sweepable-r		dema	0
+sweepback	0	dema-sweepback-n	Number=Sing	dema	0
+sweepbacks	0	dema-sweepback-n	Number=Plur	dema	0
+sweeper	0	oewn-sweeper-n	Number=Sing	dema	0
+sweepers	0	oewn-sweep-n	Number=Plur	dema	0
+sweeping	0	oewn-sweeping-a	Degree=Pos	dema	0
+sweeping	1	dema-sweeping-v	VerbForm=Inf	dema	0
+sweepingly	0	oewn-sweepingly-r	Degree=Pos	dema	0
+sweepingness	0	dema-sweepingness-n	Number=Sing	dema	0
+sweepingnesses	0	dema-sweepingness-n	Number=Plur	dema	0
+sweepings	0	dema-sweepings-n	Number=Sing	dema	0
+sweeps	0	dema-sweeps-n	Number=Sing	dema	0
+sweepstake	0	dema-sweepstake-n	Number=Sing	dema	0
+sweepstakes	0	oewn-sweepstakes-n	Number=Sing	dema	0
+sweer	0	dema-sweer-a	Degree=Pos	dema	0
+sweerer	0	dema-sweer-a	Degree=Cmp	dema	0
+sweerest	0	dema-sweer-a	Degree=Sup	dema	0
+sweerly	0	dema-sweer-r		dema	0
+sweerness	0	dema-sweer-n	Number=Plur	dema	0
+sweet	0	oewn-sweet-a	Degree=Pos	dema	0
+sweet	1	oewn-sweet-r	Degree=Pos	dema	0
+sweet	2	oewn-sweet-n	Number=Sing	dema	0
+sweetbells	0	dema-sweetbells-n	Number=Sing	dema	0
+sweetbellses	0	dema-sweetbells-n	Number=Plur	dema	0
+sweetbread	0	oewn-sweetbread-n	Number=Sing	dema	0
+sweetbreads	0	oewn-sweetbread-n	Number=Plur	dema	0
+sweetbrier	0	oewn-sweetbrier-n	Number=Sing	dema	0
+sweetbriers	0	oewn-sweetbrier-n	Number=Plur	dema	0
+sweeten	0	oewn-sweeten-v	VerbForm=Inf	dema	0
+sweetened	0	oewn-sweeten-v	Tense=Past	dema	0
+sweetener	0	oewn-sweetener-n	Number=Sing	dema	0
+sweeteners	0	dema-sweeten-n	Number=Plur	dema	0
+sweetening	0	oewn-sweetening-n	Number=Sing	dema	0
+sweetening	1	dema-sweetening-v	VerbForm=Inf	dema	0
+sweeteningly	0	dema-sweeten-r		dema	0
+sweetenings	0	oewn-sweetening-n	Number=Plur	dema	0
+sweetens	0	oewn-sweeten-v	Person=3+Tense=Pres	dema	0
+sweeter	0	oewn-sweet-a	Degree=Cmp	dema	0
+sweeter	1	oewn-sweet-r	Degree=Cmp	dema	0
+sweetest	0	oewn-sweet-a	Degree=Sup	dema	0
+sweetest	1	oewn-sweet-r	Degree=Sup	dema	0
+sweetheart	0	oewn-sweetheart-n	Number=Sing	dema	0
+sweethearts	0	oewn-sweetheart-n	Number=Plur	dema	0
+sweetie	0	oewn-sweetie-n	Number=Sing	dema	0
+sweeties	0	oewn-sweetie-n	Number=Plur	dema	0
+sweetiewife	0	dema-sweetiewife-n	Number=Sing	dema	0
+sweetiewifes	0	dema-sweetiewife-n	Number=Plur	dema	0
+sweeting	0	dema-sweeting-n	Number=Sing	dema	0
+sweetings	0	dema-sweeting-n	Number=Plur	dema	0
+sweetless	0	dema-sweetless-a	Degree=Pos	dema	0
+sweetlessly	0	dema-sweetless-r		dema	0
+sweetlessness	0	dema-sweetless-n	Number=Plur	dema	0
+sweetlike	0	dema-sweetlike-a	Degree=Pos	dema	0
+sweetlikely	0	dema-sweetlike-r		dema	0
+sweetlikeness	0	dema-sweetlike-n	Number=Plur	dema	0
+sweetliker	0	dema-sweetlike-a	Degree=Cmp	dema	0
+sweetlikest	0	dema-sweetlike-a	Degree=Sup	dema	0
+sweetly	0	oewn-sweetly-r	Degree=Pos	dema	0
+sweetman	0	dema-sweetman-n	Number=Sing	dema	0
+sweetmeal	0	dema-sweetmeal-a	Degree=Pos	dema	0
+sweetmeally	0	dema-sweetmeal-r		dema	0
+sweetmealness	0	dema-sweetmeal-n	Number=Plur	dema	0
+sweetmeat	0	oewn-sweetmeat-n	Number=Sing	dema	0
+sweetmeats	0	oewn-sweetmeat-n	Number=Plur	dema	0
+sweetmen	0	dema-sweetman-n	Number=Plur	dema	0
+sweetness	0	oewn-sweetness-n	Number=Sing	dema	0
+sweetnesses	0	oewn-sweetness-n	Number=Plur	dema	0
+sweets	0	oewn-sweet-n	Number=Plur	dema	0
+sweetsop	0	oewn-sweetsop-n	Number=Sing	dema	0
+sweetsops	0	oewn-sweetsop-n	Number=Plur	dema	0
+sweetweed	0	dema-sweetweed-n	Number=Sing	dema	0
+sweetweeds	0	dema-sweetweed-n	Number=Plur	dema	0
+swell	0	oewn-swell-v	VerbForm=Inf	dema	0
+swell	1	oewn-swell-n	Number=Sing	dema	0
+swell	2	oewn-swell-a	Degree=Pos	dema	0
+swelled	0	dema-swelled-v	VerbForm=Inf	dema	0
+sweller	0	oewn-swell-n	Number=Plur	dema	0
+sweller	1	oewn-swell-a	Degree=Cmp	dema	0
+swellers	0	oewn-swell-n	Number=Plur	dema	0
+swellest	0	oewn-swell-a	Degree=Sup	dema	0
+swellfish	0	dema-swellfish-n	Number=Sing	dema	0
+swellfishes	0	dema-swellfish-n	Number=Plur	dema	0
+swellhead	0	dema-swellhead-v	VerbForm=Inf	dema	0
+swellhead	1	oewn-swellhead-n	Number=Sing	dema	0
+swellheaded	0	dema-swellheaded-a	Degree=Pos	dema	0
+swellheaded	1	dema-swellheaded-v	VerbForm=Inf	dema	0
+swellheadedly	0	dema-swellheaded-r		dema	0
+swellheadedness	0	dema-swellheadedness-n	Number=Sing	dema	0
+swellheadednesses	0	dema-swellheadedness-n	Number=Plur	dema	0
+swellheader	0	oewn-swellhead-n	Number=Plur	dema	0
+swellheaders	0	oewn-swellhead-n	Number=Plur	dema	0
+swellheading	0	dema-swellhead-v	VerbForm=Ger	dema	0
+swellheadingly	0	dema-swellhead-r		dema	0
+swellheads	0	dema-swellhead-v	Person=3+Tense=Pres	dema	0
+swellheads	1	oewn-swellhead-n	Number=Plur	dema	0
+swelling	0	oewn-swelling-n	Number=Sing	dema	0
+swelling	1	dema-swelling-v	VerbForm=Inf	dema	0
+swellingly	0	dema-swell-r		dema	0
+swellings	0	oewn-swelling-n	Number=Plur	dema	0
+swellness	0	oewn-swell-n	Number=Plur	dema	0
+swells	0	oewn-swell-v	Person=3+Tense=Pres	dema	0
+swells	1	oewn-swell-n	Number=Plur	dema	0
+swelly	0	dema-swell-r		dema	0
+swelter	0	oewn-swelter-v	VerbForm=Inf	dema	0
+swelter	1	dema-swelter-n	Number=Sing	dema	0
+sweltered	0	oewn-swelter-v	Tense=Past	dema	0
+sweltering	0	oewn-sweltering-a	Degree=Pos	dema	0
+sweltering	1	dema-sweltering-v	VerbForm=Inf	dema	0
+swelteringly	0	dema-swelteringly-r	Degree=Pos	dema	0
+swelters	0	oewn-swelter-v	Person=3+Tense=Pres	dema	0
+swelters	1	dema-swelter-n	Number=Plur	dema	0
+swept	0	dema-swept-v	VerbForm=Inf	dema	0
+sweptback	0	oewn-sweptback-a	Degree=Pos	dema	0
+sweptbacker	0	oewn-sweptback-a	Degree=Cmp	dema	0
+sweptbackest	0	oewn-sweptback-a	Degree=Sup	dema	0
+sweptbackly	0	dema-sweptback-r		dema	0
+sweptbackness	0	dema-sweptback-n	Number=Plur	dema	0
+sweptwing	0	oewn-sweptwing-a	Degree=Pos	dema	0
+sweptwing	1	dema-sweptwing-v	VerbForm=Inf	dema	0
+sweptwinged	0	dema-sweptwing-v	Tense=Past	dema	0
+sweptwinger	0	dema-sweptwing-n	Number=Plur	dema	0
+sweptwingers	0	dema-sweptwing-n	Number=Plur	dema	0
+sweptwinging	0	dema-sweptwing-v	VerbForm=Ger	dema	0
+sweptwingingly	0	dema-sweptwing-r		dema	0
+sweptwingly	0	dema-sweptwing-r		dema	0
+sweptwingness	0	dema-sweptwing-n	Number=Plur	dema	0
+sweptwings	0	dema-sweptwing-v	Person=3+Tense=Pres	dema	0
+swervable	0	dema-swervable-a	Degree=Pos	dema	0
+swervableness	0	dema-swervable-n	Number=Plur	dema	0
+swervably	0	dema-swervable-r		dema	0
+swerve	0	oewn-swerve-v	VerbForm=Inf	dema	0
+swerve	1	oewn-swerve-n	Number=Sing	dema	0
+swerved	0	oewn-swerve-v	Tense=Past	dema	0
+swerver	0	dema-swerver-n	Number=Sing	dema	0
+swervers	0	oewn-swerve-n	Number=Plur	dema	0
+swerves	0	oewn-swerve-v	Person=3+Tense=Pres	dema	0
+swerves	1	oewn-swerve-n	Number=Plur	dema	0
+swerving	0	oewn-swerve-v	VerbForm=Ger	dema	0
+swervingly	0	dema-swerve-r		dema	0
+sweven	0	dema-sweven-n	Number=Sing	dema	0
+swevens	0	dema-sweven-n	Number=Plur	dema	0
+swies	0	dema-swy-n	Number=Plur	dema	0
+swift	0	oewn-swift-a	Degree=Pos	dema	0
+swift	1	dema-swift-r	Degree=Pos	dema	0
+swift	2	oewn-swift-n	Number=Sing	dema	0
+swifter	0	dema-swifter-n	Number=Sing	dema	0
+swifters	0	dema-swifter-n	Number=Plur	dema	0
+swiftest	0	oewn-swift-a	Degree=Sup	dema	0
+swiftest	1	dema-swift-r	Degree=Sup	dema	0
+swiftie	0	oewn-swiftie-n	Number=Sing	dema	0
+swifties	0	oewn-swiftie-n	Number=Plur	dema	0
+swiftlet	0	oewn-swiftlet-n	Number=Sing	dema	0
+swiftlets	0	oewn-swiftlet-n	Number=Plur	dema	0
+swiftly	0	oewn-swiftly-r	Degree=Pos	dema	0
+swiftness	0	oewn-swiftness-n	Number=Sing	dema	0
+swiftnesses	0	oewn-swiftness-n	Number=Plur	dema	0
+swifts	0	oewn-swift-n	Number=Plur	dema	0
+swig	0	oewn-swig-n	Number=Sing	dema	0
+swig	1	oewn-swig-v	VerbForm=Inf	dema	0
+swigged	0	dema-swigged-v	VerbForm=Inf	dema	0
+swigger	0	dema-swigger-n	Number=Sing	dema	0
+swiggers	0	oewn-swig-n	Number=Plur	dema	0
+swigging	0	dema-swigging-v	VerbForm=Inf	dema	0
+swiggingly	0	dema-swig-r		dema	0
+swigs	0	oewn-swig-n	Number=Plur	dema	0
+swigs	1	oewn-swig-v	Person=3+Tense=Pres	dema	0
+swill	0	oewn-swill-v	VerbForm=Inf	dema	0
+swill	1	oewn-swill-n	Number=Sing	dema	0
+swilled	0	oewn-swill-v	Tense=Past	dema	0
+swiller	0	dema-swiller-n	Number=Sing	dema	0
+swillers	0	oewn-swill-n	Number=Plur	dema	0
+swilling	0	oewn-swill-v	VerbForm=Ger	dema	0
+swillingly	0	dema-swill-r		dema	0
+swills	0	oewn-swill-v	Person=3+Tense=Pres	dema	0
+swills	1	oewn-swill-n	Number=Plur	dema	0
+swim	0	oewn-swim-v	VerbForm=Inf	dema	0
+swim	1	oewn-swim-n	Number=Sing	dema	0
+swimmable	0	dema-swimmable-a	Degree=Pos	dema	0
+swimmableness	0	dema-swimmable-n	Number=Plur	dema	0
+swimmably	0	dema-swimmable-r		dema	0
+swimmer	0	oewn-swim-n	Number=Plur	dema	0
+swimmeret	0	oewn-swimmeret-n	Number=Sing	dema	0
+swimmerets	0	oewn-swimmeret-n	Number=Plur	dema	0
+swimmers	0	oewn-swim-n	Number=Plur	dema	0
+swimming	0	oewn-swimming-n	Number=Sing	dema	0
+swimming	1	dema-swimming-v	VerbForm=Inf	dema	0
+swimming	2	oewn-swimming-a	Degree=Pos	dema	0
+swimmingly	0	oewn-swimmingly-r	Degree=Pos	dema	0
+swimmingness	0	dema-swimmingness-n	Number=Sing	dema	0
+swimmingnesses	0	dema-swimmingness-n	Number=Plur	dema	0
+swimmings	0	oewn-swimming-n	Number=Plur	dema	0
+swims	0	oewn-swim-v	Person=3+Tense=Pres	dema	0
+swims	1	oewn-swim-n	Number=Plur	dema	0
+swimsuit	0	oewn-swimsuit-n	Number=Sing	dema	0
+swimsuits	0	oewn-swimsuit-n	Number=Plur	dema	0
+swindle	0	oewn-swindle-v	VerbForm=Inf	dema	0
+swindle	1	oewn-swindle-n	Number=Sing	dema	0
+swindleable	0	dema-swindleable-a	Degree=Pos	dema	0
+swindleableness	0	dema-swindleable-n	Number=Plur	dema	0
+swindleably	0	dema-swindleable-r		dema	0
+swindled	0	dema-swindled-a	Degree=Pos	dema	0
+swindled	1	dema-swindled-v	VerbForm=Inf	dema	0
+swindledly	0	dema-swindled-r		dema	0
+swindler	0	oewn-swindler-n	Number=Sing	dema	0
+swindlers	0	oewn-swindle-n	Number=Plur	dema	0
+swindles	0	oewn-swindle-v	Person=3+Tense=Pres	dema	0
+swindles	1	oewn-swindle-n	Number=Plur	dema	0
+swindling	0	oewn-swindle-v	VerbForm=Ger	dema	0
+swindlingly	0	dema-swindlingly-r	Degree=Pos	dema	0
+swine	0	oewn-swine-n	Number=Sing	dema	0
+swineherd	0	oewn-swineherd-n	Number=Sing	dema	0
+swineherds	0	oewn-swineherd-n	Number=Plur	dema	0
+swineherdship	0	dema-swineherdship-n	Number=Sing	dema	0
+swineherdships	0	dema-swineherdship-n	Number=Plur	dema	0
+swinepox	0	dema-swinepox-n	Number=Sing	dema	0
+swinepoxes	0	dema-swinepox-n	Number=Plur	dema	0
+swines	0	oewn-swine-n	Number=Plur	dema	0
+swing	0	oewn-swing-n	Number=Sing	dema	1
+swing	1	oewn-swing-v	VerbForm=Inf	dema	1
+swingable	0	dema-swingable-a	Degree=Pos	dema	0
+swingableness	0	dema-swingable-n	Number=Plur	dema	0
+swingably	0	dema-swingable-r		dema	0
+swingback	0	dema-swingback-n	Number=Sing	dema	0
+swingbacks	0	dema-swingback-n	Number=Plur	dema	0
+swingboat	0	dema-swingboat-n	Number=Sing	dema	0
+swingboats	0	dema-swingboat-n	Number=Plur	dema	0
+swinge	0	oewn-swinge-v	VerbForm=Inf	dema	0
+swinged	0	oewn-swing-v	Tense=Past	dema	1
+swingeing	0	oewn-swingeing-a	Degree=Pos	dema	0
+swingeing	1	dema-swingeing-v	VerbForm=Inf	dema	0
+swingeingly	0	dema-swingeingly-r	Degree=Pos	dema	0
+swinger	0	oewn-swinger-n	Number=Sing	dema	0
+swingers	0	oewn-swing-n	Number=Plur	dema	1
+swinges	0	oewn-swinge-v	Person=3+Tense=Pres	dema	0
+swinging	0	oewn-swing-n	Number=Plur	dema	1
+swinging	1	oewn-swing-v	VerbForm=Ger	dema	1
+swingingly	0	dema-swingingly-r	Degree=Pos	dema	0
+swingle	0	dema-swingle-n	Number=Sing	dema	0
+swingle	1	dema-swingle-v	VerbForm=Inf	dema	0
+swinglebar	0	dema-swinglebar-n	Number=Sing	dema	0
+swinglebars	0	dema-swinglebar-n	Number=Plur	dema	0
+swingled	0	dema-swingled-v	VerbForm=Inf	dema	0
+swingler	0	dema-swingle-n	Number=Plur	dema	0
+swinglers	0	dema-swingle-n	Number=Plur	dema	0
+swingles	0	dema-swingle-n	Number=Plur	dema	0
+swingles	1	dema-swingle-v	Person=3+Tense=Pres	dema	0
+swingletree	0	oewn-swingletree-n	Number=Sing	dema	0
+swingletrees	0	oewn-swingletree-n	Number=Plur	dema	0
+swingling	0	dema-swingling-v	VerbForm=Inf	dema	0
+swinglingly	0	dema-swingle-r		dema	0
+swingometer	0	dema-swingometer-n	Number=Sing	dema	0
+swingometers	0	dema-swingometer-n	Number=Plur	dema	0
+swings	0	oewn-swing-n	Number=Plur	dema	1
+swings	1	oewn-swing-v	Person=3+Tense=Pres	dema	1
+swingtree	0	dema-swingtree-n	Number=Sing	dema	0
+swingtrees	0	dema-swingtree-n	Number=Plur	dema	0
+swinish	0	oewn-swinish-a	Degree=Pos	dema	0
+swinishly	0	dema-swinishly-r	Degree=Pos	dema	0
+swinishness	0	oewn-swinishness-n	Number=Sing	dema	0
+swinishnesses	0	oewn-swinishness-n	Number=Plur	dema	0
+swink	0	dema-swink-v	VerbForm=Inf	dema	0
+swink	1	dema-swink-n	Number=Sing	dema	0
+swinked	0	dema-swink-v	Tense=Past	dema	0
+swinker	0	dema-swinker-n	Number=Sing	dema	0
+swinkers	0	dema-swink-n	Number=Plur	dema	0
+swinking	0	dema-swink-v	VerbForm=Ger	dema	0
+swinkingly	0	dema-swink-r		dema	0
+swinks	0	dema-swink-v	Person=3+Tense=Pres	dema	0
+swinks	1	dema-swink-n	Number=Plur	dema	0
+swipe	0	oewn-swipe-v	VerbForm=Inf	dema	0
+swipe	1	oewn-swipe-n	Number=Sing	dema	0
+swiped	0	dema-swiped-v	VerbForm=Inf	dema	0
+swiper	0	oewn-swipe-n	Number=Plur	dema	0
+swipers	0	oewn-swipe-n	Number=Plur	dema	0
+swipes	0	dema-swipes-n	Number=Sing	dema	0
+swiping	0	dema-swiping-v	VerbForm=Inf	dema	0
+swipingly	0	dema-swipe-r		dema	0
+swipple	0	dema-swipple-n	Number=Sing	dema	0
+swipples	0	dema-swipple-n	Number=Plur	dema	0
+swirl	0	oewn-swirl-v	VerbForm=Inf	dema	0
+swirl	1	oewn-swirl-n	Number=Sing	dema	0
+swirled	0	oewn-swirl-v	Tense=Past	dema	0
+swirler	0	oewn-swirl-n	Number=Plur	dema	0
+swirlers	0	oewn-swirl-n	Number=Plur	dema	0
+swirlier	0	dema-swirlier-a	Degree=Pos	dema	0
+swirlierly	0	dema-swirlier-r		dema	0
+swirliest	0	dema-swirliest-a	Degree=Pos	dema	0
+swirliestly	0	dema-swirliest-r		dema	0
+swirling	0	oewn-swirl-v	VerbForm=Ger	dema	0
+swirlingly	0	dema-swirlingly-r	Degree=Pos	dema	0
+swirls	0	oewn-swirl-v	Person=3+Tense=Pres	dema	0
+swirls	1	oewn-swirl-n	Number=Plur	dema	0
+swirly	0	dema-swirly-a	Degree=Pos	dema	0
+swish	0	oewn-swish-v	VerbForm=Inf	dema	0
+swish	1	oewn-swish-n	Number=Sing	dema	0
+swish	2	oewn-swish-a	Degree=Pos	dema	0
+swished	0	oewn-swish-v	Tense=Past	dema	0
+swisher	0	oewn-swish-n	Number=Plur	dema	0
+swisher	1	oewn-swish-a	Degree=Cmp	dema	0
+swishers	0	oewn-swish-n	Number=Plur	dema	0
+swishes	0	oewn-swish-v	Person=3+Tense=Pres	dema	0
+swishes	1	oewn-swish-n	Number=Plur	dema	0
+swishest	0	oewn-swish-a	Degree=Sup	dema	0
+swishier	0	dema-swishier-a	Degree=Pos	dema	0
+swishierly	0	dema-swishier-r		dema	0
+swishiest	0	dema-swishiest-a	Degree=Pos	dema	0
+swishiestly	0	dema-swishiest-r		dema	0
+swishily	0	dema-swishy-r		dema	0
+swishiness	0	dema-swishy-n	Number=Plur	dema	0
+swishing	0	oewn-swish-v	VerbForm=Ger	dema	0
+swishingly	0	dema-swishingly-r	Degree=Pos	dema	0
+swishly	0	dema-swish-r		dema	0
+swishness	0	oewn-swish-n	Number=Plur	dema	0
+swishy	0	oewn-swishy-a	Degree=Pos	dema	0
+switch	0	oewn-switch-n	Number=Sing	dema	0
+switch	1	oewn-switch-v	VerbForm=Inf	dema	0
+switchback	0	dema-switchback-n	Number=Sing	dema	0
+switchbacks	0	dema-switchback-n	Number=Plur	dema	0
+switchblade	0	oewn-switchblade-n	Number=Sing	dema	0
+switchblades	0	oewn-switchblade-n	Number=Plur	dema	0
+switchboard	0	oewn-switchboard-n	Number=Sing	dema	0
+switchboards	0	oewn-switchboard-n	Number=Plur	dema	0
+switched	0	oewn-switch-v	Tense=Past	dema	0
+switcher	0	oewn-switcher-n	Number=Sing	dema	0
+switcheroo	0	oewn-switcheroo-n	Number=Sing	dema	0
+switcheroos	0	oewn-switcheroo-n	Number=Plur	dema	0
+switchers	0	oewn-switch-n	Number=Plur	dema	0
+switches	0	oewn-switch-n	Number=Plur	dema	0
+switches	1	oewn-switch-v	Person=3+Tense=Pres	dema	0
+switchgirl	0	dema-switchgirl-n	Number=Sing	dema	0
+switchgirls	0	dema-switchgirl-n	Number=Plur	dema	0
+switching	0	oewn-switch-v	VerbForm=Ger	dema	0
+switchingly	0	dema-switch-r		dema	0
+switchlike	0	dema-switchlike-a	Degree=Pos	dema	0
+switchlikely	0	dema-switchlike-r		dema	0
+switchlikeness	0	dema-switchlike-n	Number=Plur	dema	0
+switchman	0	oewn-switchman-n	Number=Sing	dema	0
+switchmen	0	dema-switchmen-n	Number=Sing	dema	0
+switchmens	0	dema-switchmen-n	Number=Plur	dema	0
+switchover	0	dema-switchover-n	Number=Sing	dema	0
+switchovers	0	dema-switchover-n	Number=Plur	dema	0
+switchs	0	oewn-switch-n	Number=Plur	dema	0
+switchs	1	oewn-switch-v	Person=3+Tense=Pres	dema	0
+switchyard	0	dema-switchyard-n	Number=Sing	dema	0
+switchyards	0	dema-switchyard-n	Number=Plur	dema	0
+swith	0	dema-swith-r	Degree=Pos	dema	0
+swith	1	dema-swith-v	VerbForm=Inf	dema	0
+swithed	0	dema-swith-v	Tense=Past	dema	0
+swither	0	oewn-swither-n	Number=Sing	dema	0
+swithers	0	dema-swith-n	Number=Plur	dema	0
+swithest	0	dema-swith-r	Degree=Sup	dema	0
+swithing	0	dema-swith-v	VerbForm=Ger	dema	0
+swithingly	0	dema-swith-r		dema	0
+swiths	0	dema-swith-v	Person=3+Tense=Pres	dema	0
+swive	0	dema-swive-v	VerbForm=Inf	dema	0
+swived	0	dema-swive-v	Tense=Past	dema	0
+swivel	0	oewn-swivel-n	Number=Sing	dema	0
+swivel	1	oewn-swivel-v	VerbForm=Inf	dema	0
+swiveled	0	dema-swiveled-v	VerbForm=Inf	dema	0
+swiveler	0	oewn-swivel-n	Number=Plur	dema	0
+swivelers	0	oewn-swivel-n	Number=Plur	dema	0
+swiveling	0	dema-swiveling-v	VerbForm=Inf	dema	0
+swivelingly	0	dema-swivel-r		dema	0
+swivelled	0	dema-swivelled-v	VerbForm=Inf	dema	0
+swivelling	0	dema-swivelling-v	VerbForm=Inf	dema	0
+swivellingly	0	dema-swivel-r		dema	0
+swivels	0	oewn-swivel-n	Number=Plur	dema	0
+swivels	1	oewn-swivel-v	Person=3+Tense=Pres	dema	0
+swiveltail	0	dema-swiveltail-n	Number=Sing	dema	0
+swiveltails	0	dema-swiveltail-n	Number=Plur	dema	0
+swiver	0	dema-swive-n	Number=Plur	dema	0
+swivers	0	dema-swive-n	Number=Plur	dema	0
+swives	0	dema-swive-v	Person=3+Tense=Pres	dema	0
+swivet	0	oewn-swivet-n	Number=Sing	dema	0
+swivets	0	oewn-swivet-n	Number=Plur	dema	0
+swiving	0	dema-swive-v	VerbForm=Ger	dema	0
+swivingly	0	dema-swive-r		dema	0
+swizzle	0	oewn-swizzle-n	Number=Sing	dema	0
+swizzle	1	dema-swizzle-v	VerbForm=Inf	dema	0
+swizzled	0	dema-swizzle-v	Tense=Past	dema	0
+swizzler	0	oewn-swizzle-n	Number=Plur	dema	0
+swizzlers	0	oewn-swizzle-n	Number=Plur	dema	0
+swizzles	0	oewn-swizzle-n	Number=Plur	dema	0
+swizzles	1	dema-swizzle-v	Person=3+Tense=Pres	dema	0
+swizzling	0	dema-swizzle-v	VerbForm=Ger	dema	0
+swizzlingly	0	dema-swizzle-r		dema	0
+swleaves	0	dema-swleaves-n	Number=Sing	dema	0
+swleaveses	0	dema-swleaves-n	Number=Plur	dema	0
+swob	0	oewn-swob-n	Number=Sing	dema	0
+swob	1	oewn-swob-v	VerbForm=Inf	dema	0
+swobbed	0	oewn-swob-v	Tense=Past	dema	0
+swobber	0	oewn-swob-n	Number=Plur	dema	0
+swobbers	0	oewn-swob-n	Number=Plur	dema	0
+swobbing	0	oewn-swob-v	VerbForm=Ger	dema	0
+swobbingly	0	dema-swob-r		dema	0
+swobs	0	oewn-swob-n	Number=Plur	dema	0
+swobs	1	oewn-swob-v	Person=3+Tense=Pres	dema	0
+swollen	0	dema-swollen-v	VerbForm=Inf	dema	0
+swollen	1	oewn-swollen-a	Degree=Pos	dema	0
+swollenly	0	dema-swollenly-r	Degree=Pos	dema	0
+swollenness	0	dema-swollenness-n	Number=Sing	dema	0
+swollennesses	0	dema-swollenness-n	Number=Plur	dema	0
+swoln	0	dema-swoln-a	Degree=Pos	dema	0
+swolner	0	dema-swoln-a	Degree=Cmp	dema	0
+swolnest	0	dema-swoln-a	Degree=Sup	dema	0
+swolnly	0	dema-swoln-r		dema	0
+swolnness	0	dema-swoln-n	Number=Plur	dema	0
+swonk	0	dema-swonk-v	VerbForm=Inf	dema	0
+swonked	0	dema-swonk-v	Tense=Past	dema	0
+swonken	0	dema-swonken-v	VerbForm=Inf	dema	0
+swonkened	0	dema-swonken-v	Tense=Past	dema	0
+swonkener	0	dema-swonken-n	Number=Plur	dema	0
+swonkeners	0	dema-swonken-n	Number=Plur	dema	0
+swonkening	0	dema-swonken-v	VerbForm=Ger	dema	0
+swonkeningly	0	dema-swonken-r		dema	0
+swonkens	0	dema-swonken-v	Person=3+Tense=Pres	dema	0
+swonker	0	dema-swonk-n	Number=Plur	dema	0
+swonkers	0	dema-swonk-n	Number=Plur	dema	0
+swonking	0	dema-swonk-v	VerbForm=Ger	dema	0
+swonkingly	0	dema-swonk-r		dema	0
+swonks	0	dema-swonk-v	Person=3+Tense=Pres	dema	0
+swoon	0	oewn-swoon-v	VerbForm=Inf	dema	0
+swoon	1	oewn-swoon-n	Number=Sing	dema	0
+swooned	0	oewn-swoon-v	Tense=Past	dema	0
+swooner	0	oewn-swoon-n	Number=Plur	dema	0
+swooners	0	oewn-swoon-n	Number=Plur	dema	0
+swooning	0	oewn-swoon-v	VerbForm=Ger	dema	0
+swooningly	0	dema-swoon-r		dema	0
+swoons	0	oewn-swoon-v	Person=3+Tense=Pres	dema	0
+swoons	1	oewn-swoon-n	Number=Plur	dema	0
+swoop	0	oewn-swoop-v	VerbForm=Inf	dema	0
+swoop	1	oewn-swoop-n	Number=Sing	dema	0
+swooped	0	oewn-swoop-v	Tense=Past	dema	0
+swooper	0	oewn-swoop-n	Number=Plur	dema	0
+swoopers	0	oewn-swoop-n	Number=Plur	dema	0
+swooping	0	oewn-swoop-v	VerbForm=Ger	dema	0
+swoopingly	0	dema-swoop-r		dema	0
+swoops	0	oewn-swoop-v	Person=3+Tense=Pres	dema	0
+swoops	1	oewn-swoop-n	Number=Plur	dema	0
+swoose	0	dema-swoose-n	Number=Sing	dema	0
+swooses	0	dema-swoose-n	Number=Plur	dema	0
+swoosh	0	oewn-swoosh-v	VerbForm=Inf	dema	0
+swoosh	1	oewn-swoosh-n	Number=Sing	dema	0
+swooshed	0	oewn-swoosh-v	Tense=Past	dema	0
+swoosher	0	oewn-swoosh-n	Number=Plur	dema	0
+swooshers	0	oewn-swoosh-n	Number=Plur	dema	0
+swooshes	0	oewn-swoosh-v	Person=3+Tense=Pres	dema	0
+swooshes	1	oewn-swoosh-n	Number=Plur	dema	0
+swooshing	0	oewn-swoosh-v	VerbForm=Ger	dema	0
+swooshingly	0	dema-swoosh-r		dema	0
+swop	0	oewn-swop-n	Number=Sing	dema	0
+swop	1	oewn-swop-v	VerbForm=Inf	dema	0
+swopped	0	dema-swopped-v	VerbForm=Inf	dema	0
+swopper	0	oewn-swop-n	Number=Plur	dema	0
+swoppers	0	oewn-swop-n	Number=Plur	dema	0
+swopping	0	dema-swopping-v	VerbForm=Inf	dema	0
+swoppingly	0	dema-swop-r		dema	0
+swops	0	oewn-swop-n	Number=Plur	dema	0
+swops	1	oewn-swop-v	Person=3+Tense=Pres	dema	0
+sword	0	oewn-sword-n	Number=Sing	dema	0
+swordbearer	0	dema-swordbearer-n	Number=Sing	dema	0
+swordbearers	0	dema-swordbearer-n	Number=Plur	dema	0
+swordbill	0	dema-swordbill-n	Number=Sing	dema	0
+swordbills	0	dema-swordbill-n	Number=Plur	dema	0
+swordcraft	0	dema-swordcraft-n	Number=Sing	dema	0
+swordcrafts	0	dema-swordcraft-n	Number=Plur	dema	0
+swordfish	0	oewn-swordfish-n	Number=Sing	dema	0
+swordfishes	0	oewn-swordfish-n	Number=Plur	dema	0
+swordless	0	dema-swordless-a	Degree=Pos	dema	0
+swordlessly	0	dema-swordless-r		dema	0
+swordlessness	0	dema-swordless-n	Number=Plur	dema	0
+swordlike	0	oewn-swordlike-a	Degree=Pos	dema	0
+swordlikely	0	dema-swordlike-r		dema	0
+swordlikeness	0	dema-swordlike-n	Number=Plur	dema	0
+swordliker	0	oewn-swordlike-a	Degree=Cmp	dema	0
+swordlikest	0	oewn-swordlike-a	Degree=Sup	dema	0
+swordman	0	dema-swordman-n	Number=Sing	dema	0
+swordmanship	0	dema-swordmanship-n	Number=Sing	dema	0
+swordmanships	0	dema-swordmanship-n	Number=Plur	dema	0
+swordmen	0	dema-swordmen-n	Number=Sing	dema	0
+swordmens	0	dema-swordmen-n	Number=Plur	dema	0
+swordplay	0	oewn-swordplay-n	Number=Sing	dema	0
+swordplayer	0	dema-swordplayer-n	Number=Sing	dema	0
+swordplayers	0	dema-swordplayer-n	Number=Plur	dema	0
+swordplays	0	oewn-swordplay-n	Number=Plur	dema	0
+swords	0	oewn-sword-n	Number=Plur	dema	0
+swordsman	0	oewn-swordsman-n	Number=Sing	dema	0
+swordsmans	0	oewn-swordsman-n	Number=Plur	dema	0
+swordsmanship	0	oewn-swordsmanship-n	Number=Sing	dema	0
+swordsmanships	0	oewn-swordsmanship-n	Number=Plur	dema	0
+swordsmen	0	dema-swordsmen-n	Number=Sing	dema	0
+swordsmens	0	dema-swordsmen-n	Number=Plur	dema	0
+swordstick	0	dema-swordstick-n	Number=Sing	dema	0
+swordsticks	0	dema-swordstick-n	Number=Plur	dema	0
+swordtail	0	oewn-swordtail-n	Number=Sing	dema	0
+swordtails	0	oewn-swordtail-n	Number=Plur	dema	0
+swore	0	dema-swore-v	VerbForm=Inf	dema	0
+sworn	0	dema-sworn-v	VerbForm=Inf	dema	0
+sworn	1	oewn-sworn-a	Degree=Pos	dema	0
+swot	0	oewn-swot-v	VerbForm=Inf	dema	0
+swot	1	oewn-swot-n	Number=Sing	dema	0
+swots	0	oewn-swot-v	Person=3+Tense=Pres	dema	0
+swots	1	oewn-swot-n	Number=Plur	dema	0
+swotted	0	dema-swotted-v	VerbForm=Inf	dema	0
+swotter	0	dema-swotter-n	Number=Sing	dema	0
+swotters	0	oewn-swot-n	Number=Plur	dema	0
+swotting	0	dema-swotting-v	VerbForm=Inf	dema	0
+swottingly	0	dema-swot-r		dema	0
+swound	0	dema-swound-n	Number=Sing	dema	0
+swound	1	dema-swound-v	VerbForm=Inf	dema	0
+swounded	0	dema-swound-v	Tense=Past	dema	0
+swounder	0	dema-swound-n	Number=Plur	dema	0
+swounders	0	dema-swound-n	Number=Plur	dema	0
+swounding	0	dema-swound-v	VerbForm=Ger	dema	0
+swoundingly	0	dema-swound-r		dema	0
+swounds	0	dema-swounds-i		dema	0
+swum	0	dema-swum-v	VerbForm=Inf	dema	0
+swung	0	dema-swung-v	VerbForm=Inf	dema	0
+swy	0	dema-swy-n	Number=Sing	dema	0

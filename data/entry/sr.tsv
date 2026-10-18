@@ -1,4 +1,7 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-srac-n	srac	n	0	1	1	dema
+dema-sri-n	sri	n	0	1	1	dema
+dema-sruti-n	sruti	n	0	1	1	dema
 oewn-Sr-n	Sr	n	0	1	1	oewn
 oewn-Sravana-n	Sravana	n	0	1	1	oewn
 oewn-Sri_Lanka_rupee-n	Sri Lanka rupee	n	0	3	3	oewn

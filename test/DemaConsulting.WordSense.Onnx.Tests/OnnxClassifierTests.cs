@@ -35,10 +35,10 @@ public class OnnxClassifierTests
         var w = source.Weights;
         var scaled = new LemmaWeights(w.Kind, [.. w.Weights.Select(x => x * scale)], [.. w.Bias.Select(x => x * scale)], w.AbstainMargin, w.Dimension);
         var data = new WeightsData(embedded.Data.ModelId, embedded.Data.Dimension, embedded.Data.Mean, [new WeightedLemma(source.Lemma, source.Senses, scaled)]);
-        return new WeightedLemmaTable(data, WordLexicon.Words);
+        return new WeightedLemmaTable(data, WordLexicon.ClassesOf);
     }
 
-    private static string SingleSenseWord() => WordLexicon.Words.First(p => p.Value.Length == 1 && p.Key.All(char.IsAsciiLetterLower)).Key;
+    private static string SingleSenseWord() => WordLexicon.View.First(p => p.Value.Length == 1 && p.Key.All(char.IsAsciiLetterLower)).Key;
 
     /// <summary>
     ///     An untrained trailing Auxiliary sense is not counted: the encoder models never answer it, so the fallback
@@ -49,7 +49,7 @@ public class OnnxClassifierTests
     {
         var results = OnnxClassifier.ResolveWithoutModel(["is", "will", "can", "have", "record"], CancellationToken.None);
 
-        Assert.Equal(new WordSense("is", WordLexicon.Words["is"][0], 1), results[0]);
+        Assert.Equal(new WordSense("is", WordLexicon.View["is"][0], 1), results[0]);
         Assert.Equal(PartOfSpeech.Verb, results[1].Details?.PartOfSpeech);
         Assert.Equal(0.5, results[1].Confidence);
         Assert.Equal(PartOfSpeech.Verb, results[2].Details?.PartOfSpeech);
@@ -97,7 +97,7 @@ public class OnnxClassifierTests
 
         var result = await classifier.ClassifyAsync([word], TestContext.Current.CancellationToken);
 
-        Assert.Equal(new WordSense(word, WordLexicon.Words[word][0], 1), result[0]);
+        Assert.Equal(new WordSense(word, WordLexicon.View[word][0], 1), result[0]);
     }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class OnnxClassifierTests
     public void OnnxClassifier_ClassifyAsync_FormWithFewerSenses_RanksOnlyItsOwnSenses()
     {
         var lemma = Embedded().Find("record")!;
-        var all = WordLexicon.Words["record"];
+        var all = WordLexicon.ClassesOf("record");
         Assert.True(all.Length > 1, "The lemma needs several senses.");
         var feature = new float[lemma.Weights.Dimension];
         feature[0] = 1f;
@@ -182,7 +182,7 @@ public class OnnxClassifierTests
     public void OnnxClassifier_Pick_NonPrefixSubset_IsRankedByIdentity()
     {
         var lemma = Embedded().Find("bow")!;
-        var all = WordLexicon.Words["bows"];
+        var all = WordLexicon.View["bows"];
         Assert.Equal(3, all.Length);
         ImmutableArray<WordDetails> subset = [all[0], all[2]];
         var random = new Random(7);
@@ -221,7 +221,7 @@ public class OnnxClassifierTests
 
         var result = await classifier.ClassifyAsync(["bowed"], TestContext.Current.CancellationToken);
 
-        Assert.Equal(new WordSense("bowed", new WordDetails("bow", PartOfSpeech.Verb, "bend", "bow"), 1), result[0]);
+        Assert.Equal(new WordSense("bowed", Assert.Single(WordLexicon.Lookup("bowed")), 1), result[0]);
     }
 
     /// <summary>
@@ -281,12 +281,12 @@ public class OnnxClassifierTests
     public async Task OnnxClassifier_ClassifyAsync_LemmaWithoutWeights_FallsBackToFirstSense()
     {
         using var encoder = Open();
-        var empty = new WeightedLemmaTable(new WeightsData("all-MiniLM-L6-v2-int8", 384, new float[384], []), WordLexicon.Words);
+        var empty = new WeightedLemmaTable(new WeightsData("all-MiniLM-L6-v2-int8", 384, new float[384], []), WordLexicon.ClassesOf);
         var classifier = new OnnxClassifier(encoder, empty);
 
         var result = await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);
 
-        var senses = WordLexicon.Words["record"];
+        var senses = WordLexicon.View["record"];
         Assert.Equal(new WordSense("record", senses[0], 1.0 / senses.Length), result[2]);
     }
 
@@ -298,8 +298,8 @@ public class OnnxClassifierTests
     public void OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked()
     {
         var lemma = Embedded().Find("record")!;
-        var extra = new WordDetails("record", PartOfSpeech.Determiner, null, null);
-        ImmutableArray<WordDetails> candidates = [.. WordLexicon.Words["record"], extra];
+        var extra = new WordDetails(null, "record", PartOfSpeech.Determiner, string.Empty);
+        ImmutableArray<WordDetails> candidates = [.. WordLexicon.ClassesOf("record"), extra];
         var feature = new float[lemma.Weights.Dimension];
         feature[0] = 1f;
 
@@ -318,8 +318,8 @@ public class OnnxClassifierTests
     public void OnnxClassifier_Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly()
     {
         var lemma = Embedded().Find("record")!;
-        var trained = WordLexicon.Words["record"].Where(d => d.PartOfSpeech == PartOfSpeech.Verb).ToList();
-        var extra = new WordDetails("records", PartOfSpeech.Adjective, null, null);
+        var trained = WordLexicon.ClassesOf("record").Where(d => d.PartOfSpeech == PartOfSpeech.Verb).ToList();
+        var extra = new WordDetails(null, "records", PartOfSpeech.Adjective, string.Empty);
         ImmutableArray<WordDetails> candidates = [.. trained, extra];
         var feature = new float[lemma.Weights.Dimension];
         feature[0] = 1f;
@@ -359,7 +359,7 @@ public class OnnxClassifierTests
         var weights = new LemmaWeights(LemmaModelKind.OneVersusRest, new float[source.Senses.Count * 3], new float[source.Senses.Count], 0.1f, 3);
         var table = new WeightedLemmaTable(
             new WeightsData("all-MiniLM-L6-v2-int8", 3, new float[3], [new WeightedLemma("record", source.Senses, weights)]),
-            WordLexicon.Words);
+            WordLexicon.ClassesOf);
         var classifier = new OnnxClassifier(encoder, table);
 
         var result = await classifier.ClassifyAsync(Sentence, TestContext.Current.CancellationToken);

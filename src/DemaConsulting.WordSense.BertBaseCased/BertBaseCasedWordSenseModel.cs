@@ -20,7 +20,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     keeps the case of the text. The alternative <c>DemaConsulting.WordSense.MiniLM</c> is small and fast (22 MiB,
 ///     about 2 ms per sentence) but less accurate (about 97% and 93%); the figures are from
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md and are approximate and
-///     machine dependent. The memory the model adds (about 150 MiB) does not include the 43 MiB of the word lexicon.
+///     machine dependent. The memory the model adds (about 150 MiB) does not include the 15 MiB of the word lexicon.
 ///     </para>
 ///     <para>
 ///     Two kinds of data are involved: the per-lemma classifier weights trained for this encoder are embedded in the

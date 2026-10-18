@@ -5,10 +5,10 @@ namespace DemaConsulting.WordSense.Basic.Tests;
 /// </summary>
 public class SenseFusionTests
 {
-    private static readonly WordDetails Fish = new("bass", PartOfSpeech.Noun, "fish", null);
-    private static readonly WordDetails Music = new("bass", PartOfSpeech.Noun, "music", null);
-    private static readonly WordDetails Verb = new("bass", PartOfSpeech.Verb, null, null);
-    private static readonly WordDetails Auxiliary = new("bass", PartOfSpeech.Auxiliary, null, null);
+    private static readonly WordDetails Fish = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "fish");
+    private static readonly WordDetails Music = WordLexicon.ClassesOf("bass").First(c => WordLexicon.MeaningOf(c) == "music");
+    private static readonly WordDetails Verb = new(null, "bass", PartOfSpeech.Verb, string.Empty);
+    private static readonly WordDetails Auxiliary = new(null, "bass", PartOfSpeech.Auxiliary, string.Empty);
 
     /// <summary>
     ///     The auxiliary tag has the numeric value of the auxiliary part of speech, so the mass of the auxiliary state

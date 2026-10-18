@@ -41,11 +41,11 @@ internal sealed class BasicReadmeSample
         var words = "The hunter fired an arrow from his bow at a deer so we will record a record".Split(' ');
         var results = await model.ClassifyAsync(words);
 
-        // Print the part of speech (or unknown), the confidence and, for a heteronym, the respelling
+        // Print the part of speech (or unknown), the confidence and, for a heteronym, the sense id
         foreach (var result in results)
         {
             var pos = result.Details?.PartOfSpeech.ToString() ?? "unknown";
-            var say = result.Details?.Respelling ?? "";
+            var say = result.Details?.SenseId ?? "";
             Console.WriteLine($"{result.Word,-9} {pos,-12} {result.Confidence,4:F2}  {say}".TrimEnd());
         }
 

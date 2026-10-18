@@ -1,2 +1,6 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-bt-n	bt	n	0	1	1	dema
+dema-btise-n	btise	n	0	1	1	dema
+dema-btl-n	btl	n	0	1	1	dema
+dema-btry-n	btry	n	0	1	1	dema
 oewn-BTU-n	BTU	n	0	1	1	oewn

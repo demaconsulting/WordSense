@@ -1,0 +1,424 @@
+spelling	rank	entry_id	features	source_id	reviewed
+af	0	dema-af-n	Number=Sing	dema	0
+afar	0	oewn-afar-r	Degree=Pos	dema	0
+afar	1	dema-afar-n	Number=Sing	dema	0
+afars	0	dema-afar-n	Number=Plur	dema	0
+afeard	0	oewn-afeard-a	Degree=Pos	dema	0
+afearder	0	oewn-afeard-a	Degree=Cmp	dema	0
+afeardest	0	oewn-afeard-a	Degree=Sup	dema	0
+afeardly	0	dema-afeard-r		dema	0
+afeardness	0	dema-afeard-n	Number=Plur	dema	0
+afebrile	0	oewn-afebrile-a	Degree=Pos	dema	0
+afebrilely	0	dema-afebrile-r		dema	0
+afebrileness	0	dema-afebrile-n	Number=Plur	dema	0
+aff	0	dema-aff-p		dema	0
+aff	1	dema-aff-r	Degree=Pos	dema	0
+affabilities	0	oewn-affability-n	Number=Plur	dema	0
+affability	0	oewn-affability-n	Number=Sing	dema	0
+affable	0	oewn-affable-a	Degree=Pos	dema	0
+affableness	0	oewn-affableness-n	Number=Sing	dema	0
+affablenesses	0	oewn-affableness-n	Number=Plur	dema	0
+affably	0	oewn-affably-r	Degree=Pos	dema	0
+affair	0	oewn-affair-n	Number=Sing	dema	0
+affaire	0	oewn-affaire-n	Number=Sing	dema	0
+affaires	0	dema-affaires-n	Number=Sing	dema	0
+affairs	0	oewn-affairs-n	Number=Sing	dema	0
+affect	0	oewn-affect-n	Number=Sing	dema	1
+affect	1	oewn-affect-v	VerbForm=Inf	dema	1
+affectation	0	oewn-affectation-n	Number=Sing	dema	0
+affectations	0	oewn-affectation-n	Number=Plur	dema	0
+affected	0	oewn-affected-a	Degree=Pos	dema	0
+affected	1	dema-affected-v	VerbForm=Inf	dema	0
+affectedly	0	oewn-affectedly-r	Degree=Pos	dema	0
+affectedness	0	oewn-affectedness-n	Number=Sing	dema	0
+affectednesses	0	oewn-affectedness-n	Number=Plur	dema	0
+affecter	0	dema-affecter-n	Number=Sing	dema	0
+affecters	0	oewn-affect-n	Number=Plur	dema	0
+affecting	0	oewn-affecting-a	Degree=Pos	dema	0
+affecting	1	dema-affecting-v	VerbForm=Inf	dema	0
+affectingly	0	oewn-affectingly-r	Degree=Pos	dema	0
+affection	0	oewn-affection-n	Number=Sing	dema	0
+affectional	0	oewn-affectional-a	Degree=Pos	dema	0
+affectionally	0	dema-affectionally-r	Degree=Pos	dema	0
+affectionate	0	oewn-affectionate-a	Degree=Pos	dema	0
+affectionately	0	oewn-affectionately-r	Degree=Pos	dema	0
+affectionateness	0	oewn-affectionateness-n	Number=Sing	dema	0
+affectionatenesses	0	oewn-affectionateness-n	Number=Plur	dema	0
+affections	0	oewn-affection-n	Number=Plur	dema	0
+affective	0	dema-affective-n	Number=Sing	dema	0
+affective	1	oewn-affective-a	Degree=Pos	dema	0
+affectively	0	dema-affective-r		dema	0
+affectiveness	0	dema-affective-n	Number=Plur	dema	0
+affectives	0	dema-affective-n	Number=Plur	dema	0
+affectivities	0	dema-affectivity-n	Number=Plur	dema	0
+affectivity	0	dema-affectivity-n	Number=Sing	dema	0
+affects	0	oewn-affect-n	Number=Plur	dema	1
+affects	1	oewn-affect-v	Person=3+Tense=Pres	dema	1
+affenpinscher	0	oewn-affenpinscher-n	Number=Sing	dema	0
+affenpinschers	0	oewn-affenpinscher-n	Number=Plur	dema	0
+affer	0	dema-aff-r	Degree=Cmp	dema	0
+afferent	0	oewn-afferent-a	Degree=Pos	dema	0
+afferently	0	dema-afferent-r		dema	0
+afferentness	0	oewn-afferent-n	Number=Plur	dema	0
+affest	0	dema-aff-r	Degree=Sup	dema	0
+affettuoso	0	dema-affettuoso-a	Degree=Pos	dema	0
+affettuoso	1	dema-affettuoso-r	Degree=Pos	dema	0
+affettuosoly	0	dema-affettuoso-r		dema	0
+affiance	0	oewn-affiance-v	VerbForm=Inf	dema	0
+affiance	1	dema-affiance-n	Number=Sing	dema	0
+affianced	0	dema-affianced-a	Degree=Pos	dema	0
+affianced	1	dema-affianced-v	VerbForm=Inf	dema	0
+affiancedly	0	dema-affianced-r		dema	0
+affiancer	0	dema-affiance-n	Number=Plur	dema	0
+affiancers	0	dema-affiance-n	Number=Plur	dema	0
+affiances	0	oewn-affiance-v	Person=3+Tense=Pres	dema	0
+affiances	1	dema-affiance-n	Number=Plur	dema	0
+affiancing	0	dema-affiancing-v	VerbForm=Inf	dema	0
+affiancingly	0	dema-affiance-r		dema	0
+affiant	0	oewn-affiant-n	Number=Sing	dema	0
+affiants	0	oewn-affiant-n	Number=Plur	dema	0
+affiche	0	dema-affiche-n	Number=Sing	dema	0
+affiches	0	dema-affiches-n	Number=Sing	dema	0
+affidavit	0	oewn-affidavit-n	Number=Sing	dema	0
+affidavits	0	oewn-affidavit-n	Number=Plur	dema	0
+affiliable	0	dema-affiliable-a	Degree=Pos	dema	0
+affiliably	0	dema-affiliable-r		dema	0
+affiliate	0	oewn-affiliate-n	Number=Sing	dema	1
+affiliate	1	oewn-affiliate-v	VerbForm=Inf	dema	1
+affiliated	0	dema-affiliated-v	VerbForm=Inf	dema	0
+affiliater	0	oewn-affiliate-n	Number=Plur	dema	0
+affiliaters	0	oewn-affiliate-n	Number=Plur	dema	0
+affiliates	0	oewn-affiliate-n	Number=Plur	dema	1
+affiliates	1	oewn-affiliate-v	Person=3+Tense=Pres	dema	1
+affiliating	0	dema-affiliating-v	VerbForm=Inf	dema	0
+affiliatingly	0	dema-affiliate-r		dema	0
+affiliation	0	oewn-affiliation-n	Number=Sing	dema	0
+affiliations	0	oewn-affiliation-n	Number=Plur	dema	0
+affinal	0	oewn-affinal-a	Degree=Pos	dema	0
+affinally	0	dema-affinal-r		dema	0
+affinalness	0	dema-affinal-n	Number=Plur	dema	0
+affine	0	oewn-affine-a	Degree=Pos	dema	0
+affined	0	oewn-affined-a	Degree=Pos	dema	0
+affined	1	dema-affined-v	VerbForm=Inf	dema	0
+affineded	0	dema-affined-v	Tense=Past	dema	0
+affineder	0	dema-affined-n	Number=Plur	dema	0
+affineders	0	dema-affined-n	Number=Plur	dema	0
+affineding	0	dema-affined-v	VerbForm=Ger	dema	0
+affinedingly	0	dema-affined-r		dema	0
+affinedly	0	dema-affined-r		dema	0
+affinedness	0	dema-affined-n	Number=Plur	dema	0
+affineds	0	dema-affined-v	Person=3+Tense=Pres	dema	0
+affinely	0	dema-affinely-r	Degree=Pos	dema	0
+affineness	0	oewn-affine-n	Number=Plur	dema	0
+affiner	0	oewn-affine-a	Degree=Cmp	dema	0
+affinest	0	oewn-affine-a	Degree=Sup	dema	0
+affinities	0	dema-affinities-n	Number=Sing	dema	0
+affinitive	0	dema-affinitive-a	Degree=Pos	dema	0
+affinitively	0	dema-affinitive-r		dema	0
+affinity	0	oewn-affinity-n	Number=Sing	dema	0
+affirm	0	oewn-affirm-v	VerbForm=Inf	dema	0
+affirmable	0	oewn-affirmable-a	Degree=Pos	dema	0
+affirmably	0	dema-affirmably-r	Degree=Pos	dema	0
+affirmant	0	dema-affirmant-n	Number=Sing	dema	0
+affirmants	0	dema-affirmant-n	Number=Plur	dema	0
+affirmation	0	oewn-affirmation-n	Number=Sing	dema	0
+affirmations	0	oewn-affirmation-n	Number=Plur	dema	0
+affirmative	0	oewn-affirmative-a	Degree=Pos	dema	0
+affirmative	1	oewn-affirmative-n	Number=Sing	dema	0
+affirmatively	0	oewn-affirmatively-r	Degree=Pos	dema	0
+affirmatives	0	oewn-affirmative-n	Number=Plur	dema	0
+affirmatorily	0	dema-affirmatory-r		dema	0
+affirmatory	0	oewn-affirmatory-a	Degree=Pos	dema	0
+affirmed	0	oewn-affirm-v	Tense=Past	dema	0
+affirmer	0	oewn-affirmer-n	Number=Sing	dema	0
+affirmers	0	dema-affirm-n	Number=Plur	dema	0
+affirming	0	oewn-affirm-v	VerbForm=Ger	dema	0
+affirmingly	0	dema-affirmingly-r	Degree=Pos	dema	0
+affirms	0	oewn-affirm-v	Person=3+Tense=Pres	dema	0
+affix	0	oewn-affix-n	Number=Sing	dema	1
+affix	1	oewn-affix-v	VerbForm=Inf	dema	1
+affixal	0	oewn-affixal-a	Degree=Pos	dema	0
+affixally	0	dema-affixal-r		dema	0
+affixalness	0	dema-affixal-n	Number=Plur	dema	0
+affixation	0	oewn-affixation-n	Number=Sing	dema	0
+affixations	0	oewn-affixation-n	Number=Plur	dema	0
+affixed	0	oewn-affix-v	Tense=Past	dema	0
+affixer	0	dema-affixer-n	Number=Sing	dema	0
+affixers	0	oewn-affix-n	Number=Plur	dema	0
+affixes	0	oewn-affix-n	Number=Plur	dema	1
+affixes	1	oewn-affix-v	Person=3+Tense=Pres	dema	1
+affixing	0	oewn-affix-v	VerbForm=Ger	dema	0
+affixingly	0	dema-affix-r		dema	0
+affixture	0	dema-affixture-n	Number=Sing	dema	0
+affixtures	0	dema-affixture-n	Number=Plur	dema	0
+afflated	0	dema-afflated-a	Degree=Pos	dema	0
+afflated	1	dema-afflated-v	VerbForm=Inf	dema	0
+afflateded	0	dema-afflated-v	Tense=Past	dema	0
+afflateder	0	dema-afflated-n	Number=Plur	dema	0
+afflateders	0	dema-afflated-n	Number=Plur	dema	0
+afflateding	0	dema-afflated-v	VerbForm=Ger	dema	0
+afflatedingly	0	dema-afflated-r		dema	0
+afflatedly	0	dema-afflated-r		dema	0
+afflatedness	0	dema-afflated-n	Number=Plur	dema	0
+afflateds	0	dema-afflated-v	Person=3+Tense=Pres	dema	0
+afflatus	0	oewn-afflatus-n	Number=Sing	dema	0
+afflatuses	0	oewn-afflatus-n	Number=Plur	dema	0
+afflict	0	oewn-afflict-v	VerbForm=Inf	dema	0
+afflicted	0	oewn-afflict-v	Tense=Past	dema	0
+afflictedness	0	dema-afflictedness-n	Number=Sing	dema	0
+afflictednesses	0	dema-afflictedness-n	Number=Plur	dema	0
+afflicter	0	dema-afflicter-n	Number=Sing	dema	0
+afflicters	0	dema-afflict-n	Number=Plur	dema	0
+afflicting	0	oewn-afflict-v	VerbForm=Ger	dema	0
+afflictingly	0	dema-afflict-r		dema	0
+affliction	0	oewn-affliction-n	Number=Sing	dema	0
+afflictionless	0	dema-afflictionless-a	Degree=Pos	dema	0
+afflictionlessly	0	dema-afflictionless-r		dema	0
+afflictions	0	oewn-affliction-n	Number=Plur	dema	0
+afflictive	0	oewn-afflictive-a	Degree=Pos	dema	0
+afflictively	0	dema-afflictively-r	Degree=Pos	dema	0
+afflictiveness	0	dema-afflictive-n	Number=Plur	dema	0
+afflicts	0	oewn-afflict-v	Person=3+Tense=Pres	dema	0
+affluence	0	oewn-affluence-n	Number=Sing	dema	0
+affluences	0	oewn-affluence-n	Number=Plur	dema	0
+affluent	0	oewn-affluent-a	Degree=Pos	dema	0
+affluent	1	oewn-affluent-n	Number=Sing	dema	0
+affluenter	0	oewn-affluent-a	Degree=Cmp	dema	0
+affluentest	0	oewn-affluent-a	Degree=Sup	dema	0
+affluently	0	dema-affluently-r	Degree=Pos	dema	0
+affluentness	0	oewn-affluent-n	Number=Plur	dema	0
+affluents	0	oewn-affluent-n	Number=Plur	dema	0
+afflux	0	dema-afflux-n	Number=Sing	dema	0
+affluxes	0	dema-afflux-n	Number=Plur	dema	0
+afford	0	oewn-afford-v	VerbForm=Inf	dema	0
+affordable	0	oewn-affordable-a	Degree=Pos	dema	0
+affordably	0	dema-affordable-r		dema	0
+afforded	0	oewn-afford-v	Tense=Past	dema	0
+afforder	0	dema-afford-n	Number=Plur	dema	0
+afforders	0	dema-afford-n	Number=Plur	dema	0
+affording	0	oewn-afford-v	VerbForm=Ger	dema	0
+affordingly	0	dema-afford-r		dema	0
+affords	0	oewn-afford-v	Person=3+Tense=Pres	dema	0
+afforest	0	oewn-afforest-v	VerbForm=Inf	dema	0
+afforestation	0	oewn-afforestation-n	Number=Sing	dema	0
+afforestations	0	oewn-afforestation-n	Number=Plur	dema	0
+afforested	0	oewn-afforest-v	Tense=Past	dema	0
+afforester	0	dema-afforest-n	Number=Plur	dema	0
+afforesters	0	dema-afforest-n	Number=Plur	dema	0
+afforesting	0	oewn-afforest-v	VerbForm=Ger	dema	0
+afforestingly	0	dema-afforest-r		dema	0
+afforestment	0	dema-afforestment-n	Number=Sing	dema	0
+afforestments	0	dema-afforestment-n	Number=Plur	dema	0
+afforests	0	oewn-afforest-v	Person=3+Tense=Pres	dema	0
+affranchise	0	oewn-affranchise-v	VerbForm=Inf	dema	0
+affranchised	0	dema-affranchised-v	VerbForm=Inf	dema	0
+affranchisement	0	dema-affranchisement-n	Number=Sing	dema	0
+affranchisements	0	dema-affranchisement-n	Number=Plur	dema	0
+affranchiser	0	dema-affranchise-n	Number=Plur	dema	0
+affranchisers	0	dema-affranchise-n	Number=Plur	dema	0
+affranchises	0	oewn-affranchise-v	Person=3+Tense=Pres	dema	0
+affranchising	0	dema-affranchising-v	VerbForm=Inf	dema	0
+affranchisingly	0	dema-affranchise-r		dema	0
+affray	0	oewn-affray-n	Number=Sing	dema	0
+affray	1	dema-affray-v	VerbForm=Inf	dema	0
+affrayed	0	dema-affray-v	Tense=Past	dema	0
+affrayer	0	dema-affrayer-n	Number=Sing	dema	0
+affrayers	0	oewn-affray-n	Number=Plur	dema	0
+affraying	0	dema-affray-v	VerbForm=Ger	dema	0
+affrays	0	oewn-affray-n	Number=Plur	dema	0
+affrays	1	dema-affray-v	Person=3+Tense=Pres	dema	0
+affreight	0	dema-affreight-v	VerbForm=Inf	dema	0
+affreighted	0	dema-affreight-v	Tense=Past	dema	0
+affreighter	0	dema-affreighter-n	Number=Sing	dema	0
+affreighters	0	dema-affreight-n	Number=Plur	dema	0
+affreighting	0	dema-affreight-v	VerbForm=Ger	dema	0
+affreightingly	0	dema-affreight-r		dema	0
+affreightment	0	dema-affreightment-n	Number=Sing	dema	0
+affreightments	0	dema-affreightment-n	Number=Plur	dema	0
+affreights	0	dema-affreight-v	Person=3+Tense=Pres	dema	0
+affricate	0	oewn-affricate-n	Number=Sing	dema	0
+affricates	0	oewn-affricate-n	Number=Plur	dema	0
+affrication	0	oewn-affrication-n	Number=Sing	dema	0
+affrications	0	oewn-affrication-n	Number=Plur	dema	0
+affricative	0	oewn-affricative-n	Number=Sing	dema	0
+affricative	1	dema-affricative-a	Degree=Pos	dema	0
+affricatively	0	dema-affricative-r		dema	0
+affricatives	0	oewn-affricative-n	Number=Plur	dema	0
+affright	0	oewn-affright-v	VerbForm=Inf	dema	0
+affright	1	oewn-affright-n	Number=Sing	dema	0
+affrighted	0	oewn-affright-v	Tense=Past	dema	0
+affrighter	0	oewn-affright-n	Number=Plur	dema	0
+affrighters	0	oewn-affright-n	Number=Plur	dema	0
+affrighting	0	oewn-affright-v	VerbForm=Ger	dema	0
+affrightingly	0	dema-affright-r		dema	0
+affrights	0	oewn-affright-v	Person=3+Tense=Pres	dema	0
+affrights	1	oewn-affright-n	Number=Plur	dema	0
+affront	0	oewn-affront-n	Number=Sing	dema	0
+affront	1	oewn-affront-v	VerbForm=Inf	dema	0
+affronted	0	oewn-affront-v	Tense=Past	dema	0
+affrontedly	0	dema-affrontedly-r	Degree=Pos	dema	0
+affrontedness	0	dema-affrontedness-n	Number=Sing	dema	0
+affrontednesses	0	dema-affrontedness-n	Number=Plur	dema	0
+affronter	0	dema-affronter-n	Number=Sing	dema	0
+affronters	0	oewn-affront-n	Number=Plur	dema	0
+affronting	0	oewn-affront-v	VerbForm=Ger	dema	0
+affrontingly	0	dema-affrontingly-r	Degree=Pos	dema	0
+affrontive	0	dema-affrontive-a	Degree=Pos	dema	0
+affrontively	0	dema-affrontive-r		dema	0
+affrontiveness	0	dema-affrontiveness-n	Number=Sing	dema	0
+affrontivenesses	0	dema-affrontiveness-n	Number=Plur	dema	0
+affronts	0	oewn-affront-n	Number=Plur	dema	0
+affronts	1	oewn-affront-v	Person=3+Tense=Pres	dema	0
+affusion	0	oewn-affusion-n	Number=Sing	dema	0
+affusions	0	oewn-affusion-n	Number=Plur	dema	0
+afghan	0	oewn-afghan-n	Number=Sing	dema	0
+afghanets	0	dema-afghanets-n	Number=Sing	dema	0
+afghanetses	0	dema-afghanets-n	Number=Plur	dema	0
+afghani	0	oewn-afghani-n	Number=Sing	dema	0
+afghanis	0	oewn-afghani-n	Number=Plur	dema	0
+afghans	0	oewn-afghan-n	Number=Plur	dema	0
+aficionada	0	dema-aficionada-n	Number=Sing	dema	0
+aficionadas	0	dema-aficionadas-n	Number=Sing	dema	0
+aficionado	0	oewn-aficionado-n	Number=Sing	dema	0
+aficionadoes	0	oewn-aficionado-n	Number=Plur	dema	0
+aficionados	0	dema-aficionados-n	Number=Sing	dema	0
+afield	0	oewn-afield-r	Degree=Pos	dema	0
+afikomen	0	dema-afikomen-n	Number=Sing	dema	0
+afikomens	0	dema-afikomen-n	Number=Plur	dema	0
+afire	0	dema-afire-r	Degree=Pos	dema	0
+aflame	0	dema-aflame-r	Degree=Pos	dema	0
+aflatoxin	0	oewn-aflatoxin-n	Number=Sing	dema	0
+aflatoxins	0	oewn-aflatoxin-n	Number=Plur	dema	0
+afloat	0	dema-afloat-r	Degree=Pos	dema	0
+aflutter	0	dema-aflutter-r	Degree=Pos	dema	0
+afocal	0	dema-afocal-a	Degree=Pos	dema	0
+afocally	0	dema-afocal-r		dema	0
+afocalness	0	dema-afocal-n	Number=Plur	dema	0
+afoot	0	oewn-afoot-r	Degree=Pos	dema	0
+afore	0	dema-afore-r	Degree=Pos	dema	0
+afore	1	dema-afore-p		dema	0
+afore	2	dema-afore-c		dema	0
+aforementioned	0	oewn-aforementioned-a	Degree=Pos	dema	0
+aforementioned	1	dema-aforementioned-v	VerbForm=Inf	dema	0
+aforementioneded	0	dema-aforementioned-v	Tense=Past	dema	0
+aforementioneding	0	dema-aforementioned-v	VerbForm=Ger	dema	0
+aforementionedly	0	dema-aforementioned-r		dema	0
+aforementioneds	0	dema-aforementioned-v	Person=3+Tense=Pres	dema	0
+aforesaid	0	oewn-aforesaid-a	Degree=Pos	dema	0
+aforesaidly	0	dema-aforesaid-r		dema	0
+aforethought	0	oewn-aforethought-a	Degree=Pos	dema	0
+aforethoughtly	0	dema-aforethought-r		dema	0
+aforetime	0	dema-aforetime-r	Degree=Pos	dema	0
+afoul	0	dema-afoul-r	Degree=Pos	dema	0
+afraid	0	oewn-afraid-a	Degree=Pos	dema	0
+afraider	0	oewn-afraid-a	Degree=Cmp	dema	0
+afraidest	0	oewn-afraid-a	Degree=Sup	dema	0
+afraidly	0	dema-afraid-r		dema	0
+afraidness	0	dema-afraid-n	Number=Plur	dema	0
+afreet	0	dema-afreet-n	Number=Sing	dema	0
+afreets	0	dema-afreet-n	Number=Plur	dema	0
+afresh	0	oewn-afresh-r	Degree=Pos	dema	0
+african	0	dema-african-n	Number=Sing	dema	0
+african	1	dema-african-a	Degree=Pos	dema	0
+africanly	0	dema-african-r		dema	0
+africanness	0	dema-african-n	Number=Plur	dema	0
+africans	0	dema-african-n	Number=Plur	dema	0
+afrit	0	dema-afrit-n	Number=Sing	dema	0
+afrits	0	dema-afrit-n	Number=Plur	dema	0
+afrormosia	0	dema-afrormosia-n	Number=Sing	dema	0
+afrormosias	0	dema-afrormosia-n	Number=Plur	dema	0
+aft	0	oewn-aft-r	Degree=Pos	dema	0
+aft	1	oewn-aft-a	Degree=Pos	dema	0
+after	0	dema-after-p		dema	0
+after	1	oewn-after-r	Degree=Pos	dema	0
+after	2	dema-after-c		dema	0
+after	3	oewn-after-a	Degree=Pos	dema	0
+afterbirth	0	oewn-afterbirth-n	Number=Sing	dema	0
+afterbirths	0	oewn-afterbirth-n	Number=Plur	dema	0
+afterbodies	0	dema-afterbodies-n	Number=Sing	dema	0
+afterbody	0	dema-afterbody-n	Number=Sing	dema	0
+afterbrain	0	dema-afterbrain-n	Number=Sing	dema	0
+afterbrains	0	dema-afterbrain-n	Number=Plur	dema	0
+afterburner	0	oewn-afterburner-n	Number=Sing	dema	0
+afterburners	0	oewn-afterburner-n	Number=Plur	dema	0
+afterburning	0	dema-afterburning-n	Number=Sing	dema	0
+afterburnings	0	dema-afterburning-n	Number=Plur	dema	0
+aftercare	0	oewn-aftercare-n	Number=Sing	dema	0
+aftercares	0	oewn-aftercare-n	Number=Plur	dema	0
+aftercast	0	dema-aftercast-n	Number=Sing	dema	0
+aftercasts	0	dema-aftercast-n	Number=Plur	dema	0
+afterclap	0	dema-afterclap-n	Number=Sing	dema	0
+afterclaps	0	dema-afterclap-n	Number=Plur	dema	0
+aftercooler	0	dema-aftercooler-n	Number=Sing	dema	0
+aftercoolers	0	dema-aftercooler-n	Number=Plur	dema	0
+afterdamp	0	oewn-afterdamp-n	Number=Sing	dema	0
+afterdamps	0	oewn-afterdamp-n	Number=Plur	dema	0
+afterdeck	0	oewn-afterdeck-n	Number=Sing	dema	0
+afterdecks	0	oewn-afterdeck-n	Number=Plur	dema	0
+aftereffect	0	oewn-aftereffect-n	Number=Sing	dema	0
+aftereffects	0	oewn-aftereffect-n	Number=Plur	dema	0
+afterglow	0	oewn-afterglow-n	Number=Sing	dema	0
+afterglows	0	oewn-afterglow-n	Number=Plur	dema	0
+aftergrowth	0	dema-aftergrowth-n	Number=Sing	dema	0
+aftergrowths	0	dema-aftergrowth-n	Number=Plur	dema	0
+afterguard	0	dema-afterguard-n	Number=Sing	dema	0
+afterguards	0	dema-afterguard-n	Number=Plur	dema	0
+afterheat	0	dema-afterheat-n	Number=Sing	dema	0
+afterheats	0	dema-afterheat-n	Number=Plur	dema	0
+afterimage	0	oewn-afterimage-n	Number=Sing	dema	0
+afterimages	0	oewn-afterimage-n	Number=Plur	dema	0
+afterlife	0	oewn-afterlife-n	Number=Sing	dema	0
+afterlifes	0	oewn-afterlife-n	Number=Plur	dema	0
+afterly	0	oewn-after-r		dema	0
+aftermath	0	oewn-aftermath-n	Number=Sing	dema	0
+aftermaths	0	oewn-aftermath-n	Number=Plur	dema	0
+aftermost	0	oewn-aftermost-a	Degree=Pos	dema	0
+aftermostly	0	dema-aftermost-r		dema	0
+aftermostness	0	dema-aftermost-n	Number=Plur	dema	0
+afternoon	0	oewn-afternoon-n	Number=Sing	dema	0
+afternoons	0	dema-afternoons-r	Degree=Pos	dema	0
+afterpain	0	dema-afterpain-n	Number=Sing	dema	0
+afterpains	0	oewn-afterpains-n	Number=Sing	dema	0
+afterpeak	0	dema-afterpeak-n	Number=Sing	dema	0
+afterpeaks	0	dema-afterpeak-n	Number=Plur	dema	0
+afterpiece	0	oewn-afterpiece-n	Number=Sing	dema	0
+afterpieces	0	oewn-afterpiece-n	Number=Plur	dema	0
+afters	0	oewn-afters-n	Number=Sing	dema	0
+aftersensation	0	oewn-aftersensation-n	Number=Sing	dema	0
+aftersensations	0	oewn-aftersensation-n	Number=Plur	dema	0
+afterses	0	oewn-afters-n	Number=Plur	dema	0
+aftershaft	0	oewn-aftershaft-n	Number=Sing	dema	0
+aftershafted	0	oewn-aftershafted-a	Degree=Pos	dema	0
+aftershafted	1	dema-aftershafted-v	VerbForm=Inf	dema	0
+aftershafteded	0	dema-aftershafted-v	Tense=Past	dema	0
+aftershafteding	0	dema-aftershafted-v	VerbForm=Ger	dema	0
+aftershaftedly	0	dema-aftershafted-r		dema	0
+aftershafteds	0	dema-aftershafted-v	Person=3+Tense=Pres	dema	0
+aftershafts	0	oewn-aftershaft-n	Number=Plur	dema	0
+aftershock	0	oewn-aftershock-n	Number=Sing	dema	0
+aftershocks	0	oewn-aftershock-n	Number=Plur	dema	0
+aftertaste	0	oewn-aftertaste-n	Number=Sing	dema	0
+aftertastes	0	oewn-aftertaste-n	Number=Plur	dema	0
+afterthought	0	oewn-afterthought-n	Number=Sing	dema	0
+afterthoughts	0	oewn-afterthought-n	Number=Plur	dema	0
+aftertime	0	dema-aftertime-n	Number=Sing	dema	0
+aftertimes	0	dema-aftertime-n	Number=Plur	dema	0
+aftertreatment	0	dema-aftertreatment-n	Number=Sing	dema	0
+aftertreatments	0	dema-aftertreatment-n	Number=Plur	dema	0
+afterward	0	oewn-afterward-r	Degree=Pos	dema	0
+afterwards	0	oewn-afterwards-r	Degree=Pos	dema	0
+afterword	0	dema-afterword-n	Number=Sing	dema	0
+afterwords	0	dema-afterword-n	Number=Plur	dema	0
+afterworld	0	oewn-afterworld-n	Number=Sing	dema	0
+afterworlds	0	oewn-afterworld-n	Number=Plur	dema	0
+afteryears	0	dema-afteryears-n	Number=Sing	dema	0
+afteryearses	0	dema-afteryears-n	Number=Plur	dema	0
+aftest	0	oewn-aft-r	Degree=Sup	dema	0
+aftest	1	oewn-aft-a	Degree=Sup	dema	0
+aftly	0	oewn-aft-r		dema	0
+aftmost	0	dema-aftmost-a	Degree=Pos	dema	0
+aftmoster	0	dema-aftmost-a	Degree=Cmp	dema	0
+aftmostest	0	dema-aftmost-a	Degree=Sup	dema	0
+aftmostly	0	dema-aftmost-r		dema	0
+aftmostness	0	dema-aftmost-n	Number=Plur	dema	0
+aftness	0	dema-aft-n	Number=Plur	dema	0

@@ -1,3 +1,4 @@
+using WordSense.Builder.Data;
 using PartOfSpeech = DemaConsulting.WordSense.PartOfSpeech;
 
 namespace WordSense.Builder.Tests;
@@ -390,33 +391,30 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     In the committed word table no explicit form has a trained sense outside its labels: its labeled senses come
-    ///     first, in the order of the lemma, and the entry of a lemma keeps every trained sense.
+    ///     The committed image answers every spelling of the legacy word table (the table the builder derives from the
+    ///     corpus) with the same parts of speech and meanings in the same order, so the swap of the lexicon changes no answer.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Words_Committed_NoExplicitFormHasSenseOutsideItsLabels()
+    public void WordSenseBuilder_Words_Committed_MatchesLegacyTable()
     {
         var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList();
-        var words = DemaConsulting.WordSense.WordLexicon.Words;
+        var legacy = WordsBuilder.Build(corpus);
+        var words = DemaConsulting.WordSense.WordLexicon.View;
         var problems = new List<string>();
 
-        foreach (var (form, lemma, labels) in forms.Where(f => inventory.ContainsLemma(f.Lemma)))
+        foreach (var (spelling, expected) in legacy)
         {
-            var trained = words[lemma].Take(inventory.LabelsOf(lemma).Length).ToArray();
-            var indexes = inventory.FormSenseIndexes(lemma, labels);
-            var expected = indexes.Select(i => trained[i]).ToArray();
-            var actual = words[form];
-            var excluded = trained.Except(expected).ToArray();
-            if (!actual.Take(expected.Length).SequenceEqual(expected) || actual.Skip(expected.Length).Any(d => excluded.Contains(d)))
+            var actual = words.TryGetValue(spelling, out var found) ? found : [];
+            var left = expected.Select(d => (d.PartOfSpeech, d.Meaning)).ToArray();
+            var right = actual.Select(d => (d.PartOfSpeech, DemaConsulting.WordSense.WordLexicon.MeaningOf(d))).ToArray();
+            if (!left.SequenceEqual(right))
             {
-                problems.Add(form);
+                problems.Add($"{spelling}: [{string.Join(",", left)}] vs [{string.Join(",", right)}]");
             }
         }
 
-        Assert.True(problems.Count == 0, "Forms with a sense outside their labels: " + string.Join(", ", problems.Take(10)));
-        Assert.True(forms.Count > 2000);
+        Assert.True(problems.Count == 0, $"{problems.Count} spellings differ from the legacy table: " + string.Join(" | ", problems.Take(30)));
+        Assert.Equal(legacy.Count, words.Count);
     }
 
     /// <summary>
@@ -664,24 +662,29 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The committed word table equals the table the builder produces from the committed corpus, so it cannot go stale:
-    ///     regenerate it with <c>words</c>.
+    ///     The committed image was compiled from the committed data tables and corpus: its data hash equals the hash of
+    ///     the current inputs, and its counts equal those of a fresh compilation, so it cannot go stale. Regenerate it
+    ///     with <c>compile-image</c>.
     /// </summary>
     [Fact]
-    public void WordSenseBuilder_Words_Committed_MatchesCorpus()
+    public void WordSenseBuilder_Words_Committed_MatchesData()
     {
         var root = FindRepositoryRoot();
-        var committed = DemaConsulting.WordSense.WordsBlob.Read(File.ReadAllBytes(Path.Combine(root.FullName, WordsBuilder.DefaultOutput.Replace('/', Path.DirectorySeparatorChar))));
+        var committed = File.ReadAllBytes(Path.Combine(root.FullName, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
 
-        var built = WordsBuilder.Build(Path.Combine(root.FullName, "corpus"));
+        var (image, result) = ImageCompiler.Build(Path.Combine(root.FullName, "data"), Path.Combine(root.FullName, "corpus"));
 
-        Assert.Equal(built.Count, committed.Count);
-        var differences = built
-            .Where(e => !committed.TryGetValue(e.Key, out var details) || !details.SequenceEqual(e.Value))
-            .Select(e => e.Key)
-            .Take(10)
-            .ToList();
-        Assert.True(differences.Count == 0, "src/DemaConsulting.WordSense/Resources/words.bin is stale; run the 'words' command. First differences: " + string.Join(", ", differences));
+        var open = DemaConsulting.WordSense.WordImage.Open(committed);
+        var fresh = DemaConsulting.WordSense.WordImage.Open(image);
+        Assert.True(
+            open.DataHash.SequenceEqual(ImageCompiler.DataHash(Path.Combine(root.FullName, "data"), Path.Combine(root.FullName, "corpus"))),
+            "src/DemaConsulting.WordSense/Resources/wordsense.img is stale; run the 'compile-image' command.");
+        Assert.Equal(result.Spellings, open.SpellingCount);
+        Assert.Equal(result.Entries, open.EntryCount);
+        foreach (var id in fresh.SectionIds)
+        {
+            Assert.True(fresh.RawSection(id).AsSpan().SequenceEqual(open.RawSection(id)), $"Section {id} of the committed image differs from a fresh compilation.");
+        }
     }
 
     /// <summary>
@@ -694,10 +697,10 @@ public sealed class BuilderTests : IDisposable
     {
         var root = FindRepositoryRoot();
         var lexicon = LexiconSource.ReadWords(Path.Combine(root.FullName, "corpus", "lexicon", "lexicon.tsv"));
-        var table = DemaConsulting.WordSense.WordLexicon.Words;
+        var table = DemaConsulting.WordSense.WordLexicon.View;
 
         var missing = lexicon.Where(w => !table.ContainsKey(w.Word)).Select(w => w.Word).Take(10).ToList();
-        Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from words.bin: " + string.Join(", ", missing));
+        Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from the word image: " + string.Join(", ", missing));
         Assert.True(lexicon.Count > 143_000);
 
         // Every part of speech the dictionary lists for a word is among the senses of that word, without exception
@@ -706,7 +709,7 @@ public sealed class BuilderTests : IDisposable
             .Select(w => w.Word)
             .Take(10)
             .ToList();
-        Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from words.bin: " + string.Join(", ", lost));
+        Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from the word image: " + string.Join(", ", lost));
         Assert.All(new[] { "the", "a", "an", "his", "albeit", "although", "alas", "ah", "two" }, w => Assert.True(table.ContainsKey(w), w));
     }
 
@@ -722,24 +725,23 @@ public sealed class BuilderTests : IDisposable
     {
         var root = FindRepositoryRoot();
         var corpus = Path.Combine(root.FullName, "corpus");
-        var table = DemaConsulting.WordSense.WordLexicon.Words;
+        var table = DemaConsulting.WordSense.WordLexicon.View;
         var dictionary = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
         var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
         var checkedForms = 0;
         var problems = new List<string>();
-        foreach (var (form, lemma, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma)))
+        foreach (var (form, _, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma) && table.ContainsKey(f.Form)))
         {
-            var lemmaSenses = table[lemma];
             var senses = table[form].Where(d => d.PartOfSpeech != PartOfSpeech.Auxiliary).ToList();
-            var trained = senses.TakeWhile(d => lemmaSenses.Contains(d)).ToList();
-            var extras = senses.Skip(trained.Count).ToList();
+            var trained = senses.Where(d => d.SenseId is not null).ToList();
+            var extras = senses.Where(d => d.SenseId is null).ToList();
             var covered = trained.Select(d => d.PartOfSpeech).ToHashSet();
             var expected = (dictionary.TryGetValue(form, out var letters) ? letters : string.Empty)
                 .Select(l => (PartOfSpeech)LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))
                 .Where(p => !covered.Contains(p))
                 .ToList();
             if (trained.Count == 0
-                || extras.Any(d => d.Lemma != form || d.Meaning is not null || d.Respelling is not null || lemmaSenses.Contains(d))
+                || extras.Any(d => d.Lemma != form)
                 || !extras.Select(d => d.PartOfSpeech).SequenceEqual(expected))
             {
                 problems.Add(form);
@@ -755,14 +757,13 @@ public sealed class BuilderTests : IDisposable
     /// <summary>
     ///     The eight verb-only forms (<c>bent</c>, <c>chanced</c>, <c>drove</c>, <c>flew</c>, <c>limited</c>, <c>rode</c>,
     ///     <c>scored</c>, <c>shook</c>) whose dictionary entry lists parts of speech that the labels do not cover: each keeps
-    ///     the verb sense of its lemma and gains extras of the form's own, with the form as lemma and no meaning
-    ///     (<c>drove</c> is the verb of <c>drive</c> and a noun of its own, not the noun sense of <c>drive</c>). This
-    ///     documents the exception; no word is skipped by any other invariant.
+    ///     the verb sense of its lemma and gains analyses of the form's own (an entry whose lemma is the form, without a
+    ///     sense id): <c>drove</c> is the verb of <c>drive</c> and a noun of its own, not the noun sense of <c>drive</c>.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra()
     {
-        var table = DemaConsulting.WordSense.WordLexicon.Words;
+        var table = DemaConsulting.WordSense.WordLexicon.View;
         var expected = new (string Form, string Lemma, PartOfSpeech[] Extras)[]
         {
             ("bent", "bend", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
@@ -784,12 +785,15 @@ public sealed class BuilderTests : IDisposable
             {
                 Assert.Equal(lemma, d.Lemma);
                 Assert.Equal(PartOfSpeech.Verb, d.PartOfSpeech);
-                Assert.Contains(d, table[lemma]);
             });
 
             var extras = senses.Skip(trained.Count).ToList();
-            Assert.Equal(extraPos.Select(p => new DemaConsulting.WordSense.WordDetails(form, p, null, null)), extras);
-            Assert.All(extras, e => Assert.DoesNotContain(e, table[lemma]));
+            Assert.Equal(extraPos, extras.Select(e => e.PartOfSpeech));
+            Assert.All(extras, e =>
+            {
+                Assert.Equal(form, e.Lemma);
+                Assert.Null(e.SenseId);
+            });
         }
     }
 
