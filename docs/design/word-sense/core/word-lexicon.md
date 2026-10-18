@@ -21,7 +21,7 @@ possible analyses. Every model starts from it, and a word with one sense never n
   `Person=3+Tense=Pres`), or empty.
 - Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
   so case-sensitive entries win over the folded form.
-- The legacy accessors for the shipped model weights (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`) is removed: the
+- The legacy accessors for the shipped model weights (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`) are removed: the
   weights are keyed by class id and resolved against the image at load.
 
 #### Key Methods
