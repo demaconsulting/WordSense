@@ -102,9 +102,14 @@ removes a sense:
    unknown, duplicate or empty label, or a self row (form equals lemma) that does not name every sense, fails the
    build with an error that lists all of them. The anchor, holdout and real-text sentences must agree with the labels.
 3. The dictionary word list: each word answers with one sense per part of speech and no meaning. When a trained
-   lemma or form spells the same word, its trained senses stay first and the dictionary's other parts of speech are
-   appended (except one that equals a sense a restricted form's labels excluded), so no part of speech of the
-   dictionary is lost. Every sense of an entry has the lemma of its first sense.
+   lemma or form spells the same word, its trained senses stay first and one more sense is appended for each part of
+   speech of the dictionary that the labels do not cover, in dictionary order. That sense is the word's own: its
+   lemma is the word itself (a form may have several lemmas: `lives` is a verb of `live` and the plural of `life`;
+   `drove` is the verb of `drive` and a noun of its own, not the noun sense of `drive` that its labels excluded),
+   and it has no meaning and no respelling. No part of speech of the dictionary is lost. Every trained sense of an
+   entry has the lemma of its first sense; an own extra has the word as lemma. The weights of the lemma score only
+   the trained senses; an own extra is never ranked by an encoder model, and the Basic model scores it from the tagger
+   alone.
 4. Generated inflections: `MorphologyExpander` adds the forms of every dictionary word and trained lemma from the
    enabled rules (noun plural, verb third person, past and -ing, adjective comparative and superlative, adverb, and
    the derived forms), with the spelling rules and the irregular entries (an irregular form replaces the regular

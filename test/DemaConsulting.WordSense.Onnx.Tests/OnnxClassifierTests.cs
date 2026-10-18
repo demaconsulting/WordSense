@@ -311,6 +311,26 @@ public class OnnxClassifierTests
     }
 
     /// <summary>
+    ///     A form whose own extra has the form as lemma (not the trained lemma) is ranked among its trained senses only: the
+    ///     weights are found by the lemma of the first sense, the extra is never mapped to a trained sense and never answered.
+    /// </summary>
+    [Fact]
+    public void OnnxClassifier_Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly()
+    {
+        var lemma = Embedded().Find("record")!;
+        var trained = WordLexicon.Words["record"].Where(d => d.PartOfSpeech == PartOfSpeech.Verb).ToList();
+        var extra = new WordDetails("records", PartOfSpeech.Adjective, null, null);
+        ImmutableArray<WordDetails> candidates = [.. trained, extra];
+        var feature = new float[lemma.Weights.Dimension];
+        feature[0] = 1f;
+
+        var (details, confidence) = OnnxClassifier.Pick(lemma, candidates, feature);
+
+        Assert.Contains(details, trained);
+        Assert.InRange(confidence, 0.0, 1.0);
+    }
+
+    /// <summary>
     ///     A capitalized word resolves like its lower-case form, and a determiner needs no model.
     /// </summary>
     /// <returns>A task that completes when the check has run.</returns>

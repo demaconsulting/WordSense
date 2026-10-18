@@ -700,18 +700,97 @@ public sealed class BuilderTests : IDisposable
         Assert.True(missing.Count == 0, "Words of lexicon.tsv missing from words.bin: " + string.Join(", ", missing));
         Assert.True(lexicon.Count > 143_000);
 
-        // Every part of speech the dictionary lists for a word is among the senses of that word, except one that the
-        // labels of a restricted form exclude on purpose (the lemma then has a sense of that part of speech)
+        // Every part of speech the dictionary lists for a word is among the senses of that word, without exception
         var lost = lexicon
-            .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))
-                && !(table[w.Word][0].Lemma != w.Word
-                    && table.TryGetValue(table[w.Word][0].Lemma, out var lemmaSenses)
-                    && lemmaSenses.Any(d => (int)d.PartOfSpeech == LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal)))))
+            .Where(w => w.Letters.Any(l => table[w.Word].All(d => (int)d.PartOfSpeech != LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))))
             .Select(w => w.Word)
             .Take(10)
             .ToList();
         Assert.True(lost.Count == 0, "Parts of speech of lexicon.tsv missing from words.bin: " + string.Join(", ", lost));
         Assert.All(new[] { "the", "a", "an", "his", "albeit", "although", "alas", "ah", "two" }, w => Assert.True(table.ContainsKey(w), w));
+    }
+
+    /// <summary>
+    ///     A listed form has the trained senses its labels name, carrying the lemma's lemma, meaning and respelling,
+    ///     followed by one sense for each dictionary part of speech the labels do not cover; that sense is the form's
+    ///     own (the form is its lemma, because a form may have several lemmas) and has no meaning and no respelling.
+    ///     The one exception is the closed-list Auxiliary sense, which keeps the lemma of the form (<c>was</c> of
+    ///     <c>be</c>).
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras()
+    {
+        var root = FindRepositoryRoot();
+        var corpus = Path.Combine(root.FullName, "corpus");
+        var table = DemaConsulting.WordSense.WordLexicon.Words;
+        var dictionary = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", "lexicon.tsv")).ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
+        var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
+        var checkedForms = 0;
+        var problems = new List<string>();
+        foreach (var (form, lemma, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma)))
+        {
+            var lemmaSenses = table[lemma];
+            var senses = table[form].Where(d => d.PartOfSpeech != PartOfSpeech.Auxiliary).ToList();
+            var trained = senses.TakeWhile(d => lemmaSenses.Contains(d)).ToList();
+            var extras = senses.Skip(trained.Count).ToList();
+            var covered = trained.Select(d => d.PartOfSpeech).ToHashSet();
+            var expected = (dictionary.TryGetValue(form, out var letters) ? letters : string.Empty)
+                .Select(l => (PartOfSpeech)LexiconSource.Letters.IndexOf(l, StringComparison.Ordinal))
+                .Where(p => !covered.Contains(p))
+                .ToList();
+            if (trained.Count == 0
+                || extras.Any(d => d.Lemma != form || d.Meaning is not null || d.Respelling is not null || lemmaSenses.Contains(d))
+                || !extras.Select(d => d.PartOfSpeech).SequenceEqual(expected))
+            {
+                problems.Add(form);
+            }
+
+            checkedForms++;
+        }
+
+        Assert.True(problems.Count == 0, "Forms that break the label/extra rules: " + string.Join(", ", problems.Take(10)));
+        Assert.True(checkedForms > 1000);
+    }
+
+    /// <summary>
+    ///     The eight verb-only forms (<c>bent</c>, <c>chanced</c>, <c>drove</c>, <c>flew</c>, <c>limited</c>, <c>rode</c>,
+    ///     <c>scored</c>, <c>shook</c>) whose dictionary entry lists parts of speech that the labels do not cover: each keeps
+    ///     the verb sense of its lemma and gains extras of the form's own, with the form as lemma and no meaning
+    ///     (<c>drove</c> is the verb of <c>drive</c> and a noun of its own, not the noun sense of <c>drive</c>). This
+    ///     documents the exception; no word is skipped by any other invariant.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra()
+    {
+        var table = DemaConsulting.WordSense.WordLexicon.Words;
+        var expected = new (string Form, string Lemma, PartOfSpeech[] Extras)[]
+        {
+            ("bent", "bend", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
+            ("chanced", "chance", [PartOfSpeech.Noun]),
+            ("drove", "drive", [PartOfSpeech.Noun]),
+            ("flew", "fly", [PartOfSpeech.Noun]),
+            ("limited", "limit", [PartOfSpeech.Adjective, PartOfSpeech.Noun]),
+            ("rode", "ride", [PartOfSpeech.Noun]),
+            ("scored", "score", [PartOfSpeech.Noun]),
+            ("shook", "shake", [PartOfSpeech.Noun]),
+        };
+
+        foreach (var (form, lemma, extraPos) in expected)
+        {
+            var senses = table[form];
+            var trained = senses.Take(senses.Length - extraPos.Length).ToList();
+            Assert.NotEmpty(trained);
+            Assert.All(trained, d =>
+            {
+                Assert.Equal(lemma, d.Lemma);
+                Assert.Equal(PartOfSpeech.Verb, d.PartOfSpeech);
+                Assert.Contains(d, table[lemma]);
+            });
+
+            var extras = senses.Skip(trained.Count).ToList();
+            Assert.Equal(extraPos.Select(p => new DemaConsulting.WordSense.WordDetails(form, p, null, null)), extras);
+            Assert.All(extras, e => Assert.DoesNotContain(e, table[lemma]));
+        }
     }
 
     /// <summary>

@@ -82,6 +82,7 @@ sections:
                   - OnnxClassifier_ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored
                   - OnnxClassifier_HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse
                   - OnnxClassifier_Pick_ExtraDictionarySenses_AreNeverRanked
+                  - OnnxClassifier_Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly
 
               - id: WordSense-Onnx-OnnxClassifier-NoVector
                 title: >-

@@ -34,7 +34,9 @@ All scenarios below pass on every platform and target framework of the CI matrix
   it.
 - **Extra dictionary senses** (`Pick_ExtraDictionarySenses_AreNeverRanked`): a sense after the trained ones is never
   the answer of the ranking.
-- **Trailing Auxiliary sense** (`ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored`,
+- **Own extra of a form** (`Pick_FormWithOwnExtraOfAnotherLemma_RanksTrainedSensesOnly`): a form's trailing extra has
+  the form as lemma, not the trained lemma; the weights are found by the lemma of the first (trained) sense, only the
+  trained senses are ranked, and the extra is never the answer. sense** (`ResolveWithoutModel_TrailingAuxiliarySense_IsIgnored`,
   `HasMultiSenseWord_OnlyAuxiliaryAmbiguity_IsFalse`): an untrained trailing `Auxiliary` sense is not counted as an
   ambiguity, so the encoder models answer as before and never answer `Auxiliary`.
 - **Capitalized word** (`CapitalizedWord_ResolvesLikeLowerCase`): `The` and `the` give the same sense.

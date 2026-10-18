@@ -28,9 +28,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
   lists them itself and wins); the wrong regular forms of irregular
   words (`goed`, `childs`) are absent. No morphology runs at run time.
 - **Closed-class words are present** (`ClosedClassWord_HasItsPartOfSpeechAlone`, `SoAndWill_ListTheirParts`,
-  `EverySense_SharesTheLemma`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a conjunction-only and
-  an interjection-only word are present, `so` and `will` list all their parts of speech, and every sense of a word has
-  the lemma of its first sense. The determiner sense is accepted by the blob reader (`DeterminerSense_IsAccepted`).
+  `EverySense_SharesTheFirstLemmaOrIsTheOwnExtra`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a
+  conjunction-only and an interjection-only word are present, `so` and `will` list all their parts of speech, and
+  every sense of a word has the lemma of its first sense or is the word's own extra (the word as lemma, no meaning
+  and no respelling; `drove` ends with a noun of its own after the verb of `drive`). The determiner sense is accepted
+  by the blob reader (`DeterminerSense_IsAccepted`).
 - **Auxiliaries end with an Auxiliary sense** (`Auxiliaries_HaveTrailingAuxiliarySense`, `AuxiliarySense_IsAccepted`):
   `will` is Verb, Noun, Auxiliary; `is` and `having` end with Auxiliary under the lemma `be`; `wills` and `record` have
   none.
@@ -38,7 +40,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   is absent from `Words`.
 - **Listed forms have only their labeled senses** (`ListedFormOfHeteronym_HasOnlyItsLabeledSenses`,
   `ReadForms_SplitByLabels`, `RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb (plus an
-  untrained dictionary extra), `bows` its three labeled senses in lemma order, `reads` the present verb, `read` the
+  untrained own extra of the form), `bows` its three labeled senses in lemma order, `reads` the present verb, `read` the
   past and present verbs, and `lives` and `wounds` only their labeled senses; no sense outside the labels appears.
 - **Unknown or mixed-case key is absent**: a made-up word and an upper-case spelling of a known word are not found,
   because lookup is ordinal on lower-case keys.

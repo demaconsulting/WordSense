@@ -52,6 +52,8 @@ sections:
               - WordSenseBuilder_SenseInventory_Validate_SentenceWithSenseOutsideFormLabels_IsReported
               - WordSenseBuilder_SenseInventory_Validate_CommittedCorpus_IsConsistent
               - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+              - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
+              - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
 
           - id: WordSense-WordSenseBuilder-Coverage
             title: >-

@@ -177,12 +177,25 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     Every sense of a word has the lemma of its first sense, and so the weights of one lemma cover the word.
+    ///     Every sense of a word has the lemma of its first sense, and so the weights of one lemma cover the word, or it
+    ///     is the word's own extra: a form may have several lemmas, so a sense of a part of speech that the labels of a
+    ///     form do not cover has the form itself as lemma and no meaning and no respelling (<c>drove</c> is a verb of
+    ///     <c>drive</c> and a noun of its own).
     /// </summary>
     [Fact]
-    public void WordLexicon_Words_EverySense_SharesTheLemma()
+    public void WordLexicon_Words_EverySense_SharesTheFirstLemmaOrIsTheOwnExtra()
     {
-        Assert.All(WordLexicon.Words.Values, senses => Assert.All(senses, s => Assert.Equal(senses[0].Lemma, s.Lemma)));
+        Assert.All(
+            WordLexicon.Words,
+            pair => Assert.All(
+                pair.Value,
+                s => Assert.True(
+                    s.Lemma == pair.Value[0].Lemma || (s.Lemma == pair.Key && s.Meaning is null && s.Respelling is null),
+                    $"{pair.Key}: {s}")));
+
+        var drove = WordLexicon.Words["drove"];
+        Assert.Equal("drive", drove[0].Lemma);
+        Assert.Equal(new WordDetails("drove", PartOfSpeech.Noun, null, null), drove[^1]);
     }
 
     /// <summary>

@@ -32,20 +32,25 @@ sections:
                 title: >-
                   WordLexicon shall hold every word of the dictionary the library is built from, including the
                   determiners, the conjunctions and the interjections, each with all of its parts of speech, whatever
-                  the accuracy of any model for them, and every sense of a word shall have the lemma of its first sense.
+                  the accuracy of any model for them, and every sense of a word shall have the lemma of its first sense
+                  or be the word's own extra (the word itself as lemma, no meaning and no respelling).
                 tags: [unit]
                 justification: |
                   A model's accuracy decides which sense it may choose, never whether a word exists; a word that the
-                  lexicon lacks cannot be classified by any model, and the single lemma per word lets the weights of
-                  one lemma cover its word.
+                  lexicon lacks cannot be classified by any model, and the single lemma of the trained senses lets the
+                  weights of one lemma cover its word. A form may have several lemmas (<c>lives</c> is a verb of
+                  <c>live</c> and the plural of <c>life</c>), so a part of speech that its labels do not cover is
+                  an untrained extra of the form itself, never a sense of the lemma that the labels excluded.
                 tests:
                   - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
                   - WordLexicon_Words_SoAndWill_ListTheirParts
-                  - WordLexicon_Words_EverySense_SharesTheLemma
+                  - WordLexicon_Words_EverySense_SharesTheFirstLemmaOrIsTheOwnExtra
                   - WordLexicon_Words_ListedFormOfHeteronym_HasOnlyItsLabeledSenses
                   - WordLexicon_Words_ReadForms_SplitByLabels
                   - WordLexicon_Words_RestrictedForm_NeverOffersExcludedSense
                   - WordSenseBuilder_Words_Committed_HoldsEveryDictionaryWord
+                  - WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras
+                  - WordSenseBuilder_Words_Committed_RestrictedFormsGainTheirOwnExtra
 
               - id: WordSense-Core-WordLexicon-Embedded
                 title: WordLexicon shall read its data from a resource embedded in the core assembly.

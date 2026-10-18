@@ -58,7 +58,8 @@ public sealed class WordsBuilderTests : IDisposable
             [PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Adverb, PartOfSpeech.Adjective],
             table["bank"].Select(d => d.PartOfSpeech));
         Assert.Equal([PartOfSpeech.Noun, PartOfSpeech.Verb, PartOfSpeech.Pronoun], table["banks"].Select(d => d.PartOfSpeech));
-        Assert.All(table["banks"], d => Assert.Equal("bank", d.Lemma));
+        Assert.All(table["banks"].Take(2), d => Assert.Equal("bank", d.Lemma));
+        Assert.Equal(new WordDetails("banks", PartOfSpeech.Pronoun, null, null), table["banks"][2]);
         Assert.Equal(PartOfSpeech.Conjunction, Assert.Single(table["albeit"]).PartOfSpeech);
         Assert.Equal(PartOfSpeech.Determiner, Assert.Single(table["the"]).PartOfSpeech);
         Assert.Equal(
@@ -127,13 +128,14 @@ public sealed class WordsBuilderTests : IDisposable
     {
         _dir.Write("corpus/senses/s.tsv", BowSenses);
         _dir.Write("corpus/forms/f.tsv", "form\tlemma\tlabels\nbowed\tbow\tbend-verb\n");
-        _dir.Write("corpus/lexicon/lexicon.tsv", "bow\tNV\nbowed\tVJ\n");
+        _dir.Write("corpus/lexicon/lexicon.tsv", "bow\tNV\nbowed\tVJN\n");
 
         var table = WordsBuilder.Build(Path.Combine(_dir.Root, "corpus"));
 
-        Assert.Equal(2, table["bowed"].Length);
+        Assert.Equal(3, table["bowed"].Length);
         Assert.Same(table["bow"][1], table["bowed"][0]);
-        Assert.Equal(new WordDetails("bow", PartOfSpeech.Adjective, null, null), table["bowed"][1]);
+        Assert.Equal(new WordDetails("bowed", PartOfSpeech.Adjective, null, null), table["bowed"][1]);
+        Assert.Equal(new WordDetails("bowed", PartOfSpeech.Noun, null, null), table["bowed"][2]);
         Assert.Equal(3, table["bow"].Length);
     }
 

@@ -47,7 +47,14 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `Words_Committed_NoExplicitFormHasSenseOutsideItsLabels` show that the anchors, holdout and committed lexicon agree
   with the labels.
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
-  word of the committed dictionary with each of its parts of speech.
+  word of the committed dictionary with each of its parts of speech, without exception.
+- **Form senses are the labels, then the form's own extras**
+  (`Words_Committed_FormSensesFollowLabelsThenOwnExtras`): the trained senses of a listed form are exactly the ones its
+  labels name; every further sense covers a dictionary part of speech that the labels do not cover, has the form
+  itself as lemma and has no meaning and no respelling. `Words_Committed_RestrictedFormsGainTheirOwnExtra` names the
+  eight verb-only forms (`bent`, `chanced`, `drove`, `flew`, `limited`, `rode`, `scored`, `shook`) whose lemma has a
+  noun (or adjective) sense that the labels exclude, and asserts that shape; `drove` is the verb of `drive` plus a
+  noun of its own, not the noun sense of `drive`.
 - **Output is deterministic**: two runs on the same corpus give byte-identical files.
 - **Writer and reader agree**: every key and sense written by the writer is read back unchanged, and the reader rejects
   a tampered file (see the `WordLexicon` unit document).
