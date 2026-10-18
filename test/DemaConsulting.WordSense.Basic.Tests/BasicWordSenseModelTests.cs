@@ -297,7 +297,7 @@ public class BasicWordSenseModelTests
         var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
         Assert.Equal(bowed, senses[1].Details);
         Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
-        Assert.Equal("bend", WordLexicon.MeaningOf(bowed));
+        Assert.Equal("bow#bend-verb", bowed.SenseId);
         Assert.Equal(1.0, senses[1].Confidence);
     }
 
@@ -314,13 +314,13 @@ public class BasicWordSenseModelTests
         var queen = await model.ClassifyAsync(["He", "bows", "to", "the", "queen", "."], TestContext.Current.CancellationToken);
         var archer = await model.ClassifyAsync(["She", "drew", "back", "the", "bows", "."], TestContext.Current.CancellationToken);
 
-        var senses = WordLexicon.View["bows"];
+        var senses = WordLexicon.Lookup("bows");
         Assert.Equal(3, senses.Length);
         Assert.Contains(actors[4].Details, senses);
         Assert.Contains(queen[1].Details, senses);
         Assert.Contains(archer[4].Details, senses);
         Assert.Equal(PartOfSpeech.Verb, queen[1].Details?.PartOfSpeech);
-        Assert.Equal("weapon", WordLexicon.MeaningOf(archer[4].Details!));
+        Assert.Equal("bow#weapon", archer[4].Details!.SenseId);
     }
 
     /// <summary>
@@ -339,8 +339,8 @@ public class BasicWordSenseModelTests
         var readsDetails = reads[1].Details!;
         Assert.Equal("read", readsDetails.Lemma);
         Assert.Equal(PartOfSpeech.Verb, readsDetails.PartOfSpeech);
-        Assert.Equal("present", WordLexicon.MeaningOf(readsDetails));
-        Assert.Equal("past", WordLexicon.MeaningOf(past[2].Details!));
-        Assert.Equal("present", WordLexicon.MeaningOf(present[3].Details!));
+        Assert.Equal("read#present", readsDetails.SenseId);
+        Assert.Equal("read#past", past[2].Details!.SenseId);
+        Assert.Equal("read#present", present[3].Details!.SenseId);
     }
 }

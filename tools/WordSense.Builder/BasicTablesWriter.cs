@@ -15,19 +15,26 @@ namespace WordSense.Builder;
 /// </remarks>
 internal static class BasicTablesWriter
 {
-    private static readonly byte[] Magic = "WSB1"u8.ToArray();
+    private static readonly byte[] Magic = "WSB2"u8.ToArray();
 
     /// <summary>
     ///     Serializes the model data.
     /// </summary>
     /// <param name="data">The data.</param>
+    /// <param name="classHash">The class hash of the word image the data was trained for (<c>WordImage.ClassHash</c>); 32 bytes.</param>
     /// <param name="level">The Brotli compression level; the shipped file uses the smallest size, the tuner a fast level.</param>
     /// <returns>The compressed blob.</returns>
-    public static byte[] Write(BasicModelData data, CompressionLevel level = CompressionLevel.SmallestSize)
+    public static byte[] Write(BasicModelData data, ReadOnlySpan<byte> classHash, CompressionLevel level = CompressionLevel.SmallestSize)
     {
         ArgumentNullException.ThrowIfNull(data);
+        if (classHash.Length != 32)
+        {
+            throw new ArgumentException("The class hash needs 32 bytes.", nameof(classHash));
+        }
+
         using var raw = new MemoryStream();
         raw.Write(Magic);
+        raw.Write(classHash);
         var hp = data.Hyperparameters;
         foreach (var value in new[] { hp.Gamma, hp.Beta, hp.Lambda1, hp.Lambda2, hp.Lambda3, hp.HmmWeight, hp.InvTemperature })
         {
@@ -84,9 +91,9 @@ internal static class BasicTablesWriter
             WriteVarint(raw, cue.Senses.Length);
             foreach (var sense in cue.Senses)
             {
-                raw.WriteByte((byte)sense.PartOfSpeech);
-                WriteString(raw, sense.Meaning ?? string.Empty);
+                WriteString(raw, sense.ClassId);
                 raw.WriteByte((byte)sense.Prior);
+                raw.WriteByte(sense.HasMeaning ? (byte)1 : (byte)0);
             }
 
             WriteVarint(raw, cue.Hashes.Length);

@@ -113,7 +113,7 @@ public class OnnxWordSenseModelTests
 
         foreach (var (word, sense) in new[] { "so", "will" }.Zip(result))
         {
-            var senses = WordLexicon.View[word];
+            var senses = WordLexicon.Lookup(word);
             Assert.True(senses.Length > 1);
 
             // A trailing untrained Auxiliary sense is not counted (encoder models never answer it)

@@ -615,7 +615,8 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 - **English only**, and the context is a window of at most `maxSequenceLength` tokens around the target word.
 - **The encoder models need files**: a download on first use (22 MiB or 104 MiB) or a model directory, and ONNX Runtime
   needs native libraries for the target platform. They run on the CPU only.
-- **Weights are fixed to the model file.** The weights format (`WSX1`) is dense, and the weights of a model are only
+- **Weights are fixed to the model file.** The weights format (`WSX2`) is dense, keyed by class id, and pinned to the
+  word image by its class-inventory hash; the weights of a model are only
   valid for its exact pinned files; other files are refused by the SHA-256 check.
 
 # Licensing and Provenance

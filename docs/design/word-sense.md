@@ -122,7 +122,8 @@ embedded in the encoder packages.
 - There is no sentence-level normalization of capitalization or possessives beyond what the models do themselves: the
   Basic tagger uses a capitalized flag and a suffix table, and the encoder sees the text as
   given (the cased model keeps case, the uncased model lower-cases it).
-- The weights format `WSX1` supports dense weights only; there is no sparse variant.
+- The weights format `WSX2` supports dense weights only; there is no sparse variant. Weights are keyed by class id
+  (`lemma#label`) and pinned to the word image by its class-inventory hash.
 - `MirrorOptions` is a sealed record; its validation happens when a model uses it (see _DownloadMirror Unit
   Design_), not in the record.
 - `IWordSenseModel` is `IDisposable` and owns the lifetime; the Basic model's `Dispose` only marks the model as

@@ -26,14 +26,14 @@ namespace DemaConsulting.WordSense.Basic;
 internal sealed class BasicClassifier
 {
     private readonly BasicTables? _tables;
-    private readonly IReadOnlyDictionary<string, ImmutableArray<WordDetails>> _lexicon;
+    private readonly Func<string, ImmutableArray<WordDetails>> _lexicon;
 
     /// <summary>
     ///     Initializes a new instance of the <see cref="BasicClassifier"/> class that uses the embedded table and the
     ///     lexicon of the core library.
     /// </summary>
     public BasicClassifier()
-        : this(null, WordLexicon.View)
+        : this(null, Lookup)
     {
     }
 
@@ -41,12 +41,14 @@ internal sealed class BasicClassifier
     ///     Initializes a new instance of the <see cref="BasicClassifier"/> class with explicit statistics and lexicon.
     /// </summary>
     /// <param name="tables">The statistics, or null for the embedded table (loaded on first use).</param>
-    /// <param name="lexicon">The lexicon, by lower-case word.</param>
-    internal BasicClassifier(BasicTables? tables, IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon)
+    /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when it is unknown.</param>
+    internal BasicClassifier(BasicTables? tables, Func<string, ImmutableArray<WordDetails>> lexicon)
     {
         _tables = tables;
         _lexicon = lexicon;
     }
+
+    private static ImmutableArray<WordDetails> Lookup(string key) => WordLexicon.TryLookup(key, out var senses) ? senses : [];
 
     /// <summary>
     ///     Classifies every word of a tokenized sentence or text.
@@ -163,10 +165,10 @@ internal sealed class BasicClassifier
     /// <summary>
     ///     Creates the tagger token of a written word.
     /// </summary>
-    /// <param name="lexicon">The lexicon, by lower-case word.</param>
+    /// <param name="lexicon">The lexicon: the analyses of a lower-case word, or the default array when it is unknown.</param>
     /// <param name="word">The word as written.</param>
     /// <returns>A fixed token for a word without a letter (a number or punctuation), otherwise a word token with the parts of speech the lexicon lists.</returns>
-    internal static TaggerToken MakeToken(IReadOnlyDictionary<string, ImmutableArray<WordDetails>> lexicon, string word)
+    internal static TaggerToken MakeToken(Func<string, ImmutableArray<WordDetails>> lexicon, string word)
     {
         var key = Normalize(word);
         if (key.Length == 0)
@@ -174,7 +176,8 @@ internal sealed class BasicClassifier
             return TaggerToken.Fixed(word.Any(char.IsDigit) ? PosTag.Other : PosTag.Punctuation);
         }
 
-        var mask = lexicon.TryGetValue(key, out var found) ? MaskOf(found) : 0;
+        var found = lexicon(key);
+        var mask = found.IsDefaultOrEmpty ? 0 : MaskOf(found);
         return TaggerToken.Word(key, mask, char.IsUpper(word[0]));
     }
 
@@ -196,7 +199,7 @@ internal sealed class BasicClassifier
         Span<double> probabilities = count <= 32 ? stackalloc double[32] : new double[count];
         cues = cues[..count];
         probabilities = probabilities[..count];
-        if (tables.Cues.TryGetValue(WordLexicon.TrainedLemmaOf(senses[0]), out var cue))
+        if (tables.FindCue(senses[0]) is { } cue)
         {
             CueModel.Score(cue, features, senses, cues);
         }
@@ -240,7 +243,8 @@ internal sealed class BasicClassifier
         {
             var word = words[start + i];
             var key = Normalize(word);
-            if (key.Length == 0 || !_lexicon.TryGetValue(key, out var senses))
+            var senses = key.Length == 0 ? default : _lexicon(key);
+            if (senses.IsDefaultOrEmpty)
             {
                 results[start + i] = new WordSense(word, null, 0);
             }

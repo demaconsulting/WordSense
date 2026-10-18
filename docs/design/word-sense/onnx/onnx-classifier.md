@@ -19,7 +19,7 @@ the list of words still pending a decision.
 1. For each word, look up the lower-cased word in the lexicon: an empty word or no entry gives `(word, null, 0)`; one
    entry gives `(word, entry, 1.0)`.
 2. Several entries: find the weights of the lemma. With weights the word is pending. Without weights (never trained,
-   or dropped by a mismatch) the result is the first lexicon entry with confidence `1/n` for `n` entries, with no
+   or never matched) the result is the first lexicon entry with confidence `1/n` for `n` entries, with no
    encoder run.
 3. If at least one word is pending, run the encoder once over the text for all pending words. Each pooled vector goes
    through `FeatureExtractor.Center` (subtract the global mean, scale to unit length).

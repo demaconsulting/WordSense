@@ -37,12 +37,11 @@ internal sealed class WordImage
     private readonly string?[] _entryLemmas;
     private readonly string[] _classIds;
     private readonly byte[] _classPos;
-    private readonly string?[] _classMeanings;
     private readonly int _foldCount;
     private uint[]? _fold;
     private uint[]? _entryFormStart;
     private uint[]? _entryForms;
-    private Dictionary<string, (int First, int Count)>? _classesByLemma;
+    private byte[]? _classHash;
 
     private WordImage(byte[] data)
     {
@@ -61,7 +60,6 @@ internal sealed class WordImage
         var scopeCount = Count(meta[ImageFormat.MetaScopeCount]);
         var featureCount = Count(meta[ImageFormat.MetaFeatureCount]);
         _foldCount = Count(meta[ImageFormat.MetaFoldCount]);
-        var meaningCount = Count(meta[ImageFormat.MetaMeaningCount]);
 
         var spellingLength = Section(ImageFormat.SectionSpellingLength);
         _spellingBytes = Section(ImageFormat.SectionSpellingBytes);
@@ -103,28 +101,16 @@ internal sealed class WordImage
         _entryLemmas = new string?[EntryCount];
         _classIds = Strings(ImageFormat.SectionClassIdLength, ImageFormat.SectionClassIdBytes, ClassCount);
         _classPos = Section(ImageFormat.SectionClassPos);
-        var meanings = Strings(ImageFormat.SectionMeaningLength, ImageFormat.SectionMeaningBytes, meaningCount);
-        var classMeaning = Section(ImageFormat.SectionClassMeaning);
-        if (_classPos.Length != ClassCount || classMeaning.Length != ClassCount * 2)
+        if (_classPos.Length != ClassCount || _classPos.Any(p => p > (byte)PartOfSpeech.Auxiliary))
         {
             throw new InvalidDataException("The word image has an invalid class section.");
         }
 
-        _classMeanings = new string?[ClassCount];
-        for (var i = 0; i < ClassCount; i++)
+        for (var i = 1; i < _classIds.Length; i++)
         {
-            var index = BinaryPrimitives.ReadUInt16LittleEndian(classMeaning.AsSpan(i * 2));
-            if (index == 0)
+            if (CompareUtf8(_classIds[i - 1], _classIds[i]) >= 0)
             {
-                _classMeanings[i] = null;
-            }
-            else if (index <= meanings.Length)
-            {
-                _classMeanings[i] = meanings[index - 1];
-            }
-            else
-            {
-                throw new InvalidDataException("The word image has an invalid class meaning.");
+                throw new InvalidDataException("The word image has unordered class ids.");
             }
         }
 
@@ -313,38 +299,41 @@ internal sealed class WordImage
     }
 
     /// <summary>
-    ///     Gets the legacy meaning of a class.
+    ///     Gets the SHA-256 of the class table: for every class in index order the UTF-8 bytes of its id, a zero byte and
+    ///     its part of speech byte. Models trained for this inventory carry the hash, so a model and an image that
+    ///     disagree on the classes are detected when the model is loaded.
     /// </summary>
-    /// <param name="classId">The class id (a sense id of the public API).</param>
-    /// <returns>The meaning, or null when the class has none or is unknown.</returns>
-    public string? MeaningOf(string classId)
+    public ReadOnlySpan<byte> ClassHash
     {
-        var index = ClassIndex(classId);
-        return index < 0 ? null : _classMeanings[index];
+        get
+        {
+            var hash = _classHash;
+            if (hash is null)
+            {
+                using var sha = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
+                Span<byte> tail = stackalloc byte[2];
+                for (var i = 0; i < _classIds.Length; i++)
+                {
+                    sha.AppendData(Encoding.UTF8.GetBytes(_classIds[i]));
+                    tail[0] = 0;
+                    tail[1] = _classPos[i];
+                    sha.AppendData(tail);
+                }
+
+                hash = sha.GetHashAndReset();
+                _classHash = hash;
+            }
+
+            return hash;
+        }
     }
 
     /// <summary>
-    ///     Gets the ids of the classes of a trained lemma, in class id order.
+    ///     Gets the id of a class by index.
     /// </summary>
-    /// <param name="trainedLemma">The lemma that the classes are named after.</param>
-    /// <returns>The class ids.</returns>
-    public IReadOnlyList<string> ClassesOf(string trainedLemma)
-    {
-        var map = _classesByLemma;
-        if (map is null)
-        {
-            map = [];
-            for (var i = 0; i < _classIds.Length; i++)
-            {
-                var lemma = TrainedLemmaOf(_classIds[i]);
-                map[lemma] = map.TryGetValue(lemma, out var range) ? (range.First, range.Count + 1) : (i, 1);
-            }
-
-            _classesByLemma = map;
-        }
-
-        return map.TryGetValue(trainedLemma, out var found) ? new ArraySegment<string>(_classIds, found.First, found.Count) : [];
-    }
+    /// <param name="index">The class index, 0 up to <see cref="ClassCount"/>.</param>
+    /// <returns>The class id.</returns>
+    public string ClassId(int index) => _classIds[index];
 
     /// <summary>
     ///     Gets the part of speech of a class.
@@ -358,20 +347,13 @@ internal sealed class WordImage
     }
 
     /// <summary>
-    ///     Gets the lemma a class id is named after (the text before the <c>#</c>).
+    ///     Finds a class by id.
     /// </summary>
     /// <param name="classId">The class id.</param>
-    /// <returns>The trained lemma.</returns>
-    public static string TrainedLemmaOf(string classId)
+    /// <returns>The class index, or -1 for an unknown class.</returns>
+    public int ClassIndex(string classId)
     {
-        var hash = classId.IndexOf('#', StringComparison.Ordinal);
-        return hash < 0 ? classId : classId[..hash];
-    }
-
-    private static int Count(uint value) => value > int.MaxValue / 8 ? throw new InvalidDataException("The word image has an invalid count.") : (int)value;
-
-    private int ClassIndex(string classId)
-    {
+        ArgumentNullException.ThrowIfNull(classId);
         int lo = 0, hi = _classIds.Length;
         while (lo < hi)
         {
@@ -394,6 +376,8 @@ internal sealed class WordImage
 
         return -1;
     }
+
+    private static int Count(uint value) => value > int.MaxValue / 8 ? throw new InvalidDataException("The word image has an invalid count.") : (int)value;
 
     private static int CompareUtf8(string a, string b) =>
         Encoding.UTF8.GetBytes(a).AsSpan().SequenceCompareTo(Encoding.UTF8.GetBytes(b));

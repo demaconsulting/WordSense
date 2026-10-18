@@ -80,14 +80,13 @@ public class WordLexiconTests
     {
         var bowed = Assert.Single(WordLexicon.Lookup("bowed"));
         Assert.Equal(PartOfSpeech.Verb, bowed.PartOfSpeech);
-        Assert.Equal("bend", WordLexicon.MeaningOf(bowed));
-        Assert.Equal("bow", WordLexicon.TrainedLemmaOf(bowed));
+        Assert.Equal("bow#bend-verb", bowed.SenseId);
         Assert.Equal("Tense=Past", bowed.Features);
 
         var bows = WordLexicon.Lookup("bows");
         Assert.Equal(
-            [(PartOfSpeech.Noun, "bend"), (PartOfSpeech.Verb, "bend"), (PartOfSpeech.Noun, "weapon")],
-            bows.Select(b => (b.PartOfSpeech, WordLexicon.MeaningOf(b))));
+            [(PartOfSpeech.Noun, "bow#bend-noun"), (PartOfSpeech.Verb, "bow#bend-verb"), (PartOfSpeech.Noun, "bow#weapon")],
+            bows.Select(b => (b.PartOfSpeech, b.SenseId)));
         Assert.Equal(3, bows.Select(b => b.SenseId).Distinct().Count());
         Assert.All(bows, b => Assert.StartsWith("bow#", b.SenseId, StringComparison.Ordinal));
         Assert.Equal(3, WordLexicon.Lookup("bow").Count(b => b.SenseId is not null));
@@ -101,10 +100,10 @@ public class WordLexiconTests
     public void WordLexicon_Lookup_ReadForms_SplitBySense()
     {
         var reads = Assert.Single(WordLexicon.Lookup("reads"));
-        Assert.Equal("present", WordLexicon.MeaningOf(reads));
+        Assert.Equal("read#present", reads.SenseId);
 
-        var read = WordLexicon.Lookup("read").Select(WordLexicon.MeaningOf).Where(m => m is not null);
-        Assert.Equal(["past", "present"], read.Order(StringComparer.Ordinal));
+        var read = WordLexicon.Lookup("read").Select(s => s.SenseId).Where(id => id is not null);
+        Assert.Equal(["read#past", "read#present"], read.Order(StringComparer.Ordinal));
     }
 
     /// <summary>
@@ -116,12 +115,12 @@ public class WordLexiconTests
     {
         var lives = WordLexicon.Lookup("lives");
         Assert.Equal(PartOfSpeech.Verb, lives[0].PartOfSpeech);
-        Assert.Equal("dwell", WordLexicon.MeaningOf(lives[0]));
+        Assert.Equal("live#verb", lives[0].SenseId);
         Assert.DoesNotContain(lives, s => s.PartOfSpeech is PartOfSpeech.Adjective or PartOfSpeech.Adverb);
 
         var wounds = Assert.Single(WordLexicon.Lookup("wounds"));
         Assert.Equal(PartOfSpeech.Noun, wounds.PartOfSpeech);
-        Assert.Equal("injury", WordLexicon.MeaningOf(wounds));
+        Assert.Equal("wound#injury", wounds.SenseId);
     }
 
     /// <summary>
@@ -140,12 +139,12 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     Every key is a lower-case surface form.
+    ///     Every form of a lemma is a lower-case surface form.
     /// </summary>
     [Fact]
-    public void WordLexicon_View_Keys_AreLowerCase()
+    public void WordLexicon_FormsOf_Forms_AreLowerCase()
     {
-        Assert.All(WordLexicon.View.Keys, key => Assert.Equal(key.ToLowerInvariant(), key));
+        Assert.All(WordLexicon.FormsOf("record"), key => Assert.Equal(key.ToLowerInvariant(), key));
     }
 
     /// <summary>
@@ -230,8 +229,7 @@ public class WordLexiconTests
         Assert.Empty(WordLexicon.Lookup("zzqxjw"));
         Assert.Empty(WordLexicon.Lookup(string.Empty));
         Assert.Empty(WordLexicon.Lookup(new string('a', 400)));
-        Assert.False(WordLexicon.View.ContainsKey("zzqxjw"));
-        Assert.Throws<KeyNotFoundException>(() => WordLexicon.View["zzqxjw"]);
+        Assert.False(WordLexicon.Contains("zzqxjw"));
     }
 
     /// <summary>
@@ -268,8 +266,7 @@ public class WordLexiconTests
     public void WordLexicon_Count_EmbeddedImage_LoadsAndIsNotEmpty()
     {
         Assert.True(WordLexicon.Count > 300_000);
-        Assert.Equal(WordLexicon.Count, WordLexicon.View.Count);
-        Assert.All(WordLexicon.View.Take(1000), pair => Assert.NotEmpty(pair.Value));
+        Assert.All(new[] { "record", "the", "bows", "drove" }, word => Assert.NotEmpty(WordLexicon.Lookup(word)));
         Assert.Equal(WordLexicon.Lookup("record"), WordLexicon.Lookup("record"));
     }
 

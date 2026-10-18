@@ -4,7 +4,7 @@
 
 The unit is verified with the real embedded word image. Tests in
 `test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs` use the public `WordLexicon` lookup and the internal bridge
-members (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`). The image format itself (determinism, UTF-8 ordering,
+members. The image format itself (determinism, UTF-8 ordering,
 corruption) is verified in the builder test project (`ImageTests.cs`) because the compiler lives in the builder, so the
 shipped assembly has no writer. The committed image is compared with a fresh compilation of `data/` and with the
 legacy word table (`BuilderTests.Words_Committed_*`). Nothing is mocked.
@@ -39,7 +39,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Trained lemma bridge** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas`): a form whose
   trained lemma differs from its entry lemma (`axes`) resolves through the class id prefix, and the 19 corrected forms
   have the fixed lemma.
-- **Keys are lower case** (`View_Keys_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
+- **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).
 - **Forms of a lemma** (`FormsOf_Lemma_ListsItsForms`): the forms of `record` are listed.

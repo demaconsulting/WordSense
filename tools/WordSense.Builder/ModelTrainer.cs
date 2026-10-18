@@ -56,7 +56,7 @@ internal static class ModelTrainer
             }
         }
 
-        var data = WeightsTrainer.TrainDense(model.ModelId, pooled, anchors, inventory, options);
+        var data = WeightsTrainer.TrainDense(model.ModelId, DemaConsulting.WordSense.WordLexicon.Current.ClassHash.ToArray(), pooled, anchors, inventory, options);
 
         var path = info.WeightsPath(repository);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);

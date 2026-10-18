@@ -72,9 +72,9 @@ internal static class BasicModelBuilder
         Corpus.EnsureDisjoint(anchors, holdout);
         inventory.Validate(anchors, holdout, forms);
 
-        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), WordLexicon.View, anchors, inventory, BasicHyperparameters.Default);
-        var blob = BasicTablesWriter.Write(data);
-        _ = BasicTables.Load(blob);
+        var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, BasicHyperparameters.Default);
+        var blob = BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash);
+        _ = BasicTables.Load(blob, WordLexicon.Current);
         var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Combine(repository, outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         await File.WriteAllBytesAsync(path, blob, cancellationToken).ConfigureAwait(false);

@@ -30,12 +30,13 @@ internal static class WeightsTrainer
     ///     Trains dense-feature weights from pooled encoder vectors.
     /// </summary>
     /// <param name="modelId">The model identifier recorded in the weights.</param>
+    /// <param name="classHash">The class hash of the word image the weights are trained for (<c>WordImage.ClassHash</c>).</param>
     /// <param name="pooled">One pooled vector per anchor row.</param>
     /// <param name="anchors">The training rows.</param>
     /// <param name="inventory">The sense inventory.</param>
     /// <param name="options">The trainer settings.</param>
     /// <returns>The weights.</returns>
-    public static WeightsData TrainDense(string modelId, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options)
+    public static WeightsData TrainDense(string modelId, byte[] classHash, double[][] pooled, IReadOnlyList<CorpusRow> anchors, SenseInventory inventory, TrainingOptions options)
     {
         if (pooled.Length == 0)
         {
@@ -60,7 +61,7 @@ internal static class WeightsTrainer
         }
 
         var entries = TrainAll(anchors, inventory, options, (_, index) => index.Select(i => features[i]).ToArray());
-        return new WeightsData(modelId, dim, mean, entries);
+        return new WeightsData(modelId, classHash, dim, mean, entries);
     }
 
     private static List<WeightedLemma> TrainAll(
@@ -118,9 +119,9 @@ internal static class WeightsTrainer
         {
             var t = trained[k];
             var lemma = lemmas[k].Key;
-            var senses = inventory.DefinitionsOf(lemma).Select(s => new WeightedWord(lemma, s.Pos, s.Meaning)).ToList();
+            var classIds = inventory.LabelsOf(lemma).Select(label => lemma + "#" + label).ToList();
             var weights = new LemmaWeights(t.Kind, t.Weights, t.Bias, t.Cv ? t.Margin : fallback, t.Dimension);
-            entries.Add(new WeightedLemma(lemma, senses, weights));
+            entries.Add(new WeightedLemma(lemma, classIds, weights));
         }
 
         return entries;

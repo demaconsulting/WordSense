@@ -5,15 +5,15 @@ using DemaConsulting.WordSense.Onnx;
 namespace WordSense.Builder;
 
 /// <summary>
-///     Writes the binary weights of an encoder model (<c>WSX1</c>, Brotli-compressed) that the Onnx package reads.
+///     Writes the binary weights of an encoder model (<c>WSX2</c>, Brotli-compressed) that the Onnx package reads.
 /// </summary>
 /// <remarks>
 ///     The layout is described by the reader, <c>WeightsBlob</c> in the Onnx package. Lemmas are written in ordinal
-///     order, so equal input always gives equal bytes.
+///     order, so equal input always gives equal bytes. A binary model must have exactly two senses.
 /// </remarks>
 internal static class WeightsBlobWriter
 {
-    private static readonly byte[] Magic = "WSX1"u8.ToArray();
+    private static readonly byte[] Magic = "WSX2"u8.ToArray();
 
     /// <summary>
     ///     Serializes weights.
@@ -28,9 +28,15 @@ internal static class WeightsBlobWriter
             throw new ArgumentException("The mean needs the model dimension.", nameof(data));
         }
 
+        if (data.ClassHash.Length != 32)
+        {
+            throw new ArgumentException("The class hash needs 32 bytes.", nameof(data));
+        }
+
         using var raw = new MemoryStream();
         raw.Write(Magic);
         WriteString(raw, data.ModelId);
+        raw.Write(data.ClassHash);
         VarintWriter.WriteVarint(raw, data.Dimension);
         raw.WriteByte(0);
         WriteFloats(raw, data.Mean);
@@ -40,15 +46,18 @@ internal static class WeightsBlobWriter
         foreach (var entry in lemmas)
         {
             var w = entry.Weights;
+            if (w.Kind == LemmaModelKind.Binary && entry.ClassIds.Count != 2)
+            {
+                throw new ArgumentException($"The binary weights of '{entry.Lemma}' need exactly two senses.", nameof(data));
+            }
+
             WriteString(raw, entry.Lemma);
             WriteFloats(raw, [w.AbstainMargin]);
             raw.WriteByte((byte)w.Kind);
-            VarintWriter.WriteVarint(raw, entry.Senses.Count);
-            foreach (var sense in entry.Senses)
+            VarintWriter.WriteVarint(raw, entry.ClassIds.Count);
+            foreach (var classId in entry.ClassIds)
             {
-                raw.WriteByte((byte)sense.PartOfSpeech);
-                WriteString(raw, sense.Meaning ?? string.Empty);
-                raw.WriteByte(sense.Meaning is null ? (byte)0 : (byte)1);
+                WriteString(raw, classId);
             }
 
             WriteFloats(raw, w.Bias);

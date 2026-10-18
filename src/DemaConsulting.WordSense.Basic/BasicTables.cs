@@ -6,12 +6,22 @@ using System.Text;
 namespace DemaConsulting.WordSense.Basic;
 
 /// <summary>
-///     One sense row of a cue table: the sense that the weights of one lemma column score.
+///     One sense row of a cue table: the class that the weights of one lemma column score.
 /// </summary>
-/// <param name="PartOfSpeech">The part of speech of the sense.</param>
-/// <param name="Meaning">The pronunciation meaning of the sense, or null when the lemma is not a heteronym.</param>
+/// <param name="ClassId">The id of the class (the sense id of the public API).</param>
 /// <param name="Prior">The quantized log prior of the sense, in steps of 1/8 nat (zero or negative).</param>
-internal sealed record CueSense(PartOfSpeech PartOfSpeech, string? Meaning, sbyte Prior);
+internal sealed record CueSense(string ClassId, sbyte Prior)
+{
+    /// <summary>
+    ///     Gets a value indicating whether the class carries a pronunciation meaning (a heteronym class).
+    /// </summary>
+    public bool HasMeaning { get; init; }
+
+    /// <summary>
+    ///     Gets the part of speech of the class, resolved from the word image at load.
+    /// </summary>
+    public PartOfSpeech? Pos { get; init; }
+}
 
 /// <summary>
 ///     The statistics of one tabled word: its closed-class tags and its per-tag training counts.
@@ -102,16 +112,31 @@ internal sealed class LemmaCue
     /// <summary>
     ///     Finds the column of a lexicon sense.
     /// </summary>
-    /// <param name="details">The sense, matched by part of speech and meaning.</param>
+    /// <param name="details">The sense, matched by its class id.</param>
     /// <returns>The index of the sense, or -1 when the table has no such sense.</returns>
     public int RowOf(WordDetails details)
     {
         ArgumentNullException.ThrowIfNull(details);
         for (var i = 0; i < Senses.Length; i++)
         {
-            if (Senses[i].PartOfSpeech == details.PartOfSpeech && string.Equals(Senses[i].Meaning, WordLexicon.MeaningOf(details), StringComparison.Ordinal))
+            if (string.Equals(Senses[i].ClassId, details.SenseId, StringComparison.Ordinal))
             {
                 return i;
+            }
+        }
+
+        // An analysis that is not a class of this lemma (an inflected form of a neighbor, or an untrained word) is
+        // scored by the plain column of its part of speech, as the shipped model has always done.
+        // An analysis without a class (an inflected form of a neighbor, or an untrained word) has no meaning, so it
+        // is scored by the column of its part of speech that has no meaning, as the shipped model has always done.
+        if (details.SenseId is null)
+        {
+            for (var i = 0; i < Senses.Length; i++)
+            {
+                if (!Senses[i].HasMeaning && Senses[i].Pos == details.PartOfSpeech)
+                {
+                    return i;
+                }
             }
         }
 
@@ -125,16 +150,18 @@ internal sealed class LemmaCue
 /// </summary>
 /// <remarks>
 ///     <para>
-///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB1</c>); after
+///     The table is a Brotli-compressed container that the repository's builder writes (<c>WSB2</c>); after
 ///     decompression every integer is a little-endian 7-bit varint unless noted, a double is eight little-endian
-///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB1</c>; seven
+///     bytes and a string is a varint byte length followed by UTF-8. The layout is: the magic <c>WSB2</c>; the
+///     32-byte class hash (SHA-256 of the class table of the word image the table was trained for); seven
 ///     doubles (gamma, beta, lambda1, lambda2, lambda3, the weight of the tagger in the fusion, the inverse
 ///     temperature of the cues); the tag count; the unigram, bigram and trigram tag counts (the boundary is the last
 ///     index); the tabled words (word, flags byte with bit 0 = closed class, a 16-bit closed mask when closed, a 16-bit
 ///     presence mask and one count per set bit); the suffix entries (suffix and four counts for noun, verb, adjective
-///     and adverb); and the cue lemmas (lemma, senses with part of speech, meaning and quantized prior, the delta-coded
+///     and adverb); and the cue lemmas (lemma, senses with class id and quantized prior, the delta-coded
 ///     ascending 16-bit feature hashes and one signed byte weight per feature and sense). Words, suffixes and lemmas
-///     are in ascending ordinal order, so equal data always gives equal bytes.
+///     are in ascending ordinal order, so equal data always gives equal bytes. The load fails when the hash differs from the
+///     word image or a class id is unknown or used twice.
 ///     </para>
 ///     <para>
 ///     An instance is immutable and safe for concurrent use. <see cref="Default"/> is the table embedded in the
@@ -156,12 +183,14 @@ internal sealed class BasicTables
     private const double MinimumTagPrior = 1e-9;
     private const int MaximumSenses = 255;
     private const int MaximumLemmaLength = 1024;
-    private static readonly byte[] Magic = "WSB1"u8.ToArray();
+    private const int HashSize = 32;
+    private static readonly byte[] Magic = "WSB2"u8.ToArray();
 
     private static readonly Lazy<BasicTables> DefaultTables = new(LoadEmbedded, LazyThreadSafetyMode.ExecutionAndPublication);
 
     private readonly string[] _suffixKeys;
     private readonly double[][] _suffixProbabilities;
+    private readonly FrozenDictionary<string, LemmaCue> _cuesByClass;
 
     private BasicTables(
         double[] parameters,
@@ -187,6 +216,7 @@ internal sealed class BasicTables
         _suffixKeys = suffixKeys;
         _suffixProbabilities = suffixProbabilities;
         Cues = cues;
+        _cuesByClass = cues.Values.SelectMany(c => c.Senses.Select(s => (s.ClassId, Cue: c))).ToFrozenDictionary(p => p.ClassId, p => p.Cue, StringComparer.Ordinal);
         var derived = Derive(unigrams, bigrams, trigrams, Lambda1, Lambda2, Lambda3);
         Transition = derived.Transition;
         TagPrior = derived.TagPrior;
@@ -281,13 +311,23 @@ internal sealed class BasicTables
     public int SuffixCount => _suffixKeys.Length;
 
     /// <summary>
-    ///     Reads a table.
+    ///     Reads a table that belongs to the embedded word image.
     /// </summary>
     /// <param name="blob">The compressed blob.</param>
     /// <returns>The table.</returns>
-    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt.</exception>
-    public static BasicTables Load(ReadOnlySpan<byte> blob)
+    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt or not for the embedded word image.</exception>
+    public static BasicTables Load(ReadOnlySpan<byte> blob) => Load(blob, WordLexicon.Current);
+
+    /// <summary>
+    ///     Reads a table.
+    /// </summary>
+    /// <param name="blob">The compressed blob.</param>
+    /// <param name="image">The word image the table must belong to.</param>
+    /// <returns>The table.</returns>
+    /// <exception cref="InvalidDataException">Thrown when the blob is corrupt or not for the word image.</exception>
+    public static BasicTables Load(ReadOnlySpan<byte> blob, WordImage image)
     {
+        ArgumentNullException.ThrowIfNull(image);
         var reader = new Reader(Decompress(blob));
         for (var i = 0; i < Magic.Length; i++)
         {
@@ -295,6 +335,18 @@ internal sealed class BasicTables
             {
                 throw new InvalidDataException("The basic table has an unknown format.");
             }
+        }
+
+        var hash = new byte[HashSize];
+        for (var i = 0; i < hash.Length; i++)
+        {
+            hash[i] = reader.ReadByte();
+        }
+
+        if (!hash.AsSpan().SequenceEqual(image.ClassHash))
+        {
+            throw new InvalidDataException(
+                $"The basic table was trained for another class inventory: its class hash is {Convert.ToHexString(hash)}, the word image has {Convert.ToHexString(image.ClassHash)}. Rebuild the table.");
         }
 
         var parameters = new double[7];
@@ -314,13 +366,24 @@ internal sealed class BasicTables
         var trigrams = reader.ReadVarints(PosTag.Extended * PosTag.Extended * PosTag.Extended);
         var words = ReadWords(reader);
         var (suffixKeys, suffixProbabilities) = ReadSuffixes(reader);
-        var cues = ReadCues(reader);
+        var cues = ReadCues(reader, image);
         if (reader.Remaining != 0)
         {
             throw new InvalidDataException("The basic table has trailing bytes.");
         }
 
         return new BasicTables(parameters, unigrams, bigrams, trigrams, words, suffixKeys, suffixProbabilities, cues);
+    }
+
+    /// <summary>
+    ///     Finds the cue table that scores a word: the one that holds the class of its first analysis.
+    /// </summary>
+    /// <param name="first">The first (most frequent) analysis of the word.</param>
+    /// <returns>The cue table, or null when the word has none.</returns>
+    public LemmaCue? FindCue(WordDetails first)
+    {
+        ArgumentNullException.ThrowIfNull(first);
+        return first.SenseId is { } id ? _cuesByClass.GetValueOrDefault(id) : Cues.GetValueOrDefault(first.Lemma);
     }
 
     /// <summary>
@@ -364,7 +427,7 @@ internal sealed class BasicTables
             ?? throw new InvalidDataException("The embedded basic table is missing from the assembly.");
         using var buffer = new MemoryStream();
         stream.CopyTo(buffer);
-        return Load(buffer.GetBuffer().AsSpan(0, (int)buffer.Length));
+        return Load(buffer.GetBuffer().AsSpan(0, (int)buffer.Length), WordLexicon.Current);
     }
 
     private static byte[] Decompress(ReadOnlySpan<byte> blob)
@@ -461,10 +524,11 @@ internal sealed class BasicTables
         return (keys, probabilities);
     }
 
-    private static FrozenDictionary<string, LemmaCue> ReadCues(Reader reader)
+    private static FrozenDictionary<string, LemmaCue> ReadCues(Reader reader, WordImage image)
     {
         var count = reader.ReadCount();
         var cues = new Dictionary<string, LemmaCue>(count, StringComparer.Ordinal);
+        var seenClasses = new HashSet<string>(StringComparer.Ordinal);
         string? previous = null;
         for (var i = 0; i < count; i++)
         {
@@ -484,14 +548,25 @@ internal sealed class BasicTables
             var senses = new CueSense[senseCount];
             for (var s = 0; s < senseCount; s++)
             {
-                var pos = reader.ReadByte();
-                if (pos > (byte)PartOfSpeech.Interjection)
+                var classId = reader.ReadString();
+                if (image.ClassIndex(classId) < 0)
                 {
-                    throw new InvalidDataException("The basic table has an invalid part of speech.");
+                    throw new InvalidDataException($"The basic table names the class '{classId}', which is not in the word image.");
                 }
 
-                var meaning = reader.ReadString();
-                senses[s] = new CueSense((PartOfSpeech)pos, meaning.Length == 0 ? null : meaning, (sbyte)reader.ReadByte());
+                if (!seenClasses.Add(classId))
+                {
+                    throw new InvalidDataException($"The basic table names the class '{classId}' twice.");
+                }
+
+                var prior = (sbyte)reader.ReadByte();
+                var meaningFlag = reader.ReadByte();
+                if (meaningFlag > 1)
+                {
+                    throw new InvalidDataException("The basic table has an invalid meaning flag.");
+                }
+
+                senses[s] = new CueSense(classId, prior) { HasMeaning = meaningFlag == 1, Pos = image.ClassPos(classId) };
             }
 
             var featureCount = reader.ReadCount();

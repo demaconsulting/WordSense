@@ -1,5 +1,8 @@
 using System.Text;
 using System.Text.RegularExpressions;
+using DemaConsulting.WordSense.BertBaseCased;
+using DemaConsulting.WordSense.Onnx;
+using DemaConsulting.WordSense.Onnx.Tests;
 
 namespace DemaConsulting.WordSense.MiniLM.Tests;
 
@@ -43,24 +46,13 @@ internal static partial class DocSampleText
     public static string RequireModelDirectory(string modelId)
     {
         var directory = Path.Combine(FindRepositoryRoot(), "model", modelId);
-        foreach (var name in new[] { "model_int8.onnx", "vocab.txt" })
+        using OnnxWordSenseModel model = modelId switch
         {
-            var path = Path.Combine(directory, name);
-            if (!File.Exists(path))
-            {
-                Assert.Skip($"The model file '{name}' is missing.");
-            }
-
-            using var stream = File.OpenRead(path);
-            var buffer = new byte[64];
-            var read = stream.Read(buffer, 0, buffer.Length);
-            if (Encoding.ASCII.GetString(buffer, 0, read).StartsWith("version https://git-lfs", StringComparison.Ordinal))
-            {
-                Assert.Skip($"The model file '{name}' is a Git LFS pointer; run 'git lfs pull'.");
-            }
-        }
-
-        return directory;
+            "all-MiniLM-L6-v2-int8" => new MiniLMWordSenseModel(directory),
+            "bert-base-cased-int8" => new BertBaseCasedWordSenseModel(directory),
+            _ => throw new ArgumentException($"Unknown model '{modelId}'.", nameof(modelId)),
+        };
+        return ModelFileCheck.Require(model.Spec, directory);
     }
 
     /// <summary>

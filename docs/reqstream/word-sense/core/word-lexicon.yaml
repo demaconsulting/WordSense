@@ -25,7 +25,7 @@ sections:
                   - WordLexicon_Lookup_InflectedFormOfAnyDictionaryWord_ResolvesToLemma
                   - WordLexicon_Contains_IrregularFormInDictionary_IsKnown
                   - WordLexicon_Contains_WrongRegularFormOfIrregularWord_IsAbsent
-                  - WordLexicon_View_Keys_AreLowerCase
+                  - WordLexicon_FormsOf_Forms_AreLowerCase
                   - WordLexicon_Lookup_Case_FoldsToLowerCase
                   - WordLexicon_Lookup_UnknownWord_IsAbsent
                   - WordLexicon_Lookup_NullWord_Throws

@@ -24,7 +24,7 @@ internal static class ImageFormat
     public static ReadOnlySpan<byte> Magic => "WSI1"u8;
 
     /// <summary>The format version this code reads and writes.</summary>
-    public const uint Version = 1;
+    public const uint Version = 2;
 
     /// <summary>The size of the fixed header.</summary>
     public const int HeaderSize = 80;
@@ -95,15 +95,6 @@ internal static class ImageFormat
     /// <summary>The part of speech of each class (<c>byte[]</c>).</summary>
     public const int SectionClassPos = 18;
 
-    /// <summary>The meaning of each class: the index plus one into the meaning list, zero for none (<c>ushort[]</c>).</summary>
-    public const int SectionClassMeaning = 19;
-
-    /// <summary>The byte length of each distinct meaning.</summary>
-    public const int SectionMeaningLength = 20;
-
-    /// <summary>The UTF-8 bytes of the distinct meanings.</summary>
-    public const int SectionMeaningBytes = 21;
-
     /// <summary>The index of the spelling count in the meta section.</summary>
     public const int MetaSpellingCount = 0;
 
@@ -125,11 +116,8 @@ internal static class ImageFormat
     /// <summary>The index of the fold count in the meta section.</summary>
     public const int MetaFoldCount = 6;
 
-    /// <summary>The index of the meaning count in the meta section.</summary>
-    public const int MetaMeaningCount = 7;
-
     /// <summary>The number of values in the meta section.</summary>
-    public const int MetaLength = 8;
+    public const int MetaLength = 7;
 
     /// <summary>The flag bit of a section that is stored as is.</summary>
     public const int FlagStored = 0x100;

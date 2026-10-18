@@ -60,7 +60,7 @@ sections:
               - WordSense-Onnx-LemmaWeights-Scoring
               - WordSense-Onnx-LemmaWeights-Embedded
             tests:
-              - EmbeddedWeights_MiniLM_DropsNoLemma
+              - EmbeddedWeights_MiniLM_MatchesWordImage
 
           - id: WordSense-Onnx-Encoder
             title: >-

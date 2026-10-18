@@ -14,10 +14,13 @@ the lexicon, computes the feature of a pooled vector and scores the senses of a 
 - `WeightedLemma(Lemma, Senses, Weights)` with `WeightedWord(Lemma, PartOfSpeech, Meaning)` senses, and the weights of
   one lemma: kind (`Binary` or `OneVersusRest`), abstain margin (not negative), biases and the row-major weight
   matrix.
-- `WeightedLemmaTable`: the lemmas that match the lexicon, found by lemma name, plus the dropped lemmas.
-- Blob format `WSX1` (Brotli): model id, dimension, a flag byte (0 for dense; sparse weights are not supported), the
+- `WeightedLemmaTable`: the lemmas of the weights, found by lemma name, each with the indexes of its classes in the
+  word image.
+- Blob format `WSX2` (Brotli): model id, the 32-byte class-inventory hash of the word image, dimension, a flag byte
+  (0 for dense; sparse weights are not supported), the
   mean (little-endian floats), the lemma count, then per lemma in ordinal order the lemma, the abstain margin, the
-  kind, the senses and the biases and weights.
+  kind, the class ids (`lemma#label`) of the senses and the biases and weights. The Binary kind needs exactly two
+  classes. The classes are resolved against the image at load; a hash mismatch or an unknown class is a load failure.
 - The features are dense, finite and of unit length. `FeatureExtractor` computes them (global mean centering, then
   unit scaling) and is shared by training and inference; `VectorMath` holds the dot product. `FeatureExtractor`,
   `WeightedLemmaTable` and `VectorMath` are internal helpers of the classifier path; they stay in their own files (one
@@ -27,10 +30,9 @@ the lexicon, computes the feature of a pooled vector and scores the senses of a 
 #### Key Methods
 
 - `WeightsBlob.Read`: decodes and validates the blob.
-- `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and keeps a lemma only if
-  the lexicon holds the trained senses as its first senses (same lemma, part of speech and meaning, in the same
-  order); it may hold further dictionary senses after them. A lemma that does not match, or whose lexicon entry is
-  shorter, is dropped as a whole and counted in the dropped lemmas, and the tests require none.
+- `WeightedLemmaTable.LoadEmbedded(assembly, resource, modelId, hiddenSize)`: reads the blob and resolves every class id
+  against the word image; a different class hash, an unknown or duplicate class or lemma, or a class count that
+  differs from the weights is a load failure (`InvalidDataException`). Nothing is dropped.
 - `FeatureExtractor.Center(vector, mean)`: the feature of a pooled vector.
 - Scoring: `Scores` gives the sense scores (a binary lemma gives the pair minus and plus the activation), `Rank`
   orders the candidate senses and `Confidence` turns the margin and abstain margin into a confidence.

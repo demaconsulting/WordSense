@@ -8,40 +8,44 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     The trained weights of one model: the feature space description and one classifier per ambiguous lemma.
 /// </summary>
 /// <param name="ModelId">The identifier of the model the weights were trained for.</param>
+/// <param name="ClassHash">The SHA-256 of the class table of the word image the weights were trained for (<c>WordImage.ClassHash</c>).</param>
 /// <param name="Dimension">The dense feature dimension, which is the hidden size of the encoder.</param>
 /// <param name="Mean">The global mean vector subtracted from a pooled vector before scoring; length <paramref name="Dimension"/>.</param>
-/// <param name="Lemmas">The classifiers, one per lemma.</param>
-internal sealed record WeightsData(string ModelId, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas);
+/// <param name="Lemmas">The classifiers, one per lemma group.</param>
+internal sealed record WeightsData(string ModelId, byte[] ClassHash, int Dimension, float[] Mean, IReadOnlyList<WeightedLemma> Lemmas);
 
 /// <summary>
-///     Reads the binary weights of an encoder model (<c>WSX1</c>, Brotli-compressed). The writer lives in the
+///     Reads the binary weights of an encoder model (<c>WSX2</c>, Brotli-compressed). The writer lives in the
 ///     repository's build tool.
 /// </summary>
 /// <remarks>
 ///     <para>
-///     Content after the Brotli layer: the magic <c>WSX1</c>; the model id as a length-prefixed UTF-8 string; the
-///     dimension as a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
-///     the lemma count as a varint; then per lemma, in ordinal order: the lemma string, the abstain margin (float), the
-///     model kind (byte: 1 binary, 2 one-versus-rest), the sense count (varint), per sense the part of speech (byte),
-///     the meaning string and a presence byte, then the bias floats (one per row) and the weight floats (row-major).
+///     Content after the Brotli layer: the magic <c>WSX2</c>; the model id as a length-prefixed UTF-8 string; the
+///     32-byte class hash (SHA-256 of the class table of the word image the weights were trained for); the dimension as
+///     a varint; a flag byte that is always 0 (dense weights); the mean as little-endian 32-bit floats;
+///     the lemma group count as a varint; then per group, in ordinal order of the name: the name, the abstain margin (float), the
+///     model kind (byte: 1 binary, 2 one-versus-rest), the sense count (varint), per sense the class id as a string, then
+///     the bias floats (one per row) and the weight floats (row-major). A binary model has exactly two senses.
 ///     </para>
 ///     <para>
+///     The reader checks the structure only: every class id must be non-empty and used by one group at most. That the
+///     ids exist in the word image and that the hash matches is checked by <see cref="WeightedLemmaTable"/>.
 ///     Varints are 7-bit little-endian groups; strings are a varint byte length followed by UTF-8 bytes.
 ///     </para>
 /// </remarks>
 internal static class WeightsBlob
 {
-    private static readonly byte[] Magic = "WSX1"u8.ToArray();
+    /// <summary>
+    ///     The size of the class hash.
+    /// </summary>
+    public const int HashSize = 32;
+
+    private static readonly byte[] Magic = "WSX2"u8.ToArray();
 
     /// <summary>
     ///     UTF-8 decoding that throws on malformed bytes instead of substituting replacement characters.
     /// </summary>
     private static readonly UTF8Encoding StrictUtf8 = new(false, true);
-
-    /// <summary>
-    ///     The largest valid part-of-speech byte, derived from the enum so a new value is accepted automatically.
-    /// </summary>
-    private static readonly byte MaxPartOfSpeech = (byte)Enum.GetValues<PartOfSpeech>().Max();
 
     /// <summary>
     ///     Deserializes weights.
@@ -73,6 +77,9 @@ internal static class WeightsBlob
 
         var p = Magic.Length;
         var modelId = ReadString(span, ref p);
+        Need(span, p, HashSize);
+        var classHash = span.Slice(p, HashSize).ToArray();
+        p += HashSize;
         var dimension = ReadVarint(span, ref p);
         if (ReadByte(span, ref p) != 0)
         {
@@ -88,6 +95,7 @@ internal static class WeightsBlob
         var count = ReadVarint(span, ref p);
         var lemmas = new List<WeightedLemma>(Math.Min(count, 65536));
         var seen = new HashSet<string>(StringComparer.Ordinal);
+        var seenClasses = new HashSet<string>(StringComparer.Ordinal);
         try
         {
             for (var i = 0; i < count; i++)
@@ -101,30 +109,27 @@ internal static class WeightsBlob
                 var abstain = ReadFloats(span, ref p, 1)[0];
                 var kind = (LemmaModelKind)ReadByte(span, ref p);
                 var senseCount = ReadVarint(span, ref p);
-                var senses = new List<WeightedWord>(Math.Min(senseCount, 255));
+                if (kind == LemmaModelKind.Binary && senseCount != 2)
+                {
+                    throw new InvalidDataException($"The weights of '{lemma}' are binary but have {senseCount} senses; a binary model needs exactly two.");
+                }
+
+                var classIds = new List<string>(Math.Min(senseCount, 255));
                 for (var s = 0; s < senseCount; s++)
                 {
-                    var pos = ReadByte(span, ref p);
-                    if (pos > MaxPartOfSpeech)
+                    var classId = ReadString(span, ref p);
+                    if (classId.Length == 0 || !seenClasses.Add(classId))
                     {
-                        throw new InvalidDataException("The weights have an invalid part of speech.");
+                        throw new InvalidDataException($"The weights have an empty or duplicate class id in '{lemma}'.");
                     }
 
-                    var meaning = ReadString(span, ref p);
-                    var presence = ReadByte(span, ref p);
-                    if (presence > 1)
-                    {
-                        throw new InvalidDataException("The weights have an invalid meaning flag.");
-                    }
-
-                    var present = presence == 1;
-                    senses.Add(new WeightedWord(lemma, (PartOfSpeech)pos, present ? meaning : null));
+                    classIds.Add(classId);
                 }
 
                 var rows = kind == LemmaModelKind.Binary ? 1 : senseCount;
                 var bias = ReadFloats(span, ref p, rows);
                 var weights = ReadFloats(span, ref p, checked(rows * dimension));
-                lemmas.Add(new WeightedLemma(lemma, senses, new LemmaWeights(kind, weights, bias, abstain, dimension)));
+                lemmas.Add(new WeightedLemma(lemma, classIds, new LemmaWeights(kind, weights, bias, abstain, dimension)));
             }
         }
         catch (Exception ex) when (ex is ArgumentException or OverflowException)
@@ -133,7 +138,7 @@ internal static class WeightsBlob
         }
 
         return p == span.Length
-            ? new WeightsData(modelId, dimension, mean, lemmas)
+            ? new WeightsData(modelId, classHash, dimension, mean, lemmas)
             : throw new InvalidDataException("The weights have trailing data.");
     }
 

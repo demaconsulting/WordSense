@@ -60,12 +60,15 @@ that comes first in the lexicon entry.
 
 #### Statistical Table
 
-`basic.bin` is a Brotli-compressed container in the format `WSB1`, written only by the builder (`train-basic`) and read
-only by `BasicTables`. After decompression it holds, in this order: the magic `WSB1`; seven little-endian doubles
+`basic.bin` is a Brotli-compressed container in the format `WSB2`, written only by the builder (`train-basic`) and read
+only by `BasicTables`. After decompression it holds, in this order: the magic `WSB2`; the 32-byte class-inventory hash
+of the word image it was trained for; seven little-endian doubles
 (gamma, beta, lambda 1 to 3, the tagger weight of the fusion and the inverse temperature of the cues); the tag count;
 the unigram, bigram and trigram tag counts (the sentence boundary is the last index); the tabled words with their
 closed-class mask and per-tag counts; the suffix table; and the cue tables of the ambiguous lemmas (16-bit feature hashes
-and one signed byte weight per feature and sense, in steps of 1/8 nat). Words, suffixes and lemmas are in ordinal order,
+and one signed byte weight per feature and sense, in steps of 1/8 nat). The cue senses are named by class id and
+resolved against the word image at load: a hash mismatch or an unknown or duplicate class is a load failure. Words,
+suffixes and lemmas are in ordinal order,
 so equal training data gives byte-identical tables. The reader validates the layout and throws `InvalidDataException`
 for anything malformed. The format is described in detail in the `BasicTables` unit design.
 

@@ -9,6 +9,8 @@ namespace DemaConsulting.WordSense.Onnx.Tests;
 /// </summary>
 public class WeightsBlobTests
 {
+    private static readonly byte[] Hash = [.. Enumerable.Range(1, WeightsBlob.HashSize).Select(i => (byte)i)];
+
     private static byte[] Compress(byte[] raw)
     {
         using var output = new MemoryStream();
@@ -21,6 +23,34 @@ public class WeightsBlobTests
     }
 
     /// <summary>
+    ///     Builds the header: magic, model id "m", class hash, dimension 1, dense flag and one mean value.
+    /// </summary>
+    /// <returns>The header bytes.</returns>
+    private static byte[] Header() => [.. "WSX2"u8.ToArray(), 1, (byte)'m', .. Hash, 1, 0, 0, 0, 0, 0];
+
+    /// <summary>
+    ///     Builds a blob with one lemma "a" of the given kind and the given class ids (dimension 1).
+    /// </summary>
+    /// <param name="kind">The model kind byte.</param>
+    /// <param name="classIds">The class ids, each of ASCII text.</param>
+    /// <param name="lemmaByte">The single byte of the lemma text.</param>
+    /// <returns>The compressed blob.</returns>
+    private static byte[] OneLemma(byte kind, string[] classIds, byte lemmaByte = (byte)'a')
+    {
+        var rows = kind == 1 ? 1 : classIds.Length;
+        List<byte> bytes = [.. Header(), 1, 1, lemmaByte, 0, 0, 0, 0, kind, (byte)classIds.Length];
+        foreach (var id in classIds)
+        {
+            bytes.Add((byte)id.Length);
+            bytes.AddRange(Encoding.ASCII.GetBytes(id));
+        }
+
+        bytes.AddRange(new byte[4 * rows]); // biases
+        bytes.AddRange(new byte[4 * rows]); // weights, dimension 1
+        return Compress([.. bytes]);
+    }
+
+    /// <summary>
     ///     Data that is not a compressed stream is rejected.
     /// </summary>
     [Fact]
@@ -30,12 +60,15 @@ public class WeightsBlobTests
     }
 
     /// <summary>
-    ///     A compressed stream with an unknown magic number is rejected.
+    ///     A compressed stream with an unknown magic number, including the old layout, is rejected.
     /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_UnknownMagic_Throws()
+    /// <param name="magic">The magic text.</param>
+    [Theory]
+    [InlineData("NOPE")]
+    [InlineData("WSX1")]
+    public void WeightsBlob_Read_UnknownMagic_Throws(string magic)
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress("NOPE"u8.ToArray())));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(Encoding.ASCII.GetBytes(magic))));
     }
 
     /// <summary>
@@ -44,90 +77,72 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_Truncated_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX1"u8.ToArray(), 40])));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 40])));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 1, (byte)'m', 1, 2, 3])));
     }
 
     /// <summary>
-    ///     A blob with no lemmas reads as an empty set of weights.
+    ///     A blob with no lemmas reads as an empty set of weights that keeps its class hash.
     /// </summary>
     [Fact]
     public void WeightsBlob_Read_NoLemmas_ReturnsEmptyWeights()
     {
-        // Magic, model id "m" (length 1), dimension 1, dense flag 0, one mean value (0.0f), no lemmas
-        var blob = Compress([.. "WSX1"u8.ToArray(), 1, (byte)'m', 1, 0, 0, 0, 0, 0, 0]);
-
-        var data = WeightsBlob.Read(blob);
+        var data = WeightsBlob.Read(Compress([.. Header(), 0]));
 
         Assert.Equal("m", data.ModelId);
+        Assert.Equal(Hash, data.ClassHash);
         Assert.Equal(1, data.Dimension);
         Assert.Empty(data.Lemmas);
     }
 
     /// <summary>
-    ///     Builds the smallest one-lemma blob: a binary lemma "a" with two senses, the given first-sense part of speech
-    ///     and the given presence byte of the first sense's meaning.
-    /// </summary>
-    /// <param name="pos">The part-of-speech byte of the first sense.</param>
-    /// <param name="presence">The presence byte of the first sense's meaning.</param>
-    /// <param name="lemmaByte">The single byte of the lemma text.</param>
-    /// <param name="meaningByte">When set, the first sense's meaning is this one byte instead of empty.</param>
-    /// <returns>The compressed blob.</returns>
-    private static byte[] OneLemma(byte pos, byte presence, byte lemmaByte = (byte)'a', byte? meaningByte = null) => Compress(
-    [
-        .. "WSX1"u8.ToArray(), 1, (byte)'m', 1, 0, 0, 0, 0, 0, // magic, model id, dimension, dense flag, mean
-        1, 1, lemmaByte, 0, 0, 0, 0, 1, 2, // one lemma, abstain 0.0f, binary kind, two senses
-        pos, .. (meaningByte is { } m ? (byte[])[1, m] : [0]), presence, // first sense: part of speech, meaning, presence byte
-        (byte)PartOfSpeech.Verb, 0, 0, // second sense
-        0, 0, 0, 0, 0, 0, 0, 0, // one bias and one weight (0.0f each)
-    ]);
-
-    /// <summary>
-    ///     Every part of speech of the enum, Determiner included, is accepted in a sense.
-    /// </summary>
-    /// <param name="pos">The part-of-speech byte.</param>
-    [Theory]
-    [InlineData((byte)PartOfSpeech.Noun)]
-    [InlineData((byte)PartOfSpeech.Interjection)]
-    [InlineData((byte)PartOfSpeech.Determiner)]
-    [InlineData((byte)PartOfSpeech.Auxiliary)]
-    public void WeightsBlob_Read_EveryPartOfSpeech_IsAccepted(byte pos)
-    {
-        var data = WeightsBlob.Read(OneLemma(pos, 0));
-
-        Assert.Equal((PartOfSpeech)pos, Assert.Single(data.Lemmas).Senses[0].PartOfSpeech);
-    }
-
-    /// <summary>
-    ///     A part of speech beyond the last value of the enum is rejected.
+    ///     A lemma reads back its class ids in column order.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_PartOfSpeechOutOfRange_Throws()
+    public void WeightsBlob_Read_OneVersusRestLemma_KeepsClassIds()
     {
-        var beyond = (byte)((byte)Enum.GetValues<PartOfSpeech>().Max() + 1);
+        var data = WeightsBlob.Read(OneLemma(2, ["a#x", "a#y", "a#z"]));
 
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(beyond, 0)));
+        var lemma = Assert.Single(data.Lemmas);
+        Assert.Equal(["a#x", "a#y", "a#z"], lemma.ClassIds);
+        Assert.Equal(3, lemma.Weights.SenseCount);
     }
 
     /// <summary>
-    ///     The presence byte of a meaning is 0 or 1; any other value is rejected.
+    ///     A binary lemma has exactly two classes; one or three are rejected, and so is a one-versus-rest lemma with fewer than two.
     /// </summary>
-    /// <param name="presence">The presence byte.</param>
+    /// <param name="kind">The model kind byte.</param>
+    /// <param name="count">The number of class ids.</param>
     [Theory]
-    [InlineData((byte)2)]
-    [InlineData((byte)255)]
-    public void WeightsBlob_Read_PresenceByteOutOfRange_Throws(byte presence)
+    [InlineData((byte)1, 1)]
+    [InlineData((byte)1, 3)]
+    [InlineData((byte)2, 1)]
+    public void WeightsBlob_Read_WrongSenseCountForKind_Throws(byte kind, int count)
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, presence)));
+        var ids = Enumerable.Range(0, count).Select(i => $"a#{i}").ToArray();
+
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(kind, ids)));
     }
 
     /// <summary>
-    ///     A presence byte of 1 keeps the meaning and 0 drops it.
+    ///     A binary lemma with two classes is accepted.
     /// </summary>
     [Fact]
-    public void WeightsBlob_Read_PresenceByteZeroAndOne_AreAccepted()
+    public void WeightsBlob_Read_BinaryLemmaWithTwoClasses_IsAccepted()
     {
-        Assert.Null(Assert.Single(WeightsBlob.Read(OneLemma(1, 0)).Lemmas).Senses[0].Meaning);
-        Assert.Equal(string.Empty, Assert.Single(WeightsBlob.Read(OneLemma(1, 1)).Lemmas).Senses[0].Meaning);
+        var data = WeightsBlob.Read(OneLemma(1, ["a#x", "a#y"]));
+
+        Assert.Equal(LemmaModelKind.Binary, Assert.Single(data.Lemmas).Weights.Kind);
+    }
+
+    /// <summary>
+    ///     An empty class id and a class id that two columns name are rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_EmptyOrDuplicateClassId_Throws()
+    {
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(2, ["a#x", string.Empty])));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(2, ["a#x", "a#x"])));
     }
 
     /// <summary>
@@ -136,18 +151,7 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_MalformedUtf8Lemma_Throws()
     {
-        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, 0, lemmaByte: 0xFF)));
-
-        Assert.IsType<DecoderFallbackException>(ex.InnerException);
-    }
-
-    /// <summary>
-    ///     Malformed UTF-8 in a meaning is rejected as corrupt data, not decoded with replacement characters.
-    /// </summary>
-    [Fact]
-    public void WeightsBlob_Read_MalformedUtf8Meaning_Throws()
-    {
-        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, 1, meaningByte: 0xC3)));
+        var ex = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(OneLemma(1, ["a#x", "a#y"], lemmaByte: 0xFF)));
 
         Assert.IsType<DecoderFallbackException>(ex.InnerException);
     }
@@ -158,6 +162,15 @@ public class WeightsBlobTests
     [Fact]
     public void WeightsBlob_Read_ZeroDimension_Throws()
     {
-        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX1"u8.ToArray(), 1, (byte)'m', 0, 0, 0])));
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. "WSX2"u8.ToArray(), 1, (byte)'m', .. Hash, 0, 0, 0])));
+    }
+
+    /// <summary>
+    ///     Trailing bytes after the last lemma are rejected.
+    /// </summary>
+    [Fact]
+    public void WeightsBlob_Read_TrailingBytes_Throws()
+    {
+        Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress([.. Header(), 0, 0])));
     }
 }

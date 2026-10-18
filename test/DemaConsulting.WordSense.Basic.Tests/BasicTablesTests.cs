@@ -127,7 +127,7 @@ public class BasicTablesTests
         var blob = TestTables.Build(
             [("record", 0, new int[PosTag.Count])],
             [],
-            [("bass", [new CueSense(PartOfSpeech.Noun, "fish", 0), new CueSense(PartOfSpeech.Noun, "music", 0)], [hashes[1], hashes[0]], [0, 0, 0, 0])]);
+            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#music", 0)], [hashes[1], hashes[0]], [0, 0, 0, 0])]);
 
         Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
     }
@@ -159,6 +159,85 @@ public class BasicTablesTests
         Assert.NotEmpty(tables.Words);
         Assert.NotEmpty(tables.Cues);
         Assert.Same(tables, BasicTables.Default);
+    }
+
+    /// <summary>
+    ///     A table trained for another class inventory is rejected, and the message names both hashes.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_OtherClassHash_ThrowsNamingBothHashes()
+    {
+        var other = new byte[32];
+        var blob = TestTables.Build([("record", 0, new int[PosTag.Count])], [], [], classHash: other);
+
+        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+
+        Assert.Contains(Convert.ToHexString(other), ex.Message, StringComparison.Ordinal);
+        Assert.Contains(Convert.ToHexString(WordLexicon.Current.ClassHash), ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A cue that names a class the word image does not have is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_UnknownClass_Throws()
+    {
+        var hashes = TestTables.HeteronymHashes();
+        var blob = TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#no-such-class", 0)], hashes, [0, 0, 0, 0])]);
+
+        var ex = Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+
+        Assert.Contains("bass#no-such-class", ex.Message, StringComparison.Ordinal);
+    }
+
+    /// <summary>
+    ///     A class that two cue columns name is rejected.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Load_DuplicateClass_Throws()
+    {
+        var hashes = TestTables.HeteronymHashes();
+        var blob = TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("bass", [new CueSense("bass#fish", 0), new CueSense("bass#fish", 0)], hashes, [0, 0, 0, 0])]);
+
+        Assert.Throws<InvalidDataException>(() => BasicTables.Load(blob));
+    }
+
+    /// <summary>
+    ///     An analysis without a class is scored by the meaning-less column of its part of speech; a class that is not
+    ///     in the cue gets no column.
+    /// </summary>
+    [Fact]
+    public void LemmaCue_RowOf_AnalysisWithoutClass_UsesMeaninglessColumnOfItsPartOfSpeech()
+    {
+        var hashes = TestTables.HeteronymHashes();
+        var blob = TestTables.Build(
+            [("record", 0, new int[PosTag.Count])],
+            [],
+            [("record", [new CueSense("record#noun", 0), new CueSense("record#verb", 0)], hashes, [0, 0, 0, 0])]);
+        var cue = BasicTables.Load(blob).Cues["record"];
+
+        Assert.Equal(0, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Noun, string.Empty)));
+        Assert.Equal(1, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Verb, string.Empty)));
+        Assert.Equal(-1, cue.RowOf(new WordDetails(null, "recorded", PartOfSpeech.Adjective, string.Empty)));
+        Assert.Equal(-1, cue.RowOf(new WordDetails("bass#fish", "bass", PartOfSpeech.Noun, string.Empty)));
+        Assert.Equal(1, cue.RowOf(new WordDetails("record#verb", "record", PartOfSpeech.Verb, string.Empty)));
+    }
+
+    /// <summary>
+    ///     The shipped table loads against the shipped word image (the load checks the class hash) and resolves every cue class.
+    /// </summary>
+    [Fact]
+    public void BasicTables_Default_ShippedTable_ResolvesEveryCueClass()
+    {
+        var tables = BasicTables.Default;
+
+        Assert.All(tables.Cues.Values, cue => Assert.All(cue.Senses, s => Assert.NotNull(s.Pos)));
     }
 
     /// <summary>

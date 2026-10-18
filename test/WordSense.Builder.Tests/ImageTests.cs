@@ -37,12 +37,12 @@ public sealed class ImageTests
     {
         var root = FindRoot();
         var data = Path.Combine(root, "data");
-        var corpus = Path.Combine(root, "corpus");
 
-        var a = WordImage.Open(ImageCompiler.Build(data, corpus).Image);
-        var b = WordImage.Open(ImageCompiler.Build(data, corpus).Image);
+        var a = WordImage.Open(ImageCompiler.Build(data).Image);
+        var b = WordImage.Open(ImageCompiler.Build(data).Image);
 
         Assert.True(a.DataHash.SequenceEqual(b.DataHash));
+        Assert.True(a.ClassHash.SequenceEqual(b.ClassHash));
         foreach (var id in a.SectionIds)
         {
             Assert.True(a.RawSection(id).AsSpan().SequenceEqual(b.RawSection(id)), $"Section {id} differs.");

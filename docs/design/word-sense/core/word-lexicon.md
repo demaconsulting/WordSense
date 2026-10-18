@@ -20,8 +20,8 @@ possible analyses. Every model starts from it, and a word with one sense never n
   class (heteronyms); `Features` is the inflection as `Key=Value` pairs joined by `|`, or empty.
 - Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
   so case-sensitive entries win over the folded form.
-- Internal legacy bridge for the shipped model weights (removed with the weights re-key): `View`, `MeaningOf`,
-  `TrainedLemmaOf` and `ClassesOf`.
+- The legacy bridge for the shipped model weights (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`) is removed: the
+  weights are keyed by class id and resolved against the image at load.
 
 #### Key Methods
 

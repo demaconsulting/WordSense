@@ -1,88 +1,94 @@
-using System.Collections.Immutable;
-
 namespace DemaConsulting.WordSense.Onnx.Tests;
 
 /// <summary>
-///     Tests for <see cref="WeightedLemmaTable"/>: the all-or-nothing match of trained senses to the word lexicon.
+///     Tests for <see cref="WeightedLemmaTable"/>: the strict match of trained class ids to the word image.
 /// </summary>
 public class WeightedLemmaTableTests
 {
-    private static readonly ImmutableArray<WordDetails> Classes = WordLexicon.ClassesOf("record");
-    private static readonly WordDetails Noun = Classes.First(c => c.PartOfSpeech == PartOfSpeech.Noun);
-    private static readonly WordDetails Verb = Classes.First(c => c.PartOfSpeech == PartOfSpeech.Verb);
+    private static readonly WordImage Image = WordLexicon.Current;
 
-    private static Func<string, ImmutableArray<WordDetails>> Words(params WordDetails[] classes) =>
-        lemma => lemma == "record" ? [.. classes] : [];
-
-    private static WeightedLemma Lemma(string lemma, params WordDetails[] senses) => new(
+    private static WeightedLemma Lemma(string lemma, params string[] classIds) => new(
         lemma,
-        [.. senses.Select(s => new WeightedWord(s.Lemma, s.PartOfSpeech, WordLexicon.MeaningOf(s)))],
+        classIds,
         new LemmaWeights(LemmaModelKind.Binary, [1f, 0f], [0f], 0.1f, 2));
 
-    private static WeightsData Data(params WeightedLemma[] lemmas) => new("test-model", 2, [0f, 0f], lemmas);
+    private static WeightsData Data(params WeightedLemma[] lemmas) => new("test-model", Image.ClassHash.ToArray(), 2, [0f, 0f], lemmas);
 
     /// <summary>
-    ///     A lemma whose senses equal the lexicon's classes is kept.
+    ///     Classes of the image are found by id, with their column.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_MatchingSenses_KeepsLemma()
+    public void WeightedLemmaTable_Constructor_KnownClasses_AreFoundById()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun, Verb));
+        var table = new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb")), Image);
 
-        Assert.Equal(0, table.DroppedLemmas);
+        var weights = table.FindByClass("record#verb", out var column);
+
+        Assert.NotNull(weights);
+        Assert.Equal(1, column);
+        Assert.Null(table.FindByClass("bass#fish", out var none));
+        Assert.Equal(-1, none);
         Assert.NotNull(table.Find("record"));
         Assert.Null(table.Find("other"));
     }
 
     /// <summary>
-    ///     A lemma that is missing from the lexicon is dropped.
+    ///     Weights trained for another class inventory are rejected, and the message names both hashes.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_UnknownLemma_DropsLemma()
+    public void WeightedLemmaTable_Constructor_OtherClassHash_ThrowsNamingBothHashes()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), _ => []);
+        var other = new byte[32];
+        var data = Data(Lemma("record", "record#noun", "record#verb")) with { ClassHash = other };
 
-        Assert.Equal(["record"], table.DroppedLemmaNames);
-        Assert.Null(table.Find("record"));
+        var ex = Assert.Throws<InvalidDataException>(() => new WeightedLemmaTable(data, Image));
+
+        Assert.Contains(Convert.ToHexString(other), ex.Message, StringComparison.Ordinal);
+        Assert.Contains(Convert.ToHexString(Image.ClassHash), ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A lemma whose senses differ in any part is dropped as a whole.
+    ///     A class id that the word image does not have is an error, never a dropped lemma.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_MismatchedSenses_DropsWholeLemma()
+    public void WeightedLemmaTable_Constructor_UnknownClass_Throws()
     {
-        var changed = Lemma("record", Noun, Verb) with { Senses = [new WeightedWord("record", PartOfSpeech.Noun, WordLexicon.MeaningOf(Noun)), new WeightedWord("record", PartOfSpeech.Verb, "changed")] };
+        var ex = Assert.Throws<InvalidDataException>(() =>
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#no-such-class")), Image));
 
-        var table = new WeightedLemmaTable(Data(changed), Words(Noun, Verb));
-
-        Assert.Equal(1, table.DroppedLemmas);
-        Assert.Empty(table.Lemmas);
+        Assert.Contains("record#no-such-class", ex.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
-    ///     A lemma whose trained senses are the first classes of a longer list is kept.
+    ///     A class that two columns or two lemmas name is an error.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_TrainedSensesArePrefix_KeepsLemma()
+    public void WeightedLemmaTable_Constructor_DuplicateClass_Throws()
     {
-        var extra = new WordDetails(null, "record", PartOfSpeech.Adjective, string.Empty);
-
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun, Verb, extra));
-
-        Assert.Equal(0, table.DroppedLemmas);
-        Assert.NotNull(table.Find("record"));
+        Assert.Throws<InvalidDataException>(() =>
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#noun")), Image));
+        Assert.Throws<InvalidDataException>(() =>
+            new WeightedLemmaTable(Data(Lemma("a", "record#noun", "record#verb"), Lemma("b", "record#noun", "bass#fish")), Image));
     }
 
     /// <summary>
-    ///     A lemma with a different number of senses is dropped.
+    ///     A lemma that appears twice is an error.
     /// </summary>
     [Fact]
-    public void WeightedLemmaTable_Constructor_DifferentSenseCount_DropsLemma()
+    public void WeightedLemmaTable_Constructor_DuplicateLemma_Throws()
     {
-        var table = new WeightedLemmaTable(Data(Lemma("record", Noun, Verb)), Words(Noun));
+        Assert.Throws<InvalidDataException>(() =>
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb"), Lemma("record", "bass#fish", "bass#music")), Image));
+    }
 
-        Assert.Equal(1, table.DroppedLemmas);
+    /// <summary>
+    ///     A lemma whose weights score a different number of senses than it names classes is an error.
+    /// </summary>
+    [Fact]
+    public void WeightedLemmaTable_Constructor_ClassCountMismatch_Throws()
+    {
+        Assert.Throws<InvalidDataException>(() =>
+            new WeightedLemmaTable(Data(Lemma("record", "record#noun", "record#verb", "bass#fish")), Image));
     }
 
     /// <summary>
