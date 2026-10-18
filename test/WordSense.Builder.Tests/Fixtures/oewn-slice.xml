@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE LexicalResource SYSTEM "http://globalwordnet.github.io/schemas/WN-LMF-1.3.dtd">
+<!-- A hand-written slice in the shape of the Open English WordNet 2025 LMF file, used by the builder tests only. -->
+<LexicalResource xmlns:dc="https://globalwordnet.github.io/schemas/dc/">
+  <Lexicon id="oewn" label="Open English WordNet" language="en" email="english-wordnet@googlegroups.com" license="https://creativecommons.org/licenses/by/4.0" version="2025" url="https://github.com/globalwordnet/english-wordnet">
+    <LexicalEntry id="oewn-bass-n">
+      <Lemma writtenForm="bass" partOfSpeech="n"/>
+      <Sense id="oewn-bass__1.05.00.." synset="oewn-00000001-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-bass-n-1">
+      <Lemma writtenForm="bass" partOfSpeech="n">
+        <Pronunciation variety="GB">bas</Pronunciation>
+        <Pronunciation variety="US">beɪs</Pronunciation>
+      </Lemma>
+      <Sense id="oewn-bass__1.10.00.." synset="oewn-00000003-n">
+        <SenseRelation relType="derivation" target="oewn-bassist__1.18.00.."/>
+      </Sense>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-fish-n">
+      <Lemma writtenForm="fish" partOfSpeech="n"/>
+      <Sense id="oewn-fish__1.05.00.." synset="oewn-00000002-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-bassist-n">
+      <Lemma writtenForm="bassist" partOfSpeech="n">
+        <Pronunciation>ˈbeɪsɪst</Pronunciation>
+      </Lemma>
+      <Sense id="oewn-bassist__1.18.00.." synset="oewn-00000004-n">
+        <SenseRelation relType="derivation" target="oewn-bass__1.10.00.."/>
+        <SenseRelation relType="other" target="oewn-bass__1.10.00.." dc:type="agent"/>
+      </Sense>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-big-a">
+      <Lemma writtenForm="big" partOfSpeech="a"/>
+      <Sense id="oewn-big__3.00.00.." synset="oewn-00000010-a">
+        <SenseRelation relType="antonym" target="oewn-small__3.00.00.."/>
+      </Sense>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-small-a">
+      <Lemma writtenForm="small" partOfSpeech="a"/>
+      <Sense id="oewn-small__3.00.00.." synset="oewn-00000011-a">
+        <SenseRelation relType="antonym" target="oewn-big__3.00.00.."/>
+      </Sense>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-large-s">
+      <Lemma writtenForm="large" partOfSpeech="s"/>
+      <Sense id="oewn-large__5.00.00.big.00" synset="oewn-00000012-s"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-run_up-v">
+      <Lemma writtenForm="run up" partOfSpeech="v"/>
+      <Sense id="oewn-run_up__2.38.00.." synset="oewn-00000020-v"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-o'clock-r">
+      <Lemma writtenForm="o'clock" partOfSpeech="r"/>
+      <Sense id="oewn-o'clock__4.00.00.." synset="oewn-00000030-r"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-café-n">
+      <Lemma writtenForm="café" partOfSpeech="n"/>
+      <Sense id="oewn-café__1.14.00.." synset="oewn-00000040-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-Ångström-n">
+      <Lemma writtenForm="Ångström" partOfSpeech="n"/>
+      <Sense id="oewn-Ångström__1.23.00.." synset="oewn-00000041-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-𝒜_matrix-n">
+      <Lemma writtenForm="𝒜 matrix" partOfSpeech="n"/>
+      <Sense id="oewn-𝒜_matrix__1.06.00.." synset="oewn-00000042-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-music-n">
+      <Lemma writtenForm="music" partOfSpeech="n"/>
+      <Sense id="oewn-music__1.10.00.." synset="oewn-00000043-n"/>
+    </LexicalEntry>
+    <LexicalEntry id="oewn-musical-a">
+      <Lemma writtenForm="musical" partOfSpeech="a"/>
+      <Sense id="oewn-musical__3.00.00.." synset="oewn-00000013-a">
+        <SenseRelation relType="pertainym" target="oewn-music__1.10.00.."/>
+      </Sense>
+    </LexicalEntry>
+    <Synset id="oewn-00000001-n" ili="i1" members="oewn-bass__1.05.00.." partOfSpeech="n" lexfile="noun.animal">
+      <Definition>the lean flesh of a saltwater fish of the family Serranidae</Definition>
+      <SynsetRelation relType="hypernym" target="oewn-00000002-n"/>
+      <Example>we had bass for dinner</Example>
+    </Synset>
+    <Synset id="oewn-00000002-n" ili="i2" members="oewn-fish__1.05.00.." partOfSpeech="n" lexfile="noun.animal">
+      <Definition>any of various mostly cold-blooded aquatic vertebrates</Definition>
+      <SynsetRelation relType="hyponym" target="oewn-00000001-n"/>
+    </Synset>
+    <Synset id="oewn-00000003-n" ili="i3" members="oewn-bass__1.10.00.." partOfSpeech="n" lexfile="noun.attribute">
+      <Definition>the lowest adult male singing voice</Definition>
+      <Definition>a singer who has a bass voice</Definition>
+      <Example>the bass carried the chorus</Example>
+      <Example>a deep bass</Example>
+    </Synset>
+    <Synset id="oewn-00000004-n" ili="i4" members="oewn-bassist__1.18.00.." partOfSpeech="n" lexfile="noun.person">
+      <Definition>a musician who plays a double bass</Definition>
+      <SynsetRelation relType="domain_topic" target="oewn-00000043-n"/>
+    </Synset>
+    <Synset id="oewn-00000010-a" ili="i10" members="oewn-big__3.00.00.." partOfSpeech="a" lexfile="adj.all">
+      <Definition>above average in size or number or quantity</Definition>
+      <SynsetRelation relType="similar" target="oewn-00000012-s"/>
+      <SynsetRelation relType="also" target="oewn-00000011-a"/>
+    </Synset>
+    <Synset id="oewn-00000011-a" ili="i11" members="oewn-small__3.00.00.." partOfSpeech="a" lexfile="adj.all">
+      <Definition>limited in size or quantity</Definition>
+      <SynsetRelation relType="also" target="oewn-00000010-a"/>
+    </Synset>
+    <Synset id="oewn-00000012-s" ili="i12" members="oewn-large__5.00.00.big.00" partOfSpeech="s" lexfile="adj.all">
+      <Definition>larger than usual</Definition>
+      <SynsetRelation relType="similar" target="oewn-00000010-a"/>
+    </Synset>
+    <Synset id="oewn-00000013-a" ili="i13" members="oewn-musical__3.00.00.." partOfSpeech="a" lexfile="adj.pert">
+      <Definition>of or relating to music</Definition>
+    </Synset>
+    <Synset id="oewn-00000020-v" ili="i20" members="oewn-run_up__2.38.00.." partOfSpeech="v" lexfile="verb.contact">
+      <Definition>to accumulate a bill</Definition>
+    </Synset>
+    <Synset id="oewn-00000030-r" ili="i30" members="oewn-o'clock__4.00.00.." partOfSpeech="r" lexfile="adv.all">
+      <Definition>according to the clock</Definition>
+    </Synset>
+    <Synset id="oewn-00000040-n" ili="i40" members="oewn-café__1.14.00.." partOfSpeech="n" lexfile="noun.artifact">
+      <Definition>a small restaurant</Definition>
+    </Synset>
+    <Synset id="oewn-00000041-n" ili="i41" members="oewn-Ångström__1.23.00.." partOfSpeech="n" lexfile="noun.quantity">
+      <Definition>a unit of length</Definition>
+    </Synset>
+    <Synset id="oewn-00000042-n" ili="i42" members="oewn-𝒜_matrix__1.06.00.." partOfSpeech="n" lexfile="noun.cognition">
+      <Definition>a rectangular array of numbers</Definition>
+    </Synset>
+    <Synset id="oewn-00000043-n" ili="i43" members="oewn-music__1.10.00.." partOfSpeech="n" lexfile="noun.communication">
+      <Definition>an artistic form of auditory communication</Definition>
+    </Synset>
+  </Lexicon>
+</LexicalResource>
