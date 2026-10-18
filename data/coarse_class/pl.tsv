@@ -1,0 +1,9 @@
+class_id	lemma	label	pos	kind
+place#noun	place	noun	n	sense_group
+place#verb	place	verb	v	sense_group
+plague#noun	plague	noun	n	sense_group
+plague#verb	plague	verb	v	sense_group
+plant#noun	plant	noun	n	sense_group
+plant#verb	plant	verb	v	sense_group
+play#noun	play	noun	n	sense_group
+play#verb	play	verb	v	sense_group

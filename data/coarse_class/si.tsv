@@ -1,0 +1,15 @@
+class_id	lemma	label	pos	kind
+side#noun	side	noun	n	sense_group
+side#unmapped-a	side	unmapped-a	a	unmapped
+side#verb	side	verb	v	sense_group
+sigh#noun	sigh	noun	n	sense_group
+sigh#verb	sigh	verb	v	sense_group
+sign#noun	sign	noun	n	sense_group
+sign#unmapped-a	sign	unmapped-a	a	unmapped
+sign#verb	sign	verb	v	sense_group
+silence#noun	silence	noun	n	sense_group
+silence#verb	silence	verb	v	sense_group
+sin#noun	sin	noun	n	sense_group
+sin#verb	sin	verb	v	sense_group
+situate#adj	situate	adj	a	no_oewn
+situate#verb	situate	verb	v	sense_group

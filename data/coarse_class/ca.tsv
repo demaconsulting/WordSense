@@ -1,0 +1,16 @@
+class_id	lemma	label	pos	kind
+call#noun	call	noun	n	sense_group
+call#verb	call	verb	v	sense_group
+camp#noun	camp	noun	n	sense_group
+camp#unmapped-a	camp	unmapped-a	a	unmapped
+camp#verb	camp	verb	v	sense_group
+carbonate#noun	carbonate	noun	n	sense_group
+carbonate#verb	carbonate	verb	v	sense_group
+care#noun	care	noun	n	sense_group
+care#verb	care	verb	v	sense_group
+cash#noun	cash	noun	n	sense_group
+cash#verb	cash	verb	v	sense_group
+cast#noun	cast	noun	n	sense_group
+cast#verb	cast	verb	v	sense_group
+cause#noun	cause	noun	n	sense_group
+cause#verb	cause	verb	v	sense_group

@@ -1,0 +1,5 @@
+class_id	lemma	label	pos	kind
+augment#noun	augment	noun	n	no_oewn
+augment#verb	augment	verb	v	sense_group
+august#august-adj	august	august-adj	a	sense_group
+august#august-month	august	august-month	n	sense_group

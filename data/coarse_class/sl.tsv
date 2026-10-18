@@ -1,0 +1,8 @@
+class_id	lemma	label	pos	kind
+slice#noun	slice	noun	n	sense_group
+slice#verb	slice	verb	v	sense_group
+slide#noun	slide	noun	n	sense_group
+slide#verb	slide	verb	v	sense_group
+slough#slough-shed	slough	slough-shed	v	sense_group
+slough#slough-skin	slough	slough-skin	n	sense_group
+slough#slough-swamp	slough	slough-swamp	n	sense_group

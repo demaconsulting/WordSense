@@ -1,0 +1,11 @@
+class_id	lemma	label	pos	kind
+picture#noun	picture	noun	n	sense_group
+picture#verb	picture	verb	v	sense_group
+pigment#noun	pigment	noun	n	sense_group
+pigment#verb	pigment	verb	v	sense_group
+pile#noun	pile	noun	n	sense_group
+pile#verb	pile	verb	v	sense_group
+pin#noun	pin	noun	n	sense_group
+pin#verb	pin	verb	v	sense_group
+pinch#noun	pinch	noun	n	sense_group
+pinch#verb	pinch	verb	v	sense_group
