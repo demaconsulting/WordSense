@@ -1,4 +1,9 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-enervate-a	enervate	a	0	1	1	dema
+dema-excommunicate-a	excommunicate	a	0	1	1	dema
+dema-excommunicate-n	excommunicate	n	0	1	1	dema
+dema-explant-n	explant	n	0	1	1	dema
+dema-explant-v	explant	v	0	1	1	dema
 oewn-E-LASIK-n	E-LASIK	n	0	1	1	oewn
 oewn-E-Mycin-n	E-Mycin	n	0	1	1	oewn
 oewn-E-bike-n	E-bike	n	0	1	1	oewn

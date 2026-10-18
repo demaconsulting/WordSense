@@ -1,4 +1,5 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-augment-n	augment	n	0	1	1	dema
 oewn-AU-n	AU	n	0	1	1	oewn
 oewn-Au-n	Au	n	0	1	1	oewn
 oewn-Audenesque-a	Audenesque	a	0	1	1	oewn

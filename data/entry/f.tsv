@@ -1,4 +1,6 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-fail-n	fail	n	0	1	1	dema
+dema-foretoken-v	foretoken	v	0	1	1	dema
 oewn-F-actin-n	F-actin	n	0	1	1	oewn
 oewn-F-n	F	n	0	1	1	oewn
 oewn-F.I.S.C.-n	F.I.S.C.	n	0	1	1	oewn

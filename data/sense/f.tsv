@@ -1,4 +1,6 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-fail-n-1		dema-fail-n	dema-syn-fail-n-1	1
+dema-foretoken-v-1		dema-foretoken-v	dema-syn-foretoken-v-1	1
 oewn-f--actin__1.27.01..	f-actin%1:27:01::	oewn-F-actin-n	oewn-92462871-n	1
 oewn-f.i.s.c.__1.14.00..	f.i.s.c.%1:14:00::	oewn-F.I.S.C.-n	oewn-08349412-n	1
 oewn-f__1.10.00..	f%1:10:00::	oewn-F-n	oewn-06844762-n	4

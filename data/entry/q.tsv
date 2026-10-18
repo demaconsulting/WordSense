@@ -1,4 +1,7 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-quadrate-v	quadrate	v	0	1	1	dema
+dema-quintuplicate-a	quintuplicate	a	0	1	1	dema
+dema-quintuplicate-v	quintuplicate	v	0	1	1	dema
 oewn-Q-n	Q	n	0	1	1	oewn
 oewn-QCD-n	QCD	n	0	1	1	oewn
 oewn-QED-n	QED	n	0	1	1	oewn

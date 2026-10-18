@@ -1,4 +1,47 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-rebid-n-1	n		
+dema-syn-rebid-v-1	v		
+dema-syn-reboot-n-1	n		
+dema-syn-rebore-n-1	n		
+dema-syn-rebore-v-1	v		
+dema-syn-recharge-n-1	n		
+dema-syn-redial-n-1	n		
+dema-syn-redial-v-1	v		
+dema-syn-redirect-n-1	n		
+dema-syn-redo-n-1	n		
+dema-syn-redraft-v-1	v		
+dema-syn-refresh-n-1	n		
+dema-syn-regift-n-1	n		
+dema-syn-rehang-n-1	n		
+dema-syn-rehang-v-1	v		
+dema-syn-reheat-n-1	n		
+dema-syn-relaunch-n-1	n		
+dema-syn-relaunch-v-1	v		
+dema-syn-relet-n-1	n		
+dema-syn-relet-v-1	v		
+dema-syn-remold-n-1	n		
+dema-syn-remould-n-1	n		
+dema-syn-renunciate-n-1	n		
+dema-syn-renunciate-v-1	v		
+dema-syn-replicate-n-1	n		
+dema-syn-repost-v-1	v		
+dema-syn-rerelease-n-1	n		
+dema-syn-rerelease-v-1	v		
+dema-syn-resit-n-1	n		
+dema-syn-resit-v-1	v		
+dema-syn-respawn-n-1	n		
+dema-syn-respawn-v-1	v		
+dema-syn-respray-n-1	n		
+dema-syn-respray-v-1	v		
+dema-syn-restart-n-1	n		
+dema-syn-restyle-n-1	n		
+dema-syn-restyle-v-1	v		
+dema-syn-retest-n-1	n		
+dema-syn-retest-v-1	v		
+dema-syn-reuse-n-1	n		
+dema-syn-revamp-n-1	n		
+dema-syn-revert-n-1	n		
+dema-syn-rewind-n-1	n		
 oewn-00002325-v	v		verb.body
 oewn-00002573-v	v		verb.body
 oewn-00006263-s	s	oewn-00006050-a	adj.all

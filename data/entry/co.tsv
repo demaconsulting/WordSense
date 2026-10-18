@@ -1,4 +1,8 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-collocate-n	collocate	n	0	1	1	dema
+dema-confine-n	confine	n	0	1	1	dema
+dema-conjunct-n	conjunct	n	0	1	1	dema
+dema-consist-n	consist	n	0	1	1	dema
 oewn-CO-n	CO	n	0	1	1	oewn
 oewn-CO2-n	CO2	n	0	1	1	oewn
 oewn-COBOL-n	COBOL	n	0	1	1	oewn

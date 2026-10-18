@@ -1,4 +1,47 @@
 synset_id	seq	text
+dema-syn-rebid-n-1	1	noun
+dema-syn-rebid-v-1	1	verb
+dema-syn-reboot-n-1	1	noun
+dema-syn-rebore-n-1	1	noun
+dema-syn-rebore-v-1	1	verb
+dema-syn-recharge-n-1	1	noun
+dema-syn-redial-n-1	1	noun
+dema-syn-redial-v-1	1	verb
+dema-syn-redirect-n-1	1	noun
+dema-syn-redo-n-1	1	noun
+dema-syn-redraft-v-1	1	verb
+dema-syn-refresh-n-1	1	noun
+dema-syn-regift-n-1	1	noun
+dema-syn-rehang-n-1	1	noun
+dema-syn-rehang-v-1	1	verb
+dema-syn-reheat-n-1	1	noun
+dema-syn-relaunch-n-1	1	noun
+dema-syn-relaunch-v-1	1	verb
+dema-syn-relet-n-1	1	noun
+dema-syn-relet-v-1	1	verb
+dema-syn-remold-n-1	1	noun
+dema-syn-remould-n-1	1	noun
+dema-syn-renunciate-n-1	1	noun
+dema-syn-renunciate-v-1	1	verb
+dema-syn-replicate-n-1	1	noun
+dema-syn-repost-v-1	1	verb
+dema-syn-rerelease-n-1	1	noun
+dema-syn-rerelease-v-1	1	verb
+dema-syn-resit-n-1	1	noun
+dema-syn-resit-v-1	1	verb
+dema-syn-respawn-n-1	1	noun
+dema-syn-respawn-v-1	1	verb
+dema-syn-respray-n-1	1	noun
+dema-syn-respray-v-1	1	verb
+dema-syn-restart-n-1	1	noun
+dema-syn-restyle-n-1	1	noun
+dema-syn-restyle-v-1	1	verb
+dema-syn-retest-n-1	1	noun
+dema-syn-retest-v-1	1	verb
+dema-syn-reuse-n-1	1	noun
+dema-syn-revamp-n-1	1	noun
+dema-syn-revert-n-1	1	noun
+dema-syn-rewind-n-1	1	noun
 oewn-00002325-v	1	undergo the biomedical and metabolic processes of respiration by taking up oxygen and producing carbon monoxide
 oewn-00002573-v	1	breathe easily again, as after exertion or anxiety
 oewn-00006263-s	1	having a relation or being related

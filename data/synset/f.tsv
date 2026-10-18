@@ -1,4 +1,6 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-fail-n-1	n		
+dema-syn-foretoken-v-1	v		
 oewn-00003662-v	v		verb.body
 oewn-00005106-s	s	oewn-00004979-a	adj.all
 oewn-00006486-r	r		adv.all

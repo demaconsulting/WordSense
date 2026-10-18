@@ -1,4 +1,14 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-implicate-n	implicate	n	0	1	1	dema
+dema-inebriate-a	inebriate	a	0	1	1	dema
+dema-intergrade-n	intergrade	n	0	1	1	dema
+dema-intergrade-v	intergrade	v	0	1	1	dema
+dema-interlay-n	interlay	n	0	1	1	dema
+dema-interlay-v	interlay	v	0	1	1	dema
+dema-interspace-n	interspace	n	0	1	1	dema
+dema-interspace-v	interspace	v	0	1	1	dema
+dema-invert-n	invert	n	0	1	1	dema
+dema-isolate-n	isolate	n	0	1	1	dema
 oewn-I-beam-n	I-beam	n	0	1	1	oewn
 oewn-I-n	I	n	0	1	1	oewn
 oewn-I-sl-O_device-n	I/O device	n	0	2	2	oewn

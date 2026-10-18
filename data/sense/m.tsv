@@ -1,4 +1,8 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-marginate-a-1		dema-marginate-a	dema-syn-marginate-a-1	1
+dema-marginate-v-1		dema-marginate-v	dema-syn-marginate-v-1	1
+dema-mishit-n-1		dema-mishit-n	dema-syn-mishit-n-1	1
+dema-mishit-v-1		dema-mishit-v	dema-syn-mishit-v-1	1
 oewn-m--1__1.06.00..	m-1%1:06:00::	oewn-M-1-n	oewn-03421685-n	1
 oewn-m--1_rifle__1.06.00..	m-1_rifle%1:06:00::	oewn-M-1_rifle-n	oewn-03421685-n	1
 oewn-m--theory__1.09.00..	m-theory%1:09:00::	oewn-M-theory-n	oewn-05899570-n	1

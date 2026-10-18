@@ -1,4 +1,9 @@
 synset_id	pos	head_synset_id	lexfile
+dema-syn-prefetch-n-1	n		
+dema-syn-prefetch-v-1	v		
+dema-syn-preload-n-1	n		
+dema-syn-preload-v-1	v		
+dema-syn-premix-v-1	v		
 oewn-00011544-v	v		verb.body
 oewn-00016322-r	r		adv.all
 oewn-00023171-r	r		adv.all

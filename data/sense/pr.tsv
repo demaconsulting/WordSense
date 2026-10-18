@@ -1,4 +1,9 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-prefetch-n-1		dema-prefetch-n	dema-syn-prefetch-n-1	1
+dema-prefetch-v-1		dema-prefetch-v	dema-syn-prefetch-v-1	1
+dema-preload-n-1		dema-preload-n	dema-syn-preload-n-1	1
+dema-preload-v-1		dema-preload-v	dema-syn-preload-v-1	1
+dema-premix-v-1		dema-premix-v	dema-syn-premix-v-1	1
 oewn-pr__1.10.00..	pr%1:10:00::	oewn-PR-n	oewn-07262593-n	1
 oewn-pr__1.27.00..	pr%1:27:00::	oewn-Pr-n	oewn-14675391-n	1
 oewn-pr_man__1.18.00..	pr_man%1:18:00::	oewn-PR_man-n	oewn-83749081-n	1

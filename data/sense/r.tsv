@@ -1,4 +1,47 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-rebid-n-1		dema-rebid-n	dema-syn-rebid-n-1	1
+dema-rebid-v-1		dema-rebid-v	dema-syn-rebid-v-1	1
+dema-reboot-n-1		dema-reboot-n	dema-syn-reboot-n-1	1
+dema-rebore-n-1		dema-rebore-n	dema-syn-rebore-n-1	1
+dema-rebore-v-1		dema-rebore-v	dema-syn-rebore-v-1	1
+dema-recharge-n-1		dema-recharge-n	dema-syn-recharge-n-1	1
+dema-redial-n-1		dema-redial-n	dema-syn-redial-n-1	1
+dema-redial-v-1		dema-redial-v	dema-syn-redial-v-1	1
+dema-redirect-n-1		dema-redirect-n	dema-syn-redirect-n-1	1
+dema-redo-n-1		dema-redo-n	dema-syn-redo-n-1	1
+dema-redraft-v-1		dema-redraft-v	dema-syn-redraft-v-1	1
+dema-refresh-n-1		dema-refresh-n	dema-syn-refresh-n-1	1
+dema-regift-n-1		dema-regift-n	dema-syn-regift-n-1	1
+dema-rehang-n-1		dema-rehang-n	dema-syn-rehang-n-1	1
+dema-rehang-v-1		dema-rehang-v	dema-syn-rehang-v-1	1
+dema-reheat-n-1		dema-reheat-n	dema-syn-reheat-n-1	1
+dema-relaunch-n-1		dema-relaunch-n	dema-syn-relaunch-n-1	1
+dema-relaunch-v-1		dema-relaunch-v	dema-syn-relaunch-v-1	1
+dema-relet-n-1		dema-relet-n	dema-syn-relet-n-1	1
+dema-relet-v-1		dema-relet-v	dema-syn-relet-v-1	1
+dema-remold-n-1		dema-remold-n	dema-syn-remold-n-1	1
+dema-remould-n-1		dema-remould-n	dema-syn-remould-n-1	1
+dema-renunciate-n-1		dema-renunciate-n	dema-syn-renunciate-n-1	1
+dema-renunciate-v-1		dema-renunciate-v	dema-syn-renunciate-v-1	1
+dema-replicate-n-1		dema-replicate-n	dema-syn-replicate-n-1	1
+dema-repost-v-1		dema-repost-v	dema-syn-repost-v-1	1
+dema-rerelease-n-1		dema-rerelease-n	dema-syn-rerelease-n-1	1
+dema-rerelease-v-1		dema-rerelease-v	dema-syn-rerelease-v-1	1
+dema-resit-n-1		dema-resit-n	dema-syn-resit-n-1	1
+dema-resit-v-1		dema-resit-v	dema-syn-resit-v-1	1
+dema-respawn-n-1		dema-respawn-n	dema-syn-respawn-n-1	1
+dema-respawn-v-1		dema-respawn-v	dema-syn-respawn-v-1	1
+dema-respray-n-1		dema-respray-n	dema-syn-respray-n-1	1
+dema-respray-v-1		dema-respray-v	dema-syn-respray-v-1	1
+dema-restart-n-1		dema-restart-n	dema-syn-restart-n-1	1
+dema-restyle-n-1		dema-restyle-n	dema-syn-restyle-n-1	1
+dema-restyle-v-1		dema-restyle-v	dema-syn-restyle-v-1	1
+dema-retest-n-1		dema-retest-n	dema-syn-retest-n-1	1
+dema-retest-v-1		dema-retest-v	dema-syn-retest-v-1	1
+dema-reuse-n-1		dema-reuse-n	dema-syn-reuse-n-1	1
+dema-revamp-n-1		dema-revamp-n	dema-syn-revamp-n-1	1
+dema-revert-n-1		dema-revert-n	dema-syn-revert-n-1	1
+dema-rewind-n-1		dema-rewind-n	dema-syn-rewind-n-1	1
 oewn-r--2__1.06.00..	r-2%1:06:00::	oewn-R-2-n	oewn-04042970-n	1
 oewn-r.c.__3.01.00..	r.c.%3:01:00::	oewn-R.C.-a	oewn-02933066-a	1
 oewn-r.v.__1.06.00..	r.v.%1:06:00::	oewn-R.V.-n	oewn-04072384-n	1

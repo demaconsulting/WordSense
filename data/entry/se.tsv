@@ -1,4 +1,6 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-seriate-a	seriate	a	0	1	1	dema
+dema-seriate-v	seriate	v	0	1	1	dema
 oewn-SE-n	SE	n	0	1	1	oewn
 oewn-SEAL-n	SEAL	n	0	1	1	oewn
 oewn-SEB-n	SEB	n	0	1	1	oewn

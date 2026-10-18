@@ -1,4 +1,17 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-underbid-n	underbid	n	0	1	1	dema
+dema-undercount-n	undercount	n	0	1	1	dema
+dema-undercount-v	undercount	v	0	1	1	dema
+dema-underset-n	underset	n	0	1	1	dema
+dema-underset-v	underset	v	0	1	1	dema
+dema-undershoot-n	undershoot	n	0	1	1	dema
+dema-underspend-n	underspend	n	0	1	1	dema
+dema-underuse-n	underuse	n	0	1	1	dema
+dema-underuse-v	underuse	v	0	1	1	dema
+dema-unpeople-n	unpeople	n	0	1	1	dema
+dema-unpeople-v	unpeople	v	0	1	1	dema
+dema-upsetting-n	upsetting	n	0	1	1	dema
+dema-upturn-v	upturn	v	0	1	1	dema
 oewn-U-boat-n	U-boat	n	0	1	1	oewn
 oewn-U-n	U	n	0	1	1	oewn
 oewn-U-shaped-a	U-shaped	a	0	1	1	oewn

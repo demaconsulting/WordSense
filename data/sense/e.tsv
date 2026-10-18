@@ -1,4 +1,9 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-enervate-a-1		dema-enervate-a	dema-syn-enervate-a-1	1
+dema-excommunicate-a-1		dema-excommunicate-a	dema-syn-excommunicate-a-1	1
+dema-excommunicate-n-1		dema-excommunicate-n	dema-syn-excommunicate-n-1	1
+dema-explant-n-1		dema-explant-n	dema-syn-explant-n-1	1
+dema-explant-v-1		dema-explant-v	dema-syn-explant-v-1	1
 oewn-e--bike__1.06.01..	e-bike%1:06:01::	oewn-E-bike-n	oewn-84345709-n	1
 oewn-e--bomb__1.06.00..	e-bomb%1:06:00::	oewn-E-bomb-n	oewn-03766868-n	1
 oewn-e--commerce__1.04.00..	e-commerce%1:04:00::	oewn-e-commerce-n	oewn-01094898-n	1

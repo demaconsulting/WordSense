@@ -1,4 +1,8 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-marginate-a	marginate	a	0	1	1	dema
+dema-marginate-v	marginate	v	0	1	1	dema
+dema-mishit-n	mishit	n	0	1	1	dema
+dema-mishit-v	mishit	v	0	1	1	dema
 oewn-M-1-n	M-1	n	0	1	1	oewn
 oewn-M-1_rifle-n	M-1 rifle	n	0	2	2	oewn
 oewn-M-n	M	n	0	1	1	oewn

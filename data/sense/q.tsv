@@ -1,4 +1,7 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-quadrate-v-1		dema-quadrate-v	dema-syn-quadrate-v-1	1
+dema-quintuplicate-a-1		dema-quintuplicate-a	dema-syn-quintuplicate-a-1	1
+dema-quintuplicate-v-1		dema-quintuplicate-v	dema-syn-quintuplicate-v-1	1
 oewn-q__1.10.00..	q%1:10:00::	oewn-Q-n	oewn-06845946-n	1
 oewn-q__1.10.01..	q%1:10:01::	oewn-q-n	oewn-06845946-n	1
 oewn-q_fever__1.26.00..	q_fever%1:26:00::	oewn-Q_fever-n	oewn-14165303-n	1

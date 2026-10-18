@@ -1,4 +1,5 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-curate-v	curate	v	0	1	1	dema
 oewn-CUPAL-n	CUPAL	n	0	1	1	oewn
 oewn-Cu-n	Cu	n	0	1	1	oewn
 oewn-Cub_Scout-n	Cub Scout	n	0	2	2	oewn

@@ -1,4 +1,18 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-obverse-a-1		dema-obverse-a	dema-syn-obverse-a-1	1
+dema-opiate-v-1		dema-opiate-v	dema-syn-opiate-v-1	1
+dema-outreach-v-1		dema-outreach-v	dema-syn-outreach-v-1	1
+dema-overall-r-1		dema-overall-r	dema-syn-overall-r-1	1
+dema-overcall-v-1		dema-overcall-v	dema-syn-overcall-v-1	1
+dema-overdose-n-1		dema-overdose-n	dema-syn-overdose-n-1	1
+dema-overdress-n-1		dema-overdress-n	dema-syn-overdress-n-1	1
+dema-overdub-n-1		dema-overdub-n	dema-syn-overdub-n-1	1
+dema-overdub-v-1		dema-overdub-v	dema-syn-overdub-v-1	1
+dema-overpass-v-1		dema-overpass-v	dema-syn-overpass-v-1	1
+dema-overspend-n-1		dema-overspend-n	dema-syn-overspend-n-1	1
+dema-oversteer-v-1		dema-oversteer-v	dema-syn-oversteer-v-1	1
+dema-overstock-n-1		dema-overstock-n	dema-syn-overstock-n-1	1
+dema-overweight-v-1		dema-overweight-v	dema-syn-overweight-v-1	1
 oewn-o-apos-clock__4.02.00..	o'clock%4:02:00::	oewn-o-ap-clock-r	oewn-00198594-r	1
 oewn-o-apos-er__4.02.00..	o'er%4:02:00::	oewn-o-ap-er-r	oewn-00228075-r	1
 oewn-o.d.__2.29.00..	o.d.%2:29:00::	oewn-o.d.-v	oewn-00085106-v	1

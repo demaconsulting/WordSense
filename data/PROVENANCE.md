@@ -36,4 +36,5 @@ Subcategorization frames, adjective position, syntactic behaviour, ILI definitio
 ## Project additions
 
 Rows with `source_id` `dema` (MIT, project-authored) are added to cover words and senses that Open English WordNet
-does not have; they are described by the commits that add them.
+does not have: 120 entries, each with one synset, sense and gloss. See [MAPPING.md](MAPPING.md) for how they and the
+coarse classes were made.

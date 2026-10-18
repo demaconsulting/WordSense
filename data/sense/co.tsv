@@ -1,4 +1,8 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-collocate-n-1		dema-collocate-n	dema-syn-collocate-n-1	1
+dema-confine-n-1		dema-confine-n	dema-syn-confine-n-1	1
+dema-conjunct-n-1		dema-conjunct-n	dema-syn-conjunct-n-1	1
+dema-consist-n-1		dema-consist-n	dema-syn-consist-n-1	1
 oewn-co--author__2.36.00..	co-author%2:36:00::	oewn-co-author-v	oewn-01708490-v	1
 oewn-co--beneficiary__1.18.00..	co-beneficiary%1:18:00::	oewn-co-beneficiary-n	oewn-09953430-n	1
 oewn-co--defendant__1.18.00..	co-defendant%1:18:00::	oewn-co-defendant-n	oewn-09952869-n	1

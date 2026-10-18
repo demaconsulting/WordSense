@@ -1,4 +1,7 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-tier-v-1		dema-tier-v	dema-syn-tier-v-1	1
+dema-transform-n-1		dema-transform-n	dema-syn-transform-n-1	1
+dema-trifurcate-a-1		dema-trifurcate-a	dema-syn-trifurcate-a-1	1
 oewn-t--ammonal__1.06.01..	t-ammonal%1:06:01::	oewn-T-ammonal-n	oewn-92433315-n	1
 oewn-t--bar__1.06.00..	t-bar%1:06:00::	oewn-T-bar-n	oewn-04403785-n	1
 oewn-t--bar_lift__1.06.00..	t-bar_lift%1:06:00::	oewn-T-bar_lift-n	oewn-04403785-n	1

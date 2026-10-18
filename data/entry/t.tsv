@@ -1,4 +1,7 @@
 entry_id	lemma	pos	homograph_no	token_count	head_idx	source_id
+dema-tier-v	tier	v	0	1	1	dema
+dema-transform-n	transform	n	0	1	1	dema
+dema-trifurcate-a	trifurcate	a	0	1	1	dema
 oewn-T-ammonal-n	T-ammonal	n	0	1	1	oewn
 oewn-T-bar-n	T-bar	n	0	1	1	oewn
 oewn-T-bar_lift-n	T-bar lift	n	0	2	2	oewn

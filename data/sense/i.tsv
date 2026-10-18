@@ -1,4 +1,14 @@
 sense_id	sense_key	entry_id	synset_id	position
+dema-implicate-n-1		dema-implicate-n	dema-syn-implicate-n-1	1
+dema-inebriate-a-1		dema-inebriate-a	dema-syn-inebriate-a-1	1
+dema-intergrade-n-1		dema-intergrade-n	dema-syn-intergrade-n-1	1
+dema-intergrade-v-1		dema-intergrade-v	dema-syn-intergrade-v-1	1
+dema-interlay-n-1		dema-interlay-n	dema-syn-interlay-n-1	1
+dema-interlay-v-1		dema-interlay-v	dema-syn-interlay-v-1	1
+dema-interspace-n-1		dema-interspace-n	dema-syn-interspace-n-1	1
+dema-interspace-v-1		dema-interspace-v	dema-syn-interspace-v-1	1
+dema-invert-n-1		dema-invert-n	dema-syn-invert-n-1	1
+dema-isolate-n-1		dema-isolate-n	dema-syn-isolate-n-1	1
 oewn-i--beam__1.06.00..	i-beam%1:06:00::	oewn-I-beam-n	oewn-03561353-n	1
 oewn-i-sol-o_device__1.06.01..	i/o_device%1:06:01::	oewn-I-sl-O_device-n	oewn-92461040-n	1
 oewn-i.d.__1.10.00..	i.d.%1:10:00::	oewn-I.D.-n	oewn-06900328-n	1
