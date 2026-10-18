@@ -24,6 +24,21 @@ words:
   - BJNV
   - NRVJBPCIDATUOS
   - softmax
+  - FFFD
+  - oewn
+  - toewn
+  - noewn
+  - synset
+  - synsets
+  - lexfile
+  - lexid
+  - filenum
+  - headid
+  - holo
+  - mero
+  - pertainym
+  - undergoer
+  - beɪs
   - hyperparameters
   - unigram
   - unigrams

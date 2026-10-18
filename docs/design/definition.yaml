@@ -10,6 +10,11 @@ input-files:
   - docs/design/word-sense/core.md
   - docs/design/word-sense/core/word-lexicon.md
   - docs/design/word-sense/core/word-sense-contracts.md
+  - docs/design/word-sense/word-data.md
+  - docs/design/word-sense/word-data/data-schema.md
+  - docs/design/word-sense/word-data/data-layout.md
+  - docs/design/word-sense/word-data/oewn-importer.md
+  - docs/design/word-sense/word-data/data-validator.md
   - docs/design/word-sense/basic.md
   - docs/design/word-sense/basic/basic-word-sense-model.md
   - docs/design/word-sense/basic/basic-classifier.md

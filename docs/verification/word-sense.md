@@ -21,7 +21,8 @@ test project verifies the subsystem of that package through its public API and i
 - `test/DemaConsulting.WordSense.MiniLM.Tests` and `test/DemaConsulting.WordSense.BertBaseCased.Tests` verify each
   model package against the real int8 model and the weights embedded in the package. The MiniLM tests also compile the
   README sample against the public API and run it against the Basic, MiniLM and BertBaseCased models.
-- `test/WordSense.Builder.Tests` verifies the builder commands with synthetic data in temporary directories.
+- `test/WordSense.Builder.Tests` verifies the builder commands with synthetic data in temporary directories, and the
+  word data subsystem (`Data/`) with a small OEWN slice and the committed `data/` folder.
 
 The system-level evidence is the combination of these projects: the end-to-end classification scenarios of the model
 packages, the dependency structure of the packages (verified by inspecting the project references) and the platform

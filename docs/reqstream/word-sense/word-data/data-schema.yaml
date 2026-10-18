@@ -1,0 +1,45 @@
+---
+# DataSchema unit requirements (schema.yaml loader and its YAML-subset parser)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        sections:
+          - title: DataSchema Requirements
+            requirements:
+              - id: WordSense-WordData-DataSchema-Load
+                title: >-
+                  DataSchema shall load the tables, columns (with type and nullability), primary and unique keys,
+                  foreign keys, vocabularies, relation types, feature vocabulary and partition rules from the schema
+                  file, and reject an unsupported or malformed file with a message that names the line.
+                tags: [unit]
+                justification: |
+                  The schema is the contract of the data; a typo in it must fail loudly with a place to look.
+                tests:
+                  - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
+                  - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresVocabularies
+                  - WordSenseBuilder_DataSchema_Load_Damaged_Throws
+                  - WordSenseBuilder_DataSchema_Load_MissingFile_Throws
+
+              - id: WordSense-WordData-DataSchema-Consistency
+                title: >-
+                  DataSchema shall check that keys, foreign keys, partition columns, vocabularies and the relation
+                  inverses refer to things that exist and that each relation and its inverse store exactly one
+                  direction.
+                tags: [unit]
+                justification: |
+                  A schema that contradicts itself would make the importer and the validator disagree.
+                tests:
+                  - WordSenseBuilder_DataSchema_Load_Damaged_Throws
+
+              - id: WordSense-WordData-DataSchema-Split
+                title: >-
+                  DataSchema shall rewrite only the file split line of the schema file when the importer chooses a
+                  split plan.
+                tags: [unit]
+                justification: |
+                  The split plan is data-driven; everything else in the schema is hand-written and must survive.
+                tests:
+                  - WordSenseBuilder_DataSchema_WriteFileSplit_ReplacesOnlyThatLine
+                  - WordSenseBuilder_DataSchema_WriteFileSplit_EmptyPlan_RoundTrips

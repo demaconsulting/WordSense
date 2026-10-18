@@ -40,6 +40,25 @@ sections:
           - WordLexicon_Words_InflectedForm_ReturnsSensesOfBase
           - WordLexicon_Words_ClosedClassWord_HasItsPartOfSpeechAlone
 
+      - id: WordSense-Lib-Data
+        title: >-
+          The system shall keep the word data of the library as validated, deterministic, human-editable TSV tables
+          under data/, imported once from Open English WordNet (CC BY 4.0), with attribution, so that a data change
+          is a reviewable text change that needs no code.
+        tags: [system]
+        justification: |
+          Data that is plain, validated text lets contributors correct and extend the lexicon with the same review
+          process as code, and is the base for later builds of the shipped lexicon.
+        children:
+          - WordSense-WordData-Schema
+          - WordSense-WordData-Layout
+          - WordSense-WordData-Import
+          - WordSense-WordData-Validation
+          - WordSense-WordData-Attribution
+        tests:
+          - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
+          - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds
+
       - id: WordSense-Lib-Layered
         title: >-
           The system shall be delivered as five layered packages, in which the core package carries no ONNX

@@ -10,6 +10,11 @@ input-files:
   - docs/verification/word-sense/core.md
   - docs/verification/word-sense/core/word-lexicon.md
   - docs/verification/word-sense/core/word-sense-contracts.md
+  - docs/verification/word-sense/word-data.md
+  - docs/verification/word-sense/word-data/data-schema.md
+  - docs/verification/word-sense/word-data/data-layout.md
+  - docs/verification/word-sense/word-data/oewn-importer.md
+  - docs/verification/word-sense/word-data/data-validator.md
   - docs/verification/word-sense/basic.md
   - docs/verification/word-sense/basic/basic-word-sense-model.md
   - docs/verification/word-sense/basic/basic-classifier.md

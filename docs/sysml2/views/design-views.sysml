@@ -16,6 +16,10 @@ package WordSense {
         expose CoreSubsystem;
     }
 
+    view WordDataView {
+        expose WordDataSubsystem;
+    }
+
     view BasicView {
         expose BasicSubsystem;
     }

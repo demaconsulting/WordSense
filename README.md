@@ -204,6 +204,9 @@ recorded with its source, license and URL in `corpus/provenance/`.
 - **bert-base-cased** (Google, <https://huggingface.co/google-bert/bert-base-cased>): Apache License 2.0; the int8 ONNX
   export is redistributed under the same license.
 - **ONNX Runtime** (Microsoft Corporation): MIT License; installed as a separate NuGet dependency.
+- **Open English WordNet 2025** (<https://en-word.net>, <https://github.com/globalwordnet/english-wordnet>): CC BY 4.0.
+  The word data under `data/` (entries, senses, synsets, glosses, examples, relations and pronunciations) is imported
+  from it and keeps that license; see `data/README.md` and `data/PROVENANCE.md`. It is not yet shipped in a package.
 
 ## Contributing
 

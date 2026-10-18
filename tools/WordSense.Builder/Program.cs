@@ -24,11 +24,13 @@ namespace WordSense.Builder;
 ///     <item><description><c>ud-irregular [--ud DIR] [--corpus DIR] [--output FILE]</c> derives the irregular inflected forms of the dictionary words from the pinned treebank training and development files.</description></item>
 ///     <item><description><c>coverage --text DIR [--corpus DIR] [--top N] [--output FILE]</c> reports how many of the running words of the text files of a directory the word table knows and lists the most frequent unknown words, split into name-like and other words.</description></item>
 ///     <item><description><c>appendix [--corpus DIR] [--output FILE]</c> writes the generated senses appendix of the user guide.</description></item>
+///     <item><description><c>import-oewn --input FILE [--output DIR] [--sha256 HEX|none] [--threshold N] [--overwrite true]</c> imports the pinned Open English WordNet release into the table files of the data folder (default <c>data</c>) and refuses to replace existing tables unless <c>--overwrite true</c> is given.</description></item>
+///     <item><description><c>validate-data [--data DIR]</c> validates the table files of the data folder against its <c>schema.yaml</c>; it exits with 1 and lists the violations when the data is not valid.</description></item>
 ///     </list>
 /// </remarks>
 internal static class Program
 {
-    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix.";
+    private const string Usage = "Usage: WordSense.Builder <command> [--name value ...]. Commands: words, import-moby, weights <modelId>, evaluate <modelId>, ud-counts, ud-irregular, coverage, train-basic, tune-basic, appendix, import-oewn, validate-data.";
 
     /// <summary>
     ///     Runs the builder.
@@ -131,6 +133,10 @@ internal static class Program
                     }
 
                     return 0;
+                case "import-oewn":
+                    return RunImportOewn(options, repository, output);
+                case "validate-data":
+                    return RunValidateData(options, repository, output, error);
                 case "appendix":
                     var appendix = options.TryGetValue("output", out var a) ? a : Path.Combine(repository, "docs", "user_guide", "appendix-senses.md");
                     var lemmas = AppendixGenerator.Write(corpus, appendix);
@@ -148,7 +154,37 @@ internal static class Program
         }
     }
 
-    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top"], StringComparer.Ordinal);
+    private static readonly HashSet<string> KnownOptions = new(["repository", "corpus", "output", "model", "ud", "refresh-ud", "table", "input", "text", "top", "data", "sha256", "threshold", "overwrite"], StringComparer.Ordinal);
+
+    private static int RunImportOewn(Dictionary<string, string> options, string repository, TextWriter output)
+    {
+        var data = options.TryGetValue("output", out var o) ? Path.GetFullPath(o) : Path.Combine(repository, "data");
+        var sha = options.TryGetValue("sha256", out var s) ? s : Data.OewnImporter.PinnedSha256;
+        var threshold = options.TryGetValue("threshold", out var t) ? int.Parse(t, CultureInfo.InvariantCulture) : Data.OewnImporter.DefaultSplitThreshold;
+        var overwrite = options.TryGetValue("overwrite", out var w) && string.Equals(w, "true", StringComparison.OrdinalIgnoreCase);
+        var result = Data.OewnImporter.Import(Require(options, "input"), data, Path.Combine(data, "schema.yaml"), string.Equals(sha, "none", StringComparison.OrdinalIgnoreCase) ? null : sha, threshold, overwrite);
+        output.Write(result.Render());
+        return 0;
+    }
+
+    private static int RunValidateData(Dictionary<string, string> options, string repository, TextWriter output, TextWriter error)
+    {
+        var data = options.TryGetValue("data", out var d) ? Path.GetFullPath(d) : Path.Combine(repository, "data");
+        var report = Data.DataValidator.Validate(data);
+        foreach (var violation in report.Violations)
+        {
+            error.WriteLine(violation);
+        }
+
+        if (!report.IsValid)
+        {
+            error.WriteLine($"{report.TotalViolations.ToString(CultureInfo.InvariantCulture)} violation(s) in {data}.");
+            return 1;
+        }
+
+        output.WriteLine($"{data} is valid: {string.Join(", ", report.RowCounts.Select(p => $"{p.Key} {p.Value.ToString(CultureInfo.InvariantCulture)}"))}.");
+        return 0;
+    }
 
     /// <summary>
     ///     Parses <c>--name value</c> pairs.

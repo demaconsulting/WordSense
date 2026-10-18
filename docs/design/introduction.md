@@ -54,6 +54,10 @@ software items, specifically:
   - **BertBaseCasedWordSenseModel (Unit)** — the bert-base-cased int8 model
 - **WordSenseBuilder (Unit)** — the non-shipped build-time tool that creates the lexicon blob and the weights blobs
   and measures the models
+- **WordData (Subsystem)** — the TSV word data under `data/` (imported from Open English WordNet, CC BY 4.0) and the
+  non-shipped builder code that imports and validates it
+  - **DataSchema**, **DataLayout**, **OewnImporter** and **DataValidator (Units)** — the schema, the file layout, the
+    import and the validation
 
 The ONNX Runtime OTS runtime dependency of the Onnx package is also covered. The core package and the Basic package
 have no third-party runtime dependency.
@@ -167,6 +171,10 @@ src/DemaConsulting.WordSense.BertBaseCased/        — bert-base-cased subsystem
 model/<model-id>/                                  — model files (ONNX file, vocabulary, tokenizer and config files,
                                                       SHA256SUMS) of each encoder model
 tools/WordSense.Builder/                           — word-sense-builder unit (not shipped)
+tools/WordSense.Builder/Data/                      — word-data subsystem units (DataSchema.cs and SchemaYaml.cs,
+                                                      DataLayout.cs and PartitionResolver.cs, OewnImporter.cs,
+                                                      DataValidator.cs)
+data/                                              — word-data tables (TSV), schema.yaml, README.md, PROVENANCE.md
 corpus/                                            — builder inputs: sense inventory, anchor, holdout and form
                                                       sentences, dictionary lexicon, provenance
 ```

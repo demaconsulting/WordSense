@@ -13,6 +13,11 @@ includes:
   - docs/reqstream/word-sense/core.yaml
   - docs/reqstream/word-sense/core/word-lexicon.yaml
   - docs/reqstream/word-sense/core/word-sense-contracts.yaml
+  - docs/reqstream/word-sense/word-data.yaml
+  - docs/reqstream/word-sense/word-data/data-schema.yaml
+  - docs/reqstream/word-sense/word-data/data-layout.yaml
+  - docs/reqstream/word-sense/word-data/oewn-importer.yaml
+  - docs/reqstream/word-sense/word-data/data-validator.yaml
   - docs/reqstream/word-sense/basic.yaml
   - docs/reqstream/word-sense/basic/basic-word-sense-model.yaml
   - docs/reqstream/word-sense/basic/basic-classifier.yaml

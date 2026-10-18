@@ -636,6 +636,9 @@ the author dedicated to the public domain; no attribution is required, but it is
 filtered list is committed, in `corpus/lexicon/`, with its source, checksum and filter rules in
 `corpus/lexicon/PROVENANCE.md`.
 
+The word data under `data/` is imported from Open English WordNet 2025 (<https://en-word.net>), which is licensed
+under CC BY 4.0; that data keeps the license and is credited here as the license requires. Its source file, pinned
+SHA-256 and what was left out are recorded in `data/PROVENANCE.md`. Project-authored additions to the data are MIT.
 The training corpus is not shipped in the NuGet packages; only the derived weights are embedded. Every corpus sentence
 has a row in `corpus/provenance/*.tsv` recording its source, license, URL and contributor. The licenses in use are
 `CC0 1.0`, `Public domain`, `CC BY 2.0 FR` (Tatoeba, with the contributor recorded), `CC BY-SA 4.0` (Wikipedia and

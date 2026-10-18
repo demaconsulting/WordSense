@@ -19,6 +19,9 @@ needs-review:
   - "corpus/realtext/**"          # Real-text evaluation sentences
   - "corpus/lexicon/**"           # Derived part-of-speech lexicon (Moby, public domain) and its provenance
   - "corpus/ud/**"                # Universal Dependencies tag and word-tag counts for the Basic model
+  - "data/schema.yaml"            # Word data schema
+  - "data/README.md"              # Word data guide
+  - "data/PROVENANCE.md"          # Word data provenance (Open English WordNet, CC BY 4.0)
   - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
@@ -128,9 +131,11 @@ reviews:
       - "docs/design/word-sense/word-sense-builder.md"
       - "docs/verification/word-sense/word-sense-builder.md"
       - "tools/WordSense.Builder/**/*.cs"
+      - "!tools/WordSense.Builder/Data/**"
       - "!tools/WordSense.Builder/**/obj/**"
       - "!tools/WordSense.Builder/**/bin/**"
       - "test/WordSense.Builder.Tests/**/*.cs"
+      - "!test/WordSense.Builder.Tests/Data/**"
       - "!test/WordSense.Builder.Tests/**/obj/**"
       - "!test/WordSense.Builder.Tests/**/bin/**"
       - "tools/real-text/**"
@@ -139,6 +144,76 @@ reviews:
       - "corpus/realtext/**"
       - "corpus/lexicon/**"
       - "corpus/ud/**"
+
+  # WordSense-WordData Review (one per subsystem)
+  - id: WordSense-WordData
+    title: Review that WordSense WordData Subsystem Satisfies Requirements
+    context:
+      - "docs/design/word-sense.md"
+      - "docs/reqstream/word-sense.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data.yaml"
+      - "docs/design/word-sense/word-data.md"
+      - "docs/verification/word-sense/word-data.md"
+      - "data/schema.yaml"
+      - "data/README.md"
+      - "data/PROVENANCE.md"
+      - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
+      - "test/WordSense.Builder.Tests/Data/DataFixture.cs"
+
+  # WordSense-WordData-DataSchema Review (one per unit)
+  - id: WordSense-WordData-DataSchema
+    title: Review that WordSense DataSchema Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/data-schema.yaml"
+      - "docs/design/word-sense/word-data/data-schema.md"
+      - "docs/verification/word-sense/word-data/data-schema.md"
+      - "tools/WordSense.Builder/Data/DataSchema.cs"
+      - "tools/WordSense.Builder/Data/SchemaYaml.cs"
+      - "test/WordSense.Builder.Tests/Data/DataSchemaTests.cs"
+
+  # WordSense-WordData-DataLayout Review (one per unit)
+  - id: WordSense-WordData-DataLayout
+    title: Review that WordSense DataLayout Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/data-layout.yaml"
+      - "docs/design/word-sense/word-data/data-layout.md"
+      - "docs/verification/word-sense/word-data/data-layout.md"
+      - "tools/WordSense.Builder/Data/DataLayout.cs"
+      - "tools/WordSense.Builder/Data/PartitionResolver.cs"
+      - "test/WordSense.Builder.Tests/Data/DataLayoutTests.cs"
+
+  # WordSense-WordData-OewnImporter Review (one per unit)
+  - id: WordSense-WordData-OewnImporter
+    title: Review that WordSense OewnImporter Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/oewn-importer.yaml"
+      - "docs/design/word-sense/word-data/oewn-importer.md"
+      - "docs/verification/word-sense/word-data/oewn-importer.md"
+      - "tools/WordSense.Builder/Data/OewnImporter.cs"
+      - "test/WordSense.Builder.Tests/Data/OewnImporterTests.cs"
+
+  # WordSense-WordData-DataValidator Review (one per unit)
+  - id: WordSense-WordData-DataValidator
+    title: Review that WordSense DataValidator Implementation is Correct
+    context:
+      - "docs/design/word-sense/word-data.md"
+      - "docs/reqstream/word-sense/word-data.yaml"
+    paths:
+      - "docs/reqstream/word-sense/word-data/data-validator.yaml"
+      - "docs/design/word-sense/word-data/data-validator.md"
+      - "docs/verification/word-sense/word-data/data-validator.md"
+      - "tools/WordSense.Builder/Data/DataValidator.cs"
+      - "test/WordSense.Builder.Tests/Data/DataValidatorTests.cs"
 
   # WordSense-Core Review (one per subsystem)
   - id: WordSense-Core

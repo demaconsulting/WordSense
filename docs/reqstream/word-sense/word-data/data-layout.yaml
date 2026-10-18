@@ -1,0 +1,49 @@
+---
+# DataLayout unit requirements (file keys, ordering and the table writer)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        sections:
+          - title: DataLayout Requirements
+            requirements:
+              - id: WordSense-WordData-DataLayout-FileFor
+                title: >-
+                  DataLayout shall choose the file of a lemma from its NFC form: the lower-cased ASCII first letter,
+                  the first two letters for a letter in the split plan, and the key "_" for a lemma that does not start
+                  with an ASCII letter, and shall tell whether a file key can be produced by that rule.
+                tags: [unit]
+                justification: |
+                  Portable file names and a stable place for every lemma let a reader find and change one lemma by
+                  touching one small file.
+                tests:
+                  - WordSenseBuilder_DataLayout_FileFor_NoSplit_UsesFirstLetter
+                  - WordSenseBuilder_DataLayout_FileFor_SplitLetter_UsesTwoLetters
+                  - WordSenseBuilder_DataLayout_FileFor_NonAsciiStart_UsesUnderscore
+                  - WordSenseBuilder_DataLayout_FileFor_DecomposedLetter_UsesNfc
+                  - WordSenseBuilder_DataLayout_IsValidKey_SplitPlan_Decides
+
+              - id: WordSense-WordData-DataLayout-Order
+                title: >-
+                  DataLayout shall order strings by their UTF-8 bytes, so that characters outside the Basic
+                  Multilingual Plane sort after the characters of U+E000 to U+FFFF.
+                tags: [unit]
+                justification: |
+                  Ordinal UTF-16 comparison orders astral characters differently from UTF-8 bytes; every reader of the
+                  files must see the same order.
+                tests:
+                  - WordSenseBuilder_DataLayout_CompareUtf8_AstralAfterHighBmp
+
+              - id: WordSense-WordData-DataLayout-Write
+                title: >-
+                  DataLayout shall write a table file with LF line ends and no byte-order mark, and shall refuse a cell
+                  that contains a tab or a line break.
+                tags: [unit]
+                justification: |
+                  A cell that breaks the format would corrupt the table silently; the writer is the last place it can
+                  be caught.
+                tests:
+                  - WordSenseBuilder_DataLayout_CheckCell_Separators_AreRejected
+                  - WordSenseBuilder_DataLayout_WriteTable_WritesLfWithoutBom
+                  - WordSenseBuilder_DataLayout_WriteTable_BadCell_Throws

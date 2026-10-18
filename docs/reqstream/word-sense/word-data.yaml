@@ -1,0 +1,86 @@
+---
+# WordData subsystem requirements (the relational word data under data/ and the builder code that creates and
+# validates it; build-time only, nothing here is shipped in a package yet)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        requirements:
+          - id: WordSense-WordData-Schema
+            title: >-
+              The word data subsystem shall describe every table, column, key, vocabulary, relation convention and file
+              partition of the word data in one machine-readable schema file that is the single source of truth for the
+              importer and the validator.
+            tags: [subsystem]
+            justification: |
+              Two programs (the importer and the validator) and a human reader must agree on the shape of the data;
+              a schema that is data, not code, can be reviewed, versioned and extended by a data-only change.
+            children:
+              - WordSense-WordData-DataSchema-Load
+              - WordSense-WordData-DataSchema-Consistency
+              - WordSense-WordData-DataSchema-Split
+            tests:
+              - WordSenseBuilder_DataSchema_Load_CommittedSchema_DeclaresTables
+
+          - id: WordSense-WordData-Layout
+            title: >-
+              The word data subsystem shall store each table as TSV files that are byte-for-byte deterministic: UTF-8
+              without byte-order mark, LF line ends, NFC text, rows sorted by the UTF-8 bytes of the primary key, and
+              rows divided among files by the first letters of the lemma.
+            tags: [subsystem]
+            justification: |
+              Deterministic files make a data change show up as the few lines that changed, make two machines agree
+              byte for byte, and keep every file small enough to review.
+            children:
+              - WordSense-WordData-DataLayout-FileFor
+              - WordSense-WordData-DataLayout-Order
+              - WordSense-WordData-DataLayout-Write
+            tests:
+              - WordSenseBuilder_DataLayout_FileFor_SplitLetter_UsesTwoLetters
+
+          - id: WordSense-WordData-Import
+            title: >-
+              The word data subsystem shall import the pinned Open English WordNet release into the tables
+              deterministically, keeping its sense, synset, gloss, example, relation and pronunciation data, and
+              refusing to overwrite existing tables or to read a file whose hash differs from the pin.
+            tags: [subsystem]
+            justification: |
+              The import is a one-time, reproducible bootstrap of data that is edited afterwards; it must be exact,
+              repeatable and unable to destroy edits by accident.
+            children:
+              - WordSense-WordData-OewnImporter-Tables
+              - WordSense-WordData-OewnImporter-Derived
+              - WordSense-WordData-OewnImporter-Safety
+            tests:
+              - WordSenseBuilder_OewnImporter_Import_Slice_CountsRows
+              - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds
+
+          - id: WordSense-WordData-Validation
+            title: >-
+              The word data subsystem shall validate the committed tables against the schema, reporting for each
+              violation the file, the line, the rule and the offending value, and shall exit with a failure when the
+              data is not valid.
+            tags: [subsystem]
+            justification: |
+              The committed tables are authoritative and hand-edited; a validator that a pull request must pass keeps
+              them consistent without a reviewer reading every row.
+            children:
+              - WordSense-WordData-DataValidator-Format
+              - WordSense-WordData-DataValidator-Integrity
+              - WordSense-WordData-DataValidator-Consistency
+            tests:
+              - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
+              - WordSenseBuilder_DataCommands_Validate_InvalidData_ListsViolations
+
+          - id: WordSense-WordData-Attribution
+            title: >-
+              The repository shall credit Open English WordNet (CC BY 4.0) as the source of the word data in the
+              README, in the data folder README and in the provenance record, with the release and the hash of the
+              imported file.
+            tags: [subsystem]
+            justification: |
+              The license of Open English WordNet requires attribution, and the provenance record lets anyone
+              reproduce the import and see what was left out.
+            tests:
+              - WordSenseBuilder_DataEndToEnd_Attribution_NamesLicenseAndSource

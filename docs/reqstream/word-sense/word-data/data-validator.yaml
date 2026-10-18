@@ -1,0 +1,67 @@
+---
+# DataValidator unit requirements (the validation of the committed tables)
+
+sections:
+  - title: WordSense Requirements
+    sections:
+      - title: WordData Requirements
+        sections:
+          - title: DataValidator Requirements
+            requirements:
+              - id: WordSense-WordData-DataValidator-Format
+                title: >-
+                  DataValidator shall check the file set, the header, the cell count, the byte-order mark, line ends,
+                  the final line feed, blank lines, UTF-8 validity, Unicode normalization, edge spaces, cell types,
+                  enumerations and features of every table file, and report a violation per defect.
+                tags: [unit]
+                justification: |
+                  A file that deviates from the format would break the determinism that makes the data reviewable.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_ImportedSlice_IsValid
+                  - WordSenseBuilder_DataValidator_Validate_MissingDirectory_ReportsSchema
+                  - WordSenseBuilder_DataValidator_Validate_BrokenSchema_ReportsSchema
+                  - WordSenseBuilder_DataValidator_Validate_UnexpectedFiles_ViolateFileSet
+                  - WordSenseBuilder_DataValidator_Validate_MissingSourceFile_ViolatesFileSet
+                  - WordSenseBuilder_DataValidator_Validate_EmptyPartitionFile_Violates
+                  - WordSenseBuilder_DataValidator_Validate_FormatDefects_AreReported
+                  - WordSenseBuilder_DataValidator_Validate_CellDefects_AreReported
+                  - WordSenseBuilder_DataValidator_Validate_EmptyRequiredCell_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ClassEntryFeatures_AreChecked
+                  - WordSenseBuilder_DataValidator_Validate_ManyViolations_AreCappedPerRule
+
+              - id: WordSense-WordData-DataValidator-Integrity
+                title: >-
+                  DataValidator shall check the primary and unique keys, the foreign keys, the strictly ascending
+                  sort order, the placement of each row in the file of its lemma, and the relation conventions (one
+                  stored direction, symmetric order, no self-relation, subtype only for other).
+                tags: [unit]
+                justification: |
+                  Keys, references and placement are what make the tables a relational model rather than loose text.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_UnsortedRows_ViolateSort
+                  - WordSenseBuilder_DataValidator_Validate_DuplicateHomograph_ViolatesUnique
+                  - WordSenseBuilder_DataValidator_Validate_DanglingReference_ViolatesForeignKey
+                  - WordSenseBuilder_DataValidator_Validate_RowInWrongFile_ViolatesPlacement
+                  - WordSenseBuilder_DataValidator_Validate_SplitPlanMismatch_ViolatesFileSet
+                  - WordSenseBuilder_DataValidator_Validate_RelationDefects_AreReported
+
+              - id: WordSense-WordData-DataValidator-Consistency
+                title: >-
+                  DataValidator shall check the cross-table rules: satellite synsets have an adjective head and others
+                  have none, every entry and synset has a sense and a gloss, sense positions are 1 to n, parts of speech
+                  of entries and synsets fit, token counts and head indexes fit the lemma, examples name senses of their
+                  own synset, and the senses of a mapped lemma are partitioned among its classes.
+                tags: [unit]
+                justification: |
+                  These rules catch the edits that are well-formed but wrong, which is what a reviewer cannot see in a
+                  diff of rows.
+                tests:
+                  - WordSenseBuilder_DataValidator_Validate_HeadDefects_ViolateSynset
+                  - WordSenseBuilder_DataValidator_Validate_TokenDefects_ViolateEntry
+                  - WordSenseBuilder_DataValidator_Validate_SenseDefects_ViolateSense
+                  - WordSenseBuilder_DataValidator_Validate_EntryWithoutSense_Violates
+                  - WordSenseBuilder_DataValidator_Validate_ExampleOfOtherSynset_Violates
+                  - WordSenseBuilder_DataValidator_Validate_SynsetWithoutGloss_Violates
+                  - WordSenseBuilder_DataValidator_Validate_CompletePartition_IsValid
+                  - WordSenseBuilder_DataValidator_Validate_UncoveredSense_ViolatesPartition
+                  - WordSenseBuilder_DataValidator_Validate_SenseInTwoClasses_ViolatesUnique
