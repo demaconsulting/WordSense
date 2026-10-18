@@ -19,8 +19,8 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 - **WordSense is a value**: two `WordSense` values with equal word, details and confidence are equal, and `WordSense` is
   a struct, so an array of results has no null element.
-- **WordDetails equality**: two `WordDetails` with equal lemma, part of speech, meaning and respelling are equal; the
-  meaning and the respelling may be null.
+- **WordDetails equality**: two `WordDetails` with equal sense id, lemma, part of speech and features are equal; the
+  sense id may be null.
 - **PartOfSpeech has ten values**: noun, pronoun, verb, adjective, adverb, preposition, conjunction, interjection,
   determiner and auxiliary; a modal or primary auxiliary lists `Auxiliary` as its last sense.
 - **MirrorOptions defaults**: only the base URI is required; bearer token, credentials, store root and timeout default to

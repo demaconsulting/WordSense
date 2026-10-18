@@ -31,7 +31,7 @@ namespace DemaConsulting.WordSense.MiniLM;
 ///     <c>DemaConsulting.WordSense.BertBaseCased</c> is larger (104 MiB, about 9 ms per sentence) and case-aware
 ///     but more accurate (about 99% and 97%); the figures are from
 ///     https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md and are
-///     approximate and machine dependent. The memory the model adds (about 64 MiB) does not include the 43 MiB of the
+///     approximate and machine dependent. The memory the model adds (about 64 MiB) does not include the 15 MiB of the
 ///     word lexicon.
 ///     </para>
 ///     <para>

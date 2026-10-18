@@ -18,10 +18,10 @@ run for all scenarios constitutes evidence that both requirements are satisfied.
 
 ### Test Scenarios
 
-#### WordsBlob_Read_UnknownMagic_Throws
+#### WordLexicon_Lookup_UnknownWord_IsAbsent
 
-**Scenario**: xUnit discovers and runs this test (core test project); the test verifies that a lexicon blob with an
-unknown magic number is refused.
+**Scenario**: xUnit discovers and runs this test (core test project); the test verifies that a made-up word is absent
+from the lexicon.
 
 **Expected**: xUnit executes the test, the test passes, and the result appears in the TRX output.
 
@@ -47,7 +47,7 @@ unknown magic number is refused.
 
 ### Requirements Coverage
 
-- **`WordSense-OTS-xUnit-Execute`**: WordsBlob_Read_UnknownMagic_Throws,
+- **`WordSense-OTS-xUnit-Execute`**: WordLexicon_Lookup_UnknownWord_IsAbsent,
   WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws
-- **`WordSense-OTS-xUnit-Report`**: WordsBlob_Read_UnknownMagic_Throws,
+- **`WordSense-OTS-xUnit-Report`**: WordLexicon_Lookup_UnknownWord_IsAbsent,
   WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens, WeightsBlob_Read_UnknownMagic_Throws

@@ -17,7 +17,7 @@ sections:
               test method.
             tags: [ots]
             tests:
-              - WordsBlob_Read_UnknownMagic_Throws
+              - WordLexicon_Lookup_UnknownWord_IsAbsent
               - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
               - WeightsBlob_Read_UnknownMagic_Throws
           - id: WordSense-OTS-xUnit-Report
@@ -29,6 +29,6 @@ sections:
               correctly.
             tags: [ots]
             tests:
-              - WordsBlob_Read_UnknownMagic_Throws
+              - WordLexicon_Lookup_UnknownWord_IsAbsent
               - WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens
               - WeightsBlob_Read_UnknownMagic_Throws

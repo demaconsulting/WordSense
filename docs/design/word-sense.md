@@ -40,7 +40,8 @@ model it wants. The contracts in core are the seam between callers and models: a
 - `IWordSenseModel.ClassifyAsync` (in/out): tokenized words in, a parallel `WordSense[]` out. The words are one
   running text with punctuation as its own elements. An encoder model ensures its files lazily (default and
   environment mirror settings) when some word needs the encoder.
-- `WordLexicon.Words` (out): read-only dictionary from lower-case word to an immutable array of `WordDetails`.
+- `WordLexicon.Lookup`, `TryLookup`, `Contains`, `FormsOf` (out): the analyses (`WordDetails`) of a word from the
+  embedded word image.
 - Environment variables (in): `WORDSENSE_MIRROR_URL`, `WORDSENSE_MIRROR_USER`, `WORDSENSE_MIRROR_PASSWORD` and
   `WORDSENSE_MIRROR_BEARER_TOKEN`; used only when no mirror option is passed.
 - Model store (in/out): `<store>/<model-id>/<file>` in a per-user directory unless `StoreRoot` is given.
@@ -83,7 +84,7 @@ wrong answer (a lemma that does not match loses its weights and is answered with
    them to the lexicon and opens the ONNX session on first need; the session and weights are shared by all callers
    of the model.
 3. The words are one running text joined by single spaces.
-4. For every word the model lower-cases it and looks it up in `WordLexicon.Words`:
+4. For every word the model lower-cases it and looks it up in `WordLexicon`:
    - no entry: the result is the word, no details, confidence 0;
    - one entry: the word, that entry, confidence 1;
    - several entries: the model decides. Basic estimates the part of speech of every word of the sentence with a hidden

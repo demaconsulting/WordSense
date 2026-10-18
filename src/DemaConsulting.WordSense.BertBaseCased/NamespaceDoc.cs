@@ -30,7 +30,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     accuracy on the holdout and about 97% on real text (precision of the words it answers with a confidence of at
 ///     least 0.6: about 99%), and it keeps the case of the text
 ///     (https://github.com/demaconsulting/WordSense/blob/main/docs/build_notes/model-table.md; approximate and machine
-///     dependent; the memory of about 150 MiB it adds does not include the 43 MiB of the word lexicon). Choose
+///     dependent; the memory of about 150 MiB it adds does not include the 15 MiB of the word lexicon). Choose
 ///     <c>DemaConsulting.WordSense.MiniLM</c> (the default recommendation) for a small, fast
 ///     model: 22 MiB, about 2 ms per sentence, about 97% and 93%. The statistical Basic model
 ///     (<c>DemaConsulting.WordSense.Basic</c>, no download, about 85% on real text) is enough when nothing may be
@@ -39,7 +39,7 @@ namespace DemaConsulting.WordSense.BertBaseCased;
 ///     <para>
 ///     First use (approximate, machine dependent): <c>EnsureModelAsync</c> hashes the four files once per model instance (the ONNX file is the
 ///     bulk; about 110 ms in total with a warm file cache); the first classification of an ambiguous word opens the ONNX session and loads the weights in about 0.5 s, and the word lexicon
-///     of the core package loads in about 120 ms (about 43 MiB). Recommendation: dispose the model (with <c>using</c>)
+///     of the core package loads in about 55 ms (about 15 MiB). Recommendation: dispose the model (with <c>using</c>)
 ///     when you no longer need it. Guarantee: disposing while calls are running is safe: the model is marked disposed
 ///     at once, a classification that already runs completes normally, and the ONNX session is released when the last
 ///     of them finishes; afterwards <c>EnsureModelAsync</c> (thrown from the call) and <c>ClassifyAsync</c>

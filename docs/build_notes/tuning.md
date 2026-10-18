@@ -21,7 +21,7 @@ dotnet run --project tools/WordSense.Builder -c Release -- evaluate basic
   the same comparison table every run: best sense, part of speech and pronunciation on the holdout and the real-text
   sentences, the reference rows of earlier models, the calibration buckets, the thresholds, the table size and the
   latency.
-- The core word table must be current (`words` command) before training, because the dictionary is read from the
+- The core word image must be current (`compile-image` command) before training, because the dictionary is read from the
   core package.
 
 Retraining is deterministic: the same inputs give a byte-identical table.

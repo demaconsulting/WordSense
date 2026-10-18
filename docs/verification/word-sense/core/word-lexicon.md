@@ -2,10 +2,12 @@
 
 #### Verification Approach
 
-The unit is verified with the real embedded lexicon and with tiny hand-made blobs for the reader. Tests in
-`test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs` use the public `WordLexicon.Words` property; tests in
-`WordsBlobTests.cs` feed the internal `WordsBlob` reader valid and corrupt byte arrays produced by a small helper in the
-test project (the writer lives in the builder, so the shipped assembly has no writer). Nothing is mocked.
+The unit is verified with the real embedded word image. Tests in
+`test/DemaConsulting.WordSense.Tests/WordLexiconTests.cs` use the public `WordLexicon` lookup and the internal bridge
+members (`View`, `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`). The image format itself (determinism, UTF-8 ordering,
+corruption) is verified in the builder test project (`ImageTests.cs`) because the compiler lives in the builder, so the
+shipped assembly has no writer. The committed image is compared with a fresh compilation of `data/` and with the
+legacy word table (`BuilderTests.Words_Committed_*`). Nothing is mocked.
 
 #### Test Environment
 
@@ -17,43 +19,36 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### Test Scenarios
 
-- **Known lemma has its senses**: `Words["read"]` holds two entries that share the lemma `read`; a single-sense word
-  holds one.
-- **Published values cannot be mutated** (`PublishedValues_CannotBeMutated`): the senses of a key are an immutable
-  array (never the default array); writing, adding or clearing through the list interface throws
-  `NotSupportedException`, and a second lookup returns the very same array.
-- **Keys are lower case and include inflections**: every key equals its lower-cased form, and inflected forms such as
-  `records` and `recorded` are keys whose entries carry the lemma `record`, and so are the forms of every dictionary
-  word (`looked`, `seemed`, `trees`, `knows`, `having`); `went`, `children` and `happier` are known (the dictionary
-  lists them itself and wins); the wrong regular forms of irregular
-  words (`goed`, `childs`) are absent. No morphology runs at run time.
-- **Closed-class words are present** (`ClosedClassWord_HasItsPartOfSpeechAlone`, `SoAndWill_ListTheirParts`,
-  `EverySense_SharesTheFirstLemmaOrIsTheOwnExtra`): `the`, `a`, `an`, `his` and `my` are single determiner entries, a
-  conjunction-only and an interjection-only word are present, `so` and `will` list all their parts of speech, and
-  every sense of a word has the lemma of its first sense or is the word's own extra (the word as lemma, no meaning
-  and no respelling; `drove` ends with a noun of its own after the verb of `drive`). The determiner sense is accepted
-  by the blob reader (`DeterminerSense_IsAccepted`).
-- **Auxiliaries end with an Auxiliary sense** (`Auxiliaries_HaveTrailingAuxiliarySense`, `AuxiliarySense_IsAccepted`):
-  `will` is Verb, Noun, Auxiliary; `is` and `having` end with Auxiliary under the lemma `be`; `wills` and `record` have
-  none.
+- **Known lemma has its analyses** (`Lookup_KnownWord_ReturnsItsAnalyses`): `Lookup("read")` holds analyses that
+  share the lemma `read`; a single-sense word holds one.
+- **Inflections are present** (`Lookup_InflectedForm_ReturnsEntryLemmaAndFeatures`,
+  `Lookup_InflectedFormOfAnyDictionaryWord_ResolvesToLemma`): inflected forms such as `records` and `recorded` carry
+  the lemma `record` and their features, and so do the forms of every dictionary word; `went`, `children` and
+  `happier` are known; the wrong regular forms of irregular words (`goed`, `childs`) are absent
+  (`Contains_IrregularFormInDictionary_IsKnown`, `Contains_WrongRegularFormOfIrregularWord_IsAbsent`).
+- **Closed-class words are present** (`Lookup_ClosedClassWord_HasItsPartOfSpeechAlone`,
+  `Lookup_SoAndWill_ListTheirParts`, `Lookup_FormWithSeveralLemmas_ListsEach`): `the`, `a`, `an`, `his` and `my` are
+  single determiner entries, `so` and `will` list all their parts of speech, and a form with several lemmas lists
+  each.
+- **Auxiliaries end with an Auxiliary analysis** (`Lookup_Auxiliaries_HaveTrailingAuxiliaryAnalysis`): `will` is Verb,
+  Noun, Auxiliary; `is` and `having` end with Auxiliary under the lemma `be`; `wills` and `record` have none.
+- **Listed forms have only their labeled senses** (`Lookup_FormOfHeteronym_HasOnlyItsSenses`,
+  `Lookup_ReadForms_SplitBySense`, `Lookup_RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb
+  (plus an untrained own extra of the form), `bows` its labeled senses, `reads` the present verb, and `read` the past
+  and present verbs; no sense outside the labels appears.
+- **Trained lemma bridge** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas`): a form whose
+  trained lemma differs from its entry lemma (`axes`) resolves through the class id prefix, and the 19 corrected forms
+  have the fixed lemma.
+- **Keys are lower case** (`View_Keys_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
+  upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
+  word throws (`Lookup_NullWord_Throws`).
+- **Forms of a lemma** (`FormsOf_Lemma_ListsItsForms`): the forms of `record` are listed.
+- **Embedded image and lazy loading** (`Count_EmbeddedImage_LoadsAndIsNotEmpty`,
+  `Lookup_ConcurrentAccess_ReturnsSameAnswers`): the image loads on first use and many tasks that access it at the
+  same moment receive the same answers.
+- **Image order and lookup** (`Image_Spellings_AreSortedByUtf8Bytes`, `Image_Find_ReturnsOwnIndex`): the spelling index
+  is sorted by UTF-8 bytes and every spelling is found at its own index.
+- **Corrupt image is rejected** (`Image_Corruption_IsRejected`): a wrong magic number, an unsupported version, a
+  flipped byte and a truncated image each throw `InvalidDataException`.
 - **Complete dictionary**: the builder test `Words_Committed_HoldsEveryDictionaryWord` shows that no dictionary word
-  is absent from `Words`.
-- **Listed forms have only their labeled senses** (`ListedFormOfHeteronym_HasOnlyItsLabeledSenses`,
-  `ReadForms_SplitByLabels`, `RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb (plus an
-  untrained own extra of the form), `bows` its three labeled senses in lemma order, `reads` the present verb, `read` the
-  past and present verbs, and `lives` and `wounds` only their labeled senses; no sense outside the labels appears.
-- **Unknown or mixed-case key is absent**: a made-up word and an upper-case spelling of a known word are not found,
-  because lookup is ordinal on lower-case keys.
-- **Lazy loading**: the lexicon is not loaded until the first access of `Words`, and later accesses return the same
-  instance.
-- **Thread safety**: many tasks that access `Words` at the same moment all receive the same instance, and the embedded
-  resource is read once.
-- **Shared entries**: equal strings and equal senses are shared, so two keys with the same sense return the same
-  `WordDetails` instance.
-- **Valid blob round trip**: a small blob read by the `WordsBlob` reader gives the expected keys, senses and order.
-- **Corrupt blob is rejected**: an unknown format marker, truncated data, an invalid sense reference and trailing data
-  each throw `InvalidDataException`.
-- **Broken payloads are rejected**: a table of broken payloads (truncated magic, over-long or over-large varints,
-  counts larger than the data, a string running past the end, an unknown part of speech, out-of-range meaning, key and
-  sense references, an entry without senses, a duplicate key, trailing bytes) each throw `InvalidDataException` before
-  a large allocation is made; the smallest valid blob is accepted.
+  is absent from the image.

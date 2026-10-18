@@ -19,7 +19,7 @@ over 140,000 common words. Only where a word has several meanings does a model c
 
 - 📖 **Dictionary** - Parts of speech for over 140,000 common words
 - 🧠 **Context Aware** - Picks the part of speech of a word from its sentence
-- 🔊 **Pronunciation** - Respellings for heteronyms like "bow" and "read"
+- 🔊 **Pronunciation** - Sense ids for heteronyms like "bow" and "read"
 - 📊 **Confidence** - Every answer carries a confidence from 0 to 1
 - 📦 **Layered Packages** - Small core, dependency-free Basic, optional ONNX models
 - 🔒 **Verified Models** - Downloads are checked against pinned SHA-256 digests

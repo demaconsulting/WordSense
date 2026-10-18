@@ -380,7 +380,7 @@ tables:
       column: class_id
 
   form:
-    description: One analysis of a written form (spelling) - the entry it is a form of, its grammatical features and its rank in the answer order.
+    description: One analysis of a written form, with its entry, features and answer rank.
     columns:
       spelling: text
       rank: int
@@ -397,7 +397,7 @@ tables:
       column: spelling
 
   form_sense_scope:
-    description: The classes an analysis stands for; one answer per class in class order. An analysis without a row here is one answer without a sense id.
+    description: The classes an analysis stands for, one answer per class; no row means one answer without a sense id.
     columns:
       spelling: text
       rank: int

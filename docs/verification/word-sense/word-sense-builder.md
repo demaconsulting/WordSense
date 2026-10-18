@@ -7,7 +7,7 @@ This document describes the verification of the `WordSenseBuilder` unit, the non
 
 Tests in `test/WordSense.Builder.Tests` call the command entry point (`Program.RunAsync`) with explicit output writers
 and the internal serialization types with synthetic data in temporary directories: `ProgramTests.cs` covers the commands
-and their usage and data errors, `WordsBlobWriterTests.cs` and `WeightsBlobWriterTests.cs` cover the lexicon and weights
+and their usage and data errors, `ImageTests.cs` covers the word image and `WeightsBlobWriterTests.cs` the weights
 writers against the readers of the shipped packages, `UdCountsTests.cs` covers the treebank counts of the Basic model,
 and `BasicTrainerTests.cs` covers its trainer, table writer, model data summary and hyper-parameters.
 Commands that need a real encoder (`weights` and `evaluate` for the encoder models) are verified through the data they
@@ -27,8 +27,11 @@ All scenarios below pass on every platform and target framework of the CI matrix
 
 #### words
 
-- **Words command writes the lexicon**: `words --corpus DIR --output FILE` on a small synthetic corpus writes the
-  lexicon file and reports the number of words; the file is read back by `WordsBlob` into the expected keys and senses.
+- **Compile-image command writes the image**: `compile-image --data DIR --corpus DIR --output FILE` on the committed
+  data writes the word image and reports the counts; a missing data directory fails with a message
+  (`Program_CompileImage_WritesImage`, `Program_CompileImage_MissingData_Fails`). The image is read back by the
+  core reader. It is deterministic (`ImageCompiler_Build_IsDeterministic`), and the committed image equals a fresh
+  compilation (`Words_Committed_MatchesData`) and agrees with the legacy word table (`Words_Committed_MatchesLegacyTable`).
 - **Inflections are materialized for every dictionary word**: the written lexicon contains the plural, third person,
   past, -ing, comparative, superlative, adverb and derived forms of every dictionary word and trained lemma as
   lower-case keys with the senses of their lemma, with the spelling rules of English (`GeneratesForms`,
@@ -44,7 +47,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   array. Unknown, duplicate and empty labels and a restricted self row fail the build and every error is listed
   (`InvalidFormLabels_ThrowsListingAllErrors`, `CheckForms_ReportsEveryViolation`). `FormSenseIndexes_FollowsLemmaOrder`,
   `Validate_SentenceWithSenseOutsideFormLabels_IsReported`, `Validate_CommittedCorpus_IsConsistent` and
-  `Words_Committed_NoExplicitFormHasSenseOutsideItsLabels` show that the anchors, holdout and committed lexicon agree
+  `Words_Committed_MatchesLegacyTable` show that the anchors, holdout and committed lexicon agree
   with the labels.
 - **Every dictionary word is kept** (`Words_Committed_HoldsEveryDictionaryWord`): the committed lexicon holds every
   word of the committed dictionary with each of its parts of speech, without exception.

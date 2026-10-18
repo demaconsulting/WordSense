@@ -36,10 +36,10 @@ test suite for each of the three models; the samples in this guide are reviewed 
 # Glossary
 
 - **Lemma**: the dictionary base form of a word, for example "record" for "records".
-- **Word table**: the embedded table of the core package, `WordLexicon.Words`. It maps every known lower-case surface
-  form, including the inflected forms that the build generated for every dictionary word, to its possible senses.
+- **Word table**: the embedded word image of the core package, read through `WordLexicon`. It holds every known spelling,
+  including the inflected forms that the build generated for every dictionary word, with its possible analyses.
   A word in it is *known*.
-- **Sense**: one possible reading of a word, a `WordDetails`: lemma, part of speech, meaning and respelling.
+- **Sense**: one possible reading of a word, a `WordDetails`: sense id, lemma, part of speech and features.
 - **Heteronym**: a word that is spelled the same but pronounced differently depending on its use, for example
   "record" (the noun is said REK-urd, the verb rih-KORD) or "bow".
 - **Part of speech**: the grammatical role of a word in its sentence. `PartOfSpeech` has ten values: noun, pronoun,
@@ -47,10 +47,10 @@ test suite for each of the three models; the samples in this guide are reviewed 
   (`will`, `can`, `is`, `has`). A word such as `will` lists its content senses first (verb, noun) and `Auxiliary` as
   the last sense. Basic chooses `Auxiliary` where the context calls for it ("we will record"); the encoder models
   never answer `Auxiliary` and keep deciding between the content senses.
-- **Meaning**: a short id, for example `bend` or `weapon` for "bow", that names which pronunciation of a heteronym is
-  meant; it is `null` when the lemma is not a heteronym.
-- **Respelling**: a plain-letter hint of how to say the word, for example `boh`; it is a guide for a person or a
-  speech engine and not a phonetic transcription.
+- **Sense id**: a stable id for the sense of a heteronym, for example `bow#weapon` or `bow#bend-noun` for "bow"; it is
+  `null` when the analysis has no sense of its own (a word that is not a heteronym).
+- **Features**: the inflection of the analysis as `Key=Value` pairs separated by `|` (for example `Number=Plur`), or an
+  empty string. They come from the authoritative form table of the library.
 - **Confidence**: a number from 0 to 1 in each result. It is 1 for a word with one sense and 0 for an unknown word.
   For a word decided by an encoder model it grows with the model's score margin; for the Basic model it is the
   relative probability of the chosen sense; for a word with several senses that the encoder has no weights for it is
@@ -71,7 +71,7 @@ All packages target `net8.0`, `net9.0` and `net10.0`. The core package is a depe
 | `DemaConsulting.WordSense.MiniLM` | all-MiniLM-L6-v2 encoder, weights | 22 MiB, once | ONNX Runtime | uncased |
 | `DemaConsulting.WordSense.BertBaseCased` | bert-base-cased encoder | 104 MiB, once | ONNX Runtime | cased |
 
-- Use **core** alone to look up the possible senses of a word (`WordLexicon.Words`) and to answer words that have one
+- Use **core** alone to look up the possible senses of a word (`WordLexicon.Lookup`) words that have one
   sense, in your own code.
 - Use **Basic** when you want a fast, dependency-free answer and can accept less accuracy than the encoder models.
 - Use **MiniLM** for the best size-to-quality trade-off: the smallest download and the fastest encoder. It is the
@@ -97,7 +97,7 @@ whose encoder is never needed is never downloaded.
 The memory column is measured as the growth of the private memory of the process (after a full garbage collection)
 from before the model was created to after it classified warm-up sentences, so it is not a count of the model's own
 data: for Basic (an 83 KiB embedded table) the about 21 MiB are the decoded tables and working buffers plus allocator,
-JIT-compiled code and runtime effects. The word lexicon (about 43 MiB) was loaded before and is not included.
+JIT-compiled code and runtime effects. The word lexicon (about 15 MiB) was loaded before and is not included.
 
 **Basic is enough** when nothing may be downloaded, startup time and memory must stay small, or ONNX Runtime cannot be
 shipped, and you can accept about one wrong answer in six or seven ambiguous words on real text (a confidence threshold
@@ -154,7 +154,7 @@ of their own; they are read as one running text, so classify independent sentenc
 
 Every word follows the same path:
 
-1. The word is lower-cased (a curly apostrophe is read as `'`) and looked up in `WordLexicon.Words`. A word that is
+1. The word is lower-cased (a curly apostrophe is read as `'`) and looked up in `WordLexicon`. A word that is
    not there is **unknown**: `Details` is `null` and `Confidence` is 0.
 2. A word with one sense is answered with that sense and `Confidence` 1, by every model, without running anything.
 3. A word with several senses is decided from its context by the model: the encoder models score the senses of the
@@ -173,12 +173,11 @@ word that is not in the table, as one of its features.)
 A `WordSense` is a `readonly record struct` with three members:
 
 - `Word`: the word as you gave it.
-- `Details`: a `WordDetails` or `null`. `WordDetails` has `Lemma`, `PartOfSpeech`, `Meaning` and `Respelling`.
+- `Details`: a `WordDetails` or `null`. `WordDetails` has `SenseId`, `Lemma`, `PartOfSpeech` and `Features`.
 - `Confidence`: from 0 to 1.
 
-For a heteronym, `Meaning` and `Respelling` carry the pronunciation; they are `null` for every other word. For speech
-synthesis, key your own pronunciation lexicon on the pair (`Lemma`, `Meaning`): the meaning is the stable value and the
-respelling is a readable hint.
+For a heteronym, `SenseId` names the sense that was chosen; it is `null` for every other word. For speech synthesis,
+key your own pronunciation lexicon on the `SenseId`; the library has no phonetic data of its own.
 
 The
 <!-- markdownlint-disable-next-line MD051 -->
@@ -186,7 +185,7 @@ The
 speech and pronunciation meanings.
 
 `Details` is `null` in exactly two cases, and `Confidence` is 0 in both. First, the word is unknown: it has no entry in
-`WordLexicon.Words` (a number, punctuation, most proper nouns, a misspelling, a contraction such as `don't`); every
+`WordLexicon` (a number, punctuation, most proper nouns, a misspelling, a contraction such as `don't`); every
 model does this. Second, an encoder model produced no vector for a word that has trained weights. Every dictionary
 word is in the table, the determiners, conjunctions and interjections among them, whatever the accuracy of a model:
 the accuracy only decides which sense a model chooses. Every other word gets a sense: a word with one sense gets it
@@ -259,30 +258,22 @@ is not in the lexicon and starts with an upper-case letter inside a segment (not
 
 ## Core: the Word Table
 
-`WordLexicon.Words` is a `FrozenDictionary<string, ImmutableArray<WordDetails>>` of lower-case surface forms to their
-senses. The senses of a key are an immutable array that is shared, not copied, so nobody can change what another caller
-sees. The
-inflected forms (plural, verb forms, comparatives and so on) of every dictionary word are in the table, so no
-morphology runs at use time. The
+`WordLexicon` looks a word up in the embedded word image, a flat in-place data file that is read without building a
+dictionary. `WordLexicon.Lookup(word)` returns the analyses of a word as an immutable array (empty for an unknown
+word), and `TryLookup`, `Contains` and `FormsOf(lemma)` answer the related questions. The inflected forms (plural,
+verb forms, comparatives and so on) of every dictionary word are in the image, so no morphology runs at use time. The
 core package has no model, no ONNX Runtime and no weights: it knows nothing of the model packages.
 
 ```csharp
-if (WordLexicon.Words.TryGetValue("lead", out var senses))
+foreach (WordDetails sense in WordLexicon.Lookup("lead"))
 {
-    foreach (WordDetails sense in senses)
-    {
-        Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, {sense.Meaning ?? "-"}, {sense.Respelling ?? "-"}");
-    }
+    Console.WriteLine($"{sense.Lemma}: {sense.PartOfSpeech}, {sense.SenseId ?? "-"}, {sense.Features}");
 }
 ```
 
-The `senses` value is an `ImmutableArray<WordDetails>` (from `System.Collections.Immutable`); a value read from
-`TryGetValue` is never the default array.
-
-The keys are lower-case and compared ordinally, and the table has no key with a curly apostrophe: lower-case the word and
-replace U+2019 with `'` yourself (the models do it for you). The indexer `Words["x"]` throws
-`KeyNotFoundException` for a word that is not in the table, so use `TryGetValue`. The first access takes about 120 ms and
-about 43 MiB (approximate, machine dependent), once per process.
+An exact spelling is tried first, so a case-sensitive entry wins; otherwise the word is lower-cased (the curly
+apostrophe U+2019 counts as `'`) and looked up again. The first access takes about 55 ms and about 15 MiB
+(approximate, machine dependent), once per process.
 
 ## Basic
 
@@ -295,7 +286,7 @@ embedded in the package: a part-of-speech tagger (a hidden Markov model trained 
 web treebank, limited to the parts of speech that the word table allows) and, for lemmas that have enough training
 sentences, context cues that separate senses of the same part of speech (for example `bass`). It always answers a
 multi-sense word; the confidence is the probability that the model gives to its answer, between 1 divided by the number
-of senses and 1. The measured quality is in the build notes (`basic-evaluation.md`). First use costs about 120 ms for
+of senses and 1. The measured quality is in the build notes (`basic-evaluation.md`). First use costs about 55 ms for
 the word table and about 22 ms for the statistical table (approximate, machine dependent); after that a sentence takes
 well under a millisecond.
 
@@ -341,7 +332,7 @@ ensure can be retried by the next call. The ensured state belongs to one model i
 instance keeps the verified directory (including the `StoreRoot` of the `MirrorOptions` passed to that call), and a new
 instance starts again; after a failed call, a lazy ensure uses no `MirrorOptions`. The ONNX session and the weights are
 loaded at the first classification that needs
-them: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 120 ms)
+them: about 0.4 s for MiniLM and about 0.5 s for BertBaseCased, on top of the word table (about 55 ms)
 and of the hashing of the model files in `EnsureModelAsync` (once per model instance; about 30 ms for MiniLM and about
 110 ms for BertBaseCased
 with a warm file cache; approximate, machine dependent). Concurrent classifications are not serialized: they share the
@@ -394,7 +385,8 @@ confidence semantics: an unknown word has `Details` null and confidence 0, a wor
 while calls run; `ClassifyAsync` should ensure lazily and only when a word needs it; enumerate the word list once; and
 `EnsureModelAsync` must not throw for an already cancelled token but return a cancelled task (a task that has already
 completed may be returned as it is).
-It must also: return in `Word` the input element as given; take `Details` from `WordLexicon.Words[key]`, where the key is
+It must also: return in `Word` the input element as given; take `Details` from `WordLexicon.Lookup(key)`, where the
+key is
 the word lower-cased with U+2019 replaced by `'` (the shipped models do this, and an implementation should too, so that
 every model finds the same candidates); honor the cancellation token; make `EnsureModelAsync` idempotent, thread-safe
 and retryable; and throw its exceptions either synchronously or through the returned task (`BasicWordSenseModel` throws
@@ -454,7 +446,7 @@ share of those that are right; real text, holdout in parentheses; rounded):
 | BertBaseCased | 85% / 99% (94% / 99.7%) | 70% / 99% (87% / 99.7%) | 64% / 99% (81% / 99.7%) |
 
 The full calibration buckets are in `model-comparison.md` in the build notes. The memory figures of the comparison
-table do not include the 43 MiB of the word lexicon.
+table do not include the 15 MiB of the word lexicon.
 
 # Model Files
 
@@ -492,7 +484,7 @@ Basic and the core package have no model files. The download of MiniLM is 22 MiB
 1,048,576 bytes). The default store is `%LOCALAPPDATA%\DemaConsulting\WordSense\models` on Windows and
 `~/.local/share/DemaConsulting/WordSense/models` on Linux and macOS (`$XDG_DATA_HOME` is honored when set); the
 `ModelId` values are `all-MiniLM-L6-v2-int8` and `bert-base-cased-int8`, and they are the sub-folder names in the store
-and on a mirror. The memory figures in the comparison table are what a model adds and do not include the 43 MiB of
+and on a mirror. The memory figures in the comparison table are what a model adds and do not include the 15 MiB of
 the word lexicon.
 
 ## Offline and Air-Gapped Use
@@ -607,7 +599,8 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
 
 # Limitations
 
-- **Words are classified by what the table knows.** A word that is not in `WordLexicon.Words` is unknown, and so are
+- **Words are classified by what the table knows.** A word that is not found by `WordLexicon.Lookup` is unknown, and
+  so are
   numbers, names, contractions and possessive forms such as `don't` and `Mary's`, dialect spellings and archaic verb
   endings (about 96% of the running words of a Project Gutenberg sample are known). There is no morphology at use
   time and no capitalization or possessive
@@ -616,9 +609,8 @@ ensure; cancelling does not stop the shared ensure (see "Threads and cancellatio
   appendix); another multi-sense word gets its first dictionary sense with a confidence of one over its number of
   senses. Basic decides by part of speech only; the encoder models never answer `Auxiliary` for a modal or an
   auxiliary verb such as `will`.
-- **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `Meaning` or `Respelling`, and the
-  library has no phonetic data of its own: the `Respelling` is a plain hint, and the consumer maps (`Lemma`,
-  `Meaning`) to its own pronunciation.
+- **Pronunciation for heteronyms only.** A lemma that is not a heteronym has no `SenseId`, and the
+  library has no phonetic data of its own: the consumer maps the `SenseId` to its own pronunciation.
 - **Confidence is a score, not a probability**, and its scale is specific to each model.
 - **English only**, and the context is a window of at most `maxSequenceLength` tokens around the target word.
 - **The encoder models need files**: a download on first use (22 MiB or 104 MiB) or a model directory, and ONNX Runtime
@@ -659,7 +651,7 @@ in `corpus/`; the format of the files is described in `corpus/README.md` and the
 | Command | What it does |
 | ------- | ------------ |
 | `import-moby` | Rebuilds `corpus/lexicon/lexicon.tsv` from the pinned Moby file given by `--input` |
-| `words` | Builds the word table (`words.bin`), including the generated inflections |
+| `compile-image` | Compiles the tables of `data/` into the embedded word image (`wordsense.img`), with inflections |
 | `ud-irregular` | Derives `corpus/lexicon/irregular-ud.tsv` (irregular forms attested in UD) |
 | `coverage --text DIR [--top N]` | Reports the token coverage of the `*.txt` files of `DIR` and the top unknown words |
 | `weights <modelId>` | Trains the weights of an encoder model (`minilm` or `bert-base-cased`) |
@@ -698,7 +690,7 @@ repository layout.
 5. Rebuild the word table, retrain each encoder model and measure the result:
 
    ```text
-   dotnet run --project tools/WordSense.Builder -c Release -- words
+   dotnet run --project tools/WordSense.Builder -c Release -- compile-image
    dotnet run --project tools/WordSense.Builder -c Release -- weights minilm
    dotnet run --project tools/WordSense.Builder -c Release -- weights bert-base-cased
    dotnet run --project tools/WordSense.Builder -c Release -- train-basic
@@ -744,7 +736,7 @@ with plain http for a host that is not loopback.
 ## A Word Returns Nothing
 
 `Details` is `null` for a word that is unknown. Check
-`WordLexicon.Words.ContainsKey(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table; a
+`WordLexicon.Contains(word.ToLowerInvariant())`: when it is `false` the word is unknown to the table; a
 contraction such as `don't` or a hyphenated word kept as one token is also unknown. When it is `true`, the word has an
 answer from every shipped model, with a low confidence if the model is unsure.
 

@@ -95,7 +95,7 @@ namespace DemaConsulting.WordSense.Onnx;
 ///     First-use costs (approximate and machine dependent): <see cref="EnsureModelAsync"/> reads and hashes each model
 ///     file (about 30 ms for the 22 MiB MiniLM files and about 110 ms for the 104 MiB BertBaseCased files, measured
 ///     with a warm file cache; a cold or slow disk takes longer); the first classification that needs the encoder opens the ONNX session (about 0.4 s for MiniLM, about 0.5 s for
-///     BertBaseCased) and loads the weights; the word lexicon (about 120 ms, about 43 MiB) loads on first use. After
+///     BertBaseCased) and loads the weights; the word lexicon (about 55 ms, about 15 MiB) loads on first use. After
 ///     <see cref="Dispose()"/>, <see cref="EnsureModelAsync"/> and <see cref="ClassifyAsync"/> throw
 ///     <see cref="ObjectDisposedException"/>: <see cref="EnsureModelAsync"/> throws it synchronously from the call,
 ///     while <see cref="ClassifyAsync"/> reports it through the returned task (an <c>await</c> inside a <c>try</c>

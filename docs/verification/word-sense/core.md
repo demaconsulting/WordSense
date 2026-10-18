@@ -8,7 +8,7 @@ implements.
 
 The subsystem is verified through its public API with the embedded lexicon. No model, fake or file is needed: the
 contracts are plain types and interfaces, and the lexicon is read from the assembly resource. Tests in
-`test/DemaConsulting.WordSense.Tests` (`WordLexiconTests`, `ContractsTests`, `WordsBlobTests`) verify the units
+`test/DemaConsulting.WordSense.Tests` (`WordLexiconTests`, `ContractsTests`) verify the units
 `WordLexicon` and `WordSenseContracts`, and `XmlDocExampleTests` compiles the XML documentation examples of the package
 against the public API. The subsystem boundary to the model packages is verified by the model packages themselves,
 which implement the contracts.

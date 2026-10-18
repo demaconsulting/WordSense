@@ -37,8 +37,8 @@ importer refuses to overwrite existing tables, so a re-import can never destroy 
 | `coarse_class` | `class_id` | class of the coarse sense inventory of the shipped models |
 | `class_sense` | `class_id, sense_id` | the senses of a class; a sense is in at most one class |
 | `class_entry` | `class_id, entry_id, features` | the entry (and grammatical features) a class stands for |
-| `form` | `spelling, rank` | one analysis of a written form: entry, features, source, reviewed flag; the rank is the answer order |
-| `form_sense_scope` | `spelling, rank, class_id` | the classes an analysis stands for (one answer per class); no row means one answer without a sense id |
+| `form` | `spelling, rank` | one analysis of a written form: entry, features, source, reviewed flag |
+| `form_sense_scope` | `spelling, rank, class_id` | the classes an analysis stands for (no row: one answer) |
 
 The part of speech letters are `n v a r` and, for the closed classes, `u` pronoun, `p` preposition, `c` conjunction,
 `i` interjection, `d` determiner, `x` auxiliary. An entry of source `dema` may have no sense (a bare lemma and part of

@@ -730,7 +730,8 @@ public sealed class BuilderTests : IDisposable
         var forms = Directory.GetFiles(Path.Combine(corpus, "forms"), "*.tsv").SelectMany(Corpus.ReadForms).ToList();
         var checkedForms = 0;
         var problems = new List<string>();
-        foreach (var (form, _, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma) && table.ContainsKey(f.Form)))        {
+        foreach (var (form, _, _) in forms.Where(f => f.Form != f.Lemma && table.ContainsKey(f.Lemma) && table.ContainsKey(f.Form)))
+        {
             var senses = table[form].Where(d => d.PartOfSpeech != PartOfSpeech.Auxiliary).ToList();
             var trained = senses.Where(d => d.SenseId is not null).ToList();
             var extras = senses.Where(d => d.SenseId is null).ToList();

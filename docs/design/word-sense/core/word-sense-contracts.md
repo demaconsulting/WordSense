@@ -12,8 +12,9 @@ model for another without code changes.
 - `PartOfSpeech`: Noun, Pronoun, Verb, Adjective, Adverb, Preposition, Conjunction, Interjection, Determiner (the
   articles and possessives such as the, a, an, his, my) and Auxiliary (modal and primary auxiliaries such as will,
   can, is, has; always the last sense of a word, after its content senses). Every dictionary word has a lexicon entry.
-- `WordDetails(Lemma, PartOfSpeech, Meaning, Respelling)`: a sealed record. `Meaning` (lower-case ASCII letters,
-  digits and hyphens) and `Respelling` (ASCII letters, hyphens and apostrophes) are non-null only for heteronyms.
+- `WordDetails(SenseId, Lemma, PartOfSpeech, Features)`: a sealed record. `SenseId` (a class id such as `bow#weapon`)
+  is non-null only for an analysis tied to a sense class; `Features` is the inflection as `Key=Value` pairs joined by
+  `|`, or an empty string.
 - `WordSense(Word, Details, Confidence)`: a readonly record struct. `Word` is the input word as given; `Details` is
   the chosen sense or null when no sense could be chosen; `Confidence` is from 0 to 1 (1 when the word has a single
   sense, 0 when unknown or undecided).

@@ -9,7 +9,7 @@ is used at build time only and is never shipped in a package.
 
 The builder creates the data that the shipped packages embed and measures the shipped models:
 
-- the lexicon blob `words.bin` embedded in the core package;
+- the flat word image `wordsense.img` embedded in the core package, compiled from the authoritative tables of `data/`;
 - the weights blob `weights.bin` embedded in each encoder package (MiniLM, BertBaseCased);
 - the statistics table `basic.bin` embedded in the Basic package, and the treebank count files of `corpus/ud` it is
   trained from;
@@ -43,7 +43,14 @@ inference share one implementation of the feature computation.
 - `IrregularForms`: reads the irregular form lists and derives the treebank list (`ud-irregular`).
 - `CoverageReport`: the `coverage` command; measures how many running words of a directory of text files the word
   table knows and lists the unknown words as names and others.
-- `WordsBuilder` and `WordsBlobWriter`: combine the word sources and serialize the lexicon blob (`WSW1`).
+- `ImageCompiler`: reads the tables of `data/` (entry, form, form_sense_scope, coarse_class) and the sense meanings of
+  `corpus/senses`, and writes the flat word image (`WSI1`): the UTF-8-byte-sorted spelling index, 8-byte analysis rows,
+  scope lists, entries, classes, the lemma-to-forms index and the fold index, each section Brotli-compressed, with the
+  data hash and a content hash in the header. Equal data always gives equal decompressed sections.
+- `FormBootstrap`: the one-off derivation of the authoritative `form` and `form_sense_scope` tables from the earlier
+  generated word table (kept for provenance; the 19 wrong-lemma forms of the old table are fixed there).
+- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma bridge and the tests compare the image
+  against (removed with the weights re-key).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX1`).
 - `Evaluator`, `SetResult`, `EvaluationResult`: measure a shipped model on the holdout and the real-text sentences.
@@ -73,8 +80,8 @@ order and the trainer is deterministic).
 Options are `--name value` pairs; every path defaults to the repository layout below the current directory. For
 `weights` and `evaluate` the model name may be given as the second argument instead of `--model`.
 
-- `words [--corpus DIR] [--output FILE]`: builds the lexicon and writes `words.bin` (default: the core package
-  resources).
+- `compile-image [--data DIR] [--corpus DIR] [--output FILE]`: compiles the tables of `data/` into the flat word image
+  and writes `wordsense.img` (default: the core package resources); it prints the counts and the size.
 - `import-moby --input FILE [--corpus DIR]`: derives `corpus/lexicon/lexicon.tsv` from the pinned Moby Part-of-Speech
   list after verifying its SHA-256, keeping every single lower-case word with all its parts of speech in source order
   and applying `corrections.tsv` and `classes.tsv`; it prints the counts.
@@ -95,9 +102,12 @@ Options are `--name value` pairs; every path defaults to the repository layout b
 - `validate-data [--data DIR]`: validates the tables of `data/` against `data/schema.yaml`, lists the violations and
   exits with a failure when there is one.
 
-#### Lexicon build (`WordsBuilder.Build`)
+#### Lexicon build (`WordsBuilder.Build`, legacy table)
 
-The lexicon entries come from four sources, in decreasing priority for the trained senses; the dictionary never
+The authoritative source of the shipped lexicon is now the `form` table of `data/`; `WordsBuilder.Build` remains as the
+reference that the committed image is compared against in the tests. Its rules, which the bootstrap of the `form` table
+reproduced exactly (apart from 19 wrong-lemma forms that were fixed), are the following. The lexicon entries come from
+four sources, in decreasing priority for the trained senses; the dictionary never
 removes a sense:
 
 1. The sense inventory: every trained lemma answers with all of its senses, in label order.
@@ -125,8 +135,8 @@ removes a sense:
 Every dictionary word is kept, whatever the accuracy of any model for it: the accuracy of a model governs only which
 senses it chooses between, never whether a word exists.
 
-The inflections are materialized at build time, so no morphology runs at run time. `WordsBlobWriter` writes the
-Brotli-compressed blob with a string table, a table of distinct `WordDetails` and the key-to-senses table.
+The inflections are materialized at build time, so no morphology runs at run time. `ImageCompiler` writes the
+Brotli-compressed sections of the image.
 
 #### Weights training (`ModelTrainer.TrainAsync`)
 

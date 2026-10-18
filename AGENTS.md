@@ -22,7 +22,7 @@
 ├── model/                      (one folder per model: model/<model-id>/ with ONNX encoder, vocabulary, tokenizer,
 │                                SHA256SUMS and README; stored in Git LFS)
 ├── tools/
-│   ├── WordSense.Builder/      (non-shipped builder: words, weights, evaluate, ud-counts, train-basic, tune-basic, appendix)
+│   ├── WordSense.Builder/      (non-shipped builder: compile-image, weights, evaluate, train-basic, tune-basic, appendix)
 │   └── tokenizer-fixture/      (one-off Python tokenizer parity fixture generator)
 ├── docs/
 │   ├── build_notes/
@@ -37,7 +37,7 @@
 │   ├── user_guide/
 │   └── verification/
 ├── src/
-│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded words.bin)
+│   ├── DemaConsulting.WordSense/                (core: contracts, WordLexicon, embedded wordsense.img)
 │   ├── DemaConsulting.WordSense.Basic/          (statistical model; no files, no network)
 │   ├── DemaConsulting.WordSense.Onnx/           (tokenizer, encoder, downloader, lemma weights, abstract model)
 │   ├── DemaConsulting.WordSense.MiniLM/         (MiniLM model: pinned files, embedded weights)

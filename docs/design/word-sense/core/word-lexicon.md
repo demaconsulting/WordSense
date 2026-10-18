@@ -4,42 +4,43 @@
 
 #### Purpose
 
-`WordLexicon` provides the embedded lexicon of known English words: for every known surface form, the list of its
-possible senses. Every model starts from it, and a word with one sense never needs context.
+`WordLexicon` provides the embedded lexicon of known English words: for every known spelling, the list of its
+possible analyses. Every model starts from it, and a word with one sense never needs context.
 
 #### Data Model
 
-- `WordLexicon.Words`: a `FrozenDictionary<string, ImmutableArray<WordDetails>>`. The arrays are immutable and are the
-  very instances the reader built (no copy on lookup), so a caller can neither change nor corrupt them; none is ever
-  the default array.
-- Keys are lower-case surface forms, including the inflected forms of every dictionary word generated at build
-  time. The senses under one key
-  all belong to one lemma. Callers lower-case the word and map the typographic apostrophe (U+2019) to `'` before the
-  lookup.
-- `WordDetails` is non-null in `Meaning` and `Respelling` only for heteronyms (words whose pronunciation depends on
-  the meaning); other words have one entry per part of speech without them.
-- The internal `WordsBlob` reader parses the embedded `words.bin`: a Brotli-compressed stream with the magic `WSW1`,
-  a string table, a table of distinct `WordDetails`, and the entry table that maps each key to its details, all
-  integers as 7-bit varints. Equal details share one instance. Every part-of-speech value is checked against the range
-  of the `PartOfSpeech` enum (derived from the enum, not a literal).
+- The lexicon is the embedded flat word image `wordsense.img`, read in place by the internal `WordImage`. Nothing is
+  expanded into a dictionary: a lookup is a binary search over a UTF-8-byte-sorted spelling index followed by a decode
+  of the 8-byte analysis rows of that spelling.
+- Image layout: an 80-byte header (magic `WSI1`, version, SHA-256 of the data it was built from, SHA-256 of its
+  content), a section directory and 21 sections (spelling index and bytes, analysis rows, scope lists, entries, classes,
+  class meanings, lemma-to-forms CSR and the fold index). Each section is Brotli-compressed after a byte-plane shuffle,
+  or stored when that is not smaller.
+- `WordDetails(SenseId, Lemma, PartOfSpeech, Features)`: `SenseId` is non-null only for an analysis tied to a sense
+  class (heteronyms); `Features` is the inflection as `Key=Value` pairs joined by `|`, or empty.
+- Lookup tries the exact spelling first, then the lower-cased spelling (U+2019 maps to `'`) through the fold index,
+  so case-sensitive entries win over the folded form.
+- Internal legacy bridge for the shipped model weights (removed with the weights re-key): `View`, `MeaningOf`,
+  `TrainedLemmaOf` and `ClassesOf`.
 
 #### Key Methods
 
-- `WordLexicon.Words` (property): returns the dictionary. The dictionary is built on first access, thread-safely and
-  exactly once (`Lazy` with execution-and-publication), and is immutable afterwards.
-- `WordsBlob.Read(ReadOnlySpan<byte>)` (internal): decodes the blob into the dictionary and validates every reference.
+- `WordLexicon.Lookup(string)` and `TryLookup(string, out ImmutableArray<WordDetails>)`: the analyses of a word.
+- `WordLexicon.Contains(string)`, `FormsOf(string lemma)` and `Count`.
+- The image is opened lazily, thread-safely and exactly once (`Lazy` with execution-and-publication). A small
+  direct-mapped cache of recent answers backs the internal `View` used by the models.
 
 #### Error Handling
 
-If the embedded resource is missing or the blob is corrupt (unknown magic, bad string or details reference, trailing
-data, truncated stream), the first access throws `InvalidDataException`. Because the lazy value caches the failure,
+If the embedded resource is missing or the image is corrupt (wrong magic or version, content hash mismatch, invalid
+section or reference), the first access throws `InvalidDataException`. Because the lazy value caches the failure,
 every later access throws as well.
 
 #### Dependencies
 
-The .NET base class library and the embedded resource `words.bin`. No other WordSense unit.
+The .NET base class library and the embedded resource `wordsense.img`. No other WordSense unit.
 
 #### Callers
 
-`BasicClassifier`, `OnnxClassifier` and `WeightedLemmaTable` (all lookups), the builder (`WordsBuilder` writes the
-blob; `Evaluator` and `AppendixGenerator` read it) and application code that wants the senses of a word.
+`BasicClassifier`, `OnnxClassifier` and `WeightedLemmaTable` (all lookups), the builder (`ImageCompiler` writes the
+image; `Evaluator` and `AppendixGenerator` read it) and application code that wants the analyses of a word.

@@ -97,7 +97,7 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate and machine dependent; measured values are in the build notes): the first access
-///     to <see cref="WordLexicon"/> takes about 50 ms and about 20 MiB, and happens once per process for every
+///     to <see cref="WordLexicon"/> takes about 55 ms and about 15 MiB, and happens once per process for every
 ///     model; the Basic model adds a table load of about 22 ms on its first classification; an encoder model adds
 ///     about 0.4 s (MiniLM) or 0.5 s (BertBaseCased) to open its ONNX session on the first classification that needs
 ///     it, and <see cref="EnsureModelAsync"/> reads and hashes every model file once per instance (about 30 ms for the

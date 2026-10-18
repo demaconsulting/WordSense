@@ -30,7 +30,7 @@ namespace DemaConsulting.WordSense;
 ///     machine, so treat them as approximate. "Real text" means sentences from openly licensed or public-domain
 ///     sources and is the realistic expectation; the holdout was written together with the training sentences and
 ///     is optimistic. All sizes are in MiB (1 MiB = 1,048,576 bytes). The memory figure is what the model adds to the
-///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 20 MiB, once per process, shared
+///     process <em>on top of</em> the word lexicon: the lexicon of this package (about 15 MiB, once per process, shared
 ///     by every model) is not included, so add it to the figure of the model you use. The memory figure is measured as
 ///     the growth of the private memory of the process (<c>Process.PrivateMemorySize64</c>, after a full garbage
 ///     collection) from before the model was created to after it has classified a number of warm-up sentences, so it
@@ -141,7 +141,7 @@ namespace DemaConsulting.WordSense;
 ///     </para>
 ///     <para>
 ///     First-use costs (approximate, machine dependent): the lexicon opens on first use of <see cref="WordLexicon"/>
-///     (about 50 ms, about 20 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
+///     (about 55 ms, about 15 MiB); Basic then loads its table in about 22 ms; an encoder model opens its ONNX
 ///     session on the first classification that needs it (about 0.4 s for MiniLM, about 0.5 s for BertBaseCased), after
 ///     the files are ensured: <c>ClassifyAsync</c> does that itself when a word needs the model (with the default
 ///     mirror settings), or call <c>EnsureModelAsync</c> first. A word list without an ambiguous word never touches
