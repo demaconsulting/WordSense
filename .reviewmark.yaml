@@ -22,6 +22,7 @@ needs-review:
   - "data/schema.yaml"            # Word data schema
   - "data/README.md"              # Word data guide
   - "data/PROVENANCE.md"          # Word data provenance (Open English WordNet, CC BY 4.0)
+  - "data/MAPPING.md"             # Coarse class mapping notes
   - "!tools/real-text/cache/**"   # Exclude raw downloaded texts
   - "!**/obj/**"                  # Exclude build output
   - "!**/bin/**"                  # Exclude build output
@@ -158,6 +159,7 @@ reviews:
       - "data/schema.yaml"
       - "data/README.md"
       - "data/PROVENANCE.md"
+      - "data/MAPPING.md"
       - "test/WordSense.Builder.Tests/Data/DataEndToEndTests.cs"
       - "test/WordSense.Builder.Tests/Data/DataFixture.cs"
 

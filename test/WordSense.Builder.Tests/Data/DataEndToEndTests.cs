@@ -154,6 +154,25 @@ public sealed class DataEndToEndTests : IDisposable
     }
 
     /// <summary>
+    ///     The committed coarse mapping is present and partitions the senses of the mapped lemmas.
+    /// </summary>
+    [Fact]
+    public void WordSenseBuilder_DataEndToEnd_CommittedData_HasCoarseMapping()
+    {
+        // Arrange
+        var data = Path.Combine(DataFixture.RepositoryRoot(), "data");
+
+        // Act
+        var report = DataValidator.Validate(data);
+
+        // Assert
+        Assert.True(report.IsValid, string.Join("\n", report.Violations));
+        Assert.True(report.RowCounts["coarse_class"] >= 1521);
+        Assert.True(report.RowCounts["class_sense"] > 6000);
+        Assert.Equal(2, report.RowCounts["source"]);
+    }
+
+    /// <summary>
     ///     The README files and the provenance record credit Open English WordNet and its license.
     /// </summary>
     [Fact]

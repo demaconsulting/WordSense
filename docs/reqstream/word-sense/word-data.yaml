@@ -71,6 +71,7 @@ sections:
               - WordSense-WordData-DataValidator-Consistency
             tests:
               - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
+              - WordSenseBuilder_DataEndToEnd_CommittedData_HasCoarseMapping
               - WordSenseBuilder_DataCommands_Validate_InvalidData_ListsViolations
 
           - id: WordSense-WordData-Attribution
