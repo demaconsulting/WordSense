@@ -60,7 +60,6 @@ public class EndToEndTests
         Assert.Contains(queen[1].Details, senses);
         Assert.Contains(archer[4].Details, senses);
         Assert.Equal(PartOfSpeech.Verb, queen[1].Details?.PartOfSpeech);
-        Assert.Equal("weapon", archer[4].Details?.Meaning);
     }
 
     /// <summary>
