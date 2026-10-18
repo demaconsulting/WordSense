@@ -309,7 +309,7 @@ internal static class Evaluator
     /// <param name="info">The model.</param>
     /// <param name="progress">Receives progress messages.</param>
     /// <param name="cancellationToken">The cancellation token.</param>
-    /// <param name="outcomesFile">When given, receives one line for each scored sentence (set, index, sentence, answered class, confidence) for comparisons between versions.</param>
+    /// <param name="outcomesFile">When given, receives one line for each scored sentence (set, index, gold class, answered class, confidence, correct 1 or 0) for comparisons between versions.</param>
     /// <returns>The measurements.</returns>
     public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken, string? outcomesFile = null)
     {
@@ -413,7 +413,7 @@ internal static class Evaluator
             var rightSense = details is not null && details.PartOfSpeech == expected.Pos && string.Equals(facts.MeaningOf(details), expected.Meaning, StringComparison.Ordinal);
             best += rightSense ? 1 : 0;
             outcomes.Add((actual.Confidence, rightSense));
-            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : facts.LemmaOf(details) + "|" + details.PartOfSpeech + "|" + facts.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture)));
+            outcomesLog?.WriteLine(string.Join('\t', name, outcomes.Count - 1, row.Lemma + "#" + row.Sense, details is null ? "-" : facts.LemmaOf(details) + "|" + details.PartOfSpeech + "|" + facts.MeaningOf(details), actual.Confidence.ToString("F6", CultureInfo.InvariantCulture), rightSense ? "1" : "0"));
             pos += details is not null && details.PartOfSpeech == expected.Pos ? 1 : 0;
             if (expected.Meaning is not null)
             {

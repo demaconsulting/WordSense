@@ -49,18 +49,18 @@ public class ReferenceTokenizerTests
     }
 
     /// <summary>
-    ///     The documented tokens classify as documented: a contraction is unknown, a lexicon word is found.
+    ///     The documented tokens classify as documented: a possessive is analyzed through its stem, a lexicon word is found.
     /// </summary>
     [Fact]
     public async Task ReferenceTokenizer_Tokens_ClassifyAsDocumented()
     {
         using var model = new Basic.BasicWordSenseModel();
 
-        var senses = await model.ClassifyAsync(Tokenize("They didn't record the record."), TestContext.Current.CancellationToken);
+        var senses = await model.ClassifyAsync(Tokenize("They dog's record the record."), TestContext.Current.CancellationToken);
 
         Assert.Equal(6, senses.Length);
-        Assert.Null(senses[1].Details);
-        Assert.Equal(0, senses[1].Confidence);
+        Assert.NotNull(senses[1].Details);
+        Assert.Equal("dog", senses[1].Details!.Lemma);
         Assert.NotNull(senses[2].Details);
     }
 

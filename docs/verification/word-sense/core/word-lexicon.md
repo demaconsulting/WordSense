@@ -39,6 +39,10 @@ All scenarios below pass on every platform and target framework of the CI matrix
 - **Public lookup of forms with a different entry lemma** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseFixedLemmas`):
   `Lookup("wicks")` gives the verb lemma `wick` and never `wicked`, `Lookup("re-signed")` gives the lemma `re-sign` and
   `Lookup("axes")` is found; only the public lookup APIs are used.
+- **Possessives and facts** (`Lookup_PossessiveOfKnownWord_AddsPossessiveFeature`,
+  `Lookup_StoredContractionOrUnknownStem_IsNotPossessive`, `Lookup_Fact_Holds`, `LexiconFacts_File_CoversEveryCategory`,
+  `Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma`): the fallback, and the fixed fact set in
+  `Fixtures/lexicon-facts.tsv` (irregulars, participles and gerunds, possessives, contractions, lost words).
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an
   upper-case spelling finds the lower-case entry; an unknown word is absent (`Lookup_UnknownWord_IsAbsent`); a null
   word throws (`Lookup_NullWord_Throws`).

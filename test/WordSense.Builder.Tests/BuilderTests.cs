@@ -391,32 +391,6 @@ public sealed class BuilderTests : IDisposable
     }
 
     /// <summary>
-    ///     The committed image answers every spelling of the legacy word table (the table the builder derives from the
-    ///     corpus) with the same parts of speech and meanings in the same order, so the swap of the lexicon changes no answer.
-    /// </summary>
-    [Fact]
-    public void WordSenseBuilder_Words_Committed_MatchesLegacyTable()
-    {
-        var corpus = Path.Combine(FindRepositoryRoot().FullName, "corpus");
-        var legacy = WordsBuilder.Build(corpus);
-        var problems = new List<string>();
-
-        foreach (var (spelling, expected) in legacy)
-        {
-            var actual = DemaConsulting.WordSense.WordLexicon.Lookup(spelling);
-            var left = expected.Select(d => d.PartOfSpeech).ToArray();
-            var right = actual.Select(d => d.PartOfSpeech).ToArray();
-            if (!left.SequenceEqual(right))
-            {
-                problems.Add($"{spelling}: [{string.Join(",", left)}] vs [{string.Join(",", right)}]");
-            }
-        }
-
-        Assert.True(problems.Count == 0, $"{problems.Count} spellings differ from the legacy table: " + string.Join(" | ", problems.Take(30)));
-        Assert.Equal(legacy.Count, DemaConsulting.WordSense.WordLexicon.Count);
-    }
-
-    /// <summary>
     ///     A consistent corpus passes validation.
     /// </summary>
     [Fact]
@@ -717,7 +691,9 @@ public sealed class BuilderTests : IDisposable
     ///     followed by one sense for each dictionary part of speech the labels do not cover; that sense is the form's
     ///     own (the form is its lemma, because a form may have several lemmas) and has no meaning and no respelling.
     ///     The one exception is the closed-list Auxiliary sense, which keeps the lemma of the form (<c>was</c> of
-    ///     <c>be</c>).
+    ///     <c>be</c>). A generated analysis of another entry of the same lemma (a second verb entry <c>bow</c> of
+    ///     <c>bowing</c>, or of another dictionary lemma whose generated form it is, <c>swinge</c> of <c>swinging</c>) or
+    ///     an extra analysis of the form's own lemma may follow.
     /// </summary>
     [Fact]
     public void WordSenseBuilder_Words_Committed_FormSensesFollowLabelsThenOwnExtras()
@@ -740,8 +716,8 @@ public sealed class BuilderTests : IDisposable
                 .Where(p => !covered.Contains(p))
                 .ToList();
             if (trained.Count == 0
-                || extras.Any(d => d.Lemma != form)
-                || !extras.Select(d => d.PartOfSpeech).SequenceEqual(expected))
+                || extras.Any(d => d.Lemma != form && !table.ContainsKey(d.Lemma))
+                || expected.Any(p => extras.All(d => d.PartOfSpeech != p)))
             {
                 problems.Add(form);
             }

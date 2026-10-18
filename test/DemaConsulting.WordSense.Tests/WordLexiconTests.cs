@@ -1,3 +1,4 @@
+// cspell:ignore betaked
 namespace DemaConsulting.WordSense.Tests;
 
 /// <summary>
@@ -45,6 +46,69 @@ public class WordLexiconTests
         Assert.True(WordLexicon.TryLookup(form, out var senses));
 
         Assert.Contains(senses, s => s.Lemma == lemma && s.PartOfSpeech == pos);
+    }
+
+    /// <summary>
+    ///     The word tokens that real books use and that an earlier rebuild of the forms lost (regular inflections that the
+    ///     written forms or the variants of the inflection database had shadowed, and inflections of the hand-written additions)
+    ///     resolve to a sensible analysis.
+    /// </summary>
+    [Theory]
+    [InlineData("alighted", "alight", PartOfSpeech.Verb)]
+    [InlineData("America", "america", PartOfSpeech.Noun)]
+    [InlineData("betakes", "betake", PartOfSpeech.Verb)]
+    [InlineData("brothers", "brother", PartOfSpeech.Noun)]
+    [InlineData("Brothers", "brother", PartOfSpeech.Noun)]
+    [InlineData("canallers", "canaller", PartOfSpeech.Noun)]
+    [InlineData("complices", "complice", PartOfSpeech.Noun)]
+    [InlineData("dismasted", "dismast", PartOfSpeech.Verb)]
+    [InlineData("ditchers", "ditcher", PartOfSpeech.Noun)]
+    [InlineData("England", "england", PartOfSpeech.Noun)]
+    [InlineData("flingers", "flinger", PartOfSpeech.Noun)]
+    [InlineData("France", "france", PartOfSpeech.Noun)]
+    [InlineData("gnawings", "gnawing", PartOfSpeech.Noun)]
+    [InlineData("hundreds", "hundred", PartOfSpeech.Noun)]
+    [InlineData("Hundreds", "hundred", PartOfSpeech.Noun)]
+    [InlineData("Hursts", "hurst", PartOfSpeech.Noun)]
+    [InlineData("India", "india", PartOfSpeech.Noun)]
+    [InlineData("Ireland", "ireland", PartOfSpeech.Noun)]
+    [InlineData("Irishmen", "irishman", PartOfSpeech.Noun)]
+    [InlineData("millions", "million", PartOfSpeech.Noun)]
+    [InlineData("oaks", "oak", PartOfSpeech.Noun)]
+    [InlineData("others", "other", PartOfSpeech.Noun)]
+    [InlineData("Others", "other", PartOfSpeech.Noun)]
+    [InlineData("Pandects", "pandect", PartOfSpeech.Noun)]
+    [InlineData("peas", "pea", PartOfSpeech.Noun)]
+    [InlineData("peetweets", "peetweet", PartOfSpeech.Noun)]
+    [InlineData("raffs", "raff", PartOfSpeech.Noun)]
+    [InlineData("Scotland", "scotland", PartOfSpeech.Noun)]
+    [InlineData("spilled", "spill", PartOfSpeech.Verb)]
+    [InlineData("squirrels", "squirrel", PartOfSpeech.Noun)]
+    [InlineData("thousands", "thousand", PartOfSpeech.Noun)]
+    [InlineData("tossed", "toss", PartOfSpeech.Verb)]
+    [InlineData("unplastered", "unplaster", PartOfSpeech.Verb)]
+    [InlineData("waked", "wake", PartOfSpeech.Verb)]
+    [InlineData("whaleman", "whaleman", PartOfSpeech.Noun)]
+    [InlineData("whalemen", "whaleman", PartOfSpeech.Noun)]
+    public void WordLexicon_Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma(string form, string lemma, PartOfSpeech pos)
+    {
+        var senses = WordLexicon.Lookup(form);
+
+        Assert.Contains(senses, s => string.Equals(s.Lemma, lemma, StringComparison.OrdinalIgnoreCase) && s.PartOfSpeech == pos);
+    }
+
+    /// <summary>
+    ///     A regular form that is only an alternative to a listed irregular form stays valid (brothers next to brethren,
+    ///     tossed next to tost) while the wrong regular forms of the real irregular words stay absent.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_RegularFormNextToListedAlternative_StaysRegularFormOfIrregularWordsStayAbsent()
+    {
+        Assert.NotEmpty(WordLexicon.Lookup("brothers"));
+        Assert.NotEmpty(WordLexicon.Lookup("brethren"));
+        Assert.NotEmpty(WordLexicon.Lookup("spilt"));
+        Assert.Empty(WordLexicon.Lookup("childs"));
+        Assert.Empty(WordLexicon.Lookup("betaked"));
     }
 
     /// <summary>
@@ -219,7 +283,37 @@ public class WordLexiconTests
     }
 
     /// <summary>
-    ///     A word that is not in the lexicon has no analysis.
+    ///     A possessive of a known word is analyzed through its stem with the possessive feature, for both apostrophes.
+    /// </summary>
+    [Theory]
+    [InlineData("dog's", "Number=Sing+Poss=Yes")]
+    [InlineData("dog\u2019s", "Number=Sing+Poss=Yes")]
+    [InlineData("dogs'", "Number=Plur+Poss=Yes")]
+    [InlineData("dogs\u2019", "Number=Plur+Poss=Yes")]
+    public void WordLexicon_Lookup_PossessiveOfKnownWord_AddsPossessiveFeature(string word, string features)
+    {
+        var senses = WordLexicon.Lookup(word);
+
+        Assert.NotEmpty(senses);
+        Assert.All(senses, s => Assert.Contains("Poss=Yes", s.Features, StringComparison.Ordinal));
+        Assert.Contains(senses, s => s.Lemma == "dog" && s.PartOfSpeech == PartOfSpeech.Noun && s.Features == features);
+    }
+
+    /// <summary>
+    ///     A stored contraction wins over the possessive fallback, and a possessive of an unknown word stays unknown.
+    /// </summary>
+    [Fact]
+    public void WordLexicon_Lookup_StoredContractionOrUnknownStem_IsNotPossessive()
+    {
+        Assert.DoesNotContain(WordLexicon.Lookup("let's"), s => s.Features.Contains("Poss=Yes", StringComparison.Ordinal));
+        Assert.Contains(WordLexicon.Lookup("don't"), s => s.Features.Contains("Contraction=Yes", StringComparison.Ordinal));
+        Assert.Empty(WordLexicon.Lookup("zzqxjw's"));
+        Assert.Empty(WordLexicon.Lookup("'s"));
+        Assert.Empty(WordLexicon.Lookup("a'b's"));
+    }
+
+    /// <summary>
+    ///     A word that the dictionary does not know stays absent.
     /// </summary>
     [Fact]
     public void WordLexicon_Lookup_UnknownWord_IsAbsent()

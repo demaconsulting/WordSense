@@ -33,6 +33,34 @@ sections:
                   - WordSenseBuilder_Image_Spellings_AreSortedByUtf8Bytes
                   - WordSenseBuilder_Image_Find_ReturnsOwnIndex
 
+              - id: WordSense-Core-WordLexicon-Possessives
+                title: >-
+                  WordLexicon shall, when a possessive spelling (a word plus 's, or a plural word plus a closing
+                  apostrophe, with a straight or typographic apostrophe) is not stored but its stem is known, return the
+                  analyses of the stem with the possessive feature added to their features, and shall keep contractions
+                  a closed list of stored words.
+                tags: [unit]
+                justification: |
+                  A possessive is a regular, open-ended pattern; the 's is a separate token by the tokenizer
+                  contract, so the fallback only serves callers that look up whole spellings.
+                tests:
+                  - WordLexicon_Lookup_PossessiveOfKnownWord_AddsPossessiveFeature
+                  - WordLexicon_Lookup_StoredContractionOrUnknownStem_IsNotPossessive
+
+              - id: WordSense-Core-WordLexicon-Facts
+                title: >-
+                  WordLexicon shall resolve the linguistic facts of a fixed test set derived from dictionary sources
+                  (irregular forms, participles and gerunds, possessives, contractions and words an earlier rebuild
+                  lost) to the lemma, part of speech and features the set lists.
+                tags: [unit]
+                justification: |
+                  The facts are independent of any evaluation sentence, so they guard the lexicon without rewarding
+                  tuning to a score.
+                tests:
+                  - WordLexicon_Lookup_Fact_Holds
+                  - LexiconFacts_File_CoversEveryCategory
+                  - WordLexicon_Lookup_FormsLostByEarlierRebuild_ResolveToTheirLemma
+
               - id: WordSense-Core-WordLexicon-Complete
                 title: >-
                   WordLexicon shall hold every word of the dictionary the library is built from, including the

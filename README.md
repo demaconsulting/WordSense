@@ -90,7 +90,7 @@ his       Determiner   1.00
 bow       Noun         0.78  bow#weapon
 at        Preposition  1.00
 a         Determiner   1.00
-deer      Noun         1.00
+deer      Noun         0.50
 so        Conjunction  0.61
 we        Pronoun      1.00
 will      Auxiliary    1.00
@@ -105,7 +105,7 @@ Output with the `MiniLM` model:
 ```text
 The       Determiner   1.00
 hunter    Noun         1.00
-fired     Verb         1.00
+fired     Verb         0.50
 an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
@@ -113,7 +113,7 @@ his       Determiner   1.00
 bow       Noun         1.00  bow#weapon
 at        Preposition  0.50
 a         Determiner   1.00
-deer      Noun         1.00
+deer      Noun         0.50
 so        Adverb       0.17
 we        Pronoun      1.00
 will      Verb         0.50
@@ -128,7 +128,7 @@ Output with the `BertBaseCased` model:
 ```text
 The       Determiner   1.00
 hunter    Noun         1.00
-fired     Verb         1.00
+fired     Verb         0.50
 an        Determiner   1.00
 arrow     Noun         1.00
 from      Preposition  1.00
@@ -136,7 +136,7 @@ his       Determiner   1.00
 bow       Noun         1.00  bow#weapon
 at        Preposition  0.50
 a         Determiner   1.00
-deer      Noun         1.00
+deer      Noun         0.50
 so        Adverb       0.17
 we        Pronoun      1.00
 will      Verb         0.50
@@ -160,7 +160,7 @@ Tokenize the text yourself, one sentence per call: punctuation is a token of its
 <!-- model-table:begin -->
 | Model | Holdout best sense | Real-text best sense | Part of speech (holdout / real) | Pronunciation (holdout / real) | Download | Weights / table | RAM | Latency per sentence | First use (model + word table) | Download needed |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Basic | 91.17% | 85.49% | 92.20% / 90.28% | 90.32% / 87.71% | none | 83 KiB | 21 MiB | 0.03 ms | 22 ms + 170 ms | no |
+| Basic | 91.23% | 85.20% | 92.31% / 90.13% | 90.26% / 87.41% | none | 87 KiB | 21 MiB | 0.05 ms | 36 ms + 64 ms | no |
 | MiniLM | 96.91% | 92.60% | 97.25% / 95.36% | 96.46% / 94.45% | 22 MiB | 1,129 KiB | 64 MiB | 1.84 ms | 388 ms + 201 ms | yes |
 | BERT base cased | 99.05% | 97.39% | 99.23% / 98.40% | 99.25% / 98.20% | 104 MiB | 2,241 KiB | 150 MiB | 8.55 ms | 521 ms + 173 ms | yes |
 <!-- model-table:end -->
@@ -190,6 +190,12 @@ readme. The corpus itself is not shipped in the packages, only the derived table
 recorded with its source, license and URL in `corpus/provenance/`.
 
 - **Moby Part-of-Speech List** (Grady Ward): public domain; the embedded dictionary is derived from it.
+- **Automatically Generated Inflection Database (AGID)** (Kevin Atkinson, 2000-2016,
+  <http://wordlist.aspell.net/other-dicts/>): permission notice (use, copy, modify and distribute without fee with the
+  notice kept). It is read at build time as one source of irregular inflected forms; the derived rows are embedded.
+  AGID carries the **Princeton WordNet 1.6** notice (Copyright 1997 by Princeton University) and the **UK Advanced
+  Cryptics Dictionary** notice (Copyright (c) J Ross Beresford 1993-1999); the full texts are in
+  `corpus/lexicon/LICENSE-AGID.txt` and apply to the embedded forms.
 - **Project-authored words, senses, meanings, respellings and sentences**: MIT License.
 - **Tatoeba sentences** (<https://tatoeba.org>): CC0 1.0, or CC BY 2.0 FR with the contributor recorded.
 - **Wikipedia and Wiktionary example sentences** (<https://www.wikipedia.org>, <https://www.wiktionary.org>):

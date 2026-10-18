@@ -14,6 +14,8 @@ input-files:
   - docs/design/word-sense/word-data/data-schema.md
   - docs/design/word-sense/word-data/data-layout.md
   - docs/design/word-sense/word-data/oewn-importer.md
+  - docs/design/word-sense/word-data/form-generator.md
+  - docs/design/word-sense/word-data/form-auditor.md
   - docs/design/word-sense/word-data/data-validator.md
   - docs/design/word-sense/basic.md
   - docs/design/word-sense/basic/basic-word-sense-model.md

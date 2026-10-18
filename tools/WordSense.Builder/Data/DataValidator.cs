@@ -646,15 +646,26 @@ internal sealed partial class DataValidator
             }
         }
 
-        // Only an entry of the Open English WordNet source must have a sense; a project entry may be a bare lemma and
-        // part of speech that exists only so that forms can refer to it
-        foreach (var entry in Rows("entry").Where(r => r[6] == OewnSource && !positions.ContainsKey(r[0])))
+        // An entry without a sense exists only for a closed-class word (pronoun, preposition, conjunction, interjection,
+        // determiner, auxiliary) or because a class or a carried analysis of the earlier table refers to it; any other
+        // lemma and part of speech without senses is a surface-only analysis of the form table, never an entry
+        var referenced = Rows("class_entry").Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
+        foreach (var row in Rows("form").Where(r => r[2].Length > 0 && r[8] == CarriedProvenance))
         {
-            Report(Path.Combine(_root, "entry"), 0, "sense", $"Entry '{entry[0]}' has no sense.");
+            referenced.Add(row[2]);
+        }
+
+        foreach (var entry in Rows("entry").Where(r => !positions.ContainsKey(r[0]) && !ClosedClass.Contains(r[2]) && !referenced.Contains(r[0])))
+        {
+            Report(Path.Combine(_root, "entry"), 0, "sense", $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
         }
     }
 
-    private const string OewnSource = "oewn";
+    private const string CarriedProvenance = "carried";
+
+    private static readonly HashSet<string> ClosedClass = new(["u", "p", "c", "i", "d", "x"], StringComparer.Ordinal);
+
+    private static readonly HashSet<string> SurfaceProvenance = new(["moby_reverse", "rule", "rule_variant", "agid", "irregular_list", "hand", "llm"], StringComparer.Ordinal);
 
     // ---- forms ----
 
@@ -666,6 +677,7 @@ internal sealed partial class DataValidator
         }
 
         var entryPos = Index(Rows("entry"), 0, 2);
+        var entryKeys = Rows("entry").Select(r => (r[1], r[2])).ToHashSet();
         var classKind = Index(Rows("coarse_class"), 0, 4);
         var classPos = Index(Rows("coarse_class"), 0, 3);
         var ranks = new Dictionary<string, HashSet<int>>(StringComparer.Ordinal);
@@ -684,6 +696,12 @@ internal sealed partial class DataValidator
                 if (row[5] is not ("0" or "1"))
                 {
                     Report(file.Path, i + 2, "form", $"{row[0]}#{row[1]}: reviewed must be 0 or 1.");
+                }
+
+                var problem = FormProblem(row, entryKeys);
+                if (problem is not null)
+                {
+                    Report(file.Path, i + 2, "form", $"{row[0]}#{row[1]}: {problem}");
                 }
             }
         }
@@ -718,6 +736,12 @@ internal sealed partial class DataValidator
                     continue;
                 }
 
+                if (entry.Length == 0)
+                {
+                    Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: a surface-only analysis has no entry and cannot have a scope.");
+                    continue;
+                }
+
                 if (classKind.GetValueOrDefault(row[2]) == "unmapped")
                 {
                     Report(file.Path, i + 2, "form_sense_scope", $"{row[0]}#{row[1]}: class '{row[2]}' is an unmapped bucket and cannot be an answer.");
@@ -728,6 +752,34 @@ internal sealed partial class DataValidator
                 }
             }
         }
+    }
+
+    private static string? FormProblem(string[] row, HashSet<(string, string)> entryKeys)
+    {
+        var hasEntry = row[2].Length > 0;
+        var hasLemma = row[6].Length > 0;
+        var hasPos = row[7].Length > 0;
+        if (hasEntry)
+        {
+            return hasLemma || hasPos ? "An entry-backed analysis must not have a lemma or a part of speech of its own." : null;
+        }
+
+        if (!hasLemma || !hasPos)
+        {
+            return "A surface-only analysis needs a lemma and a part of speech (or an entry).";
+        }
+
+        if (entryKeys.Contains((row[6], row[7])))
+        {
+            return $"The lemma '{row[6]}' with part of speech '{row[7]}' is an entry; the analysis must use the entry.";
+        }
+
+        if (row[5] != "0")
+        {
+            return "A surface-only analysis must be unreviewed.";
+        }
+
+        return SurfaceProvenance.Contains(row[8]) ? null : $"Provenance '{row[8]}' is not allowed for a surface-only analysis.";
     }
 
     private static bool PosCompatible(string entryPos, string synsetPos) =>

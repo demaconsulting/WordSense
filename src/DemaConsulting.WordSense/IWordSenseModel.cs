@@ -222,7 +222,7 @@ public interface IWordSenseModel : IDisposable
     ///     <para>
     ///     Tokenization is the caller's job, and the models expect the tokens that the evaluation used: split off
     ///     punctuation (<c>"race"</c>, <c>"."</c>), but keep a contraction (<c>"don't"</c>) and a hyphenated word
-    ///     (<c>"re-read"</c>) as one token. Such a token has no lexicon entry, so it is unknown (null, confidence 0),
+    ///     (<c>"re-read"</c>) as one token. A contraction is a stored word; a hyphenated token has no lexicon entry, so it is unknown (null, confidence 0),
     ///     but the surrounding words are still classified. Classify one sentence per call: the Basic model splits the
     ///     list at the tokens <c>"."</c>, <c>"!"</c> and <c>"?"</c>, while an encoder model reads the whole list as one
     ///     text, of at most 128 word pieces by default (512 at most); a longer list is handled per word from a window
@@ -290,7 +290,7 @@ public interface IWordSenseModel : IDisposable
 ///     </para>
 ///     <para>
 ///     <see cref="Details"/> is null in exactly two cases. First, the word is unknown: it has no entry in the lexicon
-///     (a number written with digits, punctuation, most proper nouns, a misspelling, a contraction such as <c>don't</c>);
+///     (a number written with digits, punctuation, most proper nouns, a misspelling);
 ///     every model does this. Second, an encoder model (MiniLM, BertBaseCased) could not score a word that has several
 ///     senses and trained weights, because the encoder produced no vector for the word. This does not occur in
 ///     practice, but the API allows it. In both cases <see cref="Confidence"/> is 0. Every other

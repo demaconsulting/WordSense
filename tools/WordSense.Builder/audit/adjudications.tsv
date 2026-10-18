@@ -1,0 +1,170 @@
+# Adjudications of the audit-forms oracle disagreements. Columns: spelling, lemma, part-of-speech letter, verdict (valid or invalid), note.
+# The oracle (LemmInflect) does not know many rare words and compounds; a disagreement is adjudicated by reading the row. A row not listed here stays an error.
+# Adjudicated for the sample of seed 20240601 with 300 rows per stratum; a changed sample needs the new disagreements adjudicated.
+albedoes	albedo	n	valid	listed variant plural
+congoes	congo	n	valid	listed variant plural
+dildoes	dildo	n	valid	listed variant plural
+guacharoes	guacharo	n	valid	listed variant plural
+Guaranies	Guarani	n	valid	plural of guarani
+Guaranies	guarani	n	valid	plural of guarani
+guaranies	guarani	n	valid	plural of guarani
+Molochs	Moloch	n	valid	regular plural of a capitalized noun
+mongoes	mongo	n	valid	listed variant plural
+Noes	No	n	valid	plural of no
+PIES	PI	n	valid	upper-case form of a regular plural
+PIES	pi	n	valid	upper-case form of a regular plural
+pies	pi	n	valid	plural of the Greek letter
+pronunciamentoes	pronunciamento	n	valid	listed variant plural
+rajes	raj	n	valid	listed variant plural
+trades	trad	n	valid	listed by the inflection database; the spelling is also the plural of trade
+veges	veg	n	valid	listed variant plural
+abomasa	abomasum	n	valid	Latin plural
+abying	abye	v	valid	archaic verb, regular gerund
+agapai	agape	n	valid	Greek plural
+aircraftmen	aircraftman	n	valid	compound of man
+airwomen	airwoman	n	valid	compound of woman
+antipasti	antipasto	n	valid	Italian plural
+aviatrices	aviatrix	n	valid	Latin plural
+backwoodsmen	backwoodsman	n	valid	compound of man
+batmen	batman	n	valid	compound of man
+bellmen	bellman	n	valid	compound of man
+bode	bide	v	valid	archaic past
+bondswomen	bondswoman	n	valid	compound of woman
+boogeymen	boogeyman	n	valid	compound of man
+cabmen	cabman	n	valid	compound of man
+coastguardsmen	coastguardsman	n	valid	compound of man
+committeemen	committeeman	n	valid	compound of man
+congresswomen	congresswoman	n	valid	compound of woman
+countermen	counterman	n	valid	compound of man
+cragsmen	cragsman	n	valid	compound of man
+diptera	dipteron	n	valid	Greek plural
+earthmen	earthman	n	valid	compound of man
+eyne	eye	n	valid	archaic plural
+ferrymen	ferryman	n	valid	compound of man
+fieldsmen	fieldsman	n	valid	compound of man
+freedwomen	freedwoman	n	valid	compound of woman
+freemen	freeman	n	valid	compound of man
+gasmen	gasman	n	valid	compound of man
+groomsmen	groomsman	n	valid	compound of man
+handwritten	handwrite	v	valid	participle
+harvestmen	harvestman	n	valid	compound of man
+headsmen	headsman	n	valid	compound of man
+hodmen	hodman	n	valid	compound of man
+jazzmen	jazzman	n	valid	compound of man
+kindling	kindling	n	invalid	mass noun; the plural is not a form of its own
+landsmen	landsman	n	valid	compound of man
+leatherleaves	leatherleaf	n	valid	plural in ves
+lightermen	lighterman	n	valid	compound of man
+linkmen	linkman	n	valid	compound of man
+liverleaves	liverleaf	n	valid	plural in ves
+merchantmen	merchantman	n	valid	compound of man
+mesdames	madam	n	valid	French plural
+needlewomen	needlewoman	n	valid	compound of woman
+pintadoes	pintado	n	valid	plural in oes
+placemen	placeman	n	valid	compound of man
+plainsmen	plainsman	n	valid	compound of man
+pointsmen	pointsman	n	valid	compound of man
+pubes	pubes	n	valid	plural of pubis, listed form
+revers	revers	n	valid	plural equals singular
+sawbones	sawbones	n	valid	plural equals singular
+seedmen	seedman	n	valid	compound of man
+seedsmen	seedsman	n	valid	compound of man
+signalmen	signalman	n	valid	compound of man
+stablemen	stableman	n	valid	compound of man
+stockmen	stockman	n	valid	compound of man
+subspecies	subspecies	n	valid	plural equals singular
+superheroes	superhero	n	valid	plural in oes
+switchmen	switchman	n	valid	compound of man
+synechiae	synechia	n	valid	Latin plural
+townswomen	townswoman	n	valid	compound of woman
+trenchermen	trencherman	n	valid	compound of man
+warehousemen	warehouseman	n	valid	compound of man
+washermen	washerman	n	valid	compound of man
+washwomen	washwoman	n	valid	compound of woman
+yachtswomen	yachtswoman	n	valid	compound of woman
+caryatides	caryatid	n	valid	Greek plural
+freest	free	r	valid	superlative
+ginzoes	ginzo	n	valid	plural in oes
+obsequies	obsequy	n	valid	plural in ies
+passadoes	passado	n	valid	plural in oes
+vaguer	vague	a	valid	comparative
+vaguest	vague	a	valid	superlative
+bilboes	bilbo	n	valid	plural in oes
+corantoes	coranto	n	valid	plural in oes
+ficoes	fico	n	valid	plural in oes
+gambadoes	gambado	n	valid	plural in oes
+goodwives	goodwife	n	valid	plural in ves
+pistolling	pistol	v	valid	doubled l of British spelling
+squegged	squeg	v	valid	regular doubling
+squibbed	squib	v	valid	regular doubling
+subechoes	subecho	n	valid	plural in oes
+FTPING	FTP	v	valid	upper-case gerund of an abbreviation verb
+airbusses	airbus	n	valid	variant plural
+arras	arras	n	valid	plural equals singular
+autobusses	autobus	n	valid	variant plural
+bagsful	bagful	n	valid	variant plural
+bogied	bogey	v	valid	variant past
+canvassed	canvas	v	valid	variant past
+celli	cello	n	valid	Italian plural
+daydreamt	daydream	v	valid	variant past
+ringed	ring	v	valid	past of the verb to ring about
+shoon	shoe	n	valid	archaic plural
+tittuped	tittup	v	valid	variant past
+unmaned	unman	v	invalid	the past is unmanned
+# Second sample (seed 99), a check of the first adjudication on rows it had not seen
+artillerymen	artilleryman	n	valid	compound of man
+atlantes	atlas	n	valid	Greek plural
+bagmen	bagman	n	valid	compound of man
+bargemen	bargeman	n	valid	compound of man
+bondwomen	bondwoman	n	valid	compound of woman
+clanswomen	clanswoman	n	valid	compound of woman
+coachmen	coachman	n	valid	compound of man
+committeewomen	committeewoman	n	valid	compound of woman
+cracksmen	cracksman	n	valid	compound of man
+crowfeet	crowfoot	n	valid	irregular plural
+dairywomen	dairywoman	n	valid	compound of woman
+deliverymen	deliveryman	n	valid	compound of man
+deskmen	deskman	n	valid	compound of man
+hath	have	v	valid	archaic third person
+headmen	headman	n	valid	compound of man
+hotelmen	hotelman	n	valid	compound of man
+housebroke	housebreak	v	valid	past
+housemen	houseman	n	valid	compound of man
+husbandmen	husbandman	n	valid	compound of man
+keratoses	keratosis	n	valid	Greek plural
+laundrywomen	laundrywoman	n	valid	compound of woman
+lawmen	lawman	n	valid	compound of man
+lettermen	letterman	n	valid	compound of man
+liegemen	liegeman	n	valid	compound of man
+obloquies	obloquy	n	valid	plural in ies
+penmen	penman	n	valid	compound of man
+poultrymen	poultryman	n	valid	compound of man
+steelmen	steelman	n	valid	compound of man
+tabes	tabis	n	invalid	tabes is a word of its own, not the plural of tabis
+tradeswomen	tradeswoman	n	valid	compound of woman
+triceratops	triceratops	n	valid	plural equals singular
+vestrymen	vestryman	n	valid	compound of man
+barricadoes	barricado	n	valid	plural in oes
+behooves	behoof	n	invalid	the verb behooves; behoof is a noun without that plural
+broadleaves	broadleaf	n	valid	plural in ves
+buckoes	bucko	n	valid	plural in oes
+cataloes	catalo	n	valid	plural in oes
+cruzadoes	cruzado	n	valid	plural in oes
+fungoes	fungo	n	valid	plural in oes
+hocussed	hocus	v	valid	regular doubling
+nonheroes	nonhero	n	valid	plural in oes
+redying	redye	v	valid	regular gerund
+reequipping	reequip	v	valid	regular doubling
+squegging	squeg	v	valid	regular doubling
+craps	crap	n	valid	plural
+anecdota	anecdote	n	valid	Latin plural variant
+canvassing	canvas	v	valid	variant gerund
+dessertspoonsful	dessertspoonful	n	valid	variant plural
+formating	format	v	invalid	the gerund is formatting
+gallowses	gallows	n	valid	variant plural
+handwrit	handwrite	v	valid	archaic participle
+nonplusses	nonplus	v	valid	variant third person
+redialled	redial	v	valid	British past
+rubati	rubato	n	valid	Italian plural
+skyed	sky	v	valid	variant past
+tost	toss	v	valid	archaic past

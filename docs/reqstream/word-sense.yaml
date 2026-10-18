@@ -56,6 +56,7 @@ sections:
           - WordSense-WordData-Import
           - WordSense-WordData-Validation
           - WordSense-WordData-Attribution
+          - WordSense-WordData-Forms
         tests:
           - WordSenseBuilder_DataEndToEnd_CommittedData_IsValid
           - WordSenseBuilder_DataCommands_ImportThenValidate_Succeeds

@@ -9,12 +9,14 @@ senses, synsets, glosses, examples, relations and pronunciations of English, imp
 2025 (OEWN, CC BY 4.0), and the build-time code that creates and checks them. It is data only. No shipped package reads
 it yet; a later change builds the embedded lexicon from it.
 
-The subsystem contains four units:
+The subsystem contains six units:
 
 - **DataSchema**: loads `data/schema.yaml` (with its small YAML-subset reader) and rewrites its file split line.
 - **DataLayout**: the file of a lemma (`FileFor`), the UTF-8 byte order, and the deterministic table writer.
 - **OewnImporter**: the one-time import of the pinned OEWN file into the tables.
 - **DataValidator**: validates the committed tables against the schema.
+- **FormGenerator**: generates the inflected-form table, keeping a generated row only when it is corroborated.
+- **FormAuditor**: the seeded stratified audit of the generated rows (`audit-forms`), the regression gate.
 
 The builder commands `import-oewn` and `validate-data` are the entry points. Boundaries: the subsystem does not change
 the corpus, the lexicon blob or any package; the existing builder commands are untouched.

@@ -41,6 +41,18 @@ internal static class ImageCompiler
 
     private const int MaxText = 255;
     private const int MaxIndex = 65535;
+    private const string SurfacePrefix = "\u0001surface\t";
+
+    // The key of the entry an analysis uses: its entry id, or a synthesized key of lemma and part of speech
+    private static string EntryKey(string[] formRow) =>
+        formRow[2].Length > 0 ? formRow[2] : $"{SurfacePrefix}{formRow[6]}\t{formRow[7]}";
+
+    // The image entry of a surface-only analysis: its synthesized key stands for the id
+    private static string[] SurfaceEntry(string key)
+    {
+        var parts = key[SurfacePrefix.Length..].Split('\t');
+        return [key, parts[0], parts[1], "0", "1", "1", string.Empty];
+    }
 
     private static readonly string[] HashedTables = ["entry", "form", "form_sense_scope", "coarse_class"];
 
@@ -113,14 +125,23 @@ internal static class ImageCompiler
             list.Sort();
         }
 
-        // Forms by spelling, in rank order; the used entries sorted by lemma bytes, part of speech and id
+        // Forms by spelling, in rank order; the used entries sorted by lemma bytes, part of speech and id. A surface-only
+        // analysis (no entry id) gets one synthesized image entry for its lemma and part of speech.
         var bySpelling = formRows
             .GroupBy(r => r[0], StringComparer.Ordinal)
             .OrderBy(g => g.Key, utf8)
             .Select(g => (Spelling: g.Key, Rows: g.OrderBy(r => int.Parse(r[1], System.Globalization.CultureInfo.InvariantCulture)).ToList()))
             .ToList();
-        var usedEntries = formRows.Select(r => r[2]).Distinct(StringComparer.Ordinal)
-            .Select(id => entryRows.TryGetValue(id, out var e) ? e : throw new InvalidDataException($"form: the entry '{id}' does not exist."))
+        var usedEntries = formRows.Select(EntryKey).Distinct(StringComparer.Ordinal)
+            .Select(key =>
+            {
+                if (key.StartsWith(SurfacePrefix, StringComparison.Ordinal))
+                {
+                    return SurfaceEntry(key);
+                }
+
+                return entryRows.TryGetValue(key, out var e) ? e : throw new InvalidDataException($"form: the entry '{key}' does not exist.");
+            })
             .OrderBy(e => e[1], utf8).ThenBy(e => (int)DataTables.PosOf(e[2])).ThenBy(e => e[0], utf8)
             .ToList();
         var entryIndex = new Dictionary<string, int>(StringComparer.Ordinal);
@@ -154,7 +175,7 @@ internal static class ImageCompiler
             analysisCounts[s] = (byte)spellingRows.Count;
             foreach (var row in spellingRows)
             {
-                var entry = entryIndex[row[2]];
+                var entry = entryIndex[EntryKey(row)];
                 entryForms[entry].Add(s);
                 var scope = 0;
                 if (scopeBy.TryGetValue((spelling, int.Parse(row[1], System.Globalization.CultureInfo.InvariantCulture)), out var classes))
