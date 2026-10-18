@@ -49,7 +49,7 @@ inference share one implementation of the feature computation.
   data hash and a content hash in the header. Equal data always gives equal decompressed sections.
 - `FormBootstrap`: the one-off derivation of the authoritative `form` and `form_sense_scope` tables from the earlier
   generated word table (kept for provenance; the 19 wrong-lemma forms of the old table are fixed there).
-- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma bridge and the tests compare the image
+- `WordsBuilder` and `LegacyWord`: the legacy word table that the trained-lemma mapping and the tests compare the image
   against (removed with the weights re-key).
 - `WeightsTrainer`, `LogisticTrainer`, `ModelTrainer` and `WeightsBlobWriter`: train the per-lemma classifiers from
   pooled encoder vectors and serialize the weights blob (`WSX2`).

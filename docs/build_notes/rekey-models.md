@@ -2,7 +2,7 @@
 
 The shipped model data is keyed by class id (`lemma#label`, the `SenseId` of the public API) instead of by lemma, part
 of speech and pronunciation meaning. Each model resolves its class ids to word image indexes at load and fails loudly
-when the data and the image disagree (strict load). The legacy bridge in the core package (`WordLexicon.View`,
+when the data and the image disagree (strict load). The legacy lookup of weights in the core package (`WordLexicon.View`,
 `MeaningOf`, `TrainedLemmaOf`, `ClassesOf`) is removed.
 
 ## Accuracy

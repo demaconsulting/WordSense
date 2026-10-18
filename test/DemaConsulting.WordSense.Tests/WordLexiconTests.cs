@@ -128,7 +128,7 @@ public class WordLexiconTests
     ///     (<c>axes</c> is a form of the entry <c>ax</c>), and the 19 wrong-lemma forms point at the right entry.
     /// </summary>
     [Fact]
-    public void WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas()
+    public void WordLexicon_Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseFixedLemmas()
     {
         var wicks = WordLexicon.Lookup("wicks");
         Assert.Contains(wicks, s => s.Lemma == "wick" && s.PartOfSpeech == PartOfSpeech.Verb);

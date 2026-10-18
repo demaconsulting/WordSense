@@ -82,9 +82,40 @@ public sealed class ModelFileCheckTests : IDisposable
         Assert.False(ModelFileCheck.IsLfsPointer(real));
     }
 
-    private static ModelSpec Spec(long length = 0) => new(
+    /// <summary>
+    ///     A complete folder whose files match their pinned digests is returned without any exception.
+    /// </summary>
+    [Fact]
+    public void ModelFileCheck_Require_ValidFolder_ReturnsFolderWithoutThrowing()
+    {
+        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
+        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
+        var spec = Spec(length: 4, model: HashOf("model.bin"), vocab: HashOf("vocab.txt"));
+
+        Assert.Equal(_folder.FullName, ModelFileCheck.Require(spec, _folder.FullName));
+        Assert.Equal(_folder.FullName, ModelFileCheck.Require(spec, _folder.FullName));
+    }
+
+    /// <summary>
+    ///     A folder whose file has the pinned size but the wrong digest fails the test instead of throwing a cache error.
+    /// </summary>
+    [Fact]
+    public void ModelFileCheck_Require_CorruptFolder_FailsWithDigestMessage()
+    {
+        File.WriteAllBytes(Path.Combine(_folder.FullName, "model.bin"), [1, 2, 3, 4]);
+        File.WriteAllBytes(Path.Combine(_folder.FullName, "vocab.txt"), [5, 6, 7, 8]);
+
+        var error = Record.Exception(() => ModelFileCheck.Require(Spec(length: 4), _folder.FullName));
+
+        Assert.NotNull(error);
+        Assert.Contains("SHA-256", error.Message, StringComparison.Ordinal);
+    }
+
+    private string HashOf(string name) => ModelDownloader.HashFile(Path.Combine(_folder.FullName, name));
+
+    private static ModelSpec Spec(long length = 0, string? model = null, string? vocab = null) => new(
         "test",
-        [new ModelFile("model.bin", new string('0', 64), length), new ModelFile("vocab.txt", new string('0', 64), length)],
+        [new ModelFile("model.bin", model ?? new string('0', 64), length), new ModelFile("vocab.txt", vocab ?? new string('0', 64), length)],
         "model.bin",
         "vocab.txt",
         true,

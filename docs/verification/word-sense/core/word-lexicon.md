@@ -36,7 +36,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   `Lookup_ReadForms_SplitBySense`, `Lookup_RestrictedForm_NeverOffersExcludedSense`): `bowed` has only the bend verb
   (plus an untrained own extra of the form), `bows` its labeled senses, `reads` the present verb, and `read` the past
   and present verbs; no sense outside the labels appears.
-- **Public lookup of forms with a different entry lemma** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseBridgeAndFixedLemmas`):
+- **Public lookup of forms with a different entry lemma** (`Lookup_FormsWithTrainedLemmaDifferentFromEntry_UseFixedLemmas`):
   `Lookup("wicks")` gives the verb lemma `wick` and never `wicked`, `Lookup("re-signed")` gives the lemma `re-sign` and
   `Lookup("axes")` is found; only the public lookup APIs are used.
 - **Forms are lower case** (`FormsOf_Forms_AreLowerCase`) and **case folds** (`Lookup_Case_FoldsToLowerCase`): an

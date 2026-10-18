@@ -16,7 +16,7 @@ internal static class ModelFileCheck
 {
     private const string PointerPrefix = "version https://git-lfs";
 
-    private static readonly ConcurrentDictionary<string, string?> Verified = new(StringComparer.OrdinalIgnoreCase);
+    private static readonly ConcurrentDictionary<string, string> Verified = new(StringComparer.OrdinalIgnoreCase);
 
     /// <summary>
     ///     Looks for a reason why a folder cannot serve as the model folder.
@@ -63,8 +63,9 @@ internal static class ModelFileCheck
         }
 
         // A file of the right size that fails its digest is damaged, not absent: fail instead of skipping
-        var corrupt = Verified.GetOrAdd(directory, d => FindCorrupt(spec, d));
-        if (corrupt is not null)
+        // ConcurrentDictionary rejects null values, so an empty string stands for "no corruption found"
+        var corrupt = Verified.GetOrAdd(directory, d => FindCorrupt(spec, d) ?? string.Empty);
+        if (corrupt.Length > 0)
         {
             Assert.Fail(corrupt);
         }
