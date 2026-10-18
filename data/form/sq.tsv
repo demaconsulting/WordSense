@@ -1,0 +1,516 @@
+spelling	rank	entry_id	features	source_id	reviewed
+sq	0	dema-sq-n	Number=Sing	dema	0
+sqd	0	dema-sqd-n	Number=Sing	dema	0
+sqds	0	dema-sqd-n	Number=Plur	dema	0
+sqq	0	dema-sqq-n	Number=Sing	dema	0
+sqqs	0	dema-sqq-n	Number=Plur	dema	0
+squab	0	oewn-squab-n	Number=Sing	dema	0
+squab	1	oewn-squab-a	Degree=Pos	dema	0
+squabber	0	oewn-squab-a	Degree=Cmp	dema	0
+squabbest	0	oewn-squab-a	Degree=Sup	dema	0
+squabbier	0	dema-squabbier-a	Degree=Pos	dema	0
+squabbierly	0	dema-squabbier-r		dema	0
+squabbiest	0	dema-squabbiest-a	Degree=Pos	dema	0
+squabbiestly	0	dema-squabbiest-r		dema	0
+squabbily	0	dema-squabby-r		dema	0
+squabbiness	0	dema-squabby-n	Number=Plur	dema	0
+squabble	0	oewn-squabble-v	VerbForm=Inf	dema	0
+squabble	1	oewn-squabble-n	Number=Sing	dema	0
+squabbled	0	oewn-squabble-v	Tense=Past	dema	0
+squabbler	0	oewn-squabbler-n	Number=Sing	dema	0
+squabblers	0	oewn-squabble-n	Number=Plur	dema	0
+squabbles	0	oewn-squabble-v	Person=3+Tense=Pres	dema	0
+squabbles	1	oewn-squabble-n	Number=Plur	dema	0
+squabbling	0	oewn-squabble-v	VerbForm=Ger	dema	0
+squabblingly	0	dema-squabblingly-r	Degree=Pos	dema	0
+squabby	0	oewn-squabby-a	Degree=Pos	dema	0
+squably	0	dema-squab-r		dema	0
+squabness	0	oewn-squab-n	Number=Plur	dema	0
+squabs	0	oewn-squab-n	Number=Plur	dema	0
+squacco	0	dema-squacco-n	Number=Sing	dema	0
+squaccoes	0	dema-squacco-n	Number=Plur	dema	0
+squaccos	0	dema-squacco-n	Number=Plur	dema	0
+squad	0	oewn-squad-n	Number=Sing	dema	0
+squadded	0	dema-squadded-v	VerbForm=Inf	dema	0
+squaddeded	0	dema-squadded-v	Tense=Past	dema	0
+squaddeder	0	dema-squadded-n	Number=Plur	dema	0
+squaddeders	0	dema-squadded-n	Number=Plur	dema	0
+squaddeding	0	dema-squadded-v	VerbForm=Ger	dema	0
+squaddedingly	0	dema-squadded-r		dema	0
+squaddeds	0	dema-squadded-v	Person=3+Tense=Pres	dema	0
+squadder	0	dema-squadder-n	Number=Sing	dema	0
+squadders	0	dema-squadder-n	Number=Plur	dema	0
+squadding	0	dema-squadding-v	VerbForm=Inf	dema	0
+squaddinged	0	dema-squadding-v	Tense=Past	dema	0
+squaddinger	0	dema-squadding-n	Number=Plur	dema	0
+squaddingers	0	dema-squadding-n	Number=Plur	dema	0
+squaddinging	0	dema-squadding-v	VerbForm=Ger	dema	0
+squaddingingly	0	dema-squadding-r		dema	0
+squaddings	0	dema-squadding-v	Person=3+Tense=Pres	dema	0
+squadron	0	oewn-squadron-n	Number=Sing	dema	0
+squadrons	0	oewn-squadron-n	Number=Plur	dema	0
+squads	0	oewn-squad-n	Number=Plur	dema	0
+squalene	0	dema-squalene-n	Number=Sing	dema	0
+squalenes	0	dema-squalene-n	Number=Plur	dema	0
+squalid	0	oewn-squalid-a	Degree=Pos	dema	0
+squalider	0	oewn-squalid-a	Degree=Cmp	dema	0
+squalidest	0	oewn-squalid-a	Degree=Sup	dema	0
+squalidities	0	dema-squalidity-n	Number=Plur	dema	0
+squalidity	0	dema-squalidity-n	Number=Sing	dema	0
+squalidly	0	oewn-squalidly-r	Degree=Pos	dema	0
+squalidness	0	oewn-squalidness-n	Number=Sing	dema	0
+squalidnesses	0	oewn-squalidness-n	Number=Plur	dema	0
+squall	0	oewn-squall-n	Number=Sing	dema	0
+squall	1	oewn-squall-v	VerbForm=Inf	dema	0
+squalled	0	oewn-squall-v	Tense=Past	dema	0
+squaller	0	dema-squaller-n	Number=Sing	dema	0
+squallers	0	oewn-squall-n	Number=Plur	dema	0
+squallier	0	dema-squallier-a	Degree=Pos	dema	0
+squallierly	0	dema-squallier-r		dema	0
+squalliest	0	dema-squalliest-a	Degree=Pos	dema	0
+squalliestly	0	dema-squalliest-r		dema	0
+squalling	0	oewn-squall-v	VerbForm=Ger	dema	0
+squallingly	0	dema-squall-r		dema	0
+squalls	0	oewn-squall-n	Number=Plur	dema	0
+squalls	1	oewn-squall-v	Person=3+Tense=Pres	dema	0
+squally	0	oewn-squally-a	Degree=Pos	dema	0
+squalor	0	oewn-squalor-n	Number=Sing	dema	0
+squalors	0	oewn-squalor-n	Number=Plur	dema	0
+squama	0	oewn-squama-n	Number=Sing	dema	0
+squamae	0	dema-squamae-n	Number=Sing	dema	0
+squamaes	0	dema-squamae-n	Number=Plur	dema	0
+squamas	0	oewn-squama-n	Number=Plur	dema	0
+squamate	0	dema-squamate-a	Degree=Pos	dema	0
+squamately	0	dema-squamate-r		dema	0
+squamateness	0	dema-squamate-n	Number=Plur	dema	0
+squamation	0	dema-squamation-n	Number=Sing	dema	0
+squamations	0	dema-squamation-n	Number=Plur	dema	0
+squamosal	0	dema-squamosal-n	Number=Sing	dema	0
+squamosal	1	dema-squamosal-a	Degree=Pos	dema	0
+squamosally	0	dema-squamosal-r		dema	0
+squamosalness	0	dema-squamosal-n	Number=Plur	dema	0
+squamosals	0	dema-squamosal-n	Number=Plur	dema	0
+squamosely	0	dema-squamosely-r	Degree=Pos	dema	0
+squamoseness	0	dema-squamoseness-n	Number=Sing	dema	0
+squamosenesses	0	dema-squamoseness-n	Number=Plur	dema	0
+squamous	0	dema-squamous-a	Degree=Pos	dema	0
+squamously	0	dema-squamously-r	Degree=Pos	dema	0
+squamousness	0	dema-squamousness-n	Number=Sing	dema	0
+squamousnesses	0	dema-squamousness-n	Number=Plur	dema	0
+squamulose	0	oewn-squamulose-a	Degree=Pos	dema	0
+squamulosely	0	dema-squamulose-r		dema	0
+squamuloseness	0	dema-squamulose-n	Number=Plur	dema	0
+squander	0	oewn-squander-v	VerbForm=Inf	dema	0
+squander	1	dema-squander-n	Number=Sing	dema	0
+squandered	0	oewn-squander-v	Tense=Past	dema	0
+squandering	0	oewn-squander-v	VerbForm=Ger	dema	0
+squanderingly	0	dema-squander-r		dema	0
+squanders	0	oewn-squander-v	Person=3+Tense=Pres	dema	0
+squanders	1	dema-squander-n	Number=Plur	dema	0
+squarable	0	dema-squarable-a	Degree=Pos	dema	0
+squarableness	0	dema-squarable-n	Number=Plur	dema	0
+squarably	0	dema-squarable-r		dema	0
+square	0	oewn-square-n	Number=Sing	dema	0
+square	1	oewn-square-a	Degree=Pos	dema	0
+square	2	oewn-square-v	VerbForm=Inf	dema	0
+square	3	oewn-square-r	Degree=Pos	dema	0
+squared	0	oewn-square-v	Tense=Past	dema	0
+squareface	0	dema-squareface-n	Number=Sing	dema	0
+squarefaces	0	dema-squareface-n	Number=Plur	dema	0
+squarehead	0	dema-squarehead-n	Number=Sing	dema	0
+squareheads	0	dema-squarehead-n	Number=Plur	dema	0
+squarelike	0	dema-squarelike-a	Degree=Pos	dema	0
+squarelikely	0	dema-squarelike-r		dema	0
+squarelikeness	0	dema-squarelike-n	Number=Plur	dema	0
+squarely	0	oewn-squarely-r	Degree=Pos	dema	0
+squareness	0	oewn-squareness-n	Number=Sing	dema	0
+squarenesses	0	oewn-squareness-n	Number=Plur	dema	0
+squarer	0	dema-squarer-n	Number=Sing	dema	0
+squarers	0	oewn-square-n	Number=Plur	dema	0
+squares	0	oewn-square-n	Number=Plur	dema	0
+squares	1	oewn-square-v	Person=3+Tense=Pres	dema	0
+squarest	0	oewn-square-a	Degree=Sup	dema	0
+squarest	1	oewn-square-r	Degree=Sup	dema	0
+squaretail	0	oewn-squaretail-n	Number=Sing	dema	0
+squaretails	0	oewn-squaretail-n	Number=Plur	dema	0
+squaretoed	0	dema-squaretoed-a	Degree=Pos	dema	0
+squaretoed	1	dema-squaretoed-v	VerbForm=Inf	dema	0
+squaretoeded	0	dema-squaretoed-v	Tense=Past	dema	0
+squaretoeder	0	dema-squaretoed-n	Number=Plur	dema	0
+squaretoeders	0	dema-squaretoed-n	Number=Plur	dema	0
+squaretoeding	0	dema-squaretoed-v	VerbForm=Ger	dema	0
+squaretoedingly	0	dema-squaretoed-r		dema	0
+squaretoedly	0	dema-squaretoed-r		dema	0
+squaretoedness	0	dema-squaretoed-n	Number=Plur	dema	0
+squaretoeds	0	dema-squaretoed-v	Person=3+Tense=Pres	dema	0
+squaring	0	oewn-square-v	VerbForm=Ger	dema	0
+squaringly	0	oewn-square-r		dema	0
+squarish	0	oewn-squarish-a	Degree=Pos	dema	0
+squarishly	0	dema-squarishly-r	Degree=Pos	dema	0
+squarishness	0	dema-squarish-n	Number=Plur	dema	0
+squarrose	0	dema-squarrose-a	Degree=Pos	dema	0
+squarrosely	0	dema-squarrosely-r	Degree=Pos	dema	0
+squarroseness	0	dema-squarrose-n	Number=Plur	dema	0
+squash	0	oewn-squash-v	VerbForm=Inf	dema	0
+squash	1	oewn-squash-n	Number=Sing	dema	0
+squashed	0	oewn-squash-v	Tense=Past	dema	0
+squasher	0	oewn-squash-n	Number=Plur	dema	0
+squashers	0	oewn-squash-n	Number=Plur	dema	0
+squashes	0	oewn-squash-v	Person=3+Tense=Pres	dema	0
+squashes	1	oewn-squash-n	Number=Plur	dema	0
+squashier	0	dema-squashier-a	Degree=Pos	dema	0
+squashierly	0	dema-squashier-r		dema	0
+squashiest	0	dema-squashiest-a	Degree=Pos	dema	0
+squashiestly	0	dema-squashiest-r		dema	0
+squashily	0	dema-squashily-r	Degree=Pos	dema	0
+squashiness	0	dema-squashiness-n	Number=Sing	dema	0
+squashinesses	0	dema-squashiness-n	Number=Plur	dema	0
+squashing	0	oewn-squash-v	VerbForm=Ger	dema	0
+squashingly	0	dema-squash-r		dema	0
+squashy	0	oewn-squashy-a	Degree=Pos	dema	0
+squassation	0	dema-squassation-n	Number=Sing	dema	0
+squassations	0	dema-squassation-n	Number=Plur	dema	0
+squat	0	oewn-squat-v	VerbForm=Inf	dema	0
+squat	1	oewn-squat-a	Degree=Pos	dema	0
+squat	2	oewn-squat-n	Number=Sing	dema	0
+squatly	0	dema-squatly-r	Degree=Pos	dema	0
+squatness	0	oewn-squatness-n	Number=Sing	dema	0
+squatnesses	0	oewn-squatness-n	Number=Plur	dema	0
+squats	0	oewn-squat-v	Person=3+Tense=Pres	dema	0
+squats	1	oewn-squat-n	Number=Plur	dema	0
+squatted	0	oewn-squat-v	Tense=Past	dema	0
+squatter	0	oewn-squatter-n	Number=Sing	dema	0
+squatterdom	0	dema-squatterdom-n	Number=Sing	dema	0
+squatterdoms	0	dema-squatterdom-n	Number=Plur	dema	0
+squatters	0	oewn-squat-n	Number=Plur	dema	0
+squattest	0	oewn-squat-a	Degree=Sup	dema	0
+squattily	0	dema-squattily-r	Degree=Pos	dema	0
+squattiness	0	oewn-squattiness-n	Number=Sing	dema	0
+squattinesses	0	oewn-squattiness-n	Number=Plur	dema	0
+squatting	0	dema-squatting-v	VerbForm=Inf	dema	0
+squattingly	0	dema-squat-r		dema	0
+squattocracies	0	dema-squattocracy-n	Number=Plur	dema	0
+squattocracy	0	dema-squattocracy-n	Number=Sing	dema	0
+squaw	0	oewn-squaw-n	Number=Sing	dema	0
+squawbush	0	oewn-squawbush-n	Number=Sing	dema	0
+squawbushes	0	oewn-squawbush-n	Number=Plur	dema	0
+squawfish	0	dema-squawfish-n	Number=Sing	dema	0
+squawfishes	0	dema-squawfish-n	Number=Plur	dema	0
+squawk	0	oewn-squawk-n	Number=Sing	dema	0
+squawk	1	oewn-squawk-v	VerbForm=Inf	dema	0
+squawked	0	oewn-squawk-v	Tense=Past	dema	0
+squawker	0	oewn-squawker-n	Number=Sing	dema	0
+squawkers	0	oewn-squawk-n	Number=Plur	dema	0
+squawking	0	oewn-squawk-v	VerbForm=Ger	dema	0
+squawkingly	0	dema-squawk-r		dema	0
+squawks	0	oewn-squawk-n	Number=Plur	dema	0
+squawks	1	oewn-squawk-v	Person=3+Tense=Pres	dema	0
+squawroot	0	oewn-squawroot-n	Number=Sing	dema	0
+squawroots	0	oewn-squawroot-n	Number=Plur	dema	0
+squaws	0	oewn-squaw-n	Number=Plur	dema	0
+squeak	0	oewn-squeak-n	Number=Sing	dema	0
+squeak	1	oewn-squeak-v	VerbForm=Inf	dema	0
+squeaked	0	oewn-squeak-v	Tense=Past	dema	0
+squeaker	0	oewn-squeaker-n	Number=Sing	dema	0
+squeakers	0	oewn-squeak-n	Number=Plur	dema	0
+squeakied	0	dema-squeaky-v	Tense=Past	dema	0
+squeakier	0	dema-squeakier-a	Degree=Pos	dema	0
+squeakierly	0	dema-squeakier-r		dema	0
+squeakiers	0	dema-squeaky-n	Number=Plur	dema	0
+squeakies	0	dema-squeaky-v	Person=3+Tense=Pres	dema	0
+squeakiest	0	dema-squeakiest-a	Degree=Pos	dema	0
+squeakiestly	0	dema-squeakiest-r		dema	0
+squeakily	0	dema-squeaky-r		dema	0
+squeakiness	0	dema-squeaky-n	Number=Plur	dema	0
+squeaking	0	oewn-squeak-v	VerbForm=Ger	dema	0
+squeakingly	0	dema-squeakingly-r	Degree=Pos	dema	0
+squeaks	0	oewn-squeak-n	Number=Plur	dema	0
+squeaks	1	oewn-squeak-v	Person=3+Tense=Pres	dema	0
+squeaky	0	oewn-squeaky-a	Degree=Pos	dema	0
+squeaky	1	dema-squeaky-v	VerbForm=Inf	dema	0
+squeakying	0	dema-squeaky-v	VerbForm=Ger	dema	0
+squeal	0	oewn-squeal-n	Number=Sing	dema	0
+squeal	1	oewn-squeal-v	VerbForm=Inf	dema	0
+squealed	0	oewn-squeal-v	Tense=Past	dema	0
+squealer	0	oewn-squealer-n	Number=Sing	dema	0
+squealers	0	oewn-squeal-n	Number=Plur	dema	0
+squealing	0	oewn-squeal-v	VerbForm=Ger	dema	0
+squealingly	0	dema-squeal-r		dema	0
+squeals	0	oewn-squeal-n	Number=Plur	dema	0
+squeals	1	oewn-squeal-v	Person=3+Tense=Pres	dema	0
+squeamish	0	oewn-squeamish-a	Degree=Pos	dema	0
+squeamishly	0	oewn-squeamishly-r	Degree=Pos	dema	0
+squeamishness	0	oewn-squeamishness-n	Number=Sing	dema	0
+squeamishnesses	0	oewn-squeamishness-n	Number=Plur	dema	0
+squeegee	0	oewn-squeegee-n	Number=Sing	dema	0
+squeegee	1	oewn-squeegee-v	VerbForm=Inf	dema	0
+squeegeed	0	dema-squeegeed-v	VerbForm=Inf	dema	0
+squeegeeded	0	dema-squeegeed-v	Tense=Past	dema	0
+squeegeeder	0	dema-squeegeed-n	Number=Plur	dema	0
+squeegeeders	0	dema-squeegeed-n	Number=Plur	dema	0
+squeegeeding	0	dema-squeegeed-v	VerbForm=Ger	dema	0
+squeegeedingly	0	dema-squeegeed-r		dema	0
+squeegeeds	0	dema-squeegeed-v	Person=3+Tense=Pres	dema	0
+squeegeeing	0	dema-squeegeeing-v	VerbForm=Inf	dema	0
+squeegeeingly	0	dema-squeegee-r		dema	0
+squeegeer	0	oewn-squeegee-n	Number=Plur	dema	0
+squeegeers	0	oewn-squeegee-n	Number=Plur	dema	0
+squeegees	0	oewn-squeegee-n	Number=Plur	dema	0
+squeegees	1	oewn-squeegee-v	Person=3+Tense=Pres	dema	0
+squeeze	0	oewn-squeeze-v	VerbForm=Inf	dema	0
+squeeze	1	oewn-squeeze-n	Number=Sing	dema	0
+squeezed	0	oewn-squeeze-v	Tense=Past	dema	0
+squeezer	0	oewn-squeezer-n	Number=Sing	dema	0
+squeezers	0	oewn-squeeze-n	Number=Plur	dema	0
+squeezes	0	oewn-squeeze-v	Person=3+Tense=Pres	dema	0
+squeezes	1	oewn-squeeze-n	Number=Plur	dema	0
+squeezing	0	oewn-squeeze-v	VerbForm=Ger	dema	0
+squeezingly	0	dema-squeezingly-r	Degree=Pos	dema	0
+squeg	0	dema-squeg-v	VerbForm=Inf	dema	0
+squegged	0	dema-squegged-v	VerbForm=Inf	dema	0
+squegger	0	dema-squeg-n	Number=Plur	dema	0
+squeggers	0	dema-squeg-n	Number=Plur	dema	0
+squegging	0	dema-squegging-v	VerbForm=Inf	dema	0
+squeggingly	0	dema-squeg-r		dema	0
+squegs	0	dema-squeg-v	Person=3+Tense=Pres	dema	0
+squelch	0	oewn-squelch-v	VerbForm=Inf	dema	0
+squelch	1	oewn-squelch-n	Number=Sing	dema	0
+squelched	0	oewn-squelch-v	Tense=Past	dema	0
+squelcher	0	oewn-squelcher-n	Number=Sing	dema	0
+squelchers	0	oewn-squelch-n	Number=Plur	dema	0
+squelches	0	oewn-squelch-v	Person=3+Tense=Pres	dema	0
+squelches	1	oewn-squelch-n	Number=Plur	dema	0
+squelching	0	oewn-squelch-v	VerbForm=Ger	dema	0
+squelchingly	0	dema-squelchingly-r	Degree=Pos	dema	0
+squelchingness	0	dema-squelchingness-n	Number=Sing	dema	0
+squelchingnesses	0	dema-squelchingness-n	Number=Plur	dema	0
+squelchs	0	oewn-squelch-v	Person=3+Tense=Pres	dema	0
+squelchs	1	oewn-squelch-n	Number=Plur	dema	0
+squeteague	0	dema-squeteague-n	Number=Sing	dema	0
+squeteagues	0	dema-squeteague-n	Number=Plur	dema	0
+squib	0	oewn-squib-n	Number=Sing	dema	0
+squib	1	dema-squib-v	VerbForm=Inf	dema	0
+squibbed	0	dema-squibbed-v	VerbForm=Inf	dema	0
+squibber	0	oewn-squib-n	Number=Plur	dema	0
+squibbers	0	oewn-squib-n	Number=Plur	dema	0
+squibbing	0	dema-squibbing-v	VerbForm=Inf	dema	0
+squibbingly	0	dema-squib-r		dema	0
+squibs	0	oewn-squib-n	Number=Plur	dema	0
+squibs	1	dema-squib-v	Person=3+Tense=Pres	dema	0
+squid	0	oewn-squid-n	Number=Sing	dema	0
+squid	1	dema-squid-v	VerbForm=Inf	dema	0
+squidded	0	dema-squid-v	Tense=Past	dema	0
+squidder	0	oewn-squid-n	Number=Plur	dema	0
+squidders	0	oewn-squid-n	Number=Plur	dema	0
+squidding	0	dema-squid-v	VerbForm=Ger	dema	0
+squiddingly	0	dema-squid-r		dema	0
+squids	0	oewn-squid-n	Number=Plur	dema	0
+squids	1	dema-squid-v	Person=3+Tense=Pres	dema	0
+squiffer	0	dema-squiffer-n	Number=Sing	dema	0
+squiffers	0	dema-squiffer-n	Number=Plur	dema	0
+squiffier	0	oewn-squiffy-a	Degree=Cmp	dema	0
+squiffiest	0	oewn-squiffy-a	Degree=Sup	dema	0
+squiffily	0	dema-squiffy-r		dema	0
+squiffiness	0	dema-squiffy-n	Number=Plur	dema	0
+squiffy	0	oewn-squiffy-a	Degree=Pos	dema	0
+squiggle	0	oewn-squiggle-n	Number=Sing	dema	0
+squiggle	1	dema-squiggle-v	VerbForm=Inf	dema	0
+squiggled	0	dema-squiggled-v	VerbForm=Inf	dema	0
+squiggler	0	oewn-squiggle-n	Number=Plur	dema	0
+squigglers	0	oewn-squiggle-n	Number=Plur	dema	0
+squiggles	0	oewn-squiggle-n	Number=Plur	dema	0
+squiggles	1	dema-squiggle-v	Person=3+Tense=Pres	dema	0
+squigglier	0	oewn-squiggly-a	Degree=Cmp	dema	0
+squiggliest	0	oewn-squiggly-a	Degree=Sup	dema	0
+squiggling	0	dema-squiggling-v	VerbForm=Inf	dema	0
+squigglingly	0	dema-squiggle-r		dema	0
+squiggly	0	oewn-squiggly-a	Degree=Pos	dema	0
+squilgee	0	dema-squilgee-n	Number=Sing	dema	0
+squilgeed	0	dema-squilgeed-v	VerbForm=Inf	dema	0
+squilgeeded	0	dema-squilgeed-v	Tense=Past	dema	0
+squilgeeder	0	dema-squilgeed-n	Number=Plur	dema	0
+squilgeeders	0	dema-squilgeed-n	Number=Plur	dema	0
+squilgeeding	0	dema-squilgeed-v	VerbForm=Ger	dema	0
+squilgeedingly	0	dema-squilgeed-r		dema	0
+squilgeeds	0	dema-squilgeed-v	Person=3+Tense=Pres	dema	0
+squilgeeing	0	dema-squilgeeing-v	VerbForm=Inf	dema	0
+squilgeeinged	0	dema-squilgeeing-v	Tense=Past	dema	0
+squilgeeinger	0	dema-squilgeeing-n	Number=Plur	dema	0
+squilgeeingers	0	dema-squilgeeing-n	Number=Plur	dema	0
+squilgeeinging	0	dema-squilgeeing-v	VerbForm=Ger	dema	0
+squilgeeingingly	0	dema-squilgeeing-r		dema	0
+squilgeeings	0	dema-squilgeeing-v	Person=3+Tense=Pres	dema	0
+squilgees	0	dema-squilgee-n	Number=Plur	dema	0
+squill	0	oewn-squill-n	Number=Sing	dema	0
+squilla	0	oewn-squilla-n	Number=Sing	dema	0
+squillagee	0	dema-squillagee-n	Number=Sing	dema	0
+squillagee	1	dema-squillagee-v	VerbForm=Inf	dema	0
+squillageed	0	dema-squillageed-v	VerbForm=Inf	dema	0
+squillageeded	0	dema-squillageed-v	Tense=Past	dema	0
+squillageeder	0	dema-squillageed-n	Number=Plur	dema	0
+squillageeders	0	dema-squillageed-n	Number=Plur	dema	0
+squillageeding	0	dema-squillageed-v	VerbForm=Ger	dema	0
+squillageedingly	0	dema-squillageed-r		dema	0
+squillageeds	0	dema-squillageed-v	Person=3+Tense=Pres	dema	0
+squillageeing	0	dema-squillageeing-v	VerbForm=Inf	dema	0
+squillageeingly	0	dema-squillagee-r		dema	0
+squillageer	0	dema-squillagee-n	Number=Plur	dema	0
+squillageers	0	dema-squillagee-n	Number=Plur	dema	0
+squillagees	0	dema-squillagee-n	Number=Plur	dema	0
+squillagees	1	dema-squillagee-v	Person=3+Tense=Pres	dema	0
+squillas	0	oewn-squilla-n	Number=Plur	dema	0
+squillgee	0	dema-squillgee-n	Number=Sing	dema	0
+squillgee	1	dema-squillgee-v	VerbForm=Inf	dema	0
+squillgeed	0	dema-squillgeed-v	VerbForm=Inf	dema	0
+squillgeeded	0	dema-squillgeed-v	Tense=Past	dema	0
+squillgeeder	0	dema-squillgeed-n	Number=Plur	dema	0
+squillgeeders	0	dema-squillgeed-n	Number=Plur	dema	0
+squillgeeding	0	dema-squillgeed-v	VerbForm=Ger	dema	0
+squillgeedingly	0	dema-squillgeed-r		dema	0
+squillgeeds	0	dema-squillgeed-v	Person=3+Tense=Pres	dema	0
+squillgeeing	0	dema-squillgeeing-v	VerbForm=Inf	dema	0
+squillgeeingly	0	dema-squillgee-r		dema	0
+squillgeer	0	dema-squillgee-n	Number=Plur	dema	0
+squillgeers	0	dema-squillgee-n	Number=Plur	dema	0
+squillgees	0	dema-squillgee-n	Number=Plur	dema	0
+squillgees	1	dema-squillgee-v	Person=3+Tense=Pres	dema	0
+squills	0	oewn-squill-n	Number=Plur	dema	0
+squinancies	0	dema-squinancy-n	Number=Plur	dema	0
+squinancy	0	dema-squinancy-n	Number=Sing	dema	0
+squinch	0	oewn-squinch-n	Number=Sing	dema	0
+squinches	0	oewn-squinch-n	Number=Plur	dema	0
+squinchs	0	oewn-squinch-n	Number=Plur	dema	0
+squinnied	0	dema-squinnied-v	VerbForm=Inf	dema	0
+squinnier	0	dema-squinny-n	Number=Plur	dema	0
+squinniers	0	dema-squinny-n	Number=Plur	dema	0
+squinnies	0	dema-squinnies-v	VerbForm=Inf	dema	0
+squinny	0	dema-squinny-v	VerbForm=Inf	dema	0
+squinny	1	dema-squinny-n	Number=Sing	dema	0
+squinnying	0	dema-squinnying-v	VerbForm=Inf	dema	0
+squint	0	oewn-squint-v	VerbForm=Inf	dema	0
+squint	1	oewn-squint-n	Number=Sing	dema	0
+squint	2	oewn-squint-a	Degree=Pos	dema	0
+squinted	0	oewn-squint-v	Tense=Past	dema	0
+squinter	0	oewn-squinter-n	Number=Sing	dema	0
+squinters	0	oewn-squint-n	Number=Plur	dema	0
+squintest	0	oewn-squint-a	Degree=Sup	dema	0
+squintier	0	oewn-squinty-a	Degree=Cmp	dema	0
+squintiest	0	oewn-squinty-a	Degree=Sup	dema	0
+squintily	0	dema-squinty-r		dema	0
+squintiness	0	dema-squinty-n	Number=Plur	dema	0
+squinting	0	oewn-squint-v	VerbForm=Ger	dema	0
+squintingly	0	dema-squintingly-r	Degree=Pos	dema	0
+squintingness	0	dema-squintingness-n	Number=Sing	dema	0
+squintingnesses	0	dema-squintingness-n	Number=Plur	dema	0
+squintly	0	dema-squint-r		dema	0
+squintness	0	oewn-squint-n	Number=Plur	dema	0
+squints	0	oewn-squint-v	Person=3+Tense=Pres	dema	0
+squints	1	oewn-squint-n	Number=Plur	dema	0
+squinty	0	oewn-squinty-a	Degree=Pos	dema	0
+squirarchal	0	dema-squirarchal-a	Degree=Pos	dema	0
+squirarchally	0	dema-squirarchal-r		dema	0
+squirarchalness	0	dema-squirarchal-n	Number=Plur	dema	0
+squirarchical	0	dema-squirarchical-a	Degree=Pos	dema	0
+squirarchically	0	dema-squirarchical-r		dema	0
+squirarchies	0	dema-squirarchies-n	Number=Sing	dema	0
+squirarchy	0	dema-squirarchy-n	Number=Sing	dema	0
+squire	0	oewn-squire-n	Number=Sing	dema	0
+squire	1	oewn-squire-v	VerbForm=Inf	dema	0
+squirearch	0	dema-squirearch-n	Number=Sing	dema	0
+squirearchal	0	dema-squirearchal-a	Degree=Pos	dema	0
+squirearchally	0	dema-squirearchal-r		dema	0
+squirearchalness	0	dema-squirearchal-n	Number=Plur	dema	0
+squirearches	0	dema-squirearch-n	Number=Plur	dema	0
+squirearchical	0	dema-squirearchical-a	Degree=Pos	dema	0
+squirearchically	0	dema-squirearchical-r		dema	0
+squirearchies	0	dema-squirearchies-n	Number=Sing	dema	0
+squirearchs	0	dema-squirearch-n	Number=Plur	dema	0
+squirearchy	0	oewn-squirearchy-n	Number=Sing	dema	0
+squired	0	oewn-squire-v	Tense=Past	dema	0
+squiredom	0	dema-squiredom-n	Number=Sing	dema	0
+squiredoms	0	dema-squiredom-n	Number=Plur	dema	0
+squireen	0	dema-squireen-n	Number=Sing	dema	0
+squireens	0	dema-squireen-n	Number=Plur	dema	0
+squireless	0	dema-squireless-a	Degree=Pos	dema	0
+squirelessly	0	dema-squireless-r		dema	0
+squirelessness	0	dema-squireless-n	Number=Plur	dema	0
+squirelike	0	dema-squirelike-a	Degree=Pos	dema	0
+squirelikely	0	dema-squirelike-r		dema	0
+squirelikeness	0	dema-squirelike-n	Number=Plur	dema	0
+squireling	0	dema-squireling-n	Number=Sing	dema	0
+squirelings	0	dema-squireling-n	Number=Plur	dema	0
+squirer	0	oewn-squire-n	Number=Plur	dema	0
+squirers	0	oewn-squire-n	Number=Plur	dema	0
+squires	0	oewn-squire-n	Number=Plur	dema	0
+squires	1	oewn-squire-v	Person=3+Tense=Pres	dema	0
+squiring	0	oewn-squire-v	VerbForm=Ger	dema	0
+squiringly	0	dema-squire-r		dema	0
+squirm	0	oewn-squirm-v	VerbForm=Inf	dema	0
+squirm	1	oewn-squirm-n	Number=Sing	dema	0
+squirmed	0	oewn-squirm-v	Tense=Past	dema	0
+squirmer	0	oewn-squirm-n	Number=Plur	dema	0
+squirmers	0	oewn-squirm-n	Number=Plur	dema	0
+squirmier	0	dema-squirmier-a	Degree=Pos	dema	0
+squirmierly	0	dema-squirmier-r		dema	0
+squirmiest	0	dema-squirmiest-a	Degree=Pos	dema	0
+squirmiestly	0	dema-squirmiest-r		dema	0
+squirmily	0	dema-squirmy-r		dema	0
+squirminess	0	dema-squirmy-n	Number=Plur	dema	0
+squirming	0	oewn-squirm-v	VerbForm=Ger	dema	0
+squirmingly	0	dema-squirmingly-r	Degree=Pos	dema	0
+squirms	0	oewn-squirm-v	Person=3+Tense=Pres	dema	0
+squirms	1	oewn-squirm-n	Number=Plur	dema	0
+squirmy	0	dema-squirmy-a	Degree=Pos	dema	0
+squirrel	0	oewn-squirrel-n	Number=Sing	dema	0
+squirreled	0	dema-squirreled-n	Number=Sing	dema	0
+squirreleds	0	dema-squirreled-n	Number=Plur	dema	0
+squirrelfish	0	oewn-squirrelfish-n	Number=Sing	dema	0
+squirrelfishes	0	oewn-squirrelfish-n	Number=Plur	dema	0
+squirreling	0	dema-squirreling-n	Number=Sing	dema	0
+squirrelings	0	dema-squirreling-n	Number=Plur	dema	0
+squirrelish	0	dema-squirrelish-a	Degree=Pos	dema	0
+squirrelishly	0	dema-squirrelish-r		dema	0
+squirrelishness	0	dema-squirrelish-n	Number=Plur	dema	0
+squirrellike	0	dema-squirrellike-a	Degree=Pos	dema	0
+squirrellikely	0	dema-squirrellike-r		dema	0
+squirrellikeness	0	dema-squirrellike-n	Number=Plur	dema	0
+squirrelly	0	dema-squirrelly-a	Degree=Pos	dema	0
+squirrels	0	oewn-squirrel-n	Number=Plur	dema	0
+squirt	0	oewn-squirt-v	VerbForm=Inf	dema	0
+squirt	1	oewn-squirt-n	Number=Sing	dema	0
+squirted	0	oewn-squirt-v	Tense=Past	dema	0
+squirter	0	oewn-squirter-n	Number=Sing	dema	0
+squirters	0	oewn-squirt-n	Number=Plur	dema	0
+squirting	0	oewn-squirt-v	VerbForm=Ger	dema	0
+squirtingly	0	dema-squirtingly-r	Degree=Pos	dema	0
+squirts	0	oewn-squirt-v	Person=3+Tense=Pres	dema	0
+squirts	1	oewn-squirt-n	Number=Plur	dema	0
+squish	0	oewn-squish-v	VerbForm=Inf	dema	0
+squish	1	oewn-squish-n	Number=Sing	dema	0
+squished	0	oewn-squish-v	Tense=Past	dema	0
+squisher	0	oewn-squish-n	Number=Plur	dema	0
+squishers	0	oewn-squish-n	Number=Plur	dema	0
+squishes	0	oewn-squish-v	Person=3+Tense=Pres	dema	0
+squishes	1	oewn-squish-n	Number=Plur	dema	0
+squishier	0	dema-squishier-a	Degree=Pos	dema	0
+squishierly	0	dema-squishier-r		dema	0
+squishiest	0	dema-squishiest-a	Degree=Pos	dema	0
+squishiestly	0	dema-squishiest-r		dema	0
+squishily	0	dema-squishy-r		dema	0
+squishiness	0	dema-squishy-n	Number=Plur	dema	0
+squishing	0	oewn-squish-v	VerbForm=Ger	dema	0
+squishingly	0	dema-squish-r		dema	0
+squishy	0	oewn-squishy-a	Degree=Pos	dema	0
+squit	0	dema-squit-n	Number=Sing	dema	0
+squits	0	dema-squit-n	Number=Plur	dema	0
+squiz	0	dema-squiz-n	Number=Sing	dema	0
+squizes	0	dema-squiz-n	Number=Plur	dema	0
+squshier	0	dema-squshier-a	Degree=Pos	dema	0
+squshierly	0	dema-squshier-r		dema	0
+squshiest	0	dema-squshiest-a	Degree=Pos	dema	0
+squshiestly	0	dema-squshiest-r		dema	0
+squshily	0	dema-squshy-r		dema	0
+squshiness	0	dema-squshy-n	Number=Plur	dema	0
+squshy	0	dema-squshy-a	Degree=Pos	dema	0
+squush	0	dema-squush-n	Number=Sing	dema	0
+squushes	0	dema-squush-n	Number=Plur	dema	0

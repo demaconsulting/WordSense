@@ -1,0 +1,3306 @@
+spelling	rank	entry_id	features	source_id	reviewed
+po	0	dema-po-n	Number=Sing	dema	0
+poaceous	0	dema-poaceous-a	Degree=Pos	dema	0
+poaceously	0	dema-poaceous-r		dema	0
+poaceousness	0	dema-poaceous-n	Number=Plur	dema	0
+poach	0	oewn-poach-v	VerbForm=Inf	dema	0
+poachable	0	dema-poachable-a	Degree=Pos	dema	0
+poachableness	0	dema-poachable-n	Number=Plur	dema	0
+poachably	0	dema-poachable-r		dema	0
+poached	0	oewn-poach-v	Tense=Past	dema	0
+poacher	0	oewn-poacher-n	Number=Sing	dema	0
+poachers	0	dema-poach-n	Number=Plur	dema	0
+poaches	0	oewn-poach-v	Person=3+Tense=Pres	dema	0
+poachier	0	dema-poachier-a	Degree=Pos	dema	0
+poachierly	0	dema-poachier-r		dema	0
+poachiest	0	dema-poachiest-a	Degree=Pos	dema	0
+poachiestly	0	dema-poachiest-r		dema	0
+poachily	0	dema-poachy-r		dema	0
+poachiness	0	dema-poachiness-n	Number=Sing	dema	0
+poachinesses	0	dema-poachiness-n	Number=Plur	dema	0
+poaching	0	oewn-poach-v	VerbForm=Ger	dema	0
+poachingly	0	dema-poach-r		dema	0
+poachs	0	oewn-poach-v	Person=3+Tense=Pres	dema	0
+poachy	0	dema-poachy-a	Degree=Pos	dema	0
+pochade	0	dema-pochade-n	Number=Sing	dema	0
+pochades	0	dema-pochades-n	Number=Sing	dema	0
+pochard	0	oewn-pochard-n	Number=Sing	dema	0
+pochards	0	oewn-pochard-n	Number=Plur	dema	0
+pochette	0	dema-pochette-n	Number=Sing	dema	0
+pochettes	0	dema-pochette-n	Number=Plur	dema	0
+pocill	0	dema-pocill-n	Number=Sing	dema	0
+pocills	0	dema-pocill-n	Number=Plur	dema	0
+pock	0	oewn-pock-n	Number=Sing	dema	0
+pocked	0	oewn-pocked-a	Degree=Pos	dema	0
+pocked	1	dema-pocked-v	VerbForm=Inf	dema	0
+pockeded	0	dema-pocked-v	Tense=Past	dema	0
+pockeder	0	dema-pocked-n	Number=Plur	dema	0
+pockeders	0	dema-pocked-n	Number=Plur	dema	0
+pockeding	0	dema-pocked-v	VerbForm=Ger	dema	0
+pockedingly	0	dema-pocked-r		dema	0
+pockedly	0	dema-pocked-r		dema	0
+pockedness	0	dema-pocked-n	Number=Plur	dema	0
+pockeds	0	dema-pocked-v	Person=3+Tense=Pres	dema	0
+pocket	0	oewn-pocket-n	Number=Sing	dema	0
+pocket	1	oewn-pocket-v	VerbForm=Inf	dema	0
+pocketbook	0	oewn-pocketbook-n	Number=Sing	dema	0
+pocketbooks	0	oewn-pocketbook-n	Number=Plur	dema	0
+pocketed	0	oewn-pocket-v	Tense=Past	dema	0
+pocketer	0	oewn-pocket-n	Number=Plur	dema	0
+pocketers	0	oewn-pocket-n	Number=Plur	dema	0
+pocketful	0	oewn-pocketful-n	Number=Sing	dema	0
+pocketfuls	0	dema-pocketfuls-n	Number=Sing	dema	0
+pocketing	0	dema-pocketing-n	Number=Sing	dema	0
+pocketing	1	dema-pocketing-v	VerbForm=Inf	dema	0
+pocketingly	0	dema-pocket-r		dema	0
+pocketings	0	dema-pocketing-n	Number=Plur	dema	0
+pocketknife	0	oewn-pocketknife-n	Number=Sing	dema	0
+pocketknifes	0	oewn-pocketknife-n	Number=Plur	dema	0
+pockets	0	oewn-pocket-n	Number=Plur	dema	0
+pockets	1	oewn-pocket-v	Person=3+Tense=Pres	dema	0
+pockier	0	dema-pockier-a	Degree=Pos	dema	0
+pockierly	0	dema-pockier-r		dema	0
+pockiest	0	dema-pockiest-a	Degree=Pos	dema	0
+pockiestly	0	dema-pockiest-r		dema	0
+pockily	0	dema-pockily-r	Degree=Pos	dema	0
+pockiness	0	dema-pocky-n	Number=Plur	dema	0
+pockmark	0	oewn-pockmark-n	Number=Sing	dema	0
+pockmark	1	oewn-pockmark-v	VerbForm=Inf	dema	0
+pockmarked	0	oewn-pockmarked-a	Degree=Pos	dema	0
+pockmarked	1	dema-pockmarked-v	VerbForm=Inf	dema	0
+pockmarkedly	0	dema-pockmarked-r		dema	0
+pockmarker	0	oewn-pockmark-n	Number=Plur	dema	0
+pockmarkers	0	oewn-pockmark-n	Number=Plur	dema	0
+pockmarking	0	oewn-pockmark-v	VerbForm=Ger	dema	0
+pockmarkingly	0	dema-pockmark-r		dema	0
+pockmarks	0	oewn-pockmark-n	Number=Plur	dema	0
+pockmarks	1	oewn-pockmark-v	Person=3+Tense=Pres	dema	0
+pocks	0	oewn-pock-n	Number=Plur	dema	0
+pocky	0	dema-pocky-a	Degree=Pos	dema	0
+poco	0	dema-poco-a	Degree=Pos	dema	0
+poco	1	dema-poco-r	Degree=Pos	dema	0
+pococurante	0	dema-pococurante-n	Number=Sing	dema	0
+pococurante	1	dema-pococurante-a	Degree=Pos	dema	0
+pococuranteism	0	dema-pococuranteism-n	Number=Sing	dema	0
+pococuranteisms	0	dema-pococuranteism-n	Number=Plur	dema	0
+pococurantely	0	dema-pococurante-r		dema	0
+pococurantes	0	dema-pococurante-n	Number=Plur	dema	0
+pococurantism	0	dema-pococurantism-n	Number=Sing	dema	0
+pococurantisms	0	dema-pococurantism-n	Number=Plur	dema	0
+pocoer	0	dema-poco-a	Degree=Cmp	dema	0
+pocoer	1	dema-poco-r	Degree=Cmp	dema	0
+pocoest	0	dema-poco-a	Degree=Sup	dema	0
+pocoest	1	dema-poco-r	Degree=Sup	dema	0
+pocoly	0	dema-poco-r		dema	0
+poconess	0	dema-poco-n	Number=Plur	dema	0
+pocosin	0	dema-pocosin-n	Number=Sing	dema	0
+pocosins	0	dema-pocosin-n	Number=Plur	dema	0
+pocul	0	dema-pocul-n	Number=Sing	dema	0
+poculiform	0	dema-poculiform-a	Degree=Pos	dema	0
+poculiformly	0	dema-poculiform-r		dema	0
+poculs	0	dema-pocul-n	Number=Plur	dema	0
+pod	0	oewn-pod-n	Number=Sing	dema	0
+pod	1	oewn-pod-v	VerbForm=Inf	dema	0
+podagra	0	dema-podagra-n	Number=Sing	dema	0
+podagras	0	dema-podagra-n	Number=Plur	dema	0
+podded	0	dema-podded-v	VerbForm=Inf	dema	0
+podder	0	oewn-pod-n	Number=Plur	dema	0
+podders	0	oewn-pod-n	Number=Plur	dema	0
+poddia	0	dema-poddia-n	Number=Sing	dema	0
+poddias	0	dema-poddia-n	Number=Plur	dema	0
+poddies	0	dema-poddies-n	Number=Sing	dema	0
+podding	0	dema-podding-v	VerbForm=Inf	dema	0
+poddingly	0	dema-pod-r		dema	0
+poddock	0	dema-poddock-n	Number=Sing	dema	0
+poddocks	0	dema-poddock-n	Number=Plur	dema	0
+poddy	0	dema-poddy-n	Number=Sing	dema	0
+podesta	0	dema-podesta-n	Number=Sing	dema	0
+podestas	0	dema-podesta-n	Number=Plur	dema	0
+podetium	0	oewn-podetium-n	Number=Sing	dema	0
+podetiums	0	oewn-podetium-n	Number=Plur	dema	0
+podgier	0	dema-podgier-a	Degree=Pos	dema	0
+podgierly	0	dema-podgier-r		dema	0
+podgiest	0	dema-podgiest-a	Degree=Pos	dema	0
+podgiestly	0	dema-podgiest-r		dema	0
+podgily	0	dema-podgily-r	Degree=Pos	dema	0
+podginess	0	dema-podginess-n	Number=Sing	dema	0
+podginesses	0	dema-podginess-n	Number=Plur	dema	0
+podgy	0	oewn-podgy-a	Degree=Pos	dema	0
+podiatries	0	oewn-podiatry-n	Number=Plur	dema	0
+podiatrist	0	oewn-podiatrist-n	Number=Sing	dema	0
+podiatrists	0	oewn-podiatrist-n	Number=Plur	dema	0
+podiatry	0	oewn-podiatry-n	Number=Sing	dema	0
+podite	0	dema-podite-n	Number=Sing	dema	0
+podites	0	dema-podite-n	Number=Plur	dema	0
+poditic	0	dema-poditic-a	Degree=Pos	dema	0
+poditically	0	dema-poditic-r		dema	0
+poditicness	0	dema-poditic-n	Number=Plur	dema	0
+podium	0	oewn-podium-n	Number=Sing	dema	0
+podiums	0	dema-podiums-n	Number=Sing	dema	0
+pododynia	0	dema-pododynia-n	Number=Sing	dema	0
+pododynias	0	dema-pododynia-n	Number=Plur	dema	0
+podomere	0	dema-podomere-n	Number=Sing	dema	0
+podomeres	0	dema-podomere-n	Number=Plur	dema	0
+podophyllic	0	dema-podophyllic-a	Degree=Pos	dema	0
+podophyllically	0	dema-podophyllic-r		dema	0
+podophyllin	0	dema-podophyllin-n	Number=Sing	dema	0
+podophyllins	0	dema-podophyllin-n	Number=Plur	dema	0
+podophyllum	0	dema-podophyllum-n	Number=Sing	dema	0
+podophyllums	0	dema-podophyllum-n	Number=Plur	dema	0
+podotheca	0	dema-podotheca-n	Number=Sing	dema	0
+podothecas	0	dema-podotheca-n	Number=Plur	dema	0
+pods	0	oewn-pod-n	Number=Plur	dema	0
+pods	1	oewn-pod-v	Person=3+Tense=Pres	dema	0
+podsolic	0	dema-podsolic-a	Degree=Pos	dema	0
+podsolically	0	dema-podsolic-r		dema	0
+podsolicness	0	dema-podsolic-n	Number=Plur	dema	0
+podsolization	0	dema-podsolization-n	Number=Sing	dema	0
+podsolizations	0	dema-podsolization-n	Number=Plur	dema	0
+podsolize	0	dema-podsolize-v	VerbForm=Inf	dema	0
+podsolized	0	dema-podsolized-v	VerbForm=Inf	dema	0
+podsolizer	0	dema-podsolize-n	Number=Plur	dema	0
+podsolizers	0	dema-podsolize-n	Number=Plur	dema	0
+podsolizes	0	dema-podsolize-v	Person=3+Tense=Pres	dema	0
+podsolizing	0	dema-podsolizing-v	VerbForm=Inf	dema	0
+podsolizingly	0	dema-podsolize-r		dema	0
+podtia	0	dema-podtia-n	Number=Sing	dema	0
+podtias	0	dema-podtia-n	Number=Plur	dema	0
+podzol	0	oewn-podzol-n	Number=Sing	dema	0
+podzolic	0	dema-podzolic-a	Degree=Pos	dema	0
+podzolically	0	dema-podzolic-r		dema	0
+podzolicness	0	dema-podzolic-n	Number=Plur	dema	0
+podzolization	0	dema-podzolization-n	Number=Sing	dema	0
+podzolizations	0	dema-podzolization-n	Number=Plur	dema	0
+podzolize	0	dema-podzolize-v	VerbForm=Inf	dema	0
+podzolized	0	dema-podzolized-v	VerbForm=Inf	dema	0
+podzolizer	0	dema-podzolize-n	Number=Plur	dema	0
+podzolizers	0	dema-podzolize-n	Number=Plur	dema	0
+podzolizes	0	dema-podzolize-v	Person=3+Tense=Pres	dema	0
+podzolizing	0	dema-podzolizing-v	VerbForm=Inf	dema	0
+podzolizingly	0	dema-podzolize-r		dema	0
+podzols	0	oewn-podzol-n	Number=Plur	dema	0
+poem	0	oewn-poem-n	Number=Sing	dema	0
+poems	0	oewn-poem-n	Number=Plur	dema	0
+poenologies	0	oewn-poenology-n	Number=Plur	dema	0
+poenology	0	oewn-poenology-n	Number=Sing	dema	0
+poesies	0	oewn-poesy-n	Number=Plur	dema	0
+poesy	0	oewn-poesy-n	Number=Sing	dema	0
+poet	0	oewn-poet-n	Number=Sing	dema	0
+poetaster	0	dema-poetaster-n	Number=Sing	dema	0
+poetasteries	0	dema-poetastery-n	Number=Plur	dema	0
+poetastering	0	dema-poetastering-n	Number=Sing	dema	0
+poetasterings	0	dema-poetastering-n	Number=Plur	dema	0
+poetasterism	0	dema-poetasterism-n	Number=Sing	dema	0
+poetasterisms	0	dema-poetasterism-n	Number=Plur	dema	0
+poetasters	0	dema-poetaster-n	Number=Plur	dema	0
+poetastery	0	dema-poetastery-n	Number=Sing	dema	0
+poetastric	0	dema-poetastric-a	Degree=Pos	dema	0
+poetastrical	0	dema-poetastrical-a	Degree=Pos	dema	0
+poetastrically	0	dema-poetastric-r		dema	0
+poetastricness	0	dema-poetastric-n	Number=Plur	dema	0
+poetastries	0	dema-poetastry-n	Number=Plur	dema	0
+poetastry	0	dema-poetastry-n	Number=Sing	dema	0
+poetess	0	oewn-poetess-n	Number=Sing	dema	0
+poetesses	0	oewn-poetess-n	Number=Plur	dema	0
+poetic	0	oewn-poetic-a	Degree=Pos	dema	0
+poetical	0	oewn-poetical-a	Degree=Pos	dema	0
+poetically	0	oewn-poetically-r	Degree=Pos	dema	0
+poeticalness	0	dema-poetical-n	Number=Plur	dema	0
+poeticise	0	dema-poeticise-v	VerbForm=Inf	dema	0
+poeticised	0	dema-poeticised-v	VerbForm=Inf	dema	0
+poeticiser	0	dema-poeticise-n	Number=Plur	dema	0
+poeticisers	0	dema-poeticise-n	Number=Plur	dema	0
+poeticises	0	dema-poeticise-v	Person=3+Tense=Pres	dema	0
+poeticising	0	dema-poeticising-v	VerbForm=Inf	dema	0
+poeticisingly	0	dema-poeticise-r		dema	0
+poeticize	0	dema-poeticize-v	VerbForm=Inf	dema	0
+poeticized	0	dema-poeticized-v	VerbForm=Inf	dema	0
+poeticizer	0	dema-poeticize-n	Number=Plur	dema	0
+poeticizers	0	dema-poeticize-n	Number=Plur	dema	0
+poeticizes	0	dema-poeticize-v	Person=3+Tense=Pres	dema	0
+poeticizing	0	dema-poeticizing-v	VerbForm=Inf	dema	0
+poeticizingly	0	dema-poeticize-r		dema	0
+poeticness	0	dema-poetic-n	Number=Plur	dema	0
+poetics	0	oewn-poetics-n	Number=Sing	dema	0
+poeticses	0	oewn-poetics-n	Number=Plur	dema	0
+poetiised	0	dema-poetiised-v	VerbForm=Inf	dema	0
+poetiiseded	0	dema-poetiised-v	Tense=Past	dema	0
+poetiiseder	0	dema-poetiised-n	Number=Plur	dema	0
+poetiiseders	0	dema-poetiised-n	Number=Plur	dema	0
+poetiiseding	0	dema-poetiised-v	VerbForm=Ger	dema	0
+poetiisedingly	0	dema-poetiised-r		dema	0
+poetiiseds	0	dema-poetiised-v	Person=3+Tense=Pres	dema	0
+poetiising	0	dema-poetiising-v	VerbForm=Inf	dema	0
+poetiisinged	0	dema-poetiising-v	Tense=Past	dema	0
+poetiisinger	0	dema-poetiising-n	Number=Plur	dema	0
+poetiisingers	0	dema-poetiising-n	Number=Plur	dema	0
+poetiisinging	0	dema-poetiising-v	VerbForm=Ger	dema	0
+poetiisingingly	0	dema-poetiising-r		dema	0
+poetiisings	0	dema-poetiising-v	Person=3+Tense=Pres	dema	0
+poetiser	0	oewn-poetiser-n	Number=Sing	dema	0
+poetisers	0	oewn-poetiser-n	Number=Plur	dema	0
+poetize	0	oewn-poetize-v	VerbForm=Inf	dema	0
+poetized	0	dema-poetized-v	VerbForm=Inf	dema	0
+poetizer	0	oewn-poetizer-n	Number=Sing	dema	0
+poetizers	0	dema-poetize-n	Number=Plur	dema	0
+poetizes	0	oewn-poetize-v	Person=3+Tense=Pres	dema	0
+poetizing	0	dema-poetizing-v	VerbForm=Inf	dema	0
+poetizingly	0	dema-poetize-r		dema	0
+poetless	0	dema-poetless-a	Degree=Pos	dema	0
+poetlessly	0	dema-poetless-r		dema	0
+poetlessness	0	dema-poetless-n	Number=Plur	dema	0
+poetlike	0	dema-poetlike-a	Degree=Pos	dema	0
+poetlikely	0	dema-poetlike-r		dema	0
+poetlikeness	0	dema-poetlike-n	Number=Plur	dema	0
+poetliker	0	dema-poetlike-a	Degree=Cmp	dema	0
+poetlikest	0	dema-poetlike-a	Degree=Sup	dema	0
+poetries	0	oewn-poetry-n	Number=Plur	dema	0
+poetry	0	oewn-poetry-n	Number=Sing	dema	0
+poets	0	oewn-poet-n	Number=Plur	dema	0
+pogamoggan	0	dema-pogamoggan-n	Number=Sing	dema	0
+pogamoggans	0	dema-pogamoggan-n	Number=Plur	dema	0
+pogey	0	oewn-pogey-n	Number=Sing	dema	0
+pogeys	0	oewn-pogey-n	Number=Plur	dema	0
+pogge	0	oewn-pogge-n	Number=Sing	dema	0
+pogges	0	oewn-pogge-n	Number=Plur	dema	0
+pogies	0	oewn-pogy-n	Number=Plur	dema	0
+pogonia	0	oewn-pogonia-n	Number=Sing	dema	0
+pogonias	0	oewn-pogonia-n	Number=Plur	dema	0
+pogrom	0	oewn-pogrom-n	Number=Sing	dema	0
+pogroms	0	oewn-pogrom-n	Number=Plur	dema	0
+pogy	0	oewn-pogy-n	Number=Sing	dema	0
+pohutukawa	0	dema-pohutukawa-n	Number=Sing	dema	0
+pohutukawas	0	dema-pohutukawa-n	Number=Plur	dema	0
+poi	0	oewn-poi-n	Number=Sing	dema	0
+poignancies	0	oewn-poignancy-n	Number=Plur	dema	0
+poignancy	0	oewn-poignancy-n	Number=Sing	dema	0
+poignant	0	oewn-poignant-a	Degree=Pos	dema	0
+poignanter	0	oewn-poignant-a	Degree=Cmp	dema	0
+poignantest	0	oewn-poignant-a	Degree=Sup	dema	0
+poignantly	0	oewn-poignantly-r	Degree=Pos	dema	0
+poignantness	0	dema-poignant-n	Number=Plur	dema	0
+poikilie	0	dema-poikilie-n	Number=Sing	dema	0
+poikilies	0	dema-poikilie-n	Number=Plur	dema	0
+poikilitic	0	dema-poikilitic-a	Degree=Pos	dema	0
+poikilitically	0	dema-poikilitic-r		dema	0
+poikiloblast	0	dema-poikiloblast-n	Number=Sing	dema	0
+poikiloblastic	0	dema-poikiloblastic-a	Degree=Pos	dema	0
+poikiloblastically	0	dema-poikiloblastic-r		dema	0
+poikiloblasts	0	dema-poikiloblast-n	Number=Plur	dema	0
+poikilothermic	0	oewn-poikilothermic-a	Degree=Pos	dema	0
+poikilothermically	0	dema-poikilothermic-r		dema	0
+poikilothermies	0	dema-poikilothermy-n	Number=Plur	dema	0
+poikilothermism	0	dema-poikilothermism-n	Number=Sing	dema	0
+poikilothermisms	0	dema-poikilothermism-n	Number=Plur	dema	0
+poikilothermy	0	dema-poikilothermy-n	Number=Sing	dema	0
+poil	0	dema-poil-n	Number=Sing	dema	0
+poils	0	dema-poil-n	Number=Plur	dema	0
+poilu	0	oewn-poilu-n	Number=Sing	dema	0
+poilus	0	dema-poilus-n	Number=Sing	dema	0
+poiluses	0	dema-poilus-n	Number=Plur	dema	0
+poimenics	0	dema-poimenics-n	Number=Sing	dema	0
+poimenicses	0	dema-poimenics-n	Number=Plur	dema	0
+poinciana	0	oewn-poinciana-n	Number=Sing	dema	0
+poincianas	0	oewn-poinciana-n	Number=Plur	dema	0
+poind	0	dema-poind-v	VerbForm=Inf	dema	0
+poinded	0	dema-poind-v	Tense=Past	dema	0
+poinder	0	dema-poind-n	Number=Plur	dema	0
+poinders	0	dema-poind-n	Number=Plur	dema	0
+poinding	0	dema-poind-v	VerbForm=Ger	dema	0
+poindingly	0	dema-poind-r		dema	0
+poinds	0	dema-poind-v	Person=3+Tense=Pres	dema	0
+poinsettia	0	oewn-poinsettia-n	Number=Sing	dema	0
+poinsettias	0	oewn-poinsettia-n	Number=Plur	dema	0
+point	0	oewn-point-n	Number=Sing	dema	1
+point	1	oewn-point-v	VerbForm=Inf	dema	1
+pointal	0	dema-pointal-n	Number=Sing	dema	0
+pointals	0	dema-pointal-n	Number=Plur	dema	0
+pointe	0	dema-pointe-n	Number=Sing	dema	0
+pointed	0	oewn-point-v	Tense=Past	dema	1
+pointed	1	oewn-pointed-a	Degree=Pos	dema	0
+pointedly	0	oewn-pointedly-r	Degree=Pos	dema	0
+pointedness	0	oewn-pointedness-n	Number=Sing	dema	0
+pointednesses	0	oewn-pointedness-n	Number=Plur	dema	0
+pointel	0	oewn-pointel-n	Number=Sing	dema	0
+pointels	0	oewn-pointel-n	Number=Plur	dema	0
+pointer	0	oewn-pointer-n	Number=Sing	dema	0
+pointers	0	oewn-point-n	Number=Plur	dema	1
+pointes	0	dema-pointe-n	Number=Plur	dema	0
+pointillism	0	oewn-pointillism-n	Number=Sing	dema	0
+pointillism	1	dema-pointillism-a	Degree=Pos	dema	0
+pointillismly	0	dema-pointillism-r		dema	0
+pointillismness	0	oewn-pointillism-n	Number=Plur	dema	0
+pointillisms	0	oewn-pointillism-n	Number=Plur	dema	0
+pointillist	0	oewn-pointillist-n	Number=Sing	dema	0
+pointillists	0	oewn-pointillist-n	Number=Plur	dema	0
+pointing	0	oewn-point-n	Number=Plur	dema	1
+pointing	1	oewn-point-v	VerbForm=Ger	dema	1
+pointingly	0	dema-point-r		dema	0
+pointings	0	dema-pointing-n	Number=Plur	dema	0
+pointless	0	oewn-pointless-a	Degree=Pos	dema	0
+pointlessly	0	oewn-pointlessly-r	Degree=Pos	dema	0
+pointlessness	0	oewn-pointlessness-n	Number=Sing	dema	0
+pointlessnesses	0	oewn-pointlessness-n	Number=Plur	dema	0
+points	0	oewn-point-n	Number=Plur	dema	1
+points	1	oewn-point-v	Person=3+Tense=Pres	dema	1
+pointsman	0	oewn-pointsman-n	Number=Sing	dema	0
+pointsmans	0	oewn-pointsman-n	Number=Plur	dema	0
+pointsmen	0	dema-pointsmen-n	Number=Sing	dema	0
+pointsmens	0	dema-pointsmen-n	Number=Plur	dema	0
+pointwise	0	dema-pointwise-n	Number=Sing	dema	0
+pointwise	1	dema-pointwise-v	VerbForm=Inf	dema	0
+pointwised	0	dema-pointwise-v	Tense=Past	dema	0
+pointwiser	0	dema-pointwise-n	Number=Plur	dema	0
+pointwisers	0	dema-pointwise-n	Number=Plur	dema	0
+pointwises	0	dema-pointwise-n	Number=Plur	dema	0
+pointwises	1	dema-pointwise-v	Person=3+Tense=Pres	dema	0
+pointwising	0	dema-pointwise-v	VerbForm=Ger	dema	0
+pointwisingly	0	dema-pointwise-r		dema	0
+pois	0	oewn-poi-n	Number=Plur	dema	0
+poise	0	oewn-poise-n	Number=Sing	dema	0
+poise	1	oewn-poise-v	VerbForm=Inf	dema	0
+poised	0	oewn-poised-a	Degree=Pos	dema	0
+poised	1	dema-poised-v	VerbForm=Inf	dema	0
+poisedly	0	dema-poised-r		dema	0
+poiser	0	dema-poiser-n	Number=Sing	dema	0
+poisers	0	oewn-poise-n	Number=Plur	dema	0
+poises	0	oewn-poise-n	Number=Plur	dema	0
+poises	1	oewn-poise-v	Person=3+Tense=Pres	dema	0
+poising	0	dema-poising-v	VerbForm=Inf	dema	0
+poisingly	0	dema-poise-r		dema	0
+poison	0	oewn-poison-n	Number=Sing	dema	1
+poison	1	oewn-poison-v	VerbForm=Inf	dema	1
+poisoned	0	oewn-poison-v	Tense=Past	dema	1
+poisoner	0	oewn-poisoner-n	Number=Sing	dema	0
+poisoners	0	oewn-poison-n	Number=Plur	dema	1
+poisoning	0	oewn-poison-n	Number=Plur	dema	1
+poisoning	1	oewn-poison-v	VerbForm=Ger	dema	1
+poisoningly	0	dema-poison-r		dema	0
+poisonings	0	oewn-poisoning-n	Number=Plur	dema	0
+poisonned	0	oewn-poison-v	Tense=Past	dema	1
+poisonning	0	oewn-poison-n	Number=Plur	dema	1
+poisonning	1	oewn-poison-v	VerbForm=Ger	dema	1
+poisonous	0	oewn-poisonous-a	Degree=Pos	dema	0
+poisonously	0	dema-poisonous-r		dema	0
+poisonousness	0	dema-poisonous-n	Number=Plur	dema	0
+poisons	0	oewn-poison-n	Number=Plur	dema	1
+poisons	1	oewn-poison-v	Person=3+Tense=Pres	dema	1
+pokable	0	dema-pokable-a	Degree=Pos	dema	0
+pokableness	0	dema-pokable-n	Number=Plur	dema	0
+pokably	0	dema-pokable-r		dema	0
+poke	0	oewn-poke-v	VerbForm=Inf	dema	0
+poke	1	oewn-poke-n	Number=Sing	dema	0
+pokeberries	0	dema-pokeberries-n	Number=Sing	dema	0
+pokeberry	0	dema-pokeberry-n	Number=Sing	dema	0
+poked	0	dema-poked-v	VerbForm=Inf	dema	0
+pokelogan	0	dema-pokelogan-n	Number=Sing	dema	0
+pokelogans	0	dema-pokelogan-n	Number=Plur	dema	0
+poker	0	oewn-poker-n	Number=Sing	dema	0
+pokers	0	oewn-poke-n	Number=Plur	dema	0
+pokes	0	oewn-poke-v	Person=3+Tense=Pres	dema	0
+pokes	1	oewn-poke-n	Number=Plur	dema	0
+pokey	0	oewn-pokey-a	Degree=Pos	dema	0
+pokeyer	0	oewn-pokey-a	Degree=Cmp	dema	0
+pokeyest	0	oewn-pokey-a	Degree=Sup	dema	0
+pokeyly	0	dema-pokey-r		dema	0
+pokeyness	0	oewn-pokey-n	Number=Plur	dema	0
+pokie	0	dema-pokie-n	Number=Sing	dema	0
+pokier	0	dema-pokier-a	Degree=Pos	dema	0
+pokierly	0	dema-pokier-r		dema	0
+pokies	0	dema-pokies-a	Degree=Pos	dema	0
+pokieser	0	dema-pokies-a	Degree=Cmp	dema	0
+pokiesest	0	dema-pokies-a	Degree=Sup	dema	0
+pokiesly	0	dema-pokies-r		dema	0
+pokiesness	0	dema-pokies-n	Number=Plur	dema	0
+pokiest	0	dema-pokiest-a	Degree=Pos	dema	0
+pokiestly	0	dema-pokiest-r		dema	0
+pokily	0	dema-pokily-r	Degree=Pos	dema	0
+pokiness	0	dema-pokiness-n	Number=Sing	dema	0
+pokinesses	0	dema-pokiness-n	Number=Plur	dema	0
+poking	0	dema-poking-v	VerbForm=Inf	dema	0
+pokingly	0	dema-poke-r		dema	0
+poky	0	oewn-poky-a	Degree=Pos	dema	0
+poky	1	oewn-poky-n	Number=Sing	dema	0
+pol	0	oewn-pol-n	Number=Sing	dema	0
+polacca	0	dema-polacca-n	Number=Sing	dema	0
+polaccas	0	dema-polacca-n	Number=Plur	dema	0
+polacre	0	dema-polacre-n	Number=Sing	dema	0
+polacres	0	dema-polacre-n	Number=Plur	dema	0
+polar	0	oewn-polar-a	Degree=Pos	dema	0
+polarimeter	0	oewn-polarimeter-n	Number=Sing	dema	0
+polarimeters	0	oewn-polarimeter-n	Number=Plur	dema	0
+polarisabilities	0	dema-polarisability-n	Number=Plur	dema	0
+polarisability	0	dema-polarisability-n	Number=Sing	dema	0
+polarisable	0	dema-polarisable-a	Degree=Pos	dema	0
+polarisably	0	dema-polarisable-r		dema	0
+polarisation	0	oewn-polarisation-n	Number=Sing	dema	0
+polarisations	0	oewn-polarisation-n	Number=Plur	dema	0
+polariscope	0	oewn-polariscope-n	Number=Sing	dema	0
+polariscopes	0	oewn-polariscope-n	Number=Plur	dema	0
+polariser	0	dema-polariser-n	Number=Sing	dema	0
+polarisers	0	dema-polariser-n	Number=Plur	dema	0
+polarities	0	oewn-polarity-n	Number=Plur	dema	0
+polarity	0	oewn-polarity-n	Number=Sing	dema	0
+polarization	0	oewn-polarization-n	Number=Sing	dema	0
+polarizations	0	oewn-polarization-n	Number=Plur	dema	0
+polarize	0	oewn-polarize-v	VerbForm=Inf	dema	0
+polarized	0	dema-polarized-v	VerbForm=Inf	dema	0
+polarizer	0	dema-polarize-n	Number=Plur	dema	0
+polarizers	0	dema-polarize-n	Number=Plur	dema	0
+polarizes	0	oewn-polarize-v	Person=3+Tense=Pres	dema	0
+polarizing	0	dema-polarizing-v	VerbForm=Inf	dema	0
+polarizingly	0	dema-polarize-r		dema	0
+polarly	0	dema-polar-r		dema	0
+polarness	0	dema-polar-n	Number=Plur	dema	0
+polarogram	0	dema-polarogram-n	Number=Sing	dema	0
+polarograms	0	dema-polarogram-n	Number=Plur	dema	0
+polarographic	0	oewn-polarographic-a	Degree=Pos	dema	0
+polarographically	0	dema-polarographic-r		dema	0
+polarographies	0	oewn-polarography-n	Number=Plur	dema	0
+polarography	0	oewn-polarography-n	Number=Sing	dema	0
+polder	0	oewn-polder-n	Number=Sing	dema	0
+polders	0	oewn-polder-n	Number=Plur	dema	0
+pole	0	oewn-pole-n	Number=Sing	dema	0
+pole	1	oewn-pole-v	VerbForm=Inf	dema	0
+poleax	0	oewn-poleax-n	Number=Sing	dema	0
+poleaxe	0	oewn-poleaxe-n	Number=Sing	dema	0
+poleaxe	1	oewn-poleaxe-v	VerbForm=Inf	dema	0
+poleaxed	0	dema-poleaxed-v	VerbForm=Inf	dema	0
+poleaxer	0	oewn-poleaxe-n	Number=Plur	dema	0
+poleaxers	0	oewn-poleaxe-n	Number=Plur	dema	0
+poleaxes	0	oewn-poleax-n	Number=Plur	dema	0
+poleaxing	0	dema-poleaxing-v	VerbForm=Inf	dema	0
+poleaxingly	0	dema-poleaxe-r		dema	0
+polecat	0	oewn-polecat-n	Number=Sing	dema	0
+polecats	0	dema-polecats-n	Number=Sing	dema	0
+poled	0	dema-poled-v	VerbForm=Inf	dema	0
+polejumper	0	dema-polejumper-n	Number=Sing	dema	0
+polejumpers	0	dema-polejumper-n	Number=Plur	dema	0
+polemarch	0	dema-polemarch-n	Number=Sing	dema	0
+polemarches	0	dema-polemarch-n	Number=Plur	dema	0
+polemarchs	0	dema-polemarch-n	Number=Plur	dema	0
+polemic	0	oewn-polemic-a	Degree=Pos	dema	0
+polemic	1	oewn-polemic-n	Number=Sing	dema	0
+polemically	0	oewn-polemically-r	Degree=Pos	dema	0
+polemicness	0	oewn-polemic-n	Number=Plur	dema	0
+polemics	0	oewn-polemics-n	Number=Sing	dema	0
+polemist	0	oewn-polemist-n	Number=Sing	dema	0
+polemists	0	oewn-polemist-n	Number=Plur	dema	0
+polemoniaceous	0	oewn-polemoniaceous-a	Degree=Pos	dema	0
+polemoniaceously	0	dema-polemoniaceous-r		dema	0
+polenta	0	oewn-polenta-n	Number=Sing	dema	0
+polentas	0	oewn-polenta-n	Number=Plur	dema	0
+poler	0	oewn-poler-n	Number=Sing	dema	0
+polers	0	oewn-pole-n	Number=Plur	dema	0
+poles	0	oewn-pole-n	Number=Plur	dema	0
+poles	1	oewn-pole-v	Person=3+Tense=Pres	dema	0
+poleyn	0	dema-poleyn-n	Number=Sing	dema	0
+poleyns	0	dema-poleyn-n	Number=Plur	dema	0
+polianite	0	dema-polianite-n	Number=Sing	dema	0
+polianites	0	dema-polianite-n	Number=Plur	dema	0
+police	0	oewn-police-n	Number=Sing	dema	0
+police	1	oewn-police-v	VerbForm=Inf	dema	0
+policed	0	oewn-police-v	Tense=Past	dema	0
+policeman	0	oewn-policeman-n	Number=Sing	dema	0
+policemen	0	dema-policemen-n	Number=Sing	dema	0
+policemens	0	dema-policemen-n	Number=Plur	dema	0
+policer	0	oewn-police-n	Number=Plur	dema	0
+policers	0	oewn-police-n	Number=Plur	dema	0
+polices	0	oewn-police-n	Number=Plur	dema	0
+polices	1	oewn-police-v	Person=3+Tense=Pres	dema	0
+policewoman	0	oewn-policewoman-n	Number=Sing	dema	0
+policewomen	0	dema-policewomen-n	Number=Sing	dema	0
+policewomens	0	dema-policewomen-n	Number=Plur	dema	0
+policies	0	dema-policies-n	Number=Sing	dema	0
+policing	0	oewn-police-v	VerbForm=Ger	dema	0
+policingly	0	dema-police-r		dema	0
+policlinic	0	dema-policlinic-n	Number=Sing	dema	0
+policlinics	0	dema-policlinic-n	Number=Plur	dema	0
+policy	0	oewn-policy-n	Number=Sing	dema	0
+policyholder	0	oewn-policyholder-n	Number=Sing	dema	0
+policyholders	0	oewn-policyholder-n	Number=Plur	dema	0
+poliencephalitis	0	dema-poliencephalitis-n	Number=Sing	dema	0
+poliencephalomyelitis	0	dema-poliencephalomyelitis-n	Number=Sing	dema	0
+polies	0	dema-poly-n	Number=Plur	dema	0
+polimetrum	0	dema-polimetrum-n	Number=Sing	dema	0
+polimetrums	0	dema-polimetrum-n	Number=Plur	dema	0
+poling	0	dema-poling-v	VerbForm=Inf	dema	0
+polingly	0	dema-pole-r		dema	0
+polio	0	oewn-polio-n	Number=Sing	dema	0
+polioencephalitis	0	dema-polioencephalitis-n	Number=Sing	dema	0
+poliomyelitic	0	dema-poliomyelitic-a	Degree=Pos	dema	0
+poliomyelitically	0	dema-poliomyelitic-r		dema	0
+poliomyelitis	0	oewn-poliomyelitis-n	Number=Sing	dema	0
+polios	0	oewn-polio-n	Number=Plur	dema	0
+polis	0	dema-polis-n	Number=Sing	dema	0
+polish	0	oewn-Polish-a	Degree=Pos	dema	1
+polish	1	oewn-Polish-n	Number=Sing	dema	1
+polish	2	oewn-polish-n	Number=Sing	dema	1
+polish	3	oewn-polish-v	VerbForm=Inf	dema	1
+polished	0	oewn-polished-a	Degree=Pos	dema	0
+polished	1	dema-polished-v	VerbForm=Inf	dema	0
+polishedly	0	dema-polished-r		dema	0
+polisher	0	oewn-polisher-n	Number=Sing	dema	0
+polishers	0	oewn-polish-n	Number=Plur	dema	0
+polishes	0	oewn-polish-n	Number=Plur	dema	1
+polishes	1	oewn-polish-v	Person=3+Tense=Pres	dema	1
+polishing	0	oewn-polish-v	VerbForm=Ger	dema	0
+polishingly	0	dema-polish-r		dema	0
+polit	0	dema-polit-n	Number=Sing	dema	0
+polite	0	oewn-polite-a	Degree=Pos	dema	0
+politei	0	dema-politei-n	Number=Sing	dema	0
+politeis	0	dema-politei-n	Number=Plur	dema	0
+politely	0	oewn-politely-r	Degree=Pos	dema	0
+politeness	0	oewn-politeness-n	Number=Sing	dema	0
+politenesses	0	oewn-politeness-n	Number=Plur	dema	0
+politer	0	oewn-polite-a	Degree=Cmp	dema	0
+politesse	0	oewn-politesse-n	Number=Sing	dema	0
+politesses	0	oewn-politesse-n	Number=Plur	dema	0
+politest	0	oewn-polite-a	Degree=Sup	dema	0
+politic	0	oewn-politic-a	Degree=Pos	dema	0
+political	0	oewn-political-a	Degree=Pos	dema	0
+politicalization	0	dema-politicalization-n	Number=Sing	dema	0
+politicalizations	0	dema-politicalization-n	Number=Plur	dema	0
+politicalize	0	dema-politicalize-v	VerbForm=Inf	dema	0
+politicalized	0	dema-politicalized-v	VerbForm=Inf	dema	0
+politicalizes	0	dema-politicalize-v	Person=3+Tense=Pres	dema	0
+politicalizing	0	dema-politicalizing-v	VerbForm=Inf	dema	0
+politically	0	dema-politic-r		dema	0
+politician	0	oewn-politician-n	Number=Sing	dema	0
+politicians	0	oewn-politician-n	Number=Plur	dema	0
+politicise	0	oewn-politicise-v	VerbForm=Inf	dema	0
+politicised	0	dema-politicised-v	VerbForm=Inf	dema	0
+politicises	0	oewn-politicise-v	Person=3+Tense=Pres	dema	0
+politicising	0	dema-politicising-v	VerbForm=Inf	dema	0
+politicize	0	oewn-politicize-v	VerbForm=Inf	dema	0
+politicized	0	dema-politicized-v	VerbForm=Inf	dema	0
+politicizes	0	oewn-politicize-v	Person=3+Tense=Pres	dema	0
+politicizing	0	dema-politicizing-v	VerbForm=Inf	dema	0
+politick	0	oewn-politick-v	VerbForm=Inf	dema	0
+politicked	0	oewn-politick-v	Tense=Past	dema	0
+politicker	0	dema-politick-n	Number=Plur	dema	0
+politickers	0	dema-politick-n	Number=Plur	dema	0
+politicking	0	dema-politicking-n	Number=Sing	dema	0
+politicking	1	dema-politicking-v	VerbForm=Inf	dema	0
+politickingly	0	dema-politick-r		dema	0
+politickings	0	dema-politicking-n	Number=Plur	dema	0
+politicks	0	oewn-politick-v	Person=3+Tense=Pres	dema	0
+politicly	0	dema-politicly-r	Degree=Pos	dema	0
+politicness	0	dema-politic-n	Number=Plur	dema	0
+politico	0	oewn-politico-n	Number=Sing	dema	0
+politicoes	0	oewn-politico-n	Number=Plur	dema	0
+politicos	0	dema-politicos-n	Number=Sing	dema	0
+politics	0	oewn-politics-n	Number=Sing	dema	0
+politicses	0	oewn-politics-n	Number=Plur	dema	0
+polities	0	dema-polities-n	Number=Sing	dema	0
+polits	0	dema-polit-n	Number=Plur	dema	0
+polity	0	oewn-polity-n	Number=Sing	dema	0
+polje	0	dema-polje-n	Number=Sing	dema	0
+poljes	0	dema-polje-n	Number=Plur	dema	0
+polka	0	oewn-polka-n	Number=Sing	dema	0
+polka	1	oewn-polka-v	VerbForm=Inf	dema	0
+polkaed	0	dema-polkaed-n	Number=Sing	dema	0
+polkaer	0	oewn-polka-n	Number=Plur	dema	0
+polkaers	0	oewn-polka-n	Number=Plur	dema	0
+polkaing	0	dema-polkaing-n	Number=Sing	dema	0
+polkaing	1	dema-polkaing-v	VerbForm=Inf	dema	0
+polkaingly	0	dema-polka-r		dema	0
+polkaings	0	dema-polkaing-n	Number=Plur	dema	0
+polkas	0	dema-polkas-n	Number=Sing	dema	0
+poll	0	oewn-poll-n-1	Number=Sing	dema	0
+poll	1	oewn-poll-v	VerbForm=Inf	dema	0
+pollable	0	dema-pollable-a	Degree=Pos	dema	0
+pollableness	0	dema-pollable-n	Number=Plur	dema	0
+pollably	0	dema-pollable-r		dema	0
+pollack	0	oewn-pollack-n	Number=Sing	dema	0
+pollacks	0	oewn-pollack-n	Number=Plur	dema	0
+pollakiuria	0	dema-pollakiuria-n	Number=Sing	dema	0
+pollakiurias	0	dema-pollakiuria-n	Number=Plur	dema	0
+pollan	0	dema-pollan-n	Number=Sing	dema	0
+pollans	0	dema-pollan-n	Number=Plur	dema	0
+pollard	0	oewn-pollard-n	Number=Sing	dema	0
+pollard	1	oewn-pollard-v	VerbForm=Inf	dema	0
+pollarded	0	oewn-pollard-v	Tense=Past	dema	0
+pollarder	0	oewn-pollard-n	Number=Plur	dema	0
+pollarders	0	oewn-pollard-n	Number=Plur	dema	0
+pollarding	0	oewn-pollard-v	VerbForm=Ger	dema	0
+pollardingly	0	dema-pollard-r		dema	0
+pollards	0	oewn-pollard-n	Number=Plur	dema	0
+pollards	1	oewn-pollard-v	Person=3+Tense=Pres	dema	0
+pollbook	0	dema-pollbook-n	Number=Sing	dema	0
+pollbooks	0	dema-pollbook-n	Number=Plur	dema	0
+polled	0	dema-polled-a	Degree=Pos	dema	0
+polled	1	dema-polled-v	VerbForm=Inf	dema	0
+polledly	0	dema-polled-r		dema	0
+pollen	0	oewn-pollen-n	Number=Sing	dema	0
+pollened	0	dema-pollened-a	Degree=Pos	dema	0
+pollened	1	dema-pollened-v	VerbForm=Inf	dema	0
+polleneded	0	dema-pollened-v	Tense=Past	dema	0
+polleneder	0	dema-pollened-n	Number=Plur	dema	0
+polleneders	0	dema-pollened-n	Number=Plur	dema	0
+polleneding	0	dema-pollened-v	VerbForm=Ger	dema	0
+pollenedingly	0	dema-pollened-r		dema	0
+pollenedly	0	dema-pollened-r		dema	0
+pollenedness	0	dema-pollened-n	Number=Plur	dema	0
+polleneds	0	dema-pollened-v	Person=3+Tense=Pres	dema	0
+pollenless	0	dema-pollenless-a	Degree=Pos	dema	0
+pollenlessly	0	dema-pollenless-r		dema	0
+pollenlessness	0	dema-pollenless-n	Number=Plur	dema	0
+pollenlike	0	dema-pollenlike-a	Degree=Pos	dema	0
+pollenlikely	0	dema-pollenlike-r		dema	0
+pollenlikeness	0	dema-pollenlike-n	Number=Plur	dema	0
+pollenosis	0	dema-pollenosis-n	Number=Sing	dema	0
+pollens	0	oewn-pollen-n	Number=Plur	dema	0
+poller	0	oewn-poll-n-1	Number=Plur	dema	0
+pollera	0	dema-pollera-n	Number=Sing	dema	0
+polleras	0	dema-polleras-n	Number=Sing	dema	0
+pollers	0	oewn-poll-n-1	Number=Plur	dema	0
+pollex	0	oewn-pollex-n	Number=Sing	dema	0
+pollexes	0	oewn-pollex-n	Number=Plur	dema	0
+pollicitation	0	dema-pollicitation-n	Number=Sing	dema	0
+pollicitations	0	dema-pollicitation-n	Number=Plur	dema	0
+pollinate	0	oewn-pollinate-v	VerbForm=Inf	dema	0
+pollinated	0	dema-pollinated-v	VerbForm=Inf	dema	0
+pollinater	0	dema-pollinate-n	Number=Plur	dema	0
+pollinaters	0	dema-pollinate-n	Number=Plur	dema	0
+pollinates	0	oewn-pollinate-v	Person=3+Tense=Pres	dema	0
+pollinating	0	dema-pollinating-v	VerbForm=Inf	dema	0
+pollinatingly	0	dema-pollinate-r		dema	0
+pollination	0	oewn-pollination-n	Number=Sing	dema	0
+pollinations	0	oewn-pollination-n	Number=Plur	dema	0
+pollinator	0	oewn-pollinator-n	Number=Sing	dema	0
+pollinators	0	oewn-pollinator-n	Number=Plur	dema	0
+polling	0	oewn-poll-v	VerbForm=Ger	dema	0
+pollingly	0	dema-poll-r		dema	0
+pollinic	0	dema-pollinic-a	Degree=Pos	dema	0
+pollinical	0	dema-pollinical-a	Degree=Pos	dema	0
+pollinically	0	dema-pollinic-r		dema	0
+pollinicness	0	dema-pollinic-n	Number=Plur	dema	0
+polliniferous	0	dema-polliniferous-a	Degree=Pos	dema	0
+polliniferously	0	dema-polliniferous-r		dema	0
+pollinium	0	oewn-pollinium-n	Number=Sing	dema	0
+polliniums	0	oewn-pollinium-n	Number=Plur	dema	0
+pollinization	0	dema-pollinization-n	Number=Sing	dema	0
+pollinizations	0	dema-pollinization-n	Number=Plur	dema	0
+pollinize	0	dema-pollinize-v	VerbForm=Inf	dema	0
+pollinized	0	dema-pollinized-v	VerbForm=Inf	dema	0
+pollinizer	0	dema-pollinize-n	Number=Plur	dema	0
+pollinizers	0	dema-pollinize-n	Number=Plur	dema	0
+pollinizes	0	dema-pollinize-v	Person=3+Tense=Pres	dema	0
+pollinizing	0	dema-pollinizing-v	VerbForm=Inf	dema	0
+pollinizingly	0	dema-pollinize-r		dema	0
+pollinosis	0	oewn-pollinosis-n	Number=Sing	dema	0
+polliwog	0	oewn-polliwog-n	Number=Sing	dema	0
+polliwogs	0	oewn-polliwog-n	Number=Plur	dema	0
+pollock	0	oewn-pollock-n	Number=Sing	dema	0
+pollocks	0	dema-pollocks-n	Number=Sing	dema	0
+polls	0	oewn-poll-n-1	Number=Plur	dema	0
+polls	1	oewn-poll-v	Person=3+Tense=Pres	dema	0
+pollster	0	oewn-pollster-n	Number=Sing	dema	0
+pollsters	0	oewn-pollster-n	Number=Plur	dema	0
+pollucite	0	oewn-pollucite-n	Number=Sing	dema	0
+pollucites	0	oewn-pollucite-n	Number=Plur	dema	0
+pollutant	0	oewn-pollutant-n	Number=Sing	dema	0
+pollutants	0	oewn-pollutant-n	Number=Plur	dema	0
+pollute	0	oewn-pollute-v	VerbForm=Inf	dema	0
+polluted	0	oewn-polluted-a	Degree=Pos	dema	0
+polluted	1	dema-polluted-v	VerbForm=Inf	dema	0
+pollutedly	0	dema-polluted-r		dema	0
+pollutedness	0	dema-pollutedness-n	Number=Sing	dema	0
+pollutednesses	0	dema-pollutedness-n	Number=Plur	dema	0
+polluter	0	oewn-polluter-n	Number=Sing	dema	0
+polluters	0	dema-pollute-n	Number=Plur	dema	0
+pollutes	0	oewn-pollute-v	Person=3+Tense=Pres	dema	0
+polluting	0	dema-polluting-v	VerbForm=Inf	dema	0
+pollutingly	0	dema-pollute-r		dema	0
+pollution	0	oewn-pollution-n	Number=Sing	dema	0
+pollutions	0	oewn-pollution-n	Number=Plur	dema	0
+pollyfish	0	oewn-pollyfish-n	Number=Sing	dema	0
+pollyfishes	0	oewn-pollyfish-n	Number=Plur	dema	0
+pollywog	0	oewn-pollywog-n	Number=Sing	dema	0
+pollywogs	0	oewn-pollywog-n	Number=Plur	dema	0
+polo	0	oewn-polo-n	Number=Sing	dema	0
+polocyte	0	dema-polocyte-n	Number=Sing	dema	0
+polocytes	0	dema-polocyte-n	Number=Plur	dema	0
+poloes	0	oewn-polo-n	Number=Plur	dema	0
+poloi	0	dema-poloi-n	Number=Sing	dema	0
+polois	0	dema-poloi-n	Number=Plur	dema	0
+poloist	0	dema-poloist-n	Number=Sing	dema	0
+poloists	0	dema-poloist-n	Number=Plur	dema	0
+polonaise	0	oewn-polonaise-n	Number=Sing	dema	0
+polonaises	0	oewn-polonaise-n	Number=Plur	dema	0
+polonies	0	oewn-polony-n	Number=Plur	dema	0
+polonium	0	oewn-polonium-n	Number=Sing	dema	0
+poloniums	0	oewn-polonium-n	Number=Plur	dema	0
+polony	0	oewn-polony-n	Number=Sing	dema	0
+polos	0	dema-polos-n	Number=Sing	dema	0
+pols	0	oewn-pol-n	Number=Plur	dema	0
+poltergeist	0	oewn-poltergeist-n	Number=Sing	dema	0
+poltergeists	0	oewn-poltergeist-n	Number=Plur	dema	0
+poltroon	0	oewn-poltroon-n	Number=Sing	dema	0
+poltroon	1	oewn-poltroon-a	Degree=Pos	dema	0
+poltrooner	0	oewn-poltroon-a	Degree=Cmp	dema	0
+poltrooneries	0	oewn-poltroonery-n	Number=Plur	dema	0
+poltroonery	0	oewn-poltroonery-n	Number=Sing	dema	0
+poltroonest	0	oewn-poltroon-a	Degree=Sup	dema	0
+poltroonly	0	dema-poltroon-r		dema	0
+poltroonness	0	oewn-poltroon-n	Number=Plur	dema	0
+poltroons	0	oewn-poltroon-n	Number=Plur	dema	0
+poly	0	dema-poly-n	Number=Sing	dema	0
+polyacid	0	dema-polyacid-a	Degree=Pos	dema	0
+polyacid	1	dema-polyacid-n	Number=Sing	dema	0
+polyacidly	0	dema-polyacid-r		dema	0
+polyacidness	0	dema-polyacid-n	Number=Plur	dema	0
+polyacids	0	dema-polyacid-n	Number=Plur	dema	0
+polyacrylonitrile	0	dema-polyacrylonitrile-n	Number=Sing	dema	0
+polyacrylonitriles	0	dema-polyacrylonitrile-n	Number=Plur	dema	0
+polyadelphous	0	dema-polyadelphous-a	Degree=Pos	dema	0
+polyadelphously	0	dema-polyadelphous-r		dema	0
+polyamide	0	oewn-polyamide-n	Number=Sing	dema	0
+polyamides	0	oewn-polyamide-n	Number=Plur	dema	0
+polyamine	0	dema-polyamine-n	Number=Sing	dema	0
+polyamines	0	dema-polyamine-n	Number=Plur	dema	0
+polyandries	0	oewn-polyandry-n	Number=Plur	dema	0
+polyandrist	0	oewn-polyandrist-n	Number=Sing	dema	0
+polyandrists	0	oewn-polyandrist-n	Number=Plur	dema	0
+polyandrous	0	oewn-polyandrous-a	Degree=Pos	dema	0
+polyandrously	0	dema-polyandrous-r		dema	0
+polyandrousness	0	dema-polyandrous-n	Number=Plur	dema	0
+polyandry	0	oewn-polyandry-n	Number=Sing	dema	0
+polyangular	0	dema-polyangular-a	Degree=Pos	dema	0
+polyangularly	0	dema-polyangular-r		dema	0
+polyanthus	0	oewn-polyanthus-n	Number=Sing	dema	0
+polyanthuses	0	dema-polyanthuses-n	Number=Sing	dema	0
+polyarchic	0	dema-polyarchic-a	Degree=Pos	dema	0
+polyarchical	0	dema-polyarchical-a	Degree=Pos	dema	0
+polyarchically	0	dema-polyarchic-r		dema	0
+polyarchicness	0	dema-polyarchic-n	Number=Plur	dema	0
+polyarchies	0	dema-polyarchies-n	Number=Sing	dema	0
+polyarchy	0	dema-polyarchy-n	Number=Sing	dema	0
+polyarteritis	0	oewn-polyarteritis-n	Number=Sing	dema	0
+polyarthritis	0	dema-polyarthritis-n	Number=Sing	dema	0
+polyarticular	0	dema-polyarticular-a	Degree=Pos	dema	0
+polyarticularly	0	dema-polyarticular-r		dema	0
+polyatomic	0	oewn-polyatomic-a	Degree=Pos	dema	0
+polyatomically	0	dema-polyatomic-r		dema	0
+polybasic	0	dema-polybasic-a	Degree=Pos	dema	0
+polybasically	0	dema-polybasic-r		dema	0
+polybasicities	0	dema-polybasicity-n	Number=Plur	dema	0
+polybasicity	0	dema-polybasicity-n	Number=Sing	dema	0
+polybasite	0	dema-polybasite-n	Number=Sing	dema	0
+polybasites	0	dema-polybasite-n	Number=Plur	dema	0
+polybutene	0	oewn-polybutene-n	Number=Sing	dema	0
+polybutenes	0	oewn-polybutene-n	Number=Plur	dema	0
+polybutylene	0	oewn-polybutylene-n	Number=Sing	dema	0
+polybutylenes	0	oewn-polybutylene-n	Number=Plur	dema	0
+polycarpellarily	0	dema-polycarpellary-r		dema	0
+polycarpellary	0	dema-polycarpellary-a	Degree=Pos	dema	0
+polycarpic	0	dema-polycarpic-a	Degree=Pos	dema	0
+polycarpically	0	dema-polycarpic-r		dema	0
+polycarpies	0	dema-polycarpy-n	Number=Plur	dema	0
+polycarpous	0	dema-polycarpous-a	Degree=Pos	dema	0
+polycarpously	0	dema-polycarpous-r		dema	0
+polycarpy	0	dema-polycarpy-n	Number=Sing	dema	0
+polycentrism	0	dema-polycentrism-n	Number=Sing	dema	0
+polycentrisms	0	dema-polycentrism-n	Number=Plur	dema	0
+polychaete	0	oewn-polychaete-n	Number=Sing	dema	0
+polychaete	1	dema-polychaete-a	Degree=Pos	dema	0
+polychaetely	0	dema-polychaete-r		dema	0
+polychaeteness	0	oewn-polychaete-n	Number=Plur	dema	0
+polychaetes	0	oewn-polychaete-n	Number=Plur	dema	0
+polychasial	0	dema-polychasial-a	Degree=Pos	dema	0
+polychasially	0	dema-polychasial-r		dema	0
+polychasium	0	dema-polychasium-n	Number=Sing	dema	0
+polychasiums	0	dema-polychasium-n	Number=Plur	dema	0
+polychromatic	0	oewn-polychromatic-a	Degree=Pos	dema	0
+polychromatic	1	dema-polychromatic-v	VerbForm=Inf	dema	0
+polychromatically	0	dema-polychromatic-r		dema	0
+polychromaticked	0	dema-polychromatic-v	Tense=Past	dema	0
+polychromaticking	0	dema-polychromatic-v	VerbForm=Ger	dema	0
+polychromatics	0	dema-polychromatic-v	Person=3+Tense=Pres	dema	0
+polychrome	0	oewn-polychrome-a	Degree=Pos	dema	0
+polychrome	1	oewn-polychrome-n	Number=Sing	dema	0
+polychromely	0	dema-polychrome-r		dema	0
+polychromeness	0	oewn-polychrome-n	Number=Plur	dema	0
+polychromes	0	oewn-polychrome-n	Number=Plur	dema	0
+polychromies	0	dema-polychromy-n	Number=Plur	dema	0
+polychromous	0	dema-polychromous-a	Degree=Pos	dema	0
+polychromously	0	dema-polychromous-r		dema	0
+polychromy	0	dema-polychromy-n	Number=Sing	dema	0
+polychsia	0	dema-polychsia-n	Number=Sing	dema	0
+polychsias	0	dema-polychsia-n	Number=Plur	dema	0
+polyclad	0	dema-polyclad-n	Number=Sing	dema	0
+polyclads	0	dema-polyclad-n	Number=Plur	dema	0
+polyclinic	0	dema-polyclinic-n	Number=Sing	dema	0
+polyclinics	0	dema-polyclinic-n	Number=Plur	dema	0
+polyconic	0	dema-polyconic-a	Degree=Pos	dema	0
+polyconically	0	dema-polyconic-r		dema	0
+polycotyledon	0	dema-polycotyledon-n	Number=Sing	dema	0
+polycotyledons	0	dema-polycotyledon-n	Number=Plur	dema	0
+polycrystal	0	dema-polycrystal-n	Number=Sing	dema	0
+polycrystalline	0	oewn-polycrystalline-a	Degree=Pos	dema	0
+polycrystallinely	0	dema-polycrystalline-r		dema	0
+polycrystals	0	dema-polycrystal-n	Number=Plur	dema	0
+polycyclic	0	dema-polycyclic-a	Degree=Pos	dema	0
+polycyclic	1	dema-polycyclic-n	Number=Sing	dema	0
+polycyclically	0	dema-polycyclic-r		dema	0
+polycyclics	0	dema-polycyclic-n	Number=Plur	dema	0
+polycythaemic	0	dema-polycythaemic-a	Degree=Pos	dema	0
+polycythaemically	0	dema-polycythaemic-r		dema	0
+polycythemia	0	oewn-polycythemia-n	Number=Sing	dema	0
+polycythemias	0	oewn-polycythemia-n	Number=Plur	dema	0
+polycythemic	0	dema-polycythemic-a	Degree=Pos	dema	0
+polycythemically	0	dema-polycythemic-r		dema	0
+polydactyl	0	oewn-polydactyl-a	Degree=Pos	dema	0
+polydactyl	1	dema-polydactyl-n	Number=Sing	dema	0
+polydactylism	0	dema-polydactylism-n	Number=Sing	dema	0
+polydactylisms	0	dema-polydactylism-n	Number=Plur	dema	0
+polydactylly	0	dema-polydactyl-r		dema	0
+polydactyls	0	dema-polydactyl-n	Number=Plur	dema	0
+polydaemonism	0	dema-polydaemonism-n	Number=Sing	dema	0
+polydaemonisms	0	dema-polydaemonism-n	Number=Plur	dema	0
+polydaemonist	0	dema-polydaemonist-n	Number=Sing	dema	0
+polydaemonist	1	dema-polydaemonist-a	Degree=Pos	dema	0
+polydaemonistly	0	dema-polydaemonist-r		dema	0
+polydaemonists	0	dema-polydaemonist-n	Number=Plur	dema	0
+polydemic	0	dema-polydemic-a	Degree=Pos	dema	0
+polydemically	0	dema-polydemic-r		dema	0
+polydemonist	0	dema-polydemonist-n	Number=Sing	dema	0
+polydemonist	1	dema-polydemonist-a	Degree=Pos	dema	0
+polydemonistly	0	dema-polydemonist-r		dema	0
+polydemonists	0	dema-polydemonist-n	Number=Plur	dema	0
+polydipsia	0	oewn-polydipsia-n	Number=Sing	dema	0
+polydipsias	0	oewn-polydipsia-n	Number=Plur	dema	0
+polydisperse	0	dema-polydisperse-a	Degree=Pos	dema	0
+polydispersely	0	dema-polydisperse-r		dema	0
+polydomous	0	dema-polydomous-a	Degree=Pos	dema	0
+polydomously	0	dema-polydomous-r		dema	0
+polydontia	0	dema-polydontia-n	Number=Sing	dema	0
+polydontias	0	dema-polydontia-n	Number=Plur	dema	0
+polyembryonies	0	dema-polyembryony-n	Number=Plur	dema	0
+polyembryony	0	dema-polyembryony-n	Number=Sing	dema	0
+polyester	0	oewn-polyester-n	Number=Sing	dema	0
+polyesters	0	oewn-polyester-n	Number=Plur	dema	0
+polyethnic	0	dema-polyethnic-a	Degree=Pos	dema	0
+polyethnically	0	dema-polyethnic-r		dema	0
+polyethnicness	0	dema-polyethnic-n	Number=Plur	dema	0
+polyethylene	0	oewn-polyethylene-n	Number=Sing	dema	0
+polyethylenes	0	oewn-polyethylene-n	Number=Plur	dema	0
+polyfoil	0	dema-polyfoil-a	Degree=Pos	dema	0
+polyfoil	1	dema-polyfoil-n	Number=Sing	dema	0
+polyfoilly	0	dema-polyfoil-r		dema	0
+polyfoilness	0	dema-polyfoil-n	Number=Plur	dema	0
+polyfoils	0	dema-polyfoil-n	Number=Plur	dema	0
+polygala	0	dema-polygala-n	Number=Sing	dema	0
+polygalaceous	0	dema-polygalaceous-a	Degree=Pos	dema	0
+polygalaceously	0	dema-polygalaceous-r		dema	0
+polygalas	0	dema-polygala-n	Number=Plur	dema	0
+polygamies	0	oewn-polygamy-n	Number=Plur	dema	0
+polygamist	0	oewn-polygamist-n	Number=Sing	dema	0
+polygamistic	0	dema-polygamistic-a	Degree=Pos	dema	0
+polygamistically	0	dema-polygamistic-r		dema	0
+polygamists	0	oewn-polygamist-n	Number=Plur	dema	0
+polygamous	0	oewn-polygamous-a	Degree=Pos	dema	0
+polygamously	0	dema-polygamously-r	Degree=Pos	dema	0
+polygamy	0	oewn-polygamy-n	Number=Sing	dema	0
+polygene	0	oewn-polygene-n	Number=Sing	dema	0
+polygenes	0	oewn-polygene-n	Number=Plur	dema	0
+polygenesis	0	dema-polygenesis-n	Number=Sing	dema	0
+polygenetic	0	dema-polygenetic-n	Number=Sing	dema	0
+polygenetics	0	dema-polygenetic-n	Number=Plur	dema	0
+polygenist	0	dema-polygenist-n	Number=Sing	dema	0
+polygenist	1	dema-polygenist-a	Degree=Pos	dema	0
+polygenistic	0	dema-polygenistic-a	Degree=Pos	dema	0
+polygenistically	0	dema-polygenistic-r		dema	0
+polygenistly	0	dema-polygenist-r		dema	0
+polygenists	0	dema-polygenist-n	Number=Plur	dema	0
+polyglot	0	oewn-polyglot-a	Degree=Pos	dema	0
+polyglot	1	oewn-polyglot-n	Number=Sing	dema	0
+polyglotly	0	dema-polyglot-r		dema	0
+polyglotness	0	oewn-polyglot-n	Number=Plur	dema	0
+polyglots	0	oewn-polyglot-n	Number=Plur	dema	0
+polygon	0	oewn-polygon-n	Number=Sing	dema	0
+polygonaceous	0	dema-polygonaceous-a	Degree=Pos	dema	0
+polygonaceously	0	dema-polygonaceous-r		dema	0
+polygonal	0	oewn-polygonal-a	Degree=Pos	dema	0
+polygonally	0	dema-polygonal-r		dema	0
+polygons	0	oewn-polygon-n	Number=Plur	dema	0
+polygonum	0	dema-polygonum-n	Number=Sing	dema	0
+polygonums	0	dema-polygonum-n	Number=Plur	dema	0
+polygraph	0	oewn-polygraph-n	Number=Sing	dema	0
+polygrapher	0	dema-polygrapher-n	Number=Sing	dema	0
+polygraphers	0	dema-polygrapher-n	Number=Plur	dema	0
+polygraphic	0	dema-polygraphic-a	Degree=Pos	dema	0
+polygraphically	0	dema-polygraphic-r		dema	0
+polygraphist	0	dema-polygraphist-n	Number=Sing	dema	0
+polygraphists	0	dema-polygraphist-n	Number=Plur	dema	0
+polygraphs	0	oewn-polygraph-n	Number=Plur	dema	0
+polygynies	0	oewn-polygyny-n	Number=Plur	dema	0
+polygynist	0	oewn-polygynist-n	Number=Sing	dema	0
+polygynists	0	oewn-polygynist-n	Number=Plur	dema	0
+polygynous	0	oewn-polygynous-a	Degree=Pos	dema	0
+polygynously	0	dema-polygynous-r		dema	0
+polygyny	0	oewn-polygyny-n	Number=Sing	dema	0
+polyhedron	0	oewn-polyhedron-n	Number=Sing	dema	0
+polyhedrons	0	oewn-polyhedron-n	Number=Plur	dema	0
+polyhistor	0	dema-polyhistor-n	Number=Sing	dema	0
+polyhistoric	0	dema-polyhistoric-a	Degree=Pos	dema	0
+polyhistorically	0	dema-polyhistoric-r		dema	0
+polyhistories	0	dema-polyhistory-n	Number=Plur	dema	0
+polyhistors	0	dema-polyhistor-n	Number=Plur	dema	0
+polyhistory	0	dema-polyhistory-n	Number=Sing	dema	0
+polyhydric	0	dema-polyhydric-a	Degree=Pos	dema	0
+polyhydrically	0	dema-polyhydric-r		dema	0
+polyhydroxily	0	dema-polyhydroxy-r		dema	0
+polyhydroxy	0	dema-polyhydroxy-a	Degree=Pos	dema	0
+polyimide	0	dema-polyimide-n	Number=Sing	dema	0
+polyimides	0	dema-polyimide-n	Number=Plur	dema	0
+polyisoprene	0	dema-polyisoprene-n	Number=Sing	dema	0
+polyisoprenes	0	dema-polyisoprene-n	Number=Plur	dema	0
+polymath	0	oewn-polymath-n	Number=Sing	dema	0
+polymaths	0	oewn-polymath-n	Number=Plur	dema	0
+polymer	0	oewn-polymer-n	Number=Sing	dema	0
+polymeric	0	oewn-polymeric-a	Degree=Pos	dema	0
+polymerically	0	dema-polymeric-r		dema	0
+polymerism	0	dema-polymerism-n	Number=Sing	dema	0
+polymerisms	0	dema-polymerism-n	Number=Plur	dema	0
+polymerization	0	oewn-polymerization-n	Number=Sing	dema	0
+polymerizations	0	oewn-polymerization-n	Number=Plur	dema	0
+polymerize	0	oewn-polymerize-v	VerbForm=Inf	dema	0
+polymerized	0	dema-polymerized-v	VerbForm=Inf	dema	0
+polymerizes	0	oewn-polymerize-v	Person=3+Tense=Pres	dema	0
+polymerizing	0	dema-polymerizing-v	VerbForm=Inf	dema	0
+polymerous	0	dema-polymerous-a	Degree=Pos	dema	0
+polymerously	0	dema-polymerous-r		dema	0
+polymers	0	oewn-polymer-n	Number=Plur	dema	0
+polymorph	0	oewn-polymorph-n	Number=Sing	dema	0
+polymorphism	0	oewn-polymorphism-n	Number=Sing	dema	0
+polymorphisms	0	oewn-polymorphism-n	Number=Plur	dema	0
+polymorphistic	0	dema-polymorphistic-a	Degree=Pos	dema	0
+polymorphistically	0	dema-polymorphistic-r		dema	0
+polymorphonuclear	0	dema-polymorphonuclear-a	Degree=Pos	dema	0
+polymorphonuclearly	0	dema-polymorphonuclear-r		dema	0
+polymorphous	0	oewn-polymorphous-a	Degree=Pos	dema	0
+polymorphously	0	dema-polymorphous-r		dema	0
+polymorphs	0	oewn-polymorph-n	Number=Plur	dema	0
+polymyxin	0	oewn-polymyxin-n	Number=Sing	dema	0
+polymyxins	0	oewn-polymyxin-n	Number=Plur	dema	0
+polyneuritic	0	dema-polyneuritic-a	Degree=Pos	dema	0
+polyneuritically	0	dema-polyneuritic-r		dema	0
+polyneuritis	0	oewn-polyneuritis-n	Number=Sing	dema	0
+polynomial	0	oewn-polynomial-a	Degree=Pos	dema	0
+polynomial	1	oewn-polynomial-n	Number=Sing	dema	0
+polynomially	0	dema-polynomial-r		dema	0
+polynomials	0	oewn-polynomial-n	Number=Plur	dema	0
+polynuclear	0	dema-polynuclear-a	Degree=Pos	dema	0
+polynuclearly	0	dema-polynuclear-r		dema	0
+polynucleotide	0	oewn-polynucleotide-n	Number=Sing	dema	0
+polynucleotides	0	oewn-polynucleotide-n	Number=Plur	dema	0
+polynya	0	oewn-polynya-n	Number=Sing	dema	0
+polynyas	0	oewn-polynya-n	Number=Plur	dema	0
+polyonymous	0	dema-polyonymous-a	Degree=Pos	dema	0
+polyonymously	0	dema-polyonymous-r		dema	0
+polyp	0	oewn-polyp-n	Number=Sing	dema	0
+polyparian	0	dema-polyparian-a	Degree=Pos	dema	0
+polyparianly	0	dema-polyparian-r		dema	0
+polyparies	0	dema-polyparies-n	Number=Sing	dema	0
+polypary	0	dema-polypary-n	Number=Sing	dema	0
+polypeptide	0	oewn-polypeptide-n	Number=Sing	dema	0
+polypeptides	0	oewn-polypeptide-n	Number=Plur	dema	0
+polypetalies	0	dema-polypetaly-n	Number=Plur	dema	0
+polypetalous	0	oewn-polypetalous-a	Degree=Pos	dema	0
+polypetalously	0	dema-polypetalous-r		dema	0
+polypetaly	0	dema-polypetaly-n	Number=Sing	dema	0
+polyphagia	0	dema-polyphagia-n	Number=Sing	dema	0
+polyphagian	0	dema-polyphagian-n	Number=Sing	dema	0
+polyphagian	1	dema-polyphagian-a	Degree=Pos	dema	0
+polyphagianly	0	dema-polyphagian-r		dema	0
+polyphagians	0	dema-polyphagian-n	Number=Plur	dema	0
+polyphagias	0	dema-polyphagia-n	Number=Plur	dema	0
+polyphagist	0	dema-polyphagist-n	Number=Sing	dema	0
+polyphagists	0	dema-polyphagist-n	Number=Plur	dema	0
+polyphase	0	oewn-polyphase-a	Degree=Pos	dema	0
+polyphasely	0	dema-polyphase-r		dema	0
+polyphaseness	0	dema-polyphase-n	Number=Plur	dema	0
+polyphone	0	oewn-polyphone-n	Number=Sing	dema	0
+polyphones	0	oewn-polyphone-n	Number=Plur	dema	0
+polyphonic	0	oewn-polyphonic-a	Degree=Pos	dema	0
+polyphonically	0	oewn-polyphonically-r	Degree=Pos	dema	0
+polyphonies	0	oewn-polyphony-n	Number=Plur	dema	0
+polyphonous	0	oewn-polyphonous-a	Degree=Pos	dema	0
+polyphonously	0	dema-polyphonously-r	Degree=Pos	dema	0
+polyphony	0	oewn-polyphony-n	Number=Sing	dema	0
+polyphyletic	0	dema-polyphyletic-a	Degree=Pos	dema	0
+polyphyletically	0	dema-polyphyletically-r	Degree=Pos	dema	0
+polyphyodont	0	dema-polyphyodont-a	Degree=Pos	dema	0
+polyphyodontly	0	dema-polyphyodont-r		dema	0
+polypi	0	dema-polypi-n	Number=Sing	dema	0
+polypidom	0	dema-polypidom-n	Number=Sing	dema	0
+polypidoms	0	dema-polypidom-n	Number=Plur	dema	0
+polypis	0	dema-polypi-n	Number=Plur	dema	0
+polyploid	0	oewn-polyploid-a	Degree=Pos	dema	0
+polyploid	1	oewn-polyploid-n	Number=Sing	dema	0
+polyploidic	0	dema-polyploidic-a	Degree=Pos	dema	0
+polyploidically	0	dema-polyploidic-r		dema	0
+polyploidies	0	oewn-polyploidy-n	Number=Plur	dema	0
+polyploidly	0	dema-polyploid-r		dema	0
+polyploidness	0	oewn-polyploid-n	Number=Plur	dema	0
+polyploids	0	oewn-polyploid-n	Number=Plur	dema	0
+polyploidy	0	oewn-polyploidy-n	Number=Sing	dema	0
+polypnea	0	dema-polypnea-n	Number=Sing	dema	0
+polypneas	0	dema-polypnea-n	Number=Plur	dema	0
+polypod	0	dema-polypod-a	Degree=Pos	dema	0
+polypod	1	dema-polypod-n	Number=Sing	dema	0
+polypodies	0	oewn-polypody-n	Number=Plur	dema	0
+polypodly	0	dema-polypod-r		dema	0
+polypodness	0	dema-polypod-n	Number=Plur	dema	0
+polypods	0	dema-polypod-n	Number=Plur	dema	0
+polypody	0	oewn-polypody-n	Number=Sing	dema	0
+polypoid	0	dema-polypoid-a	Degree=Pos	dema	0
+polypoidly	0	dema-polypoid-r		dema	0
+polypoidness	0	dema-polypoid-n	Number=Plur	dema	0
+polypous	0	dema-polypous-a	Degree=Pos	dema	0
+polypously	0	dema-polypous-r		dema	0
+polypousness	0	dema-polypous-n	Number=Plur	dema	0
+polypropylene	0	oewn-polypropylene-n	Number=Sing	dema	0
+polypropylenes	0	oewn-polypropylene-n	Number=Plur	dema	0
+polyprotic	0	dema-polyprotic-a	Degree=Pos	dema	0
+polyprotically	0	dema-polyprotic-r		dema	0
+polyprotodont	0	dema-polyprotodont-n	Number=Sing	dema	0
+polyprotodonts	0	dema-polyprotodont-n	Number=Plur	dema	0
+polyps	0	oewn-polyp-n	Number=Plur	dema	0
+polyptych	0	dema-polyptych-n	Number=Sing	dema	0
+polyptyches	0	dema-polyptych-n	Number=Plur	dema	0
+polyptychs	0	dema-polyptych-n	Number=Plur	dema	0
+polypus	0	oewn-polypus-n	Number=Sing	dema	0
+polypuses	0	oewn-polypus-n	Number=Plur	dema	0
+polyrhythm	0	dema-polyrhythm-n	Number=Sing	dema	0
+polyrhythmically	0	dema-polyrhythmically-r	Degree=Pos	dema	0
+polyrhythms	0	dema-polyrhythm-n	Number=Plur	dema	0
+polysaccharide	0	oewn-polysaccharide-n	Number=Sing	dema	0
+polysaccharides	0	oewn-polysaccharide-n	Number=Plur	dema	0
+polysemies	0	oewn-polysemy-n	Number=Plur	dema	0
+polysemous	0	oewn-polysemous-a	Degree=Pos	dema	0
+polysemously	0	dema-polysemous-r		dema	0
+polysemy	0	oewn-polysemy-n	Number=Sing	dema	0
+polysepalous	0	dema-polysepalous-a	Degree=Pos	dema	0
+polysepalously	0	dema-polysepalous-r		dema	0
+polysomic	0	dema-polysomic-a	Degree=Pos	dema	0
+polysomically	0	dema-polysomic-r		dema	0
+polyspast	0	dema-polyspast-n	Number=Sing	dema	0
+polyspasts	0	dema-polyspast-n	Number=Plur	dema	0
+polyspermia	0	dema-polyspermia-a	Degree=Pos	dema	0
+polyspermialy	0	dema-polyspermia-r		dema	0
+polystyrene	0	oewn-polystyrene-n	Number=Sing	dema	0
+polystyrenes	0	oewn-polystyrene-n	Number=Plur	dema	0
+polysulfide	0	dema-polysulfide-n	Number=Sing	dema	0
+polysulfides	0	dema-polysulfide-n	Number=Plur	dema	0
+polysulfonate	0	dema-polysulfonate-n	Number=Sing	dema	0
+polysulfonates	0	dema-polysulfonate-n	Number=Plur	dema	0
+polysulphide	0	dema-polysulphide-n	Number=Sing	dema	0
+polysulphides	0	dema-polysulphide-n	Number=Plur	dema	0
+polysuspensoid	0	dema-polysuspensoid-n	Number=Sing	dema	0
+polysuspensoids	0	dema-polysuspensoid-n	Number=Plur	dema	0
+polysyllabic	0	oewn-polysyllabic-a	Degree=Pos	dema	0
+polysyllabically	0	dema-polysyllabic-r		dema	0
+polysyllable	0	oewn-polysyllable-n	Number=Sing	dema	0
+polysyllables	0	oewn-polysyllable-n	Number=Plur	dema	0
+polysyllogism	0	dema-polysyllogism-n	Number=Sing	dema	0
+polysyllogisms	0	dema-polysyllogism-n	Number=Plur	dema	0
+polysyllogistic	0	dema-polysyllogistic-a	Degree=Pos	dema	0
+polysyllogistically	0	dema-polysyllogistic-r		dema	0
+polysyndeton	0	oewn-polysyndeton-n	Number=Sing	dema	0
+polysyndetons	0	oewn-polysyndeton-n	Number=Plur	dema	0
+polysynthesism	0	dema-polysynthesism-n	Number=Sing	dema	0
+polysynthesisms	0	dema-polysynthesism-n	Number=Plur	dema	0
+polysynthetic	0	oewn-polysynthetic-a	Degree=Pos	dema	0
+polysynthetically	0	dema-polysynthetic-r		dema	0
+polytechnic	0	oewn-polytechnic-n	Number=Sing	dema	0
+polytechnic	1	dema-polytechnic-a	Degree=Pos	dema	0
+polytechnically	0	dema-polytechnic-r		dema	0
+polytechnics	0	oewn-polytechnic-n	Number=Plur	dema	0
+polytetrafluoroethylene	0	oewn-polytetrafluoroethylene-n	Number=Sing	dema	0
+polytetrafluoroethylenes	0	oewn-polytetrafluoroethylene-n	Number=Plur	dema	0
+polytheism	0	oewn-polytheism-n	Number=Sing	dema	0
+polytheisms	0	oewn-polytheism-n	Number=Plur	dema	0
+polytheist	0	oewn-polytheist-n	Number=Sing	dema	0
+polytheistic	0	oewn-polytheistic-a	Degree=Pos	dema	0
+polytheistical	0	dema-polytheistical-a	Degree=Pos	dema	0
+polytheistically	0	dema-polytheistically-r	Degree=Pos	dema	0
+polytheists	0	oewn-polytheist-n	Number=Plur	dema	0
+polythene	0	oewn-polythene-n	Number=Sing	dema	0
+polythenes	0	oewn-polythene-n	Number=Plur	dema	0
+polytomies	0	dema-polytomies-n	Number=Sing	dema	0
+polytomous	0	dema-polytomous-a	Degree=Pos	dema	0
+polytomously	0	dema-polytomous-r		dema	0
+polytomy	0	dema-polytomy-n	Number=Sing	dema	0
+polytonal	0	oewn-polytonal-a	Degree=Pos	dema	0
+polytonalities	0	oewn-polytonality-n	Number=Plur	dema	0
+polytonality	0	oewn-polytonality-n	Number=Sing	dema	0
+polytonally	0	dema-polytonally-r	Degree=Pos	dema	0
+polytrophic	0	dema-polytrophic-a	Degree=Pos	dema	0
+polytrophically	0	dema-polytrophic-r		dema	0
+polytypic	0	dema-polytypic-a	Degree=Pos	dema	0
+polytypically	0	dema-polytypic-r		dema	0
+polyunsaturate	0	dema-polyunsaturate-n	Number=Sing	dema	0
+polyunsaturated	0	oewn-polyunsaturated-a	Degree=Pos	dema	0
+polyunsaturated	1	dema-polyunsaturated-v	VerbForm=Inf	dema	0
+polyunsaturateded	0	dema-polyunsaturated-v	Tense=Past	dema	0
+polyunsaturateding	0	dema-polyunsaturated-v	VerbForm=Ger	dema	0
+polyunsaturatedly	0	dema-polyunsaturated-r		dema	0
+polyunsaturateds	0	dema-polyunsaturated-v	Person=3+Tense=Pres	dema	0
+polyunsaturates	0	dema-polyunsaturate-n	Number=Plur	dema	0
+polyurethane	0	oewn-polyurethane-n	Number=Sing	dema	0
+polyurethanes	0	oewn-polyurethane-n	Number=Plur	dema	0
+polyuria	0	oewn-polyuria-n	Number=Sing	dema	0
+polyurias	0	oewn-polyuria-n	Number=Plur	dema	0
+polyvalence	0	oewn-polyvalence-n	Number=Sing	dema	0
+polyvalences	0	oewn-polyvalence-n	Number=Plur	dema	0
+polyvalent	0	oewn-polyvalent-a	Degree=Pos	dema	0
+polyvalently	0	dema-polyvalent-r		dema	0
+polyvinyl	0	dema-polyvinyl-n	Number=Sing	dema	0
+polyvinylidene	0	dema-polyvinylidene-a	Degree=Pos	dema	0
+polyvinylidenely	0	dema-polyvinylidene-r		dema	0
+polyvinylpyrrolidone	0	dema-polyvinylpyrrolidone-n	Number=Sing	dema	0
+polyvinylpyrrolidones	0	dema-polyvinylpyrrolidone-n	Number=Plur	dema	0
+polyvinyls	0	dema-polyvinyl-n	Number=Plur	dema	0
+polyvoltine	0	dema-polyvoltine-n	Number=Sing	dema	0
+polyvoltines	0	dema-polyvoltine-n	Number=Plur	dema	0
+polyzoan	0	oewn-polyzoan-n	Number=Sing	dema	0
+polyzoan	1	dema-polyzoan-a	Degree=Pos	dema	0
+polyzoanly	0	dema-polyzoan-r		dema	0
+polyzoanness	0	oewn-polyzoan-n	Number=Plur	dema	0
+polyzoans	0	oewn-polyzoan-n	Number=Plur	dema	0
+polyzoaria	0	dema-polyzoaria-n	Number=Sing	dema	0
+polyzoarial	0	dema-polyzoarial-a	Degree=Pos	dema	0
+polyzoarially	0	dema-polyzoarial-r		dema	0
+polyzoarias	0	dema-polyzoaria-n	Number=Plur	dema	0
+polyzoarium	0	dema-polyzoarium-n	Number=Sing	dema	0
+polyzoariums	0	dema-polyzoarium-n	Number=Plur	dema	0
+polyzoic	0	dema-polyzoic-a	Degree=Pos	dema	0
+polyzoically	0	dema-polyzoic-r		dema	0
+polyzoicness	0	dema-polyzoic-n	Number=Plur	dema	0
+pomace	0	dema-pomace-n	Number=Sing	dema	0
+pomaceous	0	dema-pomaceous-a	Degree=Pos	dema	0
+pomaceously	0	dema-pomaceous-r		dema	0
+pomaceousness	0	dema-pomaceous-n	Number=Plur	dema	0
+pomaces	0	dema-pomace-n	Number=Plur	dema	0
+pomade	0	oewn-pomade-n	Number=Sing	dema	0
+pomade	1	oewn-pomade-v	VerbForm=Inf	dema	0
+pomaded	0	oewn-pomade-v	Tense=Past	dema	0
+pomader	0	oewn-pomade-n	Number=Plur	dema	0
+pomaders	0	oewn-pomade-n	Number=Plur	dema	0
+pomades	0	oewn-pomade-n	Number=Plur	dema	0
+pomades	1	oewn-pomade-v	Person=3+Tense=Pres	dema	0
+pomading	0	oewn-pomade-v	VerbForm=Ger	dema	0
+pomadingly	0	dema-pomade-r		dema	0
+pomander	0	dema-pomander-n	Number=Sing	dema	0
+pomanders	0	dema-pomander-n	Number=Plur	dema	0
+pomatum	0	oewn-pomatum-n	Number=Sing	dema	0
+pomatums	0	oewn-pomatum-n	Number=Plur	dema	0
+pombe	0	dema-pombe-n	Number=Sing	dema	0
+pombes	0	dema-pombe-n	Number=Plur	dema	0
+pome	0	oewn-pome-n	Number=Sing	dema	0
+pomegranate	0	oewn-pomegranate-n	Number=Sing	dema	0
+pomegranates	0	oewn-pomegranate-n	Number=Plur	dema	0
+pomelo	0	oewn-pomelo-n	Number=Sing	dema	0
+pomeloes	0	oewn-pomelo-n	Number=Plur	dema	0
+pomelos	0	dema-pomelos-n	Number=Sing	dema	0
+pomes	0	oewn-pome-n	Number=Plur	dema	0
+pomey	0	dema-pomey-n	Number=Sing	dema	0
+pomeys	0	dema-pomey-n	Number=Plur	dema	0
+pomfret	0	oewn-pomfret-n	Number=Sing	dema	0
+pomfrets	0	oewn-pomfret-n	Number=Plur	dema	0
+pomiculture	0	dema-pomiculture-n	Number=Sing	dema	0
+pomicultures	0	dema-pomiculture-n	Number=Plur	dema	0
+pomiculturist	0	dema-pomiculturist-n	Number=Sing	dema	0
+pomiculturists	0	dema-pomiculturist-n	Number=Plur	dema	0
+pomiferous	0	dema-pomiferous-a	Degree=Pos	dema	0
+pomiferously	0	dema-pomiferous-r		dema	0
+pommel	0	oewn-pommel-n	Number=Sing	dema	0
+pommel	1	oewn-pommel-v	VerbForm=Inf	dema	0
+pommeled	0	dema-pommeled-v	VerbForm=Inf	dema	0
+pommeler	0	oewn-pommel-n	Number=Plur	dema	0
+pommelers	0	oewn-pommel-n	Number=Plur	dema	0
+pommeling	0	dema-pommeling-v	VerbForm=Inf	dema	0
+pommelingly	0	dema-pommel-r		dema	0
+pommelled	0	dema-pommelled-v	VerbForm=Inf	dema	0
+pommelling	0	dema-pommelling-v	VerbForm=Inf	dema	0
+pommellingly	0	dema-pommel-r		dema	0
+pommels	0	oewn-pommel-n	Number=Plur	dema	0
+pommels	1	oewn-pommel-v	Person=3+Tense=Pres	dema	0
+pommies	0	oewn-pommy-n	Number=Plur	dema	0
+pommy	0	oewn-pommy-n	Number=Sing	dema	0
+pomological	0	dema-pomological-a	Degree=Pos	dema	0
+pomologically	0	dema-pomologically-r	Degree=Pos	dema	0
+pomologies	0	oewn-pomology-n	Number=Plur	dema	0
+pomologist	0	oewn-pomologist-n	Number=Sing	dema	0
+pomologists	0	oewn-pomologist-n	Number=Plur	dema	0
+pomology	0	oewn-pomology-n	Number=Sing	dema	0
+pomp	0	oewn-pomp-n	Number=Sing	dema	0
+pompadour	0	oewn-pompadour-n	Number=Sing	dema	0
+pompadours	0	oewn-pompadour-n	Number=Plur	dema	0
+pompano	0	oewn-pompano-n	Number=Sing	dema	0
+pompanoes	0	oewn-pompano-n	Number=Plur	dema	0
+pompanos	0	oewn-pompano-n	Number=Plur	dema	0
+pompom	0	dema-pompom-n	Number=Sing	dema	0
+pompoms	0	dema-pompom-n	Number=Plur	dema	0
+pompon	0	oewn-pompon-n	Number=Sing	dema	0
+pompons	0	dema-pompons-n	Number=Sing	dema	0
+pomposities	0	dema-pomposities-n	Number=Sing	dema	0
+pomposity	0	oewn-pomposity-n	Number=Sing	dema	0
+pompous	0	oewn-pompous-a	Degree=Pos	dema	0
+pompously	0	oewn-pompously-r	Degree=Pos	dema	0
+pompousness	0	dema-pompous-n	Number=Plur	dema	0
+pomps	0	oewn-pomp-n	Number=Plur	dema	0
+ponce	0	oewn-ponce-n	Number=Sing	dema	0
+ponce	1	dema-ponce-v	VerbForm=Inf	dema	0
+ponceau	0	dema-ponceau-n	Number=Sing	dema	0
+ponceau	1	dema-ponceau-a	Degree=Pos	dema	0
+ponceauer	0	dema-ponceau-a	Degree=Cmp	dema	0
+ponceauest	0	dema-ponceau-a	Degree=Sup	dema	0
+ponceauly	0	dema-ponceau-r		dema	0
+ponceauness	0	dema-ponceau-n	Number=Plur	dema	0
+ponceaus	0	dema-ponceau-n	Number=Plur	dema	0
+ponced	0	dema-ponce-v	Tense=Past	dema	0
+poncer	0	oewn-ponce-n	Number=Plur	dema	0
+poncers	0	oewn-ponce-n	Number=Plur	dema	0
+ponces	0	oewn-ponce-n	Number=Plur	dema	0
+ponces	1	dema-ponce-v	Person=3+Tense=Pres	dema	0
+poncho	0	oewn-poncho-n	Number=Sing	dema	0
+ponchoed	0	dema-ponchoed-a	Degree=Pos	dema	0
+ponchoed	1	dema-ponchoed-v	VerbForm=Inf	dema	0
+ponchoeded	0	dema-ponchoed-v	Tense=Past	dema	0
+ponchoeder	0	dema-ponchoed-n	Number=Plur	dema	0
+ponchoeders	0	dema-ponchoed-n	Number=Plur	dema	0
+ponchoeding	0	dema-ponchoed-v	VerbForm=Ger	dema	0
+ponchoedingly	0	dema-ponchoed-r		dema	0
+ponchoedly	0	dema-ponchoed-r		dema	0
+ponchoedness	0	dema-ponchoed-n	Number=Plur	dema	0
+ponchoeds	0	dema-ponchoed-v	Person=3+Tense=Pres	dema	0
+ponchoes	0	oewn-poncho-n	Number=Plur	dema	0
+ponchos	0	dema-ponchos-n	Number=Sing	dema	0
+poncing	0	dema-ponce-v	VerbForm=Ger	dema	0
+poncingly	0	dema-ponce-r		dema	0
+pond	0	oewn-pond-n	Number=Sing	dema	0
+ponder	0	oewn-ponder-v	VerbForm=Inf	dema	0
+ponderable	0	oewn-ponderable-a	Degree=Pos	dema	0
+ponderable	1	dema-ponderable-n	Number=Sing	dema	0
+ponderables	0	dema-ponderable-n	Number=Plur	dema	0
+ponderably	0	dema-ponderable-r		dema	0
+pondered	0	oewn-ponder-v	Tense=Past	dema	0
+ponderer	0	oewn-ponderer-n	Number=Sing	dema	0
+ponderers	0	oewn-ponderer-n	Number=Plur	dema	0
+pondering	0	oewn-ponder-v	VerbForm=Ger	dema	0
+ponderingly	0	dema-ponder-r		dema	0
+ponderosities	0	oewn-ponderosity-n	Number=Plur	dema	0
+ponderosity	0	oewn-ponderosity-n	Number=Sing	dema	0
+ponderous	0	oewn-ponderous-a	Degree=Pos	dema	0
+ponderously	0	oewn-ponderously-r	Degree=Pos	dema	0
+ponderousness	0	oewn-ponderousness-n	Number=Sing	dema	0
+ponderousnesses	0	oewn-ponderousness-n	Number=Plur	dema	0
+ponders	0	oewn-ponder-v	Person=3+Tense=Pres	dema	0
+pondokkie	0	dema-pondokkie-n	Number=Sing	dema	0
+pondokkies	0	dema-pondokkie-n	Number=Plur	dema	0
+ponds	0	oewn-pond-n	Number=Plur	dema	0
+pondweed	0	oewn-pondweed-n	Number=Sing	dema	0
+pondweeds	0	oewn-pondweed-n	Number=Plur	dema	0
+pone	0	oewn-pone-n	Number=Sing	dema	0
+pones	0	oewn-pone-n	Number=Plur	dema	0
+pong	0	oewn-pong-n	Number=Sing	dema	0
+pong	1	dema-pong-v	VerbForm=Inf	dema	0
+ponged	0	dema-pong-v	Tense=Past	dema	0
+pongee	0	oewn-pongee-n	Number=Sing	dema	0
+pongees	0	oewn-pongee-n	Number=Plur	dema	0
+ponger	0	oewn-pong-n	Number=Plur	dema	0
+pongers	0	oewn-pong-n	Number=Plur	dema	0
+pongid	0	oewn-pongid-n	Number=Sing	dema	0
+pongid	1	dema-pongid-a	Degree=Pos	dema	0
+pongider	0	dema-pongid-a	Degree=Cmp	dema	0
+pongidest	0	dema-pongid-a	Degree=Sup	dema	0
+pongidly	0	dema-pongid-r		dema	0
+pongidness	0	oewn-pongid-n	Number=Plur	dema	0
+pongids	0	oewn-pongid-n	Number=Plur	dema	0
+ponging	0	dema-pong-v	VerbForm=Ger	dema	0
+pongingly	0	dema-pong-r		dema	0
+pongs	0	oewn-pong-n	Number=Plur	dema	0
+pongs	1	dema-pong-v	Person=3+Tense=Pres	dema	0
+poniard	0	oewn-poniard-n	Number=Sing	dema	0
+poniard	1	oewn-poniard-v	VerbForm=Inf	dema	0
+poniarded	0	oewn-poniard-v	Tense=Past	dema	0
+poniarder	0	oewn-poniard-n	Number=Plur	dema	0
+poniarders	0	oewn-poniard-n	Number=Plur	dema	0
+poniarding	0	oewn-poniard-v	VerbForm=Ger	dema	0
+poniardingly	0	dema-poniard-r		dema	0
+poniards	0	oewn-poniard-n	Number=Plur	dema	0
+poniards	1	oewn-poniard-v	Person=3+Tense=Pres	dema	0
+ponied	0	dema-ponied-n	Number=Sing	dema	0
+ponieds	0	dema-ponied-n	Number=Plur	dema	0
+ponies	0	dema-ponies-n	Number=Sing	dema	0
+ponograph	0	dema-ponograph-n	Number=Sing	dema	0
+ponographs	0	dema-ponograph-n	Number=Plur	dema	0
+pons	0	oewn-pons-n	Number=Sing	dema	0
+ponses	0	oewn-pons-n	Number=Plur	dema	0
+pont	0	dema-pont-n	Number=Sing	dema	0
+pontage	0	dema-pontage-n	Number=Sing	dema	0
+pontages	0	dema-pontage-n	Number=Plur	dema	0
+pontes	0	dema-pontes-n	Number=Sing	dema	0
+pontianak	0	dema-pontianak-n	Number=Sing	dema	0
+pontianaks	0	dema-pontianak-n	Number=Plur	dema	0
+pontic	0	dema-pontic-n	Number=Sing	dema	0
+ponticello	0	dema-ponticello-n	Number=Sing	dema	0
+ponticelloes	0	dema-ponticello-n	Number=Plur	dema	0
+ponticellos	0	dema-ponticellos-n	Number=Sing	dema	0
+pontics	0	dema-pontic-n	Number=Plur	dema	0
+pontifex	0	oewn-pontifex-n	Number=Sing	dema	0
+pontifexes	0	oewn-pontifex-n	Number=Plur	dema	0
+pontiff	0	oewn-pontiff-n	Number=Sing	dema	0
+pontiffs	0	oewn-pontiff-n	Number=Plur	dema	0
+pontific	0	dema-pontific-a	Degree=Pos	dema	0
+pontifical	0	oewn-pontifical-a	Degree=Pos	dema	0
+pontifical	1	oewn-pontifical-n	Number=Sing	dema	0
+pontifically	0	dema-pontifically-r	Degree=Pos	dema	0
+pontificals	0	dema-pontificals-n	Number=Sing	dema	0
+pontificate	0	oewn-pontificate-n	Number=Sing	dema	1
+pontificate	1	oewn-pontificate-v	VerbForm=Inf	dema	1
+pontificated	0	dema-pontificated-v	VerbForm=Inf	dema	0
+pontificates	0	oewn-pontificate-n	Number=Plur	dema	1
+pontificates	1	oewn-pontificate-v	Person=3+Tense=Pres	dema	1
+pontificating	0	dema-pontificating-v	VerbForm=Inf	dema	0
+pontifices	0	dema-pontifices-n	Number=Sing	dema	0
+pontificeses	0	dema-pontifices-n	Number=Plur	dema	0
+pontificness	0	dema-pontific-n	Number=Plur	dema	0
+pontil	0	dema-pontil-n	Number=Sing	dema	0
+pontils	0	dema-pontil-n	Number=Plur	dema	0
+pontine	0	dema-pontine-a	Degree=Pos	dema	0
+pontinely	0	dema-pontine-r		dema	0
+pontineness	0	dema-pontine-n	Number=Plur	dema	0
+pontiner	0	dema-pontine-a	Degree=Cmp	dema	0
+pontinest	0	dema-pontine-a	Degree=Sup	dema	0
+pontlevis	0	dema-pontlevis-n	Number=Sing	dema	0
+pontonier	0	dema-pontonier-n	Number=Sing	dema	0
+pontoniers	0	dema-pontonier-n	Number=Plur	dema	0
+pontoon	0	oewn-pontoon-n	Number=Sing	dema	0
+pontoons	0	oewn-pontoon-n	Number=Plur	dema	0
+ponts	0	dema-pont-n	Number=Plur	dema	0
+pony	0	oewn-pony-n	Number=Sing	dema	0
+ponying	0	dema-ponying-n	Number=Sing	dema	0
+ponyings	0	dema-ponying-n	Number=Plur	dema	0
+ponytail	0	oewn-ponytail-n	Number=Sing	dema	0
+ponytails	0	oewn-ponytail-n	Number=Plur	dema	0
+pooch	0	oewn-pooch-n	Number=Sing	dema	0
+pooches	0	oewn-pooch-n	Number=Plur	dema	0
+poochs	0	oewn-pooch-n	Number=Plur	dema	0
+pood	0	oewn-pood-n	Number=Sing	dema	0
+poodle	0	oewn-poodle-n	Number=Sing	dema	0
+poodles	0	oewn-poodle-n	Number=Plur	dema	0
+poods	0	oewn-pood-n	Number=Plur	dema	0
+poof	0	oewn-poof-n	Number=Sing	dema	0
+poofs	0	oewn-poof-n	Number=Plur	dema	0
+pooftah	0	dema-pooftah-n	Number=Sing	dema	0
+pooftahs	0	dema-pooftah-n	Number=Plur	dema	0
+pooh	0	dema-pooh-i		dema	0
+pooka	0	dema-pooka-n	Number=Sing	dema	0
+pookas	0	dema-pooka-n	Number=Plur	dema	0
+pool	0	oewn-pool-n	Number=Sing	dema	0
+pool	1	oewn-pool-v	VerbForm=Inf	dema	0
+pooled	0	oewn-pool-v	Tense=Past	dema	0
+pooler	0	oewn-pool-n	Number=Plur	dema	0
+poolers	0	oewn-pool-n	Number=Plur	dema	0
+pooling	0	oewn-pool-v	VerbForm=Ger	dema	0
+poolingly	0	dema-pool-r		dema	0
+poolroom	0	oewn-poolroom-n	Number=Sing	dema	0
+poolrooms	0	oewn-poolroom-n	Number=Plur	dema	0
+pools	0	dema-pools-n	Number=Sing	dema	0
+poon	0	oewn-poon-n	Number=Sing	dema	0
+poonce	0	dema-poonce-n	Number=Sing	dema	0
+poonces	0	dema-poonce-n	Number=Plur	dema	0
+poons	0	oewn-poon-n	Number=Plur	dema	0
+poop	0	oewn-poop-n	Number=Sing	dema	0
+poop	1	dema-poop-v	VerbForm=Inf	dema	0
+pooped	0	dema-poop-v	Tense=Past	dema	0
+pooper	0	oewn-poop-n	Number=Plur	dema	0
+poopers	0	oewn-poop-n	Number=Plur	dema	0
+pooping	0	dema-poop-v	VerbForm=Ger	dema	0
+poopingly	0	dema-poop-r		dema	0
+poops	0	oewn-poop-n	Number=Plur	dema	0
+poops	1	dema-poop-v	Person=3+Tense=Pres	dema	0
+poor	0	oewn-poor-a	Degree=Pos	dema	0
+poorer	0	oewn-poor-a	Degree=Cmp	dema	0
+poorest	0	oewn-poor-a	Degree=Sup	dema	0
+poorhouse	0	oewn-poorhouse-n	Number=Sing	dema	0
+poorhouses	0	oewn-poorhouse-n	Number=Plur	dema	0
+poorly	0	oewn-poorly-r	Degree=Pos	dema	0
+poorly	1	oewn-poorly-a	Degree=Pos	dema	0
+poorness	0	oewn-poorness-n	Number=Sing	dema	0
+poornesses	0	oewn-poorness-n	Number=Plur	dema	0
+poort	0	dema-poort-n	Number=Sing	dema	0
+poortith	0	dema-poortith-n	Number=Sing	dema	0
+poortiths	0	dema-poortith-n	Number=Plur	dema	0
+poorts	0	dema-poort-n	Number=Plur	dema	0
+poove	0	oewn-poove-n	Number=Sing	dema	0
+pooves	0	oewn-poove-n	Number=Plur	dema	0
+pop	0	oewn-pop-n	Number=Sing	dema	1
+pop	1	oewn-pop-v	VerbForm=Inf	dema	1
+pop	2	oewn-pop-r	Degree=Pos	dema	0
+pop	3	dema-pop-i		dema	0
+pop	4	oewn-pop-a	Degree=Pos	dema	0
+popcorn	0	oewn-popcorn-n	Number=Sing	dema	0
+popcorns	0	oewn-popcorn-n	Number=Plur	dema	0
+pope	0	oewn-pope-n	Number=Sing	dema	0
+popedom	0	dema-popedom-n	Number=Sing	dema	0
+popedoms	0	dema-popedom-n	Number=Plur	dema	0
+popeless	0	dema-popeless-a	Degree=Pos	dema	0
+popelessly	0	dema-popeless-r		dema	0
+popelessness	0	dema-popeless-n	Number=Plur	dema	0
+popelike	0	dema-popelike-a	Degree=Pos	dema	0
+popelikely	0	dema-popelike-r		dema	0
+popelikeness	0	dema-popelike-n	Number=Plur	dema	0
+poperies	0	oewn-popery-n	Number=Plur	dema	0
+popery	0	oewn-popery-n	Number=Sing	dema	0
+popes	0	oewn-pope-n	Number=Plur	dema	0
+popeyed	0	oewn-popeyed-a	Degree=Pos	dema	0
+popeyed	1	dema-popeyed-v	VerbForm=Inf	dema	0
+popeyeded	0	dema-popeyed-v	Tense=Past	dema	0
+popeyeder	0	dema-popeyed-n	Number=Plur	dema	0
+popeyeders	0	dema-popeyed-n	Number=Plur	dema	0
+popeyeding	0	dema-popeyed-v	VerbForm=Ger	dema	0
+popeyedingly	0	dema-popeyed-r		dema	0
+popeyedly	0	dema-popeyed-r		dema	0
+popeyedness	0	dema-popeyed-n	Number=Plur	dema	0
+popeyeds	0	dema-popeyed-v	Person=3+Tense=Pres	dema	0
+popgun	0	oewn-popgun-n	Number=Sing	dema	0
+popguns	0	oewn-popgun-n	Number=Plur	dema	0
+popie	0	dema-popie-n	Number=Sing	dema	0
+popies	0	dema-popie-n	Number=Plur	dema	0
+popinac	0	dema-popinac-n	Number=Sing	dema	0
+popinacs	0	dema-popinac-n	Number=Plur	dema	0
+popinjay	0	oewn-popinjay-n	Number=Sing	dema	0
+popinjays	0	oewn-popinjay-n	Number=Plur	dema	0
+popish	0	oewn-popish-a	Degree=Pos	dema	0
+popishly	0	oewn-popishly-r	Degree=Pos	dema	0
+popishness	0	dema-popishness-n	Number=Sing	dema	0
+popishnesses	0	dema-popishness-n	Number=Plur	dema	0
+poplar	0	oewn-poplar-n	Number=Sing	dema	0
+poplared	0	dema-poplared-a	Degree=Pos	dema	0
+poplared	1	dema-poplared-v	VerbForm=Inf	dema	0
+poplareded	0	dema-poplared-v	Tense=Past	dema	0
+poplareder	0	dema-poplared-n	Number=Plur	dema	0
+poplareders	0	dema-poplared-n	Number=Plur	dema	0
+poplareding	0	dema-poplared-v	VerbForm=Ger	dema	0
+poplaredingly	0	dema-poplared-r		dema	0
+poplaredly	0	dema-poplared-r		dema	0
+poplaredness	0	dema-poplared-n	Number=Plur	dema	0
+poplareds	0	dema-poplared-v	Person=3+Tense=Pres	dema	0
+poplars	0	oewn-poplar-n	Number=Plur	dema	0
+poplin	0	oewn-poplin-n	Number=Sing	dema	0
+poplins	0	oewn-poplin-n	Number=Plur	dema	0
+popliteal	0	oewn-popliteal-a	Degree=Pos	dema	0
+popliteally	0	dema-popliteal-r		dema	0
+poplitealness	0	dema-popliteal-n	Number=Plur	dema	0
+popliteus	0	dema-popliteus-n	Number=Sing	dema	0
+popliteuses	0	dema-popliteus-n	Number=Plur	dema	0
+poply	0	oewn-pop-r		dema	0
+popness	0	oewn-pop-n	Number=Plur	dema	1
+popover	0	oewn-popover-n	Number=Sing	dema	0
+popovers	0	oewn-popover-n	Number=Plur	dema	0
+poppa	0	dema-poppa-n	Number=Sing	dema	0
+poppadom	0	dema-poppadom-n	Number=Sing	dema	0
+poppadoms	0	dema-poppadom-n	Number=Plur	dema	0
+poppas	0	dema-poppa-n	Number=Plur	dema	0
+popped	0	oewn-pop-v	Tense=Past	dema	1
+popper	0	oewn-popper-n	Number=Sing	dema	0
+poppers	0	oewn-pop-n	Number=Plur	dema	1
+poppest	0	oewn-pop-n	Number=Plur	dema	1
+poppest	1	oewn-pop-v		dema	1
+poppet	0	oewn-poppet-n	Number=Sing	dema	0
+poppethead	0	dema-poppethead-n	Number=Sing	dema	0
+poppetheads	0	dema-poppethead-n	Number=Plur	dema	0
+poppets	0	oewn-poppet-n	Number=Plur	dema	0
+poppied	0	dema-poppied-a	Degree=Pos	dema	0
+poppied	1	dema-poppied-v	VerbForm=Inf	dema	0
+poppieded	0	dema-poppied-v	Tense=Past	dema	0
+poppieder	0	dema-poppied-n	Number=Plur	dema	0
+poppieders	0	dema-poppied-n	Number=Plur	dema	0
+poppieding	0	dema-poppied-v	VerbForm=Ger	dema	0
+poppiedingly	0	dema-poppied-r		dema	0
+poppiedly	0	dema-poppied-r		dema	0
+poppiedness	0	dema-poppied-n	Number=Plur	dema	0
+poppieds	0	dema-poppied-v	Person=3+Tense=Pres	dema	0
+poppies	0	dema-poppies-n	Number=Sing	dema	0
+popping	0	oewn-pop-n	Number=Plur	dema	1
+popping	1	oewn-pop-v	VerbForm=Ger	dema	1
+poppingly	0	oewn-pop-r		dema	0
+popple	0	dema-popple-v	VerbForm=Inf	dema	0
+poppled	0	dema-poppled-v	VerbForm=Inf	dema	0
+poppler	0	dema-popple-n	Number=Plur	dema	0
+popplers	0	dema-popple-n	Number=Plur	dema	0
+popples	0	dema-popple-v	Person=3+Tense=Pres	dema	0
+poppling	0	dema-poppling-v	VerbForm=Inf	dema	0
+popplingly	0	dema-popple-r		dema	0
+poppy	0	oewn-poppy-n	Number=Sing	dema	0
+poppycock	0	oewn-poppycock-n	Number=Sing	dema	0
+poppycockish	0	dema-poppycockish-a	Degree=Pos	dema	0
+poppycockishly	0	dema-poppycockish-r		dema	0
+poppycocks	0	oewn-poppycock-n	Number=Plur	dema	0
+poppyhead	0	dema-poppyhead-n	Number=Sing	dema	0
+poppyheads	0	dema-poppyhead-n	Number=Plur	dema	0
+poppylike	0	dema-poppylike-a	Degree=Pos	dema	0
+poppylikely	0	dema-poppylike-r		dema	0
+poppylikeness	0	dema-poppylike-n	Number=Plur	dema	0
+pops	0	oewn-pop-n	Number=Plur	dema	1
+pops	1	oewn-pop-v	Person=3+Tense=Pres	dema	1
+pops	2	dema-pops-a	Degree=Pos	dema	0
+popser	0	dema-pops-a	Degree=Cmp	dema	0
+popsest	0	dema-pops-a	Degree=Sup	dema	0
+popsies	0	dema-popsy-n	Number=Plur	dema	0
+popsly	0	dema-pops-r		dema	0
+popsness	0	dema-pops-n	Number=Plur	dema	0
+popsy	0	dema-popsy-n	Number=Sing	dema	0
+populace	0	oewn-populace-n	Number=Sing	dema	0
+populaces	0	oewn-populace-n	Number=Plur	dema	0
+popular	0	oewn-popular-a	Degree=Pos	dema	0
+popularisation	0	oewn-popularisation-n	Number=Sing	dema	0
+popularisations	0	oewn-popularisation-n	Number=Plur	dema	0
+popularise	0	oewn-popularise-v	VerbForm=Inf	dema	0
+popularised	0	dema-popularised-v	VerbForm=Inf	dema	0
+populariser	0	oewn-populariser-n	Number=Sing	dema	0
+popularisers	0	oewn-populariser-n	Number=Plur	dema	0
+popularises	0	oewn-popularise-v	Person=3+Tense=Pres	dema	0
+popularising	0	dema-popularising-v	VerbForm=Inf	dema	0
+popularities	0	oewn-popularity-n	Number=Plur	dema	0
+popularity	0	oewn-popularity-n	Number=Sing	dema	0
+popularization	0	oewn-popularization-n	Number=Sing	dema	0
+popularizations	0	oewn-popularization-n	Number=Plur	dema	0
+popularize	0	oewn-popularize-v	VerbForm=Inf	dema	0
+popularized	0	oewn-popularize-v	Tense=Past	dema	0
+popularizer	0	oewn-popularizer-n	Number=Sing	dema	0
+popularizers	0	oewn-popularizer-n	Number=Plur	dema	0
+popularizes	0	oewn-popularize-v	Person=3+Tense=Pres	dema	0
+popularizing	0	oewn-popularize-v	VerbForm=Ger	dema	0
+popularly	0	oewn-popularly-r	Degree=Pos	dema	0
+popularness	0	dema-popular-n	Number=Plur	dema	0
+populate	0	oewn-populate-v	VerbForm=Inf	dema	0
+populated	0	oewn-populate-v	Tense=Past	dema	0
+populater	0	dema-populate-n	Number=Plur	dema	0
+populaters	0	dema-populate-n	Number=Plur	dema	0
+populates	0	oewn-populate-v	Person=3+Tense=Pres	dema	0
+populating	0	oewn-populate-v	VerbForm=Ger	dema	0
+populatingly	0	dema-populate-r		dema	0
+population	0	oewn-population-n	Number=Sing	dema	0
+populational	0	dema-populational-a	Degree=Pos	dema	0
+populationally	0	dema-populational-r		dema	0
+populationless	0	dema-populationless-a	Degree=Pos	dema	0
+populationlessly	0	dema-populationless-r		dema	0
+populations	0	oewn-population-n	Number=Plur	dema	0
+populist	0	oewn-populist-n	Number=Sing	dema	0
+populist	1	dema-populist-a	Degree=Pos	dema	0
+populistly	0	dema-populist-r		dema	0
+populistness	0	oewn-populist-n	Number=Plur	dema	0
+populists	0	oewn-populist-n	Number=Plur	dema	0
+populous	0	oewn-populous-a	Degree=Pos	dema	0
+populously	0	dema-populously-r	Degree=Pos	dema	0
+populousness	0	dema-populousness-n	Number=Sing	dema	0
+populousnesses	0	dema-populousness-n	Number=Plur	dema	0
+por	0	dema-por-n	Number=Sing	dema	0
+porbeagle	0	oewn-porbeagle-n	Number=Sing	dema	0
+porbeagles	0	oewn-porbeagle-n	Number=Plur	dema	0
+porcelain	0	oewn-porcelain-n	Number=Sing	dema	0
+porcelainization	0	dema-porcelainization-n	Number=Sing	dema	0
+porcelainizations	0	dema-porcelainization-n	Number=Plur	dema	0
+porcelainize	0	oewn-porcelainize-v	VerbForm=Inf	dema	0
+porcelainized	0	dema-porcelainized-v	VerbForm=Inf	dema	0
+porcelainizes	0	oewn-porcelainize-v	Person=3+Tense=Pres	dema	0
+porcelainizing	0	dema-porcelainizing-v	VerbForm=Inf	dema	0
+porcelains	0	oewn-porcelain-n	Number=Plur	dema	0
+porcelaneous	0	dema-porcelaneous-n	Number=Sing	dema	0
+porcelaneouses	0	dema-porcelaneous-n	Number=Plur	dema	0
+porch	0	oewn-porch-n	Number=Sing	dema	0
+porches	0	oewn-porch-n	Number=Plur	dema	0
+porchless	0	dema-porchless-a	Degree=Pos	dema	0
+porchlessly	0	dema-porchless-r		dema	0
+porchlessness	0	dema-porchless-n	Number=Plur	dema	0
+porchlike	0	dema-porchlike-a	Degree=Pos	dema	0
+porchlikely	0	dema-porchlike-r		dema	0
+porchlikeness	0	dema-porchlike-n	Number=Plur	dema	0
+porchliker	0	dema-porchlike-a	Degree=Cmp	dema	0
+porchlikest	0	dema-porchlike-a	Degree=Sup	dema	0
+porchs	0	oewn-porch-n	Number=Plur	dema	0
+porcine	0	oewn-porcine-a	Degree=Pos	dema	0
+porcinely	0	dema-porcine-r		dema	0
+porcineness	0	dema-porcine-n	Number=Plur	dema	0
+porciner	0	oewn-porcine-a	Degree=Cmp	dema	0
+porcinest	0	oewn-porcine-a	Degree=Sup	dema	0
+porcupine	0	oewn-porcupine-n	Number=Sing	dema	0
+porcupines	0	oewn-porcupine-n	Number=Plur	dema	0
+pore	0	oewn-pore-v	VerbForm=Inf	dema	0
+pore	1	oewn-pore-n	Number=Sing	dema	0
+pored	0	oewn-pore-v	Tense=Past	dema	0
+porelike	0	dema-porelike-a	Degree=Pos	dema	0
+porelikely	0	dema-porelike-r		dema	0
+porelikeness	0	dema-porelike-n	Number=Plur	dema	0
+porer	0	oewn-pore-n	Number=Plur	dema	0
+porers	0	oewn-pore-n	Number=Plur	dema	0
+pores	0	oewn-pore-v	Person=3+Tense=Pres	dema	0
+pores	1	oewn-pore-n	Number=Plur	dema	0
+porgies	0	oewn-porgy-n	Number=Plur	dema	0
+porgy	0	oewn-porgy-n	Number=Sing	dema	0
+poria	0	dema-poria-n	Number=Sing	dema	0
+porias	0	dema-poria-n	Number=Plur	dema	0
+poriferous	0	oewn-poriferous-a	Degree=Pos	dema	0
+poriferously	0	dema-poriferous-r		dema	0
+poriform	0	dema-poriform-a	Degree=Pos	dema	0
+poriformly	0	dema-poriform-r		dema	0
+poriformness	0	dema-poriform-n	Number=Plur	dema	0
+poring	0	oewn-pore-v	VerbForm=Ger	dema	0
+poringly	0	dema-pore-r		dema	0
+porion	0	dema-porion-n	Number=Sing	dema	0
+porions	0	dema-porion-n	Number=Plur	dema	0
+porism	0	dema-porism-n	Number=Sing	dema	0
+porisms	0	dema-porism-n	Number=Plur	dema	0
+pork	0	oewn-pork-n	Number=Sing	dema	0
+porkchop	0	oewn-porkchop-n	Number=Sing	dema	0
+porkchops	0	oewn-porkchop-n	Number=Plur	dema	0
+porker	0	oewn-porker-n	Number=Sing	dema	0
+porkers	0	oewn-porker-n	Number=Plur	dema	0
+porkfish	0	oewn-porkfish-n	Number=Sing	dema	0
+porkfishes	0	dema-porkfishes-n	Number=Sing	dema	0
+porkier	0	dema-porkier-a	Degree=Pos	dema	0
+porkierly	0	dema-porkier-r		dema	0
+porkiest	0	dema-porkiest-a	Degree=Pos	dema	0
+porkiestly	0	dema-porkiest-r		dema	0
+porkily	0	dema-porky-r		dema	0
+porkiness	0	dema-porkiness-n	Number=Sing	dema	0
+porkinesses	0	dema-porkiness-n	Number=Plur	dema	0
+porkpie	0	oewn-porkpie-n	Number=Sing	dema	0
+porkpies	0	oewn-porkpie-n	Number=Plur	dema	0
+porks	0	oewn-pork-n	Number=Plur	dema	0
+porky	0	dema-porky-a	Degree=Pos	dema	0
+pornocracies	0	dema-pornocracy-n	Number=Plur	dema	0
+pornocracy	0	dema-pornocracy-n	Number=Sing	dema	0
+pornographer	0	oewn-pornographer-n	Number=Sing	dema	0
+pornographers	0	oewn-pornographer-n	Number=Plur	dema	0
+pornographies	0	oewn-pornography-n	Number=Plur	dema	0
+pornography	0	oewn-pornography-n	Number=Sing	dema	0
+poromeric	0	dema-poromeric-a	Degree=Pos	dema	0
+poromeric	1	dema-poromeric-n	Number=Sing	dema	0
+poromerically	0	dema-poromeric-r		dema	0
+poromerics	0	dema-poromeric-n	Number=Plur	dema	0
+porosities	0	oewn-porosity-n	Number=Plur	dema	0
+porosity	0	oewn-porosity-n	Number=Sing	dema	0
+porous	0	oewn-porous-a	Degree=Pos	dema	0
+porously	0	dema-porously-r	Degree=Pos	dema	0
+porousness	0	oewn-porousness-n	Number=Sing	dema	0
+porousnesses	0	oewn-porousness-n	Number=Plur	dema	0
+porphyria	0	oewn-porphyria-n	Number=Sing	dema	0
+porphyrias	0	oewn-porphyria-n	Number=Plur	dema	0
+porphyries	0	dema-porphyries-n	Number=Sing	dema	0
+porphyrin	0	oewn-porphyrin-n	Number=Sing	dema	0
+porphyrins	0	oewn-porphyrin-n	Number=Plur	dema	0
+porphyrisation	0	dema-porphyrisation-n	Number=Sing	dema	0
+porphyrisations	0	dema-porphyrisation-n	Number=Plur	dema	0
+porphyritic	0	oewn-porphyritic-a	Degree=Pos	dema	0
+porphyritically	0	dema-porphyritic-r		dema	0
+porphyrization	0	dema-porphyrization-n	Number=Sing	dema	0
+porphyrizations	0	dema-porphyrization-n	Number=Plur	dema	0
+porphyrize	0	dema-porphyrize-v	VerbForm=Inf	dema	0
+porphyrized	0	dema-porphyrized-v	VerbForm=Inf	dema	0
+porphyrizer	0	dema-porphyrize-n	Number=Plur	dema	0
+porphyrizers	0	dema-porphyrize-n	Number=Plur	dema	0
+porphyrizes	0	dema-porphyrize-v	Person=3+Tense=Pres	dema	0
+porphyrizing	0	dema-porphyrizing-v	VerbForm=Inf	dema	0
+porphyrizingly	0	dema-porphyrize-r		dema	0
+porphyrogenite	0	dema-porphyrogenite-n	Number=Sing	dema	0
+porphyrogenites	0	dema-porphyrogenite-n	Number=Plur	dema	0
+porphyroid	0	dema-porphyroid-a	Degree=Pos	dema	0
+porphyroid	1	dema-porphyroid-n	Number=Sing	dema	0
+porphyroidly	0	dema-porphyroid-r		dema	0
+porphyroidness	0	dema-porphyroid-n	Number=Plur	dema	0
+porphyroids	0	dema-porphyroid-n	Number=Plur	dema	0
+porphyropsin	0	dema-porphyropsin-n	Number=Sing	dema	0
+porphyropsins	0	dema-porphyropsin-n	Number=Plur	dema	0
+porphyry	0	oewn-porphyry-n	Number=Sing	dema	0
+porpoise	0	oewn-porpoise-n	Number=Sing	dema	0
+porpoiselike	0	dema-porpoiselike-a	Degree=Pos	dema	0
+porpoiselikely	0	dema-porpoiselike-r		dema	0
+porpoises	0	oewn-porpoise-n	Number=Plur	dema	0
+porrect	0	dema-porrect-a	Degree=Pos	dema	0
+porrect	1	dema-porrect-v	VerbForm=Inf	dema	0
+porrected	0	dema-porrect-v	Tense=Past	dema	0
+porrecter	0	dema-porrect-a	Degree=Cmp	dema	0
+porrecter	1	dema-porrect-n	Number=Plur	dema	0
+porrecters	0	dema-porrect-n	Number=Plur	dema	0
+porrectest	0	dema-porrect-a	Degree=Sup	dema	0
+porrecting	0	dema-porrect-v	VerbForm=Ger	dema	0
+porrectingly	0	dema-porrect-r		dema	0
+porrection	0	dema-porrection-n	Number=Sing	dema	0
+porrections	0	dema-porrection-n	Number=Plur	dema	0
+porrectly	0	dema-porrect-r		dema	0
+porrectness	0	dema-porrect-n	Number=Plur	dema	0
+porrects	0	dema-porrect-v	Person=3+Tense=Pres	dema	0
+porridge	0	oewn-porridge-n	Number=Sing	dema	0
+porridges	0	oewn-porridge-n	Number=Plur	dema	0
+porringer	0	oewn-porringer-n	Number=Sing	dema	0
+porringers	0	oewn-porringer-n	Number=Plur	dema	0
+pors	0	dema-por-n	Number=Plur	dema	0
+port	0	oewn-port-n	Number=Sing	dema	0
+port	1	oewn-port-v	VerbForm=Inf	dema	0
+portable	0	oewn-portable-a	Degree=Pos	dema	0
+portable	1	oewn-portable-n	Number=Sing	dema	0
+portableness	0	oewn-portable-n	Number=Plur	dema	0
+portables	0	oewn-portable-n	Number=Plur	dema	0
+portably	0	dema-portable-r		dema	0
+portage	0	oewn-portage-n	Number=Sing	dema	0
+portage	1	dema-portage-v	VerbForm=Inf	dema	0
+portaged	0	dema-portage-v	Tense=Past	dema	0
+portager	0	oewn-portage-n	Number=Plur	dema	0
+portagers	0	oewn-portage-n	Number=Plur	dema	0
+portages	0	oewn-portage-n	Number=Plur	dema	0
+portages	1	dema-portage-v	Person=3+Tense=Pres	dema	0
+portaging	0	dema-portage-v	VerbForm=Ger	dema	0
+portagingly	0	dema-portage-r		dema	0
+portal	0	oewn-portal-n	Number=Sing	dema	0
+portaled	0	dema-portaled-a	Degree=Pos	dema	0
+portaled	1	dema-portaled-v	VerbForm=Inf	dema	0
+portaleded	0	dema-portaled-v	Tense=Past	dema	0
+portaleder	0	dema-portaled-n	Number=Plur	dema	0
+portaleders	0	dema-portaled-n	Number=Plur	dema	0
+portaleding	0	dema-portaled-v	VerbForm=Ger	dema	0
+portaledingly	0	dema-portaled-r		dema	0
+portaledly	0	dema-portaled-r		dema	0
+portaledness	0	dema-portaled-n	Number=Plur	dema	0
+portaleds	0	dema-portaled-v	Person=3+Tense=Pres	dema	0
+portalled	0	dema-portalled-a	Degree=Pos	dema	0
+portalled	1	dema-portalled-v	VerbForm=Inf	dema	0
+portalleded	0	dema-portalled-v	Tense=Past	dema	0
+portalleder	0	dema-portalled-n	Number=Plur	dema	0
+portalleders	0	dema-portalled-n	Number=Plur	dema	0
+portalleding	0	dema-portalled-v	VerbForm=Ger	dema	0
+portalledingly	0	dema-portalled-r		dema	0
+portalledly	0	dema-portalled-r		dema	0
+portalledness	0	dema-portalled-n	Number=Plur	dema	0
+portalleds	0	dema-portalled-v	Person=3+Tense=Pres	dema	0
+portals	0	oewn-portal-n	Number=Plur	dema	0
+portamenti	0	dema-portamenti-n	Number=Sing	dema	0
+portamentis	0	dema-portamenti-n	Number=Plur	dema	0
+portamento	0	dema-portamento-n	Number=Sing	dema	0
+portamentoes	0	dema-portamento-n	Number=Plur	dema	0
+portamentos	0	dema-portamento-n	Number=Plur	dema	0
+portance	0	dema-portance-n	Number=Sing	dema	0
+portances	0	dema-portance-n	Number=Plur	dema	0
+portative	0	dema-portative-a	Degree=Pos	dema	0
+portatively	0	dema-portative-r		dema	0
+portativeness	0	dema-portative-n	Number=Plur	dema	0
+portcullis	0	oewn-portcullis-n	Number=Sing	dema	0
+ported	0	oewn-port-v	Tense=Past	dema	0
+portend	0	oewn-portend-v	VerbForm=Inf	dema	0
+portended	0	oewn-portend-v	Tense=Past	dema	0
+portender	0	dema-portend-n	Number=Plur	dema	0
+portenders	0	dema-portend-n	Number=Plur	dema	0
+portending	0	oewn-portend-v	VerbForm=Ger	dema	0
+portendingly	0	dema-portend-r		dema	0
+portends	0	oewn-portend-v	Person=3+Tense=Pres	dema	0
+portent	0	oewn-portent-n	Number=Sing	dema	0
+portentous	0	oewn-portentous-a	Degree=Pos	dema	0
+portentously	0	oewn-portentously-r	Degree=Pos	dema	0
+portentousness	0	dema-portentousness-n	Number=Sing	dema	0
+portentousnesses	0	dema-portentousness-n	Number=Plur	dema	0
+portents	0	oewn-portent-n	Number=Plur	dema	0
+porter	0	oewn-porter-n	Number=Sing	dema	0
+porterage	0	oewn-porterage-n	Number=Sing	dema	0
+porterages	0	oewn-porterage-n	Number=Plur	dema	0
+porteress	0	dema-porteress-n	Number=Sing	dema	0
+porteresses	0	dema-porteress-n	Number=Plur	dema	0
+porterhouse	0	oewn-porterhouse-n	Number=Sing	dema	0
+porterhouses	0	dema-porterhouses-n	Number=Sing	dema	0
+porters	0	oewn-port-n	Number=Plur	dema	0
+portfire	0	dema-portfire-n	Number=Sing	dema	0
+portfires	0	dema-portfire-n	Number=Plur	dema	0
+portfolio	0	oewn-portfolio-n	Number=Sing	dema	0
+portfolios	0	oewn-portfolio-n	Number=Plur	dema	0
+porthole	0	oewn-porthole-n	Number=Sing	dema	0
+portholes	0	oewn-porthole-n	Number=Plur	dema	0
+portico	0	oewn-portico-n	Number=Sing	dema	0
+porticoed	0	oewn-porticoed-a	Degree=Pos	dema	0
+porticoed	1	dema-porticoed-v	VerbForm=Inf	dema	0
+porticoeded	0	dema-porticoed-v	Tense=Past	dema	0
+porticoeder	0	dema-porticoed-n	Number=Plur	dema	0
+porticoeders	0	dema-porticoed-n	Number=Plur	dema	0
+porticoeding	0	dema-porticoed-v	VerbForm=Ger	dema	0
+porticoedingly	0	dema-porticoed-r		dema	0
+porticoedly	0	dema-porticoed-r		dema	0
+porticoedness	0	dema-porticoed-n	Number=Plur	dema	0
+porticoeds	0	dema-porticoed-v	Person=3+Tense=Pres	dema	0
+porticoes	0	oewn-portico-n	Number=Plur	dema	0
+porticos	0	oewn-portico-n	Number=Plur	dema	0
+portiere	0	oewn-portiere-n	Number=Sing	dema	0
+portiered	0	dema-portiered-a	Degree=Pos	dema	0
+portiered	1	dema-portiered-v	VerbForm=Inf	dema	0
+portiereded	0	dema-portiered-v	Tense=Past	dema	0
+portiereder	0	dema-portiered-n	Number=Plur	dema	0
+portiereders	0	dema-portiered-n	Number=Plur	dema	0
+portiereding	0	dema-portiered-v	VerbForm=Ger	dema	0
+portieredingly	0	dema-portiered-r		dema	0
+portieredly	0	dema-portiered-r		dema	0
+portieredness	0	dema-portiered-n	Number=Plur	dema	0
+portiereds	0	dema-portiered-v	Person=3+Tense=Pres	dema	0
+portieres	0	oewn-portiere-n	Number=Plur	dema	0
+porting	0	oewn-port-v	VerbForm=Ger	dema	0
+portingly	0	dema-port-r		dema	0
+portion	0	oewn-portion-n	Number=Sing	dema	0
+portion	1	oewn-portion-v	VerbForm=Inf	dema	0
+portionable	0	dema-portionable-a	Degree=Pos	dema	0
+portionably	0	dema-portionable-r		dema	0
+portioned	0	oewn-portion-v	Tense=Past	dema	0
+portioner	0	dema-portioner-n	Number=Sing	dema	0
+portioners	0	oewn-portion-n	Number=Plur	dema	0
+portioning	0	oewn-portion-v	VerbForm=Ger	dema	0
+portioningly	0	dema-portion-r		dema	0
+portionless	0	dema-portionless-a	Degree=Pos	dema	0
+portionlessly	0	dema-portionless-r		dema	0
+portionlessness	0	dema-portionless-n	Number=Plur	dema	0
+portions	0	oewn-portion-n	Number=Plur	dema	0
+portions	1	oewn-portion-v	Person=3+Tense=Pres	dema	0
+portless	0	dema-portless-a	Degree=Pos	dema	0
+portlessly	0	dema-portless-r		dema	0
+portlessness	0	dema-portless-n	Number=Plur	dema	0
+portlier	0	dema-portlier-a	Degree=Pos	dema	0
+portlierly	0	dema-portlier-r		dema	0
+portliest	0	dema-portliest-a	Degree=Pos	dema	0
+portliestly	0	dema-portliest-r		dema	0
+portliness	0	dema-portliness-n	Number=Sing	dema	0
+portlinesses	0	dema-portliness-n	Number=Plur	dema	0
+portly	0	oewn-portly-a	Degree=Pos	dema	0
+portmanteau	0	oewn-portmanteau-n	Number=Sing	dema	0
+portmanteaus	0	dema-portmanteaus-n	Number=Sing	dema	0
+portmanteauses	0	dema-portmanteaus-n	Number=Plur	dema	0
+portmanteaux	0	dema-portmanteaux-n	Number=Sing	dema	0
+portmanteauxes	0	dema-portmanteaux-n	Number=Plur	dema	0
+portolani	0	dema-portolani-n	Number=Sing	dema	0
+portolanis	0	dema-portolani-n	Number=Plur	dema	0
+portolano	0	dema-portolano-n	Number=Sing	dema	0
+portolanoes	0	dema-portolano-n	Number=Plur	dema	0
+portolanos	0	dema-portolanos-n	Number=Sing	dema	0
+portrait	0	oewn-portrait-n	Number=Sing	dema	0
+portraitist	0	oewn-portraitist-n	Number=Sing	dema	0
+portraitists	0	oewn-portraitist-n	Number=Plur	dema	0
+portraitlike	0	dema-portraitlike-a	Degree=Pos	dema	0
+portraitlikely	0	dema-portraitlike-r		dema	0
+portraitlikeness	0	dema-portraitlike-n	Number=Plur	dema	0
+portraits	0	oewn-portrait-n	Number=Plur	dema	0
+portraiture	0	oewn-portraiture-n	Number=Sing	dema	0
+portraitures	0	oewn-portraiture-n	Number=Plur	dema	0
+portray	0	oewn-portray-v	VerbForm=Inf	dema	0
+portrayable	0	dema-portrayable-a	Degree=Pos	dema	0
+portrayableness	0	dema-portrayable-n	Number=Plur	dema	0
+portrayably	0	dema-portrayable-r		dema	0
+portrayal	0	oewn-portrayal-n	Number=Sing	dema	0
+portrayals	0	oewn-portrayal-n	Number=Plur	dema	0
+portrayed	0	oewn-portray-v	Tense=Past	dema	0
+portrayer	0	oewn-portrayer-n	Number=Sing	dema	0
+portrayers	0	dema-portray-n	Number=Plur	dema	0
+portraying	0	oewn-portray-v	VerbForm=Ger	dema	0
+portrays	0	oewn-portray-v	Person=3+Tense=Pres	dema	0
+portress	0	dema-portress-n	Number=Sing	dema	0
+portresses	0	dema-portress-n	Number=Plur	dema	0
+ports	0	oewn-port-n	Number=Plur	dema	0
+ports	1	oewn-port-v	Person=3+Tense=Pres	dema	0
+portulaca	0	oewn-portulaca-n	Number=Sing	dema	0
+portulacaceous	0	dema-portulacaceous-a	Degree=Pos	dema	0
+portulacaceously	0	dema-portulacaceous-r		dema	0
+portulacas	0	oewn-portulaca-n	Number=Plur	dema	0
+pos	0	dema-pos-n	Number=Sing	dema	0
+posada	0	dema-posada-n	Number=Sing	dema	0
+posadas	0	dema-posadas-n	Number=Sing	dema	0
+pose	0	oewn-pose-v	VerbForm=Inf	dema	0
+pose	1	oewn-pose-n	Number=Sing	dema	0
+posed	0	dema-posed-v	VerbForm=Inf	dema	0
+poser	0	oewn-poser-n	Number=Sing	dema	0
+posers	0	oewn-pose-n	Number=Plur	dema	0
+poses	0	dema-pos-n	Number=Plur	dema	0
+poseur	0	oewn-poseur-n	Number=Sing	dema	0
+poseurs	0	oewn-poseur-n	Number=Plur	dema	0
+posh	0	oewn-posh-a	Degree=Pos	dema	0
+posh	1	dema-posh-r	Degree=Pos	dema	0
+posher	0	oewn-posh-a	Degree=Cmp	dema	0
+posher	1	dema-posh-r	Degree=Cmp	dema	0
+poshest	0	oewn-posh-a	Degree=Sup	dema	0
+poshest	1	dema-posh-r	Degree=Sup	dema	0
+poshly	0	dema-posh-r		dema	0
+poshness	0	dema-posh-n	Number=Plur	dema	0
+posho	0	dema-posho-n	Number=Sing	dema	0
+poshoes	0	dema-posho-n	Number=Plur	dema	0
+poshos	0	dema-posho-n	Number=Plur	dema	0
+posies	0	oewn-posy-n	Number=Plur	dema	0
+posing	0	dema-posing-v	VerbForm=Inf	dema	0
+posingly	0	dema-posingly-r	Degree=Pos	dema	0
+posit	0	oewn-posit-v	VerbForm=Inf	dema	0
+posit	1	oewn-posit-n	Number=Sing	dema	0
+posited	0	oewn-posit-v	Tense=Past	dema	0
+positer	0	oewn-posit-n	Number=Plur	dema	0
+positers	0	oewn-posit-n	Number=Plur	dema	0
+positif	0	dema-positif-n	Number=Sing	dema	0
+positifs	0	dema-positif-n	Number=Plur	dema	0
+positing	0	oewn-posit-v	VerbForm=Ger	dema	0
+positingly	0	dema-posit-r		dema	0
+position	0	oewn-position-n	Number=Sing	dema	0
+position	1	oewn-position-v	VerbForm=Inf	dema	0
+positional	0	oewn-positional-a	Degree=Pos	dema	0
+positionally	0	dema-positional-r		dema	0
+positioned	0	oewn-position-v	Tense=Past	dema	0
+positioner	0	oewn-position-n	Number=Plur	dema	0
+positioners	0	oewn-position-n	Number=Plur	dema	0
+positioning	0	oewn-position-v	VerbForm=Ger	dema	0
+positioningly	0	dema-position-r		dema	0
+positionless	0	dema-positionless-a	Degree=Pos	dema	0
+positionlessly	0	dema-positionless-r		dema	0
+positions	0	oewn-position-n	Number=Plur	dema	0
+positions	1	oewn-position-v	Person=3+Tense=Pres	dema	0
+positive	0	oewn-positive-a	Degree=Pos	dema	0
+positive	1	oewn-positive-n	Number=Sing	dema	0
+positively	0	oewn-positively-r	Degree=Pos	dema	0
+positiveness	0	oewn-positive-n	Number=Plur	dema	0
+positives	0	oewn-positive-n	Number=Plur	dema	0
+positivism	0	oewn-positivism-n	Number=Sing	dema	0
+positivism	1	dema-positivism-a	Degree=Pos	dema	0
+positivismly	0	dema-positivism-r		dema	0
+positivisms	0	oewn-positivism-n	Number=Plur	dema	0
+positivist	0	oewn-positivist-a	Degree=Pos	dema	0
+positivist	1	oewn-positivist-n	Number=Sing	dema	0
+positivistic	0	oewn-positivistic-a	Degree=Pos	dema	0
+positivistically	0	dema-positivistically-r	Degree=Pos	dema	0
+positivistly	0	dema-positivist-r		dema	0
+positivists	0	oewn-positivist-n	Number=Plur	dema	0
+positron	0	oewn-positron-n	Number=Sing	dema	0
+positronium	0	dema-positronium-n	Number=Sing	dema	0
+positroniums	0	dema-positronium-n	Number=Plur	dema	0
+positrons	0	oewn-positron-n	Number=Plur	dema	0
+posits	0	oewn-posit-v	Person=3+Tense=Pres	dema	0
+posits	1	oewn-posit-n	Number=Plur	dema	0
+posologic	0	dema-posologic-a	Degree=Pos	dema	0
+posological	0	dema-posological-a	Degree=Pos	dema	0
+posologically	0	dema-posologic-r		dema	0
+posologies	0	oewn-posology-n	Number=Plur	dema	0
+posologist	0	dema-posologist-n	Number=Sing	dema	0
+posologists	0	dema-posologist-n	Number=Plur	dema	0
+posology	0	oewn-posology-n	Number=Sing	dema	0
+poss	0	dema-poss-v	VerbForm=Inf	dema	0
+posse	0	oewn-posse-n	Number=Sing	dema	0
+possed	0	dema-poss-v	Tense=Past	dema	0
+posser	0	dema-poss-n	Number=Plur	dema	0
+possers	0	dema-poss-n	Number=Plur	dema	0
+posses	0	dema-poss-v	Person=3+Tense=Pres	dema	0
+possess	0	oewn-possess-v	VerbForm=Inf	dema	0
+possessed	0	oewn-possessed-a	Degree=Pos	dema	0
+possessed	1	dema-possessed-v	VerbForm=Inf	dema	0
+possessedly	0	dema-possessed-r		dema	0
+possesser	0	dema-possess-n	Number=Plur	dema	0
+possessers	0	dema-possess-n	Number=Plur	dema	0
+possesses	0	oewn-possess-v	Person=3+Tense=Pres	dema	0
+possessing	0	oewn-possess-v	VerbForm=Ger	dema	0
+possessingly	0	dema-possess-r		dema	0
+possession	0	oewn-possession-n	Number=Sing	dema	0
+possessions	0	oewn-possession-n	Number=Plur	dema	0
+possessive	0	oewn-possessive-a	Degree=Pos	dema	0
+possessive	1	oewn-possessive-n	Number=Sing	dema	0
+possessively	0	dema-possessive-r		dema	0
+possessiveness	0	oewn-possessiveness-n	Number=Sing	dema	0
+possessivenesses	0	oewn-possessiveness-n	Number=Plur	dema	0
+possessives	0	oewn-possessive-n	Number=Plur	dema	0
+possessor	0	oewn-possessor-n	Number=Sing	dema	0
+possessorily	0	dema-possessory-r		dema	0
+possessoriness	0	dema-possessoriness-n	Number=Sing	dema	0
+possessorinesses	0	dema-possessoriness-n	Number=Plur	dema	0
+possessors	0	oewn-possessor-n	Number=Plur	dema	0
+possessorship	0	dema-possessorship-n	Number=Sing	dema	0
+possessorships	0	dema-possessorship-n	Number=Plur	dema	0
+possessory	0	dema-possessory-a	Degree=Pos	dema	0
+posset	0	oewn-posset-n	Number=Sing	dema	0
+possets	0	oewn-posset-n	Number=Plur	dema	0
+possibilities	0	dema-possibilities-n	Number=Sing	dema	0
+possibility	0	oewn-possibility-n	Number=Sing	dema	0
+possible	0	oewn-possible-a	Degree=Pos	dema	0
+possible	1	oewn-possible-n	Number=Sing	dema	0
+possibleness	0	oewn-possible-n	Number=Plur	dema	0
+possibles	0	oewn-possible-n	Number=Plur	dema	0
+possibly	0	oewn-possibly-r	Degree=Pos	dema	0
+possie	0	dema-possie-n	Number=Sing	dema	0
+possies	0	dema-possies-n	Number=Sing	dema	0
+possing	0	dema-poss-v	VerbForm=Ger	dema	0
+possingly	0	dema-poss-r		dema	0
+possum	0	oewn-possum-n	Number=Sing	dema	0
+possums	0	oewn-possum-n	Number=Plur	dema	0
+possy	0	dema-possy-n	Number=Sing	dema	0
+post	0	oewn-post-n	Number=Sing	dema	1
+post	1	oewn-post-v	VerbForm=Inf	dema	1
+post	2	dema-post-r	Degree=Pos	dema	0
+postabdomen	0	dema-postabdomen-n	Number=Sing	dema	0
+postabdomens	0	dema-postabdomen-n	Number=Plur	dema	0
+postabdominal	0	dema-postabdominal-a	Degree=Pos	dema	0
+postabdominally	0	dema-postabdominal-r		dema	0
+postacetabular	0	dema-postacetabular-a	Degree=Pos	dema	0
+postacetabularly	0	dema-postacetabular-r		dema	0
+postact	0	dema-postact-n	Number=Sing	dema	0
+postacts	0	dema-postact-n	Number=Plur	dema	0
+postage	0	oewn-postage-n	Number=Sing	dema	0
+postages	0	oewn-postage-n	Number=Plur	dema	0
+postal	0	oewn-postal-a	Degree=Pos	dema	0
+postallantoic	0	dema-postallantoic-a	Degree=Pos	dema	0
+postallantoically	0	dema-postallantoic-r		dema	0
+postally	0	dema-postally-r	Degree=Pos	dema	0
+postalness	0	dema-postal-n	Number=Plur	dema	0
+postamniotic	0	dema-postamniotic-a	Degree=Pos	dema	0
+postamniotically	0	dema-postamniotic-r		dema	0
+postanal	0	dema-postanal-a	Degree=Pos	dema	0
+postanally	0	dema-postanal-r		dema	0
+postanalness	0	dema-postanal-n	Number=Plur	dema	0
+postanesthetic	0	dema-postanesthetic-a	Degree=Pos	dema	0
+postanesthetically	0	dema-postanesthetic-r		dema	0
+postantennal	0	dema-postantennal-a	Degree=Pos	dema	0
+postantennally	0	dema-postantennal-r		dema	0
+postaortic	0	dema-postaortic-a	Degree=Pos	dema	0
+postaortically	0	dema-postaortic-r		dema	0
+postaorticness	0	dema-postaortic-n	Number=Plur	dema	0
+postapoplectic	0	dema-postapoplectic-a	Degree=Pos	dema	0
+postapoplectically	0	dema-postapoplectic-r		dema	0
+postapostolic	0	dema-postapostolic-a	Degree=Pos	dema	0
+postapostolical	0	dema-postapostolical-a	Degree=Pos	dema	0
+postapostolically	0	dema-postapostolic-r		dema	0
+postappendicular	0	dema-postappendicular-a	Degree=Pos	dema	0
+postappendicularly	0	dema-postappendicular-r		dema	0
+postarmistice	0	dema-postarmistice-n	Number=Sing	dema	0
+postarmistices	0	dema-postarmistice-n	Number=Plur	dema	0
+postarterial	0	dema-postarterial-a	Degree=Pos	dema	0
+postarterially	0	dema-postarterial-r		dema	0
+postarthritic	0	dema-postarthritic-a	Degree=Pos	dema	0
+postarthritically	0	dema-postarthritic-r		dema	0
+postarticular	0	dema-postarticular-a	Degree=Pos	dema	0
+postarticularly	0	dema-postarticular-r		dema	0
+postarytenoid	0	dema-postarytenoid-a	Degree=Pos	dema	0
+postarytenoidly	0	dema-postarytenoid-r		dema	0
+postasthmatic	0	dema-postasthmatic-a	Degree=Pos	dema	0
+postasthmatically	0	dema-postasthmatic-r		dema	0
+postauditorily	0	dema-postauditory-r		dema	0
+postauditory	0	dema-postauditory-a	Degree=Pos	dema	0
+postauricular	0	dema-postauricular-a	Degree=Pos	dema	0
+postauricularly	0	dema-postauricular-r		dema	0
+postaxial	0	dema-postaxial-a	Degree=Pos	dema	0
+postaxially	0	dema-postaxially-r	Degree=Pos	dema	0
+postaxialness	0	dema-postaxial-n	Number=Plur	dema	0
+postaxillarily	0	dema-postaxillary-r		dema	0
+postaxillary	0	dema-postaxillary-a	Degree=Pos	dema	0
+postbag	0	oewn-postbag-n	Number=Sing	dema	0
+postbags	0	oewn-postbag-n	Number=Plur	dema	0
+postbaptismal	0	dema-postbaptismal-a	Degree=Pos	dema	0
+postbaptismally	0	dema-postbaptismal-r		dema	0
+postbox	0	oewn-postbox-n	Number=Sing	dema	0
+postboxes	0	oewn-postbox-n	Number=Plur	dema	0
+postboy	0	dema-postboy-n	Number=Sing	dema	0
+postboys	0	dema-postboy-n	Number=Plur	dema	0
+postbrachial	0	dema-postbrachial-a	Degree=Pos	dema	0
+postbrachially	0	dema-postbrachial-r		dema	0
+postbrachialness	0	dema-postbrachial-n	Number=Plur	dema	0
+postbrachium	0	dema-postbrachium-n	Number=Sing	dema	0
+postbrachiums	0	dema-postbrachium-n	Number=Plur	dema	0
+postbreakfast	0	dema-postbreakfast-a	Degree=Pos	dema	0
+postbreakfastly	0	dema-postbreakfast-r		dema	0
+postbreakfastness	0	dema-postbreakfast-n	Number=Plur	dema	0
+postbronchial	0	dema-postbronchial-a	Degree=Pos	dema	0
+postbronchially	0	dema-postbronchial-r		dema	0
+postbronchialness	0	dema-postbronchial-n	Number=Plur	dema	0
+postbuccal	0	dema-postbuccal-a	Degree=Pos	dema	0
+postbuccally	0	dema-postbuccal-r		dema	0
+postbuccalness	0	dema-postbuccal-n	Number=Plur	dema	0
+postbulbar	0	dema-postbulbar-a	Degree=Pos	dema	0
+postbulbarly	0	dema-postbulbar-r		dema	0
+postbulbarness	0	dema-postbulbar-n	Number=Plur	dema	0
+postbursal	0	dema-postbursal-a	Degree=Pos	dema	0
+postbursally	0	dema-postbursal-r		dema	0
+postbursalness	0	dema-postbursal-n	Number=Plur	dema	0
+postcaecal	0	dema-postcaecal-a	Degree=Pos	dema	0
+postcaecally	0	dema-postcaecal-r		dema	0
+postcaecalness	0	dema-postcaecal-n	Number=Plur	dema	0
+postcanonical	0	dema-postcanonical-a	Degree=Pos	dema	0
+postcanonically	0	dema-postcanonical-r		dema	0
+postcard	0	oewn-postcard-n	Number=Sing	dema	0
+postcardiac	0	dema-postcardiac-a	Degree=Pos	dema	0
+postcardiacly	0	dema-postcardiac-r		dema	0
+postcardiacness	0	dema-postcardiac-n	Number=Plur	dema	0
+postcardinal	0	dema-postcardinal-a	Degree=Pos	dema	0
+postcardinally	0	dema-postcardinal-r		dema	0
+postcards	0	oewn-postcard-n	Number=Plur	dema	0
+postcarotid	0	dema-postcarotid-a	Degree=Pos	dema	0
+postcarotidly	0	dema-postcarotid-r		dema	0
+postcartilaginous	0	dema-postcartilaginous-a	Degree=Pos	dema	0
+postcartilaginously	0	dema-postcartilaginous-r		dema	0
+postcatarrhal	0	dema-postcatarrhal-a	Degree=Pos	dema	0
+postcatarrhally	0	dema-postcatarrhal-r		dema	0
+postcaudal	0	dema-postcaudal-a	Degree=Pos	dema	0
+postcaudally	0	dema-postcaudal-r		dema	0
+postcaudalness	0	dema-postcaudal-n	Number=Plur	dema	0
+postcava	0	oewn-postcava-n	Number=Sing	dema	0
+postcavas	0	oewn-postcava-n	Number=Plur	dema	0
+postcentral	0	dema-postcentral-a	Degree=Pos	dema	0
+postcentrally	0	dema-postcentral-r		dema	0
+postcentralness	0	dema-postcentral-n	Number=Plur	dema	0
+postcephalic	0	dema-postcephalic-a	Degree=Pos	dema	0
+postcephalically	0	dema-postcephalic-r		dema	0
+postcerebellar	0	dema-postcerebellar-a	Degree=Pos	dema	0
+postcerebellarly	0	dema-postcerebellar-r		dema	0
+postcerebral	0	dema-postcerebral-a	Degree=Pos	dema	0
+postcerebrally	0	dema-postcerebral-r		dema	0
+postcode	0	oewn-postcode-n	Number=Sing	dema	0
+postcodes	0	oewn-postcode-n	Number=Plur	dema	0
+postcolon	0	dema-postcolon-a	Degree=Pos	dema	0
+postcolonly	0	dema-postcolon-r		dema	0
+postcolonness	0	dema-postcolon-n	Number=Plur	dema	0
+postcolumellar	0	dema-postcolumellar-a	Degree=Pos	dema	0
+postcolumellarly	0	dema-postcolumellar-r		dema	0
+postcommunicant	0	dema-postcommunicant-a	Degree=Pos	dema	0
+postcommunicantly	0	dema-postcommunicant-r		dema	0
+postcommunion	0	dema-postcommunion-n	Number=Sing	dema	0
+postcommunions	0	dema-postcommunion-n	Number=Plur	dema	0
+postcondylar	0	dema-postcondylar-a	Degree=Pos	dema	0
+postcondylarly	0	dema-postcondylar-r		dema	0
+postconfinement	0	dema-postconfinement-n	Number=Sing	dema	0
+postconfinements	0	dema-postconfinement-n	Number=Plur	dema	0
+postconnubial	0	dema-postconnubial-a	Degree=Pos	dema	0
+postconnubially	0	dema-postconnubial-r		dema	0
+postconquest	0	dema-postconquest-a	Degree=Pos	dema	0
+postconquestly	0	dema-postconquest-r		dema	0
+postconquestness	0	dema-postconquest-n	Number=Plur	dema	0
+postconsonantal	0	dema-postconsonantal-a	Degree=Pos	dema	0
+postconsonantally	0	dema-postconsonantal-r		dema	0
+postcontract	0	dema-postcontract-n	Number=Sing	dema	0
+postcontracts	0	dema-postcontract-n	Number=Plur	dema	0
+postconvalescent	0	dema-postconvalescent-a	Degree=Pos	dema	0
+postconvalescently	0	dema-postconvalescent-r		dema	0
+postconvulsive	0	dema-postconvulsive-a	Degree=Pos	dema	0
+postconvulsively	0	dema-postconvulsive-r		dema	0
+postcostal	0	dema-postcostal-a	Degree=Pos	dema	0
+postcostally	0	dema-postcostal-r		dema	0
+postcostalness	0	dema-postcostal-n	Number=Plur	dema	0
+postcoxal	0	dema-postcoxal-a	Degree=Pos	dema	0
+postcoxally	0	dema-postcoxal-r		dema	0
+postcoxalness	0	dema-postcoxal-n	Number=Plur	dema	0
+postcretaceous	0	dema-postcretaceous-a	Degree=Pos	dema	0
+postcretaceously	0	dema-postcretaceous-r		dema	0
+postcritical	0	dema-postcritical-a	Degree=Pos	dema	0
+postcritically	0	dema-postcritical-r		dema	0
+postcruciate	0	dema-postcruciate-a	Degree=Pos	dema	0
+postcruciately	0	dema-postcruciate-r		dema	0
+postcruciateness	0	dema-postcruciate-n	Number=Plur	dema	0
+postcrural	0	dema-postcrural-a	Degree=Pos	dema	0
+postcrurally	0	dema-postcrural-r		dema	0
+postcruralness	0	dema-postcrural-n	Number=Plur	dema	0
+postcubital	0	dema-postcubital-a	Degree=Pos	dema	0
+postcubitally	0	dema-postcubital-r		dema	0
+postdate	0	oewn-postdate-v	VerbForm=Inf	dema	0
+postdated	0	dema-postdated-v	VerbForm=Inf	dema	0
+postdater	0	dema-postdate-n	Number=Plur	dema	0
+postdaters	0	dema-postdate-n	Number=Plur	dema	0
+postdates	0	oewn-postdate-v	Person=3+Tense=Pres	dema	0
+postdating	0	dema-postdating-v	VerbForm=Inf	dema	0
+postdatingly	0	dema-postdate-r		dema	0
+postdental	0	dema-postdental-a	Degree=Pos	dema	0
+postdental	1	dema-postdental-n	Number=Sing	dema	0
+postdentally	0	dema-postdental-r		dema	0
+postdentalness	0	dema-postdental-n	Number=Plur	dema	0
+postdentals	0	dema-postdental-n	Number=Plur	dema	0
+postdepressive	0	dema-postdepressive-a	Degree=Pos	dema	0
+postdepressively	0	dema-postdepressive-r		dema	0
+postdetermined	0	dema-postdetermined-a	Degree=Pos	dema	0
+postdetermined	1	dema-postdetermined-v	VerbForm=Inf	dema	0
+postdetermineded	0	dema-postdetermined-v	Tense=Past	dema	0
+postdetermineding	0	dema-postdetermined-v	VerbForm=Ger	dema	0
+postdeterminedly	0	dema-postdetermined-r		dema	0
+postdetermineds	0	dema-postdetermined-v	Person=3+Tense=Pres	dema	0
+postdevelopmental	0	dema-postdevelopmental-a	Degree=Pos	dema	0
+postdevelopmentally	0	dema-postdevelopmental-r		dema	0
+postdiagnostic	0	dema-postdiagnostic-a	Degree=Pos	dema	0
+postdiagnostically	0	dema-postdiagnostic-r		dema	0
+postdiaphragmatic	0	dema-postdiaphragmatic-a	Degree=Pos	dema	0
+postdiaphragmatically	0	dema-postdiaphragmatic-r		dema	0
+postdiastolic	0	dema-postdiastolic-a	Degree=Pos	dema	0
+postdiastolically	0	dema-postdiastolic-r		dema	0
+postdigestive	0	dema-postdigestive-a	Degree=Pos	dema	0
+postdigestively	0	dema-postdigestive-r		dema	0
+postdigital	0	dema-postdigital-a	Degree=Pos	dema	0
+postdigitally	0	dema-postdigital-r		dema	0
+postdiluvian	0	oewn-postdiluvian-a	Degree=Pos	dema	0
+postdiluvian	1	oewn-postdiluvian-n	Number=Sing	dema	0
+postdiluvianly	0	dema-postdiluvian-r		dema	0
+postdiluvians	0	oewn-postdiluvian-n	Number=Plur	dema	0
+postdiphtherial	0	dema-postdiphtherial-a	Degree=Pos	dema	0
+postdiphtherially	0	dema-postdiphtherial-r		dema	0
+postdiphtheric	0	dema-postdiphtheric-a	Degree=Pos	dema	0
+postdiphtherically	0	dema-postdiphtheric-r		dema	0
+postdiphtheritic	0	dema-postdiphtheritic-a	Degree=Pos	dema	0
+postdiphtheritically	0	dema-postdiphtheritic-r		dema	0
+postdisapproved	0	dema-postdisapproved-a	Degree=Pos	dema	0
+postdisapproved	1	dema-postdisapproved-v	VerbForm=Inf	dema	0
+postdisapproveded	0	dema-postdisapproved-v	Tense=Past	dema	0
+postdisapproveding	0	dema-postdisapproved-v	VerbForm=Ger	dema	0
+postdisapprovedly	0	dema-postdisapproved-r		dema	0
+postdisapproveds	0	dema-postdisapproved-v	Person=3+Tense=Pres	dema	0
+postdiscoidal	0	dema-postdiscoidal-a	Degree=Pos	dema	0
+postdiscoidally	0	dema-postdiscoidal-r		dema	0
+postdoctoral	0	oewn-postdoctoral-a	Degree=Pos	dema	0
+postdoctorally	0	dema-postdoctoral-r		dema	0
+postdural	0	dema-postdural-a	Degree=Pos	dema	0
+postdurally	0	dema-postdural-r		dema	0
+postduralness	0	dema-postdural-n	Number=Plur	dema	0
+postdysenteric	0	dema-postdysenteric-a	Degree=Pos	dema	0
+postdysenterically	0	dema-postdysenteric-r		dema	0
+posted	0	oewn-post-v	Tense=Past	dema	1
+postelection	0	dema-postelection-a	Degree=Pos	dema	0
+postelectionly	0	dema-postelection-r		dema	0
+postelemental	0	dema-postelemental-a	Degree=Pos	dema	0
+postelementally	0	dema-postelemental-r		dema	0
+postelementarily	0	dema-postelementary-r		dema	0
+postelementary	0	dema-postelementary-a	Degree=Pos	dema	0
+postembryonic	0	dema-postembryonic-n	Number=Sing	dema	0
+postembryonics	0	dema-postembryonic-n	Number=Plur	dema	0
+postencephalitic	0	dema-postencephalitic-a	Degree=Pos	dema	0
+postencephalitically	0	dema-postencephalitic-r		dema	0
+postepileptic	0	dema-postepileptic-a	Degree=Pos	dema	0
+postepileptically	0	dema-postepileptic-r		dema	0
+poster	0	oewn-poster-n	Number=Sing	dema	0
+posteriad	0	dema-posteriad-r	Degree=Pos	dema	0
+posterior	0	oewn-posterior-a	Degree=Pos	dema	0
+posterior	1	oewn-posterior-n	Number=Sing	dema	0
+posteriorly	0	dema-posterior-r		dema	0
+posteriorness	0	oewn-posterior-n	Number=Plur	dema	0
+posteriors	0	oewn-posterior-n	Number=Plur	dema	0
+posterities	0	oewn-posterity-n	Number=Plur	dema	0
+posterity	0	oewn-posterity-n	Number=Sing	dema	0
+postern	0	oewn-postern-n	Number=Sing	dema	0
+postern	1	dema-postern-a	Degree=Pos	dema	0
+posternly	0	dema-postern-r		dema	0
+posternness	0	oewn-postern-n	Number=Plur	dema	0
+posterns	0	oewn-postern-n	Number=Plur	dema	0
+posters	0	oewn-post-n	Number=Plur	dema	1
+posteruptive	0	dema-posteruptive-a	Degree=Pos	dema	0
+posteruptively	0	dema-posteruptive-r		dema	0
+postesophageal	0	dema-postesophageal-a	Degree=Pos	dema	0
+postesophageally	0	dema-postesophageal-r		dema	0
+postest	0	dema-post-r	Degree=Sup	dema	0
+postethmoid	0	dema-postethmoid-a	Degree=Pos	dema	0
+postethmoidly	0	dema-postethmoid-r		dema	0
+postethmoidness	0	dema-postethmoid-n	Number=Plur	dema	0
+postexilian	0	dema-postexilian-a	Degree=Pos	dema	0
+postexilianly	0	dema-postexilian-r		dema	0
+postexistence	0	dema-postexistence-n	Number=Sing	dema	0
+postexistences	0	dema-postexistence-n	Number=Plur	dema	0
+postfactor	0	dema-postfactor-n	Number=Sing	dema	0
+postfactors	0	dema-postfactor-n	Number=Plur	dema	0
+postfebrile	0	dema-postfebrile-a	Degree=Pos	dema	0
+postfebrilely	0	dema-postfebrile-r		dema	0
+postfebrileness	0	dema-postfebrile-n	Number=Plur	dema	0
+postfemoral	0	dema-postfemoral-a	Degree=Pos	dema	0
+postfemorally	0	dema-postfemoral-r		dema	0
+postfetal	0	dema-postfetal-a	Degree=Pos	dema	0
+postfetally	0	dema-postfetal-r		dema	0
+postfetalness	0	dema-postfetal-n	Number=Plur	dema	0
+postfix	0	oewn-postfix-n	Number=Sing	dema	1
+postfix	1	dema-postfix-v	VerbForm=Inf	dema	1
+postfixed	0	dema-postfix-v	Tense=Past	dema	0
+postfixer	0	oewn-postfix-n	Number=Plur	dema	0
+postfixers	0	oewn-postfix-n	Number=Plur	dema	0
+postfixes	0	oewn-postfix-n	Number=Plur	dema	1
+postfixes	1	dema-postfix-v	Person=3+Tense=Pres	dema	1
+postfixing	0	dema-postfix-v	VerbForm=Ger	dema	0
+postfixingly	0	dema-postfix-r		dema	0
+postfoetal	0	dema-postfoetal-a	Degree=Pos	dema	0
+postfoetally	0	dema-postfoetal-r		dema	0
+postfoetalness	0	dema-postfoetal-n	Number=Plur	dema	0
+postfoveal	0	dema-postfoveal-a	Degree=Pos	dema	0
+postfoveally	0	dema-postfoveal-r		dema	0
+postfovealness	0	dema-postfoveal-n	Number=Plur	dema	0
+postganglionic	0	oewn-postganglionic-a	Degree=Pos	dema	0
+postganglionically	0	dema-postganglionic-r		dema	0
+postgastric	0	dema-postgastric-a	Degree=Pos	dema	0
+postgastrically	0	dema-postgastric-r		dema	0
+postgastricness	0	dema-postgastric-n	Number=Plur	dema	0
+postgenial	0	dema-postgenial-a	Degree=Pos	dema	0
+postgenially	0	dema-postgenial-r		dema	0
+postgenialness	0	dema-postgenial-n	Number=Plur	dema	0
+postgenital	0	dema-postgenital-a	Degree=Pos	dema	0
+postgenitally	0	dema-postgenital-r		dema	0
+postglacial	0	oewn-postglacial-a	Degree=Pos	dema	0
+postglacially	0	dema-postglacial-r		dema	0
+postglacialness	0	dema-postglacial-n	Number=Plur	dema	0
+postgraduate	0	oewn-postgraduate-n	Number=Sing	dema	0
+postgraduates	0	oewn-postgraduate-n	Number=Plur	dema	0
+postgrippal	0	dema-postgrippal-a	Degree=Pos	dema	0
+postgrippally	0	dema-postgrippal-r		dema	0
+postgrippalness	0	dema-postgrippal-n	Number=Plur	dema	0
+posthaste	0	dema-posthaste-r	Degree=Pos	dema	0
+posthaste	1	dema-posthaste-n	Number=Sing	dema	0
+posthastes	0	dema-posthaste-n	Number=Plur	dema	0
+postheat	0	dema-postheat-v	VerbForm=Inf	dema	0
+postheated	0	dema-postheat-v	Tense=Past	dema	0
+postheater	0	dema-postheat-n	Number=Plur	dema	0
+postheaters	0	dema-postheat-n	Number=Plur	dema	0
+postheating	0	dema-postheat-v	VerbForm=Ger	dema	0
+postheatingly	0	dema-postheat-r		dema	0
+postheats	0	dema-postheat-v	Person=3+Tense=Pres	dema	0
+posthemiplegic	0	dema-posthemiplegic-a	Degree=Pos	dema	0
+posthemiplegically	0	dema-posthemiplegic-r		dema	0
+posthemorrhagic	0	dema-posthemorrhagic-a	Degree=Pos	dema	0
+posthemorrhagically	0	dema-posthemorrhagic-r		dema	0
+posthepatic	0	dema-posthepatic-a	Degree=Pos	dema	0
+posthepatically	0	dema-posthepatic-r		dema	0
+posthexaplar	0	dema-posthexaplar-a	Degree=Pos	dema	0
+posthexaplarly	0	dema-posthexaplar-r		dema	0
+posthippocampal	0	dema-posthippocampal-a	Degree=Pos	dema	0
+posthippocampally	0	dema-posthippocampal-r		dema	0
+posthumeral	0	dema-posthumeral-a	Degree=Pos	dema	0
+posthumerally	0	dema-posthumeral-r		dema	0
+posthumous	0	oewn-posthumous-a	Degree=Pos	dema	0
+posthumously	0	oewn-posthumously-r	Degree=Pos	dema	0
+posthumousness	0	dema-posthumousness-n	Number=Sing	dema	0
+posthumousnesses	0	dema-posthumousness-n	Number=Plur	dema	0
+posthyoid	0	dema-posthyoid-a	Degree=Pos	dema	0
+posthyoider	0	dema-posthyoid-a	Degree=Cmp	dema	0
+posthyoidest	0	dema-posthyoid-a	Degree=Sup	dema	0
+posthyoidly	0	dema-posthyoid-r		dema	0
+posthyoidness	0	dema-posthyoid-n	Number=Plur	dema	0
+posthypnotic	0	dema-posthypnotic-a	Degree=Pos	dema	0
+posthypnotically	0	dema-posthypnotically-r	Degree=Pos	dema	0
+posthysterical	0	dema-posthysterical-a	Degree=Pos	dema	0
+posthysterically	0	dema-posthysterical-r		dema	0
+postiche	0	dema-postiche-a	Degree=Pos	dema	0
+postiche	1	oewn-postiche-n	Number=Sing	dema	0
+postichely	0	dema-postiche-r		dema	0
+posticheness	0	oewn-postiche-n	Number=Plur	dema	0
+posticher	0	dema-postiche-a	Degree=Cmp	dema	0
+postiches	0	oewn-postiche-n	Number=Plur	dema	0
+postichest	0	dema-postiche-a	Degree=Sup	dema	0
+posticous	0	dema-posticous-a	Degree=Pos	dema	0
+posticously	0	dema-posticous-r		dema	0
+posticousness	0	dema-posticous-n	Number=Plur	dema	0
+posticteric	0	dema-posticteric-a	Degree=Pos	dema	0
+posticterically	0	dema-posticteric-r		dema	0
+postie	0	dema-postie-n	Number=Sing	dema	0
+posties	0	dema-postie-n	Number=Plur	dema	0
+postil	0	dema-postil-n	Number=Sing	dema	0
+postil	1	dema-postil-v	VerbForm=Inf	dema	0
+postiled	0	dema-postil-v	Tense=Past	dema	0
+postiler	0	dema-postil-n	Number=Plur	dema	0
+postilers	0	dema-postil-n	Number=Plur	dema	0
+postiling	0	dema-postil-v	VerbForm=Ger	dema	0
+postilingly	0	dema-postil-r		dema	0
+postilion	0	oewn-postilion-n	Number=Sing	dema	0
+postilioned	0	dema-postilioned-a	Degree=Pos	dema	0
+postilioned	1	dema-postilioned-v	VerbForm=Inf	dema	0
+postilioneded	0	dema-postilioned-v	Tense=Past	dema	0
+postilioneding	0	dema-postilioned-v	VerbForm=Ger	dema	0
+postilionedly	0	dema-postilioned-r		dema	0
+postilioneds	0	dema-postilioned-v	Person=3+Tense=Pres	dema	0
+postilions	0	oewn-postilion-n	Number=Plur	dema	0
+postilled	0	dema-postil-v	Tense=Past	dema	0
+postilling	0	dema-postil-v	VerbForm=Ger	dema	0
+postillingly	0	dema-postil-r		dema	0
+postillioned	0	dema-postillioned-a	Degree=Pos	dema	0
+postillioned	1	dema-postillioned-v	VerbForm=Inf	dema	0
+postillioneded	0	dema-postillioned-v	Tense=Past	dema	0
+postillioneding	0	dema-postillioned-v	VerbForm=Ger	dema	0
+postillionedly	0	dema-postillioned-r		dema	0
+postillioneds	0	dema-postillioned-v	Person=3+Tense=Pres	dema	0
+postils	0	dema-postil-n	Number=Plur	dema	0
+postils	1	dema-postil-v	Person=3+Tense=Pres	dema	0
+postimpressionism	0	dema-postimpressionism-n	Number=Sing	dema	0
+postimpressionism	1	dema-postimpressionism-a	Degree=Pos	dema	0
+postimpressionismly	0	dema-postimpressionism-r		dema	0
+postimpressionisms	0	dema-postimpressionism-n	Number=Plur	dema	0
+postincarnation	0	dema-postincarnation-a	Degree=Pos	dema	0
+postincarnationly	0	dema-postincarnation-r		dema	0
+postinfective	0	dema-postinfective-a	Degree=Pos	dema	0
+postinfectively	0	dema-postinfective-r		dema	0
+postinfluenzal	0	dema-postinfluenzal-a	Degree=Pos	dema	0
+postinfluenzally	0	dema-postinfluenzal-r		dema	0
+posting	0	oewn-post-n	Number=Plur	dema	1
+posting	1	oewn-post-v	VerbForm=Ger	dema	1
+postingly	0	dema-post-r		dema	0
+postings	0	oewn-posting-n	Number=Plur	dema	0
+postintestinal	0	dema-postintestinal-a	Degree=Pos	dema	0
+postintestinally	0	dema-postintestinal-r		dema	0
+postjugular	0	dema-postjugular-a	Degree=Pos	dema	0
+postjugularly	0	dema-postjugular-r		dema	0
+postlabial	0	dema-postlabial-a	Degree=Pos	dema	0
+postlabially	0	dema-postlabially-r	Degree=Pos	dema	0
+postlabialness	0	dema-postlabial-n	Number=Plur	dema	0
+postlachrymal	0	dema-postlachrymal-a	Degree=Pos	dema	0
+postlachrymally	0	dema-postlachrymal-r		dema	0
+postlarval	0	dema-postlarval-a	Degree=Pos	dema	0
+postlarvally	0	dema-postlarval-r		dema	0
+postlarvalness	0	dema-postlarval-n	Number=Plur	dema	0
+postlaryngal	0	dema-postlaryngal-a	Degree=Pos	dema	0
+postlaryngally	0	dema-postlaryngal-r		dema	0
+postlaryngeal	0	dema-postlaryngeal-a	Degree=Pos	dema	0
+postlaryngeally	0	dema-postlaryngeal-r		dema	0
+postlegal	0	dema-postlegal-a	Degree=Pos	dema	0
+postlegally	0	dema-postlegal-r		dema	0
+postlegalness	0	dema-postlegal-n	Number=Plur	dema	0
+postlegitimation	0	dema-postlegitimation-n	Number=Sing	dema	0
+postlegitimations	0	dema-postlegitimation-n	Number=Plur	dema	0
+postlenticular	0	dema-postlenticular-a	Degree=Pos	dema	0
+postlenticularly	0	dema-postlenticular-r		dema	0
+postless	0	dema-postless-r	Degree=Pos	dema	0
+postlicentiate	0	dema-postlicentiate-a	Degree=Pos	dema	0
+postlicentiately	0	dema-postlicentiate-r		dema	0
+postlike	0	dema-postlike-a	Degree=Pos	dema	0
+postlikely	0	dema-postlike-r		dema	0
+postlikeness	0	dema-postlike-n	Number=Plur	dema	0
+postliker	0	dema-postlike-a	Degree=Cmp	dema	0
+postlikest	0	dema-postlike-a	Degree=Sup	dema	0
+postliminies	0	dema-postliminy-n	Number=Plur	dema	0
+postliminy	0	dema-postliminy-n	Number=Sing	dema	0
+postlude	0	oewn-postlude-n	Number=Sing	dema	0
+postludes	0	oewn-postlude-n	Number=Plur	dema	0
+postmalarial	0	dema-postmalarial-a	Degree=Pos	dema	0
+postmalarially	0	dema-postmalarial-r		dema	0
+postmammarily	0	dema-postmammary-r		dema	0
+postmammary	0	dema-postmammary-a	Degree=Pos	dema	0
+postmammillarily	0	dema-postmammillary-r		dema	0
+postmammillary	0	dema-postmammillary-a	Degree=Pos	dema	0
+postman	0	oewn-postman-n	Number=Sing	dema	0
+postmandibular	0	dema-postmandibular-a	Degree=Pos	dema	0
+postmandibularly	0	dema-postmandibular-r		dema	0
+postmaniacal	0	dema-postmaniacal-a	Degree=Pos	dema	0
+postmaniacally	0	dema-postmaniacal-r		dema	0
+postmarital	0	dema-postmarital-a	Degree=Pos	dema	0
+postmaritally	0	dema-postmarital-r		dema	0
+postmark	0	oewn-postmark-n	Number=Sing	dema	0
+postmarks	0	oewn-postmark-n	Number=Plur	dema	0
+postmarriage	0	dema-postmarriage-n	Number=Sing	dema	0
+postmarriage	1	dema-postmarriage-a	Degree=Pos	dema	0
+postmarriagely	0	dema-postmarriage-r		dema	0
+postmarriageness	0	dema-postmarriage-n	Number=Plur	dema	0
+postmarriages	0	dema-postmarriage-n	Number=Plur	dema	0
+postmaster	0	oewn-postmaster-n	Number=Sing	dema	0
+postmasters	0	oewn-postmaster-n	Number=Plur	dema	0
+postmastership	0	dema-postmastership-n	Number=Sing	dema	0
+postmasterships	0	dema-postmastership-n	Number=Plur	dema	0
+postmastoid	0	dema-postmastoid-a	Degree=Pos	dema	0
+postmastoidly	0	dema-postmastoid-r		dema	0
+postmastoidness	0	dema-postmastoid-n	Number=Plur	dema	0
+postmaxillarily	0	dema-postmaxillary-r		dema	0
+postmaxillary	0	dema-postmaxillary-a	Degree=Pos	dema	0
+postmaximal	0	dema-postmaximal-a	Degree=Pos	dema	0
+postmaximally	0	dema-postmaximal-r		dema	0
+postmediaeval	0	dema-postmediaeval-a	Degree=Pos	dema	0
+postmediaevally	0	dema-postmediaeval-r		dema	0
+postmedial	0	dema-postmedial-a	Degree=Pos	dema	0
+postmedially	0	dema-postmedial-r		dema	0
+postmedialness	0	dema-postmedial-n	Number=Plur	dema	0
+postmedian	0	dema-postmedian-a	Degree=Pos	dema	0
+postmedianly	0	dema-postmedian-r		dema	0
+postmedianness	0	dema-postmedian-n	Number=Plur	dema	0
+postmedieval	0	dema-postmedieval-a	Degree=Pos	dema	0
+postmedievally	0	dema-postmedieval-r		dema	0
+postmedullarily	0	dema-postmedullary-r		dema	0
+postmedullary	0	dema-postmedullary-a	Degree=Pos	dema	0
+postmeiotic	0	dema-postmeiotic-a	Degree=Pos	dema	0
+postmeiotically	0	dema-postmeiotic-r		dema	0
+postmeioticness	0	dema-postmeiotic-n	Number=Plur	dema	0
+postmen	0	oewn-postman-n	Number=Plur	dema	0
+postmeningeal	0	dema-postmeningeal-a	Degree=Pos	dema	0
+postmeningeally	0	dema-postmeningeal-r		dema	0
+postmenopausal	0	oewn-postmenopausal-a	Degree=Pos	dema	0
+postmenopausally	0	dema-postmenopausal-r		dema	0
+postmenstrual	0	dema-postmenstrual-a	Degree=Pos	dema	0
+postmenstrually	0	dema-postmenstrual-r		dema	0
+postmenstrualness	0	dema-postmenstrual-n	Number=Plur	dema	0
+postmeridian	0	oewn-postmeridian-a	Degree=Pos	dema	0
+postmeridianly	0	dema-postmeridian-r		dema	0
+postmesenteric	0	dema-postmesenteric-a	Degree=Pos	dema	0
+postmesenterically	0	dema-postmesenteric-r		dema	0
+postmillennial	0	oewn-postmillennial-a	Degree=Pos	dema	0
+postmillennialism	0	dema-postmillennialism-n	Number=Sing	dema	0
+postmillennialisms	0	dema-postmillennialism-n	Number=Plur	dema	0
+postmillennialist	0	dema-postmillennialist-n	Number=Sing	dema	0
+postmillennialists	0	dema-postmillennialist-n	Number=Plur	dema	0
+postmillennially	0	dema-postmillennial-r		dema	0
+postmistress	0	oewn-postmistress-n	Number=Sing	dema	0
+postmistresses	0	oewn-postmistress-n	Number=Plur	dema	0
+postmortem	0	oewn-postmortem-a	Degree=Pos	dema	0
+postmortem	1	oewn-postmortem-n	Number=Sing	dema	0
+postmortemly	0	dema-postmortem-r		dema	0
+postmortemness	0	oewn-postmortem-n	Number=Plur	dema	0
+postmortems	0	oewn-postmortem-n	Number=Plur	dema	0
+postmultiplied	0	dema-postmultiplied-v	VerbForm=Inf	dema	0
+postmultiplies	0	dema-postmultiply-v	Person=3+Tense=Pres	dema	0
+postmultiply	0	dema-postmultiply-v	VerbForm=Inf	dema	0
+postmultiplying	0	dema-postmultiplying-v	VerbForm=Inf	dema	0
+postmundane	0	dema-postmundane-a	Degree=Pos	dema	0
+postmundanely	0	dema-postmundane-r		dema	0
+postmundaneness	0	dema-postmundane-n	Number=Plur	dema	0
+postmuscular	0	dema-postmuscular-a	Degree=Pos	dema	0
+postmuscularly	0	dema-postmuscular-r		dema	0
+postmycotic	0	dema-postmycotic-a	Degree=Pos	dema	0
+postmycotically	0	dema-postmycotic-r		dema	0
+postmyxedematous	0	dema-postmyxedematous-a	Degree=Pos	dema	0
+postmyxedematously	0	dema-postmyxedematous-r		dema	0
+postmyxedemic	0	dema-postmyxedemic-a	Degree=Pos	dema	0
+postmyxedemically	0	dema-postmyxedemic-r		dema	0
+postnasal	0	dema-postnasal-a	Degree=Pos	dema	0
+postnasally	0	dema-postnasal-r		dema	0
+postnasalness	0	dema-postnasal-n	Number=Plur	dema	0
+postnecrotic	0	dema-postnecrotic-a	Degree=Pos	dema	0
+postnecrotically	0	dema-postnecrotic-r		dema	0
+postnephritic	0	dema-postnephritic-a	Degree=Pos	dema	0
+postnephritically	0	dema-postnephritic-r		dema	0
+postneural	0	dema-postneural-a	Degree=Pos	dema	0
+postneuralgic	0	dema-postneuralgic-a	Degree=Pos	dema	0
+postneuralgically	0	dema-postneuralgic-r		dema	0
+postneurally	0	dema-postneural-r		dema	0
+postneuralness	0	dema-postneural-n	Number=Plur	dema	0
+postneuritic	0	dema-postneuritic-a	Degree=Pos	dema	0
+postneuritically	0	dema-postneuritic-r		dema	0
+postneurotic	0	dema-postneurotic-a	Degree=Pos	dema	0
+postneurotically	0	dema-postneurotic-r		dema	0
+postnodal	0	dema-postnodal-a	Degree=Pos	dema	0
+postnodally	0	dema-postnodal-r		dema	0
+postnodalness	0	dema-postnodal-n	Number=Plur	dema	0
+postnodular	0	dema-postnodular-a	Degree=Pos	dema	0
+postnodularly	0	dema-postnodular-r		dema	0
+postnotum	0	dema-postnotum-n	Number=Sing	dema	0
+postnotums	0	dema-postnotum-n	Number=Plur	dema	0
+postnotumta	0	dema-postnotumta-n	Number=Sing	dema	0
+postnotumtas	0	dema-postnotumta-n	Number=Plur	dema	0
+postnuptial	0	oewn-postnuptial-a	Degree=Pos	dema	0
+postnuptially	0	dema-postnuptially-r	Degree=Pos	dema	0
+postnuptialness	0	dema-postnuptial-n	Number=Plur	dema	0
+postoffice	0	dema-postoffice-n	Number=Sing	dema	0
+postoffices	0	dema-postoffice-n	Number=Plur	dema	0
+postolivarily	0	dema-postolivary-r		dema	0
+postolivary	0	dema-postolivary-a	Degree=Pos	dema	0
+postomental	0	dema-postomental-a	Degree=Pos	dema	0
+postomentally	0	dema-postomental-r		dema	0
+postoperative	0	oewn-postoperative-a	Degree=Pos	dema	0
+postoperatively	0	dema-postoperative-r		dema	0
+postoptic	0	dema-postoptic-a	Degree=Pos	dema	0
+postoptically	0	dema-postoptic-r		dema	0
+postopticness	0	dema-postoptic-n	Number=Plur	dema	0
+postoral	0	dema-postoral-a	Degree=Pos	dema	0
+postorally	0	dema-postoral-r		dema	0
+postoralness	0	dema-postoral-n	Number=Plur	dema	0
+postorbital	0	dema-postorbital-a	Degree=Pos	dema	0
+postorbitally	0	dema-postorbital-r		dema	0
+postordination	0	dema-postordination-a	Degree=Pos	dema	0
+postordinationly	0	dema-postordination-r		dema	0
+postorgastic	0	dema-postorgastic-a	Degree=Pos	dema	0
+postorgastically	0	dema-postorgastic-r		dema	0
+postosseous	0	dema-postosseous-a	Degree=Pos	dema	0
+postosseously	0	dema-postosseous-r		dema	0
+postosseousness	0	dema-postosseous-n	Number=Plur	dema	0
+postpaid	0	dema-postpaid-r	Degree=Pos	dema	0
+postpaid	1	oewn-postpaid-a	Degree=Pos	dema	0
+postpaider	0	dema-postpaid-r	Degree=Cmp	dema	0
+postpaider	1	oewn-postpaid-a	Degree=Cmp	dema	0
+postpaidest	0	dema-postpaid-r	Degree=Sup	dema	0
+postpaidest	1	oewn-postpaid-a	Degree=Sup	dema	0
+postpaidly	0	dema-postpaid-r		dema	0
+postpaidness	0	dema-postpaid-n	Number=Plur	dema	0
+postpalpebral	0	dema-postpalpebral-a	Degree=Pos	dema	0
+postpalpebrally	0	dema-postpalpebral-r		dema	0
+postpaludal	0	dema-postpaludal-a	Degree=Pos	dema	0
+postpaludally	0	dema-postpaludal-r		dema	0
+postparalytic	0	dema-postparalytic-a	Degree=Pos	dema	0
+postparalytically	0	dema-postparalytic-r		dema	0
+postparotid	0	dema-postparotid-a	Degree=Pos	dema	0
+postparotidly	0	dema-postparotid-r		dema	0
+postparotitic	0	dema-postparotitic-a	Degree=Pos	dema	0
+postparotitically	0	dema-postparotitic-r		dema	0
+postparoxysmal	0	dema-postparoxysmal-a	Degree=Pos	dema	0
+postparoxysmally	0	dema-postparoxysmal-r		dema	0
+postpartum	0	oewn-postpartum-a	Degree=Pos	dema	0
+postpartumly	0	dema-postpartum-r		dema	0
+postpartumness	0	dema-postpartum-n	Number=Plur	dema	0
+postparturient	0	dema-postparturient-a	Degree=Pos	dema	0
+postparturiently	0	dema-postparturient-r		dema	0
+postpatellar	0	dema-postpatellar-a	Degree=Pos	dema	0
+postpatellarly	0	dema-postpatellar-r		dema	0
+postpathologic	0	dema-postpathologic-a	Degree=Pos	dema	0
+postpathological	0	dema-postpathological-a	Degree=Pos	dema	0
+postpathologically	0	dema-postpathologic-r		dema	0
+postpectoral	0	dema-postpectoral-a	Degree=Pos	dema	0
+postpectorally	0	dema-postpectoral-r		dema	0
+postpeduncular	0	dema-postpeduncular-a	Degree=Pos	dema	0
+postpeduncularly	0	dema-postpeduncular-r		dema	0
+postperforated	0	dema-postperforated-a	Degree=Pos	dema	0
+postperforated	1	dema-postperforated-v	VerbForm=Inf	dema	0
+postperforateded	0	dema-postperforated-v	Tense=Past	dema	0
+postperforateding	0	dema-postperforated-v	VerbForm=Ger	dema	0
+postperforatedly	0	dema-postperforated-r		dema	0
+postperforateds	0	dema-postperforated-v	Person=3+Tense=Pres	dema	0
+postpericardial	0	dema-postpericardial-a	Degree=Pos	dema	0
+postpericardially	0	dema-postpericardial-r		dema	0
+postpharyngal	0	dema-postpharyngal-a	Degree=Pos	dema	0
+postpharyngally	0	dema-postpharyngal-r		dema	0
+postpharyngeal	0	dema-postpharyngeal-a	Degree=Pos	dema	0
+postpharyngeally	0	dema-postpharyngeal-r		dema	0
+postphlogistic	0	dema-postphlogistic-a	Degree=Pos	dema	0
+postphlogistically	0	dema-postphlogistic-r		dema	0
+postphrenic	0	dema-postphrenic-a	Degree=Pos	dema	0
+postphrenically	0	dema-postphrenic-r		dema	0
+postphrenicness	0	dema-postphrenic-n	Number=Plur	dema	0
+postphthistic	0	dema-postphthistic-a	Degree=Pos	dema	0
+postphthistically	0	dema-postphthistic-r		dema	0
+postphthisticness	0	dema-postphthistic-n	Number=Plur	dema	0
+postpituitarily	0	dema-postpituitary-r		dema	0
+postpituitary	0	dema-postpituitary-a	Degree=Pos	dema	0
+postpneumonic	0	dema-postpneumonic-a	Degree=Pos	dema	0
+postpneumonically	0	dema-postpneumonic-r		dema	0
+postpone	0	oewn-postpone-v	VerbForm=Inf	dema	0
+postponed	0	dema-postponed-v	VerbForm=Inf	dema	0
+postponement	0	oewn-postponement-n	Number=Sing	dema	0
+postponements	0	oewn-postponement-n	Number=Plur	dema	0
+postponer	0	dema-postpone-n	Number=Plur	dema	0
+postponers	0	dema-postpone-n	Number=Plur	dema	0
+postpones	0	oewn-postpone-v	Person=3+Tense=Pres	dema	0
+postponing	0	dema-postponing-v	VerbForm=Inf	dema	0
+postponingly	0	dema-postpone-r		dema	0
+postposition	0	oewn-postposition-n	Number=Sing	dema	0
+postpositional	0	dema-postpositional-a	Degree=Pos	dema	0
+postpositionally	0	dema-postpositional-r		dema	0
+postpositions	0	oewn-postposition-n	Number=Plur	dema	0
+postpositive	0	oewn-postpositive-a	Degree=Pos	dema	0
+postpositive	1	dema-postpositive-n	Number=Sing	dema	0
+postpositively	0	dema-postpositively-r	Degree=Pos	dema	0
+postpositives	0	dema-postpositive-n	Number=Plur	dema	0
+postprandial	0	oewn-postprandial-a	Degree=Pos	dema	0
+postprandially	0	dema-postprandially-r	Degree=Pos	dema	0
+postprandialness	0	dema-postprandial-n	Number=Plur	dema	0
+postprophetic	0	dema-postprophetic-a	Degree=Pos	dema	0
+postprophetical	0	dema-postprophetical-a	Degree=Pos	dema	0
+postprophetically	0	dema-postprophetic-r		dema	0
+postprostate	0	dema-postprostate-a	Degree=Pos	dema	0
+postprostately	0	dema-postprostate-r		dema	0
+postprostateness	0	dema-postprostate-n	Number=Plur	dema	0
+postpubertily	0	dema-postpuberty-r		dema	0
+postpuberty	0	dema-postpuberty-a	Degree=Pos	dema	0
+postpubescent	0	dema-postpubescent-a	Degree=Pos	dema	0
+postpubescently	0	dema-postpubescent-r		dema	0
+postpuerperal	0	dema-postpuerperal-a	Degree=Pos	dema	0
+postpuerperally	0	dema-postpuerperal-r		dema	0
+postpulmonarily	0	dema-postpulmonary-r		dema	0
+postpulmonary	0	dema-postpulmonary-a	Degree=Pos	dema	0
+postpupillarily	0	dema-postpupillary-r		dema	0
+postpupillary	0	dema-postpupillary-a	Degree=Pos	dema	0
+postpyloric	0	dema-postpyloric-a	Degree=Pos	dema	0
+postpylorically	0	dema-postpyloric-r		dema	0
+postpyramidal	0	dema-postpyramidal-a	Degree=Pos	dema	0
+postpyramidally	0	dema-postpyramidal-r		dema	0
+postpyretic	0	dema-postpyretic-a	Degree=Pos	dema	0
+postpyretically	0	dema-postpyretic-r		dema	0
+postrachitic	0	dema-postrachitic-a	Degree=Pos	dema	0
+postrachitically	0	dema-postrachitic-r		dema	0
+postrectal	0	dema-postrectal-a	Degree=Pos	dema	0
+postrectally	0	dema-postrectal-r		dema	0
+postrectalness	0	dema-postrectal-n	Number=Plur	dema	0
+postredemption	0	dema-postredemption-n	Number=Sing	dema	0
+postredemptions	0	dema-postredemption-n	Number=Plur	dema	0
+postremogeniture	0	dema-postremogeniture-n	Number=Sing	dema	0
+postremogenitures	0	dema-postremogeniture-n	Number=Plur	dema	0
+postrenal	0	dema-postrenal-a	Degree=Pos	dema	0
+postrenally	0	dema-postrenal-r		dema	0
+postrenalness	0	dema-postrenal-n	Number=Plur	dema	0
+postresurrection	0	dema-postresurrection-n	Number=Sing	dema	0
+postresurrectional	0	dema-postresurrectional-a	Degree=Pos	dema	0
+postresurrectionally	0	dema-postresurrectional-r		dema	0
+postresurrections	0	dema-postresurrection-n	Number=Plur	dema	0
+postretinal	0	dema-postretinal-a	Degree=Pos	dema	0
+postretinally	0	dema-postretinal-r		dema	0
+postrheumatic	0	dema-postrheumatic-a	Degree=Pos	dema	0
+postrheumatically	0	dema-postrheumatic-r		dema	0
+postrhinal	0	dema-postrhinal-a	Degree=Pos	dema	0
+postrhinally	0	dema-postrhinal-r		dema	0
+postrhinalness	0	dema-postrhinal-n	Number=Plur	dema	0
+postrider	0	dema-postrider-n	Number=Sing	dema	0
+postriders	0	dema-postrider-n	Number=Plur	dema	0
+postrorse	0	dema-postrorse-a	Degree=Pos	dema	0
+postrorsely	0	dema-postrorse-r		dema	0
+postrorseness	0	dema-postrorse-n	Number=Plur	dema	0
+postrorser	0	dema-postrorse-a	Degree=Cmp	dema	0
+postrorsest	0	dema-postrorse-a	Degree=Sup	dema	0
+postrostral	0	dema-postrostral-a	Degree=Pos	dema	0
+postrostrally	0	dema-postrostral-r		dema	0
+postrostralness	0	dema-postrostral-n	Number=Plur	dema	0
+postrubeolar	0	dema-postrubeolar-a	Degree=Pos	dema	0
+postrubeolarly	0	dema-postrubeolar-r		dema	0
+posts	0	oewn-post-n	Number=Plur	dema	1
+posts	1	oewn-post-v	Person=3+Tense=Pres	dema	1
+postsaccular	0	dema-postsaccular-a	Degree=Pos	dema	0
+postsaccularly	0	dema-postsaccular-r		dema	0
+postscarlatinoid	0	dema-postscarlatinoid-a	Degree=Pos	dema	0
+postscarlatinoidly	0	dema-postscarlatinoid-r		dema	0
+postscholastic	0	dema-postscholastic-a	Degree=Pos	dema	0
+postscholastically	0	dema-postscholastic-r		dema	0
+postscorbutic	0	dema-postscorbutic-a	Degree=Pos	dema	0
+postscorbutically	0	dema-postscorbutic-r		dema	0
+postscript	0	oewn-postscript-n	Number=Sing	dema	0
+postscripts	0	oewn-postscript-n	Number=Plur	dema	0
+postscutellum	0	dema-postscutellum-n	Number=Sing	dema	0
+postscutellums	0	dema-postscutellum-n	Number=Plur	dema	0
+postscuttella	0	dema-postscuttella-n	Number=Sing	dema	0
+postscuttellas	0	dema-postscuttella-n	Number=Plur	dema	0
+postseason	0	dema-postseason-a	Degree=Pos	dema	0
+postseasonly	0	dema-postseason-r		dema	0
+postseasonness	0	dema-postseason-n	Number=Plur	dema	0
+postsigmoid	0	dema-postsigmoid-a	Degree=Pos	dema	0
+postsigmoidal	0	dema-postsigmoidal-a	Degree=Pos	dema	0
+postsigmoidally	0	dema-postsigmoidal-r		dema	0
+postsigmoidly	0	dema-postsigmoid-r		dema	0
+postsigmoidness	0	dema-postsigmoid-n	Number=Plur	dema	0
+postsign	0	dema-postsign-v	VerbForm=Inf	dema	0
+postsigned	0	dema-postsign-v	Tense=Past	dema	0
+postsigner	0	dema-postsigner-n	Number=Sing	dema	0
+postsigners	0	dema-postsign-n	Number=Plur	dema	0
+postsigning	0	dema-postsign-v	VerbForm=Ger	dema	0
+postsigningly	0	dema-postsign-r		dema	0
+postsigns	0	dema-postsign-v	Person=3+Tense=Pres	dema	0
+postspasmodic	0	dema-postspasmodic-a	Degree=Pos	dema	0
+postspasmodically	0	dema-postspasmodic-r		dema	0
+postsphenoid	0	dema-postsphenoid-a	Degree=Pos	dema	0
+postsphenoidly	0	dema-postsphenoid-r		dema	0
+postsphenoidness	0	dema-postsphenoid-n	Number=Plur	dema	0
+postsphygmic	0	dema-postsphygmic-a	Degree=Pos	dema	0
+postsphygmically	0	dema-postsphygmic-r		dema	0
+postsphygmicness	0	dema-postsphygmic-n	Number=Plur	dema	0
+postspinous	0	dema-postspinous-a	Degree=Pos	dema	0
+postspinously	0	dema-postspinous-r		dema	0
+postspinousness	0	dema-postspinous-n	Number=Plur	dema	0
+postsplenic	0	dema-postsplenic-a	Degree=Pos	dema	0
+postsplenically	0	dema-postsplenic-r		dema	0
+postsplenicness	0	dema-postsplenic-n	Number=Plur	dema	0
+poststernal	0	dema-poststernal-a	Degree=Pos	dema	0
+poststernally	0	dema-poststernal-r		dema	0
+poststernalness	0	dema-poststernal-n	Number=Plur	dema	0
+poststertorous	0	dema-poststertorous-a	Degree=Pos	dema	0
+poststertorously	0	dema-poststertorous-r		dema	0
+postsuppurative	0	dema-postsuppurative-a	Degree=Pos	dema	0
+postsuppuratively	0	dema-postsuppurative-r		dema	0
+postsurgical	0	dema-postsurgical-a	Degree=Pos	dema	0
+postsurgically	0	dema-postsurgical-r		dema	0
+postsymphysial	0	dema-postsymphysial-a	Degree=Pos	dema	0
+postsymphysially	0	dema-postsymphysial-r		dema	0
+postsynaptic	0	dema-postsynaptic-a	Degree=Pos	dema	0
+postsynaptically	0	dema-postsynaptic-r		dema	0
+postsyphilitic	0	dema-postsyphilitic-a	Degree=Pos	dema	0
+postsyphilitically	0	dema-postsyphilitic-r		dema	0
+postsystolic	0	dema-postsystolic-a	Degree=Pos	dema	0
+postsystolically	0	dema-postsystolic-r		dema	0
+posttabetic	0	dema-posttabetic-a	Degree=Pos	dema	0
+posttabetically	0	dema-posttabetic-r		dema	0
+posttarsal	0	dema-posttarsal-a	Degree=Pos	dema	0
+posttarsally	0	dema-posttarsal-r		dema	0
+posttarsalness	0	dema-posttarsal-n	Number=Plur	dema	0
+posttemporal	0	dema-posttemporal-a	Degree=Pos	dema	0
+posttemporally	0	dema-posttemporal-r		dema	0
+posttetanic	0	dema-posttetanic-a	Degree=Pos	dema	0
+posttetanically	0	dema-posttetanic-r		dema	0
+postthalamic	0	dema-postthalamic-a	Degree=Pos	dema	0
+postthalamically	0	dema-postthalamic-r		dema	0
+postthoracic	0	dema-postthoracic-a	Degree=Pos	dema	0
+postthoracically	0	dema-postthoracic-r		dema	0
+postthyroidal	0	dema-postthyroidal-a	Degree=Pos	dema	0
+postthyroidally	0	dema-postthyroidal-r		dema	0
+posttibial	0	dema-posttibial-a	Degree=Pos	dema	0
+posttibially	0	dema-posttibial-r		dema	0
+posttibialness	0	dema-posttibial-n	Number=Plur	dema	0
+posttoxic	0	dema-posttoxic-a	Degree=Pos	dema	0
+posttoxically	0	dema-posttoxic-r		dema	0
+posttoxicness	0	dema-posttoxic-n	Number=Plur	dema	0
+posttracheal	0	dema-posttracheal-a	Degree=Pos	dema	0
+posttracheally	0	dema-posttracheal-r		dema	0
+posttrachealness	0	dema-posttracheal-n	Number=Plur	dema	0
+posttrapezoid	0	dema-posttrapezoid-a	Degree=Pos	dema	0
+posttrapezoidly	0	dema-posttrapezoid-r		dema	0
+posttraumatic	0	dema-posttraumatic-a	Degree=Pos	dema	0
+posttraumatically	0	dema-posttraumatic-r		dema	0
+posttubercular	0	dema-posttubercular-a	Degree=Pos	dema	0
+posttubercularly	0	dema-posttubercular-r		dema	0
+posttussive	0	dema-posttussive-a	Degree=Pos	dema	0
+posttussively	0	dema-posttussive-r		dema	0
+posttussiveness	0	dema-posttussive-n	Number=Plur	dema	0
+posttympanic	0	dema-posttympanic-a	Degree=Pos	dema	0
+posttympanically	0	dema-posttympanic-r		dema	0
+postulant	0	oewn-postulant-n	Number=Sing	dema	0
+postulants	0	oewn-postulant-n	Number=Plur	dema	0
+postulantship	0	dema-postulantship-n	Number=Sing	dema	0
+postulantships	0	dema-postulantship-n	Number=Plur	dema	0
+postulate	0	oewn-postulate-n	Number=Sing	dema	1
+postulate	1	oewn-postulate-v	VerbForm=Inf	dema	1
+postulated	0	dema-postulated-v	VerbForm=Inf	dema	0
+postulater	0	oewn-postulate-n	Number=Plur	dema	0
+postulaters	0	oewn-postulate-n	Number=Plur	dema	0
+postulates	0	oewn-postulate-n	Number=Plur	dema	1
+postulates	1	oewn-postulate-v	Person=3+Tense=Pres	dema	1
+postulating	0	dema-postulating-v	VerbForm=Inf	dema	0
+postulatingly	0	dema-postulate-r		dema	0
+postulation	0	oewn-postulation-n	Number=Sing	dema	0
+postulational	0	oewn-postulational-a	Degree=Pos	dema	0
+postulationally	0	dema-postulational-r		dema	0
+postulations	0	oewn-postulation-n	Number=Plur	dema	0
+postulator	0	oewn-postulator-n	Number=Sing	dema	0
+postulators	0	oewn-postulator-n	Number=Plur	dema	0
+postulnar	0	dema-postulnar-a	Degree=Pos	dema	0
+postulnarly	0	dema-postulnar-r		dema	0
+postulnarness	0	dema-postulnar-n	Number=Plur	dema	0
+postumbilical	0	dema-postumbilical-a	Degree=Pos	dema	0
+postumbilically	0	dema-postumbilical-r		dema	0
+postumbonal	0	dema-postumbonal-a	Degree=Pos	dema	0
+postumbonally	0	dema-postumbonal-r		dema	0
+postural	0	oewn-postural-a	Degree=Pos	dema	0
+posturally	0	dema-postural-r		dema	0
+posturalness	0	dema-postural-n	Number=Plur	dema	0
+posture	0	oewn-posture-n	Number=Sing	dema	0
+posture	1	oewn-posture-v	VerbForm=Inf	dema	0
+postured	0	dema-postured-v	VerbForm=Inf	dema	0
+posturer	0	oewn-posturer-n	Number=Sing	dema	0
+posturers	0	oewn-posture-n	Number=Plur	dema	0
+postures	0	oewn-posture-n	Number=Plur	dema	0
+postures	1	oewn-posture-v	Person=3+Tense=Pres	dema	0
+postureteral	0	dema-postureteral-a	Degree=Pos	dema	0
+postureterally	0	dema-postureteral-r		dema	0
+postureteric	0	dema-postureteric-a	Degree=Pos	dema	0
+postureterically	0	dema-postureteric-r		dema	0
+posturing	0	dema-posturing-v	VerbForm=Inf	dema	0
+posturingly	0	dema-posture-r		dema	0
+posturise	0	dema-posturise-v	VerbForm=Inf	dema	0
+posturised	0	dema-posturised-v	VerbForm=Inf	dema	0
+posturiser	0	dema-posturise-n	Number=Plur	dema	0
+posturisers	0	dema-posturise-n	Number=Plur	dema	0
+posturises	0	dema-posturise-v	Person=3+Tense=Pres	dema	0
+posturising	0	dema-posturising-v	VerbForm=Inf	dema	0
+posturisingly	0	dema-posturise-r		dema	0
+posturize	0	dema-posturize-v	VerbForm=Inf	dema	0
+posturized	0	dema-posturized-v	VerbForm=Inf	dema	0
+posturizer	0	dema-posturize-n	Number=Plur	dema	0
+posturizers	0	dema-posturize-n	Number=Plur	dema	0
+posturizes	0	dema-posturize-v	Person=3+Tense=Pres	dema	0
+posturizing	0	dema-posturizing-v	VerbForm=Inf	dema	0
+posturizingly	0	dema-posturize-r		dema	0
+postuterine	0	dema-postuterine-a	Degree=Pos	dema	0
+postuterinely	0	dema-postuterine-r		dema	0
+postvaccinal	0	dema-postvaccinal-a	Degree=Pos	dema	0
+postvaccinally	0	dema-postvaccinal-r		dema	0
+postvarioloid	0	dema-postvarioloid-a	Degree=Pos	dema	0
+postvarioloidly	0	dema-postvarioloid-r		dema	0
+postvenereal	0	dema-postvenereal-a	Degree=Pos	dema	0
+postvenereally	0	dema-postvenereal-r		dema	0
+postvenous	0	dema-postvenous-a	Degree=Pos	dema	0
+postvenously	0	dema-postvenous-r		dema	0
+postvenousness	0	dema-postvenous-n	Number=Plur	dema	0
+postventral	0	dema-postventral-a	Degree=Pos	dema	0
+postventrally	0	dema-postventral-r		dema	0
+postventralness	0	dema-postventral-n	Number=Plur	dema	0
+postvertebral	0	dema-postvertebral-a	Degree=Pos	dema	0
+postvertebrally	0	dema-postvertebral-r		dema	0
+postvesical	0	dema-postvesical-a	Degree=Pos	dema	0
+postvesically	0	dema-postvesical-r		dema	0
+postvocalic	0	dema-postvocalic-a	Degree=Pos	dema	0
+postvocalically	0	dema-postvocalically-r	Degree=Pos	dema	0
+postxiphoid	0	dema-postxiphoid-a	Degree=Pos	dema	0
+postxiphoidly	0	dema-postxiphoid-r		dema	0
+postxiphoidness	0	dema-postxiphoid-n	Number=Plur	dema	0
+postzygapophyseal	0	dema-postzygapophyseal-a	Degree=Pos	dema	0
+postzygapophyseally	0	dema-postzygapophyseal-r		dema	0
+postzygapophysial	0	dema-postzygapophysial-a	Degree=Pos	dema	0
+postzygapophysially	0	dema-postzygapophysial-r		dema	0
+posy	0	oewn-posy-n	Number=Sing	dema	0
+pot	0	oewn-pot-n	Number=Sing	dema	0
+pot	1	oewn-pot-v	VerbForm=Inf	dema	0
+potabilities	0	dema-potability-n	Number=Plur	dema	0
+potability	0	dema-potability-n	Number=Sing	dema	0
+potable	0	oewn-potable-a	Degree=Pos	dema	0
+potable	1	oewn-potable-n	Number=Sing	dema	0
+potableness	0	dema-potableness-n	Number=Sing	dema	0
+potablenesses	0	dema-potableness-n	Number=Plur	dema	0
+potables	0	oewn-potable-n	Number=Plur	dema	0
+potably	0	dema-potable-r		dema	0
+potage	0	oewn-potage-n	Number=Sing	dema	0
+potages	0	oewn-potage-n	Number=Plur	dema	0
+potamic	0	dema-potamic-a	Degree=Pos	dema	0
+potamically	0	dema-potamic-r		dema	0
+potamicness	0	dema-potamic-n	Number=Plur	dema	0
+potamogale	0	oewn-potamogale-n	Number=Sing	dema	0
+potamogales	0	oewn-potamogale-n	Number=Plur	dema	0
+potamologies	0	dema-potamology-n	Number=Plur	dema	0
+potamology	0	dema-potamology-n	Number=Sing	dema	0
+potamoplankton	0	oewn-potamoplankton-n	Number=Sing	dema	0
+potamoplanktons	0	oewn-potamoplankton-n	Number=Plur	dema	0
+potash	0	oewn-potash-n	Number=Sing	dema	0
+potashes	0	oewn-potash-n	Number=Plur	dema	0
+potass	0	dema-potass-n	Number=Sing	dema	0
+potassa	0	dema-potassa-n	Number=Sing	dema	0
+potassas	0	dema-potassa-n	Number=Plur	dema	0
+potasses	0	dema-potass-n	Number=Plur	dema	0
+potassic	0	dema-potassic-a	Degree=Pos	dema	0
+potassically	0	dema-potassic-r		dema	0
+potassicness	0	dema-potassic-n	Number=Plur	dema	0
+potassium	0	oewn-potassium-n	Number=Sing	dema	0
+potassiums	0	oewn-potassium-n	Number=Plur	dema	0
+potation	0	oewn-potation-n	Number=Sing	dema	0
+potations	0	oewn-potation-n	Number=Plur	dema	0
+potato	0	oewn-potato-n	Number=Sing	dema	0
+potatoes	0	dema-potatoes-n	Number=Sing	dema	0
+potatorily	0	dema-potatory-r		dema	0
+potatory	0	dema-potatory-a	Degree=Pos	dema	0
+potatos	0	oewn-potato-n	Number=Plur	dema	0
+potbellied	0	oewn-potbellied-a	Degree=Pos	dema	0
+potbellied	1	dema-potbellied-v	VerbForm=Inf	dema	0
+potbellieded	0	dema-potbellied-v	Tense=Past	dema	0
+potbellieder	0	dema-potbellied-n	Number=Plur	dema	0
+potbellieders	0	dema-potbellied-n	Number=Plur	dema	0
+potbellieding	0	dema-potbellied-v	VerbForm=Ger	dema	0
+potbelliedingly	0	dema-potbellied-r		dema	0
+potbelliedly	0	dema-potbellied-r		dema	0
+potbelliedness	0	dema-potbellied-n	Number=Plur	dema	0
+potbellieds	0	dema-potbellied-v	Person=3+Tense=Pres	dema	0
+potbellies	0	dema-potbellies-n	Number=Sing	dema	0
+potbelly	0	oewn-potbelly-n	Number=Sing	dema	0
+potboiler	0	oewn-potboiler-n	Number=Sing	dema	0
+potboilers	0	oewn-potboiler-n	Number=Plur	dema	0
+potboy	0	oewn-potboy-n	Number=Sing	dema	0
+potboys	0	oewn-potboy-n	Number=Plur	dema	0
+potch	0	dema-potch-n	Number=Sing	dema	0
+potches	0	dema-potch-n	Number=Plur	dema	0
+potchs	0	dema-potch-n	Number=Plur	dema	0
+poteen	0	oewn-poteen-n	Number=Sing	dema	0
+poteens	0	oewn-poteen-n	Number=Plur	dema	0
+potence	0	oewn-potence-n	Number=Sing	dema	0
+potences	0	oewn-potence-n	Number=Plur	dema	0
+potencies	0	dema-potencies-n	Number=Sing	dema	0
+potency	0	oewn-potency-n	Number=Sing	dema	0
+potent	0	oewn-potent-a	Degree=Pos	dema	0
+potentate	0	oewn-potentate-n	Number=Sing	dema	0
+potentates	0	oewn-potentate-n	Number=Plur	dema	0
+potenter	0	oewn-potent-a	Degree=Cmp	dema	0
+potentest	0	oewn-potent-a	Degree=Sup	dema	0
+potential	0	oewn-potential-a	Degree=Pos	dema	0
+potential	1	oewn-potential-n	Number=Sing	dema	0
+potentialities	0	oewn-potentiality-n	Number=Plur	dema	0
+potentiality	0	oewn-potentiality-n	Number=Sing	dema	0
+potentially	0	dema-potential-r		dema	0
+potentialness	0	oewn-potential-n	Number=Plur	dema	0
+potentials	0	oewn-potential-n	Number=Plur	dema	0
+potentiate	0	oewn-potentiate-v	VerbForm=Inf	dema	0
+potentiated	0	oewn-potentiate-v	Tense=Past	dema	0
+potentiater	0	dema-potentiate-n	Number=Plur	dema	0
+potentiaters	0	dema-potentiate-n	Number=Plur	dema	0
+potentiates	0	oewn-potentiate-v	Person=3+Tense=Pres	dema	0
+potentiating	0	oewn-potentiate-v	VerbForm=Ger	dema	0
+potentiatingly	0	dema-potentiate-r		dema	0
+potentiation	0	oewn-potentiation-n	Number=Sing	dema	0
+potentiations	0	oewn-potentiation-n	Number=Plur	dema	0
+potentiator	0	dema-potentiator-n	Number=Sing	dema	0
+potentiators	0	dema-potentiator-n	Number=Plur	dema	0
+potentilla	0	dema-potentilla-n	Number=Sing	dema	0
+potentillas	0	dema-potentilla-n	Number=Plur	dema	0
+potentily	0	dema-potenty-r		dema	0
+potentiness	0	dema-potenty-n	Number=Plur	dema	0
+potentiometer	0	oewn-potentiometer-n	Number=Sing	dema	0
+potentiometers	0	oewn-potentiometer-n	Number=Plur	dema	0
+potentiometric	0	dema-potentiometric-a	Degree=Pos	dema	0
+potentiometrically	0	dema-potentiometric-r		dema	0
+potently	0	oewn-potently-r	Degree=Pos	dema	0
+potentness	0	dema-potentness-n	Number=Sing	dema	0
+potentnesses	0	dema-potentness-n	Number=Plur	dema	0
+potenty	0	dema-potenty-a	Degree=Pos	dema	0
+potful	0	oewn-potful-n	Number=Sing	dema	0
+potfuls	0	oewn-potful-n	Number=Plur	dema	0
+pothead	0	oewn-pothead-n	Number=Sing	dema	0
+potheads	0	oewn-pothead-n	Number=Plur	dema	0
+pothecaries	0	dema-pothecary-n	Number=Plur	dema	0
+pothecary	0	dema-pothecary-n	Number=Sing	dema	0
+potheen	0	dema-potheen-n	Number=Sing	dema	0
+potheens	0	dema-potheen-n	Number=Plur	dema	0
+pother	0	oewn-pother-n	Number=Sing	dema	0
+pother	1	oewn-pother-v	VerbForm=Inf	dema	0
+potherb	0	oewn-potherb-n	Number=Sing	dema	0
+potherbs	0	oewn-potherb-n	Number=Plur	dema	0
+pothered	0	oewn-pother-v	Tense=Past	dema	0
+pothering	0	oewn-pother-v	VerbForm=Ger	dema	0
+potheringly	0	dema-pother-r		dema	0
+pothers	0	oewn-pother-n	Number=Plur	dema	0
+pothers	1	oewn-pother-v	Person=3+Tense=Pres	dema	0
+potholder	0	oewn-potholder-n	Number=Sing	dema	0
+potholders	0	oewn-potholder-n	Number=Plur	dema	0
+pothole	0	oewn-pothole-n	Number=Sing	dema	0
+potholer	0	oewn-potholer-n	Number=Sing	dema	0
+potholers	0	oewn-potholer-n	Number=Plur	dema	0
+potholes	0	oewn-pothole-n	Number=Plur	dema	0
+potholing	0	dema-potholing-n	Number=Sing	dema	0
+potholings	0	dema-potholing-n	Number=Plur	dema	0
+pothook	0	oewn-pothook-n	Number=Sing	dema	0
+pothooks	0	oewn-pothook-n	Number=Plur	dema	0
+pothouse	0	oewn-pothouse-n	Number=Sing	dema	0
+pothouses	0	oewn-pothouse-n	Number=Plur	dema	0
+pothunter	0	oewn-pothunter-n	Number=Sing	dema	0
+pothunter	1	dema-pothunter-a	Degree=Pos	dema	0
+pothunterly	0	dema-pothunter-r		dema	0
+pothunterness	0	oewn-pothunter-n	Number=Plur	dema	0
+pothunters	0	oewn-pothunter-n	Number=Plur	dema	0
+pothunting	0	dema-pothunting-n	Number=Sing	dema	0
+pothunting	1	dema-pothunting-a	Degree=Pos	dema	0
+pothuntingly	0	dema-pothunting-r		dema	0
+pothuntingness	0	dema-pothunting-n	Number=Plur	dema	0
+pothuntings	0	dema-pothunting-n	Number=Plur	dema	0
+potiche	0	dema-potiche-n	Number=Sing	dema	0
+potiches	0	dema-potiches-n	Number=Sing	dema	0
+potion	0	oewn-potion-n	Number=Sing	dema	0
+potions	0	oewn-potion-n	Number=Plur	dema	0
+potlatch	0	oewn-potlatch-n	Number=Sing	dema	0
+potlatches	0	oewn-potlatch-n	Number=Plur	dema	0
+potlatchs	0	oewn-potlatch-n	Number=Plur	dema	0
+potlicker	0	dema-potlicker-n	Number=Sing	dema	0
+potlickers	0	dema-potlicker-n	Number=Plur	dema	0
+potlike	0	dema-potlike-a	Degree=Pos	dema	0
+potlikely	0	dema-potlike-r		dema	0
+potlikeness	0	dema-potlike-n	Number=Plur	dema	0
+potliker	0	dema-potlike-a	Degree=Cmp	dema	0
+potlikest	0	dema-potlike-a	Degree=Sup	dema	0
+potlikker	0	dema-potlikker-n	Number=Sing	dema	0
+potlikkers	0	dema-potlikker-n	Number=Plur	dema	0
+potline	0	dema-potline-n	Number=Sing	dema	0
+potlines	0	dema-potline-n	Number=Plur	dema	0
+potluck	0	oewn-potluck-n	Number=Sing	dema	0
+potlucks	0	oewn-potluck-n	Number=Plur	dema	0
+potman	0	oewn-potman-n	Number=Sing	dema	0
+potmen	0	dema-potmen-n	Number=Sing	dema	0
+potmens	0	dema-potmen-n	Number=Plur	dema	0
+potometer	0	dema-potometer-n	Number=Sing	dema	0
+potometers	0	dema-potometer-n	Number=Plur	dema	0
+potoo	0	dema-potoo-n	Number=Sing	dema	0
+potoos	0	dema-potoos-n	Number=Sing	dema	0
+potoroo	0	oewn-potoroo-n	Number=Sing	dema	0
+potoroos	0	dema-potoroos-n	Number=Sing	dema	0
+potpie	0	oewn-potpie-n	Number=Sing	dema	0
+potpies	0	oewn-potpie-n	Number=Plur	dema	0
+potpourri	0	oewn-potpourri-n	Number=Sing	dema	0
+potpourris	0	oewn-potpourri-n	Number=Plur	dema	0
+pots	0	oewn-pot-n	Number=Plur	dema	0
+pots	1	oewn-pot-v	Person=3+Tense=Pres	dema	0
+potsherd	0	oewn-potsherd-n	Number=Sing	dema	0
+potsherds	0	oewn-potsherd-n	Number=Plur	dema	0
+potsies	0	dema-potsy-n	Number=Plur	dema	0
+potstone	0	dema-potstone-n	Number=Sing	dema	0
+potstones	0	dema-potstone-n	Number=Plur	dema	0
+potsy	0	dema-potsy-n	Number=Sing	dema	0
+pott	0	dema-pott-n	Number=Sing	dema	0
+pottage	0	oewn-pottage-n	Number=Sing	dema	0
+pottages	0	oewn-pottage-n	Number=Plur	dema	0
+potted	0	oewn-potted-a	Degree=Pos	dema	0
+potted	1	dema-potted-v	VerbForm=Inf	dema	0
+pottedly	0	dema-potted-r		dema	0
+potter	0	oewn-potter-n	Number=Sing	dema	0
+potter	1	oewn-potter-v	VerbForm=Inf	dema	0
+pottered	0	oewn-potter-v	Tense=Past	dema	0
+potteries	0	dema-potteries-n	Number=Sing	dema	0
+pottering	0	oewn-potter-v	VerbForm=Ger	dema	0
+potteringly	0	dema-potter-r		dema	0
+potters	0	oewn-pot-n	Number=Plur	dema	0
+pottery	0	oewn-pottery-n	Number=Sing	dema	0
+potti	0	dema-potti-n	Number=Sing	dema	0
+pottier	0	dema-pottier-a	Degree=Pos	dema	0
+pottierly	0	dema-pottier-r		dema	0
+potties	0	dema-potties-n	Number=Sing	dema	0
+pottiest	0	dema-pottiest-a	Degree=Pos	dema	0
+pottiestly	0	dema-pottiest-r		dema	0
+pottily	0	dema-potty-r		dema	0
+pottiness	0	oewn-potty-n	Number=Plur	dema	0
+potting	0	dema-potting-v	VerbForm=Inf	dema	0
+pottingly	0	dema-pot-r		dema	0
+pottis	0	dema-potti-n	Number=Plur	dema	0
+pottle	0	oewn-pottle-n	Number=Sing	dema	0
+pottles	0	oewn-pottle-n	Number=Plur	dema	0
+potto	0	oewn-potto-n	Number=Sing	dema	0
+pottoes	0	oewn-potto-n	Number=Plur	dema	0
+pottos	0	oewn-potto-n	Number=Plur	dema	0
+potts	0	dema-pott-n	Number=Plur	dema	0
+potty	0	oewn-potty-a	Degree=Pos	dema	0
+potty	1	oewn-potty-n	Number=Sing	dema	0
+potus	0	dema-potus-n	Number=Sing	dema	0
+potuses	0	dema-potus-n	Number=Plur	dema	0
+pouch	0	oewn-pouch-n	Number=Sing	dema	0
+pouch	1	oewn-pouch-v	VerbForm=Inf	dema	0
+pouched	0	oewn-pouched-a	Degree=Pos	dema	0
+pouched	1	dema-pouched-v	VerbForm=Inf	dema	0
+pouchedly	0	dema-pouched-r		dema	0
+poucher	0	oewn-pouch-n	Number=Plur	dema	0
+pouchers	0	oewn-pouch-n	Number=Plur	dema	0
+pouches	0	oewn-pouch-n	Number=Plur	dema	0
+pouches	1	oewn-pouch-v	Person=3+Tense=Pres	dema	0
+pouching	0	oewn-pouch-v	VerbForm=Ger	dema	0
+pouchingly	0	dema-pouch-r		dema	0
+pouchs	0	oewn-pouch-n	Number=Plur	dema	0
+pouchs	1	oewn-pouch-v	Person=3+Tense=Pres	dema	0
+poudrin	0	oewn-poudrin-n	Number=Sing	dema	0
+poudrins	0	oewn-poudrin-n	Number=Plur	dema	0
+pouf	0	oewn-pouf-n	Number=Sing	dema	0
+poufs	0	oewn-pouf-n	Number=Plur	dema	0
+poulard	0	dema-poulard-n	Number=Sing	dema	0
+poulards	0	dema-poulard-n	Number=Plur	dema	0
+poult	0	dema-poult-n	Number=Sing	dema	0
+poulterer	0	oewn-poulterer-n	Number=Sing	dema	0
+poulterers	0	oewn-poulterer-n	Number=Plur	dema	0
+poultice	0	oewn-poultice-n	Number=Sing	dema	0
+poulticed	0	dema-poulticed-v	VerbForm=Inf	dema	0
+poulticeded	0	dema-poulticed-v	Tense=Past	dema	0
+poulticeder	0	dema-poulticed-n	Number=Plur	dema	0
+poulticeders	0	dema-poulticed-n	Number=Plur	dema	0
+poulticeding	0	dema-poulticed-v	VerbForm=Ger	dema	0
+poulticedingly	0	dema-poulticed-r		dema	0
+poulticeds	0	dema-poulticed-v	Person=3+Tense=Pres	dema	0
+poultices	0	oewn-poultice-n	Number=Plur	dema	0
+poulticing	0	dema-poulticing-v	VerbForm=Inf	dema	0
+poulticinged	0	dema-poulticing-v	Tense=Past	dema	0
+poulticinger	0	dema-poulticing-n	Number=Plur	dema	0
+poulticingers	0	dema-poulticing-n	Number=Plur	dema	0
+poulticinging	0	dema-poulticing-v	VerbForm=Ger	dema	0
+poulticingingly	0	dema-poulticing-r		dema	0
+poulticings	0	dema-poulticing-v	Person=3+Tense=Pres	dema	0
+poultries	0	oewn-poultry-n	Number=Plur	dema	0
+poultry	0	oewn-poultry-n	Number=Sing	dema	0
+poultryman	0	oewn-poultryman-n	Number=Sing	dema	0
+poultrymen	0	dema-poultrymen-n	Number=Sing	dema	0
+poultrymens	0	dema-poultrymen-n	Number=Plur	dema	0
+poults	0	dema-poult-n	Number=Plur	dema	0
+pounce	0	oewn-pounce-v	VerbForm=Inf	dema	0
+pounce	1	oewn-pounce-n	Number=Sing	dema	0
+pounced	0	dema-pounced-v	VerbForm=Inf	dema	0
+pouncer	0	oewn-pounce-n	Number=Plur	dema	0
+pouncers	0	oewn-pounce-n	Number=Plur	dema	0
+pounces	0	oewn-pounce-v	Person=3+Tense=Pres	dema	0
+pounces	1	oewn-pounce-n	Number=Plur	dema	0
+pouncing	0	dema-pouncing-v	VerbForm=Inf	dema	0
+pouncingly	0	dema-pouncingly-r	Degree=Pos	dema	0
+pound	0	oewn-pound-v	VerbForm=Inf	dema	0
+pound	1	oewn-pound-n	Number=Sing	dema	0
+poundage	0	oewn-poundage-n	Number=Sing	dema	0
+poundages	0	oewn-poundage-n	Number=Plur	dema	0
+poundal	0	oewn-poundal-n	Number=Sing	dema	0
+poundals	0	oewn-poundal-n	Number=Plur	dema	0
+pounded	0	oewn-pound-v	Tense=Past	dema	0
+pounder	0	oewn-pounder-n	Number=Sing	dema	0
+pounders	0	oewn-pound-n	Number=Plur	dema	0
+pounding	0	oewn-pound-v	VerbForm=Ger	dema	0
+poundingly	0	dema-pound-r		dema	0
+pounds	0	oewn-pound-v	Person=3+Tense=Pres	dema	0
+pounds	1	oewn-pound-n	Number=Plur	dema	0
+pour	0	oewn-pour-v	VerbForm=Inf	dema	0
+pour	1	dema-pour-n	Number=Sing	dema	0
+pourabilities	0	dema-pourability-n	Number=Plur	dema	0
+pourability	0	dema-pourability-n	Number=Sing	dema	0
+pourable	0	dema-pourable-a	Degree=Pos	dema	0
+pourableness	0	dema-pourable-n	Number=Plur	dema	0
+pourably	0	dema-pourable-r		dema	0
+pourboire	0	oewn-pourboire-n	Number=Sing	dema	0
+pourboires	0	dema-pourboires-n	Number=Sing	dema	0
+poured	0	oewn-pour-v	Tense=Past	dema	0
+pourer	0	dema-pourer-n	Number=Sing	dema	0
+pourers	0	dema-pour-n	Number=Plur	dema	0
+pouring	0	oewn-pour-v	VerbForm=Ger	dema	0
+pouringly	0	dema-pour-r		dema	0
+pourparler	0	dema-pourparler-n	Number=Sing	dema	0
+pourparlers	0	dema-pourparler-n	Number=Plur	dema	0
+pourpoint	0	dema-pourpoint-n	Number=Sing	dema	0
+pourpoints	0	dema-pourpoint-n	Number=Plur	dema	0
+pourris	0	dema-pourris-n	Number=Sing	dema	0
+pours	0	oewn-pour-v	Person=3+Tense=Pres	dema	0
+pours	1	dema-pour-n	Number=Plur	dema	0
+poussette	0	dema-poussette-n	Number=Sing	dema	0
+poussette	1	dema-poussette-v	VerbForm=Inf	dema	0
+poussetted	0	dema-poussetted-v	VerbForm=Inf	dema	0
+poussetter	0	dema-poussette-n	Number=Plur	dema	0
+poussetters	0	dema-poussette-n	Number=Plur	dema	0
+poussettes	0	dema-poussette-n	Number=Plur	dema	0
+poussettes	1	dema-poussette-v	Person=3+Tense=Pres	dema	0
+poussetting	0	dema-poussetting-v	VerbForm=Inf	dema	0
+poussettingly	0	dema-poussette-r		dema	0
+poussie	0	dema-poussie-n	Number=Sing	dema	0
+poussies	0	dema-poussie-n	Number=Plur	dema	0
+poussin	0	dema-poussin-n	Number=Sing	dema	0
+poussins	0	dema-poussin-n	Number=Plur	dema	0
+pout	0	oewn-pout-v	VerbForm=Inf	dema	0
+pout	1	oewn-pout-n	Number=Sing	dema	0
+pouted	0	oewn-pout-v	Tense=Past	dema	0
+pouter	0	oewn-pouter-n	Number=Sing	dema	0
+pouters	0	oewn-pout-n	Number=Plur	dema	0
+poutful	0	dema-poutful-a	Degree=Pos	dema	0
+poutfully	0	dema-poutful-r		dema	0
+poutfulness	0	dema-poutful-n	Number=Plur	dema	0
+pouting	0	oewn-pout-v	VerbForm=Ger	dema	0
+poutingly	0	oewn-poutingly-r	Degree=Pos	dema	0
+pouts	0	oewn-pout-v	Person=3+Tense=Pres	dema	0
+pouts	1	oewn-pout-n	Number=Plur	dema	0
+poverties	0	oewn-poverty-n	Number=Plur	dema	0
+poverty	0	oewn-poverty-n	Number=Sing	dema	0
+pow	0	dema-pow-i		dema	0
+powan	0	dema-powan-n	Number=Sing	dema	0
+powans	0	dema-powan-n	Number=Plur	dema	0
+powder	0	oewn-powder-n	Number=Sing	dema	0
+powder	1	oewn-powder-v	VerbForm=Inf	dema	0
+powdered	0	oewn-powder-v	Tense=Past	dema	0
+powderied	0	dema-powdery-v	Tense=Past	dema	0
+powderier	0	dema-powdery-n	Number=Plur	dema	0
+powderiers	0	dema-powdery-n	Number=Plur	dema	0
+powderies	0	dema-powdery-v	Person=3+Tense=Pres	dema	0
+powderily	0	dema-powdery-r		dema	0
+powderiness	0	dema-powdery-n	Number=Plur	dema	0
+powdering	0	oewn-powder-v	VerbForm=Ger	dema	0
+powderingly	0	dema-powder-r		dema	0
+powders	0	oewn-powder-n	Number=Plur	dema	0
+powders	1	oewn-powder-v	Person=3+Tense=Pres	dema	0
+powdery	0	oewn-powdery-a	Degree=Pos	dema	0
+powdery	1	dema-powdery-v	VerbForm=Inf	dema	0
+powderying	0	dema-powdery-v	VerbForm=Ger	dema	0
+power	0	oewn-power-n	Number=Sing	dema	1
+power	1	oewn-power-v	VerbForm=Inf	dema	1
+powerboat	0	oewn-powerboat-n	Number=Sing	dema	0
+powerboats	0	oewn-powerboat-n	Number=Plur	dema	0
+powered	0	oewn-power-v	Tense=Past	dema	1
+powered	1	oewn-powered-a	Degree=Pos	dema	0
+poweredly	0	dema-powered-r		dema	0
+powerful	0	oewn-powerful-a	Degree=Pos	dema	0
+powerful	1	oewn-powerful-r	Degree=Pos	dema	0
+powerfully	0	oewn-powerfully-r	Degree=Pos	dema	0
+powerfulness	0	oewn-powerfulness-n	Number=Sing	dema	0
+powerfulnesses	0	oewn-powerfulness-n	Number=Plur	dema	0
+powerhouse	0	oewn-powerhouse-n	Number=Sing	dema	0
+powerhouses	0	oewn-powerhouse-n	Number=Plur	dema	0
+powering	0	oewn-power-n	Number=Plur	dema	1
+powering	1	oewn-power-v	VerbForm=Ger	dema	1
+poweringly	0	dema-power-r		dema	0
+powerless	0	oewn-powerless-a	Degree=Pos	dema	0
+powerlessly	0	oewn-powerlessly-r	Degree=Pos	dema	0
+powerlessness	0	oewn-powerlessness-n	Number=Sing	dema	0
+powerlessnesses	0	oewn-powerlessness-n	Number=Plur	dema	0
+powerred	0	oewn-power-v	Tense=Past	dema	1
+powerring	0	oewn-power-n	Number=Plur	dema	1
+powerring	1	oewn-power-v	VerbForm=Ger	dema	1
+powers	0	oewn-power-n	Number=Plur	dema	1
+powers	1	oewn-power-v	Person=3+Tense=Pres	dema	1
+powwow	0	oewn-powwow-n	Number=Sing	dema	0
+powwow	1	oewn-powwow-v	VerbForm=Inf	dema	0
+powwowed	0	oewn-powwow-v	Tense=Past	dema	0
+powwower	0	oewn-powwow-n	Number=Plur	dema	0
+powwowers	0	oewn-powwow-n	Number=Plur	dema	0
+powwowing	0	oewn-powwow-v	VerbForm=Ger	dema	0
+powwowingly	0	dema-powwow-r		dema	0
+powwows	0	oewn-powwow-n	Number=Plur	dema	0
+powwows	1	oewn-powwow-v	Person=3+Tense=Pres	dema	0
+pox	0	oewn-pox-n	Number=Sing	dema	0
+poxes	0	oewn-pox-n	Number=Plur	dema	0
+poyntell	0	dema-poyntell-n	Number=Sing	dema	0
+poyntells	0	dema-poyntell-n	Number=Plur	dema	0
+pozzies	0	dema-pozzy-n	Number=Plur	dema	0
+pozzolanic	0	dema-pozzolanic-a	Degree=Pos	dema	0
+pozzolanically	0	dema-pozzolanic-r		dema	0
+pozzuolana	0	dema-pozzuolana-n	Number=Sing	dema	0
+pozzuolanas	0	dema-pozzuolana-n	Number=Plur	dema	0
+pozzy	0	dema-pozzy-n	Number=Sing	dema	0

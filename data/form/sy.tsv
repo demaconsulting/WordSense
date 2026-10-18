@@ -1,0 +1,936 @@
+spelling	rank	entry_id	features	source_id	reviewed
+sybarite	0	oewn-sybarite-n	Number=Sing	dema	0
+sybarite	1	dema-sybarite-a	Degree=Pos	dema	0
+sybaritely	0	dema-sybarite-r		dema	0
+sybariteness	0	oewn-sybarite-n	Number=Plur	dema	0
+sybarites	0	oewn-sybarite-n	Number=Plur	dema	0
+sybaritism	0	dema-sybaritism-n	Number=Sing	dema	0
+sybaritisms	0	dema-sybaritism-n	Number=Plur	dema	0
+sycamine	0	dema-sycamine-n	Number=Sing	dema	0
+sycamines	0	dema-sycamine-n	Number=Plur	dema	0
+sycamore	0	oewn-sycamore-n	Number=Sing	dema	0
+sycamores	0	oewn-sycamore-n	Number=Plur	dema	0
+syce	0	dema-syce-n	Number=Sing	dema	0
+sycee	0	dema-sycee-n	Number=Sing	dema	0
+sycees	0	dema-sycee-n	Number=Plur	dema	0
+syces	0	dema-syce-n	Number=Plur	dema	0
+sycon	0	dema-sycon-n	Number=Sing	dema	0
+syconium	0	oewn-syconium-n	Number=Sing	dema	0
+syconiums	0	oewn-syconium-n	Number=Plur	dema	0
+sycons	0	dema-sycon-n	Number=Plur	dema	0
+sycophant	0	oewn-sycophant-n	Number=Sing	dema	0
+sycophantic	0	oewn-sycophantic-a	Degree=Pos	dema	0
+sycophantical	0	dema-sycophantical-a	Degree=Pos	dema	0
+sycophantically	0	dema-sycophantically-r	Degree=Pos	dema	0
+sycophantish	0	dema-sycophantish-a	Degree=Pos	dema	0
+sycophantishly	0	dema-sycophantishly-r	Degree=Pos	dema	0
+sycophants	0	oewn-sycophant-n	Number=Plur	dema	0
+sycosis	0	dema-sycosis-n	Number=Sing	dema	0
+syenite	0	dema-syenite-n	Number=Sing	dema	0
+syenites	0	dema-syenite-n	Number=Plur	dema	0
+syenitic	0	dema-syenitic-a	Degree=Pos	dema	0
+syenitically	0	dema-syenitic-r		dema	0
+syeniticness	0	dema-syenitic-n	Number=Plur	dema	0
+syke	0	dema-syke-n	Number=Sing	dema	0
+sykes	0	dema-syke-n	Number=Plur	dema	0
+syll	0	dema-syll-n	Number=Sing	dema	0
+syllabaries	0	dema-syllabaries-n	Number=Sing	dema	0
+syllabary	0	oewn-syllabary-n	Number=Sing	dema	0
+syllabi	0	dema-syllabi-n	Number=Sing	dema	0
+syllabic	0	oewn-syllabic-a	Degree=Pos	dema	0
+syllabic	1	dema-syllabic-n	Number=Sing	dema	0
+syllabically	0	oewn-syllabically-r	Degree=Pos	dema	0
+syllabicate	0	oewn-syllabicate-v	VerbForm=Inf	dema	0
+syllabicated	0	dema-syllabicated-v	VerbForm=Inf	dema	0
+syllabicates	0	oewn-syllabicate-v	Person=3+Tense=Pres	dema	0
+syllabicating	0	dema-syllabicating-v	VerbForm=Inf	dema	0
+syllabication	0	oewn-syllabication-n	Number=Sing	dema	0
+syllabications	0	oewn-syllabication-n	Number=Plur	dema	0
+syllabicness	0	dema-syllabic-n	Number=Plur	dema	0
+syllabics	0	dema-syllabic-n	Number=Plur	dema	0
+syllabification	0	oewn-syllabification-n	Number=Sing	dema	0
+syllabifications	0	oewn-syllabification-n	Number=Plur	dema	0
+syllabified	0	dema-syllabified-v	VerbForm=Inf	dema	0
+syllabifies	0	oewn-syllabify-v	Person=3+Tense=Pres	dema	0
+syllabify	0	oewn-syllabify-v	VerbForm=Inf	dema	0
+syllabifying	0	dema-syllabifying-v	VerbForm=Inf	dema	0
+syllabise	0	oewn-syllabise-v	VerbForm=Inf	dema	0
+syllabised	0	dema-syllabised-v	VerbForm=Inf	dema	0
+syllabiser	0	dema-syllabise-n	Number=Plur	dema	0
+syllabisers	0	dema-syllabise-n	Number=Plur	dema	0
+syllabises	0	oewn-syllabise-v	Person=3+Tense=Pres	dema	0
+syllabising	0	dema-syllabising-v	VerbForm=Inf	dema	0
+syllabisingly	0	dema-syllabise-r		dema	0
+syllabism	0	dema-syllabism-n	Number=Sing	dema	0
+syllabisms	0	dema-syllabism-n	Number=Plur	dema	0
+syllabize	0	oewn-syllabize-v	VerbForm=Inf	dema	0
+syllabized	0	dema-syllabized-v	VerbForm=Inf	dema	0
+syllabizer	0	dema-syllabize-n	Number=Plur	dema	0
+syllabizers	0	dema-syllabize-n	Number=Plur	dema	0
+syllabizes	0	oewn-syllabize-v	Person=3+Tense=Pres	dema	0
+syllabizing	0	dema-syllabizing-v	VerbForm=Inf	dema	0
+syllabizingly	0	dema-syllabize-r		dema	0
+syllable	0	oewn-syllable-n	Number=Sing	dema	0
+syllable	1	dema-syllable-v	VerbForm=Inf	dema	0
+syllabled	0	dema-syllabled-v	VerbForm=Inf	dema	0
+syllabler	0	oewn-syllable-n	Number=Plur	dema	0
+syllablers	0	oewn-syllable-n	Number=Plur	dema	0
+syllables	0	oewn-syllable-n	Number=Plur	dema	0
+syllables	1	dema-syllable-v	Person=3+Tense=Pres	dema	0
+syllabling	0	dema-syllabling-v	VerbForm=Inf	dema	0
+syllablingly	0	dema-syllable-r		dema	0
+syllabogram	0	dema-syllabogram-n	Number=Sing	dema	0
+syllabograms	0	dema-syllabogram-n	Number=Plur	dema	0
+syllabographies	0	dema-syllabography-n	Number=Plur	dema	0
+syllabography	0	dema-syllabography-n	Number=Sing	dema	0
+syllabub	0	oewn-syllabub-n	Number=Sing	dema	0
+syllabubs	0	oewn-syllabub-n	Number=Plur	dema	0
+syllabus	0	oewn-syllabus-n	Number=Sing	dema	0
+syllabuses	0	dema-syllabuses-n	Number=Sing	dema	0
+syllepses	0	dema-syllepses-n	Number=Sing	dema	0
+syllepseses	0	dema-syllepses-n	Number=Plur	dema	0
+syllepsis	0	oewn-syllepsis-n	Number=Sing	dema	0
+syllogisation	0	dema-syllogisation-n	Number=Sing	dema	0
+syllogisations	0	dema-syllogisation-n	Number=Plur	dema	0
+syllogiser	0	oewn-syllogiser-n	Number=Sing	dema	0
+syllogisers	0	oewn-syllogiser-n	Number=Plur	dema	0
+syllogism	0	oewn-syllogism-n	Number=Sing	dema	0
+syllogisms	0	oewn-syllogism-n	Number=Plur	dema	0
+syllogistic	0	oewn-syllogistic-a	Degree=Pos	dema	0
+syllogistic	1	oewn-syllogistic-n	Number=Sing	dema	0
+syllogistically	0	dema-syllogistically-r	Degree=Pos	dema	0
+syllogistics	0	oewn-syllogistic-n	Number=Plur	dema	0
+syllogize	0	oewn-syllogize-v	VerbForm=Inf	dema	0
+syllogized	0	oewn-syllogize-v	Tense=Past	dema	0
+syllogizer	0	dema-syllogize-n	Number=Plur	dema	0
+syllogizers	0	dema-syllogize-n	Number=Plur	dema	0
+syllogizes	0	oewn-syllogize-v	Person=3+Tense=Pres	dema	0
+syllogizing	0	oewn-syllogize-v	VerbForm=Ger	dema	0
+syllogizingly	0	dema-syllogize-r		dema	0
+sylls	0	dema-syll-n	Number=Plur	dema	0
+sylph	0	oewn-sylph-n	Number=Sing	dema	0
+sylphic	0	oewn-sylphic-a	Degree=Pos	dema	0
+sylphically	0	dema-sylphic-r		dema	0
+sylphicness	0	dema-sylphic-n	Number=Plur	dema	0
+sylphid	0	dema-sylphid-n	Number=Sing	dema	0
+sylphid	1	dema-sylphid-a	Degree=Pos	dema	0
+sylphider	0	dema-sylphid-a	Degree=Cmp	dema	0
+sylphidest	0	dema-sylphid-a	Degree=Sup	dema	0
+sylphidly	0	dema-sylphid-r		dema	0
+sylphidness	0	dema-sylphid-n	Number=Plur	dema	0
+sylphids	0	dema-sylphid-n	Number=Plur	dema	0
+sylphier	0	dema-sylphy-a	Degree=Cmp	dema	0
+sylphiest	0	dema-sylphy-a	Degree=Sup	dema	0
+sylphily	0	dema-sylphy-r		dema	0
+sylphiness	0	dema-sylphy-n	Number=Plur	dema	0
+sylphish	0	dema-sylphish-a	Degree=Pos	dema	0
+sylphishly	0	dema-sylphish-r		dema	0
+sylphishness	0	dema-sylphish-n	Number=Plur	dema	0
+sylphlike	0	oewn-sylphlike-a	Degree=Pos	dema	0
+sylphlikely	0	dema-sylphlike-r		dema	0
+sylphlikeness	0	dema-sylphlike-n	Number=Plur	dema	0
+sylphliker	0	oewn-sylphlike-a	Degree=Cmp	dema	0
+sylphlikest	0	oewn-sylphlike-a	Degree=Sup	dema	0
+sylphs	0	oewn-sylph-n	Number=Plur	dema	0
+sylphy	0	dema-sylphy-a	Degree=Pos	dema	0
+sylva	0	oewn-sylva-n	Number=Sing	dema	0
+sylvan	0	oewn-sylvan-a	Degree=Pos	dema	0
+sylvan	1	oewn-sylvan-n	Number=Sing	dema	0
+sylvanite	0	oewn-sylvanite-n	Number=Sing	dema	0
+sylvanites	0	oewn-sylvanite-n	Number=Plur	dema	0
+sylvanly	0	dema-sylvan-r		dema	0
+sylvanness	0	oewn-sylvan-n	Number=Plur	dema	0
+sylvans	0	oewn-sylvan-n	Number=Plur	dema	0
+sylvas	0	oewn-sylva-n	Number=Plur	dema	0
+sylvatic	0	dema-sylvatic-a	Degree=Pos	dema	0
+sylvatically	0	dema-sylvatic-r		dema	0
+sylvaticness	0	dema-sylvatic-n	Number=Plur	dema	0
+sylviculture	0	dema-sylviculture-n	Number=Sing	dema	0
+sylvicultures	0	dema-sylviculture-n	Number=Plur	dema	0
+sylvite	0	oewn-sylvite-n	Number=Sing	dema	0
+sylvites	0	oewn-sylvite-n	Number=Plur	dema	0
+sym	0	dema-sym-n	Number=Sing	dema	0
+symbiont	0	dema-symbiont-n	Number=Sing	dema	0
+symbionts	0	dema-symbiont-n	Number=Plur	dema	0
+symbioses	0	dema-symbioses-n	Number=Sing	dema	0
+symbioseses	0	dema-symbioses-n	Number=Plur	dema	0
+symbiosis	0	oewn-symbiosis-n	Number=Sing	dema	0
+symbiotic	0	oewn-symbiotic-a	Degree=Pos	dema	0
+symbiotical	0	dema-symbiotical-a	Degree=Pos	dema	0
+symbiotically	0	oewn-symbiotically-r	Degree=Pos	dema	0
+symbioticness	0	dema-symbiotic-n	Number=Plur	dema	0
+symbol	0	oewn-symbol-n	Number=Sing	dema	0
+symbol	1	dema-symbol-v	VerbForm=Inf	dema	0
+symboled	0	dema-symboled-v	VerbForm=Inf	dema	0
+symboler	0	oewn-symbol-n	Number=Plur	dema	0
+symbolers	0	oewn-symbol-n	Number=Plur	dema	0
+symbolic	0	oewn-symbolic-a	Degree=Pos	dema	0
+symbolical	0	oewn-symbolical-a	Degree=Pos	dema	0
+symbolically	0	oewn-symbolically-r	Degree=Pos	dema	0
+symbolicalness	0	dema-symbolicalness-n	Number=Sing	dema	0
+symbolicalnesses	0	dema-symbolicalness-n	Number=Plur	dema	0
+symbolicness	0	dema-symbolic-n	Number=Plur	dema	0
+symbolics	0	dema-symbolics-n	Number=Sing	dema	0
+symbolicses	0	dema-symbolics-n	Number=Plur	dema	0
+symboling	0	dema-symboling-v	VerbForm=Inf	dema	0
+symbolingly	0	dema-symbol-r		dema	0
+symbolisation	0	oewn-symbolisation-n	Number=Sing	dema	0
+symbolisations	0	oewn-symbolisation-n	Number=Plur	dema	0
+symbolise	0	oewn-symbolise-v	VerbForm=Inf	dema	0
+symbolised	0	dema-symbolised-v	VerbForm=Inf	dema	0
+symboliser	0	dema-symbolise-n	Number=Plur	dema	0
+symbolisers	0	dema-symbolise-n	Number=Plur	dema	0
+symbolises	0	oewn-symbolise-v	Person=3+Tense=Pres	dema	0
+symbolising	0	dema-symbolising-v	VerbForm=Inf	dema	0
+symbolisingly	0	dema-symbolise-r		dema	0
+symbolism	0	oewn-symbolism-n	Number=Sing	dema	0
+symbolisms	0	oewn-symbolism-n	Number=Plur	dema	0
+symbolist	0	oewn-symbolist-n	Number=Sing	dema	0
+symbolist	1	dema-symbolist-a	Degree=Pos	dema	0
+symbolistic	0	dema-symbolistic-a	Degree=Pos	dema	0
+symbolistical	0	dema-symbolistical-a	Degree=Pos	dema	0
+symbolistically	0	dema-symbolistically-r	Degree=Pos	dema	0
+symbolistly	0	dema-symbolist-r		dema	0
+symbolistness	0	oewn-symbolist-n	Number=Plur	dema	0
+symbolists	0	oewn-symbolist-n	Number=Plur	dema	0
+symbolize	0	oewn-symbolize-v	VerbForm=Inf	dema	0
+symbolized	0	dema-symbolized-v	VerbForm=Inf	dema	0
+symbolizer	0	dema-symbolize-n	Number=Plur	dema	0
+symbolizers	0	dema-symbolize-n	Number=Plur	dema	0
+symbolizes	0	oewn-symbolize-v	Person=3+Tense=Pres	dema	0
+symbolizing	0	dema-symbolizing-v	VerbForm=Inf	dema	0
+symbolizingly	0	dema-symbolize-r		dema	0
+symbolled	0	dema-symbolled-v	VerbForm=Inf	dema	0
+symbolling	0	dema-symbolling-v	VerbForm=Inf	dema	0
+symbollingly	0	dema-symbol-r		dema	0
+symbologies	0	oewn-symbology-n	Number=Plur	dema	0
+symbologist	0	dema-symbologist-n	Number=Sing	dema	0
+symbologists	0	dema-symbologist-n	Number=Plur	dema	0
+symbology	0	oewn-symbology-n	Number=Sing	dema	0
+symbols	0	oewn-symbol-n	Number=Plur	dema	0
+symbols	1	dema-symbol-v	Person=3+Tense=Pres	dema	0
+symmetalism	0	dema-symmetalism-n	Number=Sing	dema	0
+symmetalisms	0	dema-symmetalism-n	Number=Plur	dema	0
+symmetallism	0	dema-symmetallism-n	Number=Sing	dema	0
+symmetallisms	0	dema-symmetallism-n	Number=Plur	dema	0
+symmetric	0	oewn-symmetric-a	Degree=Pos	dema	0
+symmetrical	0	oewn-symmetrical-a	Degree=Pos	dema	0
+symmetrically	0	oewn-symmetrically-r	Degree=Pos	dema	0
+symmetricalness	0	oewn-symmetricalness-n	Number=Sing	dema	0
+symmetricalnesses	0	oewn-symmetricalness-n	Number=Plur	dema	0
+symmetricness	0	dema-symmetric-n	Number=Plur	dema	0
+symmetries	0	dema-symmetries-n	Number=Sing	dema	0
+symmetrisation	0	dema-symmetrisation-n	Number=Sing	dema	0
+symmetrisations	0	dema-symmetrisation-n	Number=Plur	dema	0
+symmetrise	0	oewn-symmetrise-v	VerbForm=Inf	dema	0
+symmetrised	0	dema-symmetrised-v	VerbForm=Inf	dema	0
+symmetriser	0	dema-symmetrise-n	Number=Plur	dema	0
+symmetrisers	0	dema-symmetrise-n	Number=Plur	dema	0
+symmetrises	0	oewn-symmetrise-v	Person=3+Tense=Pres	dema	0
+symmetrising	0	dema-symmetrising-v	VerbForm=Inf	dema	0
+symmetrisingly	0	dema-symmetrise-r		dema	0
+symmetrization	0	dema-symmetrization-n	Number=Sing	dema	0
+symmetrizations	0	dema-symmetrization-n	Number=Plur	dema	0
+symmetrize	0	oewn-symmetrize-v	VerbForm=Inf	dema	0
+symmetrized	0	dema-symmetrized-v	VerbForm=Inf	dema	0
+symmetrizer	0	dema-symmetrize-n	Number=Plur	dema	0
+symmetrizers	0	dema-symmetrize-n	Number=Plur	dema	0
+symmetrizes	0	oewn-symmetrize-v	Person=3+Tense=Pres	dema	0
+symmetrizing	0	dema-symmetrizing-v	VerbForm=Inf	dema	0
+symmetrizingly	0	dema-symmetrize-r		dema	0
+symmetry	0	oewn-symmetry-n	Number=Sing	dema	0
+sympathectomies	0	oewn-sympathectomy-n	Number=Plur	dema	0
+sympathectomy	0	oewn-sympathectomy-n	Number=Sing	dema	0
+sympathetectomies	0	dema-sympathetectomies-n	Number=Sing	dema	0
+sympathetectomy	0	dema-sympathetectomy-n	Number=Sing	dema	0
+sympathetic	0	oewn-sympathetic-a	Degree=Pos	dema	0
+sympathetically	0	dema-sympathetic-r		dema	0
+sympathies	0	dema-sympathies-n	Number=Sing	dema	0
+sympathin	0	dema-sympathin-n	Number=Sing	dema	0
+sympathins	0	dema-sympathin-n	Number=Plur	dema	0
+sympathise	0	oewn-sympathise-v	VerbForm=Inf	dema	0
+sympathised	0	dema-sympathised-v	VerbForm=Inf	dema	0
+sympathiser	0	dema-sympathise-n	Number=Plur	dema	0
+sympathisers	0	dema-sympathise-n	Number=Plur	dema	0
+sympathises	0	oewn-sympathise-v	Person=3+Tense=Pres	dema	0
+sympathising	0	dema-sympathising-v	VerbForm=Inf	dema	0
+sympathisingly	0	dema-sympathisingly-r	Degree=Pos	dema	0
+sympathize	0	oewn-sympathize-v	VerbForm=Inf	dema	0
+sympathized	0	oewn-sympathize-v	Tense=Past	dema	0
+sympathizer	0	oewn-sympathizer-n	Number=Sing	dema	0
+sympathizers	0	dema-sympathize-n	Number=Plur	dema	0
+sympathizes	0	oewn-sympathize-v	Person=3+Tense=Pres	dema	0
+sympathizing	0	oewn-sympathize-v	VerbForm=Ger	dema	0
+sympathizingly	0	dema-sympathizingly-r	Degree=Pos	dema	0
+sympatholytic	0	dema-sympatholytic-a	Degree=Pos	dema	0
+sympatholytic	1	dema-sympatholytic-n	Number=Sing	dema	0
+sympatholytically	0	dema-sympatholytic-r		dema	0
+sympatholytics	0	dema-sympatholytic-n	Number=Plur	dema	0
+sympathomimetic	0	oewn-sympathomimetic-a	Degree=Pos	dema	0
+sympathomimetic	1	dema-sympathomimetic-n	Number=Sing	dema	0
+sympathomimetically	0	dema-sympathomimetic-r		dema	0
+sympathomimetics	0	dema-sympathomimetic-n	Number=Plur	dema	0
+sympathy	0	oewn-sympathy-n	Number=Sing	dema	0
+sympatric	0	oewn-sympatric-a	Degree=Pos	dema	0
+sympatrically	0	dema-sympatric-r		dema	0
+sympatricness	0	dema-sympatric-n	Number=Plur	dema	0
+sympetalous	0	oewn-sympetalous-a	Degree=Pos	dema	0
+sympetalously	0	dema-sympetalous-r		dema	0
+symphile	0	dema-symphile-n	Number=Sing	dema	0
+symphiles	0	dema-symphile-n	Number=Plur	dema	0
+symphonette	0	dema-symphonette-n	Number=Sing	dema	0
+symphonettes	0	dema-symphonette-n	Number=Plur	dema	0
+symphonia	0	dema-symphonia-n	Number=Sing	dema	0
+symphonias	0	dema-symphonia-n	Number=Plur	dema	0
+symphonic	0	oewn-symphonic-a	Degree=Pos	dema	0
+symphonically	0	dema-symphonically-r	Degree=Pos	dema	0
+symphonicness	0	dema-symphonic-n	Number=Plur	dema	0
+symphonies	0	dema-symphonies-n	Number=Sing	dema	0
+symphonious	0	oewn-symphonious-a	Degree=Pos	dema	0
+symphoniously	0	dema-symphoniously-r	Degree=Pos	dema	0
+symphoniousness	0	dema-symphonious-n	Number=Plur	dema	0
+symphonisation	0	dema-symphonisation-n	Number=Sing	dema	0
+symphonisations	0	dema-symphonisation-n	Number=Plur	dema	0
+symphonise	0	oewn-symphonise-v	VerbForm=Inf	dema	0
+symphonised	0	dema-symphonised-v	VerbForm=Inf	dema	0
+symphoniser	0	dema-symphonise-n	Number=Plur	dema	0
+symphonisers	0	dema-symphonise-n	Number=Plur	dema	0
+symphonises	0	oewn-symphonise-v	Person=3+Tense=Pres	dema	0
+symphonising	0	dema-symphonising-v	VerbForm=Inf	dema	0
+symphonisingly	0	dema-symphonise-r		dema	0
+symphonist	0	oewn-symphonist-n	Number=Sing	dema	0
+symphonists	0	oewn-symphonist-n	Number=Plur	dema	0
+symphonization	0	dema-symphonization-n	Number=Sing	dema	0
+symphonizations	0	dema-symphonization-n	Number=Plur	dema	0
+symphonize	0	oewn-symphonize-v	VerbForm=Inf	dema	0
+symphonized	0	dema-symphonized-v	VerbForm=Inf	dema	0
+symphonizer	0	dema-symphonize-n	Number=Plur	dema	0
+symphonizers	0	dema-symphonize-n	Number=Plur	dema	0
+symphonizes	0	oewn-symphonize-v	Person=3+Tense=Pres	dema	0
+symphonizing	0	dema-symphonizing-v	VerbForm=Inf	dema	0
+symphonizingly	0	dema-symphonize-r		dema	0
+symphony	0	oewn-symphony-n	Number=Sing	dema	0
+symphyses	0	dema-symphyses-n	Number=Sing	dema	0
+symphyseses	0	dema-symphyses-n	Number=Plur	dema	0
+symphysial	0	dema-symphysial-a	Degree=Pos	dema	0
+symphysially	0	dema-symphysial-r		dema	0
+symphysialness	0	dema-symphysial-n	Number=Plur	dema	0
+symphysis	0	oewn-symphysis-n	Number=Sing	dema	0
+symphystic	0	dema-symphystic-a	Degree=Pos	dema	0
+symphystically	0	dema-symphystic-r		dema	0
+symphysticness	0	dema-symphystic-n	Number=Plur	dema	0
+symploce	0	oewn-symploce-n	Number=Sing	dema	0
+symploces	0	oewn-symploce-n	Number=Plur	dema	0
+sympodial	0	dema-sympodial-a	Degree=Pos	dema	0
+sympodially	0	dema-sympodially-r	Degree=Pos	dema	0
+sympodialness	0	dema-sympodial-n	Number=Plur	dema	0
+sympodium	0	dema-sympodium-n	Number=Sing	dema	0
+sympodiums	0	dema-sympodium-n	Number=Plur	dema	0
+symposiac	0	dema-symposiac-a	Degree=Pos	dema	0
+symposiac	1	dema-symposiac-n	Number=Sing	dema	0
+symposiacly	0	dema-symposiac-r		dema	0
+symposiacness	0	dema-symposiac-n	Number=Plur	dema	0
+symposiacs	0	dema-symposiac-n	Number=Plur	dema	0
+symposiarch	0	oewn-symposiarch-n	Number=Sing	dema	0
+symposiarches	0	oewn-symposiarch-n	Number=Plur	dema	0
+symposiarchs	0	oewn-symposiarch-n	Number=Plur	dema	0
+symposium	0	oewn-symposium-n	Number=Sing	dema	0
+symposiums	0	dema-symposiums-n	Number=Sing	dema	0
+sympossia	0	dema-sympossia-n	Number=Sing	dema	0
+sympossias	0	dema-sympossia-n	Number=Plur	dema	0
+symptom	0	oewn-symptom-n	Number=Sing	dema	0
+symptomatic	0	oewn-symptomatic-a	Degree=Pos	dema	0
+symptomatically	0	oewn-symptomatically-r	Degree=Pos	dema	0
+symptomatologies	0	dema-symptomatology-n	Number=Plur	dema	0
+symptomatology	0	dema-symptomatology-n	Number=Sing	dema	0
+symptomless	0	oewn-symptomless-a	Degree=Pos	dema	0
+symptomlessly	0	dema-symptomless-r		dema	0
+symptomlessness	0	dema-symptomless-n	Number=Plur	dema	0
+symptoms	0	oewn-symptom-n	Number=Plur	dema	0
+symptosis	0	dema-symptosis-n	Number=Sing	dema	0
+syms	0	dema-sym-n	Number=Plur	dema	0
+synaeresis	0	oewn-synaeresis-n	Number=Sing	dema	0
+synaesthesia	0	oewn-synaesthesia-n	Number=Sing	dema	0
+synaesthesias	0	oewn-synaesthesia-n	Number=Plur	dema	0
+synaesthetic	0	oewn-synaesthetic-a	Degree=Pos	dema	0
+synaesthetically	0	dema-synaesthetic-r		dema	0
+synagogical	0	dema-synagogical-a	Degree=Pos	dema	0
+synagogically	0	dema-synagogical-r		dema	0
+synagogue	0	oewn-synagogue-n	Number=Sing	dema	0
+synagogues	0	oewn-synagogue-n	Number=Plur	dema	0
+synalepha	0	dema-synalepha-n	Number=Sing	dema	0
+synalephas	0	dema-synalepha-n	Number=Plur	dema	0
+synalgia	0	dema-synalgia-n	Number=Sing	dema	0
+synalgias	0	dema-synalgia-n	Number=Plur	dema	0
+synapse	0	oewn-synapse-n	Number=Sing	dema	0
+synapses	0	dema-synapses-n	Number=Sing	dema	0
+synapsis	0	oewn-synapsis-n	Number=Sing	dema	0
+synapte	0	dema-synapte-n	Number=Sing	dema	0
+synaptene	0	dema-synaptene-n	Number=Sing	dema	0
+synaptenes	0	dema-synaptene-n	Number=Plur	dema	0
+synaptes	0	dema-synapte-n	Number=Plur	dema	0
+synaptic	0	oewn-synaptic-a	Degree=Pos	dema	0
+synaptical	0	dema-synaptical-a	Degree=Pos	dema	0
+synaptically	0	dema-synaptically-r	Degree=Pos	dema	0
+synapticness	0	dema-synaptic-n	Number=Plur	dema	0
+synarchies	0	dema-synarchy-n	Number=Plur	dema	0
+synarchy	0	dema-synarchy-n	Number=Sing	dema	0
+synarses	0	dema-synarses-n	Number=Sing	dema	0
+synarseses	0	dema-synarses-n	Number=Plur	dema	0
+synarthrodia	0	dema-synarthrodia-n	Number=Sing	dema	0
+synarthrodias	0	dema-synarthrodia-n	Number=Plur	dema	0
+synarthrosis	0	dema-synarthrosis-n	Number=Sing	dema	0
+synaxaria	0	dema-synaxaria-n	Number=Sing	dema	0
+synaxarias	0	dema-synaxaria-n	Number=Plur	dema	0
+synaxaries	0	dema-synaxaries-n	Number=Sing	dema	0
+synaxarion	0	dema-synaxarion-n	Number=Sing	dema	0
+synaxarions	0	dema-synaxarion-n	Number=Plur	dema	0
+synaxarium	0	dema-synaxarium-n	Number=Sing	dema	0
+synaxariums	0	dema-synaxarium-n	Number=Plur	dema	0
+synaxary	0	dema-synaxary-n	Number=Sing	dema	0
+synaxaxaria	0	dema-synaxaxaria-n	Number=Sing	dema	0
+synaxaxarias	0	dema-synaxaxaria-n	Number=Plur	dema	0
+synaxes	0	dema-synaxes-n	Number=Sing	dema	0
+synaxeses	0	dema-synaxes-n	Number=Plur	dema	0
+synaxis	0	dema-synaxis-n	Number=Sing	dema	0
+sync	0	oewn-sync-v	VerbForm=Inf	dema	0
+sync	1	dema-sync-n	Number=Sing	dema	0
+syncarp	0	oewn-syncarp-n	Number=Sing	dema	0
+syncarpies	0	dema-syncarpy-n	Number=Plur	dema	0
+syncarpous	0	oewn-syncarpous-a	Degree=Pos	dema	0
+syncarpously	0	dema-syncarpous-r		dema	0
+syncarpousness	0	dema-syncarpous-n	Number=Plur	dema	0
+syncarps	0	oewn-syncarp-n	Number=Plur	dema	0
+syncarpy	0	dema-syncarpy-n	Number=Sing	dema	0
+synced	0	oewn-sync-v	Tense=Past	dema	0
+syncer	0	dema-sync-n	Number=Plur	dema	0
+syncers	0	dema-sync-n	Number=Plur	dema	0
+synchro	0	oewn-synchro-n	Number=Sing	dema	0
+synchrocyclotron	0	oewn-synchrocyclotron-n	Number=Sing	dema	0
+synchrocyclotrons	0	oewn-synchrocyclotron-n	Number=Plur	dema	0
+synchroes	0	oewn-synchro-n	Number=Plur	dema	0
+synchroflash	0	oewn-synchroflash-n	Number=Sing	dema	0
+synchroflashes	0	oewn-synchroflash-n	Number=Plur	dema	0
+synchromesh	0	dema-synchromesh-a	Degree=Pos	dema	0
+synchromesh	1	oewn-synchromesh-n	Number=Sing	dema	0
+synchromeshes	0	oewn-synchromesh-n	Number=Plur	dema	0
+synchromeshly	0	dema-synchromesh-r		dema	0
+synchromeshness	0	oewn-synchromesh-n	Number=Plur	dema	0
+synchronic	0	oewn-synchronic-a	Degree=Pos	dema	0
+synchronically	0	dema-synchronically-r	Degree=Pos	dema	0
+synchronicness	0	dema-synchronic-n	Number=Plur	dema	0
+synchronisation	0	oewn-synchronisation-n	Number=Sing	dema	0
+synchronisations	0	oewn-synchronisation-n	Number=Plur	dema	0
+synchronise	0	oewn-synchronise-v	VerbForm=Inf	dema	0
+synchronised	0	dema-synchronised-v	VerbForm=Inf	dema	0
+synchroniser	0	oewn-synchroniser-n	Number=Sing	dema	0
+synchronisers	0	dema-synchronise-n	Number=Plur	dema	0
+synchronises	0	oewn-synchronise-v	Person=3+Tense=Pres	dema	0
+synchronising	0	dema-synchronising-v	VerbForm=Inf	dema	0
+synchronisingly	0	dema-synchronise-r		dema	0
+synchronism	0	oewn-synchronism-n	Number=Sing	dema	0
+synchronisms	0	oewn-synchronism-n	Number=Plur	dema	0
+synchronistic	0	dema-synchronistic-a	Degree=Pos	dema	0
+synchronistical	0	dema-synchronistical-a	Degree=Pos	dema	0
+synchronistically	0	dema-synchronistically-r	Degree=Pos	dema	0
+synchronization	0	oewn-synchronization-n	Number=Sing	dema	0
+synchronizations	0	oewn-synchronization-n	Number=Plur	dema	0
+synchronize	0	oewn-synchronize-v	VerbForm=Inf	dema	0
+synchronized	0	dema-synchronized-v	VerbForm=Inf	dema	0
+synchronizer	0	oewn-synchronizer-n	Number=Sing	dema	0
+synchronizers	0	dema-synchronize-n	Number=Plur	dema	0
+synchronizes	0	oewn-synchronize-v	Person=3+Tense=Pres	dema	0
+synchronizing	0	dema-synchronizing-v	VerbForm=Inf	dema	0
+synchronizingly	0	dema-synchronize-r		dema	0
+synchronoscope	0	oewn-synchronoscope-n	Number=Sing	dema	0
+synchronoscopes	0	oewn-synchronoscope-n	Number=Plur	dema	0
+synchronous	0	oewn-synchronous-a	Degree=Pos	dema	0
+synchronously	0	oewn-synchronously-r	Degree=Pos	dema	0
+synchronousness	0	dema-synchronousness-n	Number=Sing	dema	0
+synchronousnesses	0	dema-synchronousness-n	Number=Plur	dema	0
+synchros	0	oewn-synchro-n	Number=Plur	dema	0
+synchroscope	0	oewn-synchroscope-n	Number=Sing	dema	0
+synchroscopes	0	oewn-synchroscope-n	Number=Plur	dema	0
+synchrotron	0	oewn-synchrotron-n	Number=Sing	dema	0
+synchrotrons	0	oewn-synchrotron-n	Number=Plur	dema	0
+syncing	0	oewn-sync-v	VerbForm=Ger	dema	0
+syncingly	0	dema-sync-r		dema	0
+synclastic	0	dema-synclastic-a	Degree=Pos	dema	0
+synclastically	0	dema-synclastic-r		dema	0
+synclasticness	0	dema-synclastic-n	Number=Plur	dema	0
+synclinal	0	oewn-synclinal-a	Degree=Pos	dema	0
+synclinally	0	dema-synclinal-r		dema	0
+synclinalness	0	dema-synclinal-n	Number=Plur	dema	0
+syncline	0	dema-syncline-n	Number=Sing	dema	0
+synclines	0	dema-syncline-n	Number=Plur	dema	0
+synclinorium	0	dema-synclinorium-n	Number=Sing	dema	0
+synclinoriums	0	dema-synclinorium-n	Number=Plur	dema	0
+syncopate	0	oewn-syncopate-v	VerbForm=Inf	dema	0
+syncopated	0	oewn-syncopated-a	Degree=Pos	dema	0
+syncopated	1	dema-syncopated-v	VerbForm=Inf	dema	0
+syncopatedly	0	dema-syncopated-r		dema	0
+syncopater	0	dema-syncopate-n	Number=Plur	dema	0
+syncopaters	0	dema-syncopate-n	Number=Plur	dema	0
+syncopates	0	oewn-syncopate-v	Person=3+Tense=Pres	dema	0
+syncopating	0	oewn-syncopate-v	VerbForm=Ger	dema	0
+syncopatingly	0	dema-syncopate-r		dema	0
+syncopation	0	oewn-syncopation-n	Number=Sing	dema	0
+syncopations	0	oewn-syncopation-n	Number=Plur	dema	0
+syncopator	0	oewn-syncopator-n	Number=Sing	dema	0
+syncopators	0	oewn-syncopator-n	Number=Plur	dema	0
+syncope	0	oewn-syncope-n	Number=Sing	dema	0
+syncopes	0	oewn-syncope-n	Number=Plur	dema	0
+syncretic	0	oewn-syncretic-a	Degree=Pos	dema	0
+syncretically	0	dema-syncretic-r		dema	0
+syncreticness	0	dema-syncretic-n	Number=Plur	dema	0
+syncretism	0	oewn-syncretism-n	Number=Sing	dema	0
+syncretisms	0	oewn-syncretism-n	Number=Plur	dema	0
+syncretistical	0	oewn-syncretistical-a	Degree=Pos	dema	0
+syncretistically	0	dema-syncretistical-r		dema	0
+syncretize	0	oewn-syncretize-v	VerbForm=Inf	dema	0
+syncretized	0	dema-syncretized-v	VerbForm=Inf	dema	0
+syncretizer	0	dema-syncretize-n	Number=Plur	dema	0
+syncretizers	0	dema-syncretize-n	Number=Plur	dema	0
+syncretizes	0	oewn-syncretize-v	Person=3+Tense=Pres	dema	0
+syncretizing	0	dema-syncretizing-v	VerbForm=Inf	dema	0
+syncretizingly	0	dema-syncretize-r		dema	0
+syncrisis	0	dema-syncrisis-n	Number=Sing	dema	0
+syncs	0	oewn-sync-v	Person=3+Tense=Pres	dema	0
+syncs	1	dema-sync-n	Number=Plur	dema	0
+syncytial	0	dema-syncytial-a	Degree=Pos	dema	0
+syncytially	0	dema-syncytial-r		dema	0
+syncytialness	0	dema-syncytial-n	Number=Plur	dema	0
+syncytium	0	oewn-syncytium-n	Number=Sing	dema	0
+syncytiums	0	oewn-syncytium-n	Number=Plur	dema	0
+synd	0	dema-synd-n	Number=Sing	dema	0
+syndactyl	0	dema-syndactyl-a	Degree=Pos	dema	0
+syndactyl	1	dema-syndactyl-n	Number=Sing	dema	0
+syndactyli	0	dema-syndactyli-n	Number=Sing	dema	0
+syndactylis	0	dema-syndactyli-n	Number=Plur	dema	0
+syndactylism	0	oewn-syndactylism-n	Number=Sing	dema	0
+syndactylisms	0	oewn-syndactylism-n	Number=Plur	dema	0
+syndactylly	0	dema-syndactyl-r		dema	0
+syndactylness	0	dema-syndactyl-n	Number=Plur	dema	0
+syndactyls	0	dema-syndactyl-n	Number=Plur	dema	0
+syndactylus	0	dema-syndactylus-n	Number=Sing	dema	0
+syndactyluses	0	dema-syndactylus-n	Number=Plur	dema	0
+synderesis	0	dema-synderesis-n	Number=Sing	dema	0
+syndeses	0	dema-syndeses-n	Number=Sing	dema	0
+syndeseses	0	dema-syndeses-n	Number=Plur	dema	0
+syndesis	0	dema-syndesis-n	Number=Sing	dema	0
+syndesmies	0	dema-syndesmies-n	Number=Sing	dema	0
+syndesmieses	0	dema-syndesmies-n	Number=Plur	dema	0
+syndesmoses	0	dema-syndesmoses-n	Number=Sing	dema	0
+syndesmoseses	0	dema-syndesmoses-n	Number=Plur	dema	0
+syndesmosis	0	dema-syndesmosis-n	Number=Sing	dema	0
+syndesmotic	0	dema-syndesmotic-a	Degree=Pos	dema	0
+syndesmotically	0	dema-syndesmotic-r		dema	0
+syndet	0	dema-syndet-n	Number=Sing	dema	0
+syndetic	0	oewn-syndetic-a	Degree=Pos	dema	0
+syndetically	0	dema-syndetically-r	Degree=Pos	dema	0
+syndeticness	0	dema-syndetic-n	Number=Plur	dema	0
+syndeton	0	dema-syndeton-n	Number=Sing	dema	0
+syndetons	0	dema-syndeton-n	Number=Plur	dema	0
+syndets	0	dema-syndet-n	Number=Plur	dema	0
+syndic	0	oewn-syndic-n	Number=Sing	dema	0
+syndical	0	dema-syndical-n	Number=Sing	dema	0
+syndicalism	0	oewn-syndicalism-n	Number=Sing	dema	0
+syndicalisms	0	oewn-syndicalism-n	Number=Plur	dema	0
+syndicalist	0	dema-syndicalist-a	Degree=Pos	dema	0
+syndicalist	1	oewn-syndicalist-n	Number=Sing	dema	0
+syndicalistic	0	dema-syndicalistic-a	Degree=Pos	dema	0
+syndicalistically	0	dema-syndicalistic-r		dema	0
+syndicalistly	0	dema-syndicalist-r		dema	0
+syndicalists	0	oewn-syndicalist-n	Number=Plur	dema	0
+syndicals	0	dema-syndical-n	Number=Plur	dema	0
+syndicate	0	oewn-syndicate-n	Number=Sing	dema	1
+syndicate	1	oewn-syndicate-v	VerbForm=Inf	dema	1
+syndicated	0	dema-syndicated-v	VerbForm=Inf	dema	0
+syndicater	0	oewn-syndicate-n	Number=Plur	dema	0
+syndicaters	0	oewn-syndicate-n	Number=Plur	dema	0
+syndicates	0	oewn-syndicate-n	Number=Plur	dema	1
+syndicates	1	oewn-syndicate-v	Person=3+Tense=Pres	dema	1
+syndicating	0	dema-syndicating-v	VerbForm=Inf	dema	0
+syndicatingly	0	dema-syndicate-r		dema	0
+syndics	0	oewn-syndic-n	Number=Plur	dema	0
+syndicship	0	dema-syndicship-n	Number=Sing	dema	0
+syndicships	0	dema-syndicship-n	Number=Plur	dema	0
+syndiotactic	0	dema-syndiotactic-a	Degree=Pos	dema	0
+syndiotactically	0	dema-syndiotactic-r		dema	0
+syndrome	0	oewn-syndrome-n	Number=Sing	dema	0
+syndromes	0	oewn-syndrome-n	Number=Plur	dema	0
+syndromic	0	dema-syndromic-a	Degree=Pos	dema	0
+syndromically	0	dema-syndromic-r		dema	0
+syndromicness	0	dema-syndromic-n	Number=Plur	dema	0
+synds	0	dema-synd-n	Number=Plur	dema	0
+syne	0	dema-syne-r	Degree=Pos	dema	0
+syne	1	dema-syne-p		dema	0
+syne	2	dema-syne-c		dema	0
+synecdoche	0	oewn-synecdoche-n	Number=Sing	dema	0
+synecdoches	0	oewn-synecdoche-n	Number=Plur	dema	0
+synecdochic	0	oewn-synecdochic-a	Degree=Pos	dema	0
+synecdochical	0	oewn-synecdochical-a	Degree=Pos	dema	0
+synecdochically	0	dema-synecdochically-r	Degree=Pos	dema	0
+synechia	0	oewn-synechia-n	Number=Sing	dema	0
+synechiae	0	dema-synechiae-n	Number=Sing	dema	0
+synechiaes	0	dema-synechiae-n	Number=Plur	dema	0
+synechias	0	oewn-synechia-n	Number=Plur	dema	0
+synechist	0	dema-synechist-n	Number=Sing	dema	0
+synechist	1	dema-synechist-a	Degree=Pos	dema	0
+synechistic	0	dema-synechistic-a	Degree=Pos	dema	0
+synechistically	0	dema-synechistic-r		dema	0
+synechistly	0	dema-synechist-r		dema	0
+synechistness	0	dema-synechist-n	Number=Plur	dema	0
+synechists	0	dema-synechist-n	Number=Plur	dema	0
+synecious	0	dema-synecious-a	Degree=Pos	dema	0
+syneciously	0	dema-synecious-r		dema	0
+syneciousness	0	dema-synecious-n	Number=Plur	dema	0
+synecologic	0	dema-synecologic-a	Degree=Pos	dema	0
+synecological	0	dema-synecological-a	Degree=Pos	dema	0
+synecologically	0	dema-synecologically-r	Degree=Pos	dema	0
+synecologies	0	dema-synecology-n	Number=Plur	dema	0
+synecology	0	dema-synecology-n	Number=Sing	dema	0
+synectics	0	dema-synectics-n	Number=Sing	dema	0
+synecticses	0	dema-synectics-n	Number=Plur	dema	0
+syner	0	dema-syne-r	Degree=Cmp	dema	0
+syneresis	0	oewn-syneresis-n	Number=Sing	dema	0
+synergetic	0	oewn-synergetic-a	Degree=Pos	dema	0
+synergetically	0	dema-synergetic-r		dema	0
+synergies	0	dema-synergies-n	Number=Sing	dema	0
+synergism	0	oewn-synergism-n	Number=Sing	dema	0
+synergisms	0	oewn-synergism-n	Number=Plur	dema	0
+synergist	0	oewn-synergist-n	Number=Sing	dema	0
+synergist	1	dema-synergist-a	Degree=Pos	dema	0
+synergistic	0	oewn-synergistic-a	Degree=Pos	dema	0
+synergistically	0	oewn-synergistically-r	Degree=Pos	dema	0
+synergistly	0	dema-synergist-r		dema	0
+synergistness	0	oewn-synergist-n	Number=Plur	dema	0
+synergists	0	oewn-synergist-n	Number=Plur	dema	0
+synergy	0	oewn-synergy-n	Number=Sing	dema	0
+synesis	0	dema-synesis-n	Number=Sing	dema	0
+synest	0	dema-syne-r	Degree=Sup	dema	0
+synesthesia	0	oewn-synesthesia-n	Number=Sing	dema	0
+synesthesias	0	oewn-synesthesia-n	Number=Plur	dema	0
+synesthetic	0	oewn-synesthetic-a	Degree=Pos	dema	0
+synesthetically	0	dema-synesthetic-r		dema	0
+synetic	0	dema-synetic-a	Degree=Pos	dema	0
+synetically	0	dema-synetic-r		dema	0
+syneticness	0	dema-synetic-n	Number=Plur	dema	0
+syngamic	0	dema-syngamic-a	Degree=Pos	dema	0
+syngamically	0	dema-syngamic-r		dema	0
+syngamicness	0	dema-syngamic-n	Number=Plur	dema	0
+syngamies	0	dema-syngamy-n	Number=Plur	dema	0
+syngamy	0	dema-syngamy-n	Number=Sing	dema	0
+syngenesis	0	dema-syngenesis-n	Number=Sing	dema	0
+synizesis	0	oewn-synizesis-n	Number=Sing	dema	0
+synkaryon	0	dema-synkaryon-n	Number=Sing	dema	0
+synkaryons	0	dema-synkaryon-n	Number=Plur	dema	0
+synod	0	oewn-synod-n	Number=Sing	dema	0
+synodal	0	dema-synodal-a	Degree=Pos	dema	0
+synodally	0	dema-synodal-r		dema	0
+synodalness	0	dema-synodal-n	Number=Plur	dema	0
+synodic	0	dema-synodic-a	Degree=Pos	dema	0
+synodically	0	dema-synodically-r	Degree=Pos	dema	0
+synodicness	0	dema-synodic-n	Number=Plur	dema	0
+synods	0	oewn-synod-n	Number=Plur	dema	0
+synoecious	0	oewn-synoecious-a	Degree=Pos	dema	0
+synoeciously	0	dema-synoecious-r		dema	0
+synoeciousness	0	dema-synoecious-n	Number=Plur	dema	0
+synoekete	0	dema-synoekete-n	Number=Sing	dema	0
+synoeketes	0	dema-synoekete-n	Number=Plur	dema	0
+synoetic	0	dema-synoetic-a	Degree=Pos	dema	0
+synoetically	0	dema-synoetic-r		dema	0
+synoeticness	0	dema-synoetic-n	Number=Plur	dema	0
+synoicous	0	oewn-synoicous-a	Degree=Pos	dema	0
+synoicously	0	dema-synoicous-r		dema	0
+synoicousness	0	dema-synoicous-n	Number=Plur	dema	0
+synonym	0	oewn-synonym-n	Number=Sing	dema	0
+synonymic	0	dema-synonymic-a	Degree=Pos	dema	0
+synonymical	0	dema-synonymical-a	Degree=Pos	dema	0
+synonymically	0	dema-synonymic-r		dema	0
+synonymies	0	oewn-synonymy-n	Number=Plur	dema	0
+synonymise	0	dema-synonymise-v	VerbForm=Inf	dema	0
+synonymised	0	dema-synonymised-v	VerbForm=Inf	dema	0
+synonymises	0	dema-synonymise-v	Person=3+Tense=Pres	dema	0
+synonymising	0	dema-synonymising-v	VerbForm=Inf	dema	0
+synonymities	0	oewn-synonymity-n	Number=Plur	dema	0
+synonymity	0	oewn-synonymity-n	Number=Sing	dema	0
+synonymize	0	dema-synonymize-v	VerbForm=Inf	dema	0
+synonymized	0	dema-synonymized-v	VerbForm=Inf	dema	0
+synonymizes	0	dema-synonymize-v	Person=3+Tense=Pres	dema	0
+synonymizing	0	dema-synonymizing-v	VerbForm=Inf	dema	0
+synonymous	0	oewn-synonymous-a	Degree=Pos	dema	0
+synonymously	0	oewn-synonymously-r	Degree=Pos	dema	0
+synonymousness	0	oewn-synonymousness-n	Number=Sing	dema	0
+synonymousnesses	0	oewn-synonymousness-n	Number=Plur	dema	0
+synonyms	0	oewn-synonym-n	Number=Plur	dema	0
+synonymy	0	oewn-synonymy-n	Number=Sing	dema	0
+synophthalmia	0	dema-synophthalmia-n	Number=Sing	dema	0
+synophthalmias	0	dema-synophthalmia-n	Number=Plur	dema	0
+synopses	0	dema-synopses-n	Number=Sing	dema	0
+synopseses	0	dema-synopses-n	Number=Plur	dema	0
+synopsis	0	oewn-synopsis-n	Number=Sing	dema	0
+synopsise	0	dema-synopsise-v	VerbForm=Inf	dema	0
+synopsised	0	dema-synopsised-v	VerbForm=Inf	dema	0
+synopsiser	0	dema-synopsise-n	Number=Plur	dema	0
+synopsisers	0	dema-synopsise-n	Number=Plur	dema	0
+synopsises	0	dema-synopsise-v	Person=3+Tense=Pres	dema	0
+synopsising	0	dema-synopsising-v	VerbForm=Inf	dema	0
+synopsisingly	0	dema-synopsise-r		dema	0
+synopsize	0	dema-synopsize-v	VerbForm=Inf	dema	0
+synopsized	0	dema-synopsized-v	VerbForm=Inf	dema	0
+synopsizer	0	dema-synopsize-n	Number=Plur	dema	0
+synopsizers	0	dema-synopsize-n	Number=Plur	dema	0
+synopsizes	0	dema-synopsize-v	Person=3+Tense=Pres	dema	0
+synopsizing	0	dema-synopsizing-v	VerbForm=Inf	dema	0
+synopsizingly	0	dema-synopsize-r		dema	0
+synoptic	0	oewn-synoptic-a	Degree=Pos	dema	0
+synoptic	1	dema-synoptic-n	Number=Sing	dema	0
+synoptically	0	dema-synoptic-r		dema	0
+synopticness	0	dema-synoptic-n	Number=Plur	dema	0
+synoptics	0	dema-synoptic-n	Number=Plur	dema	0
+synoptist	0	dema-synoptist-n	Number=Sing	dema	0
+synoptistic	0	dema-synoptistic-a	Degree=Pos	dema	0
+synoptistically	0	dema-synoptistic-r		dema	0
+synoptists	0	dema-synoptist-n	Number=Plur	dema	0
+synosteoses	0	dema-synosteoses-n	Number=Sing	dema	0
+synosteoseses	0	dema-synosteoses-n	Number=Plur	dema	0
+synosteosis	0	dema-synosteosis-n	Number=Sing	dema	0
+synostoses	0	dema-synostoses-n	Number=Sing	dema	0
+synostoseses	0	dema-synostoses-n	Number=Plur	dema	0
+synostosis	0	dema-synostosis-n	Number=Sing	dema	0
+synostotic	0	dema-synostotic-a	Degree=Pos	dema	0
+synostotical	0	dema-synostotical-a	Degree=Pos	dema	0
+synostotically	0	dema-synostotically-r	Degree=Pos	dema	0
+synovia	0	oewn-synovia-n	Number=Sing	dema	0
+synovial	0	oewn-synovial-a	Degree=Pos	dema	0
+synovially	0	dema-synovially-r	Degree=Pos	dema	0
+synovialness	0	dema-synovial-n	Number=Plur	dema	0
+synovias	0	oewn-synovia-n	Number=Plur	dema	0
+synovitis	0	oewn-synovitis-n	Number=Sing	dema	0
+synsacral	0	dema-synsacral-a	Degree=Pos	dema	0
+synsacrally	0	dema-synsacral-r		dema	0
+synsacralness	0	dema-synsacral-n	Number=Plur	dema	0
+synsepalous	0	dema-synsepalous-a	Degree=Pos	dema	0
+synsepalously	0	dema-synsepalous-r		dema	0
+syntactic	0	oewn-syntactic-a	Degree=Pos	dema	0
+syntactically	0	oewn-syntactically-r	Degree=Pos	dema	0
+syntacticness	0	dema-syntactic-n	Number=Plur	dema	0
+syntactics	0	dema-syntactics-n	Number=Sing	dema	0
+syntacticses	0	dema-syntactics-n	Number=Plur	dema	0
+syntagma	0	oewn-syntagma-n	Number=Sing	dema	0
+syntagmas	0	oewn-syntagma-n	Number=Plur	dema	0
+syntalities	0	dema-syntality-n	Number=Plur	dema	0
+syntality	0	dema-syntality-n	Number=Sing	dema	0
+syntax	0	oewn-syntax-n	Number=Sing	dema	0
+syntaxes	0	oewn-syntax-n	Number=Plur	dema	0
+synteresis	0	dema-synteresis-n	Number=Sing	dema	0
+syntheses	0	dema-syntheses-n	Number=Sing	dema	0
+synthesis	0	oewn-synthesis-n	Number=Sing	dema	0
+synthesist	0	oewn-synthesist-n	Number=Sing	dema	0
+synthesists	0	oewn-synthesist-n	Number=Plur	dema	0
+synthesization	0	dema-synthesization-n	Number=Sing	dema	0
+synthesizations	0	dema-synthesization-n	Number=Plur	dema	0
+synthesize	0	oewn-synthesize-v	VerbForm=Inf	dema	0
+synthesized	0	dema-synthesized-v	VerbForm=Inf	dema	0
+synthesizer	0	oewn-synthesizer-n	Number=Sing	dema	0
+synthesizers	0	dema-synthesize-n	Number=Plur	dema	0
+synthesizes	0	oewn-synthesize-v	Person=3+Tense=Pres	dema	0
+synthesizing	0	dema-synthesizing-v	VerbForm=Inf	dema	0
+synthesizingly	0	dema-synthesize-r		dema	0
+synthetic	0	oewn-synthetic-a	Degree=Pos	dema	0
+synthetic	1	oewn-synthetic-n	Number=Sing	dema	0
+synthetically	0	dema-synthetic-r		dema	0
+syntheticness	0	oewn-synthetic-n	Number=Plur	dema	0
+synthetics	0	oewn-synthetic-n	Number=Plur	dema	0
+synthetisation	0	dema-synthetisation-n	Number=Sing	dema	0
+synthetisations	0	dema-synthetisation-n	Number=Plur	dema	0
+synthetise	0	dema-synthetise-v	VerbForm=Inf	dema	0
+synthetised	0	dema-synthetised-v	VerbForm=Inf	dema	0
+synthetiser	0	dema-synthetiser-n	Number=Sing	dema	0
+synthetisers	0	dema-synthetise-n	Number=Plur	dema	0
+synthetises	0	dema-synthetise-v	Person=3+Tense=Pres	dema	0
+synthetising	0	dema-synthetising-v	VerbForm=Inf	dema	0
+synthetisingly	0	dema-synthetise-r		dema	0
+synthetism	0	oewn-synthetism-n	Number=Sing	dema	0
+synthetisms	0	oewn-synthetism-n	Number=Plur	dema	0
+synthetizer	0	dema-synthetizer-n	Number=Sing	dema	0
+synthetizers	0	dema-synthetizer-n	Number=Plur	dema	0
+synthol	0	dema-synthol-n	Number=Sing	dema	0
+synthols	0	dema-synthol-n	Number=Plur	dema	0
+syntonic	0	dema-syntonic-a	Degree=Pos	dema	0
+syntonically	0	dema-syntonically-r	Degree=Pos	dema	0
+syntonicness	0	dema-syntonic-n	Number=Plur	dema	0
+syntonisation	0	dema-syntonisation-n	Number=Sing	dema	0
+syntonisations	0	dema-syntonisation-n	Number=Plur	dema	0
+syntonise	0	dema-syntonise-v	VerbForm=Inf	dema	0
+syntonised	0	dema-syntonised-v	VerbForm=Inf	dema	0
+syntoniser	0	dema-syntonise-n	Number=Plur	dema	0
+syntonisers	0	dema-syntonise-n	Number=Plur	dema	0
+syntonises	0	dema-syntonise-v	Person=3+Tense=Pres	dema	0
+syntonising	0	dema-syntonising-v	VerbForm=Inf	dema	0
+syntonisingly	0	dema-syntonise-r		dema	0
+syntonization	0	dema-syntonization-n	Number=Sing	dema	0
+syntonizations	0	dema-syntonization-n	Number=Plur	dema	0
+syntonize	0	dema-syntonize-v	VerbForm=Inf	dema	0
+syntonized	0	dema-syntonized-v	VerbForm=Inf	dema	0
+syntonizer	0	dema-syntonizer-n	Number=Sing	dema	0
+syntonizers	0	dema-syntonize-n	Number=Plur	dema	0
+syntonizes	0	dema-syntonize-v	Person=3+Tense=Pres	dema	0
+syntonizing	0	dema-syntonizing-v	VerbForm=Inf	dema	0
+syntonizingly	0	dema-syntonize-r		dema	0
+syntonous	0	dema-syntonous-a	Degree=Pos	dema	0
+syntonously	0	dema-syntonous-r		dema	0
+syntonousness	0	dema-syntonous-n	Number=Plur	dema	0
+syntrophoblastic	0	dema-syntrophoblastic-a	Degree=Pos	dema	0
+syntrophoblastically	0	dema-syntrophoblastic-r		dema	0
+syntype	0	dema-syntype-n	Number=Sing	dema	0
+syntypes	0	dema-syntype-n	Number=Plur	dema	0
+syntypic	0	dema-syntypic-a	Degree=Pos	dema	0
+syntypically	0	dema-syntypic-r		dema	0
+syntypicness	0	dema-syntypic-n	Number=Plur	dema	0
+syph	0	oewn-syph-n	Number=Sing	dema	0
+sypher	0	dema-sypher-v	VerbForm=Inf	dema	0
+syphered	0	dema-sypher-v	Tense=Past	dema	0
+syphering	0	dema-sypher-v	VerbForm=Ger	dema	0
+sypheringly	0	dema-sypher-r		dema	0
+syphers	0	dema-sypher-v	Person=3+Tense=Pres	dema	0
+syphilis	0	oewn-syphilis-n	Number=Sing	dema	0
+syphilisation	0	dema-syphilisation-n	Number=Sing	dema	0
+syphilisations	0	dema-syphilisation-n	Number=Plur	dema	0
+syphilise	0	dema-syphilise-n	Number=Sing	dema	0
+syphilises	0	dema-syphilise-n	Number=Plur	dema	0
+syphilitically	0	dema-syphilitically-r	Degree=Pos	dema	0
+syphilization	0	dema-syphilization-n	Number=Sing	dema	0
+syphilizations	0	dema-syphilization-n	Number=Plur	dema	0
+syphilize	0	dema-syphilize-v	VerbForm=Inf	dema	0
+syphilized	0	dema-syphilized-v	VerbForm=Inf	dema	0
+syphilizer	0	dema-syphilize-n	Number=Plur	dema	0
+syphilizers	0	dema-syphilize-n	Number=Plur	dema	0
+syphilizes	0	dema-syphilize-v	Person=3+Tense=Pres	dema	0
+syphilizing	0	dema-syphilizing-v	VerbForm=Inf	dema	0
+syphilizingly	0	dema-syphilize-r		dema	0
+syphiloid	0	dema-syphiloid-a	Degree=Pos	dema	0
+syphiloidly	0	dema-syphiloid-r		dema	0
+syphiloidness	0	dema-syphiloid-n	Number=Plur	dema	0
+syphilologies	0	dema-syphilology-n	Number=Plur	dema	0
+syphilologist	0	dema-syphilologist-n	Number=Sing	dema	0
+syphilologists	0	dema-syphilologist-n	Number=Plur	dema	0
+syphilology	0	dema-syphilology-n	Number=Sing	dema	0
+syphiloma	0	dema-syphiloma-n	Number=Sing	dema	0
+syphilomas	0	dema-syphiloma-n	Number=Plur	dema	0
+syphon	0	oewn-syphon-n	Number=Sing	dema	0
+syphons	0	oewn-syphon-n	Number=Plur	dema	0
+syphs	0	oewn-syph-n	Number=Plur	dema	0
+syr	0	dema-syr-n	Number=Sing	dema	0
+syringa	0	oewn-syringa-n	Number=Sing	dema	0
+syringas	0	oewn-syringa-n	Number=Plur	dema	0
+syringe	0	oewn-syringe-n	Number=Sing	dema	0
+syringe	1	oewn-syringe-v	VerbForm=Inf	dema	0
+syringeal	0	dema-syringeal-a	Degree=Pos	dema	0
+syringeally	0	dema-syringeal-r		dema	0
+syringealness	0	dema-syringeal-n	Number=Plur	dema	0
+syringed	0	oewn-syringe-v	Tense=Past	dema	0
+syringeful	0	dema-syringeful-a	Degree=Pos	dema	0
+syringefully	0	dema-syringeful-r		dema	0
+syringer	0	oewn-syringe-n	Number=Plur	dema	0
+syringers	0	oewn-syringe-n	Number=Plur	dema	0
+syringes	0	dema-syringes-n	Number=Sing	dema	0
+syringing	0	oewn-syringe-v	VerbForm=Ger	dema	0
+syringingly	0	dema-syringe-r		dema	0
+syringomyelia	0	dema-syringomyelia-n	Number=Sing	dema	0
+syringomyelias	0	dema-syringomyelia-n	Number=Plur	dema	0
+syringomyelic	0	dema-syringomyelic-a	Degree=Pos	dema	0
+syringomyelically	0	dema-syringomyelic-r		dema	0
+syrinx	0	oewn-syrinx-n	Number=Sing	dema	0
+syrinxes	0	oewn-syrinx-n	Number=Plur	dema	0
+syrphid	0	dema-syrphid-n	Number=Sing	dema	0
+syrphids	0	dema-syrphid-n	Number=Plur	dema	0
+syrs	0	dema-syr-n	Number=Plur	dema	0
+syrup	0	oewn-syrup-n	Number=Sing	dema	0
+syrup	1	dema-syrup-v	VerbForm=Inf	dema	0
+syruped	0	dema-syrup-v	Tense=Past	dema	0
+syruper	0	oewn-syrup-n	Number=Plur	dema	0
+syrupers	0	oewn-syrup-n	Number=Plur	dema	0
+syrupily	0	dema-syrupy-r		dema	0
+syrupiness	0	dema-syrupy-n	Number=Plur	dema	0
+syruping	0	dema-syrup-v	VerbForm=Ger	dema	0
+syrupingly	0	dema-syrup-r		dema	0
+syruplike	0	dema-syruplike-a	Degree=Pos	dema	0
+syruplikely	0	dema-syruplike-r		dema	0
+syruplikeness	0	dema-syruplike-n	Number=Plur	dema	0
+syrups	0	oewn-syrup-n	Number=Plur	dema	0
+syrups	1	dema-syrup-v	Person=3+Tense=Pres	dema	0
+syrupy	0	oewn-syrupy-a	Degree=Pos	dema	0
+syssarcosis	0	dema-syssarcosis-n	Number=Sing	dema	0
+syst	0	dema-syst-n	Number=Sing	dema	0
+systaltic	0	dema-systaltic-a	Degree=Pos	dema	0
+systaltically	0	dema-systaltic-r		dema	0
+systalticness	0	dema-systaltic-n	Number=Plur	dema	0
+system	0	oewn-system-n	Number=Sing	dema	0
+systematic	0	oewn-systematic-a	Degree=Pos	dema	0
+systematically	0	dema-systematic-r		dema	0
+systematics	0	oewn-systematics-n	Number=Sing	dema	0
+systematicses	0	oewn-systematics-n	Number=Plur	dema	0
+systematisation	0	oewn-systematisation-n	Number=Sing	dema	0
+systematisations	0	oewn-systematisation-n	Number=Plur	dema	0
+systematise	0	oewn-systematise-v	VerbForm=Inf	dema	0
+systematised	0	dema-systematised-v	VerbForm=Inf	dema	0
+systematiser	0	oewn-systematiser-n	Number=Sing	dema	0
+systematisers	0	oewn-systematiser-n	Number=Plur	dema	0
+systematises	0	oewn-systematise-v	Person=3+Tense=Pres	dema	0
+systematising	0	dema-systematising-v	VerbForm=Inf	dema	0
+systematism	0	oewn-systematism-n	Number=Sing	dema	0
+systematisms	0	oewn-systematism-n	Number=Plur	dema	0
+systematist	0	oewn-systematist-n	Number=Sing	dema	0
+systematists	0	oewn-systematist-n	Number=Plur	dema	0
+systematization	0	oewn-systematization-n	Number=Sing	dema	0
+systematizations	0	oewn-systematization-n	Number=Plur	dema	0
+systematize	0	oewn-systematize-v	VerbForm=Inf	dema	0
+systematized	0	dema-systematized-v	VerbForm=Inf	dema	0
+systematizer	0	oewn-systematizer-n	Number=Sing	dema	0
+systematizers	0	oewn-systematizer-n	Number=Plur	dema	0
+systematizes	0	oewn-systematize-v	Person=3+Tense=Pres	dema	0
+systematizing	0	dema-systematizing-v	VerbForm=Inf	dema	0
+systematologies	0	dema-systematology-n	Number=Plur	dema	0
+systematology	0	dema-systematology-n	Number=Sing	dema	0
+systemic	0	oewn-systemic-a	Degree=Pos	dema	0
+systemically	0	dema-systemic-r		dema	0
+systemicness	0	dema-systemic-n	Number=Plur	dema	0
+systemisable	0	dema-systemisable-a	Degree=Pos	dema	0
+systemisably	0	dema-systemisable-r		dema	0
+systemisation	0	dema-systemisation-n	Number=Sing	dema	0
+systemisations	0	dema-systemisation-n	Number=Plur	dema	0
+systemise	0	oewn-systemise-v	VerbForm=Inf	dema	0
+systemised	0	dema-systemised-v	VerbForm=Inf	dema	0
+systemiser	0	oewn-systemiser-n	Number=Sing	dema	0
+systemisers	0	dema-systemise-n	Number=Plur	dema	0
+systemises	0	oewn-systemise-v	Person=3+Tense=Pres	dema	0
+systemising	0	dema-systemising-v	VerbForm=Inf	dema	0
+systemisingly	0	dema-systemise-r		dema	0
+systemizable	0	dema-systemizable-a	Degree=Pos	dema	0
+systemizably	0	dema-systemizable-r		dema	0
+systemization	0	dema-systemization-n	Number=Sing	dema	0
+systemizations	0	dema-systemization-n	Number=Plur	dema	0
+systemize	0	oewn-systemize-v	VerbForm=Inf	dema	0
+systemized	0	dema-systemized-v	VerbForm=Inf	dema	0
+systemizer	0	oewn-systemizer-n	Number=Sing	dema	0
+systemizers	0	dema-systemize-n	Number=Plur	dema	0
+systemizes	0	oewn-systemize-v	Person=3+Tense=Pres	dema	0
+systemizing	0	dema-systemizing-v	VerbForm=Inf	dema	0
+systemizingly	0	dema-systemize-r		dema	0
+systemless	0	dema-systemless-a	Degree=Pos	dema	0
+systemlessly	0	dema-systemless-r		dema	0
+systemlessness	0	dema-systemless-n	Number=Plur	dema	0
+systemoid	0	dema-systemoid-a	Degree=Pos	dema	0
+systemoidly	0	dema-systemoid-r		dema	0
+systemoidness	0	dema-systemoid-n	Number=Plur	dema	0
+systems	0	oewn-system-n	Number=Plur	dema	0
+systole	0	oewn-systole-n	Number=Sing	dema	0
+systoles	0	oewn-systole-n	Number=Plur	dema	0
+systs	0	dema-syst-n	Number=Plur	dema	0
+syzygial	0	dema-syzygial-a	Degree=Pos	dema	0
+syzygially	0	dema-syzygial-r		dema	0
+syzygialness	0	dema-syzygial-n	Number=Plur	dema	0
+syzygies	0	dema-syzygies-n	Number=Sing	dema	0
+syzygy	0	oewn-syzygy-n	Number=Sing	dema	0

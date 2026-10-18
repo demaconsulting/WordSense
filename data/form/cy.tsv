@@ -1,0 +1,605 @@
+spelling	rank	entry_id	features	source_id	reviewed
+cy	0	dema-cy-n	Number=Sing	dema	0
+cyaathia	0	dema-cyaathia-n	Number=Sing	dema	0
+cyaathias	0	dema-cyaathia-n	Number=Plur	dema	0
+cyan	0	oewn-cyan-n	Number=Sing	dema	0
+cyan	1	oewn-cyan-a	Degree=Pos	dema	0
+cyanamide	0	oewn-cyanamide-n	Number=Sing	dema	0
+cyanamides	0	oewn-cyanamide-n	Number=Plur	dema	0
+cyanate	0	dema-cyanate-n	Number=Sing	dema	0
+cyanates	0	dema-cyanate-n	Number=Plur	dema	0
+cyaneous	0	dema-cyaneous-a	Degree=Pos	dema	0
+cyaneously	0	dema-cyaneous-r		dema	0
+cyaneousness	0	dema-cyaneous-n	Number=Plur	dema	0
+cyanic	0	dema-cyanic-a	Degree=Pos	dema	0
+cyanically	0	dema-cyanic-r		dema	0
+cyanicness	0	dema-cyanic-n	Number=Plur	dema	0
+cyanide	0	oewn-cyanide-n	Number=Sing	dema	0
+cyanided	0	dema-cyanided-v	VerbForm=Inf	dema	0
+cyanideded	0	dema-cyanided-v	Tense=Past	dema	0
+cyanideder	0	dema-cyanided-n	Number=Plur	dema	0
+cyanideders	0	dema-cyanided-n	Number=Plur	dema	0
+cyanideding	0	dema-cyanided-v	VerbForm=Ger	dema	0
+cyanidedingly	0	dema-cyanided-r		dema	0
+cyanideds	0	dema-cyanided-v	Person=3+Tense=Pres	dema	0
+cyanides	0	oewn-cyanide-n	Number=Plur	dema	0
+cyaniding	0	dema-cyaniding-v	VerbForm=Inf	dema	0
+cyanidinged	0	dema-cyaniding-v	Tense=Past	dema	0
+cyanidinger	0	dema-cyaniding-n	Number=Plur	dema	0
+cyanidingers	0	dema-cyaniding-n	Number=Plur	dema	0
+cyanidinging	0	dema-cyaniding-v	VerbForm=Ger	dema	0
+cyanidingingly	0	dema-cyaniding-r		dema	0
+cyanidings	0	dema-cyaniding-v	Person=3+Tense=Pres	dema	0
+cyanine	0	dema-cyanine-n	Number=Sing	dema	0
+cyanines	0	dema-cyanine-n	Number=Plur	dema	0
+cyanite	0	oewn-cyanite-n	Number=Sing	dema	0
+cyanites	0	oewn-cyanite-n	Number=Plur	dema	0
+cyanitic	0	dema-cyanitic-a	Degree=Pos	dema	0
+cyanitically	0	dema-cyanitic-r		dema	0
+cyaniticness	0	dema-cyanitic-n	Number=Plur	dema	0
+cyanly	0	dema-cyan-r		dema	0
+cyanner	0	oewn-cyan-a	Degree=Cmp	dema	0
+cyanness	0	oewn-cyan-n	Number=Plur	dema	0
+cyannest	0	oewn-cyan-a	Degree=Sup	dema	0
+cyano	0	dema-cyano-a	Degree=Pos	dema	0
+cyanochroia	0	dema-cyanochroia-n	Number=Sing	dema	0
+cyanochroias	0	dema-cyanochroia-n	Number=Plur	dema	0
+cyanocobalamin	0	oewn-cyanocobalamin-n	Number=Sing	dema	0
+cyanocobalamins	0	oewn-cyanocobalamin-n	Number=Plur	dema	0
+cyanoderma	0	dema-cyanoderma-n	Number=Sing	dema	0
+cyanodermas	0	dema-cyanoderma-n	Number=Plur	dema	0
+cyanoer	0	dema-cyano-a	Degree=Cmp	dema	0
+cyanoest	0	dema-cyano-a	Degree=Sup	dema	0
+cyanogen	0	oewn-cyanogen-n	Number=Sing	dema	0
+cyanogenamide	0	dema-cyanogenamide-n	Number=Sing	dema	0
+cyanogenamides	0	dema-cyanogenamide-n	Number=Plur	dema	0
+cyanogenic	0	oewn-cyanogenic-a	Degree=Pos	dema	0
+cyanogenically	0	dema-cyanogenic-r		dema	0
+cyanogens	0	oewn-cyanogen-n	Number=Plur	dema	0
+cyanoguanidine	0	dema-cyanoguanidine-n	Number=Sing	dema	0
+cyanoguanidines	0	dema-cyanoguanidine-n	Number=Plur	dema	0
+cyanohydrin	0	oewn-cyanohydrin-n	Number=Sing	dema	0
+cyanohydrins	0	oewn-cyanohydrin-n	Number=Plur	dema	0
+cyanoly	0	dema-cyano-r		dema	0
+cyanometer	0	dema-cyanometer-n	Number=Sing	dema	0
+cyanometers	0	dema-cyanometer-n	Number=Plur	dema	0
+cyanoness	0	dema-cyano-n	Number=Plur	dema	0
+cyanopathic	0	dema-cyanopathic-a	Degree=Pos	dema	0
+cyanopathically	0	dema-cyanopathic-r		dema	0
+cyanopathies	0	dema-cyanopathy-n	Number=Plur	dema	0
+cyanopathy	0	dema-cyanopathy-n	Number=Sing	dema	0
+cyanoplatinite	0	dema-cyanoplatinite-n	Number=Sing	dema	0
+cyanoplatinites	0	dema-cyanoplatinite-n	Number=Plur	dema	0
+cyanosis	0	oewn-cyanosis-n	Number=Sing	dema	0
+cyanotic	0	dema-cyanotic-a	Degree=Pos	dema	0
+cyanotically	0	dema-cyanotic-r		dema	0
+cyanoticness	0	dema-cyanotic-n	Number=Plur	dema	0
+cyanotype	0	dema-cyanotype-n	Number=Sing	dema	0
+cyanotypes	0	dema-cyanotype-n	Number=Plur	dema	0
+cyans	0	oewn-cyan-n	Number=Plur	dema	0
+cyanuric	0	dema-cyanuric-a	Degree=Pos	dema	0
+cyanurically	0	dema-cyanuric-r		dema	0
+cyanuricness	0	dema-cyanuric-n	Number=Plur	dema	0
+cyathi	0	dema-cyathi-n	Number=Sing	dema	0
+cyathiform	0	dema-cyathiform-a	Degree=Pos	dema	0
+cyathiformly	0	dema-cyathiform-r		dema	0
+cyathiformness	0	dema-cyathiform-n	Number=Plur	dema	0
+cyathis	0	dema-cyathi-n	Number=Plur	dema	0
+cyathium	0	dema-cyathium-n	Number=Sing	dema	0
+cyathiums	0	dema-cyathium-n	Number=Plur	dema	0
+cyathus	0	dema-cyathus-n	Number=Sing	dema	0
+cyathuses	0	dema-cyathus-n	Number=Plur	dema	0
+cybernate	0	oewn-cybernate-v	VerbForm=Inf	dema	0
+cybernated	0	oewn-cybernate-v	Tense=Past	dema	0
+cybernater	0	dema-cybernate-n	Number=Plur	dema	0
+cybernaters	0	dema-cybernate-n	Number=Plur	dema	0
+cybernates	0	oewn-cybernate-v	Person=3+Tense=Pres	dema	0
+cybernating	0	oewn-cybernate-v	VerbForm=Ger	dema	0
+cybernatingly	0	dema-cybernate-r		dema	0
+cybernetic	0	oewn-cybernetic-a	Degree=Pos	dema	0
+cybernetically	0	dema-cybernetic-r		dema	0
+cybernetician	0	dema-cybernetician-n	Number=Sing	dema	0
+cyberneticians	0	dema-cybernetician-n	Number=Plur	dema	0
+cyberneticist	0	dema-cyberneticist-n	Number=Sing	dema	0
+cyberneticists	0	dema-cyberneticist-n	Number=Plur	dema	0
+cybernetics	0	oewn-cybernetics-n	Number=Sing	dema	0
+cyberneticses	0	oewn-cybernetics-n	Number=Plur	dema	0
+cyc	0	dema-cyc-n	Number=Sing	dema	0
+cycad	0	oewn-cycad-n	Number=Sing	dema	0
+cycadaceous	0	dema-cycadaceous-a	Degree=Pos	dema	0
+cycadaceously	0	dema-cycadaceous-r		dema	0
+cycadlike	0	dema-cycadlike-a	Degree=Pos	dema	0
+cycadlikely	0	dema-cycadlike-r		dema	0
+cycadlikeness	0	dema-cycadlike-n	Number=Plur	dema	0
+cycads	0	oewn-cycad-n	Number=Plur	dema	0
+cyclades	0	dema-cyclades-n	Number=Sing	dema	0
+cycladeses	0	dema-cyclades-n	Number=Plur	dema	0
+cyclamate	0	oewn-cyclamate-n	Number=Sing	dema	0
+cyclamates	0	oewn-cyclamate-n	Number=Plur	dema	0
+cyclamen	0	oewn-cyclamen-n	Number=Sing	dema	0
+cyclamen	1	dema-cyclamen-a	Degree=Pos	dema	0
+cyclamenly	0	dema-cyclamen-r		dema	0
+cyclamenness	0	oewn-cyclamen-n	Number=Plur	dema	0
+cyclamens	0	oewn-cyclamen-n	Number=Plur	dema	0
+cyclas	0	dema-cyclas-n	Number=Sing	dema	0
+cyclases	0	dema-cyclas-n	Number=Plur	dema	0
+cycle	0	oewn-cycle-n	Number=Sing	dema	1
+cycle	1	oewn-cycle-v	VerbForm=Inf	dema	1
+cyclecar	0	dema-cyclecar-n	Number=Sing	dema	0
+cyclecars	0	dema-cyclecar-n	Number=Plur	dema	0
+cycled	0	oewn-cycle-v	Tense=Past	dema	1
+cycler	0	oewn-cycle-n	Number=Plur	dema	1
+cyclers	0	oewn-cycle-n	Number=Plur	dema	1
+cycles	0	oewn-cycle-n	Number=Plur	dema	1
+cycles	1	oewn-cycle-v	Person=3+Tense=Pres	dema	1
+cyclic	0	oewn-cyclic-a	Degree=Pos	dema	0
+cyclically	0	dema-cyclically-r	Degree=Pos	dema	0
+cyclicities	0	oewn-cyclicity-n	Number=Plur	dema	0
+cyclicity	0	oewn-cyclicity-n	Number=Sing	dema	0
+cyclicness	0	dema-cyclic-n	Number=Plur	dema	0
+cycling	0	oewn-cycle-n	Number=Plur	dema	1
+cycling	1	oewn-cycle-v	VerbForm=Ger	dema	1
+cyclingly	0	dema-cycle-r		dema	0
+cyclings	0	oewn-cycling-n	Number=Plur	dema	0
+cyclist	0	oewn-cyclist-n	Number=Sing	dema	0
+cyclists	0	oewn-cyclist-n	Number=Plur	dema	0
+cyclization	0	dema-cyclization-n	Number=Sing	dema	0
+cyclizations	0	dema-cyclization-n	Number=Plur	dema	0
+cyclize	0	dema-cyclize-v	VerbForm=Inf	dema	0
+cyclized	0	dema-cyclized-v	VerbForm=Inf	dema	0
+cyclizer	0	dema-cyclize-n	Number=Plur	dema	0
+cyclizers	0	dema-cyclize-n	Number=Plur	dema	0
+cyclizes	0	dema-cyclize-v	Person=3+Tense=Pres	dema	0
+cyclizing	0	dema-cyclizing-v	VerbForm=Inf	dema	0
+cyclizingly	0	dema-cyclize-r		dema	0
+cyclo	0	dema-cyclo-n	Number=Sing	dema	0
+cycloacetylene	0	dema-cycloacetylene-n	Number=Sing	dema	0
+cycloacetylenes	0	dema-cycloacetylene-n	Number=Plur	dema	0
+cycloalkane	0	dema-cycloalkane-n	Number=Sing	dema	0
+cycloalkanes	0	dema-cycloalkane-n	Number=Plur	dema	0
+cyclocephalies	0	dema-cyclocephaly-n	Number=Plur	dema	0
+cyclocephaly	0	dema-cyclocephaly-n	Number=Sing	dema	0
+cycloes	0	dema-cyclo-n	Number=Plur	dema	0
+cyclogenesis	0	dema-cyclogenesis-n	Number=Sing	dema	0
+cyclograph	0	dema-cyclograph-n	Number=Sing	dema	0
+cyclographs	0	dema-cyclograph-n	Number=Plur	dema	0
+cyclohexane	0	dema-cyclohexane-n	Number=Sing	dema	0
+cyclohexanes	0	dema-cyclohexane-n	Number=Plur	dema	0
+cyclohexatriene	0	dema-cyclohexatriene-n	Number=Sing	dema	0
+cyclohexatrienes	0	dema-cyclohexatriene-n	Number=Plur	dema	0
+cycloid	0	oewn-cycloid-a	Degree=Pos	dema	0
+cycloid	1	oewn-cycloid-n	Number=Sing	dema	0
+cycloidal	0	oewn-cycloidal-a	Degree=Pos	dema	0
+cycloidally	0	dema-cycloidally-r	Degree=Pos	dema	0
+cycloidalness	0	dema-cycloidal-n	Number=Plur	dema	0
+cycloider	0	oewn-cycloid-a	Degree=Cmp	dema	0
+cycloidest	0	oewn-cycloid-a	Degree=Sup	dema	0
+cycloidly	0	dema-cycloid-r		dema	0
+cycloidness	0	oewn-cycloid-n	Number=Plur	dema	0
+cycloids	0	oewn-cycloid-n	Number=Plur	dema	0
+cyclolysis	0	dema-cyclolysis-n	Number=Sing	dema	0
+cyclometer	0	dema-cyclometer-n	Number=Sing	dema	0
+cyclometers	0	dema-cyclometer-n	Number=Plur	dema	0
+cyclonal	0	oewn-cyclonal-a	Degree=Pos	dema	0
+cyclonally	0	dema-cyclonal-r		dema	0
+cyclonalness	0	dema-cyclonal-n	Number=Plur	dema	0
+cyclone	0	oewn-cyclone-n	Number=Sing	dema	0
+cyclone	1	dema-cyclone-a	Degree=Pos	dema	0
+cyclonely	0	dema-cyclone-r		dema	0
+cycloneness	0	oewn-cyclone-n	Number=Plur	dema	0
+cycloner	0	dema-cyclone-a	Degree=Cmp	dema	0
+cyclones	0	oewn-cyclone-n	Number=Plur	dema	0
+cyclonest	0	dema-cyclone-a	Degree=Sup	dema	0
+cyclonic	0	oewn-cyclonic-a	Degree=Pos	dema	0
+cyclonical	0	oewn-cyclonical-a	Degree=Pos	dema	0
+cyclonically	0	dema-cyclonically-r	Degree=Pos	dema	0
+cyclonicness	0	dema-cyclonic-n	Number=Plur	dema	0
+cyclonite	0	dema-cyclonite-n	Number=Sing	dema	0
+cyclonites	0	dema-cyclonite-n	Number=Plur	dema	0
+cycloolefin	0	oewn-cycloolefin-n	Number=Sing	dema	0
+cycloolefins	0	oewn-cycloolefin-n	Number=Plur	dema	0
+cyclopaedically	0	dema-cyclopaedically-r	Degree=Pos	dema	0
+cyclopaedist	0	dema-cyclopaedist-n	Number=Sing	dema	0
+cyclopaedists	0	dema-cyclopaedist-n	Number=Plur	dema	0
+cycloparaffin	0	dema-cycloparaffin-n	Number=Sing	dema	0
+cycloparaffins	0	dema-cycloparaffin-n	Number=Plur	dema	0
+cyclopedia	0	oewn-cyclopedia-n	Number=Sing	dema	0
+cyclopedias	0	oewn-cyclopedia-n	Number=Plur	dema	0
+cyclopedic	0	dema-cyclopedic-a	Degree=Pos	dema	0
+cyclopedically	0	dema-cyclopedically-r	Degree=Pos	dema	0
+cyclopedist	0	dema-cyclopedist-n	Number=Sing	dema	0
+cyclopedists	0	dema-cyclopedist-n	Number=Plur	dema	0
+cyclopentadiene	0	dema-cyclopentadiene-n	Number=Sing	dema	0
+cyclopentadienes	0	dema-cyclopentadiene-n	Number=Plur	dema	0
+cyclopentane	0	dema-cyclopentane-n	Number=Sing	dema	0
+cyclopentanes	0	dema-cyclopentane-n	Number=Plur	dema	0
+cyclopia	0	oewn-cyclopia-n	Number=Sing	dema	0
+cyclopias	0	oewn-cyclopia-n	Number=Plur	dema	0
+cycloplegia	0	dema-cycloplegia-n	Number=Sing	dema	0
+cycloplegias	0	dema-cycloplegia-n	Number=Plur	dema	0
+cycloplegic	0	dema-cycloplegic-a	Degree=Pos	dema	0
+cycloplegic	1	dema-cycloplegic-n	Number=Sing	dema	0
+cycloplegically	0	dema-cycloplegic-r		dema	0
+cycloplegics	0	dema-cycloplegic-n	Number=Plur	dema	0
+cyclopropane	0	oewn-cyclopropane-n	Number=Sing	dema	0
+cyclopropanes	0	oewn-cyclopropane-n	Number=Plur	dema	0
+cyclorama	0	oewn-cyclorama-n	Number=Sing	dema	0
+cycloramas	0	oewn-cyclorama-n	Number=Plur	dema	0
+cyclos	0	dema-cyclo-n	Number=Plur	dema	0
+cycloses	0	dema-cycloses-n	Number=Sing	dema	0
+cycloseses	0	dema-cycloses-n	Number=Plur	dema	0
+cyclosilicate	0	dema-cyclosilicate-n	Number=Sing	dema	0
+cyclosilicates	0	dema-cyclosilicate-n	Number=Plur	dema	0
+cyclosis	0	oewn-cyclosis-n	Number=Sing	dema	0
+cyclostomatous	0	dema-cyclostomatous-a	Degree=Pos	dema	0
+cyclostomatously	0	dema-cyclostomatous-r		dema	0
+cyclostome	0	oewn-cyclostome-n	Number=Sing	dema	0
+cyclostome	1	dema-cyclostome-a	Degree=Pos	dema	0
+cyclostomely	0	dema-cyclostome-r		dema	0
+cyclostomeness	0	oewn-cyclostome-n	Number=Plur	dema	0
+cyclostomes	0	oewn-cyclostome-n	Number=Plur	dema	0
+cyclostrophic	0	dema-cyclostrophic-a	Degree=Pos	dema	0
+cyclostrophically	0	dema-cyclostrophic-r		dema	0
+cyclostylar	0	dema-cyclostylar-a	Degree=Pos	dema	0
+cyclostylarly	0	dema-cyclostylar-r		dema	0
+cyclostyle	0	oewn-cyclostyle-n	Number=Sing	dema	0
+cyclostyle	1	oewn-cyclostyle-v	VerbForm=Inf	dema	0
+cyclostyled	0	oewn-cyclostyle-v	Tense=Past	dema	0
+cyclostyles	0	oewn-cyclostyle-n	Number=Plur	dema	0
+cyclostyles	1	oewn-cyclostyle-v	Person=3+Tense=Pres	dema	0
+cyclostyling	0	oewn-cyclostyle-v	VerbForm=Ger	dema	0
+cyclothymia	0	oewn-cyclothymia-n	Number=Sing	dema	0
+cyclothymiac	0	dema-cyclothymiac-n	Number=Sing	dema	0
+cyclothymiacs	0	dema-cyclothymiac-n	Number=Plur	dema	0
+cyclothymias	0	oewn-cyclothymia-n	Number=Plur	dema	0
+cyclothymic	0	oewn-cyclothymic-a	Degree=Pos	dema	0
+cyclothymically	0	dema-cyclothymic-r		dema	0
+cyclotome	0	dema-cyclotome-n	Number=Sing	dema	0
+cyclotomes	0	dema-cyclotome-n	Number=Plur	dema	0
+cyclotomic	0	dema-cyclotomic-a	Degree=Pos	dema	0
+cyclotomically	0	dema-cyclotomic-r		dema	0
+cyclotomies	0	dema-cyclotomies-n	Number=Sing	dema	0
+cyclotomy	0	dema-cyclotomy-n	Number=Sing	dema	0
+cyclotrimethylenetrinitramine	0	dema-cyclotrimethylenetrinitramine-n	Number=Sing	dema	0
+cyclotrimethylenetrinitramines	0	dema-cyclotrimethylenetrinitramine-n	Number=Plur	dema	0
+cyclotron	0	oewn-cyclotron-n	Number=Sing	dema	0
+cyclotrons	0	oewn-cyclotron-n	Number=Plur	dema	0
+cycs	0	dema-cyc-n	Number=Plur	dema	0
+cyder	0	oewn-cyder-n	Number=Sing	dema	0
+cyders	0	oewn-cyder-n	Number=Plur	dema	0
+cyeses	0	dema-cyeses-n	Number=Sing	dema	0
+cyeseses	0	dema-cyeses-n	Number=Plur	dema	0
+cyesis	0	dema-cyesis-n	Number=Sing	dema	0
+cyetic	0	dema-cyetic-a	Degree=Pos	dema	0
+cyetically	0	dema-cyetic-r		dema	0
+cyeticness	0	dema-cyetic-n	Number=Plur	dema	0
+cygnet	0	oewn-cygnet-n	Number=Sing	dema	0
+cygnets	0	oewn-cygnet-n	Number=Plur	dema	0
+cyke	0	dema-cyke-n	Number=Sing	dema	0
+cykes	0	dema-cyke-n	Number=Plur	dema	0
+cyl	0	dema-cyl-n	Number=Sing	dema	0
+cylices	0	dema-cylices-n	Number=Sing	dema	0
+cyliceses	0	dema-cylices-n	Number=Plur	dema	0
+cylinder	0	oewn-cylinder-n	Number=Sing	dema	0
+cylinder	1	dema-cylinder-v	VerbForm=Inf	dema	0
+cylindered	0	dema-cylinder-v	Tense=Past	dema	0
+cylindering	0	dema-cylinder-v	VerbForm=Ger	dema	0
+cylinderingly	0	dema-cylinder-r		dema	0
+cylinderlike	0	dema-cylinderlike-a	Degree=Pos	dema	0
+cylinderlikely	0	dema-cylinderlike-r		dema	0
+cylinders	0	oewn-cylinder-n	Number=Plur	dema	0
+cylinders	1	dema-cylinder-v	Person=3+Tense=Pres	dema	0
+cylindraceous	0	dema-cylindraceous-a	Degree=Pos	dema	0
+cylindraceously	0	dema-cylindraceous-r		dema	0
+cylindrical	0	oewn-cylindrical-a	Degree=Pos	dema	0
+cylindricalities	0	oewn-cylindricality-n	Number=Plur	dema	0
+cylindricality	0	oewn-cylindricality-n	Number=Sing	dema	0
+cylindrically	0	dema-cylindrically-r	Degree=Pos	dema	0
+cylindricalness	0	oewn-cylindricalness-n	Number=Sing	dema	0
+cylindricalnesses	0	oewn-cylindricalness-n	Number=Plur	dema	0
+cylindrite	0	dema-cylindrite-n	Number=Sing	dema	0
+cylindrites	0	dema-cylindrite-n	Number=Plur	dema	0
+cylindroid	0	dema-cylindroid-n	Number=Sing	dema	0
+cylindroid	1	dema-cylindroid-a	Degree=Pos	dema	0
+cylindroidly	0	dema-cylindroid-r		dema	0
+cylindroidness	0	dema-cylindroid-n	Number=Plur	dema	0
+cylindroids	0	dema-cylindroid-n	Number=Plur	dema	0
+cylindroma	0	dema-cylindroma-n	Number=Sing	dema	0
+cylindromas	0	dema-cylindroma-n	Number=Plur	dema	0
+cylindromatous	0	dema-cylindromatous-a	Degree=Pos	dema	0
+cylindromatously	0	dema-cylindromatous-r		dema	0
+cylix	0	oewn-cylix-n	Number=Sing	dema	0
+cylixes	0	oewn-cylix-n	Number=Plur	dema	0
+cyls	0	dema-cyl-n	Number=Plur	dema	0
+cyma	0	oewn-cyma-n	Number=Sing	dema	0
+cymae	0	dema-cymae-n	Number=Sing	dema	0
+cymaes	0	dema-cymae-n	Number=Plur	dema	0
+cymaise	0	dema-cymaise-n	Number=Sing	dema	0
+cymaises	0	dema-cymaise-n	Number=Plur	dema	0
+cymar	0	dema-cymar-n	Number=Sing	dema	0
+cymars	0	dema-cymar-n	Number=Plur	dema	0
+cymas	0	oewn-cyma-n	Number=Plur	dema	0
+cymation	0	dema-cymation-n	Number=Sing	dema	0
+cymations	0	dema-cymation-n	Number=Plur	dema	0
+cymatium	0	oewn-cymatium-n	Number=Sing	dema	0
+cymatiums	0	oewn-cymatium-n	Number=Plur	dema	0
+cymbal	0	oewn-cymbal-n	Number=Sing	dema	0
+cymbaleer	0	dema-cymbaleer-n	Number=Sing	dema	0
+cymbaleers	0	dema-cymbaleer-n	Number=Plur	dema	0
+cymbaler	0	dema-cymbaler-n	Number=Sing	dema	0
+cymbalers	0	dema-cymbaler-n	Number=Plur	dema	0
+cymbalist	0	oewn-cymbalist-n	Number=Sing	dema	0
+cymbalists	0	oewn-cymbalist-n	Number=Plur	dema	0
+cymballike	0	dema-cymballike-a	Degree=Pos	dema	0
+cymballikely	0	dema-cymballike-r		dema	0
+cymballikeness	0	dema-cymballike-n	Number=Plur	dema	0
+cymbalo	0	dema-cymbalo-n	Number=Sing	dema	0
+cymbaloes	0	dema-cymbalo-n	Number=Plur	dema	0
+cymbalom	0	dema-cymbalom-n	Number=Sing	dema	0
+cymbaloms	0	dema-cymbalom-n	Number=Plur	dema	0
+cymbalos	0	dema-cymbalo-n	Number=Plur	dema	0
+cymbals	0	oewn-cymbal-n	Number=Plur	dema	0
+cymbiform	0	dema-cymbiform-a	Degree=Pos	dema	0
+cymbiformly	0	dema-cymbiform-r		dema	0
+cymbiformness	0	dema-cymbiform-n	Number=Plur	dema	0
+cymbocephalic	0	dema-cymbocephalic-a	Degree=Pos	dema	0
+cymbocephalically	0	dema-cymbocephalic-r		dema	0
+cymbocephalies	0	dema-cymbocephaly-n	Number=Plur	dema	0
+cymbocephalous	0	dema-cymbocephalous-a	Degree=Pos	dema	0
+cymbocephalously	0	dema-cymbocephalous-r		dema	0
+cymbocephaly	0	dema-cymbocephaly-n	Number=Sing	dema	0
+cyme	0	oewn-cyme-n	Number=Sing	dema	0
+cymene	0	oewn-cymene-n	Number=Sing	dema	0
+cymenes	0	oewn-cymene-n	Number=Plur	dema	0
+cymes	0	oewn-cyme-n	Number=Plur	dema	0
+cymogene	0	dema-cymogene-n	Number=Sing	dema	0
+cymogenes	0	dema-cymogene-n	Number=Plur	dema	0
+cymograph	0	oewn-cymograph-n	Number=Sing	dema	0
+cymographic	0	dema-cymographic-a	Degree=Pos	dema	0
+cymographically	0	dema-cymographic-r		dema	0
+cymographs	0	oewn-cymograph-n	Number=Plur	dema	0
+cymoid	0	dema-cymoid-a	Degree=Pos	dema	0
+cymoider	0	dema-cymoid-a	Degree=Cmp	dema	0
+cymoidest	0	dema-cymoid-a	Degree=Sup	dema	0
+cymoidly	0	dema-cymoid-r		dema	0
+cymoidness	0	dema-cymoid-n	Number=Plur	dema	0
+cymometer	0	dema-cymometer-n	Number=Sing	dema	0
+cymometers	0	dema-cymometer-n	Number=Plur	dema	0
+cymophane	0	dema-cymophane-n	Number=Sing	dema	0
+cymophanes	0	dema-cymophane-n	Number=Plur	dema	0
+cymose	0	oewn-cymose-a	Degree=Pos	dema	0
+cymosely	0	dema-cymosely-r	Degree=Pos	dema	0
+cymoseness	0	dema-cymose-n	Number=Plur	dema	0
+cymotrichies	0	dema-cymotrichy-n	Number=Plur	dema	0
+cymotrichous	0	dema-cymotrichous-a	Degree=Pos	dema	0
+cymotrichously	0	dema-cymotrichous-r		dema	0
+cymotrichy	0	dema-cymotrichy-n	Number=Sing	dema	0
+cymtia	0	dema-cymtia-n	Number=Sing	dema	0
+cymtias	0	dema-cymtia-n	Number=Plur	dema	0
+cynghanedd	0	dema-cynghanedd-n	Number=Sing	dema	0
+cynghanedds	0	dema-cynghanedd-n	Number=Plur	dema	0
+cynic	0	oewn-cynic-n	Number=Sing	dema	0
+cynic	1	dema-cynic-a	Degree=Pos	dema	0
+cynical	0	oewn-cynical-a	Degree=Pos	dema	0
+cynically	0	oewn-cynically-r	Degree=Pos	dema	0
+cynicalness	0	dema-cynicalness-n	Number=Sing	dema	0
+cynicalnesses	0	dema-cynicalness-n	Number=Plur	dema	0
+cynicism	0	oewn-cynicism-n	Number=Sing	dema	0
+cynicisms	0	oewn-cynicism-n	Number=Plur	dema	0
+cynicness	0	oewn-cynic-n	Number=Plur	dema	0
+cynics	0	oewn-cynic-n	Number=Plur	dema	0
+cynosural	0	dema-cynosural-a	Degree=Pos	dema	0
+cynosurally	0	dema-cynosural-r		dema	0
+cynosure	0	oewn-cynosure-n	Number=Sing	dema	0
+cynosures	0	oewn-cynosure-n	Number=Plur	dema	0
+cyperaceous	0	dema-cyperaceous-a	Degree=Pos	dema	0
+cyperaceously	0	dema-cyperaceous-r		dema	0
+cyphella	0	dema-cyphella-n	Number=Sing	dema	0
+cyphellae	0	dema-cyphellae-n	Number=Sing	dema	0
+cyphellaes	0	dema-cyphellae-n	Number=Plur	dema	0
+cyphellas	0	dema-cyphella-n	Number=Plur	dema	0
+cyphellate	0	dema-cyphellate-a	Degree=Pos	dema	0
+cyphellately	0	dema-cyphellate-r		dema	0
+cyphellateness	0	dema-cyphellate-n	Number=Plur	dema	0
+cypher	0	oewn-cypher-n	Number=Sing	dema	0
+cypher	1	oewn-cypher-v	VerbForm=Inf	dema	0
+cyphered	0	oewn-cypher-v	Tense=Past	dema	0
+cyphering	0	oewn-cypher-v	VerbForm=Ger	dema	0
+cypheringly	0	dema-cypher-r		dema	0
+cyphers	0	oewn-cypher-n	Number=Plur	dema	0
+cyphers	1	oewn-cypher-v	Person=3+Tense=Pres	dema	0
+cypress	0	oewn-cypress-n	Number=Sing	dema	0
+cypresses	0	oewn-cypress-n	Number=Plur	dema	0
+cyprinid	0	oewn-cyprinid-n	Number=Sing	dema	0
+cyprinid	1	oewn-cyprinid-a	Degree=Pos	dema	0
+cyprinidly	0	dema-cyprinid-r		dema	0
+cyprinidness	0	oewn-cyprinid-n	Number=Plur	dema	0
+cyprinids	0	oewn-cyprinid-n	Number=Plur	dema	0
+cyprinodont	0	oewn-cyprinodont-n	Number=Sing	dema	0
+cyprinodont	1	dema-cyprinodont-a	Degree=Pos	dema	0
+cyprinodontly	0	dema-cyprinodont-r		dema	0
+cyprinodonts	0	oewn-cyprinodont-n	Number=Plur	dema	0
+cyprinoid	0	oewn-cyprinoid-a	Degree=Pos	dema	0
+cyprinoid	1	dema-cyprinoid-n	Number=Sing	dema	0
+cyprinoidly	0	dema-cyprinoid-r		dema	0
+cyprinoidness	0	dema-cyprinoid-n	Number=Plur	dema	0
+cyprinoids	0	dema-cyprinoid-n	Number=Plur	dema	0
+cypripedium	0	dema-cypripedium-n	Number=Sing	dema	0
+cypripediums	0	dema-cypripedium-n	Number=Plur	dema	0
+cyprus	0	dema-cyprus-n	Number=Sing	dema	0
+cypruses	0	dema-cyprus-n	Number=Plur	dema	0
+cypsela	0	dema-cypsela-n	Number=Sing	dema	0
+cypselae	0	dema-cypselae-n	Number=Sing	dema	0
+cypselaes	0	dema-cypselae-n	Number=Plur	dema	0
+cypselas	0	dema-cypsela-n	Number=Plur	dema	0
+cyrtosis	0	dema-cyrtosis-n	Number=Sing	dema	0
+cyrtostyle	0	dema-cyrtostyle-n	Number=Sing	dema	0
+cyrtostyles	0	dema-cyrtostyle-n	Number=Plur	dema	0
+cyst	0	oewn-cyst-n	Number=Sing	dema	0
+cystectomies	0	dema-cystectomies-n	Number=Sing	dema	0
+cystectomy	0	dema-cystectomy-n	Number=Sing	dema	0
+cysteine	0	oewn-cysteine-n	Number=Sing	dema	0
+cysteines	0	oewn-cysteine-n	Number=Plur	dema	0
+cysteinic	0	dema-cysteinic-a	Degree=Pos	dema	0
+cysteinically	0	dema-cysteinic-r		dema	0
+cysteinicness	0	dema-cysteinic-n	Number=Plur	dema	0
+cystic	0	oewn-cystic-a	Degree=Pos	dema	0
+cystically	0	dema-cystic-r		dema	0
+cysticercerci	0	dema-cysticercerci-n	Number=Sing	dema	0
+cysticercercis	0	dema-cysticercerci-n	Number=Plur	dema	0
+cysticercoid	0	dema-cysticercoid-n	Number=Sing	dema	0
+cysticercoids	0	dema-cysticercoid-n	Number=Plur	dema	0
+cysticercus	0	dema-cysticercus-n	Number=Sing	dema	0
+cysticercuses	0	dema-cysticercus-n	Number=Plur	dema	0
+cysticness	0	dema-cystic-n	Number=Plur	dema	0
+cystidia	0	dema-cystidia-n	Number=Sing	dema	0
+cystidias	0	dema-cystidia-n	Number=Plur	dema	0
+cystidium	0	dema-cystidium-n	Number=Sing	dema	0
+cystidiums	0	dema-cystidium-n	Number=Plur	dema	0
+cystine	0	oewn-cystine-n	Number=Sing	dema	0
+cystines	0	oewn-cystine-n	Number=Plur	dema	0
+cystitis	0	oewn-cystitis-n	Number=Sing	dema	0
+cystocarp	0	dema-cystocarp-n	Number=Sing	dema	0
+cystocarpic	0	dema-cystocarpic-a	Degree=Pos	dema	0
+cystocarpically	0	dema-cystocarpic-r		dema	0
+cystocarps	0	dema-cystocarp-n	Number=Plur	dema	0
+cystocele	0	oewn-cystocele-n	Number=Sing	dema	0
+cystoceles	0	oewn-cystocele-n	Number=Plur	dema	0
+cystoid	0	dema-cystoid-a	Degree=Pos	dema	0
+cystoid	1	dema-cystoid-n	Number=Sing	dema	0
+cystoider	0	dema-cystoid-a	Degree=Cmp	dema	0
+cystoidest	0	dema-cystoid-a	Degree=Sup	dema	0
+cystoidly	0	dema-cystoid-r		dema	0
+cystoidness	0	dema-cystoid-n	Number=Plur	dema	0
+cystoids	0	dema-cystoid-n	Number=Plur	dema	0
+cystolith	0	oewn-cystolith-n	Number=Sing	dema	0
+cystolithic	0	dema-cystolithic-a	Degree=Pos	dema	0
+cystolithically	0	dema-cystolithic-r		dema	0
+cystoliths	0	oewn-cystolith-n	Number=Plur	dema	0
+cystoma	0	dema-cystoma-n	Number=Sing	dema	0
+cystomas	0	dema-cystomas-n	Number=Sing	dema	0
+cystomata	0	dema-cystomata-n	Number=Sing	dema	0
+cystomatas	0	dema-cystomata-n	Number=Plur	dema	0
+cystomatous	0	dema-cystomatous-a	Degree=Pos	dema	0
+cystomatously	0	dema-cystomatous-r		dema	0
+cystometer	0	dema-cystometer-n	Number=Sing	dema	0
+cystometers	0	dema-cystometer-n	Number=Plur	dema	0
+cystoscope	0	dema-cystoscope-n	Number=Sing	dema	0
+cystoscopes	0	dema-cystoscope-n	Number=Plur	dema	0
+cystoscopic	0	dema-cystoscopic-a	Degree=Pos	dema	0
+cystoscopically	0	dema-cystoscopic-r		dema	0
+cystoscopies	0	dema-cystoscopies-n	Number=Sing	dema	0
+cystoscopy	0	dema-cystoscopy-n	Number=Sing	dema	0
+cystostomies	0	dema-cystostomies-n	Number=Sing	dema	0
+cystostomy	0	dema-cystostomy-n	Number=Sing	dema	0
+cystotome	0	dema-cystotome-n	Number=Sing	dema	0
+cystotomes	0	dema-cystotome-n	Number=Plur	dema	0
+cystotomies	0	dema-cystotomies-n	Number=Sing	dema	0
+cystotomy	0	dema-cystotomy-n	Number=Sing	dema	0
+cysts	0	oewn-cyst-n	Number=Plur	dema	0
+cytaster	0	dema-cytaster-n	Number=Sing	dema	0
+cytasters	0	dema-cytaster-n	Number=Plur	dema	0
+cytidine	0	oewn-cytidine-n	Number=Sing	dema	0
+cytidines	0	oewn-cytidine-n	Number=Plur	dema	0
+cytoarchitectural	0	oewn-cytoarchitectural-a	Degree=Pos	dema	0
+cytoarchitecturally	0	dema-cytoarchitecturally-r	Degree=Pos	dema	0
+cytoarchitecture	0	oewn-cytoarchitecture-n	Number=Sing	dema	0
+cytoarchitectures	0	oewn-cytoarchitecture-n	Number=Plur	dema	0
+cytochemical	0	dema-cytochemical-a	Degree=Pos	dema	0
+cytochemically	0	dema-cytochemical-r		dema	0
+cytochemistries	0	dema-cytochemistry-n	Number=Plur	dema	0
+cytochemistry	0	dema-cytochemistry-n	Number=Sing	dema	0
+cytochrome	0	oewn-cytochrome-n	Number=Sing	dema	0
+cytochromes	0	oewn-cytochrome-n	Number=Plur	dema	0
+cytoclasis	0	dema-cytoclasis-n	Number=Sing	dema	0
+cytoclastic	0	dema-cytoclastic-a	Degree=Pos	dema	0
+cytoclastically	0	dema-cytoclastic-r		dema	0
+cytogenesis	0	oewn-cytogenesis-n	Number=Sing	dema	0
+cytogenetic	0	oewn-cytogenetic-a	Degree=Pos	dema	0
+cytogenetical	0	oewn-cytogenetical-a	Degree=Pos	dema	0
+cytogenetically	0	dema-cytogenetically-r	Degree=Pos	dema	0
+cytogeneticist	0	oewn-cytogeneticist-n	Number=Sing	dema	0
+cytogeneticists	0	oewn-cytogeneticist-n	Number=Plur	dema	0
+cytogenetics	0	oewn-cytogenetics-n	Number=Sing	dema	0
+cytogeneticses	0	oewn-cytogenetics-n	Number=Plur	dema	0
+cytoid	0	dema-cytoid-a	Degree=Pos	dema	0
+cytoider	0	dema-cytoid-a	Degree=Cmp	dema	0
+cytoidest	0	dema-cytoid-a	Degree=Sup	dema	0
+cytoidly	0	dema-cytoid-r		dema	0
+cytoidness	0	dema-cytoid-n	Number=Plur	dema	0
+cytokinesis	0	oewn-cytokinesis-n	Number=Sing	dema	0
+cytologic	0	oewn-cytologic-a	Degree=Pos	dema	0
+cytological	0	oewn-cytological-a	Degree=Pos	dema	0
+cytologically	0	dema-cytologically-r	Degree=Pos	dema	0
+cytologies	0	oewn-cytology-n	Number=Plur	dema	0
+cytologist	0	oewn-cytologist-n	Number=Sing	dema	0
+cytologists	0	oewn-cytologist-n	Number=Plur	dema	0
+cytology	0	oewn-cytology-n	Number=Sing	dema	0
+cytolysin	0	oewn-cytolysin-n	Number=Sing	dema	0
+cytolysins	0	oewn-cytolysin-n	Number=Plur	dema	0
+cytolysis	0	oewn-cytolysis-n	Number=Sing	dema	0
+cytolytic	0	oewn-cytolytic-a	Degree=Pos	dema	0
+cytolytically	0	dema-cytolytic-r		dema	0
+cyton	0	dema-cyton-n	Number=Sing	dema	0
+cytons	0	dema-cyton-n	Number=Plur	dema	0
+cytopathogenic	0	oewn-cytopathogenic-a	Degree=Pos	dema	0
+cytopathogenically	0	dema-cytopathogenic-r		dema	0
+cytopathologic	0	dema-cytopathologic-a	Degree=Pos	dema	0
+cytopathological	0	dema-cytopathological-a	Degree=Pos	dema	0
+cytopathologically	0	dema-cytopathologically-r	Degree=Pos	dema	0
+cytopathologies	0	dema-cytopathology-n	Number=Plur	dema	0
+cytopathology	0	dema-cytopathology-n	Number=Sing	dema	0
+cytopenia	0	oewn-cytopenia-n	Number=Sing	dema	0
+cytopenias	0	oewn-cytopenia-n	Number=Plur	dema	0
+cytophagic	0	dema-cytophagic-a	Degree=Pos	dema	0
+cytophagically	0	dema-cytophagic-r		dema	0
+cytophagies	0	dema-cytophagy-n	Number=Plur	dema	0
+cytophagous	0	dema-cytophagous-a	Degree=Pos	dema	0
+cytophagously	0	dema-cytophagous-r		dema	0
+cytophagy	0	dema-cytophagy-n	Number=Sing	dema	0
+cytopharynges	0	dema-cytopharynges-n	Number=Sing	dema	0
+cytopharyngeses	0	dema-cytopharynges-n	Number=Plur	dema	0
+cytopharynx	0	dema-cytopharynx-n	Number=Sing	dema	0
+cytopharynxes	0	dema-cytopharynx-n	Number=Plur	dema	0
+cytoplasm	0	oewn-cytoplasm-n	Number=Sing	dema	0
+cytoplasmic	0	oewn-cytoplasmic-a	Degree=Pos	dema	0
+cytoplasmically	0	dema-cytoplasmic-r		dema	0
+cytoplasms	0	oewn-cytoplasm-n	Number=Plur	dema	0
+cytoplast	0	oewn-cytoplast-n	Number=Sing	dema	0
+cytoplastic	0	oewn-cytoplastic-a	Degree=Pos	dema	0
+cytoplastically	0	dema-cytoplastic-r		dema	0
+cytoplasts	0	oewn-cytoplast-n	Number=Plur	dema	0
+cytosine	0	oewn-cytosine-n	Number=Sing	dema	0
+cytosines	0	oewn-cytosine-n	Number=Plur	dema	0
+cytosome	0	dema-cytosome-n	Number=Sing	dema	0
+cytosomes	0	dema-cytosome-n	Number=Plur	dema	0
+cytost	0	dema-cytost-n	Number=Sing	dema	0
+cytostomal	0	dema-cytostomal-a	Degree=Pos	dema	0
+cytostomally	0	dema-cytostomal-r		dema	0
+cytostome	0	oewn-cytostome-n	Number=Sing	dema	0
+cytostomes	0	oewn-cytostome-n	Number=Plur	dema	0
+cytosts	0	dema-cytost-n	Number=Plur	dema	0
+cytotactic	0	dema-cytotactic-a	Degree=Pos	dema	0
+cytotactically	0	dema-cytotactic-r		dema	0
+cytotaxis	0	dema-cytotaxis-n	Number=Sing	dema	0
+cytotaxonomies	0	dema-cytotaxonomy-n	Number=Plur	dema	0
+cytotaxonomy	0	dema-cytotaxonomy-n	Number=Sing	dema	0
+cytotoxic	0	oewn-cytotoxic-a	Degree=Pos	dema	0
+cytotoxically	0	dema-cytotoxic-r		dema	0
+cytotoxin	0	oewn-cytotoxin-n	Number=Sing	dema	0
+cytotoxins	0	oewn-cytotoxin-n	Number=Plur	dema	0
+cytotrophoblast	0	dema-cytotrophoblast-n	Number=Sing	dema	0
+cytotrophoblastic	0	dema-cytotrophoblastic-a	Degree=Pos	dema	0
+cytotrophoblastically	0	dema-cytotrophoblastic-r		dema	0
+cytotrophoblasts	0	dema-cytotrophoblast-n	Number=Plur	dema	0
+cytotropic	0	dema-cytotropic-a	Degree=Pos	dema	0
+cytotropically	0	dema-cytotropic-r		dema	0
+cytotropism	0	dema-cytotropism-n	Number=Sing	dema	0
+cytotropisms	0	dema-cytotropism-n	Number=Plur	dema	0
+cytozoic	0	dema-cytozoic-a	Degree=Pos	dema	0
+cytozoically	0	dema-cytozoic-r		dema	0
+cytozoicness	0	dema-cytozoic-n	Number=Plur	dema	0
+cytozoon	0	dema-cytozoon-n	Number=Sing	dema	0
+cytozoons	0	dema-cytozoon-n	Number=Plur	dema	0
+cytozzoa	0	dema-cytozzoa-n	Number=Sing	dema	0
+cytozzoas	0	dema-cytozzoa-n	Number=Plur	dema	0

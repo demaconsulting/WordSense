@@ -1,0 +1,1837 @@
+spelling	rank	entry_id	features	source_id	reviewed
+bi	0	dema-bi-n	Number=Sing	dema	0
+biacetyl	0	dema-biacetyl-n	Number=Sing	dema	0
+biacetyls	0	dema-biacetyl-n	Number=Plur	dema	0
+bialies	0	oewn-bialy-n	Number=Plur	dema	0
+bialy	0	oewn-bialy-n	Number=Sing	dema	0
+biangular	0	dema-biangular-a	Degree=Pos	dema	0
+biangularly	0	dema-biangular-r		dema	0
+biangularness	0	dema-biangular-n	Number=Plur	dema	0
+biannual	0	oewn-biannual-a	Degree=Pos	dema	0
+biannually	0	oewn-biannually-r	Degree=Pos	dema	0
+biannualness	0	dema-biannual-n	Number=Plur	dema	0
+biannulate	0	dema-biannulate-a	Degree=Pos	dema	0
+biannulately	0	dema-biannulate-r		dema	0
+biannulateness	0	dema-biannulate-n	Number=Plur	dema	0
+biarticulate	0	dema-biarticulate-a	Degree=Pos	dema	0
+biarticulately	0	dema-biarticulate-r		dema	0
+bias	0	oewn-bias-n	Number=Sing	dema	0
+bias	1	oewn-bias-a	Degree=Pos	dema	0
+bias	2	dema-bias-r	Degree=Pos	dema	0
+bias	3	oewn-bias-v	VerbForm=Inf	dema	0
+biased	0	oewn-biased-a	Degree=Pos	dema	0
+biased	1	dema-biased-v	VerbForm=Inf	dema	0
+biasedly	0	dema-biasedly-r	Degree=Pos	dema	0
+biaser	0	oewn-bias-n	Number=Plur	dema	0
+biaser	1	oewn-bias-a	Degree=Cmp	dema	0
+biaser	2	dema-bias-r	Degree=Cmp	dema	0
+biasers	0	oewn-bias-n	Number=Plur	dema	0
+biases	0	oewn-bias-n	Number=Plur	dema	0
+biases	1	oewn-bias-v	Person=3+Tense=Pres	dema	0
+biasest	0	oewn-bias-a	Degree=Sup	dema	0
+biasest	1	dema-bias-r	Degree=Sup	dema	0
+biasing	0	oewn-bias-v	VerbForm=Ger	dema	0
+biasingly	0	dema-bias-r		dema	0
+biasly	0	dema-bias-r		dema	0
+biasness	0	oewn-bias-n	Number=Plur	dema	0
+biassedly	0	dema-biassedly-r	Degree=Pos	dema	0
+biathlon	0	dema-biathlon-n	Number=Sing	dema	0
+biathlons	0	dema-biathlon-n	Number=Plur	dema	0
+biauricular	0	oewn-biauricular-a	Degree=Pos	dema	0
+biauricularly	0	dema-biauricular-r		dema	0
+biauriculate	0	dema-biauriculate-a	Degree=Pos	dema	0
+biauriculately	0	dema-biauriculate-r		dema	0
+biaxial	0	oewn-biaxial-a	Degree=Pos	dema	0
+biaxialities	0	dema-biaxiality-n	Number=Plur	dema	0
+biaxiality	0	dema-biaxiality-n	Number=Sing	dema	0
+biaxially	0	dema-biaxially-r	Degree=Pos	dema	0
+biaxialness	0	dema-biaxial-n	Number=Plur	dema	0
+bib	0	oewn-bib-n	Number=Sing	dema	0
+bib	1	oewn-bib-v	VerbForm=Inf	dema	0
+bibasic	0	dema-bibasic-a	Degree=Pos	dema	0
+bibasically	0	dema-bibasic-r		dema	0
+bibasicness	0	dema-bibasic-n	Number=Plur	dema	0
+bibb	0	dema-bibb-n	Number=Sing	dema	0
+bibbed	0	dema-bibbed-v	VerbForm=Inf	dema	0
+bibber	0	dema-bibber-n	Number=Sing	dema	0
+bibbers	0	oewn-bib-n	Number=Plur	dema	0
+bibbing	0	dema-bibbing-v	VerbForm=Inf	dema	0
+bibbingly	0	dema-bib-r		dema	0
+bibbs	0	dema-bibb-n	Number=Plur	dema	0
+bibcock	0	dema-bibcock-n	Number=Sing	dema	0
+bibcocks	0	dema-bibcock-n	Number=Plur	dema	0
+bibelot	0	dema-bibelot-n	Number=Sing	dema	0
+bibelots	0	dema-bibelots-n	Number=Sing	dema	0
+bibl	0	dema-bibl-n	Number=Sing	dema	0
+bibless	0	oewn-bibless-a	Degree=Pos	dema	0
+biblessly	0	dema-bibless-r		dema	0
+biblessness	0	dema-bibless-n	Number=Plur	dema	0
+biblical	0	oewn-biblical-a	Degree=Pos	dema	0
+biblically	0	dema-biblically-r	Degree=Pos	dema	0
+biblicalness	0	dema-biblical-n	Number=Plur	dema	0
+biblike	0	dema-biblike-a	Degree=Pos	dema	0
+biblikely	0	dema-biblike-r		dema	0
+biblikeness	0	dema-biblike-n	Number=Plur	dema	0
+bibliker	0	dema-biblike-a	Degree=Cmp	dema	0
+biblikest	0	dema-biblike-a	Degree=Sup	dema	0
+biblioclasm	0	dema-biblioclasm-n	Number=Sing	dema	0
+biblioclasms	0	dema-biblioclasm-n	Number=Plur	dema	0
+biblioclast	0	dema-biblioclast-n	Number=Sing	dema	0
+biblioclasts	0	dema-biblioclast-n	Number=Plur	dema	0
+bibliofilm	0	dema-bibliofilm-n	Number=Sing	dema	0
+bibliofilms	0	dema-bibliofilm-n	Number=Plur	dema	0
+bibliog	0	dema-bibliog-n	Number=Sing	dema	0
+bibliogonies	0	dema-bibliogony-n	Number=Plur	dema	0
+bibliogony	0	dema-bibliogony-n	Number=Sing	dema	0
+bibliographer	0	oewn-bibliographer-n	Number=Sing	dema	0
+bibliographers	0	oewn-bibliographer-n	Number=Plur	dema	0
+bibliographic	0	oewn-bibliographic-a	Degree=Pos	dema	0
+bibliographical	0	oewn-bibliographical-a	Degree=Pos	dema	0
+bibliographically	0	dema-bibliographically-r	Degree=Pos	dema	0
+bibliographies	0	dema-bibliographies-n	Number=Sing	dema	0
+bibliography	0	oewn-bibliography-n	Number=Sing	dema	0
+bibliogs	0	dema-bibliog-n	Number=Plur	dema	0
+biblioklept	0	dema-biblioklept-n	Number=Sing	dema	0
+biblioklepts	0	dema-biblioklept-n	Number=Plur	dema	0
+bibliolater	0	dema-bibliolater-n	Number=Sing	dema	0
+bibliolaters	0	dema-bibliolater-n	Number=Plur	dema	0
+bibliolatries	0	oewn-bibliolatry-n	Number=Plur	dema	0
+bibliolatrist	0	dema-bibliolatrist-n	Number=Sing	dema	0
+bibliolatrists	0	dema-bibliolatrist-n	Number=Plur	dema	0
+bibliolatrous	0	oewn-bibliolatrous-a	Degree=Pos	dema	0
+bibliolatrously	0	dema-bibliolatrous-r		dema	0
+bibliolatry	0	oewn-bibliolatry-n	Number=Sing	dema	0
+bibliological	0	dema-bibliological-a	Degree=Pos	dema	0
+bibliologically	0	dema-bibliological-r		dema	0
+bibliologies	0	dema-bibliologies-n	Number=Sing	dema	0
+bibliologist	0	dema-bibliologist-n	Number=Sing	dema	0
+bibliologists	0	dema-bibliologist-n	Number=Plur	dema	0
+bibliology	0	dema-bibliology-n	Number=Sing	dema	0
+bibliomancies	0	dema-bibliomancy-n	Number=Plur	dema	0
+bibliomancy	0	dema-bibliomancy-n	Number=Sing	dema	0
+bibliomania	0	oewn-bibliomania-n	Number=Sing	dema	0
+bibliomania	1	dema-bibliomania-a	Degree=Pos	dema	0
+bibliomaniac	0	dema-bibliomaniac-n	Number=Sing	dema	0
+bibliomaniacal	0	oewn-bibliomaniacal-a	Degree=Pos	dema	0
+bibliomaniacally	0	dema-bibliomaniacal-r		dema	0
+bibliomaniacs	0	dema-bibliomaniac-n	Number=Plur	dema	0
+bibliomanialy	0	dema-bibliomania-r		dema	0
+bibliomanias	0	oewn-bibliomania-n	Number=Plur	dema	0
+bibliopegic	0	dema-bibliopegic-a	Degree=Pos	dema	0
+bibliopegically	0	dema-bibliopegic-r		dema	0
+bibliopegies	0	dema-bibliopegy-n	Number=Plur	dema	0
+bibliopegist	0	dema-bibliopegist-n	Number=Sing	dema	0
+bibliopegistic	0	dema-bibliopegistic-a	Degree=Pos	dema	0
+bibliopegistical	0	dema-bibliopegistical-a	Degree=Pos	dema	0
+bibliopegistically	0	dema-bibliopegistic-r		dema	0
+bibliopegists	0	dema-bibliopegist-n	Number=Plur	dema	0
+bibliopegy	0	dema-bibliopegy-n	Number=Sing	dema	0
+bibliophage	0	dema-bibliophage-n	Number=Sing	dema	0
+bibliophages	0	dema-bibliophage-n	Number=Plur	dema	0
+bibliophagous	0	dema-bibliophagous-a	Degree=Pos	dema	0
+bibliophagously	0	dema-bibliophagous-r		dema	0
+bibliophile	0	oewn-bibliophile-n	Number=Sing	dema	0
+bibliophiles	0	oewn-bibliophile-n	Number=Plur	dema	0
+bibliophilic	0	oewn-bibliophilic-a	Degree=Pos	dema	0
+bibliophilically	0	dema-bibliophilic-r		dema	0
+bibliophilies	0	dema-bibliophily-n	Number=Plur	dema	0
+bibliophilism	0	dema-bibliophilism-n	Number=Sing	dema	0
+bibliophilisms	0	dema-bibliophilism-n	Number=Plur	dema	0
+bibliophilistic	0	dema-bibliophilistic-a	Degree=Pos	dema	0
+bibliophilistically	0	dema-bibliophilistic-r		dema	0
+bibliophily	0	dema-bibliophily-n	Number=Sing	dema	0
+bibliophobe	0	dema-bibliophobe-n	Number=Sing	dema	0
+bibliophobes	0	dema-bibliophobe-n	Number=Plur	dema	0
+bibliophobia	0	dema-bibliophobia-n	Number=Sing	dema	0
+bibliophobias	0	dema-bibliophobia-n	Number=Plur	dema	0
+bibliopolar	0	dema-bibliopolar-a	Degree=Pos	dema	0
+bibliopolarly	0	dema-bibliopolar-r		dema	0
+bibliopole	0	oewn-bibliopole-n	Number=Sing	dema	0
+bibliopoles	0	oewn-bibliopole-n	Number=Plur	dema	0
+bibliopolic	0	oewn-bibliopolic-a	Degree=Pos	dema	0
+bibliopolical	0	dema-bibliopolical-a	Degree=Pos	dema	0
+bibliopolically	0	dema-bibliopolically-r	Degree=Pos	dema	0
+bibliopolies	0	dema-bibliopoly-n	Number=Plur	dema	0
+bibliopolism	0	dema-bibliopolism-n	Number=Sing	dema	0
+bibliopolisms	0	dema-bibliopolism-n	Number=Plur	dema	0
+bibliopolistic	0	dema-bibliopolistic-a	Degree=Pos	dema	0
+bibliopolistically	0	dema-bibliopolistic-r		dema	0
+bibliopoly	0	dema-bibliopoly-n	Number=Sing	dema	0
+bibliotaph	0	dema-bibliotaph-n	Number=Sing	dema	0
+bibliotaphic	0	dema-bibliotaphic-a	Degree=Pos	dema	0
+bibliotaphically	0	dema-bibliotaphic-r		dema	0
+bibliotaphs	0	dema-bibliotaph-n	Number=Plur	dema	0
+bibliotheca	0	oewn-bibliotheca-n	Number=Sing	dema	0
+bibliothecae	0	dema-bibliothecae-n	Number=Sing	dema	0
+bibliothecaes	0	dema-bibliothecae-n	Number=Plur	dema	0
+bibliothecal	0	oewn-bibliothecal-a	Degree=Pos	dema	0
+bibliothecally	0	dema-bibliothecal-r		dema	0
+bibliothecas	0	dema-bibliothecas-n	Number=Sing	dema	0
+bibliotherapeutic	0	dema-bibliotherapeutic-a	Degree=Pos	dema	0
+bibliotherapeutically	0	dema-bibliotherapeutic-r		dema	0
+bibliotherapies	0	dema-bibliotherapy-n	Number=Plur	dema	0
+bibliotherapist	0	dema-bibliotherapist-n	Number=Sing	dema	0
+bibliotherapists	0	dema-bibliotherapist-n	Number=Plur	dema	0
+bibliotherapy	0	dema-bibliotherapy-n	Number=Sing	dema	0
+bibliotic	0	oewn-bibliotic-a	Degree=Pos	dema	0
+bibliotically	0	dema-bibliotic-r		dema	0
+biblioticness	0	dema-bibliotic-n	Number=Plur	dema	0
+bibliotics	0	oewn-bibliotics-n	Number=Sing	dema	0
+biblioticses	0	oewn-bibliotics-n	Number=Plur	dema	0
+bibliotist	0	oewn-bibliotist-n	Number=Sing	dema	0
+bibliotists	0	oewn-bibliotist-n	Number=Plur	dema	0
+bibls	0	dema-bibl-n	Number=Plur	dema	0
+bibs	0	oewn-bib-n	Number=Plur	dema	0
+bibs	1	oewn-bib-v	Person=3+Tense=Pres	dema	0
+bibulosities	0	dema-bibulosity-n	Number=Plur	dema	0
+bibulosity	0	dema-bibulosity-n	Number=Sing	dema	0
+bibulous	0	oewn-bibulous-a	Degree=Pos	dema	0
+bibulously	0	dema-bibulously-r	Degree=Pos	dema	0
+bibulousness	0	dema-bibulousness-n	Number=Sing	dema	0
+bibulousnesses	0	dema-bibulousness-n	Number=Plur	dema	0
+bicameral	0	oewn-bicameral-a	Degree=Pos	dema	0
+bicameralism	0	dema-bicameralism-n	Number=Sing	dema	0
+bicameralisms	0	dema-bicameralism-n	Number=Plur	dema	0
+bicameralist	0	dema-bicameralist-n	Number=Sing	dema	0
+bicameralists	0	dema-bicameralist-n	Number=Plur	dema	0
+bicamerally	0	dema-bicameral-r		dema	0
+bicapsular	0	oewn-bicapsular-a	Degree=Pos	dema	0
+bicapsularly	0	dema-bicapsular-r		dema	0
+bicarb	0	dema-bicarb-n	Number=Sing	dema	0
+bicarbonate	0	oewn-bicarbonate-n	Number=Sing	dema	0
+bicarbonates	0	oewn-bicarbonate-n	Number=Plur	dema	0
+bicarbs	0	dema-bicarb-n	Number=Plur	dema	0
+bice	0	dema-bice-n	Number=Sing	dema	0
+bicentenaries	0	dema-bicentenaries-n	Number=Sing	dema	0
+bicentenarily	0	dema-bicentenary-r		dema	0
+bicentenary	0	oewn-bicentenary-a	Degree=Pos	dema	0
+bicentenary	1	oewn-bicentenary-n	Number=Sing	dema	0
+bicentennial	0	oewn-bicentennial-a	Degree=Pos	dema	0
+bicentennial	1	oewn-bicentennial-n	Number=Sing	dema	0
+bicentennially	0	dema-bicentennially-r	Degree=Pos	dema	0
+bicentennials	0	oewn-bicentennial-n	Number=Plur	dema	0
+bicentric	0	oewn-bicentric-a	Degree=Pos	dema	0
+bicentrically	0	dema-bicentrically-r	Degree=Pos	dema	0
+bicentricness	0	dema-bicentric-n	Number=Plur	dema	0
+bicephalous	0	oewn-bicephalous-a	Degree=Pos	dema	0
+bicephalously	0	dema-bicephalous-r		dema	0
+biceps	0	oewn-biceps-n	Number=Sing	dema	0
+bicepses	0	dema-bicepses-n	Number=Sing	dema	0
+bices	0	dema-bice-n	Number=Plur	dema	0
+bichloride	0	oewn-bichloride-n	Number=Sing	dema	0
+bichlorides	0	oewn-bichloride-n	Number=Plur	dema	0
+bichromate	0	oewn-bichromate-n	Number=Sing	dema	0
+bichromates	0	oewn-bichromate-n	Number=Plur	dema	0
+bicipital	0	oewn-bicipital-a	Degree=Pos	dema	0
+bicipitally	0	dema-bicipital-r		dema	0
+bicker	0	oewn-bicker-v	VerbForm=Inf	dema	0
+bicker	1	oewn-bicker-n	Number=Sing	dema	0
+bickered	0	oewn-bicker-v	Tense=Past	dema	0
+bickerer	0	dema-bickerer-n	Number=Sing	dema	0
+bickerers	0	dema-bickerer-n	Number=Plur	dema	0
+bickering	0	oewn-bickering-n	Number=Sing	dema	0
+bickering	1	dema-bickering-v	VerbForm=Inf	dema	0
+bickeringly	0	dema-bicker-r		dema	0
+bickerings	0	oewn-bickering-n	Number=Plur	dema	0
+bickers	0	oewn-bicker-v	Person=3+Tense=Pres	dema	0
+bickers	1	oewn-bicker-n	Number=Plur	dema	0
+bicollateral	0	dema-bicollateral-a	Degree=Pos	dema	0
+bicollateralities	0	dema-bicollaterality-n	Number=Plur	dema	0
+bicollaterality	0	dema-bicollaterality-n	Number=Sing	dema	0
+bicollaterally	0	dema-bicollateral-r		dema	0
+bicolor	0	oewn-bicolor-a	Degree=Pos	dema	0
+bicolorly	0	dema-bicolor-r		dema	0
+bicolorness	0	dema-bicolor-n	Number=Plur	dema	0
+bicompact	0	dema-bicompact-a	Degree=Pos	dema	0
+bicompactly	0	dema-bicompact-r		dema	0
+bicompactness	0	dema-bicompact-n	Number=Plur	dema	0
+biconcave	0	oewn-biconcave-a	Degree=Pos	dema	0
+biconcavely	0	dema-biconcave-r		dema	0
+biconcaveness	0	dema-biconcave-n	Number=Plur	dema	0
+biconcavities	0	dema-biconcavity-n	Number=Plur	dema	0
+biconcavity	0	dema-biconcavity-n	Number=Sing	dema	0
+biconditional	0	dema-biconditional-n	Number=Sing	dema	0
+biconditionals	0	dema-biconditional-n	Number=Plur	dema	0
+bicone	0	dema-bicone-n	Number=Sing	dema	0
+bicones	0	dema-bicone-n	Number=Plur	dema	0
+biconical	0	dema-biconical-a	Degree=Pos	dema	0
+biconically	0	dema-biconically-r	Degree=Pos	dema	0
+biconvex	0	oewn-biconvex-a	Degree=Pos	dema	0
+biconvexly	0	dema-biconvex-r		dema	0
+biconvexness	0	dema-biconvex-n	Number=Plur	dema	0
+bicorn	0	oewn-bicorn-a	Degree=Pos	dema	0
+bicorn	1	oewn-bicorn-n	Number=Sing	dema	0
+bicorne	0	oewn-bicorne-n	Number=Sing	dema	0
+bicorner	0	oewn-bicorn-a	Degree=Cmp	dema	0
+bicornes	0	oewn-bicorne-n	Number=Plur	dema	0
+bicornest	0	oewn-bicorn-a	Degree=Sup	dema	0
+bicornly	0	dema-bicorn-r		dema	0
+bicornness	0	oewn-bicorn-n	Number=Plur	dema	0
+bicorns	0	oewn-bicorn-n	Number=Plur	dema	0
+bicorporal	0	dema-bicorporal-a	Degree=Pos	dema	0
+bicorporally	0	dema-bicorporal-r		dema	0
+bicron	0	dema-bicron-n	Number=Sing	dema	0
+bicrons	0	dema-bicron-n	Number=Plur	dema	0
+bicuspid	0	oewn-bicuspid-a	Degree=Pos	dema	0
+bicuspid	1	oewn-bicuspid-n	Number=Sing	dema	0
+bicuspidly	0	dema-bicuspid-r		dema	0
+bicuspidness	0	oewn-bicuspid-n	Number=Plur	dema	0
+bicuspids	0	oewn-bicuspid-n	Number=Plur	dema	0
+bicycle	0	oewn-bicycle-n	Number=Sing	dema	0
+bicycle	1	oewn-bicycle-v	VerbForm=Inf	dema	0
+bicycled	0	dema-bicycled-v	VerbForm=Inf	dema	0
+bicycler	0	oewn-bicycler-n	Number=Sing	dema	0
+bicyclers	0	oewn-bicycle-n	Number=Plur	dema	0
+bicycles	0	oewn-bicycle-n	Number=Plur	dema	0
+bicycles	1	oewn-bicycle-v	Person=3+Tense=Pres	dema	0
+bicyclic	0	oewn-bicyclic-a	Degree=Pos	dema	0
+bicyclically	0	dema-bicyclic-r		dema	0
+bicyclicness	0	dema-bicyclic-n	Number=Plur	dema	0
+bicycling	0	dema-bicycling-v	VerbForm=Inf	dema	0
+bicyclingly	0	dema-bicycle-r		dema	0
+bicyclist	0	oewn-bicyclist-n	Number=Sing	dema	0
+bicyclists	0	oewn-bicyclist-n	Number=Plur	dema	0
+bid	0	oewn-bid-v	VerbForm=Inf	dema	0
+bid	1	oewn-bid-n	Number=Sing	dema	0
+bidarka	0	dema-bidarka-n	Number=Sing	dema	0
+bidarkas	0	dema-bidarka-n	Number=Plur	dema	0
+biddabilities	0	dema-biddability-n	Number=Plur	dema	0
+biddability	0	dema-biddability-n	Number=Sing	dema	0
+biddable	0	oewn-biddable-a	Degree=Pos	dema	0
+biddableness	0	dema-biddableness-n	Number=Sing	dema	0
+biddablenesses	0	dema-biddableness-n	Number=Plur	dema	0
+biddably	0	dema-biddably-r	Degree=Pos	dema	0
+bidded	0	oewn-bid-v	Tense=Past	dema	0
+bidden	0	dema-bidden-v	VerbForm=Inf	dema	0
+biddened	0	dema-bidden-v	Tense=Past	dema	0
+biddener	0	dema-bidden-n	Number=Plur	dema	0
+biddeners	0	dema-bidden-n	Number=Plur	dema	0
+biddening	0	dema-bidden-v	VerbForm=Ger	dema	0
+biddeningly	0	dema-bidden-r		dema	0
+biddens	0	dema-bidden-v	Person=3+Tense=Pres	dema	0
+bidder	0	oewn-bid-n	Number=Plur	dema	0
+bidders	0	oewn-bid-n	Number=Plur	dema	0
+biddies	0	dema-biddies-n	Number=Sing	dema	0
+bidding	0	oewn-bidding-n	Number=Sing	dema	0
+bidding	1	dema-bidding-v	VerbForm=Inf	dema	0
+biddingly	0	dema-bid-r		dema	0
+biddings	0	oewn-bidding-n	Number=Plur	dema	0
+biddy	0	oewn-biddy-n	Number=Sing	dema	0
+bide	0	oewn-bide-v	VerbForm=Inf	dema	0
+bided	0	oewn-bide-v	Tense=Past	dema	0
+bidentate	0	oewn-bidentate-a	Degree=Pos	dema	0
+bidentately	0	dema-bidentate-r		dema	0
+bidentateness	0	dema-bidentate-n	Number=Plur	dema	0
+bidenticulate	0	dema-bidenticulate-a	Degree=Pos	dema	0
+bidenticulately	0	dema-bidenticulate-r		dema	0
+bider	0	dema-bider-n	Number=Sing	dema	0
+biders	0	dema-bide-n	Number=Plur	dema	0
+bides	0	oewn-bide-v	Person=3+Tense=Pres	dema	0
+bidet	0	oewn-bidet-n	Number=Sing	dema	0
+bidets	0	oewn-bidet-n	Number=Plur	dema	0
+bidi	0	dema-bidi-n	Number=Sing	dema	0
+biding	0	oewn-bide-v	VerbForm=Ger	dema	0
+bidingly	0	dema-bide-r		dema	0
+bidirectional	0	oewn-bidirectional-a	Degree=Pos	dema	0
+bidirectionally	0	dema-bidirectional-r		dema	0
+bidis	0	dema-bidi-n	Number=Plur	dema	0
+bids	0	oewn-bid-v	Person=3+Tense=Pres	dema	0
+bids	1	oewn-bid-n	Number=Plur	dema	0
+bieennia	0	dema-bieennia-n	Number=Sing	dema	0
+bieennias	0	dema-bieennia-n	Number=Plur	dema	0
+bield	0	dema-bield-n	Number=Sing	dema	0
+bields	0	dema-bield-n	Number=Plur	dema	0
+biennial	0	oewn-biennial-a	Degree=Pos	dema	0
+biennial	1	oewn-biennial-n	Number=Sing	dema	0
+biennially	0	oewn-biennially-r	Degree=Pos	dema	0
+biennialness	0	oewn-biennial-n	Number=Plur	dema	0
+biennials	0	oewn-biennial-n	Number=Plur	dema	0
+biennium	0	dema-biennium-n	Number=Sing	dema	0
+bienniums	0	dema-bienniums-n	Number=Sing	dema	0
+bienvenu	0	dema-bienvenu-a	Degree=Pos	dema	0
+bienvenue	0	dema-bienvenue-a	Degree=Pos	dema	0
+bienvenue	1	dema-bienvenue-n	Number=Sing	dema	0
+bienvenueness	0	dema-bienvenue-n	Number=Plur	dema	0
+bienvenuer	0	dema-bienvenue-a	Degree=Cmp	dema	0
+bienvenues	0	dema-bienvenue-n	Number=Plur	dema	0
+bienvenuest	0	dema-bienvenue-a	Degree=Sup	dema	0
+bienvenuly	0	dema-bienvenu-r		dema	0
+bienvenuness	0	dema-bienvenu-n	Number=Plur	dema	0
+bier	0	oewn-bier-n	Number=Sing	dema	0
+bierkeller	0	dema-bierkeller-n	Number=Sing	dema	0
+bierkellers	0	dema-bierkeller-n	Number=Plur	dema	0
+biers	0	oewn-bier-n	Number=Plur	dema	0
+bierstube	0	dema-bierstube-n	Number=Sing	dema	0
+bierstuben	0	dema-bierstuben-n	Number=Sing	dema	0
+bierstubens	0	dema-bierstuben-n	Number=Plur	dema	0
+bierstubes	0	dema-bierstubes-n	Number=Sing	dema	0
+biestings	0	dema-biestings-n	Number=Sing	dema	0
+biestingses	0	dema-biestings-n	Number=Plur	dema	0
+bifacial	0	oewn-bifacial-a	Degree=Pos	dema	0
+bifacially	0	dema-bifacial-r		dema	0
+bifacialness	0	dema-bifacial-n	Number=Plur	dema	0
+bifarious	0	dema-bifarious-a	Degree=Pos	dema	0
+bifariously	0	dema-bifariously-r	Degree=Pos	dema	0
+bifariousness	0	dema-bifarious-n	Number=Plur	dema	0
+biff	0	oewn-biff-n	Number=Sing	dema	0
+biff	1	oewn-biff-v	VerbForm=Inf	dema	0
+biffed	0	oewn-biff-v	Tense=Past	dema	0
+biffer	0	oewn-biff-n	Number=Plur	dema	0
+biffers	0	oewn-biff-n	Number=Plur	dema	0
+biffin	0	dema-biffin-n	Number=Sing	dema	0
+biffing	0	oewn-biff-v	VerbForm=Ger	dema	0
+biffingly	0	dema-biff-r		dema	0
+biffins	0	dema-biffin-n	Number=Plur	dema	0
+biffs	0	oewn-biff-n	Number=Plur	dema	0
+biffs	1	oewn-biff-v	Person=3+Tense=Pres	dema	0
+bifid	0	oewn-bifid-a	Degree=Pos	dema	0
+bifider	0	oewn-bifid-a	Degree=Cmp	dema	0
+bifidest	0	oewn-bifid-a	Degree=Sup	dema	0
+bifidities	0	dema-bifidity-n	Number=Plur	dema	0
+bifidity	0	dema-bifidity-n	Number=Sing	dema	0
+bifidly	0	dema-bifidly-r	Degree=Pos	dema	0
+bifidness	0	dema-bifid-n	Number=Plur	dema	0
+bifilar	0	oewn-bifilar-a	Degree=Pos	dema	0
+bifilarly	0	dema-bifilarly-r	Degree=Pos	dema	0
+bifilarness	0	dema-bifilar-n	Number=Plur	dema	0
+biflagellate	0	oewn-biflagellate-a	Degree=Pos	dema	0
+biflagellately	0	dema-biflagellate-r		dema	0
+biflex	0	dema-biflex-a	Degree=Pos	dema	0
+biflexer	0	dema-biflex-a	Degree=Cmp	dema	0
+biflexest	0	dema-biflex-a	Degree=Sup	dema	0
+biflexly	0	dema-biflex-r		dema	0
+biflexness	0	dema-biflex-n	Number=Plur	dema	0
+bifluoride	0	dema-bifluoride-n	Number=Sing	dema	0
+bifluorides	0	dema-bifluoride-n	Number=Plur	dema	0
+bifocal	0	oewn-bifocal-a	Degree=Pos	dema	0
+bifocally	0	dema-bifocal-r		dema	0
+bifocalness	0	dema-bifocal-n	Number=Plur	dema	0
+bifocals	0	oewn-bifocals-n	Number=Sing	dema	0
+bifocalses	0	oewn-bifocals-n	Number=Plur	dema	0
+bifoliate	0	oewn-bifoliate-a	Degree=Pos	dema	0
+bifoliately	0	dema-bifoliate-r		dema	0
+bifoliateness	0	dema-bifoliate-n	Number=Plur	dema	0
+bifoliolate	0	dema-bifoliolate-a	Degree=Pos	dema	0
+bifoliolately	0	dema-bifoliolate-r		dema	0
+biforate	0	dema-biforate-a	Degree=Pos	dema	0
+biforately	0	dema-biforate-r		dema	0
+biforateness	0	dema-biforate-n	Number=Plur	dema	0
+biforked	0	dema-biforked-a	Degree=Pos	dema	0
+biforked	1	dema-biforked-v	VerbForm=Inf	dema	0
+biforkeded	0	dema-biforked-v	Tense=Past	dema	0
+biforkeder	0	dema-biforked-n	Number=Plur	dema	0
+biforkeders	0	dema-biforked-n	Number=Plur	dema	0
+biforkeding	0	dema-biforked-v	VerbForm=Ger	dema	0
+biforkedingly	0	dema-biforked-r		dema	0
+biforkedly	0	dema-biforked-r		dema	0
+biforkedness	0	dema-biforked-n	Number=Plur	dema	0
+biforkeds	0	dema-biforked-v	Person=3+Tense=Pres	dema	0
+biform	0	oewn-biform-a	Degree=Pos	dema	0
+biformer	0	oewn-biform-a	Degree=Cmp	dema	0
+biformest	0	oewn-biform-a	Degree=Sup	dema	0
+biformities	0	dema-biformity-n	Number=Plur	dema	0
+biformity	0	dema-biformity-n	Number=Sing	dema	0
+biformly	0	dema-biform-r		dema	0
+biformness	0	dema-biform-n	Number=Plur	dema	0
+bifunctional	0	dema-bifunctional-a	Degree=Pos	dema	0
+bifunctionally	0	dema-bifunctional-r		dema	0
+bifurcate	0	oewn-bifurcate-a	Degree=Pos	dema	1
+bifurcate	1	oewn-bifurcate-v	VerbForm=Inf	dema	1
+bifurcated	0	dema-bifurcated-v	VerbForm=Inf	dema	0
+bifurcately	0	dema-bifurcately-r	Degree=Pos	dema	0
+bifurcateness	0	dema-bifurcate-n	Number=Plur	dema	0
+bifurcater	0	dema-bifurcate-n	Number=Plur	dema	0
+bifurcaters	0	dema-bifurcate-n	Number=Plur	dema	0
+bifurcates	0	oewn-bifurcate-v	Person=3+Tense=Pres	dema	1
+bifurcating	0	dema-bifurcating-v	VerbForm=Inf	dema	0
+bifurcatingly	0	dema-bifurcate-r		dema	0
+bifurcation	0	oewn-bifurcation-n	Number=Sing	dema	0
+bifurcations	0	oewn-bifurcation-n	Number=Plur	dema	0
+big	0	oewn-big-a	Degree=Pos	dema	0
+big	1	oewn-big-r	Degree=Pos	dema	0
+biga	0	dema-biga-n	Number=Sing	dema	0
+bigae	0	dema-bigae-n	Number=Sing	dema	0
+bigaes	0	dema-bigae-n	Number=Plur	dema	0
+bigamies	0	dema-bigamies-n	Number=Sing	dema	0
+bigamist	0	oewn-bigamist-n	Number=Sing	dema	0
+bigamistic	0	dema-bigamistic-a	Degree=Pos	dema	0
+bigamistically	0	dema-bigamistically-r	Degree=Pos	dema	0
+bigamists	0	oewn-bigamist-n	Number=Plur	dema	0
+bigamous	0	oewn-bigamous-a	Degree=Pos	dema	0
+bigamously	0	dema-bigamously-r	Degree=Pos	dema	0
+bigamousness	0	dema-bigamous-n	Number=Plur	dema	0
+bigamy	0	oewn-bigamy-n	Number=Sing	dema	0
+bigarreau	0	dema-bigarreau-n	Number=Sing	dema	0
+bigarreaus	0	dema-bigarreau-n	Number=Plur	dema	0
+bigas	0	dema-biga-n	Number=Plur	dema	0
+bigener	0	dema-bigener-n	Number=Sing	dema	0
+bigeneric	0	oewn-bigeneric-a	Degree=Pos	dema	0
+bigenerically	0	dema-bigeneric-r		dema	0
+bigeners	0	dema-bigener-n	Number=Plur	dema	0
+bigeye	0	oewn-bigeye-n	Number=Sing	dema	0
+bigeyes	0	oewn-bigeye-n	Number=Plur	dema	0
+bigg	0	dema-bigg-n	Number=Sing	dema	0
+bigg	1	dema-bigg-v	VerbForm=Inf	dema	0
+bigged	0	dema-bigged-v	VerbForm=Inf	dema	0
+bigger	0	oewn-bigger-a	Degree=Pos	dema	0
+biggerly	0	dema-bigger-r		dema	0
+biggers	0	dema-bigg-n	Number=Plur	dema	0
+biggest	0	dema-biggest-a	Degree=Pos	dema	0
+biggestly	0	dema-biggest-r		dema	0
+biggie	0	dema-biggie-n	Number=Sing	dema	0
+biggies	0	dema-biggies-n	Number=Sing	dema	0
+biggin	0	oewn-biggin-n	Number=Sing	dema	0
+bigging	0	dema-bigging-n	Number=Sing	dema	0
+bigging	1	dema-bigging-v	VerbForm=Inf	dema	0
+biggingly	0	dema-bigg-r		dema	0
+biggings	0	dema-bigging-n	Number=Plur	dema	0
+biggins	0	oewn-biggin-n	Number=Plur	dema	0
+biggish	0	oewn-biggish-a	Degree=Pos	dema	0
+biggishly	0	dema-biggish-r		dema	0
+biggishness	0	dema-biggish-n	Number=Plur	dema	0
+biggs	0	dema-bigg-n	Number=Plur	dema	0
+biggs	1	dema-bigg-v	Person=3+Tense=Pres	dema	0
+biggy	0	dema-biggy-n	Number=Sing	dema	0
+bighead	0	oewn-bighead-n	Number=Sing	dema	0
+bigheaded	0	oewn-bigheaded-a	Degree=Pos	dema	0
+bigheaded	1	dema-bigheaded-v	VerbForm=Inf	dema	0
+bigheadeded	0	dema-bigheaded-v	Tense=Past	dema	0
+bigheadeder	0	dema-bigheaded-n	Number=Plur	dema	0
+bigheadeders	0	dema-bigheaded-n	Number=Plur	dema	0
+bigheadeding	0	dema-bigheaded-v	VerbForm=Ger	dema	0
+bigheadedingly	0	dema-bigheaded-r		dema	0
+bigheadedly	0	dema-bigheaded-r		dema	0
+bigheadedness	0	dema-bigheaded-n	Number=Plur	dema	0
+bigheadeds	0	dema-bigheaded-v	Person=3+Tense=Pres	dema	0
+bigheads	0	oewn-bighead-n	Number=Plur	dema	0
+bigheartedly	0	dema-bigheartedly-r	Degree=Pos	dema	0
+bighorn	0	oewn-bighorn-n	Number=Sing	dema	0
+bighorns	0	dema-bighorns-n	Number=Sing	dema	0
+bight	0	oewn-bight-n	Number=Sing	dema	0
+bight	1	oewn-bight-v	VerbForm=Inf	dema	0
+bighted	0	oewn-bight-v	Tense=Past	dema	0
+bighter	0	oewn-bight-n	Number=Plur	dema	0
+bighters	0	oewn-bight-n	Number=Plur	dema	0
+bighting	0	oewn-bight-v	VerbForm=Ger	dema	0
+bightingly	0	dema-bight-r		dema	0
+bights	0	oewn-bight-n	Number=Plur	dema	0
+bights	1	oewn-bight-v	Person=3+Tense=Pres	dema	0
+bigly	0	dema-bigly-r	Degree=Pos	dema	0
+bigmouth	0	dema-bigmouth-n	Number=Sing	dema	0
+bigmouths	0	dema-bigmouths-n	Number=Sing	dema	0
+bigness	0	oewn-bigness-n	Number=Sing	dema	0
+bignesses	0	oewn-bigness-n	Number=Plur	dema	0
+bignonia	0	dema-bignonia-n	Number=Sing	dema	0
+bignoniaceous	0	oewn-bignoniaceous-a	Degree=Pos	dema	0
+bignoniaceously	0	dema-bignoniaceous-r		dema	0
+bignonias	0	dema-bignonia-n	Number=Plur	dema	0
+bigot	0	oewn-bigot-n	Number=Sing	dema	0
+bigoted	0	oewn-bigoted-a	Degree=Pos	dema	0
+bigoted	1	dema-bigoted-v	VerbForm=Inf	dema	0
+bigoteded	0	dema-bigoted-v	Tense=Past	dema	0
+bigoteder	0	dema-bigoted-n	Number=Plur	dema	0
+bigoteders	0	dema-bigoted-n	Number=Plur	dema	0
+bigoteding	0	dema-bigoted-v	VerbForm=Ger	dema	0
+bigotedingly	0	dema-bigoted-r		dema	0
+bigotedly	0	dema-bigotedly-r	Degree=Pos	dema	0
+bigotedness	0	dema-bigoted-n	Number=Plur	dema	0
+bigoteds	0	dema-bigoted-v	Person=3+Tense=Pres	dema	0
+bigotries	0	dema-bigotries-n	Number=Sing	dema	0
+bigotry	0	oewn-bigotry-n	Number=Sing	dema	0
+bigots	0	oewn-bigot-n	Number=Plur	dema	0
+biguanide	0	dema-biguanide-n	Number=Sing	dema	0
+biguanides	0	dema-biguanide-n	Number=Plur	dema	0
+bigwig	0	oewn-bigwig-n	Number=Sing	dema	0
+bigwigged	0	dema-bigwigged-a	Degree=Pos	dema	0
+bigwigged	1	dema-bigwigged-v	VerbForm=Inf	dema	0
+bigwiggeded	0	dema-bigwigged-v	Tense=Past	dema	0
+bigwiggeder	0	dema-bigwigged-n	Number=Plur	dema	0
+bigwiggeders	0	dema-bigwigged-n	Number=Plur	dema	0
+bigwiggeding	0	dema-bigwigged-v	VerbForm=Ger	dema	0
+bigwiggedingly	0	dema-bigwigged-r		dema	0
+bigwiggedly	0	dema-bigwigged-r		dema	0
+bigwiggedness	0	dema-bigwiggedness-n	Number=Sing	dema	0
+bigwiggednesses	0	dema-bigwiggedness-n	Number=Plur	dema	0
+bigwiggeds	0	dema-bigwigged-v	Person=3+Tense=Pres	dema	0
+bigwigs	0	oewn-bigwig-n	Number=Plur	dema	0
+bihourly	0	dema-bihourly-a	Degree=Pos	dema	0
+bijection	0	dema-bijection-n	Number=Sing	dema	0
+bijections	0	dema-bijection-n	Number=Plur	dema	0
+bijou	0	oewn-bijou-n	Number=Sing	dema	0
+bijous	0	oewn-bijou-n	Number=Plur	dema	0
+bijouterie	0	dema-bijouterie-n	Number=Sing	dema	0
+bijouteries	0	dema-bijouterie-n	Number=Plur	dema	0
+bijoux	0	dema-bijoux-n	Number=Sing	dema	0
+bijouxes	0	dema-bijoux-n	Number=Plur	dema	0
+bijugate	0	dema-bijugate-a	Degree=Pos	dema	0
+bijugately	0	dema-bijugate-r		dema	0
+bijugateness	0	dema-bijugate-n	Number=Plur	dema	0
+bike	0	oewn-bike-n	Number=Sing	dema	0
+bike	1	oewn-bike-v	VerbForm=Inf	dema	0
+biked	0	dema-biked-v	VerbForm=Inf	dema	0
+biker	0	oewn-bike-n	Number=Plur	dema	0
+bikers	0	oewn-bike-n	Number=Plur	dema	0
+bikes	0	oewn-bike-n	Number=Plur	dema	0
+bikes	1	oewn-bike-v	Person=3+Tense=Pres	dema	0
+bikie	0	dema-bikie-n	Number=Sing	dema	0
+bikies	0	dema-bikie-n	Number=Plur	dema	0
+biking	0	dema-biking-v	VerbForm=Inf	dema	0
+bikingly	0	dema-bike-r		dema	0
+bikini	0	oewn-bikini-n	Number=Sing	dema	0
+bikinis	0	oewn-bikini-n	Number=Plur	dema	0
+bilabial	0	oewn-bilabial-a	Degree=Pos	dema	0
+bilabial	1	oewn-bilabial-n	Number=Sing	dema	0
+bilabially	0	dema-bilabial-r		dema	0
+bilabialness	0	oewn-bilabial-n	Number=Plur	dema	0
+bilabials	0	oewn-bilabial-n	Number=Plur	dema	0
+bilabiate	0	oewn-bilabiate-a	Degree=Pos	dema	0
+bilabiately	0	dema-bilabiate-r		dema	0
+bilabiateness	0	dema-bilabiate-n	Number=Plur	dema	0
+bilander	0	dema-bilander-n	Number=Sing	dema	0
+bilanders	0	dema-bilander-n	Number=Plur	dema	0
+bilateral	0	oewn-bilateral-a	Degree=Pos	dema	0
+bilateralism	0	oewn-bilateralism-n	Number=Sing	dema	0
+bilateralisms	0	oewn-bilateralism-n	Number=Plur	dema	0
+bilaterally	0	oewn-bilaterally-r	Degree=Pos	dema	0
+bilateralness	0	dema-bilateralness-n	Number=Sing	dema	0
+bilateralnesses	0	dema-bilateralness-n	Number=Plur	dema	0
+bilberries	0	dema-bilberries-n	Number=Sing	dema	0
+bilberry	0	oewn-bilberry-n	Number=Sing	dema	0
+bilbies	0	dema-bilbies-n	Number=Sing	dema	0
+bilbo	0	dema-bilbo-n	Number=Sing	dema	0
+bilboes	0	dema-bilboes-n	Number=Sing	dema	0
+bilbos	0	dema-bilbo-n	Number=Plur	dema	0
+bilby	0	oewn-bilby-n	Number=Sing	dema	0
+bile	0	oewn-bile-n	Number=Sing	dema	0
+bilection	0	dema-bilection-n	Number=Sing	dema	0
+bilections	0	dema-bilection-n	Number=Plur	dema	0
+biles	0	oewn-bile-n	Number=Plur	dema	0
+bilestone	0	oewn-bilestone-n	Number=Sing	dema	0
+bilestones	0	oewn-bilestone-n	Number=Plur	dema	0
+bilge	0	oewn-bilge-n	Number=Sing	dema	0
+bilge	1	oewn-bilge-v	VerbForm=Inf	dema	0
+bilged	0	dema-bilged-v	VerbForm=Inf	dema	0
+bilger	0	oewn-bilge-n	Number=Plur	dema	0
+bilgers	0	oewn-bilge-n	Number=Plur	dema	0
+bilges	0	oewn-bilge-n	Number=Plur	dema	0
+bilges	1	oewn-bilge-v	Person=3+Tense=Pres	dema	0
+bilgeway	0	dema-bilgeway-n	Number=Sing	dema	0
+bilgeways	0	dema-bilgeway-n	Number=Plur	dema	0
+bilgier	0	dema-bilgier-a	Degree=Pos	dema	0
+bilgierly	0	dema-bilgier-r		dema	0
+bilgiest	0	dema-bilgiest-a	Degree=Pos	dema	0
+bilgiestly	0	dema-bilgiest-r		dema	0
+bilgily	0	dema-bilgy-r		dema	0
+bilginess	0	dema-bilgy-n	Number=Plur	dema	0
+bilging	0	dema-bilging-v	VerbForm=Inf	dema	0
+bilgingly	0	dema-bilge-r		dema	0
+bilgy	0	oewn-bilgy-a	Degree=Pos	dema	0
+bilharzia	0	oewn-bilharzia-n	Number=Sing	dema	0
+bilharzias	0	oewn-bilharzia-n	Number=Plur	dema	0
+bilharziasis	0	oewn-bilharziasis-n	Number=Sing	dema	0
+biliarily	0	dema-biliary-r		dema	0
+biliariness	0	dema-biliary-n	Number=Plur	dema	0
+biliary	0	oewn-biliary-a	Degree=Pos	dema	0
+bilinear	0	oewn-bilinear-a	Degree=Pos	dema	0
+bilinearly	0	dema-bilinear-r		dema	0
+bilinearness	0	dema-bilinear-n	Number=Plur	dema	0
+bilineate	0	dema-bilineate-a	Degree=Pos	dema	0
+bilineately	0	dema-bilineate-r		dema	0
+bilineateness	0	dema-bilineate-n	Number=Plur	dema	0
+bilingual	0	oewn-bilingual-a	Degree=Pos	dema	0
+bilingual	1	oewn-bilingual-n	Number=Sing	dema	0
+bilingualism	0	oewn-bilingualism-n	Number=Sing	dema	0
+bilingualisms	0	oewn-bilingualism-n	Number=Plur	dema	0
+bilingually	0	oewn-bilingually-r	Degree=Pos	dema	0
+bilingualness	0	oewn-bilingual-n	Number=Plur	dema	0
+bilinguals	0	oewn-bilingual-n	Number=Plur	dema	0
+bilinguist	0	dema-bilinguist-n	Number=Sing	dema	0
+bilinguists	0	dema-bilinguist-n	Number=Plur	dema	0
+bilious	0	oewn-bilious-a	Degree=Pos	dema	0
+biliously	0	dema-biliously-r	Degree=Pos	dema	0
+biliousness	0	oewn-biliousness-n	Number=Sing	dema	0
+biliousnesses	0	oewn-biliousness-n	Number=Plur	dema	0
+bilirubin	0	oewn-bilirubin-n	Number=Sing	dema	0
+bilirubins	0	oewn-bilirubin-n	Number=Plur	dema	0
+biliteral	0	dema-biliteral-a	Degree=Pos	dema	0
+biliteralism	0	dema-biliteralism-n	Number=Sing	dema	0
+biliteralisms	0	dema-biliteralism-n	Number=Plur	dema	0
+biliterally	0	dema-biliteral-r		dema	0
+bilith	0	dema-bilith-n	Number=Sing	dema	0
+biliths	0	dema-bilith-n	Number=Plur	dema	0
+biliverdin	0	dema-biliverdin-n	Number=Sing	dema	0
+biliverdins	0	dema-biliverdin-n	Number=Plur	dema	0
+bilk	0	oewn-bilk-v	VerbForm=Inf	dema	0
+bilk	1	dema-bilk-n	Number=Sing	dema	0
+bilked	0	oewn-bilk-v	Tense=Past	dema	0
+bilker	0	dema-bilker-n	Number=Sing	dema	0
+bilkers	0	dema-bilk-n	Number=Plur	dema	0
+bilking	0	oewn-bilk-v	VerbForm=Ger	dema	0
+bilkingly	0	dema-bilk-r		dema	0
+bilks	0	oewn-bilk-v	Person=3+Tense=Pres	dema	0
+bilks	1	dema-bilk-n	Number=Plur	dema	0
+bill	0	oewn-bill-n	Number=Sing	dema	0
+bill	1	oewn-bill-v	VerbForm=Inf	dema	0
+billable	0	dema-billable-a	Degree=Pos	dema	0
+billableness	0	dema-billable-n	Number=Plur	dema	0
+billably	0	dema-billable-r		dema	0
+billabong	0	oewn-billabong-n	Number=Sing	dema	0
+billabongs	0	oewn-billabong-n	Number=Plur	dema	0
+billboard	0	oewn-billboard-n	Number=Sing	dema	0
+billboards	0	oewn-billboard-n	Number=Plur	dema	0
+billbug	0	dema-billbug-n	Number=Sing	dema	0
+billbugs	0	dema-billbug-n	Number=Plur	dema	0
+billed	0	oewn-bill-v	Tense=Past	dema	0
+biller	0	dema-biller-n	Number=Sing	dema	0
+billers	0	oewn-bill-n	Number=Plur	dema	0
+billet	0	oewn-billet-n	Number=Sing	dema	0
+billet	1	oewn-billet-v	VerbForm=Inf	dema	0
+billeted	0	dema-billeted-v	VerbForm=Inf	dema	0
+billeter	0	dema-billeter-n	Number=Sing	dema	0
+billeters	0	oewn-billet-n	Number=Plur	dema	0
+billethead	0	dema-billethead-n	Number=Sing	dema	0
+billetheads	0	dema-billethead-n	Number=Plur	dema	0
+billetily	0	dema-billety-r		dema	0
+billetiness	0	dema-billety-n	Number=Plur	dema	0
+billeting	0	dema-billeting-v	VerbForm=Inf	dema	0
+billetingly	0	dema-billet-r		dema	0
+billets	0	oewn-billet-n	Number=Plur	dema	0
+billets	1	oewn-billet-v	Person=3+Tense=Pres	dema	0
+billety	0	dema-billety-a	Degree=Pos	dema	0
+billfish	0	oewn-billfish-n	Number=Sing	dema	0
+billfishes	0	oewn-billfish-n	Number=Plur	dema	0
+billfold	0	oewn-billfold-n	Number=Sing	dema	0
+billfolds	0	oewn-billfold-n	Number=Plur	dema	0
+billhead	0	dema-billhead-n	Number=Sing	dema	0
+billheads	0	dema-billhead-n	Number=Plur	dema	0
+billhook	0	oewn-billhook-n	Number=Sing	dema	0
+billhooks	0	oewn-billhook-n	Number=Plur	dema	0
+billiard	0	dema-billiard-n	Number=Sing	dema	0
+billiardist	0	dema-billiardist-n	Number=Sing	dema	0
+billiardists	0	dema-billiardist-n	Number=Plur	dema	0
+billiards	0	oewn-billiards-n	Number=Sing	dema	0
+billies	0	dema-billies-n	Number=Sing	dema	0
+billing	0	oewn-billing-n	Number=Sing	dema	0
+billing	1	dema-billing-v	VerbForm=Inf	dema	0
+billingly	0	dema-bill-r		dema	0
+billings	0	oewn-billing-n	Number=Plur	dema	0
+billingsgate	0	oewn-billingsgate-n	Number=Sing	dema	0
+billingsgates	0	oewn-billingsgate-n	Number=Plur	dema	0
+billion	0	oewn-billion-n	Number=Sing	dema	0
+billion	1	dema-billion-d		dema	0
+billionaire	0	oewn-billionaire-n	Number=Sing	dema	0
+billionaires	0	oewn-billionaire-n	Number=Plur	dema	0
+billions	0	oewn-billion-n	Number=Plur	dema	0
+billionth	0	oewn-billionth-a	Degree=Pos	dema	0
+billionth	1	oewn-billionth-n	Number=Sing	dema	0
+billionther	0	oewn-billionth-a	Degree=Cmp	dema	0
+billionthest	0	oewn-billionth-a	Degree=Sup	dema	0
+billionthly	0	dema-billionth-r		dema	0
+billionthness	0	oewn-billionth-n	Number=Plur	dema	0
+billionths	0	oewn-billionth-n	Number=Plur	dema	0
+billman	0	dema-billman-n	Number=Sing	dema	0
+billmen	0	dema-billmen-n	Number=Sing	dema	0
+billmens	0	dema-billmen-n	Number=Plur	dema	0
+billon	0	dema-billon-n	Number=Sing	dema	0
+billons	0	dema-billon-n	Number=Plur	dema	0
+billow	0	oewn-billow-n	Number=Sing	dema	0
+billow	1	oewn-billow-v	VerbForm=Inf	dema	0
+billowed	0	oewn-billow-v	Tense=Past	dema	0
+billower	0	oewn-billow-n	Number=Plur	dema	0
+billowers	0	oewn-billow-n	Number=Plur	dema	0
+billowier	0	dema-billowier-a	Degree=Pos	dema	0
+billowierly	0	dema-billowier-r		dema	0
+billowiest	0	dema-billowiest-a	Degree=Pos	dema	0
+billowiestly	0	dema-billowiest-r		dema	0
+billowily	0	dema-billowy-r		dema	0
+billowiness	0	dema-billowiness-n	Number=Sing	dema	0
+billowinesses	0	dema-billowiness-n	Number=Plur	dema	0
+billowing	0	oewn-billow-v	VerbForm=Ger	dema	0
+billowingly	0	dema-billow-r		dema	0
+billows	0	oewn-billow-n	Number=Plur	dema	0
+billows	1	oewn-billow-v	Person=3+Tense=Pres	dema	0
+billowy	0	oewn-billowy-a	Degree=Pos	dema	0
+billposter	0	dema-billposter-n	Number=Sing	dema	0
+billposters	0	dema-billposter-n	Number=Plur	dema	0
+billposting	0	dema-billposting-n	Number=Sing	dema	0
+billpostings	0	dema-billposting-n	Number=Plur	dema	0
+bills	0	oewn-bill-n	Number=Plur	dema	0
+bills	1	oewn-bill-v	Person=3+Tense=Pres	dema	0
+billsticking	0	dema-billsticking-n	Number=Sing	dema	0
+billstickings	0	dema-billsticking-n	Number=Plur	dema	0
+billy	0	oewn-billy-n	Number=Sing	dema	0
+billyboy	0	dema-billyboy-n	Number=Sing	dema	0
+billyboys	0	dema-billyboy-n	Number=Plur	dema	0
+billycock	0	dema-billycock-n	Number=Sing	dema	0
+billycocks	0	dema-billycock-n	Number=Plur	dema	0
+billyo	0	oewn-billyo-n	Number=Sing	dema	0
+billyoes	0	oewn-billyo-n	Number=Plur	dema	0
+billyos	0	oewn-billyo-n	Number=Plur	dema	0
+bilobate	0	oewn-bilobate-a	Degree=Pos	dema	0
+bilobately	0	dema-bilobate-r		dema	0
+bilobateness	0	dema-bilobate-n	Number=Plur	dema	0
+bilocation	0	oewn-bilocation-n	Number=Sing	dema	0
+bilocations	0	oewn-bilocation-n	Number=Plur	dema	0
+bilocular	0	oewn-bilocular-a	Degree=Pos	dema	0
+bilocularly	0	dema-bilocular-r		dema	0
+bilsted	0	oewn-bilsted-n	Number=Sing	dema	0
+bilsteds	0	oewn-bilsted-n	Number=Plur	dema	0
+biltong	0	oewn-biltong-n	Number=Sing	dema	0
+biltongs	0	oewn-biltong-n	Number=Plur	dema	0
+bimaculate	0	dema-bimaculate-a	Degree=Pos	dema	0
+bimaculately	0	dema-bimaculate-r		dema	0
+bimah	0	dema-bimah-n	Number=Sing	dema	0
+bimahs	0	dema-bimah-n	Number=Plur	dema	0
+bimane	0	dema-bimane-n	Number=Sing	dema	0
+bimanes	0	dema-bimane-n	Number=Plur	dema	0
+bimanous	0	dema-bimanous-a	Degree=Pos	dema	0
+bimanously	0	dema-bimanous-r		dema	0
+bimanousness	0	dema-bimanous-n	Number=Plur	dema	0
+bimanual	0	oewn-bimanual-a	Degree=Pos	dema	0
+bimanually	0	dema-bimanually-r	Degree=Pos	dema	0
+bimanualness	0	dema-bimanual-n	Number=Plur	dema	0
+bimbo	0	oewn-bimbo-n	Number=Sing	dema	0
+bimboes	0	dema-bimboes-n	Number=Sing	dema	0
+bimbos	0	dema-bimbos-n	Number=Sing	dema	0
+bimensal	0	dema-bimensal-a	Degree=Pos	dema	0
+bimensally	0	dema-bimensal-r		dema	0
+bimensalness	0	dema-bimensal-n	Number=Plur	dema	0
+bimester	0	oewn-bimester-n	Number=Sing	dema	0
+bimesters	0	oewn-bimester-n	Number=Plur	dema	0
+bimestrial	0	oewn-bimestrial-a	Degree=Pos	dema	0
+bimestrially	0	dema-bimestrial-r		dema	0
+bimestrialness	0	dema-bimestrial-n	Number=Plur	dema	0
+bimetallic	0	oewn-bimetallic-a	Degree=Pos	dema	0
+bimetallically	0	dema-bimetallic-r		dema	0
+bimetallism	0	oewn-bimetallism-n	Number=Sing	dema	0
+bimetallisms	0	oewn-bimetallism-n	Number=Plur	dema	0
+bimetallist	0	oewn-bimetallist-n	Number=Sing	dema	0
+bimetallistic	0	oewn-bimetallistic-a	Degree=Pos	dema	0
+bimetallistically	0	dema-bimetallistic-r		dema	0
+bimetallists	0	oewn-bimetallist-n	Number=Plur	dema	0
+bimethyl	0	dema-bimethyl-n	Number=Sing	dema	0
+bimethyls	0	dema-bimethyl-n	Number=Plur	dema	0
+bimillenaries	0	oewn-bimillenary-n	Number=Plur	dema	0
+bimillenarily	0	dema-bimillenary-r		dema	0
+bimillenary	0	dema-bimillenary-a	Degree=Pos	dema	0
+bimillenary	1	oewn-bimillenary-n	Number=Sing	dema	0
+bimillennium	0	oewn-bimillennium-n	Number=Sing	dema	0
+bimillenniums	0	dema-bimillenniums-n	Number=Sing	dema	0
+bimilllennia	0	dema-bimilllennia-n	Number=Sing	dema	0
+bimilllennias	0	dema-bimilllennia-n	Number=Plur	dema	0
+bimodal	0	oewn-bimodal-a	Degree=Pos	dema	0
+bimodalities	0	dema-bimodality-n	Number=Plur	dema	0
+bimodality	0	dema-bimodality-n	Number=Sing	dema	0
+bimodally	0	dema-bimodal-r		dema	0
+bimodalness	0	dema-bimodal-n	Number=Plur	dema	0
+bimodule	0	dema-bimodule-n	Number=Sing	dema	0
+bimodules	0	dema-bimodule-n	Number=Plur	dema	0
+bimolecular	0	oewn-bimolecular-a	Degree=Pos	dema	0
+bimolecularly	0	dema-bimolecularly-r	Degree=Pos	dema	0
+bimonthlies	0	oewn-bimonthly-n	Number=Plur	dema	0
+bimonthly	0	oewn-bimonthly-a	Degree=Pos	dema	0
+bimonthly	1	oewn-bimonthly-r	Degree=Pos	dema	0
+bimonthly	2	oewn-bimonthly-n	Number=Sing	dema	0
+bimorph	0	dema-bimorph-n	Number=Sing	dema	0
+bimorphs	0	dema-bimorph-n	Number=Plur	dema	0
+bimotor	0	dema-bimotor-n	Number=Sing	dema	0
+bimotored	0	oewn-bimotored-a	Degree=Pos	dema	0
+bimotored	1	dema-bimotored-v	VerbForm=Inf	dema	0
+bimotoreded	0	dema-bimotored-v	Tense=Past	dema	0
+bimotoreding	0	dema-bimotored-v	VerbForm=Ger	dema	0
+bimotoredly	0	dema-bimotored-r		dema	0
+bimotoreds	0	dema-bimotored-v	Person=3+Tense=Pres	dema	0
+bimotors	0	dema-bimotor-n	Number=Plur	dema	0
+bin	0	oewn-bin-n	Number=Sing	dema	0
+bin	1	oewn-bin-v	VerbForm=Inf	dema	0
+binal	0	dema-binal-a	Degree=Pos	dema	0
+binally	0	dema-binal-r		dema	0
+binalness	0	dema-binal-n	Number=Plur	dema	0
+binaries	0	dema-binaries-n	Number=Sing	dema	0
+binarily	0	dema-binary-r		dema	0
+binariness	0	oewn-binary-n	Number=Plur	dema	0
+binary	0	oewn-binary-a	Degree=Pos	dema	0
+binary	1	oewn-binary-n	Number=Sing	dema	0
+binate	0	oewn-binate-a	Degree=Pos	dema	0
+binately	0	dema-binately-r	Degree=Pos	dema	0
+binateness	0	dema-binate-n	Number=Plur	dema	0
+bination	0	dema-bination-n	Number=Sing	dema	0
+binations	0	dema-bination-n	Number=Plur	dema	0
+binaural	0	oewn-binaural-a	Degree=Pos	dema	0
+binaurally	0	dema-binaural-r		dema	0
+binauralness	0	dema-binaural-n	Number=Plur	dema	0
+bind	0	oewn-bind-v	VerbForm=Inf	dema	0
+bind	1	oewn-bind-n	Number=Sing	dema	0
+bindable	0	oewn-bindable-a	Degree=Pos	dema	0
+bindableness	0	dema-bindable-n	Number=Plur	dema	0
+bindably	0	dema-bindable-r		dema	0
+binder	0	oewn-binder-n	Number=Sing	dema	0
+binderies	0	dema-binderies-n	Number=Sing	dema	0
+binders	0	oewn-bind-n	Number=Plur	dema	0
+bindery	0	oewn-bindery-n	Number=Sing	dema	0
+bindheimite	0	dema-bindheimite-n	Number=Sing	dema	0
+bindheimites	0	dema-bindheimite-n	Number=Plur	dema	0
+binding	0	oewn-binding-n	Number=Sing	dema	0
+binding	1	oewn-binding-a	Degree=Pos	dema	0
+binding	2	dema-binding-v	VerbForm=Inf	dema	0
+bindingly	0	dema-bindingly-r	Degree=Pos	dema	0
+bindingness	0	dema-bindingness-n	Number=Sing	dema	0
+bindingnesses	0	dema-bindingness-n	Number=Plur	dema	0
+bindings	0	oewn-binding-n	Number=Plur	dema	0
+bindle	0	dema-bindle-n	Number=Sing	dema	0
+bindles	0	dema-bindle-n	Number=Plur	dema	0
+binds	0	oewn-bind-v	Person=3+Tense=Pres	dema	0
+binds	1	oewn-bind-n	Number=Plur	dema	0
+bindweed	0	oewn-bindweed-n	Number=Sing	dema	0
+bindweeds	0	oewn-bindweed-n	Number=Plur	dema	0
+bine	0	oewn-bine-n	Number=Sing	dema	0
+bines	0	oewn-bine-n	Number=Plur	dema	0
+bing	0	dema-bing-n	Number=Sing	dema	0
+bing	1	dema-bing-v	VerbForm=Inf	dema	0
+binge	0	oewn-binge-n	Number=Sing	dema	0
+binged	0	dema-bing-v	Tense=Past	dema	0
+binger	0	dema-bing-n	Number=Plur	dema	0
+bingers	0	dema-bing-n	Number=Plur	dema	0
+binges	0	oewn-binge-n	Number=Plur	dema	0
+bingey	0	dema-bingey-n	Number=Sing	dema	0
+bingeys	0	dema-bingey-n	Number=Plur	dema	0
+binghi	0	dema-binghi-n	Number=Sing	dema	0
+binghis	0	dema-binghi-n	Number=Plur	dema	0
+bingies	0	dema-bingies-n	Number=Sing	dema	0
+binging	0	dema-bing-v	VerbForm=Ger	dema	0
+bingingly	0	dema-bing-r		dema	0
+bingle	0	oewn-bingle-n	Number=Sing	dema	0
+bingles	0	oewn-bingle-n	Number=Plur	dema	0
+bingo	0	oewn-bingo-n	Number=Sing	dema	0
+bingo	1	dema-bingo-i		dema	0
+bingoes	0	oewn-bingo-n	Number=Plur	dema	0
+bingos	0	oewn-bingo-n	Number=Plur	dema	0
+bings	0	dema-bing-n	Number=Plur	dema	0
+bings	1	dema-bing-v	Person=3+Tense=Pres	dema	0
+bingy	0	dema-bingy-n	Number=Sing	dema	0
+binnacle	0	oewn-binnacle-n	Number=Sing	dema	0
+binnacles	0	oewn-binnacle-n	Number=Plur	dema	0
+binned	0	dema-binned-v	VerbForm=Inf	dema	0
+binner	0	oewn-bin-n	Number=Plur	dema	0
+binners	0	oewn-bin-n	Number=Plur	dema	0
+binning	0	dema-binning-v	VerbForm=Inf	dema	0
+binningly	0	dema-bin-r		dema	0
+binocle	0	dema-binocle-n	Number=Sing	dema	0
+binocles	0	dema-binocle-n	Number=Plur	dema	0
+binocular	0	oewn-binocular-a	Degree=Pos	dema	0
+binocularities	0	dema-binocularity-n	Number=Plur	dema	0
+binocularity	0	dema-binocularity-n	Number=Sing	dema	0
+binocularly	0	dema-binocularly-r	Degree=Pos	dema	0
+binoculars	0	oewn-binoculars-n	Number=Sing	dema	0
+binocularses	0	oewn-binoculars-n	Number=Plur	dema	0
+binomial	0	oewn-binomial-n	Number=Sing	dema	0
+binomial	1	oewn-binomial-a	Degree=Pos	dema	0
+binomialism	0	dema-binomialism-n	Number=Sing	dema	0
+binomialisms	0	dema-binomialism-n	Number=Plur	dema	0
+binomially	0	dema-binomially-r	Degree=Pos	dema	0
+binomialness	0	oewn-binomial-n	Number=Plur	dema	0
+binomials	0	oewn-binomial-n	Number=Plur	dema	0
+binominal	0	oewn-binominal-a	Degree=Pos	dema	0
+binominal	1	dema-binominal-n	Number=Sing	dema	0
+binominally	0	dema-binominal-r		dema	0
+binominals	0	dema-binominal-n	Number=Plur	dema	0
+binormal	0	dema-binormal-n	Number=Sing	dema	0
+binormals	0	dema-binormal-n	Number=Plur	dema	0
+binoxalate	0	dema-binoxalate-n	Number=Sing	dema	0
+binoxalates	0	dema-binoxalate-n	Number=Plur	dema	0
+bins	0	oewn-bin-n	Number=Plur	dema	0
+bins	1	oewn-bin-v	Person=3+Tense=Pres	dema	0
+bint	0	dema-bint-n	Number=Sing	dema	0
+bints	0	dema-bint-n	Number=Plur	dema	0
+binturong	0	oewn-binturong-n	Number=Sing	dema	0
+binturongs	0	oewn-binturong-n	Number=Plur	dema	0
+binucleate	0	oewn-binucleate-a	Degree=Pos	dema	0
+binucleately	0	dema-binucleate-r		dema	0
+binucleateness	0	dema-binucleate-n	Number=Plur	dema	0
+bioassay	0	oewn-bioassay-n	Number=Sing	dema	0
+bioassay	1	oewn-bioassay-v	VerbForm=Inf	dema	0
+bioassayed	0	dema-bioassayed-v	VerbForm=Inf	dema	0
+bioassayer	0	oewn-bioassay-n	Number=Plur	dema	0
+bioassayers	0	oewn-bioassay-n	Number=Plur	dema	0
+bioassaying	0	dema-bioassaying-v	VerbForm=Inf	dema	0
+bioassays	0	oewn-bioassay-n	Number=Plur	dema	0
+bioassays	1	oewn-bioassay-v	Person=3+Tense=Pres	dema	0
+bioastronautics	0	dema-bioastronautics-n	Number=Sing	dema	0
+bioastronauticses	0	dema-bioastronautics-n	Number=Plur	dema	0
+biobibliographer	0	dema-biobibliographer-n	Number=Sing	dema	0
+biobibliographers	0	dema-biobibliographer-n	Number=Plur	dema	0
+biobibliographic	0	dema-biobibliographic-a	Degree=Pos	dema	0
+biobibliographical	0	dema-biobibliographical-a	Degree=Pos	dema	0
+biobibliographically	0	dema-biobibliographic-r		dema	0
+biobibliographies	0	dema-biobibliographies-n	Number=Sing	dema	0
+biobibliography	0	dema-biobibliography-n	Number=Sing	dema	0
+biocatalyst	0	oewn-biocatalyst-n	Number=Sing	dema	0
+biocatalysts	0	oewn-biocatalyst-n	Number=Plur	dema	0
+biocellate	0	dema-biocellate-a	Degree=Pos	dema	0
+biocellately	0	dema-biocellate-r		dema	0
+biocellateness	0	dema-biocellate-n	Number=Plur	dema	0
+biocenologies	0	dema-biocenology-n	Number=Plur	dema	0
+biocenology	0	dema-biocenology-n	Number=Sing	dema	0
+biocentric	0	dema-biocentric-a	Degree=Pos	dema	0
+biocentrically	0	dema-biocentric-r		dema	0
+biocentricness	0	dema-biocentric-n	Number=Plur	dema	0
+biochemic	0	dema-biochemic-a	Degree=Pos	dema	0
+biochemical	0	oewn-biochemical-a	Degree=Pos	dema	0
+biochemical	1	dema-biochemical-n	Number=Sing	dema	0
+biochemically	0	oewn-biochemically-r	Degree=Pos	dema	0
+biochemicals	0	dema-biochemical-n	Number=Plur	dema	0
+biochemicness	0	dema-biochemic-n	Number=Plur	dema	0
+biochemist	0	oewn-biochemist-n	Number=Sing	dema	0
+biochemistries	0	oewn-biochemistry-n	Number=Plur	dema	0
+biochemistry	0	oewn-biochemistry-n	Number=Sing	dema	0
+biochemists	0	oewn-biochemist-n	Number=Plur	dema	0
+biocide	0	dema-biocide-n	Number=Sing	dema	0
+biocides	0	dema-biocide-n	Number=Plur	dema	0
+bioclimatic	0	oewn-bioclimatic-a	Degree=Pos	dema	0
+bioclimatically	0	dema-bioclimatic-r		dema	0
+bioclimatician	0	dema-bioclimatician-n	Number=Sing	dema	0
+bioclimaticians	0	dema-bioclimatician-n	Number=Plur	dema	0
+bioclimatological	0	dema-bioclimatological-a	Degree=Pos	dema	0
+bioclimatologically	0	dema-bioclimatologically-r	Degree=Pos	dema	0
+bioclimatologies	0	oewn-bioclimatology-n	Number=Plur	dema	0
+bioclimatologist	0	dema-bioclimatologist-n	Number=Sing	dema	0
+bioclimatologists	0	dema-bioclimatologist-n	Number=Plur	dema	0
+bioclimatology	0	oewn-bioclimatology-n	Number=Sing	dema	0
+biocycle	0	dema-biocycle-n	Number=Sing	dema	0
+biocycles	0	dema-biocycle-n	Number=Plur	dema	0
+biodegradable	0	oewn-biodegradable-a	Degree=Pos	dema	0
+biodegradably	0	dema-biodegradable-r		dema	0
+biodynamic	0	dema-biodynamic-a	Degree=Pos	dema	0
+biodynamical	0	dema-biodynamical-a	Degree=Pos	dema	0
+biodynamically	0	dema-biodynamic-r		dema	0
+biodynamics	0	oewn-biodynamics-n	Number=Sing	dema	0
+biodynamicses	0	oewn-biodynamics-n	Number=Plur	dema	0
+bioecologic	0	dema-bioecologic-a	Degree=Pos	dema	0
+bioecological	0	dema-bioecological-a	Degree=Pos	dema	0
+bioecologically	0	dema-bioecologically-r	Degree=Pos	dema	0
+bioecologies	0	dema-bioecology-n	Number=Plur	dema	0
+bioecologist	0	dema-bioecologist-n	Number=Sing	dema	0
+bioecologists	0	dema-bioecologist-n	Number=Plur	dema	0
+bioecology	0	dema-bioecology-n	Number=Sing	dema	0
+bioelectric	0	dema-bioelectric-a	Degree=Pos	dema	0
+bioelectrically	0	dema-bioelectric-r		dema	0
+bioelectricities	0	oewn-bioelectricity-n	Number=Plur	dema	0
+bioelectricity	0	oewn-bioelectricity-n	Number=Sing	dema	0
+bioelectricness	0	dema-bioelectric-n	Number=Plur	dema	0
+bioelectrogenesis	0	dema-bioelectrogenesis-n	Number=Sing	dema	0
+bioelectrogenetic	0	dema-bioelectrogenetic-a	Degree=Pos	dema	0
+bioelectrogenetically	0	dema-bioelectrogenetically-r	Degree=Pos	dema	0
+bioenergetics	0	dema-bioenergetics-n	Number=Sing	dema	0
+bioenergeticses	0	dema-bioenergetics-n	Number=Plur	dema	0
+bioengineering	0	oewn-bioengineering-n	Number=Sing	dema	0
+bioengineerings	0	oewn-bioengineering-n	Number=Plur	dema	0
+biofeedback	0	oewn-biofeedback-n	Number=Sing	dema	0
+biofeedbacks	0	oewn-biofeedback-n	Number=Plur	dema	0
+bioflavonoid	0	dema-bioflavonoid-n	Number=Sing	dema	0
+bioflavonoids	0	dema-bioflavonoid-n	Number=Plur	dema	0
+biofog	0	dema-biofog-n	Number=Sing	dema	0
+biofogs	0	dema-biofog-n	Number=Plur	dema	0
+biog	0	dema-biog-n	Number=Sing	dema	0
+biogen	0	dema-biogen-n	Number=Sing	dema	0
+biogenesis	0	oewn-biogenesis-n	Number=Sing	dema	0
+biogenetic	0	oewn-biogenetic-a	Degree=Pos	dema	0
+biogenetically	0	dema-biogenetically-r	Degree=Pos	dema	0
+biogenic	0	oewn-biogenic-a	Degree=Pos	dema	0
+biogenically	0	dema-biogenic-r		dema	0
+biogenicness	0	dema-biogenic-n	Number=Plur	dema	0
+biogens	0	dema-biogen-n	Number=Plur	dema	0
+biogeochemical	0	dema-biogeochemical-a	Degree=Pos	dema	0
+biogeochemically	0	dema-biogeochemical-r		dema	0
+biogeochemistries	0	dema-biogeochemistry-n	Number=Plur	dema	0
+biogeochemistry	0	dema-biogeochemistry-n	Number=Sing	dema	0
+biogeographic	0	oewn-biogeographic-a	Degree=Pos	dema	0
+biogeographical	0	oewn-biogeographical-a	Degree=Pos	dema	0
+biogeographically	0	dema-biogeographically-r	Degree=Pos	dema	0
+biogeographies	0	oewn-biogeography-n	Number=Plur	dema	0
+biogeography	0	oewn-biogeography-n	Number=Sing	dema	0
+biographee	0	dema-biographee-n	Number=Sing	dema	0
+biographees	0	dema-biographee-n	Number=Plur	dema	0
+biographer	0	oewn-biographer-n	Number=Sing	dema	0
+biographers	0	oewn-biographer-n	Number=Plur	dema	0
+biographical	0	oewn-biographical-a	Degree=Pos	dema	0
+biographically	0	dema-biographically-r	Degree=Pos	dema	0
+biographies	0	dema-biographies-n	Number=Sing	dema	0
+biography	0	oewn-biography-n	Number=Sing	dema	0
+biogs	0	dema-biog-n	Number=Plur	dema	0
+bioherm	0	dema-bioherm-n	Number=Sing	dema	0
+bioherms	0	dema-bioherm-n	Number=Plur	dema	0
+biol	0	dema-biol-n	Number=Sing	dema	0
+biological	0	oewn-biological-a	Degree=Pos	dema	0
+biological	1	dema-biological-n	Number=Sing	dema	0
+biologically	0	oewn-biologically-r	Degree=Pos	dema	0
+biologicals	0	dema-biological-n	Number=Plur	dema	0
+biologies	0	oewn-biology-n	Number=Plur	dema	0
+biologism	0	oewn-biologism-n	Number=Sing	dema	0
+biologisms	0	oewn-biologism-n	Number=Plur	dema	0
+biologist	0	oewn-biologist-n	Number=Sing	dema	0
+biologists	0	oewn-biologist-n	Number=Plur	dema	0
+biology	0	oewn-biology-n	Number=Sing	dema	0
+biols	0	dema-biol-n	Number=Plur	dema	0
+bioluminescence	0	oewn-bioluminescence-n	Number=Sing	dema	0
+bioluminescences	0	oewn-bioluminescence-n	Number=Plur	dema	0
+bioluminescent	0	oewn-bioluminescent-a	Degree=Pos	dema	0
+bioluminescently	0	dema-bioluminescent-r		dema	0
+biolysis	0	dema-biolysis-n	Number=Sing	dema	0
+biolytic	0	dema-biolytic-a	Degree=Pos	dema	0
+biolytically	0	dema-biolytic-r		dema	0
+biolyticness	0	dema-biolytic-n	Number=Plur	dema	0
+biomagnetic	0	dema-biomagnetic-a	Degree=Pos	dema	0
+biomagnetically	0	dema-biomagnetic-r		dema	0
+biomagnetism	0	dema-biomagnetism-n	Number=Sing	dema	0
+biomagnetisms	0	dema-biomagnetism-n	Number=Plur	dema	0
+biomass	0	oewn-biomass-n	Number=Sing	dema	0
+biomasses	0	oewn-biomass-n	Number=Plur	dema	0
+biome	0	oewn-biome-n	Number=Sing	dema	0
+biomedical	0	oewn-biomedical-a	Degree=Pos	dema	0
+biomedically	0	dema-biomedical-r		dema	0
+biomedicine	0	oewn-biomedicine-n	Number=Sing	dema	0
+biomedicines	0	oewn-biomedicine-n	Number=Plur	dema	0
+biomes	0	oewn-biome-n	Number=Plur	dema	0
+biometer	0	dema-biometer-n	Number=Sing	dema	0
+biometers	0	dema-biometer-n	Number=Plur	dema	0
+biometric	0	dema-biometric-a	Degree=Pos	dema	0
+biometrical	0	dema-biometrical-a	Degree=Pos	dema	0
+biometrically	0	dema-biometrically-r	Degree=Pos	dema	0
+biometrician	0	dema-biometrician-n	Number=Sing	dema	0
+biometricians	0	dema-biometrician-n	Number=Plur	dema	0
+biometricness	0	dema-biometric-n	Number=Plur	dema	0
+biometrics	0	oewn-biometrics-n	Number=Sing	dema	0
+biometricses	0	oewn-biometrics-n	Number=Plur	dema	0
+biometries	0	oewn-biometry-n	Number=Plur	dema	0
+biometry	0	oewn-biometry-n	Number=Sing	dema	0
+biomorphic	0	dema-biomorphic-a	Degree=Pos	dema	0
+biomorphically	0	dema-biomorphic-r		dema	0
+biomorphicness	0	dema-biomorphic-n	Number=Plur	dema	0
+bionic	0	oewn-bionic-a	Degree=Pos	dema	0
+bionically	0	dema-bionic-r		dema	0
+bionicness	0	dema-bionic-n	Number=Plur	dema	0
+bionics	0	oewn-bionics-n	Number=Sing	dema	0
+bionicses	0	oewn-bionics-n	Number=Plur	dema	0
+bionomic	0	oewn-bionomic-a	Degree=Pos	dema	0
+bionomical	0	oewn-bionomical-a	Degree=Pos	dema	0
+bionomically	0	dema-bionomically-r	Degree=Pos	dema	0
+bionomicness	0	dema-bionomic-n	Number=Plur	dema	0
+bionomics	0	oewn-bionomics-n	Number=Sing	dema	0
+bionomicses	0	oewn-bionomics-n	Number=Plur	dema	0
+bionomies	0	dema-bionomy-n	Number=Plur	dema	0
+bionomist	0	dema-bionomist-n	Number=Sing	dema	0
+bionomists	0	dema-bionomist-n	Number=Plur	dema	0
+bionomy	0	dema-bionomy-n	Number=Sing	dema	0
+biophysical	0	dema-biophysical-a	Degree=Pos	dema	0
+biophysically	0	dema-biophysically-r	Degree=Pos	dema	0
+biophysicist	0	oewn-biophysicist-n	Number=Sing	dema	0
+biophysicists	0	oewn-biophysicist-n	Number=Plur	dema	0
+biophysics	0	oewn-biophysics-n	Number=Sing	dema	0
+biophysicses	0	oewn-biophysics-n	Number=Plur	dema	0
+bioplasm	0	dema-bioplasm-n	Number=Sing	dema	0
+bioplasmic	0	dema-bioplasmic-a	Degree=Pos	dema	0
+bioplasmically	0	dema-bioplasmic-r		dema	0
+bioplasmicness	0	dema-bioplasmic-n	Number=Plur	dema	0
+bioplasms	0	dema-bioplasm-n	Number=Plur	dema	0
+biopoiesis	0	dema-biopoiesis-n	Number=Sing	dema	0
+biopsies	0	dema-biopsies-n	Number=Sing	dema	0
+biopsy	0	oewn-biopsy-n	Number=Sing	dema	0
+biopsychic	0	dema-biopsychic-a	Degree=Pos	dema	0
+biopsychically	0	dema-biopsychic-r		dema	0
+biopsychicness	0	dema-biopsychic-n	Number=Plur	dema	0
+bioptic	0	dema-bioptic-a	Degree=Pos	dema	0
+bioptically	0	dema-bioptic-r		dema	0
+biopticness	0	dema-bioptic-n	Number=Plur	dema	0
+bioscope	0	oewn-bioscope-n	Number=Sing	dema	0
+bioscopes	0	oewn-bioscope-n	Number=Plur	dema	0
+bioscopic	0	dema-bioscopic-a	Degree=Pos	dema	0
+bioscopically	0	dema-bioscopic-r		dema	0
+bioscopicness	0	dema-bioscopic-n	Number=Plur	dema	0
+bioscopies	0	dema-bioscopies-n	Number=Sing	dema	0
+bioscopy	0	dema-bioscopy-n	Number=Sing	dema	0
+biosocial	0	dema-biosocial-a	Degree=Pos	dema	0
+biosocially	0	dema-biosocial-r		dema	0
+biosocialness	0	dema-biosocial-n	Number=Plur	dema	0
+biosociologies	0	dema-biosociology-n	Number=Plur	dema	0
+biosociology	0	dema-biosociology-n	Number=Sing	dema	0
+biosphere	0	oewn-biosphere-n	Number=Sing	dema	0
+biospheres	0	oewn-biosphere-n	Number=Plur	dema	0
+biostatic	0	dema-biostatic-a	Degree=Pos	dema	0
+biostatical	0	dema-biostatical-a	Degree=Pos	dema	0
+biostatically	0	dema-biostatic-r		dema	0
+biostaticness	0	dema-biostatic-n	Number=Plur	dema	0
+biostatics	0	dema-biostatics-n	Number=Sing	dema	0
+biostaticses	0	dema-biostatics-n	Number=Plur	dema	0
+biostrome	0	dema-biostrome-n	Number=Sing	dema	0
+biostromes	0	dema-biostrome-n	Number=Plur	dema	0
+biosynthesis	0	oewn-biosynthesis-n	Number=Sing	dema	0
+biota	0	oewn-biota-n	Number=Sing	dema	0
+biotas	0	oewn-biota-n	Number=Plur	dema	0
+biotechnological	0	dema-biotechnological-a	Degree=Pos	dema	0
+biotechnologically	0	dema-biotechnologically-r	Degree=Pos	dema	0
+biotechnologies	0	oewn-biotechnology-n	Number=Plur	dema	0
+biotechnology	0	oewn-biotechnology-n	Number=Sing	dema	0
+biotic	0	oewn-biotic-a	Degree=Pos	dema	0
+biotically	0	dema-biotic-r		dema	0
+bioticness	0	dema-biotic-n	Number=Plur	dema	0
+biotin	0	oewn-biotin-n	Number=Sing	dema	0
+biotins	0	oewn-biotin-n	Number=Plur	dema	0
+biotite	0	oewn-biotite-n	Number=Sing	dema	0
+biotites	0	oewn-biotite-n	Number=Plur	dema	0
+biotitic	0	oewn-biotitic-a	Degree=Pos	dema	0
+biotitically	0	dema-biotitic-r		dema	0
+biotiticness	0	dema-biotitic-n	Number=Plur	dema	0
+biotope	0	dema-biotope-n	Number=Sing	dema	0
+biotopes	0	dema-biotope-n	Number=Plur	dema	0
+biotype	0	oewn-biotype-n	Number=Sing	dema	0
+biotypes	0	oewn-biotype-n	Number=Plur	dema	0
+biotypic	0	oewn-biotypic-a	Degree=Pos	dema	0
+biotypically	0	dema-biotypic-r		dema	0
+biotypicness	0	dema-biotypic-n	Number=Plur	dema	0
+biotypologies	0	dema-biotypology-n	Number=Plur	dema	0
+biotypology	0	dema-biotypology-n	Number=Sing	dema	0
+bipack	0	dema-bipack-n	Number=Sing	dema	0
+bipacks	0	dema-bipack-n	Number=Plur	dema	0
+biparietal	0	dema-biparietal-a	Degree=Pos	dema	0
+biparietally	0	dema-biparietal-r		dema	0
+biparous	0	oewn-biparous-a	Degree=Pos	dema	0
+biparously	0	dema-biparous-r		dema	0
+biparousness	0	dema-biparous-n	Number=Plur	dema	0
+bipartily	0	dema-biparty-r		dema	0
+bipartiness	0	dema-biparty-n	Number=Plur	dema	0
+bipartisan	0	oewn-bipartisan-a	Degree=Pos	dema	0
+bipartisanism	0	dema-bipartisanism-n	Number=Sing	dema	0
+bipartisanisms	0	dema-bipartisanism-n	Number=Plur	dema	0
+bipartisanly	0	dema-bipartisan-r		dema	0
+bipartisanship	0	dema-bipartisanship-n	Number=Sing	dema	0
+bipartisanships	0	dema-bipartisanship-n	Number=Plur	dema	0
+bipartite	0	oewn-bipartite-a	Degree=Pos	dema	0
+bipartitely	0	dema-bipartitely-r	Degree=Pos	dema	0
+bipartiteness	0	dema-bipartite-n	Number=Plur	dema	0
+bipartition	0	dema-bipartition-n	Number=Sing	dema	0
+bipartitions	0	dema-bipartition-n	Number=Plur	dema	0
+biparty	0	dema-biparty-a	Degree=Pos	dema	0
+bipectinate	0	dema-bipectinate-a	Degree=Pos	dema	0
+bipectinately	0	dema-bipectinate-r		dema	0
+biped	0	oewn-biped-n	Number=Sing	dema	0
+biped	1	oewn-biped-a	Degree=Pos	dema	0
+bipedal	0	oewn-bipedal-a	Degree=Pos	dema	0
+bipedally	0	dema-bipedal-r		dema	0
+bipedalness	0	dema-bipedal-n	Number=Plur	dema	0
+bipedly	0	dema-biped-r		dema	0
+bipedness	0	oewn-biped-n	Number=Plur	dema	0
+bipeds	0	oewn-biped-n	Number=Plur	dema	0
+bipetalous	0	dema-bipetalous-a	Degree=Pos	dema	0
+bipetalously	0	dema-bipetalous-r		dema	0
+biphenyl	0	dema-biphenyl-n	Number=Sing	dema	0
+biphenyls	0	dema-biphenyl-n	Number=Plur	dema	0
+bipinnaria	0	dema-bipinnaria-n	Number=Sing	dema	0
+bipinnariae	0	dema-bipinnariae-n	Number=Sing	dema	0
+bipinnariaes	0	dema-bipinnariae-n	Number=Plur	dema	0
+bipinnarias	0	dema-bipinnaria-n	Number=Plur	dema	0
+bipinnate	0	oewn-bipinnate-a	Degree=Pos	dema	0
+bipinnately	0	dema-bipinnately-r	Degree=Pos	dema	0
+bipinnateness	0	dema-bipinnate-n	Number=Plur	dema	0
+biplane	0	oewn-biplane-n	Number=Sing	dema	0
+biplanes	0	oewn-biplane-n	Number=Plur	dema	0
+bipod	0	dema-bipod-n	Number=Sing	dema	0
+bipods	0	dema-bipod-n	Number=Plur	dema	0
+bipolar	0	oewn-bipolar-a	Degree=Pos	dema	0
+bipolarities	0	dema-bipolarity-n	Number=Plur	dema	0
+bipolarity	0	dema-bipolarity-n	Number=Sing	dema	0
+bipolarly	0	dema-bipolar-r		dema	0
+bipolarness	0	dema-bipolar-n	Number=Plur	dema	0
+bipropellant	0	dema-bipropellant-n	Number=Sing	dema	0
+bipropellants	0	dema-bipropellant-n	Number=Plur	dema	0
+bipyramid	0	dema-bipyramid-n	Number=Sing	dema	0
+bipyramidal	0	dema-bipyramidal-a	Degree=Pos	dema	0
+bipyramidally	0	dema-bipyramidal-r		dema	0
+bipyramids	0	dema-bipyramid-n	Number=Plur	dema	0
+biquadrate	0	oewn-biquadrate-n	Number=Sing	dema	0
+biquadrates	0	oewn-biquadrate-n	Number=Plur	dema	0
+biquadratic	0	oewn-biquadratic-a	Degree=Pos	dema	0
+biquadratic	1	oewn-biquadratic-n	Number=Sing	dema	0
+biquadratically	0	dema-biquadratic-r		dema	0
+biquadratics	0	oewn-biquadratic-n	Number=Plur	dema	0
+biquarterly	0	dema-biquarterly-a	Degree=Pos	dema	0
+biracial	0	oewn-biracial-a	Degree=Pos	dema	0
+biracialism	0	dema-biracialism-n	Number=Sing	dema	0
+biracialisms	0	dema-biracialism-n	Number=Plur	dema	0
+biracially	0	dema-biracial-r		dema	0
+biracialness	0	dema-biracial-n	Number=Plur	dema	0
+biradial	0	oewn-biradial-a	Degree=Pos	dema	0
+biradially	0	dema-biradial-r		dema	0
+biradialness	0	dema-biradial-n	Number=Plur	dema	0
+biramous	0	oewn-biramous-a	Degree=Pos	dema	0
+biramously	0	dema-biramous-r		dema	0
+biramousness	0	dema-biramous-n	Number=Plur	dema	0
+birch	0	oewn-birch-n	Number=Sing	dema	0
+birch	1	oewn-birch-a	Degree=Pos	dema	0
+birch	2	oewn-birch-v	VerbForm=Inf	dema	0
+birched	0	oewn-birch-v	Tense=Past	dema	0
+birchen	0	oewn-birchen-a	Degree=Pos	dema	0
+birchener	0	oewn-birchen-a	Degree=Cmp	dema	0
+birchenest	0	oewn-birchen-a	Degree=Sup	dema	0
+birchenly	0	dema-birchen-r		dema	0
+birchenness	0	dema-birchen-n	Number=Plur	dema	0
+bircher	0	oewn-birch-n	Number=Plur	dema	0
+bircher	1	oewn-birch-a	Degree=Cmp	dema	0
+birchers	0	oewn-birch-n	Number=Plur	dema	0
+birches	0	oewn-birch-n	Number=Plur	dema	0
+birches	1	oewn-birch-v	Person=3+Tense=Pres	dema	0
+birchest	0	oewn-birch-a	Degree=Sup	dema	0
+birching	0	oewn-birch-v	VerbForm=Ger	dema	0
+birchingly	0	dema-birch-r		dema	0
+birchly	0	dema-birch-r		dema	0
+birchness	0	oewn-birch-n	Number=Plur	dema	0
+birchs	0	oewn-birch-n	Number=Plur	dema	0
+birchs	1	oewn-birch-v	Person=3+Tense=Pres	dema	0
+bird	0	oewn-bird-n	Number=Sing	dema	0
+birdbath	0	oewn-birdbath-n	Number=Sing	dema	0
+birdbaths	0	dema-birdbaths-n	Number=Sing	dema	0
+birdbrain	0	oewn-birdbrain-n	Number=Sing	dema	0
+birdbrained	0	dema-birdbrained-a	Degree=Pos	dema	0
+birdbrained	1	dema-birdbrained-v	VerbForm=Inf	dema	0
+birdbraineded	0	dema-birdbrained-v	Tense=Past	dema	0
+birdbraineder	0	dema-birdbrained-n	Number=Plur	dema	0
+birdbraineders	0	dema-birdbrained-n	Number=Plur	dema	0
+birdbraineding	0	dema-birdbrained-v	VerbForm=Ger	dema	0
+birdbrainedingly	0	dema-birdbrained-r		dema	0
+birdbrainedly	0	dema-birdbrained-r		dema	0
+birdbrainedness	0	dema-birdbrained-n	Number=Plur	dema	0
+birdbraineds	0	dema-birdbrained-v	Person=3+Tense=Pres	dema	0
+birdbrains	0	oewn-birdbrain-n	Number=Plur	dema	0
+birdcage	0	oewn-birdcage-n	Number=Sing	dema	0
+birdcages	0	oewn-birdcage-n	Number=Plur	dema	0
+birder	0	oewn-birder-n	Number=Sing	dema	0
+birders	0	oewn-birder-n	Number=Plur	dema	0
+birdhouse	0	oewn-birdhouse-n	Number=Sing	dema	0
+birdhouses	0	dema-birdhouses-n	Number=Sing	dema	0
+birdie	0	oewn-birdie-n	Number=Sing	dema	0
+birdied	0	dema-birdied-v	VerbForm=Inf	dema	0
+birdieded	0	dema-birdied-v	Tense=Past	dema	0
+birdieder	0	dema-birdied-n	Number=Plur	dema	0
+birdieders	0	dema-birdied-n	Number=Plur	dema	0
+birdieding	0	dema-birdied-v	VerbForm=Ger	dema	0
+birdiedingly	0	dema-birdied-r		dema	0
+birdieds	0	dema-birdied-v	Person=3+Tense=Pres	dema	0
+birdieing	0	dema-birdieing-v	VerbForm=Inf	dema	0
+birdieinged	0	dema-birdieing-v	Tense=Past	dema	0
+birdieinger	0	dema-birdieing-n	Number=Plur	dema	0
+birdieingers	0	dema-birdieing-n	Number=Plur	dema	0
+birdieinging	0	dema-birdieing-v	VerbForm=Ger	dema	0
+birdieingingly	0	dema-birdieing-r		dema	0
+birdieings	0	dema-birdieing-v	Person=3+Tense=Pres	dema	0
+birdies	0	oewn-birdie-n	Number=Plur	dema	0
+birdless	0	dema-birdless-a	Degree=Pos	dema	0
+birdlessly	0	dema-birdless-r		dema	0
+birdlessness	0	dema-birdless-n	Number=Plur	dema	0
+birdlike	0	dema-birdlike-a	Degree=Pos	dema	0
+birdlikely	0	dema-birdlike-r		dema	0
+birdlikeness	0	dema-birdlike-n	Number=Plur	dema	0
+birdliker	0	dema-birdlike-a	Degree=Cmp	dema	0
+birdlikest	0	dema-birdlike-a	Degree=Sup	dema	0
+birdlime	0	oewn-birdlime-n	Number=Sing	dema	0
+birdlime	1	oewn-birdlime-v	VerbForm=Inf	dema	0
+birdlimed	0	dema-birdlimed-v	VerbForm=Inf	dema	0
+birdlimer	0	oewn-birdlime-n	Number=Plur	dema	0
+birdlimers	0	oewn-birdlime-n	Number=Plur	dema	0
+birdlimes	0	oewn-birdlime-n	Number=Plur	dema	0
+birdlimes	1	oewn-birdlime-v	Person=3+Tense=Pres	dema	0
+birdliming	0	dema-birdliming-v	VerbForm=Inf	dema	0
+birdlimingly	0	dema-birdlime-r		dema	0
+birdman	0	dema-birdman-n	Number=Sing	dema	0
+birdmen	0	dema-birdmen-n	Number=Sing	dema	0
+birdmens	0	dema-birdmen-n	Number=Plur	dema	0
+birds	0	oewn-bird-n	Number=Plur	dema	0
+birdseed	0	oewn-birdseed-n	Number=Sing	dema	0
+birdseeds	0	oewn-birdseed-n	Number=Plur	dema	0
+birdwoman	0	dema-birdwoman-n	Number=Sing	dema	0
+birdwomen	0	dema-birdwomen-n	Number=Sing	dema	0
+birdwomens	0	dema-birdwomen-n	Number=Plur	dema	0
+birectangular	0	dema-birectangular-a	Degree=Pos	dema	0
+birectangularly	0	dema-birectangular-r		dema	0
+birefringence	0	oewn-birefringence-n	Number=Sing	dema	0
+birefringences	0	oewn-birefringence-n	Number=Plur	dema	0
+birefringent	0	oewn-birefringent-a	Degree=Pos	dema	0
+birefringently	0	dema-birefringent-r		dema	0
+bireme	0	dema-bireme-n	Number=Sing	dema	0
+biremes	0	dema-bireme-n	Number=Plur	dema	0
+biretta	0	oewn-biretta-n	Number=Sing	dema	0
+birettas	0	oewn-biretta-n	Number=Plur	dema	0
+biri	0	dema-biri-n	Number=Sing	dema	0
+biriani	0	oewn-biriani-n	Number=Sing	dema	0
+birianis	0	oewn-biriani-n	Number=Plur	dema	0
+biris	0	dema-biri-n	Number=Plur	dema	0
+birk	0	dema-birk-n	Number=Sing	dema	0
+birk	1	dema-birk-a	Degree=Pos	dema	0
+birk	2	dema-birk-v	VerbForm=Inf	dema	0
+birked	0	dema-birk-v	Tense=Past	dema	0
+birker	0	dema-birk-n	Number=Plur	dema	0
+birker	1	dema-birk-a	Degree=Cmp	dema	0
+birkers	0	dema-birk-n	Number=Plur	dema	0
+birkest	0	dema-birk-a	Degree=Sup	dema	0
+birking	0	dema-birk-v	VerbForm=Ger	dema	0
+birkingly	0	dema-birk-r		dema	0
+birkly	0	dema-birk-r		dema	0
+birkness	0	dema-birk-n	Number=Plur	dema	0
+birks	0	dema-birk-n	Number=Plur	dema	0
+birks	1	dema-birk-v	Person=3+Tense=Pres	dema	0
+birl	0	oewn-birl-v	VerbForm=Inf	dema	0
+birl	1	dema-birl-n	Number=Sing	dema	0
+birle	0	oewn-birle-v	VerbForm=Inf	dema	0
+birled	0	dema-birled-v	VerbForm=Inf	dema	0
+birler	0	dema-birl-n	Number=Plur	dema	0
+birlers	0	dema-birl-n	Number=Plur	dema	0
+birles	0	oewn-birle-v	Person=3+Tense=Pres	dema	0
+birling	0	oewn-birling-n	Number=Sing	dema	0
+birling	1	dema-birling-v	VerbForm=Inf	dema	0
+birlingly	0	dema-birl-r		dema	0
+birlings	0	oewn-birling-n	Number=Plur	dema	0
+birls	0	oewn-birl-v	Person=3+Tense=Pres	dema	0
+birls	1	dema-birl-n	Number=Plur	dema	0
+birne	0	dema-birne-n	Number=Sing	dema	0
+birnes	0	dema-birne-n	Number=Plur	dema	0
+birota	0	dema-birota-n	Number=Sing	dema	0
+birotas	0	dema-birota-n	Number=Plur	dema	0
+birr	0	oewn-birr-v	VerbForm=Inf	dema	0
+birr	1	oewn-birr-n-1	Number=Sing	dema	0
+birred	0	oewn-birr-v	Tense=Past	dema	0
+birrer	0	oewn-birr-n-1	Number=Plur	dema	0
+birrers	0	oewn-birr-n-1	Number=Plur	dema	0
+birri	0	dema-birri-n	Number=Sing	dema	0
+birring	0	oewn-birr-v	VerbForm=Ger	dema	0
+birringly	0	dema-birr-r		dema	0
+birris	0	dema-birri-n	Number=Plur	dema	0
+birrs	0	oewn-birr-v	Person=3+Tense=Pres	dema	0
+birrs	1	oewn-birr-n-1	Number=Plur	dema	0
+birrus	0	dema-birrus-n	Number=Sing	dema	0
+birruses	0	dema-birrus-n	Number=Plur	dema	0
+birse	0	dema-birse-n	Number=Sing	dema	0
+birses	0	dema-birse-n	Number=Plur	dema	0
+birth	0	oewn-birth-n	Number=Sing	dema	0
+birth	1	oewn-birth-v	VerbForm=Inf	dema	0
+birthday	0	oewn-birthday-n	Number=Sing	dema	0
+birthdays	0	oewn-birthday-n	Number=Plur	dema	0
+birthed	0	oewn-birth-v	Tense=Past	dema	0
+birther	0	oewn-birth-n	Number=Plur	dema	0
+birthers	0	oewn-birth-n	Number=Plur	dema	0
+birthing	0	oewn-birth-v	VerbForm=Ger	dema	0
+birthingly	0	dema-birth-r		dema	0
+birthmark	0	oewn-birthmark-n	Number=Sing	dema	0
+birthmarks	0	oewn-birthmark-n	Number=Plur	dema	0
+birthnight	0	dema-birthnight-n	Number=Sing	dema	0
+birthnights	0	dema-birthnight-n	Number=Plur	dema	0
+birthplace	0	oewn-birthplace-n	Number=Sing	dema	0
+birthplaces	0	oewn-birthplace-n	Number=Plur	dema	0
+birthright	0	oewn-birthright-n	Number=Sing	dema	0
+birthrights	0	oewn-birthright-n	Number=Plur	dema	0
+birthroot	0	oewn-birthroot-n	Number=Sing	dema	0
+birthroots	0	oewn-birthroot-n	Number=Plur	dema	0
+births	0	oewn-birth-n	Number=Plur	dema	0
+births	1	oewn-birth-v	Person=3+Tense=Pres	dema	0
+birthstone	0	dema-birthstone-n	Number=Sing	dema	0
+birthstones	0	dema-birthstone-n	Number=Plur	dema	0
+birthstool	0	dema-birthstool-n	Number=Sing	dema	0
+birthstools	0	dema-birthstool-n	Number=Plur	dema	0
+birthwort	0	oewn-birthwort-n	Number=Sing	dema	0
+birthworts	0	oewn-birthwort-n	Number=Plur	dema	0
+bis	0	dema-bis-r	Degree=Pos	dema	0
+bis	1	dema-bis-i		dema	0
+biscuit	0	oewn-biscuit-n	Number=Sing	dema	0
+biscuitlike	0	dema-biscuitlike-a	Degree=Pos	dema	0
+biscuitlikely	0	dema-biscuitlike-r		dema	0
+biscuitlikeness	0	dema-biscuitlike-n	Number=Plur	dema	0
+biscuits	0	oewn-biscuit-n	Number=Plur	dema	0
+bise	0	oewn-bise-n	Number=Sing	dema	0
+bisect	0	oewn-bisect-v	VerbForm=Inf	dema	0
+bisected	0	oewn-bisect-v	Tense=Past	dema	0
+bisecter	0	dema-bisect-n	Number=Plur	dema	0
+bisecters	0	dema-bisect-n	Number=Plur	dema	0
+bisecting	0	oewn-bisect-v	VerbForm=Ger	dema	0
+bisectingly	0	dema-bisect-r		dema	0
+bisection	0	oewn-bisection-n	Number=Sing	dema	0
+bisectional	0	oewn-bisectional-a	Degree=Pos	dema	0
+bisectionally	0	dema-bisectionally-r	Degree=Pos	dema	0
+bisections	0	oewn-bisection-n	Number=Plur	dema	0
+bisector	0	dema-bisector-n	Number=Sing	dema	0
+bisectors	0	dema-bisector-n	Number=Plur	dema	0
+bisectrices	0	dema-bisectrices-n	Number=Sing	dema	0
+bisectriceses	0	dema-bisectrices-n	Number=Plur	dema	0
+bisectrix	0	dema-bisectrix-n	Number=Sing	dema	0
+bisectrixes	0	dema-bisectrix-n	Number=Plur	dema	0
+bisects	0	oewn-bisect-v	Person=3+Tense=Pres	dema	0
+bisellium	0	dema-bisellium-n	Number=Sing	dema	0
+biselliums	0	dema-bisellium-n	Number=Plur	dema	0
+biserial	0	dema-biserial-a	Degree=Pos	dema	0
+biserially	0	dema-biserially-r	Degree=Pos	dema	0
+biserialness	0	dema-biserial-n	Number=Plur	dema	0
+biserrate	0	oewn-biserrate-a	Degree=Pos	dema	0
+biserrately	0	dema-biserrate-r		dema	0
+biserrateness	0	dema-biserrate-n	Number=Plur	dema	0
+bises	0	oewn-bise-n	Number=Plur	dema	0
+bisexual	0	oewn-bisexual-a	Degree=Pos	dema	0
+bisexual	1	oewn-bisexual-n	Number=Sing	dema	0
+bisexualism	0	dema-bisexualism-n	Number=Sing	dema	0
+bisexualisms	0	dema-bisexualism-n	Number=Plur	dema	0
+bisexualities	0	oewn-bisexuality-n	Number=Plur	dema	0
+bisexuality	0	oewn-bisexuality-n	Number=Sing	dema	0
+bisexually	0	dema-bisexually-r	Degree=Pos	dema	0
+bisexualness	0	oewn-bisexual-n	Number=Plur	dema	0
+bisexuals	0	oewn-bisexual-n	Number=Plur	dema	0
+bish	0	dema-bish-n	Number=Sing	dema	0
+bishes	0	dema-bish-n	Number=Plur	dema	0
+bishop	0	oewn-bishop-n	Number=Sing	dema	0
+bishopbird	0	dema-bishopbird-n	Number=Sing	dema	0
+bishopbirds	0	dema-bishopbird-n	Number=Plur	dema	0
+bishoped	0	dema-bishoped-v	VerbForm=Inf	dema	0
+bishopeded	0	dema-bishoped-v	Tense=Past	dema	0
+bishopeder	0	dema-bishoped-n	Number=Plur	dema	0
+bishopeders	0	dema-bishoped-n	Number=Plur	dema	0
+bishopeding	0	dema-bishoped-v	VerbForm=Ger	dema	0
+bishopedingly	0	dema-bishoped-r		dema	0
+bishopeds	0	dema-bishoped-v	Person=3+Tense=Pres	dema	0
+bishoping	0	dema-bishoping-v	VerbForm=Inf	dema	0
+bishopinged	0	dema-bishoping-v	Tense=Past	dema	0
+bishopinger	0	dema-bishoping-n	Number=Plur	dema	0
+bishopingers	0	dema-bishoping-n	Number=Plur	dema	0
+bishopinging	0	dema-bishoping-v	VerbForm=Ger	dema	0
+bishopingingly	0	dema-bishoping-r		dema	0
+bishopings	0	dema-bishoping-v	Person=3+Tense=Pres	dema	0
+bishopless	0	dema-bishopless-a	Degree=Pos	dema	0
+bishoplessly	0	dema-bishopless-r		dema	0
+bishoplessness	0	dema-bishopless-n	Number=Plur	dema	0
+bishoplike	0	dema-bishoplike-a	Degree=Pos	dema	0
+bishoplikely	0	dema-bishoplike-r		dema	0
+bishoplikeness	0	dema-bishoplike-n	Number=Plur	dema	0
+bishopric	0	oewn-bishopric-n	Number=Sing	dema	0
+bishoprics	0	oewn-bishopric-n	Number=Plur	dema	0
+bishops	0	oewn-bishop-n	Number=Plur	dema	0
+bishydroxycoumarin	0	dema-bishydroxycoumarin-n	Number=Sing	dema	0
+bishydroxycoumarins	0	dema-bishydroxycoumarin-n	Number=Plur	dema	0
+bisk	0	dema-bisk-n	Number=Sing	dema	0
+bisks	0	dema-bisk-n	Number=Plur	dema	0
+bismanol	0	dema-bismanol-n	Number=Sing	dema	0
+bismanols	0	dema-bismanol-n	Number=Plur	dema	0
+bismillah	0	dema-bismillah-i		dema	0
+bismuth	0	oewn-bismuth-n	Number=Sing	dema	0
+bismuthal	0	oewn-bismuthal-a	Degree=Pos	dema	0
+bismuthally	0	dema-bismuthal-r		dema	0
+bismuthalness	0	dema-bismuthal-n	Number=Plur	dema	0
+bismuthic	0	oewn-bismuthic-a	Degree=Pos	dema	0
+bismuthically	0	dema-bismuthic-r		dema	0
+bismuthicness	0	dema-bismuthic-n	Number=Plur	dema	0
+bismuthine	0	dema-bismuthine-n	Number=Sing	dema	0
+bismuthines	0	dema-bismuthine-n	Number=Plur	dema	0
+bismuthinite	0	dema-bismuthinite-n	Number=Sing	dema	0
+bismuthinites	0	dema-bismuthinite-n	Number=Plur	dema	0
+bismuthous	0	dema-bismuthous-a	Degree=Pos	dema	0
+bismuthously	0	dema-bismuthous-r		dema	0
+bismuthousness	0	dema-bismuthous-n	Number=Plur	dema	0
+bismuths	0	oewn-bismuth-n	Number=Plur	dema	0
+bismuthyl	0	dema-bismuthyl-n	Number=Sing	dema	0
+bismuthyls	0	dema-bismuthyl-n	Number=Plur	dema	0
+bismutite	0	dema-bismutite-n	Number=Sing	dema	0
+bismutites	0	dema-bismutite-n	Number=Plur	dema	0
+bisnaga	0	dema-bisnaga-n	Number=Sing	dema	0
+bisnagas	0	dema-bisnaga-n	Number=Plur	dema	0
+bison	0	oewn-bison-n	Number=Sing	dema	0
+bisons	0	oewn-bison-n	Number=Plur	dema	0
+bisphenoid	0	dema-bisphenoid-n	Number=Sing	dema	0
+bisphenoids	0	dema-bisphenoid-n	Number=Plur	dema	0
+bisque	0	oewn-bisque-n	Number=Sing	dema	0
+bisques	0	oewn-bisque-n	Number=Plur	dema	0
+bissellia	0	dema-bissellia-n	Number=Sing	dema	0
+bissellias	0	dema-bissellia-n	Number=Plur	dema	0
+bisser	0	dema-bis-r	Degree=Cmp	dema	0
+bissest	0	dema-bis-r	Degree=Sup	dema	0
+bissextile	0	dema-bissextile-a	Degree=Pos	dema	0
+bissextile	1	dema-bissextile-n	Number=Sing	dema	0
+bissextilely	0	dema-bissextile-r		dema	0
+bissextileness	0	dema-bissextile-n	Number=Plur	dema	0
+bissextiles	0	dema-bissextile-n	Number=Plur	dema	0
+bissextus	0	dema-bissextus-n	Number=Sing	dema	0
+bissextuses	0	dema-bissextus-n	Number=Plur	dema	0
+bisso	0	dema-bisso-n	Number=Sing	dema	0
+bissoes	0	dema-bisso-n	Number=Plur	dema	0
+bissonata	0	dema-bissonata-n	Number=Sing	dema	0
+bissonatas	0	dema-bissonata-n	Number=Plur	dema	0
+bissos	0	dema-bisso-n	Number=Plur	dema	0
+bist	0	dema-bist-v	VerbForm=Inf	dema	0
+bistable	0	dema-bistable-a	Degree=Pos	dema	0
+bistableness	0	dema-bistable-n	Number=Plur	dema	0
+bistably	0	dema-bistable-r		dema	0
+bisted	0	dema-bist-v	Tense=Past	dema	0
+bister	0	oewn-bister-n	Number=Sing	dema	0
+bistered	0	oewn-bistered-a	Degree=Pos	dema	0
+bistered	1	dema-bistered-v	VerbForm=Inf	dema	0
+bistereded	0	dema-bistered-v	Tense=Past	dema	0
+bistereder	0	dema-bistered-n	Number=Plur	dema	0
+bistereders	0	dema-bistered-n	Number=Plur	dema	0
+bistereding	0	dema-bistered-v	VerbForm=Ger	dema	0
+bisteredingly	0	dema-bistered-r		dema	0
+bisteredly	0	dema-bistered-r		dema	0
+bisteredness	0	dema-bistered-n	Number=Plur	dema	0
+bistereds	0	dema-bistered-v	Person=3+Tense=Pres	dema	0
+bisters	0	dema-bist-n	Number=Plur	dema	0
+bisting	0	dema-bist-v	VerbForm=Ger	dema	0
+bistingly	0	dema-bist-r		dema	0
+bistort	0	dema-bistort-n	Number=Sing	dema	0
+bistorts	0	dema-bistort-n	Number=Plur	dema	0
+bistouries	0	dema-bistouries-n	Number=Sing	dema	0
+bistoury	0	dema-bistoury-n	Number=Sing	dema	0
+bistre	0	oewn-bistre-n	Number=Sing	dema	0
+bistred	0	oewn-bistred-a	Degree=Pos	dema	0
+bistred	1	dema-bistred-v	VerbForm=Inf	dema	0
+bistreded	0	dema-bistred-v	Tense=Past	dema	0
+bistreder	0	dema-bistred-n	Number=Plur	dema	0
+bistreders	0	dema-bistred-n	Number=Plur	dema	0
+bistreding	0	dema-bistred-v	VerbForm=Ger	dema	0
+bistredingly	0	dema-bistred-r		dema	0
+bistredly	0	dema-bistred-r		dema	0
+bistredness	0	dema-bistred-n	Number=Plur	dema	0
+bistreds	0	dema-bistred-v	Person=3+Tense=Pres	dema	0
+bistres	0	oewn-bistre-n	Number=Plur	dema	0
+bistro	0	oewn-bistro-n	Number=Sing	dema	0
+bistroes	0	oewn-bistro-n	Number=Plur	dema	0
+bistros	0	dema-bistros-n	Number=Sing	dema	0
+bists	0	dema-bist-v	Person=3+Tense=Pres	dema	0
+bisulcate	0	oewn-bisulcate-a	Degree=Pos	dema	0
+bisulcately	0	dema-bisulcate-r		dema	0
+bisulcateness	0	dema-bisulcate-n	Number=Plur	dema	0
+bisulfate	0	oewn-bisulfate-n	Number=Sing	dema	0
+bisulfates	0	oewn-bisulfate-n	Number=Plur	dema	0
+bisulfide	0	dema-bisulfide-n	Number=Sing	dema	0
+bisulfides	0	dema-bisulfide-n	Number=Plur	dema	0
+bisulfite	0	dema-bisulfite-n	Number=Sing	dema	0
+bisulfites	0	dema-bisulfite-n	Number=Plur	dema	0
+bisulphate	0	dema-bisulphate-n	Number=Sing	dema	0
+bisulphates	0	dema-bisulphate-n	Number=Plur	dema	0
+bisulphide	0	dema-bisulphide-n	Number=Sing	dema	0
+bisulphides	0	dema-bisulphide-n	Number=Plur	dema	0
+bisulphite	0	dema-bisulphite-n	Number=Sing	dema	0
+bisulphites	0	dema-bisulphite-n	Number=Plur	dema	0
+bisymmetric	0	dema-bisymmetric-a	Degree=Pos	dema	0
+bisymmetrical	0	dema-bisymmetrical-a	Degree=Pos	dema	0
+bisymmetrically	0	dema-bisymmetrically-r	Degree=Pos	dema	0
+bisymmetries	0	dema-bisymmetry-n	Number=Plur	dema	0
+bisymmetry	0	dema-bisymmetry-n	Number=Sing	dema	0
+bit	0	oewn-bit-n	Number=Sing	dema	0
+bit	1	dema-bit-v	VerbForm=Inf	dema	0
+bitable	0	dema-bitable-a	Degree=Pos	dema	0
+bitableness	0	dema-bitable-n	Number=Plur	dema	0
+bitably	0	dema-bitable-r		dema	0
+bitartrate	0	oewn-bitartrate-n	Number=Sing	dema	0
+bitartrates	0	oewn-bitartrate-n	Number=Plur	dema	0
+bitch	0	oewn-bitch-n	Number=Sing	dema	0
+bitch	1	oewn-bitch-v	VerbForm=Inf	dema	0
+bitched	0	oewn-bitch-v	Tense=Past	dema	0
+bitcher	0	oewn-bitch-n	Number=Plur	dema	0
+bitcheries	0	oewn-bitchery-n	Number=Plur	dema	0
+bitchers	0	oewn-bitch-n	Number=Plur	dema	0
+bitchery	0	oewn-bitchery-n	Number=Sing	dema	0
+bitches	0	oewn-bitch-n	Number=Plur	dema	0
+bitches	1	oewn-bitch-v	Person=3+Tense=Pres	dema	0
+bitchier	0	dema-bitchier-a	Degree=Pos	dema	0
+bitchierly	0	dema-bitchier-r		dema	0
+bitchiest	0	dema-bitchiest-a	Degree=Pos	dema	0
+bitchiestly	0	dema-bitchiest-r		dema	0
+bitchily	0	dema-bitchy-r		dema	0
+bitchiness	0	oewn-bitchiness-n	Number=Sing	dema	0
+bitchinesses	0	oewn-bitchiness-n	Number=Plur	dema	0
+bitching	0	oewn-bitch-v	VerbForm=Ger	dema	0
+bitchingly	0	dema-bitch-r		dema	0
+bitchs	0	oewn-bitch-n	Number=Plur	dema	0
+bitchs	1	oewn-bitch-v	Person=3+Tense=Pres	dema	0
+bitchy	0	oewn-bitchy-a	Degree=Pos	dema	0
+bite	0	oewn-bite-n	Number=Sing	dema	1
+bite	1	oewn-bite-v	VerbForm=Inf	dema	1
+biteable	0	dema-biteable-a	Degree=Pos	dema	0
+biteableness	0	dema-biteable-n	Number=Plur	dema	0
+biteably	0	dema-biteable-r		dema	0
+bited	0	oewn-bite-v	Tense=Past	dema	1
+biter	0	oewn-biter-n	Number=Sing	dema	0
+biters	0	oewn-bite-n	Number=Plur	dema	1
+bites	0	oewn-bite-n	Number=Plur	dema	1
+bites	1	oewn-bite-v	Person=3+Tense=Pres	dema	1
+bitewing	0	oewn-bitewing-n	Number=Sing	dema	0
+bitewings	0	oewn-bitewing-n	Number=Plur	dema	0
+biting	0	oewn-bite-n	Number=Plur	dema	1
+biting	1	oewn-bite-v	VerbForm=Ger	dema	1
+biting	2	oewn-biting-a	Degree=Pos	dema	0
+bitingly	0	oewn-bitingly-r	Degree=Pos	dema	0
+bitingness	0	dema-bitingness-n	Number=Sing	dema	0
+bitingnesses	0	dema-bitingness-n	Number=Plur	dema	0
+bitless	0	dema-bitless-a	Degree=Pos	dema	0
+bitlessly	0	dema-bitless-r		dema	0
+bitlessness	0	dema-bitless-n	Number=Plur	dema	0
+bitonal	0	dema-bitonal-a	Degree=Pos	dema	0
+bitonalities	0	dema-bitonalities-n	Number=Sing	dema	0
+bitonality	0	dema-bitonality-n	Number=Sing	dema	0
+bitonally	0	dema-bitonal-r		dema	0
+bitonalness	0	dema-bitonal-n	Number=Plur	dema	0
+bits	0	oewn-bit-n	Number=Plur	dema	0
+bits	1	dema-bit-v	Person=3+Tense=Pres	dema	0
+bitser	0	dema-bitser-n	Number=Sing	dema	0
+bitsers	0	dema-bitser-n	Number=Plur	dema	0
+bitstock	0	oewn-bitstock-n	Number=Sing	dema	0
+bitstocks	0	oewn-bitstock-n	Number=Plur	dema	0
+bitt	0	oewn-bitt-n	Number=Sing	dema	0
+bitt	1	oewn-bitt-v	VerbForm=Inf	dema	0
+bitte	0	dema-bitte-i		dema	0
+bitted	0	dema-bitted-v	VerbForm=Inf	dema	0
+bitten	0	dema-bitten-v	VerbForm=Inf	dema	0
+bitter	0	oewn-bitter-a	Degree=Pos	dema	0
+bitter	1	oewn-bitter-r	Degree=Pos	dema	0
+bitter	2	oewn-bitter-n	Number=Sing	dema	0
+bitter	3	oewn-bitter-v	VerbForm=Inf	dema	0
+bittered	0	oewn-bitter-v	Tense=Past	dema	0
+bitterender	0	dema-bitterender-n	Number=Sing	dema	0
+bitterenders	0	dema-bitterender-n	Number=Plur	dema	0
+bitterer	0	oewn-bitter-a	Degree=Cmp	dema	0
+bitterer	1	oewn-bitter-r	Degree=Cmp	dema	0
+bitterest	0	oewn-bitter-a	Degree=Sup	dema	0
+bitterest	1	oewn-bitter-r	Degree=Sup	dema	0
+bittering	0	oewn-bitter-v	VerbForm=Ger	dema	0
+bitteringly	0	oewn-bitter-r		dema	0
+bitterish	0	oewn-bitterish-a	Degree=Pos	dema	0
+bitterishly	0	dema-bitterish-r		dema	0
+bitterishness	0	dema-bitterish-n	Number=Plur	dema	0
+bitterling	0	dema-bitterling-n	Number=Sing	dema	0
+bitterlings	0	dema-bitterling-n	Number=Plur	dema	0
+bitterly	0	oewn-bitterly-r	Degree=Pos	dema	0
+bittern	0	oewn-bittern-n	Number=Sing	dema	0
+bitterness	0	oewn-bitterness-n	Number=Sing	dema	0
+bitternesses	0	oewn-bitterness-n	Number=Plur	dema	0
+bitterns	0	oewn-bittern-n	Number=Plur	dema	0
+bitternut	0	oewn-bitternut-n	Number=Sing	dema	0
+bitternuts	0	oewn-bitternut-n	Number=Plur	dema	0
+bitterroot	0	oewn-bitterroot-n	Number=Sing	dema	0
+bitterroots	0	oewn-bitterroot-n	Number=Plur	dema	0
+bitters	0	oewn-bitters-n	Number=Sing	dema	0
+bittersweet	0	oewn-bittersweet-n	Number=Sing	dema	0
+bittersweet	1	oewn-bittersweet-a	Degree=Pos	dema	0
+bittersweetly	0	dema-bittersweet-r		dema	0
+bittersweetness	0	oewn-bittersweet-n	Number=Plur	dema	0
+bittersweets	0	oewn-bittersweet-n	Number=Plur	dema	0
+bitterweed	0	oewn-bitterweed-n	Number=Sing	dema	0
+bitterweeds	0	oewn-bitterweed-n	Number=Plur	dema	0
+bitterwood	0	oewn-bitterwood-n	Number=Sing	dema	0
+bitterwoods	0	oewn-bitterwood-n	Number=Plur	dema	0
+bitterwort	0	dema-bitterwort-n	Number=Sing	dema	0
+bitterworts	0	dema-bitterwort-n	Number=Plur	dema	0
+bittier	0	oewn-bitty-a	Degree=Cmp	dema	0
+bittiest	0	oewn-bitty-a	Degree=Sup	dema	0
+bittily	0	dema-bitty-r		dema	0
+bittiness	0	dema-bitty-n	Number=Plur	dema	0
+bitting	0	dema-bitting-n	Number=Sing	dema	0
+bitting	1	dema-bitting-v	VerbForm=Inf	dema	0
+bittingly	0	dema-bit-r		dema	0
+bittings	0	dema-bitting-n	Number=Plur	dema	0
+bittock	0	dema-bittock-n	Number=Sing	dema	0
+bittocks	0	dema-bittock-n	Number=Plur	dema	0
+bitts	0	oewn-bitt-n	Number=Plur	dema	0
+bitts	1	oewn-bitt-v	Person=3+Tense=Pres	dema	0
+bitty	0	oewn-bitty-a	Degree=Pos	dema	0
+bitumen	0	oewn-bitumen-n	Number=Sing	dema	0
+bitumens	0	oewn-bitumen-n	Number=Plur	dema	0
+bituminisation	0	dema-bituminisation-n	Number=Sing	dema	0
+bituminisations	0	dema-bituminisation-n	Number=Plur	dema	0
+bituminise	0	oewn-bituminise-v	VerbForm=Inf	dema	0
+bituminised	0	dema-bituminised-v	VerbForm=Inf	dema	0
+bituminises	0	oewn-bituminise-v	Person=3+Tense=Pres	dema	0
+bituminising	0	dema-bituminising-v	VerbForm=Inf	dema	0
+bituminize	0	oewn-bituminize-v	VerbForm=Inf	dema	0
+bituminized	0	dema-bituminized-v	VerbForm=Inf	dema	0
+bituminizes	0	oewn-bituminize-v	Person=3+Tense=Pres	dema	0
+bituminizing	0	dema-bituminizing-v	VerbForm=Inf	dema	0
+bituminoid	0	oewn-bituminoid-a	Degree=Pos	dema	0
+bituminoidly	0	dema-bituminoid-r		dema	0
+bituminous	0	oewn-bituminous-a	Degree=Pos	dema	0
+bituminously	0	dema-bituminous-r		dema	0
+biunique	0	dema-biunique-a	Degree=Pos	dema	0
+biuniquely	0	dema-biuniquely-r	Degree=Pos	dema	0
+biuniqueness	0	dema-biuniqueness-n	Number=Sing	dema	0
+biuniquenesses	0	dema-biuniqueness-n	Number=Plur	dema	0
+biuniquer	0	dema-biunique-a	Degree=Cmp	dema	0
+biuniquest	0	dema-biunique-a	Degree=Sup	dema	0
+biuniquly	0	dema-biunique-r		dema	0
+bivalence	0	dema-bivalence-n	Number=Sing	dema	0
+bivalences	0	dema-bivalence-n	Number=Plur	dema	0
+bivalencies	0	dema-bivalency-n	Number=Plur	dema	0
+bivalency	0	dema-bivalency-n	Number=Sing	dema	0
+bivalent	0	oewn-bivalent-a	Degree=Pos	dema	0
+bivalent	1	dema-bivalent-n	Number=Sing	dema	0
+bivalently	0	dema-bivalent-r		dema	0
+bivalentness	0	dema-bivalent-n	Number=Plur	dema	0
+bivalents	0	dema-bivalent-n	Number=Plur	dema	0
+bivalve	0	oewn-bivalve-n	Number=Sing	dema	0
+bivalve	1	oewn-bivalve-a	Degree=Pos	dema	0
+bivalvely	0	dema-bivalve-r		dema	0
+bivalveness	0	oewn-bivalve-n	Number=Plur	dema	0
+bivalver	0	oewn-bivalve-a	Degree=Cmp	dema	0
+bivalves	0	oewn-bivalve-n	Number=Plur	dema	0
+bivalvest	0	oewn-bivalve-a	Degree=Sup	dema	0
+bivalvular	0	dema-bivalvular-a	Degree=Pos	dema	0
+bivalvularly	0	dema-bivalvular-r		dema	0
+bivane	0	dema-bivane-n	Number=Sing	dema	0
+bivanes	0	dema-bivane-n	Number=Plur	dema	0
+bivariate	0	oewn-bivariate-a	Degree=Pos	dema	0
+bivariately	0	dema-bivariate-r		dema	0
+bivariateness	0	dema-bivariate-n	Number=Plur	dema	0
+bivinyl	0	dema-bivinyl-n	Number=Sing	dema	0
+bivinyls	0	dema-bivinyl-n	Number=Plur	dema	0
+bivoltine	0	dema-bivoltine-a	Degree=Pos	dema	0
+bivoltinely	0	dema-bivoltine-r		dema	0
+bivoltineness	0	dema-bivoltine-n	Number=Plur	dema	0
+bivouac	0	oewn-bivouac-n	Number=Sing	dema	0
+bivouac	1	oewn-bivouac-v	VerbForm=Inf	dema	0
+bivouaced	0	oewn-bivouac-v	Tense=Past	dema	0
+bivouacer	0	oewn-bivouac-n	Number=Plur	dema	0
+bivouacers	0	oewn-bivouac-n	Number=Plur	dema	0
+bivouacing	0	oewn-bivouac-v	VerbForm=Ger	dema	0
+bivouacingly	0	dema-bivouac-r		dema	0
+bivouacked	0	dema-bivouacked-v	VerbForm=Inf	dema	0
+bivouackeded	0	dema-bivouacked-v	Tense=Past	dema	0
+bivouackeder	0	dema-bivouacked-n	Number=Plur	dema	0
+bivouackeders	0	dema-bivouacked-n	Number=Plur	dema	0
+bivouackeding	0	dema-bivouacked-v	VerbForm=Ger	dema	0
+bivouackedingly	0	dema-bivouacked-r		dema	0
+bivouackeds	0	dema-bivouacked-v	Person=3+Tense=Pres	dema	0
+bivouacking	0	dema-bivouacking-v	VerbForm=Inf	dema	0
+bivouackinged	0	dema-bivouacking-v	Tense=Past	dema	0
+bivouackinger	0	oewn-bivouacking-n	Number=Plur	dema	0
+bivouackingers	0	oewn-bivouacking-n	Number=Plur	dema	0
+bivouackinging	0	dema-bivouacking-v	VerbForm=Ger	dema	0
+bivouackingingly	0	dema-bivouacking-r		dema	0
+bivouackings	0	dema-bivouacking-v	Person=3+Tense=Pres	dema	0
+bivouacs	0	oewn-bivouac-n	Number=Plur	dema	0
+bivouacs	1	oewn-bivouac-v	Person=3+Tense=Pres	dema	0
+bivvies	0	dema-bivvy-n	Number=Plur	dema	0
+bivvy	0	dema-bivvy-n	Number=Sing	dema	0
+biweeklies	0	oewn-biweekly-n	Number=Plur	dema	0
+biweekly	0	oewn-biweekly-a	Degree=Pos	dema	0
+biweekly	1	oewn-biweekly-r	Degree=Pos	dema	0
+biweekly	2	oewn-biweekly-n	Number=Sing	dema	0
+biyearlier	0	oewn-biyearly-a	Degree=Cmp	dema	0
+biyearlier	1	oewn-biyearly-r	Degree=Cmp	dema	0
+biyearliest	0	oewn-biyearly-a	Degree=Sup	dema	0
+biyearliest	1	oewn-biyearly-r	Degree=Sup	dema	0
+biyearly	0	oewn-biyearly-a	Degree=Pos	dema	0
+biyearly	1	oewn-biyearly-r	Degree=Pos	dema	0
+biz	0	oewn-biz-n	Number=Sing	dema	0
+bizarre	0	oewn-bizarre-a	Degree=Pos	dema	0
+bizarrely	0	dema-bizarrely-r	Degree=Pos	dema	0
+bizarreness	0	oewn-bizarreness-n	Number=Sing	dema	0
+bizarrenesses	0	oewn-bizarreness-n	Number=Plur	dema	0
+bizarrer	0	oewn-bizarre-a	Degree=Cmp	dema	0
+bizarrest	0	oewn-bizarre-a	Degree=Sup	dema	0
+bize	0	oewn-bize-n	Number=Sing	dema	0
+bizes	0	oewn-biz-n	Number=Plur	dema	0
+biznaga	0	dema-biznaga-n	Number=Sing	dema	0
+biznagas	0	dema-biznaga-n	Number=Plur	dema	0
+bizonal	0	oewn-bizonal-a	Degree=Pos	dema	0
+bizonally	0	dema-bizonal-r		dema	0
+bizonalness	0	dema-bizonal-n	Number=Plur	dema	0
+bizone	0	dema-bizone-n	Number=Sing	dema	0
+bizones	0	dema-bizone-n	Number=Plur	dema	0
