@@ -11,6 +11,11 @@ public class WeightsBlobTests
 {
     private static readonly byte[] Hash = [.. Enumerable.Range(1, WeightsBlob.HashSize).Select(i => (byte)i)];
 
+    /// <summary>
+    ///     Brotli-compresses raw blob bytes.
+    /// </summary>
+    /// <param name="raw">The raw bytes.</param>
+    /// <returns>The compressed bytes.</returns>
     private static byte[] Compress(byte[] raw)
     {
         using var output = new MemoryStream();
@@ -63,6 +68,13 @@ public class WeightsBlobTests
         return [.. bytes];
     }
 
+    /// <summary>
+    ///     Appends one lemma (name length, name, margin, kind, sense count, class ids, biases, weights) to a blob.
+    /// </summary>
+    /// <param name="bytes">The blob bytes to append to.</param>
+    /// <param name="name">The single byte of the lemma text.</param>
+    /// <param name="kind">The model kind byte.</param>
+    /// <param name="classIds">The class ids, each of ASCII text.</param>
     private static void AddLemma(List<byte> bytes, byte name, byte kind, string[] classIds)
     {
         var rows = kind == 1 ? 1 : classIds.Length;
@@ -130,8 +142,12 @@ public class WeightsBlobTests
         // Act / Assert
         Assert.True(Throws(() => WeightsBlob.Read(Compress(tooMany))), "Lemma count too large.");
         Assert.True(Throws(() => WeightsBlob.Read(Compress(tooFew))), "Lemma count too small.");
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(moreSenses))), "Sense count too large.");
-        Assert.True(Throws(() => WeightsBlob.Read(Compress(fewerSenses))), "Sense count too small.");
+
+        // The sense-count mutations must fail for the intended reason, not by truncation or another check
+        var more = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(moreSenses)));
+        Assert.Contains("'a' are binary but have 3 senses", more.Message, StringComparison.Ordinal);
+        var fewer = Assert.Throws<InvalidDataException>(() => WeightsBlob.Read(Compress(fewerSenses)));
+        Assert.Contains("'a' are binary but have 1 senses", fewer.Message, StringComparison.Ordinal);
     }
 
     /// <summary>
@@ -164,6 +180,11 @@ public class WeightsBlobTests
         Assert.Equal(0xEE, data.ClassHash[0]);
     }
 
+    /// <summary>
+    ///     Runs an action and reports whether it threw <see cref="InvalidDataException"/>.
+    /// </summary>
+    /// <param name="action">The action to run.</param>
+    /// <returns><c>true</c> when the action threw <see cref="InvalidDataException"/>; otherwise <c>false</c>.</returns>
     private static bool Throws(Action action)
     {
         try

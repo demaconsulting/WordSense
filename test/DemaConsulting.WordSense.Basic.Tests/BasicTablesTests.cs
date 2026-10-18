@@ -145,6 +145,11 @@ public class BasicTablesTests
         Assert.True(Throws(() => BasicTables.Load(TestTables.Compress(tags))), "Tag count.");
     }
 
+    /// <summary>
+    ///     Runs an action and reports whether it threw <see cref="InvalidDataException"/>.
+    /// </summary>
+    /// <param name="action">The action to run.</param>
+    /// <returns><c>true</c> when the action threw <see cref="InvalidDataException"/>; otherwise <c>false</c>.</returns>
     private static bool Throws(Action action)
     {
         try

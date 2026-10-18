@@ -9,7 +9,9 @@ namespace WordSense.Builder;
 /// </summary>
 /// <remarks>
 ///     The layout is described by the reader, <c>WeightsBlob</c> in the Onnx package. Lemmas are written in ordinal
-///     order, so equal input always gives equal bytes. A binary model must have exactly two senses.
+///     order, so equal input always gives equal bytes. A binary model has exactly two senses, so its entry must name
+///     exactly two class ids; any entry whose class id count differs from its sense count is refused with an
+///     <see cref="ArgumentException"/>.
 /// </remarks>
 internal static class WeightsBlobWriter
 {

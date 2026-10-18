@@ -27,7 +27,7 @@ All scenarios below pass on every platform and target framework of the CI matrix
   equal those of the BERT cased algorithm derived by hand for a short text (case and accents kept, `##` continuation,
   `[UNK]` for an uncovered word, punctuation), without a large fixture.
 - **WordPieceTokenizer_Tokenize_CasedVocabularyWithOtherCase_IsUnknown**: a spelling in another case than the
-  vocabulary has is `[UNK]`.
+  vocabulary is `[UNK]`.
 - **WordPieceTokenizer_Tokenize_SmallVocabulary_SplitsIntoWordPieces**: greedy longest match with `##`.
 - **WordPieceTokenizer_Tokenize_EmptyText_ReturnsNoTokens**: empty text gives no tokens.
 - **WordPieceTokenizer_TokenizeWords_ReturnsPieceRangePerWord** and

@@ -480,9 +480,12 @@ public sealed class ModelDownloaderTests : IDisposable
     {
         // Arrange: a fake transport, so no TLS is needed; https answers with a redirect to http on the same host and port
         var seen = new List<(Uri Uri, string? Authorization)>();
+        var tokenHash = Convert.ToHexString(SHA256.HashData("tok-123"u8));
         using var handler = new StubHandler(request =>
         {
-            seen.Add((request.RequestUri!, request.Headers.Authorization?.ToString()));
+            // Record only the scheme and a hash of the parameter, never the credential itself
+            var auth = request.Headers.Authorization;
+            seen.Add((request.RequestUri!, auth is null ? null : auth.Scheme + ":" + Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(auth.Parameter ?? string.Empty)))));
             var file = Path.GetFileName(request.RequestUri!.AbsolutePath);
             if (request.RequestUri.Scheme == Uri.UriSchemeHttps && request.RequestUri.AbsolutePath.StartsWith("/mirror/", StringComparison.Ordinal))
             {
@@ -502,7 +505,7 @@ public sealed class ModelDownloaderTests : IDisposable
         // Assert: the https hops carried the token, the http hops did not
         ModelDownloader.Verify(Spec, directory);
         Assert.Equal(4, seen.Count);
-        Assert.All(seen.Where(r => r.Uri.Scheme == Uri.UriSchemeHttps), r => Assert.Equal("Bearer tok-123", r.Authorization));
+        Assert.All(seen.Where(r => r.Uri.Scheme == Uri.UriSchemeHttps), r => Assert.Equal("Bearer:" + tokenHash, r.Authorization));
         Assert.All(seen.Where(r => r.Uri.Scheme == Uri.UriSchemeHttp), r => Assert.Null(r.Authorization));
     }
 
