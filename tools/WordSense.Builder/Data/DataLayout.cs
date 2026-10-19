@@ -156,8 +156,8 @@ internal static class DataLayout
     /// <returns>The full path.</returns>
     public static string FilePath(string root, TableDef table, string key) =>
         table.Partition == PartitionKind.None
-            ? Path.Combine(root, table.Name + Extension)
-            : Path.Combine(root, table.Name, key + Extension);
+            ? Path.Join(root, table.Name + Extension)
+            : Path.Join(root, table.Name, key + Extension);
 
     /// <summary>
     ///     Describes why a cell value is not allowed in a table file.

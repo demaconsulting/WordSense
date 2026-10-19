@@ -17,7 +17,7 @@ internal sealed class TestDirectory : IDisposable
     /// </summary>
     public TestDirectory()
     {
-        Root = Path.Combine(Path.GetTempPath(), "wordsense-builder-" + Guid.NewGuid().ToString("N"));
+        Root = Path.Join(Path.GetTempPath(), "wordsense-builder-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(Root);
     }
 
@@ -34,7 +34,7 @@ internal sealed class TestDirectory : IDisposable
     /// <returns>The full path of the file.</returns>
     public string Write(string relative, string content)
     {
-        var path = Path.Combine(Root, relative);
+        var path = Path.Join(Root, relative);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllText(path, content, new UTF8Encoding(false));
         return path;

@@ -176,10 +176,10 @@ public class BasicTrainerTests
     public async Task WordSenseBuilder_BasicTuner_RunAsync_MissingDevFile_Throws()
     {
         using var dir = new TestDirectory();
-        var corpus = Path.Combine(dir.Root, "corpus");
-        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Combine(corpus, "ud"));
+        var corpus = Path.Join(dir.Root, "corpus");
+        UdCounts.Count([new UdSentence(["the", "cat"], [PosTag.Determiner, PosTag.Noun])]).Write(Path.Join(corpus, "ud"));
 
-        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Combine(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
+        await Assert.ThrowsAsync<FileNotFoundException>(() => BasicTuner.RunAsync(corpus, Path.Join(dir.Root, "cache"), TextWriter.Null, TestContext.Current.CancellationToken));
     }
 
     /// <summary>

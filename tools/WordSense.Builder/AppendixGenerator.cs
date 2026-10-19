@@ -33,9 +33,9 @@ internal static class AppendixGenerator
     /// <exception cref="InvalidDataException">Thrown with every problem found when the input is incomplete or inconsistent.</exception>
     public static string Generate(string corpus)
     {
-        var sensesDirectory = Path.Combine(corpus, "senses");
-        var formsDirectory = Path.Combine(corpus, "forms");
-        var anchorsDirectory = Path.Combine(corpus, "anchors");
+        var sensesDirectory = Path.Join(corpus, "senses");
+        var formsDirectory = Path.Join(corpus, "forms");
+        var anchorsDirectory = Path.Join(corpus, "anchors");
         var errors = new List<string>();
         foreach (var directory in new[] { sensesDirectory, formsDirectory, anchorsDirectory }.Where(d => !Directory.Exists(d)))
         {
@@ -143,8 +143,8 @@ internal static class AppendixGenerator
         List<InventoryRow> rows,
         List<(string Form, string Lemma, string[] Labels)> forms)
     {
-        var lexiconDirectory = Path.Combine(corpus, "lexicon");
-        var lexiconPath = Path.Combine(lexiconDirectory, LexiconSource.LexiconFile);
+        var lexiconDirectory = Path.Join(corpus, "lexicon");
+        var lexiconPath = Path.Join(lexiconDirectory, LexiconSource.LexiconFile);
         if (!File.Exists(lexiconPath))
         {
             return;

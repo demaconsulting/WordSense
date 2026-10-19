@@ -28,9 +28,9 @@ internal static class BasicTuner
     public static async Task<string> RunAsync(string corpus, string udCache, TextWriter progress, CancellationToken cancellationToken)
     {
         ArgumentNullException.ThrowIfNull(progress);
-        var counts = UdCounts.Read(Path.Combine(corpus, "ud"));
+        var counts = UdCounts.Read(Path.Join(corpus, "ud"));
         const string devName = "en_ewt-ud-dev.conllu";
-        var devPath = Path.Combine(udCache, devName);
+        var devPath = Path.Join(udCache, devName);
         if (!File.Exists(devPath))
         {
             throw new FileNotFoundException($"The treebank development file is missing; run 'ud-counts' or 'train-basic --refresh-ud true' first. Expected: {devPath}");
@@ -39,9 +39,9 @@ internal static class BasicTuner
         UdSource.Verify(devPath, UdSource.Files[devName]);
         var dev = UdCounts.ReadConllu(devPath).Take(BasicHyperparameters.UdDevSentences).ToList();
         var lexicon = (Func<string, ImmutableArray<WordDetails>>)(key => WordLexicon.TryLookup(key, out var found) ? found : []);
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
         var facts = ClassFacts.From(inventory.Rows);
-        var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Combine(corpus, "anchors")));
+        var (train, anchorDev) = SplitAnchors(Corpus.ReadDirectory(Path.Join(corpus, "anchors")));
         progress.WriteLine($"Tuning on {dev.Count} treebank dev sentences, {train.Count} anchor train and {anchorDev.Count} anchor dev sentences.");
 
         var text = new StringBuilder();

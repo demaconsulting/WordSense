@@ -236,7 +236,7 @@ internal sealed class UdCounts
         AppendOrder(ngrams, 1, Unigrams, PosTag.Extended, inv);
         AppendOrder(ngrams, 2, Bigrams, PosTag.Extended, inv);
         AppendOrder(ngrams, 3, Trigrams, PosTag.Extended, inv);
-        File.WriteAllText(Path.Combine(directory, NgramsFile), ngrams.ToString(), new UTF8Encoding(false));
+        File.WriteAllText(Path.Join(directory, NgramsFile), ngrams.ToString(), new UTF8Encoding(false));
 
         var words = new StringBuilder();
         words.Append(WordsHeader).Append('\n');
@@ -258,7 +258,7 @@ internal sealed class UdCounts
             words.Append('\n');
         }
 
-        File.WriteAllText(Path.Combine(directory, WordsFile), words.ToString(), new UTF8Encoding(false));
+        File.WriteAllText(Path.Join(directory, WordsFile), words.ToString(), new UTF8Encoding(false));
     }
 
     /// <summary>
@@ -271,7 +271,7 @@ internal sealed class UdCounts
     public static UdCounts Read(string directory)
     {
         var counts = new UdCounts();
-        var ngramsPath = Path.Combine(directory, NgramsFile);
+        var ngramsPath = Path.Join(directory, NgramsFile);
         var lines = File.ReadAllLines(ngramsPath, Encoding.UTF8);
         if (lines.Length == 0 || lines[0] != "order\ttags\tcount")
         {
@@ -303,7 +303,7 @@ internal sealed class UdCounts
             }
         }
 
-        var wordsPath = Path.Combine(directory, WordsFile);
+        var wordsPath = Path.Join(directory, WordsFile);
         var wordLines = File.ReadAllLines(wordsPath, Encoding.UTF8);
         if (wordLines.Length == 0 || wordLines[0] != WordsHeader)
         {
@@ -428,7 +428,7 @@ internal static class UdSource
         using var client = new HttpClient();
         foreach (var (name, sha) in Files)
         {
-            var path = Path.Combine(directory, name);
+            var path = Path.Join(directory, name);
             if (!File.Exists(path))
             {
                 var bytes = await client.GetByteArrayAsync(UrlOf(name), cancellationToken).ConfigureAwait(false);

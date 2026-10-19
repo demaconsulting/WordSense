@@ -71,7 +71,7 @@ public partial class ReferenceTokenizerTests
     [Fact]
     public void ReferenceTokenizer_Pattern_MatchesNamespaceDocumentation()
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "DemaConsulting.WordSense.xml");
+        var path = Path.Join(AppContext.BaseDirectory, "DemaConsulting.WordSense.xml");
         var documentation = File.ReadAllText(path);
 
         Assert.Contains(Pattern, documentation, StringComparison.Ordinal);

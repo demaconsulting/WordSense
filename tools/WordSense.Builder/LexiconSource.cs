@@ -148,7 +148,7 @@ internal static class LexiconSource
     /// <returns>The rule names with their state, or null when there is no morphology file.</returns>
     public static List<(string Rule, bool Enabled)>? ReadMorphologyIfPresent(string directory)
     {
-        var path = Path.Combine(directory, MorphologyFile);
+        var path = Path.Join(directory, MorphologyFile);
         if (!File.Exists(path))
         {
             return null;

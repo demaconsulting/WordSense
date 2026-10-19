@@ -29,10 +29,10 @@ internal static class ModelTrainer
             throw new ArgumentException($"The model '{info.Name}' is statistical and has no encoder weights to train; use the 'train-basic' command.");
         }
 
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
-        var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
-        var formsDirectory = Path.Combine(corpus, "forms");
+        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
+        var formsDirectory = Path.Join(corpus, "forms");
         var forms = Directory.Exists(formsDirectory)
             ? Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList()
             : [];
@@ -41,7 +41,7 @@ internal static class ModelTrainer
         var options = new TrainingOptions();
         var clock = Stopwatch.StartNew();
 
-        using var model = (OnnxWordSenseModel)info.Create(Path.Combine(repository, "model", info.ModelDirectory!));
+        using var model = (OnnxWordSenseModel)info.Create(Path.Join(repository, "model", info.ModelDirectory!));
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);
         using var encoder = model.OpenEncoder();
         var pooled = new double[anchors.Count][];

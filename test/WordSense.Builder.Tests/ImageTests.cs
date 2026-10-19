@@ -16,13 +16,13 @@ public sealed class ImageTests
     private static readonly Lazy<byte[]> Committed = new(() =>
     {
         var root = FindRoot();
-        return File.ReadAllBytes(Path.Combine(root, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
+        return File.ReadAllBytes(Path.Join(root, ImageCompiler.DefaultOutput.Replace('/', Path.DirectorySeparatorChar)));
     });
 
     private static string FindRoot()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);
-        while (dir != null && !File.Exists(Path.Combine(dir.FullName, "WordSense.slnx")))
+        while (dir != null && !File.Exists(Path.Join(dir.FullName, "WordSense.slnx")))
         {
             dir = dir.Parent;
         }
@@ -37,7 +37,7 @@ public sealed class ImageTests
     public void WordSenseBuilder_ImageCompiler_Build_IsDeterministic()
     {
         var root = FindRoot();
-        var data = Path.Combine(root, "data");
+        var data = Path.Join(root, "data");
 
         var a = WordImage.Open(ImageCompiler.Build(data).Image);
         var b = WordImage.Open(ImageCompiler.Build(data).Image);

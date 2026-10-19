@@ -164,11 +164,11 @@ internal sealed class IrregularSources
     public static IrregularSources Read(string lexicon)
     {
         var sources = new IrregularSources();
-        Fill(sources.Hand, IrregularForms.ReadFile(Path.Combine(lexicon, IrregularForms.HandFile)), null);
-        Fill(sources.Closed, IrregularForms.ReadFile(Path.Combine(lexicon, ClosedFile)), sources);
-        Fill(sources.Agid, IrregularForms.ReadFile(Path.Combine(lexicon, AgidFile)), null);
-        sources.ReadContractions(Path.Combine(lexicon, ContractionsFile));
-        sources.ReadOverrides(Path.Combine(lexicon, OverridesFile));
+        Fill(sources.Hand, IrregularForms.ReadFile(Path.Join(lexicon, IrregularForms.HandFile)), null);
+        Fill(sources.Closed, IrregularForms.ReadFile(Path.Join(lexicon, ClosedFile)), sources);
+        Fill(sources.Agid, IrregularForms.ReadFile(Path.Join(lexicon, AgidFile)), null);
+        sources.ReadContractions(Path.Join(lexicon, ContractionsFile));
+        sources.ReadOverrides(Path.Join(lexicon, OverridesFile));
         return sources;
     }
 

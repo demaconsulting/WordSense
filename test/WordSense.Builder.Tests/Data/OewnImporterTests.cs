@@ -20,9 +20,9 @@ public sealed class OewnImporterTests : IDisposable
 
     private string SchemaCopy(string name)
     {
-        var data = Path.Combine(_dir.Root, name);
+        var data = Path.Join(_dir.Root, name);
         Directory.CreateDirectory(data);
-        File.Copy(Path.Combine(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Path.Combine(data, "schema.yaml"));
+        File.Copy(Path.Join(DataFixture.RepositoryRoot(), "data", "schema.yaml"), Path.Join(data, "schema.yaml"));
         return data;
     }
 
@@ -30,7 +30,7 @@ public sealed class OewnImporterTests : IDisposable
     {
         var input = _dir.Write(name + ".xml", xml);
         var data = SchemaCopy(name + "-data");
-        OewnImporter.Import(input, data, Path.Combine(data, "schema.yaml"), null);
+        OewnImporter.Import(input, data, Path.Join(data, "schema.yaml"), null);
         return data;
     }
 
@@ -44,7 +44,7 @@ public sealed class OewnImporterTests : IDisposable
         var data = SchemaCopy("data");
 
         // Act
-        var result = OewnImporter.Import(DataFixture.SlicePath, data, Path.Combine(data, "schema.yaml"), null);
+        var result = OewnImporter.Import(DataFixture.SlicePath, data, Path.Join(data, "schema.yaml"), null);
 
         // Assert
         Assert.Equal(1, result.Rows["source"]);
@@ -168,13 +168,13 @@ public sealed class OewnImporterTests : IDisposable
     {
         // Arrange / Act
         var data = DataFixture.ImportSlice(_dir);
-        var text = File.ReadAllText(Path.Combine(data, "entry", "_.tsv"), Encoding.UTF8);
+        var text = File.ReadAllText(Path.Join(data, "entry", "_.tsv"), Encoding.UTF8);
 
         // Assert
         Assert.Contains("Ångström", text, StringComparison.Ordinal);
         Assert.Contains("\uD835\uDC9C matrix", text, StringComparison.Ordinal);
-        Assert.True(File.Exists(Path.Combine(data, "sense", "_.tsv")));
-        Assert.True(File.Exists(Path.Combine(data, "synset", "_.tsv")));
+        Assert.True(File.Exists(Path.Join(data, "sense", "_.tsv")));
+        Assert.True(File.Exists(Path.Join(data, "synset", "_.tsv")));
     }
 
     /// <summary>
@@ -187,10 +187,10 @@ public sealed class OewnImporterTests : IDisposable
         var data = DataFixture.ImportSlice(_dir, "split", 3);
 
         // Assert
-        Assert.Contains("file_split: [b]", File.ReadAllText(Path.Combine(data, "schema.yaml")), StringComparison.Ordinal);
-        Assert.True(File.Exists(Path.Combine(data, "entry", "ba.tsv")));
-        Assert.True(File.Exists(Path.Combine(data, "entry", "bi.tsv")));
-        Assert.False(File.Exists(Path.Combine(data, "entry", "b.tsv")));
+        Assert.Contains("file_split: [b]", File.ReadAllText(Path.Join(data, "schema.yaml")), StringComparison.Ordinal);
+        Assert.True(File.Exists(Path.Join(data, "entry", "ba.tsv")));
+        Assert.True(File.Exists(Path.Join(data, "entry", "bi.tsv")));
+        Assert.False(File.Exists(Path.Join(data, "entry", "b.tsv")));
         var report = DataValidator.Validate(data);
         Assert.True(report.IsValid, string.Join("\n", report.Violations));
     }
@@ -206,14 +206,14 @@ public sealed class OewnImporterTests : IDisposable
         var second = SchemaCopy("two");
 
         // Act
-        OewnImporter.Import(DataFixture.SlicePath, second, Path.Combine(second, "schema.yaml"), null);
+        OewnImporter.Import(DataFixture.SlicePath, second, Path.Join(second, "schema.yaml"), null);
 
         // Assert
         var files = Directory.GetFiles(first, "*", SearchOption.AllDirectories);
         Assert.NotEmpty(files);
         foreach (var file in files)
         {
-            var other = Path.Combine(second, Path.GetRelativePath(first, file));
+            var other = Path.Join(second, Path.GetRelativePath(first, file));
             Assert.Equal(File.ReadAllBytes(file), File.ReadAllBytes(other));
         }
 
@@ -227,7 +227,7 @@ public sealed class OewnImporterTests : IDisposable
     public void WordSenseBuilder_OewnImporter_Import_GzipInput_Works()
     {
         // Arrange
-        var gz = Path.Combine(_dir.Root, "slice.xml.gz");
+        var gz = Path.Join(_dir.Root, "slice.xml.gz");
         using (var target = File.Create(gz))
         using (var zip = new GZipStream(target, CompressionLevel.Fastest))
         {
@@ -237,7 +237,7 @@ public sealed class OewnImporterTests : IDisposable
         var data = SchemaCopy("gz");
 
         // Act
-        var result = OewnImporter.Import(gz, data, Path.Combine(data, "schema.yaml"), null);
+        var result = OewnImporter.Import(gz, data, Path.Join(data, "schema.yaml"), null);
 
         // Assert
         Assert.Equal(14, result.Rows["entry"]);
@@ -255,13 +255,13 @@ public sealed class OewnImporterTests : IDisposable
         var bad = SchemaCopy("bad-hash");
 
         // Act
-        var result = OewnImporter.Import(DataFixture.SlicePath, good, Path.Combine(good, "schema.yaml"), hash.ToLowerInvariant());
-        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.Import(DataFixture.SlicePath, bad, Path.Combine(bad, "schema.yaml")));
+        var result = OewnImporter.Import(DataFixture.SlicePath, good, Path.Join(good, "schema.yaml"), hash.ToLowerInvariant());
+        var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.Import(DataFixture.SlicePath, bad, Path.Join(bad, "schema.yaml")));
 
         // Assert
         Assert.Equal(14, result.Rows["entry"]);
         Assert.Contains("SHA-256", ex.Message, StringComparison.Ordinal);
-        Assert.False(File.Exists(Path.Combine(bad, "source.tsv")));
+        Assert.False(File.Exists(Path.Join(bad, "source.tsv")));
     }
 
     /// <summary>
@@ -272,7 +272,7 @@ public sealed class OewnImporterTests : IDisposable
     {
         // Arrange
         var data = DataFixture.ImportSlice(_dir);
-        var schema = Path.Combine(data, "schema.yaml");
+        var schema = Path.Join(data, "schema.yaml");
 
         // Act
         var ex = Assert.Throws<InvalidDataException>(() => OewnImporter.Import(DataFixture.SlicePath, data, schema, null));
@@ -292,7 +292,7 @@ public sealed class OewnImporterTests : IDisposable
     {
         // Arrange
         var data = DataFixture.ImportSlice(_dir);
-        var file = Directory.GetFiles(Path.Combine(data, "sense"), "*.tsv").First(f => File.ReadAllText(f).Contains("fish%1:05:00::", StringComparison.Ordinal));
+        var file = Directory.GetFiles(Path.Join(data, "sense"), "*.tsv").First(f => File.ReadAllText(f).Contains("fish%1:05:00::", StringComparison.Ordinal));
         DataFixture.Replace(data, Path.GetRelativePath(data, file), "fish%1:05:00::", "bass%1:05:00::");
 
         // Act
@@ -403,7 +403,7 @@ public sealed class OewnImporterTests : IDisposable
         var data = SchemaCopy("tab-data");
 
         // Act
-        var result = OewnImporter.Import(input, data, Path.Combine(data, "schema.yaml"), null);
+        var result = OewnImporter.Import(input, data, Path.Join(data, "schema.yaml"), null);
 
         // Assert
         Assert.Equal(1, result.CleanedCells);

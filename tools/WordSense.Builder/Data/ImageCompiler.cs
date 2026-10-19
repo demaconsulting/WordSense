@@ -84,7 +84,7 @@ internal static class ImageCompiler
     /// <exception cref="InvalidDataException">Thrown when the data cannot be compiled.</exception>
     public static (byte[] Image, ImageResult Result) Build(string dataDirectory)
     {
-        var schema = DataSchema.Load(Path.Combine(dataDirectory, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(dataDirectory, "schema.yaml"));
         var entryRows = DataTables.Read(dataDirectory, schema.Table("entry")).ToDictionary(r => r[0], StringComparer.Ordinal);
         var formRows = DataTables.Read(dataDirectory, schema.Table("form")).ToList();
         var scopeRows = DataTables.Read(dataDirectory, schema.Table("form_sense_scope")).ToList();
@@ -256,13 +256,13 @@ internal static class ImageCompiler
         var files = new List<(string Name, string Path)>();
         foreach (var table in HashedTables)
         {
-            var directory = Path.Combine(dataDirectory, table);
+            var directory = Path.Join(dataDirectory, table);
             if (Directory.Exists(directory))
             {
                 files.AddRange(Directory.GetFiles(directory, "*.tsv").Select(f => ($"data/{table}/{Path.GetFileName(f)}", f)));
             }
 
-            var single = Path.Combine(dataDirectory, table + ".tsv");
+            var single = Path.Join(dataDirectory, table + ".tsv");
             if (File.Exists(single))
             {
                 files.Add(($"data/{table}.tsv", single));

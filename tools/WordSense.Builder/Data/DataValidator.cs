@@ -82,7 +82,7 @@ internal sealed partial class DataValidator
     /// <returns>The report of the validation.</returns>
     public static ValidationReport Validate(string dataDirectory)
     {
-        var schemaPath = Path.Combine(dataDirectory, "schema.yaml");
+        var schemaPath = Path.Join(dataDirectory, "schema.yaml");
         DataSchema schema;
         try
         {
@@ -174,11 +174,11 @@ internal sealed partial class DataValidator
     {
         if (table.Partition == PartitionKind.None)
         {
-            yield return (Path.Combine(_root, table.Name + DataLayout.Extension), string.Empty);
+            yield return (Path.Join(_root, table.Name + DataLayout.Extension), string.Empty);
             yield break;
         }
 
-        var directory = Path.Combine(_root, table.Name);
+        var directory = Path.Join(_root, table.Name);
         if (!Directory.Exists(directory))
         {
             // A partitioned table without rows has no files, so a missing folder is an empty table
@@ -663,7 +663,7 @@ internal sealed partial class DataValidator
             list.Sort();
             if (!list.SequenceEqual(Enumerable.Range(1, list.Count)))
             {
-                Report(Path.Combine(_root, TableSense), 0, TableSense, $"The positions of the senses of entry '{entry}' are not 1..{list.Count.ToString(CultureInfo.InvariantCulture)}.");
+                Report(Path.Join(_root, TableSense), 0, TableSense, $"The positions of the senses of entry '{entry}' are not 1..{list.Count.ToString(CultureInfo.InvariantCulture)}.");
             }
         }
 
@@ -678,7 +678,7 @@ internal sealed partial class DataValidator
 
         foreach (var entry in Rows(TableEntry).Where(r => !positions.ContainsKey(r[0]) && !ClosedClass.Contains(r[2]) && !referenced.Contains(r[0])))
         {
-            Report(Path.Combine(_root, TableEntry), 0, TableSense, $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
+            Report(Path.Join(_root, TableEntry), 0, TableSense, $"Entry '{entry[0]}' has no sense and no class or carried analysis refers to it.");
         }
     }
 
@@ -731,7 +731,7 @@ internal sealed partial class DataValidator
         {
             if (!set.OrderBy(r => r).SequenceEqual(Enumerable.Range(0, set.Count)))
             {
-                Report(Path.Combine(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
+                Report(Path.Join(_root, "form"), 0, "form", $"The ranks of the analyses of '{spelling}' are not 0..{(set.Count - 1).ToString(CultureInfo.InvariantCulture)}.");
             }
         }
 
@@ -840,7 +840,7 @@ internal sealed partial class DataValidator
         var covered = Rows("class_sense").Select(r => r[1]).ToHashSet(StringComparer.Ordinal);
         var mapped = classes.Where(c => c[4] is "sense_group" or "no_oewn" or "unmapped").Select(c => (Lemma: c[1], Pos: c[3])).ToHashSet();
         var entries = Index(Rows(TableEntry).Where(e => mapped.Contains((e[1], e[2]))), 0, 1);
-        var path = Path.Combine(_root, "class_sense");
+        var path = Path.Join(_root, "class_sense");
         foreach (var sense in Rows(TableSense))
         {
             if (entries.TryGetValue(sense[2], out var lemma) && !covered.Contains(sense[0]))

@@ -26,7 +26,7 @@ public sealed class LexiconImporterTests : IDisposable
         var input = _dir.Write(
             "in/mobypos.txt",
             "the\\Dv\r\nalbeit\\C\r\nalas\\!\r\nso\\vCrA!N\r\nwill\\VN\r\nant\\N\r\nant\\t\r\nNew\\N\r\nice cream\\N\r\nzzz\\?\r\n");
-        var output = Path.Combine(_dir.Root, "out", "lexicon.tsv");
+        var output = Path.Join(_dir.Root, "out", "lexicon.tsv");
         Directory.CreateDirectory(Path.GetDirectoryName(output)!);
 
         var counts = LexiconImporter.Import(input, output, null);
@@ -46,7 +46,7 @@ public sealed class LexiconImporterTests : IDisposable
     public void WordSenseBuilder_LexiconImporter_Import_AppliesParticipleAndGerundRule()
     {
         var input = _dir.Write("in/mobypos.txt", "tired\\A\nboring\\A\nwalk\\V\nwalking\\N\nmake\\V\nmaking\\N\nrunning\\N\nrun\\V\nstat\\N\n");
-        var output = Path.Combine(_dir.Root, "in", "lexicon.tsv");
+        var output = Path.Join(_dir.Root, "in", "lexicon.tsv");
 
         var counts = LexiconImporter.Import(input, output, null);
 
@@ -68,7 +68,7 @@ public sealed class LexiconImporterTests : IDisposable
     {
         var input = _dir.Write("in/mobypos.txt", "the\\Dv\nsays\\N\n");
         _dir.Write("in/corrections.tsv", "# comment\nthe\tD\tevidence\nsays\tV\tevidence\n");
-        var output = Path.Combine(_dir.Root, "in", "lexicon.tsv");
+        var output = Path.Join(_dir.Root, "in", "lexicon.tsv");
 
         var counts = LexiconImporter.Import(input, output, null);
 
@@ -83,7 +83,7 @@ public sealed class LexiconImporterTests : IDisposable
     public void WordSenseBuilder_LexiconImporter_Import_ChecksHash()
     {
         var input = _dir.Write("in/mobypos.txt", "ant\\N\r\nbee\\N\r\n");
-        var output = Path.Combine(_dir.Root, "in", "lexicon.tsv");
+        var output = Path.Join(_dir.Root, "in", "lexicon.tsv");
         var hash = Convert.ToHexString(SHA256.HashData(Encoding.Latin1.GetBytes("ant\\N\nbee\\N\n")));
 
         var counts = LexiconImporter.Import(input, output, hash);
@@ -102,6 +102,6 @@ public sealed class LexiconImporterTests : IDisposable
         var input = _dir.Write("in/mobypos.txt", "ant\\N\n");
         _dir.Write("in/corrections.tsv", "ant\tX\n");
 
-        Assert.Throws<InvalidDataException>(() => LexiconImporter.Import(input, Path.Combine(_dir.Root, "in", "lexicon.tsv"), null));
+        Assert.Throws<InvalidDataException>(() => LexiconImporter.Import(input, Path.Join(_dir.Root, "in", "lexicon.tsv"), null));
     }
 }

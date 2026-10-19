@@ -17,8 +17,8 @@ public class WordPieceTokenizerTests
     public void WordPieceTokenizer_Tokenize_Fixture_MatchesReferenceTokenizer()
     {
         var modelDirectory = ModelAssets.RequireModelDirectory();
-        var tokenizer = WordPieceTokenizer.FromFile(Path.Combine(modelDirectory, "vocab.txt"));
-        var fixture = Path.Combine(AppContext.BaseDirectory, "Fixtures", "tokenizer-parity.json");
+        var tokenizer = WordPieceTokenizer.FromFile(Path.Join(modelDirectory, "vocab.txt"));
+        var fixture = Path.Join(AppContext.BaseDirectory, "Fixtures", "tokenizer-parity.json");
         using var document = JsonDocument.Parse(File.ReadAllText(fixture));
 
         var count = 0;
@@ -84,7 +84,7 @@ public class WordPieceTokenizerTests
     [Fact]
     public void WordPieceTokenizer_FromFile_ReadsLinesAndReportsIoErrors()
     {
-        var path = Path.Combine(Path.GetTempPath(), $"wordsense-vocab-{Guid.NewGuid():N}.txt");
+        var path = Path.Join(Path.GetTempPath(), $"wordsense-vocab-{Guid.NewGuid():N}.txt");
         try
         {
             File.WriteAllText(path, "[PAD]\r\n[UNK]\r\n[CLS]\n[SEP]\nthe\n");

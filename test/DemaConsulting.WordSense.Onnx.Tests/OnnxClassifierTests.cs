@@ -16,7 +16,7 @@ public class OnnxClassifierTests
     private static OnnxEncoder Open()
     {
         var directory = ModelAssets.RequireModelDirectory();
-        return new OnnxEncoder(Path.Combine(directory, "model_int8.onnx"), Path.Combine(directory, "vocab.txt"), true, 128, 2);
+        return new OnnxEncoder(Path.Join(directory, "model_int8.onnx"), Path.Join(directory, "vocab.txt"), true, 128, 2);
     }
 
     private static WeightedLemmaTable Embedded() =>

@@ -20,7 +20,7 @@ internal static partial class DocSampleText
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            if (File.Exists(Path.Combine(dir.FullName, "WordSense.slnx")))
+            if (File.Exists(Path.Join(dir.FullName, "WordSense.slnx")))
             {
                 return dir.FullName;
             }
@@ -45,7 +45,7 @@ internal static partial class DocSampleText
     /// <returns>The directory that holds the real model files.</returns>
     public static string RequireModelDirectory(string modelId)
     {
-        var directory = Path.Combine(FindRepositoryRoot(), "model", modelId);
+        var directory = Path.Join(FindRepositoryRoot(), "model", modelId);
         using OnnxWordSenseModel model = modelId switch
         {
             "all-MiniLM-L6-v2-int8" => new MiniLMWordSenseModel(directory),

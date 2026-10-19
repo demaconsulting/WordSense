@@ -19,7 +19,7 @@ public class BasicReadmeSampleTests
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            if (File.Exists(Path.Combine(dir.FullName, "WordSense.slnx")))
+            if (File.Exists(Path.Join(dir.FullName, "WordSense.slnx")))
             {
                 return dir.FullName;
             }
@@ -65,8 +65,8 @@ public class BasicReadmeSampleTests
     {
         var root = FindRepositoryRoot();
         var token = TestContext.Current.CancellationToken;
-        var readme = await File.ReadAllTextAsync(Path.Combine(root, "README.md"), token);
-        var source = await File.ReadAllTextAsync(Path.Combine(root, "test", "DemaConsulting.WordSense.Basic.Tests", "BasicReadmeSample.cs"), token);
+        var readme = await File.ReadAllTextAsync(Path.Join(root, "README.md"), token);
+        var source = await File.ReadAllTextAsync(Path.Join(root, "test", "DemaConsulting.WordSense.Basic.Tests", "BasicReadmeSample.cs"), token);
 
         Assert.Equal(CompiledSample(source), Normalize(FencedBlock(readme, "<!-- sample:readme -->", "csharp")));
     }
@@ -79,7 +79,7 @@ public class BasicReadmeSampleTests
     public async Task BasicReadme_Output_MatchesSampleRun()
     {
         var token = TestContext.Current.CancellationToken;
-        var readme = await File.ReadAllTextAsync(Path.Combine(FindRepositoryRoot(), "README.md"), token);
+        var readme = await File.ReadAllTextAsync(Path.Join(FindRepositoryRoot(), "README.md"), token);
         var documented = FencedBlock(readme, "<!-- output:basic -->", "text");
 
         var sample = new BasicReadmeSample();

@@ -12,7 +12,7 @@ internal static class DataFixture
     /// <summary>
     ///     Gets the path of the hand-written OEWN slice.
     /// </summary>
-    public static string SlicePath => Path.Combine(AppContext.BaseDirectory, "Fixtures", "oewn-slice.xml");
+    public static string SlicePath => Path.Join(AppContext.BaseDirectory, "Fixtures", "oewn-slice.xml");
 
     /// <summary>
     ///     Finds the repository root by walking up to the solution file.
@@ -21,7 +21,7 @@ internal static class DataFixture
     public static string RepositoryRoot()
     {
         var directory = new DirectoryInfo(AppContext.BaseDirectory);
-        while (directory is not null && !File.Exists(Path.Combine(directory.FullName, "WordSense.slnx")))
+        while (directory is not null && !File.Exists(Path.Join(directory.FullName, "WordSense.slnx")))
         {
             directory = directory.Parent;
         }
@@ -38,10 +38,10 @@ internal static class DataFixture
     /// <returns>The data folder.</returns>
     public static string ImportSlice(TestDirectory dir, string name = "data", int threshold = OewnImporter.DefaultSplitThreshold)
     {
-        var data = Path.Combine(dir.Root, name);
+        var data = Path.Join(dir.Root, name);
         Directory.CreateDirectory(data);
-        File.Copy(Path.Combine(RepositoryRoot(), "data", "schema.yaml"), Path.Combine(data, "schema.yaml"));
-        OewnImporter.Import(SlicePath, data, Path.Combine(data, "schema.yaml"), null, threshold);
+        File.Copy(Path.Join(RepositoryRoot(), "data", "schema.yaml"), Path.Join(data, "schema.yaml"));
+        OewnImporter.Import(SlicePath, data, Path.Join(data, "schema.yaml"), null, threshold);
         return data;
     }
 
@@ -53,8 +53,8 @@ internal static class DataFixture
     /// <returns>The rows as arrays of cells.</returns>
     public static List<string[]> Rows(string data, string table)
     {
-        var single = Path.Combine(data, table + ".tsv");
-        var files = File.Exists(single) ? [single] : Directory.GetFiles(Path.Combine(data, table), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).ToArray();
+        var single = Path.Join(data, table + ".tsv");
+        var files = File.Exists(single) ? [single] : Directory.GetFiles(Path.Join(data, table), "*.tsv").OrderBy(f => f, StringComparer.Ordinal).ToArray();
         return files.SelectMany(f => File.ReadAllLines(f, Encoding.UTF8).Skip(1)).Select(l => l.Split('\t')).ToList();
     }
 
@@ -67,7 +67,7 @@ internal static class DataFixture
     /// <param name="newText">The replacement.</param>
     public static void Replace(string data, string relative, string oldText, string newText)
     {
-        var path = Path.Combine(data, relative);
+        var path = Path.Join(data, relative);
         var text = File.ReadAllText(path, Encoding.UTF8);
         Assert.Contains(oldText, text);
         File.WriteAllText(path, text.Replace(oldText, newText, StringComparison.Ordinal), new UTF8Encoding(false));
@@ -81,7 +81,7 @@ internal static class DataFixture
     /// <param name="content">The content.</param>
     public static void Write(string data, string relative, string content)
     {
-        var path = Path.Combine(data, relative);
+        var path = Path.Join(data, relative);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         File.WriteAllText(path, content, new UTF8Encoding(false));
     }

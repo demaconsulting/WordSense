@@ -7,11 +7,3 @@ name: "WordSense CodeQL Config"
 paths-ignore:
   - "**/obj/**"
   - "**/bin/**"
-
-# cs/path-combine only flags Path.Combine calls syntactically. The shipped sources use
-# Path.Join with pinned, relative names; the remaining calls are in tests and the
-# developer-run builder, where every argument is a literal, a temp directory or a
-# repository root, and a rooted CLI path is the intended override. No defect is hidden.
-query-filters:
-  - exclude:
-      id: cs/path-combine

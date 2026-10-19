@@ -92,5 +92,5 @@ public class LexiconFactTests
     }
 
     private static IEnumerable<string[]> ReadRows() =>
-        FactFiles.SelectMany(file => File.ReadLines(Path.Combine(AppContext.BaseDirectory, "Fixtures", file)).Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')));
+        FactFiles.SelectMany(file => File.ReadLines(Path.Join(AppContext.BaseDirectory, "Fixtures", file)).Skip(1).Where(l => l.Length > 0).Select(l => l.Split('\t')));
 }

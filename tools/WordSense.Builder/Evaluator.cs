@@ -315,10 +315,10 @@ internal static class Evaluator
     public static async Task<EvaluationResult> RunAsync(string repository, string corpus, ModelInfo info, TextWriter progress, CancellationToken cancellationToken, string? outcomesFile = null)
     {
         var (wordsMs, wordsBytes) = MeasureWords();
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
+        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
         var gold = inventory.Rows.ToDictionary(r => (r.Lemma, r.Label));
-        var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
-        var realPath = Path.Combine(corpus, "realtext", "eval-seed.tsv");
+        var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
+        var realPath = Path.Join(corpus, "realtext", "eval-seed.tsv");
         var real = File.Exists(realPath) ? Corpus.ReadSentences(realPath) : [];
 
         // The baseline is taken after the corpus is read, so the RAM figure holds only the model
@@ -344,7 +344,7 @@ internal static class Evaluator
             using var resource = typeof(BasicWordSenseModel).Assembly.GetManifestResourceStream(BasicTables.ResourceName);
             tableBytes = resource?.Length ?? 0;
         }
-        var modelDirectory = info.ModelDirectory is null ? null : Path.Combine(repository, "model", info.ModelDirectory);
+        var modelDirectory = info.ModelDirectory is null ? null : Path.Join(repository, "model", info.ModelDirectory);
         var firstUse = Stopwatch.StartNew();
         using var model = info.Create(modelDirectory);
         await model.EnsureModelAsync(null, cancellationToken).ConfigureAwait(false);

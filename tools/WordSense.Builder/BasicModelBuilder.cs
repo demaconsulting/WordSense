@@ -16,14 +16,14 @@ internal static class BasicModelBuilder
     /// <summary>
     ///     The path of the table below the repository root.
     /// </summary>
-    public static readonly string DefaultOutput = Path.Combine("src", "DemaConsulting.WordSense.Basic", "Resources", "basic.bin");
+    public static readonly string DefaultOutput = Path.Join("src", "DemaConsulting.WordSense.Basic", "Resources", "basic.bin");
 
     /// <summary>
     ///     Gets the default directory of the cached treebank files, below the repository root.
     /// </summary>
     /// <param name="repository">The repository root.</param>
     /// <returns>The directory.</returns>
-    public static string DefaultUdCache(string repository) => Path.Combine(repository, "tools", "real-text", "cache");
+    public static string DefaultUdCache(string repository) => Path.Join(repository, "tools", "real-text", "cache");
 
     /// <summary>
     ///     Downloads and verifies the pinned treebank files and writes the count files.
@@ -35,7 +35,7 @@ internal static class BasicModelBuilder
     public static async Task<string> WriteUdCountsAsync(string udCache, string outputDirectory, CancellationToken cancellationToken)
     {
         await UdSource.EnsureAsync(udCache, cancellationToken).ConfigureAwait(false);
-        var sentences = UdCounts.ReadConllu(Path.Combine(udCache, "en_ewt-ud-train.conllu"));
+        var sentences = UdCounts.ReadConllu(Path.Join(udCache, "en_ewt-ud-train.conllu"));
         var counts = UdCounts.Count(sentences);
         counts.Write(outputDirectory);
         return $"Counted {sentences.Count.ToString(CultureInfo.InvariantCulture)} sentences into {counts.Words.Count.ToString(CultureInfo.InvariantCulture)} words in {outputDirectory}.";
@@ -55,17 +55,17 @@ internal static class BasicModelBuilder
     /// <exception cref="InvalidDataException">Thrown when the corpus is inconsistent.</exception>
     public static async Task TrainAsync(string repository, string corpus, string udCache, bool refreshUd, string outputPath, TextWriter output, CancellationToken cancellationToken)
     {
-        var udDirectory = Path.Combine(corpus, "ud");
-        var hasCounts = File.Exists(Path.Combine(udDirectory, UdCounts.NgramsFile)) && File.Exists(Path.Combine(udDirectory, UdCounts.WordsFile));
+        var udDirectory = Path.Join(corpus, "ud");
+        var hasCounts = File.Exists(Path.Join(udDirectory, UdCounts.NgramsFile)) && File.Exists(Path.Join(udDirectory, UdCounts.WordsFile));
         if (refreshUd || !hasCounts)
         {
             output.WriteLine(await WriteUdCountsAsync(udCache, udDirectory, cancellationToken).ConfigureAwait(false));
         }
 
-        var inventory = SenseInventory.ReadDirectory(Path.Combine(corpus, "senses"));
-        var anchors = Corpus.ReadDirectory(Path.Combine(corpus, "anchors"));
-        var holdout = Corpus.ReadDirectory(Path.Combine(corpus, "holdout"));
-        var formsDirectory = Path.Combine(corpus, "forms");
+        var inventory = SenseInventory.ReadDirectory(Path.Join(corpus, "senses"));
+        var anchors = Corpus.ReadDirectory(Path.Join(corpus, "anchors"));
+        var holdout = Corpus.ReadDirectory(Path.Join(corpus, "holdout"));
+        var formsDirectory = Path.Join(corpus, "forms");
         var forms = Directory.Exists(formsDirectory)
             ? Directory.GetFiles(formsDirectory, "*.tsv").OrderBy(f => f, StringComparer.Ordinal).SelectMany(Corpus.ReadForms).ToList()
             : [];
@@ -75,7 +75,7 @@ internal static class BasicModelBuilder
         var data = BasicTrainer.Train(UdCounts.Read(udDirectory), key => WordLexicon.TryLookup(key, out var found) ? found : [], anchors, inventory, BasicHyperparameters.Default);
         var blob = BasicTablesWriter.Write(data, WordLexicon.Current.ClassHash);
         _ = BasicTables.Load(blob, WordLexicon.Current);
-        var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Combine(repository, outputPath);
+        var path = Path.IsPathRooted(outputPath) ? outputPath : Path.Join(repository, outputPath);
         Directory.CreateDirectory(Path.GetDirectoryName(path)!);
         await File.WriteAllBytesAsync(path, blob, cancellationToken).ConfigureAwait(false);
         output.WriteLine($"Trained {data.Summary()}.");

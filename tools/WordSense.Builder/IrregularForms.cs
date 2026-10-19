@@ -56,7 +56,7 @@ internal static class IrregularForms
     /// <param name="directory">The lexicon directory.</param>
     /// <returns>The entries; empty when the list does not exist.</returns>
     /// <exception cref="InvalidDataException">Thrown when a line is malformed.</exception>
-    public static List<IrregularEntry> Read(string directory) => ReadFile(Path.Combine(directory, HandFile));
+    public static List<IrregularEntry> Read(string directory) => ReadFile(Path.Join(directory, HandFile));
 
     /// <summary>
     ///     Reads one irregular list.
@@ -110,12 +110,12 @@ internal static class IrregularForms
     /// <exception cref="InvalidDataException">Thrown when a treebank file is missing.</exception>
     public static string Derive(string udDirectory, string corpus, string output)
     {
-        var lexicon = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile))
+        var lexicon = LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile))
             .ToDictionary(w => w.Word, w => w.Mask, StringComparer.Ordinal);
         var counts = new Dictionary<(string Lemma, char Letter, string Rule, string Form), int>();
         foreach (var name in Files)
         {
-            var path = Path.Combine(udDirectory, name);
+            var path = Path.Join(udDirectory, name);
             if (!File.Exists(path))
             {
                 throw new InvalidDataException($"The treebank file '{path}' is missing; run ud-counts first.");

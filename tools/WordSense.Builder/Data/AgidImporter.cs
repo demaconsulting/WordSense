@@ -40,7 +40,7 @@ internal static partial class AgidImporter
 
         OewnImporter.CheckHash(input, expectedSha256);
 
-        var moby = LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile))
+        var moby = LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile))
             .ToDictionary(w => w.Word, w => w.Letters, StringComparer.Ordinal);
         var lines = new SortedDictionary<(string Lemma, string Letter, string Rule), List<(string Form, string Level)>>();
         foreach (var raw in File.ReadLines(input, Encoding.Latin1))

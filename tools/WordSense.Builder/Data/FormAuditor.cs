@@ -92,7 +92,7 @@ internal static class FormAuditor
     /// <returns>The sampled rows and the population of every stratum.</returns>
     public static (List<Row> Sample, Dictionary<string, int> Population) Select(string data, int sample, int seed)
     {
-        var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         var entries = DataTables.Read(data, schema.Table("entry")).ToDictionary(e => e[0], e => e, StringComparer.Ordinal);
         var strata = new SortedDictionary<string, List<Row>>(StringComparer.Ordinal);
         foreach (var f in DataTables.Read(data, schema.Table("form")))
@@ -144,14 +144,14 @@ internal static class FormAuditor
     /// <exception cref="InvalidOperationException">Thrown when the oracle cannot run.</exception>
     public static Dictionary<string, string> RunOracle(string repository, List<Row> sample)
     {
-        var script = Path.Combine(repository, OracleScript.Replace('/', Path.DirectorySeparatorChar));
+        var script = Path.Join(repository, OracleScript.Replace('/', Path.DirectorySeparatorChar));
         if (!File.Exists(script))
         {
             throw new InvalidOperationException($"The oracle script '{script}' does not exist.");
         }
 
-        var input = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
-        var verdicts = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+        var input = Path.Join(Path.GetTempPath(), Path.GetRandomFileName());
+        var verdicts = Path.Join(Path.GetTempPath(), Path.GetRandomFileName());
         try
         {
             // Two entries of one lemma (recreate) give the same key: the oracle judges each key once

@@ -16,8 +16,8 @@ internal static class ModelFolder
     {
         for (var dir = new DirectoryInfo(AppContext.BaseDirectory); dir is not null; dir = dir.Parent)
         {
-            var candidate = Path.Combine(dir.FullName, "model", "all-MiniLM-L6-v2-int8");
-            if (File.Exists(Path.Combine(candidate, "SHA256SUMS")))
+            var candidate = Path.Join(dir.FullName, "model", "all-MiniLM-L6-v2-int8");
+            if (File.Exists(Path.Join(candidate, "SHA256SUMS")))
             {
                 using var model = new MiniLMWordSenseModel(candidate);
                 return ModelFileCheck.Require(model.Spec, candidate);

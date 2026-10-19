@@ -72,7 +72,7 @@ internal static class FactGenerator
     /// <returns>The facts.</returns>
     public static Generated Generate(string data, string corpus, int seed, int sample)
     {
-        var sources = IrregularSources.Read(Path.Combine(corpus, "lexicon"));
+        var sources = IrregularSources.Read(Path.Join(corpus, "lexicon"));
         var entries = ReadEntries(data);
         var lemmas = entries.Select(e => (e.Lemma, e.Pos)).ToHashSet();
         var facts = new List<Fact>();
@@ -83,8 +83,8 @@ internal static class FactGenerator
 
         var irregular = sources.Closed.Keys.Concat(sources.Hand.Keys).Concat(sources.Agid.Keys).ToHashSet();
         var listed = LexiconSource.MergeAdditions(
-                LexiconSource.ReadWords(Path.Combine(corpus, "lexicon", LexiconSource.LexiconFile)),
-                Path.Combine(corpus, "lexicon", LexiconSource.AdditionsFile))
+                LexiconSource.ReadWords(Path.Join(corpus, "lexicon", LexiconSource.LexiconFile)),
+                Path.Join(corpus, "lexicon", LexiconSource.AdditionsFile))
             .Select(w => w.Word).ToHashSet(StringComparer.Ordinal);
         foreach (var lemma in Sample(entries.Where(e => e.Pos == "v" && IsPlain(e.Lemma) && !irregular.Contains((e.Lemma, "v"))).Select(e => e.Lemma), seed, sample))
         {
@@ -213,7 +213,7 @@ internal static class FactGenerator
 
     private static List<(string Lemma, string Pos)> ReadEntries(string data)
     {
-        var schema = DataSchema.Load(Path.Combine(data, "schema.yaml"));
+        var schema = DataSchema.Load(Path.Join(data, "schema.yaml"));
         return DataTables.Read(data, schema.Table("entry")).Select(e => (e[1], e[2])).Distinct().ToList();
     }
 

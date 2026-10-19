@@ -164,7 +164,7 @@ public sealed class DataLayoutTests : IDisposable
     public void WordSenseBuilder_DataLayout_WriteTable_WritesLfWithoutBom()
     {
         // Arrange
-        var path = Path.Combine(_dir.Root, "out", "t.tsv");
+        var path = Path.Join(_dir.Root, "out", "t.tsv");
 
         // Act
         DataLayout.WriteTable(path, ["a", "b"], [["1", "é"], ["2", ""]]);
@@ -182,7 +182,7 @@ public sealed class DataLayoutTests : IDisposable
     public void WordSenseBuilder_DataLayout_WriteTable_BadCell_Throws()
     {
         // Arrange
-        var path = Path.Combine(_dir.Root, "bad.tsv");
+        var path = Path.Join(_dir.Root, "bad.tsv");
 
         // Act / Assert
         Assert.Throws<InvalidDataException>(() => DataLayout.WriteTable(path, ["a"], [["x\ty"]]));
