@@ -105,9 +105,6 @@ DOS	1	oewn-do-n-1	Number=Plur	dema	0			rule
 DOS	2	oewn-do-n-2	Number=Plur	dema	0			rule
 DOS	3	oewn-DO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 DOS	4	oewn-DOS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-DOSES	0	oewn-dose-n	Number=Plur	dema	0			rule
-DOSES	1	oewn-dose-v	Person=3+Tense=Pres	dema	0			rule
-DOSES	2	oewn-DOS-n	Capitalization=Upper+Number=Plur	dema	0			rule
 DP	0	oewn-DP-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 DPH	0	oewn-DPH-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 DPHS	0	oewn-DPH-n	Capitalization=Upper+Number=Plur	dema	0			rule
@@ -984,9 +981,6 @@ Dormitions	0	oewn-Dormition-n	Capitalization=Title+Number=Plur	dema	0			rule
 Dorotheanthus bellidiformis	0	oewn-Dorotheanthus_bellidiformis-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Doryopteris pedata	0	oewn-Doryopteris_pedata-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Doryopteris pedatas	0	oewn-Doryopteris_pedata-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Doses	0	oewn-dose-n	Number=Plur	dema	0			rule
-Doses	1	oewn-dose-v	Person=3+Tense=Pres	dema	0			rule
-Doses	2	oewn-DoS-n	Capitalization=Exact+Number=Plur	dema	0			rule
 Dostoevskian	0	oewn-Dostoevskian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Dostoyevskian	0	oewn-Dostoyevskian-a	Capitalization=Title+Degree=Pos	dema	0			oewn_form
 Dots	0	oewn-dot-n	Number=Plur	dema	0			rule
@@ -4346,7 +4340,6 @@ deerstalker	0	oewn-deerstalker-n	Number=Sing	dema	0			oewn_form
 deerstalkers	0	oewn-deerstalker-n	Number=Plur	dema	0			rule
 deerstalking	0	oewn-deerstalking-n	Number=Sing	dema	0			oewn_form
 deerstalkings	0	oewn-deerstalking-n	Number=Plur	dema	0			rule
-dees	0		Number=Plur	dema	0	dee	n	rule
 deescalate	0		VerbForm=Inf	dema	0	deescalate	v	moby_reverse
 deescalated	0		Tense=Past+VerbForm=Part	dema	0	deescalate	v	rule
 deescalates	0		Person=3+Tense=Pres	dema	0	deescalate	v	rule
@@ -14111,7 +14104,6 @@ dittoing	0		Number=Sing	dema	0	dittoing	n	moby_reverse
 dittoing	1	oewn-ditto-v	VerbForm=Ger	dema	0			rule
 dittoings	0		Number=Plur	dema	0	dittoing	n	rule
 dittos	0	oewn-ditto-n	Number=Plur	dema	0			rule_variant
-dittos	1	oewn-ditto-v	Person=3+Tense=Pres	dema	0			agid
 ditty	0	oewn-ditty-n	Number=Sing	dema	0			oewn_form
 ditty bag	0	oewn-ditty_bag-n	Number=Sing	dema	0			oewn_form
 ditty bags	0	oewn-ditty_bag-n	Number=Plur	dema	0			rule
@@ -14428,7 +14420,6 @@ divorcing	1	oewn-divorce-n	Number=Sing+VerbForm=Ger	dema	1			carried
 divorcive	0		Degree=Pos	dema	0	divorcive	a	moby_reverse
 divot	0	oewn-divot-n	Number=Sing	dema	0			oewn_form
 divots	0	oewn-divot-n	Number=Plur	dema	0			rule
-divs	0		Number=Plur	dema	0	div	n	rule
 divulgate	0		VerbForm=Inf	dema	0	divulgate	v	moby_reverse
 divulgated	0		Tense=Past+VerbForm=Part	dema	0	divulgate	v	rule
 divulgater	0		Number=Sing	dema	0	divulgater	n	moby_reverse
@@ -15388,7 +15379,6 @@ dominos	1	oewn-domino-n	Number=Plur	dema	0			rule_variant
 dominus	0	oewn-dominus-n	Number=Sing	dema	0			oewn_form
 domoic acid	0	oewn-domoic_acid-n	Number=Sing	dema	0			oewn_form
 domoic acids	0	oewn-domoic_acid-n	Number=Plur	dema	0			rule
-doms	0		Number=Plur	dema	0	dom	n	rule
 don	0	oewn-don-v	VerbForm=Inf	dema	0			oewn_form
 don	1	oewn-don-n	Number=Sing	dema	0			oewn_form
 don't	0	dema-do-x	Contraction=Yes	dema	0			contraction
@@ -15633,7 +15623,6 @@ doppelganger	0	oewn-doppelganger-n	Number=Sing	dema	0			oewn_form
 doppelgangers	0	oewn-doppelganger-n	Number=Plur	dema	0			rule
 doppelzentner	0	oewn-doppelzentner-n	Number=Sing	dema	0			oewn_form
 doppelzentners	0	oewn-doppelzentner-n	Number=Plur	dema	0			rule
-dops	0		Number=Plur	dema	0	dop	n	rule
 dopy	0	oewn-dopy-a	Degree=Pos	dema	0			oewn_form
 dor	0		Number=Sing	dema	0	dor	n	moby_reverse
 dorab	0		Number=Sing	dema	0	dorab	n	moby_reverse

@@ -4581,7 +4581,6 @@ feuilletonist	0		Number=Sing	dema	0	feuilletonist	n	moby_reverse
 feuilletonistic	0		Degree=Pos	dema	0	feuilletonistic	a	moby_reverse
 feuilletonists	0		Number=Plur	dema	0	feuilletonist	n	rule
 feuilletons	0		Number=Plur	dema	0	feuilleton	n	rule
-feus	0		Number=Plur	dema	0	feu	n	rule
 fever	0	oewn-fever-n	Number=Sing	dema	0			oewn_form
 fever	1		VerbForm=Inf	dema	0	fever	v	moby_reverse
 fever blister	0	oewn-fever_blister-n	Number=Sing	dema	0			oewn_form
@@ -5812,7 +5811,6 @@ finalisations	0	oewn-finalisation-n	Number=Plur	dema	0			rule
 finalise	0	oewn-finalise-v	VerbForm=Inf	dema	0			oewn_form
 finalised	0	oewn-finalise-v	Tense=Past+VerbForm=Part	dema	0			rule
 finalises	0	oewn-finalise-v	Person=3+Tense=Pres	dema	0			rule
-finalises	1		Number=Plur	dema	0	finalis	n	rule
 finalising	0	oewn-finalise-v	VerbForm=Ger	dema	0			rule
 finalism	0		Number=Sing	dema	0	finalism	n	moby_reverse
 finalisms	0		Number=Plur	dema	0	finalism	n	rule
@@ -7337,7 +7335,6 @@ flakinesses	0	oewn-flakiness-n	Number=Plur	dema	0			rule
 flaking	0	oewn-flake-v	VerbForm=Ger	dema	0			rule
 flaking off	0	oewn-flake_off-v	VerbForm=Ger	dema	0			rule
 flaking out	0	oewn-flake_out-v	VerbForm=Ger	dema	0			rule
-flaks	0	oewn-flak-n	Number=Plur	dema	0			rule_variant
 flaky	0	oewn-flaky-a	Degree=Pos	dema	0			oewn_form
 flam	0		Number=Sing	dema	0	flam	n	moby_reverse
 flam	1		VerbForm=Inf	dema	0	flam	v	moby_reverse

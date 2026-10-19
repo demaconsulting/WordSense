@@ -553,7 +553,6 @@ shampooer	0		Number=Sing	dema	0	shampooer	n	moby_reverse
 shampooers	0		Number=Plur	dema	0	shampooer	n	rule
 shampooing	0	oewn-shampoo-v	VerbForm=Ger	dema	0			rule
 shampoos	0	oewn-shampoo-n	Number=Plur	dema	0			rule
-shampoos	1	oewn-shampoo-v	Person=3+Tense=Pres	dema	0			agid
 shamrock	0	oewn-shamrock-n	Number=Sing	dema	0			oewn_form
 shamrock pea	0	oewn-shamrock_pea-n	Number=Sing	dema	0			oewn_form
 shamrock peas	0	oewn-shamrock_pea-n	Number=Plur	dema	0			rule
@@ -2047,7 +2046,6 @@ shooks	0	oewn-shook-n	Number=Plur	dema	0			rule
 shool	0		Number=Sing	dema	0	shool	n	moby_reverse
 shools	0		Number=Plur	dema	0	shool	n	rule
 shoon	0	oewn-shoe-n	Number=Plur	dema	0			rule_variant
-shoos	0	oewn-shoo-v	Person=3+Tense=Pres	dema	0			agid
 shoot	0	oewn-shoot-v	VerbForm=Inf	dema	0			oewn_form
 shoot	1	oewn-shoot-n	Number=Sing	dema	0			oewn_form
 shoot	2	dema-shoot-i		dema	0			carried

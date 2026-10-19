@@ -1565,7 +1565,6 @@ solonetz	0		Number=Sing	dema	0	solonetz	n	moby_reverse
 solonetzes	0		Number=Plur	dema	0	solonetz	n	rule
 solons	0	oewn-solon-n	Number=Plur	dema	0			rule
 solos	0	oewn-solo-n	Number=Plur	dema	0			rule_variant
-solos	1	oewn-solo-v	Person=3+Tense=Pres	dema	0			agid
 sols	0	oewn-sol-n	Number=Plur	dema	0			rule_variant
 solstice	0	oewn-solstice-n	Number=Sing	dema	0			oewn_form
 solstices	0	oewn-solstice-n	Number=Plur	dema	0			rule

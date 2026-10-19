@@ -1005,7 +1005,6 @@ citrus trees	0	oewn-citrus_tree-n	Number=Plur	dema	0			rule
 citrus whiteflies	0	oewn-citrus_whitefly-n	Number=Plur	dema	0			rule
 citrus whitefly	0	oewn-citrus_whitefly-n	Number=Sing	dema	0			oewn_form
 citruses	0	oewn-citrus-n	Number=Plur	dema	0			rule_variant
-cits	0		Number=Plur	dema	0	cit	n	rule
 cittern	0	oewn-cittern-n	Number=Sing	dema	0			oewn_form
 citterns	0	oewn-cittern-n	Number=Plur	dema	0			rule
 city	0	oewn-city-n	Number=Sing	dema	0			oewn_form

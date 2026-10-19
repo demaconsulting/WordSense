@@ -816,8 +816,7 @@ jackknife clams	0	oewn-jackknife_clam-n	Number=Plur	dema	0			rule
 jackknife-fish	0	oewn-jackknife-fish-n	Number=Sing	dema	0			oewn_form
 jackknife-fishes	0	oewn-jackknife-fish-n	Number=Plur	dema	0			rule
 jackknifed	0	oewn-jackknife-v	Tense=Past+VerbForm=Part	dema	0			rule
-jackknifes	0	oewn-jackknife-n	Number=Plur	dema	0			rule_variant
-jackknifes	1	oewn-jackknife-v	Person=3+Tense=Pres	dema	0			rule
+jackknifes	0	oewn-jackknife-v	Person=3+Tense=Pres	dema	0			rule
 jackknifing	0	oewn-jackknife-v	VerbForm=Ger	dema	0			rule
 jackknives	0	oewn-jackknife-n	Number=Plur	dema	0			oewn_form
 jackleg	0		Degree=Pos	dema	0	jackleg	a	moby_reverse
@@ -2386,7 +2385,6 @@ jowlier	0	oewn-jowly-a	Degree=Cmp	dema	0			rule
 jowliest	0	oewn-jowly-a	Degree=Sup	dema	0			rule
 jowls	0	oewn-jowl-n	Number=Plur	dema	0			rule
 jowly	0	oewn-jowly-a	Degree=Pos	dema	0			oewn_form
-jows	0		Number=Plur	dema	0	jow	n	rule
 joy	0	oewn-joy-n	Number=Sing	dema	0			oewn_form
 joy	1	oewn-joy-v	VerbForm=Inf	dema	0			oewn_form
 joyance	0		Number=Sing	dema	0	joyance	n	moby_reverse

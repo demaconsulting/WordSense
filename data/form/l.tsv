@@ -8175,7 +8175,6 @@ linotyper	0		Number=Sing	dema	0	linotyper	n	moby_reverse
 linotypers	0		Number=Plur	dema	0	linotyper	n	rule
 linotypist	0		Number=Sing	dema	0	linotypist	n	moby_reverse
 linotypists	0		Number=Plur	dema	0	linotypist	n	rule
-lins	0		Number=Plur	dema	0	lin	n	rule
 linsang	0		Number=Sing	dema	0	linsang	n	moby_reverse
 linsangs	0		Number=Plur	dema	0	linsang	n	rule
 linseed	0	oewn-linseed-n	Number=Sing	dema	0			oewn_form
@@ -12084,7 +12083,6 @@ lurking place	0	oewn-lurking_place-n	Number=Sing	dema	0			oewn_form
 lurking places	0	oewn-lurking_place-n	Number=Plur	dema	0			rule
 lurkingly	0		Degree=Pos	dema	0	lurkingly	r	moby_reverse
 lurks	0	oewn-lurk-v	Person=3+Tense=Pres	dema	0			rule
-lurs	0		Number=Plur	dema	0	lur	n	rule
 luscious	0	oewn-luscious-a	Degree=Pos	dema	0			oewn_form
 lusciously	0	oewn-lusciously-r	Degree=Pos	dema	0			oewn_form
 lusciousness	0	oewn-lusciousness-n	Number=Sing	dema	0			oewn_form

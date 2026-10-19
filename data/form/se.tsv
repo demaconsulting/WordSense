@@ -1702,7 +1702,6 @@ segregators	0	oewn-segregator-n	Number=Plur	dema	0			rule
 segue	0	oewn-segue-v	VerbForm=Inf	dema	0			oewn_form
 segue	1	oewn-segue-n	Number=Sing	dema	0			oewn_form
 segued	0	oewn-segue-v	Tense=Past+VerbForm=Part	dema	0			rule
-segueing	0	oewn-segue-v	VerbForm=Ger	dema	0			agid
 segues	0	oewn-segue-v	Person=3+Tense=Pres	dema	0			rule
 segues	1	oewn-segue-n	Number=Plur	dema	0			rule
 seguidilla	0		Number=Sing	dema	0	seguidilla	n	moby_reverse
@@ -4466,7 +4465,6 @@ serrurerie	0		Number=Sing	dema	0	serrurerie	n	moby_reverse
 serrureries	0		Number=Plur	dema	0	serrurerie	n	rule
 serry	0		VerbForm=Inf	dema	0	serry	v	moby_reverse
 serrying	0		VerbForm=Ger	dema	0	serry	v	rule
-sers	0		Number=Plur	dema	0	ser	n	rule
 sertindole	0	oewn-sertindole-n	Number=Sing	dema	0			oewn_form
 sertindoles	0	oewn-sertindole-n	Number=Plur	dema	0			rule
 sertraline	0	oewn-sertraline-n	Number=Sing	dema	0			oewn_form

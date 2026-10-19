@@ -974,9 +974,8 @@ Mayas	0		Number=Plur	dema	0	maya	n	rule
 Mayas	1	oewn-Maya-n	Capitalization=Title+Number=Plur	dema	0			rule
 Mayetiola destructor	0	oewn-Mayetiola_destructor-n	Capitalization=Exact+Number=Sing	dema	0			oewn_form
 Mayetiola destructors	0	oewn-Mayetiola_destructor-n	Capitalization=Exact+Number=Plur	dema	0			rule
-Mays	0		Person=3+Tense=Pres	dema	0	may	v	rule
-Mays	1	oewn-may-n	Number=Plur	dema	0			rule
-Mays	2	oewn-May-n	Capitalization=Title+Number=Plur	dema	0			rule
+Mays	0	oewn-may-n	Number=Plur	dema	0			rule
+Mays	1	oewn-May-n	Capitalization=Title+Number=Plur	dema	0			rule
 Mazdaism	0	oewn-Mazdaism-n	Capitalization=Title+Number=Sing	dema	0			oewn_form
 Mazdaisms	0	oewn-Mazdaism-n	Capitalization=Title+Number=Plur	dema	0			rule
 Mb	0		Number=Sing	dema	0	mb	n	moby_reverse
@@ -4253,7 +4252,6 @@ mambo	1	oewn-mambo-v	VerbForm=Inf	dema	0			oewn_form
 mamboed	0	oewn-mambo-v	Tense=Past+VerbForm=Part	dema	0			rule
 mamboing	0	oewn-mambo-v	VerbForm=Ger	dema	0			rule
 mambos	0	oewn-mambo-n	Number=Plur	dema	0			rule
-mambos	1	oewn-mambo-v	Person=3+Tense=Pres	dema	0			agid
 mamelon	0		Number=Sing	dema	0	mamelon	n	moby_reverse
 mamelons	0		Number=Plur	dema	0	mamelon	n	rule
 mamey	0	oewn-mamey-n	Number=Sing	dema	0			oewn_form
@@ -7110,8 +7108,7 @@ maypole	0	oewn-maypole-n	Number=Sing	dema	0			oewn_form
 maypoles	0	oewn-maypole-n	Number=Plur	dema	0			rule
 maypop	0	oewn-maypop-n	Number=Sing	dema	0			oewn_form
 maypops	0	oewn-maypop-n	Number=Plur	dema	0			rule
-mays	0		Person=3+Tense=Pres	dema	0	may	v	rule
-mays	1	oewn-may-n	Number=Plur	dema	0			rule
+mays	0	oewn-may-n	Number=Plur	dema	0			rule
 mayst	0		VerbForm=Inf	dema	0	mayst	v	moby_reverse
 maysted	0		Tense=Past+VerbForm=Part	dema	0	mayst	v	rule
 maysting	0		VerbForm=Ger	dema	0	mayst	v	rule
@@ -8373,7 +8370,6 @@ melosa	0	oewn-melosa-n	Number=Sing	dema	0			oewn_form
 melosas	0	oewn-melosa-n	Number=Plur	dema	0			rule
 melphalan	0	oewn-melphalan-n	Number=Sing	dema	0			oewn_form
 melphalans	0	oewn-melphalan-n	Number=Plur	dema	0			rule
-mels	0		Number=Plur	dema	0	mel	n	rule
 melt	0	oewn-melt-v	VerbForm=Inf	dema	0			oewn_form
 melt	1	oewn-melt-n	Number=Sing	dema	0			oewn_form
 melt down	0	oewn-melt_down-v	VerbForm=Inf	dema	0			oewn_form
@@ -9802,8 +9798,7 @@ metastases	0	oewn-metastasis-n	Number=Plur	dema	0			oewn_form
 metastasis	0	oewn-metastasis-n	Number=Sing	dema	0			oewn_form
 metastasise	0	oewn-metastasise-v	VerbForm=Inf	dema	0			oewn_form
 metastasised	0	oewn-metastasise-v	Tense=Past+VerbForm=Part	dema	0			rule
-metastasises	0	oewn-metastasis-n	Number=Plur	dema	0			rule_variant
-metastasises	1	oewn-metastasise-v	Person=3+Tense=Pres	dema	0			rule
+metastasises	0	oewn-metastasise-v	Person=3+Tense=Pres	dema	0			rule
 metastasising	0	oewn-metastasise-v	VerbForm=Ger	dema	0			rule
 metastasize	0	oewn-metastasize-v	VerbForm=Inf	dema	0			oewn_form
 metastasized	0	oewn-metastasize-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9835,7 +9830,6 @@ metatheses	0	oewn-metathesis-n	Number=Plur	dema	0			oewn_form
 metathesis	0	oewn-metathesis-n	Number=Sing	dema	0			oewn_form
 metathesise	0		Number=Sing	dema	0	metathesise	n	moby_reverse
 metathesises	0		Number=Plur	dema	0	metathesise	n	rule
-metathesises	1	oewn-metathesis-n	Number=Plur	dema	0			rule_variant
 metathesize	0		VerbForm=Inf	dema	0	metathesize	v	moby_reverse
 metathesized	0		Tense=Past+VerbForm=Part	dema	0	metathesize	v	rule
 metathesizes	0		Person=3+Tense=Pres	dema	0	metathesize	v	rule
@@ -11114,7 +11108,6 @@ midwife toad	0	oewn-midwife_toad-n	Number=Sing	dema	0			oewn_form
 midwife toads	0	oewn-midwife_toad-n	Number=Plur	dema	0			rule
 midwiferies	0	oewn-midwifery-n	Number=Plur	dema	0			rule
 midwifery	0	oewn-midwifery-n	Number=Sing	dema	0			oewn_form
-midwifes	0	oewn-midwife-n	Number=Plur	dema	0			rule_variant
 midwinter	0	oewn-midwinter-n	Number=Sing	dema	0			oewn_form
 midwinterly	0		Degree=Pos	dema	0	midwinterly	a	moby_reverse
 midwinters	0	oewn-midwinter-n	Number=Plur	dema	0			rule
@@ -12467,7 +12460,6 @@ mirroring	0	oewn-mirror-v	VerbForm=Ger	dema	0			rule
 mirrorlike	0	oewn-mirrorlike-a	Degree=Pos	dema	0			oewn_form
 mirrors	0	oewn-mirror-n	Number=Plur	dema	0			rule
 mirrors	1	oewn-mirror-v	Person=3+Tense=Pres	dema	0			rule
-mirs	0		Number=Plur	dema	0	mir	n	rule
 mirth	0	oewn-mirth-n	Number=Sing	dema	0			oewn_form
 mirthful	0	oewn-mirthful-a	Degree=Pos	dema	0			oewn_form
 mirthfully	0	oewn-mirthfully-r	Degree=Pos	dema	0			oewn_form
@@ -14354,7 +14346,6 @@ mockingly	0	oewn-mockingly-r	Degree=Pos	dema	0			oewn_form
 mocks	0	oewn-mock-v	Person=3+Tense=Pres	dema	0			rule
 mocks	1	oewn-mock-n	Number=Plur	dema	0			rule
 mocks up	0	oewn-mock_up-v	Person=3+Tense=Pres	dema	0			rule
-mocs	0		Number=Plur	dema	0	moc	n	rule
 mod	0	oewn-mod-a	Degree=Pos	dema	0			oewn_form
 mod	1	oewn-mod-n	Number=Sing	dema	0			oewn_form
 mod con	0	oewn-mod_con-n	Number=Sing	dema	0			oewn_form
@@ -14569,7 +14560,6 @@ mogos	0		Number=Plur	dema	0	mogo	n	rule
 mogote	0		Number=Sing	dema	0	mogote	n	moby_reverse
 mogote	1		Degree=Pos	dema	0	mogote	a	moby_reverse
 mogotes	0		Number=Plur	dema	0	mogote	n	rule
-mogs	0		Number=Plur	dema	0	mog	n	rule
 mogul	0	oewn-mogul-n	Number=Sing	dema	0			oewn_form
 mogul sauce	0	oewn-mogul_sauce-n	Number=Sing	dema	0			oewn_form
 mogul sauces	0	oewn-mogul_sauce-n	Number=Plur	dema	0			rule

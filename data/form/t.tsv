@@ -1628,7 +1628,6 @@ tabooing	0	oewn-taboo-v	VerbForm=Ger	dema	0			rule
 tabooli	0	oewn-tabooli-n	Number=Sing	dema	0			oewn_form
 taboolis	0	oewn-tabooli-n	Number=Plur	dema	0			rule
 taboos	0	oewn-taboo-n	Number=Plur	dema	0			rule
-taboos	1	oewn-taboo-v	Person=3+Tense=Pres	dema	0			agid
 tabor	0	oewn-tabor-n	Number=Sing	dema	0			oewn_form
 tabor pipe	0	oewn-tabor_pipe-n	Number=Sing	dema	0			oewn_form
 tabor pipes	0	oewn-tabor_pipe-n	Number=Plur	dema	0			rule
@@ -2931,7 +2930,6 @@ tangoreceptor	0		Number=Sing	dema	0	tangoreceptor	n	moby_reverse
 tangoreceptors	0		Number=Plur	dema	0	tangoreceptor	n	rule
 tangors	0	oewn-tangor-n	Number=Plur	dema	0			rule
 tangos	0	oewn-tango-n	Number=Plur	dema	0			rule
-tangos	1	oewn-tango-v	Person=3+Tense=Pres	dema	0			agid
 tangram	0	oewn-tangram-n	Number=Sing	dema	0			oewn_form
 tangrams	0	oewn-tangram-n	Number=Plur	dema	0			rule
 tangs	0	oewn-tang-n	Number=Plur	dema	0			rule
@@ -6479,7 +6477,6 @@ teughly	0		Degree=Pos	dema	0	teughly	r	moby_reverse
 teughness	0		Number=Sing	dema	0	teughness	n	moby_reverse
 tew	0		Number=Sing	dema	0	tew	n	moby_reverse
 tew	1		VerbForm=Inf	dema	0	tew	v	moby_reverse
-tews	0		Number=Plur	dema	0	tew	n	rule
 texas	0		Number=Sing	dema	0	texas	n	moby_reverse
 texases	0		Number=Plur	dema	0	texas	n	rule
 text	0	oewn-text-n	Number=Sing	dema	0			oewn_form
@@ -9021,8 +9018,7 @@ tickseed	0		VerbForm=Inf	dema	0	tickseed	v	moby_reverse
 tickseed	1	oewn-tickseed-n	Number=Sing	dema	0			oewn_form
 tickseed sunflower	0	oewn-tickseed_sunflower-n	Number=Sing	dema	0			oewn_form
 tickseed sunflowers	0	oewn-tickseed_sunflower-n	Number=Plur	dema	0			rule
-tickseeds	0		Person=3+Tense=Pres	dema	0	tickseed	v	rule
-tickseeds	1	oewn-tickseed-n	Number=Plur	dema	0			rule
+tickseeds	0	oewn-tickseed-n	Number=Plur	dema	0			rule
 ticktack	0	oewn-ticktack-n	Number=Sing	dema	0			oewn_form
 ticktack	1	oewn-ticktack-v	VerbForm=Inf	dema	0			oewn_form
 ticktacked	0	oewn-ticktack-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -9118,7 +9114,6 @@ tidinesses	0	oewn-tidiness-n	Number=Plur	dema	0			rule
 tiding	0	oewn-tide-v	VerbForm=Ger	dema	0			rule
 tiding over	0	oewn-tide_over-v	VerbForm=Ger	dema	0			rule
 tidings	0	oewn-tidings-n	Number=Sing	dema	0			oewn_form
-tids	0		Number=Plur	dema	0	tid	n	rule
 tidy	0	oewn-tidy-a	Degree=Pos	dema	0			oewn_form
 tidy	1	oewn-tidy-v	VerbForm=Inf	dema	0			oewn_form
 tidy	2	oewn-tidy-n	Number=Sing	dema	0			oewn_form
@@ -9369,7 +9364,6 @@ tillite	0		Number=Sing	dema	0	tillite	n	moby_reverse
 tillites	0		Number=Plur	dema	0	tillite	n	rule
 tills	0	oewn-till-v	Person=3+Tense=Pres	dema	0			rule
 tills	1	oewn-till-n	Number=Plur	dema	0			rule
-tils	0		Number=Plur	dema	0	til	n	rule
 tilt	0	oewn-tilt-v	VerbForm=Inf	dema	0			oewn_form
 tilt	1	oewn-tilt-n	Number=Sing	dema	0			oewn_form
 tilt angle	0	oewn-tilt_angle-n	Number=Sing	dema	0			oewn_form
@@ -9731,7 +9725,6 @@ tinge	0	oewn-tinge-v	VerbForm=Inf	dema	0			oewn_form
 tinge	1	oewn-tinge-n	Number=Sing	dema	0			oewn_form
 tinged	0	oewn-ting-v	Tense=Past+VerbForm=Part	dema	0			rule
 tinged	1	oewn-tinge-v	Tense=Past+VerbForm=Part	dema	0			rule
-tingeing	0	oewn-tinge-v	VerbForm=Ger	dema	0			agid
 tinges	0	oewn-tinge-v	Person=3+Tense=Pres	dema	0			rule
 tinges	1	oewn-tinge-n	Number=Plur	dema	0			rule
 tinging	0	oewn-ting-v	VerbForm=Ger	dema	0			rule
@@ -10666,7 +10659,6 @@ tolewares	0		Number=Plur	dema	0	toleware	n	rule
 tolidine	0		Number=Sing	dema	0	tolidine	n	moby_reverse
 tolidines	0		Number=Plur	dema	0	tolidine	n	rule
 toling	0		VerbForm=Inf	dema	0	toling	v	moby_reverse
-tolings	0		Person=3+Tense=Pres	dema	0	toling	v	rule
 toll	0	oewn-toll-v	VerbForm=Inf	dema	0			oewn_form
 toll	1	oewn-toll-n	Number=Sing	dema	0			oewn_form
 toll agent	0	oewn-toll_agent-n	Number=Sing	dema	0			oewn_form
@@ -16664,8 +16656,7 @@ tsk	0		Number=Sing	dema	0	tsk	n	moby_reverse
 tsk	1	oewn-tsk-v	VerbForm=Inf	dema	0			oewn_form
 tsked	0	oewn-tsk-v	Tense=Past+VerbForm=Part	dema	0			rule
 tsking	0	oewn-tsk-v	VerbForm=Ger	dema	0			rule
-tsks	0		Number=Plur	dema	0	tsk	n	rule
-tsks	1	oewn-tsk-v	Person=3+Tense=Pres	dema	0			rule
+tsks	0	oewn-tsk-v	Person=3+Tense=Pres	dema	0			rule
 tsoris	0	oewn-tsoris-n	Number=Sing	dema	0			oewn_form
 tsotsi	0		Number=Sing	dema	0	tsotsi	n	moby_reverse
 tsotsis	0		Number=Plur	dema	0	tsotsi	n	rule
@@ -17830,7 +17821,6 @@ twattle	0		Number=Sing	dema	0	twattle	n	moby_reverse
 twattled	0		VerbForm=Inf	dema	0	twattled	v	moby_reverse
 twattles	0		Number=Plur	dema	0	twattle	n	rule
 twattling	0		VerbForm=Inf	dema	0	twattling	v	moby_reverse
-twattlings	0		Person=3+Tense=Pres	dema	0	twattling	v	rule
 twayblade	0	oewn-twayblade-n	Number=Sing	dema	0			oewn_form
 twayblades	0	oewn-twayblade-n	Number=Plur	dema	0			rule
 tweak	0	oewn-tweak-v	VerbForm=Inf	dema	0			oewn_form
@@ -18302,7 +18292,6 @@ tychopotamic	0		Degree=Pos	dema	0	tychopotamic	a	moby_reverse
 tycoon	0	oewn-tycoon-n	Number=Sing	dema	0			oewn_form
 tycoons	0	oewn-tycoon-n	Number=Plur	dema	0			rule
 tye	0		Number=Sing	dema	0	tye	n	moby_reverse
-tyes	0		Number=Plur	dema	0	tye	n	rule
 tyg	0		Number=Sing	dema	0	tyg	n	moby_reverse
 tygs	0		Number=Plur	dema	0	tyg	n	rule
 tying	0	oewn-tie-v	VerbForm=Ger	dema	1			carried

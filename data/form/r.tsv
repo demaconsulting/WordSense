@@ -21,8 +21,6 @@ RAMS	1	oewn-ram-v	Person=3+Tense=Pres	dema	0			rule
 RAMS	2	oewn-RAM-n	Capitalization=Upper+Number=Plur	dema	0			rule
 RAS	0	oewn-RA-n	Capitalization=Upper+Number=Plur	dema	0			rule
 RAS	1	oewn-RAS-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-RASES	0	oewn-rase-v	Person=3+Tense=Pres	dema	0			rule
-RASES	1	oewn-RAS-n	Capitalization=Upper+Number=Plur	dema	0			rule
 RBC	0	oewn-RBC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 RBCS	0	oewn-RBC-n	Capitalization=Upper+Number=Plur	dema	0			rule
 RBI	0	oewn-RBI-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -1775,7 +1773,6 @@ radiophotos	0	oewn-radiophoto-n	Number=Plur	dema	0			rule
 radioprotection	0	oewn-radioprotection-n	Number=Sing	dema	0			oewn_form
 radioprotections	0	oewn-radioprotection-n	Number=Plur	dema	0			rule
 radios	0	oewn-radio-n	Number=Plur	dema	0			rule
-radios	1	oewn-radio-v	Person=3+Tense=Pres	dema	0			agid
 radioscope	0		Number=Sing	dema	0	radioscope	n	moby_reverse
 radioscopes	0		Number=Plur	dema	0	radioscope	n	rule
 radioscopic	0		Degree=Pos	dema	0	radioscopic	a	moby_reverse
@@ -10773,8 +10770,7 @@ rendezvous	0	oewn-rendezvous-n	Number=Plur	dema	0			agid
 rendezvous	1	oewn-rendezvous-n	Number=Sing	dema	0			oewn_form
 rendezvous	2	oewn-rendezvous-v	VerbForm=Inf	dema	0			oewn_form
 rendezvoused	0	oewn-rendezvous-v	Tense=Past+VerbForm=Part	dema	0			rule
-rendezvouses	0	oewn-rendezvous-n	Number=Plur	dema	0			rule_variant
-rendezvouses	1	oewn-rendezvous-v	Person=3+Tense=Pres	dema	0			rule
+rendezvouses	0	oewn-rendezvous-v	Person=3+Tense=Pres	dema	0			rule
 rendezvousing	0	oewn-rendezvous-v	VerbForm=Ger	dema	0			rule
 rendible	0		Degree=Pos	dema	0	rendible	a	moby_reverse
 rending	0	oewn-rend-v	VerbForm=Ger	dema	0			rule
@@ -14647,9 +14643,8 @@ reversedly	0		Degree=Pos	dema	0	reversedly	r	moby_reverse
 reversely	0	oewn-reversely-r	Degree=Pos	dema	0			oewn_form
 reverser	0		Number=Sing	dema	0	reverser	n	moby_reverse
 reversers	0		Number=Plur	dema	0	reverser	n	rule
-reverses	0	oewn-revers-n	Number=Plur	dema	0			rule_variant
-reverses	1	oewn-reverse-n	Number=Plur	dema	0			rule
-reverses	2	oewn-reverse-v	Person=3+Tense=Pres	dema	0			rule
+reverses	0	oewn-reverse-n	Number=Plur	dema	0			rule
+reverses	1	oewn-reverse-v	Person=3+Tense=Pres	dema	0			rule
 reversibilities	0	oewn-reversibility-n	Number=Plur	dema	0			rule
 reversibility	0	oewn-reversibility-n	Number=Sing	dema	0			oewn_form
 reversible	0	oewn-reversible-a	Degree=Pos	dema	0			oewn_form
@@ -16580,7 +16575,6 @@ ritornelli	0		Number=Sing	dema	0	ritornelli	n	moby_reverse
 ritornellis	0		Number=Plur	dema	0	ritornelli	n	rule
 ritornello	0		Number=Sing	dema	0	ritornello	n	moby_reverse
 ritornellos	0		Number=Plur	dema	0	ritornello	n	rule
-rits	0		Number=Plur	dema	0	rit	n	rule
 ritter	0		Number=Sing	dema	0	ritter	n	moby_reverse
 ritters	0		Number=Plur	dema	0	ritter	n	rule
 ritual	0	oewn-ritual-n	Number=Sing	dema	0			oewn_form

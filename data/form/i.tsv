@@ -75,8 +75,7 @@ IMO	0	oewn-IMO-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 IMOS	0	oewn-IMO-n	Capitalization=Upper+Number=Plur	dema	0			rule
 INC	0		Number=Sing	dema	0	inc	n	moby_reverse
 INC	1	oewn-INC-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
-INCS	0		Number=Plur	dema	0	inc	n	rule
-INCS	1	oewn-INC-n	Capitalization=Upper+Number=Plur	dema	0			rule
+INCS	0	oewn-INC-n	Capitalization=Upper+Number=Plur	dema	0			rule
 INH	0	oewn-INH-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
 INHS	0	oewn-INH-n	Capitalization=Upper+Number=Plur	dema	0			rule
 INR	0	oewn-INR-n	Capitalization=Upper+Number=Sing	dema	0			oewn_form
@@ -4897,7 +4896,6 @@ incrustations	0	oewn-incrustation-n	Number=Plur	dema	0			rule
 incrusted	0	oewn-incrust-v	Tense=Past+VerbForm=Part	dema	0			rule
 incrusting	0	oewn-incrust-v	VerbForm=Ger	dema	0			rule
 incrusts	0	oewn-incrust-v	Person=3+Tense=Pres	dema	0			rule
-incs	0		Number=Plur	dema	0	inc	n	rule
 incubate	0	oewn-incubate-v	VerbForm=Inf	dema	0			oewn_form
 incubated	0	oewn-incubate-v	Tense=Past+VerbForm=Part	dema	0			rule
 incubates	0	oewn-incubate-v	Person=3+Tense=Pres	dema	0			rule

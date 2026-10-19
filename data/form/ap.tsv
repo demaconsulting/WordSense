@@ -624,7 +624,6 @@ apotheosis	0	oewn-apotheosis-n	Number=Sing	dema	0			oewn_form
 apotheosise	0	oewn-apotheosise-v	VerbForm=Inf	dema	0			oewn_form
 apotheosised	0	oewn-apotheosise-v	Tense=Past+VerbForm=Part	dema	0			rule
 apotheosises	0	oewn-apotheosise-v	Person=3+Tense=Pres	dema	0			rule
-apotheosises	1	oewn-apotheosis-n	Number=Plur	dema	0			rule_variant
 apotheosising	0	oewn-apotheosise-v	VerbForm=Ger	dema	0			rule
 apotheosize	0	oewn-apotheosize-v	VerbForm=Inf	dema	0			oewn_form
 apotheosized	0	oewn-apotheosize-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -966,7 +965,6 @@ applies	0	oewn-apply-v	Person=3+Tense=Pres	dema	0			rule
 applique	0	oewn-applique-n	Number=Sing	dema	0			oewn_form
 applique	1	oewn-applique-v	VerbForm=Inf	dema	0			oewn_form
 appliqued	0	oewn-applique-v	Tense=Past+VerbForm=Part	dema	0			rule
-appliqueing	0	oewn-applique-v	VerbForm=Ger	dema	0			agid
 appliques	0	oewn-applique-n	Number=Plur	dema	0			rule
 appliques	1	oewn-applique-v	Person=3+Tense=Pres	dema	0			rule
 apply	0	oewn-apply-v	VerbForm=Inf	dema	0			oewn_form

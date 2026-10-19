@@ -649,7 +649,6 @@ arcaded	0		VerbForm=Inf	dema	0	arcaded	v	moby_reverse
 arcades	0	oewn-arcade-n	Number=Plur	dema	0			rule
 arcadian	0	oewn-arcadian-a	Degree=Pos	dema	0			oewn_form
 arcading	0		VerbForm=Inf	dema	0	arcading	v	moby_reverse
-arcadings	0		Person=3+Tense=Pres	dema	0	arcading	v	rule
 arcae	0		Number=Sing	dema	0	arcae	n	moby_reverse
 arcaes	0		Number=Plur	dema	0	arcae	n	rule
 arcana	0	oewn-arcanum-n	Number=Plur	dema	0			oewn_form
@@ -1087,8 +1086,7 @@ areostyle	0		Degree=Pos	dema	0	areostyle	a	moby_reverse
 areosystyle	0		Degree=Pos	dema	0	areosystyle	a	moby_reverse
 arere	0	oewn-arere-n	Number=Sing	dema	0			oewn_form
 areres	0	oewn-arere-n	Number=Plur	dema	0			rule
-ares	0		Person=3+Tense=Pres	dema	0	are	v	rule
-ares	1	oewn-are-n	Number=Plur	dema	0			rule
+ares	0	oewn-are-n	Number=Plur	dema	0			rule
 arete	0	oewn-arete-n	Number=Sing	dema	0			oewn_form
 aretes	0	oewn-arete-n	Number=Plur	dema	0			rule
 arethusa	0	oewn-arethusa-n	Number=Sing	dema	0			oewn_form

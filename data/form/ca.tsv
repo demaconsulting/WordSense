@@ -3294,7 +3294,6 @@ canoes	0	oewn-canoe-n	Number=Plur	dema	0			rule
 canoes	1	oewn-canoe-v	Person=3+Tense=Pres	dema	0			rule
 canoewood	0		Number=Sing	dema	0	canoewood	n	moby_reverse
 canoewoods	0		Number=Plur	dema	0	canoewood	n	rule
-canoing	0	oewn-canoe-v	VerbForm=Ger	dema	0			agid
 canola	0	oewn-canola-n	Number=Sing	dema	0			oewn_form
 canola oil	0	oewn-canola_oil-n	Number=Sing	dema	0			oewn_form
 canola oils	0	oewn-canola_oil-n	Number=Plur	dema	0			rule

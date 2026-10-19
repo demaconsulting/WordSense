@@ -9358,8 +9358,7 @@ coordinations	0	oewn-coordination-n	Number=Plur	dema	0			rule
 coordinative	0	oewn-coordinative-a	Degree=Pos	dema	0			oewn_form
 coordinator	0	oewn-coordinator-n	Number=Sing	dema	0			oewn_form
 coordinators	0	oewn-coordinator-n	Number=Plur	dema	0			rule
-coos	0	oewn-coo-v	Person=3+Tense=Pres	dema	0			agid
-coos	1	oewn-coo-n	Number=Plur	dema	0			rule
+coos	0	oewn-coo-n	Number=Plur	dema	0			rule
 coot	0	oewn-coot-n	Number=Sing	dema	0			oewn_form
 cootch	0		Number=Sing	dema	0	cootch	n	moby_reverse
 cootch	1		VerbForm=Inf	dema	0	cootch	v	moby_reverse

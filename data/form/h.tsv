@@ -2233,7 +2233,6 @@ halloo	1	oewn-halloo-v	VerbForm=Inf	dema	0			oewn_form
 hallooed	0	oewn-halloo-v	Tense=Past+VerbForm=Part	dema	0			rule
 hallooing	0	oewn-halloo-v	VerbForm=Ger	dema	0			rule
 halloos	0	oewn-halloo-n	Number=Plur	dema	0			rule
-halloos	1	oewn-halloo-v	Person=3+Tense=Pres	dema	0			agid
 hallot	0	oewn-hallah-n	Number=Plur	dema	0			oewn_form
 halloth	0	oewn-hallah-n	Number=Plur	dema	0			oewn_form
 hallow	0	oewn-hallow-v	VerbForm=Inf	dema	0			oewn_form
@@ -4141,8 +4140,7 @@ haversack	0	oewn-haversack-n	Number=Sing	dema	0			oewn_form
 haversacks	0	oewn-haversack-n	Number=Plur	dema	0			rule
 haversine	0		Number=Sing	dema	0	haversine	n	moby_reverse
 haversines	0		Number=Plur	dema	0	haversine	n	rule
-haves	0	oewn-have-v	Person=3+Tense=Pres	dema	0			rule_variant
-haves	1	oewn-have-n	Number=Plur	dema	0			rule
+haves	0	oewn-have-n	Number=Plur	dema	0			rule
 haves a ball	0	oewn-have_a_ball-v	Person=3+Tense=Pres	dema	0			rule
 haves a bun in the oven	0	oewn-have_a_bun_in_the_oven-v	Person=3+Tense=Pres	dema	0			rule
 haves a fit	0	oewn-have_a_fit-v	Person=3+Tense=Pres	dema	0			rule
@@ -7195,7 +7193,6 @@ hetman	0		Number=Sing	dema	0	hetman	n	moby_reverse
 hetmanate	0		Number=Sing	dema	0	hetmanate	n	moby_reverse
 hetmanates	0		Number=Plur	dema	0	hetmanate	n	rule
 hetmans	0		Number=Plur	dema	0	hetman	n	rule
-hets	0		Person=3+Tense=Pres	dema	0	het	v	rule
 heugh	0		Number=Sing	dema	0	heugh	n	moby_reverse
 heughs	0		Number=Plur	dema	0	heugh	n	rule
 heulandite	0	oewn-heulandite-n	Number=Sing	dema	0			oewn_form
@@ -9151,7 +9148,6 @@ holloes	0	oewn-hollo-n	Number=Plur	dema	0			agid
 holloes	1	oewn-hollo-v	Person=3+Tense=Pres	dema	0			rule_variant
 holloing	0	oewn-hollo-v	VerbForm=Ger	dema	0			rule
 hollos	0	oewn-hollo-n	Number=Plur	dema	0			rule_variant
-hollos	1	oewn-hollo-v	Person=3+Tense=Pres	dema	0			agid
 hollow	0	oewn-hollow-a	Degree=Pos	dema	0			oewn_form
 hollow	1	oewn-hollow-n	Number=Sing	dema	0			oewn_form
 hollow	2	oewn-hollow-v	VerbForm=Inf	dema	0			oewn_form
@@ -10150,7 +10146,6 @@ hoodooings	0		Number=Plur	dema	0	hoodooing	n	rule
 hoodooism	0	oewn-hoodooism-n	Number=Sing	dema	0			oewn_form
 hoodooisms	0	oewn-hoodooism-n	Number=Plur	dema	0			rule
 hoodoos	0	oewn-hoodoo-n	Number=Plur	dema	0			rule
-hoodoos	1	oewn-hoodoo-v	Person=3+Tense=Pres	dema	0			agid
 hoods	0	oewn-hood-n	Number=Plur	dema	0			rule
 hoods	1	oewn-hood-v	Person=3+Tense=Pres	dema	0			rule
 hoodwink	0	oewn-hoodwink-v	VerbForm=Inf	dema	0			oewn_form
@@ -12244,7 +12239,7 @@ hunkered down	0	oewn-hunker_down-v	Tense=Past+VerbForm=Part	dema	0			rule
 hunkering	0	oewn-hunker-v	VerbForm=Ger	dema	0			rule
 hunkering down	0	oewn-hunker_down-v	VerbForm=Ger	dema	0			rule
 hunkers	0	oewn-hunker-v	Person=3+Tense=Pres	dema	0			rule
-hunkers	1		Number=Plur	dema	0	hunker	n	moby_reverse
+hunkers	1		Number=Sing	dema	0	hunkers	n	moby_reverse
 hunkers down	0	oewn-hunker_down-v	Person=3+Tense=Pres	dema	0			rule
 hunkies	0		Number=Plur	dema	0	hunky	n	moby_reverse
 hunks	0	oewn-hunk-n	Number=Plur	dema	0			rule
@@ -14882,7 +14877,6 @@ hypoxic hypoxias	0	oewn-hypoxic_hypoxia-n	Number=Plur	dema	0			rule
 hypozeugma	0	oewn-hypozeugma-n	Number=Sing	dema	0			oewn_form
 hypozeugmas	0	oewn-hypozeugma-n	Number=Plur	dema	0			rule
 hypozeuxis	0	oewn-hypozeuxis-n	Number=Sing	dema	0			oewn_form
-hyps	0		Number=Plur	dema	0	hyp	n	rule
 hypsicephalic	0		Degree=Pos	dema	0	hypsicephalic	a	moby_reverse
 hypsicephalies	0		Number=Plur	dema	0	hypsicephaly	n	rule
 hypsicephalous	0		Degree=Pos	dema	0	hypsicephalous	a	moby_reverse

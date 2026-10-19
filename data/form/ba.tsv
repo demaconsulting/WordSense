@@ -2056,7 +2056,6 @@ baloneys	0	oewn-baloney-n	Number=Plur	dema	0			rule
 balons	0		Number=Plur	dema	0	balon	n	rule
 balopticon	0		Number=Sing	dema	0	balopticon	n	moby_reverse
 balopticons	0		Number=Plur	dema	0	balopticon	n	rule
-bals	0		Number=Plur	dema	0	bal	n	rule
 balsa	0	oewn-balsa-n	Number=Sing	dema	0			oewn_form
 balsa raft	0	oewn-balsa_raft-n	Number=Sing	dema	0			oewn_form
 balsa rafts	0	oewn-balsa_raft-n	Number=Plur	dema	0			rule
@@ -3374,7 +3373,7 @@ barricadoed	0		Number=Sing	dema	0	barricadoed	n	moby_reverse
 barricadoed	1	oewn-barricado-v	Tense=Past+VerbForm=Part	dema	0			rule
 barricadoeds	0		Number=Plur	dema	0	barricadoed	n	rule
 barricadoes	0	oewn-barricado-v	Person=3+Tense=Pres	dema	0			rule_variant
-barricadoes	1		Number=Plur	dema	0	barricado	n	moby_reverse
+barricadoes	1		Number=Sing	dema	0	barricadoes	n	moby_reverse
 barricadoing	0		Number=Sing	dema	0	barricadoing	n	moby_reverse
 barricadoing	1	oewn-barricado-v	VerbForm=Ger	dema	0			rule
 barricadoings	0		Number=Plur	dema	0	barricadoing	n	rule
@@ -3977,7 +3976,6 @@ bastinadoing	0		Number=Sing	dema	0	bastinadoing	n	moby_reverse
 bastinadoing	1	oewn-bastinado-v	VerbForm=Ger	dema	0			rule
 bastinadoings	0		Number=Plur	dema	0	bastinadoing	n	rule
 bastinados	0	oewn-bastinado-n	Number=Plur	dema	0			rule_variant
-bastinados	1	oewn-bastinado-v	Person=3+Tense=Pres	dema	0			agid
 basting	0	oewn-basting-n	Number=Sing	dema	0			oewn_form
 basting	1	oewn-baste-v	VerbForm=Ger	dema	0			rule
 basting stitch	0	oewn-basting_stitch-n	Number=Sing	dema	0			oewn_form

@@ -1608,7 +1608,6 @@ precisely	0	oewn-precisely-r	Degree=Pos	dema	0			oewn_form
 preciseness	0	oewn-preciseness-n	Number=Sing	dema	0			oewn_form
 precisenesses	0	oewn-preciseness-n	Number=Plur	dema	0			rule
 precises	0	oewn-precis-v	Person=3+Tense=Pres	dema	0			rule
-precises	1	oewn-precis-n	Number=Plur	dema	0			rule_variant
 precisian	0		Number=Sing	dema	0	precisian	n	moby_reverse
 precisianism	0		Number=Sing	dema	0	precisianism	n	moby_reverse
 precisianisms	0		Number=Plur	dema	0	precisianism	n	rule

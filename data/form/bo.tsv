@@ -1489,7 +1489,6 @@ boogie	1	oewn-boogie-n	Number=Sing	dema	0			oewn_form
 boogie-woogie	0	oewn-boogie-woogie-n	Number=Sing	dema	0			oewn_form
 boogie-woogies	0	oewn-boogie-woogie-n	Number=Plur	dema	0			rule
 boogied	0	oewn-boogie-v	Tense=Past+VerbForm=Part	dema	0			rule
-boogieing	0	oewn-boogie-v	VerbForm=Ger	dema	0			agid
 boogies	0	oewn-boogie-v	Person=3+Tense=Pres	dema	0			rule
 boogies	1	oewn-boogie-n	Number=Plur	dema	0			rule
 boohoo	0		VerbForm=Inf	dema	0	boohoo	v	moby_reverse
@@ -1700,8 +1699,7 @@ boorishly	0	oewn-boorishly-r	Degree=Pos	dema	0			oewn_form
 boorishness	0	oewn-boorishness-n	Number=Sing	dema	0			oewn_form
 boorishnesses	0	oewn-boorishness-n	Number=Plur	dema	0			rule
 boors	0	oewn-boor-n	Number=Plur	dema	0			rule
-boos	0	oewn-boo-v	Person=3+Tense=Pres	dema	0			agid
-boos	1	oewn-boo-n	Number=Plur	dema	0			rule
+boos	0	oewn-boo-n	Number=Plur	dema	0			rule
 boost	0	oewn-boost-n	Number=Sing	dema	0			oewn_form
 boost	1	oewn-boost-v	VerbForm=Inf	dema	0			oewn_form
 boost up	0	oewn-boost_up-v	VerbForm=Inf	dema	0			oewn_form
@@ -2018,7 +2016,6 @@ borrowing cost	0	oewn-borrowing_cost-n	Number=Sing	dema	0			oewn_form
 borrowing costs	0	oewn-borrowing_cost-n	Number=Plur	dema	0			rule
 borrowings	0	oewn-borrowing-n	Number=Plur	dema	0			rule
 borrows	0	oewn-borrow-v	Person=3+Tense=Pres	dema	0			rule
-bors	0		Number=Plur	dema	0	bor	n	rule
 borsch	0	oewn-borsch-n	Number=Sing	dema	0			oewn_form
 borsches	0	oewn-borsch-n	Number=Plur	dema	0			rule
 borscht	0	oewn-borscht-n	Number=Sing	dema	0			oewn_form

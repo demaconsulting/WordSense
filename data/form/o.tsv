@@ -6331,7 +6331,6 @@ outdodges	0		Person=3+Tense=Pres	dema	0	outdodge	v	rule
 outdodging	0		VerbForm=Ger	dema	0	outdodge	v	rule
 outdoes	0	oewn-outdo-v	Person=3+Tense=Pres	dema	0			rule
 outdoing	0	oewn-outdo-v	VerbForm=Ger	dema	0			hand
-outdone	0	oewn-outdo-v	VerbForm=Part	dema	0			agid
 outdoor	0	oewn-outdoor-a	Degree=Pos	dema	0			oewn_form
 outdoor game	0	oewn-outdoor_game-n	Number=Sing	dema	0			oewn_form
 outdoor games	0	oewn-outdoor_game-n	Number=Plur	dema	0			rule
@@ -6542,7 +6541,6 @@ outflies	0		Person=3+Tense=Pres	dema	0	outfly	v	rule
 outfling	0		VerbForm=Inf	dema	0	outfling	v	moby_reverse
 outflinging	0		VerbForm=Inf	dema	0	outflinging	v	moby_reverse
 outflinging	1		VerbForm=Ger	dema	0	outfling	v	rule
-outflings	0		Person=3+Tense=Pres	dema	0	outfling	v	rule
 outfloat	0		VerbForm=Inf	dema	0	outfloat	v	moby_reverse
 outfloated	0		Tense=Past+VerbForm=Part	dema	0	outfloat	v	rule
 outfloating	0		VerbForm=Ger	dema	0	outfloat	v	rule
@@ -9569,8 +9567,7 @@ overemotionalness	0		Number=Sing	dema	0	overemotionalness	n	moby_reverse
 overemphasis	0	oewn-overemphasis-n	Number=Sing	dema	0			oewn_form
 overemphasise	0	oewn-overemphasise-v	VerbForm=Inf	dema	0			oewn_form
 overemphasised	0	oewn-overemphasise-v	Tense=Past+VerbForm=Part	dema	0			rule
-overemphasises	0	oewn-overemphasis-n	Number=Plur	dema	0			rule_variant
-overemphasises	1	oewn-overemphasise-v	Person=3+Tense=Pres	dema	0			rule
+overemphasises	0	oewn-overemphasise-v	Person=3+Tense=Pres	dema	0			rule
 overemphasising	0	oewn-overemphasise-v	VerbForm=Ger	dema	0			rule
 overemphasize	0	oewn-overemphasize-v	VerbForm=Inf	dema	0			oewn_form
 overemphasized	0	oewn-overemphasize-v	Tense=Past+VerbForm=Part	dema	0			rule

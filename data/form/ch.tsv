@@ -992,8 +992,7 @@ chairmanned	0		Number=Sing	dema	0	chairmanned	n	moby_reverse
 chairmanned	1	oewn-chairman-v	Tense=Past+VerbForm=Part	dema	0			rule
 chairmanneds	0		Number=Plur	dema	0	chairmanned	n	rule
 chairmanning	0	oewn-chairman-v	VerbForm=Ger	dema	0			rule_variant
-chairmans	0	oewn-chairman-n	Number=Plur	dema	0			rule_variant
-chairmans	1	oewn-chairman-v	Person=3+Tense=Pres	dema	0			rule
+chairmans	0	oewn-chairman-v	Person=3+Tense=Pres	dema	0			rule
 chairmans of the board	0	oewn-chairman_of_the_board-n	Number=Plur	dema	0			rule
 chairmanship	0	oewn-chairmanship-n	Number=Sing	dema	0			oewn_form
 chairmanships	0	oewn-chairmanship-n	Number=Plur	dema	0			rule
@@ -1217,7 +1216,6 @@ chamois cress	0	oewn-chamois_cress-n	Number=Sing	dema	0			oewn_form
 chamois cresses	0	oewn-chamois_cress-n	Number=Plur	dema	0			rule
 chamois leather	0	oewn-chamois_leather-n	Number=Sing	dema	0			oewn_form
 chamois leathers	0	oewn-chamois_leather-n	Number=Plur	dema	0			rule
-chamoises	0	oewn-chamois-n	Number=Plur	dema	0			rule_variant
 chamoix	0	oewn-chamois-n	Number=Plur	dema	0			rule_variant
 chamomile	0	oewn-chamomile-n	Number=Sing	dema	0			oewn_form
 chamomiles	0	oewn-chamomile-n	Number=Plur	dema	0			rule
@@ -3111,6 +3109,7 @@ chiastolite	0		Number=Sing	dema	0	chiastolite	n	moby_reverse
 chiastolites	0		Number=Plur	dema	0	chiastolite	n	rule
 chiaus	0		Number=Sing	dema	0	chiaus	n	moby_reverse
 chiauses	0		Number=Plur	dema	0	chiaus	n	rule
+chiauses	1		Number=Sing	dema	0	chiauses	n	moby_reverse
 chibouk	0		Number=Sing	dema	0	chibouk	n	moby_reverse
 chibouks	0		Number=Plur	dema	0	chibouk	n	rule
 chic	0	oewn-chic-a	Degree=Pos	dema	0			oewn_form

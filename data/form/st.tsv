@@ -3634,7 +3634,6 @@ stomachic	1		Number=Sing	dema	0	stomachic	n	moby_reverse
 stomachically	0		Degree=Pos	dema	0	stomachically	r	moby_reverse
 stomaching	0	oewn-stomach-v	VerbForm=Ger	dema	0			rule
 stomachs	0	oewn-stomach-n	Number=Plur	dema	0			agid
-stomachs	1	oewn-stomach-v	Person=3+Tense=Pres	dema	0			agid
 stomachy	0		Degree=Pos	dema	0	stomachy	a	moby_reverse
 stomack	0		Number=Sing	dema	0	stomack	n	moby_reverse
 stomacks	0		Number=Plur	dema	0	stomack	n	rule
@@ -4462,7 +4461,6 @@ straplines	0	oewn-strapline-n	Number=Plur	dema	0			rule
 strappable	0		Degree=Pos	dema	0	strappable	a	moby_reverse
 strappado	0	oewn-strappado-n	Number=Sing	dema	0			oewn_form
 strappadoes	0	oewn-strappado-n	Number=Plur	dema	0			oewn_form
-strappados	0	oewn-strappado-n	Number=Plur	dema	0			rule_variant
 strapped	0		Degree=Pos	dema	0	strapped	a	moby_reverse
 strapped	1	oewn-strap-v	Tense=Past+VerbForm=Part	dema	0			oewn_form
 strapper	0	oewn-strapper-n	Number=Sing	dema	0			oewn_form

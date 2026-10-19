@@ -1157,7 +1157,6 @@ abyed	0	oewn-abye-v	Tense=Past+VerbForm=Part	dema	0			rule
 abyeing	0	oewn-abye-v	VerbForm=Ger	dema	0			rule_variant
 abyes	0	oewn-abye-v	Person=3+Tense=Pres	dema	0			rule
 abying	0	oewn-aby-v	VerbForm=Ger	dema	0			rule
-abying	1	oewn-abye-v	VerbForm=Ger	dema	0			agid
 abysm	0	oewn-abysm-n	Number=Sing	dema	0			oewn_form
 abysmal	0	oewn-abysmal-a	Degree=Pos	dema	0			oewn_form
 abysmally	0	oewn-abysmally-r	Degree=Pos	dema	0			oewn_form

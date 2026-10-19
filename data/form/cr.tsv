@@ -1366,7 +1366,6 @@ crescendo	3	oewn-crescendo-v	VerbForm=Inf	dema	0			oewn_form
 crescendoed	0	oewn-crescendo-v	Tense=Past+VerbForm=Part	dema	0			rule
 crescendoing	0	oewn-crescendo-v	VerbForm=Ger	dema	0			rule
 crescendos	0	oewn-crescendo-n	Number=Plur	dema	0			rule_variant
-crescendos	1	oewn-crescendo-v	Person=3+Tense=Pres	dema	0			agid
 crescent	0	oewn-crescent-n	Number=Sing	dema	0			oewn_form
 crescent	1	oewn-crescent-a	Degree=Pos	dema	0			oewn_form
 crescent roll	0	oewn-crescent_roll-n	Number=Sing	dema	0			oewn_form

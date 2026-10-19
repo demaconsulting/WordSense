@@ -7471,7 +7471,6 @@ wonks	0	oewn-wonk-n	Number=Plur	dema	0			rule
 wonky	0	oewn-wonky-a	Degree=Pos	dema	0			oewn_form
 wonna	0		Number=Sing	dema	0	wonna	n	moby_reverse
 wonnas	0		Number=Plur	dema	0	wonna	n	rule
-wons	0	oewn-won-n	Number=Plur	dema	0			rule_variant
 wont	0	oewn-wont-n	Number=Sing	dema	0			oewn_form
 wont	1		VerbForm=Inf	dema	0	wont	v	moby_reverse
 wont to	0	oewn-wont_to-a	Degree=Pos	dema	0			oewn_form
@@ -7877,7 +7876,6 @@ woomerangs	0		Number=Plur	dema	0	woomerang	n	rule
 woomeras	0		Number=Plur	dema	0	woomera	n	rule
 woorali	0		Number=Sing	dema	0	woorali	n	moby_reverse
 wooralis	0		Number=Plur	dema	0	woorali	n	rule
-woos	0	oewn-woo-v	Person=3+Tense=Pres	dema	0			agid
 woosh	0		Number=Sing	dema	0	woosh	n	moby_reverse
 woosh	1	oewn-woosh-v	VerbForm=Inf	dema	0			oewn_form
 wooshed	0	oewn-woosh-v	Tense=Past+VerbForm=Part	dema	0			rule

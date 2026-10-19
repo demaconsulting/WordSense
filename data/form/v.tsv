@@ -1198,7 +1198,6 @@ vanmen	0		Number=Sing	dema	0	vanmen	n	moby_reverse
 vanmens	0		Number=Plur	dema	0	vanmen	n	rule
 vanned	0		VerbForm=Inf	dema	0	vanned	v	moby_reverse
 vanning	0		VerbForm=Inf	dema	0	vanning	v	moby_reverse
-vannings	0		Person=3+Tense=Pres	dema	0	vanning	v	rule
 vanquish	0	oewn-vanquish-v	VerbForm=Inf	dema	0			oewn_form
 vanquishable	0	oewn-vanquishable-a	Degree=Pos	dema	0			oewn_form
 vanquished	0	oewn-vanquish-v	Tense=Past+VerbForm=Part	dema	0			rule
@@ -2886,9 +2885,8 @@ verse line	0	oewn-verse_line-n	Number=Sing	dema	0			oewn_form
 verse lines	0	oewn-verse_line-n	Number=Plur	dema	0			rule
 versed	0	oewn-versed-a	Degree=Pos	dema	0			oewn_form
 versed	1	oewn-verse-v	Tense=Past+VerbForm=Part	dema	0			rule
-verses	0		Number=Plur	dema	0	vers	n	rule
-verses	1	oewn-verse-n	Number=Plur	dema	0			rule
-verses	2	oewn-verse-v	Person=3+Tense=Pres	dema	0			rule
+verses	0	oewn-verse-n	Number=Plur	dema	0			rule
+verses	1	oewn-verse-v	Person=3+Tense=Pres	dema	0			rule
 verset	0		Number=Sing	dema	0	verset	n	moby_reverse
 versets	0		Number=Plur	dema	0	verset	n	rule
 versicle	0	oewn-versicle-n	Number=Sing	dema	0			oewn_form

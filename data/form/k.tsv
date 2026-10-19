@@ -1220,7 +1220,6 @@ kayoed	0	oewn-kayo-v	Tense=Past+VerbForm=Part	dema	0			rule
 kayoed	1	oewn-kayoed-a	Degree=Pos	dema	0			oewn_form
 kayoing	0	oewn-kayo-v	VerbForm=Ger	dema	0			rule
 kayos	0	oewn-kayo-n	Number=Plur	dema	0			rule
-kayos	1	oewn-kayo-v	Person=3+Tense=Pres	dema	0			agid
 kazachki	0		Number=Sing	dema	0	kazachki	n	moby_reverse
 kazachkis	0		Number=Plur	dema	0	kazachki	n	rule
 kazachok	0		Number=Sing	dema	0	kazachok	n	moby_reverse
@@ -3761,7 +3760,6 @@ krills	0	oewn-krill-n	Number=Plur	dema	0			rule
 krimmer	0		Number=Sing	dema	0	krimmer	n	moby_reverse
 krimmers	0		Number=Plur	dema	0	krimmer	n	rule
 kris	0	oewn-kris-n	Number=Sing	dema	0			oewn_form
-krises	0	oewn-kris-n	Number=Plur	dema	0			rule
 krivu	0		Number=Sing	dema	0	krivu	n	moby_reverse
 krivus	0		Number=Plur	dema	0	krivu	n	rule
 krna	0		Number=Sing	dema	0	krna	n	moby_reverse

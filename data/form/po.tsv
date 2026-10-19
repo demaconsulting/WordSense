@@ -1161,8 +1161,7 @@ policeman	0	oewn-policeman-n	Number=Sing	dema	0			oewn_form
 policeman bird	0	oewn-policeman_bird-n	Number=Sing	dema	0			oewn_form
 policeman birds	0	oewn-policeman_bird-n	Number=Plur	dema	0			rule
 policemen	0	oewn-policeman-n	Number=Plur	dema	0			agid
-polices	0	oewn-police-n	Number=Plur	dema	0			rule_variant
-polices	1	oewn-police-v	Person=3+Tense=Pres	dema	0			rule
+polices	0	oewn-police-v	Person=3+Tense=Pres	dema	0			rule
 policewoman	0	oewn-policewoman-n	Number=Sing	dema	0			oewn_form
 policewomen	0	oewn-policewoman-n	Number=Plur	dema	0			agid
 policies	0	oewn-policy-n	Number=Plur	dema	0			rule
